@@ -1,29 +1,27 @@
 slug: flaxseed-lignans-reduce-prostate-cancer-proliferation
-statement: 30 grams per day of flaxseeds was associated with significantly lower prostate
-  cancer tumor proliferation rates in men.
+statement: 30 grams per day of flaxseeds was associated with significantly lower prostate cancer tumor proliferation rates
+  in men.
 evidence_tier: plausible_emerging
-rationale: Cited in the lecture as a specific study finding regarding flaxseed lignans
-  (not ALA). Lignans have anti-mitotic, anti-angiogenic, antioxidant, and phytoestrogenic
-  properties. Source is FM lecture of moderate quality; specific primary study not
-  named.
-coaching_translation: Beyond omega-3s, the lignans in flaxseeds may have cancer-protective
-  properties, particularly for prostate health.
+rationale: Cited in the lecture as a specific study finding regarding flaxseed lignans (not ALA). Lignans have anti-mitotic,
+  anti-angiogenic, antioxidant, and phytoestrogenic properties. Source is FM lecture of moderate quality; specific primary
+  study not named.
+coaching_translation: Beyond omega-3s, the lignans in flaxseeds may have cancer-protective properties, particularly for prostate
+  health.
 caveats:
 - Specific study not named in source; verify primary literature.
 - Source is FM lecture synthesis.
-- Phytoestrogenic effects of lignans may warrant caution in hormone-sensitive cancers
-  — consult clinician.
+- Phytoestrogenic effects of lignans may warrant caution in hormone-sensitive cancers — consult clinician.
 linked_to_topics:
 - omega-3-fatty-acids
 linked_to_supplements:
-- ground-flaxseed
+- flax-seed
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Flaxseed Benefits Beyond ALA Slide
-  quote: prostate cancer tumor proliferation rates were significantly lower in men
-    who ingested around 30 grams of flax seeds per day.
+  quote: prostate cancer tumor proliferation rates were significantly lower in men who ingested around 30 grams of flax seeds
+    per day.
 version: 1
 status: active
 updated_at: '2026-05-05'

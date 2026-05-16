@@ -1,17 +1,17 @@
 slug: epa-dha-decreases-shbg
 statement: EPA/DHA (omega-3 fatty acids) are associated with decreased SHBG levels.
 evidence_tier: fm_specific_thin
-rationale: Listed in the FMCN toolkit as lowering SHBG. Some research supports omega-3s
-  influencing SHBG, but specific mechanistic evidence is thin.
-coaching_translation: Fish oils may help lower SHBG when it is too high, helping to
-  free up more testosterone for use in the body.
+rationale: Listed in the FMCN toolkit as lowering SHBG. Some research supports omega-3s influencing SHBG, but specific mechanistic
+  evidence is thin.
+coaching_translation: Fish oils may help lower SHBG when it is too high, helping to free up more testosterone for use in the
+  body.
 caveats:
 - Source is expert-consensus toolkit; thin primary literature for SHBG-specific effect
 - Dosing out of coaching scope
 linked_to_topics:
 - sex-hormone-binding-globulin
 linked_to_supplements:
-- fish-oil-epa-dha
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

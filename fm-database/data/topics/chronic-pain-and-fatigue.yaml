@@ -3,19 +3,17 @@ display_name: Chronic Pain and Fatigue
 aliases:
 - chronic fatigue
 - chronic pain syndrome
-summary: A functional medicine framework for understanding chronic pain and fatigue
-  as expressions of upstream root causes — including gene expression/epigenetics,
-  digestive dysfunction, and systemic inflammation — rather than isolated diagnoses.
-  Coaching approach focuses on nutrient-dense diet, gut restoration, blood sugar balance,
-  sleep, movement, and stress management.
+summary: A functional medicine framework for understanding chronic pain and fatigue as expressions of upstream root causes
+  — including gene expression/epigenetics, digestive dysfunction, and systemic inflammation — rather than isolated diagnoses.
+  Coaching approach focuses on nutrient-dense diet, gut restoration, blood sugar balance, sleep, movement, and stress management.
 common_symptoms:
 - joint-pain
 - muscle-pain
-- low-energy
+- chronic-fatigue
 - brain-fog
 - constipation
 - bloating
-- poor-sleep
+- sleep-disruption
 - morning-stiffness
 red_flags:
 - unexplained rapid weight loss
@@ -23,27 +21,24 @@ red_flags:
 - neurological deficits
 related_topics:
 - fibromyalgia
-- leaky-gut
-- dysbiosis
+- autoimmunity-leaky-gut-triad
+- gut-dysbiosis
 - low-stomach-acid
 - inflammation
-- epigenetics
+- epigenetics-lifestyle-gene-expression
 key_mechanisms:
 - systemic-inflammation
 - leaky-gut
-- dysbiosis
-coaching_scope_notes: Coaches can support dietary elimination (gluten, dairy, refined
-  sugar), lifestyle changes, sleep hygiene, stress management, and low-impact movement.
-  Lab interpretation and supplement dosing should be confirmed with a clinician.
-clinician_scope_notes: Order inflammatory markers (hsCRP, homocysteine), full thyroid
-  panel with antibodies, vitamin D, iron, B12, omega-3 index. Rule out autoimmune
-  conditions, anemia, and thyroid disease before attributing to lifestyle alone.
+- dysbiosis-gut-microbiome-imbalance
+coaching_scope_notes: Coaches can support dietary elimination (gluten, dairy, refined sugar), lifestyle changes, sleep hygiene,
+  stress management, and low-impact movement. Lab interpretation and supplement dosing should be confirmed with a clinician.
+clinician_scope_notes: Order inflammatory markers (hsCRP, homocysteine), full thyroid panel with antibodies, vitamin D, iron,
+  B12, omega-3 index. Rule out autoimmune conditions, anemia, and thyroid disease before attributing to lifestyle alone.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Introduction / Opening Q&A
-  quote: When somebody is coming to us with chronic pain and fatigue, what is the
-    first step that you take?
+  quote: When somebody is coming to us with chronic pain and fatigue, what is the first step that you take?
 version: 1
 status: active
 updated_at: '2026-05-05'

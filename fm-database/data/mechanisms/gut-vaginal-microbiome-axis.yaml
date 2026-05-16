@@ -4,14 +4,11 @@ aliases:
 - GI-vaginal translocation
 - microbiome cross-talk
 category: gut
-summary: Microbes from the GI tract can translocate to the vagina and bladder via
-  anatomical proximity and continuity. Oral ingestion of Lactobacillus crispatus colonizes
-  the vagina without direct anatomical connection, suggesting translocation. All body-site
-  microbiomes communicate bidirectionally, including gut, vaginal, urinary, oral,
-  and brain microbiomes.
+summary: Microbes from the GI tract can translocate to the vagina and bladder via anatomical proximity and continuity. Oral
+  ingestion of Lactobacillus crispatus colonizes the vagina without direct anatomical connection, suggesting translocation.
+  All body-site microbiomes communicate bidirectionally, including gut, vaginal, urinary, oral, and brain microbiomes.
 upstream_drivers:
-- gut-dysbiosis
-- sibo
+- dysbiosis-gut-microbiome-imbalance
 - antibiotic-overuse
 downstream_effects:
 - vaginal-dysbiosis
@@ -19,7 +16,7 @@ downstream_effects:
 - bladder-microbiome-disruption
 related_mechanisms:
 - lactobacillus-crispatus-dominance
-- endotoxemia
+- lps-endotoxemia
 linked_to_topics:
 - vaginal-microbiome
 - gut-microbiome
@@ -28,9 +25,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Gut-vaginal microbiome axis discussion
-  quote: One of the great things about many microbes, including crispatus, is a woman
-    can take it in orally, say as a probiotic or other source. It will populate the
-    vagina.
+  quote: One of the great things about many microbes, including crispatus, is a woman can take it in orally, say as a probiotic
+    or other source. It will populate the vagina.
 version: 1
 status: active
 updated_at: '2026-05-05'

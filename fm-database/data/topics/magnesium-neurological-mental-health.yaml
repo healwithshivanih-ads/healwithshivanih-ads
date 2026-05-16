@@ -4,16 +4,15 @@ aliases:
 - magnesium anxiety
 - magnesium depression
 - magnesium brain
-summary: Magnesium activates calming neurotransmitter pathways including GABA receptors,
-  supports serotonin synthesis, and moderates adrenal catecholamine release. Deficiency
-  is associated with anxiety, panic attacks, depression, migraine, insomnia, and risk
-  of Alzheimer's disease.
+summary: Magnesium activates calming neurotransmitter pathways including GABA receptors, supports serotonin synthesis, and
+  moderates adrenal catecholamine release. Deficiency is associated with anxiety, panic attacks, depression, migraine, insomnia,
+  and risk of Alzheimer's disease.
 common_symptoms:
 - anxiety
 - panic-attacks
-- depression
+- low-mood
 - insomnia
-- migraine-headache
+- headache
 - tension-headache
 - brain-fog
 - irritability
@@ -21,7 +20,7 @@ red_flags:
 - seizures
 - acute-psychosis
 related_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - adrenal-fatigue
 - insomnia
 - migraine
@@ -29,16 +28,15 @@ key_mechanisms:
 - gaba-receptor-modulation
 - serotonin-synthesis
 - adrenal-catecholamine-dysregulation
-coaching_scope_notes: Coaches can discuss magnesium's role in sleep and stress resilience.
-  Depression and panic disorders require clinical co-management.
-clinician_scope_notes: Consider magnesium status before prescribing sleep aids or
-  anxiolytics. IV magnesium or B6/vitamin C combination considered for acute migraine.
+coaching_scope_notes: Coaches can discuss magnesium's role in sleep and stress resilience. Depression and panic disorders
+  require clinical co-management.
+clinician_scope_notes: Consider magnesium status before prescribing sleep aids or anxiolytics. IV magnesium or B6/vitamin
+  C combination considered for acute migraine.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Effects of magnesium on nervous system, anxiety and panic attacks
-  quote: Magnesium is responsible for the production of certain receptors which give
-    a calming effect like the GABA receptors.
+  quote: Magnesium is responsible for the production of certain receptors which give a calming effect like the GABA receptors.
 version: 1
 status: active
 updated_at: '2026-05-05'

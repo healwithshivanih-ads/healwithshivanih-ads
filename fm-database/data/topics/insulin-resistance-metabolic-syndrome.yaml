@@ -4,16 +4,15 @@ aliases:
 - metabolic syndrome
 - insulin dysregulation
 - cardiometabolic risk
-summary: Insulin resistance is framed as the primary upstream driver of most metabolic
-  diseases including T2D, PCOS, NAFLD, and cardiovascular risk. TG:HDL ratio and fasting
-  insulin are preferred early-detection markers over fasting glucose or standard lipid
-  panels.
+summary: Insulin resistance is framed as the primary upstream driver of most metabolic diseases including T2D, PCOS, NAFLD,
+  and cardiovascular risk. TG:HDL ratio and fasting insulin are preferred early-detection markers over fasting glucose or
+  standard lipid panels.
 common_symptoms:
-- belly-fat
+- increased-waist-circumference
 - sugar-cravings
-- fatigue
+- lethargy
 - energy-crashes
-- high-triglycerides
+- elevated-triglycerides
 red_flags:
 - HbA1c above 6.5% without management
 - NAFLD with rising AST/ALT
@@ -26,17 +25,16 @@ key_mechanisms:
 - insulin-resistance
 - hepatic-fat-accumulation
 - apob-atherogenic-particle-burden
-coaching_scope_notes: Coaches can support dietary carbohydrate reduction, resistance
-  training, sleep, and stress management to improve insulin sensitivity. Lab interpretation
-  and medication decisions are clinician territory.
-clinician_scope_notes: Use TG:HDL ratio, fasting insulin, and HbA1c for early detection.
-  Treat insulin resistance as primary target before lipid pharmacotherapy.
+coaching_scope_notes: Coaches can support dietary carbohydrate reduction, resistance training, sleep, and stress management
+  to improve insulin sensitivity. Lab interpretation and medication decisions are clinician territory.
+clinician_scope_notes: Use TG:HDL ratio, fasting insulin, and HbA1c for early detection. Treat insulin resistance as primary
+  target before lipid pharmacotherapy.
 evidence_tier: strong
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/ and POST https://www.instagram.com/p/DX6sbxqDFJ5/
-  quote: Insulin resistance is the primary driver in most metabolic diseases → TG:HDL
-    ratio is an early marker of insulin resistance
+  quote: Insulin resistance is the primary driver in most metabolic diseases → TG:HDL ratio is an early marker of insulin
+    resistance
 version: 1
 status: active
 updated_at: '2026-05-05'

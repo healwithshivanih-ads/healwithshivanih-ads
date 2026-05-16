@@ -12,36 +12,30 @@ aliases:
 - premenopause
 - menopausal transition
 - perimenopausal phase
-summary: The transitional phase approximately 3–4 years before and one year after
-  menopause, characterized by irregular menstrual cycles, fluctuating hormones, vasomotor
-  symptoms, mood changes, and early psychosomatic symptoms. Progesterone typically
+summary: The transitional phase approximately 3–4 years before and one year after menopause, characterized by irregular menstrual
+  cycles, fluctuating hormones, vasomotor symptoms, mood changes, and early psychosomatic symptoms. Progesterone typically
   declines first, potentially creating relative estrogen dominance.
 common_symptoms:
 - night sweats / hot flashes
-- 3am wakeups
+- insomnia
 - new-onset anxiety
-- brain fog
-- joint pain / stiffness
-- irregular cycles
-- weight gain (especially abdominal)
+- poor-concentration
+- joint-pain
+- irregular-periods
+- unexplained-weight-gain
 - bloating
 - constipation
-- loose stools
-- new food sensitivities
-- reflux
+- osmotic-diarrhea
+- intestinal-dysbiosis-symptoms
+- acid-reflux-heartburn
 - new-onset IBS
 - hot-flashes
 - anxiety
-- insomnia
 - brain-fog
-- irregular-periods
 - breast-tenderness
 - mood-swings
 - low-libido
-- fatigue
-- disturbed-sleep
-- mood-changes
-- sleep-disturbances
+- lethargy
 - heavy-bleeding
 - spotting
 red_flags:
@@ -55,15 +49,14 @@ red_flags:
 - bleeding >15 days
 - new onset severe anxiety or depression
 - palpitations without cardiac cause
-- Irregular cycles in women under 35 should not be assumed to be perimenopause without
-  workup
+- Irregular cycles in women under 35 should not be assumed to be perimenopause without workup
 - Persistent amenorrhea in young women — rule out PCOS
 related_topics:
 - insomnia
 - anxiety
 - pcos
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - gut-hormone-axis
 - constipation
 - dyspepsia
@@ -78,19 +71,15 @@ related_topics:
 - cortisol-steal
 key_mechanisms:
 - low-progesterone
-- estrogen-fluctuation
+- estrogen-decline
 - insulin-resistance
 - hpa-axis-dysregulation
-- estrogen-decline
-- progesterone-decline
-- intestinal-permeability
+- leaky-gut
 - progesterone-deficiency
-- estrogen-progesterone-decline
 - ovarian-follicle-depletion
-coaching_scope_notes: Coaches can support lifestyle modifications, stress management,
-  and nutrition. Diagnosis and hormonal management are clinician scope.
-clinician_scope_notes: 'HRT decisions and prescribing require menopause-certified
-  clinician.
+coaching_scope_notes: Coaches can support lifestyle modifications, stress management, and nutrition. Diagnosis and hormonal
+  management are clinician scope.
+clinician_scope_notes: 'HRT decisions and prescribing require menopause-certified clinician.
 
   Coach can prepare client for that conversation but does not initiate.
 
@@ -100,20 +89,17 @@ sources:
   location: practice_guide.md, Menopause/Perimenopause section
 - id: thurlow-microbiome-session-6
   location: Session 6 — Main Transcript, Introduction
-  quote: These are all hormonally mediated and they are sometimes worsened by neurotransmitter
-    changes.
+  quote: These are all hormonally mediated and they are sometimes worsened by neurotransmitter changes.
 - id: vitaone-sex-hormones-cheatsheet
   location: Common Triggers for Low Progesterone
   quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
 - id: coconote-fm-estrogen-dominance
   location: Types of Estrogen Dominance
-  quote: Somebody who is at the age of 45, their progesterone dips down. Because the
-    progesterone has dipped down, the estrogen is relatively a bit on the higher side,
-    the chances of getting fibroids and phylloadenoma, cystic breast kind of increases.
+  quote: Somebody who is at the age of 45, their progesterone dips down. Because the progesterone has dipped down, the estrogen
+    is relatively a bit on the higher side, the chances of getting fibroids and phylloadenoma, cystic breast kind of increases.
 - id: coconote-fm-sex-hormones
   location: Stages of Menopause
-  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is
-    basically a period of perimenopause.
+  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is basically a period of perimenopause.
 evidence_tier: strong
 version: 5
 status: active

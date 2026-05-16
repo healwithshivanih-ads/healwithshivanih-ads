@@ -8,8 +8,7 @@ summary: IgE-mediated food allergy is a type 1 hypersensitivity reaction charact
   following allergen exposure. Allergen-IgE complexes bind to mast cells, triggering degranulation and histamine release.
   Common triggers include dairy, egg, peanut, wheat, soy, fish, shellfish, and nuts.
 common_symptoms:
-- hives
-- urticaria
+- eczema-psoriasis-skin
 - abdominal-cramping
 - vomiting
 - diarrhea
@@ -26,7 +25,7 @@ related_topics:
 - food-intolerance
 key_mechanisms:
 - mast-cell-degranulation-histamine-release
-- intestinal-permeability
+- leaky-gut
 - ige-antigen-sensitization
 coaching_scope_notes: Coaches can support allergen avoidance, gut healing protocols, and elimination diet planning. Do NOT
   advise on immunotherapy, anaphylaxis management, or allergy testing interpretation — refer to allergist.

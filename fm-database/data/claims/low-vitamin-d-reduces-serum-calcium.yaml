@@ -1,17 +1,17 @@
 slug: low-vitamin-d-reduces-serum-calcium
-statement: Low vitamin D is a cause of low serum calcium, as vitamin D is required
-  for intestinal calcium absorption and is activated by PTH.
+statement: Low vitamin D is a cause of low serum calcium, as vitamin D is required for intestinal calcium absorption and is
+  activated by PTH.
 evidence_tier: strong
-rationale: 'Well-established: active vitamin D (1,25-dihydroxyvitamin D3) promotes
-  intestinal calcium absorption. Vitamin D deficiency is a recognized cause of hypocalcemia.'
-coaching_translation: Vitamin D helps your gut absorb calcium. If vitamin D is low,
-  calcium absorption suffers even if you're eating plenty of calcium-rich foods.
+rationale: 'Well-established: active vitamin D (1,25-dihydroxyvitamin D3) promotes intestinal calcium absorption. Vitamin
+  D deficiency is a recognized cause of hypocalcemia.'
+coaching_translation: Vitamin D helps your gut absorb calcium. If vitamin D is low, calcium absorption suffers even if you're
+  eating plenty of calcium-rich foods.
 caveats: []
 linked_to_topics:
 - calcium-deficiency
 - calcium-metabolism
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

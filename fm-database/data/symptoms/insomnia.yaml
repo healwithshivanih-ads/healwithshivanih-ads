@@ -63,17 +63,15 @@ linked_to_topics:
 - chronic-stress
 - nervous-system-regulation
 - breathwork-for-health
-- hpa-axis-dysfunction
 - emotional-healing-in-chronic-disease
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-neurological-mental-health
 - sibo
 - gut-brain-axis-dysfunction
-- sleep-hygiene
+- sleep
 - depression-lifestyle
 - hydration-and-brain-function
-- adrenal-cortisol-resilience
-- gut-health-fodmap-sibo
+- adrenal-fatigue
 - nutrition-deficiency
 - depression-like-symptoms
 linked_to_mechanisms:
@@ -81,21 +79,19 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - neurotransmitter-synthesis-impairment
 - hpt-axis-dysregulation
-- cortisol-excess
 - vagal-tone-reduction
-- sympathoadrenal-activation
-- cortisol-dhea-imbalance
-- sympathetic-overdrive
+- noradrenaline-signaling
+- sympathetic-dominance
 - limbic-system-overactivation
 - gaba-receptor-modulation
 - melatonin-pathway
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - glymphatic-clearance
 - neuroplasticity
 - prefrontal-cortex-function
 - cellular-hydration
 - dhea-cortisol-ratio-imbalance
-- nutrient-dependent-energy-metabolism
+- mitochondrial-energy-production
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: How to Balance Progesterone Hormone

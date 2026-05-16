@@ -6,15 +6,14 @@ aliases:
 - phase 2 bilirubin marker
 category: metabolic
 severity: concerning
-description: Mildly elevated unconjugated (indirect) bilirubin with a borderline conjugated
-  fraction suggests impaired Phase 2 glucuronidation, potentially indicating Gilbert
-  syndrome or acquired detox pathway dysfunction. Unlike hepatitis-pattern jaundice,
-  levels are mildly elevated rather than markedly high.
-when_to_refer: Refer if bilirubin is markedly elevated, accompanied by jaundice (yellow
-  eyes/skin), or if hepatitis pattern is suspected.
+description: Mildly elevated unconjugated (indirect) bilirubin with a borderline conjugated fraction suggests impaired Phase
+  2 glucuronidation, potentially indicating Gilbert syndrome or acquired detox pathway dysfunction. Unlike hepatitis-pattern
+  jaundice, levels are mildly elevated rather than markedly high.
+when_to_refer: Refer if bilirubin is markedly elevated, accompanied by jaundice (yellow eyes/skin), or if hepatitis pattern
+  is suspected.
 linked_to_topics:
 - chronic-toxicity-assessment
-- liver-detox-phase-1-and-phase-2
+- liver-detoxification
 - gilbert-syndrome
 linked_to_mechanisms:
 - glucuronidation-impairment
@@ -22,9 +21,8 @@ linked_to_mechanisms:
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Bilirubin & Phase 2 Explanation
-  quote: you can taste the primary compound is increased 1.3 and they are difficult
-    in eliminating the primary is your your unconjugated and look at your conjugal
-    region that is around 1.2, very slightly elevated but very elevated. So you can
+  quote: you can taste the primary compound is increased 1.3 and they are difficult in eliminating the primary is your your
+    unconjugated and look at your conjugal region that is around 1.2, very slightly elevated but very elevated. So you can
     really see that this patient has some difficulty in phase 2 reaction
 version: 1
 status: active

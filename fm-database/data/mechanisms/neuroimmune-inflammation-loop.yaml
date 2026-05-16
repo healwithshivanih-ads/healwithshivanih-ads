@@ -5,9 +5,8 @@ aliases:
 - stress-immune loop
 - cytokine-mood loop
 category: immune
-summary: Emotional stress and loneliness activate immune pathways and increase inflammatory
-  cytokines (IL-6, TNF-alpha, hs-CRP), driving neuroinflammation, autoimmune flares,
-  fatigue, and accelerated aging.
+summary: Emotional stress and loneliness activate immune pathways and increase inflammatory cytokines (IL-6, TNF-alpha, hs-CRP),
+  driving neuroinflammation, autoimmune flares, fatigue, and accelerated aging.
 upstream_drivers:
 - social-isolation
 - perceived-rejection
@@ -27,22 +26,21 @@ downstream_effects:
 - insulin-resistance
 - low-mood
 related_mechanisms:
-- hpa-axis-overactivation
+- cortisol-elevation
 - gut-brain-axis-disruption
 - sympathetic-dominance
 linked_to_topics:
 - chronic-inflammation
 - chronic-stress
 - depression-like-symptoms
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 - cardiovascular-health
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Key Mechanisms Explained — neuroimmune-inflammation-loop
-  quote: Emotional stress and loneliness are described as activating immune pathways
-    and increasing inflammatory cytokines.
+  quote: Emotional stress and loneliness are described as activating immune pathways and increasing inflammatory cytokines.
 version: 1
 status: active
 updated_at: '2026-05-06'

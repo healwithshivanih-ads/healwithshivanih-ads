@@ -13,14 +13,13 @@ aliases:
 - reverse T3 block
 - RT3/T3 receptor competition
 category: endocrine
-summary: When T4 is preferentially converted to inactive reverse T3 (rT3) instead
-  of active T3, rT3 competes with T3 for receptor binding sites, blocking thyroid
-  hormone action at the cellular level and producing hypothyroid-like symptoms despite
-  normal serum labs.
+summary: When T4 is preferentially converted to inactive reverse T3 (rT3) instead of active T3, rT3 competes with T3 for receptor
+  binding sites, blocking thyroid hormone action at the cellular level and producing hypothyroid-like symptoms despite normal
+  serum labs.
 upstream_drivers:
-- high-cortisol
+- cortisol-elevation
 - chronic-stress
-- inflammation
+- chronic-inflammation
 - nutrient-deficiencies
 - low-calorie-diet
 - chronic-illness
@@ -39,8 +38,7 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 3: Thyroid Hormones'
-  quote: High rT3 with low free T3 can create symptoms of hypothyroidism even when
-    labs appear 'normal.'
+  quote: High rT3 with low free T3 can create symptoms of hypothyroidism even when labs appear 'normal.'
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Balance Stress Response
   quote: Chronic stress → high cortisol → ↑ rT3 → functional hypothyroidism

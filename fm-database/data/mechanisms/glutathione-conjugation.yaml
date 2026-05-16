@@ -5,28 +5,27 @@ aliases:
 - GST detox
 - glutathione binding
 category: metabolic
-summary: Glutathione (GSH), a tripeptide antioxidant, conjugates with reactive intermediates
-  via glutathione-S-transferase enzymes in Phase 2. This detoxifies electrophilic
-  intermediates, reduces oxidative stress, and prepares the conjugate for biliary
-  excretion. Glutathione depletion is a critical vulnerability in toxic overload states.
+summary: Glutathione (GSH), a tripeptide antioxidant, conjugates with reactive intermediates via glutathione-S-transferase
+  enzymes in Phase 2. This detoxifies electrophilic intermediates, reduces oxidative stress, and prepares the conjugate for
+  biliary excretion. Glutathione depletion is a critical vulnerability in toxic overload states.
 upstream_drivers:
-- phase2-conjugation
+- phase-2-conjugation
 - cysteine-availability
 - oxidative-stress
 downstream_effects:
 - intermediate-detoxification
 - reduced-oxidative-stress
 related_mechanisms:
-- phase2-conjugation
+- phase-2-conjugation
 - reactive-intermediate-accumulation
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 evidence_tier: strong
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Conjugation Pathways
-  quote: The other important pathway is glutathione, there's about 20 oxygens, so
-    we can bind glutathione with anything, and acetyl transferase.
+  quote: The other important pathway is glutathione, there's about 20 oxygens, so we can bind glutathione with anything, and
+    acetyl transferase.
 version: 1
 status: active
 updated_at: '2026-05-05'

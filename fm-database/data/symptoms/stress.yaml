@@ -8,24 +8,21 @@ aliases:
 - stress response
 category: mood
 severity: common
-description: A subjective sense of being overwhelmed, pressured, or unable to cope.
-  May manifest physically (tension, fatigue) and emotionally (anxiety, irritability).
-  A central target of mindful breathing and gratitude practice.
-when_to_refer: Refer if stress presents with clinical anxiety, panic attacks, somatic
-  illness, or functional impairment.
+description: A subjective sense of being overwhelmed, pressured, or unable to cope. May manifest physically (tension, fatigue)
+  and emotionally (anxiety, irritability). A central target of mindful breathing and gratitude practice.
+when_to_refer: Refer if stress presents with clinical anxiety, panic attacks, somatic illness, or functional impairment.
 linked_to_topics:
 - mindful-breathing
 - stress-management
 - self-care
 - gratitude-practice
 linked_to_mechanisms:
-- hpa-axis-regulation
+- hpa-axis-dysregulation
 - parasympathetic-activation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
-  quote: This is an important skill that can help you deal with stress, anxiety, and
-    negative emotions in a positive way.
+  quote: This is an important skill that can help you deal with stress, anxiety, and negative emotions in a positive way.
 version: 1
 status: active
 updated_at: '2026-05-04'

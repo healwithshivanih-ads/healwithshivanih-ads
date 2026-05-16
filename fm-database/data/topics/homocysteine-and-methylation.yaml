@@ -10,13 +10,12 @@ aliases:
 - MTHFR
 - folate cycle dysfunction
 - methylation impairment
-summary: Elevated homocysteine is an independent cardiovascular risk factor that promotes
-  LDL oxidation, endothelial damage, and thrombosis. It reflects impaired methylation,
-  often driven by deficiencies of B6, B9 (methylfolate), and B12 (methylcobalamin),
+summary: Elevated homocysteine is an independent cardiovascular risk factor that promotes LDL oxidation, endothelial damage,
+  and thrombosis. It reflects impaired methylation, often driven by deficiencies of B6, B9 (methylfolate), and B12 (methylcobalamin),
   or MTHFR genetic variants.
 common_symptoms:
 - inflammation
-- depression
+- low-mood
 - anxiety
 - autoimmunity
 red_flags:
@@ -26,26 +25,25 @@ related_topics:
 - coagulation-imbalance
 - endothelial-dysfunction
 key_mechanisms:
-- methylation-impairment
+- methylation-cycle
 - ldl-oxidation-and-glycation
-- endothelial-injury
-coaching_scope_notes: Coaches can support B-vitamin sufficiency through diet and supplementation
-  guidance. MTHFR genetic context and active-form B-vitamin supplementation are appropriate
-  coaching topics. Lab interpretation and prescribing are clinician scope.
-clinician_scope_notes: MTHFR testing, homocysteine lab interpretation, and therapeutic
-  dosing of active B vitamins require clinician oversight.
+- endothelial-dysfunction
+coaching_scope_notes: Coaches can support B-vitamin sufficiency through diet and supplementation guidance. MTHFR genetic context
+  and active-form B-vitamin supplementation are appropriate coaching topics. Lab interpretation and prescribing are clinician
+  scope.
+clinician_scope_notes: MTHFR testing, homocysteine lab interpretation, and therapeutic dosing of active B vitamins require
+  clinician oversight.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
-  quote: homocysteine if increased, that leads to cardiovascular disease and also
-    apart from cardiovascular disease, homocysteine is linked to many other diseases
-    like it can lead to immune dysfunction, autoimmunity, depression, anxiety and
-    so many other diseases.
+  quote: homocysteine if increased, that leads to cardiovascular disease and also apart from cardiovascular disease, homocysteine
+    is linked to many other diseases like it can lead to immune dysfunction, autoimmunity, depression, anxiety and so many
+    other diseases.
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Homocysteine section
-  quote: Raised levels of homocysteine generally indicate a potential risk of getting
-    heart attacks as well as many neurological disorders like stroke and dementia.
+  quote: Raised levels of homocysteine generally indicate a potential risk of getting heart attacks as well as many neurological
+    disorders like stroke and dementia.
 - id: vitaone-cvs-risk-assessment
   location: Functional Medicine Matrix (Slide 5)
   quote: Methylation defect (elevated homocysteine)

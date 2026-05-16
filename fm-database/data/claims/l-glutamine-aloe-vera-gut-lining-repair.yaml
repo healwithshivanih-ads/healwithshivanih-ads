@@ -1,20 +1,18 @@
 slug: l-glutamine-aloe-vera-gut-lining-repair
-statement: L-glutamine and aloe vera juice support gut lining repair as part of a
-  comprehensive leaky gut and constipation protocol.
+statement: L-glutamine and aloe vera juice support gut lining repair as part of a comprehensive leaky gut and constipation
+  protocol.
 evidence_tier: fm_specific_thin
-rationale: L-glutamine is a primary fuel for enterocytes and has some RCT support
-  for improving gut barrier function in specific clinical contexts. Aloe vera has
-  anti-inflammatory and laxative properties supported by small studies. Combined use
-  is common in FM practice but not robustly RCT-validated.
-coaching_translation: Once dietary changes are in place, L-glutamine and aloe vera
-  juice can be added to support healing the gut lining and improving bowel motility.
+rationale: L-glutamine is a primary fuel for enterocytes and has some RCT support for improving gut barrier function in specific
+  clinical contexts. Aloe vera has anti-inflammatory and laxative properties supported by small studies. Combined use is common
+  in FM practice but not robustly RCT-validated.
+coaching_translation: Once dietary changes are in place, L-glutamine and aloe vera juice can be added to support healing the
+  gut lining and improving bowel motility.
 caveats:
 - Source is expert FM lecture — treat as fm_specific_thin.
-- Aloe vera latex (anthraquinone-containing) is different from inner-leaf gel and
-  can be stimulant-laxative; clarify form.
+- Aloe vera latex (anthraquinone-containing) is different from inner-leaf gel and can be stimulant-laxative; clarify form.
 - L-glutamine dosing should be confirmed with clinician.
 linked_to_topics:
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - chronic-pain-and-fatigue
 linked_to_supplements:
 - l-glutamine
@@ -23,8 +21,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Q&A / Constipation Protocol
-  quote: when it comes to the constipation protocol and we normally move to giving
-    L-glutamine, aloe vera and magnesium citrate all generally done in the same sequence
+  quote: when it comes to the constipation protocol and we normally move to giving L-glutamine, aloe vera and magnesium citrate
+    all generally done in the same sequence
 version: 1
 status: active
 updated_at: '2026-05-05'

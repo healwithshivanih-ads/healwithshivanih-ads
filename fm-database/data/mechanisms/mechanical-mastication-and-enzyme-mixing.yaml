@@ -5,11 +5,9 @@ aliases:
 - oral phase of digestion
 - salivary amylase activation
 category: gut
-summary: 'Thorough chewing breaks food into fine particles, increasing surface area
-  for enzymatic action. Two enzymes are released in the mouth: lingual lipase (from
-  sublingual glands, breaks down saturated fats) and salivary amylase/ptyalin (begins
-  starch digestion). Inadequate chewing impairs downstream digestion and places extra
-  load on the pancreas.'
+summary: 'Thorough chewing breaks food into fine particles, increasing surface area for enzymatic action. Two enzymes are
+  released in the mouth: lingual lipase (from sublingual glands, breaks down saturated fats) and salivary amylase/ptyalin
+  (begins starch digestion). Inadequate chewing impairs downstream digestion and places extra load on the pancreas.'
 upstream_drivers:
 - food-particle-size
 - molar-tooth-development
@@ -20,7 +18,7 @@ downstream_effects:
 - starch-digestion-efficiency
 related_mechanisms:
 - hcl-and-pepsin-protein-digestion
-- pancreatic-enzyme-function
+- exocrine-pancreatic-enzyme-deficiency
 linked_to_topics:
 - gastrointestinal-tract-overview
 - meal-timing-and-digestive-rest
@@ -28,8 +26,8 @@ evidence_tier: strong
 sources:
 - id: barbara-oneil-gi-tract
   location: Mouth & Chewing Section
-  quote: The more we chew, we've broken down, and the more it's broken down, the larger
-    surface area is exposed for the digestive enzymes to work on.
+  quote: The more we chew, we've broken down, and the more it's broken down, the larger surface area is exposed for the digestive
+    enzymes to work on.
 version: 1
 status: active
 updated_at: '2026-05-05'

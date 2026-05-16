@@ -8,12 +8,11 @@ aliases:
 - NF-kB downregulation
 - NRF2-NF-kB teeter-totter
 category: immune
-summary: Regular consumption of anti-inflammatory spices (turmeric/curcumin, ginger,
-  garlic, coriander) and polyphenol-rich vegetables modulates inflammatory cytokines
-  (TNF-α, IL-6), reduces oxidative stress markers, and may lower CRP — key pathological
+summary: Regular consumption of anti-inflammatory spices (turmeric/curcumin, ginger, garlic, coriander) and polyphenol-rich
+  vegetables modulates inflammatory cytokines (TNF-α, IL-6), reduces oxidative stress markers, and may lower CRP — key pathological
   drivers of cardiometabolic disease.
 upstream_drivers:
-- chronic-low-grade-inflammation
+- systemic-inflammation
 - visceral-adiposity
 - refined-diet
 downstream_effects:
@@ -31,9 +30,8 @@ sources:
   quote: ½ tsp grated Ginger, 1 tsp chopped Coriander leaves … ½ tsp Turmeric powder
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Nutraceuticals — Turmeric and NAC
-  quote: Turmeric is a beauty. It downregulates NF-kappa B... it upregulates NRF2,
-    which is the anti-inflammatory pathway. I always think of that teeter-totters
-    NRF2 and NF-kappa B.
+  quote: Turmeric is a beauty. It downregulates NF-kappa B... it upregulates NRF2, which is the anti-inflammatory pathway.
+    I always think of that teeter-totters NRF2 and NF-kappa B.
 version: 1
 status: active
 updated_at: '2026-05-04'

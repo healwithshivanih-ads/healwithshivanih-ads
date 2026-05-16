@@ -1,12 +1,10 @@
 slug: fiber-binds-estrogen-prevents-enterohepatic-recirculation
-statement: Dietary fiber (minimum 30–35 g/day) binds excess estrogen in the gut, preventing
-  enterohepatic recirculation.
+statement: Dietary fiber (minimum 30–35 g/day) binds excess estrogen in the gut, preventing enterohepatic recirculation.
 evidence_tier: plausible_emerging
-rationale: Fiber binds bile acids and conjugated steroids in the gut, facilitating
-  fecal excretion. Epidemiological data links high fiber intake to lower circulating
-  estrogen. Mechanistically plausible; direct RCTs on estrogen clearance are limited.
-coaching_translation: Eating 30+ grams of fiber daily from flaxseed, chia, lentils,
-  and vegetables helps escort used estrogen out of the body.
+rationale: Fiber binds bile acids and conjugated steroids in the gut, facilitating fecal excretion. Epidemiological data links
+  high fiber intake to lower circulating estrogen. Mechanistically plausible; direct RCTs on estrogen clearance are limited.
+coaching_translation: Eating 30+ grams of fiber daily from flaxseed, chia, lentils, and vegetables helps escort used estrogen
+  out of the body.
 caveats:
 - Source is expert synthesis
 - Minimum 30–35 g/day recommended for estrogen-dominant cases
@@ -15,7 +13,7 @@ linked_to_topics:
 - estrobolome
 linked_to_supplements:
 - flax-seed
-- chia-seed
+- chia-seeds
 - psyllium-husk
 out_of_scope_notes: ''
 linked_to_mechanisms: []

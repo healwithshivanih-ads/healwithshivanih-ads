@@ -9,12 +9,11 @@ aliases:
 - parasympathetic activation
 - rest-and-digest
 category: neurological
-summary: Sustained diaphragmatic breathing practices improve vagal tone (measurable
-  via heart rate variability), reinforcing parasympathetic regulation of the cardiovascular,
-  immune, and digestive systems. Higher vagal tone is associated with better emotional
-  regulation, lower inflammation, and resilience to stress.
+summary: Sustained diaphragmatic breathing practices improve vagal tone (measurable via heart rate variability), reinforcing
+  parasympathetic regulation of the cardiovascular, immune, and digestive systems. Higher vagal tone is associated with better
+  emotional regulation, lower inflammation, and resilience to stress.
 upstream_drivers:
-- diaphragmatic-breathing
+- parasympathetic-activation
 - slow-exhale-techniques
 downstream_effects:
 - improved-hrv
@@ -31,8 +30,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
-  quote: The abdominal expansion causes negative pressure to pull blood into the chest,
-    improving the venous flow of blood back to the heart.
+  quote: The abdominal expansion causes negative pressure to pull blood into the chest, improving the venous flow of blood
+    back to the heart.
 version: 1
 status: active
 updated_at: '2026-05-04'

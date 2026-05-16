@@ -11,10 +11,10 @@ aliases:
 - heart flashes
 category: hormonal
 severity: common
-description: Sudden sensations of intense heat, often with sweating and flushing,
-  associated with declining estrogen levels in perimenopause and menopause.
-when_to_refer: If severe, disruptive to sleep, or not responding to lifestyle measures
-  — refer to hormone-trained clinician for evaluation.
+description: Sudden sensations of intense heat, often with sweating and flushing, associated with declining estrogen levels
+  in perimenopause and menopause.
+when_to_refer: If severe, disruptive to sleep, or not responding to lifestyle measures — refer to hormone-trained clinician
+  for evaluation.
 linked_to_topics:
 - perimenopause
 - estrogen-dominance
@@ -24,7 +24,6 @@ linked_to_topics:
 linked_to_mechanisms:
 - estrogen-decline
 - progesterone-deficiency
-- estrogen-progesterone-decline
 - fsh-elevation-aging-cascade
 sources:
 - id: vitaone-sex-hormones-cheatsheet
@@ -32,17 +31,15 @@ sources:
   quote: 'Perimenopause / Hot Flashes: Lignans, omega-3, magnesium.'
 - id: coconote-fm-estrogen-dominance
   location: Luteal Phase Defect
-  quote: They will have hot flashes as mood as a complaint. So they will complain
-    again, hey doctor I don't trust this process, this is not working in my condition,
-    it is increasing heat inside my body.
+  quote: They will have hot flashes as mood as a complaint. So they will complain again, hey doctor I don't trust this process,
+    this is not working in my condition, it is increasing heat inside my body.
 - id: coconote-fm-sex-hormones
   location: Symptoms of Menopause Transition
-  quote: Symptoms of menopause transition, hot flashes, night sweats, change in periods,
-    weight gain...
+  quote: Symptoms of menopause transition, hot flashes, night sweats, change in periods, weight gain...
 - id: ask-expert-hormonal-health-bhrt
   location: Old vs. New Understanding of Hormones
-  quote: when you get older, if you don't have enough hormones, suddenly we have all
-    kinds of jokes about women being irritable, hot flashes, et cetera.
+  quote: when you get older, if you don't have enough hormones, suddenly we have all kinds of jokes about women being irritable,
+    hot flashes, et cetera.
 version: 4
 status: active
 updated_at: '2026-05-05'

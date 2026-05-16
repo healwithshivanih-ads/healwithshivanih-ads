@@ -15,7 +15,7 @@ summary: Glutathione is the primary intracellular antioxidant, composed of cyste
   have poor bioavailability; precursors NAC and glycine are more effective at raising cellular glutathione. IV glutathione
   is the most clinically effective route.
 upstream_drivers:
-- impaired-methylation
+- methylation-cycle-dysfunction
 - oxidative-stress
 - toxin-load
 - chronic-toxin-exposure
@@ -26,13 +26,13 @@ downstream_effects:
 - oxidative-stress
 - impaired-phase-ii-detox
 - heavy-metal-accumulation
-- nf-kappa-b-activation
+- nf-kb-activation
 - dna-damage
 related_mechanisms:
-- impaired-methylation
+- methylation-cycle-dysfunction
 - oxidative-stress
 - phase-2-conjugation
-- nf-kappa-b-activation
+- nf-kb-activation
 linked_to_topics:
 - methylation-mthfr
 - liver-detoxification

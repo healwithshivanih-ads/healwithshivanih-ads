@@ -1,14 +1,12 @@
 slug: omega-3-membrane-replacement-takes-3-months
-statement: Anti-inflammatory effects of omega-3 supplementation require 3–6 months
-  to manifest because omega-3 must physically replace omega-6 in cell membrane phospholipids.
+statement: Anti-inflammatory effects of omega-3 supplementation require 3–6 months to manifest because omega-3 must physically
+  replace omega-6 in cell membrane phospholipids.
 evidence_tier: plausible_emerging
-rationale: Cell membrane fatty acid composition changes slowly with dietary intervention.
-  Studies on red blood cell membrane fatty acid incorporation suggest significant
-  changes over 3–6 months of consistent omega-3 intake. This timeframe is clinically
+rationale: Cell membrane fatty acid composition changes slowly with dietary intervention. Studies on red blood cell membrane
+  fatty acid incorporation suggest significant changes over 3–6 months of consistent omega-3 intake. This timeframe is clinically
   supported.
-coaching_translation: 'Set realistic expectations with your clients: omega-3 is a
-  long-term investment. Don''t judge it at 2–4 weeks — the real changes happen at
-  3–6 months as your cell membranes gradually shift.'
+coaching_translation: 'Set realistic expectations with your clients: omega-3 is a long-term investment. Don''t judge it at
+  2–4 weeks — the real changes happen at 3–6 months as your cell membranes gradually shift.'
 caveats:
 - Individual variation exists; some patients show earlier benefits.
 - Source is expert FM lecture.
@@ -16,15 +14,15 @@ linked_to_topics:
 - omega-3-omega-6-balance
 - chronic-inflammation
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 - flaxseed-oil
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-approach-inflammation
   location: Diet – Omega-3 Timeline
-  quote: omega-3 effect will start after three months. It's a long strategy... omega-3
-    when you give to the patient they have to replace their omega 6 in cell membrane.
+  quote: omega-3 effect will start after three months. It's a long strategy... omega-3 when you give to the patient they have
+    to replace their omega 6 in cell membrane.
 version: 1
 status: active
 updated_at: '2026-05-05'

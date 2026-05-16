@@ -28,13 +28,12 @@ related_mechanisms:
 linked_to_topics:
 - endocrine-disruption
 - hypothyroidism
-- autoimmune-thyroid-disease
+- thyroid
 evidence_tier: plausible_emerging
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: BPA and thyroid section
-  quote: the thyroid is the sentinel organ, meaning that it is one of the first-line
-    responders to toxicity
+  quote: the thyroid is the sentinel organ, meaning that it is one of the first-line responders to toxicity
 version: 1
 status: active
 updated_at: '2026-05-16'

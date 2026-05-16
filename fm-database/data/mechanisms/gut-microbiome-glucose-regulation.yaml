@@ -5,11 +5,10 @@ aliases:
 - gut bacteria glucose modulation
 - gut bacteria and blood sugar
 category: gut
-summary: The gut microbiome influences insulin sensitivity and glycemic control. Probiotic
-  supplementation may beneficially modulate blood sugar, insulin, and HbA1c, particularly
-  in type 2 and gestational diabetes.
+summary: The gut microbiome influences insulin sensitivity and glycemic control. Probiotic supplementation may beneficially
+  modulate blood sugar, insulin, and HbA1c, particularly in type 2 and gestational diabetes.
 upstream_drivers:
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - poor-diet
 - low-fiber-diet
 - antibiotic-use
@@ -28,14 +27,12 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: There is also emerging research which shows that probiotics may have beneficial
-    effects on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those
-    who have type 2 or gestational diabetes.
+  quote: There is also emerging research which shows that probiotics may have beneficial effects on reducing blood sugar,
+    insulin, and Hemoglobin A1c, especially for those who have type 2 or gestational diabetes.
 - id: vitaone-health-coaching-toolkit
   location: Micronutrients for Insulin Sensitivity — INSULIN SENSITIZERS (cont.)
-  quote: There is also emerging research which shows that probiotics may have beneficial
-    effects on reducing blood sugar, insulin, and Hemoglobin A1c, especially for those
-    who have type 2 or gestational diabetes.
+  quote: There is also emerging research which shows that probiotics may have beneficial effects on reducing blood sugar,
+    insulin, and Hemoglobin A1c, especially for those who have type 2 or gestational diabetes.
 version: 2
 status: active
 updated_at: '2026-05-04'

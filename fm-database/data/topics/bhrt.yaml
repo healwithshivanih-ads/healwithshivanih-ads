@@ -4,11 +4,9 @@ aliases:
 - bioidentical HRT
 - BHRT
 - natural HRT
-summary: BHRT uses hormones molecularly identical to those the body produces (e.g.,
-  estradiol, progesterone, testosterone, DHEA). Unlike synthetic HRT, doses can be
-  individualized. Available in pills, tablets, creams, and drops. Distinguished from
-  conventional HRT by exact molecular match and potentially fewer side effects. Not
-  OTC; requires clinician prescription.
+summary: BHRT uses hormones molecularly identical to those the body produces (e.g., estradiol, progesterone, testosterone,
+  DHEA). Unlike synthetic HRT, doses can be individualized. Available in pills, tablets, creams, and drops. Distinguished
+  from conventional HRT by exact molecular match and potentially fewer side effects. Not OTC; requires clinician prescription.
 common_symptoms: []
 red_flags:
 - Never OTC — always requires clinician prescription
@@ -19,18 +17,17 @@ related_topics:
 - estrogen-dominance
 - steroidogenesis
 key_mechanisms:
-- estrogen-progesterone-decline
-coaching_scope_notes: Coaches can educate clients on the difference between HRT and
-  BHRT and support adherence to clinician-prescribed plans. Prescribing and dosing
-  are out of coaching scope.
-clinician_scope_notes: BHRT is individualized; dosing varies per patient. Initiate
-  progesterone before estrogen in estrogen-dominant states. Follow-up at 6 weeks.
+- estrogen-decline
+coaching_scope_notes: Coaches can educate clients on the difference between HRT and BHRT and support adherence to clinician-prescribed
+  plans. Prescribing and dosing are out of coaching scope.
+clinician_scope_notes: BHRT is individualized; dosing varies per patient. Initiate progesterone before estrogen in estrogen-dominant
+  states. Follow-up at 6 weeks.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-sex-hormones
   location: BHRT Implications and Management
-  quote: Bioidentical code for replacement therapy, it is never an OCT and always
-    consult a doctor to help you prescribe it then.
+  quote: Bioidentical code for replacement therapy, it is never an OCT and always consult a doctor to help you prescribe it
+    then.
 version: 1
 status: active
 updated_at: '2026-05-05'

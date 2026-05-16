@@ -1,42 +1,34 @@
 slug: cholesterol-not-primary-driver-of-cvd
-statement: Elevated total cholesterol is not the primary driver of heart disease;
-  true causes include high triglycerides, low HDL, excess dietary carbohydrates (especially
-  fructose), oxidative stress, insulin excess, thyroid insufficiency, and trace mineral
-  deficiencies.
+statement: Elevated total cholesterol is not the primary driver of heart disease; true causes include high triglycerides,
+  low HDL, excess dietary carbohydrates (especially fructose), oxidative stress, insulin excess, thyroid insufficiency, and
+  trace mineral deficiencies.
 evidence_tier: plausible_emerging
-rationale: The functional medicine position that LDL particle quality, TG/HDL ratio,
-  insulin resistance, and inflammation are more predictive CVD drivers than total
-  LDL-C alone is supported by a growing body of evidence (e.g., insulin resistance–CVD
-  link, TG/HDL as insulin resistance proxy). However, framing LDL as entirely non-causal
-  is contested in mainstream cardiology.
-coaching_translation: Heart disease isn't simply about 'high cholesterol'. Your triglycerides,
-  HDL level, blood sugar, inflammation, and stress hormones all play a bigger role
-  than your total cholesterol number.
-out_of_scope_notes: The claim about LDL not being causal is contested in mainstream
-  medicine. Coaches should not advise clients to disregard physician lipid-lowering
-  recommendations based on this framing.
+rationale: The functional medicine position that LDL particle quality, TG/HDL ratio, insulin resistance, and inflammation
+  are more predictive CVD drivers than total LDL-C alone is supported by a growing body of evidence (e.g., insulin resistance–CVD
+  link, TG/HDL as insulin resistance proxy). However, framing LDL as entirely non-causal is contested in mainstream cardiology.
+coaching_translation: Heart disease isn't simply about 'high cholesterol'. Your triglycerides, HDL level, blood sugar, inflammation,
+  and stress hormones all play a bigger role than your total cholesterol number.
+out_of_scope_notes: The claim about LDL not being causal is contested in mainstream medicine. Coaches should not advise clients
+  to disregard physician lipid-lowering recommendations based on this framing.
 caveats:
-- This is a functional medicine / integrative perspective. The role of LDL as a causal
-  CVD risk factor is supported by Mendelian randomisation and RCT data in mainstream
-  cardiology.
-- Source is an educational case study presentation (expert consensus, moderate quality),
-  not primary literature.
+- This is a functional medicine / integrative perspective. The role of LDL as a causal CVD risk factor is supported by Mendelian
+  randomisation and RCT data in mainstream cardiology.
+- Source is an educational case study presentation (expert consensus, moderate quality), not primary literature.
 linked_to_topics:
 - cardiovascular-risk-assessment
 - dyslipidemia
 - insulin-resistance
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 - magnesium-ionic-powder
-- niacin-b3
+- niacin
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cvs-risk-assessment
   location: Cholesterol is NOT the villain (Slide 13)
-  quote: Cholesterol is NOT the villain. True causes of Heart diseases are.. High
-    triglycerides, Low HDL cholesterol, Dietary deficiency of saturated fats and cholesterol,
-    Excess dietary polyunsaturated fats from vegetable oils like soybean, corn, sunflower
-    and safflower, Excess Dietary carbohydrates (particularly fructose sugar)…
+  quote: Cholesterol is NOT the villain. True causes of Heart diseases are.. High triglycerides, Low HDL cholesterol, Dietary
+    deficiency of saturated fats and cholesterol, Excess dietary polyunsaturated fats from vegetable oils like soybean, corn,
+    sunflower and safflower, Excess Dietary carbohydrates (particularly fructose sugar)…
 version: 1
 status: active
 updated_at: '2026-05-04'

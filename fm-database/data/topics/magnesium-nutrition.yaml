@@ -9,14 +9,13 @@ aliases:
 - low magnesium
 - magnesium insufficiency
 - magnesium-insufficiency
-summary: Magnesium supports energy production, blood pressure, blood sugar metabolism,
-  bone health, mood, and digestive regularity. Nearly half of US adults consume less
-  than the RDA, making insufficiency very common.
+summary: Magnesium supports energy production, blood pressure, blood sugar metabolism, bone health, mood, and digestive regularity.
+  Nearly half of US adults consume less than the RDA, making insufficiency very common.
 common_symptoms:
-- fatigue
+- lethargy
 - constipation
 - low-mood
-- high-blood-pressure
+- elevated-blood-pressure
 red_flags: []
 related_topics:
 - mitochondrial-health-nutrients
@@ -24,27 +23,23 @@ related_topics:
 key_mechanisms:
 - mitochondrial-energy-production
 - blood-pressure-regulation
-coaching_scope_notes: Coach can educate on magnesium-rich foods (nuts, seeds, legumes,
-  whole grains, leafy greens) and encourage meeting RDA. Refer to FM provider for
-  form selection and dosing.
-clinician_scope_notes: Form selection (glycinate, citrate, oxide, etc.) and therapeutic
-  dosing above RDA are clinician scope.
+coaching_scope_notes: Coach can educate on magnesium-rich foods (nuts, seeds, legumes, whole grains, leafy greens) and encourage
+  meeting RDA. Refer to FM provider for form selection and dosing.
+clinician_scope_notes: Form selection (glycinate, citrate, oxide, etc.) and therapeutic dosing above RDA are clinician scope.
 evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Food Sources: Magnesium'
-  quote: Magnesium is used widely throughout the body. It supports energy production,
-    blood pressure, blood sugar metabolism, bone health, mood, digestive regularity,
-    and much more. Magnesium inadequacy is very common, with almost half of adults
+  quote: Magnesium is used widely throughout the body. It supports energy production, blood pressure, blood sugar metabolism,
+    bone health, mood, digestive regularity, and much more. Magnesium inadequacy is very common, with almost half of adults
     in the US getting less than the RDA.
 - id: coconote-fm-magnesium-deficiency
   location: Introduction
-  quote: Most of us in today's world are deficient in magnesium because of the low
-    availability of magnesium in our food sources, because of the environmental conditions.
+  quote: Most of us in today's world are deficient in magnesium because of the low availability of magnesium in our food sources,
+    because of the environmental conditions.
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Magnesium'
-  quote: Magnesium inadequacy is very common, with almost half of adults in the US
-    getting less than the RDA.
+  quote: Magnesium inadequacy is very common, with almost half of adults in the US getting less than the RDA.
 version: 1
 status: active
 updated_at: '2026-05-04'

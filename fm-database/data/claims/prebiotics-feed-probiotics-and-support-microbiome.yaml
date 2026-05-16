@@ -1,29 +1,26 @@
 slug: prebiotics-feed-probiotics-and-support-microbiome
-statement: Prebiotics (non-digestible dietary fibers) selectively stimulate growth
-  of beneficial colon microorganisms, acting as food for probiotic bacteria and supporting
-  a balanced microbiome.
+statement: Prebiotics (non-digestible dietary fibers) selectively stimulate growth of beneficial colon microorganisms, acting
+  as food for probiotic bacteria and supporting a balanced microbiome.
 evidence_tier: strong
-rationale: The prebiotic concept and its mechanism (selective fermentation in the
-  colon) is well-established in the scientific literature.
-coaching_translation: Prebiotics are the fertilizer for your gut garden — they feed
-  the good bacteria you're trying to grow. Foods like garlic, onions, bananas, oats,
-  and whole grains are excellent prebiotic sources.
+rationale: The prebiotic concept and its mechanism (selective fermentation in the colon) is well-established in the scientific
+  literature.
+coaching_translation: Prebiotics are the fertilizer for your gut garden — they feed the good bacteria you're trying to grow.
+  Foods like garlic, onions, bananas, oats, and whole grains are excellent prebiotic sources.
 linked_to_topics:
 - gut-dysfunction
-- 5r-gut-restoration
+- 5r-gut-protocol
 - gut-brain-axis
 linked_to_supplements:
 - probiotics
-- fos-prebiotic-supplement
+- fructooligosaccharides
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: Prebiotics are food ingredients that selectively stimulate the growth of
-    beneficial microorganisms already in the colon. In other words, prebiotics feed
-    probiotics.
+  quote: Prebiotics are food ingredients that selectively stimulate the growth of beneficial microorganisms already in the
+    colon. In other words, prebiotics feed probiotics.
 version: 1
 status: active
 updated_at: '2026-05-04'

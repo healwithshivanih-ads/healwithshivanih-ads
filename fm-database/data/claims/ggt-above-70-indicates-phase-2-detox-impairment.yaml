@@ -1,33 +1,26 @@
 slug: ggt-above-70-indicates-phase-2-detox-impairment
-statement: A GGT level above 70 U/L (functional medicine optimal threshold) is a primary
-  indicator of toxic load and should prompt clinical focus on optimizing Phase 2 detoxification
-  pathways.
+statement: A GGT level above 70 U/L (functional medicine optimal threshold) is a primary indicator of toxic load and should
+  prompt clinical focus on optimizing Phase 2 detoxification pathways.
 evidence_tier: fm_specific_thin
-rationale: Standard lab reference ranges for GGT extend above 70; the FM-specific
-  threshold of 70 as an 'optimal' ceiling is a functional medicine interpretation
-  not universally supported by mainstream clinical consensus. GGT elevation does correlate
-  with liver stress and alcohol/toxin exposure in peer-reviewed literature, but its
-  use as a Phase 2 surrogate marker is FM-specific.
-coaching_translation: If your client's GGT comes back above 70, this is a signal worth
-  discussing with their doctor — it may mean the liver's detox system needs extra
-  support.
-out_of_scope_notes: Lab threshold interpretation and clinical decision-making around
-  GGT must remain with the treating clinician.
+rationale: Standard lab reference ranges for GGT extend above 70; the FM-specific threshold of 70 as an 'optimal' ceiling
+  is a functional medicine interpretation not universally supported by mainstream clinical consensus. GGT elevation does correlate
+  with liver stress and alcohol/toxin exposure in peer-reviewed literature, but its use as a Phase 2 surrogate marker is FM-specific.
+coaching_translation: If your client's GGT comes back above 70, this is a signal worth discussing with their doctor — it may
+  mean the liver's detox system needs extra support.
+out_of_scope_notes: Lab threshold interpretation and clinical decision-making around GGT must remain with the treating clinician.
 caveats:
-- Functional medicine optimal threshold of 70 differs from standard clinical upper
-  limits; verify with clinician.
+- Functional medicine optimal threshold of 70 differs from standard clinical upper limits; verify with clinician.
 - Source is expert lecture consensus, not primary RCT literature.
 linked_to_topics:
 - chronic-toxicity-assessment
-- liver-detox-phase-1-and-phase-2
+- liver-detoxification
 linked_to_supplements: []
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Lab Interpretation Section
-  quote: The primary enzyme that is elevated in any kind of toxic load is your GTP.
-    When you look at the digital level, it should be less than 70 optimal. If you
-    find out any way that increase from 70 means we have to work in this patient in
+  quote: The primary enzyme that is elevated in any kind of toxic load is your GTP. When you look at the digital level, it
+    should be less than 70 optimal. If you find out any way that increase from 70 means we have to work in this patient in
     a detoxification pathway.
 version: 1
 status: active

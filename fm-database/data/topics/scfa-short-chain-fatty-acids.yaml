@@ -5,38 +5,34 @@ aliases:
 - butyrate
 - propionate
 - acetate
-summary: Metabolites produced by colonic fermentation of dietary fiber that play central
-  roles in gut lining integrity, inflammation control, insulin sensitivity, endogenous
-  GLP-1 stimulation, and — via butyrate — cross the blood-brain barrier to influence
+summary: Metabolites produced by colonic fermentation of dietary fiber that play central roles in gut lining integrity, inflammation
+  control, insulin sensitivity, endogenous GLP-1 stimulation, and — via butyrate — cross the blood-brain barrier to influence
   brain health.
 common_symptoms:
 - increased intestinal permeability
 - reduced insulin sensitivity
-- systemic inflammation
+- inflammation
 - poor satiety signaling
 red_flags: []
 related_topics:
 - fiber-gap
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - gut-hormone-axis
 - estrobolome
 key_mechanisms:
-- colonocyte-fermentation
-- mucin-layer-support
+- butyrate-production
+- leaky-gut
 - endogenous-glp1-stimulation
-- blood-brain-barrier-crossing-butyrate
-coaching_scope_notes: Coaches can educate clients on how increasing dietary fiber
-  drives SCFA production. Avoid clinical claims about treating specific diseases.
-clinician_scope_notes: SCFA testing and targeted butyrate supplementation are clinician-scope
-  decisions.
+coaching_scope_notes: Coaches can educate clients on how increasing dietary fiber drives SCFA production. Avoid clinical claims
+  about treating specific diseases.
+clinician_scope_notes: SCFA testing and targeted butyrate supplementation are clinician-scope decisions.
 evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-7
   location: SCFA section [00:09:04]
-  quote: when you consume fiber it goes throughout your digestive system, gets to
-    your colon where it's fermented and from that fermentation process with the colonocytes
-    which are the cells in the colon you produce short chain fatty acids.
+  quote: when you consume fiber it goes throughout your digestive system, gets to your colon where it's fermented and from
+    that fermentation process with the colonocytes which are the cells in the colon you produce short chain fatty acids.
 version: 1
 status: active
 updated_at: '2026-04-29'

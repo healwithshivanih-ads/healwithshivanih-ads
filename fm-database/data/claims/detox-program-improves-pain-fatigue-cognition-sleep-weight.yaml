@@ -1,29 +1,25 @@
 slug: detox-program-improves-pain-fatigue-cognition-sleep-weight
-statement: Participation in a personalized metabolic detoxification program is associated
-  with improvements in pain, fatigue, cognitive function, mood, sleep quality, and
-  weight loss.
+statement: Participation in a personalized metabolic detoxification program is associated with improvements in pain, fatigue,
+  cognitive function, mood, sleep quality, and weight loss.
 evidence_tier: plausible_emerging
-rationale: The document describes clinical observations from FM detox protocols. Small
-  trials on structured detox programs show symptomatic benefit, but large RCTs are
-  lacking. FM-specific clinical consensus.
-coaching_translation: Many clients who go through a structured detox program report
-  feeling better across the board — more energy, clearer thinking, better sleep, and
-  easier weight management.
+rationale: The document describes clinical observations from FM detox protocols. Small trials on structured detox programs
+  show symptomatic benefit, but large RCTs are lacking. FM-specific clinical consensus.
+coaching_translation: Many clients who go through a structured detox program report feeling better across the board — more
+  energy, clearer thinking, better sleep, and easier weight management.
 caveats:
 - Based on clinical observation and FM practitioner consensus, not large RCTs.
 - Results are individualized and influenced by baseline health and adherence.
 linked_to_topics:
 - metabolic-detoxification
-- liver-detox-food-plan
+- liver-detoxification
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — page 05
-  quote: Specifically, many who participate in a personalized detoxification program
-    describe improvement in pain and fatigue levels, enhanced cognitive function and
-    moods, more effective & satisfying sleep cycles, and weight loss.
+  quote: Specifically, many who participate in a personalized detoxification program describe improvement in pain and fatigue
+    levels, enhanced cognitive function and moods, more effective & satisfying sleep cycles, and weight loss.
 version: 1
 status: active
 updated_at: '2026-05-04'

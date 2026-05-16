@@ -30,7 +30,7 @@ related_topics:
 - bone-health
 - cardiovascular-health
 - vitamin-b-complex-deficiency
-- magnesium-deficiency
+- magnesium-nutrition
 key_mechanisms:
 - medication-related-nutrient-depletion
 - nutrient-depletion-by-drugs
@@ -41,12 +41,12 @@ clinician_scope_notes: Metformin depletes B12 and folate; PPIs deplete magnesium
   CoQ10; warfarin interactions with vitamin K and fish oil require INR monitoring.
 evidence_tier: confirm_with_clinician
 common_symptoms:
-- fatigue
+- lethargy
 - muscle-pain
 - mood-changes-and-anxiety
 - bone-density-concerns
 - anemia
-- neuropathy
+- numbness-tingling
 - brain-fog
 - mood-disturbances
 sources:

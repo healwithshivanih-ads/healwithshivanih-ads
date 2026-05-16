@@ -1,30 +1,27 @@
 slug: ppi-tapering-supplement-support-repair-protect-antioxidant
-statement: 'During PPI tapering, functional medicine recommends a categorized supplement
-  protocol: Repair (zinc l-carnosine, aloe vera), Protect (alginate, pectin, DGL,
-  slippery elm), Antioxidants (artemisia asiatica, curcumin, quercetin, vitamin E),
-  Anxiety (lemon balm), Acid suppressing (melatonin), and Transit time modulators
-  (Iberogast, D-limonene, ginger, probiotics, triphala).'
+statement: 'During PPI tapering, functional medicine recommends a categorized supplement protocol: Repair (zinc l-carnosine,
+  aloe vera), Protect (alginate, pectin, DGL, slippery elm), Antioxidants (artemisia asiatica, curcumin, quercetin, vitamin
+  E), Anxiety (lemon balm), Acid suppressing (melatonin), and Transit time modulators (Iberogast, D-limonene, ginger, probiotics,
+  triphala).'
 evidence_tier: fm_specific_thin
-rationale: Individual agents in this list have varying evidence (e.g., DGL and slippery
-  elm are well-known FM botanicals; zinc l-carnosine has some RCT data for gastric
-  mucosal protection; melatonin for acid suppression has emerging evidence). The full
-  protocol as a unit lacks strong RCT support.
-coaching_translation: While tapering PPIs, several natural agents can help soothe,
-  protect, and repair the gut lining and manage symptoms. Your practitioner will select
-  which are right for you.
-out_of_scope_notes: Specific supplement selection, dosing, and the tapering schedule
-  must be prescribed and monitored by a qualified clinician.
+rationale: Individual agents in this list have varying evidence (e.g., DGL and slippery elm are well-known FM botanicals;
+  zinc l-carnosine has some RCT data for gastric mucosal protection; melatonin for acid suppression has emerging evidence).
+  The full protocol as a unit lacks strong RCT support.
+coaching_translation: While tapering PPIs, several natural agents can help soothe, protect, and repair the gut lining and
+  manage symptoms. Your practitioner will select which are right for you.
+out_of_scope_notes: Specific supplement selection, dosing, and the tapering schedule must be prescribed and monitored by a
+  qualified clinician.
 caveats:
 - Source is a coaching toolkit; doses are not specified and must be clinician-determined.
 - Not all agents listed have strong RCT evidence for GERD management.
 linked_to_topics:
 - gerd-ppi-tapering
 linked_to_supplements:
-- zinc-l-carnosine
+- zinc-carnosine
 - aloe-vera
 - alginate
 - pectin
-- dgl
+- dgl-licorice
 - slippery-elm
 - curcumin
 - quercetin
@@ -39,10 +36,9 @@ linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
-  quote: 'Repair: Zinc l-carnosine, aloe vera. Protect: Alginate, pectin, DGL, slippery
-    elm. Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E. Anxiety:
-    Lemon balm. Acid suppressing: Melatonin. Transit time modulators: Iberogast, D-limonene,
-    ginger, probiotics, triphala.'
+  quote: 'Repair: Zinc l-carnosine, aloe vera. Protect: Alginate, pectin, DGL, slippery elm. Antioxidants: Artemisia asiatica,
+    curcumin, quercetin, vitamin E. Anxiety: Lemon balm. Acid suppressing: Melatonin. Transit time modulators: Iberogast,
+    D-limonene, ginger, probiotics, triphala.'
 version: 1
 status: active
 updated_at: '2026-05-04'

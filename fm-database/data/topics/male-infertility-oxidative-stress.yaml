@@ -3,37 +3,34 @@ display_name: Male Infertility & Oxidative Stress
 aliases:
 - sperm DNA fragmentation
 - male factor infertility
-summary: Male infertility involves oxidative stress, sperm DNA fragmentation, endocrine
-  disruptors, insulin resistance, and mitochondrial dysfunction — not just sperm count.
-  Antioxidant protocols (CoQ10, lycopene, NAC, astaxanthin, zinc, vitamin C) should
-  be rotated and combined with dietary, sleep, and stress correction.
+summary: Male infertility involves oxidative stress, sperm DNA fragmentation, endocrine disruptors, insulin resistance, and
+  mitochondrial dysfunction — not just sperm count. Antioxidant protocols (CoQ10, lycopene, NAC, astaxanthin, zinc, vitamin
+  C) should be rotated and combined with dietary, sleep, and stress correction.
 common_symptoms:
-- low-sperm-count
+- infertility-male
 - poor-sperm-motility
 - sperm-dna-fragmentation
 red_flags:
 - varicocele requiring surgical referral
-- azoospermia
+- infertility-male
 related_topics:
 - pcos-fertility
-- adrenal-cortisol-resilience
+- adrenal-fatigue
 - insulin-resistance-metabolic-syndrome
 key_mechanisms:
 - oxidative-stress-sperm-damage
 - mitochondrial-dysfunction
 - insulin-resistance
-coaching_scope_notes: Coaches can support dietary antioxidant intake, protein targets,
-  sleep, and stress reduction. Semen analysis, DNA fragmentation testing, and prescribing
-  antioxidant supplements at therapeutic doses are clinician territory.
-clinician_scope_notes: Evaluate oxidative stress markers, DNA fragmentation, and endocrine
-  disruptors. Rotate antioxidant protocols. Allow 3–12 months depending on severity.
+coaching_scope_notes: Coaches can support dietary antioxidant intake, protein targets, sleep, and stress reduction. Semen
+  analysis, DNA fragmentation testing, and prescribing antioxidant supplements at therapeutic doses are clinician territory.
+clinician_scope_notes: Evaluate oxidative stress markers, DNA fragmentation, and endocrine disruptors. Rotate antioxidant
+  protocols. Allow 3–12 months depending on severity.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXoqNqijE3d/
-  quote: Ordering a semen analysis alone is not enough. Without evaluating oxidative
-    stress, DNA fragmentation, and endocrine disruptors, you'll miss the real drivers
-    of dysfunction.
+  quote: Ordering a semen analysis alone is not enough. Without evaluating oxidative stress, DNA fragmentation, and endocrine
+    disruptors, you'll miss the real drivers of dysfunction.
 version: 1
 status: active
 updated_at: '2026-05-05'

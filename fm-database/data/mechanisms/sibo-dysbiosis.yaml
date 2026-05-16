@@ -11,23 +11,22 @@ aliases:
 - bacterial overgrowth from low stomach acid
 - gastric acid antimicrobial failure
 category: gut
-summary: Overgrowth of pathogenic or imbalanced gut bacteria produces excess beta-glucuronidase,
-  which reabsorbs excreted estrogen. Gut dysbiosis also impairs absorption of key
-  nutrients (vitamins, minerals) needed for hormone synthesis and metabolism, and
-  contributes to systemic inflammation driving cortisol steal.
+summary: Overgrowth of pathogenic or imbalanced gut bacteria produces excess beta-glucuronidase, which reabsorbs excreted
+  estrogen. Gut dysbiosis also impairs absorption of key nutrients (vitamins, minerals) needed for hormone synthesis and metabolism,
+  and contributes to systemic inflammation driving cortisol steal.
 upstream_drivers:
 - poor-diet
 - antibiotic-use
 - chronic-stress
 - infections
 downstream_effects:
-- beta-glucuronidase-reabsorption
+- estrogen-enterohepatic-recirculation
 - estrogen-dominance
 - nutrient-malabsorption
-- inflammation
+- chronic-inflammation
 related_mechanisms:
-- beta-glucuronidase-reabsorption
-- cortisol-steal
+- estrogen-enterohepatic-recirculation
+- hpa-axis-dysregulation
 linked_to_topics:
 - gut-estrogen-axis
 - estrogen-dominance
@@ -35,18 +34,15 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-sex-hormones
   location: Hormone Metabolism and Detoxification
-  quote: a classical case of small intestinal bacterial overgrowth, dysbiosis. will
-    have constant reabsorption of estrogen in their body causing an estrogen dominance
-    because the detoxification is poor.
+  quote: a classical case of small intestinal bacterial overgrowth, dysbiosis. will have constant reabsorption of estrogen
+    in their body causing an estrogen dominance because the detoxification is poor.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXbyLyYjP__/
-  quote: Onion & garlic sensitivity usually indicates fructan intolerance + SIBO,
-    not an allergy
+  quote: Onion & garlic sensitivity usually indicates fructan intolerance + SIBO, not an allergy
 - id: coconote-fm-hypochlorhydria
   location: Consequences of Chronic Low Stomach Acid
-  quote: Whenever there is low stomach acid, it could use in urban growth. There could
-    be a small intestinal bacterial overgrowth which would be covered in the further
-    modules.
+  quote: Whenever there is low stomach acid, it could use in urban growth. There could be a small intestinal bacterial overgrowth
+    which would be covered in the further modules.
 version: 1
 status: active
 updated_at: '2026-05-05'

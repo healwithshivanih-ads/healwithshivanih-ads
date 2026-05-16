@@ -25,11 +25,11 @@ summary: 'Beta-glucuronidase is an enzyme produced by certain gut bacteria that
 
   '
 upstream_drivers:
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - low-fiber-diet
 - constipation
 downstream_effects:
-- estrogen-recirculation
+- estrogen-enterohepatic-recirculation
 - reduced-toxicant-clearance
 related_mechanisms:
 - phase-2-conjugation
@@ -42,8 +42,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Phase 2 conjugation and gut microbiome section
-  quote: depending on your gut microbiome, you can have increased levels of beta-glucuronidase
-    that cleave off that glucuronide group
+  quote: depending on your gut microbiome, you can have increased levels of beta-glucuronidase that cleave off that glucuronide
+    group
 version: 1
 status: active
 updated_at: '2026-05-16'

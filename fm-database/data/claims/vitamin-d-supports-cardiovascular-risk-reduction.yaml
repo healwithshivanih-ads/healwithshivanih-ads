@@ -1,23 +1,20 @@
 slug: vitamin-d-supports-cardiovascular-risk-reduction
-statement: Vitamin D supplementation is mentioned as a nutritional adjunct to support
-  cardiovascular health alongside magnesium as an alternative approach to statin therapy.
+statement: Vitamin D supplementation is mentioned as a nutritional adjunct to support cardiovascular health alongside magnesium
+  as an alternative approach to statin therapy.
 evidence_tier: fm_specific_thin
-rationale: The document briefly mentions vitamin D alongside magnesium as nutritional
-  tools in lieu of or adjunct to statins. The mention is brief and without mechanistic
-  elaboration or cited evidence. Vitamin D's cardiovascular role is an active research
-  area with mixed RCT results.
-coaching_translation: Vitamin D is another nutrient that supports heart health. Many
-  people are deficient, and optimizing your levels is a reasonable part of a heart-healthy
-  protocol.
+rationale: The document briefly mentions vitamin D alongside magnesium as nutritional tools in lieu of or adjunct to statins.
+  The mention is brief and without mechanistic elaboration or cited evidence. Vitamin D's cardiovascular role is an active
+  research area with mixed RCT results.
+coaching_translation: Vitamin D is another nutrient that supports heart health. Many people are deficient, and optimizing
+  your levels is a reasonable part of a heart-healthy protocol.
 caveats:
-- Source is expert consensus lecture. Vitamin D's cardiovascular benefit is an active
-  but unsettled research area. This should not be presented as equivalent to statin
-  therapy. Verify levels and dosing with a clinician.
+- Source is expert consensus lecture. Vitamin D's cardiovascular benefit is an active but unsettled research area. This should
+  not be presented as equivalent to statin therapy. Verify levels and dosing with a clinician.
 linked_to_topics:
 - statin-therapy-risks-and-benefits
-- dyslipidemia-management
+- dyslipidemia
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

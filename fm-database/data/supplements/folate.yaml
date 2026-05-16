@@ -5,12 +5,10 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: Methylfolate is the active form; preferred over folic acid especially
-  in MTHFR polymorphism. Critical for methylation, neurotransmitter synthesis, and
-  myelin integrity. Clinician should assess MTHFR status and B12 levels.
-notes_for_client: Folate (especially as methylfolate) helps your brain produce mood-regulating
-  chemicals and supports nervous system health. Most people do well with the active
-  methylfolate form.
+notes_for_coach: Methylfolate is the active form; preferred over folic acid especially in MTHFR polymorphism. Critical for
+  methylation, neurotransmitter synthesis, and myelin integrity. Clinician should assess MTHFR status and B12 levels.
+notes_for_client: Folate (especially as methylfolate) helps your brain produce mood-regulating chemicals and supports nervous
+  system health. Most people do well with the active methylfolate form.
 timing_options:
 - with_breakfast
 - morning
@@ -18,7 +16,7 @@ take_with_food: optional
 linked_to_topics:
 - drug-induced-nutrient-depletion
 - cardiovascular-dysfunction
-- folate-deficiency
+- vitamin-b-complex-deficiency
 - mitochondrial-health-nutrition
 - emotional-healing-in-chronic-disease
 - nervous-system-regulation
@@ -46,13 +44,11 @@ sources:
   quote: Homocysteine levels is a measure of folic acid deficiency.
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Folate'
-  quote: Folate helps the body produce and maintain new cells. This is especially
-    important during periods of rapid growth and cell division, such as infancy and
-    pregnancy.
+  quote: Folate helps the body produce and maintain new cells. This is especially important during periods of rapid growth
+    and cell division, such as infancy and pregnancy.
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS,
-    mood swings, chronic anxiety.'
+  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS, mood swings, chronic anxiety.'
 version: 3
 status: active
 updated_at: '2026-05-04'

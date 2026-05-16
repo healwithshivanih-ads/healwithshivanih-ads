@@ -4,11 +4,9 @@ aliases:
 - menaquinone
 - MK-7
 - coagulation vitamin
-summary: Vitamin K2 (menaquinone) is a fat-soluble vitamin produced by commensal gut
-  bacteria and found in animal-source foods. Its primary functions include activating
-  clotting factors, directing calcium into bones and teeth via osteocalcin activation,
-  and preventing vascular calcification via Matrix GLA Protein (MGP). It is closely
-  synergistic with vitamin D3.
+summary: Vitamin K2 (menaquinone) is a fat-soluble vitamin produced by commensal gut bacteria and found in animal-source foods.
+  Its primary functions include activating clotting factors, directing calcium into bones and teeth via osteocalcin activation,
+  and preventing vascular calcification via Matrix GLA Protein (MGP). It is closely synergistic with vitamin D3.
 common_symptoms:
 - easy-bruising
 - prolonged-bleeding
@@ -25,21 +23,19 @@ related_topics:
 - cardiovascular-health
 key_mechanisms:
 - osteocalcin-activation
-- matrix-gla-protein-activation
-- coagulation-factor-activation
-coaching_scope_notes: Coaches can discuss food sources (fermented dairy, liver, leafy
-  greens for K1), gut microbiome factors affecting K2 production, and synergy with
-  vitamin D3. Deficiency symptoms such as easy bruising should be referred to a clinician.
-clinician_scope_notes: Vitamin K2 deficiency can present as coagulopathy, osteoporosis,
-  and vascular calcification. Antibiotic use, malabsorptive GI conditions, and newborns
-  are at-risk populations. RDA is 100 mcg/day but functional requirements may differ.
+- vitamin-k2-calcium-trafficking
+coaching_scope_notes: Coaches can discuss food sources (fermented dairy, liver, leafy greens for K1), gut microbiome factors
+  affecting K2 production, and synergy with vitamin D3. Deficiency symptoms such as easy bruising should be referred to a
+  clinician.
+clinician_scope_notes: Vitamin K2 deficiency can present as coagulopathy, osteoporosis, and vascular calcification. Antibiotic
+  use, malabsorptive GI conditions, and newborns are at-risk populations. RDA is 100 mcg/day but functional requirements may
+  differ.
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin K2 Functions
-  quote: Vitamin K2 is responsible for activating osteocalcin. What does osteocalcin
-    do is it accumulates the calcium inside the bones and the teeth thus play an important
-    role in the mineralization of the bones and teeth.
+  quote: Vitamin K2 is responsible for activating osteocalcin. What does osteocalcin do is it accumulates the calcium inside
+    the bones and the teeth thus play an important role in the mineralization of the bones and teeth.
 version: 1
 status: active
 updated_at: '2026-05-05'

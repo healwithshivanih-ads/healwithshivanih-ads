@@ -5,9 +5,8 @@ aliases:
 - adrenaline-dysregulation
 - noradrenaline-excess
 category: endocrine
-summary: Chronic magnesium deficiency contributes to adrenal fatigue, impairing the
-  controlled release of adrenaline and noradrenaline. Uncontrolled catecholamine release
-  produces palpitations, anxiety, and panic attacks.
+summary: Chronic magnesium deficiency contributes to adrenal fatigue, impairing the controlled release of adrenaline and noradrenaline.
+  Uncontrolled catecholamine release produces palpitations, anxiety, and panic attacks.
 upstream_drivers:
 - magnesium-deficiency
 - chronic-stress
@@ -20,15 +19,14 @@ related_mechanisms:
 - gaba-receptor-modulation
 - stress-diuresis
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-neurological-mental-health
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Anxiety and panic attacks section
-  quote: Whenever there is adrenaline fatigue, there is not a very controlled release
-    of adrenaline or non-adrenaline. So the adrenaline or non-adrenaline gets released
-    excessively, which eventually gives rise to palpitations and anxiety.
+  quote: Whenever there is adrenaline fatigue, there is not a very controlled release of adrenaline or non-adrenaline. So
+    the adrenaline or non-adrenaline gets released excessively, which eventually gives rise to palpitations and anxiety.
 version: 1
 status: active
 updated_at: '2026-05-05'

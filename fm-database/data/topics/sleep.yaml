@@ -8,13 +8,11 @@ aliases:
 - sleep and mental health
 - glymphatic system
 - sleep and depression
-summary: Low melatonin, digital overstimulation, blue light exposure, cortisol dysregulation,
-  GABA-glutamate imbalance, and poor circadian recovery are linked to sleep issues.
+summary: Low melatonin, digital overstimulation, blue light exposure, cortisol dysregulation, GABA-glutamate imbalance, and
+  poor circadian recovery are linked to sleep issues.
 common_symptoms:
 - insomnia
 - poor-rem-sleep
-- delayed-sleep-onset
-- jet-lag
 - early-waking
 - daytime-fatigue
 red_flags:
@@ -27,21 +25,19 @@ related_topics:
 key_mechanisms:
 - digital-overstimulation
 - anti-stress-hormone-restoration
-coaching_scope_notes: Morning sunlight, no blue light after sunset, no-screen routine,
-  glycine-rich foods, magnesium, and circadian-aligned eating are coaching-appropriate.
-clinician_scope_notes: Melatonin dosing, sleep medication decisions, and sleep study
-  referral are clinician-scope.
+coaching_scope_notes: Morning sunlight, no blue light after sunset, no-screen routine, glycine-rich foods, magnesium, and
+  circadian-aligned eating are coaching-appropriate.
+clinician_scope_notes: Melatonin dosing, sleep medication decisions, and sleep study referral are clinician-scope.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin,
-    digital overstimulation, blue light exposure, cortisol dysregulation, GABA-glutamate
-    imbalance, and poor circadian recovery.
+  quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin, digital overstimulation, blue light
+    exposure, cortisol dysregulation, GABA-glutamate imbalance, and poor circadian recovery.
 - id: barbara-oneil-healing-mind
   location: Sleep Section
-  quote: Dr. Matthew Walker, in his book, Why We Sleep, he shows that 10 nights of
-    six-hour sleep a night, 50% greater risk of developing depression.
+  quote: Dr. Matthew Walker, in his book, Why We Sleep, he shows that 10 nights of six-hour sleep a night, 50% greater risk
+    of developing depression.
 version: 1
 status: active
 updated_at: '2026-05-06'

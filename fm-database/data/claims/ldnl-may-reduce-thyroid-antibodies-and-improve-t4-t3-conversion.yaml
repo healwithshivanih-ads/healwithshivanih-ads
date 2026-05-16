@@ -1,31 +1,26 @@
 slug: ldnl-may-reduce-thyroid-antibodies-and-improve-t4-t3-conversion
-statement: LDN may reduce anti-thyroid antibody levels, improve thyroid hormone transport
-  into cells, increase T4-to-T3 conversion, and reduce T4-to-reverse-T3 conversion
-  in autoimmune thyroiditis — though no published RCTs in AIT exist.
+statement: LDN may reduce anti-thyroid antibody levels, improve thyroid hormone transport into cells, increase T4-to-T3 conversion,
+  and reduce T4-to-reverse-T3 conversion in autoimmune thyroiditis — though no published RCTs in AIT exist.
 evidence_tier: fm_specific_thin
-rationale: The proposed mechanism is biologically plausible given LDN's established
-  immune modulatory effects and its studied effects in other autoimmune conditions.
-  However, the document explicitly states 'there are no published studies about the
+rationale: The proposed mechanism is biologically plausible given LDN's established immune modulatory effects and its studied
+  effects in other autoimmune conditions. However, the document explicitly states 'there are no published studies about the
   impact of LDN on AIT.'
-coaching_translation: LDN is a medication some functional medicine doctors use for
-  Hashimoto's based on its effects in other autoimmune conditions. This is an area
-  to discuss with your prescribing clinician.
-out_of_scope_notes: LDN is a prescription medication. All discussion of dosing, prescribing,
-  and monitoring is out of coaching scope. Refer to clinician.
+coaching_translation: LDN is a medication some functional medicine doctors use for Hashimoto's based on its effects in other
+  autoimmune conditions. This is an area to discuss with your prescribing clinician.
+out_of_scope_notes: LDN is a prescription medication. All discussion of dosing, prescribing, and monitoring is out of coaching
+  scope. Refer to clinician.
 caveats:
 - No published RCTs in autoimmune thyroiditis as of this document's date.
-- Thyroid hormone levels may change with LDN initiation, requiring medication dose
-  adjustment.
+- Thyroid hormone levels may change with LDN initiation, requiring medication dose adjustment.
 - Requires prescription and clinician monitoring.
 linked_to_topics:
 - low-dose-naltrexone-autoimmune
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
-  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — LDN and Autoimmune
-    Thyroiditis (AIT)
+  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — LDN and Autoimmune Thyroiditis (AIT)
   quote: However, there are no published studies about the impact of LDN on AIT
 version: 1
 status: active

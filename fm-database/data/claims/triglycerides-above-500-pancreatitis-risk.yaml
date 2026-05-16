@@ -1,26 +1,25 @@
 slug: triglycerides-above-500-pancreatitis-risk
-statement: Triglycerides above 500 mg/dL significantly increase risk of pancreatitis
-  and should be the primary treatment target before addressing LDL.
+statement: Triglycerides above 500 mg/dL significantly increase risk of pancreatitis and should be the primary treatment target
+  before addressing LDL.
 evidence_tier: strong
-rationale: Hypertriglyceridemia-induced pancreatitis at levels >500 mg/dL is well-established
-  in internal medicine. Endorsed by multiple clinical guidelines.
-coaching_translation: Very high triglycerides (above 500) are a medical emergency
-  risk for pancreatitis and require urgent clinician management.
-out_of_scope_notes: Triglycerides >500 require clinician management — this is a refer-out
-  situation for coaches.
+rationale: Hypertriglyceridemia-induced pancreatitis at levels >500 mg/dL is well-established in internal medicine. Endorsed
+  by multiple clinical guidelines.
+coaching_translation: Very high triglycerides (above 500) are a medical emergency risk for pancreatitis and require urgent
+  clinician management.
+out_of_scope_notes: Triglycerides >500 require clinician management — this is a refer-out situation for coaches.
 caveats:
 - This is a medical/clinical decision point — not coaching scope.
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-disease-prevention
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Triglyceride Management
-  quote: If the triglycerides above 500, patients are at increased risk for pancreatitis.
-    And so above 500, you really need to be thinking about treating those first.
+  quote: If the triglycerides above 500, patients are at increased risk for pancreatitis. And so above 500, you really need
+    to be thinking about treating those first.
 version: 1
 status: active
 updated_at: '2026-05-05'

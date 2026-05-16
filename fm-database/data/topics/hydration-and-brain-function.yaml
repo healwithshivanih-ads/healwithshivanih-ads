@@ -4,34 +4,30 @@ aliases:
 - dehydration and mood
 - water and mental health
 - brain hydration
-summary: The brain is 85% water and functions as a hydroelectric system. Dehydration
-  impairs neurotransmitter speed, prefrontal cortex function, and can trigger negative
-  thought patterns, headaches, and emotional dysregulation. Optimal hydration—ideally
+summary: The brain is 85% water and functions as a hydroelectric system. Dehydration impairs neurotransmitter speed, prefrontal
+  cortex function, and can trigger negative thought patterns, headaches, and emotional dysregulation. Optimal hydration—ideally
   with mineral-rich salt—supports cellular water delivery and brain performance.
 evidence_tier: plausible_emerging
 common_symptoms:
 - headache
 - negative-thought-patterns
 - brain-fog
-- fatigue
+- lethargy
 - poor-emotional-regulation
 red_flags: []
 related_topics:
 - depression-lifestyle
-- sleep-hygiene
+- sleep
 key_mechanisms:
 - cellular-hydration
 - neurotransmitter-conduction
-coaching_scope_notes: Encourage sipping water steadily throughout the day rather than
-  large boluses. Adding mineral-rich (Celtic/Baja) salt is a lifestyle suggestion,
-  not a clinical prescription.
-clinician_scope_notes: Electrolyte balance including sodium should be monitored in
-  clients with cardiovascular or kidney conditions.
+coaching_scope_notes: Encourage sipping water steadily throughout the day rather than large boluses. Adding mineral-rich (Celtic/Baja)
+  salt is a lifestyle suggestion, not a clinical prescription.
+clinician_scope_notes: Electrolyte balance including sodium should be monitored in clients with cardiovascular or kidney conditions.
 sources:
 - id: barbara-oneil-healing-mind
   location: Hydration Section
-  quote: Did you know that your brain can develop negative thought patterns when it
-    is dehydrated?
+  quote: Did you know that your brain can develop negative thought patterns when it is dehydrated?
 version: 1
 status: active
 updated_at: '2026-05-05'

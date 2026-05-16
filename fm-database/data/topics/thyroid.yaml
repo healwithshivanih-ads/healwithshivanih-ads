@@ -14,25 +14,20 @@ aliases:
 summary: T4, T3, TSH, thyroid-binding globulin, autoimmune thyroiditis, stress-related thyroid dysfunction, iodine, selenium,
   zinc, and thyroid medication cautions are discussed.
 common_symptoms:
-- fatigue
-- hair loss
+- lethargy
+- dry-skin
 - constipation
-- weight gain
-- brain fog
+- unexplained-weight-gain
+- poor-concentration
 - anxiety
-- cold intolerance
-- slow gut motility
-- weight-gain
-- hair-thinning
-- brain-fog
 - cold-intolerance
-- mood-changes
-- menstrual-irregularities
+- hair-loss
+- brain-fog
+- mood-swings
+- irregular-periods
 - palpitations
 - poor-cognition
-- hair-loss
 - goiter
-- dry-skin
 red_flags:
 - goiter or thyroid nodules
 - rapid unexplained weight change
@@ -56,27 +51,26 @@ related_topics:
 - perimenopause
 - autoimmune
 - inflammation
-- leaky-gut
-- dysbiosis
+- autoimmunity-leaky-gut-triad
+- gut-dysbiosis
 - gut-hormone-axis
 - food-sensitivities
 - nutrition-deficiency
 - hair-loss
 - chronic-inflammation
-- autoimmunity
+- autoimmune-disease
 - methylation
 - adrenal-fatigue
 - chronic-stress
 - insulin-resistance
 key_mechanisms:
-- t4-to-t3-conversion-impairment
+- impaired-t4-to-t3-conversion
 - hpa-axis-dysregulation
 - autoimmune-molecular-mimicry
-- t4-to-t3-conversion-block
 - leaky-gut
 - thyroid-nutrient-synergy
-- oxidative-stress-and-inflammation
-- hpa-axis-overactivation
+- oxidative-stress
+- cortisol-elevation
 - anti-stress-hormone-restoration
 coaching_scope_notes: Selenium-rich foods, stress reduction, iodine-adequate diet, and sleep support are coaching-appropriate.
   Avoid advising on thyroid medication.

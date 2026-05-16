@@ -51,13 +51,12 @@ linked_to_topics:
 - estrobolome
 - thyroid
 - microbiome
-- constipation
 - gut-dysbiosis
 - sibo
 - hypochlorhydria
 - sluggish-bile-flow
 - hypothyroidism
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - gut-dysfunction
 - beta-blocker-deprescribing
 - liver-detoxification
@@ -66,48 +65,38 @@ linked_to_topics:
 - elimination-diet
 - ibs
 - thyroid-dysfunction
-- 5r-gut-restoration
+- 5r-gut-protocol
 - chronic-pain-and-fatigue
 - low-stomach-acid
-- dysbiosis
 - gut-skin-hormone-axis
 - ibs-ibd-differentiation
-- 5r-gut-healing-protocol
-- magnesium-deficiency
+- magnesium-nutrition
 - gastrointestinal-tract-overview
 - inflammatory-bowel-conditions
 - estrogen-and-fiber-transit-time
 - hormonal-nutrition-foundations
-- gut-health-fodmap-sibo
 - modern-diet-systemic-dysfunction
 - detoxification
 - toxin-load
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - microbial-diversity-decline
-- t4-to-t3-conversion-block
-- impaired-gut-motility
 - impaired-t4-to-t3-conversion
-- thyroid-hormone-conversion
-- gut-dysbiosis
-- hypochlorhydria-mechanism
+- altered-gi-motility
+- dysbiosis-gut-microbiome-imbalance
+- low-stomach-acid
 - gut-liver-axis
-- gut-motility-dysregulation
 - colonic-fermentation
-- t4-to-t3-conversion-impairment
 - soluble-fiber-gel-formation
-- gut-butyrate-production
+- butyrate-production
 - migrating-motor-complex
-- dysbiosis
 - nutrient-malabsorption
 - systemic-inflammation
-- gut-immune-axis-dysregulation
-- gut-barrier-dysfunction
-- gut-microbiome-dysbiosis
+- gut-immune-dysregulation
+- leaky-gut
 - calcium-magnesium-imbalance
-- altered-gi-motility
-- colonic-peristalsis-and-fibre-motility
-- sibo-fermentation
+- dietary-fiber-modulation
+- sibo-dysbiosis
 - phase-3-elimination
 - beta-glucuronidase-deconjugation
 sources:
@@ -120,8 +109,8 @@ sources:
   quote: Constipation or diarrhea
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet — Constipation
-  quote: Hypothyroid, low fiber, dehydration, dysbiosis, magnesium deficiency — Rule
-    out thyroid & motility issues. Hydration + lifestyle are non-negotiable
+  quote: Hypothyroid, low fiber, dehydration, dysbiosis, magnesium deficiency — Rule out thyroid & motility issues. Hydration
+    + lifestyle are non-negotiable
 - id: vitaone-thyroid-ebook
   location: 'Chapter 4: Functions of Thyroid Hormones'
   quote: Decreased bowel movements, backing up stool makes you constipated.
@@ -133,23 +122,22 @@ sources:
   quote: Indigestion, diarrhea, or constipation
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
-  quote: Beta blocker therapy has been associated with increased rates of depression,
-    fatigue, constipation, erectile dysfunction, and cognitive slowing.
+  quote: Beta blocker therapy has been associated with increased rates of depression, fatigue, constipation, erectile dysfunction,
+    and cognitive slowing.
 - id: vitaone-liver-detox-toolkit
   location: Sequencing a Detoxification Program
-  quote: Without movement of the bowels, excretion of toxins is limited (as most of
-    them exit in stool).
+  quote: Without movement of the bowels, excretion of toxins is limited (as most of them exit in stool).
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Constipation
-  quote: Use PHGG (partially hydrolyzed guar gum) if possible — BEST for IBS-C. Soluble
-    fiber is better tolerated than insoluble for many with IBS.
+  quote: Use PHGG (partially hydrolyzed guar gum) if possible — BEST for IBS-C. Soluble fiber is better tolerated than insoluble
+    for many with IBS.
 - id: vitaone-health-coaching-toolkit
   location: Thyroid Screening Questionnaire — Signs and Symptoms
   quote: I am constipated (less than 1 bowel movement daily)
 - id: coconote-fm-chronic-pain-fatigue
   location: Digestion / Constipation Section
-  quote: If they are not eliminating, the toxins will be reabsorbed in our body and
-    that will create a havoc and that will cause inflammation.
+  quote: If they are not eliminating, the toxins will be reabsorbed in our body and that will create a havoc and that will
+    cause inflammation.
 - id: coconote-fm-approach-inflammation
   location: Gut Dysbiosis – Location and Type
   quote: constipation, also the part of dysbiosis.
@@ -158,24 +146,22 @@ sources:
   quote: Occasional constipation — she felt constipated while travelling.
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin
-  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
-    test.
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting test.
 - id: coconote-fm-magnesium-deficiency
   location: Gastrointestinal section
-  quote: Magnesium is a very important mineral which also helps in the contractility
-    of the smooth musculature at the level of the gut. So even the peristaltic movement
-    that happens inside the gut requires magnesium in abundance.
+  quote: Magnesium is a very important mineral which also helps in the contractility of the smooth musculature at the level
+    of the gut. So even the peristaltic movement that happens inside the gut requires magnesium in abundance.
 - id: coconote-fm-sibo-sifo
   location: Types of SIBO – Methane Dominant
   quote: Methane-dominant SIBO is, constipation is more common in them.
 - id: barbara-oneil-gi-tract
   location: Colon Section
-  quote: If a person's dehydrated, more water gets taken out than should be taken
-    out. Then we're left with rabbit pellets and cement.
+  quote: If a person's dehydrated, more water gets taken out than should be taken out. Then we're left with rabbit pellets
+    and cement.
 - id: ask-expert-hormonal-health-bhrt
   location: Fiber, Transit Time, and Estrogen Metabolism
-  quote: If they pooped once a day, 5% of them had abnormal cells. If they pooped
-    they missed a day, you should never miss a day... up to 50% abnormal breast cells.
+  quote: If they pooped once a day, 5% of them had abnormal cells. If they pooped they missed a day, you should never miss
+    a day... up to 50% abnormal breast cells.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXWoFj6jGCY/
   quote: Low-fiber diets starve the microbiome → constipation + estrogen imbalance

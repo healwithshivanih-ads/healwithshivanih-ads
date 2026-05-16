@@ -4,17 +4,16 @@ aliases:
 - the change
 - hormonal transition
 - post-menopause
-summary: The transitional and post-reproductive phases of a woman's life characterized
-  by declining sex steroid hormones, rising FSH, and wide-ranging systemic effects
-  beyond reproductive function including bone loss, cognitive changes, cardiovascular
+summary: The transitional and post-reproductive phases of a woman's life characterized by declining sex steroid hormones,
+  rising FSH, and wide-ranging systemic effects beyond reproductive function including bone loss, cognitive changes, cardiovascular
   risk, and metabolic shifts.
 common_symptoms:
 - hot-flashes
 - brain-fog
-- weight-gain
+- unexplained-weight-gain
 - bone-loss
 - sleep-disruption
-- mood-changes
+- mood-swings
 - irregular-periods
 - vaginal-dryness
 red_flags:
@@ -28,18 +27,16 @@ key_mechanisms:
 - hpa-axis-dysregulation
 - hormone-receptor-binding
 - fsh-elevation-aging-cascade
-coaching_scope_notes: Coaches can support clients through education on lifestyle,
-  nutrition, and supplement strategies that support hormonal health. Symptom tracking
-  and referral to a qualified hormone clinician is appropriate.
-clinician_scope_notes: FSH is a key biomarker; target <25 in women on HRT. Early menopause
-  (<45) dramatically increases cardiovascular and all-cause mortality risk if untreated.
+coaching_scope_notes: Coaches can support clients through education on lifestyle, nutrition, and supplement strategies that
+  support hormonal health. Symptom tracking and referral to a qualified hormone clinician is appropriate.
+clinician_scope_notes: FSH is a key biomarker; target <25 in women on HRT. Early menopause (<45) dramatically increases cardiovascular
+  and all-cause mortality risk if untreated.
 evidence_tier: strong
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: Expanded Understanding of Hormones
-  quote: most people think of hormones, only when I get into perimenopause do I need
-    to take them... All of that, low set steroid hormones drive aging and elevated
-    FSH drives aging.
+  quote: most people think of hormones, only when I get into perimenopause do I need to take them... All of that, low set
+    steroid hormones drive aging and elevated FSH drives aging.
 version: 1
 status: active
 updated_at: '2026-05-05'

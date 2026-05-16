@@ -1,28 +1,26 @@
 slug: reduce-it-epa-30-percent-cvd-risk-reduction
-statement: 4g/day of EPA (as icosapentaenoic acid) produced a 30% relative risk reduction
-  in total cardiovascular events in patients with elevated triglycerides (REDUCE-IT
-  trial).
+statement: 4g/day of EPA (as icosapentaenoic acid) produced a 30% relative risk reduction in total cardiovascular events in
+  patients with elevated triglycerides (REDUCE-IT trial).
 evidence_tier: strong
-rationale: Directly referenced as the REDUCE-IT trial in the source document. This
-  is a large, well-known RCT published in NEJM (Bhatt et al., 2018).
-coaching_translation: For people with high triglycerides, high-dose EPA under medical
-  supervision can dramatically lower cardiovascular risk.
-out_of_scope_notes: This dose (4g/day of prescription EPA) is a clinical intervention
-  and must be managed by a physician.
+rationale: Directly referenced as the REDUCE-IT trial in the source document. This is a large, well-known RCT published in
+  NEJM (Bhatt et al., 2018).
+coaching_translation: For people with high triglycerides, high-dose EPA under medical supervision can dramatically lower cardiovascular
+  risk.
+out_of_scope_notes: This dose (4g/day of prescription EPA) is a clinical intervention and must be managed by a physician.
 caveats:
-- Prescription-grade EPA (icosapentaenoic acid ethyl ester) was used in REDUCE-IT;
-  results may not fully generalize to over-the-counter fish oil.
+- Prescription-grade EPA (icosapentaenoic acid ethyl ester) was used in REDUCE-IT; results may not fully generalize to over-the-counter
+  fish oil.
 - Source is an FM lecture, not the primary paper.
 linked_to_topics:
 - omega-3-fatty-acids
 linked_to_supplements:
-- epa-dha-fish-oil
+- fish-oil-omega-3
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Cardiovascular Benefits of Omega-3 Studies Slide
-  quote: Reduce-It trial which shows that there was 30% relative risk reduction in
-    total cardiovascular events with 4g/day of EPA in patients with elevated triglycerides.
+  quote: Reduce-It trial which shows that there was 30% relative risk reduction in total cardiovascular events with 4g/day
+    of EPA in patients with elevated triglycerides.
 version: 1
 status: active
 updated_at: '2026-05-05'

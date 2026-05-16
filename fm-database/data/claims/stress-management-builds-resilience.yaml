@@ -1,32 +1,28 @@
 slug: stress-management-builds-resilience
-statement: Implementing a variety of proven stress management techniques (including
-  deep breathing, adequate sleep, exercise, meditation, nutrition optimization, social
-  connection, MBSR, nature exposure, and cognitive reframing) builds resilience and
-  supports long-term wellbeing.
+statement: Implementing a variety of proven stress management techniques (including deep breathing, adequate sleep, exercise,
+  meditation, nutrition optimization, social connection, MBSR, nature exposure, and cognitive reframing) builds resilience
+  and supports long-term wellbeing.
 evidence_tier: strong
-rationale: Individually, these techniques have strong evidence bases (e.g., sleep
-  7–9 hours for health, exercise for stress resilience, MBSR is a well-validated program).
-  The composite approach is consistent with clinical practice guidelines and referenced
-  sources including CDC and APA.
-coaching_translation: There is no single fix for stress — but combining several small
-  habits (good sleep, movement, breathing, connection, healthy food) creates a powerful
-  buffer against chronic stress and builds lasting resilience.
+rationale: Individually, these techniques have strong evidence bases (e.g., sleep 7–9 hours for health, exercise for stress
+  resilience, MBSR is a well-validated program). The composite approach is consistent with clinical practice guidelines and
+  referenced sources including CDC and APA.
+coaching_translation: There is no single fix for stress — but combining several small habits (good sleep, movement, breathing,
+  connection, healthy food) creates a powerful buffer against chronic stress and builds lasting resilience.
 linked_to_topics:
 - chronic-stress
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 - relaxation-response
 linked_to_supplements: []
 caveats:
-- Individual techniques vary in evidence strength; MBSR and exercise have the strongest
-  evidence
+- Individual techniques vary in evidence strength; MBSR and exercise have the strongest evidence
 - Severe stress or mental health conditions require clinician or therapist referral
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Effects of Chronic Stress — Tips for Reducing Chronic Stress
-  quote: Finding a variety of techniques that work for you will help you build resilience
-    and support your overall wellbeing for years to come.
+  quote: Finding a variety of techniques that work for you will help you build resilience and support your overall wellbeing
+    for years to come.
 version: 1
 status: active
 updated_at: '2026-05-04'

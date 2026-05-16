@@ -21,7 +21,7 @@ take_with_food: avoid
 linked_to_topics:
 - fiber-gap
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - insulin-resistance
 - low-fodmap-diet
 - elimination-diet
@@ -32,26 +32,24 @@ linked_to_claims:
 - lps-dysbiosis-insulin-resistance
 - psyllium-husk-low-fodmap-approved
 - psyllium-husk-low-fodmap-approved-constipation
-notes_for_coach: Low FODMAP approved at standard doses. Start with 1 tsp in a large
-  glass of warm water. PHGG (partially hydrolyzed guar gum) is preferred for IBS-C.
-  Ensure adequate fluid intake.
-notes_for_client: Mix 1 tsp in a large glass of warm water. Always take with plenty
-  of water. Builds a gel in your gut to keep things moving smoothly.
+notes_for_coach: Low FODMAP approved at standard doses. Start with 1 tsp in a large glass of warm water. PHGG (partially hydrolyzed
+  guar gum) is preferred for IBS-C. Ensure adequate fluid intake.
+notes_for_client: Mix 1 tsp in a large glass of warm water. Always take with plenty of water. Builds a gel in your gut to
+  keep things moving smoothly.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: thurlow-microbiome-session-7
   location: Q&A — psyllium vs guar gum [00:27:56]
-  quote: If I were to pick one, I would probably say psyllium husk, especially if
-    it's organic or you know that it's been well sourced because it tends to be pretty
-    simple.
+  quote: If I were to pick one, I would probably say psyllium husk, especially if it's organic or you know that it's been
+    well sourced because it tends to be pretty simple.
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Nutrients to Support Insulin Sensitivity
   quote: Fiber (soluble + insoluble)
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Constipation
-  quote: Psyllium Husk (Isabgol) – 1 tsp in warm water. Low FODMAP approved. Soluble
-    fiber → gel formation → smooth stool movement.
+  quote: Psyllium Husk (Isabgol) – 1 tsp in warm water. Low FODMAP approved. Soluble fiber → gel formation → smooth stool
+    movement.
 - id: vitaone-health-coaching-toolkit
   location: FODMAP Plan SOS Solutions — CONSTIPATION
   quote: Psyllium Husk (Isabgol) – 1 tsp in warm water. Low FODMAP approved.

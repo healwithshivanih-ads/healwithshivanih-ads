@@ -1,18 +1,14 @@
 slug: vitamin-d-enhances-immune-function-reduces-respiratory-infections
-statement: Vitamin D (5,000 IU daily) enhances immune system function, reduces viral
-  growth, and can reduce upper respiratory infections.
+statement: Vitamin D (5,000 IU daily) enhances immune system function, reduces viral growth, and can reduce upper respiratory
+  infections.
 evidence_tier: strong
-rationale: Martineau et al. 2019 (Health Technol Assess) individual participant meta-analysis
-  strongly supports vitamin D supplementation for reducing acute respiratory infections.
-  Vitamin D's role in innate immune modulation is mechanistically well-established.
-  High-dose supplementation (5,000 IU) is above standard RDA and requires clinician
-  oversight.
-coaching_translation: Vitamin D is crucial for a well-functioning immune system. Many
-  people are deficient, especially in winter months. Getting tested and supplementing
-  if low can reduce your risk of respiratory infections.
-out_of_scope_notes: 5,000 IU daily is a therapeutic dose requiring clinician-supervised
-  lab monitoring (25-OH Vitamin D, calcium). Toxicity risk (hypercalcemia) at high
-  doses.
+rationale: Martineau et al. 2019 (Health Technol Assess) individual participant meta-analysis strongly supports vitamin D
+  supplementation for reducing acute respiratory infections. Vitamin D's role in innate immune modulation is mechanistically
+  well-established. High-dose supplementation (5,000 IU) is above standard RDA and requires clinician oversight.
+coaching_translation: Vitamin D is crucial for a well-functioning immune system. Many people are deficient, especially in
+  winter months. Getting tested and supplementing if low can reduce your risk of respiratory infections.
+out_of_scope_notes: 5,000 IU daily is a therapeutic dose requiring clinician-supervised lab monitoring (25-OH Vitamin D, calcium).
+  Toxicity risk (hypercalcemia) at high doses.
 caveats:
 - 5,000 IU is above the standard RDA — clinician supervision and lab monitoring recommended.
 - Risk of hypercalcemia at excessive doses.
@@ -21,13 +17,12 @@ linked_to_topics:
 - immune-support-covid-19
 - chronic-inflammation
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Vitamin D enhances immune system function, reduces viral growth, and can
-    reduce upper respiratory infections.
+  quote: Vitamin D enhances immune system function, reduces viral growth, and can reduce upper respiratory infections.
 version: 1
 status: active
 updated_at: '2026-05-04'

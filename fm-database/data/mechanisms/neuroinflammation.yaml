@@ -11,14 +11,13 @@ aliases:
 - gut-brain inflammation
 - neuroinflammation via gut
 category: immune
-summary: Glial cell activation triggered by toxins, leaky gut, viral load, and oxidative
-  stress increases inflammatory cytokine output (IL-6, TNF-α). Emotional suppression
-  independently raises inflammatory cytokines and reduces vagal tone. Manifests as
-  brain fog, depression, pain sensitivity, and poor focus.
+summary: Glial cell activation triggered by toxins, leaky gut, viral load, and oxidative stress increases inflammatory cytokine
+  output (IL-6, TNF-α). Emotional suppression independently raises inflammatory cytokines and reduces vagal tone. Manifests
+  as brain fog, depression, pain sensitivity, and poor focus.
 upstream_drivers:
 - omega-3-deficiency
 - magnesium-deficiency
-- elevated-crp
+- systemic-inflammation
 - leaky-gut
 - toxic-load
 - emotional-suppression

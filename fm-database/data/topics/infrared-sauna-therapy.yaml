@@ -4,12 +4,11 @@ aliases:
 - near infrared sauna
 - IR sauna
 - infrared lamp therapy
-summary: Use of near-infrared light/heat to support detoxification via sweating, with
-  reported benefits for digestive and elimination organs. Protocol includes starting
-  with 10-20 minutes/day, adequate hydration, and mineral (especially magnesium) replacement
-  post-session.
+summary: Use of near-infrared light/heat to support detoxification via sweating, with reported benefits for digestive and
+  elimination organs. Protocol includes starting with 10-20 minutes/day, adequate hydration, and mineral (especially magnesium)
+  replacement post-session.
 common_symptoms:
-- fatigue
+- lethargy
 - muscle-tension
 - toxic-load-symptoms
 red_flags:
@@ -21,20 +20,17 @@ related_topics:
 - toxic-body-burden
 key_mechanisms:
 - sweat-mediated-toxin-excretion
-coaching_scope_notes: Coaches can guide sauna protocol basics (session length, hydration,
-  rest). Mineral replacement specifics and contraindications should involve a knowledgeable
-  practitioner.
-clinician_scope_notes: High-dose niacin pre-sauna is contraindicated. Pregnancy and
-  young children are contraindicated. Electrolyte/mineral management requires clinical
-  oversight.
+coaching_scope_notes: Coaches can guide sauna protocol basics (session length, hydration, rest). Mineral replacement specifics
+  and contraindications should involve a knowledgeable practitioner.
+clinician_scope_notes: High-dose niacin pre-sauna is contraindicated. Pregnancy and young children are contraindicated. Electrolyte/mineral
+  management requires clinical oversight.
 evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-health-coaching-toolkit
   location: How to Make an Infrared Sauna Lamp — Protocol
-  quote: Make sure you replace minerals that are lost from sweating. Definitely work
-    with a knowledgeable practitioner on this, as minerals are a tricky thing, and
-    I do advise Starting with Magnesium because you will loose lot of magnesium through
-    sweat.
+  quote: Make sure you replace minerals that are lost from sweating. Definitely work with a knowledgeable practitioner on
+    this, as minerals are a tricky thing, and I do advise Starting with Magnesium because you will loose lot of magnesium
+    through sweat.
 version: 1
 status: active
 updated_at: '2026-05-04'

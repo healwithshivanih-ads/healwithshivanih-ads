@@ -13,29 +13,27 @@ aliases:
 - schizophrenia
 category: mood
 severity: common
-description: Depressive symptoms associated with altered gut microbiome and disrupted
-  gut-brain signaling, including reduced serotonin availability.
+description: Depressive symptoms associated with altered gut microbiome and disrupted gut-brain signaling, including reduced
+  serotonin availability.
 when_to_refer: Refer to mental health professional for clinical depression.
 linked_to_topics:
 - gut-brain-axis
 - gut-microbiome
 linked_to_mechanisms:
-- gut-brain-signaling
-- gut-dysbiosis
+- gut-brain-axis-disruption
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: vitaone-gut-toolkit
-  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Gut Health and
-    Mental Health: The Science'
-  quote: Studies show that individuals with mood disorders like anxiety and depression
-    often have altered gut microbiomes.
+  location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Gut Health and Mental Health: The Science'
+  quote: Studies show that individuals with mood disorders like anxiety and depression often have altered gut microbiomes.
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Restoring the body's magnesium can have a protective role in heart health,
-    blood pressure, and is associated with improvements in depressive symptoms.
+  quote: Restoring the body's magnesium can have a protective role in heart health, blood pressure, and is associated with
+    improvements in depressive symptoms.
 - id: coconote-fm-omega-3-fatty-acids
   location: Clinical Conditions Amenable to EFA Treatment
-  quote: mood disorders like depression, schizophrenia...these conditions need treatment,
-    a separate supplement for omega-3 to see improvements.
+  quote: mood disorders like depression, schizophrenia...these conditions need treatment, a separate supplement for omega-3
+    to see improvements.
 version: 1
 status: active
 updated_at: '2026-05-02'

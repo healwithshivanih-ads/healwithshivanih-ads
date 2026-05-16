@@ -14,14 +14,13 @@ category: gut
 summary: Gut health, probiotics, zinc, glutamine, and fermented foods support nutrient absorption and barrier integrity. Dysbiosis,
   antibiotics, PPIs, and autoimmune patterns disrupt absorption and contribute to systemic inflammation and nutrient deficiency.
 upstream_drivers:
-- gut dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - malabsorption
 - PPIs
 - antibiotics
 - autoimmune patterns
 - chronic diarrhea
 - processed diets
-- gut-dysbiosis
 - ppi-use
 - autoimmune-patterns
 - chronic-diarrhea
@@ -30,7 +29,7 @@ downstream_effects:
 - nutrient deficiency
 - chronic diarrhea
 - autoimmune triggers
-- inflammation
+- chronic-inflammation
 - poor hair growth
 - joint symptoms
 - nutrient-deficiency
@@ -39,11 +38,11 @@ downstream_effects:
 - poor-hair-growth
 - joint-symptoms
 related_mechanisms:
-- methylation-support
-- oxidative-stress-and-inflammation
+- methylation-cycle
+- oxidative-stress
 linked_to_topics:
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - hair-loss
 - joint-pain
 - chronic-inflammation

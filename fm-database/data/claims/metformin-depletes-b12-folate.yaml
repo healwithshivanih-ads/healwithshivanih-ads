@@ -17,7 +17,7 @@ linked_to_topics:
 - medication-nutrient-interactions
 - medication-induced-nutrient-depletion
 linked_to_supplements:
-- vitamin-b12-methylcobalamin
+- vitamin-b12
 - l-methylfolate
 - active-b-vitamins
 linked_to_mechanisms: []

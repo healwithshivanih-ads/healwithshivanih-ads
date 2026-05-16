@@ -3,16 +3,15 @@ display_name: Emotional Healing in Chronic Disease
 aliases:
 - emotional-root-cause
 - mind-body-chronic-illness
-summary: A functional medicine framework recognizing that unprocessed emotions generate
-  hormonal, inflammatory, and mitochondrial signatures that perpetuate chronic disease.
-  Addressing emotional root causes alongside biochemical, neurological, relational,
+summary: A functional medicine framework recognizing that unprocessed emotions generate hormonal, inflammatory, and mitochondrial
+  signatures that perpetuate chronic disease. Addressing emotional root causes alongside biochemical, neurological, relational,
   and spiritual dimensions is essential for true healing.
 common_symptoms:
-- fatigue
+- lethargy
 - anxiety
 - insomnia
 - brain-fog
-- weight-gain
+- unexplained-weight-gain
 - hormonal-imbalance
 - bloating
 - mood-swings
@@ -29,18 +28,15 @@ key_mechanisms:
 - hpa-axis-dysregulation
 - limbic-system-overactivation
 - vagal-tone-reduction
-coaching_scope_notes: Coaches can introduce journaling, breathwork, somatic practices,
-  gratitude, and community connection. Refer for EMDR, trauma therapy, or medication
-  management.
-clinician_scope_notes: Assess for trauma history, autoimmune markers, inflammatory
-  cytokines. Consider EMDR, somatic experiencing, and pharmacological support as needed.
+coaching_scope_notes: Coaches can introduce journaling, breathwork, somatic practices, gratitude, and community connection.
+  Refer for EMDR, trauma therapy, or medication management.
+clinician_scope_notes: Assess for trauma history, autoimmune markers, inflammatory cytokines. Consider EMDR, somatic experiencing,
+  and pharmacological support as needed.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
-  location: Key Nutrients & Botanicals for Emotional Healing Support / Functional
-    Wisdom
-  quote: Every unprocessed emotion has a hormonal, inflammatory, and mitochondrial
-    signature.
+  location: Key Nutrients & Botanicals for Emotional Healing Support / Functional Wisdom
+  quote: Every unprocessed emotion has a hormonal, inflammatory, and mitochondrial signature.
 version: 1
 status: active
 updated_at: '2026-05-04'

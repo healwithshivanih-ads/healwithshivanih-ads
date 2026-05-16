@@ -43,7 +43,7 @@ upstream_drivers:
 - NSAID and alcohol use
 - gluten exposure (in susceptible individuals)
 - low SCFA production
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - gluten-sensitivity
 - toxin-exposure
 - chronic-stress
@@ -51,26 +51,23 @@ upstream_drivers:
 - mast-cell-activation
 - high-refined-carb-diet
 - stress
-- zonulin-upregulation
-- lps-signaling
+- tight-junction-dysfunction
+- lps-endotoxemia
 - gut-dysbiosis-mechanism
 - NSAIDs
 - gluten
 - alcohol
-- gut-dysbiosis
 - food-sensitivities
 - nsaids
-- sibo
 - chronic-inflammation
 - poor-diet
 - infections
 - environmental-toxins
-- hypochlorhydria-mechanism
+- low-stomach-acid
 - dietary-triggers-gluten-dairy
 - nutrient-deficiencies
 - food-antigens
 - gram-negative-dysbiosis
-- gut-microbiome-dysbiosis
 - antibiotic-use
 downstream_effects:
 - food sensitivities
@@ -78,14 +75,13 @@ downstream_effects:
 - systemic low-grade inflammation
 - estrogen-immune dysregulation
 - brain fog (LPS crossing BBB)
-- hashimotos-autoimmune-cascade
-- t4-to-t3-conversion-block
+- thyroid-autoimmunity
+- impaired-t4-to-t3-conversion
 - chronic-inflammation
 - autoimmune-flares
 - food-sensitivities
 - altered-serotonin-synthesis
 - insulin-resistance
-- chronic-systemic-inflammation
 - autoimmune-activation
 - neuroinflammation
 - estrogen-dominance
@@ -93,16 +89,12 @@ downstream_effects:
 - lps-endotoxemia
 - nf-kb-activation
 - systemic-inflammation
-- thyroid-autoimmunity
 - nutrient-malabsorption
 - chronic-immune-activation
-- endotoxemia
 - cytokine-signaling
 - bloating
 - mood-dysregulation
 - systemic-immune-activation
-- autoimmune-thyroid-attack
-- lps-mediated-immune-activation
 - food-sensitivity-reactions
 - opioid-peptide-absorption
 - psychiatric-symptoms
@@ -110,39 +102,30 @@ related_mechanisms:
 - hpa-axis-dysregulation
 - microbial-diversity-decline
 - chronic-inflammation
-- hashimotos-autoimmune-cascade
+- thyroid-autoimmunity
 - insulin-resistance
-- scfa-production
-- zonulin-upregulation
-- lps-signaling
-- nfkb-activation
-- reduced-scfas
-- gut-dysbiosis
+- butyrate-production
+- tight-junction-dysfunction
 - lps-endotoxemia
 - nf-kb-activation
-- thyroid-autoimmunity
+- reduced-scfas
+- dysbiosis-gut-microbiome-imbalance
 - molecular-mimicry
-- autoimmune-thyroid-attack
-- hypochlorhydria-mechanism
+- low-stomach-acid
 - neuroinflammation
 - vagal-tone-reduction
-- chronic-systemic-inflammation
-- lps-mediated-immune-activation
-- gut-immune-axis-dysregulation
-- gut-microbiome-dysbiosis
+- gut-immune-dysregulation
 - opioid-peptide-absorption
 linked_to_topics:
 - autoimmune
 - inflammation
 - perimenopause
-- dysbiosis
+- gut-dysbiosis
 - microbiome
 - thyroid
-- leaky-gut
 - gut-brain-axis
 - food-sensitivities
 - insulin-resistance
-- gut-dysbiosis
 - sibo
 - candida-overgrowth
 - ibd
@@ -150,13 +133,12 @@ linked_to_topics:
 - autoimmune-disease
 - food-sensitivity
 - psoriasis
-- hashimotos-thyroiditis
+- autoimmune-thyroiditis
 - t3-conversion-disorder
-- hashimotos-hypothyroidism
 - gut-dysfunction
 - gut-microbiome
 - nervous-system-regulation
-- 5r-gut-restoration
+- 5r-gut-protocol
 - gut-brain-connection
 sources:
 - id: vitaone-skill-practice-guide

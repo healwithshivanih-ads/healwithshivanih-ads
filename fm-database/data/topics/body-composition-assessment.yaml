@@ -3,15 +3,14 @@ display_name: Body Composition Assessment
 aliases:
 - body fat analysis
 - anthropometric assessment
-summary: Comprehensive evaluation of a patient's physical makeup including BMI, waist-to-hip
-  ratio, percentage of body fat, lean muscle mass, and fluid distribution. Uses tools
-  such as BIA, DEXA, and anthropometric measurements to classify obesity patterns
-  and metabolic risk.
+summary: Comprehensive evaluation of a patient's physical makeup including BMI, waist-to-hip ratio, percentage of body fat,
+  lean muscle mass, and fluid distribution. Uses tools such as BIA, DEXA, and anthropometric measurements to classify obesity
+  patterns and metabolic risk.
 common_symptoms:
 - increased-waist-circumference
 - low-lean-muscle-mass
-- excess-body-fat
-- fluid-retention
+- excess-body-weight
+- edema
 red_flags:
 - low-lean-muscle-mass-with-high-body-fat
 - waist-circumference-above-40-inches-men
@@ -24,19 +23,17 @@ related_topics:
 key_mechanisms:
 - insulin-resistance
 - visceral-adiposity
-- inflammation
-coaching_scope_notes: Coaches can use BMI, waist-to-hip ratio, and BIA data to support
-  goal-setting and track progress. Lab interpretation and clinical diagnosis are out
-  of scope.
-clinician_scope_notes: Clinicians should integrate BIA, waist circumference, waist-to-hip
-  ratio, and biomarkers (fasting insulin, triglycerides, CRP, HOMA-IR) to determine
-  metabolic health status and treatment intensity.
+- chronic-inflammation
+coaching_scope_notes: Coaches can use BMI, waist-to-hip ratio, and BIA data to support goal-setting and track progress. Lab
+  interpretation and clinical diagnosis are out of scope.
+clinician_scope_notes: Clinicians should integrate BIA, waist circumference, waist-to-hip ratio, and biomarkers (fasting insulin,
+  triglycerides, CRP, HOMA-IR) to determine metabolic health status and treatment intensity.
 evidence_tier: strong
 sources:
 - id: coconote-fm-body-composition-bmi
   location: Body Composition Assessment Section
-  quote: So the first step when you're assessing somebody's body composition is, of
-    course, looking at their BMI, which is their weight per height squared.
+  quote: So the first step when you're assessing somebody's body composition is, of course, looking at their BMI, which is
+    their weight per height squared.
 version: 1
 status: active
 updated_at: '2026-05-05'

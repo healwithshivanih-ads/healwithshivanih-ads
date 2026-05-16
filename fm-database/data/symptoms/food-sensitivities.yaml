@@ -42,12 +42,10 @@ when_to_refer: Refer if reactions are severe (anaphylaxis), rapidly expanding, o
 linked_to_topics:
 - perimenopause
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - autoimmune
 - gut-brain-axis
 - emotional-healing-in-chronic-disease
-- leaky-gut
-- gut-dysbiosis
 - autoimmunity-leaky-gut-triad
 - gut-microbiome-and-gut-flora
 - inflammatory-bowel-conditions
@@ -55,17 +53,14 @@ linked_to_mechanisms:
 - leaky-gut
 - estrogen-decline
 - microbial-diversity-decline
-- intestinal-hyperpermeability
 - gut-brain-axis-disruption
-- leaky-gut-mechanism
 - systemic-inflammation
-- impaired-gut-barrier
-- gut-dysbiosis-microbiome-imbalance
+- dysbiosis-gut-microbiome-imbalance
 - tight-junction-dysfunction
 - molecular-mimicry
 - galt-immune-activation
-- gut-immune-barrier-function
-- gut-microbiome-colonisation
+- gut-barrier-and-nutrient-absorption
+- gut-microbiome-modulation
 sources:
 - id: thurlow-microbiome-session-2
   location: Session 2 — Food Sensitivities & Gut Permeability

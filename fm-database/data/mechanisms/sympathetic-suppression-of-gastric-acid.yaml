@@ -4,28 +4,26 @@ aliases:
 - stress-induced hypochlorhydria
 - SNS gastric acid inhibition
 category: neurological
-summary: Activation of the sympathetic nervous system — as occurs during chronic psychological
-  or physiological stress — inhibits gastric acid secretion. Conversely, parasympathetic
-  dominance (rest-and-digest state) promotes HCl production. Restoring parasympathetic
-  tone through stress management and mindfulness practices supports gastric acid normalisation.
+summary: Activation of the sympathetic nervous system — as occurs during chronic psychological or physiological stress — inhibits
+  gastric acid secretion. Conversely, parasympathetic dominance (rest-and-digest state) promotes HCl production. Restoring
+  parasympathetic tone through stress management and mindfulness practices supports gastric acid normalisation.
 upstream_drivers:
 - chronic-stress
 - hpa-axis-dysregulation
 downstream_effects:
-- reduced-hcl-production
-- impaired-protein-digestion
+- low-stomach-acid
+- hcl-and-pepsin-protein-digestion
 related_mechanisms:
-- reduced-hcl-production
+- low-stomach-acid
 linked_to_topics:
 - hypochlorhydria
-- five-r-gut-protocol
+- 5r-gut-protocol
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-hypochlorhydria
   location: Risk Factors for Low Stomach Acid
-  quote: Stress, very important because stress it stimulates the sympathetic nervous
-    system inside your body. Sympathetic nervous system eventually decreases the production
-    of gastric acid.
+  quote: Stress, very important because stress it stimulates the sympathetic nervous system inside your body. Sympathetic
+    nervous system eventually decreases the production of gastric acid.
 version: 1
 status: active
 updated_at: '2026-05-05'

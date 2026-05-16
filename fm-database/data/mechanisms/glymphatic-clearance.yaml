@@ -5,10 +5,9 @@ aliases:
 - amyloid plaque clearance
 - brain waste removal during sleep
 category: neurological
-summary: During sleep, especially in the hours before midnight, glial (oil) cells
-  activate the glymphatic system, which flushes amyloid plaques and metabolic waste
-  from the brain. Chronic sleep deprivation impairs this clearance, allowing plaque
-  accumulation associated with Alzheimer's and cognitive decline.
+summary: During sleep, especially in the hours before midnight, glial (oil) cells activate the glymphatic system, which flushes
+  amyloid plaques and metabolic waste from the brain. Chronic sleep deprivation impairs this clearance, allowing plaque accumulation
+  associated with Alzheimer's and cognitive decline.
 upstream_drivers:
 - early-sleep
 - adequate-sleep-duration
@@ -20,14 +19,13 @@ related_mechanisms:
 - prefrontal-cortex-function
 - neuroplasticity
 linked_to_topics:
-- sleep-hygiene
+- sleep
 evidence_tier: strong
 sources:
 - id: barbara-oneil-healing-mind
   location: Sleep Section
-  quote: When we go to bed early, especially the hours before midnight, there's a
-    cleaning system that happens. And the cleaning system happens under the action
-    of the oil cells. It's called the glymphatic system.
+  quote: When we go to bed early, especially the hours before midnight, there's a cleaning system that happens. And the cleaning
+    system happens under the action of the oil cells. It's called the glymphatic system.
 version: 1
 status: active
 updated_at: '2026-05-05'

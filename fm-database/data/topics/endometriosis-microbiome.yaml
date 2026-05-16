@@ -2,10 +2,9 @@ slug: endometriosis-microbiome
 display_name: Endometriosis & the Microbiome
 aliases:
 - microbiome-driven endometriosis
-summary: Dr. Davis presents the hypothesis that endometriosis is a disease of microbiome
-  dysbiosis, particularly SIBO-driven endotoxemia. Patients with endometriosis almost
-  universally have SIBO. Addressing gut microbiome health—rather than repeated surgical
-  intervention—is proposed as a more effective approach.
+summary: Dr. Davis presents the hypothesis that endometriosis is a disease of microbiome dysbiosis, particularly SIBO-driven
+  endotoxemia. Patients with endometriosis almost universally have SIBO. Addressing gut microbiome health—rather than repeated
+  surgical intervention—is proposed as a more effective approach.
 common_symptoms:
 - pelvic-pain
 - bloating
@@ -19,13 +18,12 @@ related_topics:
 - gut-microbiome
 - vaginal-microbiome
 key_mechanisms:
-- endotoxemia
+- lps-endotoxemia
 - sibo-driven-systemic-inflammation
-coaching_scope_notes: Coaches can support gut microbiome restoration through dietary
-  and probiotic strategies. Endometriosis diagnosis and surgical management must remain
-  with clinicians.
-clinician_scope_notes: Repeated laparotomy for endometriosis carries significant morbidity.
-  Clinicians should consider microbiome assessment in treatment planning.
+coaching_scope_notes: Coaches can support gut microbiome restoration through dietary and probiotic strategies. Endometriosis
+  diagnosis and surgical management must remain with clinicians.
+clinician_scope_notes: Repeated laparotomy for endometriosis carries significant morbidity. Clinicians should consider microbiome
+  assessment in treatment planning.
 evidence_tier: plausible_emerging
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome

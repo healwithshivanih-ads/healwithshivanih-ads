@@ -6,14 +6,13 @@ aliases:
 - impaired nutrient absorption
 - micronutrient deficiency secondary to gut infection
 category: gut
-summary: H. pylori infection can impair gastric acid production and damage the gastric
-  mucosa, reducing absorption of key micronutrients such as iron, vitamin B12, and
-  zinc — all of which are required for healthy hair follicle function. This is the
-  proposed pathway linking H. pylori to hair loss.
+summary: H. pylori infection can impair gastric acid production and damage the gastric mucosa, reducing absorption of key
+  micronutrients such as iron, vitamin B12, and zinc — all of which are required for healthy hair follicle function. This
+  is the proposed pathway linking H. pylori to hair loss.
 upstream_drivers:
 - low-stomach-acid
-- leaky-gut-mechanism
-- dysbiosis
+- leaky-gut
+- dysbiosis-gut-microbiome-imbalance
 - gallbladder-dysfunction
 - h-pylori
 downstream_effects:
@@ -22,24 +21,22 @@ downstream_effects:
 - vitamin-d-deficiency
 - fatigue
 - joint-pain
-- elevated-crp
+- systemic-inflammation
 - unexplained-hair-loss
 related_mechanisms:
 - low-stomach-acid
-- leaky-gut-mechanism
 - leaky-gut
 linked_to_topics:
 - low-stomach-acid
 - chronic-pain-and-fatigue
 - hair-loss
-- h-pylori
+- h-pylori-infection
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Digestion Section
-  quote: We know we need Stomach Acid for the good production of the iron or the absorption
-    of the iron, B12, lot of vitamins and minerals need to be absorbed when we have
-    good quantity of the stomach acid.
+  quote: We know we need Stomach Acid for the good production of the iron or the absorption of the iron, B12, lot of vitamins
+    and minerals need to be absorbed when we have good quantity of the stomach acid.
 - id: coach-shivani
   location: Coach Observation
   quote: For unexplained hair loss, check and treat for H.Pylori even for children

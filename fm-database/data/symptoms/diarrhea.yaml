@@ -19,9 +19,8 @@ aliases:
 - urgency
 category: gi
 severity: common
-description: Loose or watery stools, which may occur both as a symptom of SIBO/dysbiosis
-  and as a transient die-off reaction when introducing high-count probiotic yogurt.
-  Typically resolves within a few weeks with probiotic introduction.
+description: Loose or watery stools, which may occur both as a symptom of SIBO/dysbiosis and as a transient die-off reaction
+  when introducing high-count probiotic yogurt. Typically resolves within a few weeks with probiotic introduction.
 when_to_refer: Persistent diarrhea >2 weeks, blood in stool, or severe dehydration.
 linked_to_topics:
 - gut-dysfunction
@@ -41,24 +40,20 @@ linked_to_topics:
 - gut-microbiome-and-gut-flora
 - gut-microbiome
 linked_to_mechanisms:
-- gut-dysbiosis
-- hypochlorhydria-mechanism
+- dysbiosis-gut-microbiome-imbalance
+- low-stomach-acid
 - colonic-fermentation
-- gut-motility-dysregulation
-- fodmap-fermentation-gas-production
+- altered-gi-motility
 - osmotic-fluid-shifts-in-gut
-- lps-mediated-immune-activation
+- lps-endotoxemia
 - leaky-gut
 - mast-cell-degranulation-histamine-release
 - digestive-enzyme-deficiency
 - mucosal-immune-dysfunction
-- gut-microbiome-dysbiosis
 - exocrine-pancreatic-enzyme-deficiency
 - malabsorption
-- altered-gi-motility
-- gut-immune-barrier-function
-- gut-microbiome-colonisation
-- endotoxemia
+- gut-barrier-and-nutrient-absorption
+- gut-microbiome-modulation
 - bacteriocin-production
 sources:
 - id: vitaone-gut-toolkit
@@ -78,26 +73,21 @@ sources:
   quote: In the gastrointestinal system, you can see pain, cramping, vomiting, diarrhea.
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin
-  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
-    test.
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting test.
 - id: coconote-fm-pancreatic-insufficiency
   location: Signs and Symptoms
-  quote: The commonly distinguished fat molecules present inside the host tumors,
-    diarrhea, gas and bloating.
+  quote: The commonly distinguished fat molecules present inside the host tumors, diarrhea, gas and bloating.
 - id: coconote-fm-sibo-sifo
   location: Types of SIBO – Hydrogen Dominant
-  quote: In a healthy hydrogen-producing bacteria, they reside mainly in the large
-    bubble. However, in the context of SIBO, certain hydrogen-producing bacteria take
-    up their residence... diarrhea symptom is very common.
+  quote: In a healthy hydrogen-producing bacteria, they reside mainly in the large bubble. However, in the context of SIBO,
+    certain hydrogen-producing bacteria take up their residence... diarrhea symptom is very common.
 - id: barbara-oneil-gi-tract
   location: Slippery Elm & IBD Case Study
-  quote: If someone is so inflamed that they've got diarrhea ten times a day, they
-    can take the slippery elm every hour.
+  quote: If someone is so inflamed that they've got diarrhea ten times a day, they can take the slippery elm every hour.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Probiotic die-off reaction discussion
-  quote: When you introduce Lactobacillus reuteri or some other beneficial microbes,
-    it introduces a tidal wave of change in the composition of the GI tract. And one
-    of the consequences could be diarrhea.
+  quote: When you introduce Lactobacillus reuteri or some other beneficial microbes, it introduces a tidal wave of change
+    in the composition of the GI tract. And one of the consequences could be diarrhea.
 - id: thurlow-microbiome-session-6
   location: Session 6 — Bowel Patterns
 version: 11

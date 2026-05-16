@@ -8,7 +8,7 @@ summary: Phase I detoxification generates reactive oxygen intermediates and free
   A, C, E, CoQ10, selenium, zinc, silymarin, bioflavonoids, pycnogenol) protect cells from oxidative damage by these intermediates
   and support Phase II enzyme activity.
 upstream_drivers:
-- phase-i-cytochrome-p450
+- cyp450-phase-i-activation
 - toxin-overload
 - nutrient-deficiency
 downstream_effects:
@@ -16,11 +16,11 @@ downstream_effects:
 - supported-phase-ii-conjugation
 - cellular-protection
 related_mechanisms:
-- phase-i-cytochrome-p450
+- cyp450-phase-i-activation
 - phase-2-conjugation
 linked_to_topics:
 - metabolic-detoxification
-- liver-detox-food-plan
+- liver-detoxification
 evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit

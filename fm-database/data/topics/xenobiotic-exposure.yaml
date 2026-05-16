@@ -8,19 +8,19 @@ summary: Xenobiotics are chemical compounds foreign to the cell — including pe
   cumulative xenobiotic exposure of an individual. Internal toxins from inflammation, lipid oxidation, and gut-derived LPS
   (endotoxins) add to total toxic load.
 common_symptoms:
-- fatigue
+- lethargy
 - chemical-sensitivity
 - hormonal-disruption
 red_flags:
 - acute toxic exposure or poisoning
 related_topics:
-- liver-detoxification-phases
+- liver-detoxification
 - total-toxic-load
 - gut-microbiome-and-detox
 key_mechanisms:
-- cyp450-phase1-bioactivation
+- cyp450-phase-i-activation
 - endocrine-disruption
-- lps-endotoxin-production
+- lps-endotoxemia
 coaching_scope_notes: Coaches can help clients reduce environmental exposures (clean food, filtered water, reducing plastic
   use, non-toxic personal care products) and support elimination pathways.
 evidence_tier: strong

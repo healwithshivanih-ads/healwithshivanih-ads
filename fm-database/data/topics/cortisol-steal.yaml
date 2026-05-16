@@ -3,37 +3,32 @@ display_name: Cortisol Steal (Pregnenolone Steal)
 aliases:
 - pregnenolone steal
 - cortisol shunt
-summary: Under conditions of chronic inflammation, infection, or sustained stress,
-  pregnenolone is preferentially shunted toward cortisol synthesis (via 17-hydroxypregnenolone),
-  reducing substrate availability for DHEA, testosterone, estrogen, and progesterone.
-  This manifests as elevated cortisol with simultaneously low sex hormones.
+summary: Under conditions of chronic inflammation, infection, or sustained stress, pregnenolone is preferentially shunted
+  toward cortisol synthesis (via 17-hydroxypregnenolone), reducing substrate availability for DHEA, testosterone, estrogen,
+  and progesterone. This manifests as elevated cortisol with simultaneously low sex hormones.
 common_symptoms:
 - low-progesterone-symptoms
 - mood-swings
-- fatigue
+- lethargy
 - low-libido
 red_flags:
-- Cortisol >10 with low DHEA-S, testosterone, estrogen, progesterone — suggests active
-  cortisol steal — refer for full workup
+- Cortisol >10 with low DHEA-S, testosterone, estrogen, progesterone — suggests active cortisol steal — refer for full workup
 related_topics:
 - steroidogenesis
 - menopause
 - perimenopause
 - estrogen-dominance
 key_mechanisms:
-- cortisol-steal
 - cholesterol-to-pregnenolone
-coaching_scope_notes: Coaches can support stress reduction, anti-inflammatory lifestyle,
-  meditation, walking, and yoga to reduce cortisol burden. Do not supplement hormones
-  without addressing inflammation first.
+coaching_scope_notes: Coaches can support stress reduction, anti-inflammatory lifestyle, meditation, walking, and yoga to
+  reduce cortisol burden. Do not supplement hormones without addressing inflammation first.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-sex-hormones
   location: Cortisol Steal
-  quote: whatever pregnenol is secreted from the cholesterol, the pregnenol will convert
-    into 17-hydroxypregnenol and everything is going to convert into cortisol only
-    because we have to maintain the stress response pathway.
+  quote: whatever pregnenol is secreted from the cholesterol, the pregnenol will convert into 17-hydroxypregnenol and everything
+    is going to convert into cortisol only because we have to maintain the stress response pathway.
 version: 1
 status: active
 updated_at: '2026-05-05'

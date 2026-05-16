@@ -4,12 +4,11 @@ aliases:
 - acid-base diet
 - alkaline diet
 - pH diet
-summary: The concept that foods can be categorised as acid-forming or alkaline-forming,
-  and that maintaining a diet of 70–80% alkaline-forming foods and 20–30% acid-forming
-  foods supports a healthy internal pH environment of approximately 6.5.
+summary: The concept that foods can be categorised as acid-forming or alkaline-forming, and that maintaining a diet of 70–80%
+  alkaline-forming foods and 20–30% acid-forming foods supports a healthy internal pH environment of approximately 6.5.
 common_symptoms:
 - inflammation
-- fatigue
+- lethargy
 red_flags: []
 related_topics:
 - inflammation
@@ -17,18 +16,15 @@ related_topics:
 key_mechanisms:
 - dietary-acid-load
 - systemic-ph-regulation
-coaching_scope_notes: Coaches can educate clients on shifting food ratios toward more
-  alkaline-forming whole foods (vegetables, fruits, certain legumes and nuts). Avoid
-  making disease-treatment claims.
-clinician_scope_notes: Body pH is tightly regulated by kidneys and lungs; urine pH
-  shifts more readily than blood pH. Clinical interpretation of acid-alkaline status
-  requires lab work.
+coaching_scope_notes: Coaches can educate clients on shifting food ratios toward more alkaline-forming whole foods (vegetables,
+  fruits, certain legumes and nuts). Avoid making disease-treatment claims.
+clinician_scope_notes: Body pH is tightly regulated by kidneys and lungs; urine pH shifts more readily than blood pH. Clinical
+  interpretation of acid-alkaline status requires lab work.
 evidence_tier: fm_specific_thin
 sources:
 - id: barbara-oneil-acid-alkaline-foods
   location: Main lecture body
-  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline
-    forming foods and 20-30% acid forming foods.
+  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline forming foods and 20-30% acid forming foods.
 version: 1
 status: active
 updated_at: '2026-05-05'

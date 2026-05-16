@@ -1,13 +1,11 @@
 slug: omega-3-fats-reduce-inflammation-support-estrogen-metabolism
-statement: Omega-3 fats (from fish, fish oil, and flax) reduce systemic inflammation
-  and may indirectly support healthy estrogen metabolism.
+statement: Omega-3 fats (from fish, fish oil, and flax) reduce systemic inflammation and may indirectly support healthy estrogen
+  metabolism.
 evidence_tier: plausible_emerging
-rationale: Larsson et al. (Am J Clin Nutr. 2004) is cited in the document regarding
-  n-3 fatty acids and cancer prevention mechanisms. The estrogen-specific benefit
-  is indirect via anti-inflammatory action.
-coaching_translation: Eating fatty fish like salmon or sardines 2–3x per week, or
-  supplementing with fish oil, may help keep inflammation low and support healthy
-  hormone balance.
+rationale: Larsson et al. (Am J Clin Nutr. 2004) is cited in the document regarding n-3 fatty acids and cancer prevention
+  mechanisms. The estrogen-specific benefit is indirect via anti-inflammatory action.
+coaching_translation: Eating fatty fish like salmon or sardines 2–3x per week, or supplementing with fish oil, may help keep
+  inflammation low and support healthy hormone balance.
 caveats:
 - Farm-raised fish may contain PCBs that disrupt estrogen metabolism — choose wild-caught
 - Omega-3 supplementation dose requires clinician guidance
@@ -15,14 +13,14 @@ linked_to_topics:
 - estrogen-metabolism
 - sex-hormone-binding-globulin
 linked_to_supplements:
-- fish-oil-epa-dha
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
-  quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels
-    of inflammation in the body, which may indirectly support healthy estrogen metabolism.
+  quote: Omega 3 fats from fish, fish oil, and flax have been shown to reduce levels of inflammation in the body, which may
+    indirectly support healthy estrogen metabolism.
 version: 1
 status: active
 updated_at: '2026-05-04'

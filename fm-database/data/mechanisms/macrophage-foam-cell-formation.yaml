@@ -5,13 +5,13 @@ aliases:
 - macrophage engulfment
 - immune-mediated plaque inflammation
 category: immune
-summary: Oxidized or glycated LDL is recognized as foreign by macrophages, which engulf
-  it to form foam cells. These foam cells release pro-inflammatory cytokines, perpetuating
-  a chronic inflammatory cycle that progressively builds the atherosclerotic plaque.
+summary: Oxidized or glycated LDL is recognized as foreign by macrophages, which engulf it to form foam cells. These foam
+  cells release pro-inflammatory cytokines, perpetuating a chronic inflammatory cycle that progressively builds the atherosclerotic
+  plaque.
 upstream_drivers:
 - ldl-oxidation-and-glycation
 - immune-activation
-- endothelial-injury
+- endothelial-dysfunction
 downstream_effects:
 - plaque-formation
 - arterial-narrowing
@@ -20,7 +20,7 @@ downstream_effects:
 related_mechanisms:
 - ldl-oxidation-and-glycation
 - chronic-inflammation
-- endothelial-injury
+- endothelial-dysfunction
 linked_to_topics:
 - atherosclerosis
 - cardiometabolic-disease
@@ -28,9 +28,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Atherosclerosis Mechanism
-  quote: macrophage, common picture, the macrophage angle, this oxidizes or glycates
-    the LDL level. And then once it starts creating an inflammation, and this whole
-    process of inflammation leads to formation of a foreign cell.
+  quote: macrophage, common picture, the macrophage angle, this oxidizes or glycates the LDL level. And then once it starts
+    creating an inflammation, and this whole process of inflammation leads to formation of a foreign cell.
 version: 1
 status: active
 updated_at: '2026-05-05'

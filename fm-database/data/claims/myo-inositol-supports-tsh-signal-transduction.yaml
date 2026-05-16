@@ -1,19 +1,16 @@
 slug: myo-inositol-supports-tsh-signal-transduction
-statement: Myo-inositol acts as a second messenger in TSH receptor signal transduction
-  and may support thyroid hormone regulation.
+statement: Myo-inositol acts as a second messenger in TSH receptor signal transduction and may support thyroid hormone regulation.
 evidence_tier: fm_specific_thin
-rationale: Myo-inositol's role in cell signaling for TSH, FSH, and insulin is established
-  at a mechanistic level. Clinical trial data specific to thyroid outcomes is limited;
-  this is commonly discussed in FM contexts.
-coaching_translation: Myo-inositol is a natural compound found in fruits and vegetables
-  that helps TSH signals reach thyroid cells more effectively. It may also support
-  blood sugar and reproductive hormone balance.
+rationale: Myo-inositol's role in cell signaling for TSH, FSH, and insulin is established at a mechanistic level. Clinical
+  trial data specific to thyroid outcomes is limited; this is commonly discussed in FM contexts.
+coaching_translation: Myo-inositol is a natural compound found in fruits and vegetables that helps TSH signals reach thyroid
+  cells more effectively. It may also support blood sugar and reproductive hormone balance.
 caveats:
 - Clinical evidence specific to thyroid outcomes is thin — plausibility is mechanistic.
 - No dose specified in the source document — clinician guidance advised.
 linked_to_topics:
 - thyroid-dysfunction
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements:
 - myo-inositol
 out_of_scope_notes: ''

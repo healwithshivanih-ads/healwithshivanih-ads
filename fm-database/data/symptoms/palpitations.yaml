@@ -17,8 +17,8 @@ aliases:
 - AFib
 - VFib
 category: cardiovascular
-description: Awareness of abnormal or rapid heartbeat arising from uncontrolled catecholamine
-  release and electrolyte imbalance associated with magnesium deficiency.
+description: Awareness of abnormal or rapid heartbeat arising from uncontrolled catecholamine release and electrolyte imbalance
+  associated with magnesium deficiency.
 display_name: Palpitations
 linked_to_mechanisms:
 - hpt-axis-dysregulation
@@ -26,7 +26,7 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - vagal-tone-reduction
 - autonomic-rebound
-- sympathetic-overdrive
+- sympathetic-dominance
 - adrenal-catecholamine-dysregulation
 - calcium-magnesium-imbalance
 linked_to_topics:
@@ -40,7 +40,7 @@ linked_to_topics:
 - emotional-healing-in-chronic-disease
 - autonomic-nervous-system-dysregulation
 - cardiometabolic-disease
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-cardiovascular-health
 - magnesium-neurological-mental-health
 severity: concerning
@@ -51,8 +51,7 @@ sources:
   quote: Palpitations, tremors (in hyper)
 - id: vitaone-thyroid-ebook
   location: 'Chapter 5: Disorders of the Thyroid'
-  quote: 'Symptoms: Weight loss, anxiety, palpitations, tremors, heat intolerance,
-    insomnia.'
+  quote: 'Symptoms: Weight loss, anxiety, palpitations, tremors, heat intolerance, insomnia.'
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Palpitations
@@ -64,16 +63,13 @@ sources:
   quote: Anxiety, insomnia, palpitations.
 - id: coconote-fm-biomarkers-cvs
   location: Autonomic Nervous System
-  quote: you have to look at the atrial fibrillation or ventricular fibrillation or
-    any other thing that is also the imbalance in the autonomic nervous system and
-    that may promote the cardiovascular disease.
+  quote: you have to look at the atrial fibrillation or ventricular fibrillation or any other thing that is also the imbalance
+    in the autonomic nervous system and that may promote the cardiovascular disease.
 - id: coconote-fm-magnesium-deficiency
   location: Anxiety and panic attacks section
-  quote: The adrenaline or non-adrenaline gets released excessively, which eventually
-    gives rise to palpitations and anxiety.
+  quote: The adrenaline or non-adrenaline gets released excessively, which eventually gives rise to palpitations and anxiety.
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
 version: 8
-when_to_refer: Refer for cardiac evaluation if frequent, sustained, or associated
-  with chest pain or syncope.
+when_to_refer: Refer for cardiac evaluation if frequent, sustained, or associated with chest pain or syncope.

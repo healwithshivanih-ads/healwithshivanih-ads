@@ -9,30 +9,28 @@ aliases:
 - type 2 diabetes risk
 - dysglycemia
 - blood glucose imbalance
-summary: A spectrum of conditions ranging from insulin resistance and prediabetes
-  to type 2 diabetes, characterized by impaired insulin secretion or tissue responsiveness
-  to insulin. Managed through lifestyle, diet, exercise, and targeted micronutrient
+summary: A spectrum of conditions ranging from insulin resistance and prediabetes to type 2 diabetes, characterized by impaired
+  insulin secretion or tissue responsiveness to insulin. Managed through lifestyle, diet, exercise, and targeted micronutrient
   support.
 common_symptoms:
-- post-meal-fatigue
+- energy-crashes
 - sugar-cravings
 - brain-fog
-- energy-crashes
 - increased-thirst
 - abdominal-weight-gain
 - mood-swings
 - blurry-vision
 - frequent-urination
-- fatigue
-- blood-sugar-spikes
-- weight-gain
-- glucose-spikes
+- lethargy
+- blood-sugar-dysregulation
+- unexplained-weight-gain
+- elevated-blood-glucose
 red_flags:
 - fasting glucose ≥126 mg/dL
 - HbA1c ≥6.5%
 - unintended weight loss with polyuria
 - recurrent hypoglycaemic episodes
-- peripheral neuropathy
+- axonal-neuropathy
 - visual changes
 - diagnosed type 2 diabetes requiring medication
 - gestational diabetes
@@ -44,7 +42,6 @@ related_topics:
 - metabolic-syndrome
 - type-2-diabetes
 - prediabetes
-- obesity
 key_mechanisms:
 - insulin-resistance
 - pancreatic-beta-cell-dysfunction
@@ -52,26 +49,22 @@ key_mechanisms:
 - skeletal-muscle-glucose-uptake
 - hepatic-insulin-sensitivity
 - hepatic-glucose-production
-coaching_scope_notes: Coaches can support lifestyle interventions (exercise, sleep,
-  stress, diet) and supplement education. Lab interpretation, medication management,
-  and diagnosis are out of scope.
-clinician_scope_notes: Clinicians should assess HbA1c, fasting glucose, HOMA-IR, and
-  micronutrient levels (Vitamin D, magnesium, zinc) to guide supplementation.
+coaching_scope_notes: Coaches can support lifestyle interventions (exercise, sleep, stress, diet) and supplement education.
+  Lab interpretation, medication management, and diagnosis are out of scope.
+clinician_scope_notes: Clinicians should assess HbA1c, fasting glucose, HOMA-IR, and micronutrient levels (Vitamin D, magnesium,
+  zinc) to guide supplementation.
 evidence_tier: strong
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Chapter 7 — Functional-Medicine Interventions
-  quote: 'Early identification of insulin resistance enables prevention and often
-    reversal of dysglycaemia through a three-pillar approach: dietary optimisation,
-    targeted supplementation, and lifestyle re-engineering.'
+  quote: 'Early identification of insulin resistance enables prevention and often reversal of dysglycaemia through a three-pillar
+    approach: dietary optimisation, targeted supplementation, and lifestyle re-engineering.'
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
-    body do not respond to insulin as expected.
+  quote: Insulin resistance (IR) is a condition where muscles & other tissues in the body do not respond to insulin as expected.
 - id: vitaone-health-coaching-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
-    body do not respond to insulin as expected.
+  quote: Insulin resistance (IR) is a condition where muscles & other tissues in the body do not respond to insulin as expected.
 version: 3
 status: active
 updated_at: '2026-05-04'

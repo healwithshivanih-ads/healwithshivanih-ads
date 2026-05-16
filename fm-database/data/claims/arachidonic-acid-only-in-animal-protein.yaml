@@ -1,31 +1,26 @@
 slug: arachidonic-acid-only-in-animal-protein
-statement: Arachidonic acid (AA), the primary omega-6 fatty acid substrate for pro-inflammatory
-  prostaglandins and leukotrienes, is found exclusively in animal protein (meat, poultry)
-  and not in plant foods or fish.
+statement: Arachidonic acid (AA), the primary omega-6 fatty acid substrate for pro-inflammatory prostaglandins and leukotrienes,
+  is found exclusively in animal protein (meat, poultry) and not in plant foods or fish.
 evidence_tier: strong
-rationale: Arachidonic acid is found predominantly in animal tissues; fish contain
-  EPA/DHA, not significant AA. Plants do not contain AA. This is established nutritional
-  biochemistry.
-coaching_translation: Animal meats are the main dietary source of the fat that fuels
-  your body's inflammatory fire. Reducing or eliminating them is particularly important
-  during active inflammation.
+rationale: Arachidonic acid is found predominantly in animal tissues; fish contain EPA/DHA, not significant AA. Plants do
+  not contain AA. This is established nutritional biochemistry.
+coaching_translation: Animal meats are the main dietary source of the fat that fuels your body's inflammatory fire. Reducing
+  or eliminating them is particularly important during active inflammation.
 caveats:
-- Some fish (e.g., farmed fish) may contain small amounts of AA depending on feed;
-  wild fish contain primarily EPA/DHA.
+- Some fish (e.g., farmed fish) may contain small amounts of AA depending on feed; wild fish contain primarily EPA/DHA.
 linked_to_topics:
 - chronic-inflammation
 - omega-3-omega-6-balance
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 - flaxseed-oil
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-approach-inflammation
   location: Diet – Arachidonic Acid Sources
-  quote: raccadonic acid is only found in animal protein. So it is found on chicken
-    or poultry or you can find out in a meat, lamb and all these things. Raccadonic
-    acid you will not find out anywhere in a plant. You will not find out raccadonic
+  quote: raccadonic acid is only found in animal protein. So it is found on chicken or poultry or you can find out in a meat,
+    lamb and all these things. Raccadonic acid you will not find out anywhere in a plant. You will not find out raccadonic
     acid in a fish.
 version: 1
 status: active

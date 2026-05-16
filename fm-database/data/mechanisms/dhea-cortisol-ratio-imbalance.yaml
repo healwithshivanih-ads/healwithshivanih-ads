@@ -11,9 +11,8 @@ aliases:
 - stress adaptation imbalance
 - adrenal ratio shift
 category: endocrine
-summary: Chronic HPA activation preferentially shunts adrenal steroidogenesis toward
-  cortisol, depleting DHEA and its downstream hormones. Low DHEA relative to cortisol
-  is associated with fatigue, mood disorders, immune dysregulation, and accelerated
+summary: Chronic HPA activation preferentially shunts adrenal steroidogenesis toward cortisol, depleting DHEA and its downstream
+  hormones. Low DHEA relative to cortisol is associated with fatigue, mood disorders, immune dysregulation, and accelerated
   ageing despite apparently normal cortisol on single-point testing.
 upstream_drivers:
 - chronic-stress
@@ -27,21 +26,20 @@ related_mechanisms:
 - hpa-axis-dysregulation
 - circadian-rhythm-disruption
 linked_to_topics:
-- adrenal-cortisol-resilience
+- adrenal-fatigue
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
-  quote: Patients with 'normal cortisol' but low DHEA, progesterone, or melatonin
-    — still anxious, fatigued, and inflamed.
+  quote: Patients with 'normal cortisol' but low DHEA, progesterone, or melatonin — still anxious, fatigued, and inflamed.
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
-  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
-    and DHEA levels begin to fall, signifying adrenal exhaustion.
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand, and DHEA levels begin to fall, signifying
+    adrenal exhaustion.
 - id: vitaone-fm-adrenal-hormones
   location: Key Mechanisms Explained — cortisol-dhea-imbalance
-  quote: Cortisol and DHEA are framed as opposing or balancing stress-adaptation markers,
-    with high cortisol and low DHEA reflecting impaired resilience.
+  quote: Cortisol and DHEA are framed as opposing or balancing stress-adaptation markers, with high cortisol and low DHEA
+    reflecting impaired resilience.
 version: 1
 status: active
 updated_at: '2026-05-05'

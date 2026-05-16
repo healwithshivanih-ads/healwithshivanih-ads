@@ -1,20 +1,17 @@
 slug: gluten-autoimmune-trigger-non-celiac
-statement: Gluten is a known trigger in many autoimmune diseases, even in non-celiac
-  patients.
+statement: Gluten is a known trigger in many autoimmune diseases, even in non-celiac patients.
 evidence_tier: plausible_emerging
-rationale: Non-celiac gluten sensitivity and gluten's role as a zonulin-releasing
-  trigger (Fasano research) supports this claim. Its universal application to all
-  autoimmune diseases is not consensus but is widely applied in functional medicine.
-coaching_translation: Many people with autoimmune conditions feel better removing
-  gluten, even without celiac disease. A 4–6 week elimination trial is a practical
-  first step.
+rationale: Non-celiac gluten sensitivity and gluten's role as a zonulin-releasing trigger (Fasano research) supports this
+  claim. Its universal application to all autoimmune diseases is not consensus but is widely applied in functional medicine.
+coaching_translation: Many people with autoimmune conditions feel better removing gluten, even without celiac disease. A 4–6
+  week elimination trial is a practical first step.
 caveats:
 - Not all autoimmune patients respond to gluten removal.
 - Source is educational synthesis.
 linked_to_topics:
 - autoimmune-disease
 - food-sensitivity
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []

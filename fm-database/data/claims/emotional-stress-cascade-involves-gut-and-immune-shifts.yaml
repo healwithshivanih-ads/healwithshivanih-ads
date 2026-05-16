@@ -1,20 +1,19 @@
 slug: emotional-stress-cascade-involves-gut-and-immune-shifts
-statement: The functional medicine cascade describes perceived emotional threat as
-  leading to HPA activation, mitochondrial strain, inflammation, altered gut barrier,
-  microbiome changes, immune dysregulation, hormonal shifts, and chronic disease expression.
+statement: The functional medicine cascade describes perceived emotional threat as leading to HPA activation, mitochondrial
+  strain, inflammation, altered gut barrier, microbiome changes, immune dysregulation, hormonal shifts, and chronic disease
+  expression.
 evidence_tier: fm_specific_thin
-rationale: The full cascade as described is a functional medicine systems model with
-  plausible mechanistic components; the integrated cascade framing is FM-specific
-  and not directly validated in a single RCT. Source is expert consensus without primary
-  citations.
-coaching_translation: This cascade framework is a useful coaching model for explaining
-  how emotional stress can affect multiple body systems over time.
+rationale: The full cascade as described is a functional medicine systems model with plausible mechanistic components; the
+  integrated cascade framing is FM-specific and not directly validated in a single RCT. Source is expert consensus without
+  primary citations.
+coaching_translation: This cascade framework is a useful coaching model for explaining how emotional stress can affect multiple
+  body systems over time.
 caveats:
 - Source is expert consensus without direct citations.
 - This is a systems model, not a single validated clinical pathway.
 linked_to_topics:
 - chronic-stress
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
 - chronic-inflammation
 out_of_scope_notes: ''
@@ -23,9 +22,9 @@ linked_to_supplements: []
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 13
-  quote: The functional medicine cascade describes perceived emotional threat as leading
-    to HPA activation, mitochondrial strain, inflammation, altered gut barrier, microbiome
-    changes, immune dysregulation, hormonal shifts, and chronic disease expression.
+  quote: The functional medicine cascade describes perceived emotional threat as leading to HPA activation, mitochondrial
+    strain, inflammation, altered gut barrier, microbiome changes, immune dysregulation, hormonal shifts, and chronic disease
+    expression.
 version: 1
 status: active
 updated_at: '2026-05-06'

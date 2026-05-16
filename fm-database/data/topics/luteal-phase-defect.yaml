@@ -3,10 +3,9 @@ display_name: Luteal Phase Defect
 aliases:
 - luteal phase deficiency
 - low progesterone relative estrogen dominance
-summary: A condition where progesterone production in the luteal phase of the menstrual
-  cycle is suboptimal, resulting in relative estrogen dominance even when absolute
-  estrogen levels are normal. Most common in perimenopausal women. Associated with
-  fibroids, spotting, anxiety, and mood disturbances.
+summary: A condition where progesterone production in the luteal phase of the menstrual cycle is suboptimal, resulting in
+  relative estrogen dominance even when absolute estrogen levels are normal. Most common in perimenopausal women. Associated
+  with fibroids, spotting, anxiety, and mood disturbances.
 common_symptoms:
 - spotting
 - anxiety
@@ -22,19 +21,16 @@ related_topics:
 - uterine-fibroids
 key_mechanisms:
 - progesterone-deficiency
-- corpus-luteum-insufficiency
-coaching_scope_notes: Coaches can support luteal phase health through lifestyle, nutrition,
-  and targeted supplements. Avoid recommending seed cycling (flax/pumpkin) in perimenopausal
-  patients with already-normal or elevated estrogen — this may worsen symptoms. Progesterone
-  supplementation is a clinician decision.
+coaching_scope_notes: Coaches can support luteal phase health through lifestyle, nutrition, and targeted supplements. Avoid
+  recommending seed cycling (flax/pumpkin) in perimenopausal patients with already-normal or elevated estrogen — this may
+  worsen symptoms. Progesterone supplementation is a clinician decision.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-estrogen-dominance
   location: What is Estrogen Dominance?
-  quote: The second thing is that the progesterone is on the lower side and the estrogen
-    is absolutely normal which is relative estrogen dominance secondary to progesterone
-    deficiency which we also call as luteal phase defect.
+  quote: The second thing is that the progesterone is on the lower side and the estrogen is absolutely normal which is relative
+    estrogen dominance secondary to progesterone deficiency which we also call as luteal phase defect.
 version: 1
 status: active
 updated_at: '2026-05-05'

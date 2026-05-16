@@ -14,31 +14,28 @@ aliases:
 - unwanted hair
 category: hormonal
 severity: common
-description: New or increased hair growth on the face (especially chin) in women,
-  associated with relative androgen excess from declining estrogen/progesterone or
-  elevated aromatase-driven androstenedione conversion.
+description: New or increased hair growth on the face (especially chin) in women, associated with relative androgen excess
+  from declining estrogen/progesterone or elevated aromatase-driven androstenedione conversion.
 linked_to_topics:
 - menopause
 - perimenopause
 - estrogen-dominance
 linked_to_mechanisms:
 - aromatase-activity
-- estrogen-progesterone-decline
+- estrogen-decline
 when_to_refer: ''
 sources:
 - id: coconote-fm-sex-hormones
   location: Symptoms of Menopause Transition
-  quote: new hair on the chin, so facial hair also tends to happen, muscle and joint
-    pains as well.
+  quote: new hair on the chin, so facial hair also tends to happen, muscle and joint pains as well.
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
-  quote: This can result in conditions such as enlargement of the prostate in men,
-    hair loss in both men and women, and extra facial hair and acne in women.
+  quote: This can result in conditions such as enlargement of the prostate in men, hair loss in both men and women, and extra
+    facial hair and acne in women.
 - id: coconote-fm-estrogen-dominance
   location: Case Study 1 — Hormone Profile
-  quote: She also complained of facial hair. Because maybe the total testosterone
-    must have binded to the sex hormone bovine and the free testosterone is a bit
-    on the higher side.
+  quote: She also complained of facial hair. Because maybe the total testosterone must have binded to the sex hormone bovine
+    and the free testosterone is a bit on the higher side.
 version: 1
 status: active
 updated_at: '2026-05-05'

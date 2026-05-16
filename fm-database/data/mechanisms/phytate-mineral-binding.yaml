@@ -5,9 +5,8 @@ aliases:
 - antinutrients
 - phytate chelation
 category: gut
-summary: Phytates (phytic acid) found in grains and legumes bind divalent minerals
-  such as zinc and iron, reducing their bioavailability. Soaking, sprouting, and fermenting
-  can reduce phytate content and improve mineral absorption.
+summary: Phytates (phytic acid) found in grains and legumes bind divalent minerals such as zinc and iron, reducing their bioavailability.
+  Soaking, sprouting, and fermenting can reduce phytate content and improve mineral absorption.
 upstream_drivers:
 - high-grain-legume-diet
 - food-preparation-method
@@ -17,15 +16,14 @@ downstream_effects:
 related_mechanisms:
 - heme-vs-nonheme-iron-absorption
 linked_to_topics:
-- zinc-sufficiency
+- zinc-nutrition
 - iron-deficiency
 evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Zinc'
-  quote: The bioavailability of zinc, or the amount retained and used by the body,
-    may be lower in grains and plant proteins because these foods also contain phytates,
-    which bind to zinc and inhibit its absorption.
+  quote: The bioavailability of zinc, or the amount retained and used by the body, may be lower in grains and plant proteins
+    because these foods also contain phytates, which bind to zinc and inhibit its absorption.
 version: 1
 status: active
 updated_at: '2026-05-02'

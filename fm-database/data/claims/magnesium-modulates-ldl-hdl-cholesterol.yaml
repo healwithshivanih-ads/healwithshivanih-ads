@@ -1,17 +1,13 @@
 slug: magnesium-modulates-ldl-hdl-cholesterol
-statement: Magnesium plays a role in lipid metabolism, helping to decrease LDL cholesterol
-  and increase HDL cholesterol.
+statement: Magnesium plays a role in lipid metabolism, helping to decrease LDL cholesterol and increase HDL cholesterol.
 evidence_tier: plausible_emerging
-rationale: Some studies suggest associations between magnesium status and favourable
-  lipid profiles; direct mechanistic RCT evidence is limited and the claim is based
-  on expert consensus here.
+rationale: Some studies suggest associations between magnesium status and favourable lipid profiles; direct mechanistic RCT
+  evidence is limited and the claim is based on expert consensus here.
 caveats:
-- Source is expert consensus lecture; supporting RCT evidence is limited and this
-  claim should be treated as plausible-emerging.
-coaching_translation: Adequate magnesium may support healthy cholesterol levels —
-  another reason it's worth prioritising.
+- Source is expert consensus lecture; supporting RCT evidence is limited and this claim should be treated as plausible-emerging.
+coaching_translation: Adequate magnesium may support healthy cholesterol levels — another reason it's worth prioritising.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-cardiovascular-health
 linked_to_supplements:
 - magnesium-glycinate
@@ -21,9 +17,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Atherosclerosis / cardiovascular section
-  quote: Magnesium also plays a role of natural stratum. It helps in decreasing the
-    LDL, which is the bad inflammatory cholesterol and increasing the HDL, high density
-    lipoprotein, which is the good cholesterol.
+  quote: Magnesium also plays a role of natural stratum. It helps in decreasing the LDL, which is the bad inflammatory cholesterol
+    and increasing the HDL, high density lipoprotein, which is the good cholesterol.
 version: 1
 status: active
 updated_at: '2026-05-05'

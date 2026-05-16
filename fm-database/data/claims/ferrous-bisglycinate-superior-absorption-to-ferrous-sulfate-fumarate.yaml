@@ -1,15 +1,13 @@
 slug: ferrous-bisglycinate-superior-absorption-to-ferrous-sulfate-fumarate
-statement: Ferrous bisglycinate has superior bioavailability compared to ferrous sulfate
-  and ferrous fumarate for iron supplementation.
+statement: Ferrous bisglycinate has superior bioavailability compared to ferrous sulfate and ferrous fumarate for iron supplementation.
 evidence_tier: plausible_emerging
-rationale: The chelated glycinate form is proposed to bypass standard non-heme iron
-  absorption pathways, resulting in better uptake. Some comparative trials exist but
-  the evidence base is still emerging relative to the established standard of ferrous
+rationale: The chelated glycinate form is proposed to bypass standard non-heme iron absorption pathways, resulting in better
+  uptake. Some comparative trials exist but the evidence base is still emerging relative to the established standard of ferrous
   sulfate.
-coaching_translation: The form of iron supplement matters — the glycinate-bound version
-  tends to be better absorbed than the standard pharmacy versions.
-out_of_scope_notes: Specific dosing recommendations must come from a clinician. Do
-  not recommend therapeutic iron doses without clinical oversight.
+coaching_translation: The form of iron supplement matters — the glycinate-bound version tends to be better absorbed than the
+  standard pharmacy versions.
+out_of_scope_notes: Specific dosing recommendations must come from a clinician. Do not recommend therapeutic iron doses without
+  clinical oversight.
 caveats:
 - Source is an expert lecture (moderate quality), not primary RCT evidence.
 - Comparative RCT evidence is growing but not yet at consensus level.
@@ -17,16 +15,15 @@ caveats:
 linked_to_topics:
 - iron-deficiency-anemia
 linked_to_supplements:
-- ferrous-bisglycinate
+- iron-bisglycinate
 - ferrous-sulfate
 - ferrous-fumarate
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-iron-deficiency-anemia
   location: Supplements / Management section
-  quote: The advantage of ferrous bisglycinate over the rest is it has a better viability,
-    number one. So the absorption is much better inside the body than the ferrous
-    fumarate and sulphate.
+  quote: The advantage of ferrous bisglycinate over the rest is it has a better viability, number one. So the absorption is
+    much better inside the body than the ferrous fumarate and sulphate.
 version: 1
 status: active
 updated_at: '2026-05-05'

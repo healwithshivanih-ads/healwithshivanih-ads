@@ -11,9 +11,8 @@ aliases:
 - pancreatic digestion
 - duodenal enzyme cascade
 category: gut
-summary: Insufficient production or secretion of pancreatic digestive enzymes (lipase,
-  protease, amylase) by the exocrine pancreas, leading to incomplete breakdown of
-  dietary fats, proteins, and carbohydrates in the duodenum and subsequent malabsorption.
+summary: Insufficient production or secretion of pancreatic digestive enzymes (lipase, protease, amylase) by the exocrine
+  pancreas, leading to incomplete breakdown of dietary fats, proteins, and carbohydrates in the duodenum and subsequent malabsorption.
 upstream_drivers:
 - chronic-pancreatitis
 - cystic-fibrosis
@@ -30,7 +29,7 @@ downstream_effects:
 - steatorrhea
 - weight-loss
 - fatigue
-- muscle-wasting
+- sarcopenia
 - edema
 - bone-loss
 - anemia
@@ -45,19 +44,16 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Exocrine Pancreatic Function Overview
-  quote: The pancreas also has an exocrine function where it produces certain digestive
-    enzymes. So certain digestive enzymes that pancreas produce for the digestion
-    of certain foods are, number one, lipase, specifically helps in the breakdown
-    of fats. Proteases helps in the breakdown of proteins and amylases helps in the
-    breakdown of carbohydrates.
+  quote: The pancreas also has an exocrine function where it produces certain digestive enzymes. So certain digestive enzymes
+    that pancreas produce for the digestion of certain foods are, number one, lipase, specifically helps in the breakdown
+    of fats. Proteases helps in the breakdown of proteins and amylases helps in the breakdown of carbohydrates.
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace Section
-  quote: if you do any kind of blood microbiome testing, then you can really see low
-    elastase. And if the elastase is low, then consider giving them pancreatic enzymes.
+  quote: if you do any kind of blood microbiome testing, then you can really see low elastase. And if the elastase is low,
+    then consider giving them pancreatic enzymes.
 - id: barbara-oneil-gi-tract
   location: Duodenum & Pancreas Section
-  quote: The pancreas also releases pancreatic amylase... designed to finalise starch
-    digestion, not begin it, finalize it.
+  quote: The pancreas also releases pancreatic amylase... designed to finalise starch digestion, not begin it, finalize it.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -25,7 +25,7 @@ summary: 'Toxin load is the cumulative result of lifetime toxicant exposures
 
   '
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
 - cold-intolerance
 red_flags: []
@@ -38,16 +38,14 @@ key_mechanisms:
 - mitochondrial-toxin-disruption
 - oxidative-stress-from-toxicants
 - bpa-endocrine-disruption
-coaching_scope_notes: 'Coach helps clients map their exposure timeline (occupational
-  history,
+coaching_scope_notes: 'Coach helps clients map their exposure timeline (occupational history,
 
   residential history, personal care, food/water sources) and identify
 
   avoidable exposures. Frame avoidance as the first-line detox strategy.
 
   '
-clinician_scope_notes: 'Quantitative assessment of toxin load (urinary metabolites,
-  biomarkers
+clinician_scope_notes: 'Quantitative assessment of toxin load (urinary metabolites, biomarkers
 
   of exposure, provoked challenge tests) belongs to the clinician.
 
@@ -56,8 +54,7 @@ evidence_tier: strong
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Calculating Toxic Load section
-  quote: total toxin load results from our exposures minus what we can actually get
-    rid of
+  quote: total toxin load results from our exposures minus what we can actually get rid of
 version: 1
 status: active
 updated_at: '2026-05-16'

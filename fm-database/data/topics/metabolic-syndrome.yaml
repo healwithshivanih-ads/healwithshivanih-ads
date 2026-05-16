@@ -9,26 +9,23 @@ aliases:
 - cardiometabolic syndrome
 - metabolic dysfunction
 - insulin resistance syndrome
-summary: Metabolic syndrome is characterized by central obesity, elevated triglycerides,
-  low HDL, elevated fasting blood sugar, and hypertension. It drives small dense LDL
-  formation, inflammation, and cardiovascular risk. Highly responsive to lifestyle
+summary: Metabolic syndrome is characterized by central obesity, elevated triglycerides, low HDL, elevated fasting blood sugar,
+  and hypertension. It drives small dense LDL formation, inflammation, and cardiovascular risk. Highly responsive to lifestyle
   intervention.
 common_symptoms:
-- weight-gain
-- fatigue
+- unexplained-weight-gain
+- lethargy
 - cravings
 - high-blood-sugar
-- central-adiposity
+- abdominal-obesity
 - elevated-triglycerides
 - low-hdl
-- hypertension
+- elevated-blood-pressure
 - elevated-fasting-glucose
 - increased-waist-circumference
 - elevated-fasting-insulin
-- high-triglycerides
-- high-crp
-- high-blood-pressure
-- central-obesity
+- elevated-hscrp
+- abdominal-weight-gain
 - elevated-fasting-blood-sugar
 red_flags:
 - severe-obesity
@@ -56,33 +53,30 @@ key_mechanisms:
 - insulin-resistance
 - metabolic-flexibility
 - visceral-adipose-inflammation
-- chronic-systemic-inflammation
+- chronic-inflammation
 - small-dense-ldl-atherogenesis
 - central-adiposity-inflammation
-coaching_scope_notes: Coaches can address diet quality, sugar reduction, exercise,
-  sleep, and weight management—all directly modifiable lifestyle drivers of metabolic
-  syndrome.
+coaching_scope_notes: Coaches can address diet quality, sugar reduction, exercise, sleep, and weight management—all directly
+  modifiable lifestyle drivers of metabolic syndrome.
 evidence_tier: strong
-clinician_scope_notes: Diagnosis requires clinical lab values and waist circumference
-  thresholds adjusted by ethnicity. Pharmaceutical management (metformin, statins)
-  is clinician scope.
+clinician_scope_notes: Diagnosis requires clinical lab values and waist circumference thresholds adjusted by ethnicity. Pharmaceutical
+  management (metformin, statins) is clinician scope.
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Promotes fat loss and satiety
 - id: vitaone-blood-sugar-ebook
   location: 'Section 4.1 — Effects of Insulin Resistance: Metabolic Syndrome'
-  quote: Insulin resistance initially represents as Metabolic Syndrome, characterised
-    by the following clinical and laboratory findings.
+  quote: Insulin resistance initially represents as Metabolic Syndrome, characterised by the following clinical and laboratory
+    findings.
 - id: coconote-fm-body-composition-bmi
   location: Metabolic Dysfunction / Biomarkers Section
-  quote: Their waist tape ratio is too high. Then you definitely want to do those
-    biomarkers in the carbohydrate section. You definitely want to be looking at their
-    fasting insulin and triglycerides and GGT.
+  quote: Their waist tape ratio is too high. Then you definitely want to do those biomarkers in the carbohydrate section.
+    You definitely want to be looking at their fasting insulin and triglycerides and GGT.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Metabolic Function and Risk Factors
-  quote: We frequently see elevated triglycerides, elevated fasting blood sugar, hemoglobin
-    A1C... high triglycerides in metabolic syndrome. It's part of metabolic syndrome.
+  quote: We frequently see elevated triglycerides, elevated fasting blood sugar, hemoglobin A1C... high triglycerides in metabolic
+    syndrome. It's part of metabolic syndrome.
 version: 4
 status: active
 updated_at: '2026-05-05'

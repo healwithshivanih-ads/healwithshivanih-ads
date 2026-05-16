@@ -13,9 +13,8 @@ aliases:
 - altered intestinal motility
 - MMC dysfunction
 category: gut
-summary: Reduced or dysregulated movement of intestinal contents creates stasis that
-  allows bacterial and fungal overgrowth. Can be structural (anatomic abnormalities,
-  surgical) or functional (stress, thyroid dysfunction, hormonal changes).
+summary: Reduced or dysregulated movement of intestinal contents creates stasis that allows bacterial and fungal overgrowth.
+  Can be structural (anatomic abnormalities, surgical) or functional (stress, thyroid dysfunction, hormonal changes).
 upstream_drivers:
 - vagal-nerve-dysregulation
 - thyroid-dysfunction
@@ -23,12 +22,11 @@ upstream_drivers:
 - anatomic-abnormalities
 - medications
 downstream_effects:
-- gut-dysbiosis
-- sibo
+- dysbiosis-gut-microbiome-imbalance
 - constipation
 - fermentation-gas-production
 related_mechanisms:
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - vagal-nerve-dysregulation
 linked_to_topics:
 - sibo
@@ -36,12 +34,10 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-sibo-sifo
   location: Pathogenesis of SIBO
-  quote: And altered GI motility, it could be structural one also or it could be a
-    functional one as well.
+  quote: And altered GI motility, it could be structural one also or it could be a functional one as well.
 - id: vitaone-gut-cheatsheet
   location: SIBO Cheatsheet — Root Causes
-  quote: Impaired motility (vagus dysfunction, hypothyroidism, diabetes, adhesions,
-    opioid use) — Root Causes [of SIBO]
+  quote: Impaired motility (vagus dysfunction, hypothyroidism, diabetes, adhesions, opioid use) — Root Causes [of SIBO]
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Bloating and Gas
   quote: Enhances MMC (migrating motor complex).

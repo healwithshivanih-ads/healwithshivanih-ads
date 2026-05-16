@@ -8,18 +8,15 @@ aliases:
 - low mood with fatigue
 category: mood
 severity: common
-description: A depressive state characterized by low energy and lethargy, associated
-  with low cortisol states in the HPA axis questionnaire.
-when_to_refer: Refer to mental health professional if depression is severe, persistent,
-  or accompanied by suicidal ideation.
+description: A depressive state characterized by low energy and lethargy, associated with low cortisol states in the HPA axis
+  questionnaire.
+when_to_refer: Refer to mental health professional if depression is severe, persistent, or accompanied by suicidal ideation.
 linked_to_topics:
 - hpa-axis-dysregulation
 - chronic-stress
-- hpa-axis-dysfunction
 linked_to_mechanisms:
 - hpa-axis-dysregulation
 - dhea-depletion
-- cortisol-dhea-imbalance
 sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'

@@ -7,11 +7,11 @@ aliases:
 - canker sores
 category: gi
 severity: common
-description: Recurrent painful sores in the mouth linked to folate and/or B12 deficiency,
-  reflecting impaired cell turnover in mucosal tissues.
+description: Recurrent painful sores in the mouth linked to folate and/or B12 deficiency, reflecting impaired cell turnover
+  in mucosal tissues.
 linked_to_topics:
 - iron-deficiency-anemia
-- folate-vitamin-b9
+- folate-nutrition
 - vitamin-b12
 linked_to_mechanisms: []
 when_to_refer: Refer if persistent or recurring despite nutritional support.

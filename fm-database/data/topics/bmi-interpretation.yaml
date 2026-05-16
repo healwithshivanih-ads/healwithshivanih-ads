@@ -3,11 +3,10 @@ display_name: BMI Interpretation
 aliases:
 - body mass index
 - weight-for-height
-summary: 'BMI (weight/height²) is a standard screening tool with ranges: <18.5 underweight,
-  18.5–25 ideal, 25–30 overweight, >30 obese. Useful as a starting point but limited
-  by inability to distinguish muscle from fat or capture fat distribution.'
+summary: 'BMI (weight/height²) is a standard screening tool with ranges: <18.5 underweight, 18.5–25 ideal, 25–30 overweight,
+  >30 obese. Useful as a starting point but limited by inability to distinguish muscle from fat or capture fat distribution.'
 common_symptoms:
-- excess-body-fat
+- excess-body-weight
 - low-lean-muscle-mass
 red_flags:
 - bmi-above-30
@@ -17,18 +16,16 @@ related_topics:
 - metabolic-syndrome
 key_mechanisms:
 - insulin-resistance
-coaching_scope_notes: Coaches should understand BMI limitations — high BMI may reflect
-  muscle mass (athletes); normal BMI does not exclude metabolic dysfunction. Use alongside
-  waist-to-hip ratio.
-clinician_scope_notes: BMI alone is insufficient; always integrate with waist circumference,
-  waist-to-hip ratio, and BIA-derived body fat percentage.
+coaching_scope_notes: Coaches should understand BMI limitations — high BMI may reflect muscle mass (athletes); normal BMI
+  does not exclude metabolic dysfunction. Use alongside waist-to-hip ratio.
+clinician_scope_notes: BMI alone is insufficient; always integrate with waist circumference, waist-to-hip ratio, and BIA-derived
+  body fat percentage.
 evidence_tier: strong
 sources:
 - id: coconote-fm-body-composition-bmi
   location: BMI Section
-  quote: It's not perfect, but it's a good starting point. And so, you know, what
-    do we know about the BMI? Less than 18.5 is considered underweight and greater
-    than 25 is overweight with greater than 30 obese.
+  quote: It's not perfect, but it's a good starting point. And so, you know, what do we know about the BMI? Less than 18.5
+    is considered underweight and greater than 25 is overweight with greater than 30 obese.
 version: 1
 status: active
 updated_at: '2026-05-05'

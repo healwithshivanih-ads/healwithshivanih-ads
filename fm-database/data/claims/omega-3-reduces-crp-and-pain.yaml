@@ -1,31 +1,26 @@
 slug: omega-3-reduces-crp-and-pain
-statement: Supplementing with high-dose omega-3 fatty acids (EPA/DHA) reduces elevated
-  CRP and associated musculoskeletal pain, particularly in individuals with low baseline
-  omega-3 status.
+statement: Supplementing with high-dose omega-3 fatty acids (EPA/DHA) reduces elevated CRP and associated musculoskeletal
+  pain, particularly in individuals with low baseline omega-3 status.
 evidence_tier: plausible_emerging
-rationale: Multiple RCTs support omega-3 supplementation reducing CRP and joint pain
-  in inflammatory conditions. The specific personal case presented is anecdotal but
-  consistent with the broader literature.
-coaching_translation: If your client is doing everything right and still has lingering
-  pain or inflammation markers, checking omega-3 status and supplementing 2–4g/day
-  of EPA+DHA may be the missing piece.
+rationale: Multiple RCTs support omega-3 supplementation reducing CRP and joint pain in inflammatory conditions. The specific
+  personal case presented is anecdotal but consistent with the broader literature.
+coaching_translation: If your client is doing everything right and still has lingering pain or inflammation markers, checking
+  omega-3 status and supplementing 2–4g/day of EPA+DHA may be the missing piece.
 caveats:
 - Clinical case in lecture is anecdotal (n=1).
-- Dose of 4g/day should be confirmed with a clinician, especially for those on blood
-  thinners.
+- Dose of 4g/day should be confirmed with a clinician, especially for those on blood thinners.
 - Source is expert lecture, not a primary RCT.
 linked_to_topics:
 - chronic-pain-and-fatigue
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study
-  quote: I started now good quality omega-3 supplement and now my acne went away completely
-    and the only pain as if I think through that when my CRP was elevated, the only
-    pain I had... after starting a high omega-3, my dyspnea went away.
+  quote: I started now good quality omega-3 supplement and now my acne went away completely and the only pain as if I think
+    through that when my CRP was elevated, the only pain I had... after starting a high omega-3, my dyspnea went away.
 version: 1
 status: active
 updated_at: '2026-05-05'

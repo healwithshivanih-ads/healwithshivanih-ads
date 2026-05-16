@@ -10,9 +10,8 @@ aliases:
 - sex hormone deficiency
 - ovarian hormone insufficiency
 category: endocrine
-summary: Progressive decline in ovarian estradiol production during perimenopause
-  and menopause, contributing to vasomotor symptoms, mood changes, bone loss, and
-  altered metabolic risk.
+summary: Progressive decline in ovarian estradiol production during perimenopause and menopause, contributing to vasomotor
+  symptoms, mood changes, bone loss, and altered metabolic risk.
 upstream_drivers:
 - ovarian senescence (natural)
 - surgical / chemotherapy-induced menopause
@@ -33,7 +32,7 @@ downstream_effects:
 - anxiety
 - insomnia
 - bone-loss
-- metabolic-dysfunction
+- insulin-resistance
 related_mechanisms:
 - leaky-gut
 - microbial-diversity-decline
@@ -57,8 +56,8 @@ sources:
   quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
 - id: coconote-fm-sex-hormones
   location: Risk Factors and Hormone Actions
-  quote: Initially the progesterone goes down or secondary to any kind of a progesterone
-    going down, then it happens in estrogen dominance.
+  quote: Initially the progesterone goes down or secondary to any kind of a progesterone going down, then it happens in estrogen
+    dominance.
 evidence_tier: strong
 version: 2
 status: active

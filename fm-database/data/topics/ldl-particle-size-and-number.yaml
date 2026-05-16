@@ -5,11 +5,9 @@ aliases:
 - small dense LDL
 - LDL subfractions
 - pattern A vs pattern B LDL
-summary: It is not total LDL cholesterol concentration alone but the number and size
-  of LDL particles that most accurately predict atherosclerosis risk. Small, dense
-  LDL particles penetrate the endothelium more readily, become oxidized, and trigger
-  macrophage-mediated plaque formation. Large, buoyant LDL particles carry lower risk
-  even at higher concentrations.
+summary: It is not total LDL cholesterol concentration alone but the number and size of LDL particles that most accurately
+  predict atherosclerosis risk. Small, dense LDL particles penetrate the endothelium more readily, become oxidized, and trigger
+  macrophage-mediated plaque formation. Large, buoyant LDL particles carry lower risk even at higher concentrations.
 common_symptoms:
 - asymptomatic
 - dyslipidemia
@@ -19,25 +17,22 @@ red_flags:
 related_topics:
 - cardiovascular-risk-assessment
 - atherosclerosis-pathogenesis
-- dyslipidemia-management
+- dyslipidemia
 - insulin-resistance
 key_mechanisms:
-- small-dense-ldl-endothelial-penetration
+- small-dense-ldl-atherogenesis
 - ldl-oxidation
 - endothelial-dysfunction
-coaching_scope_notes: Coaches can explain particle size concepts to clients in lay
-  terms. LDL particle number testing (NMR lipoprofile) is available in the US and
-  Europe but not widely in India. TG/HDL ratio and standard lipid profile patterns
+coaching_scope_notes: Coaches can explain particle size concepts to clients in lay terms. LDL particle number testing (NMR
+  lipoprofile) is available in the US and Europe but not widely in India. TG/HDL ratio and standard lipid profile patterns
   can serve as proxies.
-clinician_scope_notes: LDL-P testing (NMR lipoprofile) provides direct particle number
-  and size. Pattern D (high number + high small dense LDL) carries the highest atherogenic
-  risk.
+clinician_scope_notes: LDL-P testing (NMR lipoprofile) provides direct particle number and size. Pattern D (high number +
+  high small dense LDL) carries the highest atherogenic risk.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: LDL particle overview section
-  quote: It is not the total concentration of LDL that carries the risk factor. It's
-    basically the number of LDL and the size.
+  quote: It is not the total concentration of LDL that carries the risk factor. It's basically the number of LDL and the size.
 version: 1
 status: active
 updated_at: '2026-05-05'

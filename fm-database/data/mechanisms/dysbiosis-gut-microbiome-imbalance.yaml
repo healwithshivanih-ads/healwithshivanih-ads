@@ -39,11 +39,11 @@ upstream_drivers:
 - stress
 - environmental-toxins
 downstream_effects:
-- intestinal-permeability
+- leaky-gut
 - food-sensitivity-igg-iga-mediated
 - chronic-gut-inflammation
 related_mechanisms:
-- intestinal-permeability
+- leaky-gut
 - low-stomach-acid-antigen-load
 linked_to_topics:
 - autoimmunity-leaky-gut-triad

@@ -11,12 +11,10 @@ aliases:
 summary: Knee pain patterns are categorized into degenerative, autoimmune, post-injury, gout-related, metabolic, and hormonal
   subtypes. Nutritional and anti-inflammatory approaches vary by root cause.
 common_symptoms:
-- joint-stiffness
-- joint-swelling
+- joint-pain
 - joint-redness-and-warmth
 - reduced-mobility
-- cyclic-knee-stiffness
-- joint-redness
+- joint-stiffness-and-swelling
 red_flags:
 - paralysis
 - severe neurological symptoms
@@ -30,11 +28,11 @@ related_topics:
 - chronic-inflammation
 - insulin-resistance
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - nutrition-deficiency
 - pcos
 key_mechanisms:
-- oxidative-stress-and-inflammation
+- oxidative-stress
 - gut-barrier-and-nutrient-absorption
 - calcium-trafficking-and-bone-mineralization
 coaching_scope_notes: Categorize by root cause before recommending supplements. Anti-inflammatory dietary pattern, movement,

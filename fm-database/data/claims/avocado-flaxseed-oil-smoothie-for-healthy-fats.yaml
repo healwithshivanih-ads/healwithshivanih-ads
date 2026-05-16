@@ -1,28 +1,24 @@
 slug: avocado-flaxseed-oil-smoothie-for-healthy-fats
-statement: Combining avocado and flaxseed oil in a smoothie provides monounsaturated
-  and alpha-linolenic acid fats that may support HDL cholesterol and reduce cardiovascular
-  risk markers.
+statement: Combining avocado and flaxseed oil in a smoothie provides monounsaturated and alpha-linolenic acid fats that may
+  support HDL cholesterol and reduce cardiovascular risk markers.
 evidence_tier: plausible_emerging
-rationale: The Power Punch Smoothie uses half an avocado and 1 tbsp flaxseed oil as
-  its fat base, alongside seeds. Both avocado (MUFA) and flaxseed oil (ALA) have supporting
-  evidence for favourable lipid effects.
-coaching_translation: This smoothie is packed with healthy fats from avocado and flaxseed
-  oil that can support your heart health and keep you full longer.
+rationale: The Power Punch Smoothie uses half an avocado and 1 tbsp flaxseed oil as its fat base, alongside seeds. Both avocado
+  (MUFA) and flaxseed oil (ALA) have supporting evidence for favourable lipid effects.
+coaching_translation: This smoothie is packed with healthy fats from avocado and flaxseed oil that can support your heart
+  health and keep you full longer.
 caveats:
-- Single-meal contribution is modest; overall dietary pattern matters more than any
-  one ingredient.
+- Single-meal contribution is modest; overall dietary pattern matters more than any one ingredient.
 linked_to_topics:
 - cardiometabolic-diet
 linked_to_supplements:
 - flaxseed-oil
-- flaxseed-ground
+- flax-seed
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cardiometabolic-recipes
   location: Power Punch Smoothie
-  quote: In a blender, add Cow milk or Almond milk, avocado, flaxseed oil and protein
-    powder.
+  quote: In a blender, add Cow milk or Almond milk, avocado, flaxseed oil and protein powder.
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -8,16 +8,14 @@ aliases:
 - holistic self-care
 - wellness practices
 - lifestyle self-care
-summary: A multi-domain framework encompassing physical, mental/emotional/spiritual,
-  professional, and social wellbeing practices. Regular self-care is associated with
-  greater creativity, happiness, and life success.
+summary: A multi-domain framework encompassing physical, mental/emotional/spiritual, professional, and social wellbeing practices.
+  Regular self-care is associated with greater creativity, happiness, and life success.
 common_symptoms:
-- fatigue
+- lethargy
 - burnout
 - low-mood
 - social-isolation
-- social-disconnection
-- poor-sleep-quality
+- sleep-disruption
 - stress
 red_flags:
 - persistent low mood or hopelessness unresponsive to self-care
@@ -28,28 +26,24 @@ red_flags:
 - clinical depression
 related_topics:
 - stress-management
-- sleep-hygiene
+- sleep
 - mindfulness
 - mindful-breathing
 - gratitude-practice
-- stress-response
+- anxiety
 - emotional-wellbeing
 key_mechanisms:
 - parasympathetic-activation
 - hpa-axis-dysregulation
-- hpa-axis-regulation
 - positive-affect-upregulation
-coaching_scope_notes: Use the Self-Care Questionnaire to help clients identify under-tended
-  domains. Coaches can set goals and track self-care behaviors across physical, emotional,
-  professional, and social domains.
-clinician_scope_notes: Refer if questionnaire reveals clinical-level distress, depression,
-  or burnout symptoms.
+coaching_scope_notes: Use the Self-Care Questionnaire to help clients identify under-tended domains. Coaches can set goals
+  and track self-care behaviors across physical, emotional, professional, and social domains.
+clinician_scope_notes: Refer if questionnaire reveals clinical-level distress, depression, or burnout symptoms.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Self-Care Questionnaire
-  quote: Research shows that people who take time to recharge and restore are more
-    creative, happier, and more successful.
+  quote: Research shows that people who take time to recharge and restore are more creative, happier, and more successful.
 version: 3
 status: active
 updated_at: '2026-05-04'

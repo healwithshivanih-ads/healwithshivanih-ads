@@ -15,9 +15,8 @@ aliases:
 - willis-ekbom disease
 category: neurological
 severity: common
-description: Uncomfortable urge to move legs at rest, strongly associated with brain
-  iron deficiency and dopaminergic pathway dysfunction, even when serum ferritin appears
-  adequate.
+description: Uncomfortable urge to move legs at rest, strongly associated with brain iron deficiency and dopaminergic pathway
+  dysfunction, even when serum ferritin appears adequate.
 linked_to_topics:
 - chronic-pain-and-fatigue
 - iron-deficiency-anemia
@@ -26,15 +25,13 @@ linked_to_mechanisms:
 - nutrient-malabsorption
 - ferritin-storage-depletion
 - hepcidin-mediated-iron-block
-- gut-barrier-iron-absorption
-when_to_refer: Refer for neurological review if refractory or severely disrupting
-  sleep.
+- heme-vs-nonheme-iron-absorption
+when_to_refer: Refer for neurological review if refractory or severely disrupting sleep.
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
-  quote: If they start with the magnesium, people, they complain with the restless
-    leg syndrome or even if they are not having a proper sleep, then magnesium really
-    helps.
+  quote: If they start with the magnesium, people, they complain with the restless leg syndrome or even if they are not having
+    a proper sleep, then magnesium really helps.
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
   quote: Restless leg, cold intolerance because of lack of oxygen.
@@ -43,9 +40,8 @@ sources:
   quote: Restless legs and anxiety linked to brain iron deficiency
 - id: coconote-fm-magnesium-deficiency
   location: Musculoskeletal system
-  quote: There is excessive accumulation of calcium at the level of the calf muscles
-    which increase the contractility giving you a dragging sensation at the level
-    of the calf muscles.
+  quote: There is excessive accumulation of calcium at the level of the calf muscles which increase the contractility giving
+    you a dragging sensation at the level of the calf muscles.
 version: 3
 status: active
 updated_at: '2026-05-05'

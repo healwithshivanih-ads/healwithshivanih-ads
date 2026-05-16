@@ -30,9 +30,8 @@ aliases:
 - sympathetic nervous system activation
 - noradrenaline release
 category: neurological
-summary: Persistent fight-or-flight activation increases catecholamines, heart rate,
-  blood pressure, and shallow breathing, suppressing parasympathetic recovery and
-  driving inflammation.
+summary: Persistent fight-or-flight activation increases catecholamines, heart rate, blood pressure, and shallow breathing,
+  suppressing parasympathetic recovery and driving inflammation.
 upstream_drivers:
 - stress
 - anger
@@ -52,7 +51,7 @@ downstream_effects:
 - poor-hrv
 - chronic-inflammation
 related_mechanisms:
-- hpa-axis-overactivation
+- cortisol-elevation
 - neuroimmune-inflammation-loop
 linked_to_topics:
 - cardiovascular-health
@@ -64,26 +63,24 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Key Mechanisms Explained — sympathetic-dominance
-  quote: Persistent fight-or-flight activation is described as increasing catecholamines,
-    heart rate, blood pressure, shallow breathing, and alert-mode physiology.
+  quote: Persistent fight-or-flight activation is described as increasing catecholamines, heart rate, blood pressure, shallow
+    breathing, and alert-mode physiology.
 - id: vitaone-adrenal-toolkit
   location: Hypercortisolism
-  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
-    lowered, and blood sugar levels initially rise.
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously lowered, and blood sugar levels initially
+    rise.
 - id: ask-expert-coaching-stress-kids
   location: Stress Client Topic Discussion
-  quote: just to get out of her sympathetic nervous system. I just kind of explain
-    it to her what it does.
+  quote: just to get out of her sympathetic nervous system. I just kind of explain it to her what it does.
 - id: espeland-2022-cold-water-immersion
   location: Pain and Inflammation
-  quote: Potential analgesic effects via noradrenaline release and sympathetic nervous
-    system activation.
+  quote: Potential analgesic effects via noradrenaline release and sympathetic nervous system activation.
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Stress + Autonomic Balance section
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
-  quote: As adrenaline surges during stress, digestive enzymes are simultaneously
-    lowered, and blood sugar levels initially rise.
+  quote: As adrenaline surges during stress, digestive enzymes are simultaneously lowered, and blood sugar levels initially
+    rise.
 version: 1
 status: active
 updated_at: '2026-05-06'

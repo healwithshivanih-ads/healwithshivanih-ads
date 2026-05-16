@@ -1,24 +1,22 @@
 slug: slippery-elm-coats-soothes-and-heals-gut-lining
-statement: Slippery elm (pounded bark of the slippery elm tree) coats, soothes, and
-  heals the inflamed lining of the gastrointestinal tract.
+statement: Slippery elm (pounded bark of the slippery elm tree) coats, soothes, and heals the inflamed lining of the gastrointestinal
+  tract.
 evidence_tier: fm_specific_thin
-rationale: Slippery elm is a traditional herbal remedy with mucilaginous properties
-  that are biologically plausible for gut coating and soothing. Peer-reviewed RCT
-  evidence in IBD is thin; it is widely used in functional and naturopathic medicine.
-coaching_translation: Slippery elm powder mixed in water can help calm and coat an
-  irritated gut lining. It is particularly helpful during flares of gut inflammation.
-out_of_scope_notes: Acute IBD flares with rectal bleeding require clinician management.
-  Slippery elm may be used as a complementary support but not as a replacement for
-  medical treatment.
+rationale: Slippery elm is a traditional herbal remedy with mucilaginous properties that are biologically plausible for gut
+  coating and soothing. Peer-reviewed RCT evidence in IBD is thin; it is widely used in functional and naturopathic medicine.
+coaching_translation: Slippery elm powder mixed in water can help calm and coat an irritated gut lining. It is particularly
+  helpful during flares of gut inflammation.
+out_of_scope_notes: Acute IBD flares with rectal bleeding require clinician management. Slippery elm may be used as a complementary
+  support but not as a replacement for medical treatment.
 caveats:
 - Peer-reviewed RCT evidence in humans is limited.
 - Should not replace conventional medical management for severe IBD.
 - Source is a practitioner talk (expert_consensus, moderate quality).
 linked_to_topics:
 - inflammatory-bowel-conditions
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 linked_to_supplements:
-- slippery-elm-bark
+- slippery-elm
 linked_to_mechanisms: []
 sources:
 - id: barbara-oneil-gi-tract

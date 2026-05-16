@@ -1,26 +1,24 @@
 slug: hdl-performs-reverse-cholesterol-transport
-statement: HDL performs reverse cholesterol transport, removing excess cholesterol
-  from cells and returning it to the liver for conversion to bile salts.
+statement: HDL performs reverse cholesterol transport, removing excess cholesterol from cells and returning it to the liver
+  for conversion to bile salts.
 evidence_tier: strong
-rationale: Core lipid physiology, established in peer-reviewed biochemistry and cardiology
-  literature. HDL-mediated reverse cholesterol transport is a fundamental anti-atherogenic
-  mechanism.
-coaching_translation: HDL — the 'good cholesterol' — acts like a clean-up crew, picking
-  up excess cholesterol from your arteries and returning it to your liver to be safely
-  eliminated.
+rationale: Core lipid physiology, established in peer-reviewed biochemistry and cardiology literature. HDL-mediated reverse
+  cholesterol transport is a fundamental anti-atherogenic mechanism.
+coaching_translation: HDL — the 'good cholesterol' — acts like a clean-up crew, picking up excess cholesterol from your arteries
+  and returning it to your liver to be safely eliminated.
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-risk-assessment
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 caveats: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cvs-risk-assessment
   location: HDL (Slide 8)
-  quote: The function of HDL is to remove the excess cholesterol from the cells… is
-    brought back to the liver by HDL in a process known as Reverse Cholesterol Transport.
+  quote: The function of HDL is to remove the excess cholesterol from the cells… is brought back to the liver by HDL in a
+    process known as Reverse Cholesterol Transport.
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -11,26 +11,22 @@ aliases:
 - buffalo hump
 category: metabolic
 severity: concerning
-description: Weight gain concentrated around the abdomen, back of neck, and face/cheeks
-  — a hallmark sign of elevated cortisol states, potentially indicating Cushing's
-  syndrome.
-when_to_refer: Refer to clinician if accompanied by stretch marks not from weight
-  loss, to rule out Cushing's syndrome.
+description: Weight gain concentrated around the abdomen, back of neck, and face/cheeks — a hallmark sign of elevated cortisol
+  states, potentially indicating Cushing's syndrome.
+when_to_refer: Refer to clinician if accompanied by stretch marks not from weight loss, to rule out Cushing's syndrome.
 linked_to_topics:
 - insulin-resistance
 - metabolic-syndrome
 - hypercortisolism
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 linked_to_mechanisms:
 - insulin-resistance
 - visceral-adipose-inflammation
 - hpa-axis-dysregulation
-- cortisol-dhea-imbalance
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.1 — Compensated Insulin Resistance (Early IR)
-  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the
-    abdomen.
+  quote: Post-meal fatigue, sugar cravings, brain fog, mild weight gain around the abdomen.
 - id: vitaone-health-coaching-toolkit
   location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
   quote: Weight gain around your abdomen, back of neck, and in the face and cheeks.

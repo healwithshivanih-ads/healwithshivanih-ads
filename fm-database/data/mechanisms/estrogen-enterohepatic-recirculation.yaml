@@ -25,22 +25,20 @@ aliases:
 - estrogen enterohepatic recirculation
 - gut-driven estrogen dominance
 category: gut
-summary: After use, estrogen is metabolized by the liver and excreted into the gut
-  via bile. With adequate fiber and transit time, it is eliminated in stool. When
-  transit time is slow (constipation), gut bacteria can deconjugate estrogen metabolites,
-  allowing reabsorption into circulation — contributing to estrogen excess and associated
-  conditions including breast cancer risk.
+summary: After use, estrogen is metabolized by the liver and excreted into the gut via bile. With adequate fiber and transit
+  time, it is eliminated in stool. When transit time is slow (constipation), gut bacteria can deconjugate estrogen metabolites,
+  allowing reabsorption into circulation — contributing to estrogen excess and associated conditions including breast cancer
+  risk.
 upstream_drivers:
 - dysbiosis (overgrowth of beta-glucuronidase-producing species)
 - low fiber intake (slow transit, less binding)
 - constipation
 - antibiotic disruption
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - low-fiber-diet
 - antibiotic-use
 - low-dietary-fiber
 - slow-bowel-transit
-- gut-microbiome-dysbiosis
 downstream_effects:
 - excess estrogen reabsorption
 - estrogen-dominant symptoms (breast tenderness, weight retention)
@@ -63,7 +61,7 @@ linked_to_topics:
 - estrobolome
 - perimenopause
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - estrogen-dominance
 - pcos
 - estrogen-and-fiber-transit-time
@@ -73,30 +71,27 @@ sources:
   location: Session 3 — Estrobolome & Estrogen Metabolism
 - id: vitaone-sex-hormones-cheatsheet
   location: Top Nutrients to Balance Estrogen
-  quote: Improve gut estrogen clearance by modulating the estrobolome and reducing
-    β-glucuronidase activity.
+  quote: Improve gut estrogen clearance by modulating the estrobolome and reducing β-glucuronidase activity.
 - id: ask-expert-hormonal-health-bhrt
   location: Fiber, Transit Time, and Estrogen Metabolism
-  quote: fiber helps the body process estrogen. You make estrogen, use it and poop
-    it out. You make estrogen, use it and poop it out. A big part of estrogen homeostasis
-    is if we had more time, it's transit time.
+  quote: fiber helps the body process estrogen. You make estrogen, use it and poop it out. You make estrogen, use it and poop
+    it out. A big part of estrogen homeostasis is if we had more time, it's transit time.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
-  quote: Fiber binds harmful estrogen metabolites and other toxins in the digestive
-    tract, which can be eliminated by the body.
+  quote: Fiber binds harmful estrogen metabolites and other toxins in the digestive tract, which can be eliminated by the
+    body.
 - id: coconote-fm-estrogen-dominance
   location: Causes of Estrogen Dominance
-  quote: Bad bacteria produces an enzyme which is known as beta-glucuronidase. Beta-glucuronidase
-    is responsible for the reabsorption of estrogen again into the bloodstream.
+  quote: Bad bacteria produces an enzyme which is known as beta-glucuronidase. Beta-glucuronidase is responsible for the reabsorption
+    of estrogen again into the bloodstream.
 - id: coconote-fm-sex-hormones
   location: Hormone Metabolism and Detoxification
-  quote: high enzymatic production of beta glucolidase in their gut which causes the
-    detoxification and excretion of the hormone to be absolutely dysfunctional
+  quote: high enzymatic production of beta glucolidase in their gut which causes the detoxification and excretion of the hormone
+    to be absolutely dysfunctional
 - id: coconote-fm-gut-skin-hormone-axis
   location: Estrogen Detoxification Discussion
-  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot
-    of estrogen circulation in the blood, it basically stops its excretion from the
-    body.
+  quote: Beta glucuronidase actually unesterifies the estrogen and it leads to a lot of estrogen circulation in the blood,
+    it basically stops its excretion from the body.
 evidence_tier: plausible_emerging
 version: 3
 status: active

@@ -1,29 +1,24 @@
 slug: glymphatic-system-clears-amyloid-plaques-during-sleep
-statement: The glymphatic system, activated during early sleep (especially hours before
-  midnight), clears amyloid plaques from the brain, and chronic sleep deprivation
-  allows these plaques to accumulate, contributing to Alzheimer's dementia.
+statement: The glymphatic system, activated during early sleep (especially hours before midnight), clears amyloid plaques
+  from the brain, and chronic sleep deprivation allows these plaques to accumulate, contributing to Alzheimer's dementia.
 evidence_tier: strong
-rationale: Glymphatic system function and its role in amyloid clearance during sleep
-  has strong peer-reviewed support (Nedergaard et al., Science 2013 and subsequent
-  research). The link between chronic sleep deprivation and Alzheimer's risk is well-established.
-coaching_translation: Going to bed earlier — especially before midnight — isn't just
-  about getting more hours of sleep. It activates your brain's nightly cleaning system,
-  which helps protect against dementia.
+rationale: Glymphatic system function and its role in amyloid clearance during sleep has strong peer-reviewed support (Nedergaard
+  et al., Science 2013 and subsequent research). The link between chronic sleep deprivation and Alzheimer's risk is well-established.
+coaching_translation: Going to bed earlier — especially before midnight — isn't just about getting more hours of sleep. It
+  activates your brain's nightly cleaning system, which helps protect against dementia.
 caveats:
-- The claim that hours before midnight are specifically more effective is a simplification
-  of sleep cycle research
+- The claim that hours before midnight are specifically more effective is a simplification of sleep cycle research
 - Source is expert lecture
 linked_to_topics:
-- sleep-hygiene
+- sleep
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: barbara-oneil-healing-mind
   location: Sleep Section
-  quote: When we go to bed early, especially the hours before midnight, there's a
-    cleaning system that happens. And the cleaning system happens under the action
-    of the oil cells. It's called the glymphatic system.
+  quote: When we go to bed early, especially the hours before midnight, there's a cleaning system that happens. And the cleaning
+    system happens under the action of the oil cells. It's called the glymphatic system.
 version: 1
 status: active
 updated_at: '2026-05-05'

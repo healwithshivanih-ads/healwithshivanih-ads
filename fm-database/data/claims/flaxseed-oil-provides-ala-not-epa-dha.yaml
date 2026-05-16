@@ -1,29 +1,25 @@
 slug: flaxseed-oil-provides-ala-not-epa-dha
-statement: Flaxseed oil provides ALA (alpha-linolenic acid), which requires conversion
-  to EPA and DHA; genetic variation in delta-5 desaturase means some individuals cannot
-  efficiently convert ALA and require direct EPA/DHA supplementation.
+statement: Flaxseed oil provides ALA (alpha-linolenic acid), which requires conversion to EPA and DHA; genetic variation in
+  delta-5 desaturase means some individuals cannot efficiently convert ALA and require direct EPA/DHA supplementation.
 evidence_tier: strong
-rationale: ALA-to-EPA/DHA conversion is well-documented to be limited in humans (~5–15%
-  to EPA, <1% to DHA). SNPs in FADS1/FADS2 genes affect conversion efficiency. This
-  is established nutritional genomics.
-coaching_translation: Flaxseed is great for boosting overall omega-3 intake, but not
-  everyone can convert it into the active anti-inflammatory forms (EPA and DHA). If
-  your client's inflammation isn't responding, they may need direct EPA/DHA from fish
-  oil or algae.
+rationale: ALA-to-EPA/DHA conversion is well-documented to be limited in humans (~5–15% to EPA, <1% to DHA). SNPs in FADS1/FADS2
+  genes affect conversion efficiency. This is established nutritional genomics.
+coaching_translation: Flaxseed is great for boosting overall omega-3 intake, but not everyone can convert it into the active
+  anti-inflammatory forms (EPA and DHA). If your client's inflammation isn't responding, they may need direct EPA/DHA from
+  fish oil or algae.
 linked_to_topics:
 - omega-3-omega-6-balance
 linked_to_supplements:
 - flaxseed-oil
-- omega-3-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-approach-inflammation
   location: Diet – ALA to EPA/DHA Conversion
-  quote: Because of their SNAP or because of genetic variation, they have a deficiency
-    of these enzymes. So when you describe the ALA, many patients can have an EP and
-    DHA in their system but many of them patients will not convert that ALA to EP
+  quote: Because of their SNAP or because of genetic variation, they have a deficiency of these enzymes. So when you describe
+    the ALA, many patients can have an EP and DHA in their system but many of them patients will not convert that ALA to EP
     and DHA.
 version: 1
 status: active

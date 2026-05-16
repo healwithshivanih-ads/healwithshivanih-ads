@@ -4,12 +4,11 @@ aliases:
 - autonomic-balance
 - parasympathetic-restoration
 - nervous-system-reset
-summary: A functional medicine approach to restoring autonomic balance by addressing
-  root causes of sympathetic overdrive—including HPA axis dysregulation, vagal hypotonia,
-  neuroinflammation, mitochondrial stress, gut-brain disruption, and toxic load—through
+summary: A functional medicine approach to restoring autonomic balance by addressing root causes of sympathetic overdrive—including
+  HPA axis dysregulation, vagal hypotonia, neuroinflammation, mitochondrial stress, gut-brain disruption, and toxic load—through
   phased lifestyle, nutritional, and mind-body interventions.
 common_symptoms:
-- fatigue
+- lethargy
 - anxiety
 - insomnia
 - brain-fog
@@ -30,12 +29,10 @@ key_mechanisms:
 - hpa-axis-dysregulation
 - vagal-tone-reduction
 - neuroinflammation
-coaching_scope_notes: Coaches can guide breathwork, morning sunlight, sleep hygiene,
-  grounding, gentle movement, journaling, and dietary rhythm. Refer for neurofeedback,
-  EMDR, or severe trauma.
-clinician_scope_notes: 'Assess AM/PM salivary cortisol, HRV, hs-CRP, omega-3 index,
-  homocysteine/B12. Phased protocol: HPA calming weeks 1-3, vagal activation weeks
-  3-5, neuroinflammation weeks 4-8, mitochondria weeks 6-10, gut-brain weeks 8-12.'
+coaching_scope_notes: Coaches can guide breathwork, morning sunlight, sleep hygiene, grounding, gentle movement, journaling,
+  and dietary rhythm. Refer for neurofeedback, EMDR, or severe trauma.
+clinician_scope_notes: 'Assess AM/PM salivary cortisol, HRV, hs-CRP, omega-3 index, homocysteine/B12. Phased protocol: HPA
+  calming weeks 1-3, vagal activation weeks 3-5, neuroinflammation weeks 4-8, mitochondria weeks 6-10, gut-brain weeks 8-12.'
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit

@@ -23,14 +23,11 @@ linked_to_topics:
 - thyroid
 - hypothyroidism
 - t3-conversion-disorder
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - thyroid-dysfunction
 - iron-deficiency-anemia
 linked_to_mechanisms:
-- t4-to-t3-conversion-block
 - impaired-t4-to-t3-conversion
-- thyroid-hormone-conversion
-- t4-to-t3-conversion-impairment
 when_to_refer: ''
 sources:
 - id: vitaone-thyroid-cheatsheet

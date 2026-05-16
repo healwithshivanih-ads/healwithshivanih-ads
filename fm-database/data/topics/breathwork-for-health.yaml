@@ -4,16 +4,15 @@ aliases:
 - breathwork-therapy
 - pranayama-clinical
 - functional-breathwork
-summary: Structured breathing practices that modulate the autonomic nervous system,
-  vagal tone, HPA axis, oxygen-CO2 balance, inflammation, and mitochondrial function.
-  Different techniques are matched to clinical conditions including IBS, anxiety,
+summary: Structured breathing practices that modulate the autonomic nervous system, vagal tone, HPA axis, oxygen-CO2 balance,
+  inflammation, and mitochondrial function. Different techniques are matched to clinical conditions including IBS, anxiety,
   insomnia, PCOS, hypertension, chronic fatigue, and PTSD.
 common_symptoms:
 - anxiety
 - insomnia
 - gut-motility-issues
 - high-cortisol
-- fatigue
+- lethargy
 - panic
 red_flags:
 - pregnancy-breath-holds
@@ -26,20 +25,17 @@ related_topics:
 key_mechanisms:
 - vagal-tone-increase
 - hpa-axis-dysregulation
-- autonomic-nervous-system-modulation
-coaching_scope_notes: Coaches can prescribe diaphragmatic, box, 4-7-8, nasal, coherent,
-  and physiological sigh techniques matched to client goals. Avoid strong breath holds
-  in pregnancy; avoid aggressive hyperventilation in panic disorder.
-clinician_scope_notes: Use HRV tracking to monitor progress. Avoid forced techniques
-  in severe trauma, cardiac disease, or panic disorder. Can be used adjunctively in
-  autoimmune, cardiometabolic, and post-viral recovery.
+- parasympathetic-activation
+coaching_scope_notes: Coaches can prescribe diaphragmatic, box, 4-7-8, nasal, coherent, and physiological sigh techniques
+  matched to client goals. Avoid strong breath holds in pregnancy; avoid aggressive hyperventilation in panic disorder.
+clinician_scope_notes: Use HRV tracking to monitor progress. Avoid forced techniques in severe trauma, cardiac disease, or
+  panic disorder. Can be used adjunctively in autoimmune, cardiometabolic, and post-viral recovery.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Breathwork Cheatsheet / Functional Wisdom
-  quote: Breathwork is one of the fastest ways to change physiology without supplements.
-    When practiced correctly, it improves gut health, hormones, inflammation, sleep,
-    and emotional regulation - all through vagal tone.
+  quote: Breathwork is one of the fastest ways to change physiology without supplements. When practiced correctly, it improves
+    gut health, hormones, inflammation, sleep, and emotional regulation - all through vagal tone.
 version: 1
 status: active
 updated_at: '2026-05-04'

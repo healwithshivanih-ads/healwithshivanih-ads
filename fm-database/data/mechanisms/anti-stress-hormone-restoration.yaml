@@ -5,9 +5,8 @@ aliases:
 - stress-buffer hormone synthesis
 - adrenal anabolic balance
 category: endocrine
-summary: DHEA, pregnenolone, progesterone, oxytocin, melatonin, serotonin, endorphins,
-  adiponectin, nitric oxide, and growth hormone are framed as anti-stress or repair
-  hormones requiring adequate micronutrients, sleep, and lifestyle inputs.
+summary: DHEA, pregnenolone, progesterone, oxytocin, melatonin, serotonin, endorphins, adiponectin, nitric oxide, and growth
+  hormone are framed as anti-stress or repair hormones requiring adequate micronutrients, sleep, and lifestyle inputs.
 upstream_drivers:
 - deep-sleep
 - circadian-rhythm
@@ -27,8 +26,8 @@ downstream_effects:
 - tissue-repair
 - improved-bonding
 related_mechanisms:
-- cortisol-dhea-imbalance
-- hpa-axis-overactivation
+- hpa-axis-dysregulation
+- cortisol-elevation
 linked_to_topics:
 - adrenal-fatigue
 - sleep
@@ -39,9 +38,8 @@ evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Key Mechanisms Explained — anti-stress-hormone-restoration
-  quote: The source frames DHEA, pregnenolone, progesterone, oxytocin, melatonin,
-    serotonin, endorphins, adiponectin, nitric oxide, and growth hormone as anti-stress
-    or repair hormones.
+  quote: The source frames DHEA, pregnenolone, progesterone, oxytocin, melatonin, serotonin, endorphins, adiponectin, nitric
+    oxide, and growth hormone as anti-stress or repair hormones.
 version: 1
 status: active
 updated_at: '2026-05-06'

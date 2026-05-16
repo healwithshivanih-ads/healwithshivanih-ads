@@ -8,13 +8,13 @@ aliases:
 - migraines from stress
 category: musculoskeletal
 severity: common
-description: Chronic stress causes sustained muscle tension, particularly in the neck,
-  contributing to tension headaches and migraines.
+description: Chronic stress causes sustained muscle tension, particularly in the neck, contributing to tension headaches and
+  migraines.
 linked_to_topics:
 - chronic-stress
 linked_to_mechanisms:
-- sympathetic-nervous-system-activation
-- sympathoadrenal-activation
+- sympathetic-dominance
+- noradrenaline-signaling
 when_to_refer: ''
 sources:
 - id: vitaone-adrenal-toolkit

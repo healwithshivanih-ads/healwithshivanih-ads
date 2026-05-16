@@ -15,26 +15,24 @@ aliases:
 - taste changes
 category: neurological
 severity: common
-description: Diminished or absent sense of taste (ageusia) and smell (anosmia) linked
-  to zinc's role in the maintenance of gustatory and olfactory sensory cells.
+description: Diminished or absent sense of taste (ageusia) and smell (anosmia) linked to zinc's role in the maintenance of
+  gustatory and olfactory sensory cells.
 when_to_refer: If sudden or associated with neurological symptoms, refer to a physician.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: Loss of taste and smell, skin disorders including acne, decreased production
-    or sexual function especially in men.
+  quote: Loss of taste and smell, skin disorders including acne, decreased production or sexual function especially in men.
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Zinc'
-  quote: Zinc is necessary for normal growth and development, immune and neurological
-    function, proper sense of taste and smell.
+  quote: Zinc is necessary for normal growth and development, immune and neurological function, proper sense of taste and
+    smell.
 - id: vitaone-health-coaching-toolkit
   location: 'Food Sources: Zinc'
-  quote: Zinc is necessary for normal growth and development, immune and neurological
-    function, proper sense of taste and smell, and maintaining the structure of cell
-    membranes.
+  quote: Zinc is necessary for normal growth and development, immune and neurological function, proper sense of taste and
+    smell, and maintaining the structure of cell membranes.
 version: 1
 status: active
 updated_at: '2026-05-05'

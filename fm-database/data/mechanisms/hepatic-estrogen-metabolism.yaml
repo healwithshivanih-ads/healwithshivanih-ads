@@ -15,9 +15,8 @@ aliases:
 - hepatic biotransformation
 - estrogen methylation
 category: metabolic
-summary: Estrogens are metabolized in the liver via CYP enzymes (CYP1A1, CYP1B1) to
-  hydroxylated intermediates (2-OHE1, 4-OHE1, 16-OHE1), then methylated by COMT to
-  less harmful methoxy forms. The 4-OH pathway generates more carcinogenic metabolites.
+summary: Estrogens are metabolized in the liver via CYP enzymes (CYP1A1, CYP1B1) to hydroxylated intermediates (2-OHE1, 4-OHE1,
+  16-OHE1), then methylated by COMT to less harmful methoxy forms. The 4-OH pathway generates more carcinogenic metabolites.
   Genetic variants in COMT, CYP1A1, CYP1B1, and GST can impair clearance.
 upstream_drivers:
 - alcohol-consumption
@@ -32,7 +31,7 @@ downstream_effects:
 - estrogen-dominance
 - dna-damage
 related_mechanisms:
-- gut-estrogen-reabsorption
+- estrogen-enterohepatic-recirculation
 - comt-cyp-pathway-activity
 - nrf2-pathway-activation
 linked_to_topics:
@@ -42,18 +41,16 @@ evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism
-  quote: Disruptions in estrogen metabolism can damage DNA, and in some cases, predispose
-    individuals to cancer. Some estrogen metabolites have been associated with a higher
-    risk of cancers, including breast, ovarian, and prostate.
+  quote: Disruptions in estrogen metabolism can damage DNA, and in some cases, predispose individuals to cancer. Some estrogen
+    metabolites have been associated with a higher risk of cancers, including breast, ovarian, and prostate.
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Page 02
-  quote: Estrogen metabolites which are primarily metabolized in the liver & excreted
-    from the body through the digestive and urinary tracts.
+  quote: Estrogen metabolites which are primarily metabolized in the liver & excreted from the body through the digestive
+    and urinary tracts.
 - id: coconote-fm-estrogen-dominance
   location: Dysbiosis and Estrogen
-  quote: The estrogen that it has to throw outside the body — the excretion that is
-    to happen after the functioning of estrogen — phase 1 phase 2 metabolism of estrogen
-    happens in the liver.
+  quote: The estrogen that it has to throw outside the body — the excretion that is to happen after the functioning of estrogen
+    — phase 1 phase 2 metabolism of estrogen happens in the liver.
 version: 1
 status: active
 updated_at: '2026-05-04'

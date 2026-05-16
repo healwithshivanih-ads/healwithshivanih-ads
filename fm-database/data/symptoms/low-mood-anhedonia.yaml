@@ -9,25 +9,22 @@ aliases:
 - can't feel pleasure
 category: mood
 severity: concerning
-description: Depression, apathy, emotional flatness, anhedonia, and low motivation
-  linked to low serotonin, low dopamine, low DHEA, low endorphins, loneliness, digital
-  overstimulation, and chronic stress.
-when_to_refer: Refer if clinical depression criteria are met, suicidality, mania,
-  or psychosis present.
+description: Depression, apathy, emotional flatness, anhedonia, and low motivation linked to low serotonin, low dopamine,
+  low DHEA, low endorphins, loneliness, digital overstimulation, and chronic stress.
+when_to_refer: Refer if clinical depression criteria are met, suicidality, mania, or psychosis present.
 linked_to_topics:
 - depression-like-symptoms
 - chronic-stress
 - adrenal-fatigue
 linked_to_mechanisms:
-- hpa-axis-overactivation
+- cortisol-elevation
 - digital-overstimulation
 - neuroimmune-inflammation-loop
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Depression, apathy, emotional flatness, anhedonia, low joy, and low motivation
-    — Linked to low serotonin, low dopamine, low DHEA, low endorphins, loneliness,
-    digital overstimulation, chronic stress, and low reward sensitivity.
+  quote: Depression, apathy, emotional flatness, anhedonia, low joy, and low motivation — Linked to low serotonin, low dopamine,
+    low DHEA, low endorphins, loneliness, digital overstimulation, chronic stress, and low reward sensitivity.
 version: 1
 status: active
 updated_at: '2026-05-06'

@@ -13,13 +13,11 @@ aliases:
 - can't read hunger cues
 category: mood
 severity: common
-description: Reduced capacity to experience or express emotions, often linked to dopaminergic
-  downregulation, serotonin depletion, and cortisol flattening from digital overstimulation
-  or chronic stress.
-when_to_refer: If associated with severe depression or suicidal ideation, refer to
-  mental health professional.
+description: Reduced capacity to experience or express emotions, often linked to dopaminergic downregulation, serotonin depletion,
+  and cortisol flattening from digital overstimulation or chronic stress.
+when_to_refer: If associated with severe depression or suicidal ideation, refer to mental health professional.
 linked_to_topics:
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - anxiety
 linked_to_mechanisms:
 - hpa-axis-dysregulation
@@ -30,9 +28,8 @@ sources:
   quote: 'Mental–Emotional: Low motivation, inability to feel joy or sadness, "numbness"'
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Emotional numbness, poor decision-making, poor body-signal awareness, poor
-    compliance, and somatic disconnection — Linked to digital overstimulation and
-    blunted interoception.
+  quote: Emotional numbness, poor decision-making, poor body-signal awareness, poor compliance, and somatic disconnection
+    — Linked to digital overstimulation and blunted interoception.
 version: 1
 status: active
 updated_at: '2026-05-02'

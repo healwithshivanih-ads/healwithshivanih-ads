@@ -3,16 +3,15 @@ display_name: Statin Side Effects
 aliases:
 - adverse effects of statins
 - statin risks
-summary: Statins carry a range of potential side effects including myalgia, muscle
-  atrophy, increased diabetes risk, mild cognitive impairment, neuropathy, and associations
-  with mood and behavioral changes. Risk-benefit must be weighed individually.
+summary: Statins carry a range of potential side effects including myalgia, muscle atrophy, increased diabetes risk, mild
+  cognitive impairment, neuropathy, and associations with mood and behavioral changes. Risk-benefit must be weighed individually.
 common_symptoms:
-- myalgia
+- muscle-pain
 - muscle-atrophy
-- cognitive-impairment
-- peripheral-neuropathy
+- poor-concentration
+- axonal-neuropathy
 - elevated-blood-glucose
-- depression
+- low-mood
 red_flags:
 - significant muscle weakness or rhabdomyolysis
 - new or worsening cognitive decline
@@ -25,20 +24,17 @@ key_mechanisms:
 - mevalonate-pathway-inhibition
 - cholesterol-precursor-depletion
 - coq10-depletion
-coaching_scope_notes: Coaches may educate clients on known statin side effect profiles
-  and support lifestyle approaches. Any concern about side effects should be directed
-  to the prescribing clinician.
-clinician_scope_notes: 'Side effect associations include increased diabetes risk,
-  mild cognitive impairment, neuropathy, myalgia, atrophy, and in low-cholesterol
-  states: preterm delivery, ischemic strokes, intracranial hemorrhages, atrial fibrillation,
+coaching_scope_notes: Coaches may educate clients on known statin side effect profiles and support lifestyle approaches. Any
+  concern about side effects should be directed to the prescribing clinician.
+clinician_scope_notes: 'Side effect associations include increased diabetes risk, mild cognitive impairment, neuropathy, myalgia,
+  atrophy, and in low-cholesterol states: preterm delivery, ischemic strokes, intracranial hemorrhages, atrial fibrillation,
   and increased suicide attempts. Note: association ≠ causation.'
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-reality-of-statins
   location: Side Effects of Statins Section
-  quote: Statins may increase your risk of diabetes. It may increase your risk of
-    mild cognitive impairment and Alzheimer's disease. It may increase your risk of
-    neuropathy and it may cause myalgia and atrophy.
+  quote: Statins may increase your risk of diabetes. It may increase your risk of mild cognitive impairment and Alzheimer's
+    disease. It may increase your risk of neuropathy and it may cause myalgia and atrophy.
 version: 1
 status: active
 updated_at: '2026-05-05'

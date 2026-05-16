@@ -6,12 +6,12 @@ aliases:
 - voice changes
 category: other
 severity: common
-description: Voice changes including hoarseness or gravelly quality due to myxedema
-  of the vocal cords or thyroid enlargement affecting surrounding structures.
+description: Voice changes including hoarseness or gravelly quality due to myxedema of the vocal cords or thyroid enlargement
+  affecting surrounding structures.
 when_to_refer: Refer if hoarseness is progressive or accompanied by dysphagia or goiter.
 linked_to_topics:
 - hypothyroidism
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_mechanisms: []
 sources:
 - id: vitaone-thyroid-toolkit

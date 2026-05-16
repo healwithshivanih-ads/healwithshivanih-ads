@@ -4,17 +4,16 @@ aliases:
 - natural menopause
 - postmenopause
 - climacteric
-summary: Defined as 12 months of complete amenorrhea, menopause represents the cessation
-  of ovarian follicle activity and depletion of ovarian hormones (LH, FSH). Diagnosis
-  is retrospective, multifactorial, and should not rely on a single hormone value.
-  Age at natural menopause in India is estimated at 46 years, lower than Western populations.
+summary: Defined as 12 months of complete amenorrhea, menopause represents the cessation of ovarian follicle activity and
+  depletion of ovarian hormones (LH, FSH). Diagnosis is retrospective, multifactorial, and should not rely on a single hormone
+  value. Age at natural menopause in India is estimated at 46 years, lower than Western populations.
 common_symptoms:
 - hot-flashes
 - night-sweats
 - vaginal-dryness
-- sleep-disturbances
-- mood-changes
-- weight-gain
+- insomnia
+- mood-swings
+- unexplained-weight-gain
 - low-libido
 - brain-fog
 - hair-loss
@@ -22,8 +21,7 @@ common_symptoms:
 - irregular-periods
 red_flags:
 - Early menopause before age 40 without investigation
-- Unexplained amenorrhea in reproductive-age women without ruling out PCOS or surgical
-  cause
+- Unexplained amenorrhea in reproductive-age women without ruling out PCOS or surgical cause
 - Signs of Alzheimer's/dementia in context of very low progesterone
 related_topics:
 - perimenopause
@@ -35,13 +33,12 @@ related_topics:
 - gut-estrogen-axis
 key_mechanisms:
 - ovarian-follicle-depletion
-- estrogen-progesterone-decline
-- cortisol-steal
-coaching_scope_notes: Coaches can support lifestyle, nutrition, stress reduction,
-  and symptom tracking. Staging, diagnosis, and hormone prescribing are clinician
-  scope.
-clinician_scope_notes: Diagnosis requires clinical timeline, USG for follicle depletion,
-  LH/FSH, and ruling out PCOS. BHRT initiation and dosing must be clinician-led.
+- estrogen-decline
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can support lifestyle, nutrition, stress reduction, and symptom tracking. Staging, diagnosis,
+  and hormone prescribing are clinician scope.
+clinician_scope_notes: Diagnosis requires clinical timeline, USG for follicle depletion, LH/FSH, and ruling out PCOS. BHRT
+  initiation and dosing must be clinician-led.
 evidence_tier: strong
 sources:
 - id: coconote-fm-sex-hormones

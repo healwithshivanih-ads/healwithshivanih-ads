@@ -4,28 +4,26 @@ aliases:
 - MMA pathway
 - methylmalonic acid accumulation
 category: metabolic
-summary: Vitamin B12 (as adenosylcobalamin) is required for the enzyme methylmalonyl-CoA
-  mutase (MMCM) to convert methylmalonyl-CoA to succinyl-CoA. Without B12, methylmalonic
-  acid accumulates, causing axonal neuropathy manifesting as fatigue, confusion, and
-  neurological dysfunction.
+summary: Vitamin B12 (as adenosylcobalamin) is required for the enzyme methylmalonyl-CoA mutase (MMCM) to convert methylmalonyl-CoA
+  to succinyl-CoA. Without B12, methylmalonic acid accumulates, causing axonal neuropathy manifesting as fatigue, confusion,
+  and neurological dysfunction.
 upstream_drivers:
 - b12-deficiency
 downstream_effects:
-- methylmalonic-acid-accumulation
+- methylmalonyl-coa-pathway
 - axonal-neuropathy
 - fatigue
 - confusion
 related_mechanisms:
-- impaired-homocysteine-remethylation
+- homocysteine-metabolism
 linked_to_topics:
 - vitamin-b12
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / MMCM section
-  quote: If it is not present, then what happens is that methylmalonic acid will be
-    accumulated in the body. So what that would do is that it will cause symptoms
-    of axillary neuropathy.
+  quote: If it is not present, then what happens is that methylmalonic acid will be accumulated in the body. So what that
+    would do is that it will cause symptoms of axillary neuropathy.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,18 +1,15 @@
 slug: leaky-gut-associated-with-hashimotos
-statement: Leaky gut (intestinal hyperpermeability) is frequently associated with
-  Hashimoto's and other autoimmune conditions; healing the gut is a core functional
-  medicine strategy.
+statement: Leaky gut (intestinal hyperpermeability) is frequently associated with Hashimoto's and other autoimmune conditions;
+  healing the gut is a core functional medicine strategy.
 evidence_tier: plausible_emerging
-rationale: Intestinal permeability and autoimmune disease association is supported
-  by growing research (Fasano et al.). The 5R protocol is a widely used FM clinical
-  framework. Direct RCT evidence linking gut repair to Hashimoto's antibody reduction
+rationale: Intestinal permeability and autoimmune disease association is supported by growing research (Fasano et al.). The
+  5R protocol is a widely used FM clinical framework. Direct RCT evidence linking gut repair to Hashimoto's antibody reduction
   is still emerging.
-coaching_translation: A healthy gut lining helps prevent immune system over-activation.
-  The 5R gut healing protocol (Remove irritants, Replace digestive support, Reinoculate
-  with probiotics, Repair the lining, Rebalance lifestyle) is a core strategy for
-  Hashimoto's.
+coaching_translation: A healthy gut lining helps prevent immune system over-activation. The 5R gut healing protocol (Remove
+  irritants, Replace digestive support, Reinoculate with probiotics, Repair the lining, Rebalance lifestyle) is a core strategy
+  for Hashimoto's.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
@@ -20,9 +17,8 @@ linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Management of Hashimoto's — Addressing Autoimmune Triggers
-  quote: A focus on healing the gut, as leaky gut syndrome is often associated with
-    autoimmune conditions. The 5R protocol (Remove, Replace, Reinoculate, Repair,
-    and Rebalance) is often used.
+  quote: A focus on healing the gut, as leaky gut syndrome is often associated with autoimmune conditions. The 5R protocol
+    (Remove, Replace, Reinoculate, Repair, and Rebalance) is often used.
 version: 1
 status: active
 updated_at: '2026-05-04'

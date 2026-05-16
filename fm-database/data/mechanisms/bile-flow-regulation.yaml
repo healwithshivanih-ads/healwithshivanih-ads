@@ -17,7 +17,7 @@ upstream_drivers:
 downstream_effects:
 - gallstone-formation
 - impaired-fat-digestion
-- estrogen-recirculation
+- estrogen-enterohepatic-recirculation
 related_mechanisms:
 - phase-3-elimination
 - phase-2-conjugation

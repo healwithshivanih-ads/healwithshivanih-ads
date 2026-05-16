@@ -4,41 +4,36 @@ aliases:
 - hypocalcemia
 - low serum calcium
 - calcium insufficiency
-summary: Calcium deficiency as a true dietary or cellular state is considered rare
-  in functional medicine; low serum calcium is more often a reflection of low albumin,
-  low stomach acid, low magnesium, low vitamin D, or parathyroid dysfunction than
-  actual calcium depletion. Proper interpretation requires correcting for albumin
-  and testing ionized calcium.
+summary: Calcium deficiency as a true dietary or cellular state is considered rare in functional medicine; low serum calcium
+  is more often a reflection of low albumin, low stomach acid, low magnesium, low vitamin D, or parathyroid dysfunction than
+  actual calcium depletion. Proper interpretation requires correcting for albumin and testing ionized calcium.
 common_symptoms:
 - muscle-cramps
 - poor-bone-density
-- fatigue
+- lethargy
 red_flags:
 - severe-hypocalcemia-with-tetany
 - hypercalcemia-with-neoplasm
 related_topics:
-- vitamin-d-deficiency
-- magnesium-deficiency
-- osteoporosis
+- vitamin-d3
+- magnesium-nutrition
+- bone-health
 - hypochlorhydria
 - hypoalbuminemia
 key_mechanisms:
 - pth-calcium-regulation
-- magnesium-calcium-intracellular-shift
+- calcium-magnesium-imbalance
 - albumin-calcium-binding
-coaching_scope_notes: Coaches can educate on dietary calcium sources, the role of
-  magnesium and vitamin D co-factors, and the importance of not assuming supplementation
-  is needed based on low serum calcium alone. Refer to clinician for lab interpretation.
-clinician_scope_notes: Clinician should assess ionized calcium, albumin, PTH, vitamin
-  D, magnesium, phosphorus, and stomach acid status before recommending calcium supplementation.
-  Correct underlying deficiencies first.
+coaching_scope_notes: Coaches can educate on dietary calcium sources, the role of magnesium and vitamin D co-factors, and
+  the importance of not assuming supplementation is needed based on low serum calcium alone. Refer to clinician for lab interpretation.
+clinician_scope_notes: Clinician should assess ionized calcium, albumin, PTH, vitamin D, magnesium, phosphorus, and stomach
+  acid status before recommending calcium supplementation. Correct underlying deficiencies first.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Calcium Physiology Introduction
-  quote: calcium deficiency is very rare condition. Even if you look at the low calcium
-    serum that doesn't mean that patient having a calcium deficiency and they require
-    calcium supplementation.
+  quote: calcium deficiency is very rare condition. Even if you look at the low calcium serum that doesn't mean that patient
+    having a calcium deficiency and they require calcium supplementation.
 version: 1
 status: active
 updated_at: '2026-05-05'

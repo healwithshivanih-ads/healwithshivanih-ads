@@ -1,20 +1,17 @@
 slug: calcium-supplements-should-be-stopped-to-optimise-magnesium-absorption
-statement: Concurrent calcium supplementation competes with magnesium absorption;
-  stopping calcium supplements while correcting magnesium deficiency optimises magnesium
-  uptake.
+statement: Concurrent calcium supplementation competes with magnesium absorption; stopping calcium supplements while correcting
+  magnesium deficiency optimises magnesium uptake.
 evidence_tier: fm_specific_thin
-rationale: Calcium and magnesium share intestinal transporters and may compete for
-  absorption; however, the clinical instruction to stop calcium during magnesium repletion
-  is primarily an FM consensus recommendation without strong RCT backing.
+rationale: Calcium and magnesium share intestinal transporters and may compete for absorption; however, the clinical instruction
+  to stop calcium during magnesium repletion is primarily an FM consensus recommendation without strong RCT backing.
 caveats:
-- This recommendation is FM-specific and should be actioned only under clinician guidance,
-  especially in patients supplementing calcium for bone disease.
-out_of_scope_notes: Stopping prescribed supplements is outside coaching scope — must
-  involve clinician.
-coaching_translation: If you're taking calcium supplements, they may be blocking your
-  body from absorbing magnesium. Talk to your doctor about whether to pause them.
+- This recommendation is FM-specific and should be actioned only under clinician guidance, especially in patients supplementing
+  calcium for bone disease.
+out_of_scope_notes: Stopping prescribed supplements is outside coaching scope — must involve clinician.
+coaching_translation: If you're taking calcium supplements, they may be blocking your body from absorbing magnesium. Talk
+  to your doctor about whether to pause them.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - calcium-overload
 linked_to_supplements:
 - magnesium-glycinate
@@ -23,8 +20,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Supplement dosage / absorption optimisation
-  quote: If a patient is taking calcium supplements also at the same time, I need
-    to stop the calcium and then optimize working on the absorption of the magnesium.
+  quote: If a patient is taking calcium supplements also at the same time, I need to stop the calcium and then optimize working
+    on the absorption of the magnesium.
 version: 1
 status: active
 updated_at: '2026-05-05'

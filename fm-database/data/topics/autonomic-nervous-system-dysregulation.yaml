@@ -4,17 +4,16 @@ aliases:
 - sympathetic dominance
 - ANS imbalance
 - chronic stress response
-summary: Chronic sympathetic nervous system activation (sympathetic dominance) suppresses
-  parasympathetic tone, elevates cortisol, and contributes to cardiomyopathy, arrhythmia
-  (AFib/VFib), orthostatic hypotension, and broader cardiovascular dysfunction.
+summary: Chronic sympathetic nervous system activation (sympathetic dominance) suppresses parasympathetic tone, elevates cortisol,
+  and contributes to cardiomyopathy, arrhythmia (AFib/VFib), orthostatic hypotension, and broader cardiovascular dysfunction.
 common_symptoms:
-- orthostatic-hypotension
+- dizziness-on-standing
 - palpitations
 - anxiety
 - insomnia
 - high-cortisol
 red_flags:
-- atrial fibrillation
+- palpitations
 - ventricular fibrillation
 - severe orthostatic hypotension
 related_topics:
@@ -23,16 +22,14 @@ related_topics:
 key_mechanisms:
 - hpa-axis-dysregulation
 - sympathetic-dominance
-coaching_scope_notes: Coaches can address stress resilience, sleep hygiene, HRV monitoring,
-  and nervous system regulation practices (breathwork, mindfulness).
-clinician_scope_notes: Arrhythmia workup, orthostatic hypotension diagnosis, and cortisol
-  testing require clinician management.
+coaching_scope_notes: Coaches can address stress resilience, sleep hygiene, HRV monitoring, and nervous system regulation
+  practices (breathwork, mindfulness).
+clinician_scope_notes: Arrhythmia workup, orthostatic hypotension diagnosis, and cortisol testing require clinician management.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Autonomic Nervous System
-  quote: So if your patient is stuck in a sympathetic mode, that constantly creating
-    a problem in your heart and this thing.
+  quote: So if your patient is stuck in a sympathetic mode, that constantly creating a problem in your heart and this thing.
 version: 1
 status: active
 updated_at: '2026-05-05'

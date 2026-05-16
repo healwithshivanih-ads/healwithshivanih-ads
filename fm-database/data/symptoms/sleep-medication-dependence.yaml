@@ -6,20 +6,17 @@ aliases:
 - prescription sleep aids
 category: sleep
 severity: concerning
-description: The use of prescription or OTC sleep medication as the primary or sole
-  strategy for achieving sleep, often in the context of chronic stress and sympathetic
-  overdrive.
-when_to_refer: Refer to prescribing physician or sleep medicine specialist. Coaches
-  should not advise on medication changes.
+description: The use of prescription or OTC sleep medication as the primary or sole strategy for achieving sleep, often in
+  the context of chronic stress and sympathetic overdrive.
+when_to_refer: Refer to prescribing physician or sleep medicine specialist. Coaches should not advise on medication changes.
 linked_to_topics:
 - stress-and-the-sympathetic-nervous-system
 linked_to_mechanisms:
-- sympathetic-nervous-system-activation
+- sympathetic-dominance
 sources:
 - id: ask-expert-coaching-stress-kids
   location: Stress Client Topic Discussion
-  quote: she's probably sleeping and she's having problems relaxing and she's taking
-    some medications to sleep.
+  quote: she's probably sleeping and she's having problems relaxing and she's taking some medications to sleep.
 version: 1
 status: active
 updated_at: '2026-05-05'

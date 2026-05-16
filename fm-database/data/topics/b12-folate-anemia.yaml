@@ -4,12 +4,11 @@ aliases:
 - megaloblastic anemia
 - pernicious anemia
 - macrocytic anemia
-summary: Deficiency of B12 or folate leads to impaired DNA synthesis and the production
-  of abnormally large red blood cells (macrocytes). MCV, MCH, and MCHC are elevated
-  rather than reduced, distinguishing it from iron deficiency anemia. Parietal cell
-  dysfunction reduces intrinsic factor and HCl, impairing B12 absorption.
+summary: Deficiency of B12 or folate leads to impaired DNA synthesis and the production of abnormally large red blood cells
+  (macrocytes). MCV, MCH, and MCHC are elevated rather than reduced, distinguishing it from iron deficiency anemia. Parietal
+  cell dysfunction reduces intrinsic factor and HCl, impairing B12 absorption.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
 - pale-skin
 red_flags:
@@ -18,16 +17,15 @@ related_topics:
 - iron-deficiency-anemia
 key_mechanisms:
 - intrinsic-factor-deficiency
-- low-stomach-acid-iron-absorption
-coaching_scope_notes: Coaches may support dietary B12 and folate intake discussions
-  but should refer for lab confirmation and supplementation dosing.
+- heme-vs-nonheme-iron-absorption
+coaching_scope_notes: Coaches may support dietary B12 and folate intake discussions but should refer for lab confirmation
+  and supplementation dosing.
 evidence_tier: strong
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-iron-deficiency-anemia
   location: Secondary Biomarkers / MCV-MCH-MCHC section
-  quote: Whenever I see MCV, MCHC and MCH on a higher side I'm first thinking of B12
-    or folate anemia.
+  quote: Whenever I see MCV, MCHC and MCH on a higher side I'm first thinking of B12 or folate anemia.
 version: 1
 status: active
 updated_at: '2026-05-05'

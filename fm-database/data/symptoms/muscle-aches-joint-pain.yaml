@@ -8,20 +8,18 @@ aliases:
 - musculoskeletal pain
 category: musculoskeletal
 severity: common
-description: Pains, aches, stiffness, and tingling in joints, muscles, hands, and/or
-  feet. May include carpal tunnel syndrome, tendonitis, or plantar fasciitis in hypothyroid
-  patients.
+description: Pains, aches, stiffness, and tingling in joints, muscles, hands, and/or feet. May include carpal tunnel syndrome,
+  tendonitis, or plantar fasciitis in hypothyroid patients.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - thyroid-dysfunction
 linked_to_mechanisms:
-- t4-to-t3-conversion-impairment
+- impaired-t4-to-t3-conversion
 when_to_refer: ''
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Thyroid Screening Questionnaire — Signs and Symptoms
-  quote: I have Pains, aches, stiffness, or tingling in joints, muscle, hands and/or
-    feet
+  quote: I have Pains, aches, stiffness, or tingling in joints, muscle, hands and/or feet
 version: 1
 status: active
 updated_at: '2026-05-04'

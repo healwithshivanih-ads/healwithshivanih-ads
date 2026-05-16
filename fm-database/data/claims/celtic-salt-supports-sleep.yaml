@@ -1,19 +1,17 @@
 slug: celtic-salt-supports-sleep
-statement: Taking a small amount of Celtic salt before bed, due to its free magnesium
-  content (a muscle relaxant), may help support sleep onset.
+statement: Taking a small amount of Celtic salt before bed, due to its free magnesium content (a muscle relaxant), may help
+  support sleep onset.
 evidence_tier: fm_specific_thin
-rationale: Magnesium's role in muscle relaxation and sleep is well-supported in the
-  literature. The delivery via Celtic salt is a FM-specific approach with limited
-  direct clinical trial evidence.
-coaching_translation: A small pinch of Celtic salt before bed is a simple, low-risk
-  strategy that may help with sleep, thanks to its magnesium content.
+rationale: Magnesium's role in muscle relaxation and sleep is well-supported in the literature. The delivery via Celtic salt
+  is a FM-specific approach with limited direct clinical trial evidence.
+coaching_translation: A small pinch of Celtic salt before bed is a simple, low-risk strategy that may help with sleep, thanks
+  to its magnesium content.
 caveats:
 - No RCT evidence for Celtic salt specifically improving sleep
 - Source is expert lecture
-- Not appropriate for clients with cardiovascular or renal conditions without clinician
-  approval
+- Not appropriate for clients with cardiovascular or renal conditions without clinician approval
 linked_to_topics:
-- sleep-hygiene
+- sleep
 - hydration-and-brain-function
 linked_to_supplements:
 - celtic-salt
@@ -22,8 +20,8 @@ linked_to_mechanisms: []
 sources:
 - id: barbara-oneil-healing-mind
   location: Sleep Section
-  quote: if you can't sleep, try having a crisp of Celtic salt with its free magnesium
-    with its muscle relaxant in the night before you go to sleep.
+  quote: if you can't sleep, try having a crisp of Celtic salt with its free magnesium with its muscle relaxant in the night
+    before you go to sleep.
 version: 1
 status: active
 updated_at: '2026-05-05'

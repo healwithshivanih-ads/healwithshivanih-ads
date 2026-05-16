@@ -10,7 +10,7 @@ summary: Approximately 80% of the body's immune system resides at the intestinal
   GALT mounts an immune response that can become dysregulated, driving systemic inflammation and autoimmunity.
 upstream_drivers:
 - tight-junction-dysfunction
-- lps-translocation
+- lps-endotoxemia
 - food-antigen-exposure
 downstream_effects:
 - systemic-inflammation

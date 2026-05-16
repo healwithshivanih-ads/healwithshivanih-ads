@@ -1,20 +1,17 @@
 slug: magnesium-needed-alongside-calcium-for-bone-health
-statement: Magnesium is essential for proper calcium placement in bone; supplementing
-  calcium alone without adequate magnesium does not optimally support bone density
-  and may worsen soft-tissue calcification.
+statement: Magnesium is essential for proper calcium placement in bone; supplementing calcium alone without adequate magnesium
+  does not optimally support bone density and may worsen soft-tissue calcification.
 evidence_tier: plausible_emerging
-rationale: Magnesium's role in bone mineralisation and its interaction with calcium
-  metabolism is biologically supported; the specific claim that calcium without magnesium
-  is harmful rather than simply insufficient is more FM-consensus than broadly established.
+rationale: Magnesium's role in bone mineralisation and its interaction with calcium metabolism is biologically supported;
+  the specific claim that calcium without magnesium is harmful rather than simply insufficient is more FM-consensus than broadly
+  established.
 caveats:
-- Calcium supplementation decisions should involve a clinician. Source is expert consensus
-  lecture.
-out_of_scope_notes: Supplement changes affecting bone health require clinician oversight,
-  especially in osteoporosis.
-coaching_translation: Calcium supplements alone won't build strong bones. Magnesium
-  is the partner mineral that ensures calcium ends up in the right place.
+- Calcium supplementation decisions should involve a clinician. Source is expert consensus lecture.
+out_of_scope_notes: Supplement changes affecting bone health require clinician oversight, especially in osteoporosis.
+coaching_translation: Calcium supplements alone won't build strong bones. Magnesium is the partner mineral that ensures calcium
+  ends up in the right place.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-musculoskeletal-health
 - calcium-overload
 linked_to_supplements:
@@ -24,8 +21,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Osteoporosis section
-  quote: Even for osteoporosis, if a person only gives calcium, we need magnesium
-    for its better placement and for the better functioning of the calcium.
+  quote: Even for osteoporosis, if a person only gives calcium, we need magnesium for its better placement and for the better
+    functioning of the calcium.
 version: 1
 status: active
 updated_at: '2026-05-05'

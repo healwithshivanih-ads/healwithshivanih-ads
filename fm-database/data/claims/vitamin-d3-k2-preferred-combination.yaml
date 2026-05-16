@@ -1,36 +1,31 @@
 slug: vitamin-d3-k2-preferred-combination
-statement: Co-supplementation of 5,000 IU vitamin D3 with 200 mcg vitamin K2 is the
-  preferred protocol because D3 increases calcium absorption from the gut while K2
-  directs that calcium into bones and teeth.
+statement: Co-supplementation of 5,000 IU vitamin D3 with 200 mcg vitamin K2 is the preferred protocol because D3 increases
+  calcium absorption from the gut while K2 directs that calcium into bones and teeth.
 evidence_tier: plausible_emerging
-rationale: 'The mechanistic rationale for this combination is well-supported: D3 upregulates
-  intestinal calcium absorption and K2 activates osteocalcin and MGP to direct calcium
-  to bone and away from soft tissues. However, the specific 5,000 IU / 200 mcg ratio
-  is not supported by a single definitive RCT — it represents expert consensus.'
-coaching_translation: 'Taking vitamin D3 and K2 together is like a team effort: D3
-  opens the door for calcium to enter your body, and K2 makes sure it ends up in your
-  bones where it belongs.'
-out_of_scope_notes: Specific dose combination should be confirmed with a clinician,
-  particularly for clients on anticoagulants (warfarin interacts with vitamin K).
+rationale: 'The mechanistic rationale for this combination is well-supported: D3 upregulates intestinal calcium absorption
+  and K2 activates osteocalcin and MGP to direct calcium to bone and away from soft tissues. However, the specific 5,000 IU
+  / 200 mcg ratio is not supported by a single definitive RCT — it represents expert consensus.'
+coaching_translation: 'Taking vitamin D3 and K2 together is like a team effort: D3 opens the door for calcium to enter your
+  body, and K2 makes sure it ends up in your bones where it belongs.'
+out_of_scope_notes: Specific dose combination should be confirmed with a clinician, particularly for clients on anticoagulants
+  (warfarin interacts with vitamin K).
 caveats:
-- Clients on warfarin or other anticoagulants must consult their physician before
-  taking any vitamin K supplement.
-- The specific 5,000 IU D3 / 200 mcg K2 ratio is expert consensus, not established
-  by a specific RCT.
+- Clients on warfarin or other anticoagulants must consult their physician before taking any vitamin K supplement.
+- The specific 5,000 IU D3 / 200 mcg K2 ratio is expert consensus, not established by a specific RCT.
 linked_to_topics:
 - vitamin-d3-k2-synergy
 - vitamin-d3
 - vitamin-k2
 linked_to_supplements:
 - vitamin-d3-k2-combination-supplement
-- vitamin-d3-supplement
-- vitamin-k2-supplement
+- vitamin-d3
+- vitamin-k2
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D + K2 Synergy Section
-  quote: a synergy of both is required for the optimal functioning and ideally a supplementation
-    of vitamin D of 5000 international units and K1200 MCG is preferred.
+  quote: a synergy of both is required for the optimal functioning and ideally a supplementation of vitamin D of 5000 international
+    units and K1200 MCG is preferred.
 version: 1
 status: active
 updated_at: '2026-05-05'

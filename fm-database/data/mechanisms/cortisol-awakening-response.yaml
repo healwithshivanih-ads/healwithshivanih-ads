@@ -12,14 +12,11 @@ aliases:
 - am cortisol curve
 - cortisol morning rise
 category: endocrine
-summary: A healthy 50-75% rise in cortisol within 30 minutes of waking, driven by
-  the suprachiasmatic nucleus signalling the adrenal cortex through the HPA axis.
-  This pulse mobilises glucose, raises blood pressure, and 'turns on' alertness,
-  cognition, and immune surveillance for the day. A blunted or absent CAR is now
-  considered a more sensitive marker of HPA dysfunction than total cortisol output
-  — flat CAR is consistently observed in chronic fatigue, burnout, depression,
-  PTSD, fibromyalgia, and long COVID. An exaggerated CAR (> 100% rise) often signals
-  acute / unresolved stress.
+summary: A healthy 50-75% rise in cortisol within 30 minutes of waking, driven by the suprachiasmatic nucleus signalling the
+  adrenal cortex through the HPA axis. This pulse mobilises glucose, raises blood pressure, and 'turns on' alertness, cognition,
+  and immune surveillance for the day. A blunted or absent CAR is now considered a more sensitive marker of HPA dysfunction
+  than total cortisol output — flat CAR is consistently observed in chronic fatigue, burnout, depression, PTSD, fibromyalgia,
+  and long COVID. An exaggerated CAR (> 100% rise) often signals acute / unresolved stress.
 upstream_drivers:
 - intact HPA axis signalling
 - circadian alignment (well-timed sleep + light exposure)
@@ -37,22 +34,18 @@ downstream_effects:
 - primes immune surveillance
 - triggers protein catabolism for the day
 - modulates the 24-hour circadian cortisol curve
-- when blunted = morning fatigue, brain fog, slow start, low blood pressure on standing,
-  poor stress resilience
+- when blunted = morning fatigue, brain fog, slow start, low blood pressure on standing, poor stress resilience
 - when exaggerated = morning anxiety, racing thoughts, irritability, BP spike
-- when reversed (low at waking, high at night) = HPA dysregulation / stage-3 adrenal
-  exhaustion
+- when reversed (low at waking, high at night) = HPA dysregulation / stage-3 adrenal exhaustion
 related_mechanisms:
 - hpa-axis-dysregulation
 - cortisol-elevation
-- cortisol-excess
 - melatonin-pathway
-- sympathetic-overdrive
+- sympathetic-dominance
 - mitochondrial-dysfunction
 linked_to_topics:
 - adrenal-fatigue
-- adrenal-dysfunction
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 - chronic-stress
 - stress-management
 - chronic-pain-and-fatigue
@@ -61,12 +54,10 @@ sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, HPA Axis section — cortisol awakening response patterns
 evidence_tier: strong
-notes_for_coach: Best assessed via 4-point salivary cortisol or DUTCH (sample at waking
-  + 30 min). Blunted CAR is a permission slip for the coach to focus on rebuilding
-  rhythm, not pushing more discipline. Coaching levers protein-rich breakfast within
-  60 min of waking, morning sunlight (10-30 min within first hour), gentle movement,
-  vitamin C, adaptogenic support (rhodiola, ashwagandha), boundaries on evening light
-  and stress. Recovery takes 8-16 weeks of consistency.
+notes_for_coach: Best assessed via 4-point salivary cortisol or DUTCH (sample at waking + 30 min). Blunted CAR is a permission
+  slip for the coach to focus on rebuilding rhythm, not pushing more discipline. Coaching levers protein-rich breakfast within
+  60 min of waking, morning sunlight (10-30 min within first hour), gentle movement, vitamin C, adaptogenic support (rhodiola,
+  ashwagandha), boundaries on evening light and stress. Recovery takes 8-16 weeks of consistency.
 version: 1
 status: active
 updated_at: '2026-05-10'

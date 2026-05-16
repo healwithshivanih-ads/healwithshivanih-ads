@@ -1,19 +1,16 @@
 slug: whey-protein-epa-dha-decrease-shbg
-statement: Whey protein and EPA/DHA supplementation are associated with decreased
-  SHBG levels.
+statement: Whey protein and EPA/DHA supplementation are associated with decreased SHBG levels.
 evidence_tier: plausible_emerging
-rationale: Listed in the document's SHBG-decreasing column. High protein intake is
-  associated with lower SHBG in observational studies; EPA/DHA mechanism on SHBG is
-  less clear.
-coaching_translation: Whey protein and fish oil may lower SHBG, which could be helpful
-  if your SHBG is too high and you need more free testosterone.
+rationale: Listed in the document's SHBG-decreasing column. High protein intake is associated with lower SHBG in observational
+  studies; EPA/DHA mechanism on SHBG is less clear.
+coaching_translation: Whey protein and fish oil may lower SHBG, which could be helpful if your SHBG is too high and you need
+  more free testosterone.
 caveats:
-- Source is expert consensus synthesis. Context of when SHBG reduction is clinically
-  desirable requires clinician assessment.
+- Source is expert consensus synthesis. Context of when SHBG reduction is clinically desirable requires clinician assessment.
 linked_to_topics:
 - sex-hormone-binding-globulin
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 - whey-protein
 out_of_scope_notes: ''
 linked_to_mechanisms: []

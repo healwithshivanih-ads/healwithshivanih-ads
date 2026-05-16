@@ -47,8 +47,7 @@ upstream_drivers:
 - phytochemical-phase-2-induction
 - protein-amino-acid-availability
 - cyp450-phase-i-activation
-- impaired-methylation
-- phase-i-cytochrome-p450
+- methylation-cycle-dysfunction
 - nutrient-deficiency
 - genetic-polymorphisms
 downstream_effects:
@@ -58,15 +57,13 @@ downstream_effects:
 - heavy-metal-clearance
 - biliary-excretion
 - urinary-excretion
-- toxin-elimination
 related_mechanisms:
 - phase-1-biotransformation
 - balanced-detoxification
 - beta-glucuronidase-deconjugation
 - cyp450-phase-i-activation
-- impaired-methylation
+- methylation-cycle-dysfunction
 - phase-3-elimination
-- phase-i-cytochrome-p450
 - gut-liver-axis
 - antioxidant-protection
 linked_to_topics:
@@ -76,7 +73,6 @@ linked_to_topics:
 - estrogen-dominance
 - methylation-mthfr
 - metabolic-detoxification
-- liver-detox-food-plan
 evidence_tier: strong
 sources:
 - id: minich-detox-basics-fmca-transcript

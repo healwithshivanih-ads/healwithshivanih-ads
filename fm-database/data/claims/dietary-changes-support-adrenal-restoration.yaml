@@ -1,22 +1,20 @@
 slug: dietary-changes-support-adrenal-restoration
-statement: Avoiding refined sugars, caffeine, and alcohol; eating several small protein-containing
-  meals per day; identifying and avoiding trigger foods; and getting adequate vitamin
-  C support adrenal restoration.
+statement: Avoiding refined sugars, caffeine, and alcohol; eating several small protein-containing meals per day; identifying
+  and avoiding trigger foods; and getting adequate vitamin C support adrenal restoration.
 evidence_tier: fm_specific_thin
-rationale: Individually, avoiding refined sugar/caffeine/alcohol for stress physiology
-  is plausible and broadly recommended. Small frequent protein meals to stabilize
-  blood sugar in HPA dysfunction is a common FM clinical strategy. Vitamin C for adrenal
-  support has some animal and observational data but limited RCTs. As a combined protocol,
-  this is standard FM practice with thin peer-reviewed evidence.
-coaching_translation: What you eat directly affects how your adrenal glands function.
-  Stabilizing blood sugar with regular protein-rich meals, avoiding stimulants, and
-  cutting out refined sugar gives your stress system the best environment to recover.
+rationale: Individually, avoiding refined sugar/caffeine/alcohol for stress physiology is plausible and broadly recommended.
+  Small frequent protein meals to stabilize blood sugar in HPA dysfunction is a common FM clinical strategy. Vitamin C for
+  adrenal support has some animal and observational data but limited RCTs. As a combined protocol, this is standard FM practice
+  with thin peer-reviewed evidence.
+coaching_translation: What you eat directly affects how your adrenal glands function. Stabilizing blood sugar with regular
+  protein-rich meals, avoiding stimulants, and cutting out refined sugar gives your stress system the best environment to
+  recover.
 caveats:
 - Composite dietary protocol from FM toolkit — not a single studied intervention
 - Vitamin C dose recommendations require clinician guidance
 - Source is expert consensus toolkit, not primary literature
 linked_to_topics:
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 - hypercortisolism
 linked_to_supplements:
 - vitamin-c
@@ -25,8 +23,8 @@ linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism — Restoration
-  quote: Avoid refined sugars, caffeine, and alcohol in the diet. Eat several small
-    meals containing protein each day. Get adequate vitamin C.
+  quote: Avoid refined sugars, caffeine, and alcohol in the diet. Eat several small meals containing protein each day. Get
+    adequate vitamin C.
 version: 1
 status: active
 updated_at: '2026-05-04'

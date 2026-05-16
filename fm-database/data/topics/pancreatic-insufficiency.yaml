@@ -4,22 +4,21 @@ aliases:
 - exocrine pancreatic insufficiency
 - EPI
 - pancreatic enzyme deficiency
-summary: A condition in which the pancreas fails to produce or secrete adequate digestive
-  enzymes (lipase, proteases, amylases), leading to impaired digestion and absorption
-  of fats, proteins, and carbohydrates. Presents with non-specific GI symptoms and
-  systemic consequences including malnutrition, weight loss, and fatigue.
+summary: A condition in which the pancreas fails to produce or secrete adequate digestive enzymes (lipase, proteases, amylases),
+  leading to impaired digestion and absorption of fats, proteins, and carbohydrates. Presents with non-specific GI symptoms
+  and systemic consequences including malnutrition, weight loss, and fatigue.
 common_symptoms:
 - steatorrhea
 - diarrhea
-- gas-and-bloating
+- abdominal-bloating
 - abdominal-pain
 - weight-loss
-- fatigue
+- lethargy
 - muscle-wasting
 - edema
 red_flags:
 - Unintentional severe weight loss
-- Muscle wasting
+- muscle-wasting
 - Edema suggesting protein malnutrition
 - Chronic pancreatitis or cystic fibrosis diagnosis — requires clinician management
 related_topics:
@@ -31,23 +30,19 @@ key_mechanisms:
 - exocrine-pancreatic-enzyme-deficiency
 - malabsorption
 - oxidative-stress-pancreatic-damage
-coaching_scope_notes: Coaches can support dietary behaviour (smaller meals, thorough
-  chewing, avoiding inflammatory foods, alcohol), food-based enzymatic stimulants,
-  and digestive enzyme supplementation. Diagnosis and lab interpretation (e.g., fecal
-  elastase test) are clinician scope.
-clinician_scope_notes: Diagnosis confirmed via fecal elastase-1 test. Associated conditions
-  such as chronic pancreatitis, cystic fibrosis, GI bypass surgery, and pancreatic
-  duct obstruction require medical management. Pancreatic enzyme replacement therapy
-  (PERT) dosing is clinician-directed.
+coaching_scope_notes: Coaches can support dietary behaviour (smaller meals, thorough chewing, avoiding inflammatory foods,
+  alcohol), food-based enzymatic stimulants, and digestive enzyme supplementation. Diagnosis and lab interpretation (e.g.,
+  fecal elastase test) are clinician scope.
+clinician_scope_notes: Diagnosis confirmed via fecal elastase-1 test. Associated conditions such as chronic pancreatitis,
+  cystic fibrosis, GI bypass surgery, and pancreatic duct obstruction require medical management. Pancreatic enzyme replacement
+  therapy (PERT) dosing is clinician-directed.
 evidence_tier: strong
 sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Exocrine Pancreatic Function Overview
-  quote: The pancreas also has an exocrine function where it produces certain digestive
-    enzymes. So certain digestive enzymes that pancreas produce for the digestion
-    of certain foods are, number one, lipase, specifically helps in the breakdown
-    of fats. Proteases helps in the breakdown of proteins and amylases helps in the
-    breakdown of carbohydrates.
+  quote: The pancreas also has an exocrine function where it produces certain digestive enzymes. So certain digestive enzymes
+    that pancreas produce for the digestion of certain foods are, number one, lipase, specifically helps in the breakdown
+    of fats. Proteases helps in the breakdown of proteins and amylases helps in the breakdown of carbohydrates.
 version: 1
 status: active
 updated_at: '2026-05-05'

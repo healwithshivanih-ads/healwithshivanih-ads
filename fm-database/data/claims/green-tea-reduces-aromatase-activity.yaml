@@ -1,13 +1,12 @@
 slug: green-tea-reduces-aromatase-activity
-statement: Green tea (EGCG) has aromatase-inhibiting properties that can reduce the
-  conversion of androgens to estrogens, thereby helping to reduce estrogen dominance.
+statement: Green tea (EGCG) has aromatase-inhibiting properties that can reduce the conversion of androgens to estrogens,
+  thereby helping to reduce estrogen dominance.
 evidence_tier: plausible_emerging
-rationale: EGCG (epigallocatechin gallate) from green tea has demonstrated aromatase-inhibiting
-  activity in in vitro and some animal studies. Human RCT data specifically targeting
-  estrogen dominance via green tea is limited but the mechanism is biologically plausible.
-coaching_translation: Encouraging clients with estrogen dominance to drink green tea
-  (2–3 cups/day) or consider a green tea extract is a low-risk, nutritionally supported
-  strategy to gently reduce excess estrogen production.
+rationale: EGCG (epigallocatechin gallate) from green tea has demonstrated aromatase-inhibiting activity in in vitro and some
+  animal studies. Human RCT data specifically targeting estrogen dominance via green tea is limited but the mechanism is biologically
+  plausible.
+coaching_translation: Encouraging clients with estrogen dominance to drink green tea (2–3 cups/day) or consider a green tea
+  extract is a low-risk, nutritionally supported strategy to gently reduce excess estrogen production.
 caveats:
 - Human RCT data on green tea/EGCG for estrogen dominance is limited.
 - Caffeinated forms should be moderated in anxious or sleep-disrupted clients.
@@ -15,14 +14,13 @@ caveats:
 linked_to_topics:
 - estrogen-dominance
 linked_to_supplements:
-- green-tea-egcg
+- green-tea
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-sex-hormones
   location: Steroidogenesis Pathway — Aromatase Activity
-  quote: Green tea is an actual decrease of aromatase activity which will reduce the
-    estrogen dominance inside the body.
+  quote: Green tea is an actual decrease of aromatase activity which will reduce the estrogen dominance inside the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

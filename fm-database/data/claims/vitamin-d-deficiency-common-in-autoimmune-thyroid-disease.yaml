@@ -1,26 +1,22 @@
 slug: vitamin-d-deficiency-common-in-autoimmune-thyroid-disease
-statement: Vitamin D deficiency is common in autoimmune diseases, including Hashimoto's
-  thyroiditis.
+statement: Vitamin D deficiency is common in autoimmune diseases, including Hashimoto's thyroiditis.
 evidence_tier: strong
-rationale: Multiple observational studies have confirmed higher rates of vitamin D
-  deficiency in individuals with autoimmune thyroid disease compared to controls.
-  This is considered an established association.
-coaching_translation: Getting your vitamin D levels checked and ensuring adequate
-  vitamin D is an important part of supporting immune health in Hashimoto's.
+rationale: Multiple observational studies have confirmed higher rates of vitamin D deficiency in individuals with autoimmune
+  thyroid disease compared to controls. This is considered an established association.
+coaching_translation: Getting your vitamin D levels checked and ensuring adequate vitamin D is an important part of supporting
+  immune health in Hashimoto's.
 caveats:
-- Vitamin D testing (25-OH-D lab) is required to determine individual deficiency and
-  optimal dosing — refer to clinician.
+- Vitamin D testing (25-OH-D lab) is required to determine individual deficiency and optimal dosing — refer to clinician.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Management of Hashimoto's — Nutrient Optimization
-  quote: 'Vitamin D: Deficiency is common in autoimmune diseases; supplementation
-    may help modulate the immune response.'
+  quote: 'Vitamin D: Deficiency is common in autoimmune diseases; supplementation may help modulate the immune response.'
 version: 1
 status: active
 updated_at: '2026-05-04'

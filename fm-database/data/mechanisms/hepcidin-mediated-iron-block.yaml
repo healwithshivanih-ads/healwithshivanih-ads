@@ -4,10 +4,9 @@ aliases:
 - hepcidin upregulation
 - inflammation-driven iron block
 category: immune
-summary: During systemic inflammation, hepcidin is upregulated and blocks iron export
-  from enterocytes and macrophages, reducing serum iron availability and causing functional
-  iron deficiency even when ferritin appears normal. Alternate-day dosing of oral
-  iron is used to bypass peak hepcidin response.
+summary: During systemic inflammation, hepcidin is upregulated and blocks iron export from enterocytes and macrophages, reducing
+  serum iron availability and causing functional iron deficiency even when ferritin appears normal. Alternate-day dosing of
+  oral iron is used to bypass peak hepcidin response.
 upstream_drivers:
 - systemic-inflammation
 - infection
@@ -17,7 +16,7 @@ downstream_effects:
 - falsely-normal-ferritin
 - iron-refractory-anaemia
 related_mechanisms:
-- gut-barrier-iron-absorption
+- heme-vs-nonheme-iron-absorption
 - inflammation-masking-ferritin
 linked_to_topics:
 - iron-deficiency-dysregulation
@@ -25,8 +24,7 @@ evidence_tier: strong
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
-  quote: Hepcidin blocks iron absorption when inflammation is high → Use alternate-day
-    dosing to bypass hepcidin blocks
+  quote: Hepcidin blocks iron absorption when inflammation is high → Use alternate-day dosing to bypass hepcidin blocks
 version: 1
 status: active
 updated_at: '2026-05-05'

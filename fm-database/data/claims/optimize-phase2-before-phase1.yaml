@@ -1,36 +1,31 @@
 slug: optimize-phase2-before-phase1
-statement: Phase 2 detoxification should be optimized before Phase 1 is stimulated;
-  stimulating Phase 1 without adequate Phase 2 capacity increases reactive intermediate
-  accumulation and oxidative stress.
+statement: Phase 2 detoxification should be optimized before Phase 1 is stimulated; stimulating Phase 1 without adequate Phase
+  2 capacity increases reactive intermediate accumulation and oxidative stress.
 evidence_tier: plausible_emerging
-rationale: Biologically coherent and widely accepted in FM practice. If Phase 2 conjugation
-  capacity is insufficient, increasing Phase 1 activity amplifies reactive intermediate
-  burden, increasing oxidative DNA damage risk. However, the clinical evidence base
-  for sequencing detox protocol interventions in this specific order comes largely
-  from functional medicine expert opinion rather than RCTs.
-coaching_translation: Think of Phase 1 as creating a mess and Phase 2 as cleaning
-  it up. If you speed up Phase 1 before Phase 2 is working well, the mess builds up
-  faster than it can be cleaned, causing more harm. Always build up Phase 2 first.
+rationale: Biologically coherent and widely accepted in FM practice. If Phase 2 conjugation capacity is insufficient, increasing
+  Phase 1 activity amplifies reactive intermediate burden, increasing oxidative DNA damage risk. However, the clinical evidence
+  base for sequencing detox protocol interventions in this specific order comes largely from functional medicine expert opinion
+  rather than RCTs.
+coaching_translation: Think of Phase 1 as creating a mess and Phase 2 as cleaning it up. If you speed up Phase 1 before Phase
+  2 is working well, the mess builds up faster than it can be cleaned, causing more harm. Always build up Phase 2 first.
 caveats:
-- Based on expert lecture (expert_consensus, moderate quality). Logical extrapolation
-  from biochemistry; limited RCT evidence specifically for this clinical sequencing
-  recommendation.
+- Based on expert lecture (expert_consensus, moderate quality). Logical extrapolation from biochemistry; limited RCT evidence
+  specifically for this clinical sequencing recommendation.
 - Source is an FM teaching synthesis — verify clinical protocol with supervising clinician.
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_supplements:
 - glutathione
 - glycine
-- glutamine
+- l-glutamine
 - sulfur-containing-amino-acids
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Clinical Interpretation — Phase Sequencing
-  quote: The clinical interpretation from this slide is, we have to first optimize
-    the phase two. If your phase two is not proper, and if you work on phase one,
-    then it's going to create a problem because you can increase the oxidative stress.
+  quote: The clinical interpretation from this slide is, we have to first optimize the phase two. If your phase two is not
+    proper, and if you work on phase one, then it's going to create a problem because you can increase the oxidative stress.
 version: 1
 status: active
 updated_at: '2026-05-05'

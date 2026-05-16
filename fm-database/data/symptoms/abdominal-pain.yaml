@@ -27,13 +27,12 @@ linked_to_topics:
 - autoimmunity-leaky-gut-triad
 linked_to_mechanisms:
 - colonic-fermentation
-- gut-motility-dysregulation
-- fodmap-fermentation-gas-production
+- altered-gi-motility
 - glycoalkaloid-toxicity
 - exocrine-pancreatic-enzyme-deficiency
 - oxidative-stress-pancreatic-damage
-- gut-dysbiosis
-- intestinal-barrier-dysfunction
+- dysbiosis-gut-microbiome-imbalance
+- leaky-gut
 when_to_refer: Refer if severe, acute onset, radiating, or associated with fever/vomiting.
 sources:
 - id: vitaone-ldn-article

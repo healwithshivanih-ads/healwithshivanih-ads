@@ -1,26 +1,23 @@
 slug: diuretics-worsen-magnesium-deficiency
-statement: Diuretic medications increase urinary magnesium excretion, worsening magnesium
-  deficiency and potentially blunting their blood pressure benefits over time.
+statement: Diuretic medications increase urinary magnesium excretion, worsening magnesium deficiency and potentially blunting
+  their blood pressure benefits over time.
 evidence_tier: strong
-rationale: Well-documented pharmacological effect; loop diuretics and thiazides are
-  known to increase renal magnesium wasting.
+rationale: Well-documented pharmacological effect; loop diuretics and thiazides are known to increase renal magnesium wasting.
 caveats:
 - Medication management is outside coaching scope.
-out_of_scope_notes: Discuss medication-driven depletion with prescribing clinician,
-  not in coaching sessions.
-coaching_translation: Some blood pressure medications actually lower your magnesium
-  levels, making it even more important to address nutrition and supplementation with
-  your doctor.
+out_of_scope_notes: Discuss medication-driven depletion with prescribing clinician, not in coaching sessions.
+coaching_translation: Some blood pressure medications actually lower your magnesium levels, making it even more important
+  to address nutrition and supplementation with your doctor.
 linked_to_topics:
 - magnesium-cardiovascular-health
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Hypertension section
-  quote: Whenever patients are given diuretics they're going to increase urination
-    and the amount of flow of magnesium is going to go out.
+  quote: Whenever patients are given diuretics they're going to increase urination and the amount of flow of magnesium is
+    going to go out.
 version: 1
 status: active
 updated_at: '2026-05-05'

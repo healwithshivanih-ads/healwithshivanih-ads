@@ -4,35 +4,30 @@ aliases:
 - follicle stimulating hormone
 - FSH elevation
 - FSH and aging
-summary: Elevated FSH is a driver of aging effects including bone loss, weight gain
-  (especially abdominal), and cognitive decline. Targeting FSH to <25 in women and
-  <12-13 in men on hormone therapy is presented as a key clinical goal beyond simply
+summary: Elevated FSH is a driver of aging effects including bone loss, weight gain (especially abdominal), and cognitive
+  decline. Targeting FSH to <25 in women and <12-13 in men on hormone therapy is presented as a key clinical goal beyond simply
   measuring estrogen/testosterone levels.
 common_symptoms:
 - bone-loss
-- weight-gain
+- unexplained-weight-gain
 - brain-fog
-- difficulty-losing-weight
 red_flags: []
 related_topics:
 - bioidentical-hormone-replacement-therapy
 - perimenopause-and-menopause
 key_mechanisms:
 - fsh-elevation-aging-cascade
-coaching_scope_notes: Coaches can educate clients that FSH is a key marker to discuss
-  with their hormone clinician. Interpretation and treatment targets are out of scope
-  for coaches.
-clinician_scope_notes: FSH target <25 in women and <12-13 in men is a clinical heuristic
-  for hormone adequacy and anti-aging effects. Pre-monoclonal antibody research explored
-  FSH blockade for weight loss.
+coaching_scope_notes: Coaches can educate clients that FSH is a key marker to discuss with their hormone clinician. Interpretation
+  and treatment targets are out of scope for coaches.
+clinician_scope_notes: FSH target <25 in women and <12-13 in men is a clinical heuristic for hormone adequacy and anti-aging
+  effects. Pre-monoclonal antibody research explored FSH blockade for weight loss.
 evidence_tier: plausible_emerging
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: FSH and Anti-Aging Hormone Targets
-  quote: High FSH, you can't lose weight. High FSH, your bones can't get well no matter
-    what you do. You have to bring your FSH down... we guide our estrogen to the point
-    where we bring the FSH to a level that is 25 or less in women and 12 to 13 or
-    less in men.
+  quote: High FSH, you can't lose weight. High FSH, your bones can't get well no matter what you do. You have to bring your
+    FSH down... we guide our estrogen to the point where we bring the FSH to a level that is 25 or less in women and 12 to
+    13 or less in men.
 version: 1
 status: active
 updated_at: '2026-05-05'

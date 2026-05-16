@@ -1,16 +1,14 @@
 slug: stress-drives-t4-to-rt3-conversion
-statement: Chronic stress increases conversion of T4 to inactive reverse T3 (RT3)
-  rather than active T3, impairing cellular thyroid hormone availability.
+statement: Chronic stress increases conversion of T4 to inactive reverse T3 (RT3) rather than active T3, impairing cellular
+  thyroid hormone availability.
 evidence_tier: plausible_emerging
-rationale: Stress-induced cortisol elevation is known to inhibit deiodinase enzymes
-  and shift T4 metabolism toward RT3. This mechanism is biologically plausible and
-  supported by animal and observational human data.
-coaching_translation: When you're chronically stressed, your body shifts thyroid hormone
-  into an inactive 'parked' form (RT3) that blocks the active form (T3). Managing
-  stress is a direct way to support thyroid function.
+rationale: Stress-induced cortisol elevation is known to inhibit deiodinase enzymes and shift T4 metabolism toward RT3. This
+  mechanism is biologically plausible and supported by animal and observational human data.
+coaching_translation: When you're chronically stressed, your body shifts thyroid hormone into an inactive 'parked' form (RT3)
+  that blocks the active form (T3). Managing stress is a direct way to support thyroid function.
 linked_to_topics:
 - thyroid-dysfunction
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements: []
 out_of_scope_notes: ''
 caveats: []
@@ -18,8 +16,7 @@ linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Factors that Affect Thyroid Function
-  quote: 'Factors that increase conversion of T4 to RT3: Stress, Trauma, Low-calorie
-    diet, Inflammation (cytokines, etc.)'
+  quote: 'Factors that increase conversion of T4 to RT3: Stress, Trauma, Low-calorie diet, Inflammation (cytokines, etc.)'
 version: 1
 status: active
 updated_at: '2026-05-04'

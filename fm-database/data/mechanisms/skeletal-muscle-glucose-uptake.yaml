@@ -5,9 +5,8 @@ aliases:
 - insulin-independent glucose uptake
 - GLUT4 translocation
 category: metabolic
-summary: Skeletal muscle is the primary site of postprandial glucose uptake. Exercise
-  enhances this via both insulin-dependent (GLUT4 translocation) and insulin-independent
-  (AMPK-mediated) pathways, improving overall glucose disposal.
+summary: Skeletal muscle is the primary site of postprandial glucose uptake. Exercise enhances this via both insulin-dependent
+  (GLUT4 translocation) and insulin-independent (AMPK-mediated) pathways, improving overall glucose disposal.
 upstream_drivers:
 - physical-exercise
 - antigravity-exercise
@@ -18,21 +17,18 @@ downstream_effects:
 related_mechanisms:
 - insulin-resistance
 - hepatic-insulin-sensitivity
-- hepatic-ampk-activation
 linked_to_topics:
 - blood-sugar-dysfunction
 evidence_tier: strong
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Antigravity Exercises
-  quote: Your skeletal muscle determines your health. It is the primary site for glucose
-    uptake after a meal. Exercise enhances skeletal muscle glucose uptake using both
-    insulin-dependent & insulin-independent mechanisms, and regular exercise results
+  quote: Your skeletal muscle determines your health. It is the primary site for glucose uptake after a meal. Exercise enhances
+    skeletal muscle glucose uptake using both insulin-dependent & insulin-independent mechanisms, and regular exercise results
     in sustained improvements in insulin sensitivity and glucose disposal.
 - id: vitaone-health-coaching-toolkit
   location: Antigravity Exercises
-  quote: Your skeletal muscle determines your health. It is the primary site for glucose
-    uptake after a meal.
+  quote: Your skeletal muscle determines your health. It is the primary site for glucose uptake after a meal.
 version: 2
 status: active
 updated_at: '2026-05-04'

@@ -1,21 +1,20 @@
 slug: green-tea-has-anti-inflammatory-effects
-statement: Green tea is particularly noted for its anti-inflammatory effects, and
-  EGCG (its active catechin) reduces inflammation and enhances immune function.
+statement: Green tea is particularly noted for its anti-inflammatory effects, and EGCG (its active catechin) reduces inflammation
+  and enhances immune function.
 evidence_tier: plausible_emerging
-rationale: Multiple in vitro and some human RCTs support anti-inflammatory and immune-modulating
-  effects of green tea catechins. Effect sizes in human trials are modest and context-dependent.
-coaching_translation: Swapping some coffee for green tea, or taking an EGCG supplement,
-  may help calm inflammation and support your immune system. Aim for up to 4 cups
-  per day.
+rationale: Multiple in vitro and some human RCTs support anti-inflammatory and immune-modulating effects of green tea catechins.
+  Effect sizes in human trials are modest and context-dependent.
+coaching_translation: Swapping some coffee for green tea, or taking an EGCG supplement, may help calm inflammation and support
+  your immune system. Aim for up to 4 cups per day.
 caveats:
-- High-dose EGCG extracts have been associated with liver toxicity — advise clients
-  to stay within the recommended amount and consult clinician before supplementing.
+- High-dose EGCG extracts have been associated with liver toxicity — advise clients to stay within the recommended amount
+  and consult clinician before supplementing.
 - Source is expert consensus toolkit.
 linked_to_topics:
 - anti-inflammatory-diet
 - immune-support-covid-19
 linked_to_supplements:
-- green-tea-egcg
+- green-tea
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

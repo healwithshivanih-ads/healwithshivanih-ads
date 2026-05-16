@@ -1,25 +1,20 @@
 slug: prolonged-stress-depletes-dhea
-statement: Chronic stress eventually depletes DHEA as adrenal demand outstrips capacity,
-  signifying adrenal exhaustion.
+statement: Chronic stress eventually depletes DHEA as adrenal demand outstrips capacity, signifying adrenal exhaustion.
 evidence_tier: plausible_emerging
-rationale: Biologically plausible and consistent with clinical observation, but 'adrenal
-  exhaustion' as a discrete syndrome is not firmly established in mainstream endocrinology.
-  Supported by the physiological principle of substrate competition in adrenal steroidogenesis.
-  Source is an expert consensus toolkit.
-coaching_translation: When stress goes on for too long, your adrenal glands can't
-  keep up. Over time, DHEA — a hormone that helps protect your immune system, bones,
-  and muscle — starts to drop. This is a sign your body needs more recovery support.
+rationale: Biologically plausible and consistent with clinical observation, but 'adrenal exhaustion' as a discrete syndrome
+  is not firmly established in mainstream endocrinology. Supported by the physiological principle of substrate competition
+  in adrenal steroidogenesis. Source is an expert consensus toolkit.
+coaching_translation: When stress goes on for too long, your adrenal glands can't keep up. Over time, DHEA — a hormone that
+  helps protect your immune system, bones, and muscle — starts to drop. This is a sign your body needs more recovery support.
 caveats:
-- The term 'adrenal exhaustion' is FM-specific; not a recognized ICD diagnosis. Source
-  is an expert consensus toolkit, not primary literature.
-- '''Adrenal exhaustion'' or ''adrenal fatigue'' is not a recognized diagnosis in
-  conventional endocrinology; requires clinician evaluation to differentiate from
-  primary adrenal insufficiency'
+- The term 'adrenal exhaustion' is FM-specific; not a recognized ICD diagnosis. Source is an expert consensus toolkit, not
+  primary literature.
+- '''Adrenal exhaustion'' or ''adrenal fatigue'' is not a recognized diagnosis in conventional endocrinology; requires clinician
+  evaluation to differentiate from primary adrenal insufficiency'
 - Source is a coaching toolkit, not primary literature
 linked_to_topics:
 - hpa-axis-dysregulation
 - hypercortisolism
-- hpa-axis-dysfunction
 - adrenal-hormone-function
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -27,12 +22,12 @@ linked_to_supplements: []
 sources:
 - id: vitaone-adrenal-toolkit
   location: Hypercortisolism
-  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
-    and DHEA levels begin to fall, signifying adrenal exhaustion.
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand, and DHEA levels begin to fall, signifying
+    adrenal exhaustion.
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
-  quote: If this becomes chronic, the adrenals can no longer keep up with the demand,
-    and DHEA levels begin to fall, signifying adrenal exhaustion.
+  quote: If this becomes chronic, the adrenals can no longer keep up with the demand, and DHEA levels begin to fall, signifying
+    adrenal exhaustion.
 version: 2
 status: active
 updated_at: '2026-05-04'

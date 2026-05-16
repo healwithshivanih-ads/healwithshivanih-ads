@@ -10,9 +10,8 @@ aliases:
 - excitatory dominance
 - glutamate excess
 category: neurological
-summary: Magnesium is required for the production and activation of GABA receptors
-  in the brain, which mediate calming and inhibitory neurotransmission. Deficiency
-  reduces GABAergic tone, increasing vulnerability to stress, anxiety, and hyperexcitability.
+summary: Magnesium is required for the production and activation of GABA receptors in the brain, which mediate calming and
+  inhibitory neurotransmission. Deficiency reduces GABAergic tone, increasing vulnerability to stress, anxiety, and hyperexcitability.
 upstream_drivers:
 - magnesium-deficiency
 - chronic-stress
@@ -25,20 +24,18 @@ related_mechanisms:
 - serotonin-synthesis
 - adrenal-catecholamine-dysregulation
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-neurological-mental-health
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Vicious cycle of magnesium deficiency / nervous system section
-  quote: Magnesium is responsible for the production of certain receptors which give
-    a calming effect like the GABA receptors.
+  quote: Magnesium is responsible for the production of certain receptors which give a calming effect like the GABA receptors.
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Sleep & Nervous System sections
 - id: vitaone-adrenal-cheatsheet
   location: The Biochemical-Emotional Link (p.15)
-  quote: 'GABA-Glutamate Balance: Excitatory dominance → Restlessness, racing thoughts,
-    insomnia.'
+  quote: 'GABA-Glutamate Balance: Excitatory dominance → Restlessness, racing thoughts, insomnia.'
 version: 1
 status: active
 updated_at: '2026-05-05'

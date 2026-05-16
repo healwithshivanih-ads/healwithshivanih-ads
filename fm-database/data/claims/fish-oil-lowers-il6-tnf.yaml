@@ -1,10 +1,9 @@
 slug: fish-oil-lowers-il6-tnf
 statement: Fish oil supplementation lowers IL-6 and TNF-alpha levels.
 evidence_tier: strong
-rationale: Multiple RCTs demonstrate EPA/DHA reduce circulating IL-6 and TNF-alpha,
-  key pro-inflammatory cytokines.
-coaching_translation: Omega-3 fish oil is one of the best-studied natural ways to
-  lower inflammatory markers. Recommend 2–3g EPA/DHA daily with meals.
+rationale: Multiple RCTs demonstrate EPA/DHA reduce circulating IL-6 and TNF-alpha, key pro-inflammatory cytokines.
+coaching_translation: Omega-3 fish oil is one of the best-studied natural ways to lower inflammatory markers. Recommend 2–3g
+  EPA/DHA daily with meals.
 caveats:
 - Effect size varies by dose and baseline Omega-3 Index.
 - Source is educational synthesis.
@@ -12,7 +11,7 @@ linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

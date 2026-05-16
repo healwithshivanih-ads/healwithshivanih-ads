@@ -1,29 +1,25 @@
 slug: vitamin-d3-chronic-disease-dosing
-statement: Individuals with chronic diseases or chronic inflammatory conditions require
-  higher vitamin D doses — typically 6,000–10,000 IU/day for therapeutic use and 3,000–6,000
-  IU/day for maintenance — irrespective of BMI.
+statement: Individuals with chronic diseases or chronic inflammatory conditions require higher vitamin D doses — typically
+  6,000–10,000 IU/day for therapeutic use and 3,000–6,000 IU/day for maintenance — irrespective of BMI.
 evidence_tier: confirm_with_clinician
-rationale: The immunomodulatory role of vitamin D means demand is higher in chronic
-  inflammatory states. The document explicitly states dosing is approximately doubled
-  for those with chronic conditions, regardless of BMI.
-coaching_translation: When the body is dealing with chronic inflammation or illness,
-  it uses up vitamin D faster. Your doctor may recommend a higher dose in these situations.
-out_of_scope_notes: Managing vitamin D dosing in the context of chronic disease is
-  firmly within clinician scope.
+rationale: The immunomodulatory role of vitamin D means demand is higher in chronic inflammatory states. The document explicitly
+  states dosing is approximately doubled for those with chronic conditions, regardless of BMI.
+coaching_translation: When the body is dealing with chronic inflammation or illness, it uses up vitamin D faster. Your doctor
+  may recommend a higher dose in these situations.
+out_of_scope_notes: Managing vitamin D dosing in the context of chronic disease is firmly within clinician scope.
 caveats:
 - Source is expert lecture/consensus, not a primary RCT.
 - Requires individual clinical assessment, blood level monitoring, and clinician prescription.
 linked_to_topics:
 - vitamin-d3
 linked_to_supplements:
-- vitamin-d3-supplement
+- vitamin-d3
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D Supplementation Dosing
-  quote: Any individual who is suffering from any chronic diseases because of the
-    immunomodulatory response of vitamin D, the requirement of vitamin D is going
-    to be eventually doubled towards the actual dosage will be.
+  quote: Any individual who is suffering from any chronic diseases because of the immunomodulatory response of vitamin D,
+    the requirement of vitamin D is going to be eventually doubled towards the actual dosage will be.
 version: 1
 status: active
 updated_at: '2026-05-05'

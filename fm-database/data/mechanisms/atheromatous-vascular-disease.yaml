@@ -16,18 +16,16 @@ linked_to_topics:
 related_mechanisms:
 - chronic-inflammation
 - insulin-resistance
-- oxidative-stress-and-ages
+- oxidative-stress
 slug: atheromatous-vascular-disease
 sources:
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis
-  quote: The underlying pathology is atheromatous vascular disease, resulting in coronary
-    artery disease (CAD), cerebrovascular disease, and peripheral vascular disease,
-    and the subsequent development of heart failure and cardiac arrhythmias.
+  quote: The underlying pathology is atheromatous vascular disease, resulting in coronary artery disease (CAD), cerebrovascular
+    disease, and peripheral vascular disease, and the subsequent development of heart failure and cardiac arrhythmias.
 status: active
-summary: Progressive accumulation of lipid-laden plaques within arterial walls, leading
-  to narrowing, reduced blood flow, and downstream ischemic events. Triglycerides
-  implicated in progression of coronary atherosclerosis. Advanced disease manifests
+summary: Progressive accumulation of lipid-laden plaques within arterial walls, leading to narrowing, reduced blood flow,
+  and downstream ischemic events. Triglycerides implicated in progression of coronary atherosclerosis. Advanced disease manifests
   as CAD, cerebrovascular disease, and peripheral vascular disease.
 updated_at: '2026-05-04'
 updated_by: shivani
@@ -36,6 +34,6 @@ upstream_drivers:
 - insulin-resistance
 - elevated-triglycerides
 - oxidative-stress
-- homocysteine-elevation
+- elevated-homocysteine
 - lpa-elevation
 version: 1

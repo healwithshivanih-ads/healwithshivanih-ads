@@ -5,9 +5,8 @@ aliases:
 - parasympathetic-shutdown
 - vagal-hypotonia
 category: neurological
-summary: Reduced vagal nerve signaling impairs digestion, HRV, and immune regulation.
-  Results from chronic sympathetic overdrive, unprocessed emotional trauma, or HPA
-  axis dysregulation. Repressed emotions independently lower vagal tone by elevating
+summary: Reduced vagal nerve signaling impairs digestion, HRV, and immune regulation. Results from chronic sympathetic overdrive,
+  unprocessed emotional trauma, or HPA axis dysregulation. Repressed emotions independently lower vagal tone by elevating
   inflammatory cytokines.
 upstream_drivers:
 - hpa-axis-dysregulation
@@ -15,7 +14,7 @@ upstream_drivers:
 - chronic-stress
 downstream_effects:
 - poor-digestion
-- low-hrv
+- sympathetic-dominance
 - immune-dysregulation
 - bloating
 - anxiety

@@ -1,28 +1,24 @@
 slug: nigella-sativa-reduces-tsh-and-tpo-antibodies
-statement: In an 8-week RCT, Nigella sativa (1g twice daily) significantly decreased
-  TSH and anti-TPO antibodies and increased T3 levels compared to placebo.
+statement: In an 8-week RCT, Nigella sativa (1g twice daily) significantly decreased TSH and anti-TPO antibodies and increased
+  T3 levels compared to placebo.
 evidence_tier: plausible_emerging
-rationale: The document cites an 8-week RCT with placebo control showing significant
-  TSH and anti-TPO antibody reduction and T3 increase. This is a single RCT — promising
-  but not yet consensus-level evidence.
-coaching_translation: Black cumin seed (Nigella sativa) has shown real promise in
-  a clinical trial for lowering the immune attack on the thyroid and improving thyroid
-  hormone levels.
+rationale: The document cites an 8-week RCT with placebo control showing significant TSH and anti-TPO antibody reduction and
+  T3 increase. This is a single RCT — promising but not yet consensus-level evidence.
+coaching_translation: Black cumin seed (Nigella sativa) has shown real promise in a clinical trial for lowering the immune
+  attack on the thyroid and improving thyroid hormone levels.
 caveats:
 - Single RCT — replication needed before strong evidence designation.
 - Supplement dose (2g/day) should be verified with clinician.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements:
 - nigella-sativa
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
-  location: Key Nutrients to Consider in Thyroid Regulation — Nigella sativa (Black
-    Cumin)
-  quote: Experimental group showed significant decrease in TSH, decrease in anti-TPO
-    antibodies and increase in T3
+  location: Key Nutrients to Consider in Thyroid Regulation — Nigella sativa (Black Cumin)
+  quote: Experimental group showed significant decrease in TSH, decrease in anti-TPO antibodies and increase in T3
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -4,23 +4,21 @@ aliases:
 - adrenergic surge sleep apnea
 - OSA sympathetic cascade
 category: neurological
-summary: During obstructive sleep apnea events, airway closure causes hypoxia triggering
-  sympathetic arousal with norepinephrine/epinephrine release, increased intrathoracic
-  pressure changes activating atrial natriuretic factor, and downstream oxidative
-  stress and inflammation contributing to atrial fibrillation, cardiomyopathy, and
-  coronary disease.
+summary: During obstructive sleep apnea events, airway closure causes hypoxia triggering sympathetic arousal with norepinephrine/epinephrine
+  release, increased intrathoracic pressure changes activating atrial natriuretic factor, and downstream oxidative stress
+  and inflammation contributing to atrial fibrillation, cardiomyopathy, and coronary disease.
 upstream_drivers:
 - obstructive-sleep-apnea
 - obesity
 - anatomical-airway-factors
 downstream_effects:
 - oxidative-stress
-- inflammation
+- chronic-inflammation
 - atrial-fibrillation
 - cardiomyopathy
 related_mechanisms:
 - central-adiposity-inflammation
-- oxidized-ldl-inflammasome-activation
+- ldl-oxidation
 linked_to_topics:
 - sleep-apnea-cardiovascular-risk
 - cardiovascular-disease-prevention
@@ -28,9 +26,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Sleep Apnea and Cardiovascular Risk
-  quote: When we have obstructive sleep apnea, we have decreased oxygen delivery,
-    we have an increase in CO2, we have changes in inter-thoracic pressure, and the
-    end result is sympathetic activation, oxidative stress, and inflammation.
+  quote: When we have obstructive sleep apnea, we have decreased oxygen delivery, we have an increase in CO2, we have changes
+    in inter-thoracic pressure, and the end result is sympathetic activation, oxidative stress, and inflammation.
 version: 1
 status: active
 updated_at: '2026-05-05'

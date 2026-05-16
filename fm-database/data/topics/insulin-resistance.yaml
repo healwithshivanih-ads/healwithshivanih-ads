@@ -20,39 +20,33 @@ summary: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, o
 common_symptoms:
 - post-meal energy crashes
 - carbohydrate sensitivity
-- weight gain around abdomen
-- sugar cravings
-- bloating
-- water retention
-- belly-fat
-- skin-tags
-- fatigue-after-meals
-- sugar-cravings
-- elevated-fasting-insulin
-- post-meal-fatigue
-- brain-fog
 - abdominal-weight-gain
+- sugar-cravings
+- bloating
+- edema
+- increased-waist-circumference
+- skin-tags
 - energy-crashes
+- elevated-fasting-insulin
+- brain-fog
 - acanthosis-nigricans
 - mood-swings
-- fatigue
-- weight-gain
-- glucose-spikes
+- lethargy
+- unexplained-weight-gain
+- elevated-blood-glucose
 - increased-hunger
-- high-blood-pressure
-- high-triglycerides
+- elevated-blood-pressure
+- elevated-triglycerides
 - high-blood-sugar
 - elevated-hba1c
 - abdominal-obesity
-- pcos-symptoms
+- pms
 - sleep-apnea
-- poor-glucose-control
 - cravings
 - metabolic-joint-pain
 - pcos-related-hair-loss
 - hair-loss
 - joint-pain
-- central-weight-gain
 - hypoglycemia
 red_flags:
 - fasting glucose trends toward pre-diabetes
@@ -65,7 +59,7 @@ red_flags:
 - fasting glucose ≥ 126 mg/dL
 - fasting insulin >20 µIU/mL
 - HOMA-IR >2.5
-- acanthosis nigricans
+- acanthosis-nigricans
 - fasting-insulin-above-6
 - hba1c-above-5-5
 - elevated-fasting-glucose
@@ -84,14 +78,13 @@ related_topics:
 - microbiome
 - gut-hormone-axis
 - pcos
-- dysbiosis
+- gut-dysbiosis
 - inflammation
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - blood-sugar-dysfunction
 - metabolic-syndrome
 - type-2-diabetes
 - prediabetes
-- obesity
 - cardiovascular-risk-assessment
 - dyslipidemia
 - hypertension
@@ -106,22 +99,20 @@ related_topics:
 - adrenal-fatigue
 - chronic-stress
 key_mechanisms:
-- microbiome-dysbiosis
+- microbial-diversity-decline
 - estrogen-decline
 - cortisol-elevation
 - progesterone-excess
-- insulin-resistance
 - chronic-inflammation
 - hpa-axis-dysregulation
 - visceral-adipose-inflammation
 - skeletal-muscle-glucose-uptake
 - hepatic-glucose-production
-- vldl-overproduction-from-excess-carbs
+- hepatic-lipogenesis
 - dyslipidemia
 - hepatic-steatosis
-- nutrient-dependent-energy-metabolism
-- oxidative-stress-and-inflammation
-- hpa-axis-overactivation
+- mitochondrial-energy-production
+- oxidative-stress
 - anti-stress-hormone-restoration
 coaching_scope_notes: Low-GI diet, fiber, protein balance, movement, intermittent fasting guidance, and stress reduction are
   coaching-appropriate.

@@ -4,11 +4,10 @@ aliases:
 - microbial detoxification
 - intestinal detox
 category: gut
-summary: The gut microbiome provides a first-line defense against ingested xenobiotics.
-  Beneficial bacteria can metabolize and sequester pesticides and other toxins before
-  they are absorbed across the intestinal epithelium. An estimated 50–60% of ingested
-  pesticide load may be eliminated by gut bacteria. Dysbiosis (loss of beneficial
-  flora) impairs this defense and amplifies systemic toxic load.
+summary: The gut microbiome provides a first-line defense against ingested xenobiotics. Beneficial bacteria can metabolize
+  and sequester pesticides and other toxins before they are absorbed across the intestinal epithelium. An estimated 50–60%
+  of ingested pesticide load may be eliminated by gut bacteria. Dysbiosis (loss of beneficial flora) impairs this defense
+  and amplifies systemic toxic load.
 upstream_drivers:
 - diet
 - probiotic-status
@@ -17,7 +16,7 @@ downstream_effects:
 - reduced-xenobiotic-absorption
 - reduced-total-toxic-load
 related_mechanisms:
-- lps-endotoxin-production
+- lps-endotoxemia
 linked_to_topics:
 - gut-microbiome-and-detox
 - total-toxic-load
@@ -25,10 +24,9 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Intestinal Dysbiosis and Detox
-  quote: 50 to 60 percent of this pesticide is actually eliminated by that microbiome
-    So when you are exposed to any kind of chemical, this chemical primarily go in
-    a bacteria in the intestine and the bacteria die before this toxin can enter in
-    the cell.
+  quote: 50 to 60 percent of this pesticide is actually eliminated by that microbiome So when you are exposed to any kind
+    of chemical, this chemical primarily go in a bacteria in the intestine and the bacteria die before this toxin can enter
+    in the cell.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -9,16 +9,15 @@ aliases:
 - EPA
 - DHA
 - linoleic acid
-summary: Essential fatty acids (omega-3 and omega-6) must be obtained from the diet.
-  EPA and DHA omega-3s from fatty fish are most bioactive. Lowering the omega-6:omega-3
-  ratio (ideally ≤4:1) may reduce inflammation and chronic disease risk. Emphasis
-  should be placed on increasing EPA/DHA intake.
+summary: Essential fatty acids (omega-3 and omega-6) must be obtained from the diet. EPA and DHA omega-3s from fatty fish
+  are most bioactive. Lowering the omega-6:omega-3 ratio (ideally ≤4:1) may reduce inflammation and chronic disease risk.
+  Emphasis should be placed on increasing EPA/DHA intake.
 common_symptoms:
 - joint-pain
 - brain-fog
 - dry-skin
 - inflammation
-- cognitive-decline
+- poor-concentration
 - cardiovascular-risk
 red_flags: []
 related_topics:
@@ -28,22 +27,19 @@ related_topics:
 - mitochondrial-health-nutrients
 - fish-toxins-safe-food
 key_mechanisms:
-- omega-6-omega-3-ratio
+- omega-3-omega-6-imbalance
 - eicosanoid-signaling
 - omega-3-anti-inflammatory-pathway
 - mitochondrial-energy-production
-coaching_scope_notes: Coach can educate on food sources of EPA/DHA (fatty fish) and
-  ALA (flaxseed, chia, walnuts). Emphasize increasing EPA/DHA-rich foods. Supplementation
-  dosing requires clinician guidance.
-clinician_scope_notes: Therapeutic omega-3 dosing for specific conditions is clinician
-  scope.
+coaching_scope_notes: Coach can educate on food sources of EPA/DHA (fatty fish) and ALA (flaxseed, chia, walnuts). Emphasize
+  increasing EPA/DHA-rich foods. Supplementation dosing requires clinician guidance.
+clinician_scope_notes: Therapeutic omega-3 dosing for specific conditions is clinician scope.
 evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Essential Fatty Acids'
-  quote: Some research suggests that ratios 4:1 and lower may reduce inflammation
-    and lower the risk of chronic disease. Emphasis should be placed on increasing
-    EPA and DHA omega-3 consumption.
+  quote: Some research suggests that ratios 4:1 and lower may reduce inflammation and lower the risk of chronic disease. Emphasis
+    should be placed on increasing EPA and DHA omega-3 consumption.
 - id: vitaone-health-coaching-toolkit
   location: 'Food Sources: Essential Fatty Acids'
   quote: Emphasis should be placed on increasing EPA and DHA omega-3 consumption.

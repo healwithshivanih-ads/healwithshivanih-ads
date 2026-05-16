@@ -14,29 +14,27 @@ aliases:
 - low immunity
 category: constitutional
 severity: concerning
-description: Autoimmune flares, low immunity, recurrent infections linked to stress,
-  cytokines, low DHEA, loneliness, thymosin, gut barrier breakdown, and immune dysregulation.
-when_to_refer: Refer for autoimmune disease diagnosis, immunosuppressive therapy,
-  or recurrent infections requiring investigation.
+description: Autoimmune flares, low immunity, recurrent infections linked to stress, cytokines, low DHEA, loneliness, thymosin,
+  gut barrier breakdown, and immune dysregulation.
+when_to_refer: Refer for autoimmune disease diagnosis, immunosuppressive therapy, or recurrent infections requiring investigation.
 linked_to_topics:
 - chronic-inflammation
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - chronic-stress
 - adrenal-fatigue
 linked_to_mechanisms:
 - neuroimmune-inflammation-loop
 - gut-brain-axis-disruption
-- cortisol-dhea-imbalance
+- hpa-axis-dysregulation
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Autoimmune flares, low immunity, recurrent infections, and low-grade infections
-    — Linked to stress, cytokines, low DHEA, loneliness, thymosin, gut barrier breakdown,
-    and immune dysregulation.
+  quote: Autoimmune flares, low immunity, recurrent infections, and low-grade infections — Linked to stress, cytokines, low
+    DHEA, loneliness, thymosin, gut barrier breakdown, and immune dysregulation.
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: If zinc is deficient, the immune cells could be compensated for formation,
-    their activity could be compensated, thus decreasing your immune function.
+  quote: If zinc is deficient, the immune cells could be compensated for formation, their activity could be compensated, thus
+    decreasing your immune function.
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
   quote: Infections because the immune system is on the lower side.

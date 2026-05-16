@@ -1,35 +1,31 @@
 slug: dysbiosis-elevates-beta-glucuronidase-causing-estrogen-dominance
-statement: Gut dysbiosis increases bacterial beta-glucuronidase activity, deconjugating
-  excreted estrogen metabolites and causing their reabsorption, thereby promoting
-  estrogen dominance.
+statement: Gut dysbiosis increases bacterial beta-glucuronidase activity, deconjugating excreted estrogen metabolites and
+  causing their reabsorption, thereby promoting estrogen dominance.
 evidence_tier: plausible_emerging
-rationale: Beta-glucuronidase-producing gut bacteria have been identified in human
-  microbiome research. Elevated enzyme activity has been associated with increased
-  free estrogen in circulation. The estrobolome concept is supported by emerging evidence,
+rationale: Beta-glucuronidase-producing gut bacteria have been identified in human microbiome research. Elevated enzyme activity
+  has been associated with increased free estrogen in circulation. The estrobolome concept is supported by emerging evidence,
   though large RCT confirmation is limited.
-coaching_translation: Bad gut bacteria can produce an enzyme that 'recycles' used
-  estrogen back into your bloodstream, which can worsen conditions like endometriosis.
-  A healthy gut helps your body actually excrete excess estrogen.
+coaching_translation: Bad gut bacteria can produce an enzyme that 'recycles' used estrogen back into your bloodstream, which
+  can worsen conditions like endometriosis. A healthy gut helps your body actually excrete excess estrogen.
 caveats:
-- This is a plausible emerging mechanism; the direct clinical link to endometriosis
-  severity has not been established in large controlled trials.
+- This is a plausible emerging mechanism; the direct clinical link to endometriosis severity has not been established in large
+  controlled trials.
 - Source is FM lecture synthesis.
 linked_to_topics:
 - estrogen-dominance
 - endometriosis
 - gut-skin-hormone-axis
-- dysbiosis
+- gut-dysbiosis
 linked_to_supplements:
 - calcium-d-glucarate
-- dim-diindolylmethane
+- dim
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Estrogen Detoxification Discussion
-  quote: Because there's a lot of bad bacteria the beta glucuronidase level rises
-    — this beta glucuronidase actually unesterifies the estrogen and it leads to a
-    lot of estrogen circulation in the blood.
+  quote: Because there's a lot of bad bacteria the beta glucuronidase level rises — this beta glucuronidase actually unesterifies
+    the estrogen and it leads to a lot of estrogen circulation in the blood.
 version: 1
 status: active
 updated_at: '2026-05-05'

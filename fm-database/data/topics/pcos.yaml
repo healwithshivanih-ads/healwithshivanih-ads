@@ -20,27 +20,22 @@ common_symptoms:
 - hormonal acne (jawline, chin)
 - hirsutism (face, chest, abdomen)
 - scalp hair thinning
-- difficulty losing weight
+- unexplained-weight-gain
 - sugar / carb cravings
 - infertility / anovulation
 - irregular-periods
 - acne
-- hair-thinning
-- weight-gain
-- fatigue
+- hair-loss
+- lethargy
 - mood-swings
 - infertility
-- hair-loss
-- belly-fat
+- increased-waist-circumference
 - sugar-cravings
 - elevated-fasting-insulin
-- hirsutism
+- facial-hair
 - low-libido
 - low-mood
 - hormonal-hair-loss
-- mood-changes
-- irregular-cycles
-- central-weight-gain
 - pms
 red_flags:
 - severely irregular bleeding requiring GYN evaluation
@@ -63,7 +58,7 @@ related_topics:
 - estrogen-dominance
 - insulin-resistance
 - inflammation
-- dysbiosis
+- gut-dysbiosis
 - gut-hormone-axis
 - hpa-axis-dysregulation
 - low-carb-diet
@@ -79,11 +74,10 @@ key_mechanisms:
 - androgen-excess
 - chronic-inflammation
 - hpa-axis-dysregulation
-- aromatase-overactivity
-- aromatase-upregulation
-- nutrient-dependent-energy-metabolism
-- oxidative-stress-and-inflammation
-- hpa-axis-overactivation
+- aromatase-activity
+- mitochondrial-energy-production
+- oxidative-stress
+- cortisol-elevation
 - anti-stress-hormone-restoration
 coaching_scope_notes: Low-GI diet, fiber, protein balance, stress reduction, and seed cycling support are coaching-appropriate.
 clinician_scope_notes: LH:FSH ratio, androgen testing, fertility treatment, and hormonal therapy decisions require clinician

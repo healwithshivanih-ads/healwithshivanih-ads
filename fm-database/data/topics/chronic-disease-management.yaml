@@ -3,14 +3,13 @@ display_name: Chronic Disease Management in Functional Medicine
 aliases:
 - complex chronic illness coaching
 - chronic care coaching
-summary: Functional medicine addresses chronic illness by identifying upstream causes
-  (lifestyle, environment, gene-environment interactions, stress, microbiome) rather
-  than treating symptoms in silos. Coaches play a key role in translating complex
+summary: Functional medicine addresses chronic illness by identifying upstream causes (lifestyle, environment, gene-environment
+  interactions, stress, microbiome) rather than treating symptoms in silos. Coaches play a key role in translating complex
   care plans into realistic, step-by-step patient actions.
 common_symptoms:
 - care-plan-overwhelm
 - low-patient-accountability
-- fatigue
+- lethargy
 - multi-system-symptoms
 red_flags:
 - patient-not-improving-despite-care-plan-adherence
@@ -23,20 +22,17 @@ key_mechanisms:
 - patient-centered-care-model
 - upstream-cause-identification
 - behavior-change-accountability
-coaching_scope_notes: Coaches help patients integrate complex multi-step care plans
-  (diet, water, stress, supplements) step by step, reducing overwhelm and accelerating
-  adherence.
-clinician_scope_notes: Clinicians design care plans; coaches implement them. Clinicians
-  should consider that patients leave new patient visits with overwhelming amounts
-  of information that a coach can help parse.
+coaching_scope_notes: Coaches help patients integrate complex multi-step care plans (diet, water, stress, supplements) step
+  by step, reducing overwhelm and accelerating adherence.
+clinician_scope_notes: Clinicians design care plans; coaches implement them. Clinicians should consider that patients leave
+  new patient visits with overwhelming amounts of information that a coach can help parse.
 evidence_tier: plausible_emerging
 sources:
 - id: ask-expert-future-fm
   location: Role of Coach as Strategic Collaborator Section
-  quote: If you think about a new patient visit for somebody who has complex chronic
-    illness or something like that, they're spending an hour with the providers. They're
-    getting these really comprehensive care plans, but they're not formulated in step-by-step
-    ways for people to implement realistically into their life.
+  quote: If you think about a new patient visit for somebody who has complex chronic illness or something like that, they're
+    spending an hour with the providers. They're getting these really comprehensive care plans, but they're not formulated
+    in step-by-step ways for people to implement realistically into their life.
 version: 1
 status: active
 updated_at: '2026-05-05'

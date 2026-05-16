@@ -8,12 +8,12 @@ summary: Spore-based probiotics (e.g., Bacillus species) are more resistant to s
   gut lining over 6–9 months, unlike standard lactobacillus/bifidobacterium probiotics which have only transient effects.
   Spores can lie dormant and reactivate in favorable gut conditions, promoting lasting changes to gut flora.
 upstream_drivers:
-- gut-dysbiosis-microbiome-imbalance
+- dysbiosis-gut-microbiome-imbalance
 downstream_effects:
 - restored-gut-flora
 - improved-gut-lining
 related_mechanisms:
-- gut-dysbiosis-microbiome-imbalance
+- dysbiosis-gut-microbiome-imbalance
 linked_to_topics:
 - gut-dysbiosis
 - autoimmunity-leaky-gut-triad

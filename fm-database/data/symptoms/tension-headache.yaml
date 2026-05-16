@@ -6,12 +6,11 @@ aliases:
 - pressure headache
 category: neurological
 severity: common
-description: Headaches driven by muscle tension and vascular constriction, exacerbated
-  by serotonin pathway imbalance and magnesium deficiency.
-when_to_refer: New or worsening headaches, or those with neurological symptoms, require
-  medical evaluation.
+description: Headaches driven by muscle tension and vascular constriction, exacerbated by serotonin pathway imbalance and
+  magnesium deficiency.
+when_to_refer: New or worsening headaches, or those with neurological symptoms, require medical evaluation.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-neurological-mental-health
 linked_to_mechanisms:
 - serotonin-synthesis
@@ -19,8 +18,8 @@ linked_to_mechanisms:
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Nervous system section
-  quote: Tension headaches, migraine headaches, serotonin pathway, again, imbalanced
-    serotonin pathway can eventually cause migraines and tension headaches.
+  quote: Tension headaches, migraine headaches, serotonin pathway, again, imbalanced serotonin pathway can eventually cause
+    migraines and tension headaches.
 version: 1
 status: active
 updated_at: '2026-05-05'

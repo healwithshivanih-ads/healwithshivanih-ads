@@ -19,14 +19,13 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Resveratrol has poor bioavailability; trans-resveratrol or liposomal
-  forms are preferred. Evidence for antiviral effects is largely preclinical. May
-  interact with anticoagulants (warfarin), antiplatelet drugs, and some chemotherapy
-  agents. Caution in pregnancy (Roberts et al. 2014 FASEB J adverse outcomes in primates).
+notes_for_coach: Resveratrol has poor bioavailability; trans-resveratrol or liposomal forms are preferred. Evidence for antiviral
+  effects is largely preclinical. May interact with anticoagulants (warfarin), antiplatelet drugs, and some chemotherapy agents.
+  Caution in pregnancy (Roberts et al. 2014 FASEB J adverse outcomes in primates).
 evidence_tier: plausible_emerging
 linked_to_topics:
 - inflammation
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - chronic-inflammation
 - autoimmune-disease
 - immune-support
@@ -37,31 +36,26 @@ linked_to_claims:
 - quercetin-boswellia-resveratrol-anti-inflammatory
 - resveratrol-antiviral-anti-inflammatory
 - resveratrol-has-antiviral-and-anti-inflammatory-effects
-notes_for_client: Resveratrol is a natural compound found in red grapes and berries
-  with anti-inflammatory properties. Take it with food and let your doctor know if
-  you're on any blood-thinning medications.
+notes_for_client: Resveratrol is a natural compound found in red grapes and berries with anti-inflammatory properties. Take
+  it with food and let your doctor know if you're on any blood-thinning medications.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
-  quote: Resveratrol - Anti-aging, antioxidant - 100–300 mg/day - Morning or with
-    meals
+  quote: Resveratrol - Anti-aging, antioxidant - 100–300 mg/day - Morning or with meals
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Interventions — Integrative Framework (p.12)
-  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium,
-    Resveratrol.'
+  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium, Resveratrol.'
 - id: vitaone-inflammation-cheatsheet
   location: Autoimmune Disease Cheatsheet — Page 25
   quote: Boswellia, resveratrol, quercetin = powerful anti-inflammatory tools.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Resveratrol, a natural compound found in red grapes, has many beneficial
-    health effects and has been shown in the lab to attack a relative of the COVID-19
-    virus.
+  quote: Resveratrol, a natural compound found in red grapes, has many beneficial health effects and has been shown in the
+    lab to attack a relative of the COVID-19 virus.
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Resveratrol, a natural compound found in red grapes, has many beneficial
-    health effects and has been shown in the lab to attack a relative of the COVID-19
-    virus.
+  quote: Resveratrol, a natural compound found in red grapes, has many beneficial health effects and has been shown in the
+    lab to attack a relative of the COVID-19 virus.
 version: 5
 status: active
 updated_at: '2026-05-04'

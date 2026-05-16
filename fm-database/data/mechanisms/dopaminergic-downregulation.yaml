@@ -5,9 +5,8 @@ aliases:
 - reward pathway blunting
 - dopamine depletion
 category: neurological
-summary: Chronic digital overstimulation and reward pathway overactivation leads to
-  dopamine receptor desensitization, resulting in emotional flatness, reduced motivation,
-  and addiction-like behaviors.
+summary: Chronic digital overstimulation and reward pathway overactivation leads to dopamine receptor desensitization, resulting
+  in emotional flatness, reduced motivation, and addiction-like behaviors.
 upstream_drivers:
 - digital-overstimulation
 - chronic-stress
@@ -20,15 +19,14 @@ downstream_effects:
 related_mechanisms:
 - hpa-axis-dysregulation
 linked_to_topics:
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - anxiety
 evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: How Digital Overstimulation Blunts Emotional Awareness (p.14)
-  quote: 'Dopamine Overload: Constant novelty (scrolling, likes, pings) overstimulates
-    reward pathways. Desensitization of dopamine receptors → emotional flatness, reduced
-    motivation, and addiction-like behavior.'
+  quote: 'Dopamine Overload: Constant novelty (scrolling, likes, pings) overstimulates reward pathways. Desensitization of
+    dopamine receptors → emotional flatness, reduced motivation, and addiction-like behavior.'
 version: 1
 status: active
 updated_at: '2026-05-02'

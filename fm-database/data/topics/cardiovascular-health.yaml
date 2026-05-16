@@ -4,15 +4,14 @@ aliases:
 - heart health
 - endothelial function
 - heart disease risk
-summary: Hypertension, endothelial dysfunction, heart rate, nitric oxide, cortisol,
-  catecholamines, loneliness, ANP/BNP, RAAS, and stress are discussed as cardiovascular-relevant
-  factors.
+summary: Hypertension, endothelial dysfunction, heart rate, nitric oxide, cortisol, catecholamines, loneliness, ANP/BNP, RAAS,
+  and stress are discussed as cardiovascular-relevant factors.
 common_symptoms:
-- hypertension
+- elevated-blood-pressure
 - palpitations
-- fluid-retention
+- edema
 - endothelial-dysfunction
-- fatigue
+- lethargy
 red_flags:
 - severe hypertension
 - heart failure (elevated BNP)
@@ -26,16 +25,15 @@ key_mechanisms:
 - sympathetic-dominance
 - raas-and-fluid-balance
 - neuroimmune-inflammation-loop
-coaching_scope_notes: Mediterranean diet, dietary nitrates, exercise, breathwork,
-  and stress reduction are coaching-appropriate.
-clinician_scope_notes: BNP, RAAS markers, blood pressure medication, cardiovascular
-  risk stratification, and ACE inhibitor/ARB management are clinician-scope.
+coaching_scope_notes: Mediterranean diet, dietary nitrates, exercise, breathwork, and stress reduction are coaching-appropriate.
+clinician_scope_notes: BNP, RAAS markers, blood pressure medication, cardiovascular risk stratification, and ACE inhibitor/ARB
+  management are clinician-scope.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: Hypertension, endothelial dysfunction, heart rate, nitric oxide, cortisol,
-    catecholamines, loneliness, ANP/BNP, RAAS, and stress are discussed.
+  quote: Hypertension, endothelial dysfunction, heart rate, nitric oxide, cortisol, catecholamines, loneliness, ANP/BNP, RAAS,
+    and stress are discussed.
 version: 1
 status: active
 updated_at: '2026-05-06'

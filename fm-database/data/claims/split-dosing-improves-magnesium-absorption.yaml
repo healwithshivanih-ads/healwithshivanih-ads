@@ -1,15 +1,13 @@
 slug: split-dosing-improves-magnesium-absorption
-statement: Dividing magnesium supplementation into multiple smaller doses throughout
-  the day improves absorption compared to a single large dose, as the body cannot
-  absorb very high amounts at once.
+statement: Dividing magnesium supplementation into multiple smaller doses throughout the day improves absorption compared
+  to a single large dose, as the body cannot absorb very high amounts at once.
 evidence_tier: plausible_emerging
-rationale: Magnesium absorption is dose-dependent and saturable; splitting doses is
-  a pharmacokinetic recommendation consistent with known absorption mechanisms, though
-  specific clinical studies on split dosing are limited.
-coaching_translation: If you're taking higher doses of magnesium, splitting it into
-  two or three doses across the day will help your body absorb more of it.
+rationale: Magnesium absorption is dose-dependent and saturable; splitting doses is a pharmacokinetic recommendation consistent
+  with known absorption mechanisms, though specific clinical studies on split dosing are limited.
+coaching_translation: If you're taking higher doses of magnesium, splitting it into two or three doses across the day will
+  help your body absorb more of it.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_supplements:
 - magnesium-glycinate
 - magnesium-citrate
@@ -19,9 +17,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Supplement dosage section
-  quote: If the therapeutic dosage required is much more than 300-400 mg, the idea
-    is to divide the dosages into the day and not take it as one because your body
-    cannot absorb a very high amount of magnesium.
+  quote: If the therapeutic dosage required is much more than 300-400 mg, the idea is to divide the dosages into the day and
+    not take it as one because your body cannot absorb a very high amount of magnesium.
 version: 1
 status: active
 updated_at: '2026-05-05'

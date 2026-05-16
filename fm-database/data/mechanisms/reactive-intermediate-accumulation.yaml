@@ -4,13 +4,12 @@ aliases:
 - phase 1/phase 2 imbalance
 - toxic intermediate buildup
 category: metabolic
-summary: When Phase 1 activity is upregulated or Phase 2 is insufficient, reactive
-  intermediate metabolites accumulate in liver cells. These highly reactive species
-  cause oxidative stress, DNA damage, and cellular dysfunction. This imbalance is
-  a core mechanism of toxin-related disease in functional medicine. Clinical priority
-  is always to optimize Phase 2 before stimulating Phase 1.
+summary: When Phase 1 activity is upregulated or Phase 2 is insufficient, reactive intermediate metabolites accumulate in
+  liver cells. These highly reactive species cause oxidative stress, DNA damage, and cellular dysfunction. This imbalance
+  is a core mechanism of toxin-related disease in functional medicine. Clinical priority is always to optimize Phase 2 before
+  stimulating Phase 1.
 upstream_drivers:
-- cyp450-phase1-bioactivation
+- cyp450-phase-i-activation
 - phase-2-nutritional-deficiency
 - genetic-polymorphisms
 downstream_effects:
@@ -18,21 +17,19 @@ downstream_effects:
 - dna-damage
 - cellular-dysfunction
 related_mechanisms:
-- cyp450-phase1-bioactivation
-- phase2-conjugation
+- cyp450-phase-i-activation
+- phase-2-conjugation
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 - total-toxic-load
 evidence_tier: strong
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Phase 1 / Phase 2 Imbalance
-  quote: If you have a proper phase one reaction and if you don't have a proper phase
-    two reaction what will happen it will increase the intermediate compound in the
-    liver cell or in the body so what will happen with that so if you have an intermediate
-    compound they are more compared to your phase two because of this intermediate
-    compound they can damage your DNA or even they can damage your increase the oxidative
-    stress in your body.
+  quote: If you have a proper phase one reaction and if you don't have a proper phase two reaction what will happen it will
+    increase the intermediate compound in the liver cell or in the body so what will happen with that so if you have an intermediate
+    compound they are more compared to your phase two because of this intermediate compound they can damage your DNA or even
+    they can damage your increase the oxidative stress in your body.
 version: 1
 status: active
 updated_at: '2026-05-05'

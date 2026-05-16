@@ -1,31 +1,26 @@
 slug: phase1-creates-reactive-intermediates-more-toxic-than-parent
-statement: Phase 1 biotransformation converts parent compounds into reactive intermediates
-  that are more chemically reactive — and potentially more toxic — than the original
-  compound.
+statement: Phase 1 biotransformation converts parent compounds into reactive intermediates that are more chemically reactive
+  — and potentially more toxic — than the original compound.
 evidence_tier: strong
-rationale: Established in pharmacology and toxicology. CYP450-mediated oxidation of
-  many compounds (e.g., benzo[a]pyrene, aflatoxin, acetaminophen) produces reactive
-  electrophilic intermediates that are more mutagenic/toxic than the parent. The codeine→morphine
-  example cited is accurate for illustrating bioactivation, though morphine's 'reactivity'
-  is pharmacological rather than chemical toxicity per se.
-coaching_translation: When your liver starts processing a toxin (Phase 1), it actually
-  creates a temporary by-product that is MORE harmful than the original. Phase 2 must
-  immediately neutralize this — which is why a healthy Phase 2 system is critical.
+rationale: Established in pharmacology and toxicology. CYP450-mediated oxidation of many compounds (e.g., benzo[a]pyrene,
+  aflatoxin, acetaminophen) produces reactive electrophilic intermediates that are more mutagenic/toxic than the parent. The
+  codeine→morphine example cited is accurate for illustrating bioactivation, though morphine's 'reactivity' is pharmacological
+  rather than chemical toxicity per se.
+coaching_translation: When your liver starts processing a toxin (Phase 1), it actually creates a temporary by-product that
+  is MORE harmful than the original. Phase 2 must immediately neutralize this — which is why a healthy Phase 2 system is critical.
 caveats:
-- The codeine→morphine example is used as an analogy for bioactivation; morphine's
-  effects are pharmacological, not strictly cytotoxic intermediates. The general principle
-  of reactive intermediate formation is well-established.
+- The codeine→morphine example is used as an analogy for bioactivation; morphine's effects are pharmacological, not strictly
+  cytotoxic intermediates. The general principle of reactive intermediate formation is well-established.
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Phase 1 Reactive Intermediate Concept
-  quote: And this intermediate compound is actually very active. And they are more
-    active, more reactive means more reactive. More reactive even compared to their
-    parent compound.
+  quote: And this intermediate compound is actually very active. And they are more active, more reactive means more reactive.
+    More reactive even compared to their parent compound.
 version: 1
 status: active
 updated_at: '2026-05-05'

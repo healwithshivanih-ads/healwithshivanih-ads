@@ -4,11 +4,9 @@ aliases:
 - intrinsic factor pathway
 - B12 absorption mechanism
 category: gut
-summary: Vitamin B12 absorption requires intrinsic factor (IF), secreted by gastric
-  parietal cells. B12 binds haptocorrin in the mouth for acid protection, transfers
-  to IF in the duodenum after pancreatic protease action, and is absorbed at the terminal
-  ileum. Disruption at any step (pernicious anemia, PPI use, pancreatic insufficiency,
-  Crohn's) causes B12 deficiency.
+summary: Vitamin B12 absorption requires intrinsic factor (IF), secreted by gastric parietal cells. B12 binds haptocorrin
+  in the mouth for acid protection, transfers to IF in the duodenum after pancreatic protease action, and is absorbed at the
+  terminal ileum. Disruption at any step (pernicious anemia, PPI use, pancreatic insufficiency, Crohn's) causes B12 deficiency.
 upstream_drivers:
 - parietal-cell-function
 - pancreatic-protease-secretion
@@ -18,16 +16,15 @@ downstream_effects:
 - megaloblastic-anemia
 - neurological-symptoms
 related_mechanisms:
-- impaired-homocysteine-remethylation
+- homocysteine-metabolism
 linked_to_topics:
 - vitamin-b12
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: B12 Absorption section
-  quote: The terminal ileum is actually the place where the B12 is absorbed in the
-    small intestine... if intrinsic factor is not there, it won't be able to transport
-    it to the absorption site.
+  quote: The terminal ileum is actually the place where the B12 is absorbed in the small intestine... if intrinsic factor
+    is not there, it won't be able to transport it to the absorption site.
 version: 1
 status: active
 updated_at: '2026-05-05'

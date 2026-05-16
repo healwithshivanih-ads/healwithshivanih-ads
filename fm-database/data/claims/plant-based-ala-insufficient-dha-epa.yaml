@@ -1,29 +1,25 @@
 slug: plant-based-ala-insufficient-dha-epa
-statement: Plant-based omega-3 sources (chia seeds, walnuts) provide ALA, which does
-  not efficiently convert to EPA and DHA in most people, leaving plant-based eaters
-  functionally omega-3 deficient.
+statement: Plant-based omega-3 sources (chia seeds, walnuts) provide ALA, which does not efficiently convert to EPA and DHA
+  in most people, leaving plant-based eaters functionally omega-3 deficient.
 evidence_tier: plausible_emerging
-rationale: ALA-to-EPA/DHA conversion efficiency is estimated at <5–15% in most individuals
-  and is well-documented in nutritional biochemistry literature. This is a credible
-  mechanism to explain omega-3 deficiency in plant-based eaters.
-coaching_translation: Eating flaxseed and walnuts is a great start, but your plant-based
-  clients almost certainly need an algae-oil omega-3 supplement to meet their EPA/DHA
-  needs.
+rationale: ALA-to-EPA/DHA conversion efficiency is estimated at <5–15% in most individuals and is well-documented in nutritional
+  biochemistry literature. This is a credible mechanism to explain omega-3 deficiency in plant-based eaters.
+coaching_translation: Eating flaxseed and walnuts is a great start, but your plant-based clients almost certainly need an
+  algae-oil omega-3 supplement to meet their EPA/DHA needs.
 caveats:
 - Conversion rate varies by individual genetics, diet, and health status.
 - Source is expert FM lecture, not a specific RCT.
 linked_to_topics:
 - chronic-pain-and-fatigue
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study
-  quote: because I'm plant-based, I don't eat fish, though I was having chia seeds
-    and walnuts on a regular basis, but that's not enough because those are ALA and
-    it is not converting into BHA.
+  quote: because I'm plant-based, I don't eat fish, though I was having chia seeds and walnuts on a regular basis, but that's
+    not enough because those are ALA and it is not converting into BHA.
 version: 1
 status: active
 updated_at: '2026-05-05'

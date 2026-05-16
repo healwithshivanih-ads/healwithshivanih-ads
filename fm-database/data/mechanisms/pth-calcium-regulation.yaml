@@ -4,10 +4,8 @@ aliases:
 - parathyroid hormone calcium homeostasis
 - PTH calcium axis
 category: endocrine
-summary: Parathyroid hormone (PTH) raises serum calcium through osteoclast-mediated
-  bone resorption, intestinal calcium absorption, renal calcium reabsorption, and
-  activation of vitamin D to its active (D3) form. Low PTH results in decreased serum
-  calcium.
+summary: Parathyroid hormone (PTH) raises serum calcium through osteoclast-mediated bone resorption, intestinal calcium absorption,
+  renal calcium reabsorption, and activation of vitamin D to its active (D3) form. Low PTH results in decreased serum calcium.
 upstream_drivers:
 - low-serum-calcium
 - vitamin-d-deficiency
@@ -16,7 +14,7 @@ downstream_effects:
 - bone-resorption
 - active-vitamin-d-production
 related_mechanisms:
-- magnesium-calcium-intracellular-shift
+- calcium-magnesium-imbalance
 - albumin-calcium-binding
 linked_to_topics:
 - calcium-deficiency
@@ -25,10 +23,9 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-calcium-deficiency
   location: PTH and Calcium Regulation
-  quote: parathyroid hormone can increase serum calcium level by osteoclast activity
-    also it going to absorb calcium from the intestine it can prevent or it can increase
-    the reabsorption of calcium from the urine and it also going to activate the vitamin
-    D level into into active vitamin D that's vitamin D3 form
+  quote: parathyroid hormone can increase serum calcium level by osteoclast activity also it going to absorb calcium from
+    the intestine it can prevent or it can increase the reabsorption of calcium from the urine and it also going to activate
+    the vitamin D level into into active vitamin D that's vitamin D3 form
 version: 1
 status: active
 updated_at: '2026-05-05'

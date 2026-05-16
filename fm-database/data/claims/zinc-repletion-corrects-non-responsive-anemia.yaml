@@ -1,30 +1,26 @@
 slug: zinc-repletion-corrects-non-responsive-anemia
-statement: In patients with iron-deficiency anemia unresponsive to iron supplementation,
-  co-existing zinc deficiency may be impairing gastric acid production and iron absorption;
-  addressing zinc deficiency may improve iron absorption and anemia.
+statement: In patients with iron-deficiency anemia unresponsive to iron supplementation, co-existing zinc deficiency may be
+  impairing gastric acid production and iron absorption; addressing zinc deficiency may improve iron absorption and anemia.
 evidence_tier: plausible_emerging
-rationale: 'The document presents a plausible clinical scenario: low zinc → low HCl
-  → impaired iron absorption → non-responsive anemia. This is consistent with functional
-  medicine clinical reasoning, though robust RCT evidence is limited.'
-coaching_translation: If you're taking iron but your anemia isn't improving, zinc
-  deficiency might be part of the reason — low zinc can reduce stomach acid, making
-  it harder for your body to absorb iron.
-out_of_scope_notes: Diagnosing non-responsive anemia and recommending zinc supplementation
-  in this context requires clinician evaluation and lab testing.
+rationale: 'The document presents a plausible clinical scenario: low zinc → low HCl → impaired iron absorption → non-responsive
+  anemia. This is consistent with functional medicine clinical reasoning, though robust RCT evidence is limited.'
+coaching_translation: If you're taking iron but your anemia isn't improving, zinc deficiency might be part of the reason —
+  low zinc can reduce stomach acid, making it harder for your body to absorb iron.
+out_of_scope_notes: Diagnosing non-responsive anemia and recommending zinc supplementation in this context requires clinician
+  evaluation and lab testing.
 caveats:
-- Source is expert lecture (moderate quality). Clinician should evaluate and confirm
-  before acting on this mechanism in a clinical setting.
+- Source is expert lecture (moderate quality). Clinician should evaluate and confirm before acting on this mechanism in a
+  clinical setting.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_supplements:
 - zinc
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: If I give a gas for zinc or maybe if I give a zinc which would help in the
-    production of hydrochloric acid, their anemia, their iron absorption could increase
-    and iron anemia could get better.
+  quote: If I give a gas for zinc or maybe if I give a zinc which would help in the production of hydrochloric acid, their
+    anemia, their iron absorption could increase and iron anemia could get better.
 version: 1
 status: active
 updated_at: '2026-05-05'

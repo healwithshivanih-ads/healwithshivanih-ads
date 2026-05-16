@@ -5,11 +5,9 @@ aliases:
 - adipose aromatization
 - peripheral estrogen production
 category: endocrine
-summary: 'Adipose tissue — particularly abdominal and breast fat — contains aromatase
-  enzymes that convert androgens to estrone. Estrone is the predominant estrogen in
-  postmenopause and is also elevated in obesity. This creates a secondary estrogen
-  dominance loop: obesity drives estrogen, estrogen drives further fat storage and
-  inflammation.'
+summary: 'Adipose tissue — particularly abdominal and breast fat — contains aromatase enzymes that convert androgens to estrone.
+  Estrone is the predominant estrogen in postmenopause and is also elevated in obesity. This creates a secondary estrogen
+  dominance loop: obesity drives estrogen, estrogen drives further fat storage and inflammation.'
 upstream_drivers:
 - obesity
 - insulin-resistance
@@ -19,7 +17,7 @@ downstream_effects:
 - estrogen-dominance
 - systemic-inflammation
 related_mechanisms:
-- aromatase-upregulation
+- aromatase-activity
 - insulin-resistance
 linked_to_topics:
 - estrogen-dominance
@@ -28,8 +26,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Three Main Forms of Estrogen
-  quote: Estrone is also produced from the belly fat. The adipose tissue is also releasing
-    estrogen. That is why these patients have the estrogen as excess relatively.
+  quote: Estrone is also produced from the belly fat. The adipose tissue is also releasing estrogen. That is why these patients
+    have the estrogen as excess relatively.
 version: 1
 status: active
 updated_at: '2026-05-05'

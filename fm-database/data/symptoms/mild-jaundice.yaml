@@ -7,18 +7,17 @@ aliases:
 - bilirubin elevation
 category: metabolic
 severity: concerning
-description: A pale yellow discolouration of skin and eyes resulting from elevated
-  bilirubin due to accelerated red blood cell turnover in megaloblastic anemia from
-  folate deficiency.
+description: A pale yellow discolouration of skin and eyes resulting from elevated bilirubin due to accelerated red blood
+  cell turnover in megaloblastic anemia from folate deficiency.
 when_to_refer: Refer to clinician to rule out hepatic or haemolytic causes of jaundice.
 linked_to_topics:
-- folate-vitamin-b9
+- folate-nutrition
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Folate Deficiency Signs & Symptoms
-  quote: The more the RBCs would be breaking down, the more bilirubin would be released.
-    Which is why this pale yellow colour has appeared on your eyes and your skin.
+  quote: The more the RBCs would be breaking down, the more bilirubin would be released. Which is why this pale yellow colour
+    has appeared on your eyes and your skin.
 version: 1
 status: active
 updated_at: '2026-05-05'

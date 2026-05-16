@@ -1,32 +1,26 @@
 slug: high-dose-vitamin-d-raises-serum-calcium
-statement: High-dose vitamin D supplementation (e.g., 60,000 IU) can elevate serum
-  calcium; lower doses (5,000–10,000 IU/day) are preferred for managing vitamin D
-  deficiency to avoid hypercalcemia.
+statement: High-dose vitamin D supplementation (e.g., 60,000 IU) can elevate serum calcium; lower doses (5,000–10,000 IU/day)
+  are preferred for managing vitamin D deficiency to avoid hypercalcemia.
 evidence_tier: plausible_emerging
-rationale: High-dose vitamin D can drive hypercalcemia via increased intestinal calcium
-  absorption and bone mobilization. The specific dose thresholds cited (5,000–10,000
-  IU as safer) are practitioner opinion, not derived from RCT consensus; conventional
-  guidelines vary.
-coaching_translation: Very high vitamin D doses can push calcium levels too high.
-  Work with your doctor on the right dose — more is not always better with vitamin
-  D.
-out_of_scope_notes: Specific dosing recommendations are out of coaching scope. Always
-  refer to clinician for vitamin D dosing.
+rationale: High-dose vitamin D can drive hypercalcemia via increased intestinal calcium absorption and bone mobilization.
+  The specific dose thresholds cited (5,000–10,000 IU as safer) are practitioner opinion, not derived from RCT consensus;
+  conventional guidelines vary.
+coaching_translation: Very high vitamin D doses can push calcium levels too high. Work with your doctor on the right dose
+  — more is not always better with vitamin D.
+out_of_scope_notes: Specific dosing recommendations are out of coaching scope. Always refer to clinician for vitamin D dosing.
 caveats:
-- Dose thresholds cited are practitioner opinion from a moderate-quality expert consensus
-  source, not established RCT consensus.
+- Dose thresholds cited are practitioner opinion from a moderate-quality expert consensus source, not established RCT consensus.
 - Individual response to vitamin D dosing varies; clinician supervision required.
 linked_to_topics:
 - calcium-metabolism
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Causes of High Serum Calcium
-  quote: High dose of vitamin D supplementation. So in conventional medicine, you
-    can see 60,000 IU of vitamin D that most doctors prescribe, but I don't believe
-    that we should prescribe vitamin D in high doses for vitamin D deficiency.
+  quote: High dose of vitamin D supplementation. So in conventional medicine, you can see 60,000 IU of vitamin D that most
+    doctors prescribe, but I don't believe that we should prescribe vitamin D in high doses for vitamin D deficiency.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -5,16 +5,16 @@ aliases:
 - folate deficiency anemia
 category: constitutional
 severity: concerning
-description: Macrocytic or megaloblastic anemia linked to folate and B12 deficiency,
-  often presenting with fatigue, pallor, and elevated MCV.
-when_to_refer: Always refer for diagnosis and treatment; anemia unresponsive to iron
-  may reflect copper or B12/folate deficiency requiring clinician assessment.
+description: Macrocytic or megaloblastic anemia linked to folate and B12 deficiency, often presenting with fatigue, pallor,
+  and elevated MCV.
+when_to_refer: Always refer for diagnosis and treatment; anemia unresponsive to iron may reflect copper or B12/folate deficiency
+  requiring clinician assessment.
 linked_to_topics:
 - nutrition-deficiency
 - methylation
 linked_to_mechanisms:
-- methylation-support
-- nutrient-dependent-energy-metabolism
+- methylation-cycle
+- mitochondrial-energy-production
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed

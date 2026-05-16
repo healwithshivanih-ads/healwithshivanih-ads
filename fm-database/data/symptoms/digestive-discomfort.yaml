@@ -7,23 +7,20 @@ aliases:
 - difficulty digesting fat
 category: gi
 severity: common
-description: General impairment of digestive function, including difficulty digesting
-  fats, proteins, or carbohydrates, often linked to low stomach acid or impaired pancreatic
-  enzyme output.
-when_to_refer: Refer if steatorrhea, significant weight loss, or signs of malabsorption
-  are present.
+description: General impairment of digestive function, including difficulty digesting fats, proteins, or carbohydrates, often
+  linked to low stomach acid or impaired pancreatic enzyme output.
+when_to_refer: Refer if steatorrhea, significant weight loss, or signs of malabsorption are present.
 linked_to_topics:
 - gut-dysbiosis
 - sibo
 linked_to_mechanisms:
 - low-stomach-acid
-- impaired-pancreatic-function
+- exocrine-pancreatic-enzyme-deficiency
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace Section
-  quote: if you see that patient having a low pancreatic function, so like your amylase,
-    your lipid and blood report, and if you do any kind of blood microbiome testing,
-    then you can really see low elastase.
+  quote: if you see that patient having a low pancreatic function, so like your amylase, your lipid and blood report, and
+    if you do any kind of blood microbiome testing, then you can really see low elastase.
 version: 1
 status: active
 updated_at: '2026-05-05'

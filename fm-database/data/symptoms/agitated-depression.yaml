@@ -8,20 +8,16 @@ aliases:
 - high-cortisol depression
 category: mood
 severity: common
-description: A depressive state characterized by agitation and anxiety, associated
-  with elevated cortisol states.
-when_to_refer: Refer to mental health professional if depression is severe, persistent,
-  or accompanied by suicidal ideation.
+description: A depressive state characterized by agitation and anxiety, associated with elevated cortisol states.
+when_to_refer: Refer to mental health professional if depression is severe, persistent, or accompanied by suicidal ideation.
 linked_to_topics:
 - hypercortisolism
 - hpa-axis-dysregulation
 - chronic-stress
-- hpa-axis-dysfunction
 linked_to_mechanisms:
-- cortisol-excess
-- sympathetic-nervous-system-activation
 - hpa-axis-dysregulation
-- sympathoadrenal-activation
+- sympathetic-dominance
+- noradrenaline-signaling
 sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'

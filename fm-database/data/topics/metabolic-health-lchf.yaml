@@ -5,14 +5,13 @@ aliases:
 - keto
 - low-carb diet
 - metabolic reprogramming
-summary: LCHF is framed as a metabolic intervention that restores insulin signalling,
-  reduces hepatic fat, improves PCOS outcomes, and stabilises energy by reducing glucose
-  variability. Carbohydrate threshold is considered individual, and electrolyte optimisation
-  is essential during adaptation.
+summary: LCHF is framed as a metabolic intervention that restores insulin signalling, reduces hepatic fat, improves PCOS outcomes,
+  and stabilises energy by reducing glucose variability. Carbohydrate threshold is considered individual, and electrolyte
+  optimisation is essential during adaptation.
 common_symptoms:
 - sugar-cravings
 - energy-crashes
-- belly-fat
+- increased-waist-circumference
 - keto-flu
 red_flags:
 - severe dyslipidaemia on LCHF without monitoring
@@ -25,18 +24,15 @@ key_mechanisms:
 - insulin-resistance
 - metabolic-flexibility
 - hepatic-fat-reduction
-coaching_scope_notes: Coaches can guide food choices, electrolyte intake, and lifestyle
-  factors. Lab monitoring (HbA1c, fasting insulin, ApoB, thyroid) and carb thresholds
-  for therapeutic cases require clinician oversight.
-clinician_scope_notes: Monitor ApoB, TG:HDL, HbA1c, fasting insulin, and thyroid markers.
-  Carb cycling may be needed for women to protect thyroid and hormonal axes. Recommend
-  resistance training alongside dietary change.
+coaching_scope_notes: Coaches can guide food choices, electrolyte intake, and lifestyle factors. Lab monitoring (HbA1c, fasting
+  insulin, ApoB, thyroid) and carb thresholds for therapeutic cases require clinician oversight.
+clinician_scope_notes: Monitor ApoB, TG:HDL, HbA1c, fasting insulin, and thyroid markers. Carb cycling may be needed for women
+  to protect thyroid and hormonal axes. Recommend resistance training alongside dietary change.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
-  quote: LCHF is not a diet trend. It is a metabolic intervention that restores insulin
-    signaling and energy stability.
+  quote: LCHF is not a diet trend. It is a metabolic intervention that restores insulin signaling and energy stability.
 version: 1
 status: active
 updated_at: '2026-05-05'

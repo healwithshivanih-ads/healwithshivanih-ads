@@ -14,23 +14,20 @@ timing_options:
 - morning
 take_with_food: optional
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_claims:
 - sulfur-required-for-phase2-sulfation
 - amino-acids-required-for-phase2-conjugation
-notes_for_coach: Sulfur is required for Phase 2 sulfation conjugation and glutathione
-  synthesis. Sources include cruciferous vegetables, onions, garlic, eggs, and targeted
-  supplementation. Specific dosing requires clinician guidance.
-notes_for_client: Sulfur-containing amino acids from foods like eggs, garlic, and
-  onions help your liver process and eliminate fat-soluble toxins via a specific detox
-  pathway called sulfation.
+notes_for_coach: Sulfur is required for Phase 2 sulfation conjugation and glutathione synthesis. Sources include cruciferous
+  vegetables, onions, garlic, eggs, and targeted supplementation. Specific dosing requires clinician guidance.
+notes_for_client: Sulfur-containing amino acids from foods like eggs, garlic, and onions help your liver process and eliminate
+  fat-soluble toxins via a specific detox pathway called sulfation.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Conjugation Pathways
-  quote: that's why we require sulfur-containing amino acid, because sulfur is required
-    for detoxification process.
+  quote: that's why we require sulfur-containing amino acid, because sulfur is required for detoxification process.
 version: 1
 status: active
 updated_at: '2026-05-05'

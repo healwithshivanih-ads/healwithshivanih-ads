@@ -1,19 +1,15 @@
 slug: broad-spectrum-herbal-antimicrobials-effective-against-bacteria-fungi-parasites
-statement: Broad-spectrum herbal antimicrobials — including berberine, caprylic acid,
-  garlic oil, oil of oregano, and olive leaf extract — are effective against bacteria,
-  fungi, and parasites in gut dysbiosis.
+statement: Broad-spectrum herbal antimicrobials — including berberine, caprylic acid, garlic oil, oil of oregano, and olive
+  leaf extract — are effective against bacteria, fungi, and parasites in gut dysbiosis.
 evidence_tier: plausible_emerging
-rationale: Each of these agents has published in-vitro and some in-vivo evidence for
-  antimicrobial, antifungal, and/or antiparasitic activity. Their use as a combination
-  protocol in dysbiosis is a functional medicine convention with biologically plausible
+rationale: Each of these agents has published in-vitro and some in-vivo evidence for antimicrobial, antifungal, and/or antiparasitic
+  activity. Their use as a combination protocol in dysbiosis is a functional medicine convention with biologically plausible
   mechanisms, though large RCT evidence is limited.
-coaching_translation: These herbal supplements are part of the 'removal' phase of
-  a gut protocol, targeting harmful organisms. They work best in combination and as
-  part of a complete protocol.
+coaching_translation: These herbal supplements are part of the 'removal' phase of a gut protocol, targeting harmful organisms.
+  They work best in combination and as part of a complete protocol.
 caveats:
 - Source is expert lecture, moderate quality.
-- Combination herbal antimicrobial protocols are FM convention; peer-reviewed RCT
-  evidence for combination use is limited.
+- Combination herbal antimicrobial protocols are FM convention; peer-reviewed RCT evidence for combination use is limited.
 - Specific dosing should be clinician-guided.
 linked_to_topics:
 - gut-dysbiosis
@@ -22,7 +18,7 @@ linked_to_topics:
 linked_to_supplements:
 - berberine
 - caprylic-acid
-- oil-of-oregano
+- oregano-oil
 - garlic-oil
 - olive-leaf-extract
 out_of_scope_notes: ''
@@ -30,9 +26,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Removal Section
-  quote: garlic oil, berberine, OOC, oil of oregano, and oleoleflexic, they are the
-    blood spectrum. And they are effective against migraines, they are effective against
-    your fungus, and also they are effective against your parasite.
+  quote: garlic oil, berberine, OOC, oil of oregano, and oleoleflexic, they are the blood spectrum. And they are effective
+    against migraines, they are effective against your fungus, and also they are effective against your parasite.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -4,40 +4,36 @@ aliases:
 - mitochondrial support
 - cellular energy nutrients
 - mitochondrial dysfunction
-summary: Mitochondria convert food and oxygen into ATP. Key nutrients (carnitine,
-  magnesium, B vitamins, omega-3s, alpha-lipoic acid, vitamin C, NAC/glutathione,
-  CoQ10) support mitochondrial function and reduce oxidative stress (free radical
-  damage). Poor mitochondrial function is linked to heart disease, diabetes, memory
-  decline, and neurological conditions.
+summary: Mitochondria convert food and oxygen into ATP. Key nutrients (carnitine, magnesium, B vitamins, omega-3s, alpha-lipoic
+  acid, vitamin C, NAC/glutathione, CoQ10) support mitochondrial function and reduce oxidative stress (free radical damage).
+  Poor mitochondrial function is linked to heart disease, diabetes, memory decline, and neurological conditions.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
-- cognitive-decline
-- depression
-- neuropathy
+- poor-concentration
+- low-mood
+- numbness-tingling
 red_flags:
 - progressive-neurological-decline
 - severe-unexplained-fatigue
 related_topics:
 - magnesium-nutrition
 - essential-fatty-acids
-- vitamin-b12-nutrition
+- vitamin-b12
 - folate-nutrition
 key_mechanisms:
 - mitochondrial-energy-production
 - oxidative-stress
-- free-radical-damage
-coaching_scope_notes: Coach can educate on the role of mitochondrial nutrients and
-  guide food-first strategies. Supplement protocols should be coordinated with an
-  FM provider.
-clinician_scope_notes: Supplement dosing for mitochondrial support (especially CoQ10,
-  ALA, NAC) and assessment of mitochondrial dysfunction are clinician scope.
+coaching_scope_notes: Coach can educate on the role of mitochondrial nutrients and guide food-first strategies. Supplement
+  protocols should be coordinated with an FM provider.
+clinician_scope_notes: Supplement dosing for mitochondrial support (especially CoQ10, ALA, NAC) and assessment of mitochondrial
+  dysfunction are clinician scope.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Poor mitochondrial function has been identified as a factor in the development
-    of heart disease, diabetes, memory decline, and other neurological conditions.
+  quote: Poor mitochondrial function has been identified as a factor in the development of heart disease, diabetes, memory
+    decline, and other neurological conditions.
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -1,26 +1,22 @@
 slug: herbal-antimicrobials-effective-in-sibo
-statement: Herbal antimicrobials and antifungals (including berberine, oil of oregano,
-  garlic oil, caprylic acid, licorice, and Indian barberry) may be as effective as
-  pharmaceutical antibiotics for SIBO and SIFO while carrying fewer side effects and
-  lower resistance risk.
+statement: Herbal antimicrobials and antifungals (including berberine, oil of oregano, garlic oil, caprylic acid, licorice,
+  and Indian barberry) may be as effective as pharmaceutical antibiotics for SIBO and SIFO while carrying fewer side effects
+  and lower resistance risk.
 evidence_tier: plausible_emerging
-rationale: Small studies support herbal antimicrobials for SIBO (notably berberine
-  and oregano oil). The 'as effective as antibiotics' claim is promising but not yet
-  consensus. Cited in FM literature.
-coaching_translation: Many plants have natural germ-fighting properties that can help
-  clear overgrown bacteria and fungi in your gut, often with fewer side effects than
-  prescription antibiotics.
+rationale: Small studies support herbal antimicrobials for SIBO (notably berberine and oregano oil). The 'as effective as
+  antibiotics' claim is promising but not yet consensus. Cited in FM literature.
+coaching_translation: Many plants have natural germ-fighting properties that can help clear overgrown bacteria and fungi in
+  your gut, often with fewer side effects than prescription antibiotics.
 caveats:
 - Source is expert consensus lecture; direct RCT comparisons to antibiotics are limited.
-- Individual herb effectiveness varies by SIBO type and patient. Dosing requires clinician
-  guidance.
+- Individual herb effectiveness varies by SIBO type and patient. Dosing requires clinician guidance.
 - Die-off reactions possible with potent herbals.
 linked_to_topics:
 - sibo
 - sifo
 linked_to_supplements:
 - berberine
-- oil-of-oregano
+- oregano-oil
 - caprylic-acid
 - licorice-root
 out_of_scope_notes: ''
@@ -28,8 +24,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-sibo-sifo
   location: SIFO Herbal Treatment Section
-  quote: Herbal antimicrobials and antifungals may be just as effective as an antifungal
-    medication without the serious side effects and risks.
+  quote: Herbal antimicrobials and antifungals may be just as effective as an antifungal medication without the serious side
+    effects and risks.
 version: 1
 status: active
 updated_at: '2026-05-05'

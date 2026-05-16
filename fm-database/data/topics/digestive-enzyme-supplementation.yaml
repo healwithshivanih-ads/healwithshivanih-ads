@@ -3,12 +3,11 @@ display_name: Digestive Enzyme Supplementation
 aliases:
 - enzyme replacement
 - pancreatic enzyme support
-summary: The use of exogenous digestive enzyme supplements to support or compensate
-  for insufficient endogenous pancreatic enzyme output, facilitating improved breakdown
-  and absorption of macronutrients.
+summary: The use of exogenous digestive enzyme supplements to support or compensate for insufficient endogenous pancreatic
+  enzyme output, facilitating improved breakdown and absorption of macronutrients.
 common_symptoms:
 - steatorrhea
-- gas-and-bloating
+- abdominal-bloating
 - abdominal-pain
 - diarrhea
 related_topics:
@@ -17,17 +16,15 @@ related_topics:
 key_mechanisms:
 - exocrine-pancreatic-enzyme-deficiency
 - malabsorption
-coaching_scope_notes: Coaches can recommend broad-spectrum digestive enzyme supplements
-  as supportive tools alongside dietary modifications. Prescription pancreatic enzyme
-  replacement therapy is out of coaching scope.
+coaching_scope_notes: Coaches can recommend broad-spectrum digestive enzyme supplements as supportive tools alongside dietary
+  modifications. Prescription pancreatic enzyme replacement therapy is out of coaching scope.
 evidence_tier: plausible_emerging
 red_flags: []
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Management / Support Strategies
-  quote: Digestive enzymes as supplementation, which should be given to support the
-    production and breakdown of the food.
+  quote: Digestive enzymes as supplementation, which should be given to support the production and breakdown of the food.
 version: 1
 status: active
 updated_at: '2026-05-05'

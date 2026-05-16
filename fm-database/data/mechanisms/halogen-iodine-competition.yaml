@@ -5,9 +5,8 @@ aliases:
 - bromide thyroid interference
 - endocrine disruptor thyroid block
 category: endocrine
-summary: Environmental halogens (fluoride, bromide, chlorine) and endocrine disruptors
-  (BPA, phthalates, pesticides) compete with iodine for thyroid uptake receptors,
-  impairing thyroid hormone synthesis and receptor binding.
+summary: Environmental halogens (fluoride, bromide, chlorine) and endocrine disruptors (BPA, phthalates, pesticides) compete
+  with iodine for thyroid uptake receptors, impairing thyroid hormone synthesis and receptor binding.
 upstream_drivers:
 - fluoride-exposure
 - bpa-exposure
@@ -16,7 +15,7 @@ downstream_effects:
 - impaired-t4-t3-synthesis
 - thyroid-receptor-blockade
 related_mechanisms:
-- t4-to-t3-conversion-block
+- impaired-t4-to-t3-conversion
 linked_to_topics:
 - thyroid
 evidence_tier: plausible_emerging

@@ -4,9 +4,8 @@ aliases:
 - stress-magnesium-loss
 - diuretic-stress-effect
 category: endocrine
-summary: Psychological and physiological stress exerts a diuretic effect, increasing
-  urinary magnesium excretion and depleting intracellular stores. This creates a vicious
-  cycle where deficiency worsens stress vulnerability and stress worsens deficiency.
+summary: Psychological and physiological stress exerts a diuretic effect, increasing urinary magnesium excretion and depleting
+  intracellular stores. This creates a vicious cycle where deficiency worsens stress vulnerability and stress worsens deficiency.
 upstream_drivers:
 - chronic-stress
 - caffeine-intake
@@ -19,13 +18,12 @@ related_mechanisms:
 - adrenal-catecholamine-dysregulation
 - gaba-receptor-modulation
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Vicious cycle of magnesium deficiency
-  quote: Stress again has a diuretic effect on the body which further decreases the
-    magnesium inside the body.
+  quote: Stress again has a diuretic effect on the body which further decreases the magnesium inside the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

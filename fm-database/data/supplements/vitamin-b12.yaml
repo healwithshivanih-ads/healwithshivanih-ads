@@ -7,13 +7,11 @@ forms_available:
 - liquid
 - lozenge
 evidence_tier: strong
-notes_for_coach: B12 was identified as a common deficiency in the lecture's clinical
-  context. B12 is important for neurological function, methylation (which affects
-  estrogen metabolism), and energy. Supplementation or injection may be needed based
+notes_for_coach: B12 was identified as a common deficiency in the lecture's clinical context. B12 is important for neurological
+  function, methylation (which affects estrogen metabolism), and energy. Supplementation or injection may be needed based
   on levels.
-notes_for_client: Vitamin B12 is important for energy, brain health, and how your
-  body processes hormones. Deficiency is very common and can worsen fatigue and brain
-  fog.
+notes_for_client: Vitamin B12 is important for energy, brain health, and how your body processes hormones. Deficiency is very
+  common and can worsen fatigue and brain fog.
 timing_options:
 - with_breakfast
 - morning
@@ -23,7 +21,7 @@ linked_to_topics:
 - drug-induced-nutrient-depletion
 - beta-blocker-deprescribing
 - cardiovascular-dysfunction
-- vitamin-b12-deficiency
+- vitamin-b12
 - mitochondrial-health-nutrition
 - chronic-pain-and-fatigue
 - low-stomach-acid
@@ -55,43 +53,37 @@ sources:
   quote: 'Metformin: CoQ10, Folic acid, Vitamin B12'
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Vitamin B12'
-  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
-    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
-    anemia.
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood cells, support brain health, make DNA,
+    metabolize homocysteine, and prevent pernicious anemia.
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study
-  quote: till today I have to keep taking vitamin D, iron, B12, magnesium, all these
-    supplements on a regular basis.
+  quote: till today I have to keep taking vitamin D, iron, B12, magnesium, all these supplements on a regular basis.
 - id: coconote-fm-sex-hormones
   location: Management — Clinical Assessment
-  quote: If you have any kind of other nutritional deficiencies, vitamin D, vitamin
-    B12, please go to a physician, get this vitamin D, vitamin B12 injection
+  quote: If you have any kind of other nutritional deficiencies, vitamin D, vitamin B12, please go to a physician, get this
+    vitamin D, vitamin B12 injection
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Vitamin B12 (Methylcobalamin) - Energy, nerve function, methylation - 500–1500
-    mcg/day - Morning, empty stomach
+  quote: Vitamin B12 (Methylcobalamin) - Energy, nerve function, methylation - 500–1500 mcg/day - Morning, empty stomach
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support T4→T3 Conversion
   quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
 - id: vitaone-sex-hormones-cheatsheet
   location: Top Nutrients to Balance Estrogen
-  quote: Critical for methylation (Phase II detox) of estrogen. In PCOS or high estrogen,
-    support with methylated forms (B6 P5P, methyl-B12, methyl-folate).
+  quote: Critical for methylation (Phase II detox) of estrogen. In PCOS or high estrogen, support with methylated forms (B6
+    P5P, methyl-B12, methyl-folate).
 - id: vitaone-blood-sugar-cheatsheet
-  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
-    Depletions
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced Depletions
   quote: Vitamin B12 (1000 mcg/day)
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin B12 (Cobalamin)
-  quote: 'Supplements: Hydroxocobalamin (best default), methylcobalamin (for methylation
-    issues).'
+  quote: 'Supplements: Hydroxocobalamin (best default), methylcobalamin (for methylation issues).'
 version: 4
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
-pregnancy_safety_note: Methylcobalamin form preferred. Critical for vegetarian / vegan
-  / on metformin pregnant women.
+pregnancy_safety_note: Methylcobalamin form preferred. Critical for vegetarian / vegan / on metformin pregnant women.
 aliases:
 - vitamin-b12-methylcobalamin

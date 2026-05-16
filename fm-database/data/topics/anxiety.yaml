@@ -6,16 +6,14 @@ aliases:
 - stress-response
 - nervous system dysregulation
 - chronic worry
-summary: Anxiety as a functional medicine presentation linked to HPA over-activation,
-  low GABA, low serotonin, high norepinephrine, digital overstimulation, and poor
-  vagal tone.
+summary: Anxiety as a functional medicine presentation linked to HPA over-activation, low GABA, low serotonin, high norepinephrine,
+  digital overstimulation, and poor vagal tone.
 common_symptoms:
-- racing thoughts
+- anxiety
 - chest tightness / shortness of breath
-- tension headaches
+- chronic-pain-fibromyalgia-migraines
 - GI symptoms tied to stress
-- sleep-onset insomnia
-- racing-thoughts
+- difficulty-falling-asleep
 - palpitations
 - sweating
 - insomnia
@@ -36,14 +34,13 @@ related_topics:
 - vagal-tone
 key_mechanisms:
 - hpa-axis-dysregulation
-- low-vagal-tone
+- sympathetic-dominance
 - low-progesterone
-- blood-sugar-instability
-- gaba-a-receptor-modulation
-coaching_scope_notes: Breathwork, adaptogens, magnesium, L-theanine, GABA support,
-  sleep hygiene within scope. Diagnosis and psychiatric medications out of scope.
-clinician_scope_notes: 'Diagnosed anxiety disorders, medication management, trauma
-  therapy,
+- insulin-resistance
+- gaba-receptor-modulation
+coaching_scope_notes: Breathwork, adaptogens, magnesium, L-theanine, GABA support, sleep hygiene within scope. Diagnosis and
+  psychiatric medications out of scope.
+clinician_scope_notes: 'Diagnosed anxiety disorders, medication management, trauma therapy,
 
   and panic disorder evaluation are out of coaching scope.
 

@@ -4,12 +4,11 @@ aliases:
 - excess ECW
 - extracellular fluid accumulation
 category: metabolic
-summary: Elevated extracellular water relative to intracellular water, detectable
-  via BIA, can indicate systemic inflammation, food sensitivities, hypothyroidism,
-  or impaired detoxification pathways. Rapid weight loss on elimination diets may
-  reflect shedding of this inflammatory fluid.
+summary: Elevated extracellular water relative to intracellular water, detectable via BIA, can indicate systemic inflammation,
+  food sensitivities, hypothyroidism, or impaired detoxification pathways. Rapid weight loss on elimination diets may reflect
+  shedding of this inflammatory fluid.
 upstream_drivers:
-- chronic-systemic-inflammation
+- chronic-inflammation
 - food-sensitivities
 - hypothyroidism
 - detox-pathway-impairment
@@ -17,8 +16,8 @@ downstream_effects:
 - fluid-retention
 - apparent-weight-gain
 related_mechanisms:
-- chronic-systemic-inflammation
-- intestinal-hyperpermeability
+- chronic-inflammation
+- leaky-gut
 linked_to_topics:
 - bioelectrical-impedance-analysis
 - body-composition-assessment
@@ -26,9 +25,8 @@ evidence_tier: fm_specific_thin
 sources:
 - id: coconote-fm-body-composition-bmi
   location: BIA / Extracellular Water Section
-  quote: If somebody has too much extracellular water, it can be a sign of inflammation
-    in their body, right? Maybe under your matrix, you're seeing signs of allergy
-    or hypersensitivity to foods or inflammation in the body.
+  quote: If somebody has too much extracellular water, it can be a sign of inflammation in their body, right? Maybe under
+    your matrix, you're seeing signs of allergy or hypersensitivity to foods or inflammation in the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

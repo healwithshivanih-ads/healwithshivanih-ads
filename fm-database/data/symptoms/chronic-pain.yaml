@@ -13,30 +13,28 @@ aliases:
 - fibromyalgia-type pain
 category: musculoskeletal
 severity: concerning
-description: Ongoing pain lasting more than 3 months, encompassing fibromyalgia, headaches,
-  joint pain, and musculoskeletal discomfort. Functionally driven by neuroinflammation,
-  limbic overactivation, emotional suppression, and elevated inflammatory cytokines
-  (IL-6, TNF-α).
-when_to_refer: Refer if pain is severe, rapidly worsening, associated with neurological
-  deficits, or has a clear structural/oncological cause.
+description: Ongoing pain lasting more than 3 months, encompassing fibromyalgia, headaches, joint pain, and musculoskeletal
+  discomfort. Functionally driven by neuroinflammation, limbic overactivation, emotional suppression, and elevated inflammatory
+  cytokines (IL-6, TNF-α).
+when_to_refer: Refer if pain is severe, rapidly worsening, associated with neurological deficits, or has a clear structural/oncological
+  cause.
 linked_to_topics:
 - low-dose-naltrexone
 - nervous-system-regulation
 - emotional-healing-chronic-disease
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 - emotional-healing-in-chronic-disease
 linked_to_mechanisms:
 - tlr4-microglial-inhibition
-- opioid-rebound-upregulation
+- ldn-endorphin-rebound
 - neuroinflammation
 - limbic-system-overactivation
 - hpa-axis-dysregulation
-- cortisol-dhea-imbalance
 sources:
 - id: vitaone-ldn-article
   location: So, how does LDN work?
-  quote: many patients report an improved sense of well-being and a decrease in overall
-    pain, as one might expect with higher levels of opioid production in the body.
+  quote: many patients report an improved sense of well-being and a decrease in overall pain, as one might expect with higher
+    levels of opioid production in the body.
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: Fibromyalgia, headaches, chronic fatigue, digestive symptoms.

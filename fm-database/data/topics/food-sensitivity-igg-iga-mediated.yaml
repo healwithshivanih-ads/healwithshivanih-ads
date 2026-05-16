@@ -9,17 +9,15 @@ summary: Food sensitivity is a delayed immune reaction (2 hours to 2 days post-e
   The IgG half-life of 23 days means symptoms can persist and elimination diets must exceed 4 weeks for meaningful improvement.
   Strongly linked to intestinal permeability as the underlying root cause.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
-- migraines
 - headache
 - abdominal-pain
 - joint-pain
-- joint-stiffness
 - edema
 - weight-gain-water-retention
 - itching
-- emotional-dysregulation
+- mood-swings
 red_flags:
 - Suspected anaphylaxis — refer immediately
 - Persistent severe neurological symptoms — refer to clinician
@@ -29,7 +27,7 @@ related_topics:
 - food-intolerance
 - autoimmune-conditions-igg-food-triggers
 key_mechanisms:
-- intestinal-permeability
+- leaky-gut
 - igg-antigen-immune-complex-complement-activation
 - low-stomach-acid-antigen-load
 coaching_scope_notes: Coaches can support elimination diets (minimum 4 weeks), gut healing, stress reduction, and microbiome

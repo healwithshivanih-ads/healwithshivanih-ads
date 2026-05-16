@@ -1,31 +1,26 @@
 slug: omega3-turmeric-green-tea-modulate-nfkb
-statement: Omega-3 fatty acids, curcumin (turmeric), and green tea polyphenols (EGCG)
-  modulate NF-κB signalling and reduce pro-inflammatory cytokine expression at the
-  cellular level.
+statement: Omega-3 fatty acids, curcumin (turmeric), and green tea polyphenols (EGCG) modulate NF-κB signalling and reduce
+  pro-inflammatory cytokine expression at the cellular level.
 evidence_tier: plausible_emerging
-rationale: Each compound has documented NF-κB inhibitory mechanisms in cell and animal
-  studies, with supporting human trials for anti-inflammatory effects (omega-3 RCTs
-  are most robust; curcumin and EGCG trials face bioavailability challenges). Collectively
-  plausible but dose-response and clinical magnitude in free-living populations vary.
-coaching_translation: Omega-3s from fatty fish, turmeric, and green tea contain compounds
-  that dial down your body's inflammatory signalling pathways — contributing to reduced
-  chronic inflammation over time.
+rationale: Each compound has documented NF-κB inhibitory mechanisms in cell and animal studies, with supporting human trials
+  for anti-inflammatory effects (omega-3 RCTs are most robust; curcumin and EGCG trials face bioavailability challenges).
+  Collectively plausible but dose-response and clinical magnitude in free-living populations vary.
+coaching_translation: Omega-3s from fatty fish, turmeric, and green tea contain compounds that dial down your body's inflammatory
+  signalling pathways — contributing to reduced chronic inflammation over time.
 caveats:
-- Human trial evidence is strongest for omega-3s; curcumin bioavailability is a known
-  limitation.
+- Human trial evidence is strongest for omega-3s; curcumin bioavailability is a known limitation.
 - Source is Instagram educational content.
 linked_to_topics:
 - immune-nutrition
 - modern-diet-systemic-dysfunction
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXZNALUjPBQ/
-  quote: Omega-3s, turmeric, and green tea modulate NF-κB and cytokine expression
-    at the cellular level.
+  quote: Omega-3s, turmeric, and green tea modulate NF-κB and cytokine expression at the cellular level.
 version: 1
 status: active
 updated_at: '2026-05-05'

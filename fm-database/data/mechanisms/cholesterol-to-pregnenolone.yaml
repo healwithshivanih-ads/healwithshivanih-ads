@@ -4,11 +4,9 @@ aliases:
 - cholesterol-pregnenolone pathway
 - steroid hormone foundation
 category: metabolic
-summary: Cholesterol is the foundational precursor for all steroid hormones. Adequate
-  total cholesterol (ideally 163–200+ mg/dL) and optimal HDL (60–90 mg/dL) are prerequisites
-  for pregnenolone synthesis, which then branches into progesterone, cortisol, and
-  DHEA/testosterone/estrogen pathways. Statin-induced very low cholesterol can impair
-  hormone synthesis.
+summary: Cholesterol is the foundational precursor for all steroid hormones. Adequate total cholesterol (ideally 163–200+
+  mg/dL) and optimal HDL (60–90 mg/dL) are prerequisites for pregnenolone synthesis, which then branches into progesterone,
+  cortisol, and DHEA/testosterone/estrogen pathways. Statin-induced very low cholesterol can impair hormone synthesis.
 upstream_drivers:
 - dietary-fat-intake
 - statin-use
@@ -18,17 +16,16 @@ downstream_effects:
 - low-sex-hormones
 - low-cortisol
 related_mechanisms:
-- cortisol-steal
-- estrogen-progesterone-decline
+- hpa-axis-dysregulation
+- estrogen-decline
 linked_to_topics:
 - steroidogenesis
 evidence_tier: strong
 sources:
 - id: coconote-fm-sex-hormones
   location: Steroidogenesis Pathway
-  quote: It is the cholesterol. If you are not seeing the base foundation of your
-    patient's body... the first thing that we have to correct is the cholesterol profile
-    of the person.
+  quote: It is the cholesterol. If you are not seeing the base foundation of your patient's body... the first thing that we
+    have to correct is the cholesterol profile of the person.
 version: 1
 status: active
 updated_at: '2026-05-05'

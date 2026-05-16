@@ -4,17 +4,16 @@ aliases:
 - T2DM
 - type 2 diabetes
 - non-insulin-dependent diabetes
-summary: End-stage progression of insulin resistance characterised by overt hyperglycaemia
-  (fasting glucose ≥126 mg/dL, HbA1c ≥6.5%), chronic hyperinsulinaemia coexisting
-  with progressive β-cell apoptosis, and multi-system complications.
+summary: End-stage progression of insulin resistance characterised by overt hyperglycaemia (fasting glucose ≥126 mg/dL, HbA1c
+  ≥6.5%), chronic hyperinsulinaemia coexisting with progressive β-cell apoptosis, and multi-system complications.
 common_symptoms:
-- persistent-fatigue
-- peripheral-neuropathy
+- lethargy
+- axonal-neuropathy
 - frequent-urination
 - blurry-vision
-- frequent-infections
+- autoimmune-flares-low-immunity
 - erectile-dysfunction
-- slow-wound-healing
+- poor-wound-healing
 red_flags:
 - fasting glucose ≥ 126 mg/dL
 - HbA1c ≥ 6.5%
@@ -31,17 +30,15 @@ key_mechanisms:
 - insulin-resistance
 - pancreatic-beta-cell-dysfunction
 - advanced-glycation-end-products
-coaching_scope_notes: Coaches support lifestyle pillars alongside clinical management.
-  Do not adjust medications. Refer for regular eye, kidney, foot exams.
-clinician_scope_notes: Diagnose per ADA criteria. Initiate pharmacotherapy as appropriate.
-  Screen for micro- and macrovascular complications. Consider LADA in atypical presentations
-  (GAD antibodies).
+coaching_scope_notes: Coaches support lifestyle pillars alongside clinical management. Do not adjust medications. Refer for
+  regular eye, kidney, foot exams.
+clinician_scope_notes: Diagnose per ADA criteria. Initiate pharmacotherapy as appropriate. Screen for micro- and macrovascular
+  complications. Consider LADA in atypical presentations (GAD antibodies).
 evidence_tier: strong
 sources:
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.4 — Type 2 Diabetes Mellitus
-  quote: Chronic hyper-insulinaemia coexists with sustained hyperglycaemia; progressive
-    β-cell apoptosis.
+  quote: Chronic hyper-insulinaemia coexists with sustained hyperglycaemia; progressive β-cell apoptosis.
 version: 1
 status: active
 updated_at: '2026-05-02'

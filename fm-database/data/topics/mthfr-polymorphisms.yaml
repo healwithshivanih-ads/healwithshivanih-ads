@@ -11,7 +11,7 @@ summary: The MTHFR gene encodes an enzyme central to folate metabolism and homoc
 common_symptoms:
 - elevated-homocysteine
 - functional-b12-deficiency-symptoms
-- fatigue
+- lethargy
 - brain-fog
 red_flags:
 - very-high-serum-b12
@@ -21,7 +21,7 @@ red_flags:
 related_topics:
 - methylation-cycle
 - homocysteine-regulation
-- folate-metabolism
+- methylation-mthfr
 - riboflavin-and-blood-pressure
 key_mechanisms:
 - mthfr-enzyme-dysfunction

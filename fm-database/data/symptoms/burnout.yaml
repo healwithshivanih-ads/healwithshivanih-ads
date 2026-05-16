@@ -19,13 +19,10 @@ aliases:
 - vicarious trauma
 category: constitutional
 severity: concerning
-description: A state of chronic emotional, physical, and mental exhaustion, particularly
-  in professional or caregiving roles. The Self-Care Questionnaire's Professional
-  and Social domains specifically assess burnout risk factors.
-when_to_refer: Refer if burnout is severe, prolonged, or accompanied by clinical depression,
-  dissociation, or functional impairment.
+description: A state of chronic emotional, physical, and mental exhaustion, particularly in professional or caregiving roles.
+  The Self-Care Questionnaire's Professional and Social domains specifically assess burnout risk factors.
+when_to_refer: Refer if burnout is severe, prolonged, or accompanied by clinical depression, dissociation, or functional impairment.
 linked_to_topics:
-- adrenal-dysfunction
 - hpa-axis-dysregulation
 - self-care
 - emotional-healing-chronic-disease
@@ -34,17 +31,14 @@ linked_to_topics:
 - emotional-wellbeing
 linked_to_mechanisms:
 - hpa-axis-dysregulation
-- pregnenolone-steal
 - mitochondrial-dysfunction
-- hpa-axis-regulation
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: The Anti-Stress Hormones — DHEA row (p.22)
   quote: Low energy, depression, burnout, low libido, low immunity, premature aging.
 - id: vitaone-health-coaching-toolkit
   location: Self-Care Questionnaire
-  quote: Research shows that people who take time to recharge and restore are more
-    creative, happier, and more successful.
+  quote: Research shows that people who take time to recharge and restore are more creative, happier, and more successful.
 version: 5
 status: active
 updated_at: '2026-05-04'

@@ -13,11 +13,11 @@ common_symptoms:
 - brain-fog
 - joint-pain
 - bloating
-- fatigue
-- mood-changes
-- elevated-crp
-- systemic-inflammation
-- high-triglycerides
+- lethargy
+- mood-swings
+- elevated-hscrp
+- inflammation
+- elevated-triglycerides
 - elevated-cholesterol
 - blood-sugar-dysregulation
 red_flags:
@@ -36,9 +36,9 @@ key_mechanisms:
 - cytokine-dysregulation
 - gut-microbiome-modulation
 - nlrp3-inflammasome-activation
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - insulin-resistance
-- chronic-systemic-inflammation
+- chronic-inflammation
 coaching_scope_notes: Coaches can recommend the Inflammation Control Smoothie and recipes featuring turmeric, ginger, dark
   berries, and pomegranate as practical implementations.
 clinician_scope_notes: When underlying autoimmune, IBD, or metabolic disease is suspected, dietary interventions should complement

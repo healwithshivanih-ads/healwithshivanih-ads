@@ -1,29 +1,25 @@
 slug: nigella-sativa-improves-oxidative-stress-aitd
-statement: Nigella sativa treatment for 8 weeks significantly improved serum total
-  antioxidant capacity, oxidative stress markers, LDL-C, triglycerides, and HDL in
-  patients with autoimmune thyroid disease.
+statement: Nigella sativa treatment for 8 weeks significantly improved serum total antioxidant capacity, oxidative stress
+  markers, LDL-C, triglycerides, and HDL in patients with autoimmune thyroid disease.
 evidence_tier: plausible_emerging
-rationale: The document cites a human study in AITD patients showing improvements
-  in antioxidant capacity, lipid panel, and vascular endothelial adhesion markers.
-  Mechanistically attributed to antioxidant, tissue-repair, and immunomodulatory effects.
-coaching_translation: Beyond thyroid antibodies, black cumin seed may also improve
-  cholesterol, triglycerides, and reduce oxidative damage in Hashimoto's — a nice
-  multi-benefit intervention.
+rationale: The document cites a human study in AITD patients showing improvements in antioxidant capacity, lipid panel, and
+  vascular endothelial adhesion markers. Mechanistically attributed to antioxidant, tissue-repair, and immunomodulatory effects.
+coaching_translation: Beyond thyroid antibodies, black cumin seed may also improve cholesterol, triglycerides, and reduce
+  oxidative damage in Hashimoto's — a nice multi-benefit intervention.
 caveats:
-- Source document does not specify the study citation — source is an educational toolkit;
-  verify with primary literature before citing.
+- Source document does not specify the study citation — source is an educational toolkit; verify with primary literature before
+  citing.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements:
 - nigella-sativa
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
-  location: Key Nutrients to Consider in Thyroid Regulation — Nigella sativa improves
-    oxidative stress
-  quote: N. sativa may be beneficial for improving oxidative stress, endothelial function,
-    serum lipids, & anthropometrics in patients with AITD
+  location: Key Nutrients to Consider in Thyroid Regulation — Nigella sativa improves oxidative stress
+  quote: N. sativa may be beneficial for improving oxidative stress, endothelial function, serum lipids, & anthropometrics
+    in patients with AITD
 version: 1
 status: active
 updated_at: '2026-05-04'

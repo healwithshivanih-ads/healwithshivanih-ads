@@ -9,8 +9,7 @@ aliases:
 - post-meal nausea
 category: gi
 severity: common
-description: Unpleasant stomach sensation with urge to vomit. Reported in patients
-  with hypochlorhydria, particularly post-prandially.
+description: Unpleasant stomach sensation with urge to vomit. Reported in patients with hypochlorhydria, particularly post-prandially.
 linked_to_topics:
 - low-dose-naltrexone
 - ibs
@@ -18,7 +17,7 @@ linked_to_topics:
 - nightshade-sensitivity
 - hypochlorhydria
 linked_to_mechanisms:
-- fodmap-fermentation-gas-production
+- colonic-fermentation
 - histamine-enzyme-inhibition
 - food-fermentation-reflux
 when_to_refer: ''
@@ -31,8 +30,7 @@ sources:
   quote: 'Digestive: gas, pain, diarrhea, nausea, vomiting'
 - id: coconote-fm-hypochlorhydria
   location: Case Presentation
-  quote: It leads to water brush, severe discomfort, bloating, nausea, epigastric
-    burning pain.
+  quote: It leads to water brush, severe discomfort, bloating, nausea, epigastric burning pain.
 version: 3
 status: active
 updated_at: '2026-05-05'

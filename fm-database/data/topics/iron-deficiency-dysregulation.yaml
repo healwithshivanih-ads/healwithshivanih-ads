@@ -3,12 +3,11 @@ display_name: Iron Deficiency & Iron Dysregulation
 aliases:
 - functional iron deficiency
 - iron dysregulation
-summary: Iron deficiency extends beyond low haemoglobin to a multi-stage dysfunction
-  involving absorption, inflammation, hepcidin regulation, and cofactor availability.
-  Ferritin can appear falsely normal during inflammation, and gut integrity is central
+summary: Iron deficiency extends beyond low haemoglobin to a multi-stage dysfunction involving absorption, inflammation, hepcidin
+  regulation, and cofactor availability. Ferritin can appear falsely normal during inflammation, and gut integrity is central
   to iron utilisation.
 common_symptoms:
-- fatigue
+- lethargy
 - hair-loss
 - brain-fog
 - restless-legs
@@ -19,25 +18,22 @@ red_flags:
 - haemoglobin below 80 g/L
 related_topics:
 - medication-induced-nutrient-depletion
-- gut-health-fodmap-sibo
+- sibo
 - metabolic-health-lchf
 key_mechanisms:
 - hepcidin-mediated-iron-block
-- gut-barrier-iron-absorption
+- heme-vs-nonheme-iron-absorption
 - inflammation-masking-ferritin
-coaching_scope_notes: Coaches can support dietary iron sources, cofactor foods (vitamin
-  C, copper-rich foods), and gut health. Lab interpretation and dosing are clinician
-  territory.
-clinician_scope_notes: Assess ferritin, transferrin saturation, and CRP together.
-  Consider alternate-day oral iron to bypass hepcidin. Investigate H. pylori, celiac
-  disease, or GI bleed as root causes.
+coaching_scope_notes: Coaches can support dietary iron sources, cofactor foods (vitamin C, copper-rich foods), and gut health.
+  Lab interpretation and dosing are clinician territory.
+clinician_scope_notes: Assess ferritin, transferrin saturation, and CRP together. Consider alternate-day oral iron to bypass
+  hepcidin. Investigate H. pylori, celiac disease, or GI bleed as root causes.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
-  quote: Ferritin alone is unreliable in inflammation → Hepcidin blocks iron absorption
-    when inflammation is high → Iron requires cofactors like B12, copper, Vitamin
-    A and folate
+  quote: Ferritin alone is unreliable in inflammation → Hepcidin blocks iron absorption when inflammation is high → Iron requires
+    cofactors like B12, copper, Vitamin A and folate
 version: 1
 status: active
 updated_at: '2026-05-05'

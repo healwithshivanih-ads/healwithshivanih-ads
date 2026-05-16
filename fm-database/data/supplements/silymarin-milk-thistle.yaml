@@ -11,14 +11,12 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - metabolic-detoxification
-- liver-detox-food-plan
+- liver-detoxification
 linked_to_claims:
 - silymarin-antioxidant-phase-i-hepatic-protection
-notes_for_coach: Listed as a Phase I antioxidant protective nutrient in the document's
-  detox diagram. Specific doses not provided — verify with clinician. Well-known hepatoprotective
-  herb in functional medicine.
-notes_for_client: Silymarin, from milk thistle, helps protect your liver cells from
-  damage during the detoxification process.
+notes_for_coach: Listed as a Phase I antioxidant protective nutrient in the document's detox diagram. Specific doses not provided
+  — verify with clinician. Well-known hepatoprotective herb in functional medicine.
+notes_for_client: Silymarin, from milk thistle, helps protect your liver cells from damage during the detoxification process.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

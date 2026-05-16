@@ -11,11 +11,11 @@ summary: Omega-3 fatty acids (ALA, EPA, DHA) are essential polyunsaturated fats 
   neurological, and immune-modulating properties. Modern diets are severely deficient in omega-3s relative to omega-6s, driving
   chronic inflammation and chronic disease.
 common_symptoms:
-- chronic-inflammation
-- fatigue
+- inflammation
+- lethargy
 - brain-fog
 - joint-pain
-- depression
+- low-mood
 red_flags:
 - sudden-cardiac-death
 - severe-immunosuppression
@@ -24,9 +24,8 @@ related_topics:
 - chronic-inflammation
 - cardiometabolic-disease
 - insulin-resistance
-- neuroinflammation
 key_mechanisms:
-- omega6-omega3-competitive-inhibition
+- omega-3-omega-6-imbalance
 - arachidonic-acid-cascade
 - resolvin-spm-production
 coaching_scope_notes: Coaches can educate on dietary sources of omega-3s (fatty fish, flaxseeds, chia seeds, algae), the importance

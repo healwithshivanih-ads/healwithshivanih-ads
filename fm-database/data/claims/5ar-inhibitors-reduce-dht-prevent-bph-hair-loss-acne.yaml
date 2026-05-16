@@ -1,14 +1,11 @@
 slug: 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
-statement: Foods, herbs, and supplements that inhibit 5-α reductase can reduce DHT
-  conversion from testosterone, potentially preventing or reducing symptoms of BPH,
-  androgenic hair loss, and androgen excess in women.
+statement: Foods, herbs, and supplements that inhibit 5-α reductase can reduce DHT conversion from testosterone, potentially
+  preventing or reducing symptoms of BPH, androgenic hair loss, and androgen excess in women.
 evidence_tier: plausible_emerging
-rationale: Mechanistic rationale is strong and supported by pharmaceutical evidence
-  (finasteride). Botanical inhibitors (saw palmetto, pygeum, nettle root) have clinical
-  trial support of varying quality, particularly for BPH.
-coaching_translation: Certain foods, herbs, and nutrients can slow down the enzyme
-  that converts testosterone into DHT — the hormone responsible for prostate growth,
-  hair thinning, and hormonal acne.
+rationale: Mechanistic rationale is strong and supported by pharmaceutical evidence (finasteride). Botanical inhibitors (saw
+  palmetto, pygeum, nettle root) have clinical trial support of varying quality, particularly for BPH.
+coaching_translation: Certain foods, herbs, and nutrients can slow down the enzyme that converts testosterone into DHT — the
+  hormone responsible for prostate growth, hair thinning, and hormonal acne.
 caveats:
 - Botanical evidence varies by herb — saw palmetto has the most BPH evidence
 - Dosing of botanical supplements requires clinician guidance
@@ -22,14 +19,14 @@ linked_to_supplements:
 - stinging-nettle-root
 - pygeum
 - quercetin
-- fish-oil-epa-dha
+- fish-oil-omega-3
 - beta-sitosterol
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
-  quote: There are several foods, herbs, and supplements that can be used to inhibit
-    or slow 5-areductase activity and thus decrease or prevent these symptoms.
+  quote: There are several foods, herbs, and supplements that can be used to inhibit or slow 5-areductase activity and thus
+    decrease or prevent these symptoms.
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -6,16 +6,15 @@ aliases:
 - stomach discomfort after eating
 category: gi
 severity: common
-description: General discomfort or pain in the upper abdomen during or after eating,
-  associated with low stomach acid. Importantly, symptoms of too little stomach acid
-  often mimic those of too much.
+description: General discomfort or pain in the upper abdomen during or after eating, associated with low stomach acid. Importantly,
+  symptoms of too little stomach acid often mimic those of too much.
 linked_to_topics:
 - hypochlorhydria
 - gerd
 - gut-dysfunction
 - gerd-ppi-tapering
 linked_to_mechanisms:
-- hypochlorhydria-mechanism
+- low-stomach-acid
 when_to_refer: ''
 sources:
 - id: vitaone-gut-toolkit
@@ -23,8 +22,8 @@ sources:
   quote: Indigestion, diarrhea, or constipation
 - id: vitaone-health-coaching-toolkit
   location: Testing for Low Stomach Acidity
-  quote: Low acid in the stomach can also cause indigestion. The symptoms of having
-    too little stomach acid often mimic those of having too much stomach acid.
+  quote: Low acid in the stomach can also cause indigestion. The symptoms of having too little stomach acid often mimic those
+    of having too much stomach acid.
 version: 2
 status: active
 updated_at: '2026-05-04'

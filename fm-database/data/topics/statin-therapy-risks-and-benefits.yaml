@@ -4,16 +4,15 @@ aliases:
 - anti-cholesterol medication
 - HMG-CoA reductase inhibitors
 - statin drugs
-summary: Statins are widely prescribed for cholesterol reduction and cardiovascular
-  risk prevention, but their absolute risk reduction in primary prevention is often
-  small. Known side effects include muscle pain, liver stress, and increased diabetes
-  risk. Natural alternatives including magnesium, vitamin D, omega-3 fatty acids,
-  and lifestyle modification are discussed as complementary or substitute approaches.
+summary: Statins are widely prescribed for cholesterol reduction and cardiovascular risk prevention, but their absolute risk
+  reduction in primary prevention is often small. Known side effects include muscle pain, liver stress, and increased diabetes
+  risk. Natural alternatives including magnesium, vitamin D, omega-3 fatty acids, and lifestyle modification are discussed
+  as complementary or substitute approaches.
 common_symptoms:
-- muscle-pain-myalgia
+- muscle-pain
 - elevated-liver-enzymes
 - new-onset-diabetes
-- fatigue
+- lethargy
 red_flags:
 - rhabdomyolysis
 - severe-liver-damage
@@ -21,26 +20,23 @@ red_flags:
 related_topics:
 - cardiovascular-risk-assessment
 - ldl-particle-size-and-number
-- dyslipidemia-management
+- dyslipidemia
 - insulin-resistance
 key_mechanisms:
 - ldl-oxidation
 - endothelial-dysfunction
 - inflammatory-cascade
-coaching_scope_notes: Coaches may educate clients on absolute vs. relative risk, help
-  them prepare questions for their doctor, and support lifestyle changes. Medication
-  decisions (start/stop/dose) must involve a clinician.
-clinician_scope_notes: Statins are appropriate for secondary prevention and familial
-  hypercholesterolemia (LDL >190). Side effects like myopathy, hepatotoxicity, and
-  new-onset diabetes should be monitored. Co-prescription with magnesium and vitamin
+coaching_scope_notes: Coaches may educate clients on absolute vs. relative risk, help them prepare questions for their doctor,
+  and support lifestyle changes. Medication decisions (start/stop/dose) must involve a clinician.
+clinician_scope_notes: Statins are appropriate for secondary prevention and familial hypercholesterolemia (LDL >190). Side
+  effects like myopathy, hepatotoxicity, and new-onset diabetes should be monitored. Co-prescription with magnesium and vitamin
   D may mitigate some side effects.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Statin side effects section
-  quote: The common side effect is nausea, diarrhea, constipation. 5% of this patient
-    will develop. We are inviting 2% of this for liver, 11% for liver damage. And
-    1 out of 20,000 patients will develop kidney damage.
+  quote: The common side effect is nausea, diarrhea, constipation. 5% of this patient will develop. We are inviting 2% of
+    this for liver, 11% for liver damage. And 1 out of 20,000 patients will develop kidney damage.
 version: 1
 status: active
 updated_at: '2026-05-05'

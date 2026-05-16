@@ -19,7 +19,7 @@ linked_to_topics:
 - vitamin-b-complex-deficiency
 - medication-nutrient-interactions
 - calcium-deficiency
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-musculoskeletal-health
 - medication-induced-nutrient-depletion
 - metabolic-health-lchf
@@ -28,11 +28,9 @@ linked_to_topics:
 linked_to_mechanisms:
 - mitochondrial-energy-production
 - pth-calcium-regulation
-- magnesium-calcium-intracellular-shift
 - calcium-magnesium-imbalance
 - muscle-relaxation-contraction-balance
 - b12-absorption-impairment
-- nutrient-dependent-energy-metabolism
 when_to_refer: If cramps are severe, persistent, or associated with arrhythmia or neurological signs.
 sources:
 - id: vitaone-nutrition-cheatsheet

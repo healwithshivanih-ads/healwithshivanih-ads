@@ -12,8 +12,8 @@ aliases:
 - spots
 category: skin
 severity: common
-description: Inflammatory skin condition driven by insulin spikes, dairy, industrial
-  seed oils, and gut dysbiosis affecting androgen metabolism.
+description: Inflammatory skin condition driven by insulin spikes, dairy, industrial seed oils, and gut dysbiosis affecting
+  androgen metabolism.
 linked_to_topics:
 - testosterone-health
 - sex-hormone-binding-globulin
@@ -21,7 +21,7 @@ linked_to_topics:
 - estrogen-dominance
 - pcos
 - chronic-pain-and-fatigue
-- zinc-deficiency
+- zinc-nutrition
 - modern-diet-systemic-dysfunction
 - pcos-fertility
 linked_to_mechanisms:
@@ -29,35 +29,32 @@ linked_to_mechanisms:
 - shbg-hormone-binding
 - 5-alpha-reductase-activity
 - insulin-resistance
-- aromatase-upregulation
+- aromatase-activity
 - systemic-inflammation
-- omega-3-deficiency-inflammation
+- omega-3-omega-6-imbalance
 - zinc-antioxidant-activity
-- nf-kb-inflammatory-signalling
-when_to_refer: Severe cystic acne or acne with signs of PCOS/hyperandrogenism warrants
-  clinician referral.
+- nf-kb-activation
+when_to_refer: Severe cystic acne or acne with signs of PCOS/hyperandrogenism warrants clinician referral.
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: This can lead to increased free testosterone and estrogen in the body, which
-    can lead to symptoms like hair loss, acne, and excess fluid retention.
+  quote: This can lead to increased free testosterone and estrogen in the body, which can lead to symptoms like hair loss,
+    acne, and excess fluid retention.
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
-  quote: This can lead to increased free testosterone and estrogen in the body, which
-    can lead to symptoms like hair loss, acne, and excess fluid retention.
+  quote: This can lead to increased free testosterone and estrogen in the body, which can lead to symptoms like hair loss,
+    acne, and excess fluid retention.
 - id: coconote-fm-estrogen-dominance
   location: Signs and Symptoms of Estrogen Dominance
-  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne,
-    anxiety, fatigue, disturbed sleep, hot flashes, low libido.'
+  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne, anxiety, fatigue, disturbed sleep,
+    hot flashes, low libido.'
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study
-  quote: because of the elevated CRP I was having acne issues. I always am getting
-    like a breakout... I started now good quality omega-3 supplement and now my acne
-    went away completely.
+  quote: because of the elevated CRP I was having acne issues. I always am getting like a breakout... I started now good quality
+    omega-3 supplement and now my acne went away completely.
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: Skin disorders including acne, decreased production or sexual function especially
-    in men.
+  quote: Skin disorders including acne, decreased production or sexual function especially in men.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXWoFj6jGCY/
   quote: Acne? → sugar + dairy + seed oils

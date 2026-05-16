@@ -8,15 +8,13 @@ aliases:
 - undigested particles in bowel movement
 category: gi
 severity: common
-description: Visible undigested food particles in the stool, indicating insufficient
-  digestive enzyme or stomach acid activity.
-when_to_refer: Refer if persistent with weight loss or if suggesting malabsorption
-  syndrome.
+description: Visible undigested food particles in the stool, indicating insufficient digestive enzyme or stomach acid activity.
+when_to_refer: Refer if persistent with weight loss or if suggesting malabsorption syndrome.
 linked_to_topics:
 - hypochlorhydria
 - gut-dysfunction
 linked_to_mechanisms:
-- hypochlorhydria-mechanism
+- low-stomach-acid
 sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria

@@ -16,21 +16,19 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - hypochlorhydria
-- five-r-gut-protocol
+- 5r-gut-protocol
 linked_to_claims:
 - probiotics-support-gut-microbiome-in-5r-protocol
-notes_for_coach: Used in the Re-inoculate phase of the 5R protocol to restore beneficial
-  gut flora disrupted by low acid, dysbiosis, or SIBO. Strain and dose selection should
-  be guided by a clinician, especially if SIBO is suspected.
-notes_for_client: Probiotics help replenish the beneficial bacteria in your gut. Your
-  practitioner will choose the right strain and dose for your situation.
+notes_for_coach: Used in the Re-inoculate phase of the 5R protocol to restore beneficial gut flora disrupted by low acid,
+  dysbiosis, or SIBO. Strain and dose selection should be guided by a clinician, especially if SIBO is suspected.
+notes_for_client: Probiotics help replenish the beneficial bacteria in your gut. Your practitioner will choose the right strain
+  and dose for your situation.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-hypochlorhydria
   location: Treatment / 5R Gut Protocol — Re-inoculate
-  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic
-    can be used in terms of repairing.
+  quote: If the gut microbiome is also on the lower side, maybe a prebiotic or a probiotic can be used in terms of repairing.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -24,16 +24,14 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: Iodine is necessary for thyroid hormone synthesis. However, excess
-  iodine can be harmful in Hashimoto's patients and may worsen antibody activity.
-  Supplementation should be cautious and ideally clinician-supervised in autoimmune
-  thyroid disease. Routine supplementation at 150 mcg is considered safe for most.
+notes_for_coach: Iodine is necessary for thyroid hormone synthesis. However, excess iodine can be harmful in Hashimoto's patients
+  and may worsen antibody activity. Supplementation should be cautious and ideally clinician-supervised in autoimmune thyroid
+  disease. Routine supplementation at 150 mcg is considered safe for most.
 evidence_tier: strong
 linked_to_topics:
 - thyroid
 - hypothyroidism
-- hashimotos-thyroiditis
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - thyroid-dysfunction
 linked_to_mechanisms: []
 linked_to_claims:
@@ -43,31 +41,26 @@ linked_to_claims:
 - iodine-excess-harmful-in-hashimotos
 - iodine-essential-for-thyroid-hormone-synthesis
 - excess-iodine-can-worsen-hashimotos
-notes_for_client: Iodine is needed to make thyroid hormones but too much can actually
-  worsen Hashimoto's. Food sources like seaweed, eggs, and dairy are preferred over
-  high-dose supplements unless your doctor recommends otherwise.
+notes_for_client: Iodine is needed to make thyroid hormones but too much can actually worsen Hashimoto's. Food sources like
+  seaweed, eggs, and dairy are preferred over high-dose supplements unless your doctor recommends otherwise.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Iodine (Potassium Iodide)/sea kelp - Thyroid hormone production - 150–300
-    mcg/day - With or without food
+  quote: Iodine (Potassium Iodide)/sea kelp - Thyroid hormone production - 150–300 mcg/day - With or without food
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Balance Iodine Intake
   quote: 150–300 µg/day if deficient, balance with selenium
 - id: vitaone-thyroid-ebook
   location: Chapter 2 & Chapter 9
-  quote: 'Iodine: Essential raw material for T3 and T4 molecules. Caution: Excess
-    iodine can worsen Hashimoto''s or trigger hyperthyroidism.'
+  quote: 'Iodine: Essential raw material for T3 and T4 molecules. Caution: Excess iodine can worsen Hashimoto''s or trigger
+    hyperthyroidism.'
 - id: vitaone-thyroid-toolkit
   location: Ensuring Adequate Iodine Intake
-  quote: Iodine is essential for thyroid hormone production, but excess iodine can
-    be harmful in Hashimoto's.
+  quote: Iodine is essential for thyroid hormone production, but excess iodine can be harmful in Hashimoto's.
 - id: vitaone-health-coaching-toolkit
-  location: Recommended Dietary Changes for Hashimoto's Hypothyroidism — Ensuring
-    Adequate Iodine Intake
-  quote: Iodine is essential for thyroid hormone production, but excess iodine can
-    be harmful in Hashimoto's. Foods like seaweed, eggs, and dairy provide iodine,
-    but supplementation should be approached with caution.
+  location: Recommended Dietary Changes for Hashimoto's Hypothyroidism — Ensuring Adequate Iodine Intake
+  quote: Iodine is essential for thyroid hormone production, but excess iodine can be harmful in Hashimoto's. Foods like seaweed,
+    eggs, and dairy provide iodine, but supplementation should be approached with caution.
 version: 5
 status: active
 updated_at: '2026-05-04'

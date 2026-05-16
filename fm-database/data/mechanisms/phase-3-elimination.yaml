@@ -28,7 +28,7 @@ summary: 'Phase 3 is the final step of detoxification — physical excretion of
   '
 upstream_drivers:
 - phase-2-conjugation
-- bowel-motility
+- dietary-fiber-modulation
 - hydration-status
 - sweat-capacity
 downstream_effects:

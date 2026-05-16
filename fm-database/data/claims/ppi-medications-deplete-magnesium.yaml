@@ -1,25 +1,24 @@
 slug: ppi-medications-deplete-magnesium
-statement: Proton pump inhibitors (PPIs) and certain other medications (including
-  macrolides and propranolol class drugs) cause magnesium depletion.
+statement: Proton pump inhibitors (PPIs) and certain other medications (including macrolides and propranolol class drugs)
+  cause magnesium depletion.
 evidence_tier: strong
-rationale: FDA issued a safety communication in 2011 regarding PPI-induced hypomagnesemia,
-  supported by multiple clinical case series and pharmacovigilance data.
+rationale: FDA issued a safety communication in 2011 regarding PPI-induced hypomagnesemia, supported by multiple clinical
+  case series and pharmacovigilance data.
 caveats:
 - Medication review is out of coaching scope — refer to prescribing clinician.
-out_of_scope_notes: Medication management is outside coaching scope. Coaches should
-  flag PPI use and refer clients to their clinician.
-coaching_translation: Some common medications — like antacids called PPIs — can lower
-  your magnesium levels, which is worth discussing with your doctor.
+out_of_scope_notes: Medication management is outside coaching scope. Coaches should flag PPI use and refer clients to their
+  clinician.
+coaching_translation: Some common medications — like antacids called PPIs — can lower your magnesium levels, which is worth
+  discussing with your doctor.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Causes of magnesium deficiency
-  quote: Certain medications like proton pump inhibitors, certain antiviral fixate,
-    like propranolones, macronides, again cause depletion of magnesium inside the
-    body.
+  quote: Certain medications like proton pump inhibitors, certain antiviral fixate, like propranolones, macronides, again
+    cause depletion of magnesium inside the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

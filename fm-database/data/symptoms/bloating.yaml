@@ -50,17 +50,16 @@ description: Abdominal fullness, distension, or gassiness commonly triggered by 
 when_to_refer: Sudden onset, significant unintentional weight loss, or blood in stool—refer to gastroenterology.
 linked_to_topics:
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - perimenopause
 - estrobolome
 - estrogen-dominance
 - liver-detoxification
 - sibo
-- gut-dysbiosis
 - hypochlorhydria
 - candida-overgrowth
 - ibs
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - food-sensitivity
 - chronic-inflammation
 - low-fodmap-diet
@@ -70,13 +69,11 @@ linked_to_topics:
 - elimination-diet
 - gut-brain-axis
 - nervous-system-regulation
-- hpa-axis-dysfunction
-- 5r-gut-restoration
+- hpa-axis-dysregulation
+- 5r-gut-protocol
 - emotional-healing-in-chronic-disease
 - low-stomach-acid
 - digestive-enzyme-insufficiency
-- autoimmunity-leaky-gut-triad
-- 5r-gut-healing-protocol
 - ibs-ibd-differentiation
 - cardiovascular-disease-prevention
 - sifo
@@ -86,7 +83,6 @@ linked_to_topics:
 - gluten-intolerance
 - lectin-sensitivity
 - gut-microbiome
-- gut-health-fodmap-sibo
 - modern-diet-systemic-dysfunction
 linked_to_mechanisms:
 - microbial-diversity-decline
@@ -95,47 +91,32 @@ linked_to_mechanisms:
 - bile-flow-regulation
 - phase-3-elimination
 - bacterial-fermentation-carbs
-- impaired-gut-motility
-- gut-dysbiosis
-- gut-fermentation-dysbiosis
+- altered-gi-motility
+- dysbiosis-gut-microbiome-imbalance
+- colonic-fermentation
 - fructose-malabsorption
 - polyol-fermentation-motility
 - lactase-deficiency-osmotic-load
-- hypochlorhydria-mechanism
+- low-stomach-acid
 - gut-microbiome-modulation
 - cytokine-dysregulation
-- sympathetic-nervous-system-activation
-- colonic-fermentation
-- gut-motility-dysregulation
+- sympathetic-dominance
 - vagal-tone-reduction
-- sympathoadrenal-activation
-- fodmap-fermentation-gas-production
+- noradrenaline-signaling
 - migrating-motor-complex
 - gut-brain-axis-disruption
-- intestinal-hyperpermeability
-- dysbiosis
-- leaky-gut-mechanism
 - nutrient-malabsorption
-- lps-mediated-immune-activation
-- gut-dysbiosis-microbiome-imbalance
+- lps-endotoxemia
 - food-fermentation-reflux
-- sibo-from-low-acid
-- gut-microbiome-dysbiosis
-- tight-junction-dysregulation
-- tight-junction-dysfunction
-- nf-kappab-suppression
-- altered-gi-motility
 - sibo-dysbiosis
-- beta-glucuronidase-reabsorption
+- tight-junction-dysfunction
+- anti-inflammatory-signaling
 - pyloric-sphincter-regulation
-- gut-microbiome-colonisation
 - mechanical-mastication-and-enzyme-mixing
 - gluten-digestive-burden
 - lectin-gut-inflammation
-- endotoxemia
 - bacteriocin-production
-- sibo-fermentation
-- gut-barrier-iron-absorption
+- heme-vs-nonheme-iron-absorption
 sources:
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6 — bloating discussion

@@ -1,30 +1,25 @@
 slug: niacin-11-trials-34-percent-cardiac-event-reduction
-statement: Meta-analysis of 11 niacin trials including over 9,000 patients demonstrated
-  a 34% reduction in cardiovascular events and 25% reduction in major events.
+statement: Meta-analysis of 11 niacin trials including over 9,000 patients demonstrated a 34% reduction in cardiovascular
+  events and 25% reduction in major events.
 evidence_tier: strong
-rationale: Clinician references 11 trials over 9,000 people with specific percentage
-  reductions — consistent with published niacin meta-analyses in the cardiovascular
-  literature.
-coaching_translation: Across many studies, niacin has been shown to significantly
-  reduce heart attacks and cardiovascular events, particularly through its HDL-raising
-  and triglyceride-lowering effects.
+rationale: Clinician references 11 trials over 9,000 people with specific percentage reductions — consistent with published
+  niacin meta-analyses in the cardiovascular literature.
+coaching_translation: Across many studies, niacin has been shown to significantly reduce heart attacks and cardiovascular
+  events, particularly through its HDL-raising and triglyceride-lowering effects.
 caveats:
-- Specific meta-analysis not identified by author/year/journal in lecture transcript
-  — verify citation.
-- AIM-HIGH and HPS2-THRIVE partially contradicted niacin benefit in already-treated
-  patients.
+- Specific meta-analysis not identified by author/year/journal in lecture transcript — verify citation.
+- AIM-HIGH and HPS2-THRIVE partially contradicted niacin benefit in already-treated patients.
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-disease-prevention
 linked_to_supplements:
-- niacin-vitamin-b3
+- niacin
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Niacin Evidence Summary
-  quote: Niacin 11 trials over 9,000 people 34 reduction in cardiac events cardiovascular
-    disease 25 reduction in major events.
+  quote: Niacin 11 trials over 9,000 people 34 reduction in cardiac events cardiovascular disease 25 reduction in major events.
 version: 1
 status: active
 updated_at: '2026-05-05'

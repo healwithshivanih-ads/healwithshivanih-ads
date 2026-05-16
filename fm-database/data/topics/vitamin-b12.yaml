@@ -11,51 +11,46 @@ aliases:
 - pernicious anemia risk
 - vitamin-b12-nutrition
 - B12 deficiency
-summary: Vitamin B12 is a water-soluble vitamin required for red blood cell synthesis,
-  DNA synthesis, neurological function, and homocysteine-to-methionine conversion.
-  Absorption is complex, requiring intrinsic factor and an intact terminal ileum.
-  Stored in the liver for 3–4 years. Deficiency leads to megaloblastic anemia and
-  neurological disorders.
+summary: Vitamin B12 is a water-soluble vitamin required for red blood cell synthesis, DNA synthesis, neurological function,
+  and homocysteine-to-methionine conversion. Absorption is complex, requiring intrinsic factor and an intact terminal ileum.
+  Stored in the liver for 3–4 years. Deficiency leads to megaloblastic anemia and neurological disorders.
 common_symptoms:
 - megaloblastic-anemia
-- fatigue
+- lethargy
 - axonal-neuropathy
-- cognitive-decline
+- poor-concentration
 - confusion
-- pernicious-anemia
+- anemia
 red_flags:
 - severe-neurological-symptoms
-- pernicious-anemia
+- anemia
 related_topics:
-- folate-vitamin-b9
+- folate-nutrition
 - mthfr-gene-variant
-- homocysteine-elevation
+- homocysteine-and-methylation
 - methylation
 key_mechanisms:
 - methylcobalamin-dependent-homocysteine-conversion
 - methylmalonyl-coa-pathway
 - dna-synthesis
-coaching_scope_notes: Coaches can educate on dietary sources, risk groups (vegans,
-  elderly, pregnant), and the importance of methylcobalamin form in supplements.
-clinician_scope_notes: Clinicians should assess for pernicious anemia, intrinsic factor
-  antibodies, and drug interactions (PPIs, metformin). Injection vs. oral dosing decisions
-  are clinical.
+coaching_scope_notes: Coaches can educate on dietary sources, risk groups (vegans, elderly, pregnant), and the importance
+  of methylcobalamin form in supplements.
+clinician_scope_notes: Clinicians should assess for pernicious anemia, intrinsic factor antibodies, and drug interactions
+  (PPIs, metformin). Injection vs. oral dosing decisions are clinical.
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Vitamin B12 section
-  quote: Vitamin B12 has many forms in which it is available including cyanocobalamin,
-    methylcobalamin, deoxyadenosylcobalamin and hydroxycobalamin.
+  quote: Vitamin B12 has many forms in which it is available including cyanocobalamin, methylcobalamin, deoxyadenosylcobalamin
+    and hydroxycobalamin.
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Vitamin B12'
-  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
-    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
-    anemia.
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood cells, support brain health, make DNA,
+    metabolize homocysteine, and prevent pernicious anemia.
 - id: vitaone-health-coaching-toolkit
   location: 'Food Sources: Vitamin B12'
-  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood
-    cells, support brain health, make DNA, metabolize homocysteine, and prevent pernicious
-    anemia.
+  quote: Vitamin B12 is a water-soluble nutrient required to make healthy red blood cells, support brain health, make DNA,
+    metabolize homocysteine, and prevent pernicious anemia.
 version: 1
 status: active
 updated_at: '2026-05-05'

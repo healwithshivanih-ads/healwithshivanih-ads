@@ -9,23 +9,23 @@ summary: The body's physiologic process of rendering chemicals, compounds, hormo
   through Phase I and Phase II liver enzyme pathways, with excretion via kidneys, intestines, and skin. The organs of detoxification
   include the liver, kidneys, large intestine, lymphatic system, and sweat glands.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
-- weight-gain
-- headaches
-- mood-disorders
-- cognitive-difficulties
+- unexplained-weight-gain
+- headache
+- mood-swings
+- poor-concentration
 red_flags:
 - tremors
 - suspected Parkinson's or Alzheimer's symptoms
 - signs of acute toxin poisoning
 related_topics:
-- liver-detox-food-plan
+- liver-detoxification
 - elimination-diet
 - toxic-body-burden
 - mold-mycotoxin-exposure
 key_mechanisms:
-- phase-i-cytochrome-p450
+- cyp450-phase-i-activation
 - phase-2-conjugation
 - gut-liver-axis
 coaching_scope_notes: Coaches can support dietary choices, elimination of toxin sources, hydration, fiber intake, and lifestyle

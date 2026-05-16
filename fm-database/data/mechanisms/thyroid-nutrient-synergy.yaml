@@ -35,8 +35,8 @@ downstream_effects:
 - thyroid-related-hair-loss
 - fetal-brain-development-concerns
 related_mechanisms:
-- oxidative-stress-and-inflammation
-- nutrient-dependent-energy-metabolism
+- oxidative-stress
+- mitochondrial-energy-production
 linked_to_topics:
 - thyroid
 - hair-loss

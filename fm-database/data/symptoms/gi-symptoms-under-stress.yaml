@@ -7,22 +7,20 @@ aliases:
 - gut issues with stress
 category: gi
 severity: common
-description: Digestive complaints — including impaired absorption, altered motility,
-  and gut microbiome changes — that arise or worsen in the context of chronic stress
-  and sympathetic activation.
-when_to_refer: Refer to gastroenterologist or functional medicine clinician if GI
-  symptoms are persistent, severe, or suggestive of IBS, IBD, or significant dysbiosis.
+description: Digestive complaints — including impaired absorption, altered motility, and gut microbiome changes — that arise
+  or worsen in the context of chronic stress and sympathetic activation.
+when_to_refer: Refer to gastroenterologist or functional medicine clinician if GI symptoms are persistent, severe, or suggestive
+  of IBS, IBD, or significant dysbiosis.
 linked_to_topics:
 - stress-nutrition-connection
 linked_to_mechanisms:
-- sympathetic-nervous-system-activation
-- gut-barrier-dysfunction
+- sympathetic-dominance
+- leaky-gut
 sources:
 - id: ask-expert-coaching-stress-kids
   location: Stress Client Topic Discussion
-  quote: I haven't really addressed the GI issue with her that could be affecting
-    you know that just that part of the the whole stress affecting her absorption
-    and nutrition and all that.
+  quote: I haven't really addressed the GI issue with her that could be affecting you know that just that part of the the
+    whole stress affecting her absorption and nutrition and all that.
 version: 1
 status: active
 updated_at: '2026-05-05'

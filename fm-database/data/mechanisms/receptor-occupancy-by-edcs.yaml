@@ -6,15 +6,14 @@ aliases:
 - cortisol receptor dominance
 - heavy metal receptor blockade
 category: endocrine
-summary: Environmental chemicals (BPA, PFAS, heavy metals like cadmium and lead) and
-  high cortisol from chronic stress can occupy hormone receptor binding pocket domains,
-  preventing endogenous and exogenous hormones from accessing their receptors. This
-  renders hormone therapy or endogenous production ineffective without addressing
-  receptor availability through detox and stress management.
+summary: Environmental chemicals (BPA, PFAS, heavy metals like cadmium and lead) and high cortisol from chronic stress can
+  occupy hormone receptor binding pocket domains, preventing endogenous and exogenous hormones from accessing their receptors.
+  This renders hormone therapy or endogenous production ineffective without addressing receptor availability through detox
+  and stress management.
 upstream_drivers:
 - environmental-edc-exposure
 - chronic-stress
-- high-cortisol
+- cortisol-elevation
 downstream_effects:
 - hormone-signaling-failure
 - hormonal-imbalance
@@ -29,10 +28,9 @@ evidence_tier: plausible_emerging
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: Receptor Occupancy and Endocrine Disruption
-  quote: if the binding pocket domains are filled with endocrine-disrupting compounds,
-    forever chemicals, bisphenol A, heavy metals, cadmium, and lead, and so forth,
-    and even the bully hormone cortisol... cortisol has the highest affinity for all
-    binding pocket domains than any other hormone.
+  quote: if the binding pocket domains are filled with endocrine-disrupting compounds, forever chemicals, bisphenol A, heavy
+    metals, cadmium, and lead, and so forth, and even the bully hormone cortisol... cortisol has the highest affinity for
+    all binding pocket domains than any other hormone.
 version: 1
 status: active
 updated_at: '2026-05-05'

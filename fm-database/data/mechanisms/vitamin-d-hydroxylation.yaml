@@ -8,21 +8,18 @@ aliases:
 - vitamin D calcium uptake
 - gut calcium transport
 category: metabolic
-summary: Inactive vitamin D (from sun, food, or supplements) is first converted in
-  the liver to 25-hydroxyvitamin D (calcidiol), then further converted in the kidneys
-  to the biologically active 1,25-dihydroxyvitamin D (calcitriol). The second step
-  is regulated by parathyroid hormone, vitamin D receptor proteins, and a negative
-  feedback loop from vitamin D itself.
+summary: Inactive vitamin D (from sun, food, or supplements) is first converted in the liver to 25-hydroxyvitamin D (calcidiol),
+  then further converted in the kidneys to the biologically active 1,25-dihydroxyvitamin D (calcitriol). The second step is
+  regulated by parathyroid hormone, vitamin D receptor proteins, and a negative feedback loop from vitamin D itself.
 upstream_drivers:
 - sun-uv-exposure
 - dietary-vitamin-d
 - parathyroid-hormone
 downstream_effects:
-- calcium-intestinal-absorption
+- vitamin-d-hydroxylation
 - bone-mineralisation
 - immune-modulation
 related_mechanisms:
-- calcium-intestinal-absorption
 - immunomodulation-via-vitamin-d
 linked_to_topics:
 - vitamin-d3
@@ -30,9 +27,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D Metabolism
-  quote: First, it goes into the liver where it is converted into 25-hydroxyvitamin
-    D or calcidiol. Eventually, this calcidiol goes into the kidney where it is converted
-    into calcidiol or 125-dihydroxyvitamin D.
+  quote: First, it goes into the liver where it is converted into 25-hydroxyvitamin D or calcidiol. Eventually, this calcidiol
+    goes into the kidney where it is converted into calcidiol or 125-dihydroxyvitamin D.
 version: 1
 status: active
 updated_at: '2026-05-05'

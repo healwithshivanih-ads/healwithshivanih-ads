@@ -1,14 +1,12 @@
 slug: nac-methylated-b-vitamins-support-estrogen-metabolism
-statement: N-acetyl-cysteine (NAC) and methylated B vitamins may support healthy estrogen
-  metabolism by supporting glutathione synthesis and methylation pathways.
+statement: N-acetyl-cysteine (NAC) and methylated B vitamins may support healthy estrogen metabolism by supporting glutathione
+  synthesis and methylation pathways.
 evidence_tier: fm_specific_thin
-rationale: Mentioned in the FMCN toolkit with qualifying language ('some evidence').
-  The mechanistic rationale (NAC → glutathione; methylated B vitamins → COMT methylation)
-  is biologically plausible but clinical RCT evidence specific to estrogen metabolism
+rationale: Mentioned in the FMCN toolkit with qualifying language ('some evidence'). The mechanistic rationale (NAC → glutathione;
+  methylated B vitamins → COMT methylation) is biologically plausible but clinical RCT evidence specific to estrogen metabolism
   is thin.
-coaching_translation: NAC and activated B vitamins (like methylfolate and methylcobalamin)
-  support the liver's ability to neutralize and clear estrogen — often used when someone
-  has genetic variants that slow this process.
+coaching_translation: NAC and activated B vitamins (like methylfolate and methylcobalamin) support the liver's ability to
+  neutralize and clear estrogen — often used when someone has genetic variants that slow this process.
 caveats:
 - Source notes 'some evidence' — thin peer-reviewed support
 - Dosing requires clinician guidance
@@ -17,14 +15,14 @@ out_of_scope_notes: Supplement dosing is out of coaching scope.
 linked_to_topics:
 - estrogen-metabolism
 linked_to_supplements:
-- nac-n-acetyl-cysteine
-- methylated-b-vitamins
+- nac
+- methylated-b-complex
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
-  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
-    B vitamins may support healthy estrogen metabolism as well.
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins may support healthy estrogen
+    metabolism as well.
 version: 1
 status: active
 updated_at: '2026-05-04'

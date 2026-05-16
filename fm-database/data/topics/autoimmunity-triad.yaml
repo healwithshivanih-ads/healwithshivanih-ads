@@ -8,7 +8,7 @@ summary: 'Autoimmunity is understood in functional medicine to require three con
   triggers (e.g., gluten, infections, dysbiosis) is a central therapeutic target.'
 common_symptoms:
 - elevated-ana
-- elevated-crp
+- elevated-hscrp
 - elevated-esr
 - intestinal-permeability-symptoms
 red_flags:
@@ -20,8 +20,8 @@ related_topics:
 - nutritional-deficiency-screening
 - metabolic-syndrome
 key_mechanisms:
-- intestinal-hyperpermeability
-- chronic-systemic-inflammation
+- leaky-gut
+- chronic-inflammation
 coaching_scope_notes: Coaches can support elimination diet adherence and anti-inflammatory dietary patterns. Autoimmune diagnosis,
   lab interpretation, and medication are out of scope.
 clinician_scope_notes: 'Assess ANA, P-ANCA, CRP, ESR. Address intestinal permeability with elimination diet. Identify triggers:

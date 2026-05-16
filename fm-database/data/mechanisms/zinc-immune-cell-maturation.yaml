@@ -4,9 +4,8 @@ aliases:
 - zinc immunomodulation
 - zinc lymphocyte maturation
 category: immune
-summary: Zinc is required for the production, maturation, and functional activity
-  of immune cells including T cells, B cells, neutrophils, and for cytokine production
-  that regulates inflammation. Deficiency compromises both innate and adaptive immunity.
+summary: Zinc is required for the production, maturation, and functional activity of immune cells including T cells, B cells,
+  neutrophils, and for cytokine production that regulates inflammation. Deficiency compromises both innate and adaptive immunity.
 upstream_drivers:
 - zinc-deficiency
 downstream_effects:
@@ -17,14 +16,13 @@ related_mechanisms:
 - zinc-antioxidant-activity
 - zinc-hcl-production-link
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 evidence_tier: strong
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Functions of Zinc
-  quote: Zinc is responsible for basically the formation, the maturation and managing
-    a lot of immune cells, beta cells, T cells, neutrophils inside the body, cytokine
-    production which manages the inflammation inside the body.
+  quote: Zinc is responsible for basically the formation, the maturation and managing a lot of immune cells, beta cells, T
+    cells, neutrophils inside the body, cytokine production which manages the inflammation inside the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

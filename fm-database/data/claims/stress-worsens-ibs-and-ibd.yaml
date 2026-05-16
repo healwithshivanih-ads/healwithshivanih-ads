@@ -1,17 +1,17 @@
 slug: stress-worsens-ibs-and-ibd
-statement: Stress is described as worsening gut motility, permeability, and inflammation
-  in IBS and IBD through reduced vagal tone and mast cell activation.
+statement: Stress is described as worsening gut motility, permeability, and inflammation in IBS and IBD through reduced vagal
+  tone and mast cell activation.
 evidence_tier: plausible_emerging
-rationale: The role of stress and vagal tone in IBS/IBD is supported by a credible
-  and growing body of research. Source is expert consensus without primary citations.
-coaching_translation: Breathwork, vagal activation practices, stress reduction, and
-  gut-supportive nutrition are key coaching tools for IBS clients.
+rationale: The role of stress and vagal tone in IBS/IBD is supported by a credible and growing body of research. Source is
+  expert consensus without primary citations.
+coaching_translation: Breathwork, vagal activation practices, stress reduction, and gut-supportive nutrition are key coaching
+  tools for IBS clients.
 caveats:
 - IBD diagnosis and medication are clinician-scope.
 - Source is expert consensus without direct citations.
 linked_to_topics:
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - chronic-inflammation
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -19,8 +19,8 @@ linked_to_supplements: []
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 11
-  quote: Stress is described as worsening gut motility, permeability, and inflammation
-    in IBS and IBD through reduced vagal tone and mast cell activation.
+  quote: Stress is described as worsening gut motility, permeability, and inflammation in IBS and IBD through reduced vagal
+    tone and mast cell activation.
 version: 1
 status: active
 updated_at: '2026-05-06'

@@ -1,33 +1,28 @@
 slug: gut-flora-disrupted-by-antibiotics-statins-painkillers
-statement: Antibiotics, statin drugs, and long-term painkiller use significantly disrupt
-  gut flora, compromising nutrient breakdown, absorption, immune protection, and driving
-  systemic inflammation and leaky gut.
+statement: Antibiotics, statin drugs, and long-term painkiller use significantly disrupt gut flora, compromising nutrient
+  breakdown, absorption, immune protection, and driving systemic inflammation and leaky gut.
 evidence_tier: plausible_emerging
-rationale: The impact of antibiotics on gut microbiota is well-established. Evidence
-  for statins and NSAIDs/analgesics on microbiome is emerging and plausible. The downstream
-  effects described (leaky gut, inflammation, nutrient malabsorption) are consistent
-  with the microbiome disruption literature.
-coaching_translation: Be aware that antibiotics, statins, and long-term painkillers
-  can significantly deplete your beneficial gut bacteria. If you've taken these, actively
-  support gut restoration through probiotics, fermented foods, and diverse fibre.
-out_of_scope_notes: Advising clients to stop statins or painkillers is outside coaching
-  scope. Any medication changes must be managed by a clinician.
+rationale: The impact of antibiotics on gut microbiota is well-established. Evidence for statins and NSAIDs/analgesics on
+  microbiome is emerging and plausible. The downstream effects described (leaky gut, inflammation, nutrient malabsorption)
+  are consistent with the microbiome disruption literature.
+coaching_translation: Be aware that antibiotics, statins, and long-term painkillers can significantly deplete your beneficial
+  gut bacteria. If you've taken these, actively support gut restoration through probiotics, fermented foods, and diverse fibre.
+out_of_scope_notes: Advising clients to stop statins or painkillers is outside coaching scope. Any medication changes must
+  be managed by a clinician.
 caveats:
 - Advising medication cessation (especially statins) is clinician scope only.
-- The specific claim about statins causing memory loss and Alzheimer's is contested;
-  coach should not relay this claim.
+- The specific claim about statins causing memory loss and Alzheimer's is contested; coach should not relay this claim.
 - Source is a practitioner talk.
 linked_to_topics:
 - gut-microbiome-and-gut-flora
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 linked_to_supplements:
 - probiotic-lactobacillus-acidophilus-bifidus
 linked_to_mechanisms: []
 sources:
 - id: barbara-oneil-gi-tract
   location: Gut Flora Disruptors Section
-  quote: Antibiotics break it down... long-term statin use, long-term painkillers.
-    Breaking down the gut flora.
+  quote: Antibiotics break it down... long-term statin use, long-term painkillers. Breaking down the gut flora.
 version: 1
 status: active
 updated_at: '2026-05-05'

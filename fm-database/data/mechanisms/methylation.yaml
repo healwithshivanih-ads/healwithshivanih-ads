@@ -6,9 +6,8 @@ aliases:
 - activated methyl cycle
 - methyl cycle
 category: metabolic
-summary: The methylation cycle converts homocysteine to methionine, which is then
-  activated to SAM (S-adenosylmethionine), the universal methyl donor for DNA, RNA,
-  protein, lipid methylation, neurotransmitter synthesis (dopamine, serotonin), and
+summary: The methylation cycle converts homocysteine to methionine, which is then activated to SAM (S-adenosylmethionine),
+  the universal methyl donor for DNA, RNA, protein, lipid methylation, neurotransmitter synthesis (dopamine, serotonin), and
   myelin production. Requires folate, B12, B6, and B2 as cofactors.
 upstream_drivers:
 - adequate-folate
@@ -18,23 +17,21 @@ downstream_effects:
 - dna-methylation
 - neurotransmitter-synthesis
 - myelin-production
-- glutathione-synthesis
+- nrf2-pathway-activation
 related_mechanisms:
 - mthfr-enzyme-dysfunction
-- impaired-homocysteine-remethylation
-- sam-cycle
+- homocysteine-metabolism
+- methylation-cycle
 linked_to_topics:
-- methylation
-- folate-vitamin-b9
+- folate-nutrition
 - vitamin-b12
 - mthfr-gene-variant
 evidence_tier: strong
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / SAM section
-  quote: SAM is very necessary for the methylation of various biochemical reactions
-    in the body, including the myelin production. Now it is also necessary for the
-    production of some very important neurotransmitters like dopamine and serotonin.
+  quote: SAM is very necessary for the methylation of various biochemical reactions in the body, including the myelin production.
+    Now it is also necessary for the production of some very important neurotransmitters like dopamine and serotonin.
 version: 1
 status: active
 updated_at: '2026-05-05'

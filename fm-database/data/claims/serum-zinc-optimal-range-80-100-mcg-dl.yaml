@@ -1,26 +1,25 @@
 slug: serum-zinc-optimal-range-80-100-mcg-dl
-statement: The optimal serum zinc level in both males and females is approximately
-  80–100 mcg/dL; levels below this range indicate zinc deficiency.
+statement: The optimal serum zinc level in both males and females is approximately 80–100 mcg/dL; levels below this range
+  indicate zinc deficiency.
 evidence_tier: confirm_with_clinician
-rationale: Lab reference ranges and optimal values require clinician interpretation
-  and vary by laboratory. This falls outside coaching scope.
-coaching_translation: Your doctor can check your zinc levels with a blood test. Optimal
-  levels are generally considered to be between 80 and 100 mcg/dL.
-out_of_scope_notes: Interpreting serum zinc labs and determining deficiency severity
-  is outside the scope of health coaching and requires a clinician.
+rationale: Lab reference ranges and optimal values require clinician interpretation and vary by laboratory. This falls outside
+  coaching scope.
+coaching_translation: Your doctor can check your zinc levels with a blood test. Optimal levels are generally considered to
+  be between 80 and 100 mcg/dL.
+out_of_scope_notes: Interpreting serum zinc labs and determining deficiency severity is outside the scope of health coaching
+  and requires a clinician.
 caveats:
-- Serum zinc does not always reflect tissue zinc status. Alkaline phosphatase is noted
-  as an additional sensitive marker. Lab interpretation requires clinician.
+- Serum zinc does not always reflect tissue zinc status. Alkaline phosphatase is noted as an additional sensitive marker.
+  Lab interpretation requires clinician.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Diagnosis
-  quote: The optimal value in a male and female should be around 80 to 100 microgram
-    per dl for zinc. There's also another sensitive marker which diagnoses zinc deficiency
-    is alkaline phosphatase.
+  quote: The optimal value in a male and female should be around 80 to 100 microgram per dl for zinc. There's also another
+    sensitive marker which diagnoses zinc deficiency is alkaline phosphatase.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -12,24 +12,20 @@ aliases:
 - neck fullness
 category: constitutional
 severity: concerning
-description: Enlargement of the thyroid gland visible or palpable at the base of the
-  neck, often with a feeling of fullness or pressure. Can be accompanied by difficulty
-  swallowing.
-when_to_refer: Always refer for clinician evaluation; may indicate significant thyroid
-  pathology, nodules, or cancer requiring imaging and/or biopsy.
+description: Enlargement of the thyroid gland visible or palpable at the base of the neck, often with a feeling of fullness
+  or pressure. Can be accompanied by difficulty swallowing.
+when_to_refer: Always refer for clinician evaluation; may indicate significant thyroid pathology, nodules, or cancer requiring
+  imaging and/or biopsy.
 linked_to_topics:
 - hypothyroidism
-- hashimotos-thyroiditis
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - thyroid-dysfunction
 linked_to_mechanisms:
 - thyroid-autoimmunity
-- autoimmune-thyroid-attack
 sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 5: Other Pathologies'
-  quote: Goiter- Enlargement of the thyroid gland, often due to iodine deficiency
-    or autoimmune disease.
+  quote: Goiter- Enlargement of the thyroid gland, often due to iodine deficiency or autoimmune disease.
 - id: vitaone-thyroid-toolkit
   location: Symptoms of Hashimoto's Hypothyroidism
   quote: Goiter (enlarged thyroid gland)

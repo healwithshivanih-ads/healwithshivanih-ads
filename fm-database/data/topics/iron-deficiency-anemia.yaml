@@ -9,18 +9,18 @@ summary: Iron deficiency anemia is the most common nutritional anemia, resulting
   chronic blood loss. Diagnosis relies on primary markers (RBC, hemoglobin, hematocrit), secondary markers (MCV, MCH, MCHC
   — all low in IDA), and an iron panel (serum iron, ferritin, transferrin, TIBC, UIBC, transferrin saturation).
 common_symptoms:
-- fatigue
+- lethargy
 - pale-skin
 - hair-loss
-- brittle-nails
+- dry-skin
 - shortness-of-breath
-- recurrent-headaches
+- headache
 - mouth-ulcers
 - restless-legs
 - cold-intolerance
 - pica
 - brain-fog
-- recurrent-infections
+- autoimmune-flares-low-immunity
 - sore-tongue
 red_flags:
 - hemoglobin below 9 in adults
@@ -33,7 +33,6 @@ related_topics:
 - autoimmune
 - malabsorption-syndrome
 key_mechanisms:
-- low-stomach-acid-iron-absorption
 - heme-vs-nonheme-iron-absorption
 - ferritin-storage-depletion
 coaching_scope_notes: Coaches can support dietary iron optimisation, discuss heme vs. non-heme iron sources, and support supplement

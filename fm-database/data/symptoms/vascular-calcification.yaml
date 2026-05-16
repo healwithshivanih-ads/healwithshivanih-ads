@@ -6,22 +6,20 @@ aliases:
 - atherosclerotic calcification
 category: cardiovascular
 severity: red_flag
-description: Abnormal calcium deposition in blood vessel walls or kidneys, driven
-  by insufficient Matrix GLA Protein (MGP) activity due to vitamin K2 deficiency.
-  Associated with increased atherosclerosis and cardiovascular disease risk.
-when_to_refer: Refer if client has known coronary artery disease, calcification on
-  imaging, or significant cardiovascular risk factors.
+description: Abnormal calcium deposition in blood vessel walls or kidneys, driven by insufficient Matrix GLA Protein (MGP)
+  activity due to vitamin K2 deficiency. Associated with increased atherosclerosis and cardiovascular disease risk.
+when_to_refer: Refer if client has known coronary artery disease, calcification on imaging, or significant cardiovascular
+  risk factors.
 linked_to_topics:
 - vitamin-k2
 - vitamin-d3-k2-synergy
 linked_to_mechanisms:
-- matrix-gla-protein-activation
+- vitamin-k2-calcium-trafficking
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin K2 Functions
-  quote: vitamin K activates a protein which is called as GLA protein. This protein
-    is responsible that calcium doesn't deposit inside the blood vessels or the kidney,
-    but it gets mobilized and mineralized in the bone.
+  quote: vitamin K activates a protein which is called as GLA protein. This protein is responsible that calcium doesn't deposit
+    inside the blood vessels or the kidney, but it gets mobilized and mineralized in the bone.
 version: 1
 status: active
 updated_at: '2026-05-05'

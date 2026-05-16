@@ -6,17 +6,16 @@ aliases:
 - unexplained infertility
 category: hormonal
 severity: concerning
-description: Inability to conceive a first pregnancy, in this case in the context
-  of endometriosis, hormonal imbalance, and immune dysregulation affecting reproductive
-  function.
-when_to_refer: Always refer to reproductive medicine specialist. Functional medicine
-  approaches are complementary, not primary treatment for infertility.
+description: Inability to conceive a first pregnancy, in this case in the context of endometriosis, hormonal imbalance, and
+  immune dysregulation affecting reproductive function.
+when_to_refer: Always refer to reproductive medicine specialist. Functional medicine approaches are complementary, not primary
+  treatment for infertility.
 linked_to_topics:
 - endometriosis
 - estrogen-dominance
 - gut-skin-hormone-axis
 linked_to_mechanisms:
-- estrogen-recirculation-via-beta-glucuronidase
+- estrogen-enterohepatic-recirculation
 - gut-immune-dysregulation
 sources:
 - id: coconote-fm-gut-skin-hormone-axis

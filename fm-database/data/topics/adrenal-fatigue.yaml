@@ -11,18 +11,17 @@ aliases:
 - adrenal-cortisol-resilience
 - HPA axis
 - stress physiology
-summary: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis
-  overload, burnout, low resilience, and adrenal support strategies. Not a conventional
-  medical diagnosis.
+summary: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis overload, burnout, low resilience, and
+  adrenal support strategies. Not a conventional medical diagnosis.
 common_symptoms:
-- fatigue
-- low-blood-pressure
-- salt-craving
+- lethargy
+- dizziness-on-standing
+- craving-salt
 - anxiety
-- poor-sleep
+- sleep-disruption
 - brain-fog
 - low-libido
-- central-weight-gain
+- increased-waist-circumference
 red_flags:
 - Addison's-like symptoms (severe low BP, salt craving with dehydration)
 - severe fatigue unresponsive to lifestyle
@@ -30,35 +29,32 @@ red_flags:
 - acute adrenal insufficiency signs
 related_topics:
 - chronic-stress
-- hpa-axis
+- hpa-axis-dysregulation
 - insulin-resistance
 - thyroid
 - depression-like-symptoms
 - sleep
 key_mechanisms:
-- hpa-axis-overactivation
-- cortisol-dhea-imbalance
+- cortisol-elevation
+- hpa-axis-dysregulation
 - anti-stress-hormone-restoration
-coaching_scope_notes: Coach can support sleep regularity, morning sunlight, digital
-  boundaries, stress awareness, food quality, protein/fiber balance, breathwork, and
-  community connection. Avoid framing as a medical diagnosis.
-clinician_scope_notes: Cortisol testing, DHEA-S interpretation, hormone replacement,
-  DUTCH test interpretation, and ruling out Addison's disease or Cushing's are clinician-scope
-  items.
+coaching_scope_notes: Coach can support sleep regularity, morning sunlight, digital boundaries, stress awareness, food quality,
+  protein/fiber balance, breathwork, and community connection. Avoid framing as a medical diagnosis.
+clinician_scope_notes: Cortisol testing, DHEA-S interpretation, hormone replacement, DUTCH test interpretation, and ruling
+  out Addison's disease or Cushing's are clinician-scope items.
 evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis
-    overload, burnout, low resilience, and adrenal support strategies.
+  quote: Functional medicine framing of cortisol dysregulation, low DHEA, HPA-axis overload, burnout, low resilience, and
+    adrenal support strategies.
 - id: vitaone-adrenal-cheatsheet
   location: How Chronic Stress, Anger, or Grief Translate into Physical Diseases (p.10)
-  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression,
-    altered glucose metabolism
+  quote: Persistent HPA activation → ↑ Cortisol, ↓ DHEA → Mitochondrial suppression, altered glucose metabolism
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
-  quote: The true antidote to stress lies in rebuilding anti-stress hormones - DHEA,
-    progesterone, oxytocin, melatonin, serotonin, and growth hormone.
+  quote: The true antidote to stress lies in rebuilding anti-stress hormones - DHEA, progesterone, oxytocin, melatonin, serotonin,
+    and growth hormone.
 version: 1
 status: active
 updated_at: '2026-05-06'

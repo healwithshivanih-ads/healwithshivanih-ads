@@ -1,12 +1,10 @@
 slug: omega-3-shifts-vaginal-microbiome-to-crispatus
-statement: Omega-3 fatty acid supplementation shifts the vaginal microbiome to favor
-  Lactobacillus crispatus.
+statement: Omega-3 fatty acid supplementation shifts the vaginal microbiome to favor Lactobacillus crispatus.
 evidence_tier: plausible_emerging
-rationale: Dr. Davis states that omega-3s play a 'big role in the vaginal microbiome'
-  and shifts it toward crispatus. This is mechanistically plausible via anti-inflammatory
-  and epithelial modulation effects, but no specific studies are cited.
-coaching_translation: Taking fish oil (both EPA and DHA) can help support the growth
-  of beneficial vaginal bacteria like L. crispatus.
+rationale: Dr. Davis states that omega-3s play a 'big role in the vaginal microbiome' and shifts it toward crispatus. This
+  is mechanistically plausible via anti-inflammatory and epithelial modulation effects, but no specific studies are cited.
+coaching_translation: Taking fish oil (both EPA and DHA) can help support the growth of beneficial vaginal bacteria like L.
+  crispatus.
 caveats:
 - No specific studies cited.
 - Source is expert_consensus interview.
@@ -14,15 +12,14 @@ caveats:
 linked_to_topics:
 - vaginal-microbiome
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Omega-3 and vaginal microbiome discussion
-  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a
-    woman takes omega-3s during pregnancy, the likelihood of premature labor drops
-    precipitously.
+  quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a woman takes omega-3s during pregnancy,
+    the likelihood of premature labor drops precipitously.
 version: 1
 status: active
 updated_at: '2026-05-05'

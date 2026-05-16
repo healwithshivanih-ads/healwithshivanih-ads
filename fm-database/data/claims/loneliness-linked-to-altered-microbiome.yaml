@@ -1,18 +1,15 @@
 slug: loneliness-linked-to-altered-microbiome
-statement: Isolation-induced dysbiosis is described as contributing to leaky gut,
-  altered serotonin synthesis, and mood changes.
+statement: Isolation-induced dysbiosis is described as contributing to leaky gut, altered serotonin synthesis, and mood changes.
 evidence_tier: fm_specific_thin
-rationale: Loneliness and microbiome changes are an emerging research area; the direct
-  leaky gut and serotonin synthesis pathway from loneliness is more FM-specific. Source
-  is expert consensus without primary citations.
-coaching_translation: Gut-supportive nutrition and social prescribing may work synergistically
-  for mood and gut health.
+rationale: Loneliness and microbiome changes are an emerging research area; the direct leaky gut and serotonin synthesis pathway
+  from loneliness is more FM-specific. Source is expert consensus without primary citations.
+coaching_translation: Gut-supportive nutrition and social prescribing may work synergistically for mood and gut health.
 caveats:
 - Source is expert consensus without direct citations.
 - Thin direct peer-reviewed evidence.
 linked_to_topics:
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - depression-like-symptoms
 linked_to_supplements:
 - probiotics
@@ -21,8 +18,7 @@ linked_to_mechanisms: []
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 19
-  quote: Isolation-induced dysbiosis is described as contributing to leaky gut, altered
-    serotonin synthesis, and mood changes.
+  quote: Isolation-induced dysbiosis is described as contributing to leaky gut, altered serotonin synthesis, and mood changes.
 version: 1
 status: active
 updated_at: '2026-05-06'

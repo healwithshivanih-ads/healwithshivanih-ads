@@ -9,13 +9,12 @@ aliases:
 - autoimmune thyroiditis
 - chronic lymphocytic thyroiditis
 - hashimotos-thyroiditis
-summary: Autoimmune attack on thyroid tissue driven by anti-thyroid antibodies and
-  chronic inflammation, leading to progressive hypothyroidism. LDN is proposed to
-  reduce inflammation, lower anti-thyroid antibody levels, and improve T4→T3 conversion.
+summary: Autoimmune attack on thyroid tissue driven by anti-thyroid antibodies and chronic inflammation, leading to progressive
+  hypothyroidism. LDN is proposed to reduce inflammation, lower anti-thyroid antibody levels, and improve T4→T3 conversion.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
-- weight-gain
+- unexplained-weight-gain
 - cold-intolerance
 red_flags:
 - rapidly-rising-tsh
@@ -25,32 +24,29 @@ related_topics:
 - low-dose-naltrexone
 key_mechanisms:
 - endorphin-immune-modulation
-- opioid-rebound-upregulation
-coaching_scope_notes: Coaches may support lifestyle and dietary factors. LDN prescribing
-  and thyroid hormone monitoring are clinician scope.
-clinician_scope_notes: LDN may reduce anti-thyroid antibodies and inflammation. Monitor
-  thyroid hormone levels closely as thyroid dose requirements may change with LDN.
+- ldn-endorphin-rebound
+coaching_scope_notes: Coaches may support lifestyle and dietary factors. LDN prescribing and thyroid hormone monitoring are
+  clinician scope.
+clinician_scope_notes: LDN may reduce anti-thyroid antibodies and inflammation. Monitor thyroid hormone levels closely as
+  thyroid dose requirements may change with LDN.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-ldn-article
   location: LDN and Autoimmune Thyroiditis (AIT)
-  quote: 'Likely MOI Thyroiditis: Reduce overall inflammation, Reduce levels of anti-thyroid
-    antibodies, Improve thyroid transport into cells, Increase T4 to T3 conversion,
-    Reduce T4 to reverse T3 conversion.'
+  quote: 'Likely MOI Thyroiditis: Reduce overall inflammation, Reduce levels of anti-thyroid antibodies, Improve thyroid transport
+    into cells, Increase T4 to T3 conversion, Reduce T4 to reverse T3 conversion.'
 - id: vitaone-thyroid-toolkit
   location: Understanding Hashimoto's Hypothyroidism
-  quote: In Hashimoto's disease, the immune system produces antibodies that attack
-    the thyroid gland, specifically targeting thyroid peroxidase (TPO) and thyroglobulin
-    (Tg), which are essential for thyroid hormone production.
+  quote: In Hashimoto's disease, the immune system produces antibodies that attack the thyroid gland, specifically targeting
+    thyroid peroxidase (TPO) and thyroglobulin (Tg), which are essential for thyroid hormone production.
 - id: vitaone-health-coaching-toolkit
   location: Understanding Hashimoto's Hypothyroidism — What is Hashimoto's Hypothyroidism?
-  quote: Hashimoto's hypothyroidism, also known simply as Hashimoto's disease, is
-    an autoimmune disorder in which the immune system mistakenly attacks the thyroid
-    gland, leading to chronic inflammation & gradual destruction of thyroid tissue.
+  quote: Hashimoto's hypothyroidism, also known simply as Hashimoto's disease, is an autoimmune disorder in which the immune
+    system mistakenly attacks the thyroid gland, leading to chronic inflammation & gradual destruction of thyroid tissue.
 - id: vitaone-thyroid-ebook
   location: 'Chapter 6: Causes of Thyroid Disorders'
-  quote: Hashimoto's is an autoimmune condition where the immune system produces antibodies
-    like Anti-TPO (thyroid peroxidase) and Anti-Tg (thyroglobulin).
+  quote: Hashimoto's is an autoimmune condition where the immune system produces antibodies like Anti-TPO (thyroid peroxidase)
+    and Anti-Tg (thyroglobulin).
 version: 1
 status: active
 updated_at: '2026-05-02'

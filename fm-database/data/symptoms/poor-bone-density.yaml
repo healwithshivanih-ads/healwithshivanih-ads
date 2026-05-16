@@ -9,11 +9,9 @@ aliases:
 - reduced bone mineralisation
 category: musculoskeletal
 severity: concerning
-description: Reduced bone mineral density resulting from inadequate calcium mineralisation,
-  often linked to deficiencies in vitamin D3 and/or vitamin K2 impairing osteocalcin
-  activation and calcium absorption.
-when_to_refer: Refer if DEXA scan is indicated or if client reports fractures from
-  minimal trauma (osteoporosis).
+description: Reduced bone mineral density resulting from inadequate calcium mineralisation, often linked to deficiencies in
+  vitamin D3 and/or vitamin K2 impairing osteocalcin activation and calcium absorption.
+when_to_refer: Refer if DEXA scan is indicated or if client reports fractures from minimal trauma (osteoporosis).
 linked_to_topics:
 - calcium-deficiency
 - calcium-metabolism
@@ -23,16 +21,15 @@ linked_to_topics:
 linked_to_mechanisms:
 - pth-calcium-regulation
 - osteocalcin-activation
-- calcium-intestinal-absorption
+- vitamin-d-hydroxylation
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Calcium Physiology Introduction
-  quote: 99% of calcium is actually stored in bones and teeth and which act as a significant
-    reservoir
+  quote: 99% of calcium is actually stored in bones and teeth and which act as a significant reservoir
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D + K2 Synergy Section
-  quote: vitamin K2 helps in the mineralization of the calcium into the bones and
-    the teeth. Thus, a synergy of both is required for the optimal functioning.
+  quote: vitamin K2 helps in the mineralization of the calcium into the bones and the teeth. Thus, a synergy of both is required
+    for the optimal functioning.
 version: 2
 status: active
 updated_at: '2026-05-05'

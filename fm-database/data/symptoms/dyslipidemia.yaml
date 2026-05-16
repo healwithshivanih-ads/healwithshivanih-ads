@@ -10,27 +10,24 @@ aliases:
 - abnormal lipids
 category: metabolic
 severity: common
-description: Abnormal lipid profile including elevated total cholesterol, LDL, VLDL,
-  or triglycerides, and/or reduced HDL. Often asymptomatic but a key cardiovascular
-  risk marker.
-when_to_refer: Refer if LDL >190 (possible familial hypercholesterolemia), or if patient
-  has a prior cardiovascular event.
+description: Abnormal lipid profile including elevated total cholesterol, LDL, VLDL, or triglycerides, and/or reduced HDL.
+  Often asymptomatic but a key cardiovascular risk marker.
+when_to_refer: Refer if LDL >190 (possible familial hypercholesterolemia), or if patient has a prior cardiovascular event.
 linked_to_topics:
-- dyslipidemia-management
+- dyslipidemia
 - cardiovascular-risk-assessment
 - ldl-particle-size-and-number
 linked_to_mechanisms:
 - insulin-resistance
-- small-dense-ldl-endothelial-penetration
+- small-dense-ldl-atherogenesis
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Cholesterol profile overview
-  quote: You see many patients who either came to the pipe cholesterol or either they
-    come to you or they are already taking the statin drug.
+  quote: You see many patients who either came to the pipe cholesterol or either they come to you or they are already taking
+    the statin drug.
 - id: vitaone-cardiometabolic-recipes
   location: Lemony Steamed Fish
-  quote: 1 small fish (like sardine, mackerel, or a fillet of salmon/herring — about
-    100–120g)
+  quote: 1 small fish (like sardine, mackerel, or a fillet of salmon/herring — about 100–120g)
 version: 1
 status: active
 updated_at: '2026-05-05'

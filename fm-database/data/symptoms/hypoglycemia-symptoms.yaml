@@ -12,28 +12,21 @@ aliases:
 - symptoms relieved by eating
 category: metabolic
 severity: common
-description: Dizziness, irritability, or sleepiness when going without food for 4–5
-  hours, with symptoms relieved by eating. Associated with low cortisol state and
-  impaired gluconeogenesis.
-when_to_refer: If symptoms are severe or occur frequently, refer for glucose tolerance
-  and cortisol testing.
+description: Dizziness, irritability, or sleepiness when going without food for 4–5 hours, with symptoms relieved by eating.
+  Associated with low cortisol state and impaired gluconeogenesis.
+when_to_refer: If symptoms are severe or occur frequently, refer for glucose tolerance and cortisol testing.
 linked_to_topics:
 - hpa-axis-dysregulation
-- hpa-axis-dysfunction
 - hypercortisolism
 linked_to_mechanisms:
-- cortisol-excess
 - hpa-axis-dysregulation
-- cortisol-dhea-imbalance
 sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
-  quote: 'Hypoglycemia: dizzy, irritable, or sleepy if you go without food for 4-5
-    hours; symptoms relieved by food'
+  quote: 'Hypoglycemia: dizzy, irritable, or sleepy if you go without food for 4-5 hours; symptoms relieved by food'
 - id: vitaone-health-coaching-toolkit
   location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
-  quote: 'Hypoglycemia: dizzy, irritable, or sleepy if you go without food for 4-5
-    hours; symptoms relieved by food.'
+  quote: 'Hypoglycemia: dizzy, irritable, or sleepy if you go without food for 4-5 hours; symptoms relieved by food.'
 version: 2
 status: active
 updated_at: '2026-05-04'

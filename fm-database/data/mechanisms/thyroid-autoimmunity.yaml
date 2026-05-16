@@ -15,9 +15,8 @@ aliases:
 - TPO antibody elevation
 - molecular mimicry thyroid
 category: immune
-summary: The immune system produces antibodies (Anti-TPO, Anti-Tg) against thyroid
-  tissue components. T-cells (helper, cytotoxic, regulatory) mediate actual destruction.
-  Triggered by leaky gut, molecular mimicry, infections, and genetic predisposition.
+summary: The immune system produces antibodies (Anti-TPO, Anti-Tg) against thyroid tissue components. T-cells (helper, cytotoxic,
+  regulatory) mediate actual destruction. Triggered by leaky gut, molecular mimicry, infections, and genetic predisposition.
   Degree of destruction depends on T-cell activity, not antibody levels alone.
 upstream_drivers:
 - leaky-gut
@@ -34,25 +33,23 @@ related_mechanisms:
 - molecular-mimicry
 - chronic-inflammation
 linked_to_topics:
-- hashimotos-thyroiditis
+- autoimmune-thyroiditis
 - hyperthyroidism
 - hypothyroidism
 evidence_tier: strong
 sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 6: Causes of Thyroid Disorders'
-  quote: Autoimmunity occurs when the immune system mistakenly identifies the body's
-    own tissues as threats and begins to attack them.
+  quote: Autoimmunity occurs when the immune system mistakenly identifies the body's own tissues as threats and begins to
+    attack them.
 - id: vitaone-thyroid-toolkit
   location: Understanding Hashimoto's Hypothyroidism
-  quote: In Hashimoto's disease, the immune system produces antibodies that attack
-    the thyroid gland, specifically targeting thyroid peroxidase (TPO) and thyroglobulin
-    (Tg), which are essential for thyroid hormone production.
+  quote: In Hashimoto's disease, the immune system produces antibodies that attack the thyroid gland, specifically targeting
+    thyroid peroxidase (TPO) and thyroglobulin (Tg), which are essential for thyroid hormone production.
 - id: vitaone-health-coaching-toolkit
   location: Understanding Hashimoto's Hypothyroidism — What is Hashimoto's Hypothyroidism?
-  quote: In Hashimoto's disease, the immune system produces antibodies that attack
-    the thyroid gland, specifically targeting thyroid peroxidase (TPO) and thyroglobulin
-    (Tg), which are essential for thyroid hormone production.
+  quote: In Hashimoto's disease, the immune system produces antibodies that attack the thyroid gland, specifically targeting
+    thyroid peroxidase (TPO) and thyroglobulin (Tg), which are essential for thyroid hormone production.
 - id: vitaone-thyroid-cheatsheet
   location: Thyroid Disorders Cheatsheet — Anti-TPO row
   quote: Leaky gut, gluten sensitivity, molecular mimicry, toxins

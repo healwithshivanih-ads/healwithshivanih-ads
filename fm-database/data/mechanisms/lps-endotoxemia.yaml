@@ -26,10 +26,9 @@ summary: When gram-negative bacteria cross a disrupted intestinal barrier, their
   metabolic dysfunction.
 upstream_drivers:
 - leaky-gut
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - high-fat-high-sugar-diet
-- intestinal-barrier-dysfunction
-- beta-glucuronidase-activity
+- estrogen-enterohepatic-recirculation
 downstream_effects:
 - nf-kb-activation
 - systemic-inflammation
@@ -40,15 +39,13 @@ downstream_effects:
 - autoimmunity
 related_mechanisms:
 - leaky-gut
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - nf-kb-activation
-- intestinal-barrier-dysfunction
 linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
-- leaky-gut
-- sibo
 - autoimmunity-leaky-gut-triad
+- sibo
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-cheatsheet

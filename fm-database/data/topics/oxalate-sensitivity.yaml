@@ -4,13 +4,11 @@ aliases:
 - dietary oxalate intolerance
 - hyperoxaluria
 - oxalate intolerance
-summary: Condition in which dietary oxalates — naturally occurring molecules in many
-  plant foods — accumulate due to impaired elimination, leading to kidney stones,
-  urinary symptoms, or other systemic effects. Soaking and cooking reduce oxalate
-  levels.
+summary: Condition in which dietary oxalates — naturally occurring molecules in many plant foods — accumulate due to impaired
+  elimination, leading to kidney stones, urinary symptoms, or other systemic effects. Soaking and cooking reduce oxalate levels.
 common_symptoms:
 - kidney-stones
-- burning-sensation
+- numbness-tingling
 - abdominal-pain
 - muscle-weakness
 - diarrhea
@@ -28,21 +26,19 @@ key_mechanisms:
 - oxalate-accumulation
 - renal-oxalate-excretion
 - oxalate-renal-accumulation
-coaching_scope_notes: Coaches can guide low-oxalate food choices and preparation methods
-  (soaking, cooking). Kidney disease management requires clinician oversight.
+coaching_scope_notes: Coaches can guide low-oxalate food choices and preparation methods (soaking, cooking). Kidney disease
+  management requires clinician oversight.
 evidence_tier: strong
 clinician_scope_notes: Monitor urinary oxalate and renal function in high-risk patients.
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: Oxalate Food Triggers
-  quote: Oxalates are naturally occurring molecules found in plants and in the human
-    body. Because the body cannot process oxalates, they are usually eliminated through
-    the stool and urine.
+  quote: Oxalates are naturally occurring molecules found in plants and in the human body. Because the body cannot process
+    oxalates, they are usually eliminated through the stool and urine.
 - id: vitaone-health-coaching-toolkit
   location: Oxalate Food Triggers
-  quote: Because the body cannot process oxalates, they are usually eliminated through
-    the stool and urine. However, certain health conditions (like a predisposition
-    to kidney stones) or a sensitivity may mean that oxalates should be limited or
+  quote: Because the body cannot process oxalates, they are usually eliminated through the stool and urine. However, certain
+    health conditions (like a predisposition to kidney stones) or a sensitivity may mean that oxalates should be limited or
     avoided.
 version: 2
 status: active

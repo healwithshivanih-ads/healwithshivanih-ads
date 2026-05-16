@@ -18,18 +18,16 @@ timing_options:
 - with_lunch
 - morning
 take_with_food: required
-notes_for_coach: VitaOne-branded vitamin D3. Stub entry — refine forms / typical
-  dose ranges when full product details are confirmed. Standard FM target serum
-  60–80 ng/mL, typically 2000–5000 IU daily with fat-containing meal. Vegan
-  clients need lichen-derived D3 (not lanolin).
+notes_for_coach: VitaOne-branded vitamin D3. Stub entry — refine forms / typical dose ranges when full product details are
+  confirmed. Standard FM target serum 60–80 ng/mL, typically 2000–5000 IU daily with fat-containing meal. Vegan clients need
+  lichen-derived D3 (not lanolin).
 evidence_tier: strong
 linked_to_topics:
-- vitamin-d-deficiency
+- vitamin-d3
 sources:
 - id: vitaone-product-catalog
   location: vitaone.in/shop product page
-  quote: Stub catalogue entry — VitaOne-branded product. Refine when full
-    product details are parsed via scripts/vitaone-scrape.py.
+  quote: Stub catalogue entry — VitaOne-branded product. Refine when full product details are parsed via scripts/vitaone-scrape.py.
 status: active
 version: 1
 updated_at: '2026-05-09'

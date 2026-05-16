@@ -20,25 +20,23 @@ summary: SIBO occurs when colonic fecal microbes (e.g., E. coli, Klebsiella, Pse
 common_symptoms:
 - constant-bloating
 - bloating-within-30-60-min-of-meals
-- distension
+- bloating
 - diarrhea-or-constipation
 - flatulence
 - brain-fog
-- bloating
 - abdominal-gas
 - abdominal-cramping
 - osmotic-diarrhea
-- acid-reflux
+- acid-reflux-heartburn
 - digestive-discomfort
 - food-sensitivities
 - abdominal-distension
 - diarrhea
 - constipation
 - abdominal-pain
-- fatigue
-- depression
+- lethargy
+- low-mood
 - acne
-- multiple-food-sensitivities
 - fat-malabsorption
 - vitamin-deficiency
 - joint-pain
@@ -46,10 +44,10 @@ common_symptoms:
 red_flags:
 - significant B12 deficiency
 - severe malabsorption
-- weight loss
+- weight-loss
 - Severe malnutrition or malabsorption
 - Structural GI abnormality on imaging
-- unintentional weight loss
+- unintentional-weight-loss
 - malabsorption syndrome
 - progressive multiple food sensitivities
 - autoimmune conditions co-occurring with chronic GI dysfunction
@@ -60,12 +58,11 @@ red_flags:
 related_topics:
 - gut-dysbiosis
 - hypochlorhydria
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - ibs
 - low-fodmap-diet
 - low-stomach-acid
 - sifo
-- autoimmunity-leaky-gut-triad
 - gut-brain-axis-dysfunction
 - ibd
 - hashimoto-thyroiditis
@@ -75,15 +72,13 @@ related_topics:
 - endotoxemia
 key_mechanisms:
 - bacterial-fermentation-carbs
-- impaired-gut-motility
+- altered-gi-motility
 - leaky-gut
-- gut-fermentation-dysbiosis
-- gut-dysbiosis-microbiome-imbalance
+- colonic-fermentation
+- dysbiosis-gut-microbiome-imbalance
 - low-stomach-acid
-- gut-brain-axis-dysregulation
-- intestinal-barrier-dysfunction
-- gut-dysbiosis
-- endotoxemia
+- gut-brain-axis-disruption
+- lps-endotoxemia
 - lipopolysaccharide-shedding
 - gut-barrier-disruption
 coaching_scope_notes: Coaches can support clients with SIBO-focused probiotic yogurt protocols (L. reuteri, L. gasseri, B.

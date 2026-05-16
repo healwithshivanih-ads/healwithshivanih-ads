@@ -8,13 +8,11 @@ aliases:
 - ox-LDL NF-kB pathway
 - damaged LDL pro-inflammatory cascade
 category: metabolic
-summary: When LDL particles enter the subendothelial space and encounter an imbalance
-  between antioxidants and oxidants, they become oxidized. Oxidized LDL is recognized
-  as foreign by the immune system, triggering macrophage engulfment, foam cell formation,
-  and the inflammatory cascade that drives plaque development.
+summary: When LDL particles enter the subendothelial space and encounter an imbalance between antioxidants and oxidants, they
+  become oxidized. Oxidized LDL is recognized as foreign by the immune system, triggering macrophage engulfment, foam cell
+  formation, and the inflammatory cascade that drives plaque development.
 upstream_drivers:
 - endothelial-dysfunction
-- antioxidant-deficiency
 - oxidative-stress
 downstream_effects:
 - macrophage-infiltration
@@ -30,13 +28,11 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Atherosclerosis mechanism section
-  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles
-    become oxidized and when they become oxidized now it becomes a foreign particle
-    for the immune system.
+  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles become oxidized and when they become
+    oxidized now it becomes a foreign particle for the immune system.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Inflammatory Biomarkers
-  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on
-    NF-kappa-B. It is pro-inflammatory.
+  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on NF-kappa-B. It is pro-inflammatory.
 version: 1
 status: active
 updated_at: '2026-05-05'

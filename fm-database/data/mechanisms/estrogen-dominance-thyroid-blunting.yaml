@@ -8,9 +8,8 @@ aliases:
 - estrogen-driven TBG increase
 - reduced free thyroid hormone
 category: endocrine
-summary: Excess estrogen increases thyroid-binding globulin (TBG), reducing free T4
-  and T3 available to tissues. Low progesterone and adrenal dysregulation further
-  blunt thyroid receptor response.
+summary: Excess estrogen increases thyroid-binding globulin (TBG), reducing free T4 and T3 available to tissues. Low progesterone
+  and adrenal dysregulation further blunt thyroid receptor response.
 upstream_drivers:
 - estrogen-excess
 - low-progesterone
@@ -19,7 +18,7 @@ upstream_drivers:
 downstream_effects:
 - high-total-t4-t3
 - low-free-thyroid-hormones
-- functional-hypothyroidism
+- reverse-t3-dominance
 related_mechanisms:
 - hpa-axis-dysregulation
 linked_to_topics:
@@ -28,12 +27,10 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Investigate Hormonal Cross-Talk
-  quote: Estrogen dominance, low progesterone, adrenal dysregulation can blunt thyroid
-    response
+  quote: Estrogen dominance, low progesterone, adrenal dysregulation can blunt thyroid response
 - id: vitaone-thyroid-ebook
   location: 'Chapter 6: Causes of Thyroid Disorders'
-  quote: 'Estrogen dominance: Increased Thyroid-binding globulin (TBG) means more
-    hormone bound, less free hormone available.'
+  quote: 'Estrogen dominance: Increased Thyroid-binding globulin (TBG) means more hormone bound, less free hormone available.'
 version: 1
 status: active
 updated_at: '2026-05-02'

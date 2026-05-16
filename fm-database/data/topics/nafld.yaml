@@ -5,11 +5,10 @@ aliases:
 - hepatic steatosis
 - non-alcoholic fatty liver
 - NAFLD
-summary: Accumulation of fat in the liver not caused by alcohol. Low-carb diets decrease
-  hepatic lipogenesis and inflammation. Supported by omega-3s, NAC, and liver-supportive
-  foods.
+summary: Accumulation of fat in the liver not caused by alcohol. Low-carb diets decrease hepatic lipogenesis and inflammation.
+  Supported by omega-3s, NAC, and liver-supportive foods.
 common_symptoms:
-- fatigue
+- lethargy
 - right-upper-quadrant-discomfort
 - brain-fog
 - metabolic-syndrome
@@ -28,10 +27,9 @@ key_mechanisms:
 - oxidative-stress
 - hepatic-lipogenesis
 - systemic-inflammation
-coaching_scope_notes: Recommend low-carb food choices, omega-3-rich foods, cruciferous
-  vegetables, and beetroot. NAC is clinician scope.
-clinician_scope_notes: Order LFT, USG, Fasting Insulin, Lipid Profile, HbA1c. Key
-  is reducing hepatic fat via insulin sensitisation.
+coaching_scope_notes: Recommend low-carb food choices, omega-3-rich foods, cruciferous vegetables, and beetroot. NAC is clinician
+  scope.
+clinician_scope_notes: Order LFT, USG, Fasting Insulin, Lipid Profile, HbA1c. Key is reducing hepatic fat via insulin sensitisation.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-liver-detox-cheatsheet

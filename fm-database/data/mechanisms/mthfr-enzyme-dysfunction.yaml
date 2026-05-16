@@ -17,24 +17,23 @@ upstream_drivers:
 - riboflavin-deficiency
 downstream_effects:
 - elevated-homocysteine
-- impaired-methylation
+- methylation-cycle-dysfunction
 - reduced-sam
 - reduced-glutathione
 - neurotransmitter-deficiency
 - reduced-5-mthf-production
 - methyl-trap
-- functional-b12-deficiency
 related_mechanisms:
-- impaired-homocysteine-remethylation
+- homocysteine-metabolism
 - methylation
-- sam-cycle
+- methylation-cycle
 - methyl-trap
 - homocysteine-remethylation
 - nitric-oxide-bioavailability
 linked_to_topics:
 - mthfr-gene-variant
-- folate-vitamin-b9
-- homocysteine-elevation
+- folate-nutrition
+- homocysteine-and-methylation
 - methylation
 - mthfr-polymorphisms
 - methylation-cycle

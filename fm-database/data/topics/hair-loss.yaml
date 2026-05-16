@@ -10,10 +10,7 @@ summary: Hairfall root causes include nutrient deficiency, thyroid imbalance, PC
   telogen effluvium, stress, and gut absorption issues. Supplementation should be personalized by root cause.
 common_symptoms:
 - hair-loss
-- hair-thinning
-- brittle-hair
-- slow-hair-growth
-- brittle-nails
+- dry-skin
 red_flags:
 - autoimmune alopecia areata
 - thyroid autoimmunity
@@ -32,8 +29,8 @@ related_topics:
 key_mechanisms:
 - thyroid-nutrient-synergy
 - gut-barrier-and-nutrient-absorption
-- oxidative-stress-and-inflammation
-- nutrient-dependent-energy-metabolism
+- oxidative-stress
+- mitochondrial-energy-production
 coaching_scope_notes: Encourage root-cause lab panel (ferritin, B12, zinc, biotin, folate, TSH, fT3, fT4, anti-TPO) referral
   before supplementing. Food-first protein and micronutrient approach is coaching-appropriate.
 clinician_scope_notes: Hairfall lab panel (ferritin, B12, zinc, biotin, folate, TSH, free T3/T4, anti-TPO, hormonal labs)

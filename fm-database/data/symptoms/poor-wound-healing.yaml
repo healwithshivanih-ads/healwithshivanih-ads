@@ -22,13 +22,13 @@ severity: common
 description: Poor wound healing, frequent infections, white nail spots, and loss of taste or smell linked to zinc deficiency;
   poor wound healing and bleeding gums linked to vitamin C deficiency.
 linked_to_topics:
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 - nutrition-deficiency
 - chronic-inflammation
 linked_to_mechanisms:
 - stress-induced-immune-suppression
-- cortisol-dhea-imbalance
-- oxidative-stress-and-inflammation
+- hpa-axis-dysregulation
+- oxidative-stress
 - gut-barrier-and-nutrient-absorption
 when_to_refer: If infections are severe, recurrent, or not improving with dietary support.
 sources:

@@ -7,23 +7,22 @@ aliases:
 - puffy belly
 category: gi
 severity: common
-description: Bloating that increases progressively throughout the day, becoming most
-  problematic by evening. Associated with dysbiosis, hypochlorhydria, and impaired
-  gut motility.
-when_to_refer: If accompanied by significant unintentional weight loss, blood in stool,
-  or severe abdominal pain — refer to gastroenterologist.
+description: Bloating that increases progressively throughout the day, becoming most problematic by evening. Associated with
+  dysbiosis, hypochlorhydria, and impaired gut motility.
+when_to_refer: If accompanied by significant unintentional weight loss, blood in stool, or severe abdominal pain — refer to
+  gastroenterologist.
 linked_to_topics:
-- dysbiosis
+- gut-dysbiosis
 - hypochlorhydria
 - gut-skin-hormone-axis
 linked_to_mechanisms:
-- gut-barrier-dysfunction
+- leaky-gut
 - gut-immune-dysregulation
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Case History / Symptoms
-  quote: Progressive bloating — the bloating just keeps on increasing throughout the
-    day and by the night the bloating becomes very problematic.
+  quote: Progressive bloating — the bloating just keeps on increasing throughout the day and by the night the bloating becomes
+    very problematic.
 version: 1
 status: active
 updated_at: '2026-05-05'

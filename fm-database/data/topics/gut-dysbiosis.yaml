@@ -26,27 +26,24 @@ common_symptoms:
 - flatulence
 - constipation
 - diarrhea
-- chronic-diarrhea
+- intestinal-dysbiosis-symptoms
 - irregular-stools
 - food-sensitivities
-- new-food-sensitivities
 - food-cravings
-- sweet-cravings
+- sugar-cravings
 - digestive-discomfort
-- poor-digestion
-- fatigue
-- low-energy
+- lethargy
+- chronic-fatigue
 - brain-fog
-- skin-rashes
-- skin-itching
+- skin-rash
 - white-tongue-coating
 - joint-pain
 - hair-loss
-- weight-gain
+- unexplained-weight-gain
 - ibs-symptoms
 - nutrient-deficiency
 - nutrient-deficiency-despite-supplementation
-- systemic-inflammation
+- inflammation
 red_flags:
 - Severe or persistent dysbiosis with opportunistic pathogens — requires clinician management
 - Persistent diarrhea with blood or mucus
@@ -65,7 +62,6 @@ related_topics:
 - microbiome
 - sibo
 - ibs
-- leaky-gut
 - autoimmunity-leaky-gut-triad
 - hypochlorhydria
 - candida-overgrowth
@@ -91,25 +87,19 @@ related_topics:
 key_mechanisms:
 - microbial-diversity-decline
 - dysbiosis-gut-microbiome-imbalance
-- gut-dysbiosis-microbiome-imbalance
-- gut-fermentation-dysbiosis
+- colonic-fermentation
 - reduced-scfas
-- scfa-production
+- butyrate-production
 - leaky-gut
-- leaky-gut-intestinal-hyperpermeability
-- impaired-gut-barrier
-- gut-barrier-dysfunction
 - gut-barrier-and-nutrient-absorption
-- lps-mediated-immune-activation
-- inflammatory-cytokine-signaling
+- lps-endotoxemia
 - chronic-inflammation
 - systemic-inflammation
-- gut-immune-axis-dysregulation
 - gut-immune-dysregulation
 - gut-brain-axis-disruption
 - neuroimmune-inflammation-loop
 - low-stomach-acid
-- estrogen-recirculation-via-beta-glucuronidase
+- estrogen-enterohepatic-recirculation
 coaching_scope_notes: Coaches can guide elimination diets, low-FODMAP approaches, 5R protocol sequencing, prebiotic/probiotic
   introduction timing, probiotic-rich and fermented foods, prebiotic fibre, stress reduction, and circadian-aligned eating.
 clinician_scope_notes: GI-MAP or similar stool tests can identify specific dysbiotic organisms (e.g., Strep, Enterococcus)

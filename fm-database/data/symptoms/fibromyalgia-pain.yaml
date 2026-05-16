@@ -7,20 +7,17 @@ aliases:
 - musculoskeletal pain
 category: musculoskeletal
 severity: concerning
-description: Diffuse musculoskeletal pain, often accompanied by fatigue, sleep disturbance,
-  and anxiety. Referenced in the context of CBD oil as a supportive intervention alongside
-  the broader anti-inflammatory protocol.
-when_to_refer: Refer for formal fibromyalgia diagnosis and to rule out inflammatory
-  arthritis or other rheumatologic conditions.
+description: Diffuse musculoskeletal pain, often accompanied by fatigue, sleep disturbance, and anxiety. Referenced in the
+  context of CBD oil as a supportive intervention alongside the broader anti-inflammatory protocol.
+when_to_refer: Refer for formal fibromyalgia diagnosis and to rule out inflammatory arthritis or other rheumatologic conditions.
 linked_to_topics:
 - chronic-inflammation
 linked_to_mechanisms:
-- nf-kappa-b-activation
+- nf-kb-activation
 sources:
 - id: coconote-fm-approach-inflammation
   location: Anti-Inflammatory Supplements – CBD Oil
-  quote: if somebody having a fibromyalgia or a lot of pain, anxiety and a lot of
-    issues over there, CBD will help.
+  quote: if somebody having a fibromyalgia or a lot of pain, anxiety and a lot of issues over there, CBD will help.
 version: 1
 status: active
 updated_at: '2026-05-05'

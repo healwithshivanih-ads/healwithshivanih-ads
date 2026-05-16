@@ -19,12 +19,11 @@ aliases:
 - parasympathetic activation
 - Benson relaxation response
 category: neurological
-summary: Diaphragmatic breathing and mindfulness practices stimulate the vagus nerve
-  and parasympathetic nervous system, shifting the autonomic balance away from sympathetic
-  'fight-or-flight' dominance toward a rest-and-digest state. This reduces heart rate,
-  blood pressure, cortisol release, and perceived stress.
+summary: Diaphragmatic breathing and mindfulness practices stimulate the vagus nerve and parasympathetic nervous system, shifting
+  the autonomic balance away from sympathetic 'fight-or-flight' dominance toward a rest-and-digest state. This reduces heart
+  rate, blood pressure, cortisol release, and perceived stress.
 upstream_drivers:
-- diaphragmatic-breathing
+- parasympathetic-activation
 - mindfulness-practice
 - gratitude-practice
 - mindful-breathing
@@ -45,7 +44,6 @@ downstream_effects:
 related_mechanisms:
 - hpa-axis-dysregulation
 - vagal-tone-enhancement
-- hpa-axis-regulation
 - venous-return-enhancement
 linked_to_topics:
 - stress-management
@@ -57,21 +55,18 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
-  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease
-    stress by activating relaxation centers in the brain. The abdominal expansion
-    causes negative pressure to pull blood into the chest, improving the venous flow
+  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease stress by activating relaxation centers
+    in the brain. The abdominal expansion causes negative pressure to pull blood into the chest, improving the venous flow
     of blood back to the heart.
 - id: barbara-oneil-healing-mind
   location: Breathing Section
-  quote: when you breathe in through your nose and out through your nose using your
-    abdominal muscles, you stimulate your parasympathetic nervous system. And your
-    parasympathetic nervous system is your peaceful, calming nervous system.
+  quote: when you breathe in through your nose and out through your nose using your abdominal muscles, you stimulate your
+    parasympathetic nervous system. And your parasympathetic nervous system is your peaceful, calming nervous system.
 - id: vitaone-adrenal-toolkit
   location: The Relaxation Response
-  quote: The Relaxation Response is a simple, effective, mind/body approach to relieving
-    stress. Discovered by Dr. Benson at Harvard Medical School, it is routinely recommended
-    to treat patients suffering from heart conditions, high blood pressure, chronic
-    pain, insomnia, and many other physical ailments.
+  quote: The Relaxation Response is a simple, effective, mind/body approach to relieving stress. Discovered by Dr. Benson
+    at Harvard Medical School, it is routinely recommended to treat patients suffering from heart conditions, high blood pressure,
+    chronic pain, insomnia, and many other physical ailments.
 version: 3
 status: active
 updated_at: '2026-05-04'

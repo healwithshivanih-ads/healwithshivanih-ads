@@ -1,28 +1,24 @@
 slug: glycine-taurine-amino-acid-conjugation-phase-ii
-statement: Glycine, taurine, glutamine, N-acetylcysteine, cysteine, and methionine
-  are key amino acid nutrients required for Phase II amino acid conjugation and methylation
-  detoxification reactions.
+statement: Glycine, taurine, glutamine, N-acetylcysteine, cysteine, and methionine are key amino acid nutrients required for
+  Phase II amino acid conjugation and methylation detoxification reactions.
 evidence_tier: strong
-rationale: The role of these amino acids as direct substrates and cofactors in Phase
-  II conjugation pathways (sulfation, methylation, amino acid conjugation, glutathione
-  synthesis) is well-established in biochemical and pharmacological literature.
-coaching_translation: Specific amino acids from dietary protein are the raw materials
-  your liver uses in the second stage of detox (Phase II) to neutralize and package
-  toxins for removal.
+rationale: The role of these amino acids as direct substrates and cofactors in Phase II conjugation pathways (sulfation, methylation,
+  amino acid conjugation, glutathione synthesis) is well-established in biochemical and pharmacological literature.
+coaching_translation: Specific amino acids from dietary protein are the raw materials your liver uses in the second stage
+  of detox (Phase II) to neutralize and package toxins for removal.
 linked_to_topics:
 - metabolic-detoxification
-- liver-detox-food-plan
+- liver-detoxification
 linked_to_supplements:
 - glycine
-- n-acetyl-cysteine
+- nac
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Phase 1 and Phase 2 Detoxification
-  quote: 'PHASE II Nutrients Used: Glycine, Taurine, Glutamine, N-acetylcysteine,
-    Cysteine, Methionine'
+  quote: 'PHASE II Nutrients Used: Glycine, Taurine, Glutamine, N-acetylcysteine, Cysteine, Methionine'
 version: 1
 status: active
 updated_at: '2026-05-04'

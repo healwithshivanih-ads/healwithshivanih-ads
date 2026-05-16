@@ -5,13 +5,12 @@ aliases:
 - inflammatory cytokine imbalance
 - pro-inflammatory signaling
 category: immune
-summary: Dysregulated production of pro-inflammatory cytokines (e.g., IL-1B, IL-6,
-  TNF) perpetuates chronic inflammation and can drive acute severe illness. Multiple
-  botanicals and nutraceuticals in this toolkit modulate cytokine balance.
+summary: Dysregulated production of pro-inflammatory cytokines (e.g., IL-1B, IL-6, TNF) perpetuates chronic inflammation and
+  can drive acute severe illness. Multiple botanicals and nutraceuticals in this toolkit modulate cytokine balance.
 upstream_drivers:
 - nlrp3-inflammasome-activation
 - viral-infection
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 downstream_effects:
 - tissue-damage
 - organ-dysfunction
@@ -26,8 +25,8 @@ evidence_tier: strong
 sources:
 - id: vitaone-inflammation-toolkit
   location: References — Elderberry
-  quote: 'The effect of Sambucol, a black elderberry-based, natural product, on the
-    production of human cytokines: I. Inflammatory cytokines.'
+  quote: 'The effect of Sambucol, a black elderberry-based, natural product, on the production of human cytokines: I. Inflammatory
+    cytokines.'
 version: 1
 status: active
 updated_at: '2026-05-02'

@@ -6,20 +6,17 @@ aliases:
 - adipose tissue beiging
 - WAT-to-BAT conversion
 category: metabolic
-summary: Cold exposure promotes the phenotypic conversion of white adipose tissue
-  (WAT) to beige/brown-like fat cells capable of thermogenesis. This transformation
-  is associated with enhanced metabolic activity and protection against metabolic
-  disease.
+summary: Cold exposure promotes the phenotypic conversion of white adipose tissue (WAT) to beige/brown-like fat cells capable
+  of thermogenesis. This transformation is associated with enhanced metabolic activity and protection against metabolic disease.
 upstream_drivers:
 - cold-water-immersion
-- bat-activation
+- cold-induced-thermogenesis
 - noradrenaline-signaling
 downstream_effects:
 - increased-metabolic-activity
 - reduced-body-fat
 - improved-insulin-sensitivity
 related_mechanisms:
-- bat-activation
 - cold-induced-thermogenesis
 linked_to_topics:
 - brown-adipose-tissue-activation
@@ -28,8 +25,7 @@ evidence_tier: plausible_emerging
 sources:
 - id: espeland-2022-cold-water-immersion
   location: Adipose Tissue Effects
-  quote: This conversion relates to enhanced metabolic activity and potential protective
-    effects against metabolic diseases.
+  quote: This conversion relates to enhanced metabolic activity and potential protective effects against metabolic diseases.
 version: 1
 status: active
 updated_at: '2026-05-05'

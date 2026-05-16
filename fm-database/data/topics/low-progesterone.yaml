@@ -4,9 +4,8 @@ aliases:
 - progesterone deficiency
 - luteal phase defect
 - low luteal progesterone
-summary: A deficiency of progesterone — a systemic anti-inflammatory modulator — driven
-  by chronic stress (pregnenolone steal), anovulation, estrogen dominance, nutrient
-  deficiencies, and circadian disruption.
+summary: A deficiency of progesterone — a systemic anti-inflammatory modulator — driven by chronic stress (pregnenolone steal),
+  anovulation, estrogen dominance, nutrient deficiencies, and circadian disruption.
 common_symptoms:
 - pms
 - anxiety
@@ -14,10 +13,10 @@ common_symptoms:
 - heavy-periods
 - short-luteal-phase
 - breast-tenderness
-- water-retention
+- edema
 - infertility
 red_flags:
-- recurrent pregnancy loss
+- recurrent-miscarriage
 - severe PMS/PMDD requiring medical evaluation
 related_topics:
 - estrogen-dominance
@@ -27,18 +26,16 @@ related_topics:
 - inflammation
 key_mechanisms:
 - hpa-axis-dysregulation
-- low-progesterone
 - chronic-inflammation
-coaching_scope_notes: Coaches can guide nutrient-dense foods, stress reduction, sleep
-  hygiene, and adrenal support. Progesterone supplementation is clinician territory.
-clinician_scope_notes: Cycle-timed serum progesterone (Day 19–21) is essential. DUTCH/salivary
-  testing also useful. Monitor hs-CRP and luteal progesterone trends.
+coaching_scope_notes: Coaches can guide nutrient-dense foods, stress reduction, sleep hygiene, and adrenal support. Progesterone
+  supplementation is clinician territory.
+clinician_scope_notes: Cycle-timed serum progesterone (Day 19–21) is essential. DUTCH/salivary testing also useful. Monitor
+  hs-CRP and luteal progesterone trends.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Progesterone Is Anti-Inflammatory
-  quote: Low progesterone states (chronic stress, perimenopause, luteal phase defect,
-    PCOS) → drive unchecked inflammation.
+  quote: Low progesterone states (chronic stress, perimenopause, luteal phase defect, PCOS) → drive unchecked inflammation.
 version: 1
 status: active
 updated_at: '2026-05-02'

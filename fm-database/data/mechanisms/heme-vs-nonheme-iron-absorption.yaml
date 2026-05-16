@@ -19,9 +19,8 @@ aliases:
 - acid-dependent mineral absorption
 - iron malabsorption low acid
 category: metabolic
-summary: Heme iron (from animal sources) is absorbed at 20–40%, while non-heme iron
-  (from plant sources) is absorbed at only 3–12%. Non-heme iron absorption is further
-  impaired by phytates and oxalates present in plant foods. This difference explains
+summary: Heme iron (from animal sources) is absorbed at 20–40%, while non-heme iron (from plant sources) is absorbed at only
+  3–12%. Non-heme iron absorption is further impaired by phytates and oxalates present in plant foods. This difference explains
   higher IDA risk in long-term vegans.
 upstream_drivers:
 - dietary iron source
@@ -37,7 +36,6 @@ downstream_effects:
 - low-ferritin
 related_mechanisms:
 - phytate-mineral-binding
-- low-stomach-acid-iron-absorption
 linked_to_topics:
 - iron-deficiency
 - iron-deficiency-anemia
@@ -45,24 +43,21 @@ evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Iron'
-  quote: Heme iron comes from animal food sources and is well absorbed by the body,
-    but accounts for only about 10% of iron in the diet. Nonheme iron is found in
-    both plant and animal foods. It is absorbed less readily, but accounts for the
-    majority of dietary iron.
+  quote: Heme iron comes from animal food sources and is well absorbed by the body, but accounts for only about 10% of iron
+    in the diet. Nonheme iron is found in both plant and animal foods. It is absorbed less readily, but accounts for the majority
+    of dietary iron.
 - id: coconote-fm-iron-deficiency-anemia
   location: Food Sources / Management section
-  quote: The absorption for any plant vegan supplement or plant-based, any kind of
-    food source is around 3-12%. On the other side, the animal source, they are very
-    high absorption rate inside the bag. So again, the absorption rate for animal
-    source supplements is somewhere around, I would say 20-40%.
+  quote: The absorption for any plant vegan supplement or plant-based, any kind of food source is around 3-12%. On the other
+    side, the animal source, they are very high absorption rate inside the bag. So again, the absorption rate for animal source
+    supplements is somewhere around, I would say 20-40%.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
-  quote: Gut integrity determines iron utilization → Investigate root causes like
-    H. pylori, celiac or GI bleed
+  quote: Gut integrity determines iron utilization → Investigate root causes like H. pylori, celiac or GI bleed
 - id: coconote-fm-hypochlorhydria
   location: Functions of Gastric Acid
-  quote: Whenever gastric acid is present, it increases absorption of certain nutritions
-    like calcium, iron and zinc, magnesium, copper.
+  quote: Whenever gastric acid is present, it increases absorption of certain nutritions like calcium, iron and zinc, magnesium,
+    copper.
 version: 2
 status: active
 updated_at: '2026-05-05'

@@ -5,12 +5,11 @@ aliases:
 - opioid peptide release
 - CWI endorphin response
 category: neurological
-summary: Cold water immersion stimulates the release of beta-endorphins, endogenous
-  opioid peptides that produce analgesia and euphoria. This mechanism is proposed
-  to underlie some of the mood-lifting and pain-reducing effects of CWI.
+summary: Cold water immersion stimulates the release of beta-endorphins, endogenous opioid peptides that produce analgesia
+  and euphoria. This mechanism is proposed to underlie some of the mood-lifting and pain-reducing effects of CWI.
 upstream_drivers:
 - cold-water-immersion
-- cold-shock-response
+- cold-induced-thermogenesis
 downstream_effects:
 - analgesia
 - improved-mood
@@ -24,8 +23,7 @@ evidence_tier: plausible_emerging
 sources:
 - id: espeland-2022-cold-water-immersion
   location: Mental Health
-  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially
-    relieving depressive symptoms.
+  quote: Regular CWI increased plasma noradrenaline and beta-endorphin, potentially relieving depressive symptoms.
 version: 1
 status: active
 updated_at: '2026-05-05'

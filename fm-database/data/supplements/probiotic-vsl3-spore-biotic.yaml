@@ -14,25 +14,22 @@ timing_options:
 - with_breakfast
 take_with_food: optional
 linked_to_topics:
-- dysbiosis
+- gut-dysbiosis
 - gut-skin-hormone-axis
 linked_to_claims:
 - probiotics-deferred-until-gut-lining-stabilises
-notes_for_coach: Probiotics and prebiotics were intentionally deferred for 3 months
-  (until gut inflammation settled) to avoid aggravating fermentation and bloating.
-  VSL#3 (high-potency multi-strain) and spore-forming probiotics were used in the
-  re-inoculation phase. Introducing probiotics to an inflamed gut can worsen bloating
-  and dysbiosis symptoms.
-notes_for_client: Probiotics are added once your gut has calmed down — usually after
-  2–3 months. Adding them too early when your gut is inflamed can make bloating worse.
+notes_for_coach: Probiotics and prebiotics were intentionally deferred for 3 months (until gut inflammation settled) to avoid
+  aggravating fermentation and bloating. VSL#3 (high-potency multi-strain) and spore-forming probiotics were used in the re-inoculation
+  phase. Introducing probiotics to an inflamed gut can worsen bloating and dysbiosis symptoms.
+notes_for_client: Probiotics are added once your gut has calmed down — usually after 2–3 months. Adding them too early when
+  your gut is inflamed can make bloating worse.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: 5R Protocol — Re-inoculate
-  quote: Re-inoculation is with the beneficial microbes. So this was done after a
-    span of three months. That is when the prebiotic foods and probiotics were added
-    in our case in the form of VSL3 and spore biotic.
+  quote: Re-inoculation is with the beneficial microbes. So this was done after a span of three months. That is when the prebiotic
+    foods and probiotics were added in our case in the form of VSL3 and spore biotic.
 version: 1
 status: active
 updated_at: '2026-05-05'

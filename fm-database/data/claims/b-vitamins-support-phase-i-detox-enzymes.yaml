@@ -1,15 +1,14 @@
 slug: b-vitamins-support-phase-i-detox-enzymes
-statement: B vitamins (riboflavin/B2, niacin/B3, pyridoxine/B6, folic acid, B12) are
-  essential nutrients for Phase I cytochrome P450 detoxification enzyme function.
+statement: B vitamins (riboflavin/B2, niacin/B3, pyridoxine/B6, folic acid, B12) are essential nutrients for Phase I cytochrome
+  P450 detoxification enzyme function.
 evidence_tier: strong
-rationale: B vitamins serve as cofactors for cytochrome P450 and related enzymatic
-  reactions in Phase I hepatic biotransformation. This is well-established in biochemistry
-  and nutritional science literature.
-coaching_translation: B vitamins are fuel for your liver's detox engines. Making sure
-  you get enough through food and supplementation keeps Phase I detox running smoothly.
+rationale: B vitamins serve as cofactors for cytochrome P450 and related enzymatic reactions in Phase I hepatic biotransformation.
+  This is well-established in biochemistry and nutritional science literature.
+coaching_translation: B vitamins are fuel for your liver's detox engines. Making sure you get enough through food and supplementation
+  keeps Phase I detox running smoothly.
 linked_to_topics:
 - metabolic-detoxification
-- liver-detox-food-plan
+- liver-detoxification
 linked_to_supplements:
 - b-complex-vitamins
 out_of_scope_notes: ''
@@ -18,8 +17,7 @@ linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Phase 1 and Phase 2 Detoxification
-  quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin
-    B12
+  quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin B12
 version: 1
 status: active
 updated_at: '2026-05-04'

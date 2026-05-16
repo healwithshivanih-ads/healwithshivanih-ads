@@ -5,13 +5,12 @@ aliases:
 - autonomic gut dysfunction
 - reduced vagal tone
 category: neurological
-summary: The vagus nerve (cranial nerve X) innervates the entire GI tract via the
-  mesenteric complex. Disrupted vagal activity impairs gut motility, reduces secretory
-  IgA, alters HPA axis signaling, and contributes to SIBO pathogenesis.
+summary: The vagus nerve (cranial nerve X) innervates the entire GI tract via the mesenteric complex. Disrupted vagal activity
+  impairs gut motility, reduces secretory IgA, alters HPA axis signaling, and contributes to SIBO pathogenesis.
 upstream_drivers:
 - chronic-stress
-- gut-dysbiosis
-- inflammation
+- dysbiosis-gut-microbiome-imbalance
+- chronic-inflammation
 downstream_effects:
 - altered-gi-motility
 - hpa-axis-dysregulation
@@ -19,7 +18,7 @@ downstream_effects:
 - sibo-susceptibility
 related_mechanisms:
 - hpa-axis-dysregulation
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 linked_to_topics:
 - sibo
 - gut-brain-axis-dysfunction
@@ -27,9 +26,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-sibo-sifo
   location: Pathogenesis of SIBO
-  quote: Any disruption of the vagal activity, number one, that is why the first question
-    that needs to be asked, it is not distress but if you are having any dysfunctions
-    in the response towards stress, that needs to be fixed first.
+  quote: Any disruption of the vagal activity, number one, that is why the first question that needs to be asked, it is not
+    distress but if you are having any dysfunctions in the response towards stress, that needs to be fixed first.
 version: 1
 status: active
 updated_at: '2026-05-05'

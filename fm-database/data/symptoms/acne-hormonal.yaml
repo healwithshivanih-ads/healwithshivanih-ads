@@ -7,15 +7,14 @@ aliases:
 - jawline acne
 category: skin
 severity: common
-description: Acne driven by elevated androgens, insulin resistance, or poor estrogen
-  clearance, typically cyclical or localized to chin and jawline.
-when_to_refer: Refer for severe cystic acne requiring dermatology or prescription
-  treatment.
+description: Acne driven by elevated androgens, insulin resistance, or poor estrogen clearance, typically cyclical or localized
+  to chin and jawline.
+when_to_refer: Refer for severe cystic acne requiring dermatology or prescription treatment.
 linked_to_topics:
 - estrogen-dominance
 - pcos
 linked_to_mechanisms:
-- aromatase-overactivity
+- aromatase-activity
 - insulin-resistance
 - estrogen-enterohepatic-recirculation
 sources:

@@ -15,22 +15,21 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - mthfr-gene-variant
-- folate-vitamin-b9
-- homocysteine-elevation
+- folate-nutrition
+- homocysteine-and-methylation
 linked_to_claims:
 - b6-b2-support-folate-cycle-and-homocysteine
-notes_for_coach: Riboflavin is a cofactor for MTHFR enzyme itself; evidence suggests
-  riboflavin supplementation may be particularly important for lowering homocysteine
-  in C677T MTHFR variant carriers.
-notes_for_client: Vitamin B2 helps the MTHFR enzyme work better, supporting your body's
-  ability to activate folate and manage homocysteine levels.
+notes_for_coach: Riboflavin is a cofactor for MTHFR enzyme itself; evidence suggests riboflavin supplementation may be particularly
+  important for lowering homocysteine in C677T MTHFR variant carriers.
+notes_for_client: Vitamin B2 helps the MTHFR enzyme work better, supporting your body's ability to activate folate and manage
+  homocysteine levels.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Supplementation for MTHFR section
-  quote: Vitamin B2 that is riboflavin as well as vitamin B6 that is pyridoxine. Now
-    both of these supplements are also given as they are utilized in the folate cycle.
+  quote: Vitamin B2 that is riboflavin as well as vitamin B6 that is pyridoxine. Now both of these supplements are also given
+    as they are utilized in the folate cycle.
 version: 1
 status: active
 updated_at: '2026-05-05'

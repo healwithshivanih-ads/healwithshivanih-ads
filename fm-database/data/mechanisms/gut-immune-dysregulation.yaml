@@ -8,16 +8,14 @@ aliases:
 - gut immunity imbalance
 - IgA suppression by fungal overgrowth
 category: immune
-summary: Chronic gut dysbiosis and intestinal barrier compromise lead to ongoing antigen
-  translocation into systemic circulation, perpetuating immune activation. Over time
-  this results in immune cell exhaustion (low WBCs, low neutrophils), elevated inflammatory
-  markers (high ESR, high globulin), and loss of immune tolerance — manifesting as
-  allergies, autoimmune skin disease (psoriasis), and immune-mediated reproductive
-  pathology (endometriosis).
+summary: Chronic gut dysbiosis and intestinal barrier compromise lead to ongoing antigen translocation into systemic circulation,
+  perpetuating immune activation. Over time this results in immune cell exhaustion (low WBCs, low neutrophils), elevated inflammatory
+  markers (high ESR, high globulin), and loss of immune tolerance — manifesting as allergies, autoimmune skin disease (psoriasis),
+  and immune-mediated reproductive pathology (endometriosis).
 upstream_drivers:
 - childhood-infection-diarrhea
-- gut-dysbiosis
-- gut-barrier-dysfunction
+- dysbiosis-gut-microbiome-imbalance
+- leaky-gut
 - malnourishment
 - gnrh-injections-ocp-use
 downstream_effects:
@@ -27,26 +25,24 @@ downstream_effects:
 - nutrient-malabsorption
 - fatigue
 related_mechanisms:
-- gut-barrier-dysfunction
-- estrogen-recirculation-via-beta-glucuronidase
+- leaky-gut
+- estrogen-enterohepatic-recirculation
 linked_to_topics:
 - gut-skin-hormone-axis
 - immune-dysregulation
 - psoriasis-gut-immune
 - endometriosis
-- dysbiosis
+- gut-dysbiosis
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Blood Report Analysis
-  quote: Very low WBC along with low neutrophils tell us that there has been chronic
-    immune activation or chronic immune stimulation coupled with high globulin. This
-    is an immune dysregulation problem.
+  quote: Very low WBC along with low neutrophils tell us that there has been chronic immune activation or chronic immune stimulation
+    coupled with high globulin. This is an immune dysregulation problem.
 - id: coconote-fm-approach-inflammation
   location: Infection Triggers – Fungal Infection
-  quote: when you have a lot of fungal growth in your intestine... you find out the
-    lower side normal, very low side normal. IgG and IgA antibody, particularly IgA
-    antibody.
+  quote: when you have a lot of fungal growth in your intestine... you find out the lower side normal, very low side normal.
+    IgG and IgA antibody, particularly IgA antibody.
 version: 1
 status: active
 updated_at: '2026-05-05'

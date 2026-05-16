@@ -1,32 +1,28 @@
 slug: cyp450-polymorphisms-explain-differential-drug-response
-statement: Genetic polymorphisms in CYP450 enzymes explain why some individuals are
-  hypersensitive to drugs or chemicals while others show no effect at equivalent doses.
+statement: Genetic polymorphisms in CYP450 enzymes explain why some individuals are hypersensitive to drugs or chemicals while
+  others show no effect at equivalent doses.
 evidence_tier: strong
-rationale: CYP pharmacogenomics is a well-established field. CYP2D6 poor vs. ultra-rapid
-  metabolizer status is the basis for codeine/morphine variation; CYP1A2 polymorphisms
-  explain caffeine metabolism differences. Multiple RCTs and population genetics studies
-  confirm this.
-coaching_translation: Your genetic blueprint influences how quickly your liver processes
-  medications and chemicals. Some people are fast processors (they barely feel drugs
-  or caffeine), while others are slow processors (drugs and chemicals linger much
+rationale: CYP pharmacogenomics is a well-established field. CYP2D6 poor vs. ultra-rapid metabolizer status is the basis for
+  codeine/morphine variation; CYP1A2 polymorphisms explain caffeine metabolism differences. Multiple RCTs and population genetics
+  studies confirm this.
+coaching_translation: Your genetic blueprint influences how quickly your liver processes medications and chemicals. Some people
+  are fast processors (they barely feel drugs or caffeine), while others are slow processors (drugs and chemicals linger much
   longer and hit harder). This explains a lot about individual variation.
 caveats:
-- 'Codeine→morphine example: CYP2D6 is the primary enzyme; the transcript mentions
-  CYP1B1 for caffeine which should be CYP1A2 — possible transcription or lecture error.
-  Coaches should not attempt to interpret genetic test results; refer to clinician.'
-out_of_scope_notes: Genetic testing interpretation, pharmaceutical dosing adjustments
-  based on CYP polymorphisms — clinician scope only.
+- 'Codeine→morphine example: CYP2D6 is the primary enzyme; the transcript mentions CYP1B1 for caffeine which should be CYP1A2
+  — possible transcription or lecture error. Coaches should not attempt to interpret genetic test results; refer to clinician.'
+out_of_scope_notes: Genetic testing interpretation, pharmaceutical dosing adjustments based on CYP polymorphisms — clinician
+  scope only.
 linked_to_topics:
 - cyp450-genetic-polymorphisms
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_supplements: []
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Genetic Polymorphisms and Drug Metabolism
-  quote: all the pharmaceuticals, 95% of pharmaceuticals, they actually metabolize
-    in the liver from phase 1 and phase 2 pathway... those patients who have hypersensitivity
-    of any drug reaction, just think about they have some kind of genetic variation
+  quote: all the pharmaceuticals, 95% of pharmaceuticals, they actually metabolize in the liver from phase 1 and phase 2 pathway...
+    those patients who have hypersensitivity of any drug reaction, just think about they have some kind of genetic variation
     in the phase one pathway.
 version: 1
 status: active

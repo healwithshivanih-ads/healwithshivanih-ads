@@ -7,21 +7,20 @@ aliases:
 - orthostatic dizziness
 category: cardiovascular
 severity: concerning
-description: Low blood pressure, salt craving, and dehydration linked to low cortisol,
-  low aldosterone, low renin, adrenal issues, and fluid-balance dysfunction.
-when_to_refer: Refer if severe, persistent, or consistent with Addison's disease;
-  requires cortisol and aldosterone testing.
+description: Low blood pressure, salt craving, and dehydration linked to low cortisol, low aldosterone, low renin, adrenal
+  issues, and fluid-balance dysfunction.
+when_to_refer: Refer if severe, persistent, or consistent with Addison's disease; requires cortisol and aldosterone testing.
 linked_to_topics:
 - adrenal-fatigue
-- hpa-axis
+- hpa-axis-dysregulation
 linked_to_mechanisms:
 - raas-and-fluid-balance
-- hpa-axis-overactivation
+- cortisol-elevation
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Low blood pressure, salt craving, and dehydration - Linked to low cortisol,
-    low aldosterone, low renin, adrenal issues, and fluid-balance dysfunction.
+  quote: Low blood pressure, salt craving, and dehydration - Linked to low cortisol, low aldosterone, low renin, adrenal issues,
+    and fluid-balance dysfunction.
 version: 1
 status: active
 updated_at: '2026-05-06'

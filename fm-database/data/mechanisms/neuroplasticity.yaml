@@ -6,11 +6,9 @@ aliases:
 - hebbian learning
 - nerves that fire together wire together
 category: neurological
-summary: The brain can form new neural connections and strengthen new pathways through
-  repeated thought patterns and behaviours throughout life. Old unused pathways shrink
-  over approximately 21 days; new pathways consolidate in approximately 60 days. This
-  mechanism underlies recovery from depression, negative thought patterns, insomnia,
-  and emotional dysregulation.
+summary: The brain can form new neural connections and strengthen new pathways through repeated thought patterns and behaviours
+  throughout life. Old unused pathways shrink over approximately 21 days; new pathways consolidate in approximately 60 days.
+  This mechanism underlies recovery from depression, negative thought patterns, insomnia, and emotional dysregulation.
 upstream_drivers:
 - repetition-of-thought-or-behaviour
 - positive-language
@@ -25,16 +23,14 @@ related_mechanisms:
 - prefrontal-cortex-function
 - glymphatic-clearance
 linked_to_topics:
-- neuroplasticity
 - depression-lifestyle
-- sleep-hygiene
+- sleep
 evidence_tier: strong
 sources:
 - id: barbara-oneil-healing-mind
   location: Neuroplasticity Section
-  quote: Did you know we can rewire our brain right up until the day we die? And in
-    his book, The Brain That Changes Itself, the neurologist, Dr. Norman Doidge, He
-    shows that right up until the day we die, we can be rewiring our brain.
+  quote: Did you know we can rewire our brain right up until the day we die? And in his book, The Brain That Changes Itself,
+    the neurologist, Dr. Norman Doidge, He shows that right up until the day we die, we can be rewiring our brain.
 version: 1
 status: active
 updated_at: '2026-05-05'

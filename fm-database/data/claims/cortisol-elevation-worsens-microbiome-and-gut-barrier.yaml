@@ -1,23 +1,19 @@
 slug: cortisol-elevation-worsens-microbiome-and-gut-barrier
-statement: Chronically elevated cortisol (from ongoing stress) alters microbial diversity,
-  damages the gut lining (contributing to leaky gut), promotes insulin resistance,
-  and suppresses immune function — creating a compounding cycle of gut-brain dysfunction.
+statement: Chronically elevated cortisol (from ongoing stress) alters microbial diversity, damages the gut lining (contributing
+  to leaky gut), promotes insulin resistance, and suppresses immune function — creating a compounding cycle of gut-brain dysfunction.
 evidence_tier: plausible_emerging
-rationale: The relationship between HPA axis activation, cortisol, and gut health
-  is supported by substantial preclinical and growing clinical evidence. Cortisol's
-  catabolic effects on muscle and immune suppression are well-established. The direct
-  effect of chronic cortisol elevation on gut barrier and microbial diversity in humans
-  has mechanistic plausibility and observational support, but large RCTs are limited.
-coaching_translation: Chronic stress is one of the most underappreciated threats to
-  your gut health. It directly changes the bacteria in your gut and weakens the gut
-  lining — which can make all your other symptoms worse.
+rationale: The relationship between HPA axis activation, cortisol, and gut health is supported by substantial preclinical
+  and growing clinical evidence. Cortisol's catabolic effects on muscle and immune suppression are well-established. The direct
+  effect of chronic cortisol elevation on gut barrier and microbial diversity in humans has mechanistic plausibility and observational
+  support, but large RCTs are limited.
+coaching_translation: Chronic stress is one of the most underappreciated threats to your gut health. It directly changes the
+  bacteria in your gut and weakens the gut lining — which can make all your other symptoms worse.
 caveats:
 - Source is expert course content, not primary literature.
-- Causality vs. correlation in human studies of stress → dysbiosis is difficult to
-  isolate.
+- Causality vs. correlation in human studies of stress → dysbiosis is difficult to isolate.
 linked_to_topics:
 - microbiome
-- dysbiosis
+- gut-dysbiosis
 - gut-hormone-axis
 - perimenopause
 - inflammation

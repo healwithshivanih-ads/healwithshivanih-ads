@@ -8,19 +8,18 @@ aliases:
 summary: Patterns of vitamin, mineral, omega-3, and nutrient insufficiency with associated symptoms, food sources, preferred
   supplement forms, and dosing considerations across multiple body systems.
 common_symptoms:
-- fatigue
-- tingling-numbness-neuropathy
-- mood-changes
+- lethargy
+- numbness-tingling
+- mood-swings
 - insomnia
 - hair-loss
-- brittle-nails
-- pallor
+- dry-skin
+- pale-skin
 - poor-wound-healing
-- cramps
+- muscle-cramps
 - restless-legs
-- tingling-numbness-paresthesia
 - mood-changes-and-anxiety
-- frequent-infections
+- autoimmune-flares-low-immunity
 red_flags:
 - anemia unresponsive to iron
 - irreversible neurological damage from B12 deficiency
@@ -31,7 +30,7 @@ red_flags:
 - high-dose supplement toxicity
 - balance-problems-memory-loss
 - irreversible-neurological-damage
-- macrocytic-megaloblastic-anemia
+- megaloblastic-anemia
 - severe-biotin-deficiency-rash
 - iron-overload-symptoms
 - high-dose-supplement-toxicity
@@ -45,8 +44,8 @@ related_topics:
 - joint-pain
 - medication-nutrient-interactions
 key_mechanisms:
-- nutrient-dependent-energy-metabolism
-- methylation-support
+- mitochondrial-energy-production
+- methylation-cycle
 - gut-barrier-and-nutrient-absorption
 coaching_scope_notes: Focus on food-first strategies, symptom tracking, and referral for labs. Avoid dosing guidance, lab
   interpretation, and pregnancy-specific supplementation without clinician oversight.

@@ -11,11 +11,9 @@ aliases:
 - calcium shift into cell
 - magnesium-calcium reciprocal relationship
 category: metabolic
-summary: Magnesium is the predominant intracellular mineral in cardiac cells and is
-  essential for maintaining the calcium-magnesium balance required for normal electrical
-  action potentials. Magnesium deficiency allows excess intracellular calcium accumulation,
-  which is reflected clinically by elevated coronary calcium scores and may contribute
-  to arrhythmia and plaque calcification.
+summary: Magnesium is the predominant intracellular mineral in cardiac cells and is essential for maintaining the calcium-magnesium
+  balance required for normal electrical action potentials. Magnesium deficiency allows excess intracellular calcium accumulation,
+  which is reflected clinically by elevated coronary calcium scores and may contribute to arrhythmia and plaque calcification.
 upstream_drivers:
 - magnesium-deficiency
 - low-dietary-magnesium
@@ -36,29 +34,26 @@ related_mechanisms:
 - muscle-relaxation-contraction-balance
 - inflammatory-cascade
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-cardiovascular-health
 - magnesium-musculoskeletal-health
 - calcium-overload
 - atherosclerosis-pathogenesis
-- dyslipidemia-management
+- dyslipidemia
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Physiology of calcium and magnesium
-  quote: Whenever there is magnesium deficiency, the calcium tends to move inside,
-    it goes intracellularly causing contraction.
+  quote: Whenever there is magnesium deficiency, the calcium tends to move inside, it goes intracellularly causing contraction.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Coronary calcium score discussion
-  quote: What is the meaning of the simple information is the extracellular calcium
-    is now in the cell in the cell that's the question. Now you know why the calcium
-    is moving in the cell because you have magnesium deficiency.
+  quote: What is the meaning of the simple information is the extracellular calcium is now in the cell in the cell that's
+    the question. Now you know why the calcium is moving in the cell because you have magnesium deficiency.
 - id: coconote-fm-calcium-deficiency
   location: Magnesium and Calcium Relationship
-  quote: if you have deficiency of magnesium then calcium is going to move in the
-    cell and that way you can see low serum calcium level. So if you correct the intracellular
-    magnesium level this calcium going to come out from the cell and it will maintain
-    your serum magnesium level.
+  quote: if you have deficiency of magnesium then calcium is going to move in the cell and that way you can see low serum
+    calcium level. So if you correct the intracellular magnesium level this calcium going to come out from the cell and it
+    will maintain your serum magnesium level.
 version: 2
 status: active
 updated_at: '2026-05-05'

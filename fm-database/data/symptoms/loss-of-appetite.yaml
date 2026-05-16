@@ -7,10 +7,10 @@ aliases:
 - anorexia
 category: gi
 severity: common
-description: Reduced desire to eat, which can be an early sign of zinc deficiency,
-  potentially related to zinc's role in taste perception and digestive function.
+description: Reduced desire to eat, which can be an early sign of zinc deficiency, potentially related to zinc's role in taste
+  perception and digestive function.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_mechanisms: []
 when_to_refer: ''
 sources:

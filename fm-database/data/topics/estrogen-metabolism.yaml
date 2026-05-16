@@ -8,21 +8,18 @@ aliases:
 - estrogen elimination
 - phase 1 phase 2 estrogen metabolism
 - estrogen hydroxylation
-summary: Estrogen undergoes phase 1 and phase 2 liver metabolism producing distinct
-  metabolites. The 2-hydroxyestrone pathway is protective (blocks cell proliferation);
-  the 4-hydroxyestrone and 16α-hydroxyestrone pathways are associated with increased
-  inflammation and cancer risk. The Dutch test measures these metabolites. Supporting
-  the 2-OH pathway and inhibiting aromatase activity is a key FM strategy.
+summary: Estrogen undergoes phase 1 and phase 2 liver metabolism producing distinct metabolites. The 2-hydroxyestrone pathway
+  is protective (blocks cell proliferation); the 4-hydroxyestrone and 16α-hydroxyestrone pathways are associated with increased
+  inflammation and cancer risk. The Dutch test measures these metabolites. Supporting the 2-OH pathway and inhibiting aromatase
+  activity is a key FM strategy.
 common_symptoms:
 - estrogen-dominance-symptoms
-- pms-symptoms
+- pms
 - breast-tenderness
-- mood-changes
-- weight-gain
-- pcos-symptoms
+- mood-swings
+- unexplained-weight-gain
 - pmdd-symptoms
 - heavy-periods
-- mood-swings
 red_flags:
 - family history of hormone-related cancers
 - signs of endometriosis or PCOS not previously diagnosed
@@ -38,37 +35,32 @@ related_topics:
 - estrogen-dominance
 - gut-dysbiosis-estrogen
 key_mechanisms:
-- hepatic-estrogen-detoxification
+- hepatic-estrogen-metabolism
 - comt-methylation
 - cyp1a1-cyp1b1-hydroxylation
 - insulin-resistance
-- hepatic-estrogen-metabolism
-- gut-estrogen-reabsorption
+- estrogen-enterohepatic-recirculation
 - comt-cyp-pathway-activity
-- aromatase-upregulation
-- beta-glucuronidase-estrogen-reabsorption
-- phase-1-phase-2-liver-detox
-coaching_scope_notes: Coaches can support favorable estrogen metabolism via diet (cruciferous
-  vegetables, DIM, green tea, blueberries, grape seed extract) and gut health. Dutch
-  test interpretation and metabolite-specific interventions require clinician oversight.
-clinician_scope_notes: Clinician should assess estrogen metabolite ratios (e.g., DUTCH
-  test), interpret genetic variants (COMT, CYP1A1, CYP1B1, GST), and prescribe DIM,
-  I3C, NAC, or methylated B vitamins as appropriate.
+- aromatase-activity
+coaching_scope_notes: Coaches can support favorable estrogen metabolism via diet (cruciferous vegetables, DIM, green tea,
+  blueberries, grape seed extract) and gut health. Dutch test interpretation and metabolite-specific interventions require
+  clinician oversight.
+clinician_scope_notes: Clinician should assess estrogen metabolite ratios (e.g., DUTCH test), interpret genetic variants (COMT,
+  CYP1A1, CYP1B1, GST), and prescribe DIM, I3C, NAC, or methylated B vitamins as appropriate.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Page 02
-  quote: Estrogen metabolism is a term that describes the production, use, & elimination
-    of estrogens through various pathways in the body.
+  quote: Estrogen metabolism is a term that describes the production, use, & elimination of estrogens through various pathways
+    in the body.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism
-  quote: Estrogen metabolism is a term that describes the production, use, & elimination
-    of estrogens through various pathways in the body.
+  quote: Estrogen metabolism is a term that describes the production, use, & elimination of estrogens through various pathways
+    in the body.
 - id: coconote-fm-estrogen-dominance
   location: Estrogen Metabolite Pathways
-  quote: If the estrone is converting into 2-Hydroxy-Estrone, I don't need to be worried
-    about it because it blocks stronger E2 that promotes cell proliferation and cancer
-    growth. The 16-Alpha and the 4-Hydroxy-Estrone are the bad ones.
+  quote: If the estrone is converting into 2-Hydroxy-Estrone, I don't need to be worried about it because it blocks stronger
+    E2 that promotes cell proliferation and cancer growth. The 16-Alpha and the 4-Hydroxy-Estrone are the bad ones.
 version: 3
 status: active
 updated_at: '2026-05-05'

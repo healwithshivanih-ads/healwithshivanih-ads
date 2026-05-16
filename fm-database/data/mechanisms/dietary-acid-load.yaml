@@ -8,11 +8,10 @@ aliases:
 - acid-forming diet
 - metabolic acid burden
 category: metabolic
-summary: Certain foods — including refined grains, sugar, most legumes (except lentil,
-  lima, soy), most nuts (except Brazil and almond), alcohol, tobacco, caffeine, and
-  drugs — produce net acid metabolites when metabolized, increasing the body's acid
-  load. A diet with excessive acid-forming foods relative to alkaline-forming ones
-  is proposed to create an unfavorable internal environment.
+summary: Certain foods — including refined grains, sugar, most legumes (except lentil, lima, soy), most nuts (except Brazil
+  and almond), alcohol, tobacco, caffeine, and drugs — produce net acid metabolites when metabolized, increasing the body's
+  acid load. A diet with excessive acid-forming foods relative to alkaline-forming ones is proposed to create an unfavorable
+  internal environment.
 upstream_drivers:
 - refined-carbohydrate-intake
 - alcohol-consumption
@@ -22,7 +21,7 @@ upstream_drivers:
 - refined-carbohydrate-overconsumption
 downstream_effects:
 - chronic-low-grade-acidosis
-- inflammation
+- chronic-inflammation
 - increased-cancer-risk
 related_mechanisms:
 - systemic-ph-regulation
@@ -37,15 +36,13 @@ evidence_tier: plausible_emerging
 sources:
 - id: barbara-oneil-acid-alkaline-foods
   location: Main lecture body
-  quote: All your drugs have an acid effect on the body. Your other grains, other
-    than the list on the alkaline side, or your other legumes, other than lentil,
-    lima and soy, or your other nuts, other than Brazil and almond, have an acid effect
+  quote: All your drugs have an acid effect on the body. Your other grains, other than the list on the alkaline side, or your
+    other legumes, other than lentil, lima and soy, or your other nuts, other than Brazil and almond, have an acid effect
     on the body.
 - id: barbara-oneil-fresh-cheeses-ph
   location: Acid-Forming Foods Section
-  quote: All your drugs have an acid effect on the body. Your other grains, other
-    than the list on the alkaline side, or your other legumes, other than lentil,
-    lima and soy, or your other nuts, other than Brazil and almond, have an acid effect
+  quote: All your drugs have an acid effect on the body. Your other grains, other than the list on the alkaline side, or your
+    other legumes, other than lentil, lima and soy, or your other nuts, other than Brazil and almond, have an acid effect
     on the body.
 version: 2
 status: active

@@ -15,11 +15,11 @@ aliases:
 summary: Dyslipidemia encompasses elevated LDL (especially small dense LDL particles), low HDL, elevated triglycerides, and
   elevated ApoB. Advanced lipid particle testing (LDL-P, ApoB) outperforms calculated LDL-C for cardiovascular risk stratification.
 common_symptoms:
-- fatigue
+- lethargy
 - chest-tightness
 - xanthomas
-- high-cholesterol
-- high-triglycerides
+- elevated-cholesterol
+- elevated-triglycerides
 - low-hdl
 - no-symptoms-at-rest
 red_flags:
@@ -44,8 +44,8 @@ key_mechanisms:
 - insulin-resistance
 - chronic-inflammation
 - oxidative-stress
-- gut-dysbiosis
-- vldl-overproduction-from-excess-carbs
+- dysbiosis-gut-microbiome-imbalance
+- hepatic-lipogenesis
 - oxidative-stress-vascular
 - small-dense-ldl-atherogenesis
 - apob-atherogenic-particle-burden

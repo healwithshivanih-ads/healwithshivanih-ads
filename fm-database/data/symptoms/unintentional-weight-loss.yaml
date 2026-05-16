@@ -6,17 +6,16 @@ aliases:
 - losing weight without trying
 category: metabolic
 severity: concerning
-description: Unintended weight loss occurring in context of nutrient malabsorption
-  from gut dysbiosis and hypochlorhydria. A strict elimination diet would worsen this
-  if not modified appropriately.
-when_to_refer: Significant unintentional weight loss always warrants clinician evaluation
-  to rule out malignancy, inflammatory bowel disease, or other serious pathology.
+description: Unintended weight loss occurring in context of nutrient malabsorption from gut dysbiosis and hypochlorhydria.
+  A strict elimination diet would worsen this if not modified appropriately.
+when_to_refer: Significant unintentional weight loss always warrants clinician evaluation to rule out malignancy, inflammatory
+  bowel disease, or other serious pathology.
 linked_to_topics:
 - hypochlorhydria
-- dysbiosis
+- gut-dysbiosis
 - gut-skin-hormone-axis
 linked_to_mechanisms:
-- gut-barrier-dysfunction
+- leaky-gut
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Root Cause Discussion

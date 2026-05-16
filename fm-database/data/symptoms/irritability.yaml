@@ -10,20 +10,18 @@ aliases:
 - anxious gut
 category: mood
 severity: common
-description: Mood disturbances including irritability associated with folate or B12
-  deficiency and impaired neurotransmitter synthesis (dopamine, serotonin).
-when_to_refer: Refer if mood disturbances are severe or accompanied by depression
-  or psychosis.
+description: Mood disturbances including irritability associated with folate or B12 deficiency and impaired neurotransmitter
+  synthesis (dopamine, serotonin).
+when_to_refer: Refer if mood disturbances are severe or accompanied by depression or psychosis.
 linked_to_topics:
-- folate-vitamin-b9
+- folate-nutrition
 - mthfr-gene-variant
 linked_to_mechanisms:
 - methylation
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Folate Deficiency Signs & Symptoms
-  quote: Fatigue, irritability and cognitive decline are also some other signs and
-    symptoms.
+  quote: Fatigue, irritability and cognitive decline are also some other signs and symptoms.
 - id: vitaone-health-coaching-toolkit
   location: Low Fodmap Diet Symptom Tracker — Section 2
   quote: Mood changes / irritability

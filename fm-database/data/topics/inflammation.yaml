@@ -5,19 +5,17 @@ aliases:
 - low-grade-inflammation
 - cytokine load
 - low-grade systemic inflammation
-summary: Persistent sub-clinical inflammatory state driven by chronic stress, emotional
-  suppression, loneliness, gut dysbiosis, or metabolic dysfunction, underpinning most
-  chronic disease.
+summary: Persistent sub-clinical inflammatory state driven by chronic stress, emotional suppression, loneliness, gut dysbiosis,
+  or metabolic dysfunction, underpinning most chronic disease.
 common_symptoms:
-- persistent fatigue
+- lethargy
 - joint or muscle aches
-- brain fog
+- poor-concentration
 - frequent infections / slow wound healing
-- fatigue
 - joint-pain
 - brain-fog
 - autoimmune-flares
-- weight-gain
+- unexplained-weight-gain
 red_flags:
 - hs-CRP > 10 mg/L without obvious infection (refer)
 - inflammation plus unexplained weight loss
@@ -28,7 +26,7 @@ related_topics:
 - thyroid
 - pcos
 - gut-brain-axis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - dyspepsia
 - hpa-axis-dysregulation
 key_mechanisms:
@@ -37,10 +35,9 @@ key_mechanisms:
 - visceral-adiposity
 - chronic-inflammation
 - hpa-axis-dysregulation
-coaching_scope_notes: Anti-inflammatory diet, omega-3 support, curcumin, polyphenols,
-  and stress reduction are within coaching scope.
-clinician_scope_notes: 'Marker interpretation, NSAID / steroid management, workup
-  for occult
+coaching_scope_notes: Anti-inflammatory diet, omega-3 support, curcumin, polyphenols, and stress reduction are within coaching
+  scope.
+clinician_scope_notes: 'Marker interpretation, NSAID / steroid management, workup for occult
 
   infection or malignancy when indicated.
 
@@ -50,8 +47,7 @@ sources:
   location: practice_guide.md, Inflammation section
 - id: vitaone-adrenal-cheatsheet
   location: Practitioner's Clinical Takeaway — Loneliness section (p.19)
-  quote: Chronic loneliness silently activates inflammatory genes, accelerates biological
-    aging, and reduces recovery.
+  quote: Chronic loneliness silently activates inflammatory genes, accelerates biological aging, and reduces recovery.
 evidence_tier: plausible_emerging
 version: 2
 status: active

@@ -14,15 +14,12 @@ aliases:
 - post-exertional malaise prevention
 - pem-avoidant pacing
 category: other
-summary: A coaching framework — not a biological mechanism in the traditional sense
-  — used in chronic fatigue, long COVID, fibromyalgia, autoimmune flare, and post-viral
-  fatigue. The client's daily energy capacity is treated as a finite envelope; sustained
-  activity above the envelope triggers post-exertional malaise (PEM) and prolongs
-  recovery, while staying within ~50-70% of perceived capacity allows the body to
-  rebuild over weeks to months. Pacing combines physical, cognitive, and emotional
-  exertion as a single shared budget; rest is treated as active recovery rather than
-  laziness. The opposite of 'push through' culture and a critical reframe for high-functioning
-  achievers struggling with chronic fatigue.
+summary: A coaching framework — not a biological mechanism in the traditional sense — used in chronic fatigue, long COVID,
+  fibromyalgia, autoimmune flare, and post-viral fatigue. The client's daily energy capacity is treated as a finite envelope;
+  sustained activity above the envelope triggers post-exertional malaise (PEM) and prolongs recovery, while staying within
+  ~50-70% of perceived capacity allows the body to rebuild over weeks to months. Pacing combines physical, cognitive, and
+  emotional exertion as a single shared budget; rest is treated as active recovery rather than laziness. The opposite of 'push
+  through' culture and a critical reframe for high-functioning achievers struggling with chronic fatigue.
 upstream_drivers:
 - chronic fatigue diagnosis
 - post-viral fatigue / long COVID
@@ -30,8 +27,8 @@ upstream_drivers:
 - post-exertional malaise pattern
 - autoimmune flare
 - post-surgical recovery
-- mitochondrial dysfunction
-- HPA dysregulation
+- mitochondrial-dysfunction
+- cortisol-elevation
 - prior 'boom-bust' cycle (overdo, crash, repeat)
 - coach / clinician guidance
 - self-tracking via wearables (HRV, steps, energy logs)
@@ -51,8 +48,8 @@ related_mechanisms:
 - post-viral-fatigue
 - mitochondrial-dysfunction
 - hpa-axis-dysregulation
-- sympathetic-overdrive
-- chronic-systemic-inflammation
+- sympathetic-dominance
+- chronic-inflammation
 linked_to_topics:
 - chronic-pain-and-fatigue
 - adrenal-fatigue
@@ -62,17 +59,13 @@ linked_to_topics:
 - immune-support-covid-19
 sources:
 - id: vitaone-skill-practice-guide
-  location: practice_guide.md, Chronic Fatigue + Long COVID — pacing + energy envelope
-    framework
+  location: practice_guide.md, Chronic Fatigue + Long COVID — pacing + energy envelope framework
 evidence_tier: strong
-notes_for_coach: This is foundational coaching content for any client with chronic
-  fatigue / long COVID / fibromyalgia / autoimmune flare. Practical tools 'four-quarter
-  day' (alternating activity / rest blocks), HRV monitoring (Oura, Whoop, Apple Watch),
-  energy diary (1-10 scale rating before / after activities), 50% rule (do 50% of
-  what feels possible — often counterintuitive), pre-emptive rest before known stressors,
-  reframing rest as active recovery. The client's biggest psychological hurdle is
-  letting go of productivity identity; this is real coaching work. Progress is non-linear
-  — set expectations.
+notes_for_coach: This is foundational coaching content for any client with chronic fatigue / long COVID / fibromyalgia / autoimmune
+  flare. Practical tools 'four-quarter day' (alternating activity / rest blocks), HRV monitoring (Oura, Whoop, Apple Watch),
+  energy diary (1-10 scale rating before / after activities), 50% rule (do 50% of what feels possible — often counterintuitive),
+  pre-emptive rest before known stressors, reframing rest as active recovery. The client's biggest psychological hurdle is
+  letting go of productivity identity; this is real coaching work. Progress is non-linear — set expectations.
 version: 1
 status: active
 updated_at: '2026-05-10'

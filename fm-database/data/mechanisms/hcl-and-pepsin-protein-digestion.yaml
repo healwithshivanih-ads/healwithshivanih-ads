@@ -8,12 +8,10 @@ aliases:
 - pepsin deficiency
 - pepsinogen conversion failure
 category: gut
-summary: The stomach is the only acid environment in the GI tract. Parietal cells
-  release hydrochloric acid, which activates pepsinogen to form pepsin — the enzyme
-  that breaks down protein. Adequate stomach acid is essential for protein breakdown;
-  insufficient acid (not excess) is proposed as the common clinical problem. Long-term
-  antacid use impairs protein digestion and may allow partially digested proteins
-  to reach the colon, fuelling pathogenic bacterial overgrowth.
+summary: The stomach is the only acid environment in the GI tract. Parietal cells release hydrochloric acid, which activates
+  pepsinogen to form pepsin — the enzyme that breaks down protein. Adequate stomach acid is essential for protein breakdown;
+  insufficient acid (not excess) is proposed as the common clinical problem. Long-term antacid use impairs protein digestion
+  and may allow partially digested proteins to reach the colon, fuelling pathogenic bacterial overgrowth.
 upstream_drivers:
 - meal-size
 - stress
@@ -26,7 +24,7 @@ downstream_effects:
 related_mechanisms:
 - cardiac-sphincter-weakness
 - pyloric-sphincter-regulation
-- pancreatic-enzyme-function
+- exocrine-pancreatic-enzyme-deficiency
 linked_to_topics:
 - gastrointestinal-tract-overview
 - acid-reflux-and-cardiac-sphincter-weakness
@@ -35,12 +33,12 @@ evidence_tier: strong
 sources:
 - id: barbara-oneil-gi-tract
   location: Stomach & Acid Section
-  quote: Pepsin is the enzyme that breaks down protein... I have never met anyone
-    with too much acid in their stomach, but I have met many with not enough.
+  quote: Pepsin is the enzyme that breaks down protein... I have never met anyone with too much acid in their stomach, but
+    I have met many with not enough.
 - id: coconote-fm-hypochlorhydria
   location: Functions of Gastric Acid
-  quote: Gastric acid helps in the conversion of pepsinogen to absinthe, which is
-    an important component for hydrolysis of protein.
+  quote: Gastric acid helps in the conversion of pepsinogen to absinthe, which is an important component for hydrolysis of
+    protein.
 version: 1
 status: active
 updated_at: '2026-05-05'

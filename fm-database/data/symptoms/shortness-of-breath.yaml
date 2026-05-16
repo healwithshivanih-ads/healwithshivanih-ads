@@ -8,25 +8,24 @@ aliases:
 - dyspnoea on exertion
 category: cardiovascular
 severity: concerning
-description: Difficulty breathing or breathlessness, especially on exertion, due to
-  reduced oxygen-carrying capacity from low haemoglobin.
-when_to_refer: Shortness of breath at rest or with minimal activity should be referred
-  to a physician to rule out cardiac or pulmonary causes.
+description: Difficulty breathing or breathlessness, especially on exertion, due to reduced oxygen-carrying capacity from
+  low haemoglobin.
+when_to_refer: Shortness of breath at rest or with minimal activity should be referred to a physician to rule out cardiac
+  or pulmonary causes.
 linked_to_topics:
 - chronic-stress
 - iron-deficiency-anemia
 linked_to_mechanisms:
-- sympathetic-nervous-system-activation
+- sympathetic-dominance
 sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress — Respiratory System
-  quote: Cause shortness of breath and worsen asthma or COPD, Can cause shallow breathing
-    which over time may ↓ oxygen to vital organs
+  quote: Cause shortness of breath and worsen asthma or COPD, Can cause shallow breathing which over time may ↓ oxygen to
+    vital organs
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
-  quote: Patients could have shortness of breath because the red blood cells carry
-    oxygen to different parts of the body the muscles so again patients could have
-    shortness of breath.
+  quote: Patients could have shortness of breath because the red blood cells carry oxygen to different parts of the body the
+    muscles so again patients could have shortness of breath.
 version: 2
 status: active
 updated_at: '2026-05-05'

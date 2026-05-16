@@ -1,29 +1,27 @@
 slug: ala-from-flaxseed-associated-with-reduced-chd-risk
-statement: Women with the highest ALA intake had a 45% lower risk of fatal coronary
-  heart disease compared to those with the lowest intake.
+statement: Women with the highest ALA intake had a 45% lower risk of fatal coronary heart disease compared to those with the
+  lowest intake.
 evidence_tier: plausible_emerging
-rationale: Cited as a cohort study finding in the lecture. ALA is the plant-based
-  omega-3 found in flaxseeds. ALA has also been shown to decrease TNF and IL-1B production
-  and has mild anti-inflammatory benefits. Source is FM lecture of moderate quality.
-coaching_translation: Eating flaxseeds and other plant-based omega-3 foods can meaningfully
-  reduce your heart disease risk, even if you don't eat fish.
+rationale: Cited as a cohort study finding in the lecture. ALA is the plant-based omega-3 found in flaxseeds. ALA has also
+  been shown to decrease TNF and IL-1B production and has mild anti-inflammatory benefits. Source is FM lecture of moderate
+  quality.
+coaching_translation: Eating flaxseeds and other plant-based omega-3 foods can meaningfully reduce your heart disease risk,
+  even if you don't eat fish.
 caveats:
 - Cohort/observational study — cannot prove causation.
-- ALA-to-EPA/DHA conversion is low (5–10% and 2–5% respectively); direct EPA/DHA intake
-  is more efficacious for clinical endpoints.
+- ALA-to-EPA/DHA conversion is low (5–10% and 2–5% respectively); direct EPA/DHA intake is more efficacious for clinical endpoints.
 - Source is an FM lecture, not the primary cohort paper.
 linked_to_topics:
 - omega-3-fatty-acids
 linked_to_supplements:
-- ground-flaxseed
+- flax-seed
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Alpha-Linolenic Acid (ALA) Slide
-  quote: in a cohort it was seen that those with highest ALA intake had a risk of
-    fatal CHD, that is coronary heart diseases, that was 45% lower than women with
-    the lowest intake.
+  quote: in a cohort it was seen that those with highest ALA intake had a risk of fatal CHD, that is coronary heart diseases,
+    that was 45% lower than women with the lowest intake.
 version: 1
 status: active
 updated_at: '2026-05-05'

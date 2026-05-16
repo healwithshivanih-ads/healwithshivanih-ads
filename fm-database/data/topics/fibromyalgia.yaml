@@ -3,38 +3,35 @@ display_name: Fibromyalgia
 aliases:
 - FMS
 - fibro
-summary: A chronic condition characterised by widespread musculoskeletal pain, fatigue,
-  and often sleep and mood disturbances. Mentioned in the lecture as a condition sharing
-  root causes (inflammation, gut dysfunction, trauma/stress) with other chronic pain
-  diagnoses.
+summary: A chronic condition characterised by widespread musculoskeletal pain, fatigue, and often sleep and mood disturbances.
+  Mentioned in the lecture as a condition sharing root causes (inflammation, gut dysfunction, trauma/stress) with other chronic
+  pain diagnoses.
 common_symptoms:
 - widespread-muscle-pain
-- low-energy
-- poor-sleep
+- chronic-fatigue
+- sleep-disruption
 - brain-fog
 - joint-pain
 red_flags:
 - progressive neurological symptoms
-- unexplained weight loss
+- unintentional-weight-loss
 related_topics:
 - chronic-pain-and-fatigue
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - hpa-axis-dysregulation
 key_mechanisms:
 - systemic-inflammation
 - hpa-axis-dysregulation
 - leaky-gut
-coaching_scope_notes: Trauma and stress are identified triggers; coaches can support
-  stress management and lifestyle changes. Diagnosis and pharmacological management
-  is out of scope.
-clinician_scope_notes: Consider ruling out inflammatory arthropathies, thyroid disease,
-  and sleep disorders. Trauma history is highly relevant.
+coaching_scope_notes: Trauma and stress are identified triggers; coaches can support stress management and lifestyle changes.
+  Diagnosis and pharmacological management is out of scope.
+clinician_scope_notes: Consider ruling out inflammatory arthropathies, thyroid disease, and sleep disorders. Trauma history
+  is highly relevant.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: System-Based Approach
-  quote: The chronic fatigue we can see in fibromyalgia, in cancer, obese people,
-    arthritis, they have chronic pain.
+  quote: The chronic fatigue we can see in fibromyalgia, in cancer, obese people, arthritis, they have chronic pain.
 version: 1
 status: active
 updated_at: '2026-05-05'

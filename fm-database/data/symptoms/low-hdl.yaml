@@ -7,10 +7,9 @@ aliases:
 - low HDL-C
 category: metabolic
 severity: concerning
-description: Low HDL (<42 mg/dL in men; optimal >55–60 mg/dL) is independently associated
-  with increased cardiovascular events. HDL is anti-inflammatory, antioxidant, and
-  anti-thrombotic. Every 1 mg/dL increase in HDL reduces risk 2% in men and 3% in
-  women.
+description: Low HDL (<42 mg/dL in men; optimal >55–60 mg/dL) is independently associated with increased cardiovascular events.
+  HDL is anti-inflammatory, antioxidant, and anti-thrombotic. Every 1 mg/dL increase in HDL reduces risk 2% in men and 3%
+  in women.
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-risk-assessment
@@ -22,10 +21,8 @@ linked_to_topics:
 linked_to_mechanisms:
 - insulin-resistance
 - reverse-cholesterol-transport
-- ldl-particle-size-atherogenicity
 - small-dense-ldl-atherogenesis
-when_to_refer: HDL below 25 mg/dL carries risk equivalent to LDL of 220 and warrants
-  clinician evaluation.
+when_to_refer: HDL below 25 mg/dL carries risk equivalent to LDL of 220 and warrants clinician evaluation.
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 1
@@ -35,13 +32,11 @@ sources:
   quote: Low HDL cholesterol
 - id: coconote-fm-biomarkers-cvs
   location: Lipid Burden and Cholesterol Myths
-  quote: the low SDR level, that is actually a risk factor for cholesterol. And if
-    you look at your patient profile, you can find out that patient is having less
-    than 40 of SDR.
+  quote: the low SDR level, that is actually a risk factor for cholesterol. And if you look at your patient profile, you can
+    find out that patient is having less than 40 of SDR.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: HDL and Cardiovascular Risk
-  quote: For every milligram you increase HDL, you decrease risk in men 2% and in
-    women 3%.
+  quote: For every milligram you increase HDL, you decrease risk in men 2% and in women 3%.
 version: 4
 status: active
 updated_at: '2026-05-05'

@@ -1,31 +1,27 @@
 slug: excess-omega-6-vegetable-oils-drive-cvd
-statement: Excess dietary polyunsaturated fats from vegetable oils (soybean, corn,
-  sunflower, safflower) are a true cause of heart disease via oxidative stress.
+statement: Excess dietary polyunsaturated fats from vegetable oils (soybean, corn, sunflower, safflower) are a true cause
+  of heart disease via oxidative stress.
 evidence_tier: plausible_emerging
-rationale: The hypothesis that excess omega-6 linoleic acid from industrial seed oils
-  promotes oxidative stress and cardiovascular disease is biologically plausible and
-  supported by some research, but is not mainstream consensus. Some large trials show
+rationale: The hypothesis that excess omega-6 linoleic acid from industrial seed oils promotes oxidative stress and cardiovascular
+  disease is biologically plausible and supported by some research, but is not mainstream consensus. Some large trials show
   benefits of replacing saturated fat with polyunsaturated fats.
-coaching_translation: Cooking oils like soybean, corn, and sunflower oil are high
-  in omega-6 fats which, in excess, can increase inflammation and oxidative stress
-  in your body. Reducing these and choosing healthier fats is important for heart
-  health.
+coaching_translation: Cooking oils like soybean, corn, and sunflower oil are high in omega-6 fats which, in excess, can increase
+  inflammation and oxidative stress in your body. Reducing these and choosing healthier fats is important for heart health.
 caveats:
-- The harm from dietary omega-6 PUFA is contested — major guidelines recommend replacing
-  saturated fat with PUFA. The FM view prioritises omega-6:omega-3 balance.
+- The harm from dietary omega-6 PUFA is contested — major guidelines recommend replacing saturated fat with PUFA. The FM view
+  prioritises omega-6:omega-3 balance.
 - Source is an educational case study, not primary literature.
 linked_to_topics:
 - cardiovascular-risk-assessment
 - dyslipidemia
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cvs-risk-assessment
   location: Cholesterol is NOT the villain (Slide 13)
-  quote: Excess dietary polyunsaturated fats from vegetable oils like soybean, corn,
-    sunflower and safflower.
+  quote: Excess dietary polyunsaturated fats from vegetable oils like soybean, corn, sunflower and safflower.
 version: 1
 status: active
 updated_at: '2026-05-04'

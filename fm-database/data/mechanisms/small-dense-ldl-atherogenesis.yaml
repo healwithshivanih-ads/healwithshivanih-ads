@@ -11,16 +11,15 @@ aliases:
 - LDL particle number
 - pattern B LDL
 category: metabolic
-summary: Small, dense LDL particles are more atherogenic than large, buoyant LDL particles.
-  They penetrate arterial walls more readily and are more susceptible to oxidation.
-  High triglycerides and low HDL are clinical markers predictive of small dense LDL
-  predominance.
+summary: Small, dense LDL particles are more atherogenic than large, buoyant LDL particles. They penetrate arterial walls
+  more readily and are more susceptible to oxidation. High triglycerides and low HDL are clinical markers predictive of small
+  dense LDL predominance.
 upstream_drivers:
 - high-triglycerides
 - insulin-resistance
 - high-sugar-diet
 downstream_effects:
-- oxidized-ldl-inflammasome-activation
+- ldl-oxidation
 - plaque-formation
 - increased-cardiovascular-events
 related_mechanisms:
@@ -35,13 +34,12 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: LDL Particle Number and Risk
-  quote: These small particles, what we called years ago, LDL pattern B are much more
-    aggressive, much more likely to get into the lining of the blood vessel.
+  quote: These small particles, what we called years ago, LDL pattern B are much more aggressive, much more likely to get
+    into the lining of the blood vessel.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: LDL particle size section
-  quote: Small means they are the size is very small so they can enter endothelium
-    easy so you can see the large number they can go and they can cross the endothelial
-    wall and they are actually getting the risk.
+  quote: Small means they are the size is very small so they can enter endothelium easy so you can see the large number they
+    can go and they can cross the endothelial wall and they are actually getting the risk.
 - id: coconote-fm-biomarkers-cvs
   location: LDL Size and Atherogenicity
   quote: So here, the LDL size is matter compared to the concentration of LDL.

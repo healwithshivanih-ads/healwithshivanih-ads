@@ -1,18 +1,15 @@
 slug: zinc-supports-t4-to-t3-conversion
-statement: Zinc is required for proper thyroid hormone metabolism, including T4-to-T3
-  conversion.
+statement: Zinc is required for proper thyroid hormone metabolism, including T4-to-T3 conversion.
 evidence_tier: plausible_emerging
-rationale: Zinc is a cofactor in deiodinase enzyme activity and overall thyroid hormone
-  metabolism. Animal and some human studies support this role, though large RCTs are
-  limited.
-coaching_translation: Zinc deficiency can impair the conversion of thyroid hormone
-  into its active form. Ensuring adequate zinc through diet or supplementation supports
-  thyroid function.
+rationale: Zinc is a cofactor in deiodinase enzyme activity and overall thyroid hormone metabolism. Animal and some human
+  studies support this role, though large RCTs are limited.
+coaching_translation: Zinc deficiency can impair the conversion of thyroid hormone into its active form. Ensuring adequate
+  zinc through diet or supplementation supports thyroid function.
 caveats:
 - High-dose zinc supplementation can deplete copper; balance is important.
 linked_to_topics:
 - thyroid-dysfunction
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements:
 - zinc
 out_of_scope_notes: ''

@@ -4,9 +4,8 @@ aliases:
 - HDL-mediated cholesterol efflux
 - cholesterol return to liver
 category: metabolic
-summary: HDL particles remove excess cholesterol from peripheral cells and transport
-  it back to the liver (reverse cholesterol transport), where it is converted to bile
-  salts. Low HDL impairs this process, allowing cholesterol accumulation in arterial
+summary: HDL particles remove excess cholesterol from peripheral cells and transport it back to the liver (reverse cholesterol
+  transport), where it is converted to bile salts. Low HDL impairs this process, allowing cholesterol accumulation in arterial
   walls.
 upstream_drivers:
 - low-hdl
@@ -16,7 +15,7 @@ downstream_effects:
 - cholesterol-accumulation-in-arteries
 - atherosclerosis
 related_mechanisms:
-- vldl-overproduction-from-excess-carbs
+- hepatic-lipogenesis
 - oxidative-stress-vascular
 linked_to_topics:
 - dyslipidemia
@@ -25,8 +24,8 @@ evidence_tier: strong
 sources:
 - id: vitaone-cvs-risk-assessment
   location: HDL (Slide 8)
-  quote: The function of HDL is to remove the excess cholesterol from the cells… is
-    brought back to the liver by HDL in a process known as Reverse Cholesterol Transport.
+  quote: The function of HDL is to remove the excess cholesterol from the cells… is brought back to the liver by HDL in a
+    process known as Reverse Cholesterol Transport.
 version: 1
 status: active
 updated_at: '2026-05-04'

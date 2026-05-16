@@ -1,26 +1,24 @@
 slug: omega-3-raises-ldl-via-lipase-receptor
-statement: Omega-3 fatty acids lower triglycerides and VLDL, which can raise LDL as
-  the lipoprotein lipase receptor becomes less overwhelmed and more efficient — this
-  is expected and not inherently harmful.
+statement: Omega-3 fatty acids lower triglycerides and VLDL, which can raise LDL as the lipoprotein lipase receptor becomes
+  less overwhelmed and more efficient — this is expected and not inherently harmful.
 evidence_tier: strong
-rationale: This is the established pharmacological mechanism of omega-3 therapy in
-  hypertriglyceridemia, acknowledged by cardiologists and lipid specialists.
-coaching_translation: If someone on omega-3s sees their LDL go up slightly, this is
-  usually a normal response — not a reason to stop. Their triglycerides coming down
-  is the primary goal.
+rationale: This is the established pharmacological mechanism of omega-3 therapy in hypertriglyceridemia, acknowledged by cardiologists
+  and lipid specialists.
+coaching_translation: If someone on omega-3s sees their LDL go up slightly, this is usually a normal response — not a reason
+  to stop. Their triglycerides coming down is the primary goal.
 caveats:
 - Patient-specific LDL trajectory should be monitored by clinician.
 linked_to_topics:
 - dyslipidemia
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Omega-3 Mechanism
-  quote: You will see an increase in LDL because now those triglycerides are being
-    broken down. They're no longer overwhelming the lipoprotein lipase receptor.
+  quote: You will see an increase in LDL because now those triglycerides are being broken down. They're no longer overwhelming
+    the lipoprotein lipase receptor.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -10,9 +10,9 @@ caveats:
 - Dose not specified in source. Doses above 5000 IU/day should be monitored by clinician via serum 25-OH-D.
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
-- 5r-gut-healing-protocol
+- 5r-gut-protocol
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

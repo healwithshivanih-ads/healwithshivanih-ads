@@ -4,11 +4,9 @@ aliases:
 - pyloric valve
 - gastric emptying regulation
 category: gut
-summary: The pyloric sphincter only opens to release chyme into the duodenum when
-  food is broken down to the correct state. Overeating, snacking between meals, excess
-  fluid intake, stress, and alcohol all delay this process — extending gastric transit
-  from the normal 3.5–4 hours to 8+ hours, as documented by Dr William Beaumont's
-  19th-century gastric fistula experiments.
+summary: The pyloric sphincter only opens to release chyme into the duodenum when food is broken down to the correct state.
+  Overeating, snacking between meals, excess fluid intake, stress, and alcohol all delay this process — extending gastric
+  transit from the normal 3.5–4 hours to 8+ hours, as documented by Dr William Beaumont's 19th-century gastric fistula experiments.
 upstream_drivers:
 - overeating
 - snacking-between-meals
@@ -21,7 +19,7 @@ downstream_effects:
 - nutrient-malabsorption
 related_mechanisms:
 - hcl-and-pepsin-protein-digestion
-- pancreatic-enzyme-function
+- exocrine-pancreatic-enzyme-deficiency
 linked_to_topics:
 - meal-timing-and-digestive-rest
 - gastrointestinal-tract-overview
@@ -29,9 +27,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: barbara-oneil-gi-tract
   location: Meal Timing & Beaumont Section
-  quote: Dr. Beaumont came to the conclusion that there are senses coming off from
-    the pyloric sphincter and it will only open when the food is broken down to the
-    right state.
+  quote: Dr. Beaumont came to the conclusion that there are senses coming off from the pyloric sphincter and it will only
+    open when the food is broken down to the right state.
 version: 1
 status: active
 updated_at: '2026-05-05'

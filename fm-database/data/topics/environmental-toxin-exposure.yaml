@@ -4,16 +4,15 @@ aliases:
 - chemical exposure
 - toxicant exposure
 - environmental chemical burden
-summary: Ongoing exposure to pesticides, herbicides, heavy metals, plasticizers (BPA,
-  phthalates), industrial chemicals, mold/mycotoxins, and oral/personal care product
-  chemicals that cumulatively increase the body burden. Sources include food, water,
-  air, dental materials, cookware, and personal care products.
+summary: Ongoing exposure to pesticides, herbicides, heavy metals, plasticizers (BPA, phthalates), industrial chemicals, mold/mycotoxins,
+  and oral/personal care product chemicals that cumulatively increase the body burden. Sources include food, water, air, dental
+  materials, cookware, and personal care products.
 common_symptoms:
-- fatigue
+- lethargy
 - endocrine-disruption-symptoms
 - allergies
-- cognitive-difficulties
-- weight-gain
+- poor-concentration
+- unexplained-weight-gain
 red_flags:
 - acute chemical poisoning symptoms
 - occupational exposure to carcinogens without PPE
@@ -24,18 +23,16 @@ related_topics:
 - oral-health-toxins
 key_mechanisms:
 - endocrine-disruption-by-toxicants
-- phase-i-cytochrome-p450
-coaching_scope_notes: Coaches can guide clients through toxin exposure questionnaires,
-  recommend organic food choices, non-toxic cookware, and reducing plastics. Medical
-  assessment of occupational exposures is clinician scope.
+- cyp450-phase-i-activation
+coaching_scope_notes: Coaches can guide clients through toxin exposure questionnaires, recommend organic food choices, non-toxic
+  cookware, and reducing plastics. Medical assessment of occupational exposures is clinician scope.
 evidence_tier: strong
 clinician_scope_notes: ''
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — What is Detox?
-  quote: One of the most common exposures is toxic chemicals from agricultural production
-    (pesticides, herbicides, and fertilizers. These exposures commonly occur through
-    ingestion or inhalation of water, foods, and air and from time spent in the home
+  quote: One of the most common exposures is toxic chemicals from agricultural production (pesticides, herbicides, and fertilizers.
+    These exposures commonly occur through ingestion or inhalation of water, foods, and air and from time spent in the home
     or work environment.
 version: 1
 status: active

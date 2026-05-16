@@ -4,34 +4,30 @@ aliases:
 - free radical burden
 - antioxidant deficiency
 - ROS accumulation
-summary: Oxidative stress arises when exposure to toxins, heavy metals, or endogenous
-  mitochondrial byproducts exceeds the body's antioxidant reserve. It activates NF-kB,
-  driving inflammatory gene expression. Key antioxidants include vitamin C, E, A,
-  and the master intracellular antioxidant glutathione. Most patients with chronic
-  disease show depleted glutathione. Replenishing antioxidants and glutathione precursors
-  (NAC, glycine) is a core FM strategy.
+summary: Oxidative stress arises when exposure to toxins, heavy metals, or endogenous mitochondrial byproducts exceeds the
+  body's antioxidant reserve. It activates NF-kB, driving inflammatory gene expression. Key antioxidants include vitamin C,
+  E, A, and the master intracellular antioxidant glutathione. Most patients with chronic disease show depleted glutathione.
+  Replenishing antioxidants and glutathione precursors (NAC, glycine) is a core FM strategy.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
 - chronic-pain
 related_topics:
 - chronic-inflammation
 - glutathione-depletion
 key_mechanisms:
-- nf-kappa-b-activation
+- nf-kb-activation
 - glutathione-depletion
-coaching_scope_notes: Coaches can support dietary antioxidant increase (colorful vegetables,
-  amla, green tea) and supplementation with vitamin C, E, A, NAC. IV glutathione is
-  out of coaching scope.
+coaching_scope_notes: Coaches can support dietary antioxidant increase (colorful vegetables, amla, green tea) and supplementation
+  with vitamin C, E, A, NAC. IV glutathione is out of coaching scope.
 evidence_tier: strong
 red_flags: []
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-approach-inflammation
   location: Oxidative Stress and NF-kB Activation
-  quote: simple meaning of oxidative stress is when you're exposed to any kind of
-    chemicals and you don't have a reserve of antioxidants, where you start developing
-    oxidative stress.
+  quote: simple meaning of oxidative stress is when you're exposed to any kind of chemicals and you don't have a reserve of
+    antioxidants, where you start developing oxidative stress.
 version: 1
 status: active
 updated_at: '2026-05-05'

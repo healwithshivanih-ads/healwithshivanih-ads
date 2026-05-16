@@ -13,12 +13,11 @@ summary: 'The 5R framework (Remove, Replace, Reinoculate, Repair, Rebalance) is 
 common_symptoms:
 - bloating
 - constipation
-- loose-stools
+- osmotic-diarrhea
 red_flags: []
 related_topics: []
 key_mechanisms:
 - leaky-gut
-- gut-permeability
 coaching_scope_notes: ''
 clinician_scope_notes: ''
 notes_for_coach: '[STUB — auto-created by Step 2 cleanup to close pending-refs. Enrich with material from a next ingest covering

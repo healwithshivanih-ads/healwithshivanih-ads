@@ -5,27 +5,25 @@ aliases:
 - T-reg cell regulation
 - regulatory T cell activity
 category: immune
-summary: T-regulatory (T-reg) cells are immune cells that suppress excessive immune
-  responses and maintain self-tolerance. In autoimmune conditions, T-reg function
-  is impaired. LDN appears to regulate T-reg cell activity (via IL-10 and TGF pathways),
+summary: T-regulatory (T-reg) cells are immune cells that suppress excessive immune responses and maintain self-tolerance.
+  In autoimmune conditions, T-reg function is impaired. LDN appears to regulate T-reg cell activity (via IL-10 and TGF pathways),
   potentially dampening autoimmune attacks including those on the thyroid.
 upstream_drivers:
-- ldn-opioid-rebound-immune-modulation
+- ldn-endorphin-rebound
 - chronic-stress
 downstream_effects:
 - reduced-autoimmune-activity
 - reduced-anti-thyroid-antibodies
 related_mechanisms:
-- ldn-opioid-rebound-immune-modulation
-- autoimmune-thyroid-attack
+- ldn-endorphin-rebound
+- thyroid-autoimmunity
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - low-dose-naltrexone-autoimmune
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
-  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — Mechanism of Action
-    of LDN
+  location: Low Dose Naltrexone (LDN) and Autoimmune Disease — Mechanism of Action of LDN
   quote: Regulation of T-Reg Cells
 version: 1
 status: active

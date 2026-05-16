@@ -1,31 +1,26 @@
 slug: homocysteine-is-primary-marker-of-methylation-defect
-statement: Elevated homocysteine is a primary indirect marker of methylation pathway
-  impairment (Phase 2 detoxification), alongside MMA (methylmalonic acid).
+statement: Elevated homocysteine is a primary indirect marker of methylation pathway impairment (Phase 2 detoxification),
+  alongside MMA (methylmalonic acid).
 evidence_tier: plausible_emerging
-rationale: Homocysteine elevation as a marker of methylation insufficiency (B12/folate/B6
-  deficiency or MTHFR variants) is well-supported in the literature. Its use specifically
-  as a Phase 2 liver detox surrogate marker is a functional medicine framing that
-  extends beyond mainstream hepatology but is biologically coherent.
-coaching_translation: High homocysteine on a blood panel can be a sign the methylation
-  system — which helps the liver process and clear toxins — needs support, often through
-  B vitamins.
-out_of_scope_notes: Homocysteine interpretation, B-vitamin dosing, and MTHFR genetic
-  testing must involve a clinician.
+rationale: Homocysteine elevation as a marker of methylation insufficiency (B12/folate/B6 deficiency or MTHFR variants) is
+  well-supported in the literature. Its use specifically as a Phase 2 liver detox surrogate marker is a functional medicine
+  framing that extends beyond mainstream hepatology but is biologically coherent.
+coaching_translation: High homocysteine on a blood panel can be a sign the methylation system — which helps the liver process
+  and clear toxins — needs support, often through B vitamins.
+out_of_scope_notes: Homocysteine interpretation, B-vitamin dosing, and MTHFR genetic testing must involve a clinician.
 caveats:
 - Source is expert lecture consensus.
-- Mainstream medicine uses homocysteine primarily as a cardiovascular risk marker,
-  not a liver detox marker.
+- Mainstream medicine uses homocysteine primarily as a cardiovascular risk marker, not a liver detox marker.
 linked_to_topics:
 - chronic-toxicity-assessment
-- liver-detox-phase-1-and-phase-2
+- liver-detoxification
 linked_to_supplements: []
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Homocysteine & Methylation Section
-  quote: if you look at the homosexual level, then you think about the difficulty
-    in phase 2 because the methylation pathway is not optimized. So I teach you that
-    homosexual is the primary indicator of the methylation defect apart from B2M.
+  quote: if you look at the homosexual level, then you think about the difficulty in phase 2 because the methylation pathway
+    is not optimized. So I teach you that homosexual is the primary indicator of the methylation defect apart from B2M.
 version: 1
 status: active
 updated_at: '2026-05-05'

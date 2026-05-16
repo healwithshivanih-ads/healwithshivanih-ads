@@ -13,24 +13,22 @@ aliases:
 - ebv lytic reactivation
 - herpes virus reactivation
 category: immune
-summary: After acute mononucleosis, EBV remains latent inside memory B-cells for life.
-  Under stress, immunosuppression, hormonal flux, or other infections, the virus
-  reactivates into its lytic cycle, releases viral proteins / antigens, and triggers
-  a fresh wave of immune response. Reactivation drives chronic fatigue, brain fog,
-  swollen lymph nodes, and is now strongly implicated as an autoimmune trigger (especially
-  for Hashimoto, lupus, MS, long COVID overlap). EBV viral capsid antigen (VCA) IgG
-  + early antigen (EA) IgG patterns distinguish prior infection from active reactivation.
+summary: After acute mononucleosis, EBV remains latent inside memory B-cells for life. Under stress, immunosuppression, hormonal
+  flux, or other infections, the virus reactivates into its lytic cycle, releases viral proteins / antigens, and triggers
+  a fresh wave of immune response. Reactivation drives chronic fatigue, brain fog, swollen lymph nodes, and is now strongly
+  implicated as an autoimmune trigger (especially for Hashimoto, lupus, MS, long COVID overlap). EBV viral capsid antigen
+  (VCA) IgG + early antigen (EA) IgG patterns distinguish prior infection from active reactivation.
 upstream_drivers:
 - prior EBV infection (95% of adults are positive)
 - chronic stress / cortisol elevation
-- HPA axis dysregulation
+- hpa-axis-dysregulation
 - poor sleep / circadian disruption
 - co-infection (other viruses, mould, Lyme, COVID)
 - hormonal flux (perimenopause, pregnancy, postpartum)
 - low vitamin D status
 - low glutathione / antioxidant deficiency
-- chronic inflammation
-- gut dysbiosis
+- systemic-inflammation
+- dysbiosis-gut-microbiome-imbalance
 - high refined carb diet driving inflammation
 - selenium deficiency
 - zinc deficiency
@@ -46,8 +44,8 @@ downstream_effects:
 - reactivation of other latent viruses (HHV-6, CMV)
 - autoimmune trigger via molecular mimicry (especially Hashimoto)
 - dysregulated immune system
-- chronic inflammation
-- mitochondrial dysfunction
+- systemic-inflammation
+- mitochondrial-dysfunction
 - depression / anxiety
 - post-viral fatigue syndrome
 - potential link to MS, lupus, Hashimoto onset
@@ -63,19 +61,16 @@ linked_to_topics:
 - chronic-pain-and-fatigue
 - autoimmune-disease
 - autoimmune-thyroiditis
-- hashimotos-thyroiditis
 - chronic-stress
 - immune-support-covid-19
 sources:
 - id: vitaone-skill-practice-guide
-  location: practice_guide.md, Chronic Fatigue + Autoimmunity section — viral reactivation
-    triggers
+  location: practice_guide.md, Chronic Fatigue + Autoimmunity section — viral reactivation triggers
 evidence_tier: plausible_emerging
-notes_for_coach: Order EBV antibody panel (VCA IgM, VCA IgG, EBNA, early antigen IgG)
-  in unexplained chronic fatigue or autoimmune flare. Active reactivation = high
-  EA IgG with EBNA positive. Coaching levers vitamin D > 50 ng/mL, glutathione precursors
-  (NAC, whey, glycine), zinc, monolaurin / l-lysine, sleep, stress reduction, gentle
-  pacing, gut healing. Recovery is months, not weeks — set expectations.
+notes_for_coach: Order EBV antibody panel (VCA IgM, VCA IgG, EBNA, early antigen IgG) in unexplained chronic fatigue or autoimmune
+  flare. Active reactivation = high EA IgG with EBNA positive. Coaching levers vitamin D > 50 ng/mL, glutathione precursors
+  (NAC, whey, glycine), zinc, monolaurin / l-lysine, sleep, stress reduction, gentle pacing, gut healing. Recovery is months,
+  not weeks — set expectations.
 version: 1
 status: active
 updated_at: '2026-05-10'

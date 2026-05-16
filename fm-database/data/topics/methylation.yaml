@@ -10,37 +10,34 @@ aliases:
 summary: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG are framed as key methylation supports. Disrupted
   methylation is linked to mood changes, elevated homocysteine, impaired histamine clearance, fatigue, and neurological symptoms.
 common_symptoms:
-- fatigue
-- cognitive-decline
+- lethargy
+- poor-concentration
 - mood-disturbances
-- mood-changes
+- mood-swings
 - brain-fog
 - elevated-homocysteine
 - poor-histamine-clearance
 - infertility
 - mood-changes-and-anxiety
-- poor-mental-flexibility
 red_flags:
 - irreversible neurological damage from B12 deficiency masked by high folate
 - severe developmental issues in newborns
 - irreversible-neurological-damage
-- macrocytic-megaloblastic-anemia
+- megaloblastic-anemia
 - high-folate-masking-b12-deficiency
 related_topics:
-- folate-vitamin-b9
+- folate-nutrition
 - vitamin-b12
 - mthfr-gene-variant
-- homocysteine-elevation
+- homocysteine-and-methylation
 - nutrition-deficiency
 - chronic-inflammation
 - thyroid
 - depression-like-symptoms
 - hair-loss
 key_mechanisms:
-- sam-cycle
-- methylation
+- methylation-cycle
 - mthfr-enzyme-dysfunction
-- methylation-support
 coaching_scope_notes: MTHFR and methylation framing is useful for client education; defer to clinician for MTHFR testing interpretation,
   high-dose B-vitamin protocols, and pregnancy folate supplementation.
 evidence_tier: plausible_emerging

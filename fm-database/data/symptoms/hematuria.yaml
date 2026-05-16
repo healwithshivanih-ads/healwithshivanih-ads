@@ -5,20 +5,17 @@ aliases:
 - hematuria
 category: urinary
 severity: red_flag
-description: Blood in the urine, potentially associated with vitamin K2 deficiency
-  and coagulation impairment.
-when_to_refer: Always refer. Haematuria requires urgent medical workup to rule out
-  urological pathology and coagulopathy.
+description: Blood in the urine, potentially associated with vitamin K2 deficiency and coagulation impairment.
+when_to_refer: Always refer. Haematuria requires urgent medical workup to rule out urological pathology and coagulopathy.
 linked_to_topics:
 - vitamin-k2
 linked_to_mechanisms:
-- coagulation-factor-activation
+- vitamin-k2-calcium-trafficking
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin K2 Deficiency Symptoms
-  quote: if there is a deficiency in vitamin K2, it can manifest as glupus, anechymosis,
-    hematiduia, GI bleeding, intracranial bleeding, prolonged bleeding or clotting
-    time.
+  quote: if there is a deficiency in vitamin K2, it can manifest as glupus, anechymosis, hematiduia, GI bleeding, intracranial
+    bleeding, prolonged bleeding or clotting time.
 version: 1
 status: active
 updated_at: '2026-05-05'

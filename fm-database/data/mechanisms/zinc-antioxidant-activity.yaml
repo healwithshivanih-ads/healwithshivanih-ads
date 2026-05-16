@@ -3,8 +3,7 @@ display_name: Zinc as Antioxidant
 aliases:
 - zinc oxidative stress reduction
 category: signaling
-summary: Zinc acts as an antioxidant, reducing oxidative stress in the body and thereby
-  contributing to reduced systemic inflammation.
+summary: Zinc acts as an antioxidant, reducing oxidative stress in the body and thereby contributing to reduced systemic inflammation.
 upstream_drivers:
 - zinc-deficiency
 downstream_effects:
@@ -13,13 +12,13 @@ downstream_effects:
 related_mechanisms:
 - zinc-immune-cell-maturation
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 evidence_tier: strong
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Role of Zinc
-  quote: Zinc also is a very good antioxidant. It decreases the oxidative stress of
-    the body and thus causing improvement in the inflammations of the body.
+  quote: Zinc also is a very good antioxidant. It decreases the oxidative stress of the body and thus causing improvement
+    in the inflammations of the body.
 version: 1
 status: active
 updated_at: '2026-05-05'

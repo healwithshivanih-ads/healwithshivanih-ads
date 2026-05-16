@@ -4,11 +4,9 @@ aliases:
 - hypercalcemia
 - excess calcium
 - calcium toxicity
-summary: When magnesium is insufficient relative to calcium (current population ratio
-  ~6:1 vs ideal 2:1), free ionic calcium circulates and deposits as gallstones, kidney
-  stones, heel spurs, vascular calcifications, breast calcifications, and fibromyalgia-type
-  pain. Routine calcium supplementation without magnesium correction may worsen this
-  state.
+summary: When magnesium is insufficient relative to calcium (current population ratio ~6:1 vs ideal 2:1), free ionic calcium
+  circulates and deposits as gallstones, kidney stones, heel spurs, vascular calcifications, breast calcifications, and fibromyalgia-type
+  pain. Routine calcium supplementation without magnesium correction may worsen this state.
 common_symptoms:
 - kidney-stones
 - heel-spurs
@@ -18,22 +16,20 @@ red_flags:
 - severe-hypercalcemia
 - renal-failure
 related_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - magnesium-cardiovascular-health
-- osteoporosis
+- bone-health
 key_mechanisms:
 - calcium-magnesium-imbalance
-coaching_scope_notes: Coaches can educate clients about the calcium-magnesium balance
-  and caution against over-supplementing calcium without magnesium. Supplement changes
-  should involve a clinician.
-clinician_scope_notes: Assess calcium:magnesium ratio. Review and potentially discontinue
-  calcium-only supplements before optimising magnesium.
+coaching_scope_notes: Coaches can educate clients about the calcium-magnesium balance and caution against over-supplementing
+  calcium without magnesium. Supplement changes should involve a clinician.
+clinician_scope_notes: Assess calcium:magnesium ratio. Review and potentially discontinue calcium-only supplements before
+  optimising magnesium.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Calcium overload section
-  quote: Ideally, the ratio has to be between 2:1 for calcium and magnesium but currently,
-    we all have a ratio which is 6:1.
+  quote: Ideally, the ratio has to be between 2:1 for calcium and magnesium but currently, we all have a ratio which is 6:1.
 version: 1
 status: active
 updated_at: '2026-05-05'

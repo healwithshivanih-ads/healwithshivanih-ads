@@ -1,15 +1,13 @@
 slug: sleep-exercise-stress-affect-gi-tract
-statement: Lifestyle factors — sleep, exercise, and stress — all directly affect the
-  GI tract, and balancing them is essential to an optimal digestive system (5R Rebalance
-  step).
+statement: Lifestyle factors — sleep, exercise, and stress — all directly affect the GI tract, and balancing them is essential
+  to an optimal digestive system (5R Rebalance step).
 evidence_tier: strong
-rationale: The relationship between stress (HPA axis, cortisol), sleep deprivation,
-  and gut motility/microbiome is well-established in the scientific literature.
-coaching_translation: Your gut is sensitive to your lifestyle. Poor sleep, chronic
-  stress, and lack of movement can all worsen gut symptoms. This is why the 5R approach
-  includes rebalancing lifestyle as a core step.
+rationale: The relationship between stress (HPA axis, cortisol), sleep deprivation, and gut motility/microbiome is well-established
+  in the scientific literature.
+coaching_translation: Your gut is sensitive to your lifestyle. Poor sleep, chronic stress, and lack of movement can all worsen
+  gut symptoms. This is why the 5R approach includes rebalancing lifestyle as a core step.
 linked_to_topics:
-- 5r-gut-restoration
+- 5r-gut-protocol
 - gut-dysfunction
 - gut-brain-axis
 out_of_scope_notes: ''
@@ -19,9 +17,8 @@ linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: It is important to pay attention to lifestyle choices. Sleep, exercise, and
-    stress can all affect the GI tract. Balancing those activities is important to
-    an optimal digestive tract.
+  quote: It is important to pay attention to lifestyle choices. Sleep, exercise, and stress can all affect the GI tract. Balancing
+    those activities is important to an optimal digestive tract.
 version: 1
 status: active
 updated_at: '2026-05-04'

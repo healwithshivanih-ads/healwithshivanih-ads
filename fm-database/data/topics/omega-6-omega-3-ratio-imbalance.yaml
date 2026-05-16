@@ -8,10 +8,10 @@ summary: Modern Western diets contain an omega-6 to omega-3 ratio as high as 25:
   the dietary recommendation of up to 11:1. This imbalance drives chronic inflammation, which is implicated in most major
   chronic diseases.
 common_symptoms:
-- chronic-inflammation
+- inflammation
 - joint-pain
 - skin-conditions
-- mood-disorders
+- mood-swings
 red_flags: []
 related_topics:
 - omega-3-fatty-acids
@@ -19,7 +19,7 @@ related_topics:
 - cardiometabolic-disease
 - insulin-resistance
 key_mechanisms:
-- omega6-omega3-competitive-inhibition
+- omega-3-omega-6-imbalance
 - arachidonic-acid-cascade
 - srebp1c-upregulation
 coaching_scope_notes: Coaches can help clients audit their diet for omega-6 rich foods (vegetable oils, processed foods) and

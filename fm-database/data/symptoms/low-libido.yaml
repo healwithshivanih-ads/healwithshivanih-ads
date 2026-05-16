@@ -16,12 +16,11 @@ aliases:
 - decreased-libido
 category: hormonal
 severity: common
-description: Decreased sexual desire associated with declining estrogen, progesterone,
-  and testosterone levels during perimenopause and menopause.
-when_to_refer: Refer if associated with significant hormonal pathology (hypogonadism,
-  hypothyroidism) or relationship distress requiring specialist support.
+description: Decreased sexual desire associated with declining estrogen, progesterone, and testosterone levels during perimenopause
+  and menopause.
+when_to_refer: Refer if associated with significant hormonal pathology (hypogonadism, hypothyroidism) or relationship distress
+  requiring specialist support.
 linked_to_topics:
-- adrenal-dysfunction
 - hpa-axis-dysregulation
 - perimenopause
 - chronic-stress
@@ -32,17 +31,14 @@ linked_to_topics:
 - menopause
 linked_to_mechanisms:
 - hpa-axis-dysregulation
-- pregnenolone-steal
 - dhea-depletion
-- cortisol-dhea-imbalance
 - mitochondrial-dysfunction
 - progesterone-deficiency
-- estrogen-progesterone-decline
+- estrogen-decline
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Testosterone row (p.4)
-  quote: '↓ Low libido, fatigue, sarcopenia. Solution: Strength training, zinc, Vit
-    D, HRT if indicated.'
+  quote: '↓ Low libido, fatigue, sarcopenia. Solution: Strength training, zinc, Vit D, HRT if indicated.'
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress — Reproduction
   quote: ↓ Libido and fertility, Can cause menstrual irregularities
@@ -57,12 +53,11 @@ sources:
   quote: Low sex drive — this is the same as the estrogen dominance symptoms as well.
 - id: coconote-fm-sex-hormones
   location: Symptoms of Menopause Transition
-  quote: loss of interest in sex, mood changes, sleep disturbances, forgetfulness,
-    headache, backache
+  quote: loss of interest in sex, mood changes, sleep disturbances, forgetfulness, headache, backache
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: This can cause symptoms associated with testosterone deficiency, including
-    fatigue, decreased libido, weight gain, mood changes, decreased muscle mass.
+  quote: This can cause symptoms associated with testosterone deficiency, including fatigue, decreased libido, weight gain,
+    mood changes, decreased muscle mass.
 version: 6
 status: active
 updated_at: '2026-05-05'

@@ -1,30 +1,26 @@
 slug: magnesium-b5-c-zinc-omega3-support-adrenal-resilience
-statement: Magnesium, pantothenic acid (B5), vitamin C, zinc, and omega-3 fatty acids
-  provide essential cofactor support for adrenal steroidogenesis and stress resilience.
+statement: Magnesium, pantothenic acid (B5), vitamin C, zinc, and omega-3 fatty acids provide essential cofactor support for
+  adrenal steroidogenesis and stress resilience.
 evidence_tier: fm_specific_thin
-rationale: 'Each nutrient plays a mechanistic role in adrenal function: B5 as CoA
-  cofactor, vitamin C concentrated in adrenal glands, magnesium for cortisol regulation,
-  zinc for adrenal enzyme activity, omega-3s for inflammatory modulation. However,
-  clinical trials specifically testing this combination for ''adrenal resilience''
-  are absent.'
-coaching_translation: Supporting your adrenal glands with nutrients like magnesium,
-  B5, vitamin C, zinc, and omega-3s helps your body cope with stress more effectively
-  and recover from chronic stress exposure.
-out_of_scope_notes: Dosing of any of these for adrenal support must be clinician-directed.
-  'Adrenal fatigue' is not a recognised medical diagnosis.
+rationale: 'Each nutrient plays a mechanistic role in adrenal function: B5 as CoA cofactor, vitamin C concentrated in adrenal
+  glands, magnesium for cortisol regulation, zinc for adrenal enzyme activity, omega-3s for inflammatory modulation. However,
+  clinical trials specifically testing this combination for ''adrenal resilience'' are absent.'
+coaching_translation: Supporting your adrenal glands with nutrients like magnesium, B5, vitamin C, zinc, and omega-3s helps
+  your body cope with stress more effectively and recover from chronic stress exposure.
+out_of_scope_notes: Dosing of any of these for adrenal support must be clinician-directed. 'Adrenal fatigue' is not a recognised
+  medical diagnosis.
 caveats:
-- '''Adrenal resilience'' as a measurable clinical endpoint is not well-defined in
-  peer-reviewed literature.'
+- '''Adrenal resilience'' as a measurable clinical endpoint is not well-defined in peer-reviewed literature.'
 - This combination protocol is FM-specific practice.
 - Source is Instagram educational content.
 linked_to_topics:
-- adrenal-cortisol-resilience
+- adrenal-fatigue
 linked_to_supplements:
 - magnesium-glycinate
 - pantothenic-acid-b5
 - vitamin-c
 - zinc
-- omega-3-fatty-acids
+- omega-3
 linked_to_mechanisms: []
 sources:
 - id: vitaone-instagram-posts

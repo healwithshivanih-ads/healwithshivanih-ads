@@ -31,13 +31,13 @@ related_mechanisms:
 linked_to_topics:
 - detoxification
 - toxin-load
-- chronic-fatigue
+- chronic-pain-and-fatigue
 evidence_tier: plausible_emerging
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Mitochondria and detoxification section
-  quote: the mitochondria are susceptible to these different toxicants. They actually
-    worked as disruptors to mitochondrial function
+  quote: the mitochondria are susceptible to these different toxicants. They actually worked as disruptors to mitochondrial
+    function
 version: 1
 status: active
 updated_at: '2026-05-16'

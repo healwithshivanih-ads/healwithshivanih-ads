@@ -1,34 +1,31 @@
 slug: active-b-vitamins-lower-homocysteine
-statement: Supplementation with active forms of B6 (P5P), B9 (methylfolate), and B12
-  (methylcobalamin) supports the methylation cycle and can lower elevated homocysteine
-  levels.
+statement: Supplementation with active forms of B6 (P5P), B9 (methylfolate), and B12 (methylcobalamin) supports the methylation
+  cycle and can lower elevated homocysteine levels.
 evidence_tier: plausible_emerging
-rationale: There is consistent evidence that B-vitamin supplementation lowers homocysteine
-  levels. The document emphasizes the need for active forms (P5P, methylfolate, methylcobalamin)
-  particularly in those with MTHFR variants. Whether this translates to reduced CVD
-  events remains debated.
-coaching_translation: Taking the active (not synthetic) forms of B6, folate, and B12
-  can help your body clear excess homocysteine. This is especially important if you
-  have a genetic variation (MTHFR) affecting how you process these vitamins.
-out_of_scope_notes: Specific therapeutic doses for homocysteine reduction should be
-  confirmed with a clinician, especially if MTHFR variant is confirmed.
+rationale: There is consistent evidence that B-vitamin supplementation lowers homocysteine levels. The document emphasizes
+  the need for active forms (P5P, methylfolate, methylcobalamin) particularly in those with MTHFR variants. Whether this translates
+  to reduced CVD events remains debated.
+coaching_translation: Taking the active (not synthetic) forms of B6, folate, and B12 can help your body clear excess homocysteine.
+  This is especially important if you have a genetic variation (MTHFR) affecting how you process these vitamins.
+out_of_scope_notes: Specific therapeutic doses for homocysteine reduction should be confirmed with a clinician, especially
+  if MTHFR variant is confirmed.
 caveats:
-- B-vitamin supplementation consistently lowers homocysteine but trials have not consistently
-  shown reduction in hard CVD endpoints.
+- B-vitamin supplementation consistently lowers homocysteine but trials have not consistently shown reduction in hard CVD
+  endpoints.
 - Source is expert lecture (moderate quality).
 linked_to_topics:
 - homocysteine-and-methylation
 - cardiometabolic-disease
 linked_to_supplements:
 - methylfolate-b9
-- methylcobalamin-b12
-- pyridoxal-5-phosphate-b6
+- methylcobalamin
+- pyridoxal-5-phosphate
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
-  quote: if the patient is having a metallurgy defect, then you should give them active
-    forms of vitamin B6, vitamin B12, and vitamin B9.
+  quote: if the patient is having a metallurgy defect, then you should give them active forms of vitamin B6, vitamin B12,
+    and vitamin B9.
 version: 1
 status: active
 updated_at: '2026-05-05'

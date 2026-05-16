@@ -22,19 +22,17 @@ common_symptoms:
 - bloating
 - mood-swings
 - acne
-- weight-gain
+- unexplained-weight-gain
 - fibroids
-- pms-symptoms
 - pmdd-symptoms
-- fluid-retention
-- mood-changes
+- edema
 - anxiety
-- fatigue
-- disturbed-sleep
+- lethargy
+- insomnia
 - hot-flashes
 - low-libido
 - spotting
-- painful-periods
+- dysmenorrhea
 - irregular-periods
 - primary-infertility
 - recurrent-ovarian-cysts
@@ -65,33 +63,27 @@ related_topics:
 - liver-detoxification
 - methylation-mthfr
 - estrogen-metabolism
-- polycystic-ovarian-syndrome
+- pcos-fertility
 - endometriosis
 - luteal-phase-defect
 - uterine-fibroids
 - gut-dysbiosis-estrogen
 - insulin-resistance-estrogen
 - gut-skin-hormone-axis
-- dysbiosis
+- gut-dysbiosis
 - gut-estrogen-axis
 - bhrt
 - steroidogenesis
 key_mechanisms:
 - estrogen-enterohepatic-recirculation
 - estrogen-phase-ii-methylation-deficit
-- aromatase-overactivity
-- impaired-methylation
+- aromatase-activity
+- methylation-cycle-dysfunction
 - phase-2-conjugation
 - hepatic-estrogen-metabolism
-- gut-estrogen-reabsorption
 - insulin-resistance
-- aromatase-upregulation
-- beta-glucuronidase-estrogen-reabsorption
 - progesterone-deficiency
-- estrogen-recirculation-via-beta-glucuronidase
-- aromatase-activity
-- beta-glucuronidase-reabsorption
-- estrogen-progesterone-decline
+- estrogen-decline
 coaching_scope_notes: Coaches can support dietary changes (reduce sugar, alcohol, increase fiber, probiotics), gut health,
   and aromatase-reducing strategies like green tea. Clinical evaluation required for diagnosis.
 clinician_scope_notes: BHRT (bioidentical hormone replacement therapy) is prescription-only and requires individualized lab-guided

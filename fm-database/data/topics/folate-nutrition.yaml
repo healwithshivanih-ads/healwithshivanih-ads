@@ -12,39 +12,36 @@ aliases:
 - folate-vitamin-b9
 - methylfolate
 - 5-MTHF
-summary: Folate is a water-soluble B vitamin essential for DNA synthesis, cell division,
-  red blood cell production, and homocysteine metabolism. High homocysteine from folate
-  insufficiency is linked to heart disease, dementia, and depression. Individuals
+summary: Folate is a water-soluble B vitamin essential for DNA synthesis, cell division, red blood cell production, and homocysteine
+  metabolism. High homocysteine from folate insufficiency is linked to heart disease, dementia, and depression. Individuals
   with MTHFR variants may respond better to natural folate over folic acid.
 common_symptoms:
 - anemia
-- depression
-- fatigue
-- cognitive-decline
+- low-mood
+- lethargy
+- poor-concentration
 red_flags:
 - neural-tube-defects-in-pregnancy
 related_topics:
-- vitamin-b12-nutrition
+- vitamin-b12
 - mitochondrial-health-nutrients
 key_mechanisms:
 - homocysteine-metabolism
 - dna-synthesis
 - methylation
-coaching_scope_notes: Coach can educate on folate-rich food sources (leafy greens,
-  legumes, liver). MTHFR considerations and supplement forms should be referred to
-  FM practitioner.
-clinician_scope_notes: MTHFR testing, homocysteine lab work, and supplement dosing
-  are clinician scope.
+coaching_scope_notes: Coach can educate on folate-rich food sources (leafy greens, legumes, liver). MTHFR considerations and
+  supplement forms should be referred to FM practitioner.
+clinician_scope_notes: MTHFR testing, homocysteine lab work, and supplement dosing are clinician scope.
 evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Food Sources: Folate'
-  quote: Folate is essential for the metabolism of homocysteine, an amino acid that
-    in high amounts may contribute to heart disease, dementia, and depression.
+  quote: Folate is essential for the metabolism of homocysteine, an amino acid that in high amounts may contribute to heart
+    disease, dementia, and depression.
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Folate'
-  quote: Folate is essential for the metabolism of homocysteine, an amino acid that
-    in high amounts may contribute to heart disease, dementia, and depression.
+  quote: Folate is essential for the metabolism of homocysteine, an amino acid that in high amounts may contribute to heart
+    disease, dementia, and depression.
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Introduction / Folate section
   quote: Folate which is also known as vitamin B9 is an essential water soluble vitamin.

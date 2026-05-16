@@ -18,10 +18,9 @@ upstream_drivers:
 - dairy-proteins
 - hidden-infections
 - viral-infections
-- tight-junction-dysregulation
-- antigen-translocation
 - tight-junction-dysfunction
-- lps-translocation
+- antigen-translocation
+- lps-endotoxemia
 - undigested-protein-absorption
 downstream_effects:
 - autoantibody-production
@@ -40,13 +39,12 @@ related_mechanisms:
 - leaky-gut
 - th17-dominance
 - thyroid-autoimmunity
-- tight-junction-dysregulation
-- lps-translocation
 - tight-junction-dysfunction
+- lps-endotoxemia
 linked_to_topics:
 - autoimmune-disease
 - food-sensitivity
-- hashimotos-thyroiditis
+- autoimmune-thyroiditis
 - autoimmunity-leaky-gut-triad
 - autoimmunity-leaky-gut-connection
 evidence_tier: plausible_emerging

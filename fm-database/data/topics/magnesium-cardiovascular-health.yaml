@@ -4,12 +4,11 @@ aliases:
 - magnesium heart health
 - magnesium hypertension
 - magnesium atherosclerosis
-summary: Magnesium acts as a natural calcium channel blocker and antispasmodic, supporting
-  vascular relaxation, preventing arterial spasm, reducing atherosclerotic calcification,
-  and modulating cholesterol (raising HDL, lowering LDL). Deficiency is implicated
-  in hypertension, arrhythmia, atherosclerosis, and coronary calcification.
+summary: Magnesium acts as a natural calcium channel blocker and antispasmodic, supporting vascular relaxation, preventing
+  arterial spasm, reducing atherosclerotic calcification, and modulating cholesterol (raising HDL, lowering LDL). Deficiency
+  is implicated in hypertension, arrhythmia, atherosclerosis, and coronary calcification.
 common_symptoms:
-- hypertension
+- elevated-blood-pressure
 - palpitations
 - chest-tightness
 - arterial-spasm
@@ -18,23 +17,23 @@ red_flags:
 - cardiac-arrest
 - severe-hypertension
 related_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - atherosclerosis
 - hypertension
 key_mechanisms:
 - calcium-magnesium-imbalance
 - vascular-smooth-muscle-relaxation
 - endothelial-inflammation
-coaching_scope_notes: Coaches can support lifestyle and dietary factors that protect
-  cardiovascular health. Any cardiac symptoms require immediate medical referral.
-clinician_scope_notes: IV magnesium used in acute arrhythmia and artery spasm management.
-  Diuretic medications further deplete magnesium; review polypharmacy.
+coaching_scope_notes: Coaches can support lifestyle and dietary factors that protect cardiovascular health. Any cardiac symptoms
+  require immediate medical referral.
+clinician_scope_notes: IV magnesium used in acute arrhythmia and artery spasm management. Diuretic medications further deplete
+  magnesium; review polypharmacy.
 evidence_tier: strong
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Magnesium in cardiovascular health
-  quote: Magnesium happens to be a natural calcium channel blocker... magnesium which
-    causes relaxations the hypertension can be taken care of.
+  quote: Magnesium happens to be a natural calcium channel blocker... magnesium which causes relaxations the hypertension
+    can be taken care of.
 version: 1
 status: active
 updated_at: '2026-05-05'

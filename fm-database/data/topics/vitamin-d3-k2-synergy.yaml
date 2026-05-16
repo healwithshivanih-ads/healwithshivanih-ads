@@ -3,14 +3,13 @@ display_name: Vitamin D3 + K2 Synergy
 aliases:
 - D3 K2 combination
 - vitamin D and K synergy
-summary: Vitamin D3 enhances calcium absorption from the gut, while vitamin K2 ensures
-  that absorbed calcium is properly mineralised into bones and teeth rather than deposited
-  in soft tissues or blood vessels. Together they represent a complementary pair for
-  optimal calcium metabolism, bone health, and cardiovascular protection.
+summary: Vitamin D3 enhances calcium absorption from the gut, while vitamin K2 ensures that absorbed calcium is properly mineralised
+  into bones and teeth rather than deposited in soft tissues or blood vessels. Together they represent a complementary pair
+  for optimal calcium metabolism, bone health, and cardiovascular protection.
 common_symptoms:
 - poor-bone-density
 - vascular-calcification
-- fatigue
+- lethargy
 red_flags: []
 related_topics:
 - vitamin-d3
@@ -18,22 +17,20 @@ related_topics:
 - bone-health
 - calcium-metabolism
 key_mechanisms:
-- calcium-intestinal-absorption
+- vitamin-d-hydroxylation
 - osteocalcin-activation
-- matrix-gla-protein-activation
-coaching_scope_notes: A combined D3+K2 supplement is preferred for clients supplementing
-  with vitamin D3 to ensure calcium is directed to bones. Coaches can educate on the
-  rationale for this combination and recommend seeking clinician guidance for dose
-  optimisation.
-clinician_scope_notes: The preferred supplementation ratio cited is 5,000 IU D3 with
-  200 mcg K2. This combination is especially relevant for clients with osteoporosis
-  risk or cardiovascular calcification concerns.
+- vitamin-k2-calcium-trafficking
+coaching_scope_notes: A combined D3+K2 supplement is preferred for clients supplementing with vitamin D3 to ensure calcium
+  is directed to bones. Coaches can educate on the rationale for this combination and recommend seeking clinician guidance
+  for dose optimisation.
+clinician_scope_notes: The preferred supplementation ratio cited is 5,000 IU D3 with 200 mcg K2. This combination is especially
+  relevant for clients with osteoporosis risk or cardiovascular calcification concerns.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D + K2 Synergy Section
-  quote: a synergy of both is required for the optimal functioning and ideally a supplementation
-    of vitamin D of 5000 international units and K1200 MCG is preferred.
+  quote: a synergy of both is required for the optimal functioning and ideally a supplementation of vitamin D of 5000 international
+    units and K1200 MCG is preferred.
 version: 1
 status: active
 updated_at: '2026-05-05'

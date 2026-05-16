@@ -6,16 +6,15 @@ aliases:
 - miscarriage
 category: hormonal
 severity: concerning
-description: Recurrent miscarriage is a clinical indicator for MTHFR mutation testing,
-  as impaired methylation disrupts DNA synthesis, homocysteine metabolism, and placental
-  vascular health.
-when_to_refer: Always refer to OB/GYN or reproductive medicine specialist. Coaches
-  support lifestyle and nutritional foundations only.
+description: Recurrent miscarriage is a clinical indicator for MTHFR mutation testing, as impaired methylation disrupts DNA
+  synthesis, homocysteine metabolism, and placental vascular health.
+when_to_refer: Always refer to OB/GYN or reproductive medicine specialist. Coaches support lifestyle and nutritional foundations
+  only.
 linked_to_topics:
 - methylation-mthfr
 linked_to_mechanisms:
-- impaired-methylation
-- homocysteine-elevation
+- methylation-cycle-dysfunction
+- elevated-homocysteine
 sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Methylation & MTHFR Cheatsheet — Who Should You Test

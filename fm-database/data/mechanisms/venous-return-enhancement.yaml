@@ -5,11 +5,10 @@ aliases:
 - thoracic pressure mechanism
 - negative intrathoracic pressure
 category: structural
-summary: During diaphragmatic inhalation, descent of the diaphragm creates negative
-  intrathoracic pressure that draws venous blood back toward the heart, improving
-  cardiac preload and circulatory efficiency.
+summary: During diaphragmatic inhalation, descent of the diaphragm creates negative intrathoracic pressure that draws venous
+  blood back toward the heart, improving cardiac preload and circulatory efficiency.
 upstream_drivers:
-- diaphragmatic-breathing
+- parasympathetic-activation
 - deep-inhalation
 downstream_effects:
 - improved-cardiac-preload
@@ -23,8 +22,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
-  quote: The abdominal expansion causes negative pressure to pull blood into the chest,
-    improving the venous flow of blood back to the heart.
+  quote: The abdominal expansion causes negative pressure to pull blood into the chest, improving the venous flow of blood
+    back to the heart.
 version: 1
 status: active
 updated_at: '2026-05-04'

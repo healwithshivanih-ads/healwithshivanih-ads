@@ -11,10 +11,9 @@ linked_to_topics:
 - psoriasis
 - chronic-inflammation
 - hairfall
-- hashimotos-thyroiditis
+- autoimmune-thyroiditis
 - t3-conversion-disorder
 - hypothyroidism
-- hashimotos-hypothyroidism
 - liver-detoxification
 - mercury-amalgam-removal
 - thyroid-dysfunction
@@ -56,8 +55,7 @@ notes_for_coach: 'Source (IFM Fig 3.5) names selenium as an antioxidant cofactor
   defense) and deiodinase enzymes (T4 → T3 conversion).
 
   '
-notes_for_client: Selenium is a trace mineral that supports your immune system, thyroid,
-  and antioxidant defences.
+notes_for_client: Selenium is a trace mineral that supports your immune system, thyroid, and antioxidant defences.
 typical_dose_range:
   capsule:
     min: 200
@@ -81,13 +79,11 @@ sources:
   location: TOPIC 1 — Thyroid / Claims & Tiers / Claim 3
   quote: Deiodinase enzymes are selenoproteins (selenium-dependent).
 - id: vitaone-practice-guide
-  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical
-    support for thyroid
+  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical support for thyroid
   quote: 'Selenium: Critical for thyroid peroxidase function, 200 mcg daily'
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Selenium (Lselenomethionine) - Thyroid support, antioxidant - 200 mcg/day
-    - With meals
+  quote: Selenium (Lselenomethionine) - Thyroid support, antioxidant - 200 mcg/day - With meals
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support T4→T3 Conversion
   quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
@@ -111,8 +107,8 @@ sources:
   quote: 'Selenium: Essential for thyroid hormone conversion and may reduce TPO antibodies.'
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
-  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
-    selenium, zinc, and antioxidants helps restore metabolic resilience.
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10, selenium, zinc, and antioxidants helps restore
+    metabolic resilience.
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Antioxidant Protective Nutrients and Plant Derivatives panel
   quote: Selenium

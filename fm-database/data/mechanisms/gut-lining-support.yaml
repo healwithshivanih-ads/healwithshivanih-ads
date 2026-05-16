@@ -5,12 +5,11 @@ aliases:
 - leaky-gut mitigation
 - gut mucosal nutrition
 category: gut
-summary: Fermented lentil batters (idli, dosa) and long-simmered bone broth provide
-  glutamine-containing gelatin, short-chain fatty acid precursors, and beneficial
-  microbes/postbiotics that support the intestinal epithelial barrier and reduce gut
+summary: Fermented lentil batters (idli, dosa) and long-simmered bone broth provide glutamine-containing gelatin, short-chain
+  fatty acid precursors, and beneficial microbes/postbiotics that support the intestinal epithelial barrier and reduce gut
   permeability — relevant to cardiometabolic inflammation.
 upstream_drivers:
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - low-fibre-diet
 - chronic-stress
 downstream_effects:
@@ -27,8 +26,7 @@ evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-cardiometabolic-recipes
   location: Lentil Idli / Bone Broth
-  quote: Cover and allow to ferment in a warm place for about 10 – 12 hours … Cover
-    and let it simmer gently for 2–3 hours.
+  quote: Cover and allow to ferment in a warm place for about 10 – 12 hours … Cover and let it simmer gently for 2–3 hours.
 version: 1
 status: active
 updated_at: '2026-05-04'

@@ -3,36 +3,31 @@ display_name: Adrenal Hormone Function (Cortisol & DHEA)
 aliases:
 - adrenal function
 - cortisol and DHEA physiology
-summary: The adrenal glands secrete cortisol, adrenaline, and DHEA to regulate stress
-  response, energy, inflammation, blood pressure, and immune function. DHEA serves
-  as a precursor to sex hormones and supports immune defense, bone density, and body
-  composition.
+summary: The adrenal glands secrete cortisol, adrenaline, and DHEA to regulate stress response, energy, inflammation, blood
+  pressure, and immune function. DHEA serves as a precursor to sex hormones and supports immune defense, bone density, and
+  body composition.
 common_symptoms:
-- fatigue
+- lethargy
 - anxiety
-- low-blood-pressure
+- dizziness-on-standing
 - hypoglycemia
 - low-libido
 related_topics:
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 - hypercortisolism
 key_mechanisms:
-- cortisol-dhea-imbalance
 - hpa-axis-dysregulation
-coaching_scope_notes: Coaches can educate clients on the roles of cortisol and DHEA
-  and support lifestyle factors that protect adrenal function. Do not recommend DHEA
-  supplementation without clinician oversight.
-clinician_scope_notes: DHEA supplementation requires clinician supervision and lab
-  monitoring. Adrenal hyperplasia must be ruled out clinically.
+coaching_scope_notes: Coaches can educate clients on the roles of cortisol and DHEA and support lifestyle factors that protect
+  adrenal function. Do not recommend DHEA supplementation without clinician oversight.
+clinician_scope_notes: DHEA supplementation requires clinician supervision and lab monitoring. Adrenal hyperplasia must be
+  ruled out clinically.
 evidence_tier: strong
 red_flags: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
-  quote: 'Your adrenal glands sit on top of the kidneys and secrete important hormones:
-    cortisol, adrenaline, and dehydroepiandrosterone (DHEA). These hormones help you
-    to buffer stress and adapt to everyday life demands by determining the stress
-    response.'
+  quote: 'Your adrenal glands sit on top of the kidneys and secrete important hormones: cortisol, adrenaline, and dehydroepiandrosterone
+    (DHEA). These hormones help you to buffer stress and adapt to everyday life demands by determining the stress response.'
 version: 1
 status: active
 updated_at: '2026-05-04'

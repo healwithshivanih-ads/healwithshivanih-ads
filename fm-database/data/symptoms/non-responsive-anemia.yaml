@@ -6,21 +6,18 @@ aliases:
 - treatment-resistant anemia
 category: metabolic
 severity: concerning
-description: Anemia (often iron-deficiency) that does not improve with iron supplementation
-  alone, potentially due to zinc deficiency reducing gastric acid production and thereby
-  impairing iron absorption.
-when_to_refer: Non-responsive anemia always requires medical evaluation to determine
-  underlying cause.
+description: Anemia (often iron-deficiency) that does not improve with iron supplementation alone, potentially due to zinc
+  deficiency reducing gastric acid production and thereby impairing iron absorption.
+when_to_refer: Non-responsive anemia always requires medical evaluation to determine underlying cause.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_mechanisms:
 - zinc-hcl-production-link
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: A person is suffering from iron deficiency anemia, you're already providing
-    them with iron complex and but still the gut is not able to absorb because maybe
-    there is less amount of hydrochloric acid because zinc is on the lower side.
+  quote: A person is suffering from iron deficiency anemia, you're already providing them with iron complex and but still
+    the gut is not able to absorb because maybe there is less amount of hydrochloric acid because zinc is on the lower side.
 version: 1
 status: active
 updated_at: '2026-05-05'

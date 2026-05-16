@@ -1,23 +1,18 @@
 slug: low-carb-diet-improves-atherogenic-dyslipidemia
-statement: A low-carbohydrate diet that addresses insulin resistance can improve atherogenic
-  dyslipidemia (elevated VLDL, low HDL, small dense LDL) within approximately two
-  months.
+statement: A low-carbohydrate diet that addresses insulin resistance can improve atherogenic dyslipidemia (elevated VLDL,
+  low HDL, small dense LDL) within approximately two months.
 evidence_tier: plausible_emerging
-rationale: The document recommends low-carbohydrate dietary intervention as the primary
-  approach for patients with insulin resistance-driven dyslipidemia, with a claim
-  that the cholesterol profile can change within two months. This is consistent with
-  published evidence on low-carbohydrate diets and lipid profiles, though the document
-  does not cite specific studies.
-coaching_translation: For many people, high blood sugar and insulin resistance are
-  the real drivers of a bad cholesterol profile. Cutting carbohydrates and increasing
-  healthy fats can shift your cholesterol in a better direction — often within just
-  a couple of months.
+rationale: The document recommends low-carbohydrate dietary intervention as the primary approach for patients with insulin
+  resistance-driven dyslipidemia, with a claim that the cholesterol profile can change within two months. This is consistent
+  with published evidence on low-carbohydrate diets and lipid profiles, though the document does not cite specific studies.
+coaching_translation: For many people, high blood sugar and insulin resistance are the real drivers of a bad cholesterol profile.
+  Cutting carbohydrates and increasing healthy fats can shift your cholesterol in a better direction — often within just a
+  couple of months.
 caveats:
-- Source is expert consensus lecture. The 'two months' timeframe is clinical experience-based,
-  not from a cited RCT.
+- Source is expert consensus lecture. The 'two months' timeframe is clinical experience-based, not from a cited RCT.
 - Dietary changes should be supervised, especially in diabetic patients on medication.
 linked_to_topics:
-- dyslipidemia-management
+- dyslipidemia
 - cardiovascular-risk-assessment
 linked_to_supplements: []
 out_of_scope_notes: ''
@@ -25,8 +20,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: 'Case discussion: dietary intervention for dyslipidemia'
-  quote: This profile will change this will change within two months we have seen
-    many patients who change the profile even that policy.
+  quote: This profile will change this will change within two months we have seen many patients who change the profile even
+    that policy.
 version: 1
 status: active
 updated_at: '2026-05-05'

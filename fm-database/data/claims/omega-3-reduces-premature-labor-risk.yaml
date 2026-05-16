@@ -1,17 +1,15 @@
 slug: omega-3-reduces-premature-labor-risk
-statement: Omega-3 fatty acid supplementation (EPA + DHA combined, at ≥3,000 mg/day)
-  during pregnancy significantly reduces the likelihood of premature labor.
+statement: Omega-3 fatty acid supplementation (EPA + DHA combined, at ≥3,000 mg/day) during pregnancy significantly reduces
+  the likelihood of premature labor.
 evidence_tier: plausible_emerging
-rationale: Dr. Davis presents omega-3 supplementation at gram-level doses as having
-  a 'precipitous' drop in premature labor risk. This is consistent with published
-  research on omega-3s in pregnancy (though specific studies are not cited in this
-  interview). The dose recommendation (>3g combined EPA+DHA) exceeds typical supplementation
-  guidance and should be verified with an OB.
-coaching_translation: Taking a higher dose of fish oil (both EPA and DHA, about 3
-  grams or more daily) during pregnancy may significantly reduce the risk of having
-  a premature baby.
-out_of_scope_notes: Specific dosing during pregnancy must be confirmed with OB/GYN.
-  Coaches should not advise pregnant clients on dose without clinician input.
+rationale: Dr. Davis presents omega-3 supplementation at gram-level doses as having a 'precipitous' drop in premature labor
+  risk. This is consistent with published research on omega-3s in pregnancy (though specific studies are not cited in this
+  interview). The dose recommendation (>3g combined EPA+DHA) exceeds typical supplementation guidance and should be verified
+  with an OB.
+coaching_translation: Taking a higher dose of fish oil (both EPA and DHA, about 3 grams or more daily) during pregnancy may
+  significantly reduce the risk of having a premature baby.
+out_of_scope_notes: Specific dosing during pregnancy must be confirmed with OB/GYN. Coaches should not advise pregnant clients
+  on dose without clinician input.
 caveats:
 - Specific studies not cited by author/year in interview.
 - Source is expert_consensus interview.
@@ -20,13 +18,12 @@ caveats:
 linked_to_topics:
 - vaginal-microbiome
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 linked_to_mechanisms: []
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Omega-3 and premature labor discussion
-  quote: If a woman takes omega-3s during pregnancy, the likelihood of premature labor
-    drops precipitously.
+  quote: If a woman takes omega-3s during pregnancy, the likelihood of premature labor drops precipitously.
 version: 1
 status: active
 updated_at: '2026-05-05'

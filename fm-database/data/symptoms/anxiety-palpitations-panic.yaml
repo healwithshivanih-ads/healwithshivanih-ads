@@ -9,11 +9,9 @@ aliases:
 - feeling wired
 category: mood
 severity: concerning
-description: Anxiety, panic attacks, palpitations, sweating, and tachycardia linked
-  to high cortisol, high adrenaline/noradrenaline, low progesterone, low serotonin,
-  low GABA, digital overstimulation, and sympathetic overactivation.
-when_to_refer: Refer if severe panic disorder, cardiac arrhythmia, thyroid crisis,
-  or medication-induced anxiety.
+description: Anxiety, panic attacks, palpitations, sweating, and tachycardia linked to high cortisol, high adrenaline/noradrenaline,
+  low progesterone, low serotonin, low GABA, digital overstimulation, and sympathetic overactivation.
+when_to_refer: Refer if severe panic disorder, cardiac arrhythmia, thyroid crisis, or medication-induced anxiety.
 linked_to_topics:
 - chronic-stress
 - adrenal-fatigue
@@ -22,14 +20,13 @@ linked_to_topics:
 - cardiovascular-health
 linked_to_mechanisms:
 - sympathetic-dominance
-- hpa-axis-overactivation
+- cortisol-elevation
 - digital-overstimulation
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Anxiety, panic, palpitations, sweating, tachycardia, and insomnia — Linked
-    to high cortisol, high adrenaline/noradrenaline, high thyroid activity, low progesterone,
-    low serotonin, low GABA, digital overstimulation, and sympathetic overactivation.
+  quote: Anxiety, panic, palpitations, sweating, tachycardia, and insomnia — Linked to high cortisol, high adrenaline/noradrenaline,
+    high thyroid activity, low progesterone, low serotonin, low GABA, digital overstimulation, and sympathetic overactivation.
 version: 1
 status: active
 updated_at: '2026-05-06'

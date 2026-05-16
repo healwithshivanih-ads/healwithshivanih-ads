@@ -4,19 +4,16 @@ aliases:
 - cortisol-mediated immune suppression
 - chronic stress immunosuppression
 category: immune
-summary: Chronically elevated cortisol suppresses immune function, reducing resistance
-  to infection, inflammation, and disease. Conversely, DHEA normally supports immune
-  resistance to viruses, bacteria, parasites, allergies, and cancer — its depletion
+summary: Chronically elevated cortisol suppresses immune function, reducing resistance to infection, inflammation, and disease.
+  Conversely, DHEA normally supports immune resistance to viruses, bacteria, parasites, allergies, and cancer — its depletion
   compounds immune vulnerability.
 upstream_drivers:
-- cortisol-dhea-imbalance
 - hpa-axis-dysregulation
 downstream_effects:
 - increased-infection-susceptibility
 - chronic-inflammation
 - poor-wound-healing
 related_mechanisms:
-- cortisol-dhea-imbalance
 - hpa-axis-dysregulation
 linked_to_topics:
 - hypercortisolism

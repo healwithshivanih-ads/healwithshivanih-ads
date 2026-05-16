@@ -9,25 +9,22 @@ timing_options:
 - morning
 take_with_food: optional
 linked_to_topics:
-- methylation-defect-elevated-homocysteine
+- homocysteine-and-methylation
 - cardiovascular-risk-assessment
 linked_to_claims:
 - high-homocysteine-triples-heart-attack-risk-in-men
 - fm-intervention-improved-insulin-resistance-lipids-homocysteine
-notes_for_coach: Used to address methylation defect and elevated homocysteine in this
-  case. Typically contains active forms of B6, B9 (methylfolate), and B12 (methylcobalamin).
-  Homocysteine normalised with this intervention.
-notes_for_client: This B-vitamin formula supports your body's methylation pathways
-  — the process that keeps homocysteine (a heart-risk marker) under control. Your
-  functional lab showed this was elevated.
+notes_for_coach: Used to address methylation defect and elevated homocysteine in this case. Typically contains active forms
+  of B6, B9 (methylfolate), and B12 (methylcobalamin). Homocysteine normalised with this intervention.
+notes_for_client: This B-vitamin formula supports your body's methylation pathways — the process that keeps homocysteine (a
+  heart-risk marker) under control. Your functional lab showed this was elevated.
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cvs-risk-assessment
   location: Nutrition supplements (Slide 21)
-  quote: 'The Nutritional parameters of the patient were corrected with the following
-    supplements: 1. Homocysteine Defense'
+  quote: 'The Nutritional parameters of the patient were corrected with the following supplements: 1. Homocysteine Defense'
 version: 1
 status: active
 updated_at: '2026-05-04'

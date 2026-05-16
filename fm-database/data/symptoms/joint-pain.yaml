@@ -50,14 +50,13 @@ linked_to_topics:
 - knee-pain
 - hypothyroidism
 - hyperthyroidism
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - anti-inflammatory-diet
 - beta-blocker-deprescribing
 - chronic-pain-and-fatigue
 - fibromyalgia
-- leaky-gut
-- omega-3-omega-6-balance
 - autoimmunity-leaky-gut-triad
+- omega-3-omega-6-balance
 - autoimmunity-leaky-gut-connection
 - omega-3-fatty-acids
 - arachidonic-acid-cascade
@@ -73,23 +72,20 @@ linked_to_mechanisms:
 - th17-dominance
 - molecular-mimicry
 - systemic-inflammation
-- gut-barrier-dysfunction
+- leaky-gut
 - insulin-resistance
 - impaired-t4-to-t3-conversion
 - nlrp3-inflammasome-activation
 - cytokine-dysregulation
 - oxidative-stress
-- omega-3-deficiency-inflammation
+- omega-3-omega-6-imbalance
 - nutrient-malabsorption
 - arachidonic-acid-cascade
-- nf-kappa-b-activation
-- tight-junction-dysregulation
-- lps-translocation
+- tight-junction-dysfunction
+- lps-endotoxemia
 - resolvin-spm-production
-- estrogen-progesterone-decline
 - lectin-gut-inflammation
 - cellular-ph-dysregulation
-- endotoxemia
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Joint Pain / Autoimmune sections

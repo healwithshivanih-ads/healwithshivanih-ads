@@ -4,13 +4,12 @@ aliases:
 - acid-base homeostasis
 - body pH buffering
 category: metabolic
-summary: The body maintains a tightly regulated internal pH through renal, respiratory,
-  and chemical buffering systems. Dietary patterns that are predominantly acid-forming
-  may place greater demand on these regulatory systems over time.
+summary: The body maintains a tightly regulated internal pH through renal, respiratory, and chemical buffering systems. Dietary
+  patterns that are predominantly acid-forming may place greater demand on these regulatory systems over time.
 upstream_drivers:
 - dietary-acid-load
 downstream_effects:
-- inflammation
+- chronic-inflammation
 - mineral-buffering-demand
 related_mechanisms:
 - dietary-acid-load
@@ -20,8 +19,7 @@ evidence_tier: strong
 sources:
 - id: barbara-oneil-acid-alkaline-foods
   location: Main lecture body
-  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline
-    forming foods and 20-30% acid forming foods.
+  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline forming foods and 20-30% acid forming foods.
 version: 1
 status: active
 updated_at: '2026-05-05'

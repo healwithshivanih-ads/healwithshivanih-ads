@@ -9,16 +9,15 @@ aliases:
 - high total cholesterol
 category: cardiovascular
 severity: concerning
-description: Elevated total or LDL cholesterol contributing to atherosclerosis and
-  cardiovascular risk; targeted by cardiometabolic dietary approaches.
-when_to_refer: Refer for lipid panel interpretation and statin or other medication
-  considerations.
+description: Elevated total or LDL cholesterol contributing to atherosclerosis and cardiovascular risk; targeted by cardiometabolic
+  dietary approaches.
+when_to_refer: Refer for lipid panel interpretation and statin or other medication considerations.
 linked_to_topics:
 - cardiometabolic-diet
 - intermittent-fasting
 linked_to_mechanisms:
 - insulin-resistance
-- chronic-systemic-inflammation
+- chronic-inflammation
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — summary table

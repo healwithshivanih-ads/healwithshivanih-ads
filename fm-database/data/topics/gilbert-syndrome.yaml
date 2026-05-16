@@ -4,36 +4,32 @@ aliases:
 - Gilbert's syndrome
 - UGT1A1 genetic variant
 - bilirubin conjugation defect
-summary: A common benign genetic variant affecting a Phase 2 enzyme (UGT1A1) responsible
-  for conjugating bilirubin with glucuronic acid. Results in mildly elevated unconjugated
-  bilirubin. In functional medicine, this is interpreted as a marker of impaired glucuronidation
-  capacity, meaning 40–50% of toxin elimination via this pathway may be compromised.
+summary: A common benign genetic variant affecting a Phase 2 enzyme (UGT1A1) responsible for conjugating bilirubin with glucuronic
+  acid. Results in mildly elevated unconjugated bilirubin. In functional medicine, this is interpreted as a marker of impaired
+  glucuronidation capacity, meaning 40–50% of toxin elimination via this pathway may be compromised.
 common_symptoms:
 - elevated-unconjugated-bilirubin
 - chemical-sensitivity
-- fatigue
+- lethargy
 red_flags:
 - jaundice
 related_topics:
 - chronic-toxicity-assessment
-- liver-detox-phase-1-and-phase-2
+- liver-detoxification
 key_mechanisms:
 - glucuronidation-impairment
-coaching_scope_notes: Coaches should not diagnose Gilbert syndrome. If a client reports
-  mildly elevated unconjugated bilirubin, refer for genetic workup. Coaches can support
-  by emphasizing optimization of secondary detox pathways (sulfation, methylation).
-clinician_scope_notes: Diagnosis via genetic workup (UGT1A1 variant). Ensure secondary
-  phase 2 pathways (sulfation, methylation, glutathione conjugation) are optimized
-  as compensatory routes.
+coaching_scope_notes: Coaches should not diagnose Gilbert syndrome. If a client reports mildly elevated unconjugated bilirubin,
+  refer for genetic workup. Coaches can support by emphasizing optimization of secondary detox pathways (sulfation, methylation).
+clinician_scope_notes: Diagnosis via genetic workup (UGT1A1 variant). Ensure secondary phase 2 pathways (sulfation, methylation,
+  glutathione conjugation) are optimized as compensatory routes.
 evidence_tier: strong
 sources:
 - id: coconote-fm-liver-detox-part2
   location: Bilirubin & Gilbert Syndrome Section
-  quote: The typical name of this syndrome is called Biel-Beltz syndrome. So many
-    of the doctors even talk about the Gilbert syndrome. The sheer simple meaning
-    of Gilbert syndrome is they have a difficulty and they have a genetic variation
-    in their phase 2 and because of this variation, they cannot conjugate the bilirubin
-    with the gluconic acid and that is the problem.
+  quote: The typical name of this syndrome is called Biel-Beltz syndrome. So many of the doctors even talk about the Gilbert
+    syndrome. The sheer simple meaning of Gilbert syndrome is they have a difficulty and they have a genetic variation in
+    their phase 2 and because of this variation, they cannot conjugate the bilirubin with the gluconic acid and that is the
+    problem.
 version: 1
 status: active
 updated_at: '2026-05-05'

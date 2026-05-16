@@ -15,28 +15,26 @@ aliases:
 - long-haul covid
 - post-infectious chronic fatigue
 category: immune
-summary: Persistent fatigue, post-exertional malaise (PEM), brain fog, autonomic dysregulation,
-  sleep disturbance, and immune dysregulation lasting weeks to years after a viral
-  infection — most commonly COVID-19, EBV, influenza, dengue, or enterovirus. Hallmark
-  finding is post-exertional malaise — a worsening of all symptoms 12-72 hours after
-  even mild physical or cognitive exertion. Underlying mechanisms include mitochondrial
-  dysfunction, viral persistence / reactivation, autoimmune cross-reactivity, microvascular
-  / endothelial damage, microclots, and HPA-axis dysregulation. Pacing within an
-  energy envelope is the single most important coaching strategy.
+summary: Persistent fatigue, post-exertional malaise (PEM), brain fog, autonomic dysregulation, sleep disturbance, and immune
+  dysregulation lasting weeks to years after a viral infection — most commonly COVID-19, EBV, influenza, dengue, or enterovirus.
+  Hallmark finding is post-exertional malaise — a worsening of all symptoms 12-72 hours after even mild physical or cognitive
+  exertion. Underlying mechanisms include mitochondrial dysfunction, viral persistence / reactivation, autoimmune cross-reactivity,
+  microvascular / endothelial damage, microclots, and HPA-axis dysregulation. Pacing within an energy envelope is the single
+  most important coaching strategy.
 upstream_drivers:
 - preceding viral infection (COVID-19, EBV, influenza, dengue, enterovirus)
 - viral persistence / antigen reservoir in tissues
-- EBV reactivation
+- ebv-reactivation
 - HLA genetic susceptibility
 - pre-existing dysautonomia / hypermobility
 - pre-existing chronic stress / HPA dysregulation
 - pre-existing gut barrier dysfunction
 - immune dysregulation
 - microvascular endothelial damage
-- microclot formation
+- microclot-formation
 - autoantibodies (against ACE2, GPCRs, etc.)
 - vitamin D deficiency
-- mast cell activation
+- mast-cell-activation
 - pre-existing mitochondrial fragility
 downstream_effects:
 - chronic fatigue (months to years)
@@ -51,8 +49,8 @@ downstream_effects:
 - mood disturbance / depression / anxiety
 - autonomic nervous system dysregulation
 - chronic inflammation / elevated inflammatory markers
-- HPA dysregulation
-- mitochondrial dysfunction
+- cortisol-elevation
+- mitochondrial-dysfunction
 - new autoimmune diagnoses (Hashimoto, lupus emerging post-COVID)
 - impaired vagal tone / low HRV
 related_mechanisms:
@@ -60,8 +58,7 @@ related_mechanisms:
 - ebv-reactivation
 - hpa-axis-dysregulation
 - chronic-inflammation
-- chronic-systemic-inflammation
-- sympathetic-overdrive
+- sympathetic-dominance
 - pacing-energy-envelope
 - oxidative-stress
 - leaky-gut
@@ -77,12 +74,10 @@ sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Chronic Fatigue + Long COVID section
 evidence_tier: plausible_emerging
-notes_for_coach: Recovery is months to years, not weeks. The single most damaging
-  intervention is pushing graded exercise too early — it triggers PEM crashes that
-  set recovery back. Coaching focus is pacing within the energy envelope (see pacing-energy-envelope),
-  mitochondrial support (CoQ10, alpha-lipoic acid, B-complex, magnesium), HPA recovery,
-  gentle vagal toning, anti-inflammatory diet, addressing co-existing infections
-  (EBV reactivation common). Refer to long-COVID clinic if available; psychological
+notes_for_coach: Recovery is months to years, not weeks. The single most damaging intervention is pushing graded exercise
+  too early — it triggers PEM crashes that set recovery back. Coaching focus is pacing within the energy envelope (see pacing-energy-envelope),
+  mitochondrial support (CoQ10, alpha-lipoic acid, B-complex, magnesium), HPA recovery, gentle vagal toning, anti-inflammatory
+  diet, addressing co-existing infections (EBV reactivation common). Refer to long-COVID clinic if available; psychological
   support for grief / loss of function is essential.
 version: 1
 status: active

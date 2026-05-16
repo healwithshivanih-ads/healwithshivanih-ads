@@ -1,40 +1,34 @@
 slug: gi-issues-underlie-systemic-chronic-disease
-statement: GI dysfunction can underlie chronic health problems that seem unrelated
-  to digestion, including autoimmune diseases (rheumatoid arthritis, type 1 diabetes),
-  skin conditions (eczema, acne rosacea), and heart disease.
+statement: GI dysfunction can underlie chronic health problems that seem unrelated to digestion, including autoimmune diseases
+  (rheumatoid arthritis, type 1 diabetes), skin conditions (eczema, acne rosacea), and heart disease.
 evidence_tier: plausible_emerging
-rationale: Broad association between gut health and systemic disease is well-established
-  conceptually; specific causal links vary by condition and are not uniformly proven
-  by RCTs. This is a common FM synthesis claim.
-coaching_translation: Your gut health affects far more than digestion — it can influence
-  your immune system, skin, and heart health. Improving gut function is foundational
-  to overall wellness.
+rationale: Broad association between gut health and systemic disease is well-established conceptually; specific causal links
+  vary by condition and are not uniformly proven by RCTs. This is a common FM synthesis claim.
+coaching_translation: Your gut health affects far more than digestion — it can influence your immune system, skin, and heart
+  health. Improving gut function is foundational to overall wellness.
 caveats:
-- Source is a practitioner education toolkit, not primary literature. These associations
-  are plausible but not all are proven by RCTs.
+- Source is a practitioner education toolkit, not primary literature. These associations are plausible but not all are proven
+  by RCTs.
 - Autoimmune disease management requires clinician oversight.
-- Source is an expert consensus coaching toolkit, not primary literature. Associations
-  are plausible but causality for individual systemic diseases is variable in the
-  evidence base.
+- Source is an expert consensus coaching toolkit, not primary literature. Associations are plausible but causality for individual
+  systemic diseases is variable in the evidence base.
 - Do not promise resolution of autoimmune disease through gut interventions alone.
 linked_to_topics:
 - gut-dysfunction
-- leaky-gut
-- 5r-gut-restoration
+- autoimmunity-leaky-gut-triad
+- 5r-gut-protocol
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: GI issues may underlie chronic health problems that seem unrelated to digestive
-    health, including autoimmune diseases such as rheumatoid arthritis and type 1
-    diabetes, skin problems such as eczema and acne rosacea, and heart disease.
+  quote: GI issues may underlie chronic health problems that seem unrelated to digestive health, including autoimmune diseases
+    such as rheumatoid arthritis and type 1 diabetes, skin problems such as eczema and acne rosacea, and heart disease.
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: GI issues may underlie chronic health problems that seem unrelated to digestive
-    health, including autoimmune diseases such as rheumatoid arthritis and type 1
-    diabetes, skin problems such as eczema and acne rosacea, and heart disease.
+  quote: GI issues may underlie chronic health problems that seem unrelated to digestive health, including autoimmune diseases
+    such as rheumatoid arthritis and type 1 diabetes, skin problems such as eczema and acne rosacea, and heart disease.
 version: 2
 status: active
 updated_at: '2026-05-04'

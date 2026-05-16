@@ -9,10 +9,10 @@ summary: SIFO is a condition where abnormally large numbers of fungi or yeast (>
   skin manifestations.
 common_symptoms:
 - bloating
-- white-coating-on-tongue
-- genital-itching
-- urticaria
-- fatigue
+- white-tongue-coating
+- skin-rash
+- eczema-psoriasis-skin
+- lethargy
 - brain-fog
 red_flags:
 - invasive candidiasis
@@ -22,8 +22,8 @@ related_topics:
 - autoimmunity-leaky-gut-triad
 - gut-brain-axis-dysfunction
 key_mechanisms:
-- gut-dysbiosis
-- intestinal-barrier-dysfunction
+- dysbiosis-gut-microbiome-imbalance
+- leaky-gut
 - fungal-overgrowth-toxin-production
 coaching_scope_notes: Coaches can support dietary interventions to reduce fungal feeding substrates, lifestyle stress reduction,
   and probiotic support (e.g., Saccharomyces boulardii). Antifungal prescriptions are out of scope.

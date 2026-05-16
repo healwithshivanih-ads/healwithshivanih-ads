@@ -5,12 +5,11 @@ aliases:
 - thrombus
 - venous thromboembolism
 category: structural
-summary: When a clot (thrombus) forms in a vessel and is not dissolved by fibrinolytic
-  mechanisms, it becomes an embolus that can travel and block arteries, causing stroke
-  or myocardial infarction. High fibrinogen levels increase clot readiness.
+summary: When a clot (thrombus) forms in a vessel and is not dissolved by fibrinolytic mechanisms, it becomes an embolus that
+  can travel and block arteries, causing stroke or myocardial infarction. High fibrinogen levels increase clot readiness.
 upstream_drivers:
 - fibrinogen-elevation
-- high-homocysteine
+- elevated-homocysteine
 - estrogen-excess
 - smoking
 - malignancy
@@ -22,7 +21,7 @@ downstream_effects:
 - organ-ischemia
 related_mechanisms:
 - fibrinogen-elevation
-- methylation-impairment
+- methylation-cycle
 linked_to_topics:
 - coagulation-imbalance
 - cardiometabolic-disease
@@ -30,8 +29,7 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Thrombosis Mechanism
-  quote: if the clot is not dissolved, that's become an embolus and the embolus is
-    going to block the vessel.
+  quote: if the clot is not dissolved, that's become an embolus and the embolus is going to block the vessel.
 version: 1
 status: active
 updated_at: '2026-05-05'

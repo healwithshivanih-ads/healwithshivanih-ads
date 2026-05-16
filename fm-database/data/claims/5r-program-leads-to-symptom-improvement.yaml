@@ -1,20 +1,17 @@
 slug: 5r-program-leads-to-symptom-improvement
-statement: Application of the 5R program (Remove, Replace, Reinoculate, Repair, Rebalance)
-  to chronic health issues can lead to dramatic improvement in symptoms and sometimes
-  complete resolution.
+statement: Application of the 5R program (Remove, Replace, Reinoculate, Repair, Rebalance) to chronic health issues can lead
+  to dramatic improvement in symptoms and sometimes complete resolution.
 evidence_tier: fm_specific_thin
-rationale: The 5R framework is widely used in functional medicine but lacks large-scale
-  RCTs validating the complete protocol as a package. Individual components (probiotics,
-  elimination diets) have varying levels of evidence.
-coaching_translation: The 5R approach is a systematic way to restore gut health step
-  by step — removing triggers, rebuilding digestive capacity, repopulating good bacteria,
-  healing the lining, and rebalancing lifestyle.
+rationale: The 5R framework is widely used in functional medicine but lacks large-scale RCTs validating the complete protocol
+  as a package. Individual components (probiotics, elimination diets) have varying levels of evidence.
+coaching_translation: The 5R approach is a systematic way to restore gut health step by step — removing triggers, rebuilding
+  digestive capacity, repopulating good bacteria, healing the lining, and rebalancing lifestyle.
 caveats:
-- Source is a coaching toolkit. The 5R protocol as a whole lacks strong RCT evidence;
-  individual elements vary in evidence quality.
+- Source is a coaching toolkit. The 5R protocol as a whole lacks strong RCT evidence; individual elements vary in evidence
+  quality.
 - Complete resolution is not guaranteed.
 linked_to_topics:
-- 5r-gut-restoration
+- 5r-gut-protocol
 - gut-dysfunction
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -22,8 +19,8 @@ linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: When applied to various chronic health issues, the 5R program can lead to
-    dramatic improvement in symptoms, and sometimes even complete resolution.
+  quote: When applied to various chronic health issues, the 5R program can lead to dramatic improvement in symptoms, and sometimes
+    even complete resolution.
 version: 1
 status: active
 updated_at: '2026-05-04'

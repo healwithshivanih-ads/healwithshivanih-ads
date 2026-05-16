@@ -29,7 +29,7 @@ summary: 'A clinically recognizable insomnia pattern: client wakes wide awake
 upstream_drivers:
 - chronic-stress
 - hpa-axis-dysregulation
-- blood-sugar-instability
+- insulin-resistance
 downstream_effects:
 - middle-of-night-awakening
 - non-restorative-sleep
@@ -44,8 +44,7 @@ evidence_tier: strong
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Cortisol and 2 AM awakening section
-  quote: the person who has a groundhog day every night at 2:13 a.m. … you wake up
-    wide awake like you had an adrenaline shot
+  quote: the person who has a groundhog day every night at 2:13 a.m. … you wake up wide awake like you had an adrenaline shot
 version: 1
 status: active
 updated_at: '2026-05-16'

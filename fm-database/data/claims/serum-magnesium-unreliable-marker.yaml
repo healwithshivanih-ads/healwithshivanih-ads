@@ -1,28 +1,25 @@
 slug: serum-magnesium-unreliable-marker
-statement: Serum magnesium is an unreliable marker for total body magnesium status
-  because only 1% of body magnesium is in the blood; RBC magnesium testing is a more
-  accurate assessment.
+statement: Serum magnesium is an unreliable marker for total body magnesium status because only 1% of body magnesium is in
+  the blood; RBC magnesium testing is a more accurate assessment.
 evidence_tier: plausible_emerging
-rationale: The intracellular distribution of magnesium (50% bone, ~49% intracellular,
-  ~1% serum) is well-established. RBC magnesium as a superior marker is discussed
-  in functional medicine and some research literature but is not standard clinical
+rationale: The intracellular distribution of magnesium (50% bone, ~49% intracellular, ~1% serum) is well-established. RBC
+  magnesium as a superior marker is discussed in functional medicine and some research literature but is not standard clinical
   practice.
 caveats:
-- RBC magnesium testing is not universally available; clinician should guide testing
-  decisions.
-out_of_scope_notes: Lab interpretation is outside coaching scope. Coaches should encourage
-  clients to discuss testing options with their clinician.
-coaching_translation: A normal blood magnesium test doesn't mean your cells have enough.
-  Ask your doctor about RBC magnesium testing for a more accurate picture.
+- RBC magnesium testing is not universally available; clinician should guide testing decisions.
+out_of_scope_notes: Lab interpretation is outside coaching scope. Coaches should encourage clients to discuss testing options
+  with their clinician.
+coaching_translation: A normal blood magnesium test doesn't mean your cells have enough. Ask your doctor about RBC magnesium
+  testing for a more accurate picture.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Testing for magnesium
-  quote: Only 1% is going to be available in the blood or the serum, which is a concern...
-    ideally testers see them magnesium RBC testing or the lyme-lice magnesium testing.
+  quote: Only 1% is going to be available in the blood or the serum, which is a concern... ideally testers see them magnesium
+    RBC testing or the lyme-lice magnesium testing.
 version: 1
 status: active
 updated_at: '2026-05-05'

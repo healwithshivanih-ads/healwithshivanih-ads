@@ -16,11 +16,11 @@ upstream_drivers:
 - nutritional-deficiency
 downstream_effects:
 - increased-antigen-load-small-intestine
-- intestinal-permeability
+- leaky-gut
 - food-sensitivity-igg-iga-mediated
 - progressive-food-reactions
 related_mechanisms:
-- intestinal-permeability
+- leaky-gut
 - digestive-enzyme-deficiency
 linked_to_topics:
 - food-sensitivity-igg-iga-mediated

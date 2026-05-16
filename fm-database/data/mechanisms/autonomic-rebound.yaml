@@ -5,9 +5,8 @@ aliases:
 - beta blocker rebound hypertension
 - adrenergic rebound
 category: neurological
-summary: Abrupt discontinuation of beta blockers can trigger sympathetic nervous system
-  rebound, causing tachycardia, palpitations, hypertension, headache, and malaise.
-  Gradual tapering with blood pressure monitoring mitigates this risk.
+summary: Abrupt discontinuation of beta blockers can trigger sympathetic nervous system rebound, causing tachycardia, palpitations,
+  hypertension, headache, and malaise. Gradual tapering with blood pressure monitoring mitigates this risk.
 upstream_drivers:
 - abrupt-beta-blocker-cessation
 downstream_effects:
@@ -16,7 +15,7 @@ downstream_effects:
 - headache
 - malaise
 related_mechanisms:
-- coq10-depletion-by-beta-blockers
+- coq10-depletion
 linked_to_topics:
 - beta-blocker-deprescribing
 - hypertension

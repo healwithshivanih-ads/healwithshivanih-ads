@@ -4,16 +4,15 @@ aliases:
 - CVD
 - heart disease
 - cardiovascular disease
-summary: A broad clinical area encompassing atherosclerosis, coronary artery disease,
-  cerebrovascular disease, peripheral vascular disease, heart failure, and cardiac
-  arrhythmias. CVD is the major cause of morbidity and mortality driven by both modifiable
-  and non-modifiable risk factors.
+summary: A broad clinical area encompassing atherosclerosis, coronary artery disease, cerebrovascular disease, peripheral
+  vascular disease, heart failure, and cardiac arrhythmias. CVD is the major cause of morbidity and mortality driven by both
+  modifiable and non-modifiable risk factors.
 common_symptoms:
 - chest-pain
 - palpitations
-- fatigue
+- lethargy
 - shortness-of-breath
-- hypertension
+- elevated-blood-pressure
 - erectile-dysfunction
 red_flags:
 - acute chest pain
@@ -40,27 +39,22 @@ key_mechanisms:
 - insulin-resistance
 - atheromatous-vascular-disease
 - chronic-inflammation
-coaching_scope_notes: Coaches can support modifiable risk factor reduction (diet,
-  exercise, smoking cessation, stress management, weight management). Lab interpretation
-  and medication management are out of coaching scope.
-clinician_scope_notes: Clinician oversight required for lab interpretation (HS-CRP,
-  HbA1c, Lp(a), homocysteine, ApoB), medication de-prescribing, and any diagnosis
-  or treatment of CVD.
+coaching_scope_notes: Coaches can support modifiable risk factor reduction (diet, exercise, smoking cessation, stress management,
+  weight management). Lab interpretation and medication management are out of coaching scope.
+clinician_scope_notes: Clinician oversight required for lab interpretation (HS-CRP, HbA1c, Lp(a), homocysteine, ApoB), medication
+  de-prescribing, and any diagnosis or treatment of CVD.
 evidence_tier: strong
 sources:
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis
-  quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity
-    and mortality in India over the last several decades, and are rapidly catching
-    up with this epidemic.
+  quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity and mortality in India over the last
+    several decades, and are rapidly catching up with this epidemic.
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis
-  quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity
-    and mortality in India over the last several decades, and are rapidly catching
-    up with this epidemic. The underlying pathology is atheromatous vascular disease,
-    resulting in coronary artery disease (CAD), cerebrovascular disease, and peripheral
-    vascular disease, and the subsequent development of heart failure and cardiac
-    arrhythmias.
+  quote: The cardiovascular diseases (CVDs) considered been the major cause of morbidity and mortality in India over the last
+    several decades, and are rapidly catching up with this epidemic. The underlying pathology is atheromatous vascular disease,
+    resulting in coronary artery disease (CAD), cerebrovascular disease, and peripheral vascular disease, and the subsequent
+    development of heart failure and cardiac arrhythmias.
 version: 2
 status: active
 updated_at: '2026-05-04'

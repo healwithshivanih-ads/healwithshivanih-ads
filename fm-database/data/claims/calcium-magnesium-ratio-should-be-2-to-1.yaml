@@ -1,19 +1,16 @@
 slug: calcium-magnesium-ratio-should-be-2-to-1
-statement: The ideal dietary calcium-to-magnesium ratio is 2:1; current population
-  ratios of approximately 6:1 contribute to excess free ionic calcium and its associated
-  pathologies.
+statement: The ideal dietary calcium-to-magnesium ratio is 2:1; current population ratios of approximately 6:1 contribute
+  to excess free ionic calcium and its associated pathologies.
 evidence_tier: fm_specific_thin
-rationale: The 2:1 calcium:magnesium ratio is commonly cited in functional medicine
-  but is not formally endorsed by major nutritional bodies. The concern about excess
-  free calcium is biologically coherent but the specific ratio threshold is FM-specific.
+rationale: The 2:1 calcium:magnesium ratio is commonly cited in functional medicine but is not formally endorsed by major
+  nutritional bodies. The concern about excess free calcium is biologically coherent but the specific ratio threshold is FM-specific.
 caveats:
-- This ratio is a functional medicine heuristic; mainstream guidelines do not specify
-  a calcium:magnesium ratio. Treat as a working framework.
-coaching_translation: Most people have too much calcium relative to magnesium. Bringing
-  this ratio into better balance — rather than supplementing more calcium — is a key
-  functional medicine principle.
+- This ratio is a functional medicine heuristic; mainstream guidelines do not specify a calcium:magnesium ratio. Treat as
+  a working framework.
+coaching_translation: Most people have too much calcium relative to magnesium. Bringing this ratio into better balance — rather
+  than supplementing more calcium — is a key functional medicine principle.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 - calcium-overload
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -21,8 +18,7 @@ linked_to_supplements: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Calcium overload section
-  quote: Ideally, the ratio has to be between 2:1 for calcium and magnesium but currently,
-    we all have a ratio which is 6:1.
+  quote: Ideally, the ratio has to be between 2:1 for calcium and magnesium but currently, we all have a ratio which is 6:1.
 version: 1
 status: active
 updated_at: '2026-05-05'

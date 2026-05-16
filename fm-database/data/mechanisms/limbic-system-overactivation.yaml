@@ -5,15 +5,14 @@ aliases:
 - limbic-hyperarousal
 - fight-or-flight-chronicity
 category: neurological
-summary: Unprocessed emotional trauma or chronic fear maintains amygdala in dominant
-  mode, perpetuating sympathetic arousal, cortisol spikes, and vagal shutdown. Manifests
-  as immune dysregulation, hypervigilance, autoimmune flares, and chronic pain.
+summary: Unprocessed emotional trauma or chronic fear maintains amygdala in dominant mode, perpetuating sympathetic arousal,
+  cortisol spikes, and vagal shutdown. Manifests as immune dysregulation, hypervigilance, autoimmune flares, and chronic pain.
 upstream_drivers:
 - emotional-trauma
 - chronic-fear
 - hpa-axis-dysregulation
 downstream_effects:
-- sympathetic-overdrive
+- sympathetic-dominance
 - immune-dysregulation
 - cortisol-spikes
 - hypervigilance
@@ -29,8 +28,7 @@ evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Limbic overactivation → constant 'fight or flight' → vagal shutdown & immune
-    dysregulation.
+  quote: Limbic overactivation → constant 'fight or flight' → vagal shutdown & immune dysregulation.
 version: 1
 status: active
 updated_at: '2026-05-04'

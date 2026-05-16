@@ -25,8 +25,8 @@ summary: 'Endotoxins are toxic substances generated internally — including end
 
   '
 upstream_drivers:
-- dysbiosis
-- intestinal-hyperpermeability
+- dysbiosis-gut-microbiome-imbalance
+- leaky-gut
 - metabolic-byproducts
 downstream_effects:
 - phase-1-biotransformation

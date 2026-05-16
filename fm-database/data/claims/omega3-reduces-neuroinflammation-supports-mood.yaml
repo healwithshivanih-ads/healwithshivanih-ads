@@ -1,29 +1,25 @@
 slug: omega3-reduces-neuroinflammation-supports-mood
-statement: Omega-3 fatty acids are anti-inflammatory for neuroinflammation and clinically
-  useful for depression, trauma, and chronic pain.
+statement: Omega-3 fatty acids are anti-inflammatory for neuroinflammation and clinically useful for depression, trauma, and
+  chronic pain.
 evidence_tier: plausible_emerging
-rationale: Omega-3 (especially EPA/DHA) anti-inflammatory effects via prostaglandin/leukotriene
-  pathway modulation are well-established. RCT evidence supports EPA specifically
-  for depression. Application to trauma and chronic pain is plausible but less conclusive.
-coaching_translation: Omega-3s from fatty fish or supplements act as natural anti-inflammatories
-  in the brain and nervous system. They are one of the most evidence-backed nutrients
-  for supporting mood and reducing neurological pain.
+rationale: Omega-3 (especially EPA/DHA) anti-inflammatory effects via prostaglandin/leukotriene pathway modulation are well-established.
+  RCT evidence supports EPA specifically for depression. Application to trauma and chronic pain is plausible but less conclusive.
+coaching_translation: Omega-3s from fatty fish or supplements act as natural anti-inflammatories in the brain and nervous
+  system. They are one of the most evidence-backed nutrients for supporting mood and reducing neurological pain.
 caveats:
-- High-dose omega-3 (2g+ EPA/DHA) should be overseen by a clinician, especially on
-  blood thinners.
+- High-dose omega-3 (2g+ EPA/DHA) should be overseen by a clinician, especially on blood thinners.
 - Source is educational synthesis.
 linked_to_topics:
 - emotional-healing-chronic-disease
 - nervous-system-regulation
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Omega-3 Fatty Acids: Anti-inflammatory for neuroinflammation. Depression,
-    trauma, chronic pain.'
+  quote: 'Omega-3 Fatty Acids: Anti-inflammatory for neuroinflammation. Depression, trauma, chronic pain.'
 version: 1
 status: active
 updated_at: '2026-05-04'

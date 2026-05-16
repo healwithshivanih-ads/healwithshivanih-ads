@@ -1,15 +1,13 @@
 slug: organic-food-reduces-pesticide-herbicide-intake
-statement: Buying organically grown food helps minimize intake of pesticides, herbicides,
-  and insecticides, reducing the dietary contribution to toxic body burden.
+statement: Buying organically grown food helps minimize intake of pesticides, herbicides, and insecticides, reducing the dietary
+  contribution to toxic body burden.
 evidence_tier: strong
-rationale: Multiple biomonitoring studies have demonstrated lower urinary pesticide
-  metabolites in individuals consuming organic diets. The EWG Dirty Dozen/Clean 15
-  framework reflects well-established pesticide residue data.
-coaching_translation: Choosing organic produce and animal products — especially for
-  the 'Dirty Dozen' high-pesticide foods — is one of the most direct ways to reduce
-  your daily toxic load.
+rationale: Multiple biomonitoring studies have demonstrated lower urinary pesticide metabolites in individuals consuming organic
+  diets. The EWG Dirty Dozen/Clean 15 framework reflects well-established pesticide residue data.
+coaching_translation: Choosing organic produce and animal products — especially for the 'Dirty Dozen' high-pesticide foods
+  — is one of the most direct ways to reduce your daily toxic load.
 linked_to_topics:
-- liver-detox-food-plan
+- liver-detoxification
 - environmental-toxin-exposure
 - toxic-body-burden
 out_of_scope_notes: ''
@@ -19,8 +17,7 @@ linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — Avoiding Environmental Toxins
-  quote: Buying organically grown food helps to ensure a minimal intake of pesticides,
-    herbicides, and insecticides.
+  quote: Buying organically grown food helps to ensure a minimal intake of pesticides, herbicides, and insecticides.
 version: 1
 status: active
 updated_at: '2026-05-04'

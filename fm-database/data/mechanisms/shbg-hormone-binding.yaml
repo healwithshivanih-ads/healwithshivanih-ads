@@ -6,14 +6,13 @@ aliases:
 - SHBG transport
 - SHBG binding capacity
 category: endocrine
-summary: SHBG binds testosterone and estrogen in the blood, rendering them biologically
-  inactive. SHBG has higher affinity for testosterone than estrogen. Elevated SHBG
-  reduces free testosterone; depressed SHBG increases free androgens and estrogens.
+summary: SHBG binds testosterone and estrogen in the blood, rendering them biologically inactive. SHBG has higher affinity
+  for testosterone than estrogen. Elevated SHBG reduces free testosterone; depressed SHBG increases free androgens and estrogens.
 upstream_drivers:
 - aging
 - liver disease
 - hyperthyroidism
-- insulin resistance
+- insulin-resistance
 - obesity
 - low-fat diet
 - cirrhosis
@@ -21,7 +20,6 @@ upstream_drivers:
 - vitamin-d-supplementation
 - type-2-diabetes
 - hypothyroidism
-- metabolic-syndrome
 - insulin-excess
 downstream_effects:
 - testosterone-deficiency-symptoms
@@ -30,22 +28,19 @@ downstream_effects:
 - estrogen-excess-symptoms
 related_mechanisms:
 - insulin-resistance
-- hepatic-estrogen-detoxification
-- free-testosterone-regulation
+- hepatic-estrogen-metabolism
 linked_to_topics:
 - sex-hormone-binding-globulin
 evidence_tier: strong
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: When hormones bind to SHBG, they are essentially inactivated. High concentrations
-    of SHBG in the body can lead to increased bound testosterone, as SHBG more easily
-    binds to testosterone than to estrogen.
+  quote: When hormones bind to SHBG, they are essentially inactivated. High concentrations of SHBG in the body can lead to
+    increased bound testosterone, as SHBG more easily binds to testosterone than to estrogen.
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
-  quote: When hormones bind to SHBG, they are essentially inactivated. High concentrations
-    of SHBG in the body can lead to increased bound testosterone, as SHBG more easily
-    binds to testosterone than to estrogen.
+  quote: When hormones bind to SHBG, they are essentially inactivated. High concentrations of SHBG in the body can lead to
+    increased bound testosterone, as SHBG more easily binds to testosterone than to estrogen.
 version: 2
 status: active
 updated_at: '2026-05-04'

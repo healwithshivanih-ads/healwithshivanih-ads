@@ -8,10 +8,10 @@ summary: The gut-brain axis involves bidirectional signaling between the gut mic
   neuroendocrine peptides, and neurotransmitters. Dysregulation contributes to SIBO pathogenesis and is associated with depression,
   anxiety, autism, cognitive decline, and immune dysregulation.
 common_symptoms:
-- depression
+- low-mood
 - anxiety
 - brain-fog
-- fatigue
+- lethargy
 - insomnia
 - poor-stress-response
 red_flags:
@@ -26,7 +26,7 @@ related_topics:
 key_mechanisms:
 - vagal-nerve-dysregulation
 - hpa-axis-dysregulation
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 coaching_scope_notes: 'Coaches play a primary role here: stress management, meditation, breathwork, sleep hygiene, and motivational
   coaching directly support vagal tone and gut-brain axis balance.'
 clinician_scope_notes: Consider HPA axis hormones, neurotransmitter precursors, and advanced gut mapping in chronic cases.

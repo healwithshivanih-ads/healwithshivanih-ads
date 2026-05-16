@@ -5,19 +5,18 @@ aliases:
 - suppressed vagal tone
 - inability to enter rest-and-digest
 category: neurological
-summary: When the sympathetic nervous system is chronically dominant, parasympathetic
-  (rest-and-digest) tone is suppressed. This inhibits digestive enzyme release, gut
-  motility, cellular repair, and the calm emotional states needed for recovery and
-  social bonding.
+summary: When the sympathetic nervous system is chronically dominant, parasympathetic (rest-and-digest) tone is suppressed.
+  This inhibits digestive enzyme release, gut motility, cellular repair, and the calm emotional states needed for recovery
+  and social bonding.
 upstream_drivers:
-- sympathetic-nervous-system-activation
+- sympathetic-dominance
 - chronic-stress
 downstream_effects:
 - impaired-digestion
 - sleep-disruption
 - inability-to-relax
 related_mechanisms:
-- sympathetic-nervous-system-activation
+- sympathetic-dominance
 - hpa-axis-dysregulation
 linked_to_topics:
 - stress-and-the-sympathetic-nervous-system
@@ -26,8 +25,7 @@ evidence_tier: strong
 sources:
 - id: ask-expert-coaching-stress-kids
   location: Stress Client Topic Discussion
-  quote: chewing from both sides and just slowing down... that in itself will bring
-    her into like a parasympathetic state.
+  quote: chewing from both sides and just slowing down... that in itself will bring her into like a parasympathetic state.
 version: 1
 status: active
 updated_at: '2026-05-05'

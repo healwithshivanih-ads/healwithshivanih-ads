@@ -7,14 +7,13 @@ aliases:
 - heightened threat awareness
 - emotional numbness alternating with reactivity
 category: neurological
-description: State of persistent heightened alertness and threat scanning, commonly
-  seen after unresolved trauma or chronic fear. Linked to limbic system overactivation
-  and sustained sympathetic dominance. May present alongside emotional numbness.
+description: State of persistent heightened alertness and threat scanning, commonly seen after unresolved trauma or chronic
+  fear. Linked to limbic system overactivation and sustained sympathetic dominance. May present alongside emotional numbness.
 display_name: Hypervigilance
 linked_to_mechanisms:
 - limbic-system-overactivation
 - hpa-axis-dysregulation
-- sympathetic-overdrive
+- sympathetic-dominance
 linked_to_topics:
 - emotional-healing-chronic-disease
 - nervous-system-regulation
@@ -32,5 +31,4 @@ status: active
 updated_at: '2026-05-04'
 updated_by: shivani
 version: 2
-when_to_refer: Refer if PTSD or complex trauma is suspected; requires trauma-specialist
-  intervention.
+when_to_refer: Refer if PTSD or complex trauma is suspected; requires trauma-specialist intervention.

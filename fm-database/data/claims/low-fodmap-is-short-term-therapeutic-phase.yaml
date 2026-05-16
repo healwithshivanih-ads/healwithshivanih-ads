@@ -1,21 +1,17 @@
 slug: low-fodmap-is-short-term-therapeutic-phase
-statement: The low-FODMAP diet is a short-term diagnostic and therapeutic tool (2–6
-  weeks) and is not intended as a long-term dietary pattern, as prolonged use reduces
-  microbiome diversity.
+statement: The low-FODMAP diet is a short-term diagnostic and therapeutic tool (2–6 weeks) and is not intended as a long-term
+  dietary pattern, as prolonged use reduces microbiome diversity.
 evidence_tier: strong
-rationale: RCT evidence and Monash University clinical guidance confirm efficacy of
-  low-FODMAP for IBS symptom relief. The concern about long-term microbiome diversity
-  reduction is supported by multiple observational studies showing reduced Bifidobacterium
+rationale: RCT evidence and Monash University clinical guidance confirm efficacy of low-FODMAP for IBS symptom relief. The
+  concern about long-term microbiome diversity reduction is supported by multiple observational studies showing reduced Bifidobacterium
   and overall diversity with sustained restriction.
-coaching_translation: The low-FODMAP diet is designed to be followed for only 2–6
-  weeks to identify your personal food triggers — not as a lifelong diet. Staying
-  on it too long can actually harm the variety of good bacteria in your gut.
+coaching_translation: The low-FODMAP diet is designed to be followed for only 2–6 weeks to identify your personal food triggers
+  — not as a lifelong diet. Staying on it too long can actually harm the variety of good bacteria in your gut.
 caveats:
 - Reintroduction phase evidence is strong for individualising triggers.
-- Coach should not lead dietary elimination protocols independently — refer to a registered
-  dietitian for FODMAP guidance.
+- Coach should not lead dietary elimination protocols independently — refer to a registered dietitian for FODMAP guidance.
 linked_to_topics:
-- gut-health-fodmap-sibo
+- sibo
 linked_to_supplements: []
 out_of_scope_notes: ''
 linked_to_mechanisms: []

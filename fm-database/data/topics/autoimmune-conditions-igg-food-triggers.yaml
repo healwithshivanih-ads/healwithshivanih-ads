@@ -7,7 +7,7 @@ summary: In autoimmune conditions, IgG reactions (not IgE) are the predominant i
   casein (cow's milk), wheat, dairy, egg white, and rice. Elimination diets targeting these antigens are a core FM intervention
   in autoimmune patients.
 common_symptoms:
-- fatigue
+- lethargy
 - joint-pain
 - brain-fog
 - inflammation
@@ -16,7 +16,7 @@ related_topics:
 - autoimmunity-leaky-gut-triad
 key_mechanisms:
 - igg-antigen-immune-complex-complement-activation
-- intestinal-permeability
+- leaky-gut
 coaching_scope_notes: Coaches can support elimination of common autoimmune food triggers under clinician guidance. IgG testing
   for autoimmune conditions should be ordered and interpreted by a clinician.
 clinician_scope_notes: IgG + complement testing panels are available for autoimmune food trigger identification. Celiac disease

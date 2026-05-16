@@ -27,10 +27,10 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - insomnia
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - nervous-system-regulation
 - metabolic-detoxification
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - l-theanine-glycine-increase-alpha-waves-relaxation
@@ -38,11 +38,10 @@ linked_to_claims:
 - glycine-promotes-sleep-and-relaxation
 - amino-acids-required-for-phase2-conjugation
 - low-protein-diet-impairs-phase2
-notes_for_coach: Glycine is a primary amino acid used in Phase 2 amino acid conjugation.
-  Also a glutathione precursor. Particularly relevant for patients on low-protein
-  diets. Verify specific dosing with clinician.
-notes_for_client: Glycine is an amino acid (building block of protein) that your liver
-  uses to attach to and neutralize toxins, helping them leave your body.
+notes_for_coach: Glycine is a primary amino acid used in Phase 2 amino acid conjugation. Also a glutathione precursor. Particularly
+  relevant for patients on low-protein diets. Verify specific dosing with clinician.
+notes_for_client: Glycine is an amino acid (building block of protein) that your liver uses to attach to and neutralize toxins,
+  helping them leave your body.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -51,19 +50,17 @@ sources:
   quote: Glycine (3-5g)
 - id: vitaone-adrenal-cheatsheet
   location: Functional Medicine Interventions — Digital Overstimulation (p.16)
-  quote: 'Sleep Optimization: Rebuild circadian recovery. No blue light post-sunset,
-    glycine, magnesium, dark exposure.'
+  quote: 'Sleep Optimization: Rebuild circadian recovery. No blue light post-sunset, glycine, magnesium, dark exposure.'
 - id: vitaone-health-coaching-toolkit
   location: How to Reset the Nervous System / Daily Nervous System Reset Routine
   quote: Box breathing + chamomile or glycine; Lower cortisol, promote melatonin.
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'L-Theanine / Glycine — Increase alpha brain waves, relaxation. Clinical
-    use: Mental tension, sleep support.'
+  quote: 'L-Theanine / Glycine — Increase alpha brain waves, relaxation. Clinical use: Mental tension, sleep support.'
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Conjugation Pathways
-  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can
-    say, they are the primary amino acid they use for conjugation.
+  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can say, they are the primary amino acid they
+    use for conjugation.
 version: 6
 status: active
 updated_at: '2026-05-05'

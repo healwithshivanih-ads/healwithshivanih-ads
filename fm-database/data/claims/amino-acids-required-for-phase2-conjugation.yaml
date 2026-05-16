@@ -1,33 +1,29 @@
 slug: amino-acids-required-for-phase2-conjugation
-statement: Glycine, glutamine, and taurine are the primary amino acids used for Phase
-  2 amino acid conjugation, and adequate availability of these amino acids is required
-  for effective toxin neutralization.
+statement: Glycine, glutamine, and taurine are the primary amino acids used for Phase 2 amino acid conjugation, and adequate
+  availability of these amino acids is required for effective toxin neutralization.
 evidence_tier: strong
-rationale: Amino acid conjugation is a well-characterized Phase 2 pathway. Glycine
-  conjugation (e.g., hippuric acid formation), taurine conjugation (bile acid conjugation),
-  and glutamine conjugation are documented biochemical reactions. These amino acids
-  are direct substrates for Phase 2 conjugation enzymes.
-coaching_translation: Your liver uses specific amino acids like glycine, glutamine,
-  and taurine to grab onto activated toxins and neutralize them. Getting enough protein
-  — especially from varied whole food sources — ensures a good supply of these building
-  blocks.
+rationale: Amino acid conjugation is a well-characterized Phase 2 pathway. Glycine conjugation (e.g., hippuric acid formation),
+  taurine conjugation (bile acid conjugation), and glutamine conjugation are documented biochemical reactions. These amino
+  acids are direct substrates for Phase 2 conjugation enzymes.
+coaching_translation: Your liver uses specific amino acids like glycine, glutamine, and taurine to grab onto activated toxins
+  and neutralize them. Getting enough protein — especially from varied whole food sources — ensures a good supply of these
+  building blocks.
 caveats:
-- Taurine was referenced as 'chlorine' in source transcript — likely a transcription
-  error for taurine, which is the standard amino acid used in bile acid conjugation
-  alongside glycine.
+- Taurine was referenced as 'chlorine' in source transcript — likely a transcription error for taurine, which is the standard
+  amino acid used in bile acid conjugation alongside glycine.
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_supplements:
 - glycine
-- glutamine
+- l-glutamine
 - sulfur-containing-amino-acids
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Conjugation Pathways
-  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can
-    say, they are the primary amino acid they use for conjugation.
+  quote: So chlorine, glycine, and glutamine, and glutamine and glutamine, we can say, they are the primary amino acid they
+    use for conjugation.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -4,22 +4,21 @@ aliases:
 - stress reduction
 - relaxation practices
 - stress resilience
-summary: Lifestyle-based approaches to managing stress responses, including breathing
-  exercises, gratitude journaling, time in nature, and relaxation practices, to reduce
-  physiological and psychological stress burden.
+summary: Lifestyle-based approaches to managing stress responses, including breathing exercises, gratitude journaling, time
+  in nature, and relaxation practices, to reduce physiological and psychological stress burden.
 common_symptoms:
 - tension
-- fatigue
+- lethargy
 - poor-concentration
 - anxiety
-- poor-sleep
+- sleep-disruption
 - stress
 red_flags:
 - severe anxiety disorder
-- panic attacks
+- anxiety-palpitations-panic
 - chronic unmanaged stress with somatic symptoms
 related_topics:
-- sleep-hygiene
+- sleep
 - mindfulness
 - self-care
 - mindful-breathing
@@ -28,17 +27,15 @@ related_topics:
 key_mechanisms:
 - parasympathetic-activation
 - hpa-axis-dysregulation
-- hpa-axis-regulation
-coaching_scope_notes: Coaches can support stress reduction through breathing techniques,
-  journaling, and self-care habit building. Avoid diagnosing anxiety disorders.
-clinician_scope_notes: Refer if stress appears to be driving clinical anxiety, depression,
-  or somatic illness.
+coaching_scope_notes: Coaches can support stress reduction through breathing techniques, journaling, and self-care habit building.
+  Avoid diagnosing anxiety disorders.
+clinician_scope_notes: Refer if stress appears to be driving clinical anxiety, depression, or somatic illness.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
-  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease
-    stress by activating relaxation centers in the brain.
+  quote: Abdominal breathing, or diaphragmatic breathing, is a powerful way to decrease stress by activating relaxation centers
+    in the brain.
 version: 2
 status: active
 updated_at: '2026-05-04'

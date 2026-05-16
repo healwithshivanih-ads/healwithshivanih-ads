@@ -1,33 +1,28 @@
 slug: optimal-epa-dha-dose-range-2-to-4-grams-per-day
-statement: The effective therapeutic dose range of combined EPA and DHA for inflammatory
-  conditions is 2–4g/day; doses below 1.5g/day are not effective and doses above 7g/day
-  provide no additional benefit.
+statement: The effective therapeutic dose range of combined EPA and DHA for inflammatory conditions is 2–4g/day; doses below
+  1.5g/day are not effective and doses above 7g/day provide no additional benefit.
 evidence_tier: plausible_emerging
-rationale: Stated as a clinical dosing recommendation in the lecture, with the suggested
-  EPA:DHA ratio of approximately 1.5:1. Source is FM lecture of moderate quality;
-  this represents expert consensus rather than a specific named RCT.
-coaching_translation: For omega-3 to work as an anti-inflammatory, you generally need
-  at least 2g/day — and the sweet spot is 2 to 4 grams of combined EPA and DHA.
-out_of_scope_notes: Specific clinical dosing recommendations should be reviewed with
-  a clinician, particularly at the upper range or in the context of diagnosed conditions.
+rationale: Stated as a clinical dosing recommendation in the lecture, with the suggested EPA:DHA ratio of approximately 1.5:1.
+  Source is FM lecture of moderate quality; this represents expert consensus rather than a specific named RCT.
+coaching_translation: For omega-3 to work as an anti-inflammatory, you generally need at least 2g/day — and the sweet spot
+  is 2 to 4 grams of combined EPA and DHA.
+out_of_scope_notes: Specific clinical dosing recommendations should be reviewed with a clinician, particularly at the upper
+  range or in the context of diagnosed conditions.
 caveats:
-- FM lecture source; specific primary studies supporting these exact thresholds not
-  named.
+- FM lecture source; specific primary studies supporting these exact thresholds not named.
 - Verify with clinician for individual clinical conditions.
 - Higher doses (e.g., 4g/day EPA in REDUCE-IT) require medical supervision.
 linked_to_topics:
 - omega-3-fatty-acids
 linked_to_supplements:
-- epa-dha-fish-oil
+- fish-oil-omega-3
 - algae-oil-dha-epa
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Omega-3 Supplementation Recommendations Slide
-  quote: 3 to 6 grams per day would be effective. Greater than 7 grams is not efficient.
-    Less than 1.5 grams is also not effective. So the intake should be between 2 to
-    4 grams ideally. And the ratio of EPA to DHA should be approximately 1.5 is to
-    1.
+  quote: 3 to 6 grams per day would be effective. Greater than 7 grams is not efficient. Less than 1.5 grams is also not effective.
+    So the intake should be between 2 to 4 grams ideally. And the ratio of EPA to DHA should be approximately 1.5 is to 1.
 version: 1
 status: active
 updated_at: '2026-05-05'

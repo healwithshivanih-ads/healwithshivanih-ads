@@ -6,11 +6,10 @@ aliases:
 - chronic psychological stress
 - perceived stress
 - psychosocial stress
-summary: Stress is presented as a primary driver of chronic disease through HPA activation,
-  sympathetic dominance, inflammation, mitochondrial strain, gut disruption, and hormonal
-  shifts.
+summary: Stress is presented as a primary driver of chronic disease through HPA activation, sympathetic dominance, inflammation,
+  mitochondrial strain, gut disruption, and hormonal shifts.
 common_symptoms:
-- fatigue
+- lethargy
 - insomnia
 - digestive-pain
 - bloating
@@ -20,13 +19,11 @@ common_symptoms:
 - irregular-periods
 - shortness-of-breath
 - anxiety
-- headaches
-- menstrual-irregularities
 - brain-fog
-- central-weight-gain
+- increased-waist-circumference
 - depression-like-symptoms
 - low-motivation
-- poor-focus
+- poor-concentration
 red_flags:
 - Persistent high blood pressure
 - Signs of heart disease
@@ -34,52 +31,43 @@ red_flags:
 - persistent high blood pressure
 - heart disease risk
 - new onset diabetes
-- dementia risk
+- poor-concentration
 - psychosis or mania
 - serotonin syndrome
 - severe hypertension
 - clot risk
 related_topics:
 - hpa-axis-dysregulation
-- cortisol-dysregulation
-- hpa-axis-dysfunction
 - hypercortisolism
 - adrenal-fatigue
-- hpa-axis
 - chronic-inflammation
 - gut-dysbiosis
 - cardiovascular-health
 - depression-like-symptoms
 key_mechanisms:
 - hpa-axis-dysregulation
-- sympathetic-nervous-system-activation
-- sympathoadrenal-activation
-- cortisol-dhea-imbalance
-- hpa-axis-overactivation
 - sympathetic-dominance
+- noradrenaline-signaling
+- cortisol-elevation
 - neuroimmune-inflammation-loop
-coaching_scope_notes: Stress awareness, digital hygiene, community connection, sleep
-  regularity, movement, breathwork, journaling, and mindfulness are coaching-safe
-  domains.
-clinician_scope_notes: Stress-driven hormone imbalances, medication-related neurotransmitter
-  effects, autoimmune flares, and cardiovascular risk require clinician evaluation.
+coaching_scope_notes: Stress awareness, digital hygiene, community connection, sleep regularity, movement, breathwork, journaling,
+  and mindfulness are coaching-safe domains.
+clinician_scope_notes: Stress-driven hormone imbalances, medication-related neurotransmitter effects, autoimmune flares, and
+  cardiovascular risk require clinician evaluation.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress
-  quote: People who report higher levels of chronic stress are more likely to develop
-    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
-    more.
+  quote: People who report higher levels of chronic stress are more likely to develop heart disease, depression, diabetes,
+    dementia, cancer, digestive symptoms, and more.
 - id: vitaone-health-coaching-toolkit
   location: Effects of Chronic Stress
-  quote: People who report higher levels of chronic stress are more likely to develop
-    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
-    more.
+  quote: People who report higher levels of chronic stress are more likely to develop heart disease, depression, diabetes,
+    dementia, cancer, digestive symptoms, and more.
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: Stress is presented as a primary driver of chronic disease through HPA activation,
-    sympathetic dominance, inflammation, mitochondrial strain, gut disruption, and
-    hormonal shifts.
+  quote: Stress is presented as a primary driver of chronic disease through HPA activation, sympathetic dominance, inflammation,
+    mitochondrial strain, gut disruption, and hormonal shifts.
 version: 3
 status: active
 updated_at: '2026-05-06'

@@ -5,9 +5,8 @@ aliases:
 - endothelial oxidative damage
 - ROS-driven atherosclerosis
 category: immune
-summary: Excess reactive oxygen species — driven by high omega-6 polyunsaturated fats,
-  hyperglycaemia (AGEs), and excess catecholamines/cortisol — damage the vascular
-  endothelium, oxidise LDL particles, and promote atherosclerotic plaque formation.
+summary: Excess reactive oxygen species — driven by high omega-6 polyunsaturated fats, hyperglycaemia (AGEs), and excess catecholamines/cortisol
+  — damage the vascular endothelium, oxidise LDL particles, and promote atherosclerotic plaque formation.
 upstream_drivers:
 - excess-omega-6-vegetable-oils
 - hyperglycemia
@@ -21,7 +20,7 @@ downstream_effects:
 - cardiovascular-events
 related_mechanisms:
 - insulin-resistance
-- methylation-defect-homocysteine
+- methylation-cycle-dysfunction
 - systemic-inflammation-cv
 linked_to_topics:
 - cardiovascular-risk-assessment

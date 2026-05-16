@@ -4,45 +4,42 @@ aliases:
 - thyroid disease
 - thyroid imbalance
 - thyroid disorder
-summary: A broad clinical area encompassing disruptions in thyroid hormone production,
-  conversion, and cellular sensitivity. Includes hypothyroidism, subclinical hypothyroidism,
-  and autoimmune thyroid disease. The thyroid gland regulates metabolism, energy production,
-  and many bodily functions via T4/T3 hormones.
+summary: A broad clinical area encompassing disruptions in thyroid hormone production, conversion, and cellular sensitivity.
+  Includes hypothyroidism, subclinical hypothyroidism, and autoimmune thyroid disease. The thyroid gland regulates metabolism,
+  energy production, and many bodily functions via T4/T3 hormones.
 common_symptoms:
-- fatigue
-- weight-gain
+- lethargy
+- unexplained-weight-gain
 - cold-intolerance
 - constipation
 - brain-fog
 - dry-skin
-- brittle-hair
-- depression
-- irregular-menstrual-cycles
+- hair-loss
+- low-mood
+- irregular-periods
 red_flags:
 - goiter (enlarged thyroid gland)
 - infertility or recurrent miscarriage
 - history of radiation to head/neck
 - cardiovascular complications from untreated hypothyroidism
 related_topics:
-- hashimotos-hypothyroidism
-- subclinical-hypothyroidism
-- autoimmune-thyroid-disease
+- autoimmune-thyroiditis
+- hypothyroidism
+- thyroid
 key_mechanisms:
-- t4-to-t3-conversion-impairment
-- rt3-t3-competition
-- autoimmune-thyroid-attack
-coaching_scope_notes: Coaches can support thyroid health through nutrient optimization,
-  dietary changes, stress management, and lifestyle coaching. Lab interpretation,
-  medication management, and supplement dosing require clinician oversight.
-clinician_scope_notes: Diagnosis requires TSH, free T4, thyroid antibody panel (Anti-TPO,
-  Anti-Tg), and possibly thyroid ultrasound. Hormone replacement therapy (levothyroxine
-  or NDT) is a clinician decision.
+- impaired-t4-to-t3-conversion
+- reverse-t3-dominance
+- thyroid-autoimmunity
+coaching_scope_notes: Coaches can support thyroid health through nutrient optimization, dietary changes, stress management,
+  and lifestyle coaching. Lab interpretation, medication management, and supplement dosing require clinician oversight.
+clinician_scope_notes: Diagnosis requires TSH, free T4, thyroid antibody panel (Anti-TPO, Anti-Tg), and possibly thyroid ultrasound.
+  Hormone replacement therapy (levothyroxine or NDT) is a clinician decision.
 evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Understanding Hashimoto's Hypothyroidism
-  quote: The thyroid gland, located at the base of the neck, is responsible for producing
-    hormones that regulate metabolism, energy production, and many other bodily functions.
+  quote: The thyroid gland, located at the base of the neck, is responsible for producing hormones that regulate metabolism,
+    energy production, and many other bodily functions.
 version: 1
 status: active
 updated_at: '2026-05-04'

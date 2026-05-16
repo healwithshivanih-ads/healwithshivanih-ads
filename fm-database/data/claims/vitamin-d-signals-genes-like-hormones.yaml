@@ -1,26 +1,23 @@
 slug: vitamin-d-signals-genes-like-hormones
-statement: Vitamin D is the only non-hormone molecule known to signal gene expression,
-  and consistent daily supplementation is more effective than episodic high-dose supplementation.
+statement: Vitamin D is the only non-hormone molecule known to signal gene expression, and consistent daily supplementation
+  is more effective than episodic high-dose supplementation.
 evidence_tier: strong
-rationale: Vitamin D receptor (VDR) as a nuclear receptor with direct gene-regulatory
-  function is well established. The superiority of regular versus episodic supplementation
-  for maintaining 25(OH)D levels is supported by clinical literature.
-coaching_translation: Vitamin D is special — it works like a hormone and can switch
-  genes on and off. Taking a smaller amount every day is more effective than taking
-  a large dose occasionally.
+rationale: Vitamin D receptor (VDR) as a nuclear receptor with direct gene-regulatory function is well established. The superiority
+  of regular versus episodic supplementation for maintaining 25(OH)D levels is supported by clinical literature.
+coaching_translation: Vitamin D is special — it works like a hormone and can switch genes on and off. Taking a smaller amount
+  every day is more effective than taking a large dose occasionally.
 linked_to_topics:
 - hormonal-nutrition-foundations
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: Vitamin D and Gene Signaling
-  quote: The only other thing that can signal genes is vitamin D... regularity of
-    supplementation of vitamin D is more effective than episodic supplementation of
-    vitamin D. There's lots of papers on that.
+  quote: The only other thing that can signal genes is vitamin D... regularity of supplementation of vitamin D is more effective
+    than episodic supplementation of vitamin D. There's lots of papers on that.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,15 +1,15 @@
 slug: osmotic-fluid-shifts-in-gut
 display_name: Osmotic Fluid Shifts in the Gut
 category: gut
-summary: FODMAPs draw water into the intestinal lumen via osmosis, increasing stool
-  water content and contributing to loose stools or diarrhea in sensitive individuals.
+summary: FODMAPs draw water into the intestinal lumen via osmosis, increasing stool water content and contributing to loose
+  stools or diarrhea in sensitive individuals.
 upstream_drivers:
 - high-fodmap-food-intake
 downstream_effects:
 - diarrhea
 - urgency-to-defecate
 related_mechanisms:
-- fodmap-fermentation-gas-production
+- colonic-fermentation
 linked_to_topics:
 - low-fodmap-diet
 - ibs
@@ -18,8 +18,8 @@ aliases: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Low FODMAP Vegetarian Diet Plan introduction
-  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination)
-    designed to calm IBS-type symptoms while you figure out your personal triggers.
+  quote: Low FODMAP is a short-term, research-backed approach (not a forever-elimination) designed to calm IBS-type symptoms
+    while you figure out your personal triggers.
 version: 1
 status: active
 updated_at: '2026-05-04'

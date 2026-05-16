@@ -1,28 +1,22 @@
 slug: unexplained-hair-loss-check-h-pylori
-statement: Unexplained hair loss may be associated with H. pylori infection, and testing
-  for H. pylori should be considered even in children presenting with this symptom.
+statement: Unexplained hair loss may be associated with H. pylori infection, and testing for H. pylori should be considered
+  even in children presenting with this symptom.
 evidence_tier: fm_specific_thin
-rationale: Clinical observation from a functional medicine coach suggesting H. pylori
-  as an under-recognised upstream driver of unexplained hair loss, including in paediatric
-  cases. The mechanism is plausible (H. pylori-driven nutrient malabsorption — particularly
-  iron and B12 — can contribute to hair loss), but peer-reviewed consensus specifically
-  linking H. pylori to hair loss is thin.
-coaching_translation: If a client (adult or child) is experiencing unexplained hair
-  loss with no obvious cause, flag H. pylori testing as something worth discussing
-  with their clinician — it's an often-overlooked connection.
-out_of_scope_notes: Ordering and interpreting H. pylori tests, and prescribing or
-  recommending treatment protocols (e.g. triple therapy), are outside coaching scope.
-  Refer to a clinician for testing and treatment decisions, especially for children.
+rationale: Clinical observation from a functional medicine coach suggesting H. pylori as an under-recognised upstream driver
+  of unexplained hair loss, including in paediatric cases. The mechanism is plausible (H. pylori-driven nutrient malabsorption
+  — particularly iron and B12 — can contribute to hair loss), but peer-reviewed consensus specifically linking H. pylori to
+  hair loss is thin.
+coaching_translation: If a client (adult or child) is experiencing unexplained hair loss with no obvious cause, flag H. pylori
+  testing as something worth discussing with their clinician — it's an often-overlooked connection.
+out_of_scope_notes: Ordering and interpreting H. pylori tests, and prescribing or recommending treatment protocols (e.g. triple
+  therapy), are outside coaching scope. Refer to a clinician for testing and treatment decisions, especially for children.
 caveats:
-- Source is a clinical observation / expert consensus note, not primary peer-reviewed
-  literature.
-- Paediatric cases in particular should always be referred to a qualified clinician
-  before any investigation or treatment.
-- H. pylori treatment typically requires prescription antibiotics — this is strictly
-  a clinician decision.
+- Source is a clinical observation / expert consensus note, not primary peer-reviewed literature.
+- Paediatric cases in particular should always be referred to a qualified clinician before any investigation or treatment.
+- H. pylori treatment typically requires prescription antibiotics — this is strictly a clinician decision.
 linked_to_topics:
 - hair-loss
-- h-pylori
+- h-pylori-infection
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:

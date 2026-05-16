@@ -5,9 +5,8 @@ aliases:
 - inflammatory cytokine production
 - hs-CRP elevation
 category: immune
-summary: Elevated inflammatory cytokines, reflected by raised hs-CRP, directly threaten
-  cardiovascular health. Sources include insulin resistance, excess omega-6 fats,
-  psychosocial stress, elevated homocysteine, and advanced glycation end products.
+summary: Elevated inflammatory cytokines, reflected by raised hs-CRP, directly threaten cardiovascular health. Sources include
+  insulin resistance, excess omega-6 fats, psychosocial stress, elevated homocysteine, and advanced glycation end products.
 upstream_drivers:
 - insulin-resistance
 - excess-omega-6-vegetable-oils
@@ -15,22 +14,22 @@ upstream_drivers:
 - advanced-glycation-end-products
 - chronic-stress
 downstream_effects:
-- endothelial-damage
+- endothelial-dysfunction
 - plaque-instability
 - elevated-fibrinogen
 - thrombosis-risk
 related_mechanisms:
 - oxidative-stress-vascular
 - insulin-resistance
-- methylation-defect-homocysteine
+- methylation-cycle-dysfunction
 linked_to_topics:
 - cardiovascular-risk-assessment
 evidence_tier: strong
 sources:
 - id: vitaone-cvs-risk-assessment
   location: Lab Results (Slide 16)
-  quote: C-reactive protein is a marker associated with the production of inflammatory
-    cytokines, which represent a threat to cardiovascular health.
+  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which represent a threat
+    to cardiovascular health.
 version: 1
 status: active
 updated_at: '2026-05-04'

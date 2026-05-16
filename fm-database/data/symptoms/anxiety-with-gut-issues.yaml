@@ -7,21 +7,20 @@ aliases:
 - wired gut
 category: mood
 severity: common
-description: Anxiety co-occurring with gut symptoms, driven by serotonin dysregulation
-  via the gut-brain axis. Common in IBS and SIBO.
+description: Anxiety co-occurring with gut symptoms, driven by serotonin dysregulation via the gut-brain axis. Common in IBS
+  and SIBO.
 when_to_refer: Severe anxiety — refer to mental health provider alongside gut protocol.
 linked_to_topics:
 - ibs
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 linked_to_mechanisms:
-- gut-brain-axis-dysregulation
-- lps-signaling
+- gut-brain-axis-disruption
+- lps-endotoxemia
 sources:
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Systemic Manifestations
-  quote: Anxiety with gut issues — IBS, SIBO — Serotonin dysregulation — Gut repair
-    + vagal toning
+  quote: Anxiety with gut issues — IBS, SIBO — Serotonin dysregulation — Gut repair + vagal toning
 version: 1
 status: active
 updated_at: '2026-05-02'

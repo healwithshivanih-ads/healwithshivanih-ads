@@ -21,9 +21,9 @@ linked_to_topics:
 - nutrition-deficiency
 - chronic-inflammation
 linked_to_mechanisms:
-- methylation-support
-- nutrient-dependent-energy-metabolism
-- oxidative-stress-and-inflammation
+- methylation-cycle
+- mitochondrial-energy-production
+- oxidative-stress
 sources:
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed

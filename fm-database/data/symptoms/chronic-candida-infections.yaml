@@ -7,16 +7,16 @@ aliases:
 - persistent thrush
 category: other
 severity: common
-description: Recurring candida infections (oral, vaginal, skin, or intestinal) associated
-  with gut dysbiosis, low stomach acid, and impaired immune surveillance.
+description: Recurring candida infections (oral, vaginal, skin, or intestinal) associated with gut dysbiosis, low stomach
+  acid, and impaired immune surveillance.
 when_to_refer: Systemic or invasive candida requires medical evaluation.
 linked_to_topics:
 - candida-overgrowth
 - hypochlorhydria
 - gut-dysfunction
 linked_to_mechanisms:
-- gut-dysbiosis
-- hypochlorhydria-mechanism
+- dysbiosis-gut-microbiome-imbalance
+- low-stomach-acid
 sources:
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity — Common Symptoms of Hypochlorhydria

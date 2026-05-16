@@ -16,18 +16,15 @@ summary: Chronic stress, low serotonin, low dopamine, low endorphins, loneliness
   insufficiency are linked to mood symptoms.
 common_symptoms:
 - low-mood
-- apathy
-- fatigue
+- mood-changes-and-anxiety
+- lethargy
 - brain-fog
 - poor-motivation
 - irritability
-- cognitive-decline
+- poor-concentration
 - low-motivation
-- sadness
-- mood-changes-and-anxiety
-- anhedonia
-- emotional-flatness
-- poor-focus
+- depression-symptoms
+- low-mood-anhedonia
 - social-withdrawal
 red_flags:
 - clinical depression requiring psychiatric evaluation
@@ -48,10 +45,10 @@ related_topics:
 - gut-dysbiosis
 - sleep
 key_mechanisms:
-- methylation-support
-- oxidative-stress-and-inflammation
-- nutrient-dependent-energy-metabolism
-- hpa-axis-overactivation
+- methylation-cycle
+- oxidative-stress
+- mitochondrial-energy-production
+- cortisol-elevation
 - gut-brain-axis-disruption
 - digital-overstimulation
 coaching_scope_notes: Community connection, movement, gratitude journaling, digital hygiene, nutrition for neurotransmitter

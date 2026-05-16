@@ -1,28 +1,23 @@
 slug: vitamin-d-supports-neurotransmitter-production
-statement: Vitamin D supports cognitive function by aiding in the formation and production
-  of neurotransmitters.
+statement: Vitamin D supports cognitive function by aiding in the formation and production of neurotransmitters.
 evidence_tier: plausible_emerging
-rationale: Vitamin D receptors are expressed in the brain and vitamin D influences
-  the synthesis of serotonin and other neurotransmitters. Evidence is mechanistically
-  plausible and supported by observational data, but large RCTs on cognitive outcomes
-  are mixed.
-coaching_translation: Vitamin D plays a role in making brain chemicals that affect
-  mood and mental clarity, which is why low D levels are sometimes linked to brain
-  fog or low mood.
+rationale: Vitamin D receptors are expressed in the brain and vitamin D influences the synthesis of serotonin and other neurotransmitters.
+  Evidence is mechanistically plausible and supported by observational data, but large RCTs on cognitive outcomes are mixed.
+coaching_translation: Vitamin D plays a role in making brain chemicals that affect mood and mental clarity, which is why low
+  D levels are sometimes linked to brain fog or low mood.
 caveats:
-- Causality between vitamin D supplementation and improved cognitive outcomes is not
-  firmly established in RCTs.
+- Causality between vitamin D supplementation and improved cognitive outcomes is not firmly established in RCTs.
 linked_to_topics:
 - vitamin-d3
 linked_to_supplements:
-- vitamin-d3-supplement
+- vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-d3-k2
   location: Vitamin D Functions
-  quote: also improves cognitive function because vitamin D aids as an important vitamin
-    which helps in the formation and production of many neurotransmitters.
+  quote: also improves cognitive function because vitamin D aids as an important vitamin which helps in the formation and
+    production of many neurotransmitters.
 version: 1
 status: active
 updated_at: '2026-05-05'

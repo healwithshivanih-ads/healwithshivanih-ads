@@ -18,7 +18,7 @@ linked_to_topics:
 - gut-dysfunction
 - mercury-amalgam-removal
 - gerd-ppi-tapering
-- 5r-gut-restoration
+- 5r-gut-protocol
 - dental-amalgam-mercury
 - metabolic-detoxification
 - pancreatic-insufficiency
@@ -46,8 +46,8 @@ notes_for_coach: 'Source (IFM Fig 3.5) names tocopherols as an antioxidant prote
   d-alpha-tocopherol.
 
   '
-notes_for_client: Vitamin E is an antioxidant that helps protect pancreatic cells
-  from damage. Like vitamin A, it requires adequate fat digestion to be absorbed properly.
+notes_for_client: Vitamin E is an antioxidant that helps protect pancreatic cells from damage. Like vitamin A, it requires
+  adequate fat digestion to be absorbed properly.
 evidence_tier: strong
 typical_dose_range:
   capsule:
@@ -62,8 +62,7 @@ sources:
   location: Liver Disease Cheatsheet — NAFLD
   quote: Omega-3, Vitamin E, Berberine, NAC
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement recommendations'
   quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E'
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure
@@ -76,8 +75,7 @@ sources:
   quote: Nutritional deficiency like vitamin A, B, E, zinc, copper.
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
-  quote: Vitamin E (Mixed Tocopherols) - Antioxidant, skin & heart health - 100–400
-    IU/day - With meals
+  quote: Vitamin E (Mixed Tocopherols) - Antioxidant, skin & heart health - 100–400 IU/day - With meals
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Antioxidant Protective Nutrients and Plant Derivatives panel
   quote: Tocopherols (Vit E)
@@ -89,8 +87,8 @@ aliases:
 - vitamin-e-mixed-tocopherols
 contraindications:
   conditions:
-  - high doses (>400 IU/day) may increase bleeding risk with anticoagulants or antiplatelet
-    medications — coordinate with prescriber
+  - high doses (>400 IU/day) may increase bleeding risk with anticoagulants or antiplatelet medications — coordinate with
+    prescriber
   medications: []
   life_stages: []
 interactions:

@@ -18,19 +18,18 @@ aliases:
 - flatulence (excessive)
 category: gi
 severity: common
-description: Passage of excess intestinal gas. In hypochlorhydria, undigested food
-  reaching the lower GI tract undergoes microbial fermentation, generating excess
-  gas.
+description: Passage of excess intestinal gas. In hypochlorhydria, undigested food reaching the lower GI tract undergoes microbial
+  fermentation, generating excess gas.
 linked_to_topics:
 - low-fodmap-diet
 - elimination-diet
-- dysbiosis
+- gut-dysbiosis
 - hypochlorhydria
 - digestive-enzyme-insufficiency
 linked_to_mechanisms:
 - colonic-fermentation
-- gut-barrier-dysfunction
-- sibo-from-low-acid
+- leaky-gut
+- sibo-dysbiosis
 - food-fermentation-reflux
 when_to_refer: ''
 sources:
@@ -42,14 +41,12 @@ sources:
   quote: Gut issues were progressive bloating, belching, flatulence.
 - id: coconote-fm-hypochlorhydria
   location: Clinical Presentation of Low Stomach Acid
-  quote: Because of the accumulation of food in the stomach, there could be a long-term
-    effect that there is a bacterial or microbial growth which is present, eventually
-    producing more gas and that is why the patient feels painful or having more of
-    flatulence also in that case.
+  quote: Because of the accumulation of food in the stomach, there could be a long-term effect that there is a bacterial or
+    microbial growth which is present, eventually producing more gas and that is why the patient feels painful or having more
+    of flatulence also in that case.
 - id: vitaone-health-coaching-toolkit
   location: Testing for Low Stomach Acidity
-  quote: Bloating, belching, burning, and flatulence immediately after meals [listed
-    as a common symptom of hypochlorhydria].
+  quote: Bloating, belching, burning, and flatulence immediately after meals [listed as a common symptom of hypochlorhydria].
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6
 version: 3

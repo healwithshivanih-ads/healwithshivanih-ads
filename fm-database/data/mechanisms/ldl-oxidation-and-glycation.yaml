@@ -5,21 +5,20 @@ aliases:
 - glycated LDL
 - oxLDL
 category: metabolic
-summary: Once small-dense LDL particles infiltrate the vessel wall, they undergo oxidation
-  (from reactive oxygen species) and glycation (from high blood glucose). This chemically
-  modifies the LDL, making it unrecognizable to normal receptors and triggering macrophage
-  engulfment and foam cell formation.
+summary: Once small-dense LDL particles infiltrate the vessel wall, they undergo oxidation (from reactive oxygen species)
+  and glycation (from high blood glucose). This chemically modifies the LDL, making it unrecognizable to normal receptors
+  and triggering macrophage engulfment and foam cell formation.
 upstream_drivers:
 - high-blood-glucose
 - oxidative-stress
-- high-homocysteine
+- elevated-homocysteine
 - small-dense-ldl-particles
 downstream_effects:
 - macrophage-foam-cell-formation
 - foam-cell-inflammation
 - plaque-formation
 related_mechanisms:
-- endothelial-injury
+- endothelial-dysfunction
 - macrophage-foam-cell-formation
 - insulin-resistance
 linked_to_topics:
@@ -30,9 +29,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Atherosclerosis Mechanism
-  quote: once the LDL reaches to the centrinica media inside of endothelium, they
-    start having an oxidation. If your blood glucose level is high, then they start
-    binding to this blood glucose level and that leads to the glycation.
+  quote: once the LDL reaches to the centrinica media inside of endothelium, they start having an oxidation. If your blood
+    glucose level is high, then they start binding to this blood glucose level and that leads to the glycation.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -6,9 +6,8 @@ aliases:
 - reward pathway dysregulation
 - tech-driven HPA activation
 category: neurological
-summary: Constant screen exposure, notifications, scrolling, and multitasking rewire
-  reward pathways, dysregulate the HPA axis, blunt interoception, and deplete dopamine
-  and serotonin.
+summary: Constant screen exposure, notifications, scrolling, and multitasking rewire reward pathways, dysregulate the HPA
+  axis, blunt interoception, and deplete dopamine and serotonin.
 upstream_drivers:
 - novelty-exposure
 - social-media
@@ -26,10 +25,10 @@ downstream_effects:
 - brain-fog
 - irritability
 - mood-instability
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 related_mechanisms:
-- hpa-axis-overactivation
-- cortisol-dhea-imbalance
+- cortisol-elevation
+- hpa-axis-dysregulation
 - gut-brain-axis-disruption
 linked_to_topics:
 - adrenal-fatigue
@@ -41,9 +40,8 @@ evidence_tier: fm_specific_thin
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Key Mechanisms Explained — digital-overstimulation
-  quote: Constant screen exposure, notifications, scrolling, and multitasking are
-    described as rewiring reward pathways, dysregulating the HPA axis, and blunting
-    interoception.
+  quote: Constant screen exposure, notifications, scrolling, and multitasking are described as rewiring reward pathways, dysregulating
+    the HPA axis, and blunting interoception.
 version: 1
 status: active
 updated_at: '2026-05-06'

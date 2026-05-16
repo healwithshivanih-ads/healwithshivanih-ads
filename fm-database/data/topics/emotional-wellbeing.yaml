@@ -5,9 +5,8 @@ aliases:
 - psychological wellbeing
 - emotional health
 - spiritual wellbeing
-summary: The capacity to experience positive emotions, find meaning and purpose, maintain
-  hope, and engage creatively and compassionately. Supported through gratitude, self-compassion,
-  social connection, and creative expression.
+summary: The capacity to experience positive emotions, find meaning and purpose, maintain hope, and engage creatively and
+  compassionately. Supported through gratitude, self-compassion, social connection, and creative expression.
 common_symptoms:
 - low-mood
 - hopelessness
@@ -25,19 +24,16 @@ related_topics:
 - social-connectedness
 key_mechanisms:
 - positive-affect-upregulation
-- hpa-axis-regulation
-coaching_scope_notes: Coaches can support emotional wellbeing through gratitude, self-compassion
-  prompts, goal-setting, and creative expression. Use the Self-Care Questionnaire
-  Mental/Emotional/Spiritual domain as a baseline.
-clinician_scope_notes: Refer if a client presents with persistent hopelessness, anhedonia,
-  or symptoms of clinical depression.
+- hpa-axis-dysregulation
+coaching_scope_notes: Coaches can support emotional wellbeing through gratitude, self-compassion prompts, goal-setting, and
+  creative expression. Use the Self-Care Questionnaire Mental/Emotional/Spiritual domain as a baseline.
+clinician_scope_notes: Refer if a client presents with persistent hopelessness, anhedonia, or symptoms of clinical depression.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Practicing Gratitude with the IFM Gratitude Journal
-  quote: These benefits include decreased stress levels, lowered blood pressure, better
-    sleep quality, stronger immune systems, and increased feelings of joy, happiness,
-    forgiveness, and compassion.
+  quote: These benefits include decreased stress levels, lowered blood pressure, better sleep quality, stronger immune systems,
+    and increased feelings of joy, happiness, forgiveness, and compassion.
 version: 1
 status: active
 updated_at: '2026-05-04'

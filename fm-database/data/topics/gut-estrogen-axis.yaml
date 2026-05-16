@@ -2,10 +2,9 @@ slug: gut-estrogen-axis
 display_name: Gut–Estrogen Axis
 aliases:
 - gut dysbiosis and estrogen
-summary: Gut dysbiosis, particularly SIBO, leads to elevated beta-glucuronidase enzyme
-  activity, which deconjugates estrogen metabolites in the bile and intestine, allowing
-  them to be reabsorbed into circulation. This impairs estrogen detoxification and
-  excretion, contributing to estrogen dominance even in lean individuals.
+summary: Gut dysbiosis, particularly SIBO, leads to elevated beta-glucuronidase enzyme activity, which deconjugates estrogen
+  metabolites in the bile and intestine, allowing them to be reabsorbed into circulation. This impairs estrogen detoxification
+  and excretion, contributing to estrogen dominance even in lean individuals.
 common_symptoms:
 - estrogen-dominance-symptoms
 - fibroids
@@ -13,24 +12,23 @@ common_symptoms:
 - bloating
 red_flags:
 - Fibroids in lean patients with gut dysbiosis
-- Lean patients with facial hair and joint pain may have estrogen dominance from gut
-  issues
+- Lean patients with facial hair and joint pain may have estrogen dominance from gut issues
 related_topics:
 - estrogen-dominance
 - menopause
 - perimenopause
 key_mechanisms:
-- beta-glucuronidase-reabsorption
+- estrogen-enterohepatic-recirculation
 - sibo-dysbiosis
-coaching_scope_notes: Coaches can recommend probiotic-rich foods, gut-supportive dietary
-  changes, and referral for SIBO testing. Estrogen management is clinician scope.
+coaching_scope_notes: Coaches can recommend probiotic-rich foods, gut-supportive dietary changes, and referral for SIBO testing.
+  Estrogen management is clinician scope.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-sex-hormones
   location: Hormone Metabolism and Detoxification
-  quote: high enzymatic production of beta glucolidase in their gut which causes the
-    detoxification and excretion of the hormone to be absolutely dysfunctional
+  quote: high enzymatic production of beta glucolidase in their gut which causes the detoxification and excretion of the hormone
+    to be absolutely dysfunctional
 version: 1
 status: active
 updated_at: '2026-05-05'

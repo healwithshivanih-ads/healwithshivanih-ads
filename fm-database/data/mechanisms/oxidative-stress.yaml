@@ -34,21 +34,18 @@ upstream_drivers:
 - poor diet
 - smoking
 - excess calories
-- inflammation
-- mitochondrial-atp-production
-- cytochrome-p450-phase1
+- mitochondrial-dysfunction
+- cyp450-phase-i-activation
 - toxic-body-burden
-- metabolic-dysfunction
+- insulin-resistance
 - poor-dietary-quality
 downstream_effects:
-- oxidized-ldl
-- endothelial-damage
+- ldl-oxidation
+- endothelial-dysfunction
 - plaque-formation
 - nlrp3-inflammasome-activation
 - tissue-damage
 - immune-dysfunction
-- endothelial damage
-- LDL oxidation
 - accelerated aging
 - cell-death
 - premature-aging
@@ -57,7 +54,7 @@ downstream_effects:
 - secondary-tissue-damage
 - increased-inflammatory-signaling
 - tissue-fibrosis
-- chronic-systemic-inflammation
+- chronic-inflammation
 - cardiovascular-disease-risk
 - cellular-aging
 related_mechanisms:
@@ -66,12 +63,11 @@ related_mechanisms:
 - nlrp3-inflammasome-activation
 - cytokine-dysregulation
 - systemic-inflammation
-- mitochondrial-atp-production
+- mitochondrial-dysfunction
 - glutathione-peroxidase-activity
-- cytochrome-p450-phase1
-- phase2-conjugation
+- cyp450-phase-i-activation
+- phase-2-conjugation
 - innate-immune-modulation
-- chronic-systemic-inflammation
 linked_to_topics:
 - dyslipidemia
 - chronic-inflammation

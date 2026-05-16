@@ -1,16 +1,12 @@
 slug: glutathione-nac-pre-amalgam-removal-protocol
-statement: Taking glutathione (500–1000 mg) or NAC (600–1200 mg) daily for 7 days
-  before and 2 weeks after dental amalgam removal supports mercury clearance and protects
-  against oxidative stress.
+statement: Taking glutathione (500–1000 mg) or NAC (600–1200 mg) daily for 7 days before and 2 weeks after dental amalgam
+  removal supports mercury clearance and protects against oxidative stress.
 evidence_tier: fm_specific_thin
-rationale: The use of glutathione/NAC around amalgam removal is common FM practice.
-  Glutathione's role in mercury conjugation via Phase II pathways is mechanistically
-  sound, but specific RCTs on this amalgam removal protocol are limited.
-coaching_translation: Starting glutathione or NAC supplementation a week before your
-  amalgam removal appointment and continuing for two weeks after can help your body
-  handle any mercury exposure during the procedure.
-out_of_scope_notes: Specific supplement dosing must be confirmed with a clinician.
-  This is an adult dosing protocol only.
+rationale: The use of glutathione/NAC around amalgam removal is common FM practice. Glutathione's role in mercury conjugation
+  via Phase II pathways is mechanistically sound, but specific RCTs on this amalgam removal protocol are limited.
+coaching_translation: Starting glutathione or NAC supplementation a week before your amalgam removal appointment and continuing
+  for two weeks after can help your body handle any mercury exposure during the procedure.
+out_of_scope_notes: Specific supplement dosing must be confirmed with a clinician. This is an adult dosing protocol only.
 caveats:
 - Adult dosing only — not for children or pregnant women without clinician direction.
 - Source is an FM educational toolkit; specific RCT citations not provided.
@@ -19,13 +15,12 @@ linked_to_topics:
 - metabolic-detoxification
 linked_to_supplements:
 - glutathione-liposomal
-- n-acetyl-cysteine
+- nac
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure Recommendations
-  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC):
-    600–1200 mg'
+  quote: 'Glutathione (liposomal, standard): 500 mg–1000 mg or N-Acetyl-Cysteine (NAC): 600–1200 mg'
 version: 1
 status: active
 updated_at: '2026-05-04'

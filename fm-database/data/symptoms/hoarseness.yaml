@@ -6,15 +6,14 @@ aliases:
 - raspy voice
 category: constitutional
 severity: common
-description: Voice changes including hoarseness or a gravelly quality, which can result
-  from thyroid enlargement or reduced thyroid hormone affecting tissues of the larynx.
-when_to_refer: Refer if persistent and accompanied by neck swelling or difficulty
-  swallowing.
+description: Voice changes including hoarseness or a gravelly quality, which can result from thyroid enlargement or reduced
+  thyroid hormone affecting tissues of the larynx.
+when_to_refer: Refer if persistent and accompanied by neck swelling or difficulty swallowing.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 - thyroid-dysfunction
 linked_to_mechanisms:
-- autoimmune-thyroid-attack
+- thyroid-autoimmunity
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Understanding Hashimoto's Hypothyroidism — Symptoms of Hashimoto's Hypothyroidism

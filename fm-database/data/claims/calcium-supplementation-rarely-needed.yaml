@@ -1,34 +1,29 @@
 slug: calcium-supplementation-rarely-needed
-statement: Calcium supplementation is rarely necessary for low serum calcium; underlying
-  causes such as low albumin, low stomach acid, low magnesium, or low vitamin D should
-  be identified and corrected first.
+statement: Calcium supplementation is rarely necessary for low serum calcium; underlying causes such as low albumin, low stomach
+  acid, low magnesium, or low vitamin D should be identified and corrected first.
 evidence_tier: plausible_emerging
-rationale: The document's central thesis is that clinicians and coaches over-prescribe
-  calcium supplementation. The physiological reasoning is sound — multiple upstream
-  deficiencies can create the appearance of calcium deficiency. However, this is expert
+rationale: The document's central thesis is that clinicians and coaches over-prescribe calcium supplementation. The physiological
+  reasoning is sound — multiple upstream deficiencies can create the appearance of calcium deficiency. However, this is expert
   consensus and not derived from comparative effectiveness trials.
-coaching_translation: Before reaching for a calcium supplement, it's worth investigating
-  why calcium looks low. Often the real fix is addressing magnesium, vitamin D, protein
-  intake, or stomach acid.
+coaching_translation: Before reaching for a calcium supplement, it's worth investigating why calcium looks low. Often the
+  real fix is addressing magnesium, vitamin D, protein intake, or stomach acid.
 caveats:
 - Source is expert consensus, moderate quality.
-- Specific populations (postmenopausal women, elderly) may genuinely benefit from
-  calcium supplementation — this claim should not discourage clinician-recommended
-  use.
+- Specific populations (postmenopausal women, elderly) may genuinely benefit from calcium supplementation — this claim should
+  not discourage clinician-recommended use.
 linked_to_topics:
 - calcium-deficiency
 linked_to_supplements:
 - calcium-supplementation
 - magnesium
-- vitamin-d
+- vitamin-d3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-calcium-deficiency
   location: Causes of Low Serum Calcium
-  quote: as I said to you, calcium deficiency is very rare and we have enough calcium
-    in a bone and enough calcium in a food. If you find out the low calcium in the
-    serum, that doesn't mean that patient is deficient in calcium and they require
+  quote: as I said to you, calcium deficiency is very rare and we have enough calcium in a bone and enough calcium in a food.
+    If you find out the low calcium in the serum, that doesn't mean that patient is deficient in calcium and they require
     calcium supplementation.
 version: 1
 status: active

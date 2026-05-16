@@ -4,14 +4,13 @@ aliases:
 - IgE mast cell activation
 - histamine release mechanism
 category: immune
-summary: 'Allergens bind to IgE antibodies which are pre-bound to mast cells. Cross-linking
-  triggers mast cell degranulation, releasing histamine and other inflammatory mediators.
-  This produces the acute symptoms of type 1 hypersensitivity: hives, itching, rhinorrhea,
-  bronchospasm, and in severe cases anaphylaxis.'
+summary: 'Allergens bind to IgE antibodies which are pre-bound to mast cells. Cross-linking triggers mast cell degranulation,
+  releasing histamine and other inflammatory mediators. This produces the acute symptoms of type 1 hypersensitivity: hives,
+  itching, rhinorrhea, bronchospasm, and in severe cases anaphylaxis.'
 upstream_drivers:
 - allergen-exposure
 - ige-antigen-sensitization
-- intestinal-permeability
+- leaky-gut
 downstream_effects:
 - urticaria
 - angioedema
@@ -20,7 +19,7 @@ downstream_effects:
 - anaphylaxis
 - chronic-inflammation-from-repeated-activation
 related_mechanisms:
-- intestinal-permeability
+- leaky-gut
 - igg-antigen-immune-complex-complement-activation
 linked_to_topics:
 - food-allergy-ige-mediated
@@ -28,11 +27,9 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: IgE Mechanism Section
-  quote: allergen binds to the mast cell and you have IgE antibody and IgE antibody
-    also binds to this mast cell. So once you have an allergen and once you have IgE
-    antibody, your mast cells start activating and once the mast cells start activating,
-    they start de-granulation and they post all inflammatory mediators, mostly it's
-    a histamine
+  quote: allergen binds to the mast cell and you have IgE antibody and IgE antibody also binds to this mast cell. So once
+    you have an allergen and once you have IgE antibody, your mast cells start activating and once the mast cells start activating,
+    they start de-granulation and they post all inflammatory mediators, mostly it's a histamine
 version: 1
 status: active
 updated_at: '2026-05-05'

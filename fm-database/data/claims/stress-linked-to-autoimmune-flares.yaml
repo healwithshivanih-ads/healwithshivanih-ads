@@ -1,26 +1,24 @@
 slug: stress-linked-to-autoimmune-flares
-statement: Stress is described as triggering immune dysregulation and autoimmune flares
-  through cortisol rhythm disruption, Th1/Th2/Th17 imbalance, and gut barrier breakdown.
+statement: Stress is described as triggering immune dysregulation and autoimmune flares through cortisol rhythm disruption,
+  Th1/Th2/Th17 imbalance, and gut barrier breakdown.
 evidence_tier: fm_specific_thin
-rationale: Stress and autoimmunity connection is biologically plausible and clinically
-  observed; however, the Th1/Th2/Th17 mechanism at coaching level has thin direct
-  peer-reviewed support. Source is expert consensus without primary citations.
-coaching_translation: Stress reduction, sleep, and gut support may help reduce autoimmune
-  flare frequency.
+rationale: Stress and autoimmunity connection is biologically plausible and clinically observed; however, the Th1/Th2/Th17
+  mechanism at coaching level has thin direct peer-reviewed support. Source is expert consensus without primary citations.
+coaching_translation: Stress reduction, sleep, and gut support may help reduce autoimmune flare frequency.
 caveats:
 - Source is expert consensus without direct citations.
 - Autoimmune management and immunosuppressive therapy are clinician-scope.
 linked_to_topics:
 - chronic-stress
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 11
-  quote: Stress is described as triggering immune dysregulation and autoimmune flares
-    through cortisol rhythm disruption, Th1/Th2/Th17 imbalance, and gut barrier breakdown.
+  quote: Stress is described as triggering immune dysregulation and autoimmune flares through cortisol rhythm disruption,
+    Th1/Th2/Th17 imbalance, and gut barrier breakdown.
 version: 1
 status: active
 updated_at: '2026-05-06'

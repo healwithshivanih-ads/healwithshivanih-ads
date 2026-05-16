@@ -7,13 +7,12 @@ aliases:
 - post-meal belching
 category: gi
 severity: common
-description: Excessive belching immediately after meals, listed as a hallmark symptom
-  of hypochlorhydria (low stomach acid).
+description: Excessive belching immediately after meals, listed as a hallmark symptom of hypochlorhydria (low stomach acid).
 linked_to_topics:
 - hypochlorhydria
 - gut-dysfunction
 linked_to_mechanisms:
-- hypochlorhydria-mechanism
+- low-stomach-acid
 when_to_refer: ''
 sources:
 - id: vitaone-gut-toolkit
@@ -21,8 +20,7 @@ sources:
   quote: Bloating, belching, burning, and flatulence immediately after meals
 - id: vitaone-health-coaching-toolkit
   location: Testing for Low Stomach Acidity
-  quote: Bloating, belching, burning, and flatulence immediately after meals [listed
-    as a common symptom of hypochlorhydria].
+  quote: Bloating, belching, burning, and flatulence immediately after meals [listed as a common symptom of hypochlorhydria].
 version: 2
 status: active
 updated_at: '2026-05-04'

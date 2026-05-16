@@ -1,36 +1,30 @@
 slug: slippery-elm-reduces-ibd-symptoms-rapidly
-statement: In a clinical case, introducing slippery elm (4x/day) alongside juice fasting
-  and elimination of dietary irritants resolved rectal bleeding and cramping within
-  48 hours and diarrhoea within 4 days in a patient with long-standing IBS managed
+statement: In a clinical case, introducing slippery elm (4x/day) alongside juice fasting and elimination of dietary irritants
+  resolved rectal bleeding and cramping within 48 hours and diarrhoea within 4 days in a patient with long-standing IBS managed
   with steroids and anti-inflammatories.
 evidence_tier: fm_specific_thin
-rationale: This is a single practitioner-observed clinical case, not a controlled
-  trial. While plausible as a combined dietary and herbal intervention effect, it
-  cannot be attributed solely to slippery elm. The case is compelling but constitutes
-  anecdotal evidence.
-coaching_translation: Removing gut irritants and supporting the gut with slippery
-  elm can lead to rapid symptom relief in some people with gut inflammation — sometimes
-  within just a few days.
-out_of_scope_notes: Steroid tapering in IBD is strictly clinician scope. The case
-  described involved 20mg/day corticosteroid — any such tapering must be medically
-  supervised.
+rationale: This is a single practitioner-observed clinical case, not a controlled trial. While plausible as a combined dietary
+  and herbal intervention effect, it cannot be attributed solely to slippery elm. The case is compelling but constitutes anecdotal
+  evidence.
+coaching_translation: Removing gut irritants and supporting the gut with slippery elm can lead to rapid symptom relief in
+  some people with gut inflammation — sometimes within just a few days.
+out_of_scope_notes: Steroid tapering in IBD is strictly clinician scope. The case described involved 20mg/day corticosteroid
+  — any such tapering must be medically supervised.
 caveats:
 - Single case study — not a controlled trial.
-- Combined intervention (juice fast + dietary elimination + slippery elm) makes it
-  impossible to isolate slippery elm's contribution.
+- Combined intervention (juice fast + dietary elimination + slippery elm) makes it impossible to isolate slippery elm's contribution.
 - Steroid tapering described in the case must be medically supervised.
 - Source is a practitioner talk (expert_consensus, moderate quality).
 linked_to_topics:
 - inflammatory-bowel-conditions
 linked_to_supplements:
-- slippery-elm-bark
+- slippery-elm
 linked_to_mechanisms: []
 sources:
 - id: barbara-oneil-gi-tract
   location: IBD Case Study Section
-  quote: We gave him a slippery arm four times a day... Tuesday afternoon I said,
-    'How's it going?' He said, 'Actually quite amazing. I'm not bleeding from the
-    colon anymore. The cramping has stopped.'
+  quote: We gave him a slippery arm four times a day... Tuesday afternoon I said, 'How's it going?' He said, 'Actually quite
+    amazing. I'm not bleeding from the colon anymore. The cramping has stopped.'
 version: 1
 status: active
 updated_at: '2026-05-05'

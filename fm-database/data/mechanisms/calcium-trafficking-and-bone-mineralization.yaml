@@ -37,8 +37,8 @@ downstream_effects:
 - arterial-calcification
 - dental-issues
 related_mechanisms:
-- nutrient-dependent-energy-metabolism
-- oxidative-stress-and-inflammation
+- mitochondrial-energy-production
+- oxidative-stress
 linked_to_topics:
 - nutrition-deficiency
 - joint-pain

@@ -3,14 +3,13 @@ display_name: Statin Therapy for Primary Prevention
 aliases:
 - statins for primary prevention
 - statin use in low-risk populations
-summary: Examines the real-world benefit of statin medications for primary prevention
-  of atherosclerotic cardiovascular events in adults without prior cardiovascular
-  disease, emphasizing absolute risk reduction, number needed to treat, and the gap
+summary: Examines the real-world benefit of statin medications for primary prevention of atherosclerotic cardiovascular events
+  in adults without prior cardiovascular disease, emphasizing absolute risk reduction, number needed to treat, and the gap
   between relative and absolute risk framing.
 common_symptoms:
-- myalgia
-- cognitive-impairment
-- peripheral-neuropathy
+- muscle-pain
+- poor-concentration
+- axonal-neuropathy
 - elevated-blood-glucose
 red_flags:
 - LDL greater than 190 without lifestyle evaluation
@@ -25,22 +24,18 @@ key_mechanisms:
 - mevalonate-pathway-inhibition
 - cholesterol-precursor-depletion
 - coq10-depletion
-coaching_scope_notes: Coaches can educate clients on absolute vs. relative risk framing
-  and NNT concepts, and support lifestyle interventions. Statin prescribing, dose
-  changes, and lab interpretation are outside coaching scope — always refer to prescribing
+coaching_scope_notes: Coaches can educate clients on absolute vs. relative risk framing and NNT concepts, and support lifestyle
+  interventions. Statin prescribing, dose changes, and lab interpretation are outside coaching scope — always refer to prescribing
   clinician.
-clinician_scope_notes: Pre-2005 trial data has documented bias concerns including
-  pharma-sponsored oversight, premature terminations, and high loss-to-follow-up.
-  Post-2005 meta-analysis (19 RCTs, n>71,000) showed NNT of 250 for all-cause mortality
-  in primary prevention. Consider individualized risk-benefit discussion using tools
-  like the Mayo Clinic Statin Decision Aid.
+clinician_scope_notes: Pre-2005 trial data has documented bias concerns including pharma-sponsored oversight, premature terminations,
+  and high loss-to-follow-up. Post-2005 meta-analysis (19 RCTs, n>71,000) showed NNT of 250 for all-cause mortality in primary
+  prevention. Consider individualized risk-benefit discussion using tools like the Mayo Clinic Statin Decision Aid.
 evidence_tier: strong
 sources:
 - id: coconote-fm-reality-of-statins
   location: Primary Prevention Meta-Analysis Section
-  quote: They looked at 19 randomized control trials that were past 2005. So between
-    2005 and 2016. And what they found, they had a sample size of over 71,000 people.
-    Adults greater than 40, no prior history of cardiovascular events.
+  quote: They looked at 19 randomized control trials that were past 2005. So between 2005 and 2016. And what they found, they
+    had a sample size of over 71,000 people. Adults greater than 40, no prior history of cardiovascular events.
 version: 1
 status: active
 updated_at: '2026-05-05'

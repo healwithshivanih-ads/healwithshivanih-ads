@@ -6,20 +6,18 @@ aliases:
 - epigastric burning pain
 category: gi
 severity: common
-description: Pain or burning in the upper abdomen occurring after meals, often worsening
-  1 hour post-meal and at night. A hallmark symptom of hypochlorhydria, frequently
-  misattributed to hyperacidity.
+description: Pain or burning in the upper abdomen occurring after meals, often worsening 1 hour post-meal and at night. A
+  hallmark symptom of hypochlorhydria, frequently misattributed to hyperacidity.
 linked_to_topics:
 - hypochlorhydria
 linked_to_mechanisms:
 - food-fermentation-reflux
-- reduced-hcl-production
+- low-stomach-acid
 when_to_refer: ''
 sources:
 - id: coconote-fm-hypochlorhydria
   location: Case Presentation
-  quote: Post-plagal pain and coldness worse after one hour of meal and all meals
-    and also at night time.
+  quote: Post-plagal pain and coldness worse after one hour of meal and all meals and also at night time.
 version: 1
 status: active
 updated_at: '2026-05-05'

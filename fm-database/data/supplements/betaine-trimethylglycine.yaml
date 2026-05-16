@@ -21,22 +21,21 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - mthfr-gene-variant
-- homocysteine-elevation
+- homocysteine-and-methylation
 - methylation
 linked_to_claims:
 - betaine-provides-alternative-methylation-support
-notes_for_coach: Betaine provides an alternative (BHMT) pathway for homocysteine remethylation
-  independent of MTHFR/folate. Useful as adjunct when B vitamin supplementation alone
-  is insufficient to normalise homocysteine. Dosing should be confirmed with clinician.
-notes_for_client: Betaine (also known as TMG) supports methylation through a separate
-  pathway, providing additional help in managing homocysteine levels.
+notes_for_coach: Betaine provides an alternative (BHMT) pathway for homocysteine remethylation independent of MTHFR/folate.
+  Useful as adjunct when B vitamin supplementation alone is insufficient to normalise homocysteine. Dosing should be confirmed
+  with clinician.
+notes_for_client: Betaine (also known as TMG) supports methylation through a separate pathway, providing additional help in
+  managing homocysteine levels.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Supplementation for MTHFR section
-  quote: Betaine or trimethylglycine is also actually given as an additional methylation
-    support to many of the patients.
+  quote: Betaine or trimethylglycine is also actually given as an additional methylation support to many of the patients.
 version: 1
 status: active
 updated_at: '2026-05-05'

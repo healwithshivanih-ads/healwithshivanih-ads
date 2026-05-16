@@ -4,18 +4,15 @@ aliases:
 - nutraceuticals for COVID-19
 - botanical immune support
 - antiviral nutraceuticals
-summary: Research on specific botanical and nutraceutical agents indicates they may
-  have a role in the pre-exposure and early phase of COVID-19 and other viral illnesses
-  by improving immune response, decreasing viral replication, and reducing symptom
+summary: Research on specific botanical and nutraceutical agents indicates they may have a role in the pre-exposure and early
+  phase of COVID-19 and other viral illnesses by improving immune response, decreasing viral replication, and reducing symptom
   severity. Recommendations require clinician supervision.
 common_symptoms:
 - upper-respiratory-symptoms
-- fatigue
+- lethargy
 - fever
-- cough
 red_flags:
-- Severe respiratory distress, hypoxia, or rapid clinical deterioration — emergency
-  referral
+- Severe respiratory distress, hypoxia, or rapid clinical deterioration — emergency referral
 - High fever persisting beyond 3 days — refer to clinician
 related_topics:
 - chronic-inflammation
@@ -24,19 +21,17 @@ key_mechanisms:
 - nlrp3-inflammasome-activation
 - oxidative-stress
 - innate-immune-modulation
-coaching_scope_notes: Coaches can share general educational information about immune-supportive
-  nutrients. Specific dosing protocols for COVID-19 or acute viral illness must be
-  directed by a qualified clinician.
-clinician_scope_notes: All dosing recommendations in the COVID-19 nutraceutical section
-  should be supervised by a qualified healthcare professional. Vitamin A toxicity
-  risk, licorice contraindications, and herb-drug interactions require clinical assessment.
+coaching_scope_notes: Coaches can share general educational information about immune-supportive nutrients. Specific dosing
+  protocols for COVID-19 or acute viral illness must be directed by a qualified clinician.
+clinician_scope_notes: All dosing recommendations in the COVID-19 nutraceutical section should be supervised by a qualified
+  healthcare professional. Vitamin A toxicity risk, licorice contraindications, and herb-drug interactions require clinical
+  assessment.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Research on specific botanical and nutraceutical agents indicates they may
-    have a role in the pre-exposure & early phase of COVID-19 based on their ability
-    to improve the immune response to, and recovery from viral illnesses.
+  quote: Research on specific botanical and nutraceutical agents indicates they may have a role in the pre-exposure & early
+    phase of COVID-19 based on their ability to improve the immune response to, and recovery from viral illnesses.
 version: 1
 status: active
 updated_at: '2026-05-04'

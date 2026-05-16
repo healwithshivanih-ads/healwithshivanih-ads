@@ -4,20 +4,18 @@ aliases:
 - SHBG
 - SHBG dysregulation
 - hormone transport protein
-summary: SHBG is a protein that binds testosterone and estrogen in the blood, regulating
-  the amount of free (bioavailable) hormone. High SHBG reduces free testosterone causing
-  deficiency symptoms; low SHBG raises free androgens and estrogens causing excess
-  symptoms. Multiple health conditions, medications, and nutritional factors modulate
-  SHBG levels.
+summary: SHBG is a protein that binds testosterone and estrogen in the blood, regulating the amount of free (bioavailable)
+  hormone. High SHBG reduces free testosterone causing deficiency symptoms; low SHBG raises free androgens and estrogens causing
+  excess symptoms. Multiple health conditions, medications, and nutritional factors modulate SHBG levels.
 common_symptoms:
-- fatigue
-- decreased-libido
-- weight-gain
-- mood-changes
+- lethargy
+- low-libido
+- unexplained-weight-gain
+- mood-swings
 - decreased-muscle-mass
 - hair-loss
 - acne
-- fluid-retention
+- edema
 - decreased-bone-mineral-density
 red_flags:
 - significant bone density loss
@@ -32,23 +30,19 @@ related_topics:
 - benign-prostatic-hyperplasia
 key_mechanisms:
 - shbg-hormone-binding
-- free-testosterone-regulation
-coaching_scope_notes: Coaches can educate on diet, lifestyle, and conditions that
-  influence SHBG. Supplement and hormone prescribing is out of coaching scope.
-clinician_scope_notes: Clinician should interpret SHBG lab values and recommend specific
-  hormone or supplement interventions.
+coaching_scope_notes: Coaches can educate on diet, lifestyle, and conditions that influence SHBG. Supplement and hormone prescribing
+  is out of coaching scope.
+clinician_scope_notes: Clinician should interpret SHBG lab values and recommend specific hormone or supplement interventions.
 evidence_tier: strong
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: Sex hormone binding globulin (SHBG) is a protein that binds to sex hormones
-    (i.e., testosterone and estrogen) in the blood and helps transport the hormones
-    into tissues to do their job.
+  quote: Sex hormone binding globulin (SHBG) is a protein that binds to sex hormones (i.e., testosterone and estrogen) in
+    the blood and helps transport the hormones into tissues to do their job.
 - id: vitaone-health-coaching-toolkit
   location: Sex Hormone Binding Globulin (SHBG)
-  quote: Sex hormone binding globulin (SHBG) is a protein that binds to sex hormones
-    (i.e., testosterone and estrogen) in the blood and helps transport the hormones
-    into tissues to do their job.
+  quote: Sex hormone binding globulin (SHBG) is a protein that binds to sex hormones (i.e., testosterone and estrogen) in
+    the blood and helps transport the hormones into tissues to do their job.
 version: 2
 status: active
 updated_at: '2026-05-04'

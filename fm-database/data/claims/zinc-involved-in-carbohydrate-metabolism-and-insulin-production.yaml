@@ -1,16 +1,14 @@
 slug: zinc-involved-in-carbohydrate-metabolism-and-insulin-production
-statement: Zinc plays a role in carbohydrate metabolism including glucose uptake,
-  glycolysis, and insulin production.
+statement: Zinc plays a role in carbohydrate metabolism including glucose uptake, glycolysis, and insulin production.
 evidence_tier: strong
-rationale: Zinc's involvement in insulin synthesis, storage, and secretion, as well
-  as its enzymatic roles in glycolysis, are well-supported in metabolic and endocrine
-  literature.
-coaching_translation: Zinc is important for blood sugar balance — it helps your body
-  process carbohydrates and supports insulin production.
+rationale: Zinc's involvement in insulin synthesis, storage, and secretion, as well as its enzymatic roles in glycolysis,
+  are well-supported in metabolic and endocrine literature.
+coaching_translation: Zinc is important for blood sugar balance — it helps your body process carbohydrates and supports insulin
+  production.
 caveats:
 - Source is expert lecture. Consistent with well-established metabolic biochemistry.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_supplements:
 - zinc
 out_of_scope_notes: ''
@@ -18,8 +16,8 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Functions of Zinc
-  quote: Zinc also plays an important role in carbohydrate metabolism at various stages,
-    from glucose uptake to glycolysis to insulin production.
+  quote: Zinc also plays an important role in carbohydrate metabolism at various stages, from glucose uptake to glycolysis
+    to insulin production.
 version: 1
 status: active
 updated_at: '2026-05-05'

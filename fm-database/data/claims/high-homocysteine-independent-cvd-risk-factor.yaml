@@ -1,18 +1,14 @@
 slug: high-homocysteine-independent-cvd-risk-factor
-statement: Elevated homocysteine (above 7.2 µmol/L by functional medicine standards)
-  is an independent risk factor for cardiovascular disease, promoting LDL oxidation,
-  endothelial damage, and thrombosis.
+statement: Elevated homocysteine (above 7.2 µmol/L by functional medicine standards) is an independent risk factor for cardiovascular
+  disease, promoting LDL oxidation, endothelial damage, and thrombosis.
 evidence_tier: plausible_emerging
-rationale: Homocysteine as a CVD risk factor has epidemiological support (Clarke et
-  al., 1991; Stampfer et al., 1992), though interventional trials reducing homocysteine
-  have shown mixed CVD outcome results. The functional medicine optimal range of 5–7.2
-  µmol/L is stricter than conventional labs.
-coaching_translation: Homocysteine is a natural amino acid that, when too high, can
-  damage your artery walls and make your blood more prone to clotting. Supporting
-  your body's methylation (B-vitamin) pathways helps keep this in check.
+rationale: Homocysteine as a CVD risk factor has epidemiological support (Clarke et al., 1991; Stampfer et al., 1992), though
+  interventional trials reducing homocysteine have shown mixed CVD outcome results. The functional medicine optimal range
+  of 5–7.2 µmol/L is stricter than conventional labs.
+coaching_translation: Homocysteine is a natural amino acid that, when too high, can damage your artery walls and make your
+  blood more prone to clotting. Supporting your body's methylation (B-vitamin) pathways helps keep this in check.
 caveats:
-- Functional medicine optimal range (5–7.2 µmol/L) is stricter than conventional lab
-  reference ranges.
+- Functional medicine optimal range (5–7.2 µmol/L) is stricter than conventional lab reference ranges.
 - Homocysteine-lowering B-vitamin trials have shown mixed results for hard CVD outcomes.
 - Source is expert lecture (moderate quality).
 linked_to_topics:
@@ -21,15 +17,15 @@ linked_to_topics:
 - cardiometabolic-disease
 linked_to_supplements:
 - methylfolate-b9
-- methylcobalamin-b12
-- pyridoxal-5-phosphate-b6
+- methylcobalamin
+- pyridoxal-5-phosphate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
-  quote: homocysteine level is a risk factor for your cardiovascular disease, and
-    even homocysteine is an independent risk factor for aging and oxidation.
+  quote: homocysteine level is a risk factor for your cardiovascular disease, and even homocysteine is an independent risk
+    factor for aging and oxidation.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -3,35 +3,32 @@ display_name: Total Toxic Load
 aliases:
 - toxic burden
 - body burden
-summary: Total toxic load is determined by total environmental and internal toxic
-  exposure minus the body's ability to biotransform and excrete those toxins. Factors
-  that increase load include dysbiosis, nutritional deficiency, oxidative stress,
-  high sugar/low protein diet, chronic inflammation, and impaired mitochondrial function.
-  Individual susceptibility modulates whether a given load produces disease.
+summary: Total toxic load is determined by total environmental and internal toxic exposure minus the body's ability to biotransform
+  and excrete those toxins. Factors that increase load include dysbiosis, nutritional deficiency, oxidative stress, high sugar/low
+  protein diet, chronic inflammation, and impaired mitochondrial function. Individual susceptibility modulates whether a given
+  load produces disease.
 common_symptoms:
-- fatigue
+- lethargy
 - chemical-sensitivity
-- chronic-inflammation
+- inflammation
 red_flags: []
 related_topics:
 - xenobiotic-exposure
-- liver-detoxification-phases
+- liver-detoxification
 - gut-microbiome-and-detox
 key_mechanisms:
 - reactive-intermediate-accumulation
-- lps-endotoxin-production
+- lps-endotoxemia
 - mitochondrial-dysfunction
-coaching_scope_notes: 'Total toxic load framework helps coaches prioritize: reduce
-  inputs (clean diet, environment), support gut microbiome, optimize nutrition, and
-  improve energy/mitochondrial health before targeting specific detox pathways.'
+coaching_scope_notes: 'Total toxic load framework helps coaches prioritize: reduce inputs (clean diet, environment), support
+  gut microbiome, optimize nutrition, and improve energy/mitochondrial health before targeting specific detox pathways.'
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Total Toxic Load Definition
-  quote: So total toxic load results from the total environmental exposure minus the
-    ability to bio transform and ability to excrete so this is we call a phase one
-    and phase two detoxification pathway.
+  quote: So total toxic load results from the total environmental exposure minus the ability to bio transform and ability
+    to excrete so this is we call a phase one and phase two detoxification pathway.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,33 +1,29 @@
 slug: phase2-is-protein-dependent
-statement: Phase 2 detoxification is protein-dependent; inadequate dietary protein
-  reduces availability of conjugation substrates (glycine, taurine, glutamine) and
-  impairs toxin clearance.
+statement: Phase 2 detoxification is protein-dependent; inadequate dietary protein reduces availability of conjugation substrates
+  (glycine, taurine, glutamine) and impairs toxin clearance.
 evidence_tier: plausible_emerging
-rationale: 'Biochemically sound: amino acid conjugation in Phase 2 directly requires
-  glycine, taurine, and glutamine. Low protein diets reduce circulating amino acid
-  pools. While this logic is solid, specific clinical thresholds for protein intake
+rationale: 'Biochemically sound: amino acid conjugation in Phase 2 directly requires glycine, taurine, and glutamine. Low
+  protein diets reduce circulating amino acid pools. While this logic is solid, specific clinical thresholds for protein intake
   and detox impairment are not well-defined in RCTs.'
-coaching_translation: Your liver needs amino acids (from protein) as raw materials
-  to attach to and neutralize toxins. If your diet is low in protein, your detox system
-  runs low on supplies and toxins can back up.
+coaching_translation: Your liver needs amino acids (from protein) as raw materials to attach to and neutralize toxins. If
+  your diet is low in protein, your detox system runs low on supplies and toxins can back up.
 caveats:
-- Expert lecture source (moderate quality). Biochemical mechanism is plausible and
-  well-reasoned; RCT evidence on protein intake thresholds for detox capacity is limited.
+- Expert lecture source (moderate quality). Biochemical mechanism is plausible and well-reasoned; RCT evidence on protein
+  intake thresholds for detox capacity is limited.
 linked_to_topics:
-- liver-detoxification-phases
+- liver-detoxification
 linked_to_supplements:
 - glycine
-- glutamine
+- l-glutamine
 - sulfur-containing-amino-acids
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-liver-detox-part1
   location: Nutritional Factors in Detox
-  quote: I will explain you the phase 2 reaction, they are actually protein dependent.
-    So all of the pathway of phase 2, they are actually protein dependent. So if your
-    patient is having a toxic exposure and they are low protein diet, then they cannot
-    detoxify the toxins.
+  quote: I will explain you the phase 2 reaction, they are actually protein dependent. So all of the pathway of phase 2, they
+    are actually protein dependent. So if your patient is having a toxic exposure and they are low protein diet, then they
+    cannot detoxify the toxins.
 version: 1
 status: active
 updated_at: '2026-05-05'

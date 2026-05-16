@@ -12,40 +12,35 @@ aliases:
 - OGF receptor rebound
 - compensatory opioid elevation
 category: immune
-summary: At low doses (1.5–4.5 mg), naltrexone transiently blocks opioid receptors
-  for 4–6 hours, creating a perceived opioid deficiency. The body compensates with
-  a rebound increase in endorphin and enkephalin production lasting 18–20 hours, which
-  enhances immune regulation, reduces inflammation, regulates T-regulatory cells,
-  and modulates GI tract function.
+summary: At low doses (1.5–4.5 mg), naltrexone transiently blocks opioid receptors for 4–6 hours, creating a perceived opioid
+  deficiency. The body compensates with a rebound increase in endorphin and enkephalin production lasting 18–20 hours, which
+  enhances immune regulation, reduces inflammation, regulates T-regulatory cells, and modulates GI tract function.
 upstream_drivers:
 - autoimmune-dysregulation
 - endorphin-deficiency
 downstream_effects:
 - reduced-inflammation
-- t-reg-cell-regulation
+- t-regulatory-cell-modulation
 - reduced-anti-thyroid-antibodies
 related_mechanisms:
-- autoimmune-thyroid-attack
+- thyroid-autoimmunity
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-thyroid-toolkit
   location: LDN History
-  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist
-    (4-6 hours) and then had a 'rebound' effect of increasing the production of endogenous
-    opioids such as endorphins and enkephalins.
+  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist (4-6 hours) and then had a 'rebound'
+    effect of increasing the production of endogenous opioids such as endorphins and enkephalins.
 - id: vitaone-health-coaching-toolkit
   location: Low Dose Naltrexone (LDN) and Autoimmune Disease — LDN History
-  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist
-    (4-6 hours) and then had a 'rebound' effect of increasing the production of endogenous
-    opioids such as endorphins and enkephalins.
+  quote: Discovered that at lower doses, Naltrexone acted as a short-term antagonist (4-6 hours) and then had a 'rebound'
+    effect of increasing the production of endogenous opioids such as endorphins and enkephalins.
 - id: vitaone-ldn-article
   location: So, how does LDN work?
-  quote: 'Interference of opioid peptide–opioid receptor interactions for a short
-    time each day (from 4-6 hours) with LDN provided a subsequent window of time (18–20
-    hours) for the increased levels of endogenous opioids and opioid receptors to
-    elicit a robust functional response: the inhibition of cell proliferation.'
+  quote: 'Interference of opioid peptide–opioid receptor interactions for a short time each day (from 4-6 hours) with LDN
+    provided a subsequent window of time (18–20 hours) for the increased levels of endogenous opioids and opioid receptors
+    to elicit a robust functional response: the inhibition of cell proliferation.'
 version: 1
 status: active
 updated_at: '2026-05-02'

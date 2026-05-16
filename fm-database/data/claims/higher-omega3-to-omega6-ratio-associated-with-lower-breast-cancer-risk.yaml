@@ -1,12 +1,11 @@
 slug: higher-omega3-to-omega6-ratio-associated-with-lower-breast-cancer-risk
-statement: A higher ratio of omega-3 to omega-6 in serum phospholipids is associated
-  with a significantly lower risk of developing breast cancer.
+statement: A higher ratio of omega-3 to omega-6 in serum phospholipids is associated with a significantly lower risk of developing
+  breast cancer.
 evidence_tier: plausible_emerging
-rationale: Cited as a meta-analysis of 27,135 adult females in the lecture. Serum
-  phospholipid ratio reflects dietary intake. Source is FM lecture of moderate quality;
-  meta-analysis not specifically named.
-coaching_translation: Improving your omega-3 to omega-6 balance isn't just about inflammation
-  — it may also help reduce long-term breast cancer risk.
+rationale: Cited as a meta-analysis of 27,135 adult females in the lecture. Serum phospholipid ratio reflects dietary intake.
+  Source is FM lecture of moderate quality; meta-analysis not specifically named.
+coaching_translation: Improving your omega-3 to omega-6 balance isn't just about inflammation — it may also help reduce long-term
+  breast cancer risk.
 caveats:
 - Meta-analysis is observational; causation not established.
 - Source is FM lecture; primary meta-analysis not named.
@@ -15,15 +14,14 @@ linked_to_topics:
 - omega-3-fatty-acids
 - omega-6-omega-3-ratio-imbalance
 linked_to_supplements:
-- epa-dha-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Breast Cancer and Omega-3 Study Slide
-  quote: there was a meta analysis of 27,135 adult females. They showed that there
-    was a significantly lower risk of developing breast cancer was associated with
-    a higher ratio of omega 3 to omega 6 in serum phospholipids.
+  quote: there was a meta analysis of 27,135 adult females. They showed that there was a significantly lower risk of developing
+    breast cancer was associated with a higher ratio of omega 3 to omega 6 in serum phospholipids.
 version: 1
 status: active
 updated_at: '2026-05-05'

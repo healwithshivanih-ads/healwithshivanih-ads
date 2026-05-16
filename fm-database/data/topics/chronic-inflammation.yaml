@@ -12,19 +12,19 @@ aliases:
 summary: Emotional stress, loneliness, digital overstimulation, cytokines, neuroinflammation, and oxidative stress are described
   as inflammation drivers.
 common_symptoms:
-- fatigue
+- lethargy
 - brain-fog
 - bloating
 - joint-pain
-- skin-issues
-- resistant-weight-gain
-- mood-changes
-- skin-itching
+- eczema-psoriasis-skin
+- unexplained-weight-gain
+- mood-swings
+- skin-rash
 - constipation
 - diarrhea
 - hair-loss
 - mood-changes-and-anxiety
-- cognitive-dullness
+- poor-concentration
 - poor-wound-healing
 - low-mood
 - autoimmune-flares
@@ -48,7 +48,7 @@ red_flags:
 - cancer-related hypercalcemia
 related_topics:
 - autoimmune-disease
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - food-sensitivity
 - metabolic-syndrome
 - psoriasis
@@ -75,11 +75,9 @@ key_mechanisms:
 - nlrp3-inflammasome-activation
 - oxidative-stress
 - cytokine-dysregulation
-- gut-dysbiosis
-- nf-kappa-b-activation
+- dysbiosis-gut-microbiome-imbalance
 - arachidonic-acid-cascade
-- lps-mediated-immune-activation
-- oxidative-stress-and-inflammation
+- lps-endotoxemia
 - gut-barrier-and-nutrient-absorption
 - neuroimmune-inflammation-loop
 - gut-brain-axis-disruption

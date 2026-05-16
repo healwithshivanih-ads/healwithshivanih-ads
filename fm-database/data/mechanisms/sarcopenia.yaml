@@ -5,9 +5,8 @@ aliases:
 - muscle wasting
 - loss of lean body mass
 category: structural
-summary: Progressive loss of lean muscle mass with aging, associated with increased
-  mortality risk and metabolic dysfunction. Identified via BIA as low lean muscle
-  mass percentage. Requires targeted resistance training and adequate dietary protein
+summary: Progressive loss of lean muscle mass with aging, associated with increased mortality risk and metabolic dysfunction.
+  Identified via BIA as low lean muscle mass percentage. Requires targeted resistance training and adequate dietary protein
   to counteract.
 upstream_drivers:
 - aging
@@ -17,7 +16,7 @@ upstream_drivers:
 downstream_effects:
 - increased-mortality-risk
 - reduced-basal-metabolic-rate
-- metabolic-dysfunction
+- insulin-resistance
 related_mechanisms:
 - insulin-resistance
 linked_to_topics:
@@ -28,8 +27,8 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-body-composition-bmi
   location: Body Composition / Lean Muscle Mass Section
-  quote: The risk of death is higher in patients with low lean muscle mass. And so
-    that's really important that we're identifying it.
+  quote: The risk of death is higher in patients with low lean muscle mass. And so that's really important that we're identifying
+    it.
 version: 1
 status: active
 updated_at: '2026-05-05'

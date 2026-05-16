@@ -1,31 +1,28 @@
 slug: egcg-inhibits-covid19-replication-process
-statement: EGCG from green tea (225 mg/day or 4 cups green tea/day) reduces inflammation,
-  enhances immune function, and targets a process involved in COVID-19 replication.
+statement: EGCG from green tea (225 mg/day or 4 cups green tea/day) reduces inflammation, enhances immune function, and targets
+  a process involved in COVID-19 replication.
 evidence_tier: plausible_emerging
-rationale: EGCG's anti-inflammatory and immune-modulating effects have clinical support
-  (Matsumoto et al. 2011, BMC Complement Altern Med RCT for influenza prevention).
-  COVID-19 replication inhibition is based on in silico and early mechanistic data.
+rationale: EGCG's anti-inflammatory and immune-modulating effects have clinical support (Matsumoto et al. 2011, BMC Complement
+  Altern Med RCT for influenza prevention). COVID-19 replication inhibition is based on in silico and early mechanistic data.
   High-dose extracts carry hepatotoxicity risk per USP review.
-coaching_translation: The active compound in green tea, called EGCG, may help your
-  immune system and could interfere with how certain viruses replicate. Drinking 4
-  cups of green tea daily is a safe way to benefit from this.
+coaching_translation: The active compound in green tea, called EGCG, may help your immune system and could interfere with
+  how certain viruses replicate. Drinking 4 cups of green tea daily is a safe way to benefit from this.
 caveats:
-- High-dose concentrated EGCG extracts (not standard green tea) carry hepatotoxicity
-  risk.
+- High-dose concentrated EGCG extracts (not standard green tea) carry hepatotoxicity risk.
 - COVID-19 replication inhibition based on early in silico data.
 - Standard green tea consumption (4 cups/day) is safe for most adults.
 linked_to_topics:
 - immune-support-covid-19
 - anti-inflammatory-diet
 linked_to_supplements:
-- green-tea-egcg
+- green-tea
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: In addition to reducing inflammation, green tea enhances the immune system
-    and targets one of the processes involved in COVID-19 replication.
+  quote: In addition to reducing inflammation, green tea enhances the immune system and targets one of the processes involved
+    in COVID-19 replication.
 version: 1
 status: active
 updated_at: '2026-05-04'

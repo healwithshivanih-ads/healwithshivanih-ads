@@ -31,11 +31,9 @@ aliases:
 - stress-related amenorrhea
 category: hormonal
 severity: common
-description: Disruption to regular menstrual cycling, increasingly common in younger
-  women and linked to endocrine disruption, environmental chemicals, and premature
-  hormonal decline.
-when_to_refer: Refer if periods are absent for >3 months, if accompanied by severe
-  pain, or if fertility is a concern.
+description: Disruption to regular menstrual cycling, increasingly common in younger women and linked to endocrine disruption,
+  environmental chemicals, and premature hormonal decline.
+when_to_refer: Refer if periods are absent for >3 months, if accompanied by severe pain, or if fertility is a concern.
 linked_to_topics:
 - pcos
 - low-progesterone
@@ -54,9 +52,9 @@ linked_to_mechanisms:
 - low-progesterone
 - dhea-depletion
 - progesterone-deficiency
-- estrogen-recirculation-via-beta-glucuronidase
+- estrogen-enterohepatic-recirculation
 - ovarian-follicle-depletion
-- estrogen-progesterone-decline
+- estrogen-decline
 - receptor-occupancy-by-edcs
 sources:
 - id: vitaone-sex-hormones-cheatsheet
@@ -67,35 +65,31 @@ sources:
   quote: Irregular or no periods (not menopausal)
 - id: coconote-fm-estrogen-dominance
   location: Case Study 2
-  quote: You might have some kind of irregular menstruation or spotting. Or your cycles
-    might have cycles that are absolutely regular. But still she is having symptoms.
+  quote: You might have some kind of irregular menstruation or spotting. Or your cycles might have cycles that are absolutely
+    regular. But still she is having symptoms.
 - id: coconote-fm-gut-skin-hormone-axis
   location: Case History / Symptoms
-  quote: The cycles got delayed from 28 days to 31 days to 37 days and up to 40–45
-    days, the cycle just kept on getting delayed.
+  quote: The cycles got delayed from 28 days to 31 days to 37 days and up to 40–45 days, the cycle just kept on getting delayed.
 - id: coconote-fm-sex-hormones
   location: Staging of Menopause
-  quote: If the menstruation is variable, then this is a perimenopause phase. If the
-    menstruation is completely absent, then we say it is a menopause or a postmenopause
-    phase.
+  quote: If the menstruation is variable, then this is a perimenopause phase. If the menstruation is completely absent, then
+    we say it is a menopause or a postmenopause phase.
 - id: ask-expert-hormonal-health-bhrt
   location: Premature Hormonal Decline and Endocrine Disruption
-  quote: We have more and more young women with irregular cycles and going into menstruating
-    earlier and going into perimenopause, even in their 20s.
+  quote: We have more and more young women with irregular cycles and going into menstruating earlier and going into perimenopause,
+    even in their 20s.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: PCOS patients regain cycles when insulin resistance is corrected
 - id: vitaone-thyroid-ebook
   location: 'Chapter 4: Functions of Thyroid Hormones'
-  quote: Irregular menstruation and decreased or increased menstrual flow. Fertility
-    can also be affected.
+  quote: Irregular menstruation and decreased or increased menstrual flow. Fertility can also be affected.
 - id: vitaone-thyroid-toolkit
   location: Symptoms of Hashimoto's Hypothyroidism
   quote: Irregular Menstrual Cycles
 - id: vitaone-health-coaching-toolkit
   location: Thyroid Screening Questionnaire — Signs and Symptoms
-  quote: 'Women: I am having irregular menstrual cycles (longer, or heavier, or more
-    frequent)'
+  quote: 'Women: I am having irregular menstrual cycles (longer, or heavier, or more frequent)'
 - id: vitaone-thyroid-cheatsheet
   location: Biohacking Thyroid Function Cheatsheet — Thyroid Dysfunction Symptoms
   quote: Menstrual irregularities

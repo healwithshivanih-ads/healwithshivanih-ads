@@ -4,15 +4,14 @@ aliases:
 - upper GI discomfort
 - reflux
 - nausea
-summary: Dyspepsia — encompassing reflux, nausea, bloating after meals, and general
-  upper GI discomfort — is common in perimenopause and menopause, linked to declining
-  HCL production, digestive enzyme output, bile flow, and microbiome-level fermentation
+summary: Dyspepsia — encompassing reflux, nausea, bloating after meals, and general upper GI discomfort — is common in perimenopause
+  and menopause, linked to declining HCL production, digestive enzyme output, bile flow, and microbiome-level fermentation
   changes.
 common_symptoms:
-- reflux
+- acid-reflux-heartburn
 - nausea
-- post-meal bloating
-- gas
+- bloating
+- flatulence
 - discomfort after fatty meals
 - greasy stools
 red_flags:
@@ -27,18 +26,16 @@ key_mechanisms:
 - hcl-decline
 - digestive-enzyme-insufficiency
 - bile-flow-reduction
-coaching_scope_notes: Coaches can discuss meal environment, chewing, stress-reduction
-  before meals, and general digestive support supplements. HCL supplementation and
-  bile-acid supplements require clinician involvement.
-clinician_scope_notes: HCL testing, steatocrit on stool testing, gallbladder evaluation,
-  and bile-acid supplement dosing are clinician scope.
+coaching_scope_notes: Coaches can discuss meal environment, chewing, stress-reduction before meals, and general digestive
+  support supplements. HCL supplementation and bile-acid supplements require clinician involvement.
+clinician_scope_notes: HCL testing, steatocrit on stool testing, gallbladder evaluation, and bile-acid supplement dosing are
+  clinician scope.
 evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-6
   location: Session 6 — Main Transcript, Dyspepsia Section
-  quote: The term dyspepsia in traditional allopathic medicine to really talk about
-    you just don't feel great. Like you might have a little bit of reflux, you might
-    have a little bit of nausea, and this can be a direct reflection of what's changing
+  quote: The term dyspepsia in traditional allopathic medicine to really talk about you just don't feel great. Like you might
+    have a little bit of reflux, you might have a little bit of nausea, and this can be a direct reflection of what's changing
     at the microbiome level.
 version: 1
 status: active

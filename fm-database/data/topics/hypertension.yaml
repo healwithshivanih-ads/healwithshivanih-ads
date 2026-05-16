@@ -4,14 +4,13 @@ aliases:
 - high blood pressure
 - elevated blood pressure
 - HTN
-summary: Persistently elevated blood pressure, identified as both a non-modifiable
-  risk amplifier and a modifiable CVS risk factor. In this case, hypertension was
-  managed pharmacologically and improved with lifestyle and dietary intervention targeting
+summary: Persistently elevated blood pressure, identified as both a non-modifiable risk amplifier and a modifiable CVS risk
+  factor. In this case, hypertension was managed pharmacologically and improved with lifestyle and dietary intervention targeting
   insulin resistance.
 common_symptoms:
 - headache
 - palpitations
-- high-blood-pressure
+- elevated-blood-pressure
 red_flags:
 - BP >140/90 on three or more readings in adults under 60
 - BP >150/90 in adults over 60
@@ -33,26 +32,23 @@ key_mechanisms:
 - chronic-inflammation
 - excess-catecholamines
 - excess-cortisol
-coaching_scope_notes: 'Coaches support lifestyle contributors: stress reduction, dietary
-  sodium, movement, sleep quality. Medication management is clinician scope.'
+coaching_scope_notes: 'Coaches support lifestyle contributors: stress reduction, dietary sodium, movement, sleep quality.
+  Medication management is clinician scope.'
 clinician_scope_notes: Antihypertensive dosing and titration require physician oversight.
 evidence_tier: strong
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
-  quote: Hypertension is a major contributor to cardiovascular events in the US, affecting
-    29.1% of adults over the age of 18, according to statistics from the Centers for
-    Disease Control.
+  quote: Hypertension is a major contributor to cardiovascular events in the US, affecting 29.1% of adults over the age of
+    18, according to statistics from the Centers for Disease Control.
 - id: vitaone-health-coaching-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
-  quote: Hypertension is a major contributor to cardiovascular events in the US, affecting
-    29.1% of adults over the age of 18, according to statistics from the Centers for
-    Disease Control.
+  quote: Hypertension is a major contributor to cardiovascular events in the US, affecting 29.1% of adults over the age of
+    18, according to statistics from the Centers for Disease Control.
 - id: vitaone-cvs-risk-assessment
   location: History (Slide 2)
-  quote: 'A 41 year old male, K/C/O Hypertension, on oral medication came to us with
-    the symptoms of: 1. No significant symptoms 2. Body Pain 3. Recently diagnosed
-    with High cholesterol'
+  quote: 'A 41 year old male, K/C/O Hypertension, on oral medication came to us with the symptoms of: 1. No significant symptoms
+    2. Body Pain 3. Recently diagnosed with High cholesterol'
 version: 3
 status: active
 updated_at: '2026-05-04'

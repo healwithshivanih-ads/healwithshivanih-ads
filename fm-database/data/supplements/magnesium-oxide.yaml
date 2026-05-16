@@ -14,23 +14,21 @@ timing_options:
 - with_dinner
 take_with_food: optional
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_claims:
 - magnesium-oxide-poor-bioavailability
-notes_for_coach: High elemental magnesium content (~60%) but insoluble and poorly
-  absorbed. Not recommended as primary therapeutic magnesium source. Very cheap and
-  widely available, which is why it dominates the market.
-notes_for_client: This form of magnesium is commonly sold but poorly absorbed by the
-  body. It is generally not the best choice for correcting magnesium deficiency.
+notes_for_coach: High elemental magnesium content (~60%) but insoluble and poorly absorbed. Not recommended as primary therapeutic
+  magnesium source. Very cheap and widely available, which is why it dominates the market.
+notes_for_client: This form of magnesium is commonly sold but poorly absorbed by the body. It is generally not the best choice
+  for correcting magnesium deficiency.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Supplementation — forms of magnesium
-  quote: Very cheap conditionally available source is magnesium oxide the magnesium
-    content also definitely is very good 60 percentage but the concern is it is insoluble
-    so whenever something even if it is very cheap it is insoluble not going to be
-    used.
+  quote: Very cheap conditionally available source is magnesium oxide the magnesium content also definitely is very good 60
+    percentage but the concern is it is insoluble so whenever something even if it is very cheap it is insoluble not going
+    to be used.
 version: 1
 status: active
 updated_at: '2026-05-05'

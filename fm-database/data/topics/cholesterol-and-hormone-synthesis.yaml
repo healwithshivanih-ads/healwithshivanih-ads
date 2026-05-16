@@ -3,13 +3,12 @@ display_name: Cholesterol as a Precursor for Hormones and Vitamins
 aliases:
 - cholesterol biosynthesis
 - cholesterol-vitamin D precursor
-summary: Cholesterol is the biochemical precursor for steroid hormones and fat-soluble
-  vitamins including vitamin D. Blocking cholesterol synthesis via statins may have
-  downstream effects on hormonal and neurological health.
+summary: Cholesterol is the biochemical precursor for steroid hormones and fat-soluble vitamins including vitamin D. Blocking
+  cholesterol synthesis via statins may have downstream effects on hormonal and neurological health.
 common_symptoms:
 - hormonal-imbalance
-- fatigue
-- cognitive-impairment
+- lethargy
+- poor-concentration
 red_flags: []
 related_topics:
 - statin-side-effects
@@ -17,16 +16,15 @@ related_topics:
 key_mechanisms:
 - cholesterol-precursor-depletion
 - mevalonate-pathway-inhibition
-coaching_scope_notes: Coaches can educate clients that cholesterol serves important
-  physiological roles beyond cardiovascular risk. Discussion of hormonal or neurological
-  consequences of low cholesterol should involve a clinician.
+coaching_scope_notes: Coaches can educate clients that cholesterol serves important physiological roles beyond cardiovascular
+  risk. Discussion of hormonal or neurological consequences of low cholesterol should involve a clinician.
 evidence_tier: strong
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-reality-of-statins
   location: Side Effects of Statins Section
-  quote: Cholesterol is the precursor for hormones and vitamins. So if you are blocking
-    the production of cholesterol, what are you doing?
+  quote: Cholesterol is the precursor for hormones and vitamins. So if you are blocking the production of cholesterol, what
+    are you doing?
 version: 1
 status: active
 updated_at: '2026-05-05'

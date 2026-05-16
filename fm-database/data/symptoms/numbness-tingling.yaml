@@ -32,12 +32,12 @@ description: Abnormal sensations in extremities associated with magnesium defici
   and peripheral vascular tone.
 when_to_refer: Refer if progressive, unilateral, or associated with weakness suggesting neurological pathology.
 linked_to_topics:
-- vitamin-b12-deficiency
+- vitamin-b12
 - mitochondrial-health-nutrition
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_mechanisms:
 - methylation-cycle
-- mitochondrial-atp-production
+- mitochondrial-dysfunction
 - calcium-magnesium-imbalance
 sources:
 - id: vitaone-nutrition-toolkit

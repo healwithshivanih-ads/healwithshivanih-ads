@@ -5,9 +5,8 @@ aliases:
 - PPI B12 depletion
 - intrinsic factor deficiency
 category: gut
-summary: PPIs suppress gastric acid required for B12 liberation from food protein,
-  while metformin impairs B12 absorption via the ileal calcium-dependent pathway.
-  Both lead to subclinical then clinical B12 deficiency, accelerating neurological
+summary: PPIs suppress gastric acid required for B12 liberation from food protein, while metformin impairs B12 absorption
+  via the ileal calcium-dependent pathway. Both lead to subclinical then clinical B12 deficiency, accelerating neurological
   symptoms and hyperhomocysteinemia.
 upstream_drivers:
 - ppi-therapy
@@ -16,19 +15,19 @@ upstream_drivers:
 downstream_effects:
 - peripheral-neuropathy
 - fatigue
-- hyperhomocysteinemia
+- elevated-homocysteine
 - macrocytic-anaemia
 related_mechanisms:
 - hepcidin-mediated-iron-block
-- mitochondrial-coq10-depletion
+- coq10-depletion
 linked_to_topics:
 - medication-induced-nutrient-depletion
 evidence_tier: strong
 sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
-  quote: Every diabetic on metformin is walking around B12 and folate deficient accelerating
-    fatigue and neuropathy long before labs show it.
+  quote: Every diabetic on metformin is walking around B12 and folate deficient accelerating fatigue and neuropathy long before
+    labs show it.
 version: 1
 status: active
 updated_at: '2026-05-05'

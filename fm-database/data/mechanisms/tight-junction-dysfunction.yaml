@@ -19,7 +19,7 @@ summary: Tight junctions between epithelial cells normally prevent paracellular 
   to translocate from the intestinal lumen into the bloodstream, triggering immune activation and systemic inflammation.
 upstream_drivers:
 - stress
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - food-antigens
 - lps
 - toxin-exposure
@@ -28,15 +28,15 @@ upstream_drivers:
 - antibiotic-use
 - proton-pump-inhibitor-use
 downstream_effects:
-- lps-translocation
+- lps-endotoxemia
 - systemic-inflammation
 - molecular-mimicry
 - autoimmunity
 - food-sensitivities
 related_mechanisms:
-- lps-translocation
+- lps-endotoxemia
 - molecular-mimicry
-- gut-microbiome-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - autoimmunity-leaky-gut-connection

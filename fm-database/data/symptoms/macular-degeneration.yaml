@@ -6,19 +6,17 @@ aliases:
 - AMD
 category: other
 severity: red_flag
-description: Deterioration of the macula in the eye associated with zinc deficiency,
-  given zinc's high concentration in ocular tissue and its antioxidant role.
-when_to_refer: Any signs of vision loss or macular degeneration require urgent referral
-  to an ophthalmologist.
+description: Deterioration of the macula in the eye associated with zinc deficiency, given zinc's high concentration in ocular
+  tissue and its antioxidant role.
+when_to_refer: Any signs of vision loss or macular degeneration require urgent referral to an ophthalmologist.
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 linked_to_mechanisms:
 - zinc-antioxidant-activity
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
-  quote: Hair loss, macular degeneration, loss of taste and smell, skin disorders
-    including acne.
+  quote: Hair loss, macular degeneration, loss of taste and smell, skin disorders including acne.
 version: 1
 status: active
 updated_at: '2026-05-05'

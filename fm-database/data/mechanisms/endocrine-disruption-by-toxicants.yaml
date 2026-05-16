@@ -5,11 +5,9 @@ aliases:
 - EDC mechanism
 - endocrine disruptor pathway
 category: endocrine
-summary: Environmental chemicals including BPA, phthalates, GMOs, heavy metals, triclosan,
-  and propylene glycol can disrupt hormonal balance by mimicking or blocking hormone
-  receptors, leading to obesity, metabolic disturbances (e.g., diabetes), infertility,
-  and developmental harm. Lipid-soluble toxins accumulate in adipose tissue and are
-  mobilized during weight loss.
+summary: Environmental chemicals including BPA, phthalates, GMOs, heavy metals, triclosan, and propylene glycol can disrupt
+  hormonal balance by mimicking or blocking hormone receptors, leading to obesity, metabolic disturbances (e.g., diabetes),
+  infertility, and developmental harm. Lipid-soluble toxins accumulate in adipose tissue and are mobilized during weight loss.
 upstream_drivers:
 - bpa-exposure
 - heavy-metal-exposure
@@ -19,11 +17,11 @@ upstream_drivers:
 downstream_effects:
 - hormonal-imbalance
 - obesity
-- metabolic-syndrome
+- insulin-resistance
 - infertility
 - developmental-toxicity
 related_mechanisms:
-- phase-i-cytochrome-p450
+- cyp450-phase-i-activation
 - heavy-metal-toxicity
 linked_to_topics:
 - environmental-toxin-exposure
@@ -33,9 +31,8 @@ evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — Avoiding Environmental Toxins
-  quote: Limiting ingestion of genetically modified organisms (GMOs) & heavy metals,
-    all of which have been associated with disruption to the endocrine system resulting
-    in obesity and metabolic disturbances like diabetes, is also recommended.
+  quote: Limiting ingestion of genetically modified organisms (GMOs) & heavy metals, all of which have been associated with
+    disruption to the endocrine system resulting in obesity and metabolic disturbances like diabetes, is also recommended.
 version: 1
 status: active
 updated_at: '2026-05-04'

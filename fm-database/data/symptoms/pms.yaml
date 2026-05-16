@@ -19,16 +19,15 @@ aliases:
 - cycle-related mood swings
 category: hormonal
 severity: common
-description: Cluster of physical and emotional symptoms in the luteal phase linked
-  to low progesterone, relative estrogen dominance, and HPA axis disruption.
-when_to_refer: Severe PMDD with functional impairment warrants psychiatric/gynecological
-  assessment.
+description: Cluster of physical and emotional symptoms in the luteal phase linked to low progesterone, relative estrogen
+  dominance, and HPA axis disruption.
+when_to_refer: Severe PMDD with functional impairment warrants psychiatric/gynecological assessment.
 linked_to_topics:
 - estrogen-dominance
 - low-progesterone
 - pcos
 - perimenopause
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 linked_to_mechanisms:
 - low-progesterone
 - estrogen-enterohepatic-recirculation
@@ -40,17 +39,15 @@ sources:
   quote: Reduces PMS, breast tenderness, acne.
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Progesterone row (p.4)
-  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex,
-    stress reduction.'
+  quote: '↓ PMS, infertility, anxiety, irregular cycles. Solution: Vit B6, Mg, Vitex, stress reduction.'
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism
-  quote: Estrogen Dominance can exacerbate endometriosis, premenstrual syndrome (PMS),
-    polycystic ovarian syndrome (PCOS), premenstrual dysphoric disorder (PMDD).
+  quote: Estrogen Dominance can exacerbate endometriosis, premenstrual syndrome (PMS), polycystic ovarian syndrome (PCOS),
+    premenstrual dysphoric disorder (PMDD).
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: PMS, infertility, irregular cycles, estrogen dominance, fibroids, PCOS, low
-    libido, and low sperm count — Linked to progesterone, estrogen, testosterone,
-    FSH, LH, prolactin, stress, insulin resistance, and HPO-axis disruption.
+  quote: PMS, infertility, irregular cycles, estrogen dominance, fibroids, PCOS, low libido, and low sperm count — Linked
+    to progesterone, estrogen, testosterone, FSH, LH, prolactin, stress, insulin resistance, and HPO-axis disruption.
 - id: barbara-oneil-healing-mind
   location: Hormonal Depression Section
   quote: It's one of the main causes of premenstrual tension.

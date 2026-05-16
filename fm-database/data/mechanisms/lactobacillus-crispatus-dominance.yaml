@@ -4,12 +4,10 @@ aliases:
 - crispatus colonization
 - vaginal lactobacillus dominance
 category: immune
-summary: Lactobacillus crispatus is the keystone microbe of the healthy vaginal microbiome.
-  It maintains low vaginal pH, protects against pathogens, supports cervical integrity,
-  and reduces risk of premature labor, miscarriage, UTIs, and incontinence. Loss—commonly
-  due to antibiotic exposure or aging—disrupts vaginal and reproductive health. Oral
-  ingestion of crispatus can translocate to the vagina and bladder via anatomical
-  continuity.
+summary: Lactobacillus crispatus is the keystone microbe of the healthy vaginal microbiome. It maintains low vaginal pH, protects
+  against pathogens, supports cervical integrity, and reduces risk of premature labor, miscarriage, UTIs, and incontinence.
+  Loss—commonly due to antibiotic exposure or aging—disrupts vaginal and reproductive health. Oral ingestion of crispatus
+  can translocate to the vagina and bladder via anatomical continuity.
 upstream_drivers:
 - antibiotic-overuse
 - aging-estrogen-decline
@@ -21,7 +19,7 @@ downstream_effects:
 - skin-collagen-rejuvenation
 related_mechanisms:
 - gut-vaginal-microbiome-axis
-- endotoxemia
+- lps-endotoxemia
 linked_to_topics:
 - vaginal-microbiome
 - perimenopause-microbiome
@@ -29,8 +27,8 @@ evidence_tier: plausible_emerging
 sources:
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Lactobacillus crispatus discussion
-  quote: Lactobacillus crispatus is the defining microbe in a woman's vaginal microbiome,
-    and many ladies have lost it. Restoring it's easy.
+  quote: Lactobacillus crispatus is the defining microbe in a woman's vaginal microbiome, and many ladies have lost it. Restoring
+    it's easy.
 version: 1
 status: active
 updated_at: '2026-05-05'

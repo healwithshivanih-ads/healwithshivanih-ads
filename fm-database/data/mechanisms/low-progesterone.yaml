@@ -18,9 +18,8 @@ aliases:
 - progesterone conversion to cortisol
 - HPA-axis hijack
 category: endocrine
-summary: Progesterone depletion resulting from pregnenolone steal, chronic stress,
-  or poor luteal function. Manifests as PMS, anxiety, insomnia, estrogen dominance,
-  and cycle irregularity.
+summary: Progesterone depletion resulting from pregnenolone steal, chronic stress, or poor luteal function. Manifests as PMS,
+  anxiety, insomnia, estrogen dominance, and cycle irregularity.
 upstream_drivers:
 - anovulation (intermittent in perimenopause)
 - chronic stress (pregnenolone steal)
@@ -29,8 +28,7 @@ upstream_drivers:
 - anovulation
 - estrogen-dominance
 - nutrient-deficiency
-- gut-dysbiosis
-- pregnenolone-steal
+- dysbiosis-gut-microbiome-imbalance
 - chronic-stress
 downstream_effects:
 - sleep-onset insomnia, 3am wakeups
@@ -49,38 +47,32 @@ downstream_effects:
 related_mechanisms:
 - estrogen-decline
 - hpa-axis-dysregulation
-- gaba-a-receptor-modulation
+- gaba-receptor-modulation
 - chronic-inflammation
 - estrogen-enterohepatic-recirculation
-- pregnenolone-steal
 linked_to_topics:
 - perimenopause
 - insomnia
 - anxiety
-- low-progesterone
 - pcos
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Hormones section
 - id: vitaone-sex-hormones-cheatsheet
   location: Progesterone Is Anti-Inflammatory
-  quote: NF-κB Inhibition → Directly downregulates pro-inflammatory cytokines (IL-6,
-    TNF-α).
+  quote: NF-κB Inhibition → Directly downregulates pro-inflammatory cytokines (IL-6, TNF-α).
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Progesterone row (p.4)
-  quote: 'Anxiety, insomnia, PMS, estrogen dominance, PCOS. Solution: Vit B6, Mg,
-    Vitex, stress reduction.'
+  quote: 'Anxiety, insomnia, PMS, estrogen dominance, PCOS. Solution: Vit B6, Mg, Vitex, stress reduction.'
 - id: coconote-fm-estrogen-dominance
   location: Causes of Estrogen Dominance
-  quote: If you are having a lot of stress, the entire progesterone is going to convert
-    into 17 OH and the cortisol will consume everything to actually maintain your
-    stressors or maintain the inflammations going on inside the body.
+  quote: If you are having a lot of stress, the entire progesterone is going to convert into 17 OH and the cortisol will consume
+    everything to actually maintain your stressors or maintain the inflammations going on inside the body.
 - id: coconote-fm-sex-hormones
   location: Cortisol Steal
-  quote: as a part of stress response, the body tries to maintain cortisol level due
-    to its central role in mounting a stress response. So, what happens, that whatever
-    pregnenol is secreted from the cholesterol, the pregnenol will convert into 17-hydroxypregnenol
-    and everything is going to convert into cortisol only
+  quote: as a part of stress response, the body tries to maintain cortisol level due to its central role in mounting a stress
+    response. So, what happens, that whatever pregnenol is secreted from the cholesterol, the pregnenol will convert into
+    17-hydroxypregnenol and everything is going to convert into cortisol only
 evidence_tier: plausible_emerging
 version: 3
 status: active

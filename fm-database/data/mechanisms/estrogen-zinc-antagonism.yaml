@@ -4,9 +4,8 @@ aliases:
 - oral contraceptive zinc depletion
 - estrogen zinc agonism
 category: endocrine
-summary: Estrogen acts as a zinc agonist, meaning elevated estrogen levels (e.g.,
-  from oral contraceptives) can alter zinc balance and contribute to zinc depletion
-  over time.
+summary: Estrogen acts as a zinc agonist, meaning elevated estrogen levels (e.g., from oral contraceptives) can alter zinc
+  balance and contribute to zinc depletion over time.
 upstream_drivers:
 - oral-contraceptive-use
 - elevated-estrogen
@@ -15,13 +14,12 @@ downstream_effects:
 related_mechanisms:
 - phytate-zinc-chelation
 linked_to_topics:
-- zinc-deficiency
+- zinc-nutrition
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-zinc-deficiency
   location: Risk Factors
-  quote: Estrogen happens to be agonist in terms of zinc, so again one of the concerns
-    with people who take oily contraceptives.
+  quote: Estrogen happens to be agonist in terms of zinc, so again one of the concerns with people who take oily contraceptives.
 version: 1
 status: active
 updated_at: '2026-05-05'

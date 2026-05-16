@@ -5,13 +5,12 @@ aliases:
 - digestive dysfunction
 - gut health
 - gastrointestinal dysfunction
-summary: A broad clinical area encompassing impaired digestion, dysbiosis, leaky gut,
-  low stomach acid, candida overgrowth, and related conditions. GI dysfunction can
-  underlie chronic health problems seemingly unrelated to digestion, including autoimmune
-  disease, skin disorders, and cardiovascular disease.
+summary: A broad clinical area encompassing impaired digestion, dysbiosis, leaky gut, low stomach acid, candida overgrowth,
+  and related conditions. GI dysfunction can underlie chronic health problems seemingly unrelated to digestion, including
+  autoimmune disease, skin disorders, and cardiovascular disease.
 common_symptoms:
 - bloating
-- gas
+- flatulence
 - constipation
 - diarrhea
 - indigestion
@@ -36,28 +35,25 @@ related_topics:
 - gut-brain-axis
 - gut-microbiome-personalized-nutrition
 - gerd-ppi-tapering
-- 5r-gut-restoration
+- 5r-gut-protocol
 key_mechanisms:
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - leaky-gut
-- hypochlorhydria-mechanism
-coaching_scope_notes: Coaches can support dietary changes (5R framework, elimination
-  diets, fermented foods, prebiotic/probiotic foods), lifestyle modifications, and
-  symptom tracking. Supplement dosing and PPI tapering require clinician supervision.
-clinician_scope_notes: PPI tapering, betaine HCl dosing, and diagnosis of Barrett's
-  Esophagus, gastroparesis, or parasitic infections require clinician oversight.
+- low-stomach-acid
+coaching_scope_notes: Coaches can support dietary changes (5R framework, elimination diets, fermented foods, prebiotic/probiotic
+  foods), lifestyle modifications, and symptom tracking. Supplement dosing and PPI tapering require clinician supervision.
+clinician_scope_notes: PPI tapering, betaine HCl dosing, and diagnosis of Barrett's Esophagus, gastroparesis, or parasitic
+  infections require clinician oversight.
 evidence_tier: strong
 sources:
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: A properly functioning digestive system is critical to good health. In fact,
-    problems with the gastrointestinal (GI) tract can cause more than just stomach
-    aches, gas & bloating or diarrhea.
+  quote: A properly functioning digestive system is critical to good health. In fact, problems with the gastrointestinal (GI)
+    tract can cause more than just stomach aches, gas & bloating or diarrhea.
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: A properly functioning digestive system is critical to good health. In fact,
-    problems with the gastrointestinal (GI) tract can cause more than just stomach
-    aches, gas & bloating or diarrhea.
+  quote: A properly functioning digestive system is critical to good health. In fact, problems with the gastrointestinal (GI)
+    tract can cause more than just stomach aches, gas & bloating or diarrhea.
 version: 2
 status: active
 updated_at: '2026-05-04'

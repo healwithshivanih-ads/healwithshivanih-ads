@@ -4,9 +4,8 @@ aliases:
 - magnesium-melatonin
 - sleep-hormone-regulation
 category: endocrine
-summary: Magnesium is necessary to maintain the melatonin synthesis pathway. Deficiency
-  can impair endogenous melatonin production, contributing to sleep-onset and sleep-maintenance
-  difficulties.
+summary: Magnesium is necessary to maintain the melatonin synthesis pathway. Deficiency can impair endogenous melatonin production,
+  contributing to sleep-onset and sleep-maintenance difficulties.
 upstream_drivers:
 - magnesium-deficiency
 downstream_effects:
@@ -17,7 +16,7 @@ related_mechanisms:
 - gaba-receptor-modulation
 linked_to_topics:
 - magnesium-neurological-mental-health
-- magnesium-deficiency
+- magnesium-nutrition
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-magnesium-deficiency

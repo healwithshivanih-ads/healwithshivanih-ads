@@ -1,28 +1,26 @@
 slug: oxidized-ldl-activates-inflammasome-nf-kappab
-statement: Oxidized LDL activates the NLRP3 inflammasome and NF-κB, initiating a cascade
-  of pro-inflammatory cytokines that drives cardiovascular disease as an inflammatory
-  process.
+statement: Oxidized LDL activates the NLRP3 inflammasome and NF-κB, initiating a cascade of pro-inflammatory cytokines that
+  drives cardiovascular disease as an inflammatory process.
 evidence_tier: strong
-rationale: The NF-κB and inflammasome pathways in atherosclerosis are well-established
-  in peer-reviewed literature. The clinician presents this as foundational mechanistic
-  understanding.
-coaching_translation: When LDL cholesterol gets damaged by oxidative stress, it triggers
-  inflammation in the arteries — like a fire alarm that won't turn off. This is why
-  reducing inflammation and oxidative stress matters just as much as lowering cholesterol.
+rationale: The NF-κB and inflammasome pathways in atherosclerosis are well-established in peer-reviewed literature. The clinician
+  presents this as foundational mechanistic understanding.
+coaching_translation: When LDL cholesterol gets damaged by oxidative stress, it triggers inflammation in the arteries — like
+  a fire alarm that won't turn off. This is why reducing inflammation and oxidative stress matters just as much as lowering
+  cholesterol.
 caveats: []
 linked_to_topics:
 - cardiovascular-disease-prevention
 - dyslipidemia
 linked_to_supplements:
 - turmeric-curcumin
-- nac-n-acetyl-cysteine
+- nac
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Inflammatory Biomarkers
-  quote: Damaged LDL, oxidized LDL turns on NF-kappa-B. NF-kappa-B then sets a whole
-    series of pro-inflammatory cytokines oxidized LDL turns on the inflammasome.
+  quote: Damaged LDL, oxidized LDL turns on NF-kappa-B. NF-kappa-B then sets a whole series of pro-inflammatory cytokines
+    oxidized LDL turns on the inflammasome.
 version: 1
 status: active
 updated_at: '2026-05-05'

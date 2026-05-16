@@ -1,27 +1,23 @@
 slug: gluten-elimination-may-benefit-hashimotos
-statement: A gluten-free diet may benefit some people with Hashimoto's by reducing
-  autoimmune triggers.
+statement: A gluten-free diet may benefit some people with Hashimoto's by reducing autoimmune triggers.
 evidence_tier: fm_specific_thin
-rationale: Gluten is implicated in increased intestinal permeability and molecular
-  mimicry that may exacerbate autoimmune thyroid disease. Clinical evidence is mostly
-  observational; RCT data is limited and mixed.
-coaching_translation: Some people with Hashimoto's notice improvement in symptoms
-  and antibody levels when they remove gluten from their diet. A 4–12 week trial elimination
-  is a reasonable strategy to explore.
+rationale: Gluten is implicated in increased intestinal permeability and molecular mimicry that may exacerbate autoimmune
+  thyroid disease. Clinical evidence is mostly observational; RCT data is limited and mixed.
+coaching_translation: Some people with Hashimoto's notice improvement in symptoms and antibody levels when they remove gluten
+  from their diet. A 4–12 week trial elimination is a reasonable strategy to explore.
 caveats:
 - Evidence is observational; not all people with Hashimoto's have gluten sensitivity.
-- Full celiac disease workup should be completed before starting a gluten-free diet
-  to avoid false-negative testing.
+- Full celiac disease workup should be completed before starting a gluten-free diet to avoid false-negative testing.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Management of Hashimoto's — Dietary Changes
-  quote: 'Gluten-Free Diet: Gluten is often implicated in autoimmune conditions. Some
-    people with Hashimoto''s may benefit from a gluten-free diet.'
+  quote: 'Gluten-Free Diet: Gluten is often implicated in autoimmune conditions. Some people with Hashimoto''s may benefit
+    from a gluten-free diet.'
 version: 1
 status: active
 updated_at: '2026-05-04'

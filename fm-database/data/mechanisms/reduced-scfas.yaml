@@ -5,10 +5,9 @@ aliases:
 - SCFA deficiency
 - low butyrate production
 category: gut
-summary: Dysbiosis reduces populations of SCFA-producing bacteria (e.g. Faecalibacterium),
-  diminishing butyrate and other SCFAs. SCFAs are critical for colonocyte health,
-  mucosal immunity, and anti-inflammatory signaling. Low SCFAs impair gut barrier
-  integrity and immune regulation.
+summary: Dysbiosis reduces populations of SCFA-producing bacteria (e.g. Faecalibacterium), diminishing butyrate and other
+  SCFAs. SCFAs are critical for colonocyte health, mucosal immunity, and anti-inflammatory signaling. Low SCFAs impair gut
+  barrier integrity and immune regulation.
 upstream_drivers:
 - gut-dysbiosis-mechanism
 - low-fiber-diet
@@ -22,7 +21,7 @@ related_mechanisms:
 - gut-dysbiosis-mechanism
 linked_to_topics:
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - ibd
 evidence_tier: plausible_emerging
 sources:

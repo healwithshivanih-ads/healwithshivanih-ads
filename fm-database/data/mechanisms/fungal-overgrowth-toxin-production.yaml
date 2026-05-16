@@ -8,23 +8,22 @@ aliases:
 - mold immune response
 - mycotoxin immune burden
 category: gut
-summary: Fungal overgrowth (primarily Candida species) in the small intestine produces
-  toxins that disrupt the gut barrier, suppress beneficial bacteria, and drive systemic
-  immune reactions. Saccharomyces boulardii has been shown to reduce fungal load and
-  remove fungal toxins.
+summary: Fungal overgrowth (primarily Candida species) in the small intestine produces toxins that disrupt the gut barrier,
+  suppress beneficial bacteria, and drive systemic immune reactions. Saccharomyces boulardii has been shown to reduce fungal
+  load and remove fungal toxins.
 upstream_drivers:
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - antibiotic-overuse
 - immunosuppression
 - high-sugar-diet
 downstream_effects:
-- intestinal-barrier-dysfunction
+- leaky-gut
 - systemic-inflammation
 - skin-manifestations
 - immune-dysregulation
 related_mechanisms:
-- gut-dysbiosis
-- intestinal-barrier-dysfunction
+- dysbiosis-gut-microbiome-imbalance
+- leaky-gut
 linked_to_topics:
 - sifo
 - sibo
@@ -32,14 +31,12 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-sibo-sifo
   location: SIFO Treatment Section
-  quote: The probiotic strain, Saccharomyces boulari, which we say has been shown
-    to reduce the fungus inside the gut. It is also responsible for moving out the
-    fungus toxins from the body as well.
+  quote: The probiotic strain, Saccharomyces boulari, which we say has been shown to reduce the fungus inside the gut. It
+    is also responsible for moving out the fungus toxins from the body as well.
 - id: vitaone-health-coaching-toolkit
   location: Foods Rich in Mold Protein Allergens
-  quote: Molds and mycotoxins can cause adverse symptoms ranging from mild to severe,
-    depending on the person. Some common symptoms include itching, watery eyes, fatigue,
-    and breathing difficulty.
+  quote: Molds and mycotoxins can cause adverse symptoms ranging from mild to severe, depending on the person. Some common
+    symptoms include itching, watery eyes, fatigue, and breathing difficulty.
 version: 1
 status: active
 updated_at: '2026-05-05'

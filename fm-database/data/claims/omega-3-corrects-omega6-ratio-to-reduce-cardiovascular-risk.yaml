@@ -1,35 +1,29 @@
 slug: omega-3-corrects-omega6-ratio-to-reduce-cardiovascular-risk
-statement: Therapeutic omega-3 supplementation combined with reduction of omega-6
-  intake can correct an inflammatory 20:1 omega-6:omega-3 ratio toward a target 3:1
-  ratio, supporting cardiovascular risk reduction.
+statement: Therapeutic omega-3 supplementation combined with reduction of omega-6 intake can correct an inflammatory 20:1
+  omega-6:omega-3 ratio toward a target 3:1 ratio, supporting cardiovascular risk reduction.
 evidence_tier: plausible_emerging
-rationale: The document describes a modern dietary omega-6:omega-3 ratio of approximately
-  20:1, with a therapeutic goal of 3:1. Correcting this ratio through high-dose omega-3
-  supplementation (3–6g/day in the therapeutic phase) and elimination of omega-6 sources
-  is presented as a key non-pharmacological cardiovascular intervention. This is consistent
-  with PUFA research, though specific RCT citations are not provided.
-coaching_translation: Most people eat far too much omega-6 (from vegetable oils and
-  processed food) and not enough omega-3. Getting this balance right with fish oil
-  and cutting omega-6 sources is one of the most impactful things you can do for your
-  heart health.
+rationale: The document describes a modern dietary omega-6:omega-3 ratio of approximately 20:1, with a therapeutic goal of
+  3:1. Correcting this ratio through high-dose omega-3 supplementation (3–6g/day in the therapeutic phase) and elimination
+  of omega-6 sources is presented as a key non-pharmacological cardiovascular intervention. This is consistent with PUFA research,
+  though specific RCT citations are not provided.
+coaching_translation: Most people eat far too much omega-6 (from vegetable oils and processed food) and not enough omega-3.
+  Getting this balance right with fish oil and cutting omega-6 sources is one of the most impactful things you can do for
+  your heart health.
 caveats:
-- Source is expert consensus lecture. The specific 3:1 target ratio and therapeutic
-  dosing (3–6g/day) are widely cited in FM literature but not based on a specific
-  RCT cited in this document.
-- High-dose omega-3 supplementation should be supervised by a clinician, especially
-  in patients on anticoagulants.
+- Source is expert consensus lecture. The specific 3:1 target ratio and therapeutic dosing (3–6g/day) are widely cited in
+  FM literature but not based on a specific RCT cited in this document.
+- High-dose omega-3 supplementation should be supervised by a clinician, especially in patients on anticoagulants.
 linked_to_topics:
-- dyslipidemia-management
+- dyslipidemia
 - atherosclerosis-pathogenesis
 linked_to_supplements:
-- omega-3-fatty-acids
+- omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Omega-3 intervention section
-  quote: If we understand this ratio 20:1 omega 6 versus omega 3, what is our goal?
-    Our goal is to maintain this 3:1.
+  quote: If we understand this ratio 20:1 omega 6 versus omega 3, what is our goal? Our goal is to maintain this 3:1.
 version: 1
 status: active
 updated_at: '2026-05-05'

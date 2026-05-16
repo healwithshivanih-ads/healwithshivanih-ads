@@ -1,28 +1,25 @@
 slug: high-quality-protein-enables-liver-toxin-processing
-statement: High-quality dietary protein is a key nutrient for enabling the liver to
-  effectively process toxins, as specific amino acids are required for Phase II conjugation
-  pathways.
+statement: High-quality dietary protein is a key nutrient for enabling the liver to effectively process toxins, as specific
+  amino acids are required for Phase II conjugation pathways.
 evidence_tier: strong
-rationale: Amino acids (glycine, taurine, glutamine, cysteine, methionine) are direct
-  substrates for Phase II conjugation reactions. The requirement for dietary protein
-  to maintain these reactions is well-established biochemically.
-coaching_translation: Getting enough high-quality protein at each meal gives your
-  liver the building blocks it needs to neutralize and clear toxins efficiently.
+rationale: Amino acids (glycine, taurine, glutamine, cysteine, methionine) are direct substrates for Phase II conjugation
+  reactions. The requirement for dietary protein to maintain these reactions is well-established biochemically.
+coaching_translation: Getting enough high-quality protein at each meal gives your liver the building blocks it needs to neutralize
+  and clear toxins efficiently.
 linked_to_topics:
-- liver-detox-food-plan
+- liver-detoxification
 - metabolic-detoxification
 linked_to_supplements:
 - glycine
-- n-acetyl-cysteine
+- nac
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — Features of the Detox Food Plan
-  quote: Protein is a key nutrient that enables the liver to effectively process toxins
-    within the body. Specific amino acids (building blocks of protein) are required
-    for certain types of toxin clearance.
+  quote: Protein is a key nutrient that enables the liver to effectively process toxins within the body. Specific amino acids
+    (building blocks of protein) are required for certain types of toxin clearance.
 version: 1
 status: active
 updated_at: '2026-05-04'

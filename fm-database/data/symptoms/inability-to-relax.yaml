@@ -12,12 +12,10 @@ aliases:
 - sympathetic dominance
 category: neurological
 severity: concerning
-description: A persistent state of mental and physical activation in which the individual
-  is unable to downregulate despite wanting or attempting to do so. Often accompanied
-  by resistance to stillness, meditation, or breath-based practices.
-when_to_refer: Refer to mental health professional if inability to relax is accompanied
-  by significant anxiety, trauma history, reliance on sleep medication, or when standard
-  coaching tools consistently fail to provide relief.
+description: A persistent state of mental and physical activation in which the individual is unable to downregulate despite
+  wanting or attempting to do so. Often accompanied by resistance to stillness, meditation, or breath-based practices.
+when_to_refer: Refer to mental health professional if inability to relax is accompanied by significant anxiety, trauma history,
+  reliance on sleep medication, or when standard coaching tools consistently fail to provide relief.
 linked_to_topics:
 - womb-imprinting-and-prenatal-experience
 - birth-trauma
@@ -25,18 +23,16 @@ linked_to_topics:
 linked_to_mechanisms:
 - prenatal-cortisol-adrenaline-exposure
 - nervous-system-imprinting
-- sympathetic-nervous-system-activation
+- sympathetic-dominance
 - parasympathetic-inhibition
 sources:
 - id: family-constellation-healing-womb
   location: C-section and birth challenge discussion
-  quote: To those people, those people always have an inner tension inside. It's difficult
-    for them to get into a deep relaxation.
+  quote: To those people, those people always have an inner tension inside. It's difficult for them to get into a deep relaxation.
 - id: ask-expert-coaching-stress-kids
   location: Stress Client Topic Discussion
-  quote: she's a very highly ambitious woman... she's going, going, going, going,
-    going, going... anytime we talk about meditation or relaxing, she kind of goes
-    away and she talks about other things.
+  quote: she's a very highly ambitious woman... she's going, going, going, going, going, going... anytime we talk about meditation
+    or relaxing, she kind of goes away and she talks about other things.
 version: 2
 status: active
 updated_at: '2026-05-05'

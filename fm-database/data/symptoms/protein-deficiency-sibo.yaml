@@ -5,20 +5,18 @@ aliases:
 - amino acid deficiency from gut
 category: metabolic
 severity: concerning
-description: Overgrown bacteria compete with the host for dietary protein and nutrients,
-  leading to deficiencies even in the presence of adequate dietary intake.
-when_to_refer: Refer if severe malnutrition, significant unintentional weight loss,
-  or muscle wasting.
+description: Overgrown bacteria compete with the host for dietary protein and nutrients, leading to deficiencies even in the
+  presence of adequate dietary intake.
+when_to_refer: Refer if severe malnutrition, significant unintentional weight loss, or muscle wasting.
 linked_to_topics:
 - sibo
 linked_to_mechanisms:
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: coconote-fm-sibo-sifo
   location: Dysfunctions Caused by SIBO
-  quote: Protein deficiencies because they compete. The bacteria and the food that
-    you're taking basically compete for protein metabolism and hence what happens
-    is protein deficiency.
+  quote: Protein deficiencies because they compete. The bacteria and the food that you're taking basically compete for protein
+    metabolism and hence what happens is protein deficiency.
 version: 1
 status: active
 updated_at: '2026-05-05'

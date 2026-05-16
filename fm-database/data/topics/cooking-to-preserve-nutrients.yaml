@@ -4,29 +4,26 @@ aliases:
 - nutrient preservation
 - cooking methods
 - food preparation
-summary: Cooking method significantly affects nutrient retention. Gentle methods (steaming,
-  blanching, roasting) preserve more nutrients. Boiling causes water-soluble vitamin
-  loss into cooking liquid. Fat-soluble vitamins require dietary fat for absorption.
-  Eating a variety of raw and cooked foods maximizes nutrient intake.
+summary: Cooking method significantly affects nutrient retention. Gentle methods (steaming, blanching, roasting) preserve
+  more nutrients. Boiling causes water-soluble vitamin loss into cooking liquid. Fat-soluble vitamins require dietary fat
+  for absorption. Eating a variety of raw and cooked foods maximizes nutrient intake.
 common_symptoms: []
 red_flags: []
 related_topics:
 - iron-nutrition
 - magnesium-nutrition
-- vitamin-d-nutrition
+- vitamin-d3
 key_mechanisms: []
-coaching_scope_notes: Coaches can teach clients practical cooking strategies to maximize
-  nutrient retention, including steaming vegetables, using cooking liquid in soups/stews,
-  pairing fat-soluble vitamins with healthy fats, and avoiding plastic containers
+coaching_scope_notes: Coaches can teach clients practical cooking strategies to maximize nutrient retention, including steaming
+  vegetables, using cooking liquid in soups/stews, pairing fat-soluble vitamins with healthy fats, and avoiding plastic containers
   in microwave.
 evidence_tier: strong
 clinician_scope_notes: ''
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Cooking to Preserve Nutrients
-  quote: When it comes to maximizing nutrient content, gentle cooking methods are
-    generally better. So, use as little heat, liquid, and time as possible to cook
-    your food.
+  quote: When it comes to maximizing nutrient content, gentle cooking methods are generally better. So, use as little heat,
+    liquid, and time as possible to cook your food.
 version: 1
 status: active
 updated_at: '2026-05-04'

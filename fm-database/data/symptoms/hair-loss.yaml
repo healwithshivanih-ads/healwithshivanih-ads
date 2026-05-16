@@ -46,10 +46,9 @@ linked_to_topics:
 - menopause
 - perimenopause
 - estrogen-dominance
-- zinc-deficiency
+- zinc-nutrition
 - iron-deficiency-dysregulation
 - pcos-fertility
-- hair-loss
 - nutrition-deficiency
 - thyroid
 - pcos
@@ -57,12 +56,12 @@ linked_to_mechanisms:
 - five-alpha-reductase-conversion
 - shbg-hormone-binding
 - 5-alpha-reductase-activity
-- estrogen-progesterone-decline
+- estrogen-decline
 - hepcidin-mediated-iron-block
 - thyroid-nutrient-synergy
 - gut-barrier-and-nutrient-absorption
-- nutrient-dependent-energy-metabolism
-- oxidative-stress-and-inflammation
+- mitochondrial-energy-production
+- oxidative-stress
 sources:
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01

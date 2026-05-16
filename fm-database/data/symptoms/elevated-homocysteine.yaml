@@ -23,26 +23,23 @@ linked_to_topics:
 - coagulation-imbalance
 - cardiometabolic-disease
 - chronic-toxicity-assessment
-- liver-detox-phase-1-and-phase-2
-- homocysteine-elevation
+- liver-detoxification
 - mthfr-gene-variant
-- folate-vitamin-b9
+- folate-nutrition
 - vitamin-b12
 - mthfr-polymorphisms
 - methylation-cycle
 - mthfr-variants
 linked_to_mechanisms:
-- homocysteine-elevation
-- impaired-methylation
-- methylation-impairment
+- elevated-homocysteine
+- methylation-cycle-dysfunction
+- methylation-cycle
 - ldl-oxidation-and-glycation
-- endothelial-injury
-- methylation-defect
-- impaired-homocysteine-remethylation
+- endothelial-dysfunction
+- homocysteine-metabolism
 - mthfr-enzyme-dysfunction
 - homocysteine-remethylation
 - methyl-trap
-- hyperhomocysteinemia
 - impaired-folate-to-5-mthf-conversion
 sources:
 - id: vitaone-liver-detox-cheatsheet

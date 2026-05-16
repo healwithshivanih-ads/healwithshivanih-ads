@@ -5,71 +5,61 @@ aliases:
 - FODMAP diet
 - fermentable carbohydrate restriction
 - low fermentable carbohydrate diet
-summary: A short-term, evidence-based elimination diet that restricts Fermentable
-  Oligosaccharides, Disaccharides, Monosaccharides, and Polyols to reduce IBS-type
-  symptoms, followed by systematic reintroduction to identify personal FODMAP thresholds.
+summary: A short-term, evidence-based elimination diet that restricts Fermentable Oligosaccharides, Disaccharides, Monosaccharides,
+  and Polyols to reduce IBS-type symptoms, followed by systematic reintroduction to identify personal FODMAP thresholds.
 common_symptoms:
 - bloating
 - abdominal-gas
 - abdominal-cramping
 - osmotic-diarrhea
-- acid-reflux
+- acid-reflux-heartburn
 - abdominal-pain
 - flatulence
 - diarrhea
 - constipation
 - urgency-to-defecate
-- gas-flatulence
 - nausea
-- heartburn-reflux
 red_flags:
-- Symptoms persisting despite strict low-FODMAP compliance (consider SIBO testing
-  or IBD workup)
+- Symptoms persisting despite strict low-FODMAP compliance (consider SIBO testing or IBD workup)
 - Significant unintentional weight loss
-- Blood in stool
+- gi-bleeding
 - failure to improve after 6 weeks
-- unintentional weight loss
-- rectal bleeding
-- blood in stool
+- unintentional-weight-loss
+- rectal-bleeding
 - nocturnal diarrhea — refer to gastroenterologist
 related_topics:
 - sibo
 - ibs
 - gut-dysbiosis
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - elimination-diet
 - gut-brain-axis
 key_mechanisms:
-- gut-fermentation-dysbiosis
+- colonic-fermentation
 - lactase-deficiency-osmotic-load
 - fructose-malabsorption
-- colonic-fermentation
 - osmotic-fluid-shift
-- gut-motility-dysregulation
-- fodmap-fermentation-gas-production
+- altered-gi-motility
 - osmotic-fluid-shifts-in-gut
-- gut-brain-axis-dysregulation
-coaching_scope_notes: Coaches can implement the structured elimination and reintroduction
-  phases using the Green/Yellow/Red food chart. Portion control and food stacking
-  rules are key. Refer if symptoms worsen or do not improve.
-clinician_scope_notes: Consider ruling out IBD, celiac disease, and SIBO before initiating
-  low FODMAP. Monitor nutritional adequacy.
+- gut-brain-axis-disruption
+coaching_scope_notes: Coaches can implement the structured elimination and reintroduction phases using the Green/Yellow/Red
+  food chart. Portion control and food stacking rules are key. Refer if symptoms worsen or do not improve.
+clinician_scope_notes: Consider ruling out IBD, celiac disease, and SIBO before initiating low FODMAP. Monitor nutritional
+  adequacy.
 evidence_tier: strong
 sources:
 - id: vitaone-elimination-diet-cheatsheet
   location: FODMAP Diet Cheatsheet — Introduction
-  quote: FODMAPs = Fermentable Oligo-, Di-, Mono-saccharides And Polyols. They're
-    not 'bad foods' - they're poorly absorbed carbs that ferment and feed dysbiotic
-    bacteria, driving IBS, SIBO, and bloating.
+  quote: FODMAPs = Fermentable Oligo-, Di-, Mono-saccharides And Polyols. They're not 'bad foods' - they're poorly absorbed
+    carbs that ferment and feed dysbiotic bacteria, driving IBS, SIBO, and bloating.
 - id: vitaone-elimination-diet-toolkit
   location: Low Fodmap Detailed Chart (Indian Version)
-  quote: This Low FODMAP chart is a practical, portion-based guide for clinicians
-    and patients to reduce IBS-type symptoms during the short elimination phase.
+  quote: This Low FODMAP chart is a practical, portion-based guide for clinicians and patients to reduce IBS-type symptoms
+    during the short elimination phase.
 - id: vitaone-health-coaching-toolkit
   location: Low Fodmap Detailed Chart — INDIAN VERSION
-  quote: Low FODMAP works best when it's implemented as a short, structured elimination
-    followed by systematic reintroduction to identify the patient's personal triggers
-    and expand variety.
+  quote: Low FODMAP works best when it's implemented as a short, structured elimination followed by systematic reintroduction
+    to identify the patient's personal triggers and expand variety.
 version: 3
 status: active
 updated_at: '2026-05-04'

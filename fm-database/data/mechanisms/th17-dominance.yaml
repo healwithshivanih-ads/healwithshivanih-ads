@@ -5,12 +5,11 @@ aliases:
 - IL-17 pathway
 - Th17 overactivation
 category: immune
-summary: Overactivation of Th17 cells produces IL-17, IL-23, and TNF-α, driving tissue
-  inflammation, autoimmune flares (including psoriasis), and gut barrier disruption.
-  Modulated by Vitamin D (T-reg support), omega-3s, curcumin, and gut microbiome restoration.
+summary: Overactivation of Th17 cells produces IL-17, IL-23, and TNF-α, driving tissue inflammation, autoimmune flares (including
+  psoriasis), and gut barrier disruption. Modulated by Vitamin D (T-reg support), omega-3s, curcumin, and gut microbiome restoration.
 upstream_drivers:
 - leaky-gut
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - vitamin-d-deficiency
 - chronic-stress
 - molecular-mimicry

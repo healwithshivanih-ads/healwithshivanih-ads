@@ -15,13 +15,12 @@ when_to_refer: Fecal calprotectin >200 requires clinician evaluation to rule out
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - ibs-ibd-differentiation
-- 5r-gut-healing-protocol
+- 5r-gut-protocol
 linked_to_mechanisms:
 - mucosal-immune-dysfunction
-- lps-translocation
-- tight-junction-dysregulation
+- lps-endotoxemia
 - tight-junction-dysfunction
-- gut-microbiome-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 sources:
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin

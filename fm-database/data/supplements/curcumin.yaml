@@ -28,13 +28,13 @@ linked_to_topics:
 - estrogen-dominance
 - pcos
 - inflammation
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - gut-brain-axis
 - insulin-resistance
 - liver-detoxification
 - nafld
 - heavy-metal-toxicity
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - ibd
 - gut-dysbiosis
 - chronic-inflammation
@@ -66,12 +66,10 @@ linked_to_claims:
 - curcumin-reduces-inflammation-and-decreases-viral-activity
 - curcumin-reduces-neuroinflammation
 - ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
-notes_for_coach: Curcumin has both anti-inflammatory properties and is cited as a
-  stimulant of enzymatic activity. Bioavailability is enhanced with black pepper (piperine)
-  or fat. Source is expert consensus lecture.
-notes_for_client: Curcumin, the active compound in turmeric, has anti-inflammatory
-  properties and may help stimulate digestive enzymes. Best absorbed when taken with
-  food and a source of fat.
+notes_for_coach: Curcumin has both anti-inflammatory properties and is cited as a stimulant of enzymatic activity. Bioavailability
+  is enhanced with black pepper (piperine) or fat. Source is expert consensus lecture.
+notes_for_client: Curcumin, the active compound in turmeric, has anti-inflammatory properties and may help stimulate digestive
+  enzymes. Best absorbed when taken with food and a source of fat.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -80,23 +78,19 @@ sources:
   quote: 'Specific supplements: Curcumin, omega-3s, vitamin D'
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
-  quote: Curcumin (with Piperine) - Anti-inflammatory, antioxidant - 500–1000 mg/day
-    - With fat-containing meals
+  quote: Curcumin (with Piperine) - Anti-inflammatory, antioxidant - 500–1000 mg/day - With fat-containing meals
 - id: vitaone-sex-hormones-cheatsheet
   location: Advanced Support — Estrogen Dominance Supplement Cheatsheet
-  quote: 'Turmeric/Curcumin: Reduces inflammation + supports Phase II; Painful periods,
-    fibroids.'
+  quote: 'Turmeric/Curcumin: Reduces inflammation + supports Phase II; Painful periods, fibroids.'
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Interventions — Integrative Framework (p.12)
-  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium,
-    Resveratrol.'
+  quote: 'Inflammation Control: Reduce cytokine load. Omega-3, Curcumin, Magnesium, Resveratrol.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Chronic Inflammation
   quote: Curcumin (500 mg BID w/ piperine)
 - id: vitaone-liver-detox-cheatsheet
   location: Top Superfoods for Detoxification
-  quote: Supports liver regeneration & bile flow. Combine with black pepper for 2000%
-    better absorption.
+  quote: Supports liver regeneration & bile flow. Combine with black pepper for 2000% better absorption.
 - id: vitaone-gut-cheatsheet
   location: Leaky Gut & Inflammation — Supplement Strategy
   quote: Curcumin — NF-κB inhibition — Chronic pain & autoimmune
@@ -107,24 +101,20 @@ sources:
   location: Knee Pain – Supplement Stack
   quote: Curcumin (bioavailable), Boswellia, Omega-3
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement recommendations'
   quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E'
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Curcumin has been shown to reduce inflammation and decrease viral activity
-    for COVID-19.
+  quote: Curcumin has been shown to reduce inflammation and decrease viral activity for COVID-19.
 - id: vitaone-health-coaching-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
   quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E.'
 - id: vitaone-health-coaching-cheatsheet
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Encourage emotional expression, mindfulness, breath retraining, omega-3,
-    curcumin, HRV tracking.
+  quote: Encourage emotional expression, mindfulness, breath retraining, omega-3, curcumin, HRV tracking.
 - id: coconote-fm-pancreatic-insufficiency
   location: Management / Support Strategies
-  quote: Certain food which helps in terms of stimulating the enzymatic activity is
-    ginger, curcumin, coriander, onion.
+  quote: Certain food which helps in terms of stimulating the enzymatic activity is ginger, curcumin, coriander, onion.
 version: 15
 status: active
 updated_at: '2026-05-05'

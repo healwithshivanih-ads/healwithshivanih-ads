@@ -4,13 +4,11 @@ aliases:
 - vascular endothelial dysfunction
 - leaky endothelium
 - endothelial injury
-summary: Damage or dysfunction of the innermost vascular layer (endothelium) is the
-  primary initiating event in atherosclerosis. Caused by systemic inflammation, high
-  homocysteine, high blood glucose, toxins (heavy metals, smoking), hypertension,
-  and nitric oxide deficiency. Once injured, the endothelium becomes permeable to
-  small LDL particles.
+summary: Damage or dysfunction of the innermost vascular layer (endothelium) is the primary initiating event in atherosclerosis.
+  Caused by systemic inflammation, high homocysteine, high blood glucose, toxins (heavy metals, smoking), hypertension, and
+  nitric oxide deficiency. Once injured, the endothelium becomes permeable to small LDL particles.
 common_symptoms:
-- hypertension
+- elevated-blood-pressure
 - edema
 red_flags:
 - persistent uncontrolled hypertension
@@ -20,20 +18,18 @@ related_topics:
 - cardiometabolic-disease
 - homocysteine-and-methylation
 key_mechanisms:
-- endothelial-injury
+- endothelial-dysfunction
 - nitric-oxide-deficiency
 - chronic-inflammation
-coaching_scope_notes: 'Coaches can address upstream drivers: anti-inflammatory diet,
-  toxin reduction, blood sugar support, and stress management.'
-clinician_scope_notes: Hypertension management, nitric oxide testing, and heavy metal
-  assessment require clinician oversight.
+coaching_scope_notes: 'Coaches can address upstream drivers: anti-inflammatory diet, toxin reduction, blood sugar support,
+  and stress management.'
+clinician_scope_notes: Hypertension management, nitric oxide testing, and heavy metal assessment require clinician oversight.
 evidence_tier: strong
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Atherosclerosis Mechanism
-  quote: So the primary cause for formation of plaque is actually endothelial injury.
-    So, the innermost layer of blood vessel that we call endothelium. And when you
-    have endothelial injury, that leads to formation of acrylocellulosis.
+  quote: So the primary cause for formation of plaque is actually endothelial injury. So, the innermost layer of blood vessel
+    that we call endothelium. And when you have endothelial injury, that leads to formation of acrylocellulosis.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -5,33 +5,28 @@ aliases:
 - insulin sensitivity
 - glucose metabolism
 - type 2 diabetes prevention
-summary: Repeated cold water immersion has been associated with significantly increased
-  insulin sensitivity and decreased insulin concentrations, suggesting a protective
-  role against type 2 diabetes. The mechanism may be mediated through BAT activation
-  and cold-induced thermogenesis.
+summary: Repeated cold water immersion has been associated with significantly increased insulin sensitivity and decreased
+  insulin concentrations, suggesting a protective role against type 2 diabetes. The mechanism may be mediated through BAT
+  activation and cold-induced thermogenesis.
 common_symptoms:
 - insulin-resistance
-- excess-body-fat
+- excess-body-weight
 related_topics:
 - cold-water-immersion
 - brown-adipose-tissue-activation
 key_mechanisms:
-- bat-activation
 - cold-induced-thermogenesis
-coaching_scope_notes: CWI may be discussed as a complementary lifestyle strategy for
-  metabolic health, alongside diet and exercise. Not a replacement for medical management
-  of diabetes.
-clinician_scope_notes: Findings are from small studies with methodological variation;
-  not yet sufficient for clinical prescription. Monitor fasting insulin and glucose
-  if integrating CWI into metabolic protocols.
+coaching_scope_notes: CWI may be discussed as a complementary lifestyle strategy for metabolic health, alongside diet and
+  exercise. Not a replacement for medical management of diabetes.
+clinician_scope_notes: Findings are from small studies with methodological variation; not yet sufficient for clinical prescription.
+  Monitor fasting insulin and glucose if integrating CWI into metabolic protocols.
 evidence_tier: plausible_emerging
 red_flags: []
 sources:
 - id: espeland-2022-cold-water-immersion
   location: Metabolic Changes
-  quote: Studies found that repeated CWI significantly increased insulin sensitivity
-    and decreased insulin concentrations, suggesting protective effects against type
-    2 diabetes and insulin resistance.
+  quote: Studies found that repeated CWI significantly increased insulin sensitivity and decreased insulin concentrations,
+    suggesting protective effects against type 2 diabetes and insulin resistance.
 version: 1
 status: active
 updated_at: '2026-05-05'

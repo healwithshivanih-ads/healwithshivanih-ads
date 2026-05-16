@@ -18,21 +18,20 @@ aliases:
 - parietal cell dysfunction
 - gastric acid insufficiency
 category: gut
-summary: Low stomach acid is a source and driver of gut dysbiosis, as inadequate acid
-  fails to sterilize ingested pathogens and food, creating a favorable environment
-  for microbial overgrowth and reinfection. Betaine HCl or apple cider vinegar may
-  be used to restore gastric acid levels.
+summary: Low stomach acid is a source and driver of gut dysbiosis, as inadequate acid fails to sterilize ingested pathogens
+  and food, creating a favorable environment for microbial overgrowth and reinfection. Betaine HCl or apple cider vinegar
+  may be used to restore gastric acid levels.
 upstream_drivers:
 - chronic-stress
 - proton-pump-inhibitor-use
 - aging
 downstream_effects:
-- gut-dysbiosis-microbiome-imbalance
-- impaired-protein-digestion
+- dysbiosis-gut-microbiome-imbalance
+- hcl-and-pepsin-protein-digestion
 - pathogen-overgrowth
 related_mechanisms:
-- gut-dysbiosis-microbiome-imbalance
-- impaired-pancreatic-function
+- dysbiosis-gut-microbiome-imbalance
+- exocrine-pancreatic-enzyme-deficiency
 linked_to_topics:
 - gut-dysbiosis
 - sibo
@@ -40,28 +39,24 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Replace / Reinfection Source Section
-  quote: it may be a patient having a low stomach acid, so you can consider giving
-    them betaine ester or episode of vinegar, or you can consider them giving some
-    betel, it can increase your stomach acid.
+  quote: it may be a patient having a low stomach acid, so you can consider giving them betaine ester or episode of vinegar,
+    or you can consider them giving some betel, it can increase your stomach acid.
 - id: coconote-fm-sibo-sifo
   location: Triggers for SIBO
-  quote: achlorhydria, no acid production or hypoteroidia. That is a very less acid
-    production, we've been responsible for digestive insufficiencies.
+  quote: achlorhydria, no acid production or hypoteroidia. That is a very less acid production, we've been responsible for
+    digestive insufficiencies.
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity
-  quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance
-    and a variety of other health problems such as overgrowth of bacteria in the small
-    intestine.
+  quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance and a variety of other health
+    problems such as overgrowth of bacteria in the small intestine.
 - id: vitaone-health-coaching-toolkit
   location: Testing for Low Stomach Acidity
-  quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance
-    and a variety of other health problems such as overgrowth of bacteria in the small
-    intestine.
+  quote: Without enough stomach acid, we are more vulnerable to decreased immune resistance and a variety of other health
+    problems such as overgrowth of bacteria in the small intestine.
 - id: coconote-fm-hypochlorhydria
   location: Functions of Gastric Acid
-  quote: Gastric acid helps in the conversion of pepsinogen to absinthe, which is
-    an important component for hydrolysis of protein. Third and a very important action
-    is bacterial sidelaction of this gastric acid.
+  quote: Gastric acid helps in the conversion of pepsinogen to absinthe, which is an important component for hydrolysis of
+    protein. Third and a very important action is bacterial sidelaction of this gastric acid.
 version: 1
 status: active
 updated_at: '2026-05-05'

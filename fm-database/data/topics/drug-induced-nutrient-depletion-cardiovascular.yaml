@@ -4,34 +4,31 @@ aliases:
 - medication-induced nutrient deficiency
 - statin nutrient depletion
 - diuretic nutrient loss
-summary: Common cardiovascular medications — including statins, beta blockers, diuretics,
-  ACE inhibitors, ARBs, and metformin — can deplete key nutrients such as CoQ10, magnesium,
-  potassium, zinc, B vitamins, and essential fatty acids, with implications for energy
-  production, cardiac function, and overall health.
+summary: Common cardiovascular medications — including statins, beta blockers, diuretics, ACE inhibitors, ARBs, and metformin
+  — can deplete key nutrients such as CoQ10, magnesium, potassium, zinc, B vitamins, and essential fatty acids, with implications
+  for energy production, cardiac function, and overall health.
 common_symptoms:
-- fatigue
+- lethargy
 - muscle-cramps
-- cognitive-decline
+- poor-concentration
 red_flags: []
 related_topics:
 - cardiovascular-dysfunction
 - hypertension
 - beta-blocker-deprescribing
 key_mechanisms:
-- coq10-depletion-by-beta-blockers
+- coq10-depletion
 - statin-mediated-nutrient-depletion
-coaching_scope_notes: Coaches can educate clients about the potential for medication-related
-  nutrient depletion and encourage discussion with their prescribing clinician about
-  targeted supplementation.
-clinician_scope_notes: Clinician to assess and monitor nutrient status in patients
-  on long-term cardiovascular medications and consider targeted repletion.
+coaching_scope_notes: Coaches can educate clients about the potential for medication-related nutrient depletion and encourage
+  discussion with their prescribing clinician about targeted supplementation.
+clinician_scope_notes: Clinician to assess and monitor nutrient status in patients on long-term cardiovascular medications
+  and consider targeted repletion.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Cardiovascular Drugs and Potential Nutrient Deficiency
-  quote: Common medications, including over-the-counter drugs, can potentially deplete
-    the body of vital nutrients. The following table provides a list of some commonly
-    prescribed medications for cardiovascular conditions, along with the nutrients
+  quote: Common medications, including over-the-counter drugs, can potentially deplete the body of vital nutrients. The following
+    table provides a list of some commonly prescribed medications for cardiovascular conditions, along with the nutrients
     most at risk of depletion.
 version: 1
 status: active

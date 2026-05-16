@@ -18,8 +18,8 @@ downstream_effects:
 - pathobiont-overgrowth
 - gut-inflammation
 related_mechanisms:
-- tight-junction-dysregulation
-- gut-microbiome-dysbiosis
+- tight-junction-dysfunction
+- dysbiosis-gut-microbiome-imbalance
 linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - ibs-ibd-differentiation

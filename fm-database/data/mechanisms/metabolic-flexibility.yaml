@@ -6,9 +6,8 @@ aliases:
 - glucose-fat switching
 - glucose-fat flexibility
 category: metabolic
-summary: The ability to efficiently switch between glucose and fat oxidation as primary
-  fuel sources. Impaired metabolic flexibility is a hallmark of insulin resistance.
-  LCHF diets and resistance training are used to restore this capacity, reducing glucose
+summary: The ability to efficiently switch between glucose and fat oxidation as primary fuel sources. Impaired metabolic flexibility
+  is a hallmark of insulin resistance. LCHF diets and resistance training are used to restore this capacity, reducing glucose
   variability and improving energy stability.
 upstream_drivers:
 - insulin-resistance
@@ -18,7 +17,7 @@ upstream_drivers:
 - insulin-sensitivity
 downstream_effects:
 - improved-energy-regulation
-- fat-oxidation
+- mitochondrial-efficiency
 - reduced-cravings
 - reduced-sugar-cravings
 - energy-stability
@@ -39,8 +38,7 @@ sources:
   quote: Restores body's ability to switch between glucose and fat for energy.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
-  quote: Sugar cravings reduce when metabolic flexibility improves → Energy stabilizes
-    when glucose swings are controlled
+  quote: Sugar cravings reduce when metabolic flexibility improves → Energy stabilizes when glucose swings are controlled
 version: 2
 status: active
 updated_at: '2026-05-05'

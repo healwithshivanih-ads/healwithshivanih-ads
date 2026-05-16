@@ -5,16 +5,15 @@ aliases:
 - gallbladder function
 - fat digestion
 category: gut
-summary: The liver produces bile, stored in the gallbladder, which emulsifies unsaturated
-  fats in the duodenum into tiny particles for subsequent breakdown by pancreatic
-  lipase. Saturated fat digestion, by contrast, begins in the mouth via lingual lipase.
+summary: The liver produces bile, stored in the gallbladder, which emulsifies unsaturated fats in the duodenum into tiny particles
+  for subsequent breakdown by pancreatic lipase. Saturated fat digestion, by contrast, begins in the mouth via lingual lipase.
 upstream_drivers:
 - dietary-unsaturated-fat-intake
 downstream_effects:
 - fat-absorption
 - fat-soluble-vitamin-absorption
 related_mechanisms:
-- pancreatic-enzyme-function
+- exocrine-pancreatic-enzyme-deficiency
 - mechanical-mastication-and-enzyme-mixing
 linked_to_topics:
 - gastrointestinal-tract-overview
@@ -22,9 +21,8 @@ evidence_tier: strong
 sources:
 - id: barbara-oneil-gi-tract
   location: Liver, Gallbladder & Duodenum Section
-  quote: The liver has a little pouch under it called the gallbladder... it plays
-    a main role in the digestion of unsaturated fats. So what bile does is emulsifies
-    the unsaturated fats.
+  quote: The liver has a little pouch under it called the gallbladder... it plays a main role in the digestion of unsaturated
+    fats. So what bile does is emulsifies the unsaturated fats.
 version: 1
 status: active
 updated_at: '2026-05-05'

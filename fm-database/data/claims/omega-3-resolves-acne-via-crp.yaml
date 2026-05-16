@@ -1,13 +1,11 @@
 slug: omega-3-resolves-acne-via-crp
-statement: Acne driven by elevated CRP/systemic inflammation may resolve with omega-3
-  supplementation that normalises inflammatory markers.
+statement: Acne driven by elevated CRP/systemic inflammation may resolve with omega-3 supplementation that normalises inflammatory
+  markers.
 evidence_tier: fm_specific_thin
-rationale: There is emerging evidence linking omega-3 supplementation to reduced inflammatory
-  acne. The mechanism via CRP reduction is plausible. However, robust RCT evidence
-  specifically for this pathway is limited.
-coaching_translation: If a client's acne doesn't respond to topical or dietary interventions,
-  systemic inflammation (measurable by CRP) and omega-3 deficiency may be the root
-  cause.
+rationale: There is emerging evidence linking omega-3 supplementation to reduced inflammatory acne. The mechanism via CRP
+  reduction is plausible. However, robust RCT evidence specifically for this pathway is limited.
+coaching_translation: If a client's acne doesn't respond to topical or dietary interventions, systemic inflammation (measurable
+  by CRP) and omega-3 deficiency may be the root cause.
 caveats:
 - Evidence is largely anecdotal in this document (personal case study).
 - Source is expert FM lecture — treat as fm_specific_thin.
@@ -15,15 +13,14 @@ caveats:
 linked_to_topics:
 - chronic-pain-and-fatigue
 linked_to_supplements:
-- omega-3-fish-oil
+- fish-oil-omega-3
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Personal Case Study
-  quote: because of the elevated CRP I was having acne issues. I always am getting
-    like a breakout... I started now good quality omega-3 supplement and now my acne
-    went away completely.
+  quote: because of the elevated CRP I was having acne issues. I always am getting like a breakout... I started now good quality
+    omega-3 supplement and now my acne went away completely.
 version: 1
 status: active
 updated_at: '2026-05-05'

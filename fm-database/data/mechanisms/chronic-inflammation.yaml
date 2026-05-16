@@ -17,21 +17,19 @@ aliases:
 - systemic inflammatory burden
 - inflammation
 category: immune
-summary: Persistent low-grade inflammation drives all six primary cardiometabolic
-  risk patterns. It is reflected by elevated hsCRP, ESR, ferritin, and IL-6. Sources
-  include gut dysbiosis, gum disease, food sensitivities, heavy metal toxicity, and
+summary: Persistent low-grade inflammation drives all six primary cardiometabolic risk patterns. It is reflected by elevated
+  hsCRP, ESR, ferritin, and IL-6. Sources include gut dysbiosis, gum disease, food sensitivities, heavy metal toxicity, and
   smoking.
 upstream_drivers:
 - visceral adiposity
 - leaky gut + LPS translocation
-- dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - HPA dysregulation / chronic stress
 - poor sleep
 - dietary drivers (refined carbs, ultra-processed foods)
 - leaky-gut
 - food-sensitivities
 - toxin-exposure
-- gut-dysbiosis
 - insulin-resistance
 - low-progesterone
 - xenoestrogen-exposure
@@ -58,9 +56,9 @@ downstream_effects:
 - cardiovascular plaque progression
 - neuroinflammation / brain fog
 - accelerated cellular aging (inflammaging)
-- t4-to-t3-conversion-block
-- reverse-t3-elevation
-- hashimotos-autoimmune-cascade
+- impaired-t4-to-t3-conversion
+- reverse-t3-dominance
+- thyroid-autoimmunity
 - estrogen-dominance
 - anovulation
 - pcos-progression
@@ -72,9 +70,8 @@ downstream_effects:
 - autoimmune-flares
 - accelerated-aging
 - elevated-hs-crp
-- oxidized-ldl
+- ldl-oxidation
 - atheromatous-vascular-disease
-- endothelial-injury
 - ldl-oxidation-and-glycation
 - fibrinogen-elevation
 - atherosclerosis
@@ -84,10 +81,9 @@ related_mechanisms:
 - hpa-axis-dysregulation
 - microbial-diversity-decline
 - oxidative-stress
-- gut-dysbiosis
-- oxidative-stress-and-ages
-- omega-6-to-omega-3-imbalance
-- endothelial-injury
+- dysbiosis-gut-microbiome-imbalance
+- omega-3-omega-6-imbalance
+- endothelial-dysfunction
 - fibrinogen-elevation
 - macrophage-foam-cell-formation
 linked_to_topics:
@@ -99,9 +95,9 @@ linked_to_topics:
 - estrogen-dominance
 - low-progesterone
 - gut-brain-axis
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - insulin-resistance
-- dysbiosis
+- gut-dysbiosis
 - dyslipidemia
 - cardiovascular-dysfunction
 - cooking-fats-and-cardiovascular-health
@@ -121,29 +117,26 @@ sources:
   quote: Inflammatory cytokines → worsen IR & ovarian dysfunction.
 - id: vitaone-adrenal-cheatsheet
   location: The Neuroimmune Mechanism of Loneliness (p.17)
-  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation.
-    Clinical Implication: Chronic inflammation, autoimmune triggers.'
+  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation. Clinical Implication: Chronic inflammation,
+    autoimmune triggers.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Root Cause Framework
   quote: Low-grade systemic inflammation, elevated hs-CRP, IL-6, TNF-α
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 2
-  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress,
-    gut dysbiosis.
+  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress, gut dysbiosis.
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis — Lab Results
-  quote: C-reactive protein is a marker associated with the production of inflammatory
-    cytokines, which represent a threat to cardiovascular health.
+  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which represent a threat
+    to cardiovascular health.
 - id: coconote-fm-biomarkers-cvs
   location: Immune and Toxic Burden
-  quote: if your immune system is active, immune system has a chronic inflammation
-    in the body, then you can find out chronic inflammation by just taking an HSE
-    or ESR level.
+  quote: if your immune system is active, immune system has a chronic inflammation in the body, then you can find out chronic
+    inflammation by just taking an HSE or ESR level.
 - id: coconote-fm-body-composition-bmi
   location: Case Discussion Section
-  quote: Her pain in her body, her inflammation, her signs of increased intestinal
-    permeability, her uncertainty, her fear, the injury, her poor diet, it's all interconnected
-    and influencing the inflammation in her body.
+  quote: Her pain in her body, her inflammation, her signs of increased intestinal permeability, her uncertainty, her fear,
+    the injury, her poor diet, it's all interconnected and influencing the inflammation in her body.
 evidence_tier: strong
 version: 8
 status: active

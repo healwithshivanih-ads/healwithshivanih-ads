@@ -34,7 +34,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - insomnia
-- adrenal-dysfunction
+- hpa-axis-dysregulation
 - gerd
 - estrogen-metabolism
 - immune-support
@@ -49,8 +49,7 @@ linked_to_claims:
 - melatonin-reduces-inflammation-sleep
 - melatonin-supports-estrogen-metabolism
 - melatonin-reduces-inflammation-and-promotes-sleep
-notes_for_coach: 'Pineal hormone synthesized from serotonin, released in response
-  to
+notes_for_coach: 'Pineal hormone synthesized from serotonin, released in response to
 
   darkness. Source (Menolascino transcript) cites 3 mg as the dose
 
@@ -75,9 +74,8 @@ notes_for_coach: 'Pineal hormone synthesized from serotonin, released in respons
   to reduce jet lag.
 
   '
-notes_for_client: Melatonin helps signal your body when it's time to sleep and also
-  has anti-inflammatory properties. Start with the lowest effective dose and take
-  it 30–60 minutes before bed in a dark room.
+notes_for_client: Melatonin helps signal your body when it's time to sleep and also has anti-inflammatory properties. Start
+  with the lowest effective dose and take it 30–60 minutes before bed in a dark room.
 evidence_tier: strong
 linked_to_mechanisms:
 - blue-light-melatonin-suppression
@@ -88,40 +86,36 @@ sources:
   quote: Melatonin (0.5-3mg, lower doses often most effective)
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
-  quote: Melatonin - Sleep regulation, antioxidant - 3 mg-5 mg (low dose) - 30 minutes
-    before bedtime
+  quote: Melatonin - Sleep regulation, antioxidant - 3 mg-5 mg (low dose) - 30 minutes before bedtime
 - id: vitaone-adrenal-cheatsheet
   location: The Anti-Stress Hormones (p.22)
-  quote: 'Melatonin: Antioxidant, anti-inflammatory, and sleep-regulating; counterbalances
-    cortisol. Sleep disturbance, immune dysfunction, accelerated aging.'
+  quote: 'Melatonin: Antioxidant, anti-inflammatory, and sleep-regulating; counterbalances cortisol. Sleep disturbance, immune
+    dysfunction, accelerated aging.'
 - id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
+  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners — Supplement recommendations'
   quote: 'Acid suppressing: Melatonin'
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Page 02
-  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
-    B vitamins may support healthy estrogen metabolism as well.
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins may support healthy estrogen
+    metabolism as well.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: In addition to promoting restful sleep, melatonin has been shown to reduce
-    inflammation.
+  quote: In addition to promoting restful sleep, melatonin has been shown to reduce inflammation.
 - id: vitaone-health-coaching-toolkit
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
-  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated
-    B vitamins may support healthy estrogen metabolism as well.
+  quote: There is also some evidence that melatonin, N-acetyl-cystine, & methylated B vitamins may support healthy estrogen
+    metabolism as well.
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Melatonin dosing and quality section
-  quote: The clinical trials I believe were on three milligrams. That seemed to be
-    the dose that worked
+  quote: The clinical trials I believe were on three milligrams. That seemed to be the dose that worked
 version: 9
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani
 contraindications:
   conditions:
-  - paradoxical activation in a subset of clients — start with lowest dose available
-    and pause if it produces wired/anxious state
+  - paradoxical activation in a subset of clients — start with lowest dose available and pause if it produces wired/anxious
+    state
   - autoimmune conditions and pregnancy — coordinate with clinician
   - children and adolescents — clinician guidance only
   medications: []

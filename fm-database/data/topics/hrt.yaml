@@ -7,13 +7,11 @@ aliases:
 - mht
 - estrogen therapy
 - bioidentical hormones
-summary: 'Hormone Replacement Therapy (HRT) — also called Menopausal Hormone Therapy
-  (MHT) — involves supplementing oestrogen (often with progesterone) to relieve menopause
-  symptoms and reduce long-term risks such as bone loss and cardiovascular disease.
-  Evidence from modern studies shows that for most women under 60, or within 10 years
-  of menopause, the benefits outweigh the risks. Guidance from NICE, NAMS, and the
-  British Menopause Society has shifted significantly in favour of HRT since the misinterpreted
-  2002 WHI study.
+summary: 'Hormone Replacement Therapy (HRT) — also called Menopausal Hormone Therapy (MHT) — involves supplementing oestrogen
+  (often with progesterone) to relieve menopause symptoms and reduce long-term risks such as bone loss and cardiovascular
+  disease. Evidence from modern studies shows that for most women under 60, or within 10 years of menopause, the benefits
+  outweigh the risks. Guidance from NICE, NAMS, and the British Menopause Society has shifted significantly in favour of HRT
+  since the misinterpreted 2002 WHI study.
 
   '
 key_mechanisms:
@@ -24,10 +22,10 @@ common_symptoms:
 - hot flashes / night sweats
 - vaginal dryness / atrophy
 - mood changes / low mood
-- brain fog
-- sleep disturbance
-- joint pain
-- low libido
+- poor-concentration
+- insomnia
+- joint-pain
+- decreased-sexual-function
 - irregular or absent periods
 - osteoporosis risk
 - cardiovascular risk

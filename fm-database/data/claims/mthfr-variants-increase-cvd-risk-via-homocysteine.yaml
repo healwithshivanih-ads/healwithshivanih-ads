@@ -1,13 +1,11 @@
 slug: mthfr-variants-increase-cvd-risk-via-homocysteine
-statement: MTHFR genetic variants impair the methylation cycle, leading to homocysteine
-  accumulation and increased cardiovascular disease risk.
+statement: MTHFR genetic variants impair the methylation cycle, leading to homocysteine accumulation and increased cardiovascular
+  disease risk.
 evidence_tier: plausible_emerging
-rationale: MTHFR C677T and A1298C polymorphisms are associated with elevated homocysteine
-  in multiple studies, and homocysteine elevation is epidemiologically linked to CVD.
-  Direct MTHFR-to-CVD causal links remain an area of ongoing research.
-coaching_translation: Some people carry a gene variant (MTHFR) that makes it harder
-  to process B vitamins properly, leading to higher homocysteine. A simple genetic
-  test can reveal this, and targeted supplementation can help.
+rationale: MTHFR C677T and A1298C polymorphisms are associated with elevated homocysteine in multiple studies, and homocysteine
+  elevation is epidemiologically linked to CVD. Direct MTHFR-to-CVD causal links remain an area of ongoing research.
+coaching_translation: Some people carry a gene variant (MTHFR) that makes it harder to process B vitamins properly, leading
+  to higher homocysteine. A simple genetic test can reveal this, and targeted supplementation can help.
 caveats:
 - MTHFR testing and interpretation should involve a clinician.
 - Source is expert lecture (moderate quality).
@@ -16,15 +14,14 @@ linked_to_topics:
 - cardiometabolic-disease
 linked_to_supplements:
 - methylfolate-b9
-- methylcobalamin-b12
-- pyridoxal-5-phosphate-b6
+- methylcobalamin
+- pyridoxal-5-phosphate
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
-  quote: this whole reaction is is covered by the mthfr gene and you can say methyl
-    tetrahydrofolic enzyme
+  quote: this whole reaction is is covered by the mthfr gene and you can say methyl tetrahydrofolic enzyme
 version: 1
 status: active
 updated_at: '2026-05-05'

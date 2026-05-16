@@ -7,20 +7,19 @@ aliases:
 - gastrointestinal microbiome
 - GI microbiome
 - intestinal microbiota
-summary: The gut microbiome is a complex ecosystem communicating with the vaginal,
-  urinary, oral, and even brain microbiomes. Disruption by antibiotics, food additives,
-  emulsifiers, glyphosate, and dietary restriction leads to dysbiosis, SIBO, and systemic
-  endotoxemia. Restoration through fermented foods, targeted probiotics, and prebiotic
-  fiber diversity is central to Dr. Davis's protocol.
+summary: The gut microbiome is a complex ecosystem communicating with the vaginal, urinary, oral, and even brain microbiomes.
+  Disruption by antibiotics, food additives, emulsifiers, glyphosate, and dietary restriction leads to dysbiosis, SIBO, and
+  systemic endotoxemia. Restoration through fermented foods, targeted probiotics, and prebiotic fiber diversity is central
+  to Dr. Davis's protocol.
 common_symptoms:
 - bloating
 - diarrhea
 - constipation
 - brain-fog
-- mood-changes
+- mood-swings
 - anxiety
-- depression
-- weight-gain
+- low-mood
+- unexplained-weight-gain
 - joint-pain
 related_topics:
 - gut-dysfunction
@@ -29,31 +28,28 @@ related_topics:
 - vaginal-microbiome
 - endometriosis-microbiome
 key_mechanisms:
-- gut-dysbiosis
-- gut-brain-signaling
-- endotoxemia
+- dysbiosis-gut-microbiome-imbalance
+- gut-brain-axis-disruption
+- lps-endotoxemia
 - lipopolysaccharide-shedding
 - gut-vaginal-microbiome-axis
-coaching_scope_notes: Coaches can guide clients on fermented food intake, prebiotic
-  fiber diversity, and probiotic yogurt preparation. Avoid diagnosing dysbiosis from
-  symptoms alone.
+coaching_scope_notes: Coaches can guide clients on fermented food intake, prebiotic fiber diversity, and probiotic yogurt
+  preparation. Avoid diagnosing dysbiosis from symptoms alone.
 evidence_tier: plausible_emerging
 red_flags:
 - severe-colitis
 - colon-cancer-risk
 - neurodegenerative-disease-progression
-clinician_scope_notes: DNA sequencing stool tests (e.g., Ombre, Tiny Health) provide
-  more accurate microbiome data than traditional culture. Fungal overgrowth (SIFO)
-  may require antifungal intervention.
+clinician_scope_notes: DNA sequencing stool tests (e.g., Ombre, Tiny Health) provide more accurate microbiome data than traditional
+  culture. Fungal overgrowth (SIFO) may require antifungal intervention.
 sources:
 - id: vitaone-gut-toolkit
   location: 'Gut Microbiome and Personalized Nutrition: The Future of Diets'
-  quote: The human gut contains trillions of microorganisms that not only aid digestion
-    but also influence overall health—from immunity to mental well-being.
+  quote: The human gut contains trillions of microorganisms that not only aid digestion but also influence overall health—from
+    immunity to mental well-being.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: Microbiome interconnection discussion
-  quote: The gastrointestinal microbiome talks to the vaginal microbiome, the urinary
-    microbiome, the prostate microbiome.
+  quote: The gastrointestinal microbiome talks to the vaginal microbiome, the urinary microbiome, the prostate microbiome.
 version: 2
 status: active
 updated_at: '2026-05-05'

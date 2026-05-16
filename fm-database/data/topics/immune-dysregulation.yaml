@@ -4,13 +4,11 @@ aliases:
 - chronic immune activation
 - immune system dysregulation
 - immune overactivation
-summary: A state of persistent, non-resolving immune activation characterised by chronically
-  low WBCs and neutrophils (immune exhaustion), elevated globulin, and elevated ESR/CRP.
-  In this framework, poor gut health and early-life infections are identified as upstream
-  triggers, with immune dysregulation driving gut dysfunction, hormonal imbalance,
-  and autoimmune skin conditions.
+summary: A state of persistent, non-resolving immune activation characterised by chronically low WBCs and neutrophils (immune
+  exhaustion), elevated globulin, and elevated ESR/CRP. In this framework, poor gut health and early-life infections are identified
+  as upstream triggers, with immune dysregulation driving gut dysfunction, hormonal imbalance, and autoimmune skin conditions.
 common_symptoms:
-- fatigue
+- lethargy
 - recurrent-allergies
 - psoriasis-skin-patches
 - progressive-bloating
@@ -19,21 +17,19 @@ red_flags:
 - high ESR + high globulin + low albumin constellation
 related_topics:
 - gut-skin-hormone-axis
-- dysbiosis
+- gut-dysbiosis
 - psoriasis-gut-immune
 - endometriosis
 key_mechanisms:
 - gut-immune-dysregulation
-coaching_scope_notes: Coaches address immune dysregulation primarily through gut-healing
-  protocols, anti-inflammatory diet, sleep optimisation, and stress management. Lab
-  interpretation and immune-modulating drug therapy require clinician involvement.
+coaching_scope_notes: Coaches address immune dysregulation primarily through gut-healing protocols, anti-inflammatory diet,
+  sleep optimisation, and stress management. Lab interpretation and immune-modulating drug therapy require clinician involvement.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Root Cause / Matrix Discussion
-  quote: All the problems that have arisen in this case are because of chronic immune
-    activation and immune dysregulation.
+  quote: All the problems that have arisen in this case are because of chronic immune activation and immune dysregulation.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -6,16 +6,15 @@ aliases:
 - satellite dish signaling
 - receptor occupancy
 category: endocrine
-summary: Hormones travel on binding proteins through the bloodstream and are extracted
-  into nuclear receptor binding pocket domains. The receptor functions like a malleable
-  pocket requiring nutritional cofactors (zinc, vitamin A, magnesium, iodine, P5P)
-  to open, accept the hormone, and complete genetic signaling. Endocrine disruptors,
-  heavy metals, and excess cortisol compete for these binding sites.
+summary: Hormones travel on binding proteins through the bloodstream and are extracted into nuclear receptor binding pocket
+  domains. The receptor functions like a malleable pocket requiring nutritional cofactors (zinc, vitamin A, magnesium, iodine,
+  P5P) to open, accept the hormone, and complete genetic signaling. Endocrine disruptors, heavy metals, and excess cortisol
+  compete for these binding sites.
 upstream_drivers:
 - circulating-hormone-levels
 - binding-protein-availability
 - nutritional-cofactor-status
-- edc-exposure
+- endocrine-disruption
 - cortisol-levels
 downstream_effects:
 - genomic-hormone-signaling
@@ -35,9 +34,8 @@ evidence_tier: strong
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: How Hormones Signal — Historical and Current Understanding
-  quote: The hormone jumps on an Uber... they swim around and they look for what's
-    called target tissues... So think of all these satellite dishes or little bird's
-    mouths waiting to be fed with hormones because hormones are the only molecules
+  quote: The hormone jumps on an Uber... they swim around and they look for what's called target tissues... So think of all
+    these satellite dishes or little bird's mouths waiting to be fed with hormones because hormones are the only molecules
     in the body that can signal genes.
 version: 1
 status: active

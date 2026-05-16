@@ -7,18 +7,16 @@ aliases:
 - eicosanoid pathway
 - COX-LOX cascade
 category: immune
-summary: Phospholipase A2, activated by injury or immune stimuli, releases arachidonic
-  acid from cell membranes. AA is then metabolized via the COX pathway (producing
-  pro-inflammatory prostaglandins, thromboxane A2) and the LOX pathway (producing
-  leukotrienes causing bronchospasm, vasoconstriction, joint destruction). EPA and
-  DHA compete with and displace AA in these pathways, reducing inflammatory mediator
-  production.
+summary: Phospholipase A2, activated by injury or immune stimuli, releases arachidonic acid from cell membranes. AA is then
+  metabolized via the COX pathway (producing pro-inflammatory prostaglandins, thromboxane A2) and the LOX pathway (producing
+  leukotrienes causing bronchospasm, vasoconstriction, joint destruction). EPA and DHA compete with and displace AA in these
+  pathways, reducing inflammatory mediator production.
 upstream_drivers:
-- nf-kappa-b-activation
+- nf-kb-activation
 - high-dietary-arachidonic-acid
 - omega-6-omega-3-imbalance
 - high-dietary-omega-6
-- omega6-omega3-competitive-inhibition
+- omega-3-omega-6-imbalance
 - immune-stimulus
 downstream_effects:
 - prostaglandin-synthesis
@@ -30,29 +28,26 @@ downstream_effects:
 - tnf-alpha-release
 - estrogen-dominance-via-aromatase
 related_mechanisms:
-- nf-kappa-b-activation
-- cox-lox-enzyme-competition
-- omega6-omega3-competitive-inhibition
+- nf-kb-activation
+- omega-3-omega-6-imbalance
 - resolvin-spm-production
 - cox-pathway
 - lox-pathway
 linked_to_topics:
 - chronic-inflammation
 - omega-3-omega-6-balance
-- arachidonic-acid-cascade
 - omega-3-fatty-acids
 - omega-6-omega-3-ratio-imbalance
 evidence_tier: strong
 sources:
 - id: coconote-fm-approach-inflammation
   location: Diet – Arachidonic Acid and Omega-3/6 Balance
-  quote: Recaronic Acid is a major source of inflammatory prostaglandins and cytokines.
-    They are basically found in animal protein, not in a vegetable group.
+  quote: Recaronic Acid is a major source of inflammatory prostaglandins and cytokines. They are basically found in animal
+    protein, not in a vegetable group.
 - id: coconote-fm-omega-3-fatty-acids
   location: Arachidonic Acid Cascade Slide
-  quote: an enzyme gets activated called as phospholipase A2...this stimulus, this
-    cause will act on the cell membrane and will cause release of phospholipid A2
-    which further cause production of arachidonic acid.
+  quote: an enzyme gets activated called as phospholipase A2...this stimulus, this cause will act on the cell membrane and
+    will cause release of phospholipid A2 which further cause production of arachidonic acid.
 version: 2
 status: active
 updated_at: '2026-05-05'

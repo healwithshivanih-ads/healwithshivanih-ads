@@ -7,15 +7,14 @@ aliases:
 - nausea from stress
 category: gi
 severity: common
-description: Digestive pain, gas, bloating, nausea, and loss of appetite triggered
-  by stress-induced reduction in digestive enzyme secretion and reduced blood flow
-  to digestive organs during fight-or-flight.
+description: Digestive pain, gas, bloating, nausea, and loss of appetite triggered by stress-induced reduction in digestive
+  enzyme secretion and reduced blood flow to digestive organs during fight-or-flight.
 linked_to_topics:
 - chronic-stress
-- hpa-axis-dysfunction
+- hpa-axis-dysregulation
 linked_to_mechanisms:
-- sympathetic-nervous-system-activation
-- sympathoadrenal-activation
+- sympathetic-dominance
+- noradrenaline-signaling
 when_to_refer: ''
 sources:
 - id: vitaone-adrenal-toolkit

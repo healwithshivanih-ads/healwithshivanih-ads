@@ -1,16 +1,14 @@
 slug: adequate-hydration-supports-urinary-toxin-excretion
-statement: Adequate daily hydration is essential for optimal detoxification, as converted
-  water-soluble toxins are eliminated through urine.
+statement: Adequate daily hydration is essential for optimal detoxification, as converted water-soluble toxins are eliminated
+  through urine.
 evidence_tier: strong
-rationale: Urinary excretion is a primary route for water-soluble toxin metabolites
-  produced by Phase II conjugation. Hydration's role in supporting renal clearance
-  is physiologically established.
-coaching_translation: Drinking enough water every day is a simple but powerful way
-  to support your body's natural detox — many toxins your liver has processed leave
-  your body through your urine.
+rationale: Urinary excretion is a primary route for water-soluble toxin metabolites produced by Phase II conjugation. Hydration's
+  role in supporting renal clearance is physiologically established.
+coaching_translation: Drinking enough water every day is a simple but powerful way to support your body's natural detox —
+  many toxins your liver has processed leave your body through your urine.
 linked_to_topics:
 - metabolic-detoxification
-- liver-detox-food-plan
+- liver-detoxification
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
@@ -18,8 +16,8 @@ linked_to_supplements: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Detox Food Plan — Sequencing a Detoxification Program
-  quote: Some of these converted toxins can be eliminated through urine, too, which
-    is why proper hydration goes hand-in-hand with optimal detoxification.
+  quote: Some of these converted toxins can be eliminated through urine, too, which is why proper hydration goes hand-in-hand
+    with optimal detoxification.
 version: 1
 status: active
 updated_at: '2026-05-04'

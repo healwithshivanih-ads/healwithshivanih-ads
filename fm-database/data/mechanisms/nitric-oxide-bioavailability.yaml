@@ -13,7 +13,7 @@ upstream_drivers:
 - riboflavin-deficiency
 - reduced-5-mthf-production
 downstream_effects:
-- vasodilation
+- vascular-smooth-muscle-relaxation
 - blood-pressure-reduction
 related_mechanisms:
 - mthfr-enzyme-dysfunction

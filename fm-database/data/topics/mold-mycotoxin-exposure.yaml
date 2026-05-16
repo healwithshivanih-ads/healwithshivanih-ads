@@ -8,12 +8,11 @@ aliases:
 - aflatoxin
 - mold allergy
 - mold protein allergens
-summary: Molds and their toxic byproducts (mycotoxins) can contaminate common foods
-  (grains, nuts, dried fruits, cheese, processed meats, beer) and indoor environments,
-  causing symptoms ranging from mild (itching, watery eyes, fatigue) to severe. Aflatoxin,
+summary: Molds and their toxic byproducts (mycotoxins) can contaminate common foods (grains, nuts, dried fruits, cheese, processed
+  meats, beer) and indoor environments, causing symptoms ranging from mild (itching, watery eyes, fatigue) to severe. Aflatoxin,
   found in peanuts and corn, is carcinogenic.
 common_symptoms:
-- fatigue
+- lethargy
 - itching
 - watery-eyes
 - breathing-difficulty
@@ -29,26 +28,22 @@ related_topics:
 - liver-detoxification
 - elimination-diet
 - environmental-toxin-exposure
-- liver-detox-food-plan
 key_mechanisms:
 - mycotoxin-immune-activation
-- immune-activation-by-mycotoxins
-coaching_scope_notes: Coaches can guide food storage practices, dietary diversity,
-  and avoidance of high-mold-risk foods. Clinical mold illness diagnosis and treatment
-  are physician scope.
+- fungal-overgrowth-toxin-production
+coaching_scope_notes: Coaches can guide food storage practices, dietary diversity, and avoidance of high-mold-risk foods.
+  Clinical mold illness diagnosis and treatment are physician scope.
 evidence_tier: plausible_emerging
-clinician_scope_notes: Mold-sensitive patients may need individualized guidance on
-  avoidance and potential testing. Refer to FM provider for personalized guidance
-  on mold in specific products.
+clinician_scope_notes: Mold-sensitive patients may need individualized guidance on avoidance and potential testing. Refer
+  to FM provider for personalized guidance on mold in specific products.
 sources:
 - id: vitaone-liver-detox-toolkit
   location: Foods Rich in Mold Protein Allergens
-  quote: One such toxin, aflatoxin, has been shown to cause cancer and is most commonly
-    found in peanuts and corn.
+  quote: One such toxin, aflatoxin, has been shown to cause cancer and is most commonly found in peanuts and corn.
 - id: vitaone-health-coaching-toolkit
   location: Foods Rich in Mold Protein Allergens
-  quote: Some molds produce toxins, called mycotoxins. One such toxin, aflatoxin,
-    has been shown to cause cancer and is most commonly found in peanuts and corn.
+  quote: Some molds produce toxins, called mycotoxins. One such toxin, aflatoxin, has been shown to cause cancer and is most
+    commonly found in peanuts and corn.
 version: 2
 status: active
 updated_at: '2026-05-04'

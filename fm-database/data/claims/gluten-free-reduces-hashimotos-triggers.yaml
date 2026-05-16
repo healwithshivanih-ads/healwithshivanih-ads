@@ -1,12 +1,11 @@
 slug: gluten-free-reduces-hashimotos-triggers
-statement: A gluten-free diet is recommended for Hashimoto's to reduce immune triggers
-  via molecular mimicry and gut permeability mechanisms.
+statement: A gluten-free diet is recommended for Hashimoto's to reduce immune triggers via molecular mimicry and gut permeability
+  mechanisms.
 evidence_tier: plausible_emerging
-rationale: The document recommends 'Gluten-free diet, gut repair (L-glutamine, probiotics),
-  vitamin D optimization' for autoimmunity. The gluten-Hashimoto's link is biologically
-  plausible but RCT evidence is mixed.
-coaching_translation: Going gluten-free may calm the immune reaction that's attacking
-  your thyroid, especially if you have elevated thyroid antibodies.
+rationale: The document recommends 'Gluten-free diet, gut repair (L-glutamine, probiotics), vitamin D optimization' for autoimmunity.
+  The gluten-Hashimoto's link is biologically plausible but RCT evidence is mixed.
+coaching_translation: Going gluten-free may calm the immune reaction that's attacking your thyroid, especially if you have
+  elevated thyroid antibodies.
 caveats:
 - RCT evidence for gluten-free diet in non-coeliac Hashimoto's is limited.
 - Should not replace medical management.
@@ -15,9 +14,9 @@ linked_to_topics:
 - autoimmune
 - food-sensitivities
 linked_to_supplements:
-- vitamin-d
+- vitamin-d3
 - l-glutamine
-- probiotic-multi-strain
+- probiotics
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:

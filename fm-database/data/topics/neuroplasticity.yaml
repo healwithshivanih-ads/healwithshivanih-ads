@@ -4,26 +4,23 @@ aliases:
 - brain rewiring
 - neural pathway formation
 - brain changes itself
-summary: The brain retains the ability to form new neural pathways throughout life.
-  Repeated thoughts, behaviours, and habits strengthen new pathways while old ones
-  shrink. New habits take ~21 days to form and ~60 days to consolidate. This underpins
+summary: The brain retains the ability to form new neural pathways throughout life. Repeated thoughts, behaviours, and habits
+  strengthen new pathways while old ones shrink. New habits take ~21 days to form and ~60 days to consolidate. This underpins
   recovery from depression, insomnia, negative thought patterns, and emotional dysregulation.
 evidence_tier: strong
 common_symptoms:
-- depression
+- low-mood
 - insomnia
 - negative-thought-patterns
 - poor-emotional-regulation
 red_flags: []
 related_topics:
 - depression-lifestyle
-- sleep-hygiene
+- sleep
 key_mechanisms:
-- neuroplasticity
 - prefrontal-cortex-function
-coaching_scope_notes: 21-day habit formation and 60-day consolidation timelines are
-  useful coaching frameworks. Coaches can help clients identify unhelpful thought
-  pathways and build new ones through repetition and language choices.
+coaching_scope_notes: 21-day habit formation and 60-day consolidation timelines are useful coaching frameworks. Coaches can
+  help clients identify unhelpful thought pathways and build new ones through repetition and language choices.
 clinician_scope_notes: ''
 sources:
 - id: barbara-oneil-healing-mind

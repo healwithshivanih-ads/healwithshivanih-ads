@@ -5,22 +5,20 @@ aliases:
 - solanine intolerance
 - alkaloid sensitivity
 - nightshade reaction
-summary: Adverse reactions to edible plants in the Solanaceae family (tomato, potato,
-  eggplant, peppers, chillies) believed to be related to glycoalkaloids and other
-  bioactive compounds. Affects a small subset of individuals; can cause GI, skin,
+summary: Adverse reactions to edible plants in the Solanaceae family (tomato, potato, eggplant, peppers, chillies) believed
+  to be related to glycoalkaloids and other bioactive compounds. Affects a small subset of individuals; can cause GI, skin,
   neurological, and cardiovascular symptoms.
 common_symptoms:
 - abdominal-pain
 - diarrhea
 - skin-itchiness
 - joint-pain
-- fatigue
-- skin-itching
+- lethargy
+- skin-rash
 - nausea
 - difficulty-breathing
-- low-blood-pressure
+- dizziness-on-standing
 - drowsiness-confusion
-- weakness
 red_flags:
 - cardiac arrhythmia
 - difficulty breathing
@@ -35,19 +33,19 @@ key_mechanisms:
 - glycoalkaloid-toxicity
 - immune-food-reactivity
 - food-trigger-immune-activation
-coaching_scope_notes: Coaches can guide nightshade removal during elimination and
-  support reintroduction tracking. Severe reactions require medical evaluation.
+coaching_scope_notes: Coaches can guide nightshade removal during elimination and support reintroduction tracking. Severe
+  reactions require medical evaluation.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: Nightshade Food Triggers
-  quote: The edible plants can cause adverse food reactions, inflammation, and other
-    health concerns in a small number of individuals.
+  quote: The edible plants can cause adverse food reactions, inflammation, and other health concerns in a small number of
+    individuals.
 - id: vitaone-health-coaching-toolkit
   location: Nightshade Food Triggers
-  quote: The edible plants can cause adverse food reactions, inflammation, and other
-    health concerns in a small number of individuals.
+  quote: The edible plants can cause adverse food reactions, inflammation, and other health concerns in a small number of
+    individuals.
 version: 2
 status: active
 updated_at: '2026-05-04'

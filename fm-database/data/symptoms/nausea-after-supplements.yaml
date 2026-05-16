@@ -6,13 +6,13 @@ aliases:
 - nausea from vitamins
 category: gi
 severity: common
-description: Nausea occurring after ingesting nutritional supplements, often a sign
-  of low stomach acid or compromised digestive secretions.
+description: Nausea occurring after ingesting nutritional supplements, often a sign of low stomach acid or compromised digestive
+  secretions.
 linked_to_topics:
 - hypochlorhydria
 - gut-dysfunction
 linked_to_mechanisms:
-- hypochlorhydria-mechanism
+- low-stomach-acid
 when_to_refer: ''
 sources:
 - id: vitaone-gut-toolkit

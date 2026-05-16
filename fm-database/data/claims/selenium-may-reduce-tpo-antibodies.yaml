@@ -1,20 +1,18 @@
 slug: selenium-may-reduce-tpo-antibodies
-statement: Selenium supplementation may reduce anti-thyroid peroxidase (Anti-TPO)
-  antibody levels in Hashimoto's thyroiditis.
+statement: Selenium supplementation may reduce anti-thyroid peroxidase (Anti-TPO) antibody levels in Hashimoto's thyroiditis.
 evidence_tier: plausible_emerging
-rationale: Several RCTs have investigated selenium supplementation and TPO antibody
-  reduction in Hashimoto's, with mixed but generally supportive results. Effect size
-  is moderate and not universally replicated.
-coaching_translation: Getting enough selenium from food and/or supplements may help
-  calm the immune attack on your thyroid over time.
+rationale: Several RCTs have investigated selenium supplementation and TPO antibody reduction in Hashimoto's, with mixed but
+  generally supportive results. Effect size is moderate and not universally replicated.
+coaching_translation: Getting enough selenium from food and/or supplements may help calm the immune attack on your thyroid
+  over time.
 caveats:
-- 'Dose-dependent: excess selenium is toxic. Supplementation at doses above 400 mcg/day
-  is not recommended without clinician oversight.'
+- 'Dose-dependent: excess selenium is toxic. Supplementation at doses above 400 mcg/day is not recommended without clinician
+  oversight.'
 - Evidence is from small trials; not yet strong consensus for clinical outcomes.
 - Evidence is mixed across RCTs; not a substitute for medical management.
 - Optimal dose for antibody reduction may differ from general supplementation dose.
 linked_to_topics:
-- hashimotos-hypothyroidism
+- autoimmune-thyroiditis
 linked_to_supplements:
 - selenium
 out_of_scope_notes: ''

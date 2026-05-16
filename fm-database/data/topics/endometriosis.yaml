@@ -3,12 +3,11 @@ display_name: Endometriosis
 aliases:
 - endometrial growths outside uterus
 - estrogen-dependent endometriosis
-summary: A condition in which endometrial-like tissue grows outside the uterus, responding
-  to estrogen. In functional medicine framing, it is viewed as an estrogen-dominant
-  and immune-dysregulation-driven condition, with gut dysbiosis promoting elevated
+summary: A condition in which endometrial-like tissue grows outside the uterus, responding to estrogen. In functional medicine
+  framing, it is viewed as an estrogen-dominant and immune-dysregulation-driven condition, with gut dysbiosis promoting elevated
   beta-glucuronidase and estrogen recirculation as contributing mechanisms.
 common_symptoms:
-- painful-periods
+- dysmenorrhea
 - irregular-periods
 - heavy-periods
 - primary-infertility
@@ -21,22 +20,21 @@ related_topics:
 - gut-skin-hormone-axis
 - estrogen-dominance
 - immune-dysregulation
-- dysbiosis
+- gut-dysbiosis
 key_mechanisms:
-- estrogen-recirculation-via-beta-glucuronidase
+- estrogen-enterohepatic-recirculation
 - gut-immune-dysregulation
-coaching_scope_notes: Coaches can support seed cycling, anti-inflammatory dietary
-  changes, xenoestrogen avoidance (plastics, fragranced products), and estrogen detoxification
-  dietary strategies (cruciferous vegetables, DIM foods). Hormone testing and medical
-  management require clinician referral.
-clinician_scope_notes: GnRH injections, OCP management, surgical intervention (oophorectomy),
-  IVF, and progesterone/estrogen lab interpretation are outside coaching scope.
+coaching_scope_notes: Coaches can support seed cycling, anti-inflammatory dietary changes, xenoestrogen avoidance (plastics,
+  fragranced products), and estrogen detoxification dietary strategies (cruciferous vegetables, DIM foods). Hormone testing
+  and medical management require clinician referral.
+clinician_scope_notes: GnRH injections, OCP management, surgical intervention (oophorectomy), IVF, and progesterone/estrogen
+  lab interpretation are outside coaching scope.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Estrogen Detoxification Discussion
-  quote: Endometriosis is a problem when the endometrium, this layer, it grows outside
-    the uterus anywhere in the pelvic cavity. This tissue responds to estrogen.
+  quote: Endometriosis is a problem when the endometrium, this layer, it grows outside the uterus anywhere in the pelvic cavity.
+    This tissue responds to estrogen.
 version: 1
 status: active
 updated_at: '2026-05-05'

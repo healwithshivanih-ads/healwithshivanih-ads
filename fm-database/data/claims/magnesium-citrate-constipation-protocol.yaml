@@ -1,15 +1,14 @@
 slug: magnesium-citrate-constipation-protocol
-statement: Magnesium citrate, titrated to loose stool threshold, is an effective intervention
-  for chronic constipation as part of a stepped gut protocol.
+statement: Magnesium citrate, titrated to loose stool threshold, is an effective intervention for chronic constipation as
+  part of a stepped gut protocol.
 evidence_tier: plausible_emerging
-rationale: Magnesium citrate has osmotic laxative properties well-documented in clinical
-  literature. The stepwise approach (start with dietary fibre, then escalate to magnesium
-  citrate) described in the lecture reflects standard functional medicine practice.
-coaching_translation: Start with chia seeds and flaxseed for 1–2 weeks. If that's
-  not enough, add magnesium citrate and slowly increase the dose until your client's
-  bowels move daily. Then pull back slightly to find their maintenance dose.
-out_of_scope_notes: Specific dosing thresholds should be confirmed with a supervising
-  clinician, particularly for clients with renal impairment or those on medications.
+rationale: Magnesium citrate has osmotic laxative properties well-documented in clinical literature. The stepwise approach
+  (start with dietary fibre, then escalate to magnesium citrate) described in the lecture reflects standard functional medicine
+  practice.
+coaching_translation: Start with chia seeds and flaxseed for 1–2 weeks. If that's not enough, add magnesium citrate and slowly
+  increase the dose until your client's bowels move daily. Then pull back slightly to find their maintenance dose.
+out_of_scope_notes: Specific dosing thresholds should be confirmed with a supervising clinician, particularly for clients
+  with renal impairment or those on medications.
 caveats:
 - Start one intervention at a time so you can identify what's working.
 - Source is expert FM lecture, not a clinical trial protocol.
@@ -18,14 +17,13 @@ linked_to_topics:
 linked_to_supplements:
 - magnesium-citrate
 - chia-seeds
-- ground-flaxseed
+- flax-seed
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Constipation Protocol / Case Study
-  quote: So with her, I started with ambig of the magnesium citrate, if you know the
-    protocol, you have to reach to the level with a loose stool and then you have
-    to slow down.
+  quote: So with her, I started with ambig of the magnesium citrate, if you know the protocol, you have to reach to the level
+    with a loose stool and then you have to slow down.
 version: 1
 status: active
 updated_at: '2026-05-05'

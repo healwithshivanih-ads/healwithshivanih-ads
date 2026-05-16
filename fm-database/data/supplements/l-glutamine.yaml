@@ -23,7 +23,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - thyroid
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - sibo
 - gerd
 - h-pylori-infection
@@ -35,14 +35,11 @@ linked_to_topics:
 - gut-dysfunction
 - gut-brain-axis
 - nervous-system-regulation
-- 5r-gut-restoration
+- 5r-gut-protocol
 - chronic-pain-and-fatigue
-- autoimmunity-leaky-gut-triad
 - gut-dysbiosis
-- dysbiosis
 - hypochlorhydria
 - gut-skin-hormone-axis
-- 5r-gut-healing-protocol
 linked_to_claims:
 - leaky-gut-triggers-hashimotos
 - gluten-free-reduces-hashimotos-triggers

@@ -1,24 +1,23 @@
 slug: magnesium-glutathione-heavy-metal-detox
-statement: Magnesium is required for glutathione production and for the detoxification
-  of heavy metals such as mercury, lead, and aluminium.
+statement: Magnesium is required for glutathione production and for the detoxification of heavy metals such as mercury, lead,
+  and aluminium.
 evidence_tier: plausible_emerging
-rationale: Magnesium's role as a cofactor in glutathione synthesis (via gamma-glutamylcysteine
-  synthetase) is supported by biochemical evidence; its direct role in heavy metal
-  detoxification is less well-characterised in clinical trials.
+rationale: Magnesium's role as a cofactor in glutathione synthesis (via gamma-glutamylcysteine synthetase) is supported by
+  biochemical evidence; its direct role in heavy metal detoxification is less well-characterised in clinical trials.
 caveats:
 - Heavy metal detoxification protocols are outside coaching scope and should be clinician-directed.
 out_of_scope_notes: Heavy metal detox protocols require medical supervision.
-coaching_translation: Magnesium supports your body's natural detox systems, including
-  the production of glutathione — your most powerful antioxidant.
+coaching_translation: Magnesium supports your body's natural detox systems, including the production of glutathione — your
+  most powerful antioxidant.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Detoxification section
-  quote: Certain heavy metals like mercury, lead, aluminium require magnesium for
-    its detoxification. Glutathione production also requires magnesium.
+  quote: Certain heavy metals like mercury, lead, aluminium require magnesium for its detoxification. Glutathione production
+    also requires magnesium.
 version: 1
 status: active
 updated_at: '2026-05-05'

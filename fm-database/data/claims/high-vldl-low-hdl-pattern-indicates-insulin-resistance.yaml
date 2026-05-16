@@ -1,24 +1,19 @@
 slug: high-vldl-low-hdl-pattern-indicates-insulin-resistance
-statement: A lipid profile showing elevated VLDL and reduced HDL, even with normal
-  total cholesterol, indicates underlying insulin resistance and elevated cardiovascular
-  risk.
+statement: A lipid profile showing elevated VLDL and reduced HDL, even with normal total cholesterol, indicates underlying
+  insulin resistance and elevated cardiovascular risk.
 evidence_tier: plausible_emerging
-rationale: The document describes a pattern where total cholesterol is 180 but the
-  profile is shifted toward VLDL elevation and HDL reduction, and explicitly links
-  this to insulin resistance (dysglycemia). This TG/HDL ratio-based risk interpretation
-  is consistent with functional medicine and emerging lipidology perspectives, though
-  not standard ACC/AHA guideline practice.
-coaching_translation: Your total cholesterol number can look fine while your 'type'
-  of cholesterol pattern is actually risky. If your triglycerides are high and HDL
-  is low, that often signals insulin resistance — which needs dietary attention, not
+rationale: The document describes a pattern where total cholesterol is 180 but the profile is shifted toward VLDL elevation
+  and HDL reduction, and explicitly links this to insulin resistance (dysglycemia). This TG/HDL ratio-based risk interpretation
+  is consistent with functional medicine and emerging lipidology perspectives, though not standard ACC/AHA guideline practice.
+coaching_translation: Your total cholesterol number can look fine while your 'type' of cholesterol pattern is actually risky.
+  If your triglycerides are high and HDL is low, that often signals insulin resistance — which needs dietary attention, not
   just a pill.
 caveats:
-- Source is expert consensus lecture. The specific pattern interpretation (VLDL shift
-  as insulin resistance proxy) is consistent with FM practice but not a primary guideline
-  recommendation.
+- Source is expert consensus lecture. The specific pattern interpretation (VLDL shift as insulin resistance proxy) is consistent
+  with FM practice but not a primary guideline recommendation.
 linked_to_topics:
 - ldl-particle-size-and-number
-- dyslipidemia-management
+- dyslipidemia
 - cardiovascular-risk-assessment
 out_of_scope_notes: ''
 linked_to_mechanisms: []
@@ -26,9 +21,8 @@ linked_to_supplements: []
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: 'Case discussion: insulin resistance and dyslipidemia'
-  quote: His glycemic level is high and his STL level is high. And what I show you
-    in a blood sugar regulation, I describe STL ratio. This patient is having insulin
-    resistance.
+  quote: His glycemic level is high and his STL level is high. And what I show you in a blood sugar regulation, I describe
+    STL ratio. This patient is having insulin resistance.
 version: 1
 status: active
 updated_at: '2026-05-05'

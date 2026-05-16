@@ -1,14 +1,12 @@
 slug: caffeine-causes-magnesium-depletion
-statement: Chronic or excessive caffeine intake causes urinary magnesium loss through
-  its diuretic action.
+statement: Chronic or excessive caffeine intake causes urinary magnesium loss through its diuretic action.
 evidence_tier: plausible_emerging
-rationale: Caffeine's diuretic effect and associated renal magnesium losses are biologically
-  plausible and supported by some observational and mechanistic data, though large
-  RCTs are limited.
-coaching_translation: Heavy coffee or caffeine consumption can drain your magnesium
-  stores over time — another reason to moderate caffeine intake.
+rationale: Caffeine's diuretic effect and associated renal magnesium losses are biologically plausible and supported by some
+  observational and mechanistic data, though large RCTs are limited.
+coaching_translation: Heavy coffee or caffeine consumption can drain your magnesium stores over time — another reason to moderate
+  caffeine intake.
 linked_to_topics:
-- magnesium-deficiency
+- magnesium-nutrition
 linked_to_supplements:
 - magnesium-glycinate
 - magnesium-citrate
@@ -18,8 +16,7 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Causes of magnesium deficiency
-  quote: Caffeine has a diuretic action, which causes loss of these minerals, eventually
-    causing depletion of magnesium.
+  quote: Caffeine has a diuretic action, which causes loss of these minerals, eventually causing depletion of magnesium.
 version: 1
 status: active
 updated_at: '2026-05-05'

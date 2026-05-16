@@ -3,11 +3,9 @@ display_name: Beta Blocker De-Prescribing & Tapering
 aliases:
 - beta blocker withdrawal
 - antihypertensive tapering
-summary: Structured protocol for discontinuing beta blocker therapy in appropriate
-  patients, given association with depression, fatigue, constipation, erectile dysfunction,
-  and cognitive slowing. Per JNC-8, beta blockers are now considered third-line agents
-  for hypertension. Tapering involves stepwise dose reduction with nutraceutical support
-  and lifestyle reinforcement.
+summary: Structured protocol for discontinuing beta blocker therapy in appropriate patients, given association with depression,
+  fatigue, constipation, erectile dysfunction, and cognitive slowing. Per JNC-8, beta blockers are now considered third-line
+  agents for hypertension. Tapering involves stepwise dose reduction with nutraceutical support and lifestyle reinforcement.
 common_symptoms:
 - headache
 - joint-pain
@@ -18,37 +16,32 @@ red_flags:
 - history of myocardial infarction
 - congestive heart failure
 - uncontrolled hypertension
-- atrial fibrillation
-- Three or more BP readings >140/90 (<60 yrs) or >150/90 (>60 yrs) during taper —
-  reinstitute therapy
-- History of MI, acute coronary syndrome, atrial fibrillation, or congestive heart
-  failure
+- palpitations
+- Three or more BP readings >140/90 (<60 yrs) or >150/90 (>60 yrs) during taper — reinstitute therapy
+- History of MI, acute coronary syndrome, atrial fibrillation, or congestive heart failure
 related_topics:
 - hypertension
 - cardiovascular-dysfunction
 key_mechanisms:
 - beta-adrenergic-blockade-rebound
-- coq10-depletion-by-beta-blockers
+- coq10-depletion
 - autonomic-rebound
-coaching_scope_notes: Coaches can reinforce dietary guidelines (Cardiometabolic/DASH),
-  lifestyle recommendations (exercise, stress reduction, tobacco/alcohol avoidance),
-  and supplement adherence as directed by the clinician. Tapering schedule and dose
-  decisions are strictly clinician-managed.
-clinician_scope_notes: 'Clinician establishes tapering schedule: 25% dose reduction
-  week 1, then 50% reduction every 1–2 weeks based on tolerance. Ambulatory BP monitoring
-  recommended. Reinstitute if BP thresholds exceeded.'
+coaching_scope_notes: Coaches can reinforce dietary guidelines (Cardiometabolic/DASH), lifestyle recommendations (exercise,
+  stress reduction, tobacco/alcohol avoidance), and supplement adherence as directed by the clinician. Tapering schedule and
+  dose decisions are strictly clinician-managed.
+clinician_scope_notes: 'Clinician establishes tapering schedule: 25% dose reduction week 1, then 50% reduction every 1–2 weeks
+  based on tolerance. Ambulatory BP monitoring recommended. Reinstitute if BP thresholds exceeded.'
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
-  quote: For the past 25 years, beta blockers have been used as the primary treatment
-    for lowering blood pressure. However, these drugs are associated with increased
-    rates of depression, fatigue, constipation, erectile dysfunction, and cognitive
+  quote: For the past 25 years, beta blockers have been used as the primary treatment for lowering blood pressure. However,
+    these drugs are associated with increased rates of depression, fatigue, constipation, erectile dysfunction, and cognitive
     decline.
 - id: vitaone-health-coaching-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
-  quote: Beta blocker therapy has been associated with increased rates of depression,
-    fatigue, constipation, erectile dysfunction, and cognitive slowing.
+  quote: Beta blocker therapy has been associated with increased rates of depression, fatigue, constipation, erectile dysfunction,
+    and cognitive slowing.
 version: 2
 status: active
 updated_at: '2026-05-04'

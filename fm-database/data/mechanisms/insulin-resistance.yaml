@@ -34,28 +34,25 @@ aliases:
 - IR
 - insulin-receptor-resistance
 category: metabolic
-summary: Reduced cellular sensitivity to insulin, driven by excess refined carbohydrate
-  intake, sedentary behaviour, visceral adiposity, and chronic inflammation. Central
-  driver of T2D, PCOS, NAFLD, and atherogenic dyslipidaemia. TG:HDL ratio and fasting
-  insulin are early detection markers.
+summary: Reduced cellular sensitivity to insulin, driven by excess refined carbohydrate intake, sedentary behaviour, visceral
+  adiposity, and chronic inflammation. Central driver of T2D, PCOS, NAFLD, and atherogenic dyslipidaemia. TG:HDL ratio and
+  fasting insulin are early detection markers.
 upstream_drivers:
 - chronic carbohydrate excess (especially refined)
 - sedentary lifestyle (reduced muscle glucose disposal)
 - poor sleep
 - chronic stress (cortisol)
 - visceral adiposity
-- inflammation
+- chronic-inflammation
 - perimenopausal estrogen decline
 - high-glycemic-diet
 - chronic-stress
 - poor-sleep
 - sedentary-lifestyle
 - excess-adiposity
-- chronic-cortisol-elevation
 - hpa-axis-dysregulation
 - inflammatory-cytokines
 - low-adiponectin
-- chronic-inflammation
 - leaky-gut
 - mitochondrial-dysfunction
 - high-refined-carb-diet
@@ -64,7 +61,7 @@ upstream_drivers:
 - high-carbohydrate-diet
 - visceral-adiposity
 - poor-diet
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - magnesium-deficiency
 - chromium-deficiency
 - high-androgen-state
@@ -77,18 +74,16 @@ upstream_drivers:
 - micronutrient-deficiency
 - sedentary lifestyle
 - high glycemic diet
-- metabolic syndrome
+- insulin-resistance
 - abdominal-obesity
 - excess caloric intake
 - physical inactivity
-- chronic inflammation
-- cortisol-dhea-imbalance
+- systemic-inflammation
 - chronic-psychological-stress
 - westernized-diet
 - elevated-fibrinogen
 - refined-carbohydrate-intake
 - excessive-sugar-consumption
-- chronic-systemic-inflammation
 - sedentary-behaviour
 - poor-dietary-quality
 - excess-dietary-carbohydrates
@@ -101,7 +96,7 @@ upstream_drivers:
 - refined-carbohydrate-excess
 downstream_effects:
 - elevated triglycerides, low HDL (TG:HDL > 2-3)
-- small dense LDL
+- small-dense-ldl-atherogenesis
 - hepatic de novo lipogenesis → NAFLD
 - androgen excess in women → PCOS phenotype
 - inflammation amplification
@@ -110,7 +105,7 @@ downstream_effects:
 - low-shbg
 - anovulation
 - low-testosterone-men
-- aromatase-overactivity
+- aromatase-activity
 - weight-gain
 - visceral-fat
 - pcos
@@ -122,17 +117,14 @@ downstream_effects:
 - fatty-liver
 - elevated-triglycerides
 - low-hdl
-- small-dense-ldl
 - elevated-apob
 - hepatic-fat-accumulation
 - systemic-inflammation
 - nafld
-- metabolic-syndrome
+- insulin-resistance
 - nf-kb-activation
-- elevated-crp
 - immune-suppression
 - cardiovascular-risk
-- blood-sugar-dysregulation
 - sugar-cravings
 - metabolic-joint-pain
 - hair-loss
@@ -140,7 +132,6 @@ downstream_effects:
 - pancreatic-beta-cell-dysfunction
 - hypertension
 - advanced-glycation-end-products
-- hyperinsulinemia
 - prediabetes
 - impaired estrogen metabolism
 - low SHBG
@@ -151,7 +142,6 @@ downstream_effects:
 - elevated fasting glucose
 - elevated triglycerides
 - type 2 diabetes risk
-- metabolic syndrome
 - hyperglycemia
 - type-2-diabetes-risk
 - weight-gain-abdomen
@@ -164,19 +154,16 @@ downstream_effects:
 - cardiovascular-disease
 - estrogen-dominance
 - obesity
-- aromatase-upregulation
-- small-dense-ldl-atherogenesis
 - elevated-fasting-glucose
-- small-dense-ldl-endothelial-penetration
 - atherogenic-dyslipidaemia
 - belly-fat
 related_mechanisms:
 - hpa-axis-dysregulation
 - chronic-inflammation
 - visceral-adiposity
-- aromatase-overactivity
+- aromatase-activity
 - leaky-gut
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - oxidative-stress
 - hepatic-lipid-accumulation
 - metabolic-flexibility
@@ -184,28 +171,21 @@ related_mechanisms:
 - systemic-inflammation
 - nf-kb-activation
 - lps-endotoxemia
-- gut-barrier-dysfunction
 - pancreatic-beta-cell-dysfunction
 - advanced-glycation-end-products
 - skeletal-muscle-glucose-uptake
 - hepatic-insulin-sensitivity
-- hepatic-estrogen-detoxification
+- hepatic-estrogen-metabolism
 - shbg-hormone-binding
 - atherosclerosis
-- cortisol-dhea-imbalance
 - hepatic-glucose-production
 - atheromatous-vascular-disease
-- oxidative-stress-and-ages
 - nlrp3-inflammasome-activation
-- chronic-systemic-inflammation
-- vldl-overproduction-from-excess-carbs
 - oxidative-stress-vascular
 - excess-cortisol
-- aromatase-upregulation
 - belly-fat-adipose-estrogen
 - central-adiposity-inflammation
 - small-dense-ldl-atherogenesis
-- small-dense-ldl-endothelial-penetration
 - inflammatory-cascade
 - apob-atherogenic-particle-burden
 - hepatic-fat-accumulation
@@ -214,9 +194,8 @@ linked_to_topics:
 - perimenopause
 - inflammation
 - estrogen-dominance
-- adrenal-dysfunction
-- insulin-resistance
-- dysbiosis
+- hpa-axis-dysregulation
+- gut-dysbiosis
 - dyslipidemia
 - nafld
 - liver-detoxification
@@ -243,7 +222,6 @@ linked_to_topics:
 - visceral-adiposity
 - body-composition-assessment
 - cardiovascular-disease-prevention
-- dyslipidemia-management
 - metabolic-health-lchf
 - cardiovascular-lipid-pattern-recognition
 - pcos-fertility
@@ -256,57 +234,50 @@ sources:
   location: practice_guide.md, Metabolic section
 - id: vitaone-sex-hormones-cheatsheet
   location: PCOD Cheatsheet — Key Mediators
-  quote: Hyperinsulinemia → stimulates theca cells → ↑ androgens; Low SHBG → ↑ free
-    testosterone.
+  quote: Hyperinsulinemia → stimulates theca cells → ↑ androgens; Low SHBG → ↑ free testosterone.
 - id: vitaone-adrenal-cheatsheet
   location: Stress & Chronic Diseases Link (p.9)
-  quote: 'Chronic cortisol elevation →↑ gluconeogenesis, insulin resistance. Key Mechanisms:
-    HPA axis overdrive, sympathetic dominance, inflammatory cytokines.'
+  quote: 'Chronic cortisol elevation →↑ gluconeogenesis, insulin resistance. Key Mechanisms: HPA axis overdrive, sympathetic
+    dominance, inflammatory cytokines.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Therapeutic Considerations
   quote: Resistance Training improves GLUT4 receptor expression
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 2
-  quote: Dyslipidemia is rarely primary → Often secondary to Insulin resistance, Hypothyroidism,
-    NAFLD, Chronic stress & cortisol excess, Poor sleep.
+  quote: Dyslipidemia is rarely primary → Often secondary to Insulin resistance, Hypothyroidism, NAFLD, Chronic stress & cortisol
+    excess, Poor sleep.
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet
   quote: Insulin resistance, high fructose/sugar intake, obesity, inflammation
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: The Science of Low-Carb Diets
-  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes
-    fat mobilization.
+  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes fat mobilization.
 - id: vitaone-inflammation-cheatsheet
   location: Fasting & Immune Health Link — Page 15
-  quote: 'Improved insulin sensitivity: Stable blood sugar → Better immune signaling
-    → Metabolic-immune link'
+  quote: 'Improved insulin sensitivity: Stable blood sugar → Better immune signaling → Metabolic-immune link'
 - id: vitaone-nutrition-cheatsheet
   location: Magnesium – The Calming Mineral
   quote: Stabilizes blood sugar by aiding insulin signaling.
 - id: vitaone-blood-sugar-ebook
   location: Section 2.3 — Cellular Glucose Uptake and Intracellular Metabolism
-  quote: Insulin binds to its receptor on target cells (muscle, adipose, liver), initiating
-    a signalling cascade (IRS-1 → PI3K → Akt) that translocates GLUT-4 transporters
-    to the cell surface, thereby permitting glucose entry.
+  quote: Insulin binds to its receptor on target cells (muscle, adipose, liver), initiating a signalling cascade (IRS-1 →
+    PI3K → Akt) that translocates GLUT-4 transporters to the cell surface, thereby permitting glucose entry.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Insulin resistance causes the body to make more and more insulin in order
-    to keep blood sugars in a healthy range. Over time, the body's ability to produce
-    higher amounts of insulin is exhausted, which can lead to the development of prediabetes,
-    and eventually, type 2 diabetes.
+  quote: Insulin resistance causes the body to make more and more insulin in order to keep blood sugars in a healthy range.
+    Over time, the body's ability to produce higher amounts of insulin is exhausted, which can lead to the development of
+    prediabetes, and eventually, type 2 diabetes.
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03
-  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed
-    to positively influence insulin sensitivity and weight, but conversely, insulin
-    resistance and obesity are thought to negatively influence estrogen metabolism.
+  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed to positively influence insulin sensitivity
+    and weight, but conversely, insulin resistance and obesity are thought to negatively influence estrogen metabolism.
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Lab Results
   quote: Insulin resistance increases risk
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Who Benefits from Fasting?
-  quote: Shorter-duration human & animal studies show that fasting may be beneficial
-    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
-    weight loss, and brain health.
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial for insulin resistance, blood sugar,
+    blood pressure, inflammation, short-term weight loss, and brain health.
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
   quote: Lowered insulin sensitivity, with a higher susceptibility to diabetes.
@@ -315,31 +286,27 @@ sources:
   quote: Excess insulin (Syndrome X)
 - id: coconote-fm-body-composition-bmi
   location: Metabolic Dysfunction Section
-  quote: Are there some persistent or organic pollutants or bisphenol A that may be
-    triggering this insulin resistance? Or is it really just that crummy standard
-    American diet that's low in nutrients and high in calories that's triggering their
+  quote: Are there some persistent or organic pollutants or bisphenol A that may be triggering this insulin resistance? Or
+    is it really just that crummy standard American diet that's low in nutrients and high in calories that's triggering their
     insulin resistance.
 - id: coconote-fm-estrogen-dominance
   location: How Does Inflammation Relate to Estrogen / Insulin Resistance Physiology
-  quote: Insulin is responsible for forming estrogen. So insulin resistance can cause
-    estrogen dominance. The insulin buildup actually upregulates the aromatase activity.
-    So it forms more estrogen.
+  quote: Insulin is responsible for forming estrogen. So insulin resistance can cause estrogen dominance. The insulin buildup
+    actually upregulates the aromatase activity. So it forms more estrogen.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Mediterranean Diet Evidence
-  quote: Reduced markers of inflammation with the Mediterranean diet, CRP, interleukin-6,
-    interleukin-7, interleukin-18, decreased insulin resistance.
+  quote: Reduced markers of inflammation with the Mediterranean diet, CRP, interleukin-6, interleukin-7, interleukin-18, decreased
+    insulin resistance.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: 'Case discussion: insulin resistance and dyslipidemia'
-  quote: Classically you can see, his glycemic level is high and his STL level is
-    high... This patient is having insulin resistance. So, what you will do, you will
-    start working on insulin resistance.
+  quote: Classically you can see, his glycemic level is high and his STL level is high... This patient is having insulin resistance.
+    So, what you will do, you will start working on insulin resistance.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Insulin resistance is the primary driver in most metabolic diseases
 - id: coconote-fm-gtir
   location: Glucose Tolerance Insulin Response Test Explanation
-  quote: when patients start having insulin resistance they alter the initial receptor
-    and insulin secretion pattern
+  quote: when patients start having insulin resistance they alter the initial receptor and insulin secretion pattern
 evidence_tier: strong
 version: 25
 status: active

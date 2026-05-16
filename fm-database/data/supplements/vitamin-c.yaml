@@ -55,7 +55,6 @@ linked_to_topics:
 - estrogen-dominance
 - low-progesterone
 - pcos
-- adrenal-dysfunction
 - hpa-axis-dysregulation
 - inflammation
 - immune-resilience
@@ -67,14 +66,13 @@ linked_to_topics:
 - mitochondrial-health-nutrition
 - liver-detoxification
 - mercury-amalgam-removal
-- hpa-axis-dysfunction
 - hypercortisolism
 - gut-dysfunction
-- 5r-gut-restoration
+- 5r-gut-protocol
 - immune-support-covid-19
 - oxidative-stress
 - iron-deficiency-dysregulation
-- adrenal-cortisol-resilience
+- adrenal-fatigue
 - male-infertility-oxidative-stress
 - immune-nutrition
 - detoxification
@@ -96,42 +94,35 @@ linked_to_claims:
 - vitamin-c-enhances-iron-absorption
 - antioxidant-rotation-improves-male-fertility
 - magnesium-b5-c-zinc-omega3-support-adrenal-resilience
-notes_for_client: Taking vitamin C with iron-rich meals or supplements helps your
-  body absorb iron more effectively. It also supports your immune system and stress
-  response.
+notes_for_client: Taking vitamin C with iron-rich meals or supplements helps your body absorb iron more effectively. It also
+  supports your immune system and stress response.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Vitamin C (Ascorbic Acid) - Immunity, antioxidant, collagen - 1000-2000 mg/day
-    - Anytime- morning
+  quote: Vitamin C (Ascorbic Acid) - Immunity, antioxidant, collagen - 1000-2000 mg/day - Anytime- morning
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support Adrenals
   quote: Vitamin C, B5, adaptogens, circadian rhythm correction
 - id: vitaone-sex-hormones-cheatsheet
   location: Top Nutrients to Balance Estrogen
-  quote: 'Liposomal Vitamin C: Aids progesterone production and supports adrenal detox
-    of estrogen.'
+  quote: 'Liposomal Vitamin C: Aids progesterone production and supports adrenal detox of estrogen.'
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — Cortisol row / Emotional Stress table (p.4, p.10)
-  quote: 'Solution: Salt, Vit C, adrenal support (B5, licorice)... Adrenal adaptogens,
-    phosphatidylserine, stress-modulating nutrients (Active B5, Mg Glycinate, Liposomal
-    Vit C).'
+  quote: 'Solution: Salt, Vit C, adrenal support (B5, licorice)... Adrenal adaptogens, phosphatidylserine, stress-modulating
+    nutrients (Active B5, Mg Glycinate, Liposomal Vit C).'
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin C (Ascorbic Acid)
   quote: 'Supplement: Plain ascorbic acid works; buffered/liposomal improve tolerance.'
 - id: vitaone-thyroid-ebook
   location: 'Chapter 10: Absorption and Optimization'
-  quote: Co-administration of Vitamin C (500-1000 mg) can increase serum T4 and T3
-    levels.
+  quote: Co-administration of Vitamin C (500-1000 mg) can increase serum T4 and T3 levels.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Vitamin C contributes to immune defense by supporting various cellular functions
-    of the immune system.
+  quote: Vitamin C contributes to immune defense by supporting various cellular functions of the immune system.
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Vitamin C is a vitamin and antioxidant which protects the mitochondria from
-    oxidative stress. Some studies have indicated that restoring the body's vitamin
-    C may help improve feelings of anxiety, fatigue, and well-being.
+  quote: Vitamin C is a vitamin and antioxidant which protects the mitochondria from oxidative stress. Some studies have indicated
+    that restoring the body's vitamin C may help improve feelings of anxiety, fatigue, and well-being.
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure
   quote: 'Vitamin C: 2–3 grams'
@@ -140,9 +131,8 @@ sources:
   quote: Get adequate vitamin C.
 - id: coconote-fm-approach-inflammation
   location: Nutrition – Antioxidant Vitamins
-  quote: vitamin C is a primary anti-inflammatory or antioxidant. So increase the
-    vitamin C from the diet, you can prescribe the vitamin C in a capsule form or
-    paste way, you can prescribe it in a humla.
+  quote: vitamin C is a primary anti-inflammatory or antioxidant. So increase the vitamin C from the diet, you can prescribe
+    the vitamin C in a capsule form or paste way, you can prescribe it in a humla.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXy9b_KjJT2/
   quote: Pair iron with Vitamin C for better absorption

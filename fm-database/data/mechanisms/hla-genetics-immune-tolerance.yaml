@@ -14,14 +14,11 @@ aliases:
 - treg dysfunction
 - molecular mimicry susceptibility
 category: immune
-summary: Specific HLA (Human Leukocyte Antigen) class II haplotypes — most notably
-  HLA-DR3 and HLA-DR4 — present self-peptides to T cells in ways that, under environmental
-  triggers (infection, gut barrier failure, stress, gluten reactivity), provoke a
-  breakdown of central + peripheral immune tolerance. The result is autoreactive
-  T-cell expansion and Treg insufficiency, the convergence point for nearly every
-  autoimmune diagnosis (Hashimoto, type 1 diabetes, lupus, rheumatoid arthritis,
-  coeliac). Genetic susceptibility loads the gun; environmental + gut + lifestyle
-  triggers pull the trigger.
+summary: Specific HLA (Human Leukocyte Antigen) class II haplotypes — most notably HLA-DR3 and HLA-DR4 — present self-peptides
+  to T cells in ways that, under environmental triggers (infection, gut barrier failure, stress, gluten reactivity), provoke
+  a breakdown of central + peripheral immune tolerance. The result is autoreactive T-cell expansion and Treg insufficiency,
+  the convergence point for nearly every autoimmune diagnosis (Hashimoto, type 1 diabetes, lupus, rheumatoid arthritis, coeliac).
+  Genetic susceptibility loads the gun; environmental + gut + lifestyle triggers pull the trigger.
 upstream_drivers:
 - inherited HLA haplotype (DR3 / DR4 / DQ2 / DQ8)
 - family history of autoimmunity
@@ -35,7 +32,7 @@ upstream_drivers:
 - vitamin D deficiency
 - omega-3 deficiency
 - low diversity gut microbiome
-- chronic inflammation
+- systemic-inflammation
 - microchimerism
 downstream_effects:
 - regulatory T-cell (Treg) insufficiency
@@ -45,35 +42,29 @@ downstream_effects:
 - subclinical autoimmunity (positive antibodies, no symptoms)
 - clinical autoimmune diagnosis
 - multiple autoimmune syndromes (one diagnosis triples risk of next)
-- chronic systemic inflammation
+- chronic-inflammation
 - treatment-refractory inflammation
 related_mechanisms:
 - leaky-gut
 - chronic-inflammation
 - ebv-reactivation
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - oxidative-stress
-- chronic-systemic-inflammation
 - neuroinflammation
 linked_to_topics:
 - autoimmune-disease
 - autoimmune
 - autoimmune-thyroiditis
-- hashimotos-thyroiditis
-- hashimotos-hypothyroidism
 - autoimmunity-leaky-gut-triad
 - autoimmunity-triad
 sources:
 - id: vitaone-skill-practice-guide
-  location: practice_guide.md, Autoimmunity section — genetic predisposition + environmental
-    triggers + leaky gut triad
+  location: practice_guide.md, Autoimmunity section — genetic predisposition + environmental triggers + leaky gut triad
 evidence_tier: strong
-notes_for_coach: Genetics aren't destiny — coach focus is the modifiable triggers
-  (gut barrier, gluten reactivity, stress, sleep, vitamin D, omega-3, microbiome
-  diversity). Family history of autoimmune disease is the strongest 'soft signal'
-  to be proactive about gut + lifestyle even before any antibody shows up. Once one
-  autoimmune diagnosis exists, risk of another rises three-fold — a strong reason
-  to lean into FM root-cause work rather than wait.
+notes_for_coach: Genetics aren't destiny — coach focus is the modifiable triggers (gut barrier, gluten reactivity, stress,
+  sleep, vitamin D, omega-3, microbiome diversity). Family history of autoimmune disease is the strongest 'soft signal' to
+  be proactive about gut + lifestyle even before any antibody shows up. Once one autoimmune diagnosis exists, risk of another
+  rises three-fold — a strong reason to lean into FM root-cause work rather than wait.
 version: 1
 status: active
 updated_at: '2026-05-10'

@@ -1,32 +1,27 @@
 slug: 2-oh-estrone-protective-4-oh-16a-oh-estrone-harmful
-statement: The 2-hydroxyestrone metabolite is protective (blocks cell proliferation
-  and cancer growth), whereas 4-hydroxyestrone and 16α-hydroxyestrone are associated
-  with increased inflammation and cancer risk.
+statement: The 2-hydroxyestrone metabolite is protective (blocks cell proliferation and cancer growth), whereas 4-hydroxyestrone
+  and 16α-hydroxyestrone are associated with increased inflammation and cancer risk.
 evidence_tier: plausible_emerging
-rationale: The differential activity of estrogen metabolites (2-OH vs 4-OH vs 16α-OH
-  estrone) is a recognized area of research in breast cancer prevention and FM. The
-  Dutch test measures these metabolites. Supporting the 2-OH pathway via diet and
+rationale: The differential activity of estrogen metabolites (2-OH vs 4-OH vs 16α-OH estrone) is a recognized area of research
+  in breast cancer prevention and FM. The Dutch test measures these metabolites. Supporting the 2-OH pathway via diet and
   supplements is a key FM strategy.
-coaching_translation: Not all estrogen metabolites are equal. Supporting the '2-OH
-  pathway' through cruciferous vegetables, DIM, and healthy liver function helps your
-  body process estrogen safely.
+coaching_translation: Not all estrogen metabolites are equal. Supporting the '2-OH pathway' through cruciferous vegetables,
+  DIM, and healthy liver function helps your body process estrogen safely.
 caveats:
-- Clinical intervention trials targeting metabolite ratios are limited; evidence is
-  mechanistic and observational.
+- Clinical intervention trials targeting metabolite ratios are limited; evidence is mechanistic and observational.
 - Dutch test interpretation requires clinician oversight.
 linked_to_topics:
 - estrogen-metabolism
 - estrogen-dominance
 linked_to_supplements:
-- dim-diindolylmethane
+- dim
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-estrogen-dominance
   location: Estrogen Metabolite Pathways
-  quote: If the estrone is converting into 2-Hydroxy-Estrone, I don't need to be worried
-    about it because it blocks stronger E2 that promotes cell proliferation and cancer
-    growth. The 16-Alpha and the 4-Hydroxy-Estrone are the bad ones.
+  quote: If the estrone is converting into 2-Hydroxy-Estrone, I don't need to be worried about it because it blocks stronger
+    E2 that promotes cell proliferation and cancer growth. The 16-Alpha and the 4-Hydroxy-Estrone are the bad ones.
 version: 1
 status: active
 updated_at: '2026-05-05'
