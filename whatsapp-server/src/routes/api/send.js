@@ -37,6 +37,11 @@ sendRouter.post('/', async (req, res, next) => {
       templateName,
       templateLanguage = 'en',
       templateParams,
+      // Optional: for templates with a URL CTA button whose URL has a
+      // dynamic {{N}} suffix (e.g. webinar_invite_v1 → https://lp.theochretree.com/lp/{{1}}),
+      // pass the suffix value here. We append a button component to the
+      // outgoing message that fills in the URL variable.
+      buttonUrlParam,
       origin = 'api',
       originRef,
     } = req.body || {};
@@ -82,15 +87,28 @@ sendRouter.post('/', async (req, res, next) => {
       sendInput.templateLanguage = templateLanguage;
       // Translate the simple flat params array into the Meta component shape
       // that messages.send → wa.sendTemplate expects.
+      const components = [];
       if (Array.isArray(templateParams) && templateParams.length) {
-        sendInput.templateVariables = {
-          components: [
-            {
-              type: 'body',
-              parameters: templateParams.map((p) => ({ type: 'text', text: String(p) })),
-            },
-          ],
-        };
+        components.push({
+          type: 'body',
+          parameters: templateParams.map((p) => ({ type: 'text', text: String(p) })),
+        });
+      }
+      if (buttonUrlParam) {
+        // URL button params live in their own component. `sub_type: 'url'`
+        // tells Meta this fills in the URL suffix of the template's URL
+        // button. `index: '0'` = first button (we only register one per
+        // template; if a template ever has multiple URL buttons, add an
+        // optional buttonIndex field here).
+        components.push({
+          type: 'button',
+          sub_type: 'url',
+          index: '0',
+          parameters: [{ type: 'text', text: String(buttonUrlParam) }],
+        });
+      }
+      if (components.length) {
+        sendInput.templateVariables = { components };
       }
     }
 

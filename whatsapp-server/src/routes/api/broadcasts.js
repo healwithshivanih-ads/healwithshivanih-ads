@@ -55,6 +55,13 @@ broadcastsRouter.post('/', async (req, res, next) => {
       templateName,
       templateLanguage = 'en',
       templateParams,
+      // Shared URL-button param for templates with a `URL` CTA button whose
+      // URL contains a {{N}} suffix (e.g. webinar templates →
+      // https://lp.theochretree.com/lp/{{1}}). Same value for every
+      // recipient (one webinar → one slug). Per-recipient override is
+      // supported via `recipient.buttonUrlParam` if mail-merge ever needs
+      // different slugs (unusual).
+      buttonUrlParam,
       recipients,
       dryRun = false,
       origin = 'broadcast',
@@ -100,12 +107,17 @@ broadcastsRouter.post('/', async (req, res, next) => {
           ? templateParams
           : [];
 
+      // Per-recipient URL-button param override (rare) falls back to the
+      // shared top-level value.
+      const recipientButtonUrlParam = r.buttonUrlParam || buttonUrlParam;
+
       if (dryRun) {
         results.push({
           phone: normalised,
           ok: true,
           dry_run: true,
           params,
+          button_url_param: recipientButtonUrlParam,
         });
         sent++;
         continue;
@@ -119,6 +131,26 @@ broadcastsRouter.post('/', async (req, res, next) => {
         });
         const conv = await convSvc.getOrCreate(ws.id, contact.id, 'whatsapp');
 
+        // Assemble template components: body params (if any) + URL button
+        // param (if any). Either, both, or neither — empty array means
+        // "fire the template with no variables" which works for static
+        // templates.
+        const tplComponents = [];
+        if (params.length) {
+          tplComponents.push({
+            type: 'body',
+            parameters: params.map((p) => ({ type: 'text', text: String(p) })),
+          });
+        }
+        if (recipientButtonUrlParam) {
+          tplComponents.push({
+            type: 'button',
+            sub_type: 'url',
+            index: '0',
+            parameters: [{ type: 'text', text: String(recipientButtonUrlParam) }],
+          });
+        }
+
         const message = await msgsSvc.send({
           workspaceId: ws.id,
           conversationId: conv.id,
@@ -127,20 +159,12 @@ broadcastsRouter.post('/', async (req, res, next) => {
           type: 'template',
           templateName,
           templateLanguage,
-          templateVariables: params.length
-            ? {
-              components: [
-                {
-                  type: 'body',
-                  parameters: params.map((p) => ({ type: 'text', text: String(p) })),
-                },
-              ],
-            }
+          templateVariables: tplComponents.length
+            ? { components: tplComponents }
             : undefined,
           origin,
           originRef: broadcastId,
         });
-
         results.push({
           phone: normalised,
           ok: true,

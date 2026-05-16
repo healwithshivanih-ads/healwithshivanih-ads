@@ -229,6 +229,13 @@ const TEMPLATES = [
   // promotional framing). Marketing rate ~₹0.78/msg — a 200-person triple
   // blast around one webinar is ~₹470 total.
   {
+    // 8 body params: name + title + date + time + who_for + 3 bullets.
+    // We tried packing who/bullets into one multi-line {{5}} param but Meta
+    // rejects newlines + tabs + 4+ consecutive spaces in body parameter
+    // values (error 132018 / "Param text cannot have new-line/tab
+    // characters or more than 4 consecutive spaces"). So the structure
+    // (line breaks + bullet chars) lives in the template body and each
+    // user-supplied piece becomes its own param.
     name: 'webinar_invite_v1',
     category: 'MARKETING',
     language: 'en',
@@ -236,7 +243,11 @@ const TEMPLATES = [
       'Hi {{1}}, want to join my next session?\n\n' +
       '📅 "{{2}}"\n' +
       '{{3}} at {{4}}\n\n' +
-      '{{5}}\n\n' +
+      "WHO IT'S FOR: {{5}}\n\n" +
+      "WHAT YOU'LL GET:\n" +
+      '• {{6}}\n' +
+      '• {{7}}\n' +
+      '• {{8}}\n\n' +
       'Tap below to reserve your spot.\n\n' +
       '— Shivani Hari\nYour Functional Health Coach',
     example: [[
@@ -244,7 +255,10 @@ const TEMPLATES = [
       'Reset Your Cortisol',
       'Wednesday 21 May',
       '5:00 PM IST',
-      "WHO IT'S FOR: Women in their 40s+ noticing afternoon energy crashes and stubborn weight around the middle.\n\nWHAT YOU'LL GET:\n• Why morning cortisol matters for mid-life weight gain\n• 3 practical resets you can start tomorrow morning\n• Live Q&A — bring anything you've been wrestling with",
+      'Women in their 40s+ noticing afternoon energy crashes and stubborn weight around the middle',
+      'Why morning cortisol matters for mid-life weight gain',
+      '3 practical resets you can start tomorrow morning',
+      "Live Q&A — bring anything you've been wrestling with",
     ]],
     buttons: [{
       type: 'URL',
