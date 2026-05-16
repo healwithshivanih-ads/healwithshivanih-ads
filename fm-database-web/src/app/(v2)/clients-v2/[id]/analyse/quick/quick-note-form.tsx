@@ -73,6 +73,29 @@ export function QuickNoteForm({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+      {/* Mid-call lookup escape hatch — opens the reference card in a new
+          tab so the coach can read off the active protocol while logging
+          the note. */}
+      <a
+        href={`/clients-v2/${clientId}/reference`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          alignSelf: "flex-start",
+          padding: "6px 12px",
+          background: "rgba(255, 107, 53, 0.08)",
+          border: "1px solid rgba(255, 107, 53, 0.35)",
+          borderRadius: 6,
+          fontSize: 11.5,
+          fontWeight: 600,
+          color: "var(--fm-primary, #ff6b35)",
+          textDecoration: "none",
+        }}
+        title={`Open ${displayName.split(" ")[0]}'s active plan — supplements, timing, food guidance — in a new tab. Useful when they ask "what time should I take X?" mid-call.`}
+      >
+        📋 View {displayName.split(" ")[0]}&apos;s active plan reference ↗
+      </a>
+
       <FmField
         label="Date of session"
         hint="Defaults to today — change if you're logging a past session. This date is what shows as 'Last contact'."

@@ -24,6 +24,13 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       href: `/clients-v2/${clientId}/analyse/quick`,
     },
     {
+      id: "active-plan-ref",
+      icon: "📋",
+      label: "Active plan reference",
+      hint: "What are they on right now? — for mid-call lookups",
+      href: `/clients-v2/${clientId}/reference`,
+    },
+    {
       id: "check-in",
       icon: "💬",
       label: "Check-in session",
