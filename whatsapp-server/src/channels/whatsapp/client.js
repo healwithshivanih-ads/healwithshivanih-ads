@@ -88,6 +88,60 @@ export async function sendTemplate({ to, templateName, languageCode = 'en', comp
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
+/**
+ * Send a freeform message with a single CTA URL button. Useful for chat
+ * replies (flow completions, keyword responses) where we want a tappable
+ * button instead of a bare URL the user has to long-press. `displayText`
+ * is the button label (Meta caps at 20 chars).
+ *
+ * Header options (mutually exclusive — pass at most one):
+ *   - `headerText`     plain string (≤60 chars)
+ *   - `headerImageUrl` publicly reachable image URL (jpg/png, ≤5 MB)
+ *   - `headerImageId`  pre-uploaded Meta media id
+ *
+ * Works inside the 24h customer-service window without a template.
+ */
+export async function sendCtaUrl({
+  to,
+  headerText,
+  headerImageUrl,
+  headerImageId,
+  body,
+  footerText,
+  displayText,
+  url,
+}) {
+  let header = null;
+  if (headerImageId) {
+    header = { type: 'image', image: { id: headerImageId } };
+  } else if (headerImageUrl) {
+    header = { type: 'image', image: { link: headerImageUrl } };
+  } else if (headerText) {
+    header = { type: 'text', text: String(headerText).slice(0, 60) };
+  }
+
+  const payload = {
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+      type: 'cta_url',
+      ...(header ? { header } : {}),
+      body: { text: body },
+      ...(footerText ? { footer: { text: String(footerText).slice(0, 60) } } : {}),
+      action: {
+        name: 'cta_url',
+        parameters: {
+          display_text: String(displayText).slice(0, 20),
+          url,
+        },
+      },
+    },
+  };
+  const res = await _post(payload);
+  return { externalMessageId: pickExternalId(res), payload, raw: res };
+}
+
 export async function sendInteractiveButtons({ to, body, buttons }) {
   const payload = {
     messaging_product: 'whatsapp',
