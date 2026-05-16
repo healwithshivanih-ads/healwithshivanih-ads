@@ -248,7 +248,18 @@ export function CatalogueIngestPanel() {
         </div>
 
         {result && (
-          <ResultPanel result={result} showRaw={showRaw} onToggleRaw={() => setShowRaw((v) => !v)} />
+          <ResultPanel
+            result={result}
+            // Auto-expand the raw log on failure when there's no extracted
+            // error to surface — coach was seeing "✗ failed" with nothing
+            // to act on. Show the log so she can read what fmdb validate
+            // actually said.
+            showRaw={
+              showRaw ||
+              (!result.ok && !result.validateOk && !result.validateError && !result.error)
+            }
+            onToggleRaw={() => setShowRaw((v) => !v)}
+          />
         )}
       </div>
     </FmPanel>

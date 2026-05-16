@@ -127,9 +127,33 @@ function _parse(raw: string, processOk: boolean): IngestFromPasteResult {
     result.validateOk = true;
     result.validateWarnings = Number(valOk[1]);
   } else {
-    const valErr = clean.match(/✗ validation failed[^\n]*\n([\s\S]*?)(?:\n\n|\n→|\nrunning|$)/i);
+    // Script emits the validation block as:
+    //
+    //   → Running fmdb validate
+    //     ✗ validation failed (exit N):
+    //       <line 1 of fmdb validate output>
+    //       <line 2 of fmdb validate output>
+    //       …
+    //   <blank>
+    //   → Running fmdb pending-refs
+    //
+    // Capture everything from "✗ validation failed" until either the
+    // next "→ Running…" section header OR the final "✓/✗ Ingest" verdict
+    // line. Older regex stopped at the first blank line (or `\n→`), which
+    // missed indented multi-line errors with embedded blank lines.
+    const valErr = clean.match(
+      /✗\s*validation failed[^\n]*\n([\s\S]*?)(?=\n\s*→\s*Running|\n\s*✓\s*Ingest|\n\s*✗\s*Ingest|$)/i,
+    );
     if (valErr) {
-      result.validateError = valErr[1].trim();
+      // Trim leading indentation per line so the panel preformatted
+      // block doesn't get a wall of left-padding from the script's
+      // formatter.
+      const trimmed = valErr[1]
+        .split("\n")
+        .map((l) => l.replace(/^ {2,6}/, ""))
+        .join("\n")
+        .trim();
+      result.validateError = trimmed || "(validation failed but no detail captured — see raw log)";
     }
   }
 

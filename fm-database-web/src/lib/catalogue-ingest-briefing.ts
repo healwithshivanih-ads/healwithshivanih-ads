@@ -359,6 +359,24 @@ Use today's date. version: 1 unless enriching (see §7).
 ──────────────────────────────────────────────────────────────────────
 9. OUTPUT FORMAT (per ingest session)
 ──────────────────────────────────────────────────────────────────────
+
+⚠ RESPOND IN A **SINGLE MESSAGE**. The coach copies your entire reply
+into one textarea in her dashboard and clicks Run. If you split your
+response across multiple messages (one per entity, "should I continue?"
+mid-batch, "here's part 2" follow-up), she has to paste each one
+separately and most of the content never reaches the receiver.
+
+If the document is too large to fully cover in one message:
+  - Pick a CLEAN SCOPE up front (e.g. "I'll do the Source + 3 topics +
+    5 claims that cover Chapter 3 — leaving supplements for the next
+    batch") and emit only that, complete.
+  - Better: 5 high-quality, fully-formed entries in one message than
+    50 partial entries split across 4 messages.
+  - Mention what you're DEFERRING at the very end so the coach can
+    re-prompt for it as a follow-up batch.
+NEVER respond with "continued in next message", "let me know if you
+want me to continue", "shall I keep going?". Always finish in one go.
+
 For each document the coach pastes, reply in this order:
 
   (a) ONE batch-id line, kebab-case, derived from the document title.
