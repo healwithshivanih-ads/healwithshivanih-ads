@@ -109,8 +109,50 @@ export interface ClientSession {
 export interface InboundMessage {
   client_id: string;
   display_name?: string;
+  /** YYYY-MM-DD session date — used for grouping + display. */
   date: string;
+  /** ISO timestamp of the message. Compared against inbox read-state to
+   *  decide if a message should appear in the unread banner. */
+  created_at?: string;
   text: string;
+}
+
+/**
+ * Inbox read-state file: `{[clientId]: ISO_timestamp}` — the latest
+ * message timestamp the coach has acknowledged. A message in
+ * client_id's sessions is "unread" iff its `created_at` is strictly
+ * greater than `state[client_id]` (or `state[client_id]` is absent).
+ *
+ * Auto-mark-read fires when the coach visits
+ *   /clients-v2/[id]/communicate
+ * via markWhatsappInboxReadAction(id). One file, single yaml dict, no
+ * migration needed for legacy data — missing entries just mean
+ * "everything is unread", same as before this feature shipped.
+ */
+const INBOX_STATE_FILE_NAME = "_whatsapp_inbox_state.yaml";
+
+async function readInboxState(): Promise<Record<string, string>> {
+  const root = getPlansRoot();
+  try {
+    const raw = await fs.readFile(path.join(root, INBOX_STATE_FILE_NAME), "utf-8");
+    const parsed = yaml.load(raw);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      const out: Record<string, string> = {};
+      for (const [k, v] of Object.entries(parsed)) {
+        if (typeof v === "string") out[k] = v;
+      }
+      return out;
+    }
+  } catch {
+    /* ENOENT or invalid YAML → empty state */
+  }
+  return {};
+}
+
+/** Strip the entire prefix of `[key: value]` tags off a session
+ *  `presenting_complaints` string so the preview is human-readable. */
+function stripSessionTags(complaints: string): string {
+  return complaints.replace(/^(\s*\[[^\]]+\]\s*)+/, "").trim();
 }
 
 /**
@@ -131,6 +173,11 @@ export async function getRecentInboundMessages(
   cutoff.setDate(cutoff.getDate() - daysBack);
   const cutoffStr = cutoff.toISOString().slice(0, 10); // YYYY-MM-DD
 
+  // Read-state — filter out messages the coach has already acknowledged
+  // by visiting the client's Communicate tab. State is per-client and
+  // monotonically advancing (we only ever write `now` so the timestamp
+  // moves forward).
+  const inboxState = await readInboxState();
   const results: InboundMessage[] = [];
 
   await Promise.all(
@@ -150,23 +197,57 @@ export async function getRecentInboundMessages(
         return m && m[1] >= cutoffStr && (n.endsWith(".yaml") || n.endsWith(".yml"));
       });
 
+      const lastReadAt = inboxState[id];
+
       for (const name of recentFiles) {
         const data = await readYaml<Record<string, unknown>>(path.join(dir, name));
         if (!data) continue;
         const complaints = String(data.presenting_complaints ?? "");
         if (!complaints.includes("[source: whatsapp_webhook]")) continue;
-        const text = complaints.replace(/^\[source:[^\]]+\]\s*/i, "").trim().slice(0, 120);
+        const createdAt = typeof data.created_at === "string" ? data.created_at : undefined;
+        // Acknowledged? If we have both a read-state timestamp and a
+        // message timestamp and the message is <= read-state, drop it.
+        // Missing created_at on the session → treat as unread (better to
+        // surface a stale notification than silently swallow a real one).
+        if (createdAt && lastReadAt && createdAt <= lastReadAt) continue;
+        const text = stripSessionTags(complaints).slice(0, 120);
         results.push({
           client_id: id,
           display_name: clientNames.get(id),
           date: String(data.date ?? "").slice(0, 10),
+          created_at: createdAt,
           text,
         });
       }
     })
   );
 
-  return results.sort((a, b) => b.date.localeCompare(a.date));
+  return results.sort((a, b) =>
+    (b.created_at ?? b.date).localeCompare(a.created_at ?? a.date),
+  );
+}
+
+/**
+ * Mark all inbound WhatsApp messages for this client as read by stamping
+ * the inbox state with `now`. Fired from the Communicate page (RSC), so
+ * the very act of opening the conversation clears the unread badge.
+ *
+ * Idempotent and crash-safe: we read → update one key → write. Race
+ * window is tiny; worst case is two near-simultaneous renders both
+ * write `now` and the later one wins, which is fine — the state is
+ * monotonically advancing.
+ */
+export async function markWhatsappInboxRead(clientId: string): Promise<void> {
+  const root = getPlansRoot();
+  const filePath = path.join(root, INBOX_STATE_FILE_NAME);
+  const state = await readInboxState();
+  state[clientId] = new Date().toISOString();
+  try {
+    await fs.mkdir(root, { recursive: true });
+    await fs.writeFile(filePath, yaml.dump(state, { sortKeys: true }), "utf-8");
+  } catch {
+    /* read-only filesystem etc. — silent. Banner just won't clear. */
+  }
 }
 
 export async function loadClientSessions(id: string): Promise<ClientSession[]> {

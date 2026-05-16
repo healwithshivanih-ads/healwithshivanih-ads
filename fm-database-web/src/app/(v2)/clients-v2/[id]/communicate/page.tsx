@@ -14,7 +14,7 @@
  * Fly app (whatsapp-server-shivani). AiSensy fully decommissioned
  * 2026-05-15.
  */
-import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadClientById, markWhatsappInboxRead } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkWhatsAppConfigAction } from "@/app/api/whatsapp/actions";
 import { FmPageHeader, FmPanel } from "@/components/fm";
@@ -39,6 +39,14 @@ export default async function CommunicateTabPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
+  // Mark this client's WhatsApp inbox as read — coach has opened the
+  // Communicate page, so the dashboard "N new WhatsApp messages" banner
+  // should clear for this client on the next dashboard render. Fire-and-
+  // forget; if the write fails the banner just stays. No race-condition
+  // concern: state is monotonically advancing (we only ever write
+  // `now`), so concurrent renders converge.
+  void markWhatsappInboxRead(id);
 
   const [client, allPlans, whatsappConfig, sendLog] = await Promise.all([
     loadClientById(id),

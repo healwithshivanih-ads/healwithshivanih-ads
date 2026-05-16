@@ -121,7 +121,10 @@ export function FmInboundMessagesBanner({
           return (
             <Link
               key={c.client_id}
-              href={`/clients-v2/${c.client_id}`}
+              // Opens the WhatsApp conversation panel (right rail) and
+              // triggers markWhatsappInboxRead server-side so this chip
+              // disappears from the banner on the next dashboard render.
+              href={`/clients-v2/${c.client_id}/communicate`}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
