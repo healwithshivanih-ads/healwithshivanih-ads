@@ -117,8 +117,54 @@ export async function publishPlan(
   reason?: string
 ): Promise<LifecycleResult> {
   const r = await lifecycle({ action: "publish", slug, reason });
-  if (r.ok) bust(slug);
+  if (r.ok) {
+    bust(slug);
+    // Fire plan-letter WhatsApp + queue +6h supplement nudge. Guarded by
+    // FM_AUTO_PUBLISH_FOLLOWUPS so dev publishes don't spam clients.
+    // Failures don't block the publish; they surface in logs.
+    if (process.env.FM_AUTO_PUBLISH_FOLLOWUPS === "1") {
+      try {
+        await firePlanPublishFollowupsForSlug(slug);
+      } catch (e) {
+        console.warn(
+          `[publish-followups] non-fatal failure for ${slug}: ${(e as Error).message}`,
+        );
+      }
+    }
+  }
   return r;
+}
+
+/** Look up client info for a freshly-published plan, then fire the
+ *  follow-up sends. Separate function so the publishPlan happy-path
+ *  stays linear and easy to read. */
+async function firePlanPublishFollowupsForSlug(slug: string): Promise<void> {
+  const { loadPlanBySlug, loadAllClients } = await import("@/lib/fmdb/loader");
+  const plan = await loadPlanBySlug(slug);
+  if (!plan) return;
+  const clientId = plan.client_id;
+  if (!clientId) return;
+  const clients = await loadAllClients();
+  const client = clients.find(
+    (c) => (c as Record<string, unknown>).client_id === clientId,
+  ) as Record<string, unknown> | undefined;
+  if (!client) return;
+  const phone = (client.mobile_number as string | undefined) ?? "";
+  const displayName = (client.display_name as string | undefined) ?? clientId;
+  if (!phone) {
+    console.warn(`[publish-followups] no mobile_number for ${clientId}, skipping`);
+    return;
+  }
+  const { firePlanPublishFollowups } = await import("./plan-publish-followups");
+  const res = await firePlanPublishFollowups({
+    clientId,
+    planSlug: slug,
+    displayName,
+    phone,
+  });
+  if (res.errors.length > 0) {
+    console.warn(`[publish-followups] ${slug}: ${res.errors.join("; ")}`);
+  }
 }
 
 export async function revokePlan(

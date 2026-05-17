@@ -319,6 +319,11 @@ export interface PlanFields {
   // Lifecycle bookkeeping (synthesized by lifecycle-actions on supersede).
   supersedes?: string;
   status_history?: unknown[];
+  /** Token granting public read access to the consolidated client letter
+   *  at /letter/<token>. Generated at plan publish; revoked when the
+   *  plan is superseded or revoked. */
+  letter_token?: string | null;
+  letter_token_created_at?: string | null;
 }
 
 /**

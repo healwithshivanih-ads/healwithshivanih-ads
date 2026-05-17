@@ -39,6 +39,14 @@ import { NextRequest, NextResponse } from "next/server";
 const PUBLIC_PATH_PREFIXES = [
   "/intake/",
   "/start/",
+  // Public letter page: clients open the consolidated plan letter via a
+  // token-based URL (plan.letter_token). Generated at publish; cleared
+  // on revoke. Behaviour mirrors /intake/.
+  "/letter/",
+  // Public supplement order page: lists supplements from the plan with
+  // buy links. No auth needed — the URL contains the plan slug only,
+  // which is non-guessable in practice (UUID-ish).
+  "/supplements/",
   // v0.73 WhatsApp cutover — inbound from the self-hosted Fly app
   // (whatsapp-server-shivani) lands here. HMAC-verified by route handler
   // using WHATSAPP_WEBHOOK_SECRET. /api/aisensy-webhook removed

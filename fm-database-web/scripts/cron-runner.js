@@ -55,9 +55,19 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// Every minute — drain due rows from _pending_sends.yaml (supplement-order
+// nudge queued 6h after plan publish, with a 9am IST floor). Cheap when
+// queue is empty; only sends a WhatsApp template when a row is due.
+cron.schedule(
+  "* * * * *",
+  () => fire("pending-sends"),
+  { timezone: "Asia/Kolkata" },
+);
+
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
-    + "\n  · 08:30 IST  intake-reminders",
+    + "\n  · 08:30 IST  intake-reminders"
+    + "\n  · * * * * *  pending-sends",
 );
 
 // Keep the process alive (node-cron handles its own timers).
