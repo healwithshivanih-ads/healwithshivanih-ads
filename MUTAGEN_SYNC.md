@@ -4,6 +4,27 @@ Mutagen keeps your client PHI bidirectionally in sync between your Macs
 (authoritative source of truth) and the Fly machine that serves the
 public intake form.
 
+## What's installed on the Mac mini (2026-05-17)
+
+After a silent sync outage on 2026-05-17 (Sudarshan got a `localhost:3002`
+intake link because Mutagen's beta endpoint had been disconnected for
+days with no alert), the following hardening is in place:
+
+| Path | Purpose |
+| --- | --- |
+| `~/.ssh/fly_id` + `fly_id-cert.pub` | Fly SSH keyfile + 72h cert (refreshed daily) |
+| `~/.ssh/config` `Host *.internal` block | Routes all Fly SSH through the keyfile — no ssh-agent dependency, survives reboots |
+| `~/bin/fly-ssh-refresh.sh` | Re-issues the cert daily (wrapped in `perl alarm 60` after flyctl was observed hanging at 90% CPU indefinitely on transient API issues) |
+| `~/bin/mutagen-health.sh` | Daily health check — flags `Connected: No`, `Last error:`, `Conflicts: [1-9]+`; posts macOS notification + appends to `~/Library/Logs/mutagen-health.log` |
+| `crontab -l` | `0 6 * * *` cert refresh, `0 8 * * *` health check |
+| `/etc/resolver/internal` | Pins `.internal` DNS to WG (`nameserver fdaa:70:83a::3`) so the Mac resolver can reach Fly hostnames |
+
+**One quirk worth knowing**: `flyctl ssh issue --overwrite` refuses to replace
+an existing keyfile unless its own heuristic decides "we created this."
+After any manual mtime/perms change, that check fails with `File exists,
+but isn't a fly.io ed25519 private key`. The refresh script therefore
+`rm -f`s both files before re-issuing.
+
 ## Empirical gotchas (resolved 2026-05-14 during first setup)
 
 Three things tripped us up during the initial bring-up. All three are
