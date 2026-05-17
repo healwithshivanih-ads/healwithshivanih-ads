@@ -72,6 +72,10 @@ const PUBLIC_PATH_PREFIXES = [
   // existing whatsapp-server-shivani receiver. HMAC-verified at route
   // level via CAL_COM_SIGNING_SECRET.
   "/api/cal-com-webhook",
+  // Zoom Cloud Recording webhook — fires after Cloud Recordings finish
+  // + transcript is ready. HMAC-verified at route level via
+  // ZOOM_WEBHOOK_SECRET_TOKEN. See docs/ZOOM_INTEGRATION_SETUP.md.
+  "/api/zoom-webhook",
 ];
 
 function isPublicPath(path: string): boolean {
