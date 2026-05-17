@@ -18,6 +18,7 @@ import { getDefault as getDefaultWorkspace } from '../../services/workspaces.js'
 import { matchContact } from '../../services/contacts/matcher.js';
 import * as appointments from '../../services/appointments/index.js';
 import * as tagsSvc from '../../services/contacts/tags.js';
+import { forwardBookingToFmCoach } from '../../services/forwarder/cal-com-forwarder.js';
 
 export const calComWebhook = Router();
 
@@ -133,7 +134,7 @@ async function handleBookingCreated(payload) {
   await tagsSvc.addToContact(contact.id, 'booked-call', 'cal_com_webhook').catch((e) =>
     logger.warn({ err: e.message }, 'tag booked-call failed'));
 
-  await appointments.create({
+  const appt = await appointments.create({
     workspaceId: ws.id,
     contactId: contact.id,
     source: 'calendly',           // schema enum currently has only calendly/wix/manual/other
@@ -150,6 +151,15 @@ async function handleBookingCreated(payload) {
       cal_com_event_type_id: payload.eventTypeId || null,
     },
   });
+
+  // Slice 2: forward to fm-coach so the dashboard can show "Upcoming bookings".
+  forwardBookingToFmCoach({
+    type: 'booking_created',
+    payload,
+    appointmentId: appt?.id,
+  }).catch((err) =>
+    logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_created)'),
+  );
 }
 
 async function handleBookingRescheduled(payload) {
@@ -177,6 +187,14 @@ async function handleBookingRescheduled(payload) {
     status: 'rescheduled',
     external_id: newUid ? `cal_com:${newUid}` : undefined,
   });
+
+  forwardBookingToFmCoach({
+    type: 'booking_rescheduled',
+    payload,
+    appointmentId: row.id,
+  }).catch((err) =>
+    logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_rescheduled)'),
+  );
 }
 
 async function handleBookingCancelled(payload) {
@@ -189,6 +207,14 @@ async function handleBookingCancelled(payload) {
   if (!appt) return;
   const reason = payload.cancellationReason || payload.cancellationReasons?.[0] || null;
   await appointments.cancel(appt.id, reason);
+
+  forwardBookingToFmCoach({
+    type: 'booking_cancelled',
+    payload,
+    appointmentId: appt.id,
+  }).catch((err) =>
+    logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_cancelled)'),
+  );
 }
 
 function pickPhone(payload, attendee) {
