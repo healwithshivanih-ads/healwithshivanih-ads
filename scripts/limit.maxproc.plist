@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Raises the per-user macOS process limit from the default (~1064) to
+  4096 soft / 8192 hard. Avoids `forkpty: Device not configured` when
+  long-running daemons (PM2 fm-coach + Mutagen + dev servers + Chrome
+  helpers) accumulate processes.
+
+  Install ONCE — survives reboot:
+    sudo cp scripts/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
+    sudo chown root:wheel /Library/LaunchDaemons/limit.maxproc.plist
+    sudo chmod 644 /Library/LaunchDaemons/limit.maxproc.plist
+    sudo launchctl load -w /Library/LaunchDaemons/limit.maxproc.plist
+
+  Verify (open a fresh terminal first):
+    ulimit -u            # → 4096 soft
+
+  Companion: scripts/limit.maxfiles.plist raises the file-descriptor
+  cap for the same reason.
+
+  Uninstall:
+    sudo launchctl unload -w /Library/LaunchDaemons/limit.maxproc.plist
+    sudo rm /Library/LaunchDaemons/limit.maxproc.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>limit.maxproc</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>launchctl</string>
+    <string>limit</string>
+    <string>maxproc</string>
+    <string>4096</string>
+    <string>8192</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>ServiceIPC</key>
+  <false/>
+</dict>
+</plist>
