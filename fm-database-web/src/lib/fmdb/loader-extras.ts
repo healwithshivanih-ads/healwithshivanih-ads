@@ -465,15 +465,16 @@ export interface UpcomingBooking {
 
 interface RawBookingEvent {
   received_at?: string;
-  cal_created_at?: string;
-  trigger_event?: string;
+  /** Slice-2 contract: "booking_created" | "booking_rescheduled" | "booking_cancelled". */
+  type?: string;
   start_time?: string;
   end_time?: string;
   event_slug?: string;
   event_title?: string;
-  attendee_email?: string;
-  attendee_phone?: string;
   uid?: string;
+  // Legacy fields from the brief parallel-cal.com experiment — kept so any
+  // remaining rows from before the slice-2 pivot still parse.
+  trigger_event?: string;
 }
 
 /**
@@ -533,8 +534,10 @@ export async function loadUpcomingBookings(
     }
 
     for (const e of byUid.values()) {
-      const trigger = (e.trigger_event ?? "").toUpperCase();
-      if (trigger === "BOOKING_CANCELLED" || trigger === "BOOKING_CANCELED") continue;
+      // Slice-2 contract uses `type` ("booking_cancelled"); legacy parallel
+      // experiment used `trigger_event` ("BOOKING_CANCELLED"). Accept both.
+      const stateRaw = (e.type ?? e.trigger_event ?? "").toUpperCase().replace(/^BOOKING_/, "");
+      if (stateRaw === "CANCELLED" || stateRaw === "CANCELED") continue;
       if (!e.start_time || !e.uid) continue;
       const startMs = Date.parse(e.start_time);
       if (Number.isNaN(startMs)) continue;
@@ -548,7 +551,7 @@ export async function loadUpcomingBookings(
         end_time: e.end_time,
         event_slug: e.event_slug,
         event_title: e.event_title,
-        current_state: trigger.replace(/^BOOKING_/, ""),
+        current_state: stateRaw || "CREATED",
         uid: e.uid,
       });
     }

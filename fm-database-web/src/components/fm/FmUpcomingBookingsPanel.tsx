@@ -85,21 +85,16 @@ export function FmUpcomingBookingsPanel({
             color: "var(--fm-text-secondary)",
           }}
         >
-          <strong>Setup needed —</strong> cal.com webhook isn&apos;t pointing
-          here yet. Add a parallel subscriber:
-          <ol style={{ margin: "8px 0 0 18px", padding: 0 }}>
-            <li>
-              cal.com → Settings → Developer → Webhooks → <em>Add Webhook</em>
-            </li>
-            <li>
-              URL: <code style={{ fontSize: 11.5 }}>https://intake.theochretree.com/api/cal-com-webhook</code>
-            </li>
-            <li>Events: BOOKING_CREATED, BOOKING_RESCHEDULED, BOOKING_CANCELLED</li>
-          </ol>
-          <p style={{ margin: "8px 0 0 0" }}>
-            Leave the existing whatsapp-server subscriber in place — both
-            URLs get the same payload.
-          </p>
+          <strong>Waiting on slice 2 —</strong> the WA server doesn&apos;t
+          forward cal.com bookings to fm-coach yet.{" "}
+          <code style={{ fontSize: 11.5 }}>POST /api/cal-com-webhook</code>{" "}
+          is live on this side, just needs the WA-server-side
+          <code style={{ fontSize: 11.5 }}>{" "}forwardBookingToFmCoach()</code>{" "}
+          to be wired into{" "}
+          <code style={{ fontSize: 11.5 }}>src/routes/webhooks/cal-com.js</code>.
+          See{" "}
+          <code style={{ fontSize: 11.5 }}>project_calcom_integration.md</code>{" "}
+          slice 2 for the contract.
         </div>
       </FmPanel>
     );
