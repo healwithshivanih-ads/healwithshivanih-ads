@@ -538,6 +538,132 @@ _HISTAMINE_SYMPTOM_SLUGS = (
 )
 
 
+def _load_drug_cautions_for_client(client: dict) -> list[dict]:
+    """v0.74 — alias-match client medications against fm-database/data/drug_depletions
+    and return a flat list of `protocol_cautions` entries augmented with
+    drug_name + drug_slug + matched_medication. These get serialised into the
+    letter prompt as binding constraints so the AI honours them even when the
+    coach hasn't yet enriched the catalogue topic links.
+    """
+    import yaml
+    out: list[dict] = []
+    meds: list[str] = []
+    raw = client.get("current_medications") or []
+    if isinstance(raw, list):
+        for m in raw:
+            if isinstance(m, dict):
+                n = (m.get("name") or "").strip()
+                if n: meds.append(n)
+            elif m:
+                meds.append(str(m))
+    elif raw:
+        meds.append(str(raw))
+    if not meds:
+        return out
+
+    cat_dir = (Path(__file__).resolve().parent.parent.parent /
+               "fm-database" / "data" / "drug_depletions")
+    if not cat_dir.exists():
+        return out
+
+    drugs: list[dict] = []
+    for p in cat_dir.glob("*.yaml"):
+        if p.name.startswith("_"):
+            continue
+        try:
+            d = yaml.safe_load(p.read_text()) or {}
+        except Exception:
+            continue
+        if isinstance(d, dict):
+            drugs.append(d)
+
+    # Longest alias wins so "metformin xr" picks the more specific entry if any.
+    def match_drug(med_text: str) -> dict | None:
+        text = med_text.lower()
+        best: tuple[int, dict] | None = None
+        for d in drugs:
+            aliases = [d.get("drug_name") or ""] + list(d.get("drug_aliases") or [])
+            for a in aliases:
+                a = (a or "").strip().lower()
+                if a and a in text:
+                    if best is None or len(a) > best[0]:
+                        best = (len(a), d)
+        return best[1] if best else None
+
+    seen: set[tuple[str, str]] = set()
+    for med in meds:
+        drug = match_drug(med)
+        if not drug:
+            continue
+        for c in drug.get("protocol_cautions") or []:
+            item = (c.get("item") or "").strip()
+            if not item:
+                continue
+            key = (drug.get("slug") or "", item)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append({
+                "drug_name": drug.get("drug_name") or drug.get("slug"),
+                "drug_slug": drug.get("slug"),
+                "matched_medication": med,
+                "kind": c.get("kind") or "info",
+                "severity": c.get("severity") or "warning",
+                "item": item,
+                "reason": c.get("reason") or "",
+            })
+    return out
+
+
+def _format_drug_cautions_block(cautions: list[dict]) -> str:
+    """Render drug-derived cautions as a clearly-fenced prompt section.
+
+    AI instructions in this block override the protocol AND the meal-plan
+    defaults — the medication is a hard constraint on the client's life.
+    """
+    if not cautions:
+        return ""
+    critical = [c for c in cautions if c.get("severity") == "critical"]
+    warning = [c for c in cautions if c.get("severity") == "warning"]
+    info = [c for c in cautions if c.get("severity") == "info"]
+    lines = ["", "⚠ MEDICATION-DERIVED PROTOCOL CONSTRAINTS — HARD RULES."]
+    lines.append(
+        "The client is on the following medications. Each medication brings "
+        "constraints that you MUST respect in this meal plan / supplement "
+        "schedule / lifestyle guide. CRITICAL items can block the entire plan "
+        "if violated. WARNING items must be honoured or coach must approve a "
+        "deviation. INFO items are best-practice nudges."
+    )
+    lines.append("")
+    for label, group in (("CRITICAL", critical), ("WARNING", warning), ("INFO", info)):
+        if not group:
+            continue
+        lines.append(f"  [{label}]")
+        for c in group:
+            kind = (c.get("kind") or "").replace("_", " ")
+            lines.append(
+                f"   • {c['drug_name']} ({c['matched_medication']}) → "
+                f"{kind}: {c['item']}"
+            )
+            if c.get("reason"):
+                lines.append(f"     Reason: {c['reason']}")
+    lines.append("")
+    lines.append(
+        "WHEN PLANNING MEALS: avoid all `avoid_food` items literally; emphasise "
+        "all `prefer_food` items; honour `timing` rules in supplement schedule. "
+        "WHEN BUILDING SUPPLEMENT SCHEDULE: refuse any `avoid_supplement` item; "
+        "include `prefer_supplement` items unless the coach has explicitly "
+        "removed them. WHEN SETTING LIFESTYLE: avoid all `avoid_practice` items."
+    )
+    lines.append(
+        "If a CRITICAL caution would be violated by the protocol or by a "
+        "foods_to_emphasise entry, the CRITICAL CAUTION WINS — substitute or "
+        "drop the offending entry without ambiguity."
+    )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def _has_histamine_signal(client: dict) -> bool:
     """True if the client shows histamine-sensitivity signals that should
     trigger a low-histamine meal-plan overlay. See catalogue claim:
@@ -2723,6 +2849,148 @@ Output ONLY the Markdown document — no preamble, no postamble.
     return prompt
 
 
+def _build_prompt_recipes(plan: dict, client: dict, coach_notes: str) -> str:
+    """Standalone recipe pack — full ingredients + method for every ✦ dish
+    referenced from the meal-plan tables.
+
+    Served publicly at /recipes/<planSlug>. Split out of the consolidated
+    letter post-reformat: the main letter stays under 7 pages, the recipe
+    pack lives as a separate reference doc the client opens in the
+    kitchen.
+
+    Read priority for source dishes:
+      1. plan.recipes_to_include (explicit list — coach can pin specific
+         dishes)
+      2. dishes mentioned in the saved meal_plan letter (extracted from
+         the 7-day tables)
+      3. AI picks ~12-20 dishes that fit the dietary preference + season
+
+    We pass the saved meal_plan markdown verbatim (when present) so the
+    AI grounds recipes to what's actually in the table — not invents new
+    dishes the client never sees.
+    """
+    client_name = client.get("display_name") or "the client"
+    first_name = client_name.split()[0] if client_name else "there"
+    diet_pref = client.get("dietary_preference") or "Not specified"
+    _foods_to_avoid_raw = client.get("foods_to_avoid") or ""
+    _reported_triggers_raw = client.get("reported_triggers") or ""
+    _exclusion_parts = [p.strip() for p in [_foods_to_avoid_raw, _reported_triggers_raw] if p.strip()]
+    foods_to_avoid = ", ".join(_exclusion_parts) if _exclusion_parts else "None mentioned"
+    reported_triggers = _reported_triggers_raw or "None reported"
+    city = client.get("city") or ""
+    country = client.get("country") or "India"
+    location_str = ", ".join(filter(None, [city, country])) or "India"
+
+    coach_notes_block = _coach_notes_block(coach_notes)
+    top_of_mind = _top_of_mind_block(client, plan)
+
+    # Pull the saved meal-plan markdown if available so the recipe pack
+    # matches what the client actually sees in the meal tables.
+    import os as _os
+    plan_slug = plan.get("slug") or ""
+    client_id = plan.get("client_id") or ""
+    home = _os.path.expanduser("~")
+    candidate_paths = [
+        f"{home}/fm-plans/clients/{client_id}/meal-plans/{plan_slug}-meal_plan.md",
+        f"{home}/fm-plans/clients/{client_id}/meal-plans/{plan_slug}.md",
+    ]
+    meal_plan_md = ""
+    for p in candidate_paths:
+        try:
+            with open(p, "r", encoding="utf-8") as f:
+                meal_plan_md = f.read()
+            break
+        except FileNotFoundError:
+            continue
+
+    meal_plan_context = ""
+    if meal_plan_md:
+        # Trim to the meal-plan tables block to keep prompt tight.
+        snippet = meal_plan_md[:8000]
+        meal_plan_context = (
+            "MEAL PLAN ALREADY GENERATED FOR THIS CLIENT (extract every ✦ dish you can find and write a recipe for it):\n"
+            "---\n"
+            f"{snippet}\n"
+            "---\n\n"
+        )
+
+    pinned = plan.get("recipes_to_include") or []
+    pinned_block = ""
+    if isinstance(pinned, list) and pinned:
+        pinned_block = (
+            "COACH-PINNED RECIPES (MUST include these, in addition to ✦ dishes from the meal plan above):\n"
+            + "\n".join(f"  - {p}" for p in pinned)
+            + "\n\n"
+        )
+
+    prompt = f"""You are writing a warm, practical RECIPE PACK for one client. This is the
+companion document to their meal plan. The client opens it on their phone
+while cooking — so format must be SCANNABLE, ingredients listed clearly,
+method as numbered steps, no clinical jargon.
+
+{top_of_mind}
+{_BANNED_GENERIC_RULE}
+
+CLIENT PROFILE:
+- Name: {client_name} (address as {first_name} only if needed; mostly just write recipes)
+- Location: {location_str}
+- Dietary preference: {diet_pref}
+- Foods to avoid: {foods_to_avoid}
+- Reported triggers (NEVER include): {reported_triggers}
+
+{coach_notes_block}
+{pinned_block}{meal_plan_context}WHAT TO PRODUCE — a single Markdown document with these sections:
+
+1. **Header note** — 1 short paragraph (3-4 sentences). Welcome
+   {first_name} to the recipe pack, tell them to bookmark it on their
+   phone, mention that ✦ in their meal plan refers to recipes here.
+
+2. **Recipe index** — a single Markdown list with one line per recipe:
+   ```
+   - [Ragi dosa with coconut chutney](#ragi-dosa-with-coconut-chutney)
+   - [Methi paratha with curd](#methi-paratha-with-curd)
+   ```
+   Helps the client jump to the recipe they need.
+
+3. **Recipes** — one `### ✦ Recipe Name` heading per recipe, then:
+
+   ### ✦ Recipe Name
+   **Serves:** 1–2 | **Time:** X min | **Best at:** breakfast / lunch / dinner / snack
+
+   **Ingredients:**
+   - Item 1 — quantity (substitute if needed)
+   - Item 2 — quantity
+   - …
+
+   **Method:**
+   1. First step (specific — temperatures, times)
+   2. Second step
+   3. …
+
+   **Tip:** (optional — one line on storage, prep-ahead, swap idea, or
+   why this recipe is good for {first_name}'s condition.)
+
+RULES:
+- 12–20 recipes minimum. Cover every ✦ dish in the meal plan above
+  PLUS any pinned recipes from the coach.
+- All recipes MUST respect dietary preference ({diet_pref}) and avoid
+  the foods listed above. Reported triggers ({reported_triggers}) are
+  HARD bans — never appear in any recipe.
+- Use specific Indian dish names where applicable. For non-Indian
+  context (UK / US clients), use locally-familiar names.
+- Ingredient quantities in grams + cups / tablespoons / teaspoons —
+  whichever is more natural for that dish.
+- Method steps short. Each step ≤ 2 sentences.
+- DO NOT include nutrition tables, macro breakdowns, or kcal counts
+  per recipe.
+- DO NOT include shopping lists or sourcing notes (those live elsewhere).
+- Sort recipes alphabetically by name.
+
+Output ONLY the Markdown document — no preamble, no postamble.
+"""
+    return prompt
+
+
 def _build_prompt_meal_plan_phase(
     plan: dict,
     client: dict,
@@ -3116,6 +3384,8 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
         return _build_prompt_lifestyle_guide(plan, client, coach_notes)
     if letter_type == "exercise_plan":
         return _build_prompt_exercise_plan(plan, client, coach_notes)
+    if letter_type == "recipes":
+        return _build_prompt_recipes(plan, client, coach_notes)
     # else: consolidated — fall through to existing code
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
 

@@ -42,6 +42,7 @@ const LETTER_TYPES: LetterType[] = [
   "supplement_plan",
   "lifestyle_guide",
   "exercise_plan",
+  "recipes",
 ];
 
 function isLetterType(s: string | undefined): s is LetterType {
@@ -58,6 +59,7 @@ const TYPE_META: Record<
   supplement_plan: { label: "Supplement guide", icon: "💊" },
   lifestyle_guide: { label: "Lifestyle guide", icon: "🌿" },
   exercise_plan: { label: "Exercise plan", icon: "🏃" },
+  recipes: { label: "Recipe pack", icon: "✦" },
 };
 
 export default async function LetterEditorPage({

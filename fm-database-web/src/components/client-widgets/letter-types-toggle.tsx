@@ -19,6 +19,7 @@ const LETTER_TYPES: { value: string; label: string }[] = [
   { value: "supplement_plan", label: "💊 Supplements" },
   { value: "lifestyle_guide", label: "🌿 Lifestyle" },
   { value: "exercise_plan", label: "🏃 Exercise" },
+  { value: "recipes", label: "✦ Recipes" },
 ];
 
 interface Props {

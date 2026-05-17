@@ -585,7 +585,11 @@ export type LetterType =
   | "meal_plan_phase"
   | "supplement_plan"
   | "lifestyle_guide"
-  | "exercise_plan";
+  | "exercise_plan"
+  // Standalone recipe pack — full ingredients + method for every ✦ dish.
+  // Served publicly at /recipes/<planSlug>. Split out of the consolidated
+  // letter (post-reformat) so the main letter stays under 7 pages.
+  | "recipes";
 
 /** File stem for a given letter type — consolidated keeps the bare planSlug for backwards compat.
  *  Phase letters get a -wk{start}-{end} suffix so each phase has its own file. */
@@ -860,6 +864,7 @@ const ALL_LETTER_TYPES: LetterType[] = [
   "supplement_plan",
   "lifestyle_guide",
   "exercise_plan",
+  "recipes",
 ];
 
 /**

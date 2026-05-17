@@ -31,6 +31,7 @@ const TYPE_LABEL: Record<LetterType, string> = {
   lifestyle_guide: "lifestyle guide",
   exercise_plan: "exercise plan",
   meal_plan_phase: "meal plan (phase)",
+  recipes: "recipe pack",
 };
 
 export function RegenerateStaleButton({

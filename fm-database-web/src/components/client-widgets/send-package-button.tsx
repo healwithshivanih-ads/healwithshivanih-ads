@@ -73,6 +73,13 @@ const PACKAGE_TYPES: PackageType[] = [
     defaultChecked: false,
   },
   {
+    type: "recipes",
+    label: "Recipe Pack",
+    emoji: "✦",
+    desc: "Standalone recipe pack — full ingredients + method for every ✦ dish in the meal plan. Served at /recipes/<planSlug>; linked from meal-plan tables.",
+    defaultChecked: true,
+  },
+  {
     type: "consolidated",
     label: "Full Wellness Letter",
     emoji: "📄",

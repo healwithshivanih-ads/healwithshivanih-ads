@@ -31,6 +31,7 @@ const VALID_TYPES: LetterType[] = [
   "supplement_plan",
   "lifestyle_guide",
   "exercise_plan",
+  "recipes",
 ];
 
 function escapeHtml(s: string): string {
