@@ -39,6 +39,7 @@ import {
   FmInboundMessagesBanner,
   FmIntakeActivityBanner,
   FmScheduleDuePanel,
+  FmUpcomingBookingsPanel,
 } from "@/components/fm";
 import { TriageSections, type TriageRow, type SignalKind } from "./triage-sections";
 
@@ -241,6 +242,26 @@ export default async function DashboardV2() {
     if (v.total > 0) unreadByClient[k] = v;
   });
 
+  // Upcoming cal.com bookings — current state per uid, soonest first.
+  // webhookConfigured is a heuristic for the empty-state copy: if the
+  // file exists at all, the webhook has run at least once and "no
+  // bookings" means "nothing scheduled", not "setup missing".
+  const { loadUpcomingBookings } = await import("@/lib/fmdb/loader-extras");
+  const clientNames = new Map<string, string>();
+  for (const c of clients as Array<Record<string, unknown>>) {
+    const cid = c.client_id as string | undefined;
+    if (cid) clientNames.set(cid, (c.display_name as string | undefined) ?? cid);
+  }
+  const upcomingBookings = await loadUpcomingBookings(clientNames);
+  let bookingsWebhookConfigured = false;
+  try {
+    const { getPlansRoot } = await import("@/lib/fmdb/paths");
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    await fs.access(path.join(getPlansRoot(), "_calcom_bookings.yaml"));
+    bookingsWebhookConfigured = true;
+  } catch { /* file missing → false */ }
+
   // Compute signals
   const rows: TriageRow[] = await Promise.all(
     (clients as ClientRow[]).map(async (c) => ({
@@ -412,6 +433,9 @@ export default async function DashboardV2() {
 
         {/* Catalogue commit — design 9A with change list disclosure */}
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
+
+        {/* Upcoming cal.com bookings — fed by /api/cal-com-webhook */}
+        <FmUpcomingBookingsPanel rows={upcomingBookings} webhookConfigured={bookingsWebhookConfigured} />
 
         {/* WhatsApp inbound messages — design 10A with unread badges */}
         <FmScheduleDuePanel rows={scheduleDueRows} unread={unreadByClient} />

@@ -441,6 +441,123 @@ export async function markWhatsappInboxRead(clientId: string): Promise<void> {
   }
 }
 
+// ── Cal.com bookings — current-state view for dashboard ─────────────────────
+//
+// Raw events are append-only in _calcom_bookings.yaml (one row per
+// cal.com event). For a "what's coming up?" dashboard widget the coach
+// wants the CURRENT state per booking (uid): the latest CANCELLED row
+// wins (drops the booking), otherwise the latest CREATED/RESCHEDULED row.
+//
+// Cost: one file read + an O(N) reduce. With the 50-events-per-client
+// cap on the raw file this stays cheap even at thousands of bookings.
+
+export interface UpcomingBooking {
+  client_id: string;
+  display_name?: string;
+  start_time: string;
+  end_time?: string;
+  event_slug?: string;
+  event_title?: string;
+  /** "CREATED" | "RESCHEDULED" — never CANCELLED (those are filtered out). */
+  current_state: string;
+  uid: string;
+}
+
+interface RawBookingEvent {
+  received_at?: string;
+  cal_created_at?: string;
+  trigger_event?: string;
+  start_time?: string;
+  end_time?: string;
+  event_slug?: string;
+  event_title?: string;
+  attendee_email?: string;
+  attendee_phone?: string;
+  uid?: string;
+}
+
+/**
+ * Reads _calcom_bookings.yaml and returns one row per booking-uid,
+ * showing the current state. Defaults to upcoming-only (start_time > now);
+ * pass `includePast` to see recently-passed sessions too.
+ *
+ * Sorted by start_time ascending — soonest first, which is what the
+ * coach wants to scan in the morning.
+ *
+ * `clientNames` maps client_id → display_name so the widget can render
+ * names without re-loading client.yaml per row. Caller supplies it
+ * from the existing clients fetch.
+ */
+export async function loadUpcomingBookings(
+  clientNames: Map<string, string>,
+  options?: {
+    includePast?: boolean;
+    /** Look back this many days for "recent past" rows. Default 1. */
+    pastDays?: number;
+    /** Maximum rows returned. Default 20 — fits a dashboard panel. */
+    limit?: number;
+  },
+): Promise<UpcomingBooking[]> {
+  const root = getPlansRoot();
+  let raw: Record<string, RawBookingEvent[]> = {};
+  try {
+    const text = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const parsed = yaml.load(text);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      raw = parsed as Record<string, RawBookingEvent[]>;
+    }
+  } catch {
+    return [];
+  }
+
+  const includePast = options?.includePast ?? false;
+  const pastCutoffMs = Date.now() - (options?.pastDays ?? 1) * 86_400_000;
+  const limit = options?.limit ?? 20;
+  const nowMs = Date.now();
+
+  const rows: UpcomingBooking[] = [];
+
+  for (const [clientId, events] of Object.entries(raw)) {
+    if (!Array.isArray(events)) continue;
+    // Group by uid; latest event per uid wins. received_at is what we sort
+    // by (when fm-coach received the event). cal.com sends RESCHEDULED with
+    // the SAME uid as the original CREATED so this naturally collapses.
+    const byUid = new Map<string, RawBookingEvent>();
+    for (const e of events) {
+      const uid = e.uid;
+      if (!uid) continue;
+      const prev = byUid.get(uid);
+      if (!prev || (e.received_at ?? "") > (prev.received_at ?? "")) {
+        byUid.set(uid, e);
+      }
+    }
+
+    for (const e of byUid.values()) {
+      const trigger = (e.trigger_event ?? "").toUpperCase();
+      if (trigger === "BOOKING_CANCELLED" || trigger === "BOOKING_CANCELED") continue;
+      if (!e.start_time || !e.uid) continue;
+      const startMs = Date.parse(e.start_time);
+      if (Number.isNaN(startMs)) continue;
+      if (!includePast && startMs < nowMs) continue;
+      if (includePast && startMs < pastCutoffMs) continue;
+
+      rows.push({
+        client_id: clientId,
+        display_name: clientNames.get(clientId),
+        start_time: e.start_time,
+        end_time: e.end_time,
+        event_slug: e.event_slug,
+        event_title: e.event_title,
+        current_state: trigger.replace(/^BOOKING_/, ""),
+        uid: e.uid,
+      });
+    }
+  }
+
+  rows.sort((a, b) => a.start_time.localeCompare(b.start_time));
+  return rows.slice(0, limit);
+}
+
 // ── Per-client unread counts (badge backend) ─────────────────────────────────
 //
 // Computes how many fresh activity items each client has since the coach
