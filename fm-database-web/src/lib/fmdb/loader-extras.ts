@@ -490,10 +490,18 @@ export async function getClientUnreadCounts(
      *  caller reuse work from getSchedulingDueRows etc. Empty set is
      *  fine — alerts bucket stays 0. */
     alertClientIds?: Set<string>;
+    /** Optional map of client_id → ISO timestamp of when the alert
+     *  first became applicable (e.g. last_session_date + 12d, or
+     *  plan_period_recheck_date). If provided, the alerts bucket
+     *  clears only when `plan_seen_at >= triggered_at`. Without
+     *  this map the bucket falls back to a 1-day-granularity
+     *  proxy (today's midnight). */
+    alertTriggeredAt?: Map<string, string>;
   },
 ): Promise<Map<string, ClientUnreadCounts>> {
   const daysBack = options?.daysBack ?? 14;
   const alertSet = options?.alertClientIds ?? new Set<string>();
+  const alertTriggeredAt = options?.alertTriggeredAt ?? new Map<string, string>();
   const root = getPlansRoot();
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - daysBack);
@@ -574,16 +582,20 @@ export async function getClientUnreadCounts(
 
       // ── Plan/system alerts ──
       // Caller passes the set of client_ids currently in scheduling-due
-      // state. We count 1 if this client is in the set AND the coach
-      // hasn't viewed Plan since the alert window opened (proxy: any
-      // plan_seen_at clears the chip until tomorrow's recompute).
+      // state PLUS a map of client_id → ISO triggered_at (when the alert
+      // first became applicable — e.g. last_session_date + 12d, or
+      // plan_period_recheck_date). We count 1 iff:
+      //   client is in alertSet AND plan_seen_at < triggered_at.
+      // Without a triggered_at we fall back to today's midnight as a
+      // 1-day-granularity proxy (legacy behaviour).
       if (alertSet.has(clientId)) {
-        // No precise timestamp for "alert first triggered" — use today as a
-        // conservative proxy. Coach viewing Plan today clears it.
-        const todayMs = Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
-        if (planSeenMs < todayMs) {
+        const triggeredAt = alertTriggeredAt.get(clientId);
+        const triggeredMs = triggeredAt
+          ? Date.parse(triggeredAt)
+          : Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
+        if (planSeenMs < triggeredMs) {
           counts.alerts = 1;
-          latest.alerts = new Date().toISOString();
+          latest.alerts = triggeredAt ?? new Date().toISOString();
         }
       }
 

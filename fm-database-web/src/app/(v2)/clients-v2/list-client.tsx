@@ -259,6 +259,18 @@ export function ClientCard({
         position: "relative",
       }}
     >
+      {unread && unread.total > 0 && (
+        <div
+          style={{
+            position: "absolute",
+            top: 10,
+            right: 10,
+            zIndex: 1,
+          }}
+        >
+          <UnreadBadge counts={unread} />
+        </div>
+      )}
       {/* Top row: avatar + name + stage */}
       <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
         <AvatarBlock
@@ -278,7 +290,6 @@ export function ClientCard({
             }}
           >
             {row.display_name}
-            <UnreadBadge counts={unread} />
           </div>
           <div
             style={{

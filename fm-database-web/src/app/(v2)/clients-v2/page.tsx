@@ -153,9 +153,28 @@ export default async function ClientsListV2Page({
     allPlans as Array<Record<string, unknown>>,
     todayStr,
   );
+  const alertTriggeredAt = new Map<string, string>();
+  for (const r of dueRowsForAlerts) {
+    const candidates: string[] = [];
+    if (r.last_session_date) {
+      const t = new Date(r.last_session_date + "T00:00:00Z");
+      t.setUTCDate(t.getUTCDate() + 12);
+      candidates.push(t.toISOString());
+    }
+    if (r.plan_period_recheck_date) {
+      candidates.push(new Date(r.plan_period_recheck_date + "T00:00:00Z").toISOString());
+    }
+    if (candidates.length > 0) {
+      candidates.sort();
+      alertTriggeredAt.set(r.client_id, candidates[candidates.length - 1]);
+    }
+  }
   const unreadMap = await getClientUnreadCounts(
     clients as Array<Record<string, unknown>>,
-    { alertClientIds: new Set(dueRowsForAlerts.map((r) => r.client_id)) },
+    {
+      alertClientIds: new Set(dueRowsForAlerts.map((r) => r.client_id)),
+      alertTriggeredAt,
+    },
   );
 
   // Build per-client active plan lookup + most-recent session + photo

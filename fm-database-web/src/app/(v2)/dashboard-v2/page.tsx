@@ -212,9 +212,29 @@ export default async function DashboardV2() {
   // is consistent with what's already shown on the dashboard.
   const { getClientUnreadCounts } = await import("@/lib/fmdb/loader-extras");
   const alertSet = new Set(scheduleDueRows.map((r) => r.client_id));
+  // Per-alert triggered_at — newest of (last_session_date + 12d) and
+  // plan_period_recheck_date for each due client. Lets the Plan tab
+  // clear the chip surgically (only when seen-at >= triggered-at)
+  // instead of the today-midnight 1-day-granularity proxy.
+  const alertTriggeredAt = new Map<string, string>();
+  for (const r of scheduleDueRows) {
+    const candidates: string[] = [];
+    if (r.last_session_date) {
+      const t = new Date(r.last_session_date + "T00:00:00Z");
+      t.setUTCDate(t.getUTCDate() + 12);
+      candidates.push(t.toISOString());
+    }
+    if (r.plan_period_recheck_date) {
+      candidates.push(new Date(r.plan_period_recheck_date + "T00:00:00Z").toISOString());
+    }
+    if (candidates.length > 0) {
+      candidates.sort();
+      alertTriggeredAt.set(r.client_id, candidates[candidates.length - 1]);
+    }
+  }
   const unreadMap = await getClientUnreadCounts(
     clients as Array<Record<string, unknown>>,
-    { alertClientIds: alertSet },
+    { alertClientIds: alertSet, alertTriggeredAt },
   );
   const unreadByClient: Record<string, import("@/lib/fmdb/loader-extras").ClientUnreadCounts> = {};
   unreadMap.forEach((v, k) => {
