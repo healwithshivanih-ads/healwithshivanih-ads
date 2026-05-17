@@ -268,6 +268,18 @@ export async function POST(req: Request) {
     user_agent: allHeaders["user-agent"] || "",
   });
 
+  // Ping / health-check fast path: cal.com's "test webhook" button sends
+  // an UNSIGNED POST and expects 2xx to mark the endpoint reachable. We
+  // can't verify auth so we don't process the body — just return 200.
+  // Real bookings always carry a signature and skip this branch.
+  if (!waSig && !calSig) {
+    return NextResponse.json({
+      ok: true,
+      ping_accepted: true,
+      note: "no signature header — body not processed. real bookings must include X-Cal-Signature-256.",
+    });
+  }
+
   let mode: "slice2" | "calcom_direct" | null = null;
   if (waSecret && waSig) {
     if (!verifySignature(rawBody, waSig, waSecret)) {
@@ -280,21 +292,11 @@ export async function POST(req: Request) {
     }
     mode = "calcom_direct";
   } else if (!waSecret && !calSecret) {
-    // Dev: no secrets set. Allow but warn.
-    mode = waSig ? "slice2" : calSig ? "calcom_direct" : null;
-  } else if (!waSig && !calSig) {
-    // No signature header at all — almost certainly cal.com's "test
-    // webhook" / health-check ping. Cal.com expects a 2xx to mark the
-    // webhook reachable; we can't verify auth so we ALWAYS return 200
-    // without processing the body. Real bookings carry the signature
-    // and go down the normal path.
-    return NextResponse.json({
-      ok: true,
-      ping_accepted: true,
-      note: "no signature header — body not processed. real bookings must include X-Cal-Signature-256.",
-    });
+    // Dev: no secrets set but a signature header IS present. Allow but
+    // skip verification — used in tests where we mock signatures.
+    mode = waSig ? "slice2" : "calcom_direct";
   } else {
-    return NextResponse.json({ ok: false, error: "no_signature_header" }, { status: 401 });
+    return NextResponse.json({ ok: false, error: "no_matching_secret" }, { status: 401 });
   }
 
   let body: SliceTwoPayload & CalDirectPayload;
