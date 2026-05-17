@@ -94,10 +94,13 @@ async function processCalCom(body, webhookRowId) {
     logger.error({ err: e.message, eventType }, 'cal.com process error');
   }
   if (webhookRowId) {
-    await db().from('webhook_events')
-      .update({ processed: true, processed_at: new Date().toISOString() })
-      .eq('id', webhookRowId)
-      .catch(() => {});
+    try {
+      await db().from('webhook_events')
+        .update({ processed: true, processed_at: new Date().toISOString() })
+        .eq('id', webhookRowId);
+    } catch (e) {
+      logger.warn({ err: e.message }, 'cal.com: marking webhook_events processed failed');
+    }
   }
 }
 

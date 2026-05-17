@@ -76,10 +76,13 @@ async function processCalendly(body, webhookRowId) {
     logger.error({ err: e.message, eventType }, 'calendly process error');
   }
   if (webhookRowId) {
-    await db().from('webhook_events')
-      .update({ processed: true, processed_at: new Date().toISOString() })
-      .eq('id', webhookRowId)
-      .catch(() => {});
+    try {
+      await db().from('webhook_events')
+        .update({ processed: true, processed_at: new Date().toISOString() })
+        .eq('id', webhookRowId);
+    } catch (e) {
+      logger.warn({ err: e.message }, 'calendly: marking webhook_events processed failed');
+    }
   }
 }
 

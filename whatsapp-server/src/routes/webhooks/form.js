@@ -58,10 +58,13 @@ async function processForm(body, webhookRowId) {
     logger.error({ err: e.message }, 'form inbound processing failed');
   }
   if (webhookRowId) {
-    await db().from('webhook_events')
-      .update({ processed: true, processed_at: new Date().toISOString() })
-      .eq('id', webhookRowId)
-      .catch(() => {});
+    try {
+      await db().from('webhook_events')
+        .update({ processed: true, processed_at: new Date().toISOString() })
+        .eq('id', webhookRowId);
+    } catch (e) {
+      logger.warn({ err: e.message }, 'form: marking webhook_events processed failed');
+    }
   }
 }
 

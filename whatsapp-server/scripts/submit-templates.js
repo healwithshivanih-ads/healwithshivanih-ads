@@ -146,6 +146,18 @@ const TEMPLATES = [
     example: [['Priya', 'https://fm-coach.example.com/intake/abc123xyz']],
   },
   {
+    // Sent from the FM coach client overview "📅 Send booking link" widget.
+    // Coach picks an event type (Discovery / Intake / Coaching) at send time;
+    // the widget builds the full cal.com URL and passes it as {{2}}.
+    // Auto-linkified by WhatsApp.
+    name: 'fm_book_session_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, ready to book your next session? You can grab a time that works for you here:\n\n{{2}}\n\nLooking forward to it.\n\n— Shivani Hari\nYour Functional Health Coach',
+    example: [['Priya', 'https://cal.com/shivani-hariharan-0xyy3l/discovery-consultation']],
+  },
+  {
     // Sent by POST /api/cron/intake-reminders when a client has an open intake
     // token they haven't submitted yet. Capped at 2 reminders per token, ≥5 d
     // apart. The URL in {{3}} is the unique tokenised intake link, e.g.
