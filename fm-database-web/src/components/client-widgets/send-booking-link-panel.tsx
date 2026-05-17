@@ -57,6 +57,11 @@ export function SendBookingLinkPanel({
   const [customSlug, setCustomSlug] = useState<string>("");
   const [customBody, setCustomBody] = useState("");
   const [customSending, setCustomSending] = useState(false);
+  // Highlighted slug — coach landed here from a "Send booking link"
+  // banner that pre-selected an event type via ?type=<slug>. Renders
+  // a subtle ring on the recommended button so it's obvious which one
+  // to click. Doesn't auto-send (coach still chooses).
+  const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
 
   // Load links on mount; refresh isn't needed unless coach edits yaml
   // and reloads the page.
@@ -66,6 +71,13 @@ export function SendBookingLinkPanel({
       setLinks(r);
     })();
   }, []);
+
+  // Pick up `?type=<slug>` so the Booking-due banner can deep-link with
+  // its recommended event type pre-highlighted (one-click intent).
+  useEffect(() => {
+    const t = searchParams.get("type");
+    if (t) setHighlightedSlug(t);
+  }, [searchParams]);
 
   // Auto-open the customise disclosure when ?picker=book&customise=1 is
   // present. Coach's mid-call FAB drops them here with the picker
@@ -83,6 +95,7 @@ export function SendBookingLinkPanel({
       const params = new URLSearchParams(searchParams.toString());
       params.delete("picker");
       params.delete("customise");
+      params.delete("type");
       const next = params.toString();
       // Replace without scroll so the page doesn't jump
       router.replace(`${pathname}${next ? "?" + next : ""}`, { scroll: false });
@@ -217,6 +230,7 @@ export function SendBookingLinkPanel({
             {links.map((link) => {
               const recentlySent = lastSent?.slug === link.slug && Date.now() - lastSent.at < 4000;
               const sending = sendingSlug === link.slug;
+              const isRecommended = highlightedSlug === link.slug && !recentlySent;
               return (
                 <button
                   key={link.slug}
@@ -225,16 +239,47 @@ export function SendBookingLinkPanel({
                   disabled={sending || !!sendingSlug}
                   style={{
                     padding: "14px 12px",
-                    background: recentlySent ? "rgba(16, 185, 129, 0.12)" : "var(--fm-surface)",
-                    border: `1px solid ${recentlySent ? "rgba(16, 185, 129, 0.45)" : "var(--fm-border)"}`,
+                    background: recentlySent
+                      ? "rgba(16, 185, 129, 0.12)"
+                      : isRecommended
+                        ? "rgba(99, 102, 241, 0.08)"
+                        : "var(--fm-surface)",
+                    border: `${isRecommended ? 2 : 1}px solid ${
+                      recentlySent
+                        ? "rgba(16, 185, 129, 0.45)"
+                        : isRecommended
+                          ? "#4338ca"
+                          : "var(--fm-border)"
+                    }`,
                     borderRadius: 10,
                     textAlign: "left",
                     cursor: sending ? "wait" : sendingSlug ? "not-allowed" : "pointer",
                     fontFamily: "inherit",
                     transition: "background 0.15s, border-color 0.15s",
                     opacity: sendingSlug && !sending ? 0.5 : 1,
+                    boxShadow: isRecommended ? "0 0 0 3px rgba(99, 102, 241, 0.18)" : "none",
+                    position: "relative",
                   }}
                 >
+                  {isRecommended && (
+                    <span
+                      style={{
+                        position: "absolute",
+                        top: -8,
+                        right: 8,
+                        fontSize: 9.5,
+                        fontWeight: 800,
+                        background: "#4338ca",
+                        color: "#fff",
+                        padding: "2px 7px",
+                        borderRadius: 4,
+                        letterSpacing: 0.5,
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Recommended
+                    </span>
+                  )}
                   <div style={{ fontSize: 20, marginBottom: 4 }}>{link.emoji}</div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
                     {link.label}

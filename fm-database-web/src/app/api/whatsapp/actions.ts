@@ -192,14 +192,15 @@ export async function recordOutboundMessageAction(input: {
   // `[plan: <slug>]`. Plan supersede → next message starts a new
   // session. Pre-programme clients accumulate under `[plan: prospect]`.
   const { getActivePlanSlugForClient } = await import("@/lib/fmdb/active-plan-slug");
-  const planSlug = await getActivePlanSlugForClient(input.clientId);
-  const planMarker = `[plan: ${planSlug}]`;
-  const presenting = `${planMarker} ${tags}\n\n${input.renderedBody}`;
+  const { marker } = await getActivePlanSlugForClient(input.clientId);
+  const presenting = `${marker} ${tags}\n\n${input.renderedBody}`;
   const payload = JSON.stringify({
     client_id: input.clientId,
     session_type: "quick_note",
     presenting_complaints: presenting,
-    append_if_today_match: planMarker,
+    // Marker = [plan: <slug>] [window: <ISO>] — window rotates every
+    // 28 days so files cap at ~28 days of chat. See active-plan-slug.ts.
+    append_if_today_match: marker,
     match_anywhere: true,
   });
 
@@ -310,6 +311,7 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[template:[^\]]+\]/gi, "")
           .replace(/\[type:[^\]]+\]/gi, "")
           .replace(/\[plan:[^\]]+\]/gi, "")
+          .replace(/\[window:[^\]]+\]/gi, "")
           .trim();
         if (!text) return;
 

@@ -79,13 +79,16 @@ async function saveQuickNote(
   // [source: whatsapp_outbound] tag so the thread panel renders
   // direction correctly after splitting on `---`.
   const { getActivePlanSlugForClient } = await import("@/lib/fmdb/active-plan-slug");
-  const planSlug = await getActivePlanSlugForClient(clientId);
-  const planMarker = `[plan: ${planSlug}]`;
+  const { marker } = await getActivePlanSlugForClient(clientId);
   const payload = {
     client_id: clientId,
     session_type: "quick_note",
-    presenting_complaints: `${planMarker} [source: whatsapp_webhook]\n\n${text}`,
-    append_if_today_match: planMarker,
+    presenting_complaints: `${marker} [source: whatsapp_webhook]\n\n${text}`,
+    // Marker carries BOTH the plan slug AND the 28-day window anchor,
+    // so when the window rolls over (every 28 days into a plan) the
+    // marker string changes → save-session.py won't find a match →
+    // new session created. Caps each file at ~28 days of chat history.
+    append_if_today_match: marker,
     match_anywhere: true,
   };
 
