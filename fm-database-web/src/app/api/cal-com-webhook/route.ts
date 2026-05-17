@@ -1,60 +1,47 @@
 /**
- * POST /api/cal-com-webhook  —  slice 2 receiver
+ * POST /api/cal-com-webhook  —  dual-shape booking-event receiver
  *
- * fm-coach is a DOWNSTREAM subscriber, not a parallel cal.com webhook.
- * The cal.com → fm-coach data flow is:
+ * Accepts TWO payload shapes / two signing-secret paths in parallel:
  *
- *   cal.com  →  whatsapp-server-shivani.fly.dev/webhooks/cal-com
- *               (the SOLE cal.com subscriber; owns matching + dedup +
- *                appointments table + reminder scheduling)
- *                         ↓
- *               WA server forwards a resolved booking event to fm-coach
- *               via this endpoint, signed with WHATSAPP_WEBHOOK_SECRET
- *               (mirrors the existing forwardInbound pattern).
+ *   ┌─────────────────────────────────────────────────────────────────┐
+ *   │ Mode A — slice 2 (WA server forwarder)                          │
+ *   │   Sent by whatsapp-server-shivani's forwardBookingToFmCoach()   │
+ *   │   Header:  X-WhatsApp-Signature-256                             │
+ *   │   Secret:  WHATSAPP_WEBHOOK_SECRET                              │
+ *   │   Shape:   { type, booking, attendee }                          │
+ *   └─────────────────────────────────────────────────────────────────┘
  *
- * Why this shape instead of subscribing fm-coach directly to cal.com:
- *  - Single source of truth for `appointments` (WA server's Postgres).
- *  - One matcher handles "client booked with a different phone".
- *  - Cancellation / reschedule consistency: WA server marks the row
- *    and skips reminders in one place.
+ *   ┌─────────────────────────────────────────────────────────────────┐
+ *   │ Mode B — direct cal.com subscriber                              │
+ *   │   Sent by cal.com when fm-coach is registered as a webhook URL  │
+ *   │   Header:  X-Cal-Signature-256                                  │
+ *   │   Secret:  CAL_COM_SIGNING_SECRET                               │
+ *   │   Shape:   { triggerEvent, createdAt, payload: {...} }          │
+ *   └─────────────────────────────────────────────────────────────────┘
  *
- * See ~/.claude/projects/-Users-shivani-code-healwithshivanih-ads/
- *     memory/project_calcom_integration.md  (slice 2 design).
+ * Why both? Designed for slice 2 originally — Fly → Tailscale Funnel
+ * to the Mac mini has an ECONNRESET issue (Fly bom egress can't TLS-
+ * handshake into Tailscale Funnel reliably). Adding cal.com as a
+ * second subscriber bypasses that hop entirely; the slice 2 forwarder
+ * still tries and self-heals when the network is fixed. Dedup on
+ * `booking.uid` keeps both pipes safe to fire in parallel — same
+ * booking from both pipes = one stored row per uid (the slice 2 path
+ * wins because its `received_at` is newer when slice 2 is healthy;
+ * cal.com wins when slice 2 is broken).
  *
- * Expected payload (sent by WA server's forwardBookingToFmCoach()):
- *   {
- *     "type": "booking_created" | "booking_rescheduled" | "booking_cancelled",
- *     "booking": {
- *       "uid":         "cal.com booking uid (stable across reschedules)",
- *       "external_id": "cal_com:<uid>",
- *       "appointment_id": "<wa-server-uuid>",   // optional, for cross-system correlation
- *       "event_slug":  "programme-intake-session",
- *       "event_title": "Programme Intake Session",
- *       "start_time":  "ISO8601",
- *       "end_time":    "ISO8601",
- *       "status":      "confirmed" | "cancelled" | "rescheduled",
- *       "title":       "Programme Intake Session between Shivani and …"
- *     },
- *     "attendee": {
- *       "email": "...",
- *       "phone": "...",
- *       "name":  "..."
- *     }
- *   }
+ * Signature priority:
+ *   1. If X-WhatsApp-Signature-256 header present → verify with
+ *      WHATSAPP_WEBHOOK_SECRET → treat as Mode A
+ *   2. Else if X-Cal-Signature-256 present → verify with
+ *      CAL_COM_SIGNING_SECRET → treat as Mode B
+ *   3. Else: 401
  *
- * fm-coach matches the attendee to its own client_id by email-then-phone
- * (fm-coach's clients have their own identifiers; the WA server's contact
- * IDs are separate). Unmatched events land in _calcom_unmatched.yaml for
- * coach to review.
- *
- * Signature: HMAC-SHA256(raw body, WHATSAPP_WEBHOOK_SECRET), passed in
- * `X-WhatsApp-Signature-256` header (same name as the WA-server forwarder
- * uses for inbound messages — keeps one secret, one verification path).
- *
- * Idempotency: keyed on `booking.uid`. A second event for the same uid
- * REPLACES the prior current-state row in the per-client list. The full
- * event history stays appended for audit; the dashboard's loader
- * (loadUpcomingBookings) collapses by uid at read time.
+ * Storage: ~/fm-plans/_calcom_bookings.yaml, keyed by client_id, list
+ * of events newest-first, capped at 50 per client. Dedup: if a row
+ * with the same uid already exists for that client, the newer event
+ * REPLACES it (the old one is removed from the list before unshift).
+ * The dashboard's loadUpcomingBookings() further collapses by uid at
+ * read time as a belt-and-braces safety.
  */
 import { NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "node:crypto";
@@ -65,6 +52,7 @@ import { getPlansRoot } from "@/lib/fmdb/paths";
 
 export const dynamic = "force-dynamic";
 
+// ── Mode A (slice 2) payload ────────────────────────────────────────────────
 interface SliceTwoPayload {
   type?: "booking_created" | "booking_rescheduled" | "booking_cancelled";
   booking?: {
@@ -85,10 +73,33 @@ interface SliceTwoPayload {
   };
 }
 
+// ── Mode B (raw cal.com) payload ────────────────────────────────────────────
+interface CalAttendee {
+  email?: string;
+  phoneNumber?: string;
+  smsReminderNumber?: string;
+  name?: string;
+}
+interface CalDirectPayload {
+  triggerEvent?: string;
+  createdAt?: string;
+  payload?: {
+    uid?: string;
+    bookingId?: string | number;
+    id?: string | number;
+    startTime?: string;
+    endTime?: string;
+    title?: string;
+    type?: string;
+    eventTypeSlug?: string;
+    eventTitle?: string;
+    attendees?: CalAttendee[];
+    responses?: { email?: string; phone?: string; name?: string };
+  };
+}
+
 interface StoredBooking {
-  /** When fm-coach received this event. Drives the unread chip. */
   received_at: string;
-  /** booking_created | booking_rescheduled | booking_cancelled */
   type: string;
   uid: string;
   external_id?: string;
@@ -100,8 +111,10 @@ interface StoredBooking {
   attendee_email?: string;
   attendee_phone?: string;
   attendee_name?: string;
-  /** Which fm-coach client field resolved the match. */
   matched_by?: "email" | "phone" | null;
+  /** Which pipe delivered this row. Useful for debugging when one pipe
+   *  is up and the other isn't. */
+  source: "slice2" | "calcom_direct";
 }
 
 const BOOKINGS_FILE_NAME = "_calcom_bookings.yaml";
@@ -118,9 +131,7 @@ function verifySignature(rawBody: string, header: string | null, secret: string)
   }
 }
 
-interface BookingsFile {
-  [clientId: string]: StoredBooking[];
-}
+type BookingsFile = Record<string, StoredBooking[]>;
 
 async function readBookingsFile(): Promise<BookingsFile> {
   const root = getPlansRoot();
@@ -146,7 +157,7 @@ async function writeBookingsFile(data: BookingsFile): Promise<void> {
   );
 }
 
-async function appendUnmatched(evt: SliceTwoPayload): Promise<void> {
+async function appendUnmatched(snapshot: Record<string, unknown>): Promise<void> {
   const root = getPlansRoot();
   const file = path.join(root, "_calcom_unmatched.yaml");
   let arr: unknown[] = [];
@@ -155,17 +166,7 @@ async function appendUnmatched(evt: SliceTwoPayload): Promise<void> {
     const parsed = yaml.load(raw);
     if (Array.isArray(parsed)) arr = parsed;
   } catch { /* missing */ }
-  arr.push({
-    received_at: new Date().toISOString(),
-    type: evt.type,
-    uid: evt.booking?.uid,
-    attendee_email: evt.attendee?.email,
-    attendee_phone: evt.attendee?.phone,
-    attendee_name: evt.attendee?.name,
-    event_slug: evt.booking?.event_slug,
-    start_time: evt.booking?.start_time,
-    note: "no fm-coach client matched on email or phone — review and update client.yaml if needed",
-  });
+  arr.push({ received_at: new Date().toISOString(), ...snapshot });
   await fs.writeFile(file, yaml.dump(arr), "utf-8");
 }
 
@@ -200,93 +201,192 @@ async function matchClient(
   return null;
 }
 
+/** Append (or dedup-replace) a booking event into the file. */
+async function storeBooking(clientId: string, evt: StoredBooking): Promise<void> {
+  const data = await readBookingsFile();
+  const list = (data[clientId] ?? []).filter((r) => r.uid !== evt.uid);
+  list.unshift(evt);
+  data[clientId] = list.slice(0, 50);
+  await writeBookingsFile(data);
+}
+
+/** Convert a raw cal.com payload to the canonical StoredBooking shape. */
+function fromCalcom(body: CalDirectPayload): {
+  evt: Omit<StoredBooking, "received_at" | "source" | "matched_by">;
+  attendee: { email?: string; phone?: string; name?: string };
+} | null {
+  const trigger = (body.triggerEvent || "").toUpperCase();
+  const typeMap: Record<string, StoredBooking["type"]> = {
+    BOOKING_CREATED: "booking_created",
+    BOOKING_RESCHEDULED: "booking_rescheduled",
+    BOOKING_CANCELLED: "booking_cancelled",
+    BOOKING_CANCELED: "booking_cancelled",
+  };
+  const type = typeMap[trigger];
+  if (!type) return null;
+  const p = body.payload ?? {};
+  const uid = String(p.uid || p.bookingId || p.id || "");
+  if (!uid) return null;
+  const a = (p.attendees && p.attendees[0]) || {};
+  return {
+    evt: {
+      type,
+      uid,
+      external_id: `cal_com:${uid}`,
+      start_time: p.startTime,
+      end_time: p.endTime,
+      event_slug: p.type || p.eventTypeSlug,
+      event_title: p.title || p.eventTitle,
+    },
+    attendee: {
+      email: a.email || p.responses?.email,
+      phone: a.phoneNumber || a.smsReminderNumber || p.responses?.phone,
+      name: a.name || p.responses?.name,
+    },
+  };
+}
+
 export async function POST(req: Request) {
   const rawBody = await req.text();
 
-  const secret = process.env.WHATSAPP_WEBHOOK_SECRET;
-  if (secret) {
-    const sig = req.headers.get("x-whatsapp-signature-256");
-    if (!verifySignature(rawBody, sig, secret)) {
-      console.warn("[cal-com-webhook] invalid signature");
-      return NextResponse.json({ ok: false, error: "invalid_signature" }, { status: 401 });
+  // ── Auth: try slice 2 secret first, then cal.com direct ─────────────────
+  const waSecret = process.env.WHATSAPP_WEBHOOK_SECRET;
+  const calSecret = process.env.CAL_COM_SIGNING_SECRET;
+  const waSig = req.headers.get("x-whatsapp-signature-256");
+  const calSig = req.headers.get("x-cal-signature-256");
+
+  let mode: "slice2" | "calcom_direct" | null = null;
+  if (waSecret && waSig) {
+    if (!verifySignature(rawBody, waSig, waSecret)) {
+      return NextResponse.json({ ok: false, error: "invalid_signature_slice2" }, { status: 401 });
     }
+    mode = "slice2";
+  } else if (calSecret && calSig) {
+    if (!verifySignature(rawBody, calSig, calSecret)) {
+      return NextResponse.json({ ok: false, error: "invalid_signature_calcom" }, { status: 401 });
+    }
+    mode = "calcom_direct";
+  } else if (!waSecret && !calSecret) {
+    // Dev: no secrets set. Allow but warn.
+    mode = waSig ? "slice2" : calSig ? "calcom_direct" : null;
+  } else {
+    return NextResponse.json({ ok: false, error: "no_signature_header" }, { status: 401 });
   }
 
-  let body: SliceTwoPayload = {};
+  let body: SliceTwoPayload & CalDirectPayload;
   try {
     body = rawBody ? JSON.parse(rawBody) : {};
   } catch {
     return NextResponse.json({ ok: false, error: "invalid_json" }, { status: 400 });
   }
 
-  const type = body.type;
-  const booking = body.booking;
-
-  if (!type || !booking?.uid) {
-    return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 400 });
+  // ── Mode A: slice 2 (resolved shape) ────────────────────────────────────
+  if (mode === "slice2" && body.type && body.booking?.uid) {
+    const booking = body.booking;
+    const match = await matchClient(body.attendee?.email, body.attendee?.phone);
+    if (!match) {
+      await appendUnmatched({
+        mode: "slice2",
+        type: body.type,
+        uid: booking.uid,
+        attendee_email: body.attendee?.email,
+        attendee_phone: body.attendee?.phone,
+        attendee_name: body.attendee?.name,
+        event_slug: booking.event_slug,
+        start_time: booking.start_time,
+      }).catch(() => { /* best-effort */ });
+      return NextResponse.json({ ok: true, matched: false, mode: "slice2" });
+    }
+    const evt: StoredBooking = {
+      received_at: new Date().toISOString(),
+      source: "slice2",
+      type: body.type as string,
+      uid: booking.uid as string,
+      external_id: booking.external_id,
+      appointment_id: booking.appointment_id,
+      start_time: booking.start_time,
+      end_time: booking.end_time,
+      event_slug: booking.event_slug,
+      event_title: booking.event_title,
+      attendee_email: body.attendee?.email,
+      attendee_phone: body.attendee?.phone,
+      attendee_name: body.attendee?.name,
+      matched_by: match.matchedBy,
+    };
+    await storeBooking(match.clientId, evt);
+    return NextResponse.json({
+      ok: true,
+      matched: true,
+      client_id: match.clientId,
+      matched_by: match.matchedBy,
+      type: body.type,
+      mode: "slice2",
+    });
   }
 
-  // Always 2xx after this point so the WA server's forwarder doesn't retry.
-  // fm-coach matches the attendee to its own client_id (the WA server's
-  // contact ID is irrelevant — separate identifier space).
-  const match = await matchClient(body.attendee?.email, body.attendee?.phone);
-  if (!match) {
-    await appendUnmatched(body).catch(() => { /* best-effort */ });
-    return NextResponse.json({ ok: true, matched: false });
+  // ── Mode B: raw cal.com (parallel subscriber) ───────────────────────────
+  if (mode === "calcom_direct" && body.triggerEvent) {
+    const converted = fromCalcom(body);
+    if (!converted) {
+      return NextResponse.json({ ok: false, error: "unhandled_event_type" }, { status: 200 });
+    }
+    const match = await matchClient(converted.attendee.email, converted.attendee.phone);
+    if (!match) {
+      await appendUnmatched({
+        mode: "calcom_direct",
+        type: converted.evt.type,
+        uid: converted.evt.uid,
+        attendee_email: converted.attendee.email,
+        attendee_phone: converted.attendee.phone,
+        attendee_name: converted.attendee.name,
+        event_slug: converted.evt.event_slug,
+        start_time: converted.evt.start_time,
+      }).catch(() => { /* best-effort */ });
+      return NextResponse.json({ ok: true, matched: false, mode: "calcom_direct" });
+    }
+    const evt: StoredBooking = {
+      received_at: new Date().toISOString(),
+      source: "calcom_direct",
+      ...converted.evt,
+      attendee_email: converted.attendee.email,
+      attendee_phone: converted.attendee.phone,
+      attendee_name: converted.attendee.name,
+      matched_by: match.matchedBy,
+    };
+    await storeBooking(match.clientId, evt);
+    return NextResponse.json({
+      ok: true,
+      matched: true,
+      client_id: match.clientId,
+      matched_by: match.matchedBy,
+      type: converted.evt.type,
+      mode: "calcom_direct",
+    });
   }
 
-  const evt: StoredBooking = {
-    received_at: new Date().toISOString(),
-    type,
-    uid: booking.uid,
-    external_id: booking.external_id,
-    appointment_id: booking.appointment_id,
-    start_time: booking.start_time,
-    end_time: booking.end_time,
-    event_slug: booking.event_slug,
-    event_title: booking.event_title,
-    attendee_email: body.attendee?.email,
-    attendee_phone: body.attendee?.phone,
-    attendee_name: body.attendee?.name,
-    matched_by: match.matchedBy,
-  };
-
-  const data = await readBookingsFile();
-  const list = data[match.clientId] ?? [];
-  list.unshift(evt);
-  // Cap per-client history at 50 events. loadUpcomingBookings collapses
-  // by uid at read time, so this only ever caps audit depth, not the
-  // current-state view.
-  data[match.clientId] = list.slice(0, 50);
-  await writeBookingsFile(data);
-
-  return NextResponse.json({
-    ok: true,
-    matched: true,
-    client_id: match.clientId,
-    matched_by: match.matchedBy,
-    type,
-  });
+  return NextResponse.json({ ok: false, error: "missing_fields_or_unknown_mode" }, { status: 400 });
 }
 
 export async function GET() {
   return NextResponse.json({
     ok: true,
-    service: "fm-coach booking-event subscriber (slice 2)",
-    contract: {
-      method: "POST",
-      auth: "X-WhatsApp-Signature-256 = HMAC-SHA256(rawBody, WHATSAPP_WEBHOOK_SECRET)",
-      sent_by: "whatsapp-server-shivani's forwardBookingToFmCoach()",
-      payload_schema: {
-        type: "booking_created | booking_rescheduled | booking_cancelled",
-        booking: "{ uid, external_id, appointment_id, start_time, end_time, event_slug, event_title, status, title }",
-        attendee: "{ email, phone, name } — fm-coach matches against client.yaml email then mobile_number",
+    service: "fm-coach booking-event subscriber (dual-shape)",
+    modes: {
+      slice2: {
+        sent_by: "whatsapp-server-shivani's forwardBookingToFmCoach()",
+        header: "X-WhatsApp-Signature-256",
+        secret: "WHATSAPP_WEBHOOK_SECRET",
+        payload: "{ type, booking: {uid, …}, attendee: {email, phone, name} }",
+      },
+      calcom_direct: {
+        sent_by: "cal.com directly (parallel subscriber, fallback for Fly→Funnel issues)",
+        header: "X-Cal-Signature-256",
+        secret: "CAL_COM_SIGNING_SECRET",
+        payload: "{ triggerEvent, createdAt, payload: { uid, attendees: [...], … } }",
       },
     },
-    storage: "~/fm-plans/_calcom_bookings.yaml (+ _calcom_unmatched.yaml for fm_client_id=null)",
-    note:
-      "fm-coach does NOT subscribe to cal.com directly. The WA server owns cal.com handling " +
-      "(matching, dedup, reminders) and forwards resolved booking events here. See " +
-      "project_calcom_integration.md slice 2.",
+    storage:
+      "~/fm-plans/_calcom_bookings.yaml (+ _calcom_unmatched.yaml). " +
+      "Dedup on booking.uid — both pipes can fire safely; newer received_at wins.",
   });
 }
