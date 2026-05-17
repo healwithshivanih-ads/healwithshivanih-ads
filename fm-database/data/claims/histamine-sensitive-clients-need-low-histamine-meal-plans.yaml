@@ -1,0 +1,69 @@
+slug: histamine-sensitive-clients-need-low-histamine-meal-plans
+statement: Clients showing histamine-sensitivity signals — eczema, dry/itchy skin,
+  hives, chronic rhinitis, currently on antihistamines (Allegra/fexofenadine,
+  Levocetirizine, Cetirizine), MTHFR mutation, leaky-gut/dysbiosis history, or
+  flushing after wine/aged cheese — should have high-histamine and
+  histamine-liberating foods excluded from their meal plans by default. In the
+  Indian context this most commonly means avoiding ragi (finger millet — a
+  fermenting grain), cherry tomatoes and tomatoes generally, fermented foods
+  (idli/dosa batter aged >24h, sauerkraut, kimchi, kombucha, vinegar pickles),
+  aged cheese, leftover proteins (>24h refrigerated), citrus, chocolate, alcohol,
+  smoked/cured meats, soy sauce, spinach, and brinjal/eggplant. Reintroduction is
+  food-by-food after 6–8 weeks of stability.
+evidence_tier: fm_specific_thin
+rationale: Histamine intolerance is a load-and-tolerance phenomenon — each
+  high-histamine food adds to a daily 'histamine bucket'. When the bucket
+  overflows (DAO enzyme saturated, MTHFR-impaired methylation, mast-cell
+  hyperreactivity), symptoms surface as itching, flushing, hives, GI upset,
+  headaches, anxiety. Coach-side prevention via meal-plan defaults is simpler
+  and more effective than reactive symptom management after a flare. The Indian
+  diet is especially load-relevant because fermented batters, aged spice
+  blends, and tomato-heavy gravies are everyday staples.
+coaching_translation: Before finalising a meal plan, scan the client's intake and
+  symptom list for histamine signals. If present, default to a low-histamine
+  framework — fresh proteins cooked-and-eaten same day, low-histamine grains
+  (basmati rice, quinoa, oats, jowar — NOT ragi or fermenting millets),
+  vegetables excluding tomatoes/spinach/brinjal, fresh herbs over aged spice
+  blends, no leftovers older than 24h. Reintroduce specific foods one at a time
+  after 6–8 weeks of symptom stability.
+caveats:
+- Not every skin symptom is histamine-mediated — also screen for blood-sugar
+  dysregulation, leaky gut, autoimmune flares, drug reactions, and dryness.
+- DAO testing, mast-cell activation workup, and antihistamine prescribing
+  remain clinician scope.
+- Avoid framing as 'forever' — describe as a 6–8 week reset, not a permanent
+  restriction.
+- A client may tolerate a small amount of a single high-histamine food but
+  flare when multiple stack on the same day. Total daily load matters more
+  than any single ingredient.
+out_of_scope_notes: DAO enzyme testing, mastocytosis workup, prescribing
+  antihistamines or mast-cell stabilisers.
+linked_to_topics:
+- histamine-intolerance
+- elimination-diet
+- mast-cell-activation
+- methylation-mthfr
+linked_to_mechanisms:
+- diamine-oxidase-deficiency
+- mast-cell-degranulation
+- histamine-enzyme-inhibition
+- methylation-cycle-dysfunction
+linked_to_supplements:
+- vitamin-c
+- quercetin
+sources:
+- id: vitaone-fm-adrenal-hormones
+  location: Evidence-Backed Claims — Page 8
+  quote: High histamine is described as causing allergies, hives, and histamine
+    intolerance.
+- id: coach-shivani
+  location: cl-006 (Geetika) — itching reported 2026-05-17 after ragi dosa 2026-05-14,
+    pre-existing Allegra use, baseline eczema/dry skin
+  quote: Client on chronic antihistamine with eczema/dry-skin baseline reported
+    skin itching after ragi-dosa exposure. Confirms meal plan should default to
+    histamine-aware framework whenever pre-existing histamine signals are
+    present, rather than reactively excluding foods after a flare.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

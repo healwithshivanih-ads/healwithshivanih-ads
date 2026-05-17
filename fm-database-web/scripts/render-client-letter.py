@@ -513,6 +513,69 @@ def _load_plan(slug: str) -> dict | None:
     return None
 
 
+# Antihistamine + mast-cell-stabiliser drug list (lowercased substring match).
+# Add new entries here as we encounter them; keep generic + brand names both.
+_HISTAMINE_MEDS = (
+    "allegra", "fexofenadine", "levocetirizine", "cetirizine", "loratadine",
+    "desloratadine", "montelukast", "ketotifen", "rupatadine", "ebastine",
+    "bilastine", "chlorpheniramine", "hydroxyzine", "diphenhydramine",
+    "ranitidine", "famotidine", "cimetidine",  # H2 blockers also count
+    "sodium cromoglycate", "cromolyn",
+)
+
+# Condition / history keywords that imply baseline histamine load.
+_HISTAMINE_CONDITION_KEYS = (
+    "eczema", "dermatit", "urticaria", "hives", "histamine",
+    "mast cell", "mcas", "mastocytosis", "atopic", "allergic rhinitis",
+    "chronic rhinitis", "hay fever", "dao deficiency",
+)
+
+# Symptom slugs (from the catalogue) that map to histamine load.
+_HISTAMINE_SYMPTOM_SLUGS = (
+    "eczema-psoriasis-skin", "histamine-intolerance",
+    "skin-itching-flushing-hives", "skin-rash",
+    "runny-nose-sneezing", "nasal-congestion",
+)
+
+
+def _has_histamine_signal(client: dict) -> bool:
+    """True if the client shows histamine-sensitivity signals that should
+    trigger a low-histamine meal-plan overlay. See catalogue claim:
+    histamine-sensitive-clients-need-low-histamine-meal-plans.
+    """
+    # Meds — flatten to a single lowercase string for substring matching.
+    meds = client.get("current_medications") or []
+    if isinstance(meds, list):
+        meds_str = " ".join(str(m) for m in meds).lower()
+    else:
+        meds_str = str(meds).lower()
+    if any(k in meds_str for k in _HISTAMINE_MEDS):
+        return True
+
+    # Conditions + medical history — string keyword match.
+    haystacks = []
+    for field in ("active_conditions", "medical_history", "known_allergies"):
+        v = client.get(field) or []
+        if isinstance(v, list):
+            haystacks.append(" ".join(str(x) for x in v))
+        else:
+            haystacks.append(str(v))
+    combined = " ".join(haystacks).lower()
+    if any(k in combined for k in _HISTAMINE_CONDITION_KEYS):
+        return True
+
+    # Sessions — scan selected_symptoms for histamine-tagged slugs.
+    # Optional: only used if sessions are pre-loaded into the client dict
+    # under "_recent_symptoms" by the caller. Cheap defensive default.
+    syms = client.get("_recent_symptoms") or []
+    if isinstance(syms, list):
+        sym_set = {str(s).lower() for s in syms}
+        if any(s in sym_set for s in _HISTAMINE_SYMPTOM_SLUGS):
+            return True
+
+    return False
+
+
 def _load_client(client_id: str) -> dict | None:
     import yaml
     p = PLANS_ROOT / "clients" / client_id / "client.yaml"
@@ -1482,6 +1545,28 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
     meds = client.get("current_medications") or []
     if meds:
         bullets.append(f"- Medications (check interactions): {', '.join(meds)}")
+
+    # 🟠 HISTAMINE-AWARE OVERLAY — fires when client shows histamine-sensitivity
+    # signals (chronic antihistamine use, eczema/dermatitis baseline,
+    # MCAS / DAO / methylation flags). Indian-context food exclusions
+    # baked in. Catalogue rule:
+    #   claims/histamine-sensitive-clients-need-low-histamine-meal-plans
+    # Surfaced after a real client flare (cl-006 / Geetika, 2026-05-17):
+    # ragi dosa landed on top of pre-existing Allegra + eczema baseline →
+    # skin itching. Meal plan defaults should pre-empt this.
+    if _has_histamine_signal(client):
+        bullets.append(
+            "- 🟠 HISTAMINE-AWARE OVERLAY — client shows histamine-sensitivity signals "
+            "(antihistamine medication, eczema/dermatitis, or MCAS/DAO/methylation flags). "
+            "Default the meal plan to a LOW-HISTAMINE framework for 6–8 weeks: "
+            "(a) NO ragi (finger millet — fermenting grain), NO ragi dosa/idli/ambali; "
+            "(b) NO cherry tomatoes or tomatoes generally — substitute pumpkin, bottle gourd, beetroot for sauces; "
+            "(c) NO fermented foods (idli/dosa batter aged >24h, sauerkraut, kimchi, kombucha, vinegar pickles, soy sauce, miso); "
+            "(d) NO aged cheese, NO leftover proteins (>24h refrigerated) — cook fresh same day; "
+            "(e) NO citrus, chocolate, alcohol, vinegar dressings, smoked/cured meats, spinach, brinjal/eggplant; "
+            "(f) PREFER fresh proteins same-day, low-histamine grains (basmati rice, quinoa, oats, jowar/sorghum, bajra), "
+            "fresh herbs over aged spice blends. Frame as a 6–8 week reset, not 'forever'."
+        )
 
     # 🤰 Pregnancy / lactation safety overlay — protocol-gating. Hides high-
     # mercury fish, raw sprouts, unpasteurised dairy, liver organ meats,
