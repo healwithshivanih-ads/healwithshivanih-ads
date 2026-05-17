@@ -76,8 +76,10 @@ echo "Gmail (for 'Send to client' email):"
 prompt_if_missing GMAIL_USER          "GMAIL_USER (your gmail address)"        ""       "  Get an App Password at https://myaccount.google.com/apppasswords"
 prompt_if_missing GMAIL_APP_PASSWORD  "GMAIL_APP_PASSWORD (16-char app pw)"    secret
 echo
-echo "AiSensy (WhatsApp outbound — broadcast + per-client send):"
-prompt_if_missing AISENSY_API_KEY     "AISENSY_API_KEY (paste, or blank to skip)" ""    "  Find your API key in AiSensy → Settings → API"
+echo "WhatsApp (self-hosted Cloud API server on Fly — outbound + inbound):"
+prompt_if_missing WHATSAPP_SERVER_URL     "WHATSAPP_SERVER_URL (e.g. https://whatsapp-server-shivani.fly.dev)" "" ""
+prompt_if_missing WHATSAPP_SERVER_API_KEY "WHATSAPP_SERVER_API_KEY (paste from Fly secrets)" secret
+prompt_if_missing WHATSAPP_WEBHOOK_SECRET "WHATSAPP_WEBHOOK_SECRET (matches WA server's FM_COACH_WEBHOOK_SECRET)" secret
 echo
 
 # ── Step 2: install + build ───────────────────────────────────────────────────

@@ -102,7 +102,7 @@ def main() -> int:
         "version": 1,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "updated_by": "aisensy-webhook",
+        "updated_by": "whatsapp-webhook",
     }
 
     with yml.open("w", encoding="utf-8") as f:
