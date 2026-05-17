@@ -255,6 +255,19 @@ export async function POST(req: Request) {
   const waSig = req.headers.get("x-whatsapp-signature-256");
   const calSig = req.headers.get("x-cal-signature-256");
 
+  // Temporary diagnostic logging (cal.com ping debugging 2026-05-17).
+  // Remove once both pipes are confirmed flowing in production.
+  const allHeaders: Record<string, string> = {};
+  req.headers.forEach((v, k) => { allHeaders[k] = v; });
+  console.log("[cal-com-webhook] incoming", {
+    has_wa_sig: !!waSig,
+    has_cal_sig: !!calSig,
+    body_len: rawBody.length,
+    body_preview: rawBody.slice(0, 300),
+    sig_headers: Object.keys(allHeaders).filter((k) => k.includes("signature")),
+    user_agent: allHeaders["user-agent"] || "",
+  });
+
   let mode: "slice2" | "calcom_direct" | null = null;
   if (waSecret && waSig) {
     if (!verifySignature(rawBody, waSig, waSecret)) {
@@ -269,6 +282,17 @@ export async function POST(req: Request) {
   } else if (!waSecret && !calSecret) {
     // Dev: no secrets set. Allow but warn.
     mode = waSig ? "slice2" : calSig ? "calcom_direct" : null;
+  } else if (!waSig && !calSig) {
+    // No signature header at all — almost certainly cal.com's "test
+    // webhook" / health-check ping. Cal.com expects a 2xx to mark the
+    // webhook reachable; we can't verify auth so we ALWAYS return 200
+    // without processing the body. Real bookings carry the signature
+    // and go down the normal path.
+    return NextResponse.json({
+      ok: true,
+      ping_accepted: true,
+      note: "no signature header — body not processed. real bookings must include X-Cal-Signature-256.",
+    });
   } else {
     return NextResponse.json({ ok: false, error: "no_signature_header" }, { status: 401 });
   }
