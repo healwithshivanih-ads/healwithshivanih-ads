@@ -10,11 +10,18 @@
 // never kills the loop or stops other workers.
 
 import { logger } from '../logger.js';
+import { config } from '../config.js';
 import * as remindersRunner from '../services/reminders/runner.js';
 import * as wixReconciler from '../integrations/wix/reconciler.js';
+import { replayUnforwardedBookings } from '../services/forwarder/cal-com-forwarder.js';
 
 const REMINDERS_INTERVAL_MS = 60_000;
 const WIX_INTERVAL_MS = 5 * 60_000;
+// Replay cal.com bookings that haven't been acknowledged by fm-coach yet.
+// Catches forwards that failed because the fm-coach receiver was briefly
+// unreachable (Tailscale Funnel down, redeploy, etc.) without manual rerun.
+// Skipped entirely if FM_COACH_WEBHOOK_URL isn't configured.
+const CAL_COM_REPLAY_INTERVAL_MS = 10 * 60_000;
 const WARMUP_DELAY_MS = 5_000;
 
 let timers = [];
@@ -27,7 +34,12 @@ export function start() {
   }
   stopped = false;
   logger.info(
-    { reminders_ms: REMINDERS_INTERVAL_MS, wix_ms: WIX_INTERVAL_MS },
+    {
+      reminders_ms: REMINDERS_INTERVAL_MS,
+      wix_ms: WIX_INTERVAL_MS,
+      cal_com_replay_ms: CAL_COM_REPLAY_INTERVAL_MS,
+      fm_coach_forwarder_enabled: !!config.fmCoachWebhook.url,
+    },
     'scheduler: starting',
   );
 
@@ -36,12 +48,14 @@ export function start() {
     if (stopped) return;
     runRemindersTick();
     runWixTick();
+    runCalComReplayTick();
   }, WARMUP_DELAY_MS);
   timers.push(warm);
 
   // Periodic
   timers.push(setInterval(runRemindersTick, REMINDERS_INTERVAL_MS));
   timers.push(setInterval(runWixTick, WIX_INTERVAL_MS));
+  timers.push(setInterval(runCalComReplayTick, CAL_COM_REPLAY_INTERVAL_MS));
 
   return stop;
 }
@@ -69,6 +83,31 @@ async function runRemindersTick() {
     }
   } catch (e) {
     logger.error({ err: e.message, stack: e.stack, ms: Date.now() - t0 }, 'scheduler: reminders tick failed');
+  }
+}
+
+async function runCalComReplayTick() {
+  if (stopped) return;
+  // No fm-coach receiver configured → nothing to replay TO. Skip entirely
+  // so we don't pile up unforwarded rows and waste a DB query every 10min.
+  if (!config.fmCoachWebhook.url) {
+    logger.debug('scheduler: cal-com replay tick — fm-coach forwarder not configured, skipping');
+    return;
+  }
+  const t0 = Date.now();
+  try {
+    // 30-day lookback covers reschedules + cancellations on still-active
+    // bookings. limit=50 caps DB load per tick. Bigger backlog (after a
+    // long outage) drains over multiple ticks naturally.
+    const r = await replayUnforwardedBookings({ sinceDays: 30, limit: 50, dryRun: false });
+    const ms = Date.now() - t0;
+    if (r.forwarded > 0 || r.failed > 0) {
+      logger.info({ ...r, items: undefined, ms }, 'scheduler: cal-com replay tick');
+    } else {
+      logger.debug({ ...r, items: undefined, ms }, 'scheduler: cal-com replay tick (idle)');
+    }
+  } catch (e) {
+    logger.error({ err: e.message, ms: Date.now() - t0 }, 'scheduler: cal-com replay tick failed');
   }
 }
 

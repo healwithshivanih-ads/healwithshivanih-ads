@@ -220,6 +220,24 @@ export async function replayUnforwardedBookings({ sinceDays = 30, limit = 100, d
       continue;
     }
 
+    // Defensive re-check immediately before send. The candidate set was
+    // pulled at the top of the function; if another tick on a sibling Fly
+    // machine just marked this row as forwarded, skip it here. Not a full
+    // atomic claim (genuine simultaneous ticks across machines can still
+    // double-POST within the same millisecond) — but cuts the common case
+    // where ticks are seconds apart. Defence in depth; the fm-coach
+    // receiver should also dedupe by booking.external_id.
+    const { data: fresh } = await db()
+      .from('appointments')
+      .select('metadata')
+      .eq('id', row.id)
+      .maybeSingle();
+    if (fresh?.metadata?.fm_coach_forwarded_at) {
+      skipped++;
+      items.push({ id: row.id, uid, status: 'skipped', reason: 'already forwarded by another tick' });
+      continue;
+    }
+
     const res = await forwardBookingToFmCoach({
       type: eventType,
       payload,
