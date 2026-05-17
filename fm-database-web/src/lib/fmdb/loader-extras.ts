@@ -497,6 +497,12 @@ export async function loadUpcomingBookings(
     pastDays?: number;
     /** Maximum rows returned. Default 20 — fits a dashboard panel. */
     limit?: number;
+    /** When true, skip the dismiss filter and show every upcoming row.
+     *  Used by future "show me everything" toggles. Default false:
+     *  rows already acknowledged (coach has visited the client's Overview
+     *  since the booking event landed) get filtered out so the panel
+     *  doesn't keep nagging. */
+    includeAcknowledged?: boolean;
   },
 ): Promise<UpcomingBooking[]> {
   const root = getPlansRoot();
@@ -512,9 +518,16 @@ export async function loadUpcomingBookings(
   }
 
   const includePast = options?.includePast ?? false;
+  const includeAcknowledged = options?.includeAcknowledged ?? false;
   const pastCutoffMs = Date.now() - (options?.pastDays ?? 1) * 86_400_000;
   const limit = options?.limit ?? 20;
   const nowMs = Date.now();
+
+  // Per-client acknowledged-at: latest `overview_seen_at` from the coach
+  // inbox state. A booking row is hidden iff its `received_at <= overview_seen_at`
+  // (coach has visited the client since the booking landed → they've seen it).
+  // Reschedules naturally re-surface because `received_at` advances.
+  const inboxState = includeAcknowledged ? null : await readCoachInboxState();
 
   const rows: UpcomingBooking[] = [];
 
@@ -533,6 +546,11 @@ export async function loadUpcomingBookings(
       }
     }
 
+    // Dismiss filter: if coach has visited this client's Overview AFTER
+    // the booking landed, treat the booking as acknowledged and skip it.
+    const overviewSeenAt = inboxState?.[clientId]?.overview_seen_at;
+    const overviewSeenMs = overviewSeenAt ? Date.parse(overviewSeenAt) : 0;
+
     for (const e of byUid.values()) {
       // Slice-2 contract uses `type` ("booking_cancelled"); legacy parallel
       // experiment used `trigger_event` ("BOOKING_CANCELLED"). Accept both.
@@ -543,6 +561,11 @@ export async function loadUpcomingBookings(
       if (Number.isNaN(startMs)) continue;
       if (!includePast && startMs < nowMs) continue;
       if (includePast && startMs < pastCutoffMs) continue;
+      // Acknowledged-dismiss filter — see comment on `inboxState` above.
+      if (!includeAcknowledged && overviewSeenMs > 0) {
+        const receivedMs = e.received_at ? Date.parse(e.received_at) : 0;
+        if (receivedMs > 0 && receivedMs <= overviewSeenMs) continue;
+      }
 
       rows.push({
         client_id: clientId,
