@@ -47,6 +47,10 @@ const PUBLIC_PATH_PREFIXES = [
   // buy links. No auth needed — the URL contains the plan slug only,
   // which is non-guessable in practice (UUID-ish).
   "/supplements/",
+  // Public recipe pack: full ingredients + method for every ✦ dish in
+  // the meal plan. Split out of the consolidated letter (post-reformat)
+  // so the letter stays under 7 pages.
+  "/recipes/",
   // v0.73 WhatsApp cutover — inbound from the self-hosted Fly app
   // (whatsapp-server-shivani) lands here. HMAC-verified by route handler
   // using WHATSAPP_WEBHOOK_SECRET. /api/aisensy-webhook removed

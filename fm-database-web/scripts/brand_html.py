@@ -1134,12 +1134,12 @@ def wrap_in_brand_html(
 
     <!-- Body -->
     <div class="content">
-      <!-- Recipe note — hidden until JS confirms recipes exist -->
-      <div class="recipe-note" id="recipe-note">
-        <strong>Recipes included</strong> &nbsp;·&nbsp;
-        Dishes marked with <span class="recipe-note-symbol">✦</span> have a full recipe
-        in the <em>Recipe Appendix</em> at the end of this document.
-        Click any underlined dish name to jump straight to its recipe while you&rsquo;re cooking.
+      <!-- Recipe note — hidden until JS confirms recipes exist (inline
+           legacy) or the plan slug is set (recipes live on /recipes/<slug>) -->
+      <div class="recipe-note" id="recipe-note" data-plan-slug="{plan_slug or ''}">
+        <strong>Recipes &rarr;</strong> &nbsp;·&nbsp;
+        Dishes marked with <span class="recipe-note-symbol">✦</span> have a full recipe.
+        Click any underlined dish name to open it.
       </div>
       {body_html}
     </div>
@@ -1300,16 +1300,22 @@ def wrap_in_brand_html(
       recipes.push({{ id: id, key: key, words: words, name: raw }});
     }});
 
-    if (recipes.length === 0) return;
+    // External recipes page mode: if no inline recipes were found and a
+    // plan slug is set, link every ✦-marked cell to /recipes/<slug>.
+    // (Post-reformat letters strip the inline appendix entirely.)
+    var noteEl = document.getElementById('recipe-note');
+    var planSlug = noteEl ? noteEl.getAttribute('data-plan-slug') : '';
+    var externalUrl = planSlug ? ('/recipes/' + planSlug) : '';
+
+    if (recipes.length === 0 && !externalUrl) return;
 
     // Sort longest key first so substring matching prefers more specific names.
     recipes.sort(function (a, b) {{ return b.key.length - a.key.length; }});
 
     // ── Step 2: Show the recipe note banner ──────────────────────────────────
-    var note = document.getElementById('recipe-note');
-    if (note) note.style.display = 'block';
+    if (noteEl) noteEl.style.display = 'block';
     var bar = document.querySelector('.week-print-bar');
-    if (bar && note) note.after(bar);
+    if (bar && noteEl) noteEl.after(bar);
 
     // ── Step 3: Per-line link wrapping in every meal-plan table cell ────────
     // Split each cell on <br>; for each segment, score every indexed recipe
@@ -1349,15 +1355,25 @@ def wrap_in_brand_html(
           .replace(new RegExp(SYMBOL, 'g'), '')
           .trim();
         if (plain.length < 3) return part;
-        var r = bestRecipeFor(plain);
-        if (!r) return part;
+        var hasSymbol = part.indexOf(SYMBOL) !== -1;
         var inner = part
           .replace(new RegExp('\\s*' + SYMBOL + '\\s*', 'g'), ' ')
           .replace(/^\s+|\s+$/g, '');
         if (!inner) return part;
-        changed = true;
-        return '<a href="#' + r.id + '" class="recipe-link" title="Jump to recipe: ' +
-               r.name.replace(/"/g, '&quot;') + '">' + inner + '</a>';
+        // Prefer inline (anchor in same doc) when we indexed h3 recipes.
+        var r = recipes.length > 0 ? bestRecipeFor(plain) : null;
+        if (r) {{
+          changed = true;
+          return '<a href="#' + r.id + '" class="recipe-link" title="Jump to recipe: ' +
+                 r.name.replace(/"/g, '&quot;') + '">' + inner + '</a>';
+        }}
+        // External recipes page fallback — link any ✦-marked dish.
+        if (externalUrl && hasSymbol) {{
+          changed = true;
+          return '<a href="' + externalUrl + '" target="_blank" rel="noopener" ' +
+                 'class="recipe-link" title="Open your recipe pack">' + inner + '</a>';
+        }}
+        return part;
       }});
       if (changed) td.innerHTML = rebuilt.join('');
     }});

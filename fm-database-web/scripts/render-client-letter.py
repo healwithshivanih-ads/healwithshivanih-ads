@@ -3499,68 +3499,72 @@ The plan must have a logical therapeutic progression — each phase builds on th
 - **Weeks 9–10 (Optimize):** Fine-tune based on what's working. Circadian rhythm, sleep, and deeper lifestyle work.
 - **Weeks 11–12 (Sustain):** Long-term habit anchoring. Transition to maintenance. Celebrate progress.
 
-## Document structure:
+## Document structure (action-first, 5–7 pages — don't overwhelm):
 
-1. **Warm greeting** — 2–3 sentences welcoming {first_name}, naming this as a {plan_weeks}-week journey, setting an excited but calm tone. No clinical words.
+1. **Welcome & what we found** — heading `## 🌱 Welcome, {first_name}`
+   2–3 warm sentences welcoming them, naming this as a {plan_weeks}-week journey. Then a short "What we found" paragraph: name the 1–2 key drivers from the assessment in plain language ("your stress-response system is running hot" / "your gut isn't absorbing nutrients well right now"). No clinical jargon. Set an excited-but-calm tone. End with 1 sentence on what the next {plan_weeks} weeks will focus on.
 
-2. **Your Healing Journey — The {plan_weeks}-Week Overview**
-   A brief (half-page) map of the phases above — what each phase focuses on and why in this order.
-   Written in plain language. E.g. "In weeks 1–2 we focus on foundations — clearing the path so your body can start healing. By weeks 5–6 we'll be working on your hormones and energy. By week {plan_weeks} you'll have a way of eating and living that feels completely yours."
+2. **What to do this week** — heading `## 💪 What to do this week`
+   This is THE action layer. Keep it tight (under 1 page). Three sub-blocks in this order:
 
-3. **YOUR PLAN — WEEKS 1 & 2: Foundation**
-   (This section is fully detailed. Weeks 3–12 have an outline only — full detail is sent before each new phase begins.)
+   **2a. Supplements** — Add ONLY this short callout (NO table, NO list):
+   > *Your supplement schedule — exact doses, timings, and where to order each one — is in the printable section below. Order them ASAP; they take 2–3 days to reach you.*
+   DO NOT write a supplement table or list here. The detailed schedule is auto-injected as a separate printable section after the letter body.
 
-   **3a. Theme & goals for weeks 1–2** — 1 short paragraph. What is the body doing in this phase? What should {first_name} focus on?
+   **2b. Daily non-negotiables** — bullet list. 3–5 lines MAX. Sleep, stress / breathwork, movement, sun, connection. Each bullet ≤12 words. Specific to this client's assessment — don't list everything, list what matters for THEM.
+
+   **2c. Eat more / Eat less** — TWO short bulleted columns (NOT a table, NOT prose paragraphs). Format as:
+   ```
+   **Eat more**
+   - <item 1> — <one-line why>
+   - <item 2> — <one-line why>
+   ...
+
+   **Eat less / avoid**
+   - <item 1> — <one-line why>
+   - Reported triggers: NEVER eat <list from {reported_triggers}>
+   ```
+   6–8 bullets per column. The "why" is the hook that drives compliance.
+
+3. **YOUR PLAN — WEEKS 1 & 2: Foundation** — heading `## 🗓 Weeks 1 & 2 — your meal plan`
+   The "how" of the eating pattern. Detailed for weeks 1–2; later weeks roadmap-only.
+
+   **3a. Theme for weeks 1–2** — 1 short paragraph. What is the body doing in this phase?
    {calorie_callout}
 
    {meal_plan_section}
 
-   **3c. Supplement note** — Add ONLY this single short paragraph (NO table, NO list):
-   > *The supplement schedule for this plan — including timings, doses, and where to get each one — is included as a separate printable section in this document.*
-   DO NOT write a supplement table or list here. The supplement schedule is generated separately and injected automatically.
+   **3b. Movement schedule** — heading `### 🏃 Movement this week`
+   Simple 7-day table (Mon-Sun) with Day | Type | Duration | Notes columns. At least 1 REST day. Match {first_name}'s baseline movement_days_per_week and movement_type. For women in menstruating / perimenopausal phases: add 2-line cycle-aware modification (no HIIT during menstrual phase or PMS week — restorative only). For postmenopausal women: prioritise strength 3×/week. Keep it scannable (8-10 lines). {"A separate detailed exercise_plan letter HAS been generated for this client — add this one-liner at the end of the section: 'See your detailed exercise plan for the full weekly progression and exercise specifics.'" if has_exercise_plan else "No separate exercise_plan letter exists for this client — DO NOT reference one. This simple schedule IS the entire movement plan."}
 
-   **3d. Movement & Exercise** — heading `## 🏃 Movement & Exercise`
-   Produce a SIMPLE 7-day table (Mon-Sun) with Day | Type | Duration |
-   Notes columns. At least 1 REST day. Match {first_name}'s baseline
-   movement_days_per_week and movement_type. For women in menstruating /
-   perimenopausal phases: add 2-line cycle-aware modification (no HIIT
-   during menstrual phase or PMS week — restorative only). For
-   postmenopausal women: prioritise strength 3×/week. Keep it scannable
-   (8-10 lines). {"A separate detailed exercise_plan letter HAS been generated for this client — add this one-liner at the end of the section: 'See your detailed exercise plan for the full weekly progression and exercise specifics.'" if has_exercise_plan else "No separate exercise_plan letter exists for this client — DO NOT reference one. This simple schedule IS the entire movement plan."}
-   This is the SIMPLE version — the optional exercise_plan letter has the
-   detailed phased programme for clients who want depth.
+   **3c. What to notice in Weeks 1–2** — 4–6 positive tracking prompts. Frame as curiosity, not surveillance.
 
-   **3e. Daily Lifestyle Practices** — bullet list. Sleep, stress, breathwork.
+4. **Why this works — the bigger picture** — heading `## 📚 Why this works`
+   The education / philosophy section, for the curious-client. Keep it SHORT (under 1 page). Two sub-blocks:
 
-   **3f. What to notice in Weeks 1–2** — 4–6 positive tracking prompts. Frame as curiosity.
+   **4a. The {plan_weeks}-week roadmap** — One short paragraph per phase (3 short sentences MAX each). No meal plans. Just narrative.
+   {roadmap_calorie_lines}
+   - **Weeks 3–4** (Continuation):{weeks_3_4_calorie_line}
+   - Weeks 5–8 (Deepening)
+   - Weeks 9–10 (Easing)
+   - Weeks 11–12 (Sustaining)
 
-4. **Coming Up: Weeks 3–4 Preview** — heading `## 🌿 Coming Up: Weeks 3 & 4`
-   Write a SHORT PARAGRAPH ONLY — 3 to 5 warm sentences describing what the theme of weeks 3–4 will be and what {first_name} can look forward to.
-   {"Mention that calorie targets will adjust to ~" + str(cal['phases']['wk3_4']) + " kcal/day as the body adapts." if (cal and include_daily_meal_plan) else ""}
-   DO NOT write a meal plan table, meal schedule, or day-by-day plan for week 3 or week 4.
-   DO NOT add a print button or any print-ready formatting for this section.
-   This is a teaser paragraph only — the full weeks 3–4 detail will be sent separately.
+   **4b. Home remedies & daily teas** — heading `### 🌿 Daily teas & home remedies`
+   Brief — any from the plan, simply described. If none, skip this sub-block entirely.
 
-5. **Roadmap: Weeks 5–12 at a Glance** — heading `## 🗺 Your 12-Week Roadmap`
-   {"Calorie targets for this roadmap section (mention briefly per phase):" if (cal and include_daily_meal_plan) else ""}
-   {"• Weeks 5–8: " + str(cal['phases']['wk5_8']) + " kcal/day (full deficit)" if (cal and include_daily_meal_plan) else ""}
-   {"• Weeks 9–10: " + str(cal['phases']['wk9_10']) + " kcal/day (ease back)" if (cal and include_daily_meal_plan) else ""}
-   {"• Weeks 11–12: " + str(cal['phases']['wk11_12']) + " kcal/day (sustain)" if (cal and include_daily_meal_plan) else ""}
-   One short paragraph per phase. 2–3 sentences each. No meal plans — roadmap only.
+5. **Admin: labs & products** — heading `## 🔬 Labs & products`
 
-6. **Home Remedies & Teas** — use heading `## 🌿 Home Remedies & Daily Teas`
-   Any from the plan, simply described.
+   **5a. Labs ordered** — Only if the plan has lab_orders. Bullet list with marker name + when to draw. If no labs, skip this sub-block.
 
-7. **Recipe Appendix** — use heading `## ✦ Recipe Appendix`
-   {"Detailed recipes for every ✦ dish. Format each as:" if include_daily_meal_plan else "SKIP this entire section. No daily meal plan in this letter (per client preference) → no ✦ recipes to expand. Move directly to the Product guide below."}
-   {"### ✦ Recipe name" if include_daily_meal_plan else ""}
-   {"**Serves:** 1–2 | **Time:** X min" if include_daily_meal_plan else ""}
-   {"**Ingredients:** (bullets) | **Method:** (numbered steps) | **Tip:** (optional)" if include_daily_meal_plan else ""}
+   **5b. Product guide** — heading `### 🛒 Brands to look for`
+   Only the specific brands from the approved list below that are RELEVANT to this plan. ≤6 items. NOT a long catalogue.
 
-8. **Product guide** — use heading `## 🛒 Recommended Products`
-   Only the specific brands from the approved list below that are relevant to THIS plan.
+   **5c. Recipe pack** — Add ONLY this callout (DO NOT write the recipes inline):
+   > *Your recipe pack — full ingredients, method, and tips for every ✦ dish in this meal plan — is at a separate link your coach is sending you over WhatsApp. Bookmark it on your phone for easy access in the kitchen.*
+   {"DO NOT write any ✦ recipe details, ingredient lists, or methods in this letter. Recipes live on a separate page (linked from the meal plan ✦ symbols once the letter is published)." if include_daily_meal_plan else "No meal plan in this letter (per client preference) → no recipe pack needed. Skip this sub-block."}
 
-9. **A note from your coach** — warm closing. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint. Shivani's name.
+6. **A note from Shivani** — heading `## 💚 A note from Shivani`
+   2–4 warm closing sentences. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint. Encourage them to message with questions. Sign off as Shivani.
 
 ---
 
@@ -3599,8 +3603,10 @@ Use these three sections and these exact marker lines:
 
   <!-- SECTION_BEGIN: meal_plan -->
   ...everything that belongs to the nutrition / meal plan side
-     (the 7-day tables for weeks 1–2, the recipes appendix, plus
-     the per-week roadmap text for weeks 3–{plan_weeks})...
+     (the eat-more/eat-less bullets from section 2c, the 7-day tables
+     for weeks 1–2 from section 3a/3b, plus the per-week roadmap text
+     for weeks 3–{plan_weeks} from section 4a). DO NOT include any
+     ✦ recipe details here — recipes live on a separate page now...
   <!-- SECTION_END: meal_plan -->
 
   <!-- SECTION_BEGIN: supplement_plan -->
