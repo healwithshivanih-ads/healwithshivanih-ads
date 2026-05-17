@@ -14,7 +14,42 @@ published plans as JSON artifacts.
 
 ## Status
 
-**v0.73 (current)** — First production deploy: intake form on Fly.io at `intake.theochretree.com`, coach UI stays on Mac.
+**v0.74 (current)** — Medications as a first-class three-axis entity + drug-driven plan/letter/intake guardrails.
+
+The `DrugDepletion` catalogue entity (which already existed but only captured nutrient depletions) is extended into a **three-axis medication entity**:
+
+1. **`condition_implications[]`** — what diagnosis the drug implies about the client. Fields: `label`, `confidence` (`high` → near-pathognomonic, `moderate` → "Suspected: …", `low` → ignored downstream), `rationale`, optional `topic_slug`.
+2. **`protocol_cautions[]`** — what the FM protocol must respect. Fields: `kind` (`avoid_food | avoid_supplement | avoid_practice | prefer_food | prefer_supplement | timing | refer | monitor`), `item` (free-text), `severity` (`critical | warning | info`), `reason`.
+3. **`depletes[]`** — existing nutrient-depletion list (unchanged).
+
+**Schema lives in:** `fmdb/enums.py` (new enums `CautionKind`, `CautionSeverity`, `ImplicationConfidence`, plus new `DrugClass` values: `mast_cell_stabiliser`, `leukotriene_receptor_antagonist`, `anti_ige_biologic`, `h1_antihistamine`, `tyrosine_kinase_inhibitor`, `glp1_agonist`, `sglt2_inhibitor`, `dpp4_inhibitor`) + `fmdb/models.py` (sub-models `ConditionImplication`, `ProtocolCaution`; `DrugDepletion.condition_implications` and `.protocol_cautions` fields, both default-empty so existing entries don't break).
+
+**Catalogue: 19 drug entries** (13 pre-existing backfilled + 6 new for MCAS / oncology cluster). New entries: `cromolyn-sodium`, `famotidine`, `montelukast`, `ketotifen`, `omalizumab`, `tyrosine-kinase-inhibitors` (class entry with 30+ aliases). Backfilled: metformin, PPI, levothyroxine, statins, OCPs, beta-blockers, ACE/ARBs, thiazides, SSRI/SNRI, broad-spectrum antibiotics, chronic aspirin, corticosteroids, methotrexate. `metformin.yaml` now also has aliases for the DPP4/SGLT2/sitagliptin combo brands (Janumet, Galvus Met, Jentadueto, Synjardy, Xigduo, Invokamet, Januvia, Galvus, Trajenta).
+
+**The three integrations wired this turn:**
+
+1. **Intake handler (`scripts/intake-token-action.py`)** — `_derive_conditions_from_intake` now consults the drug catalogue via `_build_drug_index()` (alias-aware, longest-match) before falling back to the original hardcoded keyword heuristics. Each matched drug's `condition_implications` flows into `active_conditions` with confidence-gated phrasing (`high` → bare label, `moderate` → "Suspected: …", `low` → ignored).
+
+2. **Plan-check / plan editor (`src/lib/server-actions/plans.ts` + `src/components/plan-editor/plan-editor.tsx`)** — `checkSupplementInteractionsAction` now returns a `drug_cautions: DrugCaution[]` field in addition to the existing `interactions`. Plan editor renders these as a sibling collapsible banner above the supplement-interaction banner (rose for critical, amber for warning, slate for info), grouped by severity, with drug name + matched client medication + kind chip + item + reason. Critical cautions auto-expand the banner.
+
+3. **AI synthesis (`fmdb/assess/suggester.py`)** — new `_collect_drug_context(client_ctx)` runs alongside subgraph build. The synthesiser's user payload now includes a `drug_context` field with `matched[]` (full drug → condition_implications + protocol_cautions + depletes for each matched med) and `unmatched_meds[]`. The system prompt gains a **3b. DRUG CONTEXT** section telling the AI to (a) anchor `likely_drivers` in the implied conditions, (b) treat `protocol_cautions` as hard constraints (`critical` = must honour, `warning` = honour unless override, `info` = best-practice tip), (c) always include the depletion-replacement supplement at the documented dose unless contraindicated, (d) add monitoring labs to `lab_followups`, (e) refuse to include any `avoid_supplement` item, (f) note `unmatched_meds` in `catalogue_additions_suggested` so the coach knows the gap.
+
+4. **Letter generator (`scripts/render-client-letter.py`)** — new `_load_drug_cautions_for_client(client)` + `_format_drug_cautions_block(cautions)` helpers. The cautions block is woven into `_top_of_mind_block()` so EVERY letter type (meal_plan / supplement_plan / lifestyle_guide / exercise_plan / recipes / consolidated / meal_plan_phase) inherits it. The block is labelled "⚠ MEDICATION-DERIVED PROTOCOL CONSTRAINTS — HARD RULES." with explicit instructions: avoid_food items dropped from meal plans literally, prefer_food items emphasised, avoid_supplement items refused in the schedule, timing rules honoured, CRITICAL items override the protocol.
+
+5. **Ingest pipeline** — `fmdb/ingest/extractor.py` system prompt gains **15. DRUG ENTRIES (DrugDepletion)** + **16. LAB TESTS (LabTest)** sections teaching future ingest runs to extract these as first-class entities when documents describe them. `_TOOL_INPUT_SCHEMA` gets both `drug_depletions` (full nested schema for `condition_implications`, `protocol_cautions`, `depletes`) and `lab_tests` (with conventional + FM-optimal ranges captured separately). `fmdb/ingest/types.py` (`ENTITY_TYPES`) + `fmdb/ingest/staging.py` (`_MODEL_BY_ENTITY`, `_ENRICHERS`, the entity-iteration loop, the empty-payload init) all include both new entities so AI output lands on disk via the normal stage → review → approve flow. New enrichers `_enrich_drug_depletion()` + `_enrich_lab_test()` default every list field to `[]` and add the standard lifecycle fields (source citation, version, status, updated_at, updated_by).
+
+**Pipeline now accepts 7 entity types**: `sources, topics, mechanisms, symptoms, claims, supplements, drug_depletions, lab_tests` (sources auto-registered from the IngestRequest, the other 7 from the AI extractor). Tool schema mirror: `claims, drug_depletions, lab_tests, mechanisms, supplements, symptoms, topics`.
+
+**Authoring prompt for human-coach-with-AI extractions** lives at `fm-database/data/drug_depletions/_AUTHORING_PROMPT.md`. Coach can paste it into Claude / GPT, replace the drug list at the bottom, and get YAML back ready to drop into `fm-database/data/drug_depletions/`. Includes hard rules, full schema with all three axes, allowed enum values, 4 anchor examples to match.
+
+**Key invariants for future sessions:**
+- `DrugDepletion` is **not** just about nutrient depletions any more. Name preserved for back-compat; semantically it's "medication catalogue entry".
+- Class-level entries are preferred over per-brand entries — list every brand AND every Indian brand in `drug_aliases` (Indian coach context).
+- Alias-aware longest-match is the lookup pattern everywhere — see `_collect_drug_context` (Python), `matchDrug` in `plans.ts` (TS), `_match_drug` in `intake-token-action.py` (Python). Duplicating the logic across the three callers is intentional for now (engine vs Server Action vs shim) — consolidate to a shared module if a fourth caller appears.
+- `condition_implications.confidence: low` is **ignored downstream** by intent — too non-specific to auto-populate `active_conditions`. Only `high` and `moderate` (the latter prefixed "Suspected: …") flow through.
+- `protocol_cautions.severity: critical` is a HARD BLOCK in the meal-plan / supplement-plan letter prompts. The AI is told the critical caution wins even over the attached protocol.
+
+**v0.73** — First production deploy: intake form on Fly.io at `intake.theochretree.com`, coach UI stays on Mac.
 
 Architectural split: the **public-facing intake form** runs on Fly (Mumbai, single 1 GB machine, 3 GB persistent volume). The **coach UI** (`/clients-v2`, `/plans`, `/assess`, `/dashboard-v2`, `/catalogue`, etc.) stays on the Mac mini + laptop exactly as before — no auth changes, no migration. Client PHI stays in `~/fm-plans/` on the Macs; Fly has a writable replica at `/data/fm-plans/` synced bidirectionally via Mutagen.
 

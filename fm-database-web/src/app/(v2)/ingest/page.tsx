@@ -1,5 +1,6 @@
 import { IngestClient } from "./ingest-client";
 import { CatalogueIngestPanel } from "@/components/catalogue-ingest-panel";
+import { CopyAuthoringPromptPanel } from "./copy-authoring-prompt-panel";
 import { FmAppShell } from "@/components/fm";
 
 export const dynamic = "force-dynamic";
@@ -12,10 +13,12 @@ export default function IngestPage() {
         <h1 className="text-3xl font-bold">⬆️ Ingest</h1>
         <p className="text-muted-foreground mt-1 text-sm">
           Upload a PDF or Markdown file to extract catalogue entities (topics, mechanisms,
-          symptoms, supplements, claims) using Claude. Review the staging batch before
+          symptoms, supplements, claims, drug entries) using Claude. Review the staging batch before
           promoting to canonical.
         </p>
       </div>
+
+      <CopyAuthoringPromptPanel />
 
       {/* Cost + time notice */}
       <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-800 space-y-1">

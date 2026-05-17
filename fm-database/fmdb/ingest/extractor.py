@@ -155,6 +155,119 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 },
             },
         },
+        "lab_tests": {
+            "type": "array",
+            "description": (
+                "v0.74 — individual lab biomarkers with conventional + FM-optimal "
+                "ranges. Emit when the document describes a specific marker "
+                "(tryptase, MMA, holoTC, AOC1, KIT D816V, leukotriene E4, "
+                "anti-TPO, fT3, fT4, ferritin, hs-CRP, etc.) with ranges, "
+                "interpretation, or indications. Capture FM-optimal ranges "
+                "separately from conventional lab ranges so the UI can show "
+                "both side-by-side."
+            ),
+            "items": {
+                "type": "object",
+                "required": ["slug", "display_name", "full_name", "units", "evidence_tier"],
+                "properties": {
+                    "slug": {"type": "string"},
+                    "display_name": {"type": "string", "description": "Short label — e.g. 'TSH', 'MMA', 'Tryptase'."},
+                    "full_name": {"type": "string", "description": "Full name — e.g. 'Thyroid Stimulating Hormone', 'Methylmalonic Acid', 'Serum Tryptase'."},
+                    "aliases": {"type": "array", "items": {"type": "string"}},
+                    "units": {"type": "string", "description": "e.g. 'mIU/L', 'ng/mL', '%', 'µmol/L'."},
+                    "sample_type": {"type": "string", "description": "blood | urine | saliva | stool | breath"},
+                    "conventional_low": {"type": "number", "description": "Lab's printed low end of normal."},
+                    "conventional_high": {"type": "number"},
+                    "fm_optimal_low": {"type": "number", "description": "Functional-medicine optimal low (often narrower than lab normal)."},
+                    "fm_optimal_high": {"type": "number"},
+                    "interpretation_low": {"type": "string"},
+                    "interpretation_high": {"type": "string"},
+                    "when_to_order": {"type": "string", "description": "FM indications for ordering this test."},
+                    "fasting_required": {"type": "boolean"},
+                    "linked_to_topics": {"type": "array", "items": {"type": "string"}},
+                    "linked_to_mechanisms": {"type": "array", "items": {"type": "string"}},
+                    "notes_for_coach": {"type": "string"},
+                    "evidence_tier": {"type": "string"},
+                    "source_quote": {"type": "string"},
+                    "source_location": {"type": "string"},
+                },
+            },
+        },
+        "drug_depletions": {
+            "type": "array",
+            "description": (
+                "v0.74 — medication entries. The catalogue tracks medications "
+                "across THREE axes, not just depletions: condition_implications "
+                "(what diagnosis the drug implies), protocol_cautions (food/"
+                "supplement/lifestyle constraints), and depletes (nutrient "
+                "depletion)."
+            ),
+            "items": {
+                "type": "object",
+                "required": ["slug", "drug_name", "drug_class", "evidence_tier"],
+                "properties": {
+                    "slug": {"type": "string"},
+                    "drug_name": {"type": "string"},
+                    "drug_aliases": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "All brand names INCLUDING Indian brands (e.g. metformin → glycomet, obimet; sitagliptin → Januvia, Janumet).",
+                    },
+                    "drug_class": {
+                        "type": "string",
+                        "description": "One of: thyroid_hormone, metformin, ppi, h2_blocker, statin, oral_contraceptive, hrt, beta_blocker, ace_inhibitor, arb, thiazide_diuretic, loop_diuretic, ssri, snri, benzodiazepine, nsaid, aspirin, corticosteroid, antibiotic, methotrexate, insulin, sulfonylurea, levodopa, phenytoin, valproate, antipsychotic, mast_cell_stabiliser, leukotriene_receptor_antagonist, anti_ige_biologic, h1_antihistamine, tyrosine_kinase_inhibitor, glp1_agonist, sglt2_inhibitor, dpp4_inhibitor, other.",
+                    },
+                    "summary": {"type": "string"},
+                    "depletes": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "nutrient": {"type": "string"},
+                                "severity": {"type": "string", "description": "mild | moderate | severe"},
+                                "mechanism": {"type": "string"},
+                                "monitoring_recommendation": {"type": "string"},
+                                "typical_supplement_dose": {"type": "string"},
+                            },
+                        },
+                    },
+                    "condition_implications": {
+                        "type": "array",
+                        "description": "What diagnoses does prescribing this drug imply? confidence: high (near-pathognomonic, e.g. cromolyn → MCAS), moderate (common but not exclusive, e.g. metformin → T2D; will surface as 'Suspected: …'), low (one of many — IGNORED downstream).",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "label": {"type": "string"},
+                                "confidence": {"type": "string", "description": "high | moderate | low"},
+                                "rationale": {"type": "string"},
+                                "topic_slug": {"type": "string", "description": "Canonical topic slug if it exists in the catalogue, else null."},
+                            },
+                        },
+                    },
+                    "protocol_cautions": {
+                        "type": "array",
+                        "description": "Constraints the medication imposes on the FM protocol. critical = blocks the plan; warning = surfaces but doesn't block; info = best-practice nudge.",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "kind": {"type": "string", "description": "avoid_food | avoid_supplement | avoid_practice | prefer_food | prefer_supplement | timing | refer | monitor"},
+                                "item": {"type": "string", "description": "Free-text constraint (e.g. 'Aged cheese, fermented foods, leftover meat, wine')."},
+                                "severity": {"type": "string", "description": "critical | warning | info"},
+                                "reason": {"type": "string", "description": "1-line WHY"},
+                            },
+                        },
+                    },
+                    "timing_separations": {"type": "array", "items": {"type": "string"}},
+                    "contraindicated_supplements": {"type": "array", "items": {"type": "string"}},
+                    "monitoring_labs": {"type": "array", "items": {"type": "string"}},
+                    "coach_notes": {"type": "string"},
+                    "linked_to_topics": {"type": "array", "items": {"type": "string"}},
+                    "evidence_tier": {"type": "string"},
+                    "source_quote": {"type": "string"},
+                    "source_location": {"type": "string"},
+                },
+            },
+        },
     },
 }
 
@@ -247,6 +360,78 @@ Strict rules:
     `fm_specific_thin`. Add a caveat noting the source is a synthesis,
     not primary literature. Specific dose recommendations from these
     sources should always carry a "verify with clinician" caveat.
+
+16. LAB TESTS (LabTest) — v0.74. Individual biomarkers are first-class
+    entities. Emit a `lab_tests` entry when the document describes a
+    specific marker with ranges, interpretation, or indications.
+    Examples: serum tryptase (MCAS workup), MMA (functional B12), holoTC
+    (active B12), AOC1 / HNMT genetic variants (histamine metabolism),
+    KIT D816V mutation (mastocytosis), leukotriene E4 / 11β-PGF2α
+    (mast-cell mediators), anti-TPO / anti-Tg (Hashimoto's), fT3 / fT4
+    / rT3, ferritin, TSAT, hs-CRP, homocysteine, HbA1c, etc.
+
+    CAPTURE BOTH RANGES SEPARATELY: conventional_low / conventional_high
+    (the lab's printed normal range) vs fm_optimal_low / fm_optimal_high
+    (the functional-medicine target — often narrower). Coach UI shows
+    both side-by-side so client can see "TSH 4.2 is in lab-normal but
+    above FM optimal 1.0–2.0".
+
+    Don't emit a lab_test if the document only mentions a marker by name
+    without ranges or clinical context. Drop it into `linked_to_*` on the
+    relevant topic / mechanism instead.
+
+    A LabTest's `when_to_order` field is the FM indication for ordering
+    it. Use plain coach-readable language ("PCOS workup with strong
+    androgen signs", "histamine intolerance / MCAS workup", etc.).
+
+15. DRUG ENTRIES (DrugDepletion) — v0.74. Medications are first-class. When
+    the document describes a medication, extract it as a `drug_depletions`
+    entry. The catalogue tracks meds across THREE axes — extract ALL three
+    when the document supports it:
+
+    a. `depletes[]` — classical drug-nutrient depletions (B12, magnesium,
+       CoQ10, folate, iron, zinc, etc.) with severity (mild/moderate/severe),
+       mechanism, and standard FM replacement dose.
+
+    b. `condition_implications[]` — what diagnosis does this medication
+       IMPLY about the client?
+         - high confidence: drug is near-exclusively prescribed for this
+           condition (cromolyn → MCAS; levothyroxine → hypothyroidism;
+           omalizumab → severe allergic asthma).
+         - moderate confidence: drug is commonly used for this condition
+           but not exclusively (metformin → T2D, but also PCOS,
+           prediabetes; SSRI → depression, but also anxiety, OCD).
+           Downstream surfaces these as "Suspected: …".
+         - low confidence: drug has many indications; IGNORED downstream.
+       Each implication needs a 1-2 sentence `rationale` + an optional
+       `topic_slug` if a canonical topic exists in the catalogue.
+
+    c. `protocol_cautions[]` — what does this medication constrain in the
+       FM protocol?
+         kinds: avoid_food | avoid_supplement | avoid_practice |
+                prefer_food | prefer_supplement | timing | refer | monitor
+         severity: critical (blocks the plan — must be addressed),
+                   warning (surfaces in plan-check, doesn't block),
+                   info (best-practice nudge).
+       Each caution needs an `item` (free-text, specific foods /
+       supplements / practices) and a 1-line `reason` (used in plan-check
+       finding text).
+
+    Use the existing seeded drugs as references for depth + tone:
+    `metformin.yaml`, `cromolyn-sodium.yaml`, `tyrosine-kinase-inhibitors.yaml`,
+    `proton-pump-inhibitors.yaml`. Class-level entries (PPIs, TKIs,
+    statins) are preferred over per-brand entries — list every brand name
+    AND every Indian brand name in `drug_aliases` so a mention of any
+    one resolves to the class entry.
+
+    `drug_class` values supported: thyroid_hormone, metformin, ppi,
+    h2_blocker, statin, oral_contraceptive, hrt, beta_blocker,
+    ace_inhibitor, arb, thiazide_diuretic, loop_diuretic, ssri, snri,
+    benzodiazepine, nsaid, aspirin, corticosteroid, antibiotic,
+    methotrexate, insulin, sulfonylurea, levodopa, phenytoin, valproate,
+    antipsychotic, mast_cell_stabiliser, leukotriene_receptor_antagonist,
+    anti_ige_biologic, h1_antihistamine, tyrosine_kinase_inhibitor,
+    glp1_agonist, sglt2_inhibitor, dpp4_inhibitor, other.
 
 Call the extract_entities tool exactly once with your structured result."""
 

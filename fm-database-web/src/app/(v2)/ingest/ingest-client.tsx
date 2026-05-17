@@ -255,7 +255,7 @@ function AddSourceTab() {
     <div className="space-y-4">
       <p className="text-xs text-muted-foreground">
         Register a reference so catalogue entries can cite it. After saving, ingest the actual document
-        using this same Source ID to extract Claims, Topics, and Supplements linked to it.
+        using this same Source ID to extract Claims, Topics, Mechanisms, Symptoms, Supplements, and Drug entries linked to it.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

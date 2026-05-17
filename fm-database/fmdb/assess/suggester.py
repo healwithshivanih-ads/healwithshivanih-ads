@@ -15,9 +15,115 @@ from __future__ import annotations
 import base64
 import json
 import os
+from pathlib import Path
 from typing import Any
 
 from .results import AssessResult, AssessUsage, AssessSuggestions, ChatContext, ChatResult, compute_fit_percent
+
+
+# ── v0.74 — drug catalogue loader (alias-aware) ────────────────────────────
+# Reads fm-database/data/drug_depletions/*.yaml once per process. The
+# entries' condition_implications + protocol_cautions are surfaced to the
+# Assess synthesiser so drug → diagnosis + drug → constraint reasoning
+# happens server-side, not implicit in the model's training. Same logic is
+# duplicated in scripts/render-client-letter.py (letter prompts) and
+# scripts/intake-token-action.py (intake submit handler) — keeping the
+# implementations parallel is intentional for now; lift to a shared
+# Python module if a third caller appears.
+
+_DRUG_INDEX_CACHE: list[dict[str, Any]] | None = None
+
+
+def _load_drug_catalogue() -> list[dict[str, Any]]:
+    """Load every drug_depletions/*.yaml once and cache it."""
+    global _DRUG_INDEX_CACHE
+    if _DRUG_INDEX_CACHE is not None:
+        return _DRUG_INDEX_CACHE
+    import yaml  # type: ignore
+    out: list[dict[str, Any]] = []
+    cat_dir = Path(__file__).resolve().parent.parent.parent / "data" / "drug_depletions"
+    if cat_dir.exists():
+        for p in cat_dir.glob("*.yaml"):
+            if p.name.startswith("_"):
+                continue
+            try:
+                d = yaml.safe_load(p.read_text()) or {}
+                if isinstance(d, dict):
+                    out.append(d)
+            except Exception:
+                continue
+    _DRUG_INDEX_CACHE = out
+    return out
+
+
+def _collect_drug_context(client_ctx: dict[str, Any]) -> dict[str, Any]:
+    """For each med on the client, return matched drug-catalogue entries with
+    `condition_implications` and `protocol_cautions` flattened for AI use.
+
+    Output shape:
+      {
+        "matched": [
+          {
+            "matched_medication": "Janumet 50/500 BD",
+            "drug_slug": "metformin",
+            "drug_name": "Metformin",
+            "condition_implications": [{label, confidence, rationale, topic_slug}],
+            "protocol_cautions": [{kind, item, severity, reason}],
+            "depletes": [{nutrient, severity, ...}],
+          }, ...
+        ],
+        "unmatched_meds": ["Estrogen patch", ...],   # for AI awareness
+      }
+    """
+    drugs = _load_drug_catalogue()
+    if not drugs:
+        return {"matched": [], "unmatched_meds": []}
+
+    # Flatten client meds → list of strings (handle dict-shaped repeaters too).
+    meds: list[str] = []
+    raw = client_ctx.get("current_medications") or client_ctx.get("medications") or []
+    if isinstance(raw, list):
+        for m in raw:
+            if isinstance(m, dict):
+                n = (m.get("name") or "").strip()
+                if n: meds.append(n)
+            elif m:
+                meds.append(str(m))
+    elif raw:
+        meds.append(str(raw))
+
+    def match_drug(med_text: str) -> dict[str, Any] | None:
+        text = med_text.lower()
+        best: tuple[int, dict[str, Any]] | None = None
+        for d in drugs:
+            aliases = [d.get("drug_name") or ""] + list(d.get("drug_aliases") or [])
+            for a in aliases:
+                a = (a or "").strip().lower()
+                if a and a in text and (best is None or len(a) > best[0]):
+                    best = (len(a), d)
+        return best[1] if best else None
+
+    matched_out: list[dict[str, Any]] = []
+    unmatched: list[str] = []
+    seen_slugs: set[str] = set()
+    for med in meds:
+        drug = match_drug(med)
+        if not drug:
+            unmatched.append(med)
+            continue
+        slug = drug.get("slug") or ""
+        if slug in seen_slugs:
+            continue
+        seen_slugs.add(slug)
+        matched_out.append({
+            "matched_medication": med,
+            "drug_slug": slug,
+            "drug_name": drug.get("drug_name") or slug,
+            "condition_implications": drug.get("condition_implications") or [],
+            "protocol_cautions": drug.get("protocol_cautions") or [],
+            "depletes": drug.get("depletes") or [],
+        })
+    return {"matched": matched_out, "unmatched_meds": unmatched}
 
 
 # JSON schema for the structured response. Intentionally narrow — every
@@ -373,6 +479,35 @@ HARD RULES (violating these breaks the downstream system):
    with a supplement's contraindications/interactions, populate
    `contraindication_check`. If conflict is severe, REMOVE the supplement and
    put it in `synthesis_notes` instead.
+
+3b. DRUG CONTEXT (v0.74). The user message contains a `drug_context` field
+    with `matched` entries — each is a drug from the client's current
+    medications that resolved against the FM drug catalogue. Each match
+    carries:
+      - `condition_implications`: diagnoses the drug implies (use these to
+        ground your `likely_drivers` and to anchor synthesis_notes —
+        e.g. cromolyn → MCAS / histamine intolerance, even when the coach
+        hasn't named it; metformin → confirm insulin resistance lens).
+      - `protocol_cautions`: HARD constraints on the plan. Severity:
+          `critical` = MUST honour; if your suggestion violates it, drop
+            the suggestion or rework. Always cite the caution in
+            `contraindication_check` for the affected supplement, or in
+            `synthesis_notes` for plan-level guidance.
+          `warning`  = honour unless the coach has explicit override.
+          `info`     = best practice; surface as a one-line tip in
+            `synthesis_notes` or supplement `coach_rationale`.
+      - `depletes`: nutrient depletions to monitor + replace. ALWAYS
+        suggest the replacement supplement (with the `typical_supplement_dose`
+        as the starting dose) unless contraindicated. Add the monitoring
+        lab to `lab_followups` if not already there.
+    Treat `drug_context.matched` as authoritative. If a caution says
+    "avoid quercetin > 1000 mg/day in MCAS clients", do not suggest
+    quercetin at 1500 mg, full stop. If a caution says "avoid St John's
+    wort with TKIs", flag it as `critical` in `contraindication_check`
+    and refuse to include the supplement.
+    `drug_context.unmatched_meds` lists medications that didn't resolve
+    against the catalogue — note them in `catalogue_additions_suggested`
+    with `kind: drug_depletion` so the coach knows the gap.
 
 4. Lab interpretation: extract values verbatim from reports. Use FM-optimal
    ranges where appropriate (e.g., TSH 0.5-2.5, ferritin > 70 for women,
@@ -1130,6 +1265,13 @@ def synthesize(
             except Exception:
                 pass
 
+    # v0.74 — drug-derived constraints. Match the client's current
+    # medications against fm-database/data/drug_depletions/ and inject
+    # both condition_implications + protocol_cautions into the prompt
+    # so the synthesiser respects them when generating drivers,
+    # supplements, lifestyle, labs and referrals.
+    drug_context = _collect_drug_context(client_context)
+
     # The main payload
     user_payload = {
         "client_context": client_context,
@@ -1139,6 +1281,7 @@ def synthesize(
         "session_history": session_history or [],
         "days_since_last_prescription": days_since_last_prescription,
         "vitaone_inventory": vitaone_inventory or [],
+        "drug_context": drug_context,
         "catalogue_subgraph": subgraph,
     }
     content.append({

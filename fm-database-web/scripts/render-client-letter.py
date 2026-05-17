@@ -1857,7 +1857,13 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
         if coach_notes:
             bullets.append(f"- ✍ Coach correction / addition (overrides AI): {coach_notes[:220]}")
 
-    if not bullets:
+    # v0.74 — drug-derived protocol cautions (hard constraints from
+    # medications). Surface them inside top-of-mind so every letter type
+    # inherits the constraints without needing per-builder wiring.
+    cautions = _load_drug_cautions_for_client(client)
+    drug_block = _format_drug_cautions_block(cautions)
+
+    if not bullets and not drug_block:
         return ""
 
     body = "\n".join(bullets)
@@ -1867,6 +1873,7 @@ THIS CLIENT — TOP-OF-MIND ({first_name}'s specifics):
 ═══════════════════════════════════════════════════════════
 {body}
 ═══════════════════════════════════════════════════════════
+{drug_block}
 
 Every recommendation, tip, and meal suggestion you write MUST reference
 at least one specific item from the block above. See the

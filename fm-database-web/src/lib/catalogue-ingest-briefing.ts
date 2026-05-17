@@ -18,13 +18,30 @@ approve, so any mistake costs her a round-trip — be careful and conservative.
 ──────────────────────────────────────────────────────────────────────
 Repo lives at ~/code/healwithshivanih-ads/fm-database/.
 Catalogue YAML files live at fm-database/data/<entity>/<slug>.yaml.
-9 entity types (cardinality on disk today shown for scale):
+11 entity types you can emit (cardinality on disk shown for scale).
+THESE ARE THE ONLY ONES — do NOT invent new entity types like
+"medications" or "markers"; use the right one from this list:
+
   sources             82    citation registry — every claim references a source
-  topics              318   clinical areas (e.g. thyroid, insulin-resistance)
-  mechanisms          408   physiological processes (e.g. hpa-axis-dysregulation)
-  symptoms            378   client-facing experiences (e.g. brain-fog)
+  topics              318   clinical areas (e.g. thyroid, insulin-resistance,
+                            MCAS, histamine-intolerance)
+  mechanisms          408   physiological processes (e.g. hpa-axis-dysregulation,
+                            mast-cell-degranulation, methyl-trap)
+  symptoms            378   client-facing experiences (e.g. brain-fog, flushing,
+                            palpitations)
   claims              1,492 evidence-tiered assertions citing one or more sources
-  supplements         279   abstract compounds (e.g. magnesium-glycinate)
+  supplements         279   nutraceuticals / herbs / nutrients (magnesium-glycinate,
+                            quercetin, NAC, DAO-enzyme). NOT pharmaceutical meds —
+                            those go in drug_depletions.
+  drug_depletions     19    MEDICATIONS — 3-axis entity (see §5 DRUG schema).
+                            This is where cromolyn, famotidine, montelukast,
+                            ketotifen, omalizumab, TKIs, statins, PPIs,
+                            metformin, levothyroxine, SSRI/SNRI etc. live.
+  lab_tests           122   BIOMARKERS with conventional + FM-optimal ranges
+                            (see §5 LAB_TEST schema). This is where tryptase,
+                            MMA, holoTC, AOC1 / HNMT / KIT D816V genetic
+                            variants, leukotriene E4, anti-TPO, ferritin,
+                            hs-CRP, homocysteine etc. live.
   cooking_adjustments 3     cookware/oil/water/food-prep swaps
   home_remedies       3     churans / infused waters / kashayams / kitchen remedies
   mindmaps            11    hand-curated mind maps (usually skip — niche)
@@ -104,6 +121,40 @@ supplement.take_with_food:
 DoseUnit (for typical_dose_range):
   mg | mcg | g | IU | ml | drops | capsules | tablets | scoops |
   teaspoons | tablespoons | billion_CFU
+
+drug_depletions.drug_class:
+  thyroid_hormone | metformin | ppi | h2_blocker | statin |
+  oral_contraceptive | hrt | beta_blocker | ace_inhibitor | arb |
+  thiazide_diuretic | loop_diuretic | ssri | snri | benzodiazepine |
+  nsaid | aspirin | corticosteroid | antibiotic | methotrexate |
+  insulin | sulfonylurea | levodopa | phenytoin | valproate |
+  antipsychotic | mast_cell_stabiliser |
+  leukotriene_receptor_antagonist | anti_ige_biologic |
+  h1_antihistamine | tyrosine_kinase_inhibitor | glp1_agonist |
+  sglt2_inhibitor | dpp4_inhibitor | other
+
+drug_depletions.depletes[].severity:
+  mild | moderate | severe
+
+drug_depletions.condition_implications[].confidence:
+  high     = near-pathognomonic (cromolyn → MCAS; levothyroxine → hypothyroidism).
+             Surfaces in client active_conditions as the bare label.
+  moderate = common but not exclusive (metformin → T2D, also PCOS, prediabetes).
+             Surfaces as "Suspected: …".
+  low      = one of many indications. IGNORED downstream — only use as last resort.
+
+drug_depletions.protocol_cautions[].kind:
+  avoid_food | avoid_supplement | avoid_practice |
+  prefer_food | prefer_supplement | timing | refer | monitor
+
+drug_depletions.protocol_cautions[].severity:
+  critical = HARD BLOCK. Letter generator drops the offending item.
+             Use sparingly (St John's wort + TKI; betaine HCl + active PPI).
+  warning  = surfaces in plan-check, doesn't block.
+  info     = best-practice tip / informs AI tone.
+
+lab_tests.sample_type:
+  blood | urine | saliva | stool | breath
 
 ──────────────────────────────────────────────────────────────────────
 5. EXACT YAML SHAPES (copy these as templates)
@@ -329,6 +380,158 @@ updated_by: shivani
 # in forms_available SHOULD have a corresponding typical_dose_range entry.
 # (Missing dose ranges are a non-blocking warning, but try to populate them.)
 
+# ── DRUG_DEPLETION (MEDICATIONS — 3-axis entity, v0.74) ───────────────
+# path: data/drug_depletions/<slug>.yaml
+#
+# Medications are first-class. Each entry captures THREE axes:
+#   a. depletes[]                — classical drug-nutrient depletions
+#   b. condition_implications[]  — what diagnosis the drug implies
+#   c. protocol_cautions[]       — what the FM protocol must respect
+#
+# Class-level entries (PPIs, TKIs, statins) are preferred over per-brand
+# entries. List EVERY brand + every Indian brand in drug_aliases
+# (Janumet, Glycomet, Telma, Eltroxin, etc.) so a mention of any one
+# resolves to the class entry.
+slug: cromolyn-sodium
+drug_name: Cromolyn sodium
+drug_aliases:
+  - cromolyn
+  - cromoglycate
+  - sodium cromoglycate
+  - gastrocrom
+  - nalcrom
+  - intal
+drug_class: mast_cell_stabiliser
+summary: |
+  Mast-cell stabiliser used in MCAS, histamine intolerance, mastocytosis,
+  chronic urticaria, allergic rhinitis, exercise-induced asthma, and
+  food-allergy mast-cell GI symptoms. Not absorbed systemically when given
+  orally — works locally in the gut and mucosa. A coach seeing cromolyn on
+  the meds list should ALWAYS read it as a mast-cell-related diagnosis.
+depletes: []                          # always present; empty list if none
+condition_implications:
+  - label: 'Mast cell activation syndrome (MCAS) / histamine intolerance'
+    confidence: high
+    rationale: |
+      Cromolyn is almost exclusively prescribed for mast-cell-driven
+      conditions. Its only mechanism is mast-cell stabilisation, so its
+      presence is near-pathognomonic for MCAS, histamine intolerance, or
+      mastocytosis.
+    topic_slug: histamine-intolerance-mcas
+  - label: 'Chronic urticaria / allergic rhinitis'
+    confidence: moderate
+    rationale: |
+      Cromolyn nasal spray is used for allergic rhinitis; oral forms also
+      used off-label for refractory chronic urticaria.
+    topic_slug: null                  # leave null if uncertain about catalogue
+protocol_cautions:
+  - kind: avoid_food
+    item: 'Aged cheese, fermented foods, leftover meat, wine, kombucha, vinegar, tomatoes, spinach, eggplant, avocado, citrus, chocolate, nuts'
+    severity: warning
+    reason: 'High histamine or histamine-liberating foods — undermine mast-cell stabilisation'
+  - kind: avoid_supplement
+    item: 'Quercetin > 1000 mg/day, high-dose curcumin, Reishi mushroom — start at 1/4 dose and titrate slowly'
+    severity: warning
+    reason: 'Can trigger paradoxical mast-cell degranulation in sensitive MCAS clients'
+  - kind: prefer_supplement
+    item: 'Vitamin C 500-1000 mg, DAO enzyme before high-histamine meals, magnesium glycinate, vitamin B6'
+    severity: info
+    reason: 'Supports DAO enzyme activity and reduces histamine load alongside the medication'
+  - kind: avoid_practice
+    item: 'Aggressive detox protocols, sauna at high intensity, vigorous lymph drainage, high-dose mineral cleanses'
+    severity: warning
+    reason: 'Can mobilise toxins / trigger mast-cell activation — start gentle and titrate'
+timing_separations: []                # list of free-text rules
+contraindicated_supplements: []       # list of supplement SLUGS only (not names)
+monitoring_labs:
+  - 'Tryptase (baseline + during flares — elevated > 11.4 ng/mL suggests mastocytosis)'
+  - '24h urine N-methyl histamine (functional marker)'
+coach_notes: |
+  Clients on cromolyn often have a long undiagnosed history of "weird"
+  symptoms — flushing, palpitations, food triggers that vary day-to-day,
+  multiple drug intolerances. Their nervous system is reactive — go
+  GENTLE. Start every supplement at 1/4 dose. Avoid bold detox /
+  cleanse rhetoric.
+linked_to_topics:
+  - histamine-intolerance-mcas
+  - mast-cell-activation
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: 'Coach observation — MCAS protocol design'
+    quote: 'Cromolyn on a client medication list = MCAS / histamine intolerance until proven otherwise.'
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani
+
+# Drug rule: emit ALL THREE axes when supported. Don't conflate medications
+# with supplements (separate entity). Always include condition_implications
+# — that's how the intake handler auto-populates active_conditions.
+
+# ── LAB_TEST (BIOMARKERS — v0.74) ─────────────────────────────────────
+# path: data/lab_tests/<slug>.yaml
+#
+# Emit a lab_tests entry when the document describes a specific marker
+# (tryptase, MMA, holoTC, AOC1, KIT D816V, leukotriene E4, anti-TPO,
+# fT3, fT4, ferritin, hs-CRP, etc.) WITH RANGES or clinical context.
+#
+# CRITICAL: Capture conventional_low/high SEPARATELY from
+# fm_optimal_low/high. Coach UI shows both side-by-side so client can see
+# "TSH 4.2 — within lab-normal (0.4–4.5) but ABOVE FM optimal (1.0–2.0)".
+#
+# Don't emit a lab_test if the document only NAMES a marker without
+# ranges or clinical context — drop the slug into linked_to_* on the
+# relevant topic / mechanism instead.
+slug: serum-tryptase
+display_name: Tryptase
+full_name: Serum Tryptase
+aliases:
+  - mast cell tryptase
+  - alpha tryptase
+  - beta tryptase
+units: ng/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 11.4
+fm_optimal_low: 0
+fm_optimal_high: 8
+interpretation_low: |
+  Low / undetectable tryptase is non-specific — usually not clinically
+  meaningful in isolation.
+interpretation_high: |
+  Elevated baseline tryptase (> 11.4 ng/mL) suggests systemic
+  mastocytosis or hereditary alpha-tryptasaemia. Acute rise (> 20 ng/mL +
+  2 above baseline) during symptoms supports MCAS diagnosis.
+when_to_order: |
+  MCAS / mastocytosis workup. Always draw BOTH baseline (asymptomatic)
+  AND during a flare for the 20% rise criterion.
+fasting_required: false
+linked_to_topics:
+  - histamine-intolerance-mcas
+  - mast-cell-activation
+linked_to_mechanisms:
+  - mast-cell-degranulation
+notes_for_coach: |
+  Tryptase is the most specific mast-cell marker available. Coach should
+  encourage the client to push their allergist / immunologist for
+  paired baseline + symptomatic draws — single asymptomatic draws miss
+  most MCAS cases.
+sources:
+  - id: coach-shivani
+    location: 'Coach observation — MCAS workup'
+    quote: 'Baseline tryptase alone misses MCAS — need a symptomatic-flare draw too.'
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani
+
+# Lab-test rule: ALWAYS capture both range pairs when known. Use null
+# for any range bound that isn't documented. interpretation_low and
+# interpretation_high stay "" if the source doesn't address them.
+
 ──────────────────────────────────────────────────────────────────────
 6. SOURCE CITATIONS (the inline {id, location, quote} shape)
 ──────────────────────────────────────────────────────────────────────
@@ -404,6 +607,8 @@ For each document the coach pastes, reply in this order:
           mechanisms: [reverse-t3-dominance]
           symptoms: []
           supplements: []
+          drug_depletions: []                 # v0.74 — list missing meds
+          lab_tests: []                       # v0.74 — list missing markers
 
       Coach stubs these manually OR adds them in a later batch.
 
@@ -446,6 +651,20 @@ Concrete template — copy this verbatim:
 - DO NOT pad. Five high-quality entries beat fifty lazy stubs.
 - DO NOT skip the \`missing_dependencies\` block — silent forward references
   cause weeks of debugging.
+- DO NOT shove medications into Topic \`clinician_scope_notes\` or Claim
+  \`caveats\`. Medications are first-class — emit them as
+  \`drug_depletions\` entries with all three axes
+  (depletes + condition_implications + protocol_cautions).
+- DO NOT shove individual biomarkers into Topic summaries or red_flags.
+  Markers with documented ranges or clinical interpretation are
+  first-class — emit them as \`lab_tests\` entries.
+- DO NOT confuse supplements with drugs. Pharmaceutical medications
+  (cromolyn, statins, PPIs, montelukast, levothyroxine, omalizumab,
+  TKIs) go in \`drug_depletions\`. Supplements are nutraceuticals /
+  herbs / nutrients (magnesium-glycinate, quercetin, NAC).
+- DO NOT invent new entity types. If something doesn't fit any of the
+  11 listed in §1, add it under \`missing_dependencies\` with a note
+  asking the coach to clarify which entity it should be.
 - ASK if the source content is ambiguous, contradictory, or you can't
   classify cleanly. The coach prefers a question over a wrong entry.
 

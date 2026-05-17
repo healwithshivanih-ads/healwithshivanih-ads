@@ -51,6 +51,11 @@ VENV_PY = REPO_ROOT / ".venv/bin/python"
 VALID_KINDS = {
     "sources", "topics", "mechanisms", "symptoms", "claims",
     "supplements", "cooking_adjustments", "home_remedies", "mindmaps",
+    # v0.74 — medications + biomarkers as first-class entities
+    "drug_depletions", "lab_tests",
+    # Also accept these existing-on-disk entity dirs that the paste-ingest
+    # path was previously rejecting. Validator already knows them.
+    "protocols", "titration_protocols", "lab_panels",
 }
 
 # ─────────────────────────────────────────────────────────────────────

@@ -176,7 +176,46 @@ class DrugClass(str, Enum):
     phenytoin = "phenytoin"
     valproate = "valproate"
     antipsychotic = "antipsychotic"
+    # ── MCAS / histamine-intolerance pharmacology ──
+    mast_cell_stabiliser = "mast_cell_stabiliser"     # cromolyn sodium, ketotifen (also H1)
+    leukotriene_receptor_antagonist = "leukotriene_receptor_antagonist"  # montelukast, zafirlukast
+    anti_ige_biologic = "anti_ige_biologic"           # omalizumab (Xolair)
+    h1_antihistamine = "h1_antihistamine"             # cetirizine, fexofenadine, loratadine, ketotifen
+    # ── Oncology ──
+    tyrosine_kinase_inhibitor = "tyrosine_kinase_inhibitor"  # imatinib, sunitinib, sorafenib, etc.
+    glp1_agonist = "glp1_agonist"                     # semaglutide, tirzepatide, liraglutide
+    sglt2_inhibitor = "sglt2_inhibitor"               # empagliflozin, dapagliflozin
+    dpp4_inhibitor = "dpp4_inhibitor"                 # sitagliptin (Januvia / Janumet), linagliptin
     other = "other"
+
+
+class CautionKind(str, Enum):
+    """Kind of protocol caution declared by a medication entry.
+
+    Used in DrugDepletion.protocol_cautions[].kind so coach + plan-check +
+    meal-plan generator all interpret the constraint the same way.
+    """
+    avoid_food = "avoid_food"
+    avoid_supplement = "avoid_supplement"
+    avoid_practice = "avoid_practice"          # e.g. "no aggressive sauna / detox protocols"
+    prefer_food = "prefer_food"
+    prefer_supplement = "prefer_supplement"
+    timing = "timing"                          # e.g. "take 4h apart from calcium"
+    refer = "refer"                            # e.g. "coordinate with oncologist before any supplement change"
+    monitor = "monitor"                        # e.g. "screen for neuropsych side effects monthly"
+
+
+class CautionSeverity(str, Enum):
+    critical = "critical"        # blocks the plan — coach must address
+    warning = "warning"          # surfaces in plan-check, doesn't block
+    info = "info"                # informational only
+
+
+class ImplicationConfidence(str, Enum):
+    """How confidently presence of this drug implies the named diagnosis."""
+    high = "high"              # near-pathognomonic — e.g. cromolyn → MCAS
+    moderate = "moderate"      # common but not exclusive — e.g. metformin → T2D (also PCOS, prediabetes)
+    low = "low"                # one of many indications — e.g. SSRI → depression OR anxiety OR many others
 
 
 class DepletionSeverity(str, Enum):

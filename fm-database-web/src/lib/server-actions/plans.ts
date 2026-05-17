@@ -256,7 +256,24 @@ export interface SupplementInteraction {
 export interface SupplementInteractionsResult {
   ok: boolean;
   interactions: SupplementInteraction[];
+  /**
+   * Drug-derived protocol cautions surfaced from the drug_depletions
+   * catalogue. v0.74: when a client's medication matches a drug entry,
+   * each of its `protocol_cautions[]` entries lands here so the plan-
+   * editor banner + plan-check sidebar can render them.
+   */
+  drug_cautions?: DrugCaution[];
   error?: string;
+}
+
+export interface DrugCaution {
+  drug_slug: string;
+  drug_name: string;
+  matched_medication: string;          // the client med string that matched
+  kind: string;                        // CautionKind enum value
+  severity: "critical" | "warning" | "info";
+  item: string;                        // free-text constraint
+  reason: string;
 }
 
 /**
@@ -363,7 +380,86 @@ export async function checkSupplementInteractionsAction(
       })
     );
 
-    return { ok: true, interactions };
+    // ── v0.74: drug_depletions → protocol_cautions pass ──
+    // Match every client medication against the drug catalogue (alias-aware)
+    // and surface each drug's protocol_cautions. The plan editor renders
+    // these alongside supplement-contraindication interactions; the meal-
+    // plan generator binds them as hard prompt constraints.
+    const drugCautions: DrugCaution[] = [];
+    try {
+      const drugDir = path.join(
+        path.resolve(process.cwd(), "..", "fm-database", "data"),
+        "drug_depletions",
+      );
+      const drugFiles = await fs.readdir(drugDir).catch(() => [] as string[]);
+      const drugs: Array<{
+        slug: string;
+        drug_name: string;
+        drug_aliases?: string[];
+        protocol_cautions?: Array<{
+          kind?: string;
+          item?: string;
+          severity?: string;
+          reason?: string;
+        }>;
+      }> = [];
+      for (const fn of drugFiles) {
+        if (!fn.endsWith(".yaml") || fn.startsWith("_")) continue;
+        try {
+          const raw = await fs.readFile(path.join(drugDir, fn), "utf-8");
+          const d = yaml.load(raw) as Record<string, unknown>;
+          if (d && typeof d === "object") drugs.push(d as never);
+        } catch {
+          /* skip unreadable */
+        }
+      }
+
+      // Longest-alias-wins match (avoid 'metformin' inside 'metformin xr'
+      // picking the shorter alias when a more specific one exists).
+      const matchDrug = (medText: string) => {
+        const lower = medText.toLowerCase();
+        let best: { len: number; drug: (typeof drugs)[number] } | null = null;
+        for (const d of drugs) {
+          const aliases = [d.drug_name, ...(d.drug_aliases ?? [])]
+            .filter(Boolean)
+            .map((a) => String(a).toLowerCase().trim())
+            .filter((a) => a.length > 0);
+          for (const a of aliases) {
+            if (lower.includes(a) && (!best || a.length > best.len)) {
+              best = { len: a.length, drug: d };
+            }
+          }
+        }
+        return best?.drug ?? null;
+      };
+
+      const seen = new Set<string>(); // dedup (drug_slug, item) pairs
+      for (const med of medications) {
+        if (!med || med.trim().length < 3) continue;
+        const drug = matchDrug(med);
+        if (!drug) continue;
+        for (const c of drug.protocol_cautions ?? []) {
+          const item = (c.item ?? "").trim();
+          if (!item) continue;
+          const key = `${drug.slug}::${item}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          drugCautions.push({
+            drug_slug: drug.slug,
+            drug_name: drug.drug_name,
+            matched_medication: med,
+            kind: c.kind ?? "info",
+            severity: (c.severity as "critical" | "warning" | "info") ?? "warning",
+            item,
+            reason: c.reason ?? "",
+          });
+        }
+      }
+    } catch (e) {
+      console.error("[plans] drug_depletions caution pass failed:", e);
+    }
+
+    return { ok: true, interactions, drug_cautions: drugCautions };
   } catch (e) {
     return { ok: false, interactions: [], error: String(e) };
   }

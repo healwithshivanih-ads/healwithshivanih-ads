@@ -14,8 +14,8 @@ from dataclasses import dataclass, field
 from typing import Any
 
 
-EntityType = str  # one of: "supplements", "topics", "claims", "sources", "mechanisms", "symptoms"
-ENTITY_TYPES: tuple[EntityType, ...] = ("sources", "topics", "mechanisms", "symptoms", "claims", "supplements")
+EntityType = str  # one of: "supplements", "topics", "claims", "sources", "mechanisms", "symptoms", "drug_depletions", "lab_tests"
+ENTITY_TYPES: tuple[EntityType, ...] = ("sources", "topics", "mechanisms", "symptoms", "claims", "supplements", "drug_depletions", "lab_tests")
 
 
 @dataclass

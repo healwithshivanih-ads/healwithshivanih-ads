@@ -4,10 +4,13 @@ from typing import Optional
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from .enums import (
+    CautionKind,
+    CautionSeverity,
     CookingAdjustmentCategory,
     DepletionSeverity,
     DoseUnit,
     DrugClass,
+    ImplicationConfidence,
     EntityStatus,
     EvidenceTier,
     HomeRemedyCategory,
@@ -275,6 +278,44 @@ class NutrientDepletion(BaseModel):
     typical_supplement_dose: str = ""                            # if standard-of-care to supplement
 
 
+class ConditionImplication(BaseModel):
+    """A diagnosis implied by the presence of this medication.
+
+    Captures "this drug almost always means the client has X" so the
+    intake handler can auto-populate active_conditions and Assess /
+    SOAP can surface "implied diagnoses" when no explicit session
+    driver exists yet.
+
+    Example (cromolyn): label="Histamine intolerance / MCAS",
+    confidence=high, topic_slug="histamine-intolerance-mcas".
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    label: str                                                # human-readable diagnosis label
+    confidence: ImplicationConfidence = ImplicationConfidence.moderate
+    rationale: str = ""                                       # 1-2 sentences why this drug implies this dx
+    topic_slug: Optional[str] = None                          # canonical topic — links into catalogue when present
+
+
+class ProtocolCaution(BaseModel):
+    """A constraint on the FM protocol implied by this medication.
+
+    Drives plan-check (warns when supplement_protocol / meal plan / lab
+    orders violate the constraint) and meal-plan generator (binds the
+    `item` text as a hard constraint in the AI prompt).
+
+    `item` is a free-text string for v1 (e.g. "Aged cheese, fermented
+    foods, leftover meat, wine, kombucha"). v2 may lift this to
+    catalogue slugs once coverage patterns are clearer.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    kind: CautionKind
+    item: str                                                 # what to avoid / prefer / monitor (free text)
+    severity: CautionSeverity = CautionSeverity.warning
+    reason: str = ""                                          # 1-line WHY — surfaced in plan-check findings
+
+
 class DrugDepletion(BaseModel):
     """A medication and the nutrients it depletes / interferes with.
 
@@ -296,6 +337,12 @@ class DrugDepletion(BaseModel):
     drug_class: DrugClass
     summary: str = ""                                            # 1-2 sentences for context
     depletes: list[NutrientDepletion] = Field(default_factory=list)
+    # ── v0.74: drug → likely diagnosis + protocol constraints ──
+    # When client.current_medications matches this drug, the intake handler
+    # adds each condition_implication.label to active_conditions and the
+    # plan-check / meal-plan generator consult protocol_cautions.
+    condition_implications: list[ConditionImplication] = Field(default_factory=list)
+    protocol_cautions: list[ProtocolCaution] = Field(default_factory=list)
     timing_separations: list[str] = Field(default_factory=list)  # "Take 4h apart from calcium / iron / coffee"
     contraindicated_supplements: list[str] = Field(default_factory=list)  # supplement slugs to AVOID with this drug
     monitoring_labs: list[str] = Field(default_factory=list)     # e.g. "B12 every 6 months", "homocysteine annually"

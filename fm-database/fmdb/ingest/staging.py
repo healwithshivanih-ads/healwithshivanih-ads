@@ -20,7 +20,7 @@ from typing import Any
 import yaml
 from pydantic import BaseModel, ValidationError
 
-from ..models import Claim, Mechanism, Source, Supplement, Symptom, Topic
+from ..models import Claim, DrugDepletion, LabTest, Mechanism, Source, Supplement, Symptom, Topic
 from .types import ENTITY_TYPES, EntityType, ExtractionResult, IngestRequest
 
 
@@ -31,6 +31,8 @@ _MODEL_BY_ENTITY: dict[EntityType, type[BaseModel]] = {
     "symptoms": Symptom,
     "claims": Claim,
     "sources": Source,
+    "drug_depletions": DrugDepletion,
+    "lab_tests": LabTest,
 }
 
 
@@ -173,12 +175,75 @@ def _enrich_mechanism(c: dict[str, Any], source_id: str, updated_by: str) -> dic
     return out
 
 
+def _enrich_drug_depletion(raw: dict, source_id: str, updated_by: str) -> dict:
+    """Add lifecycle + source citation + sensible defaults for DrugDepletion.
+
+    v0.74 schema fields: condition_implications, protocol_cautions, depletes,
+    timing_separations, contraindicated_supplements, monitoring_labs,
+    linked_to_topics, linked_to_mechanisms — every list defaults to [].
+    """
+    out = dict(raw)
+    for key in ("drug_aliases", "depletes", "condition_implications",
+                "protocol_cautions", "timing_separations",
+                "contraindicated_supplements", "monitoring_labs",
+                "linked_to_topics", "linked_to_mechanisms"):
+        out.setdefault(key, [])
+    out.setdefault("summary", "")
+    out.setdefault("coach_notes", "")
+    quote = out.pop("source_quote", None)
+    location = out.pop("source_location", None)
+    citation: dict[str, Any] = {"id": source_id}
+    if location:
+        citation["location"] = location
+    if quote:
+        citation["quote"] = quote
+    out["sources"] = [citation]
+    out.setdefault("version", 1)
+    out.setdefault("status", "active")
+    out["updated_at"] = _today().isoformat()
+    out["updated_by"] = updated_by
+    return out
+
+
+def _enrich_lab_test(raw: dict, source_id: str, updated_by: str) -> dict:
+    """Add lifecycle + source citation for a LabTest entry.
+
+    LabTest is a biomarker (TSH, MMA, tryptase, etc.) with both conventional
+    + FM-optimal ranges. Lists default to []; numeric range fields stay None
+    if absent (Pydantic Optional[float]).
+    """
+    out = dict(raw)
+    for key in ("aliases", "linked_to_topics", "linked_to_mechanisms"):
+        out.setdefault(key, [])
+    out.setdefault("notes_for_coach", "")
+    out.setdefault("sample_type", "")
+    out.setdefault("interpretation_low", "")
+    out.setdefault("interpretation_high", "")
+    out.setdefault("when_to_order", "")
+    out.setdefault("fasting_required", False)
+    quote = out.pop("source_quote", None)
+    location = out.pop("source_location", None)
+    citation: dict[str, Any] = {"id": source_id}
+    if location:
+        citation["location"] = location
+    if quote:
+        citation["quote"] = quote
+    out["sources"] = [citation]
+    out.setdefault("version", 1)
+    out.setdefault("status", "active")
+    out["updated_at"] = _today().isoformat()
+    out["updated_by"] = updated_by
+    return out
+
+
 _ENRICHERS = {
     "supplements": _enrich_supplement,
     "topics": _enrich_topic,
     "mechanisms": _enrich_mechanism,
     "symptoms": _enrich_symptom,
     "claims": _enrich_claim,
+    "drug_depletions": _enrich_drug_depletion,
+    "lab_tests": _enrich_lab_test,
 }
 
 
@@ -230,7 +295,7 @@ def stage(
     # Order matters: topics + mechanisms first so that claims/supplements that
     # link to them resolve cleanly when the validator simulates the post-state.
     by_type = result.by_type()
-    for entity in ("topics", "mechanisms", "symptoms", "claims", "supplements"):
+    for entity in ("topics", "mechanisms", "symptoms", "claims", "supplements", "drug_depletions", "lab_tests"):
         for raw in by_type.get(entity, []):
             # Defensive: LLM occasionally emits a string or other non-dict
             # in an entity slot. Don't crash the whole batch — record + skip.
@@ -495,7 +560,7 @@ def approve(
     # ---- Pass 2: build simulated post-state and validate
     loaded = load_all(data_dir)
     overlay_kwargs: dict[str, list] = {
-        "sources": [], "topics": [], "mechanisms": [], "symptoms": [], "claims": [], "supplements": [],
+        "sources": [], "topics": [], "mechanisms": [], "symptoms": [], "claims": [], "supplements": [], "drug_depletions": [], "lab_tests": [],
     }
     for item in plan:
         overlay_kwargs[item["entity"]].append(item["parsed"])

@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
 import { updatePlan, saveSupplementSources, checkSupplementInteractionsAction } from "@/lib/server-actions/plans";
-import type { SupplementSourcesMap, SupplementInteraction } from "@/lib/server-actions/plans";
+import type { SupplementSourcesMap, SupplementInteraction, DrugCaution } from "@/lib/server-actions/plans";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { ProtocolTemplatePicker } from "./protocol-template-picker";
 import { PlanChatPanel } from "./plan-chat-panel";
@@ -1003,12 +1003,16 @@ export function PlanEditor(props: PlanEditorProps) {
   const [editAnyway, setEditAnyway] = useState(false);
   const effectiveLocked = locked && !editAnyway;
 
-  // Supplement interaction checker state
+  // Supplement interaction + drug-caution checker state (v0.74)
   const [supplementInteractions, setSupplementInteractions] = useState<SupplementInteraction[]>([]);
+  const [drugCautions, setDrugCautions] = useState<DrugCaution[]>([]);
   useEffect(() => {
     let cancelled = false;
     checkSupplementInteractionsAction(initial.slug).then((res) => {
-      if (!cancelled && res.ok) setSupplementInteractions(res.interactions);
+      if (!cancelled && res.ok) {
+        setSupplementInteractions(res.interactions);
+        setDrugCautions(res.drug_cautions ?? []);
+      }
     });
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1367,8 +1371,48 @@ export function PlanEditor(props: PlanEditorProps) {
                 {supplementInteractions.length > 0 && (
                   <span className="text-amber-600 text-xs font-semibold">⚠ {supplementInteractions.length} interaction{supplementInteractions.length !== 1 ? "s" : ""}</span>
                 )}
+                {drugCautions.length > 0 && (
+                  <span className="text-rose-600 text-xs font-semibold">⚠ {drugCautions.length} drug caution{drugCautions.length !== 1 ? "s" : ""}</span>
+                )}
               </summary>
               <div className="pt-3 space-y-3 px-1">
+                {/* ── Drug-derived protocol cautions (v0.74) ── */}
+                {drugCautions.length > 0 && (() => {
+                  const critical = drugCautions.filter((c) => c.severity === "critical");
+                  const warning = drugCautions.filter((c) => c.severity === "warning");
+                  const info = drugCautions.filter((c) => c.severity === "info");
+                  const borderClass = critical.length > 0 ? "border-rose-400 bg-rose-50" : "border-amber-300 bg-amber-50";
+                  const textClass = critical.length > 0 ? "text-rose-900" : "text-amber-900";
+                  return (
+                    <details className="group/drug" open={critical.length > 0}>
+                      <summary className={`flex items-center gap-2 cursor-pointer select-none list-none rounded-md border ${borderClass} px-3 py-2 text-xs font-semibold ${textClass}`}>
+                        <span className="transition-transform group-open/drug:rotate-90 text-xs">▶</span>
+                        ⚠ Drug-derived protocol cautions ({drugCautions.length})
+                        {critical.length > 0 && <span className="ml-1 rounded px-1.5 py-0.5 bg-rose-600 text-white text-[9px]">CRITICAL {critical.length}</span>}
+                      </summary>
+                      <div className="mt-2 space-y-2 rounded-md border border-amber-200 bg-white px-3 py-2">
+                        <p className="text-[11px] text-muted-foreground">
+                          The client&apos;s medications imply these protocol constraints. Reflect them in the plan, meal letter, and supplement choices.
+                        </p>
+                        {[...critical, ...warning, ...info].map((c, i) => {
+                          const sevColor = c.severity === "critical" ? "rose" : c.severity === "warning" ? "amber" : "slate";
+                          return (
+                            <div key={`${c.drug_slug}-${i}`} className={`text-[11px] border border-${sevColor}-200 rounded bg-${sevColor}-50/60 px-2.5 py-2 space-y-1`}>
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className={`rounded px-1.5 py-0.5 bg-${sevColor}-200 text-${sevColor}-900 text-[9px] font-bold uppercase`}>{c.severity}</span>
+                                <span className={`rounded px-1.5 py-0.5 bg-slate-200 text-slate-700 text-[9px] uppercase`}>{c.kind.replace(/_/g, " ")}</span>
+                                <span className="font-semibold text-slate-900">{c.drug_name}</span>
+                                <span className="text-muted-foreground text-[10px]">({c.matched_medication})</span>
+                              </div>
+                              <div className="text-slate-900">{c.item}</div>
+                              {c.reason && <div className="text-muted-foreground text-[10px] italic">Why: {c.reason}</div>}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </details>
+                  );
+                })()}
                 {/* ── Medication interaction warnings ── */}
                 {supplementInteractions.length > 0 && (
                   <details className="group/warn">
