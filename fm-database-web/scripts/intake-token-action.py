@@ -140,6 +140,12 @@ def action_generate(payload: dict) -> dict:
     # (intake_reminder_enabled toggle).
     data["intake_reminder_enabled"] = True
     data["intake_reminders_sent_at"] = []
+    # Sending an intake form is an implicit signal that the client signed
+    # up after discovery — auto-flip engagement_status so the "Did they
+    # sign up?" callout on the client Overview clears immediately.
+    # Coach can still override to "declined" / "pending" if needed.
+    if data.get("engagement_status") != "signed_up":
+        data["engagement_status"] = "signed_up"
     _save_client(client_id, data)
 
     return {
@@ -359,20 +365,126 @@ def _merge_lists(existing: list[str] | None, incoming: list[str] | None) -> tupl
     return existing + added, True
 
 
+_DRUG_INDEX_CACHE: dict | None = None
+
+
+def _build_drug_index() -> dict:
+    """Load drug_depletions catalogue once + build alias → entry index.
+
+    Returns a dict of:
+      {
+        'aliases': { lowercase_alias_or_name: drug_dict, ... },
+        'all': [drug_dict, ...],
+      }
+    Falls back to empty dict on any IO error — handler must work even if
+    catalogue is unreadable.
+    """
+    global _DRUG_INDEX_CACHE
+    if _DRUG_INDEX_CACHE is not None:
+        return _DRUG_INDEX_CACHE
+    import yaml  # type: ignore
+    out_aliases: dict = {}
+    out_all: list = []
+    try:
+        cat_dir = FMDB_ROOT / "data" / "drug_depletions"
+        if cat_dir.exists():
+            for p in cat_dir.glob("*.yaml"):
+                try:
+                    with p.open() as f:
+                        d = yaml.safe_load(f) or {}
+                except Exception:
+                    continue
+                if not isinstance(d, dict):
+                    continue
+                name = (d.get("drug_name") or "").strip()
+                aliases = [name] + [str(a) for a in (d.get("drug_aliases") or [])]
+                for a in aliases:
+                    a = (a or "").strip().lower()
+                    if a and a not in out_aliases:
+                        out_aliases[a] = d
+                out_all.append(d)
+    except Exception:
+        pass
+    _DRUG_INDEX_CACHE = {"aliases": out_aliases, "all": out_all}
+    return _DRUG_INDEX_CACHE
+
+
+def _match_drug(med_text: str) -> dict | None:
+    """Substring-match a medication free-text string against the catalogue
+    alias index. Longest alias wins to avoid 'metformin' inside 'metformin xr'
+    matching the shorter entry when a more specific one exists.
+    """
+    idx = _build_drug_index()
+    text = (med_text or "").lower()
+    best: tuple[int, dict] | None = None
+    for alias, drug in idx["aliases"].items():
+        if alias and alias in text:
+            if best is None or len(alias) > best[0]:
+                best = (len(alias), drug)
+    return best[1] if best else None
+
+
 def _derive_conditions_from_intake(payload: dict) -> list[str]:
     """Infer present diseases from medications + goals + form signals.
 
-    Clients often don't tick the "active_conditions" checkboxes even when
-    they're literally on the medication for that condition. If they're on
-    Janumet/metformin → they have diabetes. On a statin → dyslipidaemia.
-    On levothyroxine → hypothyroidism. We add these so the AI synthesiser
-    and the Overview snapshot don't miss the obvious diagnosis.
+    Two-stage lookup:
+
+    1. CATALOGUE lookup (preferred) — scan client.current_medications and
+       all medication repeater fields against drug_depletions/*.yaml.
+       Each matching drug contributes its condition_implications[].label
+       (gated by confidence: high → definite, moderate → "suspected …",
+       low → ignored).
+
+    2. FALLBACK heuristics — for free-text fields with no drug match
+       (goals, chief_complaint), keep the original keyword rules so we
+       still catch "high HbA1c", "high BP" etc. mentioned in prose.
     """
     out: list[str] = []
 
     def add(label: str) -> None:
         if not any(c.lower() == label.lower() for c in out):
             out.append(label)
+
+    # ── Stage 1: catalogue-driven drug → condition lookup ──
+    def _collect_med_strings(payload: dict) -> list[str]:
+        """Flatten all medication-bearing fields into a list of strings."""
+        strs: list[str] = []
+        med_fields = (
+            "current_medications", "medications",
+            "glp1_medications", "acid_suppressants", "nsaids_daily",
+            "antibiotics_last_12mo", "hormonal_contraception_hrt",
+            "thyroid_medication", "psych_medications",
+            "biologics_immunosuppressants", "statins_bp_diabetes",
+        )
+        for fld in med_fields:
+            v = payload.get(fld) or []
+            if isinstance(v, list):
+                for entry in v:
+                    if isinstance(entry, dict):
+                        s = (entry.get("name") or "").strip()
+                        if s: strs.append(s)
+                    elif entry:
+                        strs.append(str(entry))
+        return strs
+
+    try:
+        med_strings = _collect_med_strings(payload)
+        for med_text in med_strings:
+            drug = _match_drug(med_text)
+            if not drug:
+                continue
+            for impl in (drug.get("condition_implications") or []):
+                conf = (impl.get("confidence") or "moderate").lower()
+                if conf == "low":
+                    continue  # too non-specific to auto-populate
+                label = (impl.get("label") or "").strip()
+                if not label:
+                    continue
+                if conf == "moderate":
+                    label = f"Suspected: {label}"
+                add(label)
+    except Exception as e:
+        print(f"[intake-token-action] catalogue drug lookup failed: {e}", file=sys.stderr)
 
     def med_names(field: str) -> str:
         v = payload.get(field) or []
