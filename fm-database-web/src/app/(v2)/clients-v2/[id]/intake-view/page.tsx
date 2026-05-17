@@ -11,6 +11,8 @@
  */
 import Link from "next/link";
 import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { FmAppShell } from "@/components/fm";
+import { clientQuickActions } from "../client-quick-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -148,10 +150,18 @@ export default async function IntakeViewPage({
 
   if (!client) {
     return (
-      <div className="max-w-3xl mx-auto p-6">
-        <p className="text-stone-600">Client not found.</p>
-        <Link href="/clients-v2" className="text-sm text-emerald-700 underline">← All clients</Link>
-      </div>
+      <FmAppShell
+        activeNavId="clients"
+        crumbs={[
+          { label: "Clients", href: "/clients-v2" },
+          { label: "Intake view" },
+        ]}
+      >
+        <div className="max-w-3xl mx-auto p-6">
+          <p className="text-stone-600">Client not found.</p>
+          <Link href="/clients-v2" className="text-sm text-emerald-700 underline">← All clients</Link>
+        </div>
+      </FmAppShell>
     );
   }
 
@@ -160,7 +170,15 @@ export default async function IntakeViewPage({
   const displayName = (client.display_name as string) || id;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-4">
+    <FmAppShell
+      activeNavId="clients"
+      quickActions={clientQuickActions(id)}
+      crumbs={[
+        { label: "Clients", href: "/clients-v2" },
+        { label: displayName, href: `/clients-v2/${id}` },
+        { label: "Intake submission" },
+      ]}
+    ><div className="max-w-3xl mx-auto p-6 space-y-4">
       <div className="flex items-baseline justify-between gap-4 mb-2">
         <div>
           <h1 className="text-xl font-semibold text-stone-900">
@@ -374,5 +392,6 @@ export default async function IntakeViewPage({
         <Field label="Insights" value={client.intake_insights} />
       </Section>
     </div>
+    </FmAppShell>
   );
 }
