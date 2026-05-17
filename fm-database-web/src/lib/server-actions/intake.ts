@@ -204,9 +204,17 @@ export async function sendIntakeInviteViaApi(
   const displayName = (c.display_name as string | undefined) ?? "";
   const firstName = displayName.split(" ")[0] || "there";
 
-  const origin = (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3002")
-    .replace(/\/$/, "");
-  const url = `${origin}/intake/${token}`;
+  const rawOrigin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+  if (!rawOrigin || /localhost|127\.0\.0\.1/.test(rawOrigin)) {
+    // Refuse to send a link the client can't open. cl-008 (Sudarshan) got
+    // a localhost:3002 link on 2026-05-17 before this guard existed.
+    return {
+      ok: false,
+      error:
+        "NEXT_PUBLIC_APP_URL is unset or points to localhost — refusing to send an unreachable link. Set it to the public origin (e.g. https://intake.theochretree.com) in .env.local and restart pm2.",
+    };
+  }
+  const url = `${rawOrigin}/intake/${token}`;
 
   const sendRes = await sendWhatsAppAction(phone, "fm_intake_invite", [firstName, url]);
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };

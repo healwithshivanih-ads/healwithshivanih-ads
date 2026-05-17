@@ -310,8 +310,12 @@ async function fireOnboardingKit(
       errors.push(`intake_token_failed: ${tokRes.error}`);
     } else {
       result.intake_token = tokRes.token;
-      const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3002").replace(/\/$/, "");
-      result.intake_url = `${appUrl}/intake/${tokRes.token}`;
+      const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+      if (!appUrl || /localhost|127\.0\.0\.1/.test(appUrl)) {
+        errors.push("NEXT_PUBLIC_APP_URL unset or localhost — intake_url omitted (link would be unreachable from client device)");
+      } else {
+        result.intake_url = `${appUrl}/intake/${tokRes.token}`;
+      }
     }
   } catch (err) {
     errors.push(`intake_token_exception: ${(err as Error).message}`);

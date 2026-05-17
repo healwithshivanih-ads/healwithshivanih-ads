@@ -34,8 +34,9 @@ const TEMPLATE_NAME = "fm_intake_reminder";
 const MIN_DAYS_BETWEEN_REMINDERS = 5;
 const MAX_REMINDERS_PER_TOKEN = 2;
 
-function buildPublicUrl(token: string): string {
-  const origin = (process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3002").replace(/\/$/, "");
+function buildPublicUrl(token: string): string | null {
+  const origin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+  if (!origin || /localhost|127\.0\.0\.1/.test(origin)) return null;
   return `${origin}/intake/${token}`;
 }
 
@@ -128,6 +129,13 @@ export async function POST(req: NextRequest) {
   for (const cand of candidates) {
     const firstName = cand.display_name.split(" ")[0] || cand.display_name;
     const url = buildPublicUrl(cand.token);
+    if (!url) {
+      failed.push({
+        client_id: cand.client_id,
+        error: "NEXT_PUBLIC_APP_URL unset or localhost — refusing to send unreachable link",
+      });
+      continue;
+    }
     const expiresLabel = cand.expires_at
       ? new Date(cand.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short" })
       : "soon";
