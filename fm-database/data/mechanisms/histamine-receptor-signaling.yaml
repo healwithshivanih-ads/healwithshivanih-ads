@@ -1,0 +1,35 @@
+slug: histamine-receptor-signaling
+display_name: Histamine Receptor Signaling (H1–H4)
+aliases:
+  - H1 H2 H3 H4 receptors
+  - histamine signal transduction
+category: signaling
+summary: |
+  Signal transduction through four receptor subtypes. H1 mediates classic
+  allergy symptoms (itch, vasodilation, bronchoconstriction). H2 governs
+  gastric acid secretion and cardiac effects. H3 in the CNS modulates
+  neurotransmitters (dopamine, acetylcholine), influencing arousal,
+  attention, appetite — and "brain fog." H4 bridges immune-neural crosstalk
+  and governs chemotaxis.
+upstream_drivers:
+  - mast-cell-degranulation
+  - dietary-histamine-load
+downstream_effects:
+  - flushing
+  - tachycardia
+  - migraine
+  - brain-fog
+related_mechanisms:
+  - mast-cell-degranulation
+linked_to_topics:
+  - histamine-intolerance
+  - mast-cell-activation-syndrome
+evidence_tier: strong
+sources:
+  - id: iemt
+    location: 'Histamine Receptor Table'
+    quote: 'H3 influences arousal, attention, appetite; H4 bridges immune–neural crosstalk.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

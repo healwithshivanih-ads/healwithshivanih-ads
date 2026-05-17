@@ -1,60 +1,77 @@
 slug: aspirin-chronic
 drug_name: Aspirin (chronic / low-dose)
 drug_aliases:
-  - aspirin
-  - asa
-  - ecosprin
-  - disprin
-  - low-dose-aspirin
-  - baby-aspirin
+- aspirin
+- asa
+- ecosprin
+- disprin
+- low-dose-aspirin
+- baby-aspirin
 drug_class: aspirin
-summary: |
-  Low-dose aspirin (75-150 mg) for cardiovascular protection or
+summary: 'Low-dose aspirin (75-150 mg) for cardiovascular protection or
+
   anti-platelet therapy. Chronic use depletes vitamin C, folate, and iron
+
   via subtle GI bleeding. Higher doses (NSAID range) cause additional
+
   depletions.
+
+  '
 depletes:
-  - nutrient: Vitamin C
-    severity: moderate
-    mechanism: Increased oxidative consumption + reduced absorption.
-    monitoring_recommendation: Plasma vit C if symptoms suggest (rare)
-    typical_supplement_dose: "500-1000 mg/day (whole-food sources — amla, citrus, berries)"
-  - nutrient: Folate
-    severity: moderate
-    mechanism: Aspirin competes with folate for plasma protein binding.
-    monitoring_recommendation: RBC folate annually
-    typical_supplement_dose: 400 mcg methyl folate (5-MTHF)
-  - nutrient: Iron
-    severity: moderate
-    mechanism: Subtle chronic GI bleeding causes iron loss; can lead to occult iron-deficiency anemia.
-    monitoring_recommendation: Ferritin + iron studies annually + stool occult blood test if symptoms
-    typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
-  - nutrient: Zinc
-    severity: mild
-    mechanism: Reduced absorption.
-    monitoring_recommendation: Serum zinc if symptoms
-    typical_supplement_dose: 15-30 mg zinc picolinate
+- nutrient: Vitamin C
+  severity: moderate
+  mechanism: Increased oxidative consumption + reduced absorption.
+  monitoring_recommendation: Plasma vit C if symptoms suggest (rare)
+  typical_supplement_dose: 500-1000 mg/day (whole-food sources — amla, citrus, berries)
+- nutrient: Folate
+  severity: moderate
+  mechanism: Aspirin competes with folate for plasma protein binding.
+  monitoring_recommendation: RBC folate annually
+  typical_supplement_dose: 400 mcg methyl folate (5-MTHF)
+- nutrient: Iron
+  severity: moderate
+  mechanism: Subtle chronic GI bleeding causes iron loss; can lead to occult iron-deficiency anemia.
+  monitoring_recommendation: Ferritin + iron studies annually + stool occult blood test if symptoms
+  typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
+- nutrient: Zinc
+  severity: mild
+  mechanism: Reduced absorption.
+  monitoring_recommendation: Serum zinc if symptoms
+  typical_supplement_dose: 15-30 mg zinc picolinate
+condition_implications:
+- label: Cardiovascular risk reduction (low-dose) OR chronic pain / inflammation (high-dose)
+  confidence: moderate
+  rationale: Low-dose aspirin (75-100 mg) suggests CV secondary prevention; higher doses suggest analgesic / anti-inflammatory
+    use.
+  topic_slug: cardiovascular-prevention
+protocol_cautions: []
 timing_separations:
-  - "Take with food to reduce GI irritation."
-  - "Separate from supplemental iron by 2 hours (iron + ASA both irritate GI)."
+- Take with food to reduce GI irritation.
+- Separate from supplemental iron by 2 hours (iron + ASA both irritate GI).
 contraindicated_supplements: []
 monitoring_labs:
-  - CBC + ferritin annually
-  - Stool occult blood if anemia or GI symptoms
-  - Renal function (creatinine, eGFR) annually
-coach_notes: |
-  Most clients on chronic low-dose aspirin do not realise they need iron +
+- CBC + ferritin annually
+- Stool occult blood if anemia or GI symptoms
+- Renal function (creatinine, eGFR) annually
+coach_notes: 'Most clients on chronic low-dose aspirin do not realise they need iron +
+
   folate monitoring. Surface this proactively. Encourage food sources of
+
   vitamin C (amla, lemon, berries) at every meal — both protective for
+
   gastric mucosa AND replaces what aspirin depletes.
+
   ⚠ NEVER stop chronic anti-platelet aspirin without cardiology clearance —
+
   rebound thrombosis risk in clients with stents / prior MI.
+
+  '
 linked_to_topics:
-  - cardiovascular-disease
+- cardiovascular-disease
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: Anti-platelet drug-nutrient interactions
+- id: vitaone-skill-practice-guide
+  location: Anti-platelet drug-nutrient interactions
 evidence_tier: plausible_emerging
 version: 1
 status: active

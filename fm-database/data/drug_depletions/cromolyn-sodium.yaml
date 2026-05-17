@@ -1,0 +1,79 @@
+slug: cromolyn-sodium
+drug_name: Cromolyn sodium
+drug_aliases:
+  - cromolyn
+  - cromoglycate
+  - sodium cromoglycate
+  - sodium cromoglicate
+  - gastrocrom
+  - nalcrom
+  - intal
+  - opticrom
+  - crolom
+drug_class: mast_cell_stabiliser
+summary: |
+  Mast-cell stabiliser used in MCAS, histamine intolerance, mastocytosis,
+  chronic urticaria, allergic rhinitis (nasal spray), exercise-induced
+  asthma (inhaled), and food-allergy / mast-cell GI symptoms (oral
+  Gastrocrom). Not absorbed systemically when given orally — works
+  locally in the gut, mucosa, lungs. A coach seeing cromolyn on the
+  meds list should ALWAYS read it as a mast-cell-related diagnosis.
+depletes: []
+condition_implications:
+  - label: "Mast cell activation syndrome (MCAS) / histamine intolerance"
+    confidence: high
+    rationale: "Cromolyn is almost exclusively prescribed for mast-cell-driven conditions. Its only mechanism is mast-cell stabilisation, so its presence is near-pathognomonic for MCAS, histamine intolerance, or mastocytosis."
+    topic_slug: histamine-intolerance-mcas
+  - label: "Chronic urticaria / allergic rhinitis"
+    confidence: moderate
+    rationale: "Cromolyn nasal spray (opticrom) is used for allergic rhinitis; oral forms also used off-label for refractory chronic urticaria."
+protocol_cautions:
+  - kind: avoid_food
+    item: "Aged cheese, fermented foods (kimchi, sauerkraut, kombucha, miso), cured / leftover meat, vinegar, wine, tomatoes, spinach, eggplant, avocado, citrus, chocolate, nuts"
+    severity: warning
+    reason: "High histamine or histamine-liberating foods — undermine mast-cell stabilisation and trigger flares"
+  - kind: avoid_supplement
+    item: "Quercetin > 1000 mg/day, high-dose curcumin (> 1000 mg/day), Reishi mushroom — start any of these at 1/4 dose and titrate slowly"
+    severity: warning
+    reason: "Can trigger paradoxical mast-cell degranulation in sensitive MCAS clients — titrate from 250 mg slowly while tracking symptom diary"
+  - kind: prefer_food
+    item: "Fresh meat (not aged or leftover > 24h), low-histamine vegetables (cucumber, zucchini, broccoli, cauliflower), white rice, pears, apples"
+    severity: info
+    reason: "Reduces overall mast-cell trigger load alongside the medication"
+  - kind: prefer_supplement
+    item: "Vitamin C 500-1000 mg (natural antihistamine), DAO enzyme before high-histamine meals, magnesium glycinate, vitamin B6 (DAO cofactor)"
+    severity: info
+    reason: "Supports DAO enzyme activity and reduces histamine load — works synergistically with cromolyn"
+  - kind: avoid_practice
+    item: "Aggressive detox protocols, sauna at high intensity, vigorous lymph drainage, high-dose mineral 'cleanses'"
+    severity: warning
+    reason: "Can mobilise toxins / trigger mast-cell activation in MCAS clients — start gentle and titrate"
+timing_separations: []
+contraindicated_supplements: []
+monitoring_labs:
+  - Tryptase (baseline + during flares — elevated > 11.4 ng/mL suggests mastocytosis)
+  - 24h urine N-methyl histamine (functional marker of mast-cell activation)
+  - Plasma histamine (less reliable but cheap)
+  - DAO enzyme activity (if available)
+coach_notes: |
+  Clients on cromolyn often have a long undiagnosed history of "weird"
+  symptoms — flushing, palpitations, food triggers that vary day-to-day,
+  multiple drug intolerances, sensitivity to fragrances / chemicals.
+  Their nervous system is reactive — go GENTLE with protocols. Start
+  every supplement at 1/4 dose. Avoid bold detox / cleanse rhetoric.
+  Low-histamine meal plan is often the single biggest lever before any
+  supplement.
+linked_to_topics:
+  - histamine-intolerance-mcas
+  - mast-cell-activation
+  - chronic-urticaria
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — MCAS protocol design 2026
+    quote: Cromolyn on a client's medication list = MCAS / histamine intolerance until proven otherwise. The meal plan and supplement protocol must lead with histamine-load awareness.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-17
+updated_by: shivani

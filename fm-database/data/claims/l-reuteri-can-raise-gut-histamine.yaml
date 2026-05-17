@@ -1,0 +1,35 @@
+slug: l-reuteri-can-raise-gut-histamine
+statement: |
+  Certain strains of Lactobacillus reuteri produce histamine in the gut and
+  may worsen symptoms in histamine-sensitive individuals.
+evidence_tier: plausible_emerging
+rationale: |
+  Specific L. reuteri strains express histidine decarboxylase and generate
+  histamine as a metabolic byproduct. In sensitive populations this adds to
+  the endogenous load. Strain-level variation matters — not all L. reuteri
+  strains are histamine-producing, but commercial probiotics rarely
+  disclose strain-level data.
+coaching_translation: |
+  If you're working on histamine issues, the probiotic on your shelf may be
+  part of the problem. L. reuteri and L. casei strains can produce
+  histamine in your gut — choose histamine-degrading strains instead
+  (L. plantarum, B. longum, B. infantis). When a label doesn't list strain
+  numbers, assume risk and skip.
+caveats:
+  - Strain-level data is rarely disclosed on consumer labels.
+  - Effect varies with baseline gut histamine load.
+out_of_scope_notes: ''
+linked_to_topics:
+  - histamine-intolerance
+  - mast-cell-activation-syndrome
+linked_to_mechanisms:
+  - gut-microbiome-histamine-balance
+linked_to_supplements: []
+sources:
+  - id: iemt
+    location: 'Common Histamine-Producing Bacteria'
+    quote: 'Lactobacillus reuteri can raise histamine levels in sensitive individuals.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

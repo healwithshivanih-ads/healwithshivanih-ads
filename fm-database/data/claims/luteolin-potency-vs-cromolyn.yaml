@@ -1,0 +1,37 @@
+slug: luteolin-potency-vs-cromolyn
+statement: |
+  Luteolin demonstrates greater potency than cromolyn sodium in inhibiting
+  mast cell degranulation in some experimental models.
+evidence_tier: plausible_emerging
+rationale: |
+  In vitro and animal studies show luteolin matches or exceeds cromolyn in
+  stabilizing mast cell membranes and reducing degranulation. Human RCT
+  data is limited; the comparison is based on preclinical models and small
+  clinical observations.
+coaching_translation: |
+  Luteolin — a flavonoid found in celery, parsley, and chamomile — has
+  shown promise that may even rival a prescription mast cell stabilizer
+  called cromolyn. It's not a replacement for medical care, but it gives us
+  a natural tool with a strong mechanism story.
+caveats:
+  - Preclinical and small-study evidence; not head-to-head clinical RCTs.
+  - Effect varies with formulation and absorption.
+out_of_scope_notes: ''
+linked_to_topics:
+  - mast-cell-activation-syndrome
+linked_to_mechanisms:
+  - mast-cell-degranulation
+linked_to_supplements:
+  - luteolin
+sources:
+  - id: eds-clinic
+    location: 'Comparison: Quercetin, Luteolin, and Cromolyn'
+    quote: 'Luteolin is more potent than cromolyn in inhibiting mast cell degranulation.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani
+# topics: [gut-dysbiosis, sibo, lyme-disease, mold-illness, estrogen-dominance, mast-cell-leukaemia, ibs, cutaneous-mastocytosis]
+# mechanisms: [environmental-trigger-exposure, chronic-infections, mold-mycotoxin-exposure, hormonal-fluctuations, systemic-inflammation, vascular-permeability, dao-deficiency, hnmt-variants, cofactor-deficiency-b6-vitc-copper, nsaid-use, inappropriate-probiotic-selection, endogenous-histamine-production, histamine-bucket-overflow, dietary-histamine-load]
+# symptoms: [brain-fog]
+# supplements: []

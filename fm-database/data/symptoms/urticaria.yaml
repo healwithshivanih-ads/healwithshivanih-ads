@@ -1,0 +1,29 @@
+slug: urticaria
+display_name: Urticaria
+aliases:
+  - hives
+  - welts
+  - wheals
+category: skin
+severity: common
+description: |
+  Hives or red, itchy welts indicating localized mast cell degranulation and
+  vascular permeability. Structurally similar salicylates in foods can also
+  worsen hives by acting directly on mast cells.
+when_to_refer: |
+  Refer if urticaria is accompanied by angioedema, throat involvement, or
+  systemic symptoms suggesting anaphylaxis.
+linked_to_topics:
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+linked_to_mechanisms:
+  - mast-cell-degranulation
+  - histamine-receptor-signaling
+sources:
+  - id: webmd
+    location: 'Histamine Intolerance Symptoms'
+    quote: 'Urticaria is a common skin manifestation of histamine excess.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

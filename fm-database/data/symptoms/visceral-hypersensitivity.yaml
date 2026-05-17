@@ -1,0 +1,29 @@
+slug: visceral-hypersensitivity
+display_name: Visceral Hypersensitivity
+aliases:
+  - gut hypersensitivity
+  - IBS-like abdominal pain
+  - lowered visceral pain threshold
+category: gi
+severity: common
+description: |
+  Increased pain sensitivity in internal organs, often manifesting as severe
+  abdominal cramping or IBS-like pain. Mast cell activation in the gut
+  releases tryptase, which degrades nerve endings and lowers the pain
+  threshold in the enteric nervous system.
+when_to_refer: |
+  Refer if accompanied by red-flag GI signs: blood in stool, unexplained
+  weight loss, nocturnal symptoms, or persistent vomiting.
+linked_to_topics:
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+linked_to_mechanisms:
+  - mast-cell-degranulation
+sources:
+  - id: kresser-institute
+    location: 'Gut Mast Cell Involvement'
+    quote: 'Mast cell tryptase lowers the visceral pain threshold in the enteric nervous system.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

@@ -1,0 +1,40 @@
+slug: systemic-mastocytosis
+display_name: Systemic Mastocytosis
+aliases:
+  - SM
+  - clonal mast cell disease
+summary: |
+  A rare neoplastic disorder characterized by clonal proliferation and
+  accumulation of abnormal mast cells in organs (bone marrow, liver, skin),
+  most commonly involving the KIT D816V mutation. Unlike MCAS, SM involves a
+  pathological increase in the physical number of mast cells and carries
+  risk of progression to mast cell leukaemia.
+common_symptoms:
+  - flushing
+  - urticaria
+  - tachycardia
+red_flags:
+  - bone lesions
+  - serum tryptase persistently above 20 ng/mL
+  - unexplained weight loss
+  - organ infiltration
+related_topics:
+  - mast-cell-activation-syndrome
+key_mechanisms:
+  - mast-cell-degranulation
+coaching_scope_notes: |
+  This is a clinical/hematological diagnosis outside coaching scope. Coach
+  may support symptom-load reduction strategies once a clinician has
+  established the diagnosis and management plan.
+clinician_scope_notes: |
+  Urgent hematology referral for bone marrow biopsy if tryptase persistently
+  elevated or KIT mutation suspected.
+evidence_tier: strong
+sources:
+  - id: cleveland-clinic
+    location: 'Mastocytosis'
+    quote: 'Systemic mastocytosis involves clonal proliferation of abnormal mast cells.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

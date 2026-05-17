@@ -1,55 +1,48 @@
 slug: histamine-intolerance
 display_name: Histamine Intolerance
 aliases:
-- histamine sensitivity
-- biogenic amine intolerance
-- dietary histamine sensitivity
-- biogenic amine sensitivity
-summary: A condition in which an individual's histamine load exceeds their capacity to break it down, leading to allergy-like
-  symptoms. Foods may contribute histamine directly, act as histamine releasers, or inhibit DAO/HNMT enzymes responsible for
-  histamine degradation.
+  - HIT
+  - histamine bucket overflow
+  - DAO deficiency syndrome
+summary: |
+  A functional metabolic state where systemic histamine load exceeds
+  degradation capacity, primarily due to DAO (extracellular, gut-lumen) or
+  HNMT (intracellular) deficiency. Not a primary mast cell disorder but a
+  breakdown failure, often secondary to gut dysbiosis, SIBO, or nutrient
+  deficiencies (B6, vitamin C, copper). Conceptualized as a "histamine
+  bucket" — symptoms appear when intake plus endogenous production exceeds
+  clearance capacity.
 common_symptoms:
-- skin-rash
-- eczema-psoriasis-skin
-- headache
-- bloating
-- diarrhea
-- nasal-congestion
-- menstrual-pain
-- skin-itching-flushing-hives
-- flatulence
-- abdominal-pain
-- headache-dizziness
-- runny-nose-sneezing
-- palpitations
+  - migraine
+  - flushing
+  - urticaria
+  - visceral-hypersensitivity
 red_flags:
-- anaphylaxis-like reactions (true allergy must be excluded)
-- anaphylaxis symptoms — refer immediately
-- suspected mastocytosis
+  - anaphylaxis-like reactions after high-histamine meals
+  - severe chronic migraine unresponsive to standard care
 related_topics:
-- elimination-diet
-- ibs
-- mast-cell-activation
-- low-fodmap-diet
+  - mast-cell-activation-syndrome
+  - gut-dysbiosis
 key_mechanisms:
-- diamine-oxidase-deficiency
-- mast-cell-degranulation
-- histamine-enzyme-inhibition
-- mast-cell-activation
-coaching_scope_notes: Coaches can guide avoidance of high-histamine foods, freshness strategies, and symptom tracking. Diagnosis
-  of mastocytosis or DAO deficiency requires clinician.
-evidence_tier: plausible_emerging
-clinician_scope_notes: ''
+  - histamine-metabolism
+  - gut-microbiome-histamine-balance
+coaching_scope_notes: |
+  Coach educates on the histamine bucket concept, supports low-histamine
+  trial diets, identifies endogenous load drivers (dysbiosis, SIBO), and
+  ensures cofactor sufficiency (B6, vitamin C, copper).
+clinician_scope_notes: |
+  Refer if symptoms persist despite low-histamine diet — may mask MCAS,
+  mold illness, or severe gut pathology. DAO genetics and SIBO testing
+  belong to functional clinician.
+evidence_tier: strong
 sources:
-- id: vitaone-elimination-diet-toolkit
-  location: Histamine Food Triggers
-  quote: Histamine plays many roles within the body. One of its most familiar roles is triggering allergic type reactions
-    (e.g., runny nose, itching, hives).
-- id: vitaone-health-coaching-toolkit
-  location: Histamine Food Triggers
-  quote: A food may contribute to an individual's histamine load by containing histamine, releasing histamine, or inhibiting
-    enzymes that break down histamine in the body.
-version: 2
+  - id: webmd
+    location: 'Histamine Intolerance Overview'
+    quote: 'Histamine intolerance occurs when the body cannot break down histamine fast enough.'
+  - id: iemt
+    location: 'Histamine Metabolism and Enzymes'
+    quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase (HNMT).'
+version: 1
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-17'
 updated_by: shivani

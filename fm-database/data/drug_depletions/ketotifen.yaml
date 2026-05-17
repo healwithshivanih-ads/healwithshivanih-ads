@@ -1,0 +1,76 @@
+slug: ketotifen
+drug_name: Ketotifen
+drug_aliases:
+  - zaditor
+  - zaditen
+  - alaway
+  - ketof
+  - asthafen
+drug_class: mast_cell_stabiliser
+summary: |
+  Dual-action: mast-cell stabiliser AND H1 antihistamine. Used primarily
+  in MCAS / histamine intolerance, allergic conjunctivitis (eye drops),
+  and pediatric asthma in some countries. Sedating — often used at
+  bedtime in MCAS protocols. Coach should always read ketotifen on
+  the meds list as MCAS / histamine intolerance unless explicitly
+  contradicted.
+depletes: []
+condition_implications:
+  - label: "Mast cell activation syndrome (MCAS) / histamine intolerance"
+    confidence: high
+    rationale: "Ketotifen's dual mast-cell-stabiliser + H1 mechanism makes it a frontline MCAS medication. Often the first thing tried in compounding pharmacies."
+    topic_slug: histamine-intolerance-mcas
+  - label: "Allergic conjunctivitis (if eye drops only)"
+    confidence: moderate
+    rationale: "Ketotifen eye drops (Zaditor, Alaway) are OTC for itchy eyes; coach should clarify systemic vs topical use."
+protocol_cautions:
+  - kind: avoid_food
+    item: "Aged cheese, fermented foods, leftover meat, wine, kombucha, vinegar, tomatoes, spinach, eggplant, avocado, citrus, chocolate, nuts (high-histamine / histamine-liberating)"
+    severity: warning
+    reason: "Same low-histamine framing as cromolyn — undermines mast-cell stabilisation"
+  - kind: avoid_supplement
+    item: "Quercetin > 1000 mg/day, high-dose curcumin, Reishi mushroom — start at 1/4 dose and titrate slowly"
+    severity: warning
+    reason: "Can trigger paradoxical mast-cell degranulation in sensitive clients"
+  - kind: prefer_supplement
+    item: "Vitamin C (natural antihistamine), DAO enzyme before high-histamine meals, magnesium glycinate, B6 (DAO cofactor)"
+    severity: info
+    reason: "Supports DAO activity + reduces histamine load alongside the medication"
+  - kind: timing
+    item: "Often dosed at bedtime due to sedation — track impact on sleep quality and morning grogginess"
+    severity: info
+    reason: "Coach can help client time other supplements to avoid layered sedation"
+  - kind: avoid_practice
+    item: "Aggressive detox / sauna at high intensity / vigorous lymph drainage / mineral cleanses"
+    severity: warning
+    reason: "Can trigger mast-cell activation in MCAS clients — go gentle"
+  - kind: monitor
+    item: "Daytime sedation, cognitive fog, appetite increase, weight gain (known ketotifen side effects)"
+    severity: info
+    reason: "Coach can flag persistent side effects for prescriber review"
+timing_separations: []
+contraindicated_supplements: []
+monitoring_labs:
+  - Tryptase (baseline + during flares — elevated > 11.4 ng/mL suggests mastocytosis)
+  - 24h urine N-methyl histamine
+  - DAO enzyme activity (if available)
+coach_notes: |
+  Treat ketotifen like cromolyn — MCAS / histamine intolerance is the
+  almost-certain underlying diagnosis. Same gentle protocol approach,
+  same low-histamine meal plan emphasis, same titrate-from-quarter-dose
+  rule for any new supplement. Sedation can affect Five Pillars sleep
+  score — read sleep quality in that context.
+linked_to_topics:
+  - histamine-intolerance-mcas
+  - mast-cell-activation
+  - chronic-urticaria
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — MCAS protocols
+    quote: Ketotifen + cromolyn ± montelukast ± H2 blocker = textbook MCAS combo. Once you see two of these together, the histamine framing is virtually certain.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-17
+updated_by: shivani

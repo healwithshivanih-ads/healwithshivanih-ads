@@ -1,0 +1,43 @@
+slug: diamine-oxidase-enzyme
+display_name: Diamine Oxidase (DAO) Enzyme
+category: enzyme
+forms_available:
+  - capsule
+typical_dose_range:
+  capsule:
+    min: 4.2
+    max: 10
+    unit: mg
+timing_options:
+  - with_breakfast
+  - with_lunch
+  - with_dinner
+take_with_food: required
+notes_for_coach: |
+  Exogenous porcine-kidney-derived enzyme taken immediately before
+  high-histamine meals to degrade dietary histamine in the gut lumen.
+  Common branded dose is one capsule containing ~4.2 mg (≈10,000 HDU) just
+  before meals. Not absorbed systemically — acts locally in GI tract.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+    - pregnancy
+    - lactation
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: plausible_emerging
+linked_to_topics:
+  - histamine-intolerance
+linked_to_mechanisms:
+  - histamine-metabolism
+sources:
+  - id: vinmec
+    location: 'Benefits of DAO Supplements'
+    quote: 'DAO supplements are available over-the-counter and aim to restore levels of this enzyme.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

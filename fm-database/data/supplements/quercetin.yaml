@@ -2,98 +2,44 @@ slug: quercetin
 display_name: Quercetin
 category: other
 forms_available:
-- capsule
-- tablet
-- powder
+  - capsule
 typical_dose_range:
   capsule:
-    min: 100
-    max: 500
-    unit: mg
-  tablet:
     min: 500
     max: 1000
     unit: mg
 timing_options:
-- with_breakfast
-- with_lunch
-- with_dinner
-- morning
-take_with_food: optional
-notes_for_coach: Quercetin is indicated for allergic conditions involving IgE antibody
-  elevation and LOX enzyme activation. Acts as a natural antihistamine and LOX inhibitor.
-  Also referenced for cardiovascular protection.
-evidence_tier: plausible_emerging
+  - with_breakfast
+  - with_dinner
+take_with_food: required
+notes_for_coach: |
+  Natural flavonoid that stabilizes mast cells by inhibiting degranulation
+  and the conversion of histidine to histamine. Typical clinical use is
+  500–1000 mg up to twice daily; pair with bromelain for absorption.
+  Liposomal forms exist but are not formally a separate "form_available"
+  category — note in protocol.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: strong
 linked_to_topics:
-- estrogen-dominance
-- pcos
-- inflammation
-- immune-resilience
-- chronic-inflammation
-- autoimmune-disease
-- food-sensitivity
-- gerd
-- gut-dysfunction
-- testosterone-health
-- benign-prostatic-hyperplasia
-- immune-support
-- gerd-ppi-tapering
-- testosterone-dht-conversion
-- immune-support-covid-19
-linked_to_mechanisms: []
-linked_to_claims:
-- omega-3-reduces-cytokine-load-stress
-- quercetin-boswellia-resveratrol-anti-inflammatory
-- quercetin-antioxidant-gi-protection
-- 5ar-inhibition-reduces-bph-hair-loss-acne
-- quercetin-antiviral-inhibits-influenza-entry
-- ppi-tapering-supplement-support-repair-protect-antioxidant
-- quercetin-inhibits-5ar
-- 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
-- quercetin-inhibits-viral-entry-and-inflammasome
-- quercetin-anti-allergy-lox-inhibitor
-notes_for_client: Quercetin is a natural plant compound that helps calm allergy-related
-  inflammation. It's particularly useful if you experience sneezing, itching, or allergy-type
-  symptoms alongside inflammation.
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+linked_to_mechanisms:
+  - mast-cell-degranulation
 sources:
-- id: vitaone-supplementation-dosage
-  location: Page 2 - Supplement Table
-  quote: Quercetin - Antioxidant, mast cell stabilizer - 250–500 mg/day - With meals
-- id: vitaone-sex-hormones-cheatsheet
-  location: Advanced Support — Estrogen Dominance Supplement Cheatsheet
-  quote: 'Quercetin: Lowers mast cell activation & inflammation; PMS, endometriosis.'
-- id: vitaone-adrenal-cheatsheet
-  location: 50 Hormones Cheatsheet — Histamine row (p.6)
-  quote: 'Histamine: Allergies, hives, histamine intolerance. Solution: DAO support,
-    Vit C, quercetin.'
-- id: vitaone-inflammation-cheatsheet
-  location: Inflammation Cheatsheet — Page 02
-  quote: Quercetin, Boswellia, Resveratrol
-- id: vitaone-gut-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
-    — Supplement recommendations'
-  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E'
-- id: vitaone-sex-hormones-toolkit
-  location: Maintaining Healthy Testosterone Levels — Page 06
-  quote: Quercetin [Nutrients/Phytonutrients that Inhibit 5-a Reductase]
-- id: vitaone-inflammation-toolkit
-  location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: Quercetin is found in fruits and vegetables and has a wide range of benefits,
-    including decreasing viral growth.
-- id: vitaone-health-coaching-toolkit
-  location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners'
-  quote: 'Antioxidants: Artemisia asiatica, curcumin, quercetin, vitamin E.'
-- id: coconote-fm-approach-inflammation
-  location: Anti-Inflammatory Supplements – Quercetin
-  quote: Corsetin is when somebody is having an allergy and LOX enzyme is activated,
-    somebody is already taking an, also you can see the IgE antibody. If somebody
-    is having an IgE antibody, Corsetin in the blood, it was just 100-200 mg a day,
-    so Corsetin is basically considered as an anti-allergy.
-version: 11
+  - id: eds-clinic
+    location: 'Key Supplements'
+    quote: 'Quercetin inhibits histamine release and stabilizes mast cells.'
+  - id: kresser-institute
+    location: 'Mast cell-stabilizing nutrients'
+    quote: 'Quercetin acts as a mast cell stabilizer, inhibiting degranulation and histidine conversion.'
+version: 1
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-17'
 updated_by: shivani
-pregnancy_safety: caution
-lactation_safety: caution
-pregnancy_safety_note: Limited safety data in pregnancy; food amounts (apples, onions,
-  tea) are fine; avoid supplemental high doses.

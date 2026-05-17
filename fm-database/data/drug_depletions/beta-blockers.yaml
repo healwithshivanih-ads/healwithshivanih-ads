@@ -1,60 +1,84 @@
 slug: beta-blockers
 drug_name: Beta-blockers
 drug_aliases:
-  - metoprolol
-  - betaloc
-  - metolar
-  - propranolol
-  - inderal
-  - ciplar
-  - atenolol
-  - tenormin
-  - bisoprolol
-  - concor
-  - nebivolol
-  - nebilet
-  - carvedilol
-  - dilbloc
-  - beta-blocker
+- metoprolol
+- betaloc
+- metolar
+- propranolol
+- inderal
+- ciplar
+- atenolol
+- tenormin
+- bisoprolol
+- concor
+- nebivolol
+- nebilet
+- carvedilol
+- dilbloc
+- beta-blocker
 drug_class: beta_blocker
-summary: |
-  Block beta-adrenergic receptors — used for hypertension, arrhythmia,
+summary: 'Block beta-adrenergic receptors — used for hypertension, arrhythmia,
+
   performance anxiety, migraine prophylaxis. Most clinically significant
+
   depletion is CoQ10 (similar mechanism to statins via mitochondrial
+
   effects). Can also blunt melatonin secretion → poor sleep quality.
+
+  '
 depletes:
-  - nutrient: CoQ10
-    severity: moderate
-    mechanism: Mitochondrial effects + reduced beta-adrenergic stimulation of CoQ10 synthesis.
-    monitoring_recommendation: Empirical supplementation; serum CoQ10 if myalgia / fatigue
-    typical_supplement_dose: 100 mg ubiquinol/day with fat
-  - nutrient: Melatonin
-    severity: moderate
-    mechanism: Beta-blockade suppresses pineal melatonin production, causing insomnia / poor sleep quality.
-    monitoring_recommendation: Sleep diary + symptoms; dim-light melatonin onset (DLMO) testing rare in clinical practice
-    typical_supplement_dose: 0.3-1 mg sublingual melatonin 30 min before bed (start LOW)
+- nutrient: CoQ10
+  severity: moderate
+  mechanism: Mitochondrial effects + reduced beta-adrenergic stimulation of CoQ10 synthesis.
+  monitoring_recommendation: Empirical supplementation; serum CoQ10 if myalgia / fatigue
+  typical_supplement_dose: 100 mg ubiquinol/day with fat
+- nutrient: Melatonin
+  severity: moderate
+  mechanism: Beta-blockade suppresses pineal melatonin production, causing insomnia / poor sleep quality.
+  monitoring_recommendation: Sleep diary + symptoms; dim-light melatonin onset (DLMO) testing rare in clinical practice
+  typical_supplement_dose: 0.3-1 mg sublingual melatonin 30 min before bed (start LOW)
+condition_implications:
+- label: Hypertension / arrhythmia / post-MI / heart failure
+  confidence: high
+  rationale: Beta-blockers indicate cardiovascular pathology — hypertension, atrial fibrillation, post-MI, heart failure with
+    reduced ejection fraction.
+  topic_slug: hypertension
+- label: Anxiety / performance anxiety / essential tremor (lower confidence)
+  confidence: low
+  rationale: Beta-blockers (especially propranolol) are also prescribed off-label for performance anxiety and essential tremor
+    — coach should clarify.
+  topic_slug: anxiety
+protocol_cautions: []
 timing_separations: []
 contraindicated_supplements: []
 monitoring_labs:
-  - Resting heart rate (target 55-65 bpm if rate-control)
-  - BP (sitting + standing — orthostatic hypotension risk)
-  - HbA1c (beta-blockers can mask hypoglycemia + worsen insulin resistance)
-  - Lipid panel (some beta-blockers raise triglycerides + lower HDL)
-coach_notes: |
-  Most under-recognised side effect of long-term beta-blockers is the
+- Resting heart rate (target 55-65 bpm if rate-control)
+- BP (sitting + standing — orthostatic hypotension risk)
+- HbA1c (beta-blockers can mask hypoglycemia + worsen insulin resistance)
+- Lipid panel (some beta-blockers raise triglycerides + lower HDL)
+coach_notes: 'Most under-recognised side effect of long-term beta-blockers is the
+
   sleep disruption from melatonin suppression. Clients often complain of
+
   shallow sleep / early waking. Low-dose melatonin (0.3-1 mg sublingual)
+
   often resolves it without affecting cardiovascular control.
+
   CoQ10 is broadly protective on top of beta-blockers — recommend
+
   alongside any cardiovascular regime.
+
   ⚠ NEVER stop beta-blockers abruptly — rebound tachycardia + arrhythmia
+
   risk. Always taper with clinician.
+
+  '
 linked_to_topics:
-  - cardiovascular-disease
+- cardiovascular-disease
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: Cardiovascular drug interactions
+- id: vitaone-skill-practice-guide
+  location: Cardiovascular drug interactions
 evidence_tier: plausible_emerging
 version: 1
 status: active

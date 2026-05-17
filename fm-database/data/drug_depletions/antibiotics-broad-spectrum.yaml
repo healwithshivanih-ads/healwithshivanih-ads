@@ -1,84 +1,90 @@
 slug: antibiotics-broad-spectrum
 drug_name: Antibiotics (broad-spectrum, oral)
 drug_aliases:
-  - amoxicillin
-  - augmentin
-  - amoxiclav
-  - clavulanic-acid
-  - cefixime
-  - taxim
-  - azithromycin
-  - azithral
-  - ciprofloxacin
-  - cipro
-  - levofloxacin
-  - levaquin
-  - doxycycline
-  - clindamycin
-  - metronidazole
-  - flagyl
-  - antibiotic
+- amoxicillin
+- augmentin
+- amoxiclav
+- clavulanic-acid
+- cefixime
+- taxim
+- azithromycin
+- azithral
+- ciprofloxacin
+- cipro
+- levofloxacin
+- levaquin
+- doxycycline
+- clindamycin
+- metronidazole
+- flagyl
+- antibiotic
 drug_class: antibiotic
-summary: |
-  Oral broad-spectrum antibiotics (especially fluoroquinolones,
+summary: 'Oral broad-spectrum antibiotics (especially fluoroquinolones,
+
   amoxiclav, clindamycin) significantly disrupt the gut microbiome
+
   and reduce vitamin K2 + biotin synthesis (which gut bacteria produce).
+
   Effects can persist 6-12 months after a single course. Standard FM
+
   practice is to support gut + microbiome during AND after a course.
+
+  '
 depletes:
-  - nutrient: Vitamin K2 (MK-7)
-    severity: moderate
-    mechanism: Gut bacteria produce a portion of K2; antibiotic disruption reduces production.
-    monitoring_recommendation: Empirical supplementation
-    typical_supplement_dose: 100-200 mcg MK-7 daily during + for 4 weeks after
-  - nutrient: Biotin (B7)
-    severity: moderate
-    mechanism: Reduced biotin synthesis by gut bacteria.
-    monitoring_recommendation: Empirical
-    typical_supplement_dose: 5-10 mg biotin daily during + 4 weeks after
-  - nutrient: B vitamins (B1, B2, B12)
-    severity: mild
-    mechanism: Reduced synthesis by gut bacteria.
-    monitoring_recommendation: Empirical
-    typical_supplement_dose: B-complex daily
-  - nutrient: Vitamin K1
-    severity: mild
-    mechanism: Reduced absorption.
-    monitoring_recommendation: Increase dietary leafy greens
-    typical_supplement_dose: Food sources preferred (kale, methi, spinach)
-  - nutrient: Magnesium
-    severity: mild
-    mechanism: Reduced absorption due to GI disruption + diarrhea.
-    monitoring_recommendation: Empirical
-    typical_supplement_dose: 400 mg magnesium glycinate
+- nutrient: Vitamin K2 (MK-7)
+  severity: moderate
+  mechanism: Gut bacteria produce a portion of K2; antibiotic disruption reduces production.
+  monitoring_recommendation: Empirical supplementation
+  typical_supplement_dose: 100-200 mcg MK-7 daily during + for 4 weeks after
+- nutrient: Biotin (B7)
+  severity: moderate
+  mechanism: Reduced biotin synthesis by gut bacteria.
+  monitoring_recommendation: Empirical
+  typical_supplement_dose: 5-10 mg biotin daily during + 4 weeks after
+- nutrient: B vitamins (B1, B2, B12)
+  severity: mild
+  mechanism: Reduced synthesis by gut bacteria.
+  monitoring_recommendation: Empirical
+  typical_supplement_dose: B-complex daily
+- nutrient: Vitamin K1
+  severity: mild
+  mechanism: Reduced absorption.
+  monitoring_recommendation: Increase dietary leafy greens
+  typical_supplement_dose: Food sources preferred (kale, methi, spinach)
+- nutrient: Magnesium
+  severity: mild
+  mechanism: Reduced absorption due to GI disruption + diarrhea.
+  monitoring_recommendation: Empirical
+  typical_supplement_dose: 400 mg magnesium glycinate
+condition_implications:
+- label: Recent or chronic infection requiring systemic antibiotics
+  confidence: high
+  rationale: Broad-spectrum antibiotics indicate a recent or recurrent infection significant enough to warrant systemic therapy.
+    Coach should also assess gut dysbiosis fallout (can persist 18 months to 8 years).
+  topic_slug: antibiotic-induced-dysbiosis
+protocol_cautions: []
 timing_separations:
-  - "Probiotics — separate by 2-3 hours from antibiotic dose."
-  - "Saccharomyces boulardii (yeast probiotic) is NOT killed by antibiotics — can be co-administered."
-  - "Fluoroquinolones (cipro, levo) — separate from calcium / iron / magnesium / zinc by 4 hours (chelation reduces absorption)."
+- Probiotics — separate by 2-3 hours from antibiotic dose.
+- Saccharomyces boulardii (yeast probiotic) is NOT killed by antibiotics — can be co-administered.
+- Fluoroquinolones (cipro, levo) — separate from calcium / iron / magnesium / zinc by 4 hours (chelation reduces absorption).
 contraindicated_supplements: []
 monitoring_labs:
-  - Stool test (GI-Map / GI-Effects) if recurrent infections / dysbiosis symptoms
-  - CBC if course > 2 weeks
-coach_notes: |
-  STANDARD FM SUPPORT during + after antibiotic course:
-  1. Saccharomyces boulardii 5-10 billion CFU 2× daily during course
-     (proven to prevent antibiotic-associated diarrhea + C diff)
-  2. Multi-strain probiotic 25-50 billion CFU 3 hours apart from antibiotic dose
-  3. L-glutamine 5 g 2× daily (gut lining repair)
-  4. Continue probiotics for 4-8 weeks AFTER course ends
-  5. Fermented foods (kefir, sauerkraut, kimchi) — reintroduce slowly post-course
-  6. Polyphenol-rich foods (berries, green tea, dark chocolate) feed beneficial flora
-  ⚠ Fluoroquinolone-associated tendinopathy / Achilles rupture risk —
-  counsel against high-impact exercise during + 2 weeks after course.
-  ⚠ Recurring antibiotic courses (> 2/year) suggests root cause needs
-  attention — refer for SIBO breath test, GI-Map, immune workup.
+- Stool test (GI-Map / GI-Effects) if recurrent infections / dysbiosis symptoms
+- CBC if course > 2 weeks
+coach_notes: "STANDARD FM SUPPORT during + after antibiotic course:\n1. Saccharomyces boulardii 5-10 billion CFU 2× daily\
+  \ during course\n   (proven to prevent antibiotic-associated diarrhea + C diff)\n2. Multi-strain probiotic 25-50 billion\
+  \ CFU 3 hours apart from antibiotic dose\n3. L-glutamine 5 g 2× daily (gut lining repair)\n4. Continue probiotics for 4-8\
+  \ weeks AFTER course ends\n5. Fermented foods (kefir, sauerkraut, kimchi) — reintroduce slowly post-course\n6. Polyphenol-rich\
+  \ foods (berries, green tea, dark chocolate) feed beneficial flora\n⚠ Fluoroquinolone-associated tendinopathy / Achilles\
+  \ rupture risk —\ncounsel against high-impact exercise during + 2 weeks after course.\n⚠ Recurring antibiotic courses (>\
+  \ 2/year) suggests root cause needs\nattention — refer for SIBO breath test, GI-Map, immune workup.\n"
 linked_to_topics:
-  - leaky-gut
-  - sibo
+- leaky-gut
+- sibo
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: Antibiotic gut support protocol
+- id: vitaone-skill-practice-guide
+  location: Antibiotic gut support protocol
 evidence_tier: strong
 version: 1
 status: active

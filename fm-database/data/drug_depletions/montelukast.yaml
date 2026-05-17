@@ -1,0 +1,78 @@
+slug: montelukast
+drug_name: Montelukast
+drug_aliases:
+  - singulair
+  - montair
+  - montek
+  - montair-lc
+  - leukotriene-receptor-antagonist
+  - ltra
+  - zafirlukast
+  - accolate
+drug_class: leukotriene_receptor_antagonist
+summary: |
+  Leukotriene receptor antagonist used for allergic asthma, allergic
+  rhinitis, exercise-induced bronchoconstriction, AND increasingly in
+  MCAS / histamine intolerance protocols (leukotrienes are co-released
+  with histamine from mast cells). FDA black-box warning since 2020 for
+  serious neuropsychiatric side effects (depression, suicidal ideation,
+  agitation, sleep disturbance). Coach MUST screen for mood changes.
+depletes:
+  - nutrient: Niacin (B3)
+    severity: mild
+    mechanism: Mild interference with NAD+ recycling in long-term use; rarely clinically significant.
+    monitoring_recommendation: Not standard; only if symptoms (pellagra-like signs)
+    typical_supplement_dose: B-complex (sufficient via diet for most)
+condition_implications:
+  - label: "Allergic asthma / allergic rhinitis"
+    confidence: high
+    rationale: "Montelukast's primary indication is allergic asthma and allergic rhinitis."
+    topic_slug: allergic-asthma
+  - label: "Histamine intolerance / MCAS (if paired with cromolyn / H1 antihistamines)"
+    confidence: moderate
+    rationale: "Increasingly part of MCAS combo protocols — leukotrienes are released alongside histamine from mast cells. Co-prescription with cromolyn, H1 antihistamines, or H2 blockers strongly suggests MCAS not isolated asthma."
+    topic_slug: histamine-intolerance-mcas
+protocol_cautions:
+  - kind: monitor
+    item: "Mood, sleep quality, suicidal ideation, agitation — screen at every check-in. FDA black-box warning since March 2020."
+    severity: critical
+    reason: "Montelukast can trigger or worsen depression / anxiety / suicidal ideation even after months of stable use. Coach must escalate to prescriber immediately if any new neuropsych symptoms emerge."
+  - kind: prefer_supplement
+    item: "Magnesium glycinate (200-400 mg), vitamin D (if low), omega-3 (2-3 g EPA+DHA), quercetin (start 250 mg, titrate)"
+    severity: info
+    reason: "All four support mast-cell / leukotriene downregulation and may allow eventual dose reduction (under prescriber supervision)"
+  - kind: avoid_food
+    item: "High-histamine foods if client also shows MCAS pattern (see cromolyn / famotidine entries)"
+    severity: info
+    reason: "Reduces overall mast-cell-derived mediator load including leukotrienes"
+  - kind: refer
+    item: "Coordinate any dose changes with prescribing physician — abrupt discontinuation can trigger rebound asthma exacerbation"
+    severity: warning
+    reason: "Coach scope: education + supportive protocol, not medication management"
+timing_separations: []
+contraindicated_supplements: []
+monitoring_labs:
+  - Mood screening (PHQ-9 / GAD-7 informally at every check-in)
+  - 25-OH vitamin D (often low in chronic asthmatics — exacerbates airway inflammation)
+  - Magnesium RBC (low Mg worsens bronchospasm)
+coach_notes: |
+  The FDA black-box neuropsych warning is real and underappreciated.
+  Always ask about mood, sleep, agitation, dreams. Many clients on
+  montelukast for years are subclinically depressed and don't connect
+  it to the medication. If the client is on montelukast + cromolyn or
+  + H2 blocker + H1 antihistamine, it's MCAS protocol — treat the
+  histamine load as the priority, not the asthma in isolation.
+linked_to_topics:
+  - allergic-asthma
+  - histamine-intolerance-mcas
+  - mast-cell-activation
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — MCAS + asthma protocols
+    quote: Montelukast in a non-asthmatic client = MCAS protocol. Always screen for mood — the FDA black-box is real and clients underreport.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-17
+updated_by: shivani

@@ -1,69 +1,86 @@
 slug: statins
 drug_name: Statins
 drug_aliases:
-  - atorvastatin
-  - lipitor
-  - atocor
-  - rosuvastatin
-  - crestor
-  - rosuvas
-  - simvastatin
-  - simlup
-  - pravastatin
-  - lovastatin
-  - fluvastatin
-  - pitavastatin
+- atorvastatin
+- lipitor
+- atocor
+- rosuvastatin
+- crestor
+- rosuvas
+- simvastatin
+- simlup
+- pravastatin
+- lovastatin
+- fluvastatin
+- pitavastatin
 drug_class: statin
-summary: |
-  HMG-CoA reductase inhibitors used for cholesterol management +
+summary: 'HMG-CoA reductase inhibitors used for cholesterol management +
+
   cardiovascular risk reduction. Inhibit the mevalonate pathway, which
+
   also produces CoQ10 — leading to reduced muscle CoQ10 and the well-
+
   documented "statin myopathy" (myalgia, fatigue, weakness). Selenium +
+
   vitamin K2 + vitamin E may also be reduced.
+
+  '
 depletes:
-  - nutrient: CoQ10 (ubiquinol)
-    severity: severe
-    mechanism: HMG-CoA reductase is the rate-limiting enzyme for both cholesterol and CoQ10 synthesis. Statins reduce serum CoQ10 30-50% within weeks.
-    monitoring_recommendation: Serum CoQ10 if myalgia present (target > 0.7 µg/mL); empirical supplementation is standard
-    typical_supplement_dose: 100-200 mg ubiquinol/day with fat (better absorbed than ubiquinone)
-  - nutrient: Vitamin K2 (MK-7)
-    severity: moderate
-    mechanism: Reduced because the mevalonate pathway also synthesises K2 cofactors. Affects bone + cardiovascular calcium metabolism.
-    monitoring_recommendation: Not routinely tested; supplement empirically alongside vit D
-    typical_supplement_dose: 100-200 mcg MK-7/day
-  - nutrient: Vitamin E
-    severity: mild
-    mechanism: Mild reduction; clinically rarely significant in isolation.
-    monitoring_recommendation: Not routinely tested
-    typical_supplement_dose: 200 IU mixed tocopherols/day
-  - nutrient: Selenium
-    severity: mild
-    mechanism: Mild reduction; relevant for thyroid function context.
-    monitoring_recommendation: Selenium serum if symptoms suggest
-    typical_supplement_dose: 200 mcg selenomethionine
+- nutrient: CoQ10 (ubiquinol)
+  severity: severe
+  mechanism: HMG-CoA reductase is the rate-limiting enzyme for both cholesterol and CoQ10 synthesis. Statins reduce serum
+    CoQ10 30-50% within weeks.
+  monitoring_recommendation: Serum CoQ10 if myalgia present (target > 0.7 µg/mL); empirical supplementation is standard
+  typical_supplement_dose: 100-200 mg ubiquinol/day with fat (better absorbed than ubiquinone)
+- nutrient: Vitamin K2 (MK-7)
+  severity: moderate
+  mechanism: Reduced because the mevalonate pathway also synthesises K2 cofactors. Affects bone + cardiovascular calcium metabolism.
+  monitoring_recommendation: Not routinely tested; supplement empirically alongside vit D
+  typical_supplement_dose: 100-200 mcg MK-7/day
+- nutrient: Vitamin E
+  severity: mild
+  mechanism: Mild reduction; clinically rarely significant in isolation.
+  monitoring_recommendation: Not routinely tested
+  typical_supplement_dose: 200 IU mixed tocopherols/day
+- nutrient: Selenium
+  severity: mild
+  mechanism: Mild reduction; relevant for thyroid function context.
+  monitoring_recommendation: Selenium serum if symptoms suggest
+  typical_supplement_dose: 200 mcg selenomethionine
+condition_implications:
+- label: Dyslipidaemia / cardiovascular risk reduction
+  confidence: high
+  rationale: Statins are prescribed for primary or secondary cardiovascular prevention based on lipid panel and ASCVD risk.
+  topic_slug: dyslipidaemia
+protocol_cautions: []
 timing_separations:
-  - "Take with evening meal (cholesterol synthesis peaks at night)."
+- Take with evening meal (cholesterol synthesis peaks at night).
 contraindicated_supplements:
-  - red-yeast-rice
+- red-yeast-rice
 monitoring_labs:
-  - LDL-C + ApoB + Lp(a) — ApoB more predictive than LDL-C
-  - Lipid particle test (NMR) — small dense LDL is the actual risk
-  - Liver enzymes (ALT/AST) every 3 months for first 6 months, then annually
-  - CK if myalgia (rule out rhabdomyolysis)
-  - HbA1c (statins mildly increase diabetes risk)
-  - hsCRP — track inflammation reduction (a real benefit of statins)
-coach_notes: |
-  CoQ10 supplementation is virtually mandatory for clients on long-term
+- LDL-C + ApoB + Lp(a) — ApoB more predictive than LDL-C
+- Lipid particle test (NMR) — small dense LDL is the actual risk
+- Liver enzymes (ALT/AST) every 3 months for first 6 months, then annually
+- CK if myalgia (rule out rhabdomyolysis)
+- HbA1c (statins mildly increase diabetes risk)
+- hsCRP — track inflammation reduction (a real benefit of statins)
+coach_notes: 'CoQ10 supplementation is virtually mandatory for clients on long-term
+
   statins. The 100 mg dose costs less than ₹500/month and prevents the
+
   most common reason clients discontinue (myalgia). Surface this proactively.
-  Don't recommend red yeast rice — it's just a low-dose statin; doubles up.
+
+  Don''t recommend red yeast rice — it''s just a low-dose statin; doubles up.
+
   ApoB > 90 mg/dL is the actual cardiovascular risk threshold (not LDL-C).
+
+  '
 linked_to_topics:
-  - cardiovascular-disease
+- cardiovascular-disease
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: Statin myopathy + CoQ10
+- id: vitaone-skill-practice-guide
+  location: Statin myopathy + CoQ10
 evidence_tier: strong
 version: 1
 status: active

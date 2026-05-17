@@ -1,0 +1,33 @@
+slug: gut-microbiome-histamine-balance
+display_name: Gut Microbiome Histamine Balance
+aliases:
+  - histamine-producing bacteria
+  - microbial histamine load
+category: gut
+summary: |
+  The interplay between histamine-producing bacteria (L. reuteri, L. casei,
+  L. bulgaricus) and histamine-degrading species (L. plantarum, B. longum,
+  B. infantis). Dysbiosis can turn the gut into an endogenous histamine
+  factory, making diet-only approaches ineffective when the microbiome
+  continues to generate mediators.
+upstream_drivers:
+  - gut-dysbiosis
+  - sibo
+  - inappropriate-probiotic-selection
+downstream_effects:
+  - endogenous-histamine-production
+  - histamine-bucket-overflow
+related_mechanisms:
+  - histamine-metabolism
+linked_to_topics:
+  - histamine-intolerance
+  - mast-cell-activation-syndrome
+evidence_tier: plausible_emerging
+sources:
+  - id: iemt
+    location: 'The Role of the Gut Microbiome'
+    quote: 'Dysbiosis — an imbalance in gut microbial populations — can contribute directly to histamine overload.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

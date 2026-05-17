@@ -1,0 +1,31 @@
+slug: flushing
+display_name: Flushing
+aliases:
+  - facial flushing
+  - sudden redness
+  - skin flushing episodes
+category: skin
+severity: common
+description: |
+  Sudden redness of skin (face, chest, neck) indicating rapid vasodilation
+  via H1/H2 receptor activation. Often misdiagnosed as rosacea or emotional
+  anxiety; in mast cell dynamics it is a hallmark of episodic mediator
+  release.
+when_to_refer: |
+  Refer if flushing is accompanied by hypotension, syncope, or throat
+  tightness — possible anaphylactoid event.
+linked_to_topics:
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+  - systemic-mastocytosis
+linked_to_mechanisms:
+  - mast-cell-degranulation
+  - histamine-receptor-signaling
+sources:
+  - id: cleveland-clinic
+    location: 'Mast Cell Disorder Symptoms'
+    quote: 'Flushing is a hallmark of mast cell mediator release.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

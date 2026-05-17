@@ -1,0 +1,51 @@
+slug: mast-cell-activation-syndrome
+display_name: Mast Cell Activation Syndrome
+aliases:
+  - MCAS
+  - mast cell activation disorder
+  - hyper-reactive mast cells
+summary: |
+  A systemic condition where a normal number of mast cells become
+  hyper-reactive, releasing over 200 mediators including histamine, tryptase,
+  prostaglandins, leukotrienes, and cytokines. Multi-system symptom pattern
+  affecting skin, GI, cardiovascular, neurological, and respiratory systems.
+  Diagnosis is technically demanding: most mediators are unstable at room
+  temperature, requiring an unbroken cold chain for 24-hour urine collections
+  and chilled blood draws — false negatives are common.
+common_symptoms:
+  - flushing
+  - urticaria
+  - tachycardia
+  - visceral-hypersensitivity
+  - migraine
+red_flags:
+  - anaphylaxis
+  - severe orthostatic hypotension
+  - throat swelling
+  - multi-system episodic flares
+related_topics:
+  - histamine-intolerance
+  - systemic-mastocytosis
+key_mechanisms:
+  - mast-cell-degranulation
+  - histamine-receptor-signaling
+coaching_scope_notes: |
+  Coach supports identification of triggers (environmental, dietary,
+  psychological), reduction of total mediator load through low-histamine
+  approaches, and gut-microbiome rebalancing. Never diagnose MCAS or
+  interpret tryptase/mediator panels.
+clinician_scope_notes: |
+  Diagnosis and pharmacological management belong to immunology/allergy.
+  Consensus 2 Criteria and response to anti-mediator therapy guide diagnosis.
+evidence_tier: strong
+sources:
+  - id: kresser-institute
+    location: 'MCAS Diagnostic Framework'
+    quote: 'Most mediators are unstable at room temperature, requiring an unbroken cold chain.'
+  - id: cleveland-clinic
+    location: 'Mast Cell Disorders Overview'
+    quote: 'MCAS involves hyper-reactive but normal numbers of mast cells.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

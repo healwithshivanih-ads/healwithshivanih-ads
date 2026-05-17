@@ -1,0 +1,82 @@
+slug: omalizumab
+drug_name: Omalizumab
+drug_aliases:
+  - xolair
+  - anti-ige
+  - anti ige biologic
+drug_class: anti_ige_biologic
+summary: |
+  Recombinant humanised monoclonal antibody against IgE. Indicated for
+  moderate-to-severe persistent allergic asthma uncontrolled on inhaled
+  corticosteroids, chronic spontaneous urticaria, severe nasal polyposis,
+  and IgE-mediated food allergy. Subcutaneous injection every 2-4 weeks
+  by a clinician. High cost — clients on this drug have significant
+  disease burden and a real allergist relationship.
+depletes: []
+condition_implications:
+  - label: "Severe allergic asthma"
+    confidence: high
+    rationale: "Omalizumab is reserved for moderate-to-severe persistent asthma uncontrolled by step-up therapy. Coach must respect the severity — never advise dose reduction or pause without prescriber."
+    topic_slug: allergic-asthma
+  - label: "Chronic spontaneous urticaria"
+    confidence: high
+    rationale: "Second major indication — chronic hives unresponsive to high-dose H1 antihistamines."
+    topic_slug: chronic-urticaria
+  - label: "IgE-mediated food allergy / IgE-driven MCAS"
+    confidence: moderate
+    rationale: "Increasingly used off-label for severe IgE-driven food allergies (peanut, tree-nut anaphylaxis) and IgE-mediated MCAS variants."
+    topic_slug: food-allergy-ige
+protocol_cautions:
+  - kind: refer
+    item: "Always coordinate with the prescribing allergist / immunologist before any supplement change that could affect immune function"
+    severity: critical
+    reason: "Client has significant disease — coach scope is supportive, not substitutive"
+  - kind: avoid_supplement
+    item: "Echinacea, astragalus, AHCC, beta-glucans, cordyceps, andrographis — any immune-stimulating herb"
+    severity: warning
+    reason: "Theoretical risk of antagonising the immunomodulation goal of anti-IgE therapy. Not robustly studied — err on side of caution."
+  - kind: monitor
+    item: "Anaphylaxis screening at every check-in — omalizumab itself has rare anaphylaxis risk (~0.1%) for up to 24h post-dose"
+    severity: warning
+    reason: "Coach should know the EpiPen plan and confirm client has it accessible"
+  - kind: prefer_supplement
+    item: "Vitamin D (if low), omega-3, magnesium glycinate, gentle B-complex, quercetin (low dose, titrated)"
+    severity: info
+    reason: "Supportive of overall allergic-inflammation downregulation; safe alongside anti-IgE"
+  - kind: avoid_practice
+    item: "Live vaccines without clearance from prescriber; aggressive immune-modulation protocols (high-dose vitamin C IV, ozone therapy)"
+    severity: warning
+    reason: "Immune system already deliberately modulated by the biologic — adding more is risky and uncoordinated"
+  - kind: monitor
+    item: "Track flare patterns + dose-response over time; coach observations of triggers are valuable for the allergist"
+    severity: info
+    reason: "Cost is high; objective trigger reduction may eventually allow dose-spacing"
+timing_separations: []
+contraindicated_supplements: []
+monitoring_labs:
+  - Total IgE (informs dosing; drawn pre-treatment + periodically)
+  - Eosinophil count
+  - 25-OH vitamin D (often low in allergic asthma)
+  - Tryptase if MCAS overlap suspected
+coach_notes: |
+  Omalizumab clients are usually under careful specialist care — your
+  job is supportive nutrition + lifestyle, never substitutive. Read the
+  meds list carefully: if omalizumab + montelukast + inhaled
+  corticosteroid + cromolyn / H1, you're looking at severe asthma /
+  MCAS overlap, not an isolated condition. Anaphylaxis kit awareness
+  is non-negotiable.
+linked_to_topics:
+  - allergic-asthma
+  - chronic-urticaria
+  - food-allergy-ige
+  - histamine-intolerance-mcas
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — severe allergic disease protocols
+    quote: Omalizumab signals severe disease and an active specialist relationship. Coach scope is supportive nutrition + low-histamine framing where appropriate — never adjust the medication picture.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-17
+updated_by: shivani

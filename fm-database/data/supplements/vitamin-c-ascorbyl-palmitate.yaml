@@ -1,0 +1,41 @@
+slug: vitamin-c-ascorbyl-palmitate
+display_name: Vitamin C (Ascorbyl Palmitate)
+category: vitamin
+forms_available:
+  - capsule
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mg
+timing_options:
+  - with_breakfast
+  - with_lunch
+take_with_food: optional
+notes_for_coach: |
+  Hypoallergenic fat-soluble form of vitamin C — better tolerated than
+  corn-derived ascorbic acid in MCAS/HIT populations. Acts as a DAO cofactor
+  and inhibits histamine production. Bowel tolerance is the practical
+  ceiling.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: strong
+linked_to_topics:
+  - histamine-intolerance
+  - mast-cell-activation-syndrome
+linked_to_mechanisms:
+  - histamine-metabolism
+sources:
+  - id: functional-genomic-nutrition
+    location: 'MC Stabilizer support'
+    quote: 'Ascorbyl Palmitate is a hypoallergenic form of Vitamin C that inhibits histamine production.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

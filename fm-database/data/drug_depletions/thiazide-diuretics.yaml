@@ -1,64 +1,82 @@
 slug: thiazide-diuretics
 drug_name: Thiazide Diuretics
 drug_aliases:
-  - hydrochlorothiazide
-  - hctz
-  - aquazide
-  - indapamide
-  - natrilix
-  - chlorthalidone
-  - thalitone
-  - metolazone
+- hydrochlorothiazide
+- hctz
+- aquazide
+- indapamide
+- natrilix
+- chlorthalidone
+- thalitone
+- metolazone
 drug_class: thiazide_diuretic
-summary: |
-  Thiazide-type diuretics for hypertension + edema. Promote urinary
+summary: 'Thiazide-type diuretics for hypertension + edema. Promote urinary
+
   excretion of sodium, potassium, magnesium, zinc — well-documented
+
   electrolyte depletion. Also raise calcium reabsorption (sometimes
+
   causing hypercalcemia). Coenzyme Q10 mildly affected.
+
+  '
 depletes:
-  - nutrient: Magnesium
-    severity: severe
-    mechanism: Increased renal magnesium wasting; can cause refractory hypomagnesemia.
-    monitoring_recommendation: RBC magnesium every 6 months; correct symptomatically
-    typical_supplement_dose: 400-600 mg magnesium glycinate / malate at bedtime
-  - nutrient: Potassium
-    severity: severe
-    mechanism: Increased renal potassium excretion. Can cause arrhythmias if severe.
-    monitoring_recommendation: Serum potassium + magnesium every 3 months; electrolyte panel
-    typical_supplement_dose: 99 mg potassium chloride OR food sources (banana, coconut water, dark leafy greens) — avoid supplemental potassium > 99 mg without clinician guidance
-  - nutrient: Zinc
-    severity: moderate
-    mechanism: Increased renal zinc excretion.
-    monitoring_recommendation: Serum zinc annually
-    typical_supplement_dose: 15-30 mg zinc picolinate
-  - nutrient: CoQ10
-    severity: mild
-    mechanism: Mild reduction; mechanism not fully clear.
-    monitoring_recommendation: Empirical
-    typical_supplement_dose: 100 mg ubiquinol
+- nutrient: Magnesium
+  severity: severe
+  mechanism: Increased renal magnesium wasting; can cause refractory hypomagnesemia.
+  monitoring_recommendation: RBC magnesium every 6 months; correct symptomatically
+  typical_supplement_dose: 400-600 mg magnesium glycinate / malate at bedtime
+- nutrient: Potassium
+  severity: severe
+  mechanism: Increased renal potassium excretion. Can cause arrhythmias if severe.
+  monitoring_recommendation: Serum potassium + magnesium every 3 months; electrolyte panel
+  typical_supplement_dose: 99 mg potassium chloride OR food sources (banana, coconut water, dark leafy greens) — avoid supplemental
+    potassium > 99 mg without clinician guidance
+- nutrient: Zinc
+  severity: moderate
+  mechanism: Increased renal zinc excretion.
+  monitoring_recommendation: Serum zinc annually
+  typical_supplement_dose: 15-30 mg zinc picolinate
+- nutrient: CoQ10
+  severity: mild
+  mechanism: Mild reduction; mechanism not fully clear.
+  monitoring_recommendation: Empirical
+  typical_supplement_dose: 100 mg ubiquinol
+condition_implications:
+- label: Hypertension
+  confidence: high
+  rationale: Thiazide diuretics (HCTZ, indapamide, chlorthalidone) are first-line or adjunct for hypertension management.
+  topic_slug: hypertension
+protocol_cautions: []
 timing_separations:
-  - "Take in morning to avoid nighttime urination."
+- Take in morning to avoid nighttime urination.
 contraindicated_supplements:
-  - high-dose-potassium
+- high-dose-potassium
 monitoring_labs:
-  - Electrolyte panel (Na, K, Mg, Ca) every 3-6 months
-  - Uric acid (thiazides raise urate, gout risk)
-  - Glucose + HbA1c (thiazides can worsen insulin resistance)
-  - Lipid panel (thiazides can raise lipids)
-coach_notes: |
-  Thiazides + low-magnesium status is a common cause of leg cramps,
+- Electrolyte panel (Na, K, Mg, Ca) every 3-6 months
+- Uric acid (thiazides raise urate, gout risk)
+- Glucose + HbA1c (thiazides can worsen insulin resistance)
+- Lipid panel (thiazides can raise lipids)
+coach_notes: 'Thiazides + low-magnesium status is a common cause of leg cramps,
+
   headaches, and arrhythmia symptoms in clients on long-term therapy.
+
   Magnesium glycinate at bedtime is well-tolerated and addresses both
+
   the depletion + sleep / muscle complaints.
+
   ⚠ Do NOT recommend high-dose potassium supplements without clinician —
+
   thiazides + ACE inhibitors / ARBs + spironolactone can cause
+
   hyperkalemia.
+
+  '
 linked_to_topics:
-  - cardiovascular-disease
+- cardiovascular-disease
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: Diuretic depletions
+- id: vitaone-skill-practice-guide
+  location: Diuretic depletions
 evidence_tier: strong
 version: 1
 status: active

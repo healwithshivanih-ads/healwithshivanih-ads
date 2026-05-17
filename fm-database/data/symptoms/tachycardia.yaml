@@ -1,0 +1,28 @@
+slug: tachycardia
+display_name: Tachycardia
+aliases:
+  - palpitations
+  - episodic rapid heart rate
+category: cardiovascular
+severity: concerning
+description: |
+  Rapid heart rate or palpitations, often episodic and correlated with
+  mediator-release events. Vasoactive mediators like histamine cause sudden
+  blood pressure changes that trigger compensatory heart rate increases.
+when_to_refer: |
+  Refer for cardiology workup if tachycardia is sustained, accompanied by
+  chest pain, syncope, or occurs at rest without identifiable trigger.
+linked_to_topics:
+  - mast-cell-activation-syndrome
+  - systemic-mastocytosis
+linked_to_mechanisms:
+  - mast-cell-degranulation
+  - histamine-receptor-signaling
+sources:
+  - id: cleveland-clinic
+    location: 'Mast Cell Cardiovascular Effects'
+    quote: 'Histamine-driven vasodilation produces compensatory tachycardia.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

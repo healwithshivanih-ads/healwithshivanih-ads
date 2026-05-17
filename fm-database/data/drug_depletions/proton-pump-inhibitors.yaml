@@ -1,78 +1,102 @@
 slug: proton-pump-inhibitors
 drug_name: Proton Pump Inhibitors (PPIs)
 drug_aliases:
-  - omeprazole
-  - omez
-  - pantoprazole
-  - pan
-  - pan-d
-  - pantop
-  - esomeprazole
-  - nexium
-  - rabeprazole
-  - razo
-  - rablet
-  - lansoprazole
-  - dexilant
-  - ppi
+- omeprazole
+- omez
+- pantoprazole
+- pan
+- pan-d
+- pantop
+- esomeprazole
+- nexium
+- rabeprazole
+- razo
+- rablet
+- lansoprazole
+- dexilant
+- ppi
 drug_class: ppi
-summary: |
-  Suppresses gastric acid secretion. Long-term use (> 8 weeks) causes
+summary: 'Suppresses gastric acid secretion. Long-term use (> 8 weeks) causes
+
   multiple nutrient depletions because gastric acid is required for
+
   release / absorption of B12 (from food), magnesium, calcium, iron, and
+
   zinc. Also disrupts gut microbiome diversity. FM perspective — when
+
   used > 8 weeks, work with a clinician on tapering protocol.
+
+  '
 depletes:
-  - nutrient: Vitamin B12
-    severity: severe
-    mechanism: Gastric acid required to cleave dietary B12 from animal protein. Long-term suppression causes deficiency.
-    monitoring_recommendation: Serum B12 + MMA every 12 months on long-term PPI
-    typical_supplement_dose: 1000 mcg methylcobalamin sublingual (bypasses gastric absorption)
-  - nutrient: Magnesium
-    severity: severe
-    mechanism: PPI-induced hypomagnesemia is well-documented; can cause arrhythmias, tetany, refractory deficiency.
-    monitoring_recommendation: RBC magnesium (more sensitive than serum) annually
-    typical_supplement_dose: 400 mg magnesium glycinate / threonate / malate at bedtime
-  - nutrient: Calcium
-    severity: moderate
-    mechanism: Reduced ionised calcium absorption due to lower gastric acidity.
-    monitoring_recommendation: Serum calcium + ionised calcium + DEXA every 2 years (osteoporosis risk)
-    typical_supplement_dose: 600 mg calcium citrate (more bioavailable in low-acid environment) twice daily with vitamin D + K2
-  - nutrient: Iron
-    severity: moderate
-    mechanism: Non-heme iron requires gastric acid for ferric → ferrous reduction prior to absorption.
-    monitoring_recommendation: Ferritin + iron studies annually
-    typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
-  - nutrient: Zinc
-    severity: moderate
-    mechanism: Reduced zinc absorption due to suppressed gastric acid.
-    monitoring_recommendation: Plasma zinc annually (or RBC zinc if available)
-    typical_supplement_dose: 15-30 mg zinc picolinate / glycinate with food
+- nutrient: Vitamin B12
+  severity: severe
+  mechanism: Gastric acid required to cleave dietary B12 from animal protein. Long-term suppression causes deficiency.
+  monitoring_recommendation: Serum B12 + MMA every 12 months on long-term PPI
+  typical_supplement_dose: 1000 mcg methylcobalamin sublingual (bypasses gastric absorption)
+- nutrient: Magnesium
+  severity: severe
+  mechanism: PPI-induced hypomagnesemia is well-documented; can cause arrhythmias, tetany, refractory deficiency.
+  monitoring_recommendation: RBC magnesium (more sensitive than serum) annually
+  typical_supplement_dose: 400 mg magnesium glycinate / threonate / malate at bedtime
+- nutrient: Calcium
+  severity: moderate
+  mechanism: Reduced ionised calcium absorption due to lower gastric acidity.
+  monitoring_recommendation: Serum calcium + ionised calcium + DEXA every 2 years (osteoporosis risk)
+  typical_supplement_dose: 600 mg calcium citrate (more bioavailable in low-acid environment) twice daily with vitamin D +
+    K2
+- nutrient: Iron
+  severity: moderate
+  mechanism: Non-heme iron requires gastric acid for ferric → ferrous reduction prior to absorption.
+  monitoring_recommendation: Ferritin + iron studies annually
+  typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
+- nutrient: Zinc
+  severity: moderate
+  mechanism: Reduced zinc absorption due to suppressed gastric acid.
+  monitoring_recommendation: Plasma zinc annually (or RBC zinc if available)
+  typical_supplement_dose: 15-30 mg zinc picolinate / glycinate with food
+condition_implications:
+- label: GERD / acid reflux
+  confidence: high
+  rationale: PPIs are first-line for GERD, erosive oesophagitis, and peptic ulcer disease.
+  topic_slug: gerd-acid-reflux
+- label: Functional dyspepsia / chronic hypochlorhydria (long-term use)
+  confidence: moderate
+  rationale: Long-term PPI use (> 12 months) often masks underlying hypochlorhydria + dysbiosis; coach should consider weaning
+    under prescriber supervision.
+  topic_slug: hypochlorhydria
+protocol_cautions: []
 timing_separations:
-  - "Take 30 min before breakfast for max efficacy."
-  - "Bisphosphonates need acid for absorption — separate."
+- Take 30 min before breakfast for max efficacy.
+- Bisphosphonates need acid for absorption — separate.
 contraindicated_supplements: []
 monitoring_labs:
-  - B12 + MMA + homocysteine annually
-  - RBC magnesium annually
-  - Ferritin + iron studies annually
-  - Vit D + bone density (DEXA) every 2 years (long-term PPI = osteoporosis risk)
-  - Stool test for dysbiosis if symptoms suggest (gas, bloating, food sensitivities)
-coach_notes: |
-  ENTIRE FM POSITION — long-term PPI is rarely the right answer. If client
+- B12 + MMA + homocysteine annually
+- RBC magnesium annually
+- Ferritin + iron studies annually
+- Vit D + bone density (DEXA) every 2 years (long-term PPI = osteoporosis risk)
+- Stool test for dysbiosis if symptoms suggest (gas, bloating, food sensitivities)
+coach_notes: 'ENTIRE FM POSITION — long-term PPI is rarely the right answer. If client
+
   is on PPI > 8 weeks, work with a gastroenterologist on a tapering
+
   protocol that includes mucosal repair (DGL, slippery elm, zinc carnosine,
+
   L-glutamine, mastic gum), motility support (ginger, bitters), and
+
   identifying root cause (H. pylori, hiatal hernia, low stomach acid not
+
   high). Many "GERD" cases are actually hypo-chlorhydria and worsen on PPI.
+
   Address food triggers, eating posture, late-night meals, and stress.
+
+  '
 linked_to_topics:
-  - leaky-gut
-  - sibo
+- leaky-gut
+- sibo
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: PPI long-term use considerations
+- id: vitaone-skill-practice-guide
+  location: PPI long-term use considerations
 evidence_tier: strong
 version: 1
 status: active

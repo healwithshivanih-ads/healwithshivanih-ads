@@ -1,0 +1,97 @@
+slug: famotidine
+drug_name: Famotidine
+drug_aliases:
+  - pepcid
+  - pepcid ac
+  - pepcidine
+  - famocid
+  - famtac
+  - ranitidine
+  - zantac
+  - h2 blocker
+  - h2-blocker
+drug_class: h2_blocker
+summary: |
+  H2 receptor antagonist used for GERD, peptic ulcer, NSAID gastroprotection,
+  AND off-label as a second H2-antihistamine in MCAS / histamine intolerance
+  protocols (Marshall protocol — H1 + H2 combo). Suppresses gastric acid
+  less aggressively than PPIs but still meaningfully reduces B12,
+  magnesium, iron, zinc absorption over months / years.
+depletes:
+  - nutrient: Vitamin B12 (cobalamin)
+    severity: moderate
+    mechanism: Reduced gastric acid impairs the cleavage of B12 from food protein. Chronic use (> 12 months) → measurable serum B12 decline. Less severe than PPIs but cumulative.
+    monitoring_recommendation: Serum B12 + MMA annually; FM optimal B12 > 500 pg/mL
+    typical_supplement_dose: 1000 mcg methylcobalamin sublingual daily (bypasses absorption defect)
+  - nutrient: Magnesium
+    severity: moderate
+    mechanism: Reduced acid impairs ionisation of magnesium salts; chronic use can produce hypomagnesemia (palpitations, cramps, fatigue).
+    monitoring_recommendation: RBC magnesium annually; serum magnesium misses intracellular deficiency
+    typical_supplement_dose: 200-400 mg magnesium glycinate or malate daily
+  - nutrient: Iron (non-heme)
+    severity: moderate
+    mechanism: Reduced gastric acid impairs Fe³⁺ → Fe²⁺ conversion needed for absorption; vegetarian / lacto-veg clients hit harder.
+    monitoring_recommendation: Ferritin + TSAT every 6 months
+    typical_supplement_dose: Ferrous bisglycinate 25-50 mg with vit C 500 mg (only if labs suggest deficiency)
+  - nutrient: Zinc
+    severity: mild
+    mechanism: Mildly reduced absorption; rarely clinically significant unless dietary intake also low.
+    monitoring_recommendation: Plasma zinc if symptoms (slow wound healing, taste changes, immune drops) — annually if on long-term
+    typical_supplement_dose: 15-30 mg zinc picolinate (with copper if > 30 mg or > 3 months)
+condition_implications:
+  - label: "GERD / acid reflux"
+    confidence: high
+    rationale: "Famotidine is most commonly prescribed for GERD, peptic ulcer disease, or NSAID-related gastroprotection."
+    topic_slug: gerd-acid-reflux
+  - label: "Histamine intolerance / MCAS (if paired with H1 antihistamine)"
+    confidence: moderate
+    rationale: "Famotidine is increasingly used as the H2 partner in MCAS / histamine-intolerance protocols (alongside H1 antihistamines like cetirizine / fexofenadine / ketotifen). Coach should check whether the client is also on an H1 — combo suggests MCAS not GERD."
+    topic_slug: histamine-intolerance-mcas
+protocol_cautions:
+  - kind: prefer_food
+    item: "Lemon water before meals (gentle acid stimulation), bitter greens (arugula, dandelion, endive), small frequent meals to reduce reflux pressure"
+    severity: info
+    reason: "Long-term acid suppression worsens dysbiosis + nutrient absorption. Coach can help client work toward weaning under prescriber supervision."
+  - kind: prefer_supplement
+    item: "Betaine HCl + pepsin (ONLY after the client weans off famotidine and under clinician supervision — NEVER while still on acid suppressant)"
+    severity: critical
+    reason: "Combining betaine HCl with active H2 blocker is illogical and risks ulceration if dose is mis-timed during weaning"
+  - kind: avoid_food
+    item: "Late-evening large meals, raw onion / garlic / chocolate / mint / fried foods (classic reflux triggers)"
+    severity: info
+    reason: "Reduce trigger load so dose can eventually be tapered"
+  - kind: monitor
+    item: "B12 + MMA + homocysteine annually if on famotidine > 12 months"
+    severity: warning
+    reason: "Cumulative B12 depletion can present as neuropathy, brain fog, mood changes years before deficiency shows on standard serum B12"
+timing_separations:
+  - "Take 2 hours away from iron and B12 supplements (max absorption window when acid is naturally higher)"
+contraindicated_supplements: []
+monitoring_labs:
+  - B12 + MMA annually (functional marker more sensitive than serum B12 alone)
+  - Magnesium RBC annually
+  - Ferritin + TSAT every 6 months
+  - Homocysteine annually (rises with B12 + folate inadequacy)
+coach_notes: |
+  Many clients have been on H2 blockers for years and don't think of them
+  as "real" medication — they're OTC in most countries. Always ask
+  specifically: "any reflux meds, Pepcid, Pepcidine, ranitidine?" The
+  long-term metabolic + microbiome consequences mirror PPIs at about
+  60-70% severity. If the client is ALSO on an H1 antihistamine
+  (cetirizine, fexofenadine, ketotifen), think MCAS / histamine
+  intolerance not just GERD.
+linked_to_topics:
+  - gerd-acid-reflux
+  - hypochlorhydria
+  - dysbiosis
+  - histamine-intolerance-mcas
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — drug-nutrient depletions
+    quote: H2 blockers cause the same cascade as PPIs at ~60-70% intensity. Famotidine specifically is common in MCAS combo protocols — pair it with H1 antihistamines and you're looking at histamine intolerance, not GERD.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-17
+updated_by: shivani

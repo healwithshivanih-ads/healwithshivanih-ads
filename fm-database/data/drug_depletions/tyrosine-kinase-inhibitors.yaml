@@ -1,0 +1,163 @@
+slug: tyrosine-kinase-inhibitors
+drug_name: Tyrosine kinase inhibitors (class)
+drug_aliases:
+  - tki
+  - tkis
+  - imatinib
+  - gleevec
+  - glivec
+  - dasatinib
+  - sprycel
+  - nilotinib
+  - tasigna
+  - bosutinib
+  - bosulif
+  - ponatinib
+  - iclusig
+  - sunitinib
+  - sutent
+  - sorafenib
+  - nexavar
+  - regorafenib
+  - stivarga
+  - pazopanib
+  - votrient
+  - axitinib
+  - inlyta
+  - lenvatinib
+  - lenvima
+  - cabozantinib
+  - cabometyx
+  - cometriq
+  - erlotinib
+  - tarceva
+  - gefitinib
+  - iressa
+  - osimertinib
+  - tagrisso
+  - afatinib
+  - giotrif
+  - lapatinib
+  - tykerb
+  - vandetanib
+  - caprelsa
+  - ibrutinib
+  - imbruvica
+  - acalabrutinib
+  - calquence
+drug_class: tyrosine_kinase_inhibitor
+summary: |
+  Class entry for tyrosine kinase inhibitors — oral oncology drugs used
+  in chronic myeloid leukaemia (CML), gastrointestinal stromal tumours
+  (GIST), renal cell carcinoma, hepatocellular carcinoma, thyroid
+  cancer, non-small-cell lung cancer (EGFR-mutated), HER2+ breast cancer,
+  CLL and others. Coach scope is strictly SUPPORTIVE — never adjust
+  supplements without oncologist coordination. Multiple severe
+  herb-drug interactions; some supplements that look "safe" can
+  dramatically alter TKI blood levels via CYP3A4.
+depletes:
+  - nutrient: Magnesium
+    severity: severe
+    mechanism: Most TKIs cause electrolyte wasting (renal mechanism) — hypomagnesaemia common, presents as cramps, palpitations, fatigue, low mood.
+    monitoring_recommendation: Serum magnesium + RBC Mg every 1-3 months during therapy
+    typical_supplement_dose: 200-400 mg magnesium glycinate or malate daily — ALWAYS confirm dose with oncologist
+  - nutrient: 25-OH Vitamin D
+    severity: moderate
+    mechanism: Reduced via CYP24A1 induction by some TKIs + reduced sun exposure during therapy.
+    monitoring_recommendation: 25-OH vit D every 3 months
+    typical_supplement_dose: 2000-5000 IU daily — confirm with oncologist (high-dose vit D + chemotherapy interactions debated)
+  - nutrient: CoQ10
+    severity: mild
+    mechanism: Mitochondrial stress + reduced ATP synthesis under multi-targeted TKI therapy.
+    monitoring_recommendation: Not standard
+    typical_supplement_dose: "100-200 mg ubiquinol — ONLY if fatigue persists and oncologist clears (some debate re: tumour-mitochondrial-support concerns)"
+  - nutrient: Iron / Hemoglobin
+    severity: moderate
+    mechanism: Bone marrow suppression — anaemia is a common dose-limiting side effect.
+    monitoring_recommendation: CBC + ferritin + TSAT monthly during therapy
+    typical_supplement_dose: Only on oncologist instruction — empirical iron supplementation can cause harm in some haematological cancers
+condition_implications:
+  - label: "Active cancer therapy"
+    confidence: high
+    rationale: "TKIs are oncology-specific. Coach must approach the entire protocol with oncologist coordination."
+    topic_slug: oncology-supportive-care
+  - label: "Chronic myeloid leukaemia (CML), GIST, RCC, or other targeted-therapy-responsive cancer"
+    confidence: moderate
+    rationale: "Specific cancer depends on the TKI — imatinib / dasatinib / nilotinib → CML or GIST; sunitinib / sorafenib → RCC or HCC; osimertinib / gefitinib → EGFR-mutated NSCLC. Coach should ASK the client which cancer."
+protocol_cautions:
+  - kind: refer
+    item: "ALWAYS coordinate any supplement change with the prescribing oncologist before starting / stopping. Most TKIs are metabolised by CYP3A4 and have narrow therapeutic windows."
+    severity: critical
+    reason: "Even 'safe' supplements can alter TKI blood levels by 30-200%, risking treatment failure (sub-therapeutic) or toxicity (supra-therapeutic)"
+  - kind: avoid_supplement
+    item: "St John's wort (CYP3A4 inducer — drops TKI levels dramatically), grapefruit / grapefruit juice (CYP3A4 inhibitor — raises TKI levels), high-dose curcumin > 500 mg (CYP3A4 + UGT interactions), high-dose green tea extract (EGCG hepatotoxicity + interactions), milk thistle (CYP variable)"
+    severity: critical
+    reason: "Documented interactions altering TKI plasma levels — risks treatment failure or toxicity"
+  - kind: avoid_supplement
+    item: "High-dose antioxidants during active treatment — vitamin C IV, NAC > 1200 mg, alpha-lipoic acid > 600 mg, high-dose vitamin E"
+    severity: warning
+    reason: "Theoretical risk of antagonising the oxidative-stress mechanism of some chemotherapies; oncology literature is mixed — defer to oncologist"
+  - kind: avoid_practice
+    item: "Aggressive detox protocols, sauna at high temperatures, prolonged fasting (> 24h), high-intensity exercise without oncologist clearance"
+    severity: critical
+    reason: "Client is already under metabolic / immune stress; aggressive interventions risk dehydration, electrolyte crash, immune compromise"
+  - kind: monitor
+    item: "Energy, mood, GI tolerance, neuropathy, bruising, fevers — coach observations are valuable trend data for the oncologist"
+    severity: info
+    reason: "Coach is often the most frequent touchpoint; flag concerning patterns promptly"
+  - kind: prefer_food
+    item: "Nutrient-dense whole foods, gentle protein at every meal (often appetite-suppressed), small frequent meals, ginger for nausea, room-temperature foods if mucositis"
+    severity: info
+    reason: "Maintain nutrition without burdening the GI tract; many TKIs cause nausea + appetite loss + mucositis"
+  - kind: prefer_food
+    item: "Adequate hydration — 2-2.5L/day if no fluid restriction, electrolyte-rich (coconut water, broths, mineral water)"
+    severity: warning
+    reason: "Magnesium wasting + diarrhoea (common TKI side effect) → electrolyte derangement"
+  - kind: avoid_food
+    item: "Grapefruit, pomelo, Seville (sour) orange, starfruit, raw garlic > 1 clove/day"
+    severity: critical
+    reason: "All inhibit CYP3A4 metabolism of TKIs to varying degrees — raise plasma levels into toxic range"
+  - kind: prefer_supplement
+    item: "Magnesium glycinate (replacement, 200-400 mg), gentle B-complex, omega-3 (1-2g for inflammation + cardio support), vitamin D (after labs + oncologist clearance), probiotics (after antibiotics + oncologist clearance), L-glutamine for mucositis (oncologist permitting)"
+    severity: info
+    reason: "These supportive supplements have the strongest oncology-safety profile when oncologist has cleared them"
+timing_separations: []
+contraindicated_supplements:
+  - st-johns-wort
+  - high-dose-curcumin
+  - high-dose-egcg
+  - milk-thistle
+  - high-dose-vitamin-c-iv
+monitoring_labs:
+  - CBC monthly (myelosuppression, especially neutropenia)
+  - Comprehensive metabolic panel monthly (K, Mg, Ca, phosphate)
+  - LFTs monthly (hepatotoxicity is a class-wide concern)
+  - 25-OH vitamin D every 3 months
+  - Thyroid function (some TKIs cause hypothyroidism — sunitinib, sorafenib especially)
+  - ECG for QTc (some TKIs prolong QT)
+coach_notes: |
+  This is the highest-stakes class in the catalogue. Default posture is
+  HUMBLE + COLLABORATIVE — coach scope is nutrition, hydration,
+  movement-as-tolerated, sleep hygiene, stress regulation. Never advise
+  supplement initiation / discontinuation without oncology written
+  clearance. Avoid "detox" language entirely. The client's most pressing
+  protocol need is staying on the medication at full dose; everything
+  the coach does should support that, not compete with it. Specific
+  cancer affects nuance (CML clients on imatinib may live decades and
+  have very different needs than HCC clients on sorafenib in advanced
+  disease) — ALWAYS ASK which cancer, which line of therapy, which
+  oncologist.
+linked_to_topics:
+  - oncology-supportive-care
+  - chemotherapy-nutrition
+  - immune-support-during-cancer
+linked_to_mechanisms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — oncology supportive care
+    quote: TKI clients need supportive coaching that respects the medication as primary. Most common failure mode is enthusiastic supplement initiation that subtly drops drug levels — coach must always check CYP3A4 interactions before any addition.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-17
+updated_by: shivani

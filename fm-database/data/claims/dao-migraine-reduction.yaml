@@ -1,0 +1,35 @@
+slug: dao-migraine-reduction
+statement: |
+  DAO supplementation reduces the duration of migraine attacks by
+  approximately 90 minutes in DAO-deficient patients.
+evidence_tier: plausible_emerging
+rationale: |
+  A clinical observational study on DAO supplementation over one month
+  showed significant reduction in migraine duration. Mechanism is plausible:
+  DAO degrades dietary histamine before systemic absorption, lowering
+  histamine-triggered vasodilation and neuroinflammation that drives
+  migraine in susceptible individuals.
+coaching_translation: |
+  If your migraines flare after high-histamine meals (wine, aged cheese,
+  fermented foods), a DAO enzyme taken just before those meals may shorten
+  attacks. It works locally in the gut — not a long-term cure, but a useful
+  bridge while we address the root drivers (dysbiosis, cofactor status).
+caveats:
+  - Single-study evidence; not a substitute for trigger identification.
+  - Pregnancy and lactation contraindicated.
+out_of_scope_notes: |
+  Does not replace neurological workup for new-onset or escalating migraine.
+linked_to_topics:
+  - histamine-intolerance
+linked_to_mechanisms:
+  - histamine-metabolism
+linked_to_supplements:
+  - diamine-oxidase-enzyme
+sources:
+  - id: vinmec
+    location: 'Migraines and Headaches'
+    quote: 'DAO supplements significantly reduced migraine attack duration by nearly 90 minutes.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

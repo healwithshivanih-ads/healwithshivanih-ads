@@ -1,0 +1,32 @@
+slug: cheese-storage-temperature-raises-histamine
+statement: |
+  Cheese stored at 22°C accumulates significantly more histamine than cheese
+  stored at 4°C.
+evidence_tier: strong
+rationale: |
+  Biogenic amine accumulation in protein-rich foods is temperature-
+  dependent: warmer storage accelerates bacterial decarboxylase activity
+  that converts histidine to histamine. Demonstrated across cheese, fish,
+  and cured meat literature.
+coaching_translation: |
+  How you store food matters as much as what you eat. Cheese left on the
+  counter or in a warm fridge builds up histamine fast — for sensitive
+  clients, that single variable can be the difference between a calm day
+  and a flare. Keep fridge ≤ 4°C, eat protein leftovers within 24 hours,
+  and freeze portions you won't finish.
+caveats:
+  - Applies to all protein-rich, bacteria-fermentable foods, not just cheese.
+out_of_scope_notes: ''
+linked_to_topics:
+  - histamine-intolerance
+linked_to_mechanisms:
+  - histamine-metabolism
+linked_to_supplements: []
+sources:
+  - id: webmd
+    location: 'High-histamine foods'
+    quote: 'Histamine content in cheese stored at 22°C was higher than cheese stored at 4°C.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

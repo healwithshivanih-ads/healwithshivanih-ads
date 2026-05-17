@@ -1,53 +1,73 @@
 slug: levothyroxine
 drug_name: Levothyroxine (T4)
 drug_aliases:
-  - eltroxin
-  - synthroid
-  - euthyrox
-  - thyronorm
-  - thyrox
-  - lt4
-  - t4
-  - levothyrox
+- eltroxin
+- synthroid
+- euthyrox
+- thyronorm
+- thyrox
+- lt4
+- t4
+- levothyrox
 drug_class: thyroid_hormone
-summary: |
-  Synthetic T4 hormone replacement for hypothyroidism / Hashimoto's. Highly
+summary: 'Synthetic T4 hormone replacement for hypothyroidism / Hashimoto''s. Highly
+
   sensitive to absorption interference — even small co-ingestions can
+
   reduce bioavailability significantly. Selenium status is critical for
+
   T4 → T3 conversion peripherally.
+
+  '
 depletes:
-  - nutrient: Selenium
-    severity: moderate
-    mechanism: Selenium is the cofactor for deiodinase enzymes converting T4 → active T3. Suboptimal selenium impairs response to LT4.
-    monitoring_recommendation: Selenium serum or RBC; check at baseline + every 12 months
-    typical_supplement_dose: 200 mcg/day selenomethionine OR 2 brazil nuts/day
-  - nutrient: Iron (ferritin)
-    severity: moderate
-    mechanism: Ferritin > 70 ng/mL is required for adequate T3 receptor function. Low iron impairs LT4 efficacy.
-    monitoring_recommendation: Ferritin every 6 months
-    typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
+- nutrient: Selenium
+  severity: moderate
+  mechanism: Selenium is the cofactor for deiodinase enzymes converting T4 → active T3. Suboptimal selenium impairs response
+    to LT4.
+  monitoring_recommendation: Selenium serum or RBC; check at baseline + every 12 months
+  typical_supplement_dose: 200 mcg/day selenomethionine OR 2 brazil nuts/day
+- nutrient: Iron (ferritin)
+  severity: moderate
+  mechanism: Ferritin > 70 ng/mL is required for adequate T3 receptor function. Low iron impairs LT4 efficacy.
+  monitoring_recommendation: Ferritin every 6 months
+  typical_supplement_dose: 18-30 mg iron bisglycinate (only if ferritin < 50)
+condition_implications:
+- label: Hypothyroidism
+  confidence: high
+  rationale: Levothyroxine is the standard replacement therapy for hypothyroidism, including Hashimoto's-driven hypothyroidism.
+  topic_slug: hypothyroidism
+- label: Hashimoto's thyroiditis (autoimmune)
+  confidence: moderate
+  rationale: Most levothyroxine prescriptions in adult women have Hashimoto's as the underlying cause — coach should ask about
+    TPO / TgAb antibodies.
+  topic_slug: hashimotos-thyroiditis
+protocol_cautions: []
 timing_separations:
-  - "Take LT4 first thing in morning, 30-60 min BEFORE food + coffee + tea (caffeine reduces absorption)."
-  - "Separate from calcium / iron / magnesium / multivitamin by AT LEAST 4 HOURS."
-  - "Soy + high-fibre meals reduce absorption — separate by 4 hours."
+- Take LT4 first thing in morning, 30-60 min BEFORE food + coffee + tea (caffeine reduces absorption).
+- Separate from calcium / iron / magnesium / multivitamin by AT LEAST 4 HOURS.
+- Soy + high-fibre meals reduce absorption — separate by 4 hours.
 contraindicated_supplements: []
 monitoring_labs:
-  - TSH every 6-8 weeks until stable, then every 6-12 months
-  - "Free T3 + Free T4 (FM optimal — fT3 3.0-4.0 pg/mL, fT4 1.1-1.5 ng/dL)"
-  - Reverse T3 if symptoms persist despite normal TSH
-  - TPO + Tg antibodies if Hashimoto suspected
-coach_notes: |
-  Most under-recognised cause of poor LT4 response is timing — clients
+- TSH every 6-8 weeks until stable, then every 6-12 months
+- Free T3 + Free T4 (FM optimal — fT3 3.0-4.0 pg/mL, fT4 1.1-1.5 ng/dL)
+- Reverse T3 if symptoms persist despite normal TSH
+- TPO + Tg antibodies if Hashimoto suspected
+coach_notes: 'Most under-recognised cause of poor LT4 response is timing — clients
+
   often take with breakfast or tea, undermining absorption. Coach the
+
   morning ritual carefully. If TSH still fluctuating despite good
+
   adherence + timing, ferritin + selenium are the next levers.
+
+  '
 linked_to_topics:
-  - thyroid
-  - hashimoto-thyroid
+- thyroid
+- hashimoto-thyroid
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: Thyroid section — supplement-medication interactions
+- id: vitaone-skill-practice-guide
+  location: Thyroid section — supplement-medication interactions
 evidence_tier: strong
 version: 1
 status: active

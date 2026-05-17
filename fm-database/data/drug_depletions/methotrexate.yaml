@@ -1,59 +1,80 @@
 slug: methotrexate
 drug_name: Methotrexate
 drug_aliases:
-  - mtx
-  - folex
-  - rheumatrex
-  - trexall
-  - hi-mtx
+- mtx
+- folex
+- rheumatrex
+- trexall
+- hi-mtx
 drug_class: methotrexate
-summary: |
-  Antifolate / immunosuppressant used for rheumatoid arthritis, psoriasis,
+summary: 'Antifolate / immunosuppressant used for rheumatoid arthritis, psoriasis,
+
   IBD, autoimmune conditions, and some cancers. Folate is the obvious +
+
   CRITICAL depletion — supplementation is standard of care + reduces side
+
   effects without compromising efficacy. B12, B6 also affected.
+
+  '
 depletes:
-  - nutrient: Folate
-    severity: severe
-    mechanism: MTX is a competitive inhibitor of dihydrofolate reductase. Folate supplementation is standard of care + reduces GI / hepatic side effects.
-    monitoring_recommendation: Serum folate + RBC folate at baseline + every 6 months
-    typical_supplement_dose: 5 mg folic acid OR 5 mg L-methylfolate weekly (NOT same day as MTX — typically 24-48h after MTX dose) — clinician must direct
-  - nutrient: Vitamin B12
-    severity: moderate
-    mechanism: Indirect via methylation cycle disruption; folate + B12 are tightly coupled.
-    monitoring_recommendation: Serum B12 + MMA + homocysteine every 6 months
-    typical_supplement_dose: 1000 mcg methylcobalamin sublingual
-  - nutrient: Vitamin B6 (P5P)
-    severity: mild
-    mechanism: B6 is a cofactor in folate metabolism; mild depletion possible.
-    monitoring_recommendation: Plasma PLP if symptoms suggest
-    typical_supplement_dose: 25 mg P5P
+- nutrient: Folate
+  severity: severe
+  mechanism: MTX is a competitive inhibitor of dihydrofolate reductase. Folate supplementation is standard of care + reduces
+    GI / hepatic side effects.
+  monitoring_recommendation: Serum folate + RBC folate at baseline + every 6 months
+  typical_supplement_dose: 5 mg folic acid OR 5 mg L-methylfolate weekly (NOT same day as MTX — typically 24-48h after MTX
+    dose) — clinician must direct
+- nutrient: Vitamin B12
+  severity: moderate
+  mechanism: Indirect via methylation cycle disruption; folate + B12 are tightly coupled.
+  monitoring_recommendation: Serum B12 + MMA + homocysteine every 6 months
+  typical_supplement_dose: 1000 mcg methylcobalamin sublingual
+- nutrient: Vitamin B6 (P5P)
+  severity: mild
+  mechanism: B6 is a cofactor in folate metabolism; mild depletion possible.
+  monitoring_recommendation: Plasma PLP if symptoms suggest
+  typical_supplement_dose: 25 mg P5P
+condition_implications:
+- label: Autoimmune disease (RA, psoriasis, IBD, JIA) OR low-dose oncology adjuvant
+  confidence: high
+  rationale: Methotrexate at FM-encountered doses (7.5-25 mg/week) is almost always for autoimmune disease — rheumatoid arthritis,
+    psoriatic arthritis, psoriasis, IBD, juvenile arthritis.
+  topic_slug: autoimmune-inflammation
+protocol_cautions: []
 timing_separations:
-  - "Take folate / folic acid at least 24h after MTX dose to preserve MTX efficacy (typically the day after MTX)."
+- Take folate / folic acid at least 24h after MTX dose to preserve MTX efficacy (typically the day after MTX).
 contraindicated_supplements:
-  - high-dose-folate-same-day-as-mtx
-  - st-johns-wort
+- high-dose-folate-same-day-as-mtx
+- st-johns-wort
 monitoring_labs:
-  - CBC every 4-12 weeks (myelosuppression risk)
-  - Liver enzymes + AST/ALT every 4-12 weeks
-  - Serum creatinine + eGFR (renal function)
-  - Folate + B12 + MMA + homocysteine every 6 months
-  - Pulmonary symptoms — MTX pneumonitis risk
-coach_notes: |
-  ⚠ HIGHEST-STAKES drug-nutrient interaction. Folate supplementation
+- CBC every 4-12 weeks (myelosuppression risk)
+- Liver enzymes + AST/ALT every 4-12 weeks
+- Serum creatinine + eGFR (renal function)
+- Folate + B12 + MMA + homocysteine every 6 months
+- Pulmonary symptoms — MTX pneumonitis risk
+coach_notes: '⚠ HIGHEST-STAKES drug-nutrient interaction. Folate supplementation
+
   on MTX is essential — but timing matters. ALWAYS confirm with the
+
   prescribing rheumatologist / physician. Standard regimen is folic acid
+
   5 mg taken 24h+ after weekly MTX dose. L-methylfolate is preferred for
+
   MTHFR variants but usage is clinician-directed.
+
   Pregnancy is CONTRAINDICATED on MTX (teratogenic). If client of
+
   childbearing age is on MTX, ensure conversation about contraception +
+
   pre-conception planning is happening with their physician.
+
+  '
 linked_to_topics:
-  - autoimmune
+- autoimmune
 linked_to_mechanisms: []
 sources:
-  - id: vitaone-skill-practice-guide
-    location: MTX folate supplementation protocol
+- id: vitaone-skill-practice-guide
+  location: MTX folate supplementation protocol
 evidence_tier: strong
 version: 1
 status: active

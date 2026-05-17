@@ -1,23 +1,22 @@
-slug: berberine
-display_name: Berberine
+slug: baicalin
+display_name: Baicalin (Skullcap Root Extract)
 category: herb
 forms_available:
   - capsule
 typical_dose_range:
   capsule:
-    min: 500
-    max: 1500
+    min: 100
+    max: 500
     unit: mg
 timing_options:
   - with_breakfast
-  - with_lunch
   - with_dinner
 take_with_food: required
 notes_for_coach: |
-  Alkaloid (Berberis aristata root) standardized to 97% berberine HCl. May
-  support mast cell stabilization, reduce pro-inflammatory cytokines, and
-  modulate gut microbiome. Split dosing across meals improves tolerance.
-  Bitter — capsule form preferred. Note also strong glycemic effects.
+  Flavonoid from Chinese skullcap (Scutellaria baicalensis) standardized to
+  ~90% baicalin. Suppresses histamine release, inhibits mast cell
+  degranulation, and may modulate HPA axis. Source did not specify exact
+  dosing; range reflects common clinical practice.
 contraindications:
   conditions: []
   medications: []
@@ -31,13 +30,12 @@ interactions:
 evidence_tier: plausible_emerging
 linked_to_topics:
   - mast-cell-activation-syndrome
-  - histamine-intolerance
 linked_to_mechanisms:
   - mast-cell-degranulation
 sources:
   - id: functional-genomic-nutrition
     location: 'MC Stabilizer ingredients'
-    quote: 'Berberine extract standardized to 97% Berberine HCl may support mast cell stabilizing.'
+    quote: 'Skullcap Root Extract (90% Baicalin) may suppress histamine release and inhibit mast cell degranulation.'
 version: 1
 status: active
 updated_at: '2026-05-17'

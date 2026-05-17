@@ -1,0 +1,41 @@
+slug: luteolin
+display_name: Luteolin
+category: other
+forms_available:
+  - capsule
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+timing_options:
+  - with_breakfast
+  - with_dinner
+take_with_food: required
+notes_for_coach: |
+  Potent flavonoid (celery, chamomile, parsley) with mast cell stabilizing
+  and neuroprotective effects. Research suggests greater potency than
+  cromolyn sodium in some degranulation assays. Often paired with quercetin.
+  Dose range reflects common clinical practice; source did not specify
+  precise dosing — confirm with formulator guidance.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+evidence_tier: plausible_emerging
+linked_to_topics:
+  - mast-cell-activation-syndrome
+linked_to_mechanisms:
+  - mast-cell-degranulation
+sources:
+  - id: eds-clinic
+    location: 'Comparison: Quercetin, Luteolin, and Cromolyn'
+    quote: 'Luteolin has been shown to be more potent than cromolyn in some studies.'
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani
