@@ -14,6 +14,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import type { ClientRow } from "./page";
+import { UnreadBadge } from "@/components/fm/UnreadBadge";
 
 const STAGE_META: Record<
   ClientRow["stage"],
@@ -226,9 +227,11 @@ export function ClientFilters({
 export function ClientCard({
   row,
   todayStr,
+  unread,
 }: {
   row: ClientRow;
   todayStr: string;
+  unread?: import("@/lib/fmdb/loader-extras").ClientUnreadCounts;
 }) {
   const tone = STAGE_META[row.stage];
   const initials = row.display_name
@@ -275,6 +278,7 @@ export function ClientCard({
             }}
           >
             {row.display_name}
+            <UnreadBadge counts={unread} />
           </div>
           <div
             style={{

@@ -17,7 +17,7 @@
  * turns ago. The Analyse tab keeps its session-timeline sidebar; this
  * page is the permanent inspector.
  */
-import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadClientById, markCoachTabViewed } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { SessionsPageShell } from "./sessions-page-shell";
@@ -38,6 +38,9 @@ export default async function SessionsPage({
 }) {
   const { id } = await params;
   const { sid, type } = await searchParams;
+
+  // Clears WhatsApp + intake-milestone chips on the unread badge.
+  void markCoachTabViewed(id, "sessions");
 
   const [client, sessions, allPlans] = await Promise.all([
     loadClientById(id),

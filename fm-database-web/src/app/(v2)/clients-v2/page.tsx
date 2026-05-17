@@ -143,6 +143,21 @@ export default async function ClientsListV2Page({
     loadAllPlans(),
   ]);
 
+  // Unread-activity counts (drives the numbered chip on each client card).
+  // Reuses scheduling-due for the alerts bucket so behaviour is identical
+  // to dashboard-v2.
+  const { getSchedulingDueRows: getDueRows } = await import("@/lib/fmdb/scheduling-due");
+  const { getClientUnreadCounts } = await import("@/lib/fmdb/loader-extras");
+  const dueRowsForAlerts = await getDueRows(
+    clients as Array<Record<string, unknown> & { client_id: string }>,
+    allPlans as Array<Record<string, unknown>>,
+    todayStr,
+  );
+  const unreadMap = await getClientUnreadCounts(
+    clients as Array<Record<string, unknown>>,
+    { alertClientIds: new Set(dueRowsForAlerts.map((r) => r.client_id)) },
+  );
+
   // Build per-client active plan lookup + most-recent session + photo
   // presence in parallel — load is small (4 clients live, scales fine).
   const rows: ClientRow[] = await Promise.all(
@@ -373,7 +388,12 @@ export default async function ClientsListV2Page({
           }}
         >
           {filtered.map((r) => (
-            <ClientCard key={r.client_id} row={r} todayStr={todayStr} />
+            <ClientCard
+              key={r.client_id}
+              row={r}
+              todayStr={todayStr}
+              unread={unreadMap.get(r.client_id)}
+            />
           ))}
         </div>
       )}

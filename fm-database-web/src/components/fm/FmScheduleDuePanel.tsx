@@ -30,6 +30,8 @@ import { useRouter } from "next/navigation";
 import { sendBookingLinkBulkAction } from "@/app/api/whatsapp/calcom-actions";
 import { FmPanel } from "./FmPanel";
 import type { BookingType, SchedulingDueRow } from "@/lib/fmdb/scheduling-due";
+import type { ClientUnreadCounts } from "@/lib/fmdb/loader-extras";
+import { UnreadBadge } from "./UnreadBadge";
 
 const TYPE_META: Record<BookingType, { emoji: string; label: string }> = {
   "discovery": { emoji: "🔍", label: "Discovery" },
@@ -39,9 +41,12 @@ const TYPE_META: Record<BookingType, { emoji: string; label: string }> = {
 
 export interface FmScheduleDuePanelProps {
   rows: SchedulingDueRow[];
+  /** Per-client unread badge counts. Plain object so it serialises
+   *  cleanly from RSC → client component. */
+  unread?: Record<string, ClientUnreadCounts>;
 }
 
-export function FmScheduleDuePanel({ rows: initialRows }: FmScheduleDuePanelProps) {
+export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDuePanelProps) {
   const router = useRouter();
   const [rows, setRows] = useState<
     Array<SchedulingDueRow & { selected: boolean; override_type?: BookingType }>
@@ -219,6 +224,7 @@ export function FmScheduleDuePanel({ rows: initialRows }: FmScheduleDuePanelProp
                   }}
                 >
                   {r.display_name}
+                  <UnreadBadge counts={unread?.[r.client_id]} />
                 </div>
                 <div
                   style={{

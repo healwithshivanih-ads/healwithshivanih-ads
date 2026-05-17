@@ -18,6 +18,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
   loadClientById,
+  markCoachTabViewed,
 } from "@/lib/fmdb/loader-extras";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
 import {
@@ -445,6 +446,10 @@ export default async function ClientV2Page({
 }) {
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
+
+  // Mark the Overview tab as viewed — clears the "bookings" bucket in the
+  // unread badge on this client. Async fire-and-forget; never blocks render.
+  void markCoachTabViewed(id, "overview");
 
   const [client, sessions, allPlans, sessionSummaries, journey, intakeInsights] = await Promise.all([
     loadClientById(id),

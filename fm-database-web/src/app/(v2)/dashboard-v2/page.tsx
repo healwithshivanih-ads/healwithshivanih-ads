@@ -207,6 +207,20 @@ export default async function DashboardV2() {
     todayStr,
   );
 
+  // Per-client unread-activity counts (drives the numbered chips on every
+  // client surface). Reuses the scheduling-due set so the alerts bucket
+  // is consistent with what's already shown on the dashboard.
+  const { getClientUnreadCounts } = await import("@/lib/fmdb/loader-extras");
+  const alertSet = new Set(scheduleDueRows.map((r) => r.client_id));
+  const unreadMap = await getClientUnreadCounts(
+    clients as Array<Record<string, unknown>>,
+    { alertClientIds: alertSet },
+  );
+  const unreadByClient: Record<string, import("@/lib/fmdb/loader-extras").ClientUnreadCounts> = {};
+  unreadMap.forEach((v, k) => {
+    if (v.total > 0) unreadByClient[k] = v;
+  });
+
   // Compute signals
   const rows: TriageRow[] = await Promise.all(
     (clients as ClientRow[]).map(async (c) => ({
@@ -380,8 +394,11 @@ export default async function DashboardV2() {
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
 
         {/* WhatsApp inbound messages — design 10A with unread badges */}
-        <FmScheduleDuePanel rows={scheduleDueRows} />
-        <FmIntakeActivityBanner entries={intakeActivity} />
+        <FmScheduleDuePanel rows={scheduleDueRows} unread={unreadByClient} />
+        {/* FmIntakeActivityBanner retired 2026-05-17 — its info now folds
+            into the per-client unread badge on the schedule-due rows + the
+            clients-v2 grid. Keeping the entries fetch so we can revive
+            quickly if the unified badge proves insufficient in practice. */}
         <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
 
         {/* Upcoming follow-ups (next 7 days, not yet due) */}

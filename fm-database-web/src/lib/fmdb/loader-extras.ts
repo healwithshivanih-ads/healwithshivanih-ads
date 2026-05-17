@@ -149,6 +149,74 @@ async function readInboxState(): Promise<Record<string, string>> {
   return {};
 }
 
+// ── Per-tab coach inbox state ────────────────────────────────────────────────
+//
+// Generalises the WhatsApp-only inbox state above to cover every kind of
+// client activity that puts a chip on a client card (inbound WhatsApp,
+// intake-form milestones, plan/system alerts, future Cal.com bookings).
+//
+// Shape of `~/fm-plans/_coach_inbox_state.yaml`:
+//
+//   cl-008:
+//     sessions_seen_at:  '2026-05-17T11:00:00.000Z'   # clears whatsapp + intake
+//     plan_seen_at:      '2026-05-15T09:00:00.000Z'   # clears recheck/follow-up
+//     overview_seen_at:  '2026-05-17T11:00:00.000Z'   # clears everything else
+//
+// Tab→event mapping (so each tab clears only what's logically on it):
+//   - sessions:  inbound WhatsApp + intake-form milestones
+//   - plan:      plan/system alerts (recheck overdue, follow-up ≥12d)
+//   - overview:  bookings (cal.com — placeholder), fallback for anything else
+//
+// `_whatsapp_inbox_state.yaml` is kept as a fallback read so historical
+// markWhatsappInboxRead() calls aren't lost — see getRecentInboundMessages.
+const COACH_INBOX_STATE_FILE_NAME = "_coach_inbox_state.yaml";
+
+export type CoachTab = "overview" | "sessions" | "plan";
+
+interface CoachInboxClientState {
+  sessions_seen_at?: string;
+  plan_seen_at?: string;
+  overview_seen_at?: string;
+}
+
+async function readCoachInboxState(): Promise<Record<string, CoachInboxClientState>> {
+  const root = getPlansRoot();
+  try {
+    const raw = await fs.readFile(path.join(root, COACH_INBOX_STATE_FILE_NAME), "utf-8");
+    const parsed = yaml.load(raw);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      const out: Record<string, CoachInboxClientState> = {};
+      for (const [k, v] of Object.entries(parsed)) {
+        if (v && typeof v === "object" && !Array.isArray(v)) {
+          out[k] = v as CoachInboxClientState;
+        }
+      }
+      return out;
+    }
+  } catch {
+    /* ENOENT or invalid YAML → empty state */
+  }
+  return {};
+}
+
+/** Stamp `now` into the seen-at field for (clientId, tab). Monotonic;
+ *  later writes win. Crash-safe: read → update one key → write. */
+export async function markCoachTabViewed(clientId: string, tab: CoachTab): Promise<void> {
+  const root = getPlansRoot();
+  const filePath = path.join(root, COACH_INBOX_STATE_FILE_NAME);
+  const state = await readCoachInboxState();
+  const slot: CoachInboxClientState = state[clientId] ?? {};
+  const key = `${tab}_seen_at` as keyof CoachInboxClientState;
+  slot[key] = new Date().toISOString();
+  state[clientId] = slot;
+  try {
+    await fs.mkdir(root, { recursive: true });
+    await fs.writeFile(filePath, yaml.dump(state, { sortKeys: true }), "utf-8");
+  } catch {
+    /* read-only filesystem etc. — silent. Badge just won't clear. */
+  }
+}
+
 /** Strip the entire prefix of `[key: value]` tags off a session
  *  `presenting_complaints` string so the preview is human-readable. */
 function stripSessionTags(complaints: string): string {
@@ -371,6 +439,161 @@ export async function markWhatsappInboxRead(clientId: string): Promise<void> {
   } catch {
     /* read-only filesystem etc. — silent. Banner just won't clear. */
   }
+}
+
+// ── Per-client unread counts (badge backend) ─────────────────────────────────
+//
+// Computes how many fresh activity items each client has since the coach
+// last viewed the relevant tab. Bucketed by tab so each tab clears only
+// the items shown there.
+//
+// Bulk by design — the dashboard renders many client rows; doing per-row
+// session-dir scans would be slow. Caller passes the already-loaded client
+// list; we do one directory walk over recently-active client dirs.
+//
+// Cost model: O(N clients × M recent session files per client). Filename
+// pre-filter on the YYYY-MM-DD date prefix keeps M to days in the lookback
+// window (default 14). For a normal dashboard load this is ~50 file
+// reads — well under 100ms.
+
+export interface ClientUnreadCounts {
+  /** Inbound WhatsApp messages since `sessions_seen_at`. */
+  whatsapp: number;
+  /** Intake-form milestone events (opened / draft-saved / submitted) since
+   *  `sessions_seen_at`. At most one per client; the latest milestone wins. */
+  intake: number;
+  /** Plan/system alerts (recheck overdue, follow-up ≥12d) currently active
+   *  AND newer than `plan_seen_at`. Placeholder count = 1 if any alert; we
+   *  don't break it down further yet. */
+  alerts: number;
+  /** Cal.com bookings since `overview_seen_at`. Placeholder — always 0
+   *  until a cal.com webhook lands. */
+  bookings: number;
+  /** Sum across all buckets. The chip on the client card shows this. */
+  total: number;
+  /** Each bucket's most recent event timestamp, so a hover popover can
+   *  show "WhatsApp · 2h ago". Optional — undefined if bucket is 0. */
+  latest_at?: {
+    whatsapp?: string;
+    intake?: string;
+    alerts?: string;
+  };
+}
+
+export async function getClientUnreadCounts(
+  clients: Array<Record<string, unknown>>,
+  options?: {
+    /** Lookback window for scanning session files. Default 14 days. */
+    daysBack?: number;
+    /** Optional pre-computed `Set<client_id>` of clients with active
+     *  plan/system alerts (recheck overdue, follow-up ≥12d). Lets the
+     *  caller reuse work from getSchedulingDueRows etc. Empty set is
+     *  fine — alerts bucket stays 0. */
+    alertClientIds?: Set<string>;
+  },
+): Promise<Map<string, ClientUnreadCounts>> {
+  const daysBack = options?.daysBack ?? 14;
+  const alertSet = options?.alertClientIds ?? new Set<string>();
+  const root = getPlansRoot();
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - daysBack);
+  const cutoffStr = cutoff.toISOString().slice(0, 10); // YYYY-MM-DD
+
+  const state = await readCoachInboxState();
+  // Fallback: pull historical _whatsapp_inbox_state.yaml so coaches who
+  // marked WhatsApp read pre-v0.63 don't see "unread" chips light up.
+  const legacyWhatsappState = await readInboxState();
+
+  const out = new Map<string, ClientUnreadCounts>();
+
+  await Promise.all(
+    clients.map(async (c) => {
+      const clientId = c.client_id as string | undefined;
+      if (!clientId) return;
+      const slot = state[clientId] ?? {};
+      const sessionsSeen = slot.sessions_seen_at ?? legacyWhatsappState[clientId];
+      const planSeen = slot.plan_seen_at;
+      const sessionsSeenMs = sessionsSeen ? Date.parse(sessionsSeen) : 0;
+      const planSeenMs = planSeen ? Date.parse(planSeen) : 0;
+
+      const counts: ClientUnreadCounts = {
+        whatsapp: 0,
+        intake: 0,
+        alerts: 0,
+        bookings: 0,
+        total: 0,
+      };
+      const latest: ClientUnreadCounts["latest_at"] = {};
+
+      // ── WhatsApp inbound (session YAMLs tagged [source: whatsapp_webhook]) ──
+      const sessDir = path.join(root, "clients", clientId, "sessions");
+      try {
+        const names = await fs.readdir(sessDir);
+        const recent = names.filter((n) => {
+          const m = n.match(/(\d{4}-\d{2}-\d{2})/);
+          return m && m[1] >= cutoffStr && (n.endsWith(".yaml") || n.endsWith(".yml"));
+        });
+        for (const n of recent) {
+          const data = await readYaml<Record<string, unknown>>(path.join(sessDir, n));
+          if (!data) continue;
+          const complaints = String(data.presenting_complaints ?? "");
+          if (!complaints.includes("[source: whatsapp_webhook]")) continue;
+          const createdAt = typeof data.created_at === "string" ? data.created_at : undefined;
+          if (!createdAt) continue;
+          if (Date.parse(createdAt) <= sessionsSeenMs) continue;
+          counts.whatsapp++;
+          if (!latest.whatsapp || createdAt > latest.whatsapp) latest.whatsapp = createdAt;
+        }
+      } catch {
+        /* no sessions dir → 0 */
+      }
+
+      // ── Intake milestones (latest wins; one chip max) ──
+      // Picks the most-recent of: last submit, draft save, first open.
+      // Each is a distinct coach-visible event. We only count it if it's
+      // newer than sessions_seen_at AND newer than any plan update that
+      // would mark it "actioned" (mirrors getRecentIntakeActivity).
+      const intakeCandidates: string[] = [];
+      const sub = (c.intake_last_submitted_at ?? c.intake_submitted_at) as string | undefined;
+      const draft = c.intake_form_draft_saved_at as string | undefined;
+      const opened = c.intake_first_opened_at as string | undefined;
+      if (sub) intakeCandidates.push(sub);
+      if (draft) intakeCandidates.push(draft);
+      if (opened) intakeCandidates.push(opened);
+      const latestIntake = intakeCandidates
+        .filter((t) => !!t)
+        .sort((a, b) => b.localeCompare(a))[0];
+      if (latestIntake && Date.parse(latestIntake) > sessionsSeenMs) {
+        // Coach-actioned signal: intake_finalised_at clears it.
+        const finalisedAt = c.intake_finalised_at as string | undefined;
+        if (!finalisedAt) {
+          counts.intake = 1;
+          latest.intake = latestIntake;
+        }
+      }
+
+      // ── Plan/system alerts ──
+      // Caller passes the set of client_ids currently in scheduling-due
+      // state. We count 1 if this client is in the set AND the coach
+      // hasn't viewed Plan since the alert window opened (proxy: any
+      // plan_seen_at clears the chip until tomorrow's recompute).
+      if (alertSet.has(clientId)) {
+        // No precise timestamp for "alert first triggered" — use today as a
+        // conservative proxy. Coach viewing Plan today clears it.
+        const todayMs = Date.parse(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
+        if (planSeenMs < todayMs) {
+          counts.alerts = 1;
+          latest.alerts = new Date().toISOString();
+        }
+      }
+
+      counts.total = counts.whatsapp + counts.intake + counts.alerts + counts.bookings;
+      if (counts.total > 0) counts.latest_at = latest;
+      out.set(clientId, counts);
+    }),
+  );
+
+  return out;
 }
 
 export async function loadClientSessions(id: string): Promise<ClientSession[]> {

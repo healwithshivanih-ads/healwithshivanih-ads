@@ -18,7 +18,7 @@
  *   - No-plan empty state with CTA → /clients-v2/[id]/analyse/full
  */
 import Link from "next/link";
-import { loadClientById } from "@/lib/fmdb/loader-extras";
+import { loadClientById, markCoachTabViewed } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
 // Letter send history moved to Communicate tab — single source of truth
@@ -259,6 +259,10 @@ export default async function PlanTabPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
+  // Clears plan/system-alerts chip on the unread badge for this client.
+  void markCoachTabViewed(id, "plan");
+
   const [client, allPlans, catalogueChips, allProtocols] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
