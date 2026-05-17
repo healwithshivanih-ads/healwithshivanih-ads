@@ -1,0 +1,60 @@
+slug: hiit-three-to-five-minutes-produces-neuroendocrine-benefit
+statement: 'Three to five minutes of high-intensity interval training (20 seconds
+
+  near-maximal effort, 10 second recovery, repeated) produces measurable
+
+  neuroendocrine benefit including BDNF upregulation, growth hormone
+
+  release, endocannabinoid and opioid release, and improved insulin
+
+  sensitivity — provided the individual maintains breathing throughout
+
+  rather than holding breath.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Short-duration HIIT protocols (Tabata-style and variants) show metabolic
+
+  and neurochemical benefits in trained and untrained populations. The
+
+  precise dose-response for the three-to-five minute window is emerging
+
+  rather than firmly established across populations.
+
+  '
+coaching_translation: 'You do not need 45-minute gym sessions to access the chemistry
+  of
+
+  intense movement. Three to five minutes of all-out bursts — 20 seconds
+
+  hard, 10 seconds rest — gives you growth hormone, mood-lifting
+
+  endorphins, and better blood sugar handling. The two rules: low impact
+
+  on joints, and never hold your breath.
+
+  '
+caveats:
+- Breath-holding during HIIT increases oxidative stress and inflammation — defeats
+  the purpose.
+- '"Full capacity" is individual — for some it is sprinting, for others fast walking.'
+- Not appropriate as a starting point for inflamed, adrenally fatigued, or significantly
+  depleted clients.
+out_of_scope_notes: ''
+linked_to_topics:
+- exercise-mitochondrial-biogenesis
+- metabolic-overtraining
+linked_to_mechanisms:
+- mitochondrial-biogenesis
+- bdnf-upregulation
+- exercise-induced-oxidative-stress
+linked_to_supplements: []
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 5: HIIT protocol and three-minute threshold'
+  quote: Three to five minutes of high intensity interval training and you start getting
+    all of these incredible benefits.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

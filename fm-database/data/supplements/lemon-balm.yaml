@@ -53,7 +53,7 @@ sources:
   location: Natural sleep aids section
   quote: There's some lavender supplements that have shown in clinical trials some
     benefit, lemon balm, passion flower
-version: 3
+version: 5
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani
@@ -65,6 +65,6 @@ contraindications:
   medications: []
   life_stages: []
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications: []

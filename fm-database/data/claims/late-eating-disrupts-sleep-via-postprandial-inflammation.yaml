@@ -42,6 +42,7 @@ caveats:
 - Some individuals (athletes, people with reactive hypoglycemia) do better with a
   small protein-fat snack before bed.
 - 2-3 hours is a guideline, not a hard rule.
+- '"2-3 hours" is a guideline, not a hard rule.'
 out_of_scope_notes: ''
 linked_to_topics:
 - insomnia
@@ -53,7 +54,7 @@ sources:
   location: Late eating and inflammation section
   quote: When you eat late at night, you might be creating an inflammatory state in
     the body for a short period of time
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

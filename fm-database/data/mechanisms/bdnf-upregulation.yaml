@@ -1,0 +1,49 @@
+slug: bdnf-upregulation
+display_name: BDNF Upregulation
+aliases:
+- brain-derived neurotrophic factor increase
+- BDNF release
+- exercise-induced BDNF
+category: neurological
+summary: 'Brain-derived neurotrophic factor (BDNF) is a key protein supporting
+
+  neuronal survival, growth, and the formation of new connections between
+
+  neurons (neuroplasticity). Exercise — including a single acute bout —
+
+  upregulates BDNF expression in the brain and periphery, supporting
+
+  cognition, mood, and protection against neurodegenerative disease.
+
+  Magnitude of BDNF increase is greater with higher-intensity exercise, but
+
+  all movement raises BDNF to some degree.
+
+  '
+upstream_drivers:
+- aerobic-training
+- high-intensity-interval-training
+- cycling
+- walking-training
+downstream_effects:
+- improved-neuroplasticity
+- improved-cognition
+- mood-improvement
+- reduced-neurodegeneration-risk
+related_mechanisms:
+- exercise-induced-neurogenesis
+- mitochondrial-biogenesis
+linked_to_topics:
+- exercise-mitochondrial-biogenesis
+- cognitive-decline
+- depression
+evidence_tier: strong
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 2: Exercise and the brain'
+  quote: Cycling increases brain derived neurotrophic factor, a key protein involved
+    with neuroplasticity or the connection between neurons.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

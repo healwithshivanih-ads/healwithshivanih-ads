@@ -47,14 +47,17 @@ evidence_tier: strong
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Excretion and elimination section
-  quote: Excretion can happen through the gut, through the stool, through the urine, through sweat, through the skin
+  quote: Excretion can happen through the gut, through the stool, through the urine,
+    through sweat, through the skin
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
-  location: Excretory Derivatives panel — Bile / Serum / Kidneys / Feces / Stool / Urine routes
-  quote: 'Excretory Derivatives (polar / water soluble): Bile → Feces/Stool; Serum → Kidneys → Urine'
+  location: Excretory Derivatives panel — Bile / Serum / Kidneys / Feces / Stool /
+    Urine routes
+  quote: 'Excretory Derivatives (polar / water soluble): Bile → Feces/Stool; Serum
+    → Kidneys → Urine'
 - id: vitaone-liver-detox-cheatsheet
   location: Functional Detox Phases
   quote: 'Phase III – Elimination: Eliminates conjugated toxins via bile, stool, urine.'
-version: 2
+version: 4
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

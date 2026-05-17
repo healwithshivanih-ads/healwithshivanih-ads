@@ -1,0 +1,55 @@
+slug: lifelong-exercise-preserves-brain-structure
+statement: 'Individuals who maintain regular movement across the lifespan show
+
+  preserved brain structure, cognition, and lower rates of neurodegenerative
+
+  disease compared to those who become inactive. Brain shrinkage seen in
+
+  sedentary periods can be partly reversed by resuming exercise — meaning
+
+  it is never too late to start.
+
+  '
+evidence_tier: strong
+rationale: 'Longitudinal neuroimaging studies link sustained physical activity to
+
+  larger hippocampal volume and preserved white matter integrity into older
+
+  age. Exercise resumption studies in previously sedentary older adults
+
+  show measurable improvements in brain structure and cognition,
+
+  supporting reversibility.
+
+  '
+coaching_translation: 'Your brain rewards consistency over intensity. People who keep
+  moving
+
+  throughout life — even gently — have larger, sharper brains in older age.
+
+  And if you stopped moving years ago, your brain can still bounce back
+
+  when you start again. There is no "too late" with movement.
+
+  '
+caveats:
+- Effect depends on sustained practice, not isolated bursts.
+- Genetics modulate but do not override the protective effect.
+out_of_scope_notes: ''
+linked_to_topics:
+- exercise-mitochondrial-biogenesis
+- cognitive-decline
+linked_to_mechanisms:
+- bdnf-upregulation
+- exercise-induced-neurogenesis
+linked_to_supplements: []
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 3: Brain structure across lifetime'
+  quote: People who exercised their whole life and never stopped had high brain structure
+    throughout their lifetime; those who started again later improved neuroplasticity
+    and neurogenesis.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

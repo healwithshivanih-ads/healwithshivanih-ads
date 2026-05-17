@@ -1,0 +1,50 @@
+slug: single-exercise-bout-raises-bdnf-and-neurotransmitters
+statement: 'A single acute bout of exercise raises BDNF, IGF-1, GABA, serotonin,
+
+  acetylcholine, endocannabinoids, and endogenous opioids — producing
+
+  immediate improvements in mood, pain perception, and relaxation.
+
+  '
+evidence_tier: strong
+rationale: 'Acute exercise neurochemistry is well documented in human and animal
+
+  studies. The mood and analgesic effects of single exercise bouts are
+
+  reproducible and form part of the rationale for exercise as
+
+  first-line treatment for mild-to-moderate depression.
+
+  '
+coaching_translation: 'You do not need weeks of exercise to feel better — your brain
+  chemistry
+
+  shifts after even one walk, dance session, or short workout. BDNF (which
+
+  builds brain connections), feel-good neurotransmitters, and your body''s
+
+  own pain-relief system all turn on. This is why "just start" works:
+
+  the first session itself is the reward.
+
+  '
+caveats:
+- Effects are most pronounced when the activity is enjoyed rather than dreaded.
+- Magnitude varies by intensity, but even gentle movement produces measurable change.
+out_of_scope_notes: ''
+linked_to_topics:
+- depression
+- exercise-mitochondrial-biogenesis
+linked_to_mechanisms:
+- bdnf-upregulation
+- exercise-induced-neurogenesis
+linked_to_supplements: []
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 3: Changes with one bout of acute exercise'
+  quote: One bout of exercise increased BDNF, IGF-1, GABA, serotonin, acetylcholine,
+    and the endocannabinoid system.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

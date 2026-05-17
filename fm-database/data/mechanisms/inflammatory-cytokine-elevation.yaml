@@ -37,7 +37,7 @@ sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Cytokine and inflammation section
   quote: The less sleep you get, the more inflammatory cytokines you have
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

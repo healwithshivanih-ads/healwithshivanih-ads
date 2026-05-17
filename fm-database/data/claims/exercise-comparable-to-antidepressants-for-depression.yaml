@@ -1,0 +1,63 @@
+slug: exercise-comparable-to-antidepressants-for-depression
+statement: 'Regular enjoyable exercise produces clinically meaningful reductions in
+
+  depression, with effect sizes comparable to standard pharmacological
+
+  treatment in mild-to-moderate cases. A protocol of 45 minutes twice
+
+  weekly with music for 10 weeks produced over 30% decline in depression
+
+  scores in one cited study.
+
+  '
+evidence_tier: strong
+rationale: 'Multiple meta-analyses (Cochrane and others) support exercise as an
+
+  effective intervention for depression, particularly when sustained and
+
+  intrinsically motivated. Mechanisms include BDNF, monoamine modulation,
+
+  endocannabinoid signaling, anti-inflammatory effects, and HPA-axis
+
+  regulation.
+
+  '
+coaching_translation: 'Movement is one of the most effective things you can do for
+  low mood —
+
+  on par with what medications offer, but free and with side benefits
+
+  rather than side effects. The catch is that it works when you actually
+
+  do it consistently, which means it has to be something you enjoy. Forty-
+
+  five minutes twice a week, with music you love, is enough.
+
+  '
+caveats:
+- This does not replace clinical care for moderate-to-severe depression — coach in
+  coordination with a clinician.
+- The "enjoyment" variable is critical; punishing exercise routines do not produce
+  the same effect and may worsen mood.
+out_of_scope_notes: 'Coach does not treat clinical depression. Coach supports movement
+  habits
+
+  alongside the client''s clinical care.
+
+  '
+linked_to_topics:
+- depression
+- exercise-mitochondrial-biogenesis
+linked_to_mechanisms:
+- bdnf-upregulation
+- exercise-induced-neurogenesis
+linked_to_supplements: []
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 4: Exercise and depression'
+  quote: Exercise is as effective as any known treatment for depression if people
+    do it on a regular basis and they enjoy what they are doing.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

@@ -29,6 +29,7 @@ summary: 'Light in the blue wavelength range (~460-490 nm) emitted by phones,
 upstream_drivers:
 - evening-screen-exposure
 - late-light-melatonin-suppression
+- artificial-light-at-night
 downstream_effects:
 - delayed-sleep-onset
 - reduced-melatonin-output
@@ -43,8 +44,9 @@ evidence_tier: strong
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Pineal gland and blue light section
-  quote: the light that the pineal gland gets exposed to through the eye is crucial in keeping that melatonin production
-version: 1
+  quote: the light that the pineal gland gets exposed to through the eye is crucial
+    in keeping that melatonin production
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

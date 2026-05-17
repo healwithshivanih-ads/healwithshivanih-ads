@@ -1,0 +1,44 @@
+slug: exercise-induced-neurogenesis
+display_name: Exercise-Induced Neurogenesis
+aliases:
+- exercise neurogenesis
+- new neuron formation from exercise
+- VEGF-mediated neurogenesis
+category: neurological
+summary: 'Exercise stimulates the development of new neurons (neurogenesis),
+
+  particularly in the hippocampus, partly through vascular endothelial
+
+  growth factor (VEGF) which supports cerebral vascular and neuronal growth.
+
+  Sustained physical activity throughout life is associated with preserved
+
+  brain structure and cognition; sedentary periods are associated with
+
+  brain shrinkage that can be partly reversed by resuming exercise.
+
+  '
+upstream_drivers:
+- aerobic-training
+- exercise-stimulus
+downstream_effects:
+- improved-cognition
+- improved-memory
+- reduced-neurodegeneration-risk
+related_mechanisms:
+- bdnf-upregulation
+- mitochondrial-biogenesis
+linked_to_topics:
+- exercise-mitochondrial-biogenesis
+- cognitive-decline
+- dementia
+evidence_tier: strong
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 2: Exercise and the brain'
+  quote: Vascular endothelial growth factor increases neurogenesis, the development
+    of new healthy neurons.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

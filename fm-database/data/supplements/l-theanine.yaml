@@ -52,8 +52,9 @@ notes_for_coach: 'Amino acid found naturally in green tea; promotes GABA-pathway
   Generally well-tolerated.
 
   '
-notes_for_client: L-theanine is an amino acid found in green tea that promotes a calm, focused state of mind without making
-  you drowsy. It's gentle and can be used during the day or before bed.
+notes_for_client: L-theanine is an amino acid found in green tea that promotes a calm,
+  focused state of mind without making you drowsy. It's gentle and can be used during
+  the day or before bed.
 evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - parasympathetic-restoration-failure
@@ -63,20 +64,23 @@ sources:
   quote: L-theanine (100-200mg)
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: L-Theanine - Calm focus, anxiety reduction - 100–400 mg/day - With caffeine or before bed
+  quote: L-Theanine - Calm focus, anxiety reduction - 100–400 mg/day - With caffeine
+    or before bed
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — GABA row (p.6)
   quote: '↓ Anxiety, insomnia, restlessness. Solution: GABA support, Mg, L-theanine.'
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'L-Theanine / Glycine: Increase alpha brain waves, relaxation. Mental tension, sleep support.'
+  quote: 'L-Theanine / Glycine: Increase alpha brain waves, relaxation. Mental tension,
+    sleep support.'
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'L-Theanine / Glycine — Increase alpha brain waves, relaxation. Clinical use: Mental tension, sleep support.'
+  quote: 'L-Theanine / Glycine — Increase alpha brain waves, relaxation. Clinical
+    use: Mental tension, sleep support.'
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: GABA and natural sleep aids section
   quote: the GABA you mentioned. 5-hydroxy-triptophan to help with the serotonin system
-version: 6
+version: 8
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani
@@ -87,6 +91,6 @@ contraindications:
   medications: []
   life_stages: []
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications: []

@@ -36,9 +36,9 @@ contraindications:
   medications: []
   life_stages: []
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications: []
 evidence_tier: strong
 linked_to_topics:
 - detoxification
@@ -49,7 +49,7 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Antioxidant Protective Nutrients and Plant Derivatives panel
   quote: Silymarin
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

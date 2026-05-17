@@ -49,7 +49,7 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Phase I (Cytochrome P450 Enzymes) panel — Reactions and Nutrients Used
   quote: 'Reactions: Oxidation, Reduction, Hydrolysis, Hydration, Dehalogenation'
-version: 2
+version: 4
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

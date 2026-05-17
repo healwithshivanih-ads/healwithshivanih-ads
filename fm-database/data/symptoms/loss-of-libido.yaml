@@ -1,0 +1,35 @@
+slug: loss-of-libido
+display_name: Loss of Libido
+aliases:
+- low sex drive
+- reduced sexual desire
+- decreased libido
+category: hormonal
+severity: common
+description: 'Reduced sexual desire or interest, persisting for weeks or longer.
+
+  Commonly reflects underlying hormonal, adrenal, thyroid, relational, or
+
+  medication-related drivers. In the context of training, can be an early
+
+  signal of metabolic overtraining and HPA-axis stress before more overt
+
+  signs appear.
+
+  '
+when_to_refer: Persistent loss of libido warrants clinical workup — sex hormones,
+  thyroid panel, cortisol pattern, medication review, and assessment for depression.
+linked_to_topics:
+- metabolic-overtraining
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 7: Signs of metabolic overtraining'
+  quote: Signs of metabolic overtraining include loss of libido and loss of muscle
+    strength.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

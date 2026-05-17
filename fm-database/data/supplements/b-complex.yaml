@@ -38,9 +38,9 @@ contraindications:
   medications: []
   life_stages: []
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications: []
 evidence_tier: strong
 linked_to_topics:
 - detoxification
@@ -52,7 +52,7 @@ sources:
   location: Phase I — Nutrients Used panel
   quote: Riboflavin (Vit B2), Niacin (Vit B3), Pyridoxine (Vit B6), Folic acid, Vitamin
     B12
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

@@ -1,0 +1,66 @@
+slug: sedentary-behavior
+display_name: Sedentary Behavior
+aliases:
+- inactivity
+- sitting disease
+- prolonged sitting
+summary: 'Sedentary behavior — prolonged sitting and physical inactivity — is
+
+  characterized by minimal energy expenditure for extended periods (typically
+
+  desk work, screen time). Described by the American Heart Association as a
+
+  comparable health risk to smoking, and identified by the WHO as the fourth
+
+  leading cause of death worldwide. Independent risk factor for type 2
+
+  diabetes, insulin resistance, hypertension, metabolic syndrome,
+
+  cardiovascular disease, certain cancers, fatty liver, and all-cause
+
+  mortality.
+
+  '
+common_symptoms:
+- fatigue
+- low-energy
+- stiffness
+red_flags: []
+related_topics:
+- insulin-resistance
+- metabolic-syndrome
+- cardiovascular-disease-risk
+- non-alcoholic-fatty-liver-disease
+key_mechanisms:
+- reduced-mitochondrial-biogenesis
+- impaired-glucose-uptake
+coaching_scope_notes: 'Coach focuses on breaking sitting time with small, frequent
+  movement
+
+  micro-doses (standing, walking breaks, squats, stretches every 30-60
+
+  minutes). Emphasis on movement-first framing — sedentary''s opposite is
+
+  movement, not formal exercise. Coach helps the client weave movement into
+
+  daily life rhythms rather than prescribing gym attendance.
+
+  '
+clinician_scope_notes: 'Clinician assesses cardiometabolic risk markers (fasting insulin,
+  A1c,
+
+  lipids, liver enzymes) in chronically sedentary clients and clears for
+
+  exercise progression when indicated.
+
+  '
+evidence_tier: strong
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Pages 1-2: Movement versus exercise'
+  quote: Sitting is the new smoking. It is a risk factor for Type 2 diabetes, insulin
+    resistance, and all cause mortality.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

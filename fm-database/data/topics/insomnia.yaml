@@ -44,6 +44,7 @@ common_symptoms:
 - non-restorative-sleep
 - daytime-fatigue
 - middle-of-night-awakening
+- early-morning-awakening
 red_flags:
 - persistent insomnia with low mood / suicidality (refer mental health)
 - witnessed apnea, loud snoring, gasping (refer for sleep study)
@@ -78,7 +79,8 @@ coaching_scope_notes: 'Coach maps the insomnia pattern (onset vs maintenance vs 
   specific supplementation.
 
   '
-clinician_scope_notes: 'Chronic insomnia, suspected sleep apnea, or insomnia accompanied by
+clinician_scope_notes: 'Chronic insomnia, suspected sleep apnea, or insomnia accompanied
+  by
 
   mood disorder, suicidal ideation, or treatment-resistant patterns
 
@@ -93,9 +95,10 @@ sources:
   quote: '↓ Insomnia, jet lag. Solution: Sleep hygiene, magnesium, melatonin support.'
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Sleep disorder patterns section
-  quote: Sleep disorders are often defined about what are the challenges, falling asleep, staying asleep, or the waking pattern
+  quote: Sleep disorders are often defined about what are the challenges, falling
+    asleep, staying asleep, or the waking pattern
 evidence_tier: strong
-version: 3
+version: 5
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

@@ -1,0 +1,36 @@
+slug: post-exercise-exhaustion
+display_name: Post-Exercise Exhaustion
+aliases:
+- exercise crash
+- inability to recover from workout
+- needing to nap after exercise
+category: constitutional
+severity: common
+description: 'Profound fatigue following exercise that prevents normal daily function
+
+  or precludes repeating the same workout the next day. Distinguished from
+
+  normal training fatigue by its disproportion to the workload and the
+
+  requirement to nap or rest extensively to recover. A primary signal that
+
+  the exercise dose has exceeded the individual''s current recovery capacity.
+
+  '
+when_to_refer: If post-exercise exhaustion is severe, persistent, or accompanied by
+  post-exertional malaise lasting more than 24 hours, refer to clinician to rule out
+  ME/CFS, long COVID, hypothyroidism, anemia, or HPA-axis dysfunction.
+linked_to_topics:
+- metabolic-overtraining
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- exercise-induced-oxidative-stress
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 6: Metabolic overtraining'
+  quote: After they exercise, they cannot move and they need to take a nap and they
+    cannot do the same thing the next day.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

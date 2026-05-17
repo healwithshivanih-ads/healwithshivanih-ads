@@ -1,0 +1,61 @@
+slug: exercise-mitochondrial-biogenesis
+display_name: Exercise and Mitochondrial Biogenesis
+aliases:
+- exercise-induced mitochondrial growth
+- movement for mitochondrial health
+summary: 'All forms of exercise — light, moderate, and high-intensity — stimulate
+
+  mitochondrial biogenesis (the generation of new mitochondria) across
+
+  multiple tissues including skeletal muscle, brain, liver, adipose, and
+
+  kidney. High-intensity interval training (HIIT) produces a greater
+
+  magnitude of muscle mitochondrial density than moderate continuous
+
+  exercise, but moderate movement consistently sustained over a lifetime
+
+  delivers comparable cumulative benefit with lower oxidative stress risk.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- mitochondrial-dysfunction
+- metabolic-overtraining
+- sedentary-behavior
+key_mechanisms:
+- mitochondrial-biogenesis
+- bdnf-upregulation
+coaching_scope_notes: 'Coach helps client identify a movement modality they genuinely
+  enjoy and
+
+  can sustain. Match intensity to current capacity — for inflamed,
+
+  depleted, or adrenally-stressed clients, start with low-intensity movement
+
+  and only introduce brief HIIT (1-2 minutes) once metabolic flexibility is
+
+  established. Coach watches for signs of metabolic overtraining and
+
+  encourages dose adjustment rather than abandonment.
+
+  '
+clinician_scope_notes: 'Clinician evaluates exercise tolerance, cardiovascular clearance,
+  and any
+
+  contraindications before recommending HIIT for clients with cardiac,
+
+  endocrine, or inflammatory conditions.
+
+  '
+evidence_tier: strong
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Pages 4-5: Mitochondria biogenesis with exercise'
+  quote: All exercise increases brain derived neurotrophic factor and increases mitochondrial
+    biogenesis across a wide range of tissues.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

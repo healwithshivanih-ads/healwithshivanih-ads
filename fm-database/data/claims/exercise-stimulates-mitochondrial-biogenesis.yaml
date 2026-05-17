@@ -1,0 +1,60 @@
+slug: exercise-stimulates-mitochondrial-biogenesis
+statement: 'Exercise — regardless of modality — stimulates mitochondrial biogenesis
+
+  across multiple tissues including muscle, brain, liver, kidney, and
+
+  adipose tissue, with high-intensity interval training producing greater
+
+  muscle mitochondrial density than moderate continuous exercise.
+
+  '
+evidence_tier: strong
+rationale: 'PGC-1-alpha-mediated mitochondrial biogenesis in response to exercise
+  is
+
+  well established across exercise physiology literature. The relative
+
+  superiority of HIIT for muscle mitochondrial density is documented in
+
+  multiple comparative studies, though both modalities produce meaningful
+
+  adaptation.
+
+  '
+coaching_translation: 'Every time you move your body, you are literally building new
+  energy
+
+  factories — mitochondria — inside your muscles, brain, and organs. The
+
+  type of movement matters less than doing it regularly. If you want a
+
+  bigger metabolic punch in less time, short bursts of higher-intensity
+
+  movement (20 seconds hard, 10 seconds rest, for a few minutes) build
+
+  mitochondria faster — but only once your body has the resilience to
+
+  handle it.
+
+  '
+caveats:
+- HIIT raises oxidative stress; inflamed or depleted clients should start with low-intensity
+  movement.
+- Mitochondrial benefits accrue with consistency over time, not from any single workout.
+out_of_scope_notes: ''
+linked_to_topics:
+- exercise-mitochondrial-biogenesis
+- sedentary-behavior
+linked_to_mechanisms:
+- mitochondrial-biogenesis
+- exercise-induced-oxidative-stress
+linked_to_supplements: []
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Pages 4-5: Mitochondria biogenesis and HIIT comparison'
+  quote: High intensity interval training has a greater impact on physical fitness,
+    insulin sensitivity, and muscle mitochondria content.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

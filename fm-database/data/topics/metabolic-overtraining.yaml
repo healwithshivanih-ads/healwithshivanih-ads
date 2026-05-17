@@ -1,0 +1,67 @@
+slug: metabolic-overtraining
+display_name: Metabolic Overtraining
+aliases:
+- overtraining syndrome
+- exercise overtraining
+- HIIT overtraining
+summary: 'Metabolic overtraining occurs when exercise intensity or volume exceeds
+
+  the body''s capacity to recover, producing excess oxidative stress and
+
+  inflammation rather than adaptive benefit. The therapeutic window of
+
+  exercise is individual — what is restorative for one person can be
+
+  depleting for another. Common in clients doing high-intensity training
+
+  while simultaneously inflamed, adrenally fatigued, or depleted.
+
+  '
+common_symptoms:
+- post-exercise-exhaustion
+- exercise-induced-amenorrhea
+- loss-of-libido
+- frequent-injuries
+- low-mood
+red_flags: []
+related_topics:
+- hpa-axis-dysregulation
+- chronic-inflammation
+- exercise-mitochondrial-biogenesis
+key_mechanisms:
+- exercise-induced-oxidative-stress
+- hpa-axis-dysregulation
+coaching_scope_notes: 'Coach screens for overtraining in clients reporting fatigue
+  after exercise,
+
+  inability to repeat the same workout the next day, irritability,
+
+  declining performance, or menstrual changes. The intervention is to dial
+
+  back intensity, increase recovery, and rebuild metabolic flexibility
+
+  through gentler movement before reintroducing intensity in small doses
+
+  (1-2 minutes HIIT progressively built up).
+
+  '
+clinician_scope_notes: 'Clinician evaluates for HPA-axis dysregulation, low ferritin,
+  thyroid
+
+  status, and other depletion patterns in suspected overtraining cases.
+
+  Manages amenorrhea, recurrent injury, and clinical depression in this
+
+  context.
+
+  '
+evidence_tier: plausible_emerging
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Pages 6-7: Predisposing mechanisms for overtraining'
+  quote: If they cannot do the same exercise the next day and they crash after they
+    exercise, they have metabolically overtrained.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: exercise-induced-amenorrhea
+display_name: Exercise-Induced Amenorrhea
+aliases:
+- hypothalamic amenorrhea from exercise
+- overtraining amenorrhea
+- lost period from training
+category: womens_health
+severity: concerning
+description: 'Absence or cessation of menstrual cycles in a woman engaged in
+
+  high-intensity or high-volume training, often combined with insufficient
+
+  energy intake. Reflects the body''s downregulation of reproductive
+
+  function under perceived metabolic threat. A clinical signal of
+
+  significant metabolic overtraining requiring dose reduction and recovery
+
+  support.
+
+  '
+when_to_refer: Refer to clinician for evaluation — exercise-induced amenorrhea warrants
+  assessment for HPA-axis dysregulation, thyroid function, bone density, and energy
+  availability. Persistent amenorrhea has long-term bone and cardiovascular implications.
+linked_to_topics:
+- metabolic-overtraining
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- exercise-induced-oxidative-stress
+- hpa-axis-dysregulation
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 7: Signs of metabolic overtraining'
+  quote: If they are overtraining, they can stop getting the menstrual cycle because
+    the body does not need to reproduce under that kind of stress.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

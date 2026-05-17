@@ -1,0 +1,46 @@
+slug: exercise-induced-oxidative-stress
+display_name: Exercise-Induced Oxidative Stress
+aliases:
+- exercise oxidative load
+- HIIT oxidative stress
+- training-induced ROS
+category: metabolic
+summary: 'All exercise generates reactive oxygen species (ROS), which at appropriate
+
+  doses drive adaptive responses including mitochondrial biogenesis. Above
+
+  the individual''s recovery capacity, ROS production exceeds antioxidant
+
+  buffering and produces net oxidative stress and inflammation rather than
+
+  adaptation. High-intensity interval training generates more oxidative
+
+  stress than moderate continuous exercise, raising overtraining risk in
+
+  inflamed, depleted, or stressed individuals.
+
+  '
+upstream_drivers:
+- high-intensity-interval-training
+- excessive-exercise-volume
+- breath-holding-during-exercise
+downstream_effects:
+- metabolic-overtraining
+- chronic-inflammation
+- post-exercise-exhaustion
+related_mechanisms:
+- mitochondrial-biogenesis
+- hpa-axis-dysregulation
+linked_to_topics:
+- metabolic-overtraining
+- chronic-inflammation
+evidence_tier: strong
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 6: Side by side comparison'
+  quote: Oxidative stress is higher and overtraining is higher with high intensity
+    interval training. You create more oxidative stress when you exercise this way.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

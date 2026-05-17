@@ -1,0 +1,61 @@
+slug: inflamed-clients-should-start-low-intensity
+statement: 'Clients with high cortisol, adrenal fatigue, chronic inflammation,
+
+  depression, weakened immunity, intestinal permeability, hormonal
+
+  imbalances, or metabolic syndrome should begin with low-intensity
+
+  movement and only progressively introduce high-intensity intervals (1-2
+
+  minutes initially) once metabolic flexibility is established — to avoid
+
+  layering additional oxidative stress onto an already inflamed system.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'The clinical reasoning rests on well-established overtraining physiology
+
+  combined with the recognition that exercise-induced ROS production
+
+  compounds existing oxidative load. The specific staging protocol is
+
+  expert consensus rather than RCT-derived.
+
+  '
+coaching_translation: 'Exercise has a sweet spot for every body, and that spot is
+  different
+
+  when you are inflamed, depleted, or burnt out. Starting with intense
+
+  workouts in that state pours fuel on the fire. The smarter sequence:
+
+  gentle movement first, build flexibility and resilience, then layer in
+
+  short bursts of intensity once your body has the capacity to recover
+
+  from them.
+
+  '
+caveats:
+- The line between "challenging" and "depleting" is individual — coach with the client
+  to find it.
+- If the same workout cannot be repeated the next day without crash, the dose was
+  too high.
+out_of_scope_notes: ''
+linked_to_topics:
+- metabolic-overtraining
+- hpa-axis-dysregulation
+- chronic-inflammation
+linked_to_mechanisms:
+- exercise-induced-oxidative-stress
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Pages 6-7: Predisposing mechanisms for overtraining'
+  quote: If people are inflamed and have a lot of oxidative stress, be cautious starting
+    with high intensity interval training; start with basic movement and build up.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

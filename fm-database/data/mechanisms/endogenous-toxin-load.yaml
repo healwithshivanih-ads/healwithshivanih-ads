@@ -28,6 +28,8 @@ upstream_drivers:
 - dysbiosis-gut-microbiome-imbalance
 - leaky-gut
 - metabolic-byproducts
+- dysbiosis
+- intestinal-hyperpermeability
 downstream_effects:
 - phase-1-biotransformation
 - phase-2-conjugation
@@ -43,7 +45,7 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Endotoxins panel
   quote: 'Endotoxins: End products of metabolism, Bacterial endotoxins'
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

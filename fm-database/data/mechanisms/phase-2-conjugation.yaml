@@ -77,27 +77,29 @@ evidence_tier: strong
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Phase 2 section
-  quote: we are bringing in another compound… connecting that compound onto the functionalized compound… makes the active
-    intermediate more inactive and more able to be excreted
+  quote: we are bringing in another compound… connecting that compound onto the functionalized
+    compound… makes the active intermediate more inactive and more able to be excreted
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Phase II (Conjugated Pathways) panel — Reactions and Nutrients Used
-  quote: 'Reactions: Sulfation, Glucuronidation, Glutathione conjugation, Acetylation, Amino acid conjugation, Methylation'
+  quote: 'Reactions: Sulfation, Glucuronidation, Glutathione conjugation, Acetylation,
+    Amino acid conjugation, Methylation'
 - id: vitaone-liver-detox-cheatsheet
   location: Functional Detox Phases
   quote: 'Phase II – Conjugation: Neutralizes reactive intermediates for excretion.'
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Phase 1 and Phase 2 Detoxification
-  quote: 'PHASE II (Conjugated Pathways) — Reactions: Sulfation, Glucuronidation, Glutathione conjugation, Acetylation, Amino
-    acid conjugation, Methylation; Nutrients Used: Glycine, Taurine, Glutamine, N-acetylcysteine, Cysteine, Methionine'
+  quote: 'PHASE II (Conjugated Pathways) — Reactions: Sulfation, Glucuronidation,
+    Glutathione conjugation, Acetylation, Amino acid conjugation, Methylation; Nutrients
+    Used: Glycine, Taurine, Glutamine, N-acetylcysteine, Cysteine, Methionine'
 - id: vitaone-liver-detox-toolkit
   location: Features of the Detox Food Plan
-  quote: Imbalances between phase I & phase II detoxification can cause accumulation or overproduction of toxic intermediate
-    metabolites.
+  quote: Imbalances between phase I & phase II detoxification can cause accumulation
+    or overproduction of toxic intermediate metabolites.
 - id: coconote-fm-liver-detox-part1
   location: Phase 2 Detoxification Explanation
-  quote: Phase 2 means once we create this active compound, we have to bind to something and we have to make the water-soluble
-    and we have to neutralize that activity.
-version: 2
+  quote: Phase 2 means once we create this active compound, we have to bind to something
+    and we have to make the water-soluble and we have to neutralize that activity.
+version: 4
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

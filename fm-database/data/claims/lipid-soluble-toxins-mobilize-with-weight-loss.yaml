@@ -60,7 +60,7 @@ sources:
   location: Toxin storage annotation (left side of diagram)
   quote: Lipid-soluble (nonpolar) toxins are stored in adipose (fat) tissue and contribute
     to increased / mobilized toxin load with weight loss
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani

@@ -1,0 +1,44 @@
+slug: mitochondrial-biogenesis
+display_name: Mitochondrial Biogenesis
+aliases:
+- mitochondrial growth
+- new mitochondria formation
+- PGC-1-alpha activation
+category: metabolic
+summary: 'The process by which cells generate new mitochondria, expanding cellular
+
+  energy capacity. Triggered by metabolic demand signals including exercise,
+
+  cold exposure, caloric restriction, and certain nutrients. Mediated
+
+  largely through PGC-1-alpha signaling. Occurs in muscle, brain, liver,
+
+  kidney, and adipose tissue. Reduced biogenesis underlies fatigue,
+
+  cognitive decline, and metabolic inflexibility.
+
+  '
+upstream_drivers:
+- exercise-stimulus
+- aerobic-training
+- high-intensity-interval-training
+downstream_effects:
+- improved-energy-production
+- enhanced-insulin-sensitivity
+- improved-cognitive-function
+related_mechanisms:
+- bdnf-upregulation
+- exercise-induced-neurogenesis
+linked_to_topics:
+- exercise-mitochondrial-biogenesis
+- mitochondrial-dysfunction
+evidence_tier: strong
+sources:
+- id: fmca-exercise-mitochondrial-health-class
+  location: 'Page 4: Mitochondria biogenesis with exercise'
+  quote: All exercise increases mitochondrial biogenesis in a wide range of tissues,
+    including adipose tissue, liver, brain, and kidney.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

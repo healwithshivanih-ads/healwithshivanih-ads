@@ -43,7 +43,7 @@ sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Cortisol and adrenal section
   quote: Cortisol peaks during the day, then comes down slowly at night
-version: 1
+version: 3
 status: active
 updated_at: '2026-05-16'
 updated_by: shivani
