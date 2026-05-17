@@ -61,6 +61,9 @@ export interface SessionSummary {
   driver_count: number;
   supplement_count: number;
   synthesis_notes?: string;
+  /** Coach observations / notes — primary body field for quick notes, and
+   *  the place the coach writes free-text during check-ins and intakes. */
+  coach_notes?: string;
   /** Parsed from the [session_type: ...] prefix in presenting_complaints */
   session_type: "discovery" | "intake" | "check_in" | "quick_note";
   /** Parsed from the [Requested labs: ...] marker in coach_notes */
@@ -150,6 +153,7 @@ export async function loadClientSessionsAction(clientId: string): Promise<Sessio
       driver_count: driversArr.length,
       supplement_count: suppsArr.length,
       synthesis_notes: notes ? String(notes).slice(0, 400) : undefined,
+      coach_notes,
       session_type: parseSessionType(s.presenting_complaints),
       requested_labs: parseRequestedLabs(coach_notes),
       five_pillars: rawFp && Object.values(rawFp).some((v) => v != null)

@@ -60,6 +60,19 @@ function stripTag(s?: string): string {
   return s.replace(/^\[(?:session_type|source):[^\]]+\]\s*/i, "").trim();
 }
 
+/** Strip every `[key: value]` tag prefix off the line + drop any
+ *  `[Requested labs: …]` block (rendered separately as chips). Keeps
+ *  the actual coach prose. */
+function cleanCoachNotes(s?: string): string {
+  if (!s) return "";
+  return s
+    // Drop "[Requested labs: …]" markers (rendered separately).
+    .replace(/\[Requested labs:[^\]]*\]/gi, "")
+    // Drop any leading `[k: v]` tags on the first line.
+    .replace(/^(\s*\[[^\]]+\]\s*)+/, "")
+    .trim();
+}
+
 export function SessionsBrowser({
   clientId,
   displayName,
@@ -451,6 +464,7 @@ function SessionInspector({
     !!session.generated_plan_slug &&
     knownPlanSlugs.includes(session.generated_plan_slug);
   const presenting = stripTag(session.presenting_complaints);
+  const coachNotes = cleanCoachNotes(session.coach_notes);
   const symptoms = session.selected_symptoms ?? [];
   const topics = session.selected_topics ?? [];
   const drivers = session.likely_drivers ?? [];
@@ -584,6 +598,24 @@ function SessionInspector({
           </div>
         )}
       </FmPanel>
+
+      {/* Coach notes — the actual body of a quick note, the journal
+          field on intake / check-in. Rendered as a normal card with
+          pre-wrap so newlines from save-session.py survive. */}
+      {coachNotes && (
+        <FmPanel title="📝 Coach notes">
+          <div
+            style={{
+              fontSize: 13,
+              lineHeight: 1.65,
+              whiteSpace: "pre-wrap",
+              color: "var(--fm-text-primary)",
+            }}
+          >
+            {coachNotes}
+          </div>
+        </FmPanel>
+      )}
 
       {/* AI synthesis */}
       {synthesis && (
