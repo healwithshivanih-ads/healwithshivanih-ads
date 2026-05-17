@@ -56,6 +56,10 @@ const PUBLIC_PATH_PREFIXES = [
   // The /api/handover/test route uses x-cron-secret for the same reason
   // (coach-only smoke test, no Basic Auth session available).
   "/api/handover/",
+  // Cal.com booking webhook — parallel subscriber alongside the
+  // existing whatsapp-server-shivani receiver. HMAC-verified at route
+  // level via CAL_COM_SIGNING_SECRET.
+  "/api/cal-com-webhook",
 ];
 
 function isPublicPath(path: string): boolean {

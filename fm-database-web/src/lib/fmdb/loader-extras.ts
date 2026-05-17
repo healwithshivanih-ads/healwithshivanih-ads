@@ -477,6 +477,7 @@ export interface ClientUnreadCounts {
     whatsapp?: string;
     intake?: string;
     alerts?: string;
+    bookings?: string;
   };
 }
 
@@ -512,6 +513,19 @@ export async function getClientUnreadCounts(
   // marked WhatsApp read pre-v0.63 don't see "unread" chips light up.
   const legacyWhatsappState = await readInboxState();
 
+  // Cal.com bookings (written by /api/cal-com-webhook). Empty if file
+  // doesn't exist — bookings bucket simply stays 0 in that case.
+  let calBookings: Record<string, Array<{ received_at?: string }>> = {};
+  try {
+    const raw = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const parsed = yaml.load(raw);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      calBookings = parsed as Record<string, Array<{ received_at?: string }>>;
+    }
+  } catch {
+    /* ENOENT → no bookings yet */
+  }
+
   const out = new Map<string, ClientUnreadCounts>();
 
   await Promise.all(
@@ -521,8 +535,10 @@ export async function getClientUnreadCounts(
       const slot = state[clientId] ?? {};
       const sessionsSeen = slot.sessions_seen_at ?? legacyWhatsappState[clientId];
       const planSeen = slot.plan_seen_at;
+      const overviewSeen = slot.overview_seen_at;
       const sessionsSeenMs = sessionsSeen ? Date.parse(sessionsSeen) : 0;
       const planSeenMs = planSeen ? Date.parse(planSeen) : 0;
+      const overviewSeenMs = overviewSeen ? Date.parse(overviewSeen) : 0;
 
       const counts: ClientUnreadCounts = {
         whatsapp: 0,
@@ -597,6 +613,22 @@ export async function getClientUnreadCounts(
           counts.alerts = 1;
           latest.alerts = triggeredAt ?? new Date().toISOString();
         }
+      }
+
+      // ── Cal.com bookings (written by /api/cal-com-webhook) ──
+      const bookings = calBookings[clientId];
+      if (Array.isArray(bookings)) {
+        let mostRecent: string | undefined;
+        for (const b of bookings) {
+          const r = b?.received_at;
+          if (!r) continue;
+          const ms = Date.parse(r);
+          if (ms > overviewSeenMs) {
+            counts.bookings++;
+            if (!mostRecent || r > mostRecent) mostRecent = r;
+          }
+        }
+        if (mostRecent) latest.bookings = mostRecent;
       }
 
       counts.total = counts.whatsapp + counts.intake + counts.alerts + counts.bookings;
