@@ -157,6 +157,24 @@ const TEMPLATES = [
       'Hi {{1}}, ready to book your next session? You can grab a time that works for you here:\n\n{{2}}\n\nLooking forward to it.\n\n— Shivani Hari\nYour Functional Health Coach',
     example: [['Priya', 'https://cal.com/shivani-hariharan-0xyy3l/discovery-consultation']],
   },
+  // ── Plan-publish follow-up templates (fired by fm-coach after a plan
+  //    is published — see fm-coach commit ab71ac8 plan-publish-followups.ts) ──
+  {
+    name: 'fm_plan_letter_link_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hey {{1}}, I've just sent you the full plan over email — but here's the same thing as a phone-friendly link so you can flip it open between meals:\n\n{{2}}\n\nTake your time with it. Questions welcome, no rush. — Shivani",
+    example: [['Priya', 'https://intake.theochretree.com/letter/abc123']],
+  },
+  {
+    name: 'fm_supplement_order_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hey {{1}}, this is your supplement starter pack for the protocol — tap the link below for the full list with order options for each:\n\n{{2}}\n\nBrand and dosage matter a lot — if you're unsure about any of them, please reach out before ordering. They take 2-3 days to reach you, so earlier the better. — Shivani",
+    example: [['Priya', 'https://intake.theochretree.com/supplements/priya-plan-1-2026-05-17']],
+  },
   {
     // Sent by POST /api/cron/intake-reminders when a client has an open intake
     // token they haven't submitted yet. Capped at 2 reminders per token, ≥5 d
