@@ -1,0 +1,71 @@
+slug: cardiometabolic-risk
+display_name: Cardiometabolic Risk
+aliases:
+- cardiometabolic disease risk
+- metabolic cardiovascular risk
+- CMR
+summary: 'Cardiometabolic risk refers to the combined likelihood of developing
+
+  cardiovascular disease and type 2 diabetes, driven by interacting
+
+  abnormalities in body composition, glucose and insulin handling, blood
+
+  pressure, and lipid metabolism. Tracked through markers including
+
+  waist circumference, fasting glucose and insulin, HbA1c, blood pressure,
+
+  ApoB, triglyceride-to-HDL ratio, and visceral adiposity. Movement
+
+  interventions — NEAT, walking, yoga, resistance training, and HIIT —
+
+  each act on different combinations of these markers, allowing a
+
+  modality-matched approach to risk reduction.
+
+  '
+common_symptoms:
+- fatigue
+- low-energy
+red_flags: []
+related_topics:
+- insulin-resistance
+- metabolic-syndrome
+- cardiovascular-disease-risk
+- sedentary-behavior
+- neat
+key_mechanisms:
+- skeletal-muscle-glucose-uptake
+- exercise-induced-anti-inflammatory-signaling
+- mitochondrial-biogenesis
+coaching_scope_notes: 'Coach supports lifestyle interventions across all four pillars
+
+  (movement, nutrition, sleep, stress) while clinical risk markers are
+
+  monitored by the provider. For movement specifically, coach matches
+
+  modality to the client''s dominant risk pattern when known — e.g.
+
+  prioritising resistance training for clients with insulin resistance,
+
+  HIIT for clients short on time with metabolic risk, yoga for clients
+
+  with blood pressure and cholesterol concerns plus a stress component.
+
+  '
+clinician_scope_notes: 'Clinician orders and interprets cardiometabolic labs, manages
+
+  pharmacologic risk reduction, and clears clients for vigorous-intensity
+
+  exercise where indicated.
+
+  '
+evidence_tier: strong
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Pages 7-8: Modality-specific effects on cardiometabolic parameters'
+  quote: HIIT training gives you researched benefits across body composition, glucose,
+    insulin, blood pressure, and blood lipids.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

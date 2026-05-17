@@ -1,0 +1,59 @@
+slug: resistance-training-best-for-insulin-glucose
+statement: 'Resistance (strength) training is the single most effective exercise
+
+  modality for improving blood sugar and insulin handling, because the
+
+  resulting muscle mass increases ongoing glucose disposal capacity.
+
+  Cardio alone — even at 150 minutes per week — does not substitute
+
+  for resistance training; both are needed.
+
+  '
+evidence_tier: strong
+rationale: 'Resistance training improves insulin sensitivity, increases lean mass,
+
+  and improves HbA1c in clients with prediabetes and type 2 diabetes
+
+  in multiple randomized trials. The mechanism — increased muscle as a
+
+  glucose sink, plus contraction-mediated GLUT4 activity — is
+
+  well-characterised.
+
+  '
+coaching_translation: 'If blood sugar or insulin resistance is part of the picture,
+  weights
+
+  (or resistance bands, or bodyweight strength work) are non-negotiable.
+
+  Cardio helps, but muscle is what gives your body somewhere to put
+
+  glucose. Two sessions a week is a meaningful start — it does not
+
+  require a gym membership or heavy equipment to begin.
+
+  '
+caveats:
+- Form and progression matter more than load for beginners; injury risk rises with
+  poor form.
+- Clients with cardiovascular disease, hypertension, or recent surgery should have
+  clearance before vigorous resistance work.
+out_of_scope_notes: ''
+linked_to_topics:
+- insulin-resistance
+- cardiometabolic-risk
+- exercise-prescription
+linked_to_mechanisms:
+- skeletal-muscle-glucose-uptake
+- mitochondrial-biogenesis
+linked_to_supplements: []
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 8: Resistance training'
+  quote: Resistance training is the best to help people with blood-insulin and blood
+    sugar risks.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

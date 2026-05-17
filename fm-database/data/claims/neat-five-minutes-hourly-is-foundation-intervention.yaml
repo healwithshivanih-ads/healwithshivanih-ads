@@ -1,0 +1,62 @@
+slug: neat-five-minutes-hourly-is-foundation-intervention
+statement: 'For sedentary clients, the foundation movement intervention is
+
+  increasing NEAT (non-exercise activity thermogenesis) — specifically
+
+  five minutes of movement every waking hour — before introducing any
+
+  structured exercise prescription. Clients who reduce sedentary time
+
+  through hourly micro-movement age better and report less pain.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'NEAT research from Levine and colleagues shows meaningful metabolic
+
+  differences attributable to non-exercise activity. The specific
+
+  five-minutes-per-hour protocol is clinically pragmatic and aligned
+
+  with research suggesting that breaking sitting bouts produces
+
+  metabolic benefit independent of exercise volume. Strength of
+
+  evidence is good for breaking sitting; the exact dose is best
+
+  considered emerging consensus.
+
+  '
+coaching_translation: 'Before we talk about workouts, let''s just break up your sitting.
+
+  Five minutes of any movement — standing, stretching, walking around,
+
+  a few squats — every waking hour. That is the foundation. People who
+
+  do this age better and have less pain. We add structured exercise on
+
+  top once this baseline is in place.
+
+  '
+caveats:
+- The five-minutes-hourly figure is a coaching heuristic, not a precise dose-response
+  finding.
+- Office-bound and remote-working clients especially benefit; calendar prompts or
+  wearable reminders help compliance.
+out_of_scope_notes: ''
+linked_to_topics:
+- neat
+- sedentary-behavior
+- exercise-prescription
+linked_to_mechanisms:
+- neat-thermogenesis
+- skeletal-muscle-glucose-uptake
+linked_to_supplements: []
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 4: First things first'
+  quote: Slowly but surely get them to move around five minutes every waking hour.
+    When people became less sedentary, they actually aged better and had less pain.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

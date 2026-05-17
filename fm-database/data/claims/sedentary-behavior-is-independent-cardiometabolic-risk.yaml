@@ -1,0 +1,62 @@
+slug: sedentary-behavior-is-independent-cardiometabolic-risk
+statement: 'Prolonged sedentary behavior is an independent risk factor for
+
+  cardiovascular disease and type 2 diabetes — approximately doubling
+
+  risk — operating separately from diet, sleep, and structured exercise
+
+  status. A person who exercises 30-60 minutes daily but sits 8+ hours
+
+  the rest of the day still carries elevated cardiometabolic risk from
+
+  the sitting component.
+
+  '
+evidence_tier: strong
+rationale: 'Multiple large cohort studies (including Canadian and US cohorts)
+
+  demonstrate that sitting time independently predicts cardiovascular
+
+  events, type 2 diabetes incidence, and all-cause mortality after
+
+  adjustment for moderate-to-vigorous physical activity. The WHO ranks
+
+  inactivity as the fourth leading cause of mortality globally.
+
+  '
+coaching_translation: 'Sitting is its own risk factor — it does not get cancelled
+  out by
+
+  going to the gym once a day. Think of it like brushing teeth: a
+
+  single thorough brush does not undo eating sugar all day. The
+
+  intervention is breaking sitting time, not just adding workouts.
+
+  Five minutes of movement every waking hour is the first lever to
+
+  pull, even for clients who already exercise.
+
+  '
+caveats:
+- Magnitude of risk varies by total sitting hours and presence of other risk factors.
+- The "exercise does not fully offset sitting" finding is robust in epidemiology but
+  biological mechanisms continue to be characterised.
+out_of_scope_notes: ''
+linked_to_topics:
+- sedentary-behavior
+- cardiometabolic-risk
+- insulin-resistance
+linked_to_mechanisms:
+- neat-thermogenesis
+- skeletal-muscle-glucose-uptake
+linked_to_supplements: []
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 3: Sedentary as independent risk'
+  quote: When you are sedentary, it increases your risk twofold for developing heart
+    disease and Type 2 diabetes.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

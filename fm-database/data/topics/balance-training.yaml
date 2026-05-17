@@ -1,0 +1,60 @@
+slug: balance-training
+display_name: Balance Training
+aliases:
+- balance exercise
+- proprioceptive training
+- fall prevention exercise
+summary: 'Practice that improves postural control and reduces fall risk. Key
+
+  considerations are neuro status, fall risk, and safe surroundings.
+
+  Beginner: assisted balance work (chair, wall, or person), practiced
+
+  daily, 5–10 minutes. Intermediate: progress towards standing
+
+  unsupported on one leg for 20 seconds, practiced daily, 10–20 minutes.
+
+  Advanced: balance combined with movement, with added balance-
+
+  challenging equipment such as a Bosu ball, practiced daily, 20–30
+
+  minutes.
+
+  '
+common_symptoms:
+- dizziness
+- unsteadiness
+red_flags:
+- recent-falls
+- syncope
+related_topics:
+- exercise-prescription-fm
+- fall-risk
+key_mechanisms: []
+coaching_scope_notes: 'Always practice in a safe environment — near a wall, chair,
+  or stable
+
+  surface for catching. Daily short practice beats infrequent long
+
+  sessions. Single-leg stance for 20 seconds is a useful intermediate
+
+  benchmark.
+
+  '
+clinician_scope_notes: 'Clients with recent falls, vestibular dysfunction, neurological
+
+  deficits, or syncope require clinical evaluation before unassisted
+
+  balance work.
+
+  '
+evidence_tier: strong
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Balance row
+  quote: Assisted (chair/wall or person). Practice daily, 5-10 minutes. Progress towards
+    standing unsupported on 1 leg for 20 seconds.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

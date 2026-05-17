@@ -1,0 +1,52 @@
+slug: adls-count-as-exercise
+statement: 'Activities of daily living (housework, cleaning, cooking, gardening,
+
+  carrying loads) constitute meaningful physical activity and can be
+
+  prescribed across beginner, intermediate, and advanced intensity tiers
+
+  in the same way as structured exercise.
+
+  '
+evidence_tier: strong
+rationale: 'Non-exercise activity thermogenesis (NEAT) and ADL-level movement
+
+  contribute substantially to total daily energy expenditure and
+
+  cardiovascular fitness, particularly in sedentary clients. Reframing
+
+  ADLs as exercise increases activity in clients who resist structured
+
+  workouts and removes the "no time to exercise" barrier.
+
+  '
+coaching_translation: 'Everyday activities count. Cooking, washing dishes, light cleaning
+  are
+
+  beginner-level. Vacuuming, mopping, washing windows are intermediate.
+
+  Shovelling, digging, carrying heavy loads are advanced. If you''re not
+
+  ready for the gym, just doing more of these around your home moves you
+
+  in the right direction.
+
+  '
+caveats:
+- Clients with cardiac risk factors should have CVD risk assessed before advanced
+  ADLs like shovelling or carrying heavy loads.
+out_of_scope_notes: ''
+linked_to_topics:
+- activities-of-daily-living
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Activities of Daily Living row (all intensity columns)
+  quote: Light housework. Cooking, washing dishes. Heavy cleaning. Shoveling. Carrying
+    heavy loads.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

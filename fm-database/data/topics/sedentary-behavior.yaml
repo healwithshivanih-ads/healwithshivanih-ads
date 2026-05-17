@@ -4,21 +4,34 @@ aliases:
 - inactivity
 - sitting disease
 - prolonged sitting
+- physical inactivity
 summary: 'Sedentary behavior — prolonged sitting and physical inactivity — is
 
-  characterized by minimal energy expenditure for extended periods (typically
+  characterized by minimal energy expenditure (low MET activity, around 1
 
-  desk work, screen time). Described by the American Heart Association as a
+  MET, equivalent to seated rest). The clinical definition used in FM
 
-  comparable health risk to smoking, and identified by the WHO as the fourth
+  coaching: not participating in at least 30 minutes of moderate-intensity
 
-  leading cause of death worldwide. Independent risk factor for type 2
+  activity, three days per week, for at least three months. Described by
 
-  diabetes, insulin resistance, hypertension, metabolic syndrome,
+  the American Heart Association as a comparable health risk to smoking,
 
-  cardiovascular disease, certain cancers, fatty liver, and all-cause
+  and ranked by the WHO as the fourth leading cause of death worldwide
 
-  mortality.
+  (behind blood pressure, smoking, and elevated blood sugar). Sedentary
+
+  behavior approximately doubles risk for cardiovascular disease and type
+
+  2 diabetes in adults; in children and adolescents it worsens blood
+
+  pressure and self-esteem. The post-pandemic shift to remote work
+
+  (~28% of US workers fully remote) has worsened daily sitting time to
+
+  6-8 hours at desks. Independent risk factor — present even in clients
+
+  with otherwise healthy nutrition and sleep.
 
   '
 common_symptoms:
@@ -31,9 +44,11 @@ related_topics:
 - metabolic-syndrome
 - cardiovascular-disease-risk
 - non-alcoholic-fatty-liver-disease
+- cardiometabolic-risk
 key_mechanisms:
 - reduced-mitochondrial-biogenesis
 - impaired-glucose-uptake
+- neat-thermogenesis
 coaching_scope_notes: 'Coach focuses on breaking sitting time with small, frequent
   movement
 
@@ -60,7 +75,11 @@ sources:
   location: 'Pages 1-2: Movement versus exercise'
   quote: Sitting is the new smoking. It is a risk factor for Type 2 diabetes, insulin
     resistance, and all cause mortality.
-version: 1
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Pages 3-4: Identifying sedentary clients'
+  quote: When you are sedentary, it increases your risk twofold for developing heart
+    disease and Type 2 diabetes.
+version: 2
 status: active
 updated_at: '2026-05-17'
 updated_by: shivani

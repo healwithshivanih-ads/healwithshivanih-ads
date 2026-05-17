@@ -1,0 +1,57 @@
+slug: sing-test-for-exercise-intensity
+statement: 'Exercise intensity can be reliably assessed using the "sing test":
+
+  if the client can sing while moving, intensity is low; if they can
+
+  comfortably talk but not sing, intensity is moderate; if they can
+
+  only manage a few words at a time, intensity is vigorous. The same
+
+  activity (e.g. walking) can register as low, moderate, or vigorous
+
+  depending on the client''s baseline fitness.
+
+  '
+evidence_tier: strong
+rationale: 'The talk test (and sing test extension) is a validated field tool
+
+  for estimating exercise intensity and correlates well with percent
+
+  of maximum heart rate and ventilatory thresholds. It is the
+
+  preferred ACSM-endorsed field method for clients without heart
+
+  rate monitors.
+
+  '
+coaching_translation: 'You do not need a heart-rate monitor to know your intensity.
+  Try
+
+  to sing while you move — if you can belt out a tune comfortably,
+
+  you are in low intensity. If you can talk in full sentences but
+
+  not sing, you are at moderate. If you can only manage a few words
+
+  before catching your breath, you are at vigorous. Same activity,
+
+  different intensities depending on the day and your fitness.
+
+  '
+caveats:
+- Less precise than a heart-rate monitor or RPE for trained clients.
+- Some clients with respiratory or vocal conditions need an alternative method.
+out_of_scope_notes: ''
+linked_to_topics:
+- exercise-prescription
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 6: Sing test'
+  quote: If you could sing opera while you are walking, that is low intensity; if
+    you can talk but not sing, moderate; if you cannot really answer questions, vigorous.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

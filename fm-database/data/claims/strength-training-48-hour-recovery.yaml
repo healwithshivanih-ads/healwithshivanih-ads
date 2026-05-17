@@ -1,0 +1,46 @@
+slug: strength-training-48-hour-recovery
+statement: 'Muscle groups worked during strength training require approximately 48
+
+  hours of recovery before being trained again at similar intensity.
+
+  '
+evidence_tier: strong
+rationale: 'Resistance exercise creates microtrauma to muscle fibres; recovery,
+
+  repair, and adaptive hypertrophy occur over roughly 24–72 hours. Daily
+
+  strength work on the same muscle group impairs adaptation and raises
+
+  injury risk. Splitting training across muscle groups, or alternating
+
+  hard/easy days, respects this window.
+
+  '
+coaching_translation: 'When you train a muscle, give it about 48 hours before you
+  train it
+
+  hard again. That doesn''t mean rest entirely — you can train different
+
+  muscle groups on consecutive days, or do lighter activity. The 48-hour
+
+  window is when your muscles actually get stronger.
+
+  '
+caveats:
+- Light isometric or rehabilitative work may be performed daily under guidance.
+- Recovery time may extend in older adults, deconditioned clients, or when sleep is
+  poor.
+out_of_scope_notes: ''
+linked_to_topics:
+- strength-training
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Strength/Weight Bearing row, Considerations column
+  quote: Proper form. Muscle recovery (48 hours).
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

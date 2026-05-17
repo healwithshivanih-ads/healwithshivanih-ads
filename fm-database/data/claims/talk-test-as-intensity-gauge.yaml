@@ -1,0 +1,51 @@
+slug: talk-test-as-intensity-gauge
+statement: 'The "talk test" — whether a client can comfortably hold a conversation
+
+  during exercise — is a practical field gauge of cardiovascular
+
+  intensity: comfortable conversation indicates moderate intensity,
+
+  inability to converse indicates vigorous intensity.
+
+  '
+evidence_tier: strong
+rationale: 'The talk test correlates well with ventilatory threshold and percentage
+
+  of HRmax, and is validated as a simple, equipment-free intensity
+
+  marker in cardiac rehabilitation and general exercise prescription
+
+  literature. It removes the need for heart-rate monitoring in
+
+  field-based coaching contexts.
+
+  '
+coaching_translation: 'You don''t need a heart rate monitor to gauge intensity. If
+  you can
+
+  still chat in full sentences, you''re at moderate intensity. If you
+
+  can only get a few words out between breaths, you''re at vigorous
+
+  intensity. Most weekly cardio should sit in the moderate "can still
+
+  chat" zone.
+
+  '
+caveats:
+- Less reliable in clients on heart-rate-affecting medications (beta-blockers) where
+  HR is decoupled from effort — but the talk test still works since it reflects ventilation.
+out_of_scope_notes: ''
+linked_to_topics:
+- cardiovascular-exercise
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Cardiovascular row, Intermediate + Advanced columns
+  quote: Able to carry on a conversation. Not able to carry on a conversation.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

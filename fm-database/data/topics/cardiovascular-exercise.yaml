@@ -1,0 +1,61 @@
+slug: cardiovascular-exercise
+display_name: Cardiovascular Exercise
+aliases:
+- aerobic exercise
+- cardio
+- endurance training
+summary: 'Sustained activity that elevates heart rate and improves
+
+  cardiorespiratory fitness. Key considerations are balance, pain, and
+
+  CVD risk assessment before progression. Beginner: supported walking on
+
+  a treadmill or riding a stationary bike, 2–3× per week, 10–20 minutes.
+
+  Intermediate: brisk walking or biking under 10 mph, at an intensity
+
+  that still allows conversation, totalling 150 minutes per week.
+
+  Advanced: jogging/running or biking over 10 mph, at an intensity where
+
+  conversation is no longer possible, 60 minutes per day.
+
+  '
+common_symptoms: []
+red_flags:
+- chest-pain-on-exertion
+- exertional-dyspnea
+- exertional-syncope
+related_topics:
+- exercise-prescription-fm
+- cardiovascular-risk-assessment
+key_mechanisms: []
+coaching_scope_notes: 'The "talk test" is the simplest field intensity gauge — moderate
+  = can
+
+  still hold a conversation, vigorous = cannot. The 150-min/week moderate
+
+  target is the standard public-health threshold for cardiovascular
+
+  benefit. Progress duration before intensity for deconditioned clients.
+
+  '
+clinician_scope_notes: 'CVD risk assessment is required before progression to vigorous
+
+  intensity, particularly for clients with hypertension, dyslipidemia,
+
+  diabetes, family history of premature cardiac events, or age >40
+
+  starting a new program.
+
+  '
+evidence_tier: strong
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Cardiovascular row
+  quote: Brisk walking. Biking <10 mph. Able to carry on a conversation. 150 minutes
+    per week.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

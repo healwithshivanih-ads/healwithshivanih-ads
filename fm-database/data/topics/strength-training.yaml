@@ -1,0 +1,58 @@
+slug: strength-training
+display_name: Strength & Weight-Bearing Training
+aliases:
+- resistance training
+- weight training
+- weight-bearing exercise
+- muscle strengthening
+summary: 'Resistance-based exercise that loads muscle and bone to build strength,
+
+  preserve lean mass, and support bone density. Beginner level uses
+
+  chair-based exercises with light weights or resistance bands (isometric,
+
+  non-weight-bearing) 2× per week, 10–20 minutes. Intermediate progresses
+
+  to all major muscle groups, 8–12 reps per group, minimum 2× per week,
+
+  20–30 minutes. Advanced involves daily muscle focus, minimum 3× per
+
+  week, 30–60 minutes. Proper form and 48-hour muscle recovery between
+
+  sessions targeting the same group are core safety considerations.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- exercise-prescription-fm
+- sarcopenia
+- osteoporosis
+key_mechanisms: []
+coaching_scope_notes: 'Match starting tier to current ability — most sedentary clients
+  begin
+
+  at chair-based isometric work. Emphasise form before load. Respect
+
+  48-hour recovery between sessions hitting the same muscle group.
+
+  Progress by increasing reps, sets, or load gradually.
+
+  '
+clinician_scope_notes: 'Refer to PT or qualified trainer for clients with recent musculoskeletal
+
+  injury, post-surgical restrictions, or advanced osteoporosis where
+
+  fracture risk is elevated.
+
+  '
+evidence_tier: strong
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Strength/Weight Bearing row
+  quote: Proper form. Muscle recovery (48 hours). 2x per week, 10-20 minutes (isometric
+    not weight bearing).
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

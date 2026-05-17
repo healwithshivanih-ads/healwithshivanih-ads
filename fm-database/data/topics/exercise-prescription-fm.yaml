@@ -1,0 +1,73 @@
+slug: exercise-prescription-fm
+display_name: Exercise Prescription (Functional Medicine)
+aliases:
+- exercise prescription
+- movement prescription
+- physical activity prescription
+summary: 'A structured approach to prescribing exercise across six modalities —
+
+  strength/weight-bearing, flexibility, balance, cardiovascular, mind-body
+
+  yoga, and activities of daily living — stratified by three intensity
+
+  tiers (beginner/low, intermediate/moderate, advanced/vigorous). Each
+
+  modality has modality-specific safety considerations (e.g. joint laxity
+
+  for flexibility, fall risk for balance, CVD risk assessment for cardio)
+
+  and a dosing prescription covering frequency, duration, and intensity.
+
+  In functional medicine coaching, exercise is one of the foundational
+
+  lifestyle levers alongside nutrition, sleep, stress, and connection.
+
+  '
+common_symptoms: []
+red_flags:
+- chest-pain-on-exertion
+- exertional-dyspnea
+- syncope
+related_topics:
+- strength-training
+- flexibility-training
+- balance-training
+- cardiovascular-exercise
+- mind-body-yoga
+- activities-of-daily-living
+- cardiovascular-risk-assessment
+key_mechanisms: []
+coaching_scope_notes: 'Coach assesses current activity level, safety constraints (joint
+  laxity,
+
+  balance, pain, CVD risk), and goals, then matches client to an
+
+  intensity tier per modality. Progressions are individualised — a client
+
+  may be advanced in cardio but beginner in balance. Coach educates on
+
+  form, frequency, and recovery; reinforces consistency over intensity
+
+  for sustainable behaviour change.
+
+  '
+clinician_scope_notes: 'Clinician-led clearance is required when CVD risk factors,
+  recent
+
+  cardiac events, uncontrolled hypertension, advanced osteoporosis, acute
+
+  injury, or significant fall risk are present. Refer for PT supervision
+
+  when range-of-motion deficits or post-surgical restrictions exist.
+
+  '
+evidence_tier: strong
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Full matrix (all rows, all columns)
+  quote: Exercise type, considerations, beginner low intensity, intermediate moderate
+    intensity, advanced vigorous intensity.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

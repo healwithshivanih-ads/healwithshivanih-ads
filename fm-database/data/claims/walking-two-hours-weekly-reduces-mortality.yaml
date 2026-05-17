@@ -1,0 +1,60 @@
+slug: walking-two-hours-weekly-reduces-mortality
+statement: 'Walking at a self-selected pace for at least two hours per week is
+
+  associated with approximately 34% reduction in cardiovascular mortality
+
+  and 39% reduction in all-cause mortality. Three to four hours per week
+
+  shows the lowest mortality rate.
+
+  '
+evidence_tier: strong
+rationale: 'Multiple large prospective cohort studies on walking and mortality
+
+  demonstrate dose-response benefit at relatively modest doses, with
+
+  effect sizes comparable to first-line pharmacological cardiovascular
+
+  prevention. Self-selected pace makes the intervention accessible to
+
+  most populations.
+
+  '
+coaching_translation: 'Walking is one of the most accessible — and most powerful —
+  exercise
+
+  interventions you can choose. Two hours per week at whatever pace
+
+  feels right (about 17 minutes a day) reduces your risk of dying from
+
+  heart disease by about a third, and from any cause by nearly 40%.
+
+  Three to four hours a week is even better. No gym, no equipment,
+
+  no skill required.
+
+  '
+caveats:
+- Cited effect sizes are from observational studies; healthier people are also more
+  likely to walk, which partially confounds the size of effect.
+- Walking alone does not replace resistance training for muscle and bone health, particularly
+  with aging.
+out_of_scope_notes: ''
+linked_to_topics:
+- cardiometabolic-risk
+- sedentary-behavior
+- exercise-prescription
+linked_to_mechanisms:
+- skeletal-muscle-glucose-uptake
+- exercise-induced-anti-inflammatory-signaling
+- mitochondrial-biogenesis
+linked_to_supplements: []
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 7-8: Walking data'
+  quote: Walking at least two hours per week at a self-selected pace drops your risk
+    for dying of a cardiovascular event 34%, and 39% drop in all-cause mortality.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

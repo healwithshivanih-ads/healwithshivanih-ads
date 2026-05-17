@@ -1,0 +1,51 @@
+slug: match-intensity-tier-per-modality
+statement: 'Exercise intensity should be matched per-modality to the client''s
+
+  current capacity in that modality — a single client may be advanced in
+
+  cardiovascular exercise but beginner in balance or flexibility.
+
+  '
+evidence_tier: strong
+rationale: 'Capacity in one modality (e.g. cardiovascular endurance from running)
+
+  doesn''t transfer to other modalities (balance, flexibility, strength).
+
+  Prescribing a uniform intensity across all modalities either underloads
+
+  the client''s stronger areas or overloads their weaker, higher-injury-
+
+  risk areas. Per-modality stratification is the safer, more effective
+
+  default.
+
+  '
+coaching_translation: 'You don''t have to be a "beginner" or "advanced" overall. A
+  runner might
+
+  be advanced at cardio but a beginner at balance. We''ll meet you where
+
+  you are in each area separately and progress each one at its own pace.
+
+  '
+caveats: []
+out_of_scope_notes: ''
+linked_to_topics:
+- exercise-prescription-fm
+- strength-training
+- flexibility-training
+- balance-training
+- cardiovascular-exercise
+- mind-body-yoga
+- activities-of-daily-living
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Matrix structure (6 modalities × 3 tiers grid)
+  quote: Exercise type. Beginner low intensity. Intermediate moderate intensity. Advanced
+    vigorous intensity.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

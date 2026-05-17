@@ -4,32 +4,68 @@ aliases:
 - muscle glucose disposal
 - insulin-independent glucose uptake
 - GLUT4 translocation
+- exercise-mediated glucose disposal
+- contraction-induced glucose uptake
 category: metabolic
-summary: Skeletal muscle is the primary site of postprandial glucose uptake. Exercise enhances this via both insulin-dependent
-  (GLUT4 translocation) and insulin-independent (AMPK-mediated) pathways, improving overall glucose disposal.
+summary: 'Contracting skeletal muscle takes up glucose from the bloodstream
+
+  through both insulin-dependent and insulin-independent pathways
+
+  (notably contraction-mediated GLUT4 translocation). This is a primary
+
+  mechanism by which exercise lowers blood glucose and improves insulin
+
+  sensitivity. Resistance training and HIIT are particularly effective
+
+  at building the muscle mass and metabolic capacity that supports
+
+  ongoing glucose disposal. Loss of muscle mass (sarcopenia) directly
+
+  reduces glucose-handling capacity and contributes to insulin
+
+  resistance.
+
+  '
 upstream_drivers:
 - physical-exercise
 - antigravity-exercise
 - insulin-signaling
+- resistance-training
+- high-intensity-interval-training
+- aerobic-training
+- neat-thermogenesis
 downstream_effects:
 - improved-insulin-sensitivity
 - reduced-postprandial-glucose
+- lowered-blood-glucose
+- reduced-hba1c
 related_mechanisms:
 - insulin-resistance
 - hepatic-insulin-sensitivity
+- mitochondrial-biogenesis
+- neat-thermogenesis
 linked_to_topics:
 - blood-sugar-dysfunction
+- insulin-resistance
+- cardiometabolic-risk
+- exercise-mitochondrial-biogenesis
 evidence_tier: strong
 sources:
 - id: vitaone-blood-sugar-toolkit
   location: Antigravity Exercises
-  quote: Your skeletal muscle determines your health. It is the primary site for glucose uptake after a meal. Exercise enhances
-    skeletal muscle glucose uptake using both insulin-dependent & insulin-independent mechanisms, and regular exercise results
+  quote: Your skeletal muscle determines your health. It is the primary site for glucose
+    uptake after a meal. Exercise enhances skeletal muscle glucose uptake using both
+    insulin-dependent & insulin-independent mechanisms, and regular exercise results
     in sustained improvements in insulin sensitivity and glucose disposal.
 - id: vitaone-health-coaching-toolkit
   location: Antigravity Exercises
-  quote: Your skeletal muscle determines your health. It is the primary site for glucose uptake after a meal.
-version: 2
+  quote: Your skeletal muscle determines your health. It is the primary site for glucose
+    uptake after a meal.
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 2: Movement and the matrix'
+  quote: Movement makes our muscles use up blood sugar and it makes our liver work
+    better.
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-17'
 updated_by: shivani

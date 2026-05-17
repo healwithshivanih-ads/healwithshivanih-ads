@@ -1,0 +1,48 @@
+slug: balance-single-leg-stance-20-seconds
+statement: 'Standing unsupported on one leg for 20 seconds is a practical
+
+  intermediate benchmark for balance capacity and a reasonable goal for
+
+  fall-prevention training in community-dwelling adults.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Single-leg-stance time correlates with fall risk and overall
+
+  functional capacity; thresholds in the 10–30 second range are widely
+
+  used in clinical and fitness assessment. The 20-second mark sits in
+
+  the middle of that range as a coaching target that''s challenging but
+
+  reasonable for most ambulatory adults.
+
+  '
+coaching_translation: 'A good practical balance goal is being able to stand on one
+  foot for
+
+  20 seconds without holding on. Practice daily, near a wall or chair so
+
+  you have something to catch on to. Most people can build this in a
+
+  few weeks of short daily practice.
+
+  '
+caveats:
+- Clients with vestibular dysfunction, neurological deficits, or recent falls need
+  clinical evaluation before unsupported balance work.
+- Always practice in a safe environment with a stable surface nearby.
+out_of_scope_notes: ''
+linked_to_topics:
+- balance-training
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Balance row, Intermediate column
+  quote: Progress towards standing unsupported on 1 leg for 20 seconds. Practice daily.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

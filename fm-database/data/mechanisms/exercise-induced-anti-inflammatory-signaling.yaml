@@ -1,0 +1,51 @@
+slug: exercise-induced-anti-inflammatory-signaling
+display_name: Exercise-Induced Anti-Inflammatory Signaling
+aliases:
+- exercise myokine release
+- anti-inflammatory effect of movement
+- IL-6 anti-inflammatory action
+category: immune
+summary: 'Skeletal muscle during contraction releases myokines (including IL-6
+
+  in an anti-inflammatory context, IL-10, IL-15) that systemically
+
+  reduce inflammatory tone. Regular movement is widely regarded in
+
+  functional medicine as the single most potent anti-inflammatory
+
+  lifestyle intervention — comparable to or exceeding the impact of
+
+  diet. This signaling underlies exercise''s protective effect against
+
+  chronic inflammatory disease, cardiovascular disease, and many
+
+  cancers. Excessive exercise volume flips this signaling toward a
+
+  pro-inflammatory state (overtraining).
+
+  '
+upstream_drivers:
+- aerobic-training
+- resistance-training
+- high-intensity-interval-training
+- regular-movement
+downstream_effects:
+- reduced-systemic-inflammation
+- improved-cardiovascular-health
+- reduced-cancer-risk
+related_mechanisms:
+- mitochondrial-biogenesis
+- exercise-induced-oxidative-stress
+linked_to_topics:
+- chronic-inflammation
+- cardiometabolic-risk
+evidence_tier: strong
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 2: Exercise around the Matrix'
+  quote: Exercise is the most potent anti-inflammatory lifestyle pillar that we can
+    initiate.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

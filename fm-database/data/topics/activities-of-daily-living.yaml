@@ -1,0 +1,57 @@
+slug: activities-of-daily-living
+display_name: Activities of Daily Living (ADLs) as Exercise
+aliases:
+- ADLs
+- daily life activity
+- non-exercise activity
+- NEAT
+summary: 'Everyday tasks that count as physical activity and contribute
+
+  meaningfully to total energy expenditure and functional capacity. Key
+
+  considerations are balance, fall risk, and CVD risk. Beginner-level
+
+  ADLs: light housework, cooking, washing dishes, sitting using a
+
+  computer, playing an instrument. Intermediate ADLs: heavy cleaning,
+
+  washing windows, vacuuming, mopping. Advanced ADLs: shovelling,
+
+  carrying heavy loads, digging, mowing the lawn, heavy weeding.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- exercise-prescription-fm
+- cardiovascular-risk-assessment
+key_mechanisms: []
+coaching_scope_notes: 'ADLs are the most underrated exercise category — for deconditioned
+
+  clients, increasing intermediate-level ADLs (mopping, vacuuming) often
+
+  produces meaningful gains without requiring "exercise time". Use this
+
+  framing to lower the barrier for clients who resist structured
+
+  workouts. Match ADL intensity to client''s safe working capacity.
+
+  '
+clinician_scope_notes: 'Clients with cardiac risk factors should have CVD risk assessed
+  before
+
+  taking on advanced ADLs like shovelling or carrying heavy loads —
+
+  these can trigger acute cardiac events in deconditioned individuals.
+
+  '
+evidence_tier: strong
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Activities of Daily Living row
+  quote: Light housework. Cooking, washing dishes. Heavy cleaning. Shoveling. Carrying
+    heavy loads.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

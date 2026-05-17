@@ -1,0 +1,57 @@
+slug: exercise-most-potent-anti-inflammatory-lifestyle-pillar
+statement: 'Regular movement is the single most potent anti-inflammatory lifestyle
+
+  intervention available, with effects mediated through myokine release
+
+  during muscle contraction. Its anti-inflammatory impact is comparable
+
+  to or greater than dietary anti-inflammatory interventions.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Strong physiological evidence supports the myokine-mediated
+
+  anti-inflammatory effect of exercise (IL-6 acutely anti-inflammatory
+
+  during contraction, IL-10, IL-15). The hierarchical claim that
+
+  exercise outranks nutrition specifically is widely held in FM
+
+  teaching but is more a clinical comparison than a quantitatively
+
+  validated ranking.
+
+  '
+coaching_translation: 'Movement is the single most powerful anti-inflammatory tool
+  you have.
+
+  Every time muscles contract, they release chemicals that lower
+
+  whole-body inflammation. Food matters too, but if inflammation is
+
+  the issue we are working on, moving the body has to be part of the
+
+  plan — and it does not require intensity, just consistency.
+
+  '
+caveats:
+- Excessive exercise volume reverses this effect and becomes pro-inflammatory (overtraining).
+- The relative ranking versus nutrition is teaching framing rather than head-to-head
+  trial data.
+out_of_scope_notes: ''
+linked_to_topics:
+- chronic-inflammation
+- cardiometabolic-risk
+- exercise-mitochondrial-biogenesis
+linked_to_mechanisms:
+- exercise-induced-anti-inflammatory-signaling
+linked_to_supplements: []
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Page 2: Anti-inflammatory signaling'
+  quote: Exercise is the most potent anti-inflammatory lifestyle pillar that we can
+    initiate.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

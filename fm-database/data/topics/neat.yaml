@@ -1,0 +1,72 @@
+slug: neat
+display_name: NEAT (Non-Exercise Activity Thermogenesis)
+aliases:
+- non-exercise activity thermogenesis
+- incidental activity
+- daily movement
+summary: 'NEAT — non-exercise activity thermogenesis — is the energy expended
+
+  through daily, non-structured movement: taking stairs, parking further
+
+  away, walking to talk to a colleague rather than emailing, household
+
+  tasks, fidgeting, standing breaks. NEAT is distinguished from formal
+
+  exercise and is the foundation of the physical activity pyramid.
+
+  Modern "chair-enticing" environments (remote work, smart devices,
+
+  delivery services) have systematically reduced NEAT over the last
+
+  century, contributing to rising obesity and metabolic disease.
+
+  Increasing NEAT — particularly five minutes of movement every waking
+
+  hour — is the recommended first intervention for sedentary clients,
+
+  before any structured exercise prescription.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- sedentary-behavior
+- exercise-prescription
+- cardiometabolic-risk
+key_mechanisms:
+- neat-thermogenesis
+- skeletal-muscle-glucose-uptake
+coaching_scope_notes: 'Coach starts here with sedentary clients rather than jumping
+  to formal
+
+  exercise. Specific micro-interventions: hourly five-minute movement
+
+  breaks, office-friendly stretches and squats, walking meetings,
+
+  parking farther away, stairs instead of elevator. The aim is to
+
+  rebuild baseline movement frequency before layering on structured
+
+  cardio or resistance training. NEAT also serves as the maintenance
+
+  floor for clients who complete a workout but otherwise sit all day —
+
+  one structured workout does not compensate for prolonged sitting.
+
+  '
+clinician_scope_notes: 'Clinician notes NEAT level when assessing cardiometabolic
+  risk and may
+
+  recommend desk modifications or activity tracking devices.
+
+  '
+evidence_tier: strong
+sources:
+- id: fmca-cardiometabolic-movement-saxena-class
+  location: 'Pages 3-4: Introducing NEAT'
+  quote: NEAT, non-exercise activity thermogenesis, is just increasing what we do
+    — taking the stairs, parking further away, mowing the grass.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

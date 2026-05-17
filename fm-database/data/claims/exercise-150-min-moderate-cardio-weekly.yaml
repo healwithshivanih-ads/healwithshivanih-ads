@@ -1,0 +1,52 @@
+slug: exercise-150-min-moderate-cardio-weekly
+statement: '150 minutes per week of moderate-intensity cardiovascular exercise —
+
+  defined as an intensity at which conversation is still possible (the
+
+  "talk test") — is the standard target for cardiovascular and metabolic
+
+  benefit in adults.
+
+  '
+evidence_tier: strong
+rationale: 'The 150 min/week moderate-intensity threshold is the long-standing
+
+  public-health benchmark (WHO, ACSM, US Physical Activity Guidelines)
+
+  associated with reduced all-cause mortality, reduced cardiovascular
+
+  events, and improved insulin sensitivity. The talk test is a
+
+  field-validated proxy for moderate intensity (roughly 64–76% of HRmax).
+
+  '
+coaching_translation: 'Aim for about 150 minutes of brisk movement a week — that''s
+  30 minutes,
+
+  5 days a week. The simplest gauge is the "talk test": at the right
+
+  intensity, you can still hold a conversation but you wouldn''t want to
+
+  sing. Walking, cycling under 10 mph, or any equivalent counts.
+
+  '
+caveats:
+- Deconditioned clients should build up gradually — start with shorter sessions and
+  progress duration before intensity.
+- Clients with CVD risk factors need clinical clearance before progressing to vigorous
+  intensity.
+out_of_scope_notes: ''
+linked_to_topics:
+- cardiovascular-exercise
+- exercise-prescription-fm
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Cardiovascular row, Intermediate column
+  quote: Brisk walking. Biking <10 mph. Able to carry on a conversation. 150 minutes
+    per week.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani

@@ -1,0 +1,55 @@
+slug: flexibility-training
+display_name: Flexibility Training
+aliases:
+- stretching
+- mobility training
+- range of motion training
+summary: 'Stretching practice to maintain or restore joint range of motion. Key
+
+  considerations are joint laxity, balance, pain, and ensuring muscles
+
+  are warm before stretching. Beginner: stretch to the point of mild
+
+  muscle tightness, towel/strap assisted, 2–3 days per week, 10–20
+
+  minutes. Intermediate: progress to maximum unassisted ROM, 2–3 days per
+
+  week, 20–30 minutes. Advanced: assisted stretching to complete ROM with
+
+  a qualified trainer or PT, 2–3 days per week, 20–30 minutes.
+
+  '
+common_symptoms: []
+red_flags: []
+related_topics:
+- exercise-prescription-fm
+- joint-hypermobility
+key_mechanisms: []
+coaching_scope_notes: 'Stretch only warm muscles — never cold. Cue "mild tightness,
+  not pain"
+
+  as the stretching endpoint for beginners. Clients with joint laxity
+
+  need conservative ROM targets; clients with stiffness benefit from
+
+  longer holds and assisted techniques.
+
+  '
+clinician_scope_notes: 'Assisted stretching to complete ROM should involve a qualified
+  trainer
+
+  or physiotherapist, especially for clients with hypermobility, recent
+
+  injury, or post-surgical recovery.
+
+  '
+evidence_tier: strong
+sources:
+- id: fm-exercise-prescription-matrix
+  location: Flexibility row
+  quote: Stretching to point of mild muscle tightness. Towel/strap assisted. 2-3 days
+    per week, 10-20 minutes.
+version: 1
+status: active
+updated_at: '2026-05-17'
+updated_by: shivani
