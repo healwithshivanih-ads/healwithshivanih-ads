@@ -71,6 +71,8 @@ export type { FmScheduleDuePanelProps } from "./FmScheduleDuePanel";
 
 export { FmUpcomingBookingsPanel } from "./FmUpcomingBookingsPanel";
 
+export { FmCancellationAlertBanner } from "./FmCancellationAlertBanner";
+
 export { FmWhatsAppDraftPanel } from "./FmWhatsAppDraftPanel";
 export type { FmWhatsAppDraftPanelProps } from "./FmWhatsAppDraftPanel";
 

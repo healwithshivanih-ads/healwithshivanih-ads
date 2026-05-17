@@ -19,6 +19,7 @@ import Link from "next/link";
 import {
   loadClientById,
   markCoachTabViewed,
+  loadClientBookings,
 } from "@/lib/fmdb/loader-extras";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
 import {
@@ -61,6 +62,7 @@ import { MemoryPanel } from "./memory-panel";
 import { SOAPNotePanel } from "@/components/client-widgets/soap-note-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { BookingDueBanner } from "@/components/client-widgets/booking-due-banner";
+import { ClientBookingsPanel } from "@/components/client-widgets/client-bookings-panel";
 import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
 import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { clientQuickActions } from "./client-quick-actions";
@@ -451,13 +453,14 @@ export default async function ClientV2Page({
   // unread badge on this client. Async fire-and-forget; never blocks render.
   void markCoachTabViewed(id, "overview");
 
-  const [client, sessions, allPlans, sessionSummaries, journey, intakeInsights] = await Promise.all([
+  const [client, sessions, allPlans, sessionSummaries, journey, intakeInsights, clientBookings] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadAllPlans(),
     loadClientSessionsAction(id),
     loadClientJourney(id, todayStr),
     loadIntakeInsights(id),
+    loadClientBookings(id),
   ]);
 
   if (!client) notFound();
@@ -771,6 +774,8 @@ export default async function ClientV2Page({
         plansForClient={plansForClient as unknown as Array<Record<string, unknown>>}
         todayStr={todayStr}
       />
+
+      <ClientBookingsPanel rows={clientBookings} />
 
       <div
         style={{

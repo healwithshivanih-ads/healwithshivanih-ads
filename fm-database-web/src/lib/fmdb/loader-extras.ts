@@ -461,6 +461,28 @@ export interface UpcomingBooking {
   /** "CREATED" | "RESCHEDULED" — never CANCELLED (those are filtered out). */
   current_state: string;
   uid: string;
+  /** Cal.com location string when known (e.g. "video", "Zoom"). Falls
+   *  back to null when the integration doesn't expose it. */
+  location?: string | null;
+  /** Direct join URL for video meetings — used by the "Join call →"
+   *  button in the upcoming-bookings panel. */
+  join_url?: string | null;
+  /** When fm-coach received this event. Drives the dashboard's
+   *  acknowledge-on-view filter. */
+  received_at?: string;
+}
+
+/** Slim summary of a recent cancellation — surfaced in the dashboard's
+ *  cancellation alert and on each client's upcoming-bookings section. */
+export interface CancelledBooking {
+  client_id: string;
+  display_name?: string;
+  uid: string;
+  start_time?: string;
+  event_slug?: string;
+  event_title?: string;
+  /** When fm-coach received the CANCELLED event. */
+  received_at?: string;
 }
 
 interface RawBookingEvent {
@@ -472,6 +494,8 @@ interface RawBookingEvent {
   event_slug?: string;
   event_title?: string;
   uid?: string;
+  location?: string | null;
+  join_url?: string | null;
   // Legacy fields from the brief parallel-cal.com experiment — kept so any
   // remaining rows from before the slice-2 pivot still parse.
   trigger_event?: string;
@@ -576,12 +600,126 @@ export async function loadUpcomingBookings(
         event_title: e.event_title,
         current_state: stateRaw || "CREATED",
         uid: e.uid,
+        location: e.location ?? null,
+        join_url: e.join_url ?? null,
+        received_at: e.received_at,
       });
     }
   }
 
   rows.sort((a, b) => a.start_time.localeCompare(b.start_time));
   return rows.slice(0, limit);
+}
+
+/**
+ * Recently-cancelled bookings (`type: booking_cancelled` events received
+ * in the last `hoursBack` window, default 48h). Same dismiss filter as
+ * upcoming bookings: a cancellation drops out once the coach has visited
+ * the client's Overview tab after the cancellation event landed.
+ */
+export async function loadRecentCancellations(
+  clientNames: Map<string, string>,
+  options?: {
+    hoursBack?: number;
+    /** Bypass the dismiss filter — always return every recent cancellation. */
+    includeAcknowledged?: boolean;
+  },
+): Promise<CancelledBooking[]> {
+  const root = getPlansRoot();
+  let raw: Record<string, RawBookingEvent[]> = {};
+  try {
+    const text = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const parsed = yaml.load(text);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      raw = parsed as Record<string, RawBookingEvent[]>;
+    }
+  } catch {
+    return [];
+  }
+  const hoursBack = options?.hoursBack ?? 48;
+  const cutoffMs = Date.now() - hoursBack * 3_600_000;
+  const includeAcknowledged = options?.includeAcknowledged ?? false;
+  const inboxState = includeAcknowledged ? null : await readCoachInboxState();
+
+  const out: CancelledBooking[] = [];
+  for (const [clientId, events] of Object.entries(raw)) {
+    if (!Array.isArray(events)) continue;
+    const seenAt = inboxState?.[clientId]?.overview_seen_at;
+    const seenMs = seenAt ? Date.parse(seenAt) : 0;
+
+    // Collapse by uid; only count the LATEST event per uid. So a CREATED
+    // → RESCHEDULED → CANCELLED chain surfaces as one cancellation.
+    const byUid = new Map<string, RawBookingEvent>();
+    for (const e of events) {
+      if (!e.uid) continue;
+      const prev = byUid.get(e.uid);
+      if (!prev || (e.received_at ?? "") > (prev.received_at ?? "")) {
+        byUid.set(e.uid, e);
+      }
+    }
+    for (const e of byUid.values()) {
+      const stateRaw = (e.type ?? e.trigger_event ?? "").toUpperCase().replace(/^BOOKING_/, "");
+      if (stateRaw !== "CANCELLED" && stateRaw !== "CANCELED") continue;
+      const rcvMs = e.received_at ? Date.parse(e.received_at) : 0;
+      if (rcvMs <= 0 || rcvMs < cutoffMs) continue;
+      if (!includeAcknowledged && seenMs > 0 && rcvMs <= seenMs) continue;
+      out.push({
+        client_id: clientId,
+        display_name: clientNames.get(clientId),
+        uid: e.uid!,
+        start_time: e.start_time,
+        event_slug: e.event_slug,
+        event_title: e.event_title,
+        received_at: e.received_at,
+      });
+    }
+  }
+  out.sort((a, b) => (b.received_at ?? "").localeCompare(a.received_at ?? ""));
+  return out;
+}
+
+/** Per-client bookings — full history (no dismiss filter), used by the
+ *  client overview page's "Upcoming sessions" + "Recent" sections. */
+export async function loadClientBookings(clientId: string): Promise<UpcomingBooking[]> {
+  const root = getPlansRoot();
+  let raw: Record<string, RawBookingEvent[]> = {};
+  try {
+    const text = await fs.readFile(path.join(root, "_calcom_bookings.yaml"), "utf-8");
+    const parsed = yaml.load(text);
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      raw = parsed as Record<string, RawBookingEvent[]>;
+    }
+  } catch {
+    return [];
+  }
+  const events = raw[clientId];
+  if (!Array.isArray(events)) return [];
+  const byUid = new Map<string, RawBookingEvent>();
+  for (const e of events) {
+    if (!e.uid) continue;
+    const prev = byUid.get(e.uid);
+    if (!prev || (e.received_at ?? "") > (prev.received_at ?? "")) byUid.set(e.uid, e);
+  }
+  const rows: UpcomingBooking[] = [];
+  for (const e of byUid.values()) {
+    if (!e.start_time || !e.uid) continue;
+    const stateRaw = (e.type ?? e.trigger_event ?? "").toUpperCase().replace(/^BOOKING_/, "");
+    rows.push({
+      client_id: clientId,
+      start_time: e.start_time,
+      end_time: e.end_time,
+      event_slug: e.event_slug,
+      event_title: e.event_title,
+      current_state: stateRaw || "CREATED",
+      uid: e.uid,
+      location: e.location ?? null,
+      join_url: e.join_url ?? null,
+      received_at: e.received_at,
+    });
+  }
+  // Soonest upcoming first; cancelled / past at the end.
+  rows.sort((a, b) => a.start_time.localeCompare(b.start_time));
+  return rows;
 }
 
 // ── Per-client unread counts (badge backend) ─────────────────────────────────

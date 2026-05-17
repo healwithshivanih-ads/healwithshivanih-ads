@@ -65,6 +65,11 @@ interface SliceTwoPayload {
     end_time?: string;
     status?: string;
     title?: string;
+    /** Location string (e.g. "Zoom" / "Daily" / "In person — Mumbai"). */
+    location?: string | null;
+    /** Direct join URL for video meetings. WA server forwards this when
+     *  cal.com provides it on the BOOKING_CREATED / RESCHEDULED payload. */
+    join_url?: string | null;
   };
   attendee?: {
     email?: string;
@@ -95,6 +100,11 @@ interface CalDirectPayload {
     eventTitle?: string;
     attendees?: CalAttendee[];
     responses?: { email?: string; phone?: string; name?: string };
+    /** Cal.com encodes location as either a string (URL or label) or
+     *  an object {type|name, link|url|address}. See pickLocation(). */
+    location?: string | { type?: string; name?: string; link?: string; url?: string; address?: string };
+    meetingUrl?: string;
+    metadata?: { videoCallUrl?: string };
   };
 }
 
@@ -115,6 +125,12 @@ interface StoredBooking {
   /** Which pipe delivered this row. Useful for debugging when one pipe
    *  is up and the other isn't. */
   source: "slice2" | "calcom_direct";
+  /** Location string (e.g. "Zoom" / "Daily" / "In person — Mumbai") or
+   *  null if cal.com didn't provide one. Captured 2026-05-17 so the
+   *  upcoming-bookings panel can render a "Join call →" button. */
+  location?: string | null;
+  /** Direct meeting join URL when location is a video integration. */
+  join_url?: string | null;
 }
 
 const BOOKINGS_FILE_NAME = "_calcom_bookings.yaml";
@@ -210,6 +226,34 @@ async function storeBooking(clientId: string, evt: StoredBooking): Promise<void>
   await writeBookingsFile(data);
 }
 
+/** Mirrors whatsapp-server-shivani's pickLocation() in
+ *  src/routes/webhooks/cal-com.js — cal.com encodes the meeting location
+ *  inconsistently across integrations, so we accept string-or-object
+ *  and try the common variants. */
+function pickLocation(payload: NonNullable<CalDirectPayload["payload"]>): {
+  location: string | null;
+  joinUrl: string | null;
+} {
+  const loc = payload.location;
+  const fallbackUrl = payload.meetingUrl || payload.metadata?.videoCallUrl || null;
+  if (!loc) {
+    return { location: null, joinUrl: fallbackUrl };
+  }
+  if (typeof loc === "string") {
+    const isUrl = /^https?:\/\//i.test(loc);
+    return isUrl
+      ? { location: "video", joinUrl: loc }
+      : { location: loc, joinUrl: fallbackUrl };
+  }
+  if (typeof loc === "object") {
+    return {
+      location: loc.type || loc.name || null,
+      joinUrl: loc.link || loc.url || loc.address || fallbackUrl,
+    };
+  }
+  return { location: null, joinUrl: fallbackUrl };
+}
+
 /** Convert a raw cal.com payload to the canonical StoredBooking shape. */
 function fromCalcom(body: CalDirectPayload): {
   evt: Omit<StoredBooking, "received_at" | "source" | "matched_by">;
@@ -228,6 +272,7 @@ function fromCalcom(body: CalDirectPayload): {
   const uid = String(p.uid || p.bookingId || p.id || "");
   if (!uid) return null;
   const a = (p.attendees && p.attendees[0]) || {};
+  const { location, joinUrl } = pickLocation(p);
   return {
     evt: {
       type,
@@ -237,6 +282,8 @@ function fromCalcom(body: CalDirectPayload): {
       end_time: p.endTime,
       event_slug: p.type || p.eventTypeSlug,
       event_title: p.title || p.eventTitle,
+      location,
+      join_url: joinUrl,
     },
     attendee: {
       email: a.email || p.responses?.email,
@@ -334,6 +381,8 @@ export async function POST(req: Request) {
       end_time: booking.end_time,
       event_slug: booking.event_slug,
       event_title: booking.event_title,
+      location: booking.location ?? null,
+      join_url: booking.join_url ?? null,
       attendee_email: body.attendee?.email,
       attendee_phone: body.attendee?.phone,
       attendee_name: body.attendee?.name,

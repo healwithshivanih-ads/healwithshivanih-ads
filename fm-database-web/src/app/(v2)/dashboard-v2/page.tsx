@@ -40,6 +40,7 @@ import {
   FmIntakeActivityBanner,
   FmScheduleDuePanel,
   FmUpcomingBookingsPanel,
+  FmCancellationAlertBanner,
 } from "@/components/fm";
 import { TriageSections, type TriageRow, type SignalKind } from "./triage-sections";
 
@@ -246,13 +247,14 @@ export default async function DashboardV2() {
   // webhookConfigured is a heuristic for the empty-state copy: if the
   // file exists at all, the webhook has run at least once and "no
   // bookings" means "nothing scheduled", not "setup missing".
-  const { loadUpcomingBookings } = await import("@/lib/fmdb/loader-extras");
+  const { loadUpcomingBookings, loadRecentCancellations } = await import("@/lib/fmdb/loader-extras");
   const clientNames = new Map<string, string>();
   for (const c of clients as Array<Record<string, unknown>>) {
     const cid = c.client_id as string | undefined;
     if (cid) clientNames.set(cid, (c.display_name as string | undefined) ?? cid);
   }
   const upcomingBookings = await loadUpcomingBookings(clientNames);
+  const recentCancellations = await loadRecentCancellations(clientNames);
   let bookingsWebhookConfigured = false;
   try {
     const { getPlansRoot } = await import("@/lib/fmdb/paths");
@@ -433,6 +435,10 @@ export default async function DashboardV2() {
 
         {/* Catalogue commit — design 9A with change list disclosure */}
         <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
+
+        {/* Cancellation alert — surfaces above upcoming so coach can't miss
+            a silent cancel. Auto-clears once she opens the client's overview. */}
+        <FmCancellationAlertBanner cancellations={recentCancellations} />
 
         {/* Upcoming cal.com bookings — fed by /api/cal-com-webhook */}
         <FmUpcomingBookingsPanel rows={upcomingBookings} webhookConfigured={bookingsWebhookConfigured} />
