@@ -67,10 +67,20 @@ export default async function LetterEditorPage({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ plan?: string; type?: string }>;
+  searchParams: Promise<{
+    plan?: string;
+    type?: string;
+    phase_start?: string;
+    phase_end?: string;
+  }>;
 }) {
   const { id } = await params;
-  const { plan: planSlug, type: rawType } = await searchParams;
+  const {
+    plan: planSlug,
+    type: rawType,
+    phase_start: phaseStartRaw,
+    phase_end: phaseEndRaw,
+  } = await searchParams;
   const letterType: LetterType = isLetterType(rawType) ? rawType : "consolidated";
 
   if (!planSlug) {
@@ -82,7 +92,22 @@ export default async function LetterEditorPage({
   const client = await loadClientById(id);
   if (!client) notFound();
 
-  const data = await loadMealPlan(planSlug, id, letterType);
+  // For phase letters the filename includes the week range —
+  // dhanishta-plan-2-...-meal_plan-wk3-4.md — so loadMealPlan needs the
+  // phase object to compute the right stem. Without this the editor
+  // looked for a non-existent ${planSlug}-meal_plan_phase.md and showed
+  // "Letter not generated yet" even for freshly-generated phase letters.
+  // Bug surfaced 2026-05-18 on cl-004 week 3-4 regenerate flow.
+  const phaseStart = phaseStartRaw ? Number.parseInt(phaseStartRaw, 10) : NaN;
+  const phaseEnd = phaseEndRaw ? Number.parseInt(phaseEndRaw, 10) : NaN;
+  const phase =
+    letterType === "meal_plan_phase" &&
+    Number.isFinite(phaseStart) &&
+    Number.isFinite(phaseEnd)
+      ? { startWeek: phaseStart, endWeek: phaseEnd }
+      : null;
+
+  const data = await loadMealPlan(planSlug, id, letterType, phase);
   if (!data.ok || !data.markdown) {
     return (
       <NoPlanFallback
@@ -110,6 +135,7 @@ export default async function LetterEditorPage({
       initialMarkdown={data.markdown}
       initialHtml={data.html ?? null}
       initialValidation={data.validationReport ?? []}
+      phase={phase}
     />
   );
 }

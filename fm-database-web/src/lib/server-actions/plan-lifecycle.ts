@@ -648,10 +648,15 @@ export async function saveMealPlan(
   html: string | null,
   letterType: LetterType = "consolidated",
   validationReport?: LetterValidationChange[] | null,
+  /** For letterType === "meal_plan_phase" — writes to the per-phase
+   *  filename `${planSlug}-meal_plan-wk<start>-<end>.md` instead of
+   *  `${planSlug}-meal_plan_phase.md`. Edits made in the letter editor
+   *  would previously land at the wrong path. */
+  phase?: { startWeek: number; endWeek: number } | null,
 ): Promise<{ ok: boolean; error?: string }> {
   try {
     const dir = await getMealPlanDir(clientId);
-    const stem = letterFileStem(planSlug, letterType);
+    const stem = letterFileStem(planSlug, letterType, phase);
     await fs.writeFile(path.join(dir, `${stem}.md`), markdown, "utf-8");
     if (html) {
       await fs.writeFile(path.join(dir, `${stem}.html`), html, "utf-8");
@@ -673,11 +678,17 @@ export async function saveMealPlan(
 export async function loadMealPlan(
   planSlug: string,
   clientId: string,
-  letterType: LetterType = "consolidated"
+  letterType: LetterType = "consolidated",
+  /** For letterType === "meal_plan_phase" — selects which phase letter
+   *  to load. Files on disk follow `<planSlug>-meal_plan-wk<start>-<end>.md`.
+   *  Without this argument the stem would resolve to `<planSlug>-meal_plan_phase.md`
+   *  which doesn't exist — so the editor would always fall through to
+   *  "Letter not generated yet" even for freshly-generated phase letters. */
+  phase?: { startWeek: number; endWeek: number } | null,
 ): Promise<MealPlanData> {
   try {
     const root = getPlansRoot();
-    const stem = letterFileStem(planSlug, letterType);
+    const stem = letterFileStem(planSlug, letterType, phase);
     const mdPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.md`);
     const htmlPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.html`);
     const reportPath = path.join(root, "clients", clientId, "meal-plans", `${stem}.validation.json`);

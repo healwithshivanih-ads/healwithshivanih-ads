@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import {
   saveMealPlan,
   generateClientLetter,
+  generatePhaseMealPlanAction,
   type LetterType,
   type LetterValidationChange,
 } from "@/lib/server-actions/plan-lifecycle";
@@ -71,6 +72,7 @@ export function LetterEditor({
   initialMarkdown,
   initialHtml,
   initialValidation,
+  phase,
 }: {
   clientId: string;
   clientName: string;
@@ -82,6 +84,11 @@ export function LetterEditor({
   initialMarkdown: string;
   initialHtml: string | null;
   initialValidation: LetterValidationChange[];
+  /** Phase letters (letterType === "meal_plan_phase") need this so the
+   *  save + regenerate actions hit the right per-phase filenames
+   *  (<planSlug>-meal_plan-wkN-M.md) rather than a non-existent
+   *  <planSlug>-meal_plan_phase.md. Null/undefined for non-phase letters. */
+  phase?: { startWeek: number; endWeek: number } | null;
 }) {
   const router = useRouter();
   const [markdown, setMarkdown] = useState(initialMarkdown);
@@ -121,6 +128,7 @@ export function LetterEditor({
         initialHtml,
         letterType,
         remaining,
+        phase,
       );
       if (res.ok) {
         toast.success("Letter saved");
@@ -142,22 +150,58 @@ export function LetterEditor({
     setRegenConfirmOpen(false);
     startRegen(async () => {
       try {
-        const res = await generateClientLetter(
-          planSlug,
-          clientId,
-          undefined,        // weightLoss — let the AI re-pick from plan
-          letterType,
-          undefined,        // coachNotes — fresh regen, no carry-over
-          true,             // forceRegenerate — bypass cache
-        );
-        if (!res.ok || !res.markdown) {
-          toast.error(`Regenerate failed: ${res.error ?? "unknown error"}`);
+        // Phase letters live on a different code path (generate-client-letter
+        // doesn't know the week-range filenames). Branch on letterType.
+        let markdownOut: string | null = null;
+        let validationOut: LetterValidationChange[] = [];
+        let errOut: string | null = null;
+        if (letterType === "meal_plan_phase") {
+          if (!phase) {
+            toast.error(
+              "This phase letter is missing its week range — reopen from Communicate.",
+            );
+            return;
+          }
+          const res = await generatePhaseMealPlanAction(
+            planSlug,
+            clientId,
+            phase.startWeek,
+            phase.endWeek,
+            undefined,   // coachNotes — fresh regen, no carry-over
+            true,        // forceRegenerate — bypass cache
+          );
+          if (res.ok && res.markdown) {
+            markdownOut = res.markdown;
+            // Phase action doesn't currently emit a validation report;
+            // clear stale entries.
+            validationOut = [];
+          } else if (!res.ok) {
+            errOut = res.error ?? "unknown error";
+          }
+        } else {
+          const res = await generateClientLetter(
+            planSlug,
+            clientId,
+            undefined,        // weightLoss — let the AI re-pick from plan
+            letterType,
+            undefined,        // coachNotes — fresh regen, no carry-over
+            true,             // forceRegenerate — bypass cache
+          );
+          if (res.ok && res.markdown) {
+            markdownOut = res.markdown;
+            validationOut = res.validation_report ?? [];
+          } else if (!res.ok) {
+            errOut = res.error ?? "unknown error";
+          }
+        }
+        if (!markdownOut) {
+          toast.error(`Regenerate failed: ${errOut ?? "unknown error"}`);
           return;
         }
         // Replace local state with the fresh AI output. acceptedRewrites
         // is cleared since the old validation report is now stale.
-        setMarkdown(res.markdown);
-        setValidation(res.validation_report ?? []);
+        setMarkdown(markdownOut);
+        setValidation(validationOut);
         setAcceptedRewrites(new Set());
         setLastSavedAt(
           new Date().toLocaleTimeString("en-IN", {
@@ -166,7 +210,7 @@ export function LetterEditor({
           }),
         );
         toast.success(
-          `🪄 Letter regenerated — ${res.markdown.split(/\s+/).filter(Boolean).length} words`,
+          `🪄 Letter regenerated — ${markdownOut.split(/\s+/).filter(Boolean).length} words`,
         );
       } catch (e) {
         toast.error(`Regenerate failed: ${(e as Error).message.slice(0, 120)}`);
