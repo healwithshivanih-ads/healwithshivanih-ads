@@ -432,6 +432,21 @@ class Client(BaseModel):
     willing_to_test_further: str = ""
     readiness_confidence: Optional[int] = None       # 1-10 slider
 
+    # ── v0.75.2 Tier 1 screening (joints / standing / recovery / mould) ──
+    # New "Movement, joints, standing" section (between Body and Cycle).
+    # Catches the MCAS-POTS-EDS / long-COVID / mould-CIRS family on intake
+    # rather than 6 months in. All optional / default-empty so older
+    # client.yaml files load cleanly.
+    beighton_self_score: list[str] = Field(default_factory=list)
+    beighton_supplemental: list[str] = Field(default_factory=list)
+    hr_devices_owned: list[str] = Field(default_factory=list)
+    lean_test_supine_hr: str = ""        # bpm (string; client may not have a device)
+    lean_test_standing_hr: str = ""      # bpm
+    lean_test_symptoms: list[str] = Field(default_factory=list)
+    pem_screen: list[str] = Field(default_factory=list)
+    mould_exposure: list[str] = Field(default_factory=list)
+    large_fish_frequency: str = ""       # never / rarely / weekly / multiple_weekly
+
     # AI-generated summary of the structured intake. Lives on disk so every
     # downstream AI call (assess / rework / letter / sanity check) reads the
     # same map without re-generating it. Coach can edit coach_notes_for_ai

@@ -176,6 +176,22 @@ interface FormState {
   chemical_sensitivity: string[];
   oral_signs: string[];
 
+  // v0.75.2 — Tier 1 screening: hypermobility (Beighton self-score),
+  // orthostatic intolerance (NASA lean self-check, device-conditional),
+  // PEM (post-exertional malaise / ME/CFS signal), and mould-specific
+  // environment chips. All optional; the AI insights run will pattern-
+  // match them and surface MCAS-POTS-EDS / long-COVID / mould-CIRS
+  // hypotheses for the coach.
+  beighton_self_score: string[];      // chips for the 5 Beighton tests
+  beighton_supplemental: string[];    // chips: double-jointed, dislocate, stretchy, bruise
+  hr_devices_owned: string[];         // chips — Apple Watch, BP monitor, etc.
+  lean_test_supine_hr: string;        // free text (bpm) — only if device owned
+  lean_test_standing_hr: string;      // free text (bpm) — only if device owned
+  lean_test_symptoms: string[];       // chips for standing-tolerance symptoms
+  pem_screen: string[];               // chips for post-exertional malaise pattern
+  mould_exposure: string[];           // chips — visible mould, leaks, work exposures
+  large_fish_frequency: string;       // single-select — conditional on non-veg diet
+
   // Women only — original cycle fields
   cycle_status: string;
   last_menstrual_period: string;
@@ -294,17 +310,23 @@ const WORK_PATTERN_OPTIONS = [
 
 const FAMILY_SPECIFIC_CONDITIONS = [
   "early heart disease before 60",
+  "stroke before 60",
+  "blood clots / clotting disorder",
+  "recurrent miscarriages (in mother / sister)",
   "breast cancer",
   "colon cancer",
   "prostate cancer",
   "ovarian cancer",
   "type 2 diabetes before 50",
   "autoimmune (any)",
+  "Hashimoto's or other thyroid disease",
+  "celiac",
+  "ADHD / autism / learning differences",
   "dementia",
   "suicide or severe mental illness",
   "addiction",
-  "thyroid disease",
-  "celiac",
+  "joint hypermobility / Ehlers-Danlos",
+  "mast cell disease / MCAS",
 ];
 
 const COVID_HISTORY = [
@@ -555,11 +577,20 @@ const BELLY_FAT = [
 ];
 const HISTAMINE = [
   "flushing with wine or fermented foods",
+  "flushing in hot showers / hot weather",
   "hives or welts",
   "itchy with no rash",
   "fragrance-sensitive",
   "can't tolerate aged cheese or vinegar",
-  "diagnosed histamine intolerance",
+  "leftover meat / fish triggers symptoms",
+  // v0.75.2 MCAS deepening — chips that catch MCAS-pattern clients
+  // who don't self-identify with the histamine label.
+  "food reactions shift week-to-week (sometimes fine, sometimes not)",
+  "sudden brain fog within 30 min of eating",
+  "unexplained palpitations come and go",
+  "throat tightness or itching with certain foods",
+  "react strongly to multiple medications + supplements",
+  "diagnosed histamine intolerance or MCAS",
 ];
 const CHEMICAL_SENSITIVITY = [
   "perfumes give headaches",
@@ -569,6 +600,62 @@ const CHEMICAL_SENSITIVITY = [
   "sensitive to medication side effects more than others",
   "metal allergies",
 ];
+// v0.75.2 — Tier 1 screening chip option constants ─────────────────────────
+const BEIGHTON_SELF = [
+  "pinky finger bends back past 90°",
+  "thumb touches inside of forearm",
+  "elbow bends backwards past straight",
+  "knee bends backwards past straight",
+  "palms flat on floor with knees locked straight",
+];
+const BEIGHTON_SUPPLEMENTAL = [
+  "I've been called 'double-jointed' or 'very flexible'",
+  "I dislocate / subluxate joints sometimes",
+  "I have stretchy or fragile skin",
+  "I bruise easily / unexplained bruises",
+];
+const HR_DEVICES = [
+  "Smartwatch (Apple Watch, Fitbit, Garmin, Whoop)",
+  "Smart ring (Oura, Ultrahuman, Ringconn)",
+  "Home blood-pressure monitor (most cuffs show HR)",
+  "Fingertip pulse oximeter",
+  "Chest strap (Polar, Wahoo)",
+  "Phone app only (less accurate but I'll use one)",
+  "None of the above",
+];
+const LEAN_TEST_SYMPTOMS = [
+  "lightheaded / dizzy",
+  "vision tunnelling or going dark",
+  "heart racing or pounding",
+  "brain fog / hard to think",
+  "hot, flushed, sweaty",
+  "cold, clammy",
+  "nauseous",
+  "had to sit down before 10 min",
+  "felt completely fine",
+];
+const PEM_SCREEN = [
+  "I crash for hours or days after exertion that used to feel normal",
+  "Exercise that should help me leaves me wiped out for 24-48h",
+  "Stress / emotional days knock me out the next day",
+  "I have to ration my energy — pacing is the only thing that works",
+  "I used to push through and can't any more",
+];
+const MOULD_EXPOSURE = [
+  "current/past home with visible mould",
+  "current/past home with a leak that wasn't fully dried in 48h",
+  "musty / damp smell in any room I spend time in",
+  "I feel worse on damp or humid days",
+  "worked with paints / solvents / pesticides regularly",
+  "dental amalgam removal in last 5 years",
+];
+const LARGE_FISH_FREQUENCY = [
+  { value: "never", label: "Never / not applicable" },
+  { value: "rarely", label: "Rarely (a few times a year)" },
+  { value: "weekly", label: "Once a week or so" },
+  { value: "multiple_weekly", label: "Multiple times a week" },
+];
+
 const ORAL_SIGNS = [
   "bleeding gums",
   "receding gums",
@@ -903,6 +990,16 @@ function mergeInitial(
     histamine_signals: asStringArray(get("histamine_signals")),
     chemical_sensitivity: asStringArray(get("chemical_sensitivity")),
     oral_signs: asStringArray(get("oral_signs")),
+    // v0.75.2 — Tier 1 screening fields
+    beighton_self_score: asStringArray(get("beighton_self_score")),
+    beighton_supplemental: asStringArray(get("beighton_supplemental")),
+    hr_devices_owned: asStringArray(get("hr_devices_owned")),
+    lean_test_supine_hr: asString(get("lean_test_supine_hr")),
+    lean_test_standing_hr: asString(get("lean_test_standing_hr")),
+    lean_test_symptoms: asStringArray(get("lean_test_symptoms")),
+    pem_screen: asStringArray(get("pem_screen")),
+    mould_exposure: asStringArray(get("mould_exposure")),
+    large_fish_frequency: asString(get("large_fish_frequency")),
     cycle_status: asString(get("cycle_status")),
     last_menstrual_period: asString(get("last_menstrual_period")),
     cycle_length_days: asString(get("cycle_length_days")),
@@ -1103,6 +1200,16 @@ function buildPayload(s: FormState): Record<string, unknown> {
     histamine_signals: s.histamine_signals,
     chemical_sensitivity: s.chemical_sensitivity,
     oral_signs: s.oral_signs,
+    // v0.75.2 — Tier 1 screening fields
+    beighton_self_score: s.beighton_self_score,
+    beighton_supplemental: s.beighton_supplemental,
+    hr_devices_owned: s.hr_devices_owned,
+    lean_test_supine_hr: s.lean_test_supine_hr,
+    lean_test_standing_hr: s.lean_test_standing_hr,
+    lean_test_symptoms: s.lean_test_symptoms,
+    pem_screen: s.pem_screen,
+    mould_exposure: s.mould_exposure,
+    large_fish_frequency: s.large_fish_frequency,
     period_pain_severity: s.period_pain_severity,
     period_pain_impact: s.period_pain_impact,
     pmdd_signs: s.pmdd_signs,
@@ -1739,7 +1846,9 @@ export function IntakeForm({
   // 1 About you · 2 Concerns · 3 Diagnoses/meds/allergies/COVID · 4 Medications layered
   // 5 Timeline · 6 Day-to-day · 7 Five pillars · 8 Past & environment · 9 Diet
   // 10 Body systems · [11 Cycle & hormones (women only)] · 12 Readiness · 13 Anything else · 14 Consent
-  const totalSections = isFemale ? 14 : 13;
+  // v0.75.2 — totalSections bumped by 1 for the new "Movement, joints,
+  // standing" section between Body and Cycle.
+  const totalSections = isFemale ? 15 : 14;
 
   const sectionRefs = useRef<Record<number, HTMLElement | null>>({});
   const setSectionRef = (n: number) => (el: HTMLElement | null) => {
@@ -2134,7 +2243,11 @@ export function IntakeForm({
     );
   }
 
-  // Computed section numbers (1-indexed)
+  // Computed section numbers (1-indexed). v0.75.2 — SEC_MOVEMENT slotted
+  // between BODY (10) and CYCLE (11), bumping subsequent section numbers
+  // by 1. The new section covers Beighton hypermobility + NASA lean
+  // orthostatic + PEM screen — Tier 1 screening for the MCAS-POTS-EDS /
+  // long-COVID family of conditions.
   const SEC_ABOUT = 1;
   const SEC_CONCERNS = 2;
   const SEC_DIAGNOSES = 3;
@@ -2145,10 +2258,11 @@ export function IntakeForm({
   const SEC_PAST = 8;
   const SEC_DIET = 9;
   const SEC_BODY = 10;
-  const SEC_CYCLE = isFemale ? 11 : -1;
-  const SEC_READINESS = isFemale ? 12 : 11;
-  const SEC_NOTES = isFemale ? 13 : 12;
-  const SEC_CONSENT = isFemale ? 14 : 13;
+  const SEC_MOVEMENT = 11;
+  const SEC_CYCLE = isFemale ? 12 : -1;
+  const SEC_READINESS = isFemale ? 13 : 12;
+  const SEC_NOTES = isFemale ? 14 : 13;
+  const SEC_CONSENT = isFemale ? 15 : 14;
 
   // ── Main form ────────────────────────────────────────────────────────
   return (
@@ -3243,7 +3357,204 @@ export function IntakeForm({
         </FG>
       </FormSection>
 
-      {/* 11. Cycle & hormones (women only) */}
+      {/* ════════════════════════════════════════════════════════════════════
+          11. Movement, joints, standing (v0.75.2 — Tier 1 screening)
+
+          Five blocks:
+          (a) Joint hypermobility (Beighton self-screen, 5 image-illustrated
+              chips + 4 supplemental chips). Catches the EDS / hypermobility-
+              spectrum population. Re-checked bilaterally by coach on Zoom.
+          (b) Standing tolerance — device-conditional NASA lean self-check.
+              Q1 always: do you own a HR-measuring device? Q2 conditional on
+              device: 10-min wall-lean with supine + standing HR + symptoms.
+              No-device branch: symptoms only.
+          (c) Post-exertional malaise (PEM) screen — cardinal feature of
+              ME/CFS and long COVID. Catching it on intake prevents
+              well-meaning but harmful "graded exercise therapy" advice.
+          (d) Environment — mould + chemical exposure chips. Fish question
+              conditional on non-vegetarian diet only.
+          (e) Hint that coach re-checks Beighton + lean test on the Zoom
+              session — self-report is the starting point, not the final
+              answer.
+       ════════════════════════════════════════════════════════════════════ */}
+      <FormSection
+        number={SEC_MOVEMENT}
+        totalSections={totalSections}
+        sectionRef={setSectionRef(SEC_MOVEMENT)}
+        title="Joints, standing, recovery"
+        sub="A few patterns I want to catch early — easier to plan well when I know them."
+      >
+        {/* ── 11a. Beighton hypermobility self-screen ── */}
+        <FG
+          label="Joint flexibility — tick the ones you can do easily without pain"
+          optional="image guide below"
+          hint="Look at each test in the image, then tick what you can do. Don't tick a test if you have to push hard or it hurts. We'll re-check together on our session — your self-report is a starting point."
+        >
+          <div style={{ marginBottom: 12 }}>
+            {/* CC0 — Hypermobility Beighton Score by Rollcloud, Wikimedia Commons */}
+            <img
+              src="/intake-illustrations/beighton-composite.png"
+              alt="Joint flexibility tests — Beighton score illustration showing pinky bend, thumb to forearm, elbow hyperextension, knee hyperextension, and palms flat on floor"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+                display: "block",
+                margin: "0 auto",
+                background: "#f5f5f4",
+                border: "1px solid #e7e5e4",
+                borderRadius: 10,
+              }}
+            />
+          </div>
+          <ChipMulti
+            value={state.beighton_self_score}
+            options={BEIGHTON_SELF}
+            onChange={(v) => set("beighton_self_score", v)}
+          />
+        </FG>
+
+        <FG label="Anything else that applies" optional="tick all that apply">
+          <ChipMulti
+            value={state.beighton_supplemental}
+            options={BEIGHTON_SUPPLEMENTAL}
+            onChange={(v) => set("beighton_supplemental", v)}
+          />
+        </FG>
+
+        {/* ── 11b. Standing tolerance — device-conditional NASA lean ── */}
+        <hr className="fm-divider-thin" style={{ margin: "24px 0 12px" }} />
+
+        <FG
+          label="Do you have any device that measures heart rate?"
+          optional="tick all you have access to"
+          hint="If you have one, I'll ask you to do a quick 10-min self-check. If not, no worries — we'll do it together on our session."
+        >
+          <ChipMulti
+            value={state.hr_devices_owned}
+            options={HR_DEVICES}
+            onChange={(v) => set("hr_devices_owned", v)}
+          />
+        </FG>
+
+        {/* Lean self-check appears only if at least one device (other than
+            "none of the above") is ticked. */}
+        {state.hr_devices_owned.length > 0 &&
+        !(
+          state.hr_devices_owned.length === 1 &&
+          state.hr_devices_owned[0] === "None of the above"
+        ) ? (
+          <FG
+            label="10-min standing self-check (optional but high-yield)"
+            optional="if you can spare 15 min before our session"
+            hint={
+              "Lie down on your back for 5 min. Note your heart rate. " +
+              "Then stand with heels about 15 cm from a wall, head + shoulders touching the wall, arms relaxed. " +
+              "Stay 10 min (sit earlier if you feel close to fainting). Note your heart rate again. Then tick the symptoms you felt."
+            }
+          >
+            <div className="fm-row-2">
+              <div>
+                <label className="fm-label-small">Resting HR after 5 min lying down (bpm)</label>
+                <TextInput
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="e.g. 68"
+                  value={state.lean_test_supine_hr}
+                  onChange={(e) => set("lean_test_supine_hr", e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="fm-label-small">HR after 10 min standing against wall (bpm)</label>
+                <TextInput
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="e.g. 110"
+                  value={state.lean_test_standing_hr}
+                  onChange={(e) => set("lean_test_standing_hr", e.target.value)}
+                />
+              </div>
+            </div>
+            <div style={{ marginTop: 12 }}>
+              <label className="fm-label-small">During the 10 minutes — what did you feel?</label>
+              <ChipMulti
+                value={state.lean_test_symptoms}
+                options={LEAN_TEST_SYMPTOMS}
+                onChange={(v) => set("lean_test_symptoms", v)}
+              />
+            </div>
+          </FG>
+        ) : (
+          <FG
+            label="When you stand for 5+ minutes (queues, kitchen, lifts), do any of these happen?"
+            optional="tick all that apply"
+            hint="No device needed — just notice what your body does."
+          >
+            <ChipMulti
+              value={state.lean_test_symptoms}
+              options={LEAN_TEST_SYMPTOMS}
+              onChange={(v) => set("lean_test_symptoms", v)}
+            />
+          </FG>
+        )}
+
+        {/* ── 11c. Post-exertional malaise screen ── */}
+        <hr className="fm-divider-thin" style={{ margin: "24px 0 12px" }} />
+
+        <FG
+          label="Recovery from exertion"
+          optional="tick anything that resonates"
+          hint="These patterns change the kind of exercise + pacing I'd suggest, so it matters to know."
+        >
+          <ChipMulti
+            value={state.pem_screen}
+            options={PEM_SCREEN}
+            onChange={(v) => set("pem_screen", v)}
+          />
+        </FG>
+
+        {/* ── 11d. Environment — mould + chemical exposure ── */}
+        <hr className="fm-divider-thin" style={{ margin: "24px 0 12px" }} />
+
+        <FG
+          label="Environmental exposure"
+          optional="tick any that apply"
+          hint="Mould + chemical exposures are easy to miss but matter for how your body's been coping."
+        >
+          <ChipMulti
+            value={state.mould_exposure}
+            options={MOULD_EXPOSURE}
+            onChange={(v) => set("mould_exposure", v)}
+          />
+        </FG>
+
+        {/* Fish question — conditional on non-veg diet. Indian veg / Jain /
+            vegan clients almost never eat sea fish, so the question is
+            noise for them. */}
+        {state.dietary_preference &&
+        !["Vegetarian", "Vegetarian Jain", "Jain vegetarian", "Vegan"].includes(
+          state.dietary_preference,
+        ) ? (
+          <FG
+            label="How often do you eat large fish?"
+            optional="optional"
+            hint="Tuna (especially canned albacore), swordfish, king mackerel, shark — these bioaccumulate mercury. Sardines / mackerel / salmon are low-mercury and fine."
+          >
+            <RadiosColumn
+              name="large_fish_frequency"
+              value={state.large_fish_frequency}
+              options={LARGE_FISH_FREQUENCY}
+              onChange={(v) => set("large_fish_frequency", v)}
+            />
+          </FG>
+        ) : null}
+
+        <p className="fm-microcopy" style={{ marginTop: 18 }}>
+          We&apos;ll re-check the flexibility + standing pieces together on the
+          call — your self-report is a starting point, not the final word.
+        </p>
+      </FormSection>
+
+      {/* 12. Cycle & hormones (women only) */}
       {isFemale ? (
         <FormSection
           number={SEC_CYCLE}

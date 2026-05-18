@@ -308,6 +308,9 @@ _SCALAR_FIELDS = [
     "sun_exposure_daily", "sunscreen_use", "vit_d_supplement", "barefoot_outdoors",
     "recent_labs_when", "willing_to_share_labs", "willing_to_test_further",
     "bowel_historical",
+    # ── v0.75.2 Tier 1 screening scalars ──
+    "lean_test_supine_hr", "lean_test_standing_hr",
+    "large_fish_frequency",
 ]
 
 # Date-typed scalars — same overwrite rules but cast through ISO.
@@ -356,6 +359,10 @@ _INTAKE_LIST_FIELDS = [
     "histamine_signals", "chemical_sensitivity", "oral_signs",
     "repro_diagnoses", "perimenopause_inventory",
     "recent_labs_done",
+    # ── v0.75.2 Tier 1 screening chip-arrays ──
+    "beighton_self_score", "beighton_supplemental",
+    "hr_devices_owned", "lean_test_symptoms",
+    "pem_screen", "mould_exposure",
 ]
 
 # Int-array fields (Bristol type can be 1-7, multi-tick)
