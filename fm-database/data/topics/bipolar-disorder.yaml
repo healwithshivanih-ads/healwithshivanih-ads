@@ -1,0 +1,42 @@
+slug: bipolar-disorder
+display_name: Bipolar (Manic) Depression
+aliases:
+- bipolar
+- manic-depression
+- manic-depressive-illness
+summary: An affective disorder with periods of major depression alternating with mania
+  (elation, racing thoughts, decreased sleep need, grandiose delusions, psychomotor
+  acceleration). Distinct from unipolar depression by the manic component. Natural-medicine
+  adjuncts (5-HTP, phosphatidylcholine, omega-3, full-spectrum light) used alongside
+  conventional psychiatric care.
+common_symptoms:
+- depression
+- insomnia
+- low-mood
+- weight-loss
+red_flags:
+- suicidal-ideation
+- psychotic features
+- self-harm risk during mania
+related_topics:
+- major-depressive-disorder
+- seasonal-affective-disorder
+key_mechanisms:
+- serotonin-melatonin-sleep-axis
+- tryptophan-kynurenine-shunt
+coaching_scope_notes: Refer to psychiatry. Coaching role limited to adjunctive lifestyle
+  support.
+clinician_scope_notes: Lithium first-line for prophylaxis; SSRIs alone can trigger
+  mania.
+notes_for_coach: Pizzorno places phosphatidylcholine and 5-HTP as the natural-medicine
+  adjuncts; full-spectrum light therapy can precipitate hypomania so caution.
+sources:
+- id: pizzorno-affective-disorders
+  location: Closing pending-xref stub (2026-05-18)
+  quote: Stub topic seeded to close pending xrefs from the 2026-05-18 chat-ingest
+    sweep.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,44 @@
+slug: periodontal-disease
+display_name: Periodontal Disease (Gum Disease)
+aliases:
+- gum-disease
+- periodontitis
+- gingivitis
+- chronic-periodontitis
+summary: Chronic inflammatory disease of the supporting structures of the teeth, driven
+  by oral dysbiosis (especially Porphyromonas gingivalis). Antibodies to P. gingivalis
+  are linked to elevated anti-CCP antibodies and may break immune tolerance to citrullinated
+  antigens - implicated in rheumatoid arthritis pathogenesis. Severity correlates
+  with RA disease activity. Identical periodontal bacterial DNA found in 100% of RA
+  synovial fluid samples in some studies.
+common_symptoms:
+- bleeding-gums
+- bad-breath
+- gum-recession
+- tooth-mobility
+red_flags:
+- abscess
+- facial swelling
+- fever with oral infection
+related_topics:
+- rheumatoid-arthritis
+- chronic-inflammation
+- autoimmune-thyroiditis
+key_mechanisms:
+- citrullinated-protein-autoimmunity
+- chronic-inflammation
+coaching_scope_notes: 'Refer to dental hygiene + periodontist. Coaching role: anti-inflammatory
+  diet, vitamin D, CoQ10, oral probiotics adjunct.'
+clinician_scope_notes: Scaling and root planing; severe cases need periodontal surgery.
+notes_for_coach: Pizzorno's RA chapter establishes periodontal-RA link as one of the
+  strongest oral-systemic connections - flag gum health in every RA workup.
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Closing pending-xref stub (2026-05-18)
+  quote: Stub topic seeded to close pending xrefs from the 2026-05-18 chat-ingest
+    sweep.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

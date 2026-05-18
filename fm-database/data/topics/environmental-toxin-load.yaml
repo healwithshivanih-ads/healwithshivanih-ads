@@ -1,0 +1,43 @@
+slug: environmental-toxin-load
+display_name: Environmental Toxin Load
+aliases:
+- toxin-load
+- xenobiotic-burden
+- total-toxic-load
+- environmental-burden
+summary: The cumulative body burden of synthetic and naturally-occurring toxicants
+  (heavy metals, persistent organic pollutants, endocrine disruptors, mycotoxins,
+  solvents, pesticides) that can drive autoimmunity, neuroinflammation, hormonal disruption,
+  and oxidative stress. Assessed via urine challenge tests, hair mineral analysis,
+  and organic acids. Addressed via reduction-of-exposure plus supported phase I/II
+  biotransformation.
+common_symptoms:
+- fatigue
+- brain-fog
+- skin-rash
+- headaches
+red_flags:
+- acute heavy metal poisoning
+- occupational solvent exposure
+related_topics:
+- liver-detoxification
+- autoimmune-thyroiditis
+- multiple-sclerosis
+key_mechanisms:
+- oxidative-damage
+- thyroid-toxicant-sensitivity
+coaching_scope_notes: Reduce known exposures (plastics, pesticides, conventional cookware,
+  fragrance). Support hydration, fibre, brassicas, sulfur foods.
+clinician_scope_notes: Chelation, IV glutathione, urine toxin panels are clinician-only.
+notes_for_coach: Pizzorno frames toxin load as upstream driver across MS, Hashimoto's,
+  oxalate stones, depression - recurring theme worth flagging early.
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Closing pending-xref stub (2026-05-18)
+  quote: Stub topic seeded to close pending xrefs from the 2026-05-18 chat-ingest
+    sweep.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
