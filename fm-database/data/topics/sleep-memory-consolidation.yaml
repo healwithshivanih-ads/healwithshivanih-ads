@@ -1,0 +1,36 @@
+slug: sleep-memory-consolidation
+display_name: Sleep-Dependent Memory Consolidation
+aliases:
+- hippocampal memory consolidation
+- sleep and learning
+- memory consolidation during sleep
+summary: One of the major functions of sleep is the transfer and consolidation of
+  information from short-term working memory into long-term hippocampal memory. During
+  sleep — particularly REM stages later in the night — the brain replays and reorganises
+  the day's learning, strengthening synaptic connections that anchor new skills and
+  information. Sleep deprivation impairs this process. Initial signs are forgetfulness;
+  with persistent sleep loss, the ability to encode new memories itself degrades —
+  affecting language learning, skill acquisition, academic performance, and work productivity.
+  Sleep before learning improves encoding; sleep after learning improves retention.
+common_symptoms:
+- forgetfulness
+- difficulty learning new skills
+- brain-fog
+- poor recall
+- impaired focus
+key_mechanisms:
+- adenosine-sleep-pressure
+- hippocampal-neuroplasticity
+related_topics:
+- sleep-architecture
+- sleep-debt
+- cognitive-decline
+- sleep-quality
+evidence_tier: strong
+sources:
+- id: panda-circadian-code-book
+  location: pp. 157-158
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

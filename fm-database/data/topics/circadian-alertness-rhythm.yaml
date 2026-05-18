@@ -1,0 +1,37 @@
+slug: circadian-alertness-rhythm
+display_name: Circadian Alertness Rhythm
+aliases:
+- daily alertness arc
+- diurnal alertness pattern
+- cognitive circadian rhythm
+summary: 'Brain alertness follows a circadian arc: peak in the morning hours after
+  waking, gradually declining through the afternoon and early evening, with a reversal
+  around 9-10pm when alertness drive collapses and sleep drive dominates. During sleep,
+  the brain transitions from active "command and control" mode to a default mode for
+  repair, strengthening of neuronal connections, and consolidation of working memory
+  into hippocampal long-term memory. Honoring this arc — doing demanding cognitive
+  work in the morning, routine tasks afternoon, and protecting evening wind-down —
+  aligns work with physiology.'
+common_symptoms:
+- afternoon fatigue
+- brain-fog
+- difficulty concentrating
+- procrastination
+- evening alertness (delayed sleep)
+key_mechanisms:
+- adenosine-sleep-pressure
+- scn-light-entrainment
+- melatonin-pathway
+related_topics:
+- sleep-architecture
+- sleep-debt
+- circadian-rhythm-disruption
+- sleep-quality
+evidence_tier: strong
+sources:
+- id: panda-circadian-code-book
+  location: pp. 158-159
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

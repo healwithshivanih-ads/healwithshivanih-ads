@@ -1,0 +1,36 @@
+slug: sleep-architecture
+display_name: Sleep Architecture (NREM stages N1/N2/N3 + REM)
+aliases:
+- sleep stages
+- sleep cycles
+- NREM and REM sleep
+- sleep structure
+summary: Quiet (NREM) sleep proceeds in three stages — N1 (drowsiness, minutes), N2
+  (light sleep with sleep spindles aiding memory consolidation), N3 (deep sleep with
+  slowed breathing, falling BP, and 20-30% lower pulse) — alternating with REM (active)
+  sleep in 90-120 minute cycles. Adults complete 3-5 cycles per night, with REM duration
+  increasing progressively through the night. Loss of N3 reduces daytime creativity,
+  mood, and fine motor skills; loss of REM impairs learning and memory consolidation.
+common_symptoms:
+- fatigue
+- brain-fog
+- daytime sleepiness
+- impaired memory
+- low mood
+key_mechanisms:
+- adenosine-sleep-pressure
+- core-body-temperature-drop-for-sleep-onset
+- melatonin-pathway
+related_topics:
+- sleep
+- sleep-quality
+- sleep-debt
+- circadian-rhythm-disruption
+evidence_tier: strong
+sources:
+- id: panda-circadian-code-book
+  location: pp. 97-99
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: sleep-deprivation-impairs-hippocampal-memory-consolidation
+statement: Sleep deprivation impairs hippocampal memory consolidation — the transfer
+  of working memory into long-term storage that occurs primarily during sleep. Initial
+  symptoms appear as forgetfulness; sustained sleep loss progressively degrades the
+  ability to encode new memories, affecting language learning, skill acquisition,
+  and academic/work performance.
+evidence_tier: strong
+rationale: Established by decades of polysomnography + behavioural research. Walker
+  and colleagues at UC Berkeley have shown specifically that REM and slow-wave sleep
+  are required for declarative and procedural memory consolidation respectively.
+coaching_translation: One of sleep's main jobs is to move what you learned during
+  the day into long-term memory. Skimp on sleep and at first you feel forgetful. Keep
+  skimping and your brain actually loses the ability to store new memories well —
+  which hits your learning and work.
+caveats:
+- Effect is dose-dependent; partial sleep loss produces partial impairment.
+- Older adults experience compounded effects due to reduced slow-wave sleep with age.
+linked_to_topics:
+- sleep-memory-consolidation
+- sleep-debt
+- cognitive-decline
+- sleep-deprivation
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- hippocampal-neuroplasticity
+- adenosine-sleep-pressure
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 157-158
+  quote: One of the major functions of sleep is memory consolidation in the hippocampus...
+    Long-term memory suffers with sleep deprivation. At first you may feel like you
+    are more forgetful, but over time, you'll have a harder time storing even new
+    memories.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

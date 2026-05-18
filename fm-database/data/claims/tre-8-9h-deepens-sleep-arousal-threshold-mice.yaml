@@ -1,0 +1,40 @@
+slug: tre-8-9h-deepens-sleep-arousal-threshold-mice
+statement: In Panda lab mouse studies, time-restricted eating (TRE) of 8-9 hours produced
+  deeper sleep — evidenced by lower core body temperature drop and elevated arousal
+  threshold on EEG — without increasing total sleep duration compared with ad-libitum-fed
+  controls. Self-reported human data from the myCircadianClock app describes substantial
+  sleep improvement on 10-hour TRE, with some users adopting TRE primarily for sleep
+  quality rather than weight loss.
+evidence_tier: plausible_emerging
+rationale: Mouse mechanism data from Panda's lab is direct. Human improvement reports
+  are observational and self-selected (app users), but consistent with the established
+  core-temperature mechanism by which late eating disrupts sleep.
+coaching_translation: When mice eat within an 8-9 hour window each day, their sleep
+  is measurably deeper — they're harder to wake. People using a 10-hour eating window
+  have reported similar improvement; some now use time-restricted eating mostly for
+  the sleep benefits, not weight loss.
+caveats:
+- Mouse data does not always translate directly to humans.
+- The human evidence is observational/self-reported from app users, not RCT data.
+- Effect may depend more on the late-evening cutoff than on the total feeding window
+  length.
+linked_to_topics:
+- sleep-quality
+- sleep-architecture
+- sleep-optimisation
+- circadian-rhythm-disruption
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- core-body-temperature-drop-for-sleep-onset
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 108
+  quote: mice that follow a time-restricted eating (TRE) schedule of 8 or 9 hours
+    also sleep better. Their core body temperature falls and they get into deeper
+    sleep... we often find time-restricted eating improves sleep by increasing the
+    arousal threshold.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

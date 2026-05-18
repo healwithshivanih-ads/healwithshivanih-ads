@@ -1,0 +1,39 @@
+slug: core-body-temperature-drop-for-sleep-onset
+display_name: Core Body Temperature Drop for Sleep Onset
+aliases:
+- thermoregulation for sleep
+- evening core temperature decline
+- circadian temperature drop
+category: signaling
+summary: Sleep onset and depth depend on core body temperature falling roughly 1°F
+  from its evening peak. The SCN signals body cooling as part of the pre-sleep cascade
+  alongside melatonin release. Anything that elevates core temperature near bedtime
+  — eating (blood rushes to gut for digestion), heavy exercise, hot showers right
+  at bedtime, or warm sleeping environments — delays sleep onset and reduces N3 (deep
+  sleep) depth. Conversely, a cool bedroom (≤70°F / ~21°C), a warm bath or shower
+  60-90 minutes before bed (the rebound cooling effect), and breathable bedding all
+  facilitate the drop. Foam mattresses, while initially cooling, can trap and reflect
+  body heat back after a few hours, causing fragmented wake-ups from overheating.
+upstream_drivers:
+- scn-light-entrainment
+- melatonin-pathway
+downstream_effects:
+- improved sleep onset latency
+- deeper N3 sleep
+- reduced nocturnal awakenings
+related_mechanisms:
+- adenosine-sleep-pressure
+- melatonin-pathway
+linked_to_topics:
+- sleep-architecture
+- sleep-quality
+- insomnia
+- sleep-optimisation
+evidence_tier: strong
+sources:
+- id: panda-circadian-code-book
+  location: pp. 110-112
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

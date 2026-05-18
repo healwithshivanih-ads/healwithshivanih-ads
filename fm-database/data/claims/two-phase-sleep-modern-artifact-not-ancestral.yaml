@@ -1,0 +1,40 @@
+slug: two-phase-sleep-modern-artifact-not-ancestral
+statement: The popular narrative that ancestral humans practised two-phase sleep (sleeping,
+  waking for activity mid-night, then sleeping again) is not supported by 2016 actigraphy
+  studies of indigenous groups without electric light access — the Hadza of Tanzania
+  and the Toba of Argentina. Both populations slept consolidated 7-9 hour periods,
+  going to bed around 9-10pm and waking near dawn. Two-phase sleep is more likely
+  a modern pattern reflecting evening light exposure and circadian misalignment, not
+  an ancestral norm.
+evidence_tier: plausible_emerging
+rationale: Based on 2015-2016 studies (Yetish et al, Current Biology 2015; reviewed
+  in The Circadian Code). Strong observational evidence in pre-industrial groups,
+  but generalisation to all ancestral humans is inferential.
+coaching_translation: There's a popular idea that our ancestors woke up in the middle
+  of the night for an hour and then went back to sleep. Recent research on modern
+  hunter-gatherer tribes who live without electric light shows they actually sleep
+  straight through, 7 to 9 hours. Mid-night wakings are more of a modern problem —
+  usually from light exposure and stress.
+caveats:
+- Two specific indigenous groups may not represent all ancestral human variation.
+- Historical accounts of "first sleep" and "second sleep" in medieval Europe are real
+  but may reflect cultural rather than biological norms.
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+- circadian-rhythm-disruption
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 101-102
+  quote: As recently as 2016, scientists conducted studies on indigenous groups, including
+    the Hadza of Tanzania and the Toba of Argentina, who don't have access to electrical
+    lighting. When scientists put sleep trackers on these people for many days at
+    a time, they didn't find any sign of two-phase sleep.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

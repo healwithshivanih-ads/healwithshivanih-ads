@@ -1,0 +1,40 @@
+slug: sleep-deprivation-overeating-via-ghrelin-leptin-disruption
+statement: Sleep deprivation directly disrupts the appetite hormones ghrelin (hunger
+  signal from the empty stomach) and leptin (satiety signal from adipose tissue),
+  both of which follow a circadian pattern. In Ken Wright's controlled sleep-lab studies,
+  participants who reduced sleep from 8 hours to 5 hours consistently consumed more
+  calories than the additional wakeful hours required, contributing to weight gain.
+  Exposure to bright light at night compounds this effect.
+evidence_tier: strong
+rationale: Established mechanism — multiple sleep-restriction trials (Spiegel 2004,
+  Taheri 2004, Wright lab work cited by Panda) consistently show that sleep loss elevates
+  ghrelin, suppresses leptin, and increases caloric intake beyond metabolic need.
+  Effect size in controlled trials is meaningful.
+coaching_translation: When you don't sleep enough, your hunger hormone (ghrelin) goes
+  up and your fullness hormone (leptin) drops — so you feel hungrier and satisfied
+  less easily. Studies show people who shortened their sleep from 8 to 5 hours ate
+  substantially more calories than the extra waking time needed. Sleep loss drives
+  overeating directly.
+caveats:
+- Effect is acute within days of sleep restriction.
+- Compensatory effort can override the hormonal pull but requires conscious intent.
+linked_to_topics:
+- sleep-deprivation
+- weight-gain
+- sleep-quality
+- blood-sugar-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 104-106
+  quote: participants who reduced their sleep from 8 hours to 5 hours consistently
+    overate more calories than what would be required to fuel a few extra hours of
+    wakefulness... a sleep-deprived brain, or one exposed to bright light at night,
+    craves excessive calories that it does not need, resulting in weight gain.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

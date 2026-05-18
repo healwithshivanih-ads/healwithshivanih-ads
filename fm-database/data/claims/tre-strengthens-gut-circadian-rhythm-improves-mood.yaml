@@ -1,0 +1,41 @@
+slug: tre-strengthens-gut-circadian-rhythm-improves-mood
+statement: Time-restricted eating (TRE) strengthens the daily circadian rhythm of
+  gut function — restoring normal balance of gut hormones and bacteria — which then
+  improves brain function and mood. TRE also restores the circadian rhythm of brain
+  autonomic functions, normalising stress hormone production over the day. This is
+  a downstream therapeutic application of the gut-brain circadian axis — aligning
+  eating with the clock heals the gut, which heals the brain.
+evidence_tier: plausible_emerging
+rationale: Mechanistically sound and supported by Panda lab animal data showing TRE
+  restores gut microbial diurnal rhythms. Direct mood/stress hormone benefits in humans
+  are observational and need RCT replication.
+coaching_translation: Eating within a consistent daily window — say 10 hours — isn't
+  just about weight or blood sugar. It strengthens your gut's daily rhythm, restores
+  gut bacteria balance, and that improves brain function and mood. TRE also regulates
+  the stress hormone rhythm, which calms anxiety over time.
+caveats:
+- Most evidence is from mouse studies plus observational human reports.
+- RCT data on TRE for mood is still emerging.
+- Individual response varies — particularly for those with eating disorders history.
+linked_to_topics:
+- gut-brain-axis
+- gut-brain-axis-dysfunction
+- circadian-rhythm-disruption
+- depression-lifestyle
+- autonomic-nervous-system-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- circadian-autonomic-rhythm
+- gut-brain-axis-disruption
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 160
+  quote: time-restricted eating strengthens the daily rhythms of the gut and can restore
+    a normal balance of gut hormones and bacteria, improving brain function. TRE also
+    improves the daily rhythm in the brain's autonomic functions so that the right
+    amount of stress hormones are produced, which then improves mood.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

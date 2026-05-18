@@ -1,0 +1,42 @@
+slug: chronic-sleep-deprivation-sensitises-stress-response
+statement: Chronic sleep deprivation or persistently interrupted sleep elevates baseline
+  stress hormone production (notably cortisol) and sensitises the stress response,
+  so that the system over-reacts to minor stressors. This contributes to anxiety,
+  panic symptoms, and dysregulated daily cortisol rhythm. Disrupted gut hormones and
+  bacteria — also under circadian control — feed back to brain function and amplify
+  the effect.
+evidence_tier: plausible_emerging
+rationale: Mainstream HPA axis research supports cortisol elevation and sensitisation
+  with chronic sleep loss. Gut-brain mechanism is established in animal and emerging
+  human research.
+coaching_translation: When you don't sleep enough night after night, your stress system
+  gets stuck in a more reactive state. Cortisol stays elevated, and your nervous system
+  over-reacts to things it would normally shrug off. Anxiety and panic symptoms can
+  creep in. The gut is in on this loop too — bad sleep disrupts gut bacteria, which
+  feed back to your brain.
+caveats:
+- The cortisol elevation may not be apparent on a single morning blood draw; pattern
+  is better seen on 4-point salivary cortisol.
+- Effect is reversible with restoration of consolidated sleep.
+linked_to_topics:
+- autonomic-nervous-system-dysregulation
+- sleep-deprivation
+- anxiety
+- gut-brain-axis
+- circadian-rhythm-disruption
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- circadian-autonomic-rhythm
+- hpa-axis-dysregulation
+- gut-brain-axis-disruption
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 159-160
+  quote: chronic sleep deprivation or an interrupted sleep routine can increase the
+    level of stress hormones produced or sensitize our stress system such that we
+    automatically over-react in response to minor stressors.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

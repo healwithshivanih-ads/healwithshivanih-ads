@@ -1,0 +1,39 @@
+slug: sleep-deprivation-impairs-reward-assessment-decisions
+statement: Sleep deprivation impairs positive/negative reward assessment — the attention
+  and working-memory process by which we weigh choices against stored knowledge. A
+  well-rested person hungry at the grocery store is more likely to choose a positively-valenced
+  option (fruit, healthy snack); a sleep-deprived person, even knowing the better
+  option, is significantly more likely to choose the negatively-valenced option (chips,
+  processed food). The same process underlies communication — sleep-deprived individuals
+  are more likely to say things they later regret, affecting relationships.
+evidence_tier: plausible_emerging
+rationale: Aligns with established prefrontal-cortex-vs-amygdala research showing
+  sleep deprivation reduces prefrontal regulation while leaving amygdala-driven reward
+  salience intact. Specific food-choice findings have been replicated in multiple
+  sleep-restriction trials.
+coaching_translation: When you're sleep-deprived, you know the chips aren't the right
+  choice — but you reach for them anyway. Sleep loss tilts your decision-making toward
+  fast rewards and against your better judgement. It also makes you more likely to
+  snap at people in ways you regret.
+caveats:
+- Effect varies between individuals.
+- Awareness and pre-commitment strategies (not shopping when tired, meal-prepping)
+  can override.
+linked_to_topics:
+- sleep-deprivation
+- weight-gain
+- sleep-quality
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 157
+  quote: If you have slept well, and you're hungry, you're more likely to make the
+    positive reward choice and buy yourself an apple or a banana. But if you're sleep-deprived
+    and hungry, you are just as likely to buy the chips even though you know they
+    aren't a healthy choice.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

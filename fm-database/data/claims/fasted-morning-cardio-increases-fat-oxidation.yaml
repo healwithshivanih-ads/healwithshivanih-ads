@@ -1,0 +1,43 @@
+slug: fasted-morning-cardio-increases-fat-oxidation
+statement: Moderate-intensity morning exercise performed after a 10-12 hour overnight
+  fast — before breaking the fast with breakfast — taps stored body fat as the primary
+  energy source. With circulating insulin low and liver glycogen depleted, working
+  muscle preferentially mobilises adipose triglycerides via lipolysis and beta-oxidation,
+  increasing the fraction of energy expended from fat. Combined with time-restricted
+  eating, this layered approach maximises fat-burning potential. The effect is real
+  for moderate aerobic activity (walking, jogging, easy cycling); strenuous strength
+  training or high-intensity sports in the fasted state will not maintain peak performance.
+evidence_tier: plausible_emerging
+rationale: Mechanistically well-established — fasted-state exercise reliably shifts
+  substrate utilisation toward fat. However, evidence that fasted cardio produces
+  greater long-term fat loss than fed cardio at matched caloric expenditure is mixed;
+  the broader benefit comes from layering it with TRE for metabolic flexibility.
+coaching_translation: If you've gone 10-12 hours without eating overnight and do your
+  morning walk, jog, or bike ride before breakfast, your muscles will burn more body
+  fat for fuel. For moderate activity, this works well. For heavy lifting or intense
+  sports, you'll perform better after eating first.
+caveats:
+- Long-term fat loss difference vs fed-state exercise is debated at matched caloric
+  expenditure.
+- Not appropriate for those with type 1 diabetes, hypoglycaemia history, or eating
+  disorder history.
+- Strenuous fasted training risks compromised performance and muscle loss.
+linked_to_topics:
+- circadian-exercise-timing
+- intermittent-fasting
+- weight-gain
+- insulin-resistance
+- cardiovascular-exercise
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- fasted-state-fat-oxidation
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 183-184
+  quote: If you have fasted for 10 to 12 hours before your morning walk, run, or bike
+    ride, you will likely tap into your stored body fat for energy during your exercise.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

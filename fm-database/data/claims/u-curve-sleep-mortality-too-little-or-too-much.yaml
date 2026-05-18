@@ -1,0 +1,38 @@
+slug: u-curve-sleep-mortality-too-little-or-too-much
+statement: Population-level data tracking approximately one million individuals describes
+  a U-shaped curve between nightly sleep duration and longevity. Adults sleeping consistently
+  too little are more likely to die earlier than those averaging 7 hours; adults sleeping
+  10-11 hours are also at elevated risk. Ideal-BMI individuals cluster around 7 hours
+  of nightly sleep.
+evidence_tier: plausible_emerging
+rationale: U-shaped sleep-mortality relationships are well-established in meta-analyses
+  of observational cohort studies (Cappuccio 2010, Hublin 2007). However, long-sleep
+  mortality may reflect underlying illness (reverse causation) rather than sleep duration
+  directly causing mortality.
+coaching_translation: Sleeping too little hurts you — but sleeping a lot (10+ hours
+  regularly) also tracks with worse health. The sweet spot for most adults is around
+  7 hours.
+caveats:
+- Long sleep duration may be a marker of underlying disease, not a cause of mortality
+  (reverse causation).
+- Individual variation exists; chronotype and life stage matter.
+- BMI association may also reflect lifestyle clustering, not sleep alone.
+linked_to_topics:
+- sleep-debt
+- sleep-quality
+- sleep-deprivation
+- sleep
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 100-101
+  quote: From tracking a million individuals, researchers have identified a pattern,
+    known as the U curve of sleep and longevity. People who consistently sleep too
+    little are more likely to die early than those who get the full 7 hours of sleep
+    each night.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

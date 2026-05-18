@@ -1,0 +1,47 @@
+slug: fasted-state-fat-oxidation
+display_name: Fasted-State Fat Oxidation (Morning Exercise)
+aliases:
+- fasted cardio fat burning
+- overnight-fast lipolysis
+- post-absorptive fat oxidation
+- empty-stomach exercise fat use
+category: metabolic
+summary: After a 10-12 hour overnight fast, liver glycogen is significantly depleted
+  and circulating insulin is low. Exercise initiated in this post-absorptive state
+  preferentially mobilises stored body fat (adipose triglycerides) as fuel via increased
+  lipolysis and fatty acid oxidation, rather than relying on freshly ingested carbohydrate.
+  Working muscle therefore expends a greater fraction of its energy from fat. Resulting
+  effects include enhanced fat loss over time, improved metabolic flexibility (the
+  capacity to switch between fuel sources), and improved insulin sensitivity. The
+  effect is most pronounced for moderate-intensity aerobic activity (walking, jogging,
+  cycling). Strenuous strength training or high-intensity team sports in the fasted
+  state can compromise performance because muscle glycogen and rapid carb availability
+  matter more for peak power output.
+upstream_drivers:
+- overnight fasting (10-12+ hours)
+- low circulating insulin
+- depleted hepatic glycogen
+downstream_effects:
+- increased lipolysis
+- enhanced beta-oxidation of fatty acids
+- improved metabolic flexibility
+- improved insulin sensitivity
+- progressive fat loss
+related_mechanisms:
+- exercise-mitochondrial-biogenesis
+- insulin-sensitivity
+linked_to_topics:
+- circadian-exercise-timing
+- intermittent-fasting
+- weight-gain
+- insulin-resistance
+- metabolic-syndrome
+- cardiovascular-exercise
+evidence_tier: plausible_emerging
+sources:
+- id: panda-circadian-code-book
+  location: pp. 183-184
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: bimodal-morning-afternoon-exercise-strengthens-circadian-rhythm
+statement: Exercise distributed between early morning and late afternoon reinforces
+  the circadian rhythm more effectively than a single daily bout. This bimodal pattern
+  mirrors ancestral hunter-gatherer activity and the dawn-dusk activity rhythm of
+  many wild animals. Both bouts act as non-photic zeitgebers, strengthening the SCN's
+  daily signalling and the alignment of peripheral clocks.
+evidence_tier: plausible_emerging
+rationale: Mechanistically grounded in exercise-as-zeitgeber research (Buxton et al.,
+  Schibler lab). Specific morning + afternoon benefit over single bout is consistent
+  with chronobiology framework but RCT replication on clinical endpoints is limited.
+coaching_translation: Our ancestors and many wild animals are most active at dawn
+  and dusk. If you split your exercise between morning and late afternoon, you're
+  not just exercising twice — you're sending your body two strong daily signals that
+  anchor your circadian rhythm.
+caveats:
+- Late evening exercise (within 2-3 hours of bed) can impair sleep onset for some
+  — afternoon, not late evening, is the second slot.
+- Effect is incremental; a single well-timed bout still helps significantly.
+linked_to_topics:
+- circadian-exercise-timing
+- circadian-rhythm-disruption
+- sleep-quality
+- exercise-prescription
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- scn-light-entrainment
+- exercise-mitochondrial-biogenesis
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 183-184
+  quote: exercising during both early morning and late afternoon can boost circadian
+    rhythm. Our ancestors were active throughout their day, but especially in the
+    morning and evening.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

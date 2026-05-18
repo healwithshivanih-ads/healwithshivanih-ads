@@ -1,0 +1,40 @@
+slug: alertness-circadian-arc-morning-peak-evening-decline
+statement: Brain alertness follows a daily circadian arc with peak in the morning
+  hours and a gradual decline through the afternoon. Around 9-10pm the alertness drive
+  collapses and sleep drive dominates. During sleep, the brain shifts from active
+  control to "default mode" — running maintenance processes including neuronal connection
+  strengthening and consolidation of working memory into hippocampal long-term memory.
+evidence_tier: plausible_emerging
+rationale: Reflects established two-process model of sleep-wake regulation combined
+  with default-mode-network (DMN) neuroscience. Specific transition timing varies
+  by chronotype (~2 hours either direction). Default-mode framing of sleep is supported
+  by fMRI and EEG research.
+coaching_translation: Your brain is sharpest in the morning. As the day progresses,
+  alertness fades — that afternoon focus dip is real. By around 9-10pm, your wake
+  drive collapses and your brain wants to sleep. During sleep, your brain isn't off
+  — it shifts into maintenance mode, strengthening connections and filing away memories.
+caveats:
+- Chronotype shifts the arc — late chronotypes peak hours later.
+- Caffeine, blue light, and modern lifestyles can artificially extend alertness and
+  disrupt this arc.
+linked_to_topics:
+- circadian-alertness-rhythm
+- circadian-rhythm-disruption
+- sleep
+- sleep-architecture
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+- scn-light-entrainment
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 158-159
+  quote: Your brain is most alert in the morning. As the day goes on, the circadian
+    clock instructs your brain to be less alert... Around 9:00 or 10:00 p.m., the
+    alertness drive actually reverses... It no longer has to listen to your commands
+    and instead goes on autopilot for repair.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,49 @@
+slug: circadian-autonomic-rhythm
+display_name: Circadian Rhythm of Autonomic Nervous System
+aliases:
+- autonomic diurnal rhythm
+- daily ANS variation
+- circadian heart rate and digestion
+category: neurological
+summary: The autonomic nervous system — governing heart rate, respiration, digestion,
+  stress hormone production, and other involuntary functions — follows a daily circadian
+  rhythm. Activity is at peak during daytime hours, supporting alert work and digestion;
+  at night autonomic tone subsides so heart rate slows, breathing eases, GI motility
+  quiets, and stress hormone production drops — preparing the body for sleep and repair.
+  Chronic sleep deprivation or fragmented sleep elevates baseline stress hormone production
+  and sensitises the stress response, causing over-reaction to minor stressors. Time-restricted
+  eating strengthens the circadian rhythm of autonomic functions, improving stress
+  regulation and mood. The gut microbiome is also under circadian control and is a
+  downstream signaller to the brain (gut-brain axis), so disrupted eating rhythms
+  propagate to disrupted mood and cognition.
+upstream_drivers:
+- chronic sleep deprivation
+- fragmented sleep
+- irregular eating windows
+- shift work
+- chronic stress
+downstream_effects:
+- elevated baseline cortisol
+- sensitised stress response
+- anxiety and panic symptoms
+- impaired digestion
+- mood dysregulation
+related_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-melatonin-rhythm-coupling
+- gut-brain-axis-disruption
+- scn-light-entrainment
+linked_to_topics:
+- autonomic-nervous-system-dysregulation
+- circadian-rhythm-disruption
+- gut-brain-axis
+- gut-brain-axis-dysfunction
+- sleep-deprivation
+evidence_tier: plausible_emerging
+sources:
+- id: panda-circadian-code-book
+  location: pp. 159-160
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

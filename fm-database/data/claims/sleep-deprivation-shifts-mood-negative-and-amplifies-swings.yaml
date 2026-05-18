@@ -1,0 +1,35 @@
+slug: sleep-deprivation-shifts-mood-negative-and-amplifies-swings
+statement: Sleep deprivation disrupts normal mood regulation in two ways — it tilts
+  baseline mood toward a more negative state (irritability, anxiety, anger), and it
+  amplifies emotional reactivity, making mood swings in response to events more extreme.
+  Combined, these effects degrade relationships, work performance, and self-perception.
+evidence_tier: strong
+rationale: Replicated across multiple sleep-restriction trials and supported by fMRI
+  showing increased amygdala reactivity and reduced prefrontal regulation with sleep
+  loss (Walker, Yoo et al.).
+coaching_translation: When you're under-slept, your mood doesn't just drop — it also
+  becomes more volatile. Small things hit harder. Irritability, anxiety, and anger
+  come up faster. People around you feel it too.
+caveats:
+- Effects accumulate with consecutive nights of poor sleep.
+- Some individuals appear more resilient (genetic variation in sleep need).
+linked_to_topics:
+- sleep-deprivation
+- major-depressive-disorder
+- depression-lifestyle
+- anxiety
+- sleep-quality
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 159
+  quote: Having less sleep disrupts a normal response to events and makes us susceptible
+    to more extreme mood swings; we tend to be more irritable, anxious, and angry.
+    What's more, for most people, sleep deprivation tilts their mood toward a negative
+    state.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

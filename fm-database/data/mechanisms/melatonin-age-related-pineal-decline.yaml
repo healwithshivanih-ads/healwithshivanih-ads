@@ -1,0 +1,39 @@
+slug: melatonin-age-related-pineal-decline
+display_name: Age-Related Pineal Melatonin Decline
+aliases:
+- pineal aging
+- melatonin reduction with age
+- age-related sleep fragility
+category: endocrine
+summary: Endogenous nightly melatonin production from the pineal gland declines progressively
+  with age. A 60-year-old produces approximately one-half to one-third of the nightly
+  melatonin of a 10-year-old. This decline contributes to the more fragile sleep typical
+  of older adults — longer sleep latency, more nocturnal awakenings, and increased
+  sensitivity to environmental disturbances. Provides physiological rationale for
+  considering melatonin supplementation in older adults with sleep onset problems,
+  taken 2-3 hours before bedtime (not immediately after a meal, as melatonin slows
+  post-prandial glucose decline).
+upstream_drivers:
+- pineal gland aging
+- chronic late-evening bright light exposure
+downstream_effects:
+- delayed sleep onset
+- fragmented sleep
+- reduced sleep duration in older adults
+related_mechanisms:
+- melatonin-pathway
+- melatonin-secretion
+- blue-light-melatonin-suppression
+linked_to_topics:
+- sleep
+- sleep-quality
+- insomnia
+- circadian-rhythm-disruption
+evidence_tier: strong
+sources:
+- id: panda-circadian-code-book
+  location: pp. 118-119
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

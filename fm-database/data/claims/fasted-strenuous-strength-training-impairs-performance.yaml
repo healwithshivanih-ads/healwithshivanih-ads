@@ -1,0 +1,39 @@
+slug: fasted-strenuous-strength-training-impairs-performance
+statement: Strenuous strength training and physically demanding sports (rowing, soccer,
+  basketball) performed in the morning fasted state are not ideal for peak performance
+  because peak power output relies on muscle glycogen and rapid carbohydrate availability.
+  Moderate aerobic activity — walking, steady-state jogging, easy road cycling — is
+  well-tolerated in the fasted state. Match exercise intensity to fuelling status
+  — fasted for moderate cardio, fed for power and sport performance.
+evidence_tier: plausible_emerging
+rationale: Aligns with sports nutrition literature showing pre-exercise carbohydrate
+  availability benefits high-intensity and resistance training more than moderate
+  aerobic work. Effect on muscle protein synthesis from fasted resistance training
+  is mixed.
+coaching_translation: Fasted morning workouts are great for walks, easy runs, and
+  light cycling. But if you're doing heavy weights, hill sprints, or competitive sport,
+  eat something first — you'll perform better and protect your muscle.
+caveats:
+- Individuals adapted to fasted training (after weeks-to-months of adaptation) often
+  tolerate higher intensities.
+- Light strength training (bodyweight, low-volume) is generally tolerable fasted.
+linked_to_topics:
+- circadian-exercise-timing
+- strength-training
+- exercise-prescription
+- intermittent-fasting
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- fasted-state-fat-oxidation
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 184
+  quote: While engaging in strenuous strength exercise or physically demanding sports
+    such as rowing, soccer, or basketball in the morning with an empty stomach may
+    not be ideal for peak performance, a morning walk, moderate running, or road biking
+    are tolerable physical activities before breakfast.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

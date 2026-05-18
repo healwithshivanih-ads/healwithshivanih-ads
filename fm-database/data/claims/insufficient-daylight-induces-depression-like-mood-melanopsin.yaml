@@ -1,0 +1,40 @@
+slug: insufficient-daylight-induces-depression-like-mood-melanopsin
+statement: Insufficient daytime bright-light exposure independently induces depression-like
+  mood and impairs learning, mediated by inadequate activation of the blue-light sensor
+  melanopsin in retinal ganglion cells that signal not only to the SCN but also to
+  mood-regulating brain centres. A Johns Hopkins animal study demonstrated this directly.
+  The effect occurs even with adequate sleep and nutrition — daylight is an independent
+  mood input.
+evidence_tier: plausible_emerging
+rationale: Mouse mechanism data is direct (Hattar lab and collaborators). The melanopsin-mood
+  circuit (via perihabenular nucleus) was identified by LeGates et al. 2012 (Nature).
+  Human extrapolation is supported by bright-light therapy efficacy in seasonal affective
+  disorder.
+coaching_translation: Spending a day indoors without daylight can drag your mood down
+  and make your mind foggy — even if you slept well and ate right. Your eyes' light
+  sensors don't just tell your body what time it is; they also directly feed into
+  mood circuits. This is why morning light matters even on rainy days.
+caveats:
+- Indoor light intensity (typically 100-500 lux) is far below the threshold needed
+  (1,000-10,000+ lux of sunlight).
+- 10-30 minutes of outdoor light in the morning is the simplest fix.
+linked_to_topics:
+- depression-lifestyle
+- seasonal-affective-disorder
+- major-depressive-disorder
+- circadian-rhythm-disruption
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- melanopsin-mood-light-axis
+- scn-light-entrainment
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 159
+  quote: An animal study done at Johns Hopkins University showed insufficient light
+    triggers depression-like mood and impairs learning in mice, and this effect was
+    connected to insufficient activation of the blue light sensor, melanopsin.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,40 @@
+slug: muscle-mass-increases-resting-caloric-burn
+statement: Higher skeletal muscle mass increases daily caloric expenditure at rest
+  because muscle is metabolically active tissue. More muscle therefore contributes
+  to a leaner body composition over time, both directly (more calories burned daily)
+  and indirectly (improved insulin sensitivity, glucose disposal, and metabolic flexibility).
+  This is the long-game rationale for prioritising strength training alongside cardiovascular
+  exercise.
+evidence_tier: strong
+rationale: Well-established physiology. Resting metabolic rate scales with lean mass;
+  resistance training reliably increases muscle and resting energy expenditure. The
+  effect size per kg of muscle is modest (~13 kcal per kg per day) but compounds with
+  consistency.
+coaching_translation: Muscle burns calories even when you're sitting still. The more
+  lean muscle you build, the more calories you burn throughout the day — and the better
+  your blood sugar regulation. Strength training isn't just for fitness; it's a long-term
+  metabolic investment.
+caveats:
+- Per-kg increase in resting metabolism is modest; effect compounds over time and
+  consistency matters more than rapid gains.
+- Older adults need progressively higher protein intake and resistance training to
+  preserve muscle.
+linked_to_topics:
+- strength-training
+- weight-gain
+- insulin-resistance
+- exercise-prescription
+- metabolic-syndrome
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- exercise-mitochondrial-biogenesis
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 184
+  quote: the more muscle you have, the more calories you'll burn throughout the day
+    and the leaner and healthier you'll be.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

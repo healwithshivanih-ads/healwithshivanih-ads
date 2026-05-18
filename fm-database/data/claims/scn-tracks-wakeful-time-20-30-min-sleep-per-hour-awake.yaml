@@ -1,0 +1,34 @@
+slug: scn-tracks-wakeful-time-20-30-min-sleep-per-hour-awake
+statement: The suprachiasmatic nucleus (SCN) begins tracking wakeful time from the
+  moment of waking. Each hour awake generates a requirement for roughly 20-30 minutes
+  of subsequent sleep — the physiological basis of sleep debt accumulation.
+evidence_tier: plausible_emerging
+rationale: Reflects Borbely's two-process model with the SCN handling Process C (circadian)
+  and adenosine accumulation driving Process S (homeostatic sleep pressure). The 20-30
+  minute-per-hour figure is a useful coaching heuristic consistent with typical sleep:wake
+  ratios in healthy adults.
+coaching_translation: From the moment you wake up, your brain is already counting.
+  Every hour you stay awake, it adds about 20-30 minutes to the sleep tab you'll owe
+  that night.
+caveats:
+- The 20-30 minute figure is a rough average — individual sleep need varies.
+- Sleep debt and circadian timing both gate when sleep can occur, even when debt is
+  large.
+linked_to_topics:
+- sleep-debt
+- sleep
+- circadian-rhythm-disruption
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+- scn-light-entrainment
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 100
+  quote: As soon as we wake up, our SCN clock begins keeping track of wakeful time.
+    For every hour we stay awake, we later have to sleep 20 to 30 minutes.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

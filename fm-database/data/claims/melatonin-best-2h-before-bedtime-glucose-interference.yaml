@@ -1,0 +1,44 @@
+slug: melatonin-best-2h-before-bedtime-glucose-interference
+statement: Endogenous melatonin typically begins rising 2-4 hours before usual bedtime.
+  Supplemental melatonin is most effective when taken approximately 2 hours before
+  intended sleep onset. Critically, melatonin slows the post-meal decline of blood
+  glucose toward baseline — taking melatonin immediately after a meal therefore impairs
+  glucose regulation. Optimal timing is at least 1-2 hours after the last meal. Effective
+  doses vary widely between individuals; some respond to 1 mg, others require 3-5
+  mg.
+evidence_tier: plausible_emerging
+rationale: Melatonin timing aligns with phase-response-curve research. The melatonin-glucose
+  interaction is supported by Rubio-Sastre 2014 and related work showing post-meal
+  melatonin reduces insulin response and elevates post-meal glucose. Dose variability
+  is widely documented.
+coaching_translation: If you're taking melatonin, take it about 2 hours before bed
+  — not right after dinner. Melatonin interferes with how your body brings blood sugar
+  back down after a meal, so eating and then taking it together is a bad combination.
+  Start low — 1 mg is enough for many people. Some need more.
+caveats:
+- Higher doses are not necessarily better; can cause grogginess and vivid dreams.
+- Long-term effects of nightly use in adults are not well-characterised.
+- Not first-line for sleep onset issues — address light exposure and meal timing first.
+linked_to_topics:
+- insomnia
+- sleep-quality
+- sleep
+- sleep-optimisation
+- blood-sugar-dysregulation
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- melatonin-pathway
+- melatonin-secretion
+- melatonin-age-related-pineal-decline
+linked_to_supplements:
+- melatonin
+sources:
+- id: panda-circadian-code-book
+  location: pp. 119-120
+  quote: it is a bad idea to take melatonin right after eating. Wait for at least
+    an hour or two after a meal so that the melatonin doesn't interfere with your
+    blood glucose level... the best time to take melatonin is 2 hours before bedtime.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

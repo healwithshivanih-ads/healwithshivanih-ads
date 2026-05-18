@@ -1,0 +1,39 @@
+slug: osa-two-thirds-hypertensive-major-cv-risk
+statement: Obstructive sleep apnea (OSA) is a major modifiable risk factor for hypertension,
+  heart disease, and stroke — approximately two-thirds of individuals with underlying
+  OSA also have high blood pressure. Cognitive deficits in memory, attention, and
+  visual processing frequently accompany OSA. Many people with OSA are undiagnosed
+  because they don't snore; subtle clues include waking unrefreshed, dry mouth, and
+  frequent nocturia.
+evidence_tier: strong
+rationale: Well-established cardiovascular epidemiology. OSA-hypertension link is
+  reproducible across multiple cohorts; cognitive impact is supported by imaging and
+  neuropsychological studies.
+coaching_translation: Sleep apnea is one of the biggest hidden drivers of high blood
+  pressure — about two out of three people with sleep apnea also have hypertension.
+  Many people don't even know they have it because not everyone with apnea snores.
+  Subtle clues include waking up tired, a dry mouth, or needing to pee multiple times
+  a night.
+caveats:
+- Not all snoring is OSA, and not all OSA patients snore.
+- A formal sleep study is required for diagnosis.
+- CPAP is the gold-standard treatment; positional and weight interventions help many
+  cases.
+linked_to_topics:
+- sleep-apnea
+- sleep-apnea-cardiovascular-risk
+- hypertension
+- cardiovascular-disease
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- sympathetic-activation-sleep-apnea
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 116-117
+  quote: It is also a major risk factor for heart disease and stroke since as many
+    as two-thirds of people with underlying sleep apnea have high blood pressure.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

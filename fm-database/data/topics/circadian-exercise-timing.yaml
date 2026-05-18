@@ -1,0 +1,41 @@
+slug: circadian-exercise-timing
+display_name: Circadian Exercise Timing
+aliases:
+- when to exercise
+- exercise timing for circadian rhythm
+- bimodal exercise pattern
+- ancestral activity rhythm
+summary: Exercise functions as a non-photic zeitgeber that entrains the circadian
+  clock alongside light. Two daily exercise touchpoints — early morning and late afternoon
+  — reinforce the circadian rhythm more effectively than a single bout, mirroring
+  the bimodal activity pattern of ancestral hunter-gatherers and many wild animals
+  (active around dawn and dusk). For individuals without uninterrupted time, splitting
+  daily exercise into 2-3 bouts of 10-15 minutes delivers equivalent metabolic and
+  cardiovascular benefits to a single 30-45 minute block, while adding the circadian-
+  reinforcement advantage of distributed timing. Morning exercise on an overnight-fasted
+  state additionally taps stored body fat for energy (suitable for moderate cardio,
+  less ideal for strenuous strength work).
+common_symptoms:
+- fatigue
+- weight-gain
+- insomnia
+- low mood
+- afternoon energy slump
+key_mechanisms:
+- scn-light-entrainment
+- fasted-state-fat-oxidation
+- exercise-mitochondrial-biogenesis
+related_topics:
+- circadian-rhythm-disruption
+- exercise-prescription
+- cardiovascular-exercise
+- strength-training
+- intermittent-fasting
+evidence_tier: plausible_emerging
+sources:
+- id: panda-circadian-code-book
+  location: pp. 183-184
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

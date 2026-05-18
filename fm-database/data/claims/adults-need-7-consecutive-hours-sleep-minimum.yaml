@@ -1,0 +1,34 @@
+slug: adults-need-7-consecutive-hours-sleep-minimum
+statement: Adults need at least 7 consecutive hours of sleep each night; shortening
+  by 90 minutes or more loses approximately one full sleep cycle and can disrupt the
+  circadian rhythm.
+evidence_tier: strong
+rationale: Aligns with the 2017 National Sleep Foundation's Sleep Quality Recommendations
+  (Ohayon et al.) and Panda's framing in The Circadian Code. The 90-minute figure
+  reflects the typical sleep-cycle length.
+coaching_translation: Most adults need at least 7 hours of unbroken sleep. Missing
+  even 90 minutes can cost you a full sleep cycle — that's why short nights stack
+  up fast.
+caveats:
+- Individual needs vary slightly — some genuinely well-rested people may need 6.5
+  hours, others 8.5+. Refresh on waking is the better marker.
+- Fragmented sleep totalling 7 hours is not equivalent to consolidated 7 hours.
+linked_to_topics:
+- sleep-debt
+- sleep-architecture
+- sleep-quality
+- sleep
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 99-100
+  quote: Adults need at least 7 consecutive hours of sleep each night. So, if you
+    short yourself by 90 minutes or more, you lose the equivalent of one entire sleep
+    cycle.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

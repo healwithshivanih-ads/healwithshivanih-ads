@@ -1,0 +1,45 @@
+slug: melanopsin-mood-light-axis
+display_name: Melanopsin Mood-Light Axis
+aliases:
+- light-mood pathway
+- ipRGC mood signaling
+- melanopsin depression connection
+category: neurological
+summary: 'Melanopsin-expressing intrinsically photosensitive retinal ganglion cells
+  (ipRGCs) detect bright daytime light and signal not only to the SCN for circadian
+  entrainment but also to mood-regulating brain regions including the perihabenular
+  nucleus. Insufficient daytime light activation of melanopsin can induce depression-like
+  mood states and impair learning independently of sleep quality. A Johns Hopkins
+  mouse study demonstrated this connection directly: light-deprived mice developed
+  depression-like behaviour and learning deficits via reduced melanopsin signalling.
+  Architectural research with office workers found those with daylight access showed
+  better mood, performance, and sleep quality than those in windowless offices. This
+  is the physiological basis for morning light therapy in mood disorders and seasonal
+  affective disorder.'
+upstream_drivers:
+- insufficient daytime bright light exposure
+- windowless work environments
+- chronic indoor lifestyles
+downstream_effects:
+- depression-like mood
+- impaired learning and motivation
+- disrupted sleep quality
+- reduced cognitive performance
+related_mechanisms:
+- scn-light-entrainment
+- serotonin-melatonin-sleep-axis
+- blue-light-melatonin-suppression
+linked_to_topics:
+- seasonal-affective-disorder
+- depression-lifestyle
+- major-depressive-disorder
+- circadian-rhythm-disruption
+- sleep-quality
+evidence_tier: plausible_emerging
+sources:
+- id: panda-circadian-code-book
+  location: p. 159
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

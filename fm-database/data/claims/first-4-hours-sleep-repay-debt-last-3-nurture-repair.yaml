@@ -1,0 +1,39 @@
+slug: first-4-hours-sleep-repay-debt-last-3-nurture-repair
+statement: Within a typical 7-hour sleep window there is a critical 4-hour phase (often
+  roughly 10pm-2am, or the first 4 hours after falling asleep) that pays back sleep
+  debt and neutralises pre-sleep tiredness. The subsequent 3+ hours are devoted to
+  brain and body repair and rejuvenation. This explains why waking after about 4 hours
+  and finding it hard to fall back asleep is common — the immediate sleep pressure
+  has been discharged.
+evidence_tier: plausible_emerging
+rationale: Panda's framing aligns with the two-process model of sleep regulation (Borbely)
+  — Process S (sleep debt) front-loads at sleep onset while Process C (circadian)
+  dominates later in the night. The specific 4-hour clinical framing is a useful coaching
+  abstraction rather than a precise biological boundary.
+coaching_translation: The first four hours of sleep are mostly paying off the tiredness
+  debt from your day. The next three-plus hours are when your brain and body actually
+  do their deepest repair. If you cut yourself off at 4-5 hours, you skip the rebuild.
+caveats:
+- The 4-hour boundary is a useful simplification; the transition between debt repayment
+  and restorative sleep is gradual.
+- Individuals with significant chronic sleep debt may discharge debt more slowly across
+  multiple nights.
+linked_to_topics:
+- sleep-debt
+- sleep-architecture
+- sleep-quality
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 99-100
+  quote: between the hours of 10:00 p.m. and 2:00 a.m., or in the first 4 hours after
+    falling asleep, you get some of your best sleep... The next 3-plus hours of sleep
+    go toward nurturing your brain and body, giving it the additional time it needs
+    for repair and rejuvenation.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

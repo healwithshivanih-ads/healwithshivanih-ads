@@ -1,0 +1,32 @@
+slug: sleep-cycles-90-120-minutes-3-5-per-night
+statement: A typical night contains 3 to 5 sleep cycles of 90 to 120 minutes each,
+  alternating NREM (N1, N2, N3) with REM. The first REM episode lasts only a few minutes;
+  REM duration progressively increases over the night, with the brain prioritising
+  learning and memory during REM.
+evidence_tier: strong
+rationale: Established sleep physiology. Panda summarises in The Circadian Code consistent
+  with mainstream polysomnography literature.
+coaching_translation: Sleep happens in 90 to 120-minute cycles, three to five per
+  night. The dreaming (REM) stretches get longer as the night goes on — that's why
+  cutting sleep short at the end of the night especially robs you of memory and learning
+  consolidation.
+caveats:
+- Cycle length varies modestly between individuals.
+- Substance use, anxiety, and aging all alter cycle composition.
+linked_to_topics:
+- sleep-architecture
+- sleep
+- sleep-quality
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 97-99
+  quote: We typically have between three to five cycles of REM sleep per night, occurring
+    every 90 to 120 minutes. The first episode usually lasts for only a few minutes,
+    then REM time increases progressively over the course of the night.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

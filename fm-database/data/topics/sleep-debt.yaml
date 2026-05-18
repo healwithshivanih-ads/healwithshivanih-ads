@@ -1,0 +1,37 @@
+slug: sleep-debt
+display_name: Sleep Debt
+aliases:
+- sleep deficit
+- accumulated sleep loss
+- chronic sleep deprivation
+summary: 'The SCN tracks wakeful time from the moment of waking; every hour awake
+  generates a need for roughly 20-30 minutes of subsequent sleep. The first 4 hours
+  of nightly sleep are devoted to repaying accumulated sleep debt (neutralising tiredness),
+  while the remaining 3+ hours nurture brain and body repair. When sleep is shortened,
+  debt compounds: a 6.5-hour night creates 30 minutes of debt, and a subsequent 7-hour
+  night only counts as 6.5 hours because debt is repaid first. Naps can repay debt
+  but disrupt nighttime sleep drive if too long or too late in the day. Going to bed
+  earlier without first building sleep drive (waking earlier and getting daytime activity)
+  typically fails.'
+common_symptoms:
+- fatigue
+- brain-fog
+- daytime sleepiness
+- mood changes
+- overeating
+key_mechanisms:
+- adenosine-sleep-pressure
+- scn-light-entrainment
+related_topics:
+- sleep
+- sleep-deprivation
+- sleep-quality
+- circadian-rhythm-disruption
+evidence_tier: strong
+sources:
+- id: panda-circadian-code-book
+  location: pp. 99-101
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

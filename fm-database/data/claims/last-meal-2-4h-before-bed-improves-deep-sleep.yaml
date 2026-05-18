@@ -1,0 +1,38 @@
+slug: last-meal-2-4h-before-bed-improves-deep-sleep
+statement: Eating elevates core body temperature as blood is directed to the gut for
+  digestion. Because sleep onset requires core temperature to drop by approximately
+  1°F, late-evening eating delays sleep onset and impairs achievement of deep (N3)
+  sleep. The recommended interval between the final meal and bedtime is 2-4 hours
+  to allow the cooling phase to complete.
+evidence_tier: plausible_emerging
+rationale: Physiologically grounded in well-established thermoregulatory biology of
+  sleep onset. Specific 2-4 hour interval is a coaching heuristic consistent with
+  TRE/circadian-eating frameworks.
+coaching_translation: When you eat, your body warms up — and to fall into deep sleep,
+  your core temperature actually needs to cool down by about a degree. Aim for your
+  last meal 2-4 hours before bed so your body has time to cool.
+caveats:
+- Tolerance varies — some individuals sleep well after later meals.
+- The macronutrient composition of the last meal matters (large carb-heavy meals affect
+  sleep differently from light protein).
+linked_to_topics:
+- sleep-quality
+- sleep-architecture
+- insomnia
+- sleep-optimisation
+- circadian-rhythm-disruption
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- core-body-temperature-drop-for-sleep-onset
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: pp. 107-108
+  quote: In order to fall asleep, our core body temperature must cool down by almost
+    1°F. But when we eat, our core body temperature actually goes up... we should
+    have our last meal at least 2 to 4 hours before going to bed to ensure that the
+    body is able to cool down.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

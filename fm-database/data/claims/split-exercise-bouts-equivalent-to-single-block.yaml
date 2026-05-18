@@ -1,0 +1,34 @@
+slug: split-exercise-bouts-equivalent-to-single-block
+statement: Splitting daily exercise into 2-3 segments of 10-15 minutes each delivers
+  the same metabolic and cardiovascular benefits as a single uninterrupted 30-45 minute
+  block. For people who cannot find a contiguous exercise window, distributed shorter
+  bouts are a valid equivalent strategy.
+evidence_tier: plausible_emerging
+rationale: Replicated in multiple studies (Murphy et al. 2009, Boutcher 2011) showing
+  fractionated exercise produces equivalent fitness, blood pressure, and metabolic
+  improvements when total volume is matched. Effect size for cardiovascular outcomes
+  is consistent; some advanced power/strength outcomes may require sustained sessions.
+coaching_translation: If you can't carve out 30-45 minutes in one go, don't skip —
+  split it. Two or three 10-15 minute bouts spread through your day give you the same
+  benefits. Even better — morning and late afternoon bouts also help anchor your circadian
+  rhythm.
+caveats:
+- Total daily volume must match — three 15-minute sessions ≈ 45 minutes total.
+- Strength gains may benefit more from consolidated sessions for progressive overload.
+linked_to_topics:
+- circadian-exercise-timing
+- exercise-prescription
+- cardiovascular-exercise
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 183
+  quote: If you don't have an uninterrupted 30-to 45-minute block in which to exercise
+    every day, you will experience all the same benefits if you divide your time into
+    two or three segments of 10 to 15 minutes per day.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

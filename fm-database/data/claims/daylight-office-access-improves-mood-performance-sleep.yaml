@@ -1,0 +1,37 @@
+slug: daylight-office-access-improves-mood-performance-sleep
+statement: Office workers with daylight access during the workday show better mood,
+  better work performance, and better sleep quality than those working in windowless
+  environments. This finding emerged from collaborative architecture-and-neurology
+  research and is consistent with the melanopsin-mood mechanism — daytime bright light
+  signals not only circadian entrainment but mood and cognitive regulation.
+evidence_tier: plausible_emerging
+rationale: Based on cited collaborative research between neurologists and architects.
+  Aligns with Boubekri et al. (Northwestern, 2014) showing daylight-access offices
+  improve sleep duration and physical activity in employees. Effect size is meaningful
+  but not large.
+coaching_translation: People who work in offices with windows and daylight sleep better,
+  feel better, and perform better at work than those stuck in windowless spaces. If
+  you can't change your office, get outside on breaks — even 10 minutes helps.
+caveats:
+- Causation vs correlation hard to fully disentangle in workplace studies.
+- Daylight access often clusters with other quality-of-life factors.
+linked_to_topics:
+- depression-lifestyle
+- circadian-rhythm-disruption
+- sleep-quality
+- circadian-alertness-rhythm
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- melanopsin-mood-light-axis
+- scn-light-entrainment
+linked_to_supplements: []
+sources:
+- id: panda-circadian-code-book
+  location: p. 159
+  quote: a unique collaborative study between neurologists and architects found that
+    office workers with access to daylight had better mood, performance, and sleep
+    quality than those working in windowless offices.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani
