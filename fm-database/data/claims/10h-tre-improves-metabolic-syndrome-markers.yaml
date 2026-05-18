@@ -1,0 +1,49 @@
+slug: 10h-tre-improves-metabolic-syndrome-markers
+statement: In a 12-week single-arm pilot study of 19 patients with metabolic syndrome
+  (already on statin and/or antihypertensive therapy), self-selected 10-hour time-restricted
+  eating produced statistically significant improvements in body weight, waist circumference,
+  BMI, total cholesterol, LDL-C, non-HDL-C, blood pressure (systolic and diastolic),
+  and HbA1c. Authors describe TRE as 'a potentially powerful lifestyle intervention
+  that can be added to standard medical practice'.
+evidence_tier: plausible_emerging
+rationale: Small pilot study (n=19), single-arm (no concurrent control), participants
+  chose their own 10h window (averaging ~10.5h). All were on existing cardiometabolic
+  medications, so improvements happened ON TOP of standard care. Authors carefully
+  use "potentially powerful" rather than claims of definitive benefit. The fact that
+  improvements emerged within the constraint of existing meds is encouraging; magnitude
+  of changes modest but consistent across markers. Would need larger RCT to call this
+  strong evidence.
+coaching_translation: A small study with 19 metabolic-syndrome patients showed that
+  compressing their eating to a 10-hour window (any 10 hours they chose) for 12 weeks
+  improved nearly every cardiometabolic marker measured — weight, waist, BP, LDL,
+  A1c. They were already on statins and blood-pressure meds; this was additional improvement
+  on top of that. Effect sizes were modest, but the consistency across markers is
+  the encouraging signal.
+caveats:
+- Pilot study only — small N, no control arm, no RCT validation yet.
+- All participants on existing cardiometabolic medication; effects in drug-naïve patients
+  may differ.
+- Self-selected window means high motivation bias.
+- Authors explicitly note this needs to be confirmed in larger trials.
+- Most participants stayed close to a single chosen window; for clients who can't
+  commit to consistent timing, expected benefit is lower.
+linked_to_topics:
+- intermittent-fasting
+- meal-timing-and-digestive-rest
+- metabolic-syndrome
+- insulin-resistance
+- cardiometabolic-disease
+linked_to_mechanisms:
+- peripheral-clock-feeding-window-coupling
+sources:
+- id: wilkinson-2019-10h-tre-metabolic-syndrome
+  location: Abstract
+  quote: TRE is a potentially powerful lifestyle intervention that can be added to
+    standard medical practice to treat metabolic syndrome.
+out_of_scope_notes: Coach educates on the principle + suggests 10-12h window as a
+  try; clients on diabetes / cardiometabolic medication should coordinate with their
+  prescribing clinician (hypoglycaemia risk, med-titration may be needed).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

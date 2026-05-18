@@ -1,0 +1,42 @@
+slug: extended-feeding-window-disrupts-metabolic-rhythms
+statement: Ad-libitum eating across the 24-hour cycle (i.e. no consistent fasting
+  window) flattens the oscillations of hepatic clock genes (BMAL1, PER2, CRY1, REV-ERBα),
+  suppresses rhythmic CREB/mTOR/AMPK signalling, and decouples peripheral tissue clocks
+  from the central SCN light-entrained clock. This temporal disruption — independent
+  of total calories — drives obesity, hepatic steatosis, hyperinsulinemia, and inflammation
+  in mouse models, and is hypothesized to contribute to similar outcomes in shift-workers
+  and humans with irregular eating patterns.
+evidence_tier: strong
+rationale: Mechanism (clock gene flattening from feeding-rhythm disruption) is well-established
+  in mouse hepatic studies (Hatori 2012, plus broader literature). Human extrapolation
+  is weaker — most data is observational on shift-workers. The directional claim (chronic
+  ad-lib eating disrupts rhythms) is robust; the magnitude of effect in any given
+  human is variable.
+coaching_translation: Snacking from morning till bedtime — even small snacks — keeps
+  your liver in constant "fed mode". The liver clock flattens out. Your body never
+  gets a clear fasting window to flip into fat-oxidation and cellular cleanup. This
+  is the mechanism behind why late-night eating is metabolically worse than the same
+  calories earlier in the day, and why shift workers have higher cardiovascular and
+  metabolic disease risk even at the same BMI as day workers.
+caveats:
+- Late-night eating SOMETIMES is fine; chronic late-night eating is the problem.
+- Effect magnitude in humans varies — some clients see big benefit from any compressed
+  window; others see modest changes.
+- Shift work as the comparator is hard to disentangle from sleep disruption.
+linked_to_topics:
+- intermittent-fasting
+- meal-timing-and-digestive-rest
+- circadian-rhythm-disruption
+linked_to_mechanisms:
+- peripheral-clock-feeding-window-coupling
+- scn-light-entrainment
+sources:
+- id: hatori-2012-time-restricted-feeding-mice
+  location: Discussion
+  quote: Temporal disruption in cellular metabolic processes, in combination with
+    nutrient quality, predisposes the organism to obesity.
+out_of_scope_notes: ''
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,54 @@
+slug: trf-prevents-obesity-without-caloric-restriction-mice
+statement: In mice fed an isocaloric high-fat diet, time-restricted feeding (8 hours/day
+  vs ad libitum access) prevented obesity (28% lower body weight, 70% lower fat mass),
+  restored glucose tolerance, normalised serum cholesterol, reduced hepatic steatosis
+  (Brunt score), and lowered systemic inflammation (TNF-α, IL-6, CXCL2) — without
+  any reduction in caloric intake. Authors explicitly state they 'demonstrate' these
+  effects in the mouse model; human relevance described as 'unclear, more studies
+  necessary'.
+evidence_tier: plausible_emerging
+rationale: Mouse-only data (C57BL/6 males, n per group not large) but with rigorous
+  mechanistic chain (gene expression → metabolite → phenotype). Authors use strong
+  "demonstrate" language for the mouse findings; cautious "more studies are necessary"
+  for human applicability. Direction + magnitude of effect is plausible for humans
+  based on later human TRE trials (Wilkinson 2019, Sutton 2018), but the magnitude
+  in humans is smaller and mediated more by caloric reduction. Coach should NOT promise
+  clients 28% weight loss from TRE alone — the human effect is much milder (~3-5%
+  body weight at 12 weeks).
+coaching_translation: 'Mice on a high-fat diet who ate the SAME calories but only
+  within an 8-hour window stayed lean — while mice who ate the same food across 24
+  hours got obese. That is not a typo. In humans the effect is smaller (a few %, not
+  28%) but the principle holds: when you eat matters, not just what you eat. A compressed
+  eating window (8-12 hours) gives your liver and gut a real fasting state every day,
+  which they use to clean up + reset.'
+caveats:
+- Mouse data extrapolated to humans is always speculative; the mouse metabolic rate,
+  lifespan, and feeding patterns differ from humans.
+- Effect magnitude in humans is far smaller (~3-5% body weight in 12 weeks vs 28%
+  in mice).
+- Not appropriate for clients with eating-disorder history; underweight; pregnant/breastfeeding;
+  type 1 diabetes; on insulin or sulfonylurea (hypoglycaemia risk) — confirm with
+  clinician.
+- The 8h window itself is somewhat arbitrary in the original paper; later human work
+  suggests 10-12h is a more achievable + still-effective window.
+linked_to_topics:
+- intermittent-fasting
+- meal-timing-and-digestive-rest
+- insulin-resistance
+linked_to_mechanisms:
+- peripheral-clock-feeding-window-coupling
+- ampk-activation
+sources:
+- id: hatori-2012-time-restricted-feeding-mice
+  location: Abstract + Figures 1-3
+  quote: tRF regimen is a non-pharmacological strategy against obesity.
+- id: hatori-2012-time-restricted-feeding-mice
+  location: Discussion
+  quote: More studies are necessary to define the relationship between temporal eating
+    and obesity in humans.
+out_of_scope_notes: Coach educates on the principle; does NOT promise specific outcomes.
+  Refers out for clients on diabetes meds or with eating-disorder history.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,52 @@
+slug: peripheral-clock-feeding-window-coupling
+display_name: Peripheral-Clock Coupling to Eating Window
+aliases:
+- hepatic circadian oscillator restoration
+- liver clock feeding entrainment
+- meal-timing peripheral clock entrainment
+category: metabolic
+summary: 'Beyond the master SCN clock in the brain, peripheral tissues (liver, gut,
+  pancreas, adipose) carry their own circadian oscillators that are entrained primarily
+  by FEEDING-FASTING cycles rather than by light. Core clock genes (BMAL1, PER2, CRY1,
+  REV-ERBα) oscillate in liver tissue with amplitudes that depend on a clear feeding
+  window. Ad-libitum eating across the 24-hour cycle (or chronic high-fat diet without
+  a fasting window) flattens these oscillations, decoupling the peripheral clocks
+  from the central SCN. Restoring a 8–10 hour eating window restores: rhythmic CREB
+  phosphorylation (fasting marker), rhythmic mTOR/S6 activation (feeding marker),
+  AMPK-driven fatty acid oxidation, gluconeogenic gene suppression (Pcx, G6pc) via
+  CRY/CREB pathway, and reduced lipogenic gene expression (Fasn, Scd1, Elovl5). Net
+  effect: liver shifts from constant lipogenesis + gluconeogenesis toward rhythmic
+  fed/fasted metabolic cycling, with downstream benefits on body composition, glucose
+  tolerance, and lipid panels.'
+upstream_drivers:
+- extended-feeding-window
+- ad-libitum-eating
+- shift-work
+- circadian-rhythm-disruption
+downstream_effects:
+- insulin-resistance
+- hepatic-fat-accumulation
+- cortisol-melatonin-rhythm-coupling
+related_mechanisms:
+- ampk-activation
+- scn-light-entrainment
+- adenosine-sleep-pressure
+- insulin-resistance
+linked_to_topics:
+- intermittent-fasting
+- meal-timing-and-digestive-rest
+- circadian-rhythm-disruption
+- insulin-resistance
+sources:
+- id: hatori-2012-time-restricted-feeding-mice
+  location: Abstract + Results
+  quote: tRF imposed a diurnal rhythm in food intake thereby restoring the daytime
+    peak in pCREB.
+- id: wilkinson-2019-10h-tre-metabolic-syndrome
+  location: Discussion
+  quote: TRE is a potentially powerful lifestyle intervention to treat metabolic syndrome.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani
