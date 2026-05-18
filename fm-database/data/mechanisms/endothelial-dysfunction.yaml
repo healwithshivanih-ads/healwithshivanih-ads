@@ -15,9 +15,8 @@ aliases:
 - vascular endothelial injury
 - GAG layer disruption
 category: structural
-summary: Damage or dysfunction of the arterial intimal endothelium, initiated by weakening
-  of the GAG layer from insulin resistance, reactive oxygen/nitrogen species, heavy
-  metal toxicity, hyperhomocysteinemia, and inhibition of nitric oxide production;
+summary: Damage or dysfunction of the arterial intimal endothelium, initiated by weakening of the GAG layer from insulin resistance,
+  reactive oxygen/nitrogen species, heavy metal toxicity, hyperhomocysteinemia, and inhibition of nitric oxide production;
   the initiating event in atherogenesis.
 upstream_drivers:
 - oxidative-stress
@@ -25,12 +24,10 @@ upstream_drivers:
 - systemic-inflammation
 - elevated-homocysteine
 - insulin-resistance
-- hyperhomocysteinemia
 - heavy-metal-toxicity
 - smoking
 downstream_effects:
 - ldl-oxidation
-- macrophage-infiltration
 - foam-cell-formation
 - calcium-deposition-in-plaque
 - lipoprotein-infiltration
@@ -50,23 +47,20 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Atherosclerosis mechanism section
-  quote: First thing is there should be endothelial dysfunction. If your endothelium
-    is cracked, then nothing can go inside the endothelium. But because of so many
-    factors, you can say oxidative stress, hypertension, even any kind of inflammation.
+  quote: First thing is there should be endothelial dysfunction. If your endothelium is cracked, then nothing can go inside
+    the endothelium. But because of so many factors, you can say oxidative stress, hypertension, even any kind of inflammation.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Vascular Integrity and Nitric Oxide
-  quote: A healthy endothelium produces nitric oxide. Lots of nitric oxide, lots of
-    vasodilatation, less stiffness of the vessel.
+  quote: A healthy endothelium produces nitric oxide. Lots of nitric oxide, lots of vasodilatation, less stiffness of the
+    vessel.
 - id: coconote-fm-biomarkers-cvs
   location: Atherosclerosis Mechanism
-  quote: So, the primary cause for formation of plaque is actually endothelial injury.
-    So, the innermost layer of blood vessel that we call endothelium. And when you
-    have endothelial injury, that leads to formation of acrylocellulosis.
+  quote: So, the primary cause for formation of plaque is actually endothelial injury. So, the innermost layer of blood vessel
+    that we call endothelium. And when you have endothelial injury, that leads to formation of acrylocellulosis.
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Process of Atherosclerosis
-  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer
-    as a result of insulin resistance, reactive oxygen and nitrogen species, impaired
-    repair processes, heavy metal toxicity, hyperhomocysteinemia, and inhibition of
+  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer as a result of insulin resistance, reactive
+    oxygen and nitrogen species, impaired repair processes, heavy metal toxicity, hyperhomocysteinemia, and inhibition of
     either nitric oxide production or availability.
 version: 2
 status: active

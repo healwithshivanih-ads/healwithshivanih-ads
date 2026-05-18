@@ -9,11 +9,9 @@ aliases:
 - altered bowel flora
 - microbiome imbalance
 category: gut
-summary: Imbalance in gut microbial ecology — reduction of commensal lactobacilli
-  and bifidobacteria with overgrowth of pathogens (Candida, pathogenic bacteria, parasites)
-  — driven by antibiotic use, high-sugar diet, immunosuppression, and stress. Dysbiosis
-  impairs gut mucosal immunity, increases intestinal permeability, and drives systemic
-  inflammatory and allergic responses.
+summary: Imbalance in gut microbial ecology — reduction of commensal lactobacilli and bifidobacteria with overgrowth of pathogens
+  (Candida, pathogenic bacteria, parasites) — driven by antibiotic use, high-sugar diet, immunosuppression, and stress. Dysbiosis
+  impairs gut mucosal immunity, increases intestinal permeability, and drives systemic inflammatory and allergic responses.
 upstream_drivers:
 - antibiotic-exposure
 - refined-carbohydrate-diet
@@ -30,7 +28,7 @@ downstream_effects:
 - food-allergy
 - chronic-diarrhea
 - ibs-symptoms
-- candida-overgrowth
+- dysbiosis-gut-microbiome-imbalance
 - food-allergies
 - impaired-immune-function
 - sifo
@@ -53,15 +51,13 @@ evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi
   location: Therapeutic Considerations — Intestinal Microflora
-  quote: Alterations in metabolic activity of bacteria are more important than alterations
-    in number of bacteria. Early research is showing some response to fecal transplants,
-    supporting the concept that microflora imbalance plays an important role in the
-    underlying pathophysiology.
+  quote: Alterations in metabolic activity of bacteria are more important than alterations in number of bacteria. Early research
+    is showing some response to fecal transplants, supporting the concept that microflora imbalance plays an important role
+    in the underlying pathophysiology.
 - id: pizzorno-textbook-gi-2
   location: Chronic Candidiasis — General Considerations
-  quote: Prolonged antibiotic use is the key factor in most cases—suppresses normal
-    intestinal bacteria that control yeast, suppresses immunity, generates antibiotic-resistant
-    microbes, may contribute to Crohn's disease.
+  quote: Prolonged antibiotic use is the key factor in most cases—suppresses normal intestinal bacteria that control yeast,
+    suppresses immunity, generates antibiotic-resistant microbes, may contribute to Crohn's disease.
 version: 2
 status: active
 updated_at: '2026-05-18'

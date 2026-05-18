@@ -3,14 +3,13 @@ display_name: Diabetic Nephropathy
 aliases:
 - diabetic kidney disease
 - diabetic renal disease
-summary: Affects 40% of severe nephropathy cases; most common reason for haemodialysis
-  and kidney transplant. Monitor via microalbuminuria, creatinine, GFR. ACE inhibitors/ARBs
-  are standard of care.
+summary: Affects 40% of severe nephropathy cases; most common reason for haemodialysis and kidney transplant. Monitor via
+  microalbuminuria, creatinine, GFR. ACE inhibitors/ARBs are standard of care.
 evidence_tier: strong
 common_symptoms:
 - microalbuminuria
 - elevated-creatinine
-- oedema
+- hypertension-fluid-retention
 red_flags:
 - end-stage-renal-disease
 - severe-proteinuria
@@ -21,15 +20,13 @@ key_mechanisms:
 - glucotoxicity
 - oxidative-damage
 - hypertension-mediated-damage
-coaching_scope_notes: Low-protein diet for progressed nephropathy; soluble fibre;
-  vitamins C and E shown to reduce microalbuminuria. Blood pressure normalisation
-  critical. Refer to nephrologist.
+coaching_scope_notes: Low-protein diet for progressed nephropathy; soluble fibre; vitamins C and E shown to reduce microalbuminuria.
+  Blood pressure normalisation critical. Refer to nephrologist.
 clinician_scope_notes: ''
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Specific Complications
-  quote: 'Diabetic nephropathy: 40% of cases of severe nephropathosis and most common
-    reason for hemodialysis and kidney transplant.'
+  quote: 'Diabetic nephropathy: 40% of cases of severe nephropathosis and most common reason for hemodialysis and kidney transplant.'
 version: 1
 status: active
 updated_at: '2026-05-18'

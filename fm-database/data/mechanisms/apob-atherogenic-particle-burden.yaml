@@ -17,7 +17,7 @@ upstream_drivers:
 - atherogenic-diet
 - genetic-dyslipidaemia
 downstream_effects:
-- plaque-formation
+- plaque-progression
 - increased-cardiovascular-events
 - atherosclerosis
 - cardiovascular-events

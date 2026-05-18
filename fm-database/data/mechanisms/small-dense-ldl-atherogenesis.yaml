@@ -20,7 +20,7 @@ upstream_drivers:
 - high-sugar-diet
 downstream_effects:
 - ldl-oxidation
-- plaque-formation
+- plaque-progression
 - increased-cardiovascular-events
 related_mechanisms:
 - vldl-to-ldl-cascade

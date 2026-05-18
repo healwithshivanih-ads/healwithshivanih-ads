@@ -11,9 +11,8 @@ aliases:
 - hs-CRP elevation
 - inflammatory burden
 category: immune
-summary: Chronic low-grade systemic inflammation, reflected by elevated high-sensitivity
-  CRP, is an independent CVD risk factor and stronger predictor of cardiovascular
-  events than LDL-C; linked to insulin resistance, metabolic syndrome, and all stages
+summary: Chronic low-grade systemic inflammation, reflected by elevated high-sensitivity CRP, is an independent CVD risk factor
+  and stronger predictor of cardiovascular events than LDL-C; linked to insulin resistance, metabolic syndrome, and all stages
   of atheroma development.
 upstream_drivers:
 - high-carbohydrate-diet
@@ -34,7 +33,6 @@ upstream_drivers:
 - environmental-toxins
 - hpa-axis-dysregulation
 - obesity
-- metabolic-syndrome
 - type-a-personality
 downstream_effects:
 - autoimmune-conditions
@@ -92,21 +90,20 @@ sources:
   quote: Chronic stress drives inflammation—use yoga nidra, deep breathing.
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Lab Results
-  quote: C-reactive protein is a marker associated with the production of inflammatory
-    cytokines, which represent a threat to cardiovascular health.
+  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which represent a threat
+    to cardiovascular health.
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Who Benefits from Fasting?
-  quote: Fasting may be beneficial for insulin resistance, blood sugar, blood pressure,
-    inflammation, short-term weight loss, and brain health.
+  quote: Fasting may be beneficial for insulin resistance, blood sugar, blood pressure, inflammation, short-term weight loss,
+    and brain health.
 - id: coconote-fm-chronic-pain-fatigue
   location: Inflammation Section
-  quote: I'm sure whenever people come to chronic fatigue and the pain, the first
-    thing comes inflammation, but inflammation is one of the roots out of three.
+  quote: I'm sure whenever people come to chronic fatigue and the pain, the first thing comes inflammation, but inflammation
+    is one of the roots out of three.
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Other Risk Factors
-  quote: CRP, an acute-phase reactant reflecting degrees of inflammation, is an independent
-    risk factor for CAD. CRP level is a stronger predictor of cardiovascular events
-    than LDL-C level; screening for both biomarkers is more prognostic.
+  quote: CRP, an acute-phase reactant reflecting degrees of inflammation, is an independent risk factor for CAD. CRP level
+    is a stronger predictor of cardiovascular events than LDL-C level; screening for both biomarkers is more prognostic.
 version: 6
 status: active
 updated_at: '2026-05-18'

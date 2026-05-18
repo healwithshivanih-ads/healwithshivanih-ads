@@ -13,7 +13,7 @@ upstream_drivers:
 - immune-activation
 - endothelial-dysfunction
 downstream_effects:
-- plaque-formation
+- plaque-progression
 - arterial-narrowing
 - plaque-rupture
 - myocardial-infarction

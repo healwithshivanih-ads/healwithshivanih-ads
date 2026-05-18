@@ -4,16 +4,15 @@ aliases:
 - peripheral diabetic neuropathy
 - autonomic diabetic neuropathy
 - stocking-glove neuropathy
-summary: Loss of peripheral and/or autonomic nerve function affecting 60% of diabetics,
-  causing tingling, numbness, burning pain, gastroparesis, impotence, and risk of
-  foot ulcers and amputation.
+summary: Loss of peripheral and/or autonomic nerve function affecting 60% of diabetics, causing tingling, numbness, burning
+  pain, gastroparesis, impotence, and risk of foot ulcers and amputation.
 evidence_tier: strong
 common_symptoms:
 - tingling-hands-feet
 - numbness-hands-feet
 - burning-pain-feet
 - gastroparesis
-- impotence
+- erectile-dysfunction
 - foot-ulcers
 red_flags:
 - foot-ulcer-with-gangrene
@@ -27,15 +26,14 @@ key_mechanisms:
 - glucotoxicity
 - oxidative-damage
 - nutrient-deficiency
-coaching_scope_notes: Alpha-lipoic acid, GLA, benfotiamine, capsaicin, magnesium,
-  B6, B12 are evidence-informed adjuncts. Foot care hygiene critical. Refer for severe
-  or progressing neuropathy.
+coaching_scope_notes: Alpha-lipoic acid, GLA, benfotiamine, capsaicin, magnesium, B6, B12 are evidence-informed adjuncts.
+  Foot care hygiene critical. Refer for severe or progressing neuropathy.
 clinician_scope_notes: ''
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Specific Complications
-  quote: 'Diabetic neuropathy: loss of peripheral nerve function with tingling, numbness,
-    loss of function, and burning pain (neuropathic pain).'
+  quote: 'Diabetic neuropathy: loss of peripheral nerve function with tingling, numbness, loss of function, and burning pain
+    (neuropathic pain).'
 version: 1
 status: active
 updated_at: '2026-05-18'

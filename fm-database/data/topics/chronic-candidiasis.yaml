@@ -4,15 +4,14 @@ aliases:
 - candida overgrowth syndrome
 - yeast syndrome
 - candida-related complex
-summary: Systemic symptom complex resulting from Candida albicans overgrowth in the
-  GI tract and vagina, facilitated by impaired immunity, antibiotic use, high-sugar
-  diet, and altered bowel flora. Presents as fatigue, allergies, digestive disturbances,
-  depression, and chemical sensitivities. Requires comprehensive approach addressing
-  predisposing factors, not just antifungal therapy.
+summary: Systemic symptom complex resulting from Candida albicans overgrowth in the GI tract and vagina, facilitated by impaired
+  immunity, antibiotic use, high-sugar diet, and altered bowel flora. Presents as fatigue, allergies, digestive disturbances,
+  depression, and chemical sensitivities. Requires comprehensive approach addressing predisposing factors, not just antifungal
+  therapy.
 common_symptoms:
 - chronic-fatigue
 - bloating
-- gas
+- flatulence
 - vaginal-yeast-infection
 - brain-fog
 - carbohydrate-craving
@@ -22,7 +21,7 @@ red_flags:
 - Failure to respond to natural therapy — refer for conventional antifungal
 - Recurrent infections suggesting immunocompromise
 related_topics:
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 - food-allergy
 - sifo
 - celiac-disease
@@ -30,19 +29,17 @@ key_mechanisms:
 - dysbiosis
 - leaky-gut
 - impaired-immune-function
-coaching_scope_notes: Coaches can support anti-Candida diet, probiotic use, and lifestyle
-  changes. CSDA and antifungal prescription are clinician scope.
-clinician_scope_notes: Use comprehensive stool and digestive analysis (CSDA) to confirm.
-  Monitor with stool cultures and Candida antigen levels. Consider Herxheimer reactions
-  when initiating antiyeast therapy.
+coaching_scope_notes: Coaches can support anti-Candida diet, probiotic use, and lifestyle changes. CSDA and antifungal prescription
+  are clinician scope.
+clinician_scope_notes: Use comprehensive stool and digestive analysis (CSDA) to confirm. Monitor with stool cultures and Candida
+  antigen levels. Consider Herxheimer reactions when initiating antiyeast therapy.
 evidence_tier: plausible_emerging
 sources:
 - id: pizzorno-textbook-gi-2
   location: Chronic Candidiasis — General Considerations
-  quote: 'Candida is normal in the GI tract and vagina. Overgrowth, depleted immunity,
-    damaged GI mucosa allow absorption of yeast cells, particles, toxins; result is
-    ''yeast syndrome'' or ''feeling sick all over'': fatigue, allergies, immune system
-    malfunction, depression, chemical sensitivities, and digestive disturbances.'
+  quote: 'Candida is normal in the GI tract and vagina. Overgrowth, depleted immunity, damaged GI mucosa allow absorption
+    of yeast cells, particles, toxins; result is ''yeast syndrome'' or ''feeling sick all over'': fatigue, allergies, immune
+    system malfunction, depression, chemical sensitivities, and digestive disturbances.'
 version: 1
 status: active
 updated_at: '2026-05-18'

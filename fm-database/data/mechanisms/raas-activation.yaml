@@ -5,15 +5,13 @@ aliases:
 - angiotensin II excess
 - renin-angiotensin system overactivity
 category: endocrine
-summary: Renin, secreted by kidney juxtaglomerular cells, generates vasoconstricting
-  peptide angiotensin II and is linked to aldosterone in a negative feedback loop.
-  Dysregulation — whether from low, normal, or high renin states — leads to sodium
-  retention, volume expansion, and elevated vascular tone, all driving blood pressure
-  elevation.
+summary: Renin, secreted by kidney juxtaglomerular cells, generates vasoconstricting peptide angiotensin II and is linked
+  to aldosterone in a negative feedback loop. Dysregulation — whether from low, normal, or high renin states — leads to sodium
+  retention, volume expansion, and elevated vascular tone, all driving blood pressure elevation.
 upstream_drivers:
 - sodium-excess
 - volume-depletion
-- adrenergic-overactivity
+- sympathetic-overactivity
 - obesity
 - insulin-resistance
 downstream_effects:
@@ -32,8 +30,8 @@ evidence_tier: strong
 sources:
 - id: pizzorno-cardiometabolic-hypertension
   location: General Considerations
-  quote: Renin helps generate vasoconstricting peptide angiotensin II. Renin secretion
-    is influenced by fluid volume and sodium (Na) intake.
+  quote: Renin helps generate vasoconstricting peptide angiotensin II. Renin secretion is influenced by fluid volume and sodium
+    (Na) intake.
 version: 1
 status: active
 updated_at: '2026-05-18'

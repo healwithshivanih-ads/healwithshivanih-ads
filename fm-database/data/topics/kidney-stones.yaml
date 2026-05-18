@@ -6,11 +6,10 @@ aliases:
 - renal calculi
 - calcium oxalate stones
 - uric acid stones
-summary: Kidney stones affect 10% of men during their lifetime; incidence parallels
-  Western-diet diseases (atherosclerosis, hypertension, diabetes). 75–85% are calcium-based
-  (oxalate or phosphate); 10–15% struvite; 5–8% uric acid. Diet-induced acidosis,
-  dehydration, high animal protein, low magnesium/citrate, and dysbiosis (absence
-  of Oxalobacter formigenes) are key modifiable risk factors.
+summary: Kidney stones affect 10% of men during their lifetime; incidence parallels Western-diet diseases (atherosclerosis,
+  hypertension, diabetes). 75–85% are calcium-based (oxalate or phosphate); 10–15% struvite; 5–8% uric acid. Diet-induced
+  acidosis, dehydration, high animal protein, low magnesium/citrate, and dysbiosis (absence of Oxalobacter formigenes) are
+  key modifiable risk factors.
 common_symptoms:
 - flank-pain
 - radiating-pain-to-groin
@@ -23,24 +22,22 @@ red_flags:
 - anuria
 related_topics:
 - maldigestion
-- dysbiosis
+- gut-dysbiosis
 key_mechanisms:
 - hypercalciuria
 - hyperoxaluria
 - low-urinary-citrate
 - dysbiosis
-coaching_scope_notes: Coaches may guide fluid intake (>2 L/day), dietary modifications
-  by stone type, and supplement support (magnesium, vitamin B6, vitamin K). Refer
-  acute obstruction or haematuria immediately.
-clinician_scope_notes: Differentiate stone type before treatment. Evaluate serum and
-  urinary calcium, uric acid, creatinine, electrolytes. Consider Oxalobacter formigenes
-  repopulation for recurrent calcium-oxalate stones.
+coaching_scope_notes: Coaches may guide fluid intake (>2 L/day), dietary modifications by stone type, and supplement support
+  (magnesium, vitamin B6, vitamin K). Refer acute obstruction or haematuria immediately.
+clinician_scope_notes: Differentiate stone type before treatment. Evaluate serum and urinary calcium, uric acid, creatinine,
+  electrolytes. Consider Oxalobacter formigenes repopulation for recurrent calcium-oxalate stones.
 evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi
   location: Kidney Stones — General Considerations
-  quote: Ten percent of all men have kidney stones (KSs) during their lifetime. Annual
-    incidence is 0.1% to 6.0% of the general population.
+  quote: Ten percent of all men have kidney stones (KSs) during their lifetime. Annual incidence is 0.1% to 6.0% of the general
+    population.
 version: 1
 status: active
 updated_at: '2026-05-18'

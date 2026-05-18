@@ -16,7 +16,7 @@ upstream_drivers:
 downstream_effects:
 - endothelial-dysfunction
 - atherosclerosis
-- plaque-formation
+- plaque-progression
 - cardiovascular-events
 related_mechanisms:
 - insulin-resistance

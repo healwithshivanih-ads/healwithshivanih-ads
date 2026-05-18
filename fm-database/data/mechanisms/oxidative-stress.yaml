@@ -23,11 +23,9 @@ aliases:
 - reactive-oxygen-species
 - antioxidant-deficiency
 category: metabolic
-summary: Increased oxidative stress and decreased antioxidant defences in mucosal
-  tissue are hallmarks of IBD and ARMD, causing protein and DNA oxidative damage.
-  IBD patients show deficiencies in selenium-dependent glutathione peroxidase, Cu-Zn
-  superoxide dismutase, and the cofactors zinc, copper, ascorbate, vitamin E, and
-  vitamin A.
+summary: Increased oxidative stress and decreased antioxidant defences in mucosal tissue are hallmarks of IBD and ARMD, causing
+  protein and DNA oxidative damage. IBD patients show deficiencies in selenium-dependent glutathione peroxidase, Cu-Zn superoxide
+  dismutase, and the cofactors zinc, copper, ascorbate, vitamin E, and vitamin A.
 upstream_drivers:
 - poor-diet
 - toxin-exposure
@@ -48,7 +46,7 @@ upstream_drivers:
 downstream_effects:
 - ldl-oxidation
 - endothelial-dysfunction
-- plaque-formation
+- plaque-progression
 - nlrp3-inflammasome-activation
 - tissue-damage
 - immune-dysfunction
@@ -103,33 +101,28 @@ sources:
   quote: Oxidized LDL — Shows oxidative burden — Address antioxidants & inflammation.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations — NAC'
-  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
-    that supports immune function.
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant that supports immune function.
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Improves/Decreases Table
   quote: 'Intermittent fasting Improves: Antioxidant activity. Decreases: Free radicals.'
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Free radicals need to be neutralized or they will create damage (often referred
-    to as 'oxidative stress') in the body. Excess free radicals can damage the body
-    by initiating the death of cells, leading to premature aging.
+  quote: Free radicals need to be neutralized or they will create damage (often referred to as 'oxidative stress') in the
+    body. Excess free radicals can damage the body by initiating the death of cells, leading to premature aging.
 - id: vitaone-liver-detox-toolkit
   location: Features of the Detox Food Plan
-  quote: Key antioxidants help protect the body and support biotransformation of these
-    metabolites.
+  quote: Key antioxidants help protect the body and support biotransformation of these metabolites.
 - id: vitaone-health-coaching-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant
-    that supports immune function.
+  quote: N-acetylcysteine promotes the production of glutathione, a potent antioxidant that supports immune function.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – oxidative-stress-and-inflammation
-  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
-    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
-    against oxidative stress and inflammation.
+  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3, CoQ10, NAC, curcumin, boswellia, green
+    tea extract, and antioxidant foods as supports against oxidative stress and inflammation.
 - id: pizzorno-textbook-gi
   location: Vitamins — Antioxidant Defenses
-  quote: Increased oxidative stress and decreased antioxidant defenses in mucosa are
-    hallmarks of IBD, with associated protein and DNA oxidative damage.
+  quote: Increased oxidative stress and decreased antioxidant defenses in mucosa are hallmarks of IBD, with associated protein
+    and DNA oxidative damage.
 version: 8
 status: active
 updated_at: '2026-05-18'

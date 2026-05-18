@@ -4,15 +4,14 @@ aliases:
 - platelet hyperaggregability
 - coagulation activation
 category: immune
-summary: Increased platelet aggregation and elevated fibrinogen create a prothrombotic
-  environment that promotes clot formation on atherosclerotic plaques and is an independent
-  CVD risk factor stronger than cholesterol.
+summary: Increased platelet aggregation and elevated fibrinogen create a prothrombotic environment that promotes clot formation
+  on atherosclerotic plaques and is an independent CVD risk factor stronger than cholesterol.
 upstream_drivers:
 - smoking
 - omega-3-deficiency
 - low-vitamin-b6
-- metabolic-syndrome
-- hyperhomocysteinemia
+- insulin-resistance
+- elevated-homocysteine
 downstream_effects:
 - plaque-progression
 - acute-mi
@@ -27,8 +26,7 @@ evidence_tier: strong
 sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Fibrinogen
-  quote: There is a stronger association between cardiovascular deaths and fibrinogen
-    levels than for cholesterol.
+  quote: There is a stronger association between cardiovascular deaths and fibrinogen levels than for cholesterol.
 version: 1
 status: active
 updated_at: '2026-05-18'

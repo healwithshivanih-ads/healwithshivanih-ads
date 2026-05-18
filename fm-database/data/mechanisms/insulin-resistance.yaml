@@ -37,9 +37,8 @@ aliases:
 - GLUT4 impairment
 - insulin insensitivity
 category: metabolic
-summary: Insulin resistance impairs ion transport across cell membranes, lowering
-  intracellular magnesium and raising intracellular calcium in vascular smooth muscle,
-  increasing vascular reactivity and blood pressure. Present even in lean hypertensives,
+summary: Insulin resistance impairs ion transport across cell membranes, lowering intracellular magnesium and raising intracellular
+  calcium in vascular smooth muscle, increasing vascular reactivity and blood pressure. Present even in lean hypertensives,
   suggesting a strong intrinsic link between insulin sensitivity and BP.
 upstream_drivers:
 - chronic carbohydrate excess (especially refined)
@@ -97,9 +96,7 @@ upstream_drivers:
 - high-sugar-diet
 - central-adiposity-inflammation
 - refined-carbohydrate-excess
-- metabolic-syndrome
 - visceral-adiposity-endocrine-dysfunction
-- chronic-low-grade-inflammation
 - persistent-organic-pollutant-toxicity
 - oxidative-damage
 - high-gl-diet
@@ -264,57 +261,50 @@ sources:
   location: practice_guide.md, Metabolic section
 - id: vitaone-sex-hormones-cheatsheet
   location: PCOD Cheatsheet — Key Mediators
-  quote: Hyperinsulinemia → stimulates theca cells → ↑ androgens; Low SHBG → ↑ free
-    testosterone.
+  quote: Hyperinsulinemia → stimulates theca cells → ↑ androgens; Low SHBG → ↑ free testosterone.
 - id: vitaone-adrenal-cheatsheet
   location: Stress & Chronic Diseases Link (p.9)
-  quote: 'Chronic cortisol elevation →↑ gluconeogenesis, insulin resistance. Key Mechanisms:
-    HPA axis overdrive, sympathetic dominance, inflammatory cytokines.'
+  quote: 'Chronic cortisol elevation →↑ gluconeogenesis, insulin resistance. Key Mechanisms: HPA axis overdrive, sympathetic
+    dominance, inflammatory cytokines.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Therapeutic Considerations
   quote: Resistance Training improves GLUT4 receptor expression
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 2
-  quote: Dyslipidemia is rarely primary → Often secondary to Insulin resistance, Hypothyroidism,
-    NAFLD, Chronic stress & cortisol excess, Poor sleep.
+  quote: Dyslipidemia is rarely primary → Often secondary to Insulin resistance, Hypothyroidism, NAFLD, Chronic stress & cortisol
+    excess, Poor sleep.
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet
   quote: Insulin resistance, high fructose/sugar intake, obesity, inflammation
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: The Science of Low-Carb Diets
-  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes
-    fat mobilization.
+  quote: Reducing carbohydrates lowers postprandial glucose → lowers insulin → promotes fat mobilization.
 - id: vitaone-inflammation-cheatsheet
   location: Fasting & Immune Health Link — Page 15
-  quote: 'Improved insulin sensitivity: Stable blood sugar → Better immune signaling
-    → Metabolic-immune link'
+  quote: 'Improved insulin sensitivity: Stable blood sugar → Better immune signaling → Metabolic-immune link'
 - id: vitaone-nutrition-cheatsheet
   location: Magnesium – The Calming Mineral
   quote: Stabilizes blood sugar by aiding insulin signaling.
 - id: vitaone-blood-sugar-ebook
   location: Section 2.3 — Cellular Glucose Uptake and Intracellular Metabolism
-  quote: Insulin binds to its receptor on target cells (muscle, adipose, liver), initiating
-    a signalling cascade (IRS-1 → PI3K → Akt) that translocates GLUT-4 transporters
-    to the cell surface, thereby permitting glucose entry.
+  quote: Insulin binds to its receptor on target cells (muscle, adipose, liver), initiating a signalling cascade (IRS-1 →
+    PI3K → Akt) that translocates GLUT-4 transporters to the cell surface, thereby permitting glucose entry.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Insulin resistance causes the body to make more and more insulin in order
-    to keep blood sugars in a healthy range. Over time, the body's ability to produce
-    higher amounts of insulin is exhausted, which can lead to the development of prediabetes,
-    and eventually, type 2 diabetes.
+  quote: Insulin resistance causes the body to make more and more insulin in order to keep blood sugars in a healthy range.
+    Over time, the body's ability to produce higher amounts of insulin is exhausted, which can lead to the development of
+    prediabetes, and eventually, type 2 diabetes.
 - id: vitaone-sex-hormones-toolkit
   location: Estrogen Metabolism — Disrupts Healthy Estrogen Metabolism — Page 03
-  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed
-    to positively influence insulin sensitivity and weight, but conversely, insulin
-    resistance and obesity are thought to negatively influence estrogen metabolism.
+  quote: Insulin Resistance and obesity impair estrogen metabolism. Estrogen is believed to positively influence insulin sensitivity
+    and weight, but conversely, insulin resistance and obesity are thought to negatively influence estrogen metabolism.
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Lab Results
   quote: Insulin resistance increases risk
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Who Benefits from Fasting?
-  quote: Shorter-duration human & animal studies show that fasting may be beneficial
-    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
-    weight loss, and brain health.
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial for insulin resistance, blood sugar,
+    blood pressure, inflammation, short-term weight loss, and brain health.
 - id: vitaone-health-coaching-toolkit
   location: Hypercortisolism
   quote: Lowered insulin sensitivity, with a higher susceptibility to diabetes.
@@ -323,44 +313,38 @@ sources:
   quote: Excess insulin (Syndrome X)
 - id: coconote-fm-body-composition-bmi
   location: Metabolic Dysfunction Section
-  quote: Are there some persistent or organic pollutants or bisphenol A that may be
-    triggering this insulin resistance? Or is it really just that crummy standard
-    American diet that's low in nutrients and high in calories that's triggering their
+  quote: Are there some persistent or organic pollutants or bisphenol A that may be triggering this insulin resistance? Or
+    is it really just that crummy standard American diet that's low in nutrients and high in calories that's triggering their
     insulin resistance.
 - id: coconote-fm-estrogen-dominance
   location: How Does Inflammation Relate to Estrogen / Insulin Resistance Physiology
-  quote: Insulin is responsible for forming estrogen. So insulin resistance can cause
-    estrogen dominance. The insulin buildup actually upregulates the aromatase activity.
-    So it forms more estrogen.
+  quote: Insulin is responsible for forming estrogen. So insulin resistance can cause estrogen dominance. The insulin buildup
+    actually upregulates the aromatase activity. So it forms more estrogen.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Mediterranean Diet Evidence
-  quote: Reduced markers of inflammation with the Mediterranean diet, CRP, interleukin-6,
-    interleukin-7, interleukin-18, decreased insulin resistance.
+  quote: Reduced markers of inflammation with the Mediterranean diet, CRP, interleukin-6, interleukin-7, interleukin-18, decreased
+    insulin resistance.
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: 'Case discussion: insulin resistance and dyslipidemia'
-  quote: Classically you can see, his glycemic level is high and his STL level is
-    high... This patient is having insulin resistance. So, what you will do, you will
-    start working on insulin resistance.
+  quote: Classically you can see, his glycemic level is high and his STL level is high... This patient is having insulin resistance.
+    So, what you will do, you will start working on insulin resistance.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Insulin resistance is the primary driver in most metabolic diseases
 - id: coconote-fm-gtir
   location: Glucose Tolerance Insulin Response Test Explanation
-  quote: when patients start having insulin resistance they alter the initial receptor
-    and insulin secretion pattern
+  quote: when patients start having insulin resistance they alter the initial receptor and insulin secretion pattern
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Process of Atherosclerosis
-  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer
-    as a result of insulin resistance.
+  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer as a result of insulin resistance.
 - id: pizzorno-cardiometabolic-diabetes
   location: General Considerations / Classification
-  quote: Initially, insulin is elevated in T2DM, indicating loss of tissue sensitivity
-    to insulin. Obesity is a major contributing factor to loss of insulin sensitivity.
+  quote: Initially, insulin is elevated in T2DM, indicating loss of tissue sensitivity to insulin. Obesity is a major contributing
+    factor to loss of insulin sensitivity.
 - id: pizzorno-cardiometabolic-hypertension
   location: General Considerations
-  quote: Because insulin modifies ion transport across cell membranes, insulin insensitivity
-    decreases cytosolic magnesium (Mg) and increases cytosolic calcium (Ca) in vascular
-    smooth muscle, increasing vascular reactivity.
+  quote: Because insulin modifies ion transport across cell membranes, insulin insensitivity decreases cytosolic magnesium
+    (Mg) and increases cytosolic calcium (Ca) in vascular smooth muscle, increasing vascular reactivity.
 evidence_tier: strong
 version: 28
 status: active

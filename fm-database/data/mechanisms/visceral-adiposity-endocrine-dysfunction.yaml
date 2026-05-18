@@ -5,9 +5,9 @@ aliases:
 - adiponectin deficiency
 - adipokine imbalance
 category: endocrine
-summary: Hypertrophied abdominal adipocytes increase secretion of pro-inflammatory/insulin-antagonising
-  adipokines (resistin, leptin, TNF-α, FFAs) while reducing adiponectin, impairing
-  insulin sensitivity, promoting atherosclerosis, and elevating triglycerides.
+summary: Hypertrophied abdominal adipocytes increase secretion of pro-inflammatory/insulin-antagonising adipokines (resistin,
+  leptin, TNF-α, FFAs) while reducing adiponectin, impairing insulin sensitivity, promoting atherosclerosis, and elevating
+  triglycerides.
 upstream_drivers:
 - obesity
 - high-gl-diet
@@ -16,7 +16,7 @@ downstream_effects:
 - insulin-resistance
 - hepatic-gluconeogenesis
 - lipotoxicity
-- chronic-low-grade-inflammation
+- systemic-inflammation
 related_mechanisms:
 - insulin-resistance
 - hepatic-gluconeogenesis
@@ -28,9 +28,8 @@ evidence_tier: strong
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Risk Factors for Type 2 Diabetes Mellitus
-  quote: The increasing size of adipocytes reduces secretion of compounds (adiponectin)
-    that improve insulin sensitivity, reduce inflammation, lower triglycerides, and
-    inhibit atherosclerosis.
+  quote: The increasing size of adipocytes reduces secretion of compounds (adiponectin) that improve insulin sensitivity,
+    reduce inflammation, lower triglycerides, and inhibit atherosclerosis.
 version: 1
 status: active
 updated_at: '2026-05-18'

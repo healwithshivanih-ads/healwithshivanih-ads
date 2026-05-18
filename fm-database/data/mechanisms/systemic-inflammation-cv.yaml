@@ -15,7 +15,7 @@ upstream_drivers:
 - chronic-stress
 downstream_effects:
 - endothelial-dysfunction
-- plaque-instability
+- plaque-progression
 - elevated-fibrinogen
 - thrombosis-risk
 related_mechanisms:

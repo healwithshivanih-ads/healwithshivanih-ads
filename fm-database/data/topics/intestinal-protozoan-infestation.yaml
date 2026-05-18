@@ -7,11 +7,10 @@ aliases:
 - Blastocystis hominis
 - Entamoeba histolytica
 - protozoan infection
-summary: Intestinal protozoa (Giardia, Entamoeba, Blastocystis, Cyclospora, Cryptosporidium)
-  can produce not only GI symptoms but profound systemic illness — chronic fatigue,
-  arthritis, urticaria, and immune dysregulation — often without prominent digestive
-  complaints. The GI tract hosts two thirds of total lymphocytes; parasitic infestation
-  alters the immune milieu and may trigger autoimmunity.
+summary: Intestinal protozoa (Giardia, Entamoeba, Blastocystis, Cyclospora, Cryptosporidium) can produce not only GI symptoms
+  but profound systemic illness — chronic fatigue, arthritis, urticaria, and immune dysregulation — often without prominent
+  digestive complaints. The GI tract hosts two thirds of total lymphocytes; parasitic infestation alters the immune milieu
+  and may trigger autoimmunity.
 common_symptoms:
 - chronic-fatigue
 - muscle-weakness
@@ -25,26 +24,23 @@ red_flags:
 - HIV-positive-with-parasite-load
 related_topics:
 - irritable-bowel-syndrome
-- dysbiosis
+- gut-dysbiosis
 - inflammatory-bowel-disease
 key_mechanisms:
 - mucosal-immunity
 - dysbiosis
-- intestinal-hyperpermeability
-coaching_scope_notes: Coaches can support prebiotic/probiotic protocols and gut-environment
-  optimisation. Anti-protozoal botanical protocols (Artemisia, berberine) should be
-  supervised by a clinician.
-clinician_scope_notes: Stool examination may be negative even during active giardiasis.
-  Consider empiric treatment in high-risk populations. Assess for nutritional deficiencies
-  (iron, folate, B12, vitamin A) that result from chronic infestation.
+- leaky-gut
+coaching_scope_notes: Coaches can support prebiotic/probiotic protocols and gut-environment optimisation. Anti-protozoal botanical
+  protocols (Artemisia, berberine) should be supervised by a clinician.
+clinician_scope_notes: Stool examination may be negative even during active giardiasis. Consider empiric treatment in high-risk
+  populations. Assess for nutritional deficiencies (iron, folate, B12, vitamin A) that result from chronic infestation.
 evidence_tier: plausible_emerging
 sources:
 - id: pizzorno-textbook-gi
   location: Intestinal Protozoan Infestation — General Considerations
-  quote: Association between intestinal protozoa and chronic fatigue without prominent
-    digestive complaints is common; 80% of patients with diagnosis of CFIDS infected
-    with protozoan Blastocystis hominis showed improved fatigue after treatment that
-    cleared protozoa from stool specimens.
+  quote: Association between intestinal protozoa and chronic fatigue without prominent digestive complaints is common; 80%
+    of patients with diagnosis of CFIDS infected with protozoan Blastocystis hominis showed improved fatigue after treatment
+    that cleared protozoa from stool specimens.
 version: 1
 status: active
 updated_at: '2026-05-18'

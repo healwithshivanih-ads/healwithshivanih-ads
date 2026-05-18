@@ -1,28 +1,25 @@
 slug: candida-antibiotic-key-driver
-statement: Prolonged antibiotic use is the key predisposing factor in most cases of
-  chronic candidiasis, suppressing normal intestinal bacteria, impairing immunity,
-  generating antibiotic-resistant organisms, and potentially contributing to Crohn's
+statement: Prolonged antibiotic use is the key predisposing factor in most cases of chronic candidiasis, suppressing normal
+  intestinal bacteria, impairing immunity, generating antibiotic-resistant organisms, and potentially contributing to Crohn's
   disease.
 evidence_tier: plausible_emerging
-rationale: The mechanism is biologically plausible and well-described in naturopathic
-  literature; the link to Crohn's disease is emerging but not yet fully established.
-coaching_translation: If you've had repeated antibiotic courses, your gut bacteria
-  may be significantly disrupted — rebuilding them with probiotics and diet changes
-  is foundational to feeling well again.
+rationale: The mechanism is biologically plausible and well-described in naturopathic literature; the link to Crohn's disease
+  is emerging but not yet fully established.
+coaching_translation: If you've had repeated antibiotic courses, your gut bacteria may be significantly disrupted — rebuilding
+  them with probiotics and diet changes is foundational to feeling well again.
 caveats:
 - Link to Crohn's disease is plausible but not proven
 linked_to_topics:
 - chronic-candidiasis
-- dysbiosis
+- gut-dysbiosis
 out_of_scope_notes: ''
 linked_to_mechanisms: []
 linked_to_supplements: []
 sources:
 - id: pizzorno-textbook-gi-2
   location: Chronic Candidiasis — General Considerations
-  quote: Prolonged antibiotic use is the key factor in most cases—suppresses normal
-    intestinal bacteria that control yeast, suppresses immunity, generates antibiotic-resistant
-    microbes, may contribute to Crohn's disease.
+  quote: Prolonged antibiotic use is the key factor in most cases—suppresses normal intestinal bacteria that control yeast,
+    suppresses immunity, generates antibiotic-resistant microbes, may contribute to Crohn's disease.
 version: 1
 status: active
 updated_at: '2026-05-18'

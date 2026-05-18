@@ -3,11 +3,10 @@ display_name: Helicobacter pylori Infection
 aliases:
 - H. pylori
 - Helicobacter infection
-summary: H. pylori is a gram-negative bacterium colonising the gastric mucosa, found
-  in 90–100% of duodenal ulcer patients and 70% of gastric ulcer patients. It disrupts
-  mucosal protective factors via urease-mediated ammonia production, mucin degradation,
-  and virulence factors such as CagA, raising gastric pH and enabling secondary colonisation.
-  Despite high prevalence, 80% of infected individuals never develop ulcers.
+summary: H. pylori is a gram-negative bacterium colonising the gastric mucosa, found in 90–100% of duodenal ulcer patients
+  and 70% of gastric ulcer patients. It disrupts mucosal protective factors via urease-mediated ammonia production, mucin
+  degradation, and virulence factors such as CagA, raising gastric pH and enabling secondary colonisation. Despite high prevalence,
+  80% of infected individuals never develop ulcers.
 evidence_tier: strong
 common_symptoms:
 - epigastric-pain
@@ -21,24 +20,19 @@ red_flags:
 - gastric outlet obstruction — refer for emergency workup immediately
 related_topics:
 - peptic-ulcer-disease
-- gastric-ulcer
-- duodenal-ulcer
 key_mechanisms:
 - h-pylori-urease-ammonia-production
 - gastric-mucin-degradation
 - gastric-mucosal-barrier-disruption
-coaching_scope_notes: Coaches can support lifestyle and nutritional strategies (stress
-  reduction, elimination diet, bismuth-containing foods, DGL, flavonoids) as adjuncts.
-  H. pylori eradication diagnosis and antibiotic triple therapy are clinician scope.
-clinician_scope_notes: Triple-drug eradication therapy indicated when H. pylori not
-  controlled by natural measures. Testing via serum/saliva antibodies, urea breath
-  test, stool antigen, or endoscopic culture.
+coaching_scope_notes: Coaches can support lifestyle and nutritional strategies (stress reduction, elimination diet, bismuth-containing
+  foods, DGL, flavonoids) as adjuncts. H. pylori eradication diagnosis and antibiotic triple therapy are clinician scope.
+clinician_scope_notes: Triple-drug eradication therapy indicated when H. pylori not controlled by natural measures. Testing
+  via serum/saliva antibodies, urea breath test, stool antigen, or endoscopic culture.
 sources:
 - id: pizzorno-textbook-hpylori
   location: Helicobacter pylori section, p. 781
-  quote: 'H. pylori: 90% to 100% of patients with DUs, 70% with GUs, and 50% of people
-    older than 50 years test positive for H. pylori. However, 80% of H. pylori–infected
-    people never develop ulcers.'
+  quote: 'H. pylori: 90% to 100% of patients with DUs, 70% with GUs, and 50% of people older than 50 years test positive for
+    H. pylori. However, 80% of H. pylori–infected people never develop ulcers.'
 version: 1
 status: active
 updated_at: '2026-05-18'

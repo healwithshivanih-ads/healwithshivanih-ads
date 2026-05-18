@@ -4,12 +4,11 @@ aliases:
 - lipoxygenase-pathway
 - leukotriene-excess
 category: immune
-summary: Activation of the lipoxygenase pathway (promoted by alternative complement
-  activation) produces leukotrienes C4, D4, and E4 — 1000× more potent than histamine
-  in promoting inflammation. Reducing dietary omega-6 and increasing omega-3 (EPA/DHA)
-  shifts eicosanoid production away from pro-inflammatory products.
+summary: Activation of the lipoxygenase pathway (promoted by alternative complement activation) produces leukotrienes C4,
+  D4, and E4 — 1000× more potent than histamine in promoting inflammation. Reducing dietary omega-6 and increasing omega-3
+  (EPA/DHA) shifts eicosanoid production away from pro-inflammatory products.
 upstream_drivers:
-- omega-6-excess
+- omega-3-omega-6-imbalance
 - omega-3-deficiency
 - complement-activation
 - mast-cell-activation
@@ -28,8 +27,8 @@ evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi
   location: Botanical Medicines — Quercetin
-  quote: Leukotrienes C4, D4, and E4 (comprising slow-reacting substances of anaphylaxis)
-    are 1000 times as potent as histamine in promoting inflammation.
+  quote: Leukotrienes C4, D4, and E4 (comprising slow-reacting substances of anaphylaxis) are 1000 times as potent as histamine
+    in promoting inflammation.
 version: 1
 status: active
 updated_at: '2026-05-18'

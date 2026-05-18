@@ -5,11 +5,10 @@ aliases:
 - mucous colitis
 - nervous indigestion
 - intestinal neurosis
-summary: 'The most common GI disorder in general practice, accounting for 30–50% of
-  gastroenterology referrals. A functional disorder of the large intestine characterised
-  by abdominal pain, altered bowel habit, bloating, and dyspeptic symptoms with no
-  structural defect. Aetiology is multifactorial: food sensitivities, dysbiosis, SIBO,
-  FODMAPs, and psychological factors all contribute via the brain-gut axis.'
+summary: 'The most common GI disorder in general practice, accounting for 30–50% of gastroenterology referrals. A functional
+  disorder of the large intestine characterised by abdominal pain, altered bowel habit, bloating, and dyspeptic symptoms with
+  no structural defect. Aetiology is multifactorial: food sensitivities, dysbiosis, SIBO, FODMAPs, and psychological factors
+  all contribute via the brain-gut axis.'
 common_symptoms:
 - abdominal-pain
 - bloating
@@ -24,24 +23,23 @@ red_flags:
 - family-history-colon-cancer
 related_topics:
 - inflammatory-bowel-disease
-- dysbiosis
+- gut-dysbiosis
 - sibo
 - maldigestion
 key_mechanisms:
 - dysbiosis
 - gut-brain-axis-dysregulation
-- intestinal-hyperpermeability
-coaching_scope_notes: Coaches can guide low-FODMAP diet, fibre adjustment, elimination
-  diets, probiotic support, and stress-reduction techniques. Refer for persistent
-  rectal bleeding or weight loss.
-clinician_scope_notes: Rule out IBD, coeliac disease, SIBO, intestinal candidiasis.
-  Comprehensive stool analysis, TSH, fT3, antiendomysial antibody testing indicated.
+- leaky-gut
+coaching_scope_notes: Coaches can guide low-FODMAP diet, fibre adjustment, elimination diets, probiotic support, and stress-reduction
+  techniques. Refer for persistent rectal bleeding or weight loss.
+clinician_scope_notes: Rule out IBD, coeliac disease, SIBO, intestinal candidiasis. Comprehensive stool analysis, TSH, fT3,
+  antiendomysial antibody testing indicated.
 evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi
   location: Irritable Bowel Syndrome — General Considerations
-  quote: IBS is the most common gastrointestinal (GI) disorder in general practice,
-    accounting for 30% to 50% of all referrals to gastroenterologists.
+  quote: IBS is the most common gastrointestinal (GI) disorder in general practice, accounting for 30% to 50% of all referrals
+    to gastroenterologists.
 version: 1
 status: active
 updated_at: '2026-05-18'

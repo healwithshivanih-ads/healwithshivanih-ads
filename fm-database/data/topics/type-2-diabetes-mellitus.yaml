@@ -4,16 +4,15 @@ aliases:
 - T2DM
 - adult-onset diabetes
 - non-insulin-dependent diabetes
-summary: Progressive disorder of insulin resistance and eventual beta-cell dysfunction,
-  driven by obesity, diet, sedentary lifestyle, persistent organic pollutants, and
-  oxidative stress. Ninety percent of all diabetics have T2DM.
+summary: Progressive disorder of insulin resistance and eventual beta-cell dysfunction, driven by obesity, diet, sedentary
+  lifestyle, persistent organic pollutants, and oxidative stress. Ninety percent of all diabetics have T2DM.
 evidence_tier: strong
 common_symptoms:
-- fatigue
+- chronic-fatigue
 - blurred-vision
 - poor-wound-healing
 - periodontal-disease
-- frequent-infections
+- autoimmune-flares-low-immunity
 - polyuria
 - polydipsia
 - abdominal-obesity
@@ -34,16 +33,15 @@ key_mechanisms:
 - lipotoxicity
 - glucotoxicity
 - hepatic-gluconeogenesis
-coaching_scope_notes: Coach supports low-GL whole-food diet, exercise, weight normalisation,
-  supplement protocol (foundation + level 1/2). Medication titration is physician-only.
-clinician_scope_notes: Monitor HbA1c, fasting glucose, C-peptide, lipids, microalbuminuria,
-  GGTP, homocysteine, ferritin. Oral drugs or insulin if targets not met at Level
-  2.
+coaching_scope_notes: Coach supports low-GL whole-food diet, exercise, weight normalisation, supplement protocol (foundation
+  + level 1/2). Medication titration is physician-only.
+clinician_scope_notes: Monitor HbA1c, fasting glucose, C-peptide, lipids, microalbuminuria, GGTP, homocysteine, ferritin.
+  Oral drugs or insulin if targets not met at Level 2.
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: General Considerations / Classification
-  quote: Ninety percent of all diabetics have T2DM. Initially, insulin is elevated
-    in T2DM, indicating loss of tissue sensitivity to insulin.
+  quote: Ninety percent of all diabetics have T2DM. Initially, insulin is elevated in T2DM, indicating loss of tissue sensitivity
+    to insulin.
 version: 1
 status: active
 updated_at: '2026-05-18'

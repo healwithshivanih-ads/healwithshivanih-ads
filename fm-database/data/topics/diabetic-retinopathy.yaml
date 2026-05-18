@@ -4,13 +4,12 @@ aliases:
 - diabetic eye disease
 - proliferative retinopathy
 - non-proliferative retinopathy
-summary: Leading cause of blindness in US adults 20–64 years. Retina is damaged by
-  microhemorrhages, scarring, and protein glycosylation. Within 20 years of diagnosis,
-  80% of T1DM and 20% of T2DM have significant retinopathy.
+summary: Leading cause of blindness in US adults 20–64 years. Retina is damaged by microhemorrhages, scarring, and protein
+  glycosylation. Within 20 years of diagnosis, 80% of T1DM and 20% of T2DM have significant retinopathy.
 evidence_tier: strong
 common_symptoms:
 - blurred-vision
-- vision-loss
+- macular-degeneration
 red_flags:
 - proliferative-retinopathy
 - retinal-detachment
@@ -23,15 +22,13 @@ key_mechanisms:
 - sorbitol-accumulation
 - protein-glycosylation
 - microvascular-damage
-coaching_scope_notes: Bilberry extract (160–320 mg/day), grapeseed/pine bark extract.
-  Optimal glycemic control is primary prevention. Laser treatment and clinical management
-  by ophthalmologist.
+coaching_scope_notes: Bilberry extract (160–320 mg/day), grapeseed/pine bark extract. Optimal glycemic control is primary
+  prevention. Laser treatment and clinical management by ophthalmologist.
 clinician_scope_notes: ''
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: Specific Complications
-  quote: 'Diabetic retinopathy: leading cause of blindness in the United States between
-    ages 20 and 64 years.'
+  quote: 'Diabetic retinopathy: leading cause of blindness in the United States between ages 20 and 64 years.'
 version: 1
 status: active
 updated_at: '2026-05-18'

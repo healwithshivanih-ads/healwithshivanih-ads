@@ -8,9 +8,8 @@ aliases:
 - cardiometabolic syndrome
 - metabolic dysfunction
 - insulin resistance syndrome
-summary: 'Cluster of ≥3 of: central obesity, atherogenic dyslipidemia, hypertension,
-  insulin resistance/glucose intolerance, prothrombotic state, and proinflammatory
-  state; strongly linked to elevated CRP and atherosclerosis risk.'
+summary: 'Cluster of ≥3 of: central obesity, atherogenic dyslipidemia, hypertension, insulin resistance/glucose intolerance,
+  prothrombotic state, and proinflammatory state; strongly linked to elevated CRP and atherosclerosis risk.'
 common_symptoms:
 - unexplained-weight-gain
 - lethargy
@@ -26,10 +25,8 @@ common_symptoms:
 - elevated-hscrp
 - abdominal-weight-gain
 - elevated-fasting-blood-sugar
-- central-obesity
-- fatigue
+- chronic-fatigue
 - brain-fog
-- high-blood-pressure
 red_flags:
 - severe-obesity
 - uncontrolled-hypertension
@@ -64,37 +61,33 @@ key_mechanisms:
 - central-adiposity-inflammation
 - systemic-inflammation
 - prothrombotic-state
-coaching_scope_notes: Coach supports dietary and lifestyle modifications targeting
-  all five components. Clinician referral required for BP and glucose management.
+coaching_scope_notes: Coach supports dietary and lifestyle modifications targeting all five components. Clinician referral
+  required for BP and glucose management.
 evidence_tier: strong
-clinician_scope_notes: Diagnosis requires clinical lab values and waist circumference
-  thresholds adjusted by ethnicity. Pharmaceutical management (metformin, statins)
-  is clinician scope.
+clinician_scope_notes: Diagnosis requires clinical lab values and waist circumference thresholds adjusted by ethnicity. Pharmaceutical
+  management (metformin, statins) is clinician scope.
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
   location: Functional Medicine Clinical Applications
   quote: Promotes fat loss and satiety
 - id: vitaone-blood-sugar-ebook
   location: 'Section 4.1 — Effects of Insulin Resistance: Metabolic Syndrome'
-  quote: Insulin resistance initially represents as Metabolic Syndrome, characterised
-    by the following clinical and laboratory findings.
+  quote: Insulin resistance initially represents as Metabolic Syndrome, characterised by the following clinical and laboratory
+    findings.
 - id: coconote-fm-body-composition-bmi
   location: Metabolic Dysfunction / Biomarkers Section
-  quote: Their waist tape ratio is too high. Then you definitely want to do those
-    biomarkers in the carbohydrate section. You definitely want to be looking at their
-    fasting insulin and triglycerides and GGT.
+  quote: Their waist tape ratio is too high. Then you definitely want to do those biomarkers in the carbohydrate section.
+    You definitely want to be looking at their fasting insulin and triglycerides and GGT.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Metabolic Function and Risk Factors
-  quote: We frequently see elevated triglycerides, elevated fasting blood sugar, hemoglobin
-    A1C... high triglycerides in metabolic syndrome. It's part of metabolic syndrome.
+  quote: We frequently see elevated triglycerides, elevated fasting blood sugar, hemoglobin A1C... high triglycerides in metabolic
+    syndrome. It's part of metabolic syndrome.
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Other Risk Factors
-  quote: 'Diagnostic criteria for metabolic syndrome include at least three of the
-    following metabolic risk factors in one person: Central obesity (waist-to-hip
-    ratio >1 for men; >0.8 for women)—Atherogenic dyslipidemia (TGs >150 mg/dL; low
-    HDL-C [<40 mg/dL in men and <50 mg/dL in women])—Hypertension (130/85 mm Hg)—Insulin
-    resistance or glucose intolerance (fasting blood sugar >101 mg/dL)—Prothrombotic
-    state—Proinflammatory state.'
+  quote: 'Diagnostic criteria for metabolic syndrome include at least three of the following metabolic risk factors in one
+    person: Central obesity (waist-to-hip ratio >1 for men; >0.8 for women)—Atherogenic dyslipidemia (TGs >150 mg/dL; low
+    HDL-C [<40 mg/dL in men and <50 mg/dL in women])—Hypertension (130/85 mm Hg)—Insulin resistance or glucose intolerance
+    (fasting blood sugar >101 mg/dL)—Prothrombotic state—Proinflammatory state.'
 version: 5
 status: active
 updated_at: '2026-05-18'

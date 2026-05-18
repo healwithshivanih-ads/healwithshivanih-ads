@@ -6,17 +6,15 @@ aliases:
 - ME/CFS
 - chronic fatigue and immune dysfunction syndrome
 - CFIDS
-summary: Complex multisystem condition characterized by debilitating fatigue, post-exertional
-  malaise, sleep disturbance, cognitive dysfunction, and immune dysregulation. No
-  single infectious cause established. Multiple contributing factors include hypothyroidism,
-  hypoadrenalism, candidiasis, food allergies, EFA deficiency, hypoglycemia, and impaired
-  liver detoxification.
+summary: Complex multisystem condition characterized by debilitating fatigue, post-exertional malaise, sleep disturbance,
+  cognitive dysfunction, and immune dysregulation. No single infectious cause established. Multiple contributing factors include
+  hypothyroidism, hypoadrenalism, candidiasis, food allergies, EFA deficiency, hypoglycemia, and impaired liver detoxification.
 common_symptoms:
 - chronic-fatigue
 - muscle-pain
 - joint-pain
-- sleep-disturbance
-- depression
+- insomnia
+- low-mood
 - recurrent-sore-throat
 - lymph-node-pain
 - brain-fog
@@ -28,23 +26,21 @@ related_topics:
 - hypothyroidism
 - hypoadrenalism
 - food-allergy
-- leaky-gut
+- autoimmunity-leaky-gut-triad
 key_mechanisms:
 - mitochondrial-dysfunction
 - hpa-axis-dysregulation
 - dysbiosis
 - impaired-immune-function
-coaching_scope_notes: Coaches can support low-glycemic whole-foods diet, stress management,
-  low-intensity exercise, and supplement protocols. Hypothyroidism and hypoadrenalism
-  require clinician evaluation.
-clinician_scope_notes: Evaluate thyroid, adrenal, Candida, food allergies, EFA status,
-  magnesium, NADH, CoQ10. Consider anti-Candida protocol and liver detox program.
+coaching_scope_notes: Coaches can support low-glycemic whole-foods diet, stress management, low-intensity exercise, and supplement
+  protocols. Hypothyroidism and hypoadrenalism require clinician evaluation.
+clinician_scope_notes: Evaluate thyroid, adrenal, Candida, food allergies, EFA status, magnesium, NADH, CoQ10. Consider anti-Candida
+  protocol and liver detox program.
 evidence_tier: plausible_emerging
 sources:
 - id: pizzorno-textbook-gi-2
   location: Chronic Fatigue Syndrome — Etiology
-  quote: CFS may have multiple causes leading to a common end point; thus some infectious
-    agents may play contributing roles.
+  quote: CFS may have multiple causes leading to a common end point; thus some infectious agents may play contributing roles.
 version: 1
 status: active
 updated_at: '2026-05-18'

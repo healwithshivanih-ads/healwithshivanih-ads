@@ -5,10 +5,9 @@ aliases:
 - enlarged prostate
 - prostate enlargement
 - lower urinary tract symptoms
-summary: Age-related prostate enlargement driven by DHT accumulation via 5-alpha-reductase
-  conversion of testosterone, increased estradiol from peripheral aromatization in
-  body fat, and prolactin stimulation. Risk factors include abdominal obesity, sedentary
-  lifestyle, and high-fat diet. Natural therapies target multiple hormonal pathways.
+summary: Age-related prostate enlargement driven by DHT accumulation via 5-alpha-reductase conversion of testosterone, increased
+  estradiol from peripheral aromatization in body fat, and prolactin stimulation. Risk factors include abdominal obesity,
+  sedentary lifestyle, and high-fat diet. Natural therapies target multiple hormonal pathways.
 common_symptoms:
 - incomplete-bladder-emptying
 - urinary-urgency
@@ -39,33 +38,28 @@ key_mechanisms:
 - five-alpha-reductase-conversion
 - dht-excess
 - 5-alpha-reductase-activity
-- testosterone-to-dht-conversion
 - 5-alpha-reductase-dht-conversion
 - peripheral-aromatization
 - prolactin-driven-prostate-growth
-coaching_scope_notes: Coaches can support dietary changes, exercise, saw palmetto
-  and botanical protocols, zinc, and vitamin D. PSA interpretation, surgical decisions,
-  and medication are clinician scope.
-clinician_scope_notes: Clinician should rule out prostate cancer, prescribe pharmaceutical
-  5-α reductase inhibitors (e.g., finasteride) if indicated, and coordinate urological
-  care.
+coaching_scope_notes: Coaches can support dietary changes, exercise, saw palmetto and botanical protocols, zinc, and vitamin
+  D. PSA interpretation, surgical decisions, and medication are clinician scope.
+clinician_scope_notes: Clinician should rule out prostate cancer, prescribe pharmaceutical 5-α reductase inhibitors (e.g.,
+  finasteride) if indicated, and coordinate urological care.
 evidence_tier: strong
 sources:
 - id: vitaone-sex-hormones-toolkit
-  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors — Page
-    06'
-  quote: 5-a reductase is a key enzyme in the body which regulates the conversion
-    of testosterone to a hormone called dihydrotestosterone (DHT). When testosterone
-    is converted to DHT, testosterone is lowered and can no longer work effectively.
-    This can result in conditions such as enlargement of the prostate in men.
+  location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors — Page 06'
+  quote: 5-a reductase is a key enzyme in the body which regulates the conversion of testosterone to a hormone called dihydrotestosterone
+    (DHT). When testosterone is converted to DHT, testosterone is lowered and can no longer work effectively. This can result
+    in conditions such as enlargement of the prostate in men.
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
-  quote: This can result in conditions such as enlargement of the prostate in men,
-    hair loss in both men and women, and extra facial hair and acne in women.
+  quote: This can result in conditions such as enlargement of the prostate in men, hair loss in both men and women, and extra
+    facial hair and acne in women.
 - id: pizzorno-textbook-gi-2
   location: Benign Prostatic Hyperplasia — General Considerations
-  quote: BPH is the fourth most common diagnosis in older men; 50% of men over age
-    50 are affected, and 90% of men will have an enlarged prostate by age 80.
+  quote: BPH is the fourth most common diagnosis in older men; 50% of men over age 50 are affected, and 90% of men will have
+    an enlarged prostate by age 80.
 version: 3
 status: active
 updated_at: '2026-05-18'

@@ -9,9 +9,8 @@ aliases:
 - damaged LDL pro-inflammatory cascade
 - LDL peroxidation
 category: metabolic
-summary: Free-radical oxidation of LDL-C particles converts them into proinflammatory
-  triggers that accelerate atherosclerosis and plaque rupture; small dense LDL-C particles
-  are preferentially oxidized and most atherogenic.
+summary: Free-radical oxidation of LDL-C particles converts them into proinflammatory triggers that accelerate atherosclerosis
+  and plaque rupture; small dense LDL-C particles are preferentially oxidized and most atherogenic.
 upstream_drivers:
 - endothelial-dysfunction
 - oxidative-stress
@@ -19,7 +18,6 @@ upstream_drivers:
 - hyperglycemia
 - low-antioxidant-status
 downstream_effects:
-- macrophage-infiltration
 - foam-cell-formation
 - inflammatory-cascade
 - plaque-progression
@@ -38,17 +36,14 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Atherosclerosis mechanism section
-  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles
-    become oxidized and when they become oxidized now it becomes a foreign particle
-    for the immune system.
+  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles become oxidized and when they become
+    oxidized now it becomes a foreign particle for the immune system.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Inflammatory Biomarkers
-  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on
-    NF-kappa-B. It is pro-inflammatory.
+  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on NF-kappa-B. It is pro-inflammatory.
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Further Refinement of Determining Risk
-  quote: Oxidized LDL-C is proinflammatory trigger for progression of atherosclerosis
-    and plaque rupture.
+  quote: Oxidized LDL-C is proinflammatory trigger for progression of atherosclerosis and plaque rupture.
 version: 2
 status: active
 updated_at: '2026-05-18'

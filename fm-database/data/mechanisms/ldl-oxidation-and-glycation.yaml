@@ -16,7 +16,7 @@ upstream_drivers:
 downstream_effects:
 - macrophage-foam-cell-formation
 - foam-cell-inflammation
-- plaque-formation
+- plaque-progression
 related_mechanisms:
 - endothelial-dysfunction
 - macrophage-foam-cell-formation
