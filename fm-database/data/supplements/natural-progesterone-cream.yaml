@@ -1,0 +1,57 @@
+slug: natural-progesterone-cream
+display_name: Bioidentical Progesterone Cream
+aliases:
+- progesterone-cream
+- bioidentical-progesterone
+- topical-progesterone
+- micronized-progesterone-cream
+- usp-progesterone
+category: other
+forms_available:
+- liquid
+timing_options:
+- morning
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- endometriosis
+- uterine-fibroids
+- perimenopause-and-menopause
+- premenstrual-syndrome
+- estrogen-dominance
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_claims:
+- progesterone-cream-arrests-fibroid-growth
+notes_for_coach: 'USP bioidentical progesterone (typically 400 mg/oz cream, ~20 mg
+  per 1/4 tsp). Cyclic dosing — 1/4 to 1/2 tsp bid days 15-26 for typical estrogen-dominance
+  / luteal-phase insufficiency; or days 8-28 for endometriosis with daily continuation;
+  week off during menses. Apply to inner arms, chest, inner thighs, palms (thin-skin
+  sites for absorption). Coach role: education + cycle tracking; prescription/dosing
+  decisions with a clinician trained in BHRT.'
+notes_for_client: A natural progesterone cream applied to the skin in the second half
+  of your cycle. Helps balance estrogen-dominance symptoms like heavy periods, fibroid
+  growth, and PMS.
+contraindications:
+  conditions:
+  - breast-cancer-history
+  - hormone-sensitive-cancers
+  - undiagnosed-vaginal-bleeding
+  medications:
+  - tamoxifen
+  - aromatase-inhibitors
+  life_stages: []
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-reproductive
+  location: Uterine Fibroids — Natural Progesterone (pp 942-943)
+  quote: Natural progesterone replacement causes fibroid growth to cease (generally
+    decrease in size) until menopause, after which fibroids atrophy. Apply 1/4 tsp
+    q.d. or b.i.d. for 1 week after menses, and 1/4 to 1/2 tsp b.i.d. for the next
+    2 weeks.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

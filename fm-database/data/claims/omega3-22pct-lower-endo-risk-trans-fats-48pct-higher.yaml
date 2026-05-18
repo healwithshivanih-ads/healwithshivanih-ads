@@ -1,0 +1,35 @@
+slug: omega3-22pct-lower-endo-risk-trans-fats-48pct-higher
+statement: Women with highest long-chain omega-3 intake have 22% lower endometriosis
+  risk; women with highest trans-fat intake have 48% higher risk. Total fat intake
+  itself is not associated with endometriosis — composition matters.
+evidence_tier: strong
+rationale: Pizzorno cites the Nurses' Health Study II analysis of fat composition
+  and endometriosis (Missmer et al 2010). Mechanism via shifts in prostaglandin and
+  leukotriene synthesis pathways modulating pelvic inflammation.
+coaching_translation: It's not how much fat — it's what kind. Omega-3s (wild fish,
+  flax, walnuts) protect against endometriosis; trans fats (margarine, fried fast
+  food, packaged baked goods) make it worse.
+caveats:
+- Hold long-chain omega-3 intake at 2-3 g/day combined EPA+DHA.
+- Trans-fat sources to eliminate — partially hydrogenated oils, deep-fried foods,
+  commercial baked goods.
+- Effect persists across BMI and other diet factors.
+linked_to_topics:
+- endometriosis
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_supplements:
+- fish-oil-epa-dha
+- fish-oil-omega-3
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-reproductive
+  location: Endometriosis — Fatty acids (pp 290)
+  quote: Women with highest intake of long-chain omega-3s were 22% less likely to
+    be diagnosed with endometriosis compared with women with lowest intake. Those
+    women with highest intake of trans unsaturated fats were 48% more likely to be
+    diagnosed with endometriosis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

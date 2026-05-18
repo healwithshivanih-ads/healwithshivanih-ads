@@ -1,0 +1,33 @@
+slug: riboflavin-400mg-cuts-migraine-frequency
+statement: Riboflavin (vitamin B2) at 400 mg/day for 3+ months reduces migraine attack
+  frequency by approximately 50% in roughly half of migraineurs — supporting Pizzorno's
+  mitochondrial-bioenergetic deficit theory of migraine prophylaxis.
+evidence_tier: strong
+rationale: Schoenen et al 1998 RCT and follow-up studies. Mechanism — riboflavin is
+  a precursor to FAD/FMN cofactors in mitochondrial electron transport; migraineurs
+  show subtle mitochondrial dysfunction. Effect builds over 3 months; safe and inexpensive.
+coaching_translation: For migraine prevention, 400 mg of vitamin B2 a day for 3 months
+  cuts attack frequency in about half by half. Slow to work, but cheap and safe —
+  worth trying before drugs.
+caveats:
+- Effect builds over 3 months — don't quit at 1 month.
+- Urine turns bright yellow (harmless).
+- Combine with magnesium and CoQ10 for additive mitochondrial support.
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- riboflavin-b2
+- riboflavin-vitamin-b2
+- vitamin-b2-riboflavin
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Migraine Headache — Riboflavin and CoQ10 (pp 670)
+  quote: Riboflavin and CoQ10 listed in migraine therapeutic approach to address B2
+    deficiency or bioenergetic deficit.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

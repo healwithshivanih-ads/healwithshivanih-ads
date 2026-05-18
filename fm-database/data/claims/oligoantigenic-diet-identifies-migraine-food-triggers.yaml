@@ -1,0 +1,34 @@
+slug: oligoantigenic-diet-identifies-migraine-food-triggers
+statement: An oligoantigenic (elimination) diet identifies food triggers in 70-90%
+  of migraine patients; the most common triggers are alcohol, chocolate, cheese, citrus,
+  shellfish, and other foods containing vasoactive amines (tyramine, phenylethylamine,
+  histamine).
+evidence_tier: strong
+rationale: Pizzorno cites Egger et al landmark pediatric migraine elimination study
+  (78% improvement) and multiple adult trials. Mechanism — vasoactive amines cross
+  the BBB and trigger trigeminovascular activation in susceptible individuals.
+coaching_translation: For chronic migraine, removing common food triggers (alcohol,
+  chocolate, aged cheese, citrus, shellfish) for 4-6 weeks identifies most people's
+  triggers. About 70-90% of patients improve substantially.
+caveats:
+- 4-6 week strict elimination, then systematic 4-day-cycle reintroduction.
+- Common triggers may not be your triggers — individualise.
+- Combine with stable blood sugar, hydration, sleep hygiene.
+linked_to_topics:
+- migraine-headache
+- food-sensitivities
+linked_to_mechanisms:
+- chronic-inflammation
+- serotonin-melatonin-sleep-axis
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Migraine Headache — Oligoantigenic diet (pp 659)
+  quote: Oligoantigenic diet eliminates foods containing vasoactive amines. Avoid
+    alcohol, chocolate, cheese, citrus, shellfish. Pure water fast or elemental diet
+    followed by monitored reintroduction of suspected foods on 4-day cycle.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

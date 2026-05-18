@@ -1,0 +1,38 @@
+statement: Crohn's disease incidence is rising in cultures adopting a Western diet
+  — strongly correlated with increased animal protein (strongest single factor), increased
+  omega-6 to omega-3 ratio, increased animal fat, increased milk protein, and refined
+  carbohydrates. Inversely correlated with vegetable protein intake.
+slug: cd-driven-by-western-diet-omega6-animal-protein-shift
+evidence_tier: strong
+rationale: Pizzorno cites the Japanese epidemiologic data showing CD rise correlated
+  with Westernisation — same genetic substrate, different diet. Increased animal protein
+  is the strongest independent factor; ratio of omega-6 to omega-3 second.
+coaching_translation: Crohn's disease is barely seen in cultures eating their traditional
+  diet — it rises whenever a culture adopts heavy animal protein, omega-6 vegetable
+  oils, dairy, and refined carbs. Cutting these and rebalancing toward plants and
+  omega-3 is foundational.
+caveats:
+- This is a population-level pattern; individual Crohn's patients vary.
+- Some patients also have specific food allergens (wheat, corn, dairy) needing elimination.
+- Increased omega-3 (fish oil) plus reduced omega-6 has independent benefit.
+linked_to_topics:
+- inflammatory-bowel-disease
+- ibd
+- crohns-disease
+linked_to_mechanisms:
+- chronic-inflammation
+- leaky-gut
+linked_to_supplements:
+- fish-oil-epa-dha
+- fish-oil-omega-3
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Inflammatory Bowel Disease — Dietary factors (pp 550-551)
+  quote: CD is strongly correlated with increased dietary total fat, animal fat, omega-6
+    fatty acids, animal protein, milk protein, and ratio of omega-6 to omega-3 fatty
+    acids. Increased animal protein is the strongest independent factor.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

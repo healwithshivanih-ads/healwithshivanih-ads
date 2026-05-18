@@ -1,0 +1,60 @@
+slug: migraine-headache
+display_name: Migraine Headache
+aliases:
+- migraine
+- common-migraine
+- classic-migraine
+- migraine-with-aura
+- migraine-without-aura
+summary: A recurrent, paroxysmal headache disorder affecting 18% lifetime prevalence
+  (women 25-30%, men 15-20%), characterised by unilateral pounding pain often preceded
+  by visual or sensory auras, anorexia, nausea, and GI upset. Pizzorno frames migraine
+  as a multi-stage process — initiation from accumulated stressors (food triggers,
+  neurotransmitter imbalance), prodromal trigeminovascular activation, and a headache
+  phase involving low-serotonin states, platelet activation, neurogenic inflammation,
+  and cortical spreading depression. Treatable through food trigger elimination, magnesium,
+  riboflavin, CoQ10, 5-HTP, feverfew, and butterbur.
+common_symptoms:
+- headaches
+- nausea
+- aura
+- photophobia
+- vomiting
+- visual-disturbance
+red_flags:
+- sudden severe "thunderclap" headache
+- new neurologic deficit
+- migraine with aura plus oral contraceptives plus smoking (stroke risk)
+- worsening pattern after age 50
+related_topics:
+- chronic-daily-headache
+- cluster-headache
+- food-sensitivities
+- hpa-axis-dysregulation
+key_mechanisms:
+- serotonin-melatonin-sleep-axis
+- chronic-inflammation
+- mitochondrial-dysfunction
+coaching_scope_notes: Coaches refer red-flag features immediately. Coaching role —
+  food trigger elimination (oligoantigenic), magnesium / riboflavin / CoQ10 / 5-HTP
+  repletion, stress and sleep hygiene, blood-sugar stability. For chronic daily headache
+  and migraine with aura plus stroke risk, neurology referral.
+clinician_scope_notes: Diagnosis is clinical. Differential — secondary headache (vascular,
+  neoplastic, infectious), cluster, tension. Triptans for acute; topiramate, propranolol,
+  amitriptyline for prophylaxis. Avoid triptans plus ergotamines plus SSRIs together
+  (serotonin syndrome risk).
+notes_for_coach: Pizzorno key insights — migraine is a low-serotonin state with platelet
+  activation; oligoantigenic diet identifies food triggers (alcohol, chocolate, cheese,
+  citrus, shellfish, vasoactive amines); riboflavin 400 mg / CoQ10 / magnesium / feverfew
+  / butterbur / 5-HTP are the natural prophylactic stack.
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Migraine Headache — General Considerations (pp 658-664)
+  quote: Lifetime prevalence of migraine headache is 18%. Migraine is no longer considered
+    a primary vascular event; vasomotor changes are considered epiphenomena. Migraineurs
+    experience heightened CNS activity, mediated by the trigeminovascular system.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

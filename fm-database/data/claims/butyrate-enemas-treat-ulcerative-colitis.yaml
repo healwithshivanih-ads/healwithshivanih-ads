@@ -1,0 +1,36 @@
+slug: butyrate-enemas-treat-ulcerative-colitis
+statement: Short-chain fatty acid (butyrate) enemas can induce remission in distal
+  ulcerative colitis — butyrate is the primary energy substrate for colonocytes, and
+  UC features butyrate-utilisation impairment. Prebiotic fibres that ferment to butyrate
+  (resistant starch, partially hydrolysed guar gum, inulin) provide oral support.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites Scheppach 1992 and other small RCTs showing butyrate enema
+  benefit in distal UC. Mechanism — restores colonocyte energy metabolism, supports
+  tight junctions, anti-inflammatory through HDAC inhibition.
+coaching_translation: The cells lining your colon literally eat butyrate (a short-chain
+  fat made by gut bacteria from fibre). In ulcerative colitis the colon loses the
+  ability to use butyrate. Topical butyrate enemas or fermentable fibres can restore
+  this metabolism.
+caveats:
+- Butyrate enemas require compounding pharmacy or specialist supply.
+- Fermentable fibre alternatives — resistant starch, PHGG, inulin — tolerated variably.
+- Reduce trigger foods (wheat, corn, dairy, carrageenan) in parallel.
+linked_to_topics:
+- inflammatory-bowel-disease
+- ibd
+- ulcerative-colitis
+linked_to_mechanisms:
+- leaky-gut
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Inflammatory Bowel Disease — Butyrate enemas (pp 561 box)
+  quote: Butyrate enemas listed in IBD therapeutic interventions to nature colon environment
+    that preferentially supports desirable bacteria and fermentation of polysaccharides
+    into butyrate.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

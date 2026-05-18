@@ -1,0 +1,34 @@
+slug: 5-htp-prevents-migraine-via-low-serotonin-correction
+statement: Migraine is a low-tissue-serotonin state with low pain threshold; 5-hydroxytryptophan
+  (5-HTP) 400-600 mg/day taken consistently for 60+ days reduces migraine frequency
+  and severity by raising CNS serotonin and desensitising 5-HT1C receptors. Effect
+  builds over time and exceeds the 30-day mark before peaking.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites multiple small trials of 5-HTP for migraine prophylaxis.
+  Mechanism — 5-HTP bypasses the rate-limiting tryptophan-hydroxylase step, raising
+  CNS serotonin; 5-HT1C downregulation reduces migraine triggering while 5-HT1D activation
+  prevents attacks.
+coaching_translation: Migraine is partly a low-serotonin problem. 5-HTP (300-600 mg
+  a day, in divided doses, for at least 2 months) raises serotonin enough to lift
+  the pain threshold and reduce attacks.
+caveats:
+- Not for use with SSRIs, MAOIs, triptans (serotonin syndrome risk).
+- Build over 60 days for full effect.
+- Take with carbohydrate (not protein) for brain uptake.
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- 5-htp
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Migraine Headache — Platelets and serotonin (pp 662-663)
+  quote: Individuals with migraine have low tissue serotonin (low serotonin syndrome).
+    Low serotonin may cause a decreased pain threshold. 5-HTP is more effective over
+    time (after 60 days of use rather than after 30).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

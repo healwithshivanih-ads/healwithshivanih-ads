@@ -1,0 +1,39 @@
+slug: progesterone-cream-arrests-fibroid-growth
+statement: Bioidentical progesterone cream (400 mg/oz, ~20 mg per 1/4 tsp, applied
+  cyclically days 15-26) may arrest uterine fibroid growth and reduce associated symptoms
+  in women with luteal-phase progesterone insufficiency — a common pattern in mid-30s
+  anovulatory cycles. Fibroids generally atrophy after menopause.
+evidence_tier: fm_specific_thin
+rationale: Pizzorno cites Dr. John Lee's clinical observations and animal data (progesterone
+  prevented estrogen-induced tumours in guinea pigs). RCT-level evidence is limited
+  and contested — Dr. Mitchell Rein argues progestins promote rather than inhibit
+  fibroids. The progesterone-fibroid relationship is more complex than the John Lee
+  model suggested.
+coaching_translation: Bioidentical progesterone cream (not synthetic progestins) applied
+  days 15-26 of the cycle is widely used for fibroids in FM practice, based on the
+  estrogen-dominance / luteal-insufficiency model. Evidence is mixed; effect varies
+  by individual.
+caveats:
+- Progestins (synthetic) actually promote fibroid growth — bioidentical progesterone
+  has different effects.
+- Coach scope is education; prescribing and monitoring belongs to a BHRT-trained clinician.
+- Don't use during heavy bleeding; pause if symptoms worsen.
+- Effect varies; some women see no change.
+linked_to_topics:
+- uterine-fibroids
+- estrogen-dominance
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_supplements:
+- natural-progesterone-cream
+out_of_scope_notes: Prescription and dose adjustment require a BHRT-trained clinician.
+sources:
+- id: pizzorno-reproductive
+  location: Uterine Fibroids — Natural Progesterone (pp 942-943)
+  quote: Natural progesterone replacement causes fibroid growth to cease (generally
+    decrease in size) until menopause, after which fibroids atrophy.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

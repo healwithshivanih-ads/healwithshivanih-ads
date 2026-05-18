@@ -1,0 +1,44 @@
+slug: estrogen-enterohepatic-recirculation-uterine
+display_name: Enterohepatic Estrogen Recirculation Driving Uterine Pathology
+aliases:
+- estrogen-recirculation-uterus
+- impaired-estrogen-excretion-uterine
+- deconjugating-flora-estrogen-load
+category: metabolic
+summary: Conjugated estrogens excreted via bile are deconjugated by certain colon
+  bacteria (the "estrobolome") and reabsorbed into the enterohepatic circulation.
+  In low-fibre, dysbiotic-flora states the reabsorbed estrogen load amplifies endometriosis,
+  uterine fibroid growth, fibrocystic breast tissue, and heavy menses. High-fibre
+  vegetarian diets reduce circulating active unconjugated estrogens; indole-3-carbinol
+  and DIM shift hepatic estrogen metabolism toward weaker 2-hydroxylated metabolites.
+upstream_drivers:
+- low-fibre-diet
+- gut-dysbiosis
+- impaired-bile-flow
+- liver-phase-2-impairment
+- high-saturated-fat-diet
+downstream_effects:
+- estrogen-dominance
+- endometriosis
+- uterine-fibroids
+- heavy-periods
+- fibrocystic-breast-disease
+related_mechanisms:
+- estrogen-enterohepatic-recirculation
+- gut-estrogen-axis
+- estrogen-metabolism
+linked_to_topics:
+- endometriosis
+- uterine-fibroids
+- estrogen-dominance
+evidence_tier: strong
+sources:
+- id: pizzorno-reproductive
+  location: Uterine Fibroids — Diet (pp 939)
+  quote: Vegetarian women who eat a high-fiber, low-fat diet have lower blood estrogen
+    than omnivores with low-fiber diets. Fiber may prevent and perhaps reduce fibroids
+    by reducing estrogen influence on uterine tissue.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

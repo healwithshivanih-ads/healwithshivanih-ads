@@ -1,0 +1,43 @@
+slug: vitex-supports-progesterone-in-estrogen-dominance
+statement: Vitex agnus-castus (chaste tree) acts on the pituitary to increase luteinizing
+  hormone, stimulating endogenous progesterone production and rebalancing the estrogen-progesterone
+  ratio — used in endometriosis, fibroids, PMS, perimenopausal symptoms, and luteal-phase
+  insufficiency.
+evidence_tier: strong
+rationale: Multiple RCTs of standardised Vitex extract (e.g. PMS Femaprin trials)
+  support PMS and luteal-insufficiency benefit. Mechanism via dopaminergic D2 receptor
+  modulation in the pituitary, lowering prolactin and supporting LH/progesterone.
+  Effect on fibroids per se is less well-studied but extrapolated from estrogen-dominance
+  framework.
+coaching_translation: Vitex (chaste tree) works upstream — it nudges your pituitary
+  to make more of the hormone that triggers progesterone production. Used for PMS,
+  irregular cycles, perimenopausal moods, fibroids, and endometriosis where progesterone
+  is too low relative to estrogen.
+caveats:
+- Build over 2-3 cycles for full effect.
+- Take in the morning (dopaminergic effects can be activating).
+- Avoid with dopaminergic medications and during pregnancy.
+- Use standardised extract (Vitex agnus-castus 4:1 extract, 175-225 mg).
+linked_to_topics:
+- endometriosis
+- uterine-fibroids
+- premenstrual-syndrome
+- perimenopause-and-menopause
+- estrogen-dominance
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_supplements:
+- chaste-tree-berry
+- chasteberry
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-reproductive
+  location: Endometriosis — Vitex (pp 292)
+  quote: Vitex agnus-castus treats hormone imbalances in women, acting on the pituitary
+    to increase luteinizing hormone, which stimulates progesterone production. Uses
+    — reducing estrogen excess linked to fibroids, premenstrual syndrome, perimenopause,
+    symptoms of endometriosis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

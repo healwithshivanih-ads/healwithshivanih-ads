@@ -1,0 +1,41 @@
+slug: indole-3-carbinol-dim-shift-estrogen-metabolism-protective
+statement: Indole-3-carbinol (I3C, 300-600 mg/day) and its dimer diindolylmethane
+  (DIM, 100-200 mg/day) shift hepatic estrogen metabolism toward the protective 2-hydroxyestrone
+  pathway (away from 16-alpha-hydroxyestrone), reducing estrogen-driven proliferation
+  in endometriosis, uterine fibroids, fibrocystic breasts, and endometrial cancer
+  risk.
+evidence_tier: strong
+rationale: Bradlow's work on 2-OH/16-alpha-OH ratio plus multiple human supplementation
+  trials. Pizzorno cites I3C/DIM as a core supplement for any estrogen-dominance condition.
+  Mechanism via CYP1A2 induction and aromatase modulation.
+coaching_translation: Cabbage-family vegetables contain a compound (I3C) that shifts
+  your liver toward making weaker, safer forms of estrogen — protective against endometriosis,
+  fibroids, and breast and endometrial cancer. Supplements (I3C 300-600 mg or DIM
+  100-200 mg) concentrate the dose.
+caveats:
+- DIM is the more stable metabolite; some clinicians prefer it.
+- Take with food for absorption.
+- Long-term safety beyond 2-3 years not well-established in trials.
+- Pair with cruciferous vegetables daily (Pizzorno's preference).
+linked_to_topics:
+- endometriosis
+- uterine-fibroids
+- estrogen-dominance
+- estrogen-metabolism
+- breast-cancer-prevention
+linked_to_mechanisms:
+- estrogen-metabolism
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_supplements:
+- indole-3-carbinol
+- dim
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-reproductive
+  location: Uterine Fibroids — I3C/DIM/Brassica (pp 940)
+  quote: I3C, DIM, and sulforaphane help to metabolize cancer-causing forms of estrogens
+    to nontoxic forms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

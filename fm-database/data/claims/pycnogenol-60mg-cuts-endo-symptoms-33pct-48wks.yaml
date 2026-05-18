@@ -1,0 +1,38 @@
+slug: pycnogenol-60mg-cuts-endo-symptoms-33pct-48wks
+statement: Pycnogenol (French maritime pine bark extract) 30 mg twice daily for 48
+  weeks reduces endometriosis symptoms by ~33% in post-surgical patients, with maintained
+  regular menses and normal estrogen levels — and unlike GnRH agonists (leuprolide),
+  the benefit persists after stopping.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites Kohama 2007 — RCT comparing 60 mg/day pycnogenol vs leuprolide
+  IM monthly. Pycnogenol slower onset, lower peak benefit, but no relapse vs leuprolide
+  which relapsed within 24 weeks of stopping. Mechanism via selective MMP inhibition
+  and COX-1/2 inhibition.
+coaching_translation: For endometriosis, pycnogenol at 60 mg a day for almost a year
+  produced about a third reduction in symptoms — without shutting down your menstrual
+  cycle or estrogen the way GnRH drugs do. Slow but sustainable, and some women became
+  pregnant on it.
+caveats:
+- Effect slower than leuprolide; build over 3-6 months.
+- Use standardised extract (typically 65-75% procyanidins).
+- Mild bleeding risk; pause before surgery.
+- Pair with diet + lipotropics + I3C/DIM for additive effect.
+linked_to_topics:
+- endometriosis
+linked_to_mechanisms:
+- chronic-inflammation
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_supplements:
+- pycnogenol
+- pine-bark-extract
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-reproductive
+  location: Endometriosis — Pycnogenol (pp 291-292)
+  quote: After 4 weeks on pycnogenol, patients slowly but steadily improved to a 33%
+    reduction in symptoms. Pycnogenol patients maintained regular menses and normal
+    estrogen levels during treatment. Some women taking pycnogenol became pregnant.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,37 @@
+slug: early-antibiotic-exposure-drives-crohns-incidence
+statement: Early and heavy antibiotic exposure has paralleled the post-1950s rise
+  of Crohn's disease in developed countries — antibiotics may drive normal intestinal
+  flora to produce immunostimulatory toxins or to become invasive after sublethal
+  doses, perpetuating chronic inflammation.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the post-1950s CD incidence spike alongside global antibiotic
+  uptake. Mechanism — antibiotic-mediated dysbiosis shifts flora toward more virulent,
+  toxin-producing strains; loss of butyrate-producing bacteria reduces colonic mucosal
+  defence.
+coaching_translation: Crohn's was rare before antibiotics. Heavy or repeated antibiotic
+  exposure — especially in childhood — appears to be one of the strongest modifiable
+  drivers. Probiotics and food-as-medicine become non-negotiable for IBD.
+caveats:
+- Causation hard to prove from epidemiology alone.
+- NSAIDs and isotretinoin also implicated.
+- Probiotic restoration (especially Bifidobacteria, Lactobacillus) is core IBD treatment.
+linked_to_topics:
+- inflammatory-bowel-disease
+- ibd
+- crohns-disease
+linked_to_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Inflammatory Bowel Disease — Antibiotic exposure (pp 550)
+  quote: Wherever antibiotics are used early and in large quantities, the incidence
+    of CD is now quite high. An infectious agent may be a normal intestinal organism
+    suddenly producing immunostimulatory toxins or becoming invasive after sublethal
+    doses of antibiotics.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

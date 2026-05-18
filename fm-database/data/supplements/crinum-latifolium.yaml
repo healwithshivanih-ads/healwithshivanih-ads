@@ -1,0 +1,49 @@
+slug: crinum-latifolium
+display_name: Crila (Crinum latifolium)
+aliases:
+- crila
+- crinum
+- tram-extract
+- vietnamese-crinum
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+take_with_food: optional
+linked_to_topics:
+- uterine-fibroids
+- benign-prostatic-hyperplasia
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_claims:
+- crila-shrinks-fibroids-trial-vietnam
+notes_for_coach: 'Traditional Vietnamese botanical (Crinum latifolium) standardised
+  extract. Pizzorno cites a clinical study where 79.5% of women had decreased fibroid
+  size or arrested growth on Crila. Also studied for BPH. Side effects mild (nausea,
+  headache, vaginal dryness, hot flashes) and self-limiting. Often used 3-6 months
+  minimum. Source: Vietnam clinical research network.'
+notes_for_client: A Vietnamese herb with research showing it can shrink or stop the
+  growth of uterine fibroids in about 80% of women. Side effects are mild and usually
+  fade.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: pizzorno-reproductive
+  location: Uterine Fibroids — Crila (pp 941)
+  quote: Crila has decreased the size or stopped the growth of fibroid tumors in 79.5%
+    of women. In 20.5%, tumor growth continued at a very slow rate. Crila may even
+    reduce heavy menstrual flow in such cases.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,37 @@
+slug: candida-overgrowth-driven-by-antibiotics-sugar-immune-suppression
+statement: Chronic candidiasis ("yeast syndrome") is multi-factorial — prolonged broad-spectrum
+  antibiotic use is the dominant cause (suppressing normal flora and immunity), followed
+  by oral contraceptives, corticosteroids, high-sugar diets, and impaired immunity.
+  Women are 8× more susceptible than men.
+evidence_tier: plausible_emerging
+rationale: Pizzorno groups antibiotic exposure, hormonal modulators, immune suppression,
+  and dietary sugar as the major drivers. Mainstream medicine debates the "candida
+  syndrome" concept; clinical experience and CSDA findings support the FM model.
+coaching_translation: Chronic candida overgrowth isn't just a yeast infection — it's
+  the downstream of years of antibiotics, hormonal contraceptives, and high-sugar
+  eating wiping out the gut flora that normally keep candida in check. Treating yeast
+  directly isn't enough; you have to fix the predisposing pattern.
+caveats:
+- Confirm with comprehensive stool analysis before long courses of antifungals.
+- Address SIBO and leaky gut in parallel — overlapping syndromes.
+- Restoration takes 3-6 months minimum.
+linked_to_topics:
+- chronic-candidiasis
+- leaky-gut
+- sibo
+linked_to_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Chronic Candidiasis — Causal factors (pp 206)
+  quote: Prolonged antibiotic use is the key factor in most cases — suppresses normal
+    intestinal bacteria that control yeast, suppresses immunity. Women are 8 times
+    more likely than men to have syndrome; contributors are estrogen, birth control
+    pills, and greater antibiotic use.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: feverfew-and-butterbur-prevent-migraine
+statement: Feverfew (Tanacetum parthenium) and butterbur (Petasites hybridus) extracts
+  have RCT-level evidence for migraine prophylaxis — feverfew via parthenolide-mediated
+  inhibition of platelet serotonin release and inflammatory mediators; butterbur via
+  vascular smooth-muscle relaxation and leukotriene inhibition.
+evidence_tier: strong
+rationale: Multiple double-blind RCTs (e.g. Diener 2005 for butterbur Petadolex 75
+  mg bid, Murphy 1988 for feverfew). American Academy of Neurology rates butterbur
+  Level A and feverfew Level B for migraine prevention.
+coaching_translation: Feverfew (125 mg daily) and butterbur (75 mg twice daily as
+  Petadolex) both have trial evidence for cutting migraine frequency. Butterbur is
+  the stronger of the two; use only standardised PA-free preparations.
+caveats:
+- Use only PA-free (pyrrolizidine-alkaloid-free) butterbur — others are hepatotoxic.
+- Effect builds over 8-12 weeks.
+- Combine with magnesium / riboflavin / CoQ10 stack for additive benefit.
+- Avoid in pregnancy.
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+- chronic-inflammation
+linked_to_supplements:
+- feverfew
+- butterbur
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-migraine-ibd-candida
+  location: Migraine Headache — Feverfew + Butterbur (pp 659 box)
+  quote: Feverfew, Butterbur, Magnesium, Vitamin B6 listed in interventions to minimize
+    acute attacks while other interventions are applied.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
