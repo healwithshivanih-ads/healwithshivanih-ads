@@ -1,0 +1,57 @@
+slug: protein-adequacy-vegetarian
+display_name: Protein Adequacy on Vegetarian / Jain Diets
+aliases:
+- vegetarian protein
+- jain protein adequacy
+- plant-based protein deficiency
+- low protein vegetarian
+summary: >-
+  Many Indian vegetarian and Jain diets fall below the protein intake range
+  needed for gut barrier repair, muscle maintenance, immune function, and
+  satiety-driven metabolic regulation (typically 1.0-1.6 g/kg body weight,
+  or roughly 80-120 g/day for most adults). Vegetarian protein from grains
+  and legumes is incomplete (low in lysine, methionine, leucine) compared
+  to animal protein, so total intake needs to be modestly higher and more
+  evenly distributed across meals. Without adequate protein, enterocyte
+  repair stalls (perpetuating leaky gut), muscle mass declines (worsening
+  insulin sensitivity), and appetite regulation deteriorates (driving
+  overeating of carbohydrates). Practical Indian-vegetarian protein
+  strategies include soaked sprouted moong/chana/black chickpea, paneer
+  and curd from A2 milk, traditional dal-rice complementary pairing,
+  hemp/pumpkin/sunflower seeds, almonds, mixed-grain rotis (ragi, jowar,
+  bajra), and supplemental whey or pea protein for clients open to it.
+common_symptoms:
+- fatigue
+- weight-gain
+- bloating
+- muscle-weakness
+- food-cravings
+- skin-rash
+key_mechanisms:
+- intestinal-permeability
+- insulin-resistance
+related_topics:
+- leaky-gut
+- nutrition-fundamentals
+- weight-gain
+- insulin-resistance
+- sarcopenia
+notes_for_coach: >-
+  Common gap in Indian FM practice. Target dose: 1.0-1.2 g/kg for general
+  health, 1.4-1.6 g/kg during active gut repair / fat loss / perimenopause.
+  Distribute across meals — 25-30 g per meal triggers muscle protein
+  synthesis. Pair grains + legumes within the same day (not necessarily
+  same meal) for complete amino acid profile. Soaking and sprouting
+  improves digestibility and reduces anti-nutrient interference with
+  mineral absorption.
+sources:
+- id: vitaone-skill-practice-guide
+  location: Practice guide — protein adequacy in vegetarian diets
+  quote: Vegetarian clients commonly require 1.0-1.6 g/kg protein from
+    deliberately combined plant sources for gut barrier repair and lean
+    mass preservation.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

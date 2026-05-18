@@ -277,8 +277,17 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
                 ))
 
     # ---------- Tracking ----------
-    for slug in plan.tracking.symptoms_to_monitor:
-        _xref("tracking", "symptoms_to_monitor", slug, sym_idx, "symptom")
+    # symptoms_to_monitor accepts a mix of:
+    #   - catalogue symptom slugs (validated against sym_idx)
+    #   - freeform monitoring instructions for the client letter (skipped)
+    # Heuristic: an entry containing a space or sentence-ending punctuation
+    # is clearly prose, not a slug. Same pattern as tracking.habits (freeform
+    # by design — see CLAUDE.md: "Practices and tracking habits are FREEFORM
+    # strings, NOT entity types").
+    for entry in plan.tracking.symptoms_to_monitor:
+        if " " in entry or any(ch in entry for ch in ".—"):
+            continue  # freeform monitoring instruction, not a slug
+        _xref("tracking", "symptoms_to_monitor", entry, sym_idx, "symptom")
 
     # ---------- Internal coherence ----------
     if not plan.primary_topics:
