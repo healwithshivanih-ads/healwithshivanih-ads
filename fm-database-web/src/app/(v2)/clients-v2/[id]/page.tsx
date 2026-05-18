@@ -38,6 +38,8 @@ import { EngagementPicker } from "./engagement-picker";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
 import { BeightonVerifyPanel } from "./beighton-verify-panel";
+import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
+import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
@@ -1086,6 +1088,22 @@ export default async function ClientV2Page({
                   latestScore={beightonScore}
                   ageYears={ageYears}
                 />
+                {/* v0.75.7 — retrospective Tier 1 suspicions for legacy
+                    clients (submitted pre-v0.75.2). Deterministic
+                    inference, zero API cost. Hides when client has
+                    structured Tier 1 data OR no suspicions inferred. */}
+                {(() => {
+                  const inference = computeSuspectedSignals(
+                    client as unknown as Record<string, unknown>,
+                  );
+                  return (
+                    <TierOneSuspicionsPanel
+                      clientId={client.client_id}
+                      suspicions={inference.suspicions}
+                      hasStructuredTierOne={inference.has_structured_tier_one}
+                    />
+                  );
+                })()}
               </>
             );
           })()}
