@@ -15,9 +15,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+// Note: submitPlan + publishPlan moved out — primary submit/publish surface
+// is the InlineStatusBar at the top of the v2 plan editor page. This file
+// keeps only secondary lifecycle actions.
 import {
-  submitPlan,
-  publishPlan,
   revokePlan,
   supersedePlan,
   diffPlans,
@@ -121,40 +122,10 @@ export function LifecyclePanel({
     router.refresh();
   }
 
-  // "Activate" = submit + publish in one click (removes confusing 2-step flow)
-  function handleActivate() {
-    startTransition(async () => {
-      // Submit first (runs plan-check), then publish immediately
-      const sub = await submitPlan(slug, reason);
-      if (!sub.ok) {
-        notify(false, sub.error ?? "Plan check failed — fix issues before activating.");
-        return;
-      }
-      const pub = await publishPlan(slug, reason);
-      const v = (pub.plan?.version as number | undefined) ?? version;
-      notify(
-        pub.ok,
-        pub.ok
-          ? `✅ Plan activated (v${v ?? "?"}) — ready to send to client.`
-          : pub.error ?? "Activation failed."
-      );
-      if (pub.ok) refreshAfterMutate();
-    });
-  }
-
-  function handlePublish() {
-    startTransition(async () => {
-      const r = await publishPlan(slug, reason);
-      const v = (r.plan?.version as number | undefined) ?? version;
-      notify(
-        r.ok,
-        r.ok
-          ? `Plan activated v${v ?? "?"}. Catalogue SHA frozen at ${r.git_sha ?? "—"}.`
-          : r.error ?? "Publish failed."
-      );
-      if (r.ok) refreshAfterMutate();
-    });
-  }
+  // handleActivate + handlePublish removed 2026-05-18.
+  // Submit + Publish flow lives in InlineStatusBar (sticky bar at top of
+  // the v2 plan editor). Keeping two parallel Activate buttons on the same
+  // page confused coaches who hit Plan Actions tab AND the sticky bar.
 
   function handleRevoke() {
     startTransition(async () => {
@@ -337,31 +308,20 @@ export function LifecyclePanel({
               </div>
             )}
 
-            {/* ── Draft: single Activate button ── */}
+            {/* ── Draft / ready_to_publish: pointer to the sticky bar ──
+                The submit/publish actions live in the InlineStatusBar at the
+                top of the v2 plan editor page. This panel is for SECONDARY
+                lifecycle actions only (follow-up generation, revoke, diff,
+                export, save-as-template). Avoiding two parallel Activate
+                buttons that confused coaches in real use. */}
             {(status === "draft" || status === "ready_to_publish") && (
-              <div className="space-y-2.5 rounded-md border border-emerald-200 bg-emerald-50/40 p-4">
-                <p className="text-xs text-muted-foreground">
-                  Runs plan-check, then marks the plan active so you can send it to the client.
-                  You can still edit afterwards.
+              <div className="space-y-1 rounded-md border border-slate-200 bg-slate-50/60 p-3 text-xs text-slate-700">
+                <div className="font-semibold">Submit & Publish</div>
+                <p className="text-slate-600">
+                  Use the <span className="font-mono text-[11px]">✅ Submit for publish</span>{" "}
+                  button at the top of this page. This tab now only holds advanced
+                  lifecycle actions (revoke, diff, export, save-as-template).
                 </p>
-                <Input
-                  placeholder="Activation note (optional)"
-                  value={reason}
-                  onChange={(e) => setReason(e.target.value)}
-                  className="text-xs"
-                />
-                <Button
-                  size="sm"
-                  className="bg-emerald-700 hover:bg-emerald-800 text-white w-full"
-                  onClick={handleActivate}
-                  disabled={isPending}
-                >
-                  {isPending
-                    ? "Activating…"
-                    : status === "ready_to_publish"
-                      ? "🚀 Publish plan (make live)"
-                      : "🚀 Activate plan (runs plan-check + publishes)"}
-                </Button>
               </div>
             )}
 
