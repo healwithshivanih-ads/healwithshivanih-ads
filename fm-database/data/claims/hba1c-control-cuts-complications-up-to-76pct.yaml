@@ -1,0 +1,39 @@
+slug: hba1c-control-cuts-complications-up-to-76pct
+statement: Tight glycaemic control (HbA1c ≤ 7%, ideally below 5.5%) reduces the risk
+  of major diabetic complications — retinopathy by up to 76%, nephropathy by up to
+  56%, neuropathy by up to 60%. HbA1c is the single most important monitored marker
+  for long-term diabetic outcomes.
+evidence_tier: strong
+rationale: DCCT, UKPDS, and follow-up meta-analyses repeatedly show HbA1c reduction
+  directly cuts microvascular complications. Pizzorno's targets (≤7% adequate, ≤5.5%
+  ideal) are tighter than ADA's standard guidance but consistent with FM thinking.
+coaching_translation: HbA1c is the single most important diabetes lab. Keeping it
+  under 7% cuts your risk of going blind, losing kidney function, or developing nerve
+  damage by half to three-quarters. Aiming for under 5.5% is the FM target.
+caveats:
+- HbA1c can mask wildly fluctuating glucose — pair with continuous glucose monitoring
+  or 1,5-AG (GlycoMark) when in doubt.
+- Anemia and haemoglobinopathies distort HbA1c.
+- Hypoglycaemia risk rises with very tight control on insulin/sulfonylureas — individualise.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-nephropathy
+- diabetic-neuropathy
+linked_to_mechanisms:
+- glycation-protein-modification
+- advanced-glycation-end-products
+- sorbitol-accumulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — Long-Term Complications / Poor glucose control (pp
+    268)
+  quote: Glycemic control reduces risk of complications — retinopathy (up to 76%),
+    nephropathy (up to 56%), neuropathy (up to 60%). Keep HbA1c at 7.0% or less.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

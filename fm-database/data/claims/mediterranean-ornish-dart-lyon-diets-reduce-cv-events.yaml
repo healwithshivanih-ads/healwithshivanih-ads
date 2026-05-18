@@ -1,0 +1,37 @@
+slug: mediterranean-ornish-dart-lyon-diets-reduce-cv-events
+statement: The Mediterranean, Ornish, DART (Diet and Reinfarction Trial), and Lyon
+  Heart diets all reduce cardiovascular events and mortality in primary and secondary
+  prevention — each via different mechanisms (Mediterranean and Lyon emphasise olive
+  oil, fish, vegetables; Ornish low-fat plant-based; DART emphasises fatty fish).
+evidence_tier: strong
+rationale: Lyon Heart, PREDIMED, and DART are landmark RCTs each showing 30-70% reductions
+  in CV events. Ornish reversal trials show angiographic regression. Pizzorno groups
+  them as the four evidence-supported dietary patterns.
+coaching_translation: Four diets have RCT-level evidence for reducing heart attacks
+  and strokes — Mediterranean, Ornish, DART, and Lyon. They differ in detail but share
+  heavy emphasis on plants, fish, and olive oil while cutting refined carbs and animal
+  fats. Pick the one your client can actually follow.
+caveats:
+- Lyon Heart and PREDIMED used real-world Mediterranean patterns with mixed nuts and
+  olive oil.
+- Ornish requires highest discipline (very low fat + meditation + exercise).
+- DART specifically tested adding fatty fish 2x/week.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+- mediterranean-diet
+linked_to_mechanisms:
+- ldl-oxidation
+- chronic-inflammation
+- endothelial-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Dietary stress on cardiovascular system (pp 83 box)
+  quote: Choose Mediterranean diet, Ornish diet, DART diet, or Lyon diet for reducing
+    dietary stress on cardiovascular system.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

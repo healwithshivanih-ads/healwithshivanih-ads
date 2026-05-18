@@ -1,0 +1,34 @@
+slug: glycemic-load-150-cap-prevents-cv-and-diabetes-risk
+statement: Daily glycemic load (GL) should not exceed 150; above 161, risk for cardiovascular
+  disease and T2DM rises significantly via lower HDL and higher triglycerides. GL
+  is a stronger T2DM predictor than glycemic index alone.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the Nurses' Health Study and Health Professionals Follow-up
+  data on GL-CVD-T2DM relationships. GL = (carbohydrate per serving × glycemic index)/100;
+  aggregates both quality and quantity.
+coaching_translation: It's not just *what* you eat but *how much* — total glycemic
+  load matters more than glycemic index alone. Stay below 150 GL points a day to keep
+  diabetes and heart-disease risk low.
+caveats:
+- GL is computed per serving; aggregate across a day.
+- Whole-food carbs (intact grains, legumes, vegetables) have low GL even at large
+  portions.
+- Refined carbs and sugary drinks push GL up fast.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+- atherosclerosis
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — Glycemic index and GL (pp 262)
+  quote: A high-GL diet increases risk for heart disease because of lower HDL and
+    higher triglyceride levels. Increased DM and heart risk start at daily GL of 161.
+    GL should not exceed 150 daily.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

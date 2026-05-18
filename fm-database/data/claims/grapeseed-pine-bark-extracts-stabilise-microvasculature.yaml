@@ -1,0 +1,39 @@
+slug: grapeseed-pine-bark-extracts-stabilise-microvasculature
+statement: Grapeseed or pine bark extract (oligomeric proanthocyanidins ≥ 95%) at
+  150-300 mg/day supports microvascular integrity, reduces platelet aggregation, and
+  improves endothelial function — used alongside vitamin C as the core antioxidant
+  stack for atherosclerosis support.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs of Pycnogenol and grapeseed extract show measurable improvements
+  in endothelial function (flow-mediated dilation), BP, and capillary fragility. Pizzorno
+  groups them with vitamin C for the proanthocyanidin-ascorbate synergy at strengthening
+  collagen and GAG matrix.
+coaching_translation: Grapeseed or pine bark extract (Pycnogenol) plus vitamin C is
+  the antioxidant stack for someone with established cardiovascular risk — they specifically
+  strengthen the small blood vessels and quiet endothelial inflammation.
+caveats:
+- Use standardised extracts (>=95% OPCs).
+- Mild bleeding risk; pause before surgery and check with cardiologist if on anticoagulants.
+- Effect builds over 8-12 weeks.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+- diabetic-retinopathy
+linked_to_mechanisms:
+- endothelial-dysfunction
+- gag-layer-arterial-endothelium-damage
+- ldl-oxidation
+linked_to_supplements:
+- grapeseed-extract
+- grapeseed-pine-bark-extract
+- pine-bark-extract
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Support integrity of microvasculature (pp 83 box)
+  quote: Grapeseed extract or pine bark extract listed for supporting integrity of
+    microvasculature.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

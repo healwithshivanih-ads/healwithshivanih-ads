@@ -1,0 +1,33 @@
+slug: multiple-major-risk-factors-multiply-cv-risk
+statement: Cardiovascular risk multiplies dramatically when major risk factors combine
+  — one factor raises risk ~30%, smoking plus hypertension raises it 350%, and smoking
+  plus hypertension plus high cholesterol raises it 720%.
+evidence_tier: strong
+rationale: Framingham, MRFIT, and similar long-term cohorts establish this multiplicative
+  pattern. Pizzorno's tabulated relative risks reflect well-replicated epidemiology.
+coaching_translation: Risk factors don't add up — they multiply. One factor raises
+  your heart-disease risk 30%, but smoking plus high blood pressure plus high cholesterol
+  together raises it more than seven-fold. Removing any single one of these gives
+  outsized benefit.
+caveats:
+- Numbers are population-level relative risks, not individual probability.
+- Younger patients benefit most from early factor reduction.
+- Stress, sleep, social isolation are additional multipliers not in the classic list.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+- hypertension
+linked_to_mechanisms:
+- endothelial-dysfunction
+- gag-layer-arterial-endothelium-damage
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Association of Risk Factors with Incidence (pp 85)
+  quote: Presence of one major risk factor 30%; high cholesterol + high BP 300%; smoker
+    + high BP 350%; smoker + high cholesterol + high BP 720%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

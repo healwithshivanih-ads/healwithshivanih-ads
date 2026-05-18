@@ -1,9 +1,7 @@
 slug: environmental-toxin-load
 display_name: Environmental Toxin Load
 aliases:
-- toxin-load
 - xenobiotic-burden
-- total-toxic-load
 - environmental-burden
 summary: The cumulative body burden of synthetic and naturally-occurring toxicants
   (heavy metals, persistent organic pollutants, endocrine disruptors, mycotoxins,

@@ -1,0 +1,40 @@
+slug: quitting-smoking-cuts-mortality-36pct-in-cad
+statement: In patients with established coronary artery disease, quitting smoking
+  produces a 36% reduction in relative mortality risk compared with continued smoking.
+  Smokers have 70% greater CVD mortality than non-smokers, on average dying 7-8 years
+  earlier.
+evidence_tier: strong
+rationale: Meta-analyses of post-MI and CAD cohorts consistently show this ~30-40%
+  mortality benefit from smoking cessation. Pizzorno's review reflects well-replicated
+  data. Mechanism — reversal of LDL-C oxidation by tobacco toxins, reduced platelet
+  aggregation, normalised endothelial function.
+coaching_translation: If you already have heart disease, quitting smoking cuts your
+  chance of dying by more than a third. It's the highest-leverage thing you can do,
+  and the benefit shows up within months.
+caveats:
+- Cessation interventions vary widely in effectiveness — physician advice alone yields
+  ~2% quit rate at 1 year.
+- Behavioural therapy, NRT, varenicline, hypnosis (23% success) all increase quit
+  rates.
+- Even partial reduction has measurable benefit.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+- smoking-cessation
+linked_to_mechanisms:
+- ldl-oxidation
+- endothelial-dysfunction
+- gag-layer-arterial-endothelium-damage
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Smoking (pp 87-88)
+  quote: There is a 36% reduction in relative risk of mortality for patients with
+    CAD who quit compared with those who continued smoking. Smokers have 70% greater
+    risk of death from CVD than nonsmokers. Average smoker dies 7 to 8 years sooner
+    than nonsmoker.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

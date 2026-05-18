@@ -1,0 +1,38 @@
+slug: ggtp-above-40-iu-marks-20x-t2dm-risk
+statement: Serum gamma-glutamyltransferase (GGTP) above 40 IU/L is a 20-fold predictor
+  of T2DM risk — serves as a clinically accessible surrogate for body burden of persistent
+  organic pollutants (POPs) that block insulin receptors and impair beta-cell function.
+evidence_tier: strong
+rationale: Pizzorno cites multiple cohort studies showing GGTP-T2DM dose-response
+  relationships independent of alcohol intake. GGTP rises with hepatic detoxification
+  load — including POP biotransformation. Effect size is much larger than most established
+  T2DM risk factors.
+coaching_translation: GGTP is the cheapest lab marker for environmental toxin load.
+  Levels above 40 IU/L mark a 20-fold elevated diabetes risk — far more predictive
+  than weight alone. Look for it on routine liver panels and use it as a trigger for
+  detox + organic-food strategies.
+caveats:
+- GGTP also rises with alcohol, hepatic congestion, and biliary disease — confirm
+  the cause.
+- Reduction strategies — organic foods, fibre, brassicas, sulfur foods, glutathione
+  precursors (NAC, glycine).
+- A 20-fold relative risk is the strongest signal Pizzorno cites — not yet widely
+  adopted in mainstream diabetes screening.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+- environmental-toxin-load
+linked_to_mechanisms:
+- pops-block-insulin-receptors
+- insulin-resistance
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — POPs (pp 260)
+  quote: An elevated GGTP is a strong predictor of diabetes risk. Those with levels
+    above 40 IU/L have a 20-fold increased risk.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

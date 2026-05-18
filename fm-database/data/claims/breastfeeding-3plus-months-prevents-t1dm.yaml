@@ -1,0 +1,36 @@
+slug: breastfeeding-3plus-months-prevents-t1dm
+statement: Breastfeeding for at least 3 months establishes proper intestinal immune
+  function, reduces food-allergy development, and is independently protective against
+  T1DM via gut-immune maturation and reduced cross-reactive antigen exposure.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the protective effect of breastfeeding duration in multiple
+  cohorts. Mechanism — secretory IgA development, microbiome priming, delayed exposure
+  to potential antigens during the gut-permeability window.
+coaching_translation: At least 3 months of exclusive breastfeeding builds the gut
+  immune system that prevents food proteins from cross-reacting with the pancreas.
+  It's one of the cleanest T1DM-prevention levers we have.
+caveats:
+- Effect strongest in genetically susceptible infants.
+- Combine with delayed introduction of cow's milk and gluten until later in infancy.
+- Not all breastfeeding mothers can sustain 6 months — even partial breastfeeding
+  has measurable benefit.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- food-allergies
+linked_to_mechanisms:
+- leaky-gut
+- molecular-mimicry
+- autoimmune-beta-cell-destruction
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — T1DM / Environmental and dietary risk factors (pp
+    255)
+  quote: Breastfeeding establishes proper intestinal immune function and reduces risk
+    of T1DM. Breastfeeding confers reduced risk of food allergies and offers better
+    protection against bacterial and viral intestinal infections.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

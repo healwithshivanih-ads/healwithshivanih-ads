@@ -1,0 +1,38 @@
+slug: plaque-stabilisation-matters-more-than-lumen-enlargement
+statement: For preventing myocardial infarction and stroke, stabilising vulnerable
+  plaque (reducing inflammation, mast cell activation, macrophage infiltration, oxidative
+  stress) is clinically more important than simply enlarging the arterial lumen —
+  most fatal MIs occur at lesions that were less than 50% stenotic before rupture.
+evidence_tier: strong
+rationale: Decades of intravascular imaging research (IVUS, OCT) confirm that rupture-prone
+  plaque, not stenosis severity, drives most acute events. Pizzorno's emphasis on
+  plaque-stabilising interventions (anti-inflammatory diet, omega-3, antioxidants,
+  blood pressure control) reflects mainstream cardiology consensus.
+coaching_translation: A heart attack isn't caused by the slow-growing plaque your
+  stress test sees — it's caused by a small unstable plaque rupturing. Calming inflammation
+  throughout your arteries matters more than opening up one narrowing.
+caveats:
+- Statin trials show benefit largely from plaque stabilisation, not just LDL lowering.
+- Inflammation markers (hsCRP, Lp-PLA2) help identify high-risk patients.
+- Lifestyle (diet, exercise, stress, sleep) targets all plaque-destabilising pathways
+  simultaneously.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+linked_to_mechanisms:
+- endothelial-dysfunction
+- gag-layer-arterial-endothelium-damage
+- chronic-inflammation
+- ldl-oxidation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Process of Atherosclerosis (pp 84)
+  quote: Plaque instability poses greater risk for myocardial infarction or stroke.
+    Targeting plaque stabilization appears to be more clinically important than simply
+    enlarging the lumen.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

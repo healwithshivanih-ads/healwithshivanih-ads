@@ -1,0 +1,36 @@
+slug: pantethine-lowers-cholesterol-triglycerides-without-statin-effects
+statement: Pantethine (the active form of vitamin B5) at 300 mg three times daily
+  reduces total cholesterol by approximately 15%, triglycerides by 30%, and raises
+  HDL by ~10% in hyperlipidemic patients — without the muscle, mitochondrial, or insulin-resistance
+  side effects of statins.
+evidence_tier: plausible_emerging
+rationale: Multiple small Italian and Japanese RCTs through the 1980s-90s support
+  these effect sizes. Pizzorno cites pantethine as a first-line natural alternative
+  for moderate hyperlipidemia, especially diabetic hypertriglyceridemia. Mechanism
+  via CoA modulation, reducing hepatic cholesterol and fatty acid synthesis.
+coaching_translation: Pantethine — not regular pantothenic acid — has trial evidence
+  for lowering cholesterol and triglycerides as effectively as some statins, without
+  the muscle pain, fatigue, or blood-sugar-raising side effects.
+caveats:
+- Effect builds over 4-8 weeks.
+- Higher cost than B5; insist on the pantethine form (not pantothenic acid).
+- Combine with niacin, garlic, fish oil for additive lipid-lowering.
+linked_to_topics:
+- atherosclerosis
+- hyperlipidemia
+- cardiovascular-disease-prevention
+linked_to_mechanisms:
+- ldl-oxidation
+linked_to_supplements:
+- pantethine
+- pantethine-vitamin-b5
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Hyperlipidemia natural interventions (pp 83 box)
+  quote: Pantethine listed as the natural intervention for hyperlipidemia, diabetic
+    hypertriglyceridemia, and hyperhomocysteinemia.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

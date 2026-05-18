@@ -1,0 +1,36 @@
+slug: childhood-vitamin-d-reduces-t1dm-risk-80pct
+statement: Cod liver oil vitamin D supplementation (2000 IU/day) during early childhood
+  reduces T1DM risk by approximately 80%; vitamin-D-deficient children have a 300%
+  increased risk.
+evidence_tier: strong
+rationale: Pizzorno cites the EURODIAB substudy and Norwegian cohort data — strong
+  observational evidence for early-life vitamin D as protective against T1DM. Mechanism
+  — vitamin D inhibits autoimmune T-cell responses against beta cells.
+coaching_translation: Childhood vitamin D may be the most important T1DM-prevention
+  nutrient we know of. 2000 IU a day during pregnancy and early childhood (ideally
+  via cod liver oil for the omega-3 synergy) appears to prevent ~80% of cases.
+caveats:
+- Cod liver oil provides vitamin A alongside D — caution in pregnancy with high-dose
+  vitamin A.
+- Pregnancy and infancy are the highest-impact windows.
+- Modern vitamin D3 (cholecalciferol) supplements with separate omega-3 are equally
+  viable.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- vitamin-d-deficiency
+linked_to_mechanisms:
+- autoimmune-beta-cell-destruction
+- vitamin-d-beta-cell-signaling
+linked_to_supplements:
+- vitamin-d
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — T1DM / Vitamin D deficiency (pp 256)
+  quote: Children taking vitamin D from cod liver oil have an 80% reduced risk of
+    T1DM; vitamin D-deficient children have a 300% increased risk. Vitamin D from
+    cod liver oil during pregnancy reduces T1DM frequency.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

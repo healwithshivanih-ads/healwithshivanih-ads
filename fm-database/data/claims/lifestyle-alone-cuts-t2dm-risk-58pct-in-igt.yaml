@@ -1,0 +1,33 @@
+slug: lifestyle-alone-cuts-t2dm-risk-58pct-in-igt
+statement: In people with impaired glucose tolerance (IGT/prediabetes), lifestyle
+  changes alone (whole-foods diet, regular exercise, weight loss) reduce progression
+  to T2DM by 58% — outperforming metformin and other pharmaceuticals.
+evidence_tier: strong
+rationale: The Diabetes Prevention Program (DPP) and Finnish Diabetes Prevention Study
+  are the foundational RCTs. Pizzorno's review reflects this. Mechanism — improved
+  insulin sensitivity, weight loss, reduced inflammation.
+coaching_translation: If you have prediabetes, lifestyle changes alone work better
+  than metformin — they cut your chance of progressing to diabetes by more than half.
+  Diet + exercise + modest weight loss is the highest-leverage intervention we have.
+caveats:
+- Requires sustained adherence — 7% weight loss + 150 min/week moderate activity were
+  the DPP targets.
+- Effect is strongest in the first 3 years and persists long-term.
+- Combine with environmental detox strategies for additive benefit.
+linked_to_topics:
+- prediabetes
+- prediabetes-metabolic-syndrome
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — Diet, exercise, lifestyle and diabetes risk (pp 261)
+  quote: Lifestyle changes alone are associated with a 58% reduced risk of developing
+    DM in people with IGT.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

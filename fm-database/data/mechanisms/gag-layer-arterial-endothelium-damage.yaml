@@ -1,0 +1,44 @@
+slug: gag-layer-arterial-endothelium-damage
+display_name: Glycosaminoglycan Layer Damage in Arterial Endothelium
+aliases:
+- gag-layer-disruption
+- glycocalyx-erosion
+- endothelial-gag-loss
+category: structural
+summary: The first event in atherosclerotic plaque formation is damage to the GAG
+  (glycosaminoglycan) layer covering arterial endothelial cells. Drivers include insulin
+  resistance, reactive oxygen and nitrogen species, impaired repair processes, heavy
+  metal toxicity, hyperhomocysteinemia, and nitric oxide deficiency. Loss of GAG integrity
+  creates affinity for lipoproteins to bind, monocytes and platelets to adhere, and
+  smooth muscle cells to migrate into the intima — the cascade that becomes plaque.
+upstream_drivers:
+- insulin-resistance
+- reactive-oxygen-species
+- elevated-homocysteine
+- heavy-metal-toxicity
+- nitric-oxide-deficiency
+- chronic-inflammation
+downstream_effects:
+- endothelial-dysfunction
+- atherosclerosis-pathogenesis
+- lipoprotein-deposition
+- plaque-formation
+related_mechanisms:
+- endothelial-dysfunction
+- ldl-oxidation
+- homocysteine-metabolism
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Process of Atherosclerosis (pp 84)
+  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer
+    as a result of insulin resistance, reactive oxygen and nitrogen species, impaired
+    repair processes, heavy metal toxicity, hyperhomocysteinemia, and inhibition of
+    either nitric oxide production or availability.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

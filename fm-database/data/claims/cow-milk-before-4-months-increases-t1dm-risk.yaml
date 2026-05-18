@@ -1,0 +1,37 @@
+slug: cow-milk-before-4-months-increases-t1dm-risk
+statement: Early exposure to cow's milk before 4 months of age increases T1DM risk
+  approximately 1.5×; breastfeeding for at least 3 months is protective via gut immune
+  maturation and reduced food-antigen cross-reactivity with pancreatic beta cells.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites multiple observational studies of breastfeeding duration
+  vs T1DM incidence. Mechanism — bovine insulin and bovine serum albumin can cross-react
+  with beta cell antigens; gluten can do the same. Pre-leak gut in infancy amplifies
+  the risk.
+coaching_translation: Exclusive breastfeeding for the first 3-4 months is one of the
+  most reproducible T1DM-prevention factors. Early cow's milk exposure roughly doubles
+  risk in susceptible kids.
+caveats:
+- Effect is in genetically susceptible kids; not all early-exposed infants develop
+  T1DM.
+- Hydrolysed infant formula somewhat reduces but does not eliminate the risk.
+- Solid foods before 4 months also implicated.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- food-allergies
+linked_to_mechanisms:
+- autoimmune-beta-cell-destruction
+- molecular-mimicry
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — T1DM / Environmental and dietary risk factors (pp
+    255-256)
+  quote: Patients with T1DM are more likely to have been breastfed for less than 3
+    months and to have been exposed to cow's milk or solid foods before 4 months of
+    age. Early cow's milk exposure may increase risk by about 1.5 times.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

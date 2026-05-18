@@ -1,0 +1,44 @@
+slug: pops-block-insulin-receptors
+display_name: Persistent Organic Pollutants Block Insulin Receptors
+aliases:
+- pop-insulin-receptor-blockade
+- environmental-toxicant-insulin-resistance
+- pop-induced-insulin-resistance
+category: metabolic
+summary: Persistent organic pollutants (PCDDs, PCDFs, hexachlorobenzene, organophosphates,
+  DDE, bisphenol A) accumulate in adipose tissue and bind to or block insulin receptor
+  sites, impairing insulin signalling and beta-cell insulin production. Pizzorno frames
+  body POP load as potentially a stronger T2DM predictor than obesity itself. Indirect
+  measurement via gamma-glutamyltransferase (GGTP) — levels above 40 IU/L confer a
+  20-fold increased T2DM risk.
+upstream_drivers:
+- environmental-toxin-load
+- bisphenol-a-exposure
+- organophosphate-exposure
+- pesticide-residue-exposure
+- adipose-tissue-toxicant-sequestration
+downstream_effects:
+- insulin-resistance
+- type-2-diabetes-mellitus
+- impaired-insulin-secretion
+- metabolic-syndrome
+related_mechanisms:
+- insulin-resistance
+- environmental-toxin-load
+- thyroid-toxicant-sensitivity
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+- environmental-toxin-load
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — POPs (pp 260)
+  quote: Body load of POPs is a strong predictor of T2DM and might be a more important
+    risk factor than obesity. An elevated GGTP is a strong predictor of diabetes risk.
+    Those with levels above 40 IU/L have a 20-fold increased risk. Apparent mechanisms
+    — blocking of insulin receptor sites and impairment of insulin production.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

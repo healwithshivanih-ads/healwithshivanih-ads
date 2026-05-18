@@ -1,0 +1,36 @@
+slug: niacinamide-3g-may-preserve-beta-cells-new-t1dm
+statement: Niacinamide (nicotinamide) 25-50 mg/kg/day up to 3 g/day may prolong non-insulin-requiring
+  remission in newly diagnosed T1DM, preserve beta-cell function (improved C-peptide),
+  and in rare cases produce complete reversal — if started soon enough after onset.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites trial-level evidence (ENDIT and earlier studies). Mechanism
+  — niacinamide inhibits PARP activation and cytokine-mediated beta-cell apoptosis.
+  Window of opportunity is narrow (weeks to months post-diagnosis). Monitor liver
+  enzymes every 3 months.
+coaching_translation: For a newly-diagnosed type 1 diabetic, niacinamide at therapeutic
+  dose may slow or even reverse the immune attack on the pancreas — but only if started
+  early and only under medical supervision.
+caveats:
+- Window of opportunity is narrow (weeks to months from onset).
+- Hepatotoxicity risk — monitor liver enzymes every 3 months.
+- Use immediate-release; timed-release may not reach peak concentrations needed.
+- Adjunct only — never a substitute for insulin replacement when needed.
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_mechanisms:
+- autoimmune-beta-cell-destruction
+- pancreatic-beta-cell-dysfunction
+linked_to_supplements:
+- niacinamide
+out_of_scope_notes: Always under endocrinologist supervision; coach role is education.
+sources:
+- id: pizzorno-diabetes
+  location: Diabetes Mellitus — Early Treatment of T1DM / Niacinamide (pp 257)
+  quote: A dose of 3 g niacinamide daily may prolong non-insulin-requiring remission,
+    lower insulin requirements, improve metabolic control, and increase beta-cell
+    function as determined by C-peptide secretion. Complete reversal in some patients
+    makes its use worth the effort.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

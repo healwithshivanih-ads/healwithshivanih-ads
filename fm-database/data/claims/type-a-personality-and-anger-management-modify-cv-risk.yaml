@@ -1,0 +1,32 @@
+slug: type-a-personality-and-anger-management-modify-cv-risk
+statement: Hostility, anger, and Type A personality patterns are independent cardiovascular
+  risk factors. Anger and aggression management training reduces this risk via lower
+  sympathetic tone, lower cortisol, and better adherence to lifestyle change.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the Type A construct (Friedman and Rosenman) and the hostility
+  subscore as the most reproducible psychosocial CV-risk marker. Intervention trials
+  (Recurrent Coronary Prevention Project) show measurable reinfarction reduction with
+  anger-management training.
+coaching_translation: Hostility and chronic anger are real cardiovascular risk factors
+  — about as significant as cholesterol. Anger management isn't fluff; it's a measurable
+  lever for heart health.
+caveats:
+- The hostility component, not the time-urgency component, drives most of the risk.
+- Cognitive-behavioural anger management produced 50% reinfarction reduction in trials.
+- Pair with exercise and stress management for additive effect.
+linked_to_topics:
+- atherosclerosis
+- cardiovascular-disease-prevention
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-atherosclerosis
+  location: Atherosclerosis — Other Risk Factors / Type A (pp 85)
+  quote: Other risk factors for atherosclerosis include Type A personality. Anger
+    and aggression management listed in interventions for Type A personality.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
