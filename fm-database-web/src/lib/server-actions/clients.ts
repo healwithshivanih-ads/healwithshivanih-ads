@@ -75,6 +75,10 @@ export type CreateClientInput = {
   dietary_preference?: string;
   foods_to_avoid?: string;
   non_negotiables?: string;
+  /** Meal plan letter shape preference. Read by render-client-letter.py
+   *  to branch between 7-day tables (detailed), categories + principles
+   *  (principles), or principles-then-sample-week (hybrid, default). */
+  meal_plan_style?: "detailed" | "principles" | "hybrid";
 
   // FM Intake — deep clinical questions
   digestion_notes?: string;
@@ -464,6 +468,7 @@ export async function updateClientFromTranscriptAction(
     if (data.non_negotiables) set("non_negotiables", data.non_negotiables);
     if (data.reported_triggers) set("reported_triggers", data.reported_triggers);
     if (data.family_history) set("family_history", data.family_history);
+    if (data.meal_plan_style) set("meal_plan_style", data.meal_plan_style);
 
     // FM intake
     if (data.digestion_notes) set("digestion_notes", data.digestion_notes);
@@ -569,6 +574,7 @@ export type ParsedClientData = {
   non_negotiables?: string;
   reported_triggers?: string;
   family_history?: string;
+  meal_plan_style?: "detailed" | "principles" | "hybrid";
   // FM intake
   digestion_notes?: string;
   sleep_notes?: string;
@@ -952,6 +958,9 @@ export interface UpdatePreferencesInput {
   non_negotiables?: string;
   city?: string;
   country?: string;
+  /** Per-client meal plan letter shape preference. Read by
+   *  render-client-letter.py phase-letter prompt builder. */
+  meal_plan_style?: "detailed" | "principles" | "hybrid";
 
   family_history?: string;
 

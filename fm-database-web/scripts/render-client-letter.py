@@ -3418,10 +3418,178 @@ Per meal split (MUST roughly match):
     )
     span_weeks = phase_end - phase_start + 1
 
+    # Per-client meal plan letter shape preference. Set via PreferencesEditor
+    # on the Overview tab. Default "hybrid" — works for most new clients.
+    style_raw = (client.get("meal_plan_style") or "hybrid").lower()
+    style = style_raw if style_raw in ("detailed", "principles", "hybrid") else "hybrid"
+
+    # Coaching goals — pulled from plan.tracking. Surfaces what coach is
+    # asking the client to TRACK this fortnight (symptoms, habits, labs).
+    # Always emit a section heading in the letter so clients have an
+    # explicit "what to notice / what to track" anchor. Plain text → AI
+    # weaves into the letter as a section.
+    tracking = (plan.get("tracking") or {}) if isinstance(plan, dict) else {}
+    track_habits = tracking.get("habits") or []
+    track_symptoms = tracking.get("symptoms_to_monitor") or []
+    recheck_q = tracking.get("recheck_questions") or []
+    coaching_goals_lines: list[str] = []
+    if track_habits:
+        coaching_goals_lines.append("Tracking habits this fortnight: " + ", ".join(
+            str(h).strip() for h in track_habits[:6] if h
+        ))
+    if track_symptoms:
+        coaching_goals_lines.append("Symptoms to monitor: " + ", ".join(
+            str(s).strip() for s in track_symptoms[:6] if s
+        ))
+    if recheck_q:
+        coaching_goals_lines.append("Recheck questions: " + " · ".join(
+            str(q).strip() for q in recheck_q[:4] if q
+        ))
+    coaching_goals_block = (
+        "COACHING GOALS THIS FORTNIGHT (weave into 'What to notice' section):\n  - "
+        + "\n  - ".join(coaching_goals_lines)
+        if coaching_goals_lines
+        else ""
+    )
+
+    # Weight-loss portion control — when weight loss is enabled, generate
+    # explicit per-meal portion guidance. Coach asked for this in ALL
+    # three modes (detailed/principles/hybrid) — portions are the
+    # mechanism by which the calorie target translates to plates.
+    wl_enabled = bool(weight_loss and weight_loss.get("enabled"))
+    portion_block = ""
+    if wl_enabled and cal:
+        kcal_total = cal["phases"]["wk1_2"] if phase_start <= 2 else (
+            cal["phases"]["wk3_4"] if phase_start <= 4 else (
+                cal["phases"]["wk5_8"] if phase_start <= 8 else (
+                    cal["phases"]["wk9_10"] if phase_start <= 10 else cal["phases"]["wk11_12"]
+                )
+            )
+        )
+        portion_block = f"""PORTION CONTROL FOR WEIGHT LOSS — {kcal_total} kcal/day target:
+Visible reference plate (every meal should look like this):
+  • Half the plate = non-starchy veg (cooked or raw — 2 fist-sized portions)
+  • Quarter of the plate = protein (1 palm-size = ~25-30g)
+  • Quarter of the plate = whole grains or starchy veg (1 cupped-hand = ~30g cooked)
+  • Healthy fat = 1 thumb-size (1 tsp ghee / 1 tbsp seeds / 10 nuts)
+Specific portions to MEASURE (not guess):
+  • Rice / millet / quinoa: ½ cup cooked = ~100 kcal
+  • Dal / kidney beans cooked: ¾ cup = ~150 kcal
+  • Paneer: 50g cube = ~130 kcal (palm-size)
+  • Ghee: 1 tsp = 45 kcal (NOT a tablespoon)
+  • Nuts/seeds: 1 small handful = ~150 kcal (NOT a bowl)
+  • Fruit: 1 medium piece OR 1 cup berries = ~80 kcal
+INCLUDE this portion guidance as a callout box in the letter so the
+client has a reference they can look at while plating each meal.
+"""
+
+    # Mode-specific body instructions (section 3 onwards). Sections 1-2
+    # are common across modes — only the meat changes.
+    if style == "detailed":
+        body_instructions = f"""3. **{span_weeks} × 7-day meal plan tables** — one per week in the range
+   {phase_label_short}. Use this exact format:
+
+   ## 🗓 Week {phase_start} Meal Plan{(' — Target: ' + str(kcal) + ' kcal/day') if cal else ''}
+   | Meal | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+   |------|-----|-----|-----|-----|-----|-----|-----|
+   | **Breakfast** | ... |
+   | **Mid-morning snack** | ... |
+   | **Lunch** | ... |
+   | **Evening snack** | ... |
+   | **Dinner** | ... |
+   | **Bedtime** | ... |
+   {"| *~kcal* | ... |" if cal else ""}
+
+   {(
+       "Repeat the table for each week in range (Week " + str(phase_start) + " through Week " + str(phase_end) + ")."
+       if span_weeks > 1 else ""
+   )}
+
+4. **A few new dishes to try** — list 3–5 NEW recipes/dishes introduced
+   this phase (different from initial-letter weeks). Tag each with ✦
+   and add full recipes in the Appendix.
+
+5. **What to notice in {phase_label_short}** — 3–4 curiosity prompts
+   tied to phase outcomes (e.g. "Notice if your post-meal bloating
+   has reduced", "Track energy at 4pm — should be steadier than week 1").
+   WEAVE IN any items from "COACHING GOALS THIS FORTNIGHT" above.
+
+6. **Recipe Appendix** — `## ✦ Recipe Appendix` — full ingredient
+   lists + steps for every ✦ dish."""
+    elif style == "principles":
+        body_instructions = f"""3. **🟢 What to lean into this fortnight** — categories with examples
+   and portion guidance. NOT a menu grid. Use this structure:
+     • Cooked vegetables — 4–6 servings/day, specific examples
+     • Protein — every meal, specific portion sizes (palm = ~25-30g)
+     • Healthy fats — examples with portions
+     • Fermented foods (if appropriate to phase) — small daily
+     • Hydration — front-loaded if nocturia / late peeing
+
+4. **🔴 What to step back from** — bullets with WHY tied to her
+   labs/conditions, NOT generic. E.g. "Cow dairy — gut barrier still
+   settling. A2 ghee is fine."
+
+5. **⏰ Daily structure** — meal timing, fasting window, hydration
+   timing (especially relevant if client has nocturia or evening
+   energy issues).
+
+6. **🍽 Meal-by-meal inspiration** — 5 ideas per slot:
+     • Breakfast (5 options, brief 1-line descriptions)
+     • Mid-morning snack (3 options)
+     • Lunch (5 options)
+     • Evening snack (3 options)
+     • Dinner (5 options)
+   NOT a 7-day grid. Tag any new dish names but do NOT include full
+   recipes (this mode skips the recipe appendix).
+
+7. **What to notice in {phase_label_short}** — 3–4 curiosity prompts.
+   WEAVE IN any items from "COACHING GOALS THIS FORTNIGHT" above."""
+    else:  # hybrid
+        body_instructions = f"""3. **🟢 What to lean into this fortnight** — categories with examples
+   and portion guidance. Same shape as principles mode.
+
+4. **🔴 What to step back from** — bullets with WHY tied to her
+   labs/conditions, NOT generic.
+
+5. **⏰ Daily structure** — meal timing, fasting window, hydration.
+
+6. **🗓 If you want a sample week — Week {phase_start}** — ONE 7-day
+   table at the end as inspiration (clients in hybrid mode want
+   structure but won't follow a grid religiously). Use the standard
+   format:
+
+   ## 🗓 Sample Week {phase_start}{(' — ~' + str(kcal) + ' kcal/day') if cal else ''}
+   | Meal | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+   |------|-----|-----|-----|-----|-----|-----|-----|
+   | **Breakfast** | ... |
+   | **Mid-morning** | ... |
+   | **Lunch** | ... |
+   | **Evening snack** | ... |
+   | **Dinner** | ... |
+
+   Only ONE week — NOT both weeks in range. This is inspiration, not
+   prescription.
+
+7. **A few new dishes to try** — 3–5 ✦-tagged dishes from the sample
+   week table. Include compact recipe entries (ingredients + 1-para
+   method) in the Appendix.
+
+8. **What to notice in {phase_label_short}** — 3–4 curiosity prompts.
+   WEAVE IN any items from "COACHING GOALS THIS FORTNIGHT" above.
+
+9. **Recipe Appendix** — `## ✦ Recipe Appendix` — compact format
+   (ingredients + 1-paragraph method per dish, not the full multi-step
+   recipe pack)."""
+
     prompt = f"""You are writing a CONTINUATION meal plan letter for {first_name}.
 This is a MID-CYCLE update — {first_name} is currently in week {phase_start} of her
 {plan_weeks}-week protocol. She already has her supplements + lifestyle plan from
 the initial letter. This letter ONLY covers meals for {phase_label_short}.
+
+MEAL PLAN STYLE FOR THIS CLIENT: {style}
+  - detailed:   full 7-day Mon-Sun tables for each week
+  - principles: do's/don'ts + categories + 5 ideas per slot, NO menu grid
+  - hybrid:     principles first, ONE sample week table as inspiration (NOT prescription)
 
 Tone: warm, encouraging, acknowledges momentum. Reference what she's been doing
 the past weeks. Don't re-prescribe — continue + evolve.
@@ -3452,6 +3620,8 @@ CURRENT ROUTINE (already prescribed — DO NOT re-list, just reference):
 - Foods to reduce from initial plan: {', '.join(nutrition_reduce[:8]) if nutrition_reduce else 'see initial letter'}
 
 {supp_phase_block}
+{portion_block}
+{coaching_goals_block}
 {coach_notes_block}
 
 DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
@@ -3466,65 +3636,49 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
    removed the main triggers and started replacing digestive support, we're
    layering in more reinoculation foods…" — concrete, specific, NOT generic.
 
-2b. **🆕 What's new in your supplement routine this phase** — INCLUDE ONLY
-    IF the NEW SUPPLEMENTS or STEP-UP blocks above have entries. Format as
-    a small section with one bullet per supplement: name + dose + timing
-    + brief one-sentence "why this, why now" rationale that ties to the
-    phase intent (e.g. "Adding ashwagandha 600mg in the morning from this
-    week — your adrenal markers showed up depleted on the wk-2 review and
-    we're ready to support cortisol pattern recovery"). For step-ups
-    say "Stepping up <name> to <new dose>". DO NOT include continuing-
-    background supplements here — only changes this phase. SKIP this
-    entire section if there are no new/titrating supplements.
+2a. **💊 Your supplement routine this phase** — ALWAYS INCLUDE THIS SECTION.
+    Coach explicit ask: reinforce the routine every fortnight even if no
+    changes — clients want to know whether to keep going. Format:
 
-2c. **🔁 Quick reminder — how to swap meals** — short box (3 bullets,
+      **Continuing as before:**
+      [bullet list of currently-running supplements — from "Supplements
+      continuing" in the CURRENT ROUTINE block above. Name + dose + timing.
+      Keep concise — one line per supplement.]
+
+      🆕 **New this phase:** (only if "NEW SUPPLEMENTS TO INTRODUCE" block
+      above has entries — otherwise SKIP this sub-section entirely)
+      [one bullet per new supplement: name, dose, timing, + brief one-
+      sentence "why this, why now" rationale tied to the phase intent.]
+
+      ⬆ **Stepping up:** (only if "TITRATING UP" block above has entries —
+      otherwise SKIP)
+      [one bullet per step-up: name + new dose + rationale.]
+
+    Lead with the warmth: "You're staying on your foundation — these
+    are working in the background." Then list. Then call out changes.
+
+2b. **🔁 Quick reminder — how to swap meals** — short box (3 bullets,
     ≤ 4 lines total):
-    - Swap within the same meal slot across days (eggs on Tue if you'd
-      rather have Tuesday's breakfast on Wednesday — fine).
-    - Don't move breakfast into the lunch column, or dinner into
-      breakfast — each slot is timing-designed.
-    - If a meal doesn't fit, repeat one you liked from the same slot
-      earlier in the week rather than skipping.
+    - Swap within the same meal slot across days
+    - Don't move breakfast into the lunch column
+    - If a meal doesn't fit, repeat one you liked from earlier in the
+      week rather than skipping
 
-3. **{span_weeks} × 7-day meal plan tables** — one per week in the range
-   {phase_label_short}. Use this exact format:
+{body_instructions}
 
-   ## 🗓 Week {phase_start} Meal Plan{(' — Target: ' + str(kcal) + ' kcal/day') if cal else ''}
-   | Meal | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
-   |------|-----|-----|-----|-----|-----|-----|-----|
-   | **Breakfast** | ... |
-   | **Mid-morning snack** | ... |
-   | **Lunch** | ... |
-   | **Evening snack** | ... |
-   | **Dinner** | ... |
-   | **Bedtime** | ... |
-   {"| *~kcal* | ... |" if cal else ""}
-
-   {(
-       "Repeat the table for each week in range (Week " + str(phase_start) + " through Week " + str(phase_end) + ")."
-       if span_weeks > 1 else ""
-   )}
-
-4. **A few new dishes to try** — list 3–5 NEW recipes/dishes introduced
-   this phase (different from initial-letter weeks). Tag each with ✦
-   and add full recipes in the Appendix.
-
-5. **What to notice in {phase_label_short}** — 3–4 curiosity prompts
-   tied to phase outcomes (e.g. "Notice if your post-meal bloating
-   has reduced", "Track energy at 4pm — should be steadier than week 1").
-
-6. **Recipe Appendix** — `## ✦ Recipe Appendix` — full ingredient
-   lists + steps for every ✦ dish.
-
-7. **A note from your coach** — 2–3 sentence warm close, Shivani's name.
+10. **A note from your coach** — 2–3 sentence warm close, Shivani's name.
 
 RULES:
-- NO supplement tables — {first_name}'s supplement routine continues from
-  the initial letter. Just reference it ("alongside your magnesium and
-  ashwagandha as before").
+- {first_name}'s supplement routine continues from the initial letter —
+  surface it in section 2a as required but DO NOT generate a separate
+  supplement schedule table.
 - NO 12-week overview, NO roadmap — this letter is laser-focused on
   {phase_label_short}.
 - SEASONAL produce for {location_str}, current season: {season}.
+- MEAL PLAN STYLE = {style} — respect the body-instruction structure
+  above EXACTLY. If style is "principles" do NOT generate a 7-day grid.
+  If style is "hybrid" generate ONE sample week only, not both weeks.
+{f"- WEIGHT LOSS ACTIVE — include the portion control box from above as a callout. Apply the visible reference plate to every meal idea you suggest." if wl_enabled else ""}
 
 {grain_seasonality}
 
@@ -3532,8 +3686,7 @@ RULES:
 - CRITICAL: NEVER suggest reported-trigger foods: {reported_triggers}.
 - Vegetarian Jain: NO root vegetables.
 - Indian context unless said otherwise — ragi, dal, paneer, ghee, coconut.
-- {span_weeks} weeks of meals — keep variety, don't repeat the same
-  dinner 3 nights in a row. Use seasonal swaps to keep it interesting.
+{f"- Keep variety across {span_weeks} weeks — don't repeat the same dinner 3 nights in a row." if style == "detailed" else "- Keep meal ideas varied — different proteins, grains, cooking methods."}
 
 {INDIAN_BRANDS}
 """

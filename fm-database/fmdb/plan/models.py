@@ -265,6 +265,14 @@ class Client(BaseModel):
     foods_to_avoid: str = ""       # Free form: "brinjal, bitter gourd, raw onion"
     non_negotiables: str = ""      # Things they won't give up: "morning chai, weekly mutton"
     reported_triggers: str = ""    # n=1 observations: "gluten triggers bloating; afternoon coffee → poor sleep"
+    # How structured the client wants her meal plan to be. Some clients
+    # cook from feel and find 7-day tables prescriptive; others need the
+    # structure to comply. Coach sets at intake or after first call.
+    #   detailed   = 7-day Mon-Sun tables (canonical, most structured)
+    #   principles = do's/don'ts + categories + portions + 5 ideas per slot
+    #   hybrid     = principles FIRST, then a single sample week table
+    # Default "hybrid" — works for most new clients; coach can refine.
+    meal_plan_style: str = "hybrid"
     # v2.5 — per-client letter preferences. Some clients refuse supplements,
     # others don't want the exercise plan, others just need the consolidated
     # all-in-one. Default: consolidated only (the most common ship). Coach

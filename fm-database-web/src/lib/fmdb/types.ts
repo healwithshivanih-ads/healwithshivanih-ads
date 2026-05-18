@@ -409,6 +409,11 @@ export interface Client {
   foods_to_avoid?: string;       // free form
   non_negotiables?: string;      // things they won't give up
   reported_triggers?: string;
+  /** How structured the client wants her meal plan letters to be.
+   *    detailed   = 7-day Mon-Sun tables
+   *    principles = do's/don'ts + categories + portions + 5 ideas/slot
+   *    hybrid     = principles first, then a sample week (default) */
+  meal_plan_style?: "detailed" | "principles" | "hybrid";
 
   // Clinical
   medical_history?: string[];

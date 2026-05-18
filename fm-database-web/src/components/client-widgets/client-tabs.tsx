@@ -941,6 +941,11 @@ export function ClientPageTabs({
               city: (client as { city?: string }).city,
               country: (client as { country?: string }).country,
               letter_types_active: (client as { letter_types_active?: string[] }).letter_types_active,
+              meal_plan_style: (
+                client as {
+                  meal_plan_style?: "detailed" | "principles" | "hybrid";
+                }
+              ).meal_plan_style,
             }}
           />
 

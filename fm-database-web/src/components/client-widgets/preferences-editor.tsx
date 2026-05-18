@@ -14,6 +14,34 @@ const LETTER_TYPE_OPTIONS: { value: string; label: string; desc: string }[] = [
   { value: "exercise_plan", label: "🏃 Exercise plan", desc: "Opt-in detailed exercise prescription" },
 ];
 
+type MealPlanStyle = "detailed" | "principles" | "hybrid";
+
+const MEAL_STYLE_OPTIONS: {
+  value: MealPlanStyle;
+  label: string;
+  emoji: string;
+  desc: string;
+}[] = [
+  {
+    value: "detailed",
+    label: "Detailed",
+    emoji: "📅",
+    desc: "Full Mon-Sun meal tables for each week. Best for clients who want structure.",
+  },
+  {
+    value: "principles",
+    label: "Principles",
+    emoji: "🟢",
+    desc: "Categories + do's/don'ts + portions + 5 ideas per slot. For clients who cook from feel.",
+  },
+  {
+    value: "hybrid",
+    label: "Hybrid",
+    emoji: "🌗",
+    desc: "Principles first, then a sample week table as inspiration. Default — works for most.",
+  },
+];
+
 interface Props {
   clientId: string;
   initial: {
@@ -24,6 +52,7 @@ interface Props {
     city?: string;
     country?: string;
     letter_types_active?: string[];
+    meal_plan_style?: MealPlanStyle;
   };
 }
 
@@ -50,6 +79,9 @@ export function PreferencesEditor({ clientId, initial }: Props) {
       ? initial.letter_types_active
       : ["consolidated"]
   );
+  const [mealPlanStyle, setMealPlanStyle] = useState<MealPlanStyle>(
+    initial.meal_plan_style ?? "hybrid",
+  );
   const toggleLetterType = (v: string) => {
     setLetterTypesActive((prev) =>
       prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v]
@@ -75,6 +107,7 @@ export function PreferencesEditor({ clientId, initial }: Props) {
         city,
         country,
         letter_types_active: letterTypesActive.length > 0 ? letterTypesActive : ["consolidated"],
+        meal_plan_style: mealPlanStyle,
       });
       if (res.ok) {
         toast.success("Preferences saved");
@@ -142,6 +175,16 @@ export function PreferencesEditor({ clientId, initial }: Props) {
                 )
                   .map((t) => t.replace(/_/g, " "))
                   .join(", ")}
+              </span>
+            </div>
+            <div>
+              <span className="text-xs uppercase text-muted-foreground">Meal plan style: </span>
+              <span className="text-muted-foreground">
+                {(() => {
+                  const v = initial.meal_plan_style ?? "hybrid";
+                  const opt = MEAL_STYLE_OPTIONS.find((o) => o.value === v);
+                  return opt ? `${opt.emoji} ${opt.label}` : v;
+                })()}
               </span>
             </div>
             {!hasData && (
@@ -236,6 +279,47 @@ export function PreferencesEditor({ clientId, initial }: Props) {
                 placeholder="e.g. morning chai with milk and sugar, rice at dinner"
                 className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none"
               />
+            </div>
+
+            <div>
+              <label className="text-xs font-medium block mb-1">
+                🍽 Meal plan style
+              </label>
+              <p className="text-[11px] text-muted-foreground mb-2">
+                How structured this client wants her meal-plan letters.
+                Hybrid is the safe default — coach can refine after the
+                first call.
+              </p>
+              <div className="grid grid-cols-3 gap-1.5">
+                {MEAL_STYLE_OPTIONS.map((opt) => {
+                  const checked = mealPlanStyle === opt.value;
+                  return (
+                    <label
+                      key={opt.value}
+                      className={`flex flex-col gap-1 px-2.5 py-2 rounded-md border cursor-pointer text-xs transition-colors ${
+                        checked
+                          ? "bg-amber-100/60 border-amber-300"
+                          : "bg-background border-input hover:bg-muted/30"
+                      }`}
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <input
+                          type="radio"
+                          name="meal_plan_style"
+                          checked={checked}
+                          onChange={() => setMealPlanStyle(opt.value)}
+                        />
+                        <span className="font-medium">
+                          {opt.emoji} {opt.label}
+                        </span>
+                      </div>
+                      <div className="text-[10.5px] text-muted-foreground leading-snug">
+                        {opt.desc}
+                      </div>
+                    </label>
+                  );
+                })}
+              </div>
             </div>
 
             <div>
