@@ -196,6 +196,42 @@ export async function diffPlans(
   return { ok: r.ok, diff: (r as unknown as DiffResult).diff, error: r.error };
 }
 
+/**
+ * Structured diff of two plan versions — replaces the unified-diff text
+ * with section-grouped, field-by-field cards for the "Compare versions"
+ * UI in the v2 plan editor.
+ *
+ * Reads both plans as YAML objects directly (no Python shim) and runs the
+ * pure-TypeScript compareTwoPlanVersions() walker.
+ */
+import { compareTwoPlanVersions, type SectionDiff } from "@/lib/fmdb/plan-version-compare";
+
+export interface ComparePlansResult {
+  ok: boolean;
+  sections?: SectionDiff[];
+  error?: string;
+}
+
+export async function comparePlanVersions(
+  slugA: string,
+  slugB: string
+): Promise<ComparePlansResult> {
+  if (!slugA || !slugB) {
+    return { ok: false, error: "Both plan slugs are required." };
+  }
+  if (slugA === slugB) {
+    return { ok: false, error: "Plan A and Plan B must be different plans." };
+  }
+  const [a, b] = await Promise.all([loadPlanBySlug(slugA), loadPlanBySlug(slugB)]);
+  if (!a) return { ok: false, error: `Plan A (${slugA}) not found.` };
+  if (!b) return { ok: false, error: `Plan B (${slugB}) not found.` };
+  const sections = compareTwoPlanVersions(
+    a as unknown as Record<string, unknown>,
+    b as unknown as Record<string, unknown>
+  );
+  return { ok: true, sections };
+}
+
 export async function renderPlan(
   slug: string,
   format: "markdown" | "html"

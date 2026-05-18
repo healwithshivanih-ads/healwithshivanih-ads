@@ -21,12 +21,14 @@ import {
 import {
   revokePlan,
   supersedePlan,
-  diffPlans,
+  comparePlanVersions,
   renderPlan,
   renderLabOrders,
   createSuccessor,
   generateFollowUpPlan,
 } from "@/lib/server-actions/plan-lifecycle";
+import type { SectionDiff } from "@/lib/fmdb/plan-version-compare";
+import { PlanVersionDiffView } from "@/components/plan-editor/plan-version-diff-view";
 import { ClientLetterButton } from "@/components/client-widgets/client-letter-button";
 import { saveAsTemplateAction } from "@/lib/server-actions/plans";
 import type { PlanStatus } from "@/lib/fmdb/types";
@@ -102,7 +104,8 @@ export function LifecyclePanel({
   // Pre-populate diff selects: if this plan supersedes another, default A = supersedes, B = current
   const [diffA, setDiffA] = useState(supersedes ?? slug);
   const [diffB, setDiffB] = useState(supersedes ? slug : "");
-  const [diffText, setDiffText] = useState<string | null>(null);
+  const [diffSections, setDiffSections] = useState<SectionDiff[] | null>(null);
+  const [diffError, setDiffError] = useState<string | null>(null);
 
   // Save as template state
   const [templateName, setTemplateName] = useState(slug);
@@ -174,10 +177,16 @@ export function LifecyclePanel({
 
   function handleDiff() {
     startTransition(async () => {
-      if (!diffA || !diffB) { notify(false, "Pick two plans to diff."); return; }
-      const r = await diffPlans(diffA, diffB);
-      if (r.ok) setDiffText(r.diff || "(no differences)");
-      else notify(false, r.error ?? "Diff failed.");
+      setDiffError(null);
+      if (!diffA || !diffB) { notify(false, "Pick two plans to compare."); return; }
+      const r = await comparePlanVersions(diffA, diffB);
+      if (r.ok) {
+        setDiffSections(r.sections ?? []);
+      } else {
+        setDiffSections(null);
+        setDiffError(r.error ?? "Compare failed.");
+        notify(false, r.error ?? "Compare failed.");
+      }
     });
   }
 
@@ -494,8 +503,8 @@ export function LifecyclePanel({
               </details>
             )}
 
-            {/* Diff viewer */}
-            <details className="group/diff" open={!!(supersedes && diffText !== null)}>
+            {/* Compare versions — structured card view */}
+            <details className="group/diff" open={!!(supersedes && diffSections !== null)}>
               <summary className="flex items-center gap-2 cursor-pointer select-none list-none rounded-md border bg-muted/30 px-3 py-2.5 text-xs font-semibold text-foreground hover:bg-muted/50">
                 <span className="transition-transform group-open/diff:rotate-90 text-muted-foreground text-xs">▶</span>
                 📋 Compare versions
@@ -509,7 +518,7 @@ export function LifecyclePanel({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <div>
                     <label className="text-[10px] text-muted-foreground uppercase tracking-wide mb-0.5 block">Plan A (base)</label>
-                    <Select value={diffA} onValueChange={(v) => { setDiffA(v ?? ""); setDiffText(null); }}>
+                    <Select value={diffA} onValueChange={(v) => { setDiffA(v ?? ""); setDiffSections(null); setDiffError(null); }}>
                       <SelectTrigger className="text-xs"><SelectValue placeholder="Plan A" /></SelectTrigger>
                       <SelectContent>
                         {allPlanSlugs.map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
@@ -518,7 +527,7 @@ export function LifecyclePanel({
                   </div>
                   <div>
                     <label className="text-[10px] text-muted-foreground uppercase tracking-wide mb-0.5 block">Plan B (compare to)</label>
-                    <Select value={diffB} onValueChange={(v) => { setDiffB(v ?? ""); setDiffText(null); }}>
+                    <Select value={diffB} onValueChange={(v) => { setDiffB(v ?? ""); setDiffSections(null); setDiffError(null); }}>
                       <SelectTrigger className="text-xs"><SelectValue placeholder="Plan B" /></SelectTrigger>
                       <SelectContent>
                         {allPlanSlugs.filter((s) => s !== diffA).map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
@@ -529,36 +538,17 @@ export function LifecyclePanel({
                 <Button size="sm" variant="outline" onClick={handleDiff} disabled={isPending || !diffA || !diffB || diffA === diffB}>
                   {isPending ? "Comparing…" : "Compare →"}
                 </Button>
-                {diffText !== null && (
-                  <div className="overflow-auto max-h-96 rounded-md border border-muted bg-[#0d1117] text-[11px] font-mono">
-                    {diffText === "(no differences)" ? (
-                      <div className="p-3 text-emerald-400">No differences — plans are identical.</div>
-                    ) : (
-                      <div>
-                        {diffText.split("\n").map((line, i) => {
-                          let bg = "transparent";
-                          let color = "#8b949e"; // gray for context
-                          if (line.startsWith("+++") || line.startsWith("---")) {
-                            color = "#58a6ff"; bg = "#0d2137";
-                          } else if (line.startsWith("+")) {
-                            color = "#3fb950"; bg = "#0d2a0d";
-                          } else if (line.startsWith("-")) {
-                            color = "#f85149"; bg = "#2d0d0d";
-                          } else if (line.startsWith("@@")) {
-                            color = "#d2a8ff"; bg = "#1e1b2e";
-                          }
-                          return (
-                            <div
-                              key={i}
-                              style={{ background: bg, color, paddingLeft: 12, paddingRight: 12, whiteSpace: "pre", minHeight: 18 }}
-                            >
-                              {line || " "}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
+                {diffError && (
+                  <div className="rounded-md border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-900">
+                    {diffError}
                   </div>
+                )}
+                {diffSections !== null && (
+                  <PlanVersionDiffView
+                    sections={diffSections}
+                    labelA={diffA}
+                    labelB={diffB}
+                  />
                 )}
               </div>
             </details>
