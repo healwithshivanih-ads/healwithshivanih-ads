@@ -1,0 +1,24 @@
+slug: lifestyle-changes-reduce-dm-risk-58-percent
+statement: Lifestyle changes alone are associated with a 58% reduced risk of developing
+  diabetes in people with impaired glucose tolerance.
+evidence_tier: strong
+rationale: Reflects the landmark Diabetes Prevention Program and Finnish DPS trial
+  findings, widely cited in evidence-based FM texts including Pizzorno.
+coaching_translation: Diet, exercise, and weight loss are more effective than any
+  drug for preventing T2DM in pre-diabetics.
+linked_to_topics:
+- prediabetes-metabolic-syndrome
+- type-2-diabetes-mellitus
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes / Diet, exercise, lifestyle
+  quote: Lifestyle changes alone are associated with a 58% reduced risk of developing
+    DM in people with IGT.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

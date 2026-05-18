@@ -1,0 +1,25 @@
+slug: headache-hypertensive
+display_name: Hypertensive Headache
+aliases:
+- blood pressure headache
+- morning headache
+- occipital headache
+category: neurological
+severity: concerning
+description: Headache, often occipital and worse in the morning, can be associated
+  with significantly elevated blood pressure.
+when_to_refer: Sudden severe ('thunderclap') headache with hypertension — rule out
+  hypertensive emergency or subarachnoid haemorrhage.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- raas-activation
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: Hypertension is a major risk factor for myocardial infarction (MI) or stroke
+    and is the most significant risk factor for stroke.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

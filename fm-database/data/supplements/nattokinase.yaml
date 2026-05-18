@@ -1,11 +1,17 @@
 slug: nattokinase
 display_name: Nattokinase
-category: herb
+category: enzyme
 forms_available:
 - capsule
-typical_dose_range: {}
-timing_options: []
-take_with_food: optional
+typical_dose_range:
+  capsule:
+    min: 2000
+    max: 4000
+    unit: mg
+timing_options:
+- morning
+- evening
+take_with_food: avoid
 contraindications:
   conditions: []
   medications: []
@@ -16,15 +22,27 @@ interactions:
   with_medications: []
 pregnancy_safety: unknown
 lactation_safety: unknown
-linked_to_topics: []
+linked_to_topics:
+- atherosclerosis
 linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_coach: Coach-scope is education only — clinician dispenses. Anticoagulant interaction; contraindicated with blood-thinners. Stub created from mindmap-agent shortlist 2026-05-13 — flesh out before clinical use.
+linked_to_claims:
+- nattokinase-reduces-fibrinogen-factor-vii-viii
+notes_for_coach: 'Dosed in fibrinolysis units (FU) not mg — 2000 FU per capsule standard.
+  Take on empty stomach for fibrinolytic activity. Caution: do NOT combine with warfarin,
+  aspirin, or antiplatelet drugs without clinician supervision. Natural alternative
+  to antiplatelet therapy for eligible patients.'
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-version: 1
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Fibrinogen
+  quote: Nattokinase is a serine proteinase isolated from natto with potent fibrinolytic
+    and thrombolytic activity.
+evidence_tier: plausible_emerging
+version: 2
 status: active
-updated_at: '2026-05-13'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
+notes_for_client: Nattokinase is an enzyme from fermented soybeans that helps break
+  down blood clots and lower fibrinogen — a blood-clotting protein linked to heart
+  disease.

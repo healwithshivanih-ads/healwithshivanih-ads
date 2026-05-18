@@ -1,0 +1,24 @@
+slug: smoking-70pct-greater-cvd-mortality
+statement: Smokers have a 70% greater risk of death from CVD than nonsmokers, and
+  quitting smoking reduces relative CVD mortality by 36% in patients with CAD.
+evidence_tier: strong
+rationale: Established epidemiological data; smoking cessation as CVD intervention
+  is among the most evidence-based interventions.
+coaching_translation: Quitting smoking is the single most impactful step a smoker
+  can take to reduce heart disease risk.
+linked_to_topics:
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Risk Factors — Smoking
+  quote: Smokers have 70% greater risk of death from CVD than nonsmokers. There is
+    a 36% reduction in relative risk of mortality for patients with CAD who quit compared
+    with those who continued smoking.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

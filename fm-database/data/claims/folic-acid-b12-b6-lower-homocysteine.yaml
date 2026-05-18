@@ -1,0 +1,29 @@
+slug: folic-acid-b12-b6-lower-homocysteine
+statement: Folic acid (400 mcg/day) combined with vitamins B12 and B6 is required
+  to effectively lower elevated homocysteine; folic acid alone will only lower homocysteine
+  in the presence of adequate B12 and B6.
+evidence_tier: strong
+rationale: Mechanistically established (one-carbon metabolism); multiple RCTs confirm
+  homocysteine lowering with B-vitamin combination therapy.
+coaching_translation: To lower homocysteine, you need all three B vitamins — folate
+  alone isn't enough. Always pair it with B12 and B6.
+linked_to_topics:
+- hyperhomocysteinemia
+- atherosclerosis
+linked_to_supplements:
+- folic-acid
+- vitamin-b12
+- vitamin-b6
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Homocysteine
+  quote: Folic acid (400 mcg daily) alone can reduce homocysteine in some subjects,
+    but not all; importance of vitamins B12 and B6 to homocysteine metabolism indicates
+    all three should be used together.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

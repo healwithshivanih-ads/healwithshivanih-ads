@@ -1,5 +1,5 @@
 slug: niacin
-display_name: Niacin (Vitamin B3)
+display_name: Niacin (Nicotinic Acid / Inositol Hexaniacinate)
 category: vitamin
 forms_available:
 - capsule
@@ -11,23 +11,29 @@ typical_dose_range:
     unit: mg
   tablet:
     min: 500
-    max: 2000
+    max: 3000
     unit: mg
 timing_options:
 - with_dinner
-take_with_food: required
+- bedtime
+take_with_food: optional
 linked_to_topics:
 - dyslipidemia
+- atherosclerosis
 linked_to_claims:
 - niacin-raises-hdl-lowers-lpa
-notes_for_coach: Therapeutic niacin for HDL/Lp(a) effects requires clinician supervision
-  and liver enzyme monitoring. Flushing is common; sustained-release forms reduce
-  flushing but may increase hepatotoxicity risk. Outside coaching scope at therapeutic
-  doses.
-notes_for_client: Niacin is a B vitamin that can raise good cholesterol (HDL) and
-  lower a genetic risk factor called Lp(a). It must be used under medical supervision
-  because it can affect the liver.
-evidence_tier: plausible_emerging
+- niacin-only-cholesterol-agent-reducing-overall-mortality
+- niacin-outperforms-statins-on-hdl-and-lpa
+- niacin-and-vitamin-c-reduce-lpa-35-27pct
+notes_for_coach: 'Therapeutic doses (1500–3000 mg/day) require clinician supervision.
+  Inositol hexaniacinate is better tolerated with fewer flushing side effects. Monitor
+  liver enzymes and glucose quarterly. Take at night (cholesterol synthesis peaks
+  during sleep). Avoid in liver disease. Alternatives for liver contraindication:
+  policosanol, garlic, pantethine.'
+notes_for_client: Niacin is a B vitamin that powerfully lowers triglycerides, raises
+  HDL, and reduces Lp(a). It often causes a harmless skin flush 20–30 minutes after
+  taking — start low and increase slowly.
+evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cv-cheatsheet
@@ -50,10 +56,15 @@ sources:
   location: Nutrition – Anti-Inflammatory Vitamins
   quote: Vitamin C is anti-inflammatory, vitamin B3 is anti-inflammatory, and vitamin
     B6 is anti-inflammatory.
-version: 1
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Natural Products to Lower Cholesterol Levels — Niacin
+  quote: Niacin is the only proven cholesterol-lowering agent that actually reduces
+    overall mortality. For best results, niacin should be taken at night, because
+    most cholesterol synthesis occurs during sleep.
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - niacin-b3
 - niacin-vitamin-b3

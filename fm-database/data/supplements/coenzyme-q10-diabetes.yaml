@@ -1,0 +1,32 @@
+slug: coenzyme-q10-diabetes
+display_name: Coenzyme Q10
+category: other
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 200
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_claims: []
+notes_for_coach: 100–200 mg/day for hypertension in diabetes. Take with food (fat-soluble).
+  Also used in cardiovascular complications protocol.
+notes_for_client: CoQ10 supports heart health and energy production — especially useful
+  if you have high blood pressure alongside diabetes.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Additional Supplements / For Hypertension
+  quote: 'Coenzyme Q10: 100 to 200 mg q.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

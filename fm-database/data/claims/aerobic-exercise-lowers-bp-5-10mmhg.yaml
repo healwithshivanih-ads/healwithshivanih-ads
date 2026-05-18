@@ -1,0 +1,26 @@
+slug: aerobic-exercise-lowers-bp-5-10mmhg
+statement: Even mild to moderate aerobic exercise three times weekly of 20 minutes'
+  duration produces BP reductions of 5–10 mm Hg for both systolic and diastolic, and
+  can normalize borderline or mild hypertension.
+evidence_tier: strong
+rationale: Consistent with extensive RCT and meta-analytic literature on exercise
+  and BP reduction.
+coaching_translation: Walking briskly or cycling three times a week for just 20 minutes
+  can meaningfully lower blood pressure.
+linked_to_topics:
+- essential-hypertension
+- prehypertension
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Lifestyle and Dietary Factors / Exercise
+  quote: 'Even mild to moderate aerobic exercise three times weekly of 20 minutes''
+    duration has a hypotensive effect. BP reductions: 5 to 10 mm Hg for systolic and
+    diastolic.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

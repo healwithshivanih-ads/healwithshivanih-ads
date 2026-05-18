@@ -1,0 +1,27 @@
+slug: dietary-portfolio-comparable-to-statins
+statement: A dietary portfolio combining multiple cholesterol-lowering food components
+  (soluble fiber, plant sterols, nuts, soy) achieves lipid-lowering effects comparable
+  to statins for LDL-C and LDL-C particle size.
+evidence_tier: strong
+rationale: Jenkins et al. Portfolio Diet studies (JAMA 2003+) demonstrate statin-comparable
+  LDL reduction with diet alone.
+coaching_translation: A strategic combination of cholesterol-lowering foods can work
+  as well as medication for many people — without the side effects.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Considerations — Lowering Cholesterol
+  quote: Diversifying cholesterol-lowering components in the same dietary portfolio,
+    efficacy of dietary treatment of hypercholesterolemia is increased. Results are
+    comparable with those of statins (with similar lipid-lowering effects for LDL-C
+    and size of LDL-C).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

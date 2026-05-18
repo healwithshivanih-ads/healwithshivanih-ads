@@ -1,0 +1,25 @@
+slug: polyphagia
+display_name: Excessive Hunger
+aliases:
+- polyphagia
+- constant hunger
+- insatiable appetite
+category: metabolic
+severity: common
+description: Paradoxical hunger despite eating, caused by cellular glucose starvation
+  when insulin is deficient or cells are insulin resistant.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- insulin-resistance
+- insulin-deficiency
+when_to_refer: ''
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnostic Summary
+  quote: 'Classic symptoms: polyuria, polydipsia, polyphagia'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

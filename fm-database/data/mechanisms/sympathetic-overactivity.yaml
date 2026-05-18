@@ -1,0 +1,38 @@
+slug: sympathetic-overactivity
+display_name: Sympathetic Nervous System Overactivity
+aliases:
+- adrenergic overactivity
+- sympathoadrenal activation
+- HPA-SNS dysregulation
+category: neurological
+summary: Elevated adrenergic tone drives renin secretion, increases heart rate and
+  cardiac output, and raises peripheral vascular resistance. Stress is a key upstream
+  driver. Relaxation techniques, diaphragmatic breathing, and exercise dampen sympathetic
+  overactivity and lower BP.
+upstream_drivers:
+- chronic-stress
+- poor-sleep
+- caffeine
+- smoking
+downstream_effects:
+- raas-activation
+- elevated-blood-pressure
+- elevated-norepinephrine
+related_mechanisms:
+- raas-activation
+- hpa-axis-dysregulation
+linked_to_topics:
+- essential-hypertension
+- high-renin-essential-hypertension
+- white-coat-hypertension
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: High-renin essential hypertensives comprise 15% of essential hypertension
+    patients. Renin elevation (and high BP) may arise from increased adrenergic system
+    activity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

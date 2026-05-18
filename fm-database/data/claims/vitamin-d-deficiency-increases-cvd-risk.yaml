@@ -1,0 +1,26 @@
+slug: vitamin-d-deficiency-increases-cvd-risk
+statement: Individuals with 25-OH-D levels below 30 ng/mL are at significantly higher
+  risk for CVD, CHD, and heart failure.
+evidence_tier: plausible_emerging
+rationale: Supported by large observational studies; RCT evidence for hard CVD outcomes
+  with vitamin D supplementation is mixed.
+coaching_translation: Low vitamin D is a risk factor for heart disease — checking
+  and optimising your vitamin D level is an easy, low-risk step.
+caveats:
+- RCTs of vitamin D supplementation have not consistently shown reduction in hard
+  CVD endpoints
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- vitamin-d
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vitamin D Deficiency
+  quote: Individuals with vitamin D (25-OH-D) levels below 30 ng/mL are more likely
+    to be at high risk for CVD, for CHD, and for both CHD and heart failure.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

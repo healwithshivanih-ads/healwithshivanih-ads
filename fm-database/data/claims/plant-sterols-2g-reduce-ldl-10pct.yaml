@@ -1,0 +1,26 @@
+slug: plant-sterols-2g-reduce-ldl-10pct
+statement: Daily intake of 2 g of plant stanols or sterols reduces LDL-C by 10%; combining
+  with a low-saturated-fat diet can reduce LDL-C by 20%.
+evidence_tier: strong
+rationale: Extensively studied; multiple meta-analyses support LDL-lowering effect
+  of phytosterols.
+coaching_translation: Plant sterols (in fortified foods or supplements) can lower
+  'bad' cholesterol by 10–20% when combined with a healthy diet.
+caveats:
+- Higher doses may reduce carotenoid absorption; increase fruit/vegetable intake to
+  compensate
+linked_to_topics:
+- dyslipidemia
+linked_to_supplements:
+- plant-sterols-stanols
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Plant Sterols and Stanols
+  quote: Daily intake of 2 g of stanols or sterols reduces LDL-C by 10%. Higher doses
+    produce little additional benefit.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

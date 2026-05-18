@@ -1,0 +1,28 @@
+slug: magnesium-deficiency-common-in-diabetics
+statement: Magnesium deficiency is common in diabetics and lowest in those with severe
+  retinopathy; magnesium 400–500 mg/day improves insulin response, glucose tolerance,
+  and RBC membrane fluidity.
+evidence_tier: plausible_emerging
+rationale: Multiple studies document hypomagnesaemia in T2DM; RCTs show glycaemic
+  improvements with supplementation (e.g., de Valk 1998). Pizzorno recommends aspartate
+  or citrate forms.
+coaching_translation: Magnesium is a foundational mineral for blood sugar control
+  and should be prioritised in any diabetic, especially those with eye complications.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+linked_to_supplements:
+- magnesium-aspartate-citrate
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Magnesium
+  quote: Mg deficiency is common in diabetics and lowest in those with severe retinopathy.
+    Mg (at 400 to 500 mg q.d.) improves insulin response and action, glucose tolerance,
+    and fluidity of RBC membranes.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

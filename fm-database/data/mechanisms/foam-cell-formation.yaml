@@ -1,0 +1,32 @@
+slug: foam-cell-formation
+display_name: Foam Cell Formation
+aliases:
+- macrophage infiltration
+- lipid-laden macrophages
+category: immune
+summary: Monocytes and T-lymphocytes adhere to damaged endothelium, migrate into the
+  intima, engulf oxidized LDL-C to become foam cells, and release growth factors stimulating
+  smooth muscle cell proliferation and plaque development.
+upstream_drivers:
+- ldl-oxidation
+- endothelial-dysfunction
+downstream_effects:
+- plaque-progression
+- smooth-muscle-cell-migration
+related_mechanisms:
+- ldl-oxidation
+- endothelial-dysfunction
+- plaque-progression
+linked_to_topics:
+- atherosclerosis
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Process of Atherosclerosis
+  quote: Simultaneously, monocytes, T lymphocytes, and platelets adhere to damaged
+    area, releasing growth factors that stimulate smooth muscle cells to migrate from
+    media into intima and replicate.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

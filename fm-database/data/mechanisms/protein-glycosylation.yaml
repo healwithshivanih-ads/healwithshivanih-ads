@@ -1,0 +1,36 @@
+slug: protein-glycosylation
+display_name: Protein Glycosylation (AGE Formation)
+aliases:
+- non-enzymatic glycation
+- AGE formation
+- glycosylation of proteins
+category: metabolic
+summary: 'Non-enzymatic binding of glucose to proteins alters their structure and
+  function: deactivates enzymes, blocks regulatory molecule binding, prevents LDL
+  hepatic clearance (elevating cholesterol), and drives vascular complications.'
+upstream_drivers:
+- glucotoxicity
+- hyperglycaemia
+downstream_effects:
+- elevated-ldl-cholesterol
+- microvascular-damage
+- neuropathy
+- retinopathy
+related_mechanisms:
+- glucotoxicity
+- sorbitol-accumulation
+- oxidative-damage
+linked_to_topics:
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-neuropathy
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Long-Term Complications
+  quote: 'Glycosylation of proteins: changing structure and function of proteins deactivates
+    enzymes, inhibits regulatory molecule binding, and forms abnormal protein structures.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

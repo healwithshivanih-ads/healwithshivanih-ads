@@ -1,0 +1,27 @@
+slug: magnesium-deficiency-promotes-endothelial-dysfunction
+statement: Low magnesium levels contribute to atherosclerosis and CVD by generating
+  a proinflammatory, prothrombotic, proatherogenic environment and promoting endothelial
+  dysfunction.
+evidence_tier: plausible_emerging
+rationale: Magnesium's role in vascular function is mechanistically well-supported;
+  epidemiological associations are consistent, though RCT evidence for oral supplementation
+  in CVD outcomes is limited.
+coaching_translation: Low magnesium — common in Western diets — quietly raises heart
+  risk by inflaming and stiffening blood vessels.
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Magnesium and Potassium
+  quote: Low magnesium levels contribute to atherosclerosis and CVD via promotion
+    of endothelial dysfunction by generating a proinflammatory, prothrombotic, proatherogenic
+    environment.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

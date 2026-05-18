@@ -1,0 +1,37 @@
+slug: fenugreek-extract
+display_name: Fenugreek Seed Extract
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_claims:
+- fenugreek-reduces-fasting-glucose-t1dm-t2dm
+notes_for_coach: 'Level 2 insulin enhancer for T2DM: 1 g/day extract. Active compounds:
+  soluble fibre, trigonelline, 4-hydroxyisoleucine. Also lowers LDL/VLDL/TG. Defatted
+  seed powder used in T1DM trials at 50 g b.i.d.'
+notes_for_client: Fenugreek seeds contain natural compounds that improve how your
+  body responds to insulin and reduce blood fat levels.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Fenugreek seeds
+  quote: Type 2 diabetics on 1 g/day fenugreek seed extract for 2 months had improved
+    blood glucose (fasting glucose dropped from 148.3 to 119.9 mg/dL) but with decreased
+    insulin output, indicating improved insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

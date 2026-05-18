@@ -1,0 +1,28 @@
+slug: pantethine-900mg-reduces-tg-32pct
+statement: Pantethine at 900 mg/day reduces serum TG by 32%, TC by 19%, and LDL-C
+  by 21% while increasing HDL-C by 23%, with virtually no toxicity.
+evidence_tier: plausible_emerging
+rationale: Multiple small clinical trials support lipid-lowering effects of pantethine;
+  sample sizes are modest and head-to-head RCT data vs. statins are limited.
+coaching_translation: Pantethine (active vitamin B5) can improve all cholesterol and
+  triglyceride levels with an excellent safety profile — especially useful in diabetics.
+caveats:
+- Evidence base is mostly small studies; dose is therapeutic and should be coordinated
+  with clinician
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- pantethine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Pantethine
+  quote: Pantethine therapy (900 mg/day) reduces serum TG (−32%), TC (-19%) and LDL-C
+    (−21%) and increases HDL-C (+23%). It appears to be especially useful in lowering
+    blood lipids in diabetic patients.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

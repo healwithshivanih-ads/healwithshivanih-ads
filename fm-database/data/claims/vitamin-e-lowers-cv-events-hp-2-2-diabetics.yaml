@@ -1,0 +1,28 @@
+slug: vitamin-e-lowers-cv-events-hp-2-2-diabetics
+statement: Vitamin E (400 IU/day) lowered rates of myocardial infarction, stroke,
+  and cardiovascular death over 18 months in T2DM patients with the haptoglobin Hp
+  2-2 genotype.
+evidence_tier: plausible_emerging
+rationale: ICARE trial (Blum et al. 2010) specifically in Hp 2-2 genotype T2DM patients.
+  Effect is genotype-specific; Hp 2-2 is present in 20–30% of population.
+coaching_translation: Vitamin E cardiovascular benefit in T2DM appears to be specific
+  to a genetic subgroup (Hp 2-2) — testing for this genotype can personalise the recommendation.
+caveats:
+- Some T2DM patients may experience blood pressure increase (6–7 mmHg) with 500 mg
+  alpha-tocopherol.
+- Hp 2-2 individuals should avoid wheat due to increased gut permeability risk.
+linked_to_topics:
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- vitamin-e
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Vitamin E
+  quote: Vitamin E (400 IU/day) lowered rates of myocardial infarction, stroke, and
+    cardiovascular death over 18 months.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

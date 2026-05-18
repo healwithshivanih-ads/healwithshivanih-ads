@@ -11,8 +11,8 @@ typical_dose_range:
     max: 30
     unit: mg
   tablet:
-    min: 8
-    max: 40
+    min: 25
+    max: 30
     unit: mg
   lozenge:
     min: 10
@@ -60,6 +60,8 @@ linked_to_topics:
 - bacterial-sinusitis
 - cervical-dysplasia
 - peptic-ulcer-disease
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
 linked_to_claims:
 - zinc-supports-thyroid-conversion
 - zinc-regulates-aromatase-balances-estrogen-testosterone
@@ -96,11 +98,12 @@ linked_to_claims:
 - gut-healing-requires-glutamine-zinc-omega3-bcomplex
 - bph-zinc-reduces-prostate-size
 - zinc-mucin-production-curative-pu
-notes_for_coach: Zinc increases mucin production in vitro; protective in animals,
-  curative in humans with PU. Take with food to reduce nausea. Monitor for copper
-  depletion with long-term high-dose use.
-notes_for_client: Zinc helps your stomach produce the protective mucus layer that
-  shields it from acid and supports healing of ulcers.
+- zinc-protective-beta-cells-diabetics-excrete-excess
+notes_for_coach: 30 mg/day for diabetics. Take with food to avoid nausea. Long-term
+  use above 30 mg may deplete copper — consider 2 mg copper supplementation with sustained
+  use.
+notes_for_client: Diabetes causes zinc to be lost in urine — supplementing zinc supports
+  immune defence, wound healing, and insulin production.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
@@ -186,7 +189,11 @@ sources:
   location: Miscellaneous, p. 784
   quote: 'Zinc: increases mucin production in vitro and has a protective effect on
     PUs in animals and curative effect in human beings.'
-version: 25
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Zinc
+  quote: Diabetics excrete Zn excessively in urine. Supplements improve insulin levels
+    in T1DM and T2DM. Dose for diabetics is 30 mg q.d.
+version: 26
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani

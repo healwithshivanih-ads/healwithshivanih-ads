@@ -1,0 +1,30 @@
+slug: potassium-supplements-reduce-bp
+statement: Potassium supplements at 2.5–5.0 g per day can reduce blood pressure in
+  hypertensives; a K/Na ratio above 5:1 is considered necessary to maintain cardiovascular
+  health.
+evidence_tier: strong
+rationale: Supported by multiple RCTs and meta-analyses; potassium's natriuretic and
+  vasodilatory mechanisms are well established.
+coaching_translation: Getting more potassium — from fruits, vegetables, or supplements
+  — is as important as reducing sodium for healthy blood pressure.
+caveats:
+- Potassium supplements are contraindicated in kidney disease and in patients on digitalis,
+  K-sparing diuretics, or ACE inhibitors — always check medications.
+- FDA limits OTC potassium supplements to 99 mg/dose; food sources preferred.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- sodium-volume-retention
+- vascular-smooth-muscle-dysregulation
+linked_to_supplements:
+- potassium
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: DASH Diet / K and Na
+  quote: K supplements alone can reduce BP in hypertensives at a dose of 2.5 to 5.0
+    g q.d. of K.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

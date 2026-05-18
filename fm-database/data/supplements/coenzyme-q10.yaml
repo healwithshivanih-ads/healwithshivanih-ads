@@ -1,26 +1,27 @@
 slug: coenzyme-q10
-display_name: Coenzyme Q10 (CoQ10 / Ubiquinol)
+display_name: Coenzyme Q10 (CoQ10)
 category: other
 forms_available:
 - capsule
-typical_dose_range: {}
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 300
+    unit: mg
+  tablet:
+    min: 100
+    max: 300
+    unit: mg
 timing_options:
 - with_breakfast
 - with_lunch
+- with_dinner
 take_with_food: required
-notes_for_coach: 'Mitochondrial electron-transport-chain cofactor and lipid-soluble
-
-  antioxidant. Source (Minich transcript) names CoQ10 as an
-
-  endogenous antioxidant relevant to detoxification but does NOT give
-
-  dosing. Confirm dose from peer-reviewed source before client use.
-
-  Ubiquinol form is the reduced/active form preferred in older adults
-
-  and those on statins. Fat-soluble — take with a meal containing fat.
-
-  '
+notes_for_coach: Average dose 225 mg/day; protocol uses 100 mg b.i.d.–t.i.d. Effect
+  takes 4–12 weeks. CoQ10 corrects a metabolic abnormality rather than acting as a
+  direct antihypertensive. Fat-soluble — take with meals containing fat. Any drug
+  tapering must be supervised by prescribing clinician.
 contraindications:
   conditions: []
   medications: []
@@ -32,6 +33,8 @@ interactions:
 evidence_tier: plausible_emerging
 linked_to_topics:
 - detoxification
+- atherosclerosis
+- essential-hypertension
 linked_to_mechanisms:
 - mitochondrial-toxin-disruption
 sources:
@@ -39,7 +42,20 @@ sources:
   location: Antioxidant nutrients section
   quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme
     Q10, lipoic acid
-version: 1
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vitamin E, Coenzyme Q10, and Selenium
+  quote: Vitamin E and CoQ10 work synergistically; each is required for regeneration
+    of the other.
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / CoQ10
+  quote: 'Average dose: 225 mg/day. The antihypertensive effect of CoQ10 is not seen
+    until after 4 to 12 weeks of therapy.'
+version: 3
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
+linked_to_claims:
+- vitamin-e-coq10-selenium-synergistic-antioxidant
+- coq10-deficient-39-percent-hypertensives
+notes_for_client: CoQ10 is often deficient in people with high blood pressure. It
+  works slowly but steadily — give it 2–3 months. Always take it with a meal.

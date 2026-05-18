@@ -1,5 +1,5 @@
 slug: systemic-inflammation
-display_name: Systemic (Chronic Low-Grade) Inflammation
+display_name: Systemic Inflammation
 aliases:
 - chronic low-grade inflammation
 - cytokine load
@@ -11,9 +11,10 @@ aliases:
 - hs-CRP elevation
 - inflammatory burden
 category: immune
-summary: Persistent, low-grade inflammatory state driven by gut dysfunction, toxin
-  exposure, poor diet, stress, and nutrient deficiencies. Elevated CRP and other inflammatory
-  markers. Manifests as pain, fatigue, brain fog, joint stiffness, and skin issues.
+summary: Chronic low-grade systemic inflammation, reflected by elevated high-sensitivity
+  CRP, is an independent CVD risk factor and stronger predictor of cardiovascular
+  events than LDL-C; linked to insulin resistance, metabolic syndrome, and all stages
+  of atheroma development.
 upstream_drivers:
 - high-carbohydrate-diet
 - refined-sugar
@@ -32,6 +33,9 @@ upstream_drivers:
 - nutrient-deficiency
 - environmental-toxins
 - hpa-axis-dysregulation
+- obesity
+- metabolic-syndrome
+- type-a-personality
 downstream_effects:
 - autoimmune-conditions
 - cardiovascular-disease
@@ -51,6 +55,8 @@ downstream_effects:
 - chronic-pain
 - acne
 - brain-fog
+- plaque-progression
+- foam-cell-formation
 related_mechanisms:
 - insulin-resistance
 - dysbiosis-gut-microbiome-imbalance
@@ -59,6 +65,8 @@ related_mechanisms:
 - atherosclerosis
 - oxidative-stress
 - hpa-axis-dysregulation
+- endothelial-dysfunction
+- ldl-oxidation
 linked_to_topics:
 - low-carb-diet
 - nafld
@@ -72,6 +80,8 @@ linked_to_topics:
 - chronic-pain-and-fatigue
 - fibromyalgia
 - autoimmunity-leaky-gut-triad
+- atherosclerosis
+- metabolic-syndrome
 evidence_tier: strong
 sources:
 - id: vitaone-cardiometabolic-diet-cheatsheet
@@ -92,7 +102,12 @@ sources:
   location: Inflammation Section
   quote: I'm sure whenever people come to chronic fatigue and the pain, the first
     thing comes inflammation, but inflammation is one of the roots out of three.
-version: 5
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Other Risk Factors
+  quote: CRP, an acute-phase reactant reflecting degrees of inflammation, is an independent
+    risk factor for CAD. CRP level is a stronger predictor of cardiovascular events
+    than LDL-C level; screening for both biomarkers is more prognostic.
+version: 6
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,37 @@
+slug: pantethine
+display_name: Pantethine
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 900
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+linked_to_claims:
+- pantethine-900mg-reduces-tg-32pct
+notes_for_coach: Preferred for hypertriglyceridemia, especially in diabetics. Also
+  normalizes platelet lipid composition and blood viscosity. Virtually non-toxic —
+  useful when niacin is not tolerated. Active form of vitamin B5.
+notes_for_client: Pantethine is an active form of vitamin B5 that lowers triglycerides
+  and improves cholesterol with minimal side effects.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Pantethine
+  quote: Pantethine therapy (900 mg/day) reduces serum TG (−32%), TC (-19%) and LDL-C
+    (−21%) and increases HDL-C (+23%). It appears to be especially useful in lowering
+    blood lipids in diabetic patients.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

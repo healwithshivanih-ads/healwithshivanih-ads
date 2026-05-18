@@ -1,11 +1,24 @@
 slug: garlic
-display_name: Garlic
-category: other
-forms_available: []
-typical_dose_range: {}
-timing_options: []
+display_name: Garlic (Allium sativum)
+category: herb
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 600
+    max: 900
+    unit: mg
+  powder:
+    min: 600
+    max: 900
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
 take_with_food: optional
-evidence_tier: fm_specific_thin
+evidence_tier: plausible_emerging
 interactions:
   with_supplements: []
   with_medications: []
@@ -14,15 +27,35 @@ contraindications:
   conditions: []
   medications: []
   life_stages: []
-linked_to_topics: []
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+- essential-hypertension
 sources:
 - id: vitaone-mind-map-tool
   location: Surfaced from MindMap 'hypertension' under branch 'ACE Inhibitors (Foods)'
     (depth 2).
   quote: ''
-notes_for_coach: Surfaced from MindMap 'hypertension' under branch 'ACE Inhibitors
-  (Foods)' (depth 2).
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Garlic (Allium sativum) and Onion (Allium cepa)
+  quote: Commercial preparations providing daily dose of at least 10 mg of alliin
+    or a total allicin potential of 4000 mg can lower total serum cholesterol by about
+    10% to 12% and LDL-C by 15%.
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Allium sativum
+  quote: Dried garlic powder standardized to contain 1.3% alliin at dose of 600 to
+    900 mg q.d. can lower systolic BP by 11 mm Hg and diastolic BP by 5.0 mm Hg over
+    a 1- to 3-month period.
+notes_for_coach: 'Standardise to 1.3% alliin (7.8–11.7 mg alliin/dose). Therapeutic
+  approach: fresh garlic equivalent of 4000 mg/day. Garlic BP reductions 8–11 mm Hg
+  systolic, 5–8 mm Hg diastolic. Also lowers cholesterol.'
 status: active
-version: 1
-updated_at: '2026-05-02'
-updated_by: shivani
+version: 3
+updated_at: '2026-05-18'
+updated_by: Shivani
+linked_to_claims:
+- garlic-lowers-tc-10-12pct-ldl-15pct
+- garlic-lowers-systolic-11mmhg
+notes_for_client: Fresh garlic daily or a standardised supplement (look for 'alliin'
+  content on the label) can meaningfully lower blood pressure over 1–3 months.
+linked_to_mechanisms: []

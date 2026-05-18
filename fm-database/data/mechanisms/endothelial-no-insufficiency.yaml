@@ -1,0 +1,35 @@
+slug: endothelial-no-insufficiency
+display_name: Endothelial Nitric Oxide Insufficiency
+aliases:
+- impaired NO synthesis
+category: signaling
+summary: Inadequate endothelial nitric oxide (NO) production impairs arterial vasodilation,
+  elevates vascular resistance, and promotes platelet aggregation and blood clot formation.
+  Oxidative stress (elevated in hypertensives) quenches NO and blocks angiotensin-II–induced
+  BP rises. L-arginine supplementation increases NO and improves blood flow.
+upstream_drivers:
+- oxidative-stress
+- insulin-resistance
+- aging
+- arginine-deficiency
+downstream_effects:
+- elevated-blood-pressure
+- vasoconstriction
+- impaired-renal-plasma-flow
+- platelet-aggregation
+related_mechanisms:
+- raas-activation
+- oxidative-stress
+linked_to_topics:
+- essential-hypertension
+- normal-renin-essential-hypertension
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Diet
+  quote: Hypertensives have increased oxidative stress; antioxidants block angiotensin
+    II–induced increases in BP and promote proper nitric oxide (NO) synthesis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

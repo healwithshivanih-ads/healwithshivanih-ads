@@ -1,0 +1,25 @@
+slug: ornish-diet-reverses-coronary-atherosclerosis
+statement: The Ornish Lifestyle Heart Trial demonstrated significant overall regression
+  of coronary atherosclerosis after one year of a low-fat plant-based diet combined
+  with stress reduction and exercise.
+evidence_tier: strong
+rationale: Ornish Lifestyle Heart Trial (1990, JAMA) is a landmark RCT demonstrating
+  angiographic regression of coronary atherosclerosis.
+coaching_translation: A strict plant-based, low-fat diet combined with daily stress
+  reduction and exercise can actually reverse blocked arteries — not just slow them
+  down.
+linked_to_topics:
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Dietary Alternatives to Aspirin — Lifestyle Heart Trial
+  quote: At end of the year, experimental group showed significant overall regression
+    of atherosclerosis of coronary blood vessels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

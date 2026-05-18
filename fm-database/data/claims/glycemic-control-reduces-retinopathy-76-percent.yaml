@@ -1,0 +1,27 @@
+slug: glycemic-control-reduces-retinopathy-76-percent
+statement: Good glycaemic control reduces risk of diabetic retinopathy by up to 76%,
+  nephropathy by up to 56%, and neuropathy by up to 60%.
+evidence_tier: strong
+rationale: Derived from the DCCT and UKPDS trials; consistent with Pizzorno's clinical
+  guidelines.
+coaching_translation: Keeping blood sugar tightly controlled is the single most powerful
+  thing a diabetic can do to protect their eyes, kidneys, and nerves.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-nephropathy
+- diabetic-neuropathy
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Long-Term Complications / Poor glucose control
+  quote: glycemic control reduces risk of complications—retinopathy (up to 76%), nephropathy
+    (up to 56%), neuropathy (up to 60%).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

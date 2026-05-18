@@ -1,0 +1,25 @@
+slug: dash-diet-lowers-systolic-11-5mmhg-in-hypertensives
+statement: The DASH diet with reduced sodium lowered systolic BP by 7.1 mm Hg in non-hypertensives
+  and by 11.5 mm Hg in hypertensives.
+evidence_tier: strong
+rationale: Based on the landmark NHLBI DASH trial, one of the most cited dietary intervention
+  RCTs in cardiovascular medicine.
+coaching_translation: Following the DASH eating plan — rich in fruits, vegetables,
+  and low-fat dairy while low in sodium — can lower systolic blood pressure by over
+  11 points if you have hypertension.
+linked_to_topics:
+- essential-hypertension
+- prehypertension
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: DASH Diet
+  quote: The DASH diet with lower Na lowered systolic BP by 7.1 mm Hg in nonhypertensives
+    and by 11.5 mm Hg in hypertensives.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,26 @@
+slug: high-glycemic-load-increases-chd-risk-women
+statement: Consumption of foods with high glycemic load increases risk of CHD in women
+  by 68%; women in the highest glycemic-load quartile have a relative risk of 2.2
+  for CHD compared with the lowest quartile.
+evidence_tier: strong
+rationale: Cited from prospective cohort data (Nurses' Health Study era); consistent
+  with broader glycemic index literature.
+coaching_translation: Choosing lower-glycemic carbohydrates significantly reduces
+  heart disease risk, especially for women.
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Diet — General Guidelines
+  quote: Consumption of foods with high glycemic load increases risk of CHD in women
+    by 68%; women in highest glycemic-load quartile have relative risk of 2.2 for
+    CHD compared with those in lowest quartile.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,27 @@
+slug: soluble-fibre-35g-daily-improves-insulin-sensitivity
+statement: Soluble dietary fibre (at least 35 g/day from food, especially legumes,
+  oat bran, vegetables, and psyllium) slows glucose absorption, prevents glycaemic
+  spikes, and increases tissue insulin sensitivity.
+evidence_tier: strong
+rationale: Consistent RCT evidence; high-fibre low-GL diets are classified as 'most
+  scientifically proven dietary support for T1DM and T2DM' in this source.
+coaching_translation: Fibre is the cornerstone of a diabetes-friendly diet — 35 g
+  per day target, mostly from vegetables, legumes, and whole grains.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes / Fiber and glycemic index or GL
+  quote: Fibers most beneficial to glycemic control are water-soluble forms... They
+    slow down digestion and absorption, preventing rapid glycemic rises, increasing
+    tissue insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

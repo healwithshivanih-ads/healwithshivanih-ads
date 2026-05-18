@@ -1,0 +1,25 @@
+slug: polyuria
+display_name: Frequent Urination
+aliases:
+- polyuria
+- excessive urination
+- urinating all the time
+category: urinary
+severity: common
+description: Excessive urination caused by osmotic diuresis as kidneys excrete glucose
+  when blood glucose exceeds renal threshold (~200 mg/dL). Classic symptom of both
+  T1DM and T2DM.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- glucotoxicity
+when_to_refer: ''
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnostic Summary
+  quote: 'Classic symptoms: polyuria, polydipsia, polyphagia'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

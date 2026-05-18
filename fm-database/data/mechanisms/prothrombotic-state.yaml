@@ -1,0 +1,35 @@
+slug: prothrombotic-state
+display_name: Prothrombotic State
+aliases:
+- platelet hyperaggregability
+- coagulation activation
+category: immune
+summary: Increased platelet aggregation and elevated fibrinogen create a prothrombotic
+  environment that promotes clot formation on atherosclerotic plaques and is an independent
+  CVD risk factor stronger than cholesterol.
+upstream_drivers:
+- smoking
+- omega-3-deficiency
+- low-vitamin-b6
+- metabolic-syndrome
+- hyperhomocysteinemia
+downstream_effects:
+- plaque-progression
+- acute-mi
+- stroke
+related_mechanisms:
+- endothelial-dysfunction
+- plaque-progression
+linked_to_topics:
+- atherosclerosis
+- metabolic-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Fibrinogen
+  quote: There is a stronger association between cardiovascular deaths and fibrinogen
+    levels than for cholesterol.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

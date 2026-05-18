@@ -1,0 +1,24 @@
+slug: hypertriglyceridemia-independent-cvd-risk
+statement: Hypertriglyceridemia is an independent CVD risk factor; an 88 mg/dL increase
+  in plasma TG raises relative CVD risk by 30% in men and 75% in women.
+evidence_tier: strong
+rationale: Meta-analyses of prospective cohort studies; TG is now included in major
+  cardiovascular risk guidelines.
+coaching_translation: High triglycerides (blood fats from sugar and refined carbs)
+  independently raise heart risk — not just cholesterol.
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Elevations of Triglycerides
+  quote: An 88-mg/dL (1.0-mmol/L) increase in plasma TG increases relative risk of
+    CVD by 30% in men and 75% in women.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

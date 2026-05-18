@@ -1,0 +1,31 @@
+slug: normal-renin-essential-hypertension
+display_name: Normal-Renin Essential Hypertension
+aliases:
+- insulin-resistant hypertension
+summary: Subtype of essential hypertension typically associated with insulin resistance
+  and abdominal obesity. Hyperinsulinemia decreases cytosolic magnesium and increases
+  cytosolic calcium in vascular smooth muscle, raising vascular reactivity. Does not
+  respond to sodium restriction alone.
+related_topics:
+- essential-hypertension
+- insulin-resistance
+- metabolic-syndrome
+key_mechanisms:
+- insulin-resistance
+- vascular-smooth-muscle-dysregulation
+evidence_tier: strong
+common_symptoms: []
+red_flags: []
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: Normal-renin essential hypertensives typically are insulin resistant with
+    abdominal obesity. Because insulin modifies ion transport across cell membranes,
+    insulin insensitivity decreases cytosolic magnesium (Mg) and increases cytosolic
+    calcium (Ca) in vascular smooth muscle, increasing vascular reactivity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: vitamin-c-500mg-lowers-bp-5mmhg
+statement: Vitamin C intake is inversely correlated with blood pressure; 500 mg daily
+  produces a modest ~5 mm Hg reduction in people with mild hypertension, equivalent
+  to higher doses.
+evidence_tier: plausible_emerging
+rationale: Multiple trials and a meta-analysis show modest BP reduction with vitamin
+  C; mechanism involves antioxidant quenching of vascular oxidative stress and promotion
+  of NO synthesis.
+coaching_translation: 500 mg of vitamin C daily supports blood vessel health and provides
+  a small but meaningful blood pressure reduction.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- endothelial-no-insufficiency
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+caveats: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Vitamin C
+  quote: The higher the intake of vitamin C, the lower the BP. A modest BP-lowering
+    effect (drop of 5 mm Hg) occurs in people with mild hypertension. Daily dose of
+    500 mg produces the same benefit as higher doses (1000 or 2000 mg q.d.).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

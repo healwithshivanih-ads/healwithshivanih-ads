@@ -1,0 +1,29 @@
+slug: mulberry-superior-to-glyburide-fasting-glucose
+statement: Mulberry extract (3 g/day) lowers fasting glucose by 27% in T2DM — performing
+  better than glyburide (5 mg/day) — via alpha-glucosidase inhibition and antioxidant
+  activity.
+evidence_tier: plausible_emerging
+rationale: Small RCT (Andallu & Varadacharyulu 2003); comparison to glyburide is from
+  a single study. Mechanism is well-characterised (alpha-glucosidase inhibition).
+coaching_translation: Mulberry leaf extract is a natural alpha-glucosidase inhibitor
+  that blunts after-meal sugar spikes — and may outperform a common diabetes drug
+  in some measures.
+caveats:
+- Single small trial for glyburide comparison; larger RCTs needed.
+- Blood glucose monitoring required when used with insulin or sulfonylureas.
+linked_to_topics:
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- mulberry-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Mulberry plant
+  quote: Mulberry lowers fasting glucose 27% in diabetics; no significant differences
+    were observed in the blood glucose between before and after glyburide. Mulberry
+    is superior to glyburide.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

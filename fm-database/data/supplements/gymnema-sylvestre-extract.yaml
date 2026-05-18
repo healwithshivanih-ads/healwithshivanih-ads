@@ -1,0 +1,38 @@
+slug: gymnema-sylvestre-extract
+display_name: Gymnema sylvestre Extract
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_claims:
+- gymnema-reduces-insulin-requirements
+notes_for_coach: Standardised to 24% gymnemic acid; 200 mg b.i.d. Monitor blood glucose
+  closely — insulin or drug doses may need reduction. Capsules/tablets reduce carbohydrate
+  cravings but don't produce tongue sweetness blockade.
+notes_for_client: Gymnema sylvestre is an Ayurvedic herb that helps your body use
+  insulin better and may reduce sugar cravings. Use with medical supervision if on
+  insulin.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Gymnema sylvestre
+  quote: In T1DM, leaf extract reduces insulin requirements and fasting glucose and
+    improves glycemic control. It improves glycemic control in T2DM, reducing hypoglycemic
+    drug needs.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

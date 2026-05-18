@@ -1,0 +1,27 @@
+slug: vitamin-b6-protects-against-diabetic-neuropathy
+statement: Vitamin B6 supplementation (up to 150 mg/day) protects against diabetic
+  neuropathy by inhibiting protein glycosylation; diabetics tend to be deficient in
+  B6.
+evidence_tier: plausible_emerging
+rationale: Observational data on B6 deficiency in diabetics and small studies on glycosylation
+  inhibition; 100 mg/day is noted as safe and effective for gestational diabetes in
+  one RCT.
+coaching_translation: B6 deficiency is common in diabetics and directly worsens nerve
+  damage risk — include it in any neuropathy prevention protocol.
+linked_to_topics:
+- diabetic-neuropathy
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- vitamin-b6
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Vitamin B6
+  quote: Vitamin B6 supplements protect against diabetic neuropathy. Vitamin B6 inhibits
+    glycosylation of proteins. Diabetics tend to be deficient in B6.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

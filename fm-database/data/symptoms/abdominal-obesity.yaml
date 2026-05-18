@@ -1,5 +1,5 @@
 slug: abdominal-obesity
-display_name: Abdominal Obesity / Increased Waist Circumference
+display_name: Abdominal Obesity
 aliases:
 - central adiposity
 - apple shape
@@ -21,17 +21,25 @@ aliases:
 - weight gain around abdomen
 - buffalo hump
 - moon face
+- large waist
 category: metabolic
 severity: concerning
-description: Excess fat concentrated around the abdomen, often indicating visceral
-  adiposity and underlying insulin resistance. A key clinical sign of metabolic syndrome.
-when_to_refer: Refer if associated with severely elevated fasting glucose, extreme
-  hypertriglyceridemia, or suspected NAFLD.
+description: Excess adipose tissue concentrated in the abdominal region, strongly
+  associated with insulin resistance, hyperinsulinemia, and normal-renin essential
+  hypertension.
+when_to_refer: If associated with fasting glucose >100 mg/dL, dyslipidaemia, or BP
+  ≥130/80 — evaluate for metabolic syndrome.
 linked_to_topics:
 - insulin-resistance
 - cardiometabolic-disease
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+- essential-hypertension
+- normal-renin-essential-hypertension
 linked_to_mechanisms:
 - insulin-resistance
+- visceral-adiposity-endocrine-dysfunction
+- hepatic-gluconeogenesis
 sources:
 - id: coconote-fm-biomarkers-cvs
   location: Metabolic Dysfunction
@@ -58,7 +66,15 @@ sources:
 - id: vitaone-adrenal-toolkit
   location: 'HPA Axis Questionnaire — Section 2: Elevated cortisol state'
   quote: Weight gain around your abdomen, back of neck, and in the face and cheeks*
-version: 1
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnosis
+  quote: Abdominal obesity, fatigue, blurred vision, poor wound healing, periodontal
+    disease, and frequent infections can be manifesting symptoms of T2DM.
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: Normal-renin essential hypertensives typically are insulin resistant with
+    abdominal obesity.
+version: 3
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

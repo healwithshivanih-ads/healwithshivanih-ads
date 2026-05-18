@@ -1,0 +1,24 @@
+slug: gradual-mental-deterioration
+display_name: Gradual Mental Deterioration (Cognitive Decline from CVD)
+aliases:
+- vascular cognitive impairment
+- gradual cognitive decline
+- memory decline
+category: neurological
+severity: concerning
+description: Progressive cognitive decline including memory loss and slowed thinking
+  caused by chronic reduced cerebral blood flow from carotid or cerebral atherosclerosis.
+when_to_refer: Refer for neurological evaluation; rule out vascular dementia vs. Alzheimer's.
+linked_to_topics:
+- atherosclerosis
+linked_to_mechanisms:
+- plaque-progression
+- endothelial-dysfunction
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Diagnostic Summary
+  quote: Gradual mental deterioration, weakness or dizziness.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

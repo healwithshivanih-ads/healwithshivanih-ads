@@ -1,0 +1,25 @@
+slug: diagonal-earlobe-crease
+display_name: Diagonal Earlobe Crease
+aliases:
+- Frank's sign
+- earlobe crease
+- ear crease
+category: cardiovascular
+severity: concerning
+description: A diagonal crease across the earlobe resulting from collapsed microvascular
+  bed due to chronic reduced perfusion; recognized since 1973 as a physical sign associated
+  with CVD independent of age.
+when_to_refer: Presence warrants cardiovascular risk assessment; does not confirm
+  disease but strongly suggests it.
+linked_to_topics:
+- atherosclerosis
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Earlobe Crease
+  quote: Presence of a diagonal earlobe crease has been recognized as a sign of CVD
+    since 1973.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

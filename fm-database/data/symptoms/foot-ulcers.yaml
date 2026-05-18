@@ -1,0 +1,30 @@
+slug: foot-ulcers
+display_name: Diabetic Foot Ulcers
+aliases:
+- diabetic foot sores
+- non-healing foot wounds
+- plantar ulcers
+category: skin
+severity: red_flag
+description: Ulceration from combination of peripheral neuropathy (reduced pain sensation),
+  microvascular insufficiency, and immune dysfunction. Causes 50% of lower limb amputations
+  in the US.
+when_to_refer: Immediate referral to wound care team / podiatrist / vascular surgeon
+  for any diabetic foot ulcer.
+linked_to_topics:
+- diabetic-neuropathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- microvascular-damage
+- sorbitol-accumulation
+- glucotoxicity
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Specific Complications / Poor wound healing and foot ulcers
+  quote: Fifty percent of lower limb amputations in the United States (70,000 yearly)
+    are the result of DM foot ulcers.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

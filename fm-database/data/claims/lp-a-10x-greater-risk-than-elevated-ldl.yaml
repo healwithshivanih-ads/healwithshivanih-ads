@@ -1,0 +1,29 @@
+slug: lp-a-10x-greater-risk-than-elevated-ldl
+statement: Elevated Lp(a) is associated with 10× greater risk for heart disease than
+  elevated LDL-C alone, because Lp(a)'s adhesive apolipoprotein(a) moiety causes it
+  to adhere to artery walls.
+evidence_tier: strong
+rationale: Extensively documented in cardiovascular literature; Lp(a) is recognized
+  as an independent causal risk factor.
+coaching_translation: High Lp(a) is a hidden heart risk that standard cholesterol
+  tests often miss — it needs to be measured separately.
+caveats:
+- Lp(a) levels are largely genetically determined and less responsive to diet than
+  LDL-C
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+linked_to_supplements:
+- niacin
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Further Refinement of Determining Risk
+  quote: High Lp(a) is associated with 10 times greater risk for heart disease than
+    elevated LDL-C.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

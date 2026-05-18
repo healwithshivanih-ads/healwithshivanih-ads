@@ -1,0 +1,27 @@
+slug: diaphragmatic-breathing-lowers-bp
+statement: Regular slow diaphragmatic breathing (six breaths per minute) and guided
+  device-assisted breathing (RESPeRATE, 15 min/day) reduce systolic BP by ~10 mm Hg
+  and diastolic BP by ~3.6 mm Hg.
+evidence_tier: plausible_emerging
+rationale: Supported by clinical trial data on RESPeRATE device; baroreflex and autonomic
+  mechanisms are plausible. Effect size is modest but clinically meaningful at population
+  level.
+coaching_translation: Practicing slow, deep belly breathing every day — about 6 breaths
+  per minute — can measurably lower blood pressure.
+linked_to_topics:
+- essential-hypertension
+- white-coat-hypertension
+linked_to_mechanisms:
+- sympathetic-overactivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Lifestyle and Dietary Factors / Stress
+  quote: When used for 15 minutes daily, it can help reduce BP—systolic BP by 10.0
+    mm Hg and diastolic BP by 3.6 mm Hg.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

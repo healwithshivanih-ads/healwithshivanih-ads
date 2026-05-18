@@ -1,0 +1,36 @@
+slug: hawthorn-extract-diabetes
+display_name: Hawthorn Extract (10% Procyanidins)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 750
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_claims: []
+notes_for_coach: 100–250 mg t.i.d. (10% procyanidins or 1.8% vitexin with 4% rhamnoside).
+  Best choice for cardiovascular disease or hypertension in diabetes. Consider drug
+  interactions with cardiac medications.
+notes_for_client: Hawthorn extract supports healthy blood pressure and heart function
+  — the preferred herbal choice when cardiovascular risk is a concern.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Flavonoids table
+  quote: Hawthorn extract (10% procyanidins) 150-300 mg — Best choice in cardiovascular
+    disease or hypertension.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

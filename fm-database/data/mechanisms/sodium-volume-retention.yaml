@@ -1,0 +1,36 @@
+slug: sodium-volume-retention
+display_name: Sodium-Volume Retention
+aliases:
+- sodium retention
+- volume-dependent hypertension mechanism
+- Na retention
+category: endocrine
+summary: Excess sodium intake coupled with inadequate potassium intake causes fluid
+  retention and expanded blood volume, directly raising blood pressure. From 40–60%
+  of hypertensives are sodium-sensitive. Shallow breathing also induces sodium retention.
+upstream_drivers:
+- high-sodium-diet
+- low-potassium-intake
+- aldosterone-excess
+- low-renin-state
+downstream_effects:
+- elevated-blood-pressure
+- expanded-plasma-volume
+related_mechanisms:
+- raas-activation
+- insulin-resistance
+linked_to_topics:
+- essential-hypertension
+- low-renin-essential-hypertension
+- prehypertension
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / DASH Diet
+  quote: From 40% to 60% of hypertensives are Na sensitive. Dietary sodium chloride
+    (NaCl; salt) is a major cause of raised BP; modest reduction in salt intake can
+    lower BP.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

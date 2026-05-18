@@ -1,0 +1,23 @@
+slug: skin-flushing-niacin
+display_name: Skin Flushing (Niacin-Induced)
+aliases:
+- niacin flush
+- hot flush from niacin
+- niacin redness
+category: skin
+severity: common
+description: Harmless but uncomfortable skin redness and warmth occurring 20–30 minutes
+  after therapeutic niacin doses, caused by prostaglandin-mediated cutaneous vasodilation.
+when_to_refer: No referral needed unless accompanied by hives, severe GI symptoms,
+  or signs of liver toxicity.
+linked_to_topics:
+- dyslipidemia
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Side Effects of Niacin
+  quote: Skin flushing that typically occurs 20 to 30 minutes after ingestion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

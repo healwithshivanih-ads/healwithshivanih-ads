@@ -1,0 +1,27 @@
+slug: high-renin-essential-hypertension
+display_name: High-Renin Essential Hypertension
+aliases:
+- adrenergic hypertension
+summary: Subtype accounting for ~15% of essential hypertension patients. Renin elevation
+  likely driven by increased adrenergic system activity, resulting in high circulating
+  angiotensin II and elevated BP.
+related_topics:
+- essential-hypertension
+key_mechanisms:
+- sympathetic-overactivity
+- raas-activation
+evidence_tier: strong
+common_symptoms: []
+red_flags: []
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: High-renin essential hypertensives comprise 15% of essential hypertension
+    patients. Renin elevation (and high BP) may arise from increased adrenergic system
+    activity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

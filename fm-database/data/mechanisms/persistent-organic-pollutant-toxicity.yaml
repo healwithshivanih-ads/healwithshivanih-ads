@@ -1,0 +1,31 @@
+slug: persistent-organic-pollutant-toxicity
+display_name: Persistent Organic Pollutant (POP) Toxicity
+aliases:
+- POPs diabetes
+- environmental toxin insulin blockade
+- dioxin toxicity
+category: metabolic
+summary: Body accumulation of POPs (PCDDs, PCDFs, DDE, bisphenol A, organophosphates)
+  blocks insulin receptor sites and impairs insulin production. Elevated GGTP (>40
+  IU/L) is an indirect biomarker and confers 20-fold increased diabetes risk.
+upstream_drivers:
+- industrial-pollution
+- dietary-contamination
+downstream_effects:
+- insulin-resistance
+- insulin-deficiency
+- hyperglycaemia
+related_mechanisms:
+- insulin-resistance
+linked_to_topics:
+- type-2-diabetes-mellitus
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: General Considerations / Classification
+  quote: Body load of persistent organic pollutants (POPs) that block insulin receptor
+    sites is becoming a major causative factor.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

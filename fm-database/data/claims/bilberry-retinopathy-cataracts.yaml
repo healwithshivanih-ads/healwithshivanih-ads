@@ -1,0 +1,28 @@
+slug: bilberry-retinopathy-cataracts
+statement: Bilberry extract (25% anthocyanidins, 160–320 mg/day) is the preferred
+  flavonoid for diabetic retinopathy and cataracts due to its affinity for ocular
+  blood vessels and ability to lower intracellular sorbitol.
+evidence_tier: plausible_emerging
+rationale: Anthocyanidins inhibit aldose reductase and improve microcirculation in
+  multiple small trials; Pizzorno designates bilberry as 'best choice in diabetic
+  retinopathy or cataracts'.
+coaching_translation: Bilberry is specifically targeted to protecting the eyes in
+  diabetes — it works on the same sorbitol pathway that causes retinal damage.
+linked_to_topics:
+- diabetic-retinopathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- bilberry-extract
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Long-Term Complications / Sorbitol accumulation
+  quote: Ascorbate and flavonoids (quercetin, grapeseed extract, and bilberry extract)
+    help lower intracellular sorbitol.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

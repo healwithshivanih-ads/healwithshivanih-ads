@@ -1,0 +1,25 @@
+slug: obesity-major-t2dm-risk-90-percent
+statement: 80–90% of type 2 diabetics are obese, and achieving ideal body weight often
+  restores normal blood glucose levels.
+evidence_tier: strong
+rationale: Epidemiological consistency across large population studies; Pizzorno cites
+  80–90% prevalence and weight-loss reversal.
+coaching_translation: Weight normalisation is the most impactful intervention for
+  T2DM; even moderate fat loss meaningfully improves glucose control.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Risk Factors for Type 2 Diabetes Mellitus
+  quote: 'Obesity (excess body fat): 80% to 90% of type 2 diabetics are obese (body
+    mass index above 30)... Achieving ideal body weight often restores normal blood
+    glucose levels.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

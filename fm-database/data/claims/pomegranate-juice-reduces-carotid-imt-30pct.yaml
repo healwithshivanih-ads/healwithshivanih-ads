@@ -1,0 +1,27 @@
+slug: pomegranate-juice-reduces-carotid-imt-30pct
+statement: Pomegranate juice (50 mL/day for 1–3 years) reduced common carotid intima-media
+  thickness by up to 30% after 1 year, increased PON1 activity by 83%, and improved
+  multiple markers of oxidative stress and LDL oxidation.
+evidence_tier: plausible_emerging
+rationale: Small clinical trial (Aviram et al.) showing IMT reduction; promising results
+  but single group with small sample size.
+coaching_translation: Daily pomegranate juice appears to physically shrink arterial
+  wall thickness and protect LDL from oxidation — one of the most potent food-based
+  cardioprotective findings.
+caveats:
+- Small trial; high sugar content of juice should be weighed in metabolic syndrome/diabetic
+  patients
+linked_to_topics:
+- atherosclerosis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vegetables, Fruits, and Red Wine
+  quote: Pomegranate juice (50 mL daily for 1 to 3 years) induced reduction in common
+    carotid intima-media thickness (IMT), by up to 30%, after 1 year.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

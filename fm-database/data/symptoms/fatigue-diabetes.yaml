@@ -1,0 +1,29 @@
+slug: fatigue-diabetes
+display_name: Fatigue (Diabetic)
+aliases:
+- tiredness
+- low energy
+- exhaustion
+- feeling drained
+category: constitutional
+severity: common
+description: Pervasive fatigue in diabetes arises from cellular energy deficiency
+  despite hyperglycaemia (glucose can't enter cells without insulin), micronutrient
+  depletion, and elevated inflammatory cytokines.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- insulin-resistance
+- glucotoxicity
+- oxidative-damage
+when_to_refer: ''
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnostic Summary
+  quote: 'Presenting symptoms: fatigue, blurred vision, poor wound healing, periodontal
+    disease, frequent infections'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

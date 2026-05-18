@@ -1,5 +1,5 @@
 slug: vitamin-e
-display_name: Vitamin E
+display_name: Vitamin E (Mixed Tocopherols)
 category: vitamin
 forms_available:
 - capsule
@@ -24,6 +24,10 @@ linked_to_topics:
 - pancreatic-insufficiency
 - detoxification
 - peptic-ulcer-disease
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-neuropathy
+- diabetic-retinopathy
 linked_to_claims:
 - vitamin-e-antioxidant-nafld
 - vitamin-e-antioxidant-gi-protection
@@ -33,15 +37,17 @@ linked_to_claims:
 - vitamin-e-antioxidant-protection-phase-i-detox
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - vitamin-a-protective-chronic-gastric-ulcer
-notes_for_coach: Listed alongside vitamin A for stress-ulcer prevention and mucosal
-  barrier maintenance. Antioxidant role supports GI mucosa.
-notes_for_client: Vitamin E is an antioxidant that helps protect the lining of your
-  stomach, especially under stress.
+- vitamin-e-lowers-cv-events-hp-2-2-diabetics
+notes_for_coach: Prefer mixed tocopherols. Monitor blood pressure — some T2DM patients
+  show 6–7 mmHg systolic increase with 500 mg alpha-tocopherol. Hp 2-2 genotype patients
+  benefit most for CVD outcomes. Ensures magnesium entry into cells when co-administered.
+notes_for_client: Vitamin E protects cell membranes, nerve cells, and blood vessels
+  from diabetes-related damage. Take with a fat-containing meal.
 evidence_tier: strong
 typical_dose_range:
   capsule:
-    min: 200
-    max: 400
+    min: 400
+    max: 800
     unit: mg
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
@@ -74,12 +80,16 @@ sources:
   location: Miscellaneous, p. 784
   quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help
     maintain integrity of mucosal barrier.'
-version: 10
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Vitamin E
+  quote: 'Vitamin E improves insulin action, prevents free radical damage to LDL and
+    vascular lining, improves the functioning of blood vessels and endothelium...
+    Dose: 400 to 800 IU daily.'
+version: 11
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani
-aliases:
-- vitamin-e-mixed-tocopherols
+aliases: []
 contraindications:
   conditions:
   - high doses (>400 IU/day) may increase bleeding risk with anticoagulants or antiplatelet

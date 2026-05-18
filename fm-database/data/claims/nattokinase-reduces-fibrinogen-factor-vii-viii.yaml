@@ -1,0 +1,28 @@
+slug: nattokinase-reduces-fibrinogen-factor-vii-viii
+statement: Nattokinase (2000 FU per capsule, 2 capsules/day for 2 months) decreased
+  fibrinogen by 7%, factor VII by 13%, and factor VIII by 19% in cardiovascular risk
+  patients.
+evidence_tier: plausible_emerging
+rationale: Small clinical trial evidence; nattokinase's fibrinolytic mechanism is
+  biochemically established but large-scale RCT data are lacking.
+coaching_translation: Nattokinase — from fermented soy — can help thin the blood naturally
+  by reducing clotting factors elevated in heart disease.
+caveats:
+- Small trial; avoid in patients on anticoagulants without medical supervision
+out_of_scope_notes: Patients on warfarin or antiplatelet therapy should consult clinician
+  before using nattokinase.
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- nattokinase
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Fibrinogen
+  quote: Two capsules of nattokinase (2000 fibrinolysis units per capsule) daily orally
+    for 2 months decreased fibrinogen, factor VII, and factor VIII by 7%, 13%, and
+    19%, respectively, for the cardiovascular group.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

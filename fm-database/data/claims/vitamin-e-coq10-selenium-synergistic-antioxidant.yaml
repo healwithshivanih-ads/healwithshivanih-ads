@@ -1,0 +1,29 @@
+slug: vitamin-e-coq10-selenium-synergistic-antioxidant
+statement: 'Vitamin E, CoQ10, and selenium work synergistically: each requires the
+  others for regeneration and optimal antioxidant activity, and studies failing to
+  include all three as co-treatments are methodologically flawed.'
+evidence_tier: plausible_emerging
+rationale: Biochemically well-established mechanism; however, clinical outcome trial
+  evidence for the combination specifically is thin.
+coaching_translation: Antioxidants work as a team — take vitamin E with CoQ10 and
+  selenium for best effect on heart protection.
+caveats:
+- Clinical outcome trial evidence for the specific combination is limited
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- vitamin-e-mixed-tocopherols
+- coenzyme-q10
+- selenium
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vitamin E, Coenzyme Q10, and Selenium
+  quote: Vitamin E and CoQ10 work synergistically; each is required for regeneration
+    of the other. In addition to CoQ10, vitamin E also requires adequate selenium
+    for optimal antioxidant effects.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

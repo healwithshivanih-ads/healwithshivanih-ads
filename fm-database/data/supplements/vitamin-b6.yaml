@@ -1,17 +1,15 @@
 slug: vitamin-b6
-display_name: Vitamin B6 (Pyridoxine / P5P)
+display_name: Vitamin B6 (Pyridoxine)
 category: vitamin
 forms_available:
 - capsule
 - tablet
-evidence_tier: plausible_emerging
-notes_for_coach: B6 supports the transsulfuration pathway, providing an alternative
-  route for homocysteine clearance independent of MTHFR. Mentioned as part of broader
-  methylation-cycle support. High-dose B6 can cause peripheral neuropathy — clinician
-  guidance is warranted for doses above dietary levels.
-notes_for_client: Vitamin B6 is part of the methylation pathway team and helps your
-  body process homocysteine through a different route than folate and B12. It's often
-  included in B-complex or methylation support formulas.
+evidence_tier: strong
+notes_for_coach: Clinical trial used 5 mg/kg body weight — this is a prescription-level
+  dose and must be clinician-supervised. Also lowers homocysteine synergistically
+  with folate. Long-term high-dose B6 risk of peripheral neuropathy.
+notes_for_client: B6 may help lower blood pressure by calming the nervous system and
+  reducing stress hormones. Discuss dosing with your healthcare provider.
 timing_options:
 - with_breakfast
 - with_lunch
@@ -27,21 +25,29 @@ linked_to_topics:
 - nervous-system-regulation
 - mthfr-polymorphisms
 - methylation-cycle
+- hyperhomocysteinemia
+- atherosclerosis
+- diabetic-neuropathy
+- type-2-diabetes-mellitus
+- essential-hypertension
 linked_to_mechanisms:
 - elevated-homocysteine
 typical_dose_range:
   capsule:
-    min: 10
-    max: 100
+    min: 50
+    max: 200
     unit: mg
   tablet:
-    min: 10
-    max: 100
+    min: 50
+    max: 200
     unit: mg
 linked_to_claims:
 - vitamin-b6-folate-support-serotonin-gaba
 - b6-folate-support-serotonin-gaba-synthesis
 - b6-supports-broader-methylation-cycle
+- folic-acid-b12-b6-lower-homocysteine
+- vitamin-b6-protects-against-diabetic-neuropathy
+- b6-reduces-systolic-diastolic-and-norepinephrine
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
@@ -54,8 +60,20 @@ sources:
   location: Key Nutrients & Botanicals for Emotional Healing Support
   quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS,
     mood swings, chronic anxiety.'
-version: 4
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Platelet Aggregation
+  quote: A significant inverse graded relationship exists between serum pyridoxal-5-phosphate
+    (P5P) and both CRP and fibrinogen.
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Vitamin B6
+  quote: Vitamin B6 supplements protect against diabetic neuropathy. Vitamin B6 inhibits
+    glycosylation of proteins. Dose in general is up to 150 mg q.d.
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Folic acid and vitamin B6
+  quote: B6 alone lowers BP. B6 oral dosage of 5 mg/kg body weight for 4 weeks reduced
+    systolic and diastolic BP and serum norepinephrine.
+version: 7
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-18'
 updated_by: Shivani
 aliases: []

@@ -1,0 +1,35 @@
+slug: vitamin-d
+display_name: Vitamin D3 (Cholecalciferol)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 4000
+    unit: IU
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- atherosclerosis
+linked_to_claims:
+- vitamin-d-deficiency-increases-cvd-risk
+notes_for_coach: Target 25-OH-D ≥30 ng/mL (FM optimal often cited as 50–80 ng/mL).
+  1000–4000 IU/day per therapeutic approach. Monitor 25-OH-D levels. Take with fat-containing
+  meal for absorption.
+notes_for_client: Vitamin D deficiency raises heart disease risk. A simple blood test
+  can check your level, and supplementing is inexpensive and safe.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Approach — Supplements
+  quote: 'Vitamin D: 1000 to 4000 IU q.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

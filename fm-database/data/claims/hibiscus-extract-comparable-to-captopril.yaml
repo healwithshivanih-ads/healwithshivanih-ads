@@ -1,0 +1,27 @@
+slug: hibiscus-extract-comparable-to-captopril
+statement: Hibiscus extract providing 250 mg total anthocyanins daily reduced BP from
+  146.48/97.77 to 129.89/85.96 mm Hg; standardised extracts (9.6 mg anthocyanins)
+  showed efficacy comparable to captopril 50 mg/day.
+evidence_tier: plausible_emerging
+rationale: Supported by a double-blind RCT with 193 patients and ACE-inhibitory mechanism;
+  comparison to captopril is notable but requires replication.
+coaching_translation: Hibiscus tea or extract is a powerful botanical option for blood
+  pressure — three cups a day or a standardised supplement can work as well as some
+  prescription medications.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- raas-activation
+linked_to_supplements:
+- hibiscus
+out_of_scope_notes: ''
+caveats: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Hibiscus sabdariffa
+  quote: Standardized extracts (9.6 mg of total anthocyanins) are as effective as
+    captopril (50 mg/day).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

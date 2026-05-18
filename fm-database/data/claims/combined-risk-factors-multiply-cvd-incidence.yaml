@@ -1,0 +1,24 @@
+slug: combined-risk-factors-multiply-cvd-incidence
+statement: 'Combining major CVD risk factors multiplies—not merely adds—atherosclerosis
+  incidence: smoking + high cholesterol + high BP increases incidence by 720% versus
+  30% for any single factor.'
+evidence_tier: strong
+rationale: Tabulated epidemiological data from textbook citing multiplicative risk
+  interactions among smoking, hypercholesterolemia, and hypertension.
+coaching_translation: Having more than one risk factor dramatically raises your heart
+  risk — addressing all of them matters far more than fixing just one.
+linked_to_topics:
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Association of Risk Factors with the Incidence of Atherosclerosis
+  quote: 'Smoker, high blood cholesterol, and high blood pressure: 720% increase in
+    incidence.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,5 +1,5 @@
 slug: vitamin-c
-display_name: Vitamin C (Ascorbic Acid)
+display_name: Vitamin C
 category: vitamin
 forms_available:
 - capsule
@@ -10,11 +10,11 @@ forms_available:
 typical_dose_range:
   capsule:
     min: 500
-    max: 2000
+    max: 3000
     unit: mg
   tablet:
-    min: 250
-    max: 1000
+    min: 500
+    max: 3000
     unit: mg
   powder:
     min: 1000
@@ -34,21 +34,9 @@ timing_options:
 - on_empty_stomach
 - evening
 take_with_food: optional
-notes_for_coach: 'Source (IFM Fig 3.5) names ascorbic acid as an antioxidant protective
-
-  nutrient buffering Phase 1 reactive intermediates but does NOT give
-
-  dosing. Water-soluble; split doses across the day for better tissue
-
-  saturation. Buffered forms (calcium or sodium ascorbate) are gentler
-
-  on GI tract. High doses can cause loose stools — titrate to bowel
-
-  tolerance. Liposomal vitamin C and IV vitamin C are higher-absorption
-
-  options for clinical use (IV is clinician-only).
-
-  '
+notes_for_coach: 500 mg t.i.d. in therapeutic approach. 500 mg alone equals efficacy
+  of 1000–2000 mg. Combine with alpha-tocopherol, zinc, beta-carotene for enhanced
+  antioxidant synergy. Also promotes lead excretion.
 evidence_tier: strong
 linked_to_topics:
 - thyroid
@@ -76,6 +64,14 @@ linked_to_topics:
 - male-infertility-oxidative-stress
 - immune-nutrition
 - detoxification
+- atherosclerosis
+- dyslipidemia
+- hyperhomocysteinemia
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-neuropathy
+- diabetic-retinopathy
+- essential-hypertension
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
@@ -94,9 +90,13 @@ linked_to_claims:
 - vitamin-c-enhances-iron-absorption
 - antioxidant-rotation-improves-male-fertility
 - magnesium-b5-c-zinc-omega3-support-adrenal-resilience
-notes_for_client: Taking vitamin C with iron-rich meals or supplements helps your
-  body absorb iron more effectively. It also supports your immune system and stress
-  response.
+- vitamin-c-lowers-tc-tg-raises-hdl
+- niacin-and-vitamin-c-reduce-lpa-35-27pct
+- vitamin-c-reduces-sorbitol-accumulation
+- vitamin-c-500mg-lowers-bp-5mmhg
+notes_for_client: Vitamin C helps protect blood vessels from oxidative damage and
+  gently lowers blood pressure. Three 500 mg doses spread through the day is a good
+  target.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -147,10 +147,21 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Antioxidant Protective Nutrients and Plant Derivatives panel
   quote: Ascorbic acid (Vit C)
-version: 17
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Approach — Supplements
+  quote: 'Vitamin C: 250 to 500 mg t.i.d.'
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Vitamin C
+  quote: Doses ranging from 100 to 2000 mg q.d. reduce accumulation of sorbitol in
+    RBCs of diabetics, independent of glycemic control, by inhibiting aldose reductase.
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Vitamin C
+  quote: The higher the intake of vitamin C, the lower the BP. Daily dose of 500 mg
+    produces the same benefit as higher doses (1000 or 2000 mg q.d.).
+version: 20
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - vitamin-c-ascorbic-acid
 - vitamin c 1-2g

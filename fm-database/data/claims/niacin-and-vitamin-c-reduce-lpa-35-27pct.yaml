@@ -1,0 +1,29 @@
+slug: niacin-and-vitamin-c-reduce-lpa-35-27pct
+statement: For elevated Lp(a), niacin reduces Lp(a) by 35% and vitamin C reduces Lp(a)
+  by 27%; these are among the most effective natural interventions for this genetically
+  driven risk factor.
+evidence_tier: plausible_emerging
+rationale: Supported by smaller clinical studies; Lp(a) reduction is one of few pharmacological
+  interventions documented. Evidence base is not from large RCTs.
+coaching_translation: If your Lp(a) is high, niacin and vitamin C are two natural
+  options that may help lower it — discuss with your doctor.
+caveats:
+- Therapeutic niacin dosing requires medical supervision
+- Evidence from small trials
+out_of_scope_notes: Therapeutic niacin dosing is clinician scope.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- niacin
+- vitamin-c
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Considerations — Lowering Cholesterol
+  quote: For high Lp(a), both niacin and vitamin C reduce Lp(a) dramatically (−35%
+    and −27%, respectively).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

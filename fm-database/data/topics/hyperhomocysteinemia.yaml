@@ -1,0 +1,34 @@
+slug: hyperhomocysteinemia
+display_name: Hyperhomocysteinemia
+aliases:
+- elevated homocysteine
+- high homocysteine
+summary: Elevated plasma homocysteine due to functional deficiency of folate, B6,
+  or B12; an independent CVD risk factor causing endothelial damage, LDL oxidation,
+  and prothrombotic effects.
+common_symptoms:
+- asymptomatic
+- premature cardiovascular disease
+red_flags:
+- homocysteine >15 µmol/L in setting of prior MI or stroke
+related_topics:
+- atherosclerosis
+- dyslipidemia
+key_mechanisms:
+- endothelial-dysfunction
+- ldl-oxidation
+- prothrombotic-state
+coaching_scope_notes: Coach can support dietary folate, B6, B12 sufficiency and refer
+  for testing. Supplement dosing requires clinician oversight.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Homocysteine
+  quote: Elevated homocysteine is an independent risk factor for heart attack, stroke,
+    or peripheral vascular disease. Elevations in homocysteine are found in 20% to
+    40% of patients with heart disease and are associated with CAD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

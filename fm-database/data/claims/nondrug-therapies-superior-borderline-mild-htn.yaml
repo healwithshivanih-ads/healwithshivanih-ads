@@ -1,0 +1,28 @@
+slug: nondrug-therapies-superior-borderline-mild-htn
+statement: Many nondrug therapies (diet, exercise, relaxation) are superior to drugs
+  in cases of borderline to mild hypertension.
+evidence_tier: plausible_emerging
+rationale: Asserted in a clinical text by leading integrative medicine authors; consistent
+  with meta-analytic data on lifestyle interventions, though direct head-to-head superiority
+  claims require caveat.
+coaching_translation: For borderline or mild high blood pressure, lifestyle changes
+  — eating well, moving more, managing stress — can work better than medication.
+caveats:
+- This is an expert clinical opinion from a textbook; RCT evidence directly comparing
+  nondrug vs. drug therapy in borderline hypertension is mixed.
+- Stage 2 hypertension always requires pharmacotherapy.
+linked_to_topics:
+- essential-hypertension
+- prehypertension
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations
+  quote: Many nondrug therapies (diet, exercise, relaxation therapies) are superior
+    to drugs in cases of borderline to mild hypertension.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: autoimmune-beta-cell-destruction
+display_name: Autoimmune Beta-Cell Destruction
+aliases:
+- T-cell-mediated beta-cell attack
+- islet autoimmunity
+category: immune
+summary: In T1DM, immune-mediated destruction of pancreatic beta cells triggered by
+  molecular mimicry (dietary proteins cross-reacting with beta-cell antigens), viral
+  infections, and genetic susceptibility, leading to absolute insulin deficiency.
+upstream_drivers:
+- genetic-susceptibility
+- leaky-gut
+- enterovirus-infection
+- early-cow-milk-exposure
+- vitamin-d-deficiency
+- nitrosamines
+downstream_effects:
+- insulin-deficiency
+- hyperglycaemia
+related_mechanisms:
+- leaky-gut
+- insulin-deficiency
+linked_to_topics:
+- type-1-diabetes-mellitus
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: General Considerations / Classification
+  quote: 'T1DM: autoimmune disease caused by destruction of the beta cells of pancreas,
+    which synthesize insulin. Positive antibodies against beta cells or insulin occur
+    in 75% of patients with T1DM.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

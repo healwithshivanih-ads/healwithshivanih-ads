@@ -1,0 +1,37 @@
+slug: mulberry-extract
+display_name: Mulberry Leaf Extract (Morus indica)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- type-2-diabetes-mellitus
+linked_to_claims:
+- mulberry-superior-to-glyburide-fasting-glucose
+notes_for_coach: Alpha-glucosidase inhibitor; 1000 mg dried leaf equivalent t.i.d.
+  with meals at Level 2 T2DM. Also antioxidant — reduces RBC membrane lipid peroxidation.
+  Monitor glucose when combining with insulin/sulfonylureas.
+notes_for_client: Mulberry leaf blocks the enzyme that converts starchy food into
+  glucose, helping to flatten blood sugar spikes after meals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Mulberry plant
+  quote: Mulberry lowers fasting glucose 27% in diabetics; no significant differences
+    were observed in the blood glucose between before and after glyburide. Mulberry
+    is superior to glyburide.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: anti-ace-peptides-bonito
+display_name: Anti-ACE Peptides (Bonito / Sardine)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1500
+    max: 1500
+    unit: mg
+  tablet:
+    min: 1500
+    max: 1500
+    unit: mg
+timing_options:
+- morning
+- mid_afternoon
+take_with_food: optional
+linked_to_topics:
+- essential-hypertension
+linked_to_claims:
+- anti-ace-peptides-bonito-reduce-bp
+notes_for_coach: Purified mixture of 9 small peptides from bonito fish muscle. Act
+  as ACE decoys — transformed into even more potent ACE inhibitors in vivo (800% greater
+  activity). Do not lower BP in normotensives. No ACE-inhibitor drug side effects.
+notes_for_client: These natural fish peptides work like a gentle ACE inhibitor without
+  the side effects, and they only lower blood pressure if it's actually elevated.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Anti-ACE peptides
+  quote: Purified mixture of nine small peptides from muscle of the fish bonito (tuna
+    family) do not produce the side effects of ACE inhibitor drugs and do not lower
+    BP in normotensive people, even at dose 20 times greater than therapeutic dose
+    for hypertensives.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

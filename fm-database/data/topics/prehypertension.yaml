@@ -1,0 +1,32 @@
+slug: prehypertension
+display_name: Prehypertension
+aliases:
+- high-normal blood pressure
+- borderline hypertension
+summary: Blood pressure of 120–139/80–89 mm Hg, linked to increased risk of hypertension,
+  cardiovascular disease, diabetes, and cognitive impairment. Fully addressable with
+  lifestyle and dietary modification.
+common_symptoms:
+- elevated-blood-pressure
+red_flags:
+- Progression to sustained hypertension if untreated
+related_topics:
+- essential-hypertension
+- insulin-resistance
+key_mechanisms:
+- sodium-volume-retention
+- insulin-resistance
+coaching_scope_notes: Excellent coaching opportunity — weight loss, DASH diet, exercise,
+  and stress reduction can normalize BP at this stage.
+evidence_tier: strong
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: 37% of U.S. adults have a blood pressure (BP) of 120 to 139/80 to 89 mm Hg,
+    classified as prehypertension, linked to not only greater risk of developing hypertension
+    and cardiovascular disease, but also diabetes and cognitive impairment.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

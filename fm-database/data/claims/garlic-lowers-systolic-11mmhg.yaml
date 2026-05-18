@@ -1,0 +1,25 @@
+slug: garlic-lowers-systolic-11mmhg
+statement: Dried garlic powder standardised to 1.3% alliin at 600–900 mg/day can lower
+  systolic BP by 11 mm Hg and diastolic BP by 5 mm Hg over 1–3 months.
+evidence_tier: plausible_emerging
+rationale: Based on meta-analysis conclusions cited in the text; multiple trials support
+  garlic's modest antihypertensive effect.
+coaching_translation: Daily garlic — whether fresh or as a standardised supplement
+  — provides a meaningful blood pressure reduction over a few months.
+linked_to_topics:
+- essential-hypertension
+linked_to_supplements:
+- garlic
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Allium sativum
+  quote: 'Meta-analysis conclusions: dried garlic powder standardized to contain 1.3%
+    alliin at dose of 600 to 900 mg q.d. can lower systolic BP by 11 mm Hg and diastolic
+    BP by 5.0 mm Hg over a 1- to 3-month period.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

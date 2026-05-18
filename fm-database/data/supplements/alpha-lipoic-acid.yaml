@@ -1,5 +1,5 @@
 slug: alpha-lipoic-acid
-display_name: Alpha-Lipoic Acid (ALA)
+display_name: Alpha-Lipoic Acid
 category: other
 forms_available:
 - capsule
@@ -22,20 +22,10 @@ timing_options:
 - morning
 - mid_morning
 take_with_food: optional
-notes_for_coach: 'Universal antioxidant (both water- and fat-soluble); regenerates
-
-  glutathione, vitamin C, and vitamin E; mitochondrial cofactor.
-
-  Source (Minich transcript) names lipoic acid as an endogenous
-
-  antioxidant relevant to detoxification but does NOT give dosing.
-
-  Confirm dose from peer-reviewed source before client use. R-lipoic
-
-  acid is the biologically active isomer; racemic mixtures are common.
-
-  '
-evidence_tier: plausible_emerging
+notes_for_coach: Approved drug for diabetic neuropathy in Germany. Use with benfotiamine
+  for synergistic AGE reduction. Foundation supplement for all T1DM/T2DM with neuropathy
+  signs.
+evidence_tier: strong
 linked_to_topics:
 - pcos
 - insulin-resistance
@@ -47,6 +37,9 @@ linked_to_topics:
 - estrogen-dominance
 - gut-skin-hormone-axis
 - detoxification
+- diabetic-neuropathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
 linked_to_mechanisms:
 - oxidative-stress-from-toxicants
 - mitochondrial-toxin-disruption
@@ -58,8 +51,9 @@ linked_to_claims:
 - alpha-lipoic-acid-supports-weight-and-nerve-pain
 - ala-nac-glutathione-advanced-antioxidants
 - nac-alpha-lipoic-support-phase-2-estrogen-detox
-notes_for_client: Alpha lipoic acid is a powerful antioxidant that helps your liver
-  process and remove hormones and toxins efficiently.
+- alpha-lipoic-acid-improves-diabetic-neuropathy
+notes_for_client: Alpha-lipoic acid is a powerful antioxidant that protects nerves
+  and improves blood sugar metabolism. Take daily with or without food.
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
@@ -103,10 +97,15 @@ sources:
   location: Antioxidant nutrients section
   quote: upregulating endogenous antioxidants like glutathione, cysteine, coenzyme
     Q10, lipoic acid
-version: 10
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Alpha-lipoic acid
+  quote: 'It is an approved drug in Germany for diabetic neuropathy. Dose: 300 to
+    600 mg q.d. It improves glucose metabolism, improves blood flow to peripheral
+    nerves, stimulates regeneration of nerve fibers, and increases insulin sensitivity.'
+version: 11
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 pregnancy_safety: caution
 lactation_safety: caution
 pregnancy_safety_note: Limited safety data; theoretical concern for blood sugar swings.

@@ -1,0 +1,26 @@
+slug: hypothyroidism-elevates-ldl-lpa
+statement: Patients with overt or subclinical hypothyroidism have elevated LDL-C and
+  Lp(a), increasing CAD risk; all patients with elevated blood lipids should be screened
+  for hypothyroidism.
+evidence_tier: strong
+rationale: Thyroid hormone regulates LDL receptor expression and hepatic lipid metabolism;
+  well-established clinical association.
+coaching_translation: If your cholesterol is high — especially Lp(a) — your thyroid
+  should be checked. Low thyroid function is a treatable cause of high cholesterol.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Considerations — Lowering Cholesterol
+  quote: Rule out hypothyroidism in all patients with elevated blood lipids, especially
+    elevated Lp(a). Patients with overt hypothyroidism are prone to CAD because of
+    increased LDL-C and decreased HDL-C.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

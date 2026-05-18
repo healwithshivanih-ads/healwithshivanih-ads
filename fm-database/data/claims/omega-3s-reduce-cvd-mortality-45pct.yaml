@@ -1,0 +1,25 @@
+slug: omega-3s-reduce-cvd-mortality-45pct
+statement: Raising omega-3 intake through diet or supplements may reduce overall cardiovascular
+  mortality by 45%.
+evidence_tier: strong
+rationale: Supported by landmark trials (DART, Lyon Diet Heart Study, GISSI-Prevenzione)
+  referenced in source.
+coaching_translation: Getting enough omega-3 fats — from fish or supplements — could
+  cut your risk of dying from heart disease nearly in half.
+caveats:
+- Effect size may vary by baseline omega-3 status and population
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- fish-oil-epa-dha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Olive Oil and Omega-3 Fatty Acids
+  quote: Raising omega-3s through diet or supplements may reduce overall cardiovascular
+    mortality by 45%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

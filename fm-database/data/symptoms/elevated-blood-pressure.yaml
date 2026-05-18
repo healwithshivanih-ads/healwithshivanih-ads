@@ -10,38 +10,57 @@ aliases:
 - HTN
 - blood pressure too high
 - hypertension
+- hypertension reading
+- raised blood pressure
+- BP spike
 category: cardiovascular
 severity: concerning
-description: Blood pressure elevation that, in individuals homozygous for MTHFR C677T, may be partially driven by impaired
-  nitric oxide bioavailability related to reduced active folate. Riboflavin supplementation has been specifically studied
-  in this subgroup.
-when_to_refer: Always refer for blood pressure management. Do not recommend supplements as a standalone treatment for hypertension.
+description: Persistently elevated blood pressure readings (≥120/80 mm Hg at prehypertension;
+  ≥140/90 at Stage 1; ≥160/100 at Stage 2). Often asymptomatic; occasionally presents
+  with headache, dizziness, or visual changes.
+when_to_refer: Stage 2 hypertension (≥160/100) or any hypertension unresponsive to
+  1–3 months of lifestyle and natural intervention; signs of hypertensive urgency
+  (severe headache, visual disturbance, chest pain).
 linked_to_topics:
 - blood-pressure-management
 - visceral-adiposity
 - metabolic-syndrome
 - mthfr-polymorphisms
 - riboflavin-and-blood-pressure-mthfr
+- essential-hypertension
+- prehypertension
+- white-coat-hypertension
 linked_to_mechanisms:
 - nitric-oxide-production
 - insulin-resistance
 - nitric-oxide-bioavailability
 - mthfr-enzyme-dysfunction
+- raas-activation
+- sodium-volume-retention
+- sympathetic-overactivity
+- endothelial-no-insufficiency
 sources:
 - id: coconote-fm-body-composition-bmi
   location: Blood Pressure Section
-  quote: With every 10 millimeter decrease in blood pressure, we get a 20% decrease in stroke or heart disease.
+  quote: With every 10 millimeter decrease in blood pressure, we get a 20% decrease
+    in stroke or heart disease.
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Fasting Mimicking Diet
-  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has been shown in a limited number of studies
-    to improve body composition and lower blood pressure after three consecutive cycles (3 months).
+  quote: This 5-day, very low-calorie, low carbohydrate, structured food plan has
+    been shown in a limited number of studies to improve body composition and lower
+    blood pressure after three consecutive cycles (3 months).
 - id: vitaone-health-coaching-toolkit
   location: Intermittent Fasting — summary table
   quote: 'Improves: Blood pressure'
 - id: vitaone-cvs-risk-assessment
   location: Progress (Slide 25)
-  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid Profile Improved'
-version: 2
+  quote: 'Insulin Resistance improved : HbA1c Reduced, Hypertension controlled, Lipid
+    Profile Improved'
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: Hypertension is a major risk factor for myocardial infarction (MI) or stroke
+    and is the most significant risk factor for stroke.
+version: 3
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-18'
 updated_by: Shivani

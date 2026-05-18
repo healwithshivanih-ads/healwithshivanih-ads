@@ -1,0 +1,28 @@
+slug: l-arginine-modest-systolic-reduction
+statement: L-arginine at 4 g three times daily produces modest (~5 mm Hg) reductions
+  in systolic BP by increasing nitric oxide production; it is most beneficial in younger
+  hypertensives with intact NO-dependent renal mechanisms.
+evidence_tier: plausible_emerging
+rationale: NO-synthesis precursor role is well established; clinical BP reduction
+  data are modest and age-dependent, limiting claim to plausible_emerging.
+coaching_translation: L-arginine can help relax blood vessels and gently lower blood
+  pressure, working best in younger people.
+caveats:
+- Less effective in older subjects due to age-related NO pathway dysfunction.
+- IV arginine data should not be extrapolated to oral supplementation.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- endothelial-no-insufficiency
+linked_to_supplements:
+- l-arginine
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / L-Arginine
+  quote: In general, a dose of 4 g t.i.d. will produce only modest decreases (e.g.,
+    5 mm Hg) in systolic BP with little meaningful change in diastolic BP.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: prediabetes-metabolic-syndrome
+display_name: Prediabetes & Metabolic Syndrome
+aliases:
+- impaired glucose tolerance
+- IGT
+- impaired fasting glucose
+- IFG
+- MetS
+- syndrome X
+summary: Prediabetes (fasting glucose 100–125 mg/dL, postprandial 140–199 mg/dL) is
+  the first step in insulin resistance and is reversible with dietary and lifestyle
+  changes. Metabolic syndrome clusters elevated triglycerides, low HDL, hypertension,
+  and increased waist-to-hip ratio, conferring high CVD and T2DM risk.
+evidence_tier: strong
+common_symptoms:
+- abdominal-obesity
+- fatigue
+- elevated-triglycerides
+- low-hdl
+red_flags:
+- progression-to-t2dm
+- cardiovascular-event
+related_topics:
+- type-2-diabetes-mellitus
+- insulin-resistance
+key_mechanisms:
+- insulin-resistance
+- visceral-adiposity-endocrine-dysfunction
+- chronic-low-grade-inflammation
+coaching_scope_notes: Lifestyle changes alone reduce T2DM risk 58% in IGT. Coach supports
+  low-GL diet, fibre, exercise, weight management, sleep, stress reduction.
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Prediabetes and Metabolic Syndrome
+  quote: Prediabetes (impaired glucose tolerance [IGT]) is characterized by fasting
+    glucose between 100 and 125 mg/dL and/or postprandial glucose of 140 to 199 mg/dL.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

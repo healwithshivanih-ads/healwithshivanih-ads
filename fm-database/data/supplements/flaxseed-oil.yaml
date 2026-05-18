@@ -1,36 +1,41 @@
 slug: flaxseed-oil
-display_name: Flaxseed Oil (ALA)
+display_name: Flaxseed Oil
 category: fatty_acid
 forms_available:
 - liquid
 - capsule
 typical_dose_range:
   liquid:
-    min: 5
-    max: 10
-    unit: g
+    min: 1
+    max: 2
+    unit: teaspoons
+  capsule:
+    min: 1000
+    max: 2000
+    unit: mg
 timing_options:
 - morning
 - with_breakfast
 - with_lunch
 - with_dinner
-take_with_food: optional
+take_with_food: required
 linked_to_topics:
 - cardiometabolic-diet
 - chronic-inflammation
 - omega-3-omega-6-balance
+- essential-hypertension
 linked_to_claims:
 - avocado-flaxseed-oil-smoothie-for-healthy-fats
 - flaxseed-oil-provides-ala-not-epa-dha
 - omega-3-membrane-replacement-takes-3-months
-notes_for_coach: Prescribe flaxseed oil (10g/day) alongside fish oil or algae EPA/DHA
-  for a combined omega-3 strategy. ALA from flaxseed is not efficiently converted
-  to EPA/DHA in all patients due to genetic variation in delta-5 desaturase. Do not
-  rely on flaxseed oil alone for anti-inflammatory purposes in patients needing therapeutic
-  EPA/DHA levels.
-notes_for_client: Flaxseed oil is an affordable, plant-based omega-3 source. Two tablespoons
-  a day alongside your omega-3 capsule rapidly increases your omega-3 intake. Keep
-  refrigerated and use fresh.
+- omega-3-dha-reduces-24hr-ambulatory-bp
+notes_for_coach: 1 tablespoon daily reduces systolic and diastolic BP by up to 9 mm
+  Hg. Cost-effective alternative to fish oil; requires concurrent reduction in saturated
+  and omega-6 fats. Each 1% increase in body alpha-linolenic acid reduces mean BP
+  ~5 mm Hg.
+notes_for_client: Flaxseed oil (1 tablespoon a day) is a budget-friendly way to get
+  blood-pressure-lowering omega-3s. Add to smoothies or drizzle over salads — don't
+  heat it.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -42,7 +47,11 @@ sources:
   quote: you prescribe flaxseed oil, it's available in Indian market, very fresh,
     very cheap. So patient can incorporate that 10 grams... you prescribe two spoons
     of flaxseed oil, that's 10 grams. You will increase omega-3 very fast.
-version: 2
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Omega-3 oils
+  quote: One tablespoon daily of flaxseed oil reduces systolic and diastolic BP by
+    up to 9 mm Hg.
+version: 3
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

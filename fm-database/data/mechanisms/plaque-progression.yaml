@@ -1,0 +1,40 @@
+slug: plaque-progression
+display_name: Atherosclerotic Plaque Progression
+aliases:
+- plaque formation
+- atheroma development
+- plaque instability
+- fibrous plaque
+category: structural
+summary: Sequential process from endothelial injury → lipoprotein infiltration → immune
+  cell recruitment → smooth muscle cell migration → fibrous cap formation → plaque
+  growth and potential rupture causing MI or stroke.
+upstream_drivers:
+- endothelial-dysfunction
+- ldl-oxidation
+- systemic-inflammation
+- platelet-aggregation
+downstream_effects:
+- arterial-occlusion
+- myocardial-infarction
+- stroke
+- intermittent-claudication
+related_mechanisms:
+- endothelial-dysfunction
+- ldl-oxidation
+- foam-cell-formation
+linked_to_topics:
+- atherosclerosis
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Process of Atherosclerosis
+  quote: Plaque grows until it either blocks artery directly or ruptures to form a
+    clot that travels through general circulation until it occludes a blood vessel.
+    Plaque instability poses greater risk for myocardial infarction (MI) or stroke.
+    Targeting plaque stabilization appears to be more clinically important than simply
+    enlarging the lumen.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

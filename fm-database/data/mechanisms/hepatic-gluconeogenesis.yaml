@@ -1,0 +1,34 @@
+slug: hepatic-gluconeogenesis
+display_name: Hepatic Gluconeogenesis (Excess)
+aliases:
+- liver glucose production
+- hepatic glucose output
+category: metabolic
+summary: Adipokines secreted by hypertrophied visceral adipocytes (free fatty acids,
+  TNF, leptin) promote liver gluconeogenesis, elevating fasting glucose independent
+  of dietary intake. Abdominal adiposity is the primary driver.
+upstream_drivers:
+- visceral-adiposity-endocrine-dysfunction
+- insulin-resistance
+- lipotoxicity
+downstream_effects:
+- fasting-hyperglycaemia
+- dyslipidaemia
+related_mechanisms:
+- insulin-resistance
+- lipotoxicity
+- beta-cell-exhaustion
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Risk Factors for Type 2 Diabetes Mellitus
+  quote: Abdominal adipocytes, engorged with fat, secrete resistin, leptin, tumor
+    necrosis factor, and free fatty acids that dampen the effect of insulin, impair
+    glucose use in skeletal muscle, promote liver gluconeogenesis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

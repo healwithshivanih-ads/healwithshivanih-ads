@@ -1,5 +1,5 @@
 slug: chromium-picolinate
-display_name: Chromium Picolinate
+display_name: Chromium (Picolinate / Polynicotinate)
 category: mineral
 forms_available:
 - capsule
@@ -9,6 +9,10 @@ typical_dose_range:
     min: 200
     max: 200
     unit: mcg
+  tablet:
+    min: 200
+    max: 400
+    unit: mcg
 timing_options:
 - with_breakfast
 - with_lunch
@@ -17,13 +21,19 @@ take_with_food: optional
 linked_to_topics:
 - insulin-resistance
 - blood-sugar-dysfunction
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
 linked_to_claims:
 - micronutrient-deficiency-impairs-insulin-receptor-signalling
 - whole-foods-supply-micronutrients-supporting-insulin-sensitivity
-notes_for_coach: Introduced in Phase 2 of the 12-week roadmap alongside magnesium.
-  Verify no interaction with diabetes medications.
-notes_for_client: Chromium is a trace mineral that helps your body use insulin more
-  effectively. Take with meals.
+- chromium-improves-glycemic-control-deficient
+notes_for_coach: Cr picolinate + biotin (600 mcg Cr + 2 mg biotin) combination shown
+  to drop fasting glucose 10 mg/dL and HbA1c 0.54%. Effects are meaningful only in
+  chromium-deficient individuals. At least 200 mcg/day for diabetics; 200–400 mcg/day
+  optimal.
+notes_for_client: Chromium helps insulin work more effectively — it's especially useful
+  if you eat refined carbohydrates or have a sedentary lifestyle, both of which deplete
+  chromium.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -31,7 +41,11 @@ sources:
   location: Section 7.2 — Targeted Supplementation
   quote: 'Chromium picolinate: Potentiates insulin signalling; lowers fasting glucose.
     200 µg.'
-version: 1
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Chromium
+  quote: Supplementing Cr decreases fasting glucose, improves glucose tolerance, lowers
+    insulin, decreases total cholesterol and triglycerides, and increases HDL.
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

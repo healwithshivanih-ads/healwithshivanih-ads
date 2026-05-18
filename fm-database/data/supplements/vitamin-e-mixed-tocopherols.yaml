@@ -1,0 +1,33 @@
+slug: vitamin-e-mixed-tocopherols
+display_name: Vitamin E (Mixed Tocopherols, Natural d-alpha)
+category: vitamin
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 400
+    unit: mg
+timing_options:
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- atherosclerosis
+linked_to_claims:
+- vitamin-e-400iu-clinically-significant-ldl-protection
+- vitamin-e-coq10-selenium-synergistic-antioxidant
+notes_for_coach: 'Use natural d-alpha tocopherol (or mixed tocopherols) — NOT synthetic
+  dl-alpha. Works synergistically with CoQ10 and selenium; statin drugs interfere
+  with vitamin E and CoQ10 metabolism, increasing need for both. Dose: 100–400 IU/day.'
+notes_for_client: Natural vitamin E (mixed tocopherols) protects LDL cholesterol from
+  oxidation and supports heart and immune function. Take with a fatty meal.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Approach — Supplements
+  quote: 'Vitamin E (mixed tocopherols): 100 to 400 IU q.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

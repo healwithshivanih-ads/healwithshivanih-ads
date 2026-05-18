@@ -1,0 +1,25 @@
+slug: nuts-substitute-for-carbs-30pct-cvd-risk-reduction
+statement: Substituting nuts for an equivalent caloric amount of carbohydrates reduces
+  heart disease risk by 30%; substituting for saturated fats achieves a 45% risk reduction.
+evidence_tier: strong
+rationale: Supported by prospective cohort studies (Nurses' Health Study, Adventist
+  Health Study) and meta-analyses on nut consumption and CVD.
+coaching_translation: Swapping carbs or butter/meat for a handful of nuts daily is
+  one of the simplest and most powerful diet changes for heart health.
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Nuts and Seeds
+  quote: Substituting nuts for equivalent amount of carbohydrates reduces heart disease
+    risk by 30%. More impressive 45% risk reduction arises when fat from nuts is substituted
+    for saturated fats.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

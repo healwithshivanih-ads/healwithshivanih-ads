@@ -1,0 +1,38 @@
+slug: niacinamide
+display_name: Niacinamide (Nicotinamide)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  tablet:
+    min: 25
+    max: 50
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_claims:
+- niacinamide-prolongs-t1dm-remission
+notes_for_coach: 'Dose is 25–50 mg/kg/day (max 3 g/day) divided. Monitor liver enzymes
+  every 3 months. Immediate-release preferred over timed-release for peak immune-blocking
+  effect. Physician must direct. Children: 100–200 mg/day.'
+notes_for_client: Niacinamide is a form of vitamin B3 that may protect insulin-producing
+  cells. Only use under medical supervision at therapeutic doses.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Early Treatment and Possible Reversal of Type 1 Diabetes Mellitus
+  quote: A dose of 3 g niacinamide daily may prolong non–insulin-requiring remission,
+    lower insulin requirements, improve metabolic control, and increase beta-cell
+    function as determined by C-peptide secretion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

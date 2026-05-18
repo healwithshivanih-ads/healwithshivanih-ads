@@ -1,5 +1,5 @@
 slug: leaky-gut
-display_name: Leaky Gut (Intestinal Hyperpermeability)
+display_name: Intestinal Hyperpermeability (Leaky Gut)
 aliases:
 - permeable gut lining
 - tight-junction-disruption
@@ -35,11 +35,9 @@ aliases:
 - leaky-gut-mechanism
 - leaky-gut
 category: gut
-summary: Increased intestinal paracellular permeability allowing passage of undigested
-  antigens, microbial toxins, and Candida particles into systemic circulation, overwhelming
-  the immune system and precipitating food allergies, autoimmunity, and systemic inflammation.
-  Key drivers include food allergens, Candida overgrowth, dysbiosis, and nutritional
-  deficiencies.
+summary: Increased intestinal permeability allows intact dietary proteins (milk, gluten)
+  and microbial antigens to cross into systemic circulation, triggering immune activation
+  and molecular mimicry against pancreatic beta cells, contributing to T1DM autoimmunity.
 upstream_drivers:
 - dysbiosis (loss of beneficial species)
 - chronic stress / cortisol elevation
@@ -80,6 +78,9 @@ upstream_drivers:
 - candida-overgrowth
 - gluten-mediated-tight-junction-disruption
 - nutrient-deficiency
+- rotavirus-infection
+- early-cow-milk-exposure
+- enterovirus-infection
 downstream_effects:
 - food sensitivities
 - autoimmune flare risk
@@ -116,6 +117,7 @@ downstream_effects:
 - autoimmune-disease
 - atopic-dermatitis
 - adhd
+- autoimmune-beta-cell-destruction
 related_mechanisms:
 - hpa-axis-dysregulation
 - microbial-diversity-decline
@@ -138,6 +140,7 @@ related_mechanisms:
 - mucosal-inflammation
 - endotoxaemia-complement-activation
 - gluten-mediated-tight-junction-disruption
+- autoimmune-beta-cell-destruction
 linked_to_topics:
 - autoimmune
 - inflammation
@@ -170,6 +173,7 @@ linked_to_topics:
 - chronic-candidiasis
 - adhd
 - chronic-fatigue-syndrome
+- type-1-diabetes-mellitus
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Gut & Inflammation sections
@@ -298,8 +302,13 @@ sources:
   quote: Presence of food allergies is responsible for children with AD having 'leaky
     gut'—increased gut permeability, increased antigen load, overwhelming the immune
     system and increasing likelihood of developing additional allergies.
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes / Risk Factors for Type 1
+  quote: GI virus infections may increase intestinal permeability. Small intestinal
+    leaky gut during and after rotavirus infections exposes gut immune cells to intact
+    protein.
 evidence_tier: strong
-version: 16
+version: 17
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani

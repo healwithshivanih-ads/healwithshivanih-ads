@@ -1,0 +1,29 @@
+slug: biotin-lowers-fasting-glucose-t1dm-t2dm
+statement: Biotin 16 mg/day significantly lowers fasting glucose and improves glycaemic
+  control in T1DM; similar effects occur at 9 mg/day in T2DM, by increasing glucokinase
+  activity in the liver.
+evidence_tier: plausible_emerging
+rationale: Small clinical trials (Coggeshall 1985; Maebashi 1993) support pharmacological
+  biotin doses for glycaemic improvement. Mechanism via glucokinase upregulation is
+  well-characterised.
+coaching_translation: High-dose biotin acts as an insulin sensitiser by activating
+  the liver's first glucose-processing enzyme — useful when glycaemic control is inadequate.
+caveats:
+- Pharmacological doses used; adjust insulin when adding biotin.
+- Combination with chromium picolinate may enhance effect.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- biotin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Biotin
+  quote: Dose of 16 mg biotin q.d. significantly lowers fasting glucose and improves
+    glucose control in T1DM; in T2DM, similar effects occur at 9 mg biotin q.d.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

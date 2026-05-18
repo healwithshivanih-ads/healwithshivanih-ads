@@ -1,0 +1,30 @@
+slug: niacin-outperforms-statins-on-hdl-and-lpa
+statement: Niacin raises HDL-C by 33% vs. 7% for lovastatin and reduces Lp(a) by 35%
+  while lovastatin has no effect on Lp(a), giving niacin overall cardiovascular superiority
+  despite lower LDL-C reduction than statins.
+evidence_tier: strong
+rationale: Direct head-to-head data from HDL Atherosclerosis Treatment Study (HATS)
+  and other trials cited in source.
+coaching_translation: For people with low HDL or high Lp(a), niacin may do more for
+  the heart than statins.
+caveats:
+- Recent AIM-HIGH and HPS2-THRIVE trials showed no incremental benefit of adding niacin
+  to well-controlled statin therapy
+out_of_scope_notes: Dosing and drug selection is clinician scope.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- niacin
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Natural Products to Lower Cholesterol Levels — Niacin
+  quote: Although lovastatin produces greater reduction in LDL-C, niacin provides
+    better overall results… Percentage increase in HDL-C, a better indicator for CHD,
+    is dramatically in favor of niacin (33% versus 7%). Although niacin produces a
+    35% reduction in Lp(a), lovastatin did not produce any effect.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

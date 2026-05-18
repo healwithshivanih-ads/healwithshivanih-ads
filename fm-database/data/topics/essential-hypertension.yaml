@@ -1,0 +1,43 @@
+slug: essential-hypertension
+display_name: Essential Hypertension
+aliases:
+- primary hypertension
+- idiopathic hypertension
+summary: Elevated blood pressure (≥140/90 mm Hg) with no discernible secondary cause,
+  accounting for >90% of hypertension cases. Driven by interplay of vascular, hormonal,
+  renal, neurologic, dietary, lifestyle, and environmental factors. Classified into
+  low-, normal-, and high-renin subtypes with distinct pathophysiology and therapeutic
+  implications.
+common_symptoms:
+- elevated-blood-pressure
+- headache
+- dizziness
+red_flags:
+- Stage 2 hypertension (≥160/100 mm Hg) — requires prompt drug intervention
+- Elevated systolic with normal diastolic (isolated systolic) — suggests arteriosclerosis,
+  twofold CV mortality risk
+- Hypertension with renal failure — refer nephrology
+related_topics:
+- prehypertension
+- insulin-resistance
+- metabolic-syndrome
+- atherosclerosis
+key_mechanisms:
+- raas-activation
+- endothelial-no-insufficiency
+- sodium-volume-retention
+coaching_scope_notes: Coaches may support borderline/mild hypertension with diet,
+  lifestyle, stress reduction, and evidence-based supplements. Stage 2 or drug-resistant
+  hypertension must be referred.
+clinician_scope_notes: Classify by renin subtype to guide therapeutic selection. Rule
+  out secondary causes. Monitor ambulatory BP to exclude white coat hypertension.
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: More than 90% of cases are classified as essential hypertension—no discernible
+    cause. Essential hypertension groups are based on level of renin.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

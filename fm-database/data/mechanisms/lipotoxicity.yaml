@@ -1,0 +1,36 @@
+slug: lipotoxicity
+display_name: Lipotoxicity
+aliases:
+- free-fatty-acid-mediated insulin resistance
+- ectopic lipid accumulation
+category: metabolic
+summary: Excess circulating free fatty acids and ectopic lipid deposition in skeletal
+  muscle and liver impair insulin signalling, reduce GLUT4 translocation, promote
+  beta-cell dysfunction, and contribute to dyslipidaemia (elevated triglycerides,
+  small dense LDL, low HDL).
+upstream_drivers:
+- visceral-adiposity-endocrine-dysfunction
+- saturated-fat-excess
+- high-gl-diet
+downstream_effects:
+- insulin-resistance
+- beta-cell-exhaustion
+- dyslipidaemia
+related_mechanisms:
+- insulin-resistance
+- hepatic-gluconeogenesis
+- beta-cell-exhaustion
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Risk Factors for Type 2 Diabetes Mellitus
+  quote: Abdominal adipocytes, engorged with fat, secrete resistin, leptin, tumor
+    necrosis factor, and free fatty acids that dampen the effect of insulin, impair
+    glucose use in skeletal muscle.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

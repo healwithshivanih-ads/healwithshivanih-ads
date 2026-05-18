@@ -7,33 +7,49 @@ aliases:
 - oxidized-ldl-inflammasome-activation
 - ox-LDL NF-kB pathway
 - damaged LDL pro-inflammatory cascade
+- LDL peroxidation
 category: metabolic
-summary: When LDL particles enter the subendothelial space and encounter an imbalance between antioxidants and oxidants, they
-  become oxidized. Oxidized LDL is recognized as foreign by the immune system, triggering macrophage engulfment, foam cell
-  formation, and the inflammatory cascade that drives plaque development.
+summary: Free-radical oxidation of LDL-C particles converts them into proinflammatory
+  triggers that accelerate atherosclerosis and plaque rupture; small dense LDL-C particles
+  are preferentially oxidized and most atherogenic.
 upstream_drivers:
 - endothelial-dysfunction
 - oxidative-stress
+- smoking
+- hyperglycemia
+- low-antioxidant-status
 downstream_effects:
 - macrophage-infiltration
 - foam-cell-formation
 - inflammatory-cascade
+- plaque-progression
+- endothelial-dysfunction
 related_mechanisms:
 - endothelial-dysfunction
 - inflammatory-cascade
+- plaque-progression
+- foam-cell-formation
 linked_to_topics:
 - atherosclerosis-pathogenesis
 - ldl-particle-size-and-number
+- atherosclerosis
+- dyslipidemia
 evidence_tier: strong
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Atherosclerosis mechanism section
-  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles become oxidized and when they become
-    oxidized now it becomes a foreign particle for the immune system.
+  quote: When you have an imbalance in your antioxidant and oxygen then LDL particles
+    become oxidized and when they become oxidized now it becomes a foreign particle
+    for the immune system.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Inflammatory Biomarkers
-  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on NF-kappa-B. It is pro-inflammatory.
-version: 1
+  quote: Oxidized LDL is damaged LDL and it turns on the inflammasome. It turns on
+    NF-kappa-B. It is pro-inflammatory.
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Further Refinement of Determining Risk
+  quote: Oxidized LDL-C is proinflammatory trigger for progression of atherosclerosis
+    and plaque rupture.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

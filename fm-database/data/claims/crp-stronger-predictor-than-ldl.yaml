@@ -1,0 +1,24 @@
+slug: crp-stronger-predictor-than-ldl
+statement: CRP level is a stronger predictor of cardiovascular events than LDL-C level;
+  screening for both biomarkers is more prognostic than either alone.
+evidence_tier: strong
+rationale: Multiple prospective studies (e.g., Ridker et al.) established hs-CRP as
+  superior predictor over LDL-C; well-cited in cardiology literature.
+coaching_translation: Your inflammation marker (CRP) tells your doctor more about
+  heart risk than cholesterol alone — ask to have both checked.
+linked_to_topics:
+- atherosclerosis
+- metabolic-syndrome
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Other Risk Factors
+  quote: CRP level is a stronger predictor of cardiovascular events than LDL-C level;
+    screening for both biomarkers is more prognostic.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

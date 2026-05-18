@@ -1,0 +1,27 @@
+slug: caffeine-cyp1a2-bp-risk
+statement: Regular coffee drinking (5 cups/day for 14–79 days) is linked to persistent
+  increases in systolic and diastolic BP; the effect is most pronounced in individuals
+  with low liver CYP1A2 activity.
+evidence_tier: plausible_emerging
+rationale: Pharmacogenomic interaction between CYP1A2 genotype and caffeine is supported
+  by observational and Mendelian randomisation studies. Population-level BP effect
+  of regular coffee is modest.
+coaching_translation: If coffee seems to spike your blood pressure, genetics may be
+  the reason — some people break down caffeine slowly, making them more sensitive
+  to its BP effects.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- sympathetic-overactivity
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Caffeine
+  quote: Recent research suggests that caffeine is only a problem for those with low
+    liver CYP1A2 activity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

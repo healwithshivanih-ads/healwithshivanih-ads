@@ -1,0 +1,24 @@
+slug: every-1pct-ldl-drop-reduces-mi-risk-2pct
+statement: For every 1% drop in LDL-C, risk of heart attack drops by 2%; for every
+  1% increase in HDL-C, risk drops by 3–4%.
+evidence_tier: strong
+rationale: Derived from large-scale statin and epidemiological trials; standard reference
+  in cardiovascular guidelines.
+coaching_translation: Lowering LDL and raising HDL — even modest improvements — meaningfully
+  reduce your risk of a heart attack.
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Elevated Blood Cholesterol Levels
+  quote: For every 1% drop in LDL-C, risk of heart attack drops by 2%. For every 1%
+    increase in HDL-C, risk for heart attack drops 3% to 4%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

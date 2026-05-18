@@ -1,0 +1,42 @@
+slug: potassium
+display_name: Potassium
+category: mineral
+forms_available:
+- tablet
+- powder
+typical_dose_range:
+  tablet:
+    min: 99
+    max: 5000
+    unit: mg
+  powder:
+    min: 99
+    max: 5000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- essential-hypertension
+linked_to_claims:
+- potassium-supplements-reduce-bp
+notes_for_coach: OTC supplements limited to 99 mg/dose by FDA. Salt substitutes (NoSalt,
+  Nu-Salt) provide ~530 mg/1⁄6 tsp. Therapeutic doses (2.5–5 g/day) require food-based
+  approach or clinician supervision. Contraindicated with digitalis, K-sparing diuretics,
+  ACE inhibitors, and in kidney disease.
+notes_for_client: Potassium works hand-in-hand with sodium — the more you get from
+  fruits and vegetables, the better your blood pressure tends to be. High-dose pills
+  can cause stomach upset; food is always best.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: DASH Diet / K and Na
+  quote: K supplements alone can reduce BP in hypertensives at a dose of 2.5 to 5.0
+    g q.d. of K.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

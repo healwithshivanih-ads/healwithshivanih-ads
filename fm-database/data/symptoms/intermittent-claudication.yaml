@@ -1,0 +1,29 @@
+slug: intermittent-claudication
+display_name: Intermittent Claudication (Leg Cramps with Walking)
+aliases:
+- leg cramps
+- calf pain with exercise
+- peripheral artery pain
+- walking cramps
+category: cardiovascular
+severity: concerning
+description: Cramping pain in the legs — typically calves — that occurs with exercise
+  and resolves with rest; caused by atherosclerotic narrowing of peripheral arteries
+  reducing blood flow to muscles.
+when_to_refer: Refer for vascular assessment if suspected; distinguish from musculoskeletal
+  causes.
+linked_to_topics:
+- atherosclerosis
+linked_to_mechanisms:
+- plaque-progression
+- endothelial-dysfunction
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Diagnostic Summary
+  quote: 'Symptoms and signs depend on arteries involved and degree of obstruction:
+    angina, leg cramps (intermittent claudication), gradual mental deterioration,
+    weakness or dizziness.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

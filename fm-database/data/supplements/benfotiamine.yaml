@@ -1,0 +1,38 @@
+slug: benfotiamine
+display_name: Benfotiamine (Fat-Soluble Thiamine)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 600
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- diabetic-neuropathy
+- diabetic-nephropathy
+linked_to_claims:
+- benfotiamine-reduces-age-formation
+notes_for_coach: 600 mg benfotiamine + 300 mg ALA shown to outperform benfotiamine
+  alone for reducing hyperglycaemic damage in T1DM. Raises blood thiamine 120–240%
+  vs regular thiamine. Monotherapy for neuropathy results are modest.
+notes_for_client: Benfotiamine is a fat-soluble form of vitamin B1 that penetrates
+  cells more effectively than regular thiamine, helping to reduce sugar-related nerve
+  and kidney damage.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Recommendations for Specific Long-Term Complications / Neuropathy
+  quote: Benfotiamine is a fat-soluble form of thiamine or vitamin B1 that is more
+    effective in raising blood thiamine levels (up to 120% to 240% versus regular
+    thiamine).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

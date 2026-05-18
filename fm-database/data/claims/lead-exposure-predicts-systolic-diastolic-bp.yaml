@@ -1,0 +1,30 @@
+slug: lead-exposure-predicts-systolic-diastolic-bp
+statement: Blood lead is a strong and consistent predictor of both systolic and diastolic
+  blood pressure; chelation with DMSA is recommended to increase lead excretion in
+  hypertensives with elevated lead levels.
+evidence_tier: plausible_emerging
+rationale: Epidemiological association is well-established; DMSA chelation for hypertension
+  is recommended in FM literature but lacks large RCT evidence.
+coaching_translation: If blood pressure is hard to control, heavy metal exposure (especially
+  lead) may be contributing — testing and appropriate chelation can help.
+caveats:
+- DMSA chelation is a clinical intervention requiring medical supervision.
+- Bone (tibial) lead measurement is more informative for cumulative exposure than
+  blood lead alone.
+out_of_scope_notes: Chelation protocol is clinician scope; coach role is to flag elevated
+  lead history and refer.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- heavy-metal-hypertensive-mechanism
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Etiology / Therapeutic Approach
+  quote: Blood Pb is a strong and consistent predictor of both systolic and diastolic
+    BP. Check for Pb (oral dimercaptosuccinic acid [DMSA] challenge best for body
+    load) and if elevated, put on an appropriate chelation protocol.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

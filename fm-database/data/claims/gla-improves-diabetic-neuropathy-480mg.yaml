@@ -1,0 +1,27 @@
+slug: gla-improves-diabetic-neuropathy-480mg
+statement: Gamma-linolenic acid (GLA) at 480 mg/day for 1 year improved 16 neurological
+  parameters in diabetic neuropathy, including conduction velocities, sensation, tendon
+  reflexes, and muscle strength.
+evidence_tier: plausible_emerging
+rationale: Controlled trial (Keen et al. 1993) with standardised neurological endpoints;
+  GLA bypasses impaired delta-6-desaturase conversion in diabetics.
+coaching_translation: GLA from borage or evening primrose oil is a targeted neuropathy
+  supplement — it feeds the fatty acid pathway that diabetes blocks.
+linked_to_topics:
+- diabetic-neuropathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- gamma-linolenic-acid-gla
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Recommendations for Specific Long-Term Complications / Neuropathy
+  quote: GLA at 480 mg/day for 1 year improved 16 parameters, including conduction
+    velocities, hot and cold thresholds, sensation, tendon reflexes, and muscle strength.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

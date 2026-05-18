@@ -1,0 +1,39 @@
+slug: grapeseed-pine-bark-extract
+display_name: Grapeseed / Pine Bark Extract (95% OPCs)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 150
+    max: 300
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- diabetic-retinopathy
+- diabetic-neuropathy
+- type-2-diabetes-mellitus
+linked_to_claims: []
+notes_for_coach: 95% procyanidolic oligomers (OPCs); best for under-50s with retinopathy,
+  hypertension, bruising, poor wound healing. Systemic antioxidant; supports circulation
+  for foot ulcers.
+notes_for_client: Grapeseed or pine bark extract is a powerful antioxidant that supports
+  blood vessel health throughout the body — especially important for eye and circulation
+  complications.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Flavonoids table
+  quote: Grapeseed extract or pine bark extract (95% procyanidolic oligomers) 150-300
+    mg — Systemic antioxidant; best choice for most people younger than 50 years,
+    especially if retinopathy, hypertension, easy bruising, and poor wound healing
+    are present.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

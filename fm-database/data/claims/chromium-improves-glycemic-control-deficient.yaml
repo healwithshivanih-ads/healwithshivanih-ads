@@ -1,0 +1,29 @@
+slug: chromium-improves-glycemic-control-deficient
+statement: Chromium supplementation (200–400 mcg/day) decreases fasting glucose, improves
+  glucose tolerance, lowers insulin, and increases HDL — but only in individuals who
+  are chromium deficient.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs (Anderson 1997 et al.) support glycaemic effects in chromium-deficient
+  populations; effects absent in replete individuals. Pizzorno recommends Cr polynicotinate
+  or picolinate forms.
+coaching_translation: Chromium is most useful when the diet is high in refined carbs
+  and exercise is low — both situations deplete chromium.
+caveats:
+- Efficacy conditional on deficiency status.
+- Cr picolinate + biotin combination may provide additional benefit.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+linked_to_supplements:
+- chromium-picolinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Chromium
+  quote: Supplementing Cr decreases fasting glucose, improves glucose tolerance, lowers
+    insulin, decreases total cholesterol and triglycerides, and increases HDL.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

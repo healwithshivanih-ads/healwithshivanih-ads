@@ -1,0 +1,35 @@
+slug: ldl-receptor-downregulation
+display_name: LDL Receptor Downregulation
+aliases:
+- LDL receptor defect
+- hepatic LDL clearance impairment
+- familial hypercholesterolemia mechanism
+category: metabolic
+summary: Defective or downregulated hepatic LDL-C receptors (from genetic mutations,
+  saturated fat diet, aging, or hyperglycemia-driven glycosylation) impair LDL-C clearance,
+  elevating circulating LDL-C.
+upstream_drivers:
+- high-saturated-fat-diet
+- hyperglycemia
+- aging
+- genetic-defect
+downstream_effects:
+- elevated-ldl-c
+- ldl-oxidation
+related_mechanisms:
+- ldl-oxidation
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Inherited Elevations of Cholesterol and Triglycerides
+  quote: 'Problem: defect in receptor protein for LDL-C in the liver. Normally, the
+    liver LDL-C receptor removes cholesterol from the blood by facilitating binding
+    and absorption of LDL-C by the liver cell. In FH, defective LDL-C receptors fail
+    to send that message.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

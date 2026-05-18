@@ -1,0 +1,27 @@
+slug: fenugreek-reduces-fasting-glucose-t1dm-t2dm
+statement: Fenugreek seed powder (50 g twice daily in T1DM) reduces fasting glucose,
+  improves glucose tolerance with 54% reduction in 24-hour urinary glucose, and significantly
+  reduces LDL, VLDL, and triglycerides.
+evidence_tier: plausible_emerging
+rationale: Small RCTs (Sharma 1990; Gupta 2001) in both T1DM and T2DM; active compounds
+  include soluble fibre, trigonelline, and 4-hydroxyisoleucine.
+coaching_translation: Fenugreek acts as a triple threat — fibre, insulin sensitiser,
+  and lipid lowerer — making it a strong Level 2 add-on for both T1 and T2 diabetes.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- fenugreek-extract
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Fenugreek seeds
+  quote: Defatted seed powder at 50 g b.i.d. in T1DM reduces fasting glucose and improves
+    glucose tolerance, with 54% reduction in 24-hour urinary glucose excretion and
+    significant reductions in LDL, VLDL, and triglycerides.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

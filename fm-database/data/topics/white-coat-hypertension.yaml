@@ -1,0 +1,30 @@
+slug: white-coat-hypertension
+display_name: White Coat Hypertension
+aliases:
+- office hypertension
+- white coat effect
+summary: Persistent elevation of BP only in clinical settings, affecting 20–45% of
+  diagnosed hypertensives. Not benign — linked to higher mortality and twice the risk
+  of sustained hypertension. Confirmed by ambulatory BP monitoring; drug treatment
+  not indicated but lifestyle modification is.
+related_topics:
+- essential-hypertension
+- prehypertension
+key_mechanisms:
+- hpa-axis-dysregulation
+- sympathetic-overactivity
+coaching_scope_notes: Treat like essential hypertension with stress-reduction, lifestyle,
+  and dietary protocols. Follow up with semiannual ambulatory BP monitoring.
+evidence_tier: strong
+common_symptoms: []
+red_flags: []
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: It is not an innocent phenomenon because it is linked to higher mortality
+    and twice the risk of developing sustained hypertension as normotensives.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

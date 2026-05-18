@@ -1,0 +1,27 @@
+slug: omega-3-dha-reduces-24hr-ambulatory-bp
+statement: In a double-blind trial, only DHA (not EPA) at 4 g/day reduced 24-hour
+  and daytime ambulatory blood pressure; one tablespoon of flaxseed oil daily also
+  reduces systolic and diastolic BP by up to 9 mm Hg.
+evidence_tier: plausible_emerging
+rationale: Supported by a double-blind trial cited in the text and consistent with
+  broader meta-analyses on omega-3 and BP. DHA specificity is a notable finding not
+  yet universally replicated.
+coaching_translation: Fish oil (especially DHA-rich formulas) and flaxseed oil can
+  noticeably lower blood pressure — around 5–9 mm Hg.
+linked_to_topics:
+- essential-hypertension
+linked_to_supplements:
+- fish-oil
+- flaxseed-oil
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Omega-3 oils
+  quote: In one double-blind trial comparing 4 g q.d. of purified EPA, DHA, or olive
+    oil (placebo), only DHA reduced 24-hour and daytime ambulatory BP.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: coq10-deficient-39-percent-hypertensives
+statement: CoQ10 is deficient in 39% of hypertensive patients; supplementation at
+  ~225 mg/day may reduce systolic BP by 11–17 mm Hg and diastolic by 8–10 mm Hg after
+  4–12 weeks, with many patients able to reduce antihypertensive medications.
+evidence_tier: plausible_emerging
+rationale: Evidence exists but most studies are poorly designed or confounded by concurrent
+  drug use; the metabolic correction hypothesis is mechanistically credible.
+coaching_translation: CoQ10 is often low in people with high blood pressure — supplementing
+  over 4–12 weeks may allow some people to reduce their medications (with medical
+  supervision).
+caveats:
+- Most CoQ10 studies in hypertension have methodological limitations.
+- Reduction of antihypertensive medications must be supervised by a prescribing clinician.
+out_of_scope_notes: Drug tapering guidance is strictly clinician scope.
+linked_to_topics:
+- essential-hypertension
+linked_to_supplements:
+- coenzyme-q10
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / CoQ10
+  quote: CoQ10 is deficient in 39% of hypertensive patients. Decreases in systolic
+    BP range from 11 to 17 mm Hg; in diastolic BP from 8 to 10 mm Hg. Many patients
+    were able to cease taking at least one antihypertensive drug.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

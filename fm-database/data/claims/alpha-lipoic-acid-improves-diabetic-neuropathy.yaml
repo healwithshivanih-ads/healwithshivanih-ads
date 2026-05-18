@@ -1,0 +1,30 @@
+slug: alpha-lipoic-acid-improves-diabetic-neuropathy
+statement: Alpha-lipoic acid (300–600 mg/day) is approved in Germany for diabetic
+  neuropathy; it improves blood flow to peripheral nerves, stimulates nerve fibre
+  regeneration, and increases insulin sensitivity.
+evidence_tier: strong
+rationale: ALADIN I/II/III and SYDNEY trials demonstrate significant reduction in
+  neuropathic symptoms. Drug-approved status in Germany reflects regulatory-level
+  evidence.
+coaching_translation: Alpha-lipoic acid is one of the most evidence-based supplements
+  for nerve protection in diabetes — a foundation supplement for anyone with neuropathy
+  signs.
+linked_to_topics:
+- diabetic-neuropathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- alpha-lipoic-acid
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Alpha-lipoic acid
+  quote: 'It is an approved drug in Germany for diabetic neuropathy. Dose: 300 to
+    600 mg q.d. It improves glucose metabolism, improves blood flow to peripheral
+    nerves, stimulates regeneration of nerve fibers, and increases insulin sensitivity.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

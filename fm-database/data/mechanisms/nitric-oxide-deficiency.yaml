@@ -1,0 +1,31 @@
+slug: nitric-oxide-deficiency
+display_name: Nitric Oxide Deficiency
+aliases:
+- impaired NO production
+- reduced NO bioavailability
+category: signaling
+summary: Inhibition of nitric oxide production or availability impairs vasodilation,
+  promotes endothelial dysfunction, and facilitates lipoprotein adhesion and platelet
+  aggregation, accelerating atherogenesis.
+upstream_drivers:
+- oxidative-stress
+- insulin-resistance
+- l-arginine-deficiency
+downstream_effects:
+- endothelial-dysfunction
+- platelet-aggregation
+- hypertension
+related_mechanisms:
+- endothelial-dysfunction
+linked_to_topics:
+- atherosclerosis
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Process of Atherosclerosis
+  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer
+    as a result of … inhibition of either nitric oxide production or availability.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

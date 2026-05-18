@@ -1,0 +1,41 @@
+slug: hawthorn-extract
+display_name: Hawthorn Extract (Crataegus spp.)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 250
+    unit: mg
+  tablet:
+    min: 100
+    max: 250
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- essential-hypertension
+linked_to_claims:
+- hawthorn-mild-bp-lowering-2-4-weeks
+notes_for_coach: 'Standardise to 10% procyanidins or 1.8% vitexin-4''-rhamnoside.
+  Dose: 100–250 mg t.i.d. Also improves general heart function. Effects require 2–4
+  weeks minimum. Best used as adjunct to other interventions.'
+notes_for_client: Hawthorn is a gentle herb for the heart and blood pressure — it
+  works gradually, so give it at least a month.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Crataegus
+  quote: Extracts of hawthorn berries and flowering tops lower BP and improve heart
+    function. BP-lowering effect of hawthorn is quite mild and requires at least 2
+    to 4 weeks before effect is apparent.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

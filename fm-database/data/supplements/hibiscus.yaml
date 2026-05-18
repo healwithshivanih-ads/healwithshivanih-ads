@@ -1,0 +1,42 @@
+slug: hibiscus
+display_name: Hibiscus (Hibiscus sabdariffa)
+category: herb
+forms_available:
+- liquid
+- capsule
+- powder
+typical_dose_range:
+  liquid:
+    min: 720
+    max: 720
+    unit: ml
+  capsule:
+    min: 250
+    max: 250
+    unit: mg
+timing_options:
+- morning
+- mid_morning
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- essential-hypertension
+linked_to_claims:
+- hibiscus-extract-comparable-to-captopril
+notes_for_coach: 'Protocol: three 240 mL cups brewed tea daily OR extract providing
+  10–20 mg anthocyanidins daily. Comparable to captopril 50 mg/day in double-blind
+  RCT. Inhibits plasma ACE activity. Active compounds are anthocyanidin glycosides.'
+notes_for_client: Hibiscus tea (3 cups/day) or a standardised extract is one of the
+  most powerful botanical options for blood pressure — studies show results comparable
+  to a common prescription drug.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Hibiscus sabdariffa
+  quote: Three 240-mL servings of brewed tea daily for 6 weeks lowered systolic BP
+    by 7.2 mm Hg.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

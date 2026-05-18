@@ -1,0 +1,37 @@
+slug: american-ginseng-extract
+display_name: American Ginseng Root (Panax quinquefolius)
+category: herb
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 3000
+    max: 9000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- type-2-diabetes-mellitus
+linked_to_claims:
+- american-ginseng-most-evidence-based-herb-t2dm
+notes_for_coach: 3 g whole powdered root before each meal. Most evidence-based herbal
+  therapy for T2DM. Monitor for interaction with warfarin and stimulant effects. Standardised
+  whole root powder preferred over extracts for studied outcomes.
+notes_for_client: American ginseng root taken before meals is the best-studied herbal
+  option for reducing blood sugar spikes after eating.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Panax quinquefolius
+  quote: American ginseng is the most evidence-based herbal therapy for T2DM. Whole
+    powdered American ginseng root at 3 g before each meal reduces postprandial glucose
+    in T2DM.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,5 +1,5 @@
 slug: poor-wound-healing
-display_name: Poor Wound Healing & Frequent Infections
+display_name: Poor Wound Healing
 aliases:
 - loss of taste
 - poor immunity
@@ -16,30 +16,35 @@ aliases:
 - poor wound healing
 - wounds heal slowly
 - cuts take long to heal
-category: constitutional
-severity: common
-description: Poor wound healing, frequent infections, white nail spots, and loss of
-  taste or smell linked to zinc deficiency; poor wound healing and bleeding gums linked
-  to vitamin C deficiency.
+- slow wound healing
+- wounds won't heal
+- impaired healing
+category: skin
+severity: concerning
+description: Impaired tissue repair due to microvascular damage, functional vitamin
+  C deficiency, zinc depletion, and immune dysfunction in diabetes. Can progress to
+  foot ulcers and gangrene.
 linked_to_topics:
 - hpa-axis-dysregulation
 - nutrition-deficiency
 - chronic-inflammation
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-neuropathy
 linked_to_mechanisms:
 - stress-induced-immune-suppression
 - hpa-axis-dysregulation
 - oxidative-stress
 - gut-barrier-and-nutrient-absorption
-when_to_refer: If infections are severe, recurrent, or not improving with dietary
-  support.
+- microvascular-damage
+- nutrient-deficiency
+- sorbitol-accumulation
+when_to_refer: Any non-healing wound >2 weeks or foot ulcer — refer to wound care
+  specialist or podiatrist.
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
   quote: Poor wound healing, Easy bruising, Slow healing of cuts.
-- id: vitaone-fm-nutrition-cheatsheets
-  location: Symptoms Discussed
-  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
-    or smell - Linked to zinc deficiency.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
   quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
@@ -51,7 +56,11 @@ sources:
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
   quote: Slow wound healing, non-responsive anemia.
-version: 3
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnostic Summary
+  quote: 'Presenting symptoms: fatigue, blurred vision, poor wound healing, periodontal
+    disease, frequent infections'
+version: 4
 status: active
-updated_at: '2026-05-06'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

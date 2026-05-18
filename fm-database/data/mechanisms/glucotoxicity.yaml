@@ -1,0 +1,38 @@
+slug: glucotoxicity
+display_name: Glucotoxicity
+aliases:
+- glucose toxicity
+- hyperglycaemia-mediated tissue damage
+category: metabolic
+summary: Chronic elevation of blood glucose directly damages tissues through protein
+  glycosylation (AGE formation), intracellular sorbitol accumulation, and oxidative
+  stress, impairing enzyme function, vascular integrity, and nerve conduction.
+upstream_drivers:
+- hyperglycaemia
+- insulin-deficiency
+- insulin-resistance
+downstream_effects:
+- protein-glycosylation
+- sorbitol-accumulation
+- oxidative-damage
+- microvascular-damage
+related_mechanisms:
+- protein-glycosylation
+- sorbitol-accumulation
+- oxidative-damage
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-neuropathy
+- diabetic-nephropathy
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Long-Term Complications
+  quote: When glucose is elevated in uncontrolled DM, unregulated glucose floods those
+    cells and causes increased glycation and buildup of sorbitol.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

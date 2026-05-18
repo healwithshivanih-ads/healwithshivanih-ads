@@ -1,0 +1,27 @@
+slug: omega-3-index-8pct-greatest-cvd-protection
+statement: An omega-3 index of ≥8% (EPA+DHA as % of red blood cell fatty acids) is
+  linked to greatest cardiovascular protection; an index of 4% is linked to the least.
+  Combined 1000 mg EPA+DHA daily achieves the 8% target.
+evidence_tier: strong
+rationale: Harris et al. omega-3 index research; well-replicated in cardiovascular
+  literature.
+coaching_translation: Your omega-3 blood level — not just how much fish you eat —
+  is a key heart-protection marker. Aim for ≥8%.
+caveats:
+- Omega-3 index testing not yet universally available
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- fish-oil-epa-dha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Olive Oil and Omega-3 Fatty Acids
+  quote: An omega-3 index of 8% is linked to greatest protection; index of 4% is linked
+    to the least. Combined 1000 mg of EPA and DHA daily achieves or surpasses the
+    8% target of omega-3 index.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

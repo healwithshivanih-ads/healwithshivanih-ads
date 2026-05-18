@@ -1,0 +1,32 @@
+slug: heavy-metal-hypertensive-mechanism
+display_name: Heavy Metal–Induced Hypertension
+aliases:
+- lead toxicity hypertension
+- Pb-induced hypertension
+category: other
+summary: Heavy metals — particularly lead (Pb), mercury, cadmium, and arsenic — target
+  the kidneys as end organs, impairing renal regulation of blood pressure. Blood lead
+  is a strong, consistent predictor of both systolic and diastolic BP. Tibial (bone)
+  lead is also associated with hypertension status.
+upstream_drivers:
+- environmental-lead-exposure
+- soft-water-supply
+- occupational-exposure
+downstream_effects:
+- renal-dysfunction
+- elevated-blood-pressure
+related_mechanisms:
+- endothelial-no-insufficiency
+- sodium-volume-retention
+linked_to_topics:
+- essential-hypertension
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Etiology
+  quote: Blood Pb is a strong and consistent predictor of both systolic and diastolic
+    BP. Tibial Pb is also associated with hypertension status.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

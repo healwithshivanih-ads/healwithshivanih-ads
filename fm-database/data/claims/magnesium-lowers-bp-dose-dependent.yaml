@@ -1,0 +1,27 @@
+slug: magnesium-lowers-bp-dose-dependent
+statement: Magnesium lowers blood pressure in a dose-dependent manner — a drop of
+  4.3 mm Hg systolic and 2.3 mm Hg diastolic occurs for each 10 mmol/day increase
+  in dose — by activating the Na⁺-K⁺ membrane pump.
+evidence_tier: plausible_emerging
+rationale: Mechanism is well established; multiple trials support a dose-dependent
+  effect, though trial heterogeneity and modest effect sizes place this below 'strong'.
+coaching_translation: Magnesium helps relax blood vessels and lower blood pressure
+  — the more you get (up to a point), the greater the benefit.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- vascular-smooth-muscle-dysregulation
+- sodium-volume-retention
+linked_to_supplements:
+- magnesium
+out_of_scope_notes: ''
+caveats: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Mg
+  quote: Mg lowers BP in a dose-dependent way; a drop of 4.3 mm Hg systolic and 2.3
+    mm Hg diastolic occurs for each 10-mmol/day increase in Mg dose.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

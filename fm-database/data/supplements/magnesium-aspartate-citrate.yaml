@@ -1,0 +1,40 @@
+slug: magnesium-aspartate-citrate
+display_name: Magnesium (Aspartate or Citrate)
+category: mineral
+forms_available:
+- capsule
+- powder
+- tablet
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 500
+    unit: mg
+timing_options:
+- with_dinner
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-neuropathy
+linked_to_claims:
+- magnesium-deficiency-common-in-diabetics
+notes_for_coach: 'Deficiency is most severe in those with retinopathy. Co-supplement
+  at least 25 mg B6/day and vitamin E to ensure cellular magnesium entry. Aspartate
+  or citrate forms preferred. Dietary sources: tofu, legumes, seeds, nuts, green leafy
+  veg.'
+notes_for_client: Magnesium is depleted in diabetes and is essential for blood sugar
+  control, nerve health, and eye protection. Citrate or aspartate forms are easiest
+  on the stomach.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Magnesium
+  quote: Mg (at 400 to 500 mg q.d.) improves insulin response and action, glucose
+    tolerance, and fluidity of RBC membranes.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

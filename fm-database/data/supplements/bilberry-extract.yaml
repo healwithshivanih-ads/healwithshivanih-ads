@@ -1,0 +1,38 @@
+slug: bilberry-extract
+display_name: Bilberry Extract (25% Anthocyanidins)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 160
+    max: 320
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- diabetic-retinopathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_claims:
+- bilberry-retinopathy-cataracts
+notes_for_coach: Best flavonoid choice for retinopathy or cataracts. Inhibits aldose
+  reductase and improves ocular microcirculation. 25% anthocyanidin standardisation
+  required.
+notes_for_client: Bilberry is the top choice for protecting eyesight in diabetes —
+  its anthocyanidins target the exact mechanism that damages retinal blood vessels.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Flavonoids table
+  quote: Bilberry extract (25% anthocyanidins) 160-320 mg — Best choice in diabetic
+    retinopathy or cataracts.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

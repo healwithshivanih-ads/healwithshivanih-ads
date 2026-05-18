@@ -1,0 +1,27 @@
+slug: anti-ace-peptides-bonito-reduce-bp
+statement: Bonito anti-ACE peptides (1500 mg/day) and sardine dipeptide reduce systolic
+  pressure by ≥10 mm Hg and diastolic by 7 mm Hg in borderline and mild hypertensives
+  without lowering BP in normotensive individuals.
+evidence_tier: plausible_emerging
+rationale: Mechanism of ACE inhibition via peptide decoy is plausible; clinical data
+  cited are supportive but from a limited evidence base.
+coaching_translation: Natural peptides from fish like bonito act like mild ACE inhibitors
+  to lower blood pressure, without side effects in people with normal BP.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- raas-activation
+linked_to_supplements:
+- anti-ace-peptides-bonito
+out_of_scope_notes: ''
+caveats: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Anti-ACE peptides
+  quote: Bonito peptides and sardine dipeptide reduce systolic pressure by 10 or more
+    mm Hg and diastolic by 7 mm Hg in borderline and mild hypertensives. Greater reductions
+    occur in people with higher initial BP.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

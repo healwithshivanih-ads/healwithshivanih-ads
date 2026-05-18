@@ -1,0 +1,26 @@
+slug: weight-loss-most-important-htn-goal
+statement: Achieving ideal body weight is the most important therapeutic goal for
+  most patients with any form of hypertension; obesity is the major dietary cause.
+evidence_tier: strong
+rationale: Obesity–hypertension link is one of the best-established in cardiovascular
+  medicine, with weight loss demonstrably reducing or eliminating hypertension across
+  multiple trials.
+coaching_translation: Reaching a healthy body weight is the single most impactful
+  dietary step for high blood pressure.
+linked_to_topics:
+- essential-hypertension
+- prehypertension
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Lifestyle and Dietary Factors / Diet
+  quote: Obesity is the major dietary cause of hypertension. Achieving ideal body
+    weight is the most important therapeutic goal for most patients with any form
+    of hypertension.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

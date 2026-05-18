@@ -1,0 +1,27 @@
+slug: angina
+display_name: Angina (Chest Pain)
+aliases:
+- chest pressure
+- stable angina
+- exertional chest pain
+category: cardiovascular
+severity: red_flag
+description: Chest pain or pressure caused by reduced blood flow to the heart muscle
+  due to coronary artery stenosis from atherosclerotic plaque.
+when_to_refer: Any new, worsening, or rest angina requires immediate medical evaluation.
+  Refer urgently.
+linked_to_topics:
+- atherosclerosis
+linked_to_mechanisms:
+- plaque-progression
+- endothelial-dysfunction
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Diagnostic Summary
+  quote: 'Symptoms and signs depend on arteries involved and degree of obstruction:
+    angina, leg cramps (intermittent claudication), gradual mental deterioration,
+    weakness or dizziness.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

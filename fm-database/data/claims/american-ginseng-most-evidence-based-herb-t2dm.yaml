@@ -1,0 +1,28 @@
+slug: american-ginseng-most-evidence-based-herb-t2dm
+statement: American ginseng (Panax quinquefolius, 3 g before each meal) is described
+  as the most evidence-based herbal therapy for T2DM, reducing postprandial glucose.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs by Vuksan et al. show consistent postprandial glucose reduction
+  with standardised root powder. Pizzorno designates it 'most evidence-based herbal
+  therapy for T2DM'.
+coaching_translation: Taking American ginseng before meals is one of the best-studied
+  herbal strategies for blunting after-meal blood sugar rises.
+caveats:
+- Effects vary by preparation; whole powdered root at standardised 3 g dose per meal
+  is the studied form.
+linked_to_topics:
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- american-ginseng-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Panax quinquefolius
+  quote: American ginseng is the most evidence-based herbal therapy for T2DM. Whole
+    powdered American ginseng root at 3 g before each meal reduces postprandial glucose
+    in T2DM.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

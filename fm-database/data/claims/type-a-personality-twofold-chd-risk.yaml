@@ -1,0 +1,25 @@
+slug: type-a-personality-twofold-chd-risk
+statement: Type A behavior (time urgency, competitiveness, impatience, aggressiveness)
+  is associated with a twofold increase in CHD risk, mediated by increased cortisol
+  secretion, endothelial dysfunction, hypertension, and elevated CRP.
+evidence_tier: strong
+rationale: Documented in large prospective studies (Framingham, Western Collaborative
+  Group Study); mechanisms include HPA-axis activation and inflammatory pathways.
+coaching_translation: How you manage stress and anger matters as much for heart health
+  as what you eat — chronic anger and hostility directly raise inflammation and clotting
+  risk.
+linked_to_topics:
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: '"Type A" Personality'
+  quote: 'Type A behavior: extreme sense of time urgency, competitiveness, impatience,
+    and aggressiveness. Twofold increase in CHD risk.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

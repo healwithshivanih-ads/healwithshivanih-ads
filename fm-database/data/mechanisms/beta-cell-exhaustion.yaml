@@ -1,0 +1,37 @@
+slug: beta-cell-exhaustion
+display_name: Beta-Cell Exhaustion / Burnout
+aliases:
+- beta-cell dysfunction
+- pancreatic beta-cell failure
+- beta-cell burnout
+category: endocrine
+summary: Progressive decline in pancreatic beta-cell insulin secretory capacity secondary
+  to chronic hyperinsulinaemia demand, glucotoxicity, lipotoxicity, and autoimmune
+  or oxidative injury, culminating in frank insulin deficiency.
+upstream_drivers:
+- insulin-resistance
+- glucotoxicity
+- lipotoxicity
+- autoimmune-beta-cell-destruction
+- oxidative-damage
+downstream_effects:
+- insulin-deficiency
+- hyperglycaemia
+- need-for-exogenous-insulin
+related_mechanisms:
+- insulin-resistance
+- glucotoxicity
+- autoimmune-beta-cell-destruction
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Risk Factors for Type 2 Diabetes Mellitus
+  quote: Increasing insulin resistance leads to compensatory increased insulin secretion
+    to the point of beta-cell exhaustion or burnout.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

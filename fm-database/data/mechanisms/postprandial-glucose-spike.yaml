@@ -1,0 +1,38 @@
+slug: postprandial-glucose-spike
+display_name: Postprandial Glucose Spike (High Glycaemic Load)
+aliases:
+- postprandial hyperglycaemia
+- glycaemic load effect
+- rapid glucose absorption
+category: metabolic
+summary: High-glycaemic-load foods cause rapid glucose absorption, producing acute
+  postprandial glucose and insulin surges. Repeated spikes accelerate beta-cell demand,
+  increase glycation, and raise cardiovascular risk through lowered HDL and raised
+  triglycerides.
+upstream_drivers:
+- high-gl-diet
+- low-dietary-fibre
+- alpha-glucosidase-activity
+downstream_effects:
+- compensatory-hyperinsulinaemia
+- beta-cell-exhaustion
+- dyslipidaemia
+- protein-glycosylation
+related_mechanisms:
+- insulin-resistance
+- glucotoxicity
+- beta-cell-exhaustion
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes
+  quote: GL has a stronger link in predicting DM than glycemic index. A high-GL diet
+    increases risk for heart disease because of lower high-density lipoprotein (HDL)
+    and higher triglyceride levels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

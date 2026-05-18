@@ -1,0 +1,24 @@
+slug: sodium-restriction-below-2400mg-lowers-bp
+statement: Sodium intake below 2400 mg per day can significantly and quickly lower
+  blood pressure; salt intake directly correlates with cardiovascular risk.
+evidence_tier: strong
+rationale: Consistent with decades of RCT and meta-analytic evidence; sodium restriction
+  is a first-line dietary intervention endorsed by all major cardiology guidelines.
+coaching_translation: Cutting salt to less than 2400 mg a day (about 1 teaspoon) is
+  one of the fastest dietary levers for lowering blood pressure.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- sodium-volume-retention
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: DASH Diet / K and Na
+  quote: Na intake less than 2400 mg q.d. can significantly and quickly lower BP.
+    Salt intake directly correlates with cardiovascular risk.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

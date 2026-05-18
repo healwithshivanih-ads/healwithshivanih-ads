@@ -8,10 +8,9 @@ aliases:
 - cardiometabolic syndrome
 - metabolic dysfunction
 - insulin resistance syndrome
-summary: Metabolic syndrome is characterized by central obesity, elevated triglycerides,
-  low HDL, elevated fasting blood sugar, and hypertension. It drives small dense LDL
-  formation, inflammation, and cardiovascular risk. Highly responsive to lifestyle
-  intervention.
+summary: 'Cluster of ≥3 of: central obesity, atherogenic dyslipidemia, hypertension,
+  insulin resistance/glucose intolerance, prothrombotic state, and proinflammatory
+  state; strongly linked to elevated CRP and atherosclerosis risk.'
 common_symptoms:
 - unexplained-weight-gain
 - lethargy
@@ -27,6 +26,10 @@ common_symptoms:
 - elevated-hscrp
 - abdominal-weight-gain
 - elevated-fasting-blood-sugar
+- central-obesity
+- fatigue
+- brain-fog
+- high-blood-pressure
 red_flags:
 - severe-obesity
 - uncontrolled-hypertension
@@ -38,6 +41,8 @@ red_flags:
 - very-high-crp
 - triglycerides-above-500
 - hba1c-elevation
+- fasting glucose >126 mg/dL suggesting overt T2D
+- BP ≥140/90 requiring medication
 related_topics:
 - low-carb-diet
 - insulin-resistance
@@ -49,6 +54,7 @@ related_topics:
 - bmi-interpretation
 - dyslipidemia
 - cardiovascular-disease-prevention
+- atherosclerosis
 key_mechanisms:
 - insulin-resistance
 - metabolic-flexibility
@@ -56,9 +62,10 @@ key_mechanisms:
 - chronic-inflammation
 - small-dense-ldl-atherogenesis
 - central-adiposity-inflammation
-coaching_scope_notes: Coaches can address diet quality, sugar reduction, exercise,
-  sleep, and weight management—all directly modifiable lifestyle drivers of metabolic
-  syndrome.
+- systemic-inflammation
+- prothrombotic-state
+coaching_scope_notes: Coach supports dietary and lifestyle modifications targeting
+  all five components. Clinician referral required for BP and glucose management.
 evidence_tier: strong
 clinician_scope_notes: Diagnosis requires clinical lab values and waist circumference
   thresholds adjusted by ethnicity. Pharmaceutical management (metformin, statins)
@@ -80,7 +87,15 @@ sources:
   location: Metabolic Function and Risk Factors
   quote: We frequently see elevated triglycerides, elevated fasting blood sugar, hemoglobin
     A1C... high triglycerides in metabolic syndrome. It's part of metabolic syndrome.
-version: 4
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Other Risk Factors
+  quote: 'Diagnostic criteria for metabolic syndrome include at least three of the
+    following metabolic risk factors in one person: Central obesity (waist-to-hip
+    ratio >1 for men; >0.8 for women)—Atherogenic dyslipidemia (TGs >150 mg/dL; low
+    HDL-C [<40 mg/dL in men and <50 mg/dL in women])—Hypertension (130/85 mm Hg)—Insulin
+    resistance or glucose intolerance (fasting blood sugar >101 mg/dL)—Prothrombotic
+    state—Proinflammatory state.'
+version: 5
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

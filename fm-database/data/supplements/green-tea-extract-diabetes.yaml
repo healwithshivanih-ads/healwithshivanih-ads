@@ -1,0 +1,37 @@
+slug: green-tea-extract-diabetes
+display_name: Green Tea Extract (Epicatechin / Polyphenols)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 150
+    max: 300
+    unit: mg
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_claims: []
+notes_for_coach: 'Decaffeinated, 80% polyphenol content preferred. Foundation supplement
+  for recently diagnosed T1DM due to antiviral (rotavirus/enterovirus) and epicatechin
+  beta-cell protective effects. Adults: 150–300 mg/day. Children <6y: 50–150 mg; 6–12y:
+  100–200 mg.'
+notes_for_client: Green tea extract provides protective plant compounds that may help
+  preserve insulin-producing cells, especially in early-stage type 1 diabetes.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Early Treatment and Possible Reversal of Type 1 Diabetes Mellitus
+  quote: Green tea polyphenols have antiviral activity against rotavirus and enterovirus,
+    suspected of causing T1DM.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

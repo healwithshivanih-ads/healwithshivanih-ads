@@ -1,0 +1,24 @@
+slug: mediterranean-diet-reduces-inflammation-markers
+statement: The Mediterranean diet alone reduces CRP by 20%, interleukin-6 by 17%,
+  homocysteine by 15%, and fibrinogen by 6%.
+evidence_tier: strong
+rationale: Prospective dietary intervention studies; Mediterranean diet has robust
+  evidence base for anti-inflammatory effects.
+coaching_translation: Eating a Mediterranean-style diet lowers multiple inflammation
+  markers linked to heart disease — not just cholesterol.
+linked_to_topics:
+- atherosclerosis
+- metabolic-syndrome
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Fibrinogen
+  quote: 'Mediterranean diet alone reduces fibrinogen and other markers of inflammation:
+    20% lower CRP, 17% lower interleukin-6, 15% lower homocysteine, and 6% lower fibrinogen.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

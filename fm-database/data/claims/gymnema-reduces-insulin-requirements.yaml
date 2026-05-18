@@ -1,0 +1,30 @@
+slug: gymnema-reduces-insulin-requirements
+statement: Gymnema sylvestre extract (200 mg, 24% gymnemic acid, twice daily) reduces
+  insulin requirements in T1DM and improves glycaemic control and reduces drug needs
+  in T2DM, while also promoting beta-cell regeneration.
+evidence_tier: plausible_emerging
+rationale: Small open-label trials (Shanmugasundaram 1990; Baskaran 1990) support
+  these effects; no large RCTs. Pizzorno recommends monitoring glucose closely.
+coaching_translation: Gymnema sylvestre is a key insulin-sensitising herb — especially
+  useful when blood glucose targets aren't met with diet and lifestyle alone.
+caveats:
+- Diabetics on insulin must monitor blood glucose closely as insulin doses may need
+  reduction.
+- Capsules/tablets do not produce the tongue-applied sweetness-blocking effect.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- gymnema-sylvestre-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Gymnema sylvestre
+  quote: In T1DM, leaf extract reduces insulin requirements and fasting glucose and
+    improves glycemic control. It improves glycemic control in T2DM, reducing hypoglycemic
+    drug needs.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

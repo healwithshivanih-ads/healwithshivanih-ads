@@ -1,0 +1,25 @@
+slug: plaque-instability-greater-risk-than-lumen-narrowing
+statement: Targeting plaque stabilization is clinically more important than simply
+  enlarging the arterial lumen, because plaque rupture rather than progressive stenosis
+  is the primary trigger for MI and stroke.
+evidence_tier: strong
+rationale: Well-established clinical concept; plaque rupture accounts for the majority
+  of acute coronary events.
+coaching_translation: The goal is to stabilize plaques so they don't rupture — not
+  just to widen arteries.
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements: []
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Process of Atherosclerosis
+  quote: Plaque instability poses greater risk for myocardial infarction (MI) or stroke.
+    Targeting plaque stabilization appears to be more clinically important than simply
+    enlarging the lumen.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: b6-reduces-systolic-diastolic-and-norepinephrine
+statement: Vitamin B6 at 5 mg/kg body weight for 4 weeks reduced systolic BP from
+  167 to 153 mm Hg, diastolic from 108 to 98 mm Hg, and lowered serum norepinephrine.
+evidence_tier: plausible_emerging
+rationale: Documented in clinical trials; mechanism likely involves reduction of sympathoadrenal
+  tone via catecholamine metabolism and homocysteine lowering. Limited number of trials.
+coaching_translation: Vitamin B6 may help lower blood pressure partly by calming the
+  nervous system and reducing stress hormones.
+caveats:
+- High-dose B6 (>100 mg/day long-term) can cause peripheral neuropathy — doses should
+  be clinician-supervised.
+out_of_scope_notes: Dosing at 5 mg/kg body weight is a clinical prescription-level
+  dose; coaches should not recommend specific B6 doses without clinician input.
+linked_to_topics:
+- essential-hypertension
+linked_to_mechanisms:
+- sympathetic-overactivity
+linked_to_supplements:
+- vitamin-b6
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Folic acid and vitamin B6
+  quote: B6 oral dosage of 5 mg/kg body weight for 4 weeks reduced systolic and diastolic
+    BP and serum norepinephrine.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

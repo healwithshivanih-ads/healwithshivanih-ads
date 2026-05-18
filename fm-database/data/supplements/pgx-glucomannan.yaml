@@ -1,0 +1,37 @@
+slug: pgx-glucomannan
+display_name: PGX / Glucomannan (Soluble Fibre Blend)
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 2500
+    max: 5000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+linked_to_claims:
+- glucomannan-lowers-postprandial-glucose-20-percent
+notes_for_coach: PGX is glucomannan + alginate + xanthan gum; viscosity 3–5x higher
+  than glucomannan alone. Reduces GI of any food by 15–70%. Must take with 240–360
+  mL water before or with meals. 2500–5000 mg before each meal for T2DM Level 1.
+notes_for_client: PGX or glucomannan fibre taken before meals creates a gel that slows
+  glucose absorption — like a natural speed bump for blood sugar.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Fiber supplements
+  quote: PGX reduces glycemic index of any food or beverage by 15% to 70% and also
+    reduces postprandial blood glucose.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

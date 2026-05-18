@@ -1,0 +1,26 @@
+slug: ginkgo-biloba-enhances-stroke-recovery
+statement: Ginkgo biloba extract (standardized to 24% ginkgo flavon glycosides and
+  6% terpenoids) has been studied for cerebrovascular insufficiency and enhances stroke
+  recovery.
+evidence_tier: plausible_emerging
+rationale: Multiple clinical trials support Ginkgo biloba for cerebrovascular insufficiency;
+  evidence for post-stroke recovery is supportive but not definitive.
+coaching_translation: Standardized Ginkgo biloba may support brain circulation recovery
+  after stroke — most studied for cognitive effects of poor cerebral blood flow.
+caveats:
+- Anti-platelet effect requires caution in patients on anticoagulants; use only standardized
+  extract
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- ginkgo-biloba
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Preventing a Subsequent Stroke
+  quote: G. biloba extract enhances stroke recovery.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

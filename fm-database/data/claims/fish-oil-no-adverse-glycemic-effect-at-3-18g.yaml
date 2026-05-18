@@ -1,0 +1,29 @@
+slug: fish-oil-no-adverse-glycemic-effect-at-3-18g
+statement: Fish oil at doses of 3–18 g/day (18% EPA, 12% DHA) has no adverse effect
+  on glycaemic control in diabetics and is anti-inflammatory, promotes insulin sensitivity,
+  and lowers lipids and blood pressure.
+evidence_tier: strong
+rationale: Meta-analyses (Montori 2000; Hartweg 2008 Cochrane) confirm lipid and blood
+  pressure benefits without glycaemic deterioration in diabetics. Pizzorno recommends
+  pharmaceutical-grade products.
+coaching_translation: Fish oil is safe and beneficial for diabetics at standard doses
+  — it protects the heart and reduces inflammation without affecting blood sugar.
+caveats:
+- Use pharmaceutical-grade products free from mercury, PCBs, and rancidity.
+- Take with meals to avoid fishy aftertaste.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+linked_to_supplements:
+- fish-oil-epa-dha
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Omega-3 fatty acids
+  quote: At doses of 3 to 18 g/day (18% eicosapentaenoic acid [EPA] and 12% docosahexaenoic
+    acid [DHA]), fish oil has no adverse effect on glycemic control.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

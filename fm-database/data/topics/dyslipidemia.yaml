@@ -12,8 +12,12 @@ aliases:
 - high cholesterol natural treatment
 - lipid optimization
 - cholesterol management without statins
-summary: Dyslipidemia encompasses elevated LDL (especially small dense LDL particles), low HDL, elevated triglycerides, and
-  elevated ApoB. Advanced lipid particle testing (LDL-P, ApoB) outperforms calculated LDL-C for cardiovascular risk stratification.
+- elevated blood cholesterol
+- hypertriglyceridemia
+- atherogenic lipid profile
+summary: Abnormal blood lipid levels including elevated TC, LDL-C, VLDL, TGs, or Lp(a),
+  and/or low HDL-C; a major modifiable risk factor for atherosclerosis. Includes familial
+  forms (FH, FCH, FHTG) and secondary causes.
 common_symptoms:
 - lethargy
 - chest-tightness
@@ -22,6 +26,8 @@ common_symptoms:
 - elevated-triglycerides
 - low-hdl
 - no-symptoms-at-rest
+- asymptomatic
+- xanthomas (in severe familial forms)
 red_flags:
 - tg-above-500
 - lpa-very-high-with-family-history-cvd
@@ -31,6 +37,8 @@ red_flags:
 - ldl-greater-than-190
 - triglycerides-above-500
 - familial-hypercholesterolemia
+- TC >300 mg/dL with family history suggesting familial hypercholesterolemia
+- Lp(a) >40 mg/dL with elevated LDL-C
 related_topics:
 - insulin-resistance
 - hypothyroidism
@@ -40,6 +48,7 @@ related_topics:
 - cardiovascular-risk-assessment
 - cardiovascular-disease-prevention
 - familial-hypercholesterolemia
+- atherosclerosis
 key_mechanisms:
 - insulin-resistance
 - chronic-inflammation
@@ -50,28 +59,40 @@ key_mechanisms:
 - small-dense-ldl-atherogenesis
 - apob-atherogenic-particle-burden
 - vldl-to-ldl-cascade
-coaching_scope_notes: Coaches can support dietary changes (Mediterranean diet, sugar reduction, omega-3 rich foods), exercise,
-  and weight management to improve lipid profiles.
-clinician_scope_notes: LDL-P, ApoB, Lp(a), and particle sizing require lab orders and clinical interpretation. Statin and
-  niacin prescribing is clinician scope.
+- ldl-receptor-downregulation
+- ldl-oxidation
+coaching_scope_notes: Coach supports dietary portfolio (soluble fiber, Mediterranean
+  diet, plant sterols, omega-3s), lifestyle, and foundational supplement use. Lab
+  interpretation and medication decisions are clinician scope.
+clinician_scope_notes: Rule out secondary causes (hypothyroidism, diabetes). Monitor
+  TC, LDL-C, HDL-C, TGs, Lp(a), and liver enzymes when using niacin.
 evidence_tier: strong
 sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Sections 1 & 2
-  quote: Dyslipidemia = Imbalance in lipid fractions ↑LDL, ↑TG, ↓HDL, ↑ApoB, ↑Lp(a). Root cause = Metabolic dysfunction, chronic
-    inflammation, oxidative stress, gut dysbiosis.
+  quote: Dyslipidemia = Imbalance in lipid fractions ↑LDL, ↑TG, ↓HDL, ↑ApoB, ↑Lp(a).
+    Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress, gut
+    dysbiosis.
 - id: vitaone-cvs-risk-assessment
   location: Understand Blood Lipid (Slide 6)
   quote: VLDL is synthesized in the liver, from excess dietary carbohydrates.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Lipid Panel and Risk Markers
-  quote: LDL particle number, even better as you'll see in a minute. ApoB, what is the HDL particle number? And then you have
-    to decide, based on the guidelines, of course, what are my treatment goals?
+  quote: LDL particle number, even better as you'll see in a minute. ApoB, what is
+    the HDL particle number? And then you have to decide, based on the guidelines,
+    of course, what are my treatment goals?
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Lifestyle intervention for dyslipidemia section
-  quote: What you will do, you will start working on insulin resistance. You put down the carb, you increase the good fat.
-    Low carb diet, plus good protein, good fat, increase the good fat.
-version: 3
+  quote: What you will do, you will start working on insulin resistance. You put down
+    the carb, you increase the good fat. Low carb diet, plus good protein, good fat,
+    increase the good fat.
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Elevated Blood Cholesterol Levels
+  quote: 'Elevated cholesterol greatly increases risk of death from CVD. Recommendations:
+    total cholesterol (TC) below 200 mg/dL; LDL-C below 130 mg/dL; high-density–lipoprotein
+    cholesterol (HDL-C) above 40 mg/dL in men and 50 mg/dL in women; triglycerides
+    (TGs) below 150 mg/dL.'
+version: 4
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

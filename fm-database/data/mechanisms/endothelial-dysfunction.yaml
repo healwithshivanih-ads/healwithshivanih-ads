@@ -12,41 +12,63 @@ aliases:
 - leaky endothelium
 - endothelial damage
 - endothelial permeability
+- vascular endothelial injury
+- GAG layer disruption
 category: structural
-summary: Damage or dysfunction of the arterial endothelial lining — triggered by oxidative stress, hypertension, or systemic
-  inflammation — creates gaps through which small dense LDL particles can penetrate. This is the critical initiating step
-  in atherosclerosis.
+summary: Damage or dysfunction of the arterial intimal endothelium, initiated by weakening
+  of the GAG layer from insulin resistance, reactive oxygen/nitrogen species, heavy
+  metal toxicity, hyperhomocysteinemia, and inhibition of nitric oxide production;
+  the initiating event in atherogenesis.
 upstream_drivers:
 - oxidative-stress
 - hypertension
 - systemic-inflammation
 - elevated-homocysteine
+- insulin-resistance
+- hyperhomocysteinemia
+- heavy-metal-toxicity
+- smoking
 downstream_effects:
 - ldl-oxidation
 - macrophage-infiltration
 - foam-cell-formation
 - calcium-deposition-in-plaque
+- lipoprotein-infiltration
+- monocyte-platelet-adhesion
+- smooth-muscle-cell-migration
+- plaque-progression
 related_mechanisms:
 - ldl-oxidation
 - inflammatory-cascade
+- nitric-oxide-deficiency
+- plaque-progression
 linked_to_topics:
 - atherosclerosis-pathogenesis
 - cardiovascular-risk-assessment
+- atherosclerosis
 evidence_tier: strong
 sources:
 - id: coconote-fm-stopping-anti-cholesterol-meds
   location: Atherosclerosis mechanism section
-  quote: First thing is there should be endothelial dysfunction. If your endothelium is cracked, then nothing can go inside
-    the endothelium. But because of so many factors, you can say oxidative stress, hypertension, even any kind of inflammation.
+  quote: First thing is there should be endothelial dysfunction. If your endothelium
+    is cracked, then nothing can go inside the endothelium. But because of so many
+    factors, you can say oxidative stress, hypertension, even any kind of inflammation.
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Vascular Integrity and Nitric Oxide
-  quote: A healthy endothelium produces nitric oxide. Lots of nitric oxide, lots of vasodilatation, less stiffness of the
-    vessel.
+  quote: A healthy endothelium produces nitric oxide. Lots of nitric oxide, lots of
+    vasodilatation, less stiffness of the vessel.
 - id: coconote-fm-biomarkers-cvs
   location: Atherosclerosis Mechanism
-  quote: So, the primary cause for formation of plaque is actually endothelial injury. So, the innermost layer of blood vessel
-    that we call endothelium. And when you have endothelial injury, that leads to formation of acrylocellulosis.
-version: 1
+  quote: So, the primary cause for formation of plaque is actually endothelial injury.
+    So, the innermost layer of blood vessel that we call endothelium. And when you
+    have endothelial injury, that leads to formation of acrylocellulosis.
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Process of Atherosclerosis
+  quote: Damage or dysfunction of vascular endothelium from weakening of GAG layer
+    as a result of insulin resistance, reactive oxygen and nitrogen species, impaired
+    repair processes, heavy metal toxicity, hyperhomocysteinemia, and inhibition of
+    either nitric oxide production or availability.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

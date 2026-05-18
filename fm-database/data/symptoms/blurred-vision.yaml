@@ -1,0 +1,29 @@
+slug: blurred-vision
+display_name: Blurred Vision
+aliases:
+- vision changes
+- fuzzy eyesight
+category: other
+severity: concerning
+description: Acute blurring from osmotic lens changes with hyperglycaemia, or longer-term
+  from retinal microangiopathy in diabetic retinopathy.
+when_to_refer: Refer to ophthalmologist for any new or progressive visual changes
+  in a diabetic patient.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+linked_to_mechanisms:
+- glucotoxicity
+- sorbitol-accumulation
+- microvascular-damage
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Diagnosis
+  quote: 'T2DM symptoms: milder and may go unnoticed for many years. Abdominal obesity,
+    fatigue, blurred vision, poor wound healing, periodontal disease, and frequent
+    infections can be manifesting symptoms of T2DM.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

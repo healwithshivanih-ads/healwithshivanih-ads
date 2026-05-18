@@ -1,0 +1,34 @@
+slug: vascular-smooth-muscle-dysregulation
+display_name: Vascular Smooth Muscle Dysregulation
+aliases:
+- increased vascular reactivity
+- calcium-magnesium imbalance in VSM
+category: signaling
+summary: Imbalance between intracellular calcium (elevated) and magnesium (reduced)
+  in vascular smooth muscle cells increases vascular tone and reactivity. Magnesium
+  activates the Na⁺-K⁺ membrane pump, normalising ion balance; insulin resistance
+  and magnesium deficiency are key upstream drivers.
+upstream_drivers:
+- insulin-resistance
+- magnesium-deficiency
+- low-potassium-intake
+downstream_effects:
+- elevated-blood-pressure
+- vasoconstriction
+related_mechanisms:
+- insulin-resistance
+- sodium-volume-retention
+- raas-activation
+linked_to_topics:
+- essential-hypertension
+- normal-renin-essential-hypertension
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Mg
+  quote: Mg lowers BP by activating cellular membrane Na+-K+ pump, which pumps Na
+    out of and K into cells.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

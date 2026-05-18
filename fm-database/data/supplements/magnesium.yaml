@@ -1,5 +1,5 @@
 slug: magnesium
-display_name: Magnesium (Generic)
+display_name: Magnesium
 category: mineral
 forms_available:
 - capsule
@@ -36,6 +36,9 @@ linked_to_topics:
 - gut-microbiome
 - insomnia
 - sleep-deprivation
+- atherosclerosis
+- essential-hypertension
+- normal-renin-essential-hypertension
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -54,41 +57,24 @@ linked_to_claims:
 - magnesium-deficiency-causes-intracellular-calcium-excess
 - magnesium-reduces-statin-side-effects
 - magnesium-depletion-from-water-filtration
-notes_for_coach: 'Source (Menolascino transcript) cites magnesium as a foundational
-
-  sleep nutrient and notes ~59% of Americans are deficient. Source
-
-  does NOT specify a dose range for sleep applications. Form matters
-
-  significantly: glycinate and threonate are preferred for sleep and
-
-  nervous-system support (calming, well-absorbed, low GI effect);
-
-  oxide and citrate are primarily laxative-acting (poorly absorbed,
-
-  loose-stool effect). Use this generic entry as a placeholder —
-
-  prefer form-specific entries (magnesium-glycinate, magnesium-oxide,
-
-  magnesium-citrate, magnesium-threonate) for client recommendations
-
-  when dosing-sourced batches are created. Magnesium glycinate
-
-  already exists in the catalogue.
-
-  '
-notes_for_client: Because we filter our drinking water, most of the magnesium that
-  used to come from natural water sources is removed. Supplementing magnesium helps
-  restore what modern water treatment takes away.
+- magnesium-deficiency-promotes-endothelial-dysfunction
+- magnesium-lowers-bp-dose-dependent
+notes_for_coach: 'Preferred forms: aspartate, malate, citrate, succinate, fumarate.
+  Avoid oxide, sulfate, or chloride (laxative effect). Recommended 6–10 mg/kg/day
+  for hypertensives. Use in divided doses. Caution in kidney disease or high-grade
+  AV block.'
+notes_for_client: Magnesium helps relax blood vessels. Take in split doses with meals.
+  Loose stools may occur — if so, switch to a gentler form (citrate or glycinate)
+  and reduce dose.
 evidence_tier: strong
 typical_dose_range:
   capsule:
-    min: 200
-    max: 400
+    min: 400
+    max: 1200
     unit: mg
   powder:
-    min: 200
-    max: 400
+    min: 400
+    max: 1200
     unit: mg
   tablet:
     min: 200
@@ -151,10 +137,19 @@ sources:
   location: Magnesium and sleep section
   quote: I love magnesium. That's one of my favorite nutrients. The government has
     told us that about 59% Americans are deficient in magnesium
-version: 16
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Magnesium and Potassium
+  quote: Low magnesium levels contribute to atherosclerosis and CVD via promotion
+    of endothelial dysfunction by generating a proinflammatory, prothrombotic, proatherogenic
+    environment.
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / Mg
+  quote: Supplement Mg (400 to 1200 mg q.d. in divided doses) with K. This may lower
+    BP. Mg lowers BP in a dose-dependent way.
+version: 18
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - magnesium 400-600mg
 contraindications:

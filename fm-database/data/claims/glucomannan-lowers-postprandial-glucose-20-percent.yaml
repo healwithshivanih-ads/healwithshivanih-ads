@@ -1,0 +1,30 @@
+slug: glucomannan-lowers-postprandial-glucose-20-percent
+statement: Glucomannan lowers postprandial glucose by 20%, insulin secretion by 40%,
+  and produces a 50% improvement in whole-body insulin sensitivity index — unequalled
+  by any drug or natural product in the document.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs support glucomannan's viscosity-mediated glycaemic effects;
+  the PGX (glucomannan-alginate-xanthan) blend has proprietary evidence. 50% ISI improvement
+  claim is extraordinary and from FM clinical literature.
+coaching_translation: Taking glucomannan or PGX fibre before meals is one of the most
+  powerful natural strategies for flattening blood sugar spikes.
+caveats:
+- Viscosity-dependent effect — must be taken with adequate water before meals.
+- PGX data largely from industry-funded studies.
+linked_to_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+linked_to_supplements:
+- pgx-glucomannan
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Fiber supplements
+  quote: Glucomannan lowers postprandial glucose by 20% and insulin secretion by 40%
+    and produces whole-body insulin sensitivity index improvement of 50%, which is
+    unequaled by any drug or natural product.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

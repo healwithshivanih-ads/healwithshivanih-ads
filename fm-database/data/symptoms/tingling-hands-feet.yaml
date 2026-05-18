@@ -1,0 +1,31 @@
+slug: tingling-hands-feet
+display_name: Tingling / Pins and Needles in Hands or Feet
+aliases:
+- tingling feet
+- pins and needles
+- paraesthesia
+- burning feet
+- numb hands
+category: neurological
+severity: concerning
+description: Peripheral neuropathy symptom caused by sorbitol accumulation and nutrient
+  depletion in nerve cells, plus microvascular damage reducing nerve blood supply.
+when_to_refer: Refer if rapidly progressive, associated with loss of protective sensation,
+  or accompanied by foot wounds.
+linked_to_topics:
+- diabetic-neuropathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_mechanisms:
+- sorbitol-accumulation
+- glucotoxicity
+- oxidative-damage
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Specific Complications
+  quote: 'Diabetic neuropathy: loss of peripheral nerve function with tingling, numbness,
+    loss of function, and burning pain (neuropathic pain).'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

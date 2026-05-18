@@ -1,0 +1,28 @@
+slug: olive-leaf-oleuropein-reduces-bp
+statement: Olive leaf extract standardised to oleuropein (16–24%) at 1000 mg/day reduced
+  systolic BP by 11.5 mm Hg and diastolic by 4.8 mm Hg; oleuropein and oleacein act
+  as natural calcium channel blockers.
+evidence_tier: plausible_emerging
+rationale: Supported by clinical trial data (Benolea/EFLA943 product); mechanism via
+  calcium channel blockade is plausible. Limited replication in large RCTs.
+coaching_translation: Olive leaf extract (look for oleuropein content, not just hydroxytyrosol)
+  can lower blood pressure similarly to a mild calcium channel blocker.
+caveats:
+- Olive extracts standardised only for hydroxytyrosol lack antihypertensive effect
+  — standardisation to oleuropein is essential.
+linked_to_topics:
+- essential-hypertension
+linked_to_supplements:
+- olive-leaf-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Olive
+  quote: Benolea (EFLA943), standardized to oleuropein (16% to 24%) and polyphenols,
+    given at 1000 mg/day (500 mg b.i.d.), reduced systolic BP by 11.5 mm Hg and diastolic
+    by 4.8 mm Hg.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

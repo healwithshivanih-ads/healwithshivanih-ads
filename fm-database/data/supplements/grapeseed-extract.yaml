@@ -1,0 +1,33 @@
+slug: grapeseed-extract
+display_name: Grapeseed Extract (PCOs / Proanthocyanidins)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 200
+    unit: mg
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- atherosclerosis
+notes_for_coach: 'Interchangeable with pine bark extract (pycnogenol) for microvascular
+  support. Mechanisms: antioxidant activity, improved endothelial cell function. 100
+  mg/day per therapeutic approach. Rich in proanthocyanidins (PCOs).'
+notes_for_client: Grapeseed extract is a potent antioxidant that protects blood vessel
+  walls from damage and supports circulation.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Therapeutic Approach — Supplements
+  quote: 'Grapeseed or pine bark extract: 100 mg q.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

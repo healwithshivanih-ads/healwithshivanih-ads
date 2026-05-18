@@ -1,0 +1,24 @@
+slug: soluble-fiber-3g-lowers-tc-8-23pct
+statement: In individuals with TC >200 mg/dL, consuming 3 g of soluble oat fiber daily
+  lowers total cholesterol by 8–23%.
+evidence_tier: strong
+rationale: Well-replicated in multiple RCTs; FDA has approved a health claim for oat
+  beta-glucan and cholesterol reduction.
+coaching_translation: Adding oatmeal or oat bran daily can meaningfully lower cholesterol
+  — especially if levels are already elevated.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Importance of Soluble Dietary Fiber in Lowering Cholesterol
+  quote: In individuals with high cholesterol levels above 200 mg/dL, consuming 3
+    g of soluble oat fiber lowers TC by 8% to 23%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

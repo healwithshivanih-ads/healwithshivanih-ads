@@ -1,5 +1,5 @@
 slug: vitamin-d3
-display_name: Vitamin D3 (Cholecalciferol)
+display_name: Vitamin D3
 category: vitamin
 forms_available:
 - capsule
@@ -7,9 +7,9 @@ forms_available:
 - liquid
 typical_dose_range:
   capsule:
-    min: 1000
-    max: 5000
-    unit: IU
+    min: 2000
+    max: 8000
+    unit: mcg
   liquid:
     min: 2000
     max: 5000
@@ -45,6 +45,7 @@ linked_to_topics:
 - atherosclerosis
 - benign-prostatic-hyperplasia
 - cancer-integrated-naturopathic-support
+- type-1-diabetes-mellitus
 linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - vitamin-d-low-linked-recurrent-candida
@@ -61,13 +62,12 @@ linked_to_claims:
 - vitamin-d-supports-reproductive-health-and-bone
 - vitamin-d-shifts-vaginal-microbiome-to-crispatus
 - bph-vitamin-d-reduced-risk
-notes_for_coach: 'Dose: 1000–4000 IU for atherosclerosis; 2000–5000 IU for BPH. Fat-soluble
-  vitamin — take with fatty meal. Monitor 25-OH vitamin D levels especially at higher
-  doses.'
-notes_for_client: Vitamin D, which we normally get from sunlight, helps support vaginal
-  health by favoring the growth of beneficial bacteria like L. crispatus. Most people
-  in northern climates don't get enough sun to make sufficient vitamin D and benefit
-  from supplementation. Ask your doctor to check your levels.
+- vitamin-d-deficiency-300-percent-t1dm-risk
+notes_for_coach: 'T1DM prevention/early intervention: 2000 IU protective dose; recently
+  diagnosed T1DM: 4000–8000 IU. Cod liver oil provides both vitamin D and omega-3.
+  Paediatric dosing requires physician supervision.'
+notes_for_client: Vitamin D supports healthy immune function and may help protect
+  insulin-producing cells. Best absorbed with a fat-containing meal.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -195,12 +195,16 @@ sources:
 - id: pizzorno-textbook-gi-2
   location: Atherosclerosis — Supplements
   quote: 'Vitamin D: 1000 to 4000 IU q.d.'
-version: 12
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes / Vitamin D deficiency
+  quote: Children taking vitamin D from cod liver oil have an 80% reduced risk of
+    T1DM; vitamin D–deficient children have a 300% increased risk. Protective dose
+    is 2000 international units (IU) daily.
+version: 13
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani
 aliases:
-- vitamin-d
 - vitamin-d3-supplement
 - vitamin d (immune modulation)
 - vitamin d 2000 iu

@@ -1,0 +1,29 @@
+slug: vitamin-e-400iu-clinically-significant-ldl-protection
+statement: Vitamin E doses above 400 IU produce clinically significant protection
+  against LDL-C oxidation; higher doses progressively extend oxidation lag time and
+  reduce lipid peroxidation propagation rate.
+evidence_tier: plausible_emerging
+rationale: Dose-response data for LDL oxidation is consistent; large-scale CVD outcome
+  trials (HOPE, CHAOS, SPACE, GISSI) showed conflicting results, likely due to use
+  of synthetic vs. natural vitamin E and failure to co-administer CoQ10 and selenium.
+coaching_translation: Natural vitamin E (d-alpha tocopherol, mixed tocopherols) protects
+  LDL from oxidation — but works best alongside CoQ10, selenium, and vitamin C.
+caveats:
+- Large RCTs (HOPE) showed no CVD mortality benefit at 400 IU; results may reflect
+  synthetic form used or missing cofactors
+- Source is a textbook — verify with primary literature
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- vitamin-e-mixed-tocopherols
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vitamin E, Coenzyme Q10, and Selenium
+  quote: The higher the dose of vitamin E, the greater the degree of protection against
+    oxidative damage to LDL-C. Doses above 400 IU produce clinically significant effects.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: niacinamide-prolongs-t1dm-remission
+statement: Niacinamide (25–50 mg/kg/day, max 3 g/day) given at onset of T1DM may prolong
+  non-insulin-requiring remission, lower insulin requirements, and improve beta-cell
+  function via C-peptide secretion.
+evidence_tier: plausible_emerging
+rationale: 'Multiple small RCTs (Deutsche Nicotinamide Intervention Study, New Zealand
+  pilot); Pizzorno notes complete reversal in some patients but heterogeneous results.
+  Mechanism: inhibition of macrophage/IL-1-mediated beta-cell damage and nitric oxide
+  production.'
+coaching_translation: Niacinamide is a promising early intervention for newly diagnosed
+  T1DM — discuss with prescribing physician immediately after diagnosis.
+caveats:
+- Must be started soon after diagnosis; timed-release form may be less effective.
+- Monitor liver enzymes every 3 months at therapeutic doses.
+- Physician involvement required for dosing.
+out_of_scope_notes: Dosing and clinical decision to initiate is physician scope; coach
+  may flag the option.
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_supplements:
+- niacinamide
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Early Treatment and Possible Reversal of Type 1 Diabetes Mellitus
+  quote: A dose of 3 g niacinamide daily may prolong non–insulin-requiring remission,
+    lower insulin requirements, improve metabolic control, and increase beta-cell
+    function as determined by C-peptide secretion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

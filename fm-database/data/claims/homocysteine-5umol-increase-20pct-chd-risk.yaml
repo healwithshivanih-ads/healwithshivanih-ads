@@ -1,0 +1,24 @@
+slug: homocysteine-5umol-increase-20pct-chd-risk
+statement: For each 5 µmol/L increase in homocysteine, risk of CHD increases by 20%
+  independently of traditional CHD risk factors.
+evidence_tier: strong
+rationale: Confirmed by multiple large prospective studies and meta-analyses including
+  Homocysteine Studies Collaboration.
+coaching_translation: Even modest elevations in homocysteine meaningfully raise heart
+  disease risk — it's worth checking and addressing.
+linked_to_topics:
+- hyperhomocysteinemia
+- atherosclerosis
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Homocysteine
+  quote: For each increase of 5 mmol/L in homocysteine, risk of CHD increases by 20%,
+    independently of traditional CHD risk factors.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

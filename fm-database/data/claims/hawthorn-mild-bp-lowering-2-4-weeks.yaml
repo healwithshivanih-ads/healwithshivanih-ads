@@ -1,0 +1,25 @@
+slug: hawthorn-mild-bp-lowering-2-4-weeks
+statement: Crataegus (hawthorn) berry and flowering-top extracts lower blood pressure
+  and improve heart function; the BP-lowering effect is mild and requires at least
+  2–4 weeks to become apparent.
+evidence_tier: plausible_emerging
+rationale: Consistent with multiple small trials; hawthorn's cardiovascular effects
+  are among the best-studied of botanical medicines, though effect sizes are modest.
+coaching_translation: Hawthorn is a gentle heart tonic that gradually lowers blood
+  pressure — give it at least a month before judging results.
+linked_to_topics:
+- essential-hypertension
+linked_to_supplements:
+- hawthorn-extract
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Botanical Medicines / Crataegus
+  quote: BP-lowering effect of hawthorn is quite mild and requires at least 2 to 4
+    weeks before effect is apparent.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

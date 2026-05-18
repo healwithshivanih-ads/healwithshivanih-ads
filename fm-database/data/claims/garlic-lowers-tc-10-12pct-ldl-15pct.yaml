@@ -1,0 +1,29 @@
+slug: garlic-lowers-tc-10-12pct-ldl-15pct
+statement: Standardized garlic preparations (≥10 mg alliin or 4000 mcg allicin potential/day)
+  lower total serum cholesterol by 10–12% and LDL-C by 15%, while raising HDL-C by
+  10% and lowering TGs by 15%.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs support modest lipid-lowering effects; meta-analyses show
+  consistent but modest effects. Effects on multiple CVD risk factors (BP, platelet
+  aggregation, fibrinolysis) add clinical value.
+coaching_translation: Standardized garlic supplements can modestly lower cholesterol
+  and support blood pressure and circulation — best used as part of a broader plan.
+caveats:
+- Effect size is modest; standardization of preparations varies widely
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- garlic
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Garlic (Allium sativum) and Onion (Allium cepa)
+  quote: Commercial preparations providing daily dose of at least 10 mg of alliin
+    or a total allicin potential of 4000 mg can lower total serum cholesterol by about
+    10% to 12% and LDL-C by 15%; HDL-C usually increases by 10% and TGs drop by 15%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -6,26 +6,39 @@ forms_available:
 - powder
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: L-arginine supports nitric oxide production, which promotes vasodilation
-  and may help reduce blood pressure. Dosing must be confirmed with a clinician.
-notes_for_client: L-arginine is an amino acid found in protein-rich foods. As a supplement,
-  it may support healthy blood pressure through its role in producing nitric oxide,
-  a natural vessel-relaxing compound.
+notes_for_coach: 'Dose: 4 g t.i.d. (total 12 g/day) or 0.5 g/10 kg body weight in
+  divided doses. Most effective in younger subjects. Less effective in elderly due
+  to impaired NO-dependent renal mechanisms. Therapeutic protocol prescribes spread
+  through the day.'
+notes_for_client: L-arginine helps blood vessels relax by boosting nitric oxide —
+  the body's natural vasodilator. Take in divided doses throughout the day.
 timing_options:
 - morning
 - with_breakfast
 - with_dinner
 - with_lunch
+- mid_morning
+- mid_afternoon
 take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
 - cardiovascular-dysfunction
 - hypertension
 - blood-pressure-management
-typical_dose_range: {}
+- essential-hypertension
+typical_dose_range:
+  capsule:
+    min: 4000
+    max: 12000
+    unit: mg
+  powder:
+    min: 4000
+    max: 12000
+    unit: mg
 linked_to_mechanisms: []
 linked_to_claims:
 - l-arginine-increases-nitric-oxide-and-lowers-blood-pressure
+- l-arginine-modest-systolic-reduction
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
@@ -37,7 +50,11 @@ sources:
 - id: coconote-fm-body-composition-bmi
   location: Blood Pressure / Dietary Intervention Section
   quote: L-arginine as an amino acid can increase nitric oxide and improve blood pressure.
-version: 3
+- id: pizzorno-cardiometabolic-hypertension
+  location: Therapeutic Considerations / L-Arginine
+  quote: 'L-Arginine: amino acid precursor to NO that relaxes arteries, improving
+    blood flow, renal plasma flow, and glomerular filtration rate.'
+version: 4
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

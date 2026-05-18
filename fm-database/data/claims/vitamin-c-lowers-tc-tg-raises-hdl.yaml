@@ -1,0 +1,28 @@
+slug: vitamin-c-lowers-tc-tg-raises-hdl
+statement: Higher blood vitamin C levels are associated with lower TC and TGs and
+  higher HDL-C; high dietary vitamin C intake reduces risk of death from CVD and corresponds
+  to increased longevity of 5–7 years in men and 1–3 years in women.
+evidence_tier: plausible_emerging
+rationale: Epidemiological associations are consistent; mechanistic data (collagen
+  synthesis, antioxidant recycling, Lp(a) reduction) are solid. RCT evidence for hard
+  CVD outcomes is mixed.
+coaching_translation: Vitamin C supports heart health by protecting arteries, lowering
+  cholesterol, and reducing inflammation — it's among the most versatile cardiovascular
+  nutrients.
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Vitamin C
+  quote: Vitamin C levels correspond to TC and HDL-C. The higher the vitamin C content
+    of blood, the lower TC and TGs and the higher HDL-C.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

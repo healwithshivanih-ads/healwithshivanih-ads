@@ -1,0 +1,36 @@
+slug: arterial-stiffness
+display_name: Arterial Stiffness
+aliases:
+- arteriosclerosis
+- reduced aortic compliance
+- decreased arterial compliance
+category: structural
+summary: Decreased compliance of the aorta reduces its ability to buffer cardiac output,
+  increasing pulse pressure (elevated systolic with normal diastolic) and imposing
+  greater cardiac workload. Associated with twofold increase in cardiovascular death
+  rates.
+upstream_drivers:
+- aging
+- oxidative-stress
+- chronic-hypertension
+- heavy-metal-exposure
+downstream_effects:
+- elevated-pulse-pressure
+- isolated-systolic-hypertension
+- increased-cardiovascular-mortality
+related_mechanisms:
+- endothelial-no-insufficiency
+- oxidative-stress
+linked_to_topics:
+- essential-hypertension
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Diagnostic Summary / General Considerations
+  quote: Normal diastolic (<80 mm Hg) but elevated systolic (>140 mm Hg) pressure
+    (increased pulse pressure) suggests decreased compliance of aorta (arteriosclerosis)
+    and is associated with twofold increase in cardiovascular death rates.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

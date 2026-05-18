@@ -1,0 +1,31 @@
+slug: niacin-only-cholesterol-agent-reducing-overall-mortality
+statement: Niacin is the only proven cholesterol-lowering agent that actually reduces
+  overall mortality; it lowers LDL-C by 16–23%, raises HDL-C by 20–33%, and reduces
+  Lp(a) by 35%.
+evidence_tier: strong
+rationale: Based on Coronary Drug Project and comparative niacin trials referenced
+  in source.
+coaching_translation: Niacin (vitamin B3 at therapeutic doses) is a powerful tool
+  for improving all cholesterol fractions — but requires medical supervision due to
+  side effects.
+caveats:
+- Requires clinical supervision; monitor liver enzymes and glucose. Skin flushing
+  common. Intermediate-release form preferred.
+out_of_scope_notes: Therapeutic niacin dosing (1500–3000 mg/day) is clinician scope;
+  coach can support dietary niacin sources only.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- niacin
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Natural Products to Lower Cholesterol Levels — Niacin
+  quote: Niacin is the only proven cholesterol-lowering agent that actually reduces
+    overall mortality. Niacin lowers LDL-C by 16% to 23% and raises HDL-C by 20% to
+    33%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

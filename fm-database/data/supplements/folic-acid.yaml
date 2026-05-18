@@ -1,0 +1,38 @@
+slug: folic-acid
+display_name: Folic Acid (Folate / Methylfolate)
+category: vitamin
+forms_available:
+- tablet
+- capsule
+typical_dose_range:
+  tablet:
+    min: 400
+    max: 1000
+    unit: mcg
+timing_options:
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- hyperhomocysteinemia
+- atherosclerosis
+linked_to_claims:
+- folic-acid-b12-b6-lower-homocysteine
+notes_for_coach: Must be co-administered with B12 and B6 for homocysteine lowering.
+  Consider active (methylfolate) form in MTHFR polymorphism patients. 400–800 mcg/day
+  standard; higher doses (1–5 mg) may be needed for significant hyperhomocysteinemia
+  under clinician guidance.
+notes_for_client: Folate (especially active methylfolate) helps lower homocysteine
+  — a blood marker that damages artery walls. Works best when taken with vitamins
+  B12 and B6.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Homocysteine
+  quote: Folic acid (400 mcg daily) alone can reduce homocysteine in some subjects,
+    but not all; importance of vitamins B12 and B6 to homocysteine metabolism indicates
+    all three should be used together.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

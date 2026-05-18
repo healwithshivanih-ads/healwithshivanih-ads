@@ -1,0 +1,34 @@
+slug: capsaicin-topical
+display_name: Capsaicin Cream (Topical 0.075%)
+category: herb
+forms_available:
+- liquid
+typical_dose_range:
+  liquid:
+    min: 2
+    max: 3
+    unit: drops
+timing_options:
+- morning
+- evening
+take_with_food: avoid
+linked_to_topics:
+- diabetic-neuropathy
+linked_to_claims:
+- capsaicin-topical-relieves-neuropathic-pain-80-percent
+notes_for_coach: Over-the-counter 0.075% cream; apply b.i.d. to affected area (not
+  open wounds). Use gloves/plastic wrap to protect hands. Burning sensation expected
+  initially; consistent daily use required for sustained effect.
+notes_for_client: Capsaicin cream from chilli peppers blocks pain signals in nerves
+  when applied to the skin. It works best when used every day.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Recommendations for Specific Long-Term Complications / Neuropathy
+  quote: Topical capsaicin relieves pain of neuropathy in 80% of patients. Apply over-the-counter
+    0.075% capsaicin cream b.i.d. to affected area.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

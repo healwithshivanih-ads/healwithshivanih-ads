@@ -1,0 +1,24 @@
+slug: vegetarian-diet-lower-bp-and-htn-incidence
+statement: Vegetarians have lower blood pressure and lower incidence of hypertension
+  and other cardiovascular diseases than nonvegetarians, attributable to higher potassium,
+  fibre, essential fatty acids, Ca, Mg, and vitamin C and lower saturated fat.
+evidence_tier: strong
+rationale: Supported by multiple epidemiological and interventional studies; the nutrient
+  differences cited are mechanistically plausible and well-documented.
+coaching_translation: A mostly plant-based diet delivers the mineral and fibre combination
+  most protective against high blood pressure.
+linked_to_topics:
+- essential-hypertension
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: Lifestyle and Dietary Factors / Diet
+  quote: Vegetarians have lower BP and lower incidence of hypertension and other cardiovascular
+    diseases than do nonvegetarians.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

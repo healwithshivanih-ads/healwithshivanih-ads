@@ -1,0 +1,34 @@
+slug: pine-bark-extract
+display_name: Pine Bark Extract (Pycnogenol)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 50
+    max: 150
+    unit: mg
+timing_options:
+- with_breakfast
+- morning
+take_with_food: optional
+linked_to_topics:
+- atherosclerosis
+notes_for_coach: 'Interchangeable with grapeseed extract for PCO/proanthocyanidin
+  content. Same mechanism: antioxidant + endothelial function support.'
+notes_for_client: Pine bark extract (pycnogenol) is a powerful antioxidant flavonoid
+  that protects blood vessel linings and improves circulation.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+linked_to_claims: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Grapeseed and Pine Bark Extracts
+  quote: 'Commercial sources of PCOs include extracts from grapeseeds and bark of
+    maritime (Landes) pine. Mechanisms of protection: antioxidant activity, effects
+    on endothelial cells.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

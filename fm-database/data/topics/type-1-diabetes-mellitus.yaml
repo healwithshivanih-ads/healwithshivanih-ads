@@ -1,0 +1,47 @@
+slug: type-1-diabetes-mellitus
+display_name: Type 1 Diabetes Mellitus
+aliases:
+- T1DM
+- juvenile-onset diabetes
+- insulin-dependent diabetes
+summary: Autoimmune destruction of pancreatic beta cells resulting in absolute insulin
+  deficiency, requiring lifelong exogenous insulin. Triggered by genetic susceptibility
+  plus environmental factors (viral infection, dietary proteins, nitrosamines).
+evidence_tier: strong
+common_symptoms:
+- polyuria
+- polydipsia
+- polyphagia
+- fatigue
+- blurred-vision
+- poor-wound-healing
+- frequent-infections
+- weight-loss
+red_flags:
+- diabetic-ketoacidosis
+- hypoglycemia-severe
+- hyperosmolar-hyperglycemic-state
+related_topics:
+- type-2-diabetes-mellitus
+- prediabetes-metabolic-syndrome
+- diabetic-neuropathy
+- diabetic-retinopathy
+- diabetic-nephropathy
+key_mechanisms:
+- autoimmune-beta-cell-destruction
+- insulin-deficiency
+- leaky-gut
+coaching_scope_notes: Coach supports dietary discipline, low-GL eating, supplement
+  protocol (foundation + level 1/2), exercise, and stress management. Insulin management
+  is physician-only.
+clinician_scope_notes: Lifelong insulin required. Monitor HbA1c, C-peptide, glucose,
+  liver enzymes (niacinamide). Refer for DKA, hyperosmolarity.
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: General Considerations / Classification
+  quote: 'T1DM: autoimmune disease caused by destruction of the beta cells of pancreas,
+    which synthesize insulin.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

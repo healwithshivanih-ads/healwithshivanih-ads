@@ -1,0 +1,33 @@
+slug: lipoprotein-a-atherogenicity
+display_name: Lipoprotein(a) Atherogenicity
+aliases:
+- Lp(a)
+- elevated Lp(a)
+- apolipoprotein(a)
+category: metabolic
+summary: Lp(a) is an LDL-like particle with an adhesive apolipoprotein(a) moiety that
+  readily sticks to artery walls; elevated Lp(a) is an independent CHD risk factor
+  conferring up to 10× greater risk than elevated LDL-C alone.
+upstream_drivers:
+- genetic-predisposition
+- hypothyroidism
+downstream_effects:
+- plaque-progression
+- endothelial-dysfunction
+related_mechanisms:
+- ldl-oxidation
+- endothelial-dysfunction
+linked_to_topics:
+- atherosclerosis
+- dyslipidemia
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Further Refinement of Determining Risk
+  quote: Elevated Lp(a) is independent risk factor for CHD, particularly with elevated
+    LDL-C. High Lp(a) is associated with 10 times greater risk for heart disease than
+    elevated LDL-C.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

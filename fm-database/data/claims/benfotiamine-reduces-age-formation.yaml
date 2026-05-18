@@ -1,0 +1,29 @@
+slug: benfotiamine-reduces-age-formation
+statement: Benfotiamine (fat-soluble thiamine) decreases advanced glycosylated end-product
+  formation, reduces aldose reductase pathway activity, and reduces oxidative cellular
+  damage in diabetics.
+evidence_tier: plausible_emerging
+rationale: Multiple small RCTs support AGE reduction; combination with alpha-lipoic
+  acid (600 mg + 300 mg) showed superior results to benfotiamine alone in T1DM. Monotherapy
+  results for neuropathy are modest.
+coaching_translation: Benfotiamine is a more absorbable form of B1 that targets the
+  glycation chemistry damaging nerves and kidneys — best combined with alpha-lipoic
+  acid.
+caveats:
+- Modest neuropathy benefit when used alone; combination with ALA recommended.
+linked_to_topics:
+- diabetic-neuropathy
+- diabetic-nephropathy
+linked_to_supplements:
+- benfotiamine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Recommendations for Specific Long-Term Complications / Neuropathy
+  quote: In diabetics, benfotiamine decreased advanced glycosylated end-product formation,
+    decreased aldose reductase pathway, and reduced oxidative cellular damage.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

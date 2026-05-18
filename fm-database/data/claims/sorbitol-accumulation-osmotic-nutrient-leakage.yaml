@@ -1,0 +1,33 @@
+slug: sorbitol-accumulation-osmotic-nutrient-leakage
+statement: Intracellular sorbitol accumulation in insulin-independent tissues (eye,
+  nerve, kidney, blood vessel endothelium) creates osmotic stress that forces leakage
+  of protective intracellular nutrients (vitamin C, magnesium, glutathione, inositol,
+  niacin, potassium).
+evidence_tier: strong
+rationale: Well-established polyol pathway biochemistry; nutrient depletion via osmotic
+  leakage is mechanistically documented in multiple diabetes pathology textbooks.
+coaching_translation: The sorbitol pathway quietly drains protective nutrients from
+  your cells — flooding with antioxidants and minerals helps counteract this damage.
+linked_to_topics:
+- diabetic-retinopathy
+- diabetic-neuropathy
+- diabetic-nephropathy
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- vitamin-c
+- magnesium-aspartate-citrate
+- bilberry-extract
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Long-Term Complications / Sorbitol accumulation
+  quote: Intracellular sorbitol accumulation creates an osmotic effect that forces
+    damaging leakage of amino acids, inositol, glutathione, niacin, vitamin C, magnesium
+    (Mg), and potassium.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

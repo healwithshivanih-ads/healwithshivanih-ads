@@ -1,0 +1,29 @@
+slug: vitamin-c-reduces-sorbitol-accumulation
+statement: Vitamin C (100–2000 mg/day) reduces intracellular sorbitol accumulation
+  in red blood cells of diabetics, independent of glycaemic control, by inhibiting
+  aldose reductase.
+evidence_tier: plausible_emerging
+rationale: Small RCTs (Cunningham 1994) support aldose reductase inhibition by ascorbate;
+  Pizzorno also notes inhibition of protein glycosylation.
+coaching_translation: Vitamin C does more than fight infections in diabetics — it
+  directly blocks the sorbitol pathway that damages nerves, eyes, and kidneys.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-neuropathy
+- diabetic-retinopathy
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Vitamin C
+  quote: Doses ranging from 100 to 2000 mg q.d. reduce accumulation of sorbitol in
+    RBCs of diabetics, independent of glycemic control, by inhibiting aldose reductase,
+    the enzyme that converts glucose to sorbitol.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

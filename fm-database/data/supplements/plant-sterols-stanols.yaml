@@ -1,0 +1,34 @@
+slug: plant-sterols-stanols
+display_name: Plant Sterols / Stanols (Phytosterols)
+category: other
+forms_available:
+- tablet
+- capsule
+typical_dose_range:
+  tablet:
+    min: 1600
+    max: 3000
+    unit: mg
+timing_options:
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- dyslipidemia
+linked_to_claims:
+- plant-sterols-2g-reduce-ldl-10pct
+notes_for_coach: Effective at 2 g/day with food; additive to diet and statins. Higher
+  doses may reduce carotenoid absorption — ensure adequate fruit/vegetable intake.
+  Best for high cholesterol absorbers (vs. overproducers).
+notes_for_client: Plant sterols block cholesterol absorption in the gut and can lower
+  LDL by 10–20% when used consistently with meals.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Plant Sterols and Stanols
+  quote: Daily intake of 2 g of stanols or sterols reduces LDL-C by 10%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

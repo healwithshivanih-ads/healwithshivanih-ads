@@ -1,0 +1,27 @@
+slug: prehypertension-doubles-risk-diabetes-cognitive-impairment
+statement: Prehypertension (120–139/80–89 mm Hg) is linked not only to greater risk
+  of developing hypertension and cardiovascular disease, but also to diabetes and
+  cognitive impairment.
+evidence_tier: strong
+rationale: Stated as an established epidemiological association from a major clinical
+  handbook grounded in population data.
+coaching_translation: Even borderline-high blood pressure is a meaningful signal to
+  act — it raises the risk of several serious chronic conditions beyond cardiovascular
+  disease.
+linked_to_topics:
+- prehypertension
+- essential-hypertension
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: 37% of U.S. adults have a blood pressure (BP) of 120 to 139/80 to 89 mm Hg,
+    classified as prehypertension, linked to not only greater risk of developing hypertension
+    and cardiovascular disease, but also diabetes and cognitive impairment.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

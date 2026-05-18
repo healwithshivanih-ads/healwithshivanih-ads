@@ -1,0 +1,27 @@
+slug: capsaicin-topical-relieves-neuropathic-pain-80-percent
+statement: Topical 0.075% capsaicin cream applied twice daily relieves neuropathic
+  pain in 80% of diabetic patients by depleting substance P from small pain nerve
+  fibres.
+evidence_tier: strong
+rationale: Multiple RCTs support topical capsaicin for diabetic neuropathic pain;
+  substance P depletion mechanism is well established.
+coaching_translation: Capsaicin cream is an effective, low-cost, over-the-counter
+  option for burning foot pain in neuropathy — must be applied consistently.
+caveats:
+- Avoid contact with eyes and mucous membranes; use gloves or plastic wrap.
+- Burning sensation on first applications is expected; effect requires regular use.
+linked_to_topics:
+- diabetic-neuropathy
+linked_to_supplements:
+- capsaicin-topical
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Recommendations for Specific Long-Term Complications / Neuropathy
+  quote: Topical capsaicin relieves pain of neuropathy in 80% of patients. Apply over-the-counter
+    0.075% capsaicin cream b.i.d. to affected area.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

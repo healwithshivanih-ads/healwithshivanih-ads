@@ -1,0 +1,26 @@
+slug: zinc-protective-beta-cells-diabetics-excrete-excess
+statement: Zinc is protective against beta-cell destruction and has antiviral effects;
+  diabetics excrete zinc excessively in urine, and supplementation (30 mg/day) improves
+  insulin levels in T1DM and T2DM.
+evidence_tier: plausible_emerging
+rationale: Multiple studies document urinary zinc loss in diabetes and benefits of
+  zinc supplementation on insulin metrics; antiviral role supports T1DM prevention.
+coaching_translation: Diabetics are constantly losing zinc in urine — supplementing
+  zinc supports immune defence, wound healing, and insulin function.
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Zinc
+  quote: Diabetics excrete Zn excessively in urine. Supplements improve insulin levels
+    in T1DM and T2DM. Dose for diabetics is 30 mg q.d.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: vitamin-d-deficiency-300-percent-t1dm-risk
+statement: Vitamin D-deficient children have a 300% increased risk of T1DM; children
+  supplemented with 2000 IU vitamin D daily (from cod liver oil) have an 80% reduced
+  risk.
+evidence_tier: plausible_emerging
+rationale: Observational cohort data (e.g., EURODIAB, Finnish birth cohort); mechanistic
+  basis is vitamin D's immunomodulatory effect on beta-cell autoimmunity. No RCT directly
+  for T1DM prevention.
+coaching_translation: Ensuring adequate vitamin D from early childhood may significantly
+  reduce autoimmune diabetes risk; cod liver oil is the preferred source.
+caveats:
+- Evidence from observational studies; RCT confirmation for T1DM primary prevention
+  is lacking.
+- Dosing in children should be physician-supervised.
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes / Vitamin D deficiency
+  quote: Children taking vitamin D from cod liver oil have an 80% reduced risk of
+    T1DM; vitamin D–deficient children have a 300% increased risk.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

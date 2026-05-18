@@ -1,0 +1,27 @@
+slug: low-renin-essential-hypertension
+display_name: Low-Renin Essential Hypertension
+aliases:
+- volume-dependent hypertension
+summary: Subtype of essential hypertension characterised by low renin activity, unsuppressed
+  aldosterone production, sodium retention, and expanded fluid volume. Patients have
+  increased sensitivity to angiotensin II.
+related_topics:
+- essential-hypertension
+key_mechanisms:
+- sodium-volume-retention
+- raas-activation
+evidence_tier: strong
+common_symptoms: []
+red_flags: []
+coaching_scope_notes: ''
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: Low-renin essential hypertension involves low renin activity. Aldosterone
+    production is not being suppressed, leading to mild hyperaldosteronism with Na
+    retention, increased fluid volume, and increased BP.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,26 @@
+slug: pops-20-fold-diabetes-risk-above-40-ggtp
+statement: Elevated GGTP above 40 IU/L, an indirect marker of persistent organic pollutant
+  body burden, is associated with a 20-fold increased risk of diabetes.
+evidence_tier: plausible_emerging
+rationale: Observational data linking POP burden (estimated via GGTP) to T2DM risk;
+  mechanism is blockade of insulin receptor sites.
+coaching_translation: High liver enzyme GGTP may signal toxic load that is impairing
+  insulin function; reducing POP exposure (organic foods, water filtration) is a meaningful
+  strategy.
+caveats:
+- Indirect biomarker; GGTP elevates for many reasons including alcohol and liver disease;
+  direct POP measurement required for confirmation.
+linked_to_topics:
+- type-2-diabetes-mellitus
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Causes of Diabetes / POPs
+  quote: An elevated GGTP is a strong predictor of diabetes risk. Those with levels
+    above 40 IU/L have a 20-fold increased risk.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -12,17 +12,20 @@ typical_dose_range:
 timing_options:
 - morning
 - mid_afternoon
+- with_breakfast
+- with_dinner
 take_with_food: optional
 linked_to_topics:
 - atherosclerosis
 - adhd
 linked_to_claims:
 - ginkgo-biloba-stroke-recovery
-notes_for_coach: Standardized to 24% ginkgo flavon glycosides and 6% terpenoids. Discontinue
-  2 weeks before surgery due to antiplatelet effects. Avoid in patients on blood thinners
-  without clinician supervision.
-notes_for_client: Ginkgo biloba improves brain blood flow. Stop taking it at least
-  2 weeks before any surgery as it can affect bleeding.
+- ginkgo-biloba-enhances-stroke-recovery
+notes_for_coach: Use extract standardized to 24% ginkgoflavonglycosides and 6% terpenoids.
+  Anti-platelet effect — caution with anticoagulants. For secondary stroke prevention
+  and cerebrovascular insufficiency.
+notes_for_client: Standardized Ginkgo biloba supports brain circulation and may aid
+  recovery after stroke. Always use a standardized extract.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -31,7 +34,12 @@ sources:
   quote: Extract of G. biloba leaves standardized to contain 24% ginkgo flavon glycosides
     and 6% terpenoids has been studied in depth for decreased blood supply to the
     brain (cerebrovascular insufficiency).
-version: 1
+- id: pizzorno-cardiometabolic-atherosclerosis
+  location: Preventing a Subsequent Stroke
+  quote: Extract of G. biloba leaves standardized to contain 24% ginkgo flavon glycosides
+    and 6% terpenoids has been studied in depth for decreased blood supply to the
+    brain (cerebrovascular insufficiency). G. biloba extract enhances stroke recovery.
+version: 2
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani

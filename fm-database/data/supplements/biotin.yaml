@@ -1,0 +1,38 @@
+slug: biotin
+display_name: Biotin (High-Dose)
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 8
+    max: 16
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- type-1-diabetes-mellitus
+- type-2-diabetes-mellitus
+- diabetic-neuropathy
+linked_to_claims:
+- biotin-lowers-fasting-glucose-t1dm-t2dm
+notes_for_coach: 'Pharmacological doses (9–16 mg/day) — much higher than standard
+  supplements. Upregulates glucokinase (hepatic glucose utilisation enzyme). Adjust
+  insulin when adding. Also used for neuropathy. Combination with Cr picolinate: 2
+  mg biotin + 600 mcg Cr.'
+notes_for_client: At high doses, biotin activates a key liver enzyme that helps process
+  blood sugar — different from standard biotin supplements which use much lower doses.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Nutritional and Herbal Supplements / Biotin
+  quote: Dose of 16 mg biotin q.d. significantly lowers fasting glucose and improves
+    glucose control in T1DM; in T2DM, similar effects occur at 9 mg biotin q.d.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

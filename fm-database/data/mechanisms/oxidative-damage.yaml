@@ -1,0 +1,41 @@
+slug: oxidative-damage
+display_name: Oxidative Damage (Diabetic)
+aliases:
+- reactive oxygen species
+- ROS-mediated damage
+- free radical damage in diabetes
+- oxidative stress diabetes
+category: metabolic
+summary: T2DM is characterised by elevated ROS and RNS that exhaust antioxidant defences,
+  activate NF-κB, increase inflammatory mediators (CRP, IL-6, TNF-α), increase insulin
+  resistance, and damage DNA, proteins, and membrane lipids.
+upstream_drivers:
+- hyperglycaemia
+- saturated-fat-excess
+- nutrient-deficiency
+- mitochondrial-dysfunction
+downstream_effects:
+- increased-insulin-resistance
+- endothelial-dysfunction
+- chronic-inflammation
+- protein-glycosylation
+related_mechanisms:
+- glucotoxicity
+- protein-glycosylation
+- sorbitol-accumulation
+linked_to_topics:
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-neuropathy
+- diabetic-nephropathy
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Risk Factors for Type 2 Diabetes Mellitus
+  quote: Type 2 diabetics have higher levels of reactive oxygen species (ROSs) and
+    reactive nitrogen species (RNSs), which exhaust antioxidant mechanisms and damage
+    DNA, proteins, and membrane fatty acids.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

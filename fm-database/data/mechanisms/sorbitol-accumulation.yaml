@@ -1,0 +1,41 @@
+slug: sorbitol-accumulation
+display_name: Intracellular Sorbitol Accumulation
+aliases:
+- sorbitol pathway activation
+- aldose reductase pathway
+- polyol pathway
+category: metabolic
+summary: Glucose is converted to sorbitol via aldose reductase in insulin-independent
+  tissues (eye lens, nerves, kidneys, endothelium). Sorbitol cannot exit cells; osmotic
+  effects cause cellular leakage of vitamin C, magnesium, potassium, inositol, and
+  glutathione, increasing tissue damage susceptibility.
+upstream_drivers:
+- glucotoxicity
+- hyperglycaemia
+downstream_effects:
+- nutrient-depletion-intracellular
+- osmotic-cell-damage
+- microvascular-damage
+- neuropathy
+- retinopathy
+- nephropathy
+related_mechanisms:
+- glucotoxicity
+- protein-glycosylation
+- oxidative-damage
+linked_to_topics:
+- type-2-diabetes-mellitus
+- diabetic-retinopathy
+- diabetic-neuropathy
+- diabetic-nephropathy
+evidence_tier: strong
+sources:
+- id: pizzorno-cardiometabolic-diabetes
+  location: Long-Term Complications
+  quote: Intracellular sorbitol accumulation creates an osmotic effect that forces
+    damaging leakage of amino acids, inositol, glutathione, niacin, vitamin C, magnesium
+    (Mg), and potassium.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: white-coat-htn-doubles-sustained-htn-risk
+statement: White coat hypertension is linked to higher mortality and twice the risk
+  of developing sustained hypertension compared with normotensives.
+evidence_tier: strong
+rationale: Well-established clinical finding documented in major reference text; white
+  coat hypertension is no longer considered a benign phenomenon.
+coaching_translation: If your blood pressure only rises at the doctor's office, it
+  still matters — treat it with the same lifestyle strategies as true hypertension.
+linked_to_topics:
+- white-coat-hypertension
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-cardiometabolic-hypertension
+  location: General Considerations
+  quote: It is not an innocent phenomenon because it is linked to higher mortality
+    and twice the risk of developing sustained hypertension as normotensives.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
