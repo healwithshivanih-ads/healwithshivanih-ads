@@ -1,5 +1,5 @@
 slug: vitamin-e
-display_name: Vitamin E (Mixed Tocopherols)
+display_name: Vitamin E
 category: vitamin
 forms_available:
 - capsule
@@ -23,6 +23,7 @@ linked_to_topics:
 - metabolic-detoxification
 - pancreatic-insufficiency
 - detoxification
+- peptic-ulcer-disease
 linked_to_claims:
 - vitamin-e-antioxidant-nafld
 - vitamin-e-antioxidant-gi-protection
@@ -31,23 +32,11 @@ linked_to_claims:
 - gut-lining-repair-nutrients-zinc-vitamins-glutamine
 - vitamin-e-antioxidant-protection-phase-i-detox
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
-notes_for_coach: 'Source (IFM Fig 3.5) names tocopherols as an antioxidant protective
-
-  nutrient buffering Phase 1 reactive intermediates but does NOT give
-
-  dosing. Fat-soluble — take with a meal containing fat. Mixed
-
-  tocopherols (alpha + beta + gamma + delta) are preferred over
-
-  alpha-tocopherol alone, which can suppress the others at high
-
-  doses. Synthetic dl-alpha-tocopherol is less bioactive than natural
-
-  d-alpha-tocopherol.
-
-  '
-notes_for_client: Vitamin E is an antioxidant that helps protect pancreatic cells
-  from damage. Like vitamin A, it requires adequate fat digestion to be absorbed properly.
+- vitamin-a-protective-chronic-gastric-ulcer
+notes_for_coach: Listed alongside vitamin A for stress-ulcer prevention and mucosal
+  barrier maintenance. Antioxidant role supports GI mucosa.
+notes_for_client: Vitamin E is an antioxidant that helps protect the lining of your
+  stomach, especially under stress.
 evidence_tier: strong
 typical_dose_range:
   capsule:
@@ -81,10 +70,14 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Antioxidant Protective Nutrients and Plant Derivatives panel
   quote: Tocopherols (Vit E)
-version: 9
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help
+    maintain integrity of mucosal barrier.'
+version: 10
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - vitamin-e-mixed-tocopherols
 contraindications:

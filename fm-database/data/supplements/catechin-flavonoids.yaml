@@ -1,0 +1,43 @@
+slug: catechin-flavonoids
+display_name: Catechin (Flavonoids)
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 5000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- mid_afternoon
+- with_dinner
+- evening
+take_with_food: optional
+linked_to_topics:
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
+linked_to_claims:
+- catechin-reduces-gastric-histamine-antiulcer
+- flavonoids-inhibit-h-pylori-concentration-dependent
+notes_for_coach: High-dose catechin (1 g × 5/day = 5 g/day total) cited for histamine
+  reduction in gastric tissue. Clinician supervision at these doses. Multiple flavonoids
+  inhibit H. pylori concentration-dependently. Flavone is most potent studied. Sofalcone
+  (synthetic sophoradin derivative) also cited for post-eradication ulcer healing.
+notes_for_client: Catechin is a type of flavonoid found in green tea and red wine.
+  At therapeutic doses it helps lower histamine in the stomach and directly inhibits
+  H. pylori.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Flavonoids, p. 783
+  quote: A dose of 1000 mg catechin five times per day reduces histamine in gastric
+    tissue of normal patients and those with GUs and DUs and acute gastritis. Several
+    flavonoids inhibit H. pylori in a concentration-dependent manner.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,26 @@
+slug: nocturnal-epigastric-pain
+display_name: Nocturnal Stomach Pain
+aliases:
+- night-time stomach pain
+- waking with stomach pain
+- 3am stomach pain
+category: gi
+severity: common
+description: Stomach pain that awakens the person at night, a hallmark of duodenal
+  ulcer disease, relieved by eating or antacids.
+when_to_refer: Refer if nocturnal pain is severe or accompanied by vomiting blood
+  or black tarry stools.
+linked_to_topics:
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
+linked_to_mechanisms:
+- gastric-mucosal-barrier-disruption
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Diagnostic Summary, p. 779
+  quote: Epigastric distress 45 to 60 minutes after meals or nocturnal pain; both
+    are relieved by food, antacids, or vomiting.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

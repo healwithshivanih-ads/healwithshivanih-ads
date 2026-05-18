@@ -1,0 +1,34 @@
+slug: peripheral-aromatization
+display_name: Peripheral Aromatization (Androgen to Estrogen)
+aliases:
+- adipose aromatase activity
+- androgen-estrogen conversion
+category: endocrine
+summary: Fat cells contain aromatase, which converts adrenal and testicular androgens
+  to estradiol. In aging men with increased body fat, total plasma estradiol remains
+  constant or increases despite declining androgens. Elevated estradiol binds intraprostatic
+  estrogen receptors, promoting prostate cell proliferation and contributing to BPH.
+upstream_drivers:
+- abdominal-obesity
+- aging
+- decreased-testosterone
+downstream_effects:
+- elevated-estradiol
+- prostate-estrogen-receptor-activation
+- bph
+related_mechanisms:
+- 5-alpha-reductase-dht-conversion
+- prolactin-driven-prostate-growth
+linked_to_topics:
+- benign-prostatic-hyperplasia
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Hormones and Benign Prostatic Hyperplasia
+  quote: Estradiol remains constant or even increases with age in men because of increased
+    aromatase activity in the aging male with increased body fat. Fat cells contain
+    aromatase, which converts certain androgens to estrogen.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

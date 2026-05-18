@@ -1,0 +1,28 @@
+slug: celiac-associated-55-conditions
+statement: Celiac disease and gluten sensitivity are linked to 55 health conditions
+  including all major autoimmune diseases, IBD, migraines, epilepsy, osteoporosis,
+  and non-Hodgkin lymphoma, with a 39% increased risk of death compared with controls.
+evidence_tier: strong
+rationale: Epidemiological data from large cohort studies documented in the textbook;
+  the mortality risk is highest in those with gut inflammation related to gluten (72%
+  increased risk).
+coaching_translation: Undiagnosed or poorly managed celiac disease significantly raises
+  the risk of many serious conditions — this is why thorough testing and strict adherence
+  matters deeply.
+linked_to_topics:
+- celiac-disease
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — General Considerations — Associated Conditions
+  quote: There are 55 health conditions linked to CD and gluten sensitivity, including
+    irritable bowel disease, inflammatory bowel disease, anemia, migraines, epilepsy,
+    fatigue, canker sores, osteoporosis, rheumatoid arthritis, lupus, multiple sclerosis,
+    and almost all other autoimmune diseases.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

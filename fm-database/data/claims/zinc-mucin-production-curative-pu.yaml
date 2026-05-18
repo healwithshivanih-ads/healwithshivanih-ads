@@ -1,0 +1,25 @@
+slug: zinc-mucin-production-curative-pu
+statement: Zinc increases mucin production in vitro and demonstrates a protective
+  effect on peptic ulcers in animals and a curative effect in human beings.
+evidence_tier: plausible_emerging
+rationale: In vitro and animal data plus human curative effect noted in FM textbook;
+  zinc's role in mucosal repair, metalloenzyme function, and cell proliferation is
+  mechanistically well supported.
+coaching_translation: Zinc supports your stomach's mucus barrier and has been shown
+  to help heal ulcers in people.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: 'Zinc: increases mucin production in vitro and has a protective effect on
+    PUs in animals and curative effect in human beings.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

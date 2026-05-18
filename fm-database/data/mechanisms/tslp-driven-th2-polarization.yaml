@@ -1,0 +1,37 @@
+slug: tslp-driven-th2-polarization
+display_name: TSLP-Driven Th2 Polarization
+aliases:
+- thymic stromal lymphopoietin signaling
+- TSLP-mediated allergic inflammation
+category: immune
+summary: Thymic stromal lymphopoietin (TSLP), an IL-7–like cytokine secreted by barrier-defective
+  skin, profoundly triggers Th2 lymphocyte commitment and allergic inflammation. TSLP
+  is elevated in AD skin biopsies, is upregulated by phthalate exposure and H. pylori,
+  and sensitizes lungs to allergens — driving the 'atopic march' from eczema to asthma.
+upstream_drivers:
+- filaggrin-epidermal-barrier-dysfunction
+- phthalate-exposure
+- h-pylori-gastric-infection
+downstream_effects:
+- ige-elevation
+- mast-cell-activation
+- atopic-march
+- lung-allergen-sensitization
+related_mechanisms:
+- filaggrin-epidermal-barrier-dysfunction
+- th1-th2-immune-dysregulation
+- leaky-gut
+linked_to_topics:
+- atopic-dermatitis
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis (Eczema) — Immune Dysregulation, Thymic Stromal Lymphopoietin,
+    and Allergic Inflammation
+  quote: TSLP is interleukin-7 (IL-7)–like cytokine secreted by barrier-defective
+    skin and is elevated in skin biopsies from lesional AD patients. TSLP profoundly
+    triggers Th2 commitment and rises when stimulated by phthalates.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

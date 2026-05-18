@@ -1,0 +1,42 @@
+slug: bacterial-sinusitis
+display_name: Bacterial Sinusitis
+aliases:
+- sinusitis
+- acute rhinosinusitis
+- chronic sinusitis
+summary: Infection of paranasal sinuses most commonly triggered by viral upper respiratory
+  infection with secondary bacterial colonization (Streptococci, Staphylococci, H.
+  influenzae). Underlying allergy (84% of chronic cases), food allergens, H. pylori,
+  and environmental factors are important predisposing factors. Natural approach focuses
+  on drainage, immune support, and allergen identification.
+common_symptoms:
+- nasal-congestion
+- purulent-discharge
+- facial-pain
+- frontal-headache
+- postnasal-drip
+- fever
+red_flags:
+- Severe unresponsive infection requiring antibiotics
+- Intractable H. pylori requiring antibiotics
+related_topics:
+- food-allergy
+- h-pylori-infection
+- atopic-dermatitis
+key_mechanisms:
+- mucociliary-dysfunction
+- allergic-inflammation
+- dysbiosis
+coaching_scope_notes: Coaches can support food allergen elimination, environmental
+  allergen control, and supplement protocols (vitamin C, zinc, NAC). Antibiotic decisions
+  and H. pylori treatment are clinician scope.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Bacterial Sinusitis — Therapeutic Considerations
+  quote: Approximately 84% of those with chronic sinusitis have allergies.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

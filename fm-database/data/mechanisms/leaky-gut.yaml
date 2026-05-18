@@ -1,5 +1,5 @@
 slug: leaky-gut
-display_name: Intestinal Hyperpermeability (Leaky Gut)
+display_name: Leaky Gut (Intestinal Hyperpermeability)
 aliases:
 - permeable gut lining
 - tight-junction-disruption
@@ -35,11 +35,11 @@ aliases:
 - leaky-gut-mechanism
 - leaky-gut
 category: gut
-summary: Increased permeability of the intestinal epithelial barrier allows passage
-  of luminal antigens, endotoxins, and microorganisms into the systemic circulation,
-  driving food allergy, immune activation, and extra-intestinal disease. Aspirin and
-  NSAIDs worsen permeability; first-degree relatives of CD patients show a familial
-  permeability defect.
+summary: Increased intestinal paracellular permeability allowing passage of undigested
+  antigens, microbial toxins, and Candida particles into systemic circulation, overwhelming
+  the immune system and precipitating food allergies, autoimmunity, and systemic inflammation.
+  Key drivers include food allergens, Candida overgrowth, dysbiosis, and nutritional
+  deficiencies.
 upstream_drivers:
 - dysbiosis (loss of beneficial species)
 - chronic stress / cortisol elevation
@@ -76,6 +76,10 @@ upstream_drivers:
 - dysbiosis
 - food-allergens
 - intestinal-infections
+- food-allergen-exposure
+- candida-overgrowth
+- gluten-mediated-tight-junction-disruption
+- nutrient-deficiency
 downstream_effects:
 - food sensitivities
 - autoimmune flare risk
@@ -108,6 +112,10 @@ downstream_effects:
 - food-allergy
 - endotoxaemia
 - extra-intestinal-ibd-manifestations
+- food-allergies
+- autoimmune-disease
+- atopic-dermatitis
+- adhd
 related_mechanisms:
 - hpa-axis-dysregulation
 - microbial-diversity-decline
@@ -129,6 +137,7 @@ related_mechanisms:
 - dysbiosis
 - mucosal-inflammation
 - endotoxaemia-complement-activation
+- gluten-mediated-tight-junction-disruption
 linked_to_topics:
 - autoimmune
 - inflammation
@@ -156,6 +165,11 @@ linked_to_topics:
 - inflammatory-bowel-disease
 - irritable-bowel-syndrome
 - intestinal-protozoan-infestation
+- celiac-disease
+- atopic-dermatitis
+- chronic-candidiasis
+- adhd
+- chronic-fatigue-syndrome
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Gut & Inflammation sections
@@ -279,8 +293,13 @@ sources:
   quote: Familial permeability defect is a significant predisposing factor for CD
     because leaky gut is linked to increased incidence of food allergy and absorption
     of intestinal toxins.
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Food Allergy, Gut Permeability, and Candidal Overgrowth
+  quote: Presence of food allergies is responsible for children with AD having 'leaky
+    gut'—increased gut permeability, increased antigen load, overwhelming the immune
+    system and increasing likelihood of developing additional allergies.
 evidence_tier: strong
-version: 15
+version: 16
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani

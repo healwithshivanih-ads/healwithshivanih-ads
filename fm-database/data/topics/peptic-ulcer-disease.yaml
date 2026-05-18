@@ -1,0 +1,45 @@
+slug: peptic-ulcer-disease
+display_name: Peptic Ulcer Disease
+aliases:
+- PUD
+- duodenal ulcer
+- gastric ulcer
+- peptic ulcer
+summary: Peptic ulcers occur in the stomach (gastric) and proximal duodenum when protective
+  mucosal factors are overcome by acid, H. pylori, NSAIDs, stress, or food allergy.
+  Prevalence is 6–12% in the US. DU is four times more common in men than women. Key
+  modifiable drivers include H. pylori, NSAID use, smoking, food allergy, and psychological
+  stress.
+evidence_tier: strong
+common_symptoms:
+- epigastric-pain
+- epigastric-burning
+- nocturnal-epigastric-pain
+- heartburn
+- nausea
+red_flags:
+- GI hemorrhage
+- perforation
+- gastric outlet obstruction — medical emergency
+related_topics:
+- helicobacter-pylori-infection
+key_mechanisms:
+- gastric-mucosal-barrier-disruption
+- gastric-mucin-degradation
+- h-pylori-urease-ammonia-production
+coaching_scope_notes: Coaches may support elimination diet, fiber increase, stress
+  management, smoking cessation, and targeted supplementation (DGL, zinc, L-glutamine,
+  flavonoids). Refer for emergency signs immediately.
+clinician_scope_notes: Confirm diagnosis via endoscopy or barium radiograph. H. pylori
+  testing and eradication are clinician scope. Complications (hemorrhage, perforation,
+  obstruction) require emergency hospitalisation.
+sources:
+- id: pizzorno-textbook-hpylori
+  location: General Considerations, p. 779
+  quote: Peptic ulcers (PUs) occur in the stomach (gastric) and first portion of the
+    small intestine (duodenal). DUs are more common; the prevalence is 6% to 12% in
+    the United States.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,25 @@
+slug: omega3-reduces-heart-attack-risk-dart
+statement: The Dietary and Reinfarction Trial (DART) showed that it was specifically
+  the increase in omega-3 intake from fish that reduced future heart attacks in post-MI
+  patients.
+evidence_tier: strong
+rationale: Named RCT cited; the Lyon Diet Heart Study corroborated this showing that
+  plant-source ALA offered equivalent protection, confirming the omega-3 mechanism.
+coaching_translation: Getting more omega-3s — whether from fish or plant sources like
+  flaxseed — is one of the most evidence-backed things you can do after a heart attack.
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- fish-oil
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atherosclerosis — Dietary Alternatives to Aspirin
+  quote: 'Dietary and Reinfarction Trial (DART): it was only when intake of omega-3s
+    (from fish) was increased that future heart attacks were reduced.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

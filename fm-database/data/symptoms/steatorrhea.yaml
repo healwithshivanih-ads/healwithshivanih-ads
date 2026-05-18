@@ -8,19 +8,26 @@ aliases:
 - fat in stool
 - fatty diarrhea
 - fat molecules in stool
+- pale greasy stools
+- foul-smelling stools
+- bulky stools
 category: gi
 severity: concerning
-description: Presence of undigested fat molecules in stool, appearing greasy or oily,
-  resulting from insufficient lipase activity and fat malabsorption.
-when_to_refer: Refer to clinician if persistent — may indicate significant exocrine
-  pancreatic failure or fat-soluble vitamin deficiency requiring PERT.
+description: Bulky, pale, frothy, foul-smelling, greasy stools with increased fecal
+  fat, indicating small intestinal malabsorption. Characteristic of celiac disease
+  and pancreatic exocrine insufficiency.
+when_to_refer: Persistent steatorrhea requires clinician evaluation to confirm celiac
+  disease or rule out pancreatic pathology
 linked_to_topics:
 - sluggish-bile-flow
 - pancreatic-insufficiency
+- celiac-disease
 linked_to_mechanisms:
 - sluggish-bile-flow-mechanism
 - exocrine-pancreatic-enzyme-deficiency
 - malabsorption
+- gluten-mediated-tight-junction-disruption
+- leaky-gut
 sources:
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Gut-Metabolic & Nutrient Issues
@@ -30,7 +37,10 @@ sources:
   location: Signs and Symptoms
   quote: The commonly distinguished fat molecules present inside the host tumors,
     diarrhea, gas and bloating.
-version: 2
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — Diagnostic Summary
+  quote: Bulky, pale, frothy, foul-smelling, greasy stools with increased fecal fat
+version: 3
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: folate-folic-acid
+display_name: Folate / Folic Acid
+category: vitamin
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  tablet:
+    min: 400
+    max: 10000
+    unit: mcg
+timing_options:
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- cervical-dysplasia
+linked_to_claims:
+- cervical-dysplasia-folate-regression
+notes_for_coach: 'For cervical dysplasia: 10 mg daily for 3 months, then 2.5 mg daily.
+  Always combine with B12 (methylcobalamin 1 mg daily) to avoid masking B12 deficiency.
+  RBC folate is more clinically relevant than serum folate in OC users.'
+notes_for_client: If you take birth control pills, your cervical cells may be folate-depleted
+  even if your blood tests look normal — targeted supplementation may help.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Cervical Dysplasia — Therapeutic Approach — Supplements
+  quote: 'Folic acid: 10 mg q.d. for 3 months, then 2.5 mg q.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

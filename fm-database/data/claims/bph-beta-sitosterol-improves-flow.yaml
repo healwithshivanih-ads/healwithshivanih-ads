@@ -1,0 +1,27 @@
+slug: bph-beta-sitosterol-improves-flow
+statement: 'Beta-sitosterol improves BPH: urinary flow increases by an average 4.5
+  mL/s, residual urinary volume decreases by 33.5 mL, and IPSS shows statistically
+  significant improvement.'
+evidence_tier: strong
+rationale: Cited from RCT data summarized in Pizzorno textbook; beta-sitosterol from
+  Serenoa repens, Pygeum, and dietary sources provides measurable urodynamic benefit.
+coaching_translation: Plant sterols — found in pumpkin seeds, avocados, and saw palmetto
+  — are a well-studied, natural way to measurably improve urine flow and reduce leftover
+  urine in the bladder.
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- beta-sitosterol
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Beta-Sitosterol
+  quote: Beta-sitosterol improves BPH. On average, urinary flow increases by 4.5 mL/s;
+    residual urinary volumes decreases by 33.5 mL. The IPSS shows statistically significant
+    improvement.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

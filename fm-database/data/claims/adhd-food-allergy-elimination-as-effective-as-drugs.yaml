@@ -1,0 +1,28 @@
+slug: adhd-food-allergy-elimination-as-effective-as-drugs
+statement: Food allergy elimination or desensitization can be as effective as drug
+  therapy in reducing ADHD symptoms.
+evidence_tier: plausible_emerging
+rationale: Strong relationship between allergies and ADHD is documented; brainwave
+  EEG changes occur immediately after food allergen ingestion; oligoantigenic diet
+  improves sleep and attention.
+coaching_translation: Identifying and removing your child's food triggers may work
+  as well as medication for reducing ADHD symptoms — it's worth a careful elimination
+  trial.
+caveats:
+- Evidence is primarily from elimination diet studies with limited blinding; comparison
+  to stimulant drugs is indirect
+linked_to_topics:
+- adhd
+- food-allergy
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Food Allergy
+  quote: Food allergy elimination or desensitization can be as effective as drug therapy
+    in reducing ADHD symptoms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: adhd-omega3-deficiency-brain
+statement: Children with ADHD have measurably reduced tissue levels of EPA and DHA
+  compared with controls; DHA deficiency increases blood-brain barrier permeability
+  and may allow influx of neurotoxins into affected brain regions.
+evidence_tier: plausible_emerging
+rationale: Biochemical measurement studies and mechanistic data cited; brain areas
+  affected in ADHD should be composed of 80% DHA at nerve endings; formula-fed infants
+  have twice the ADHD risk.
+coaching_translation: Children with ADHD often run low on omega-3 fats — especially
+  DHA — which the brain desperately needs. Fish oil is one of the most rational interventions
+  to try.
+linked_to_topics:
+- adhd
+linked_to_supplements:
+- fish-oil
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Essential Fatty Acids
+  quote: Children with ADHD have measurable reduction in tissue levels of the omega-3
+    fatty acids eicosapentaenoic acid (EPA) and docosahexaenoic acid (DHA) compared
+    with age-matched controls.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -10,7 +10,7 @@ forms_available:
 typical_dose_range:
   tablet:
     min: 1
-    max: 3
+    max: 5
     unit: mg
   capsule:
     min: 1
@@ -42,6 +42,7 @@ linked_to_topics:
 - immune-support-covid-19
 - circadian-rhythm-disruption
 - jet-lag
+- peptic-ulcer-disease
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - melatonin-as-acid-suppressor-gerd
@@ -49,35 +50,12 @@ linked_to_claims:
 - melatonin-reduces-inflammation-sleep
 - melatonin-supports-estrogen-metabolism
 - melatonin-reduces-inflammation-and-promotes-sleep
-notes_for_coach: 'Pineal hormone synthesized from serotonin, released in response
-  to
-
-  darkness. Source (Menolascino transcript) cites 3 mg as the dose
-
-  used in clinical trials and notes wide variability in clinical
-
-  response — roughly one-third benefit substantially, one-third no
-
-  benefit, one-third paradoxically wired. Source also notes most
-
-  high-quality studies originate in Germany / Europe where supplement
-
-  consistency is better regulated; product quality matters. Current
-
-  literature increasingly favors lower physiologic doses (0.3-0.5 mg)
-
-  for circadian-replacement purposes, with higher doses reserved for
-
-  jet lag and specific clinical contexts — confirm dose with a
-
-  peer-reviewed source for individual client use. Clinically proven
-
-  to reduce jet lag.
-
-  '
-notes_for_client: Melatonin helps signal your body when it's time to sleep and also
-  has anti-inflammatory properties. Start with the lowest effective dose and take
-  it 30–60 minutes before bed in a dark room.
+- melatonin-mitigates-gastric-lining-breakdown-du
+notes_for_coach: Most applicable for duodenal ulcers with acid hypersecretion. Antioxidant
+  and cytoprotective roles in gastric mucosa described. Research mostly in animal/hypersecretion
+  models; human clinical evidence limited.
+notes_for_client: Melatonin does more than help with sleep — it also helps protect
+  the lining of your stomach from acid damage, especially at night.
 evidence_tier: strong
 linked_to_mechanisms:
 - blue-light-melatonin-suppression
@@ -114,10 +92,15 @@ sources:
   location: Melatonin dosing and quality section
   quote: The clinical trials I believe were on three milligrams. That seemed to be
     the dose that worked
-version: 11
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: Melatonin mitigates gastric lining breakdown and ulcer formation. Research
+    has focused on hypersecretion situations; therefore melatonin may be most applicable
+    for DUs, entailing acid hypersecretion.
+version: 12
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 contraindications:
   conditions:
   - paradoxical activation in a subset of clients — start with lowest dose available

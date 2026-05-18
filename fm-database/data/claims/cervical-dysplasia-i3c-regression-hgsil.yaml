@@ -1,0 +1,29 @@
+slug: cervical-dysplasia-i3c-regression-hgsil
+statement: Half of women with high-grade cervical intraepithelial lesions (CIN II/III)
+  given indole-3-carbinol (I3C) 200 or 400 mg/day for 12 weeks showed complete regression
+  of severe dysplasia, compared with none in the placebo group.
+evidence_tier: plausible_emerging
+rationale: RCT data cited in Pizzorno textbook; I3C shifts estrogen metabolism from
+  16α-hydroxylation to 2-hydroxylation pathway, reducing estrogenic stimulation of
+  dysplastic cells.
+coaching_translation: I3C (found in broccoli and cabbage, or as a supplement) helped
+  half of women with severe cervical cell changes see complete reversal — it works
+  by improving how your body processes estrogen.
+caveats:
+- Small RCTs; response rate varies with HPV status — lower in HPV-positive subjects
+linked_to_topics:
+- cervical-dysplasia
+linked_to_supplements:
+- indole-3-carbinol
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Cervical Dysplasia — Indole-3-carbinol (I3C) and diindolylmethane (DIM)
+  quote: Half of women with HGSILs (biopsy-proved CIN II or III) who were given 200
+    or 400 mg of I3C for 12 weeks demonstrated complete regression of severe dysplasia,
+    compared with none in the placebo group.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,40 @@
+slug: filaggrin-epidermal-barrier-dysfunction
+display_name: Filaggrin Epidermal Barrier Dysfunction
+aliases:
+- FLG mutation
+- skin barrier dysfunction
+- NMF deficiency
+category: structural
+summary: Loss-of-function mutations in the filaggrin (FLG) gene impair keratin filament
+  aggregation, reducing natural moisturizing factor (NMF) production and stratum corneum
+  hydration. This barrier defect allows hapten penetration, triggering a Th1-to-Th2
+  immunophenotype shift, secondary Staphylococcus aureus colonization, and initiation
+  of the atopic march.
+upstream_drivers:
+- flg-gene-mutations
+- northern-european-ancestry
+- environmental-stressors
+downstream_effects:
+- increased-transepidermal-water-loss
+- hapten-sensitization
+- th2-polarization
+- staph-aureus-colonization
+- atopic-march
+related_mechanisms:
+- tslp-driven-th2-polarization
+- leaky-gut
+linked_to_topics:
+- atopic-dermatitis
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis (Eczema) — Filaggrin and Epidermal Barrier Dysfunction
+  quote: Filaggrin is a protein that facilitates aggregation of keratin filaments;
+    it is known as filament aggregating protein. It binds cytokeratin into tonofilaments
+    and, when proteolyzed, forms small hygroscopic molecules—amino acids—which comprise
+    natural moisturizing factor (NMF). NMF is responsible for hydration of stratum
+    corneum.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

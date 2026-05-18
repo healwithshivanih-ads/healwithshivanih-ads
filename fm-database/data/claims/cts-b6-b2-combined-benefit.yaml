@@ -1,0 +1,33 @@
+slug: cts-b6-b2-combined-benefit
+statement: Vitamin B6 supplementation (50–300 mg/day) for carpal tunnel syndrome shows
+  greater benefit when combined with riboflavin (B2), as B2-dependent enzymes are
+  required to convert pyridoxine to the active form pyridoxal-5-phosphate; failure
+  of B6 therapy may indicate riboflavin deficiency or genetic conversion defect requiring
+  direct P5P supplementation.
+evidence_tier: plausible_emerging
+rationale: Multiple studies on B6 and CTS cited; the B2 cofactor relationship is biochemically
+  established though clinical RCT data are inconsistent.
+coaching_translation: B6 supplements work better for carpal tunnel when you also take
+  B2 (riboflavin) — and if B6 alone doesn't help after 6 weeks, ask about switching
+  to the active form called P5P.
+caveats:
+- Studies have been inconsistent; therapeutic failure of B6 warrants trial of P5P
+linked_to_topics:
+- carpal-tunnel-syndrome
+linked_to_supplements:
+- pyridoxine-b6
+- riboflavin-b2
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Vitamin B Supplementation
+  quote: Greater effect is seen when B6 and B2 are given together, perhaps as a result
+    of B2-dependent enzymes, which convert pyridoxine to the active form pyridoxal
+    5'-phosphate (P5P). Studies have been inconsistent. Therapeutic failure of B6
+    therapy could be a result of lack of riboflavin or a genetic defect that disallows
+    sufficient quantities of B6 to be converted to active P5P form.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

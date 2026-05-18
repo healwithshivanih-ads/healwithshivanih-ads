@@ -1,0 +1,27 @@
+slug: hand-numbness
+display_name: Hand Numbness / Tingling
+aliases:
+- tingling fingers
+- hand paresthesia
+- numb fingers
+- median nerve tingling
+category: neurological
+severity: common
+description: Intermittent or persistent numbness and tingling in the first three fingers
+  and lateral half of the fourth digit, often bilateral and worse at night, characteristic
+  of carpal tunnel syndrome.
+when_to_refer: Progressive neurologic deficit, thenar atrophy, or symptoms not resolving
+  after 6 months of conservative care
+linked_to_topics:
+- carpal-tunnel-syndrome
+linked_to_mechanisms:
+- b6-deficiency-neuropathy
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Diagnostic Summary
+  quote: Insidious onset of numbness and tingling, primarily in first three fingers,
+    often bilaterally
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

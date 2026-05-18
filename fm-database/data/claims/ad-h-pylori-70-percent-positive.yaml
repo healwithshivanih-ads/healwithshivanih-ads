@@ -1,0 +1,29 @@
+slug: ad-h-pylori-70-percent-positive
+statement: H. pylori antibody is positive in 70% of atopic dermatitis patients, and
+  treatment of H. pylori infection resulting in reduced C-urea breath test and anti-H.
+  pylori antibody titers led to partial improvement in AD.
+evidence_tier: plausible_emerging
+rationale: H. pylori directly stimulates epidermal cells to secrete TSLP; treatment-response
+  data cited in the textbook support a causal role in a subset of AD patients.
+coaching_translation: If you have eczema, it's worth asking your doctor to test for
+  H. pylori — treating this stomach bug has helped some people's skin improve significantly.
+linked_to_topics:
+- atopic-dermatitis
+- bacterial-sinusitis
+linked_to_mechanisms:
+- tslp-driven-th2-polarization
+out_of_scope_notes: ''
+caveats: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Immune Dysregulation, Thymic Stromal Lymphopoietin,
+    and Allergic Inflammation
+  quote: Gastric Helicobacter pylori directly stimulates epidermal cells to secrete
+    TSLP, and H. pylori antibody is positive in 70% of AD patients. Treatment of infection,
+    proven by reduced C-urea breath test and anti–H. pylori antibody titers, resulted
+    in partial improvement in AD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

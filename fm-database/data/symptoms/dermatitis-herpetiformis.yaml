@@ -1,0 +1,26 @@
+slug: dermatitis-herpetiformis
+display_name: Dermatitis Herpetiformis
+aliases:
+- DH
+- gluten rash
+- celiac skin rash
+category: skin
+severity: concerning
+description: Intensely pruritic vesicular skin eruption associated with celiac disease
+  and gluten sensitivity; resolves with strict gluten-free diet.
+when_to_refer: Requires clinician confirmation via skin biopsy; dapsone may be needed
+  for severe cases
+linked_to_topics:
+- celiac-disease
+linked_to_mechanisms:
+- gluten-mediated-tight-junction-disruption
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — General Considerations — Associated Conditions
+  quote: 'Others: thyroid abnormalities, insulin-dependent diabetes mellitus, psychiatric
+    disturbances (including schizophrenia), dermatitis herpetiformis, and urticaria
+    are linked to gluten intolerance.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

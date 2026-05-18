@@ -1,0 +1,28 @@
+slug: adhd-osa-30-percent-prevalence
+statement: Obstructive sleep apnea is found in 30% of children diagnosed with ADHD
+  and may be central to the etiology; attention deficits are common (95%) in children
+  and adults with OSA.
+evidence_tier: plausible_emerging
+rationale: OSA fragments sleep, causing hypoxic episodes that reduce intellectual
+  capacity, attentional performance, and quality of life — creating a phenotype indistinguishable
+  from ADHD.
+coaching_translation: If your child snores, has restless sleep, or wets the bed, sleep
+  apnea could be a major driver of their attention issues — worth raising with their
+  doctor.
+out_of_scope_notes: OSA diagnosis requires polysomnography or nocturnal oximetry —
+  clinician referral required.
+linked_to_topics:
+- adhd
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Obstructive Sleep Apnea
+  quote: Attention deficits are common (95%) in children and adults with obstructive
+    sleep apnea (OSA). OSA is found in 30% of children diagnosed with ADHD and may
+    be central to the etiology of ADHD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

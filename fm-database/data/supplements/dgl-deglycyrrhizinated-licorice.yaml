@@ -1,0 +1,40 @@
+slug: dgl-deglycyrrhizinated-licorice
+display_name: DGL (Deglycyrrhizinated Licorice)
+category: herb
+forms_available:
+- tablet
+typical_dose_range:
+  tablet:
+    min: 760
+    max: 1520
+    unit: mg
+timing_options:
+- mid_morning
+- mid_afternoon
+- evening
+take_with_food: avoid
+linked_to_topics:
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
+linked_to_claims:
+- dgl-equivalent-cimetidine-recurrence-prevents-asa-ulcer
+- dgl-must-be-chewed-not-capsule
+notes_for_coach: 'Must be chewed (not swallowed as capsule) to activate salivary compounds.
+  Dose: 2–4 × 380 mg tablets = 760–1520 mg between meals or 20 min before meals. Continue
+  8–16 weeks after full response. DGL lacks aldosterone-like side effects of whole
+  licorice. Flavonoids in DGL inhibit H. pylori.'
+notes_for_client: DGL is licorice with the part that raises blood pressure removed.
+  It must be chewed — not swallowed whole — to work properly. Take it 20 minutes before
+  meals.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Botanical Medicines — Glycyrrhiza glabra, p. 784
+  quote: DGL is an antiulcer agent with no known side effects. DGL stimulates differentiation
+    to glandular cells plus mucus formation and secretion. No significant differences
+    exist in recurrence rates between cimetidine and DGL.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -10,8 +10,8 @@ typical_dose_range:
     max: 400
     unit: mg
   tablet:
-    min: 10
-    max: 400
+    min: 5
+    max: 10
     unit: mg
 timing_options:
 - with_breakfast
@@ -21,16 +21,14 @@ take_with_food: required
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - mthfr-variants
+- carpal-tunnel-syndrome
 linked_to_claims:
 - riboflavin-fat-metabolism-signal
 - riboflavin-400mg-migraine-reduction
 - riboflavin-stabilises-mthfr-enzyme-c677t
-notes_for_coach: Particularly relevant for C677T homozygotes (677TT genotype). Riboflavin
-  is the FAD cofactor for the MTHFR enzyme; supplementation may help stabilise enzyme
-  activity and has evidence for blood pressure reduction in 677TT individuals. Exact
-  dose should be confirmed with a clinician — 'low-dose' in the literature typically
-  refers to 1.6–2 mg/day riboflavin, though clinical protocols vary. Best absorbed
-  with food.
+- cts-b6-b2-combined-benefit
+notes_for_coach: 'Required cofactor for converting pyridoxine to active P5P. For CTS:
+  5–10 mg daily as adjunct to B6. Urine turns bright yellow — expected and harmless.'
 notes_for_client: Riboflavin (vitamin B2) is an important supporting nutrient for
   the MTHFR enzyme — especially if you have two copies of the C677T variant. It may
   also help support healthy blood pressure.
@@ -46,7 +44,10 @@ sources:
   quote: Riboflavin/B2 is especially relevant for C677T homozygotes because it helps
     stabilize the MTHFR enzyme, and low-dose riboflavin has evidence for lowering
     blood pressure in 677TT individuals.
-version: 2
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Supplements
+  quote: 'Riboflavin: 5 to 10 mg q.d.'
+version: 3
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-18'
 updated_by: Shivani

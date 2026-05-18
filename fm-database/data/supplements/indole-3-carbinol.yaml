@@ -10,16 +10,23 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - estrogen-metabolism
+- cervical-dysplasia
+- cancer-integrated-naturopathic-support
 linked_to_claims:
 - dim-i3c-support-estrogen-metabolism
 - cruciferous-vegetables-support-estrogen-metabolism
-notes_for_coach: I3C is a precursor to DIM, also derived from cruciferous vegetables.
-  It is a precursor in gut conversion to DIM. Clinician should determine which form
-  is most appropriate.
+- cervical-dysplasia-i3c-regression-hgsil
+notes_for_coach: 'Converted in the stomach to DIM. For cervical dysplasia: 200–400
+  mg daily for 3 months minimum. Shifts estrogen from 16α-hydroxylation to 2-hydroxylation.
+  Found naturally in cruciferous vegetables.'
 notes_for_client: I3C is a natural compound from cruciferous vegetables that supports
   healthy estrogen processing in the body.
 evidence_tier: plausible_emerging
-typical_dose_range: {}
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 400
+    unit: mg
 linked_to_mechanisms: []
 sources:
 - id: vitaone-sex-hormones-toolkit
@@ -30,9 +37,12 @@ sources:
   location: Estrogen Metabolism — Promotes Healthy Estrogen Metabolism
   quote: Two commonly recommended supplements, diindolylmethane (DIM), and Indole-3-carbinol
     (I3C), are extracted from cruciferous vegetables.
-version: 1
+- id: pizzorno-textbook-gi-2
+  location: Cervical Dysplasia — Therapeutic Approach — Supplements
+  quote: 'I3C: 200 to 400 mg q.d. for 3 months'
+version: 2
 status: active
-updated_at: '2026-05-02'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - i3c-indole-3-carbinol

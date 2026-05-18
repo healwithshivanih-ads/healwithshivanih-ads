@@ -1,0 +1,26 @@
+slug: nsaids-significant-pu-risk-all-doses
+statement: NSAIDs carry a significant risk of peptic ulcer at all doses; even low-dose
+  aspirin (75 mg/day) is associated with increased GI bleeding risk, with 40% less
+  bleeding than 300 mg/day but risk remains present.
+evidence_tier: strong
+rationale: Well-established pharmacological mechanism (COX-1 inhibition reducing prostaglandin-mediated
+  mucosal protection) with extensive RCT and epidemiological evidence; dose-dependent
+  GI bleeding data is mainstream clinical knowledge.
+coaching_translation: Even a baby aspirin every day carries a real risk of stomach
+  bleeding — it's not harmless. Let your doctor know if you're taking aspirin regularly.
+linked_to_topics:
+- peptic-ulcer-disease
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Aspirin and Other NSAIDs, p. 781
+  quote: Increased risk of GI bleeding is present with PU at all doses; 75 mg q.d.
+    aspirin (ASA) is associated with 40% less bleeding than 300 mg q.d. and 30% less
+    bleeding than 150 mg q.d.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

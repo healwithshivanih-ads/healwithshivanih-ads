@@ -1,0 +1,29 @@
+slug: bph-vitamin-d-reduced-risk
+statement: Vitamin D supplementation is associated with a trend toward decreased BPH
+  risk; the mechanism involves vitamin D receptor binding on prostate and bladder
+  cells, inhibiting prostate growth, lowering excessive contractility, and reducing
+  inflammation.
+evidence_tier: plausible_emerging
+rationale: Association data and mechanistic evidence cited; effect observed primarily
+  in men using both multivitamins and single vitamin D supplements.
+coaching_translation: Keeping your vitamin D levels optimized may help protect against
+  prostate enlargement — it works directly on prostate cells to reduce growth and
+  inflammation.
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Vitamin D
+  quote: Vitamin D supplementation is associated with reduced risk of BPH. The mechanism
+    in BPH involves attachment of this molecule to vitamin D receptors on prostate
+    and bladder cells and inhibition of prostate growth, lowering excessive contractility
+    and reducing inflammation.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

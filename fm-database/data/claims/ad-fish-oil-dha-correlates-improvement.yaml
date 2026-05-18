@@ -1,0 +1,26 @@
+slug: ad-fish-oil-dha-correlates-improvement
+statement: Fish oil supplementation (EPA and DHA) in atopic dermatitis results in
+  clinical improvement that correlates with the increase in DHA concentration in serum
+  phospholipids.
+evidence_tier: plausible_emerging
+rationale: Multiple epidemiologic and supplementation studies cited; the biomarker–outcome
+  correlation strengthens the mechanistic plausibility of omega-3 incorporation into
+  membrane phospholipids.
+coaching_translation: Adding fish oil to your routine may improve eczema — the better
+  your omega-3 levels in your blood, the more your skin tends to improve.
+linked_to_topics:
+- atopic-dermatitis
+linked_to_supplements:
+- fish-oil
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Essential Fatty Acids
+  quote: Degree of clinical improvement correlates with increase in concentration
+    of DHA in serum phospholipids.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

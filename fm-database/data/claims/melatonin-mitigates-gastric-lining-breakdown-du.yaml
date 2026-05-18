@@ -1,0 +1,29 @@
+slug: melatonin-mitigates-gastric-lining-breakdown-du
+statement: Melatonin mitigates gastric lining breakdown and ulcer formation through
+  antioxidant properties, and may be most applicable for duodenal ulcers involving
+  acid hypersecretion.
+evidence_tier: plausible_emerging
+rationale: Mechanistically supported (antioxidant, cytoprotective effects in gastric
+  mucosa); research focus cited as hypersecretion models, making DU the most relevant
+  indication.
+coaching_translation: Melatonin isn't just for sleep — it may also help protect the
+  stomach lining and reduce acid damage, especially in duodenal ulcers.
+caveats:
+- Most research is in hypersecretion/animal models; human clinical RCT evidence is
+  limited.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- melatonin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: Melatonin mitigates gastric lining breakdown and ulcer formation. Research
+    has focused on hypersecretion situations; therefore melatonin may be most applicable
+    for DUs, entailing acid hypersecretion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

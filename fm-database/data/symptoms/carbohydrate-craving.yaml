@@ -1,0 +1,22 @@
+slug: carbohydrate-craving
+display_name: Carbohydrate / Sugar Craving
+aliases:
+- yeast cravings
+- sweet cravings
+category: metabolic
+severity: common
+description: Intense craving for carbohydrate-rich or yeast-containing foods, characteristic
+  of Candida overgrowth syndrome as Candida preferentially metabolizes sugars.
+linked_to_topics:
+- chronic-candidiasis
+linked_to_mechanisms:
+- dysbiosis
+when_to_refer: ''
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Chronic Candidiasis — Diagnosis — Typical Patient Profile
+  quote: Craving for foods rich in carbohydrates or yeast
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

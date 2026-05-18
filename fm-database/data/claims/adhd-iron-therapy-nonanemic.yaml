@@ -1,0 +1,25 @@
+slug: adhd-iron-therapy-nonanemic
+statement: Iron therapy in non-anemic children with ADHD who have low iron stores
+  has been found to result in diminished ADHD symptoms within 30 days.
+evidence_tier: plausible_emerging
+rationale: Iron deficiency without overt anemia is much more common in ADHD children;
+  iron is critical for dopamine synthesis and brain development.
+coaching_translation: Even without full-blown anemia, low iron can worsen ADHD symptoms
+  — a simple ferritin check and iron supplementation can make a real difference within
+  a month.
+out_of_scope_notes: Iron supplementation in children should be supervised by a clinician
+  due to toxicity risk at high doses.
+linked_to_topics:
+- adhd
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Individual Nutrients — Iron
+  quote: Iron therapy in nonanemic children with ADHD has been found to result in
+    diminished ADHD symptoms within 30 days.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

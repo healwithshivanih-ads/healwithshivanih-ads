@@ -1,0 +1,29 @@
+slug: dgl-equivalent-cimetidine-recurrence-prevents-asa-ulcer
+statement: Deglycyrrhizinated licorice (DGL) shows no significant difference from
+  cimetidine in ulcer recurrence rates and prevents ASA-induced gastric ulceration
+  and bleeding.
+evidence_tier: plausible_emerging
+rationale: Comparative data vs. cimetidine cited in FM textbook; DGL's flavonoid content
+  inhibits H. pylori and it stimulates mucus production. Chewable formulation required
+  for efficacy via salivary activation.
+coaching_translation: DGL chewable tablets can be as effective as a standard acid-blocking
+  medication for preventing ulcer recurrence — without the side effects.
+caveats:
+- DGL in capsule form has not been shown effective — must be chewed.
+- Studies compared to cimetidine (older H2 blocker); modern PPI comparisons are lacking.
+linked_to_topics:
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
+linked_to_supplements:
+- dgl-deglycyrrhizinated-licorice
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Botanical Medicines — Glycyrrhiza glabra, p. 784
+  quote: No significant differences exist in recurrence rates between cimetidine and
+    DGL. It prevents ASA-induced ulceration and gastric bleeding.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

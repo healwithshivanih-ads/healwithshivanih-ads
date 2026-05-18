@@ -1,0 +1,26 @@
+slug: l-theanine-adhd-sleep-quality
+statement: L-theanine at 400 mg/day improves sleep quality in boys with ADHD, reduces
+  anxiety, increases concentration, stabilizes mood without sedation, and improves
+  cerebral dopaminergic activity.
+evidence_tier: plausible_emerging
+rationale: RCT data on L-theanine in boys with ADHD cited; mechanism involves enhancement
+  of dopaminergic activity and modulation of GABA/glutamate signaling.
+coaching_translation: L-theanine — naturally found in green tea — can help children
+  with ADHD sleep better, feel calmer, and focus more without making them drowsy.
+linked_to_topics:
+- adhd
+linked_to_supplements:
+- l-theanine
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — L-Theanine
+  quote: 'Research dose for boys with ADHD: 400 mg l-theanine q.d. Reduces anxiety,
+    increases concentration, improves sleep quality, and stabilizes mood without sedation.
+    It also improves cerebral dopaminergic activity.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

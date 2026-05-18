@@ -1,0 +1,31 @@
+slug: bph-serenoa-repens-90-percent-response
+statement: Roughly 90% of men with mild to moderate BPH experience improvement in
+  symptoms during the first 4–6 weeks of Serenoa repens (saw palmetto) 320 mg liposterolic
+  extract per day, with efficacy comparable to finasteride and tamsulosin but a better
+  side-effect profile.
+evidence_tier: strong
+rationale: Multiple RCTs and comparative trials cited; mechanism involves inhibition
+  of DHT binding to androgen receptors, 5-alpha-reductase inhibition, and intraprostatic
+  estrogen receptor interference.
+coaching_translation: Saw palmetto at 320 mg per day is one of the best-studied natural
+  options for prostate symptoms — about 9 in 10 men with mild to moderate BPH respond
+  well.
+caveats:
+- Effect is most pronounced in early BPH; little benefit in advanced cases with large
+  residual urine volumes
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- serenoa-repens
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Serenoa Repens
+  quote: Roughly 90% of men with mild to moderate BPH experience improvement in symptoms
+    during first 4 to 6 weeks after starting Serenoa (320 mg of liposterolic extract
+    per day).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

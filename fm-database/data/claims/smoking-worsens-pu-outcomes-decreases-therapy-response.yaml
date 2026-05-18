@@ -1,0 +1,26 @@
+slug: smoking-worsens-pu-outcomes-decreases-therapy-response
+statement: Smoking is linked to increased frequency of peptic ulcers, decreased response
+  to PU therapy, and increased mortality; bile salt reflux into the stomach is the
+  most likely mechanism.
+evidence_tier: strong
+rationale: Epidemiological association between smoking and PU outcomes is well established
+  in the medical literature; the bile-salt reflux mechanism is the leading proposed
+  explanation.
+coaching_translation: Smoking directly worsens ulcers and makes treatment less effective.
+  Quitting smoking is one of the most important steps you can take.
+linked_to_topics:
+- peptic-ulcer-disease
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Lifestyle Factors — Smoking, p. 782
+  quote: 'Smoking: increased frequency, decreased response to PU therapy, and increased
+    mortality rate are linked to smoking. Bile salt reflux induced by smoking is the
+    most likely factor.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

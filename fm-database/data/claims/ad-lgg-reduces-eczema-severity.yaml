@@ -1,0 +1,27 @@
+slug: ad-lgg-reduces-eczema-severity
+statement: Lactobacillus rhamnosus GG alone or in conjunction with Lactobacillus reuteri,
+  given to infants with AD and cow's milk allergy, reduced severity of eczema.
+evidence_tier: plausible_emerging
+rationale: Multiple probiotic RCTs in AD show benefit particularly in IgE-sensitized
+  infants; effect may be more pronounced in those with elevated IgE and positive skin-prick
+  tests.
+coaching_translation: Certain probiotics — especially Lactobacillus rhamnosus GG —
+  have been shown to reduce eczema severity in babies, particularly those with food
+  allergies.
+linked_to_topics:
+- atopic-dermatitis
+linked_to_supplements:
+- lactobacillus-rhamnosus-gg
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Nutritional Supplements — Probiotics
+  quote: Probiotic Lactobacillus rhamnosus strain GG alone or in conjunction with
+    Lactobacillus reuteri given to infants with AD and cow's milk allergy reduced
+    severity of eczema.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

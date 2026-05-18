@@ -1,0 +1,40 @@
+slug: cervical-dysplasia
+display_name: Cervical Dysplasia
+aliases:
+- CIN
+- cervical intraepithelial neoplasia
+- HPV-related cervical changes
+- abnormal Pap smear
+summary: Precancerous cervical epithelial changes driven by persistent high-risk HPV
+  infection, nutritional deficiencies (folate, B12, carotenoids, vitamin C), smoking,
+  oral contraceptive use, and impaired immunity. Natural approaches focus on optimizing
+  estrogen metabolism, correcting micronutrient deficiencies, and topical/escharotic
+  treatment protocols.
+common_symptoms: []
+red_flags:
+- HGSILs with unsatisfactory colposcopy — refer for LEEP/conization
+- Microinvasive or frank invasive cancer — refer for surgery
+- Non-compliant patient — refer for conventional treatment
+related_topics:
+- cancer-integrated-naturopathic-support
+- oral-contraceptive-nutrient-depletion
+key_mechanisms:
+- hpv-immune-evasion
+- folate-deficiency-dna-instability
+- estrogen-16-hydroxylation
+coaching_scope_notes: Coaches can support dietary improvements, supplement protocols,
+  smoking cessation, and OC cessation counseling. Colposcopy, biopsy, LEEP, and escharotic
+  treatment are clinician scope.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Cervical Dysplasia — General Considerations
+  quote: Cervical dysplasia (CD) is a precancerous lesion with risk factors similar
+    to those of cervical cancer. Etiologic lifestyle factors include early age of
+    first intercourse, multiple sexual partners, smoking, oral contraceptive (OC)
+    use, pregnancy, and many nutritional factors.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

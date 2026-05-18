@@ -1,0 +1,29 @@
+slug: flavonoids-inhibit-h-pylori-concentration-dependent
+statement: Several dietary flavonoids inhibit H. pylori in a concentration-dependent
+  manner and augment natural mucosal defence factors; flavone has an effect comparable
+  to bismuth subcitrate.
+evidence_tier: plausible_emerging
+rationale: In vitro and early clinical evidence cited; catechin's inhibition of histidine
+  decarboxylase and H. pylori is mechanistically described. Flavone comparison to
+  bismuth subcitrate is from preclinical/early clinical data.
+coaching_translation: Flavonoid-rich foods and supplements (like catechin or quercetin)
+  may directly inhibit H. pylori and calm the inflammation driving your ulcer.
+caveats:
+- Most data is in vitro or early-phase; clinical translation requires further RCTs.
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+linked_to_supplements:
+- catechin-flavonoids
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Flavonoids, p. 783–784
+  quote: Several flavonoids inhibit H. pylori in a concentration-dependent manner.
+    They augment natural defense factors that prevent ulcer formation. Flavone (most
+    potent flavonoid studied in this context) has an effect similar to bismuth subcitrate.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

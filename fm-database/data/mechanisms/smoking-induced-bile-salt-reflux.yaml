@@ -1,0 +1,33 @@
+slug: smoking-induced-bile-salt-reflux
+display_name: Smoking-Induced Bile Salt Reflux
+aliases:
+- bile reflux from smoking
+- smoking ulcer mechanism
+category: gut
+summary: Smoking promotes reflux of bile salts into the stomach and proximal duodenum,
+  decreases pancreatic bicarbonate secretion, and accelerates gastric emptying into
+  the duodenum. Bile salts are directly irritating to the gastric and duodenal mucosa.
+  This is considered the most likely mechanism by which smoking worsens PU.
+upstream_drivers:
+- cigarette-smoking
+- psychological-stress
+downstream_effects:
+- gastric-mucosal-barrier-disruption
+- peptic-ulcer-formation
+- reduced-pu-therapy-response
+related_mechanisms:
+- gastric-mucosal-barrier-disruption
+linked_to_topics:
+- peptic-ulcer-disease
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Lifestyle Factors — Smoking, p. 782
+  quote: Three postulated mechanisms are (1) decreased pancreatic bicarbonate secretion,
+    (2) increased reflux of bile salts into the stomach, and (3) acceleration of gastric
+    emptying into the duodenum. Bile salt reflux induced by smoking is the most likely
+    factor.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

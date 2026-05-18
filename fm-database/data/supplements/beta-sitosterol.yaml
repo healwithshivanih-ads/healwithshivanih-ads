@@ -7,7 +7,7 @@ forms_available:
 timing_options:
 - with_breakfast
 - with_dinner
-take_with_food: required
+take_with_food: optional
 linked_to_topics:
 - benign-prostatic-hyperplasia
 - testosterone-health
@@ -15,12 +15,18 @@ linked_to_topics:
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
-notes_for_coach: Beta-sitosterol is a plant sterol with evidence for BPH symptom relief
-  and potential 5-α reductase inhibiting activity. Clinician determines dosing.
+- bph-beta-sitosterol-improves-flow
+notes_for_coach: 'Plant sterol found in Serenoa repens, Pygeum, pumpkin seed, soy,
+  avocados. Dose: 60–130 mg daily. Can be combined with saw palmetto and Cernilton
+  for synergistic BPH effect.'
 notes_for_client: Beta-sitosterol is a plant compound that may help ease urinary symptoms
   related to prostate health.
-evidence_tier: plausible_emerging
-typical_dose_range: {}
+evidence_tier: strong
+typical_dose_range:
+  capsule:
+    min: 60
+    max: 130
+    unit: mg
 linked_to_mechanisms: []
 sources:
 - id: vitaone-sex-hormones-toolkit
@@ -30,7 +36,10 @@ sources:
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
   quote: Beta-sitosterols [listed under Nutrients/Phytonutrients that Inhibit 5-a
     Reductase]
-version: 2
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Botanicals
+  quote: 'Beta-sitosterol: 60 to 130 mg q.d.'
+version: 3
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: gastric-mucin-degradation
+display_name: Gastric Mucin Degradation
+aliases:
+- mucus layer breakdown
+- mucin layer disruption
+category: gut
+summary: The mucin layer lining the stomach and duodenum is the primary physical barrier
+  against acid-mediated damage. H. pylori and other ulcerogenic factors degrade this
+  layer, reducing its protective capacity. Restoration of mucin production is a key
+  therapeutic target; L-glutamine supports biosynthesis of hexosamine moieties in
+  mucoproteins, and DGL stimulates mucus formation and secretion.
+upstream_drivers:
+- h-pylori-colonisation
+- nsaid-use
+- nutrient-deficiency
+downstream_effects:
+- gastric-mucosal-barrier-disruption
+- peptic-ulcer-formation
+related_mechanisms:
+- h-pylori-urease-ammonia-production
+- gastric-mucosal-barrier-disruption
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Cabbage, p. 783
+  quote: L-Glutamine is involved in biosynthesis of hexosamine moiety in certain mucoproteins.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

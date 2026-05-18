@@ -1,35 +1,54 @@
 slug: dysbiosis
-display_name: Gut Microbiota Dysbiosis
+display_name: Gut Dysbiosis
 aliases:
 - intestinal-dysbiosis
 - gut-flora-imbalance
 - microbiota-dysbiosis
 - small-intestinal-bacterial-overgrowth
+- intestinal dysbiosis
+- altered bowel flora
+- microbiome imbalance
 category: gut
-summary: An imbalance of intestinal microbial populations — increased gram-positive
-  anaerobic coccoid rods and Bacteroides vulgatus in IBD, or SIBO in IBS — disrupts
-  fermentation patterns, mucosal immunity, and epithelial integrity. Antibiotic exposure,
-  carrageenan, and dietary refined carbohydrates are key upstream drivers.
+summary: Imbalance in gut microbial ecology — reduction of commensal lactobacilli
+  and bifidobacteria with overgrowth of pathogens (Candida, pathogenic bacteria, parasites)
+  — driven by antibiotic use, high-sugar diet, immunosuppression, and stress. Dysbiosis
+  impairs gut mucosal immunity, increases intestinal permeability, and drives systemic
+  inflammatory and allergic responses.
 upstream_drivers:
 - antibiotic-exposure
 - refined-carbohydrate-diet
 - carrageenan-consumption
 - proton-pump-inhibitor-use
+- antibiotic-use
+- high-sugar-diet
+- immunosuppression
+- corticosteroid-use
+- stress
 downstream_effects:
 - leaky-gut
 - scfa-deficiency
 - food-allergy
 - chronic-diarrhea
 - ibs-symptoms
+- candida-overgrowth
+- food-allergies
+- impaired-immune-function
+- sifo
 related_mechanisms:
 - leaky-gut
 - mucosal-inflammation
 - scfa-deficiency
+- impaired-immune-function
 linked_to_topics:
 - inflammatory-bowel-disease
 - irritable-bowel-syndrome
 - maldigestion
 - kidney-stones
+- chronic-candidiasis
+- atopic-dermatitis
+- adhd
+- celiac-disease
+- chronic-fatigue-syndrome
 evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi
@@ -38,7 +57,12 @@ sources:
     in number of bacteria. Early research is showing some response to fecal transplants,
     supporting the concept that microflora imbalance plays an important role in the
     underlying pathophysiology.
-version: 1
+- id: pizzorno-textbook-gi-2
+  location: Chronic Candidiasis — General Considerations
+  quote: Prolonged antibiotic use is the key factor in most cases—suppresses normal
+    intestinal bacteria that control yeast, suppresses immunity, generates antibiotic-resistant
+    microbes, may contribute to Crohn's disease.
+version: 2
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani

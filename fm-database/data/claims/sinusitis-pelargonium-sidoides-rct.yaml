@@ -1,0 +1,27 @@
+slug: sinusitis-pelargonium-sidoides-rct
+statement: Ethanolic extract of Pelargonium sidoides (EPs 7630) at 3 mL three times
+  daily for up to 22 days induced a significant decrease in Sinusitis Severity Score
+  compared with placebo in acute rhinosinusitis of presumably bacterial origin.
+evidence_tier: plausible_emerging
+rationale: Cited from RCT data; EPs 7630 is an approved drug for acute bronchitis
+  in Germany; immune-enhancing, antimicrobial, and expectorant properties are documented.
+coaching_translation: Pelargonium sidoides (also sold as 'Umcka') is a well-studied
+  herbal extract that can speed recovery from sinus and respiratory infections.
+linked_to_topics:
+- bacterial-sinusitis
+linked_to_supplements:
+- pelargonium-sidoides
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Bacterial Sinusitis — Pelargonium Sidoides
+  quote: For acute rhinosinusitis of presumably bacterial origin, patients are given
+    ethanolic extract of P. sidoides (EPs 7630) at 3 mL t.i.d. for a maximum of 22
+    days. The extract induced significant decrease in Sinusitis Severity Score compared
+    with placebo.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

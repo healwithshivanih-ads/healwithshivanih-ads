@@ -1,0 +1,26 @@
+slug: ad-food-allergen-elimination-75-percent
+statement: Elimination of wheat, milk products, eggs, peanuts, tomatoes, and artificial
+  colors and preservatives results in significant improvement in 75% of atopic dermatitis
+  cases.
+evidence_tier: plausible_emerging
+rationale: Cited from Pizzorno's Textbook; supported by multiple elimination diet
+  studies in AD, though heterogeneity in study design limits strong consensus.
+coaching_translation: Removing the most common food triggers — especially wheat, dairy,
+  eggs, and food additives — helps about three-quarters of people with eczema notice
+  real improvement.
+linked_to_topics:
+- atopic-dermatitis
+- food-allergy
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Food Allergy, Gut Permeability, and Candidal Overgrowth
+  quote: Elimination of wheat, milk products, eggs, peanuts, tomatoes, and artificial
+    colors and preservatives results in significant improvement in 75% of cases.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: prolactin-driven-prostate-growth
+display_name: Prolactin-Driven Prostate Growth
+aliases:
+- prolactin-prostate axis
+category: endocrine
+summary: Prolactin increases testosterone uptake by prostate cells, providing additional
+  substrate for 5-alpha-reductase conversion to DHT and stimulating prostate cell
+  proliferation. Alcohol (especially beer) raises prolactin levels. Zinc inhibits
+  prolactin and 5-alpha-reductase, making it a dual-action nutrient for BPH.
+upstream_drivers:
+- beer-alcohol-consumption
+- zinc-deficiency
+downstream_effects:
+- increased-intraprostatic-dht
+- prostate-cell-proliferation
+- bph
+related_mechanisms:
+- 5-alpha-reductase-dht-conversion
+- peripheral-aromatization
+linked_to_topics:
+- benign-prostatic-hyperplasia
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Zinc
+  quote: Zinc can inhibit 5-alpha reductase and inhibit prolactin. Prolactin increases
+    uptake of testosterone by the prostate, leading to increased DHT by providing
+    additional substrate.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -5,7 +5,6 @@ aliases:
 - post-exertional malaise
 - ME/CFS
 - myalgic encephalomyelitis
-- chronic fatigue syndrome
 - long COVID
 - post-viral fatigue syndrome
 - PVFS
@@ -66,7 +65,8 @@ key_mechanisms:
 - sympathetic-dominance
 - mast-cell-degranulation
 - chronic-viral-reactivation
-coaching_scope_notes: 'PACING IS THE INTERVENTION. The single most important shift: stop
+coaching_scope_notes: 'PACING IS THE INTERVENTION. The single most important shift:
+  stop
 
   exercising into the crash. Track HRV (Oura / Whoop / Garmin); on a
 
@@ -93,7 +93,8 @@ coaching_scope_notes: 'PACING IS THE INTERVENTION. The single most important shi
   years and may distrust care providers.
 
   '
-clinician_scope_notes: 'Diagnosis is clinical (IOM 2015 criteria for ME/CFS; long COVID
+clinician_scope_notes: 'Diagnosis is clinical (IOM 2015 criteria for ME/CFS; long
+  COVID
 
   criteria per NICE / CDC). Rule out treatable mimics: hypothyroidism,
 
@@ -114,8 +115,9 @@ evidence_tier: strong
 sources:
 - id: coach-shivani
   location: Coach observation — post-viral / long-COVID protocol
-  quote: Asking "do you crash for days after exertion that used to feel normal?" on intake reframes the entire protocol —
-    wrong exercise advice can cost clients months of recovery.
+  quote: Asking "do you crash for days after exertion that used to feel normal?" on
+    intake reframes the entire protocol — wrong exercise advice can cost clients months
+    of recovery.
 version: 1
 status: active
 updated_at: '2026-05-18'

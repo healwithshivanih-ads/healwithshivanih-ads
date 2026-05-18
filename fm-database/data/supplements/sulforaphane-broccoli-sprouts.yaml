@@ -1,0 +1,40 @@
+slug: sulforaphane-broccoli-sprouts
+display_name: Sulforaphane (Broccoli Sprouts)
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 70
+    max: 70
+    unit: g
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+linked_to_claims:
+- sulforaphane-broccoli-sprouts-reduces-h-pylori-colonisation
+notes_for_coach: 'Clinical study dose: 70 g/day fresh broccoli sprouts (420 µmol SF
+  precursor) for 8 weeks. Decreased urea breath test, H. pylori stool antigen, and
+  serum pepsinogens I & II. Sprout potency varies; standardised extract capsules may
+  be used as alternative.'
+notes_for_client: Broccoli sprouts contain a compound called sulforaphane that has
+  been shown in clinical studies to reduce H. pylori activity in the stomach. Aim
+  for a large handful daily.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Cabbage, p. 783
+  quote: Clinically, broccoli sprouts (70 g/day; containing 420 mmol of SF precursor)
+    for 8 weeks decreased levels of urease (urea breath test and H. pylori stool antigen,
+    biomarkers of H. pylori colonization) and serum pepsinogens I and II (biomarkers
+    of gastric inflammation).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

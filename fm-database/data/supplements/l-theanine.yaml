@@ -7,7 +7,7 @@ forms_available:
 - powder
 typical_dose_range:
   capsule:
-    min: 100
+    min: 200
     max: 400
     unit: mg
   tablet:
@@ -33,28 +33,17 @@ linked_to_topics:
 - nervous-system-regulation
 - emotional-healing-chronic-disease
 - emotional-healing-in-chronic-disease
+- adhd
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - l-theanine-glycine-increase-alpha-waves-relaxation
 - l-theanine-increases-alpha-waves-relaxation
-notes_for_coach: 'Amino acid found naturally in green tea; promotes GABA-pathway
-
-  calming without sedation. Source (Menolascino transcript) does NOT
-
-  give dosing and mentions L-theanine indirectly through GABA-pathway
-
-  discussion. Confirm dose from a peer-reviewed source before client
-
-  use. Commonly used in the evening parasympathetic-support phase of
-
-  an insomnia protocol. Often paired with magnesium glycinate.
-
-  Generally well-tolerated.
-
-  '
-notes_for_client: L-theanine is an amino acid found in green tea that promotes a calm,
-  focused state of mind without making you drowsy. It's gentle and can be used during
-  the day or before bed.
+- l-theanine-adhd-sleep-quality
+notes_for_coach: 'Research dose for boys with ADHD: 400 mg daily. Amino acid found
+  in green tea; improves sleep quality, reduces anxiety, stabilizes mood without sedation,
+  enhances cerebral dopaminergic activity. Safe for children.'
+notes_for_client: L-theanine is the calming amino acid in green tea — it can help
+  with focus and sleep without making you feel drowsy.
 evidence_tier: plausible_emerging
 linked_to_mechanisms:
 - parasympathetic-restoration-failure
@@ -80,10 +69,13 @@ sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: GABA and natural sleep aids section
   quote: the GABA you mentioned. 5-hydroxy-triptophan to help with the serotonin system
-version: 8
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — L-Theanine
+  quote: 'Research dose for boys with ADHD: 400 mg l-theanine q.d.'
+version: 9
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - l-theanine 200-1200mg
 contraindications:

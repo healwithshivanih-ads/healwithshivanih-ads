@@ -1,0 +1,26 @@
+slug: ginkgo-biloba-stroke-recovery
+statement: Ginkgo biloba extract standardized to 24% ginkgo flavon glycosides and
+  6% terpenoids has been studied for cerebrovascular insufficiency and enhances stroke
+  recovery.
+evidence_tier: plausible_emerging
+rationale: Multiple studies on cerebrovascular effects of GBE cited in textbook; mechanism
+  involves improved cerebral blood flow and neuroprotection.
+coaching_translation: Standardized Ginkgo biloba extract may support brain circulation
+  and recovery after stroke — look for products standardized to the researched ratios.
+linked_to_topics:
+- atherosclerosis
+linked_to_supplements:
+- ginkgo-biloba
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atherosclerosis — Preventing a Subsequent Stroke
+  quote: Extract of G. biloba leaves standardized to contain 24% ginkgo flavon glycosides
+    and 6% terpenoids has been studied in depth for decreased blood supply to the
+    brain (cerebrovascular insufficiency). G. biloba extract enhances stroke recovery.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

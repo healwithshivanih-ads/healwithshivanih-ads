@@ -1,0 +1,27 @@
+slug: dgl-must-be-chewed-not-capsule
+statement: DGL must be mixed with saliva to be effective, as salivary compounds stimulate
+  gastric and intestinal cell regeneration; DGL in capsule form has not been shown
+  to be effective.
+evidence_tier: plausible_emerging
+rationale: Formulation-specific finding cited in FM textbook; salivary activation
+  mechanism is biologically plausible though direct clinical comparison of chewable
+  vs. capsule DGL RCTs are limited.
+coaching_translation: Always use DGL as a chewable tablet, not a capsule — it needs
+  to mix with saliva in your mouth to work properly.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- dgl-deglycyrrhizinated-licorice
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Botanical Medicines — Glycyrrhiza glabra, p. 784
+  quote: DGL must mix with saliva to be effective; this may promote release of salivary
+    compounds that stimulate growth and regeneration of stomach and intestinal cells.
+    DGL in capsule form has not been shown to be effective.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

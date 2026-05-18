@@ -1,0 +1,26 @@
+slug: milk-increases-gastric-acid-worsens-pu
+statement: Milk consumption significantly increases gastric acid production; the higher
+  the milk intake, the greater the likelihood of developing a peptic ulcer.
+evidence_tier: plausible_emerging
+rationale: The acid-stimulating effect of milk (protein/calcium buffering then rebound
+  acid) is physiologically supported, and the association with ulcer risk is noted
+  in the FM literature, though large prospective RCTs are limited.
+coaching_translation: Milk is not a safe antacid remedy — it temporarily soothes but
+  then triggers more acid. Avoid it if you have an ulcer.
+caveats:
+- RCT evidence for milk as an independent ulcer risk factor is limited; consider as
+  FM-specific guidance.
+linked_to_topics:
+- peptic-ulcer-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Food allergy, p. 782
+  quote: Milk should be avoided; the higher the milk consumption, the greater the
+    likelihood of ulcer. Milk significantly increases stomach acid production.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

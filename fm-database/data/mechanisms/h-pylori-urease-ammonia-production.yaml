@@ -1,0 +1,36 @@
+slug: h-pylori-urease-ammonia-production
+display_name: H. pylori Urease-Mediated Ammonia Production
+aliases:
+- urease activity
+- ammonia-induced mucosal damage
+category: gut
+summary: H. pylori secretes urease, which hydrolyses urea in the gastric lumen to
+  produce ammonia and CO2. Ammonia raises local gastric pH, disrupts the mucous layer,
+  and creates a positive-feedback environment that promotes further bacterial colonisation
+  and secondary organism overgrowth.
+upstream_drivers:
+- h-pylori-colonisation
+- low-gastric-antioxidant-content
+- low-gastric-acid-output
+downstream_effects:
+- gastric-mucosal-barrier-disruption
+- gastric-mucin-degradation
+- secondary-organism-colonisation
+related_mechanisms:
+- gastric-mucosal-barrier-disruption
+- gastric-mucin-degradation
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Helicobacter pylori section, p. 781
+  quote: Low gastric output and low antioxidant content in gastrointestinal (GI) mucosa
+    may predispose to H. pylori colonization, which in turn increases gastric pH,
+    setting up positive feedback and increasing the risk for colonization of other
+    organisms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

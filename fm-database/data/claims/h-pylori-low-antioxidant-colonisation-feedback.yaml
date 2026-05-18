@@ -1,0 +1,29 @@
+slug: h-pylori-low-antioxidant-colonisation-feedback
+statement: Low gastric acid output and low antioxidant content in the GI mucosa predispose
+  to H. pylori colonisation, which in turn raises gastric pH, creating a positive
+  feedback loop that increases risk for colonisation by other organisms.
+evidence_tier: plausible_emerging
+rationale: Mechanistically coherent but drawn from a textbook synthesis; direct RCT
+  evidence for the antioxidant-colonisation link is emerging rather than consensus.
+coaching_translation: A nutrient-rich antioxidant diet may help maintain the gastric
+  environment that resists H. pylori overgrowth.
+caveats:
+- Source is a textbook synthesis; specific antioxidant RCTs not cited here.
+linked_to_topics:
+- helicobacter-pylori-infection
+linked_to_supplements:
+- vitamin-c
+- vitamin-e
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Helicobacter pylori section, p. 781
+  quote: Low gastric output and low antioxidant content in gastrointestinal (GI) mucosa
+    may predispose to H. pylori colonization, which in turn increases gastric pH,
+    setting up positive feedback and increasing the risk for colonization of other
+    organisms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

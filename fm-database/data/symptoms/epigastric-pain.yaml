@@ -1,0 +1,31 @@
+slug: epigastric-pain
+display_name: Epigastric Pain
+aliases:
+- stomach pain
+- upper abdominal pain
+- epigastric distress
+- gnawing stomach pain
+- burning stomach
+- epigastric ache
+category: gi
+severity: common
+description: Pain or discomfort in the upper central abdomen (epigastric region),
+  classically occurring 45–60 minutes after meals or at night, described as gnawing,
+  burning, cramplike, or aching. Relieved by food, antacids, or vomiting.
+when_to_refer: Refer if pain is severe, persistent, or accompanied by signs of GI
+  bleeding (black/tarry stool, vomiting blood), unexplained weight loss, or dysphagia.
+linked_to_topics:
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
+linked_to_mechanisms:
+- gastric-mucosal-barrier-disruption
+sources:
+- id: pizzorno-textbook-hpylori
+  location: General Considerations, p. 779
+  quote: Most PUs are associated with abdominal discomfort 45 to 60 minutes after
+    meals or during the night described as gnawing, burning, cramplike, aching, or
+    heartburn.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

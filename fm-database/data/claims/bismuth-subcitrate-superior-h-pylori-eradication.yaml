@@ -1,0 +1,34 @@
+slug: bismuth-subcitrate-superior-h-pylori-eradication
+statement: Bismuth subcitrate produces the best results against H. pylori among bismuth
+  preparations and is a naturally occurring mineral antacid and H. pylori inhibitor
+  with a lower risk of inducing bacterial resistance than standard antibiotics.
+evidence_tier: plausible_emerging
+rationale: Bismuth's anti-H. pylori mechanism (disruption of bacterial cell wall and
+  urease inhibition) is well described; comparative superiority of subcitrate over
+  subsalicylate is stated in this FM source. Bismuth is used in standard triple therapy
+  internationally.
+coaching_translation: Bismuth supplements are a natural mineral that can help control
+  H. pylori without the antibiotic resistance risk.
+caveats:
+- Bismuth subcitrate requires compounding pharmacy in some regions; clinician oversight
+  recommended.
+- Avoid bismuth subsalicylate in children with viral illness due to Reye's syndrome
+  risk.
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+linked_to_supplements:
+- bismuth-subcitrate
+out_of_scope_notes: Dosing and sourcing of bismuth subcitrate (compounding pharmacy)
+  should involve clinician.
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Bismuth subcitrate, p. 783
+  quote: Bismuth subcitrate produces the best results against H. pylori and treating
+    PUs. The advantage of bismuth over standard antibiotics is the risk of developing
+    bacterial resistance to antibiotics that is unlikely relative to bismuth.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

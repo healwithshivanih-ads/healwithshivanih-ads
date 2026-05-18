@@ -1,0 +1,27 @@
+slug: h-pylori-prevalence-du-gu
+statement: H. pylori is found in 90–100% of duodenal ulcer patients, 70% of gastric
+  ulcer patients, and 50% of people over age 50, yet 80% of H. pylori–infected individuals
+  never develop ulcers.
+evidence_tier: strong
+rationale: Widely cited epidemiological data from a major natural medicine textbook;
+  consistent with peer-reviewed H. pylori literature establishing H. pylori as necessary
+  but not sufficient for ulcer development.
+coaching_translation: Most people with H. pylori don't get ulcers — other factors
+  like stress, diet, and smoking also matter.
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Helicobacter pylori section, p. 781
+  quote: 'H. pylori: 90% to 100% of patients with DUs, 70% with GUs, and 50% of people
+    older than 50 years test positive for H. pylori. However, 80% of H. pylori–infected
+    people never develop ulcers.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

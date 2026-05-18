@@ -1,13 +1,14 @@
 slug: benign-prostatic-hyperplasia
-display_name: Benign Prostatic Hyperplasia (BPH)
+display_name: Benign Prostatic Hyperplasia
 aliases:
 - BPH
 - enlarged prostate
 - prostate enlargement
-summary: 'A non-cancerous enlargement of the prostate gland commonly associated with
-  excess DHT conversion via 5-α reductase. Assessed via the AUA BPH Symptom Index
-  (scores 0–35: mild, moderate, severe). Functional medicine approaches focus on inhibiting
-  5-α reductase through diet, herbs, and targeted nutrients.'
+- lower urinary tract symptoms
+summary: Age-related prostate enlargement driven by DHT accumulation via 5-alpha-reductase
+  conversion of testosterone, increased estradiol from peripheral aromatization in
+  body fat, and prolactin stimulation. Risk factors include abdominal obesity, sedentary
+  lifestyle, and high-fat diet. Natural therapies target multiple hormonal pathways.
 common_symptoms:
 - incomplete-bladder-emptying
 - urinary-urgency
@@ -23,18 +24,28 @@ red_flags:
 - hematuria
 - BPH score ≥20 (severe) requires urological referral
 - Acute urinary retention is a medical emergency
+- Acute urinary retention — catheterization required
+- Residual urine >100mL — consider alpha-1 antagonist
+- Hematuria, recurrent infections, renal impairment — refer for surgery
+- PSA elevation — rule out prostate cancer
 related_topics:
 - testosterone-health
 - five-alpha-reductase-activity
 - testosterone-dht-conversion
 - sex-hormone-binding-globulin
+- prostate-cancer
+- metabolic-syndrome
 key_mechanisms:
 - five-alpha-reductase-conversion
 - dht-excess
 - 5-alpha-reductase-activity
 - testosterone-to-dht-conversion
-coaching_scope_notes: Coaches can administer the BPH Symptom Index as a tracking tool
-  and support dietary interventions. Scores ≥8 should trigger clinician referral.
+- 5-alpha-reductase-dht-conversion
+- peripheral-aromatization
+- prolactin-driven-prostate-growth
+coaching_scope_notes: Coaches can support dietary changes, exercise, saw palmetto
+  and botanical protocols, zinc, and vitamin D. PSA interpretation, surgical decisions,
+  and medication are clinician scope.
 clinician_scope_notes: Clinician should rule out prostate cancer, prescribe pharmaceutical
   5-α reductase inhibitors (e.g., finasteride) if indicated, and coordinate urological
   care.
@@ -51,7 +62,11 @@ sources:
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
   quote: This can result in conditions such as enlargement of the prostate in men,
     hair loss in both men and women, and extra facial hair and acne in women.
-version: 2
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — General Considerations
+  quote: BPH is the fourth most common diagnosis in older men; 50% of men over age
+    50 are affected, and 90% of men will have an enlarged prostate by age 80.
+version: 3
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: candida-comprehensive-approach-superior
+statement: A comprehensive approach addressing all predisposing factors is more effective
+  than simply killing yeast with antifungal agents; if symptoms persist after Candida
+  eradication is confirmed, other conditions (SIBO, pancreatic insufficiency) should
+  be considered.
+evidence_tier: fm_specific_thin
+rationale: This is a foundational naturopathic clinical principle supported by clinical
+  experience; limited RCT evidence exists for the comprehensive protocol vs monotherapy.
+coaching_translation: Treating candida overgrowth requires a full-system approach
+  — diet, gut healing, immune support, and liver detox — not just antifungal supplements
+  alone.
+caveats:
+- FM-specific principle with thin peer-reviewed RCT support
+linked_to_topics:
+- chronic-candidiasis
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Chronic Candidiasis — Therapeutic Considerations
+  quote: Comprehensive approach more effective than simply killing yeast with drug
+    or natural agent; address causes. Eradicate Candida with natural therapies; follow-up
+    stool culture and analysis confirm Candida eliminated.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,26 @@
+slug: sinusitis-chronic-84-percent-allergy
+statement: Approximately 84% of patients with chronic sinusitis have underlying allergies;
+  addressing respiratory and food allergens with supportive therapy (saline nasal
+  sprays, immune-enhancing herbs, natural decongestants) is the most rational approach.
+evidence_tier: plausible_emerging
+rationale: Clinical epidemiological data cited in Pizzorno textbook; the high prevalence
+  of allergy in chronic sinusitis supports allergen identification and elimination
+  as primary strategy.
+coaching_translation: Chronic sinus problems are almost always connected to allergies
+  — food or environmental. Finding and removing your triggers is more important than
+  antibiotics for long-term relief.
+linked_to_topics:
+- bacterial-sinusitis
+- food-allergy
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Bacterial Sinusitis — Therapeutic Considerations — Allergy
+  quote: Approximately 84% of those with chronic sinusitis have allergies.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

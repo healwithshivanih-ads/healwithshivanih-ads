@@ -1,0 +1,38 @@
+slug: dietary-fiber-psyllium
+display_name: Dietary Fibre (Psyllium / Pectin / Guar Gum)
+category: other
+forms_available:
+- powder
+- capsule
+typical_dose_range:
+  powder:
+    min: 5
+    max: 15
+    unit: g
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_claims:
+- high-fiber-diet-halves-du-recurrence
+notes_for_coach: 'Fibre slows gastric emptying of liquid phase, reducing rapid acid
+  delivery to the duodenum. Specific supplemental forms cited: pectin, guar gum, psyllium.
+  Whole-food plant diet is preferred over isolated supplements.'
+notes_for_client: Adding more fibre to your diet — or taking psyllium supplements
+  — may halve your chance of your duodenal ulcer coming back by slowing down how fast
+  your stomach empties.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Fiber, p. 782–783
+  quote: 'Supplemental fibers used: pectin, guar gum, psyllium; diet rich in plant
+    foods is best. A high-fiber diet in patients with recently healed DUs reduced
+    recurrence rate by half.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

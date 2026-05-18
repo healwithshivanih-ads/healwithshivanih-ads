@@ -1,0 +1,30 @@
+slug: food-allergy-prime-causative-factor-pu
+statement: Food allergy is identified as a prime causative factor in peptic ulcer
+  disease; PU lesions are histologically similar to the Arthus reaction, and 98% of
+  PU patients had coexisting upper/lower respiratory tract allergic disease.
+evidence_tier: fm_specific_thin
+rationale: The 98% co-prevalence figure and histological Arthus-reaction analogy are
+  cited in this FM textbook but lack robust RCT replication in mainstream gastroenterology
+  literature; classified as FM-specific.
+coaching_translation: Undetected food sensitivities — especially to milk — may be
+  driving your ulcer symptoms. An elimination diet is worth exploring.
+caveats:
+- 98% co-prevalence statistic is from FM literature; not widely replicated in mainstream
+  gastroenterology RCTs.
+- Source is a textbook; treat as FM-specific.
+linked_to_topics:
+- peptic-ulcer-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Food allergy, p. 782
+  quote: 'Food allergy: this is the prime causative factor. PU lesions are histologically
+    similar to Arthus reaction (local inflammatory response caused by deposition of
+    immune complexes in tissues). Ninety-eight percent of patients with PU had coexisting
+    lower and upper respiratory tract allergic disease.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

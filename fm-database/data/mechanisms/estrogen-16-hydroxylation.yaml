@@ -1,0 +1,34 @@
+slug: estrogen-16-hydroxylation
+display_name: Estrogen 16α-Hydroxylation (Cancer-Promoting Pathway)
+aliases:
+- 16-hydroxyestrone pathway
+- adverse estrogen metabolism
+category: endocrine
+summary: Estrogen can be metabolized to 16α-hydroxyestrone (promotes estrogen-dependent
+  cancer) or to 2-hydroxyestrone (non-carcinogenic). Women with high-grade cervical
+  dysplasia have elevated 16α-hydroxyestrone and reduced 2-hydroxyestrone. Indole-3-carbinol
+  (I3C) and diindolylmethane (DIM) from cruciferous vegetables shift estrogen metabolism
+  toward the protective 2-hydroxylation pathway.
+upstream_drivers:
+- low-cruciferous-vegetable-intake
+- smoking
+- oral-contraceptive-use
+downstream_effects:
+- cervical-dysplasia-progression
+- estrogen-dependent-cancer-risk
+related_mechanisms: []
+linked_to_topics:
+- cervical-dysplasia
+- cancer-integrated-naturopathic-support
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Cervical Dysplasia — Indole-3-carbinol (I3C) and diindolylmethane (DIM)
+  quote: 'The body breaks down estrogen into two byproducts: 16α-hydroxyestrone, which
+    promotes estrogen-dependent cancer; or 2-hydroxyestrone, which does not stimulate
+    cancer cells. Women with HGSILs have altered estrogen metabolism, with higher
+    16α-hydroxyestrone and lower 2-hydroxyestrogen than normal.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,37 @@
+slug: pycnogenol
+display_name: Pycnogenol (Pine Bark Extract)
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 50
+    max: 200
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- adhd
+- atherosclerosis
+linked_to_claims:
+- pycnogenol-adhd-antioxidant-benefit
+notes_for_coach: 'For ADHD: 1 mg/kg body weight daily. For atherosclerosis/general
+  antioxidant: 100 mg daily. Rich in procyanidolic oligomers; broad-spectrum antioxidant.
+  Can be used interchangeably with grapeseed extract for antioxidant purposes.'
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Botanical Medicines — Procyanidolic
+    Oligomers
+  quote: Pycnogenol (1 mg/kg body weight per day) improved antioxidant status in ADHD
+    children. It also improved hyperactivity and improved attention and visual-motor
+    coordination and concentration of children with ADHD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

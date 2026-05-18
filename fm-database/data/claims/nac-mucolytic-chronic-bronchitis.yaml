@@ -1,0 +1,28 @@
+slug: nac-mucolytic-chronic-bronchitis
+statement: Oral N-acetylcysteine (NAC) reduces risk of exacerbations and improves
+  symptoms in patients with chronic bronchitis compared with placebo, by directly
+  splitting sulfur linkages of mucoproteins to reduce viscosity and by increasing
+  glutathione synthesis in the respiratory tract.
+evidence_tier: strong
+rationale: Multiple RCTs in chronic bronchitis and COPD support NAC's mucolytic and
+  antioxidant benefits; the mechanism is well-characterized biochemically.
+coaching_translation: NAC is a powerful supplement for chronic respiratory issues
+  — it thins mucus and boosts your lungs' natural antioxidant defenses at the same
+  time.
+linked_to_topics:
+- bacterial-sinusitis
+linked_to_supplements:
+- n-acetylcysteine
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Bronchitis and Pneumonia — N-Acetylcysteine (NAC)
+  quote: Oral NAC reduces risk of exacerbations and improves symptoms in patients
+    with chronic bronchitis compared with placebo. NAC can increase manufacture of
+    glutathione, a major antioxidant for the entire respiratory tract and lungs.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

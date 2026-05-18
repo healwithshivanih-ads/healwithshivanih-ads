@@ -1,0 +1,29 @@
+slug: ad-phthalate-tslp-elevation
+statement: Phthalates — present in fragrances, personal care products, and plastics
+  — stimulate TSLP secretion from skin and may play a role in the pathogenesis of
+  atopic dermatitis.
+evidence_tier: plausible_emerging
+rationale: TSLP levels rise when stimulated by phthalates; pervasive environmental
+  exposure supports a plausible causal link that is not yet fully established by clinical
+  trials.
+coaching_translation: Reducing your exposure to phthalates (found in fragranced products,
+  plastic packaging, and some cosmetics) may help calm the immune response driving
+  eczema.
+caveats:
+- Causal evidence is largely mechanistic and epidemiologic; RCT avoidance data are
+  lacking
+linked_to_topics:
+- atopic-dermatitis
+linked_to_mechanisms:
+- tslp-driven-th2-polarization
+out_of_scope_notes: ''
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Immune Dysregulation, Thymic Stromal Lymphopoietin,
+    and Allergic Inflammation
+  quote: TSLP profoundly triggers Th2 commitment and rises when stimulated by phthalates.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

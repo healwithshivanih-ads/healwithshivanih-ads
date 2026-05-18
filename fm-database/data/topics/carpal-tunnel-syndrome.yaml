@@ -1,0 +1,41 @@
+slug: carpal-tunnel-syndrome
+display_name: Carpal Tunnel Syndrome
+aliases:
+- CTS
+- median nerve compression
+summary: Compression of the median nerve within the carpal tunnel presenting with
+  numbness, tingling, and pain in first three digits. Idiopathic in most cases; associated
+  with hypothyroidism, diabetes, pregnancy, repetitive wrist flexion, and pyridoxine
+  (B6) deficiency or antimetabolite exposure. Both physical medicine and nutritional
+  approaches are evidence-supported.
+common_symptoms:
+- hand-numbness
+- hand-tingling
+- wrist-pain
+- grip-weakness
+- nocturnal-hand-pain
+red_flags:
+- Progressive neurologic deficit — consider surgery
+- Thenar atrophy — late-stage finding
+related_topics:
+- hypothyroidism
+- diabetes
+key_mechanisms:
+- median-nerve-compression
+- b6-deficiency-neuropathy
+coaching_scope_notes: Coaches can support B6/B2 supplementation, ergonomic advice,
+  stretching exercises, and contrast hydrotherapy. Surgery decisions and nerve conduction
+  studies are clinician scope.
+evidence_tier: plausible_emerging
+clinician_scope_notes: ''
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Nutrition
+  quote: Incidence of CTS has increased with the increased presence of pyridoxine
+    (vitamin B6) antimetabolites (hydrazine dyes, isoniazid, hydralazine, dopamine,
+    penicillamine, and oral contraceptives) in the environment and the intake of excessive
+    protein.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

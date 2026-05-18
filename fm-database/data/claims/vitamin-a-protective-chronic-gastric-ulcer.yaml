@@ -1,0 +1,32 @@
+slug: vitamin-a-protective-chronic-gastric-ulcer
+statement: Vitamins A and E inhibit development of stress ulcers and help maintain
+  integrity of the mucosal barrier; high-dose vitamin A may have a useful protective
+  effect on chronic gastric ulcers.
+evidence_tier: plausible_emerging
+rationale: Animal model and clinical observation data cited; vitamin A's role in mucosal
+  epithelial integrity is well established mechanistically. 'High-dose' is unspecified
+  and requires clinician guidance.
+coaching_translation: Getting enough vitamin A (from food or supplements) supports
+  the protective lining of your stomach and may help prevent ulcers from returning.
+caveats:
+- High-dose vitamin A is teratogenic — use carotenes if pregnancy is possible (as
+  noted in the treatment algorithm).
+- Specific therapeutic doses require clinician supervision.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- vitamin-a
+- vitamin-e
+out_of_scope_notes: High-dose vitamin A dosing must be clinician-supervised; carotenes
+  preferred if patient could be pregnant.
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help
+    maintain integrity of mucosal barrier. High-dose vitamin A may have a useful protective
+    effect on chronic GUs.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

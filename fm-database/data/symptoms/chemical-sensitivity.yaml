@@ -1,28 +1,37 @@
 slug: chemical-sensitivity
 display_name: Chemical Sensitivity
 aliases:
-  - sensitivity to fragrances
-  - environmental sensitivity
-  - reactive to chemicals
-category: neurological
-severity: concerning
-description: |
-  Chemical sensitivity refers to heightened physiological reactions to
-  low levels of environmental chemicals, fragrances, solvents,
-  plastics, or cleaning products. Symptoms may include headaches,
-  brain fog, fatigue, dizziness, mood changes, or irritation after
-  exposure to everyday products.
-when_to_refer: 'Refer if symptoms are severe, progressive, neurological, respiratory, or interfere significantly with daily functioning.'
+- sensitivity to fragrances
+- environmental sensitivity
+- reactive to chemicals
+- multiple chemical sensitivity
+- MCS
+category: other
+severity: common
+description: Heightened reactivity to environmental chemicals, fragrances, and xenobiotics,
+  associated with chronic candidiasis, impaired liver detoxification, and environmental
+  illness.
+when_to_refer: Severe MCS with significant functional impairment
 linked_to_topics:
-  - detoxification-support
+- detoxification-support
+- chronic-candidiasis
+- chronic-fatigue-syndrome
 linked_to_mechanisms:
-  - toxin-load-accumulation
-  - impaired-phase-2-conjugation
+- toxin-load-accumulation
+- impaired-phase-2-conjugation
+- dysbiosis
+- leaky-gut
 sources:
-  - id: fmca-detoxification-basics-minich
-    location: 'Pages 2-3'
-    quote: 'Some people might be more sensitive to these low levels.'
-version: 1
+- id: fmca-detoxification-basics-minich
+  location: Pages 2-3
+  quote: Some people might be more sensitive to these low levels.
+- id: pizzorno-textbook-gi-2
+  location: Chronic Candidiasis — General Considerations
+  quote: 'Overgrowth, depleted immunity, damaged GI mucosa allow absorption of yeast
+    cells, particles, toxins; result is ''yeast syndrome'' or ''feeling sick all over'':
+    fatigue, allergies, immune system malfunction, depression, chemical sensitivities,
+    and digestive disturbances.'
+version: 2
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

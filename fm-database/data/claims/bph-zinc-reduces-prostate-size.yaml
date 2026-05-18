@@ -1,0 +1,25 @@
+slug: bph-zinc-reduces-prostate-size
+statement: Zinc supplementation reduces the size of the prostate and symptoms of BPH
+  in the majority of patients, via dual inhibition of 5-alpha-reductase and prolactin.
+evidence_tier: plausible_emerging
+rationale: Zinc's dual mechanism is biochemically established; clinical trials cited
+  in Pizzorno textbook support reduction in prostate size and LUTS scores.
+coaching_translation: Zinc is a foundational BPH supplement — it works through two
+  separate pathways to reduce the hormonal drivers of prostate enlargement.
+caveats:
+- High-dose zinc >45 mg/day long-term can deplete copper — monitor copper status
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- zinc
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Zinc
+  quote: Zinc supplementation reduces the size of the prostate and symptoms of BPH
+    in the majority of patients.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

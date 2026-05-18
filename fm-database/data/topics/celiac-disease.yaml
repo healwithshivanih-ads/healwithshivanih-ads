@@ -1,0 +1,52 @@
+slug: celiac-disease
+display_name: Celiac Disease
+aliases:
+- coeliac disease
+- gluten-sensitive enteropathy
+- nontropical sprue
+- celiac sprue
+summary: Chronic autoimmune small-intestinal disorder triggered by dietary gluten
+  (gliadin fraction) in genetically susceptible individuals (HLA-DQ2/DQ8). Hallmarks
+  include villous atrophy, malabsorption, elevated anti-tTG and antiendomysial antibodies,
+  and reversal with strict gluten-free diet. Associated with 55+ comorbidities including
+  thyroid disease, T1DM, autoimmune conditions, and non-Hodgkin lymphoma.
+common_symptoms:
+- chronic-diarrhea
+- steatorrhea
+- weight-loss
+- bloating
+- fatigue
+- iron-deficiency-anemia
+- nutrient-deficiencies
+- dermatitis-herpetiformis
+red_flags:
+- Failure to respond to gluten-free diet after 1 month
+- Non-Hodgkin lymphoma risk
+- 39% increased mortality vs controls
+- Psychiatric disturbances including schizophrenia
+related_topics:
+- leaky-gut
+- food-allergy
+- chronic-candidiasis
+- autoimmune-thyroid
+key_mechanisms:
+- gluten-mediated-tight-junction-disruption
+- th1-th2-immune-dysregulation
+- leaky-gut
+coaching_scope_notes: Coaches can support strict gluten-free diet education, label-reading,
+  rotation diets, and nutrient repletion. Diagnosis and biopsy are clinician scope.
+clinician_scope_notes: Confirm with IgA anti-tTG (sensitivity 99%), IgA EMA (specificity
+  99%), check total IgA. Jejunal biopsy if clinically warranted. DPP-IV enzyme may
+  help bridge hidden exposures.
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — General Considerations
+  quote: Celiac disease (CD) is also known as nontropical sprue, gluten-sensitive
+    enteropathy, or celiac sprue. Characteristics include malabsorption and abnormal
+    small intestine structure that reverts to normal on removal of dietary protein
+    gluten.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

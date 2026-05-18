@@ -1,0 +1,31 @@
+slug: sulforaphane-broccoli-sprouts-reduces-h-pylori-colonisation
+statement: Broccoli sprouts (70 g/day containing 420 µmol sulforaphane precursor)
+  taken for 8 weeks significantly decreased urease activity and H. pylori stool antigen
+  levels, as well as serum pepsinogens I and II.
+evidence_tier: plausible_emerging
+rationale: Specific clinical trial data cited (Fahey et al. and related work); sulforaphane's
+  antibacterial mechanism against H. pylori is well characterised at the molecular
+  level, with emerging clinical trial support.
+coaching_translation: Eating a portion of broccoli sprouts daily for two months may
+  help reduce H. pylori activity in your stomach and lower inflammation markers.
+caveats:
+- Larger replication trials are needed; broccoli sprout potency varies considerably
+  by preparation.
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+linked_to_supplements:
+- sulforaphane-broccoli-sprouts
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Cabbage, p. 783
+  quote: Clinically, broccoli sprouts (70 g/day; containing 420 mmol of SF precursor)
+    for 8 weeks decreased levels of urease (urea breath test and H. pylori stool antigen,
+    biomarkers of H. pylori colonization) and serum pepsinogens I and II (biomarkers
+    of gastric inflammation).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

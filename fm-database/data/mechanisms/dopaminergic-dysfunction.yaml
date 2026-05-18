@@ -1,0 +1,38 @@
+slug: dopaminergic-dysfunction
+display_name: Prefrontal Dopaminergic Dysfunction
+aliases:
+- dopamine deficit ADHD
+- D4 receptor hyposensitivity
+category: neurological
+summary: ADHD arises from diminished dopaminergic signaling within polysynaptic circuits
+  of the prefrontal executive cortex, responsible for impulse control and sustained
+  attention. Contributing mechanisms include decreased D4 receptor sensitivity, heightened
+  presynaptic dopamine reuptake, and genetic polymorphisms in D2/D4 receptor genes.
+  Environmental neurotoxins (lead, PCBs) and nutritional deficiencies worsen dopaminergic
+  function.
+upstream_drivers:
+- d2-d4-receptor-gene-polymorphisms
+- dopamine-transporter-overactivity
+- heavy-metal-neurotoxicity
+- omega-3-deficiency
+- iron-deficiency
+downstream_effects:
+- impaired-impulse-control
+- reduced-sustained-attention
+- executive-function-deficit
+related_mechanisms:
+- heavy-metal-neurotoxicity
+- leaky-gut
+linked_to_topics:
+- adhd
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Etiology
+  quote: Diminished function of polysynaptic dopaminergic circuits belonging to executive
+    centers within the brain's prefrontal cortex. Executive centers are inhibitory
+    and are responsible for impulse control and ability to maintain sustained attention.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

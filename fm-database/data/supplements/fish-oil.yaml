@@ -1,0 +1,41 @@
+slug: fish-oil
+display_name: Fish Oil (EPA + DHA)
+category: fatty_acid
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- atopic-dermatitis
+- adhd
+- atherosclerosis
+- chronic-fatigue-syndrome
+- benign-prostatic-hyperplasia
+linked_to_claims:
+- ad-fish-oil-dha-correlates-improvement
+- adhd-omega3-deficiency-brain
+- omega3-reduces-heart-attack-risk-dart
+notes_for_coach: 'Dose: 1000–3000 mg EPA+DHA daily. Higher end (2–3 g) for atopic
+  dermatitis and ADHD. Preoperative use should be discontinued 2 weeks before surgery
+  due to anticoagulant effect.'
+notes_for_client: Take fish oil with meals to reduce fishy aftertaste and improve
+  absorption. Look for products with combined EPA and DHA, not just total fish oil.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atherosclerosis — Supplements
+  quote: 'Fish oil: minimum 1000 mg of EPA plus DHA q.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

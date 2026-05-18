@@ -1,0 +1,27 @@
+slug: celiac-anti-ttg-high-sensitivity
+statement: IgA anti-tissue transglutaminase (anti-tTG) antibody has sensitivity of
+  99% and specificity >90% for identifying celiac disease, making it the preferred
+  first-line screening marker.
+evidence_tier: strong
+rationale: Multiple clinical studies confirm IgA anti-tTG performance; total serum
+  IgA must be checked concurrently to avoid false-negatives in IgA-deficient patients.
+coaching_translation: A positive anti-tTG blood test is a strong signal for celiac
+  disease — your doctor needs to confirm with further testing, but this is why strict
+  gluten-free eating matters.
+caveats:
+- IgA-deficient celiac patients may have false-negative results; total serum IgA must
+  be checked in parallel
+linked_to_topics:
+- celiac-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — Diagnosis
+  quote: Anti-tTG also has high sensitivity (99%) and specificity (>90%) for identifying
+    CD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

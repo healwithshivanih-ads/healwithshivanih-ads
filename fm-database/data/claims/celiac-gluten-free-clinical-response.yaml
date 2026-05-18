@@ -1,0 +1,29 @@
+slug: celiac-gluten-free-clinical-response
+statement: 'Clinical improvement on a gluten-free diet is seen within days to weeks
+  in most celiac patients: 30% respond within 3 days, 50% within 1 month, and another
+  10% within 2 months; 10% require 24–36 months.'
+evidence_tier: strong
+rationale: Well-documented clinical response timeline from the primary naturopathic
+  medicine textbook; failure to respond suggests non-adherence, hidden gluten, or
+  complicating conditions.
+coaching_translation: Most people with celiac disease feel noticeably better within
+  days to a few weeks of removing all gluten — even small hidden sources can delay
+  recovery.
+caveats:
+- Failure to respond requires clinician re-evaluation for hidden gliadin sources,
+  zinc deficiency, or associated conditions
+linked_to_topics:
+- celiac-disease
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — Therapeutic Considerations — Patient Response
+  quote: Clinical improvement is seen within a few days or weeks (30% respond within
+    3 days, another 50% within 1 month, and 10% within another month). Ten percent
+    respond only after 24 to 36 months of gluten avoidance.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

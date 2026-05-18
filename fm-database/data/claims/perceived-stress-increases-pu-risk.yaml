@@ -1,0 +1,25 @@
+slug: perceived-stress-increases-pu-risk
+statement: People who perceive more significant stress in their lives are at increased
+  risk of developing peptic ulcers; patient response to stress — not the number of
+  stressful events — is the significant factor.
+evidence_tier: plausible_emerging
+rationale: Psychological stress is associated with PU via HPA-axis mediated effects
+  on mucosal blood flow and acid secretion; the perception vs. event-count distinction
+  is cited in this FM text.
+coaching_translation: It's not how many stressful things happen to you — it's how
+  much stress you feel. Building stress resilience can help protect your gut.
+linked_to_topics:
+- peptic-ulcer-disease
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Lifestyle Factors — Stress and emotions, p. 782
+  quote: Patient response to stress is a significant factor. People who perceive more-significant
+    stress in their lives are at increased risk of developing PUs.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,27 +1,36 @@
 slug: heartburn
-display_name: Heartburn / Reflux
+display_name: Heartburn
 aliases:
 - acid-reflux
 - gerd
 - gastro-oesophageal-reflux
 - burning-chest
+- acid reflux sensation
+- burning in chest
+- pyrosis
 category: gi
 severity: common
-description: Burning retrosternal sensation caused by reflux of gastric contents into
-  the oesophagus. Most often caused by overeating, obesity, chocolate, fried foods,
-  alcohol, and carbonated beverages — not by excess acid production.
+description: Burning sensation in the epigastric/lower chest region associated with
+  acid peptic disease; may coexist with or mimic peptic ulcer symptoms.
 when_to_refer: Persistent reflux unresponsive to lifestyle measures, dysphagia, or
   weight loss warrants endoscopy.
 linked_to_topics:
 - maldigestion
+- peptic-ulcer-disease
 linked_to_mechanisms:
 - hypochlorhydria
+- gastric-mucosal-barrier-disruption
 sources:
 - id: pizzorno-textbook-gi
   location: Maldigestion — Reflux Esophagitis
   quote: Reflux esophagitis is most often caused by overeating and other factors,
     not excessive acid.
-version: 1
+- id: pizzorno-textbook-hpylori
+  location: General Considerations, p. 779
+  quote: Most PUs are associated with abdominal discomfort 45 to 60 minutes after
+    meals or during the night described as gnawing, burning, cramplike, aching, or
+    heartburn.
+version: 2
 status: active
 updated_at: '2026-05-18'
 updated_by: Shivani

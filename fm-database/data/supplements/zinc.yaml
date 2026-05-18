@@ -7,8 +7,8 @@ forms_available:
 - lozenge
 typical_dose_range:
   capsule:
-    min: 8
-    max: 40
+    min: 15
+    max: 30
     unit: mg
   tablet:
     min: 8
@@ -54,6 +54,12 @@ linked_to_topics:
 - medication-induced-nutrient-depletion
 - male-infertility-oxidative-stress
 - adrenal-fatigue
+- benign-prostatic-hyperplasia
+- atopic-dermatitis
+- adhd
+- bacterial-sinusitis
+- cervical-dysplasia
+- peptic-ulcer-disease
 linked_to_claims:
 - zinc-supports-thyroid-conversion
 - zinc-regulates-aromatase-balances-estrogen-testosterone
@@ -88,26 +94,34 @@ linked_to_claims:
 - antioxidant-rotation-improves-male-fertility
 - magnesium-b5-c-zinc-omega3-support-adrenal-resilience
 - gut-healing-requires-glutamine-zinc-omega3-bcomplex
-notes_for_coach: Zinc is involved in testosterone synthesis, immune function, and gut mucosal repair. Take with food to reduce
-  GI irritation. Long-term high-dose zinc should be monitored by a clinician due to copper depletion risk.
-notes_for_client: Zinc is an essential mineral for immune defence, hormonal balance, and gut repair.
-evidence_tier: plausible_emerging
+- bph-zinc-reduces-prostate-size
+- zinc-mucin-production-curative-pu
+notes_for_coach: Zinc increases mucin production in vitro; protective in animals,
+  curative in humans with PU. Take with food to reduce nausea. Monitor for copper
+  depletion with long-term high-dose use.
+notes_for_client: Zinc helps your stomach produce the protective mucus layer that
+  shields it from acid and supports healing of ulcers.
+evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-practice-guide
-  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical support for thyroid
+  location: Clinical Education for Clients > Thyroid Function Beyond TSH > Non-pharmaceutical
+    support for thyroid
   quote: 'Zinc: Supports thyroid hormone conversion and immune regulation'
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support T4→T3 Conversion
   quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Dominance Supplement Cheatsheet
-  quote: 'Zinc: Modulates aromatase + supports progesterone; Helps acne, hair thinning; 15–30 mg/day; add copper if long-term.'
+  quote: 'Zinc: Modulates aromatase + supports progesterone; Helps acne, hair thinning;
+    15–30 mg/day; add copper if long-term.'
 - id: vitaone-adrenal-cheatsheet
   location: 50 Hormones Cheatsheet — T4/Testosterone rows (p.4)
-  quote: 'Solution: Iodine, selenium, zinc, thyroid meds if required... Solution: Strength training, zinc, Vit D, HRT if indicated.'
+  quote: 'Solution: Iodine, selenium, zinc, thyroid meds if required... Solution:
+    Strength training, zinc, Vit D, HRT if indicated.'
 - id: vitaone-blood-sugar-cheatsheet
-  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced Depletions
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Medication-Induced
+    Depletions
   quote: Zinc glycinate (15–30 mg/day)
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Viral Hepatitis
@@ -120,14 +134,17 @@ sources:
   quote: 'Zinc: Important for immune function and thyroid hormone metabolism.'
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Repair
-  quote: Help the lining of the GI tract repair itself by supplying key nutrients that can often be in short supply in a compromised
-    gut, such as zinc, antioxidants (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
+  quote: Help the lining of the GI tract repair itself by supplying key nutrients
+    that can often be in short supply in a compromised gut, such as zinc, antioxidants
+    (e.g. vitamins A, C, and E), fish oil, and the amino acid glutamine.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Zinc supplementation has been shown in multiple studies to lower HOMA-IR, a measure of insulin resistance.
+  quote: Zinc supplementation has been shown in multiple studies to lower HOMA-IR,
+    a measure of insulin resistance.
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
-  quote: A large body of research shows that zinc has strong anti-viral properties against many viruses.
+  quote: A large body of research shows that zinc has strong anti-viral properties
+    against many viruses.
 - id: vitaone-health-coaching-toolkit
   location: Management of Hashimoto's — Nutrient Optimization
   quote: 'Zinc: Important for immune function and thyroid hormone metabolism.'
@@ -148,21 +165,31 @@ sources:
   quote: Minerals like copper, zinc, vitamins like A, B, E, toxicity inside the body.
 - id: coconote-fm-sibo-sifo
   location: 5Rs Treatment Protocol – Repair
-  quote: When you go to complex cities, we also recommend zinc and the vitamin A and the L-butamine, all of these things,
-    repair is important.
+  quote: When you go to complex cities, we also recommend zinc and the vitamin A and
+    the L-butamine, all of these things, repair is important.
 - id: coconote-fm-zinc-deficiency
   location: Management / Supplementation
-  quote: If a patient has a severe nutritional deficiency, their requirements could be higher. Good sources of zinc usually
-    include oyster, beef, poultry, vegetarian sources, good sources in terms of legumes, lentils, certain nuts and seeds like
+  quote: If a patient has a severe nutritional deficiency, their requirements could
+    be higher. Good sources of zinc usually include oyster, beef, poultry, vegetarian
+    sources, good sources in terms of legumes, lentils, certain nuts and seeds like
     pumpkin seeds, cashew, baked beans.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
-  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10, selenium, zinc, and antioxidants helps restore
-    metabolic resilience.
-version: 23
+  quote: Functional repletion with active B-vitamins, magnesium glycinate, CoQ10,
+    selenium, zinc, and antioxidants helps restore metabolic resilience.
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Supplements
+  quote: 'Zinc: 30 to 45 mg elemental zinc q.d. (picolinate preferred) for maximum
+    of 6 months. Reduce dose to 15 to 30 mg/day after 6 months and consider monitoring
+    copper status in long-term therapy.'
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: 'Zinc: increases mucin production in vitro and has a protective effect on
+    PUs in animals and curative effect in human beings.'
+version: 25
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: 15-30 mg/day OK. Doses > 40 mg can cause copper deficiency.

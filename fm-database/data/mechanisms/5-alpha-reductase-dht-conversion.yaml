@@ -1,0 +1,36 @@
+slug: 5-alpha-reductase-dht-conversion
+display_name: 5-Alpha-Reductase DHT Conversion
+aliases:
+- testosterone to DHT conversion
+- 5AR pathway
+category: endocrine
+summary: The enzyme 5-alpha-reductase converts testosterone to dihydrotestosterone
+  (DHT), which has twice the androgenic potency at the prostate. In BPH, DHT levels
+  within the prostate remain elevated even as serum testosterone declines with age.
+  Inhibition of 5-alpha-reductase (by zinc, Serenoa repens) reduces intraprostatic
+  DHT and prostate volume.
+upstream_drivers:
+- aging
+- testosterone-availability
+- prolactin-elevation
+- zinc-deficiency
+downstream_effects:
+- prostate-cell-proliferation
+- bph
+- luts
+related_mechanisms:
+- peripheral-aromatization
+- prolactin-driven-prostate-growth
+linked_to_topics:
+- benign-prostatic-hyperplasia
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Hormones and Benign Prostatic Hyperplasia
+  quote: For testosterone to affect the prostate, it must be converted to dihydrotestosterone
+    (DHT) by enzyme 5-alpha-reductase. DHT has twice the effect on the prostate as
+    testosterone.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -18,6 +18,7 @@ linked_to_topics:
 - gut-dysbiosis
 - pancreatic-insufficiency
 - sibo
+- peptic-ulcer-disease
 linked_to_claims:
 - vitamin-a-rxr-permission-slip-for-thyroid-and-vitamin-d-signaling
 - vitamin-a-zinc-exercise-improve-thyroid-cell-sensitivity
@@ -29,11 +30,13 @@ linked_to_claims:
 - zinc-vitamin-a-b-support-gut-tissue-repair
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - 5rs-repair-includes-l-glutamine
-notes_for_coach: Vitamin A (retinol) is critical for mucosal integrity and secretory
-  IgA production. Therapeutic doses should be confirmed with clinician due to toxicity
-  risk at high doses.
-notes_for_client: Vitamin A helps maintain the protective lining of your gut and supports
-  local immune defenses.
+- vitamin-a-protective-chronic-gastric-ulcer
+notes_for_coach: 'High-dose vitamin A cited for chronic GU protection. CRITICAL: teratogenic
+  — use beta-carotene if pregnancy is possible (explicitly stated in treatment algorithm).
+  Therapeutic dose supervision required.'
+notes_for_client: Vitamin A supports the lining of your stomach. If there's any chance
+  you could be pregnant, use beta-carotene instead — high-dose vitamin A is not safe
+  in pregnancy.
 typical_dose_range:
   capsule:
     min: 5000
@@ -81,9 +84,14 @@ sources:
   location: 5Rs Treatment Protocol – Repair
   quote: When you go to complex cities, we also recommend zinc and the vitamin A and
     the L-butamine, all of these things, repair is important.
-version: 10
+- id: pizzorno-textbook-hpylori
+  location: Miscellaneous, p. 784
+  quote: 'Vitamins A and E: inhibit development of stress ulcers in rats and help
+    maintain integrity of mucosal barrier. High-dose vitamin A may have a useful protective
+    effect on chronic GUs.'
+version: 11
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 aliases:
 - vitamin a 2000 iu

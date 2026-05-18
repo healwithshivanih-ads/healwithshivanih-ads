@@ -1,0 +1,36 @@
+slug: pelargonium-sidoides
+display_name: Pelargonium sidoides (Umcka / South African Geranium)
+category: herb
+forms_available:
+- liquid
+- tablet
+typical_dose_range:
+  liquid:
+    min: 1.5
+    max: 3
+    unit: ml
+timing_options:
+- morning
+- mid_afternoon
+- evening
+take_with_food: optional
+linked_to_topics:
+- bacterial-sinusitis
+linked_to_claims:
+- sinusitis-pelargonium-sidoides-rct
+notes_for_coach: 'EPs 7630 extract: Adults 3 mL t.i.d. or 2×20 mg tablets t.i.d. for
+  up to 14 days (sinusitis) or 22 days. Children 7–12: 30 drops t.i.d.; ≤6 years:
+  10 drops t.i.d. Approved drug in Germany for acute bronchitis. No known drug interactions.'
+notes_for_client: Umcka is most effective when started early in a respiratory infection.
+  Use for no longer than 2–3 weeks per course.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Bacterial Sinusitis — Pelargonium Sidoides
+  quote: P. sidoides has immune-enhancing effects, antibacterial and antiviral effects,
+    and ability to prevent adhesion of bacteria to epithelial cells.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

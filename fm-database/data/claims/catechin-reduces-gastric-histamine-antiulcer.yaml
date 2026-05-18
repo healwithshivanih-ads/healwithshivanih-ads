@@ -1,0 +1,28 @@
+slug: catechin-reduces-gastric-histamine-antiulcer
+statement: Catechin at 1000 mg five times per day reduces histamine levels in gastric
+  tissue of healthy individuals and those with gastric/duodenal ulcers and acute gastritis
+  by inhibiting histidine decarboxylase.
+evidence_tier: plausible_emerging
+rationale: Specific dose and outcome cited; inhibition of histidine decarboxylase
+  is a defined molecular mechanism. Clinical trial size and recency are not specified
+  in the source.
+coaching_translation: Catechin — a natural flavonoid found in green tea and grapes
+  — has been shown to lower histamine in the stomach, which may help heal ulcers.
+caveats:
+- High dose (5 g/day total) — confirm with clinician before use.
+- Source is FM textbook synthesis.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- catechin-flavonoids
+out_of_scope_notes: Dosing at 5 g/day total catechin should be supervised by a clinician.
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Flavonoids, p. 783
+  quote: A dose of 1000 mg catechin five times per day reduces histamine in gastric
+    tissue of normal patients and those with GUs and DUs and acute gastritis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

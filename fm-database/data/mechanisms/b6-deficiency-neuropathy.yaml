@@ -1,0 +1,36 @@
+slug: b6-deficiency-neuropathy
+display_name: Pyridoxine (B6) Deficiency Neuropathy
+aliases:
+- vitamin B6 deficiency
+- pyridoxine antimetabolite neuropathy
+category: neurological
+summary: Deficiency of pyridoxine (B6) or its active form pyridoxal-5-phosphate (P5P)
+  impairs peripheral nerve function and connective tissue metabolism, contributing
+  to carpal tunnel syndrome. Antimetabolites of B6 (hydrazine dyes, isoniazid, hydralazine,
+  dopamine, penicillamine, oral contraceptives) and excessive protein intake increase
+  B6 requirements. Riboflavin (B2) is required to convert B6 to active P5P.
+upstream_drivers:
+- b6-antimetabolite-exposure
+- oral-contraceptive-use
+- excessive-protein-intake
+- riboflavin-deficiency
+downstream_effects:
+- peripheral-nerve-dysfunction
+- carpal-tunnel-syndrome
+- impaired-estrogen-metabolism
+related_mechanisms: []
+linked_to_topics:
+- carpal-tunnel-syndrome
+- cervical-dysplasia
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Carpal Tunnel Syndrome — Vitamin B Supplementation
+  quote: Incidence of CTS has increased with the increased presence of pyridoxine
+    (vitamin B6) antimetabolites (hydrazine dyes, isoniazid, hydralazine, dopamine,
+    penicillamine, and oral contraceptives) in the environment and the intake of excessive
+    protein.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,26 @@
+slug: skin-itching
+display_name: Skin Itching (Pruritus)
+aliases:
+- pruritus
+- itchy skin
+- itch
+category: skin
+severity: common
+description: Chronic or episodic intense itching of the skin, characteristic of atopic
+  dermatitis. Scratching perpetuates barrier dysfunction and lichenification.
+when_to_refer: Severe, refractory pruritus with signs of secondary infection or sleep
+  deprivation
+linked_to_topics:
+- atopic-dermatitis
+linked_to_mechanisms:
+- filaggrin-epidermal-barrier-dysfunction
+- tslp-driven-th2-polarization
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Scratching Cessation
+  quote: 'Scratching is extremely detrimental in AD: it breaks skin, aiding bacterial
+    ingress, and promoting barrier dysfunction and lichenification.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,39 @@
+slug: gluten-mediated-tight-junction-disruption
+display_name: Gluten-Mediated Tight Junction Disruption
+aliases:
+- gliadin-induced intestinal permeability
+- gluten enteropathy mechanism
+category: immune
+summary: Alpha-gliadin and related prolamins trigger T-cell–mediated immune responses
+  in HLA-DQ2/DQ8–positive individuals, leading to villous atrophy, disaccharidase
+  deficiency, and increased intestinal permeability. tTG-gliadin complexes stimulate
+  further autoantibody production, perpetuating mucosal damage and allowing systemic
+  antigen entry.
+upstream_drivers:
+- hla-dq2-dq8-genetic-susceptibility
+- dietary-gluten-exposure
+- early-cow-milk-introduction
+downstream_effects:
+- leaky-gut
+- malabsorption
+- multiple-food-allergies
+- lactose-intolerance
+- autoimmune-disease
+related_mechanisms:
+- leaky-gut
+- th1-th2-immune-dysregulation
+- dysbiosis
+linked_to_topics:
+- celiac-disease
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — General Considerations — Pathogenesis
+  quote: Tissue transglutaminase (tTG) is the autoantigen for AEA; enzyme-linked assay
+    using recombinant tTG is highly sensitive and specific for CD. Anti-tTG antibody
+    titers fall and can become undetectable during gluten-free diet; tTG-gliadin complexes
+    stimulate gluten-specific T cells to induce anti-tTG antibody production.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

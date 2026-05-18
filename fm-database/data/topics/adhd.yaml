@@ -1,0 +1,49 @@
+slug: adhd
+display_name: Attention Deficit Hyperactivity Disorder
+aliases:
+- ADHD
+- ADD
+- attention deficit disorder
+summary: Neurobehavioral disorder characterized by inattentiveness, hyperactivity,
+  and impulsivity arising from diminished dopaminergic function in prefrontal executive
+  circuits. Multiple contributing factors include food additives, heavy metal toxicity,
+  essential fatty acid deficiency, mineral deficiencies (magnesium, zinc, iron), food
+  allergies, gut dysbiosis, and obstructive sleep apnea.
+common_symptoms:
+- inattention
+- hyperactivity
+- impulsivity
+- learning-disability
+- sleep-disturbance
+- behavioral-problems
+red_flags:
+- Obstructive sleep apnea in 30% of ADHD children — refer for sleep study
+- Type I immediate hypersensitivity — refer to allergist
+- Lead toxicity — blood lead >10 mg/dL
+related_topics:
+- leaky-gut
+- food-allergy
+- chronic-candidiasis
+- heavy-metal-toxicity
+key_mechanisms:
+- dopaminergic-dysfunction
+- leaky-gut
+- dysbiosis
+- heavy-metal-neurotoxicity
+coaching_scope_notes: Coaches can support dietary elimination, whole-foods diet, fish
+  oil and mineral supplementation, and GI rehabilitation. Heavy metal chelation, sleep
+  apnea evaluation, and stimulant medication are clinician scope.
+clinician_scope_notes: 'Assess iron, magnesium, zinc, omega-3 status. Evaluate for
+  OSA, celiac disease, lead toxicity. Stepwise approach: diet, nutrients, GI rehab,
+  nutraceuticals.'
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Etiology
+  quote: Diminished function of polysynaptic dopaminergic circuits belonging to executive
+    centers within the brain's prefrontal cortex. Executive centers are inhibitory
+    and are responsible for impulse control and ability to maintain sustained attention.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,37 @@
+slug: gastric-mucosal-barrier-disruption
+display_name: Gastric Mucosal Barrier Disruption
+aliases:
+- loss of mucosal integrity
+- gastric barrier dysfunction
+- mucosal protective factor impairment
+category: gut
+summary: The gastric mucosa is normally protected by mucin layer, rapid epithelial
+  cell renewal, and local acid-neutralising factors. H. pylori, NSAIDs, alcohol, nutrient
+  deficiency, and stress can disrupt these protective factors, allowing corrosive
+  gastric acid (pH 1–3) to damage the underlying tissue and initiate ulceration.
+upstream_drivers:
+- h-pylori-colonisation
+- nsaid-use
+- smoking
+- nutrient-deficiency
+- psychological-stress
+downstream_effects:
+- peptic-ulcer-formation
+- gi-bleeding
+- perforation
+related_mechanisms:
+- h-pylori-urease-ammonia-production
+- gastric-mucin-degradation
+linked_to_topics:
+- helicobacter-pylori-infection
+- peptic-ulcer-disease
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-hpylori
+  location: General Considerations, p. 779
+  quote: DU and GU result from similar mechanisms—specifically, some influence that
+    damages protective factors lining the stomach and duodenum.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

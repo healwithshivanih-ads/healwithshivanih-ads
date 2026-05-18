@@ -1,0 +1,29 @@
+slug: l-glutamine-1600mg-superior-conventional-pu-treatment
+statement: L-Glutamine at 1.6 g/day was more effective than conventional treatment
+  for peptic ulcers, with almost all patients showing complete relief and healing
+  within 4 weeks.
+evidence_tier: plausible_emerging
+rationale: Cited in FM textbook with specific dose and outcome; L-glutamine supports
+  hexosamine biosynthesis in mucoproteins. Older clinical data, not reproduced in
+  large modern RCTs.
+coaching_translation: A modest daily dose of L-glutamine may accelerate ulcer healing
+  by supporting the mucus lining of your stomach and gut.
+caveats:
+- Clinical data cited is from older studies; confirm dosing with clinician.
+- Source is textbook synthesis.
+linked_to_topics:
+- peptic-ulcer-disease
+- helicobacter-pylori-infection
+linked_to_supplements:
+- l-glutamine
+out_of_scope_notes: Specific dosing should be confirmed with a clinician.
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Cabbage, p. 783
+  quote: A dose of 1.6 g q.d. l-glutamine is more effective than conventional treatment;
+    almost all patients tested showed complete relief and healing within 4 weeks.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

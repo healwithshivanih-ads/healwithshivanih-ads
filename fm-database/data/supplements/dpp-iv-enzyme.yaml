@@ -1,0 +1,38 @@
+slug: dpp-iv-enzyme
+display_name: DPP-IV (Dipeptidyl-Peptidase IV) Enzyme
+category: enzyme
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- celiac-disease
+linked_to_claims:
+- celiac-dppiv-enzyme-gliadin-digestion
+notes_for_coach: Fungal-source DPP-IV targets both gliadin and casein; resistant to
+  breakdown by other digestive enzymes. Recommended to safeguard against hidden gluten.
+  Not a replacement for gluten-free diet — use as adjunct protection, especially when
+  eating out.
+notes_for_client: DPP-IV enzyme taken with each meal provides a layer of protection
+  against accidental gluten exposure. It's not a free pass to eat gluten.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — Therapeutic Considerations — Pancreatic Enzymes
+  quote: A better choice than pancreatic enzymes might be enzyme preparations containing
+    dipeptidyl-peptidase IV (DPP-IV) from fungal sources. This enzyme targets both
+    gliadin and casein (milk protein) and is resistant to breakdown by other digestive
+    enzymes.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

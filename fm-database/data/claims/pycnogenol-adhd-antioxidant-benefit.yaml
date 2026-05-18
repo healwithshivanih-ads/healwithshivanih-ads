@@ -1,0 +1,28 @@
+slug: pycnogenol-adhd-antioxidant-benefit
+statement: Pycnogenol (pine bark extract) at 1 mg/kg body weight per day improved
+  antioxidant status, reduced hyperactivity, and improved attention, visual-motor
+  coordination, and concentration in children with ADHD.
+evidence_tier: plausible_emerging
+rationale: Cited from clinical trial data in Pizzorno textbook; increased oxidative
+  damage is described as a central factor in ADHD.
+coaching_translation: Pine bark extract (Pycnogenol) is a powerful antioxidant that
+  has been shown in studies to improve focus and reduce hyperactivity in children
+  with ADHD.
+linked_to_topics:
+- adhd
+linked_to_supplements:
+- pycnogenol
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Attention Deficit Hyperactivity Disorder — Botanical Medicines — Procyanidolic
+    Oligomers
+  quote: Pycnogenol (1 mg/kg body weight per day) improved antioxidant status in ADHD
+    children. It also improved hyperactivity and improved attention and visual-motor
+    coordination and concentration of children with ADHD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

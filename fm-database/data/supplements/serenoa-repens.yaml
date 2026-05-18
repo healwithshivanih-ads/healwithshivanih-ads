@@ -1,0 +1,37 @@
+slug: serenoa-repens
+display_name: Saw Palmetto (Serenoa repens)
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 160
+    max: 320
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_claims:
+- bph-serenoa-repens-90-percent-response
+notes_for_coach: 'Use liposterolic extract standardized to 85–95% fatty acids and
+  sterols. Dose: 160–320 mg b.i.d. Best for mild to moderate BPH. Combine with Urtica
+  dioica for enhanced effect equal to finasteride. Less effective in advanced BPH
+  (residual urine >150 mL).'
+notes_for_client: Saw palmetto works best taken consistently for at least 4–6 weeks.
+  Most people with mild prostate symptoms notice significant improvement.
+evidence_tier: strong
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Benign Prostatic Hyperplasia — Botanicals
+  quote: 'Liposterolic extract of saw palmetto (S. repens) (standardized at 85% to
+    95% fatty acids and sterols): 160-320 mg b.i.d.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

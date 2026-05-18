@@ -1,0 +1,30 @@
+slug: celiac-dppiv-enzyme-gliadin-digestion
+statement: DPP-IV (dipeptidyl-peptidase IV) enzyme preparations from fungal sources
+  target both gliadin and casein, are resistant to breakdown by other digestive enzymes,
+  and are recommended to safeguard against hidden sources of gluten in celiac patients.
+evidence_tier: plausible_emerging
+rationale: DPP-IV is the key enzyme for digesting these proteins; lower intestinal
+  DPP-IV levels inversely correlate with mucosal damage in celiac disease.
+coaching_translation: A DPP-IV enzyme supplement taken with meals may help protect
+  against accidental gluten exposure, especially when eating out — though it's not
+  a license to eat gluten freely.
+caveats:
+- Source is textbook — not primary RCT evidence; verify utility with clinician
+- Not a replacement for strict gluten-free diet
+linked_to_topics:
+- celiac-disease
+linked_to_supplements:
+- dpp-iv-enzyme
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — Therapeutic Considerations — Pancreatic Enzymes
+  quote: A better choice than pancreatic enzymes might be enzyme preparations containing
+    dipeptidyl-peptidase IV (DPP-IV) from fungal sources. This enzyme targets both
+    gliadin and casein (milk protein) and is resistant to breakdown by other digestive
+    enzymes.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

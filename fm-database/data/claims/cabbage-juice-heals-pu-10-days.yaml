@@ -1,0 +1,28 @@
+slug: cabbage-juice-heals-pu-10-days
+statement: One litre of fresh raw cabbage juice per day in divided doses induced total
+  ulcer healing in only 10 days; the high L-glutamine content is considered the key
+  healing factor.
+evidence_tier: plausible_emerging
+rationale: Historically referenced clinical finding (Cheney 1949 and follow-up); L-glutamine's
+  role in mucosal biosynthesis is mechanistically supported, though large modern RCTs
+  are absent.
+coaching_translation: Fresh cabbage juice is a traditional ulcer remedy with real
+  evidence behind it — the glutamine in it helps repair the stomach lining.
+caveats:
+- Primary study (Cheney) dates to 1949; modern replication is limited.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- l-glutamine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Cabbage, p. 783
+  quote: Use of 1 L of fresh juice per day in divided doses has induced total ulcer
+    healing in only 10 days. High glutamine content of cabbage juice is a healing
+    factor.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

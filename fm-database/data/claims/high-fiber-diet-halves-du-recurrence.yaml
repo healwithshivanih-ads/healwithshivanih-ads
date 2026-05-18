@@ -1,0 +1,26 @@
+slug: high-fiber-diet-halves-du-recurrence
+statement: A high-fiber diet in patients with recently healed duodenal ulcers reduced
+  recurrence rate by half compared with a low-fiber diet.
+evidence_tier: plausible_emerging
+rationale: Specific clinical outcome data cited in this FM textbook; fiber slows gastric
+  liquid-phase emptying, reducing acid bolus delivery to the duodenum. Plausible mechanism
+  with some clinical trial support.
+coaching_translation: Eating more fibre-rich whole foods — vegetables, legumes, oats
+  — may halve your chances of your ulcer coming back.
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_supplements:
+- dietary-fiber-psyllium
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-hpylori
+  location: Nutritional Factors — Fiber, p. 782–783
+  quote: A high-fiber diet in patients with recently healed DUs reduced recurrence
+    rate by half. Fiber delays gastric emptying of liquid phase, counteracting rapid
+    movement into duodenum.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

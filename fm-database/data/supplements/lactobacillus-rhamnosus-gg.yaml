@@ -1,0 +1,36 @@
+slug: lactobacillus-rhamnosus-gg
+display_name: Lactobacillus rhamnosus GG
+category: probiotic
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 5
+    max: 10
+    unit: capsules
+timing_options:
+- morning
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- atopic-dermatitis
+- chronic-candidiasis
+linked_to_claims:
+- ad-lgg-reduces-eczema-severity
+notes_for_coach: Most evidence in atopic dermatitis in infants with cow's milk allergy.
+  Effect may be more pronounced in IgE-sensitized patients (positive skin-prick test,
+  elevated IgE). Can be combined with L. reuteri.
+evidence_tier: plausible_emerging
+linked_to_mechanisms: []
+notes_for_client: ''
+sources:
+- id: pizzorno-textbook-gi-2
+  location: Atopic Dermatitis — Nutritional Supplements — Probiotics
+  quote: Probiotic Lactobacillus rhamnosus strain GG alone or in conjunction with
+    Lactobacillus reuteri given to infants with AD and cow's milk allergy reduced
+    severity of eczema.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
