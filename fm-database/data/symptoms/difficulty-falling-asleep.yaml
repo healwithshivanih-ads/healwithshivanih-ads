@@ -1,24 +1,18 @@
 slug: difficulty-falling-asleep
-display_name: Difficulty Falling Asleep
+display_name: Difficulty Falling Asleep (Sleep-Onset Insomnia)
 aliases:
 - sleep onset insomnia
 - prolonged sleep latency
 - cannot fall asleep
+- sleep-onset-insomnia
+- cannot-fall-asleep
+- prolonged-sleep-latency
+- lying-awake
 category: sleep
 severity: common
-description: 'Inability to transition into sleep within roughly 20-30 minutes of
-
-  intending to sleep. Often reflects evening sympathetic dominance,
-
-  unresolved cognitive load, late caffeine in slow CYP1A2
-
-  metabolizers, blue light exposure suppressing melatonin, late
-
-  exercise, or late eating. Distinguished from sleep maintenance
-
-  insomnia (waking after sleep onset) and early morning awakening.
-
-  '
+description: Prolonged sleep latency driven by anxiety, tension, stimulant use, or
+  serotonin/melatonin deficiency. L-tryptophan, 5-HTP, and valerian are evidence-supported
+  natural interventions.
 when_to_refer: 'Refer if persistent for weeks despite sleep hygiene changes, or
 
   associated with severe anxiety, depression, or suicidal ideation.
@@ -29,12 +23,16 @@ linked_to_topics:
 linked_to_mechanisms:
 - blue-light-melatonin-suppression
 - parasympathetic-restoration-failure
+- serotonin-deficiency
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Sleep onset and bedroom hygiene section
   quote: if you're asleep for 30 minutes and you're not sleeping, get up and sit in
     a chair and read until you feel tired again
-version: 3
+- id: pizzorno-textbook-gi
+  location: Insomnia — Diagnostic Summary
+  quote: Difficulty falling asleep (sleep-onset insomnia).
+version: 4
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

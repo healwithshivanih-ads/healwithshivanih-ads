@@ -1,0 +1,33 @@
+slug: b-vitamins-reduce-armd-risk
+statement: A combination of folic acid (2.5 mg/day), pyridoxine (50 mg/day), and cyanocobalamin
+  (1 mg/day) given for 7.3 years reduced the manifestation of ARMD in female patients
+  with high cardiovascular risk by 34–41%.
+evidence_tier: plausible_emerging
+rationale: Based on the Women's Antioxidant and Folic Acid Cardiovascular Study (WAFACS);
+  the mechanism likely involves homocysteine reduction and improved microvascular
+  function in the retina.
+coaching_translation: B-vitamin supplementation (folate, B6, B12) may provide additional
+  ARMD protection, particularly in women with cardiovascular risk — included in a
+  comprehensive eye health protocol.
+caveats:
+- Cyanocobalamin doses of 1 mg/day are pharmacological; methylcobalamin may be preferable
+  for some individuals
+- Clinical trial was in women with high CV risk — may not generalise to all populations
+linked_to_topics:
+- macular-degeneration
+linked_to_supplements:
+- folate
+- vitamin-b6
+- vitamin-b12
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Macular Degeneration — B Vitamins
+  quote: A combination of folic acid (2.5 mg q.d.), pyridoxine hydrochloride (50 mg
+    q.d.), and cyanocobalamin (1 mg q.d.) given for 7.3 years reduced manifestation
+    of ARMD in female patients with high cardiovascular risk, by 34% to 41%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

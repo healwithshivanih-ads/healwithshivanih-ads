@@ -1,0 +1,37 @@
+slug: hypochlorhydria
+display_name: Hypochlorhydria (Insufficient Gastric Acid)
+aliases:
+- achlorhydria
+- gastric-acid-insufficiency
+category: gut
+summary: Decreased gastric acid secretion impairs protein digestion, mineral disassociation,
+  and the antimicrobial acid barrier, predisposing to H. pylori overgrowth, SIBO,
+  and multiple food allergies. H2 blockers and PPIs may perpetuate colonisation by
+  raising gastric pH further.
+upstream_drivers:
+- ageing
+- h-pylori-colonisation
+- ppi-use
+- h2-blocker-use
+downstream_effects:
+- h-pylori-overgrowth
+- dysbiosis
+- mineral-malabsorption
+- food-allergy
+- sibo
+related_mechanisms:
+- dysbiosis
+- leaky-gut
+linked_to_topics:
+- maldigestion
+- inflammatory-bowel-disease
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: Maldigestion — Hypochlorhydria — Etiology
+  quote: HCl antisecretory drugs (H2 receptor antagonists and proton pump inhibitors)
+    may actually promote H. pylori overgrowth.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: curcumin-reduces-ibd-relapse-rate
+statement: Curcumin at 1 g twice daily provides clinical improvement and reduces relapse
+  rate in IBD by inhibiting NF-κB and downstream pro-inflammatory cytokines (TNF-α,
+  iNOS, MMP-9).
+evidence_tier: plausible_emerging
+rationale: Multiple small RCTs and animal models support curcumin's NF-κB inhibition
+  in colitis; the dose cited here (1 g b.i.d.) is consistent with published clinical
+  trials in UC and CD.
+coaching_translation: Curcumin from turmeric (1000 mg before meals twice daily) is
+  a well-tolerated anti-inflammatory option for IBD management alongside dietary changes.
+caveats:
+- Bioavailability of standard curcumin is low; phospholipid or piperine-enhanced forms
+  preferred
+- Verify with clinician before adding during acute flare
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- curcumin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Botanical Medicines — Curcumin
+  quote: At a dose of 1 g b.i.d., curcumin provided clinical improvement and decreased
+    rate of relapse. It also has an excellent safety profile.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

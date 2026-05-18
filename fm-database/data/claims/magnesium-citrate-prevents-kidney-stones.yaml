@@ -1,0 +1,32 @@
+slug: magnesium-citrate-prevents-kidney-stones
+statement: 'Magnesium citrate offers the greatest benefit for recurrent calcium oxalate
+  kidney stones: it slows brushite crystal growth, reduces nucleation rate and urine
+  supersaturation, and five of eight patients with oxalate stones experienced complete
+  dissolution after 6 months of treatment.'
+evidence_tier: plausible_emerging
+rationale: Magnesium competes with calcium for oxalate binding in both gut and urine;
+  citrate separately inhibits crystal nucleation and growth; the combination (Mg citrate)
+  addresses both pathways.
+coaching_translation: Magnesium citrate (600 mg/day in divided doses) is a particularly
+  effective supplement for preventing calcium oxalate kidney stones by both binding
+  oxalate and inhibiting crystal formation.
+caveats:
+- Small study for dissolution claim; verify kidney function before high-dose magnesium
+- Requires clinician oversight for patients with renal impairment
+linked_to_topics:
+- kidney-stones
+linked_to_supplements:
+- magnesium-citrate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Kidney Stones — Nutrients — Citrate
+  quote: Mg citrate offers greatest benefit. Mg citrate slows growth of brushite crystals,
+    nucleation rate, and supersaturation of urine. In one study, five of eight patients
+    with oxalate stones experienced complete dissolution of their stones after 6 months
+    of treatment.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

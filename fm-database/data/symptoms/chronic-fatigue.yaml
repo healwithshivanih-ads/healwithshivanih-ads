@@ -4,19 +4,15 @@ aliases:
 - persistent tiredness
 - exhaustion
 - low energy
+- fatigue
+- CFIDS
+- low-energy
+- tiredness
 category: constitutional
-severity: common
-description: 'Persistent low energy out of proportion to activity, often with
-
-  reduced exercise tolerance and slow recovery. In a toxicant-load
-
-  context, frequently reflects mitochondrial disruption — toxicants
-
-  poison the same ATP-producing organelles needed to power
-
-  detoxification, creating a self-reinforcing low-energy loop.
-
-  '
+severity: concerning
+description: A common chief complaint in intestinal protozoan infestation (particularly
+  Giardia), IBD, and maldigestion. 80% of CFIDS patients with Blastocystis hominis
+  showed improved fatigue after protozoal clearance.
 when_to_refer: 'Refer if fatigue is severe, progressive, accompanied by weight loss,
 
   fevers, lymphadenopathy, or unexplained anemia. ME/CFS-pattern
@@ -27,14 +23,21 @@ when_to_refer: 'Refer if fatigue is severe, progressive, accompanied by weight l
 linked_to_topics:
 - toxin-load
 - detoxification
+- intestinal-protozoan-infestation
+- inflammatory-bowel-disease
 linked_to_mechanisms:
 - mitochondrial-toxin-disruption
+- dysbiosis
+- mucosal-inflammation
 sources:
 - id: minich-detox-basics-fmca-transcript
   location: Mitochondria section
   quote: loss of energy, which is a common complaint for people who tend to have a
     high toxin load
-version: 1
+- id: pizzorno-textbook-gi
+  location: Intestinal Protozoan Infestation — Giardia Species
+  quote: 'Common chief complaint: chronic fatigue.'
+version: 2
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

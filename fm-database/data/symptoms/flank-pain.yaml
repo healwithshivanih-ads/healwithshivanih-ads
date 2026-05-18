@@ -1,0 +1,26 @@
+slug: flank-pain
+display_name: Flank / Renal Colic Pain
+aliases:
+- kidney-pain
+- ureteral-colic
+- loin-pain
+- radiating-groin-pain
+category: urinary
+severity: red_flag
+description: Excruciating intermittent radiating pain from flank to groin, the classic
+  presentation of ureteral kidney stone passage. Associated with nausea, vomiting,
+  and haematuria.
+when_to_refer: Acute renal colic requires urgent clinician/ED evaluation to assess
+  for obstruction, hydronephrosis, or infection.
+linked_to_topics:
+- kidney-stones
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Kidney Stones — Diagnostic Summary
+  quote: Excruciating intermittent radiating pain to groin area originating in flank
+    or kidney.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

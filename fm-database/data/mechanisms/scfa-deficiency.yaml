@@ -1,0 +1,35 @@
+slug: scfa-deficiency
+display_name: Short-Chain Fatty Acid (SCFA) Deficiency
+aliases:
+- butyrate-deficiency
+- SCFA-deficiency
+category: metabolic
+summary: SCFAs (acetate, propionate, butyrate) are the primary energy substrates for
+  colonocytes. Decreased SCFA production — from reduced prebiotic intake, dysbiosis,
+  or antibiotic use — impairs colonocyte energetics and is implicated in the pathogenesis
+  of ulcerative colitis.
+upstream_drivers:
+- dysbiosis
+- low-dietary-fibre
+- antibiotic-exposure
+downstream_effects:
+- colonocyte-energy-failure
+- mucosal-inflammation
+- uc-activity
+related_mechanisms:
+- dysbiosis
+- mucosal-inflammation
+linked_to_topics:
+- inflammatory-bowel-disease
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: Butyrate Enemas in Ulcerative Colitis
+  quote: SCFAs (acetate, propionate, and butyrate) are colon end products of bacterial
+    carbohydrate fermentation. They function as primary energy sources for luminal
+    colon cells, especially distal segments. Decreased levels or use of SCFAs impairs
+    cellular energetics, suggesting a major role in UC.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

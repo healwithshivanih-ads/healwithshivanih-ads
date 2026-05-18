@@ -1,0 +1,30 @@
+slug: probiotics-maintain-uc-remission
+statement: Probiotics are ineffective during active UC flares but remarkably benefit
+  the maintenance of remission; Bifidobacterium longum plus inulin-derived FOS improved
+  sigmoidoscopic appearance, histology, and biochemical inflammation markers in UC.
+evidence_tier: plausible_emerging
+rationale: Multiple controlled trials with inconsistent results overall; remission-maintenance
+  effect in UC has more supporting evidence than treatment of active disease.
+coaching_translation: Probiotic supplementation (Lactobacillus and Bifidobacterium
+  species, 5–10 billion CFU daily) is most beneficial for maintaining IBD remission,
+  not during active flares.
+caveats:
+- Results are strain-specific; Bifidobacterium infantis 35624, Lactobacillus GG, and
+  VSL#3 have the most published data
+- Study results inconsistent across all strains for CD
+linked_to_topics:
+- inflammatory-bowel-disease
+- irritable-bowel-syndrome
+linked_to_supplements:
+- probiotics
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Probiotics in Crohn's Disease
+  quote: Overall, patients with UC do not benefit from probiotics during active flare
+    disease; but probiotics remarkably benefit maintaining remissions.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,57 @@
+slug: inflammatory-bowel-disease
+display_name: Inflammatory Bowel Disease (IBD)
+aliases:
+- Crohn's disease
+- ulcerative colitis
+- CD
+- UC
+- granulomatous colitis
+- regional enteritis
+summary: A group of chronic inflammatory disorders of the bowel, principally Crohn's
+  disease (CD) and ulcerative colitis (UC). CD involves full-thickness, patchy, transmural
+  inflammation that can affect any part of the alimentary tract; UC is a superficial,
+  continuous inflammation limited to the colonic mucosa. Both share genetic predisposition,
+  environmental triggers, dysbiosis, nutritional deficiencies, and elevated risk of
+  colonic carcinoma.
+common_symptoms:
+- abdominal-pain
+- bloody-diarrhea
+- chronic-diarrhea
+- weight-loss
+- low-grade-fever
+- perianal-disease
+- joint-pain
+- skin-rash
+- fatigue
+red_flags:
+- profuse-bloody-stool-with-fever
+- toxic-megacolon
+- bowel-obstruction
+- colon-cancer-risk-after-10-years
+- growth-failure-in-children
+related_topics:
+- irritable-bowel-syndrome
+- intestinal-permeability
+- dysbiosis
+- maldigestion
+key_mechanisms:
+- mucosal-inflammation
+- dysbiosis
+- leaky-gut
+coaching_scope_notes: Coaches may support dietary modification (elimination of allergens,
+  carrageenan, refined sugar), prebiotic/probiotic guidance, and supplement education.
+  Severe flares, bloody stools, and fever require immediate clinician referral.
+clinician_scope_notes: Monitor nutritional deficiencies (Zn, Mg, Fe, B12, folate,
+  vitamins A/D/E/K). Corticosteroids and sulfasalazine increase nutrient needs. Fecal
+  calprotectin and CDAI are useful monitoring tools.
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: General Considerations — Definition
+  quote: Inflammatory bowel disease (IBD) is a general term for a group of chronic
+    inflammatory disorders of the bowel. The two major categories are CD and ulcerative
+    colitis (UC).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

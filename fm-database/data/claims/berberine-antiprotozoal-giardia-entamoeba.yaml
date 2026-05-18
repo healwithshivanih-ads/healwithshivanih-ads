@@ -1,0 +1,28 @@
+slug: berberine-antiprotozoal-giardia-entamoeba
+statement: Berberine (from goldenseal, Oregon grape, and Coptis chinensis) has protostatic
+  and protocidal activity against Entamoeba histolytica, Giardia lamblia, and Blastocystis
+  hominis, and is beneficial in treating giardiasis in children.
+evidence_tier: plausible_emerging
+rationale: In vitro and some human trial data support berberine's antiprotozoal efficacy;
+  the alkaloid disrupts parasite membrane function and inhibits protozoan replication.
+coaching_translation: Berberine-containing botanical supplements (goldenseal, Oregon
+  grape, or berberine HCl) may support resolution of intestinal protozoan infections
+  — work with a clinician for confirmed parasitic infections.
+caveats:
+- Berberine is contraindicated in pregnancy
+- Drug interactions with CYP3A4 substrates; clinician review required
+linked_to_topics:
+- intestinal-protozoan-infestation
+linked_to_supplements:
+- berberine
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Intestinal Protozoan Infestation — Berberine
+  quote: Berberine has protostatic and protocidal activity against E. histolytica,
+    G. lamblia, and B. hominis. It is beneficial in treating giardiasis in children.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

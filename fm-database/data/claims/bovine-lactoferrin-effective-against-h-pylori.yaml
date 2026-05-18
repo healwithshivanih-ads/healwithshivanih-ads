@@ -1,0 +1,31 @@
+slug: bovine-lactoferrin-effective-against-h-pylori
+statement: Bovine lactoferrin at 300 mg/day exerts broad-spectrum antimicrobial action
+  against H. pylori and other pathogens, prevents microbial attachment to GI mucosa,
+  and supports growth of beneficial Bifidobacterium and Lactobacillus species.
+evidence_tier: plausible_emerging
+rationale: Lactoferrin's antimicrobial mechanisms are well characterised (iron chelation
+  starving bacteria, direct membrane disruption); clinical data for H. pylori combination
+  therapy with lactoferrin are promising but preliminary.
+coaching_translation: Bovine lactoferrin (300 mg/day) is a well-tolerated supplement
+  that supports both H. pylori management and beneficial gut flora — may complement
+  standard triple therapy.
+caveats:
+- Most H. pylori-specific lactoferrin data are in combination with antibiotics rather
+  than as monotherapy
+- Dairy-sensitive clients should verify tolerance
+linked_to_topics:
+- maldigestion
+linked_to_supplements:
+- lactoferrin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Maldigestion — Bovine Lactoferrin
+  quote: Bovine lactoferrin is useful against H. pylori. Lactoferrin exerts broad-spectrum
+    antimicrobial action because it inhibits growth of disease-causing protozoa, yeasts,
+    bacteria, and viruses.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,30 @@
+slug: sulfasalazine-depletes-folate-and-vitamin-c
+statement: Sulfasalazine inhibits absorption and transport of folate, decreases serum
+  folate and iron, and increases urinary excretion of ascorbic acid, significantly
+  increasing nutritional needs in IBD patients on this medication.
+evidence_tier: strong
+rationale: Well-established drug-nutrient interaction; sulfasalazine competitively
+  inhibits folate-dependent enzymes and the intestinal folate transport system, a
+  pharmacologically confirmed mechanism.
+coaching_translation: Patients on sulfasalazine need higher folate and vitamin C intake
+  — ensure their supplement plan addresses these depletions.
+caveats:
+- Folate repletion is critical as deficiency causes mucosal cell turnover abnormalities
+  before it affects red blood cells
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- folate
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Malnutrition — Sulfasalazine
+  quote: 'Sulfasalazine has been shown to do the following: Inhibit the absorption
+    and transport of folate; Decrease serum folate and Fe; Increase the urinary excretion
+    of ascorbic acid.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

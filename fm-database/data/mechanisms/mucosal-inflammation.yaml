@@ -1,0 +1,39 @@
+slug: mucosal-inflammation
+display_name: Colonic Mucosal Inflammation
+aliases:
+- intestinal-mucosal-inflammation
+- colonic-inflammation
+category: immune
+summary: Prostaglandins, leukotrienes (especially LTC4, LTD4, LTE4), and monohydroxyeicosatetraenoic
+  acid are greatly elevated in IBD colonic mucosa. Neutrophil-derived lipoxygenase
+  products amplify inflammation and cause smooth muscle contraction. Flavonoid polyphenols
+  (quercetin, curcumin) and omega-3 fatty acids downregulate these pathways.
+upstream_drivers:
+- arachidonic-acid-excess
+- omega-6-omega-3-imbalance
+- mast-cell-degranulation
+- dysbiosis
+downstream_effects:
+- abdominal-pain
+- diarrhea
+- mucosal-damage
+- nutritional-deficiencies
+related_mechanisms:
+- leaky-gut
+- eicosanoid-metabolism
+- oxidative-stress
+linked_to_topics:
+- inflammatory-bowel-disease
+- irritable-bowel-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: Therapeutic Considerations — Eicosanoid Metabolism
+  quote: Prostaglandins are greatly increased in colonic mucosa, serum, and stools
+    of IBD patients. Increased synthesis of lipoxygenase products, leukotrienes, and
+    monohydroxyeicosatetraenoic acid by neutrophils amplifies inflammation and causes
+    smooth muscle contraction.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: vitamin-d-supports-immune-regulation-ibd
+statement: Vitamin D deficiency is common in IBD and increases risk of metabolic bone
+  disease; vitamin D supports T-regulatory cell function and dampens pro-inflammatory
+  cytokines in animal models of IBD.
+evidence_tier: plausible_emerging
+rationale: Vitamin D insufficiency in IBD is well documented; immunomodulatory effects
+  on Treg cells and cytokine suppression are mechanistically plausible but human IBD
+  trial data are limited.
+coaching_translation: Vitamin D optimisation is important in IBD both for bone protection
+  and immune regulation — test and supplement as needed.
+caveats:
+- Optimal dosing for IBD immune modulation is unclear; supraphysiologic dosing should
+  be clinician-supervised
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- vitamin-d3
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Vitamins — Vitamin D
+  quote: Vitamin D supports proper immune regulation. It influences T-regulatory cell
+    function and dampens proinflammatory cytokines produced in animal models of IBD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

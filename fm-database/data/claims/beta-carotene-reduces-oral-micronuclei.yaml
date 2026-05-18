@@ -1,0 +1,33 @@
+slug: beta-carotene-reduces-oral-micronuclei
+statement: Beta-carotene is as effective as retinol in decreasing the proportion of
+  buccal mucosal cells with micronuclei in betel nut and tobacco chewers, with a much
+  higher therapeutic index and no major toxicities.
+evidence_tier: plausible_emerging
+rationale: The micronucleus assay is a validated measure of genotoxic damage; beta-carotene's
+  antioxidant and pro-differentiation effects in epithelial tissue are mechanistically
+  sound. Multiple clinical studies in leukoplakia are cited.
+coaching_translation: Beta-carotene (30–90 mg/day) is a safer alternative to high-dose
+  vitamin A for oral leukoplakia, with good evidence for reducing cancer-associated
+  cell changes.
+caveats:
+- High-dose synthetic beta-carotene increases lung cancer risk in smokers — use with
+  caution or prefer mixed carotenoids in current smokers
+- Natural beta-carotene from food or mixed carotenoid supplements preferred over high-dose
+  synthetic
+linked_to_topics:
+- leukoplakia
+- lichen-planus
+linked_to_supplements:
+- beta-carotene
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Leukoplakia — Vitamin A and Beta-Carotene
+  quote: Beta-carotene is as effective as retinol in decreasing the mean proportion
+    of cells with micronuclei on buccal mucosa in Asian betel nut and tobacco chewers,
+    with a much higher therapeutic index.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

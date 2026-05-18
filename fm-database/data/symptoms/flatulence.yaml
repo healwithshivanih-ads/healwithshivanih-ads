@@ -15,22 +15,26 @@ aliases:
 - eructation
 - burping
 - flatulence (excessive)
+- passing-gas
 category: gi
 severity: common
-description: Passage of excess intestinal gas. In hypochlorhydria, undigested food
-  reaching the lower GI tract undergoes microbial fermentation, generating excess
-  gas.
+description: Excessive passage of intestinal gas from FODMAP fermentation, SIBO, dysbiosis,
+  or low gastric acid. Common in IBS, IBD, and maldigestion.
 linked_to_topics:
 - low-fodmap-diet
 - elimination-diet
 - gut-dysbiosis
 - hypochlorhydria
 - digestive-enzyme-insufficiency
+- irritable-bowel-syndrome
+- maldigestion
 linked_to_mechanisms:
 - colonic-fermentation
 - leaky-gut
 - sibo-dysbiosis
 - food-fermentation-reflux
+- fodmap-fermentation
+- dysbiosis
 when_to_refer: ''
 sources:
 - id: vitaone-elimination-diet-toolkit
@@ -51,7 +55,10 @@ sources:
     as a common symptom of hypochlorhydria].
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6
-version: 3
+- id: pizzorno-textbook-gi
+  location: Diagnostic Summary — Irritable Bowel Syndrome
+  quote: Dyspeptic symptoms (flatulence, nausea, anorexia).
+version: 4
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

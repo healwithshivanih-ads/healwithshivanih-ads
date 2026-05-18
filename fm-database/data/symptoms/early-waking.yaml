@@ -1,0 +1,26 @@
+slug: early-waking
+display_name: Frequent or Early Awakening (Sleep-Maintenance Insomnia)
+aliases:
+- waking-at-3am
+- 3am-wakeups
+- early-morning-waking
+- sleep-maintenance-insomnia
+- wired-at-3am
+category: sleep
+severity: common
+description: Inability to stay asleep through the night, linked to depression, nocturnal
+  hypoglycaemia, sleep apnoea, nocturnal myoclonus, and low melatonin.
+linked_to_topics:
+- insomnia
+linked_to_mechanisms:
+- nocturnal-hypoglycaemia
+- serotonin-deficiency
+when_to_refer: ''
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Diagnostic Summary
+  quote: Frequent or early awakening (maintenance insomnia).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,44 @@
+slug: dysbiosis
+display_name: Gut Microbiota Dysbiosis
+aliases:
+- intestinal-dysbiosis
+- gut-flora-imbalance
+- microbiota-dysbiosis
+- small-intestinal-bacterial-overgrowth
+category: gut
+summary: An imbalance of intestinal microbial populations — increased gram-positive
+  anaerobic coccoid rods and Bacteroides vulgatus in IBD, or SIBO in IBS — disrupts
+  fermentation patterns, mucosal immunity, and epithelial integrity. Antibiotic exposure,
+  carrageenan, and dietary refined carbohydrates are key upstream drivers.
+upstream_drivers:
+- antibiotic-exposure
+- refined-carbohydrate-diet
+- carrageenan-consumption
+- proton-pump-inhibitor-use
+downstream_effects:
+- leaky-gut
+- scfa-deficiency
+- food-allergy
+- chronic-diarrhea
+- ibs-symptoms
+related_mechanisms:
+- leaky-gut
+- mucosal-inflammation
+- scfa-deficiency
+linked_to_topics:
+- inflammatory-bowel-disease
+- irritable-bowel-syndrome
+- maldigestion
+- kidney-stones
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: Therapeutic Considerations — Intestinal Microflora
+  quote: Alterations in metabolic activity of bacteria are more important than alterations
+    in number of bacteria. Early research is showing some response to fecal transplants,
+    supporting the concept that microflora imbalance plays an important role in the
+    underlying pathophysiology.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,40 @@
+slug: gut-brain-axis-dysregulation
+display_name: Gut–Brain Axis Dysregulation
+aliases:
+- brain-gut-axis
+- gut-brain-cross-talk
+- serotonergic-gut-signalling
+category: neurological
+summary: IBS is viewed as a disorder of the brain-gut axis involving both central
+  and peripheral serotonergic systems. Altered tryptophan metabolism (via IDO and
+  the kynurenine pathway) and elevated indoleamine 2,3-dioxygenase activity link low-level
+  immune activation to mood and bowel symptoms. Stress increases colonic motility
+  in both normal subjects and IBS patients.
+upstream_drivers:
+- psychological-stress
+- tryptophan-depletion
+- ido-overactivation
+- dysbiosis
+downstream_effects:
+- abdominal-pain
+- altered-bowel-habit
+- mood-disturbance
+- ibs-symptoms
+related_mechanisms:
+- dysbiosis
+- serotonin-deficiency
+linked_to_topics:
+- irritable-bowel-syndrome
+- insomnia
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: IBS — Nutritional Supplements — L-Tryptophan
+  quote: IBS disease state is viewed as a disorder of the brain-gut axis, involving
+    both central and peripheral serotonergic systems. Altered tryptophan metabolism
+    and indoleamine 2,3-dioxygenase (IDO) activity are hallmarks of many stress-related
+    disorders.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

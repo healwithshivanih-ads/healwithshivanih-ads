@@ -1,0 +1,33 @@
+slug: corticosteroids-deplete-multiple-nutrients
+statement: Corticosteroids used in IBD stimulate protein catabolism, decrease calcium
+  and phosphorus absorption, increase urinary excretion of ascorbic acid, calcium,
+  potassium, and zinc, and increase requirements for vitamins B6, folate, and vitamin
+  D.
+evidence_tier: strong
+rationale: These are pharmacologically well-characterised drug-nutrient interactions
+  documented across multiple sources; clinically significant in long-term IBD steroid
+  use.
+coaching_translation: Clients on long-term steroid therapy should be supported with
+  extra calcium, vitamin D, vitamin C, zinc, potassium, and B-vitamins under clinician
+  guidance.
+caveats:
+- Bone loss from steroids requires concurrent calcium + vitamin D + vitamin K2 support;
+  clinician-supervised
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- calcium
+- vitamin-d3
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Malnutrition — Corticosteroids
+  quote: 'Corticosteroids are known to do the following: Stimulate protein catabolism;
+    Depress protein synthesis; Decrease the absorption of Ca and phosphorus; Increase
+    the urinary excretion of ascorbic acid, Ca, potassium (K), and zinc (Zn).'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

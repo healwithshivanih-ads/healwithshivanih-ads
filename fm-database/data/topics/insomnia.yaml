@@ -13,27 +13,15 @@ aliases:
 - trouble staying asleep
 - sleep onset insomnia
 - sleep maintenance insomnia
-summary: 'Insomnia presents as difficulty falling asleep (sleep onset), staying
-
-  asleep (sleep maintenance), or early morning awakening. In FM
-
-  framing, the pattern points to the likely root: 2-3 a.m. wide-awake
-
-  awakening suggests cortisol/HPA dysregulation; difficulty falling
-
-  asleep often points to evening sympathetic dominance, blue light
-
-  exposure, or caffeine clearance issues; non-restorative sleep with
-
-  poor dream recall suggests sleep apnea or insufficient deep-sleep
-
-  architecture. Insomnia is a symptom pattern — the underlying drivers
-
-  (toxin load, dysbiosis, HPA dysregulation, blood sugar instability,
-
-  sleep apnea, mental-emotional load) determine the coaching plan.
-
-  '
+- sleep-onset insomnia
+- sleep-maintenance insomnia
+- chronic insomnia
+summary: An extremely common complaint affecting up to 30% of the population, with
+  psychological factors accounting for 50% of cases evaluated in sleep laboratories.
+  Sleep-onset insomnia is commonly driven by anxiety and stimulants; sleep-maintenance
+  insomnia by depression, hypoglycaemia, nocturnal myoclonus, and sleep apnoea. Key
+  natural interventions include serotonin precursor therapy (5-HTP, L-tryptophan),
+  melatonin, magnesium, and sedative botanicals.
 common_symptoms:
 - waking 2-4am unable to return to sleep
 - non-restorative sleep / morning fatigue
@@ -43,11 +31,15 @@ common_symptoms:
 - non-restorative-sleep
 - daytime-fatigue
 - middle-of-night-awakening
+- early-waking
+- restless-legs
 red_flags:
 - persistent insomnia with low mood / suicidality (refer mental health)
 - witnessed apnea, loud snoring, gasping (refer for sleep study)
 - excessive daytime sleepiness despite adequate hours in bed
 - Sleep apnea symptoms — refer for sleep study
+- sleep-apnoea-with-cardiovascular-complications
+- narcolepsy
 related_topics:
 - perimenopause
 - anxiety
@@ -56,6 +48,7 @@ related_topics:
 - vagal-tone
 - sleep-deprivation
 - circadian-rhythm-disruption
+- irritable-bowel-syndrome
 key_mechanisms:
 - hpa-axis-dysregulation
 - low-progesterone
@@ -64,26 +57,15 @@ key_mechanisms:
 - 2-3am-cortisol-spike-pattern
 - blue-light-melatonin-suppression
 - parasympathetic-restoration-failure
-coaching_scope_notes: 'Coach maps the insomnia pattern (onset vs maintenance vs early
-
-  awakening), screens for sleep hygiene gaps, and supports the
-
-  upstream drivers. Often the highest-leverage early intervention
-
-  is a detox/gut-cleanup phase combined with evening parasympathetic
-
-  support — many cases improve significantly without any sleep-
-
-  specific supplementation.
-
-  '
-clinician_scope_notes: 'Chronic insomnia, suspected sleep apnea, or insomnia accompanied by
-
-  mood disorder, suicidal ideation, or treatment-resistant patterns
-
-  belongs in clinician care.
-
-  '
+- serotonin-deficiency
+- nocturnal-hypoglycaemia
+coaching_scope_notes: Coaches can support sleep hygiene, stimulant removal, progressive
+  relaxation, regular aerobic exercise, and dietary tryptophan guidance. Melatonin,
+  magnesium, and 5-HTP are within scope at standard doses. Refer sleep apnoea signs
+  (snoring, witnessed apnoeas, daytime somnolence) to clinician.
+clinician_scope_notes: Rule out sleep apnoea, narcolepsy, nocturnal myoclonus, hypoglycaemia,
+  thyroid disease. High-dose folic acid for familial RLS requires prescription. Benzodiazepines
+  prescribed by primary care in ~50% of sedative-hypnotic scripts.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Sleep section
@@ -92,10 +74,15 @@ sources:
   quote: '↓ Insomnia, jet lag. Solution: Sleep hygiene, magnesium, melatonin support.'
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Sleep disorder patterns section
-  quote: Sleep disorders are often defined about what are the challenges, falling asleep, staying asleep, or the waking pattern
+  quote: Sleep disorders are often defined about what are the challenges, falling
+    asleep, staying asleep, or the waking pattern
+- id: pizzorno-textbook-gi
+  location: Insomnia — General Considerations
+  quote: Insomnia is an extremely common complaint with many causes. Up to 30% of
+    the population experience insomnia.
 evidence_tier: strong
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
 notes_for_coach: ''

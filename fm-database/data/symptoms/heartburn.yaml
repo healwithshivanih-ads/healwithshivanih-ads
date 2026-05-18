@@ -1,0 +1,27 @@
+slug: heartburn
+display_name: Heartburn / Reflux
+aliases:
+- acid-reflux
+- gerd
+- gastro-oesophageal-reflux
+- burning-chest
+category: gi
+severity: common
+description: Burning retrosternal sensation caused by reflux of gastric contents into
+  the oesophagus. Most often caused by overeating, obesity, chocolate, fried foods,
+  alcohol, and carbonated beverages — not by excess acid production.
+when_to_refer: Persistent reflux unresponsive to lifestyle measures, dysphagia, or
+  weight loss warrants endoscopy.
+linked_to_topics:
+- maldigestion
+linked_to_mechanisms:
+- hypochlorhydria
+sources:
+- id: pizzorno-textbook-gi
+  location: Maldigestion — Reflux Esophagitis
+  quote: Reflux esophagitis is most often caused by overeating and other factors,
+    not excessive acid.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

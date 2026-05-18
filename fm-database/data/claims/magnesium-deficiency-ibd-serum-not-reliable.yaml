@@ -1,0 +1,30 @@
+slug: magnesium-deficiency-ibd-serum-not-reliable
+statement: Magnesium deficiency is prevalent in IBD; serum levels are frequently normal
+  while intracellular levels are commonly decreased, making serum magnesium an unreliable
+  marker of true magnesium status.
+evidence_tier: strong
+rationale: Established principle in functional medicine; serum Mg reflects <1% of
+  total body Mg. Oral chelated forms (citrate, aspartate) are preferred over inorganic
+  salts due to better absorption and less cathartic effect.
+coaching_translation: Magnesium deficiency in IBD may be missed by standard blood
+  tests. Supplement with magnesium chelates (citrate or glycinate) rather than oxide
+  for better absorption and less laxative effect.
+caveats:
+- Severe deficiency may require IV magnesium under clinician supervision, especially
+  in short-bowel syndrome
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- magnesium-citrate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Minerals — Magnesium
+  quote: 'Poor correlation exists between serum levels (frequently normal) and intracellular
+    levels (commonly decreased). Oral supplement: Mg chelates (e.g., citrate, aspartate)
+    are preferred over inorganic Mg salts.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

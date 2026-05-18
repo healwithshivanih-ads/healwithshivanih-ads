@@ -1,0 +1,31 @@
+slug: low-fodmap-diet-benefits-three-quarters-of-ibs
+statement: Three of four IBS patients respond well to restriction of FODMAP (fermentable
+  oligosaccharides, disaccharides, monosaccharides, and polyols) intake, as breath
+  hydrogen testing can identify which specific sugars trigger symptoms in each individual.
+evidence_tier: strong
+rationale: Low-FODMAP diet is now a guideline-level recommendation for IBS in multiple
+  international gastroenterology bodies; the mechanism (osmotic load + fermentation
+  gas) is well characterised.
+coaching_translation: A low-FODMAP diet trial is one of the most evidence-supported
+  dietary interventions for IBS — work with a dietitian for a structured elimination
+  and reintroduction protocol.
+caveats:
+- Long-term FODMAP restriction may reduce beneficial prebiotic bacteria; reintroduction
+  phase is essential
+- Wheat avoidance in IBS should not be confused with coeliac disease — exclude coeliac
+  first
+linked_to_topics:
+- irritable-bowel-syndrome
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: IBS — Therapeutic Considerations — Dietary FODMAPs
+  quote: Three of four IBS patients respond well to restriction of FODMAP intake.
+    Breath hydrogen testing helps identify which sugars behave as FODMAPs in each
+    person.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: lutein-zeaxanthin-protect-macula
+statement: The macula owes its yellow colour to high concentrations of lutein and
+  zeaxanthin, which prevent oxidative damage to the retina and protect against ARMD;
+  individuals with lowest plasma zeaxanthin have a 2.0 odds ratio for ARMD risk.
+evidence_tier: strong
+rationale: Well-established carotenoid-retinal biology; the LAST trial and AREDS2
+  data support lutein/zeaxanthin supplementation for macular pigment optical density
+  and visual acuity in atrophic ARMD.
+coaching_translation: Increasing dietary lutein (leafy greens, egg yolks) and supplementing
+  10–15 mg lutein + 1–2 mg zeaxanthin daily supports macular health and reduces ARMD
+  progression risk.
+caveats:
+- Beta-carotene supplementation should be avoided in smokers due to lung cancer risk
+  — use lutein/zeaxanthin instead as the macular carotenoids
+linked_to_topics:
+- macular-degeneration
+linked_to_supplements:
+- lutein
+- zeaxanthin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Macular Degeneration — Dietary Fruits and Vegetables
+  quote: The macula (and central portion, the fovea) owes its yellow color to high
+    concentrations of lutein and zeaxanthin, which prevent oxidative damage to the
+    retina and protect against MD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,27 @@
+slug: water-intake-2l-reduces-kidney-stone-recurrence
+statement: Consuming more than 2 L of water per day to achieve a daily urine output
+  above 2.5 L lowers kidney stone recurrence risk by 60%.
+evidence_tier: strong
+rationale: Robust epidemiological and clinical trial data; diluting urine reduces
+  supersaturation of calcium oxalate, uric acid, and phosphate — the primary mechanism
+  of stone formation.
+coaching_translation: Drinking at least 2 litres of water daily (preferably more in
+  hot weather or with exercise) to keep urine pale and dilute is the single most cost-effective
+  kidney stone prevention strategy.
+caveats:
+- Other beverages should not substitute for water; grapefruit juice increases stone
+  risk by 44% in women
+linked_to_topics:
+- kidney-stones
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Kidney Stones — Dietary Factors — Water
+  quote: Consuming more than 2 L of water per day to achieve urine output of more
+    than 2.5 L/day lowers KS recurrence risk by 60%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

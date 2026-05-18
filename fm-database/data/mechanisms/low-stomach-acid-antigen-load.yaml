@@ -1,14 +1,14 @@
 slug: low-stomach-acid-antigen-load
 display_name: Low Stomach Acid → Increased Antigen Load
 aliases:
-- hypochlorhydria
 - PPI-induced food sensitivity
 - acid-blocking drug effect
 category: gut
-summary: Adequate stomach acid is required to denature proteins into small peptides for further digestion. When stomach acid
-  is low (hypochlorhydria) — including due to long-term PPI use — intact protein chains pass into the small intestine undigested.
-  If intestinal permeability co-exists, these large peptides are absorbed into the bloodstream and trigger immune reactions
-  (IgE or IgG/IgA), increasing food sensitivity.
+summary: Adequate stomach acid is required to denature proteins into small peptides
+  for further digestion. When stomach acid is low (hypochlorhydria) — including due
+  to long-term PPI use — intact protein chains pass into the small intestine undigested.
+  If intestinal permeability co-exists, these large peptides are absorbed into the
+  bloodstream and trigger immune reactions (IgE or IgG/IgA), increasing food sensitivity.
 upstream_drivers:
 - ppi-use
 - acid-blocking-medications
@@ -29,8 +29,9 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: Low Stomach Acid Section
-  quote: when you block the stomach acid or when your stomach have a low stomach acid, we actually increase food sensitivity...
-    stomach acid actually break down your protein... if the patient having a low stomach acid, they cannot break down the
+  quote: when you block the stomach acid or when your stomach have a low stomach acid,
+    we actually increase food sensitivity... stomach acid actually break down your
+    protein... if the patient having a low stomach acid, they cannot break down the
     long chain protein and the whole chain of protein go in small intestine
 version: 1
 status: active

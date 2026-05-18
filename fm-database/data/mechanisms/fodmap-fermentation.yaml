@@ -1,0 +1,36 @@
+slug: fodmap-fermentation
+display_name: FODMAP Fermentation and Osmotic Load
+aliases:
+- fodmap-intolerance
+- fermentable-carbohydrate-intolerance
+category: gut
+summary: 'Short-chain fermentable carbohydrates (FODMAPs: fructans, galactans, lactose,
+  fructose, polyols) are osmotically active and rapidly fermented by intestinal bacteria,
+  yielding hydrogen and CO2 gases. This drives bloating, abdominal pain, and altered
+  bowel habit in IBS; three of four IBS patients respond well to FODMAP restriction.'
+upstream_drivers:
+- high-fodmap-diet
+- dysbiosis
+- sibo
+downstream_effects:
+- abdominal-bloating
+- flatulence
+- diarrhea
+- abdominal-pain
+related_mechanisms:
+- dysbiosis
+- gut-brain-axis-dysregulation
+linked_to_topics:
+- irritable-bowel-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: IBS — Therapeutic Considerations — Dietary FODMAPs
+  quote: 'Dietary FODMAPs: short-chain carbohydrates that are osmotically active and
+    fermentable by intestinal bacteria yielding gases—hydrogen or carbon dioxide—causing
+    abdominal bloating. Three of four IBS patients respond well to restriction of
+    FODMAP intake.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -9,10 +9,15 @@ aliases:
 - tummy ache
 - stomach pain
 - abdominal-pain-cramping
+- stomach-pain
+- belly-pain
+- gut-cramps
+- abdominal-cramps
 category: gi
 severity: common
-description: Pain or cramping in the abdominal region related to gas production, intestinal
-  inflammation, and visceral hypersensitivity common in SIBO/SIFO.
+description: Diffuse or localised abdominal pain occurring in IBD, IBS, kidney stones,
+  and maldigestion. In CD it can occur anywhere in the abdomen; in UC it is lower
+  abdominal. In IBS it is often relieved by bowel movements.
 linked_to_topics:
 - low-dose-naltrexone
 - low-fodmap-diet
@@ -24,6 +29,9 @@ linked_to_topics:
 - pancreatic-insufficiency
 - sibo
 - autoimmunity-leaky-gut-triad
+- inflammatory-bowel-disease
+- irritable-bowel-syndrome
+- maldigestion
 linked_to_mechanisms:
 - colonic-fermentation
 - altered-gi-motility
@@ -32,7 +40,11 @@ linked_to_mechanisms:
 - oxidative-stress-pancreatic-damage
 - dysbiosis-gut-microbiome-imbalance
 - leaky-gut
-when_to_refer: Refer if severe, acute onset, radiating, or associated with fever/vomiting.
+- mucosal-inflammation
+- eicosanoid-metabolism
+- fodmap-fermentation
+when_to_refer: Severe, constant, or worsening pain; pain with fever; peritoneal signs;
+  or weight loss require urgent clinician evaluation.
 sources:
 - id: vitaone-ldn-article
   location: LDN potential side effects
@@ -54,7 +66,10 @@ sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: IgE Symptoms Section
   quote: In the gastrointestinal system, you can see pain, cramping, vomiting, diarrhea.
-version: 5
+- id: pizzorno-textbook-gi
+  location: Diagnostic Summary — Crohn's Disease
+  quote: Abdominal pain—can be localized anywhere in the abdomen.
+version: 6
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

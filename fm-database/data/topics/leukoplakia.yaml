@@ -1,0 +1,38 @@
+slug: leukoplakia
+display_name: Oral Leukoplakia
+aliases:
+- leukoplakia
+- oral leukoplakia
+- white oral lesion
+summary: White plaquelike lesions on oral mucosa caused by chronic irritation (tobacco,
+  betel nut) or HIV infection. 10% of cases show epithelial dysplasia and are considered
+  precancerous. Vitamin A deficiency is a key factor; antioxidants (beta-carotene,
+  lycopene, vitamins C and E) and elimination of irritants are the mainstay of natural
+  intervention.
+common_symptoms:
+- white-oral-patch
+- oral-pain-with-ulceration
+red_flags:
+- biopsy-showing-dysplasia
+- rapid-lesion-growth
+- oral-cancer-transformation
+related_topics:
+- lichen-planus
+key_mechanisms:
+- oxidative-stress
+- vitamin-a-deficiency
+coaching_scope_notes: Coaches can support tobacco cessation, antioxidant nutrition,
+  and supplement guidance within standard dose ranges. Any new or changing oral white
+  lesion requires clinician/dental referral for biopsy.
+clinician_scope_notes: Confirm diagnosis by biopsy. High-dose retinol therapy requires
+  liver enzyme monitoring. Beta-carotene preferred for its better therapeutic index.
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: Leukoplakia — Therapeutic Considerations
+  quote: Photodynamic therapy, vitamin A, beta-carotene, and lycopene have clinical
+    resolution rates higher than 50%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

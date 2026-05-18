@@ -1,5 +1,5 @@
 slug: joint-pain
-display_name: Joint Pain
+display_name: Arthralgia / IBD-Associated Arthritis
 aliases:
 - achy muscles
 - arthritis
@@ -30,12 +30,16 @@ aliases:
 - arthralgias
 - achy-joints
 - joint-pain-stiffness
+- joint-pain
+- peripheral-arthritis
+- ibd-arthropathy
 category: musculoskeletal
-severity: common
-description: Diffuse joint or muscle pain associated with systemic endotoxemia from
-  SIBO. Microbiome-driven inflammation can manifest in musculoskeletal symptoms.
-when_to_refer: Swollen joints, autoimmune arthritis, or fever with joint pain—refer
-  to rheumatology.
+severity: concerning
+description: The most common extra-intestinal manifestation of IBD, occurring in 25%
+  of patients. May be peripheral (knees, ankles, wrists) proportional to bowel disease
+  activity, or axial (ankylosing spondylitis–like) in HLA-B27 positive patients.
+when_to_refer: Spinal involvement with HLA-B27, or joint symptoms preceding bowel
+  diagnosis, requires rheumatology evaluation.
 linked_to_topics:
 - perimenopause
 - autoimmune
@@ -61,6 +65,8 @@ linked_to_topics:
 - ph-balance
 - sibo
 - gut-microbiome
+- inflammatory-bowel-disease
+- intestinal-protozoan-infestation
 linked_to_mechanisms:
 - estrogen-decline
 - chronic-inflammation
@@ -82,6 +88,7 @@ linked_to_mechanisms:
 - resolvin-spm-production
 - lectin-gut-inflammation
 - cellular-ph-dysregulation
+- endotoxaemia-complement-activation
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Joint Pain / Autoimmune sections
@@ -146,7 +153,11 @@ sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: IgG Symptoms Section
   quote: we have seen stiffness, itching after one or two days we see
-version: 17
+- id: pizzorno-textbook-gi
+  location: Extraintestinal Manifestations — Arthritis
+  quote: The most common extraintestinal lesion (EIL) in adults is arthritis (25%
+    of patients).
+version: 18
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,40 @@
+slug: macular-degeneration
+display_name: Age-Related Macular Degeneration (ARMD)
+aliases:
+- AMD
+- ARMD
+- dry macular degeneration
+- wet macular degeneration
+- drusen
+summary: The leading cause of severe visual loss in adults over 55 in the US and Europe.
+  Dry (atrophic) ARMD accounts for 80–95% of cases; wet (neovascular) ARMD is less
+  common but progresses rapidly. Primary pathophysiology is free radical damage to
+  the retinal pigment epithelium, compounded by reduced blood and oxygen supply. Major
+  risk factors include smoking, atherosclerosis, hypertension, and low dietary antioxidants.
+common_symptoms:
+- blurred-vision
+- central-vision-loss
+- visual-distortion
+red_flags:
+- rapid-vision-loss
+- new-scotoma
+- metamorphopsia-onset
+related_topics: []
+key_mechanisms:
+- oxidative-stress
+- retinal-free-radical-damage
+coaching_scope_notes: Coaches can support antioxidant-rich diets, omega-3 supplementation,
+  smoking cessation, and atherosclerosis prevention. Refer any patient ≥55 with visual
+  decline to an ophthalmologist urgently.
+clinician_scope_notes: 'Wet ARMD requires urgent laser photocoagulation or anti-VEGF
+  injections. Dry ARMD: antioxidant + zinc supplementation (AREDS-style) slows progression.'
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: Macular Degeneration — General Considerations
+  quote: Macular degeneration (MD) is the leading cause of severe visual loss in the
+    United States and Europe in persons aged 55 years and older.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

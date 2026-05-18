@@ -1,0 +1,31 @@
+slug: valerian-reduces-sleep-latency
+statement: Valeriana officinalis root improves sleep quality and sleep latency as
+  effectively as small doses of barbiturates or benzodiazepines, while uniquely reducing
+  (rather than increasing) morning sleepiness.
+evidence_tier: strong
+rationale: Multiple randomised controlled trials with valerian extract (standardised
+  to 0.8% valerenic acid) support reductions in sleep latency and improved sleep quality;
+  the reduction of morning grogginess is a clear clinical advantage over pharmaceuticals.
+coaching_translation: Valerian root extract (150–300 mg standardised to 0.8% valerenic
+  acid, 45 minutes before bed) is a well-supported herbal sleep aid without the morning
+  grogginess of prescription sedatives.
+caveats:
+- Consistent nightly use for 2–4 weeks may be needed before full effect is experienced;
+  do not combine with alcohol or benzodiazepines
+linked_to_topics:
+- insomnia
+linked_to_supplements:
+- valerian
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Botanicals with Sedative Properties
+  quote: 'Valeriana officinalis root: Most clinical research; improves sleep quality
+    and sleep latency (time required to fall asleep); as effective in reducing sleep
+    latency as small doses of barbiturates or benzodiazepines. Although these drugs
+    also increase morning sleepiness, valerian usually reduces morning sleepiness.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

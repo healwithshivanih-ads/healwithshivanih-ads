@@ -1,0 +1,27 @@
+slug: carrageenan-should-be-avoided-in-ibd
+statement: Carrageenan (used as a food stabiliser in dairy products, ice cream, and
+  processed foods) has been used to induce IBD in animal models; people with B. vulgatus
+  overgrowth may be at particular risk and should avoid it.
+evidence_tier: fm_specific_thin
+rationale: Animal data are robust but human studies have not proven causation; the
+  mechanism (B. vulgatus-mediated metabolic activation of carrageenan) is plausible.
+  Avoiding carrageenan is a low-risk intervention with biological rationale.
+coaching_translation: Check ingredient labels and avoid carrageenan in dairy products,
+  ice cream, chocolate milk, and cottage cheese if you have IBD or gut inflammation.
+caveats:
+- No direct causal proof in humans; germ-free animals do not display carrageenan-induced
+  damage, suggesting bacterial co-factor is required
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Therapeutic Considerations — Carrageenans
+  quote: Carrageenan is metabolized into nondamaging components in most human beings,
+    but people with overgrowth of B. vulgatus may be at risk. Avoid carrageenan.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

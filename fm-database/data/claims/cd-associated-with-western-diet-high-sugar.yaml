@@ -1,0 +1,29 @@
+slug: cd-associated-with-western-diet-high-sugar
+statement: Crohn's disease patients habitually consume more refined sugar (122 g/day
+  vs. 65 g/day in controls), chemically modified fats, and fast food, and less omega-3–rich
+  foods and dietary fibre than healthy controls.
+evidence_tier: strong
+rationale: Epidemiological data showing CD is virtually nonexistent in populations
+  consuming traditional diets and correlates strongly with dietary total fat, animal
+  fat, omega-6/omega-3 ratio, and animal protein.
+coaching_translation: Reducing refined sugars, processed fats, and increasing fibre
+  and omega-3 foods is the most powerful dietary lever for Crohn's disease prevention
+  and management.
+caveats:
+- Epidemiological association does not prove causation; individual dietary triggers
+  vary
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Etiology — Dietary Factors
+  quote: People who have CD habitually eat more refined sugar and chemically modified
+    fats and fast food and less raw fruit and vegetables, omega-3–rich foods, and
+    dietary fiber than do healthy people (122 g sugar daily versus 65 g daily).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

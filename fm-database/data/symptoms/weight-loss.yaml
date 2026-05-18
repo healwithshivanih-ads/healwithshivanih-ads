@@ -4,22 +4,32 @@ aliases:
 - unexplained weight loss
 - losing weight without trying
 - wasting
-category: metabolic
+- unexplained-weight-loss
+- cachexia
+category: constitutional
 severity: concerning
-description: Progressive weight loss due to systemic caloric and macronutrient malabsorption
-  when pancreatic enzyme output is insufficient to support digestion.
-when_to_refer: Refer to clinician if rapid or severe — may indicate significant malnutrition
-  or underlying disease requiring medical management.
+description: Common in IBD due to decreased oral intake from pain and nausea, malabsorption,
+  protein-losing enteropathy, and increased metabolic demands of inflammation. Present
+  in 65–75% of hospitalised IBD patients.
+when_to_refer: Any unintentional weight loss requires clinician workup to exclude
+  malignancy, IBD, or malabsorption.
 linked_to_topics:
 - pancreatic-insufficiency
+- inflammatory-bowel-disease
 linked_to_mechanisms:
 - malabsorption
 - exocrine-pancreatic-enzyme-deficiency
+- mucosal-inflammation
+- oxidative-stress
 sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Signs and Symptoms
   quote: The patient also tends to lose weight obsessively because of the non-absorption.
-version: 1
+- id: pizzorno-textbook-gi
+  location: Malnutrition
+  quote: Protein-calorie malnutrition and associated weight loss are prevalent in
+    65% to 75% of IBD patients.
+version: 2
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

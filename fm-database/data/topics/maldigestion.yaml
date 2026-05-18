@@ -1,0 +1,50 @@
+slug: maldigestion
+display_name: Maldigestion / Digestive Dysfunction
+aliases:
+- achlorhydria
+- exocrine pancreatic insufficiency
+- reflux esophagitis
+- indigestion
+summary: An umbrella clinical area covering insufficient gastric acid (hypochlorhydria),
+  reflux oesophagitis, H. pylori overgrowth, exocrine pancreatic insufficiency, and
+  dysbiosis. In functional medicine, lack of gastric acid — not excess — is considered
+  the more common culprit in chronic indigestion; H. pylori flourishes in low-acid
+  environments, and antacid/PPI use may perpetuate the cycle.
+common_symptoms:
+- bloating-after-meals
+- heartburn
+- belching
+- flatulence
+- nausea
+- constipation
+- diarrhea
+red_flags:
+- haematemesis
+- dysphagia
+- unintentional-weight-loss
+- iron-deficiency-anaemia-with-no-obvious-cause
+related_topics:
+- irritable-bowel-syndrome
+- dysbiosis
+- inflammatory-bowel-disease
+key_mechanisms:
+- hypochlorhydria
+- h-pylori-colonisation
+- dysbiosis
+coaching_scope_notes: Coaches can support dietary changes (avoid carbonated drinks,
+  chocolate, alcohol, coffee, fried foods), lifestyle positioning for reflux, and
+  prebiotic/probiotic guidance. Do not recommend HCl supplementation without clinician
+  oversight.
+clinician_scope_notes: Consider Heidelberg gastric analysis for hypochlorhydria. H.
+  pylori testing by breath, serology, or stool antigen. Evaluate pancreatic exocrine
+  function with stool elastase or faecal fat.
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: Maldigestion — Indigestion
+  quote: Most nutrition-oriented physicians believe that lack of acid, not excess,
+    is true culprit in most patients with indigestion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

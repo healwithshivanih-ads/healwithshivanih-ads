@@ -1,0 +1,26 @@
+slug: butyrate-enemas-benefit-uc
+statement: SCFA enemas (butyrate alone at 80–100 mmol/L or combined with acetate and
+  propionate) displayed excellent preliminary results in a well-designed double-blind
+  study as adjuncts for ulcerative colitis.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistically sound: colonocyte SCFA deficiency is central to UC pathogenesis;
+  double-blind preliminary data are promising but larger trials are needed.'
+coaching_translation: For left-sided ulcerative colitis, short-chain fatty acid (SCFA)
+  enemas may help restore colonocyte energy supply — discuss with your clinician.
+caveats:
+- Requires clinical administration; not within coaching scope to recommend enema protocols
+  without clinician oversight
+out_of_scope_notes: SCFA enema preparation and dosing is a clinician-prescribed intervention.
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Butyrate Enemas in Ulcerative Colitis
+  quote: Enemas providing SCFAs (butyrate only at 80 to 100 mmol/L or SCFA combinations)
+    displayed excellent preliminary results in a well-designed double-blind study.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,5 +1,5 @@
 slug: restless-legs
-display_name: Restless Legs Syndrome
+display_name: Restless Legs Syndrome (RLS)
 aliases:
 - legs won't stay still at night
 - RLS
@@ -13,25 +13,32 @@ aliases:
 - leg restlessness
 - calf dragging sensation
 - willis-ekbom disease
+- irresistible-urge-to-move-legs
+- creepy-crawly-legs
 category: neurological
-severity: common
-description: Uncomfortable urge to move legs at rest, strongly associated with brain iron deficiency and dopaminergic pathway
-  dysfunction, even when serum ferritin appears adequate.
+severity: concerning
+description: Irresistible urge to move legs during wakefulness, frequently associated
+  with nocturnal myoclonus. Low iron stores (serum ferritin <35 µg/L) and folate deficiency
+  are key treatable causes.
 linked_to_topics:
 - chronic-pain-and-fatigue
 - iron-deficiency-anemia
 - iron-deficiency-dysregulation
+- insomnia
 linked_to_mechanisms:
 - nutrient-malabsorption
 - ferritin-storage-depletion
 - hepcidin-mediated-iron-block
 - heme-vs-nonheme-iron-absorption
-when_to_refer: Refer for neurological review if refractory or severely disrupting sleep.
+- serotonin-deficiency
+when_to_refer: Evaluate serum ferritin; if <35 µg/L treat iron deficiency. High-dose
+  folic acid (35–60 mg/day) for familial RLS requires a prescription.
 sources:
 - id: coconote-fm-chronic-pain-fatigue
   location: Supplements Section
-  quote: If they start with the magnesium, people, they complain with the restless leg syndrome or even if they are not having
-    a proper sleep, then magnesium really helps.
+  quote: If they start with the magnesium, people, they complain with the restless
+    leg syndrome or even if they are not having a proper sleep, then magnesium really
+    helps.
 - id: coconote-fm-iron-deficiency-anemia
   location: Symptoms of Iron Deficiency section
   quote: Restless leg, cold intolerance because of lack of oxygen.
@@ -40,9 +47,14 @@ sources:
   quote: Restless legs and anxiety linked to brain iron deficiency
 - id: coconote-fm-magnesium-deficiency
   location: Musculoskeletal system
-  quote: There is excessive accumulation of calcium at the level of the calf muscles which increase the contractility giving
-    you a dragging sensation at the level of the calf muscles.
-version: 3
+  quote: There is excessive accumulation of calcium at the level of the calf muscles
+    which increase the contractility giving you a dragging sensation at the level
+    of the calf muscles.
+- id: pizzorno-textbook-gi
+  location: Insomnia — Restless Legs Syndrome and Nocturnal Myoclonus
+  quote: RLS is characterized during waking by the irresistible urge to move legs;
+    almost all affected patients have NM.
+version: 4
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

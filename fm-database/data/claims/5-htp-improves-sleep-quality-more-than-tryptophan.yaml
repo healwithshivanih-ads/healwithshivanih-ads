@@ -1,0 +1,31 @@
+slug: 5-htp-improves-sleep-quality-more-than-tryptophan
+statement: 5-HTP is one step closer to serotonin than L-tryptophan, enters the brain
+  without a transport carrier, increases REM sleep by 25%, and deepens slow-wave sleep
+  (stages 3–4) without increasing total sleep time.
+evidence_tier: plausible_emerging
+rationale: 5-HTP bypasses the rate-limiting tryptophan hydroxylase step and avoids
+  competition with other large neutral amino acids at the blood-brain barrier; clinical
+  data show superior sleep architecture effects vs. L-tryptophan.
+coaching_translation: 5-HTP (100–300 mg, 30–45 minutes before bed) is a more direct
+  serotonin precursor than L-tryptophan for improving sleep quality — start low and
+  increase gradually.
+caveats:
+- Avoid combining with SSRIs, MAOIs, or other serotonergic drugs due to serotonin
+  syndrome risk — requires clinician clearance in these cases
+- Start with 100 mg and titrate up; take away from protein meals
+linked_to_topics:
+- insomnia
+linked_to_supplements:
+- 5-htp
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Serotonin Precursor and Cofactor Therapy — 5-HTP
+  quote: 5-HTP produces dramatically better results than L-tryptophan in promoting
+    and maintaining sleep. It increases REM sleep (by 25%) and increases deep sleep
+    stages 3 and 4 without increasing total sleep time.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

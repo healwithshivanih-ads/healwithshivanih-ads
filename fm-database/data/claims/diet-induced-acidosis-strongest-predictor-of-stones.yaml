@@ -1,0 +1,28 @@
+slug: diet-induced-acidosis-strongest-predictor-of-stones
+statement: Diet-induced acidosis is the strongest predictor of calcium oxalate and
+  uric acid kidney stones; excessive acid-forming foods increase urinary calcium excretion,
+  decrease urinary citrate, and raise uric acid excretion.
+evidence_tier: plausible_emerging
+rationale: Consistent with understanding of renal acid-base physiology; citrate is
+  conserved to buffer acid, reducing its stone-inhibiting effect; high sulfur amino
+  acid intake drives bone resorption and hypercalciuria.
+coaching_translation: Shifting towards an alkaline-forming diet (rich in vegetables
+  and fruits, low in animal protein and sodium) reduces kidney stone risk by lowering
+  urinary acid load and preserving citrate.
+caveats:
+- Dietary pH alone does not fully explain stone risk; genetics, hydration, and BMI
+  are also important modulators
+linked_to_topics:
+- kidney-stones
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Kidney Stones — Dietary Recommendations — Alkaline Diet
+  quote: Diet-induced acidosis has been shown in recent research to be the strongest
+    predictor of Ca oxalate and uric acid stones.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

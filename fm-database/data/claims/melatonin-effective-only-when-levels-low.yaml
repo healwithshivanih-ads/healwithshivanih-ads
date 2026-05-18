@@ -1,0 +1,29 @@
+slug: melatonin-effective-only-when-levels-low
+statement: Melatonin supplementation produces a sedative effect only when endogenous
+  melatonin levels are low; it is most effective for insomnia in the elderly, in whom
+  low melatonin is common, at a dose of 3 mg at bedtime.
+evidence_tier: strong
+rationale: Well-established from multiple clinical trials; melatonin is not a hypnotic
+  in individuals with normal melatonin levels; its efficacy is context-dependent (low-melatonin
+  states, jet lag, elderly).
+coaching_translation: Melatonin (3 mg at bedtime) is most helpful for older adults
+  or shift workers with low melatonin, not as a general sleeping pill for everyone.
+caveats:
+- Long-term supplementation could disrupt endogenous circadian melatonin production;
+  use cyclically rather than indefinitely
+linked_to_topics:
+- insomnia
+linked_to_supplements:
+- melatonin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Melatonin
+  quote: Sleep effects of melatonin are apparent only if melatonin levels are low;
+    melatonin is not like sleeping pill or 5-HTP; it produces a sedative effect only
+    when melatonin levels are low.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

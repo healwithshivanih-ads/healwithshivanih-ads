@@ -1,16 +1,16 @@
 slug: ibs
 display_name: Irritable Bowel Syndrome (IBS)
 aliases:
-- irritable bowel syndrome
 - IBS-D
 - IBS-C
 - functional bowel disorder
 - irritable bowel
 - IBS
 - functional gut disorder
-summary: A functional gastrointestinal disorder characterized by recurrent abdominal pain, bloating, and altered bowel habits
-  (constipation, diarrhea, or mixed). Strongly linked to gut-brain axis dysregulation, FODMAP sensitivity, and intestinal
-  motility changes.
+summary: A functional gastrointestinal disorder characterized by recurrent abdominal
+  pain, bloating, and altered bowel habits (constipation, diarrhea, or mixed). Strongly
+  linked to gut-brain axis dysregulation, FODMAP sensitivity, and intestinal motility
+  changes.
 common_symptoms:
 - cramping-pain
 - bloating
@@ -50,9 +50,11 @@ key_mechanisms:
 - fructose-malabsorption
 - lactase-deficiency-osmotic-load
 - osmotic-fluid-shifts-in-gut
-coaching_scope_notes: Coaches can implement low FODMAP protocol, stress-reduction practices (vagus nerve support, breathwork),
-  and meal timing guidance. Diagnosis and red flag evaluation require clinician.
-clinician_scope_notes: Rule out IBD, celiac, SIBO, and colorectal cancer before diagnosing IBS.
+coaching_scope_notes: Coaches can implement low FODMAP protocol, stress-reduction
+  practices (vagus nerve support, breathwork), and meal timing guidance. Diagnosis
+  and red flag evaluation require clinician.
+clinician_scope_notes: Rule out IBD, celiac, SIBO, and colorectal cancer before diagnosing
+  IBS.
 evidence_tier: strong
 sources:
 - id: vitaone-gut-cheatsheet
@@ -63,8 +65,8 @@ sources:
   quote: Common in wheat, garlic, onion, legumes - major IBS trigger foods.
 - id: vitaone-health-coaching-toolkit
   location: Low Fodmap Detailed Chart — INDIAN VERSION
-  quote: This Low FODMAP chart is a practical, portion-based guide for clinicians and patients to reduce IBS-type symptoms
-    during the short elimination phase.
+  quote: This Low FODMAP chart is a practical, portion-based guide for clinicians
+    and patients to reduce IBS-type symptoms during the short elimination phase.
 version: 3
 status: active
 updated_at: '2026-05-04'

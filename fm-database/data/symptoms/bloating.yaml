@@ -1,5 +1,5 @@
 slug: bloating
-display_name: Bloating
+display_name: Bloating / Abdominal Distension
 aliases:
 - feeling full and gassy
 - puffy belly
@@ -40,11 +40,13 @@ aliases:
 - stomach pain
 - low stomach acid
 - loose stools
+- gassy-stomach
+- gaseousness
 category: gi
 severity: common
-description: Abdominal fullness, distension, or gassiness commonly triggered by FODMAP
-  fermentation in SIBO or dysbiosis. Fructan-containing foods (onion, garlic) are
-  frequent triggers.
+description: Sensation of abdominal fullness and visible distension due to gas accumulation
+  from FODMAP fermentation, SIBO, dysbiosis, or low gastric acid. Very common in IBS,
+  IBD, and maldigestion.
 when_to_refer: Sudden onset, significant unintentional weight loss, or blood in stool—refer
   to gastroenterology.
 linked_to_topics:
@@ -83,6 +85,9 @@ linked_to_topics:
 - lectin-sensitivity
 - gut-microbiome
 - modern-diet-systemic-dysfunction
+- irritable-bowel-syndrome
+- maldigestion
+- inflammatory-bowel-disease
 linked_to_mechanisms:
 - microbial-diversity-decline
 - leaky-gut
@@ -116,6 +121,9 @@ linked_to_mechanisms:
 - lectin-gut-inflammation
 - bacteriocin-production
 - heme-vs-nonheme-iron-absorption
+- fodmap-fermentation
+- dysbiosis
+- hypochlorhydria
 sources:
 - id: thurlow-microbiome-mondays
   location: Sessions 1, 6 — bloating discussion
@@ -209,7 +217,10 @@ sources:
   quote: IBS, IBD, gut dysmotility, bloating, poor digestion, low stomach acid, and
     food sensitivities — Linked to stress, serotonin, gastrin, secretin, CCK, gut-brain
     disruption, vagal tone reduction, and dysbiosis.
-version: 29
+- id: pizzorno-textbook-gi
+  location: Maldigestion — Common Signs and Symptoms of Low Gastric Acidity
+  quote: Bloating, belching, burning, and flatulence immediately after meals.
+version: 30
 status: active
-updated_at: '2026-05-05'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

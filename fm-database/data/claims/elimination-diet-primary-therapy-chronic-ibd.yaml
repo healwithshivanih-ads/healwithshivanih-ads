@@ -1,0 +1,30 @@
+slug: elimination-diet-primary-therapy-chronic-ibd
+statement: An elimination (oligoantigenic) diet is the primary therapy for chronic
+  IBD; the most common offending foods are wheat and dairy, and IgG/IgE testing or
+  a rotary diversified diet can identify individual allergens.
+evidence_tier: plausible_emerging
+rationale: Food allergy is widely overlooked by conventional medicine in IBD; this
+  FM approach has mechanistic support from leaky-gut-mediated antigen translocation,
+  though large RCTs are lacking.
+coaching_translation: Removing wheat, corn, dairy, carrageenan, sugar, and refined
+  carbohydrates — and implementing an elimination diet — is the cornerstone dietary
+  strategy for chronic IBD.
+caveats:
+- Source is a textbook synthesis; individual allergen identification via IgG testing
+  has variable clinical validity
+- Elemental diet is an alternative for acute flares but requires clinician supervision
+  due to palatability and hospitalisation requirements
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Nutritional Deficiencies — Elimination Diet
+  quote: 'Elimination (oligoantigenic) diet: elimination is the primary therapy for
+    chronic IBD. The most common offending foods are wheat and dairy.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

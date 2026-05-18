@@ -1,0 +1,25 @@
+slug: bloody-diarrhea
+display_name: Bloody Diarrhea
+aliases:
+- haematochezia
+- blood-in-stool
+- rectal-bleeding-with-diarrhea
+category: gi
+severity: red_flag
+description: Frequent, loose, bloody stools with lower abdominal cramps; cardinal
+  presentation of ulcerative colitis. Also occurs in Crohn's colitis and must be distinguished
+  from infectious colitis.
+when_to_refer: Any bloody diarrhea warrants urgent clinician evaluation to exclude
+  IBD, infectious colitis, or colorectal cancer.
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_mechanisms:
+- mucosal-inflammation
+sources:
+- id: pizzorno-textbook-gi
+  location: Diagnostic Summary — Ulcerative Colitis
+  quote: Bloody diarrhea with cramps in lower abdomen.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

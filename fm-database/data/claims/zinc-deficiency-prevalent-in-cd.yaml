@@ -1,0 +1,30 @@
+slug: zinc-deficiency-prevalent-in-cd
+statement: Zinc deficiency occurs in 45% of Crohn's disease patients and correlates
+  with disease activity; complications including poor fistula healing, skin lesions,
+  growth retardation, and depressed cell-mediated immunity may result.
+evidence_tier: strong
+rationale: Well-documented in the IBD literature; zinc is lost via fecal routes, poor
+  absorption, and low dietary intake; zinc picolinate or citrate forms improve absorption
+  in this population.
+coaching_translation: Zinc supplementation (50 mg elemental zinc as picolinate or
+  carnosine daily) is a high-priority intervention in Crohn's disease due to high
+  deficiency rates.
+caveats:
+- Some patients with pancreatic insufficiency may not respond; parenteral administration
+  may be needed in severe cases
+- Zinc supplementation >40 mg/day long-term may deplete copper — monitor
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- zinc-picolinate
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Minerals — Zinc
+  quote: 'Zn: deficiency occurs in 45% of patients with CD because of low dietary
+    intake, poor absorption, and excess fecal losses.'
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: h-pylori-promotes-hypochlorhydria-cycle
+statement: H. pylori colonisation increases gastric pH, which in turn predisposes
+  to further H. pylori colonisation — a positive feedback cycle that PPI and H2-blocker
+  use perpetuates and that eradication of H. pylori can reverse.
+evidence_tier: strong
+rationale: Well-established in gastroenterology literature; H. pylori's urease produces
+  ammonia neutralising gastric acid, raising pH and creating conditions favourable
+  for its own persistence and other pathogenic organisms.
+coaching_translation: Long-term acid-suppressing medications may perpetuate H. pylori
+  overgrowth. Supporting natural gastric acid production and addressing H. pylori
+  root cause is the functional medicine priority.
+caveats:
+- H. pylori eradication typically requires antibiotic-based triple therapy; natural
+  anti-H. pylori botanicals (berberine, mastic gum, lactoferrin) should be clinician-supervised
+linked_to_topics:
+- maldigestion
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Maldigestion — Hypochlorhydria — Etiology
+  quote: Low gastric output predisposes to H. pylori colonization; and H. pylori colonization
+    increases gastric pH, setting up positive feedback scenario.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

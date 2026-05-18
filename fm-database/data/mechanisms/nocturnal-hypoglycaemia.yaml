@@ -1,0 +1,33 @@
+slug: nocturnal-hypoglycaemia
+display_name: Nocturnal Hypoglycaemia / Blood-Glucose Volatility
+aliases:
+- nocturnal-glucose-volatility
+- sleep-maintenance-hypoglycaemia
+category: metabolic
+summary: Increased nocturnal blood glucose volatility is a major cause of sleep-maintenance
+  insomnia. A drop in blood glucose triggers release of counter-regulatory hormones
+  (epinephrine, glucagon, cortisol, GH), causing awakening. Addressing hypoglycaemia
+  is a key step in the natural treatment of sleep-maintenance insomnia.
+upstream_drivers:
+- refined-carbohydrate-diet
+- insulin-resistance
+- adrenal-dysregulation
+downstream_effects:
+- sleep-maintenance-insomnia
+- cortisol-surge
+- adrenaline-release
+related_mechanisms:
+- hpa-axis-dysregulation
+linked_to_topics:
+- insomnia
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Therapeutic Considerations — Nocturnal Glucose Levels
+  quote: Increased nocturnal blood glucose volatility is a major cause of sleep-maintenance
+    insomnia. A drop in blood glucose promotes awakening by release of glucose regulatory
+    hormones (epinephrine, glucagon, cortisol, and GH).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

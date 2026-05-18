@@ -1,0 +1,29 @@
+slug: boswellia-equivalent-to-sulfasalazine-uc
+statement: Boswellia serrata gum resin at 350 mg three times daily was as effective
+  as sulfasalazine (1000 mg t.i.d.) in reducing symptoms and laboratory abnormalities
+  of active ulcerative colitis.
+evidence_tier: plausible_emerging
+rationale: Based on a clinical trial cited in the source; boswellic acids inhibit
+  5-lipoxygenase non-competitively, reducing leukotriene synthesis in neutrophilic
+  granulocytes.
+coaching_translation: Boswellia extract (equivalent to 400 mg boswellic acids three
+  times daily) may be a natural alternative to support UC management — discuss with
+  your clinician before changing medication.
+caveats:
+- Single trial with limited sample size; clinician consultation required before altering
+  or replacing pharmaceutical therapy
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- boswellia
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Botanical Medicines — Boswellia
+  quote: At a dose of 350 mg t.i.d., Boswellia gum resin was as effective as sulfasalazine
+    (1000 mg t.i.d.) in reducing symptoms or laboratory abnormalities of active UC.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,30 @@
+slug: chronic-diarrhea
+display_name: Chronic Diarrhea
+aliases:
+- loose-stools
+- frequent-bowel-movements
+- watery-stool
+category: gi
+severity: concerning
+description: Persistent loose or watery stools occurring in IBD, IBS, malabsorption,
+  protozoan infection, and dysbiosis. In CD, ileal resection causes bile acid–induced
+  osmotic diarrhea.
+when_to_refer: Chronic diarrhea with weight loss, blood, or nocturnal symptoms requires
+  clinician workup to exclude IBD, coeliac disease, or infection.
+linked_to_topics:
+- inflammatory-bowel-disease
+- irritable-bowel-syndrome
+- maldigestion
+- intestinal-protozoan-infestation
+linked_to_mechanisms:
+- mucosal-inflammation
+- dysbiosis
+- scfa-deficiency
+sources:
+- id: pizzorno-textbook-gi
+  location: Diagnostic Summary — Crohn's Disease
+  quote: Intermittent diarrhea or constipation, low-grade fever, weight loss.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,38 @@
+slug: lichen-planus
+display_name: Lichen Planus
+aliases:
+- LP
+- oral lichen planus
+- hypertrophic lichen planus
+summary: An inflammatory pruritic disease of skin and mucous membranes, characterised
+  by flat-topped, purple papules and plaques. Aetiology is often unknown; dental amalgam
+  (mercury), drugs, hepatitis C virus, and cell-mediated immune dysregulation are
+  implicated. Natural interventions include amalgam removal, topical and oral retinoids,
+  beta-carotene, hyaluronic acid, aloe vera, glycyrrhizin, and purslane.
+common_symptoms:
+- intense-itching
+- purple-skin-papules
+- oral-white-lesions
+- genital-lesions
+red_flags:
+- squamous-cell-carcinoma-transformation-in-oral-lp
+- ulcerative-lp-soles
+related_topics:
+- leukoplakia
+key_mechanisms:
+- cell-mediated-immune-dysregulation
+- heavy-metal-toxicity
+coaching_scope_notes: Coaches may support antioxidant nutrition and topical aloe vera.
+  Amalgam removal decisions and high-dose vitamin A require clinician oversight.
+clinician_scope_notes: Check for hepatitis C association. Patch test for mercury/gold
+  if amalgam removal is considered. High-dose oral retinol requires liver enzyme monitoring.
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: Lichen Planus — Therapeutic Considerations
+  quote: Replacing mercury amalgam fillings with alternative substances dramatically
+    improves chronic lichenoid reactions.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

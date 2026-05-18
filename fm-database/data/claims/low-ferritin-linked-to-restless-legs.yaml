@@ -1,0 +1,29 @@
+slug: low-ferritin-linked-to-restless-legs
+statement: Serum ferritin is reduced in RLS patients compared with controls (despite
+  normal serum iron, B12, folate, and haemoglobin), and iron supplementation (ferrous
+  sulfate 200 mg three times daily for 2 months) reduces RLS symptoms.
+evidence_tier: plausible_emerging
+rationale: Ferritin as a marker of iron stores is more sensitive than serum iron for
+  iron-related RLS; the trial data cited are consistent with larger published evidence
+  linking brain iron deficiency to dopaminergic RLS pathogenesis.
+coaching_translation: In RLS, always check serum ferritin (not just serum iron) —
+  low ferritin below 35 µg/L is a treatable cause. Iron bisglycinate or fumarate (30
+  mg twice daily) is gentler on the stomach than ferrous sulfate.
+caveats:
+- Iron supplementation should be guided by lab results and clinician oversight; excess
+  iron is harmful
+linked_to_topics:
+- insomnia
+linked_to_supplements: []
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Restless Legs Syndrome and Nocturnal Myoclonus
+  quote: Serum ferritin is reduced in RLS patients compared with controls; serum Fe,
+    B12, folate, and hemoglobin do not differ; treatment with Fe (ferrous sulfate)
+    at a dose of 200 mg t.i.d. for 2 months reduced symptoms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

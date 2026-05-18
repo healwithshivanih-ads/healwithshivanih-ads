@@ -1,0 +1,35 @@
+slug: endotoxaemia-complement-activation
+display_name: Endotoxaemia and Alternative Complement Activation
+aliases:
+- endotoxaemia
+- lipopolysaccharide-translocation
+- alternative-complement-pathway
+category: immune
+summary: Endotoxaemia linked to CD and UC activates the alternative complement pathway,
+  which may explain extra-GI manifestations such as arthritis, liver disease, and
+  uveitis. Whole-gut irrigation significantly reduces the endotoxin pool and has an
+  antiendotoxinemic effect.
+upstream_drivers:
+- leaky-gut
+- dysbiosis
+- bacteroides-vulgatus-overgrowth
+downstream_effects:
+- extra-intestinal-ibd-manifestations
+- arthritis
+- liver-disease
+- uveitis
+related_mechanisms:
+- leaky-gut
+- dysbiosis
+linked_to_topics:
+- inflammatory-bowel-disease
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: Therapeutic Considerations — Endotoxemia and Alternative Complement Pathway
+  quote: Endotoxemia is linked to CD and UC. Endotoxemia-induced activation of alternative
+    complement pathway could explain extra-GI manifestations of IBD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

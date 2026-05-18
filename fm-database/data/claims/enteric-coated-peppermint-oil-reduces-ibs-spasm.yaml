@@ -1,0 +1,30 @@
+slug: enteric-coated-peppermint-oil-reduces-ibs-spasm
+statement: Enteric-coated peppermint oil (0.2 mL twice daily between meals) reduces
+  colonic spasm, abdominal pain, distension, stool frequency, borborygmi, and flatulence
+  in IBS, and is effective against Candida albicans.
+evidence_tier: strong
+rationale: Multiple RCTs support enteric-coated peppermint oil for IBS; menthol inhibits
+  calcium channels in smooth muscle; enteric coating is essential to target lower
+  intestine and prevent acid reflux.
+coaching_translation: Enteric-coated peppermint oil capsules (0.2–0.4 mL twice daily
+  between meals) is one of the best-evidenced natural treatments for IBS spasm and
+  pain.
+caveats:
+- Plain peppermint oil (non-enteric coated) can relax the lower oesophageal sphincter
+  causing heartburn — enteric coating is essential
+- Transient burning rectal sensation on defecation is a common minor side effect
+linked_to_topics:
+- irritable-bowel-syndrome
+linked_to_supplements:
+- peppermint-oil
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: IBS — Botanical Medicines — Enteric-Coated Volatile Oils
+  quote: Peppermint oil reduces colonic spasm during endoscopy; enteric-coated peppermint
+    oil is used to treat IBS.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -26,19 +26,12 @@ aliases:
 - slow transit
 - rabbit pellets
 - difficulty pooping
+- difficulty-passing-stool
 category: gi
 severity: common
-description: 'Infrequent (fewer than one per day in a coaching/FM frame), hard,
-
-  or difficult-to-pass bowel movements. Highly relevant to detoxification
-
-  because the bile-to-stool route is a primary elimination pathway for
-
-  Phase-2-conjugated toxicants; constipation prolongs gut transit time,
-
-  enabling beta-glucuronidase deconjugation and toxicant reabsorption.
-
-  '
+description: Infrequent or difficult passage of stool seen in constipation-predominant
+  IBS and maldigestion. May be worsened by low fibre, refined sugar intake, and magnesium
+  deficiency.
 when_to_refer: 'Refer for new-onset constipation in adults over 50, blood in stool,
 
   unexplained weight loss, severe abdominal pain, or constipation
@@ -78,6 +71,8 @@ linked_to_topics:
 - modern-diet-systemic-dysfunction
 - detoxification
 - toxin-load
+- irritable-bowel-syndrome
+- maldigestion
 linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - microbial-diversity-decline
@@ -99,6 +94,8 @@ linked_to_mechanisms:
 - sibo-dysbiosis
 - phase-3-elimination
 - beta-glucuronidase-deconjugation
+- dysbiosis
+- fodmap-fermentation
 sources:
 - id: thurlow-microbiome-mondays
   location: Session 6 — Bowel Patterns
@@ -109,8 +106,8 @@ sources:
   quote: Constipation or diarrhea
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet — Constipation
-  quote: Hypothyroid, low fiber, dehydration, dysbiosis, magnesium deficiency — Rule out thyroid & motility issues. Hydration
-    + lifestyle are non-negotiable
+  quote: Hypothyroid, low fiber, dehydration, dysbiosis, magnesium deficiency — Rule
+    out thyroid & motility issues. Hydration + lifestyle are non-negotiable
 - id: vitaone-thyroid-ebook
   location: 'Chapter 4: Functions of Thyroid Hormones'
   quote: Decreased bowel movements, backing up stool makes you constipated.
@@ -122,22 +119,23 @@ sources:
   quote: Indigestion, diarrhea, or constipation
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
-  quote: Beta blocker therapy has been associated with increased rates of depression, fatigue, constipation, erectile dysfunction,
-    and cognitive slowing.
+  quote: Beta blocker therapy has been associated with increased rates of depression,
+    fatigue, constipation, erectile dysfunction, and cognitive slowing.
 - id: vitaone-liver-detox-toolkit
   location: Sequencing a Detoxification Program
-  quote: Without movement of the bowels, excretion of toxins is limited (as most of them exit in stool).
+  quote: Without movement of the bowels, excretion of toxins is limited (as most of
+    them exit in stool).
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Constipation
-  quote: Use PHGG (partially hydrolyzed guar gum) if possible — BEST for IBS-C. Soluble fiber is better tolerated than insoluble
-    for many with IBS.
+  quote: Use PHGG (partially hydrolyzed guar gum) if possible — BEST for IBS-C. Soluble
+    fiber is better tolerated than insoluble for many with IBS.
 - id: vitaone-health-coaching-toolkit
   location: Thyroid Screening Questionnaire — Signs and Symptoms
   quote: I am constipated (less than 1 bowel movement daily)
 - id: coconote-fm-chronic-pain-fatigue
   location: Digestion / Constipation Section
-  quote: If they are not eliminating, the toxins will be reabsorbed in our body and that will create a havoc and that will
-    cause inflammation.
+  quote: If they are not eliminating, the toxins will be reabsorbed in our body and
+    that will create a havoc and that will cause inflammation.
 - id: coconote-fm-approach-inflammation
   location: Gut Dysbiosis – Location and Type
   quote: constipation, also the part of dysbiosis.
@@ -146,29 +144,34 @@ sources:
   quote: Occasional constipation — she felt constipated while travelling.
 - id: coconote-fm-intestinal-permeability
   location: Diagnostic Markers – Calprotectin
-  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting test.
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
+    test.
 - id: coconote-fm-magnesium-deficiency
   location: Gastrointestinal section
-  quote: Magnesium is a very important mineral which also helps in the contractility of the smooth musculature at the level
-    of the gut. So even the peristaltic movement that happens inside the gut requires magnesium in abundance.
+  quote: Magnesium is a very important mineral which also helps in the contractility
+    of the smooth musculature at the level of the gut. So even the peristaltic movement
+    that happens inside the gut requires magnesium in abundance.
 - id: coconote-fm-sibo-sifo
   location: Types of SIBO – Methane Dominant
   quote: Methane-dominant SIBO is, constipation is more common in them.
 - id: barbara-oneil-gi-tract
   location: Colon Section
-  quote: If a person's dehydrated, more water gets taken out than should be taken out. Then we're left with rabbit pellets
-    and cement.
+  quote: If a person's dehydrated, more water gets taken out than should be taken
+    out. Then we're left with rabbit pellets and cement.
 - id: ask-expert-hormonal-health-bhrt
   location: Fiber, Transit Time, and Estrogen Metabolism
-  quote: If they pooped once a day, 5% of them had abnormal cells. If they pooped they missed a day, you should never miss
-    a day... up to 50% abnormal breast cells.
+  quote: If they pooped once a day, 5% of them had abnormal cells. If they pooped
+    they missed a day, you should never miss a day... up to 50% abnormal breast cells.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXWoFj6jGCY/
   quote: Low-fiber diets starve the microbiome → constipation + estrogen imbalance
 - id: minich-detox-basics-fmca-transcript
   location: Constipation and elimination section
   quote: one in three people suffer from some degree of constipation
-version: 23
+- id: pizzorno-textbook-gi
+  location: Diagnostic Summary — Irritable Bowel Syndrome
+  quote: Altered bowel function, constipation, or diarrhea.
+version: 24
 status: active
-updated_at: '2026-05-16'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

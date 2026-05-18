@@ -1,0 +1,34 @@
+slug: mucin-defect-uc
+display_name: Mucin Defects in Ulcerative Colitis
+aliases:
+- sulfomucin-deficiency
+- goblet-cell-depletion
+- mucus-layer-dysfunction
+category: gut
+summary: In UC, alterations in mucin composition include a dramatic decrease in goblet-cell
+  mucous content (proportional to disease severity) and a persistent sulfomucin subfraction
+  deficiency not seen in CD. Mucin abnormalities persist during remission (sulfomucin)
+  and are a major factor in the elevated colon cancer risk in UC patients.
+upstream_drivers:
+- mucosal-inflammation
+- dysbiosis
+downstream_effects:
+- impaired-mucosal-barrier
+- colon-cancer-risk
+- uc-activity
+related_mechanisms:
+- mucosal-inflammation
+- oxidative-stress
+linked_to_topics:
+- inflammatory-bowel-disease
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-textbook-gi
+  location: Therapeutic Considerations — Mucin Defects in UC
+  quote: Factors include a dramatic decrease in mucous content of goblet cells (proportional
+    to severity of disease) and decrease in major sulfomucin subfraction. Mucin abnormalities
+    are a major factor in increased risk of colon cancer in these patients.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

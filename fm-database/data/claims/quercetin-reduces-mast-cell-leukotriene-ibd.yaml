@@ -1,0 +1,32 @@
+slug: quercetin-reduces-mast-cell-leukotriene-ibd
+statement: Quercetin, the most pharmacologically active plant flavonoid, potently
+  inhibits mast cell and basophil degranulation, inhibits phospholipase A2 and lipoxygenase,
+  and reduces leukotriene formation — providing strong anti-inflammatory effects in
+  IBD.
+evidence_tier: plausible_emerging
+rationale: Well-characterised in vitro and animal data; quercetin's multiple points
+  of action on the arachidonic acid cascade and mast cell signalling make it a plausible
+  IBD adjunct, though large human RCTs are lacking.
+coaching_translation: Quercetin-rich foods (onions, capers, apples) and quercetin
+  supplements act as natural anti-inflammatory agents by calming mast cell activity
+  and reducing inflammatory leukotrienes.
+caveats:
+- Oral bioavailability of quercetin is limited; phytosome or quercetin chalcone forms
+  may improve absorption
+- Source is a textbook; primary RCTs in IBD are sparse
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- quercetin
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Botanical Medicines — Quercetin
+  quote: Quercetin inhibits eicosanoid metabolism by inhibiting phospholipase A2 and
+    lipoxygenase. The net result is the reduction in formation of leukotrienes. Reducing
+    leukotrienes has strong anti-inflammatory effects in IBD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

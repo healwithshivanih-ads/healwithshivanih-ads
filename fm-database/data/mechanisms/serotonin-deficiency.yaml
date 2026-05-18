@@ -1,0 +1,35 @@
+slug: serotonin-deficiency
+display_name: Serotonin Precursor Deficiency
+aliases:
+- low-serotonin
+- tryptophan-deficiency
+- 5-HT-deficiency
+category: neurological
+summary: Serotonin is the initiator of sleep and a key bowel motility regulator; its
+  CNS synthesis depends on dietary tryptophan and cofactors vitamin B6, niacin, and
+  magnesium. Kynurenine pathway diversion of tryptophan (blocked by niacin) reduces
+  serotonin availability, contributing to insomnia and IBS symptoms.
+upstream_drivers:
+- tryptophan-poor-diet
+- kynurenine-pathway-overactivation
+- vitamin-b6-deficiency
+- niacin-deficiency
+downstream_effects:
+- insomnia
+- gut-dysmotility
+- mood-disturbance
+related_mechanisms:
+- gut-brain-axis-dysregulation
+linked_to_topics:
+- insomnia
+- irritable-bowel-syndrome
+evidence_tier: strong
+sources:
+- id: pizzorno-textbook-gi
+  location: Insomnia — Serotonin Precursor and Cofactor Therapy
+  quote: Serotonin is the initiator of sleep; synthesis of central nervous system
+    serotonin depends on tryptophan.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

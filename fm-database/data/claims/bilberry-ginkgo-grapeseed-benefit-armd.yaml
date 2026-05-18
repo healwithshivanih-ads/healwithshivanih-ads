@@ -1,0 +1,33 @@
+slug: bilberry-ginkgo-grapeseed-benefit-armd
+statement: Bilberry (Vaccinium myrtillus) anthocyanosides, Ginkgo biloba flavonoid
+  extract, and grapeseed proanthocyanidins improve retinal blood flow and function,
+  can halt progressive visual loss in dry ARMD, and may improve visual function.
+evidence_tier: plausible_emerging
+rationale: These flavonoid-rich extracts are potent antioxidants with demonstrated
+  affinity for the retinal pigment epithelium and vascular protective effects; clinical
+  evidence for halting dry ARMD progression is preliminary but plausible.
+coaching_translation: 'Choose one: bilberry extract (120–240 mg/day, 25% anthocyanidins),
+  Ginkgo biloba (120–240 mg/day, 24% heterosides — especially if cerebrovascular insufficiency
+  is present), or grapeseed extract (150–300 mg/day, 95% OPC — especially for photophobia
+  or poor night vision).'
+caveats:
+- Ginkgo biloba may interact with anticoagulants — clinician review needed
+- Clinical trials for dry ARMD are small and need replication
+linked_to_topics:
+- macular-degeneration
+linked_to_supplements:
+- bilberry
+- ginkgo-biloba
+- grapeseed-extract
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Macular Degeneration — Flavonoid-Rich Extracts
+  quote: Vaccinium myrtillus (bilberry), Ginkgo biloba, and Vitis vinifera (grapeseed)
+    are beneficial in preventing and treating ARMD. These excellent antioxidants improve
+    retinal blood flow and function.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

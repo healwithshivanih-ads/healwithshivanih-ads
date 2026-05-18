@@ -1,0 +1,27 @@
+slug: aloe-vera-clinical-response-uc
+statement: Oral aloe vera gel at 100 mL twice daily for 4 weeks produced a clinical
+  response in 30% of UC patients, reduced histologic inflammatory activity, and was
+  well tolerated.
+evidence_tier: plausible_emerging
+rationale: Based on a reported clinical trial; aloe inhibits prostaglandin E2 and
+  IL-8 production by colonic epithelial cells in vitro, providing a plausible mechanism.
+coaching_translation: Aloe vera gel (100 mL orally twice daily) may be a supportive
+  adjunct for UC; be aware of mild laxative effects.
+caveats:
+- Laxative effect of aloe vera gel noted; acemannan extract at 400–800 mg/day may
+  offer a more concentrated alternative
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- aloe-vera
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Botanical Medicines — Aloe Vera
+  quote: Oral Aloe vera gel at 100 mL b.i.d. for 4 weeks produced a clinical response
+    in 30% of UC patients.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

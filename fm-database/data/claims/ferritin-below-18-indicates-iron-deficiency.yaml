@@ -1,0 +1,30 @@
+slug: ferritin-below-18-indicates-iron-deficiency
+statement: Serum ferritin is the most useful index of iron status in IBD; a level
+  below 18 ng/mL indicates iron deficiency, and supplemental vitamin C is preferred
+  over direct iron supplements because iron promotes intestinal infection.
+evidence_tier: strong
+rationale: Ferritin is an acute-phase reactant but remains the best single marker
+  of iron stores in inflammatory conditions; the preference for vitamin C–enhanced
+  absorption over high-dose iron is supported by the pro-oxidant/pro-infectious risk
+  of luminal iron.
+coaching_translation: Support iron status with vitamin C (which enhances absorption)
+  rather than high-dose iron supplements, which can feed pathogenic gut bacteria.
+caveats:
+- In active inflammation, ferritin may be falsely elevated as an acute-phase protein;
+  interpret alongside CRP
+linked_to_topics:
+- inflammatory-bowel-disease
+linked_to_supplements:
+- vitamin-c
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Minerals — Iron
+  quote: Serum ferritin is the most useful index of Fe status. Ferritin level below
+    18 ng/mL indicates Fe deficiency. Improve absorption with supplemental vitamin
+    C rather than direct Fe supplements because Fe promotes intestinal infection.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

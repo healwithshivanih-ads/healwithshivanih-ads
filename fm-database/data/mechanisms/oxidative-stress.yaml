@@ -1,5 +1,5 @@
 slug: oxidative-stress
-display_name: Oxidative Stress / Free Radical Burden
+display_name: Oxidative Stress / Antioxidant Depletion
 aliases:
 - ROS accumulation
 - reactive oxygen species excess
@@ -19,10 +19,15 @@ aliases:
 - glycation
 - AGEs
 - glycated proteins
+- free-radical-damage
+- reactive-oxygen-species
+- antioxidant-deficiency
 category: metabolic
-summary: Imbalance between free radical production and antioxidant defence, driving
-  cellular damage. Fasting and polyphenol-rich foods (berries, pomegranate, turmeric,
-  green tea) are proposed to upregulate antioxidant activity and reduce free radicals.
+summary: Increased oxidative stress and decreased antioxidant defences in mucosal
+  tissue are hallmarks of IBD and ARMD, causing protein and DNA oxidative damage.
+  IBD patients show deficiencies in selenium-dependent glutathione peroxidase, Cu-Zn
+  superoxide dismutase, and the cofactors zinc, copper, ascorbate, vitamin E, and
+  vitamin A.
 upstream_drivers:
 - poor-diet
 - toxin-exposure
@@ -37,6 +42,9 @@ upstream_drivers:
 - toxic-body-burden
 - insulin-resistance
 - poor-dietary-quality
+- mucosal-inflammation
+- atherosclerosis
+- nutritional-deficiency
 downstream_effects:
 - ldl-oxidation
 - endothelial-dysfunction
@@ -55,6 +63,9 @@ downstream_effects:
 - chronic-inflammation
 - cardiovascular-disease-risk
 - cellular-aging
+- dna-damage
+- mucosal-barrier-dysfunction
+- retinal-degeneration
 related_mechanisms:
 - chronic-inflammation
 - insulin-resistance
@@ -66,6 +77,8 @@ related_mechanisms:
 - cyp450-phase-i-activation
 - phase-2-conjugation
 - innate-immune-modulation
+- mucosal-inflammation
+- eicosanoid-metabolism
 linked_to_topics:
 - dyslipidemia
 - chronic-inflammation
@@ -80,6 +93,9 @@ linked_to_topics:
 - cardiometabolic-diet
 - intermittent-fasting
 - phytonutrient-density
+- inflammatory-bowel-disease
+- macular-degeneration
+- leukoplakia
 evidence_tier: strong
 sources:
 - id: vitaone-cv-cheatsheet
@@ -110,12 +126,11 @@ sources:
   quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
     CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
     against oxidative stress and inflammation.
-- id: vitaone-fm-nutrition-cheatsheets
-  location: Key Mechanisms Explained — oxidative-stress-and-inflammation
-  quote: The source frames vitamin C, vitamin E, selenium, copper, manganese, omega-3,
-    CoQ10, NAC, curcumin, boswellia, green tea extract, and antioxidant foods as supports
-    against oxidative stress and inflammation.
-version: 7
+- id: pizzorno-textbook-gi
+  location: Vitamins — Antioxidant Defenses
+  quote: Increased oxidative stress and decreased antioxidant defenses in mucosa are
+    hallmarks of IBD, with associated protein and DNA oxidative damage.
+version: 8
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

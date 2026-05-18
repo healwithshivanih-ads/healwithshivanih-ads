@@ -1,0 +1,30 @@
+slug: fecal-calprotectin-distinguishes-ibd-from-ibs
+statement: Faecal calprotectin is a sensitive and specific non-invasive assessment
+  tool for inflammatory status in IBD and for distinguishing IBD from non-inflammatory
+  GI conditions such as IBS.
+evidence_tier: strong
+rationale: Validated biomarker with strong clinical evidence base; calprotectin is
+  secreted by intestinal neutrophils in direct proportion to mucosal inflammation,
+  making it highly sensitive for IBD vs. IBS differentiation.
+coaching_translation: A faecal calprotectin test can help clarify whether gut symptoms
+  are from inflammation (IBD) or functional causes (IBS) — recommend to clients with
+  uncertain diagnosis.
+caveats:
+- Test requires clinician order and interpretation; false positives can occur with
+  NSAIDs, GI infections, and coeliac disease
+out_of_scope_notes: Lab ordering and interpretation is outside coaching scope.
+linked_to_topics:
+- inflammatory-bowel-disease
+- irritable-bowel-syndrome
+linked_to_supplements: []
+linked_to_mechanisms: []
+sources:
+- id: pizzorno-textbook-gi
+  location: Therapeutic Monitoring and Evaluation — Fecal Calprotectin
+  quote: Calprotectin in stool samples is a sensitive and specific noninvasive assessment
+    tool for inflammatory status in IBD and for distinguishing IBD from other noninflammatory
+    GI conditions (e.g., irritable bowel syndrome).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
