@@ -146,10 +146,22 @@ def action_generate(payload: dict) -> dict:
     # coach has data going in) and the client may not actually convert.
     # Coach flips engagement_status manually via the EngagementPicker after
     # the discovery call; unlock_full_intake() handles the signup transition.
+    #
+    # EXCEPTION — `unlock_full=True`: for direct signups (referrals, returning
+    # clients, family-of-existing, anyone who's already committed and skips
+    # the discovery call). Stamps intake_full_unlocked_at + engagement
+    # signed_up in the same atomic write so the token they receive serves
+    # the full form on first open.
+    unlock_full = bool(payload.get("unlock_full"))
+    if unlock_full:
+        if not data.get("intake_full_unlocked_at"):
+            data["intake_full_unlocked_at"] = _now_iso()
+        data["engagement_status"] = "signed_up"
     _save_client(client_id, data)
 
     return {
         "ok": True,
+        "unlock_full": unlock_full,
         "token": token,
         "expires_at": expires.isoformat(),
         "url_path": f"/intake/{token}",
@@ -221,7 +233,15 @@ def action_lookup(payload: dict) -> dict:
     # v0.75 — two-stage form gate. If the coach has unlocked the full intake
     # (typically after package signup), serve the full form. Otherwise serve
     # the lighter pre-discovery form.
-    stage = "full" if data.get("intake_full_unlocked_at") else "pre_discovery"
+    #
+    # Belt-and-braces: if the client is already marked signed_up but the
+    # full-intake gate wasn't explicitly flipped (e.g. coach used the
+    # EngagementPicker but forgot the unlock button, or marked signup
+    # AFTER issuing a pre-discovery token), treat them as full. Avoids
+    # the bug where a signed-up client opens their old link and gets
+    # the pre-discovery form by mistake.
+    is_signed_up = (data.get("engagement_status") or "").lower() == "signed_up"
+    stage = "full" if (data.get("intake_full_unlocked_at") or is_signed_up) else "pre_discovery"
     return {
         "ok": True,
         "client_id": client_id,

@@ -122,14 +122,24 @@ export function SendIntakeFormButton({
     }
   }
 
-  async function handleGenerate() {
+  /**
+   * Generate an intake token.
+   * - Default flow (unlockFull=false): client lands on the pre-discovery
+   *   ~14-field form. Coach unlocks the full form post-signup via the
+   *   UnlockFullIntakeButton on the Overview.
+   * - Direct-signup flow (unlockFull=true): for referrals / returning
+   *   clients / family-of-existing — anyone already committed. Atomically
+   *   sets intake_full_unlocked_at + engagement_status=signed_up so the
+   *   link serves the full intake form on first open.
+   */
+  async function handleGenerate(unlockFull: boolean = false) {
     setLoading(true);
     setError(null);
     try {
       const { generateIntakeToken } = await import(
         "@/lib/server-actions/intake"
       );
-      const res = await generateIntakeToken(clientId, 14);
+      const res = await generateIntakeToken(clientId, 14, unlockFull);
       if (!res.ok) {
         setError(res.error || "Failed to generate link");
         return;
@@ -275,27 +285,61 @@ export function SendIntakeFormButton({
         )}
 
         {!token && (
-          <button
-            type="button"
-            onClick={handleGenerate}
-            disabled={loading}
-            style={{
-              padding: "10px 14px",
-              borderRadius: 8,
-              background: "#059669",
-              color: "white",
-              border: "none",
-              cursor: loading ? "wait" : "pointer",
-              fontWeight: 600,
-              fontSize: 14,
-            }}
-          >
-            {loading
-              ? "Generating…"
-              : isFinalised
-                ? "📨 Send a new intake form"
-                : "📨 Send intake form"}
-          </button>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <button
+              type="button"
+              onClick={() => handleGenerate(false)}
+              disabled={loading}
+              style={{
+                padding: "10px 14px",
+                borderRadius: 8,
+                background: "#059669",
+                color: "white",
+                border: "none",
+                cursor: loading ? "wait" : "pointer",
+                fontWeight: 600,
+                fontSize: 14,
+              }}
+            >
+              {loading
+                ? "Generating…"
+                : isFinalised
+                  ? "📨 Send pre-discovery intake (~10 min)"
+                  : "📨 Send pre-discovery intake (~10 min)"}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleGenerate(true)}
+              disabled={loading}
+              title="For referrals, returning clients, or anyone who's already committed — skips the 10-min pre-discovery form."
+              style={{
+                padding: "8px 12px",
+                borderRadius: 8,
+                background: "transparent",
+                color: "#9a3412",
+                border: "1px solid rgba(255, 107, 53, 0.40)",
+                cursor: loading ? "wait" : "pointer",
+                fontWeight: 600,
+                fontSize: 12.5,
+                textAlign: "left",
+              }}
+            >
+              ⏩ Skip pre-discovery — send full intake (direct signup)
+            </button>
+            <div
+              style={{
+                fontSize: 10.5,
+                color: "var(--fm-text-tertiary)",
+                lineHeight: 1.45,
+                paddingLeft: 2,
+              }}
+            >
+              <strong>Default ↑</strong> sends the 10-min pre-discovery form.{" "}
+              <strong>⏩ Skip</strong> is for referrals, returning clients, or anyone
+              already committed — opens the full ~25-min intake directly and
+              marks them signed up.
+            </div>
+          </div>
         )}
 
         {token && open && (

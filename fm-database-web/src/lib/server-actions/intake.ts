@@ -110,19 +110,30 @@ export async function submitIntakeForm(
   }
 }
 
+/**
+ * Generate a fresh intake token.
+ *
+ * v0.75 — `unlockFull: true` for direct-signup clients (referrals, returning
+ * clients, family-of-existing — anyone who's already committed and skips the
+ * discovery call). Atomically stamps `intake_full_unlocked_at` + flips
+ * engagement to `signed_up`, so the token they receive serves the full intake
+ * form on first open. Default `false` keeps the normal pre-discovery flow.
+ */
 export async function generateIntakeToken(
   clientId: string,
-  ttlDays?: number
+  ttlDays?: number,
+  unlockFull?: boolean,
 ): Promise<
-  { ok: true; token: string; url_path: string; expires_at: string } | { ok: false; error: string }
+  { ok: true; token: string; url_path: string; expires_at: string; unlock_full: boolean } | { ok: false; error: string }
 > {
   try {
     const res = (await runScript("intake-token-action.py", {
       action: "generate",
       client_id: clientId,
       ttl_days: ttlDays ?? 14,
+      unlock_full: !!unlockFull,
     })) as
-      | { ok: true; token: string; url_path: string; expires_at: string }
+      | { ok: true; token: string; url_path: string; expires_at: string; unlock_full: boolean }
       | { ok: false; error: string };
     return res;
   } catch (e) {
