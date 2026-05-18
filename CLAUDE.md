@@ -1288,12 +1288,90 @@ When the coach pastes a path to a PDF/document in chat and says "ingest this" / 
 - All entries cite the source via `sources: [{id, location, quote}]`.
 - Never reproduce long verbatim passages. The extractor's job is to *transform* into a structured index.
 
-**Pydantic gotchas surfaced during the first chat-ingest:**
+**Pydantic + YAML gotchas surfaced across the 2026-05-18 chat-ingest sweep (7 batches):**
 - `Supplement.contraindications` is a `Contraindications` model: `{conditions: [str], medications: [str], life_stages: [str]}` — **not** a flat list. A plain list of strings fails Pydantic validation on promote.
 - `MedicationInteraction` requires `{medication, type, reason}` where `type` ∈ `avoid_together | space_by_hours | take_together`.
+- `Supplement.timing_options` enum: use `on_waking | on_empty_stomach | morning | mid_morning | with_breakfast | with_lunch | mid_afternoon | with_dinner | evening | bedtime`. **Not** `with_meals` (use `with_breakfast/lunch/dinner` instead).
+- `Supplement.forms_available` enum: `capsule | powder | tablet | liquid | gummy | lozenge | whole_food`. **Not** `tea_bag` (map herbal teas to `whole_food`).
+- `Supplement.category` enum: `mineral | vitamin | herb | amino_acid | probiotic | fatty_acid | enzyme | other`. **Not** `lipid_extract` (use `other`).
+- `Supplement.take_with_food` enum: `required | optional | avoid`. **Not** `with_food` (use `required`).
+- **YAML scanner trap:** a bare `Dose: ` inside an unquoted scalar (e.g. inside a `quote:` field) breaks parsing with `mapping values are not allowed here`. Either single-quote the whole string, or replace the colon with an em-dash (`Dose — `) — the latter is faster than re-typing.
+- **Common alias-collision pattern:** new topics often have an alias matching an existing canonical slug from another entity kind (e.g. `joint-pain` topic vs `joint-pain` symptom). The bidirectional sweep auto-strips these from the staging side; nothing further needed.
 - Approving with `--update` is mandatory; smart-merge unions topic links + cite lists.
 
-**Quotas in practice:** the Anthropic API monthly cap was hit 2026-05-18 by Pizzorno book ingests (~$0.40–0.60 per batch × 6 batches plus all the other in-app activity since the cycle started). Until 2026-06-01 reset, every dashboard-side feature is blocked. The Pizzorno queue runner at `fm-database/scripts/run-pizzorno-queue.sh` is held until then. For all other chapters and any new chat-dropped documents, **use the chat-ingest path above**.
+**Reusable chat-ingest scaffold** (copy this Python block to skip 50% of the per-batch boilerplate; replace `BATCH`, `SOURCE_ID`, `SOURCE_TITLE`, pages):
+```python
+import yaml, pathlib, re, os, json, datetime, sys
+DATA = pathlib.Path("data"); STAGED = DATA / "staging" / os.environ["BATCH"]
+ok = True
+for f in STAGED.rglob("*.yaml"):
+    try: yaml.safe_load(f.read_text())
+    except Exception as e: print(f"FAIL {f.name}: {e}"); ok = False
+if not ok: sys.exit(1)
+entries = []
+for kind in ["sources","topics","mechanisms","symptoms","claims","supplements"]:
+    d = STAGED / kind
+    if not d.exists(): continue
+    for f in sorted(d.glob("*.yaml")):
+        entries.append({"entity": kind, "slug": f.stem, "status": "new",
+                        "path": f"staging/{os.environ['BATCH']}/{kind}/{f.name}"})
+(STAGED / "_meta.json").write_text(json.dumps({
+    "batch_id": os.environ["BATCH"], "source_id": os.environ["SOURCE_ID"],
+    "source_title": os.environ["SOURCE_TITLE"], "source_type": "textbook",
+    "doc_hash": "chat-ingest", "doc_chars": 0,
+    "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    "updated_by": "Shivani",
+    "usage": {"model": "chat-ingest-no-api", "stop_reason": "manual",
+              "input_tokens": 0, "output_tokens": 0,
+              "cache_creation_input_tokens": 0, "cache_read_input_tokens": 0},
+    "entries": entries,
+}, indent=2))
+# Bidirectional alias-collision sweep
+def slug(s): return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
+for kind in ("symptoms", "topics", "mechanisms", "supplements"):
+    if not (STAGED / kind).exists(): continue
+    slugs, staged = set(), set()
+    for p in (DATA / kind).glob("*.yaml"):
+        d = yaml.safe_load(p.read_text()) or {}
+        if d.get("slug"): slugs.add(d["slug"])
+    for p in (STAGED / kind).glob("*.yaml"):
+        d = yaml.safe_load(p.read_text()) or {}
+        if d.get("slug"): slugs.add(d["slug"]); staged.add(d["slug"])
+    for p in (STAGED / kind).glob("*.yaml"):
+        d = yaml.safe_load(p.read_text()) or {}
+        own, al = d.get("slug"), d.get("aliases") or []
+        keep = [a for a in al if not (isinstance(a, str) and slug(a) != own
+                                       and (slug(a) in slugs or a in slugs))]
+        if len(keep) != len(al):
+            d["aliases"] = keep
+            p.write_text(yaml.safe_dump(d, sort_keys=False, allow_unicode=True))
+    for p in (DATA / kind).glob("*.yaml"):
+        d = yaml.safe_load(p.read_text()) or {}
+        if d.get("slug") in staged: continue
+        al = d.get("aliases") or []
+        keep = [a for a in al if not (isinstance(a, str)
+                                       and (slug(a) in staged or a in staged))]
+        if len(keep) != len(al):
+            d["aliases"] = keep
+            p.write_text(yaml.safe_dump(d, sort_keys=False, allow_unicode=True))
+print(f"{len(entries)} entries staged + swept")
+```
+Then: `.venv/bin/python -m fmdb.cli approve <batch-id> --update`. The `--update` flag is mandatory; smart-merge unions topic links and cite lists when the slug already exists canonically.
+
+**Large-PDF read pattern:** for PDFs > ~30 pages, extract to text via pypdf first (Read tool can struggle with image-heavy or large PDFs):
+```python
+from pypdf import PdfReader; import pathlib
+r = PdfReader('/path/to/file.pdf')
+sep = "\n\n"
+out = [f"--- pg {i+1} ---\n{r.pages[i].extract_text()}" for i in range(len(r.pages))]
+pathlib.Path('/tmp/extracted.md').write_text(sep.join(out))
+```
+Then `Read /tmp/extracted.md` in chunks. **Don't trust the queue script's page comments** — the actual chapter content may be at different source pages than the comment suggests (e.g. the queued `pizzorno-mood.pdf` turned out to be the book's index, not the affective disorders chapter; the real chapter was at pages 21-40 of the source PDF, which had to be re-extracted).
+
+**Track record:**
+- 2026-05-18: 7 chapters of Pizzorno's *Textbook of Natural Medicine* ingested via chat in a single session — autoimmune-thyroid, MS, RA, women's health, oxalate stones, sleep, affective disorders. Total: 83 new catalogue entries (7 sources, 5 topics, 10 mechanisms, 10 supplements, 49 claims). Zero Anthropic API calls. Validates the chat-ingest pipeline as a production fallback path.
+
+**Quotas in practice:** the Anthropic API monthly cap was hit 2026-05-18 by earlier Pizzorno API-driven ingests (~$0.40–0.60 per batch × 6 batches plus other in-app activity since the cycle started). Until 2026-06-01 reset, every dashboard-side feature is blocked. The `run-pizzorno-queue.sh` queue runner is now defunct — those chapters have all been ingested via chat. For any new chat-dropped documents going forward, **always use the chat-ingest path above** unless the coach explicitly says "run through the dashboard pipeline."
 
 ## Run
 
