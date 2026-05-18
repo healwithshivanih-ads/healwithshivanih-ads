@@ -1,0 +1,63 @@
+slug: prenatal-multivitamin
+display_name: Prenatal Multivitamin (methylfolate-based)
+aliases:
+- prenatal
+- preconception multivitamin
+- prenatal vitamin
+category: vitamin
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 3
+    unit: capsules
+  tablet:
+    min: 1
+    max: 3
+    unit: tablets
+  liquid:
+    min: 5
+    max: 15
+    unit: ml
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: required
+contraindications:
+  conditions: []
+  medications:
+  - methotrexate
+  life_stages: []
+interactions: {}
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: Designed for use during preconception, pregnancy, and lactation.
+linked_to_topics:
+- fertility
+- preconception
+- reproductive-health
+- methylation
+linked_to_mechanisms:
+- methylation
+linked_to_claims: []
+notes_for_coach: Quality prenatal multivitamins should be METHYLFOLATE-BASED (L-methylfolate
+  / 5-MTHF), NOT synthetic folic acid — 40%+ of women have MTHFR variants that impair
+  folic acid metabolism. Look for methylcobalamin (B12), P5P (B6), retinol form vitamin
+  A (not just beta-carotene), choline (often missing), iodine, and adequate iron.
+  Begin 3 MONTHS BEFORE conception attempt to optimise nutrient stores for first-trimester
+  neural tube development. Recommended brands include Designs for Health, Pure Encapsulations
+  PreNatal Nutrients, Seeking Health Optimal Prenatal, Thorne Basic Prenatal.
+notes_for_client: ''
+sources:
+- id: vitaone-skill-practice-guide
+  location: Practice guide — Pregnancy section
+  quote: Prenatal multivitamin standard recommendation for pregnancy and preconception
+    support.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

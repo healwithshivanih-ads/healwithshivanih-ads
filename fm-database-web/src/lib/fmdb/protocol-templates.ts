@@ -58,7 +58,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Replace — restores stomach acid for clients with hypochlorhydria signs (bloating after protein, undigested food in stool)",
       },
       {
-        supplement_slug: "probiotic",
+        supplement_slug: "probiotics",
         display_name: "Probiotic — Reinoculate phase",
         dose_display: "1 capsule (multi-strain or spore-based)",
         timing: "With breakfast",
@@ -159,7 +159,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Stabilises gut lining, reduces inflammation, supports tissue healing",
       },
       {
-        supplement_slug: "probiotic",
+        supplement_slug: "probiotics",
         display_name: "Probiotic (VitaSpore)",
         dose_display: "1 capsule",
         timing: "With breakfast",
@@ -681,7 +681,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Enhances non-haem iron absorption 2–3× by reducing Fe³⁺ to Fe²⁺. Critical if eating plant-based iron sources.",
       },
       {
-        supplement_slug: "b12-methylcobalamin",
+        supplement_slug: "methylcobalamin",
         display_name: "Methylcobalamin (B12)",
         dose_display: "1000 mcg sublingual",
         timing: "Morning",
@@ -848,7 +848,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Broad-spectrum herbal antimicrobial effective against hydrogen and methane SIBO. Part of a herbal protocol (combine with allicin and/or oregano oil for synergy). As effective as rifaximin in some trials.",
       },
       {
-        supplement_slug: "allicin",
+        supplement_slug: "aged-garlic-extract",
         display_name: "Allicin (stabilised garlic extract)",
         dose_display: "450 mg",
         timing: "Three times daily — particularly effective for methane/IMO-SIBO",
@@ -1199,7 +1199,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["PMS", "spotting-before-period", "anxiety", "insomnia", "heavy-periods", "short-luteal-phase"],
     supplements: [
       {
-        supplement_slug: "vitex",
+        supplement_slug: "chasteberry",
         display_name: "Vitex (Chasteberry) — AGN 194310 extract",
         dose_display: "400 mg",
         timing: "First thing in the morning on empty stomach — must be taken consistently for 3+ menstrual cycles",
@@ -1299,7 +1299,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Over 300 enzymatic reactions require magnesium — including osteoblast activity. 60% of body magnesium is stored in bone. Magnesium and calcium must be balanced; excess calcium without magnesium is pro-inflammatory.",
       },
       {
-        supplement_slug: "collagen-type-1",
+        supplement_slug: "collagen-peptides",
         display_name: "Collagen Peptides (Type 1 — hydrolysed)",
         dose_display: "10–15 g",
         timing: "Morning with Vit C (enhances collagen cross-linking)",
@@ -1502,7 +1502,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Breaks down food fully; reduces undigested peptides that trigger immune reactions",
       },
       {
-        supplement_slug: "probiotic",
+        supplement_slug: "probiotics",
         display_name: "Probiotic (multi-strain)",
         dose_display: "1 capsule",
         timing: "With breakfast",
@@ -1691,7 +1691,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["bloating", "gas", "constipation", "loose-stools", "abdominal-pain"],
     supplements: [
       {
-        supplement_slug: "peppermint-oil",
+        supplement_slug: "peppermint-oil-enteric",
         display_name: "Enteric-coated Peppermint Oil",
         dose_display: "0.2–0.4 ml (1 capsule)",
         timing: "30 minutes before meals, enteric-coated only",
@@ -1719,7 +1719,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Soluble fibre that bulks stool for constipation and slows transit for diarrhoea — low-FODMAP and effective for IBS-C and IBS-D",
       },
       {
-        supplement_slug: "probiotic",
+        supplement_slug: "probiotics",
         display_name: "Probiotic (Lactobacillus plantarum / rhamnosus strains)",
         dose_display: "1 capsule",
         timing: "With breakfast",
@@ -1804,7 +1804,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Core electron transport chain cofactor — essential for ATP synthesis in every cell. Ubiquinol is the active, reduced form.",
       },
       {
-        supplement_slug: "magnesium-malate",
+        supplement_slug: "magnesium-glycinate",
         display_name: "Magnesium Malate",
         dose_display: "400–600 mg elemental magnesium",
         timing: "Divided — morning and bedtime",
@@ -1832,7 +1832,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Mitochondrial antioxidant — protects against oxidative damage in the electron transport chain. R-form is the active natural isomer.",
       },
       {
-        supplement_slug: "acetyl-l-carnitine",
+        supplement_slug: "l-carnitine",
         display_name: "Acetyl-L-Carnitine",
         dose_display: "1000–2000 mg",
         timing: "Morning (may cause insomnia if taken late)",
@@ -1928,7 +1928,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Hepatoprotective — stimulates liver cell regeneration, inhibits toxin uptake, upregulates glutathione. Most evidence-based liver herb.",
       },
       {
-        supplement_slug: "n-acetyl-cysteine",
+        supplement_slug: "n-acetylcysteine",
         display_name: "N-Acetyl Cysteine (NAC)",
         dose_display: "600–1200 mg",
         timing: "On empty stomach or 30 min before meals",
@@ -2174,7 +2174,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Gut barrier repair — leaky gut is the entry point for autoimmune triggers in most cases",
       },
       {
-        supplement_slug: "probiotic",
+        supplement_slug: "probiotics",
         display_name: "Probiotic (multi-strain)",
         dose_display: "1 capsule",
         timing: "With breakfast",
@@ -2273,7 +2273,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Lowers triglycerides, reduces vascular inflammation, modestly lowers BP",
       },
       {
-        supplement_slug: "hawthorn",
+        supplement_slug: "hawthorn-berry",
         display_name: "Hawthorn Berry Extract",
         dose_display: "300–600 mg",
         timing: "Twice daily",
@@ -2383,7 +2383,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Most-studied migraine supplement — reduces frequency 40–50% in trials. Migraine sufferers consistently show low brain magnesium.",
       },
       {
-        supplement_slug: "riboflavin",
+        supplement_slug: "riboflavin-b2",
         display_name: "Riboflavin (Vitamin B2)",
         dose_display: "400 mg",
         timing: "With breakfast",
@@ -2496,7 +2496,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Reduces skin inflammation; lower omega-3:omega-6 ratio is strongly linked to inflammatory skin conditions",
       },
       {
-        supplement_slug: "probiotic",
+        supplement_slug: "probiotics",
         display_name: "Probiotic (multi-strain, skin-targeted)",
         dose_display: "1 capsule",
         timing: "With breakfast",
@@ -2732,14 +2732,14 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["fatigue", "brain-fog", "anxiety", "depression", "headaches", "infertility-history"],
     supplements: [
       {
-        supplement_slug: "methylfolate",
+        supplement_slug: "l-methylfolate",
         display_name: "Methylfolate (5-MTHF)",
         dose_display: "400–1000 mcg (start low, titrate)",
         timing: "Morning with breakfast",
         coach_rationale: "Bypasses MTHFR enzyme block — bioavailable form folate. Start low: some people experience over-methylation symptoms.",
       },
       {
-        supplement_slug: "methyl-b12",
+        supplement_slug: "methylcobalamin",
         display_name: "Methylcobalamin (B12)",
         dose_display: "1000–5000 mcg",
         timing: "Morning sublingual",
@@ -2760,7 +2760,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         coach_rationale: "Alternative methyl donor — supports homocysteine clearance, especially if methylfolate causes side effects",
       },
       {
-        supplement_slug: "riboflavin",
+        supplement_slug: "riboflavin-b2",
         display_name: "Riboflavin (B2)",
         dose_display: "100–400 mg",
         timing: "With breakfast",
@@ -2851,7 +2851,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
     presenting_symptoms: ["fatigue", "brain-fog", "headaches", "skin-rash", "shortness-of-breath", "joint-pain", "anxiety", "chemical-sensitivity"],
     supplements: [
       {
-        supplement_slug: "binders",
+        supplement_slug: "activated-charcoal",
         display_name: "Binders (Activated Charcoal + Bentonite Clay + Chlorella)",
         dose_display: "Rotating — see protocol",
         timing: "2 hours away from food/medications/supplements",

@@ -1,0 +1,57 @@
+slug: bergamot-extract
+display_name: Bergamot Extract (Citrus bergamia)
+aliases:
+- bergamot polyphenolic fraction
+- BPF
+- bergamot
+category: herb
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1500
+    unit: mg
+  tablet:
+    min: 500
+    max: 1500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions: []
+  medications:
+  - statins
+  - blood thinners
+  life_stages:
+  - pregnancy
+  - lactation
+interactions: {}
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Insufficient safety data — avoid in pregnancy and lactation.
+linked_to_topics:
+- dyslipidaemia
+- cardiovascular-disease
+linked_to_mechanisms:
+- hmg-coa-reductase-modulation
+linked_to_claims: []
+notes_for_coach: Bergamot polyphenolic fraction (BPF) is a citrus-derived extract
+  that lowers LDL cholesterol and triglycerides while raising HDL via HMG-CoA reductase
+  inhibition and improved insulin signaling. Used as a natural alternative or adjunct
+  in mild-moderate dyslipidaemia. Standard clinical dose is 500-1500 mg/day in divided
+  doses with meals. Effect develops over 4-12 weeks. Use Bergavit or Bergamonte standardised
+  extract (38% polyphenols).
+notes_for_client: ''
+sources:
+- id: vitaone-skill-practice-guide
+  location: Practice guide — cardiovascular section
+  quote: Bergamot extract supports lipid profile and cardiometabolic markers.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani
