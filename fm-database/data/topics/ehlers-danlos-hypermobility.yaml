@@ -1,0 +1,84 @@
+slug: ehlers-danlos-hypermobility
+display_name: Ehlers-Danlos / Hypermobility Spectrum
+aliases:
+  - EDS
+  - hEDS
+  - hypermobile Ehlers-Danlos
+  - hypermobility spectrum disorder
+  - HSD
+  - joint hypermobility syndrome
+  - JHS
+  - double-jointed
+  - connective tissue laxity
+summary: |
+  A spectrum from generalised joint hypermobility (common, often benign)
+  through hypermobility spectrum disorder (HSD) to hypermobile Ehlers-Danlos
+  syndrome (hEDS, the most common subtype). All share connective tissue
+  laxity affecting joints, skin, vessels, and viscera. Functional medicine
+  framing: collagen instability drives joint pain + subluxations, GI
+  dysmotility, vascular dysregulation (POTS), and mast cell instability
+  (MCAS) — the "EDS-POTS-MCAS triad." Strongly heritable; family history
+  of "loose joints," scoliosis, mitral valve prolapse, or unexplained
+  chronic pain is highly suggestive. Disproportionately affects women;
+  symptoms often worsen at puberty, post-partum, and perimenopause due
+  to hormonal effects on connective tissue.
+common_symptoms:
+  - joint-pain
+  - joint-stiffness-and-swelling
+  - chronic-fatigue
+  - lethargy
+  - tingling-numbness
+  - digestive-discomfort
+  - irregular-stools
+  - lightheadedness-on-standing
+  - palpitations
+  - easy-bruising
+  - stretchy-skin
+  - delayed-wound-healing
+  - tmj-jaw-pain
+  - chronic-headaches
+red_flags:
+  - aortic-root-dilation
+  - vascular-rupture-history
+  - severe-spontaneous-pneumothorax
+  - severe-uterine-or-rectal-prolapse
+related_topics:
+  - postural-orthostatic-tachycardia-syndrome
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+  - chronic-pain-and-fatigue
+  - tmj-disorders
+key_mechanisms:
+  - collagen-instability
+  - connective-tissue-laxity
+  - proprioceptive-deficit
+  - mast-cell-degranulation
+  - autonomic-dysregulation
+coaching_scope_notes: |
+  Coach focus: (1) joint protection — avoid hyperextension during yoga /
+  stretching; emphasise STABILITY work, not flexibility. (2) Strength
+  training with closed-chain exercises (clinical Pilates, isometrics,
+  resistance bands). (3) Proprioceptive work (balance boards, mindful
+  movement). (4) Collagen support — bone broth, collagen peptides
+  10-20 g/day, vitamin C 500-1000 mg, glycine, copper-zinc balance.
+  (5) Nervous system regulation — mast cells are unstable in EDS;
+  histamine + stress drive flares. (6) GI motility support if dysmotility
+  present (low-FODMAP trial, ginger, magnesium). (7) Screen for POTS +
+  MCAS in every EDS suspect — the triad is common. Beighton score in
+  intake; refer for genetic workup if vascular EDS suspected.
+clinician_scope_notes: |
+  Diagnosis is clinical (2017 international criteria) — geneticist or
+  rheumatologist. Vascular EDS (vEDS) requires aortic monitoring +
+  genetic confirmation (COL3A1). Pain management, joint stabilisation
+  surgery, and pharmacological POTS / MCAS treatment are clinician
+  domain. Coach refers for genetic counselling when family history is
+  significant (aortic dissection, sudden death, vascular rupture).
+evidence_tier: strong
+sources:
+  - id: coach-shivani
+    location: Coach observation — connective-tissue triad protocol
+    quote: A 4-question Beighton score on intake catches hEDS clients who've been told for decades they're just "anxious" or "fragile."
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

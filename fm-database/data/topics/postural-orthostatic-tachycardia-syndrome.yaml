@@ -1,0 +1,82 @@
+slug: postural-orthostatic-tachycardia-syndrome
+display_name: Postural Orthostatic Tachycardia Syndrome (POTS)
+aliases:
+  - POTS
+  - postural tachycardia
+  - dysautonomia (POTS-type)
+  - orthostatic intolerance
+  - autonomic dysfunction
+  - autonomic dysregulation
+  - standing intolerance
+  - tachycardia on standing
+summary: |
+  POTS is a form of dysautonomia where standing causes an excessive heart-rate
+  rise (≥30 bpm in adults; ≥40 in adolescents) within 10 minutes, without a
+  drop in blood pressure typical of classic orthostatic hypotension.
+  Symptoms include lightheadedness, brain fog, palpitations, fatigue,
+  exercise intolerance, GI dysmotility, and (in many) a strong overlap with
+  MCAS and joint hypermobility / Ehlers-Danlos (the so-called "triad").
+  Functional medicine framing: low plasma volume, autonomic reactivity,
+  mast-cell-mediated vasoactivity, and connective-tissue laxity allowing
+  blood pooling. Often triggered or unmasked by viral illness (COVID,
+  EBV, mono), pregnancy, surgery, or trauma. Disproportionately affects
+  women aged 15-50.
+common_symptoms:
+  - lightheadedness-on-standing
+  - palpitations
+  - brain-fog
+  - lethargy
+  - exercise-intolerance
+  - presyncope
+  - heat-intolerance
+  - nocturia
+  - cold-extremities
+  - tingling-numbness
+red_flags:
+  - syncope-with-injury
+  - chest-pain-on-standing
+  - unexplained-tachycardia-at-rest-over-120
+  - inability-to-stand-more-than-2-minutes
+related_topics:
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+  - ehlers-danlos-hypermobility
+  - chronic-pain-and-fatigue
+  - hpa-axis-dysregulation
+  - perimenopause
+key_mechanisms:
+  - plasma-volume-reduction
+  - autonomic-dysregulation
+  - mast-cell-degranulation
+  - venous-pooling
+  - sympathetic-overdrive
+coaching_scope_notes: |
+  Coach scope is enormous in POTS — most clients improve substantially
+  with non-pharmacological interventions. Education on (1) salt loading
+  (3-10 g/day under clinician supervision unless contraindicated),
+  (2) fluid intake 2.5-3 L/day with electrolytes, (3) compression
+  garments (waist-high, 20-30 mmHg), (4) recumbent / semi-recumbent
+  exercise progression (rowing, swimming, recumbent bike — NEVER start
+  with upright exercise), (5) sleep with head of bed elevated 4-6 inches,
+  (6) avoid prolonged standing / hot environments / heavy meals /
+  alcohol, (7) cooling techniques. Pair with MCAS protocol if histamine
+  signals positive. NASA 10-minute lean test in-session gives objective
+  baseline. Track symptom severity + standing tolerance weekly.
+clinician_scope_notes: |
+  Diagnosis is clinical (tilt-table test or active stand test).
+  Pharmacotherapy by cardiologist / autonomic specialist: beta-blockers
+  (low-dose propranolol / ivabradine), midodrine, fludrocortisone,
+  pyridostigmine. Co-existing hypovolemia, anaemia, hyperthyroidism,
+  pheochromocytoma must be excluded. Coach should refer for
+  cardiovascular workup if any red flag is present or symptoms severe.
+  POTS overlap with MCAS and EDS requires multi-specialist coordination
+  (cardiology + immunology + rheumatology).
+evidence_tier: strong
+sources:
+  - id: coach-shivani
+    location: Coach observation — MCAS/POTS/EDS triad protocol design
+    quote: POTS in women presents with vague brain fog + fatigue + palpitations and is missed for years. Salt + fluids + recumbent exercise change the picture before any medication is needed.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

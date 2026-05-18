@@ -1,0 +1,56 @@
+slug: dao-enzyme-activity
+display_name: DAO activity
+full_name: Diamine Oxidase (DAO) Enzyme Activity
+aliases:
+  - diamine oxidase
+  - DAO
+  - histaminase
+  - serum DAO
+units: HDU/mL
+sample_type: blood
+conventional_low: 10
+conventional_high: 200
+fm_optimal_low: 80
+fm_optimal_high: 200
+interpretation_low: |
+  DAO activity < 10 HDU/mL strongly suggests histamine intolerance from
+  primary or acquired DAO deficiency. Sub-optimal range (10-80) suggests
+  reduced histamine-clearing capacity — clients tolerate fewer
+  histamine-rich meals before symptoms emerge.
+interpretation_high: |
+  Elevated DAO is rarely clinically meaningful; not a workup priority.
+when_to_order: |
+  Suspected histamine intolerance / MCAS: client positive on MCAS screen
+  (flushing after wine / aged cheese / fermented foods / hot showers,
+  symptoms shifting day-to-day, perfume sensitivity, unexplained
+  flushing or hives). Paired with tryptase + 24h urine N-methylhistamine
+  for the standard MCAS workup. Also useful before initiating
+  histamine-liberating supplements (high-dose quercetin, curcumin,
+  reishi).
+fasting_required: false
+linked_to_topics:
+  - histamine-intolerance
+  - mast-cell-activation-syndrome
+  - functional-b12-excess-umfa
+linked_to_mechanisms:
+  - histamine-metabolism-impairment
+  - mast-cell-degranulation
+  - copper-deficiency
+notes_for_coach: |
+  DAO is a copper-dependent enzyme — copper insufficiency or zinc-copper
+  imbalance reduces activity. Vitamin B6 (P5P) is also a cofactor.
+  Acquired DAO deficiency from gut inflammation, alcohol, NSAID use, IBD,
+  or food sensitivity is common — often reversible with gut-healing
+  protocols. Coach can recommend exogenous DAO supplement (Umbrellux,
+  DAOsin) 1-2 capsules before high-histamine meals while addressing
+  root causes. Availability in India: increasing — Thyrocare, SRL, Apollo
+  ₹3000-5000.
+sources:
+  - id: coach-shivani
+    location: Coach observation — histamine intolerance workup
+    quote: Low DAO activity confirms what the histamine-rich-food reaction pattern suggests — together they make the case for low-histamine trial + DAO supplementation.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

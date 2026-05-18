@@ -1,0 +1,88 @@
+slug: adverse-childhood-experiences-aces
+display_name: Adverse Childhood Experiences (ACEs) & Chronic Stress Programming
+aliases:
+  - ACEs
+  - ACE score
+  - childhood adversity
+  - developmental trauma
+  - chronic stress programming
+  - early life adversity
+  - HPA programming
+  - allostatic load
+summary: |
+  Adverse experiences before age 18 — abuse, neglect, household
+  dysfunction, prolonged loss or instability — durably reshape the
+  HPA axis, immune system, and inflammatory tone. The original CDC-Kaiser
+  ACE study showed dose-dependent links between ACE score and adult
+  outcomes: autoimmune disease, depression, addiction, heart disease,
+  diabetes, chronic pain. Functional medicine framing: chronic
+  allostatic load → hypercortisolism (initially) → adrenal blunting →
+  elevated inflammatory cytokines → leaky gut + mast cell instability +
+  insulin resistance. Not deterministic — but a critical lens for any
+  client whose symptoms began around a major life event or who reports
+  "I've felt this way my whole life."
+common_symptoms:
+  - chronic-fatigue
+  - lethargy
+  - chronic-headaches
+  - sleep-disruption
+  - non-restorative-sleep
+  - low-mood
+  - anxiety
+  - hypervigilance
+  - irritable-bowel-symptoms
+  - food-cravings
+  - sugar-cravings
+  - emotional-eating
+  - chronic-pain
+  - palpitations
+  - dissociation
+red_flags:
+  - active-suicidal-ideation
+  - active-self-harm
+  - acute-PTSD-symptoms
+  - active-substance-misuse
+  - active-domestic-violence
+related_topics:
+  - hpa-axis-dysregulation
+  - chronic-inflammation
+  - autoimmune
+  - chronic-pain-and-fatigue
+  - mast-cell-activation-syndrome
+  - insulin-resistance
+  - depression-like-symptoms
+key_mechanisms:
+  - hpa-axis-dysregulation
+  - chronic-inflammation
+  - vagal-tone-dysregulation
+  - cortisol-rhythm-disruption
+  - epigenetic-programming
+coaching_scope_notes: |
+  Coach scope is LARGE here but requires care. Frame: "Your body learned
+  to be on guard at a time when that was protective. We're going to teach
+  it that it's safe now." Focus on nervous system REGULATION, not
+  exposure work. Tools: (1) breathwork (resonance breathing 5.5 breaths/
+  min, physiological sigh, box breathing); (2) somatic practices (body
+  scan, progressive muscle relaxation, gentle yoga); (3) vagal tone work
+  (humming, gargling, cold-face immersion); (4) HRV biofeedback (Oura /
+  Polar); (5) sleep priority + consistent rhythm; (6) blood-sugar
+  stability (cortisol-glucose coupling); (7) gentle adaptogens
+  (ashwagandha — CAUTION if MCAS overlap; rhodiola, holy basil);
+  (8) magnesium glycinate + B-vitamins. Refer for trauma therapy (EMDR,
+  somatic experiencing, IFS) when client is ready — coach scope is
+  regulation, not processing.
+clinician_scope_notes: |
+  Trauma therapy is mental-health professional domain. Active PTSD,
+  major depression, suicidality, dissociative symptoms, eating
+  disorders → refer to psychiatrist / psychologist. Coach can hold
+  protocol space alongside therapy but never instead of it. Avoid
+  "doing the work" of trauma processing in coaching sessions.
+evidence_tier: strong
+sources:
+  - id: coach-shivani
+    location: Coach observation — chronic stress lens
+    quote: One sensitively-asked question on intake ("did symptoms begin around a major life event?") opens a door that years of supplement experiments can't.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

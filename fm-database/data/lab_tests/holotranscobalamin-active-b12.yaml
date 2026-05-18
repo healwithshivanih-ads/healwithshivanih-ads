@@ -1,0 +1,54 @@
+slug: holotranscobalamin-active-b12
+display_name: HoloTC
+full_name: Holotranscobalamin (Active B12)
+aliases:
+  - active B12
+  - holoTC
+  - HoloTC
+  - biologically active B12
+  - transcobalamin-bound B12
+units: pmol/L
+sample_type: blood
+conventional_low: 35
+conventional_high: 150
+fm_optimal_low: 70
+fm_optimal_high: 150
+interpretation_low: |
+  HoloTC < 35 pmol/L confirms functional B12 deficiency regardless of
+  serum total B12. Only the 10-30% of B12 bound to transcobalamin is
+  bioavailable; this fraction better reflects cellular status.
+interpretation_high: |
+  Elevated holoTC without supplementation may suggest impaired cellular
+  uptake (similar to high serum total B12) — workup for MTHFR variants,
+  liver dysfunction, myeloproliferative disorders.
+when_to_order: |
+  Suspected functional B12 deficiency despite "normal" serum B12 (200-900
+  pg/mL range). Workup of MTHFR methylation block (paired with MMA +
+  homocysteine + MTHFR genotype). Suspected pernicious anaemia or
+  long-term metformin / PPI / H2-blocker use. Clients with neuropathy,
+  brain fog, or low energy whose serum B12 looks "fine."
+fasting_required: false
+linked_to_topics:
+  - functional-b12-excess-umfa
+  - vitamin-b12
+  - methylation-mthfr
+  - b12-folate-anemia
+linked_to_mechanisms:
+  - mthfr-enzyme-dysfunction
+  - methylation-cycle-dysfunction
+  - b12-absorption-impairment
+notes_for_coach: |
+  Most India lab chains now offer holoTC (₹2500-4500). It's the SECOND
+  test to order when serum B12 is high without supplementation —
+  homocysteine + MMA first, holoTC if those are still ambiguous.
+  Together with serum B12 + MMA, holoTC gives the 4B12 score most
+  accurate for cellular B12 status.
+sources:
+  - id: coach-shivani
+    location: Coach observation — functional B12 workup
+    quote: HoloTC catches functional B12 deficiency that serum B12 misses by separating the bioavailable from the inert fraction.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

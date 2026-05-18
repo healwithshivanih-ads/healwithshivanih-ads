@@ -1,0 +1,51 @@
+slug: kit-d816v-mutation
+display_name: KIT D816V
+full_name: KIT D816V Somatic Mutation (Mastocytosis)
+aliases:
+  - KIT D816V
+  - c-kit D816V
+  - mastocytosis mutation
+  - KIT mutation
+units: detected / not detected (qualitative)
+sample_type: blood
+interpretation_low: |
+  Not detected — does not rule out mastocytosis (sensitivity ~80% in
+  systemic mastocytosis; lower in indolent forms). If clinical suspicion
+  is high, bone marrow biopsy is the definitive test (haematologist).
+interpretation_high: |
+  KIT D816V detected in peripheral blood is strongly suggestive of
+  systemic mastocytosis — refer to haematology for staging (WHO criteria
+  require bone marrow biopsy, tryptase > 20, KIT mutation, and
+  multifocal mast cell aggregates).
+when_to_order: |
+  Persistent tryptase elevation > 11.4 ng/mL on multiple draws; suspected
+  systemic mastocytosis (not MCAS — which usually has normal baseline
+  tryptase). Coach scope: NEVER order this alone — always alongside or
+  after tryptase + clinical workup. Order if client has classic
+  mastocytosis red flags (cutaneous urticaria pigmentosa lesions,
+  unexplained syncope with itching, severe sustained tryptase elevation,
+  family history of mastocytosis).
+fasting_required: false
+linked_to_topics:
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+linked_to_mechanisms:
+  - mast-cell-degranulation
+  - kit-receptor-overactivation
+notes_for_coach: |
+  This is a haematology-tier test — coach does NOT order independently.
+  Surface to the client's prescriber if tryptase is persistently > 11.4
+  AND the clinical picture suggests mastocytosis rather than just MCAS.
+  Cost in India: limited availability, ₹8000-15000 at specialist labs
+  (Tata Memorial, Apollo CGMP, some private genetic labs). Often sent
+  abroad. Most MCAS clients do NOT need this test — it's reserved for
+  the mastocytosis-suspicious subset.
+sources:
+  - id: coach-shivani
+    location: Coach observation — mastocytosis vs MCAS differentiation
+    quote: KIT D816V separates clonal mastocytosis (rare, needs haem) from MCAS (common, coach-co-managed). Don't reflex-order — most clients don't need it.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani
