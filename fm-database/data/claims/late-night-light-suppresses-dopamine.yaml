@@ -1,0 +1,39 @@
+slug: late-night-light-suppresses-dopamine
+statement: Bright light exposure between 11 PM and 4 AM suppresses dopamine release
+  via habenula activation, can inhibit learning, and disrupts the melatonin pulse
+  — independent of the light's perceived brightness, since retinal sensitivity increases
+  the longer one has been awake.
+evidence_tier: plausible_emerging
+rationale: The 11pm–4am window is based on Berson & Hattar circadian publications
+  and a Cell paper Huberman references on light-habenula signalling in mice. The translation
+  to human dopamine suppression at population scale is supported by adjacent rodent
+  work but not yet by large human trials at the specific time window. Direction of
+  effect is well-established (night-time light disrupts mood + sleep); precise dose-
+  response is the emerging part.
+coaching_translation: After 11 PM, ANY bright overhead light hits your brain like
+  a flashlight to the face — even if it doesn't feel bright. It can drop your mood,
+  mess up your sleep, and you'll feel it the next day. If you're up late, keep light
+  LOW (a desk lamp or candle, not the ceiling light).
+caveats:
+- Time window is approximate — chronotypes differ; for late-shifted people the "night"
+  window shifts later.
+- Brief bathroom trips are not a problem; sustained exposure is.
+- Red/amber light at night is gentler than blue-rich white light.
+linked_to_topics:
+- sleep
+- circadian-rhythm-disruption
+linked_to_mechanisms:
+- scn-light-entrainment
+- late-light-melatonin-suppression
+- blue-light-melatonin-suppression
+linked_to_supplements: []
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Evening light avoidance section
+  quote: Light between 11 PM and 4 AM suppresses dopamine release and can inhibit
+    learning.
+out_of_scope_notes: ''
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

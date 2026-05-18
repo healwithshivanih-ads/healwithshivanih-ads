@@ -1,0 +1,42 @@
+slug: apigenin-supports-sleep-onset
+statement: Apigenin (50 mg at bedtime) supports sleep onset via GABA-A receptor modulation;
+  commonly stacked with magnesium threonate + L-theanine. Strong caveat — apigenin
+  is a fairly potent aromatase (estrogen) inhibitor and is generally not appropriate
+  for women, especially those of reproductive age or with estrogen-sensitive concerns.
+evidence_tier: plausible_emerging
+rationale: GABA-A modulation by apigenin has in-vitro and animal data (well-established
+  mechanism). Human RCT data on sleep specifically is limited — most use of apigenin
+  in trials has been for cancer adjunct or anti-inflammatory purposes. The aromatase-inhibition
+  concern is real (cited in oncology literature). Huberman frames this as personal-use
+  anecdote with a clear scope warning.
+coaching_translation: Some people use a small dose of apigenin (50 mg) at bedtime
+  to feel sleepier. It is the active compound in chamomile, just more concentrated.
+  BUT — it lowers estrogen, which is rarely what we want for women clients. For most
+  women, stick with magnesium glycinate or threonate + maybe theanine instead.
+caveats:
+- Aromatase inhibition — avoid in women of reproductive age, on HRT, with estrogen-sensitive
+  cancer history.
+- Pregnancy + breastfeeding excluded — no safety data.
+- Quality varies widely across brands; verify third-party tested.
+- Confirm with clinician if client on any hormone therapy.
+linked_to_topics:
+- sleep
+- insomnia
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_supplements:
+- apigenin
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Supplement stack section
+  quote: 50 milligrams of apigenin can augment or support this kind of creation of
+    a sleepiness to help fall asleep and stay asleep.
+- id: huberman-lab-ep02-master-your-sleep
+  location: Apigenin caveat
+  quote: Apigenin is a fairly potent estrogen inhibitor.
+out_of_scope_notes: confirm_with_clinician territory for any woman client. Personal-use
+  anecdote from Huberman; not a population-level recommendation.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

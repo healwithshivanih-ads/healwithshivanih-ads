@@ -1,0 +1,45 @@
+slug: scn-light-entrainment
+display_name: SCN Light Entrainment via Melanopsin Ganglion Cells
+aliases:
+- suprachiasmatic nucleus light entrainment
+- melanopsin photoreception
+- ipRGC entrainment
+- master clock light setting
+category: neurological
+summary: The suprachiasmatic nucleus (SCN) above the roof of the mouth is the master
+  clock of the body, connecting to essentially every organ. Light reaches the SCN
+  via melanopsin-expressing intrinsically photosensitive retinal ganglion cells (ipRGCs)
+  in the bottom half of the retina, which view the upper visual field. These cells
+  are tuned to the quality and amount of light from sunlight at low solar angles (sunrise
+  and sunset). They are NOT the cells used for conscious vision (those are the rods
+  + cones in the photoreceptor layer). The ipRGC pathway sets the timer for cortisol
+  release on waking and melatonin release 12–14 hours later from the pineal gland.
+  Light viewed through windows is ~50× less effective than direct outdoor light because
+  window glass filters the relevant short wavelengths and reduces lux. Overhead light
+  at night preferentially activates these cells (worst case); low-placed light or
+  candlelight does not.
+upstream_drivers:
+- early-morning-sunlight-exposure
+- evening-light-avoidance
+downstream_effects:
+- cortisol-melatonin-rhythm-coupling
+- circadian-rhythm-disruption
+- melatonin-secretion
+related_mechanisms:
+- cortisol-melatonin-rhythm-coupling
+- melatonin-pathway
+- blue-light-melatonin-suppression
+- late-light-melatonin-suppression
+linked_to_topics:
+- sleep
+- circadian-rhythm-disruption
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Episode body, ~minutes 8–25
+  quote: It is vitally important that we get light communicated to this central clock
+    in order to time the cortisol and melatonin properly.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: adenosine-sleep-pressure
+display_name: Adenosine Sleep-Pressure Build-Up
+aliases:
+- sleep drive
+- sleep hunger
+- adenosine accumulation
+category: neurological
+summary: Adenosine is a small molecule that accumulates in the brain the longer one
+  is awake, generating "sleep pressure" or "sleep hunger" — a homeostatic drive to
+  sleep that operates independently of circadian timing. Coffee and other caffeinated
+  drinks block adenosine receptors, masking sleep pressure temporarily; once caffeine
+  clears (half-life ~5 hours, but with tremendous individual variability), adenosine
+  binding resumes and tiredness can rebound. Sleep pressure is one of two systems
+  that govern sleep onset and depth; the other is the circadian clock (SCN-driven
+  cortisol/melatonin rhythm). Both must align for restorative sleep — light entrainment
+  in the morning resets the circadian limb, while keeping caffeine to the first half
+  of the day preserves the adenosine limb.
+upstream_drivers:
+- prolonged-wakefulness
+- caffeine-clearance
+downstream_effects:
+- sleep-onset
+- cortisol-melatonin-rhythm-coupling
+related_mechanisms:
+- cortisol-melatonin-rhythm-coupling
+- scn-light-entrainment
+linked_to_topics:
+- sleep
+- caffeine-and-sleep
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Episode body, adenosine section ~minutes 30–40
+  quote: Adenosine builds up the longer we are awake, creating sleep hunger.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

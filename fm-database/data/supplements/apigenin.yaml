@@ -1,0 +1,73 @@
+slug: apigenin
+display_name: Apigenin
+category: other
+forms_available:
+- capsule
+typical_dose_range:
+  capsule:
+    min: 25
+    max: 50
+    unit: mg
+timing_options:
+- bedtime
+- evening
+take_with_food: optional
+linked_to_topics:
+- insomnia
+- sleep
+- circadian-rhythm-disruption
+linked_to_claims:
+- apigenin-supports-sleep-onset
+contraindications:
+  conditions:
+  - estrogen-sensitive cancers (breast, ovarian, uterine) — apigenin is a potent aromatase
+    inhibitor
+  - history of HRT use without clinician oversight
+  medications:
+  - tamoxifen
+  - aromatase inhibitors (anastrozole, letrozole)
+  - hormone replacement therapy
+  life_stages:
+  - pregnancy
+  - lactation
+notes_for_coach: 'Flavonoid found naturally in chamomile, parsley, celery seed. Modulates
+  GABA-A receptors at the benzodiazepine binding site, contributing to drowsiness.
+  Huberman uses 50 mg at bedtime as part of a 3-component sleep stack (with magnesium
+  threonate + theanine). IMPORTANT scope flag: apigenin is a fairly potent estrogen
+  (aromatase) inhibitor — Huberman cautions women against use without clinician oversight,
+  and notes that for some men this is desirable (estrogen lowering) while for others
+  it is not. Treat as confirm_with_clinician scope for any woman client. Dose ranges
+  in the literature span 25–500 mg; Huberman’s 50 mg sits at the low end. Quality
+  varies widely across brands.'
+interactions:
+  with_medications:
+  - medication: hormone replacement therapy
+    type: avoid_together
+    reason: Apigenin inhibits aromatase and may interfere with HRT estrogen titration;
+      clinical oversight required.
+  - medication: tamoxifen
+    type: avoid_together
+    reason: Both modulate estrogen pathways via different mechanisms; combined effect
+      unpredictable.
+  with_supplements:
+  - slug: l-theanine
+    type: take_together
+    reason: Huberman's sleep stack — both promote GABAergic relaxation, often combined
+      at bedtime.
+  - slug: magnesium-threonate
+    type: take_together
+    reason: Huberman's sleep stack — magnesium-threonate adds GABA support; apigenin
+      adds GABA-A receptor modulation.
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Episode body, supplements section
+  quote: 50 milligrams of apigenin can augment or support this kind of creation of
+    a sleepiness to help fall asleep and stay asleep.
+- id: huberman-lab-ep02-master-your-sleep
+  location: Episode body, supplements caveat
+  quote: Apigenin is a fairly potent estrogen inhibitor.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

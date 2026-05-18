@@ -29,9 +29,9 @@ when_to_refer: 'Refer if severe enough to risk safety (drowsy driving), or
 linked_to_topics:
 - sleep-deprivation
 - sleep-apnea
+- circadian-rhythm-disruption
 linked_to_mechanisms:
 - nocturnal-hypoxia
-- circadian-rhythm-disruption
 sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Sleep deprivation performance section

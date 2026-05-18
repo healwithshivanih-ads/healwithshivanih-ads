@@ -1,0 +1,37 @@
+slug: caffeine-cutoff-protects-sleep
+statement: Caffeine blocks adenosine receptors with a half-life of ~5 hours (highly
+  variable by genotype — slow metabolisers may need 10+ hours). For most people, stopping
+  caffeine by early afternoon protects sleep onset and sleep depth; some need to stop
+  before 11 AM.
+evidence_tier: strong
+rationale: Caffeine pharmacology is one of the best-studied stimulant mechanisms.
+  CYP1A2 polymorphisms drive the metaboliser-rate variability. Multiple human RCTs
+  show evening caffeine reduces total sleep time and slow- wave sleep even when subjective
+  sleep feels normal. The "early afternoon cutoff" advice is conservative and broadly
+  supported.
+coaching_translation: 'Coffee/tea cuts off at noon for most people. If you are sensitive
+  (slow metaboliser — feel jittery from one cup), 10 AM. If you sleep fine after evening
+  coffee, you may be a fast metaboliser — but even then, caffeine reduces deep sleep
+  without you knowing. Best test: try a 2-week early-cutoff trial and see if morning
+  energy improves.'
+caveats:
+- Decaf still has ~10–20% of full caffeine — counts.
+- Tea (black/green) has less caffeine than coffee but still meaningful at 4 PM.
+- Chocolate, some pain relievers, energy drinks add to the daily load.
+- Pregnancy — broader guidance is <200 mg/day total; refer to clinician.
+linked_to_topics:
+- sleep
+- insomnia
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_supplements: []
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Caffeine timing section
+  quote: Some people cannot have any caffeine past 11 AM or else their sleep is totally
+    disrupted.
+out_of_scope_notes: ''
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

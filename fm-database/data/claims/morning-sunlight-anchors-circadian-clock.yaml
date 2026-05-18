@@ -1,0 +1,42 @@
+slug: morning-sunlight-anchors-circadian-clock
+statement: Viewing sunlight within 30–60 minutes of waking for 2–10 minutes is the
+  primary zeitgeber (time-setter) for the suprachiasmatic clock, triggering the cortisol-awakening
+  response and timing melatonin release ~12–14 hours later. Viewing through windows
+  is approximately 50× less effective than direct outdoor light.
+evidence_tier: strong
+rationale: Light entrainment of the SCN via melanopsin retinal ganglion cells is one
+  of the best-established neuroscience findings (Berson & Hattar Cell publications
+  cited). The 50× window-attenuation figure is attributed to Jamie Zeitzer's work
+  at Stanford and reflects glass filtering plus lux reduction; the qualitative claim
+  is well-supported even if the specific multiplier is approximate. Huberman frames
+  this as primary recommendation with the highest confidence in the episode.
+coaching_translation: 'Get your eyes on the sky for 2–10 minutes within an hour of
+  waking — outside, not through a window. This single habit anchors your whole 24-hour
+  rhythm: better cortisol on waking, better melatonin at night, better mood and focus
+  all day. Even on a cloudy day, outside is way more light than indoors.'
+caveats:
+- Do not stare at the sun — view brightness of the sky, not the sun itself.
+- Cloudy days require longer exposure (5–10 min); high-latitude winter mornings may
+  need supplemental bright artificial light.
+- Sunglasses defeat the purpose; clear corrective lenses are fine.
+- Eye conditions (e.g. recent surgery, photophobia) — confirm with clinician.
+linked_to_topics:
+- sleep
+- circadian-rhythm-disruption
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- scn-light-entrainment
+- cortisol-melatonin-rhythm-coupling
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Morning sunlight recommendation, ~minutes 14–20
+  quote: Get sunlight in your eyes as close to waking as possible.
+- id: huberman-lab-ep02-master-your-sleep
+  location: Window attenuation discussion
+  quote: It is 50 times less effective to view sunlight through a window than just
+    get outside.
+out_of_scope_notes: ''
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

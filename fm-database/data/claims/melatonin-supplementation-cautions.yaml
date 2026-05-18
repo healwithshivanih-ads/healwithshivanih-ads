@@ -1,0 +1,49 @@
+slug: melatonin-supplementation-cautions
+statement: 'Melatonin supplementation is generally NOT recommended outside of rare
+  cases (jet lag, shift work, specific clinical indications). Three reasons: (1) it
+  suppresses the onset of puberty in animal models — concerning for children and post-pubertal
+  hormonal effects; (2) commercial product dose variance is extreme — products tested
+  range from 15% of label dose to >400% of label dose; (3) helps with sleep onset
+  but does NOT help maintain sleep — many users wake 3–5 hours after dose.'
+evidence_tier: plausible_emerging
+rationale: Puberty-suppression mechanism is documented in animal studies and inferred
+  in humans (cited by Huberman as "lots of data"). The dose-variance finding is from
+  a JAMA-published independent analysis of melatonin products. The "helps fall asleep
+  but not stay asleep" point reflects melatonin pharmacokinetics — short half-life
+  (~40 min) means levels drop before morning. Direction of all three concerns is well-supported;
+  the strength of the "never use" framing is Huberman's opinion, not a hard guideline.
+coaching_translation: 'I don''t generally recommend melatonin pills. Three reasons:
+  (1) the brands sell wildly different actual doses than the bottle says — sometimes
+  4× the label; (2) it can mess with hormones, especially in younger people; (3) it
+  helps you fall asleep but you wake up at 3 AM anyway. Light timing (morning sun
+  + dim evening) does more for sleep than melatonin will. Save melatonin for actual
+  jet lag if you really need it.'
+caveats:
+- Children and adolescents — avoid unless paediatrician prescribes for a specific
+  condition.
+- Jet lag and emergency shift-work adaptation — short-term use (3–5 days) may be reasonable.
+- Sustained-release formulations may help the "stays asleep" issue but are not free
+  of dose-variance concerns.
+- This is clinician scope — coach educates on the concerns, refers out for decisions.
+linked_to_topics:
+- sleep
+- insomnia
+linked_to_mechanisms:
+- melatonin-secretion
+- melatonin-pathway
+linked_to_supplements:
+- melatonin
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Melatonin cautionary section
+  quote: Except in rare cases, no — I do not generally recommend melatonin supplementation.
+- id: huberman-lab-ep02-master-your-sleep
+  location: Dose variance citation
+  quote: Commercially available melatonin ranges from 15% of what is listed on the
+    bottle up to 400 times more.
+out_of_scope_notes: confirm_with_clinician — supplementation decisions especially
+  for children, pregnancy, on prescription sleep meds.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

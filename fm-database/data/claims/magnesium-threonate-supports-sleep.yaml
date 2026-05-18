@@ -1,0 +1,41 @@
+slug: magnesium-threonate-supports-sleep
+statement: Magnesium L-threonate (300–400 mg, 30–60 minutes before bed) supports sleep
+  onset via increased GABA activity. The threonate form crosses the blood-brain barrier
+  more effectively than other magnesium forms (citrate, oxide, glycinate), though
+  glycinate also has CNS effects.
+evidence_tier: plausible_emerging
+rationale: Magnesium-GABA interaction is well-established neurochemistry. Magnesium
+  L-threonate has rodent + small human trials showing improved cognition and sleep
+  markers (Magtein-branded studies); independent large-scale RCTs are limited. The
+  blood-brain-barrier advantage of threonate vs glycinate is debated — glycinate also
+  crosses well. Huberman presents this as personal use anecdote with mechanistic plausibility.
+coaching_translation: Magnesium threonate at 300–400 mg about 30 minutes before bed
+  helps many people fall asleep faster. The threonate form is marketed as better for
+  the brain, though magnesium glycinate (cheaper, widely available) is also great.
+  Don't combine with theanine on the same night — Huberman warns the combo can leave
+  you oversleeping.
+caveats:
+- Loose stools at higher doses — start at 200 mg, titrate up.
+- Renal impairment — clinician scope; magnesium accumulates.
+- Drug interactions — magnesium can chelate certain antibiotics + thyroid meds; separate
+  doses by 2 hours.
+- Threonate vs glycinate — both work; threonate is more expensive.
+linked_to_topics:
+- sleep
+- insomnia
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- adenosine-sleep-pressure
+linked_to_supplements:
+- magnesium-threonate
+- magnesium-glycinate
+sources:
+- id: huberman-lab-ep02-master-your-sleep
+  location: Supplement section
+  quote: I take 3 or 400 milligrams of magnesium threonate about 30 to 60 minutes
+    before sleep.
+out_of_scope_notes: ''
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani
