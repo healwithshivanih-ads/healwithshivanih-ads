@@ -1186,9 +1186,14 @@ export default async function PlanTabPage({
                 planPeriodWeeks={
                   (activePlan.plan_period_weeks as number | undefined) ?? 12
                 }
-                planPeriodStart={
-                  activePlan.plan_period_start as string | undefined
-                }
+                // Use planStartAnchor (resolves: meal_plan_started_on →
+                // supplements_started_on → letter+3d derivation →
+                // plan_period_start) so "currently in week N" reflects
+                // when the client actually started, not when the latest
+                // plan revision was published. Without this, clients on
+                // a phased protocol since plan #1 show as "week 1" on
+                // the date plan #2 was published.
+                planPeriodStart={planStartAnchor ?? undefined}
               />
             )}
 

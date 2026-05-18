@@ -182,8 +182,8 @@ export function PhaseLetterPanel({
 
   return (
     <FmPanel
-      title="🍽 Refresh meal plan — same protocol"
-      subtitle="Mid-cycle inspiration: while the current 12-week protocol is still running, generate a fresh meal-plan letter for the next week range (seasonal swap, food variety). Supplements + lifestyle stay locked — only the meals change."
+      title="🍽 Generate next weeks' meal plan (same protocol)"
+      subtitle="Mid-protocol meal-plan continuation. Use this for week 3-4, 5-6, etc — supplements + lifestyle + tracking stay locked, only the meal tables change. The system already incorporates recent check-ins, WhatsApp messages, and coach observations from the last 14 days automatically — special requests below are for ADDITIONAL one-off context (e.g. 'add more soups')."
     >
       {currentWeek != null && (
         <div
@@ -232,27 +232,53 @@ export function PhaseLetterPanel({
                     justifyContent: "space-between",
                     gap: 8,
                     padding: "7px 10px",
-                    background: "var(--fm-bg-cool)",
-                    border: "1px solid var(--fm-border-light)",
+                    background: p.stale
+                      ? "rgba(245, 158, 11, 0.08)"
+                      : "var(--fm-bg-cool)",
+                    border: p.stale
+                      ? "1px solid rgba(245, 158, 11, 0.55)"
+                      : "1px solid var(--fm-border-light)",
                     borderRadius: "var(--fm-radius-sm)",
                     textDecoration: "none",
                     fontSize: 11.5,
                     color: "var(--fm-text-primary)",
                   }}
+                  title={
+                    p.stale
+                      ? `A session was logged on ${p.latestSessionAt?.slice(0, 10)} after this letter was generated on ${p.savedAt.slice(0, 10)}. Regenerate to pick up the latest check-in.`
+                      : undefined
+                  }
                 >
                   <div>
                     <strong>{range}</strong>{" "}
                     <span style={{ color: "var(--fm-text-tertiary)" }}>
                       · saved {fmtDate(p.savedAt)}
                     </span>
+                    {p.stale && (
+                      <span
+                        style={{
+                          marginLeft: 8,
+                          fontSize: 9.5,
+                          fontWeight: 700,
+                          padding: "2px 6px",
+                          background: "#92400e",
+                          color: "#fff",
+                          borderRadius: "var(--fm-radius-pill)",
+                          letterSpacing: 0.4,
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        ⚠ stale — new check-in
+                      </span>
+                    )}
                   </div>
                   <span
                     style={{
-                      color: "var(--fm-primary)",
+                      color: p.stale ? "#92400e" : "var(--fm-primary)",
                       fontWeight: 600,
                     }}
                   >
-                    Open →
+                    {p.stale ? "Regenerate →" : "Open →"}
                   </span>
                 </a>
               );

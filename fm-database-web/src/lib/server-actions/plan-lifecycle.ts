@@ -721,6 +721,13 @@ export interface SavedPhase {
   startWeek: number;
   endWeek: number;
   savedAt: string; // ISO mtime
+  /** True when a session (check-in, WhatsApp, coach note) was logged for
+   *  this client AFTER the phase letter was generated. Surfaces the UX
+   *  cue that the letter doesn't reflect the latest clinical state and
+   *  the coach should regenerate before sending. */
+  stale?: boolean;
+  /** ISO date of the newest session that triggered staleness, if any. */
+  latestSessionAt?: string;
 }
 
 /** Path stem helper exposed so the UI can build deep-links to a phase
@@ -873,6 +880,47 @@ export async function listSavedPhasesAction(
     }
   }
   out.sort((a, b) => a.startWeek - b.startWeek);
+
+  // Mark phases stale if any session was logged AFTER the letter was saved.
+  // Even a quick_note from a WhatsApp message should trigger this — the
+  // _recent_client_voice_block injection at letter generation time means a
+  // regeneration will pick it up. Surface the cue so coach doesn't accidentally
+  // send a stale letter.
+  if (out.length > 0) {
+    const sessionsDir = path.join(getPlansRoot(), "clients", clientId, "sessions");
+    let sessionFiles: string[] = [];
+    try {
+      sessionFiles = await fs.readdir(sessionsDir);
+    } catch {
+      return out;
+    }
+    let latestSessionMs = 0;
+    let latestSessionIso = "";
+    for (const sf of sessionFiles) {
+      if (!sf.endsWith(".yaml")) continue;
+      try {
+        const stat = await fs.stat(path.join(sessionsDir, sf));
+        if (stat.mtime.getTime() > latestSessionMs) {
+          latestSessionMs = stat.mtime.getTime();
+          latestSessionIso = stat.mtime.toISOString();
+        }
+      } catch {
+        /* skip */
+      }
+    }
+    if (latestSessionMs > 0) {
+      for (const phase of out) {
+        const phaseMs = new Date(phase.savedAt).getTime();
+        // Same 2-second slack as getLetterStalenessAction to avoid false
+        // positives from races between letter save + session save.
+        if (latestSessionMs > phaseMs + 2000) {
+          phase.stale = true;
+          phase.latestSessionAt = latestSessionIso;
+        }
+      }
+    }
+  }
+
   return out;
 }
 
