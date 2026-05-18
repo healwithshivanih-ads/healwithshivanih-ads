@@ -1,0 +1,144 @@
+slug: pots-first-30-days
+display_name: POTS / Orthostatic Intolerance — First 30 Days
+aliases:
+  - pots-protocol
+  - orthostatic-intolerance-protocol
+  - dysautonomia-starter
+  - pots-non-pharmacological
+category: other
+summary: |
+  A 30-day non-pharmacological protocol for clients with suspected or
+  confirmed POTS / orthostatic intolerance. Coach scope is enormous in
+  POTS — most clients improve substantially with salt, fluids,
+  compression, recumbent exercise, and posture adjustments BEFORE any
+  medication is needed. Medication is cardiologist scope; this protocol
+  supports while the client gets specialist workup if not yet done.
+indications:
+  - postural-orthostatic-tachycardia-syndrome
+  - dysautonomia
+  - orthostatic intolerance
+  - NASA lean test ΔHR ≥ 30 bpm
+  - lightheaded / pre-syncope on standing
+  - palpitations on standing
+  - exercise intolerance with HR climbing on minimal exertion
+contraindications:
+  - heart failure (refer; salt + fluid loading contraindicated)
+  - kidney disease stage 3+ (refer for individualised fluid + salt plan)
+  - uncontrolled hypertension (refer; salt loading inappropriate)
+  - eating disorder history (salt + fluid framing needs careful handling)
+typical_duration_weeks: 4
+phases:
+  - name: 'Week 1 — Hydration + salt foundation'
+    weeks: 1
+    summary: |
+      The single highest-yield intervention in POTS is plasma volume
+      expansion via salt + fluid. Start aggressive; track HR daily;
+      most clients feel meaningfully better in 5-10 days.
+    key_actions:
+      - Salt loading 3-5 g/day on TOP of normal diet (under clinician supervision if BP-sensitive)
+      - Fluid 2.5-3 L/day, sipped continuously not gulped
+      - Electrolyte blend or salt water with lemon morning + afternoon
+      - Daily morning supine HR + standing HR (1 min + 5 min) — diary
+      - Avoid prolonged standing / hot showers / large meals (all worsen)
+  - name: 'Week 2 — Compression + sleep position'
+    weeks: 1
+    summary: |
+      Add compression garments + head-of-bed elevation to support the
+      vascular work salt + fluids start. Both are passive — easy to
+      sustain.
+    key_actions:
+      - Waist-high compression garments 20-30 mmHg (worn from morning through evening)
+      - Head of bed elevated 4-6 inches (blocks under feet of bed, not just pillow)
+      - Continue Week 1 salt + fluid + diary
+      - Add magnesium glycinate 200-400 mg evening (POTS clients often deficient + improves sleep)
+      - Cooling techniques (face fan, cool cloth) for any standing > 10 min
+  - name: 'Week 3 — Recumbent exercise (start tiny)'
+    weeks: 1
+    summary: |
+      POTS clients deteriorate with upright cardio but can build
+      tolerance with recumbent exercise. Start at minutes, not 30-min
+      sessions. ROWING / SWIMMING / RECUMBENT BIKE only — no walking,
+      no spin class, no standing yoga.
+    key_actions:
+      - Recumbent bike or rowing — 5 min daily, very low resistance
+      - Build by 1 minute every 3 days as tolerated (Levine / Dallas protocol pacing)
+      - Pool walking / swimming counts (water is its own compression)
+      - NO upright cardio yet — that comes after 8-12 weeks of recumbent base
+      - Continue all Week 1-2 interventions
+  - name: 'Week 4 — Reassess + plan next phase'
+    weeks: 1
+    summary: |
+      Coach + client review HR diary, standing tolerance, symptom
+      diary. If well controlled non-pharmacologically, continue
+      maintenance. If symptoms persist, escalate to cardiologist for
+      pharmacotherapy (midodrine / ivabradine / fludrocortisone).
+    key_actions:
+      - Review 30-day HR + symptom diary
+      - Re-run NASA 10-min lean test in session; compare to intake baseline
+      - If improved + tolerable, continue maintenance protocol
+      - If significant symptoms persist, refer for cardiology workup
+      - Screen for MCAS + EDS overlap if not done — POTS rarely travels alone
+key_steps: []
+foods_to_emphasise:
+  - mineral-rich-broths
+  - electrolyte-blends
+  - sea-salt
+  - coconut-water-with-pinch-salt
+  - bone-broth
+  - salty-snacks-pickles-olives
+  - small-frequent-meals
+foods_to_remove:
+  - large-heavy-meals
+  - alcohol
+  - excess-caffeine-evening
+supplements_typically_used:
+  - electrolytes
+  - magnesium-glycinate
+  - vitamin-b-complex
+  - iron-bisglycinate
+  - vitamin-c
+expected_outcomes:
+  - Reduced lightheadedness on standing within 1-2 weeks (most clients)
+  - Longer standing tolerance (queues / showers / kitchens become bearable)
+  - Reduced palpitations + brain fog
+  - Sleep more restorative (head-of-bed elevation + magnesium)
+  - Recumbent exercise base built for eventual upright reintroduction (week 8+)
+cautions:
+  - 'NEVER prescribe upright cardio in the first 12 weeks. Walking / spin / standing yoga can worsen POTS for months. Recumbent ONLY.'
+  - 'Salt loading is non-trivial in clients with BP issues or kidney disease — verify with prescriber first.'
+  - 'Compression must be put on BEFORE standing for the day (not after symptoms hit). Train the routine: socks before feet hit the floor.'
+  - 'POTS often co-travels with MCAS + EDS. Screen both. The triad needs parallel attention; addressing only POTS misses the cluster.'
+prerequisites: []
+recommended_followup:
+  - mcas-gentle-first-30-days
+  - 5r-gut-protocol
+incompatible_with:
+  - autoimmune-paleo-aip
+linked_to_topics:
+  - postural-orthostatic-tachycardia-syndrome
+linked_to_mechanisms:
+  - plasma-volume-reduction
+  - autonomic-dysregulation
+  - sympathetic-dominance
+linked_to_symptoms:
+  - lightheadedness-on-standing
+  - palpitations
+  - presyncope
+  - chronic-fatigue
+sources:
+  - id: coach-shivani
+    location: Coach observation — POTS first-30-days protocol design
+    quote: 'Salt + fluids + compression + recumbent exercise improve most POTS clients meaningfully in 30 days. Medication is escalation, not first line — and the coach can hold the whole non-pharmacological piece.'
+evidence_tier: strong
+notes_for_coach: |
+  POTS clients are often gaslit for years before diagnosis — be careful
+  with "just push through" language. Frame everything as "your nervous
+  system is trying to protect you; we're teaching it that standing is
+  safe again." The recumbent exercise base (Levine / Dallas protocol)
+  has the strongest evidence — emphasise pacing not push-through.
+  Track Δ-HR weekly on the lean test; improvement is usually visible
+  by week 3.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

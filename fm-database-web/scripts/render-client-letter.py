@@ -538,6 +538,143 @@ _HISTAMINE_SYMPTOM_SLUGS = (
 )
 
 
+def _detect_triad_topics(plan: dict, client: dict) -> set:
+    """v0.75.8 — detect MCAS / POTS / EDS / PEM / mould topics in the plan
+    or implied by the client's intake signals. Returns a set of triggers
+    {'mcas', 'pots', 'eds', 'pem', 'mould'} that the letter generator
+    weaves constraint blocks for.
+
+    Looks at:
+      - plan.topics (active plan's selected topics)
+      - plan.attached_protocols (which protocols the coach has attached)
+      - client.intake_insights.top_hypotheses (AI-inferred triad)
+      - client.beighton_self_score / lean_test_symptoms / pem_screen /
+        mould_exposure / histamine_signals (direct intake signals)
+      - client.physical_exam_findings (coach-verified)
+    """
+    triggers: set = set()
+
+    # Topic-slug match
+    topic_match = {
+        "mast-cell-activation-syndrome": "mcas",
+        "histamine-intolerance-mcas": "mcas",
+        "histamine-intolerance": "mcas",
+        "postural-orthostatic-tachycardia-syndrome": "pots",
+        "ehlers-danlos-hypermobility": "eds",
+        "post-exertional-malaise-mecfs": "pem",
+        "mold-mycotoxin-exposure": "mould",
+    }
+    for t in (plan.get("topics") or []):
+        key = topic_match.get(t)
+        if key:
+            triggers.add(key)
+
+    # Attached protocol slug match
+    protocol_match = {
+        "mcas-gentle-first-30-days": "mcas",
+        "pots-first-30-days": "pots",
+        "pem-pacing-first-30-days": "pem",
+        "mould-cirs-gentle-first-30-days": "mould",
+    }
+    for p in (plan.get("attached_protocols") or []):
+        key = protocol_match.get(p)
+        if key:
+            triggers.add(key)
+
+    # Direct intake signals (no AI required)
+    hist = client.get("histamine_signals") or []
+    if isinstance(hist, list) and len(hist) >= 3:
+        triggers.add("mcas")
+    bey = client.get("beighton_self_score") or []
+    if isinstance(bey, list) and len(bey) >= 3:
+        triggers.add("eds")
+    pem = client.get("pem_screen") or []
+    if isinstance(pem, list) and len(pem) >= 2:
+        triggers.add("pem")
+    mou = client.get("mould_exposure") or []
+    if isinstance(mou, list) and len(mou) >= 2:
+        triggers.add("mould")
+    lean_syms = client.get("lean_test_symptoms") or []
+    real_lean = [s for s in lean_syms if isinstance(s, str) and s != "felt completely fine"]
+    if len(real_lean) >= 3:
+        triggers.add("pots")
+
+    # Coach-verified physical_exam_findings override
+    for f in (client.get("physical_exam_findings") or []):
+        if not isinstance(f, dict):
+            continue
+        kind = f.get("kind")
+        result = f.get("result") or {}
+        if kind == "beighton" and result.get("hypermobile"):
+            triggers.add("eds")
+        elif kind == "nasa_lean_test" and result.get("pots_pattern"):
+            triggers.add("pots")
+
+    return triggers
+
+
+def _format_triad_constraints_block(triggers: set) -> str:
+    """v0.75.8 — render the triad-aware constraint block for the letter
+    prompt. Only generated when ≥ 1 triad trigger fires. Threads explicit
+    BINDING rules for the AI letter writer: low-histamine meal plan,
+    recumbent (not upright) exercise, pacing (not push-through), gentle
+    supplement titration, no aggressive detox.
+    """
+    if not triggers:
+        return ""
+    blocks: list = []
+    if "mcas" in triggers:
+        blocks.append(
+            "  [MCAS / HISTAMINE] HIGH-PRIORITY BINDING RULES:\n"
+            "    • Low-histamine meal plan throughout — STRICTLY avoid: aged cheese, fermented foods (kimchi, sauerkraut, kombucha, miso), leftover meat > 24h, wine, vinegar, tomato, spinach, eggplant, avocado, citrus, chocolate, peanuts, cured meats.\n"
+            "    • Fresh-only proteins: fresh fish, fresh-cooked chicken/eggs, eaten same day. No leftovers reheated.\n"
+            "    • Supplement timing: ANY quercetin, curcumin, or reishi must be flagged 'start at 1/4 dose for 3 days, watch for paradoxical reaction.' Never start at full dose.\n"
+            "    • Prefer: DAO enzyme before high-risk meals, vitamin C, P5P (active B6), magnesium glycinate, nettle leaf tea.\n"
+            "    • Lifestyle: cool showers (not hot), gentle exercise, NO aggressive detox / sauna at high heat / vigorous lymph drainage."
+        )
+    if "pots" in triggers:
+        blocks.append(
+            "  [POTS / ORTHOSTATIC] HIGH-PRIORITY BINDING RULES:\n"
+            "    • Salt loading 3-5 g/day on TOP of normal diet (note: only with prescriber sign-off if BP-sensitive).\n"
+            "    • Fluid intake 2.5-3 L/day, sipped continuously not gulped, with electrolytes.\n"
+            "    • Exercise prescription: RECUMBENT ONLY for first 8-12 weeks — recumbent bike, rowing, swimming, pool walking. NEVER upright cardio / spin / standing yoga / treadmill walking in the early weeks.\n"
+            "    • Sleep with head of bed elevated 4-6 inches (blocks under feet, not just pillow).\n"
+            "    • Avoid: prolonged standing, hot showers, large heavy meals, alcohol (all worsen orthostatic symptoms).\n"
+            "    • Compression garments (waist-high, 20-30 mmHg) before standing for the day."
+        )
+    if "eds" in triggers:
+        blocks.append(
+            "  [EDS / HYPERMOBILITY] BINDING RULES:\n"
+            "    • Movement framing: STABILITY work, not flexibility. NO yoga poses that hyperextend joints; emphasise closed-chain strength (clinical Pilates, resistance bands, isometrics).\n"
+            "    • Prefer: bone broth, collagen peptides 10-20 g/day, vitamin C 500-1000 mg, magnesium glycinate, balanced zinc-copper.\n"
+            "    • Pace cognitive + physical exertion — proprioceptive deficit means clients tire faster from basic movement."
+        )
+    if "pem" in triggers:
+        blocks.append(
+            "  [PEM / ME-CFS / LONG COVID] CRITICAL BINDING RULES:\n"
+            "    • PACING IS THE INTERVENTION. The exercise prescription is REST + recumbent-only movement, NOT graded exercise / push-through / capacity-building. Graded exercise therapy WORSENS PEM and can crash clients for weeks.\n"
+            "    • Energy envelope: client operates at 50-70% of perceived capacity with 24h recovery built in.\n"
+            "    • Mitochondrial support stack: CoQ10 (ubiquinol) 100-200 mg, D-ribose 5 g 2-3×/day, L-carnitine 1-2 g, magnesium glycinate, B-complex (methylated forms if MTHFR suspected).\n"
+            "    • Permitted movement: restorative yoga, gentle pool walking, recumbent bike 5 min daily building by 1 minute every 3-5 days IF no next-day crash.\n"
+            "    • Forbidden language: 'push through', 'graded exercise', 'just walk more', 'you'll feel better with movement'."
+        )
+    if "mould" in triggers:
+        blocks.append(
+            "  [MOULD / CIRS] BINDING RULES:\n"
+            "    • SOURCE REMOVAL is the protocol. Letter must include a section on home assessment (visible mould, leaks, musty smell, ERMI testing). No detox protocol can out-pace ongoing exposure.\n"
+            "    • Gentle binders only: activated charcoal 250-500 mg 2h away from food/meds, chlorella 1-3 tablets/day if tolerated.\n"
+            "    • Antioxidant foundation: vitamin C, glutathione (liposomal), NAC, cruciferous vegetables.\n"
+            "    • FORBIDDEN: aggressive detox, high-heat sauna, high-dose vitamin C IV, vigorous cleanses. These mobilise toxins faster than binders can clear → makes client worse.\n"
+            "    • Low-mould diet — no peanuts, no aged cheese, no leftover food > 24h, fresh-only produce."
+        )
+    return (
+        "\n⚠ TRIAD-AWARE PROTOCOL CONSTRAINTS — apply to meals + supplements + lifestyle\n"
+        + "These constraints OVERRIDE the standard letter framing. If a default suggestion conflicts with the triad rules below, the triad rule wins.\n\n"
+        + "\n\n".join(blocks)
+        + "\n"
+    )
+
+
 def _load_drug_cautions_for_client(client: dict) -> list[dict]:
     """v0.74 — alias-match client medications against fm-database/data/drug_depletions
     and return a flat list of `protocol_cautions` entries augmented with
@@ -1863,7 +2000,14 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
     cautions = _load_drug_cautions_for_client(client)
     drug_block = _format_drug_cautions_block(cautions)
 
-    if not bullets and not drug_block:
+    # v0.75.8 — triad-aware constraint block (MCAS / POTS / EDS / PEM /
+    # mould). Detected from plan topics + attached protocols + intake
+    # signals + coach-verified findings. Same wovenness — every letter
+    # type inherits the constraints via top_of_mind.
+    triad_triggers = _detect_triad_topics(plan, client)
+    triad_block = _format_triad_constraints_block(triad_triggers)
+
+    if not bullets and not drug_block and not triad_block:
         return ""
 
     body = "\n".join(bullets)
@@ -1874,6 +2018,7 @@ THIS CLIENT — TOP-OF-MIND ({first_name}'s specifics):
 {body}
 ═══════════════════════════════════════════════════════════
 {drug_block}
+{triad_block}
 
 Every recommendation, tip, and meal suggestion you write MUST reference
 at least one specific item from the block above. See the

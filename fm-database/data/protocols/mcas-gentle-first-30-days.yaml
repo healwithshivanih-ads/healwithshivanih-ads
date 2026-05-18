@@ -1,0 +1,152 @@
+slug: mcas-gentle-first-30-days
+display_name: MCAS / Histamine Intolerance — Gentle First 30 Days
+aliases:
+  - mcas-first-30
+  - low-histamine-starter
+  - mast-cell-gentle-protocol
+  - histamine-intolerance-protocol
+category: anti_inflammatory
+summary: |
+  A 30-day low-histamine + mast-cell-stabilising starter protocol for
+  clients with suspected or confirmed MCAS / histamine intolerance.
+  Built around the principle that mast cells in these clients are
+  TWITCHY — gentle, slow, quarter-doses, no aggressive detox. The goal
+  in 30 days is not "cure" but "calmer baseline" so subsequent protocol
+  layers (gut healing, hormonal work) become tolerable.
+indications:
+  - histamine-intolerance-mcas
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+  - chronic urticaria / fragrance + chemical sensitivity
+  - food reactions that shift week to week
+  - flushing after wine / aged cheese / fermented foods
+  - on cromolyn / ketotifen / montelukast / famotidine combo
+contraindications:
+  - active mastocytosis under haematology care (defer to specialist)
+  - severe anaphylaxis history without EpiPen access (refer first)
+  - active pregnancy without obstetric clearance for supplements
+typical_duration_weeks: 4
+phases:
+  - name: 'Week 1 — Stabilise + observe'
+    weeks: 1
+    summary: |
+      Cut top 5 histamine triggers + start symptom diary. NO new
+      supplements this week — observation only. Goal: see what stops
+      happening when triggers go.
+    key_actions:
+      - Strict low-histamine eating (no aged cheese, no leftover meat > 24h, no fermented anything, no wine / vinegar / kombucha, no tomato / spinach / eggplant / avocado / citrus)
+      - Fresh meat / fish only (frozen-fresh OK; reheated leftovers NOT)
+      - Daily symptom diary — flushing / palpitations / brain fog / hives / sleep / GI
+      - Hydrate well — 2-2.5 L water + pinch of salt
+      - NO new supplements yet
+  - name: 'Week 2 — Add DAO + foundational support'
+    weeks: 1
+    summary: |
+      Introduce DAO enzyme before high-risk meals + foundational
+      micronutrients that support histamine clearance. ONE supplement
+      at a time, ¼ dose for 3 days, watch for paradoxical reaction.
+    key_actions:
+      - DAO enzyme 1 capsule 15 min before any meal that might be high-histamine (travel, social, restaurant)
+      - Vitamin C 500 mg twice daily (natural antihistamine)
+      - Magnesium glycinate 200 mg evening
+      - Vitamin B6 (P5P) 25-50 mg morning (DAO cofactor)
+      - Continue low-histamine diet + diary
+  - name: 'Week 3 — Mast cell stabilisers (cautious)'
+    weeks: 1
+    summary: |
+      Add mast-cell-stabilising supplements at quarter doses. Quercetin
+      is the workhorse but ironically triggers some MCAS clients — start
+      VERY low (250 mg/day), titrate over 3 weeks if tolerated.
+    key_actions:
+      - Quercetin 250 mg morning ONLY if Week 2 stable; titrate up over 3 weeks if tolerated
+      - Continue DAO + Vitamin C + Magnesium + B6
+      - Nettle leaf tea 1-2 cups/day (gentle natural antihistamine)
+      - Reintroduce ONE moderate-histamine food per week to test tolerance — coach guides the order
+  - name: 'Week 4 — Personalise + plan next phase'
+    weeks: 1
+    summary: |
+      Review symptom diary, identify which interventions helped vs
+      didn't, and design the post-30-day plan (gut healing / liver
+      support / hormonal layer). The first 30 days are a stabilising
+      baseline, not a destination.
+    key_actions:
+      - Coach reviews 30-day symptom diary
+      - Re-test tryptase + DAO if indicated
+      - Plan next protocol layer (often 5R gut, or estrogen-clearance support, or POTS-specific if overlap)
+      - Reassess all medications + supplements for any histamine-liberating additions
+key_steps: []
+foods_to_emphasise:
+  - fresh-meat-not-leftover
+  - white-rice
+  - oats
+  - quinoa
+  - cucumber
+  - zucchini
+  - broccoli-fresh
+  - cauliflower
+  - apples
+  - pears
+  - blueberries
+  - olive-oil
+  - ghee
+  - coconut-oil
+foods_to_remove:
+  - aged-cheese
+  - fermented-foods
+  - leftover-meat
+  - wine
+  - kombucha
+  - vinegar
+  - tomatoes
+  - spinach
+  - eggplant
+  - avocado
+  - citrus-fruits
+  - chocolate
+  - cured-meats
+supplements_typically_used:
+  - dao-enzyme
+  - vitamin-c
+  - magnesium-glycinate
+  - p5p-active-b6
+  - quercetin
+expected_outcomes:
+  - Reduced frequency of flushing / hives / palpitations within 2-3 weeks
+  - Quieter baseline reactivity (fewer "I reacted to a new thing" incidents)
+  - Clearer picture of which foods are personally tolerable vs not (post-reintroduction)
+  - Better sleep + reduced morning histamine load (helps next-phase protocols be tolerable)
+cautions:
+  - 'NEVER skip the quarter-dose titration. Quercetin and curcumin can paradoxically trigger MCAS in sensitive clients — start at 250 mg, titrate over 3 weeks if tolerated.'
+  - 'AVOID adding multiple supplements in one week. One change at a time. The point is to find what stabilises THIS client.'
+  - 'NO aggressive detox / sauna at high heat / vigorous lymph drainage during this phase. Mast cells are unstable; aggressive intervention triggers flares.'
+  - 'If client is on cromolyn / ketotifen / famotidine / montelukast, do NOT advise stopping. Coach scope is supportive; medication is prescriber territory.'
+prerequisites: []
+recommended_followup:
+  - 5r-gut-protocol
+  - adrenal-recovery-protocol
+incompatible_with:
+  - autoimmune-paleo-aip
+linked_to_topics:
+  - histamine-intolerance-mcas
+  - mast-cell-activation-syndrome
+  - histamine-intolerance
+linked_to_mechanisms:
+  - mast-cell-degranulation
+  - histamine-metabolism-impairment
+linked_to_symptoms: []
+sources:
+  - id: coach-shivani
+    location: Coach observation — MCAS first-30-days protocol design
+    quote: The first 30 days for an MCAS client is about CALMING, not curing. Quarter-doses, slow titration, low-histamine baseline, no detox. The next layers only work once the system is calmer.
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Common failure mode: coach starts at full doses to "get results fast,"
+  client crashes within a week, loses trust. The discipline of quarter-
+  dose titration is the protocol. Pace the client even slower than feels
+  necessary — these clients are sensitised to every intervention.
+  Pair with screening for POTS + EDS overlap; the MCAS-POTS-EDS triad
+  needs all three addressed in parallel, not separately.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

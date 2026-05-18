@@ -1,0 +1,148 @@
+slug: mould-cirs-gentle-first-30-days
+display_name: Mould / CIRS — Gentle First 30 Days
+aliases:
+  - cirs-protocol
+  - mould-illness-protocol
+  - water-damaged-building-protocol
+  - biotoxin-illness-starter
+category: detox_liver_support
+summary: |
+  A 30-day gentle support protocol for clients with suspected or
+  confirmed mould / mycotoxin exposure (CIRS — Chronic Inflammatory
+  Response Syndrome). Most important step is SOURCE REMOVAL — coach
+  cannot do this, but can help client understand the urgency. Coach
+  scope is supportive: gentle binders, antioxidant support, low-mould
+  diet. Aggressive detox is HARMFUL; the Shoemaker / specialist
+  protocols are clinician territory.
+indications:
+  - mold-mycotoxin-exposure
+  - water-damaged building exposure (current or past)
+  - symptoms worse on humid / damp days
+  - multi-system symptoms unexplained by other workup
+  - 'feel-worse-in-this-building pattern'
+  - VCS test positive (if done)
+contraindications:
+  - active pregnancy without prescriber clearance (binders can affect nutrient absorption)
+  - severe biliary disease
+  - already on specialist Shoemaker protocol — defer to that clinician
+typical_duration_weeks: 4
+phases:
+  - name: 'Week 1 — Source assessment + gentle foundation'
+    weeks: 1
+    summary: |
+      The single most important thing is SOURCE REMOVAL — if the home
+      has mould, no protocol will out-pace ongoing exposure. Week 1 is
+      assessment + gentle antioxidant support; no binders yet.
+    key_actions:
+      - Inspect home for visible mould, recent leaks, musty smell — document with photos
+      - ERMI / DIY mould plate test or air-quality testing (₹3-8k in India)
+      - If mould present, urgent remediation plan with client
+      - Vitamin C 500 mg twice daily
+      - Glutathione (liposomal) 250 mg daily
+      - Lots of cruciferous vegetables (sulforaphane support)
+      - Hydration 2.5 L/day
+  - name: 'Week 2 — Gentle binders (with food)'
+    weeks: 1
+    summary: |
+      Introduce one binder at a low dose, taken WELL away from food +
+      supplements. Watch for constipation (very common — magnesium
+      counters). Stop if any worsening of symptoms.
+    key_actions:
+      - Activated charcoal 250-500 mg, 2 hours away from food + meds
+      - Magnesium glycinate 200-400 mg evening (counters binder-induced constipation)
+      - Low-mould diet — no leftovers > 24h, no peanuts, no aged cheese, fresh-only produce
+      - Continue Week 1 antioxidant support
+      - Symptom diary — note any worsening (Herxheimer-like reactions = back off)
+  - name: 'Week 3 — Add chlorella (or skip if reactive)'
+    weeks: 1
+    summary: |
+      Chlorella is a gentler binder that supports liver phase II in
+      parallel. Many MCAS-overlap clients tolerate it poorly — start
+      LOW (1 tablet), watch, slowly build. If reactive, skip entirely.
+    key_actions:
+      - Chlorella 1 tablet daily — IF Week 2 was symptom-stable
+      - Build to 3 tablets daily over 1 week if tolerated
+      - NAC 600 mg daily (precursor to glutathione)
+      - Continue Week 1 + 2 interventions
+      - Continue symptom diary
+  - name: 'Week 4 — Reassess + decide next phase'
+    weeks: 1
+    summary: |
+      Coach + client review 30-day diary. If symptoms improving + source
+      removed, continue maintenance. If symptoms persist or worsen,
+      refer to a Shoemaker-protocol-trained clinician (rare in India;
+      teleconsult often the route).
+    key_actions:
+      - Source removal confirmed?
+      - Symptom diary trend — better, same, or worse?
+      - If better → maintenance dose of binders + antioxidants, continue
+      - If same or worse → refer for specialist mould workup (genetic testing, mycotoxin urine panel)
+      - Screen for MCAS overlap if not done (very common with mould)
+key_steps: []
+foods_to_emphasise:
+  - cruciferous-vegetables
+  - garlic
+  - onion
+  - turmeric
+  - olive-oil
+  - bone-broth
+  - fresh-fruit-not-stored-long
+  - white-rice
+foods_to_remove:
+  - peanuts
+  - aged-cheese
+  - fermented-foods
+  - leftover-meat
+  - corn-stored-long
+  - sugar-and-refined-carbs
+  - alcohol
+  - dried-fruit-stored-long
+supplements_typically_used:
+  - vitamin-c
+  - glutathione-liposomal
+  - nac
+  - activated-charcoal
+  - chlorella
+  - magnesium-glycinate
+expected_outcomes:
+  - Improvement only happens with SOURCE REMOVAL — protocol without source removal is symptom management at best
+  - Reduced brain fog + fatigue if source is removed + binders started
+  - Identification of MCAS overlap (very common — mould activates mast cells)
+  - Decision point at Week 4 on whether specialist Shoemaker-protocol referral is needed
+cautions:
+  - 'SOURCE REMOVAL IS THE PROTOCOL. Binders + antioxidants without removing the mould source is symptom whack-a-mole. Help client understand the urgency of remediation.'
+  - 'Aggressive detox is harmful. NO sauna at high heat, no high-dose vitamin C IV, no aggressive cleanses. These mobilise toxins faster than binders can clear → makes client feel worse.'
+  - 'Mast cells often co-activate in mould exposure. If MCAS symptoms emerge during this protocol, layer the MCAS gentle protocol over the top, do NOT push through.'
+  - 'CIRS is genetically partly determined (HLA-DR). Some clients clear mycotoxins poorly; specialist workup may include genetic testing.'
+prerequisites: []
+recommended_followup:
+  - mcas-gentle-first-30-days
+  - 5r-gut-protocol
+incompatible_with:
+  - weight-loss-metabolic-reset
+linked_to_topics:
+  - mold-mycotoxin-exposure
+linked_to_mechanisms:
+  - oxidative-stress
+  - chronic-inflammation
+  - mast-cell-degranulation
+linked_to_symptoms:
+  - chronic-fatigue
+  - brain-fog
+  - chemical-sensitivity
+sources:
+  - id: coach-shivani
+    location: Coach observation — mould / CIRS protocol design
+    quote: Source removal is everything in mould. The binders + antioxidants only work once the client is out of the exposure — otherwise it's whack-a-mole symptoms.
+evidence_tier: plausible_emerging
+notes_for_coach: |
+  Coach scope is supportive only. The Shoemaker protocol (full CIRS
+  treatment with cholestyramine, VIP nasal spray, etc.) is
+  clinician-led — rare in India, often teleconsult. Coach handles
+  source-removal education, gentle binders, antioxidant foundation,
+  symptom diary. If client genuinely has CIRS, refer for specialist
+  workup at Week 4 if not improving.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

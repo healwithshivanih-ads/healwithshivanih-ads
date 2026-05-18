@@ -1,0 +1,149 @@
+slug: pem-pacing-first-30-days
+display_name: PEM Pacing — Long COVID / ME/CFS First 30 Days
+aliases:
+  - pem-protocol
+  - pacing-protocol
+  - long-covid-starter
+  - mecfs-pacing-protocol
+  - post-viral-fatigue-protocol
+category: mitochondrial_support
+summary: |
+  A 30-day pacing-first protocol for clients with post-exertional
+  malaise (PEM) from ME/CFS, long COVID, or other post-viral fatigue
+  syndromes. The cardinal intervention is STOPPING the crash cycle.
+  Conventional graded exercise therapy is HARMFUL in these clients;
+  this protocol uses energy-envelope pacing, mitochondrial micronutrient
+  support, and screens for treatable mimics (sleep apnoea, thyroid,
+  anaemia, celiac).
+indications:
+  - post-exertional-malaise-mecfs
+  - long COVID with PEM pattern
+  - ME/CFS (any duration)
+  - post-viral fatigue syndrome
+  - "crashes for hours / days after exertion that used to feel normal"
+  - HRV consistently low + non-restorative sleep
+contraindications:
+  - active acute illness — defer protocol; treat acute first
+  - undiagnosed cardiac symptoms — refer cardiology first
+  - undiagnosed orthostatic intolerance with severe presyncope — POTS workup first
+typical_duration_weeks: 4
+phases:
+  - name: 'Week 1 — STOP the crash cycle'
+    weeks: 1
+    summary: |
+      Reduce activity to 50% of perceived current baseline. Sounds
+      counterintuitive — feels worse for 3-4 days then noticeably
+      better. Most clients have been "pushing through" for months and
+      the system never gets a chance to recover.
+    key_actions:
+      - Pace at 50% of perceived capacity all week — even on "good days"
+      - Daily HRV (Oura / Whoop / Garmin / Polar) — if HRV is low for the day, REST that day
+      - 'Symptom diary — morning energy, afternoon dip, post-activity crash'
+      - Sleep priority — same bedtime + wake time + dark room + cool temp
+      - NO new exercise; NO push-throughs; NO "I'll just do this one thing"
+  - name: 'Week 2 — Mitochondrial foundation'
+    weeks: 1
+    summary: |
+      Add core mitochondrial support stack at moderate doses. Most
+      clients notice subtle improvement in 10-14 days; if no change,
+      the doses are right but need 4-6 more weeks to compound.
+    key_actions:
+      - CoQ10 (ubiquinol) 100-200 mg morning with food
+      - Magnesium glycinate 200-400 mg evening
+      - B-complex 1 daily (methylated forms preferred if MTHFR suspected)
+      - D-ribose 5g three times daily (key PEM-specific addition)
+      - L-carnitine 1-2 g daily (split doses, before exercise time-blocks)
+      - Continue Week 1 pacing
+  - name: 'Week 3 — Gentle horizontal exercise (only if pacing solid)'
+    weeks: 1
+    summary: |
+      ONLY if Week 1-2 pacing held + HRV trending up: introduce
+      restorative-style movement. Recumbent / horizontal / supported
+      ONLY. ABSOLUTELY NO graded exercise therapy. If client crashes,
+      drop back to Week 1 pacing and re-attempt in 2 weeks.
+    key_actions:
+      - Restorative yoga / yin yoga 10-15 min daily
+      - Recumbent bike 5 min OR pool walking 10 min, alternating days
+      - Build by 1 minute every 5 days IF no PEM the next day
+      - Continue mitochondrial stack
+      - HRV diary continues; rest day if HRV drops
+  - name: 'Week 4 — Reassess + plan next layer'
+    weeks: 1
+    summary: |
+      Coach + client review 30-day energy envelope. Identify treatable
+      mimics still in play (sleep apnoea, thyroid, anaemia, celiac).
+      Decide next protocol layer — usually 5R if gut suspect, or
+      MCAS + POTS protocols if triad overlap.
+    key_actions:
+      - 30-day HRV trend review
+      - Re-check labs if any treatable mimic suspected
+      - Screen MCAS + POTS overlap if not done (the triad commonly co-travels)
+      - Continue mitochondrial stack as maintenance
+      - Plan next protocol layer — depend on what the diary surfaced
+key_steps: []
+foods_to_emphasise:
+  - small-frequent-meals
+  - mineral-rich-broths
+  - eggs
+  - fatty-fish-low-mercury
+  - dark-leafy-greens
+  - berries
+  - olive-oil
+  - sweet-potato
+foods_to_remove:
+  - alcohol
+  - excess-sugar
+  - high-mercury-fish
+supplements_typically_used:
+  - coq10-ubiquinol
+  - magnesium-glycinate
+  - d-ribose
+  - l-carnitine
+  - vitamin-b-complex
+  - methylfolate-b9
+  - methylcobalamin
+expected_outcomes:
+  - Reduced crash frequency within 2-3 weeks
+  - Better HRV trend
+  - Some clients describe a "ceiling lift" — pre-pacing they were stuck at 40% of normal capacity; pacing + mito stack often brings ceiling to 60-65% in 30 days
+  - Identify treatable mimics (apnoea, anaemia, celiac) often missed in primary care
+  - Build a baseline from which slower reintroduction of activity is possible
+cautions:
+  - 'NEVER advise graded exercise therapy or "push through to deconditioning." Wrong exercise advice can crash a PEM client for weeks. Pacing is the intervention.'
+  - 'If client has acute worsening or new neurological symptoms, refer urgently — could be a new clinical event, not just PEM.'
+  - 'D-Ribose may slightly lower blood sugar in diabetics on insulin at high doses (>15 g) — monitor.'
+  - 'Screen for + treat mimics aggressively in Week 4. Apnoea / anaemia / hypothyroid / celiac can present as PEM-like fatigue but respond to specific treatment.'
+prerequisites: []
+recommended_followup:
+  - 5r-gut-protocol
+  - adrenal-recovery-protocol
+  - mcas-gentle-first-30-days
+incompatible_with:
+  - weight-loss-metabolic-reset
+linked_to_topics:
+  - post-exertional-malaise-mecfs
+  - chronic-pain-and-fatigue
+linked_to_mechanisms:
+  - mitochondrial-dysfunction
+  - oxidative-stress
+  - autonomic-dysregulation
+linked_to_symptoms:
+  - chronic-fatigue
+  - brain-fog
+  - non-restorative-sleep
+sources:
+  - id: coach-shivani
+    location: Coach observation — PEM pacing protocol design
+    quote: 'The first 30 days for a PEM client is about STOPPING the crash cycle, not building capacity. The mitochondrial stack supports; pacing IS the intervention. Wrong exercise advice in the first month can cost months of recovery.'
+evidence_tier: strong
+notes_for_coach: |
+  PEM clients have often been gaslit by multiple providers and pushed
+  into harmful graded exercise. Trust + pacing-first framing is the
+  whole game. The mitochondrial stack supports but pacing is what
+  changes the trajectory. Track HRV objectively — clients often
+  underestimate their energy ceiling. Screen MCAS + POTS overlap;
+  long-COVID typically presents as the triad, not isolated PEM.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani
