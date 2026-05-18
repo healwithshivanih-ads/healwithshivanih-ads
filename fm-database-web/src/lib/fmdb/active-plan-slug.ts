@@ -55,14 +55,19 @@ export async function getActivePlanSlugForClient(
   };
 }
 
+// All window computations use UTC explicitly. Previously these helpers
+// constructed Dates with the local-timezone constructor (e.g.
+// `new Date(year, month, 1)` or `new Date("YYYY-MM-DDT00:00:00")` with no
+// trailing Z), which produced DIFFERENT window dates depending on the
+// host's timezone. Same client, same day, two different markers — sessions
+// fragmented between the IST-local Mac mini coach process and the
+// UTC-local Fly intake receiver. Fixed 2026-05-18.
+
 function _prospectMarker(): { slug: string; window_start: string; marker: string } {
   // For prospects (no published plan), anchor windows to the first of
   // each calendar month — predictable rotation, no plan_period_start
   // to base off.
-  const now = new Date();
-  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
-    .toISOString()
-    .slice(0, 10);
+  const monthStart = _utcMonthStart(new Date());
   return {
     slug: "prospect",
     window_start: monthStart,
@@ -73,12 +78,10 @@ function _prospectMarker(): { slug: string; window_start: string; marker: string
 function _computeWindowStart(planPeriodStart: string | undefined): string {
   if (!planPeriodStart) {
     // No plan_period_start known → fall back to month boundaries.
-    const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), 1)
-      .toISOString()
-      .slice(0, 10);
+    return _utcMonthStart(new Date());
   }
-  const start = new Date(`${planPeriodStart}T00:00:00`);
+  // Trailing `Z` forces UTC interpretation; never local.
+  const start = new Date(`${planPeriodStart}T00:00:00Z`);
   const now = new Date();
   const diffDays = Math.floor((now.getTime() - start.getTime()) / 86_400_000);
   if (diffDays < 0) {
@@ -88,4 +91,10 @@ function _computeWindowStart(planPeriodStart: string | undefined): string {
   const windowIdx = Math.floor(diffDays / WHATSAPP_WINDOW_DAYS);
   const anchor = new Date(start.getTime() + windowIdx * WHATSAPP_WINDOW_DAYS * 86_400_000);
   return anchor.toISOString().slice(0, 10);
+}
+
+function _utcMonthStart(now: Date): string {
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1))
+    .toISOString()
+    .slice(0, 10);
 }
