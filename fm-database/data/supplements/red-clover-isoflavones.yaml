@@ -1,0 +1,55 @@
+slug: red-clover-isoflavones
+display_name: Red Clover Isoflavones (Trifolium pratense)
+aliases:
+- red-clover
+- trifolium-pratense
+- trifolium
+- promensil
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+take_with_food: optional
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+linked_to_mechanisms:
+- estrogen-signaling
+linked_to_claims:
+- red-clover-isoflavones-reduce-hot-flashes
+notes_for_coach: Phytoestrogen-rich herb commonly used for hot flashes. Pizzorno notes
+  proven scientific efficacy for menopausal symptoms; effect varies by patient (equol-producer
+  status matters). Typical extract standardised to ~40 mg isoflavones (genistein,
+  daidzein, biochanin A, formononetin). Avoid in hormone-sensitive cancers, pregnancy,
+  lactation, anticoagulants.
+notes_for_client: A traditional herb that mimics gentle estrogen activity to ease
+  hot flashes and night sweats. Best discussed with your clinician if you have a history
+  of hormone-sensitive cancers.
+contraindications:
+  conditions:
+  - hormone-sensitive-breast-cancer
+  - hormone-sensitive-endometrial-cancer
+  - estrogen-sensitive-cancers
+  medications:
+  - warfarin
+  - tamoxifen
+  - oral-contraceptives
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Soy foods / isoflavones (pp 633)
+  quote: Black cohosh, red clover, soy, bioflavonoids, kava, and the proprietary formula
+    Women's Phase II have proven scientific efficacy for menopausal symptoms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

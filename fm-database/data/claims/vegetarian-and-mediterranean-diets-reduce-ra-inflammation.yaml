@@ -1,0 +1,36 @@
+slug: vegetarian-and-mediterranean-diets-reduce-ra-inflammation
+statement: A Mediterranean or vegetarian diet (rich in whole foods, vegetables, cold-water
+  fish, olive oil, berries; low in sugar, meat, refined starches, animal fats) reduces
+  inflammation, increases physical function, and improves vitality in RA over 12 weeks.
+evidence_tier: strong
+rationale: Population data and 12-week RCTs cited by Pizzorno. Mechanism via reduced
+  inflammatory food triggers, improved gut flora, lower antibody titres to Proteus
+  mirabilis, reduced SIBO, higher antioxidant intake.
+coaching_translation: A Mediterranean or vegetarian diet — heavy on plants, olive
+  oil, and small wild fish; light on red meat, sugar, and refined carbs — measurably
+  reduces RA inflammation in 12 weeks. Drop wheat, rye, and barley on a trial basis
+  even on the Mediterranean version.
+caveats:
+- Even on Mediterranean — trial gluten-free for 4-8 weeks given zonulin/RA link.
+- Vegetarian works best after a brief therapeutic fast as reset.
+- Eliminate nightshades on a trial basis if joint pain persists.
+linked_to_topics:
+- rheumatoid-arthritis
+- mediterranean-diet
+- vegetarian-diet
+linked_to_mechanisms:
+- chronic-inflammation
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Diet / The Mediterranean Diet (pp 884)
+  quote: RA patients experience reduced inflammation, increased physical function
+    and improved vitality after 12 weeks on a Mediterranean diet... a vegetarian diet
+    plus fish, poultry, low to moderate use of red meat, dairy, red wine, and olive
+    oil as the main lipid source.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

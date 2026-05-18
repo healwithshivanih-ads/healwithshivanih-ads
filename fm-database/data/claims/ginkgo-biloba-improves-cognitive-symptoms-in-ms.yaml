@@ -1,0 +1,33 @@
+slug: ginkgo-biloba-improves-cognitive-symptoms-in-ms
+statement: Ginkgo biloba extract (24% flavone glycosides, 6% terpenoids) 120-160 mg
+  three times daily improves Stroop test performance and subjective cognitive complaints
+  in MS patients with cognitive impairment.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites trial-level evidence in MS specifically; cognitive impairment
+  affects 40-50% of MS patients and there are no effective conventional therapies.
+  Effect size is modest but well-tolerated.
+coaching_translation: Cognitive fog is one of the hardest MS symptoms to treat. Ginkgo
+  (standardised extract) at 120 mg three times daily has a modest but real benefit
+  on attention and executive function.
+caveats:
+- Use standardised extract (24/6) — quality varies hugely.
+- Mild bleeding risk; pause before surgery and discuss with neurologist if on anticoagulants.
+- Effect is on cognitive symptoms, not on overall MS progression.
+linked_to_topics:
+- multiple-sclerosis
+- cognitive-decline
+linked_to_mechanisms:
+- demyelination
+linked_to_supplements:
+- ginkgo-biloba
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Botanical Medicines / Ginkgo biloba (pp 687)
+  quote: MS patients receiving GB have significantly improved performance on the Stroop
+    test (a measure of attention and executive function) and improved subjective cognitive
+    complaint deficits.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

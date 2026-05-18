@@ -1,0 +1,40 @@
+slug: blood-brain-barrier-permeability
+display_name: Blood-Brain Barrier Permeability
+aliases:
+- bbb-disruption
+- bbb-permeability
+- leaky-brain
+- impaired-blood-brain-barrier
+category: neurological
+summary: Disruption of the tight-junction integrity of the blood-brain barrier, allowing
+  peripheral inflammatory cells, cytokines, and antigens to enter the CNS. In MS,
+  matrix metalloproteinase-9 (MMP-9) is a key mediator — it digests basement membrane
+  collagens enabling T-lymphocyte trafficking into the brain and spinal cord. Elevated
+  serum MMP-9 correlates with MS disease activity.
+upstream_drivers:
+- inflammatory-cytokine-elevation
+- oxidative-damage
+- gut-permeability
+- chronic-stress
+downstream_effects:
+- demyelination
+- neuroinflammation
+- t-cell-trafficking-cns
+related_mechanisms:
+- demyelination
+- leaky-gut
+- oxidative-damage
+linked_to_topics:
+- multiple-sclerosis
+- neuroinflammation
+evidence_tier: strong
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Nutritional Supplements / Omega-3 (pp 685)
+  quote: MMPs play a role in transmigration of inflammatory cells into the CNS by
+    disrupting the blood-brain barrier. MS patients have elevated serum levels of
+    MMP-9.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,43 @@
+slug: gamma-oryzanol
+display_name: Gamma-Oryzanol (Rice Bran Extract)
+aliases:
+- gamma-orysanol
+- oryzanol
+- rice-bran-extract
+- ferulic-acid-esters
+category: other
+forms_available:
+- capsule
+- tablet
+timing_options:
+- morning
+- evening
+take_with_food: required
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+- menopausal-migraine
+linked_to_mechanisms:
+- estrogen-signaling
+linked_to_claims: []
+notes_for_coach: Mixture of ferulic acid esters from rice bran oil. Pizzorno includes
+  gamma-oryzanol among supplements for menopausal vasomotor symptoms and menopausal
+  migraine. Typical research dose 300 mg/day. Generally well tolerated.
+notes_for_client: A plant-derived antioxidant from rice bran that may ease menopausal
+  hot flashes and migraines.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Hot flashes / Menopausal migraine (pp 625)
+  quote: Vitamin E, Gamma-oryzanol... listed as natural interventions for hot flashes
+    and menopausal migraine.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

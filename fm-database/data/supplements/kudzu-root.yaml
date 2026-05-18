@@ -1,0 +1,50 @@
+slug: kudzu-root
+display_name: Kudzu Root (Pueraria lobata)
+aliases:
+- kudzu
+- pueraria-lobata
+- pueraria
+- ge-gen
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+take_with_food: optional
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+linked_to_mechanisms:
+- estrogen-signaling
+linked_to_claims: []
+notes_for_coach: Phytoestrogen-rich root (puerarin, daidzein, genistein) traditionally
+  used in Chinese medicine. Pizzorno cites kudzu among supplements supporting hot
+  flash relief. Standardised extracts deliver 40-100 mg isoflavones per dose. Avoid
+  in hormone-sensitive cancers and with anticoagulants.
+notes_for_client: A traditional Chinese herb that may help with hot flashes via mild
+  plant-estrogen activity.
+contraindications:
+  conditions:
+  - hormone-sensitive-breast-cancer
+  - hormone-sensitive-endometrial-cancer
+  medications:
+  - warfarin
+  - tamoxifen
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Hot Flashes (pp 625)
+  quote: Kudzu is listed among the natural interventions for hot flashes alongside
+    soy, fennel, celery, flaxseed.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

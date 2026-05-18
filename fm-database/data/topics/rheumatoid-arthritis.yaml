@@ -1,0 +1,60 @@
+slug: rheumatoid-arthritis
+display_name: Rheumatoid Arthritis (RA)
+aliases:
+- ra
+- seropositive-rheumatoid-arthritis
+- seronegative-rheumatoid-arthritis
+- polyarthritis-rheumatoid
+summary: A chronic inflammatory autoimmune polyarthritis affecting synovial joints
+  (especially hands, wrists, feet, ankles, knees) symmetrically and bilaterally. 0.3-1.0%
+  prevalence; women outnumber men 3:1; typical onset 40-50 years. Multifactorial —
+  autoimmune antibodies (RF, anti-CCP) form 10+ years before clinical onset; HLA-DR1/DR4
+  shared epitope in 80% of white RA patients; smoking raises risk 8-16x in shared-epitope
+  carriers. Dysbiosis (SIBO present in ~51%), leaky gut (elevated zonulin), and adverse
+  food reactions drive systemic inflammation that lands in synovium.
+common_symptoms:
+- joint-pain
+- morning-stiffness
+- fatigue
+- joint-swelling
+- weight-loss
+- low-grade-fever
+red_flags:
+- atlantoaxial instability with neurologic signs
+- septic arthritis presenting as flare
+- new vasculitis
+- pericarditis or pulmonary fibrosis
+related_topics:
+- autoimmune-thyroiditis
+- leaky-gut
+- celiac-disease
+- periodontal-disease
+key_mechanisms:
+- synovial-inflammation
+- citrullinated-protein-autoimmunity
+- leaky-gut
+- molecular-mimicry
+- chronic-inflammation
+coaching_scope_notes: 'Refer suspected RA to rheumatology immediately — early aggressive
+  DMARD therapy changes outcomes. Coaching role: anti-inflammatory diet (Mediterranean/vegetarian,
+  gluten-free trial), gut healing (5R), stress management, omega-3 + GLA support,
+  zinc/selenium repletion, smoking cessation.'
+clinician_scope_notes: Diagnosis via 2010 ACR/EULAR criteria (synovitis in ≥1 joint
+  + score ≥6 on four-tier rubric). Labs — RF, anti-CCP, ESR, CRP. Anti-CCP specificity
+  exceeds 95%. Rule out vitamin D deficiency, hemochromatosis, hypothyroidism, Lyme,
+  hepatitis B/C.
+notes_for_coach: 'Pizzorno emphasises the multi-factorial picture — antibodies precede
+  symptoms by 10+ years, smoking + HLA-DRB1 is the most reproducible risk driver,
+  and gut-dysbiosis-zonulin-leaky-gut-citrullination is the modifiable axis. Most
+  common food triggers in elimination trials: corn (56%), wheat (54%), pork (39%),
+  citrus (39%), dairy/oats (37%).'
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — General Considerations (pp 875-877)
+  quote: RA is the most common form of polyarthritis and is a chronic inflammatory
+    condition affecting the entire body but especially synovial membranes of joints.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

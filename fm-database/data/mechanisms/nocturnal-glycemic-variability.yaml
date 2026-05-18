@@ -1,0 +1,41 @@
+slug: nocturnal-glycemic-variability
+display_name: Nocturnal Glycemic Variability
+aliases:
+- nocturnal-hypoglycemia
+- nighttime-blood-sugar-swings
+- glucose-driven-awakenings
+category: metabolic
+summary: A drop in blood glucose during sleep triggers release of counter-regulatory
+  hormones (epinephrine, glucagon, cortisol, growth hormone) that fragment sleep architecture
+  and cause early awakening (typically 2-4 am). A common physiologic cause of sleep-maintenance
+  insomnia that is often misattributed to anxiety. Resolved by stabilising daytime
+  blood sugar and avoiding late-evening simple carbohydrates and alcohol.
+upstream_drivers:
+- reactive-hypoglycemia
+- insulin-resistance
+- evening-alcohol
+- late-simple-carbohydrates
+- skipped-evening-meal
+downstream_effects:
+- sleep-maintenance-disruption
+- early-morning-awakening
+- cortisol-spike-3am
+- insomnia
+related_mechanisms:
+- hpa-axis-dysregulation
+- insulin-resistance
+linked_to_topics:
+- insomnia
+- blood-sugar-regulation
+- sleep
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Nocturnal glucose levels (pp 569)
+  quote: Increased nocturnal blood glucose volatility is a major cause of sleep-maintenance
+    insomnia. A drop in blood glucose promotes awakening by release of glucose regulatory
+    hormones (epinephrine, glucagon, cortisol, and GH).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,34 @@
+slug: fish-oil-reduces-mmp9-and-cytokines-in-ms
+statement: High-dose fish oil (8 g/day providing ~2.9 g EPA + 1.9 g DHA) reduces serum
+  MMP-9 and pro-inflammatory cytokines (TNF-alpha, IFN-gamma, IL-1, IL-2) that drive
+  T-cell trafficking across the blood-brain barrier in MS.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites multiple human studies showing fish oil reduces MMP-9 secretion
+  from immune cells and lowers pro-inflammatory cytokine mRNA and protein. Mechanism
+  is well-established; clinical disability endpoints are still mixed.
+coaching_translation: Fish oil at therapeutic doses doesn't just calm general inflammation
+  — it specifically lowers the enzyme (MMP-9) that immune cells use to crack open
+  the blood-brain barrier and attack myelin.
+caveats:
+- Therapeutic dose for MS is 3000 mg EPA+DHA daily, much higher than general supplementation.
+- Pair with vitamin E (mixed tocopherols) to prevent oxidation.
+- Effect on disability progression is modest; use alongside conventional DMTs.
+linked_to_topics:
+- multiple-sclerosis
+linked_to_mechanisms:
+- blood-brain-barrier-permeability
+- inflammatory-cytokine-elevation
+linked_to_supplements:
+- fish-oil-epa-dha
+- fish-oil-omega-3
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Omega-3 Fatty Acids (pp 685)
+  quote: MS patients have elevated serum levels of MMP-9. Fish oil induces reduction
+    in MMP-9 secreted from unstimulated immune cells. Dose — 8 g/day (providing 2.9
+    g EPA and 1.9 g DHA).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

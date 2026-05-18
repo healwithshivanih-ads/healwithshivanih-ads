@@ -1,0 +1,37 @@
+slug: black-cohosh-and-soy-have-proven-efficacy-for-menopause
+statement: Black cohosh (Cimicifuga racemosa), red clover, soy isoflavones, bioflavonoids,
+  and kava have demonstrated scientific efficacy for menopausal vasomotor symptoms
+  — many women obtain symptom relief without HRT.
+evidence_tier: plausible_emerging
+rationale: Pizzorno groups these botanicals with documented vasomotor efficacy. Multiple
+  RCTs of standardised black cohosh extract (Remifemin) show modest hot-flash reduction;
+  meta-analyses for soy are positive but heterogeneous.
+coaching_translation: Many women can get good hot-flash relief from herbs and soy
+  alone — without ever needing HRT. Black cohosh, red clover, soy, and kava are the
+  best-evidenced.
+caveats:
+- Use only standardised extracts of black cohosh (e.g., Remifemin); rare hepatotoxicity
+  reports.
+- Kava is contraindicated with liver disease and on multiple medications; use under
+  clinician.
+- Effects modest — combine with diet, exercise, stress management.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+linked_to_mechanisms:
+- estrogen-signaling
+linked_to_supplements:
+- black-cohosh
+- red-clover-isoflavones
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Natural Hormones supplements section (pp 632)
+  quote: Black cohosh, red clover, soy, bioflavonoids, kava, and the proprietary formula
+    Women's Phase II have proven scientific efficacy for menopausal symptoms. Many
+    women need only nonhormonal supplements for symptom relief and never need HRT.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

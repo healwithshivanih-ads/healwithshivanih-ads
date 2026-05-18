@@ -1,0 +1,43 @@
+slug: tryptophan-kynurenine-shunt
+display_name: Tryptophan-Kynurenine Shunt
+aliases:
+- kynurenine-pathway
+- tryptophan-shunt
+- ido-pathway
+- tryptophan-oxygenase-induction
+category: neurological
+summary: Under chronic inflammation, elevated cortisol, or interferon stimulation,
+  the enzyme indoleamine 2,3-dioxygenase (IDO) and tryptophan oxygenase shunt dietary
+  tryptophan away from serotonin/melatonin synthesis into the kynurenine pathway.
+  The resulting depletion of CNS serotonin underlies depression in chronic inflammation,
+  autoimmune disease, and HPA-axis dysregulation. Niacin (30 mg) partially inhibits
+  the shunt and improves tryptophan availability for serotonin.
+upstream_drivers:
+- chronic-inflammation
+- hpa-axis-dysregulation
+- interferon-induction
+- cortisol-elevation
+downstream_effects:
+- low-serotonin
+- low-melatonin
+- depression
+- insomnia
+- neuroinflammation
+related_mechanisms:
+- serotonin-melatonin-sleep-axis
+- hpa-axis-dysregulation
+- chronic-inflammation
+linked_to_topics:
+- major-depressive-disorder
+- seasonal-affective-disorder
+evidence_tier: strong
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Stress and Adrenal Function (pp 14-15)
+  quote: Glucocorticoid effects on mood are related to induction of tryptophan oxygenase,
+    shunting tryptophan to kynurenine pathway at the expense of serotonin and melatonin
+    synthesis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

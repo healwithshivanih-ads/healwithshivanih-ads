@@ -1,0 +1,33 @@
+slug: full-spectrum-light-therapy-treats-seasonal-affective-disorder
+statement: Full-spectrum bright light therapy (typically 10,000 lux, 20-30 min morning
+  exposure) is a first-line treatment for seasonal affective disorder (SAD), normalising
+  melatonin/serotonin balance and circadian phase.
+evidence_tier: strong
+rationale: Decades of RCT and meta-analytic evidence support bright light for SAD;
+  Pizzorno's review reflects this. Mechanism via retinal-suprachiasmatic-pineal pathway,
+  advancing melatonin phase and boosting serotonergic tone.
+coaching_translation: For winter depression (SAD), 20-30 minutes of bright light first
+  thing in the morning works as well as antidepressants for most people. Pair with
+  vitamin D and outdoor time when sun is available.
+caveats:
+- 10,000 lux, ideally first thing in the morning, eyes open but not staring directly.
+- Combine with vitamin D and 5-HTP for additive effect (Pizzorno's framework).
+- Caution in bipolar — light therapy can precipitate hypomania.
+linked_to_topics:
+- seasonal-affective-disorder
+- major-depressive-disorder
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- vitamin-d
+- 5-htp
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Bipolar / SAD therapeutic approach (pp 10-11)
+  quote: Full-spectrum light therapy listed as treatment for bipolar and SAD; Vitamin
+    D listed for SAD and vitamin D deficiency.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

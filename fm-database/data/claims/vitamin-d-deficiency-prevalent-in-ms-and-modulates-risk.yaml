@@ -1,0 +1,36 @@
+slug: vitamin-d-deficiency-prevalent-in-ms-and-modulates-risk
+statement: 84% of MS patients are vitamin D deficient; higher early-life vitamin D
+  exposure (latitude, sun, maternal third-trimester status) is associated with lower
+  MS risk, and higher circulating vitamin D in women correlates with lower MS-related
+  disability.
+evidence_tier: strong
+rationale: Multiple large epidemiologic studies and Pizzorno's review establish the
+  latitude-MS gradient, season-of-birth effect, and the deficiency prevalence figure.
+  Vitamin D's immunomodulatory mechanisms (T-reg induction, IL-4 elevation) are well-characterised.
+coaching_translation: Vitamin D isn't optional for someone with MS — most patients
+  are deficient, and getting levels up may slow disease progression. Target blood
+  level 50-80 ng/mL of 25(OH)D.
+caveats:
+- Test 25(OH)D before dosing; target 50-80 ng/mL.
+- Typical therapeutic dose 2000-8000 IU D3 daily; some patients need more.
+- Pair with K2 if also supplementing for bone/cardiovascular.
+linked_to_topics:
+- multiple-sclerosis
+- vitamin-d-deficiency
+linked_to_mechanisms:
+- blood-brain-barrier-permeability
+- inflammatory-cytokine-elevation
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3-k2-combination-supplement
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Vitamin D (pp 686)
+  quote: Low vitamin D intake and low serum vitamin D may increase risk of MS. Among
+    MS patients, 84% are vitamin D deficient. Vitamin D decreases immune cell–mediated
+    inflammation and prevents disease.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

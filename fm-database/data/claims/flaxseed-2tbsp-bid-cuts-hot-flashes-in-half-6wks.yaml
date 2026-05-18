@@ -1,0 +1,34 @@
+slug: flaxseed-2tbsp-bid-cuts-hot-flashes-in-half-6wks
+statement: Two tablespoons of ground flaxseed twice daily (4 tbsp/day) reduces hot
+  flash frequency by ~50% and intensity by ~57% within 6 weeks in perimenopausal and
+  menopausal women.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites Mayo Clinic open-label trial of flaxseed in vasomotor symptoms.
+  Mechanism via lignans (matairesinol, secoisolariciresinol) converted by colon flora
+  to mammalian lignans with both estrogenic and antiestrogenic activity.
+coaching_translation: Ground flaxseed — 2 tablespoons twice a day, ground fresh and
+  mixed into smoothies or yoghurt — can cut hot flashes in half within 6 weeks for
+  many women.
+caveats:
+- Must be ground (whole seeds pass through undigested); grind fresh weekly and refrigerate.
+- 4 tbsp/day = ~30 g; provides fibre, ALA, and lignans.
+- Effect depends on colon flora converting lignans; gut health matters.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+linked_to_mechanisms:
+- estrogen-signaling
+- estrogen-metabolism
+linked_to_supplements:
+- flaxseed-oil
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Flaxseed (pp 633-634)
+  quote: Women who consume 2 tbsp of flaxseed b.i.d. may cut in half the number of
+    hot flashes within 6 weeks and reduce the intensity of hot flashes by 57%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

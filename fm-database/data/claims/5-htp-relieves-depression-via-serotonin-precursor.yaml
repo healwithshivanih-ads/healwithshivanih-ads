@@ -1,0 +1,36 @@
+slug: 5-htp-relieves-depression-via-serotonin-precursor
+statement: 5-hydroxytryptophan (5-HTP), the direct precursor of serotonin, increases
+  CNS serotonin and melatonin and has demonstrated antidepressant effect comparable
+  to standard medications in multiple trials — useful as monotherapy in mild-moderate
+  depression and adjunct in bipolar disorder.
+evidence_tier: plausible_emerging
+rationale: Pizzorno reviews trial evidence showing 5-HTP's superiority over tryptophan
+  (bypasses transport competition and rate-limiting hydroxylase). Mechanism well-characterised;
+  long-term safety data limited.
+coaching_translation: 5-HTP feeds your brain the direct ingredient for serotonin.
+  Useful for mild-to-moderate depression alone, or alongside other strategies. Start
+  low (50-100 mg), build up.
+caveats:
+- Not for use with SSRIs, MAOIs, or other serotonergic drugs — serotonin syndrome
+  risk.
+- Some patients relapse after one month — Pizzorno notes l-tyrosine may be a useful
+  follow-on.
+- Take with carbohydrate, not protein, for brain uptake.
+linked_to_topics:
+- major-depressive-disorder
+- seasonal-affective-disorder
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+- tryptophan-kynurenine-shunt
+linked_to_supplements:
+- 5-htp
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Therapeutic Approach (pp 22)
+  quote: 5-HTP increases brain serotonin and melatonin. Many depressed individuals
+    benefit; if 5-HTP effective but relapse after one month, switch to L-tyrosine.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

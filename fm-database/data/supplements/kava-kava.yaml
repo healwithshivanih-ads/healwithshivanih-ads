@@ -1,0 +1,56 @@
+slug: kava-kava
+display_name: Kava Kava (Piper methysticum)
+aliases:
+- kava
+- piper-methysticum
+- kavalactones
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- major-depressive-disorder
+- generalized-anxiety-disorder
+- insomnia
+linked_to_mechanisms:
+- gaba-receptor-modulation
+linked_to_claims: []
+notes_for_coach: Polynesian botanical with significant anxiolytic effect. Pizzorno
+  lists kava for anxiety component of depression. Standardised extract 60-120 mg kavalactones
+  twice daily. RARE but serious hepatotoxicity — banned in some countries. Use only
+  short-term, only with liver-enzyme monitoring, never with alcohol or hepatotoxic
+  drugs. Aqueous (traditional) preparations are safer than ethanol/acetone extracts.
+notes_for_client: A traditional anti-anxiety herb that needs careful clinical supervision
+  because of rare but serious liver risk. Not for use without baseline liver function
+  tests and not with alcohol.
+contraindications:
+  conditions:
+  - liver-disease
+  - hepatitis
+  - cirrhosis
+  medications:
+  - alcohol
+  - benzodiazepines
+  - hepatotoxic-drugs
+  - acetaminophen-high-dose
+  - statins
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — anxiety component (pp 9)
+  quote: Kava kava and Ginkgo listed as supplements for the anxiety component of affective
+    disorders.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

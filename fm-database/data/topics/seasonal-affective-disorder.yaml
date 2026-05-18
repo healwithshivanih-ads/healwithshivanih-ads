@@ -1,0 +1,43 @@
+slug: seasonal-affective-disorder
+display_name: Seasonal Affective Disorder (SAD)
+aliases:
+- sad
+- winter-depression
+- seasonal-depression
+summary: A regularly occurring winter depression frequently associated with summer
+  hypomania, driven by reduced winter daylight, altered melatonin/serotonin balance,
+  low vitamin D, and circadian phase delay. Responsive to full-spectrum (bright) light
+  therapy, vitamin D repletion, and 5-HTP.
+common_symptoms:
+- depression
+- fatigue
+- hypersomnia
+- carbohydrate-craving
+- weight-gain-winter
+- low-mood
+red_flags:
+- suicidal-ideation
+related_topics:
+- major-depressive-disorder
+- bipolar-disorder
+- vitamin-d-deficiency
+key_mechanisms:
+- serotonin-melatonin-sleep-axis
+- circadian-rhythm-disruption
+- vitamin-d-deficiency
+coaching_scope_notes: Bright (10,000 lux) full-spectrum light morning exposure 20-30
+  min daily; check vitamin D and supplement to 50-80 ng/mL.
+clinician_scope_notes: Refer for SSRI if severe; pair with light therapy for additive
+  effect.
+notes_for_coach: Pizzorno includes SAD as a primary affective disorder. Full-spectrum
+  light therapy + vitamin D + 5-HTP is the natural-medicine triad.
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — SAD (pp 11)
+  quote: Seasonal affective disorder (SAD) — regularly occurring winter depression
+    frequently associated with summer hypomania.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

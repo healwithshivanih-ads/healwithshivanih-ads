@@ -1,0 +1,35 @@
+slug: morning-cortisol-elevation-and-dst-mark-hpa-driven-depression
+statement: Elevated AM cortisol with decreased DHEA, abnormal nocturnal cortisol release,
+  and inadequate suppression on dexamethasone suppression test (DST) are biomarkers
+  of HPA-axis-driven depression that signal high-cortisol-state contribution to mood
+  symptoms.
+evidence_tier: strong
+rationale: DST is a long-established (though imperfect) marker of HPA dysregulation
+  in MDD. Pizzorno's review emphasises adrenal salivary cortisol/DHEA testing as a
+  coach-accessible alternative. Mechanism — high cortisol induces tryptophan oxygenase,
+  shunting tryptophan away from serotonin.
+coaching_translation: Depression caused by HPA-axis burnout looks distinctive — elevated
+  morning cortisol, low DHEA, often shifted to evening with abnormal nocturnal release.
+  This pattern responds especially well to stress management, adaptogens, and tryptophan/5-HTP.
+caveats:
+- Saliva cortisol-DHEA testing (4-point) is the coach-accessible version.
+- DST is clinician-administered.
+- Address upstream stress drivers in parallel — supplements alone insufficient.
+linked_to_topics:
+- major-depressive-disorder
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- tryptophan-kynurenine-shunt
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Stress and Adrenal Function (pp 14-15)
+  quote: Adrenal stress index measures cortisol and DHEA in saliva. Depression signs
+    — elevated morning cortisol and decreased DHEA. Cortisol elevation reflects disturbed
+    HPA axis and is the basis of the dexamethasone suppression test (DST).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

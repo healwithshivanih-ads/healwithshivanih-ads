@@ -1,0 +1,32 @@
+slug: smoking-multiplies-ra-risk-in-hla-drb1-carriers
+statement: Cigarette smoking increases seropositive RA risk 8-fold in carriers of
+  the HLA-DRB1 shared epitope and 16-fold in homozygous individuals; quitting reduces
+  risk of seropositive disease.
+evidence_tier: strong
+rationale: Multiple large case-control studies (e.g., EIRA) and Pizzorno's review
+  confirm this gene-environment interaction. Smoking citrullinates lung proteins,
+  generating neoantigens that drive anti-CCP production in shared-epitope carriers.
+coaching_translation: If you have a family history of RA — or if you carry the HLA-DRB1
+  gene variant — smoking is the single biggest modifiable risk factor. Quitting matters
+  most before RA appears, but also reduces severity once it has.
+caveats:
+- General smoking risk in RA is about 3-fold for men; the 8-16x figure is specific
+  to shared-epitope carriers.
+- Stopping smoking lowers risk of seropositive (anti-CCP/RF positive) disease specifically.
+linked_to_topics:
+- rheumatoid-arthritis
+- smoking-cessation
+linked_to_mechanisms:
+- citrullinated-protein-autoimmunity
+- molecular-mimicry
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Environmental Factors (pp 877)
+  quote: Smokers' RA risk is eightfold for carriers of shared epitope and sixteenfold
+    for homozygous individuals.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

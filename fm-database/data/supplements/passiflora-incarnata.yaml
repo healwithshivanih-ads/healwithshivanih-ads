@@ -1,0 +1,51 @@
+slug: passiflora-incarnata
+display_name: Passionflower (Passiflora incarnata)
+aliases:
+- passion-flower
+- maypop
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+- whole_food
+timing_options:
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+linked_to_mechanisms:
+- gaba-receptor-modulation
+- serotonin-melatonin-sleep-axis
+linked_to_claims: []
+notes_for_coach: Mild anxiolytic-sedative herb. Pizzorno lists Passiflora among botanicals
+  with sedative properties for insomnia. Typical dose 200-400 mg standardised extract
+  or 1-2 g dried herb as tea before bed. Often combined with valerian, hops, or lemon
+  balm. Generally well-tolerated; mild GI upset, drowsiness. Caution with sedatives,
+  alcohol, MAOIs.
+notes_for_client: A traditional calming herb used as a tea or capsule before bed to
+  ease anxiety-driven insomnia.
+contraindications:
+  conditions: []
+  medications:
+  - benzodiazepines
+  - barbiturates
+  - maois
+  - sedatives
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Botanicals with Sedative Properties (pp 572)
+  quote: Botanicals with sedative properties — Valeriana officinalis root, Passiflora
+    incarnata, Humulus lupulus, Scutellaria lateriflora, Matricaria chamomilla.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

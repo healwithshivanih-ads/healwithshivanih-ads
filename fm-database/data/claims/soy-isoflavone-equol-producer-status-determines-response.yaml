@@ -1,0 +1,36 @@
+slug: soy-isoflavone-equol-producer-status-determines-response
+statement: A woman's gut microflora ability to convert dietary daidzein into S-equol
+  is a major determinant of whether soy isoflavones relieve her menopausal symptoms;
+  non-equol-producers respond less consistently.
+evidence_tier: plausible_emerging
+rationale: Pizzorno's review and multiple studies attribute contradictory soy isoflavone
+  trial results to equol-producer-status mismatch. Mechanism — S-equol is the bioactive
+  estrogen-receptor-beta ligand; only ~30-50% of Western women have the flora to produce
+  it.
+coaching_translation: If soy isn't working for your hot flashes, it might be your
+  gut flora — not the soy. Test your equol-producer status, or work on colon flora
+  first.
+caveats:
+- Test for S-equol production via urine after a soy challenge.
+- Improve colon microflora (fermented foods, fibre, prebiotics) may convert non-producers.
+- Traditional Asian diet provides 50-150 mg soy isoflavones daily; Western women rarely
+  match this.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+- gut-estrogen-axis
+linked_to_mechanisms:
+- estrogen-signaling
+- gut-estrogen-axis
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Soy foods (pp 633)
+  quote: A woman's ability to produce equol determines her response to soy isoflavones.
+    Daidzein is converted to equol, a metabolite of daidzein, by colon bacterial flora.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

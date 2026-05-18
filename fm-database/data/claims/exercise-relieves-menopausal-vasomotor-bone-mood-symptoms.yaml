@@ -1,0 +1,34 @@
+slug: exercise-relieves-menopausal-vasomotor-bone-mood-symptoms
+statement: Regular exercise — 3.5+ hours per week — reduces hot flashes, slows bone
+  loss, improves cardiovascular markers (heart function, BP, cholesterol), and lifts
+  mood and energy in perimenopausal and postmenopausal women.
+evidence_tier: strong
+rationale: Multiple RCTs and Pizzorno's review show consistent benefit across symptom
+  domains. Mechanism is multifactorial — thermoregulatory adaptation, weight maintenance,
+  endorphin/serotonin upregulation, bone-loading stimulation.
+coaching_translation: Three and a half hours of exercise a week — broken into 30-45
+  minute sessions most days — is the single highest-leverage menopausal intervention.
+  It works on hot flashes, bones, heart, mood, sleep, and energy simultaneously.
+caveats:
+- Include both aerobic (cardiovascular) and resistance (bone loading) modalities.
+- Yoga, tai chi, and breathwork add stress-management benefits.
+- Heavy aerobic exercise alone in underweight women can sometimes worsen vasomotor
+  symptoms via thermoregulatory load.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+- osteoporosis
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Exercise (pp 634)
+  quote: Benefits of exercise for perimenopausal and postmenopausal women — relief
+    from hot flashes, decreased bone loss, improved heart function, reduced blood
+    pressure, decreased blood cholesterol levels, improved ability to deal with stress.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

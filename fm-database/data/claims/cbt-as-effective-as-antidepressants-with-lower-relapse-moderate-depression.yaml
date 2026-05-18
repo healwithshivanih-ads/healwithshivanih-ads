@@ -1,0 +1,36 @@
+slug: cbt-as-effective-as-antidepressants-with-lower-relapse-moderate-depression
+statement: Cognitive Behavioural Therapy (CBT) is as effective as antidepressants
+  for moderate depression and has a lower relapse rate; the five core tactics are
+  catching negative automatic thoughts, disputing them with evidence, generating alternative
+  explanations, avoiding rumination, and replacing pessimistic beliefs with empowering
+  ones.
+evidence_tier: strong
+rationale: Pizzorno's review reflects 30+ years of meta-analytic evidence comparing
+  CBT and SSRIs in moderate MDD. Mechanism via persistent restructuring of explanatory
+  style (Seligman) — neural and behavioural changes outlast medication discontinuation.
+coaching_translation: For moderate depression, CBT works as well as antidepressants
+  in the short term and leaves you with skills that protect against relapse for years
+  after — unlike medication, where stopping the drug often brings symptoms back.
+caveats:
+- Severe depression with suicidal ideation requires immediate psychiatric referral.
+- CBT requires a trained practitioner; self-help workbooks are a useful supplement
+  but not a substitute.
+- Effect builds over 12-20 weekly sessions.
+linked_to_topics:
+- major-depressive-disorder
+linked_to_mechanisms:
+- learned-helplessness
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Counseling / CBT (pp 13-14)
+  quote: CBT is as effective as antidepressants for moderate depression with lower
+    rate of relapse. Five basic tactics — recognize negative automatic thoughts, dispute
+    negative thoughts by focusing on contrary evidence, generate different explanation
+    to dispute negative thoughts, avoid rumination, question negative thoughts and
+    beliefs and replace with empowering positive thoughts.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

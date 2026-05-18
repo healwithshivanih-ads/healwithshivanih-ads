@@ -1,0 +1,35 @@
+slug: fish-oil-3g-epa-dha-12wks-for-ra
+statement: Fish oil at a minimum of 3 g combined EPA+DHA daily for at least 12 weeks
+  improves RA morning stiffness, tender and swollen joint counts, fatigue, and reduces
+  CRP, IL-1-beta, TNF-alpha, and leukotriene B4 — and reduces long-term NSAID use.
+evidence_tier: strong
+rationale: Multiple RCTs and meta-analyses support EPA+DHA at therapeutic doses for
+  RA. Pizzorno cites the 12-week, 3 g/day threshold below which effects are not apparent.
+  Mechanism via COX-2 competitive inhibition.
+coaching_translation: Fish oil works for RA — but only at a serious dose (3 grams
+  of EPA+DHA combined) and only after 3 months. Less than that and you'll likely conclude
+  it doesn't work.
+caveats:
+- Use third-party certified for purity (mercury, PCB).
+- 3 g EPA+DHA combined ≠ 3 g of fish oil; check label carefully.
+- Pair with vitamin E (mixed tocopherols) for oxidative stability.
+linked_to_topics:
+- rheumatoid-arthritis
+linked_to_mechanisms:
+- chronic-inflammation
+- synovial-inflammation
+linked_to_supplements:
+- fish-oil-epa-dha
+- fish-oil-omega-3
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Omega-3 Fatty Acids (pp 885)
+  quote: Fish oil must be consumed for at least 12 weeks at a minimum daily dose of
+    3 g of combined EPA and DHA before effects become apparent. Fish oil improves
+    morning stiffness and results in fewer tender or swollen joints and less joint
+    pain and fatigue.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

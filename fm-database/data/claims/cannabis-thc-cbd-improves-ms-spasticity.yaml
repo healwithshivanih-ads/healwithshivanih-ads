@@ -1,0 +1,33 @@
+slug: cannabis-thc-cbd-improves-ms-spasticity
+statement: A standardised THC + CBD combination (nabiximols/Marinol) significantly
+  improves patient-reported spasticity in MS, although objective spasticity measures
+  (Ashworth score) show no consistent change.
+evidence_tier: strong
+rationale: Multiple RCTs and a Cochrane-level evidence base support patient-reported
+  benefit. THC binds CB1/CB2 receptors in the CNS; CBD modulates THC metabolism and
+  has independent receptor binding. Pizzorno notes mild side effects and good tolerability.
+coaching_translation: For MS spasticity, a standardised THC-CBD combination (where
+  legal and prescribed) consistently helps the way patients *feel* their stiffness,
+  even though doctors' objective scoring doesn't always pick it up.
+caveats:
+- Controlled substance — prescription required in most jurisdictions.
+- Use under specialist (neurologist) supervision.
+- Side effects mild but include cognition/sedation; avoid driving until tolerance
+  assessed.
+linked_to_topics:
+- multiple-sclerosis
+linked_to_mechanisms:
+- demyelination
+linked_to_supplements: []
+out_of_scope_notes: Prescription-only in most jurisdictions; coaching scope is to
+  know the option exists and refer to neurologist.
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Botanical Medicines / Cannabis (pp 687-688)
+  quote: A combination of THC and CBD (Marinol), given for spasticity in MS, is well
+    tolerated and improves patient self-reports of spasticity... there is significant
+    improvement in patient-reported spasticity with the combination of THC and CBD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: citrate-supplements-prevent-recurrent-kidney-stones
+statement: Citrate supplementation (potassium citrate or dietary citrate from blackcurrant
+  juice) inhibits aggregation and growth of calcium oxalate and calcium phosphate
+  crystals and is first-line prophylaxis for recurrent stone formers.
+evidence_tier: strong
+rationale: Mechanistically — citrate binds urinary calcium reducing oxalate-binding
+  partner and raises urinary pH, both reducing crystal nucleation. Multiple RCTs and
+  meta-analyses support citrate's role in stone prevention.
+coaching_translation: Citrate is your body's natural kidney-stone preventive. Supplementing
+  with potassium citrate, or eating citrate-rich foods like lemon and blackcurrant
+  juice, helps stop new stones from forming.
+caveats:
+- Avoid grapefruit juice — paradoxically increases stone risk 44% in women.
+- Potassium citrate caution with potassium-sparing diuretics, ACE inhibitors, renal
+  insufficiency.
+- Lemonade studies mixed — likely the sugar content offsets benefit.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+linked_to_supplements:
+- potassium-citrate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Citrate (pp 593)
+  quote: Citrate inhibits aggregation and growth of Ca oxalate and Ca phosphate crystals.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,60 @@
+slug: multiple-sclerosis
+display_name: Multiple Sclerosis (MS)
+aliases:
+- ms
+- relapsing-remitting-ms
+- rrms
+- primary-progressive-ms
+- secondary-progressive-ms
+- demyelinating-disease
+summary: An autoimmune CNS disease characterised by multifocal destruction of myelin
+  sheaths and axons within the brain, spinal cord, and optic nerves. Most common disabling
+  neurologic disease of young/middle-aged adults in North America and Europe. Relapsing-remitting
+  in 85% of cases at onset; 50% transition to secondary progressive 5-15 years later.
+  Strongly modulated by early-life vitamin D, latitude, diet, and gut-immune-brain
+  axis factors.
+common_symptoms:
+- fatigue
+- numbness
+- tingling-numbness
+- weakness
+- blurred-vision
+- imbalance
+- cognitive-decline
+- depression
+- urinary-urgency
+- constipation
+red_flags:
+- new neurological deficit
+- vision loss
+- bowel or bladder incontinence
+- progressive disability
+related_topics:
+- autoimmune-thyroiditis
+- vitamin-d-deficiency
+- environmental-toxin-load
+key_mechanisms:
+- demyelination
+- blood-brain-barrier-permeability
+- molecular-mimicry
+- thyroid-autoimmunity
+coaching_scope_notes: Coaches refer suspected MS to a neurologist immediately. Coaching
+  role is supportive — diet (Swank/low-saturated-fat), vitamin D status, omega-3,
+  stress management, mind-body practices.
+clinician_scope_notes: Diagnosis requires neurologist via MRI + CSF (oligoclonal bands,
+  IgG index) + evoked potentials. Differential includes B12 deficiency, Lyme, vascular
+  malformations, spinal cord compression.
+notes_for_coach: Pizzorno emphasises early-life vitamin D (maternal third-trimester
+  levels predict child MS risk), Swank low-saturated-fat diet (<15g/day), and stress
+  management (new lesions appear 8 weeks after major life stressors).
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — General Considerations (pp 678-679)
+  quote: MS is an inflammatory disorder of multifocal destruction of myelin sheaths
+    and axons within the brain, spinal cord, and optic nerves... most common disabling
+    neurologic disease of young and middle-aged adults in North America and Europe.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

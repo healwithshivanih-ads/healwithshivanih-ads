@@ -1,0 +1,53 @@
+slug: potassium-citrate
+display_name: Potassium Citrate
+aliases:
+- k-citrate
+- urocit-k
+- tripotassium-citrate
+category: mineral
+forms_available:
+- tablet
+- capsule
+- powder
+timing_options:
+- morning
+- evening
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+linked_to_claims:
+- citrate-supplements-prevent-recurrent-kidney-stones
+notes_for_coach: Alkalinizing salt that raises urinary citrate (the natural Ca-oxalate
+  inhibitor) and urinary pH. First-line prophylaxis for recurrent Ca-oxalate and uric
+  acid stones. Typical dose 30-60 mEq/day in divided doses with meals. GI upset common
+  — use slow-release form. Caution with potassium-sparing diuretics, ACE inhibitors,
+  K-elevating drugs, renal insufficiency.
+notes_for_client: An alkalinizing supplement that raises citrate in your urine — citrate
+  stops kidney stones from forming. Always taken with meals to avoid stomach upset.
+contraindications:
+  conditions:
+  - hyperkalemia
+  - acute-renal-failure
+  - severe-renal-insufficiency
+  medications:
+  - potassium-sparing-diuretics
+  - ace-inhibitors
+  - angiotensin-receptor-blockers
+  life_stages: []
+evidence_tier: strong
+typical_dose_range: {}
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Therapeutic Approach / supplements (pp 596)
+  quote: Citrate inhibits aggregation and growth of Ca oxalate and Ca phosphate crystals.
+    Citrate supplements listed among preventive interventions for calcium stones.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

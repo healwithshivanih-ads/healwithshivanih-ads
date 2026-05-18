@@ -1,0 +1,35 @@
+slug: zinc-inversely-correlated-with-ra-disease-activity
+statement: Plasma zinc levels are inversely correlated with ESR, CRP, IL-1-beta, and
+  TNF-alpha in RA patients; zinc deficiency is common (worsened by corticosteroid
+  use which depletes zinc).
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites multiple observational studies. Mechanism via Cu-Zn SOD
+  cofactor role and delta-6-desaturase (rate-limiting in omega-3 conversion). Zinc
+  supplementation alone has modest effect; works best as part of multi-nutrient protocol.
+coaching_translation: Zinc is depleted in most RA patients, especially those on corticosteroids.
+  Plasma zinc tracks inversely with inflammation markers — so repleting it is part
+  of the protocol.
+caveats:
+- Zinc picolinate, monomethionine, or citrate are preferred forms.
+- Maintain 10:1 Zn:Cu ratio to avoid copper deficiency.
+- Single-nutrient zinc has only slight therapeutic effect; combine with selenium,
+  B6, B5, antioxidants.
+linked_to_topics:
+- rheumatoid-arthritis
+linked_to_mechanisms:
+- chronic-inflammation
+- oxidative-damage
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Zinc (pp 886)
+  quote: Plasma Zn levels are inversely correlated with ESR, CRP, IL-1b, and TNF-a.
+    Patients using corticosteroids may be Zn deficient because steroids decrease plasma
+    Zn and increase urinary Zn.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

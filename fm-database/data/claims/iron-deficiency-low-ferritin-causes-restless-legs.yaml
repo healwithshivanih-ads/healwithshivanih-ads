@@ -1,0 +1,32 @@
+slug: iron-deficiency-low-ferritin-causes-restless-legs
+statement: Low serum ferritin (below 35 mcg/L) is a common cause of restless legs
+  syndrome (RLS) and nocturnal myoclonus, particularly in the elderly. Iron repletion
+  (30 mg elemental iron bid between meals, or ferrous sulfate 200 mg tid) reduces
+  symptoms within ~2 months.
+evidence_tier: strong
+rationale: Pizzorno cites multiple studies showing low ferritin precedes anemia in
+  RLS. Iron is a cofactor for tyrosine hydroxylase (dopamine synthesis) in striatal
+  neurons; iron deficiency drives dopaminergic dysfunction.
+coaching_translation: If you have restless legs, check your ferritin — not just hemoglobin.
+  Below 35 is a common cause, fixable with iron supplementation in about 2 months.
+caveats:
+- Always test ferritin first; iron is harmful in iron-loaded patients.
+- 30 mg elemental Fe bid between meals; if GI upset, switch to with-meal tid dosing.
+- Re-check ferritin at 8-12 weeks; target above 50 mcg/L.
+linked_to_topics:
+- insomnia
+- sleep
+- restless-legs-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Restless Legs Syndrome (pp 571-572)
+  quote: If serum ferritin is below 35 mg/L, try 30 mg Fe bound to succinate or fumarate
+    b.i.d. between meals. Fe deficiency, with or without anemia, is a contributor
+    to RLS in the elderly, and Fe supplements can produce significant improvement.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

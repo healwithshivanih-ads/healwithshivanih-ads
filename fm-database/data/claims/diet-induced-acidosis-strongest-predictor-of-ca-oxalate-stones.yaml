@@ -1,0 +1,36 @@
+slug: diet-induced-acidosis-strongest-predictor-of-ca-oxalate-stones
+statement: Diet-induced metabolic acidosis (from excess sulfur-containing amino acids
+  in animal protein and high salt intake) is one of the strongest dietary predictors
+  of Ca-oxalate and uric-acid stone formation — it increases urinary calcium (via
+  bone resorption), reduces urinary citrate, and raises urinary uric acid.
+evidence_tier: strong
+rationale: Pizzorno cites recent literature placing acidosis as the strongest single
+  dietary predictor. Mechanism — sulfur-amino-acid catabolism produces acid load →
+  renal bone-resorbing buffering → urinary Ca; citrate conserved to buffer → urinary
+  citrate drops.
+coaching_translation: Heavy animal protein + heavy salt makes your urine acidic, which
+  makes your bones leak calcium into your urine AND lowers the citrate that normally
+  stops stones from forming. An alkaline-leaning diet (lots of plants) is one of the
+  strongest preventives.
+caveats:
+- Doesn't mean strict vegan — moderate animal protein is fine.
+- Sulfur-rich amino acids in cysteine/methionine drive most of the acid load.
+- Salt intake matters independently — high salt raises urinary calcium.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Alkaline diet (pp 593-594)
+  quote: Diet-induced acidosis has been shown in recent research to be the strongest
+    predictor of Ca oxalate and uric acid stones. Excessive consumption of acid-forming
+    foods, such as those containing amino acids rich in sulfur, causes increased breakdown
+    of bone resulting in increased excretion of Ca in the urine.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

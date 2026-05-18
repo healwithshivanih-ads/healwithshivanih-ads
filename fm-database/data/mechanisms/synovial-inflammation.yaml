@@ -1,0 +1,44 @@
+slug: synovial-inflammation
+display_name: Synovial Membrane Inflammation
+aliases:
+- synovitis
+- joint-synovitis
+- pannus-formation
+- synovial-hyperplasia
+category: immune
+summary: Chronic inflammation of the synovial membrane lining the joints, characterised
+  by lymphocyte and macrophage infiltration, pannus formation (invasive synovial tissue),
+  COX-2 overexpression, and elevated TNF-alpha, IL-1-beta, and IL-6. In RA, immune
+  complexes from circulating anti-CCP antibodies, microbial cross-reactive antibodies
+  (Proteus, Porphyromonas), and dietary antigens deposit in synovial fluid, recruiting
+  immune cells that erode cartilage and subchondral bone.
+upstream_drivers:
+- citrullinated-protein-autoimmunity
+- leaky-gut
+- molecular-mimicry
+- oxidative-damage
+- chronic-stress
+downstream_effects:
+- joint-pain
+- joint-swelling
+- morning-stiffness
+- bone-erosion
+- cartilage-destruction
+- joint-deformity
+related_mechanisms:
+- citrullinated-protein-autoimmunity
+- chronic-inflammation
+- molecular-mimicry
+linked_to_topics:
+- rheumatoid-arthritis
+evidence_tier: strong
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — General Considerations (pp 875-876)
+  quote: Affected joints are warm, tender, and swollen with prolonged morning stiffness.
+    As RA progresses, bony erosion, subluxations, dislocations, and contractures develop,
+    causing joint deformities, particularly in hands and feet.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

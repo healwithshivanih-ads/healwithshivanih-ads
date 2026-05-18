@@ -1,0 +1,43 @@
+slug: demyelination
+display_name: Demyelination of CNS Axons
+aliases:
+- myelin-destruction
+- myelin-loss
+- plaque-formation
+- white-matter-injury
+category: neurological
+summary: Immune-mediated destruction of the myelin sheath surrounding CNS axons, with
+  relative sparing of (but also damage to) the underlying axons. Driven by T-lymphocyte
+  recognition of CNS antigens, macrophage release of cytokines and free radicals,
+  and complement-mediated antibody damage. Areas of demyelination are termed plaques
+  and impair nerve conduction in specific functional pathways.
+upstream_drivers:
+- molecular-mimicry
+- blood-brain-barrier-permeability
+- oxidative-damage
+- inflammatory-cytokine-elevation
+- vitamin-d-deficiency
+downstream_effects:
+- impaired-nerve-conduction
+- motor-weakness
+- sensory-loss
+- visual-disturbance
+- cognitive-decline
+- fatigue
+related_mechanisms:
+- molecular-mimicry
+- oxidative-damage
+- blood-brain-barrier-permeability
+linked_to_topics:
+- multiple-sclerosis
+evidence_tier: strong
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Pathogenesis (pp 681)
+  quote: T lymphocytes, macrophages, and plasma cells cause destruction during development
+    of acute plaques... mediators of tissue damage include macrophages releasing soluble
+    inflammatory mediators, cytokines, and free radicals.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

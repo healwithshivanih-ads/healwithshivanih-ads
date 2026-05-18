@@ -1,0 +1,34 @@
+slug: gla-1400mg-improves-ra-pain-and-function
+statement: Gamma-linolenic acid (GLA) from evening primrose, blackcurrant, or borage
+  oil at 1.4 g/day produces statistically significant improvements in RA pain and
+  global function across multiple RCTs.
+evidence_tier: strong
+rationale: Two recent reviews pooled 3+ RCTs and found GLA improvements stronger than
+  fish oil for RA pain and function. Mechanism via conversion to dihomo-gamma-linolenic
+  acid and 1-series anti-inflammatory prostaglandins.
+coaching_translation: GLA from evening primrose or borage oil (1.4 grams a day, taken
+  with omega-3 to balance) has stronger trial data for RA pain than fish oil alone.
+caveats:
+- Take alongside omega-3 (fish/flax oil) — GLA alone without omega-3 can shift toward
+  pro-inflammatory pathways in some patients.
+- Borage oil contains GLA at higher concentration than EPO; either is fine.
+- Allow 8-12 weeks for full effect.
+linked_to_topics:
+- rheumatoid-arthritis
+linked_to_mechanisms:
+- chronic-inflammation
+- synovial-inflammation
+linked_to_supplements:
+- gamma-linolenic-acid-gla
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Nutritional Supplements / GLA (pp 885)
+  quote: An effective dose of GLA is 1.4 g/day. Two recent reviews found statistically
+    significant improvements in pain and global function for GLA from data pooled
+    from three randomized controlled trials. Conclusions in favor of GLA were even
+    stronger than those for fish oil.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

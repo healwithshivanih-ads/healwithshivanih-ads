@@ -1,0 +1,33 @@
+slug: exercise-as-effective-as-antidepressants-for-mild-moderate-depression
+statement: Regular exercise (aerobic plus resistance training) is as effective as
+  antidepressants for mild-to-moderate depression, increases endorphins (directly
+  correlated with mood), normalises HPA-axis cortisol patterns, and reduces relapse
+  compared with medication.
+evidence_tier: strong
+rationale: Pizzorno cites the SMILE trial and similar comparative effectiveness data.
+  Mechanism multifactorial — endorphin release, BDNF upregulation, HPA-axis normalisation,
+  sleep improvement, social engagement.
+coaching_translation: Exercise is genuinely one of the most reliable antidepressants
+  we have. Aerobic plus resistance, 4-5 days a week, builds up over 4-6 weeks and
+  protects against relapse better than medication alone.
+caveats:
+- Build gradually; for severely depressed patients, even a 10-minute walk is a meaningful
+  start.
+- Pair with morning sunlight where possible for added serotonin/circadian effect.
+- Resistance training adds independent benefit to aerobic.
+linked_to_topics:
+- major-depressive-disorder
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- serotonin-melatonin-sleep-axis
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Exercise / Lifestyle (pp 17)
+  quote: Exercise increases endorphins, which are directly correlated with mood. Sedentary
+    men are at increased risk... regular aerobic exercise reduces depressive symptoms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

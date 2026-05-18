@@ -1,0 +1,34 @@
+slug: sibo-correlates-with-ra-severity
+statement: Approximately 51% of RA patients have small intestinal bacterial overgrowth
+  (SIBO); the degree of SIBO correlates with severity of RA symptoms and disease activity.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites multiple studies linking dysbiosis (less bifidobacteria,
+  less Bacteroides-Porphyromonas-Prevotella), SIBO prevalence, and disease activity
+  in RA. Mechanistic link via endotoxin translocation, immune complex formation, and
+  synovial deposition is well-supported.
+coaching_translation: Half of RA patients have small intestinal bacterial overgrowth
+  — and the more they have, the worse their joints. Gut-healing is part of the RA
+  protocol, not optional.
+caveats:
+- Hydrogen-methane breath test confirms SIBO.
+- Address with elimination diet, probiotics, antimicrobials (under clinician), then
+  5R.
+- Periodontal disease is also part of total pathogen burden — treat oral health too.
+linked_to_topics:
+- rheumatoid-arthritis
+- sibo
+- leaky-gut
+linked_to_mechanisms:
+- leaky-gut
+- citrullinated-protein-autoimmunity
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Dysbiosis and SIBO (pp 879-880)
+  quote: Many RA patients (approximately 51%) have SIBO. The degree of SIBO correlates
+    with the severity of symptoms and disease activity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

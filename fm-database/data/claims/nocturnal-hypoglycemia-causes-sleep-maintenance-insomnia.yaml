@@ -1,0 +1,35 @@
+slug: nocturnal-hypoglycemia-causes-sleep-maintenance-insomnia
+statement: Nocturnal blood glucose volatility — particularly a 2-4 am drop in blood
+  glucose — triggers release of counter-regulatory hormones (epinephrine, cortisol,
+  glucagon, GH) that cause early awakening, and is a major treatable cause of sleep-maintenance
+  insomnia.
+evidence_tier: plausible_emerging
+rationale: Well-supported physiologic mechanism cited by Pizzorno. Continuous glucose
+  monitor data confirms the 2-4 am cortisol spike in patients with reactive hypoglycemia.
+  Often misattributed to anxiety alone.
+coaching_translation: Waking up around 2-4 am — eyes wide open, mind racing — is often
+  blood sugar, not anxiety. Stabilise daytime glucose, avoid evening alcohol and refined
+  carbs, eat a small protein-fat snack before bed.
+caveats:
+- Look for evening alcohol, late simple carbs, or skipped dinner as triggers.
+- Trial small bedtime snack (e.g., handful of nuts, hard-boiled egg).
+- CGM monitoring can confirm pattern.
+linked_to_topics:
+- insomnia
+- sleep
+- blood-sugar-regulation
+linked_to_mechanisms:
+- nocturnal-glycemic-variability
+- hpa-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Nocturnal glucose levels (pp 569)
+  quote: Increased nocturnal blood glucose volatility is a major cause of sleep-maintenance
+    insomnia. A drop in blood glucose promotes awakening by release of glucose regulatory
+    hormones.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

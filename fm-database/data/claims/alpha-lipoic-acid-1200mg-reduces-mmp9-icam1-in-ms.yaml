@@ -1,0 +1,35 @@
+slug: alpha-lipoic-acid-1200mg-reduces-mmp9-icam1-in-ms
+statement: Alpha-lipoic acid 1200 mg once daily achieves measurable serum levels associated
+  with lower MMP-9 and soluble ICAM-1 in relapsing-remitting MS — markers of reduced
+  T-lymphocyte trafficking into the CNS.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites a clinical study showing dose-dependent pharmacokinetics
+  — 600 mg bid is barely measurable, while 1200 mg once daily reaches therapeutic
+  serum levels. Surrogate marker effects (MMP-9, ICAM-1) are robust; clinical disability
+  endpoints still need larger trials.
+coaching_translation: Alpha-lipoic acid is one of the few antioxidants that crosses
+  the blood-brain barrier and regenerates glutathione, vitamin C, and vitamin E. Dose
+  matters — 1200 mg once a day works far better than 600 mg twice a day for blood
+  levels.
+caveats:
+- Take on empty stomach for absorption; take with meal if GI upset.
+- May lower blood sugar; monitor in diabetics on insulin/sulfonylureas.
+- Animal model evidence uses 10-100 mg/kg/day, higher than human dosing.
+linked_to_topics:
+- multiple-sclerosis
+linked_to_mechanisms:
+- oxidative-damage
+- blood-brain-barrier-permeability
+linked_to_supplements:
+- alpha-lipoic-acid
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Antioxidants / Alpha-Lipoic Acid (pp 687)
+  quote: Alpha-lipoic acid given at 1200 mg once daily showed much higher serum levels.
+    Higher alpha-lipoic acid serum levels was associated with lower MMP-9 levels and
+    lower soluble intercellular adhesion molecule 1 (ICAM-1) levels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

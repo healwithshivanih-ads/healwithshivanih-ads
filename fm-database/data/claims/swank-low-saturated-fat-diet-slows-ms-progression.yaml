@@ -1,0 +1,35 @@
+slug: swank-low-saturated-fat-diet-slows-ms-progression
+statement: A diet with saturated fat below 15 g/day, supplemented with cod liver oil,
+  reduces relapse rate and mortality in MS patients followed over decades (Swank's
+  long-term cohort).
+evidence_tier: plausible_emerging
+rationale: Dr Roy Swank's 34-year observational cohort consistently showed lower MS
+  progression in adherent patients. Pizzorno endorses the diet pattern; modern follow-up
+  open-label studies (low-SFA + omega-3 + B-complex + vitamin C) show reduced relapse
+  rate and disability over 2 years. RCT-level evidence is limited.
+coaching_translation: Eating mostly plants, small wild fish, and very little saturated
+  animal fat (less than 15 grams a day — that's about a tablespoon of butter) is one
+  of the few diets with decades of real-world data showing it slows MS down.
+caveats:
+- Long-term adherence is the hardest part — Swank's strongest data are from patients
+  who stuck with it for years.
+- Substitute concentrated fish oil for cod liver oil to avoid vitamin A toxicity.
+- Eliminate dairy >= 1% butterfat; no red meat year 1; 3 oz/week thereafter.
+linked_to_topics:
+- multiple-sclerosis
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- demyelination
+linked_to_supplements:
+- fish-oil-epa-dha
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Diet Therapy / Dr. Roy Swank Low-Saturated-Fat Diet
+    (pp 684)
+  quote: A diet low in saturated fats over a long period can retard disease process,
+    reduce number of attacks, and decrease mortality rate.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

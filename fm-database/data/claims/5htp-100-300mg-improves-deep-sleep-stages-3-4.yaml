@@ -1,0 +1,36 @@
+slug: 5htp-100-300mg-improves-deep-sleep-stages-3-4
+statement: 5-hydroxytryptophan (5-HTP) at 100-300 mg taken 30-45 minutes before bed
+  increases REM sleep by ~25% and deepens non-REM stages 3 and 4 without increasing
+  total sleep time — outperforming l-tryptophan for sleep promotion and maintenance.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites trial data showing 5-HTP is more bioavailable than tryptophan
+  (bypasses transport competition and rate-limiting tryptophan hydroxylase). Multiple
+  small RCTs support sleep architecture improvements; long-term safety still being
+  defined.
+coaching_translation: 5-HTP works better than plain tryptophan for sleep — it skips
+  a couple of conversion steps and reaches your brain more directly. Start low (100
+  mg), build up over 3 days, take 30-45 minutes before bed.
+caveats:
+- Start at 100 mg for at least 3 days before increasing.
+- Not for use with SSRIs, MAOIs, or other serotonergic drugs — serotonin syndrome
+  risk.
+- Take with carbohydrate, not protein, to ensure brain uptake.
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- 5-htp
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — 5-HTP (pp 570)
+  quote: 5-HTP increases REM sleep (by 25%) and increases deep sleep stages 3 and
+    4 without increasing total sleep time. 5-HTP dose for sleep promotion is 100 to
+    300 mg 30 to 45 minutes before retiring.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

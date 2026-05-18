@@ -1,0 +1,35 @@
+slug: magnesium-b6-prevents-oxalate-stone-recurrence
+statement: Magnesium supplementation alone prevents Ca-oxalate stone recurrence; magnesium
+  plus vitamin B6 (pyridoxine) is even more effective. Both increase oxalate solubility
+  and reduce endogenous oxalate production.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites trial-level data on Mg and Mg+B6 in stone prevention. Mechanism
+  — Mg increases Ca-oxalate solubility; B6 acts as cofactor for glyoxylate-to-glycine
+  conversion, reducing endogenous oxalate from glyoxylate.
+coaching_translation: Magnesium plus vitamin B6 is one of the best-supported supplement
+  combinations for preventing kidney stones. Mg keeps oxalate dissolved in your urine,
+  B6 stops your liver from making as much oxalate.
+caveats:
+- Mg citrate or glycinate preferred for absorption; Mg oxide poorly absorbed.
+- B6 dose 50-100 mg/day typically; chronic >200 mg risks peripheral neuropathy.
+- Test for adequate intake of both before supplementing high-dose.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+linked_to_supplements:
+- magnesium-citrate
+- magnesium-glycinate
+- vitamin-b6-pyridoxine
+- pyridoxine-b6
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Nutrients / Mg and B6 (pp 594)
+  quote: Supplemental Mg alone prevents recurrences. Use of Mg plus vitamin B6 has
+    even greater effect.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

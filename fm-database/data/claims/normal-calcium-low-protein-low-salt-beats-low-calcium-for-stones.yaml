@@ -1,0 +1,34 @@
+slug: normal-calcium-low-protein-low-salt-beats-low-calcium-for-stones
+statement: A normal-calcium (1200 mg/day), low-animal-protein, low-salt diet reduces
+  oxalate excretion and recurrent stone incidence compared to a low-calcium (400 mg/day)
+  diet in men with recurrent calcium-oxalate stones.
+evidence_tier: strong
+rationale: Borghi et al RCT (NEJM 2002) — Pizzorno cites this counterintuitive finding.
+  Mechanism — dietary calcium binds intestinal oxalate preventing absorption; low-calcium
+  diets paradoxically increase free oxalate uptake.
+coaching_translation: Cutting calcium for kidney stones is the old advice and it's
+  wrong. Keep normal calcium (1200 mg from food) — it traps oxalate in your gut so
+  it never reaches your urine. Instead cut animal protein and salt.
+caveats:
+- Calcium from food (not supplements) is preferred — supplements without food can
+  paradoxically raise stone risk.
+- Take Ca with oxalate-rich meals to bind oxalate in the gut.
+- Postmenopausal women on Ca carbonate + vitamin D had 17% increased stone risk in
+  WHI — context matters.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Oxalates (pp 593)
+  quote: In men with recurrent Ca oxalate stones, reduction in oxalate excretion and
+    incidence of recurrent stones arose from a normal-Ca (1200 mg/day), low-animal-protein,
+    low-salt diet compared with a low-Ca diet (400 mg/day).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

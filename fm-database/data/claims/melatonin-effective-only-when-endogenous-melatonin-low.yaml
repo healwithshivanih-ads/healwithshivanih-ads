@@ -1,0 +1,36 @@
+slug: melatonin-effective-only-when-endogenous-melatonin-low
+statement: Supplemental melatonin (3 mg at bedtime) produces a sedative effect only
+  when endogenous pineal melatonin is low — most useful in the elderly, in jet lag,
+  and in shift work; ineffective when baseline melatonin is normal.
+evidence_tier: strong
+rationale: Pizzorno summarises the clinical pattern — melatonin acts as a chronobiotic,
+  not a sedative per se. RCTs show effect concentrated in low-melatonin populations
+  (elderly, blind, transmeridian travellers). Mechanism via MT1/MT2 receptor binding
+  when receptors are not already saturated.
+coaching_translation: Melatonin isn't a sleeping pill for everyone. It only works
+  when your own melatonin is low — typically in elderly people, with jet lag, or shift
+  work. For someone with normal melatonin, it does very little.
+caveats:
+- 3 mg at bedtime; lower (0.3-1 mg) often equally effective.
+- Long-term high-dose use can disrupt natural circadian rhythm.
+- Combine with light hygiene (morning light + evening dimming) for chronobiotic effect.
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- melatonin
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Melatonin (pp 571)
+  quote: Sleep effects of melatonin are apparent only if melatonin levels are low.
+    Melatonin is not like a sleeping pill or 5-HTP; it produces a sedative effect
+    only when melatonin levels are low. It is most effective for insomnia in elderly,
+    in whom low melatonin is common; dose is 3 mg at bedtime.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

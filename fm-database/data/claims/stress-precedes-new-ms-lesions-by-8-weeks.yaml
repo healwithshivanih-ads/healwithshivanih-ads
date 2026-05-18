@@ -1,0 +1,36 @@
+slug: stress-precedes-new-ms-lesions-by-8-weeks
+statement: Major life conflicts and routine disruptions are followed by an increased
+  risk of developing new brain lesions in MS patients approximately 8 weeks later;
+  stress management training reduces this effect.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites prospective observational data linking psychosocial stress
+  at one timepoint to new MRI lesions at a later timepoint. Stress management RCTs
+  in MS show reductions in anxiety and somatization. Mechanistic plausibility via
+  HPA-axis and immune effects is strong.
+coaching_translation: New MS lesions tend to show up on MRI about 8 weeks after a
+  stressful life event — not the same day. Stress management isn't optional for MS;
+  it's a clinical lever.
+caveats:
+- Stress at a single timepoint doesn't reliably predict an individual patient's exacerbation
+  — it's a population-level signal.
+- Coping style and distraction moderate the effect; emotional preoccupation amplifies
+  it.
+- Effective approaches include exercise, yoga, tai chi, meditation, massage.
+linked_to_topics:
+- multiple-sclerosis
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- inflammatory-cytokine-elevation
+- blood-brain-barrier-permeability
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Other Considerations / Stress (pp 688-689)
+  quote: Increased conflicts and disruptions in routine are followed by increased
+    risk of developing new brain lesions 8 weeks later. Stress management training
+    decreases anxiety and somatization.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: therapeutic-fast-3-5-days-reduces-ra-flare
+statement: A 3 to 5-day therapeutic fast during acute RA flares reduces joint pain,
+  swelling, and morning stiffness while increasing serum DHEA-S and decreasing IL-6,
+  CRP, and ESR.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites controlled fasting trials in RA showing reproducible reductions
+  in inflammatory markers and disease activity. Mechanism via removing dietary antigens,
+  reducing intestinal permeability, and shifting cortisol/DHEA balance.
+coaching_translation: A short therapeutic fast (3-5 days, juice + broth + water under
+  clinical supervision) can break an RA flare and reset inflammation — but should
+  always transition into a structured elimination/Mediterranean reintroduction, not
+  back to the trigger diet.
+caveats:
+- Strict water fasting requires medical supervision.
+- Always transition to a sustained elimination protocol (Mediterranean/vegetarian
+  + gluten-free) — the fast alone does not maintain remission.
+- Contraindicated in pregnancy, diabetes on insulin, severe underweight.
+linked_to_topics:
+- rheumatoid-arthritis
+- therapeutic-fasting
+linked_to_mechanisms:
+- leaky-gut
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Therapeutic Fasting (pp 883-884)
+  quote: Short-term fasting for 3 to 5 days during acute flares reduces joint pain,
+    swelling, and morning stiffness... Fasting increases serum DHEA-S and decreases
+    serum IL-6, CRP, ESR, and disease activity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

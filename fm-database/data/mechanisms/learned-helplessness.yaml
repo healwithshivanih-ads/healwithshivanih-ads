@@ -1,0 +1,41 @@
+slug: learned-helplessness
+display_name: Learned Helplessness (Seligman)
+aliases:
+- helplessness-model
+- pessimistic-explanatory-style
+- seligman-helplessness
+category: signaling
+summary: A psychological state in which repeated uncontrollable negative events condition
+  animals or humans to stop attempting environmental control even when control becomes
+  available. Conditioned helplessness produces measurable monoamine alterations in
+  the brain that mirror those seen in human depression; teaching control normalises
+  both behaviour and brain chemistry. Explanatory style (optimistic vs pessimistic
+  interpretation of events) determines vulnerability — optimists are largely immune
+  to helplessness-driven depression.
+upstream_drivers:
+- pessimistic-explanatory-style
+- chronic-stress
+- repeated-loss
+- childhood-adversity
+downstream_effects:
+- monoamine-depletion
+- depression
+- low-self-efficacy
+- avoidance-behaviour
+related_mechanisms:
+- hpa-axis-dysregulation
+- serotonin-melatonin-sleep-axis
+linked_to_topics:
+- major-depressive-disorder
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Learned Helplessness (Seligman) (pp 12)
+  quote: Animals and human beings can be experimentally conditioned to feel and act
+    helpless. Animals conditioned to be helpless have alteration of brain monoamine
+    content; teaching them how to gain environmental control normalizes brain chemistry.
+    Optimistic people are immune to helplessness and depression.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

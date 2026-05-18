@@ -1,0 +1,36 @@
+slug: st-johns-wort-effective-for-mild-moderate-depression
+statement: Standardised St. John's Wort extract (300 mg three times daily of 0.3%
+  hypericin or 3-5% hyperforin) is as effective as SSRIs for mild-to-moderate depression
+  with fewer side effects — but has major CYP3A4-induction drug interactions and is
+  contraindicated with SSRIs, MAOIs, oral contraceptives, warfarin, antiretrovirals,
+  and immunosuppressants.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Cochrane, Linde) of dozens of RCTs support SJW
+  vs SSRI equivalence in mild-moderate depression. Drug interaction profile via CYP3A4
+  induction and P-glycoprotein modulation is well-characterised.
+coaching_translation: St. John's Wort works as well as antidepressants for mild and
+  moderate depression — but only if you're not on any medications it interacts with.
+  Make a complete list of every drug and supplement before starting it.
+caveats:
+- NEVER combine with SSRIs, SNRIs, MAOIs (serotonin syndrome).
+- Reduces oral contraceptive effectiveness; warn about pregnancy risk.
+- Affects metabolism of warfarin, cyclosporine, tacrolimus, ARVs, chemo — coordinate
+  with prescriber.
+- Most useful in patients >50 according to Pizzorno's framework.
+linked_to_topics:
+- major-depressive-disorder
+- seasonal-affective-disorder
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- st-johns-wort
+out_of_scope_notes: Many drug interactions — always coordinate with prescriber.
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Botanical medicines (pp 22-23)
+  quote: St. John's wort listed as supplement of choice for additional support needed
+    in mild to moderate depression, particularly age >=50.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

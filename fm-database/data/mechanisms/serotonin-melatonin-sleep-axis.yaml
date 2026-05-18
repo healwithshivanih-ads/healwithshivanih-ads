@@ -1,0 +1,44 @@
+slug: serotonin-melatonin-sleep-axis
+display_name: Serotonin-Melatonin Sleep Axis
+aliases:
+- tryptophan-serotonin-melatonin
+- pineal-melatonin-pathway
+- circadian-melatonin
+category: neurological
+summary: Sleep initiation depends on conversion of dietary tryptophan to serotonin
+  (rate-limited by tryptophan hydroxylase with B6, niacin, and magnesium cofactors),
+  then conversion of serotonin to melatonin in the pineal gland in response to darkness.
+  Disruption at any step — low tryptophan intake, B6/Mg/niacin deficiency, blue light
+  suppressing melatonin, age-related pineal decline — drives sleep-onset and sleep-maintenance
+  insomnia.
+upstream_drivers:
+- low-tryptophan-intake
+- b6-deficiency
+- magnesium-deficiency
+- niacin-deficiency
+- blue-light-exposure
+- pineal-calcification
+- aging
+downstream_effects:
+- sleep-onset-latency
+- sleep-maintenance-disruption
+- circadian-misalignment
+- insomnia
+related_mechanisms:
+- circadian-rhythm-disruption
+- hpa-axis-dysregulation
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+evidence_tier: strong
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Serotonin Precursor and Cofactor Therapy (pp 570)
+  quote: Serotonin is the initiator of sleep; synthesis of central nervous system
+    serotonin depends on tryptophan. Cofactors for serotonin synthesis — vitamin B6,
+    niacin, and magnesium are given with tryptophan to ensure conversion to serotonin.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

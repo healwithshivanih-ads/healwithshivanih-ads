@@ -1,0 +1,64 @@
+slug: major-depressive-disorder
+display_name: Major Depressive Disorder (Unipolar Depression)
+aliases:
+- mdd
+- unipolar-depression
+- major-depression
+- clinical-depression
+summary: A mood disorder characterised by persistent low mood plus at least four to
+  five of — appetite/weight change, insomnia or hypersomnia, psychomotor change, anhedonia,
+  fatigue, worthlessness/guilt, impaired concentration, recurrent thoughts of death
+  — present for at least one month. Pizzorno emphasises that antidepressants do not
+  work better than placebo for mild-to-moderate cases (the most common reason for
+  prescription) and that learned helplessness, HPA-axis dysregulation, thyroid dysfunction,
+  nutrient deficiencies, gut-brain inflammation, and food allergies are modifiable
+  underlying drivers.
+common_symptoms:
+- depression
+- fatigue
+- insomnia
+- low-mood
+- anhedonia
+- weight-changes
+- impaired-concentration
+red_flags:
+- suicidal-ideation
+- psychotic-features
+- rapid weight loss
+- inability to care for self
+related_topics:
+- bipolar-disorder
+- seasonal-affective-disorder
+- hpa-axis-dysregulation
+- hypothyroidism
+- nutrient-deficiency-depression
+key_mechanisms:
+- hpa-axis-dysregulation
+- serotonin-melatonin-sleep-axis
+- learned-helplessness
+- tryptophan-kynurenine-shunt
+- chronic-inflammation
+coaching_scope_notes: Coaches refer suicidal ideation, psychosis, severe MDD to psychiatry
+  immediately. Coaching role — CBT skills, exercise (most consistently effective lifestyle
+  intervention), nutrient repletion (B12, folate, D, omega-3), thyroid screen, blood
+  sugar stabilisation, gut healing, light therapy for SAD.
+clinician_scope_notes: Antidepressants reserved for severe MDD; CBT equally effective
+  for moderate. Workup — TSH/fT3/fT4, B12, folate, vitamin D, AM cortisol, ferritin,
+  homocysteine.
+notes_for_coach: 'Pizzorno key insights: 25% of patients on antidepressants do not
+  have a diagnosable psychiatric problem; CBT is as effective as medication for moderate
+  depression with lower relapse; learned helplessness (Seligman) is the most useful
+  model; explanatory style (optimism vs pessimism) is the determining factor in mood
+  response to uncontrollable events.'
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Depression / General Considerations (pp 11-12)
+  quote: Although the use of antidepressants may be important in treating severe depressive
+    illness and threatened suicide, antidepressants have not been shown to work any
+    better than placebo in cases of mild to moderate depression... 25% of patients
+    taking antidepressants do not even have a diagnosable psychiatric problem.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

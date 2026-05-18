@@ -1,0 +1,36 @@
+slug: zonulin-gluten-driven-permeability-elevated-in-ra
+statement: RA is one of the autoimmune diseases associated with elevated blood zonulin
+  levels; gliadin from wheat triggers zonulin release that opens tight junctions for
+  ~1-3 hours depending on haptoglobin genotype.
+evidence_tier: plausible_emerging
+rationale: Alessio Fasano's zonulin work and Pizzorno's review establish the gliadin
+  → zonulin → tight junction opening pathway. RA-specific zonulin elevation studies
+  exist but are modest; mechanism is well-characterised.
+coaching_translation: Gluten doesn't just affect celiacs. In RA, wheat triggers a
+  hormone (zonulin) that loosens the gut lining for 1-3 hours each meal — long enough
+  for food and bacterial proteins to leak in and aggravate joint inflammation.
+caveats:
+- Haptoglobin 2/2 genotype releases more zonulin and keeps gut open ~3 hours; 1/2
+  type ~1 hour.
+- Strict gluten-free trial (wheat, rye, barley) is the test; serum zonulin can guide.
+- Effect is additive with other food sensitivities and microbial drivers.
+linked_to_topics:
+- rheumatoid-arthritis
+- leaky-gut
+- gluten-free-diet
+linked_to_mechanisms:
+- leaky-gut
+- citrullinated-protein-autoimmunity
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Abnormal Bowel Permeability (pp 880-881)
+  quote: Newly emerging research is now showing that zonulin, released by the gliadin
+    in gluten, is another cause of increased gut permeability in susceptible individuals...
+    RA is one of the autoimmune diseases shown to be associated with elevated blood
+    zonulin levels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

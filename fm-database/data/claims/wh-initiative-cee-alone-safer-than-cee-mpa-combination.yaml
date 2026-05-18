@@ -1,0 +1,39 @@
+slug: wh-initiative-cee-alone-safer-than-cee-mpa-combination
+statement: In the Women's Health Initiative, conjugated equine estrogen (CEE) alone
+  in women without a uterus was associated with no increase in breast cancer death
+  rates, reduced fracture risk, and reduced CHD risk if initiated near menopause —
+  while CEE + medroxyprogesterone acetate (MPA) increased CHD events.
+evidence_tier: strong
+rationale: The WHI substudy on CEE-only vs CEE-MPA is well-replicated; Pizzorno's
+  review summarises the key clinically-relevant outcomes. Timing of HRT initiation
+  (near vs >10 years past menopause) substantially modifies risk profile.
+coaching_translation: For HRT decisions — what kind matters as much as whether. CEE
+  alone (in women without a uterus) and HRT started near menopause look much safer
+  than the synthetic progestin combinations or starting HRT decades post-menopause.
+caveats:
+- Bioidentical (estradiol + micronized progesterone) is preferred over CEE+MPA where
+  available.
+- Decisions are individualised — family history, vascular risk, breast risk, symptom
+  burden all factor.
+- Coaching scope is education + lifestyle; HRT prescribing is clinician-only.
+linked_to_topics:
+- bioidentical-hormone-replacement-therapy
+- bhrt
+- hrt
+- menopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-signaling
+linked_to_supplements: []
+out_of_scope_notes: HRT decisions are clinician-driven; coach educates on the WHI
+  signal patterns and refers to a menopause specialist.
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Key Clinically Relevant Issues from WHI (pp 630-631)
+  quote: ERT alone for women without a uterus appears safer than use of estrogen plus
+    a progestin. ERT reduces risk of CHD in women who start ERT near the age of menopause.
+    It decreases risk of fractures; it did not increase risk of breast cancer.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

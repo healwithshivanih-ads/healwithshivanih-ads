@@ -1,0 +1,36 @@
+slug: linoleic-acid-supplementation-reduces-ms-relapse-severity
+statement: Linoleic acid (omega-6) supplementation at 17.2 g/day (sunflower seed oil
+  emulsion) reduces severity and duration of MS relapses and slows disability progression
+  compared to olive oil control.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites controlled trials of linoleic acid in MS. Mechanism plausibly
+  via TGF-beta1 elevation (anti-inflammatory cytokine). Evening primrose oil (GLA)
+  showed no benefit in trials despite mechanistic appeal — so the effect is linoleic-acid-specific,
+  not all omega-6.
+coaching_translation: Plain linoleic acid (the omega-6 in sunflower seed oil) — not
+  evening primrose oil — has trial evidence for reducing MS relapse severity. The
+  dose used was about 1 tablespoon a day.
+caveats:
+- Effect specific to LA; evening primrose oil (GLA) showed no benefit and is not recommended.
+- Must be combined with the broader Swank low-saturated-fat pattern, not just added
+  to a junk-food diet.
+- High linoleic-acid intake alone (without fish oil balance) is otherwise pro-inflammatory;
+  this works only in the context of MS-specific protocols.
+linked_to_topics:
+- multiple-sclerosis
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+linked_to_supplements: []
+out_of_scope_notes: Coach should not generalise this to "more omega-6 is good" — specific
+  to MS context with overall low-SFA diet.
+sources:
+- id: pizzorno-autoimmune-ms
+  location: Multiple Sclerosis — Omega-6 Fatty Acids (pp 686)
+  quote: MS patients supplemented with linoleic acid had a smaller increase in disability
+    and reduced severity and duration of relapses compared with patients supplemented
+    with olive oil. Dose — sunflower seed oil emulsion at sufficient dose to provide
+    daily 17.2 g linoleic acid.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

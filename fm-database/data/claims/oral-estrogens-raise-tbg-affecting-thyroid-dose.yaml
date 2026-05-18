@@ -1,0 +1,34 @@
+slug: oral-estrogens-raise-tbg-affecting-thyroid-dose
+statement: Oral estrogens (HRT, oral contraceptives) raise thyroxine-binding globulin
+  (TBG) via liver first-pass, lowering free thyroid hormone availability and often
+  raising levothyroxine dose requirements; transdermal estrogen largely avoids this.
+evidence_tier: strong
+rationale: Well-established endocrinology — oral estrogen induces hepatic TBG production.
+  This claim cross-references the Pizzorno autoimmune-thyroid chapter (pp 479-480);
+  coach-relevant when a woman on HRT also has hypothyroidism.
+coaching_translation: If you're on thyroid medication and starting (or stopping) oral
+  HRT or the pill, your thyroid dose may need adjusting. Transdermal estrogen (patch,
+  gel) avoids this problem.
+caveats:
+- Re-test free T4 and TSH 6-8 weeks after starting/stopping oral estrogens.
+- Transdermal estrogen has minimal effect on TBG.
+- Pregnancy mimics this effect — dose increases 30-50% expected.
+linked_to_topics:
+- menopause
+- perimenopause-and-menopause
+- hrt
+- hypothyroidism
+linked_to_mechanisms:
+- estrogen-dominance-thyroid-blunting
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Natural Hormones (pp 631-632)
+  quote: Natural progesterone has fewer adverse effects on the cardiovascular system
+    than synthetic progestins... estriol acts as an antiestrogen in the breast, with
+    little impact on the cardiovascular system.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

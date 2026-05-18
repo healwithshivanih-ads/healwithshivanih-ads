@@ -1,0 +1,62 @@
+slug: st-johns-wort
+display_name: St. John's Wort (Hypericum perforatum)
+aliases:
+- hypericum
+- hypericum-perforatum
+- st-johnswort
+- sjw
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- major-depressive-disorder
+- seasonal-affective-disorder
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+- tryptophan-kynurenine-shunt
+linked_to_claims:
+- st-johns-wort-effective-for-mild-moderate-depression
+notes_for_coach: First-line botanical for mild-to-moderate depression in Pizzorno's
+  framework. Standardised extract (0.3% hypericin or 3-5% hyperforin), 300 mg three
+  times daily. Numerous SSRI-comparable RCTs. Major drug interactions via CYP3A4 induction
+  — affects oral contraceptives, warfarin, cyclosporine, immunosuppressants, antiretrovirals,
+  chemotherapy. NEVER combine with SSRIs or MAOIs.
+notes_for_client: A traditional herb with strong research for mild and moderate depression.
+  Has many medication interactions — never combine with antidepressants, the pill,
+  blood thinners, or HIV/cancer/transplant medications. Always check with your prescriber.
+contraindications:
+  conditions: []
+  medications:
+  - ssris
+  - snris
+  - maois
+  - oral-contraceptives
+  - warfarin
+  - cyclosporine
+  - tacrolimus
+  - antiretrovirals
+  - protease-inhibitors
+  - digoxin
+  - chemotherapy
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: strong
+typical_dose_range: {}
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Therapeutic Approach (pp 22-23)
+  quote: St. John's wort is recommended for additional support in mild to moderate
+    depression, particularly in patients over age 50.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

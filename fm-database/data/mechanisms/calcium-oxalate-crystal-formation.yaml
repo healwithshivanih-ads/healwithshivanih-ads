@@ -1,0 +1,42 @@
+slug: calcium-oxalate-crystal-formation
+display_name: Calcium Oxalate Crystal Formation
+aliases:
+- calcium-oxalate-precipitation
+- ca-oxalate-crystallization
+- urinary-oxalate-supersaturation
+category: metabolic
+summary: Precipitation of calcium oxalate crystals from supersaturated urine when
+  inhibitors (citrate, magnesium) are deficient or precipitating factors (acidic pH,
+  low fluid intake, hyperoxaluria, hypercalciuria) dominate. Dietary oxalate contributes
+  up to 80% of urine oxalate in susceptible individuals; gut Oxalobacter formigenes
+  degrades oxalate before absorption.
+upstream_drivers:
+- hyperoxaluria
+- hypercalciuria
+- low-fluid-intake
+- diet-induced-acidosis
+- oxalobacter-formigenes-depletion
+- vitamin-b6-deficiency
+- magnesium-deficiency
+downstream_effects:
+- kidney-stone-formation
+- renal-colic
+- hematuria
+- urinary-obstruction
+related_mechanisms:
+- impaired-citrate-secretion
+- intestinal-oxalate-absorption
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+evidence_tier: strong
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Therapeutic Considerations / Oxalates (pp 593)
+  quote: Hyperoxaluria is a metabolic risk factor for KSs. Dietary oxalate may contribute
+    80% of urine oxalate. Low-oxalate diet benefits patients with hyperoxaluria. Dietary
+    Ca can minimize intestinal oxalate absorption.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

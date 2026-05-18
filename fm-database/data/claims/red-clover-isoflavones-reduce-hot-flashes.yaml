@@ -1,0 +1,33 @@
+slug: red-clover-isoflavones-reduce-hot-flashes
+statement: Red clover isoflavone extracts (Trifolium pratense) have demonstrated scientific
+  efficacy for menopausal vasomotor symptoms, alongside soy, black cohosh, kava, and
+  bioflavonoids.
+evidence_tier: plausible_emerging
+rationale: Pizzorno groups red clover among supplements with proven scientific efficacy
+  for menopausal symptoms. Multiple RCTs of standardised red clover (40-80 mg isoflavones/day)
+  show modest hot-flash reduction; meta-analyses are mixed.
+coaching_translation: Red clover concentrates the same gentle plant estrogens as soy.
+  For women who don't tolerate soy or who eat little soy in their diet, a standardised
+  red-clover extract is a reasonable alternative.
+caveats:
+- Use standardised extract (40-80 mg isoflavones/day).
+- Avoid in hormone-sensitive cancers, pregnancy, on anticoagulants/tamoxifen.
+- Effect equol-producer-status modulated as with soy.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hot-flashes
+linked_to_mechanisms:
+- estrogen-signaling
+linked_to_supplements:
+- red-clover-isoflavones
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-health
+  location: Menopause — Natural Hormones / supplements section (pp 632)
+  quote: Black cohosh, red clover, soy, bioflavonoids, kava, and the proprietary formula
+    Women's Phase II have proven scientific efficacy for menopausal symptoms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

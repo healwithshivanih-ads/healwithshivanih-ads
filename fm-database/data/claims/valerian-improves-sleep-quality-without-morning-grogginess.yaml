@@ -1,0 +1,37 @@
+slug: valerian-improves-sleep-quality-without-morning-grogginess
+statement: Valeriana officinalis root reduces sleep latency comparable to small doses
+  of benzodiazepines or barbiturates, but unlike those drugs typically reduces (rather
+  than increases) morning sleepiness.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the most clinical research among the sedative botanicals.
+  Mechanism plausibly via valerenic acid modulation of GABA-A receptors. Effect builds
+  over 2-4 weeks of consistent use.
+coaching_translation: Valerian is one of the most-studied sleep herbs. Unlike sleeping
+  pills, it doesn't leave you groggy in the morning. Best taken consistently for 2-4
+  weeks for full effect — not just one bad night.
+caveats:
+- Standardised to 0.8% valerenic acid; 150-300 mg dried extract or 4-6 mL tincture
+  before bed.
+- Strong smell — capsules preferred for many.
+- Avoid with sedatives, alcohol, in pregnancy.
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+linked_to_mechanisms:
+- gaba-receptor-modulation
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- valerian-root
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Valeriana officinalis (pp 572)
+  quote: Most clinical research; improves sleep quality and sleep latency; as effective
+    in reducing sleep latency as small doses of barbiturates or benzodiazepines. Although
+    these drugs also increase morning sleepiness, valerian usually reduces morning
+    sleepiness.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,43 @@
+slug: citrullinated-protein-autoimmunity
+display_name: Citrullinated Protein Autoimmunity (anti-CCP)
+aliases:
+- anti-ccp-antibodies
+- acpa
+- citrullinated-peptide-autoimmunity
+- anti-citrullinated-protein-antibodies
+category: immune
+summary: Immune response targeting proteins that have undergone post-translational
+  citrullination (arginine to citrulline by PAD enzymes). In genetically susceptible
+  individuals (HLA-DRB1 shared epitope), citrullinated proteins from inflamed gum
+  tissue (Porphyromonas gingivalis), lung (smoking), or gut (Proteus mirabilis) become
+  neo-antigens. Anti-CCP antibodies appear up to 10-12 years before clinical RA, are
+  >95% specific for RA, and predict more aggressive disease.
+upstream_drivers:
+- molecular-mimicry
+- periodontal-disease
+- smoking
+- leaky-gut
+- hla-drb1-shared-epitope
+downstream_effects:
+- synovial-inflammation
+- joint-destruction
+- bone-erosion
+related_mechanisms:
+- synovial-inflammation
+- molecular-mimicry
+- leaky-gut
+linked_to_topics:
+- rheumatoid-arthritis
+- periodontal-disease
+evidence_tier: strong
+sources:
+- id: pizzorno-autoimmune-ra
+  location: Rheumatoid Arthritis — Pathogenesis / Microbial Influences (pp 879)
+  quote: Antibodies to Porphyromonas gingivalis are linked to elevated anti-CCP antibodies
+    and perhaps to breaking immune tolerance to citrullinated antigens and promoting
+    the autoimmune response in RA. Anti-CCP antibodies are present 10 years before
+    diagnosis; specificity exceeds 95%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

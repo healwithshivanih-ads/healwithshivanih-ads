@@ -1,0 +1,33 @@
+slug: oxalobacter-formigenes-reduces-urinary-oxalate
+statement: The gut anaerobe Oxalobacter formigenes uses oxalate as its sole energy
+  source; supplementation in O. formigenes-depleted individuals reduces urinary oxalate
+  after an oxalate load and Ca-oxalate stone formation.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites both observational data (antibiotic-driven O. formigenes
+  depletion predisposes to idiopathic Ca-oxalate stones) and intervention data (probiotic
+  repopulation reduces urinary oxalate). Commercial preparations vary in viability.
+coaching_translation: Some people make oxalate stones because they've lost a specific
+  bacterium (Oxalobacter formigenes) that normally chews up oxalate in the gut. Repeated
+  antibiotic courses wipe it out. Restoring it with a targeted probiotic can help.
+caveats:
+- Commercial preparations vary in viability; check live-CFU labelling.
+- Most useful with confirmed hyperoxaluria + antibiotic history.
+- Pair with low-oxalate diet and prebiotic fibre during colonisation.
+linked_to_topics:
+- kidney-stones
+- oxalate-sensitivity
+linked_to_mechanisms:
+- calcium-oxalate-crystal-formation
+linked_to_supplements:
+- oxalobacter-formigenes-probiotic
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-oxalate-stones
+  location: Kidney Stones — Gut Flora (pp 594)
+  quote: O. formigenes therapy repopulates gut and reduces urinary oxalate after oxalate
+    load, thereby reducing Ca oxalate stone formation. Supplementing deficient persons
+    may protect against future KSs.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
