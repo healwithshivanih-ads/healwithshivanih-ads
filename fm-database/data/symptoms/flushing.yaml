@@ -1,31 +1,44 @@
 slug: flushing
 display_name: Flushing
 aliases:
-  - facial flushing
-  - sudden redness
-  - skin flushing episodes
+- facial flushing
+- sudden redness
+- skin flushing episodes
+- histamine flush
 category: skin
 severity: common
-description: |
-  Sudden redness of skin (face, chest, neck) indicating rapid vasodilation
-  via H1/H2 receptor activation. Often misdiagnosed as rosacea or emotional
-  anxiety; in mast cell dynamics it is a hallmark of episodic mediator
-  release.
-when_to_refer: |
-  Refer if flushing is accompanied by hypotension, syncope, or throat
-  tightness — possible anaphylactoid event.
+description: 'Sudden redness of the skin — typically face, neck, upper chest — caused
+  by
+
+  rapid vasodilation via H1 and H2 receptors. In mast cell dynamics this is
+
+  episodic and reproducible to triggers (high-histamine meals, heat, stress,
+
+  alcohol). Often misdiagnosed as rosacea or anxiety-related blushing; the
+
+  episodic, trigger-linked pattern is the distinguishing feature.
+
+  '
+when_to_refer: Refer if flushing co-occurs with hypotension, tachycardia, or throat
+  tightness — possible anaphylaxis/MCAS pattern requiring immunology workup.
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - histamine-intolerance
-  - systemic-mastocytosis
+- mast-cell-activation-syndrome
+- histamine-intolerance
+- systemic-mastocytosis
 linked_to_mechanisms:
-  - mast-cell-degranulation
-  - histamine-receptor-signaling
+- mast-cell-degranulation
+- histamine-receptor-signaling
 sources:
-  - id: cleveland-clinic
-    location: 'Mast Cell Disorder Symptoms'
-    quote: 'Flushing is a hallmark of mast cell mediator release.'
-version: 1
+- id: cleveland-clinic
+  location: Mast Cell Disorder Symptoms
+  quote: Flushing is a hallmark of mast cell mediator release.
+- id: webmd
+  location: Symptoms of Histamine Intolerance
+  quote: Flushing of the skin is a hallmark of histamine release.
+- id: notebooklm-mast-cell-histamine-synthesis
+  location: Mediator overview
+  quote: Histamines cause sudden redness and vasodilation via H1 and H2 receptors.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

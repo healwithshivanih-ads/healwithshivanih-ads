@@ -1,0 +1,68 @@
+slug: gut-dysbiosis-drives-endogenous-histamine-overload
+statement: 'Gut dysbiosis featuring overgrowth of histamine-producing bacteria
+
+  (L. reuteri, L. casei, certain Morganella and Klebsiella species) creates
+
+  endogenous histamine load that cannot be resolved through dietary
+
+  restriction alone, because the gut continues producing histamine
+
+  independent of food intake.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Explains the clinical pattern of "diet-resistant" histamine intolerance
+  —
+
+  patients who follow strict low-histamine eating but remain symptomatic.
+
+  Targeting the microbiome (selective probiotic strains, antimicrobial
+
+  protocols if SIBO present) is required for full resolution. Evidence base
+
+  is growing but most studies are observational or small-scale.
+
+  '
+coaching_translation: 'If a strict low-histamine diet isn''t fully resolving your
+  symptoms, the
+
+  problem may not be on your plate — it may be in your gut. Certain bacteria
+
+  produce histamine inside you regardless of what you eat, which is why
+
+  microbiome work (right probiotics, sometimes addressing SIBO) often
+
+  matters as much as food choices for stubborn cases.
+
+  '
+caveats:
+- Specific dysbiosis pattern requires testing (stool microbiome analysis) to confirm.
+- SIBO workup may be indicated when bloating, postprandial symptoms, and histamine
+  sensitivity coexist.
+- Probiotic selection in this context is strain-critical — wrong strain worsens symptoms.
+out_of_scope_notes: 'Microbiome testing interpretation and antimicrobial protocols
+  are
+
+  clinician territory. Coach educates on the gut-histamine link.
+
+  '
+linked_to_topics:
+- histamine-intolerance
+- sibo
+linked_to_mechanisms:
+- gut-microbiome-histamine-balance
+- histamine-metabolism
+linked_to_supplements: []
+sources:
+- id: iemt
+  location: The Role of the Gut Microbiome
+  quote: Dysbiosis can contribute directly to histamine overload through histamine-producing
+    bacteria.
+- id: kresser-institute
+  location: Root Cause Drivers of MCAS
+  quote: Gut dysbiosis and SIBO are common root-cause drivers of mast cell activation
+    and histamine overload.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

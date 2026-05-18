@@ -1,0 +1,62 @@
+slug: cheese-storage-temperature-affects-histamine-content
+statement: 'Cheese stored at 22°C (room temperature) accumulates significantly higher
+
+  histamine content than cheese stored at 4°C (refrigerated), due to
+
+  continued bacterial decarboxylation of histidine at warmer temperatures.
+
+  '
+evidence_tier: strong
+rationale: 'Biogenic amine accumulation in protein-rich foods is well-characterized
+  in
+
+  food science literature. Histamine is heat-stable, so cooking does not
+
+  reduce it once formed. For sensitive patients (HIT or MCAS), even
+
+  "histamine-safe" foods can become triggering if storage conditions allow
+
+  bacterial histamine production — making the cold chain a clinical, not
+
+  cosmetic, concern.
+
+  '
+coaching_translation: 'For people sensitive to histamine, how food is stored matters
+  as much as
+
+  what you eat. Leftover proteins — cheese, fish, meat — keep building up
+
+  histamine the longer they sit at room temperature, and cooking does not
+
+  remove it. Refrigerate proteins promptly, freeze portions you won''t use
+
+  within 24-48 hours, and prefer fresh-cooked over leftover whenever
+
+  possible.
+
+  '
+caveats:
+- Applies broadly to all protein-rich foods, not only cheese (fish and cured meats
+  are major contributors).
+- Histamine is heat-stable — reheating leftovers does not reduce histamine content.
+- Individual sensitivity varies; not all aged-cheese consumers react.
+out_of_scope_notes: ''
+linked_to_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- histamine-metabolism
+linked_to_supplements: []
+sources:
+- id: webmd
+  location: High-histamine foods
+  quote: Histamine content in cheeses stored at 22°C was higher than in cheese stored
+    at 4°C.
+- id: uct-lung-institute
+  location: Vasoactive Amine Avoidance Protocol
+  quote: Bacterial decarboxylation of histidine in stored protein foods produces histamine
+    that is heat-stable.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

@@ -1,0 +1,41 @@
+slug: visceral-mast-cell-pain-amplification
+display_name: Visceral Mast Cell Pain Amplification
+aliases:
+- tryptase-mediated nerve sensitization
+- gut mast cell hypersensitivity
+category: gut
+summary: 'Mast cells in the gut mucosa cluster around enteric nerve endings. Upon
+
+  degranulation, tryptase and other mediators degrade and sensitize visceral
+
+  nerve afferents, lowering the pain threshold. This is the proposed link
+
+  between mast cell activation and IBS-like cramping, bloating, and visceral
+
+  pain syndromes — explaining why a subset of IBS patients respond to mast
+
+  cell stabilizers rather than to motility or psychobiotic interventions.
+
+  '
+upstream_drivers:
+- mast-cell-degranulation
+- gut-microbiome-histamine-balance
+downstream_effects:
+- visceral-hypersensitivity
+- ibs-symptom-flare
+related_mechanisms:
+- mast-cell-degranulation
+linked_to_topics:
+- mast-cell-activation-syndrome
+- histamine-intolerance
+- ibs
+evidence_tier: plausible_emerging
+sources:
+- id: kresser-institute
+  location: Gut Mast Cell Pathophysiology
+  quote: Tryptase from activated mast cells sensitizes enteric nerve endings and lowers
+    visceral pain thresholds.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

@@ -2,43 +2,74 @@ slug: berberine
 display_name: Berberine
 category: herb
 forms_available:
-  - capsule
+- capsule
+- tablet
 typical_dose_range:
   capsule:
     min: 500
     max: 1500
     unit: mg
+  tablet:
+    min: 500
+    max: 1500
+    unit: mg
 timing_options:
-  - with_breakfast
-  - with_lunch
-  - with_dinner
+- with_breakfast
+- with_lunch
+- with_dinner
 take_with_food: required
-notes_for_coach: |
-  Alkaloid (Berberis aristata root) standardized to 97% berberine HCl. May
-  support mast cell stabilization, reduce pro-inflammatory cytokines, and
-  modulate gut microbiome. Split dosing across meals improves tolerance.
-  Bitter — capsule form preferred. Note also strong glycemic effects.
+notes_for_coach: 'Berberine is an isoquinoline alkaloid from Berberis aristata, B.
+  vulgaris,
+
+  and goldenseal. Best-studied for blood glucose and gut antimicrobial
+
+  effects; emerging evidence supports mast cell stabilization and
+
+  anti-inflammatory cytokine modulation. Standardized to 97% berberine HCl.
+
+  Typical antimicrobial/glycemic dose is 500 mg three times daily with
+
+  meals. Short courses (8-12 weeks) preferred — long-term high-dose use may
+
+  affect gut microbiome balance and B-vitamin absorption.
+
+  '
 contraindications:
-  conditions: []
-  medications: []
+  conditions:
+  - G6PD deficiency
+  - jaundice in newborns
+  medications:
+  - cyclosporine
+  - metformin (additive)
+  - CYP3A4 substrates
   life_stages:
-    - pregnancy
-    - lactation
+  - pregnancy
+  - lactation
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications:
+  - medication: statins
+    type: avoid_together
+    reason: Auto-converted from string; review needed
+  - medication: macrolide antibiotics
+    type: avoid_together
+    reason: Auto-converted from string; review needed
+  - medication: blood thinners
+    type: avoid_together
+    reason: Auto-converted from string; review needed
 evidence_tier: plausible_emerging
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - histamine-intolerance
+- mast-cell-activation-syndrome
+- histamine-intolerance
 linked_to_mechanisms:
-  - mast-cell-degranulation
+- mast-cell-degranulation
 sources:
-  - id: functional-genomic-nutrition
-    location: 'MC Stabilizer ingredients'
-    quote: 'Berberine extract standardized to 97% Berberine HCl may support mast cell stabilizing.'
-version: 1
+- id: functional-genomic-nutrition
+  location: MC Stabilizer ingredients
+  quote: Berberine extract standardized to 97% Berberine HCl may support mast cell
+    stabilizing.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

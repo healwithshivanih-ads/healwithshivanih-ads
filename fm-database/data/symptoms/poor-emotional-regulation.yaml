@@ -2,16 +2,16 @@ slug: poor-emotional-regulation
 display_name: Poor Emotional Regulation
 aliases:
 - emotional reactivity
-- mood swings
 - anger outbursts
 - inability to control feelings
 - emotional dysregulation
 category: mood
 severity: common
-description: Difficulty managing emotional responses, attributed to a weakened prefrontal cortex from poor sleep, dehydration,
-  or stimulant use. The 'limbic system' (emotional brain) overwhelms rational filtering when the PFC is compromised.
-when_to_refer: Emotional dysregulation with aggression, self-harm, or relationship dysfunction should be referred to a psychologist
-  or psychiatrist.
+description: Difficulty managing emotional responses, attributed to a weakened prefrontal
+  cortex from poor sleep, dehydration, or stimulant use. The 'limbic system' (emotional
+  brain) overwhelms rational filtering when the PFC is compromised.
+when_to_refer: Emotional dysregulation with aggression, self-harm, or relationship
+  dysfunction should be referred to a psychologist or psychiatrist.
 linked_to_topics:
 - depression-lifestyle
 - sleep
@@ -22,7 +22,8 @@ linked_to_mechanisms:
 sources:
 - id: barbara-oneil-healing-mind
   location: Prefrontal Cortex Section
-  quote: If we haven't had a good sleep, that interferes. That compromises the strength of our prefrontal cortex.
+  quote: If we haven't had a good sleep, that interferes. That compromises the strength
+    of our prefrontal cortex.
 version: 1
 status: active
 updated_at: '2026-05-05'

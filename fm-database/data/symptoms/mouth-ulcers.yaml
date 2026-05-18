@@ -4,11 +4,10 @@ aliases:
 - oral ulcers
 - recurrent mouth sores
 - aphthous ulcers
-- canker sores
 category: gi
 severity: common
-description: Recurrent painful sores in the mouth linked to folate and/or B12 deficiency, reflecting impaired cell turnover
-  in mucosal tissues.
+description: Recurrent painful sores in the mouth linked to folate and/or B12 deficiency,
+  reflecting impaired cell turnover in mucosal tissues.
 linked_to_topics:
 - iron-deficiency-anemia
 - folate-nutrition

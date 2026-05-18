@@ -1,0 +1,62 @@
+slug: mcas-mediators-require-cold-chain-specimen-handling
+statement: 'Most mast cell mediators measured in MCAS diagnostics (N-methylhistamine,
+
+  prostaglandin D2, leukotriene E4, tryptase) are unstable at room
+
+  temperature and require an unbroken cold chain — chilled blood draws and
+
+  refrigerated 24-hour urine collections — to avoid false-negative results.
+
+  '
+evidence_tier: strong
+rationale: 'Specimen mishandling is a leading cause of falsely negative MCAS workups.
+
+  Many labs and clinicians are not familiar with the cold-chain requirement,
+
+  leading to repeated "normal" results in patients with clinical MCAS.
+
+  Educating clients to advocate for proper specimen handling is a high-yield
+
+  coaching action — it doesn''t diagnose, but it reduces wasted testing cycles.
+
+  '
+coaching_translation: 'If you''re being tested for MCAS, ask your lab and clinician
+  explicitly
+
+  about the cold-chain protocol — most of the mediators they''re measuring
+
+  fall apart at room temperature. A "negative" result from a warm-handled
+
+  sample doesn''t mean MCAS isn''t there. This is worth confirming before
+
+  every test.
+
+  '
+caveats:
+- Cold-chain requirements vary by specific mediator and lab.
+- Negative results with proper handling still don't fully exclude MCAS; clinical criteria
+  matter.
+out_of_scope_notes: 'Diagnostic interpretation belongs to the clinician. Coach educates
+  client
+
+  on protocol-advocacy questions to ask their care team.
+
+  '
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-degranulation
+linked_to_supplements: []
+sources:
+- id: kresser-institute
+  location: MCAS Specimen Handling Challenges
+  quote: Most mast cell mediators are unstable at room temperature, requiring chilled
+    handling to avoid false negatives.
+- id: cleveland-clinic
+  location: MCAS Diagnostic Workup
+  quote: Proper specimen handling including refrigeration is critical for accurate
+    mast cell mediator measurement.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

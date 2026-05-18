@@ -1,29 +1,35 @@
 slug: migraine
 display_name: Migraine
 aliases:
-  - histamine-driven headache
-  - vascular headache
+- histamine-driven headache
+- vascular headache
+- histamine migraine
 category: neurological
 severity: concerning
-description: |
-  Severe headaches linked to histamine's role as a neurotransmitter and
-  vasodilator affecting the vagus nerve. Histamine triggers neuroinflammation;
-  DAO deficiency is a primary suspect when migraines correlate with
-  high-histamine food consumption.
-when_to_refer: |
-  Refer for neurological evaluation if migraines are new-onset, escalating,
-  or accompanied by focal neurological signs.
+description: 'Severe, often unilateral headache with vascular and neuroinflammatory
+
+  components. Histamine acts as a neurotransmitter and vasodilator and
+
+  influences the vagus nerve. DAO deficiency is a primary suspect when
+
+  migraines are reproducibly triggered by high-histamine foods (aged cheese,
+
+  red wine, fermented foods, cured meats).
+
+  '
+when_to_refer: Refer to neurology for new-onset severe headache, focal neurological
+  signs, headache with fever, or migraines unresponsive to dietary and lifestyle modification.
 linked_to_topics:
-  - histamine-intolerance
-  - mast-cell-activation-syndrome
+- histamine-intolerance
+- mast-cell-activation-syndrome
 linked_to_mechanisms:
-  - histamine-metabolism
-  - histamine-receptor-signaling
+- histamine-metabolism
+- histamine-receptor-signaling
 sources:
-  - id: vinmec
-    location: 'Migraines and Headaches'
-    quote: 'DAO supplements reduced migraine attack duration by nearly 90 minutes.'
-version: 1
+- id: vinmec
+  location: Migraines and Headaches
+  quote: DAO supplements reduced migraine attack duration by nearly 90 minutes.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

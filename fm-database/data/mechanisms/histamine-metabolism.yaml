@@ -1,34 +1,56 @@
 slug: histamine-metabolism
-display_name: Histamine Metabolism
+display_name: Histamine Metabolism (DAO and HNMT)
 aliases:
-  - histamine breakdown
-  - DAO/HNMT degradation pathway
+- histamine breakdown
+- DAO/HNMT degradation pathway
+- histamine degradation
+- DAO/HNMT pathway
 category: metabolic
-summary: |
-  Histamine is degraded by two main enzymes: Diamine Oxidase (DAO) in the
-  gut lumen handles dietary and luminal histamine, while
-  Histamine-N-methyltransferase (HNMT) operates intracellularly. Metabolic
-  efficiency determines "histamine bucket" capacity. Cofactors include
-  vitamin C, B6, and copper. NSAIDs, alcohol, and some antibiotics inhibit
-  DAO.
+summary: 'Histamine is degraded through two distinct enzyme systems. Diamine Oxidase
+
+  (DAO) operates extracellularly in the gut lumen and is the primary clearance
+
+  route for dietary histamine. Histamine-N-methyltransferase (HNMT) operates
+
+  intracellularly, clearing histamine within tissues including the CNS.
+
+  Enzyme efficiency depends on cofactors — vitamin C, B6, and copper for DAO;
+
+  SAMe for HNMT. NSAIDs, certain antibiotics, and alcohol inhibit DAO.
+
+  Insufficient enzyme capacity creates the "histamine bucket" overflow that
+
+  drives intolerance symptoms.
+
+  '
 upstream_drivers:
-  - dao-deficiency
-  - hnmt-variants
-  - cofactor-deficiency-b6-vitc-copper
-  - nsaid-use
+- dao-deficiency
+- hnmt-variants
+- cofactor-deficiency-b6-vitc-copper
+- nsaid-use
+- dao-cofactor-deficiency
+- gut-mucosal-damage
+- dao-inhibiting-medications
 downstream_effects:
-  - histamine-bucket-overflow
-  - histamine-receptor-signaling
+- histamine-bucket-overflow
+- histamine-receptor-signaling
+- postprandial-flushing
+- migraine
 related_mechanisms:
-  - gut-microbiome-histamine-balance
+- gut-microbiome-histamine-balance
+- histamine-receptor-signaling
 linked_to_topics:
-  - histamine-intolerance
+- histamine-intolerance
 evidence_tier: strong
 sources:
-  - id: iemt
-    location: 'Histamine Metabolism and Enzymes'
-    quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase (HNMT).'
-version: 1
+- id: iemt
+  location: Histamine Metabolism and Enzymes
+  quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase
+    (HNMT).'
+- id: vinmec
+  location: DAO Function Overview
+  quote: DAO breaks down dietary histamine in the gut before systemic absorption.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

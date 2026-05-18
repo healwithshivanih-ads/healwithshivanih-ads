@@ -1,33 +1,53 @@
 slug: gut-microbiome-histamine-balance
 display_name: Gut Microbiome Histamine Balance
 aliases:
-  - histamine-producing bacteria
-  - microbial histamine load
+- histamine-producing bacteria
+- microbial histamine load
+- microbial histamine production
+- histamine-producing dysbiosis
 category: gut
-summary: |
-  The interplay between histamine-producing bacteria (L. reuteri, L. casei,
-  L. bulgaricus) and histamine-degrading species (L. plantarum, B. longum,
-  B. infantis). Dysbiosis can turn the gut into an endogenous histamine
-  factory, making diet-only approaches ineffective when the microbiome
-  continues to generate mediators.
+summary: 'The gut microbiome both produces and degrades histamine. Histamine-producing
+
+  species include Lactobacillus reuteri, L. casei, and L. bulgaricus.
+
+  Histamine-degrading species include Lactobacillus plantarum, Bifidobacterium
+
+  longum, and B. infantis. In dysbiosis, the gut becomes an endogenous
+
+  histamine factory — dietary restriction alone cannot resolve symptoms
+
+  while microbial production continues. Probiotic selection is therefore
+
+  critical in sensitive patients; multi-strain blends containing L. reuteri
+
+  or L. casei may worsen symptoms.
+
+  '
 upstream_drivers:
-  - gut-dysbiosis
-  - sibo
-  - inappropriate-probiotic-selection
+- gut-dysbiosis
+- sibo
+- inappropriate-probiotic-selection
+- antibiotic-exposure
+- low-fiber-diet
 downstream_effects:
-  - endogenous-histamine-production
-  - histamine-bucket-overflow
+- endogenous-histamine-production
+- histamine-bucket-overflow
 related_mechanisms:
-  - histamine-metabolism
+- histamine-metabolism
 linked_to_topics:
-  - histamine-intolerance
-  - mast-cell-activation-syndrome
+- histamine-intolerance
+- mast-cell-activation-syndrome
+- sibo
 evidence_tier: plausible_emerging
 sources:
-  - id: iemt
-    location: 'The Role of the Gut Microbiome'
-    quote: 'Dysbiosis — an imbalance in gut microbial populations — can contribute directly to histamine overload.'
-version: 1
+- id: iemt
+  location: The Role of the Gut Microbiome
+  quote: Dysbiosis — an imbalance in gut microbial populations — can contribute directly
+    to histamine overload.
+- id: notebooklm-mast-cell-histamine-synthesis
+  location: Probiotic Selection is Critical
+  quote: Avoid histamine-producing strains; prioritize histamine-degrading strains.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

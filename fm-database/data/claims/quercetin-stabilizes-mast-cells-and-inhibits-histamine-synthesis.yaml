@@ -1,0 +1,62 @@
+slug: quercetin-stabilizes-mast-cells-and-inhibits-histamine-synthesis
+statement: 'Quercetin stabilizes mast cell membranes and inhibits both degranulation
+
+  and the histidine-decarboxylase enzymatic conversion of histidine to
+
+  histamine, reducing systemic histamine load through two complementary
+
+  mechanisms.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Mechanism is well-described in preclinical and in-vitro work; small human
+
+  trials in allergic rhinitis and chronic urticaria support symptom benefit.
+
+  Limited large RCT data in MCAS-specific populations keeps the tier at
+
+  plausible_emerging rather than strong. Bioavailability is the main clinical
+
+  variable — liposomal and phytosome forms significantly outperform standard
+
+  quercetin.
+
+  '
+coaching_translation: 'Quercetin works on histamine in two ways — it calms the mast
+  cells before
+
+  they release histamine, and it reduces the amount of histamine your body
+
+  makes in the first place. Liposomal or phytosome forms are absorbed much
+
+  better than basic quercetin powder, so the form matters as much as the
+
+  dose. Build up gradually over 2-4 weeks for full effect.
+
+  '
+caveats:
+- Bioavailability is poor in standard form — formulation matters.
+- Onset is gradual; full effect takes 2-4 weeks.
+- Interacts with certain antibiotics and CYP3A4-metabolized medications.
+- Limited safety data in pregnancy and lactation.
+out_of_scope_notes: ''
+linked_to_topics:
+- mast-cell-activation-syndrome
+- histamine-intolerance
+linked_to_mechanisms:
+- mast-cell-degranulation
+- histamine-receptor-signaling
+linked_to_supplements:
+- quercetin
+sources:
+- id: eds-clinic
+  location: Key Supplements for MCAS
+  quote: Quercetin inhibits histamine release and stabilizes mast cells.
+- id: kresser-institute
+  location: Mast cell-stabilizing nutrients
+  quote: Quercetin acts as a mast cell stabilizer, inhibiting degranulation and conversion
+    of histidine to histamine.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

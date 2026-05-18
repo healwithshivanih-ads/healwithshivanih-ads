@@ -10,7 +10,6 @@ aliases:
 - slow healing
 - impaired tissue repair
 - frequent infections
-- easy bruising
 - slow-wound-healing
 - delayed healing
 - wounds that won't heal
@@ -19,8 +18,9 @@ aliases:
 - cuts take long to heal
 category: constitutional
 severity: common
-description: Poor wound healing, frequent infections, white nail spots, and loss of taste or smell linked to zinc deficiency;
-  poor wound healing and bleeding gums linked to vitamin C deficiency.
+description: Poor wound healing, frequent infections, white nail spots, and loss of
+  taste or smell linked to zinc deficiency; poor wound healing and bleeding gums linked
+  to vitamin C deficiency.
 linked_to_topics:
 - hpa-axis-dysregulation
 - nutrition-deficiency
@@ -30,20 +30,24 @@ linked_to_mechanisms:
 - hpa-axis-dysregulation
 - oxidative-stress
 - gut-barrier-and-nutrient-absorption
-when_to_refer: If infections are severe, recurrent, or not improving with dietary support.
+when_to_refer: If infections are severe, recurrent, or not improving with dietary
+  support.
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'HPA Axis Questionnaire — Section 1: Low cortisol state'
   quote: Poor wound healing, Easy bruising, Slow healing of cuts.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste or smell - Linked to zinc deficiency.
+  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
+    or smell - Linked to zinc deficiency.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste or smell - Linked to zinc deficiency.
+  quote: Frequent infections, poor wound healing, white nail spots, and loss of taste
+    or smell - Linked to zinc deficiency.
 - id: vitaone-blood-sugar-ebook
   location: Section 4.2.3 — Prediabetes
-  quote: Blurry vision, frequent urination, persistent fatigue, slower wound healing, abdominal obesity, recurrent skin infections.
+  quote: Blurry vision, frequent urination, persistent fatigue, slower wound healing,
+    abdominal obesity, recurrent skin infections.
 - id: coconote-fm-zinc-deficiency
   location: Signs and Symptoms
   quote: Slow wound healing, non-responsive anemia.

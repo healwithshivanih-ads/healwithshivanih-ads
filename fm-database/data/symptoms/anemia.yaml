@@ -3,16 +3,16 @@ display_name: Anemia
 aliases:
 - iron-deficiency anemia
 - pernicious anemia
-- megaloblastic anemia
 - low red blood cells
 - low hemoglobin
 category: cardiovascular
 severity: concerning
-description: Anemia is a condition resulting in insufficient red blood cells or hemoglobin. Iron deficiency is the most common
-  cause, but B12 and folate deficiencies also cause distinct forms. Presents with fatigue, pallor, breathlessness, and reduced
-  exercise tolerance.
-when_to_refer: Refer for lab evaluation (CBC, ferritin, B12, folate) to establish cause. Supplementation protocol is clinician
-  scope.
+description: Anemia is a condition resulting in insufficient red blood cells or hemoglobin.
+  Iron deficiency is the most common cause, but B12 and folate deficiencies also cause
+  distinct forms. Presents with fatigue, pallor, breathlessness, and reduced exercise
+  tolerance.
+when_to_refer: Refer for lab evaluation (CBC, ferritin, B12, folate) to establish
+  cause. Supplementation protocol is clinician scope.
 linked_to_topics:
 - iron-nutrition
 - vitamin-b12
@@ -23,8 +23,9 @@ linked_to_mechanisms:
 sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Food Sources: Iron'
-  quote: Iron deficiency is the most common nutritional deficiency in the world and can cause anemia, a condition that affects
-    the transport of oxygen throughout the body.
+  quote: Iron deficiency is the most common nutritional deficiency in the world and
+    can cause anemia, a condition that affects the transport of oxygen throughout
+    the body.
 version: 1
 status: active
 updated_at: '2026-05-04'

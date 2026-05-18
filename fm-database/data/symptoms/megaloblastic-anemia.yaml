@@ -1,15 +1,16 @@
 slug: megaloblastic-anemia
 display_name: Megaloblastic Anemia
 aliases:
-- macrocytic anemia
 - megaloblastic anaemia
 - large red blood cells
 - macrocytic megaloblastic anemia
 category: metabolic
 severity: concerning
-description: A type of anemia in which red blood cells are abnormally large and have impaired DNA synthesis, caused by folate
-  or B12 deficiency. Presents with fatigue, pallor, dyspnea, and lethargy.
-when_to_refer: Refer to clinician for blood count, B12/folate labs, and to rule out pernicious anemia or serious GI pathology.
+description: A type of anemia in which red blood cells are abnormally large and have
+  impaired DNA synthesis, caused by folate or B12 deficiency. Presents with fatigue,
+  pallor, dyspnea, and lethargy.
+when_to_refer: Refer to clinician for blood count, B12/folate labs, and to rule out
+  pernicious anemia or serious GI pathology.
 linked_to_topics:
 - folate-nutrition
 - vitamin-b12
@@ -19,8 +20,8 @@ linked_to_mechanisms:
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Folate Deficiency Signs & Symptoms
-  quote: The first and major one is the macrocytic megaloplastic anemia... RBCs which are large in size and which have a problem
-    with the DNA synthesis.
+  quote: The first and major one is the macrocytic megaloplastic anemia... RBCs which
+    are large in size and which have a problem with the DNA synthesis.
 version: 1
 status: active
 updated_at: '2026-05-05'

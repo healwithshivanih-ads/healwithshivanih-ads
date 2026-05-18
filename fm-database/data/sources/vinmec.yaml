@@ -1,11 +1,15 @@
 id: vinmec
-title: 'Vinmec Hospital — DAO Supplementation Clinical Notes'
-source_type: website
+title: Vinmec — DAO Supplementation and Histamine Intolerance
+source_type: other
 quality: moderate
-notes: |
-  Hospital system clinical blog covering DAO supplementation outcomes in
-  migraine and GI symptom management.
-version: 1
+notes: 'Clinical hospital-system blog on DAO supplementation effects on migraines
+
+  and GI symptoms.
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors: []
+publisher: Vinmec International Hospital

@@ -1,11 +1,15 @@
 id: mastokids
-title: 'MastoKids'
-source_type: website
+title: MastoKids — Pediatric Mastocytosis Resource
+source_type: other
 quality: moderate
-notes: |
-  Pediatric-focused educational nonprofit covering mastocytosis degranulation
-  triggers and management. Use for trigger lists.
-version: 1
+notes: 'Pediatric-focused nonprofit resource providing degranulation trigger lists
+
+  and management strategies for mastocytosis.
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors: []
+publisher: MastoKids.org

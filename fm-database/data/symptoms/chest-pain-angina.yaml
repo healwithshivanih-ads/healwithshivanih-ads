@@ -2,14 +2,15 @@ slug: chest-pain-angina
 display_name: Chest Pain / Angina
 aliases:
 - angina
-- chest tightness
 - chest pressure
 - cardiac chest pain
 category: cardiovascular
 severity: red_flag
-description: Chest pain or pressure, particularly with exertion, may indicate myocardial ischemia. In the Ornish Lifestyle
-  Heart Trial, a 91% reduction in chest pain syndrome was observed with intensive lifestyle intervention.
-when_to_refer: Any new or worsening chest pain requires immediate medical evaluation and cardiology referral.
+description: Chest pain or pressure, particularly with exertion, may indicate myocardial
+  ischemia. In the Ornish Lifestyle Heart Trial, a 91% reduction in chest pain syndrome
+  was observed with intensive lifestyle intervention.
+when_to_refer: Any new or worsening chest pain requires immediate medical evaluation
+  and cardiology referral.
 linked_to_topics:
 - cardiovascular-disease-prevention
 linked_to_mechanisms:

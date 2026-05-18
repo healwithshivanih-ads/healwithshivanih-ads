@@ -2,42 +2,53 @@ slug: diamine-oxidase-enzyme
 display_name: Diamine Oxidase (DAO) Enzyme
 category: enzyme
 forms_available:
-  - capsule
+- capsule
 typical_dose_range:
   capsule:
-    min: 4.2
-    max: 10
-    unit: mg
+    min: 4200
+    max: 10000
+    unit: IU
 timing_options:
-  - with_breakfast
-  - with_lunch
-  - with_dinner
-take_with_food: required
-notes_for_coach: |
-  Exogenous porcine-kidney-derived enzyme taken immediately before
-  high-histamine meals to degrade dietary histamine in the gut lumen.
-  Common branded dose is one capsule containing ~4.2 mg (≈10,000 HDU) just
-  before meals. Not absorbed systemically — acts locally in GI tract.
+- with_breakfast
+- with_lunch
+- with_dinner
+- on_empty_stomach
+take_with_food: avoid
+notes_for_coach: 'Exogenous DAO is typically porcine kidney-derived. Must be taken
+  15-20
+
+  minutes before high-histamine meals on an empty stomach — works in the gut
+
+  lumen to degrade dietary histamine before absorption. Will not address
+
+  endogenous histamine release from mast cells or microbial production.
+
+  Dosing is in HDU/IU; common products provide 4,200-10,000 HDU per capsule.
+
+  Vegetarian alternative is legume-derived DAO (lower potency). Not vegan.
+
+  '
 contraindications:
   conditions: []
   medications: []
   life_stages:
-    - pregnancy
-    - lactation
+  - pregnancy
+  - lactation
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications: []
 evidence_tier: plausible_emerging
 linked_to_topics:
-  - histamine-intolerance
+- histamine-intolerance
 linked_to_mechanisms:
-  - histamine-metabolism
+- histamine-metabolism
 sources:
-  - id: vinmec
-    location: 'Benefits of DAO Supplements'
-    quote: 'DAO supplements are available over-the-counter and aim to restore levels of this enzyme.'
-version: 1
+- id: vinmec
+  location: Benefits of DAO Supplements
+  quote: DAO supplements are available over-the-counter and aim to restore levels
+    of this enzyme.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

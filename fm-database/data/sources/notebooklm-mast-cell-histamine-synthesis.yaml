@@ -1,0 +1,20 @@
+id: notebooklm-mast-cell-histamine-synthesis
+title: 'NotebookLM Synthesis: Histamine vs Mast Cell Activation Roadmap'
+source_type: llm_synthesis
+quality: low
+authors: []
+year: 2024
+publisher: NotebookLM (Google)
+url: null
+doi: null
+notes: 'LLM-generated infographic + mind map synthesizing the other 9 sources in this
+
+  batch. Used as supporting/cross-reference only. Per §6 rule: claims citing
+
+  this source alone are capped at fm_specific_thin.
+
+  '
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

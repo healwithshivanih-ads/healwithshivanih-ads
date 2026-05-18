@@ -1,0 +1,65 @@
+slug: dao-supplementation-reduces-migraine-duration
+statement: 'In patients with low DAO enzyme activity, oral DAO supplementation taken
+
+  before high-histamine meals significantly reduces the duration of migraine
+
+  attacks — by approximately 90 minutes on average — over a one-month
+
+  supplementation period.
+
+  '
+evidence_tier: plausible_emerging
+rationale: 'Validates the dietary-histamine-to-neurovascular-symptom pathway and
+
+  supports DAO as a targeted intervention in DAO-deficient migraine
+
+  phenotypes. Reported in a clinical study cited by Vinmec; effect size is
+
+  clinically meaningful but evidence base is small. Mechanism (gut-level
+
+  histamine degradation reducing systemic load and downstream vasoactive
+
+  neuroinflammation) is biologically plausible.
+
+  '
+coaching_translation: 'If your migraines tend to follow meals with aged cheese, wine,
+  or fermented
+
+  foods, your body may be short on the enzyme that breaks histamine down in
+
+  the gut. A short trial of a DAO enzyme before those meals — combined with
+
+  lower-histamine eating — has helped some people shorten their migraine
+
+  episodes meaningfully. This is best trialled with your clinician''s input.
+
+  '
+caveats:
+- Effect was observed only in patients with confirmed low DAO activity, not all migraine
+  sufferers.
+- DAO supplements are typically porcine-derived; not vegetarian or vegan.
+- Must be taken on an empty stomach 15-20 minutes before the trigger meal.
+- Does not address endogenous histamine from mast cells or microbial production.
+out_of_scope_notes: 'Diagnosis and prescription of DAO supplementation for clinical
+  migraine
+
+  belongs to a clinician. Coach can educate on the histamine-migraine link
+
+  and dietary patterns.
+
+  '
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms:
+- histamine-metabolism
+linked_to_supplements:
+- diamine-oxidase-enzyme
+sources:
+- id: vinmec
+  location: Migraines and Headaches
+  quote: Taking DAO supplements for over a month showed a significant reduction in
+    migraine duration by nearly 90 minutes.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

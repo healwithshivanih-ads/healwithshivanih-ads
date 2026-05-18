@@ -1,17 +1,17 @@
 slug: anxiety-palpitations-panic
 display_name: Anxiety, Panic & Palpitations
 aliases:
-- panic attacks
 - racing heart
 - heart pounding
 - sweating with anxiety
-- tachycardia
 - feeling wired
 category: mood
 severity: concerning
-description: Anxiety, panic attacks, palpitations, sweating, and tachycardia linked to high cortisol, high adrenaline/noradrenaline,
-  low progesterone, low serotonin, low GABA, digital overstimulation, and sympathetic overactivation.
-when_to_refer: Refer if severe panic disorder, cardiac arrhythmia, thyroid crisis, or medication-induced anxiety.
+description: Anxiety, panic attacks, palpitations, sweating, and tachycardia linked
+  to high cortisol, high adrenaline/noradrenaline, low progesterone, low serotonin,
+  low GABA, digital overstimulation, and sympathetic overactivation.
+when_to_refer: Refer if severe panic disorder, cardiac arrhythmia, thyroid crisis,
+  or medication-induced anxiety.
 linked_to_topics:
 - chronic-stress
 - adrenal-fatigue
@@ -25,8 +25,9 @@ linked_to_mechanisms:
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Anxiety, panic, palpitations, sweating, tachycardia, and insomnia — Linked to high cortisol, high adrenaline/noradrenaline,
-    high thyroid activity, low progesterone, low serotonin, low GABA, digital overstimulation, and sympathetic overactivation.
+  quote: Anxiety, panic, palpitations, sweating, tachycardia, and insomnia — Linked
+    to high cortisol, high adrenaline/noradrenaline, high thyroid activity, low progesterone,
+    low serotonin, low GABA, digital overstimulation, and sympathetic overactivation.
 version: 1
 status: active
 updated_at: '2026-05-06'

@@ -1,40 +1,62 @@
 slug: mast-cell-degranulation
 display_name: Mast Cell Degranulation
 aliases:
-  - mediator release
-  - mast cell activation cascade
+- mediator release
+- mast cell activation cascade
+- mast cell activation
 category: immune
-summary: |
-  The process by which mast cell granules release 200+ mediators (histamine,
-  tryptase, prostaglandins, leukotrienes, cytokines) in response to triggers
-  including IgE-allergens, temperature extremes, exercise, friction, venom,
-  certain medications (NSAIDs, opioids, anesthetics, radiographic dyes),
-  emotional stress, sleep deprivation, pain, and hormonal fluctuations.
+summary: 'Mast cell degranulation is the process by which preformed and newly
+
+  synthesized granules release 200+ mediators (histamine, tryptase,
+
+  prostaglandins, leukotrienes, cytokines) in response to triggers including
+
+  IgE-allergens, physical stimuli (heat, friction, exercise), venom, certain
+
+  medications (NSAIDs, opioids, contrast dye), emotional stress, and hormonal
+
+  fluctuations. Degranulation is the "alarm" driving systemic inflammation;
+
+  stabilizing the membrane before mediator release is the core functional
+
+  strategy.
+
+  '
 upstream_drivers:
-  - environmental-trigger-exposure
-  - chronic-infections
-  - mold-mycotoxin-exposure
-  - gut-dysbiosis
-  - hormonal-fluctuations
+- environmental-trigger-exposure
+- chronic-infections
+- mold-mycotoxin-exposure
+- gut-dysbiosis
+- hormonal-fluctuations
+- environmental-mast-cell-triggers
+- medication-induced-degranulation
+- psychological-stress-load
 downstream_effects:
-  - histamine-receptor-signaling
-  - systemic-inflammation
-  - vascular-permeability
+- histamine-receptor-signaling
+- systemic-inflammation
+- vascular-permeability
+- vascular-permeability-changes
+- neuroinflammation
 related_mechanisms:
-  - histamine-receptor-signaling
-  - histamine-metabolism
+- histamine-receptor-signaling
+- histamine-metabolism
+- gut-microbiome-histamine-balance
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - systemic-mastocytosis
+- mast-cell-activation-syndrome
+- systemic-mastocytosis
 evidence_tier: strong
 sources:
-  - id: cleveland-clinic
-    location: 'Mast Cell Biology'
-    quote: 'Mast cells release over 200 mediators upon activation.'
-  - id: mastokids
-    location: 'Degranulation Triggers'
-    quote: 'Common triggers include temperature extremes, friction, exercise, and venom.'
-version: 1
+- id: cleveland-clinic
+  location: Mast Cell Biology
+  quote: Mast cells release over 200 mediators upon activation.
+- id: mastokids
+  location: Degranulation Triggers
+  quote: Common triggers include temperature extremes, friction, exercise, and venom.
+- id: kresser-institute
+  location: MCAS Mediator Spectrum
+  quote: Mast cell mediators include histamine, tryptase, prostaglandins, leukotrienes,
+    and inflammatory cytokines.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

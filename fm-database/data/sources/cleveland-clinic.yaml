@@ -1,11 +1,15 @@
 id: cleveland-clinic
-title: 'Cleveland Clinic — Mast Cell Immunology Reference'
+title: Cleveland Clinic — Mast Cell Biology and Diagnostics
 source_type: clinical_guideline
 quality: high
-notes: |
-  Foundational immunology covering mast cell anatomy, homeostasis, and
-  standard-of-care diagnostics.
-version: 1
+notes: 'Foundational immunology covering mast cell anatomy, homeostasis, and
+
+  standard-of-care diagnostics from an academic medical center.
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors: []
+publisher: Cleveland Clinic

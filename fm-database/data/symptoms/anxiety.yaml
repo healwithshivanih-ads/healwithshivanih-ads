@@ -28,17 +28,16 @@ aliases:
 - stress symptoms
 - feeling on edge
 - racing thoughts
-- panic attacks
 - fear
 - heart palpitations related to anxiety
 - excessive worry
 - gut-brain anxiety
 category: mood
 severity: common
-description: Persistent worry or nervous tension associated with iron deficiency (brain dopamine), HPA dysregulation (high
-  cortisol), low DHEA, and gut-brain axis imbalance.
-when_to_refer: Refer for psychiatric assessment if accompanied by panic attacks, severe functional impairment, or suicidal
-  ideation.
+description: Persistent worry or nervous tension associated with iron deficiency (brain
+  dopamine), HPA dysregulation (high cortisol), low DHEA, and gut-brain axis imbalance.
+when_to_refer: Refer for psychiatric assessment if accompanied by panic attacks, severe
+  functional impairment, or suicidal ideation.
 linked_to_topics:
 - low-progesterone
 - perimenopause
@@ -95,10 +94,12 @@ linked_to_mechanisms:
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Progesterone Is Anti-Inflammatory — Supplement Approach
-  quote: Magnesium glycinate → Improves GABA activity, reduces stress-driven progesterone loss.
+  quote: Magnesium glycinate → Improves GABA activity, reduces stress-driven progesterone
+    loss.
 - id: vitaone-ldn-article
   location: LDN potential side effects
-  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams, Mood Change, Trouble Concentration'
+  quote: 'Central Nervous System: Anxiety, Drowsiness, Headache, Insomnia, Vivid Dreams,
+    Mood Change, Trouble Concentration'
 - id: vitaone-nutrition-cheatsheet
   location: Vitamins & Minerals Your Patient's Body Might Be Crying Out For
   quote: Insomnia, anxiety, sympathetic dominance
@@ -107,11 +108,12 @@ sources:
   quote: Anxiety, tremors, insomnia
 - id: vitaone-gut-toolkit
   location: 'Prebiotics and Probiotics: Their Role in Gut Health'
-  quote: A healthy gut microbiome supported by prebiotics and probiotics can positively impact mental health, reducing symptoms
-    of anxiety and depression.
+  quote: A healthy gut microbiome supported by prebiotics and probiotics can positively
+    impact mental health, reducing symptoms of anxiety and depression.
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
-  quote: This is an important skill that can help you deal with stress, anxiety, and negative emotions in a positive way.
+  quote: This is an important skill that can help you deal with stress, anxiety, and
+    negative emotions in a positive way.
 - id: vitaone-adrenal-toolkit
   location: Hypercortisolism
   quote: The oversecretion of adrenaline can cause you to feel anxious and nervous.
@@ -120,12 +122,13 @@ sources:
   quote: Amygdala dominance → constant sympathetic arousal & cortisol spikes.
 - id: coconote-fm-estrogen-dominance
   location: Case Study 1
-  quote: Anxiety and depression in a perimenopausal woman is what I see very common. Because there is a dip in her progesterone
-    while she is feeling anxious, there is an estrogen dominance.
+  quote: Anxiety and depression in a perimenopausal woman is what I see very common.
+    Because there is a dip in her progesterone while she is feeling anxious, there
+    is an estrogen dominance.
 - id: coconote-fm-magnesium-deficiency
   location: Vicious cycle / nervous system section
-  quote: Deficiency can cause a lot of excessive stress... adrenaline or non-adrenaline gets released excessively, which eventually
-    gives rise to palpitations and anxiety.
+  quote: Deficiency can cause a lot of excessive stress... adrenaline or non-adrenaline
+    gets released excessively, which eventually gives rise to palpitations and anxiety.
 - id: barbara-oneil-healing-mind
   location: Hydration Section
   quote: people with panic attacks eased

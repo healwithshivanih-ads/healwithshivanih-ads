@@ -1,29 +1,41 @@
 slug: visceral-hypersensitivity
 display_name: Visceral Hypersensitivity
 aliases:
-  - gut hypersensitivity
-  - IBS-like abdominal pain
-  - lowered visceral pain threshold
+- gut hypersensitivity
+- IBS-like abdominal pain
+- lowered visceral pain threshold
+- gut pain hypersensitivity
+- IBS-like cramping
+- functional abdominal pain
 category: gi
 severity: common
-description: |
-  Increased pain sensitivity in internal organs, often manifesting as severe
-  abdominal cramping or IBS-like pain. Mast cell activation in the gut
-  releases tryptase, which degrades nerve endings and lowers the pain
-  threshold in the enteric nervous system.
-when_to_refer: |
-  Refer if accompanied by red-flag GI signs: blood in stool, unexplained
-  weight loss, nocturnal symptoms, or persistent vomiting.
+description: 'Heightened sensitivity to pain in internal organs, typically manifesting
+  as
+
+  severe abdominal cramping, bloating discomfort, or IBS-like pain
+
+  disproportionate to imaging or endoscopic findings. Mast cell activation in
+
+  the gut releases tryptase, which sensitizes enteric nerve endings and
+
+  lowers the visceral pain threshold.
+
+  '
+when_to_refer: 'Refer to gastroenterology for red-flag features: weight loss, blood
+  in stool, nocturnal pain, anemia, or pain unresponsive to dietary and stress modification.'
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - histamine-intolerance
+- mast-cell-activation-syndrome
+- histamine-intolerance
+- ibs
 linked_to_mechanisms:
-  - mast-cell-degranulation
+- mast-cell-degranulation
+- visceral-mast-cell-pain-amplification
 sources:
-  - id: kresser-institute
-    location: 'Gut Mast Cell Involvement'
-    quote: 'Mast cell tryptase lowers the visceral pain threshold in the enteric nervous system.'
-version: 1
+- id: kresser-institute
+  location: Gut Mast Cell Involvement
+  quote: Mast cell tryptase lowers the visceral pain threshold in the enteric nervous
+    system.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

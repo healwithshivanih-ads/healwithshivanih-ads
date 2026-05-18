@@ -6,9 +6,7 @@ aliases:
 - head pain
 - migraines
 - stress headache
-- tension headache
 - cephalgia
-- migraine
 - toxic headache
 - headaches
 - chronic headaches
@@ -26,8 +24,9 @@ aliases:
 - migraine-like headaches
 category: neurological
 severity: common
-description: One of the first signs of brain dehydration. Also associated with caffeine withdrawal and sustained tension.
-  Migraines described as easing significantly with incremental rehydration.
+description: One of the first signs of brain dehydration. Also associated with caffeine
+  withdrawal and sustained tension. Migraines described as easing significantly with
+  incremental rehydration.
 linked_to_topics:
 - chronic-stress
 - toxic-body-burden
@@ -44,18 +43,20 @@ linked_to_mechanisms:
 - vagal-tone-dysregulation
 - autonomic-rebound
 - cellular-hydration
-when_to_refer: Sudden severe headache ('thunderclap'), headache with neurological symptoms, or chronic daily headache requires
-  medical evaluation.
+when_to_refer: Sudden severe headache ('thunderclap'), headache with neurological
+  symptoms, or chronic daily headache requires medical evaluation.
 sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress — Musculoskeletal
   quote: Tension in neck, Headaches/migraines
 - id: vitaone-liver-detox-toolkit
   location: Detox Food Plan — Body Burden
-  quote: Medical researchers are recognizing more symptoms related to the buildup of toxins, including... headaches.
+  quote: Medical researchers are recognizing more symptoms related to the buildup
+    of toxins, including... headaches.
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Migraine/Headache
-  quote: If migraines worsen — check for histamine reactions from fermented foods, tomatoes, citrus, leftover foods.
+  quote: If migraines worsen — check for histamine reactions from fermented foods,
+    tomatoes, citrus, leftover foods.
 - id: vitaone-health-coaching-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Headache
@@ -67,8 +68,8 @@ sources:
   quote: 'NERVOUS: Brain fog, headaches, migraines'
 - id: coconote-fm-magnesium-deficiency
   location: Nervous system section
-  quote: A good way is to give IV magnesium in such cases or maybe a B6 or vitamin C also helps in terms of treating the migraine
-    headaches.
+  quote: A good way is to give IV magnesium in such cases or maybe a B6 or vitamin
+    C also helps in terms of treating the migraine headaches.
 - id: coconote-fm-food-allergies-sensitivities
   location: IgG Symptoms Section
   quote: they feel some kind of brain fog or migraines

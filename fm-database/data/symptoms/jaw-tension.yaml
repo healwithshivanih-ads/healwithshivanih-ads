@@ -1,14 +1,13 @@
 slug: jaw-tension
 display_name: Jaw Tension / Bruxism
 aliases:
-- teeth grinding
 - jaw clenching
 - tmj tension
 - bruxism
 category: musculoskeletal
 severity: common
-description: Excessive jaw muscle tension and grinding driven by calcium-driven muscle contractility without adequate magnesium-mediated
-  relaxation.
+description: Excessive jaw muscle tension and grinding driven by calcium-driven muscle
+  contractility without adequate magnesium-mediated relaxation.
 linked_to_topics:
 - magnesium-nutrition
 - magnesium-musculoskeletal-health
@@ -18,7 +17,8 @@ when_to_refer: ''
 sources:
 - id: coconote-fm-magnesium-deficiency
   location: Musculoskeletal system
-  quote: Fibrocytis, fibromyalgia, tension headaches, muscular spasms, chronic neck and back pain, jaw tension, osteoporosis.
+  quote: Fibrocytis, fibromyalgia, tension headaches, muscular spasms, chronic neck
+    and back pain, jaw tension, osteoporosis.
 version: 1
 status: active
 updated_at: '2026-05-05'

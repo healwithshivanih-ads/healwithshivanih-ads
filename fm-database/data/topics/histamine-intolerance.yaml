@@ -1,48 +1,79 @@
 slug: histamine-intolerance
 display_name: Histamine Intolerance
 aliases:
-  - HIT
-  - histamine bucket overflow
-  - DAO deficiency syndrome
-summary: |
-  A functional metabolic state where systemic histamine load exceeds
-  degradation capacity, primarily due to DAO (extracellular, gut-lumen) or
-  HNMT (intracellular) deficiency. Not a primary mast cell disorder but a
-  breakdown failure, often secondary to gut dysbiosis, SIBO, or nutrient
-  deficiencies (B6, vitamin C, copper). Conceptualized as a "histamine
-  bucket" — symptoms appear when intake plus endogenous production exceeds
-  clearance capacity.
+- HIT
+- histamine bucket overflow
+- DAO deficiency syndrome
+- histamine sensitivity
+- DAO deficiency
+summary: 'Histamine Intolerance (HIT) is a functional metabolic state where systemic
+
+  histamine load exceeds degradation capacity. Primary drivers are deficient
+
+  Diamine Oxidase (DAO, extracellular/gut) or Histamine-N-methyltransferase
+
+  (HNMT, intracellular) activity. Often secondary to gut dysbiosis, SIBO, or
+
+  cofactor deficiency (vitamin B6, vitamin C, copper). Presents as flushing,
+
+  migraine, urticaria, GI cramping, and tachycardia after high-histamine
+
+  meals. The "histamine bucket" model is useful client-facing language —
+
+  symptoms appear when intake plus endogenous production exceeds clearance.
+
+  '
 common_symptoms:
-  - migraine
-  - flushing
-  - urticaria
-  - visceral-hypersensitivity
+- migraine
+- flushing
+- urticaria
+- visceral-hypersensitivity
+- tachycardia
 red_flags:
-  - anaphylaxis-like reactions after high-histamine meals
-  - severe chronic migraine unresponsive to standard care
+- anaphylaxis-like reactions after high-histamine meals
+- severe chronic migraine unresponsive to standard care
+- anaphylaxis-like reactions after meals
+- severe chronic migraine unresponsive to dietary trial
 related_topics:
-  - mast-cell-activation-syndrome
-  - gut-dysbiosis
+- mast-cell-activation-syndrome
+- gut-dysbiosis
+- sibo
 key_mechanisms:
-  - histamine-metabolism
-  - gut-microbiome-histamine-balance
-coaching_scope_notes: |
-  Coach educates on the histamine bucket concept, supports low-histamine
-  trial diets, identifies endogenous load drivers (dysbiosis, SIBO), and
-  ensures cofactor sufficiency (B6, vitamin C, copper).
-clinician_scope_notes: |
-  Refer if symptoms persist despite low-histamine diet — may mask MCAS,
-  mold illness, or severe gut pathology. DAO genetics and SIBO testing
-  belong to functional clinician.
+- histamine-metabolism
+- gut-microbiome-histamine-balance
+- histamine-receptor-signaling
+coaching_scope_notes: 'Coach educates on the histamine bucket model, low-histamine
+  eating, fresh-
+
+  versus-aged protein storage, and cofactor-rich foods (vitamin C, B6, copper).
+
+  Coach can support trial elimination/reintroduction but does not prescribe
+
+  DAO supplements or antihistamines.
+
+  '
+clinician_scope_notes: 'Refer if symptoms persist despite low-histamine diet — this
+  may mask MCAS,
+
+  mold illness, or severe gut pathology. DAO supplementation and prescription
+
+  antihistamines are clinician decisions.
+
+  '
 evidence_tier: strong
 sources:
-  - id: webmd
-    location: 'Histamine Intolerance Overview'
-    quote: 'Histamine intolerance occurs when the body cannot break down histamine fast enough.'
-  - id: iemt
-    location: 'Histamine Metabolism and Enzymes'
-    quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase (HNMT).'
-version: 1
+- id: webmd
+  location: Histamine Intolerance Overview
+  quote: Histamine intolerance occurs when the body cannot break down histamine fast
+    enough.
+- id: iemt
+  location: Histamine Metabolism and Enzymes
+  quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase
+    (HNMT).'
+- id: notebooklm-mast-cell-histamine-synthesis
+  location: Roadmap to Relief infographic
+  quote: HIT is primarily a diet-driven breakdown failure.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

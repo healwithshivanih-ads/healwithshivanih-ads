@@ -1,10 +1,13 @@
 id: uct-lung-institute
-title: 'UCT Lung Institute — Dietary Amine Protocols'
+title: UCT Lung Institute — Histamine and Vasoactive Amine Avoidance Protocol
 source_type: clinical_guideline
 quality: high
-notes: |
-  Detailed dietary avoidance protocols for histamine and other vasoactive amines.
-version: 1
+notes: 'Detailed dietary avoidance protocols for histamine and other vasoactive amines.
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors: []
+publisher: University of Cape Town Lung Institute

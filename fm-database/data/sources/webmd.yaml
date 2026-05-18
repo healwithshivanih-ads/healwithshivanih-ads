@@ -1,11 +1,15 @@
 id: webmd
-title: 'WebMD — Histamine Intolerance Reference'
-source_type: website
+title: WebMD — Histamine Intolerance Reference
+source_type: other
 quality: moderate
-notes: |
-  General clinical reference for histamine intolerance symptoms, diagnostic
+notes: 'General clinical reference for histamine intolerance symptoms, diagnostic
+
   testing, and dietary management.
-version: 1
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors: []
+publisher: WebMD

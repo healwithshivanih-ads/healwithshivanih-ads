@@ -9,7 +9,6 @@ aliases:
 - skin rashes
 - skin manifestations
 - skin-rash-hives
-- urticaria
 - hives
 - itchy skin
 - skin flushing
@@ -65,11 +64,12 @@ sources:
   quote: 'Skin: itching, redness, flushing, hives'
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Systemic Manifestations
-  quote: Skin rashes — Gut permeability — Gut-skin axis — Zinc + probiotics + elimination diet
+  quote: Skin rashes — Gut permeability — Gut-skin axis — Zinc + probiotics + elimination
+    diet
 - id: coconote-fm-approach-inflammation
   location: Infection Triggers – Fungal Infection
-  quote: Itching is a classical sign of fungal infection. So you find out any itching in your private parts or itching in
-    a skin.
+  quote: Itching is a classical sign of fungal infection. So you find out any itching
+    in your private parts or itching in a skin.
 - id: vitaone-liver-detox-cheatsheet
   location: Functional Detox Phases — Clinical Tips
   quote: Skin Breakouts / Acne — Liver + gut detox — Beets + crucifers + flaxseed.

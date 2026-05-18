@@ -2,40 +2,63 @@ slug: vitamin-c-ascorbyl-palmitate
 display_name: Vitamin C (Ascorbyl Palmitate)
 category: vitamin
 forms_available:
-  - capsule
+- capsule
+- powder
 typical_dose_range:
   capsule:
-    min: 500
+    min: 250
+    max: 1000
+    unit: mg
+  powder:
+    min: 250
     max: 2000
     unit: mg
 timing_options:
-  - with_breakfast
-  - with_lunch
+- with_breakfast
+- with_lunch
 take_with_food: optional
-notes_for_coach: |
-  Hypoallergenic fat-soluble form of vitamin C — better tolerated than
-  corn-derived ascorbic acid in MCAS/HIT populations. Acts as a DAO cofactor
-  and inhibits histamine production. Bowel tolerance is the practical
-  ceiling.
+notes_for_coach: 'Ascorbyl palmitate is a fat-soluble, hypoallergenic form of vitamin
+  C —
+
+  preferred over corn-derived ascorbic acid in MCAS/HIT populations
+
+  sensitive to corn excipients. Vitamin C is a DAO cofactor and supports
+
+  histamine degradation; it also directly inhibits mast cell histamine
+
+  release. Buffered (sodium/magnesium ascorbate) forms are an alternative if
+
+  ascorbyl palmitate is unavailable. Doses above 2 g/day may cause loose
+
+  stools in sensitive individuals.
+
+  '
 contraindications:
-  conditions: []
+  conditions:
+  - kidney stones (oxalate)
+  - hemochromatosis
   medications: []
   life_stages: []
 interactions:
-  with_medications: []
-  with_supplements: []
+  with_supplements:
+  - slug: high-dose-iron-enhanced-absorption
+    type: avoid_together
+    reason: Auto-converted from string; review needed
   with_foods: []
+  with_medications: []
 evidence_tier: strong
 linked_to_topics:
-  - histamine-intolerance
-  - mast-cell-activation-syndrome
+- histamine-intolerance
+- mast-cell-activation-syndrome
 linked_to_mechanisms:
-  - histamine-metabolism
+- histamine-metabolism
+- mast-cell-degranulation
 sources:
-  - id: functional-genomic-nutrition
-    location: 'MC Stabilizer support'
-    quote: 'Ascorbyl Palmitate is a hypoallergenic form of Vitamin C that inhibits histamine production.'
-version: 1
+- id: functional-genomic-nutrition
+  location: MC Stabilizer support
+  quote: Ascorbyl Palmitate is a hypoallergenic form of Vitamin C that inhibits histamine
+    production.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

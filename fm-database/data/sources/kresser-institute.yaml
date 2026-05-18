@@ -1,11 +1,16 @@
 id: kresser-institute
-title: 'Kresser Institute — MCAS Functional Framework'
+title: Kresser Institute — MCAS Functional Medicine Framework
 source_type: expert_consensus
 quality: high
-notes: |
-  Comprehensive functional medicine analysis of MCAS root causes, specimen
-  handling challenges, and tiered management frameworks.
-version: 1
+notes: 'Functional medicine analysis of MCAS root causes, cold-chain specimen
+
+  handling, and tiered management frameworks.
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors:
+- Chris Kresser
+publisher: Kresser Institute

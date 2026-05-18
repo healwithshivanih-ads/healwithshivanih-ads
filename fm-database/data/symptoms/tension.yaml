@@ -1,7 +1,6 @@
 slug: tension
 display_name: Physical Tension
 aliases:
-- muscle tension
 - physical tension
 - tightness
 - body tightness
@@ -11,9 +10,10 @@ aliases:
 - stress tension
 category: musculoskeletal
 severity: common
-description: A sense of physical tightness or muscular tension, often associated with shallow breathing, stress, and sympathetic
-  nervous system activation.
-when_to_refer: Refer if tension is severe, persistent, or associated with pain, injury, or neurological symptoms.
+description: A sense of physical tightness or muscular tension, often associated with
+  shallow breathing, stress, and sympathetic nervous system activation.
+when_to_refer: Refer if tension is severe, persistent, or associated with pain, injury,
+  or neurological symptoms.
 linked_to_topics:
 - stress-management
 - mindfulness

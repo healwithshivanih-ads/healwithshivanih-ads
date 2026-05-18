@@ -2,44 +2,69 @@ slug: quercetin
 display_name: Quercetin
 category: other
 forms_available:
-  - capsule
+- capsule
+- tablet
 typical_dose_range:
   capsule:
-    min: 500
+    min: 250
+    max: 1000
+    unit: mg
+  tablet:
+    min: 250
     max: 1000
     unit: mg
 timing_options:
-  - with_breakfast
-  - with_dinner
+- with_breakfast
+- with_dinner
+- with_lunch
 take_with_food: required
-notes_for_coach: |
-  Natural flavonoid that stabilizes mast cells by inhibiting degranulation
-  and the conversion of histidine to histamine. Typical clinical use is
-  500–1000 mg up to twice daily; pair with bromelain for absorption.
-  Liposomal forms exist but are not formally a separate "form_available"
-  category — note in protocol.
+notes_for_coach: 'Quercetin is a bioflavonoid mast cell stabilizer that inhibits degranulation
+
+  and the conversion of histidine to histamine. Bioavailability is poor in
+
+  standard form — liposomal or phytosome (e.g., quercetin-bromelain combos)
+
+  preparations are markedly better absorbed. Typical clinical dose is
+
+  500-1000 mg two to three times daily, taken with food. Onset is gradual
+
+  (2-4 weeks for full effect).
+
+  '
 contraindications:
   conditions: []
-  medications: []
-  life_stages: []
+  medications:
+  - quinolone antibiotics
+  - cyclosporine
+  life_stages:
+  - pregnancy
+  - lactation
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications:
+  - medication: CYP3A4 substrates
+    type: avoid_together
+    reason: Auto-converted from string; review needed
+  - medication: blood thinners
+    type: avoid_together
+    reason: Auto-converted from string; review needed
 evidence_tier: strong
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - histamine-intolerance
+- mast-cell-activation-syndrome
+- histamine-intolerance
 linked_to_mechanisms:
-  - mast-cell-degranulation
+- mast-cell-degranulation
+- histamine-receptor-signaling
 sources:
-  - id: eds-clinic
-    location: 'Key Supplements'
-    quote: 'Quercetin inhibits histamine release and stabilizes mast cells.'
-  - id: kresser-institute
-    location: 'Mast cell-stabilizing nutrients'
-    quote: 'Quercetin acts as a mast cell stabilizer, inhibiting degranulation and histidine conversion.'
-version: 1
+- id: eds-clinic
+  location: Key Supplements
+  quote: Quercetin inhibits histamine release and stabilizes mast cells.
+- id: kresser-institute
+  location: Mast cell-stabilizing nutrients
+  quote: Quercetin acts as a mast cell stabilizer, inhibiting degranulation and histidine
+    conversion.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

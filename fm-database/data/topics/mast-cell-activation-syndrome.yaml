@@ -1,51 +1,78 @@
 slug: mast-cell-activation-syndrome
 display_name: Mast Cell Activation Syndrome
 aliases:
-  - MCAS
-  - mast cell activation disorder
-  - hyper-reactive mast cells
-summary: |
-  A systemic condition where a normal number of mast cells become
-  hyper-reactive, releasing over 200 mediators including histamine, tryptase,
-  prostaglandins, leukotrienes, and cytokines. Multi-system symptom pattern
-  affecting skin, GI, cardiovascular, neurological, and respiratory systems.
-  Diagnosis is technically demanding: most mediators are unstable at room
-  temperature, requiring an unbroken cold chain for 24-hour urine collections
-  and chilled blood draws — false negatives are common.
+- MCAS
+- mast cell activation disorder
+- hyper-reactive mast cells
+- hyper-reactive mast cell syndrome
+summary: 'MCAS is a systemic immune condition where a normal number of mast cells
+  are
+
+  hyper-reactive, inappropriately releasing 200+ mediators including histamine,
+
+  tryptase, leukotrienes, prostaglandins, and cytokines. Symptoms span multiple
+
+  organ systems (skin, GI, cardiovascular, neurological, respiratory) and are
+
+  episodic. Diagnosis is technically demanding because most mediators are
+
+  unstable at room temperature — 24-hour urine collections and serum draws
+
+  require an unbroken cold chain or results are falsely negative. Clinical
+
+  criteria (Consensus 2) combine multi-system symptoms, elevated mediator
+
+  evidence, and response to anti-mediator therapy.
+
+  '
 common_symptoms:
-  - flushing
-  - urticaria
-  - tachycardia
-  - visceral-hypersensitivity
-  - migraine
+- flushing
+- urticaria
+- tachycardia
+- visceral-hypersensitivity
+- migraine
 red_flags:
-  - anaphylaxis
-  - severe orthostatic hypotension
-  - throat swelling
-  - multi-system episodic flares
+- anaphylaxis
+- severe orthostatic hypotension
+- throat swelling
+- multi-system episodic flares
+- episodic multi-system flares
 related_topics:
-  - histamine-intolerance
-  - systemic-mastocytosis
+- histamine-intolerance
+- systemic-mastocytosis
 key_mechanisms:
-  - mast-cell-degranulation
-  - histamine-receptor-signaling
-coaching_scope_notes: |
-  Coach supports identification of triggers (environmental, dietary,
-  psychological), reduction of total mediator load through low-histamine
-  approaches, and gut-microbiome rebalancing. Never diagnose MCAS or
-  interpret tryptase/mediator panels.
-clinician_scope_notes: |
-  Diagnosis and pharmacological management belong to immunology/allergy.
-  Consensus 2 Criteria and response to anti-mediator therapy guide diagnosis.
+- mast-cell-degranulation
+- histamine-receptor-signaling
+coaching_scope_notes: 'Coach focuses on trigger identification (foods, heat, stress,
+  friction),
+
+  total-load reduction, and natural mast cell stabilizer education (quercetin,
+
+  luteolin, vitamin C). Avoid claiming to treat or diagnose MCAS.
+
+  '
+clinician_scope_notes: 'Diagnosis and pharmaceutical management (H1/H2 blockers, cromolyn,
+
+  leukotriene antagonists, ketotifen, omalizumab) belong to the immunologist
+
+  or MCAS-literate clinician. Refer when symptoms affect 2+ organ systems and
+
+  fail to respond to standard low-histamine dietary restriction.
+
+  '
 evidence_tier: strong
 sources:
-  - id: kresser-institute
-    location: 'MCAS Diagnostic Framework'
-    quote: 'Most mediators are unstable at room temperature, requiring an unbroken cold chain.'
-  - id: cleveland-clinic
-    location: 'Mast Cell Disorders Overview'
-    quote: 'MCAS involves hyper-reactive but normal numbers of mast cells.'
-version: 1
+- id: kresser-institute
+  location: MCAS Diagnostic Framework
+  quote: Most mediators are unstable at room temperature, requiring an unbroken cold
+    chain.
+- id: cleveland-clinic
+  location: Mast Cell Disorders Overview
+  quote: MCAS involves hyper-reactive but normal numbers of mast cells.
+- id: notebooklm-mast-cell-histamine-synthesis
+  location: Roadmap to Relief infographic
+  quote: MCAS is a multi-system, hyper-reactive immune response.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

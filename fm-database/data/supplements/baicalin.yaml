@@ -1,42 +1,60 @@
 slug: baicalin
-display_name: Baicalin (Skullcap Root Extract)
+display_name: Baicalin (Skullcap Flavonoid)
 category: herb
 forms_available:
-  - capsule
+- capsule
 typical_dose_range:
   capsule:
-    min: 100
-    max: 500
+    min: 250
+    max: 1000
     unit: mg
 timing_options:
-  - with_breakfast
-  - with_dinner
+- with_breakfast
+- with_dinner
 take_with_food: required
-notes_for_coach: |
-  Flavonoid from Chinese skullcap (Scutellaria baicalensis) standardized to
-  ~90% baicalin. Suppresses histamine release, inhibits mast cell
-  degranulation, and may modulate HPA axis. Source did not specify exact
-  dosing; range reflects common clinical practice.
+notes_for_coach: 'Baicalin is the major flavonoid of Chinese skullcap (Scutellaria
+
+  baicalensis), typically standardized to 85-90% in extract form. Suppresses
+
+  histamine release, inhibits mast cell degranulation, and modulates HPA axis
+
+  activity. Often used in TCM-influenced functional protocols for combined
+
+  mast cell and stress-axis dysregulation. Limited safety data in pregnancy;
+
+  caution with sedatives and CYP-metabolized medications.
+
+  '
 contraindications:
-  conditions: []
-  medications: []
+  conditions:
+  - liver disease
+  medications:
+  - sedatives
+  - lithium
   life_stages:
-    - pregnancy
-    - lactation
+  - pregnancy
+  - lactation
 interactions:
-  with_medications: []
   with_supplements: []
   with_foods: []
+  with_medications:
+  - medication: CYP3A4 substrates
+    type: avoid_together
+    reason: Auto-converted from string; review needed
+  - medication: cyclosporine
+    type: avoid_together
+    reason: Auto-converted from string; review needed
 evidence_tier: plausible_emerging
 linked_to_topics:
-  - mast-cell-activation-syndrome
+- mast-cell-activation-syndrome
 linked_to_mechanisms:
-  - mast-cell-degranulation
+- mast-cell-degranulation
 sources:
-  - id: functional-genomic-nutrition
-    location: 'MC Stabilizer ingredients'
-    quote: 'Skullcap Root Extract (90% Baicalin) may suppress histamine release and inhibit mast cell degranulation.'
-version: 1
+- id: functional-genomic-nutrition
+  location: MC Stabilizer ingredients
+  quote: Skullcap Root Extract (90% Baicalin) may suppress histamine release and inhibit
+    mast cell degranulation.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

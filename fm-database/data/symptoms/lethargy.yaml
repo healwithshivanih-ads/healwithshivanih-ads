@@ -16,12 +16,10 @@ aliases:
 - no stamina
 - mental fatigue
 - physical fatigue
-- chronic fatigue
 - feeling run-down
 - persistent-fatigue
 - feeling wiped out
 - weakness
-- energy crashes
 - cellular fatigue
 - low vitality
 - feeling drained
@@ -29,7 +27,6 @@ aliases:
 - adrenal fatigue
 - can't get going
 - no energy
-- wired but tired
 - immune fatigue
 - afternoon-fatigue
 - post-exertional crash
@@ -44,8 +41,8 @@ aliases:
 - low-energy
 category: constitutional
 severity: common
-description: General feeling of tiredness and low energy, commonly associated with zinc deficiency affecting metabolic and
-  immune processes.
+description: General feeling of tiredness and low energy, commonly associated with
+  zinc deficiency affecting metabolic and immune processes.
 when_to_refer: If severe or accompanied by other systemic symptoms, refer to a physician.
 linked_to_topics:
 - zinc-nutrition
@@ -67,7 +64,8 @@ sources:
   quote: Use in chronic fatigue, fibromyalgia, neuroinflammation, post-COVID fatigue.
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Systemic Manifestations
-  quote: Fatigue — Dysbiosis — Mitochondrial stress — Mitochondrial nutrients (CoQ10, B-vits)
+  quote: Fatigue — Dysbiosis — Mitochondrial stress — Mitochondrial nutrients (CoQ10,
+    B-vits)
 - id: vitaone-inflammation-cheatsheet
   location: Inflammation Cheatsheet — Page 02
   quote: Fatigue, low energy
@@ -76,22 +74,24 @@ sources:
   quote: 'Deficiency: Fatigue, pallor, breathlessness (esp. menstruating females)'
 - id: vitaone-thyroid-ebook
   location: 'Chapter 5: Disorders of the Thyroid'
-  quote: Classic features such as fatigue, dry skin, constipation, hair loss, weight gain, depression, slow pulse.
+  quote: Classic features such as fatigue, dry skin, constipation, hair loss, weight
+    gain, depression, slow pulse.
 - id: vitaone-thyroid-toolkit
   location: Why is it Important to Address Hashimoto's Hypothyroidism?
-  quote: 'Fatigue and Weakness: A lack of thyroid hormones can cause persistent fatigue, muscle weakness, and low energy levels,
-    affecting daily activities and overall quality of life.'
+  quote: 'Fatigue and Weakness: A lack of thyroid hormones can cause persistent fatigue,
+    muscle weakness, and low energy levels, affecting daily activities and overall
+    quality of life.'
 - id: vitaone-sex-hormones-toolkit
   location: Sex Hormone Binding Globulin (SHBG) — Page 01
-  quote: High concentrations of SHBG in the body can lead to increased bound testosterone... This can cause symptoms associated
-    with testosterone deficiency, including fatigue.
+  quote: High concentrations of SHBG in the body can lead to increased bound testosterone...
+    This can cause symptoms associated with testosterone deficiency, including fatigue.
 - id: vitaone-inflammation-toolkit
   location: Anti Inflammatory Diet — Who is the Anti-Inflammatory Diet Useful For?
   quote: 'Chronic Pain Conditions: Like fibromyalgia and chronic fatigue syndrome.'
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Practitioners'
-  quote: Beta blocker therapy has been associated with increased rates of depression, fatigue, constipation, erectile dysfunction,
-    and cognitive slowing.
+  quote: Beta blocker therapy has been associated with increased rates of depression,
+    fatigue, constipation, erectile dysfunction, and cognitive slowing.
 - id: vitaone-health-coaching-toolkit
   location: Mindful Breathing
   quote: Shallow breathing may lead to tension and fatigue.
@@ -100,11 +100,13 @@ sources:
   quote: Fatigue, Inability to handle even slight stresses
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Some studies have indicated that supplementing with carnitine may improve fatigue and brain function.
+  quote: Some studies have indicated that supplementing with carnitine may improve
+    fatigue and brain function.
 - id: vitaone-liver-detox-toolkit
   location: Why Detox?
-  quote: One of the biggest reasons for a detoxification program is when a person experiences a lack of energy. Fatigue is
-    one of the primary reasons people make changes to their lifestyle.
+  quote: One of the biggest reasons for a detoxification program is when a person
+    experiences a lack of energy. Fatigue is one of the primary reasons people make
+    changes to their lifestyle.
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Low Energy/Fatigue
   quote: Fatigue often worsens from dehydration + low minerals.
@@ -119,8 +121,8 @@ sources:
   quote: Fatigue, insomnia, anxiety, weight gain, hormonal imbalance.
 - id: coconote-fm-estrogen-dominance
   location: Signs and Symptoms of Estrogen Dominance
-  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne, anxiety, fatigue, disturbed sleep,
-    hot flashes, low libido.'
+  quote: 'Signs and symptoms of estrogen dominance: mood swings, bare strenuous, acne,
+    anxiety, fatigue, disturbed sleep, hot flashes, low libido.'
 - id: coconote-fm-gut-skin-hormone-axis
   location: Case History / Symptoms
   quote: She complained about fatigue and lack of energy and with weight loss.
@@ -129,47 +131,54 @@ sources:
   quote: Patients could have mental fatigue, feeling very busy, lack of concentration.
 - id: coconote-fm-magnesium-deficiency
   location: Chronic fatigue syndrome section
-  quote: Magnesium is important for ATP production also and mitochondrial functions as well. So that is why patients with
-    chronic fatigue syndrome also benefit a lot with magnesium.
+  quote: Magnesium is important for ATP production also and mitochondrial functions
+    as well. So that is why patients with chronic fatigue syndrome also benefit a
+    lot with magnesium.
 - id: coconote-fm-pancreatic-insufficiency
   location: Signs and Symptoms
   quote: Malnutrition, malabsorption, that is why feeling fatigued.
 - id: coconote-fm-sibo-sifo
   location: Non-GI Symptoms of SIBO
-  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches, brain fog, depression, fatigue, insomnia,
-    autoimmune conditions.
+  quote: Non-gastrointestinal symptoms, acne, eczema, psoriasis, pains and aches,
+    brain fog, depression, fatigue, insomnia, autoimmune conditions.
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Folate Deficiency Signs & Symptoms
-  quote: Fatigue, irritability and cognitive decline are also some other signs and symptoms.
+  quote: Fatigue, irritability and cognitive decline are also some other signs and
+    symptoms.
 - id: barbara-oneil-healing-mind
   location: Oxygenation Section
   quote: What's chronic fatigue syndrome? It's lack of oxygen at the cellular level.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXjjIqJjMSR/
-  quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy… and yet their labs look 'normal.'
+  quote: Many patients come to you with fatigue, muscle cramps, mood swings, or neuropathy…
+    and yet their labs look 'normal.'
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper, iodine, selenium, potassium, sodium,
-    vitamin C, and depression-mimicking nutrient patterns.
+  quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper,
+    iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking nutrient
+    patterns.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Symptoms Discussed
-  quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper, iodine, selenium, potassium, sodium,
-    vitamin C, and depression-mimicking nutrient patterns.
+  quote: Fatigue - Mentioned with deficiencies of thiamin, B5, B7, B12, iron, copper,
+    iodine, selenium, potassium, sodium, vitamin C, and depression-mimicking nutrient
+    patterns.
 - id: vitaone-fm-adrenal-hormones
   location: Symptoms Discussed
-  quote: Fatigue - Discussed with low cortisol, low DHEA, chronic stress, low B12/iron contexts, cortisol flattening, adrenal
-    fatigue/burnout, low adiponectin, low melatonin/GH, loneliness, and neuroendocrine dysregulation.
+  quote: Fatigue - Discussed with low cortisol, low DHEA, chronic stress, low B12/iron
+    contexts, cortisol flattening, adrenal fatigue/burnout, low adiponectin, low melatonin/GH,
+    loneliness, and neuroendocrine dysregulation.
 - id: coconote-fm-approach-inflammation
   location: Anti-Inflammatory Supplements – CBD Oil
-  quote: You can see the effect of CBD oil in neurodegeneration, sleep anxiety, muscular pain, fibromyalgia, chronic fatigue
-    and all sorts of anti-inflammatory.
+  quote: You can see the effect of CBD oil in neurodegeneration, sleep anxiety, muscular
+    pain, fibromyalgia, chronic fatigue and all sorts of anti-inflammatory.
 - id: coconote-fm-food-allergies-sensitivities
   location: IgG Symptoms Section
   quote: patients might be having fatigue and low energy, weakness
 - id: coconote-fm-liver-detox-part1
   location: Biotransformation Energy Dependence
-  quote: it is atp dependent so we require energy for detoxification if somebody having a fatigue or low energy or even their
-    mitochondria is not working they cannot be detoxified.
+  quote: it is atp dependent so we require energy for detoxification if somebody having
+    a fatigue or low energy or even their mitochondria is not working they cannot
+    be detoxified.
 - id: coconote-fm-chronic-pain-fatigue
   location: Case Study
   quote: The only thing that she wants from me is to improve her energy.

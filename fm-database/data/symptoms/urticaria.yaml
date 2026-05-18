@@ -1,29 +1,42 @@
 slug: urticaria
 display_name: Urticaria
 aliases:
-  - hives
-  - welts
-  - wheals
+- hives
+- welts
+- wheals
+- itchy welts
 category: skin
 severity: common
-description: |
-  Hives or red, itchy welts indicating localized mast cell degranulation and
-  vascular permeability. Structurally similar salicylates in foods can also
-  worsen hives by acting directly on mast cells.
-when_to_refer: |
-  Refer if urticaria is accompanied by angioedema, throat involvement, or
-  systemic symptoms suggesting anaphylaxis.
+description: 'Raised, red, itchy welts indicating localized mast cell degranulation
+  and
+
+  increased vascular permeability. Acute urticaria is often allergen-driven;
+
+  chronic spontaneous urticaria (>6 weeks) frequently overlaps with MCAS
+
+  and histamine intolerance. Salicylate-rich foods can also worsen hives by
+
+  acting directly on mast cells.
+
+  '
+when_to_refer: Refer to dermatology or allergy for chronic urticaria (>6 weeks), angioedema,
+  or urticaria with systemic symptoms (breathing changes, hypotension).
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - histamine-intolerance
+- mast-cell-activation-syndrome
+- histamine-intolerance
+- systemic-mastocytosis
 linked_to_mechanisms:
-  - mast-cell-degranulation
-  - histamine-receptor-signaling
+- mast-cell-degranulation
+- histamine-receptor-signaling
 sources:
-  - id: webmd
-    location: 'Histamine Intolerance Symptoms'
-    quote: 'Urticaria is a common skin manifestation of histamine excess.'
-version: 1
+- id: webmd
+  location: Histamine Intolerance Symptoms
+  quote: Urticaria is a common skin manifestation of histamine excess.
+- id: cleveland-clinic
+  location: Cutaneous Mast Cell Manifestations
+  quote: Urticaria is direct evidence of vascular permeability changes from mast cell
+    mediator release.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

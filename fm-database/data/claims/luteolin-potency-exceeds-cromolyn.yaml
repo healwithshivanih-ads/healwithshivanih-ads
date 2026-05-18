@@ -1,0 +1,62 @@
+slug: luteolin-potency-exceeds-cromolyn
+statement: 'In in-vitro and preclinical studies, the natural flavonoid luteolin
+
+  demonstrates greater potency than the prescription mast cell stabilizer
+
+  cromolyn sodium in inhibiting mast cell degranulation.
+
+  '
+evidence_tier: fm_specific_thin
+rationale: 'Cromolyn is the long-standing pharmaceutical mast cell stabilizer but
+  has
+
+  poor oral bioavailability. Luteolin (often combined with quercetin in
+
+  liposomal formulations) appears in preclinical literature to outperform
+
+  cromolyn at equivalent concentrations. Human clinical comparison trials
+
+  are limited — confidence is moderated to fm_specific_thin until larger
+
+  RCTs replicate the effect in MCAS populations.
+
+  '
+coaching_translation: 'There''s growing interest in natural mast cell stabilizers
+  like luteolin
+
+  and quercetin because they may be at least as effective as prescription
+
+  cromolyn — and often better absorbed in liposomal form. This doesn''t
+
+  replace your clinician''s protocol, but it''s a reasonable adjunct for many
+
+  people with MCAS-pattern symptoms.
+
+  '
+caveats:
+- Most evidence is in-vitro or animal-model; large human trials are lacking.
+- Cromolyn's clinical role is established for specific MCAS indications — luteolin
+  is not a direct substitute.
+- Liposomal/phytosomal formulations matter — standard luteolin has poor absorption.
+out_of_scope_notes: 'Substituting a prescribed cromolyn protocol with luteolin is
+  a clinician
+
+  decision, not a coaching one.
+
+  '
+linked_to_topics:
+- mast-cell-activation-syndrome
+linked_to_mechanisms:
+- mast-cell-degranulation
+linked_to_supplements:
+- luteolin
+- quercetin
+sources:
+- id: eds-clinic
+  location: 'Comparison: Quercetin, Luteolin, and Cromolyn'
+  quote: Research suggests that luteolin is even more potent than cromolyn in inhibiting
+    mast cell degranulation.
+version: 1
+status: active
+updated_at: '2024-05-22'
+updated_by: shivani

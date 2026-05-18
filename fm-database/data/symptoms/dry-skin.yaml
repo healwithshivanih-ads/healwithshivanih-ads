@@ -11,13 +11,12 @@ aliases:
 - dry-skin-brittle-hair
 - coarse skin
 - breaking hair
-- hair loss
 - brittle nails
 - dry nails
 category: skin
 severity: common
-description: Skin becomes rough, coarse, dry, scaly, itchy, or thick due to reduced sweat gland activity and slowed cell turnover
-  in hypothyroidism.
+description: Skin becomes rough, coarse, dry, scaly, itchy, or thick due to reduced
+  sweat gland activity and slowed cell turnover in hypothyroidism.
 linked_to_topics:
 - hypothyroidism
 - autoimmune-thyroiditis
@@ -27,14 +26,16 @@ when_to_refer: ''
 sources:
 - id: vitaone-thyroid-ebook
   location: 'Chapter 4: Functions of Thyroid Hormones'
-  quote: Low Thyroid hormone may directly affects the skin causing dryness, thickening & scaling.
+  quote: Low Thyroid hormone may directly affects the skin causing dryness, thickening
+    & scaling.
 - id: vitaone-thyroid-toolkit
   location: Thyroid Screening Questionnaire
   quote: My skin is rough, coarse, dry, scaly, itchy, and thick
 - id: vitaone-health-coaching-toolkit
   location: Thyroid Screening Questionnaire — Signs and Symptoms
-  quote: My hair is rough, coarse dry, breaking, brittle, or falling out. My skin is rough, coarse, dry, scaly, itchy, and
-    thick. My nails have been dry and brittle, and break more easily.
+  quote: My hair is rough, coarse dry, breaking, brittle, or falling out. My skin
+    is rough, coarse, dry, scaly, itchy, and thick. My nails have been dry and brittle,
+    and break more easily.
 version: 2
 status: active
 updated_at: '2026-05-02'

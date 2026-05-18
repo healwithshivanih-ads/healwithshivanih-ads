@@ -1,40 +1,65 @@
 slug: systemic-mastocytosis
 display_name: Systemic Mastocytosis
 aliases:
-  - SM
-  - clonal mast cell disease
-summary: |
-  A rare neoplastic disorder characterized by clonal proliferation and
-  accumulation of abnormal mast cells in organs (bone marrow, liver, skin),
-  most commonly involving the KIT D816V mutation. Unlike MCAS, SM involves a
-  pathological increase in the physical number of mast cells and carries
-  risk of progression to mast cell leukaemia.
+- SM
+- clonal mast cell disease
+summary: 'Systemic Mastocytosis is a rare neoplastic disorder characterized by clonal
+
+  proliferation and accumulation of abnormal mast cells in organs (bone marrow,
+
+  liver, spleen, skin). The KIT D816V mutation is present in the majority of
+
+  adult cases. Unlike MCAS, SM involves a pathological increase in the actual
+
+  number of mast cells. Serum tryptase is persistently elevated (often
+
+  >20 ng/mL) and carries risk of progression to mast cell leukemia in
+
+  aggressive variants.
+
+  '
 common_symptoms:
-  - flushing
-  - urticaria
-  - tachycardia
+- flushing
+- urticaria
+- tachycardia
+- visceral-hypersensitivity
 red_flags:
-  - bone lesions
-  - serum tryptase persistently above 20 ng/mL
-  - unexplained weight loss
-  - organ infiltration
+- bone lesions
+- serum tryptase persistently above 20 ng/mL
+- unexplained weight loss
+- organ infiltration
+- organ infiltration on imaging
 related_topics:
-  - mast-cell-activation-syndrome
+- mast-cell-activation-syndrome
 key_mechanisms:
-  - mast-cell-degranulation
-coaching_scope_notes: |
-  This is a clinical/hematological diagnosis outside coaching scope. Coach
-  may support symptom-load reduction strategies once a clinician has
-  established the diagnosis and management plan.
-clinician_scope_notes: |
-  Urgent hematology referral for bone marrow biopsy if tryptase persistently
-  elevated or KIT mutation suspected.
+- mast-cell-degranulation
+coaching_scope_notes: 'This is a hematologic/oncologic diagnosis — strictly out of
+  coaching scope
+
+  for diagnosis or treatment. Coach supports lifestyle (trigger avoidance,
+
+  low-histamine eating) only as adjunct to clinician-led care.
+
+  '
+clinician_scope_notes: 'Urgent hematology referral for bone marrow biopsy is required
+  when tryptase
+
+  is persistently elevated or KIT mutation is suspected. Treatment may
+
+  include tyrosine kinase inhibitors. Coach surfaces patterns but defers all
+
+  diagnostic and treatment decisions.
+
+  '
 evidence_tier: strong
 sources:
-  - id: cleveland-clinic
-    location: 'Mastocytosis'
-    quote: 'Systemic mastocytosis involves clonal proliferation of abnormal mast cells.'
-version: 1
+- id: cleveland-clinic
+  location: Mastocytosis
+  quote: Systemic mastocytosis involves clonal proliferation of abnormal mast cells.
+- id: mastokids
+  location: Pediatric Mastocytosis Overview
+  quote: Mastocytosis is defined by abnormal accumulation of mast cells in tissues.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

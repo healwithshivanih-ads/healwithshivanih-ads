@@ -1,28 +1,39 @@
 slug: tachycardia
 display_name: Tachycardia
 aliases:
-  - palpitations
-  - episodic rapid heart rate
+- episodic rapid heart rate
+- rapid heart rate episodes
 category: cardiovascular
 severity: concerning
-description: |
-  Rapid heart rate or palpitations, often episodic and correlated with
-  mediator-release events. Vasoactive mediators like histamine cause sudden
-  blood pressure changes that trigger compensatory heart rate increases.
-when_to_refer: |
-  Refer for cardiology workup if tachycardia is sustained, accompanied by
-  chest pain, syncope, or occurs at rest without identifiable trigger.
+description: 'Episodic rapid heart rate or palpitations, often accompanied by flushing
+  or
+
+  lightheadedness. Vasoactive mediators (histamine, prostaglandins) cause
+
+  sudden vascular dilation and blood pressure drops, triggering compensatory
+
+  heart rate elevation. Pattern is typically post-prandial or post-trigger
+
+  rather than exertional.
+
+  '
+when_to_refer: Refer to cardiology or immunology for new-onset palpitations, syncope,
+  sustained tachycardia, or any chest pain. Consider POTS workup if orthostatic.
 linked_to_topics:
-  - mast-cell-activation-syndrome
-  - systemic-mastocytosis
+- mast-cell-activation-syndrome
+- systemic-mastocytosis
+- histamine-intolerance
 linked_to_mechanisms:
-  - mast-cell-degranulation
-  - histamine-receptor-signaling
+- mast-cell-degranulation
+- histamine-receptor-signaling
 sources:
-  - id: cleveland-clinic
-    location: 'Mast Cell Cardiovascular Effects'
-    quote: 'Histamine-driven vasodilation produces compensatory tachycardia.'
-version: 1
+- id: cleveland-clinic
+  location: Mast Cell Cardiovascular Effects
+  quote: Histamine-driven vasodilation produces compensatory tachycardia.
+- id: kresser-institute
+  location: MCAS Cardiovascular Symptoms
+  quote: Episodic tachycardia and blood pressure changes are common in MCAS.
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani

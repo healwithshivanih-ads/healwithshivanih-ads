@@ -1,11 +1,15 @@
 id: eds-clinic
-title: 'EDS Clinic — Flavonoids vs Cromolyn in MCAS'
-source_type: website
+title: EDS Clinic — MCAS and Hypermobility Supplement Protocols
+source_type: other
 quality: moderate
-notes: |
-  Specialized clinic resource comparing natural flavonoids with pharmaceutical
-  mast cell stabilizers in hypermobility and MCAS populations.
-version: 1
+notes: 'Specialized clinic resource comparing natural flavonoids and pharmaceutical
+
+  mast cell stabilizers in MCAS and Ehlers-Danlos populations.
+
+  '
+version: 2
 status: active
-updated_at: '2026-05-17'
+updated_at: '2024-05-22'
 updated_by: shivani
+authors: []
+publisher: EDS Clinic
