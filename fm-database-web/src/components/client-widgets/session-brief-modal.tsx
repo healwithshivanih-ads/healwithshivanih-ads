@@ -114,6 +114,18 @@ interface SessionBriefModalProps {
   clientSex?: string | null;
   clientConditions?: string[];
   clientMedications?: string[];
+  /**
+   * v0.75.4 — pending physical-exam verification reminders. When the
+   * client self-reported on intake but the coach hasn't verified
+   * bilaterally / run the timed lean test yet, the modal surfaces a
+   * one-line nudge so the coach knows to do it this session.
+   */
+  beightonSelfScore?: string[];        // intake-form self-ticks
+  beightonLastVerifiedAt?: string | null;
+  leanTestSymptomsSelfReport?: string[];
+  leanTestLastVerifiedAt?: string | null;
+  /** Optional — link to client Overview to run the verify panels. */
+  clientId?: string;
   onClose: () => void;
 }
 
@@ -124,6 +136,11 @@ export function SessionBriefModal({
   clientSex,
   clientConditions,
   clientMedications,
+  beightonSelfScore,
+  beightonLastVerifiedAt,
+  leanTestSymptomsSelfReport,
+  leanTestLastVerifiedAt,
+  clientId,
   onClose,
 }: SessionBriefModalProps) {
   const typeLabel = SESSION_TYPE_LABELS[session.session_type] ?? session.session_type;
@@ -134,6 +151,26 @@ export function SessionBriefModal({
   const demographicsLine = [clientAgeBand, clientSex].filter(Boolean).join(" · ");
   const hasConditions = (clientConditions?.length ?? 0) > 0;
   const hasMeds = (clientMedications?.length ?? 0) > 0;
+
+  // v0.75.4 — Compute "pending verify" flags. Beighton self-score ≥ 3
+  // OR any lean-test symptoms reported on intake → coach should verify
+  // in session. If a verified result exists within the last 90 days,
+  // skip the nudge (already done recently). Trend-tracking happens via
+  // the panels themselves.
+  const ninetyDaysAgo = Date.now() - 90 * 24 * 60 * 60 * 1000;
+  const beightonSelfHits = (beightonSelfScore ?? []).length;
+  const leanSelfHits = (leanTestSymptomsSelfReport ?? []).filter(
+    (s) => s && s !== "felt completely fine",
+  ).length;
+  const beightonVerifiedRecently = beightonLastVerifiedAt
+    ? Date.parse(beightonLastVerifiedAt) > ninetyDaysAgo
+    : false;
+  const leanVerifiedRecently = leanTestLastVerifiedAt
+    ? Date.parse(leanTestLastVerifiedAt) > ninetyDaysAgo
+    : false;
+  const beightonPending = beightonSelfHits >= 3 && !beightonVerifiedRecently;
+  const leanPending = leanSelfHits >= 2 && !leanVerifiedRecently;
+  const showVerifyBlock = beightonPending || leanPending;
 
   const cleanComplaints = session.presenting_complaints
     ? stripSessionTypeTag(session.presenting_complaints)
@@ -227,6 +264,50 @@ export function SessionBriefModal({
                     </p>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* ── v0.75.4 Verify-pending nudges (coach-only, hidden on print) ── */}
+            {showVerifyBlock && (
+              <div
+                className="brief-no-print rounded-lg border px-4 py-3"
+                style={{
+                  background: "rgba(255, 107, 53, 0.06)",
+                  borderColor: "rgba(255, 107, 53, 0.32)",
+                }}
+              >
+                <div className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: "#9a3412" }}>
+                  Pending verify this session
+                </div>
+                <ul className="space-y-1.5 text-sm" style={{ color: "#7c2d12" }}>
+                  {beightonPending && (
+                    <li>
+                      🦋 <strong>Beighton verify</strong> — client self-scored{" "}
+                      {beightonSelfHits}/5 on intake. Re-check bilaterally on
+                      Zoom for a /9 score.
+                      {clientId && (
+                        <span style={{ color: "#9a3412" }}>
+                          {" "}
+                          (Open client Overview → Beighton panel.)
+                        </span>
+                      )}
+                    </li>
+                  )}
+                  {leanPending && (
+                    <li>
+                      🩺 <strong>NASA lean test</strong> — client reported{" "}
+                      {leanSelfHits} standing-tolerance symptom
+                      {leanSelfHits === 1 ? "" : "s"} on intake. Run the timed
+                      10-min test together to objectively measure Δ-HR.
+                      {clientId && (
+                        <span style={{ color: "#9a3412" }}>
+                          {" "}
+                          (Open client Overview → NASA lean panel.)
+                        </span>
+                      )}
+                    </li>
+                  )}
+                </ul>
               </div>
             )}
 

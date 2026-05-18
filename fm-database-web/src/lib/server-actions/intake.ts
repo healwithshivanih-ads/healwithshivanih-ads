@@ -56,6 +56,13 @@ export type IntakeLookupOk = {
    * client record.
    */
   stage: IntakeStage;
+  /**
+   * v0.75.4 — true if the client has ALREADY submitted at least once
+   * (pre-discovery or full). Drives the welcome-back banner on the
+   * full intake form so returning clients don't see "Begin" as if
+   * starting from scratch.
+   */
+  previously_submitted: boolean;
 };
 export type IntakeLookupErr = { ok: false; error: string; message?: string };
 

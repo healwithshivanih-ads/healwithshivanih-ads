@@ -65,6 +65,7 @@ export default async function IntakeTokenPage({
       displayName={res.display_name}
       prefill={res.prefill}
       draft={res.intake_form_draft}
+      previouslySubmitted={res.previously_submitted}
     />
   );
 }

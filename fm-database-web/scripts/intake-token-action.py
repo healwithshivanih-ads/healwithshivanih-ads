@@ -242,6 +242,11 @@ def action_lookup(payload: dict) -> dict:
     # the pre-discovery form by mistake.
     is_signed_up = (data.get("engagement_status") or "").lower() == "signed_up"
     stage = "full" if (data.get("intake_full_unlocked_at") or is_signed_up) else "pre_discovery"
+    # v0.75.4 — `previously_submitted` lets the full intake show a
+    # "welcome back" banner instead of "Begin" when a client returns
+    # after submitting pre-discovery. The data they shared is preserved
+    # in client.yaml (and surfaced as `prefill` below).
+    previously_submitted = bool(data.get("intake_submitted_at"))
     return {
         "ok": True,
         "client_id": client_id,
@@ -249,6 +254,7 @@ def action_lookup(payload: dict) -> dict:
         "intake_form_draft": data.get("intake_form_draft") or {},
         "prefill": _prefill_from_client(data),
         "stage": stage,
+        "previously_submitted": previously_submitted,
     }
 
 

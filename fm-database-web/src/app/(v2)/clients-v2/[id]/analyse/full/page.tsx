@@ -247,6 +247,20 @@ export default async function FullAssessmentPage({
         priorAssessments={priorAssessments}
         activePlan={activePlanInfo}
         recentSessions={recentSessions}
+        triadSignals={{
+          histamine_signals: asStrArray(c.histamine_signals),
+          beighton_self_score: asStrArray(c.beighton_self_score),
+          lean_test_symptoms: asStrArray(c.lean_test_symptoms),
+          pem_screen: asStrArray(c.pem_screen),
+          mould_exposure: asStrArray(c.mould_exposure),
+          physical_exam_findings: Array.isArray(c.physical_exam_findings)
+            ? (c.physical_exam_findings as Array<{
+                kind: string;
+                assessed_at?: string;
+                result?: Record<string, unknown>;
+              }>)
+            : [],
+        }}
       />
     </AnalysePageShell>
   );

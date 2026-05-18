@@ -43,6 +43,7 @@ import {
   PlanBriefCard,
 } from "@/components/assess/assess-client";
 import { FmPanel, FmCollapsibleStep } from "@/components/fm";
+import { TriadDetectionBanner } from "@/components/assess/triad-detection-banner";
 
 interface IntakeSnapshot {
   chief_complaint?: string;
@@ -104,6 +105,24 @@ export interface FullAssessmentFormProps {
   activePlan: { slug: string; status: string } | null;
   /** Recent prior sessions — informs the "since intake" framing. */
   recentSessions: SessionSummary[];
+  /**
+   * v0.75.4 — raw fields the TriadDetectionBanner consumes. Plumbed
+   * separately from `intake` (which is the read-only recap) so the
+   * banner can compute MCAS-POTS-EDS pattern detection without further
+   * server calls.
+   */
+  triadSignals?: {
+    histamine_signals?: string[];
+    beighton_self_score?: string[];
+    lean_test_symptoms?: string[];
+    pem_screen?: string[];
+    mould_exposure?: string[];
+    physical_exam_findings?: Array<{
+      kind: string;
+      assessed_at?: string;
+      result?: Record<string, unknown>;
+    }>;
+  };
 }
 
 function Chip({ children, color = "var(--fm-text-secondary)" }: { children: React.ReactNode; color?: string }) {
@@ -358,6 +377,7 @@ export function FullAssessmentForm({
   priorAssessments,
   activePlan,
   recentSessions,
+  triadSignals,
 }: FullAssessmentFormProps) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -872,6 +892,35 @@ export function FullAssessmentForm({
           </div>
         )}
       </FmCollapsibleStep>
+
+      {/* v0.75.4 — Triad detection banner. Renders only when MCAS-POTS-
+          EDS / long-COVID / mould-CIRS pattern is detected from intake
+          signals. One-click adds the 4 relevant topic slugs to the AI
+          context so synthesis is triad-aware instead of treating each
+          finding in isolation. */}
+      <TriadDetectionBanner
+        histamineSignals={triadSignals?.histamine_signals}
+        beightonSelfScore={triadSignals?.beighton_self_score}
+        leanTestSymptoms={triadSignals?.lean_test_symptoms}
+        pemScreen={triadSignals?.pem_screen}
+        mouldExposure={triadSignals?.mould_exposure}
+        physicalExamFindings={triadSignals?.physical_exam_findings}
+        selectedTopics={topics}
+        onAddTopics={(slugs) => {
+          setTopics((prev) => {
+            const seen = new Set(prev);
+            const next = [...prev];
+            for (const s of slugs) {
+              if (!seen.has(s)) {
+                next.push(s);
+                seen.add(s);
+              }
+            }
+            return next;
+          });
+          toast.success(`Added ${slugs.length} triad topic${slugs.length === 1 ? "" : "s"} to AI context`);
+        }}
+      />
 
       {/* ── 2. Symptoms + conditions to focus on ──────────────────── */}
       <FmCollapsibleStep

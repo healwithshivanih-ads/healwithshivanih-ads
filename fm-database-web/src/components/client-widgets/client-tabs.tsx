@@ -1649,6 +1649,31 @@ export function ClientPageTabs({
             clientSex={client.sex ?? null}
             clientConditions={client.active_conditions ?? []}
             clientMedications={client.current_medications ?? client.medications ?? []}
+            clientId={clientId}
+            beightonSelfScore={
+              (client as unknown as { beighton_self_score?: string[] }).beighton_self_score
+            }
+            beightonLastVerifiedAt={(() => {
+              const findings =
+                ((client as unknown as { physical_exam_findings?: Array<{ kind: string; assessed_at: string }> })
+                  .physical_exam_findings) ?? [];
+              const latest = findings
+                .filter((f) => f.kind === "beighton")
+                .sort((a, b) => (b.assessed_at ?? "").localeCompare(a.assessed_at ?? ""))[0];
+              return latest?.assessed_at ?? null;
+            })()}
+            leanTestSymptomsSelfReport={
+              (client as unknown as { lean_test_symptoms?: string[] }).lean_test_symptoms
+            }
+            leanTestLastVerifiedAt={(() => {
+              const findings =
+                ((client as unknown as { physical_exam_findings?: Array<{ kind: string; assessed_at: string }> })
+                  .physical_exam_findings) ?? [];
+              const latest = findings
+                .filter((f) => f.kind === "nasa_lean_test")
+                .sort((a, b) => (b.assessed_at ?? "").localeCompare(a.assessed_at ?? ""))[0];
+              return latest?.assessed_at ?? null;
+            })()}
             onClose={() => setBriefSessionId(null)}
           />
         );

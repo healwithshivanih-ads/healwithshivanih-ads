@@ -1815,12 +1815,20 @@ export function IntakeForm({
   displayName,
   prefill,
   draft,
+  previouslySubmitted = false,
 }: {
   token: string;
   clientId: string;
   displayName: string;
   prefill: Record<string, unknown>;
   draft: Record<string, unknown>;
+  /**
+   * v0.75.4 — true if the client has already submitted the form at
+   * least once (typically the pre-discovery stage; coach has since
+   * unlocked the full intake). Drives the welcome-back screen so
+   * returning clients don't see "Begin" as if starting from scratch.
+   */
+  previouslySubmitted?: boolean;
 }) {
   void clientId;
   const initial = useMemo(() => mergeInitial(prefill, draft), [prefill, draft]);
@@ -2193,6 +2201,68 @@ export function IntakeForm({
 
   // ── Welcome screen ───────────────────────────────────────────────────
   if (!hasBegun) {
+    // v0.75.4 — Returning client (typically: pre-discovery submitted,
+    // coach has now unlocked the full intake). Show a "welcome back"
+    // screen that reflects continuity rather than starting from scratch.
+    if (previouslySubmitted) {
+      return (
+        <div className="fm-welcome">
+          <div className="fm-welcome__eyebrow">
+            <span className="pulse" aria-hidden="true" />
+            <span>Welcome back · longer version unlocked</span>
+          </div>
+
+          <h1 className="fm-welcome__hi">
+            Welcome back{firstName ? <>, <em>{firstName}</em></> : null} ✨
+          </h1>
+
+          <p className="fm-welcome__body">
+            I&apos;ve read what you shared before our discovery call. Now that we&apos;re
+            working together, I&apos;d like to learn more about your day-to-day,
+            your body&apos;s patterns, and the longer arc of your story — so the plan
+            I build for you is specifically yours, not a template.
+          </p>
+
+          <p className="fm-welcome__body">
+            <strong>Your earlier answers are saved.</strong> You&apos;ll see them
+            pre-filled in the early sections — feel free to review, edit, or
+            skim through. The newer sections (Day-to-day, Five Pillars, Body,
+            Joints &amp; standing, Cycle deep-dive) are the ones I&apos;m most
+            keen to learn.
+          </p>
+
+          <hr className="fm-divider-thin" />
+
+          <div className="fm-welcome__meta">
+            <div className="fm-welcome__meta-row">
+              <span className="fm-pulse" aria-hidden="true" />
+              <span>About 20–25 more minutes · pauses any time</span>
+            </div>
+            <div className="fm-welcome__meta-row">
+              <span className="fm-pulse" aria-hidden="true" />
+              <span>Your pre-discovery answers carry through automatically</span>
+            </div>
+            <div className="fm-welcome__meta-row">
+              <span className="fm-pulse" aria-hidden="true" />
+              <span>Skip anything that feels heavy or doesn&apos;t apply</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="fm-submit"
+            style={{ marginTop: "auto" }}
+            onClick={() => setHasBegun(true)}
+          >
+            Pick up where I left off
+          </button>
+          <span className="fm-submit__sub">
+            Your earlier answers + everything you add now both save themselves.
+          </span>
+        </div>
+      );
+    }
+
     return (
       <div className="fm-welcome">
         <div className="fm-welcome__eyebrow">
