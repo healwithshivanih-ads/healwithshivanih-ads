@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intake screening illustrations preview</title>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; background:#FAFAFA; color:#1a1a1a; padding: 32px 24px; max-width: 920px; margin: 0 auto; }
+    h1 { font-size: 22px; margin-top: 0; }
+    h2 { font-size: 16px; margin-top: 36px; padding-top: 12px; border-top: 1px solid #e5e7eb; }
+    .note { background: #fff8e6; border: 1px solid #f0c84a; padding: 12px 16px; border-radius: 8px; font-size: 13px; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin: 14px 0; display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: center; }
+    .card svg { background: #f5f5f4; border-radius: 8px; }
+    .label { font-weight: 600; font-size: 14px; margin-bottom: 4px; color:#2b2d42; }
+    .hint { font-size: 12px; color: #6b7280; line-height: 1.5; }
+    .checkbox { display: inline-block; width: 14px; height: 14px; border: 1.5px solid #94a3b8; border-radius: 3px; vertical-align: middle; margin-right: 6px; }
+    .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; background: #eef2ff; color: #4338ca; font-size: 11px; font-weight: 600; margin-left: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Intake screening illustrations — prototype</h1>
+  <div class="note">
+    <strong>Status:</strong> hand-drawn SVG placeholders. Clear enough for prototype + client comprehension, but not polished art.<br>
+    <strong>Replacement plan:</strong> Wikimedia Commons has a published <em>Beighton score</em> illustration (CC-BY-SA) we can swap in; or commission line drawings later. The form-component code is structured so the SVG file is replaceable in one place per question.
+  </div>
+
+  <h2>Beighton hypermobility screen <span class="pill">5 questions</span></h2>
+  <p class="hint">Self-scored by client (out of 5). Coach re-checks bilateral (out of 9) on the Zoom call using the same images. Score isn't shown to client (avoids self-diagnosis) but populates the SOAP Objective block.</p>
+
+  <!-- ── 1. Pinky finger ── -->
+  <div class="card">
+    <svg viewBox="0 0 160 160" width="160" height="160">
+      <!-- forearm -->
+      <rect x="60" y="100" width="40" height="56" rx="6" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+      <!-- palm -->
+      <rect x="55" y="74" width="50" height="32" rx="6" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+      <!-- ring fingers (normal, pointing up) -->
+      <line x1="65" y1="74" x2="65" y2="40" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+      <line x1="75" y1="74" x2="75" y2="34" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+      <line x1="85" y1="74" x2="85" y2="40" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+      <!-- pinky BENT BACKWARDS, past 90° -->
+      <path d="M 100 74 Q 124 64 124 100" fill="none" stroke="#dc2626" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- angle arc -->
+      <path d="M 100 74 A 14 14 0 0 1 114 88" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <text x="118" y="80" font-size="9" fill="#dc2626" font-family="system-ui">&gt;90°</text>
+    </svg>
+    <div>
+      <div class="label"><span class="checkbox"></span> 1. Pinky finger bends back past 90°</div>
+      <div class="hint">Hold your hand flat (palm down). With the other hand, lift your little finger backwards. Can you bend it past a 90° (right) angle, easily and without pain? Either hand counts.</div>
+    </div>
+  </div>
+
+  <!-- ── 2. Thumb to forearm ── -->
+  <div class="card">
+    <svg viewBox="0 0 160 160" width="160" height="160">
+      <!-- forearm (vertical) -->
+      <rect x="74" y="20" width="36" height="100" rx="6" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+      <!-- wrist crease -->
+      <line x1="74" y1="118" x2="110" y2="118" stroke="#475569" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <!-- hand bent down -->
+      <rect x="68" y="120" width="48" height="20" rx="4" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+      <!-- fingers (curled away) -->
+      <path d="M 116 130 Q 130 132 132 142" fill="none" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+      <!-- THUMB bent down, touching forearm -->
+      <path d="M 68 130 Q 60 120 78 60" fill="none" stroke="#dc2626" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- contact point -->
+      <circle cx="78" cy="60" r="3.5" fill="#dc2626"/>
+    </svg>
+    <div>
+      <div class="label"><span class="checkbox"></span> 2. Thumb touches inside of forearm</div>
+      <div class="hint">Bend your wrist down and use the other hand to push your thumb towards the inside of your forearm. Can it reach (or come within a finger's width)? Either thumb counts.</div>
+    </div>
+  </div>
+
+  <!-- ── 3. Elbow hyperextension ── -->
+  <div class="card">
+    <svg viewBox="0 0 200 160" width="180" height="160">
+      <!-- upper arm (horizontal-ish, slanting down-right) -->
+      <line x1="20" y1="70" x2="100" y2="80" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+      <!-- forearm BENT BACKWARDS past straight (going UP and right) -->
+      <line x1="100" y1="80" x2="180" y2="50" stroke="#dc2626" stroke-width="14" stroke-linecap="round"/>
+      <!-- "normal straight" reference (dashed) -->
+      <line x1="100" y1="80" x2="180" y2="90" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+      <text x="155" y="105" font-size="9" fill="#94a3b8" font-family="system-ui">straight</text>
+      <text x="145" y="38" font-size="10" fill="#dc2626" font-family="system-ui">&gt;10° back</text>
+      <!-- angle arc -->
+      <path d="M 130 80 A 30 30 0 0 0 130 65" fill="none" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2"/>
+    </svg>
+    <div>
+      <div class="label"><span class="checkbox"></span> 3. Elbow bends backwards past straight</div>
+      <div class="hint">Stretch your arm out straight and have someone take a side photo (or use a mirror). If the elbow visibly curves back past straight by more than ~10°, tick this. Either arm counts.</div>
+    </div>
+  </div>
+
+  <!-- ── 4. Knee hyperextension ── -->
+  <div class="card">
+    <svg viewBox="0 0 160 220" width="140" height="180">
+      <!-- thigh, vertical -->
+      <line x1="80" y1="20" x2="80" y2="100" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+      <!-- shin bent BACKWARDS past straight -->
+      <line x1="80" y1="100" x2="50" y2="200" stroke="#dc2626" stroke-width="14" stroke-linecap="round"/>
+      <!-- "normal straight" reference -->
+      <line x1="80" y1="100" x2="80" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+      <text x="84" y="180" font-size="9" fill="#94a3b8" font-family="system-ui">straight</text>
+      <text x="6" y="170" font-size="10" fill="#dc2626" font-family="system-ui">&gt;10° back</text>
+      <!-- foot -->
+      <rect x="38" y="200" width="32" height="8" rx="2" fill="#475569"/>
+    </svg>
+    <div>
+      <div class="label"><span class="checkbox"></span> 4. Knee bends backwards past straight</div>
+      <div class="hint">Stand sideways to a mirror or have someone take a side photo. Lock your knee. If it visibly curves back past straight by more than ~10°, tick this. Either knee counts.</div>
+    </div>
+  </div>
+
+  <!-- ── 5. Palms to floor ── -->
+  <div class="card">
+    <svg viewBox="0 0 200 160" width="180" height="140">
+      <!-- floor -->
+      <line x1="10" y1="150" x2="190" y2="150" stroke="#94a3b8" stroke-width="2"/>
+      <!-- head -->
+      <circle cx="50" cy="120" r="12" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+      <!-- torso (folded forward) -->
+      <line x1="60" y1="120" x2="130" y2="30" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+      <!-- arms reaching down to floor -->
+      <line x1="58" y1="120" x2="80" y2="150" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
+      <line x1="62" y1="118" x2="100" y2="150" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/>
+      <!-- legs (STRAIGHT, locked) -->
+      <line x1="130" y1="30" x2="140" y2="150" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+      <!-- knee straightness marker -->
+      <text x="146" y="90" font-size="10" fill="#475569" font-family="system-ui">knees</text>
+      <text x="146" y="102" font-size="10" fill="#475569" font-family="system-ui">locked</text>
+      <text x="146" y="114" font-size="10" fill="#475569" font-family="system-ui">straight</text>
+      <!-- floor contact indicator -->
+      <text x="68" y="145" font-size="10" fill="#dc2626" font-family="system-ui">palms flat</text>
+    </svg>
+    <div>
+      <div class="label"><span class="checkbox"></span> 5. Palms flat on the floor with knees straight</div>
+      <div class="hint">Stand with feet together. Bend forward from the hips. With knees completely locked straight (don't bend them at all), can you place both palms flat on the floor? Only tick if knees stay 100% straight.</div>
+    </div>
+  </div>
+
+  <h2>NASA 10-minute lean test <span class="pill">conditional</span></h2>
+  <p class="hint">Only asks the HR-measurement version if client has a device. Otherwise: symptom-only screening.</p>
+
+  <div class="card">
+    <svg viewBox="0 0 200 220" width="160" height="180">
+      <!-- wall -->
+      <line x1="40" y1="10" x2="40" y2="200" stroke="#94a3b8" stroke-width="4"/>
+      <!-- floor -->
+      <line x1="20" y1="200" x2="190" y2="200" stroke="#94a3b8" stroke-width="2"/>
+      <!-- person standing, head + shoulders touching wall, feet OUT -->
+      <!-- head -->
+      <circle cx="50" cy="30" r="10" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+      <!-- back of head touching wall (slight contact dot) -->
+      <circle cx="42" cy="30" r="2" fill="#dc2626"/>
+      <!-- torso (slanted slightly outward from wall) -->
+      <line x1="48" y1="40" x2="70" y2="130" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+      <!-- shoulders touching wall reference -->
+      <circle cx="42" cy="45" r="2" fill="#dc2626"/>
+      <!-- arms relaxed by sides -->
+      <line x1="48" y1="55" x2="56" y2="110" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+      <line x1="68" y1="65" x2="82" y2="120" stroke="#475569" stroke-width="6" stroke-linecap="round"/>
+      <!-- legs, feet about 15 cm from wall -->
+      <line x1="70" y1="130" x2="78" y2="200" stroke="#475569" stroke-width="14" stroke-linecap="round"/>
+      <!-- distance arrow from wall to heel -->
+      <line x1="40" y1="206" x2="78" y2="206" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <text x="42" y="218" font-size="9" fill="#dc2626" font-family="system-ui">~15 cm</text>
+      <!-- legend -->
+      <text x="100" y="40" font-size="10" fill="#dc2626" font-family="system-ui">• head touches</text>
+      <text x="100" y="55" font-size="10" fill="#dc2626" font-family="system-ui">• shoulders touch</text>
+      <text x="100" y="70" font-size="10" fill="#dc2626" font-family="system-ui">• arms relaxed</text>
+      <text x="100" y="85" font-size="10" fill="#dc2626" font-family="system-ui">• don't fidget</text>
+    </svg>
+    <div>
+      <div class="label">Lean position: head + shoulders touching the wall, heels ~15 cm from the wall</div>
+      <div class="hint">Hold this position for 10 minutes (or sit if you feel close to fainting). Don't fidget or shift weight — let your body relax against the wall.</div>
+    </div>
+  </div>
+
+  <h2>Form flow — device-conditional</h2>
+  <pre style="background:#f1f5f9; padding:14px; border-radius:8px; font-size:12px; line-height:1.55;">
+Q1 (always asked):
+  "Do you have any of these to measure heart rate?"
+    ☐ Smartwatch (Apple Watch, Fitbit, Garmin, Whoop)
+    ☐ Smart ring (Oura, Ultrahuman, Ringconn)
+    ☐ Home blood-pressure monitor (most cuffs show HR too)
+    ☐ Fingertip pulse oximeter
+    ☐ Chest strap (Polar / Wahoo)
+    ☐ Phone app (less accurate, but I'll use one)
+    ☐ None of the above
+
+IF none ticked  →  show symptom-only block:
+  "When you stand for 5+ minutes (queues, kitchen, lift),
+   tick anything you've noticed:"
+    ☐ Lightheaded / dizzy
+    ☐ Vision tunnelling or going dark
+    ☐ Heart racing or pounding
+    ☐ Brain fog / hard to think
+    ☐ Hot / flushed / sweaty
+    ☐ Cold / clammy
+    ☐ Nauseous
+    ☐ Had to sit down
+    ☐ Felt completely fine
+
+IF any device ticked  →  show full HR-measurement block:
+  "Quick self-check — 12 minutes total:
+   1. Lie down 5 minutes. Note your HR: ___ bpm
+   2. Stand against a wall, heels 15 cm from wall, head + shoulders
+      touching wall. Stay 10 minutes (or sit earlier if needed).
+   3. HR after standing: ___ bpm
+   4. Symptoms during the 10 minutes:  [same chip list as above]"
+
+  Coach side: delta-HR ≥ 30 + symptoms = POTS pattern flag.</pre>
+
+  <h2>Coach in-session (Zoom)</h2>
+  <p class="hint">Since clients rarely come to the office, "in-session" = Zoom screen-share. Coach has a small panel on the client Overview:</p>
+
+  <pre style="background:#f1f5f9; padding:14px; border-radius:8px; font-size:12px; line-height:1.55;">
+🩺 NASA Lean Test  (run on Zoom)
+
+  Client device:   [Apple Watch] (from intake)
+  Resting HR:      __ bpm   [Start 5-min supine timer]
+  After 1 min:     __ bpm   __/__ mmHg
+  After 3 min:     __ bpm   __/__ mmHg
+  After 5 min:     __ bpm   __/__ mmHg
+  After 7 min:     __ bpm   __/__ mmHg
+  After 10 min:    __ bpm   __/__ mmHg
+
+  Delta-HR (peak): __ bpm   ← auto-calc
+  POTS pattern:   [○ flagged]
+
+  Symptoms observed: [chips]
+
+  Notes:  [textarea]
+  [💾 Save assessment]
+  </pre>
+
+  <pre style="background:#f1f5f9; padding:14px; border-radius:8px; font-size:12px; line-height:1.55;">
+🦋 Beighton Verify  (client self-scored 4/5)
+
+  Side-by-side, bilateral check:
+  ☐ R Pinky &gt;90°    ☐ L Pinky &gt;90°
+  ☐ R Thumb→forearm ☐ L Thumb→forearm
+  ☐ R Elbow &gt;10°   ☐ L Elbow &gt;10°
+  ☐ R Knee &gt;10°    ☐ L Knee &gt;10°
+  ☐ Palms to floor (single, not bilateral)
+
+  Confirmed score: __/9  (standard Beighton)
+  hEDS suspicion threshold: 5/9 in adults &lt; 50, 4/9 over 50, 6/9 in adolescents.
+  [💾 Save assessment]</pre>
+
+  <h2>SOAP — what gets added (under Objective)</h2>
+  <pre style="background:#f1f5f9; padding:14px; border-radius:8px; font-size:12px; line-height:1.55;">
+O — Objective                                Measurements + flagged labs
+
+  Weight 80 kg · Height 150 cm · BMI 35.6 · BP 128/82
+
+  Physical exam findings (this session):
+    🦋 Beighton 6/9 — positive for hypermobility
+    🩺 NASA lean test — delta-HR +42 bpm, POTS pattern POSITIVE
+       (supine 68 → standing 110 at 8 min; symptoms: lightheaded, palpitations)
+
+  Flagged labs (8):
+    Vitamin B12 1331 pg/mL ↑   400–900 FM optimal
+    Folate 24.0 ng/mL ↑        15–24 FM optimal
+    ...
+  </pre>
+
+  <p class="note">
+    These illustrations are placeholders. To replace with licensed Wikimedia
+    images later: see <code>fm-database-web/src/components/intake-forms/illustrations/</code>
+    (forthcoming) — each test is one SVG component, swap-in is one file per test.
+  </p>
+</body>
+</html>
