@@ -1,0 +1,418 @@
+slug: premenstrual-syndrome
+display_name: Premenstrual Syndrome & PMDD (Functional Medicine)
+description: 'Functional medicine approach to PMS and PMDD — cyclic luteal-phase
+  symptoms (mood, breast tenderness, bloating, headaches, cravings) mapped to root
+  drivers — estrogen excess + impaired clearance (cholestasis, gut estrobolome,
+  liver phase II), low-serotonin and GABA states, B6 / magnesium / zinc / vitamin
+  E cofactor depletion, hypothyroidism (commonly underlying), HPA dysregulation,
+  and dietary acid load. Vitex agnus-castus is the lead botanical; B6 50-100 mg
+  divided doses + Mg + Zn + E is the core nutrient stack. Dietary playbook —
+  vegetarian / mostly-vegetarian, low fat, low sugar, low caffeine, low salt,
+  high fibre, soy isoflavones (in equol producers).
+
+  '
+aliases:
+- pms
+- pmdd
+- premenstrual-dysphoric-disorder
+- luteal-phase-symptoms
+related_topics:
+- premenstrual-syndrome
+- estrogen-dominance
+- perimenopause-and-menopause
+- hypothyroidism
+- hpa-axis-dysregulation
+- major-depressive-disorder
+- anxiety
+related_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+- serotonin-melatonin-sleep-axis
+- gaba-receptor-modulation
+- hpa-axis-dysregulation
+- estrogen-metabolism
+- gut-estrogen-axis
+tree:
+- label: 🔴 Clinical Presentation
+  children:
+  - label: Mood (Most Common)
+    children:
+    - label: Irritability, Anger
+      children: []
+      linked_kind: symptom
+      linked_slug: irritability
+      notes: ''
+    - label: Depression, Low Mood
+      children: []
+      linked_kind: symptom
+      linked_slug: depression
+      notes: ''
+    - label: Anxiety, Tension
+      children: []
+      linked_kind: topic
+      linked_slug: anxiety
+      notes: ''
+    - label: Affective Lability (PMDD)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+  - label: Physical
+    children:
+    - label: Breast Tenderness / Swelling
+      children: []
+      linked_kind: symptom
+      linked_slug: breast-tenderness
+      notes: ''
+    - label: Abdominal Bloating
+      children: []
+      linked_kind: symptom
+      linked_slug: abdominal-bloating
+      notes: ''
+    - label: Headache / Migraine
+      children: []
+      linked_kind: topic
+      linked_slug: migraine-headache
+      notes: ''
+    - label: Edema (Fingers / Ankles)
+      children: []
+      linked_kind: symptom
+      linked_slug: water-retention
+      notes: ''
+    - label: Backache / Muscle Aches
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+  - label: Cognitive / Energy
+    children:
+    - label: Food Cravings (Especially Sugar)
+      children: []
+      linked_kind: symptom
+      linked_slug: food-cravings
+      notes: ''
+    - label: Fatigue / Decreased Energy
+      children: []
+      linked_kind: symptom
+      linked_slug: fatigue
+      notes: ''
+    - label: Poor Concentration
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Sleep Disturbance (Hypersomnia or Insomnia)
+      children: []
+      linked_kind: topic
+      linked_slug: insomnia
+      notes: ''
+  - label: PMDD Severe Subset (2.5-5%)
+    children:
+    - label: ≥5 symptoms with 1 core mood symptom
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'DSM-V diagnostic — symptoms only in luteal phase, peak pre-menses, remit
+        with menses, x2 cycles minimum.'
+    - label: Suicidal Ideation — RED FLAG
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Immediate psychiatry referral.'
+- label: 🧬 Root Mechanisms
+  children:
+  - label: Estrogen Excess + Impaired Clearance
+    children:
+    - label: Enterohepatic Recirculation
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-enterohepatic-recirculation-uterine
+      notes: ''
+    - label: Cholestasis (Sluggish Bile)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Caused by estrogen excess, OCPs, pregnancy, alcohol, endotoxins, Gilbert syndrome, anabolic steroids.'
+    - label: Gut Estrobolome Dysbiosis
+      children: []
+      linked_kind: mechanism
+      linked_slug: gut-estrogen-axis
+      notes: ''
+    - label: Phase II Liver Detox Insufficiency
+      children: []
+      linked_kind: mechanism
+      linked_slug: estrogen-metabolism
+      notes: ''
+    - label: 2-OH vs 16-α-OH Estrogen Imbalance
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'I3C / DIM shifts toward protective 2-OH pathway.'
+  - label: Neurotransmitter Disruption
+    children:
+    - label: Low Tissue Serotonin
+      children: []
+      linked_kind: mechanism
+      linked_slug: serotonin-melatonin-sleep-axis
+      notes: ''
+    - label: Low Endorphins (Lutealphase Drop)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'High estrogen/progesterone ratio reduces endorphins. Stress lowers; exercise raises.'
+    - label: GABA Insufficiency
+      children: []
+      linked_kind: mechanism
+      linked_slug: gaba-receptor-modulation
+      notes: ''
+    - label: Opioid System Dysregulation
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+  - label: HPA-Axis Dysregulation
+    children:
+    - label: Chronic Stress Loop
+      children: []
+      linked_kind: mechanism
+      linked_slug: hpa-axis-dysregulation
+      notes: ''
+    - label: Elevated Cortisol
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: DHEA Depletion
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+  - label: Hypothyroidism (Common Underlying)
+    children:
+    - label: Large % of PMS Women
+      children: []
+      linked_kind: topic
+      linked_slug: hypothyroidism
+      notes: 'Thyroid hormone replacement gives complete relief in confirmed cases.'
+    - label: Hashimotos Specifically
+      children: []
+      linked_kind: topic
+      linked_slug: autoimmune-thyroiditis
+      notes: ''
+    - label: Impaired T4→T3 Conversion (Zn/Cu/Se)
+      children: []
+      linked_kind: mechanism
+      linked_slug: impaired-t4-to-t3-conversion
+      notes: ''
+- label: 🥦 FM Approach (Diet First)
+  children:
+  - label: Pizzorno's Top 7 Dietary Recs
+    children:
+    - label: Vegetarian / Mostly Vegetarian (50% lower free estrogen)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: ↓ Fat (saturated especially)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Cuts circulating estrogen 36%. Keep total fat <30% cal.'
+    - label: Eliminate Sugar
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Raises insulin → Na/water retention → bloating, breast pain.'
+    - label: Eliminate Caffeine
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Worsens anxiety, irritability, breast tenderness.'
+    - label: ↑ Soy (Equol Producers)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Phytoestrogens; equol-producer status determines response.'
+    - label: ↓ Salt (under 1800 mg/day)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+    - label: Avoid Xenoestrogens
+      children: []
+      linked_kind: topic
+      linked_slug: environmental-toxin-load
+      notes: 'Plastics, pesticides, conventional dairy, fragrances.'
+  - label: Estrogen Clearance Support
+    children:
+    - label: High Fibre (35g+/day)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Binds estrogens for fecal excretion.'
+    - label: Cruciferous Vegetables (I3C / DIM)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Broccoli, kale, Brussels sprouts, cauliflower.'
+    - label: Flaxseed (2 tbsp BID)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Lignans; cuts hot flashes 50% (perimenopausal overlap).'
+  - label: Lifestyle
+    children:
+    - label: Regular Exercise (Non-Competitive)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Elevates endorphins, lowers cortisol, modulates estrogen. 3.5+ h/week.'
+    - label: Stress Management (CBT, Yoga, Biofeedback)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'CBT shows sustained benefit superior to medications in some trials.'
+    - label: Limit Alcohol, Avoid Tobacco
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+- label: 💊 Interventions (Supplement Stack)
+  children:
+  - label: Core Nutrient Stack
+    children:
+    - label: Vitamin B6 50-100 mg/day Divided
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-b6
+      notes: '≤50 mg per dose (liver kinetics). P5P form for poor converters.'
+    - label: Magnesium (Glycinate / Citrate)
+      children: []
+      linked_kind: supplement
+      linked_slug: magnesium-glycinate
+      notes: '200-400 mg/day; pairs with B6.'
+    - label: Zinc 15-30 mg
+      children: []
+      linked_kind: supplement
+      linked_slug: zinc
+      notes: ''
+    - label: Vitamin E (Mixed Tocopherols)
+      children: []
+      linked_kind: supplement
+      linked_slug: vitamin-e
+      notes: '400 IU/day; helps breast tenderness, fibrocystic pattern.'
+  - label: Lead Botanicals
+    children:
+    - label: Vitex agnus-castus (Chaste Tree)
+      children: []
+      linked_kind: supplement
+      linked_slug: chaste-tree-berry
+      notes: '175-225 mg AM of 4:1 extract. 2-3 cycles to build. Pituitary D2 → LH → progesterone.'
+    - label: St Johns Wort (For Depressive PMS)
+      children: []
+      linked_kind: supplement
+      linked_slug: st-johns-wort
+      notes: 'Many drug interactions; never with SSRIs.'
+    - label: Ginkgo biloba (Breast Pain, Cognitive)
+      children: []
+      linked_kind: supplement
+      linked_slug: ginkgo-biloba
+      notes: ''
+  - label: Hormonal / Thyroid (If Indicated)
+    children:
+    - label: Thyroid Workup + Treatment
+      children: []
+      linked_kind: topic
+      linked_slug: hypothyroidism
+      notes: 'TSH + free T4 + free T3 + reverse T3 + TPO antibodies.'
+    - label: Natural Progesterone Cream (Luteal Phase Insufficiency)
+      children: []
+      linked_kind: supplement
+      linked_slug: natural-progesterone-cream
+      notes: 'Days 15-26 of cycle; clinician-prescribed.'
+  - label: For PMDD Severe
+    children:
+    - label: SSRI (Fluoxetine, Sertraline, Paroxetine)
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: 'Clinician-prescribed; daily or luteal-phase-only.'
+    - label: CBT Equally Effective
+      children: []
+      linked_kind: null
+      linked_slug: null
+      notes: ''
+- label: 🎯 Coaching Goals
+  children:
+  - label: 2-Cycle Symptom Diary First
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Confirm luteal-phase pattern before treating.'
+  - label: Differentiate PMS vs PMDD vs Underlying Mood Disorder
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Many "PMS" cases are actually hypothyroidism or unipolar depression.'
+  - label: Rule Out Hypothyroidism Early
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Single highest-leverage workup item.'
+  - label: Build Foundational Diet + Nutrient Stack First
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'B6 + Mg + Zn + E + Vitex covers most cases in 2-3 cycles.'
+  - label: Add Botanicals / Hormonal Layer Based on Pattern
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Vitex first; SJW for depressive PMS; progesterone cream for luteal insufficiency.'
+  - label: Refer PMDD with Suicidal Ideation Immediately
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: ''
+- label: 🧪 Labs to Track
+  children:
+  - label: TSH + Free T4 + Free T3 + Reverse T3 + TPO Antibodies
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Hypothyroidism workup — non-negotiable in PMS.'
+  - label: AM Cortisol + DHEA-S (Salivary 4-Point Better)
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'HPA-axis status.'
+  - label: Estradiol + Progesterone (Day 21)
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Confirm luteal insufficiency or estrogen dominance.'
+  - label: 25(OH)D, Ferritin, B12, Folate
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Common contributors to fatigue and mood.'
+  - label: 2-OH / 16-α-OH Estrogen Ratio (Urine)
+    children: []
+    linked_kind: null
+    linked_slug: null
+    notes: 'Estrogen-metabolism profile if I3C/DIM trial considered.'
+sources:
+- id: pizzorno-womens-trio
+  location: Premenstrual Syndrome (pp 830-842)
+  quote: PMS affects 30-40% of menstruating women. Therapeutic interventions span
+    estrogen metabolism support, neurotransmitter precursors, HPA axis support,
+    thyroid screening, and vegetarian-leaning diet.
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — PMS cross-reference (pp 8-28)
+  quote: PMS-C subtype features food cravings, headache, fatigue. Reactive
+    hypoglycemia confirmed on GTT in luteal phase. Hypoglycemia and PMS share
+    overlapping mechanisms.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
