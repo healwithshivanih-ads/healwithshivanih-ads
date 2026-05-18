@@ -22,7 +22,7 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { unlockFullIntake, sendIntakeInviteViaApi } from "@/lib/server-actions/intake";
+import { unlockFullIntake, sendIntakeUnlockedViaApi } from "@/lib/server-actions/intake";
 
 interface Props {
   clientId: string;
@@ -129,19 +129,17 @@ export function UnlockFullIntakeButton({
 }
 
 /**
- * v0.75.4 — post-unlock confirmation tile with optional "Notify client"
- * WhatsApp send. Until Meta approves a dedicated `fm_intake_unlocked_v1`
- * template, reuses the approved `fm_intake_invite` template — the body
- * still works ("here's your intake link"), and the client returns to the
- * same URL where their earlier answers are already saved + the new
- * sections appear below the welcome-back banner.
+ * v0.75.9 — post-unlock confirmation tile with one-click "Notify client"
+ * WhatsApp send. Uses `sendIntakeUnlockedViaApi` which env-switches
+ * between two templates:
+ *   - fm_intake_unlocked_v1 (welcome-back copy) when
+ *     FM_INTAKE_UNLOCKED_TEMPLATE_APPROVED=1
+ *   - fm_intake_invite (always-approved fallback) otherwise
  *
- * TODO when fm_intake_unlocked_v1 ships from wa-server: swap
- * sendIntakeInviteViaApi for a dedicated server action that uses the
- * new template name. The unlock-specific copy reads better:
- *   "Hi {{1}} 👋 Now that we're working together, I've opened the
- *    longer intake. Your earlier answers are saved — pick up where you
- *    left off: {{2}}. Shivani"
+ * Submitted to Meta 2026-05-18 (PENDING). Once it clears, flip the env
+ * flag on the Mac:
+ *   echo 'FM_INTAKE_UNLOCKED_TEMPLATE_APPROVED=1' >> .env.local
+ *   pm2 restart fm-coach --update-env
  */
 function UnlockedConfirmation({
   clientId,
@@ -157,10 +155,15 @@ function UnlockedConfirmation({
 
   const onNotify = () => {
     startNotify(async () => {
-      const res = await sendIntakeInviteViaApi(clientId);
+      const res = await sendIntakeUnlockedViaApi(clientId);
       if (res.ok) {
         setNotified("sent");
-        toast.success("📨 Client notified — link sent via WhatsApp");
+        const usingUnlockTemplate = res.template === "fm_intake_unlocked_v1";
+        toast.success(
+          usingUnlockTemplate
+            ? "📨 Client notified via fm_intake_unlocked_v1 (welcome-back copy)"
+            : "📨 Client notified — using fm_intake_invite fallback (set FM_INTAKE_UNLOCKED_TEMPLATE_APPROVED=1 once the dedicated template clears Meta)",
+        );
         setTimeout(() => setNotified("idle"), 8000);
       } else {
         setNotified("failed");

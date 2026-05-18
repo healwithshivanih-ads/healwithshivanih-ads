@@ -324,3 +324,75 @@ export async function sendIntakeInviteViaApi(
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };
   return { ok: true, url };
 }
+
+/**
+ * v0.75.9 — "your full intake is now open" notification, sent after the
+ * coach clicks 🔓 Unlock full intake on the client Overview. Uses the
+ * approved Meta template `fm_intake_unlocked_v1` (UTILITY, 2 params:
+ * firstName + intakeUrl). Different copy from `fm_intake_invite` — this
+ * is a welcome-back nudge, not a first-time invite.
+ *
+ * Template body (Meta-approved):
+ *   "Hi {{1}}, now that we're working together I've opened up the longer
+ *    intake form so I can build your specific plan. Your earlier answers
+ *    are saved — pick up where you left off:
+ *
+ *    {{2}}
+ *
+ *    The newer sections are the ones I'm most keen to learn. Take your
+ *    time, no rush.
+ *
+ *    — Shivani Hari
+ *    Your Functional Health Coach"
+ *
+ * Falls back to `fm_intake_invite` if the env flag
+ * `FM_INTAKE_UNLOCKED_TEMPLATE_APPROVED=1` is not set. Coach flips the
+ * flag once Meta clears the new template — keeps the production send
+ * working even if approval is delayed.
+ */
+export async function sendIntakeUnlockedViaApi(
+  clientId: string,
+): Promise<{ ok: true; url: string; template: string } | { ok: false; error: string }> {
+  const { loadAllClients } = await import("@/lib/fmdb/loader");
+  const { sendWhatsAppAction } = await import("@/app/api/whatsapp/actions");
+
+  const clients = (await loadAllClients()) as Array<Record<string, unknown>>;
+  const c = clients.find((x) => x.client_id === clientId);
+  if (!c) return { ok: false, error: `Client ${clientId} not found` };
+
+  const token = (c.intake_token as string | undefined) ?? "";
+  if (!token) {
+    return {
+      ok: false,
+      error:
+        "No active intake token. Generate one first via 📨 Send intake form (this also re-opens the same URL the client used pre-discovery).",
+    };
+  }
+
+  const phone = ((c.mobile_number as string | undefined) ?? "").trim();
+  if (!phone) return { ok: false, error: "No mobile number on file" };
+
+  const displayName = (c.display_name as string | undefined) ?? "";
+  const firstName = displayName.split(" ")[0] || "there";
+
+  const rawOrigin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+  if (!rawOrigin || /localhost|127\.0\.0\.1/.test(rawOrigin)) {
+    return {
+      ok: false,
+      error:
+        "NEXT_PUBLIC_APP_URL is unset or points to localhost — refusing to send an unreachable link.",
+    };
+  }
+  const url = `${rawOrigin}/intake/${token}`;
+
+  // Template switching: prefer fm_intake_unlocked_v1 (unlock-specific copy)
+  // when env flag confirms Meta approval; fall back to fm_intake_invite
+  // (always-approved, generic "here's your intake link" body) otherwise.
+  const useUnlockedTemplate =
+    (process.env.FM_INTAKE_UNLOCKED_TEMPLATE_APPROVED || "").trim() === "1";
+  const templateName = useUnlockedTemplate ? "fm_intake_unlocked_v1" : "fm_intake_invite";
+
+  const sendRes = await sendWhatsAppAction(phone, templateName, [firstName, url]);
+  if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };
+  return { ok: true, url, template: templateName };
+}
