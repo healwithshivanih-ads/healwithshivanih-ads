@@ -15,10 +15,9 @@ aliases:
 - hpa-axis-dysfunction
 - hypothalamic-pituitary-adrenal axis dysfunction
 - adrenal dysregulation
-summary: Chronic activation of the hypothalamic-pituitary-adrenal axis leads to sustained
-  cortisol elevation or exhaustion, suppressing immunity, depleting sex hormones (progesterone,
-  DHEA), impairing hippocampal function, and disrupting circadian rhythm. Central
-  mechanism in stress-driven chronic disease.
+summary: Chronic activation of the hypothalamic-pituitary-adrenal axis leads to sustained cortisol elevation or exhaustion,
+  suppressing immunity, depleting sex hormones (progesterone, DHEA), impairing hippocampal function, and disrupting circadian
+  rhythm. Central mechanism in stress-driven chronic disease.
 common_symptoms:
 - lethargy
 - burnout
@@ -28,7 +27,7 @@ common_symptoms:
 - anxiety
 - brain-fog
 - insomnia
-- hypoglycemia
+- hypoglycemia-symptoms
 - dizziness-on-standing
 - abdominal-obesity
 - sugar-cravings
@@ -40,8 +39,7 @@ common_symptoms:
 red_flags:
 - Signs of Addison's disease (severe low BP, salt craving, pigmentation)
 - Cushing's syndrome (central obesity, purple striae)
-- Scars, elbows, nipples, or skin near nails that are unusually dark — possible Addison's
-  disease
+- Scars, elbows, nipples, or skin near nails that are unusually dark — possible Addison's disease
 - Low blood pressure with drop on standing — orthostatic hypotension
 - Excessive dark male-pattern hair growth in women — possible adrenal hyperplasia
 - adrenal-crisis
@@ -64,30 +62,25 @@ key_mechanisms:
 - dhea-depletion
 - cortisol-elevation
 - progesterone-depletion
-coaching_scope_notes: Support with adaptogens, breathwork, morning sunlight, sleep
-  hygiene, and magnesium. Cortisol testing and hormone panel interpretation requires
-  clinician.
-clinician_scope_notes: AM/PM salivary cortisol curve evaluates HPA axis rhythm. Consider
-  adaptogen protocols (ashwagandha, rhodiola, holy basil). Rule out Addison's or Cushing's.
+coaching_scope_notes: Support with adaptogens, breathwork, morning sunlight, sleep hygiene, and magnesium. Cortisol testing
+  and hormone panel interpretation requires clinician.
+clinician_scope_notes: AM/PM salivary cortisol curve evaluates HPA axis rhythm. Consider adaptogen protocols (ashwagandha,
+  rhodiola, holy basil). Rule out Addison's or Cushing's.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-adrenal-cheatsheet
   location: Functional Wisdom / Anti-Stress Hormones section (p.23)
-  quote: Chronic stress raises cortisol. Healing begins when you restore the anti-stress
-    hormones that rebuild the body.
+  quote: Chronic stress raises cortisol. Healing begins when you restore the anti-stress hormones that rebuild the body.
 - id: vitaone-adrenal-toolkit
   location: HPA Axis Questionnaire
-  quote: The hypothalamus, pituitary, adrenal (HPA) axis is the body's central stress
-    response system. This questionnaire is designed to help assess and differentiate
-    possible dysfunction within this system.
+  quote: The hypothalamus, pituitary, adrenal (HPA) axis is the body's central stress response system. This questionnaire
+    is designed to help assess and differentiate possible dysfunction within this system.
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: Continuous cortisol release → suppresses immunity, slows healing, depletes
-    progesterone & DHEA.
+  quote: Continuous cortisol release → suppresses immunity, slows healing, depletes progesterone & DHEA.
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: CRH, ACTH, cortisol, DHEA, aldosterone, and diurnal cortisol rhythm are discussed
-    as central stress-regulation pathways.
+  quote: CRH, ACTH, cortisol, DHEA, aldosterone, and diurnal cortisol rhythm are discussed as central stress-regulation pathways.
 version: 3
 status: active
 updated_at: '2026-05-04'

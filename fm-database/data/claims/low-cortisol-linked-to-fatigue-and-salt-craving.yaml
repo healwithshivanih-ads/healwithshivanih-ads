@@ -1,14 +1,11 @@
 slug: low-cortisol-linked-to-fatigue-and-salt-craving
-statement: Low cortisol is described as causing fatigue, low blood pressure, salt
-  craving, and Addison's-like symptoms.
+statement: Low cortisol is described as causing fatigue, low blood pressure, salt craving, and Addison's-like symptoms.
 evidence_tier: confirm_with_clinician
-rationale: Low cortisol differentially diagnosis includes Addison's disease, which
-  requires medical testing. Coaching scope does not extend to cortisol replacement
-  or Addison's diagnosis.
-coaching_translation: If a client reports persistent fatigue, dizziness on standing,
-  and strong salt cravings, refer to a clinician for adrenal evaluation.
-out_of_scope_notes: Cortisol testing, Addison's diagnosis, and cortisol replacement
-  are clinician-scope items only.
+rationale: Low cortisol differentially diagnosis includes Addison's disease, which requires medical testing. Coaching scope
+  does not extend to cortisol replacement or Addison's diagnosis.
+coaching_translation: If a client reports persistent fatigue, dizziness on standing, and strong salt cravings, refer to a
+  clinician for adrenal evaluation.
+out_of_scope_notes: Cortisol testing, Addison's diagnosis, and cortisol replacement are clinician-scope items only.
 caveats:
 - Requires clinician evaluation before any intervention.
 - Source is expert consensus without direct citations.
@@ -16,14 +13,13 @@ linked_to_topics:
 - adrenal-fatigue
 linked_to_supplements:
 - vitamin-c
-- vitamin-b5
+- pantothenic-acid-b5
 - licorice
 linked_to_mechanisms: []
 sources:
 - id: vitaone-fm-adrenal-hormones
   location: Evidence-Backed Claims — Page 4
-  quote: Low cortisol is described as causing fatigue, low blood pressure, salt craving,
-    and Addison's-like symptoms.
+  quote: Low cortisol is described as causing fatigue, low blood pressure, salt craving, and Addison's-like symptoms.
 version: 1
 status: active
 updated_at: '2026-05-06'

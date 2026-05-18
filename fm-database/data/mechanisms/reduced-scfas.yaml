@@ -9,7 +9,7 @@ summary: Dysbiosis reduces populations of SCFA-producing bacteria (e.g. Faecalib
   SCFAs. SCFAs are critical for colonocyte health, mucosal immunity, and anti-inflammatory signaling. Low SCFAs impair gut
   barrier integrity and immune regulation.
 upstream_drivers:
-- gut-dysbiosis-mechanism
+- dysbiosis-gut-microbiome-imbalance
 - low-fiber-diet
 - antibiotics
 downstream_effects:
@@ -18,7 +18,7 @@ downstream_effects:
 - colon-inflammation
 related_mechanisms:
 - leaky-gut
-- gut-dysbiosis-mechanism
+- dysbiosis-gut-microbiome-imbalance
 linked_to_topics:
 - gut-dysbiosis
 - autoimmunity-leaky-gut-triad

@@ -1,16 +1,19 @@
 slug: arachidonic-acid-drives-estrogen-dominance-via-aromatase
-statement: Excess arachidonic acid from high omega-6 intake increases aromatase enzyme activity, promoting the conversion
-  of androgens to estrogen and potentially contributing to estrogen dominance.
+statement: Excess arachidonic acid from high omega-6 intake increases aromatase enzyme
+  activity, promoting the conversion of androgens to estrogen and potentially contributing
+  to estrogen dominance.
 evidence_tier: plausible_emerging
-rationale: Described as a mechanistic pathway in the lecture. The link between inflammatory PGE2 (derived from AA via COX-2)
-  and aromatase upregulation is supported by research, particularly in breast tissue. Source is FM lecture of moderate quality.
-coaching_translation: Too much omega-6 in your diet can raise your estrogen levels by revving up the enzyme that converts
-  testosterone into estrogen. Reducing omega-6 and increasing omega-3 may help balance hormones.
+rationale: Described as a mechanistic pathway in the lecture. The link between inflammatory
+  PGE2 (derived from AA via COX-2) and aromatase upregulation is supported by research,
+  particularly in breast tissue. Source is FM lecture of moderate quality.
+coaching_translation: Too much omega-6 in your diet can raise your estrogen levels
+  by revving up the enzyme that converts testosterone into estrogen. Reducing omega-6
+  and increasing omega-3 may help balance hormones.
 caveats:
-- Mechanism is plausible and supported in some tissue contexts (e.g., breast adipose), but broader clinical evidence is limited.
+- Mechanism is plausible and supported in some tissue contexts (e.g., breast adipose),
+  but broader clinical evidence is limited.
 - Source is FM lecture synthesis.
 linked_to_topics:
-- arachidonic-acid-cascade
 - omega-6-omega-3-ratio-imbalance
 linked_to_supplements:
 - fish-oil-omega-3
@@ -19,8 +22,9 @@ linked_to_mechanisms: []
 sources:
 - id: coconote-fm-omega-3-fatty-acids
   location: Arachidonic Acid Cascade Slide
-  quote: arachidonic acid increases the aromatase enzyme activity. So aromatase...is an enzyme which converts androgens like
-    testosterone into estrogen...So one of the reasons that we can now think of would be for estrogen dominance is also increased
+  quote: arachidonic acid increases the aromatase enzyme activity. So aromatase...is
+    an enzyme which converts androgens like testosterone into estrogen...So one of
+    the reasons that we can now think of would be for estrogen dominance is also increased
     arachidonic acid.
 version: 1
 status: active

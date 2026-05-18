@@ -33,7 +33,7 @@ summary: 'POTS is a form of dysautonomia where standing causes an excessive hear
 
   '
 common_symptoms:
-- lightheadedness-on-standing
+- dizziness-on-standing
 - palpitations
 - brain-fog
 - lethargy
@@ -41,7 +41,7 @@ common_symptoms:
 - presyncope
 - cold-intolerance
 - nocturia
-- tingling-numbness
+- numbness-tingling
 red_flags:
 - syncope-with-injury
 - chest-pain-on-standing

@@ -6,13 +6,11 @@ aliases:
 - activated methyl cycle
 - MTHFR support
 - MTHFR
-summary: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG are
-  framed as key methylation supports. Disrupted methylation is linked to mood changes,
-  elevated homocysteine, impaired histamine clearance, fatigue, and neurological symptoms.
+summary: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG are framed as key methylation supports. Disrupted
+  methylation is linked to mood changes, elevated homocysteine, impaired histamine clearance, fatigue, and neurological symptoms.
 common_symptoms:
 - lethargy
 - poor-concentration
-- mood-disturbances
 - mood-swings
 - brain-fog
 - elevated-homocysteine
@@ -38,25 +36,21 @@ related_topics:
 key_mechanisms:
 - methylation-cycle
 - mthfr-enzyme-dysfunction
-coaching_scope_notes: MTHFR and methylation framing is useful for client education;
-  defer to clinician for MTHFR testing interpretation, high-dose B-vitamin protocols,
-  and pregnancy folate supplementation.
+coaching_scope_notes: MTHFR and methylation framing is useful for client education; defer to clinician for MTHFR testing interpretation,
+  high-dose B-vitamin protocols, and pregnancy folate supplementation.
 evidence_tier: plausible_emerging
-clinician_scope_notes: MTHFR variant assessment, high-folate masking B12 deficiency
-  risk, and high-dose niacin methylation balance are clinical scope items.
+clinician_scope_notes: MTHFR variant assessment, high-folate masking B12 deficiency risk, and high-dose niacin methylation
+  balance are clinical scope items.
 sources:
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Methylcobalamin / SAM section
-  quote: SAM is very necessary for the methylation of various biochemical reactions
-    in the body, including the myelin production.
+  quote: SAM is very necessary for the methylation of various biochemical reactions in the body, including the myelin production.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – methylation-support
-  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient
-    supports for methylation.
+  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient supports for methylation.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — methylation-support
-  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient
-    supports for methylation.
+  quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient supports for methylation.
 version: 3
 status: active
 updated_at: '2026-05-06'

@@ -17,10 +17,10 @@ take_with_food: optional
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - adrenal-fatigue
-notes_for_coach: B5 is a cofactor for coenzyme A, required for adrenal steroidogenesis. Commonly included in adrenal support
-  protocols. Often part of a B-complex formulation.
-notes_for_client: Vitamin B5 is essential for your adrenal glands to produce stress hormones. It supports your body's resilience
-  to stress.
+notes_for_coach: B5 is a cofactor for coenzyme A, required for adrenal steroidogenesis.
+  Commonly included in adrenal support protocols. Often part of a B-complex formulation.
+notes_for_client: Vitamin B5 is essential for your adrenal glands to produce stress
+  hormones. It supports your body's resilience to stress.
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 linked_to_claims:
@@ -28,7 +28,8 @@ linked_to_claims:
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin B5 (Pantothenic Acid)
-  quote: Known as the 'anti-fatigue vitamin'—essential for energy production, adrenal function, wound healing, & skin repair.
+  quote: Known as the 'anti-fatigue vitamin'—essential for energy production, adrenal
+    function, wound healing, & skin repair.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
   quote: Magnesium, B5, C, Zinc, Omega-3 (for adrenal resilience)
@@ -36,3 +37,6 @@ version: 2
 status: active
 updated_at: '2026-05-05'
 updated_by: shivani
+aliases:
+- vitamin-b5
+- pantothenic-acid

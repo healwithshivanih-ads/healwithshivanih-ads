@@ -8,7 +8,7 @@ summary: Cardiovascular disease is fundamentally a disease of inflammation and o
   requires a multi-modal approach including advanced lipid testing (LDL-P, ApoB, Lp(a)), inflammatory biomarkers (hsCRP, oxidized
   LDL), imaging (coronary calcium score, carotid IMT), lifestyle modification, nutraceuticals, and targeted pharmaceuticals.
 common_symptoms:
-- chest-pain
+- chest-pain-angina
 - lethargy
 - shortness-of-breath
 red_flags:

@@ -14,8 +14,8 @@ aliases:
 - metabolic syndrome nutrition
 - blood sugar imbalance
 - glucose dysregulation
-summary: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity,
-  and stress-related glucose dysregulation are linked to insulin resistance.
+summary: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity, and stress-related glucose dysregulation
+  are linked to insulin resistance.
 common_symptoms:
 - post-meal energy crashes
 - carbohydrate sensitivity
@@ -46,7 +46,7 @@ common_symptoms:
 - pcos-related-hair-loss
 - hair-loss
 - joint-pain
-- hypoglycemia
+- hypoglycemia-symptoms
 red_flags:
 - fasting glucose trends toward pre-diabetes
 - worsening metabolic markers despite lifestyle changes
@@ -113,46 +113,42 @@ key_mechanisms:
 - mitochondrial-energy-production
 - oxidative-stress
 - anti-stress-hormone-restoration
-coaching_scope_notes: Low-GI diet, fiber, protein balance, movement, intermittent
-  fasting guidance, and stress reduction are coaching-appropriate.
-clinician_scope_notes: Fasting insulin, HbA1c, diabetes medication adjustments, and
-  PCOS hormonal workup require clinician oversight.
+coaching_scope_notes: Low-GI diet, fiber, protein balance, movement, intermittent fasting guidance, and stress reduction are
+  coaching-appropriate.
+clinician_scope_notes: Fasting insulin, HbA1c, diabetes medication adjustments, and PCOS hormonal workup require clinician
+  oversight.
 evidence_tier: plausible_emerging
 sources:
 - id: thurlow-microbiome-session-4
   location: Session 4 — Estrogen, Hormones, and the Microbiome
-  quote: We know that estrogen is an insulin-sensitizing hormone. We know that it
-    influences fat storage patterns.
+  quote: We know that estrogen is an insulin-sensitizing hormone. We know that it influences fat storage patterns.
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Clinical Symptoms
   quote: Elevated fasting insulin, HOMA-IR
 - id: vitaone-blood-sugar-ebook
   location: Chapter 4 — Insulin Resistance and Type 2 Diabetes
-  quote: Insulin resistance evolves through recognisable clinical stages. Early recognition
-    permits timely intervention before β-cell failure occurs.
+  quote: Insulin resistance evolves through recognisable clinical stages. Early recognition permits timely intervention before
+    β-cell failure occurs.
 - id: vitaone-health-coaching-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: Insulin resistance causes the body to make more and more insulin in order
-    to keep blood sugars in a healthy range.
+  quote: Insulin resistance causes the body to make more and more insulin in order to keep blood sugars in a healthy range.
 - id: vitaone-cvs-risk-assessment
   location: Lab Results (Slide 16)
   quote: Insulin resistance increases risk
 - id: coconote-fm-biomarkers-cvs
   location: Metabolic Dysfunction
-  quote: So if you can find out the insulin resistance, then that insulin resistance
-    is actually a risk for cardio, metabolic, or cardiovascular disease.
+  quote: So if you can find out the insulin resistance, then that insulin resistance is actually a risk for cardio, metabolic,
+    or cardiovascular disease.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or
-    hair symptoms are linked to glycemic control.
+  quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or hair symptoms are linked to glycemic control.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Topics Covered
-  quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or
-    hair symptoms are linked to glycemic control.
+  quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or hair symptoms are linked to glycemic control.
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity,
-    and stress-related glucose dysregulation are linked to insulin resistance.
+  quote: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity, and stress-related glucose dysregulation
+    are linked to insulin resistance.
 version: 9
 status: active
 updated_at: '2026-05-06'

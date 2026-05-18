@@ -28,11 +28,13 @@ aliases:
 - fungal overgrowth
 - probiotic depletion
 - loss of gut flora
+- gut-dysbiosis-mechanism
 category: gut
-summary: Dysbiosis refers to an imbalance between beneficial and pathogenic microorganisms in the gut. Unlike acute infection
-  (e.g., gastroenteritis), dysbiosis represents a chronic state of microbial imbalance — reduced beneficial bacteria and overgrowth
-  of pathogens or unwanted microbes. This damages the gut lining, contributing to intestinal permeability and increasing susceptibility
-  to food reactions.
+summary: Dysbiosis refers to an imbalance between beneficial and pathogenic microorganisms
+  in the gut. Unlike acute infection (e.g., gastroenteritis), dysbiosis represents
+  a chronic state of microbial imbalance — reduced beneficial bacteria and overgrowth
+  of pathogens or unwanted microbes. This damages the gut lining, contributing to
+  intestinal permeability and increasing susceptibility to food reactions.
 upstream_drivers:
 - poor-diet
 - antibiotic-use
@@ -52,16 +54,18 @@ evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-food-allergies-sensitivities
   location: ATM and Intestinal Permeability Section
-  quote: Dysbiosis means your imbalance in your gut microbiome, good versus bad bacteria or bad microbiome, so you have a
-    deficiency of good or prebiotic and your increased growth of either pathogens or increased growth of some kind of unwanted
-    microbes
+  quote: Dysbiosis means your imbalance in your gut microbiome, good versus bad bacteria
+    or bad microbiome, so you have a deficiency of good or prebiotic and your increased
+    growth of either pathogens or increased growth of some kind of unwanted microbes
 - id: coconote-fm-chronic-pain-fatigue
   location: Digestion Section
-  quote: association between dysbiosis and neurological conditions often manifest with chronic pain.
+  quote: association between dysbiosis and neurological conditions often manifest
+    with chronic pain.
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Gut Dysbiosis and Pathogens Lecture
-  quote: whenever you use any kind of antimicrobial protocol make sure you understand that patient or these microbes are very
-    intelligent they know how to it is they can change their genetics and they become resistance
+  quote: whenever you use any kind of antimicrobial protocol make sure you understand
+    that patient or these microbes are very intelligent they know how to it is they
+    can change their genetics and they become resistance
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 4
   quote: Gut health → Dysbiosis, increased intestinal permeability.
@@ -70,34 +74,37 @@ sources:
   quote: Reducing fermentable carbs starves dysbiotic bacteria.
 - id: vitaone-inflammation-cheatsheet
   location: Autoimmune Disease Cheatsheet — Page 24
-  quote: Low Akkermansia & Faecalibacterium linked with immune dysfunction. Probiotic monotherapy rarely sufficient—diet &
-    prebiotics are crucial.
+  quote: Low Akkermansia & Faecalibacterium linked with immune dysfunction. Probiotic
+    monotherapy rarely sufficient—diet & prebiotics are crucial.
 - id: vitaone-gut-toolkit
   location: The 5R Framework for Gut Restoration — Reinoculate
-  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form of supplements or food are often needed
-    to help reestablish a balanced gut flora.
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
 - id: vitaone-health-coaching-toolkit
   location: The 5R Framework for Gut Restoration
-  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form of supplements or food are often needed
-    to help reestablish a balanced gut flora.
+  quote: Use of antibiotics kills both good and bad bacteria. Probiotics in the form
+    of supplements or food are often needed to help reestablish a balanced gut flora.
 - id: coconote-fm-sibo-sifo
   location: Bacterial Count / Normal Gut Function
-  quote: This biosis happens when these bacteria either overgrow or there is a disproportion between the good and the bad
-    bacteria. So the good bacteria goes down and the bad bacteria get a chance to have a rise and then they start producing
-    the methane gas and the hydrogen gas.
+  quote: This biosis happens when these bacteria either overgrow or there is a disproportion
+    between the good and the bad bacteria. So the good bacteria goes down and the
+    bad bacteria get a chance to have a rise and then they start producing the methane
+    gas and the hydrogen gas.
 - id: coconote-fm-intestinal-permeability
   location: 5R Protocol – Re-inoculate
-  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria, then you have to replace that bacteria
-    with probiotics.
+  quote: if you have an infection or dysbiosis or deficiency of any kind of good bacteria,
+    then you have to replace that bacteria with probiotics.
 - id: coconote-fm-intestinal-permeability-anish
   location: Triggers and Mediators of Intestinal Permeability
-  quote: Infection and dysbiosis if somebody having a chronic infection or maybe it's an imbalance in your gut microbiome
-    like you might be having an increase in a fungal overgrowth or maybe decrease in your probiotic that dysbiosis can leads
+  quote: Infection and dysbiosis if somebody having a chronic infection or maybe it's
+    an imbalance in your gut microbiome like you might be having an increase in a
+    fungal overgrowth or maybe decrease in your probiotic that dysbiosis can leads
     to increase intestinal permeability.
 - id: barbara-oneil-healing-mind
   location: Gut-Brain Connection Section
-  quote: Every cell that lines the gut is fed by the microbiome. Now if the microbiome is compromised, we looked at how antibiotics
-    can kill it off, we looked at how statin drugs can kill it off, long-term painkillers can do it.
+  quote: Every cell that lines the gut is fed by the microbiome. Now if the microbiome
+    is compromised, we looked at how antibiotics can kill it off, we looked at how
+    statin drugs can kill it off, long-term painkillers can do it.
 version: 1
 status: active
 updated_at: '2026-05-05'

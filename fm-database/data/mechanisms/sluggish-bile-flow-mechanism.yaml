@@ -11,7 +11,6 @@ summary: Reduced or impaired bile production, gallbladder contraction, or bile a
 upstream_drivers:
 - estrogen-dominance
 - dysbiosis-gut-microbiome-imbalance
-- gut-dysbiosis-mechanism
 - hypothyroidism
 - low-fat-diet
 - high-inflammation
@@ -23,7 +22,7 @@ downstream_effects:
 - dysbiosis-gut-microbiome-imbalance
 related_mechanisms:
 - impaired-phase-ii-iii-detox
-- gut-dysbiosis-mechanism
+- dysbiosis-gut-microbiome-imbalance
 linked_to_topics:
 - sluggish-bile-flow
 - gut-dysbiosis

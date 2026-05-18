@@ -4,6 +4,7 @@ aliases:
 - angina
 - chest pressure
 - cardiac chest pain
+- chest-pain
 category: cardiovascular
 severity: red_flag
 description: Chest pain or pressure, particularly with exertion, may indicate myocardial
