@@ -554,12 +554,15 @@ function SessionInspector({
                 clientId={clientId}
                 sessionId={session.session_id}
                 sessionType={session.session_type}
+                sessionDate={session.date}
                 initialCoachNotes={session.coach_notes ?? ""}
                 initialPresenting={session.presenting_complaints ?? ""}
                 // measurements_snapshot is not yet on SessionSummary —
-                // when added, plumb it through here. For now coach edits
-                // the measurement values that live as text inside
-                // coach_notes (e.g. "weight 80 kg, waist 92 cm").
+                // when added, plumb it through here. For now coach
+                // enters fresh values in the edit panel and they flow
+                // both to the session YAML (measurements_snapshot) AND
+                // to client.measurements_log (the time-series source
+                // for the body comp trend).
                 initialMeasurements={null}
               />
             )}

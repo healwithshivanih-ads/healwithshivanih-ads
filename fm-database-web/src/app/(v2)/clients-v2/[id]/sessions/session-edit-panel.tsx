@@ -33,6 +33,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { updateSessionFieldsAction } from "@/lib/server-actions/assess";
+import { addMeasurementAction } from "@/lib/server-actions/clients";
 import { FmField, FmInput, FmTextarea } from "@/components/fm";
 
 interface InitialMeasurements {
@@ -47,6 +48,11 @@ export interface SessionEditPanelProps {
   clientId: string;
   sessionId: string;
   sessionType: string;
+  /** YYYY-MM-DD of the session — used as the date for the
+   *  measurements_log entry created when measurements are saved.
+   *  Without it the log entry would land on `today` which corrupts
+   *  the time series for past-dated session edits. */
+  sessionDate?: string;
   initialCoachNotes: string;
   initialPresenting?: string;
   initialMeasurements?: InitialMeasurements | null;
@@ -97,6 +103,7 @@ interface SessionEditFormProps extends SessionEditPanelProps {
 function SessionEditForm({
   clientId,
   sessionId,
+  sessionDate,
   initialCoachNotes,
   initialPresenting,
   initialMeasurements,
@@ -153,6 +160,41 @@ function SessionEditForm({
           presenting !== (initialPresenting ?? "") ? presenting : undefined,
         measurements,
       });
+
+      // Also flow numeric measurement values into measurements_log so the
+      // body comp trend + outcomes panel + dashboard see them. Edit panel
+      // changes were previously isolated to the session YAML, so updating
+      // a check-in's weight here wouldn't update the trend. Best-effort:
+      // failure here doesn't block the session save success toast.
+      const measurementChanged =
+        weight !== toStr(initialMeasurements?.weight_kg) ||
+        waist !== toStr(initialMeasurements?.waist_cm) ||
+        bpSys !== toStr(initialMeasurements?.bp_systolic) ||
+        bpDia !== toStr(initialMeasurements?.bp_diastolic) ||
+        hr !== toStr(initialMeasurements?.hr_bpm);
+      const dateForLog =
+        sessionDate ?? new Date().toISOString().slice(0, 10);
+      if (result.ok && measurementChanged) {
+        // Only push numeric values — clearing a field doesn't reach
+        // measurements_log (addMeasurementAction ignores undefined keys
+        // anyway, so cleared values stay as-is in the log).
+        const w = weight ? parseFloat(weight) : undefined;
+        const wc = waist ? parseFloat(waist) : undefined;
+        const bps = bpSys ? parseFloat(bpSys) : undefined;
+        const bpd = bpDia ? parseFloat(bpDia) : undefined;
+        const hrate = hr ? parseFloat(hr) : undefined;
+        await addMeasurementAction({
+          client_id: clientId,
+          date: dateForLog,
+          weight_kg: Number.isFinite(w) ? w : undefined,
+          waist_cm: Number.isFinite(wc) ? wc : undefined,
+          blood_pressure_systolic: Number.isFinite(bps) ? bps : undefined,
+          blood_pressure_diastolic: Number.isFinite(bpd) ? bpd : undefined,
+          resting_heart_rate: Number.isFinite(hrate) ? hrate : undefined,
+          notes: `from session ${sessionId} edit`,
+        });
+      }
+
       if (result.ok) {
         toast.success("Session updated");
         onClose();

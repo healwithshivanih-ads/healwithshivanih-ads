@@ -19,6 +19,7 @@ import {
   appendCheckInToPlanAction,
   type FivePillarsData,
 } from "@/lib/server-actions/assess";
+import { addMeasurementAction } from "@/lib/server-actions/clients";
 import {
   FmField,
   FmInput,
@@ -152,6 +153,38 @@ export function CheckInForm({
       });
       if (result.ok) {
         toast.success(`Check-in saved for ${displayName.split(" ")[0]}`);
+
+        // Also flow measurements into client.measurements_log so the body
+        // composition trend tile + plan-outcomes panel + dashboard health
+        // signals all see the new value. Without this, check-in
+        // measurements live as text inside coach_notes and are invisible
+        // to every numeric/trend surface. Fired in parallel with the
+        // plan-notes append below — both are best-effort: if they fail,
+        // the session itself is still saved.
+        const hasMeasurement =
+          weight || waist || bpSys || bpDia || hr;
+        if (hasMeasurement) {
+          const w = weight ? parseFloat(weight) : undefined;
+          const wc = waist ? parseFloat(waist) : undefined;
+          const bps = bpSys ? parseFloat(bpSys) : undefined;
+          const bpd = bpDia ? parseFloat(bpDia) : undefined;
+          const hrate = hr ? parseFloat(hr) : undefined;
+          const measResult = await addMeasurementAction({
+            client_id: clientId,
+            date: sessionDate,
+            weight_kg: Number.isFinite(w) ? w : undefined,
+            waist_cm: Number.isFinite(wc) ? wc : undefined,
+            blood_pressure_systolic: Number.isFinite(bps) ? bps : undefined,
+            blood_pressure_diastolic: Number.isFinite(bpd) ? bpd : undefined,
+            resting_heart_rate: Number.isFinite(hrate) ? hrate : undefined,
+            notes: `from check-in ${result.session_id ?? sessionDate}`,
+          });
+          if (!measResult.ok) {
+            toast.warning(
+              `Measurements not added to log: ${measResult.error}`,
+            );
+          }
+        }
 
         // Also append to plan.notes_for_coach so the next letter generation
         // (week 3-4 phase, supplement plan, lifestyle guide, etc.) sees this

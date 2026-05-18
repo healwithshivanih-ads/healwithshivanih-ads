@@ -23,6 +23,7 @@ import { CommunicateClient } from "./communicate-client";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
 import { RegenerateStaleButton } from "./regenerate-stale-button";
+import { PhaseLetterPanel } from "../plan/phase-letter-panel";
 import {
   loadLetterSendLogAction,
   type LetterSendEntry,
@@ -195,10 +196,39 @@ export default async function CommunicateTabPage({
         subtitle="Everything that goes out (or comes in) lives here — letters, WhatsApp templates, email, recent inbound. One surface after every session."
       />
 
-      {/* Continue meal plan now lives on the Plan tab (where the
-          protocol is authored + lives). Removed from Communicate per
-          coach request 2026-05-13 — Communicate is for outbound sends
-          / templates / history, not for spinning up new content. */}
+      {/* 🍽 Next weeks' meal plan generator. Reinstated here 2026-05-18
+          per coach request — letter generation should ALL live in the
+          Communicate tab. Plan tab is for protocol editing only.
+          This panel:
+            - Shows "Saved phases" timeline with stale indicators
+            - Auto-suggests the next phase to generate (e.g. weeks 5-6
+              if 3-4 is already saved)
+            - Shows current-week hint derived from the real start date
+              (meal_plan_started_on → supplements_started_on → plan_period_start)
+            - Generates a phase-meal-plan letter for the chosen range
+          Only visible when a plan is published — phase letters are
+          continuation content, drafts haven't been sent. */}
+      {activePlanInfo?.status === "published" && activePlan && (
+        <div style={{ marginBottom: 16 }}>
+          <PhaseLetterPanel
+            clientId={id}
+            planSlug={activePlan.slug as string}
+            planPeriodWeeks={
+              (activePlan.plan_period_weeks as number | undefined) ?? 12
+            }
+            // Use the same priority chain as Plan tab's planStartAnchor:
+            // meal_plan_started_on → supplements_started_on → plan_period_start.
+            // Without this, "currently in week N" shows the date the
+            // latest plan revision was published rather than when the
+            // client actually started the protocol.
+            planPeriodStart={
+              (activePlan.meal_plan_started_on as string | undefined) ??
+              (activePlan.supplements_started_on as string | undefined) ??
+              (activePlan.plan_period_start as string | undefined)
+            }
+          />
+        </div>
+      )}
 
       <CommunicateClient
         clientId={id}

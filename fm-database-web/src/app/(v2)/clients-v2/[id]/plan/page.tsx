@@ -56,7 +56,9 @@ import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
 import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
-import { PhaseLetterPanel } from "./phase-letter-panel";
+// PhaseLetterPanel was here through 2026-05-18 — moved back to the
+// Communicate tab so letter generation lives in one place. Import kept
+// out of this file to avoid an unused-import warning.
 import { PlanOutcomesPanel } from "./plan-outcomes-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 // GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
@@ -1175,26 +1177,49 @@ export default async function PlanTabPage({
               />
             )}
 
-            {/* Continue meal plan — mid-cycle continuation letters.
-                Moved here from Communicate (2026-05-13) — this is plan
-                content, not outbound comms. Only visible when the live
-                plan is published. */}
+            {/* Continue meal plan moved BACK to Communicate tab on
+                2026-05-18 per coach decision: "letter generation should
+                only sit in the communication tab. Plan tab for
+                underlying plan changes."
+                See /clients-v2/[id]/communicate — PhaseLetterPanel is
+                rendered there above the SendPackageButton. */}
             {isPublished && activePlan && (
-              <PhaseLetterPanel
-                clientId={id}
-                planSlug={activePlan.slug as string}
-                planPeriodWeeks={
-                  (activePlan.plan_period_weeks as number | undefined) ?? 12
-                }
-                // Use planStartAnchor (resolves: meal_plan_started_on →
-                // supplements_started_on → letter+3d derivation →
-                // plan_period_start) so "currently in week N" reflects
-                // when the client actually started, not when the latest
-                // plan revision was published. Without this, clients on
-                // a phased protocol since plan #1 show as "week 1" on
-                // the date plan #2 was published.
-                planPeriodStart={planStartAnchor ?? undefined}
-              />
+              <div
+                style={{
+                  padding: "10px 14px",
+                  marginBottom: 14,
+                  background: "var(--fm-bg-cool)",
+                  border: "1px dashed var(--fm-border-light)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  fontSize: 12,
+                  color: "var(--fm-text-secondary)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 12,
+                }}
+              >
+                <span>
+                  🍽 Generate next weeks' meal plan letter — moved to the
+                  Communicate tab so all client-facing letters live in one
+                  place.
+                </span>
+                <Link
+                  href={`/clients-v2/${id}/communicate`}
+                  style={{
+                    padding: "5px 10px",
+                    background: "var(--fm-primary)",
+                    color: "#fff",
+                    borderRadius: "var(--fm-radius-sm)",
+                    textDecoration: "none",
+                    fontSize: 11.5,
+                    fontWeight: 600,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Open Communicate →
+                </Link>
+              </div>
             )}
 
             {/* Follow-up plan generator — only when the live plan is

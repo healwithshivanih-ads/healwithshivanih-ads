@@ -10,15 +10,23 @@ export type SessionType =
   | "quick_note";
 
 /**
- * Parses [session_type: xxx] prefix from presenting_complaints.
+ * Parses [session_type: xxx] tag from presenting_complaints.
  * Falls back to "intake" for old sessions without the marker.
  *
  * Backward-compat aliasing for sessions saved before the v0.63 rename:
  *   pre_intake, discovery_consultation → discovery (same first-call concept)
  *   full_assessment                   → intake     (renamed)
+ *
+ * Scans for [session_type: ...] ANYWHERE in the string — not just at
+ * the start. WhatsApp webhook prepends [plan: X] [window: Y] tags
+ * BEFORE [session_type: quick_note], so a start-anchored regex was
+ * returning "intake" by default for every inbound WhatsApp message.
+ * Bug surfaced 2026-05-18 on cl-004: SOAPNotePanel was pulling the
+ * 16 May WhatsApp message as the latest intake and rendering its body
+ * as the SOAP Subjective section.
  */
 export function parseSessionType(presenting_complaints?: string): SessionType {
-  const m = (presenting_complaints ?? "").match(/^\[session_type:\s*(\w+)\]/);
+  const m = (presenting_complaints ?? "").match(/\[session_type:\s*(\w+)\]/);
   if (!m) return "intake";
   const t = m[1];
   if (t === "discovery" || t === "pre_intake" || t === "discovery_consultation") return "discovery";
