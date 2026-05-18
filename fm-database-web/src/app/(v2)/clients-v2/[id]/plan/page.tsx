@@ -52,6 +52,8 @@ import { PlanPageShell } from "./plan-page-shell";
 // Letters live on Communicate now — single source of truth.
 // PlanChatAndPreview moved to draft editor only (per coach feedback).
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
+import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
+import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { PhaseLetterPanel } from "./phase-letter-panel";
@@ -327,6 +329,15 @@ export default async function PlanTabPage({
     : [];
   const pendingDraft = pendingDrafts[0];
   const pendingDraftSet = new Set(pendingDrafts);
+  // Compute structural diff between active and the first pending draft so
+  // the coach can see at-a-glance whether the draft is worth publishing.
+  // Cheap, runs server-side; AI semantic check is on-demand from the alert.
+  const draftDiff = activePlan && pendingDraft
+    ? await computePlanVersionDiffAction(
+        activePlan.slug as string,
+        pendingDraft.slug as string,
+      )
+    : null;
   const archivedPlans = plans
     .filter((p) => p !== activePlan && !pendingDraftSet.has(p))
     .sort((a, b) =>
@@ -770,6 +781,19 @@ export default async function PlanTabPage({
             </div>
           </div>
         </div>
+      )}
+
+      {/* Structural + AI-assisted diff between active and first pending
+          draft. Only renders when both exist and there's at least one
+          material change to surface. Coach can opt-in to a Haiku semantic
+          read of coach notes via a button inside the alert. */}
+      {activePlan && pendingDraft && draftDiff?.ok && draftDiff.diff && (
+        <PlanDiffAlert
+          clientId={id}
+          activeSlug={activePlan.slug as string}
+          draftSlug={pendingDraft.slug as string}
+          diff={draftDiff.diff}
+        />
       )}
 
       {/* Recheck workflow panel — only when the published plan's period
