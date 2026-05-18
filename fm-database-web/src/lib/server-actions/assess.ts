@@ -1053,6 +1053,135 @@ export async function appendCheckInToPlanAction(
   }
 }
 
+// ─── Edit existing session in place ───────────────────────────────────────────
+
+export interface UpdateSessionFieldsInput {
+  client_id: string;
+  session_id: string;
+  /** Updated coach_notes body. Pass undefined to leave unchanged. */
+  coach_notes?: string;
+  /** Updated presenting_complaints body. Pass undefined to leave unchanged. */
+  presenting_complaints?: string;
+  /** Patch for the measurements_snapshot (only the keys you want to change).
+   *  Pass null on a key to clear that measurement. */
+  measurements?: {
+    weight_kg?: number | null;
+    waist_cm?: number | null;
+    bp_systolic?: number | null;
+    bp_diastolic?: number | null;
+    hr_bpm?: number | null;
+  };
+}
+
+export interface UpdateSessionFieldsResult {
+  ok: boolean;
+  error?: string;
+}
+
+/**
+ * Update a session YAML in place — used by the timeline edit affordance
+ * when the coach wants to fix a check-in note, correct measurements, or
+ * add information they forgot at the time of original capture.
+ *
+ * Safe: only edits coach_notes, presenting_complaints, and
+ * measurements_snapshot. Frozen fields (session_id, client_id, date,
+ * created_at, session_type) are NEVER touched.
+ *
+ * Doesn't re-append to plan.notes_for_coach — that would double-record.
+ * Coach edits the plan separately if the change is significant enough
+ * to need to flow into the active plan.
+ */
+export async function updateSessionFieldsAction(
+  input: UpdateSessionFieldsInput,
+): Promise<UpdateSessionFieldsResult> {
+  if (!input.client_id || !input.session_id) {
+    return { ok: false, error: "Missing client_id or session_id" };
+  }
+
+  const sessionsDir = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "sessions",
+  );
+
+  let files: string[];
+  try {
+    files = await fs.readdir(sessionsDir);
+  } catch (err) {
+    return {
+      ok: false,
+      error: `Sessions directory not found: ${(err as Error).message}`,
+    };
+  }
+
+  const YAML = await import("js-yaml");
+  let foundFile: string | null = null;
+  let foundData: Record<string, unknown> | null = null;
+  for (const name of files) {
+    if (!name.endsWith(".yaml")) continue;
+    try {
+      const txt = await fs.readFile(path.join(sessionsDir, name), "utf-8");
+      const data = (YAML.load(txt) as Record<string, unknown>) || {};
+      if (data.session_id === input.session_id) {
+        foundFile = name;
+        foundData = data;
+        break;
+      }
+    } catch {
+      /* skip parse failures */
+    }
+  }
+
+  if (!foundFile || !foundData) {
+    return {
+      ok: false,
+      error: `Session ${input.session_id} not found in ${input.client_id}`,
+    };
+  }
+
+  if (input.coach_notes !== undefined) {
+    foundData.coach_notes = input.coach_notes;
+  }
+  if (input.presenting_complaints !== undefined) {
+    foundData.presenting_complaints = input.presenting_complaints;
+  }
+  if (input.measurements) {
+    const prev = (foundData.measurements_snapshot as Record<string, unknown>) || {};
+    const m = input.measurements;
+    const next: Record<string, unknown> = { ...prev };
+    if (m.weight_kg !== undefined) next.weight_kg = m.weight_kg;
+    if (m.waist_cm !== undefined) next.waist_cm = m.waist_cm;
+    if (m.bp_systolic !== undefined) next.bp_systolic = m.bp_systolic;
+    if (m.bp_diastolic !== undefined) next.bp_diastolic = m.bp_diastolic;
+    if (m.hr_bpm !== undefined) next.hr_bpm = m.hr_bpm;
+    foundData.measurements_snapshot = next;
+  }
+
+  // Audit breadcrumb — distinguishes "logged live" from "edited later".
+  foundData.last_edited_at = new Date().toISOString();
+
+  try {
+    const dump = YAML.dump(foundData, {
+      sortKeys: false,
+      lineWidth: 200,
+    });
+    await fs.writeFile(path.join(sessionsDir, foundFile), dump, "utf-8");
+  } catch (err) {
+    return {
+      ok: false,
+      error: `Write failed: ${(err as Error).message}`,
+    };
+  }
+
+  revalidatePath(`/clients-v2/${input.client_id}/sessions`);
+  revalidatePath(`/clients-v2/${input.client_id}/timeline`);
+  revalidatePath(`/clients-v2/${input.client_id}/analyse`);
+  revalidatePath(`/clients-v2/${input.client_id}`);
+
+  return { ok: true };
+}
+
 // ─── Custom protocol templates ─────────────────────────────────────────────────
 
 export interface CustomTemplate {

@@ -20,6 +20,7 @@ import type { Client } from "@/lib/fmdb/types";
 import { FmPanel } from "@/components/fm";
 import { SessionBriefModal } from "@/components/client-widgets/session-brief-modal";
 import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
+import { SessionEditPanel } from "./session-edit-panel";
 
 const TYPE_META: Record<
   string,
@@ -548,6 +549,20 @@ function SessionInspector({
             </div>
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {session.session_id && (
+              <SessionEditPanel
+                clientId={clientId}
+                sessionId={session.session_id}
+                sessionType={session.session_type}
+                initialCoachNotes={session.coach_notes ?? ""}
+                initialPresenting={session.presenting_complaints ?? ""}
+                // measurements_snapshot is not yet on SessionSummary —
+                // when added, plumb it through here. For now coach edits
+                // the measurement values that live as text inside
+                // coach_notes (e.g. "weight 80 kg, waist 92 cm").
+                initialMeasurements={null}
+              />
+            )}
             {session.session_id && (
               <button
                 type="button"
