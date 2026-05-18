@@ -1,0 +1,46 @@
+slug: nk-cell-dysfunction-cfs
+display_name: Natural Killer (NK) Cell Dysfunction in CFS
+aliases:
+- low-nk-cell-activity
+- nk-cell-suppression
+- low-nk-cell-syndrome
+category: immune
+summary: The most consistent immune abnormality in Chronic Fatigue Syndrome (CFS)
+  is decreased number and/or activity of natural killer (NK) cells — historically
+  named "low NK cell syndrome." Low NK activity permits reactivation of latent viruses
+  (EBV, CMV, HHV-6), elevated viral antibody titres, and altered cytokine profiles.
+  Reduced lymphocyte response to stimuli likely from reduced interferon production.
+  Often paired with HPA-axis dysregulation, mitochondrial dysfunction, gut dysbiosis,
+  and elevated plasma neuropeptide Y.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+- viral-infection
+- chronic-inflammation
+- gut-dysbiosis
+- mitochondrial-dysfunction
+downstream_effects:
+- viral-reactivation
+- chronic-fatigue
+- post-exertional-malaise
+- altered-cytokine-profile
+related_mechanisms:
+- hpa-axis-dysregulation
+- mitochondrial-dysfunction
+- chronic-inflammation
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-energy-cluster
+  location: Chronic Fatigue Syndrome — Immune system abnormalities (pp 215)
+  quote: The most consistent abnormality is decreased number or activity of NK cells.
+    NK cells destroy cancerous or virus-infected cells. (CFS was at one time called
+    low NK cell syndrome.) Reduced lymphocyte response to stimuli is perhaps caused
+    by reduced activity or production of interferon, found in most cases. Low interferon
+    permits reactivation of latent viruses.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

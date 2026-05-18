@@ -1,0 +1,45 @@
+slug: diet-induced-acidosis
+display_name: Diet-Induced Metabolic Acidosis
+aliases:
+- acid-ash-diet-effect
+- western-diet-acidosis
+- sulfur-amino-acid-acid-load
+- protein-induced-acidosis
+category: metabolic
+summary: Sulfur-containing amino acids from animal protein, plus excess salt and refined
+  carbohydrates, produce a daily acid load that the body buffers in part by mobilising
+  mineral salts from bone — sustained over decades this contributes to osteoporosis.
+  Same mechanism also lowers urinary citrate (raising Ca-oxalate stone risk) and raises
+  urinary uric acid (gout risk). High-fruit-and-vegetable, plant-protein-emphasised
+  diets are alkaline-forming and protective.
+upstream_drivers:
+- high-animal-protein-diet
+- high-salt-intake
+- refined-carbohydrate-intake
+- low-fruit-vegetable-intake
+- low-magnesium-intake
+- low-potassium-intake
+downstream_effects:
+- bone-resorption-formation-imbalance
+- calcium-oxalate-crystal-formation
+- uric-acid-elevation
+- hypercalciuria
+related_mechanisms:
+- bone-resorption-formation-imbalance
+- calcium-oxalate-crystal-formation
+linked_to_topics:
+- osteoporosis
+- kidney-stones
+- gout
+evidence_tier: strong
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Dietary protein (pp 724)
+  quote: High intake of animal protein, but not plant protein, is linked to increased
+    risk of forearm fracture. Red meat is acid producing, inducing release of salts
+    from bone to balance acid and maintain acid-base homeostasis. Diets high in fruits
+    and vegetables and plant proteins are alkaline forming.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

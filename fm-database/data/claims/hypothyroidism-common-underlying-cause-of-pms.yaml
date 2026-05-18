@@ -1,0 +1,36 @@
+slug: hypothyroidism-common-underlying-cause-of-pms
+statement: Hypothyroidism affects a large percentage of women with PMS; many with
+  confirmed hypothyroidism receive complete relief of PMS symptoms after thyroid hormone
+  replacement — making thyroid screening (TSH, free T4, free T3, TPO antibodies) mandatory
+  in PMS workup.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the strong PMS-hypothyroidism overlap (20% of American women
+  have hypothyroidism per the hair-loss chapter), and clinical observation that thyroid
+  correction resolves PMS in this subgroup. Mechanism — thyroid hormone modulates
+  serotonin, GABA, estrogen metabolism, and HPA reactivity.
+coaching_translation: Before treating PMS as a hormonal problem, screen the thyroid.
+  A meaningful number of "PMS" cases are actually hypothyroidism — and correcting
+  the thyroid resolves the cyclic symptoms completely.
+caveats:
+- TSH alone is insufficient — include free T4, free T3, reverse T3, TPO antibodies.
+- Hashimoto's specifically is common in this population (see autoimmune-thyroiditis
+  topic).
+- Iodine, selenium, zinc, tyrosine support thyroid hormone synthesis.
+linked_to_topics:
+- premenstrual-syndrome
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Premenstrual Syndrome — Thyroid Function (pp 835)
+  quote: Hypothyroidism affects a large percentage of women with PMS. Many women with
+    PMS and confirmed hypothyroidism who are given thyroid hormone have complete relief
+    of symptoms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

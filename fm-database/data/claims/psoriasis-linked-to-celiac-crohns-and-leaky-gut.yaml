@@ -1,0 +1,42 @@
+slug: psoriasis-linked-to-celiac-crohns-and-leaky-gut
+statement: Psoriasis is linked to celiac disease and Crohn's disease — bowel mucosa
+  of psoriatic patients without overt bowel symptoms shows microscopic lesions and
+  increased intestinal permeability. Antigenic and endotoxic compounds escape the
+  gut, travel in bloodstream, and trigger activated immune cascades in skin. Treating
+  the gut (gluten elimination, leaky-gut repair, dysbiosis) is foundational FM psoriasis
+  care.
+evidence_tier: strong
+rationale: Pizzorno cites the celiac-psoriasis association (anti-gliadin positivity
+  higher in psoriatic vs general population; gluten-free diet improves a subset).
+  Mainstream dermatology now acknowledges the gut connection; FM treats it as foundational.
+coaching_translation: Psoriasis isn't just a skin disease — it's often a gut disease
+  showing up on the skin. Test for celiac (anti-tTG antibody), trial strict gluten-free
+  for 3-6 months, and address leaky gut, dysbiosis, and SIBO in parallel.
+caveats:
+- Test for celiac before going gluten-free.
+- 3-6 month strict trial; some patients respond, others do not.
+- Combine with HCl / enzymes / bile / fibre / probiotics / sarsaparilla / Hydrastis
+  stack.
+- Address alcohol, stress, animal-fat-heavy diet in parallel.
+linked_to_topics:
+- psoriasis
+- celiac-disease
+- crohns-disease
+- leaky-gut
+linked_to_mechanisms:
+- bowel-toxemia-skin-axis
+- leaky-gut
+- molecular-mimicry
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Psoriasis — General Considerations (pp 867)
+  quote: Psoriasis is linked to celiac disease and Crohn's disease. Bowel mucosa of
+    psoriatics without bowel symptoms has microscopic lesions and increased permeability.
+    Factors leading to poor intestinal function encourage increased intestinal permeability
+    and inflammation, allowing antigenic and endotoxic compounds to exit intestines.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

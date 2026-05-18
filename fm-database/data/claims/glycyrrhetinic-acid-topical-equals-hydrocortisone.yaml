@@ -1,0 +1,36 @@
+slug: glycyrrhetinic-acid-topical-equals-hydrocortisone
+statement: Topical glycyrrhetinic acid (the active metabolite of licorice) exerts
+  effects comparable to topical hydrocortisone in treating eczema, contact dermatitis,
+  allergic dermatitis, and psoriasis — without the skin thinning and adrenal suppression
+  risks of long-term corticosteroid use. Mechanism via 11-beta-hydroxysteroid dehydrogenase
+  inhibition extending endogenous cortisol activity at the site of application.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the topical-glycyrrhetinic-acid literature plus the Chinese
+  herbal formula (Zemaphyte) RCTs in which licorice plays the major role. Mechanism
+  via local 11β-HSD2 inhibition is well-characterised.
+coaching_translation: Topical licorice (glycyrrhetinic acid) works as well as over-the-counter
+  hydrocortisone cream — without the skin thinning, rebound flares, or adrenal effects
+  of long-term steroid use. Look for products with 1-2% glycyrrhetinic acid.
+caveats:
+- Topical use; systemic absorption minimal.
+- Combine with barrier-repair emollients and oil-based moisturisers.
+- Pair with food allergen elimination + probiotics for compounded effect.
+- Avoid in pregnancy on broken skin (theoretical concern).
+linked_to_topics:
+- atopic-dermatitis
+- psoriasis
+linked_to_mechanisms:
+- filaggrin-skin-barrier-dysfunction
+linked_to_supplements:
+- licorice-root
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Atopic Dermatitis — Licorice topical (pp 117-118)
+  quote: Licorice applied topically — use commercial preparations featuring pure glycyrrhetinic
+    acid. Glycyrrhetinic acid exerts effects similar to topical hydrocortisone in
+    treatment of eczema, contact and allergic dermatitis, and psoriasis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

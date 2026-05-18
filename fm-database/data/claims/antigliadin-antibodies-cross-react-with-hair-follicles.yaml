@@ -1,0 +1,35 @@
+slug: antigliadin-antibodies-cross-react-with-hair-follicles
+statement: Antigliadin antibodies (and the broader celiac disease spectrum) can cross-react
+  with hair follicle antigens, leading to alopecia areata — a strong indication for
+  testing anti-tissue-transglutaminase (more sensitive than antigliadin) in any woman
+  with patchy hair loss, and trialling a strict gluten-free diet.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the celiac-alopecia association, established in dermatology
+  and gastroenterology literature. Mechanism — molecular mimicry between gliadin peptides
+  and hair follicle antigens; gluten-free diet often produces hair regrowth in seropositive
+  patients.
+coaching_translation: Any patchy or autoimmune-pattern hair loss should trigger a
+  celiac workup — anti-tTG antibodies are more sensitive than the old antigliadin
+  test. A strict 6-month gluten-free trial sometimes regrows hair completely.
+caveats:
+- Anti-tTG IgA (with total IgA to rule out deficiency) more sensitive than antigliadin.
+- Test before going gluten-free (otherwise false negatives).
+- 6 months minimum strict elimination to assess response.
+linked_to_topics:
+- hair-loss-women
+- celiac-disease
+- gluten-free-diet
+linked_to_mechanisms:
+- molecular-mimicry
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Hair Loss in Women — Antigliadin Antibodies (pp 360)
+  quote: Antibodies to gliadin can cross-react and attack hair follicles, leading
+    to alopecia areata — an autoimmune disease characterized by areas of virtually
+    complete hair loss. Gluten intolerance may appear insidiously as hair loss.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

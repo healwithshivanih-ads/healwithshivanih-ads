@@ -1,0 +1,40 @@
+slug: vitamin-d-target-50-80-ng-ml-prevents-fractures
+statement: Bone density correlates directly with serum 25(OH)D3 and inversely with
+  fractures of all types — target 50-80 ng/mL via D3 2000-8000 IU/day (titrated to
+  serum). Vitamin D receptor (VDR) polymorphisms substantially raise the required
+  dose in some women.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Bischoff-Ferrari, Holick) show fracture reduction
+  at 25(OH)D ≥30 ng/mL, with additional benefit toward 50-80 ng/mL. Pizzorno emphasises
+  VDR polymorphism testing for the high-need subgroup.
+coaching_translation: Test vitamin D every 3-6 months when treating bone loss. Get
+  blood levels into the 50-80 ng/mL range — for most women that means 2000-8000 IU
+  of D3 a day. Some women have a vitamin D receptor variant and need much more.
+caveats:
+- Test 25(OH)D before high-dose supplementation.
+- D3 (cholecalciferol) preferred over D2 (ergocalciferol).
+- Pair with vitamin K2 (MK-7) to direct calcium into bone (not arteries).
+- Calcium supplements without vitamin D/K2 raise CVD risk.
+linked_to_topics:
+- osteoporosis
+- vitamin-d-deficiency
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+- vitamin-d-beta-cell-signaling
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3
+- vitamin-d3-k2-combination-supplement
+- vitamin-d3-k2
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Vitamin D deficiency (pp 723-724)
+  quote: Bone density correlates directly with serum 25(OH)D3 and inversely with fractures
+    of all types. Women with the VDR defect require substantially greater levels of
+    vitamin D, preferable as D3.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

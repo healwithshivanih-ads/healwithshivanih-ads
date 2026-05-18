@@ -1,0 +1,43 @@
+slug: h-pylori-mucosal-defense-breakdown
+display_name: H. pylori-Driven Mucosal Defence Breakdown
+aliases:
+- h-pylori-ulcer
+- helicobacter-pylori-pathogenesis
+- urease-mediated-mucosal-damage
+category: immune
+summary: Helicobacter pylori colonises the gastric mucosa in 90-100% of duodenal ulcer
+  and 70% of gastric ulcer patients (50% of people over 50 are positive, but only
+  ~20% develop ulcers). Urease neutralises local acid to permit colonisation; CagA
+  and VacA virulence factors damage epithelial cells; local inflammation increases
+  gastric pH, allowing further colonisation by opportunists. Low gastric output and
+  low antioxidant content predispose. Eradication (bismuth subcitrate, mastic gum,
+  DGL, garlic + flavonoids) or conventional triple therapy resolves most ulcers.
+upstream_drivers:
+- low-gastric-acid-output
+- low-antioxidant-status-gi
+- chronic-stress
+- nsaid-use
+downstream_effects:
+- gastric-ulcer
+- duodenal-ulcer
+- chronic-gastritis
+- gastric-cancer-risk
+- malt-lymphoma-risk
+related_mechanisms:
+- chronic-inflammation
+- leaky-gut
+linked_to_topics:
+- peptic-ulcer-disease
+- gastritis
+evidence_tier: strong
+sources:
+- id: pizzorno-gi-trio
+  location: Peptic Ulcers — Helicobacter pylori (pp 781)
+  quote: 90% to 100% of patients with DUs, 70% with GUs, and 50% of people older than
+    50 years test positive for H. pylori. Low gastric output and low antioxidant content
+    in GI mucosa may predispose to H. pylori colonization, which in turn increases
+    gastric pH, setting up positive feedback.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

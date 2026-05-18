@@ -1,0 +1,51 @@
+slug: strontium-citrate
+display_name: Strontium Citrate
+aliases:
+- strontium
+- strontium-bone-support
+category: mineral
+forms_available:
+- capsule
+- tablet
+timing_options:
+- bedtime
+take_with_food: avoid
+linked_to_topics:
+- osteoporosis
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+linked_to_claims:
+- strontium-supports-bmd-osteoporosis
+notes_for_coach: Mineral that substitutes for calcium in bone hydroxyapatite, slightly
+  stimulating osteoblast activity and inhibiting osteoclast activity. Typical dose
+  680 mg elemental strontium at bedtime, taken at least 2 hours away from calcium
+  and food to avoid absorption competition. Strontium ranelate (prescription form
+  in Europe) has clinical trial evidence for vertebral and hip fracture reduction;
+  citrate form is the nutritional equivalent. DXA scans become artifactually higher
+  in strontium users — true BMD increase is much smaller than scan suggests. Use under
+  clinician supervision; not first-line.
+notes_for_client: A mineral that helps build new bone and slow bone breakdown. Taken
+  at bedtime, separated from calcium and food. Used under clinician supervision after
+  vitamin D, K2, magnesium, and calcium are optimised.
+contraindications:
+  conditions:
+  - chronic-kidney-disease
+  - history-of-venous-thromboembolism
+  - severe-cardiovascular-disease
+  medications:
+  - calcium-supplements-taken-concurrently
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Therapeutic Approach (pp 722 box)
+  quote: Strontium listed alongside Calcium, Magnesium, Camellia sinensis, Vitamin
+    K2 (MK-7), Phytoestrogens, and Potassium citrate as interventions to retard bone
+    turnover and support bone mineral density.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

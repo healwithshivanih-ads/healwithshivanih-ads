@@ -1,0 +1,35 @@
+slug: dgl-stimulates-gastric-mucosal-regeneration
+statement: Deglycyrrhizinated licorice (DGL, 380-760 mg chewed 20 minutes before meals)
+  stimulates secretion and quality of gastric mucin, increases gastric mucosal cell
+  turnover, and is comparable to cimetidine and ranitidine in healing duodenal and
+  gastric ulcers — without raising blood pressure (glycyrrhizin removed).
+evidence_tier: strong
+rationale: Multiple trials (Kassir, Tewari, Larkworthy) showed DGL equivalence to
+  H2-blockers for ulcer healing. Pizzorno cites DGL alongside cabbage juice as the
+  key gastric mucosal regeneration interventions. Must be chewed (saliva activates).
+coaching_translation: Chewed deglycyrrhizinated licorice (DGL) 380-760 mg, 20 minutes
+  before each meal, heals ulcers as well as the prescription acid blockers — by helping
+  your stomach make better mucus. Chew it; don't swallow whole.
+caveats:
+- Use DGL (deglycyrrhizinated) only — regular licorice raises blood pressure.
+- Must be chewed in mouth — saliva activates the active compounds.
+- 8-12 weeks for full ulcer healing.
+- Pair with food-allergen elimination and H. pylori workup.
+linked_to_topics:
+- peptic-ulcer-disease
+- gerd
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements:
+- dgl-deglycyrrhizinated-licorice
+- dgl-licorice
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Peptic Ulcers — Nutritionally support restoration (pp 780 box)
+  quote: DGL and Cabbage listed in supplements that stimulate generation of new mucosal
+    cells and secretion of effective mucin for peptic ulcer healing.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

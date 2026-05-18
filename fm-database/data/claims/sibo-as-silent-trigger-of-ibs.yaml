@@ -1,0 +1,36 @@
+slug: sibo-as-silent-trigger-of-ibs
+statement: Small intestinal bacterial overgrowth (SIBO), intestinal dysbiosis, and
+  food allergies are silent triggers of IBS — overlapping symptom presentations that
+  are often misdiagnosed. Hydrogen-methane breath testing identifies SIBO; stool analysis
+  identifies dysbiosis; elimination diet identifies food allergies.
+evidence_tier: strong
+rationale: Pimentel's foundational SIBO-IBS research showed 78% of IBS patients have
+  abnormal breath tests; eradication improves symptoms. Pizzorno explicitly lists
+  SIBO, dysbiosis, and food allergies as silent IBS triggers requiring workup.
+coaching_translation: Don't accept "you have IBS" as the final answer. About 3 in
+  4 IBS patients actually have small intestinal bacterial overgrowth (SIBO) driving
+  the symptoms. Breath testing diagnoses it; targeted antimicrobials (rifaximin or
+  berberine/oregano) treat it.
+caveats:
+- Hydrogen-methane breath test is the standard SIBO diagnostic.
+- Methane-predominant SIBO maps to constipation; hydrogen to diarrhea.
+- After eradication, address motility (prokinetics, vagal tone) to prevent recurrence.
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+- sibo
+- leaky-gut
+linked_to_mechanisms:
+- gut-dysbiosis
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Irritable Bowel Syndrome — Additional Considerations (pp 582)
+  quote: Possible silent triggers of IBS — small intestinal bacterial overgrowth (SIBO),
+    intestinal dysbiosis, and food allergies.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

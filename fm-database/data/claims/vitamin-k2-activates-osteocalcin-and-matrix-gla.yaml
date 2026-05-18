@@ -1,0 +1,39 @@
+slug: vitamin-k2-activates-osteocalcin-and-matrix-gla
+statement: Vitamin K2 (menaquinone, preferably MK-7 at 100-200 mcg/day) activates
+  osteocalcin (pulls calcium into bone) and matrix Gla protein (keeps calcium out
+  of arteries) — addressing two parallel problems of post-menopausal women (bone loss
+  and vascular calcification) with one nutrient.
+evidence_tier: strong
+rationale: Rotterdam Study and multiple K2 supplementation trials (Knapen, Beulens)
+  show fracture and vascular calcification benefit. Pizzorno positions K2 alongside
+  D3 as essential bone-and-vessel nutrients in PM women. MK-7 has 72-hour half-life
+  vs MK-4's 8 hours.
+coaching_translation: Vitamin K2 (MK-7 form, 100-200 mcg/day) does two important things
+  — it activates the protein that pulls calcium into bone, and the protein that keeps
+  calcium out of your arteries. Bone loss and atherosclerosis in postmenopausal women
+  are linked, and K2 helps both.
+caveats:
+- Avoid with warfarin (vitamin K reverses warfarin activity) — coordinate with prescriber.
+- MK-7 preferred over MK-4 for longer half-life.
+- Pair with D3 and Mg.
+linked_to_topics:
+- osteoporosis
+- atherosclerosis
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+- osteocalcin-activation
+linked_to_supplements:
+- vitamin-k2
+- vitamin-k
+- vitamin-d3-k2-combination-supplement
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Vitamin K2 deficiency (pp 724)
+  quote: Osteocalcin, which pulls calcium into bone, and matrix Gla protein, which
+    prevents calcium deposition in arteries, are vitamin K-dependent proteins.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

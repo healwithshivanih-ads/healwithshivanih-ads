@@ -1,0 +1,39 @@
+slug: exercise-regular-cuts-pms-symptoms-and-bone-loss
+statement: Regular non-competitive exercise reduces PMS symptoms (lower impaired concentration,
+  negative mood, behaviour change, pain), elevates endorphins, lowers cortisol, modulates
+  estrogen, AND stimulates osteoblasts to slow bone loss — making exercise a dual-benefit
+  intervention for both PMS and osteoporosis prevention.
+evidence_tier: strong
+rationale: Multiple PMS exercise trials and the WHI plus dozens of osteoporosis cohort
+  studies establish both endpoints independently. Pizzorno frames exercise as foundational
+  for both conditions; the same prescription (mixed aerobic + resistance, 3-5x/week)
+  serves both.
+coaching_translation: Regular exercise is one of the few interventions that hits PMS,
+  mood, AND bone density at once. Mixed aerobic and resistance, 3-5 days a week, ideally
+  with some weight-bearing. Don't have to be a serious athlete.
+caveats:
+- Competitive over-exercise can amenorrheas — bad for bones.
+- Weight-bearing > pure cycling/swimming for bone.
+- Combine with mind-body practices (yoga, tai chi) for stress and balance.
+linked_to_topics:
+- premenstrual-syndrome
+- osteoporosis
+- perimenopause-and-menopause
+- major-depressive-disorder
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+- hpa-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Premenstrual Syndrome — Exercise (pp 836) AND Osteoporosis — Physical
+    activity (pp 725)
+  quote: Women who frequently exercise (but who are not competitive athletes) are
+    protected from PMS. Exercise elevates endorphins, lowers cortisol, and modulates
+    estrogen levels. Exercise reduces OP risk by stimulating osteoblasts.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

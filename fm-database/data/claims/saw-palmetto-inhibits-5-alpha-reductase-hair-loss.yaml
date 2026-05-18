@@ -1,0 +1,38 @@
+slug: saw-palmetto-inhibits-5-alpha-reductase-hair-loss
+statement: Saw palmetto (Serenoa repens, 320 mg of extract standardised to 85-95%
+  fatty acids and sterols, daily) inhibits 5-alpha-reductase and DHT receptor binding
+  — the same mechanism as the prescription drug finasteride — reducing androgen-driven
+  hair loss in female pattern alopecia.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the mechanistic parallel to finasteride. Trials in female
+  pattern hair loss are smaller than the BPH evidence base, but mechanism is well-characterised.
+  Effect builds over 4-6 months.
+coaching_translation: Saw palmetto at 320 mg of the standardised extract daily works
+  the same way as the prescription hair-loss drug finasteride — by blocking the enzyme
+  that converts testosterone to its hair-attacking form. Slower to work but fewer
+  side effects.
+caveats:
+- 4-6 months minimum to assess response.
+- Avoid in pregnancy, lactation, hormone-sensitive cancers.
+- Caution with hormone therapy and anti-androgens.
+- Combine with iron / zinc / vitamin A / EFAs if deficient.
+linked_to_topics:
+- hair-loss-women
+- benign-prostatic-hyperplasia
+- polycystic-ovary-syndrome
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
+linked_to_supplements:
+- saw-palmetto
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Hair Loss in Women — Saw palmetto (pp 358)
+  quote: Saw palmetto extract inhibits formation of DHT by enzyme 5-alpha-reductase,
+    also increased in male and female pattern baldness (the same mechanism as finasteride
+    used in female pattern hair loss). Saw palmetto extract also inhibits transport
+    of DHT to nuclear receptors.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

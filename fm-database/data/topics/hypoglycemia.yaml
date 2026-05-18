@@ -1,0 +1,66 @@
+slug: hypoglycemia
+display_name: Hypoglycemia and Glycemic Volatility
+aliases:
+- reactive-hypoglycemia
+- postprandial-hypoglycemia
+- idiopathic-postprandial-syndrome
+- glycemic-volatility
+- syndrome-x-precursor
+summary: Two main categories — reactive hypoglycemia (symptoms 3-5 hours after meal,
+  often heralding early T2DM) and fasting hypoglycemia (rare, severe disease states).
+  Pizzorno's reframing — modern CGM data shows most "hypoglycemia" is really elevated
+  glycemic volatility (rapid drops, even from above-normal levels, trigger symptoms
+  via counter-regulatory hormones). Driven by refined carbohydrate intake, leads to
+  Syndrome X (hyperinsulinemia → glucose intolerance → diminished insulin sensitivity
+  → hypertension → hypercholesterolemia → obesity → T2DM). Strongly linked to migraine,
+  PMS, depression, anxiety, aggressive behaviour.
+common_symptoms:
+- headaches
+- depression
+- anxiety
+- irritability
+- blurred-vision
+- excessive-sweating
+- mental-confusion
+- food-cravings
+- shakiness
+- palpitations
+red_flags:
+- recurrent severe hypoglycemia with confusion/coma → rule out pancreatic tumour (insulinoma)
+- post-bariatric or post-gastrectomy reactive hypoglycemia
+- hypoglycemia in non-diabetic patient on no glucose-lowering medication
+related_topics:
+- type-2-diabetes-mellitus
+- prediabetes
+- insulin-resistance
+- migraine-headache
+- premenstrual-syndrome
+- chronic-fatigue-syndrome
+key_mechanisms:
+- nocturnal-glycemic-variability
+- insulin-resistance
+- pancreatic-beta-cell-dysfunction
+coaching_scope_notes: Coaching role — high-complex-carb / high-soluble-fibre / small-frequent-meals
+  diet, eliminate all simple refined carbs and alcohol, chromium and B-complex repletion,
+  exercise to improve insulin sensitivity, viscous fibre supplements (glucomannan
+  / PGX). CGM use for diagnosis and monitoring. Stress management.
+clinician_scope_notes: GTT or G-ITT for confirmation; CGM increasingly preferred.
+  Whipple's triad — CNS symptoms + glucose ≤40 mg/dL + relief with glucose. Rule out
+  insulinoma in fasting hypoglycemia.
+notes_for_coach: Pizzorno reframing — glycemic volatility (rapid drops) drives most
+  symptoms, not absolute glucose level. Hypoglycemic index above 0.8 = reactive hypoglycemia.
+  Strong overlap with migraine, PMS, depression, criminal/aggressive behaviour. Sugar-restricted
+  diet reduced antisocial behaviour in male juvenile inmates.
+sources:
+- id: pizzorno-energy-cluster
+  location: Hypoglycemia — General Considerations (pp 448-450)
+  quote: Reactive hypoglycemia is the most common form. Symptoms occur 3 to 5 hours
+    after a meal and may herald onset of early T2DM. Hypoglycemia is involved in various
+    psychological disorders. Rather than absolute glucose level determining hypoglycemic
+    symptoms, feelings of hypoglycemia occur when glucose drops rapidly, even when
+    it was above normal.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

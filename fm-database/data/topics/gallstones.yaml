@@ -1,0 +1,57 @@
+slug: gallstones
+display_name: Gallstones (Cholelithiasis)
+aliases:
+- cholelithiasis
+- biliary-stones
+- cholesterol-stones
+- pigmented-stones
+- biliary-colic
+summary: Crystalline deposits in the gallbladder formed from supersaturated bile components.
+  Affects 20% of women and 8% of men over 40 in the US — 20 million Americans have
+  gallstones; 300,000+ cholecystectomies/year. Risk factor for gallbladder cancer.
+  Four types — cholesterol (rare pure), mixed (80% in US, cholesterol + bile salts
+  + pigments + Ca salts), pigmented (Asia, hemolysis, alcohol cirrhosis), and mineral.
+  Three-stage pathogenesis — bile supersaturation → nucleation → enlargement at 2.6
+  mm/year. Symptomatic ~8 years after formation begins. Pizzorno frames it as Western-diet-driven
+  and largely preventable.
+common_symptoms:
+- right-upper-quadrant-pain
+- biliary-colic
+- nausea
+- bloating-after-fatty-meals
+red_flags:
+- acute cholecystitis (fever + RUQ tenderness + Murphy's sign)
+- biliary obstruction with jaundice
+- ascending cholangitis
+related_topics:
+- estrogen-dominance
+- perimenopause-and-menopause
+- crohns-disease
+- obesity
+key_mechanisms:
+- bile-cholesterol-supersaturation
+- impaired-bile-flow
+coaching_scope_notes: Coaching role — eliminate food allergens (especially eggs, common
+  ulcer-trigger pattern), increase soluble fibre, lipotropic factors (choline, methionine),
+  bile-flow botanicals (dandelion, milk thistle, turmeric, artichoke), hydration (8
+  oz water/waking hour), reduce saturated fat / sugar / coffee, maintain at least
+  10 g fat/day to prevent biliary stasis during weight loss.
+clinician_scope_notes: Ultrasound is gold standard. Asymptomatic stones generally
+  watch-and-wait. Symptomatic / recurrent / complicated → cholecystectomy. Ursodeoxycholic
+  acid for non-surgical candidates.
+notes_for_coach: Pizzorno key insights — gallstones are 2-4× more common in women
+  due to estrogen-driven cholesterol oversaturation; pregnancy, OCPs, HRT, tamoxifen
+  all raise risk; very-low-fat diets paradoxically cause biliary stasis (need 10+
+  g fat/day); active weight loss transiently raises stone risk before stabilising.
+sources:
+- id: pizzorno-gi-trio
+  location: Gallstones — General Considerations and Pathogenesis (pp 332-335)
+  quote: Gallstones are a Western diet-induced disease affecting 20% of women and
+    8% of men older than 40. Frequency is two to four times greater in women than
+    in men. Women are predisposed because of either increased cholesterol synthesis
+    or suppression of bile acids by estrogens.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

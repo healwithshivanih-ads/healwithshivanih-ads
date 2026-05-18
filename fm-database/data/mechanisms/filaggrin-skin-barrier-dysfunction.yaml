@@ -1,0 +1,50 @@
+slug: filaggrin-skin-barrier-dysfunction
+display_name: Filaggrin / Epidermal Barrier Dysfunction
+aliases:
+- filaggrin-mutation
+- epidermal-barrier-disruption
+- nmf-deficiency-skin
+- skin-barrier-defect
+category: structural
+summary: Filaggrin is the protein that aggregates keratin filaments and is proteolysed
+  into Natural Moisturizing Factor (NMF) amino acids that hydrate the stratum corneum.
+  Loss-of-function mutations in FLG cause defective skin barrier — water loss, dryness,
+  hyperkeratosis, and chronic inflammation. 15% of atopic dermatitis cases attributable
+  to filaggrin mutations; carrying one copy raises AD risk to 40%. Sustained hapten
+  access through the defective barrier drives a Th1-to-Th2 immunophenotype shift,
+  secondary Staphylococcus aureus colonisation, and elevated TSLP (thymic stromal
+  lymphopoietin) — the inside-outside-back-to-outside paradigm justifying barrier-repair
+  therapy.
+upstream_drivers:
+- flg-gene-mutation
+- chronic-skin-inflammation
+- phthalate-exposure
+- harsh-soaps-detergents
+- staphylococcus-aureus-colonisation
+- low-omega-3-status
+downstream_effects:
+- atopic-dermatitis
+- food-sensitivities
+- allergic-asthma
+- chronic-pruritus
+- th2-immunophenotype-shift
+related_mechanisms:
+- gut-brain-skin-axis
+- leaky-gut
+- molecular-mimicry
+linked_to_topics:
+- atopic-dermatitis
+- food-sensitivities
+evidence_tier: strong
+sources:
+- id: pizzorno-skin-trio
+  location: Atopic Dermatitis — Filaggrin and Epidermal Barrier Dysfunction (pp 112-114)
+  quote: Gene encoding filaggrin (FLG) is most consistently replicated. Filaggrin
+    is a protein that facilitates aggregation of keratin filaments, and when proteolyzed,
+    forms small hygroscopic molecules — amino acids — which comprise natural moisturizing
+    factor. 15% of cases of AD are attributable to such mutations. If a person is
+    born with one filaggrin mutation, risk of AD is 40%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,45 @@
+slug: bile-cholesterol-supersaturation
+display_name: Biliary Cholesterol Supersaturation
+aliases:
+- bile-supersaturation
+- cholesterol-saturation-bile
+- impaired-cholesterol-solubility-bile
+category: metabolic
+summary: Free cholesterol is water-insoluble and must be held in lecithin-bile-salt
+  micelles to remain in solution. Supersaturation occurs when cholesterol secretion
+  outpaces lecithin and bile acid secretion — driven by estrogen excess, obesity,
+  rapid weight loss, low dietary fat (<10g/day causing biliary stasis), and impaired
+  bile flow. Supersaturated bile precipitates, forming gallstone nuclei that enlarge
+  at ~2.6 mm/year. Lipotropic factors (choline, methionine), phosphatidylcholine,
+  bile-flow botanicals (dandelion, artichoke, milk thistle, turmeric) shift the ratio
+  back toward solubility.
+upstream_drivers:
+- estrogen-excess
+- obesity
+- rapid-weight-loss
+- low-fat-diet-biliary-stasis
+- impaired-bile-flow
+- hmg-coa-reductase-overactivity
+- tamoxifen-oral-contraceptive-use
+downstream_effects:
+- gallstones
+- biliary-colic
+- gallbladder-cancer-risk
+related_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_topics:
+- gallstones
+- estrogen-dominance
+evidence_tier: strong
+sources:
+- id: pizzorno-gi-trio
+  location: Gallstones — Pathogenesis (pp 332-333)
+  quote: Cholesterol and mixed stones require cholesterol supersaturation of bile
+    within the GB. Bile solubility and supersaturation are based on relative molar
+    concentrations of cholesterol, bile acids, phosphatidylcholine (lecithin), and
+    water. Free cholesterol is water-insoluble — it must be in lecithin-bile salt
+    micelle.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

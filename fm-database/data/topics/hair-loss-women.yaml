@@ -1,0 +1,59 @@
+slug: hair-loss-women
+display_name: Hair Loss in Women
+aliases:
+- female-hair-loss
+- female-pattern-hair-loss
+- telogen-effluvium
+- diffuse-alopecia
+- androgenic-alopecia-female
+summary: Hair shedding above the normal cycle, classified as diffuse (telogen effluvium,
+  female pattern, alopecia areata) or focal (tinea, traction, trichotillomania, scarring).
+  Female pattern affects 30% of women before age 50. Five major treatable drivers
+  — androgenic excess + insulin resistance (PCOS pattern), drug side effects, nutritional
+  deficiency (zinc, vitamin A, EFAs, iron — especially low ferritin under 30 mcg/L),
+  hypothyroidism (20% prevalence in American women, hair loss is a cardinal sign),
+  and antigliadin antibodies / celiac disease (cross-reactive autoimmune attack on
+  hair follicles → alopecia areata).
+common_symptoms:
+- hair-loss
+- hair-thinning
+- alopecia
+related_topics:
+- hypothyroidism
+- celiac-disease
+- polycystic-ovary-syndrome
+- iron-deficiency-anemia
+- insulin-resistance
+key_mechanisms:
+- 5-alpha-reductase-dht-conversion
+- iron-deficiency-anemia-mechanism
+- molecular-mimicry
+red_flags:
+- patchy hair loss (rule out alopecia areata, tinea, traction)
+- scarring hair loss (refer to dermatology — rare causes like discoid lupus)
+- new hair loss with weight loss, fatigue, GI symptoms (workup celiac, hypothyroid,
+  IBD)
+coaching_scope_notes: Coaching role — work through the 5 drivers — ferritin (target
+  ≥50 mcg/L), zinc, vitamin A, EFAs, gluten-free trial, glucose / insulin regulation,
+  saw palmetto for androgen-driven pattern, thyroid screen + treat upstream causes
+  (hypothyroidism). Refer focal alopecia and scarring patterns to dermatology.
+clinician_scope_notes: Hair-pull test; ferritin, TSH/fT4/fT3 + TPO, IGF-1 + free T,
+  anti-tTG antibody (more sensitive than antigliadin). Topical minoxidil; oral spironolactone
+  (anti-androgen) for female pattern; finasteride off-label.
+notes_for_coach: Pizzorno key insights — hair loss is one of the most reliable signs
+  of hypothyroidism; ferritin (not just serum iron) is the test — below 30 mcg/L blocks
+  hair regeneration; many women with hair loss have hypochlorhydria (use HCl with
+  meals if mineral deficient despite supplementation); saw palmetto 320 mg standardised
+  85-95% fatty acids/sterols inhibits 5-alpha-reductase like finasteride.
+sources:
+- id: pizzorno-womens-trio
+  location: Hair Loss in Women — Differential Diagnosis + Causes (pp 355-360)
+  quote: Five major causes — androgenic female pattern hair loss, side effect of drug,
+    nutritional deficiencies, hypothyroidism, antigliadin antibodies. Hair loss is
+    a cardinal sign of hypothyroidism. If serum ferritin is below 30 mcg/L, iron replacement
+    is indicated.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

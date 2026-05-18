@@ -1,0 +1,38 @@
+slug: food-allergy-is-prime-cause-of-peptic-ulcer-recurrence
+statement: Food allergy is the prime causative factor in peptic ulcer recurrence —
+  PU lesions are histologically similar to Arthus reactions (immune-complex-mediated
+  tissue damage). 98% of PU patients have coexisting respiratory tract allergic disease.
+  Elimination diet is highly effective. Milk should specifically be avoided — higher
+  milk consumption correlates with higher ulcer risk and milk significantly increases
+  stomach acid production.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the 98% concurrent-atopy figure and the Arthus-reaction
+  histology. Mainstream peptic ulcer care under-emphasises food allergy in favour
+  of H. pylori and NSAIDs, but the recurrence rate suggests Pizzorno's framing has
+  clinical merit.
+coaching_translation: Peptic ulcers recur because food allergies keep re-triggering
+  the immune attack on the gastric lining. Milk is the worst offender — it actually
+  increases stomach acid despite the old "drink milk for ulcers" advice. Elimination
+  diet is essential to break the cycle.
+caveats:
+- Pair with H. pylori workup — both must be addressed.
+- Common allergens — milk, wheat, corn, eggs, citrus, soy.
+- 4-6 week elimination + reintroduction protocol.
+linked_to_topics:
+- peptic-ulcer-disease
+- food-sensitivities
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Peptic Ulcers — Food Allergy (pp 782)
+  quote: Food allergy is the prime causative factor. 98% of patients with PU had coexisting
+    lower and upper respiratory tract allergic disease. Milk should be avoided; the
+    higher the milk consumption, the greater the likelihood of ulcer.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,36 @@
+slug: sarsaparilla-binds-endotoxins-improves-psoriasis
+statement: Aqueous Smilax sarsaparilla extract improves chronic plaque psoriasis in
+  62% of patients and completely clears it in another 18% (80% total benefit) by binding
+  intestinal endotoxins for excretion — reducing the circulating LPS load that drives
+  keratinocyte hyperproliferation. Severity and response correlate well with circulating
+  endotoxin levels.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the Thurmon 1942 clinical study (still the lead reference).
+  Mechanism — saponin-endotoxin binding in the gut. Modern psoriasis-endotoxin literature
+  supports the framing. Limited modern replication.
+coaching_translation: Sarsaparilla (the same herb that flavours old-school root beer)
+  binds bowel toxins so they exit through stool instead of reaching the skin. In chronic
+  plaque psoriasis it produced an 80% response rate in clinical use. Best paired with
+  HCl, enzymes, bile flow, fibre, and probiotics.
+caveats:
+- Best for chronic plaque psoriasis with strong gut-driven pattern.
+- Combine with full gut-skin protocol (HCl, enzymes, fibre, probiotics).
+- Aqueous (water) extracts preferred over alcohol-based.
+- 12+ weeks to assess response.
+linked_to_topics:
+- psoriasis
+linked_to_mechanisms:
+- bowel-toxemia-skin-axis
+linked_to_supplements:
+- smilax-sarsaparilla
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Psoriasis — Sarsaparilla (pp 868)
+  quote: Aqueous extract of Smilax sarsaparilla is effective in psoriasis. It improved
+    psoriasis in 62% of patients and completely cleared another 18% (80% benefited).
+    Benefit is from binding of endotoxins by sarsaparilla components, and their excretion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

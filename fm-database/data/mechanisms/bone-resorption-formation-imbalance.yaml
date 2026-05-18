@@ -1,0 +1,45 @@
+slug: bone-resorption-formation-imbalance
+display_name: Bone Resorption-Formation Imbalance
+aliases:
+- bone-remodeling-imbalance
+- osteoclast-osteoblast-uncoupling
+- accelerated-bone-resorption
+category: structural
+summary: Bone is continuously remodelled by osteoclasts (resorption) and osteoblasts
+  (formation). Imbalance favouring resorption drives osteoporosis. Drivers — estrogen
+  decline (postmenopause accelerates loss to 2%/year for 5-10 years), vitamin D deficiency,
+  vitamin K2 deficiency (impaired osteocalcin activation), elevated parathyroid hormone,
+  diet-induced metabolic acidosis (animal protein + salt + sugar leach bone minerals
+  to buffer), smoking (cadmium + nicotine + earlier menopause), sedentary lifestyle
+  (osteoblasts require mechanical loading).
+upstream_drivers:
+- estrogen-decline
+- vitamin-d-deficiency
+- vitamin-k2-deficiency
+- diet-induced-acidosis
+- chronic-elevated-pth
+- sedentary-lifestyle
+- chronic-cortisol-elevation
+downstream_effects:
+- low-bone-mineral-density
+- fragility-fractures
+- vertebral-compression
+- height-loss
+- kyphosis
+related_mechanisms:
+- diet-induced-acidosis
+- osteocalcin-activation
+linked_to_topics:
+- osteoporosis
+- perimenopause-and-menopause
+evidence_tier: strong
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Pathophysiology (pp 723)
+  quote: Bone remodeling is normally a balance of resorption and formation. Imbalance
+    between removal and replacement causes bone loss and risk of fracture. After menopause,
+    the loss accelerates to 2% per year during the first 5 to 10 years.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

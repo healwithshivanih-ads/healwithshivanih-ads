@@ -1,0 +1,36 @@
+slug: strontium-supports-bmd-osteoporosis
+statement: Strontium (citrate form at ~680 mg elemental nutritionally; ranelate form
+  prescription in Europe at 2 g/day) increases bone mineral density and reduces vertebral
+  fracture risk by ~40% — stimulating osteoblasts while inhibiting osteoclast activity.
+  DXA scans become artifactually elevated in strontium users; true BMD increase is
+  smaller than scan suggests.
+evidence_tier: plausible_emerging
+rationale: Strontium ranelate clinical trials (SOTI, TROPOS) demonstrate vertebral
+  and hip fracture reduction in postmenopausal women. Citrate is the nutritional equivalent
+  in many countries. DXA artefact is well-documented — strontium has higher atomic
+  number than calcium, so scans read higher density.
+coaching_translation: Strontium is a calcium-cousin mineral that genuinely helps build
+  bone — by both stimulating bone-builders and slowing bone-eaters. Take at bedtime,
+  separately from calcium and food (they compete for absorption).
+caveats:
+- Take at bedtime, separated from calcium and food by 2+ hours.
+- DXA scans overstate true BMD increase in strontium users.
+- European prescription form (ranelate) had VTE / MI signals — citrate form likely
+  safer but data limited.
+- Not first-line — optimise D3, K2, Mg, Ca, weight-bearing exercise first.
+linked_to_topics:
+- osteoporosis
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+linked_to_supplements:
+- strontium-citrate
+out_of_scope_notes: Use under clinician supervision; not first-line.
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Therapeutic Approach (pp 722 box)
+  quote: Strontium listed in retard bone turnover and support bone mineral density
+    interventions.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

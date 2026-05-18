@@ -1,0 +1,43 @@
+slug: b6-50-100mg-divided-doses-improves-pms-symptoms
+statement: Vitamin B6 50-100 mg/day in divided doses (≤50 mg per dose; liver can only
+  process 50 mg at once) improves PMS symptoms — including depression, fatigue, irritability
+  — by reducing midluteal estrogen, increasing midluteal progesterone, and serving
+  as a cofactor for serotonin, dopamine, norepinephrine, taurine, and GABA synthesis.
+  Estrogens negatively impair B6 function (lower in women on oral contraceptives or
+  HRT).
+evidence_tier: strong
+rationale: Wyatt et al 1999 meta-analysis showed B6 at ≤100 mg/day produced more than
+  twofold improvement in PMS symptoms vs placebo. Pizzorno cites the divided-dose
+  constraint based on hepatic 5'-phosphorylation kinetics. P5P (pyridoxal-5-phosphate)
+  form for poor converters.
+coaching_translation: B6 (50-100 mg a day split into 2-3 doses) is one of the most-studied
+  PMS nutrients. Eases mood, fatigue, and irritability. Split the dose because your
+  liver can't process more than 50 mg at once.
+caveats:
+- Long-term doses >500 mg/day can cause peripheral neuropathy; rare under 200 mg/day.
+- Use P5P (pyridoxal-5-phosphate) for poor converters or if Mg or B2 deficient.
+- Combine with Mg for cofactor support.
+linked_to_topics:
+- premenstrual-syndrome
+- major-depressive-disorder
+- anxiety
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+- estrogen-enterohepatic-recirculation-uterine
+linked_to_supplements:
+- vitamin-b6
+- vitamin-b6-pyridoxine
+- pyridoxine-b6
+- pyridoxal-5-phosphate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Premenstrual Syndrome — Vitamin B6 (pp 836-837)
+  quote: B6 supplementation positively affects all PMS symptoms (particularly depression)
+    in many women. Improvement arises from reducing midluteal estrogen and increasing
+    midluteal progesterone. Therapeutic oral dose of B6 — 50 to 100 mg q.d. Divide
+    doses greater than 50 mg into 50-mg doses throughout the day.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

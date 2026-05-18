@@ -1,0 +1,44 @@
+slug: t4-to-t3-conversion-requires-zinc-copper-selenium
+statement: Functional hypothyroidism (normal TSH and T4 but symptomatic) is often
+  a peripheral T4→T3 conversion problem driven by zinc, copper, or selenium deficiency
+  in the iodothyronine deiodinase enzymes. Body temperature (BBT) and reverse T3/T4
+  ratio identify this — symptoms persist despite normal labs because tissues cannot
+  make active T3.
+evidence_tier: strong
+rationale: Already established in our autoimmune-thyroid batch (claim zinc-copper-selenium-cofactors-t4-t3-conversion).
+  This claim emphasises the functional-hypothyroidism subgroup — BBT 97.6-98.2°F is
+  normal; lower suggests cellular hypothyroidism even with normal serum thyroid hormones.
+  Pizzorno's general Hypothyroidism chapter (which we have not fully ingested) frames
+  this in detail; cross-references our existing autoimmune-thyroid material.
+coaching_translation: If thyroid symptoms persist despite normal TSH and T4, suspect
+  a conversion problem. Test reverse T3 / T4 ratio and check basal body temperature.
+  Zinc, copper, and selenium are the limiting cofactors. Iodine deficiency or excess
+  also disrupts conversion.
+caveats:
+- Don't rely on TSH alone — order full panel (free T4, free T3, reverse T3, TPO).
+- BBT mornings before getting up; <97.6°F suggests low thyroid activity.
+- High rT3/T4 ratio suggests stress-driven thyroid blunting.
+- Treat upstream stress, dysbiosis, nutrient deficiencies first.
+linked_to_topics:
+- hypothyroidism
+- chronic-fatigue-syndrome
+- functional-hypothyroidism
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+- selenium-thyroid-conversion
+linked_to_supplements:
+- zinc
+- selenium
+- copper
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-energy-cluster
+  location: Cross-reference to Pizzorno Hypothyroidism chapter; CFS chapter lists
+    hypothyroidism as required ruleout (pp 215)
+  quote: Hypothyroidism listed as one of the causes of chronic fatigue. Functional
+    hypothyroidism — thyroid activity is measured by functional test (Barnes BBT test)
+    rather than solely by blood thyroid hormone levels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

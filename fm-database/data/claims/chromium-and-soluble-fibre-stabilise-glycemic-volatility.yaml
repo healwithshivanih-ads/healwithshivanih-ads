@@ -1,0 +1,41 @@
+slug: chromium-and-soluble-fibre-stabilise-glycemic-volatility
+statement: High-complex-carbohydrate, high-soluble-fibre diet eaten in small frequent
+  meals — plus viscous-fibre supplements (glucomannan, PGX, psyllium) several times
+  daily and chromium repletion — stabilises glycemic volatility and resolves reactive
+  hypoglycemia symptoms. Avoid all simple/processed/concentrated carbohydrates and
+  alcohol.
+evidence_tier: strong
+rationale: Pizzorno's standard FM hypoglycemia protocol. Mechanism — soluble fibre
+  slows gastric emptying and gut absorption, dampening glucose peaks and counter-regulatory
+  rebounds; chromium amplifies insulin signalling at the receptor.
+coaching_translation: Stabilise glucose with three levers — small frequent meals,
+  viscous soluble fibre before meals (glucomannan, PGX), and chromium supplementation.
+  Cut all simple sugars and alcohol. Symptoms (afternoon crashes, food cravings, anxiety)
+  resolve in 4-8 weeks.
+caveats:
+- Viscous fibres need adequate water intake.
+- Chromium 200-400 mcg/day; caution in diabetics on glucose-lowering meds (additive
+  effect).
+- Pair with stress management — cortisol fluctuations drive glycemic volatility.
+linked_to_topics:
+- hypoglycemia
+- insulin-resistance
+- prediabetes
+linked_to_mechanisms:
+- glycemic-volatility-cgm
+- insulin-resistance
+linked_to_supplements:
+- chromium
+- chromium-picolinate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-energy-cluster
+  location: Hypoglycemia — Therapeutic Approach (pp 449 box)
+  quote: High-complex carbohydrate, high-soluble fiber diet consumed in small meals.
+    Supplement with viscous fibers several times a day. High-potency vitamin-mineral
+    including chromium. Avoid all simple, processed, and concentrated carbohydrates
+    and food choices with high glycemic load.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

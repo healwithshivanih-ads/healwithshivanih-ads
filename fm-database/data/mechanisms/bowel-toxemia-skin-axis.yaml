@@ -1,0 +1,49 @@
+slug: bowel-toxemia-skin-axis
+display_name: Bowel Toxemia → Skin (Gut-Skin Endotoxin Axis)
+aliases:
+- gut-skin-endotoxin-axis
+- gut-derived-toxin-skin
+- polyamine-skin-hyperproliferation
+category: gut
+summary: Gut-derived toxins (LPS endotoxins from gram-negative bacteria, Candida byproducts,
+  IgE/IgA immune complexes) and polyamines (putrescine, spermidine, cadaverine from
+  incomplete protein digestion) reach the skin via portal-then-systemic circulation,
+  inhibit skin cAMP, raise cGMP, and drive keratinocyte hyperproliferation. The primary
+  FM mechanism in psoriasis — controllable via HCl, pancreatic enzymes, bile flow,
+  dietary fibre, sarsaparilla (binds endotoxins), Hydrastis (inhibits bacterial decarboxylase),
+  probiotics, gluten elimination, alcohol elimination.
+upstream_drivers:
+- hypochlorhydria
+- pancreatic-insufficiency
+- bile-acid-deficiency
+- gut-dysbiosis
+- leaky-gut
+- alcohol-overuse
+- low-fibre-diet
+downstream_effects:
+- psoriasis
+- atopic-dermatitis
+- acne-vulgaris
+- chronic-skin-inflammation
+related_mechanisms:
+- gut-brain-skin-axis
+- leaky-gut
+- gut-dysbiosis
+linked_to_topics:
+- psoriasis
+- atopic-dermatitis
+- acne-vulgaris
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-skin-trio
+  location: Psoriasis — Bowel Toxemia (pp 867-868)
+  quote: Gut-derived toxins are implicated — endotoxins (compounds from cell walls
+    of gram-negative bacteria), streptococci, Candida albicans, yeast, and IgE and
+    IgA immune complexes. They increase cGMP in skin cells, promoting proliferation.
+    Toxic metabolites of arginine and ornithine are polyamines (putrescine, spermidine,
+    cadaverine) and are increased in psoriatics. Polyamines inhibit formation of cAMP,
+    inducing excess cell proliferation.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

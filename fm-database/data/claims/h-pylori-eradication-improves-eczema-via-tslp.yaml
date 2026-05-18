@@ -1,0 +1,38 @@
+slug: h-pylori-eradication-improves-eczema-via-tslp
+statement: Helicobacter pylori antibody is positive in 70% of atopic dermatitis patients
+  — H. pylori directly stimulates epidermal cells to secrete TSLP (thymic stromal
+  lymphopoietin), the cytokine that drives Th2 commitment and allergic inflammation.
+  Eradication of H. pylori produces partial improvement in atopic dermatitis.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the 70% H. pylori antibody prevalence and the TSLP-stimulation
+  mechanism. Provides a treatable target in many eczema patients not previously screened
+  for H. pylori.
+coaching_translation: Most adults with eczema have H. pylori antibodies. The bacterium
+  directly drives a skin cytokine (TSLP) that fuels the allergic inflammation. H.
+  pylori testing and eradication is part of a thorough eczema workup, especially when
+  GI symptoms coexist.
+caveats:
+- Urea breath test or stool antigen for diagnosis.
+- Natural eradication — bismuth, mastic gum, DGL, garlic, broccoli sprouts.
+- Conventional triple therapy if natural fails.
+- Pair with food-allergen elimination and barrier-repair.
+linked_to_topics:
+- atopic-dermatitis
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- filaggrin-skin-barrier-dysfunction
+linked_to_supplements:
+- mastic-gum
+- bismuth-subcitrate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Atopic Dermatitis — TSLP and H. pylori (pp 114)
+  quote: Gastric Helicobacter pylori directly stimulates epidermal cells to secrete
+    TSLP, and H. pylori antibody is positive in 70% of AD patients. Treatment of infection
+    resulted in partial improvement in AD.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

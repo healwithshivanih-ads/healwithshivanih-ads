@@ -1,0 +1,41 @@
+slug: cfs-overlaps-with-hypothyroid-hypoglycemia-candida
+statement: Chronic Fatigue Syndrome workup must rule out treatable overlapping causes
+  — hypothyroidism, hypoglycemia, chronic candidiasis, food allergies, adrenal dysfunction,
+  impaired liver detoxification, depression, anemia, sleep apnea — before settling
+  on the CFS label. Each treatable mimic resolved can substantially improve outcomes.
+evidence_tier: strong
+rationale: Pizzorno explicitly lists these as required exclusion workups. Most "CFS"
+  patients have one or more of these treatable contributors that, when addressed,
+  resolve the syndrome. Failure to rule out leads to mislabeling and inadequate treatment.
+coaching_translation: Don't accept "you have CFS" as the final diagnosis until thyroid,
+  blood sugar, candida, food allergies, adrenal function, sleep, anemia, and depression
+  are systematically ruled out. Most "CFS" cases have a treatable driver hiding underneath.
+caveats:
+- Use complete blood count + comprehensive metabolic + full thyroid panel (TSH/T4/T3/rT3/TPO)
+  + ferritin + B12/folate + AM cortisol + stool analysis.
+- Sleep study if any history of snoring or daytime sleepiness.
+- Detoxification workup — organic acids, glutathione, urinary toxin panel.
+- CFS is a diagnosis of exclusion.
+linked_to_topics:
+- chronic-fatigue-syndrome
+- hypothyroidism
+- hypoglycemia
+- chronic-candidiasis
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- nk-cell-dysfunction-cfs
+- hpa-axis-dysregulation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-energy-cluster
+  location: Chronic Fatigue Syndrome — Causes (pp 215-216)
+  quote: Other causes of CFS — preexisting physical condition, prescription drugs,
+    depression, stress or low adrenal function, impaired liver function and/or environmental
+    illness, impaired immune function, chronic candidiasis, other chronic infections,
+    food allergies, hypothyroidism, hypoglycemia, anemia and nutritional deficiencies,
+    and sleep disturbances.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: reactive-hypoglycemia-drives-migraine-pms-mood
+statement: Reactive hypoglycemia is a common precipitating factor in migraine headaches,
+  premenstrual syndrome (especially PMS-C subtype), depression, anxiety, and even
+  aggressive/criminal behaviour — eliminating refined sugar from migraine patients
+  with confirmed hypoglycemia greatly improves attacks; sugar-restricted diets reduced
+  antisocial behaviour in male juvenile inmates.
+evidence_tier: plausible_emerging
+rationale: Pizzorno consolidates the multi-domain hypoglycemia-symptom literature
+  — Schauss / Bolton inmate dietary intervention trial, migraine + hypoglycemia overlap
+  studies, PMS-C flat GTT findings. Mechanism via counter-regulatory hormone-driven
+  adrenergic and cortisol surges destabilising brain function.
+coaching_translation: Blood sugar instability is one of the most under-appreciated
+  drivers of migraine, PMS, anxiety, depression, and even aggressive behaviour. Eliminate
+  refined sugar and stabilise glucose first — many "psychiatric" presentations resolve.
+caveats:
+- Look for symptoms 3-5 hours after meals as the timing signature.
+- CGM is the most accurate diagnostic tool now.
+- Address sleep, stress, exercise alongside diet.
+- Effect emerges over 4-8 weeks of stable glucose.
+linked_to_topics:
+- hypoglycemia
+- migraine-headache
+- premenstrual-syndrome
+- major-depressive-disorder
+- anxiety
+linked_to_mechanisms:
+- glycemic-volatility-cgm
+- nocturnal-glycemic-variability
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-energy-cluster
+  location: Hypoglycemia — Health Impact (pp 451-452)
+  quote: Reactive hypoglycemia is common in psychiatric patients and habitually violent
+    and impulsive criminals. A sugar-restricted diet reduced antisocial behavior among
+    male juvenile inmates. Eliminating refined sugar from diets of migraine patients
+    with confirmed hypoglycemia greatly improves attacks.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

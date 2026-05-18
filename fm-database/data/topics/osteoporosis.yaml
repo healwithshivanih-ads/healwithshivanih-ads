@@ -1,0 +1,59 @@
+slug: osteoporosis
+display_name: Osteoporosis and Osteopenia
+aliases:
+- osteopenia
+- low-bone-density
+- bone-loss
+- postmenopausal-bone-loss
+- op
+summary: The most common bone disease, defined as T-score ≤ -2.5 SD below young-adult
+  mean on DXA. ~1.5 million OP fractures/year in the US (250,000 hip). Post-hip-fracture
+  mortality doubles in women, triples in men; 10-20% die within 6 months. Projected
+  to affect 77% of Caucasian women, 86% of Hispanic American women, 53% of African
+  American women. Genetics accounts for only 30% of risk; lifestyle, vitamin D, vitamin
+  K2, magnesium, dietary acid-base balance, smoking, alcohol, and exercise drive the
+  rest. Post-menopausal bone loss accelerates to 2%/year for the first 5-10 years
+  after menopause.
+common_symptoms:
+- backache
+- height-loss
+- fragility-fracture
+- kyphosis
+red_flags:
+- new vertebral or hip fracture
+- height loss >1.5 inches
+- secondary causes (Cushing's, hyperthyroidism, hyperparathyroidism, celiac, IBD,
+  anorexia)
+related_topics:
+- perimenopause-and-menopause
+- vitamin-d-deficiency
+- hypothyroidism
+- celiac-disease
+key_mechanisms:
+- bone-resorption-formation-imbalance
+- diet-induced-acidosis
+- vitamin-d-deficiency-bone-axis
+coaching_scope_notes: Coaching role — vitamin D (target 50-80 ng/mL), K2 (MK-7), Mg,
+  dietary acid-base balance (heavy plants, moderate animal protein), weight-bearing
+  + resistance exercise, smoking cessation, alcohol moderation. Fall prevention. Refer
+  for DXA, FRAX risk calculation, secondary-cause workup.
+clinician_scope_notes: DXA every 1-2 years; FRAX for fracture risk; bisphosphonates,
+  denosumab, teriparatide for severe cases. Rule out secondary causes — celiac, IBD,
+  primary hyperparathyroidism, hyperthyroidism, Cushing's, hypogonadism.
+notes_for_coach: Pizzorno key insights — bone density tracks directly with 25(OH)D;
+  vitamin K2 activates osteocalcin (pulls calcium into bone) and matrix Gla protein
+  (keeps calcium out of arteries); 65+ women absorb 50% less calcium; high animal
+  protein is acid-producing and pulls salts from bone; alcohol >7 oz/day raises hip
+  fracture risk.
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — General Considerations and Pathophysiology (pp 721-724)
+  quote: Genetics accounts for only 30% of OP risk. Bone density correlates directly
+    with serum 25(OH)D3 and inversely with fractures of all types. Osteocalcin pulls
+    calcium into bone, and matrix Gla protein prevents calcium deposition in arteries
+    — both vitamin K-dependent proteins.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,42 @@
+slug: hydrastis-inhibits-bacterial-decarboxylase-polyamines
+statement: Berberine alkaloids in Hydrastis canadensis (goldenseal) and vitamin A
+  inhibit the bacterial decarboxylase enzyme that converts dietary amino acids (arginine,
+  ornithine) into polyamines (putrescine, spermidine, cadaverine) — toxic metabolites
+  elevated in psoriatics that suppress cAMP and drive keratinocyte hyperproliferation.
+  Lowered skin and urinary polyamine levels correlate with clinical improvement in
+  psoriasis.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the polyamine-psoriasis connection (Proctor / Russell early
+  1980s work) and the mechanism via bacterial decarboxylase inhibition by berberine.
+  Modern psoriasis treatment doesn't routinely use this framework, but the FM approach
+  to psoriasis hinges on it.
+coaching_translation: Berberine-containing herbs like goldenseal cut down the gut
+  bacteria that make polyamines — toxic compounds that drive psoriasis. Vitamin A
+  does the same thing through a different mechanism.
+caveats:
+- 4-8 week courses, not chronic use.
+- Combine with HCl + pancreatic enzymes to fix the upstream incomplete protein digestion
+  driving polyamine production.
+- Avoid in pregnancy, lactation, infancy.
+- Vitamin A as retinol palmitate 25,000-50,000 IU/day for similar effect.
+linked_to_topics:
+- psoriasis
+- chronic-candidiasis
+- sibo
+linked_to_mechanisms:
+- bowel-toxemia-skin-axis
+linked_to_supplements:
+- goldenseal-hydrastis
+- berberine
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Psoriasis — Incomplete Protein Digestion (pp 868)
+  quote: Natural compounds inhibit formation of polyamines; vitamin A and berberine
+    alkaloids of Hydrastis canadensis inhibit bacterial decarboxylase enzyme, which
+    converts amino acids into polyamines. Lowered skin and urinary polyamines are
+    linked to clinical improvement.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

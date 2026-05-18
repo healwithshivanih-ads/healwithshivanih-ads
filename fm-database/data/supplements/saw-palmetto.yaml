@@ -13,25 +13,32 @@ typical_dose_range:
 timing_options:
 - with_breakfast
 - with_dinner
+- morning
 take_with_food: required
 linked_to_topics:
 - hairfall
 - testosterone-health
 - benign-prostatic-hyperplasia
 - testosterone-dht-conversion
-notes_for_coach: Saw palmetto is one of the most commonly studied botanicals for BPH
-  and 5-α reductase inhibition. Evidence is mixed but substantial. Clinician should
-  determine dose and monitor for response.
-notes_for_client: Saw palmetto is a well-known herb for prostate health. It works
-  by slowing the enzyme that converts testosterone into DHT — the hormone that drives
-  prostate growth.
+- hair-loss-women
+- polycystic-ovary-syndrome
+notes_for_coach: Standardised extract 85-95% fatty acids and sterols, 320 mg/day.
+  Inhibits 5-alpha-reductase (same mechanism as finasteride) and DHT-receptor binding.
+  Used in BPH and female-pattern hair loss (androgenic alopecia) as well as PCOS-related
+  androgenic excess. Generally well tolerated; rare GI upset. Avoid in pregnancy and
+  on anti-androgens / hormone therapies without clinician oversight.
+notes_for_client: A traditional herb used for prostate health that also helps with
+  female hair loss caused by androgen excess. Used at 320 mg of the standardised extract
+  daily.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
 linked_to_claims:
 - saw-palmetto-inhibits-5-alpha-reductase
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - saw-palmetto-inhibits-5ar-bph
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+- saw-palmetto-inhibits-5-alpha-reductase-hair-loss
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Hairfall Cheatsheet
@@ -42,7 +49,26 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
   quote: Saw Palmetto (Serenoa repens) [listed under Herbs that Inhibit 5-a Reductase]
-version: 3
+- id: pizzorno-womens-trio
+  location: Hair Loss in Women — Saw palmetto (pp 358)
+  quote: Saw palmetto extract inhibits formation of DHT by enzyme 5-alpha-reductase,
+    also increased in male and female pattern baldness (the same mechanism as finasteride).
+    Dose 320 mg q.d. of extract standardized to 85-95% fatty acids and sterols.
+version: 4
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani
+aliases:
+- saw-palmetto-berry
+- sabal-serrulata
+contraindications:
+  conditions:
+  - hormone-sensitive-cancers
+  medications:
+  - finasteride
+  - dutasteride
+  - hormone-replacement-therapy
+  - anti-androgens
+  life_stages:
+  - pregnancy
+  - lactation

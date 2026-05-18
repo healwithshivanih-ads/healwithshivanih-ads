@@ -1,0 +1,37 @@
+slug: melatonin-as-ibs-adaptogen-and-motility-modulator
+statement: Melatonin (3 mg at bedtime) serves as a stress adaptogen and mood stabiliser
+  in IBS, promotes restful sleep, and directly modulates GI motility — the gut produces
+  400× more melatonin than the pineal gland. Particularly useful in IBS patients with
+  concurrent insomnia, anxiety, or migraine.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites melatonin as an additional consideration in IBS. Trials
+  (Saha 2007) show abdominal pain reduction. Mechanism — gut enterochromaffin cells
+  synthesise melatonin from tryptophan; central and local effects converge on motility
+  and visceral pain.
+coaching_translation: Melatonin (3 mg at bedtime) isn't just for sleep — your gut
+  makes huge amounts of it locally to regulate motility. Useful in IBS, especially
+  when sleep and anxiety overlap with the gut symptoms.
+caveats:
+- Most useful in low-melatonin populations (elderly, shift workers, jet lag, anxiety-driven
+  insomnia).
+- Pair with light hygiene and stress management.
+- Long-term high-dose use can disrupt natural circadian rhythm.
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+- insomnia
+- anxiety
+linked_to_mechanisms:
+- serotonin-melatonin-sleep-axis
+linked_to_supplements:
+- melatonin
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Irritable Bowel Syndrome — Additional Considerations (pp 582)
+  quote: Melatonin as stress adaptogen and mood stabilizer and for promotion of restful
+    sleep.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

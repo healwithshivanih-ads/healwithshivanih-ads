@@ -1,0 +1,37 @@
+slug: nadh-improves-energy-cfs-mitochondrial
+statement: NADH (5-10 mg in the morning on empty stomach) — alongside CoQ10, L-carnitine,
+  magnesium, and vitamin E — supports mitochondrial ATP production in CFS by directly
+  providing the reduced coenzyme essential for the electron transport chain.
+evidence_tier: plausible_emerging
+rationale: Forsyth 1999 trial of NADH 10 mg/day in CFS showed 31% improvement vs 8%
+  placebo. Pizzorno groups NADH with the mitochondrial-support stack. Mechanism —
+  NADH directly feeds Complex I of the electron transport chain.
+coaching_translation: NADH (5-10 mg first thing in the morning on empty stomach) is
+  one of the few CFS supplements with a controlled trial behind it. Combine with CoQ10,
+  L-carnitine, magnesium, and vitamin E for the full mitochondrial-support stack.
+caveats:
+- Use stabilised oral preparation (ENADA brand or equivalent).
+- Take on empty stomach for absorption.
+- 4-8 weeks to assess response.
+- Pair with addressing HPA / dysbiosis / latent viral drivers.
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- nk-cell-dysfunction-cfs
+linked_to_supplements:
+- nadh
+- coq10
+- l-carnitine
+- magnesium-glycinate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-energy-cluster
+  location: Chronic Fatigue Syndrome — Nutritional support (pp 214 box)
+  quote: NADH, Magnesium, Vitamin E, L-Carnitine, Coenzyme Q10 listed as nutritional
+    support to enhance energy levels in CFS.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

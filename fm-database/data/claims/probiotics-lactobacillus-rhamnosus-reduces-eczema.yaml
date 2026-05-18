@@ -1,0 +1,36 @@
+slug: probiotics-lactobacillus-rhamnosus-reduces-eczema
+statement: Lactobacillus rhamnosus GG (alone or with Lactobacillus reuteri) given
+  to infants with atopic dermatitis and cow's milk allergy reduces eczema severity.
+  Maternal supplementation during pregnancy and lactation also reduces childhood eczema
+  incidence. Effect is more pronounced in patients with allergic constitution (positive
+  skin prick test, elevated IgE).
+evidence_tier: strong
+rationale: Kalliomäki et al 2001/2003 RCTs (NEJM, Lancet) — L. rhamnosus GG during
+  pregnancy + lactation halved eczema incidence at 2 years. Pizzorno cites the probiotic
+  + eczema connection. Mechanism via gut-immune-skin axis and Treg induction.
+coaching_translation: A specific probiotic strain (Lactobacillus rhamnosus GG) given
+  to mothers in pregnancy and lactation, or to infants directly, measurably cuts childhood
+  eczema. Effect strongest in allergic-constitution infants.
+caveats:
+- Use specific strain (LGG) not generic "probiotic".
+- Effect strongest when started early (pregnancy + first year of life).
+- Pair with maternal allergen avoidance during breastfeeding.
+- Some adults with eczema also respond.
+linked_to_topics:
+- atopic-dermatitis
+- food-sensitivities
+linked_to_mechanisms:
+- gut-brain-skin-axis
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Atopic Dermatitis — Probiotics (pp 117)
+  quote: Probiotic Lactobacillus rhamnosus strain GG alone or in conjunction with
+    Lactobacillus reuteri given to infants with AD and cow's milk allergy reduced
+    severity of eczema.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,47 @@
+slug: nadh
+display_name: NADH (Nicotinamide Adenine Dinucleotide, Reduced Form)
+aliases:
+- reduced-nadh
+- coenzyme-1
+- enada
+- enada-nadh
+category: other
+forms_available:
+- tablet
+- capsule
+timing_options:
+- morning
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- mitochondrial-dysfunction
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- nk-cell-dysfunction-cfs
+linked_to_claims:
+- nadh-improves-energy-cfs-mitochondrial
+notes_for_coach: The reduced active form of NAD+, essential coenzyme for mitochondrial
+  ATP production. Pizzorno includes NADH in the CFS supplement stack alongside Mg,
+  vitamin E, CoQ10, L-carnitine. Stabilised oral preparation (e.g. ENADA) at 5-10
+  mg in the morning on empty stomach. Some patients report meaningful energy improvement;
+  effect varies widely. Generally well tolerated.
+notes_for_client: A direct cellular-energy nutrient that helps mitochondria make ATP.
+  Best taken first thing in the morning on an empty stomach. Some people with CFS
+  notice meaningful improvement.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-energy-cluster
+  location: Chronic Fatigue Syndrome — Nutritional support box (pp 214)
+  quote: NADH listed alongside Magnesium, Vitamin E, L-Carnitine, Coenzyme Q10 as
+    nutritional support to enhance energy levels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

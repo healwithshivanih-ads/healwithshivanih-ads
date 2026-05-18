@@ -1,0 +1,33 @@
+slug: ferritin-below-30-impairs-hair-growth
+statement: Serum ferritin below 30 mcg/L impairs hair growth and regeneration even
+  when haemoglobin is normal — the body conserves iron away from non-essential tissues
+  like hair. Iron repletion at 30 mg bound to succinate or fumarate twice daily between
+  meals reverses hair loss over ~2 months.
+evidence_tier: strong
+rationale: Multiple dermatology cohort studies show ferritin-hair-loss correlation.
+  Pizzorno's threshold (below 30 mcg/L) is conservative; many FM practitioners target
+  ≥50-70 for hair regrowth. Mechanism — iron is cofactor for ribonucleotide reductase,
+  essential for the rapidly-dividing hair matrix cells.
+coaching_translation: Hair loss with normal hemoglobin but low ferritin (below 30)
+  is common and reversible. Target ferritin above 50 for regrowth. Take 30 mg iron
+  between meals twice daily; if GI upset, switch to with-meals dosing.
+caveats:
+- Use succinate, fumarate, or bisglycinate forms — ferrous sulfate causes GI upset.
+- Re-test ferritin at 8-12 weeks; do not over-supplement (iron overload).
+- Address underlying cause (heavy menses, malabsorption, low HCl, IBD, gluten).
+linked_to_topics:
+- hair-loss-women
+- iron-deficiency-anemia
+linked_to_mechanisms: []
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Hair Loss in Women — Iron (pp 359)
+  quote: If serum ferritin level is below 30 mcg/L, iron replacement is indicated.
+    Low serum ferritin impairs hair growth and regeneration as the body seeks to conserve
+    iron.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

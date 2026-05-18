@@ -1,0 +1,31 @@
+slug: water-8oz-hourly-for-gallstone-prevention
+statement: Drinking 8 oz of pure water every waking hour increases the water content
+  of bile, lowering cholesterol concentration and reducing supersaturation — a simple,
+  high-leverage gallstone prevention intervention especially during active weight
+  loss when biliary cholesterol saturation transiently increases.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites hydration as the lead gallstone-prevention intervention.
+  Mechanism via dilution of biliary cholesterol concentration. Especially important
+  during caloric restriction / weight loss when stone risk peaks.
+coaching_translation: Eight ounces of water every waking hour (about 2.5-3 litres
+  a day) dilutes the cholesterol in your bile and stops it from forming stones. Cheapest,
+  easiest gallstone prevention there is — and crucial during weight-loss phases.
+caveats:
+- Plain water, not sweetened drinks or coffee.
+- Active weight loss transiently raises gallstone risk; hydration plus 10+ g fat/day
+  mitigates.
+- Pair with fibre and lipotropics for compounded effect.
+linked_to_topics:
+- gallstones
+linked_to_mechanisms:
+- bile-cholesterol-supersaturation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Gallstones — Therapeutic Approach (pp 333 box)
+  quote: Increase water content of bile — 8 oz pure water every waking hour.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,44 @@
+slug: lipotropics-and-bile-botanicals-prevent-gallstones
+statement: Lipotropic factors (choline, methionine, phosphatidylcholine) plus bile-flow
+  botanicals (dandelion / Taraxacum, milk thistle / Silybum, artichoke / Cynara, turmeric
+  / Curcuma, boldo / Peumus) increase bile acid solubility and bile flow, preventing
+  gallstone formation. Plant terpene complex and ursodeoxycholic acid can dissolve
+  existing cholesterol stones over months.
+evidence_tier: plausible_emerging
+rationale: Pizzorno groups these lipotropics and choleretic botanicals as standard
+  FM intervention. Mechanism via increased bile acid synthesis (methionine donates
+  methyl groups; choline supports phosphatidylcholine production) and increased bile
+  flow (botanicals stimulate hepatic and gallbladder contraction).
+coaching_translation: For gallstone prevention or early-stage dissolution, the natural-medicine
+  stack is lipotropic factors (choline + methionine + phosphatidylcholine) plus one
+  of the bile-flow herbs (dandelion, milk thistle, artichoke, turmeric, or boldo).
+  Plus 8 oz of water every waking hour, fibre, and at least 10 g fat per day to prevent
+  biliary stasis.
+caveats:
+- Once stones are large or symptomatic, surgical referral is usually appropriate.
+- Maintain at least 10 g fat/day — too-low fat causes biliary stasis and worsens.
+- Combine with food-allergen elimination (especially eggs — classic gallbladder trigger).
+- Plant terpenes / UDCA for dissolution require months and only work on small cholesterol
+  stones.
+linked_to_topics:
+- gallstones
+- liver-detoxification
+linked_to_mechanisms:
+- bile-cholesterol-supersaturation
+linked_to_supplements:
+- phosphatidylcholine
+- milk-thistle
+- silymarin
+- curcumin
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Gallstones — Therapeutic Approach (pp 333 box)
+  quote: Increase bile flow from liver — Lipotropic factors — Choline, methionine.
+    Choose one botanical — Taraxacum, Peumus, Silybum, Cynara, Curcuma. Increase phospholipid
+    content of bile — Phosphatidylcholine, Fish oil. Dissolve gallstones — Plant terpene
+    complex, Ursodeoxycholic acid.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

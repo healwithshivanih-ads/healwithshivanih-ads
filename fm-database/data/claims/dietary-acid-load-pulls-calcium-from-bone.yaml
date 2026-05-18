@@ -1,0 +1,35 @@
+slug: dietary-acid-load-pulls-calcium-from-bone
+statement: A high-animal-protein, high-salt, low-fruit-and-vegetable diet generates
+  daily metabolic acid load that the body buffers by mobilising calcium and phosphate
+  salts from bone — explaining why high-protein omnivorous diets correlate with forearm
+  fracture risk while plant-protein-heavy alkaline-forming diets do not.
+evidence_tier: strong
+rationale: Frassetto, Sebastian, and Lemann's work on diet-induced acidosis and bone
+  catabolism. Pizzorno frames this as a primary mechanism alongside vitamin D / K2
+  status. Effect persists across calcium intake levels.
+coaching_translation: It's not just calcium intake that matters for bones — it's net
+  acid load. A heavy-animal-protein, high-salt, low-vegetable diet leaches calcium
+  out of your bones to neutralise the acid load, even if you're eating enough calcium.
+caveats:
+- Not anti-protein — moderate animal protein with abundant plants is fine.
+- Salt intake under 1800 mg/day per Pizzorno's PMS recommendation also applies here.
+- Increase fruits, vegetables, magnesium, potassium to alkalise.
+linked_to_topics:
+- osteoporosis
+- kidney-stones
+- gout
+linked_to_mechanisms:
+- diet-induced-acidosis
+- bone-resorption-formation-imbalance
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-womens-trio
+  location: Osteoporosis — Dietary protein (pp 724)
+  quote: High intake of animal protein, but not plant protein, is linked to increased
+    risk of forearm fracture. Red meat is acid producing, inducing release of salts
+    from bone to balance acid and maintain acid-base homeostasis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

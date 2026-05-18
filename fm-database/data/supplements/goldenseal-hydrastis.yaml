@@ -1,0 +1,62 @@
+slug: goldenseal-hydrastis
+display_name: Goldenseal (Hydrastis canadensis)
+aliases:
+- goldenseal
+- hydrastis
+- hydrastis-canadensis
+- berberine-goldenseal
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+- powder
+timing_options:
+- morning
+- evening
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- psoriasis
+- sibo
+- leaky-gut
+- chronic-candidiasis
+linked_to_mechanisms:
+- bowel-toxemia-skin-axis
+- h-pylori-mucosal-defense-breakdown
+linked_to_claims:
+- hydrastis-inhibits-bacterial-decarboxylase-polyamines
+notes_for_coach: Berberine-containing herb (also yields hydrastine). Pizzorno uses
+  Hydrastis in psoriasis specifically to inhibit bacterial decarboxylase enzymes that
+  convert dietary amino acids into polyamines (putrescine, spermidine, cadaverine),
+  reducing skin polyamine load. Also broad antimicrobial against H. pylori, SIBO pathogens,
+  Candida. Typical extract dose 250-500 mg standardised to 5-10% berberine, BID-TID
+  with meals. Caution — bitter; mucous-membrane irritant at high doses; not for chronic
+  long-term use.
+notes_for_client: A traditional berberine herb that quiets gut bacteria responsible
+  for producing skin-irritating toxins. Used in 4-8 week courses, not long term. Bitter;
+  capsules preferred over tincture.
+contraindications:
+  conditions:
+  - severe-hypertension
+  - jaundice-newborn
+  medications:
+  - cyclosporine
+  - protease-inhibitors
+  - other-cytochrome-substrates
+  life_stages:
+  - pregnancy
+  - lactation
+  - infancy
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-skin-trio
+  location: Psoriasis — Incomplete Protein Digestion (pp 868)
+  quote: Vitamin A and berberine alkaloids of Hydrastis canadensis (goldenseal) inhibit
+    bacterial decarboxylase enzyme, which converts amino acids into polyamines.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

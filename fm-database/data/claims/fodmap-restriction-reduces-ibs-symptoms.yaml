@@ -1,0 +1,35 @@
+slug: fodmap-restriction-reduces-ibs-symptoms
+statement: Restricting FODMAPs (fermentable oligosaccharides, disaccharides, monosaccharides,
+  and polyols) reduces IBS symptoms in approximately 70-75% of patients by limiting
+  osmotic and fermentable substrates that drive gas, bloating, and altered transit.
+  Used as a 4-6 week elimination followed by systematic reintroduction.
+evidence_tier: strong
+rationale: Monash University's FODMAP research and multiple RCTs (Halmos 2014, Staudacher
+  2017) established the protocol. Pizzorno cites FODMAP restriction as a key consideration
+  in IBS. Mechanism via reduced colonic gas production and reduced osmotic load.
+coaching_translation: A 4-6 week low-FODMAP elimination diet, then systematic reintroduction
+  to identify your personal triggers, resolves IBS symptoms in 7 out of 10 patients.
+  Wheat, onion, garlic, dairy, apples, pears, and honey are the most common culprits.
+caveats:
+- Strict only 4-6 weeks; long-term restriction harms the microbiome.
+- Reintroduce systematically to identify individual triggers.
+- Work with a dietitian familiar with FODMAPs for accurate elimination + reintroduction.
+- Test for SIBO before — symptoms overlap.
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+- sibo
+linked_to_mechanisms:
+- gut-dysbiosis
+- chronic-inflammation
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Irritable Bowel Syndrome — Therapeutic Considerations (pp 582)
+  quote: Dietary FODMAPs (fermentable oligosaccharides, disaccharides, monosaccharides,
+    and polyols), which may promote IBS and should be limited.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

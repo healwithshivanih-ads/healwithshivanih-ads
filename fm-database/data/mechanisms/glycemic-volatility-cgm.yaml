@@ -1,0 +1,50 @@
+slug: glycemic-volatility-cgm
+display_name: Glycemic Volatility (Rapid Glucose Swings)
+aliases:
+- glucose-variability
+- rapid-glucose-drops
+- glycemic-excursions
+- glucose-rollercoaster
+category: metabolic
+summary: Rapid swings in blood glucose — even within the "normal" range or from elevated
+  levels — trigger counter-regulatory hormone release (epinephrine, glucagon, cortisol,
+  growth hormone) producing symptoms attributed to "hypoglycemia." Continuous glucose
+  monitor (CGM) data shows most patients with insulin resistance / obesity have remarkably
+  fluctuating glucose, often the underlying driver of weight problems, food cravings,
+  headaches, anxiety, and afternoon energy crashes. The clinical picture matters more
+  than absolute glucose levels.
+upstream_drivers:
+- refined-carbohydrate-intake
+- insulin-resistance
+- skipped-meals
+- alcohol-consumption
+- chronic-stress
+downstream_effects:
+- nocturnal-glycemic-variability
+- food-cravings
+- migraine-headache
+- anxiety
+- mid-afternoon-energy-crash
+- weight-gain
+- type-2-diabetes-mellitus
+related_mechanisms:
+- nocturnal-glycemic-variability
+- insulin-resistance
+linked_to_topics:
+- hypoglycemia
+- type-2-diabetes-mellitus
+- insulin-resistance
+- migraine-headache
+evidence_tier: strong
+sources:
+- id: pizzorno-energy-cluster
+  location: Hypoglycemia — 24-Hour CGM (pp 450-451)
+  quote: Most people with obesity and insulin resistance have remarkably fluctuating
+    glucose, or increased glycemic volatility. Rather than absolute glucose level
+    determining hypoglycemic symptoms, feelings of hypoglycemia occur when glucose
+    drops rapidly, even when it was above normal. Such volatility may underlie most
+    weight problems.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

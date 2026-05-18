@@ -1,0 +1,36 @@
+slug: peppermint-oil-reduces-ibs-pain-and-spasm
+statement: Enteric-coated peppermint oil (Mentha piperita, ~180-225 mg menthol-rich
+  oil twice daily before meals) reduces IBS abdominal pain, bloating, and spasm via
+  L-type calcium channel inhibition in intestinal smooth muscle — comparable efficacy
+  to antispasmodic medication with fewer side effects.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Khanna 2014, Ford 2008) confirm peppermint oil's
+  benefit in IBS. Mechanism via menthol's calcium channel blockade. Pizzorno cites
+  enteric-coated peppermint oil as one of the four major IBS interventions.
+coaching_translation: Enteric-coated peppermint oil (look for products with the peppermint
+  released in the small intestine, not the stomach) at 180-225 mg twice daily before
+  meals calms the bowel spasm and pain of IBS. Comparable to antispasmodic drugs with
+  fewer side effects.
+caveats:
+- Must be enteric-coated — uncoated peppermint causes reflux.
+- Take before meals.
+- May worsen GERD; pair with HCl assessment if GERD coexists.
+- Effect builds over 4-6 weeks.
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_supplements:
+- peppermint-oil-enteric
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-gi-trio
+  location: Irritable Bowel Syndrome — Therapeutic Considerations (pp 581-582)
+  quote: Four major treatments to consider — (1) increasing dietary fiber, (2) eliminating
+    allergic or intolerable foods, (3) controlling psychological components, and (4)
+    peppermint oil for spastic colon.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

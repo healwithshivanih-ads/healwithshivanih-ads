@@ -1,0 +1,41 @@
+slug: cfs-fibromyalgia-mcs-overlap-syndromes
+statement: Chronic Fatigue Syndrome (CFS), Fibromyalgia (FM), and Multiple Chemical
+  Sensitivities (MCS) are overlapping conditions — diagnosis depends partly on which
+  physician is consulted. 70% of FM and 30% of MCS patients meet CDC CFS criteria;
+  80% of both FM and MCS meet the CFS criterion of fatigue with 50% reduction in activity
+  for more than 6 months; over 50% of CFS and FM patients have adverse chemical reactions.
+evidence_tier: strong
+rationale: Pizzorno cites the diagnostic-overlap epidemiology. Shared features — HPA
+  dysregulation, mitochondrial dysfunction, central sensitisation, low NK cell activity,
+  gut dysbiosis, methylation impairment. Same FM treatment frameworks apply across
+  all three.
+coaching_translation: CFS, fibromyalgia, and multiple chemical sensitivities are basically
+  the same underlying picture with different chief complaints. The FM playbook — adrenal
+  support, mitochondrial nutrients, gut healing, gentle movement (tai chi, qi gong),
+  stress management — applies across all three.
+caveats:
+- Don't get stuck on the exact diagnostic label.
+- Workup must rule out treatable mimics — thyroid, sleep apnea, anemia, depression,
+  celiac.
+- Gentle low-intensity exercise; aggressive exercise worsens via post-exertional malaise.
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- multiple-chemical-sensitivities
+linked_to_mechanisms:
+- nk-cell-dysfunction-cfs
+- hpa-axis-dysregulation
+- mitochondrial-dysfunction
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-energy-cluster
+  location: Chronic Fatigue Syndrome — FM and MCSs (pp 215)
+  quote: The only difference in diagnostic criteria for FM and CFS is musculoskeletal
+    pain in FM and fatigue in CFS. Approximately 70% of patients with FM and 30% with
+    MCSs meet CDC criteria for CFS. More than 50% of CFS and FM patients have adverse
+    reactions to various chemicals.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

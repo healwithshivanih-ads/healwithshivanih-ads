@@ -1,0 +1,43 @@
+slug: adaptogens-eleutherococcus-rhodiola-licorice-for-cfs
+statement: Adaptogens — Eleutherococcus senticosus (Siberian ginseng), Rhodiola rosea,
+  and Glycyrrhiza glabra (licorice) — alongside vitamin C and pantothenic acid support
+  HPA-axis recovery and adrenal function in CFS. Licorice specifically extends cortisol
+  half-life via 11-beta-hydroxysteroid dehydrogenase inhibition; useful in hypoadrenal/low-cortisol
+  presentations.
+evidence_tier: plausible_emerging
+rationale: Pizzorno positions adaptogens as the core herbal support for the HPA-axis
+  component of CFS. Multiple RCTs of Rhodiola (Darbinyan, Olsson) show fatigue and
+  cognitive benefit. Licorice's cortisol-extending effect is well-characterised.
+coaching_translation: Adaptogens — Siberian ginseng, rhodiola, licorice — work upstream
+  on the HPA axis that drives most CFS fatigue. Combine with vitamin C and pantothenic
+  acid for adrenal nutrient support.
+caveats:
+- Licorice raises blood pressure via 11β-HSD2 inhibition; monitor BP, limit to 8-12
+  weeks, avoid in hypertension.
+- Rhodiola is activating — morning dosing.
+- Eleutherococcus contraindicated in untreated hypertension.
+- Pair with stress management — adaptogens alone won't fix HPA dysregulation if drivers
+  continue.
+linked_to_topics:
+- chronic-fatigue-syndrome
+- hpa-axis-dysregulation
+- fibromyalgia
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- nk-cell-dysfunction-cfs
+linked_to_supplements:
+- rhodiola
+- licorice-root
+- ashwagandha
+- panax-ginseng
+out_of_scope_notes: Licorice contraindicated in hypertension; coordinate dose with
+  clinician.
+sources:
+- id: pizzorno-energy-cluster
+  location: Chronic Fatigue Syndrome — Hypoadrenalism support (pp 214 box)
+  quote: Vitamin C, Pantothenic acid, Eleutherococcus, Rhodiola, Glycyrrhiza listed
+    as interventions for hypoadrenalism in CFS.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

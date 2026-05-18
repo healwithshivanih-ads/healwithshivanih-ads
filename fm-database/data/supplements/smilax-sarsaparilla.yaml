@@ -1,0 +1,52 @@
+slug: smilax-sarsaparilla
+display_name: Sarsaparilla (Smilax officinalis / regelii)
+aliases:
+- sarsaparilla
+- smilax
+- smilax-regelii
+- smilax-officinalis
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+timing_options:
+- morning
+- evening
+- with_breakfast
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- psoriasis
+linked_to_mechanisms:
+- bowel-toxemia-skin-axis
+linked_to_claims:
+- sarsaparilla-binds-endotoxins-improves-psoriasis
+notes_for_coach: Steroidal-saponin-rich herb whose mechanism in psoriasis is binding
+  intestinal endotoxins for excretion — reduces circulating LPS that drives skin hyperproliferation.
+  Pizzorno cites a clinical trial — 62% improvement and 18% complete clearance in
+  chronic plaque psoriasis (80% benefit). Aqueous extracts preferred. Typical dose
+  1-4 g dried root or equivalent extract daily. Pair with diet, HCl/enzymes, bile
+  flow support, probiotics for compounded effect.
+notes_for_client: A traditional herb that binds bowel toxins so they leave through
+  stool instead of reaching the skin. About 80% of psoriasis patients improve substantially
+  when this is added to a gut-healing protocol.
+contraindications:
+  conditions:
+  - severe-kidney-disease
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: pizzorno-skin-trio
+  location: Psoriasis — Bowel Toxemia / Sarsaparilla (pp 868)
+  quote: Aqueous extract of Smilax sarsaparilla is effective in psoriasis, particularly
+    chronic, large plaque-forming variety. It improved psoriasis in 62% of patients
+    and completely cleared another 18% (80% benefited).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,63 @@
+slug: premenstrual-syndrome
+display_name: Premenstrual Syndrome (PMS) and PMDD
+aliases:
+- pms
+- pmdd
+- premenstrual-dysphoric-disorder
+- luteal-phase-symptoms
+summary: A cyclic constellation of physical and emotional symptoms appearing during
+  the luteal phase and resolving by the end of menses, affecting 30-40% of menstruating
+  women. Peak in 30s-40s. PMDD is the severe DSM-V variant (2.5-5% of women) requiring
+  5+ symptoms peaking pre-menses. Pizzorno's etiologic framework — cyclic ovarian
+  steroid changes alter brain serotonin (most implicated), GABA, and endorphins; estrogen
+  excess plus cholestasis worsens via impaired estrogen clearance; vitamin B6 dysfunction
+  amplifies. Hypothyroidism affects a large percentage of PMS patients and often resolves
+  symptoms when corrected.
+common_symptoms:
+- low-mood
+- irritability
+- depression
+- headaches
+- breast-tenderness
+- abdominal-bloating
+- food-cravings
+- fatigue
+- water-retention
+red_flags:
+- suicidal ideation during PMDD episodes
+- severe self-harm urges
+- progressively worsening symptoms cycle-over-cycle
+related_topics:
+- estrogen-dominance
+- perimenopause-and-menopause
+- hypothyroidism
+- major-depressive-disorder
+- anxiety
+key_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+- serotonin-melatonin-sleep-axis
+- hpa-axis-dysregulation
+- gaba-receptor-modulation
+coaching_scope_notes: Symptom diary for 2+ cycles confirms luteal-phase pattern. Coaching
+  role — diet (lower fat / higher fibre / lower sugar / lower caffeine / lower salt),
+  B6 / Mg / Zn / vitamin E repletion, Vitex, vitamin D, exercise. Refer PMDD with
+  suicidal ideation immediately; complex hormonal patterns to BHRT clinician.
+clinician_scope_notes: PMDD per DSM-V; SSRIs (fluoxetine, sertraline, paroxetine)
+  for moderate-severe; OCP / cyclic progestogens for refractory; rule out hypothyroidism,
+  depression masquerade.
+notes_for_coach: Pizzorno top 7 dietary recs — vegetarian or mostly vegetarian, ↓
+  fat, eliminate sugar, eliminate caffeine, ↓ salt, ↑ soy, reduce xenoestrogen exposure.
+  B6 50-100 mg/day in divided doses (>50 mg per dose is wasted). Vitex agnus-castus
+  is the lead botanical.
+sources:
+- id: pizzorno-womens-trio
+  location: Premenstrual Syndrome — General Considerations (pp 830-832)
+  quote: Premenstrual syndrome is cyclic constellation of symptoms appearing during
+    the late luteal phase and disappearing by end of full flow of menses. Affects
+    30-40% of menstruating women. Etiologic theory — cyclic changes in ovarian steroids
+    cause changes in brain neurotransmitters. Serotonin is most implicated.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

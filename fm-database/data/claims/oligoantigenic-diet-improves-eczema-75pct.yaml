@@ -1,0 +1,40 @@
+slug: oligoantigenic-diet-improves-eczema-75pct
+statement: Elimination of wheat, milk, eggs, peanuts, tomatoes, and artificial colours/preservatives
+  results in significant improvement in atopic dermatitis (eczema) in 75% of cases.
+  After 6-12 months of strict avoidance, antibody titres to allergens drop enough
+  that 26% can reintroduce the five major allergens (egg, milk, wheat, soy, peanut)
+  and 66% other foods at least twice weekly.
+evidence_tier: strong
+rationale: Pizzorno cites the Atherton-Soothill landmark elimination trials in childhood
+  eczema, plus follow-up tolerance-development studies. Mechanism — food antigens
+  cross the defective skin barrier and leaky gut, drive Th2 immune activation and
+  IgE production sustaining the chronic inflammatory loop.
+coaching_translation: For childhood (and many adult) eczema, a strict 6-month elimination
+  of the top food triggers (wheat, milk, eggs, peanuts, tomatoes, artificial additives)
+  produces meaningful improvement in 3 out of 4 patients. After a year, most kids
+  can reintroduce many of the foods.
+caveats:
+- Diagnose via elimination + challenge, not blood IgE alone.
+- Breastfeeding mothers should also eliminate the common allergens.
+- Restore gut permeability in parallel (probiotics, glutamine, fibre).
+- 4-6 week strict elimination, then systematic 4-day-cycle reintroduction.
+linked_to_topics:
+- atopic-dermatitis
+- food-sensitivities
+linked_to_mechanisms:
+- filaggrin-skin-barrier-dysfunction
+- gut-brain-skin-axis
+- leaky-gut
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-skin-trio
+  location: Atopic Dermatitis — Food Allergy (pp 116)
+  quote: Elimination of wheat, milk products, eggs, peanuts, tomatoes, and artificial
+    colors and preservatives results in significant improvement in 75% of cases. Loss
+    rate of food allergy in patients with AD after 1 year was 26% for five major allergens
+    (egg, milk, wheat, soy, peanut) and 66% for other food allergens.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
