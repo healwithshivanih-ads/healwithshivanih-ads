@@ -135,7 +135,17 @@ export async function loadClientJourney(
     )[0];
 
   // ── Week N — only meaningful if plan published with start + period.
-  const planStart = asString(pluck(publishedPlan, "plan_period_start"));
+  // Use the same priority chain as the Plan tab's planStartAnchor:
+  //   meal_plan_started_on → supplements_started_on → plan_period_start
+  // Without this the Analyse banner shows "Week 1 of 8" on the date a
+  // plan revision was published even though the client has been on the
+  // protocol for weeks (cl-004 Dhanishta hit this — plan #2 published
+  // 12 May, real start 6 May; Analyse banner said week 1 on 18 May
+  // instead of correct week 2).
+  const planStart =
+    asString(pluck(publishedPlan, "meal_plan_started_on")) ??
+    asString(pluck(publishedPlan, "supplements_started_on")) ??
+    asString(pluck(publishedPlan, "plan_period_start"));
   const planWeeks = asNumber(pluck(publishedPlan, "plan_period_weeks"));
   let currentWeek: number | null = null;
   let recheckDateIso: string | null = null;
@@ -291,18 +301,55 @@ export async function loadClientJourney(
   }
 
   // Step 4 — Week N progress. No date — start date already shown on step 3.
+  // Status logic:
+  //   "active"  — published plan, no check-in logged YET this week → coach
+  //               needs to log this week's check-in (this is the prompt)
+  //   "done"    — check-in already logged within the last 7 days → coach
+  //               has done this week's pulse; surface a different next step
+  //   "na"      — no published plan / no start date
+  //
+  // Previously every published-plan client showed the week step as
+  // "active", so the nextStep banner kept saying "log this week's
+  // check-in" even right after the coach finished one. Bug surfaced
+  // for cl-004 18 May 2026.
   if (publishedPlan && currentWeek != null && planWeeks) {
-    // "X days in" caption is cleaner than restating the start date.
     let daysIn: number | null = null;
     if (planStart) {
       const start = new Date(`${planStart}T00:00:00`).getTime();
       daysIn = Math.max(0, Math.floor((todayMs - start) / (24 * 60 * 60 * 1000)));
     }
+
+    // Most recent check-in date (any session whose presenting_complaints
+    // carries [session_type: check_in]).
+    let lastCheckinIso: string | null = null;
+    for (const s of sessions) {
+      const rec = s as Record<string, unknown>;
+      const tag = typeof rec.presenting_complaints === "string"
+        ? (rec.presenting_complaints as string)
+        : "";
+      if (tag.includes("session_type: check_in")) {
+        const d = asString(rec.date);
+        if (d && (!lastCheckinIso || d > lastCheckinIso)) {
+          lastCheckinIso = d;
+        }
+      }
+    }
+    let checkinDoneThisWeek = false;
+    if (lastCheckinIso) {
+      const last = new Date(`${lastCheckinIso}T00:00:00`).getTime();
+      const daysSince = Math.floor((todayMs - last) / (24 * 60 * 60 * 1000));
+      checkinDoneThisWeek = daysSince >= 0 && daysSince < 7;
+    }
+
     steps.push({
       id: "week",
       label: `Week ${currentWeek} of ${planWeeks}`,
-      status: "active",
-      caption: daysIn != null ? `${daysIn} day${daysIn === 1 ? "" : "s"} in` : undefined,
+      status: checkinDoneThisWeek ? "done" : "active",
+      caption: checkinDoneThisWeek
+        ? `Check-in logged${lastCheckinIso ? ` ${lastCheckinIso}` : ""}`
+        : daysIn != null
+          ? `${daysIn} day${daysIn === 1 ? "" : "s"} in`
+          : undefined,
     });
   } else {
     steps.push({
