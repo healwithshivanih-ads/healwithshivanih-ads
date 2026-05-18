@@ -1,0 +1,35 @@
+slug: lycopus-inhibits-tsh-receptor-binding-graves
+statement: Lycopus virginicus (bugleweed) inhibits TSH receptor antibody binding and
+  reduces peripheral T4-to-T3 conversion, supporting its traditional use in mild Graves'
+  disease.
+evidence_tier: fm_specific_thin
+rationale: Pizzorno reports a long traditional use and in-vitro evidence of TSH receptor
+  binding inhibition. Robust human RCTs are limited; current use is naturopathic rather
+  than mainstream endocrinology.
+coaching_translation: Bugleweed is a traditional herb that may calm an overactive
+  thyroid by blocking the antibody signal — used under clinician supervision in mild
+  Graves'. Not for use if you're already hypothyroid or pregnant.
+caveats:
+- Contraindicated in hypothyroidism, pregnancy, lactation, and during thyroid hormone
+  replacement.
+- Use under naturopathic / clinician supervision; monitor TSH and TRAb.
+- Typically combined with Melissa officinalis and Lithospermum officinale.
+linked_to_topics:
+- hyperthyroidism
+- graves-disease
+linked_to_mechanisms:
+- tsh-receptor-stimulating-antibodies
+- impaired-t4-to-t3-conversion
+linked_to_supplements:
+- lycopus-virginicus
+out_of_scope_notes: Do not use in hypothyroidism or during pregnancy.
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hyperthyroidism — Botanical Medicines (pp 442-443)
+  quote: Lycopus virginicus has a long history of use in mild Graves' disease; it
+    appears to inhibit TSH receptor antibody binding and reduce peripheral T4-to-T3
+    conversion.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

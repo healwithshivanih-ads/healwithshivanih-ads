@@ -1,0 +1,38 @@
+slug: gluten-free-diet-reduces-thyroid-autoantibodies-celiac
+statement: In patients with celiac disease and concurrent autoimmune thyroid disease,
+  serologic thyroid autoantibody markers can become undetectable within 6 months of
+  starting a strict gluten-free diet.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites an established overlap between celiac and Hashimoto's (roughly
+  2% of celiac patients have overt autoimmune thyroid disease) and reports clinical
+  observation of antibody normalization on gluten elimination. Smaller human studies
+  support directionality; large RCTs are limited.
+coaching_translation: If you have both celiac disease and Hashimoto's, going strictly
+  gluten-free for 6 months can sometimes bring your thyroid antibodies down to undetectable
+  levels.
+caveats:
+- Effect is documented in celiac patients; whether non-celiac gluten sensitivity yields
+  the same response is less clear.
+- Strict adherence is required — even small gluten exposures sustain antibody activity.
+- Some patients still need thyroid replacement during/after antibody normalization.
+linked_to_topics:
+- hashimotos-thyroiditis
+- celiac-disease
+- gluten-free-diet
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- molecular-mimicry
+- leaky-gut
+- thyroid-autoimmunity
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hypothyroidism — Diet and Food Allergy (pp 479)
+  quote: Roughly 2% of patients with celiac disease have overt autoimmune thyroid
+    disease. Serologic autoantibody markers become undetectable 6 months after a gluten-free
+    diet is started.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

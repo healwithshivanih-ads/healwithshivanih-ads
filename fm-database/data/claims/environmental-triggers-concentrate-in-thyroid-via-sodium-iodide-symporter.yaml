@@ -1,0 +1,41 @@
+slug: environmental-triggers-concentrate-in-thyroid-via-sodium-iodide-symporter
+statement: Environmental toxicants implicated in Hashimoto's (perchlorate, fluoride,
+  lithium, mercury, bisphenol A, PFAS/Teflon, excess iodine) are taken up via the
+  sodium-iodide symporter and concentrated in thyroid follicles, where they generate
+  free radicals that sensitize immune cells to thyroid proteins.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites a defined list of chemicals correlated with Hashimoto's
+  onset. The sodium-iodide symporter uptake mechanism is well-established for iodine
+  and several halides (perchlorate, fluoride). Causal links between low-dose chronic
+  exposure and autoimmunity remain an active research area.
+coaching_translation: Your thyroid pulls iodine out of the blood using a special pump
+  — but it also accidentally pulls in other look-alike chemicals like perchlorate,
+  fluoride, lithium, and BPA. Once concentrated inside the gland, these can damage
+  tissue and trigger an autoimmune reaction.
+caveats:
+- Most data are from observational or animal studies; high-quality human RCTs are
+  limited.
+- Confounding from gut permeability, gluten exposure, and genetic susceptibility is
+  hard to fully separate.
+linked_to_topics:
+- hashimotos-thyroiditis
+- autoimmune-thyroiditis
+- environmental-toxin-load
+linked_to_mechanisms:
+- thyroid-toxicant-sensitivity
+- thyroid-autoimmunity
+- oxidative-stress-thyroid
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hashimoto's Thyroiditis (pp 474)
+  quote: Certain toxins are taken up via the sodium iodide symporter and concentrated
+    in thyroid follicles, where they generate free radicals that activate immune responses
+    and sensitize immune cells to thyroid proteins. Chemicals that correlate with
+    Hashimoto's thyroiditis include iodine (in excess), perchlorate, fluoride, lithium,
+    mercury, bisphenol A (BPA), Teflon.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

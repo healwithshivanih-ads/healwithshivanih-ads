@@ -1,0 +1,39 @@
+slug: zinc-copper-selenium-cofactors-t4-t3-conversion
+statement: Zinc, copper, and selenium are required cofactors for the iodothyronine
+  deiodinase enzymes that convert T4 to T3 in peripheral cells; deficiency in any
+  of them lowers cellular T3 activity even when serum T4 and TSH are normal.
+evidence_tier: strong
+rationale: Deiodinase enzymes are selenoproteins requiring selenocysteine; zinc is
+  also a cofactor for thyroid hormone receptor binding. Pizzorno cites that Zn supplementation
+  restores normal thyroid function in Zn-deficient patients with normal serum T4.
+coaching_translation: Even when your blood thyroid numbers look fine, low zinc, copper,
+  or selenium can stop your cells from turning T4 (the storage form) into T3 (the
+  active form) — leaving you feeling hypothyroid despite "normal" labs.
+caveats:
+- Zinc and copper compete for absorption; supplement them in 10:1 ratio (Zn:Cu) to
+  avoid copper deficiency.
+- Selenium above 400 mcg/day chronically risks selenosis.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-thyroiditis
+- subclinical-hypothyroidism
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+- selenium-thyroid-conversion
+- thyroid-nutrient-synergy
+linked_to_supplements:
+- zinc
+- copper
+- selenium
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hypothyroidism — Nutritional Considerations (pp 481-482)
+  quote: Zn, copper (Cu), and selenium (Se) are required cofactors for iodothyronine
+    iodinase enzyme converting T4 to T3. Each form requires a different trace mineral.
+    Supplementation with Zn reestablishes normal thyroid function in Zn-deficient
+    hypothyroid patients even though serum T4 is normal.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

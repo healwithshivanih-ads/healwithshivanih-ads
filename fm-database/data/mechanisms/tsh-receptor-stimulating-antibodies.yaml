@@ -1,0 +1,44 @@
+slug: tsh-receptor-stimulating-antibodies
+display_name: TSH Receptor Stimulating Antibodies (TSI/TRAb)
+aliases:
+- tsi
+- trab
+- thyroid-stimulating-immunoglobulins
+- tsh-receptor-antibodies
+- graves-autoantibodies
+category: immune
+summary: Autoantibodies that bind to and chronically activate the TSH receptor on
+  thyroid follicular cells, driving unregulated thyroid hormone overproduction. Distinct
+  from the TPO/TG antibodies of Hashimoto's — TSI mimics TSH signalling rather than
+  destroying tissue, and is the proximate driver of Graves' disease hyperthyroidism,
+  goiter, and ophthalmopathy.
+upstream_drivers:
+- thyroid-autoimmunity
+- molecular-mimicry
+- iodine-load
+- chronic-stress
+- yersinia-enterocolitica-infection
+- hla-b8-dr3-genetic-susceptibility
+downstream_effects:
+- hyperthyroidism
+- thyrotoxicosis
+- thyroid-storm
+- exophthalmos
+- diffuse-goiter
+related_mechanisms:
+- thyroid-autoimmunity
+- molecular-mimicry
+linked_to_topics:
+- hyperthyroidism
+- graves-disease
+- autoimmune-thyroiditis
+evidence_tier: strong
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hyperthyroidism — General Considerations (pp 434-435)
+  quote: TSH receptor antibodies bind to and activate the TSH receptor, driving chronic
+    stimulation of thyroid hormone synthesis independent of pituitary feedback.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

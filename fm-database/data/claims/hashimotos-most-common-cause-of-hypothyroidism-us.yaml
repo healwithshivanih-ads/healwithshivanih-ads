@@ -1,0 +1,32 @@
+slug: hashimotos-most-common-cause-of-hypothyroidism-us
+statement: Hashimoto's thyroiditis is the most frequent cause of clinical hypothyroidism
+  in the United States; antibodies target thyroid peroxidase, thyroglobulin, and TSH
+  receptors, and can also bind adrenal, pancreatic, and gastric parietal cells.
+evidence_tier: strong
+rationale: Pizzorno & Murray identify Hashimoto's as the predominant cause of primary
+  hypothyroidism in industrialized countries — consistent with mainstream endocrinology
+  epidemiology.
+coaching_translation: In the US, most underactive thyroids are autoimmune — the immune
+  system gradually destroys thyroid tissue. The same antibody process can also affect
+  the adrenals, pancreas, and stomach lining.
+caveats:
+- 10-15% of patients with Hashimoto's can be antibody-negative on standard testing.
+- Iodine deficiency remains the leading cause of hypothyroidism worldwide.
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- thyroid-autoimmunity
+- molecular-mimicry
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hypothyroidism — Causes (pp 473-474)
+  quote: The most frequent cause of clinical hypothyroidism in the United States is
+    Hashimoto's thyroiditis... antibodies that bind to thyroid peroxidase enzyme,
+    thyroglobulin, and TSH receptors and inhibit hormone synthesis.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

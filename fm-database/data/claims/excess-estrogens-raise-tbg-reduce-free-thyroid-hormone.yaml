@@ -1,0 +1,37 @@
+slug: excess-estrogens-raise-tbg-reduce-free-thyroid-hormone
+statement: Excess estrogen exposure (pregnancy, oral contraceptives, oral HRT, tamoxifen)
+  increases thyroxine-binding globulin (TBG) from the liver, reducing free thyroid
+  hormone availability and worsening hypothyroidism.
+evidence_tier: strong
+rationale: TBG induction by oral estrogen is well-established endocrinology; total
+  T4 rises while free T4 falls, requiring higher levothyroxine doses. Pizzorno notes
+  pregnancy dose requirements increase 30-50% for this reason.
+coaching_translation: Oral estrogens (the pill, oral HRT, even pregnancy) make your
+  liver produce more carrier protein that binds up your thyroid hormone — so less
+  is free to do its job. This is why thyroid doses often need to go up by a third
+  to half during pregnancy.
+caveats:
+- Non-oral estrogen (transdermal patch, gel) largely bypasses liver first-pass and
+  has much less effect on TBG.
+- Total T4 may look normal or high; the meaningful marker is free T4.
+linked_to_topics:
+- hypothyroidism
+- hashimotos-thyroiditis
+- estrogen-dominance
+- hormone-replacement-therapy
+linked_to_mechanisms:
+- estrogen-dominance-thyroid-blunting
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hypothyroidism — Physiologic and Hormonal Considerations (pp 479-480)
+  quote: Thyroxine-binding globulin (TBG) from the liver transports thyroid hormones...
+    Factors increasing TBG include excess estrogens (as in pregnancy, oral estrogens
+    of birth control pills and hormone replacement therapy), tamoxifen for breast
+    cancer, and liver diseases. High TBG reduces free thyroid hormone availability,
+    worsening hypothyroidism.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

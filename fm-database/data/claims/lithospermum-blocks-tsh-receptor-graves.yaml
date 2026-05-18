@@ -1,0 +1,32 @@
+slug: lithospermum-blocks-tsh-receptor-graves
+statement: Lithospermum officinale (gromwell) contains compounds that bind the TSH
+  receptor and inhibit antibody-mediated activation, supporting its traditional use
+  alongside Lycopus and Melissa in mild Graves' disease.
+evidence_tier: fm_specific_thin
+rationale: Pizzorno reports the traditional Lycopus-Lithospermum-Melissa botanical
+  triad and an in-vitro TSH receptor binding mechanism. Robust human RCTs are limited.
+coaching_translation: Gromwell is a traditional herb in the bugleweed-lemon-balm trio
+  used for mild overactive thyroid. It seems to physically block the antibody from
+  latching onto the thyroid switch.
+caveats:
+- Contraindicated in hypothyroidism, pregnancy, lactation, and during thyroid hormone
+  replacement.
+- Use under naturopathic / clinician supervision.
+linked_to_topics:
+- hyperthyroidism
+- graves-disease
+linked_to_mechanisms:
+- tsh-receptor-stimulating-antibodies
+linked_to_supplements:
+- lithospermum-officinale
+out_of_scope_notes: Do not use in hypothyroidism or during pregnancy.
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hyperthyroidism — Botanical Medicines (pp 442-443)
+  quote: Lithospermum officinale contains compounds that bind to TSH receptors and
+    inhibit antibody-mediated stimulation; traditionally used with Lycopus and Melissa
+    for mild Graves' disease.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

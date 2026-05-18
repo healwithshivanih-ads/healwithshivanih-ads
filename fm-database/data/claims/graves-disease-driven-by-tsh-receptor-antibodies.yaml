@@ -1,0 +1,33 @@
+slug: graves-disease-driven-by-tsh-receptor-antibodies
+statement: Graves' disease hyperthyroidism is driven by stimulating autoantibodies
+  (TSI/TRAb) that bind the TSH receptor and chronically activate thyroid hormone synthesis,
+  independent of pituitary feedback.
+evidence_tier: strong
+rationale: Pizzorno & Murray describe TSI binding to the TSH receptor as the proximate
+  mechanism of Graves'; this is consistent with well-established immunology and endocrinology
+  literature.
+coaching_translation: In Graves' disease, your immune system makes antibodies that
+  act like a stuck "on" switch for your thyroid — they keep telling it to make hormone
+  even when your pituitary is shouting "stop."
+caveats:
+- A subset of Graves' patients also have TPO/TG antibodies (overlap with Hashimoto's
+  pattern).
+- Postpartum thyroiditis can transiently mimic Graves' before resolving.
+linked_to_topics:
+- hyperthyroidism
+- graves-disease
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- tsh-receptor-stimulating-antibodies
+- thyroid-autoimmunity
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hyperthyroidism — General Considerations (pp 434-435)
+  quote: TSH receptor antibodies bind to and chronically stimulate the TSH receptor,
+    driving unregulated thyroid hormone production characteristic of Graves' disease.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

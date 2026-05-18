@@ -1,0 +1,50 @@
+slug: lithospermum-officinale
+display_name: Gromwell (Lithospermum officinale)
+aliases:
+- lithospermum
+- gromwell
+- european-gromwell
+- common-gromwell
+category: herb
+forms_available:
+- liquid
+- capsule
+- tablet
+timing_options:
+- morning
+- evening
+take_with_food: optional
+linked_to_topics:
+- hyperthyroidism
+- graves-disease
+linked_to_mechanisms:
+- tsh-receptor-stimulating-antibodies
+linked_to_claims:
+- lithospermum-blocks-tsh-receptor-graves
+notes_for_coach: Antithyroid herb traditionally paired with Lycopus and Melissa officinalis
+  in Graves'. Pizzorno notes its compounds bind to TSH receptors and inhibit antibody
+  activation. Contraindicated in hypothyroidism and pregnancy. Confirm dose with clinician.
+notes_for_client: A traditional herb used under clinician supervision for mild overactive
+  thyroid. Not for use if your thyroid is underactive or during pregnancy.
+contraindications:
+  conditions:
+  - hypothyroidism
+  medications:
+  - levothyroxine
+  - liothyronine
+  - desiccated-thyroid
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hyperthyroidism — Botanical Medicines (pp 442-443)
+  quote: Lithospermum officinale contains compounds that bind to TSH receptors and
+    inhibit antibody-mediated stimulation; traditionally used with Lycopus and Melissa
+    for mild Graves' disease.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

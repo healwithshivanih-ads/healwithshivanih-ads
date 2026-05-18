@@ -1,0 +1,33 @@
+slug: l-carnitine-blocks-thyroid-hormone-cellular-entry-graves
+statement: L-carnitine 2-4 g/day inhibits thyroid hormone entry into peripheral tissue
+  nuclei, reducing peripheral hyperthyroid symptoms in Graves' disease without lowering
+  serum T4 or T3.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the Benvenga RCT showing L-carnitine attenuates symptoms
+  in hyperthyroidism by blocking nuclear uptake of T3/T4. Mechanism is reproducible
+  in vitro; published clinical data are modest but consistent.
+coaching_translation: L-carnitine doesn't lower your thyroid hormone level — it stops
+  the hormone from getting into your cells where it causes the symptoms. Helpful for
+  the racing heart, tremor, and anxiety of mild Graves' while you address root causes.
+caveats:
+- Not a substitute for definitive Graves' treatment; use as adjunct.
+- Use under clinician supervision; monitor TSH and free T4/T3.
+- Typical adjunctive dose 2-4 g/day in divided doses.
+linked_to_topics:
+- hyperthyroidism
+- graves-disease
+linked_to_mechanisms:
+- tsh-receptor-stimulating-antibodies
+linked_to_supplements:
+- l-carnitine
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hyperthyroidism — Nutritional Supplements (pp 440-441)
+  quote: L-carnitine at 2 to 4 g per day inhibits thyroid hormone entry into peripheral
+    tissue nuclei and reduces hyperthyroid symptoms in Graves' disease without affecting
+    serum T4 or T3 levels.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
