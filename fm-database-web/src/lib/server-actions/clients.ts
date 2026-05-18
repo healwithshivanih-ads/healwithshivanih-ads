@@ -1267,7 +1267,16 @@ export async function addMeasurementAction(
     data.updated_at = new Date().toISOString();
 
     await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    // Revalidate both v1 + v2 client routes — the v2 dashboard / Overview
+    // / Plan / Analyse tabs all need a fresh body-comp read. Forgetting
+    // the v2 paths was the original reason "+ Log entry" appeared to do
+    // nothing in the UI (data saved, page kept showing the stale flat
+    // measurements). Bug surfaced 2026-05-18 for cl-004.
     revalidatePath(`/clients/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}/plan`);
+    revalidatePath(`/clients-v2/${input.client_id}/analyse`);
+    revalidatePath(`/clients-v2/${input.client_id}/sessions`);
     return { ok: true };
   } catch (err) {
     const e = err as { message?: string };

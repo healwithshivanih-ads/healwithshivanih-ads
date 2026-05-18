@@ -241,6 +241,7 @@ function flatMeasurementsToSnapshot(
 function buildBodyCompMetrics(
   snapshots: NonNullable<ClientWithMeta["health_snapshots"]>,
   flat: Record<string, unknown> | undefined,
+  log: Array<Record<string, unknown>> | undefined,
 ): BodyCompMetric[] {
   const allDated: DatedMeasurement[] = [];
 
@@ -251,6 +252,43 @@ function buildBodyCompMetrics(
         date: s.date,
         measurements: s.measurements as SnapshotMeasurements,
         source: s.source,
+      });
+    }
+  }
+
+  // measurements_log entries — the time-series field that addMeasurementAction
+  // writes to from FmBodyCompGrid's "+ Log entry" button. Without this branch,
+  // any entry the coach added via the dashboard tile would never surface in
+  // the trend, because buildBodyCompMetrics previously only knew about
+  // health_snapshots + flat measurements. Real bug surfaced on cl-004
+  // 2026-05-18: coach saved weight 79 kg via Log entry, UI kept showing the
+  // intake 80 kg from the flat measurements field.
+  for (const entry of log ?? []) {
+    const d = typeof entry.date === "string" ? entry.date : null;
+    if (!d) continue;
+    const measurementKeys: Partial<Record<MeasurementKey, number>> = {};
+    if (typeof entry.weight_kg === "number") measurementKeys.weight_kg = entry.weight_kg;
+    if (typeof entry.waist_cm === "number") measurementKeys.waist_cm = entry.waist_cm;
+    if (typeof entry.hip_cm === "number") measurementKeys.hip_cm = entry.hip_cm;
+    if (typeof entry.height_cm === "number") measurementKeys.height_cm = entry.height_cm;
+    if (typeof entry.blood_pressure_systolic === "number")
+      measurementKeys.bp_systolic = entry.blood_pressure_systolic;
+    if (typeof entry.blood_pressure_diastolic === "number")
+      measurementKeys.bp_diastolic = entry.blood_pressure_diastolic;
+    if (typeof entry.resting_heart_rate === "number")
+      measurementKeys.hr_bpm = entry.resting_heart_rate;
+    if (Object.keys(measurementKeys).length === 0) continue;
+    // Merge into an existing snapshot for the same date if one exists,
+    // otherwise push a fresh row. Log entries WIN over snapshot values
+    // for the same date (the log is the explicit coach-recorded source).
+    const existing = allDated.find((x) => x.date === d);
+    if (existing) {
+      Object.assign(existing.measurements, measurementKeys);
+    } else {
+      allDated.push({
+        date: d,
+        measurements: measurementKeys as SnapshotMeasurements,
+        source: "measurements_log",
       });
     }
   }
@@ -592,10 +630,14 @@ export default async function ClientV2Page({
   }));
   const markerGroups = groupLabMarkers(labMarkers);
 
-  // Body comp
+  // Body comp — pulls from health_snapshots, measurements_log (time-series
+  // written by + Log entry), AND legacy flat measurements. measurements_log
+  // entries win over snapshot values for the same date.
   const bodyComp = buildBodyCompMetrics(
     client.health_snapshots ?? [],
     client.measurements,
+    (client as unknown as { measurements_log?: Array<Record<string, unknown>> })
+      .measurements_log,
   );
 
   // Five pillars — latest from sessions, else from client.five_pillars.
@@ -855,15 +897,29 @@ export default async function ClientV2Page({
                 (client as unknown as { bp_diastolic?: number }).bp_diastolic ?? null,
             }}
             lastEntryDate={
-              // Latest snapshot by DATE (not array order) — snapshots are
-              // appended over time but the YAML order isn't guaranteed
-              // chronological. Only count snapshots that actually carry
-              // measurements; lab-only snapshots aren't body-comp entries.
-              (client.health_snapshots ?? [])
-                .filter((s) => s.measurements && Object.keys(s.measurements).length > 0)
-                .map((s) => s.date)
-                .sort()
-                .pop() ?? undefined
+              // Latest entry from EITHER health_snapshots OR
+              // measurements_log — both contribute to the trend, so the
+              // "Last entry" caption needs to reflect whichever is newer.
+              // Previously only checked snapshots, so a fresh Log entry
+              // saved to measurements_log wouldn't update the caption.
+              (() => {
+                const snapDates = (client.health_snapshots ?? [])
+                  .filter(
+                    (s) =>
+                      s.measurements &&
+                      Object.keys(s.measurements).length > 0,
+                  )
+                  .map((s) => s.date);
+                const logDates = (
+                  (client as unknown as {
+                    measurements_log?: Array<{ date?: string }>;
+                  }).measurements_log ?? []
+                )
+                  .map((e) => e.date)
+                  .filter((d): d is string => typeof d === "string");
+                const all = [...snapDates, ...logDates].sort();
+                return all.pop() ?? undefined;
+              })()
             }
           />
 
