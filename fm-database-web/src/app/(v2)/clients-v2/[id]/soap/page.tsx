@@ -249,6 +249,31 @@ export default async function SoapNotePage({
     .filter((lm) => lm.flag && lm.flag !== "optimal")
     .sort((a, b) => flagWeight(a.flag) - flagWeight(b.flag));
 
+  // v0.75.3 — coach-led physical exam findings. Render the latest entry
+  // of each kind on the Objective block. Sorted urgent-first (Beighton
+  // hypermobility flag + POTS pattern surface above other findings).
+  type ExamFinding = {
+    kind: string;
+    assessed_at: string;
+    result?: Record<string, unknown>;
+    notes?: string;
+  };
+  const allFindings = (c.physical_exam_findings as ExamFinding[] | undefined) ?? [];
+  const latestFindingOf = (kind: string): ExamFinding | undefined =>
+    allFindings
+      .filter((f) => f.kind === kind)
+      .sort((a, b) => (b.assessed_at ?? "").localeCompare(a.assessed_at ?? ""))[0];
+  const beightonFinding = latestFindingOf("beighton");
+  const leanFinding = latestFindingOf("nasa_lean_test");
+  const beightonScore = beightonFinding?.result?.score as number | undefined;
+  const beightonHypermobile = beightonFinding?.result?.hypermobile as boolean | undefined;
+  const leanDeltaHr = leanFinding?.result?.delta_hr as number | undefined;
+  const leanSupineHr = leanFinding?.result?.supine_hr as number | undefined;
+  const leanPeakHr = leanFinding?.result?.peak_standing_hr as number | undefined;
+  const leanPotsFlag = leanFinding?.result?.pots_pattern as boolean | undefined;
+  const leanSymptoms = (leanFinding?.result?.symptoms as string[] | undefined) ?? [];
+  const hasExamFindings = !!beightonFinding || !!leanFinding;
+
   // ── Assessment ─
   // Driver from latest clinical session; fall back to intake_insights top
   // hypothesis if no session driver exists yet.
@@ -442,11 +467,63 @@ export default async function SoapNotePage({
         </SoapSection>
 
         {/* ── O ── */}
-        <SoapSection letter="O" name="Objective" subtitle="Measurements + flagged labs">
+        <SoapSection letter="O" name="Objective" subtitle="Measurements + flagged labs + physical exam">
           {objectiveBullets.length > 0 ? (
             <div style={{ marginBottom: 6 }}>{objectiveBullets.join(" · ")}</div>
           ) : (
             <div style={{ color: "#9ca3af", fontStyle: "italic", marginBottom: 6 }}>No measurements on file.</div>
+          )}
+
+          {/* v0.75.3 — physical exam findings from coach-led panels */}
+          {hasExamFindings && (
+            <div style={{ marginBottom: 8 }}>
+              <div style={{ fontSize: 10.5, color: "#6b7280", marginBottom: 3 }}>
+                <strong>Physical exam findings:</strong>
+              </div>
+              <ul style={{ margin: 0, paddingLeft: 18 }}>
+                {beightonFinding && (
+                  <li style={{ marginBottom: 3 }}>
+                    <span
+                      style={{
+                        fontWeight: 600,
+                        color: beightonHypermobile ? "#b91c1c" : "#1f2937",
+                      }}
+                    >
+                      🦋 Beighton {beightonScore}/9
+                      {beightonHypermobile ? " — positive for hypermobility" : ""}
+                    </span>
+                    <span style={{ color: "#9ca3af", fontSize: 10.5 }}>
+                      {" "}· assessed {fmtDate(beightonFinding.assessed_at)}
+                    </span>
+                  </li>
+                )}
+                {leanFinding && (
+                  <li style={{ marginBottom: 3 }}>
+                    <span
+                      style={{
+                        fontWeight: 600,
+                        color: leanPotsFlag ? "#b91c1c" : "#1f2937",
+                      }}
+                    >
+                      🩺 NASA lean test
+                      {leanDeltaHr != null
+                        ? ` — ΔHR +${leanDeltaHr} bpm`
+                        : ""}
+                      {leanPotsFlag ? ", POTS pattern POSITIVE" : ""}
+                    </span>
+                    {leanSupineHr != null && leanPeakHr != null && (
+                      <div style={{ color: "#6b7280", fontSize: 10.5, marginLeft: 4 }}>
+                        Supine {leanSupineHr} → peak standing {leanPeakHr}
+                        {leanSymptoms.length > 0 ? `; symptoms: ${leanSymptoms.join(", ")}` : ""}
+                      </div>
+                    )}
+                    <span style={{ color: "#9ca3af", fontSize: 10.5 }}>
+                      Assessed {fmtDate(leanFinding.assessed_at)}
+                    </span>
+                  </li>
+                )}
+              </ul>
+            </div>
           )}
           {flaggedLabs.length > 0 ? (
             <div>

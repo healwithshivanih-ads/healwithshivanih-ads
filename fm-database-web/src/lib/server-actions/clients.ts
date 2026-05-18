@@ -2546,3 +2546,67 @@ export async function loadGeneticReportsAction(
     return { ok: false, reports: [], error: String(e) };
   }
 }
+
+// ── v0.75.3 physical_exam_findings[] ────────────────────────────────────────
+
+/**
+ * A coach-led in-session assessment, stored on client.physical_exam_findings.
+ * Append-only — each save adds a new entry. SOAP Objective shows the most
+ * recent entry per `kind`. Trend preserved across sessions for rechecks.
+ */
+export interface PhysicalExamFinding {
+  /** e.g. "beighton" | "nasa_lean_test" — extensible. */
+  kind: string;
+  /** ISO timestamp. Set server-side. */
+  assessed_at: string;
+  /** Optional link to the session being conducted when this was captured. */
+  session_id?: string;
+  /** Free-shape per kind. React panels enforce structure on write. */
+  result: Record<string, unknown>;
+  /** Coach notes. */
+  notes?: string;
+  /** Who saved (default 'shivani'). */
+  by?: string;
+}
+
+/**
+ * Append a physical exam finding to client.yaml. Used by NASA lean test
+ * panel + Beighton verify panel.
+ */
+export async function saveExamFindingAction(input: {
+  client_id: string;
+  finding: Omit<PhysicalExamFinding, "assessed_at" | "by"> & {
+    assessed_at?: string;
+    by?: string;
+  };
+}): Promise<{ ok: true; count: number } | { ok: false; error: string }> {
+  try {
+    const yaml = await import("js-yaml");
+    const clientYaml = path.join(
+      getPlansRoot(),
+      "clients",
+      input.client_id,
+      "client.yaml",
+    );
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const existing = Array.isArray(data.physical_exam_findings)
+      ? (data.physical_exam_findings as PhysicalExamFinding[])
+      : [];
+    const entry: PhysicalExamFinding = {
+      kind: input.finding.kind,
+      assessed_at: input.finding.assessed_at ?? new Date().toISOString(),
+      session_id: input.finding.session_id,
+      result: input.finding.result,
+      notes: input.finding.notes,
+      by: input.finding.by ?? "shivani",
+    };
+    existing.push(entry);
+    data.physical_exam_findings = existing;
+    data.updated_at = new Date().toISOString();
+    await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false, lineWidth: 120 }), "utf8");
+    return { ok: true, count: existing.length };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}

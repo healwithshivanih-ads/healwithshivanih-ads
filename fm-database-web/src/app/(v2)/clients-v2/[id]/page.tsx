@@ -36,6 +36,8 @@ import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
 import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
+import { NasaLeanTestPanel } from "./nasa-lean-test-panel";
+import { BeightonVerifyPanel } from "./beighton-verify-panel";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
@@ -1032,6 +1034,61 @@ export default async function ClientV2Page({
                 .intake_full_unlocked_at
             }
           />
+
+          {/* v0.75.3 coach-led physical exam panels. Derive latest finding
+              per kind + the client's intake self-report so panels can show
+              context. Both panels are collapsed by default; coach clicks
+              "Start test" / "Verify" to expand. */}
+          {(() => {
+            const c2 = client as unknown as {
+              physical_exam_findings?: Array<{
+                kind: string;
+                assessed_at: string;
+                result?: Record<string, unknown>;
+              }>;
+              lean_test_supine_hr?: string;
+              lean_test_standing_hr?: string;
+              lean_test_symptoms?: string[];
+              beighton_self_score?: string[];
+              date_of_birth?: string;
+            };
+            const findings = c2.physical_exam_findings ?? [];
+            const latestOf = (kind: string) =>
+              findings
+                .filter((f) => f.kind === kind)
+                .sort((a, b) => (b.assessed_at ?? "").localeCompare(a.assessed_at ?? ""))[0];
+            const latestLean = latestOf("nasa_lean_test");
+            const latestBeighton = latestOf("beighton");
+            const leanDelta = latestLean?.result?.delta_hr as number | undefined;
+            const leanPots = latestLean?.result?.pots_pattern as boolean | undefined;
+            const beightonScore = latestBeighton?.result?.score as number | undefined;
+            const ageYears = c2.date_of_birth
+              ? Math.floor(
+                  (Date.now() - new Date(c2.date_of_birth).getTime()) /
+                    (365.25 * 24 * 3600 * 1000),
+                )
+              : null;
+            return (
+              <>
+                <NasaLeanTestPanel
+                  clientId={client.client_id}
+                  selfReportSupineHr={c2.lean_test_supine_hr}
+                  selfReportStandingHr={c2.lean_test_standing_hr}
+                  selfReportSymptoms={c2.lean_test_symptoms}
+                  latestSavedAt={latestLean?.assessed_at}
+                  latestDeltaHr={leanDelta}
+                  latestPotsFlag={leanPots}
+                />
+                <BeightonVerifyPanel
+                  clientId={client.client_id}
+                  selfReportTicks={c2.beighton_self_score}
+                  latestSavedAt={latestBeighton?.assessed_at}
+                  latestScore={beightonScore}
+                  ageYears={ageYears}
+                />
+              </>
+            );
+          })()}
 
           {/* Identity editor moved into FmClientHeader.quickActions so
               it's always visible under the client name. */}

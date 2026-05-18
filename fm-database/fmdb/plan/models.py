@@ -447,6 +447,16 @@ class Client(BaseModel):
     mould_exposure: list[str] = Field(default_factory=list)
     large_fish_frequency: str = ""       # never / rarely / weekly / multiple_weekly
 
+    # ── v0.75.3 — coach-led physical exam findings (in-session, on Zoom) ──
+    # Append-only list of structured findings the coach captures during
+    # the session (Beighton verify /9 score, NASA lean test HR series,
+    # future: orthostatic vitals trends, in-session tongue / nail / skin
+    # observations). Each entry has a `kind` so the SOAP Objective block
+    # can show the most-recent of each type. Trend is preserved for
+    # rechecks. Free-shape dict to keep schema flexible — the React
+    # panels enforce structure on write.
+    physical_exam_findings: list[dict] = Field(default_factory=list)
+
     # AI-generated summary of the structured intake. Lives on disk so every
     # downstream AI call (assess / rework / letter / sanity check) reads the
     # same map without re-generating it. Coach can edit coach_notes_for_ai
