@@ -24,6 +24,34 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { updateClientProfile } from "@/lib/server-actions/clients";
 
+type MealPlanStyle = "detailed" | "principles" | "hybrid";
+
+const MEAL_STYLE_OPTIONS: {
+  value: MealPlanStyle;
+  emoji: string;
+  label: string;
+  desc: string;
+}[] = [
+  {
+    value: "detailed",
+    emoji: "📅",
+    label: "Detailed",
+    desc: "Full Mon-Sun tables every fortnight letter.",
+  },
+  {
+    value: "principles",
+    emoji: "🟢",
+    label: "Principles",
+    desc: "Categories + do's/don'ts + 5 ideas/slot. No grid.",
+  },
+  {
+    value: "hybrid",
+    emoji: "🌗",
+    label: "Hybrid",
+    desc: "Principles first, then ONE sample week. Default.",
+  },
+];
+
 interface Props {
   clientId: string;
   initial: {
@@ -32,6 +60,7 @@ interface Props {
     non_negotiables?: string;
     reported_triggers?: string;
     family_history?: string;
+    meal_plan_style?: MealPlanStyle;
   };
   /** ISO timestamp of last update — usually client.updated_at. */
   lastUpdatedAt?: string;
@@ -323,6 +352,139 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
                 </div>
               )}
             </div>
+          );
+        })}
+
+        {/* 🍽 Meal plan style — separate from FIELDS because it's a
+            radio (3 mutually-exclusive values) rather than a freeform
+            string. Read by render-client-letter.py phase letter builder
+            to choose between full tables vs categories. Hybrid is the
+            safe default for new clients. */}
+        <MealPlanStyleRow
+          clientId={clientId}
+          initial={initial.meal_plan_style ?? "hybrid"}
+        />
+      </div>
+    </div>
+  );
+}
+
+/** 3-button radio row for meal_plan_style. Lives at the bottom of
+ *  ClientMemoryPanel — separate from FIELDS because it's enumerated
+ *  rather than freeform text. */
+function MealPlanStyleRow({
+  clientId,
+  initial,
+}: {
+  clientId: string;
+  initial: MealPlanStyle;
+}) {
+  const router = useRouter();
+  const [value, setValue] = useState<MealPlanStyle>(initial);
+  const [pending, startTransition] = useTransition();
+
+  const onPick = (next: MealPlanStyle) => {
+    if (next === value) return;
+    setValue(next);
+    startTransition(async () => {
+      const res = await updateClientProfile({
+        client_id: clientId,
+        meal_plan_style: next,
+      });
+      if (res.ok) {
+        toast.success(`Meal plan style → ${next}`);
+        router.refresh();
+      } else {
+        toast.error(res.error ?? "Save failed", { duration: 12000 });
+        setValue(initial);
+      }
+    });
+  };
+
+  return (
+    <div
+      style={{
+        display: "grid",
+        gap: 6,
+        padding: "8px 10px",
+        background: "var(--fm-surface)",
+        border: "1px solid var(--fm-border-light)",
+        borderRadius: "var(--fm-radius-sm)",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: 5,
+          fontSize: 10.5,
+          fontWeight: 700,
+          textTransform: "uppercase",
+          letterSpacing: 0.6,
+          color: "var(--fm-text-secondary)",
+        }}
+      >
+        <span>🍽</span>
+        <span>Meal plan letter shape</span>
+        {pending && (
+          <span
+            style={{
+              fontSize: 9.5,
+              opacity: 0.6,
+              fontWeight: 500,
+              textTransform: "none",
+              letterSpacing: 0,
+            }}
+          >
+            saving…
+          </span>
+        )}
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 6,
+        }}
+      >
+        {MEAL_STYLE_OPTIONS.map((opt) => {
+          const checked = value === opt.value;
+          return (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => onPick(opt.value)}
+              disabled={pending}
+              style={{
+                display: "grid",
+                gap: 2,
+                padding: "7px 9px",
+                textAlign: "left",
+                background: checked
+                  ? "rgba(245, 158, 11, 0.12)"
+                  : "var(--fm-bg-cool)",
+                border: checked
+                  ? "1.5px solid rgba(245, 158, 11, 0.65)"
+                  : "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-sm)",
+                cursor: pending ? "wait" : "pointer",
+                fontFamily: "inherit",
+                color: "var(--fm-text-primary)",
+              }}
+            >
+              <span style={{ fontSize: 11, fontWeight: 700 }}>
+                {opt.emoji} {opt.label}
+              </span>
+              <span
+                style={{
+                  fontSize: 10,
+                  color: "var(--fm-text-tertiary)",
+                  lineHeight: 1.4,
+                }}
+              >
+                {opt.desc}
+              </span>
+            </button>
           );
         })}
       </div>

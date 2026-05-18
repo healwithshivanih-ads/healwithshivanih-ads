@@ -783,6 +783,10 @@ export interface UpdateClientProfileInput {
   non_negotiables?: string;
   reported_triggers?: string;
   family_history?: string;
+  /** Per-client meal plan letter shape. Read by render-client-letter.py
+   *  phase-letter builder to choose between 7-day tables (detailed),
+   *  categories + principles (principles), or hybrid. */
+  meal_plan_style?: "detailed" | "principles" | "hybrid";
   // Clinical
   active_conditions?: string[];
   medications?: string[];
@@ -842,6 +846,16 @@ export async function updateClientProfile(
       data.reported_triggers = input.reported_triggers.trim() || undefined;
     if (input.family_history !== undefined)
       data.family_history = input.family_history.trim() || undefined;
+    if (input.meal_plan_style !== undefined) {
+      // Coerce unknown values to "hybrid" (the canonical default) so a
+      // bad request can't corrupt the field. Pydantic on the Python side
+      // also enforces this, but defending at the write boundary too.
+      const v = input.meal_plan_style;
+      data.meal_plan_style =
+        v === "detailed" || v === "principles" || v === "hybrid"
+          ? v
+          : "hybrid";
+    }
 
     if (input.active_conditions !== undefined)
       data.active_conditions = input.active_conditions;

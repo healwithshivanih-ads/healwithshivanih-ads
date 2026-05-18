@@ -1179,6 +1179,11 @@ export default async function ClientV2Page({
               non_negotiables: (client as unknown as { non_negotiables?: string }).non_negotiables,
               reported_triggers: (client as unknown as { reported_triggers?: string }).reported_triggers,
               family_history: (client as unknown as { family_history?: string }).family_history,
+              meal_plan_style: (
+                client as unknown as {
+                  meal_plan_style?: "detailed" | "principles" | "hybrid";
+                }
+              ).meal_plan_style,
             }}
             lastUpdatedAt={(client as unknown as { updated_at?: string }).updated_at}
           />
