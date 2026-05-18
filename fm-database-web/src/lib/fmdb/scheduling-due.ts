@@ -38,6 +38,13 @@ export interface SchedulingDueRow {
   last_session_date?: string;
   plan_recheck_overdue_days?: number;
   plan_period_recheck_date?: string;
+  /** Set when the row is flagged for an UPCOMING due date (next 3 days)
+   *  rather than already overdue. Used by the panel to render an amber
+   *  "upcoming" badge vs the default red overdue style. */
+  upcoming_in_days?: number;
+  /** ISO date the upcoming-due was anchored on (plan_period_recheck_date
+   *  or client.next_contact_date). Surfaced as caption. */
+  upcoming_due_date?: string;
 }
 
 interface ClientDictForScan {
@@ -48,6 +55,8 @@ interface ClientDictForScan {
   intake_submitted_at?: string | null;
   intake_finalised_at?: string | null;
   lifecycle_state?: string | null;
+  /** Coach-set next contact date — used to flag UPCOMING-due rows. */
+  next_contact_date?: string | null;
 }
 
 interface PlanLite {
@@ -152,29 +161,74 @@ export async function getSchedulingDueRows(
       if (od > 0) recheckOverdue = od;
     }
 
-    // Flag if either (a) recheck overdue OR (b) 12+ days since last session.
+    // ── Upcoming-due signals (next 3 days, not yet passed). Coach asked
+    //    for proactive surfacing so she can send the booking link BEFORE
+    //    the recheck date arrives — gives the client time to schedule.
+    let upcomingInDays: number | undefined;
+    let upcomingDueDate: string | undefined;
+    let upcomingReason: string | undefined;
+
+    if (plan?.plan_period_recheck_date && recheckOverdue === undefined) {
+      const rd = new Date(`${plan.plan_period_recheck_date}T00:00:00`);
+      const daysAhead = daysBetween(rd, today);
+      if (daysAhead >= 0 && daysAhead <= 3) {
+        upcomingInDays = daysAhead;
+        upcomingDueDate = plan.plan_period_recheck_date;
+        upcomingReason =
+          daysAhead === 0
+            ? "Plan recheck date is today"
+            : `Plan recheck in ${daysAhead} day${daysAhead === 1 ? "" : "s"}`;
+      }
+    }
+
+    if (c.next_contact_date) {
+      const ncd = new Date(`${c.next_contact_date}T00:00:00`);
+      const daysAhead = daysBetween(ncd, today);
+      // If next_contact_date is sooner than (or replaces) the recheck signal
+      if (daysAhead >= 0 && daysAhead <= 3) {
+        if (upcomingInDays === undefined || daysAhead < upcomingInDays) {
+          upcomingInDays = daysAhead;
+          upcomingDueDate = c.next_contact_date;
+          upcomingReason =
+            daysAhead === 0
+              ? "Next contact date is today"
+              : `Next contact in ${daysAhead} day${daysAhead === 1 ? "" : "s"}`;
+        }
+      }
+    }
+
+    // Flag if either (a) recheck overdue OR (b) 12+ days since last
+    // session OR (c) upcoming-due in next 3 days.
     const dueByRecheck = recheckOverdue !== undefined;
     const dueByGap = daysSince !== undefined && daysSince >= DAYS_SINCE_THRESHOLD;
+    const dueByUpcoming = upcomingInDays !== undefined;
     // Special case: prospect / not-yet-intake client gets flagged if
     // they've been on file for 12+ days without an intake submission.
-    // Use intake_token issue date proxy via the client's existence /
-    // lack of last session — handled by the daysSince path below.
-    if (!dueByRecheck && !dueByGap) continue;
+    if (!dueByRecheck && !dueByGap && !dueByUpcoming) continue;
 
     const { type, reason } = pickRecommendedType(c, hasPlan, recheckOverdue);
+
+    let finalReason: string;
+    if (dueByUpcoming && !dueByRecheck && !dueByGap) {
+      finalReason = `${reason} · ${upcomingReason}`;
+    } else if (dueByRecheck && !dueByGap) {
+      finalReason = reason;
+    } else {
+      finalReason = `${reason} · ${daysSince ?? "?"}d since last session`;
+    }
 
     rows.push({
       client_id: c.client_id,
       display_name: c.display_name || c.client_id,
       mobile_number: c.mobile_number,
       recommended_type: type,
-      reason: dueByRecheck && !dueByGap
-        ? reason
-        : `${reason} · ${daysSince ?? "?"}d since last session`,
+      reason: finalReason,
       days_since_last_session: daysSince,
       last_session_date: lastDateStr,
       plan_recheck_overdue_days: recheckOverdue,
       plan_period_recheck_date: plan?.plan_period_recheck_date,
+      upcoming_in_days: upcomingInDays,
+      upcoming_due_date: upcomingDueDate,
     });
   }
 

@@ -127,13 +127,17 @@ export function CommunicateClient({
 
         {/* Cal.com booking link — free-text WhatsApp send via 24h window.
             Reads ~/fm-plans/_calcom_links.yaml so coach can edit event
-            types without redeploying. */}
-        <SendBookingLinkPanel
-          clientId={clientId}
-          firstName={firstName}
-          clientPhone={clientPhone}
-          whatsappConfigured={whatsappConfigured}
-        />
+            types without redeploying. The #booking anchor lets other
+            pages (analyse banner, dashboard schedule-due panel) deep-link
+            here with the scroll target pre-set. */}
+        <div id="booking" style={{ scrollMarginTop: 16 }}>
+          <SendBookingLinkPanel
+            clientId={clientId}
+            firstName={firstName}
+            clientPhone={clientPhone}
+            whatsappConfigured={whatsappConfigured}
+          />
+        </div>
 
         {/* Quick message templates */}
         <MessageTemplatesPanel

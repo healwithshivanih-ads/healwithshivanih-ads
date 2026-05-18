@@ -225,6 +225,28 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
                 >
                   {r.display_name}
                   <UnreadBadge counts={unread?.[r.client_id]} />
+                  {r.upcoming_in_days !== undefined &&
+                    r.plan_recheck_overdue_days === undefined &&
+                    !((r.days_since_last_session ?? 0) >= 12) && (
+                      <span
+                        style={{
+                          marginLeft: 8,
+                          fontSize: 9,
+                          fontWeight: 700,
+                          letterSpacing: 0.4,
+                          textTransform: "uppercase",
+                          padding: "2px 6px",
+                          background: "rgba(245, 158, 11, 0.15)",
+                          color: "#8a5a08",
+                          border: "1px solid rgba(245, 158, 11, 0.45)",
+                          borderRadius: "var(--fm-radius-pill)",
+                        }}
+                      >
+                        {r.upcoming_in_days === 0
+                          ? "due today"
+                          : `in ${r.upcoming_in_days}d`}
+                      </span>
+                    )}
                 </div>
                 <div
                   style={{

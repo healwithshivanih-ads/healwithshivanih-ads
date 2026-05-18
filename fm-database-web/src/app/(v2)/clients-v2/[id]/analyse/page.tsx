@@ -26,6 +26,8 @@ import {
   type SessionType,
 } from "@/lib/fmdb/session-utils";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
+import { computeNextSessionDue, humanDueLabel } from "@/lib/fmdb/next-session";
+import { loadAllPlans } from "@/lib/fmdb/loader";
 import {
   FmAppShell,
   FmSessionTypePicker,
@@ -123,12 +125,40 @@ export default async function AnalysePage({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions, journey] = await Promise.all([
+  const [client, sessions, journey, allPlans] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadClientJourney(id, todayStr),
+    loadAllPlans(),
   ]);
   if (!client) notFound();
+
+  // Active plan for this client — needed for next-session-due derivation
+  // (uses plan_period_recheck_date if approaching).
+  const ACTIVE_BUCKETS_NEXT = new Set([
+    "draft",
+    "ready_to_publish",
+    "published",
+  ]);
+  const activePlanForNext =
+    (allPlans as unknown as Array<Record<string, unknown>>).find(
+      (p) =>
+        p.client_id === id &&
+        ACTIVE_BUCKETS_NEXT.has(
+          (p._bucket as string | undefined) ??
+            (p.status as string | undefined) ??
+            "",
+        ),
+    ) ?? null;
+
+  // Compute next session due — used by the banner above the picker AND
+  // by the dashboard's "schedule reminders" widget (separately).
+  const nextSessionDue = computeNextSessionDue({
+    client: client as Record<string, unknown>,
+    sessions: sessions as Array<Record<string, unknown>>,
+    activePlan: activePlanForNext,
+    todayIso: todayStr,
+  });
 
   // Translate journey state → per-session-card completion. Discovery is
   // considered done when the journey says so (or transitively when intake
@@ -348,6 +378,72 @@ export default async function AnalysePage({
             <EmptyState clientId={id} />
           ) : (
             <>
+              {/* 📅 Next session due — separate from journey.nextStep
+                  (which says "what to do today"). This says "when is the
+                  client's next consultation booked / due, and have we
+                  sent them the scheduling link". A 2-action banner:
+                  navigate to communicate (which has the booking-link
+                  panel) OR mark next contact date manually. */}
+              {nextSessionDue && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    padding: "10px 14px",
+                    marginBottom: 10,
+                    background: nextSessionDue.overdue
+                      ? "linear-gradient(135deg, rgba(220, 38, 38, 0.10), rgba(220, 38, 38, 0.03))"
+                      : nextSessionDue.daysUntil <= 3
+                        ? "linear-gradient(135deg, rgba(245, 158, 11, 0.10), rgba(245, 158, 11, 0.03))"
+                        : "var(--fm-bg-cool)",
+                    border: nextSessionDue.overdue
+                      ? "1px solid rgba(220, 38, 38, 0.40)"
+                      : nextSessionDue.daysUntil <= 3
+                        ? "1px solid rgba(245, 158, 11, 0.45)"
+                        : "1px solid var(--fm-border-light)",
+                    borderRadius: "var(--fm-radius-sm)",
+                    fontSize: 13,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 9.5,
+                      fontWeight: 800,
+                      letterSpacing: 0.8,
+                      textTransform: "uppercase",
+                      color: nextSessionDue.overdue ? "#9c1c1c" : "#8a5a08",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    📅 Next session
+                  </span>
+                  <span style={{ flex: 1, color: "#1f1f1f" }}>
+                    <strong>
+                      {formatLongDate(nextSessionDue.iso)}
+                    </strong>
+                    <span style={{ opacity: 0.75, marginLeft: 8 }}>
+                      ({humanDueLabel(nextSessionDue)} · {nextSessionDue.reason})
+                    </span>
+                  </span>
+                  <Link
+                    href={`/clients-v2/${id}/communicate#booking`}
+                    style={{
+                      padding: "6px 12px",
+                      background: "var(--fm-primary)",
+                      color: "#fff",
+                      borderRadius: "var(--fm-radius-sm)",
+                      textDecoration: "none",
+                      fontSize: 12,
+                      fontWeight: 600,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    📨 Send scheduling link
+                  </Link>
+                </div>
+              )}
+
               {/* 🧭 Next-step recommendation. Single sentence pulled from
                   the client journey — kills the "I'm staring at 5 generic
                   buttons, what do I click" hunt the coach flagged. */}

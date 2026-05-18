@@ -48,14 +48,33 @@ const QUICK_LABS = [
   "DUTCH cortisol",
 ];
 
+/** Read-only snapshot of the client's last-known measurements, surfaced
+ *  above the input fields so the coach can compare and decide whether
+ *  values reported on this call (e.g. "I'm 1 kg down") look plausible
+ *  before typing them in. Date strings are YYYY-MM-DD. */
+export interface PreviousMeasurementSnapshot {
+  date?: string;             // when the previous reading was logged
+  weight_kg?: number;
+  waist_cm?: number;
+  hip_cm?: number;
+  bp_systolic?: number;
+  bp_diastolic?: number;
+  hr_bpm?: number;
+}
+
 export function CheckInForm({
   clientId,
   displayName,
   activePlanSlug,
+  previousMeasurements,
 }: {
   clientId: string;
   displayName: string;
   activePlanSlug?: string;
+  /** Last-known measurements for this client. Surfaced as read-only
+   *  context above the input fields — coach types the new values in
+   *  manually, never auto-applied. */
+  previousMeasurements?: PreviousMeasurementSnapshot | null;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -251,6 +270,76 @@ export function CheckInForm({
           title="Quick measurements"
           description="Whatever you took this call. Leave blank if not measured."
         >
+          {previousMeasurements && (
+            <div
+              style={{
+                marginBottom: 12,
+                padding: "8px 10px",
+                background: "var(--fm-bg-cool)",
+                border: "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-sm)",
+                fontSize: 11,
+                color: "var(--fm-text-secondary)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 10,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  fontWeight: 700,
+                  color: "var(--fm-text-tertiary)",
+                  marginBottom: 4,
+                }}
+              >
+                Previous reading
+                {previousMeasurements.date
+                  ? ` · ${previousMeasurements.date}`
+                  : ""}
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 14px" }}>
+                {previousMeasurements.weight_kg != null && (
+                  <span>
+                    Weight <strong>{previousMeasurements.weight_kg} kg</strong>
+                  </span>
+                )}
+                {previousMeasurements.waist_cm != null && (
+                  <span>
+                    Waist <strong>{previousMeasurements.waist_cm} cm</strong>
+                  </span>
+                )}
+                {previousMeasurements.hip_cm != null && (
+                  <span>
+                    Hip <strong>{previousMeasurements.hip_cm} cm</strong>
+                  </span>
+                )}
+                {previousMeasurements.bp_systolic != null &&
+                  previousMeasurements.bp_diastolic != null && (
+                    <span>
+                      BP{" "}
+                      <strong>
+                        {previousMeasurements.bp_systolic}/
+                        {previousMeasurements.bp_diastolic} mmHg
+                      </strong>
+                    </span>
+                  )}
+                {previousMeasurements.hr_bpm != null && (
+                  <span>
+                    HR <strong>{previousMeasurements.hr_bpm} bpm</strong>
+                  </span>
+                )}
+                {previousMeasurements.weight_kg == null &&
+                  previousMeasurements.waist_cm == null &&
+                  previousMeasurements.bp_systolic == null &&
+                  previousMeasurements.hr_bpm == null && (
+                    <span style={{ fontStyle: "italic" }}>
+                      No previous measurements on file — this will be the first
+                      reading.
+                    </span>
+                  )}
+              </div>
+            </div>
+          )}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
             <FmField label="Weight" hint="kg">
               {({ id }) => (
