@@ -1,0 +1,39 @@
+slug: hypochlorhydria-in-40pct-of-acne-patients
+statement: As many as 40% of acne patients have hypochlorhydria (low stomach acid),
+  allowing bacterial migration from colon toward distal small intestine and SIBO —
+  supporting the "gut-brain-skin unifying theory" of acne pathogenesis and the role
+  of probiotics and HCl supplementation in treatment.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the gut-brain-skin theory with the 40% hypochlorhydria figure.
+  Mechanism — emotional and dietary stress alter intestinal microflora, increase intestinal
+  permeability, and contribute to systemic inflammation that drives acne.
+coaching_translation: Almost half of people with acne have low stomach acid — which
+  lets gut bacteria overgrow and drives systemic inflammation that ends up in the
+  skin. Probiotics and (if symptomatic) HCl supplementation are part of acne treatment,
+  not just digestion.
+caveats:
+- HCl supplementation needs careful titration; do not use with PPIs, H2 blockers,
+  or active ulcers.
+- Probiotics are safe across most contexts; use multistrain 5-10 billion CFU daily.
+- Address food sensitivities and stress in parallel.
+linked_to_topics:
+- acne-vulgaris
+- hypochlorhydria
+- sibo
+linked_to_mechanisms:
+- gut-brain-skin-axis
+- gut-dysbiosis
+- leaky-gut
+linked_to_supplements:
+- betaine-hcl
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Other Considerations (pp 5-6)
+  quote: As many as 40% of those with acne have hypochlorhydria; inadequate stomach
+    acid can allow migration of bacteria from colon toward distal small intestine.
+    This "gut-brain-skin unifying theory" has recently been validated.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,47 @@
+slug: azelaic-acid-topical
+display_name: Azelaic Acid 20% — Topical
+aliases:
+- azelaic-acid
+- azelaic-acid-cream
+- 20-percent-azelaic
+- nonanedioic-acid
+category: other
+forms_available:
+- liquid
+timing_options:
+- morning
+- evening
+take_with_food: optional
+linked_to_topics:
+- acne-vulgaris
+- rosacea
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_claims:
+- azelaic-acid-as-effective-as-benzoyl-peroxide-tretinoin
+notes_for_coach: Natural 9-carbon dicarboxylic acid with antibacterial action against
+  P. acnes plus mild keratolytic and anti-inflammatory effects. 20% cream BID for
+  4 weeks minimum; full course 6 months. Pizzorno cites comparable efficacy to 5%
+  benzoyl peroxide, 4% hydroquinone, 0.05% tretinoin, 2% erythromycin, 0.5-1 g/day
+  oral tetracycline. Less effective than oral isotretinoin for conglobate acne. Better
+  tolerated than tretinoin or BPO — fewer allergic reactions, no residual hypopigmentation.
+notes_for_client: A natural acid (from wheat, rye, barley) that fights acne bacteria
+  as effectively as the common prescription treatments — with fewer side effects.
+  Apply twice daily; full results in 4-6 months.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+evidence_tier: strong
+typical_dose_range: {}
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Azelaic Acid (pp 5)
+  quote: Twenty percent azelaic acid cream is as effective as 5% benzoyl peroxide,
+    4% hydroquinone cream, 0.05% tretinoin, 2% erythromycin, and 0.5 to 1 g/day oral
+    tetracycline at ameliorating comedonal, papulopustular, and nodulocystic acne.
+    Few side effects; no overt systemic toxicity; better clinical choice.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

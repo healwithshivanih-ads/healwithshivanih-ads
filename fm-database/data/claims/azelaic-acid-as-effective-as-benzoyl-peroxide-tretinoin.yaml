@@ -1,0 +1,35 @@
+slug: azelaic-acid-as-effective-as-benzoyl-peroxide-tretinoin
+statement: Topical 20% azelaic acid cream BID is comparable to 5% benzoyl peroxide,
+  0.05% tretinoin, 2% erythromycin, and oral tetracycline 0.5-1 g/day for comedonal,
+  papulopustular, and nodulocystic acne — but with fewer side effects, no allergic
+  sensitisation, and no residual hypopigmentation. Less effective than isotretinoin
+  for conglobate acne.
+evidence_tier: strong
+rationale: Multiple comparative RCTs (Cunliffe, Holland, Mayer) confirm azelaic acid's
+  parity with established acne actives. Mechanism multifactorial — antimicrobial against
+  P. acnes, anti-inflammatory, mild keratolytic, normalises follicular hyperkeratosis.
+coaching_translation: Azelaic acid 20% cream works as well as the prescription standards
+  (benzoyl peroxide, tretinoin, oral tetracycline) but with far fewer side effects.
+  Slow to work — 4 weeks minimum, full course 6 months.
+caveats:
+- Apply BID consistently for 6 months for maximum benefit.
+- Mild stinging in first 2 weeks; subsides.
+- Pair with sunscreen (skin renewal sensitises to UV).
+linked_to_topics:
+- acne-vulgaris
+- rosacea
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_supplements:
+- azelaic-acid-topical
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Azelaic Acid (pp 5)
+  quote: Twenty percent azelaic acid cream is as effective as 5% benzoyl peroxide,
+    4% hydroquinone cream, 0.05% tretinoin, 2% erythromycin, and 0.5 to 1 g/day oral
+    tetracycline.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

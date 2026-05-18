@@ -40,6 +40,7 @@ linked_to_topics:
 - emotional-healing-in-chronic-disease
 - hpa-axis-cortisol-regulation
 - sleep-quality
+- anxiety
 linked_to_claims:
 - ashwagandha-cortisol-hair-loss
 - high-cortisol-inhibits-t4-to-t3-conversion
@@ -50,10 +51,11 @@ linked_to_claims:
 - ashwagandha-reduces-cortisol-fatigue
 - ashwagandha-reduces-morning-cortisol
 - ashwagandha-improves-sleep-onset
-notes_for_coach: 'Look for standardized extracts (withanolide content). Studies cited show >60% reduction in morning cortisol
-  and improved overall sleep performance. Somnifera means ''sleep inducer''. Source: Coach Shivani clinical observations.'
-notes_for_client: Ashwagandha is an adaptogenic herb that may help your body manage stress hormones and support deeper, more
-  restful sleep.
+notes_for_coach: 'Look for standardized extracts (withanolide content). Studies cited
+  show >60% reduction in morning cortisol and improved overall sleep performance.
+  Somnifera means ''sleep inducer''. Source: Coach Shivani clinical observations.'
+notes_for_client: Ashwagandha is an adaptogenic herb that may help your body manage
+  stress hormones and support deeper, more restful sleep.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -68,24 +70,27 @@ sources:
   quote: 'Ashwagandha: Supports hypothyroidism, lowers stress. Caution: Avoid in hyperthyroidism.'
 - id: vitaone-thyroid-toolkit
   location: Ashwagandha (Withania somnifera)
-  quote: Eight weeks of treatment with ashwagandha 600 mg/day significantly improved serum TSH, T3, and T4 levels when compared
-    to placebo.
+  quote: Eight weeks of treatment with ashwagandha 600 mg/day significantly improved
+    serum TSH, T3, and T4 levels when compared to placebo.
 - id: vitaone-cardiometabolic-toolkit
   location: Building a Better Smoothie — Base Liquids
   quote: Ashwaganda root, powdered – 1 T
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Adaptogens (Ashwagandha, Rhodiola): Regulate HPA axis response. Fatigue, burnout, adrenal imbalance.'
+  quote: 'Adaptogens (Ashwagandha, Rhodiola): Regulate HPA axis response. Fatigue,
+    burnout, adrenal imbalance.'
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Adaptogens (Ashwagandha, Rhodiola) — Regulate HPA axis response. Clinical use: Fatigue, burnout, adrenal imbalance.'
+  quote: 'Adaptogens (Ashwagandha, Rhodiola) — Regulate HPA axis response. Clinical
+    use: Fatigue, burnout, adrenal imbalance.'
 - id: coach-shivani
   location: Coach Observation — Plant-Derived Adaptogens and Herbs
-  quote: Clinical studies show that standardized extracts can reduce morning cortisol by over 60% and improve overall sleep
-    performance.
+  quote: Clinical studies show that standardized extracts can reduce morning cortisol
+    by over 60% and improve overall sleep performance.
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: Ashwagandha (KSM-66) - Stress resilience, adrenal support - 300–600 mg/day - Morning
+  quote: Ashwagandha (KSM-66) - Stress resilience, adrenal support - 300–600 mg/day
+    - Morning
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Reduce Reverse T3
   quote: Adaptogens (ashwagandha, rhodiola), magnesium Glycinate, good sleep hygiene
@@ -94,16 +99,16 @@ sources:
   quote: Adaptogens (Ashwagandha, Rhodiola) → Support HPA axis and ovulation.
 - id: vitaone-adrenal-cheatsheet
   location: Clinical Interventions — Integrative Framework (p.12)
-  quote: 'Neuroendocrine Support: Rebalance HPA axis. Ashwagandha, Phosphatidylserine, Rhodiola, Liposomal Vitamin C, Active
-    B5.'
+  quote: 'Neuroendocrine Support: Rebalance HPA axis. Ashwagandha, Phosphatidylserine,
+    Rhodiola, Liposomal Vitamin C, Active B5.'
 version: 9
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution
-pregnancy_safety_note: 'Insufficient safety data; uterine stimulant; avoid throughout pregnancy. Lactation: limited data,
-  prefer to avoid.'
+pregnancy_safety_note: 'Insufficient safety data; uterine stimulant; avoid throughout
+  pregnancy. Lactation: limited data, prefer to avoid.'
 aliases:
 - ashwagandha-root
 - ashwagandha-ksm66

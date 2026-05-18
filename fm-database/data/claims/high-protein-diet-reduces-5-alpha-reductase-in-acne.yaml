@@ -1,0 +1,35 @@
+slug: high-protein-diet-reduces-5-alpha-reductase-in-acne
+statement: A higher-protein diet (45% protein, 35% carbohydrate, 20% fat) decreases
+  5-alpha-reductase activity and increases hepatic estradiol degradation — useful
+  in acne via reduced DHT amplification in skin. High-carbohydrate diets (10/70/20)
+  have the opposite effect.
+evidence_tier: plausible_emerging
+rationale: Pizzorno cites the protein-to-carbohydrate ratio effect on hepatic CYP450
+  enzymes and 5-alpha-reductase. Mechanism — high insulin from refined carbs upregulates
+  IGF-1 which drives androgen biosynthesis; protein has the opposite effect.
+coaching_translation: For hormonal acne, shifting toward higher protein and lower
+  refined-carb intake quiets the hormone amplification at skin level. Aim for protein
+  around 45% of calories, carbs ~35%, fat ~20%.
+caveats:
+- 45% protein is high — for most clients, focus on eliminating refined carbs and milk
+  first.
+- Milk specifically contains estrogens, progesterone, androgens, and IGF-1 — acne
+  driver.
+- Combine with low glycemic load.
+linked_to_topics:
+- acne-vulgaris
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
+- cutaneous-insulin-insensitivity
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Diet/incidence ratio (pp 3)
+  quote: Recommend high-protein diet (45% protein, 35% CHO, 20% fat) to decrease 5-alpha-reductase
+    activity and increase cytochrome p450 degradation of estradiol. High CHO diet
+    (10% protein, 70% CHO, 20% fat) has opposite effect.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

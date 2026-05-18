@@ -1,0 +1,60 @@
+slug: anxiety-component-of-mood-and-sleep-disorders-natural-stack
+statement: Anxiety as a transdiagnostic symptom in depression, insomnia, perimenopause,
+  and chronic stress responds to a natural-medicine stack — kava (acute anxiolytic),
+  passiflora and valerian (mild sedatives via GABA), L-theanine (alpha-wave promoting),
+  ashwagandha (adaptogen, HPA-axis), 5-HTP (serotonergic), magnesium (NMDA-modulating,
+  calming), and breathwork plus CBT — combined with addressing root drivers (HPA dysregulation,
+  low progesterone, gut dysbiosis, blood sugar instability, sympathetic dominance).
+evidence_tier: plausible_emerging
+rationale: Synthesises Pizzorno's Affective Disorders and Insomnia chapters where
+  anxiety appears as a comorbid symptom rather than a standalone diagnostic chapter.
+  Each component has its own evidence base (cited in linked supplements/claims). The
+  integrated stack reflects FM coaching practice and the layered approach Pizzorno
+  frames in both chapters.
+coaching_translation: Anxiety rarely shows up alone — it usually rides on poor sleep,
+  low mood, hormonal shifts, or HPA burnout. The natural-medicine playbook is layered
+  — kava or passionflower for acute help, L-theanine and magnesium for daily calm,
+  ashwagandha to reset the stress response, 5-HTP for serotonin support, plus breathwork
+  and CBT. Pick 2-3 levers matched to the root driver, not a shotgun stack.
+caveats:
+- Kava — short-term only, with liver-enzyme monitoring; banned in some jurisdictions.
+- 5-HTP / passiflora / valerian — do not combine with SSRIs, SNRIs, MAOIs, or sedatives
+  without clinical supervision.
+- Refer panic disorder, severe GAD, suicidal ideation, or trauma to psychiatry / trauma
+  therapy.
+- Coach role — habit / breathwork / supplement education; clinician role — diagnosis
+  and medication.
+linked_to_topics:
+- anxiety
+- major-depressive-disorder
+- insomnia
+- perimenopause-and-menopause
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- gaba-receptor-modulation
+- serotonin-melatonin-sleep-axis
+- sympathetic-dominance
+linked_to_supplements:
+- kava-kava
+- passiflora-incarnata
+- l-theanine
+- ashwagandha
+- 5-htp
+- gaba
+- magnesium-glycinate
+out_of_scope_notes: 'Coach scope: lifestyle, supplements, breathwork, basic CBT skills.
+  Out of scope: panic disorder diagnosis, prescription medication, trauma therapy.'
+sources:
+- id: pizzorno-affective-disorders
+  location: Affective Disorders — Kava kava + Ginkgo for anxiety component (pp 9)
+  quote: Kava kava and Ginkgo listed as supplements for the anxiety component of affective
+    disorders.
+- id: pizzorno-sleep-hpa
+  location: Insomnia — Botanicals with sedative properties (pp 572)
+  quote: Valeriana officinalis, Passiflora incarnata, Humulus lupulus, Scutellaria
+    lateriflora, Matricaria chamomilla listed as botanicals with sedative properties.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,34 @@
+slug: tea-tree-oil-effective-against-p-acnes
+statement: Topical tea tree oil (Melaleuca alternifolia) at 5-15% concentration is
+  effective against 27 of 32 strains of Propionibacterium acnes — comparable efficacy
+  to 5% benzoyl peroxide with significantly less skin irritation. Penetrates well;
+  rare contact dermatitis.
+evidence_tier: strong
+rationale: Bassett 1990 trial and follow-up studies confirm comparable efficacy to
+  BPO with better tolerability. Mechanism via membrane disruption of P. acnes by terpinen-4-ol
+  and related terpenes.
+coaching_translation: Tea tree oil at 5-15% works as well as benzoyl peroxide for
+  mild-to-moderate acne, with much less burning and drying. Always topical, never
+  internal.
+caveats:
+- TOPICAL ONLY — oral tea tree oil is toxic.
+- Patch test before regular use.
+- Strength matters — under 5% is too dilute; over 15% may irritate.
+linked_to_topics:
+- acne-vulgaris
+linked_to_mechanisms:
+- chronic-inflammation
+- gut-brain-skin-axis
+linked_to_supplements:
+- tea-tree-oil-topical
+out_of_scope_notes: Topical use only — never swallow.
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Tea Tree Oil (pp 4-5)
+  quote: Tea tree oil effective against wide range of organisms (including 27 of 32
+    strains of P. acnes); good penetration without skin irritation. Prefer strong
+    solutions (up to 15%) for best results.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

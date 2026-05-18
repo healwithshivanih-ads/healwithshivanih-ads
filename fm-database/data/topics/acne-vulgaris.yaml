@@ -1,0 +1,60 @@
+slug: acne-vulgaris
+display_name: Acne Vulgaris and Acne Conglobata
+aliases:
+- acne
+- acne-conglobata
+- common-acne
+- adolescent-acne
+- adult-acne
+- hormonal-acne
+summary: The most common skin disorder, characterised by comedones (open and closed),
+  papules, pustules, nodules, and cystic lesions on face, back, chest, and shoulders.
+  Genetic with autosomal-dominant pattern — both parents affected gives 75% offspring
+  risk. Driven by androgenic stimulation of pilosebaceous glands, hyperkeratinisation,
+  sebum overproduction, and Propionibacterium acnes overgrowth. Pizzorno's framework
+  — "skin diabetes" (impaired cutaneous glucose tolerance), gut-brain-skin axis (40%
+  have hypochlorhydria), and 5-alpha-reductase amplification of DHT in skin tissue.
+common_symptoms:
+- skin-rash
+- comedones
+- pustules
+- skin-inflammation
+- cysts-skin
+red_flags:
+- isotretinoin-associated depression or suicidal ideation
+- scarring nodulocystic acne unresponsive to standard care
+- new severe acne in adult women (rule out PCOS / androgen excess)
+related_topics:
+- polycystic-ovary-syndrome
+- chronic-candidiasis
+- premenstrual-syndrome
+- gut-brain-axis-dysfunction
+key_mechanisms:
+- 5-alpha-reductase-dht-conversion
+- chronic-inflammation
+- gut-brain-skin-axis
+- cutaneous-insulin-insensitivity
+coaching_scope_notes: Coaching role — dietary elimination (refined sugars, milk/dairy,
+  trans fats, iodine), zinc / vitamin A / E / chromium / B6 repletion, gut-skin axis
+  support (probiotics, HCl if hypochlorhydric), topical tea tree oil / azelaic acid
+  / niacinamide. Refer severe nodulocystic and any patient on isotretinoin to dermatology.
+clinician_scope_notes: Topical retinoids, benzoyl peroxide, antibiotics first-line
+  conventional. Isotretinoin only for severe/recalcitrant nodular acne — registry-mandated,
+  depression and teratogenicity risks. Hormonal acne — workup for PCOS, idiopathic
+  adrenal androgen excess, 21-hydroxylase deficiency.
+notes_for_coach: Pizzorno key insights — high-protein/lower-carb (45/35/20) decreases
+  5-alpha-reductase activity; milk contains androgens + IGF-1 driving acne; 40% of
+  acne patients have hypochlorhydria (gut-brain-skin theory); zinc takes 12 weeks;
+  vitamin A 150,000 IU effective at 3 months but contraception mandatory.
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — General Considerations (pp 1-3)
+  quote: Acne vulgaris onset from increased size of pilosebaceous glands and sebum
+    secretion by androgenic stimulation. Severity and progression arise from interactions
+    of hormones, keratinization, sebum, and bacteria. Acne may be called "skin diabetes"
+    — impaired cutaneous glucose tolerance.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

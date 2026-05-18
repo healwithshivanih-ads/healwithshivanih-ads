@@ -1,0 +1,47 @@
+slug: tea-tree-oil-topical
+display_name: Tea Tree Oil (Melaleuca alternifolia) — Topical
+aliases:
+- tea-tree-oil
+- melaleuca
+- melaleuca-alternifolia
+- tto
+category: herb
+forms_available:
+- liquid
+timing_options:
+- morning
+- evening
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- acne-vulgaris
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_claims:
+- tea-tree-oil-effective-against-p-acnes
+notes_for_coach: TOPICAL USE ONLY — internal use is toxic. Standardised to 30-40%
+  terpinen-4-ol. Effective against 27 of 32 P. acnes strains. Pizzorno recommends
+  5-15% solutions for best results. Apply BID to affected areas. Occasional contact
+  dermatitis — patch test first. Comparable efficacy to 5% benzoyl peroxide with less
+  skin irritation. Do not use near eyes, mouth, or mucous membranes.
+notes_for_client: A natural antiseptic oil from an Australian tree. Apply diluted
+  (5-15% in carrier oil or as a commercial gel) twice daily to acne. NEVER swallow
+  it. Patch test first to check for skin sensitivity.
+contraindications:
+  conditions:
+  - tea-tree-oil-allergy
+  medications: []
+  life_stages: []
+evidence_tier: strong
+typical_dose_range: {}
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Tea Tree Oil (pp 4-5)
+  quote: Tea tree oil — antiseptic properties; ideal skin disinfectant. Effective
+    against wide range of organisms (including 27 of 32 strains of P. acnes); good
+    penetration without skin irritation. Prefer strong solutions (up to 15% tea tree
+    oil) for best results.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

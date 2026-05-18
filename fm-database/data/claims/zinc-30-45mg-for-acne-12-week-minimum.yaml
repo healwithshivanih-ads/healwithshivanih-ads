@@ -1,0 +1,36 @@
+slug: zinc-30-45mg-for-acne-12-week-minimum
+statement: Zinc 30-45 mg/day (picolinate, acetate, or monomethionine) for at least
+  12 weeks improves acne — essential for retinol-binding protein, wound healing, immune
+  function, and inhibiting 5-alpha reduction of testosterone. Adolescent boys aged
+  13-14 have the lowest serum zinc of any age group.
+evidence_tier: strong
+rationale: Pizzorno cites multiple comparative trials of zinc gluconate vs tetracycline
+  showing comparable efficacy at 12+ weeks. Mechanism — zinc is the limiting cofactor
+  for retinol-binding protein; high zinc directly inhibits 5-alpha-reductase; low
+  zinc amplifies DHT in skin.
+coaching_translation: Zinc is one of the most reliable acne nutrients — 30-45 mg a
+  day for 3 months minimum. Use picolinate, acetate, or monomethionine forms (sulfate
+  is poorly absorbed). Effect builds slowly.
+caveats:
+- Take with food to avoid nausea.
+- Maintain 10:1 Zn:Cu ratio to prevent copper deficiency.
+- 12 weeks minimum before assessing response.
+linked_to_topics:
+- acne-vulgaris
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Zinc (pp 4)
+  quote: Requires 12 weeks to show good results. Prefer Zn picolinate, acetate, or
+    monomethionine. Low Zn levels increase 5-alpha reduction of T, and high Zn inhibits
+    this reaction. Serum Zn is lower in 13- and 14-year-old boys than in any other
+    age group.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

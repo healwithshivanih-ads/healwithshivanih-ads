@@ -1,0 +1,32 @@
+slug: topical-niacinamide-superior-to-clindamycin-for-inflammatory-acne
+statement: Topical 4% nicotinamide gel inhibits lysosomal enzymes, vasoactive amines,
+  and P. acnes lipase activity — superior to 1% clindamycin gel for moderate inflammatory
+  acne, with no bacterial resistance development.
+evidence_tier: strong
+rationale: Shalita 1995 trial showing nicotinamide gel vs clindamycin equivalence/superiority
+  for inflammatory lesions. Mechanism — anti-inflammatory via cytokine modulation;
+  does not generate resistance unlike topical antibiotics.
+coaching_translation: For inflammatory acne, topical niacinamide 4% works as well
+  or better than the standard antibiotic gel (clindamycin) — and doesn't breed resistant
+  bacteria. Great option to reach for first.
+caveats:
+- Niacinamide not the same as niacin — niacinamide is non-flushing.
+- Build over 8-12 weeks.
+- Pair with retinoid or azelaic acid for keratolytic effect.
+linked_to_topics:
+- acne-vulgaris
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_supplements:
+- niacinamide
+out_of_scope_notes: ''
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Nicotinamide (pp 5)
+  quote: Topical nicotinamide inhibits release of lysosomal enzymes, vasoactive amines,
+    and activity of P. acnes lipase. It is well tolerated, does not induce bacterial
+    resistance, and is superior to 1% clindamycin gel for moderate inflammatory acne.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

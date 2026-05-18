@@ -1,0 +1,53 @@
+slug: gut-brain-skin-axis
+display_name: Gut-Brain-Skin Axis
+aliases:
+- gut-skin-connection
+- intestinal-permeability-skin
+- gut-brain-skin-theory
+- microbiome-skin-axis
+category: gut
+summary: Emotional and dietary stressors alter intestinal microflora, increase intestinal
+  permeability, and drive systemic inflammation that manifests in skin — including
+  acne, eczema, psoriasis, and rosacea. As many as 40% of acne patients have hypochlorhydria,
+  allowing bacterial migration from colon toward distal small intestine and SIBO.
+  Probiotics and oral microflora restoration modulate systemic inflammation, oxidative
+  stress, glycemic control, tissue lipid content, and mood — all of which feed acne
+  pathogenesis. Validated framework explaining the overlap among depression, anxiety,
+  and acne.
+upstream_drivers:
+- chronic-stress
+- hypochlorhydria
+- antibiotic-overuse
+- western-diet
+- gut-dysbiosis
+- leaky-gut
+downstream_effects:
+- chronic-inflammation
+- acne-vulgaris
+- atopic-dermatitis
+- rosacea
+- depression
+- oxidative-damage
+related_mechanisms:
+- leaky-gut
+- chronic-inflammation
+- gut-estrogen-axis
+linked_to_topics:
+- acne-vulgaris
+- chronic-candidiasis
+- atopic-dermatitis
+- gut-brain-axis-dysfunction
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Other Considerations (pp 5-6)
+  quote: As many as 40% of those with acne have hypochlorhydria; inadequate stomach
+    acid can allow migration of bacteria from colon toward distal small intestine,
+    and permits alteration of normal intestinal microflora. The ability of gut microflora
+    and oral probiotics to influence systemic inflammation, oxidative stress, glycemic
+    control, tissue lipid content, and even mood itself may have implications in acne.
+    This "gut-brain-skin unifying theory" has recently been validated.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

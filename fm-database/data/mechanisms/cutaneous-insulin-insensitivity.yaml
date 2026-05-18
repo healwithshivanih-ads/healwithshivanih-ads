@@ -1,0 +1,42 @@
+slug: cutaneous-insulin-insensitivity
+display_name: Cutaneous Insulin Insensitivity (Skin Diabetes)
+aliases:
+- skin-diabetes
+- cutaneous-glucose-intolerance
+- skin-insulin-resistance
+- igf-1-driven-acne
+category: metabolic
+summary: Impaired glucose tolerance and insulin insensitivity at the skin level promote
+  acne via IGF-1 amplification. Chronically elevated insulin and IGF-1 stimulate sebaceous
+  androgen biosynthesis enzymes and sebum production. High-glycemic-load diets perpetuate
+  the cycle; chromium and lower-carbohydrate (45% protein) diets reverse it. Mechanistically
+  links acne to metabolic syndrome and PCOS.
+upstream_drivers:
+- high-glycemic-load-diet
+- insulin-resistance
+- chronic-hyperinsulinemia
+- pcos-androgen-excess
+downstream_effects:
+- sebum-overproduction
+- hyperkeratinisation
+- acne-vulgaris
+- 5-alpha-reductase-amplification
+related_mechanisms:
+- insulin-resistance
+- 5-alpha-reductase-dht-conversion
+linked_to_topics:
+- acne-vulgaris
+- polycystic-ovary-syndrome
+- insulin-resistance
+evidence_tier: plausible_emerging
+sources:
+- id: pizzorno-acne
+  location: Acne Vulgaris — Sugar, insulin, and chromium (pp 3)
+  quote: Insulin efficacy in treating acne suggests cutaneous glucose intolerance
+    and/or insulin insensitivity. Impaired skin glucose tolerance suggests that acne
+    may be called "skin diabetes." A diet that encourages high insulin response chronically
+    could promote acne by elevating IGF-1.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
