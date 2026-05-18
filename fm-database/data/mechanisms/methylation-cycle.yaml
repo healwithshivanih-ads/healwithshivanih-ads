@@ -8,14 +8,14 @@ aliases:
 - one-carbon metabolism
 - methylation cycle
 - SAM-e cycle
-- homocysteine remethylation
 - methylation-impairment
 - MTHFR dysfunction
 - methylation defect
 - impaired one-carbon metabolism
 category: metabolic
-summary: The methylation cycle involves transfer of methyl groups critical for DNA repair, neurotransmitter synthesis, gene
-  expression, and detoxification. B12 and folate (as methylcobalamin and methyltetrahydrofolate) are rate-limiting cofactors.
+summary: The methylation cycle involves transfer of methyl groups critical for DNA
+  repair, neurotransmitter synthesis, gene expression, and detoxification. B12 and
+  folate (as methylcobalamin and methyltetrahydrofolate) are rate-limiting cofactors.
   MTHFR genetic variants reduce enzymatic efficiency, requiring active-form B vitamins.
 upstream_drivers:
 - dietary-folate
@@ -35,20 +35,21 @@ evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Vitamin B12'
-  quote: Those who have high homocysteine levels or genetic variants in methylation genes may respond better to 'active' forms
-    of vitamin B12 such as methylcobalamin.
+  quote: Those who have high homocysteine levels or genetic variants in methylation
+    genes may respond better to 'active' forms of vitamin B12 such as methylcobalamin.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained – methylation-support
-  quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient supports for
-    methylation.
+  quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine,
+    and TMG as nutrient supports for methylation.
 - id: vitaone-fm-nutrition-cheatsheets
   location: Key Mechanisms Explained — methylation-support
-  quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient supports for
-    methylation.
+  quote: The source describes folate, B12, choline, riboflavin, niacin, glycine, creatine,
+    and TMG as nutrient supports for methylation.
 - id: coconote-fm-biomarkers-cvs
   location: Homocysteine and Clotting
-  quote: this whole reaction is is covered by the mthfr gene and you can say methyl tetrahydrofolic enzyme and this enzyme
-    requires four factors vitamin b vitamin b9 and vitamin b12 so typically this is called methylation process
+  quote: this whole reaction is is covered by the mthfr gene and you can say methyl
+    tetrahydrofolic enzyme and this enzyme requires four factors vitamin b vitamin
+    b9 and vitamin b12 so typically this is called methylation process
 version: 1
 status: active
 updated_at: '2026-05-02'

@@ -5,11 +5,13 @@ forms_available:
 - capsule
 - tablet
 evidence_tier: plausible_emerging
-notes_for_coach: B6 supports the transsulfuration pathway, providing an alternative route for homocysteine clearance independent
-  of MTHFR. Mentioned as part of broader methylation-cycle support. High-dose B6 can cause peripheral neuropathy — clinician
+notes_for_coach: B6 supports the transsulfuration pathway, providing an alternative
+  route for homocysteine clearance independent of MTHFR. Mentioned as part of broader
+  methylation-cycle support. High-dose B6 can cause peripheral neuropathy — clinician
   guidance is warranted for doses above dietary levels.
-notes_for_client: Vitamin B6 is part of the methylation pathway team and helps your body process homocysteine through a different
-  route than folate and B12. It's often included in B-complex or methylation support formulas.
+notes_for_client: Vitamin B6 is part of the methylation pathway team and helps your
+  body process homocysteine through a different route than folate and B12. It's often
+  included in B-complex or methylation support formulas.
 timing_options:
 - with_breakfast
 - with_lunch
@@ -46,13 +48,14 @@ sources:
   quote: Vitamin B6, B12
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Vitamin B6 & Folate: Support serotonin, GABA synthesis. PMS, mood swings, chronic anxiety.'
+  quote: 'Vitamin B6 & Folate: Support serotonin, GABA synthesis. PMS, mood swings,
+    chronic anxiety.'
 - id: vitaone-health-coaching-cheatsheet
   location: Key Nutrients & Botanicals for Emotional Healing Support
-  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS, mood swings, chronic anxiety.'
+  quote: 'Vitamin B6 & Folate — Support serotonin, GABA synthesis. Clinical use: PMS,
+    mood swings, chronic anxiety.'
 version: 4
 status: active
 updated_at: '2026-05-13'
 updated_by: Shivani
-aliases:
-- vitamin b6 (pyridoxine)
+aliases: []

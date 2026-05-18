@@ -1,13 +1,13 @@
 slug: mthfr-polymorphisms
 display_name: MTHFR Polymorphisms
 aliases:
-- MTHFR variants
 - C677T
 - A1298C
 - MTHFR gene variants
-summary: The MTHFR gene encodes an enzyme central to folate metabolism and homocysteine regulation. Common variants C677T
-  and A1298C can reduce enzyme activity, impairing conversion of folate to its active form (5-MTHF) and affecting the methylation
-  cycle. Clinical impact depends on diet, folate, riboflavin, and B12 status.
+summary: The MTHFR gene encodes an enzyme central to folate metabolism and homocysteine
+  regulation. Common variants C677T and A1298C can reduce enzyme activity, impairing
+  conversion of folate to its active form (5-MTHF) and affecting the methylation cycle.
+  Clinical impact depends on diet, folate, riboflavin, and B12 status.
 common_symptoms:
 - elevated-homocysteine
 - functional-b12-deficiency-symptoms
@@ -27,12 +27,14 @@ key_mechanisms:
 - mthfr-enzyme-dysfunction
 - methyl-trap
 - homocysteine-remethylation
-coaching_scope_notes: Coaches can support dietary folate intake, riboflavin-rich foods, and general B-vitamin adequacy. Interpretation
-  of MTHFR genotype results, lab ordering, and supplement dosing decisions for high-dose methylfolate or B12 forms require
+coaching_scope_notes: Coaches can support dietary folate intake, riboflavin-rich foods,
+  and general B-vitamin adequacy. Interpretation of MTHFR genotype results, lab ordering,
+  and supplement dosing decisions for high-dose methylfolate or B12 forms require
   clinician oversight.
-clinician_scope_notes: Routine MTHFR genetic testing is controversial and often not recommended for cardiovascular, thrombophilia,
-  or pregnancy-loss workups per major guidelines. Functional markers (homocysteine, MMA) are preferred. High serum B12 warrants
-  investigation beyond MTHFR attribution.
+clinician_scope_notes: Routine MTHFR genetic testing is controversial and often not
+  recommended for cardiovascular, thrombophilia, or pregnancy-loss workups per major
+  guidelines. Functional markers (homocysteine, MMA) are preferred. High serum B12
+  warrants investigation beyond MTHFR attribution.
 evidence_tier: strong
 sources: []
 version: 1

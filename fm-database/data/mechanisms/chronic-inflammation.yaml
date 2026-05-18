@@ -6,7 +6,6 @@ aliases:
 - inflammatory-cytokine-transmission
 - inflammatory cytokine production
 - low-grade systemic inflammation
-- systemic inflammation
 - low-grade inflammation
 - inflammaging
 - inflammatory burden
@@ -17,8 +16,9 @@ aliases:
 - systemic inflammatory burden
 - inflammation
 category: immune
-summary: Persistent low-grade inflammation drives all six primary cardiometabolic risk patterns. It is reflected by elevated
-  hsCRP, ESR, ferritin, and IL-6. Sources include gut dysbiosis, gum disease, food sensitivities, heavy metal toxicity, and
+summary: Persistent low-grade inflammation drives all six primary cardiometabolic
+  risk patterns. It is reflected by elevated hsCRP, ESR, ferritin, and IL-6. Sources
+  include gut dysbiosis, gum disease, food sensitivities, heavy metal toxicity, and
   smoking.
 upstream_drivers:
 - visceral adiposity
@@ -117,26 +117,29 @@ sources:
   quote: Inflammatory cytokines → worsen IR & ovarian dysfunction.
 - id: vitaone-adrenal-cheatsheet
   location: The Neuroimmune Mechanism of Loneliness (p.17)
-  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation. Clinical Implication: Chronic inflammation,
-    autoimmune triggers.'
+  quote: 'Cytokine Storm (Low-Grade): ↑ IL-6, TNF-α, CRP → immune cell activation.
+    Clinical Implication: Chronic inflammation, autoimmune triggers.'
 - id: vitaone-blood-sugar-cheatsheet
   location: Insulin Resistance Cheatsheet — Root Cause Framework
   quote: Low-grade systemic inflammation, elevated hs-CRP, IL-6, TNF-α
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 2
-  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress, gut dysbiosis.
+  quote: Root cause = Metabolic dysfunction, chronic inflammation, oxidative stress,
+    gut dysbiosis.
 - id: vitaone-health-coaching-toolkit
   location: CVD Risk Analysis — Lab Results
-  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which represent a threat
-    to cardiovascular health.
+  quote: C-reactive protein is a marker associated with the production of inflammatory
+    cytokines, which represent a threat to cardiovascular health.
 - id: coconote-fm-biomarkers-cvs
   location: Immune and Toxic Burden
-  quote: if your immune system is active, immune system has a chronic inflammation in the body, then you can find out chronic
-    inflammation by just taking an HSE or ESR level.
+  quote: if your immune system is active, immune system has a chronic inflammation
+    in the body, then you can find out chronic inflammation by just taking an HSE
+    or ESR level.
 - id: coconote-fm-body-composition-bmi
   location: Case Discussion Section
-  quote: Her pain in her body, her inflammation, her signs of increased intestinal permeability, her uncertainty, her fear,
-    the injury, her poor diet, it's all interconnected and influencing the inflammation in her body.
+  quote: Her pain in her body, her inflammation, her signs of increased intestinal
+    permeability, her uncertainty, her fear, the injury, her poor diet, it's all interconnected
+    and influencing the inflammation in her body.
 evidence_tier: strong
 version: 8
 status: active

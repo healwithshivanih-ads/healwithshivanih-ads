@@ -27,10 +27,9 @@ red_flags: []
 related_topics:
 - exercise-prescription-fm
 - sarcopenia
-- osteoporosis
+- bone-health
 key_mechanisms: []
-coaching_scope_notes: 'Match starting tier to current ability — most sedentary clients
-  begin
+coaching_scope_notes: 'Match starting tier to current ability — most sedentary clients begin
 
   at chair-based isometric work. Emphasise form before load. Respect
 
@@ -50,8 +49,7 @@ evidence_tier: strong
 sources:
 - id: fm-exercise-prescription-matrix
   location: Strength/Weight Bearing row
-  quote: Proper form. Muscle recovery (48 hours). 2x per week, 10-20 minutes (isometric
-    not weight bearing).
+  quote: Proper form. Muscle recovery (48 hours). 2x per week, 10-20 minutes (isometric not weight bearing).
 version: 1
 status: active
 updated_at: '2026-05-17'

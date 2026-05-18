@@ -1,15 +1,15 @@
 slug: progesterone-deficiency
 display_name: Progesterone Deficiency & Mood
 aliases:
-- low progesterone
 - luteal phase insufficiency
 - corpus luteum insufficiency
 - happy hormone deficiency
 - hormonal mood imbalance
 category: endocrine
-summary: Progesterone, described as the 'happy hormone', is implicated in mood regulation. Deficiency—whether from genetic
-  predisposition, maternal oral contraceptive use, hormonal transitions at puberty, postnatal period, or menopause—is proposed
-  as a key contributor to depression in women.
+summary: Progesterone, described as the 'happy hormone', is implicated in mood regulation.
+  Deficiency—whether from genetic predisposition, maternal oral contraceptive use,
+  hormonal transitions at puberty, postnatal period, or menopause—is proposed as a
+  key contributor to depression in women.
 upstream_drivers:
 - hpa-axis-dysregulation
 - hypothyroidism
@@ -43,12 +43,13 @@ evidence_tier: fm_specific_thin
 sources:
 - id: coconote-fm-estrogen-dominance
   location: HPA Axis Dysfunction
-  quote: If your free T3 is on the lower side, TSH — if the TSH of a person falls down below 2 also, the value of progesterone
-    increases by 3 to 5 times. Very important in a case.
+  quote: If your free T3 is on the lower side, TSH — if the TSH of a person falls
+    down below 2 also, the value of progesterone increases by 3 to 5 times. Very important
+    in a case.
 - id: barbara-oneil-healing-mind
   location: Hormonal Depression Section
-  quote: the happy hormone is called progesterone. So if you're lacking happy hormone, you're not going to be happy. It's
-    one of the main causes of postnatal depression.
+  quote: the happy hormone is called progesterone. So if you're lacking happy hormone,
+    you're not going to be happy. It's one of the main causes of postnatal depression.
 version: 2
 status: active
 updated_at: '2026-05-05'

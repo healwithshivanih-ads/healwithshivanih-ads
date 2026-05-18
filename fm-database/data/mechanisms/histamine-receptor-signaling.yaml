@@ -31,7 +31,7 @@ downstream_effects:
 - tachycardia
 - migraine
 - brain-fog
-- vasodilation
+- vascular-smooth-muscle-relaxation
 - gastric-acid-secretion
 - neurotransmitter-modulation
 - immune-chemotaxis
@@ -48,8 +48,7 @@ sources:
   quote: H3 influences arousal, attention, appetite; H4 bridges immune–neural crosstalk.
 - id: cleveland-clinic
   location: Histamine Receptor Pharmacology
-  quote: H1 and H2 receptors mediate classical allergy and gastric acid responses
-    respectively.
+  quote: H1 and H2 receptors mediate classical allergy and gastric acid responses respectively.
 version: 2
 status: active
 updated_at: '2024-05-22'

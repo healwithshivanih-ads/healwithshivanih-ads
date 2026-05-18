@@ -10,7 +10,6 @@ summary: Vitamin B12 (as adenosylcobalamin) is required for the enzyme methylmal
 upstream_drivers:
 - b12-deficiency
 downstream_effects:
-- methylmalonyl-coa-pathway
 - axonal-neuropathy
 - fatigue
 - confusion

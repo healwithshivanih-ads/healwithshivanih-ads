@@ -31,13 +31,13 @@ related_mechanisms:
 - exercise-induced-neurogenesis
 linked_to_topics:
 - exercise-mitochondrial-biogenesis
-- mitochondrial-dysfunction
+- mitochondrial-health-nutrients
 evidence_tier: strong
 sources:
 - id: fmca-exercise-mitochondrial-health-class
   location: 'Page 4: Mitochondria biogenesis with exercise'
-  quote: All exercise increases mitochondrial biogenesis in a wide range of tissues,
-    including adipose tissue, liver, brain, and kidney.
+  quote: All exercise increases mitochondrial biogenesis in a wide range of tissues, including adipose tissue, liver, brain,
+    and kidney.
 version: 1
 status: active
 updated_at: '2026-05-17'

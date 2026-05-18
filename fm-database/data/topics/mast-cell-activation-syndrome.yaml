@@ -5,8 +5,7 @@ aliases:
 - mast cell activation disorder
 - hyper-reactive mast cells
 - hyper-reactive mast cell syndrome
-summary: 'MCAS is a systemic immune condition where a normal number of mast cells
-  are
+summary: 'MCAS is a systemic immune condition where a normal number of mast cells are
 
   hyper-reactive, inappropriately releasing 200+ mediators including histamine,
 
@@ -34,7 +33,6 @@ common_symptoms:
 red_flags:
 - anaphylaxis
 - severe orthostatic hypotension
-- throat swelling
 - multi-system episodic flares
 - episodic multi-system flares
 related_topics:
@@ -43,8 +41,7 @@ related_topics:
 key_mechanisms:
 - mast-cell-degranulation
 - histamine-receptor-signaling
-coaching_scope_notes: 'Coach focuses on trigger identification (foods, heat, stress,
-  friction),
+coaching_scope_notes: 'Coach focuses on trigger identification (foods, heat, stress, friction),
 
   total-load reduction, and natural mast cell stabilizer education (quercetin,
 
@@ -64,8 +61,7 @@ evidence_tier: strong
 sources:
 - id: kresser-institute
   location: MCAS Diagnostic Framework
-  quote: Most mediators are unstable at room temperature, requiring an unbroken cold
-    chain.
+  quote: Most mediators are unstable at room temperature, requiring an unbroken cold chain.
 - id: cleveland-clinic
   location: Mast Cell Disorders Overview
   quote: MCAS involves hyper-reactive but normal numbers of mast cells.

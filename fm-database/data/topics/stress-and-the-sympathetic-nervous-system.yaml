@@ -1,13 +1,14 @@
 slug: stress-and-the-sympathetic-nervous-system
 display_name: Stress & Sympathetic Nervous System Activation
 aliases:
-- chronic stress
 - sympathetic overdrive
 - fight-or-flight state
 - HPA dysregulation
-summary: Persistent activation of the sympathetic nervous system (fight-or-flight) in high-achieving or chronically stressed
-  individuals can impair relaxation, digestion, sleep, and social connection. Coaching approaches focus on identifying client-specific
-  entry points to parasympathetic recovery rather than prescribing standard mindfulness techniques.
+summary: Persistent activation of the sympathetic nervous system (fight-or-flight)
+  in high-achieving or chronically stressed individuals can impair relaxation, digestion,
+  sleep, and social connection. Coaching approaches focus on identifying client-specific
+  entry points to parasympathetic recovery rather than prescribing standard mindfulness
+  techniques.
 common_symptoms:
 - inability-to-relax
 - sleep-medication-dependence
@@ -24,16 +25,17 @@ related_topics:
 key_mechanisms:
 - sympathetic-dominance
 - parasympathetic-inhibition
-coaching_scope_notes: Coaches can explore client-specific stress reduction entry points (movement, mindful eating, social
-  connection). Refer to mental health professional when emotional processing needs exceed coaching scope.
-clinician_scope_notes: Sleep medication use and inability to downregulate SNS may warrant clinical evaluation for anxiety
-  disorders or HPA-axis dysfunction.
+coaching_scope_notes: Coaches can explore client-specific stress reduction entry points
+  (movement, mindful eating, social connection). Refer to mental health professional
+  when emotional processing needs exceed coaching scope.
+clinician_scope_notes: Sleep medication use and inability to downregulate SNS may
+  warrant clinical evaluation for anxiety disorders or HPA-axis dysfunction.
 evidence_tier: strong
 sources:
 - id: ask-expert-coaching-stress-kids
   location: Stress Client Topic Discussion
-  quote: I just kind of explain it to her what it does... it's important that we do the breathing... just to get out of her
-    sympathetic nervous system.
+  quote: I just kind of explain it to her what it does... it's important that we do
+    the breathing... just to get out of her sympathetic nervous system.
 version: 1
 status: active
 updated_at: '2026-05-05'

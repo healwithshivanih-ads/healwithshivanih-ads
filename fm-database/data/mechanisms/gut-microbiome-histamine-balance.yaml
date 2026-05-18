@@ -24,8 +24,7 @@ summary: 'The gut microbiome both produces and degrades histamine. Histamine-pro
 
   '
 upstream_drivers:
-- gut-dysbiosis
-- sibo
+- dysbiosis-gut-microbiome-imbalance
 - inappropriate-probiotic-selection
 - antibiotic-exposure
 - low-fiber-diet
@@ -42,8 +41,7 @@ evidence_tier: plausible_emerging
 sources:
 - id: iemt
   location: The Role of the Gut Microbiome
-  quote: Dysbiosis — an imbalance in gut microbial populations — can contribute directly
-    to histamine overload.
+  quote: Dysbiosis — an imbalance in gut microbial populations — can contribute directly to histamine overload.
 - id: notebooklm-mast-cell-histamine-synthesis
   location: Probiotic Selection is Critical
   quote: Avoid histamine-producing strains; prioritize histamine-degrading strains.

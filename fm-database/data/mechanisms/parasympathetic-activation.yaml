@@ -23,7 +23,6 @@ summary: Diaphragmatic breathing and mindfulness practices stimulate the vagus n
   the autonomic balance away from sympathetic 'fight-or-flight' dominance toward a rest-and-digest state. This reduces heart
   rate, blood pressure, cortisol release, and perceived stress.
 upstream_drivers:
-- parasympathetic-activation
 - mindfulness-practice
 - gratitude-practice
 - mindful-breathing

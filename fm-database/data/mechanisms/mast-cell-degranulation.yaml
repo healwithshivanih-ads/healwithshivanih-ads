@@ -3,7 +3,6 @@ display_name: Mast Cell Degranulation
 aliases:
 - mediator release
 - mast cell activation cascade
-- mast cell activation
 category: immune
 summary: 'Mast cell degranulation is the process by which preformed and newly
 
@@ -26,7 +25,7 @@ upstream_drivers:
 - environmental-trigger-exposure
 - chronic-infections
 - mold-mycotoxin-exposure
-- gut-dysbiosis
+- dysbiosis-gut-microbiome-imbalance
 - hormonal-fluctuations
 - environmental-mast-cell-triggers
 - medication-induced-degranulation

@@ -2,13 +2,14 @@ slug: glycation-protein-modification
 display_name: Glycation-Induced Protein Modification
 aliases:
 - protein glycation
-- advanced glycation end products
 - AGEs
 - glycosylated protein immune trigger
 category: metabolic
-summary: When blood sugar is persistently elevated, glucose binds to body proteins (e.g., hemoglobin → HbA1c), altering their
-  molecular structure. The immune system recognizes these altered glycated proteins as foreign, triggering an inflammatory
-  response. This is a key mechanism by which hyperglycemia drives chronic inflammation independent of other triggers.
+summary: When blood sugar is persistently elevated, glucose binds to body proteins
+  (e.g., hemoglobin → HbA1c), altering their molecular structure. The immune system
+  recognizes these altered glycated proteins as foreign, triggering an inflammatory
+  response. This is a key mechanism by which hyperglycemia drives chronic inflammation
+  independent of other triggers.
 upstream_drivers:
 - hyperglycemia
 - insulin-resistance
@@ -27,8 +28,9 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-approach-inflammation
   location: Triggers – HbA1c and Glycated Protein
-  quote: when somebody having an HP1C11, they actually change the molecular structure of a protein, right? So we can say a
-    glycolytic protein and the immune system react to that part of the issue.
+  quote: when somebody having an HP1C11, they actually change the molecular structure
+    of a protein, right? So we can say a glycolytic protein and the immune system
+    react to that part of the issue.
 version: 1
 status: active
 updated_at: '2026-05-05'

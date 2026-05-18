@@ -35,9 +35,9 @@ summary: 'Sedentary behavior — prolonged sitting and physical inactivity — i
 
   '
 common_symptoms:
-- fatigue
-- low-energy
-- stiffness
+- lethargy
+- chronic-fatigue
+- muscle-aches-joint-pain
 red_flags: []
 related_topics:
 - insulin-resistance
@@ -49,8 +49,7 @@ key_mechanisms:
 - reduced-mitochondrial-biogenesis
 - impaired-glucose-uptake
 - neat-thermogenesis
-coaching_scope_notes: 'Coach focuses on breaking sitting time with small, frequent
-  movement
+coaching_scope_notes: 'Coach focuses on breaking sitting time with small, frequent movement
 
   micro-doses (standing, walking breaks, squats, stretches every 30-60
 
@@ -61,8 +60,7 @@ coaching_scope_notes: 'Coach focuses on breaking sitting time with small, freque
   daily life rhythms rather than prescribing gym attendance.
 
   '
-clinician_scope_notes: 'Clinician assesses cardiometabolic risk markers (fasting insulin,
-  A1c,
+clinician_scope_notes: 'Clinician assesses cardiometabolic risk markers (fasting insulin, A1c,
 
   lipids, liver enzymes) in chronically sedentary clients and clears for
 
@@ -73,12 +71,10 @@ evidence_tier: strong
 sources:
 - id: fmca-exercise-mitochondrial-health-class
   location: 'Pages 1-2: Movement versus exercise'
-  quote: Sitting is the new smoking. It is a risk factor for Type 2 diabetes, insulin
-    resistance, and all cause mortality.
+  quote: Sitting is the new smoking. It is a risk factor for Type 2 diabetes, insulin resistance, and all cause mortality.
 - id: fmca-cardiometabolic-movement-saxena-class
   location: 'Pages 3-4: Identifying sedentary clients'
-  quote: When you are sedentary, it increases your risk twofold for developing heart
-    disease and Type 2 diabetes.
+  quote: When you are sedentary, it increases your risk twofold for developing heart disease and Type 2 diabetes.
 version: 2
 status: active
 updated_at: '2026-05-17'

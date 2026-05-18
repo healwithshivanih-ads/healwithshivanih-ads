@@ -3,14 +3,14 @@ display_name: Homocysteine Metabolism
 aliases:
 - homocysteine clearance
 - one-carbon metabolism
-- methylation cycle
 - impaired-homocysteine-remethylation
 - homocysteine accumulation
 - homocysteine-methionine conversion failure
 category: metabolic
-summary: Homocysteine is an amino acid intermediate in the methionine cycle. Elevated homocysteine is associated with increased
-  risk of cardiovascular disease, dementia, and depression. B12 and folate are essential cofactors for its re-methylation;
-  MTHFR variants impair this pathway, increasing risk.
+summary: Homocysteine is an amino acid intermediate in the methionine cycle. Elevated
+  homocysteine is associated with increased risk of cardiovascular disease, dementia,
+  and depression. B12 and folate are essential cofactors for its re-methylation; MTHFR
+  variants impair this pathway, increasing risk.
 upstream_drivers:
 - vitamin-b12-status
 - folate-status
@@ -29,13 +29,13 @@ evidence_tier: strong
 sources:
 - id: vitaone-nutrition-toolkit
   location: 'Food Sources: Folate'
-  quote: Folate is essential for the metabolism of homocysteine, an amino acid that in high amounts may contribute to heart
-    disease, dementia, and depression.
+  quote: Folate is essential for the metabolism of homocysteine, an amino acid that
+    in high amounts may contribute to heart disease, dementia, and depression.
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Cofactors / Supplementation section
-  quote: For the conversion of homocysteine to methionine, we need methionine synthase enzyme to be working. But with this
-    enzyme, we need two important cofactors of B vitamin. That is one is methylcobalamin B12 and next is vitamin B9 that is
-    methylfolate.
+  quote: For the conversion of homocysteine to methionine, we need methionine synthase
+    enzyme to be working. But with this enzyme, we need two important cofactors of
+    B vitamin. That is one is methylcobalamin B12 and next is vitamin B9 that is methylfolate.
 version: 1
 status: active
 updated_at: '2026-05-02'

@@ -1,11 +1,11 @@
 slug: malabsorption
 display_name: Malabsorption
 aliases:
-- nutrient malabsorption
 - impaired nutrient absorption
 category: gut
-summary: Failure to adequately absorb macronutrients and micronutrients across the gut epithelium, resulting from insufficient
-  enzymatic digestion. A primary downstream consequence of pancreatic enzyme insufficiency.
+summary: Failure to adequately absorb macronutrients and micronutrients across the
+  gut epithelium, resulting from insufficient enzymatic digestion. A primary downstream
+  consequence of pancreatic enzyme insufficiency.
 upstream_drivers:
 - exocrine-pancreatic-enzyme-deficiency
 - damaged-microvilli
@@ -26,8 +26,9 @@ evidence_tier: strong
 sources:
 - id: coconote-fm-pancreatic-insufficiency
   location: Signs and Symptoms
-  quote: Malnutrition, malabsorption, that is why feeling fatigued, muscle wasting, weight loss, constantly absorbed abdominal
-    pain, feeling excessive bloating, gas, edema.
+  quote: Malnutrition, malabsorption, that is why feeling fatigued, muscle wasting,
+    weight loss, constantly absorbed abdominal pain, feeling excessive bloating, gas,
+    edema.
 version: 1
 status: active
 updated_at: '2026-05-05'

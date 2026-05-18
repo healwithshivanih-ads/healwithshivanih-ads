@@ -24,8 +24,8 @@ summary: 'Cardiometabolic risk refers to the combined likelihood of developing
 
   '
 common_symptoms:
-- fatigue
-- low-energy
+- lethargy
+- chronic-fatigue
 red_flags: []
 related_topics:
 - insulin-resistance
@@ -63,8 +63,8 @@ evidence_tier: strong
 sources:
 - id: fmca-cardiometabolic-movement-saxena-class
   location: 'Pages 7-8: Modality-specific effects on cardiometabolic parameters'
-  quote: HIIT training gives you researched benefits across body composition, glucose,
-    insulin, blood pressure, and blood lipids.
+  quote: HIIT training gives you researched benefits across body composition, glucose, insulin, blood pressure, and blood
+    lipids.
 version: 1
 status: active
 updated_at: '2026-05-17'

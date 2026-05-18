@@ -24,7 +24,7 @@ summary: 'Histamine is degraded through two distinct enzyme systems. Diamine Oxi
 
   '
 upstream_drivers:
-- dao-deficiency
+- histamine-enzyme-inhibition
 - hnmt-variants
 - cofactor-deficiency-b6-vitc-copper
 - nsaid-use
@@ -45,8 +45,7 @@ evidence_tier: strong
 sources:
 - id: iemt
   location: Histamine Metabolism and Enzymes
-  quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase
-    (HNMT).'
+  quote: 'Two main enzymes break down histamine: Diamine oxidase (DAO) and Histamine-N-methyltransferase (HNMT).'
 - id: vinmec
   location: DAO Function Overview
   quote: DAO breaks down dietary histamine in the gut before systemic absorption.

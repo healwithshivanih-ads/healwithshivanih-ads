@@ -1,14 +1,13 @@
 slug: bioidentical-hormone-replacement-therapy
 display_name: Bioidentical Hormone Replacement Therapy (BHRT)
 aliases:
-- BHRT
 - bioidentical HRT
 - natural hormone replacement
 - hormone replacement therapy
-- HRT
-summary: The use of hormones structurally identical to those naturally produced by the human body to restore hormonal balance,
-  support anti-aging, protect against cancer, cardiovascular disease, cognitive decline, and improve quality of life. Distinct
-  from synthetic hormone preparations used in earlier HRT protocols.
+summary: The use of hormones structurally identical to those naturally produced by
+  the human body to restore hormonal balance, support anti-aging, protect against
+  cancer, cardiovascular disease, cognitive decline, and improve quality of life.
+  Distinct from synthetic hormone preparations used in earlier HRT protocols.
 common_symptoms:
 - hot-flashes
 - brain-fog
@@ -33,16 +32,19 @@ key_mechanisms:
 - genomic-hormone-signaling
 - non-genomic-hormone-signaling
 - hormone-receptor-binding
-coaching_scope_notes: Coaches can educate clients about the role of nutrition and lifestyle in supporting hormone signaling.
-  Prescribing, dosing, and lab interpretation are out of scope — refer to a trained hormone clinician.
-clinician_scope_notes: BHRT requires individualized dosing guided by symptoms and labs (especially FSH). Delivery mode (oral,
-  topical, vaginal, IM) affects absorption and metabolic profile. Clinician should also assess nutritional cofactors.
+coaching_scope_notes: Coaches can educate clients about the role of nutrition and
+  lifestyle in supporting hormone signaling. Prescribing, dosing, and lab interpretation
+  are out of scope — refer to a trained hormone clinician.
+clinician_scope_notes: BHRT requires individualized dosing guided by symptoms and
+  labs (especially FSH). Delivery mode (oral, topical, vaginal, IM) affects absorption
+  and metabolic profile. Clinician should also assess nutritional cofactors.
 evidence_tier: strong
 sources:
 - id: ask-expert-hormonal-health-bhrt
   location: BHRT History and Women's Health Initiative Reanalysis
-  quote: Bioidentical hormone replacement started in England in about the 1960s... women on estrogen... Lived four years longer.
-    They had statistically less breast cancer, lung cancer, and colorectal cancer.
+  quote: Bioidentical hormone replacement started in England in about the 1960s...
+    women on estrogen... Lived four years longer. They had statistically less breast
+    cancer, lung cancer, and colorectal cancer.
 version: 1
 status: active
 updated_at: '2026-05-05'

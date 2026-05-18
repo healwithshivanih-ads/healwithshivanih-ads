@@ -28,8 +28,6 @@ upstream_drivers:
 - dysbiosis-gut-microbiome-imbalance
 - leaky-gut
 - metabolic-byproducts
-- dysbiosis
-- intestinal-hyperpermeability
 downstream_effects:
 - phase-1-biotransformation
 - phase-2-conjugation

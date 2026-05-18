@@ -11,12 +11,11 @@ aliases:
 - hydrogen SIBO
 - gut-health-fodmap-sibo
 - low-FODMAP
-- IBS
-- gut dysbiosis
-summary: SIBO occurs when colonic fecal microbes (e.g., E. coli, Klebsiella, Pseudomonas) overpopulate the small intestine,
-  leading to endotoxemia via lipopolysaccharide release. This systemic endotoxemia is linked to diverse downstream conditions
-  including endometriosis, neurodegeneration, cardiovascular disease, and metabolic disorders. Estimated to affect over 150
-  million Americans.
+summary: SIBO occurs when colonic fecal microbes (e.g., E. coli, Klebsiella, Pseudomonas)
+  overpopulate the small intestine, leading to endotoxemia via lipopolysaccharide
+  release. This systemic endotoxemia is linked to diverse downstream conditions including
+  endometriosis, neurodegeneration, cardiovascular disease, and metabolic disorders.
+  Estimated to affect over 150 million Americans.
 common_symptoms:
 - constant-bloating
 - bloating-within-30-60-min-of-meals
@@ -81,34 +80,41 @@ key_mechanisms:
 - lps-endotoxemia
 - lipopolysaccharide-shedding
 - gut-barrier-disruption
-coaching_scope_notes: Coaches can support clients with SIBO-focused probiotic yogurt protocols (L. reuteri, L. gasseri, B.
-  subtilis), dietary fiber diversity, and elimination of food additives. Coaches should not diagnose SIBO or prescribe rifaximin.
-clinician_scope_notes: Diagnosis via breath testing or stool DNA sequencing. Antibiotic therapy (rifaximin) is a medical decision.
-  Severe or persistent SIBO with neurological or cardiac symptoms requires medical referral.
+coaching_scope_notes: Coaches can support clients with SIBO-focused probiotic yogurt
+  protocols (L. reuteri, L. gasseri, B. subtilis), dietary fiber diversity, and elimination
+  of food additives. Coaches should not diagnose SIBO or prescribe rifaximin.
+clinician_scope_notes: Diagnosis via breath testing or stool DNA sequencing. Antibiotic
+  therapy (rifaximin) is a medical decision. Severe or persistent SIBO with neurological
+  or cardiac symptoms requires medical referral.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
   location: SIBO Cheatsheet
-  quote: An abnormal overgrowth of bacteria in the small intestine (>10³ CFU/mL), leading to maldigestion, malabsorption,
-    and systemic symptoms. Major driver of IBS symptoms (70–80% overlap).
+  quote: An abnormal overgrowth of bacteria in the small intestine (>10³ CFU/mL),
+    leading to maldigestion, malabsorption, and systemic symptoms. Major driver of
+    IBS symptoms (70–80% overlap).
 - id: vitaone-elimination-diet-cheatsheet
   location: Practitioner Tips
   quote: 'Combine with SIBO protocols: herbal antimicrobials + probiotics.'
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Inoculate / Prebiotic Section
-  quote: in cebo you will not describe any kind of probiotic or any kind of prebiotic only you consider removing the cebo
-    and then you can describe the prebiotic and probiotic.
+  quote: in cebo you will not describe any kind of probiotic or any kind of prebiotic
+    only you consider removing the cebo and then you can describe the prebiotic and
+    probiotic.
 - id: coconote-fm-sibo-sifo
   location: SIBO Definition and Pathogenesis
-  quote: Small intestinal bacterial overgrowth. That's the definition. These are C4 bacteria. So the small intestinal bacteria,
-    they have three dominant quality forms. You see E. coli, you will see C. coli, you will see C. clostridium.
+  quote: Small intestinal bacterial overgrowth. That's the definition. These are C4
+    bacteria. So the small intestinal bacteria, they have three dominant quality forms.
+    You see E. coli, you will see C. coli, you will see C. clostridium.
 - id: ask-expert-womens-health-vaginal-microbiome
   location: SIBO and endotoxemia discussion
-  quote: In excess of 150 million people have SIBO. That is, colonic fecal microbes have been allowed to overproliferate.
+  quote: In excess of 150 million people have SIBO. That is, colonic fecal microbes
+    have been allowed to overproliferate.
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXbyLyYjP__/
-  quote: 'Low-FODMAP is a therapeutic phase, not a long-term diet (2–6 weeks only) → Gut healing requires nutrients: glutamine,
-    zinc carnosine, omega-3, B-complex, bitters'
+  quote: 'Low-FODMAP is a therapeutic phase, not a long-term diet (2–6 weeks only)
+    → Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
 version: 5
 status: active
 updated_at: '2026-05-05'

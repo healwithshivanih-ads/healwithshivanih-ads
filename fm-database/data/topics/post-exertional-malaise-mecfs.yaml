@@ -1,89 +1,121 @@
 slug: post-exertional-malaise-mecfs
 display_name: Post-Exertional Malaise / ME/CFS / Long COVID
 aliases:
-  - PEM
-  - post-exertional malaise
-  - ME/CFS
-  - myalgic encephalomyelitis
-  - chronic fatigue syndrome
-  - long COVID
-  - post-viral fatigue syndrome
-  - PVFS
-  - long-haul COVID
-  - post-acute sequelae of COVID-19
-  - PASC
-summary: |
-  Post-exertional malaise (PEM) is a worsening of all symptoms 12-48 hours
+- PEM
+- post-exertional malaise
+- ME/CFS
+- myalgic encephalomyelitis
+- chronic fatigue syndrome
+- long COVID
+- post-viral fatigue syndrome
+- PVFS
+- long-haul COVID
+- post-acute sequelae of COVID-19
+- PASC
+summary: 'Post-exertional malaise (PEM) is a worsening of all symptoms 12-48 hours
+
   after any physical, cognitive, or emotional exertion that was previously
+
   tolerable — and persists for days to weeks. PEM is the cardinal feature
+
   distinguishing ME/CFS and long COVID from ordinary fatigue or
+
   deconditioning. Functional medicine framing: mitochondrial dysfunction,
+
   oxidative stress, neuroinflammation, autonomic instability (POTS
+
   overlap), mast cell activation (MCAS overlap), reactivated chronic
+
   infections (EBV, HHV-6, Lyme), and microclots. Critically, conventional
+
   graded exercise therapy WORSENS PEM — coach must use pacing, not
+
   push-through.
+
+  '
 common_symptoms:
-  - chronic-fatigue
-  - lethargy
-  - brain-fog
-  - cognitive-decline
-  - non-restorative-sleep
-  - palpitations
-  - lightheadedness-on-standing
-  - tingling-numbness
-  - muscle-pain
-  - joint-pain
-  - sore-throat-recurrent
-  - lymph-node-tenderness
-  - chronic-headaches
+- chronic-fatigue
+- lethargy
+- brain-fog
+- poor-concentration
+- non-restorative-sleep
+- palpitations
+- lightheadedness-on-standing
+- tingling-numbness
+- muscle-pain
+- joint-pain
+- sore-throat-recurrent
+- lymph-node-tenderness
+- headache
 red_flags:
-  - new-neurological-deficits
-  - severe-cognitive-decline
-  - severe-cardiac-symptoms
-  - suicidal-ideation
+- new-neurological-deficits
+- severe-cognitive-decline
+- severe-cardiac-symptoms
+- suicidal-ideation
 related_topics:
-  - mast-cell-activation-syndrome
-  - postural-orthostatic-tachycardia-syndrome
-  - chronic-pain-and-fatigue
-  - mitochondrial-dysfunction
-  - mold-mycotoxin-exposure
-  - chronic-inflammation
+- mast-cell-activation-syndrome
+- postural-orthostatic-tachycardia-syndrome
+- chronic-pain-and-fatigue
+- mitochondrial-health-nutrients
+- mold-mycotoxin-exposure
+- chronic-inflammation
 key_mechanisms:
-  - mitochondrial-dysfunction
-  - oxidative-stress
-  - neuroinflammation
-  - autonomic-dysregulation
-  - mast-cell-degranulation
-  - chronic-viral-reactivation
-coaching_scope_notes: |
-  PACING IS THE INTERVENTION. The single most important shift: stop
+- mitochondrial-dysfunction
+- oxidative-stress
+- neuroinflammation
+- sympathetic-dominance
+- mast-cell-degranulation
+- chronic-viral-reactivation
+coaching_scope_notes: 'PACING IS THE INTERVENTION. The single most important shift: stop
+
   exercising into the crash. Track HRV (Oura / Whoop / Garmin); on a
+
   low-HRV day, REST. Use the "energy envelope" concept — operate at
+
   50-70% of perceived capacity, with 24h recovery built in. Forbidden:
+
   graded exercise therapy / push-through / CBT framed as
+
   deconditioning-cure. Permitted: gentle horizontal exercise (recumbent
+
   bike at low resistance, swimming at slow pace, restorative yoga). Add
+
   mitochondrial support — CoQ10 (ubiquinol) 100-200 mg, B-complex,
+
   D-ribose 5-15 g/day, L-carnitine 1-2 g, NAD+ precursors, magnesium.
+
   Screen for + treat MCAS + POTS aggressively (improves PEM in many).
+
   Low-histamine trial if reactive. Pace cognitive exertion as carefully
+
   as physical. Trauma-informed framing — clients have been gaslit for
+
   years and may distrust care providers.
-clinician_scope_notes: |
-  Diagnosis is clinical (IOM 2015 criteria for ME/CFS; long COVID
+
+  '
+clinician_scope_notes: 'Diagnosis is clinical (IOM 2015 criteria for ME/CFS; long COVID
+
   criteria per NICE / CDC). Rule out treatable mimics: hypothyroidism,
-  Addison's, sleep apnoea, anaemia, celiac, depression with anhedonia.
+
+  Addison''s, sleep apnoea, anaemia, celiac, depression with anhedonia.
+
   Pharmacological options (LDN, IVIG, antivirals, mast cell stabilisers,
+
   POTS medications) are clinician domain. Refer for cardiology workup
+
   if cardiac symptoms; sleep medicine if apnoea screen positive;
+
   immunology if recurrent infections. Coach refers + supports; does
+
   NOT diagnose.
+
+  '
 evidence_tier: strong
 sources:
-  - id: coach-shivani
-    location: Coach observation — post-viral / long-COVID protocol
-    quote: Asking "do you crash for days after exertion that used to feel normal?" on intake reframes the entire protocol — wrong exercise advice can cost clients months of recovery.
+- id: coach-shivani
+  location: Coach observation — post-viral / long-COVID protocol
+  quote: Asking "do you crash for days after exertion that used to feel normal?" on intake reframes the entire protocol —
+    wrong exercise advice can cost clients months of recovery.
 version: 1
 status: active
 updated_at: '2026-05-18'

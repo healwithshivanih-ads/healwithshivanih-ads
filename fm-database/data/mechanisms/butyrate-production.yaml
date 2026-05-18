@@ -19,10 +19,10 @@ aliases:
 - butyrate production
 - microbial fermentation
 - microbial fermentation of fiber
-- colonic fermentation
 category: gut
-summary: Microbial fermentation of dietary fiber produces butyrate, the primary energy source for colonocytes; butyrate supports
-  gut barrier integrity, reduces colonic inflammation, and improves colon motility.
+summary: Microbial fermentation of dietary fiber produces butyrate, the primary energy
+  source for colonocytes; butyrate supports gut barrier integrity, reduces colonic
+  inflammation, and improves colon motility.
 upstream_drivers:
 - adequate-soluble-fiber-intake
 - diverse-microbiome
@@ -50,12 +50,14 @@ sources:
 - id: thurlow-microbiome-mondays
   location: Session 1 — Microbiome Foundations
 - id: vitaone-blood-sugar-cheatsheet
-  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis / Endotoxemia
+  location: Type 2 Diabetes Diet & Supplement Protocol Cheatsheet — Gut Dysbiosis
+    / Endotoxemia
   quote: Support microbiota diversity and SCFA production.
 - id: vitaone-gut-toolkit
   location: 'Gut-Brain Axis: Nutrition''s Impact on Mental Health — Fiber-Rich Foods'
-  quote: A high-fiber diet promotes the growth of diverse gut bacteria, which produce short-chain fatty acids (SCFAs) that
-    support brain health by reducing inflammation and promoting a healthy brain-gut connection.
+  quote: A high-fiber diet promotes the growth of diverse gut bacteria, which produce
+    short-chain fatty acids (SCFAs) that support brain health by reducing inflammation
+    and promoting a healthy brain-gut connection.
 version: 1
 status: active
 updated_at: '2026-05-02'

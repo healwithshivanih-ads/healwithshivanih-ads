@@ -18,7 +18,6 @@ summary: Exposure to cold triggers thermogenic processes — both shivering (mus
   insulin sensitivity.
 upstream_drivers:
 - cold-water-immersion
-- cold-induced-thermogenesis
 downstream_effects:
 - increased-energy-expenditure
 - improved-insulin-sensitivity

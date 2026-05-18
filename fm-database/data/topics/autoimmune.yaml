@@ -5,10 +5,10 @@ aliases:
 - Hashimoto's
 - rheumatoid arthritis
 - celiac disease
-- immune dysregulation
 - autoimmune flares
-summary: Chronic stress triggers immune dysregulation via cortisol rhythm disruption, Th1/Th2/Th17 imbalance, and gut barrier
-  breakdown, precipitating or worsening autoimmune conditions.
+summary: Chronic stress triggers immune dysregulation via cortisol rhythm disruption,
+  Th1/Th2/Th17 imbalance, and gut barrier breakdown, precipitating or worsening autoimmune
+  conditions.
 common_symptoms:
 - joint-pain
 - lethargy
@@ -46,18 +46,21 @@ key_mechanisms:
 - estrogen-immune-modulation
 - th1-th2-imbalance
 - hpa-axis-dysregulation
-coaching_scope_notes: Gut repair, anti-inflammatory diet, adaptogens, trauma resolution practices within scope. Diagnosis
-  and immunosuppressants out of scope.
-clinician_scope_notes: Hashimoto's, PCOS, rheumatoid arthritis, celiac disease cited as examples requiring medical management.
+coaching_scope_notes: Gut repair, anti-inflammatory diet, adaptogens, trauma resolution
+  practices within scope. Diagnosis and immunosuppressants out of scope.
+clinician_scope_notes: Hashimoto's, PCOS, rheumatoid arthritis, celiac disease cited
+  as examples requiring medical management.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Autoimmune section
 - id: thurlow-microbiome-session-8
   location: Session 8 — immune shift segment
-  quote: We are more prone to autoimmune conditions. We know we're four to five times more likely to be diagnosed.
+  quote: We are more prone to autoimmune conditions. We know we're four to five times
+    more likely to be diagnosed.
 - id: vitaone-adrenal-cheatsheet
   location: Stress & Chronic Diseases Link (p.9)
-  quote: Stress triggers immune dysregulation & flares. Cortisol rhythm disruption → Th1/Th2/Th17 imbalance, gut barrier breakdown.
+  quote: Stress triggers immune dysregulation & flares. Cortisol rhythm disruption
+    → Th1/Th2/Th17 imbalance, gut barrier breakdown.
 evidence_tier: plausible_emerging
 version: 3
 status: active

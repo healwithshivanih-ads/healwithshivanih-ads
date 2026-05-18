@@ -16,7 +16,6 @@ upstream_drivers:
 - dietary-vitamin-d
 - parathyroid-hormone
 downstream_effects:
-- vitamin-d-hydroxylation
 - bone-mineralisation
 - immune-modulation
 related_mechanisms:

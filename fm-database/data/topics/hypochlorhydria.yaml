@@ -1,7 +1,6 @@
 slug: hypochlorhydria
 display_name: Hypochlorhydria (Low Stomach Acid)
 aliases:
-- low stomach acid
 - low HCl
 - stomach acid deficiency
 - insufficient gastric acid
@@ -11,9 +10,10 @@ aliases:
 - reduced gastric acid
 - stomach acid insufficiency
 - HCL deficiency
-summary: Hypochlorhydria is a condition of insufficient gastric acid (hydrochloric acid) production by the stomach's parietal
-  cells. It impairs protein digestion, mineral absorption, and antimicrobial defence, and is frequently misdiagnosed as hyperacidity
-  due to overlapping reflux-like symptoms.
+summary: Hypochlorhydria is a condition of insufficient gastric acid (hydrochloric
+  acid) production by the stomach's parietal cells. It impairs protein digestion,
+  mineral absorption, and antimicrobial defence, and is frequently misdiagnosed as
+  hyperacidity due to overlapping reflux-like symptoms.
 common_symptoms:
 - bloating-after-protein-meals
 - early-satiety
@@ -75,42 +75,49 @@ key_mechanisms:
 - leaky-gut
 - hcl-and-pepsin-protein-digestion
 - sympathetic-suppression-of-gastric-acid
-coaching_scope_notes: Coaches can support lifestyle modifications (stress reduction, parasympathetic activation, dietary triggers),
-  educate on the reflux-mimicry of low stomach acid, and support the 5R gut protocol. Betaine HCL titration and diagnosis
+coaching_scope_notes: Coaches can support lifestyle modifications (stress reduction,
+  parasympathetic activation, dietary triggers), educate on the reflux-mimicry of
+  low stomach acid, and support the 5R gut protocol. Betaine HCL titration and diagnosis
   should be supervised by a clinician.
-clinician_scope_notes: Diagnosis via Betaine HCL challenge titration; rule out H. pylori, autoimmune gastritis, and PPI-induced
-  suppression. Monitor mineral status (iron, zinc, magnesium, calcium).
+clinician_scope_notes: Diagnosis via Betaine HCL challenge titration; rule out H.
+  pylori, autoimmune gastritis, and PPI-induced suppression. Monitor mineral status
+  (iron, zinc, magnesium, calcium).
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
   location: Gut Health Cheatsheet / Gut Dysbiosis vs SIBO vs SIFO vs Hypochlorhydria
-  quote: Acid is essential for sterilizing + absorbing nutrients. Correct before killing protocols. Feels better with Betaine
-    HCl, low protein tolerance.
+  quote: Acid is essential for sterilizing + absorbing nutrients. Correct before killing
+    protocols. Feels better with Betaine HCl, low protein tolerance.
 - id: vitaone-gut-toolkit
   location: Testing for Low Stomach Acidity
-  quote: As we age, stomach cells produce less acid, called Hydrochloric Acid (HCl). Certain medications can also lower stomach
-    acid. This change in acidity affects the body's ability to digest protein, absorb minerals, and protect the body against
+  quote: As we age, stomach cells produce less acid, called Hydrochloric Acid (HCl).
+    Certain medications can also lower stomach acid. This change in acidity affects
+    the body's ability to digest protein, absorb minerals, and protect the body against
     food poisoning, H. pylori, parasites, and other infections.
 - id: vitaone-health-coaching-toolkit
   location: Testing for Low Stomach Acidity
-  quote: As we age, stomach cells produce less acid, called Hydrochloric Acid (HCl). Certain medications can also lower stomach
-    acid. This change in acidity affects the body's ability to digest protein, absorb minerals, and protect the body against
+  quote: As we age, stomach cells produce less acid, called Hydrochloric Acid (HCl).
+    Certain medications can also lower stomach acid. This change in acidity affects
+    the body's ability to digest protein, absorb minerals, and protect the body against
     food poisoning, H. pylori, parasites, and other infections.
 - id: coconote-fm-calcium-deficiency
   location: Causes of Low Serum Calcium
-  quote: stomach acid is required for absorption of calcium. So if somebody on a proton inhibitor or acid blocking drug that
-    we have seen many patients who are long-term anti-acids. So in that case or in other case when there is a hypochlorhydria
-    means low stomach acid, they have a low serum calcium level.
+  quote: stomach acid is required for absorption of calcium. So if somebody on a proton
+    inhibitor or acid blocking drug that we have seen many patients who are long-term
+    anti-acids. So in that case or in other case when there is a hypochlorhydria means
+    low stomach acid, they have a low serum calcium level.
 - id: coconote-fm-gut-skin-hormone-axis
   location: Blood Report Analysis
-  quote: Whenever there is not enough HCL that is present, malabsorption, maldigestion starts taking place and then if the
-    food is not digested properly, all the process ahead gets impacted. Low albumin is an indicator of hypochlorhydria and
-    protein malabsorption.
+  quote: Whenever there is not enough HCL that is present, malabsorption, maldigestion
+    starts taking place and then if the food is not digested properly, all the process
+    ahead gets impacted. Low albumin is an indicator of hypochlorhydria and protein
+    malabsorption.
 - id: coconote-fm-hypochlorhydria
   location: Clinical Presentation of Low Stomach Acid
-  quote: Most of the patients, when you see they have a history of heartburn, having a gastric reflux, having a chest tightness,
-    and they have a gastric pain, conventionally, we diagnose them as hyperacidity, which is wrong. In these cases, it is
-    usually the low stomach acid which causes these symptoms out.
+  quote: Most of the patients, when you see they have a history of heartburn, having
+    a gastric reflux, having a chest tightness, and they have a gastric pain, conventionally,
+    we diagnose them as hyperacidity, which is wrong. In these cases, it is usually
+    the low stomach acid which causes these symptoms out.
 version: 6
 status: active
 updated_at: '2026-05-05'

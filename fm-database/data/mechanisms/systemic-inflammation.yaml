@@ -4,7 +4,6 @@ aliases:
 - chronic low-grade inflammation
 - cytokine load
 - AGE-driven inflammation
-- chronic inflammation
 - low-grade inflammation
 - inflammatory state
 - elevated CRP
@@ -12,9 +11,9 @@ aliases:
 - hs-CRP elevation
 - inflammatory burden
 category: immune
-summary: Persistent, low-grade inflammatory state driven by gut dysfunction, toxin exposure, poor diet, stress, and nutrient
-  deficiencies. Elevated CRP and other inflammatory markers. Manifests as pain, fatigue, brain fog, joint stiffness, and skin
-  issues.
+summary: Persistent, low-grade inflammatory state driven by gut dysfunction, toxin
+  exposure, poor diet, stress, and nutrient deficiencies. Elevated CRP and other inflammatory
+  markers. Manifests as pain, fatigue, brain fog, joint stiffness, and skin issues.
 upstream_drivers:
 - high-carbohydrate-diet
 - refined-sugar
@@ -83,16 +82,16 @@ sources:
   quote: Chronic stress drives inflammation—use yoga nidra, deep breathing.
 - id: vitaone-cv-toolkit
   location: CVD Risk Analysis — Lab Results
-  quote: C-reactive protein is a marker associated with the production of inflammatory cytokines, which represent a threat
-    to cardiovascular health.
+  quote: C-reactive protein is a marker associated with the production of inflammatory
+    cytokines, which represent a threat to cardiovascular health.
 - id: vitaone-cardiometabolic-toolkit
   location: Intermittent Fasting — Who Benefits from Fasting?
-  quote: Fasting may be beneficial for insulin resistance, blood sugar, blood pressure, inflammation, short-term weight loss,
-    and brain health.
+  quote: Fasting may be beneficial for insulin resistance, blood sugar, blood pressure,
+    inflammation, short-term weight loss, and brain health.
 - id: coconote-fm-chronic-pain-fatigue
   location: Inflammation Section
-  quote: I'm sure whenever people come to chronic fatigue and the pain, the first thing comes inflammation, but inflammation
-    is one of the roots out of three.
+  quote: I'm sure whenever people come to chronic fatigue and the pain, the first
+    thing comes inflammation, but inflammation is one of the roots out of three.
 version: 5
 status: active
 updated_at: '2026-05-05'

@@ -4,10 +4,10 @@ aliases:
 - non-celiac gluten sensitivity
 - NCGS
 - wheat intolerance
-- gluten intolerance
 - wheat sensitivity
-summary: Conditions in which gluten-containing grains cause adverse symptoms. Includes celiac disease (autoimmune) and non-celiac
-  gluten sensitivity. Management involves strict avoidance of gluten-containing grains and awareness of hidden gluten sources.
+summary: Conditions in which gluten-containing grains cause adverse symptoms. Includes
+  celiac disease (autoimmune) and non-celiac gluten sensitivity. Management involves
+  strict avoidance of gluten-containing grains and awareness of hidden gluten sources.
 common_symptoms:
 - bloating
 - abdominal-pain
@@ -30,18 +30,21 @@ key_mechanisms:
 - leaky-gut
 - immune-food-reactivity
 - immune-activation-gluten
-coaching_scope_notes: Coaches can guide gluten-free food swaps, label reading, and cross-contamination avoidance. Celiac diagnosis
-  and monitoring require clinician involvement.
+coaching_scope_notes: Coaches can guide gluten-free food swaps, label reading, and
+  cross-contamination avoidance. Celiac diagnosis and monitoring require clinician
+  involvement.
 evidence_tier: strong
-clinician_scope_notes: Test for celiac disease (tTG-IgA, EMA) before initiating gluten-free diet to avoid false-negative results.
+clinician_scope_notes: Test for celiac disease (tTG-IgA, EMA) before initiating gluten-free
+  diet to avoid false-negative results.
 sources:
 - id: vitaone-elimination-diet-toolkit
   location: A Guide to Eating Gluten-Free
-  quote: Cutting gluten out of your diet may seem difficult and restrictive. Fortunately, there are many healthy and delicious
-    foods that are naturally gluten-free.
+  quote: Cutting gluten out of your diet may seem difficult and restrictive. Fortunately,
+    there are many healthy and delicious foods that are naturally gluten-free.
 - id: vitaone-health-coaching-toolkit
   location: A Guide to Eating Gluten-Free
-  quote: Those with celiac disease and gluten intolerance should use caution when consuming oats.
+  quote: Those with celiac disease and gluten intolerance should use caution when
+    consuming oats.
 version: 2
 status: active
 updated_at: '2026-05-04'

@@ -12,7 +12,6 @@ upstream_drivers:
 - gallbladder-dysfunction
 - bile-duct-obstruction
 downstream_effects:
-- bile-acid-insufficiency
 - fat-soluble-vitamin-deficiency
 related_mechanisms:
 - hcl-and-pepsin-protein-digestion

@@ -1,11 +1,11 @@
 slug: food-sensitivity
 display_name: Food Sensitivity
 aliases:
-- food intolerance
 - non-IgE food reaction
 - delayed food reaction
-summary: A delayed, non-IgE, dose-dependent immune or digestive reaction to foods that can drive chronic inflammation, gut
-  dysfunction, brain fog, joint pain, and mood issues. Distinguished from IgE-mediated food allergy by delayed onset (hours–days)
+summary: A delayed, non-IgE, dose-dependent immune or digestive reaction to foods
+  that can drive chronic inflammation, gut dysfunction, brain fog, joint pain, and
+  mood issues. Distinguished from IgE-mediated food allergy by delayed onset (hours–days)
   and multi-system involvement.
 common_symptoms:
 - bloating
@@ -25,15 +25,17 @@ key_mechanisms:
 - leaky-gut
 - dysbiosis-gut-microbiome-imbalance
 - nf-kb-activation
-coaching_scope_notes: Coaches can guide elimination and reintroduction diets (gold standard). IgG/IgA panel ordering and interpretation
-  require clinician.
-clinician_scope_notes: Distinguish from IgE allergy. Use elimination diet + reintroduction as gold standard. IgG/IgA panels
-  as adjunct. Stool tests to assess gut inflammation and microbiome.
+coaching_scope_notes: Coaches can guide elimination and reintroduction diets (gold
+  standard). IgG/IgA panel ordering and interpretation require clinician.
+clinician_scope_notes: Distinguish from IgE allergy. Use elimination diet + reintroduction
+  as gold standard. IgG/IgA panels as adjunct. Stool tests to assess gut inflammation
+  and microbiome.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-inflammation-cheatsheet
   location: Food Allergy vs Food Sensitivity — Page 04
-  quote: A delayed immune or digestive response (non-IgE). Dose-dependent, not life-threatening, but can drive chronic inflammation.
+  quote: A delayed immune or digestive response (non-IgE). Dose-dependent, not life-threatening,
+    but can drive chronic inflammation.
 version: 1
 status: active
 updated_at: '2026-05-02'

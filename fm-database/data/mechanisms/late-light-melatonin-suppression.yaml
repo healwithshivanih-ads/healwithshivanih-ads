@@ -4,7 +4,6 @@ aliases:
 - melatonin suppression
 - light-induced circadian disruption
 - screen-induced melatonin loss
-- blue light melatonin suppression
 - evening light circadian shift
 - delayed sleep phase
 - evening light pollution
@@ -13,11 +12,14 @@ aliases:
 - pre-bed screen exposure
 - bright-light melatonin disruption
 category: neurological
-summary: Exposure to bright artificial light — especially the blue-wavelength light emitted by phones, tablets, laptops, LED
-  lights, and TVs — within the 2-3 hours before bed activates melanopsin retinal ganglion cells, which signal the suprachiasmatic
-  nucleus that 'it's still daytime'. This delays the onset and reduces the amplitude of the natural melatonin rise, shifting
-  circadian phase later, fragmenting sleep, and degrading sleep architecture. Even moderate ambient light can suppress melatonin
-  by 50-90% in sensitive individuals. The single most reversible cause of insomnia / poor sleep quality in modern clients.
+summary: Exposure to bright artificial light — especially the blue-wavelength light
+  emitted by phones, tablets, laptops, LED lights, and TVs — within the 2-3 hours
+  before bed activates melanopsin retinal ganglion cells, which signal the suprachiasmatic
+  nucleus that 'it's still daytime'. This delays the onset and reduces the amplitude
+  of the natural melatonin rise, shifting circadian phase later, fragmenting sleep,
+  and degrading sleep architecture. Even moderate ambient light can suppress melatonin
+  by 50-90% in sensitive individuals. The single most reversible cause of insomnia
+  / poor sleep quality in modern clients.
 upstream_drivers:
 - evening screen use (phone, tablet, laptop, TV)
 - bright LED household lighting after sunset
@@ -61,10 +63,12 @@ sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Sleep + Circadian section — light as the master zeitgeber
 evidence_tier: strong
-notes_for_coach: Single highest-leverage coaching intervention for sleep complaints. Hard rules digital sunset 90 minutes
-  before bed, blue-blocker glasses if screens are unavoidable, dim warm lighting (red / amber bulbs) post-sunset, blackout
-  sleep environment. Pair with morning bright-light exposure within 30 min of waking to solidify the contrast. Most clients
-  see measurable HRV / sleep score improvement within 1-2 weeks.
+notes_for_coach: Single highest-leverage coaching intervention for sleep complaints.
+  Hard rules digital sunset 90 minutes before bed, blue-blocker glasses if screens
+  are unavoidable, dim warm lighting (red / amber bulbs) post-sunset, blackout sleep
+  environment. Pair with morning bright-light exposure within 30 min of waking to
+  solidify the contrast. Most clients see measurable HRV / sleep score improvement
+  within 1-2 weeks.
 version: 1
 status: active
 updated_at: '2026-05-10'

@@ -2,17 +2,17 @@ slug: candida-overgrowth
 display_name: Candida / Fungal Overgrowth
 aliases:
 - candidiasis
-- SIFO
 - small intestinal fungal overgrowth
-- yeast overgrowth
 - intestinal candida
 - intestinal candidiasis
 - candida dysbiosis
 - chronic candida
 - fungal dysbiosis
-summary: Fungal overgrowth, particularly Candida, is identified as a dysbiotic pattern in the gut microbiome. It is addressed
-  through broad-spectrum herbal antifungals (caprylic acid, garlic oil, oil of oregano) and, in severe cases, pharmaceutical
-  antifungals such as itraconazole, typically combined with herbal support due to the chronic nature of fungal infection.
+summary: Fungal overgrowth, particularly Candida, is identified as a dysbiotic pattern
+  in the gut microbiome. It is addressed through broad-spectrum herbal antifungals
+  (caprylic acid, garlic oil, oil of oregano) and, in severe cases, pharmaceutical
+  antifungals such as itraconazole, typically combined with herbal support due to
+  the chronic nature of fungal infection.
 common_symptoms:
 - bloating
 - sugar-cravings
@@ -43,10 +43,12 @@ key_mechanisms:
 - biofilm-formation
 - leaky-gut
 - dysbiosis-gut-microbiome-imbalance
-coaching_scope_notes: Coaches may discuss dietary strategies (reducing sugar, refined carbs) and general herbal antifungal
-  support. Pharmaceutical antifungal prescribing is outside coaching scope.
-clinician_scope_notes: Clinician may prescribe itraconazole or fluconazole. Itraconazole preferred over fluconazole for broader
-  coverage. Combination of pharmaceutical and herbal antifungal is preferred for chronic cases.
+coaching_scope_notes: Coaches may discuss dietary strategies (reducing sugar, refined
+  carbs) and general herbal antifungal support. Pharmaceutical antifungal prescribing
+  is outside coaching scope.
+clinician_scope_notes: Clinician may prescribe itraconazole or fluconazole. Itraconazole
+  preferred over fluconazole for broader coverage. Combination of pharmaceutical and
+  herbal antifungal is preferred for chronic cases.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-gut-cheatsheet
@@ -57,11 +59,13 @@ sources:
   quote: Chronic candida infections
 - id: vitaone-health-coaching-toolkit
   location: Anti-Candida Food Plan
-  quote: Chronic candida infections [listed as a common symptom of hypochlorhydria]. This food plan should be followed under
-    the supervision of a qualified healthcare professional.
+  quote: Chronic candida infections [listed as a common symptom of hypochlorhydria].
+    This food plan should be followed under the supervision of a qualified healthcare
+    professional.
 - id: coconote-fm-gut-dysbiosis-pathogens
   location: Therapeutic Options Section
-  quote: Antifungal, already we have discussed the capillic acid, garlic oil, and oil of oregano, they are the antifungal.
+  quote: Antifungal, already we have discussed the capillic acid, garlic oil, and
+    oil of oregano, they are the antifungal.
 version: 4
 status: active
 updated_at: '2026-05-05'
