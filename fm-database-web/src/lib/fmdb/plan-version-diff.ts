@@ -27,9 +27,19 @@ export interface PlanVersionDiffSummary {
   activePeriodWeeks: number | null;
   draftPeriodWeeks: number | null;
 
-  /** Supplement slug-level diff */
+  /** Supplement slug-level diff — added/removed are post-brand-normalisation */
   supplementsAdded: string[];
   supplementsRemoved: string[];
+  /**
+   * Brand swaps — pairs that normalise to the same canonical key but use
+   * different slugs (e.g. vitaone-d3 → vitamin-d3). Surfaced separately so
+   * coach can see "this is just a brand swap, not a clinical change".
+   */
+  supplementsBrandSwapped: Array<{
+    activeSlug: string;
+    draftSlug: string;
+    canonicalKey: string;
+  }>;
   /** Supplements present in both with different dose or timing */
   supplementsModified: Array<{
     slug: string;
@@ -97,6 +107,98 @@ function labLabelOf(item: LabItem): string {
   return item.display_name || item.test_slug || "—";
 }
 
+/**
+ * Brand prefixes we strip when normalising supplement slugs so a
+ * `vitaone-d3` ↔ `vitamin-d3` swap doesn't show as 1 removal + 1 addition.
+ * Match the longest prefix first (e.g. designs-for-health before now).
+ */
+const BRAND_PREFIXES = [
+  "designs-for-health",
+  "pure-encapsulations",
+  "seeking-health",
+  "standard-process",
+  "metagenics",
+  "biotics",
+  "vitaone",
+  "thorne",
+  "jarrow",
+  "now",
+  "pure",
+  "dfh",
+];
+
+/**
+ * Form / dose suffixes — most common variants. Used to canonicalise so
+ * `ashwagandha-ksm66` ↔ `vitaone-ashwagandha` resolve to the same key.
+ */
+const FORM_SUFFIXES = [
+  "-fatty-acids",
+  "-bisglycinate",
+  "-methylcobalamin",
+  "-monohydrate",
+  "-picolinate",
+  "-glycinate",
+  "-orotate",
+  "-citrate",
+  "-malate",
+  "-mthf",
+  "-ksm66",
+  "-p5p",
+];
+
+/**
+ * Normalise a supplement slug for fuzzy diff. Strips brand prefixes,
+ * `vitamin-` / `vit-` prefixes, and form suffixes. Falls back to the
+ * first 2 hyphenated tokens for longer slugs. Returns lowercase canonical
+ * key used only for diff bucketing — never displayed.
+ */
+export function canonicalSupplementKey(slug: string): string {
+  let s = slug.toLowerCase().trim();
+  // 1. Strip brand prefix (longest match first)
+  for (const p of BRAND_PREFIXES) {
+    if (s.startsWith(`${p}-`)) {
+      s = s.slice(p.length + 1);
+      break;
+    }
+  }
+  // 2. Strip vitamin- / vit- prefix (so vitamin-d3 ↔ d3)
+  s = s.replace(/^(vitamin|vit)-/, "");
+  // 3. Strip trailing form suffix (so ashwagandha-ksm66 ↔ ashwagandha)
+  for (const f of FORM_SUFFIXES) {
+    if (s.endsWith(f)) {
+      s = s.slice(0, -f.length);
+      break;
+    }
+  }
+  // 4. If still 3+ tokens, take first 2 (so omega-3-fatty-acids ↔ omega-3)
+  const tokens = s.split("-");
+  if (tokens.length >= 3) {
+    s = tokens.slice(0, 2).join("-");
+  }
+  return s;
+}
+
+/**
+ * Normalise a referral for fuzzy diff. Returns lowercase
+ * `specialty::first-3-reason-tokens` so reworded versions of the
+ * same clinical referral collapse to one diff key.
+ */
+function canonicalReferralKey(item: ReferralItem): string {
+  const spec = (item.specialty || "specialist").toLowerCase().trim();
+  const reasonRaw = (item.reason || "").toLowerCase();
+  // Strip leading "CRITICAL:", "URGENT:", numeric prefixes, etc.
+  const cleaned = reasonRaw
+    .replace(/^(critical|urgent|important|note)[:\-—]\s*/i, "")
+    .trim();
+  // First 3 alphanumeric-or-decimal tokens of the reason
+  const tokens = cleaned
+    .split(/\s+/)
+    .filter((t) => /[a-z0-9]/.test(t))
+    .slice(0, 3)
+    .join(" ");
+  return `${spec}::${tokens}`;
+}
+
 function referralLabelOf(item: ReferralItem): string {
   const spec = item.specialty || "specialist";
   const reason = item.reason ? ` — ${item.reason.slice(0, 60)}` : "";
@@ -126,7 +228,33 @@ export function computePlanVersionDiff(
 
   const supA = slugsOf(active.supplement_protocol);
   const supD = slugsOf(draft.supplement_protocol);
-  const { added: supplementsAdded, removed: supplementsRemoved } = setDiff(supA, supD);
+
+  // Brand-aware supplement diff. Two-pass:
+  //   1. Set-diff by raw slug → tentative added/removed
+  //   2. Re-bucket added↔removed pairs that share a canonical key as
+  //      "brand swaps" (e.g. vitaone-d3 ↔ vitamin-d3 → same compound)
+  const rawDiff = setDiff(supA, supD);
+  const removedByKey = new Map<string, string[]>();
+  for (const slug of rawDiff.removed) {
+    const k = canonicalSupplementKey(slug);
+    if (!removedByKey.has(k)) removedByKey.set(k, []);
+    removedByKey.get(k)!.push(slug);
+  }
+  const supplementsBrandSwapped: PlanVersionDiffSummary["supplementsBrandSwapped"] = [];
+  const supplementsAdded: string[] = [];
+  const consumedRemoved = new Set<string>();
+  for (const draftSlug of rawDiff.added) {
+    const k = canonicalSupplementKey(draftSlug);
+    const matches = removedByKey.get(k);
+    if (matches && matches.length > 0) {
+      const activeSlug = matches.shift()!;
+      consumedRemoved.add(activeSlug);
+      supplementsBrandSwapped.push({ activeSlug, draftSlug, canonicalKey: k });
+    } else {
+      supplementsAdded.push(draftSlug);
+    }
+  }
+  const supplementsRemoved = rawDiff.removed.filter((s) => !consumedRemoved.has(s));
 
   const supplementsModified: PlanVersionDiffSummary["supplementsModified"] = [];
   const supAMap = new Map(
@@ -164,9 +292,23 @@ export function computePlanVersionDiff(
   const labD = (draft.lab_orders ?? []).map(labLabelOf);
   const { added: labOrdersAdded, removed: labOrdersRemoved } = setDiff(labA, labD);
 
-  const refA = (active.referrals ?? []).map(referralLabelOf);
-  const refD = (draft.referrals ?? []).map(referralLabelOf);
-  const { added: referralsAdded, removed: referralsRemoved } = setDiff(refA, refD);
+  // Referrals — diff on canonical key (specialty + 3 reason tokens) so
+  // reworded versions of the same clinical referral collapse to one.
+  // Display labels carry the full reason text.
+  const refAItems = active.referrals ?? [];
+  const refDItems = draft.referrals ?? [];
+  const refAKeyToLabel = new Map(
+    refAItems.map((r) => [canonicalReferralKey(r), referralLabelOf(r)]),
+  );
+  const refDKeyToLabel = new Map(
+    refDItems.map((r) => [canonicalReferralKey(r), referralLabelOf(r)]),
+  );
+  const referralsAdded = [...refDKeyToLabel.entries()]
+    .filter(([k]) => !refAKeyToLabel.has(k))
+    .map(([, label]) => label);
+  const referralsRemoved = [...refAKeyToLabel.entries()]
+    .filter(([k]) => !refDKeyToLabel.has(k))
+    .map(([, label]) => label);
 
   const lifeA = (active.lifestyle_practices ?? []).map((l) => l.name ?? "");
   const lifeD = (draft.lifestyle_practices ?? []).map((l) => l.name ?? "");
@@ -181,6 +323,7 @@ export function computePlanVersionDiff(
     (periodWeeksDelta !== null && periodWeeksDelta !== 0) ||
     supplementsAdded.length > 0 ||
     supplementsRemoved.length > 0 ||
+    supplementsBrandSwapped.length > 0 ||
     supplementsModified.length > 0 ||
     labOrdersAdded.length > 0 ||
     labOrdersRemoved.length > 0 ||
@@ -210,6 +353,7 @@ export function computePlanVersionDiff(
     draftPeriodWeeks: dp,
     supplementsAdded,
     supplementsRemoved,
+    supplementsBrandSwapped,
     supplementsModified,
     labOrdersAdded,
     labOrdersRemoved,

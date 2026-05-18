@@ -189,6 +189,32 @@ export function PlanDiffAlert({ clientId, activeSlug, draftSlug, diff }: Props) 
           </DiffCard>
         )}
 
+        {diff.supplementsBrandSwapped.length > 0 && (
+          <DiffCard label={`🔁 Brand swaps (${diff.supplementsBrandSwapped.length})`}>
+            <div
+              style={{
+                fontSize: 10,
+                color: "var(--fm-text-secondary)",
+                marginBottom: 3,
+                fontStyle: "italic",
+              }}
+            >
+              Same compound, different brand catalogue entry — usually not a clinical change.
+            </div>
+            {diff.supplementsBrandSwapped.slice(0, 4).map((s, i) => (
+              <div key={i} style={{ fontSize: 10, marginTop: 2 }}>
+                <code style={{ color: "#dc2626" }}>{s.activeSlug}</code> →{" "}
+                <code style={{ color: "#16a34a" }}>{s.draftSlug}</code>
+              </div>
+            ))}
+            {diff.supplementsBrandSwapped.length > 4 && (
+              <div style={{ fontSize: 10, color: "var(--fm-text-tertiary)" }}>
+                +{diff.supplementsBrandSwapped.length - 4} more
+              </div>
+            )}
+          </DiffCard>
+        )}
+
         {diff.supplementsModified.length > 0 && (
           <DiffCard label="Supplement adjustments">
             {diff.supplementsModified.slice(0, 4).map((m, i) => (
