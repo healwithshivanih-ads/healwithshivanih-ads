@@ -13,9 +13,38 @@ timing_options:
 - on_empty_stomach
 - morning
 take_with_food: avoid
+contraindications:
+  conditions:
+  - bipolar-disorder
+  - parkinsons-disease
+  medications:
+  - ssris
+  - sertraline
+  - fluoxetine
+  - paroxetine
+  - citalopram
+  - escitalopram
+  - fluvoxamine
+  - snris
+  - venlafaxine
+  - duloxetine
+  - maois
+  - phenelzine
+  - tranylcypromine
+  - tramadol
+  - dextromethorphan
+  - levodopa
+  life_stages:
+  - pregnancy
+  - lactation
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Inadequate human safety data — avoid in pregnancy and lactation.
 notes_for_coach: SAMe is a methyl donor used in alcoholic liver disease and methylation
-  support. Best taken on an empty stomach. Avoid in bipolar disorder. Clinician oversight
-  required for dosing.
+  support. Best taken on an empty stomach. Avoid in bipolar disorder (mania risk).
+  Do NOT combine with SSRIs, SNRIs, MAOIs, or other serotonergic agents — additive
+  serotonin syndrome risk (less well-known but real). Clinician oversight required
+  for dosing.
 evidence_tier: plausible_emerging
 linked_to_topics:
 - liver-detoxification

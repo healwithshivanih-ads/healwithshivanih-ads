@@ -63,7 +63,7 @@ expected:
     - 5-htp
     - l-tryptophan
     - st-johns-wort
-    - sam-e               # also raises serotonin
+    - same                # canonical slug for S-Adenosyl Methionine — also raises serotonin
 
 notes: |
   Why this case is critical:

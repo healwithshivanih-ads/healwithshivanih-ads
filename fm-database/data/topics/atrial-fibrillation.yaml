@@ -1,0 +1,51 @@
+slug: atrial-fibrillation
+display_name: Atrial Fibrillation
+aliases:
+- af
+- afib
+- a-fib
+- paroxysmal-atrial-fibrillation
+summary: >-
+  Atrial fibrillation is the most common sustained cardiac arrhythmia,
+  characterised by irregular and often rapid atrial electrical activity that
+  causes ineffective atrial contraction. Major complications: thromboembolic
+  stroke (5x increased risk), heart failure, reduced exercise tolerance.
+  Standard medical management includes rhythm control (antiarrhythmics or
+  ablation), rate control (beta-blockers, calcium channel blockers),
+  anticoagulation (warfarin or DOACs based on CHA2DS2-VASc score). FM
+  coaching scope: address upstream drivers (sleep apnea, alcohol, obesity,
+  hyperthyroidism, electrolyte imbalance, chronic inflammation) and support
+  the cardiologist's plan — anticoagulation oversight is strictly medical.
+common_symptoms:
+- heart-palpitations
+- fatigue
+- shortness-of-breath
+- chest-discomfort
+- exercise-intolerance
+red_flags:
+- chest pain at rest
+- syncope or pre-syncope
+- new-onset dyspnoea
+- focal neurological symptoms (suspected TIA/stroke)
+related_topics:
+- cardiovascular-disease
+- hypertension
+- sleep-apnea
+- hyperthyroidism
+key_mechanisms: []
+coaching_scope_notes: >-
+  Anticoagulation management, antiarrhythmic dosing, ablation decisions, and
+  cardioversion are clinician-only. Coach role: address modifiable upstream
+  factors (sleep apnea, alcohol >2 drinks/day, untreated hyperthyroidism,
+  obesity, electrolyte deficits especially K+ and Mg).
+clinician_scope_notes: Cardiologist or electrophysiologist directs rhythm/rate/anticoagulation strategy.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Cardiovascular Reference
+  quote: Atrial fibrillation requires cardiology oversight; FM coaching supports
+    upstream drivers (sleep apnea, alcohol, electrolytes, inflammation).
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

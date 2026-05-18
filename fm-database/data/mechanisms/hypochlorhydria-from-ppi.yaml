@@ -1,0 +1,58 @@
+slug: hypochlorhydria-from-ppi
+display_name: PPI-Induced Hypochlorhydria
+aliases:
+- low-stomach-acid-from-ppi
+- ppi-induced-low-acid
+- proton-pump-inhibitor-hypochlorhydria
+category: gut
+summary: >-
+  Long-term use of proton pump inhibitors (PPIs) — omeprazole, pantoprazole,
+  esomeprazole, lansoprazole, rabeprazole — suppresses gastric acid production.
+  Beyond the intended antacid effect, this drives clinically significant
+  downstream problems: malabsorption of vitamin B12 (intrinsic factor and
+  parietal cell function impaired), iron (Fe3+ → Fe2+ reduction requires
+  acid), magnesium, calcium, zinc; small intestinal bacterial overgrowth
+  (SIBO) from loss of gastric acid barrier; increased risk of C. difficile,
+  pneumonia, osteoporotic fracture, chronic kidney disease, and dementia
+  on multi-year use. Discontinuation requires gradual taper — abrupt cessation
+  causes rebound hyperacidity that mimics the original problem and reinforces
+  long-term use.
+upstream_drivers:
+- long-term-ppi-use
+- chronic-h2-blocker-use
+downstream_effects:
+- b12-deficiency
+- iron-deficiency-anemia
+- magnesium-deficiency
+- sibo
+- dysbiosis
+- food-sensitivities
+- protein-malabsorption
+- osteoporosis
+- c-difficile-infection
+related_mechanisms:
+- leaky-gut
+- dysbiosis
+- chronic-inflammation
+linked_to_topics:
+- sibo
+- leaky-gut
+- gerd
+- dysbiosis
+notes_for_coach: >-
+  PPI deprescribing is a CLINICIAN decision — coach role is to coordinate
+  with the prescribing GP, support with structured taper (typically halve
+  dose every 2-4 weeks, then alternate-day, then PRN), and address root
+  GERD drivers (weight, late eating, food triggers, hiatal hernia mechanics)
+  during the taper window. Replace nutrient deficits during and after PPI
+  use — B12 + iron + magnesium + zinc as indicated by labs.
+sources:
+- id: pizzorno-textbook-gi-2
+  location: H. pylori and Acid Suppression — Long-term Consequences
+  quote: Long-term PPI use creates predictable nutrient deficiencies (B12, iron,
+    magnesium) and increases SIBO risk via loss of gastric acid barrier.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

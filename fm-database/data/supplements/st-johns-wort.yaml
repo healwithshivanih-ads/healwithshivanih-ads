@@ -34,22 +34,47 @@ notes_for_client: A traditional herb with strong research for mild and moderate 
   Has many medication interactions — never combine with antidepressants, the pill,
   blood thinners, or HIV/cancer/transplant medications. Always check with your prescriber.
 contraindications:
-  conditions: []
+  conditions:
+  - bipolar-disorder
   medications:
   - ssris
+  - sertraline
+  - fluoxetine
+  - paroxetine
+  - citalopram
+  - escitalopram
+  - fluvoxamine
   - snris
+  - venlafaxine
+  - duloxetine
+  - desvenlafaxine
   - maois
+  - phenelzine
+  - tranylcypromine
+  - tramadol
+  - triptans
+  - sumatriptan
   - oral-contraceptives
+  - ethinylestradiol
+  - levonorgestrel
   - warfarin
   - cyclosporine
   - tacrolimus
   - antiretrovirals
   - protease-inhibitors
+  - efavirenz
   - digoxin
   - chemotherapy
+  - irinotecan
+  - imatinib
+  - statins
+  - simvastatin
   life_stages:
   - pregnancy
   - lactation
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Avoid in pregnancy and lactation — uterine stimulant historically; inadequate human safety data.
 evidence_tier: strong
 typical_dose_range: {}
 sources:

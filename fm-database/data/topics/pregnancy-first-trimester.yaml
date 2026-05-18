@@ -1,0 +1,50 @@
+slug: pregnancy-first-trimester
+display_name: Pregnancy — First Trimester
+aliases:
+- first-trimester
+- early-pregnancy
+- t1-pregnancy
+summary: >-
+  Weeks 1-12 of pregnancy — period of organogenesis when fetal sensitivity
+  to teratogens is greatest. Most pregnancy-related contraindications for
+  supplements / herbs / dietary patterns apply with particular force during
+  this window. FM coaching scope in T1 is narrow: prenatal multivitamin
+  compliance, dietary support, nausea management (B6, ginger, magnesium —
+  with OB approval), gentle movement, sleep hygiene. Almost everything else
+  (adaptogens, herbal extracts, detox protocols, TRE, restrictive diets)
+  is deferred to OB/midwife or post-partum.
+common_symptoms:
+- fatigue
+- nausea
+- food-aversions
+- breast-tenderness
+- frequent-urination
+- emotional-lability
+red_flags:
+- vaginal bleeding
+- severe abdominal/pelvic pain
+- hyperemesis (>3 vomits/day, weight loss, ketones)
+- severe headache or visual changes
+- fever
+related_topics:
+- preconception
+- reproductive-health
+- fertility
+key_mechanisms: []
+coaching_scope_notes: >-
+  Narrow scope in T1. Refer to OB/midwife for all clinical decisions including
+  supplement choices. Coach role: prenatal compliance, food access and
+  variety, sleep, gentle movement, stress regulation. Avoid: any adaptogen,
+  herbal extract, detox protocol, restrictive diet, mega-dose nutrients,
+  body composition focus.
+clinician_scope_notes: OB or midwife directs all clinical decisions during pregnancy.
+sources:
+- id: vitaone-supplementation-dosage
+  location: Pregnancy and Preconception Reference
+  quote: First trimester is the most sensitive window — narrow FM coaching scope,
+    refer most clinical decisions to OB or midwife.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

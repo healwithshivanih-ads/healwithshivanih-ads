@@ -1,0 +1,67 @@
+slug: glucosamine
+display_name: Glucosamine Sulfate
+aliases:
+- glucosamine-sulphate
+- glucosamine-hcl
+- glucosamine-hydrochloride
+category: other
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1500
+    unit: mg
+  tablet:
+    min: 500
+    max: 1500
+    unit: mg
+  powder:
+    min: 500
+    max: 1500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions:
+  - shellfish-allergy
+  - poorly-controlled-diabetes
+  medications:
+  - warfarin
+  life_stages:
+  - pregnancy
+  - lactation
+pregnancy_safety: unknown
+lactation_safety: unknown
+pregnancy_safety_note: Limited human safety data in pregnancy and lactation.
+interactions: {}
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_coach: >-
+  Glucosamine sulfate 1500 mg/day is the most-studied form for osteoarthritis
+  (especially knee OA), with meta-analyses showing modest pain reduction and
+  slowed structural progression. Sulfate form has stronger evidence than HCl.
+  Most preparations derived from shellfish (shrimp/crab) — vegetarian options
+  (fermented corn) available. Mild warfarin interaction reported (INR
+  elevation) — coordinate with prescriber. Avoid in poorly-controlled diabetes
+  (mild insulin resistance possible). Often paired with chondroitin sulfate
+  for joint protocols.
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Joint Support Reference
+  quote: Glucosamine sulfate 1500 mg/day is well-studied for osteoarthritis pain
+    reduction and joint structure preservation, particularly in knee OA.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

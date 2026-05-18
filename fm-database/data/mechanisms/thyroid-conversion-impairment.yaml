@@ -1,0 +1,57 @@
+slug: thyroid-conversion-impairment
+display_name: T4 → T3 Conversion Impairment
+aliases:
+- impaired-t4-t3-conversion
+- low-t4-to-t3-conversion
+- deiodinase-deficiency
+- low-ft3-pattern
+category: endocrine
+summary: >-
+  Peripheral conversion of T4 (thyroxine) to active T3 (triiodothyronine)
+  depends on three deiodinase enzymes (D1, D2, D3) that require selenium,
+  zinc, and adequate energy substrate. Conversion is suppressed by inflammation
+  (high hsCRP, IL-6), chronic stress (elevated cortisol), starvation/low-calorie
+  states, low ferritin, low selenium, low zinc, and certain medications.
+  Pattern presents as normal-to-high TSH + normal/mid T4 + low fT3 + often
+  elevated rT3. Common cause of persistent hypothyroid symptoms in
+  levothyroxine-treated patients with "normal" TSH. Common FM-relevant
+  driver in Hashimoto's, perimenopause-thyroid overlap, post-viral fatigue,
+  and chronic stress states.
+upstream_drivers:
+- selenium-deficiency
+- zinc-deficiency
+- chronic-inflammation
+- hpa-axis-dysregulation
+- low-ferritin
+- starvation-low-calorie
+- chronic-illness
+downstream_effects:
+- persistent-hypothyroid-symptoms-despite-treatment
+- elevated-reverse-t3
+- fatigue
+- weight-gain
+- brain-fog
+- cold-intolerance
+related_mechanisms:
+- hpa-axis-dysregulation
+- chronic-inflammation
+linked_to_topics:
+- thyroid-dysfunction
+- hashimotos-thyroiditis
+- chronic-fatigue-syndrome
+notes_for_coach: >-
+  Order full thyroid panel (TSH + fT4 + fT3 + rT3 + antibodies + ferritin
+  + selenium + zinc). T3:rT3 ratio < 0.2 strongly suggests conversion problem.
+  Address inflammation + cortisol + nutrient cofactors before adding T3
+  supplementation (which is a prescribing decision).
+sources:
+- id: pizzorno-autoimmune-thyroid
+  location: Hashimoto's Thyroiditis — Therapeutic Considerations
+  quote: Peripheral conversion of T4 to active T3 depends on selenium-containing
+    deiodinases; deficiency is the most common cause of "treated" hypothyroidism
+    with persistent symptoms.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

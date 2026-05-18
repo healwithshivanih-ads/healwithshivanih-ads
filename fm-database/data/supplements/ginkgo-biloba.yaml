@@ -15,6 +15,37 @@ timing_options:
 - with_breakfast
 - with_dinner
 take_with_food: optional
+contraindications:
+  conditions:
+  - bleeding-disorder
+  - upcoming-surgery
+  medications:
+  - warfarin
+  - anticoagulants
+  - apixaban
+  - rivaroxaban
+  - dabigatran
+  - edoxaban
+  - heparin
+  - antiplatelet-agents
+  - aspirin
+  - clopidogrel
+  - prasugrel
+  - ticagrelor
+  - nsaids
+  - ibuprofen
+  - naproxen
+  - ssris
+  - sertraline
+  - fluoxetine
+  - thiazide-diuretics
+  - trazodone
+  life_stages:
+  - pregnancy
+  - lactation
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Avoid in pregnancy and lactation — inadequate human safety data and bleeding-risk concern.
 linked_to_topics:
 - atherosclerosis
 - adhd

@@ -1,0 +1,83 @@
+slug: dong-quai
+display_name: Dong Quai (Angelica sinensis)
+aliases:
+- angelica-sinensis
+- danggui
+- chinese-angelica
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mg
+  tablet:
+    min: 500
+    max: 2000
+    unit: mg
+  liquid:
+    min: 1
+    max: 4
+    unit: ml
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+contraindications:
+  conditions:
+  - bleeding-disorder
+  - hormone-sensitive-cancer
+  - upcoming-surgery
+  - heavy-menstrual-bleeding
+  medications:
+  - warfarin
+  - anticoagulants
+  - apixaban
+  - rivaroxaban
+  - dabigatran
+  - heparin
+  - antiplatelet-agents
+  - aspirin
+  - clopidogrel
+  - nsaids
+  - hormone-replacement-therapy
+  - tamoxifen
+  - aromatase-inhibitors
+  life_stages:
+  - pregnancy
+  - lactation
+pregnancy_safety: contraindicated
+lactation_safety: contraindicated
+pregnancy_safety_note: Strong uterine stimulant — explicitly contraindicated in pregnancy.
+interactions: {}
+linked_to_topics:
+- perimenopause
+- menstrual-irregularity
+- pms
+linked_to_mechanisms:
+- estrogen-receptor-modulation
+linked_to_claims: []
+notes_for_coach: >-
+  Traditional Chinese herb for menstrual and perimenopausal complaints.
+  Strong antiplatelet / anticoagulant effect — never combine with warfarin
+  or other blood thinners (additive bleeding risk). Uterine stimulant —
+  contraindicated in pregnancy. Mild estrogenic effects — avoid in
+  estrogen-sensitive conditions (breast cancer, fibroids exacerbated by
+  estrogen). Often used in TCM formulas rather than as a single herb.
+  Discontinue 2 weeks before any surgery.
+notes_for_client: ''
+sources:
+- id: vitaone-supplementation-dosage
+  location: Herbal Reference — Women's Health
+  quote: Dong quai (Angelica sinensis) is a Traditional Chinese herb for menstrual
+    and perimenopausal complaints; strong antiplatelet effect contraindicated with
+    anticoagulants, and uterine stimulant contraindicated in pregnancy.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

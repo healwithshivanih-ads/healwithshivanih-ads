@@ -1,5 +1,9 @@
 slug: magnesium-glycinate
 display_name: Magnesium Glycinate
+aliases:
+- magnesium-bisglycinate
+- mg-glycinate
+- magnesium-glycinate-chelate
 category: mineral
 forms_available:
 - capsule
@@ -193,6 +197,4 @@ updated_at: '2026-05-05'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
-pregnancy_safety_note: Glycinate form well-tolerated. 400 mg/day OK throughout. Helps with leg cramps + sleep + restless legs
-  in pregnancy.
-aliases: []
+pregnancy_safety_note: "Glycinate form well-tolerated. 400 mg/day OK throughout. Helps with leg cramps + sleep + restless legs in pregnancy."
