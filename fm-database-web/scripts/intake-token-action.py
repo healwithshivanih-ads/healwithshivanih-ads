@@ -140,12 +140,12 @@ def action_generate(payload: dict) -> dict:
     # (intake_reminder_enabled toggle).
     data["intake_reminder_enabled"] = True
     data["intake_reminders_sent_at"] = []
-    # Sending an intake form is an implicit signal that the client signed
-    # up after discovery — auto-flip engagement_status so the "Did they
-    # sign up?" callout on the client Overview clears immediately.
-    # Coach can still override to "declined" / "pending" if needed.
-    if data.get("engagement_status") != "signed_up":
-        data["engagement_status"] = "signed_up"
+    # v0.75 — DO NOT auto-flip engagement_status here. Sending an intake
+    # link used to imply signup, but with the two-stage form (pre-discovery
+    # → full), generating a token can happen BEFORE the discovery call (so
+    # coach has data going in) and the client may not actually convert.
+    # Coach flips engagement_status manually via the EngagementPicker after
+    # the discovery call; unlock_full_intake() handles the signup transition.
     _save_client(client_id, data)
 
     return {
@@ -218,12 +218,17 @@ def action_lookup(payload: dict) -> dict:
             # Best effort — even if we can't persist, the lookup itself
             # should succeed (the client is staring at a loading form).
             pass
+    # v0.75 — two-stage form gate. If the coach has unlocked the full intake
+    # (typically after package signup), serve the full form. Otherwise serve
+    # the lighter pre-discovery form.
+    stage = "full" if data.get("intake_full_unlocked_at") else "pre_discovery"
     return {
         "ok": True,
         "client_id": client_id,
         "display_name": data.get("display_name") or "",
         "intake_form_draft": data.get("intake_form_draft") or {},
         "prefill": _prefill_from_client(data),
+        "stage": stage,
     }
 
 
@@ -1018,6 +1023,76 @@ def action_finalise(payload: dict) -> dict:
     return {"ok": True, "client_id": client_id, "intake_finalised_at": data["intake_finalised_at"]}
 
 
+# ── action: unlock_full_intake (v0.75 — flip pre_discovery → full) ───────────
+
+def action_unlock_full_intake(payload: dict) -> dict:
+    """Coach-triggered: flip the intake form from pre-discovery to full.
+    Typically called after the client signs up for the package — opens the
+    deeper sections (FM body systems, ACE-lite, timeline, etc.) on the
+    same intake URL. Also flips engagement_status to 'signed_up' as the
+    canonical "they're in the programme" marker.
+
+    Idempotent — safe to call twice. If the client has no intake_token yet,
+    coach should generate one first (use action_generate).
+    """
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    try:
+        data = _load_client(client_id)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+    now = _now_iso()
+    if not data.get("intake_full_unlocked_at"):
+        data["intake_full_unlocked_at"] = now
+    data["engagement_status"] = "signed_up"
+    _save_client(client_id, data)
+    return {
+        "ok": True,
+        "client_id": client_id,
+        "intake_full_unlocked_at": data["intake_full_unlocked_at"],
+        "engagement_status": "signed_up",
+    }
+
+
+# ── action: mark_discovery_session_complete (v0.75 — journey marker) ─────────
+
+def action_mark_discovery_session_complete(payload: dict) -> dict:
+    """Coach marks that the discovery call has happened. Stamps
+    discovery_session_completed_at. Pure visibility — no side effects on the
+    intake form or engagement status."""
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    try:
+        data = _load_client(client_id)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+    if not data.get("discovery_session_completed_at"):
+        data["discovery_session_completed_at"] = _now_iso()
+    _save_client(client_id, data)
+    return {"ok": True, "client_id": client_id, "discovery_session_completed_at": data["discovery_session_completed_at"]}
+
+
+# ── action: mark_discovery_lab_pack_sent (v0.75 — journey marker) ────────────
+
+def action_mark_discovery_lab_pack_sent(payload: dict) -> dict:
+    """Coach marks that the discovery-promised lab recommendation has been
+    delivered (WhatsApp, email, or in-app). Pure visibility — no side
+    effects on the intake form or engagement status."""
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    try:
+        data = _load_client(client_id)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+    if not data.get("discovery_lab_pack_sent_at"):
+        data["discovery_lab_pack_sent_at"] = _now_iso()
+    _save_client(client_id, data)
+    return {"ok": True, "client_id": client_id, "discovery_lab_pack_sent_at": data["discovery_lab_pack_sent_at"]}
+
+
 # ── action: revoke ───────────────────────────────────────────────────────────
 
 def action_revoke(payload: dict) -> dict:
@@ -1043,6 +1118,10 @@ ACTIONS = {
     "submit": action_submit,
     "finalise": action_finalise,
     "revoke": action_revoke,
+    # v0.75 — two-stage intake flow + discovery journey markers
+    "unlock_full_intake": action_unlock_full_intake,
+    "mark_discovery_session_complete": action_mark_discovery_session_complete,
+    "mark_discovery_lab_pack_sent": action_mark_discovery_lab_pack_sent,
 }
 
 

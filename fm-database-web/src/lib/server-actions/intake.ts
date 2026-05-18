@@ -40,12 +40,22 @@ async function runScript(
   }
 }
 
+export type IntakeStage = "pre_discovery" | "full";
+
 export type IntakeLookupOk = {
   ok: true;
   client_id: string;
   display_name: string;
   intake_form_draft: Record<string, unknown>;
   prefill: Record<string, unknown>;
+  /**
+   * v0.75 two-stage form gate. `pre_discovery` = short ~14-field form
+   * shown before the discovery call. `full` = the full 3693-line form,
+   * unlocked by the coach (typically after the client signs up for the
+   * package). Server-side derived from intake_full_unlocked_at on the
+   * client record.
+   */
+  stage: IntakeStage;
 };
 export type IntakeLookupErr = { ok: false; error: string; message?: string };
 
@@ -155,6 +165,82 @@ export async function finaliseIntakeForm(
       client_id: clientId,
     })) as
       | { ok: true; client_id: string; intake_finalised_at: string }
+      | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
+ * v0.75 — flip the intake form from pre-discovery to full. Coach calls
+ * this after the client signs up for the package. Opens the deeper
+ * sections (FM body systems, ACE-lite, timeline, etc.) on the same
+ * intake URL the client already has. Also flips engagement_status to
+ * 'signed_up' as the canonical "they're in the programme" marker.
+ *
+ * Idempotent. If no intake_token exists yet, coach should generate one
+ * first via generateIntakeToken.
+ */
+export async function unlockFullIntake(
+  clientId: string
+): Promise<
+  | { ok: true; client_id: string; intake_full_unlocked_at: string; engagement_status: "signed_up" }
+  | { ok: false; error: string }
+> {
+  try {
+    const res = (await runScript("intake-token-action.py", {
+      action: "unlock_full_intake",
+      client_id: clientId,
+    })) as
+      | { ok: true; client_id: string; intake_full_unlocked_at: string; engagement_status: "signed_up" }
+      | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
+ * v0.75 — coach marks that the discovery call has happened. Stamps
+ * `discovery_session_completed_at`. Pure journey-visibility marker —
+ * no side effects on the intake form or engagement status.
+ */
+export async function markDiscoverySessionComplete(
+  clientId: string
+): Promise<
+  | { ok: true; client_id: string; discovery_session_completed_at: string }
+  | { ok: false; error: string }
+> {
+  try {
+    const res = (await runScript("intake-token-action.py", {
+      action: "mark_discovery_session_complete",
+      client_id: clientId,
+    })) as
+      | { ok: true; client_id: string; discovery_session_completed_at: string }
+      | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
+ * v0.75 — coach marks that the discovery-promised lab recommendation has
+ * been delivered (WhatsApp / email / in-app). Pure journey marker.
+ */
+export async function markDiscoveryLabPackSent(
+  clientId: string
+): Promise<
+  | { ok: true; client_id: string; discovery_lab_pack_sent_at: string }
+  | { ok: false; error: string }
+> {
+  try {
+    const res = (await runScript("intake-token-action.py", {
+      action: "mark_discovery_lab_pack_sent",
+      client_id: clientId,
+    })) as
+      | { ok: true; client_id: string; discovery_lab_pack_sent_at: string }
       | { ok: false; error: string };
     return res;
   } catch (e) {

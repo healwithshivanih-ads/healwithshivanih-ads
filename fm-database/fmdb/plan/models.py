@@ -308,6 +308,18 @@ class Client(BaseModel):
     intake_last_submitted_at: Optional[datetime] = None  # Path A — bumps on every re-submit
     intake_finalised_at: Optional[datetime] = None      # coach-locked, no more edits
 
+    # ── v0.75 two-stage intake state ──────────────────────────────────────────
+    # The intake form is gated by stage:
+    #   pre_discovery  →  short ~14-field form for the discovery call prep
+    #   full           →  current 3693-line full intake, unlocked post-signup
+    # The same /intake/<token> URL serves both — server-side routes based on
+    # whether intake_full_unlocked_at is set.
+    intake_full_unlocked_at: Optional[datetime] = None  # coach flips after signup
+    # Coach-visible discovery journey markers — independent of the binary
+    # form gate above. Set manually via buttons on the client Overview.
+    discovery_session_completed_at: Optional[datetime] = None
+    discovery_lab_pack_sent_at: Optional[datetime] = None
+
     # ── v0.72 structured intake form fields ───────────────────────────────────
     # ~60 new fields captured by the v2 intake form, organised by section
     # (matching docs/INTAKE_FORM_DESIGN_BRIEF.md). All Optional / default-empty

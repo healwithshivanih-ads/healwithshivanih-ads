@@ -1,5 +1,6 @@
 import { lookupIntakeToken } from "@/lib/server-actions/intake";
 import { IntakeForm } from "./intake-form";
+import { PreDiscoveryForm } from "./pre-discovery-form";
 
 export const dynamic = "force-dynamic";
 
@@ -35,6 +36,25 @@ export default async function IntakeTokenPage({
         <h1 className="fm-thanks__title">{title}</h1>
         <p className="fm-thanks__body">{body}</p>
       </div>
+    );
+  }
+
+  // v0.75 — two-stage form gate. Same URL, server picks which form to
+  // render based on whether the coach has unlocked the full intake.
+  // - pre_discovery → short ~14-field form, before the discovery call
+  // - full          → the full 3693-line intake, post-package-signup
+  // The client never sees a different URL; the form just expands when
+  // the coach flips the gate (typically after signup) and the client
+  // returns to the same link.
+  if (res.stage === "pre_discovery") {
+    return (
+      <PreDiscoveryForm
+        token={token}
+        clientId={res.client_id}
+        displayName={res.display_name}
+        prefill={res.prefill}
+        draft={res.intake_form_draft}
+      />
     );
   }
 

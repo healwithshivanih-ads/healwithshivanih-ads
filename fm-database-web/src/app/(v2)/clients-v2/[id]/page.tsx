@@ -35,6 +35,7 @@ import { IntakeInsightsCard } from "./intake-insights-card";
 import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
+import { UnlockFullIntakeButton } from "./unlock-full-intake-button";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
@@ -1014,6 +1015,21 @@ export default async function ClientV2Page({
             finalisedAt={
               (client as unknown as { intake_finalised_at?: string })
                 .intake_finalised_at
+            }
+          />
+
+          {/* v0.75 two-stage intake — after client submits pre-discovery,
+              coach flips the gate here to unlock the full form (same URL,
+              client returns to it and the deeper sections appear). */}
+          <UnlockFullIntakeButton
+            clientId={client.client_id}
+            intakeSubmittedAt={
+              (client as unknown as { intake_submitted_at?: string | null })
+                .intake_submitted_at
+            }
+            intakeFullUnlockedAt={
+              (client as unknown as { intake_full_unlocked_at?: string | null })
+                .intake_full_unlocked_at
             }
           />
 
