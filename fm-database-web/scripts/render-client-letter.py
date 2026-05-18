@@ -957,14 +957,34 @@ def _recent_client_voice_block(client_id: str, days_back: int = 14) -> str:
             channel = "client"
 
         # Extract body
+        # Coach-written notes (check-ins, observations) are deliberate
+        # clinical decisions — never effectively truncate them. Inbound
+        # WhatsApp from the client gets a generous-but-bounded cap.
+        # The previous 400-char cap silently dropped the trailing half of
+        # detailed check-ins where the most actionable info (travel
+        # windows, dose changes, referral flags) typically lives.
+        # Bug surfaced for cl-004 18 May 2026 — Australia travel +
+        # supplement adjustments were chopped off mid-sentence so the
+        # generated phase letter had no idea about any of it.
         if coach_notes:
             body = coach_notes
+            char_cap = 5000          # no effective cap for coach decisions
         else:
             body = _TAG_PREFIX_RE.sub("", complaints).strip()
             body = _WA_ENVELOPE_RE.sub("", body).strip()
+            char_cap = 2500          # generous cap for client voice
         body = " ".join(body.split())  # collapse newlines for prompt density
-        if len(body) > 400:
-            body = body[:400].rstrip() + "…"
+        if len(body) > char_cap:
+            # Truncate at last sentence break before cap, not mid-word
+            truncated = body[:char_cap].rstrip()
+            last_break = max(
+                truncated.rfind(". "),
+                truncated.rfind("? "),
+                truncated.rfind("! "),
+            )
+            if last_break > char_cap * 0.6:
+                truncated = truncated[: last_break + 1]
+            body = truncated + " […truncated]"
         if not body:
             continue
         entries.append((sess_date, channel, body))
@@ -2653,12 +2673,18 @@ def _build_prompt_supplement_plan(plan: dict, client: dict, coach_notes: str) ->
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "supplement")
+    # Pull recent check-ins / coach observations / inbound client voice so
+    # supplement letters reflect the latest clinical state (dose drops,
+    # tolerance issues, travel windows). See _recent_client_voice_block
+    # for full rationale.
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     prompt = f"""You are writing a short supplement protocol introduction letter for a client.
 
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{recent_voice}
 {start_when}
 {_BANNED_GENERIC_RULE}
 
@@ -2759,6 +2785,9 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     start_when = _start_when_block(plan, "both")
+    # Pull recent check-ins / coach notes / inbound client voice so the
+    # lifestyle guide reflects the latest clinical state.
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
@@ -2767,6 +2796,7 @@ The coach (Shivani Hariharan) has prepared the structured data below.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{recent_voice}
 {start_when}
 {_BANNED_GENERIC_RULE}
 
@@ -2893,6 +2923,9 @@ def _build_prompt_exercise_plan(plan: dict, client: dict, coach_notes: str) -> s
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    # Pull recent check-ins / coach notes / inbound client voice so the
+    # exercise plan reflects current state (injuries, pacing limits, travel).
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     prompt = f"""You are writing a warm, practical {plan_weeks}-week DETAILED EXERCISE PLAN
 for a client who has explicitly asked for the depth. Most clients get a simple
@@ -2902,6 +2935,7 @@ want a real, progressive movement programme.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{recent_voice}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:
@@ -3035,6 +3069,10 @@ def _build_prompt_recipes(plan: dict, client: dict, coach_notes: str) -> str:
 
     coach_notes_block = _coach_notes_block(coach_notes)
     top_of_mind = _top_of_mind_block(client, plan)
+    # Pull recent check-ins / coach notes / inbound client voice so the
+    # recipe pack reflects current state (food likes/dislikes from check-in,
+    # new sensitivities, travel context affecting cooking access).
+    recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
     # Pull the saved meal-plan markdown if available so the recipe pack
     # matches what the client actually sees in the meal tables.
@@ -3081,6 +3119,7 @@ while cooking — so format must be SCANNABLE, ingredients listed clearly,
 method as numbered steps, no clinical jargon.
 
 {top_of_mind}
+{recent_voice}
 {_BANNED_GENERIC_RULE}
 
 CLIENT PROFILE:

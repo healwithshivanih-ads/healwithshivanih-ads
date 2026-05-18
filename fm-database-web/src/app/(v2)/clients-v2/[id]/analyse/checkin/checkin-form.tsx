@@ -14,7 +14,11 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { saveSessionAction, type FivePillarsData } from "@/lib/server-actions/assess";
+import {
+  saveSessionAction,
+  appendCheckInToPlanAction,
+  type FivePillarsData,
+} from "@/lib/server-actions/assess";
 import {
   FmField,
   FmInput,
@@ -129,6 +133,28 @@ export function CheckInForm({
       });
       if (result.ok) {
         toast.success(`Check-in saved for ${displayName.split(" ")[0]}`);
+
+        // Also append to plan.notes_for_coach so the next letter generation
+        // (week 3-4 phase, supplement plan, lifestyle guide, etc.) sees this
+        // check-in baked into the plan itself — not just in the session
+        // file. This was the v0.56 spec; V2 redesign dropped the call.
+        // Re-added 2026-05-18 after cl-004 phase letter would have missed
+        // travel + supplement adjustments.
+        if (activePlanSlug) {
+          const planNote = sections.join("\n");
+          const appendResult = await appendCheckInToPlanAction(
+            activePlanSlug,
+            planNote,
+            sessionDate,
+          );
+          if (!appendResult.ok) {
+            // Don't block on append failure — session is saved either way.
+            toast.warning(
+              `Session saved, but plan note append failed: ${appendResult.error}`,
+            );
+          }
+        }
+
         router.push(`/clients-v2/${clientId}/analyse`);
         router.refresh();
       } else {
