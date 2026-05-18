@@ -3664,6 +3664,37 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
     - If a meal doesn't fit, repeat one you liked from earlier in the
       week rather than skipping
 
+2c. **✈ For your travel** — INCLUDE THIS SECTION ONLY IF the RECENT
+    BETWEEN-SESSION VOICE block above OR special requests / coach notes
+    mention upcoming travel (destination + dates). Otherwise SKIP this
+    section entirely — do NOT fabricate trips.
+
+    When travel IS detected, write a focused practical section:
+      • Travel dates + destination (one line)
+      • 5-6 safe foods commonly available at the destination that fit
+        her dietary preference + protocol. Be SPECIFIC — draw on real
+        local cuisine knowledge. Example for Australia / Vegetarian Jain:
+        "Cafes commonly have poached eggs (skip if eggetarian-only),
+        avocado on gluten-free toast — ask for no butter; supermarket
+        Vital range has gluten-free wraps; Indian and Thai restaurants
+        in any major Australian city accommodate Jain (just say 'no
+        garlic, no onion, no root veg'); fresh fruit + nuts everywhere."
+      • Restaurant strategy: 3-4 specific phrases she can use ("Is
+        this gluten-free?", "Can I have the sauce on the side?",
+        "Could you cook with olive oil instead of butter?")
+      • Portable snacks to pack from home (4-5 items, e.g. Brazil nuts,
+        homemade ladoos, dry-roasted makhana, soaked dates, herbal tea
+        sachets)
+      • One watch-out tied to the destination + her conditions (e.g.
+        "Australian sourdough is widely promoted as 'gluten-free' but
+        it isn't — only certified GF counts; ask to see the packet")
+
+    For DETAILED mode: also mark travel-week days with ✈ in the meal
+    table column header.
+    For HYBRID mode: mark travel days with ✈ in the sample week table.
+    For PRINCIPLES mode: this section sits before the "5 ideas per
+    slot" section.
+
 {body_instructions}
 
 10. **A note from your coach** — 2–3 sentence warm close, Shivani's name.
