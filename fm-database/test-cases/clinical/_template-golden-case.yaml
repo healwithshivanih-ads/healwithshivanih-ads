@@ -1,0 +1,93 @@
+case_id: _template-golden-case
+case_type: golden
+synthetic: true
+description: |
+  TEMPLATE — copy this file, rename, fill in. Do not actually use this file
+  in tests. The `_` prefix excludes it from the test runner.
+source: |
+  Reference where this clinical pattern is documented (textbook chapter,
+  catalogue source-id, author's own practice). Keep specific enough that a
+  reviewer can verify the expected behaviour.
+
+# Optional priority hint for the runner. high = blocks CI on failure.
+# medium = warns. low = informational only.
+priority: high
+
+# ── Client snapshot ─────────────────────────────────────────────────────────
+# What the system sees when this client walks in. Mirrors the real Client
+# Pydantic model fields used by Assess.
+client:
+  age_band: 45-50                  # required — one of the standard bands
+  sex: F                            # F | M
+  conditions:                       # current diagnosed conditions (topic slugs)
+    - hashimotos-thyroiditis
+    - perimenopause
+  medications:
+    - levothyroxine 50 mcg daily
+  allergies:
+    - sulfa drugs
+  pregnancy_status: not_pregnant    # optional — relevant for safety filters
+  intake_date: 2026-05-18           # for downstream relative-date logic
+
+# ── Intake input ────────────────────────────────────────────────────────────
+# What the coach pre-selects + the consultation transcript text. This is the
+# exact payload passed to assess.synthesize() in live mode.
+intake:
+  symptoms:                         # symptom-slug list, validated against catalogue
+    - fatigue
+    - brain-fog
+    - weight-gain
+    - insomnia
+    - anxiety
+  topics:                           # coach-pre-selected topic slugs
+    - thyroid-dysfunction
+    - hpa-axis-dysregulation
+    - perimenopause
+  presenting_complaints: |
+    Free-text consultation summary. What the client said in their own words
+    plus any objective findings (labs, measurements). Used by the AI to
+    weight evidence. Multi-line OK.
+
+# ── Expected output ─────────────────────────────────────────────────────────
+# What a clinically-correct FM assessment SHOULD produce. The runner compares
+# the AI's actual output against these rules. Each `must_*` is hard pass/fail.
+expected:
+  # AT LEAST ONE driver from each entry below must appear in AI output
+  must_include:
+    drivers:                        # mechanism or topic slugs
+      - thyroid-conversion-impairment
+      - hpa-axis-dysregulation
+    # For supplements: each sub-list is an OR group — at least one slug from
+    # the sub-list must be recommended. Use this when there are multiple
+    # acceptable choices.
+    supplements_any_of:
+      - [selenium]                  # MUST recommend selenium
+      - [magnesium-glycinate, magnesium-bisglycinate]   # one OR the other
+    topics:
+      - thyroid-dysfunction
+      - perimenopause
+
+  # AI must surface these caveats. Match by substring against any concern in
+  # the ai_check output OR any caveat in supplement recommendations.
+  must_warn:
+    - hashimotos-thyroid-iodine     # high-dose iodine flare risk
+    - autoimmune-adaptogen-caution  # ashwagandha can flare some autoimmune
+
+  # AI must refuse or strongly caution against these patterns. Currently
+  # implemented as a stricter form of must_warn.
+  must_block: []
+
+  # AI must include "refer to clinician" or equivalent in output.
+  must_refer: false
+
+  # AI must NOT recommend any of these supplements / interventions.
+  forbidden:
+    - high-dose-iodine
+    - lugols-iodine
+
+# ── Notes for human reviewers ───────────────────────────────────────────────
+notes: |
+  Free-text rationale. Why does this case exist? What clinical pattern is it
+  testing? Future maintainers reading this should understand WHY the expected
+  rules are set as they are. Don't skip this — six months from now you won't
+  remember.
