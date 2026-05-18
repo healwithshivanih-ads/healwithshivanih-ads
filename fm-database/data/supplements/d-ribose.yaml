@@ -1,0 +1,67 @@
+slug: d-ribose
+display_name: D-Ribose
+aliases:
+  - ribose
+  - D-(-)-ribose
+  - corvalen
+  - bioenergy ribose
+category: other
+forms_available:
+  - powder
+  - capsule
+typical_dose_range:
+  powder:
+    min: 5
+    max: 15
+    unit: g
+  capsule:
+    min: 1500
+    max: 5000
+    unit: mg
+timing_options:
+  - morning
+  - mid_morning
+  - mid_afternoon
+take_with_food: optional
+notes_for_coach: |
+  D-Ribose is a pentose sugar that feeds the ATP-recycling pathway
+  directly. Best evidence in mitochondrial-dysfunction conditions —
+  ME/CFS, fibromyalgia, long COVID, post-statin myopathy, congestive
+  heart failure. Typical dose: 5g three times daily for ME/CFS / PEM
+  populations; the Teitelbaum trial showed ~45% energy improvement in
+  fibromyalgia at this dose. Pair with CoQ10 + L-carnitine + magnesium
+  for full mitochondrial support stack. Tastes mildly sweet — clients
+  often dissolve in water or smoothies.
+  Theoretical caveat: may slightly lower blood glucose at high doses
+  (> 15 g/day). Not clinically meaningful at standard 5-15 g/day; coach
+  monitors diabetics on insulin if combining at higher end of range.
+notes_for_client: |
+  This is a natural sugar your body uses to make energy at the cell
+  level. Mixes easily in water or a smoothie. Many clients with deep
+  fatigue or post-COVID exhaustion find it noticeably helpful within
+  2-3 weeks. Doesn't affect blood sugar significantly (different
+  pathway from glucose).
+contraindications:
+  conditions: []
+  medications: []
+  life_stages: []
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+linked_to_topics:
+  - post-exertional-malaise-mecfs
+  - mitochondrial-health-nutrients
+  - chronic-pain-and-fatigue
+linked_to_mechanisms:
+  - mitochondrial-dysfunction
+  - atp-recycling
+sources:
+  - id: coach-shivani
+    location: Coach observation — PEM / mitochondrial support stack
+    quote: D-Ribose paired with CoQ10 + magnesium + L-carnitine is the workhorse mito stack for PEM clients — noticeable in 2-4 weeks for most.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

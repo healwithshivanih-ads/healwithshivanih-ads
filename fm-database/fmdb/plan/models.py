@@ -447,6 +447,19 @@ class Client(BaseModel):
     mould_exposure: list[str] = Field(default_factory=list)
     large_fish_frequency: str = ""       # never / rarely / weekly / multiple_weekly
 
+    # ── v0.75.5 Tier 2 screening (ACE-lite / STOP-BANG / Endometriosis) ──
+    # ACE-lite: 5 chips for adverse childhood experiences + current
+    # hypervigilance patterns. Coach reads patterns, never asks for an
+    # explicit ACE score. Drives HPA-axis framing + trauma-informed
+    # protocol cautions.
+    # STOP-BANG: extends `snore_or_apnoea` with the rest of the STOP-BANG
+    # criteria. Apnoea is radically underdiagnosed in women.
+    # Endometriosis: women-only. Avg diagnostic delay 7-10 years; coach
+    # surfaces from intake.
+    ace_signals: list[str] = Field(default_factory=list)
+    stop_bang_signals: list[str] = Field(default_factory=list)
+    endometriosis_signals: list[str] = Field(default_factory=list)
+
     # ── v0.75.3 — coach-led physical exam findings (in-session, on Zoom) ──
     # Append-only list of structured findings the coach captures during
     # the session (Beighton verify /9 score, NASA lean test HR series,

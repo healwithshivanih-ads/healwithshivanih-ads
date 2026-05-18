@@ -369,6 +369,8 @@ _INTAKE_LIST_FIELDS = [
     "beighton_self_score", "beighton_supplemental",
     "hr_devices_owned", "lean_test_symptoms",
     "pem_screen", "mould_exposure",
+    # ── v0.75.5 Tier 2 screening chip-arrays ──
+    "ace_signals", "stop_bang_signals", "endometriosis_signals",
 ]
 
 # Int-array fields (Bristol type can be 1-7, multi-tick)

@@ -1,0 +1,60 @@
+slug: dao-enzyme
+display_name: DAO Enzyme (Diamine Oxidase)
+aliases:
+  - DAO
+  - diamine oxidase enzyme
+  - exogenous DAO
+  - histaminase supplement
+  - Umbrellux DAO
+  - DAOsin
+category: enzyme
+forms_available:
+  - capsule
+typical_dose_range:
+  capsule:
+    min: 1
+    max: 2
+    unit: capsules
+timing_options:
+  - on_empty_stomach
+take_with_food: optional
+notes_for_coach: |
+  DAO is the enzyme that breaks down dietary histamine in the gut. Taken
+  10-15 minutes BEFORE a high-histamine meal, it can blunt histamine-load
+  symptoms in clients with confirmed or suspected DAO deficiency.
+  Doesn't address root causes (gut healing, copper/B6 cofactor status,
+  food sensitivities) — use as a tactical bridge while addressing those.
+  Brand: Umbrellux DAO (US) or DAOsin (EU). Limited availability in India;
+  often imported. Cost: ₹3000-5000 per bottle. Coach scope:
+  educate + recommend; do not advise abandoning low-histamine diet
+  reliance on DAO alone.
+notes_for_client: |
+  This enzyme helps your body break down histamine from food. Take one
+  capsule 10-15 minutes before a meal that's likely to be high in
+  histamine (aged cheese, leftover meat, fermented foods, wine, etc.).
+  Works best when paired with a low-histamine eating pattern overall,
+  not as a substitute.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+    - pregnancy
+    - lactation
+interactions:
+  with_medications: []
+  with_supplements: []
+  with_foods: []
+linked_to_topics:
+  - histamine-intolerance
+  - mast-cell-activation-syndrome
+linked_to_mechanisms:
+  - histamine-metabolism-impairment
+sources:
+  - id: coach-shivani
+    location: Coach observation — MCAS / histamine intolerance protocol
+    quote: DAO supplementation is a tactical bridge — useful before unavoidable high-histamine meals (travel, weddings, social) while the underlying gut + cofactor work is in progress.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: shivani

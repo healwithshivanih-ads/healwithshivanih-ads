@@ -318,6 +318,56 @@ def _build_intake_payload(client_dict: dict[str, Any]) -> str:
     if bs:
         sections.append("=== BODY SYSTEMS ===\n" + bs.rstrip())
 
+    # v0.75.4 — TIER 1 SCREENING (Joints / Standing / Recovery / Environment)
+    # Captures the MCAS-POTS-EDS / long-COVID / mould-CIRS family on intake.
+    # The system prompt specifically calls these out as triad-suspicion
+    # signals so Haiku frames hypotheses across them, not in isolation.
+    ts = ""
+    ts += _format_list("Beighton self-score (joint hypermobility, /5)", c.get("beighton_self_score"))
+    ts += _format_list("Hypermobility supplementals", c.get("beighton_supplemental"))
+    ts += _format_list("HR-measuring devices owned", c.get("hr_devices_owned"))
+    if c.get("lean_test_supine_hr"):
+        ts += _format_list("Lean test — supine HR (bpm)", c.get("lean_test_supine_hr"))
+    if c.get("lean_test_standing_hr"):
+        ts += _format_list("Lean test — standing HR after 10 min (bpm)", c.get("lean_test_standing_hr"))
+    ts += _format_list("Standing-tolerance / lean-test symptoms", c.get("lean_test_symptoms"))
+    ts += _format_list("Post-exertional malaise (PEM) screen", c.get("pem_screen"))
+    ts += _format_list("Mould / environmental exposure", c.get("mould_exposure"))
+    if c.get("large_fish_frequency"):
+        ts += _format_list("Large-fish frequency", c.get("large_fish_frequency"))
+    # Coach-verified findings — override self-report when present
+    findings = c.get("physical_exam_findings") or []
+    if isinstance(findings, list) and findings:
+        # Show the latest of each kind
+        latest_by_kind: dict = {}
+        for f in findings:
+            if not isinstance(f, dict):
+                continue
+            kind = f.get("kind")
+            if not kind:
+                continue
+            cur = latest_by_kind.get(kind)
+            if cur is None or (f.get("assessed_at") or "") > (cur.get("assessed_at") or ""):
+                latest_by_kind[kind] = f
+        for kind, f in latest_by_kind.items():
+            result = f.get("result") or {}
+            if kind == "beighton":
+                score = result.get("score")
+                hyp = result.get("hypermobile")
+                ts += _format_list(
+                    "Beighton — coach-verified (overrides self-score)",
+                    f"{score}/9{' — hypermobile' if hyp else ''} (assessed {f.get('assessed_at', '?')[:10]})",
+                )
+            elif kind == "nasa_lean_test":
+                delta = result.get("delta_hr")
+                pots = result.get("pots_pattern")
+                ts += _format_list(
+                    "NASA lean — coach-verified",
+                    f"ΔHR +{delta} bpm{' — POTS pattern POSITIVE' if pots else ''} (assessed {f.get('assessed_at', '?')[:10]})",
+                )
+    if ts:
+        sections.append("=== TIER 1 SCREENING (joints / standing / recovery / mould) ===\n" + ts.rstrip())
+
     # REPRODUCTIVE (women)
     if c.get("sex") == "F":
         rp = ""
@@ -457,6 +507,38 @@ SYSTEM_PROMPT = (
     "    discuss simplification.\n"
     "Never assume a supplement on the list is fine — every entry is a decision "
     "the coach needs to make: continue, adjust, or stop.\n\n"
+    "TIER 1 SCREENING — pattern-matching that earns its keep:\n"
+    "The intake now captures specific signals for the MCAS-POTS-EDS / long "
+    "COVID / mould-CIRS family of conditions. These signals individually "
+    "look unremarkable but together form a recognisable triad. When you "
+    "see ≥ 2 of the following in TIER 1 SCREENING + BODY SYSTEMS:\n"
+    "  • Histamine signals ≥ 3 (or 'diagnosed MCAS' chip)\n"
+    "  • Beighton self-score ≥ 3/5 OR coach-verified hypermobile\n"
+    "  • POTS pattern (coach-verified) OR ≥ 3 standing-tolerance symptoms\n"
+    "  • PEM screen ≥ 2 chips (post-exertional malaise / ME/CFS / long COVID)\n"
+    "  • Mould exposure ≥ 2 chips (current home, leaks, musty smell)\n"
+    "→ Surface the TRIAD HYPOTHESIS in `top_hypotheses` as ONE entry, "
+    "not 5 separate ones. Confidence rises with each additional positive. "
+    "Example label: 'MCAS-POTS-EDS triad with PEM overlap' (confidence 0.8). "
+    "Frame the pattern across the cluster rather than treating each finding "
+    "in isolation — the protocols differ substantially: pacing not push-"
+    "through, recumbent not upright exercise, low-histamine meal plan, "
+    "gentle supplement titration starting at quarter doses, avoid "
+    "quercetin > 1g / high-dose curcumin / aggressive detox.\n\n"
+    "Beighton + lean-test specifics: if the client reports POTS-pattern "
+    "symptoms but no HR device, flag in `verify_in_session` that the coach "
+    "should run the 10-min lean test on the Zoom call. Same for Beighton "
+    "≥ 3 — coach should re-check bilateral for the /9 score.\n\n"
+    "PEM is the ONE signal that changes exercise prescription radically. "
+    "If pem_screen has any ticks, flag in `red_flags`: 'PEM positive — "
+    "graded exercise therapy contraindicated; coach should use pacing + "
+    "energy-envelope framing'. This prevents the most common harm in "
+    "this client population.\n\n"
+    "Mould exposure ≥ 2 ticks + multi-system symptoms (especially "
+    "neuroinflammation / brain fog / fatigue / chemical sensitivity) "
+    "→ surface CIRS hypothesis. Coach can refer for mould workup; "
+    "supplement protocol should be gentle (binders + glutathione, NOT "
+    "aggressive detox).\n\n"
     "DIETARY PREFERENCES — common confusions to avoid:\n"
     "  - 'Vegetarian Jain' is LACTO-VEGETARIAN. Dairy (milk, ghee, paneer, "
     "    dahi/curd, buttermilk) is fully permitted and traditionally central. "

@@ -192,6 +192,11 @@ interface FormState {
   mould_exposure: string[];           // chips — visible mould, leaks, work exposures
   large_fish_frequency: string;       // single-select — conditional on non-veg diet
 
+  // v0.75.5 — Tier 2 screening (ACE-lite / STOP-BANG / Endometriosis)
+  ace_signals: string[];              // childhood adversity / current hypervigilance
+  stop_bang_signals: string[];        // sleep-apnoea STOP-BANG deepening
+  endometriosis_signals: string[];    // women-only — endo pattern chips
+
   // Women only — original cycle fields
   cycle_status: string;
   last_menstrual_period: string;
@@ -656,6 +661,41 @@ const LARGE_FISH_FREQUENCY = [
   { value: "multiple_weekly", label: "Multiple times a week" },
 ];
 
+// v0.75.5 — Tier 2 screening chip option constants ─────────────────────────
+// ACE-lite — sensitively framed; coach reads patterns, never asks for an
+// explicit ACE score. The chips capture both *historical* adversity and
+// *current* nervous-system patterns (hypervigilance, dissociation).
+const ACE_SIGNALS = [
+  "prolonged stress / instability / significant loss before age 18",
+  "I startle easily or feel 'always on' / hypervigilant",
+  "my symptoms began around a major life event (illness / death / divorce / accident)",
+  "I can dissociate or 'check out' under stress",
+  "I've felt this way most of my life — no clear before",
+  "none of the above apply / I'd rather not say",
+];
+// STOP-BANG deepening — apnoea is radically underdiagnosed in women.
+// snore_or_apnoea already captures the loudest signal; these add the
+// rest of the STOP-BANG criteria.
+const STOP_BANG_SIGNALS = [
+  "I wake up gasping or choking",
+  "morning headaches",
+  "I need to nap by afternoon despite a full night's sleep",
+  "thick neck or recessed jaw",
+  "scalloped tongue (wavy edges where it touches teeth)",
+  "BMI > 35",
+  "treatment-resistant high blood pressure",
+];
+// Endometriosis — women only. Average diagnostic delay 7-10 years; coach
+// can flag patterns from intake.
+const ENDOMETRIOSIS_SIGNALS = [
+  "period pain bad enough to miss work / school / plans (now or in the past)",
+  "pain during or after sex",
+  "pain emptying bladder or bowels around my period",
+  "heavy periods or clots larger than a 50p / ₹20 coin",
+  "family history of endometriosis / adenomyosis / fibroids",
+  "diagnosed endometriosis / adenomyosis / fibroids",
+];
+
 const ORAL_SIGNS = [
   "bleeding gums",
   "receding gums",
@@ -1000,6 +1040,10 @@ function mergeInitial(
     pem_screen: asStringArray(get("pem_screen")),
     mould_exposure: asStringArray(get("mould_exposure")),
     large_fish_frequency: asString(get("large_fish_frequency")),
+    // v0.75.5 — Tier 2 screening fields
+    ace_signals: asStringArray(get("ace_signals")),
+    stop_bang_signals: asStringArray(get("stop_bang_signals")),
+    endometriosis_signals: asStringArray(get("endometriosis_signals")),
     cycle_status: asString(get("cycle_status")),
     last_menstrual_period: asString(get("last_menstrual_period")),
     cycle_length_days: asString(get("cycle_length_days")),
@@ -1210,6 +1254,10 @@ function buildPayload(s: FormState): Record<string, unknown> {
     pem_screen: s.pem_screen,
     mould_exposure: s.mould_exposure,
     large_fish_frequency: s.large_fish_frequency,
+    // v0.75.5 — Tier 2 screening fields
+    ace_signals: s.ace_signals,
+    stop_bang_signals: s.stop_bang_signals,
+    endometriosis_signals: s.endometriosis_signals,
     period_pain_severity: s.period_pain_severity,
     period_pain_impact: s.period_pain_impact,
     pmdd_signs: s.pmdd_signs,
@@ -3009,6 +3057,18 @@ export function IntakeForm({
             onChange={(v) => set("snore_or_apnoea", v)}
           />
         </FG>
+        {/* v0.75.5 STOP-BANG deepening — apnoea is widely missed in women */}
+        <FG
+          label="Any of these also ring true?"
+          optional="tick all that apply"
+          hint="Apnoea presents differently in women and is often missed. These extras help me catch it."
+        >
+          <ChipMulti
+            value={state.stop_bang_signals}
+            options={STOP_BANG_SIGNALS}
+            onChange={(v) => set("stop_bang_signals", v)}
+          />
+        </FG>
         <FG label="Restless legs" optional="optional">
           <RadiosRow
             name="restless_legs"
@@ -3117,6 +3177,20 @@ export function IntakeForm({
             value={state.childhood_history}
             onChange={(e) => set("childhood_history", e.target.value)}
             placeholder="Antibiotics often? Tummy issues? Asthma / eczema / allergies? Difficult childhood events?"
+          />
+        </FG>
+        {/* v0.75.5 ACE-lite — sensitively framed; coach reads patterns,
+            never asks for an explicit ACE score. Drives HPA-axis framing
+            + trauma-informed protocol cautions. */}
+        <FG
+          label="Stress patterns — past or present"
+          optional="tick anything that resonates, skip anything that doesn't"
+          hint="The body holds long stories. Even one tick changes the lens I bring to your plan. There are no wrong answers, and you never owe me details — these are screens, not interviews."
+        >
+          <ChipMulti
+            value={state.ace_signals}
+            options={ACE_SIGNALS}
+            onChange={(v) => set("ace_signals", v)}
           />
         </FG>
         <FG label="Exposures" optional="optional">
@@ -3924,6 +3998,22 @@ export function IntakeForm({
               value={state.repro_diagnoses}
               options={REPRO_DIAGNOSES}
               onChange={(v) => set("repro_diagnoses", v)}
+            />
+          </FG>
+
+          {/* v0.75.5 Endometriosis screen — avg 7-10y diagnostic delay
+              for endo. Catching the pattern from intake is high-yield even
+              for post-menopausal women (retrospective signal informs
+              current pelvic-inflammation framing). */}
+          <FG
+            label="Period + pelvic pattern (now or in the past)"
+            optional="tick all that apply"
+            hint="Even if you're past your periods, ticking what was true historically helps me read the bigger picture."
+          >
+            <ChipMulti
+              value={state.endometriosis_signals}
+              options={ENDOMETRIOSIS_SIGNALS}
+              onChange={(v) => set("endometriosis_signals", v)}
             />
           </FG>
 
