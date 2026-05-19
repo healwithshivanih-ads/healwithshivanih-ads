@@ -11,6 +11,7 @@
  * z:100 so it covers the legacy chrome — no flash, no scroll bleed.
  */
 import "@/styles/fm-v2.css";
+import "@/styles/fm-v2-communicate.css";
 
 export default function V2Layout({
   children,

@@ -42,6 +42,14 @@
   --fm-text-tertiary:  #999999;
   --fm-text-inverse:   #FFFFFF;
 
+  /* Short aliases used by the Communicate / Weight Loss redesign
+     (Claude Design output uses these). Same values as the
+     -primary/-secondary/-tertiary triplet above — keeping both for
+     backward-compat with existing components. */
+  --fm-text:   #1A1A1A;
+  --fm-text-2: #5A5A5A;
+  --fm-text-3: #999999;
+
   /* ---------- Lines ---------- */
   --fm-border:         #E8E8E8;
   --fm-border-light:   #F0F0F0;
