@@ -41,6 +41,8 @@ import { BeightonVerifyPanel } from "./beighton-verify-panel";
 import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
 import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
+import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
+import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
   FmAppShell,
@@ -1186,6 +1188,22 @@ export default async function ClientV2Page({
               ).meal_plan_style,
             }}
             lastUpdatedAt={(client as unknown as { updated_at?: string }).updated_at}
+          />
+
+          {/* ⚖ Weight-loss goal — client-level config (persists across plan
+              revisions). Shows empty state until coach sets a goal; then
+              renders sparkline, 3-up stats, per-week overrides. */}
+          <WeightLossCard
+            clientId={client.client_id}
+            goal={
+              (client as unknown as { weight_loss?: WeightLossGoal })
+                .weight_loss
+            }
+            measurementsLog={
+              (client as unknown as {
+                measurements_log?: MeasurementEntry[];
+              }).measurements_log
+            }
           />
 
           {/* Sign-up status pill row — always available so the coach can

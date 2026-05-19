@@ -805,7 +805,21 @@ def _has_histamine_signal(client: dict) -> bool:
     """True if the client shows histamine-sensitivity signals that should
     trigger a low-histamine meal-plan overlay. See catalogue claim:
     histamine-sensitive-clients-need-low-histamine-meal-plans.
+
+    Coach can force-disable the overlay per-client by setting
+        disable_overlays: [histamine]
+    on client.yaml. Used when the dermatitis / autoimmune marker that
+    triggered the overlay turned out to be driven by something else
+    (e.g. gluten) — once the trigger is removed the histamine
+    restriction stops being clinically useful and the coach wants
+    to reintroduce ferments etc.
     """
+    disabled = client.get("disable_overlays") or []
+    if isinstance(disabled, list) and any(
+        str(x).lower() == "histamine" for x in disabled
+    ):
+        return False
+
     # Meds — flatten to a single lowercase string for substring matching.
     meds = client.get("current_medications") or []
     if isinstance(meds, list):

@@ -349,15 +349,39 @@ export type PlanPatch = Partial<PlanFields>;
  *  deeper deficit with a custom kcal offset, refeed week → skip
  *  weight-loss content entirely. */
 export interface WeightLossWeekOverride {
-  /** Week numbers in the protocol (inclusive — e.g. [4, 5] = weeks 4 and 5).
-   *  Single-week override: just [N]. */
-  weeks: number[];
+  /** Date range the override applies to (inclusive). Letter generator
+   *  maps these dates → week numbers at build time via
+   *  (date - plan.created_at) / 7. Coach thinks in dates ("she's gone
+   *  22 Jun – 6 Jul"), not protocol weeks. */
+  date_from: string;                  // YYYY-MM-DD
+  date_to: string;                    // YYYY-MM-DD
   mode: "maintenance" | "deeper_deficit" | "skip";
   /** Negative kcal — only used when mode === "deeper_deficit". */
   kcal_offset?: number;
-  /** Surfaces in the meal-plan letter so client knows why this week
-   *  looks different. */
+
+  /** What kind of override this is. Drives how the meal-plan letter
+   *  reshapes that week's content. `travel` triggers localised
+   *  meal-swap mode (regional staples, restaurant guidance,
+   *  what-to-order-at-the-airport). `festival` relaxes restrictions
+   *  for cultural meals. `plateau_break` is a coach-initiated
+   *  diet break. `illness` skips structure entirely. */
+  context?: "travel" | "festival" | "illness" | "plateau_break" | "other";
+
+  /** Travel destination — used by render-client-letter.py when
+   *  context === "travel" to swap to local cuisine + restaurant
+   *  guidance + airport/hotel breakfast tips. City + country, e.g.
+   *  "Sydney, Australia" or "Bangkok, Thailand". */
+  location?: string;
+
+  /** Free-text sticky note for the coach (e.g. "work trip with
+   *  client lunches", "wedding week"). Surfaces in the letter only
+   *  when context is set. */
   reason?: string;
+
+  /** Legacy field — kept for back-compat with any overrides created
+   *  before the date_from/date_to migration. Loader prefers dates if
+   *  present. */
+  weeks?: number[];
 }
 
 /** Per-client weight loss commitment. Persists across plans. Set ONCE

@@ -1329,11 +1329,28 @@ export interface WeightLossGoalPayload {
   notes_for_coach?: string;
 }
 
+export type WeightLossOverrideContext =
+  | "travel"
+  | "festival"
+  | "illness"
+  | "plateau_break"
+  | "other";
+
 export interface WeightLossWeekOverridePayload {
-  weeks: number[];
+  /** Inclusive YYYY-MM-DD range. New overrides MUST use these. */
+  date_from?: string;
+  date_to?: string;
   mode: WeightLossMode;
   kcal_offset?: number;
+  /** Semantic context. When "travel", `location` is read by the
+   *  letter generator to localise meal swaps + restaurant guidance. */
+  context?: WeightLossOverrideContext;
+  /** Travel destination, e.g. "Sydney, Australia". */
+  location?: string;
   reason?: string;
+  /** Legacy: week-number based overrides. Loader preserves these
+   *  but no new override is created this way. */
+  weeks?: number[];
 }
 
 interface WeightLossYaml {
@@ -1453,8 +1470,20 @@ export async function addWeightLossOverride(
   override: WeightLossWeekOverridePayload,
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   if (!clientId) return { ok: false, error: "Missing clientId" };
-  if (!override.weeks || override.weeks.length === 0)
-    return { ok: false, error: "weeks array must be non-empty" };
+  const hasDates = !!(override.date_from && override.date_to);
+  const hasWeeks = override.weeks && override.weeks.length > 0;
+  if (!hasDates && !hasWeeks)
+    return {
+      ok: false,
+      error: "Override needs date_from + date_to (or legacy weeks).",
+    };
+  if (hasDates && override.date_from! > override.date_to!)
+    return { ok: false, error: "date_from must be ≤ date_to" };
+  if (override.context === "travel" && !override.location?.trim())
+    return {
+      ok: false,
+      error: "Travel overrides need a destination so the meal plan can localise.",
+    };
   const read = await readClientYaml(clientId);
   if ("error" in read) return { ok: false, error: read.error };
   const { data, path: clientPath } = read;
@@ -1462,20 +1491,35 @@ export async function addWeightLossOverride(
   const wl = (data.weight_loss as WeightLossYaml | undefined) ?? {};
   if (wl.enabled === undefined) wl.enabled = true;
   const existing = (wl.week_overrides ?? []) as WeightLossWeekOverridePayload[];
-  const overlap = new Set(override.weeks);
-  const filtered = existing.filter(
-    (o) => !o.weeks.some((w) => overlap.has(w)),
-  );
+
+  // Drop existing overrides that overlap the new date range. (Legacy
+  // week-based entries are preserved — they don't have dates to compare.)
+  const filtered = hasDates
+    ? existing.filter((o) => {
+        if (!o.date_from || !o.date_to) return true;
+        return o.date_to < override.date_from! || o.date_from > override.date_to!;
+      })
+    : existing;
+
   filtered.push({
-    weeks: [...override.weeks].sort((a, b) => a - b),
+    ...(hasDates
+      ? { date_from: override.date_from!, date_to: override.date_to! }
+      : { weeks: [...(override.weeks ?? [])].sort((a, b) => a - b) }),
     mode: override.mode,
     ...(override.mode === "deeper_deficit" && override.kcal_offset !== undefined
       ? { kcal_offset: override.kcal_offset }
       : {}),
+    ...(override.context ? { context: override.context } : {}),
+    ...(override.location?.trim() ? { location: override.location.trim() } : {}),
     ...(override.reason?.trim() ? { reason: override.reason.trim() } : {}),
   });
-  // Sort by first week ascending so the UI list is predictable.
-  filtered.sort((a, b) => Math.min(...a.weeks) - Math.min(...b.weeks));
+  // Sort by date (or first week for legacy) ascending so the UI list
+  // is predictable.
+  filtered.sort((a, b) => {
+    const ka = a.date_from ?? (a.weeks ? String(Math.min(...a.weeks)).padStart(4, "0") : "");
+    const kb = b.date_from ?? (b.weeks ? String(Math.min(...b.weeks)).padStart(4, "0") : "");
+    return ka.localeCompare(kb);
+  });
   wl.week_overrides = filtered;
   data.weight_loss = wl;
 
