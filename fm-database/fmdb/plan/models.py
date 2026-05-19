@@ -273,6 +273,32 @@ class Client(BaseModel):
     #   hybrid     = principles FIRST, then a single sample week table
     # Default "hybrid" — works for most new clients; coach can refine.
     meal_plan_style: str = "hybrid"
+    # Per-client weight loss goal — set once, applies to ALL meal-plan
+    # letters automatically (initial, phase letters 3-4 / 5-6 / etc).
+    # When enabled, render-client-letter.py reads this to compute calorie
+    # targets + portion control. Without it, meal plans are
+    # weight-loss-naive. Sparse: not present on every client.
+    #
+    # Shape:
+    #   weight_loss:
+    #     enabled: true | false
+    #     starting_weight_kg: 80.0
+    #     starting_date: '2026-05-06'
+    #     goal_kg: 6.0                     # total to lose
+    #     goal_target_date: '2026-08-01'   # by when
+    #     pace: slow | moderate | faster
+    #     activity_level: sedentary | light | moderate | active
+    #     exercise_current: str            # what they currently do
+    #     exercise_open_to: str            # what they'd consider
+    #     exercise_days_per_week: int
+    #     exercise_limitations: str        # e.g. "knee pain (left)"
+    #     notes_for_coach: str             # coach-only context
+    #     week_overrides:                  # sparse: most clients have []
+    #       - weeks: [4, 5]                # week numbers in protocol
+    #         mode: maintenance | deeper_deficit | skip
+    #         kcal_offset: -200            # only for deeper_deficit
+    #         reason: 'Australia travel'
+    weight_loss: Optional[dict] = None
     # v2.5 — per-client letter preferences. Some clients refuse supplements,
     # others don't want the exercise plan, others just need the consolidated
     # all-in-one. Default: consolidated only (the most common ship). Coach

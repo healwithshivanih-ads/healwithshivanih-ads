@@ -343,6 +343,44 @@ export interface Plan extends PlanFields {
  */
 export type PlanPatch = Partial<PlanFields>;
 
+/** Per-week override on the weight loss config — sparse list. Each
+ *  entry adjusts what the meal-plan letter computes for the named weeks.
+ *  Examples: travel week → maintenance (no deficit), pre-event push →
+ *  deeper deficit with a custom kcal offset, refeed week → skip
+ *  weight-loss content entirely. */
+export interface WeightLossWeekOverride {
+  /** Week numbers in the protocol (inclusive — e.g. [4, 5] = weeks 4 and 5).
+   *  Single-week override: just [N]. */
+  weeks: number[];
+  mode: "maintenance" | "deeper_deficit" | "skip";
+  /** Negative kcal — only used when mode === "deeper_deficit". */
+  kcal_offset?: number;
+  /** Surfaces in the meal-plan letter so client knows why this week
+   *  looks different. */
+  reason?: string;
+}
+
+/** Per-client weight loss commitment. Persists across plans. Set ONCE
+ *  on Overview; coach adds week_overrides for travel / festivals /
+ *  plateau breaks. Read by render-client-letter.py to compute calorie
+ *  targets + portion control. */
+export interface WeightLossGoal {
+  enabled: boolean;
+  starting_weight_kg: number;
+  starting_date: string;          // YYYY-MM-DD
+  goal_kg: number;                // total kg to lose
+  goal_target_date: string;       // YYYY-MM-DD by when
+  pace: "slow" | "moderate" | "faster";
+  activity_level: "sedentary" | "light" | "moderate" | "active";
+  exercise_current?: string;
+  exercise_open_to?: string;
+  exercise_days_per_week?: number;
+  exercise_limitations?: string;
+  /** Coach-only context — never sent to client. */
+  notes_for_coach?: string;
+  week_overrides?: WeightLossWeekOverride[];
+}
+
 export interface MeasurementEntry {
   date: string;                       // YYYY-MM-DD
   weight_kg?: number;
@@ -414,6 +452,11 @@ export interface Client {
    *    principles = do's/don'ts + categories + portions + 5 ideas/slot
    *    hybrid     = principles first, then a sample week (default) */
   meal_plan_style?: "detailed" | "principles" | "hybrid";
+
+  /** Per-client weight loss goal. Persists across plan revisions. Read
+   *  by render-client-letter.py to compute calorie targets + portion
+   *  control + per-week mode overrides. Null = no goal active. */
+  weight_loss?: WeightLossGoal;
 
   // Clinical
   medical_history?: string[];

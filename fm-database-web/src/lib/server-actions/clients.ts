@@ -1307,6 +1307,236 @@ export async function addMeasurementAction(
   }
 }
 
+// ── Weight loss goal CRUD ────────────────────────────────────────────────────
+// Per-client commitment that drives every meal-plan letter. Set once on
+// Overview, applies to all letters automatically. Per-week overrides
+// handle travel / festivals / plateau breaks without re-typing the goal.
+
+type WeightLossMode = "maintenance" | "deeper_deficit" | "skip";
+
+export interface WeightLossGoalPayload {
+  enabled?: boolean;
+  starting_weight_kg?: number;
+  starting_date?: string;          // YYYY-MM-DD
+  goal_kg?: number;
+  goal_target_date?: string;       // YYYY-MM-DD
+  pace?: "slow" | "moderate" | "faster";
+  activity_level?: "sedentary" | "light" | "moderate" | "active";
+  exercise_current?: string;
+  exercise_open_to?: string;
+  exercise_days_per_week?: number;
+  exercise_limitations?: string;
+  notes_for_coach?: string;
+}
+
+export interface WeightLossWeekOverridePayload {
+  weeks: number[];
+  mode: WeightLossMode;
+  kcal_offset?: number;
+  reason?: string;
+}
+
+interface WeightLossYaml {
+  enabled?: boolean;
+  starting_weight_kg?: number;
+  starting_date?: string;
+  goal_kg?: number;
+  goal_target_date?: string;
+  pace?: string;
+  activity_level?: string;
+  exercise_current?: string;
+  exercise_open_to?: string;
+  exercise_days_per_week?: number;
+  exercise_limitations?: string;
+  notes_for_coach?: string;
+  week_overrides?: WeightLossWeekOverridePayload[];
+  [k: string]: unknown;
+}
+
+async function readClientYaml(
+  clientId: string,
+): Promise<{ data: Record<string, unknown>; path: string } | { error: string }> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    clientId,
+    "client.yaml",
+  );
+  try {
+    const yamlMod = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yamlMod.load(raw) as Record<string, unknown>) ?? {};
+    return { data, path: clientYaml };
+  } catch (err) {
+    return { error: (err as Error).message };
+  }
+}
+
+async function writeClientYaml(
+  filePath: string,
+  data: Record<string, unknown>,
+  clientId: string,
+): Promise<void> {
+  const yamlMod = await import("js-yaml");
+  data.updated_at = new Date().toISOString();
+  await fs.writeFile(
+    filePath,
+    yamlMod.dump(data, { noRefs: true, sortKeys: false }),
+    "utf8",
+  );
+  // Revalidate every surface that reads weight_loss
+  revalidatePath(`/clients-v2/${clientId}`);
+  revalidatePath(`/clients-v2/${clientId}/communicate`);
+  revalidatePath(`/clients-v2/${clientId}/plan`);
+  revalidatePath(`/clients/${clientId}`);
+}
+
+/** Create or update the entire weight_loss goal block.
+ *  Merges with existing values — pass undefined for fields you don't
+ *  want to touch. Existing week_overrides are preserved (use the
+ *  add/remove actions to mutate the list). */
+export async function updateClientWeightLossGoal(
+  clientId: string,
+  payload: WeightLossGoalPayload,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "Missing clientId" };
+  const read = await readClientYaml(clientId);
+  if ("error" in read) return { ok: false, error: read.error };
+  const { data, path: clientPath } = read;
+
+  const existing = (data.weight_loss as WeightLossYaml | undefined) ?? {};
+  const next: WeightLossYaml = { ...existing };
+
+  // Trim string fields; null/undefined → leave existing as-is.
+  if (payload.enabled !== undefined) next.enabled = payload.enabled;
+  if (payload.starting_weight_kg !== undefined)
+    next.starting_weight_kg = payload.starting_weight_kg;
+  if (payload.starting_date !== undefined)
+    next.starting_date = payload.starting_date.trim() || undefined;
+  if (payload.goal_kg !== undefined) next.goal_kg = payload.goal_kg;
+  if (payload.goal_target_date !== undefined)
+    next.goal_target_date = payload.goal_target_date.trim() || undefined;
+  if (payload.pace !== undefined) next.pace = payload.pace;
+  if (payload.activity_level !== undefined)
+    next.activity_level = payload.activity_level;
+  if (payload.exercise_current !== undefined)
+    next.exercise_current = payload.exercise_current.trim() || undefined;
+  if (payload.exercise_open_to !== undefined)
+    next.exercise_open_to = payload.exercise_open_to.trim() || undefined;
+  if (payload.exercise_days_per_week !== undefined)
+    next.exercise_days_per_week = payload.exercise_days_per_week;
+  if (payload.exercise_limitations !== undefined)
+    next.exercise_limitations = payload.exercise_limitations.trim() || undefined;
+  if (payload.notes_for_coach !== undefined)
+    next.notes_for_coach = payload.notes_for_coach.trim() || undefined;
+
+  // Default-enable when the coach saves a goal block without explicit flag.
+  // Coach can pause via pauseWeightLossGoal.
+  if (next.enabled === undefined) next.enabled = true;
+
+  data.weight_loss = next;
+
+  try {
+    await writeClientYaml(clientPath, data, clientId);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+/** Append a per-week override to the goal. Dedupes by weeks set — if an
+ *  override already exists covering ANY of the same week numbers, it's
+ *  replaced (last-write-wins). Coach intent: "wks 4-5 maintenance"
+ *  overwrites whatever was there for those weeks. */
+export async function addWeightLossOverride(
+  clientId: string,
+  override: WeightLossWeekOverridePayload,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "Missing clientId" };
+  if (!override.weeks || override.weeks.length === 0)
+    return { ok: false, error: "weeks array must be non-empty" };
+  const read = await readClientYaml(clientId);
+  if ("error" in read) return { ok: false, error: read.error };
+  const { data, path: clientPath } = read;
+
+  const wl = (data.weight_loss as WeightLossYaml | undefined) ?? {};
+  if (wl.enabled === undefined) wl.enabled = true;
+  const existing = (wl.week_overrides ?? []) as WeightLossWeekOverridePayload[];
+  const overlap = new Set(override.weeks);
+  const filtered = existing.filter(
+    (o) => !o.weeks.some((w) => overlap.has(w)),
+  );
+  filtered.push({
+    weeks: [...override.weeks].sort((a, b) => a - b),
+    mode: override.mode,
+    ...(override.mode === "deeper_deficit" && override.kcal_offset !== undefined
+      ? { kcal_offset: override.kcal_offset }
+      : {}),
+    ...(override.reason?.trim() ? { reason: override.reason.trim() } : {}),
+  });
+  // Sort by first week ascending so the UI list is predictable.
+  filtered.sort((a, b) => Math.min(...a.weeks) - Math.min(...b.weeks));
+  wl.week_overrides = filtered;
+  data.weight_loss = wl;
+
+  try {
+    await writeClientYaml(clientPath, data, clientId);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+/** Remove a per-week override by its index in the current list. */
+export async function removeWeightLossOverride(
+  clientId: string,
+  index: number,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "Missing clientId" };
+  const read = await readClientYaml(clientId);
+  if ("error" in read) return { ok: false, error: read.error };
+  const { data, path: clientPath } = read;
+
+  const wl = (data.weight_loss as WeightLossYaml | undefined) ?? {};
+  const existing = (wl.week_overrides ?? []) as WeightLossWeekOverridePayload[];
+  if (index < 0 || index >= existing.length)
+    return { ok: false, error: `Override index ${index} out of range` };
+  existing.splice(index, 1);
+  wl.week_overrides = existing;
+  data.weight_loss = wl;
+
+  try {
+    await writeClientYaml(clientPath, data, clientId);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+/** Flip the enabled flag without touching the rest of the config —
+ *  preserves goal_kg / pace / overrides so coach can re-enable later
+ *  without re-entering everything. */
+export async function pauseWeightLossGoal(
+  clientId: string,
+  paused: boolean,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "Missing clientId" };
+  const read = await readClientYaml(clientId);
+  if ("error" in read) return { ok: false, error: read.error };
+  const { data, path: clientPath } = read;
+
+  const wl = (data.weight_loss as WeightLossYaml | undefined) ?? {};
+  wl.enabled = !paused;
+  data.weight_loss = wl;
+
+  try {
+    await writeClientYaml(clientPath, data, clientId);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 export async function deleteReportAction(clientId: string, reportId: string): Promise<{ ok: boolean; error?: string }> {
   try {
     const yaml = await import("js-yaml");
