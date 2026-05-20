@@ -774,6 +774,40 @@ HARD RULES (violating these breaks the downstream system):
     (hormone metabolites) and OAT (organic acids) — if a panel is on
     file, its findings should be load-bearing in the resulting plan.
 
+    A `functional_test_findings` entry can ALSO be a genetic or
+    food-sensitivity report (uploaded via the Functional Test panel
+    rather than the Reports tab). Such entries carry the SAME
+    type-specific fields described in 11y — `genetic_variants`
+    (gene / variant / genotype / zygosity / fm_relevance),
+    `methylation_summary`, `detox_summary`, `reactive_foods`,
+    `food_groups_affected`. Treat them exactly as 11y instructs,
+    wherever they appear. The folder a report sits in must NOT change
+    how you act on it.
+
+11z. REWORK SUGGESTION — `client_context.rework_suggestion`, when present,
+    is the distilled output of a GENETIC or rework report the coach
+    uploaded (`triggered_by` names the source). It carries:
+    - `rationale` — the clinical story tying the genetics together.
+    - `suggested_changes` — a list of {op, target_kind, target_slug,
+      description, reason}. `op` is usually "add" (a supplement / topic /
+      lab the genetics call for) or "escalate".
+    This is coach-confirmed, genetics-grounded intelligence — treat it as
+    AUTHORITATIVE, the same weight as functional_test flagged_drivers.
+    For every `suggested_changes` entry:
+    - op=add + target_kind=supplement → include that supplement in
+      `supplement_suggestions` (if it resolves in the catalogue subgraph;
+      if not, add to `catalogue_additions_suggested`). Cite the genetic
+      reason in `coach_rationale`.
+    - op=add + target_kind=topic → fold into `topics_in_play`.
+    - op=add + target_kind=lab_order → add to `lab_followups`.
+    - op=escalate → reflect the dose/intensity change in the relevant
+      suggestion.
+    A plan generated for a client who HAS a rework_suggestion but ignores
+    its genetic supplement recommendations is a failure — the coach ran a
+    genetic test specifically to drive the protocol. Honour the FOOD-FIRST
+    rule (3c) even here: if a genetics-suggested nutrient is better met by
+    food, put the food in nutrition.add instead.
+
 11b. CURRENT SUPPLEMENTS — `client_context.current_supplements` lists what
     the client is already taking (OTC vitamins, minerals, herbs, probiotics,
     ayurvedic mixes). EVERY entry on that list MUST get an explicit decision

@@ -657,6 +657,77 @@ _CSS = f"""
     border-top: 1.5px solid var(--indigo);
   }}
 
+  /* ── Daily Routine timeline — the at-a-glance day strip ──────────
+     Visible on screen (unlike the schedule) and placed near the top of
+     the letter so the client can't miss it. Has its own print button
+     (printRoutine → body[data-print-routine]). */
+  #daily-routine {{
+    margin: 36px 0;
+    padding: 22px 24px;
+    background: #faf8f6;
+    border: 1.5px solid var(--rose);
+    border-radius: 14px;
+  }}
+  .routine-header {{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }}
+  .routine-title {{
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--indigo);
+    margin: 0 0 6px;
+  }}
+  .routine-subtitle {{
+    font-size: 12.5px;
+    color: var(--lavender);
+    margin: 0;
+    max-width: 32em;
+    line-height: 1.55;
+  }}
+  .routine-track {{ display: flex; flex-direction: column; }}
+  .routine-row {{
+    display: flex;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e3ddd7;
+  }}
+  .routine-row:last-child {{ border-bottom: none; }}
+  .routine-anchor {{
+    flex: 0 0 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }}
+  .routine-emoji {{ font-size: 19px; }}
+  .routine-label {{ font-weight: 700; font-size: 13px; color: var(--indigo); }}
+  .routine-time {{
+    font-size: 10px;
+    color: var(--lavender);
+    font-family: 'Courier New', monospace;
+  }}
+  .routine-body {{ flex: 1; min-width: 0; }}
+  .routine-activity {{
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }}
+  .routine-supp {{ font-size: 12.5px; color: #3a4250; margin-top: 3px; line-height: 1.4; }}
+  .routine-supp-dose {{ color: var(--lavender); font-size: 11.5px; }}
+  .routine-supp-tag {{ color: #8a4a14; font-size: 11px; }}
+  .routine-supp-none {{ color: #b8b2aa; font-style: italic; font-size: 11.5px; }}
+  .routine-foot {{
+    font-size: 11.5px;
+    color: var(--lavender);
+    margin-top: 14px;
+    line-height: 1.55;
+  }}
+
   .schedule-header {{
     display: flex;
     align-items: flex-start;
@@ -984,6 +1055,24 @@ _CSS = f"""
     body[data-print-supplement] .schedule-table th {{ font-size: 10px; padding: 6px 8px; }}
     body[data-print-supplement] .schedule-table td {{ padding: 5px 8px; line-height: 1.35; }}
     body[data-print-supplement] .schedule-table {{ page-break-inside: avoid; }}
+
+    /* ── Print just the Daily Routine ──────────────────────────────
+       printRoutine() sets body[data-print-routine] — hide everything
+       except #daily-routine so the client gets a clean one-page strip
+       for the fridge. */
+    body[data-print-routine] .page > .doc-title-block,
+    body[data-print-routine] .page > .content,
+    body[data-print-routine] #supplement-shopping-list,
+    body[data-print-routine] #supplement-schedule,
+    body[data-print-routine] .page > .brand-footer {{ display: none !important; }}
+    body[data-print-routine] #daily-routine {{
+      margin: 0 !important;
+      border: none !important;
+      background: #fff !important;
+      padding: 0 !important;
+    }}
+    body[data-print-routine] .print-btn {{ display: none !important; }}
+    body[data-print-routine] .routine-row {{ page-break-inside: avoid; }}
   }}
 
   @page {{
@@ -1029,6 +1118,14 @@ def _start_date_buttons_html(
     generated before this feature shipped).
     """
     if not meal_start_ymd:
+        return ""
+
+    # Weeks-after-1-2 letters (the fortnight phase letters) must NOT ask
+    # the client when they start — Day 1 was locked at the initial
+    # package; by Week 3 they are already mid-plan. The confirm/change
+    # start-date buttons belong only on the first letter. Coach decision
+    # 2026-05-20.
+    if (letter_type or "") == "meal_plan_phase":
         return ""
 
     from urllib.parse import quote
@@ -1250,6 +1347,7 @@ def wrap_in_brand_html(
     window.addEventListener('afterprint', function () {{
       document.body.removeAttribute('data-print-week');
       document.body.removeAttribute('data-print-supplement');
+      document.body.removeAttribute('data-print-routine');
     }});
   }})();
   </script>

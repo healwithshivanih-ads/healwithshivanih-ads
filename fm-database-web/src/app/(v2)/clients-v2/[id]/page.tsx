@@ -747,7 +747,10 @@ export default async function ClientV2Page({
             : stageInfo.stage === "draft"
               ? `/clients-v2/${id}/plan/edit/${plansForClient.find((p) => (p._bucket ?? p.status) !== "published")?.slug ?? ""}`
               : stageInfo.stage === "active"
-                ? `/clients-v2/${id}/plan/edit/${plansForClient.find((p) => (p._bucket ?? p.status) === "published")?.slug ?? ""}`
+                ? // CTA reads "Generate letters" — must land on the
+                  // Communicate tab (where letters are generated/sent),
+                  // not the plan editor. Coach fix 2026-05-20.
+                  `/clients-v2/${id}/communicate`
                 : stageInfo.stage === "recheck"
                   ? `/clients-v2/${id}/plan#follow-up-panel`
                   : `/clients-v2/${id}/analyse`

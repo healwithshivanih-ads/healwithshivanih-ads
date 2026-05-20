@@ -64,7 +64,8 @@ import { PlanOutcomesPanel } from "./plan-outcomes-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 // GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
 // around line 745 for the pointer card that replaced it.
-import { RegenerateStaleButton } from "../communicate/regenerate-stale-button";
+// RegenerateStaleButton import removed 2026-05-20 — the letter-staleness
+// banner it served is gone; the coach regenerates from the letter editor.
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
 import { PlanConflictPanel } from "./plan-conflict-panel";

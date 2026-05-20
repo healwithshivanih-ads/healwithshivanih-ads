@@ -367,12 +367,19 @@ def _load_functional_tests(plans_root: Path, client_id: str) -> list[dict]:
             d = yaml.safe_load(fp.read_text()) or {}
             if not isinstance(d, dict):
                 continue
-            out.append({
+            tt = (d.get("test_type") or "unknown").lower()
+            entry = {
                 "test_type": d.get("test_type") or "unknown",
                 "test_date": d.get("test_date") or None,
                 "summary": d.get("summary") or "",
                 "flagged_drivers": d.get("flagged_drivers") or [],
-                "clinical_recommendations": d.get("clinical_recommendations") or [],
+                # GI/DUTCH parsers write `clinical_recommendations`; the
+                # genetic parser writes `fm_recommendations` — accept both.
+                "clinical_recommendations": (
+                    d.get("clinical_recommendations")
+                    or d.get("fm_recommendations")
+                    or []
+                ),
                 # A pruned subset of the structured findings — the keys the
                 # AI is most likely to act on. Keeps prompt size sane.
                 "key_findings": {
@@ -384,7 +391,51 @@ def _load_functional_tests(plans_root: Path, client_id: str) -> list[dict]:
                         "mitochondrial_function", "yeast_fungal", "bacterial_dysbiosis",
                     )
                 },
-            })
+            }
+            # ── Type-aware extraction ──────────────────────────────────
+            # A genetic / food-sensitivity / OAT report can land in
+            # functional_tests/ (e.g. uploaded via the Functional Test
+            # panel instead of the Reports tab). The GI-shaped key_findings
+            # allowlist above would silently strip its real data — the SNP
+            # list, the reactive-food buckets. Pull the type-specific
+            # fields so nothing the coach uploaded is lost. Mirrors the
+            # extraction in _load_external_reports; the suggester's rules
+            # 11y/11a both consume these. (Bug fix 2026-05-20 — Archana's
+            # genetic report sat in functional_tests/ and its MTHFR/COMT/
+            # GSTP1 variants never reached the plan-generation AI.)
+            if tt in ("genetic", "genetic_test"):
+                snps = d.get("snps") or d.get("fm_relevant_variants") or []
+                # Keep only ACTIONABLE variants — drop homozygous-wild SNPs
+                # (explicitly "no action needed"). A genetic panel can list
+                # 40-50 SNPs; the wild-type ones are prompt noise. The
+                # heterozygous / homozygous-variant / risk ones are what
+                # drive the protocol.
+                entry["genetic_variants"] = [
+                    {
+                        "gene": s.get("gene"),
+                        "variant": s.get("variant"),
+                        "genotype": s.get("genotype"),
+                        "zygosity": s.get("zygosity"),
+                        "fm_relevance": s.get("fm_relevance") or s.get("implication"),
+                    }
+                    for s in snps
+                    if isinstance(s, dict)
+                    and "wild" not in str(s.get("zygosity") or "").lower()
+                ]
+                if d.get("methylation_summary"):
+                    entry["methylation_summary"] = d["methylation_summary"]
+                if d.get("detox_summary"):
+                    entry["detox_summary"] = d["detox_summary"]
+            elif tt in ("food_sensitivity", "food-sensitivity"):
+                entry["reactive_foods"] = d.get("reactive_foods") or {}
+                entry["food_groups_affected"] = d.get("food_groups_affected") or []
+            elif tt in ("organic_acids", "oat"):
+                for k in ("yeast_fungal", "bacterial_dysbiosis",
+                          "mitochondrial_function", "neurotransmitter_metabolism",
+                          "oxalates", "detox_capacity"):
+                    if d.get(k):
+                        entry[k] = d[k]
+            out.append(entry)
         except Exception:
             continue
     return out
@@ -730,6 +781,23 @@ def main() -> int:
         # Food-sensitivity reactive_foods in particular should be flowing
         # into nutrition.reduce and foods_to_avoid.
         "external_reports": _load_external_reports(root, client.client_id),
+        # Genetic / rework suggestion (v0.62). When a genetic or rework
+        # report is uploaded, assess-rework.py distils it into
+        # client.rework_suggestion — structured `suggested_changes`
+        # (op/target_kind/target_slug/reason) + a rationale. Until now this
+        # was a coach-facing banner ONLY and never reached plan generation,
+        # so a genetic report's whole intelligence (MTHFR → methylfolate,
+        # GSTP1 → NAC, etc.) was invisible to the suggester. Feed it in so
+        # the AI builds the genetics into the plan. See suggester rule 11z.
+        "rework_suggestion": (
+            {
+                "triggered_by": _rw.get("triggered_by"),
+                "rationale": _rw.get("rationale"),
+                "suggested_changes": _rw.get("suggested_changes") or [],
+            }
+            if isinstance((_rw := getattr(client, "rework_suggestion", None)), dict)
+            else None
+        ),
         # Intake form depth — body systems, sleep depth, stress, COVID,
         # family-specific, environment, layered medication categories,
         # reproductive depth, past-history, readiness, weight history.

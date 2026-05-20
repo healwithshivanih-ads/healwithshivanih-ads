@@ -22,7 +22,7 @@
  */
 
 import { useEffect, useState } from "react";
-import { FmPanel, FmChip } from "@/components/fm";
+import { FmPanel } from "@/components/fm";
 import {
   getLetterStalenessAction,
   type LetterStalenessEntry,
@@ -151,9 +151,8 @@ export function GeneratedLettersPanel({ clientId, planSlug, communicateHref }: P
             <span>extracted from the full client letter</span>
             <span aria-hidden style={{ opacity: 0.5 }}>·</span>
             <span>generated {relativeDate(picked.savedAt)}</span>
-            {picked.stale && (
-              <FmChip tone="warning">⚠ Stale — plan edited after this</FmChip>
-            )}
+            {/* "Stale" chip removed 2026-05-20 — letter staleness is no
+                longer surfaced; the coach regenerates on demand. */}
             <a
               href={communicateHref}
               style={{

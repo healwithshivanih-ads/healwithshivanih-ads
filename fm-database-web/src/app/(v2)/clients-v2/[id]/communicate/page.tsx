@@ -26,13 +26,15 @@ import type { Client, WeightLossGoal } from "@/lib/fmdb/types";
 import { TravelOverridesPanel } from "@/components/client-widgets/travel-overrides-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import {
-  getLetterStalenessAction,
   loadMealPlan,
   listSavedPhasesAction,
   type LetterType,
   type SavedPhase,
 } from "@/lib/server-actions/plan-lifecycle";
-import { RegenerateStaleButton } from "./regenerate-stale-button";
+// Letter-staleness banner removed 2026-05-20 (coach decision): a
+// timestamp-only "plan changed → letters stale" nag added friction
+// without value. The coach decides when to regenerate — the letter
+// editor's 🪄 Regenerate button is always available on demand.
 import { LetterGenerateTrigger } from "./letter-generate-modal";
 // PhaseLetterPanel, FmPanel, Link, LetterSendEntry imports removed
 // 2026-05-19 — they only fed the legacy `<details>` fallback block
@@ -115,13 +117,6 @@ export default async function CommunicateTabPage({
           (activePlan._bucket as string | undefined) ??
           "draft",
       }
-    : null;
-
-  // Letter staleness — same check the Plan tab runs, mirrored here so a
-  // coach who deep-links straight to Communicate can't unknowingly send a
-  // stale letter (plan edited after the last letter was generated).
-  const staleness = activePlan
-    ? await getLetterStalenessAction(activePlan.slug as string, id)
     : null;
 
   // ── Saved-letter probe: check disk for each letter type so the new
@@ -274,67 +269,10 @@ export default async function CommunicateTabPage({
         </div>
       )}
 
-      {staleness?.anyStale && activePlan && (
-        <div
-          style={{
-            marginBottom: 12,
-            padding: "10px 14px",
-            background: "rgba(245, 158, 11, 0.08)",
-            border: "1.5px solid rgba(245, 158, 11, 0.55)",
-            borderRadius: "var(--fm-radius-md)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
-            <span style={{ fontSize: 16 }}>📄</span>
-            <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>
-                Letters are stale — plan edited after{" "}
-                {staleness.staleCount === 1
-                  ? "1 saved letter was generated"
-                  : `${staleness.staleCount} saved letters were generated`}
-              </div>
-              <div
-                style={{
-                  fontSize: 11,
-                  color: "#78350f",
-                  marginTop: 2,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 6,
-                }}
-              >
-                {staleness.entries
-                  .filter((e) => e.stale)
-                  .map((e) => (
-                    <span
-                      key={e.type}
-                      style={{
-                        padding: "1px 6px",
-                        background: "rgba(245, 158, 11, 0.15)",
-                        borderRadius: 4,
-                        fontFamily: "var(--fm-font-mono)",
-                      }}
-                    >
-                      {e.type.replace(/_/g, " ")}
-                    </span>
-                  ))}
-              </div>
-            </div>
-          </div>
-          <RegenerateStaleButton
-            planSlug={activePlan.slug as string}
-            clientId={id}
-            staleTypes={staleness.entries
-              .filter((e) => e.stale)
-              .map((e) => e.type)}
-          />
-        </div>
-      )}
+      {/* Letter-staleness banner removed 2026-05-20 — see import note.
+          The coach regenerates a letter on demand from the letter
+          editor's 🪄 Regenerate button when she decides the plan
+          changed materially; no nagging notification. */}
 
       <FmPageHeader
         as="h2"
@@ -383,7 +321,6 @@ export default async function CommunicateTabPage({
           null
         }
         sendLog={sendLog}
-        staleness={staleness}
         savedLetters={savedLetters}
         savedPhases={savedPhases}
         slotAfterHero={

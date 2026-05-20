@@ -1710,6 +1710,197 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
 """
 
 
+# Friendly labels for known home-remedy slugs — woven into the daily
+# routine so a supplement is shown next to the drink/remedy it sits beside.
+_REMEDY_LABELS = {
+    "triphala-churan": "Triphala churna in warm water",
+    "triphala": "Triphala churna in warm water",
+    "cumin-coriander-fennel-tea": "CCF tea (cumin · coriander · fennel)",
+    "ccf-tea": "CCF tea (cumin · coriander · fennel)",
+    "golden-milk": "Golden milk",
+}
+
+
+def _routine_slots(timing_str: str) -> list[int]:
+    """Every day-anchor a supplement belongs to, parsed from its free-text
+    timing — for the Daily Routine. Unlike _timing_slot (one slot, used by
+    the dose table), this returns a LIST: a thrice-daily enzyme placed with
+    breakfast + lunch + dinner returns [1, 3, 5]. Specific phrases win over
+    generic ones so 'mid-morning, empty stomach' lands at mid-morning, not
+    'on waking'. Slots: 0 waking · 1 breakfast · 2 mid-morning · 3 lunch ·
+    4 afternoon · 5 dinner · 6 bedtime."""
+    t = (timing_str or "").lower()
+    slots: set[int] = set()
+    if any(k in t for k in ("bedtime", "before bed", "before sleep", "at night")):
+        slots.add(6)
+    if "mid-morning" in t or "mid morning" in t:
+        slots.add(2)
+    if "mid-afternoon" in t or "mid afternoon" in t or "afternoon" in t:
+        slots.add(4)
+    if "breakfast" in t:
+        slots.add(1)
+    # NB: don't test bare "noon" — it is a substring of "afternoon".
+    if "lunch" in t or "midday" in t or "12 noon" in t:
+        slots.add(3)
+    if "dinner" in t or "supper" in t or "evening meal" in t:
+        slots.add(5)
+    # Bare 'morning' → breakfast, only if no mid-morning / breakfast already.
+    if "morning" in t and 2 not in slots and 1 not in slots:
+        slots.add(1)
+    # Bare 'evening' (not 'evening meal') → afternoon, if no dinner already.
+    if "evening" in t and 5 not in slots:
+        slots.add(4)
+    # 'On waking' / fasting — only when nothing more specific matched.
+    if not slots and any(
+        k in t for k in ("waking", "early morning", "fasting", "empty stomach")
+    ):
+        slots.add(0)
+    if not slots:
+        slots.add(1)  # safe default: with breakfast
+    return sorted(slots)
+
+
+def _build_daily_routine_html(plan: dict) -> str:
+    """The integrated 'Your Daily Routine' timeline.
+
+    One chronological strip for the whole day — every supplement placed
+    next to the meal / drink / habit anchor it belongs beside, with a
+    clear 'with food' / 'empty stomach' tag, so the client never has to
+    guess 'do I take this before or after the methi water'. Generated
+    deterministically from plan data. This is THE section the client
+    prints and keeps on the fridge.
+    """
+    supplements = plan.get("supplement_protocol") or []
+    if not supplements:
+        return ""
+
+    from collections import defaultdict
+    by_slot: dict[int, list] = defaultdict(list)
+    for s in supplements:
+        if not isinstance(s, dict):
+            continue
+        slug = s.get("supplement_slug", "")
+        name = _strip_brand_from_name(
+            s.get("display_name") or slug.replace("-", " ").title()
+        )
+        if not name:
+            continue
+        tw = (s.get("take_with_food") or "").lower()
+        if "empty" in tw or tw.strip() in ("no", "without food"):
+            food_tag = "on an empty stomach"
+        elif "with" in tw or "food" in tw or tw.strip() == "yes":
+            food_tag = "with food"
+        else:
+            food_tag = ""
+        entry = {
+            "name": name,
+            "dose": s.get("dose") or "",
+            "food_tag": food_tag,
+            "start_week": _resolve_start_week(s),
+        }
+        # A supplement can belong to several anchors (e.g. a thrice-daily
+        # enzyme → breakfast + lunch + dinner). Place it under each.
+        for idx in _routine_slots(s.get("timing") or ""):
+            by_slot[idx].append(entry)
+
+    # Remedies in the plan → friendly labels for the relevant anchors.
+    remedies = [
+        str(r).lower()
+        for r in ((plan.get("nutrition") or {}).get("home_remedies") or [])
+    ]
+    has_triphala = any("triphala" in r for r in remedies)
+    has_ccf = any(("cumin" in r) or ("ccf" in r) or ("fennel" in r) for r in remedies)
+
+    # 7 day anchors aligned to the _timing_slot indices. Each: emoji,
+    # label, ~time hint, and the meal/drink/habit the client already does.
+    anchors = [
+        (0, "🌅", "On waking", "~7 am",
+         "Warm water — add lemon if that is your routine"),
+        (1, "🍳", "Breakfast", "~8 am", "Eat breakfast"),
+        (2, "🕙", "Mid-morning", "~11 am", "Mid-morning snack or drink"),
+        (3, "🥗", "Lunch", "~1 pm",
+         "Eat lunch — then a 10-minute walk"),
+        (4, "🌤", "Afternoon", "~4 pm",
+         "CCF tea between meals" if has_ccf else "Afternoon"),
+        (5, "🌆", "Dinner", "by 7 pm",
+         "Eat a light dinner — then a 10-minute walk"),
+        (6, "🌙", "Bedtime", "~10 pm",
+         "Triphala in warm water, then wind down"
+         if has_triphala else "Wind down for sleep"),
+    ]
+
+    rows_html = ""
+    for idx, emoji, label, time_hint, activity in anchors:
+        supps = by_slot.get(idx, [])
+        supp_html = ""
+        if supps:
+            for sp in supps:
+                tags = []
+                if sp["food_tag"]:
+                    tags.append(sp["food_tag"])
+                if sp["start_week"] > 1:
+                    tags.append(f"from week {sp['start_week']}")
+                tag_str = (
+                    f" <span class='routine-supp-tag'>({' · '.join(tags)})</span>"
+                    if tags else ""
+                )
+                dose_str = (
+                    f" <span class='routine-supp-dose'>{sp['dose']}</span>"
+                    if sp["dose"] else ""
+                )
+                supp_html += (
+                    f"<div class='routine-supp'>💊 <strong>{sp['name']}</strong>"
+                    f"{dose_str}{tag_str}</div>"
+                )
+        else:
+            supp_html = "<div class='routine-supp routine-supp-none'>— no supplement at this time —</div>"
+        rows_html += (
+            f"<div class='routine-row'>"
+            f"<div class='routine-anchor'>"
+            f"<span class='routine-emoji'>{emoji}</span>"
+            f"<span class='routine-label'>{label}</span>"
+            f"<span class='routine-time'>{time_hint}</span>"
+            f"</div>"
+            f"<div class='routine-body'>"
+            f"<div class='routine-activity'>{activity}</div>"
+            f"{supp_html}"
+            f"</div>"
+            f"</div>"
+        )
+
+    return f"""
+<!-- ════════════════ DAILY ROUTINE ════════════════ -->
+<section id="daily-routine">
+  <div class="routine-header">
+    <div>
+      <h2 class="routine-title">📋 Your Daily Routine</h2>
+      <p class="routine-subtitle">
+        Your whole day at a glance — when to take each supplement, and
+        which meal or drink it sits beside. Print this and keep it where
+        you'll see it: the fridge, or a photo on your phone.
+      </p>
+    </div>
+    <button class="print-btn no-print" onclick="printRoutine()">🖨 Print my routine</button>
+  </div>
+  <div class="routine-track">
+    {rows_html}
+  </div>
+  <p class="routine-foot">
+    Times are a guide — keep the <em>order</em> (which supplement sits with
+    which meal), and shift the clock to suit your day. Items marked
+    “from week N” join later; your shopping list says when to start each.
+  </p>
+</section>
+<script>
+function printRoutine() {{
+  document.body.setAttribute('data-print-routine', '1');
+  window.print();
+}}
+</script>
+<!-- ════════════════════════════════════════════════ -->
+"""
+
+
 def _build_supplement_schedule_html(supplements: list[dict]) -> str:
     """
     Build a self-contained HTML section: visual timeline + sortable table.
@@ -1813,12 +2004,13 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
     <div>
       <h2 class="schedule-title">💊 Your Supplement Schedule</h2>
       <p class="schedule-subtitle">
-        These are Shivani's <em>suggested</em> supplements for your healing journey —
-        chosen to support your specific health goals. Please check with your doctor
-        before starting any new supplement, especially if you're on medication.
+        The full reference detail — dose, timing, and where to buy each one.
+        For the at-a-glance daily version, use <strong>Your Daily Routine</strong>
+        near the top of this letter (that is the one to print). Please check
+        with your doctor before starting any new supplement, especially if
+        you're on medication.
       </p>
     </div>
-    <button class="print-btn no-print" onclick="printSchedule()">🖨 Print Schedule</button>
   </div>
 
   <div class="timeline-track">
@@ -5470,6 +5662,22 @@ def main() -> int:
             shopping_list_html = _build_complete_shopping_list_html(supplements, plan_weeks_int)
             schedule_html = _build_supplement_schedule_html(supplements)
             combined = shopping_list_html + "\n" + schedule_html
+            # The integrated Daily Routine timeline — placed at the TOP of
+            # the letter (right before .content) so the client can't miss
+            # it. It's the one they print and keep. Injected as a sibling
+            # of .content so the print-routine CSS can isolate it.
+            import re as _re_dr
+            routine_html = _build_daily_routine_html(plan)
+            if routine_html:
+                _co = _re_dr.compile(r'(<div class="content"[^>]*>)')
+                _m = _co.search(html)
+                if _m:
+                    html = html[: _m.start()] + routine_html + "\n      " + html[_m.start():]
+                elif '<footer class="brand-footer">' in html:
+                    html = html.replace(
+                        '<footer class="brand-footer">',
+                        routine_html + "\n    " + '<footer class="brand-footer">', 1,
+                    )
             # Position depends on letter type:
             #
             #  - consolidated / supplement_plan / lifestyle_guide: schedule

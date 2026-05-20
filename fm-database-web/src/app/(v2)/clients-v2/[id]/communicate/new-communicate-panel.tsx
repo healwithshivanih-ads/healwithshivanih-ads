@@ -29,8 +29,11 @@
  * Styling: every selector in `src/styles/fm-v2-communicate.css` is scoped
  * under `.fm-v2`, so this whole panel is wrapped in a `.fm-v2` div.
  */
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import type { LetterSendEntry } from "@/app/api/email/actions";
+import { recordLetterSendAction } from "@/app/api/email/actions";
 import type {
   Client,
   WeightLossGoal,
@@ -41,6 +44,68 @@ import type {
   SavedPhase,
 } from "@/lib/server-actions/plan-lifecycle";
 import { LetterGenerateTrigger } from "./letter-generate-modal";
+
+/**
+ * MarkSentButton — manual "this letter went out" toggle for sends that
+ * happen outside the in-app email modal (WhatsApp link, printed, etc.).
+ * The email modal records sends automatically; this covers every other
+ * channel so the panel always reflects reality. Appends a LetterSendEntry
+ * to _send_log.yaml via recordLetterSendAction, then refreshes.
+ */
+function MarkSentButton({
+  clientId,
+  planSlug,
+  letterType,
+  clientEmail,
+}: {
+  clientId: string;
+  planSlug: string;
+  letterType: string;
+  clientEmail?: string;
+}) {
+  const router = useRouter();
+  const [pending, startTransition] = useTransition();
+  return (
+    <button
+      type="button"
+      disabled={pending}
+      onClick={() =>
+        startTransition(async () => {
+          const res = await recordLetterSendAction({
+            clientId,
+            planSlug,
+            letterTypes: [letterType],
+            to: clientEmail?.trim() || "marked sent by coach",
+          });
+          if (res.ok) {
+            toast.success("Marked as sent");
+            router.refresh();
+          } else {
+            toast.error(res.error ?? "Could not record send", {
+              duration: 9000,
+            });
+          }
+        })
+      }
+      style={{
+        fontSize: 11,
+        fontWeight: 700,
+        padding: "5px 10px",
+        marginLeft: 6,
+        borderRadius: 6,
+        border: "1px solid rgba(16, 185, 129, 0.4)",
+        background: "transparent",
+        color: "#047857",
+        cursor: pending ? "wait" : "pointer",
+        fontFamily: "inherit",
+        whiteSpace: "nowrap",
+      }}
+      title="Record this letter as sent — use when you sent it via WhatsApp or any channel other than the in-app email."
+    >
+      {pending ? "…" : "✓ Mark sent"}
+    </button>
+  );
+}
 
 // ───────────────────────────────────────────────────────────────────
 // Document types in the order the design specifies.
@@ -1169,28 +1234,43 @@ export function NewCommunicatePanel({
                           </span>
                         )
                       ) : editorHref ? (
-                        <a
-                          href={editorHref}
-                          className="FmBtn FmBtn--sm"
-                          style={{
-                            textDecoration: "none",
-                            display: "inline-block",
-                            padding: "5px 11px",
-                            borderRadius: 6,
-                            background:
-                              st.kind === "sent"
-                                ? "rgba(16, 185, 129, 0.15)"
-                                : "var(--fm-primary, #FF6B35)",
-                            color:
-                              st.kind === "sent"
-                                ? "#047857"
-                                : "#fff",
-                            fontSize: 12,
-                            fontWeight: 700,
-                          }}
-                        >
-                          {st.action} →
-                        </a>
+                        <>
+                          <a
+                            href={editorHref}
+                            className="FmBtn FmBtn--sm"
+                            style={{
+                              textDecoration: "none",
+                              display: "inline-block",
+                              padding: "5px 11px",
+                              borderRadius: 6,
+                              background:
+                                st.kind === "sent"
+                                  ? "rgba(16, 185, 129, 0.15)"
+                                  : "var(--fm-primary, #FF6B35)",
+                              color:
+                                st.kind === "sent"
+                                  ? "#047857"
+                                  : "#fff",
+                              fontSize: 12,
+                              fontWeight: 700,
+                            }}
+                          >
+                            {st.action} →
+                          </a>
+                          {/* Generated-but-not-sent → offer a manual
+                              "Mark sent" for non-email channels (WhatsApp
+                              link etc.). Sent rows already show the date. */}
+                          {st.kind === "drafted" && activePlanSlug && (
+                            <MarkSentButton
+                              clientId={clientId}
+                              planSlug={activePlanSlug}
+                              letterType={d.letter}
+                              clientEmail={
+                                (client as unknown as { email?: string }).email
+                              }
+                            />
+                          )}
+                        </>
                       ) : (
                         <span
                           className="FmBtn FmBtn--sm"

@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import {
   loadLetterHtmlForEmailAction,
   sendClientEmailAction,
+  recordLetterSendAction,
   updateClientFieldsAction,
 } from "@/app/api/email/actions";
 
@@ -197,7 +198,23 @@ ${renderedHtml}`;
     }
 
     if (clientId) {
-      // recordLetterSendAction removed in WhatsApp cutover; send log no-op.
+      // Record the send so the Communicate panel reflects it — the
+      // fortnight card flips to "Sent", the document row shows the date.
+      // (This call was wrongly no-op'd in the WhatsApp cutover, which is
+      // why sent letters kept showing as "not generated". Restored
+      // 2026-05-20.) A send-log failure must never block: the email has
+      // already gone out.
+      try {
+        await recordLetterSendAction({
+          clientId,
+          planSlug,
+          letterTypes: [letterType],
+          to: to.trim(),
+          cc: cc.trim() || undefined,
+        });
+      } catch {
+        /* send already succeeded — swallow */
+      }
     }
 
     // If the coach checked "save to client's profile" AND we know the
