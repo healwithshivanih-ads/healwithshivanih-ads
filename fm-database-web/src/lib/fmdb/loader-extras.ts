@@ -223,6 +223,41 @@ function stripSessionTags(complaints: string): string {
   return complaints.replace(/^(\s*\[[^\]]+\]\s*)+/, "").trim();
 }
 
+/**
+ * WhatsApp inbound messages are appended into ONE rolling quick_note
+ * session per client (a conversation thread). The session's `created_at`
+ * is the FIRST message ever — so using it as "the message timestamp"
+ * makes a brand-new message look days old.
+ *
+ * The webhook stamps each message into the body as
+ *   `Received: D/M/YYYY, H:MM:SS am`  (IST wall-clock).
+ * This finds the LATEST such line and returns it as an ISO string with
+ * the +05:30 offset, so the inbox / dashboard show when the newest
+ * message actually arrived. Returns null when the body has no
+ * `Received:` lines (e.g. an outbound-only thread).
+ */
+function latestReceivedIso(body: string): string | null {
+  const re =
+    /Received:\s*(\d{1,2})\/(\d{1,2})\/(\d{4}),\s*(\d{1,2}):(\d{2}):(\d{2})\s*(am|pm)/gi;
+  let best = "";
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(body)) !== null) {
+    const [, dd, mm, yyyy, hhRaw, min, sec, ap] = m;
+    let hh = parseInt(hhRaw, 10);
+    const ampm = ap.toLowerCase();
+    if (ampm === "pm" && hh !== 12) hh += 12;
+    if (ampm === "am" && hh === 12) hh = 0;
+    // Compose an ISO string with the IST offset — the "Received" time is
+    // already IST wall-clock as captured by the webhook.
+    const iso =
+      `${yyyy}-${mm.padStart(2, "0")}-${dd.padStart(2, "0")}` +
+      `T${String(hh).padStart(2, "0")}:${min}:${sec}+05:30`;
+    // String compare works because all entries share the same offset.
+    if (iso > best) best = iso;
+  }
+  return best || null;
+}
+
 // ── Recent intake-form activity ────────────────────────────────────────────
 
 export type IntakeActivityKind = "submitted" | "started" | "opened";
@@ -395,27 +430,40 @@ export async function getRecentInboundMessages(
         if (!data) continue;
         const complaints = String(data.presenting_complaints ?? "");
         if (!complaints.includes("[source: whatsapp_webhook]")) continue;
-        const createdAt = typeof data.created_at === "string" ? data.created_at : undefined;
-        // Acknowledged? If we have both a read-state timestamp and a
-        // message timestamp and the message is <= read-state, drop it.
-        // Missing created_at on the session → treat as unread (better to
-        // surface a stale notification than silently swallow a real one).
-        if (createdAt && lastReadAt && createdAt <= lastReadAt) continue;
+        const sessionCreatedAt =
+          typeof data.created_at === "string" ? data.created_at : undefined;
+        // WhatsApp threads append every message into one session — the
+        // session created_at is the FIRST message. Use the LATEST inbound
+        // "Received:" line as the real message timestamp so a new message
+        // doesn't show as days old. Falls back to session created_at.
+        const effectiveAt = latestReceivedIso(complaints) ?? sessionCreatedAt;
+        // Acknowledged? Compare via Date.parse — effectiveAt carries a
+        // +05:30 offset while lastReadAt is a UTC `Z` stamp, so a plain
+        // string compare across the two offsets would be wrong.
+        if (effectiveAt && lastReadAt) {
+          const eMs = Date.parse(effectiveAt);
+          const rMs = Date.parse(lastReadAt);
+          if (Number.isFinite(eMs) && Number.isFinite(rMs) && eMs <= rMs) {
+            continue;
+          }
+        }
         const text = stripSessionTags(complaints).slice(0, 120);
         results.push({
           client_id: id,
           display_name: clientNames.get(id),
-          date: String(data.date ?? "").slice(0, 10),
-          created_at: createdAt,
+          date: (effectiveAt ?? String(data.date ?? "")).slice(0, 10),
+          created_at: effectiveAt,
           text,
         });
       }
     })
   );
 
-  return results.sort((a, b) =>
-    (b.created_at ?? b.date).localeCompare(a.created_at ?? a.date),
-  );
+  return results.sort((a, b) => {
+    const am = Date.parse(a.created_at ?? a.date);
+    const bm = Date.parse(b.created_at ?? b.date);
+    return (Number.isFinite(bm) ? bm : 0) - (Number.isFinite(am) ? am : 0);
+  });
 }
 
 /** Inbox view of inbound WhatsApp messages — keeps FULL text (not the
@@ -472,15 +520,27 @@ export async function getInboxMessages(
         if (!data) continue;
         const complaints = String(data.presenting_complaints ?? "");
         if (!complaints.includes("[source: whatsapp_webhook]")) continue;
-        const createdAt = typeof data.created_at === "string" ? data.created_at : undefined;
-        const isUnread =
-          !lastReadAt || !createdAt || createdAt > lastReadAt;
+        const sessionCreatedAt =
+          typeof data.created_at === "string" ? data.created_at : undefined;
+        // Use the LATEST inbound "Received:" line as the message
+        // timestamp — the session created_at is the first message in the
+        // rolling WhatsApp thread, not the newest. See latestReceivedIso.
+        const effectiveAt = latestReceivedIso(complaints) ?? sessionCreatedAt;
+        // Unread = newest message arrived after the coach's last read.
+        // Compare via Date.parse (effectiveAt is +05:30, lastReadAt is Z).
+        const isUnread = (() => {
+          if (!lastReadAt || !effectiveAt) return true;
+          const eMs = Date.parse(effectiveAt);
+          const rMs = Date.parse(lastReadAt);
+          if (!Number.isFinite(eMs) || !Number.isFinite(rMs)) return true;
+          return eMs > rMs;
+        })();
         const text = stripSessionTags(complaints);
         results.push({
           client_id: id,
           display_name: clientNames.get(id),
-          date: String(data.date ?? "").slice(0, 10),
-          created_at: createdAt,
+          date: (effectiveAt ?? String(data.date ?? "")).slice(0, 10),
+          created_at: effectiveAt,
           text,
           is_unread: isUnread,
           session_id:
@@ -490,9 +550,13 @@ export async function getInboxMessages(
     }),
   );
 
-  return results.sort((a, b) =>
-    (b.created_at ?? b.date).localeCompare(a.created_at ?? a.date),
-  );
+  // Newest first. Date.parse handles the mixed +05:30 / Z offsets that a
+  // plain string compare would mis-order.
+  return results.sort((a, b) => {
+    const am = Date.parse(a.created_at ?? a.date);
+    const bm = Date.parse(b.created_at ?? b.date);
+    return (Number.isFinite(bm) ? bm : 0) - (Number.isFinite(am) ? am : 0);
+  });
 }
 
 /**

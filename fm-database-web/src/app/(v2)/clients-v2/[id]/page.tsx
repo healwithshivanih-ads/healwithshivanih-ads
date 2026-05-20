@@ -1287,7 +1287,10 @@ export default async function ClientV2Page({
                               }
                               currentWeightKg={
                                 (client as unknown as { weight_now_kg?: number | null })
-                                  .weight_now_kg ?? null
+                                  .weight_now_kg ??
+                                (client as unknown as { measurements?: { weight_kg?: number | null } })
+                                  .measurements?.weight_kg ??
+                                null
                               }
                             />
                 ),

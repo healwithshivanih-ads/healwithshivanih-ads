@@ -92,7 +92,7 @@ export function WeightLossCard({
         {editOpen && (
           <EditGoalModal
             clientId={clientId}
-            goal={goal ?? null}
+            goal={null}
             measurementsLog={measurementsLog ?? []}
             currentWeightKg={currentWeightKg ?? null}
             onClose={() => setEditOpen(false)}

@@ -28,6 +28,17 @@ function isFilterId(s: string | undefined): s is FilterId {
   return s === "unread" || s === "all" || s === "today" || s === "7d";
 }
 
+// All timestamp formatting is pinned to IST (Asia/Kolkata) so the inbox
+// reads correctly no matter what timezone the Node server runs in — this
+// is a server component, so a bare toLocale* would otherwise use the
+// host TZ. The "same day" check is also done in IST.
+const IST = "Asia/Kolkata";
+
+function istDayKey(d: Date): string {
+  // YYYY-MM-DD of `d` as seen in IST.
+  return d.toLocaleDateString("en-CA", { timeZone: IST }); // en-CA → ISO-ish
+}
+
 function formatWhen(iso: string | undefined, dateOnly: string): string {
   const stamp = iso || dateOnly;
   if (!stamp) return "";
@@ -35,18 +46,22 @@ function formatWhen(iso: string | undefined, dateOnly: string): string {
     const d = new Date(stamp);
     if (Number.isNaN(d.getTime())) return stamp;
     const now = new Date();
-    const sameDay = d.toDateString() === now.toDateString();
-    if (sameDay) {
+    if (istDayKey(d) === istDayKey(now)) {
       return d.toLocaleTimeString("en-IN", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
+        timeZone: IST,
       });
     }
     const diffDays = Math.round((now.getTime() - d.getTime()) / 86_400_000);
     if (diffDays === 1) return "yesterday";
-    if (diffDays < 7) return `${diffDays}d ago`;
-    return d.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+    if (diffDays >= 0 && diffDays < 7) return `${diffDays}d ago`;
+    return d.toLocaleDateString("en-IN", {
+      day: "numeric",
+      month: "short",
+      timeZone: IST,
+    });
   } catch {
     return stamp;
   }

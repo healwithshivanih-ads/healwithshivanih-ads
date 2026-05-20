@@ -86,42 +86,19 @@ export function FmGroupedPanel({
   };
 
   return (
-    <div style={{ display: "grid", gap: 8 }}>
-      {/* Eyebrow title + (tabbed mode) tab strip */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          flexWrap: "wrap",
-        }}
-      >
-        <span
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            fontSize: 11,
-            fontWeight: 800,
-            textTransform: "uppercase",
-            letterSpacing: 0.7,
-            color: "var(--fm-text-tertiary)",
-            whiteSpace: "nowrap",
-          }}
-        >
+    <div className="fm-grouped-panel">
+      <style>{GROUPED_PANEL_CSS}</style>
+
+      {/* Header band — eyebrow title + (tabbed mode) tab strip. Sits on a
+          cool-grey band with a divider so it visually OWNS the body
+          below instead of floating disconnected above it. */}
+      <div className="fm-grouped-head">
+        <span className="fm-grouped-title">
           {icon && <span style={{ fontSize: 13 }}>{icon}</span>}
           {title}
         </span>
         {visibleTabs.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              gap: 2,
-              flexWrap: "wrap",
-              flex: 1,
-              minWidth: 0,
-            }}
-          >
+          <div className="fm-grouped-tabs">
             {visibleTabs.map((t) => {
               const isActive = t.id === activeId;
               return (
@@ -129,23 +106,7 @@ export function FmGroupedPanel({
                   key={t.id}
                   type="button"
                   onClick={() => pickTab(t.id)}
-                  style={{
-                    appearance: "none",
-                    background: isActive ? "var(--fm-surface)" : "transparent",
-                    border: `1px solid ${
-                      isActive ? "var(--fm-border)" : "transparent"
-                    }`,
-                    borderRadius: "var(--fm-radius-pill)",
-                    padding: "3px 10px",
-                    fontFamily: "inherit",
-                    fontSize: 11,
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive
-                      ? "var(--fm-primary)"
-                      : "var(--fm-text-tertiary)",
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                  }}
+                  className={`fm-grouped-tab${isActive ? " is-active" : ""}`}
                 >
                   {t.icon ? `${t.icon} ` : ""}
                   {t.label}
@@ -156,19 +117,102 @@ export function FmGroupedPanel({
         )}
       </div>
 
-      {/* Body — active child keeps its own native card chrome */}
-      {visibleTabs.length > 0 ? (
-        visibleTabs.map((t) => (
-          <div
-            key={t.id}
-            style={{ display: t.id === activeId ? "block" : "none" }}
-          >
-            {t.content}
-          </div>
-        ))
-      ) : (
-        <div style={{ display: "grid", gap: 12 }}>{children}</div>
-      )}
+      {/* Body — the active child. The CSS below flattens the child's own
+          card chrome (border / radius / shadow / outer margin) so it
+          merges seamlessly into this panel instead of nesting a
+          card-inside-a-card. */}
+      <div className="fm-grouped-body">
+        {visibleTabs.length > 0 ? (
+          visibleTabs.map((t) => (
+            <div
+              key={t.id}
+              style={{ display: t.id === activeId ? "block" : "none" }}
+            >
+              {t.content}
+            </div>
+          ))
+        ) : (
+          <div style={{ display: "grid", gap: 12 }}>{children}</div>
+        )}
+      </div>
     </div>
   );
 }
+
+/* One scoped stylesheet for every FmGroupedPanel instance. The child-
+   flattening rules use `!important` so they beat the children's inline
+   `style={{ border: ... }}` — a stylesheet !important rule outranks an
+   inline declaration that lacks !important. This is what turns "floating
+   title above a separate card" into one connected panel. */
+const GROUPED_PANEL_CSS = `
+.fm-grouped-panel {
+  border: 1px solid var(--fm-border);
+  border-radius: var(--fm-radius-md);
+  background: var(--fm-surface);
+  overflow: hidden;
+}
+.fm-grouped-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  background: var(--fm-bg-cool);
+  border-bottom: 1px solid var(--fm-border-light);
+}
+.fm-grouped-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--fm-text-tertiary);
+  white-space: nowrap;
+}
+.fm-grouped-tabs {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+.fm-grouped-tab {
+  appearance: none;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--fm-radius-pill);
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fm-text-tertiary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.fm-grouped-tab.is-active {
+  background: var(--fm-surface);
+  border-color: var(--fm-border);
+  font-weight: 700;
+  color: var(--fm-primary);
+}
+.fm-grouped-body {
+  padding: 12px;
+}
+/* Flatten the immediate child card so it merges into the panel. The
+   child is either a tab wrapper (>div) holding the card, or — in
+   plain-stack mode — the cards directly. Strip border / radius /
+   shadow / outer margin at the first two levels so any single-card
+   child sheds its own chrome; deeper nested content is untouched. */
+.fm-grouped-body > div > .FmPanel,
+.fm-grouped-body > div > div[style],
+.fm-grouped-body > .FmPanel,
+.fm-grouped-body > div[style] {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+`;
