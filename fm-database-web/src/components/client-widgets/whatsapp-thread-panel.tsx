@@ -39,6 +39,12 @@ interface Props {
 
 const WINDOW_MS = 24 * 60 * 60 * 1000;
 
+// All chat timestamps are pinned to IST (Asia/Kolkata) so the thread
+// reads correctly regardless of the viewer's browser timezone — a bare
+// toLocale* would otherwise drift on a non-IST machine. Matches the
+// /messages inbox, which pins the same way.
+const IST = "Asia/Kolkata";
+
 function fmtTimestamp(iso: string): string {
   if (!iso) return "";
   try {
@@ -49,7 +55,21 @@ function fmtTimestamp(iso: string): string {
       month: "short",
       hour: "numeric",
       minute: "2-digit",
+      timeZone: IST,
     });
+  } catch {
+    return iso.slice(0, 10);
+  }
+}
+
+/** YYYY-MM-DD of an ISO timestamp as seen in IST. */
+function istDayKey(iso: string): string {
+  if (!iso) return "";
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return iso.slice(0, 10);
+    // en-CA → ISO-ish YYYY-MM-DD ordering.
+    return d.toLocaleDateString("en-CA", { timeZone: IST });
   } catch {
     return iso.slice(0, 10);
   }
@@ -57,12 +77,13 @@ function fmtTimestamp(iso: string): string {
 
 /**
  * Group consecutive messages by date so we can show "—— 14 May ——"
- * separators between days.
+ * separators between days. Day boundaries are computed in IST so a
+ * message sent late-evening doesn't land under the wrong calendar day.
  */
 function groupByDay(msgs: ChatThreadMessage[]): Array<{ day: string; items: ChatThreadMessage[] }> {
   const out: Array<{ day: string; items: ChatThreadMessage[] }> = [];
   for (const m of msgs) {
-    const day = (m.date || "").slice(0, 10);
+    const day = istDayKey(m.date || "");
     const last = out[out.length - 1];
     if (last && last.day === day) {
       last.items.push(m);
@@ -76,6 +97,8 @@ function groupByDay(msgs: ChatThreadMessage[]): Array<{ day: string; items: Chat
 function fmtDayHeader(day: string): string {
   if (!day) return "";
   try {
+    // `day` is already an IST calendar date — render it as a plain
+    // local date (no timeZone shift; it carries no time component).
     const d = new Date(day + "T00:00:00");
     return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", weekday: "short" });
   } catch {

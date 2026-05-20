@@ -311,7 +311,7 @@ export async function loadWhatsAppThreadAction(
         const templateName = tplMatch ? tplMatch[1].trim() : undefined;
 
         // Strip all internal-metadata tags from the display text.
-        const text = seg
+        let text = seg
           .replace(/\[session_type:[^\]]+\]/gi, "")
           .replace(/\[source:[^\]]+\]/gi, "")
           .replace(/\[template:[^\]]+\]/gi, "")
@@ -320,6 +320,24 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[window:[^\]]+\]/gi, "")
           .replace(/\[sent_at:[^\]]+\]/gi, "")
           .trim();
+
+        // ── Inbound: strip the webhook's metadata header ──────────────
+        // The /api/whatsapp-webhook route prepends two provenance lines
+        // to every inbound message body:
+        //   WhatsApp message from <name> (<phone>)
+        //   Received: <D/M/YYYY, H:MM:SS am/pm>
+        // Those belong in the session file as provenance, but in the
+        // chat-bubble view they bury the actual message — a one-word
+        // reply like "🙏 thx" renders as a wall of metadata and looks
+        // like noise. The bubble is already left-aligned + grey (= the
+        // client), so the sender line is redundant; the timestamp is
+        // shown separately under the bubble. Keep only the real body.
+        if (direction === "inbound") {
+          text = text
+            .replace(/^\s*WhatsApp message from[^\n]*\n?/i, "")
+            .replace(/^\s*Received:[^\n]*\n?/i, "")
+            .trim();
+        }
         if (!text) return;
 
         // ── Per-segment timestamp ────────────────────────────────────
