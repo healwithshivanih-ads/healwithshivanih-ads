@@ -912,6 +912,239 @@ def _load_protocol_yaml(slug: str) -> dict | None:
         return None
 
 
+# Energy-recovery protocols — a calorie deficit is contraindicated for any
+# client whose plan is anchored to one of these (fatigue / post-viral /
+# dysautonomia). See _build_prompt_meal_plan_phase calorie-block logic.
+_FATIGUE_PROTOCOLS = {
+    "adrenal-recovery-protocol",
+    "mitochondrial-support",
+    "pem-pacing-first-30-days",
+    "pots-first-30-days",
+}
+
+
+def _has_fatigue_protocol(plan: dict) -> bool:
+    """True when the plan attaches an energy-recovery protocol where a
+    calorie deficit would be clinically harmful."""
+    return any(
+        s in _FATIGUE_PROTOCOLS
+        for s in (plan.get("attached_protocols") or [])
+    )
+
+
+# ── Protocol-aware phasing ───────────────────────────────────────────────
+# A phase letter (weeks 3-4, 5-6 …) must describe the client's position in
+# THEIR attached protocol — never a hardcoded generic arc. The catalogue
+# Protocol entities already carry a `phases` list; the phase NAMES embed the
+# canonical week ranges, e.g. "Reinoculate (weeks 3–8)". These helpers parse
+# that and resolve which phase(s) a given fortnight falls in, so the letter
+# never advances a phase prematurely or invents a phase the protocol lacks.
+
+def _parse_phase_week_range(name: str) -> "tuple[int, int] | None":
+    """Extract (week_from, week_to) from a phase name like
+    'Reinoculate (weeks 3–8)' or 'Personalised balance (week 11+)'.
+    Open-ended ('11+') → (11, 99). Returns None if no range found."""
+    import re as _re
+    if not name:
+        return None
+    s = name.replace("–", "-").replace("—", "-")
+    m = _re.search(r"weeks?\s+(\d+)\s*-\s*(\d+)", s, _re.I)
+    if m:
+        return (int(m.group(1)), int(m.group(2)))
+    m = _re.search(r"weeks?\s+(\d+)\s*\+", s, _re.I)
+    if m:
+        return (int(m.group(1)), 99)
+    m = _re.search(r"weeks?\s+(\d+)\b", s, _re.I)
+    if m:
+        return (int(m.group(1)), int(m.group(1)))
+    return None
+
+
+def _resolve_protocol_phase(plan: dict, phase_start: int, phase_end: int) -> dict:
+    """Work out which protocol phase(s) a client is in for a given fortnight.
+
+    Reads plan.attached_protocols, loads each catalogue protocol YAML, and
+    uses the FIRST one that carries a `phases` list as the spine (the
+    primary protocol). Topics accidentally in attached_protocols are
+    skipped (no YAML / no phases).
+
+    Returns:
+      kind: "time_phased" | "standing" | "none"
+      protocol_name / protocol_slug / summary
+      active_phases: phases whose week range overlaps [phase_start, phase_end]
+      all_phases:    every phase, with parsed {name, week_from, week_to,
+                     summary, key_actions}
+    """
+    slugs = plan.get("attached_protocols") or []
+    standing_fallback: dict | None = None
+    for slug in slugs:
+        pr = _load_protocol_yaml(slug)
+        if not pr:
+            continue  # a topic slug or unknown — skip
+        phases = pr.get("phases") or []
+        if not phases:
+            # Standing protocol — real protocol, no week-phase sequence.
+            # Remember the first one but keep scanning for a time-phased
+            # protocol (which takes precedence as the spine).
+            if standing_fallback is None:
+                standing_fallback = {
+                    "kind": "standing",
+                    "protocol_name": pr.get("display_name") or slug,
+                    "protocol_slug": slug,
+                    "summary": (pr.get("summary") or "").strip(),
+                    "active_phases": [],
+                    "all_phases": [],
+                }
+            continue
+        parsed: list[dict] = []
+        cursor = 1
+        for ph in phases:
+            rng = _parse_phase_week_range(ph.get("name") or "")
+            if rng:
+                wf, wt = rng
+            else:
+                dur = ph.get("weeks") or 1
+                wf, wt = cursor, cursor + max(int(dur), 1) - 1
+            cursor = max(cursor, wt + 1)
+            parsed.append({
+                "name": (ph.get("name") or "?").strip(),
+                "week_from": wf,
+                "week_to": wt,
+                "summary": (ph.get("summary") or "").strip(),
+                "key_actions": ph.get("key_actions") or [],
+            })
+        active = [
+            p for p in parsed
+            if p["week_to"] >= phase_start and p["week_from"] <= phase_end
+        ]
+        return {
+            "kind": "time_phased",
+            "protocol_name": pr.get("display_name") or slug,
+            "protocol_slug": slug,
+            "summary": (pr.get("summary") or "").strip(),
+            "active_phases": active,
+            "all_phases": parsed,
+        }
+    if standing_fallback:
+        return standing_fallback
+    return {
+        "kind": "none", "protocol_name": "", "protocol_slug": "",
+        "summary": "", "active_phases": [], "all_phases": [],
+    }
+
+
+def _phase_letter_protocol_context(plan: dict, phase_start: int, phase_end: int) -> str:
+    """Prompt block telling the AI exactly where the client is in their
+    attached protocol for THIS fortnight — so the letter never advances a
+    phase prematurely, never names a phase the protocol doesn't have, and
+    frames overlapping phases as layered (not a clean graduation)."""
+    res = _resolve_protocol_phase(plan, phase_start, phase_end)
+    wk = (f"week {phase_start}" if phase_start == phase_end
+          else f"weeks {phase_start}–{phase_end}")
+
+    if res["kind"] == "none":
+        return (
+            "PROTOCOL PHASE — no structured FM protocol is attached to this "
+            f"plan. Do NOT invent a 5R / elimination / phase narrative. Frame "
+            f"{wk} as a steady continuation of the existing plan — building "
+            "consistency and depth. Never claim the client has 'advanced' "
+            "to a new phase or stage."
+        )
+
+    if res["kind"] == "standing":
+        return (
+            f"PROTOCOL PHASE — the attached protocol is {res['protocol_name']}, "
+            "a STANDING protocol: it runs steadily and has NO week-by-week "
+            f"phases. For {wk}, do NOT announce a phase change, do NOT say the "
+            "client has 'moved into' a new stage, and do NOT borrow 5R or "
+            "elimination-diet phase language. Frame this fortnight as "
+            f"continuing {res['protocol_name']} steadily — the work now is "
+            "consistency, depth, and refinement, not progression through "
+            f"phases. Protocol focus: {res['summary'][:200]}"
+        )
+
+    # time_phased
+    active = res["active_phases"]
+    if not active:
+        return (
+            f"PROTOCOL PHASE — the client is on {res['protocol_name']}. {wk} "
+            "sits outside the protocol's defined phases; frame it as steady "
+            "continuation toward the plan's close. Do not invent a phase."
+        )
+    lines = [
+        f"PROTOCOL PHASE — the client is on {res['protocol_name']}. For {wk}, "
+        "the ACTIVE protocol phase(s) below are the ONLY ones you may "
+        "describe. Rules:",
+        "  • NEVER name a later phase the client has not reached.",
+        "  • NEVER frame this as a clean graduation ('you've now moved to "
+        "phase N'). Protocol phases overlap by design.",
+        "  • If two phases overlap this fortnight, say the earlier one "
+        "CONTINUES while the next one BEGINS TO LAYER IN GENTLY.",
+        "",
+        "Active phase(s) this fortnight:",
+    ]
+    for p in active:
+        rng = (f"weeks {p['week_from']}–{p['week_to']}"
+               if p["week_to"] < 90 else f"week {p['week_from']}+")
+        lines.append(f"  • {p['name']} ({rng}): {p['summary'][:240]}")
+        for a in p["key_actions"][:4]:
+            lines.append(f"      - {a}")
+    later = [p for p in res["all_phases"] if p["week_from"] > phase_end]
+    if later:
+        nxt = later[0]
+        lines.append("")
+        lines.append(
+            f"  NOT YET — '{nxt['name']}' does not begin until week "
+            f"{nxt['week_from']}. Do NOT bring its foods or actions into "
+            "this letter."
+        )
+    return "\n".join(lines)
+
+
+def _consolidated_healing_arc_block(plan: dict, plan_weeks: int) -> str:
+    """The 'Healing phases' arc for the consolidated/initial letter.
+
+    Derives from the attached protocol's real phases when one is
+    time-phased; otherwise emits a generic-but-honest arc that makes no
+    false clinical-phase claims. Replaces the old hardcoded
+    Foundation/Repair/Rebalance/Strengthen/Optimize/Sustain arc, which
+    misrepresented every non-5R-shaped protocol."""
+    res = _resolve_protocol_phase(plan, 1, plan_weeks)
+    header = f"## Healing phases (the {plan_weeks}-week arc):"
+    if res["kind"] == "time_phased" and res["all_phases"]:
+        lines = [
+            header,
+            f"This plan is anchored to the {res['protocol_name']} protocol. "
+            "Use ITS phases below as the weekly arc — do NOT invent a "
+            "different progression or rename these phases:",
+        ]
+        for p in res["all_phases"]:
+            rng = (f"weeks {p['week_from']}–{p['week_to']}"
+                   if p["week_to"] < 90 else f"week {p['week_from']}+")
+            lines.append(f"- **{p['name']}** ({rng}): {p['summary'][:240]}")
+        return "\n".join(lines)
+    if res["kind"] == "standing":
+        return (
+            header + "\n"
+            f"This plan is anchored to the {res['protocol_name']} protocol, "
+            "which runs STEADILY — it does not move through week-by-week "
+            "clinical phases. Do NOT invent a Foundation→Repair→Rebalance "
+            f"arc. Frame the {plan_weeks} weeks as one continuous protocol: "
+            "settle in and build the core habits first, then deepen "
+            "consistency, then refine based on what's working, then "
+            "consolidate for the long term — the same protocol throughout, "
+            "no phase changes."
+        )
+    return (
+        header + "\n"
+        "No structured FM protocol is attached. Frame the arc honestly as "
+        "graduated habit-building: establish the foundations first, then "
+        "deepen and refine, then consolidate for the long term. Do NOT "
+        "invent clinical phase names (Repair / Reinoculate / Rebalance / "
+        "etc.) — describe what changes in plain language."
+    )
+
+
 # Module-level backdate override — set by main() when payload carries
 # as_of_date. All prompt-builders call _recent_client_voice_block without
 # passing the cutoff explicitly, so we read this global when as_of_iso
@@ -1721,43 +1954,79 @@ _REMEDY_LABELS = {
 }
 
 
+# Cues that mark a supplement as PRN / as-needed (taken occasionally for
+# travel, eating out, or emergencies) — NOT every day. These are kept OUT
+# of the daily routine timeline and shown in their own "as needed" block.
+_PRN_CUES = (
+    "as needed", "as-needed", "as required", "as-required", "prn",
+    "when needed", "when-needed", "if needed", "if-needed", "as and when",
+    "at-risk", "at risk", "before at-risk", "before risky", "risky meals",
+    "restaurant", "eating out", "travel", "social meal", "off-plan",
+    "emergency", "emergencies", "occasional", "only when", "only as",
+)
+
+
+def _is_prn(supp: dict) -> bool:
+    """True when a supplement is taken occasionally / on-demand (travel,
+    eating out, emergencies) rather than every single day — so it should
+    NOT clutter the Daily Routine timeline. Checked against the timing and
+    frequency fields only (coach_rationale can mention 'travel' for
+    unrelated reasons and would false-positive)."""
+    blob = " ".join(
+        str(supp.get(k) or "") for k in ("timing", "frequency")
+    ).lower()
+    return any(cue in blob for cue in _PRN_CUES)
+
+
 def _routine_slots(timing_str: str) -> list[int]:
     """Every day-anchor a supplement belongs to, parsed from its free-text
     timing — for the Daily Routine. Unlike _timing_slot (one slot, used by
-    the dose table), this returns a LIST: a thrice-daily enzyme placed with
-    breakfast + lunch + dinner returns [1, 3, 5]. Specific phrases win over
-    generic ones so 'mid-morning, empty stomach' lands at mid-morning, not
-    'on waking'. Slots: 0 waking · 1 breakfast · 2 mid-morning · 3 lunch ·
-    4 afternoon · 5 dinner · 6 bedtime."""
+    the dose table), this returns a LIST: a genuinely thrice-daily enzyme
+    placed with breakfast + lunch + dinner returns [1, 3, 5]. Specific
+    phrases win over generic ones so 'mid-morning, empty stomach' lands at
+    mid-morning, not 'on waking'. Slots: 0 waking · 1 breakfast ·
+    2 mid-morning · 3 lunch · 4 afternoon · 5 dinner · 6 bedtime.
+
+    'X or Y' (e.g. 'with dinner or at bedtime') is a once-daily pick-one
+    timing — it collapses to a SINGLE anchor (the one mentioned first, the
+    coach's primary recommendation) so the supplement is never listed
+    twice. Only true 'and' multi-dose timings keep multiple slots."""
     t = (timing_str or "").lower()
-    slots: set[int] = set()
-    if any(k in t for k in ("bedtime", "before bed", "before sleep", "at night")):
-        slots.add(6)
-    if "mid-morning" in t or "mid morning" in t:
-        slots.add(2)
-    if "mid-afternoon" in t or "mid afternoon" in t or "afternoon" in t:
-        slots.add(4)
-    if "breakfast" in t:
-        slots.add(1)
+    # slot -> earliest character position its keyword appears at
+    pos: dict[int, int] = {}
+
+    def mark(slot: int, *keywords: str) -> None:
+        for kw in keywords:
+            i = t.find(kw)
+            if i != -1:
+                pos[slot] = min(pos.get(slot, i), i)
+
+    mark(6, "bedtime", "before bed", "before sleep", "at night")
+    mark(2, "mid-morning", "mid morning")
+    mark(4, "mid-afternoon", "mid afternoon", "afternoon")
+    mark(1, "breakfast")
     # NB: don't test bare "noon" — it is a substring of "afternoon".
-    if "lunch" in t or "midday" in t or "12 noon" in t:
-        slots.add(3)
-    if "dinner" in t or "supper" in t or "evening meal" in t:
-        slots.add(5)
+    mark(3, "lunch", "midday", "12 noon")
+    mark(5, "dinner", "supper", "evening meal")
     # Bare 'morning' → breakfast, only if no mid-morning / breakfast already.
-    if "morning" in t and 2 not in slots and 1 not in slots:
-        slots.add(1)
+    if "morning" in t and 2 not in pos and 1 not in pos:
+        mark(1, "morning")
     # Bare 'evening' (not 'evening meal') → afternoon, if no dinner already.
-    if "evening" in t and 5 not in slots:
-        slots.add(4)
+    if "evening" in t and 5 not in pos:
+        mark(4, "evening")
     # 'On waking' / fasting — only when nothing more specific matched.
-    if not slots and any(
+    if not pos and any(
         k in t for k in ("waking", "early morning", "fasting", "empty stomach")
     ):
-        slots.add(0)
-    if not slots:
-        slots.add(1)  # safe default: with breakfast
-    return sorted(slots)
+        pos[0] = 0
+    if not pos:
+        pos[1] = 0  # safe default: with breakfast
+
+    slots = sorted(pos)
+    # 'X or Y' / 'X / Y' → once-daily, pick one. Keep the first-mentioned.
+    if len(slots) > 1 and (" or " in t or " / " in t):
+        return [min(slots, key=lambda s: pos[s])]
+    return slots
 
 
 def _build_daily_routine_html(plan: dict) -> str:
@@ -1776,6 +2045,7 @@ def _build_daily_routine_html(plan: dict) -> str:
 
     from collections import defaultdict
     by_slot: dict[int, list] = defaultdict(list)
+    prn_entries: list = []  # as-needed / travel-only — kept out of the timeline
     for s in supplements:
         if not isinstance(s, dict):
             continue
@@ -1797,9 +2067,15 @@ def _build_daily_routine_html(plan: dict) -> str:
             "dose": s.get("dose") or "",
             "food_tag": food_tag,
             "start_week": _resolve_start_week(s),
+            "when": (s.get("timing") or "").strip(),
         }
-        # A supplement can belong to several anchors (e.g. a thrice-daily
-        # enzyme → breakfast + lunch + dinner). Place it under each.
+        # PRN / as-needed supplements (travel, eating out, emergencies) are
+        # NOT part of the daily routine — collect them for a separate block.
+        if _is_prn(s):
+            prn_entries.append(entry)
+            continue
+        # A genuine multi-dose supplement can belong to several anchors
+        # (e.g. a thrice-daily enzyme → breakfast + lunch + dinner).
         for idx in _routine_slots(s.get("timing") or ""):
             by_slot[idx].append(entry)
 
@@ -1868,6 +2144,35 @@ def _build_daily_routine_html(plan: dict) -> str:
             f"</div>"
         )
 
+    # As-needed / travel-only supplements — shown in their own block, clearly
+    # separated from the daily timeline so the client never takes them daily.
+    prn_html = ""
+    if prn_entries:
+        prn_items = ""
+        for sp in prn_entries:
+            dose_str = (
+                f" <span class='routine-supp-dose'>{sp['dose']}</span>"
+                if sp["dose"] else ""
+            )
+            when_str = (
+                f" <span class='routine-prn-when'>— {sp['when']}</span>"
+                if sp["when"] else ""
+            )
+            prn_items += (
+                f"<div class='routine-supp'>💊 <strong>{sp['name']}</strong>"
+                f"{dose_str}{when_str}</div>"
+            )
+        prn_html = f"""
+  <div class="routine-prn">
+    <div class="routine-prn-head">🧳 As needed — travel &amp; eating out only</div>
+    <p class="routine-prn-note">
+      These are <strong>not</strong> part of your daily routine. Keep them on
+      hand and use them only for the occasion noted — eating out, travel, or
+      an off-plan meal.
+    </p>
+    {prn_items}
+  </div>"""
+
     return f"""
 <!-- ════════════════ DAILY ROUTINE ════════════════ -->
 <section id="daily-routine">
@@ -1885,6 +2190,7 @@ def _build_daily_routine_html(plan: dict) -> str:
   <div class="routine-track">
     {rows_html}
   </div>
+  {prn_html}
   <p class="routine-foot">
     Times are a guide — keep the <em>order</em> (which supplement sits with
     which meal), and shift the clock to suit your day. Items marked
@@ -3822,24 +4128,43 @@ def _build_prompt_meal_plan_phase(
     # Phase calorie target (if weight loss config). Select the bucket
     # that maps to the requested week range — phases are weeks 1–2,
     # 3–4, 5–8, 9–10, 11–12.
+    # NOTE: the calorie-phase NAMES are deliberately weight-loss-specific
+    # ("Gentle start", "Settling in", "Active loss", …) — they used to be
+    # "Foundation"/"Repair"/etc. which collided with FM protocol phase
+    # names (5R Repair, etc.) and the AI conflated the two.
     cal = _calc_calorie_targets(client, weight_loss or {})
     calorie_block = ""
+    # Energy-recovery protocols — a calorie deficit is clinically harmful
+    # (worsens fatigue / cortisol / triggers post-exertional crashes).
+    # Suppress the deficit entirely even if a weight-loss goal is set.
+    if cal and _has_fatigue_protocol(plan):
+        cal = None
+        calorie_block = (
+            "\n⚠ NO CALORIE DEFICIT — the attached protocol is an "
+            "energy-recovery protocol (adrenal / mitochondrial / PEM / "
+            "POTS). A calorie deficit is clinically harmful here: it "
+            "worsens fatigue and cortisol dysregulation and can trigger "
+            "post-exertional crashes. Build meals to ADEQUATE, well-fuelled "
+            "portions — protein at every meal, NO skipped meals, NO fasting "
+            "windows. Any weight management comes only AFTER energy is "
+            "restored.\n"
+        )
     if cal:
         if phase_start <= 2:
             kcal = cal["phases"]["wk1_2"]
-            phase_label = "Foundation (wks 1–2)"
+            phase_label = "Gentle start (wks 1–2)"
         elif phase_start <= 4:
             kcal = cal["phases"]["wk3_4"]
-            phase_label = "Repair (wks 3–4)"
+            phase_label = "Settling in (wks 3–4)"
         elif phase_start <= 8:
             kcal = cal["phases"]["wk5_8"]
-            phase_label = "Full deficit (wks 5–8)"
+            phase_label = "Active loss (wks 5–8)"
         elif phase_start <= 10:
             kcal = cal["phases"]["wk9_10"]
-            phase_label = "Ease back (wks 9–10)"
+            phase_label = "Easing back (wks 9–10)"
         else:
             kcal = cal["phases"]["wk11_12"]
-            phase_label = "Sustain (wks 11–12)"
+            phase_label = "Maintenance (wks 11–12)"
 
         bk = round(kcal * 0.25)
         sn1 = round(kcal * 0.10)
@@ -3883,6 +4208,12 @@ Per meal split (MUST roughly match):
         else f"Weeks {phase_start}–{phase_end}"
     )
     span_weeks = phase_end - phase_start + 1
+
+    # Protocol-aware phase context — derived from the client's ACTUAL
+    # attached protocol's catalogue `phases`, not a hardcoded arc. This is
+    # the single source of truth for "what phase is the client in" — see
+    # _phase_letter_protocol_context / _resolve_protocol_phase.
+    phase_context = _phase_letter_protocol_context(plan, phase_start, phase_end)
 
     # Per-client meal plan letter shape preference. Set via PreferencesEditor
     # on the Overview tab. Default "hybrid" — works for most new clients.
@@ -4066,6 +4397,8 @@ the past weeks. Don't re-prescribe — continue + evolve.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+
+{phase_context}
 {protocol_changes}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
@@ -4102,9 +4435,15 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
    {phase_label_short} look like.")
 
 2. **What's evolving this phase** — 1 short paragraph (3-5 sentences).
-   Reference the protocol stage. E.g. for weeks 3–4 of 5R: "Now that you've
-   removed the main triggers and started replacing digestive support, we're
-   layering in more reinoculation foods…" — concrete, specific, NOT generic.
+   Describe where the client honestly is in their protocol for THIS week
+   range. CRITICAL — use ONLY the "PROTOCOL PHASE" block above as your
+   source of truth for which phase(s) the client is in. Do NOT advance
+   the protocol faster than that block states, do NOT name a phase the
+   block does not list as active, and do NOT frame overlapping phases as
+   a clean graduation ("you've moved to phase N"). If the block says the
+   protocol is STANDING or none is attached, write a steady-continuation
+   paragraph with no phase-change language at all. Concrete and specific,
+   tied to her labs/symptoms — NOT generic.
 
 2a. **💊 Your supplement routine this phase** — ALWAYS INCLUDE THIS SECTION.
     Coach explicit ask: reinforce the routine every fortnight even if no
@@ -4437,6 +4776,9 @@ MOVEMENT & WELLNESS:
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
+    # Healing-phase arc — derived from the attached protocol's real phases
+    # (or honest continuity language when standing / none).
+    healing_arc = _consolidated_healing_arc_block(plan, plan_weeks)
     start_when = _start_when_block(plan, "both")
     # Between-session voice (last 14 days of WhatsApp inbound + coach
     # quick notes). Lets a consolidated regenerate pick up "low veg
@@ -4642,13 +4984,7 @@ Write a complete, warmly-toned {plan_weeks}-WEEK HEALING PLAN document in Markdo
 This is NOT a one-week meal plan. It is a structured healing journey across {plan_weeks} weeks, shared with the client 2 weeks at a time.
 The plan must have a logical therapeutic progression — each phase builds on the last.
 
-## Healing phases (the {plan_weeks}-week arc):
-- **Weeks 1–2 (Foundation):** Remove biggest inflammatory triggers, establish daily rhythm, introduce 2–3 key supplements. Gentle start — build trust and consistency.
-- **Weeks 3–4 (Repair):** Gut lining support, introduce fermented foods, add healing broths/teas. Deepen supplement protocol.
-- **Weeks 5–6 (Rebalance):** Hormone and blood sugar focus. Specific foods for hormonal balance. Stress reduction becomes intentional practice.
-- **Weeks 7–8 (Strengthen):** Deeper nourishment — therapeutic foods, mitochondrial support, energy focus. Introduce more variety.
-- **Weeks 9–10 (Optimize):** Fine-tune based on what's working. Circadian rhythm, sleep, and deeper lifestyle work.
-- **Weeks 11–12 (Sustain):** Long-term habit anchoring. Transition to maintenance. Celebrate progress.
+{healing_arc}
 
 ## Document structure (action-first, 5–7 pages — don't overwhelm):
 
