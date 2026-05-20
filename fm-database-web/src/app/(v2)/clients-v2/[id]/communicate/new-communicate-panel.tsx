@@ -45,12 +45,18 @@ import { LetterGenerateTrigger } from "./letter-generate-modal";
 // ───────────────────────────────────────────────────────────────────
 // Document types in the order the design specifies.
 // ───────────────────────────────────────────────────────────────────
+// `standalone` — true when this letter type can be generated on its own
+// via a single AI call (mode="single"). False for supplement/lifestyle:
+// those are SECTIONS of the consolidated wellness letter, not separate
+// generations — they extract from it for free, so their row shows
+// "In the wellness letter" instead of a misleading Generate button.
 const DOC_TYPES: ReadonlyArray<{
   id: string;
   label: string;
   desc: string;
   kind: string;
   letter: LetterType;
+  standalone: boolean;
 }> = [
   {
     id: "consolidated",
@@ -58,34 +64,39 @@ const DOC_TYPES: ReadonlyArray<{
     desc: "Consolidated phase letter — story, why, what changed",
     kind: "wellness",
     letter: "consolidated",
+    standalone: true,
   },
   {
     id: "supplement",
     label: "Supplement plan",
-    desc: "Dosing, timing, brands; refreshed when protocol changes",
+    desc: "Dosing, timing, brands — a section of the wellness letter",
     kind: "supplement",
     letter: "supplement_plan",
+    standalone: false,
   },
   {
     id: "lifestyle",
     label: "Lifestyle guide",
-    desc: "Sleep, stress, movement habits for this protocol",
+    desc: "Sleep, stress, movement habits — a section of the wellness letter",
     kind: "lifestyle",
     letter: "lifestyle_guide",
+    standalone: false,
   },
   {
     id: "exercise",
     label: "Exercise plan",
-    desc: "Movement scaffold — respects limitations",
+    desc: "Optional standalone movement scaffold — respects limitations",
     kind: "exercise",
     letter: "exercise_plan",
+    standalone: true,
   },
   {
     id: "recipes",
     label: "Recipe pack",
-    desc: "Curated recipes that pair with this week's menu",
+    desc: "Optional standalone recipe collection for ✦ dishes",
     kind: "recipes",
     letter: "recipes",
+    standalone: true,
   },
 ];
 
@@ -611,6 +622,10 @@ export interface NewCommunicatePanelProps {
   /** Per-fortnight phase letters saved on disk — drives Drafted state
    *  on weekly menu cards. */
   savedPhases?: SavedPhase[];
+  /** Rendered immediately AFTER the big orange hero CTA. Used to slot the
+   *  travel-overrides panel right under the hero so it's seen, not
+   *  missed above it (coach feedback 2026-05-20). */
+  slotAfterHero?: React.ReactNode;
 }
 
 // ───────────────────────────────────────────────────────────────────
@@ -627,6 +642,7 @@ export function NewCommunicatePanel({
   staleness,
   savedLetters = {},
   savedPhases = [],
+  slotAfterHero,
 }: NewCommunicatePanelProps) {
   const today = new Date();
   const startDate =
@@ -768,6 +784,12 @@ export function NewCommunicatePanel({
           </button>
         )}
       </div>
+
+      {/* Slot right under the hero — travel-overrides panel lives here so
+          it's seen after the big orange CTA, not missed above it. */}
+      {slotAfterHero && (
+        <div style={{ marginTop: 14 }}>{slotAfterHero}</div>
+      )}
 
       {/* WL config readout */}
       {wl?.enabled && (
@@ -919,7 +941,7 @@ export function NewCommunicatePanel({
               </div>
               <div className="FmPanel-sub">
                 {selectedFortnight === 0
-                  ? "Initial package — all 5 documents go out together at intake"
+                  ? "Initial package — the Full wellness letter is the core document (supplement + lifestyle are sections of it). Exercise plan + recipes are optional."
                   : "Phase letter for this fortnight + standing documents from initial package"}
               </div>
             </header>
@@ -1109,32 +1131,41 @@ export function NewCommunicatePanel({
                     <div className="doc-stamp">{st.stamp}</div>
                     <div className="doc-actions">
                       {st.kind === "idle" ? (
-                        // Idle row — offer single-type generation if a
-                        // plan exists. Cheap because partial extraction
-                        // pulls from consolidated when available.
-                        activePlanSlug ? (
-                          <LetterGenerateTrigger
-                            clientId={clientId}
-                            planSlug={activePlanSlug}
-                            mode="phase"
-                            label="Generate"
-                            tone="primary"
-                            // We don't have a phase range here — fall
-                            // through to phase 1–2 (Wks 1–2) so the
-                            // generation modal can run. For non-meal
-                            // letter types this isn't ideal; Phase 3b
-                            // will wire per-doc-type generators.
-                            phase={{
-                              startWeek: weeks[0]?.weekStart ?? 1,
-                              endWeek: weeks[0]?.weekEnd ?? 2,
-                            }}
-                          />
-                        ) : (
+                        !activePlanSlug ? (
                           <span
                             className="FmBtn FmBtn--sm"
                             style={{ opacity: 0.55, pointerEvents: "none" }}
                           >
                             {st.action}
+                          </span>
+                        ) : d.standalone ? (
+                          // Standalone letter type — generate just this
+                          // one document via mode="single". One AI call,
+                          // generates exactly d.letter (not a meal plan).
+                          <LetterGenerateTrigger
+                            clientId={clientId}
+                            planSlug={activePlanSlug}
+                            mode="single"
+                            letterType={d.letter}
+                            letterLabel={d.label}
+                            label="Generate"
+                            tone="primary"
+                          />
+                        ) : (
+                          // Supplement / lifestyle — these are SECTIONS of
+                          // the consolidated wellness letter, not separate
+                          // generations. Generating the wellness letter
+                          // produces them. No standalone Generate button.
+                          <span
+                            title="This is part of the Full wellness letter — generate that and this is included."
+                            style={{
+                              fontSize: 11,
+                              color: "var(--fm-text-tertiary, #999)",
+                              fontStyle: "italic",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            In wellness letter
                           </span>
                         )
                       ) : editorHref ? (
@@ -1176,26 +1207,9 @@ export function NewCommunicatePanel({
             )}
           </section>
 
-          {/* Special requests collapsed (Phase 3b will wire to client.yaml) */}
-          <details className="req-block">
-            <summary
-              className="req-head"
-              style={{ listStyle: "none", cursor: "pointer" }}
-            >
-              <h3 style={{ margin: 0 }}>Special requests + travel</h3>
-              <span style={{ fontSize: 12, color: "var(--fm-text-3, #999)" }}>
-                Coach notes the system folds into the NEXT letter only
-              </span>
-              <span className="caret">▾ open</span>
-            </summary>
-            <div style={{ padding: "12px 16px 4px", fontSize: 13, color: "var(--fm-text-2, #5A5A5A)" }}>
-              <em>
-                Phase 3b will wire this to client.yaml — meal preferences,
-                cooking style, variety, and a per-letter coach-notes
-                textarea.
-              </em>
-            </div>
-          </details>
+          {/* "Special requests + travel" dead stub removed 2026-05-20 —
+              it was a never-wired Phase-3b placeholder, redundant with the
+              real TravelOverridesPanel (now slotted right under the hero). */}
         </div>
 
         {/* Send history sidebar */}

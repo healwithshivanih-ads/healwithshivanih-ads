@@ -333,6 +333,44 @@ def _check_dietary_consistency(
                     break
 
 
+# ---------------------------------------------------------------------------
+# Food-first redundancy
+# ---------------------------------------------------------------------------
+# Standing coach rule (2026-05-20): food is prioritised over supplements
+# wherever food can do the job. The AI prompts (suggester + plan-chat)
+# enforce this at generation time; this deterministic check is the
+# catch-net for the clearest case — a supplement that is ALSO covered by
+# a food already in nutrition.add. Currently scoped to selenium / Brazil
+# nuts (the documented example); extend the map as more clear cases emerge.
+#
+# Map: supplement slug → (food keyword in nutrition.add, human food name).
+_FOOD_FIRST_REDUNDANT: dict[str, tuple[str, str]] = {
+    "selenium": ("brazil nut", "Brazil nuts"),
+}
+
+
+def _check_food_first_redundancy(plan: Plan, findings: list[Finding]) -> None:
+    """INFO when a supplement is in the protocol AND the food that can
+    replace it is already in nutrition.add — the supplement is redundant
+    under the food-first rule."""
+    add_blob = " ".join(plan.nutrition.add).lower()
+    for supp in plan.supplement_protocol:
+        entry = _FOOD_FIRST_REDUNDANT.get(supp.supplement_slug)
+        if not entry:
+            continue
+        food_kw, food_name = entry
+        if food_kw in add_blob:
+            findings.append(Finding(
+                "INFO", "supplement_protocol", "supplement_slug",
+                (f"{supp.supplement_slug!r} is in the protocol but "
+                 f"{food_name} are already in nutrition.add — under the "
+                 f"food-first rule the supplement is redundant. Drop the "
+                 f"supplement and keep the food, unless a therapeutic dose "
+                 f"above food levels is genuinely needed."),
+                target=supp.supplement_slug,
+            ))
+
+
 def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Finding]:
     """Run deterministic checks. Returns findings sorted by severity."""
     findings: list[Finding] = []
@@ -550,6 +588,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Dietary-preference consistency ----------
     _check_dietary_consistency(plan, client, findings)
+
+    # ---------- Food-first redundancy ----------
+    _check_food_first_redundancy(plan, findings)
 
     # Sort: CRITICAL first, then WARNING, then INFO
     severity_order = {"CRITICAL": 0, "WARNING": 1, "INFO": 2}

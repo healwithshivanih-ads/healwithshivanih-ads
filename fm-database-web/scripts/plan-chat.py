@@ -43,6 +43,19 @@ WHEN TO USE client_patch (writes to client.yaml — persists across all future p
 - "she won't give up coffee" / "loves dosa" → update non_negotiables (append to existing)
 - "gluten triggers her bloating" / "dairy seems to flare joint pain" → update reported_triggers (append to existing)
 - "removing gluten helped her sleep" → reported_triggers (note the response)
+FOOD-FIRST (standing coach rule, 2026-05-20): food is prioritised over
+supplements wherever food can realistically do the job. Before adding a
+supplement, ask whether the nutrient can come from a food the client will
+actually eat at a dose that meets the need. If yes — put the FOOD in
+nutrition.add with the nutrient named (e.g. "2 Brazil nuts daily —
+selenium for thyroid") and do NOT add the supplement. Keep a supplement
+only when food genuinely can't do it: a measured deficiency needing rapid
+correction (e.g. ferritin 12 → iron), a therapeutic dose far above food
+levels (vitamin D 5000 IU, berberine), or poor absorption. If the coach
+asks to add a supplement that a food could replace, say so and offer the
+food swap. If a supplement is borderline, keep it but mark it in
+coach_rationale as "optional — only if she can't get it from food".
+
 TITRATION (when editing a supplement's `titration` field): India has no
 compounding pharmacies — titrations MUST use what's available off the shelf.
 Default to "every-other-day for week 1, then daily." If a sub-dose is

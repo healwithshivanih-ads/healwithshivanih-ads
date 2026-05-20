@@ -520,6 +520,32 @@ HARD RULES (violating these breaks the downstream system):
     against the catalogue — note them in `catalogue_additions_suggested`
     with `kind: drug_depletion` so the coach knows the gap.
 
+3c. FOOD-FIRST — a hard precondition on EVERY supplement suggestion.
+    Before you add any supplement, ask: "Can this nutrient be delivered by
+    a food this client will realistically eat, at a dose that meets the
+    need?" If YES → do NOT suggest the supplement. Instead put the FOOD in
+    `nutrition.add` with the nutrient named explicitly, e.g.
+    "2 Brazil nuts daily — selenium for thyroid (replaces a selenium
+    supplement)". Supplements are a fallback for when food cannot
+    realistically close the gap, not the default.
+      • Food CAN cover it (→ food, not supplement): selenium → 2 Brazil
+        nuts/day; magnesium (maintenance) → pumpkin seeds + cooked greens;
+        vitamin C → amla / guava; potassium → coconut water; many B
+        vitamins → whole foods; iodine → sea vegetables.
+      • Supplement IS still first-line when food genuinely cannot do it:
+        a real measured deficiency needing rapid correction (e.g.
+        ferritin 12 → iron supplement); a therapeutic dose far above food
+        levels (e.g. vitamin D 5000 IU for a deficient client; berberine);
+        poor absorption (hypochlorhydria, gut disease); or a compound with
+        no meaningful food source. In these cases keep the supplement but
+        say WHY food won't suffice in `coach_rationale`.
+      • When a supplement is genuinely borderline, suggest the food in
+        `nutrition.add` AND keep the supplement but mark it in
+        `coach_rationale` as "optional — only if she can't get it from
+        food consistently".
+    This reflects the coach's standing rule (2026-05-20): food is
+    prioritised over supplements wherever food can do the job.
+
 4. Lab interpretation: extract values verbatim from reports. Use FM-optimal
    ranges where appropriate (e.g., TSH 0.5-2.5, ferritin > 70 for women,
    vit D 50-80 ng/mL — these are FM-specific not consensus). Flag interpretation

@@ -347,26 +347,6 @@ export default async function CommunicateTabPage({
         subtitle="Everything that goes out (or comes in) lives here — letters, WhatsApp templates, email, recent inbound. One surface after every session."
       />
 
-      {/* ✈ Travel / festival / illness overrides — set BEFORE letter
-          generation. Decoupled from weight-loss state 2026-05-19
-          (coach feedback: travel info needed for all clients, not
-          just weight-loss ones). Storage stays on
-          client.weight_loss.week_overrides for back-compat. */}
-      <TravelOverridesPanel
-        clientId={id}
-        overrides={
-          (client as unknown as { weight_loss?: WeightLossGoal }).weight_loss
-            ?.week_overrides ?? []
-        }
-        // hasIssuedLetters = at least one saved-letter probe came back
-        // from disk. Drives the post-save CTA toast in AddOverrideModal:
-        // letters issued → ask coach about a dedicated vacation letter;
-        // no letters yet → silent save (next generation will use it).
-        hasIssuedLetters={
-          Object.keys(savedLetters).length > 0 || savedPhases.length > 0
-        }
-      />
-
       {/* ✨ NEW Communicate layout — primary surface. Driven entirely
           by real data (active plan, sendLog, saved-letter probes from
           disk, weight_loss override window, letter staleness). Coach
@@ -406,6 +386,22 @@ export default async function CommunicateTabPage({
         staleness={staleness}
         savedLetters={savedLetters}
         savedPhases={savedPhases}
+        slotAfterHero={
+          /* ✈ Travel / festival / illness overrides — set BEFORE letter
+             generation. Moved here (under the hero) 2026-05-20 so it is
+             seen, not missed above the big orange CTA. Storage stays on
+             client.weight_loss.week_overrides for back-compat. */
+          <TravelOverridesPanel
+            clientId={id}
+            overrides={
+              (client as unknown as { weight_loss?: WeightLossGoal })
+                .weight_loss?.week_overrides ?? []
+            }
+            hasIssuedLetters={
+              Object.keys(savedLetters).length > 0 || savedPhases.length > 0
+            }
+          />
+        }
       />
 
       {/* 📞💬✉ Primary comms surfaces — contact, send booking link,

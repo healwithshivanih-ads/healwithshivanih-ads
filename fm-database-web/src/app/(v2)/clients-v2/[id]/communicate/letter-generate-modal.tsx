@@ -36,7 +36,7 @@ import {
   type LetterType,
 } from "@/lib/server-actions/plan-lifecycle";
 
-type Mode = "initial" | "phase";
+type Mode = "initial" | "phase" | "single";
 
 interface LetterGenerateTriggerProps {
   clientId: string;
@@ -46,6 +46,10 @@ interface LetterGenerateTriggerProps {
   tone?: "primary" | "warning" | "secondary" | "danger";
   /** Required when mode === "phase". */
   phase?: { startWeek: number; endWeek: number };
+  /** Required when mode === "single" — the one letter type to generate. */
+  letterType?: LetterType;
+  /** Human label for the single letter (shown in the modal + progress). */
+  letterLabel?: string;
   /** Optional readiness signals — shown as soft warnings in the modal
    *  before the API call fires (B9 audit 2026-05-19). Coach can still
    *  proceed; these are informational not blocking. */
@@ -99,6 +103,8 @@ export function LetterGenerateTrigger({
   label,
   tone = "primary",
   phase,
+  letterType,
+  letterLabel,
   readiness,
 }: LetterGenerateTriggerProps) {
   const [open, setOpen] = useState(false);
@@ -119,6 +125,8 @@ export function LetterGenerateTrigger({
           planSlug={planSlug}
           mode={mode}
           phase={phase}
+          letterType={letterType}
+          letterLabel={letterLabel}
           onClose={() => setOpen(false)}
           tone={tone}
           readiness={readiness}
@@ -133,6 +141,8 @@ function GenerateModal({
   planSlug,
   mode,
   phase,
+  letterType,
+  letterLabel,
   onClose,
   tone,
   readiness,
@@ -141,6 +151,8 @@ function GenerateModal({
   planSlug: string;
   mode: Mode;
   phase?: { startWeek: number; endWeek: number };
+  letterType?: LetterType;
+  letterLabel?: string;
   onClose: () => void;
   tone: "primary" | "warning" | "secondary" | "danger";
   readiness?: LetterGenerateTriggerProps["readiness"];
@@ -244,17 +256,57 @@ function GenerateModal({
     });
   };
 
-  const start = mode === "initial" ? runInitial : runPhase;
+  // mode="single" — generate exactly one letter type via generateClientLetter.
+  const runSingle = () => {
+    if (!letterType) {
+      setError("Letter type missing");
+      return;
+    }
+    setError(null);
+    setAllDone(false);
+    startTransition(async () => {
+      setStep(0, "running");
+      try {
+        const res = await generateClientLetter(
+          planSlug,
+          clientId,
+          undefined,              // weight_loss read server-side
+          letterType,
+          undefined,              // coach_notes
+          false,                  // forceRegenerate — reuse cache
+        );
+        if (!res.ok) {
+          setStep(0, "failed");
+          setError(res.error ?? "Generation failed");
+          return;
+        }
+        setStep(0, "done");
+        setAllDone(true);
+        toast.success(`${letterLabel ?? "Letter"} generated`);
+        router.refresh();
+      } catch (err) {
+        setStep(0, "failed");
+        setError((err as Error).message);
+      }
+    });
+  };
+
+  const start =
+    mode === "initial" ? runInitial : mode === "single" ? runSingle : runPhase;
 
   const heroTitle =
     mode === "initial"
       ? "Generate the initial package"
-      : `Generate Wks ${phase?.startWeek}–${phase?.endWeek} menu`;
+      : mode === "single"
+        ? `Generate ${letterLabel ?? "letter"}`
+        : `Generate Wks ${phase?.startWeek}–${phase?.endWeek} menu`;
 
   const description =
     mode === "initial"
       ? "One Sonnet call generates the full wellness letter — the source of truth. Supplement plan + lifestyle guide auto-extract from it (no extra cost). Optional add-ons below run separate calls only if checked."
-      : "Generates the next fortnight's meal plan letter. The last check-in + 14 days of WhatsApp messages fold in automatically. Travel overrides for these dates are applied if set.";
+      : mode === "single"
+        ? `One Sonnet call generates the ${letterLabel ?? "letter"} on its own (~$0.10–0.40). Use this when you want just this document refreshed.`
+        : "Generates the next fortnight's meal plan letter. The last check-in + 14 days of WhatsApp messages fold in automatically. Travel overrides for these dates are applied if set.";
 
   return (
     <div
@@ -301,7 +353,11 @@ function GenerateModal({
                     : "var(--fm-primary, #FF6B35)",
             }}
           >
-            {mode === "initial" ? "Initial package" : "Fortnight letter"}
+            {mode === "initial"
+              ? "Initial package"
+              : mode === "single"
+                ? "Single letter"
+                : "Fortnight letter"}
           </div>
           <h3
             style={{
@@ -446,7 +502,9 @@ function GenerateModal({
         >
           {(mode === "initial"
             ? initialPlan.map((x) => x.label)
-            : [`Wks ${phase?.startWeek}–${phase?.endWeek} meal plan`]
+            : mode === "single"
+              ? [letterLabel ?? "Letter"]
+              : [`Wks ${phase?.startWeek}–${phase?.endWeek} meal plan`]
           ).map((lbl, i) => (
             <li
               key={lbl}
@@ -582,7 +640,9 @@ function GenerateModal({
                 href={`/clients-v2/${clientId}/letter-editor?plan=${planSlug}${
                   mode === "phase" && phase
                     ? `&type=meal_plan_phase&phase_start=${phase.startWeek}&phase_end=${phase.endWeek}`
-                    : ""
+                    : mode === "single" && letterType
+                      ? `&type=${letterType}`
+                      : ""
                 }`}
                 style={{
                   padding: "8px 16px",
