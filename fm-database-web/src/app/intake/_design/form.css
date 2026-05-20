@@ -1175,3 +1175,34 @@
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
+
+/* ── Focus mode (?focus=tier1) ──────────────────────────────────────────
+   When the coach re-issues the intake just to capture the Tier 1
+   screening section, the form renders ?focus=tier1. Every .fm-section is
+   hidden except the two marked .fm-section--focus-keep (the Tier 1
+   section + the consent/submit section). All field STATE still hydrates
+   from prefill/draft and is included in the submit payload — only the
+   rendering is suppressed, so the client answers 4 quick questions
+   instead of scrolling a 14-section form. */
+.fm-intake--focus-tier1 .fm-section:not(.fm-section--focus-keep) {
+  display: none;
+}
+.fm-focus-banner {
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(46, 110, 213, 0.10), rgba(46, 110, 213, 0.03));
+  border: 1px solid rgba(46, 110, 213, 0.32);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.fm-focus-banner strong {
+  font-size: 16px;
+  color: #1e3a8a;
+}
+.fm-focus-banner span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #334155;
+}

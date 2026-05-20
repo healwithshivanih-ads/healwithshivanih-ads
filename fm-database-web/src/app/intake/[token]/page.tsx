@@ -6,10 +6,14 @@ export const dynamic = "force-dynamic";
 
 export default async function IntakeTokenPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ token: string }>;
+  searchParams: Promise<{ focus?: string }>;
 }) {
   const { token } = await params;
+  const { focus } = await searchParams;
+  const focusTier1 = focus === "tier1";
   const res = await lookupIntakeToken(token);
 
   if (!res.ok) {
@@ -66,6 +70,7 @@ export default async function IntakeTokenPage({
       prefill={res.prefill}
       draft={res.intake_form_draft}
       previouslySubmitted={res.previously_submitted}
+      focusTier1={focusTier1}
     />
   );
 }

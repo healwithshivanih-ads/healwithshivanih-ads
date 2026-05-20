@@ -79,6 +79,7 @@ import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
 import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";
+import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 
 export const dynamic = "force-dynamic";
 
@@ -1000,6 +1001,16 @@ export default async function ClientV2Page({
               </div>
             </FmPanel>
           )}
+
+          {/* 🧭 IFM 7-node baseline — rendered from client.ifm_baseline
+              (coach / AI functional-medicine mapping). Self-hides when no
+              baseline has been captured for this client. */}
+          <IfmBaselineCard
+            baseline={
+              (client as unknown as { ifm_baseline?: IfmBaseline })
+                .ifm_baseline ?? null
+            }
+          />
         </div>
 
         {/* RIGHT COLUMN */}

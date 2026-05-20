@@ -188,6 +188,7 @@ export function IntakeForm({
   existingNotes,
   verifyInSession,
   insightsModelLabel,
+  existingLabMarkers = [],
 }: {
   clientId: string;
   displayName: string;
@@ -216,6 +217,10 @@ export function IntakeForm({
   // responses are auto-appended to session.coach_notes on save.
   verifyInSession: string[];
   insightsModelLabel?: string;
+  // Already-computed FM lab markers from the client's uploaded reports.
+  // Used by the IFM auto-score so a node with no SYMPTOMS but clear LAB
+  // dysfunction (e.g. Energy with HOMA-IR 3.7) isn't scored 1 = optimal.
+  existingLabMarkers?: Array<{ marker_name: string; panel?: string; flag?: string }>;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -1727,12 +1732,16 @@ export function IntakeForm({
         title="8 · 7 IFM nodes — baseline assessment"
         description="Score each functional-medicine node 1–5 based on the call. Becomes the baseline for the IFM Matrix card. Leave blank if not assessed."
       >
-        {/* ✨ Auto-score from the symptoms / conditions captured above.
-            Local computation (no API call) — runs computeIFMMatrix on the
-            current symptoms + active_conditions, buckets the 0–100 burden
-            score into 1–5, and only fills nodes the coach hasn't already
-            scored manually. Coach can override any cell after auto-score. */}
-        {(symptoms.length > 0 || conditions.length > 0) && (
+        {/* ✨ Auto-score from symptoms + conditions + UPLOADED LAB REPORTS.
+            Local computation (no API call). For each IFM node it takes the
+            HIGHER of two signals: (a) symptom/condition burden via
+            computeIFMMatrix, and (b) flagged lab markers mapped to the node.
+            Without (b), a node with no symptoms but clear lab dysfunction
+            (e.g. Energy with HOMA-IR 3.7) would wrongly score 1 = optimal.
+            Only fills nodes the coach hasn't already scored. */}
+        {(symptoms.length > 0 ||
+          conditions.length > 0 ||
+          existingLabMarkers.length > 0) && (
           <div
             style={{
               display: "flex",
@@ -1748,36 +1757,74 @@ export function IntakeForm({
             <button
               type="button"
               onClick={() => {
-                // Combine symptom slugs + condition labels (the burden
-                // mapper checks both as catalogue slugs / aliases).
+                // ── (a) symptom / condition burden ──────────────────────
                 const allSignals = [
                   ...symptoms,
                   ...conditions.map((c) => c.toLowerCase().replace(/\s+/g, "-")),
                 ];
                 const matrix = computeIFMMatrix([], [], allSignals);
-                // 0-100 burden → 1-5 bucket. Higher burden = higher score
-                // (matches existing IFM matrix card's "more dysfunction" reading).
-                const bucket = (s: number): number => {
-                  if (s <= 0) return 0;
+                // 0-100 symptom burden → 1-5 bucket. No signal → 1 = optimal.
+                const symptomBucket = (s: number): number => {
                   if (s <= 20) return 1;
                   if (s <= 40) return 2;
                   if (s <= 60) return 3;
                   if (s <= 80) return 4;
                   return 5;
                 };
+
+                // ── (b) lab-report burden ───────────────────────────────
+                // Every flagged FM lab marker maps to an IFM node. Hard
+                // flags (high / low) weigh 2; soft flags (suboptimal /
+                // watch / borderline) weigh 1. Summed per node, bucketed.
+                const PANEL_NODE: Record<string, IFMNodeId> = {
+                  "Metabolic & Insulin": "energy",
+                  Thyroid: "communication",
+                  "Liver Function": "biotransformation",
+                  "Kidney Function": "biotransformation",
+                  "Cardiovascular & Lipids": "transport",
+                  "Iron & Blood": "transport",
+                  "Key Nutrients": "assimilation",
+                };
+                const labBurden: Record<string, number> = {};
+                for (const m of existingLabMarkers) {
+                  const flag = (m.flag ?? "").toLowerCase();
+                  if (!flag || flag === "ok" || flag === "optimal" || flag === "normal") {
+                    continue;
+                  }
+                  const w = flag === "high" || flag === "low" ? 2 : 1;
+                  const name = (m.marker_name ?? "").toLowerCase();
+                  // Inflammation markers live under the Cardiovascular panel
+                  // in compute-ratios — re-route them to Defense & Repair.
+                  // Homocysteine → Biotransformation (methylation marker).
+                  let node: IFMNodeId | undefined;
+                  if (/\b(hs.?crp|crp|esr|fibrinogen)\b/.test(name) ||
+                      /\bwbc\b|white blood|neutrophil|lymphocyte|\bnlr\b|platelet/.test(name)) {
+                    node = "defense_repair";
+                  } else if (/homocystein/.test(name)) {
+                    node = "biotransformation";
+                  } else {
+                    node = PANEL_NODE[m.panel ?? ""];
+                  }
+                  if (!node) continue;
+                  labBurden[node] = (labBurden[node] ?? 0) + w;
+                }
+                const labBucket = (sum: number): number => {
+                  if (sum <= 0) return 0;
+                  if (sum <= 2) return 2;
+                  if (sum <= 5) return 3;
+                  if (sum <= 9) return 4;
+                  return 5;
+                };
+
                 setIfmScores((prev) => {
                   const next = { ...prev };
-                  let filled = 0;
+                  // Each blank node = the HIGHER of symptom-burden and
+                  // lab-burden (floor 1 = optimal). Coach overrides any cell.
                   for (const n of matrix.nodes) {
-                    if (next[n.node] != null) continue; // don't overwrite coach edits
-                    const b = bucket(n.score);
-                    if (b > 0) {
-                      next[n.node as IFMNodeId] = b;
-                      filled += 1;
-                    }
-                  }
-                  if (filled === 0) {
-                    setIfmNotes((notes) => notes || "");
+                    if (next[n.node] != null) continue; // keep coach edits
+                    const sScore = symptomBucket(n.score);
+                    const lScore = labBucket(labBurden[n.node] ?? 0);
+                    next[n.node as IFMNodeId] = Math.max(sScore, lScore, 1);
                   }
                   return next;
                 });
@@ -1795,13 +1842,14 @@ export function IntakeForm({
                 whiteSpace: "nowrap",
               }}
             >
-              ✨ Auto-score from symptoms
+              ✨ Auto-score from symptoms + labs
             </button>
             <span style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
               Pre-fills any blank nodes from {symptoms.length} symptom
               {symptoms.length === 1 ? "" : "s"}
-              {conditions.length > 0 && ` + ${conditions.length} condition${conditions.length === 1 ? "" : "s"}`}.
-              Edit any cell after to override.
+              {conditions.length > 0 && `, ${conditions.length} condition${conditions.length === 1 ? "" : "s"}`}
+              {existingLabMarkers.length > 0 && `, ${existingLabMarkers.length} lab marker${existingLabMarkers.length === 1 ? "" : "s"}`}.
+              Each node takes the higher of symptom + lab signal. Edit any cell to override.
             </span>
           </div>
         )}

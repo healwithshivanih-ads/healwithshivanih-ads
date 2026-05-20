@@ -877,6 +877,23 @@ def main() -> int:
     except Exception:
         pass
 
+    # IFM 7-node baseline — the coach's functional-medicine read across
+    # assimilation / defense_repair / energy / biotransformation /
+    # transport / communication / structural. Stored as an EXTRA field on
+    # client.yaml; the Client Pydantic model uses extra="ignore", so it is
+    # dropped from the `client` object — read it from the raw YAML and
+    # inject it so synthesize() can anchor drivers to it. See suggester
+    # prompt rule 13 (IFM BASELINE).
+    try:
+        _raw_client = yaml.safe_load(
+            plan_storage.client_path(root, client_id).read_text()
+        ) or {}
+        _ifm = _raw_client.get("ifm_baseline")
+        if isinstance(_ifm, dict) and _ifm.get("nodes"):
+            client_ctx["ifm_baseline"] = _ifm
+    except Exception:
+        pass
+
     # ----- existing labs already on file --------------------------------
     # Without this, the AI re-orders tests that were done weeks ago because
     # it has no idea the values exist. Two surfaces feed in:
@@ -935,6 +952,11 @@ def main() -> int:
     # whole prior assessment.
     _SYNTH_TRIM = 1500
     _MSG_TRIM = 1200  # client_message preview per session
+    _COACH_NOTES_TRIM = 2500  # coach_notes preview per session — the coach's
+    # own observations (chief complaint, HPI, IFM baseline, family hx, mood /
+    # body-language reads). Previously NOT passed to the AI at all — the most
+    # valuable clinical signal was invisible to synthesize(). Generous trim
+    # because this block is dense + high-value.
     # Strip leading [key: value] tag pairs (session_type, source, template,
     # type) that webhook + outbound code prepends to presenting_complaints.
     # We want the AI to read the actual message body, not the audit tags.
@@ -963,6 +985,14 @@ def main() -> int:
         notes = ai.get("synthesis_notes", "") or ""
         if len(notes) > _SYNTH_TRIM:
             notes = notes[:_SYNTH_TRIM].rstrip() + " …[truncated]"
+        # Coach's own observations for this session — chief complaint, HPI,
+        # IFM 7-node baseline, family history, "what worked", and the
+        # section-11 mood / body-language / motivation reads. Passed to the
+        # AI so synthesize() can weigh the coach's clinical intuition, not
+        # just structured symptom slugs.
+        coach_notes = (s.coach_notes or "") if hasattr(s, "coach_notes") else ""
+        if len(coach_notes) > _COACH_NOTES_TRIM:
+            coach_notes = coach_notes[:_COACH_NOTES_TRIM].rstrip() + " …[truncated]"
         # presenting_complaints carries either:
         #  - the coach's notes from a full session, OR
         #  - the raw WhatsApp body from a webhook-saved quick_note, OR
@@ -997,6 +1027,7 @@ def main() -> int:
                 for sp in (ai.get("supplement_suggestions") or [])
             ],
             "synthesis_notes": notes,
+            "coach_notes": coach_notes,
             "client_message": client_message,
             "channel": channel,
         })

@@ -48,15 +48,31 @@ export function TierOneSuspicionsPanel({
 
   const onReissue = () => {
     startTransition(async () => {
-      const { generateIntakeToken } = await import("@/lib/server-actions/intake");
-      const res = await generateIntakeToken(clientId, 14, false);
+      const { reissueTierOneIntakeAction } = await import(
+        "@/lib/server-actions/intake"
+      );
+      // One call: mints a FULL-stage token, builds a ?focus=tier1 link so
+      // the form shows ONLY the Tier 1 section (joints / standing / energy
+      // — everything else stays saved + hidden), and sends a specific
+      // WhatsApp message ("a couple more answers", not a whole-form
+      // invite). See reissueTierOneIntakeAction.
+      const res = await reissueTierOneIntakeAction(clientId);
       if (res.ok) {
         toast.success(
-          "📨 New pre-discovery intake link generated — open the SendIntakeFormButton to send via WhatsApp",
+          res.via === "free_text"
+            ? "📨 Tier 1 form sent — client sees only the new section"
+            : "📨 Tier 1 form sent (via template — the 24h reply window was closed)",
         );
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
+          );
+        }
         router.refresh();
       } else {
-        toast.error(res.error ?? "Token generation failed");
+        toast.error(`Couldn't send the Tier 1 form — ${res.error}`, {
+          duration: 9000,
+        });
       }
     });
   };
@@ -182,13 +198,14 @@ export function TierOneSuspicionsPanel({
             fontFamily: "inherit",
           }}
         >
-          {pending ? "Generating…" : "📨 Re-issue intake to verify"}
+          {pending ? "Sending…" : "📨 Re-issue + send intake via WhatsApp"}
         </button>
         <span
           style={{ fontSize: 11, color: "var(--fm-text-tertiary)", lineHeight: 1.4 }}
         >
-          Client returns to the same form, fills only the new Tier 1 sections —
-          earlier answers stay saved.
+          One click: generates a fresh link and sends it to the client on
+          WhatsApp. They return to the same form and fill only the new Tier 1
+          sections — earlier answers stay saved.
           {highConfidenceCount > 0
             ? ` (${highConfidenceCount} high-confidence signal${highConfidenceCount === 1 ? "" : "s"} — worth doing.)`
             : ""}

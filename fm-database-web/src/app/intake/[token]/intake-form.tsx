@@ -1293,6 +1293,7 @@ function FormSection({
   sub,
   sectionRef,
   soft,
+  keepInFocus,
   children,
 }: {
   number: number;
@@ -1302,6 +1303,9 @@ function FormSection({
   sub?: string;
   sectionRef: (el: HTMLElement | null) => void;
   soft?: boolean;
+  /** Stay visible in ?focus=tier1 mode. Set on the Tier 1 section + the
+   *  consent/submit section; CSS hides every other .fm-section. */
+  keepInFocus?: boolean;
   children: React.ReactNode;
 }) {
   void totalSections;
@@ -1309,7 +1313,11 @@ function FormSection({
     <section
       ref={sectionRef}
       data-section={number}
-      className={"fm-section" + (soft ? " fm-section--soft" : "")}
+      className={
+        "fm-section" +
+        (soft ? " fm-section--soft" : "") +
+        (keepInFocus ? " fm-section--focus-keep" : "")
+      }
     >
       <div className="fm-section__eyebrow">
         <span className="pulse" aria-hidden="true" />
@@ -1870,6 +1878,7 @@ export function IntakeForm({
   prefill,
   draft,
   previouslySubmitted = false,
+  focusTier1 = false,
 }: {
   token: string;
   clientId: string;
@@ -1883,6 +1892,16 @@ export function IntakeForm({
    * returning clients don't see "Begin" as if starting from scratch.
    */
   previouslySubmitted?: boolean;
+  /**
+   * Focus mode (?focus=tier1). When the coach re-issues the intake just
+   * to capture the Tier 1 screening section (joints / standing / energy /
+   * environment — Section 11), the form renders ONLY that section + the
+   * consent/submit block. Every other field still hydrates from the
+   * prefill/draft and is included in the submit payload — it's just not
+   * shown, so the client isn't made to scroll the whole 14-section form
+   * to answer 4 quick questions.
+   */
+  focusTier1?: boolean;
 }) {
   void clientId;
   const initial = useMemo(() => mergeInitial(prefill, draft), [prefill, draft]);
@@ -2390,15 +2409,35 @@ export function IntakeForm({
 
   // ── Main form ────────────────────────────────────────────────────────
   return (
-    <form onSubmit={handleSubmit} onBlur={handleBlur}>
-      <FormChrome
-        currentSection={currentSection}
-        totalSections={totalSections}
-        savedTime={lastSavedAt}
-        saving={saving}
-        savedSections={savedSections}
-        onSectionClick={handleSectionClick}
-      />
+    <form
+      onSubmit={handleSubmit}
+      onBlur={handleBlur}
+      className={focusTier1 ? "fm-intake--focus-tier1" : undefined}
+    >
+      {!focusTier1 && (
+        <FormChrome
+          currentSection={currentSection}
+          totalSections={totalSections}
+          savedTime={lastSavedAt}
+          saving={saving}
+          savedSections={savedSections}
+          onSectionClick={handleSectionClick}
+        />
+      )}
+
+      {/* Focus-mode banner — shown when the coach re-issued the link just
+          to capture the Tier 1 screening section. Reassures the client
+          that their earlier answers are intact and they only need the
+          one short section below. */}
+      {focusTier1 && (
+        <div className="fm-focus-banner">
+          <strong>{displayName.split(" ")[0] || "Hi"}, just one short section to add.</strong>
+          <span>
+            Everything you filled in before is saved — you don&apos;t need to
+            redo any of it. Please answer the section below, then tap Submit.
+          </span>
+        </div>
+      )}
 
       {/* 1. About you */}
       <FormSection
@@ -3567,6 +3606,7 @@ export function IntakeForm({
         sectionRef={setSectionRef(SEC_MOVEMENT)}
         title="Joints, standing, recovery"
         sub="A few patterns I want to catch early — easier to plan well when I know them."
+        keepInFocus
       >
         {/* ── 11a. Beighton hypermobility self-screen ── */}
         <FG
@@ -4159,6 +4199,7 @@ export function IntakeForm({
         title="One thing before you send"
         sub="So we're both clear on how this works."
         soft
+        keepInFocus
       >
         <label className={"fm-consent" + (state.consent ? " fm-consent--on" : "")}>
           <input

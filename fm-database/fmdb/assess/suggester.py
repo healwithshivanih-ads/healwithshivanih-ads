@@ -939,6 +939,42 @@ HARD RULES (violating these breaks the downstream system):
     mismatch in `synthesis_notes` and propose the substitution. Don't
     silently ignore between-session voice.
 
+    Each history entry ALSO carries a `coach_notes` field — the coach's
+    own write-up for that session: chief complaint, history of present
+    illness, the IFM 7-node baseline she scored, family history, what
+    has / hasn't worked before, and her qualitative read of the client
+    (mood, affect, body language, motivation, relationship dynamics).
+    This is HIGH-VALUE primary evidence — it is the coach's clinical
+    judgement, the one thing you cannot infer from symptom slugs or
+    labs. Weight it heavily:
+      - The IFM baseline tells you which functional-medicine nodes she
+        already judged dysfunctional — align your `likely_drivers` and
+        `topics_in_play` with it, or explain in `synthesis_notes` why
+        you diverge.
+      - Her qualitative read (e.g. "burnt out, flat affect, pushing
+        through on willpower") should shape lifestyle / stress / pacing
+        suggestions and the tone of `education`.
+      - "What hasn't worked" is a hard constraint — do not re-suggest it.
+    If `coach_notes` and the structured data disagree, surface it in
+    `synthesis_notes` rather than silently picking one.
+
+    IFM BASELINE. `client_context.ifm_baseline`, when present, is the
+    coach's (or a prior mapping pass's) functional-medicine read of the
+    client across the 7 IFM nodes — assimilation, defense_repair, energy,
+    biotransformation, transport, communication, structural — each scored
+    1 (optimal) to 5 (severe dysfunction), with a per-node `rationale`, a
+    `primary_node`, and a `cascade` description. Treat it as the coach's
+    settled clinical framing of WHERE the dysfunction sits:
+      - Your `likely_drivers` and `topics_in_play` should be coherent
+        with the high-scoring nodes and especially the `primary_node`.
+        If your top driver lands on a node the baseline scored 1–2,
+        either you're missing something or the baseline is — say so
+        explicitly in `synthesis_notes`.
+      - Sequence interventions along the `cascade`: address the
+        primary/root node first, don't chase a downstream node.
+      - It does NOT replace labs or symptoms — it's the organising
+        frame. Reconcile, don't blindly defer.
+
 14. CATALOGUE ADDITIONS. When you'd have suggested something useful but the
     slug isn't in the subgraph, populate `catalogue_additions_suggested` with
     the item — kind (topic/mechanism/symptom/supplement/claim/cooking_adjustment/

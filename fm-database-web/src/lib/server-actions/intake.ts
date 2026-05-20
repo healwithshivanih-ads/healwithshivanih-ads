@@ -322,7 +322,119 @@ export async function sendIntakeInviteViaApi(
 
   const sendRes = await sendWhatsAppAction(phone, "fm_intake_invite", [firstName, url]);
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };
+
+  // Log the send into the client's WhatsApp thread so it appears in the
+  // chat panel. Without this the coach clicks Send, the message genuinely
+  // goes out, but the thread shows nothing — looks like it failed.
+  try {
+    const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+    await recordOutboundMessageAction({
+      clientId,
+      templateName: "fm_intake_invite",
+      renderedBody:
+        `Hi ${firstName}, here's your intake form to fill in before we work ` +
+        `together — it saves as you go, so you can stop and resume any time:\n\n` +
+        `${url}\n\n— Shivani Hari / Your Functional Health Coach`,
+    });
+  } catch {
+    /* non-fatal — the WhatsApp message already went out */
+  }
   return { ok: true, url };
+}
+
+/**
+ * Re-issue the intake purely to capture the Tier 1 screening section
+ * (joints / standing / energy / environment — Section 11). Used by the
+ * "Suspected Tier 1 signals" panel.
+ *
+ * Differs from sendIntakeInviteViaApi in three ways the coach asked for:
+ *  1. Mints a FULL-stage token (unlock_full) — the Tier 1 section only
+ *     exists on the full form, not the short pre-discovery one.
+ *  2. The link carries `?focus=tier1` — the form then shows ONLY Section
+ *     11 + the submit block; every other answer stays saved + hidden.
+ *  3. The message is specific free-text ("a couple more answers …") sent
+ *     inside the 24h window. There is no Meta template for "answer one
+ *     more section" — fm_intake_invite ("before we work together") and
+ *     fm_intake_unlocked_v1 ("opened the longer form") both have wrong
+ *     copy here — so free-text is preferred, with fm_intake_invite as a
+ *     last-resort fallback only when the 24h window is closed.
+ */
+export async function reissueTierOneIntakeAction(
+  clientId: string,
+): Promise<
+  | { ok: true; url: string; via: "free_text" | "template" }
+  | { ok: false; error: string }
+> {
+  const tok = await generateIntakeToken(clientId, 14, true);
+  if (!tok.ok) return { ok: false, error: tok.error };
+
+  const { loadAllClients } = await import("@/lib/fmdb/loader");
+  const { sendWhatsAppAction, sendWhatsAppTextAction, recordOutboundMessageAction } =
+    await import("@/app/api/whatsapp/actions");
+
+  const clients = (await loadAllClients()) as Array<Record<string, unknown>>;
+  const c = clients.find((x) => x.client_id === clientId);
+  if (!c) return { ok: false, error: `Client ${clientId} not found` };
+
+  const phone = ((c.mobile_number as string | undefined) ?? "").trim();
+  if (!phone) return { ok: false, error: "No mobile number on file" };
+  const displayName = (c.display_name as string | undefined) ?? "";
+  const firstName = displayName.split(" ")[0] || "there";
+
+  const rawOrigin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+  if (!rawOrigin || /localhost|127\.0\.0\.1/.test(rawOrigin)) {
+    return {
+      ok: false,
+      error:
+        "NEXT_PUBLIC_APP_URL is unset or points to localhost — refusing to send an unreachable link. Set it to the public origin in .env.local and restart pm2.",
+    };
+  }
+  const url = `${rawOrigin}/intake/${tok.token}?focus=tier1`;
+
+  const freeText =
+    `Hi ${firstName}, quick one — I need a couple more answers on your intake ` +
+    `form: a short section on joints, standing and energy. Everything you ` +
+    `filled in before is saved, so this should only take about 2 minutes:\n\n` +
+    `${url}\n\n— Shivani Hari / Your Functional Health Coach`;
+
+  // Send order (coach decision 2026-05-20):
+  //   1. fm_intake_topup_v1 — the dedicated UTILITY template with the
+  //      correct "one short section" copy. Works ANY time, in or out of
+  //      the 24h window. This is the intended path.
+  //   2. free-text — same correct copy, but only valid inside the 24h
+  //      window. Used only while fm_intake_topup_v1 is still in Meta
+  //      review (PENDING).
+  // It must NEVER fall back to fm_intake_invite ("before we work
+  // together") or fm_intake_unlocked_v1 ("opened the longer form") —
+  // both have wrong copy for a Tier 1 top-up.
+  let via: "template" | "free_text" = "template";
+  const tpl = await sendWhatsAppAction(phone, "fm_intake_topup_v1", [firstName, url]);
+  if (!tpl.ok) {
+    const ft = await sendWhatsAppTextAction(phone, freeText, { name: displayName });
+    if (!ft.ok) {
+      return {
+        ok: false,
+        error:
+          `fm_intake_topup_v1 template send failed (${tpl.error}) — it may still ` +
+          `be in Meta review. Free-text fallback also failed (${ft.error}).`,
+      };
+    }
+    via = "free_text";
+  }
+
+  try {
+    await recordOutboundMessageAction({
+      clientId,
+      templateName: via === "free_text" ? "(free-text reply)" : "fm_intake_topup_v1",
+      // freeText reads naturally and matches what the template says, so
+      // it doubles as the thread-display body for both paths.
+      renderedBody: freeText,
+    });
+  } catch {
+    /* non-fatal — the WhatsApp message already went out */
+  }
+
+  return { ok: true, url, via };
 }
 
 /**
@@ -394,5 +506,24 @@ export async function sendIntakeUnlockedViaApi(
 
   const sendRes = await sendWhatsAppAction(phone, templateName, [firstName, url]);
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };
+
+  // Log the send into the client's WhatsApp thread (mirrors
+  // sendIntakeInviteViaApi). The recorded body matches whichever template
+  // actually went out so the coach sees the real wording in the chat.
+  try {
+    const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+    const renderedBody = useUnlockedTemplate
+      ? `Hi ${firstName}, now that we're working together I've opened up the ` +
+        `longer intake form so I can build your specific plan. Your earlier ` +
+        `answers are saved — pick up where you left off:\n\n${url}\n\n` +
+        `The newer sections are the ones I'm most keen to learn. Take your ` +
+        `time, no rush.\n\n— Shivani Hari\nYour Functional Health Coach`
+      : `Hi ${firstName}, here's your intake form to fill in before we work ` +
+        `together — it saves as you go, so you can stop and resume any time:\n\n` +
+        `${url}\n\n— Shivani Hari / Your Functional Health Coach`;
+    await recordOutboundMessageAction({ clientId, templateName, renderedBody });
+  } catch {
+    /* non-fatal — the WhatsApp message already went out */
+  }
   return { ok: true, url, template: templateName };
 }

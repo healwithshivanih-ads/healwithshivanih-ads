@@ -246,6 +246,15 @@ export default async function IntakePage({
         existingNotes={s(c.notes)}
         verifyInSession={verifyInSession}
         insightsModelLabel={insightsModelLabel}
+        existingLabMarkers={
+          Array.isArray(c.lab_markers)
+            ? (c.lab_markers as Array<Record<string, unknown>>).map((m) => ({
+                marker_name: String(m.marker_name ?? ""),
+                panel: typeof m.panel === "string" ? m.panel : undefined,
+                flag: typeof m.flag === "string" ? m.flag : undefined,
+              }))
+            : []
+        }
       />
     </AnalysePageShell>
   );

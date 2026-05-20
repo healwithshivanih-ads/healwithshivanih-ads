@@ -101,6 +101,54 @@ function PatternBanners({ labs }: { labs: ExtractedLabValue[] }) {
   );
 }
 
+// ── Extraction error banner ────────────────────────────────────────────────────
+// Translates raw error strings into a coach-readable message. Two cases get
+// special treatment:
+//   1. Anthropic monthly API cap reached — amber, not red; it's a billing
+//      state, not a bug. Tells the coach extraction is paused + resets date.
+//   2. The generic Next.js production error ("An error occurred in the
+//      Server Components render…") — that text leaks nothing useful, so we
+//      replace it with a plain-English "server hiccup, retry" message.
+function ExtractErrorBanner({ error }: { error: string }) {
+  const low = error.toLowerCase();
+  const isApiLimit =
+    low.includes("monthly limit") ||
+    low.includes("usage limit") ||
+    low.includes("usage limits");
+  const isGenericServer =
+    low.includes("server components render") ||
+    low.includes("an error occurred in the server");
+
+  if (isApiLimit) {
+    return (
+      <div className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-xs text-amber-900 space-y-1">
+        <div className="font-semibold flex items-center gap-1.5">
+          🔒 AI extraction paused — monthly API limit reached
+        </div>
+        <p className="leading-snug">
+          {error.replace(/^API call failed:\s*/i, "")}
+        </p>
+        <p className="leading-snug text-amber-700">
+          The lab PDF is still saved on file — you can type the key values
+          into the client&apos;s markers manually, or re-run extraction once
+          the limit resets.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-xs text-red-700 space-y-1">
+      <div className="font-semibold">⚠️ Extraction failed</div>
+      <p className="leading-snug">
+        {isGenericServer
+          ? "The server hit an unexpected error processing this file. Try again — if it keeps failing, the file may be corrupt or password-protected."
+          : error}
+      </p>
+    </div>
+  );
+}
+
 // ── Main panel ─────────────────────────────────────────────────────────────────
 
 export function LabUploadPanel({ clientId }: Props) {
@@ -322,9 +370,7 @@ export function LabUploadPanel({ clientId }: Props) {
               {isExtracting && <span className="ml-2 animate-pulse">⏳ Extracting…</span>}
             </p>
           )}
-          {extractError && (
-            <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">{extractError}</p>
-          )}
+          {extractError && <ExtractErrorBanner error={extractError} />}
           {extractError && fileName && !isExtracting && (
             <Button
               type="button"

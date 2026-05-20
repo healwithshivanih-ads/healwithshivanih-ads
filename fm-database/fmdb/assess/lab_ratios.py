@@ -62,6 +62,45 @@ def _find(labs: list[dict], *patterns: str) -> float | None:
     return best_value
 
 
+def _find_range(labs: list[dict], *patterns: str) -> str | None:
+    """Return the `reference_range` string of the MOST RECENT lab matching any
+    pattern. Mirrors `_find` but surfaces the assay's own range rather than the
+    numeric value — used for assay-dependent markers (antibodies especially)
+    where a hardcoded cutoff is wrong for some labs."""
+    best_range: str | None = None
+    best_ts: float = -1.0
+    for lab in labs:
+        n = str(lab.get("test_name", "")).lower()
+        for pat in patterns:
+            if re.search(pat.lower(), n):
+                ts = _parse_lab_date(lab.get("date_drawn"))
+                if best_range is None or ts > best_ts:
+                    rng = lab.get("reference_range")
+                    best_range = str(rng) if rng not in (None, "") else None
+                    best_ts = ts
+                break
+    return best_range
+
+
+def _range_upper(rng: str | None) -> float | None:
+    """Parse the numeric UPPER BOUND out of a lab reference-range string.
+
+    Handles the common shapes seen on Indian lab reports:
+      "Up to 95"  → 95      "< 9.0" / "<9"      → 9.0
+      "1.9 - 23.0" → 23.0   "Males ≥50y: 18.7-74.2" → 74.2
+    Returns None when no number can be parsed."""
+    if not rng:
+        return None
+    s = str(rng).lower()
+    m = re.search(r"(?:up\s*to|upto|<|less than|≤|<=)\s*([0-9]+(?:\.[0-9]+)?)", s)
+    if m:
+        return float(m.group(1))
+    nums = re.findall(r"[0-9]+(?:\.[0-9]+)?", s)
+    if nums:
+        return float(nums[-1])
+    return None
+
+
 def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Return list of FM-interpreted markers + computed ratios, grouped by panel."""
     results: list[dict[str, Any]] = []
@@ -177,10 +216,10 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"total t3|t3.total|triiodothyronine\b")
     rt3 = _find(extracted_labs,
         r"reverse t3|rt3\b|r-t3|rT3")
-    tpo_ab = _find(extracted_labs,
-        r"tpo\b|thyroid.peroxidase|anti.tpo|thyroid peroxidase antibod|anti-tpo")
-    tgab = _find(extracted_labs,
-        r"tgab|thyroglobulin.antibod|anti.tg\b|anti-thyroglobulin|tg.antibod")
+    _TPO_PAT = r"tpo\b|thyroid.peroxidase|anti.tpo|thyroid peroxidase antibod|anti-tpo"
+    _TGAB_PAT = r"tgab|thyroglobulin.antibod|anti.tg\b|anti-thyroglobulin|tg.antibod"
+    tpo_ab = _find(extracted_labs, _TPO_PAT)
+    tgab = _find(extracted_labs, _TGAB_PAT)
 
     if tsh is not None:
         flag = "high" if tsh > 2.5 else ("low" if tsh < 0.5 else "optimal")
@@ -224,42 +263,88 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             f"rT3 {rt3}: {'Elevated — cortisol burden, inflammation or conversion block shunting T4 → rT3' if rt3>20 else 'Borderline — monitor stress, inflammation' if rt3>15 else 'Acceptable'}",
             PANEL_THYROID)
 
+    # Antibody cutoffs vary HUGELY by assay (TgAb negative threshold ranges
+    # from <4 to <115 IU/mL across labs). A hardcoded number false-flags —
+    # e.g. Sudarshan's TgAb 5.31 against this assay's "Up to 95" range is
+    # NEGATIVE, but a hardcoded ">1" called it autoimmune. So: use the
+    # assay's OWN reference range when the upload carries one; fall back to
+    # a conservative generic only when no range is on file.
     if tpo_ab is not None:
-        flag = "high" if tpo_ab > 35 else "optimal"
+        upper = _range_upper(_find_range(extracted_labs, _TPO_PAT))
+        cutoff = upper if upper is not None else 34.0
+        positive = tpo_ab > cutoff
+        flag = "high" if positive else "optimal"
         tpo_msg = (
             "Elevated — confirms Hashimoto's; address gut, immune, stress, gluten"
-            if tpo_ab > 35
+            if positive
             else "Negative"
         )
         add("TPO antibodies", tpo_ab, "IU/mL",
-            "<35 negative; any elevation = Hashimoto's",
+            (f"lab negative <{cutoff:g}" if upper is not None
+             else "<34 negative (generic — no lab range supplied)"),
             flag,
             f"TPO Ab {tpo_ab}: {tpo_msg}",
             PANEL_THYROID)
 
     if tgab is not None:
-        flag = "high" if tgab > 1 else "optimal"
+        upper = _range_upper(_find_range(extracted_labs, _TGAB_PAT))
+        cutoff = upper if upper is not None else 40.0
+        positive = tgab > cutoff
+        flag = "high" if positive else "optimal"
         tgab_msg = (
             "Positive — autoimmune thyroid; assess for Hashimoto's or Graves'"
-            if tgab > 1
+            if positive
             else "Negative"
         )
         add("Thyroglobulin Ab (TgAb)", tgab, "IU/mL",
-            "<1 IU/mL negative",
+            (f"lab negative <{cutoff:g}" if upper is not None
+             else "<40 negative (generic — no lab range supplied)"),
             flag,
             f"TgAb {tgab}: {tgab_msg}",
             PANEL_THYROID)
 
-    t4 = t4_free or t4_total
-    t3 = t3_free or t3_total
+    # Total T3 / Total T4 — surfaced as their own markers when present.
+    # Flagged against the assay's range when supplied (Total ranges are
+    # assay-dependent), else a standard adult range. Free T3/T4 remain the
+    # preferred FM assessment — call that out in the interpretation.
+    if t4_total is not None:
+        upper = _range_upper(_find_range(extracted_labs, r"total t4|t4.total|thyroxine\b"))
+        hi = upper if upper is not None else 12.5
+        flag = "high" if t4_total > hi else ("low" if t4_total < 4.5 else "optimal")
+        add("Total T4", t4_total, "ug/dL",
+            (f"lab range up to {hi:g}" if upper is not None else "~4.5–12.5 typical"),
+            flag,
+            f"Total T4 {t4_total}: "
+            + ("High — verify" if t4_total > hi
+               else "Low" if t4_total < 4.5
+               else "Within lab range — Free T4 preferred for FM assessment"),
+            PANEL_THYROID)
 
-    if t4 and t3 and t4 > 0:
-        conv = t3 / t4
+    if t3_total is not None:
+        upper = _range_upper(_find_range(extracted_labs, r"total t3|t3.total|triiodothyronine\b"))
+        hi = upper if upper is not None else 200.0
+        flag = "high" if t3_total > hi else ("low" if t3_total < 70 else "optimal")
+        add("Total T3", t3_total, "ng/dL",
+            (f"lab range up to {hi:g}" if upper is not None else "~70–200 typical"),
+            flag,
+            f"Total T3 {t3_total}: "
+            + ("High — verify" if t3_total > hi
+               else "Low" if t3_total < 70
+               else "Within lab range — Free T3 preferred for FM assessment"),
+            PANEL_THYROID)
+
+    # T3/T4 conversion ratio — FREE values ONLY. Total T3 (ng/dL) and Total
+    # T4 (ug/dL) are different units, so their quotient (~12) is meaningless.
+    # Previously `t4_free or t4_total` let Total values through and produced a
+    # bogus "verify units" ratio. NOTE: the AI extractor path hits the SAME
+    # code — this fix corrects both manual + API ingestion.
+    if t4_free and t3_free and t4_free > 0:
+        conv = t3_free / t4_free
         flag = "low" if conv < 0.2 else ("optimal" if conv < 0.35 else "suboptimal")
         add("T3/T4 conversion ratio", conv, "",
             "0.2–0.35 fT3/fT4; low = poor peripheral conversion",
             flag,
-            f"T3/T4 {round(conv,3)}: {'Poor conversion — check selenium, zinc, cortisol, liver, iron' if conv<0.2 else 'Good conversion efficiency' if conv<0.35 else 'High — verify units or hyperthyroid'}",
+            f"T3/T4 {round(conv,3)}: {'Poor conversion — check selenium, zinc, cortisol, liver, iron' if conv<0.2 else 'Good conversion efficiency' if conv<0.35 else 'High — verify or hyperthyroid'}",
             PANEL_THYROID, computed=True)
 
     if tsh is not None and t3_free and t3_free > 0:
@@ -443,8 +528,12 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # ══════════════════════════════════════════════════════════════════════════
     tc = _find(extracted_labs,
         r"total cholesterol|cholesterol.total|\btotal.chol\b|\bchol\b")
+    # NOTE the \b before every `ldl` alternative — without it, the
+    # `ldl.cholesterol` pattern matches the substring "ldl cholesterol"
+    # INSIDE "vldl cholesterol", so a VLDL result silently overwrites LDL.
+    # (Caught 2026-05-20: Sudarshan's LDL 172.2 showed as VLDL's 20.8.)
     ldl = _find(extracted_labs,
-        r"\bldl\b|ldl.cholesterol|low.density.lipoprotein")
+        r"\bldl\b|\bldl.cholesterol|\blow.density.lipoprotein")
     hdl = _find(extracted_labs,
         r"\bhdl\b|hdl.cholesterol|high.density.lipoprotein")
     tg = _find(extracted_labs,

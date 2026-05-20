@@ -282,8 +282,25 @@ def main() -> int:
         ) as stream:
             resp = stream.get_final_message()
     except BaseException as e:
-        json.dump({"ok": False, "error": f"API call failed: {type(e).__name__}: {e}"}, sys.stdout)
-        return 1
+        # Surface the Anthropic monthly-usage cap as a clean, coach-readable
+        # message instead of dumping the raw 400 JSON blob. The UI keys off
+        # the "monthly limit" phrasing to show a friendly amber banner.
+        raw = f"{type(e).__name__}: {e}"
+        low = raw.lower()
+        if "usage limit" in low or "usage limits" in low or "rate_limit" in low:
+            import re as _re
+            m = _re.search(r"regain access on (\S+)", raw)
+            when = f" It resets {m.group(1)}." if m else ""
+            msg = (
+                "Anthropic API monthly limit reached — AI extraction is paused."
+                + when
+                + " Raise the cap in the Anthropic Console, or type the lab "
+                "values in manually for now."
+            )
+        else:
+            msg = f"API call failed: {raw}"
+        json.dump({"ok": False, "error": msg}, sys.stdout)
+        return 0
 
     # Best-effort: pull client_id from the file path. Lab/transcript uploads
     # live at ~/fm-plans/clients/<id>/files/... so the segment after "clients/"
