@@ -59,9 +59,9 @@ export function TierOneSuspicionsPanel({
       const res = await reissueTierOneIntakeAction(clientId);
       if (res.ok) {
         toast.success(
-          res.via === "free_text"
+          res.via === "template"
             ? "📨 Tier 1 form sent — client sees only the new section"
-            : "📨 Tier 1 form sent (via template — the 24h reply window was closed)",
+            : "📨 Tier 1 form sent (free-text — fm_intake_topup_v1 still in Meta review)",
         );
         if (typeof window !== "undefined") {
           window.dispatchEvent(
