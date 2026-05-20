@@ -1,0 +1,56 @@
+slug: protein-plant-blend
+display_name: Plant Protein Blend (Mung & Pea)
+aliases:
+- plant protein
+- pea protein
+- vegan protein
+- vitaone rebuild plant protein
+category: other
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 20
+    max: 40
+    unit: g
+timing_options:
+- with_breakfast
+- morning
+- mid_afternoon
+take_with_food: optional
+contraindications:
+  conditions:
+  - kidney-disease
+  - chronic-kidney-disease
+  - gout
+  - hyperuricemia
+  medications: []
+  life_stages: []
+notes_for_coach: 'Protein top-up for the dairy-free client who tolerates legumes
+  — the default when dairy is being eliminated (gut healing, Hashimoto''s,
+  autoimmune protocols). Reference product = VitaOne Rebuild Plant Protein &
+  Lipid: mung + pea isolate (complete amino profile), built-in digestive
+  enzymes, sunflower phospholipids, dairy / gluten / soy free, zero added sugar,
+  low net carb — positioned for insulin resistance. Pea protein isolate is
+  Monash low-FODMAP; mung isolate is less documented but generally tolerated.
+  Lower-histamine than the yeast option, so this is also the preferred dairy-free
+  pick for histamine-sensitive clients. Do NOT raise the protein target for
+  clients with kidney disease or high uric acid / gout — keep moderate and refer
+  to physician. VitaOne affiliate link added via the catalogue queue once
+  sign-up clears (referral code vita13720sh).'
+evidence_tier: strong
+linked_to_topics:
+- insulin-resistance
+- weight-management
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: A dairy-free plant protein powder (mung and pea) you can stir
+  into yogurt alternatives, kefir or a smoothie to top up your daily protein. It
+  also carries digestive enzymes to make it easy on the gut.
+sources:
+- id: protein-intake-guidance
+  location: Powder track — plant blend (dairy-free, legume-tolerant)
+version: 1
+status: active
+updated_at: '2026-05-20'
+updated_by: shivani

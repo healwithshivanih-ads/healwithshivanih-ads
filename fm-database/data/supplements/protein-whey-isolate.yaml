@@ -1,0 +1,52 @@
+slug: protein-whey-isolate
+display_name: Whey Protein Isolate
+aliases:
+- whey isolate
+- whey protein
+category: other
+forms_available:
+- powder
+typical_dose_range:
+  powder:
+    min: 20
+    max: 40
+    unit: g
+timing_options:
+- with_breakfast
+- morning
+- mid_afternoon
+take_with_food: optional
+contraindications:
+  conditions:
+  - kidney-disease
+  - chronic-kidney-disease
+  - gout
+  - hyperuricemia
+  medications: []
+  life_stages: []
+notes_for_coach: 'Protein top-up for the dairy-tolerant lacto-vegetarian client —
+  the default protein powder when dairy is NOT being eliminated. Whey ISOLATE
+  (not concentrate) — low-lactose, highest leucine, most palatable, so client
+  pushback is lowest. Use isolate-grade for low-FODMAP clients (concentrate is
+  not low FODMAP — lactose). Mild caution in histamine-sensitive clients (dairy
+  can be a histamine liberator for some) — prefer the plant blend there. Do NOT
+  raise the protein target for clients with kidney disease or high uric acid /
+  gout — keep moderate and refer to physician. Source = catalogue queue once
+  the affiliate sign-up clears; until then the affiliate-link chain falls back
+  to Amazon / no link.'
+evidence_tier: strong
+linked_to_topics:
+- insulin-resistance
+- weight-management
+linked_to_mechanisms: []
+linked_to_claims: []
+notes_for_client: A clean, light protein powder you can stir into curd, milk or
+  a smoothie to top up your daily protein. Choose an unflavoured or lightly
+  flavoured isolate with no artificial sweeteners.
+sources:
+- id: protein-intake-guidance
+  location: Powder track — whey isolate (dairy-tolerant lacto-vegetarian)
+version: 1
+status: active
+updated_at: '2026-05-20'
+updated_by: shivani
