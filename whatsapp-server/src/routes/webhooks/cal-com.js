@@ -20,6 +20,7 @@ import * as appointments from '../../services/appointments/index.js';
 import * as tagsSvc from '../../services/contacts/tags.js';
 import { forwardBookingToFmCoach } from '../../services/forwarder/cal-com-forwarder.js';
 import { sendTemplate } from '../../channels/whatsapp/client.js';
+import { config } from '../../config.js';
 
 export const calComWebhook = Router();
 
@@ -203,6 +204,8 @@ async function handleBookingCreated(payload) {
       );
     }
   }
+
+  await notifyCoachOfBooking(payload, 'new booking');
 }
 
 async function handleBookingRescheduled(payload) {
@@ -238,6 +241,8 @@ async function handleBookingRescheduled(payload) {
   }).catch((err) =>
     logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_rescheduled)'),
   );
+
+  await notifyCoachOfBooking(payload, 'reschedule');
 }
 
 async function handleBookingCancelled(payload) {
@@ -258,6 +263,64 @@ async function handleBookingCancelled(payload) {
   }).catch((err) =>
     logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_cancelled)'),
   );
+
+  await notifyCoachOfBooking(payload, 'cancellation');
+}
+
+/**
+ * Heads-up to the coach's own phone on every cal.com booking event.
+ * Fires the `coach_booking_alert_v1` template to config.coachNotifyPhone.
+ * Best-effort — fully try/catch-wrapped, never throws, never breaks the
+ * webhook. No-op when COACH_NOTIFY_PHONE is unset.
+ *
+ * @param {object} payload    cal.com booking payload
+ * @param {string} eventLabel "new booking" | "reschedule" | "cancellation"
+ */
+async function notifyCoachOfBooking(payload, eventLabel) {
+  const coachPhone = config.coachNotifyPhone;
+  if (!coachPhone) return; // alerts disabled
+
+  try {
+    const attendee = (payload.attendees && payload.attendees[0]) || {};
+    const clientName = attendee.name || payload.responses?.name || 'a client';
+    const rawTitle = payload.title || payload.eventTitle || payload.type || 'session';
+    // Strip the verbose "between Shivani … and …" suffix cal.com adds.
+    const sessionType = String(rawTitle)
+      .replace(/\s*between\s+Shivani[^—|]*$/i, '')
+      .trim() || 'session';
+
+    let dateStr = 'TBC';
+    let timeStr = 'TBC';
+    if (payload.startTime) {
+      const start = new Date(payload.startTime);
+      dateStr = start.toLocaleDateString('en-IN', {
+        day: 'numeric', month: 'short', year: 'numeric',
+        timeZone: 'Asia/Kolkata',
+      });
+      timeStr = start.toLocaleTimeString('en-IN', {
+        hour: 'numeric', minute: '2-digit', hour12: true,
+        timeZone: 'Asia/Kolkata',
+      }) + ' IST';
+    }
+
+    await sendTemplate({
+      to: coachPhone,
+      templateName: 'coach_booking_alert_v1',
+      languageCode: 'en',
+      components: [{
+        type: 'body',
+        parameters: [eventLabel, clientName, sessionType, dateStr, timeStr].map(
+          (t) => ({ type: 'text', text: String(t) }),
+        ),
+      }],
+    });
+    logger.info({ to: coachPhone, event: eventLabel }, 'cal.com: coach_booking_alert WhatsApp sent');
+  } catch (err) {
+    logger.warn(
+      { err: err.message, event: eventLabel },
+      'cal.com: coach_booking_alert WhatsApp send failed (non-fatal)',
+    );
+  }
 }
 
 function pickPhone(payload, attendee) {

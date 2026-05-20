@@ -42,6 +42,18 @@ const TEMPLATES = [
     example: [['Priya', '15 May 2026', '5:00 PM', 'Cortisol Reset']],
   },
   {
+    // Coach-facing alert — fires to COACH_NOTIFY_PHONE on every cal.com
+    // booking event (created / rescheduled / cancelled). {{1}} carries the
+    // event headline so one template covers all three.
+    name: 'coach_booking_alert_v1',
+    category: 'UTILITY',
+    language: 'en',
+    // Body must not start/end with a variable, and needs enough literal
+    // text relative to its 5 variables (Meta "words ratio" rule).
+    body: 'Hi Shivani, a Cal.com booking update just came in — {{1}}. The client is {{2}}, for a {{3}} session scheduled on {{4}} at {{5}}. Please check your calendar to confirm the details.',
+    example: [['new booking', 'Priya Sharma', 'Coaching Session', '19 May 2026', '3:30 PM']],
+  },
+  {
     name: 'appt_reminder_2h',
     category: 'UTILITY',
     language: 'en',

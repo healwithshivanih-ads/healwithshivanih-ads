@@ -79,6 +79,12 @@ export const config = {
     url: process.env.OCHRE_FLOW_WEBHOOK_URL || '',
     secret: process.env.OCHRE_FLOW_WEBHOOK_SECRET || '',
   },
+
+  // Coach booking alerts. When set, every cal.com booking event
+  // (created / rescheduled / cancelled) fires a `coach_booking_alert_v1`
+  // WhatsApp template to this number so the coach gets a heads-up on her
+  // own phone. E.164-without-plus (e.g. 919833083720). No-op if unset.
+  coachNotifyPhone: process.env.COACH_NOTIFY_PHONE || '',
 };
 
 export function configSummary() {
