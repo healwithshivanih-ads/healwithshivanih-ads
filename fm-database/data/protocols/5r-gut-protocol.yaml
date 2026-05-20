@@ -67,9 +67,11 @@ phases:
   - digestive enzyme blend with meals
   - ox bile if gallbladder removed or fat malabsorption signs
   - bitters before meals (gentian, dandelion)
-- name: Reinoculate (weeks 3–8)
-  weeks: 6
+- name: Reinoculate (weeks 5–8)
+  weeks: 4
   summary: 'Build beneficial flora with probiotics + prebiotics + fermented foods.
+    Held to week 5 so Remove + Replace can fully settle the gut first — do not
+    rush fermented foods in while triggers are still being cleared.
 
     '
   key_actions:
