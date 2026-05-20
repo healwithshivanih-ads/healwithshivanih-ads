@@ -91,7 +91,12 @@ PLAN STRUCTURE (reference only — only patch fields that need changing):
 - contributing_topics: list of topic slugs
 - presenting_symptoms: list of symptom slugs
 - hypothesized_drivers: list of {mechanism: str, reasoning: str}
-- supplement_protocol: list of {supplement_slug, form?, dose?, timing?, take_with_food?, duration_weeks?, titration?, coach_rationale?}
+- supplement_protocol: list of {supplement_slug, form?, dose?, timing?, take_with_food?, duration_weeks?, start_week?, titration?, coach_rationale?}
+  · start_week (int, default 1) = the protocol week the supplement is
+    introduced. 1 = start now. Phased protocols (5R: Remove/Replace wk 1,
+    Reinoculate wk 3, Repair wk 5) stagger supplements — set start_week
+    accordingly. The client-facing letter shows ALL supplements in one
+    shopping list but badges each with its start week.
 - lifestyle_practices: list of {name, cadence, details?}
 - nutrition: {pattern?, meal_timing?, cooking_adjustments?: [], home_remedies?: [], add?: [], reduce?: []}
 - education: list of {target_kind, target_slug, client_facing_summary?}

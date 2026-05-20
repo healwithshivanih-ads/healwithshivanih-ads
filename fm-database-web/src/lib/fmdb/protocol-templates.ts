@@ -10,6 +10,10 @@ export interface ProtocolSupplement {
   dose_display?: string;
   timing?: string;
   coach_rationale?: string;
+  /** Protocol week this supplement is introduced (1-indexed; default 1 =
+   *  start now). Phased protocols (5R etc.) stagger supplements across
+   *  their phases. Carried onto the plan's SupplementItem.start_week. */
+  start_week?: number;
 }
 
 export interface ProtocolTemplate {
@@ -48,6 +52,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         display_name: "Digestive Enzymes (Replace phase)",
         dose_display: "1–2 capsules",
         timing: "Start of each main meal",
+        start_week: 1,
         coach_rationale: "Replace — supports digestion of food into absorbable forms; compensates for low stomach acid / pancreatic insufficiency",
       },
       {
@@ -55,6 +60,7 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         display_name: "Betaine HCl (Replace phase, if indicated)",
         dose_display: "Start 1 capsule, titrate to warmth",
         timing: "Mid-protein meals",
+        start_week: 1,
         coach_rationale: "Replace — restores stomach acid for clients with hypochlorhydria signs (bloating after protein, undigested food in stool)",
       },
       {
@@ -62,21 +68,24 @@ export const PROTOCOL_TEMPLATES: ProtocolTemplate[] = [
         display_name: "Probiotic — Reinoculate phase",
         dose_display: "1 capsule (multi-strain or spore-based)",
         timing: "With breakfast",
-        coach_rationale: "Reinoculate — reseed beneficial bacteria after Remove phase clears dysbiosis",
+        start_week: 3,
+        coach_rationale: "Reinoculate (from week 3) — reseed beneficial bacteria after the Remove + Replace phases clear dysbiosis",
       },
       {
         supplement_slug: "l-glutamine",
         display_name: "L-Glutamine — Repair phase",
         dose_display: "5 g powder",
         timing: "Empty stomach, first thing in morning",
-        coach_rationale: "Repair — primary fuel for enterocytes; accelerates tight-junction restoration",
+        start_week: 5,
+        coach_rationale: "Repair (from week 5) — primary fuel for enterocytes; accelerates tight-junction restoration once the gut is reinoculated",
       },
       {
         supplement_slug: "zinc-carnosine",
         display_name: "Zinc Carnosine — Repair phase",
         dose_display: "75 mg",
         timing: "Twice daily with meals",
-        coach_rationale: "Repair — stabilises mucosal barrier; clinically validated for gastric and intestinal lining repair",
+        start_week: 5,
+        coach_rationale: "Repair (from week 5) — stabilises mucosal barrier; clinically validated for gastric and intestinal lining repair",
       },
     ],
     nutrition_add: [

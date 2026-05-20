@@ -445,11 +445,17 @@ export async function createBookingAction(
     }
 
     // ── WhatsApp confirmation to the client ──────────────────────────────
-    // Cal.com already emails the attendee a confirmation; this ALSO sends a
-    // WhatsApp via the Meta-approved `fm_session_confirm` template so the
-    // client gets the nudge on the channel they actually read. Best-effort
-    // — the booking already succeeded on cal.com; a WhatsApp failure must
-    // never turn this into an error. Skipped silently when no phone.
+    // Cal.com already emails the attendee; this ALSO sends a WhatsApp so
+    // the client gets the nudge on the channel they actually read.
+    //
+    // Uses `appt_confirmation` — the SAME Meta-approved template the WA
+    // server fires when a customer books directly on the cal.com link
+    // (whatsapp-server/src/routes/webhooks/cal-com.js). Both booking
+    // paths → one consistent confirmation message. Params (4):
+    //   {{1}} name · {{2}} date · {{3}} time · {{4}} session type
+    //
+    // Best-effort — the booking already succeeded on cal.com; a WhatsApp
+    // failure must never turn this into an error. Skipped when no phone.
     let whatsappSent = false;
     if (input.clientPhone) {
       try {
@@ -457,7 +463,6 @@ export async function createBookingAction(
         const firstName = (input.clientName || "there").split(" ")[0];
         const slotDate = new Date(input.slotIso);
         const dateStr = slotDate.toLocaleDateString("en-IN", {
-          weekday: "short",
           day: "numeric",
           month: "short",
           year: "numeric",
@@ -470,11 +475,11 @@ export async function createBookingAction(
             hour12: true,
             timeZone: IST_TZ,
           }) + " IST";
-        // fm_session_confirm params: [name, date, time]
+        // appt_confirmation params: [name, date, time, sessionType]
         const waRes = await sendWhatsAppAction(
           input.clientPhone,
-          "fm_session_confirm",
-          [firstName, dateStr, timeStr],
+          "appt_confirmation",
+          [firstName, dateStr, timeStr, opt.label || "coaching"],
         );
         whatsappSent = waRes.ok;
         if (!waRes.ok) {

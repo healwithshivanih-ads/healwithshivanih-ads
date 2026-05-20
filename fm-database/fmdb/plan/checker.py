@@ -490,6 +490,26 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
 
     # ---------- Supplement protocol ----------
     for item in plan.supplement_protocol:
+        # start_week sanity — phased protocols set this; it must land
+        # inside the plan window or the supplement never gets introduced.
+        sw = getattr(item, "start_week", 1) or 1
+        if sw < 1:
+            findings.append(Finding(
+                "WARNING", "supplement_protocol", "start_week",
+                f"{item.supplement_slug!r} has start_week {sw} (< 1) — "
+                "weeks are 1-indexed. Set to 1 to start immediately.",
+                target=item.supplement_slug,
+            ))
+        elif sw > plan.plan_period_weeks:
+            findings.append(Finding(
+                "WARNING", "supplement_protocol", "start_week",
+                f"{item.supplement_slug!r} starts in week {sw} but the plan "
+                f"is only {plan.plan_period_weeks} weeks long — it would "
+                "never actually be introduced. Lower start_week or extend "
+                "the plan period.",
+                target=item.supplement_slug,
+            ))
+
         # Alias-aware: resolve to canonical slug; if not in index at all,
         # genuinely unknown.
         canonical_supp = supp_idx.get(item.supplement_slug)
