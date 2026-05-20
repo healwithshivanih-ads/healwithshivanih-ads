@@ -75,7 +75,24 @@ export function useFormDraft<F extends Record<string, unknown>>(
     try {
       const raw = localStorage.getItem(key);
       if (!raw) return;
-      const saved = JSON.parse(raw) as Record<string, unknown>;
+      const blob = JSON.parse(raw) as Record<string, unknown>;
+      // ── Staleness gate ──────────────────────────────────────────────
+      // A draft is crash-recovery for IN-PROGRESS work — NOT a permanent
+      // override. A draft older than MAX_AGE, or a legacy draft with no
+      // timestamp, must not silently clobber fresh server data: it is
+      // dropped instead of restored. Real bug this fixes: a form opened
+      // before a server-side data fix auto-saved a draft with blank
+      // fields, and that stale draft then masked the corrected server
+      // values on every subsequent load — with no way for the coach to
+      // tell why the page kept showing blanks.
+      const MAX_AGE_MS = 24 * 60 * 60 * 1000;
+      const savedAt =
+        typeof blob.__savedAt === "number" ? blob.__savedAt : 0;
+      if (!savedAt || Date.now() - savedAt > MAX_AGE_MS) {
+        try { localStorage.removeItem(key); } catch { /* noop */ }
+        return;
+      }
+      const saved = (blob.fields ?? {}) as Record<string, unknown>;
       for (const k of Object.keys(saved) as (keyof F)[]) {
         const setter = setters[k];
         const value = saved[k as string];
@@ -123,7 +140,12 @@ export function useFormDraft<F extends Record<string, unknown>>(
   useEffect(() => {
     if (!hydratedRef.current) return;
     try {
-      localStorage.setItem(key, JSON.stringify(fields));
+      // Wrap with a save timestamp so the hydrate path can age out stale
+      // drafts (see the staleness gate above).
+      localStorage.setItem(
+        key,
+        JSON.stringify({ __savedAt: Date.now(), fields }),
+      );
       // Keep the "has draft" indicator current so the UI can render the
       // dot / badge on the Clear button.
       const exists = !!localStorage.getItem(key);
