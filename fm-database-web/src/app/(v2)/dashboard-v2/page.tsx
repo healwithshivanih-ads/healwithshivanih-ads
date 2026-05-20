@@ -24,6 +24,7 @@ import { parseRequestedLabs, parseSessionType } from "@/lib/fmdb/session-utils";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
+import { BookSessionButton } from "@/components/client-widgets/book-session-modal";
 import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
 // belongs next to the file-upload flow, not on the dashboard.
@@ -752,7 +753,32 @@ export default async function DashboardV2() {
           // Cap the stat row at 420px so a long "Need attention" delta
           // string can NEVER blow out the page-header grid like it did
           // on 2026-05-20 (a 45-marker labs list ended up in the tile).
-          <div style={{ width: "100%", maxWidth: 420 }}>
+          <div
+            style={{
+              width: "100%",
+              maxWidth: 420,
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+              alignItems: "flex-end",
+            }}
+          >
+          {/* 📅 Book a session — dashboard-level booking entry point.
+              Restored 2026-05-20: a UI-audit pass removed the amber
+              "Schedule a session" strip on the wrong assumption that the
+              button lived elsewhere on the dashboard — it did not. This
+              is the single dashboard-level book button the coach asked
+              for. The picker's first step is a client-select. */}
+          <BookSessionButton
+            allClients={(clients as ClientRow[]).map((c) => ({
+              client_id: c.client_id,
+              display_name: c.display_name,
+              email: c.email,
+              mobile_number: c.mobile_number,
+            }))}
+            label="📅 Book a session"
+            variant="header"
+          />
           <FmStatGrid cols={2}>
             <FmStatTile label="Clients" value={totalClients} href="/clients-v2" />
             <FmStatTile
@@ -808,10 +834,11 @@ export default async function DashboardV2() {
       />
 
       {/* Banners + strips above the triage sections.
-          Dropped the amber "Schedule a session" strip 2026-05-19 —
-          BookSessionButton is already in the page header's stat row
-          AND duplicated in the FAB, so a third entry point was just
-          stacking visual weight. */}
+          The standalone amber "Schedule a session" strip was dropped
+          2026-05-19; the BookSessionButton now lives in the page-header
+          rightSlot above the stat tiles (restored 2026-05-20 after the
+          strip removal accidentally left the dashboard with no booking
+          entry point at all). */}
       {/* Banner stack restructured 2026-05-20 (UI audit theme #3 +
           investment #4). Previously 11 sibling banners rendered at uniform
           visual weight; after 3-4 they became wallpaper. Now bundled into

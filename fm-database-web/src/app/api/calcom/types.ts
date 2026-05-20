@@ -37,6 +37,10 @@ export interface CreateBookingResult {
   ok: boolean;
   bookingUid?: string;
   calcomEventUrl?: string;
+  /** True when the fm_session_confirm WhatsApp went out to the client.
+   *  False / undefined = no phone on file or the send failed (the
+   *  booking itself still succeeded — Cal.com emailed the client). */
+  whatsappSent?: boolean;
   error?: string;
 }
 

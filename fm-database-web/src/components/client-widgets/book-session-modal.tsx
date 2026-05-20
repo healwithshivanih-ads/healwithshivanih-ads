@@ -67,7 +67,7 @@ export function BookSessionModal({
   const [notes, setNotes] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const [step, setStep] = React.useState<Step>(prefilledClient ? "pick-type" : "pick-client");
-  const [bookingResult, setBookingResult] = React.useState<{ bookingUid?: string; calcomEventUrl?: string } | null>(null);
+  const [bookingResult, setBookingResult] = React.useState<{ bookingUid?: string; calcomEventUrl?: string; whatsappSent?: boolean } | null>(null);
   const [sendResult, setSendResult] = React.useState<{ method: string; url: string } | null>(null);
 
   // Reset when modal closes
@@ -171,7 +171,7 @@ export function BookSessionModal({
       toast.error(res.error ?? "Booking failed.", { description: "Pick another slot or check the Cal.com API key." });
       return;
     }
-    setBookingResult({ bookingUid: res.bookingUid, calcomEventUrl: res.calcomEventUrl });
+    setBookingResult({ bookingUid: res.bookingUid, calcomEventUrl: res.calcomEventUrl, whatsappSent: res.whatsappSent });
     setStep("done");
     toast.success(
       `Booked ${client.display_name ?? client.client_id} — ${selectedType.label} on ${selectedSlot.dateLabel} at ${selectedSlot.label}`,
@@ -529,9 +529,18 @@ export function BookSessionModal({
                   </div>
                 )}
               </div>
-              <div className="text-xs text-muted-foreground">
-                Cal.com is now sending the confirmation email + Zoom link to the client and
-                placing the event on your calendar.
+              <div className="text-xs text-muted-foreground space-y-1">
+                <div>
+                  ✉️ Cal.com emailed {client.display_name?.split(" ")[0] ?? "the client"} the
+                  confirmation + calendar invite (Zoom link if set) and put the event on your calendar.
+                </div>
+                <div>
+                  {bookingResult?.whatsappSent
+                    ? `💬 WhatsApp confirmation sent to ${client.display_name?.split(" ")[0] ?? "the client"} too.`
+                    : client.mobile_number
+                      ? "💬 WhatsApp confirmation couldn't be sent — check the WhatsApp server. Email still went out."
+                      : "💬 No WhatsApp sent — no mobile number on file. Email still went out."}
+                </div>
               </div>
               <div className="flex justify-end gap-2">
                 {bookingResult?.calcomEventUrl && (

@@ -444,6 +444,51 @@ export async function createBookingAction(
       }
     }
 
+    // ── WhatsApp confirmation to the client ──────────────────────────────
+    // Cal.com already emails the attendee a confirmation; this ALSO sends a
+    // WhatsApp via the Meta-approved `fm_session_confirm` template so the
+    // client gets the nudge on the channel they actually read. Best-effort
+    // — the booking already succeeded on cal.com; a WhatsApp failure must
+    // never turn this into an error. Skipped silently when no phone.
+    let whatsappSent = false;
+    if (input.clientPhone) {
+      try {
+        const { sendWhatsAppAction } = await import("@/app/api/whatsapp/actions");
+        const firstName = (input.clientName || "there").split(" ")[0];
+        const slotDate = new Date(input.slotIso);
+        const dateStr = slotDate.toLocaleDateString("en-IN", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          timeZone: IST_TZ,
+        });
+        const timeStr =
+          slotDate.toLocaleTimeString("en-IN", {
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true,
+            timeZone: IST_TZ,
+          }) + " IST";
+        // fm_session_confirm params: [name, date, time]
+        const waRes = await sendWhatsAppAction(
+          input.clientPhone,
+          "fm_session_confirm",
+          [firstName, dateStr, timeStr],
+        );
+        whatsappSent = waRes.ok;
+        if (!waRes.ok) {
+          console.warn(
+            `[createBooking] WhatsApp confirm failed for ${input.clientId}: ${waRes.error}`,
+          );
+        }
+      } catch (e) {
+        console.warn(
+          `[createBooking] WhatsApp confirm threw for ${input.clientId}: ${(e as Error).message}`,
+        );
+      }
+    }
+
     // Revalidate the surfaces that render upcoming bookings so the coach
     // sees her booking immediately without a hard refresh.
     try {
@@ -453,7 +498,7 @@ export async function createBookingAction(
       revalidatePath(`/clients-v2/${input.clientId}/sessions`);
     } catch { /* not in request context — skip */ }
 
-    return { ok: true, bookingUid: uid, calcomEventUrl: eventUrl };
+    return { ok: true, bookingUid: uid, calcomEventUrl: eventUrl, whatsappSent };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }

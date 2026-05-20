@@ -55,6 +55,7 @@ import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
 import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
+import { QuickEditSupplementsPanel } from "./quick-edit-supplements-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 // PhaseLetterPanel was here through 2026-05-18 — moved back to the
 // Communicate tab so letter generation lives in one place. Import kept
@@ -436,6 +437,19 @@ export default async function PlanTabPage({
         typeof it.duration_weeks === "number" ? it.duration_weeks : null,
     }))
     .filter((it) => it.supplement_slug);
+
+  // Rows for the in-place QuickEditSupplementsPanel (published plans only).
+  // Carries display_name so the panel can show a clean name; the slug is
+  // the edit key passed to quickEditActivePlanSupplement.
+  const quickEditSupplementRows = supplementItems
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      slug: (it.supplement_slug as string | undefined) ?? "",
+      displayName: (it.display_name as string | undefined) ?? undefined,
+      dose: (it.dose as string | undefined) ?? "",
+      timing: (it.timing as string | undefined) ?? "",
+    }))
+    .filter((it) => it.slug);
 
   const practices = activePlan
     ? summariseSection(
@@ -952,6 +966,16 @@ export default async function PlanTabPage({
             >
               <FmSupplementGrid items={supplementGridItems} />
             </FmPanel>
+
+            {/* In-place quick edit — published plans only. Lets the coach
+                adjust a dose / timing or remove a supplement without the
+                4-step supersede flow. Drafts use the full plan editor. */}
+            {isPublished && (
+              <QuickEditSupplementsPanel
+                planSlug={activePlan.slug}
+                supplements={quickEditSupplementRows}
+              />
+            )}
 
             {/* Nutrition — pattern + add/reduce + meal timing + cooking
                 adjustments + home remedies. The 7-day meal grid itself

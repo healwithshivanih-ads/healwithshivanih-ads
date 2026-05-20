@@ -1539,6 +1539,29 @@ def _detect_start_week(titration: str, coach_rationale: str) -> int:
     return min(candidates)
 
 
+def _resolve_start_week(supp: dict) -> int:
+    """Authoritative start week for a supplement plan entry.
+
+    Prefers the STRUCTURED `start_week` field on the SupplementItem
+    (added 2026-05-20 — set by the coach in the plan editor, or pre-filled
+    by phased protocol templates like 5R). Falls back to the free-text
+    heuristic (_detect_start_week, which scrapes titration / rationale
+    prose) only for older plans authored before the field existed.
+    Always returns an int >= 1.
+    """
+    raw = supp.get("start_week")
+    if raw is not None:
+        try:
+            n = int(raw)
+            if n >= 1:
+                return n
+        except (ValueError, TypeError):
+            pass
+    return _detect_start_week(
+        supp.get("titration") or "", supp.get("coach_rationale") or ""
+    )
+
+
 # Brand prefixes stripped from user-facing supplement names. Coach
 # feedback 2026-05-19: "Vitaone Ashwagandha" reads weird to the client
 # — they don't care about the brand name, they care about what the
@@ -1589,7 +1612,7 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
             dur = int(dur) if dur else plan_weeks
         except (ValueError, TypeError):
             dur = plan_weeks
-        start_week = _detect_start_week(titration, rationale)
+        start_week = _resolve_start_week(s)
 
         # Reuse the same buy-link logic as the detailed schedule.
         buy_link_override = s.get("buy_link") or ""
@@ -1724,6 +1747,7 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
             buy_badge = "iHerb"
 
         slot_idx, slot_label, slot_emoji = _timing_slot(timing_raw)
+        start_week = _resolve_start_week(s)
         rows.append({
             "name": name,
             "dose": dose,
@@ -1733,6 +1757,7 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
             "slot_emoji": slot_emoji,
             "rationale": rationale,
             "buy_html": buy_html,
+            "start_week": start_week,
         })
 
     rows.sort(key=lambda r: (r["slot_idx"], r["name"]))
@@ -1751,6 +1776,7 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
             f'<div class="supp-pill">'
             f'<span class="supp-pill-name">{r["name"]}</span>'
             f'{"<span class=supp-pill-dose>" + r["dose"] + "</span>" if r["dose"] else ""}'
+            f'{"<span class=supp-pill-week>from wk " + str(r["start_week"]) + "</span>" if r["start_week"] > 1 else ""}'
             f'</div>'
             for r in slot_rows
         )
@@ -1763,11 +1789,18 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
     # Build table rows
     table_rows = ""
     for r in rows:
+        if r["start_week"] > 1:
+            start_cell = (
+                f"<span class='phase-chip phase-later'>Week {r['start_week']}</span>"
+            )
+        else:
+            start_cell = "<span class='phase-chip phase-now'>Now</span>"
         table_rows += (
             f"<tr>"
             f"<td><span class='slot-chip'>{r['slot_emoji']} {r['slot_label']}</span></td>"
             f"<td><strong>{r['name']}</strong></td>"
             f"<td>{r['dose']}</td>"
+            f"<td>{start_cell}</td>"
             f"<td class='rationale-cell'>{r['rationale']}</td>"
             f"<td class='buy-cell'>{r['buy_html']}</td>"
             f"</tr>"
@@ -1799,6 +1832,7 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
           <th>When</th>
           <th>Supplement</th>
           <th>Dose</th>
+          <th>Start</th>
           <th>Why</th>
           <th class="no-print">Where to buy</th>
         </tr>
@@ -3513,7 +3547,7 @@ def _build_prompt_meal_plan_phase(
             continue
         titration = s.get("titration") or ""
         rationale = (s.get("coach_rationale") or "").strip()
-        start_week = _detect_start_week(titration, rationale)
+        start_week = _resolve_start_week(s)
 
         # Step-up detection first — if the titration contains a "then X
         # from week N" / "increase to X from week N" pattern AND N is in
@@ -4009,13 +4043,25 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     # else: consolidated — fall through to existing code
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
 
-    # Per-client letter preferences. When `meal_plan` is NOT in
-    # letter_types_active, the consolidated letter omits the 14-day meal
-    # plan tables and replaces them with nutrition principles. Coach
-    # explicitly opted this client out of day-to-day meal planning
-    # (e.g., "give me overall guidance, I'll figure out the meals").
-    letter_types_active = client.get("letter_types_active") or ["consolidated"]
-    include_daily_meal_plan = "meal_plan" in letter_types_active
+    # Meal-plan presentation in the consolidated letter is driven by the
+    # client's meal_plan_style preference (set by the coach in the Memory /
+    # preferences panel — Detailed / Principles / Hybrid):
+    #   detailed   → full 14-day Mon-Sun meal tables
+    #   hybrid     → nutrition principles + ONE sample-week table
+    #   principles → nutrition principles only, no tables
+    #
+    # BUG FIX 2026-05-20: this was previously gated on
+    # `"meal_plan" in letter_types_active`, which conflated "which
+    # standalone letter documents to ship" with "how the client wants her
+    # meal plan presented" — and ignored the coach's explicit Detailed
+    # setting entirely. A client set to Detailed but whose letter_types_active
+    # was just ["consolidated"] silently got a Principles letter. Now the
+    # consolidated meal section honours meal_plan_style directly.
+    style_raw = (client.get("meal_plan_style") or "hybrid").lower()
+    meal_plan_style = (
+        style_raw if style_raw in ("detailed", "principles", "hybrid") else "hybrid"
+    )
+    include_daily_meal_plan = meal_plan_style == "detailed"
 
     # Pre-compute the section 3 body — either daily meal-plan tables OR
     # nutrition principles. Held as a plain string so the main f-string
@@ -4327,6 +4373,20 @@ MOVEMENT & WELLNESS:
             "because you wanted that. If you ever change your mind and want a structured daily breakdown — "
             "say the word, I'll send one through.\""
         )
+        # Hybrid clients want principles to live by PLUS one example week
+        # showing how they come together — append a single sample-week table.
+        if meal_plan_style == "hybrid":
+            meal_plan_section += (
+                "\n\n## 🗓 Sample Week — one example, not a prescription\n"
+                "AFTER the principles above, add ONE 7-day table for a typical "
+                "Week 1 (rows: Breakfast / Mid-morning snack / Lunch / Evening "
+                "snack / Dinner / Bedtime; columns Mon-Sun). Label it clearly as "
+                "a SAMPLE to show how the principles come together — "
+                + first_name + " is on a hybrid plan, so this is inspiration, "
+                "not a rigid menu. Use specific Indian dishes, respect dietary "
+                "preference (" + diet_pref + "), avoid (" + foods_to_avoid
+                + "), and never use reported triggers (" + reported_triggers + ")."
+            )
         recipe_appendix_instr = (
             "SKIP this entire section. No daily meal plan in this letter "
             "(per client preference) → no ✦ recipes to expand. Move directly to the Product guide below."

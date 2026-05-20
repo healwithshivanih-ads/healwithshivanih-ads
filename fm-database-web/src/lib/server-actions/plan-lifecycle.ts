@@ -214,6 +214,116 @@ export async function removeSupplementFromActivePlan(
   }
 }
 
+/** Quick-edit a single supplement on an ACTIVE (published) plan in place
+ *  — adjust its dose and/or timing, or remove it — WITHOUT the 4-step
+ *  supersede flow. For trivial mid-plan tweaks ("drop omega-3 to 1 g")
+ *  a direct edit is what the coach wants; the formal createSuccessor →
+ *  publish → supersede route stays for protocol pivots / new phases.
+ *
+ *  Same immutability trade-off + mitigation as removeSupplementFromActivePlan:
+ *    1. Appends a status_history audit event capturing exactly what
+ *       changed (old value → new value) + the coach's reason.
+ *    2. Bumps updated_at so the letter-staleness detector flags any
+ *       already-sent letters with a "regenerate" prompt.
+ *  Future phase letters / meal plans regenerate from the live plan, so
+ *  the change flows into every further letter automatically. */
+export interface QuickSupplementEdit {
+  dose?: string;
+  timing?: string;
+  remove?: boolean;
+  reason?: string;
+}
+
+export async function quickEditActivePlanSupplement(
+  planSlug: string,
+  supplementSlug: string,
+  edit: QuickSupplementEdit,
+): Promise<{ ok: true; changed: boolean } | { ok: false; error: string }> {
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+  if (!supplementSlug) return { ok: false, error: "supplementSlug required" };
+
+  try {
+    const root = getPlansRoot();
+    const dir = path.join(root, "published");
+    const names = await fs.readdir(dir).catch(() => [] as string[]);
+    const match = names.find(
+      (n) => n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"),
+    );
+    if (!match) {
+      return {
+        ok: false,
+        error: `No published plan found matching slug ${planSlug}.`,
+      };
+    }
+    const planPath = path.join(dir, match);
+    const raw = await fs.readFile(planPath, "utf-8");
+    const { default: yaml } = await import("js-yaml");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const supplements =
+      (data.supplement_protocol as Array<Record<string, unknown>>) ?? [];
+
+    const idx = supplements.findIndex(
+      (s) => (s.supplement_slug as string | undefined) === supplementSlug,
+    );
+    if (idx === -1) {
+      return {
+        ok: false,
+        error: `Supplement ${supplementSlug} is not in plan ${planSlug}.`,
+      };
+    }
+
+    let summary: string;
+    if (edit.remove) {
+      supplements.splice(idx, 1);
+      data.supplement_protocol = supplements;
+      summary = `Removed supplement: ${supplementSlug}`;
+    } else {
+      const item = supplements[idx];
+      const changes: string[] = [];
+      const newDose = edit.dose?.trim();
+      const newTiming = edit.timing?.trim();
+      if (newDose && newDose !== item.dose) {
+        changes.push(`dose "${item.dose ?? "—"}" → "${newDose}"`);
+        item.dose = newDose;
+      }
+      if (newTiming && newTiming !== item.timing) {
+        changes.push(`timing "${item.timing ?? "—"}" → "${newTiming}"`);
+        item.timing = newTiming;
+      }
+      if (changes.length === 0) return { ok: true, changed: false };
+      summary = `Adjusted ${supplementSlug} — ${changes.join("; ")}`;
+    }
+
+    data.updated_at = new Date().toISOString();
+    const history =
+      (data.status_history as Array<Record<string, unknown>>) ?? [];
+    history.push({
+      state: "published",
+      by: process.env.FMDB_USER || "shivani",
+      at: new Date().toISOString(),
+      reason: `Quick edit — ${summary}${edit.reason ? ` — ${edit.reason}` : ""}`,
+    });
+    data.status_history = history;
+
+    await fs.writeFile(
+      planPath,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf-8",
+    );
+
+    const clientId = (data.client_id as string | undefined) ?? "";
+    if (clientId) {
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients-v2/${clientId}/plan`);
+      revalidatePath(`/clients-v2/${clientId}/communicate`);
+    }
+    revalidatePath(`/plans/${planSlug}`);
+    return { ok: true, changed: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 /** Look up client info for a freshly-published plan, then fire the
  *  follow-up sends. Separate function so the publishPlan happy-path
  *  stays linear and easy to read. */

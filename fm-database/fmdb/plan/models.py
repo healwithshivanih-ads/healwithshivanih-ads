@@ -808,6 +808,16 @@ class SupplementItem(BaseModel):
     timing: str = ""
     take_with_food: str = ""
     duration_weeks: Optional[int] = None
+    # Protocol week this supplement is introduced (1-indexed). Default 1 =
+    # starts immediately. Phased protocols (5R: Remove→Replace→Reinoculate
+    # →Repair) introduce supplements at later weeks — e.g. probiotics at
+    # week 3, L-glutamine at week 5. The client-facing shopping list shows
+    # ALL supplements at once (so she orders in one trip) but badges each
+    # with its start week; the daily schedule tags each row "from Week N".
+    # A supplement is active from start_week through start_week +
+    # duration_weeks. Backward-compatible: every existing plan reads as
+    # start_week 1.
+    start_week: int = 1
     titration: str = ""
     coach_rationale: str = ""            # why for this client
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver

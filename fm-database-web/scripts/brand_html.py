@@ -756,6 +756,18 @@ _CSS = f"""
     margin-top: 1px;
   }}
 
+  /* "from wk N" tag on a timeline pill for phased-in supplements. */
+  .supp-pill-week {{
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: #8a4a14;
+    background: #fde2d0;
+    border-radius: 6px;
+    padding: 0 5px;
+    margin-top: 2px;
+  }}
+
   /* Schedule table */
   .schedule-table-wrap {{
     overflow-x: auto;

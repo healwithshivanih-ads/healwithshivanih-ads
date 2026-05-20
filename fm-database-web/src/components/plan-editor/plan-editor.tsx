@@ -24,6 +24,10 @@ interface SupplementItem {
   timing?: string;
   take_with_food?: string;
   duration_weeks?: number | null;
+  // Protocol week this supplement is introduced (1-indexed; default 1 =
+  // start now). Phased protocols (5R etc.) stagger supplements — the
+  // client-facing shopping list + schedule badge each by start week.
+  start_week?: number | null;
   titration?: string;
   coach_rationale?: string;
   // v0.72: short coach-readable phrases the suggester / rework AI used
@@ -1510,6 +1514,22 @@ export function PlanEditor(props: PlanEditorProps) {
                           const next = [...supplements];
                           const v = e.target.value;
                           next[i] = { ...next[i], duration_weeks: v === "" ? null : Number(v) };
+                          patch("supplement_protocol", next);
+                        }}
+                      />
+                      <Input
+                        type="number"
+                        min={1}
+                        placeholder="Start week (1 = now)"
+                        title="Protocol week this supplement is introduced. 1 = start immediately. Use 3 / 5 / 9 etc. to phase a 5R-style protocol."
+                        value={s.start_week ?? ""}
+                        onChange={(e) => {
+                          const next = [...supplements];
+                          const v = e.target.value;
+                          next[i] = {
+                            ...next[i],
+                            start_week: v === "" ? null : Math.max(1, Number(v)),
+                          };
                           patch("supplement_protocol", next);
                         }}
                       />

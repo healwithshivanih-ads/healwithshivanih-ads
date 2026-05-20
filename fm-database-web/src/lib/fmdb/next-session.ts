@@ -5,6 +5,8 @@
  *   - Dashboard widget (clients due to schedule in next 3 days)
  *
  * Priority order for `nextSessionDueIso`:
+ *   0. A confirmed upcoming Cal.com booking (an ACTUAL appointment on the
+ *      calendar — trumps every heuristic below)
  *   1. Coach-set `client.next_contact_date` (explicit override)
  *   2. Plan's `plan_period_recheck_date` if within 21 days
  *   3. Latest check-in date + 14 days (standard FM check-in cadence)
@@ -20,6 +22,7 @@ export interface NextSessionDue {
   daysUntil: number;       // negative if overdue
   reason: string;          // short human label
   source:
+    | "booked_session"
     | "client_next_contact_date"
     | "plan_recheck_date"
     | "post_checkin"
@@ -28,6 +31,8 @@ export interface NextSessionDue {
     | "post_intake";
   /** True when the due date has already passed. */
   overdue: boolean;
+  /** Set only for source "booked_session" — the confirmed slot time. */
+  bookedTimeLabel?: string;
 }
 
 type SessionRow = Record<string, unknown>;
@@ -37,6 +42,11 @@ interface ComputeArgs {
   sessions: SessionRow[];           // newest-first NOT required; we sort
   activePlan: Record<string, unknown> | null;
   todayIso?: string;                // testing seam
+  /** ISO datetime of the soonest confirmed upcoming Cal.com booking for
+   *  this client (full timestamp, not just the date). When present + in
+   *  the future it becomes the next session — an actual appointment
+   *  always beats a heuristic "should-schedule-by" date. */
+  upcomingBookingIso?: string | null;
 }
 
 function parseDate(s: string | undefined | null): Date | null {
@@ -81,9 +91,43 @@ export function computeNextSessionDue({
   sessions,
   activePlan,
   todayIso,
+  upcomingBookingIso,
 }: ComputeArgs): NextSessionDue | null {
   const today = parseDate(todayIso ?? new Date().toISOString().slice(0, 10));
   if (!today) return null;
+
+  // ── Source 0 — a confirmed upcoming Cal.com booking.
+  // An actual appointment on the calendar trumps every heuristic below.
+  // Without this, a client with a freshly-booked session still showed
+  // the stale "8 days overdue" recheck/discovery date — coach booked a
+  // slot and the banner kept saying she hadn't (bug 2026-05-20).
+  if (upcomingBookingIso) {
+    const bookedDate = parseDate(upcomingBookingIso);
+    if (bookedDate && bookedDate.getTime() >= today.getTime()) {
+      let timeLabel = "";
+      try {
+        timeLabel = new Date(upcomingBookingIso).toLocaleTimeString("en-IN", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "Asia/Kolkata",
+        });
+      } catch {
+        /* leave blank */
+      }
+      const days = daysBetween(today, bookedDate);
+      return {
+        iso: isoOf(bookedDate),
+        daysUntil: days,
+        reason: timeLabel
+          ? `Session booked — ${timeLabel} IST`
+          : "Session booked",
+        source: "booked_session",
+        overdue: false,
+        bookedTimeLabel: timeLabel || undefined,
+      };
+    }
+  }
 
   // ── Source 1 — explicit coach override
   const explicit = parseDate(

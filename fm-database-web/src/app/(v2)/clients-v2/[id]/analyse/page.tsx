@@ -19,6 +19,7 @@ import Link from "next/link";
 import {
   loadClientById,
   loadClientSessions,
+  loadClientBookings,
   type ClientWithMeta,
 } from "@/lib/fmdb/loader-extras";
 import {
@@ -127,13 +128,28 @@ export default async function AnalysePage({
   const { id } = await params;
   const todayStr = new Date().toISOString().slice(0, 10);
 
-  const [client, sessions, journey, allPlans] = await Promise.all([
+  const [client, sessions, journey, allPlans, clientBookings] = await Promise.all([
     loadClientById(id),
     loadClientSessions(id),
     loadClientJourney(id, todayStr),
     loadAllPlans(),
+    loadClientBookings(id),
   ]);
   if (!client) notFound();
+
+  // Soonest confirmed upcoming Cal.com booking — feeds the "Next session"
+  // banner so a freshly-booked slot shows immediately (instead of the
+  // stale heuristic recheck/discovery date). loadClientBookings returns
+  // rows sorted soonest-first; we take the first non-cancelled one whose
+  // start is in the future.
+  const nowMs = Date.now();
+  const upcomingBookingIso =
+    clientBookings.find(
+      (b) =>
+        b.current_state !== "CANCELLED" &&
+        b.current_state !== "CANCELED" &&
+        Date.parse(b.start_time) >= nowMs,
+    )?.start_time ?? null;
 
   // Active plan for this client — needed for next-session-due derivation
   // (uses plan_period_recheck_date if approaching).
@@ -160,6 +176,7 @@ export default async function AnalysePage({
     sessions: sessions as Array<Record<string, unknown>>,
     activePlan: activePlanForNext,
     todayIso: todayStr,
+    upcomingBookingIso,
   });
 
   // Translate journey state → per-session-card completion. Discovery is
@@ -447,7 +464,13 @@ export default async function AnalysePage({
                   sent them the scheduling link". A 2-action banner:
                   navigate to communicate (which has the booking-link
                   panel) OR mark next contact date manually. */}
-              {nextSessionDue && (
+              {nextSessionDue && (() => {
+                // A confirmed Cal.com booking renders as a calm GREEN
+                // "booked" state — not red/amber "you're overdue". The
+                // overdue/due-soon styling only applies to heuristic
+                // should-schedule-by dates.
+                const isBooked = nextSessionDue.source === "booked_session";
+                return (
                 <div
                   style={{
                     display: "flex",
@@ -455,12 +478,16 @@ export default async function AnalysePage({
                     gap: 12,
                     padding: "10px 14px",
                     marginBottom: 10,
-                    background: nextSessionDue.overdue
+                    background: isBooked
+                      ? "linear-gradient(135deg, rgba(30, 132, 73, 0.12), rgba(30, 132, 73, 0.03))"
+                      : nextSessionDue.overdue
                       ? "linear-gradient(135deg, rgba(220, 38, 38, 0.10), rgba(220, 38, 38, 0.03))"
                       : nextSessionDue.daysUntil <= 3
                         ? "linear-gradient(135deg, rgba(245, 158, 11, 0.10), rgba(245, 158, 11, 0.03))"
                         : "var(--fm-bg-cool)",
-                    border: nextSessionDue.overdue
+                    border: isBooked
+                      ? "1px solid rgba(30, 132, 73, 0.45)"
+                      : nextSessionDue.overdue
                       ? "1px solid rgba(220, 38, 38, 0.40)"
                       : nextSessionDue.daysUntil <= 3
                         ? "1px solid rgba(245, 158, 11, 0.45)"
@@ -475,18 +502,24 @@ export default async function AnalysePage({
                       fontWeight: 800,
                       letterSpacing: 0.8,
                       textTransform: "uppercase",
-                      color: nextSessionDue.overdue ? "#9c1c1c" : "#8a5a08",
+                      color: isBooked
+                        ? "#1E8449"
+                        : nextSessionDue.overdue
+                        ? "#9c1c1c"
+                        : "#8a5a08",
                       whiteSpace: "nowrap",
                     }}
                   >
-                    📅 Next session
+                    {isBooked ? "✅ Session booked" : "📅 Next session"}
                   </span>
                   <span style={{ flex: 1, color: "#1f1f1f" }}>
                     <strong>
                       {formatLongDate(nextSessionDue.iso)}
                     </strong>
                     <span style={{ opacity: 0.75, marginLeft: 8 }}>
-                      ({humanDueLabel(nextSessionDue)} · {nextSessionDue.reason})
+                      {isBooked
+                        ? `(${humanDueLabel(nextSessionDue)}${nextSessionDue.bookedTimeLabel ? ` at ${nextSessionDue.bookedTimeLabel} IST` : ""} · client emailed by Cal.com)`
+                        : `(${humanDueLabel(nextSessionDue)} · ${nextSessionDue.reason})`}
                     </span>
                   </span>
                   {/* Replaced single-purpose "Send scheduling link" Link
@@ -504,7 +537,8 @@ export default async function AnalysePage({
                     label="📅 Book session"
                   />
                 </div>
-              )}
+                );
+              })()}
 
               {/* 🧭 Next-step recommendation. Single sentence pulled from
                   the client journey — kills the "I'm staring at 5 generic
