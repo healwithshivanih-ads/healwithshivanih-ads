@@ -462,6 +462,37 @@ def _load_custom_links() -> dict[str, tuple[str, str]]:
     except Exception:
         return {}
 
+
+def _load_custom_links_by_slug() -> dict[str, tuple[str, str]]:
+    """Coach-managed affiliate links keyed by an explicit catalogue
+    `slug:` field on the supplement_links.yaml entry.
+
+    Lets a custom link bind to a catalogue supplement by SLUG — exact,
+    and immune to display-name divergence. The name-keyword path
+    (_load_custom_links) is fragile when the link entry's title and the
+    catalogue display_name don't share a contiguous substring — e.g.
+    catalogue 'Whey Protein Isolate' vs a link entry titled 'Whey
+    Isolate Unflavored Protein'. Adding `slug: protein-whey-isolate` to
+    the YAML entry makes the match deterministic.
+    """
+    if not _CUSTOM_LINKS_PATH.exists():
+        return {}
+    try:
+        import yaml
+        data = yaml.safe_load(_CUSTOM_LINKS_PATH.read_text()) or {}
+        out: dict[str, tuple[str, str]] = {}
+        for key, val in data.items():
+            if not isinstance(val, dict) or not val.get("url"):
+                continue
+            sl = str(val.get("slug") or "").strip().lower()
+            if not sl:
+                continue
+            name = val.get("display_name") or key.replace("_", " ").title()
+            out[sl] = (name, val["url"])
+        return out
+    except Exception:
+        return {}
+
 # Brand recommendations removed 2026-05-19. Coach feedback: hardcoded
 # brand lists (RiteBite, Yoga Bar, Organic India, Himalaya, etc.) leaked
 # into every meal-plan / lifestyle / consolidated letter unprompted. That's
@@ -1661,6 +1692,11 @@ def _vitaone_url_only(supplement_name: str, slug: str | None = None) -> tuple[st
     """
     if slug:
         sl = slug.strip().lower()
+        # Coach-set custom link bound by explicit `slug:` field — exact
+        # match, takes precedence over every keyword path below.
+        cl = _load_custom_links_by_slug().get(sl)
+        if cl:
+            return cl
         if sl in _STUB_SLUG_TO_VITAONE_SLUG:
             target = _STUB_SLUG_TO_VITAONE_SLUG[sl]
             p = _VITAONE_BY_SLUG.get(target)
@@ -1856,7 +1892,8 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
         elif link_info:
             _, url = link_info
             is_vitaone = "vitaone.in" in url
-            badge = "VitaOne" if is_vitaone else "Amazon"
+            is_amazon = "amzn" in url or "amazon." in url
+            badge = "VitaOne" if is_vitaone else ("Amazon" if is_amazon else "Buy")
             cls = "vitaone" if is_vitaone else "amazon"
             buy_html = f'<a href="{url}" target="_blank" rel="noopener noreferrer">Buy ↗</a> <span class="buy-badge buy-badge-{cls}">{badge}</span>'
         else:
@@ -2270,7 +2307,8 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
         elif link_info:
             product_name, url = link_info
             is_vitaone = "vitaone.in" in url
-            badge = "VitaOne" if is_vitaone else "Amazon"
+            is_amazon = "amzn" in url or "amazon." in url
+            badge = "VitaOne" if is_vitaone else ("Amazon" if is_amazon else "Buy")
             buy_html = f'<a href="{url}" target="_blank" rel="noopener noreferrer">{product_name} ↗</a> <span class="buy-badge buy-badge-{"vitaone" if is_vitaone else "amazon"}">{badge}</span>'
             buy_badge = badge
         else:
