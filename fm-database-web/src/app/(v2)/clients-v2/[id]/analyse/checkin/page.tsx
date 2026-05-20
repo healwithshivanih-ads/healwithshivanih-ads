@@ -116,6 +116,33 @@ export default async function CheckInPage({
     }
   }
 
+  // Protein focus — show the protein-intake check-in question only for
+  // cohorts where protein is a priority: vegetarian/vegan (non-meat
+  // eaters under-eat protein), insulin resistance / PCOS / diabetes,
+  // an active weight-loss goal, or peri/menopause (muscle preservation).
+  const diet = String(clientAny.dietary_preference ?? "").toLowerCase();
+  const condBlob = [
+    ...(Array.isArray(clientAny.active_conditions)
+      ? clientAny.active_conditions
+      : []),
+    ...(Array.isArray(clientAny.medical_history)
+      ? clientAny.medical_history
+      : []),
+  ]
+    .map(String)
+    .join(" ")
+    .toLowerCase();
+  const isVeg =
+    /veg|vegan|jain|plant|egg|lacto|ovo/.test(diet) &&
+    !/non.?veg|omnivore|meat/.test(diet);
+  const isInsulinResistance =
+    /insulin resist|pcos|prediabet|diabet|metabolic syndrome/.test(condBlob);
+  const wl = clientAny.weight_loss as { enabled?: boolean } | undefined;
+  const isWeightLoss = !!wl?.enabled;
+  const isPeriMeno = /peri.?menopaus|menopaus/.test(condBlob);
+  const proteinFocus =
+    isVeg || isInsulinResistance || isWeightLoss || isPeriMeno;
+
   return (
     <AnalysePageShell
       clientId={id}
@@ -140,6 +167,7 @@ export default async function CheckInPage({
           activePlan?.plan_period_recheck_date ?? undefined
         }
         previousMeasurements={previousMeasurements}
+        proteinFocus={proteinFocus}
       />
     </AnalysePageShell>
   );

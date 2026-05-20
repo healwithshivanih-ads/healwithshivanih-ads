@@ -37,6 +37,16 @@ const ADHERENCE_OPTIONS = [
   { value: 1, label: "Off-plan", color: "#E74C3C" },
 ] as const;
 
+// Protein-intake check-in — shown only for clients where protein is a
+// focus (vegetarian/vegan, insulin resistance, weight-loss,
+// peri/menopausal). Gated by the `proteinFocus` prop.
+const PROTEIN_OPTIONS = [
+  { value: "on_track", label: "On track", color: "#1E8449" },
+  { value: "close", label: "Close", color: "#27AE60" },
+  { value: "short", label: "Falling short", color: "#E67E22" },
+  { value: "not_started", label: "Not started", color: "#E74C3C" },
+] as const;
+
 const QUICK_LABS = [
   "fT3 / rT3 only",
   "TPO / TgAb recheck",
@@ -69,6 +79,7 @@ export function CheckInForm({
   activePlanSlug,
   activePlanRecheckDate,
   previousMeasurements,
+  proteinFocus = false,
 }: {
   clientId: string;
   displayName: string;
@@ -81,6 +92,10 @@ export function CheckInForm({
    *  context above the input fields — coach types the new values in
    *  manually, never auto-applied. */
   previousMeasurements?: PreviousMeasurementSnapshot | null;
+  /** When true, show the protein-intake question — set by the page for
+   *  cohorts where protein is a focus (vegetarian/vegan, insulin
+   *  resistance, weight-loss, peri/menopausal). */
+  proteinFocus?: boolean;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -107,6 +122,7 @@ export function CheckInForm({
   const [labs, setLabs] = useState<string[]>([]);
   const [customLab, setCustomLab] = useState("");
   const [notes, setNotes] = useState("");
+  const [protein, setProtein] = useState<string>("");
 
   const toggleLab = (l: string) =>
     setLabs((cur) => (cur.includes(l) ? cur.filter((x) => x !== l) : [...cur, l]));
@@ -130,11 +146,13 @@ export function CheckInForm({
       if (bpSys && bpDia) meas.push(`BP ${bpSys}/${bpDia} mmHg`);
       if (hr) meas.push(`HR ${hr} bpm`);
 
+      const proteinLabel = PROTEIN_OPTIONS.find((o) => o.value === protein)?.label;
       const sections: string[] = [
         `Adherence: ${adherence}/5 — ${adhLabel}`,
         activePlanSlug ? `Active plan: ${activePlanSlug}` : "",
         adherenceNotes.trim() ? `Adherence notes: ${adherenceNotes.trim()}` : "",
         meas.length ? `Measurements: ${meas.join(", ")}` : "",
+        proteinFocus && proteinLabel ? `Protein intake: ${proteinLabel}` : "",
         labs.length ? `Labs requested: ${labs.join(", ")}` : "",
         notes.trim() ? `Coach notes: ${notes.trim()}` : "",
       ].filter(Boolean);
@@ -564,6 +582,41 @@ export function CheckInForm({
           </FmField>
         </div>
       </FmFormSection>
+
+      {proteinFocus && (
+        <FmFormSection
+          title="Protein intake"
+          description="Is the client hitting their daily protein target? Shown because protein is a focus for this client."
+        >
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {PROTEIN_OPTIONS.map((o) => {
+              const sel = protein === o.value;
+              return (
+                <button
+                  key={o.value}
+                  type="button"
+                  onClick={() => setProtein(sel ? "" : o.value)}
+                  style={{
+                    padding: "6px 14px",
+                    borderRadius: "var(--fm-radius-pill)",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    background: sel ? o.color : "var(--fm-surface)",
+                    color: sel ? "#fff" : "var(--fm-text-secondary)",
+                    border: sel
+                      ? "1px solid transparent"
+                      : "1px solid var(--fm-border-light)",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                  }}
+                >
+                  {o.label}
+                </button>
+              );
+            })}
+          </div>
+        </FmFormSection>
+      )}
 
       <FmFormSection
         title="New lab orders (optional)"

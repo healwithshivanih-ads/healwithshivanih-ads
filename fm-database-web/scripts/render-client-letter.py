@@ -2784,6 +2784,70 @@ def _pick_protein_source(client: dict, plan: dict | None = None) -> dict:
     }
 
 
+def _protein_guidance_block(client: dict, plan: dict | None = None) -> str:
+    """Protein-management block for the meal-plan / consolidated / phase
+    prompts. Tells the AI the client's daily protein target, the
+    food-first sources to lean on, and — only if the day's food is likely
+    to fall short — which protein powder to recommend as a top-up.
+
+    Returns "" when weight data is missing. When protein is
+    contraindicated for raising (kidney disease / high uric acid / gout)
+    the block instead instructs a moderate, no-powder, 'confirm with your
+    doctor' framing — the app never pushes protein on those clients.
+    """
+    target = _calc_protein_target(client, plan)
+    if not target:
+        return ""
+
+    if target.get("suppressed"):
+        why = ("kidney function" if target.get("suppress_reason") == "kidney"
+               else "high uric acid / gout")
+        return (
+            "PROTEIN — KEEP MODERATE (do NOT push):\n"
+            f"This client has a medical reason ({why}) not to raise protein "
+            "intake.\n"
+            "- Do NOT set a high-protein target and do NOT recommend a "
+            "protein powder.\n"
+            "- Keep protein at normal everyday amounts, spread across meals.\n"
+            "- Add ONE gentle line telling the client protein should stay "
+            "moderate and the exact amount is best confirmed with their "
+            "doctor.\n"
+        )
+
+    low, high = target["low_g"], target["high_g"]
+    src = _pick_protein_source(client, plan)
+    powder = src["display"]
+    if src["dairy_free"]:
+        eats_eggs = "egg" in str(client.get("dietary_preference") or "").lower()
+        food_sources = (
+            "dal and whole legumes, tofu, sattu (roasted chana), nuts and "
+            "seeds" + (", and eggs" if eats_eggs else "")
+        )
+        mix_into = "a smoothie or plant-milk"
+    else:
+        food_sources = (
+            "dal and whole legumes, paneer and curd, eggs (if eaten), tofu, "
+            "sattu (roasted chana), nuts and seeds"
+        )
+        mix_into = "curd, milk or a smoothie"
+
+    return (
+        f"PROTEIN TARGET — {low}-{high} g per day:\n"
+        "Most Indian vegetarian clients under-eat protein. Build the meal "
+        f"plan so the day's FOOD delivers as much of the {low}-{high} g "
+        "target as realistically possible — protein at EVERY meal.\n"
+        f"- Food first: lean on {food_sources}.\n"
+        "- Note the approximate protein (in grams) beside each main meal so "
+        f"the client can see the day adding up toward {low}-{high} g.\n"
+        "- ONLY if the day's food still falls short, add ONE short line "
+        f"recommending a protein-powder top-up: {powder} — about one "
+        f"unflavoured scoop (~25 g protein) stirred into {mix_into}. Frame "
+        "it as a gap-filler, not a meal replacement, and never as a "
+        "'shake'.\n"
+        "- Do NOT name a specific brand.\n"
+    )
+
+
 def _portion_control_block(kcal_total: int = 0) -> str:
     """Explicit per-meal portion guidance for weight-loss letters — the
     'visible reference plate' + measured portions. Portions are the
@@ -3604,6 +3668,7 @@ MOVEMENT & WELLNESS:
     # Weight-loss plans MUST carry an explicit portion guide — the
     # mechanism that turns the calorie target into actual plates.
     portion_block = _portion_control_block(cal["phases"]["wk1_2"]) if cal else ""
+    protein_block = _protein_guidance_block(client, plan)
 
     coach_notes_block = _coach_notes_block(coach_notes)
 
@@ -3641,6 +3706,7 @@ CLIENT PROFILE:
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 {calorie_section}
 {portion_block}
+{protein_block}
 
 PLAN DATA (nutrition focus):
 Focus areas: {', '.join(topics) if topics else 'general wellness'}
@@ -4583,6 +4649,8 @@ Per meal split (MUST roughly match):
         )
         portion_block = _portion_control_block(kcal_total)
 
+    protein_block = _protein_guidance_block(client, plan)
+
     # Mode-specific body instructions (section 3 onwards). Sections 1-2
     # are common across modes — only the meat changes.
     if style == "detailed":
@@ -4727,6 +4795,7 @@ CURRENT ROUTINE (already prescribed — DO NOT re-list, just reference):
 
 {supp_phase_block}
 {portion_block}
+{protein_block}
 {coaching_goals_block}
 {coach_notes_block}
 
@@ -5079,6 +5148,7 @@ MOVEMENT & WELLNESS:
     # Weight-loss plans MUST carry an explicit portion guide — the
     # mechanism that turns the calorie target into actual plates.
     portion_block = _portion_control_block(cal["phases"]["wk1_2"]) if cal else ""
+    protein_block = _protein_guidance_block(client, plan)
 
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
@@ -5260,6 +5330,7 @@ CLIENT PROFILE:
 - Goals: {', '.join(goals) if goals else 'not listed'}
 {calorie_section}
 {portion_block}
+{protein_block}
 
 PLAN DATA (from coach):
 Focus areas: {', '.join(topics) if topics else 'general wellness'}
