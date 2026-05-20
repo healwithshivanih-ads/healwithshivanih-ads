@@ -1734,6 +1734,9 @@ _STUB_SLUG_TO_VITAONE_SLUG: dict[str, str] = {
     "vitaone-ashwagandha": "ashwagandha-ksm-66-600mg-strength-517",
     "opti-liver": "fm-nutrition-opti-liver-76",
     "dialor-plus": "liv-bios-dialor-plus-124",  # VitaOne / Liv Bio's Dialor Plus
+    # Protein-management feature — the plant-protein track resolves to
+    # VitaOne's Rebuild Plant Protein & Lipid (unflavoured, mung+pea).
+    "protein-plant-blend": "rebuild-plant-protein-and-lipid-rebuild-plant-protein-and-lipid-15",
 }
 
 
