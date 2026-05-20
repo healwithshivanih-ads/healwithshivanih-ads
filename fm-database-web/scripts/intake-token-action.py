@@ -358,6 +358,11 @@ _LIST_FIELDS = [
     "active_conditions",
     "medical_history",
     "current_medications",
+    # current_supplements: the form collects it (string[]) and the Client
+    # model has had the field since v2.4, but the handler never wired it
+    # — so every client's "supplements I currently take" answer was
+    # silently dropped. Additive merge, same as current_medications.
+    "current_supplements",
     "known_allergies",
     "goals",
 ]
@@ -772,6 +777,80 @@ def _write_quick_note_session(client_id: str, payload: dict) -> str:
     return session_id
 
 
+def _measurements_from_intake(submitted: dict) -> dict:
+    """Canonical measurements dict built from the intake form's FLAT
+    body-composition fields.
+
+    The form sends height / weight / waist / hip / BP as TOP-LEVEL keys
+    (height_cm | height_ft + height_in, weight_now_kg | weight_now_lb,
+    waist_cm | waist_in, hip_cm | hip_in, bp_systolic, bp_diastolic) —
+    NOT as a nested `measurements` dict. Each row accepts metric OR
+    imperial; imperial is converted to metric here so everything
+    downstream (BMI, calorie targets, waist:hip) just works.
+
+    Before 2026-05-20 the submit handler only read a nested `measurements`
+    dict that the form never builds — so every client's intake body-comp
+    answers were silently dropped. This helper is the fix.
+    """
+    def _num(key: str):
+        v = submitted.get(key)
+        if v in (None, "", 0, "0"):
+            return None
+        try:
+            f = float(v)
+        except (TypeError, ValueError):
+            return None
+        return f if f > 0 else None
+
+    out: dict = {}
+
+    # Height — cm direct, else (ft, in) → cm.
+    h_cm = _num("height_cm")
+    if h_cm is None:
+        ft, inch = _num("height_ft"), _num("height_in")
+        if ft is not None or inch is not None:
+            h_cm = round((ft or 0) * 30.48 + (inch or 0) * 2.54, 1)
+    if h_cm:
+        out["height_cm"] = h_cm
+
+    # Weight — kg direct, else lb → kg.
+    w_kg = _num("weight_now_kg")
+    if w_kg is None:
+        lb = _num("weight_now_lb")
+        if lb is not None:
+            w_kg = round(lb * 0.453592, 1)
+    if w_kg:
+        out["weight_kg"] = w_kg
+
+    # Waist — cm direct, else in → cm.
+    waist = _num("waist_cm")
+    if waist is None:
+        waist_in = _num("waist_in")
+        if waist_in is not None:
+            waist = round(waist_in * 2.54, 1)
+    if waist:
+        out["waist_cm"] = waist
+
+    # Hip — cm direct, else in → cm.
+    hip = _num("hip_cm")
+    if hip is None:
+        hip_in = _num("hip_in")
+        if hip_in is not None:
+            hip = round(hip_in * 2.54, 1)
+    if hip:
+        out["hip_cm"] = hip
+
+    # Blood pressure — form keys bp_systolic / bp_diastolic.
+    sys_bp = _num("bp_systolic")
+    if sys_bp:
+        out["blood_pressure_systolic"] = int(round(sys_bp))
+    dia_bp = _num("bp_diastolic")
+    if dia_bp:
+        out["blood_pressure_diastolic"] = int(round(dia_bp))
+
+    return out
+
+
 def action_submit(payload_in: dict) -> dict:
     """Submit intake. PATH A behaviour (2026-05-15): submit is NOT final.
     The form copy promises the client they can keep editing until the
@@ -934,7 +1013,16 @@ def action_submit(payload_in: dict) -> dict:
             fields_updated.append("timeline_events")
 
     # ── measurements (overwrite individual fields when provided) ──
-    incoming_meas = submitted.get("measurements") or {}
+    # The form sends body-comp as FLAT top-level fields (height_cm,
+    # weight_now_kg, waist_cm, hip_cm, bp_systolic, …) with metric-OR-
+    # imperial per row — NOT a nested `measurements` dict. Build the
+    # canonical dict from those (imperial converted to metric). A nested
+    # `measurements` dict, if any caller ever sends one, sits underneath
+    # as a fallback.
+    incoming_meas = {
+        **(submitted.get("measurements") or {}),
+        **_measurements_from_intake(submitted),
+    }
     if isinstance(incoming_meas, dict) and incoming_meas:
         existing_meas = data.get("measurements") or {}
         meas_keys = ["height_cm", "weight_kg", "waist_cm", "hip_cm",
