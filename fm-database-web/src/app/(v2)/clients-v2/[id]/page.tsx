@@ -898,20 +898,24 @@ export default async function ClientV2Page({
           <FmBodyCompGrid
             metrics={bodyComp}
             clientId={client.client_id}
-            prefill={{
-              height_cm:
-                (client as unknown as { height_cm?: number }).height_cm ?? null,
-              weight_kg:
-                (client as unknown as { weight_now_kg?: number }).weight_now_kg ?? null,
-              waist_cm:
-                (client as unknown as { waist_cm?: number }).waist_cm ?? null,
-              hip_cm:
-                (client as unknown as { hip_cm?: number }).hip_cm ?? null,
-              blood_pressure_systolic:
-                (client as unknown as { bp_systolic?: number }).bp_systolic ?? null,
-              blood_pressure_diastolic:
-                (client as unknown as { bp_diastolic?: number }).bp_diastolic ?? null,
-            }}
+            prefill={(() => {
+              // Pre-fill the "+ Log entry" form from the canonical
+              // measurements block. (The old code read flat client.*
+              // fields — height_cm, weight_now_kg, … — which are never
+              // persisted, so the form always opened empty.)
+              const m = (client.measurements ?? {}) as Record<
+                string,
+                number | undefined
+              >;
+              return {
+                height_cm: m.height_cm ?? null,
+                weight_kg: m.weight_kg ?? null,
+                waist_cm: m.waist_cm ?? null,
+                hip_cm: m.hip_cm ?? null,
+                blood_pressure_systolic: m.blood_pressure_systolic ?? null,
+                blood_pressure_diastolic: m.blood_pressure_diastolic ?? null,
+              };
+            })()}
             lastEntryDate={
               // Latest entry from EITHER health_snapshots OR
               // measurements_log — both contribute to the trend, so the

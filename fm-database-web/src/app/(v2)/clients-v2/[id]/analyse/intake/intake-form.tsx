@@ -90,16 +90,25 @@ interface TimelineEntry {
   event: string;
 }
 
-const TIMELINE_CATEGORIES = [
-  "Childhood",
-  "Pregnancy",
-  "Surgery",
-  "Major illness",
-  "Stressful event",
-  "Diagnosis",
-  "Treatment",
-  "Lifestyle change",
-  "Other",
+// Canonical timeline-category vocabulary. `value` is the snake_case enum
+// the client intake form + AI extraction actually store; `label` is the
+// human text. The old list used Title-Case strings as BOTH value and
+// label, so a <select> bound to a stored value like "life_event" matched
+// no option and rendered blank "Category" — the AI *was* categorising,
+// the form just couldn't display it. Superset of the client-form list +
+// the extra values the extraction emits (childhood / other).
+const TIMELINE_CATEGORIES: Array<{ value: string; label: string }> = [
+  { value: "childhood", label: "Childhood" },
+  { value: "life_event", label: "Life event / stress" },
+  { value: "symptom_onset", label: "Symptom started" },
+  { value: "diagnosis", label: "Diagnosis" },
+  { value: "medication_change", label: "Medication change" },
+  { value: "treatment", label: "Treatment" },
+  { value: "surgery", label: "Surgery" },
+  { value: "pregnancy", label: "Pregnancy" },
+  { value: "stress", label: "Stress" },
+  { value: "recovery", label: "Recovery" },
+  { value: "other", label: "Other" },
 ];
 
 interface FmIntakeFields {
@@ -1654,10 +1663,16 @@ export function IntakeForm({
               >
                 <option value="">Category</option>
                 {TIMELINE_CATEGORIES.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
+                  <option key={c.value} value={c.value}>
+                    {c.label}
                   </option>
                 ))}
+                {/* Preserve any stored category not in the canonical list
+                    so it never silently renders as a blank "Category". */}
+                {row.category &&
+                  !TIMELINE_CATEGORIES.some((c) => c.value === row.category) && (
+                    <option value={row.category}>{row.category}</option>
+                  )}
               </select>
               <FmInput
                 placeholder="Event — e.g. Postpartum diagnosis of Hashimoto's"

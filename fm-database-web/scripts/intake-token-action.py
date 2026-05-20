@@ -205,6 +205,37 @@ def _prefill_from_client(data: dict) -> dict:
     }
 
 
+def _last_submitted_payload(client_id: str) -> dict:
+    """The most recent intake-form submission's raw payload, recovered
+    from the audit session that _write_quick_note_session writes
+    (`<date>-NNN-intake-form.yaml` → `ai_analysis.raw_intake_payload`).
+
+    Why this exists: after a client submits, `intake_form_draft` is
+    cleared, so a re-open re-populates from `prefill`. But
+    `_prefill_from_client` only carries a minimal subset — no body
+    composition, no timeline, no deep clinical fields — so without this
+    a re-opened submitted intake showed most answers blank. The raw
+    payload is already in the exact form-field shape, so merging it into
+    `prefill` makes re-open a faithful round-trip of the whole form.
+
+    Returns {} when there is no prior submission."""
+    sessions_dir = _plans_root() / "clients" / client_id / "sessions"
+    try:
+        files = sorted(sessions_dir.glob("*-intake-form.yaml"))
+    except Exception:
+        return {}
+    if not files:
+        return {}
+    try:
+        import yaml  # type: ignore
+        with files[-1].open("r", encoding="utf-8") as f:
+            sdata = yaml.safe_load(f) or {}
+        payload = ((sdata.get("ai_analysis") or {}).get("raw_intake_payload")) or {}
+        return payload if isinstance(payload, dict) else {}
+    except Exception:
+        return {}
+
+
 def action_lookup(payload: dict) -> dict:
     token = (payload.get("token") or "").strip()
     if not token:
@@ -258,12 +289,32 @@ def action_lookup(payload: dict) -> dict:
     # after submitting pre-discovery. The data they shared is preserved
     # in client.yaml (and surfaced as `prefill` below).
     previously_submitted = bool(data.get("intake_submitted_at"))
+    # Prefill = the minimal client.yaml subset, then (for a previously-
+    # submitted intake) the client's full last submission overlaid on
+    # top. The raw payload is already in form-field shape and is the
+    # client's own input, so echoing it back is a faithful, leak-free
+    # round-trip of every answer — body composition, deep clinical
+    # fields, supplements — that the minimal subset used to drop.
+    prefill = _prefill_from_client(data)
+    if previously_submitted:
+        raw = dict(_last_submitted_payload(client_id))
+        # timeline_events: keep the fuller client.yaml set. Later
+        # transcript / coach additions routinely exceed what the intake
+        # form itself carried, so don't let the submission's list
+        # clobber it.
+        raw.pop("timeline_events", None)
+        prefill = {**prefill, **raw}
+    # Always surface the current client.yaml timeline (covers coach
+    # pre-stubs as well as the post-submit fuller set).
+    tl = data.get("timeline_events")
+    if tl:
+        prefill["timeline_events"] = tl
     return {
         "ok": True,
         "client_id": client_id,
         "display_name": data.get("display_name") or "",
         "intake_form_draft": data.get("intake_form_draft") or {},
-        "prefill": _prefill_from_client(data),
+        "prefill": prefill,
         "stage": stage,
         "previously_submitted": previously_submitted,
     }

@@ -168,6 +168,15 @@ export default async function IntakeViewPage({
   const submittedAt = client.intake_submitted_at as string | null | undefined;
   const submitted = !!submittedAt;
   const displayName = (client.display_name as string) || id;
+  // Body composition lives in the canonical `measurements` block — the
+  // intake submit handler converts the form's flat height/weight/waist/
+  // hip/BP fields (metric or imperial) into metric here. Reading the old
+  // flat `client.height_cm` etc. always showed blank: those flat fields
+  // were never persisted (intake field-drop bug, fixed 2026-05-20).
+  const meas = (client.measurements ?? {}) as Record<
+    string,
+    number | undefined
+  >;
 
   return (
     <FmAppShell
@@ -225,49 +234,25 @@ export default async function IntakeViewPage({
         <Field label="Country" value={client.country} />
         <Field
           label="Height"
-          value={
-            client.height_cm
-              ? `${client.height_cm} cm`
-              : client.height_ft || client.height_in
-              ? `${client.height_ft ?? "—"} ft ${client.height_in ?? 0} in`
-              : null
-          }
+          value={meas.height_cm ? `${meas.height_cm} cm` : null}
         />
         <Field
           label="Current weight"
-          value={
-            client.weight_now_kg
-              ? `${client.weight_now_kg} kg`
-              : client.weight_now_lb
-              ? `${client.weight_now_lb} lb`
-              : null
-          }
+          value={meas.weight_kg ? `${meas.weight_kg} kg` : null}
         />
         <Field
           label="Waist"
-          value={
-            client.waist_cm
-              ? `${client.waist_cm} cm`
-              : client.waist_in
-              ? `${client.waist_in} in`
-              : null
-          }
+          value={meas.waist_cm ? `${meas.waist_cm} cm` : null}
         />
         <Field
           label="Hips"
-          value={
-            client.hip_cm
-              ? `${client.hip_cm} cm`
-              : client.hip_in
-              ? `${client.hip_in} in`
-              : null
-          }
+          value={meas.hip_cm ? `${meas.hip_cm} cm` : null}
         />
         <Field
           label="Blood pressure"
           value={
-            client.bp_systolic && client.bp_diastolic
-              ? `${client.bp_systolic} / ${client.bp_diastolic} mmHg`
+            meas.blood_pressure_systolic && meas.blood_pressure_diastolic
+              ? `${meas.blood_pressure_systolic} / ${meas.blood_pressure_diastolic} mmHg`
               : null
           }
         />
