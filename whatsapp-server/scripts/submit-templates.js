@@ -177,6 +177,28 @@ const TEMPLATES = [
     example: [['Priya', 'https://intake.theochretree.com/intake/abc123xyz']],
   },
   {
+    // Re-issue the intake to capture ONLY the Tier 1 screening section
+    // (joints / standing / energy / environment — Section 11) for a client
+    // who has already completed the rest of the form. Sent by fm-coach's
+    // `reissueTierOneIntakeAction` (the "Suspected Tier 1 signals" panel
+    // on the v2 client page). The {{2}} link carries `?focus=tier1` so the
+    // intake form renders ONLY that one short section — every other answer
+    // stays saved + hidden.
+    //
+    // Deliberately distinct from the two wrong-fit templates it replaces:
+    //   • fm_intake_invite      — "fill in before we work together" (they
+    //                             already ARE working together)
+    //   • fm_intake_unlocked_v1 — "opened up the longer intake form" (it's
+    //                             one short section, not a longer form)
+    // UTILITY: purely transactional form-completion, no promotion.
+    name: 'fm_intake_topup_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, I just need a couple more answers on your intake form — a short section on joints, standing and energy. Everything you filled in before is saved, so this should only take about 2 minutes:\n\n{{2}}\n\n— Shivani Hari\nYour Functional Health Coach',
+    example: [['Priya', 'https://intake.theochretree.com/intake/abc123xyz?focus=tier1']],
+  },
+  {
     // Sent from the FM coach client overview "📅 Send booking link" widget.
     // Coach picks an event type (Discovery / Intake / Coaching) at send time;
     // the widget builds the full cal.com URL and passes it as {{2}}.
