@@ -19,6 +19,7 @@ import { matchContact } from '../../services/contacts/matcher.js';
 import * as appointments from '../../services/appointments/index.js';
 import * as tagsSvc from '../../services/contacts/tags.js';
 import { forwardBookingToFmCoach } from '../../services/forwarder/cal-com-forwarder.js';
+import { sendTemplate } from '../../channels/whatsapp/client.js';
 
 export const calComWebhook = Router();
 
@@ -160,6 +161,48 @@ async function handleBookingCreated(payload) {
   }).catch((err) =>
     logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_created)'),
   );
+
+  // WhatsApp confirmation to the customer — fires the `appt_confirmation`
+  // template, the SAME one fm-coach's createBookingAction sends when the
+  // COACH books a slot. Both booking paths → one consistent message.
+  // Cal.com already emails the customer; this adds the WhatsApp nudge.
+  // Best-effort: a send failure must never break the webhook (we already
+  // 200'd + stored the booking). Skipped silently when there's no phone.
+  if (phone) {
+    try {
+      const first = String(name || 'there').split(' ')[0];
+      const start = new Date(startsAt);
+      const dateStr = start.toLocaleDateString('en-IN', {
+        day: 'numeric', month: 'short', year: 'numeric',
+        timeZone: 'Asia/Kolkata',
+      });
+      const timeStr = start.toLocaleTimeString('en-IN', {
+        hour: 'numeric', minute: '2-digit', hour12: true,
+        timeZone: 'Asia/Kolkata',
+      }) + ' IST';
+      // Strip the verbose "between Shivani … and …" suffix cal.com adds.
+      const sessionType = String(title)
+        .replace(/\s*between\s+Shivani[^—|]*$/i, '')
+        .trim() || 'coaching';
+      await sendTemplate({
+        to: phone,
+        templateName: 'appt_confirmation',
+        languageCode: 'en',
+        components: [{
+          type: 'body',
+          parameters: [first, dateStr, timeStr, sessionType].map(
+            (t) => ({ type: 'text', text: String(t) }),
+          ),
+        }],
+      });
+      logger.info({ to: phone }, 'cal.com: appt_confirmation WhatsApp sent');
+    } catch (err) {
+      logger.warn(
+        { err: err.message },
+        'cal.com: appt_confirmation WhatsApp send failed (non-fatal)',
+      );
+    }
+  }
 }
 
 async function handleBookingRescheduled(payload) {

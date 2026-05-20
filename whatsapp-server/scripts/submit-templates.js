@@ -146,6 +146,25 @@ const TEMPLATES = [
     example: [['Priya', 'https://fm-coach.example.com/intake/abc123xyz']],
   },
   {
+    // v0.75.4 — Sent by fm-coach when the coach clicks "🔓 Unlock full
+    // intake + mark signed up" on the client Overview. The client returns
+    // to the SAME intake URL they used for pre-discovery; their earlier
+    // answers are preserved and the form now shows the deeper sections
+    // (FM body systems, ACE, timeline, Joints & standing, etc.) below.
+    // Different copy from fm_intake_invite — this is a "welcome back, we're
+    // working together now" nudge, not a first-time invite.
+    // Called from `lib/server-actions/intake.ts → sendIntakeUnlockedViaApi()`
+    // (added in fm-coach v0.75.9). Fallback to fm_intake_invite if this
+    // template hasn't approved yet — UnlockFullIntakeButton has env-gated
+    // template switching.
+    name: 'fm_intake_unlocked_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, now that we're working together I've opened up the longer intake form so I can build your specific plan. Your earlier answers are saved — pick up where you left off:\n\n{{2}}\n\nThe newer sections are the ones I'm most keen to learn. Take your time, no rush.\n\n— Shivani Hari\nYour Functional Health Coach",
+    example: [['Priya', 'https://intake.theochretree.com/intake/abc123xyz']],
+  },
+  {
     // Sent from the FM coach client overview "📅 Send booking link" widget.
     // Coach picks an event type (Discovery / Intake / Coaching) at send time;
     // the widget builds the full cal.com URL and passes it as {{2}}.
