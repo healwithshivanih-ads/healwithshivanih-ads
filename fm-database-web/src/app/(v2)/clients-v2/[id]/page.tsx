@@ -42,6 +42,7 @@ import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
 import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
+import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
 import { parseSessionType } from "@/lib/fmdb/session-utils";
 import {
@@ -1307,6 +1308,11 @@ export default async function ClientV2Page({
                                   .measurements?.weight_kg ??
                                 null
                               }
+                              caloriePhases={computeCaloriePhases(
+                                client as unknown as Parameters<typeof computeCaloriePhases>[0],
+                                (client as unknown as { weight_loss?: WeightLossGoal })
+                                  .weight_loss,
+                              )}
                             />
                 ),
               },

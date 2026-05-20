@@ -49,6 +49,7 @@ import {
   type WeightLossWeekOverridePayload,
 } from "@/lib/server-actions/clients";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
+import type { CaloriePhases } from "@/lib/fmdb/calorie-phases";
 
 export interface WeightLossCardProps {
   clientId: string;
@@ -62,6 +63,10 @@ export interface WeightLossCardProps {
    *  pre-fill default for the Edit modal's starting weight when no
    *  measurement-log reading is available. Coach can still override. */
   currentWeightKg?: number | null;
+  /** Phased calorie ramp — computed server-side in page.tsx via
+   *  computeCaloriePhases(). The same 40/70/100/80/60% curve the client
+   *  letter uses. Null when weight loss isn't enabled or data is sparse. */
+  caloriePhases?: CaloriePhases | null;
 }
 
 export function WeightLossCard({
@@ -69,6 +74,7 @@ export function WeightLossCard({
   goal,
   measurementsLog,
   currentWeightKg,
+  caloriePhases,
 }: WeightLossCardProps) {
   const [editOpen, setEditOpen] = useState(false);
   const [overrideOpen, setOverrideOpen] = useState(false);
@@ -108,6 +114,7 @@ export function WeightLossCard({
         clientId={clientId}
         goal={goal}
         measurementsLog={measurementsLog ?? []}
+        caloriePhases={caloriePhases ?? null}
         onEdit={() => setEditOpen(true)}
         onAddOverride={() => setOverrideOpen(true)}
       />
@@ -137,12 +144,14 @@ function WeightLossCardInner({
   clientId,
   goal,
   measurementsLog,
+  caloriePhases,
   onEdit,
   onAddOverride,
 }: {
   clientId: string;
   goal: WeightLossGoal;
   measurementsLog: MeasurementEntry[];
+  caloriePhases: CaloriePhases | null;
   onEdit: () => void;
   onAddOverride: () => void;
 }) {
@@ -382,6 +391,79 @@ function WeightLossCardInner({
               width={540}
               height={120}
             />
+          </div>
+        )}
+
+        {/* Calorie phase ramp — the 40/70/100/80/60% gradual deficit
+            curve the client letter uses (computeCaloriePhases, a TS port
+            of _calc_calorie_targets). Read-only readout so the coach can
+            sanity-check the ramp without generating a letter. */}
+        {caloriePhases && (
+          <div style={{ marginTop: 14 }}>
+            <div className="FmEyebrow" style={{ marginBottom: 6 }}>
+              Calorie phases · gradual deficit ramp
+            </div>
+            <div style={{ display: "flex", gap: 4 }}>
+              {[
+                { k: "Wk 1–2", v: caloriePhases.phases.wk1_2 },
+                { k: "Wk 3–4", v: caloriePhases.phases.wk3_4 },
+                { k: "Wk 5–8", v: caloriePhases.phases.wk5_8, peak: true },
+                { k: "Wk 9–10", v: caloriePhases.phases.wk9_10 },
+                { k: "Wk 11–12", v: caloriePhases.phases.wk11_12 },
+              ].map((p) => (
+                <div
+                  key={p.k}
+                  style={{
+                    flex: 1,
+                    textAlign: "center",
+                    padding: "6px 2px",
+                    borderRadius: "var(--fm-radius-sm)",
+                    background: p.peak
+                      ? "rgba(220, 38, 38, 0.08)"
+                      : "var(--fm-bg-cool)",
+                    border: `1px solid ${
+                      p.peak ? "rgba(220, 38, 38, 0.30)" : "var(--fm-border)"
+                    }`,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 9.5,
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: 0.4,
+                      color: "var(--fm-text-tertiary)",
+                    }}
+                  >
+                    {p.k}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 800,
+                      color: p.peak ? "#b91c1c" : "var(--fm-text-primary)",
+                    }}
+                  >
+                    {p.v.toLocaleString()}
+                  </div>
+                  <div style={{ fontSize: 8.5, color: "var(--fm-text-tertiary)" }}>
+                    kcal/day
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div
+              style={{
+                fontSize: 10,
+                color: "var(--fm-text-tertiary)",
+                marginTop: 4,
+                lineHeight: 1.4,
+              }}
+            >
+              Maintenance ≈ {caloriePhases.tdee.toLocaleString()} kcal · deficit
+              ramps 40 → 70 → 100 → 80 → 60% · flows straight into the client
+              letter.
+            </div>
           </div>
         )}
 
