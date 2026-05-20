@@ -2538,6 +2538,252 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
     }
 
 
+# ── Protein management ──────────────────────────────────────────────────
+#
+# Protein top-up for FM clients — especially non-meat-eaters, who routinely
+# under-eat protein. Two helpers:
+#   _calc_protein_target  — daily gram target (1.2-1.5 g/kg, adjusted body
+#                           weight for high BMI; suppressed for kidney
+#                           disease / high uric acid)
+#   _pick_protein_source  — which of the 3 catalogue protein powders fits,
+#                           from dairy status + histamine / gut-protocol
+#                           suppression flags
+# See fm-database/data/sources/protein-intake-guidance.yaml.
+
+_PROTEIN_KIDNEY_TERMS = (
+    "kidney disease", "chronic kidney", "ckd", "renal failure",
+    "renal insufficiency", "renal disease", "nephropathy", "dialysis",
+)
+_PROTEIN_URIC_TERMS = (
+    "gout", "hyperuricemia", "hyperuricaemia", "high uric acid",
+    "elevated uric acid", "raised uric acid",
+)
+_PROTEIN_HISTAMINE_TERMS = ("histamine", "mcas", "mast cell")
+_PROTEIN_GUT_TERMS = ("sibo", "candida", "candidiasis", "dysbiosis")
+_PROTEIN_GUT_SLUG_HINTS = (
+    "5r", "sibo", "candida", "gut-heal", "gut-repair", "gut-restoration",
+)
+_PROTEIN_DAIRY_FREE_TERMS = (
+    "vegan", "dairy-free", "dairy free", "no dairy", "without dairy",
+    "plant-based", "plant based",
+)
+_PROTEIN_DAIRY_AVOID_TERMS = ("dairy", "milk", "lactose", "casein")
+# Kept deliberately narrow — yeast protein is a rare niche, so auto-routing
+# to it should require an explicit pea/legume-protein sensitivity, not a
+# casual "I avoid soy" note.
+_PROTEIN_LEGUME_TERMS = ("pea protein", "legume allergy", "pulse allergy")
+
+
+def _protein_condition_text(client: dict) -> str:
+    """Lowercased blob of every place a condition / diet note could live."""
+    parts: list[str] = []
+    for key in ("active_conditions", "medical_history"):
+        v = client.get(key)
+        if isinstance(v, list):
+            parts.extend(str(x) for x in v)
+        elif v:
+            parts.append(str(v))
+    for key in ("notes", "dietary_preference"):
+        if client.get(key):
+            parts.append(str(client[key]))
+    return " ".join(parts).lower()
+
+
+def _protein_lab_marker_high(client: dict, name_terms: tuple) -> bool:
+    """True if a lab marker whose name matches any term carries a
+    high / elevated flag. `lab_markers` rows look like
+    {marker_name, value, unit, reference_range, flag, ...}."""
+    for m in (client.get("lab_markers") or []):
+        if not isinstance(m, dict):
+            continue
+        name = str(m.get("marker_name") or m.get("name") or "").lower()
+        if not any(t in name for t in name_terms):
+            continue
+        flag = str(m.get("flag") or "").lower()
+        if any(w in flag for w in ("high", "elevat", "above", "raised")):
+            return True
+    return False
+
+
+def _calc_protein_target(client: dict, plan: dict | None = None) -> dict | None:
+    """Daily protein target for the client.
+
+    Returns a dict with low_g / high_g (1.2-1.5 g/kg of body weight,
+    adjusted body weight when BMI >= 30), or None if weight is missing.
+
+    When the client has a contraindication to a RAISED protein intake —
+    kidney disease or hyperuricemia / gout — `suppressed` is True,
+    low_g/high_g are None, and the letter must show a 'keep moderate,
+    confirm with your doctor' note instead of a number. The app never
+    pushes protein up for these clients.
+    """
+    m = client.get("measurements") or {}
+
+    def _f(*vals) -> float:
+        for v in vals:
+            try:
+                f = float(v)
+                if f:
+                    return f
+            except (TypeError, ValueError):
+                continue
+        return 0.0
+
+    weight_kg = _f(m.get("weight_kg"), client.get("weight_kg"))
+    height_cm = _f(m.get("height_cm"), client.get("height_cm"))
+    if not weight_kg:
+        return None
+
+    # ── Contraindication scan — kidney disease + high uric acid / gout ──
+    cond_text = _protein_condition_text(client)
+    kidney = any(t in cond_text for t in _PROTEIN_KIDNEY_TERMS) or \
+        _protein_lab_marker_high(client, ("creatinine",))
+    uric = any(t in cond_text for t in _PROTEIN_URIC_TERMS) or \
+        _protein_lab_marker_high(client, ("uric acid", "urate"))
+    suppress_reason = "kidney" if kidney else ("uric_acid" if uric else "")
+
+    # ── Adjusted body weight for high BMI ──────────────────────────────
+    # On actual weight a high-BMI client's gram target over-shoots — lean
+    # mass doesn't scale 1:1 with fat mass. At BMI >= 30 use adjusted body
+    # weight = IBW + 0.4 x (actual - IBW), IBW pinned at BMI 22.5.
+    basis = "actual"
+    basis_weight = weight_kg
+    bmi = None
+    if height_cm:
+        h_m = height_cm / 100.0
+        bmi = weight_kg / (h_m * h_m)
+        if bmi >= 30:
+            ibw = 22.5 * h_m * h_m
+            if weight_kg > ibw:
+                basis_weight = ibw + 0.4 * (weight_kg - ibw)
+                basis = "adjusted"
+
+    per_kg_low, per_kg_high = 1.2, 1.5
+    low_g = round(basis_weight * per_kg_low)
+    high_g = round(basis_weight * per_kg_high)
+    basis_label = "adjusted body weight" if basis == "adjusted" else "body weight"
+
+    if suppress_reason:
+        why = ("kidney function" if suppress_reason == "kidney"
+               else "high uric acid / gout")
+        return {
+            "suppressed": True,
+            "suppress_reason": suppress_reason,
+            "low_g": None, "high_g": None,
+            "actual_weight_kg": round(weight_kg, 1),
+            "basis": basis, "basis_weight_kg": round(basis_weight, 1),
+            "bmi": round(bmi, 1) if bmi else None,
+            "per_kg_low": per_kg_low, "per_kg_high": per_kg_high,
+            "rationale": (
+                f"Protein intake should be kept moderate and guided by the "
+                f"client's doctor — {why} is a reason not to raise protein "
+                f"without medical advice."
+            ),
+        }
+
+    return {
+        "suppressed": False,
+        "suppress_reason": "",
+        "low_g": low_g, "high_g": high_g,
+        "actual_weight_kg": round(weight_kg, 1),
+        "basis": basis, "basis_weight_kg": round(basis_weight, 1),
+        "bmi": round(bmi, 1) if bmi else None,
+        "per_kg_low": per_kg_low, "per_kg_high": per_kg_high,
+        "rationale": (
+            f"Target {low_g}-{high_g} g protein/day "
+            f"({per_kg_low}-{per_kg_high} g/kg of {basis_label})."
+        ),
+    }
+
+
+def _pick_protein_source(client: dict, plan: dict | None = None) -> dict:
+    """Pick which protein powder to recommend — from the client's dairy
+    status plus histamine / gut-protocol suppression flags.
+
+    Returns {slug, display, reason, dairy_free, histamine, gut_protocol,
+    legume_sensitive}. `slug` is one of protein-whey-isolate /
+    protein-plant-blend / protein-yeast-fermented and always resolves —
+    this answers "if a protein powder is needed, which one"; whether one
+    is actually needed is the gap analysis, done separately.
+    """
+    cond_text = _protein_condition_text(client)
+
+    diet = str(client.get("dietary_preference") or "").lower()
+    avoid = str(client.get("foods_to_avoid") or "").lower()
+    allergies = " ".join(
+        str(x) for x in (client.get("known_allergies") or [])
+    ).lower()
+    dairy_free = (
+        any(t in diet for t in _PROTEIN_DAIRY_FREE_TERMS)
+        or any(t in avoid for t in _PROTEIN_DAIRY_AVOID_TERMS)
+        or any(t in allergies for t in _PROTEIN_DAIRY_AVOID_TERMS)
+    )
+
+    histamine = any(t in cond_text for t in _PROTEIN_HISTAMINE_TERMS)
+
+    # Gut protocol — 5R / SIBO / candida, from conditions OR an attached
+    # catalogue protocol whose slug hints at gut-dysbiosis work.
+    gut_protocol = any(t in cond_text for t in _PROTEIN_GUT_TERMS)
+    if plan and not gut_protocol:
+        for slug in (plan.get("attached_protocols") or []):
+            s = str(slug).lower()
+            if any(h in s for h in _PROTEIN_GUT_SLUG_HINTS):
+                gut_protocol = True
+                break
+
+    legume_sensitive = any(
+        t in avoid or t in allergies for t in _PROTEIN_LEGUME_TERMS
+    )
+
+    WHEY = ("protein-whey-isolate", "Whey Protein Isolate")
+    PLANT = ("protein-plant-blend", "Plant Protein Blend (Mung & Pea)")
+    YEAST = ("protein-yeast-fermented", "Fermented Yeast Protein")
+
+    # ── Decision tree ──────────────────────────────────────────────────
+    if histamine:
+        # Fermented yeast AND dairy are both plausible histamine triggers,
+        # so the plant blend is the safest fit regardless of dairy status.
+        slug, display = PLANT
+        reason = ("Plant protein blend — fermented yeast and dairy are both "
+                  "plausible histamine triggers, so the plant blend is the "
+                  "safest fit for a histamine-sensitive client.")
+    elif gut_protocol:
+        # Suppress yeast during a gut-dysbiosis protocol.
+        if dairy_free:
+            slug, display = PLANT
+            reason = ("Plant protein blend — fermented yeast is the wrong "
+                      "signal during a gut-dysbiosis protocol, and dairy is "
+                      "being eliminated.")
+        else:
+            slug, display = WHEY
+            reason = ("Whey isolate — dairy is still tolerated, and "
+                      "fermented yeast is avoided during a gut-dysbiosis "
+                      "protocol.")
+    elif not dairy_free:
+        slug, display = WHEY
+        reason = ("Whey isolate — dairy is tolerated; whey isolate is the "
+                  "lightest, most palatable option.")
+    elif legume_sensitive:
+        slug, display = YEAST
+        reason = ("Fermented yeast protein — dairy-free, and the client also "
+                  "reacts to legume / plant proteins, so the most "
+                  "allergen-free option fits best.")
+    else:
+        slug, display = PLANT
+        reason = ("Plant protein blend — dairy-free, and legumes are "
+                  "tolerated.")
+
+    return {
+        "slug": slug,
+        "display": display,
+        "reason": reason,
+        "dairy_free": dairy_free,
+        "histamine": histamine,
+        "gut_protocol": gut_protocol,
+        "legume_sensitive": legume_sensitive,
+    }
+
+
 def _portion_control_block(kcal_total: int = 0) -> str:
     """Explicit per-meal portion guidance for weight-loss letters — the
     'visible reference plate' + measured portions. Portions are the
