@@ -721,6 +721,26 @@ _CSS = f"""
   .routine-supp-dose {{ color: var(--lavender); font-size: 11.5px; }}
   .routine-supp-tag {{ color: #8a4a14; font-size: 11px; }}
   .routine-supp-none {{ color: #b8b2aa; font-style: italic; font-size: 11.5px; }}
+  .routine-prn {{
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: #fbf4ea;
+    border: 1px dashed #e0c79a;
+    border-radius: 12px;
+  }}
+  .routine-prn-head {{
+    font-size: 13px;
+    font-weight: 700;
+    color: #8a4a14;
+    margin-bottom: 4px;
+  }}
+  .routine-prn-note {{
+    font-size: 11.5px;
+    color: var(--lavender);
+    line-height: 1.55;
+    margin: 0 0 8px;
+  }}
+  .routine-prn-when {{ color: #8a4a14; font-size: 11px; font-style: italic; }}
   .routine-foot {{
     font-size: 11.5px;
     color: var(--lavender);

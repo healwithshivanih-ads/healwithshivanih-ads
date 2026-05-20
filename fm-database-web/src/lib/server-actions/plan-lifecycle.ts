@@ -1095,6 +1095,28 @@ export async function generatePhaseMealPlanAction(
       const recipesHtmlPath = path.join(dir, `${stem}-recipes.html`);
       await fs.writeFile(recipesHtmlPath, result.recipes_html, "utf-8");
     }
+    // Also write the recipe pack under the CANONICAL `<planSlug>-recipes`
+    // name — that's exactly what the public /recipes/<planSlug> page
+    // reads. Phase letters use a phase-stamped stem
+    // (`<planSlug>-meal_plan-wk3-4`), so without this copy the live page
+    // can't find the file and shows an empty "not published" state.
+    // The newest phase's recipes become the current pack at
+    // /recipes/<planSlug>. For consolidated, stem === planSlug already,
+    // so this branch is skipped (the file above is already canonical).
+    if (stem !== planSlug) {
+      await fs.writeFile(
+        path.join(dir, `${planSlug}-recipes.md`),
+        result.recipes_markdown,
+        "utf-8",
+      );
+      if (result.recipes_html) {
+        await fs.writeFile(
+          path.join(dir, `${planSlug}-recipes.html`),
+          result.recipes_html,
+          "utf-8",
+        );
+      }
+    }
   }
   const stat = await fs.stat(mdPath);
 

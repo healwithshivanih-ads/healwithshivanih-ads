@@ -1978,21 +1978,11 @@ def _is_prn(supp: dict) -> bool:
     return any(cue in blob for cue in _PRN_CUES)
 
 
-def _routine_slots(timing_str: str) -> list[int]:
-    """Every day-anchor a supplement belongs to, parsed from its free-text
-    timing — for the Daily Routine. Unlike _timing_slot (one slot, used by
-    the dose table), this returns a LIST: a genuinely thrice-daily enzyme
-    placed with breakfast + lunch + dinner returns [1, 3, 5]. Specific
-    phrases win over generic ones so 'mid-morning, empty stomach' lands at
-    mid-morning, not 'on waking'. Slots: 0 waking · 1 breakfast ·
-    2 mid-morning · 3 lunch · 4 afternoon · 5 dinner · 6 bedtime.
-
-    'X or Y' (e.g. 'with dinner or at bedtime') is a once-daily pick-one
-    timing — it collapses to a SINGLE anchor (the one mentioned first, the
-    coach's primary recommendation) so the supplement is never listed
-    twice. Only true 'and' multi-dose timings keep multiple slots."""
-    t = (timing_str or "").lower()
-    # slot -> earliest character position its keyword appears at
+def _parse_routine_pos(text: str) -> dict[int, int]:
+    """Parse a free-text timing / dose string into {slot: earliest keyword
+    position}. No collapse, no default. Slots: 0 waking · 1 breakfast ·
+    2 mid-morning · 3 lunch · 4 afternoon · 5 dinner · 6 bedtime."""
+    t = (text or "").lower()
     pos: dict[int, int] = {}
 
     def mark(slot: int, *keywords: str) -> None:
@@ -2009,8 +1999,16 @@ def _routine_slots(timing_str: str) -> list[int]:
     mark(3, "lunch", "midday", "12 noon")
     mark(5, "dinner", "supper", "evening meal")
     # Bare 'morning' → breakfast, only if no mid-morning / breakfast already.
+    # BUT 'morning on empty stomach / fasting' (with no breakfast option
+    # named) belongs at On Waking — the fasted, pre-breakfast anchor — not
+    # alongside breakfast. A supplement taken on an empty stomach should
+    # not sit at the 'eat breakfast' slot.
+    fasted = any(
+        k in t for k in
+        ("empty stomach", "fasting", "on waking", "first thing", "before food")
+    )
     if "morning" in t and 2 not in pos and 1 not in pos:
-        mark(1, "morning")
+        mark(0 if fasted else 1, "morning")
     # Bare 'evening' (not 'evening meal') → afternoon, if no dinner already.
     if "evening" in t and 5 not in pos:
         mark(4, "evening")
@@ -2019,12 +2017,35 @@ def _routine_slots(timing_str: str) -> list[int]:
         k in t for k in ("waking", "early morning", "fasting", "empty stomach")
     ):
         pos[0] = 0
+    return pos
+
+
+def _routine_slots(timing_str: str, dose_str: str = "") -> list[int]:
+    """Every day-anchor a supplement belongs to, parsed from its free-text
+    timing — for the Daily Routine. Unlike _timing_slot (one slot, used by
+    the dose table), this returns a LIST: a genuinely thrice-daily enzyme
+    placed with breakfast + lunch + dinner returns [1, 3, 5].
+
+    'X or Y' (e.g. 'with dinner or at bedtime') is a once-daily pick-one
+    timing — it collapses to a SINGLE anchor so the supplement is never
+    listed twice. The dose text is consulted first (it often pins the
+    intended slot precisely — 'magnesium glycinate at bedtime'); failing
+    that, the slot mentioned first in the timing wins. Only true 'and'
+    multi-dose timings keep multiple slots."""
+    t = (timing_str or "").lower()
+    pos = _parse_routine_pos(timing_str)
     if not pos:
-        pos[1] = 0  # safe default: with breakfast
+        pos = {1: 0}  # safe default: with breakfast
 
     slots = sorted(pos)
-    # 'X or Y' / 'X / Y' → once-daily, pick one. Keep the first-mentioned.
+    # 'X or Y' / 'X / Y' → once-daily, pick one.
     if len(slots) > 1 and (" or " in t or " / " in t):
+        # If the dose text pins exactly one of the candidate slots, use it.
+        dose_pos = _parse_routine_pos(dose_str)
+        narrowed = [s for s in slots if s in dose_pos]
+        if len(narrowed) == 1:
+            return narrowed
+        # Otherwise keep the first-mentioned (coach's primary recommendation).
         return [min(slots, key=lambda s: pos[s])]
     return slots
 
@@ -2056,10 +2077,23 @@ def _build_daily_routine_html(plan: dict) -> str:
         if not name:
             continue
         tw = (s.get("take_with_food") or "").lower()
+        timing_l = (s.get("timing") or "").lower()
+        # If the timing names a meal (breakfast/lunch/dinner/with food), the
+        # anchor placement decides — don't force a contradictory food tag.
+        timing_has_meal = any(
+            w in timing_l for w in
+            ("breakfast", "lunch", "dinner", "with food", "with meal",
+             "with a meal", "with meals")
+        )
         if "empty" in tw or tw.strip() in ("no", "without food"):
             food_tag = "on an empty stomach"
         elif "with" in tw or "food" in tw or tw.strip() == "yes":
             food_tag = "with food"
+        elif not timing_has_meal and any(
+            k in timing_l
+            for k in ("empty stomach", "away from food", "before food")
+        ):
+            food_tag = "on an empty stomach"
         else:
             food_tag = ""
         entry = {
@@ -2076,7 +2110,7 @@ def _build_daily_routine_html(plan: dict) -> str:
             continue
         # A genuine multi-dose supplement can belong to several anchors
         # (e.g. a thrice-daily enzyme → breakfast + lunch + dinner).
-        for idx in _routine_slots(s.get("timing") or ""):
+        for idx in _routine_slots(s.get("timing") or "", s.get("dose") or ""):
             by_slot[idx].append(entry)
 
     # Remedies in the plan → friendly labels for the relevant anchors.
@@ -2502,6 +2536,39 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
         "pace_label": pace_label,
         "weekly_loss_kg": round(weekly_loss_kg, 2),
     }
+
+
+def _portion_control_block(kcal_total: int = 0) -> str:
+    """Explicit per-meal portion guidance for weight-loss letters — the
+    'visible reference plate' + measured portions. Portions are the
+    mechanism that turns a calorie target into actual plates, so EVERY
+    weight-loss meal-plan letter (consolidated, meal_plan, phase) must
+    carry this box, not just the phase letter. Coach requirement
+    2026-05-20. The plate proportions and measured portions are constant;
+    only the headline kcal number varies by phase."""
+    header = (
+        f"PORTION CONTROL FOR WEIGHT LOSS — {kcal_total} kcal/day target:"
+        if kcal_total
+        else "PORTION CONTROL FOR WEIGHT LOSS:"
+    )
+    return f"""{header}
+Visible reference plate (every meal should look like this):
+  • Half the plate = non-starchy veg (cooked or raw — 2 fist-sized portions)
+  • Quarter of the plate = protein (1 palm-size = ~25-30g)
+  • Quarter of the plate = whole grains or starchy veg (1 cupped-hand = ~30g cooked)
+  • Healthy fat = 1 thumb-size (1 tsp ghee / 1 tbsp seeds / 10 nuts)
+Specific portions to MEASURE (not guess):
+  • Rice / millet / quinoa: ½ cup cooked = ~100 kcal
+  • Dal / kidney beans cooked: ¾ cup = ~150 kcal
+  • Paneer: 50g cube = ~130 kcal (palm-size)
+  • Ghee: 1 tsp = 45 kcal (NOT a tablespoon)
+  • Nuts/seeds: 1 small handful = ~150 kcal (NOT a bowl)
+  • Fruit: 1 medium piece OR 1 cup berries = ~80 kcal
+INCLUDE this portion guidance as its own clearly-marked callout box in
+the letter (heading: "🍽 Portion Guide") so the client has a reference
+they can look at while plating each meal. This box is REQUIRED for every
+weight-loss plan.
+"""
 
 
 def _top_of_mind_block(client: dict, plan: dict) -> str:
@@ -3288,6 +3355,10 @@ MOVEMENT & WELLNESS:
 - Frame movement as supportive of hormonal balance, energy, and mood.
 """
 
+    # Weight-loss plans MUST carry an explicit portion guide — the
+    # mechanism that turns the calorie target into actual plates.
+    portion_block = _portion_control_block(cal["phases"]["wk1_2"]) if cal else ""
+
     coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
@@ -3323,6 +3394,7 @@ CLIENT PROFILE:
 - Allergies: {', '.join(allergies) if allergies else 'none known'}
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 {calorie_section}
+{portion_block}
 
 PLAN DATA (nutrition focus):
 Focus areas: {', '.join(topics) if topics else 'general wellness'}
@@ -4263,22 +4335,7 @@ Per meal split (MUST roughly match):
                 )
             )
         )
-        portion_block = f"""PORTION CONTROL FOR WEIGHT LOSS — {kcal_total} kcal/day target:
-Visible reference plate (every meal should look like this):
-  • Half the plate = non-starchy veg (cooked or raw — 2 fist-sized portions)
-  • Quarter of the plate = protein (1 palm-size = ~25-30g)
-  • Quarter of the plate = whole grains or starchy veg (1 cupped-hand = ~30g cooked)
-  • Healthy fat = 1 thumb-size (1 tsp ghee / 1 tbsp seeds / 10 nuts)
-Specific portions to MEASURE (not guess):
-  • Rice / millet / quinoa: ½ cup cooked = ~100 kcal
-  • Dal / kidney beans cooked: ¾ cup = ~150 kcal
-  • Paneer: 50g cube = ~130 kcal (palm-size)
-  • Ghee: 1 tsp = 45 kcal (NOT a tablespoon)
-  • Nuts/seeds: 1 small handful = ~150 kcal (NOT a bowl)
-  • Fruit: 1 medium piece OR 1 cup berries = ~80 kcal
-INCLUDE this portion guidance as a callout box in the letter so the
-client has a reference they can look at while plating each meal.
-"""
+        portion_block = _portion_control_block(kcal_total)
 
     # Mode-specific body instructions (section 3 onwards). Sections 1-2
     # are common across modes — only the meat changes.
@@ -4773,6 +4830,10 @@ MOVEMENT & WELLNESS:
 - Keep it brief (3–5 bullet points) unless the plan's lifestyle_practices already covers this.
 """
 
+    # Weight-loss plans MUST carry an explicit portion guide — the
+    # mechanism that turns the calorie target into actual plates.
+    portion_block = _portion_control_block(cal["phases"]["wk1_2"]) if cal else ""
+
     top_of_mind = _top_of_mind_block(client, plan)
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
@@ -4952,6 +5013,7 @@ CLIENT PROFILE:
 - Active conditions: {', '.join(conditions) if conditions else 'none listed'}
 - Goals: {', '.join(goals) if goals else 'not listed'}
 {calorie_section}
+{portion_block}
 
 PLAN DATA (from coach):
 Focus areas: {', '.join(topics) if topics else 'general wellness'}
@@ -5442,6 +5504,18 @@ def main() -> int:
     if client is None:
         client = {}
 
+    # Weight-loss fallback: when the caller didn't pass a weight_loss config
+    # (e.g. phase-letter generation, which doesn't re-ask the weight-loss
+    # questionnaire), fall back to the one stored on the client profile.
+    # The config lives on client.yaml — so every letter type, including
+    # mid-cycle phase letters, gets the calorie targets without the UI
+    # having to re-supply them each time.
+    if not weight_loss.get("enabled"):
+        client_wl = client.get("weight_loss")
+        if isinstance(client_wl, dict) and client_wl.get("enabled"):
+            weight_loss = client_wl
+            _step("weight_loss not in payload — using client profile config")
+
     # Backdating: filter dated arrays on the client object so the prompt
     # sees only what was known on/before as_of_date. Mutating a fresh
     # dict (not the YAML on disk) — disk stays authoritative.
@@ -5897,21 +5971,34 @@ def main() -> int:
     # whichever comes first.
     recipes_md: str | None = None
     if letter_type in ("meal_plan_phase", "meal_plan") and markdown:
-        # Match either ✦ or ✨ for safety — the prompt currently uses ✦
-        # but older letters used ✨. Case-insensitive on the word.
+        # Emoji-agnostic: the prompt says ✦, but the model freely
+        # substitutes ✨, ⭐, 🍴, etc. — and if the heading emoji doesn't
+        # match, the appendix silently stays embedded and the letter
+        # balloons to 7+ pages (coach bug 2026-05-20: Dhanishta's wk3-4
+        # letter used ⭐). Anchor on the words "Recipe Appendix" and
+        # allow any decorative prefix between "## " and the words.
         m = re.search(
-            r"(?m)^(##\s+[✦✨]\s+Recipe\s+Appendix.*?)(?=\n##\s+|\Z)",
+            r"(?m)^(##\s+[^\n]*?Recipe\s+Appendix.*?)(?=\n##\s+|\Z)",
             markdown,
             flags=re.DOTALL | re.IGNORECASE,
         )
         if m:
             recipes_md = m.group(1).strip() + "\n"
+            # Clickable link to the public recipe-pack page. Root-relative
+            # so it resolves on whatever origin the letter is opened from
+            # (the client opens the letter at /letter/<token>, so
+            # /recipes/<slug> lands on the same host). This is how the
+            # recipe pack actually reaches the client — the old wording
+            # said "attached to this email", which is no longer true
+            # since the WhatsApp cutover.
+            recipes_url = f"/recipes/{plan_slug}"
             pointer = (
-                "## 📎 Recipes — attached separately\n\n"
-                f"Your recipe pack for this fortnight (full ingredients + method "
-                f"for every ✦ dish in the meal plan above) is attached as a "
-                f"separate file with this email. Save it to your phone for easy "
-                f"reference in the kitchen.\n\n"
+                "## 📎 Your Recipe Pack\n\n"
+                f"The recipes for this fortnight's new dishes — full "
+                f"ingredients and method — are in your **Recipe Pack**, "
+                f"kept separate so this letter stays short and easy to scan.\n\n"
+                f"👉 **[Open your recipe pack]({recipes_url})**\n\n"
+                f"Save it to your phone for easy reference in the kitchen.\n\n"
             )
             markdown = markdown[: m.start()] + pointer + markdown[m.end():]
             _step(f"split out recipe appendix ({len(recipes_md)} chars) → sidecar pending")

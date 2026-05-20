@@ -53,11 +53,47 @@ async function readIfExists(p: string): Promise<string | null> {
   }
 }
 
+/** Newest `<planSlug>…-recipes.<ext>` file in the meal-plans dir.
+ *  Covers BOTH the consolidated sidecar (`<slug>-recipes.html`) and the
+ *  phase-letter sidecars (`<slug>-meal_plan-wk3-4-recipes.html`) — the
+ *  latter was missed entirely by the old exact-match lookup, so phase
+ *  recipe packs were unreachable. Newest file = the current pack. */
+async function newestRecipeFile(
+  dir: string,
+  planSlug: string,
+  ext: "html" | "md",
+): Promise<string | null> {
+  let entries: string[];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return null;
+  }
+  const suffix = `-recipes.${ext}`;
+  const matches = entries.filter(
+    (n) => n.startsWith(planSlug) && n.endsWith(suffix),
+  );
+  let newest: { path: string; mtimeMs: number } | null = null;
+  for (const name of matches) {
+    const full = path.join(dir, name);
+    try {
+      const st = await fs.stat(full);
+      if (!newest || st.mtimeMs > newest.mtimeMs) {
+        newest = { path: full, mtimeMs: st.mtimeMs };
+      }
+    } catch {
+      /* unreadable — skip */
+    }
+  }
+  return newest ? newest.path : null;
+}
+
 /** Pull the `## ✦ Recipe Appendix` section out of a markdown body. The
- *  appendix is everything from the first `## ✦ Recipe Appendix` heading
- *  to either the next top-level `## ` heading or EOF. */
+ *  appendix is everything from the first Recipe Appendix heading to
+ *  either the next top-level `## ` heading or EOF. Emoji-agnostic — the
+ *  model varies the heading symbol (✦ / ✨ / ⭐ / none). */
 function extractRecipeAppendix(md: string): string | null {
-  const re = /^##\s*✦\s*Recipe\s*Appendix\b/im;
+  const re = /^##[^\n]*?Recipe\s*Appendix\b/im;
   const start = md.match(re);
   if (!start || start.index === undefined) return null;
   const after = md.slice(start.index);
@@ -163,8 +199,13 @@ export default async function RecipesPage({
     "meal-plans",
   );
 
-  // Preferred: dedicated recipes file (new letter type, coming).
-  const recipesHtml = await readIfExists(path.join(mealPlanDir, `${planSlug}-recipes.html`));
+  // Preferred: dedicated recipes sidecar. Resolve the NEWEST
+  // `<slug>…-recipes.html` — covers the consolidated sidecar AND the
+  // phase-letter sidecars (`<slug>-meal_plan-wk3-4-recipes.html`).
+  const recipesHtmlPath = await newestRecipeFile(mealPlanDir, planSlug, "html");
+  const recipesHtml = recipesHtmlPath
+    ? await readIfExists(recipesHtmlPath)
+    : null;
   if (recipesHtml) {
     return (
       <iframe
@@ -174,7 +215,8 @@ export default async function RecipesPage({
       />
     );
   }
-  const recipesMd = await readIfExists(path.join(mealPlanDir, `${planSlug}-recipes.md`));
+  const recipesMdPath = await newestRecipeFile(mealPlanDir, planSlug, "md");
+  const recipesMd = recipesMdPath ? await readIfExists(recipesMdPath) : null;
   let body: string | null = recipesMd;
 
   // Fallback: extract from the consolidated letter (legacy letters that
