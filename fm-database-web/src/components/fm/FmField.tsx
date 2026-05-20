@@ -36,7 +36,7 @@ export function FmFieldLabel({
       {hint && (
         <span
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             marginLeft: 8,
             fontWeight: 500,
@@ -66,7 +66,7 @@ export function FmInput({ invalid, style, ...rest }: FmInputProps) {
         background: "var(--fm-surface)",
         border: `1px solid ${invalid ? "var(--fm-danger)" : "var(--fm-border)"}`,
         borderRadius: "var(--fm-radius-sm)",
-        fontSize: 12.5,
+        fontSize: 13,
         color: "var(--fm-text-primary)",
         outline: "none",
         width: "100%",
@@ -93,7 +93,7 @@ export function FmTextarea({ invalid, style, ...rest }: FmTextareaProps) {
         background: "var(--fm-surface)",
         border: `1px solid ${invalid ? "var(--fm-danger)" : "var(--fm-border)"}`,
         borderRadius: "var(--fm-radius-sm)",
-        fontSize: 12.5,
+        fontSize: 13,
         color: "var(--fm-text-primary)",
         outline: "none",
         width: "100%",
@@ -151,7 +151,7 @@ export function FmPillGroup<T extends string = string>({
             style={{
               padding: "5px 12px",
               borderRadius: "var(--fm-radius-pill)",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 600,
               background: sel ? tint : "var(--fm-surface)",
               color: sel ? "#fff" : "var(--fm-text-secondary)",

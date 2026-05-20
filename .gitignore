@@ -15,3 +15,4 @@ wix_upload_progress.json
 __pycache__/
 *.pyc
 *.pyo
+.DS_Store

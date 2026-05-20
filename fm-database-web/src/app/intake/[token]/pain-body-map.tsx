@@ -150,7 +150,7 @@ export function PainBodyMap({ value, onChange }: Props) {
 
   return (
     <div role="group" aria-label="Pain locations — tap every body area where you have pain">
-      <div style={{ fontSize: 12.5, color: "var(--fg-2)", marginBottom: 14, lineHeight: 1.5 }}>
+      <div style={{ fontSize: 13, color: "var(--fg-2)", marginBottom: 14, lineHeight: 1.5 }}>
         Tap every body area where you have pain. Left and right are <em>your</em> left and right,
         not mine.
       </div>
@@ -205,7 +205,7 @@ export function PainBodyMap({ value, onChange }: Props) {
         <div
           style={{
             marginTop: 12,
-            fontSize: 12.5,
+            fontSize: 13,
             color: "var(--fg-3)",
             fontStyle: "italic",
           }}

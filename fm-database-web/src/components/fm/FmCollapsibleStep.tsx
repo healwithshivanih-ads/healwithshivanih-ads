@@ -128,7 +128,7 @@ export function FmCollapsibleStep({
           </div>
           <div
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               color: "var(--fm-text-secondary, #5a5a5a)",
               marginTop: 1,
             }}
@@ -163,7 +163,7 @@ export function FmCollapsibleStep({
             onClick={() => setOpenPersist(false)}
             style={{
               padding: "4px 10px",
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 600,
               color: "var(--fm-text-tertiary, #999)",
               background: "transparent",

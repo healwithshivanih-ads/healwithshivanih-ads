@@ -779,6 +779,9 @@ export interface UpdateClientProfileInput {
   // learns about the client. Exposing them here so the Memory panel
   // on Overview can let the coach edit / clear them directly.
   dietary_preference?: string;
+  /** Veg-spectrum clients only — whether they accept animal-derived
+   *  supplements (fish oil, gelatin, collagen). "yes"|"no"|"unsure"|"". */
+  animal_derived_supplements_ok?: string;
   foods_to_avoid?: string;
   non_negotiables?: string;
   reported_triggers?: string;
@@ -838,6 +841,9 @@ export async function updateClientProfile(
     // Dietary / lifestyle memory — accept empty string as "clear".
     if (input.dietary_preference !== undefined)
       data.dietary_preference = input.dietary_preference.trim() || undefined;
+    if (input.animal_derived_supplements_ok !== undefined)
+      data.animal_derived_supplements_ok =
+        input.animal_derived_supplements_ok.trim().toLowerCase() || undefined;
     if (input.foods_to_avoid !== undefined)
       data.foods_to_avoid = input.foods_to_avoid.trim() || undefined;
     if (input.non_negotiables !== undefined)
@@ -967,6 +973,10 @@ export async function updateClientTimeline(
 export interface UpdatePreferencesInput {
   client_id: string;
   dietary_preference?: string;
+  /** Whether a veg-spectrum client accepts animal-derived supplements
+   *  (fish oil, gelatin, collagen). "yes" | "no" | "unsure" | "".
+   *  Consumed by the plan checker + plan-chat AI. */
+  animal_derived_supplements_ok?: string;
   foods_to_avoid?: string;
   reported_triggers?: string;
   non_negotiables?: string;
@@ -1037,6 +1047,8 @@ export async function updateClientPreferences(
 
     if (input.dietary_preference !== undefined)
       data.dietary_preference = input.dietary_preference;
+    if (input.animal_derived_supplements_ok !== undefined)
+      data.animal_derived_supplements_ok = input.animal_derived_supplements_ok;
     if (input.foods_to_avoid !== undefined)
       data.foods_to_avoid = input.foods_to_avoid;
     if (input.reported_triggers !== undefined)
@@ -2674,7 +2686,15 @@ export async function dismissReworkSuggestionAction(
     sug.dismissed_at = new Date().toISOString();
     data.rework_suggestion = sug;
     await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+    // Coach bug 2026-05-19: banner kept reappearing after Dismiss
+    // because we only revalidated v1 paths. v2 (the surface coach
+    // actually uses) cached the old banner. Revalidate every place
+    // the rework banner renders: v1 client, v2 overview, v2 analyse,
+    // v2 sessions (which mounts ReworkBanner via SessionsBrowser).
     revalidatePath(`/clients/${clientId}`);
+    revalidatePath(`/clients-v2/${clientId}`);
+    revalidatePath(`/clients-v2/${clientId}/analyse`);
+    revalidatePath(`/clients-v2/${clientId}/sessions`);
     return { ok: true };
   } catch (e) {
     return { ok: false, error: String(e) };
@@ -2712,7 +2732,41 @@ export async function applyReworkSuggestionAction(input: {
       60_000,
     )) as ApplyReworkResult;
     if (result.ok) {
+      // Mark the rework_suggestion as applied so the rework banner stops
+      // nagging. apply-rework.py created/updated a draft with the AI
+      // changes — the rework is now baked into that draft, so re-showing
+      // "AI suggests plan rework" is just noise. ReworkBanner +
+      // AIReadCard both hide when applied_at is set. (Coach 2026-05-20.)
+      try {
+        const yaml = await import("js-yaml");
+        const clientYaml = path.join(
+          getPlansRoot(),
+          "clients",
+          input.clientId,
+          "client.yaml",
+        );
+        const raw = await fs.readFile(clientYaml, "utf-8");
+        const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+        const sug = (data.rework_suggestion ?? null) as Record<
+          string,
+          unknown
+        > | null;
+        if (sug) {
+          sug.applied_at = new Date().toISOString();
+          if (result.slug) sug.applied_to_plan = result.slug;
+          data.rework_suggestion = sug;
+          await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+        }
+      } catch {
+        /* non-fatal — the draft was created; worst case the banner
+         * lingers and the coach dismisses it manually. */
+      }
+      // Same v2 fix as the dismiss action — coach lives on v2.
       revalidatePath(`/clients/${input.clientId}`);
+      revalidatePath(`/clients-v2/${input.clientId}`);
+      revalidatePath(`/clients-v2/${input.clientId}/analyse`);
+      revalidatePath(`/clients-v2/${input.clientId}/sessions`);
+      revalidatePath(`/clients-v2/${input.clientId}/plan`);
       revalidatePath("/plans");
       if (result.slug) revalidatePath(`/plans/${result.slug}`);
     }
@@ -2739,7 +2793,11 @@ export async function snoozeReworkSuggestionAction(
     sug.snoozed_until = until.toISOString().slice(0, 10);
     data.rework_suggestion = sug;
     await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false }));
+    // Same v2 revalidation fix as dismiss/apply actions (2026-05-19).
     revalidatePath(`/clients/${clientId}`);
+    revalidatePath(`/clients-v2/${clientId}`);
+    revalidatePath(`/clients-v2/${clientId}/analyse`);
+    revalidatePath(`/clients-v2/${clientId}/sessions`);
     return { ok: true };
   } catch (e) {
     return { ok: false, error: String(e) };

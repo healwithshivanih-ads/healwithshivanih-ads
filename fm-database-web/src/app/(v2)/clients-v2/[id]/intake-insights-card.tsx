@@ -430,7 +430,7 @@ export function IntakeInsightsCard({ clientId, initial, submittedAt }: Props) {
           >
             <label
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: 0.6,
@@ -497,7 +497,7 @@ export function IntakeInsightsCard({ clientId, initial, submittedAt }: Props) {
             >
               {pending ? "Regenerating…" : "🔁 Regenerate with notes"}
             </button>
-            <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+            <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
               Notes save on blur. Click regenerate to apply them.
             </span>
           </div>
@@ -533,7 +533,7 @@ function Section({ title, tone, count, children }: SectionProps) {
           alignItems: "center",
           gap: 6,
           cursor: "pointer",
-          fontSize: 11.5,
+          fontSize: 12,
           fontWeight: 700,
           textTransform: "uppercase",
           letterSpacing: 0.5,

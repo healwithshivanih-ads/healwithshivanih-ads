@@ -67,11 +67,16 @@ export function CheckInForm({
   clientId,
   displayName,
   activePlanSlug,
+  activePlanRecheckDate,
   previousMeasurements,
 }: {
   clientId: string;
   displayName: string;
   activePlanSlug?: string;
+  /** ISO YYYY-MM-DD recheck date for the active plan (when one is set).
+   *  Used to surface a "Generate follow-up now?" prompt after check-in
+   *  save when the recheck falls within 7 days. */
+  activePlanRecheckDate?: string;
   /** Last-known measurements for this client. Surfaced as read-only
    *  context above the input fields — coach types the new values in
    *  manually, never auto-applied. */
@@ -207,8 +212,53 @@ export function CheckInForm({
           }
         }
 
+        // If the active plan's recheck date is within 7 days, surface a
+        // toast inviting the coach to generate the follow-up draft right
+        // now — saves her having to navigate to /plan + scroll to the
+        // FollowUpPanel. Toast click deep-links to /plan where the panel
+        // lives. Window of 7 days = the "due soon" bucket the dashboard
+        // already uses.
+        let followUpPromptFired = false;
+        if (activePlanSlug && activePlanRecheckDate) {
+          try {
+            const recheckMs = Date.parse(activePlanRecheckDate);
+            const todayMs = Date.parse(new Date().toISOString().slice(0, 10));
+            const daysUntilRecheck = Math.round(
+              (recheckMs - todayMs) / 86_400_000,
+            );
+            if (
+              Number.isFinite(daysUntilRecheck) &&
+              daysUntilRecheck <= 7
+            ) {
+              const overdue = daysUntilRecheck < 0;
+              toast.message(
+                overdue
+                  ? `⏰ Recheck is ${Math.abs(daysUntilRecheck)} day${Math.abs(daysUntilRecheck) === 1 ? "" : "s"} overdue`
+                  : daysUntilRecheck === 0
+                    ? `⏰ Recheck is due today`
+                    : `⏰ Recheck is ${daysUntilRecheck} day${daysUntilRecheck === 1 ? "" : "s"} away`,
+                {
+                  description:
+                    "Generate the follow-up draft now while this check-in is fresh.",
+                  duration: 12000,
+                  action: {
+                    label: "Generate →",
+                    onClick: () => {
+                      router.push(`/clients-v2/${clientId}/plan#follow-up`);
+                    },
+                  },
+                },
+              );
+              followUpPromptFired = true;
+            }
+          } catch {
+            // Recheck date parsing failed — silent fallback, skip prompt.
+          }
+        }
+
         router.push(`/clients-v2/${clientId}/analyse`);
         router.refresh();
+        void followUpPromptFired;
       } else {
         toast.error(result.error ?? "Save failed");
       }
@@ -274,7 +324,7 @@ export function CheckInForm({
                   </div>
                   <div
                     style={{
-                      fontSize: 9.5,
+                      fontSize: 10,
                       color: "var(--fm-text-secondary)",
                       fontWeight: 600,
                       marginTop: 4,
@@ -530,7 +580,7 @@ export function CheckInForm({
                 style={{
                   padding: "5px 12px",
                   borderRadius: "var(--fm-radius-pill)",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 600,
                   background: sel ? PRIMARY : "var(--fm-surface)",
                   color: sel ? "#fff" : "var(--fm-text-secondary)",

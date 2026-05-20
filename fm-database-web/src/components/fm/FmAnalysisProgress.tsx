@@ -202,7 +202,7 @@ export function FmAnalysisProgress({
               <span
                 style={{
                   fontFamily: "var(--fm-font-mono)",
-                  fontSize: 10.5,
+                  fontSize: 11,
                   color: "var(--fm-text-tertiary)",
                 }}
               >
@@ -334,7 +334,7 @@ function ErrorCard({
             background: "rgba(231,76,60,0.06)",
             border: "1px solid rgba(231,76,60,0.25)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             lineHeight: 1.6,
             marginBottom: 14,
@@ -346,7 +346,7 @@ function ErrorCard({
 
       <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 16 }}>
         {steps.map((step, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 11.5 }}>
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12 }}>
             <span
               style={{
                 width: 16,
@@ -434,7 +434,7 @@ function ErrorCard({
 function btnStyle(kind: "plain" | "ghost"): React.CSSProperties {
   return {
     padding: "6px 12px",
-    fontSize: 11.5,
+    fontSize: 12,
     fontWeight: 600,
     border: "1px solid var(--fm-border)",
     borderRadius: "var(--fm-radius-sm)",

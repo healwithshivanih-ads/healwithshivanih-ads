@@ -267,7 +267,7 @@ export function SendBookingLinkPanel({
                         position: "absolute",
                         top: -8,
                         right: 8,
-                        fontSize: 9.5,
+                        fontSize: 10,
                         fontWeight: 800,
                         background: "#4338ca",
                         color: "#fff",
@@ -287,7 +287,7 @@ export function SendBookingLinkPanel({
                   {link.tagline && (
                     <div
                       style={{
-                        fontSize: 10.5,
+                        fontSize: 11,
                         color: "var(--fm-text-tertiary)",
                         marginTop: 4,
                         lineHeight: 1.4,

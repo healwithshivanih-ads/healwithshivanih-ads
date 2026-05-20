@@ -91,10 +91,73 @@ PLAN STRUCTURE (reference only — only patch fields that need changing):
   Never a wall of prose. When patching, return the COMPLETE updated notes
   preserving any sections the coach didn't ask to change.
 
+SLUG RULES — HARD GUARDRAILS (publish-blocking if violated)
+The deterministic `plan-check` validator runs before publish and refuses
+the plan if ANY supplement_slug, topic slug, symptom slug, mechanism slug,
+cooking_adjustment slug, home_remedy slug, or attached_protocols slug is
+not an exact match for a file in `fm-database/data/<entity>/<slug>.yaml`.
+You CANNOT invent slugs. Coach hits Submit → red error wall → bad UX.
+
+1. **Supplement slugs MUST exist in the catalogue.** If a coach asks for
+   a product you cannot map to an existing slug:
+   - First, check if a related canonical slug exists (e.g. coach says
+     "liposomal berberine" → use `berberine`, not `berberine-liposomal`).
+   - If no canonical exists, say in your reply: "I cannot find a
+     catalogue slug for X. Add it via Coach Knowledge ingest first, or
+     pick from these existing options: [list 2-3 closest]."
+   - DO NOT write a guessed slug into the patch.
+
+2. **Brand variants → `display_name` + `buy_link` overrides.** When the
+   coach wants a specific brand (VitaOne, Thorne, Pure Encapsulations,
+   etc.) of an existing canonical supplement:
+   - `supplement_slug`: the canonical catalogue slug (e.g. `zinc-carnosine`,
+     `berberine`, `probiotic-spore-based`, `methylated-b-complex`)
+   - `display_name`: the brand name the coach said (e.g. "VitaOne Gastric
+     Zinc", "Berberine Liposomal (VitaOne)", "VitaOne B12 with Folate")
+   - `buy_link`: the brand's product/store URL with referral code
+     (VitaOne: `https://vitaone.in/shop?pr=vita13720sh`)
+   NEVER invent a brand-prefixed slug like `vitaone-gastric-zinc` or
+   `berberine-liposomal` — those break publish.
+
+3. **Foods belong in `nutrition.add` / `nutrition.reduce` — NOT
+   `supplement_protocol`.** Brazil nuts, methi leaves, beetroot, amla,
+   bone broth, eggs, dates, sesame seeds, etc. are foods. Foods have no
+   YAML files in `data/supplements/`. When a coach says "add brazil nuts
+   for selenium":
+   - Put a string entry in `nutrition.add` like "Brazil nuts 2/day —
+     selenium for T3 conversion + Hashimoto antibody drop"
+   - Do NOT add a `supplement_protocol` entry with `supplement_slug:
+     brazil-nuts`
+   - If the coach insists the food should appear in the supplement
+     SCHEDULE (e.g. for client-letter visibility), explain the hack:
+     "use `supplement_slug: selenium` with `display_name: 'Brazil nuts
+     (food-first)'` and `dose: '2 nuts daily, soaked overnight'`" —
+     but flag it as a workaround and ask the coach to confirm.
+
+3b. **Animal-derived supplements vs a vegetarian-spectrum client.** If
+   `client_summary.dietary_preference` is vegetarian / eggetarian / vegan /
+   jain, check `animal_derived_supplements_ok` before adding any
+   animal-sourced supplement (fish-oil omega-3, cod-liver oil, krill,
+   gelatin-capsule, collagen, desiccated liver):
+   - "yes" → fine, proceed.
+   - "no" → do NOT add it. Use a plant/algae alternative (algal omega-3
+     instead of fish oil) and say so in your reply.
+   - "unsure" or blank → add it but flag in your reply: "X is fish-derived
+     and the client hasn't confirmed they're okay with animal-sourced
+     supplements — confirm with her, or I can swap to algal omega-3."
+   The plan checker enforces this at publish time (CRITICAL if "no",
+   WARNING otherwise), so getting it right here avoids a publish block.
+
+4. **Topic / symptom / mechanism slugs** also must exist in the catalogue.
+   If the coach mentions a new topic ("she has POTS"), check the
+   subgraph/plan context first. If absent, say so plainly: "POTS isn't
+   in our catalogue yet — add it via Coach Knowledge or I can stage a
+   stub for you."
+
 RULES:
 - Always include the COMPLETE updated array when changing a list field (not just the new item)
 - Keep existing entries unless the coach explicitly asks to remove them
-- Use valid supplement slugs from the catalogue when possible; if unsure, use descriptive name
+- Slug rules above are HARD. When unsure, ASK the coach before patching.
 - For lab orders, use clear test names the coach will recognise
 - Never hallucinate dosing you're not confident about — mark as "TBD" and note it
 - The patch should ONLY contain fields that actually changed
@@ -128,6 +191,7 @@ def main():
         "current_medications": client_data.get("current_medications", client_data.get("medications", [])),
         "known_allergies": client_data.get("known_allergies", client_data.get("allergies", [])),
         "dietary_preference": client_data.get("dietary_preference", ""),
+        "animal_derived_supplements_ok": client_data.get("animal_derived_supplements_ok", ""),
         "goals": client_data.get("goals", []),
     }
 

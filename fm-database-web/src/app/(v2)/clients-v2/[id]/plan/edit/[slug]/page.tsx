@@ -49,6 +49,7 @@ import { SendToClientButton } from "@/components/plan-editor/send-to-client-moda
 import { loadSupplementSources } from "@/lib/server-actions/plans";
 import { PlanStatusBadge } from "@/components/plan-status-badge";
 import { PlanPageShell } from "../../plan-page-shell";
+import { AttachedProtocolsPanel } from "../../attached-protocols-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -117,6 +118,7 @@ export default async function V2PlanEditorPage({
     allClients,
     rawClient,
     clientSessions,
+    allProtocols,
   ] = await Promise.all([
     loadAllOfKind<Topic>("topics"),
     loadAllOfKind<Symptom>("symptoms"),
@@ -130,6 +132,7 @@ export default async function V2PlanEditorPage({
     loadAllClients(),
     plan.client_id ? loadClientById(plan.client_id) : Promise.resolve(null),
     plan.client_id ? loadClientSessions(plan.client_id) : Promise.resolve([]),
+    loadAllOfKind<{ slug: string; display_name?: string; category?: string; summary?: string }>("protocols"),
   ]);
 
   const allPlanSlugs = allPlans.map((p) => p.slug).sort();
@@ -225,7 +228,7 @@ export default async function V2PlanEditorPage({
         <Link
           href={`/clients-v2/${id}/plan`}
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             textDecoration: "none",
             padding: "4px 10px",
@@ -374,6 +377,30 @@ export default async function V2PlanEditorPage({
             );
           })()}
 
+          {/* 🧭 Attached FM protocol(s) — surface PROMINENTLY above the
+              editor so the coach can see + edit which healing programs
+              this plan is anchored to (5R Gut, AIP, Anti-Inflammatory
+              Reset, etc.). This was previously only on the read-only
+              /plan view page; the edit page was hiding it, so when AI
+              backfilled protocols into rework drafts the coach had no
+              way to see them. Locked when status !== "draft". */}
+          <div style={{ marginBottom: 16 }}>
+            <AttachedProtocolsPanel
+              planSlug={plan.slug}
+              attached={
+                ((plan as { attached_protocols?: string[] }).attached_protocols) ?? []
+              }
+              allProtocols={allProtocols}
+              locked={locked}
+            />
+          </div>
+
+          {/* `.fm-v2-host` re-skins the shadcn+Tailwind primitives inside
+              PlanEditor (button / input / card / select / tabs / badge)
+              to FM tokens, so the editor stops looking visually distinct
+              from the rest of the v2 app. See fm-v2.css "fm-v2-host"
+              section. Wave H 2026-05-20. */}
+          <div className="fm-v2-host">
           <PlanEditor
             plan={editable}
             topicOptions={toOptions(topics)}
@@ -404,8 +431,9 @@ export default async function V2PlanEditorPage({
               allPlanSlugs,
             }}
           />
+          </div>
         </div>
-        <aside>
+        <aside className="fm-v2-host">
           <PlanCheckPanel slug={plan.slug} />
         </aside>
       </div>

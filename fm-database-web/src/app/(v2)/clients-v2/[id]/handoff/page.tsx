@@ -328,7 +328,7 @@ export default async function HandoffPage({
           {familyHistory.trim() && (
             <>
               <SectionH>6 · Family history</SectionH>
-              <p style={{ fontSize: 12.5, lineHeight: 1.55, margin: 0 }}>{familyHistory}</p>
+              <p style={{ fontSize: 13, lineHeight: 1.55, margin: 0 }}>{familyHistory}</p>
             </>
           )}
 
@@ -361,7 +361,7 @@ export default async function HandoffPage({
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
-                fontSize: 11.5,
+                fontSize: 12,
                 marginTop: 4,
               }}
             >
@@ -393,7 +393,7 @@ export default async function HandoffPage({
                           {m.unit ? ` ${m.unit}` : ""}
                         </span>
                       </Td>
-                      <Td style={{ color: "#5A5A5A", fontFamily: "ui-monospace, monospace", fontSize: 10.5 }}>
+                      <Td style={{ color: "#5A5A5A", fontFamily: "ui-monospace, monospace", fontSize: 11 }}>
                         {m.reference_range ?? "—"}
                       </Td>
                       <Td style={{ color: "#5A5A5A", fontSize: 11 }}>
@@ -405,7 +405,7 @@ export default async function HandoffPage({
               </tbody>
             </table>
           )}
-          <p style={{ fontSize: 9.5, color: "#999", marginTop: 6, fontStyle: "italic" }}>
+          <p style={{ fontSize: 10, color: "#999", marginTop: 6, fontStyle: "italic" }}>
             FM optimal ranges are tighter than conventional lab cut-offs. Values flagged
             against the FM optimal band, not just the lab&apos;s reference range.
           </p>
@@ -428,7 +428,7 @@ export default async function HandoffPage({
               >
                 {synth.synthesis_notes}
               </div>
-              <p style={{ fontSize: 9.5, color: "#999", marginTop: 4, fontStyle: "italic" }}>
+              <p style={{ fontSize: 10, color: "#999", marginTop: 4, fontStyle: "italic" }}>
                 Coach&apos;s working hypothesis — informational only. Not a medical diagnosis.
               </p>
             </>
@@ -483,7 +483,7 @@ export default async function HandoffPage({
                   marginBottom: 6,
                 }}
               />
-              <div style={{ fontSize: 10.5, color: "#5A5A5A" }}>
+              <div style={{ fontSize: 11, color: "#5A5A5A" }}>
                 Shivani Hari, FMCA · Functional Medicine Coach
               </div>
             </div>
@@ -495,7 +495,7 @@ export default async function HandoffPage({
                   marginBottom: 6,
                 }}
               />
-              <div style={{ fontSize: 10.5, color: "#5A5A5A" }}>
+              <div style={{ fontSize: 11, color: "#5A5A5A" }}>
                 Receiving clinician (date, name, signature)
               </div>
             </div>
@@ -503,7 +503,7 @@ export default async function HandoffPage({
           <p
             style={{
               marginTop: 22,
-              fontSize: 9.5,
+              fontSize: 10,
               color: "#999",
               fontStyle: "italic",
               lineHeight: 1.55,
@@ -586,7 +586,7 @@ function KvGrid({ items }: { items: Array<[string, string]> }) {
         >
           <div
             style={{
-              fontSize: 9.5,
+              fontSize: 10,
               textTransform: "uppercase",
               letterSpacing: 0.6,
               fontWeight: 700,
@@ -605,13 +605,13 @@ function KvGrid({ items }: { items: Array<[string, string]> }) {
 const listStyle: React.CSSProperties = {
   margin: "4px 0 0 0",
   paddingLeft: 18,
-  fontSize: 12.5,
+  fontSize: 13,
   lineHeight: 1.55,
 };
 
 function Empty({ children }: { children: React.ReactNode }) {
   return (
-    <p style={{ fontSize: 11.5, color: "#999", margin: "2px 0 0", fontStyle: "italic" }}>
+    <p style={{ fontSize: 12, color: "#999", margin: "2px 0 0", fontStyle: "italic" }}>
       {children}
     </p>
   );
@@ -622,7 +622,7 @@ function Th({ children }: { children: React.ReactNode }) {
     <th
       style={{
         textAlign: "left",
-        fontSize: 9.5,
+        fontSize: 10,
         textTransform: "uppercase",
         letterSpacing: 0.7,
         fontWeight: 700,

@@ -25,6 +25,11 @@ export interface CommunicateClientProps {
   activePlan: { slug: string; status: string } | null;
   whatsappConfigured: boolean;
   activeLetterTypes?: string[];
+  /** When true, suppresses the "📤 Client letters" panel + LetterTypesToggle
+   *  + SendPackageButton. Used when the parent renders the new layout
+   *  above for letter generation/sending and only wants the booking,
+   *  message-templates, email, contact, and WhatsApp thread panels. */
+  hideLetters?: boolean;
 }
 
 export function CommunicateClient({
@@ -35,6 +40,7 @@ export function CommunicateClient({
   activePlan,
   whatsappConfigured,
   activeLetterTypes,
+  hideLetters = false,
 }: CommunicateClientProps) {
   const firstName = displayName.split(" ")[0];
   const isPublished = activePlan?.status === "published";
@@ -52,7 +58,9 @@ export function CommunicateClient({
     <div className="fm-v2-2col tight">
       {/* LEFT — main comms surfaces */}
       <div style={{ minWidth: 0, display: "grid", gap: 16 }}>
-        {/* Letters package */}
+        {/* Letters package — suppressed when the new Communicate
+            layout above is handling letter generation/sending. */}
+        {!hideLetters && (
         <FmPanel
           title="📤 Client letters"
           subtitle={
@@ -119,6 +127,7 @@ export function CommunicateClient({
             </div>
           )}
         </FmPanel>
+        )}
 
         {/* Inline meal-plan viewer + chat USED to live here. Removed —
             SendPackageButton above already shows each saved letter with
@@ -148,18 +157,23 @@ export function CommunicateClient({
           whatsappConfigured={whatsappConfigured}
         />
 
-        {/* Email — link to legacy modal flow until v2 native */}
+        {/* Email — quick mailto only. Coach feedback 2026-05-19: the
+            "Send plan via email" button was removed from this panel.
+            Sends always originate from the Letter Editor (so the
+            saved, brand-formatted letter is what goes out), never from
+            this generic Email panel where the source letter is
+            ambiguous. */}
         {clientEmail && (
           <FmPanel
             title="✉️ Email client"
-            subtitle="Compose + preview + send via Gmail SMTP. Renders the plan HTML for inline email body."
+            subtitle="Quick mailto. For Send-with-attached-letter, open the letter in the editor and use its Send button."
           >
             <div
               style={{
                 display: "flex",
                 gap: 10,
                 alignItems: "center",
-                fontSize: 12.5,
+                fontSize: 13,
                 color: "var(--fm-text-secondary)",
               }}
             >
@@ -177,33 +191,6 @@ export function CommunicateClient({
               >
                 ✉ Quick mailto: {clientEmail}
               </a>
-              {activePlan && isPublished && (
-                <Link
-                  href={`/clients-v2/${clientId}/plan/edit/${activePlan.slug}`}
-                  style={{
-                    padding: "8px 14px",
-                    background: "var(--fm-primary)",
-                    border: 0,
-                    borderRadius: "var(--fm-radius-sm)",
-                    textDecoration: "none",
-                    color: "#fff",
-                    fontWeight: 700,
-                  }}
-                >
-                  📨 Send plan via email →
-                </Link>
-              )}
-            </div>
-            <div
-              style={{
-                fontSize: 11,
-                color: "var(--fm-text-tertiary)",
-                marginTop: 8,
-              }}
-            >
-              The full compose-preview-send flow lives on the classic plan page
-              while v2 email is being built. Quick mailto opens your default mail
-              app with the address pre-filled.
             </div>
           </FmPanel>
         )}

@@ -210,7 +210,7 @@ export function FmSymptomPicker({
             <div
               style={{
                 padding: "8px 12px",
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "var(--fm-text-tertiary)",
               }}
             >
@@ -265,7 +265,7 @@ export function FmSymptomPicker({
                 {opt.category && (
                   <span
                     style={{
-                      fontSize: 9.5,
+                      fontSize: 10,
                       color: "var(--fm-text-tertiary)",
                       textTransform: "uppercase",
                       letterSpacing: 0.5,

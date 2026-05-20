@@ -128,6 +128,15 @@ def main() -> int:
                 "git_sha": None, "diff": None,
             })
 
+        if action == "graduate":
+            plan, written = plan_transitions.graduate_plan(root, slug, by=by, reason=reason or "")
+            return _emit({
+                "ok": True, "error": None,
+                "plan": plan.model_dump(mode="json"),
+                "written_path": str(written),
+                "git_sha": None, "diff": None,
+            })
+
         if action == "supersede":
             new_plan, _old_plan, written = plan_transitions.supersede_plan(
                 root, slug, by=by, catalogue_dir=data_dir, reason=reason

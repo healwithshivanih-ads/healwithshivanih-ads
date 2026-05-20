@@ -56,6 +56,7 @@ interface Props {
   clientId: string;
   initial: {
     dietary_preference?: string;
+    animal_derived_supplements_ok?: string;
     foods_to_avoid?: string;
     non_negotiables?: string;
     reported_triggers?: string;
@@ -68,10 +69,23 @@ interface Props {
 
 type FieldKey =
   | "dietary_preference"
+  | "animal_derived_supplements_ok"
   | "foods_to_avoid"
   | "non_negotiables"
   | "reported_triggers"
   | "family_history";
+
+// Diets for which the animal-derived-supplements question is relevant.
+// For Non-vegetarian / Pescatarian / Other the field is hidden entirely
+// (it would just be irrelevant noise — coach feedback 2026-05-20).
+const VEG_SPECTRUM = [
+  "vegetarian",
+  "vegetarian jain",
+  "jain vegetarian",
+  "jain",
+  "vegan",
+  "eggetarian",
+];
 
 interface FieldMeta {
   key: FieldKey;
@@ -88,6 +102,13 @@ const FIELDS: FieldMeta[] = [
     label: "Dietary preference",
     hint: "Vegetarian / Jain / Vegan / Eggetarian / Pescatarian / Non-vegetarian — whatever the client follows.",
     placeholder: "Vegetarian",
+  },
+  {
+    key: "animal_derived_supplements_ok",
+    emoji: "💊",
+    label: "OK with animal-derived supplements?",
+    hint: "Whether this veg-spectrum client accepts fish-oil omega-3, gelatin capsules, collagen etc. Type exactly: yes / no / unsure.",
+    placeholder: "yes / no / unsure",
   },
   {
     key: "foods_to_avoid",
@@ -124,12 +145,22 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
   const [editing, setEditing] = useState<FieldKey | null>(null);
   const [drafts, setDrafts] = useState<Record<FieldKey, string>>({
     dietary_preference: initial.dietary_preference ?? "",
+    animal_derived_supplements_ok: initial.animal_derived_supplements_ok ?? "",
     foods_to_avoid: initial.foods_to_avoid ?? "",
     non_negotiables: initial.non_negotiables ?? "",
     reported_triggers: initial.reported_triggers ?? "",
     family_history: initial.family_history ?? "",
   });
   const [pending, startTransition] = useTransition();
+
+  // Hide the animal-supplements field for non-veg / pescatarian / unset
+  // diets — there it is just irrelevant noise.
+  const visibleFields = FIELDS.filter((f) => {
+    if (f.key !== "animal_derived_supplements_ok") return true;
+    return VEG_SPECTRUM.includes(
+      (initial.dietary_preference ?? "").trim().toLowerCase(),
+    );
+  });
 
   const save = (key: FieldKey) => {
     startTransition(async () => {
@@ -152,7 +183,7 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
     setEditing(null);
   };
 
-  const filledCount = FIELDS.filter((f) => initial[f.key]?.trim()).length;
+  const filledCount = visibleFields.filter((f) => initial[f.key]?.trim()).length;
 
   return (
     <div
@@ -176,10 +207,10 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
       >
         <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
           <span style={{ fontSize: 14 }}>🧠</span>
-          <span style={{ fontSize: 12.5, fontWeight: 700, color: "var(--fm-text-primary)" }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
             Profile memory
           </span>
-          <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+          <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
             {filledCount}/{FIELDS.length} learned
           </span>
         </div>
@@ -209,7 +240,7 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
           as you mention things in chat; the meal-plan letter generator
           treats them as hard rules.
         </p>
-        {FIELDS.map((f) => {
+        {visibleFields.map((f) => {
           const value = initial[f.key]?.trim();
           const isEditing = editing === f.key;
           return (
@@ -234,7 +265,7 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
               >
                 <div
                   style={{
-                    fontSize: 10.5,
+                    fontSize: 11,
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: 0.6,
@@ -252,7 +283,7 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
                     type="button"
                     onClick={() => setEditing(f.key)}
                     style={{
-                      fontSize: 10.5,
+                      fontSize: 11,
                       color: "var(--fm-primary)",
                       background: "transparent",
                       border: "none",
@@ -269,7 +300,7 @@ export function ClientMemoryPanel({ clientId, initial, lastUpdatedAt }: Props) {
               {!isEditing && value && (
                 <div
                   style={{
-                    fontSize: 11.5,
+                    fontSize: 12,
                     color: "var(--fm-text-primary)",
                     lineHeight: 1.45,
                     whiteSpace: "pre-wrap",
@@ -417,7 +448,7 @@ function MealPlanStyleRow({
           display: "flex",
           alignItems: "baseline",
           gap: 5,
-          fontSize: 10.5,
+          fontSize: 11,
           fontWeight: 700,
           textTransform: "uppercase",
           letterSpacing: 0.6,
@@ -429,7 +460,7 @@ function MealPlanStyleRow({
         {pending && (
           <span
             style={{
-              fontSize: 9.5,
+              fontSize: 10,
               opacity: 0.6,
               fontWeight: 500,
               textTransform: "none",

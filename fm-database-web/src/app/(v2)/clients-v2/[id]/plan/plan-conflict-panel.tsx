@@ -136,7 +136,7 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div
                     style={{
-                      fontSize: 12.5,
+                      fontSize: 13,
                       fontWeight: 700,
                       color: sty.textCol,
                     }}
@@ -190,7 +190,7 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
                 >
                   <div
                     style={{
-                      fontSize: 11.5,
+                      fontSize: 12,
                       fontWeight: 600,
                       color: "var(--fm-text-primary, #1a1a1a)",
                     }}
@@ -199,7 +199,7 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
                   </div>
                   <div
                     style={{
-                      fontSize: 11.5,
+                      fontSize: 12,
                       color: "var(--fm-text-secondary, #5a5a5a)",
                       lineHeight: 1.5,
                     }}
@@ -255,7 +255,7 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
       </div>
       <div
         style={{
-          fontSize: 10.5,
+          fontSize: 11,
           color: "var(--fm-text-tertiary, #999)",
           fontStyle: "italic",
         }}

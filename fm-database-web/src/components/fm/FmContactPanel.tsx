@@ -85,7 +85,7 @@ export function FmContactPanel({ pinned, more, onEdit }: FmContactPanelProps) {
               borderRadius: "var(--fm-radius-sm)",
               color: "var(--fm-text-secondary)",
               cursor: "pointer",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 600,
               letterSpacing: 0.3,
               display: "flex",

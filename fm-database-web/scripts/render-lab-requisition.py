@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 render-lab-requisition.py — clean, one-page lab requisition for the client
-to hand to Dr Lal / Apollo / Thyrocare / SRL / Metropolis.
+to hand to her chosen diagnostic lab. (Coach rule: do NOT mention specific
+lab brand names — client picks the lab.)
 
 NOT a client letter (no warm tone, no education, no protocol). This is a
 literal requisition slip: client identity, ordered tests grouped by
@@ -91,6 +92,32 @@ def _load_yaml(path: Path) -> dict | None:
 
 def _plans_root() -> Path:
     return Path(os.environ.get("FMDB_PLANS_DIR") or (Path.home() / "fm-plans"))
+
+
+def _load_session(client_id: str, session_id: str) -> dict | None:
+    return _load_yaml(_plans_root() / "clients" / client_id / "sessions" / f"{session_id}.yaml")
+
+
+def _session_to_plan_shape(session: dict) -> dict:
+    """Convert a discovery session's `requested_labs` into a minimal
+    plan-shaped dict so `_build_markdown` / `_build_summary` can reuse the
+    existing rendering logic. We synthesise:
+      - slug: session_id
+      - lab_orders: [{test: <name>, kind: "new"} ...]
+    Falls back to parsing the `[Requested labs: ...]` tag in coach_notes
+    if `requested_labs` isn't set top-level (sessions saved by the older
+    save-session.py shim embed the list in coach_notes only)."""
+    labs = session.get("requested_labs") or []
+    if not labs:
+        notes = (session.get("coach_notes") or "")
+        import re
+        m = re.search(r"\[Requested labs:\s*([^\]]+)\]", notes)
+        if m:
+            labs = [s.strip() for s in m.group(1).split(",") if s.strip()]
+    return {
+        "slug": session.get("session_id") or "discovery",
+        "lab_orders": [{"test": str(name), "kind": "new"} for name in labs if name],
+    }
 
 
 def _load_plan(slug: str) -> dict | None:
@@ -232,8 +259,8 @@ def _build_summary(plan: dict, client: dict) -> str:
     body = ", ".join(counts)
     return (
         f"Hi {name}, time for your next round of labs 🔬\n\n"
-        f"I've prepared a requisition sheet you can hand to Dr Lal / Apollo / "
-        f"Thyrocare / SRL — it lists {body}. You can take the blood tests in "
+        f"I've prepared a requisition sheet you can hand to whichever "
+        f"diagnostic lab you prefer — it lists {body}. You can take the blood tests in "
         "one visit; stool / urine / breath kits are picked up at the lab and "
         "collected at home or returned later.\n\n"
         "I'm emailing the full sheet now — share the results with me once they're back so we can review together.\n\n"
@@ -244,18 +271,31 @@ def _build_summary(plan: dict, client: dict) -> str:
 def main() -> int:
     payload = json.loads(sys.stdin.read() or "{}")
     plan_slug = payload.get("plan_slug")
+    session_id = payload.get("session_id")
     client_id = payload.get("client_id")
-    if not plan_slug or not client_id:
-        print(json.dumps({"ok": False, "error": "plan_slug and client_id required"}))
+    if not client_id:
+        print(json.dumps({"ok": False, "error": "client_id required"}))
         return 1
-    plan = _load_plan(plan_slug)
+    if not plan_slug and not session_id:
+        print(json.dumps({"ok": False, "error": "plan_slug or session_id required"}))
+        return 1
+
     client = _load_client(client_id)
-    if not plan:
-        print(json.dumps({"ok": False, "error": f"plan {plan_slug} not found"}))
-        return 1
     if not client:
         print(json.dumps({"ok": False, "error": f"client {client_id} not found"}))
         return 1
+
+    if session_id:
+        session = _load_session(client_id, session_id)
+        if not session:
+            print(json.dumps({"ok": False, "error": f"session {session_id} not found"}))
+            return 1
+        plan = _session_to_plan_shape(session)
+    else:
+        plan = _load_plan(plan_slug)
+        if not plan:
+            print(json.dumps({"ok": False, "error": f"plan {plan_slug} not found"}))
+            return 1
 
     md = _build_markdown(plan, client)
     summary = _build_summary(plan, client)

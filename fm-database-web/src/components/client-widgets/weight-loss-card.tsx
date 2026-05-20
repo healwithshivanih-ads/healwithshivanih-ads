@@ -58,24 +58,43 @@ export interface WeightLossCardProps {
   /** Time-series weight readings — drives the sparkline. We filter to
    *  entries with weight_kg present and within the goal window. */
   measurementsLog?: MeasurementEntry[];
+  /** Snapshot from `client.weight_now_kg` (intake form). Used as the
+   *  pre-fill default for the Edit modal's starting weight when no
+   *  measurement-log reading is available. Coach can still override. */
+  currentWeightKg?: number | null;
 }
 
 export function WeightLossCard({
   clientId,
   goal,
   measurementsLog,
+  currentWeightKg,
 }: WeightLossCardProps) {
   const [editOpen, setEditOpen] = useState(false);
   const [overrideOpen, setOverrideOpen] = useState(false);
 
-  if (!goal) {
+  // Treat incomplete goals (enabled but missing the numeric fields the
+  // inner card needs) the same as no goal — surface the empty state so
+  // the coach can finish setup. Prevents `.toFixed()` on undefined when
+  // a client has e.g. {enabled: true, week_overrides: [...]} but no
+  // goal_kg / starting_weight_kg / goal_target_date.
+  const goalIncomplete =
+    !goal ||
+    typeof goal.goal_kg !== "number" ||
+    typeof goal.starting_weight_kg !== "number" ||
+    !goal.starting_date ||
+    !goal.goal_target_date;
+
+  if (goalIncomplete) {
     return (
       <>
         <WeightLossEmpty onSet={() => setEditOpen(true)} />
         {editOpen && (
           <EditGoalModal
             clientId={clientId}
-            goal={null}
+            goal={goal ?? null}
+            measurementsLog={measurementsLog ?? []}
+            currentWeightKg={currentWeightKg ?? null}
             onClose={() => setEditOpen(false)}
           />
         )}
@@ -96,6 +115,8 @@ export function WeightLossCard({
         <EditGoalModal
           clientId={clientId}
           goal={goal}
+          measurementsLog={measurementsLog ?? []}
+          currentWeightKg={currentWeightKg ?? null}
           onClose={() => setEditOpen(false)}
         />
       )}
@@ -261,7 +282,7 @@ function WeightLossCardInner({
 
   return (
     <div className="FmPanel" style={{ padding: 0 }}>
-      <div className="wl-card">
+      <div className="wl-card" style={{ minWidth: 0, overflow: "hidden" }}>
         <div className="head">
           <div>
             <div className="FmPanel-eyebrow">Client goal</div>
@@ -398,85 +419,11 @@ function WeightLossCardInner({
           )}
         </div>
 
-        {/* Overrides */}
-        <div className="wl-overrides">
-          <div className="l">
-            Per-week overrides ({goal.week_overrides?.length ?? 0})
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-            {(goal.week_overrides ?? []).map((o, i) => (
-              <div key={i} className="wl-override">
-                <span className="wks">
-                  {o.date_from && o.date_to ? (
-                    o.date_from === o.date_to
-                      ? fmtDate(o.date_from)
-                      : `${fmtDate(o.date_from)} → ${fmtDate(o.date_to)}`
-                  ) : o.weeks && o.weeks.length > 0 ? (
-                    o.weeks.length === 1
-                      ? `Wk ${o.weeks[0]}`
-                      : `Wks ${Math.min(...o.weeks)}–${Math.max(...o.weeks)}`
-                  ) : (
-                    "—"
-                  )}
-                </span>
-                {o.context && (
-                  <span className="reason" style={{ fontWeight: 600 }}>
-                    {o.context === "travel"
-                      ? `✈ ${o.location ?? "Travel"}`
-                      : o.context === "festival"
-                      ? "🎉 Festival"
-                      : o.context === "illness"
-                      ? "🤒 Illness"
-                      : o.context === "plateau_break"
-                      ? "⏸ Plateau break"
-                      : "Other"}
-                  </span>
-                )}
-                <span
-                  className={`mode ${
-                    o.mode === "maintenance"
-                      ? "maintenance"
-                      : o.mode === "skip"
-                      ? "skip"
-                      : "deeper"
-                  }`}
-                >
-                  {o.mode === "maintenance"
-                    ? "Maintenance"
-                    : o.mode === "deeper_deficit"
-                    ? `Deeper deficit${
-                        o.kcal_offset !== undefined
-                          ? ` ${o.kcal_offset} kcal`
-                          : ""
-                      }`
-                    : "Skip"}
-                </span>
-                {o.reason && (
-                  <span className="reason">— {o.reason}</span>
-                )}
-                <button
-                  className="x"
-                  aria-label="Remove override"
-                  onClick={() => onRemoveOverride(i)}
-                  disabled={pending}
-                >
-                  ×
-                </button>
-              </div>
-            ))}
-            {(!goal.week_overrides || goal.week_overrides.length === 0) && (
-              <span
-                style={{
-                  fontSize: 11.5,
-                  color: "var(--fm-text-3)",
-                  fontStyle: "italic",
-                }}
-              >
-                None — every week uses the base goal config.
-              </span>
-            )}
-          </div>
-        </div>
+        {/* Per-week overrides moved to the Communicate tab 2026-05-19
+            (coach: travel info applies to all clients, not just
+            weight-loss ones; and the natural place to set it is right
+            before generating the next letter). See
+            <TravelOverridesPanel/>. */}
 
         {/* Actions */}
         <div style={{ display: "flex", gap: 8, marginTop: 18 }}>
@@ -487,13 +434,8 @@ function WeightLossCardInner({
           >
             Edit goal
           </button>
-          <button
-            type="button"
-            className="FmBtn FmBtn--sm"
-            onClick={onAddOverride}
-          >
-            + Add week override
-          </button>
+          {/* "+ Add week override" button removed 2026-05-19 — flow now
+              lives in the Communicate tab's TravelOverridesPanel. */}
           <span
             style={{
               marginLeft: "auto",
@@ -548,22 +490,50 @@ function WeightLossEmpty({ onSet }: { onSet: () => void }) {
 function EditGoalModal({
   clientId,
   goal,
+  measurementsLog = [],
+  currentWeightKg = null,
   onClose,
 }: {
   clientId: string;
   goal: WeightLossGoal | null;
+  measurementsLog?: MeasurementEntry[];
+  currentWeightKg?: number | null;
   onClose: () => void;
 }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const isNew = !goal;
 
-  const [startingKg, setStartingKg] = useState(
-    goal?.starting_weight_kg?.toString() ?? "",
-  );
-  const [startingDate, setStartingDate] = useState(
-    goal?.starting_date ?? new Date().toISOString().slice(0, 10),
-  );
+  // Pre-fill the starting weight + date from the best signal we have, so
+  // creating a NEW goal isn't a blank form when the coach has already
+  // captured weight at intake or via a measurement log. Order of
+  // precedence (best signal first):
+  //   1. existing goal record (when editing)
+  //   2. most recent measurements_log entry with a weight reading
+  //   3. client.weight_now_kg (intake form snapshot)
+  // Coach can still override either field before saving.
+  const latestMeasurement = (() => {
+    const sorted = [...measurementsLog]
+      .filter((m) => typeof m.weight_kg === "number" && m.date)
+      .sort((a, b) =>
+        String(b.date ?? "").localeCompare(String(a.date ?? "")),
+      );
+    return sorted[0];
+  })();
+  const defaultStartingKg =
+    goal?.starting_weight_kg?.toString() ??
+    (typeof latestMeasurement?.weight_kg === "number"
+      ? String(latestMeasurement.weight_kg)
+      : typeof currentWeightKg === "number"
+        ? String(currentWeightKg)
+        : "");
+  const defaultStartingDate =
+    goal?.starting_date ??
+    latestMeasurement?.date ??
+    new Date().toISOString().slice(0, 10);
+
+  const [startingKg, setStartingKg] = useState(defaultStartingKg);
+  const [startingDate, setStartingDate] = useState(defaultStartingDate);
   const [goalKg, setGoalKg] = useState(goal?.goal_kg?.toString() ?? "");
   const [goalTargetDate, setGoalTargetDate] = useState(
     goal?.goal_target_date ?? "",
@@ -1187,9 +1157,16 @@ function Sparkline({
   return (
     <svg
       className="spark"
-      width={width}
+      // Use viewBox-driven scaling — the SVG paints into its intrinsic
+      // 540x120 box but the <svg> element scales to its container.
+      // Previously the `width={540}` attr forced a fixed pixel width
+      // which overflowed the Overview right column on narrower
+      // viewports (coach feedback 2026-05-19).
+      width="100%"
       height={height}
       viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMidYMid meet"
+      style={{ maxWidth: "100%", display: "block" }}
     >
       {[0.25, 0.5, 0.75].map((t) => (
         <line

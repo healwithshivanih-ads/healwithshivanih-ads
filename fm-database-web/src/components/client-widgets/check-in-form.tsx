@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { saveSessionAction, appendCheckInToPlanAction } from "@/lib/server-actions/assess";
 import { assessReworkBenefitAction } from "@/lib/server-actions/clients";
 import { updateClientPreferences } from "@/lib/server-actions/clients";
+import { addMeasurementAction } from "@/lib/server-actions/clients";
 import { FivePillarsCapture, type FivePillarsData } from "./five-pillars-capture";
 
 // ── Progress rating options ──────────────────────────────────────────────────
@@ -162,6 +163,59 @@ export function CheckInForm({ clientId, currentPlanSlug, currentReportedTriggers
       if (result.ok && result.session_id) {
         toast.success(`Check-in saved — ${result.session_id}`);
         onSaved?.(result.session_id);
+
+        // 📊 Auto-propagate measurement values to measurements_log so the
+        // body-comp trend chart + sparklines + dashboard plateau detector
+        // pick them up. Before 2026-05-19 this was a silent gap — coach
+        // typed "weight 78kg" into the check-in but the trend chart
+        // never updated until she manually re-entered the same number
+        // on the WeightLossCard / +Log entry button.
+        // Fire-and-forget; toast on failure so coach knows to enter
+        // manually if the YAML write hiccups.
+        const m = {
+          date: sessionDate,
+          weight_kg: measurements.weight_kg
+            ? Number.parseFloat(measurements.weight_kg)
+            : undefined,
+          waist_cm: measurements.waist_cm
+            ? Number.parseFloat(measurements.waist_cm)
+            : undefined,
+          blood_pressure_systolic: measurements.bp_systolic
+            ? Number.parseInt(measurements.bp_systolic, 10)
+            : undefined,
+          blood_pressure_diastolic: measurements.bp_diastolic
+            ? Number.parseInt(measurements.bp_diastolic, 10)
+            : undefined,
+          resting_heart_rate: measurements.hr_bpm
+            ? Number.parseInt(measurements.hr_bpm, 10)
+            : undefined,
+          notes: "from check-in",
+        };
+        // Only fire the action if at least one numeric field is present
+        // and parses to a finite number.
+        const hasReadableMeasurement = [
+          m.weight_kg,
+          m.waist_cm,
+          m.blood_pressure_systolic,
+          m.blood_pressure_diastolic,
+          m.resting_heart_rate,
+        ].some((v) => typeof v === "number" && Number.isFinite(v));
+        if (hasReadableMeasurement) {
+          void addMeasurementAction({
+            client_id: clientId,
+            ...m,
+          }).then((res) => {
+            if (!res.ok) {
+              toast.error(
+                `Check-in saved but measurement log update failed: ${
+                  ("error" in res ? res.error : "") || "unknown"
+                }. Add via +Log entry on Overview.`,
+              );
+            }
+          }).catch(() => {
+            // Swallow — we already toasted the save success. Log only.
+          });
+        }
 
         // Fire-and-forget AI rework assessment. Banner appears on next refresh.
         const ratingOpt = PROGRESS_OPTIONS.find((o) => o.value === progress);

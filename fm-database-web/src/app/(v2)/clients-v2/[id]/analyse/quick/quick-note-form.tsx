@@ -86,7 +86,7 @@ export function QuickNoteForm({
           background: "rgba(255, 107, 53, 0.08)",
           border: "1px solid rgba(255, 107, 53, 0.35)",
           borderRadius: 6,
-          fontSize: 11.5,
+          fontSize: 12,
           fontWeight: 600,
           color: "var(--fm-primary, #ff6b35)",
           textDecoration: "none",

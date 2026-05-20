@@ -75,7 +75,7 @@ export function FmSessionTimeline({
         >
           {title}
         </div>
-        <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+        <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
           {entries.length} on record
         </span>
       </div>
@@ -151,7 +151,7 @@ export function FmSessionTimeline({
                     }}
                   >
                     <span style={{ fontSize: 11 }}>{t.icon}</span>
-                    <span style={{ fontSize: 11.5, fontWeight: 700, color: t.tint }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: t.tint }}>
                       {s.title}
                     </span>
                     <span
@@ -186,7 +186,7 @@ export function FmSessionTimeline({
                   {!isOpen && (
                     <div
                       style={{
-                        fontSize: 10.5,
+                        fontSize: 11,
                         color: "var(--fm-text-tertiary)",
                         fontWeight: 500,
                       }}
@@ -258,7 +258,7 @@ export function FmSessionTimeline({
                             style={{
                               display: "grid",
                               gap: 3,
-                              fontSize: 10.5,
+                              fontSize: 11,
                               color: "var(--fm-text-secondary)",
                             }}
                           >

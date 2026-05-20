@@ -67,7 +67,7 @@ export async function BookingDueBanner({
           <div style={{ fontSize: 13, fontWeight: 700, color: "#3730a3" }}>
             Time to book the next session
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", marginTop: 1 }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", marginTop: 1 }}>
             {row.reason}
           </div>
         </div>

@@ -331,6 +331,34 @@ def _auto_supersede_siblings(root: Path, new_plan: Plan, by: str) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
+def graduate_plan(root: Path, slug: str, by: str, reason: str = "") -> tuple[Plan, Path]:
+    """Mark a published plan as graduated. Used when the client has
+    successfully completed the protocol — distinct from `revoked` which
+    is a withdrawal.
+
+    Graduated plans drop out of active triage but stay in the historical
+    record. Dashboard / client list can filter them into an Alumni bucket.
+
+    Reason is optional but useful for the audit trail (e.g.
+    "Symptoms resolved, transitioning to maintenance cadence").
+    """
+    plan = plan_storage.load_plan(root, slug)
+    if plan.status != PlanStatus.published:
+        raise RuntimeError(
+            f"plan {slug!r} is {plan.status.value!r}; only published plans can be graduated"
+        )
+    old_version = plan.version
+    plan.status = PlanStatus.graduated
+    plan.updated_by = by
+    _append_event(plan, PlanStatus.graduated, by, reason or "Client graduated — protocol complete")
+    written = plan_storage.write_plan(root, plan)
+    # Remove the now-stale published/ file so load_plan resolves to graduated
+    pub_file = root / "published" / f"{slug}-v{old_version}.yaml"
+    if pub_file.exists():
+        pub_file.unlink()
+    return plan, written
+
+
 def revoke_plan(root: Path, slug: str, by: str, reason: str) -> tuple[Plan, Path]:
     """Mark a published plan as revoked. Reason is required.
 

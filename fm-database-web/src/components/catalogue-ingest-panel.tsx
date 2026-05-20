@@ -78,7 +78,7 @@ export function CatalogueIngestPanel() {
       subtitle="Drop the AI chat's YAML output here — no terminal needed"
     >
       <div style={{ display: "grid", gap: 10 }}>
-        <p style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", margin: 0 }}>
+        <p style={{ fontSize: 12, color: "var(--fm-text-secondary)", margin: 0 }}>
           Paste the full reply from your Claude.ai / ChatGPT subscription chat —
           every fenced <code>```yaml</code> block with a <code># path: data/…</code>
           header gets written to disk, then validated.
@@ -98,7 +98,7 @@ export function CatalogueIngestPanel() {
             background: "var(--fm-bg-warm, rgba(0,0,0,0.03))",
             border: "1px dashed var(--fm-border)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 11.5,
+            fontSize: 12,
           }}
         >
           <span style={{ color: "var(--fm-text-secondary)" }}>
@@ -171,7 +171,7 @@ export function CatalogueIngestPanel() {
           style={{
             width: "100%",
             fontFamily: "ui-monospace, 'SF Mono', Menlo, monospace",
-            fontSize: 11.5,
+            fontSize: 12,
             padding: 10,
             border: "1px solid var(--fm-border-light)",
             borderRadius: "var(--fm-radius-sm)",
@@ -328,7 +328,7 @@ function ResultPanel({
 
       {result.filesWritten.length > 0 && (
         <section>
-          <div style={{ fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "var(--fm-text-tertiary)", marginBottom: 4 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "var(--fm-text-tertiary)", marginBottom: 4 }}>
             Files written ({result.filesWritten.length})
             {result.stagingBatch && (
               <span style={{ fontWeight: 500, textTransform: "none", letterSpacing: 0, color: "var(--fm-text-tertiary)", marginLeft: 6 }}>
@@ -336,7 +336,7 @@ function ResultPanel({
               </span>
             )}
           </div>
-          <ul style={{ margin: 0, paddingLeft: 18, fontSize: 11.5, fontFamily: "ui-monospace, monospace", color: "var(--fm-text-secondary)" }}>
+          <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, fontFamily: "ui-monospace, monospace", color: "var(--fm-text-secondary)" }}>
             {result.filesWritten.slice(0, 25).map((f) => (
               <li key={f.path}>{f.path}</li>
             ))}
@@ -349,10 +349,10 @@ function ResultPanel({
 
       {Object.keys(result.missingDependencies).length > 0 && (
         <section>
-          <div style={{ fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "#8a5a08", marginBottom: 4 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "#8a5a08", marginBottom: 4 }}>
             ⚠ Forward references — stub these before approving
           </div>
-          <ul style={{ margin: 0, paddingLeft: 18, fontSize: 11.5 }}>
+          <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12 }}>
             {Object.entries(result.missingDependencies).map(([kind, items]) => (
               <li key={kind}>
                 <strong>{kind}:</strong> {items.join(", ")}
@@ -362,7 +362,7 @@ function ResultPanel({
         </section>
       )}
 
-      <section style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 11.5 }}>
+      <section style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: 12 }}>
         <span>
           <strong>Validate:</strong>{" "}
           {result.validateOk ? (
@@ -386,7 +386,7 @@ function ResultPanel({
 
       {result.validateError && (
         <section>
-          <div style={{ fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "#7f1d1d", marginBottom: 4 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 0.5, color: "#7f1d1d", marginBottom: 4 }}>
             Validation error
           </div>
           <pre style={{ margin: 0, fontSize: 11, fontFamily: "ui-monospace, monospace", color: "#7f1d1d", whiteSpace: "pre-wrap" }}>
@@ -396,7 +396,7 @@ function ResultPanel({
       )}
 
       {result.ok && (
-        <p style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", margin: 0 }}>
+        <p style={{ fontSize: 12, color: "var(--fm-text-secondary)", margin: 0 }}>
           Next: open Terminal in <code>~/code/healwithshivanih-ads/fm-database</code>{" "}
           → <code>git diff data/</code> to inspect → <code>git add</code> + commit.
         </p>
@@ -406,7 +406,7 @@ function ResultPanel({
         <pre
           style={{
             margin: 0,
-            fontSize: 10.5,
+            fontSize: 11,
             fontFamily: "ui-monospace, monospace",
             background: "var(--fm-surface)",
             border: "1px solid var(--fm-border-light)",
@@ -497,7 +497,7 @@ function StagingApproveCta({
           background: "rgba(30,132,73,0.10)",
           border: "1px solid rgba(30,132,73,0.35)",
           borderRadius: "var(--fm-radius-sm)",
-          fontSize: 12.5,
+          fontSize: 13,
           color: "#14532d",
         }}
       >
@@ -516,7 +516,7 @@ function StagingApproveCta({
           background: "rgba(148,163,184,0.10)",
           border: "1px solid rgba(148,163,184,0.30)",
           borderRadius: "var(--fm-radius-sm)",
-          fontSize: 12.5,
+          fontSize: 13,
           color: "#475569",
         }}
       >
@@ -540,7 +540,7 @@ function StagingApproveCta({
       <div style={{ fontSize: 12, fontWeight: 700, color: "#8a5a08" }}>
         ⏸ Staged — not yet in the catalogue
       </div>
-      <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
+      <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
         {fileCount} file{fileCount === 1 ? "" : "s"} written to{" "}
         <code>data/staging/{batchId}/</code>. Review the file list below, then
         approve to promote them into the live catalogue (smart-merges over any
@@ -586,7 +586,7 @@ function StagingApproveCta({
           ✗ Reject
         </button>
         {!validateOk && (
-          <span style={{ fontSize: 10.5, color: "#7f1d1d", marginLeft: 4 }}>
+          <span style={{ fontSize: 11, color: "#7f1d1d", marginLeft: 4 }}>
             ⚠ validate failed — approve will warn
           </span>
         )}

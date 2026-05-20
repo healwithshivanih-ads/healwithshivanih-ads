@@ -112,7 +112,7 @@ export function EngagementPicker({ clientId, current, callout }: Props) {
           <span style={{ fontSize: 16 }}>🤝</span>
           <div
             style={{
-              fontSize: 12.5,
+              fontSize: 13,
               fontWeight: 700,
               color: "#8a5a08",
             }}
@@ -145,7 +145,7 @@ export function EngagementPicker({ clientId, current, callout }: Props) {
                   alignItems: "center",
                   gap: 6,
                   padding: "7px 12px",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 700,
                   background: active ? o.bgActive : o.bg,
                   color: active ? o.textActive : o.text,
@@ -183,7 +183,7 @@ export function EngagementPicker({ clientId, current, callout }: Props) {
               alignItems: "center",
               gap: 4,
               padding: "4px 9px",
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               background: active ? o.bgActive : "transparent",
               color: active ? o.textActive : o.text,

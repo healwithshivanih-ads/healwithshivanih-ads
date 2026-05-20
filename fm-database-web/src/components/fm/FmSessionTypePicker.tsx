@@ -245,7 +245,7 @@ function PickerFull({
               </div>
               <div
                 style={{
-                  fontSize: 11.5,
+                  fontSize: 12,
                   color: "var(--fm-text-secondary)",
                   lineHeight: 1.55,
                   paddingTop: 10,
@@ -255,7 +255,7 @@ function PickerFull({
               >
                 <span
                   style={{
-                    fontSize: 9.5,
+                    fontSize: 10,
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: 0.8,
@@ -276,7 +276,7 @@ function PickerFull({
                   color: sel ? "#fff" : s.tint,
                   border: `1px solid ${s.tint}`,
                   borderRadius: "var(--fm-radius-sm)",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 700,
                   textAlign: "center",
                 }}
@@ -329,7 +329,7 @@ function PickerDense({
     <div style={{ marginBottom: 18 }}>
       <div
         style={{
-          fontSize: 10.5,
+          fontSize: 11,
           fontWeight: 700,
           textTransform: "uppercase",
           letterSpacing: 1,
@@ -367,7 +367,7 @@ function PickerDense({
               </div>
               <div
                 style={{
-                  fontSize: 9.5,
+                  fontSize: 10,
                   color: "var(--fm-text-tertiary)",
                   fontWeight: 600,
                   marginTop: 2,

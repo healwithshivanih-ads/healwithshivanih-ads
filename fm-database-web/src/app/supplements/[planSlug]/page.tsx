@@ -17,6 +17,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { resolveSupplementLink, type SupplementLink } from "@/lib/server-actions/supplement-links";
+import { stripBrand } from "@/lib/fmdb/supplement-display";
 
 export const dynamic = "force-dynamic";
 
@@ -81,11 +82,12 @@ export default async function SupplementsPage({
 
   const rows: SupplementRow[] = await Promise.all(
     supps.map(async (s): Promise<SupplementRow> => {
-      const name =
+      const rawName =
         ((s.display_name as string | undefined) ??
           (s.name as string | undefined) ??
           (s.slug as string | undefined) ??
           "Supplement").trim();
+      const name = stripBrand(rawName) || rawName;
       return {
         name,
         dose: describeDose(s) ?? (s.dose_summary as string | undefined),
@@ -161,8 +163,8 @@ const CARD = {
   flexDirection: "column" as const,
   gap: 4,
 };
-const META = { fontSize: 12.5, color: "#6b7280" };
-const NOTE = { fontSize: 11.5, color: "#6b7280", marginTop: 4, fontStyle: "italic" as const };
+const META = { fontSize: 13, color: "#6b7280" };
+const NOTE = { fontSize: 12, color: "#6b7280", marginTop: 4, fontStyle: "italic" as const };
 const BTN = {
   display: "inline-block",
   marginTop: 8,
@@ -177,7 +179,7 @@ const BTN = {
 };
 const FOOTER = {
   marginTop: 32,
-  fontSize: 11.5,
+  fontSize: 12,
   color: "#9ca3af",
   textAlign: "center" as const,
 };

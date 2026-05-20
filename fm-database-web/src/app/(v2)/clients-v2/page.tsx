@@ -38,7 +38,7 @@ import { ClientCard, ClientFilters } from "./list-client";
 
 export const dynamic = "force-dynamic";
 
-type FilterId = "all" | "active" | "draft" | "no_plan" | "recheck";
+type FilterId = "all" | "active" | "draft" | "no_plan" | "recheck" | "alumni";
 
 const ACTIVE_BUCKETS = new Set(["draft", "ready_to_publish", "published"]);
 const STATUS_RANK: Record<string, number> = {
@@ -70,8 +70,9 @@ export interface ClientRow {
   /** Whether a client.jpg / .png exists in the per-client photo dir. */
   has_photo: boolean;
   /** Workflow stage same as Overview / Plan tab: no_plan / draft /
-   *  active / recheck. */
-  stage: "no_plan" | "draft" | "active" | "recheck";
+   *  active / recheck. `alumni` = client has a graduated plan + no
+   *  active plan. */
+  stage: "no_plan" | "draft" | "active" | "recheck" | "alumni";
   next_contact_date?: string;
 }
 
@@ -132,7 +133,7 @@ export default async function ClientsListV2Page({
 }) {
   const { q = "", filter = "all" } = await searchParams;
   const filterId = (
-    ["all", "active", "draft", "no_plan", "recheck"].includes(filter)
+    ["all", "active", "draft", "no_plan", "recheck", "alumni"].includes(filter)
       ? filter
       : "all"
   ) as FilterId;
@@ -223,6 +224,18 @@ export default async function ClientsListV2Page({
         activePlan = { slug: activeRaw.slug as string, status, recheckDate };
       }
 
+      // Alumni detection: client has a graduated plan AND no active plan.
+      // Graduated plans get bucketed via `_bucket: "graduated"` from the
+      // loader. A client with both an active plan + an older graduated
+      // plan stays "active" — graduation only applies when there's no
+      // current protocol.
+      const hasGraduatedPlan = clientPlans.some(
+        (p) =>
+          ((p.status as string | undefined) ??
+            (p._bucket as string | undefined)) === "graduated",
+      );
+      const isAlumni = hasGraduatedPlan && !activePlan;
+
       // Last session — read the per-client sessions dir + pick the newest
       // by filename date. Avoid the SessionSummary action (which does extra
       // synthesis-notes / plan-exists work we don't need here).
@@ -258,7 +271,7 @@ export default async function ClientsListV2Page({
         active_plan: activePlan,
         last_session: lastSession,
         has_photo: hasPhoto,
-        stage: deriveStage(activePlan, todayStr),
+        stage: isAlumni ? "alumni" : deriveStage(activePlan, todayStr),
         next_contact_date:
           (c.next_contact_date as string | undefined) ?? undefined,
       };
@@ -277,6 +290,11 @@ export default async function ClientsListV2Page({
       if (filterId === "draft") return r.stage === "draft";
       if (filterId === "no_plan") return r.stage === "no_plan";
       if (filterId === "recheck") return r.stage === "recheck";
+      if (filterId === "alumni") return r.stage === "alumni";
+      // "all" filter hides alumni by default — coach explicitly chooses
+      // the Alumni chip to see graduated clients. Keeps the default
+      // view focused on active roster.
+      if (filterId === "all" && r.stage === "alumni") return false;
       return true;
     })
     .sort((a, b) =>
@@ -288,13 +306,15 @@ export default async function ClientsListV2Page({
       (a.client_id ?? "").localeCompare(b.client_id ?? ""),
     );
 
-  // Counts for the filter chips
+  // Counts for the filter chips. `all` excludes alumni so the main
+  // roster view stays focused; alumni get their own chip + count.
   const counts: Record<FilterId, number> = {
-    all: rows.length,
+    all: rows.filter((r) => r.stage !== "alumni").length,
     active: rows.filter((r) => r.stage === "active").length,
     draft: rows.filter((r) => r.stage === "draft").length,
     no_plan: rows.filter((r) => r.stage === "no_plan").length,
     recheck: rows.filter((r) => r.stage === "recheck").length,
+    alumni: rows.filter((r) => r.stage === "alumni").length,
   };
 
   return (
@@ -307,7 +327,7 @@ export default async function ClientsListV2Page({
         size="lg"
         title={
           <span style={{ color: "#3a4250" }}>
-            👥 Clients — {rows.length}
+            👥 Clients
           </span>
         }
         subtitle="Your roster. Filter by workflow stage, search by name or ID, click any card to open."

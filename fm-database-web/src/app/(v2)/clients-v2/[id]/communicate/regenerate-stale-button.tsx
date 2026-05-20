@@ -94,7 +94,7 @@ export function RegenerateStaleButton({
       onClick={onClick}
       disabled={pending}
       style={{
-        fontSize: 11.5,
+        fontSize: 12,
         fontWeight: 700,
         padding: "6px 12px",
         background: "#92400e",

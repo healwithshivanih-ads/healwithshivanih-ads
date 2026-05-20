@@ -124,13 +124,13 @@ export function FmClientJourneyStrip({ journey }: { journey: ClientJourney }) {
               >
                 {sty.dotIcon}
               </span>
-              <span style={{ fontSize: 11.5, fontWeight: 700, color: sty.labelCol, whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: sty.labelCol, whiteSpace: "nowrap" }}>
                 {step.label}
               </span>
             </div>
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: sty.captionCol,
                 marginLeft: 24,
                 whiteSpace: "nowrap",

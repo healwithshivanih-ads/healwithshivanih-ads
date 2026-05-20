@@ -188,7 +188,7 @@ export function PhaseLetterPanel({
       {currentWeek != null && (
         <div
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             marginBottom: 12,
             padding: "6px 10px",
@@ -206,7 +206,7 @@ export function PhaseLetterPanel({
         <div style={{ marginBottom: 14 }}>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               textTransform: "uppercase",
               letterSpacing: 0.6,
               fontWeight: 700,
@@ -240,7 +240,7 @@ export function PhaseLetterPanel({
                       : "1px solid var(--fm-border-light)",
                     borderRadius: "var(--fm-radius-sm)",
                     textDecoration: "none",
-                    fontSize: 11.5,
+                    fontSize: 12,
                     color: "var(--fm-text-primary)",
                   }}
                   title={
@@ -258,7 +258,7 @@ export function PhaseLetterPanel({
                       <span
                         style={{
                           marginLeft: 8,
-                          fontSize: 9.5,
+                          fontSize: 10,
                           fontWeight: 700,
                           padding: "2px 6px",
                           background: "#92400e",
@@ -316,7 +316,7 @@ export function PhaseLetterPanel({
             placeholder="e.g. She liked the dal-makhani sub last week — keep that. Lighter dinners; she's feeling bloated by 9pm."
             style={{
               width: "100%",
-              fontSize: 11.5,
+              fontSize: 12,
               padding: "6px 8px",
               border: "1px solid var(--fm-border)",
               borderRadius: "var(--fm-radius-sm)",

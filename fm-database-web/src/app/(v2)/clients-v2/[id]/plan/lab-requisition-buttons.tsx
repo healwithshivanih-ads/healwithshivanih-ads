@@ -17,8 +17,9 @@ import { toast } from "sonner";
 import {
   generateLabRequisitionAction,
   emailLabRequisitionAction,
-  getLabRequisitionWaLinkAction,
+  sendDiscoveryLabsViaWhatsappAction,
 } from "@/lib/server-actions/lab-requisition";
+import { updateClientFieldsAction } from "@/app/api/email/actions";
 
 interface Props {
   planSlug: string;
@@ -38,6 +39,9 @@ export function LabRequisitionButtons({
   const [previewMd, setPreviewMd] = useState<string>("");
   const [emailOpen, setEmailOpen] = useState(false);
   const [emailTo, setEmailTo] = useState(clientEmail ?? "");
+  // Coach rule: when no email on file and one's typed at send time,
+  // prompt to save it back to client.yaml.
+  const initialEmailOnFile = Boolean(clientEmail);
 
   const onPreview = () => {
     start(async () => {
@@ -52,7 +56,8 @@ export function LabRequisitionButtons({
   };
 
   const onEmail = () => {
-    if (!emailTo.trim()) {
+    const to = emailTo.trim();
+    if (!to) {
       toast.error("Add an email address first");
       return;
     }
@@ -60,29 +65,46 @@ export function LabRequisitionButtons({
       const r = await emailLabRequisitionAction({
         planSlug,
         clientId,
-        to: emailTo.trim(),
+        to,
       });
       if (!r.ok) {
         toast.error(r.error);
         return;
       }
-      toast.success(`✉ Requisition emailed to ${emailTo.trim()}`);
       setEmailOpen(false);
+      if (!initialEmailOnFile) {
+        toast.success(`✉ Requisition emailed to ${to}`, {
+          duration: 9000,
+          action: {
+            label: "💾 Save to profile",
+            onClick: () => {
+              start(async () => {
+                const u = await updateClientFieldsAction(clientId, { email: to });
+                if (u.ok) toast.success("Email saved to client profile");
+                else toast.error(u.error ?? "Couldn't save");
+              });
+            },
+          },
+        });
+      } else {
+        toast.success(`✉ Requisition emailed to ${to}`);
+      }
     });
   };
 
   const onWhatsApp = () => {
+    // Route through in-app WhatsApp pipeline (Meta-approved
+    // `fm_lab_reminder` template) — no native wa.me handoff.
     start(async () => {
-      const r = await getLabRequisitionWaLinkAction(planSlug, clientId);
+      const r = await sendDiscoveryLabsViaWhatsappAction({
+        planSlug,
+        clientId,
+      });
       if (!r.ok) {
         toast.error(r.error);
         return;
       }
-      // Open WhatsApp Web / app with the prefilled message. Coach taps
-      // Send in their own WhatsApp. The full requisition still goes via
-      // email separately; this is the "heads up + email is coming" nudge.
-      window.open(r.href, "_blank", "noopener,noreferrer");
-      toast.success("💬 WhatsApp opened — review + send");
+      toast.success(`💬 WhatsApp sent to ${r.sentTo}`);
     });
   };
 
@@ -135,7 +157,7 @@ export function LabRequisitionButtons({
         {!prominent && (
           <span
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: 0.5,
@@ -180,7 +202,7 @@ export function LabRequisitionButtons({
             placeholder="client@email.com"
             disabled={pending}
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               padding: "3px 8px",
               border: "1px solid var(--fm-border)",
               borderRadius: "var(--fm-radius-sm)",

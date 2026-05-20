@@ -291,7 +291,7 @@ function Tile({
     >
       <div
         style={{
-          fontSize: 9.5,
+          fontSize: 10,
           letterSpacing: 0.7,
           textTransform: "uppercase",
           fontWeight: 700,
@@ -414,7 +414,7 @@ function PickerPopover({
         <div style={{ padding: "12px 14px", borderBottom: "1px solid var(--fm-border-light)" }}>
           <div
             style={{
-              fontSize: 9.5,
+              fontSize: 10,
               letterSpacing: 0.7,
               textTransform: "uppercase",
               fontWeight: 700,
@@ -432,7 +432,7 @@ function PickerPopover({
             style={{
               width: "100%",
               padding: "7px 10px",
-              fontSize: 12.5,
+              fontSize: 13,
               border: "1px solid var(--fm-border)",
               borderRadius: "var(--fm-radius-sm)",
               fontFamily: "inherit",
@@ -448,7 +448,7 @@ function PickerPopover({
               <div key={g} style={{ padding: "6px 8px" }}>
                 <div
                   style={{
-                    fontSize: 9.5,
+                    fontSize: 10,
                     letterSpacing: 0.7,
                     textTransform: "uppercase",
                     fontWeight: 700,
@@ -489,7 +489,7 @@ function PickerPopover({
                           {o.label}
                           {o.unit && (
                             <span
-                              style={{ color: "var(--fm-text-tertiary)", marginLeft: 6, fontSize: 10.5 }}
+                              style={{ color: "var(--fm-text-tertiary)", marginLeft: 6, fontSize: 11 }}
                             >
                               {o.unit}
                             </span>
@@ -516,7 +516,7 @@ function PickerPopover({
             <div
               style={{
                 padding: 14,
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "var(--fm-text-tertiary)",
                 textAlign: "center",
               }}

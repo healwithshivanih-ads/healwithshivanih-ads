@@ -121,7 +121,7 @@ export function FollowUpPanel({
           {isOverdue && (
             <span
               style={{
-                fontSize: 9.5,
+                fontSize: 10,
                 fontWeight: 700,
                 padding: "2px 6px",
                 background: "#92400e",
@@ -226,7 +226,7 @@ export function FollowUpPanel({
               color: "var(--fm-text-primary)",
             }}
           />
-          <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+          <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
             {intent === "maintenance"
               ? <>Default <code>26</code> weeks (6 months) until next reassessment. Coach can shorten or extend.</>
               : <>Default <code>12</code>. Free text — also accepts ranges like <code>3-8</code>.</>}
@@ -275,7 +275,7 @@ export function FollowUpPanel({
         <p
           style={{
             margin: 0,
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             lineHeight: 1.5,
           }}
@@ -342,11 +342,11 @@ function IntentCard({
     >
       <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 3 }}>
         <span style={{ fontSize: 13 }}>{emoji}</span>
-        <span style={{ fontSize: 12.5, fontWeight: 700 }}>{title}</span>
+        <span style={{ fontSize: 13, fontWeight: 700 }}>{title}</span>
       </div>
       <div
         style={{
-          fontSize: 10.5,
+          fontSize: 11,
           lineHeight: 1.45,
           color: "var(--fm-text-secondary)",
         }}

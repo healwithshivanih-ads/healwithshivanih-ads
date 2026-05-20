@@ -1,8 +1,10 @@
 "use server";
 
 /**
- * Lab requisition — single-page A4 sheet the client hands to Dr Lal /
- * Apollo / Thyrocare / SRL. Coach generates per-plan, then ships via:
+ * Lab requisition — single-page A4 sheet the client hands to whichever
+ * diagnostic lab she prefers. (Brand-neutral by coach rule — the client
+ * picks the lab; we don't push Dr Lal / Apollo / Thyrocare / SRL.)
+ * Coach generates per-plan, then ships via:
  *   - Email (Gmail SMTP) — full HTML body
  *   - WhatsApp — text summary + share via wa.me deep link (no template
  *     approval needed; coach taps Send in their own WhatsApp)
@@ -33,10 +35,29 @@ export async function generateLabRequisitionAction(
   planSlug: string,
   clientId: string,
 ): Promise<LabRequisition | LabRequisitionError> {
+  return _generateLabRequisitionInternal({ planSlug, clientId });
+}
+
+/** Discovery-session variant: builds a requisition from the discovery
+ *  session's `requested_labs` (a flat list of lab names) instead of a
+ *  plan's `lab_orders` (rich {test, reason, kind} objects). Re-uses the
+ *  same Python renderer + brand HTML wrapper — just feeds a different
+ *  input shape into it. */
+export async function generateDiscoveryLabRequisitionAction(
+  sessionId: string,
+  clientId: string,
+): Promise<LabRequisition | LabRequisitionError> {
+  return _generateLabRequisitionInternal({ sessionId, clientId });
+}
+
+async function _generateLabRequisitionInternal(
+  args: { planSlug?: string; sessionId?: string; clientId: string },
+): Promise<LabRequisition | LabRequisitionError> {
   try {
     const result = (await runShim("render-lab-requisition.py", {
-      plan_slug: planSlug,
-      client_id: clientId,
+      ...(args.planSlug ? { plan_slug: args.planSlug } : {}),
+      ...(args.sessionId ? { session_id: args.sessionId } : {}),
+      client_id: args.clientId,
     })) as Record<string, unknown>;
     if (!result.ok) {
       return { ok: false, error: (result.error as string) ?? "Render failed" };
@@ -58,13 +79,16 @@ export async function generateLabRequisitionAction(
  * markdown for clients on text-only mail clients.
  */
 export async function emailLabRequisitionAction(input: {
-  planSlug: string;
+  planSlug?: string;
+  sessionId?: string;
   clientId: string;
   to: string;
   subject?: string;
   intro?: string;
 }): Promise<{ ok: true } | { ok: false; error: string }> {
-  const req = await generateLabRequisitionAction(input.planSlug, input.clientId);
+  const req = input.sessionId
+    ? await generateDiscoveryLabRequisitionAction(input.sessionId, input.clientId)
+    : await generateLabRequisitionAction(input.planSlug ?? "", input.clientId);
   if (!req.ok) return req;
 
   const client = await loadClientById(input.clientId);
@@ -80,7 +104,7 @@ export async function emailLabRequisitionAction(input: {
   const subject = input.subject ?? `🔬 Your lab requisition — ${date}`;
   const intro =
     input.intro ??
-    `Hi ${first},\n\nIt's time for the next round of labs. The sheet below lists what to order — grouped by sample type so all the bloods can be done in one visit, with stool / urine / breath kits collected separately. Hand the printed sheet to Dr Lal / Apollo / Thyrocare / SRL and ask them to share results directly with you.\n\nLet me know once you've booked and we can review the results together.\n\nWarmly,\nShivani`;
+    `Hi ${first},\n\nHere's the list of labs we discussed. They're grouped by sample type so the bloods can be done in one visit, with stool / urine / breath kits collected separately at home or at the lab.\n\nYou can use whichever diagnostic lab you prefer — just hand them this sheet and ask them to share the results directly with you (PDF). Once the reports are in, send them over and we'll go through them together.\n\nWarmly,\nShivani`;
 
   // Compose HTML: intro paragraph above the requisition body. The body
   // is already standalone HTML — we strip its <html><body> wrappers and
@@ -108,10 +132,90 @@ export async function getLabRequisitionWaLinkAction(
   planSlug: string,
   clientId: string,
 ): Promise<{ ok: true; href: string; text: string } | { ok: false; error: string }> {
-  const req = await generateLabRequisitionAction(planSlug, clientId);
+  return _getWaLinkInternal({ planSlug, clientId });
+}
+
+/** Discovery-session variant of the WhatsApp deep-link. */
+export async function getDiscoveryLabRequisitionWaLinkAction(
+  sessionId: string,
+  clientId: string,
+): Promise<{ ok: true; href: string; text: string } | { ok: false; error: string }> {
+  return _getWaLinkInternal({ sessionId, clientId });
+}
+
+/**
+ * Send the discovery lab list via the in-app WhatsApp pipeline (Meta-
+ * approved `fm_lab_reminder` template) instead of opening wa.me natively
+ * on the coach's phone. Uses the same template approved 2026-05-18.
+ *
+ * The `{{labs}}` param is a compact summary — panel names + total marker
+ * count — to stay well under Meta's per-param length limit. The full
+ * sheet still ships via email; this WhatsApp message is the "heads up,
+ * check your email" nudge.
+ */
+export async function sendDiscoveryLabsViaWhatsappAction(input: {
+  sessionId?: string;
+  planSlug?: string;
+  clientId: string;
+  /** Optional override for the {{labs}} text. Defaults to a panel summary
+   *  built from the underlying lab list. */
+  labsLabel?: string;
+}): Promise<{ ok: true; sentTo: string } | { ok: false; error: string }> {
+  const { sendWhatsAppAction } = await import("@/app/api/whatsapp/actions");
+  const client = await loadClientById(input.clientId);
+  if (!client) return { ok: false, error: `Client ${input.clientId} not found` };
+
+  const phoneRaw =
+    (client as { mobile_number?: string } | null)?.mobile_number ??
+    (client as { mobile?: string } | null)?.mobile ??
+    "";
+  if (!phoneRaw) return { ok: false, error: "Client has no mobile number on file" };
+
+  const firstName =
+    typeof client.display_name === "string"
+      ? client.display_name.split(" ")[0]
+      : "there";
+
+  // Build a compact {{labs}} param. If caller passed labsLabel use it;
+  // otherwise build from the underlying lab list (first ~10 markers
+  // + "+N more" so we never exceed Meta's per-param limit).
+  let labsLabel = input.labsLabel?.trim() ?? "";
+  if (!labsLabel) {
+    const req = input.sessionId
+      ? await generateDiscoveryLabRequisitionAction(input.sessionId, input.clientId)
+      : await generateLabRequisitionAction(input.planSlug ?? "", input.clientId);
+    if (!req.ok) return req;
+    // Extract bullet lines from markdown — robust to header changes.
+    const labLines = req.markdown
+      .split(/\n+/)
+      .filter((l) => /^- \*\*/.test(l))
+      .map((l) => l.replace(/^- \*\*([^*]+)\*\*.*$/, "$1").trim())
+      .filter(Boolean);
+    if (labLines.length === 0) {
+      labsLabel = "lab list (full sheet emailed separately)";
+    } else if (labLines.length <= 6) {
+      labsLabel = labLines.join(", ");
+    } else {
+      labsLabel = `${labLines.slice(0, 6).join(", ")} + ${labLines.length - 6} more (full list in the email)`;
+    }
+  }
+  // Hard guard — keep well under Meta's 1024-char param limit.
+  if (labsLabel.length > 700) labsLabel = labsLabel.slice(0, 690) + "…";
+
+  const res = await sendWhatsAppAction(phoneRaw, "fm_lab_reminder", [firstName, labsLabel]);
+  if (!res.ok) return { ok: false, error: res.error ?? "WhatsApp send failed" };
+  return { ok: true, sentTo: phoneRaw };
+}
+
+async function _getWaLinkInternal(
+  args: { planSlug?: string; sessionId?: string; clientId: string },
+): Promise<{ ok: true; href: string; text: string } | { ok: false; error: string }> {
+  const req = args.sessionId
+    ? await generateDiscoveryLabRequisitionAction(args.sessionId, args.clientId)
+    : await generateLabRequisitionAction(args.planSlug ?? "", args.clientId);
   if (!req.ok) return req;
 
-  const client = await loadClientById(clientId);
+  const client = await loadClientById(args.clientId);
   const phoneRaw =
     (client as { mobile_number?: string } | null)?.mobile_number ??
     (client as { mobile?: string } | null)?.mobile ??

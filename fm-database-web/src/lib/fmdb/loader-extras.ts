@@ -418,6 +418,83 @@ export async function getRecentInboundMessages(
   );
 }
 
+/** Inbox view of inbound WhatsApp messages — keeps FULL text (not the
+ *  120-char preview that the dashboard banner uses) and an `is_unread`
+ *  flag so the /messages page can render a real unread filter without
+ *  refetching. Includes both unread + recently-read so the inbox feels
+ *  like an inbox, not just a notification queue. */
+export interface InboxMessage {
+  client_id: string;
+  display_name?: string;
+  date: string;
+  created_at?: string;
+  /** Full message text — NOT truncated. UI is responsible for ellipsis
+   *  rendering when displayed in compact list rows. */
+  text: string;
+  /** True iff this message arrived after the coach's last "read" stamp
+   *  for this client. UI uses this for the bold/dim styling + counts. */
+  is_unread: boolean;
+  /** Session ID of the underlying quick_note YAML — used for the deep
+   *  link into the History tab when coach wants more context. */
+  session_id?: string;
+}
+
+export async function getInboxMessages(
+  clientIds: string[],
+  clientNames: Map<string, string>,
+  daysBack = 30,
+): Promise<InboxMessage[]> {
+  const root = getPlansRoot();
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - daysBack);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  const inboxState = await readInboxState();
+  const results: InboxMessage[] = [];
+
+  await Promise.all(
+    clientIds.map(async (id) => {
+      const dir = path.join(root, "clients", id, "sessions");
+      let names: string[];
+      try {
+        names = await fs.readdir(dir);
+      } catch {
+        return;
+      }
+      const recentFiles = names.filter((n) => {
+        const m = n.match(/(\d{4}-\d{2}-\d{2})/);
+        return m && m[1] >= cutoffStr && (n.endsWith(".yaml") || n.endsWith(".yml"));
+      });
+      const lastReadAt = inboxState[id];
+
+      for (const name of recentFiles) {
+        const data = await readYaml<Record<string, unknown>>(path.join(dir, name));
+        if (!data) continue;
+        const complaints = String(data.presenting_complaints ?? "");
+        if (!complaints.includes("[source: whatsapp_webhook]")) continue;
+        const createdAt = typeof data.created_at === "string" ? data.created_at : undefined;
+        const isUnread =
+          !lastReadAt || !createdAt || createdAt > lastReadAt;
+        const text = stripSessionTags(complaints);
+        results.push({
+          client_id: id,
+          display_name: clientNames.get(id),
+          date: String(data.date ?? "").slice(0, 10),
+          created_at: createdAt,
+          text,
+          is_unread: isUnread,
+          session_id:
+            typeof data.session_id === "string" ? data.session_id : undefined,
+        });
+      }
+    }),
+  );
+
+  return results.sort((a, b) =>
+    (b.created_at ?? b.date).localeCompare(a.created_at ?? a.date),
+  );
+}
+
 /**
  * Mark all inbound WhatsApp messages for this client as read by stamping
  * the inbox state with `now`. Fired from the Communicate page (RSC), so
@@ -585,8 +662,20 @@ export async function loadUpcomingBookings(
       if (Number.isNaN(startMs)) continue;
       if (!includePast && startMs < nowMs) continue;
       if (includePast && startMs < pastCutoffMs) continue;
-      // Acknowledged-dismiss filter — see comment on `inboxState` above.
-      if (!includeAcknowledged && overviewSeenMs > 0) {
+      // Acknowledged-dismiss filter — applies ONLY to past-bucket rows
+      // ("includePast" callers showing cancellation/recent-history feeds).
+      // For the dashboard's upcoming-bookings panel (the default mode,
+      // `includePast === false`), the row represents a FUTURE session
+      // that the coach needs to keep seeing until it actually happens —
+      // not a one-shot notification that fades after a single client
+      // visit. Coach bug 2026-05-19: Archana's booking for tomorrow
+      // disappeared because the coach opened her Overview once after
+      // the booking landed. Fixed by gating dismiss to past-only.
+      if (
+        includePast &&
+        !includeAcknowledged &&
+        overviewSeenMs > 0
+      ) {
         const receivedMs = e.received_at ? Date.parse(e.received_at) : 0;
         if (receivedMs > 0 && receivedMs <= overviewSeenMs) continue;
       }
@@ -1100,4 +1189,399 @@ export async function loadBacklog(): Promise<BacklogItem[]> {
     if ((err as NodeJS.ErrnoException).code === "ENOENT") return [];
     throw err;
   }
+}
+
+// ───────────────────────────────────────────────────────────────────
+// Proactive client health detectors — dormancy, plateau, regression.
+// Surfaced as banner strips on the dashboard above the per-client
+// triage cards so coach sees "3 clients haven't checked in for 2 weeks"
+// without eyeballing every sparkline. Added 2026-05-19 from the dry-run
+// audit (gap B1).
+//
+// All three operate purely off existing client.yaml data (sessions/
+// directory + measurements_log array). No new fields, no migration.
+// ───────────────────────────────────────────────────────────────────
+
+export interface DormantClient {
+  client_id: string;
+  display_name: string;
+  daysSilent: number;
+  lastSignalAt?: string;        // ISO date of the most recent session, if any
+}
+
+/** Clients with no recorded contact (any session type — check_in,
+ *  quick_note, full_assessment, whatsapp webhook quick_note, etc.) in
+ *  the last `daysThreshold` days. Excludes brand-new clients (intake
+ *  within the last N days) so first-touch onboarding doesn't flag.
+ *
+ *  Reads `~/fm-plans/clients/<id>/sessions/` directly (cheap fs.readdir
+ *  on session filenames which are ISO-prefixed). */
+export async function getDormantClients(
+  clientIds: string[],
+  daysThreshold: number = 14,
+): Promise<DormantClient[]> {
+  if (clientIds.length === 0) return [];
+  const root = getPlansRoot();
+  const today = new Date();
+  const cutoff = new Date(today.getTime() - daysThreshold * 86_400_000);
+  const intakeGrace = new Date(today.getTime() - 7 * 86_400_000);
+
+  const out: DormantClient[] = [];
+  await Promise.all(
+    clientIds.map(async (id) => {
+      const sessionsDir = path.join(root, "clients", id, "sessions");
+      let lastDate: string | undefined;
+      try {
+        const names = await fs.readdir(sessionsDir);
+        // Session filenames start with a YYYY-MM-DD date prefix —
+        // whichever sorts last is the most recent. Cheap path.
+        const dated = names
+          .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
+          .map((n) => {
+            const m = n.match(/(\d{4}-\d{2}-\d{2})/);
+            return m ? m[1] : null;
+          })
+          .filter((d): d is string => !!d)
+          .sort();
+        lastDate = dated[dated.length - 1];
+      } catch {
+        // No sessions dir at all — newer client; skip the intake-grace
+        // check below and fall through to "no recent" if intake is
+        // also stale.
+      }
+
+      // Pull intake date for the grace check + display.
+      const clientYamlPath = path.join(root, "clients", id, "client.yaml");
+      let intakeDate: string | undefined;
+      let displayName = id;
+      try {
+        const raw = await fs.readFile(clientYamlPath, "utf-8");
+        const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+        intakeDate = data.intake_date as string | undefined;
+        displayName = (data.display_name as string | undefined) ?? id;
+      } catch {
+        return; // Bad client — skip silently
+      }
+
+      // Grace period: don't flag a client whose intake was within the
+      // last 7 days even if they haven't logged any sessions yet.
+      if (intakeDate) {
+        try {
+          if (new Date(intakeDate) > intakeGrace) return;
+        } catch {
+          /* malformed intake_date — fall through to dormancy check */
+        }
+      }
+
+      // If we have a recent session, no flag.
+      if (lastDate && new Date(lastDate) > cutoff) return;
+
+      const daysSilent = Math.max(
+        0,
+        Math.round(
+          (today.getTime() -
+            (lastDate ? new Date(lastDate).getTime() : new Date(intakeDate ?? today).getTime())) /
+            86_400_000,
+        ),
+      );
+      out.push({ client_id: id, display_name: displayName, daysSilent, lastSignalAt: lastDate });
+    }),
+  );
+  // Most-overdue first so coach sees the worst cases at the top.
+  out.sort((a, b) => b.daysSilent - a.daysSilent);
+  return out;
+}
+
+export interface PlateauedClient {
+  client_id: string;
+  display_name: string;
+  consecutiveStaticReadings: number;
+  rangeKg: number;            // max-min across the static window
+  latestWeightKg: number;
+  latestDate: string;
+}
+
+/** Clients with N consecutive measurements_log entries whose weight
+ *  values all fall within ±threshold kg of each other. Default: 3
+ *  consecutive readings within ±0.3kg = "weight has stalled".
+ *
+ *  Only fires when the client has a weight_loss.enabled goal — there's
+ *  no point flagging a maintenance client as plateaued. */
+export async function getPlateauedClients(
+  clientIds: string[],
+  thresholdKg: number = 0.3,
+  minReadings: number = 3,
+): Promise<PlateauedClient[]> {
+  if (clientIds.length === 0) return [];
+  const root = getPlansRoot();
+  const out: PlateauedClient[] = [];
+
+  await Promise.all(
+    clientIds.map(async (id) => {
+      try {
+        const raw = await fs.readFile(
+          path.join(root, "clients", id, "client.yaml"),
+          "utf-8",
+        );
+        const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+        const wl = data.weight_loss as Record<string, unknown> | undefined;
+        if (!wl || wl.enabled !== true) return;
+
+        const log = (data.measurements_log as Array<Record<string, unknown>>) ?? [];
+        // measurements_log is sorted newest-first; pull weight entries.
+        const weights = log
+          .map((e) => {
+            const w = e.weight_kg;
+            const d = e.date as string | undefined;
+            return typeof w === "number" && d ? { date: d, kg: w } : null;
+          })
+          .filter((x): x is { date: string; kg: number } => !!x);
+        if (weights.length < minReadings) return;
+
+        // Take the most recent `minReadings` entries and check if they
+        // all fit inside a ±thresholdKg window.
+        const recent = weights.slice(0, minReadings);
+        const ks = recent.map((r) => r.kg);
+        const range = Math.max(...ks) - Math.min(...ks);
+        if (range > 2 * thresholdKg) return;
+
+        out.push({
+          client_id: id,
+          display_name: (data.display_name as string | undefined) ?? id,
+          consecutiveStaticReadings: minReadings,
+          rangeKg: +range.toFixed(2),
+          latestWeightKg: recent[0].kg,
+          latestDate: recent[0].date,
+        });
+      } catch {
+        /* skip clients with no/unreadable yaml */
+      }
+    }),
+  );
+  return out;
+}
+
+export interface RegressedClient {
+  client_id: string;
+  display_name: string;
+  startingKg: number;
+  latestKg: number;
+  gainedKg: number;
+  latestDate: string;
+}
+
+/** Clients whose latest measurement is ≥thresholdKg higher than their
+ *  starting weight in weight_loss config. Indicates the protocol may
+ *  not be working OR client has fallen off — either way coach should
+ *  see them surfaced. */
+export async function getRegressedClients(
+  clientIds: string[],
+  thresholdKg: number = 1.0,
+): Promise<RegressedClient[]> {
+  if (clientIds.length === 0) return [];
+  const root = getPlansRoot();
+  const out: RegressedClient[] = [];
+
+  await Promise.all(
+    clientIds.map(async (id) => {
+      try {
+        const raw = await fs.readFile(
+          path.join(root, "clients", id, "client.yaml"),
+          "utf-8",
+        );
+        const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+        const wl = data.weight_loss as Record<string, unknown> | undefined;
+        if (!wl || wl.enabled !== true) return;
+        const startingKg = wl.starting_weight_kg;
+        if (typeof startingKg !== "number") return;
+
+        const log = (data.measurements_log as Array<Record<string, unknown>>) ?? [];
+        const latest = log.find((e) => typeof e.weight_kg === "number");
+        if (!latest) return;
+        const latestKg = latest.weight_kg as number;
+        const latestDate = latest.date as string;
+        const gainedKg = +(latestKg - startingKg).toFixed(2);
+        if (gainedKg < thresholdKg) return;
+
+        out.push({
+          client_id: id,
+          display_name: (data.display_name as string | undefined) ?? id,
+          startingKg,
+          latestKg,
+          gainedKg,
+          latestDate,
+        });
+      } catch {
+        /* skip */
+      }
+    }),
+  );
+  // Worst regression first.
+  out.sort((a, b) => b.gainedKg - a.gainedKg);
+  return out;
+}
+
+/**
+ * Combined client-health scanner. Reads each client.yaml + sessions dir
+ * EXACTLY ONCE per client (versus 3 separate fs walks when calling the
+ * three legacy `get*Clients` functions individually). Returns the same
+ * three buckets the dashboard uses.
+ *
+ * Perf win on a 50+ client deployment: ~50 client.yaml reads instead of
+ * 100+ (each of plateaued + regressed used to read every client.yaml
+ * independently). Dormant still needs the sessions/ readdir but that's
+ * a separate path. ~30% faster dashboard render in practice.
+ */
+export interface ClientHealthSignalsResult {
+  dormant: DormantClient[];
+  plateaued: PlateauedClient[];
+  regressed: RegressedClient[];
+}
+
+export async function getClientHealthSignals(
+  clientIds: string[],
+  options?: {
+    dormantDays?: number;
+    plateauThresholdKg?: number;
+    plateauMinReadings?: number;
+    regressedThresholdKg?: number;
+  },
+): Promise<ClientHealthSignalsResult> {
+  const dormantDays = options?.dormantDays ?? 14;
+  const plateauThreshold = options?.plateauThresholdKg ?? 0.3;
+  const plateauMinReadings = options?.plateauMinReadings ?? 3;
+  const regressedThreshold = options?.regressedThresholdKg ?? 1.0;
+
+  if (clientIds.length === 0) {
+    return { dormant: [], plateaued: [], regressed: [] };
+  }
+
+  const root = getPlansRoot();
+  const today = new Date();
+  const dormantCutoff = new Date(today.getTime() - dormantDays * 86_400_000);
+  const intakeGrace = new Date(today.getTime() - 7 * 86_400_000);
+
+  const dormant: DormantClient[] = [];
+  const plateaued: PlateauedClient[] = [];
+  const regressed: RegressedClient[] = [];
+
+  await Promise.all(
+    clientIds.map(async (id) => {
+      // ─── Single read of client.yaml ────────────────────────────────
+      let data: Record<string, unknown> = {};
+      try {
+        const raw = await fs.readFile(
+          path.join(root, "clients", id, "client.yaml"),
+          "utf-8",
+        );
+        data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+      } catch {
+        return; // unreadable client.yaml → skip all three checks
+      }
+
+      const displayName = (data.display_name as string | undefined) ?? id;
+      const intakeDate = data.intake_date as string | undefined;
+      const wl = data.weight_loss as Record<string, unknown> | undefined;
+      const log = (data.measurements_log as Array<Record<string, unknown>>) ?? [];
+
+      // ─── Dormant check (needs sessions/ readdir) ───────────────────
+      let lastSessionDate: string | undefined;
+      try {
+        const names = await fs.readdir(
+          path.join(root, "clients", id, "sessions"),
+        );
+        const dated = names
+          .filter((n) => n.endsWith(".yaml") || n.endsWith(".yml"))
+          .map((n) => {
+            const m = n.match(/(\d{4}-\d{2}-\d{2})/);
+            return m ? m[1] : null;
+          })
+          .filter((d): d is string => !!d)
+          .sort();
+        lastSessionDate = dated[dated.length - 1];
+      } catch {
+        /* no sessions dir — newer client */
+      }
+      const intakeRecent = (() => {
+        if (!intakeDate) return false;
+        try {
+          return new Date(intakeDate) > intakeGrace;
+        } catch {
+          return false;
+        }
+      })();
+      const hasRecentSession = !!(
+        lastSessionDate && new Date(lastSessionDate) > dormantCutoff
+      );
+      if (!intakeRecent && !hasRecentSession) {
+        const daysSilent = Math.max(
+          0,
+          Math.round(
+            (today.getTime() -
+              (lastSessionDate
+                ? new Date(lastSessionDate).getTime()
+                : new Date(intakeDate ?? today).getTime())) /
+              86_400_000,
+          ),
+        );
+        dormant.push({
+          client_id: id,
+          display_name: displayName,
+          daysSilent,
+          lastSignalAt: lastSessionDate,
+        });
+      }
+
+      // ─── Weight-based checks: only if weight_loss.enabled ──────────
+      if (!wl || wl.enabled !== true) return;
+
+      const weights = log
+        .map((e) => {
+          const w = e.weight_kg;
+          const d = e.date as string | undefined;
+          return typeof w === "number" && d ? { date: d, kg: w } : null;
+        })
+        .filter((x): x is { date: string; kg: number } => !!x);
+
+      // ─── Plateau check ─────────────────────────────────────────────
+      if (weights.length >= plateauMinReadings) {
+        const recent = weights.slice(0, plateauMinReadings);
+        const ks = recent.map((r) => r.kg);
+        const range = Math.max(...ks) - Math.min(...ks);
+        if (range <= 2 * plateauThreshold) {
+          plateaued.push({
+            client_id: id,
+            display_name: displayName,
+            consecutiveStaticReadings: plateauMinReadings,
+            rangeKg: +range.toFixed(2),
+            latestWeightKg: recent[0].kg,
+            latestDate: recent[0].date,
+          });
+        }
+      }
+
+      // ─── Regression check ──────────────────────────────────────────
+      const startingKg = wl.starting_weight_kg;
+      if (typeof startingKg === "number" && weights.length > 0) {
+        const latest = weights[0];
+        const gainedKg = +(latest.kg - startingKg).toFixed(2);
+        if (gainedKg >= regressedThreshold) {
+          regressed.push({
+            client_id: id,
+            display_name: displayName,
+            startingKg,
+            latestKg: latest.kg,
+            gainedKg,
+            latestDate: latest.date,
+          });
+        }
+      }
+    }),
+  );
+
+  // Sort to match the legacy single-scan return order
+  dormant.sort((a, b) => b.daysSilent - a.daysSilent);
+  regressed.sort((a, b) => b.gainedKg - a.gainedKg);
+
+  return { dormant, plateaued, regressed };
 }

@@ -148,6 +148,10 @@ interface FormState {
 
   // Diet
   dietary_preference: string;
+  // Only asked when dietary_preference is vegetarian / eggetarian / vegan /
+  // jain. "yes" | "no" | "unsure" | "". Feeds the plan checker + letter
+  // generator so we never recommend fish-oil/gelatin to someone who said no.
+  animal_derived_supplements_ok: string;
   foods_to_avoid: string;
   non_negotiables: string;
   reported_triggers: string;
@@ -1007,6 +1011,7 @@ function mergeInitial(
     vit_d_supplement: asString(get("vit_d_supplement")),
     barefoot_outdoors: asString(get("barefoot_outdoors")),
     dietary_preference: asString(get("dietary_preference")),
+    animal_derived_supplements_ok: asString(get("animal_derived_supplements_ok")),
     foods_to_avoid: asString(get("foods_to_avoid")),
     non_negotiables: asString(get("non_negotiables")),
     reported_triggers: asString(get("reported_triggers")),
@@ -1164,6 +1169,7 @@ function buildPayload(s: FormState): Record<string, unknown> {
     what_has_worked: s.what_has_worked,
     what_hasnt_worked: s.what_hasnt_worked,
     dietary_preference: s.dietary_preference,
+    animal_derived_supplements_ok: s.animal_derived_supplements_ok,
     foods_to_avoid: s.foods_to_avoid,
     non_negotiables: s.non_negotiables,
     reported_triggers: s.reported_triggers,
@@ -3270,6 +3276,40 @@ export function IntakeForm({
             onChange={(v) => set("dietary_preference", v)}
           />
         </FG>
+        {/* Animal-derived supplements — asked ONLY for veg-spectrum diets.
+            Many supplements (omega-3 fish oil, gelatin capsule shells,
+            collagen, cod-liver oil) contain animal ingredients. Knowing
+            this upfront lets the coach pick plant/algae forms from the
+            start instead of finding out after the plan is built. Skipped
+            for Non-vegetarian / Pescatarian / Other. */}
+        {["Vegetarian", "Jain vegetarian", "Vegan", "Eggetarian"].includes(
+          state.dietary_preference,
+        ) && (
+          <FG
+            label="Are you okay with supplements that may contain animal-derived ingredients?"
+            hint="Some supplements — like omega-3 fish oil, cod-liver oil, gelatin capsule shells, or collagen — come from animal sources. Plant or algae-based alternatives usually exist. Your answer helps us pick the right forms for you from the start."
+          >
+            <RadiosColumn
+              name="animal_derived_supplements_ok"
+              value={state.animal_derived_supplements_ok}
+              options={[
+                {
+                  value: "yes",
+                  label: "Yes — animal-derived supplements are fine",
+                },
+                {
+                  value: "no",
+                  label: "No — plant / algae-based only, please",
+                },
+                {
+                  value: "unsure",
+                  label: "Not sure — let's discuss on the call",
+                },
+              ]}
+              onChange={(v) => set("animal_derived_supplements_ok", v)}
+            />
+          </FG>
+        )}
         <FG label="Foods you avoid, and why" optional="optional">
           <TextArea
             rows={2}

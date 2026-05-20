@@ -3,19 +3,43 @@
 import { useState, useCallback } from "react";
 import { toast } from "sonner";
 import {
-  renderPlanHtmlAction,
+  loadLetterHtmlForEmailAction,
   sendClientEmailAction,
   updateClientFieldsAction,
 } from "@/app/api/email/actions";
+
+type LetterType =
+  | "consolidated"
+  | "supplement_plan"
+  | "lifestyle_guide"
+  | "exercise_plan"
+  | "recipes"
+  | "meal_plan_phase";
 
 interface Props {
   planSlug: string;
   clientId?: string;
   clientEmail?: string;
   clientName?: string;
+  /** Which saved letter to use as the email body. Defaults to
+   *  "consolidated" — the full wellness letter — which is the most
+   *  comprehensive document and the natural thing to send at intake or
+   *  on a major plan revision. The letter editor passes its current
+   *  letterType so "Send to client" from inside the editor ships the
+   *  letter being reviewed, not a different one. */
+  letterType?: LetterType;
+  /** Required when letterType === "meal_plan_phase". */
+  phase?: { startWeek: number; endWeek: number };
 }
 
-export function SendToClientButton({ planSlug, clientId, clientEmail, clientName }: Props) {
+export function SendToClientButton({
+  planSlug,
+  clientId,
+  clientEmail,
+  clientName,
+  letterType = "consolidated",
+  phase,
+}: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,6 +56,8 @@ export function SendToClientButton({ planSlug, clientId, clientEmail, clientName
           clientId={clientId}
           clientEmail={clientEmail}
           clientName={clientName}
+          letterType={letterType}
+          phase={phase}
           onClose={() => setOpen(false)}
         />
       )}
@@ -46,12 +72,16 @@ function SendModal({
   clientId,
   clientEmail,
   clientName,
+  letterType,
+  phase,
   onClose,
 }: {
   planSlug: string;
   clientId?: string;
   clientEmail?: string;
   clientName?: string;
+  letterType: LetterType;
+  phase?: { startWeek: number; endWeek: number };
   onClose: () => void;
 }) {
   const [step,      setStep]      = useState<"compose" | "preview" | "done">("compose");
@@ -62,14 +92,41 @@ function SendModal({
   // To value differs from the on-file client email, OR when the client has
   // no email on file at all. Default ON when client has no email so the
   // common case (filling in a missing email) just works.
-  const [saveAsClientEmail, setSaveAsClientEmail] = useState<boolean>(false);
-  const [subject, setSubject] = useState(`Your personalised health plan – ${planSlug}`);
-  const [intro, setIntro]     = useState(
-    clientName
-      ? `Hi ${clientName},\n\nPlease find your personalised functional medicine plan below. Let me know if you have any questions!\n\nWith care,\nShivani`
-      : "Hi,\n\nPlease find your personalised functional medicine plan below.\n\nWith care,\nShivani"
+  // Coach rule: default ON when no email is on file yet, OFF when one is
+  // (so a typo can't silently overwrite the canonical address).
+  const [saveAsClientEmail, setSaveAsClientEmail] = useState<boolean>(
+    !clientEmail,
+  );
+  // Personalised subject + intro (2026-05-19) — was previously dumping
+  // the raw plan slug into the subject ("dhanishta-plan-2-2026-05-12-cl-004"),
+  // which felt clinical / template-shaped to the recipient. Pull the
+  // first name out of clientName so it always reads as a personal note.
+  const firstName = (clientName ?? "").split(/\s+/)[0] || "";
+  const monthLabel = new Date().toLocaleDateString("en-IN", {
+    month: "long",
+    year: "numeric",
+  });
+  const [subject, setSubject] = useState(
+    firstName
+      ? `${firstName} — your plan for ${monthLabel}`
+      : `Your plan for ${monthLabel}`,
+  );
+  const [intro, setIntro] = useState(
+    firstName
+      ? `Hi ${firstName},\n\nHere's your plan for the next phase — I've kept everything we discussed in mind. The full meal plan, your supplement schedule, and what to track this fortnight are all below.\n\nMessage me on WhatsApp the moment anything feels off, tastes awful, or simply isn't working — that feedback is how we tune the next round.\n\nWith warmth,\nShivani 🌿`
+      : `Hi,\n\nHere's your plan for the next phase. The full meal plan, supplement schedule, and what to track this fortnight are all below.\n\nMessage me on WhatsApp the moment anything feels off or isn't working.\n\nWith warmth,\nShivani 🌿`,
   );
   const [renderedHtml, setRenderedHtml] = useState<string | null>(null);
+  // Sidecar attachments (e.g. recipes pack for phase letters) loaded
+  // alongside the main letter HTML by loadLetterHtmlForEmailAction.
+  // Coach feedback 2026-05-19: letter promised "recipes attached" but
+  // nothing was actually attaching — these now ride with the email.
+  type EmailAttachment = {
+    filename: string;
+    contentBase64: string;
+    mimeType?: string;
+  };
+  const [attachments, setAttachments] = useState<EmailAttachment[]>([]);
   const [renderError,  setRenderError]  = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [previewHtml, setPreviewHtml] = useState(false);
@@ -77,15 +134,36 @@ function SendModal({
   const handlePreview = useCallback(async () => {
     setLoading(true);
     setRenderError(null);
-    const result = await renderPlanHtmlAction(planSlug);
-    setLoading(false);
-    if (!result.ok) {
-      setRenderError(result.error);
+
+    // ALWAYS load the saved brand-formatted letter from disk. Never
+    // fall back to plan-render.py (that produces an unstyled
+    // structured dump — not what the client should ever receive).
+    // Coach rule 2026-05-19: this button only exists on the Letter
+    // Editor, so a saved letter is guaranteed to exist when the
+    // button is clicked. If it somehow doesn't (regen failed, file
+    // deleted), show a hard error pointing back to Communicate.
+    if (!clientId) {
+      setLoading(false);
+      setRenderError(
+        "clientId is required to look up the saved letter. Reopen the letter from the client page.",
+      );
       return;
     }
-    setRenderedHtml(result.html);
+    const letterRes = await loadLetterHtmlForEmailAction(
+      planSlug,
+      clientId,
+      letterType,
+      phase ?? null,
+    );
+    setLoading(false);
+    if (!letterRes.ok) {
+      setRenderError(letterRes.error);
+      return;
+    }
+    setRenderedHtml(letterRes.html);
+    setAttachments(letterRes.attachments ?? []);
     setStep("preview");
-  }, [planSlug]);
+  }, [planSlug, clientId, letterType, phase]);
 
   const handleSend = useCallback(async () => {
     if (!to) { toast.error("Recipient email is required"); return; }
@@ -100,11 +178,16 @@ function SendModal({
 <hr style="border:none; border-top:1px solid #e5e7eb; margin-bottom:32px;" />
 ${renderedHtml}`;
 
+    // Note on attachments: phase letters carry a recipes sidecar
+    // (`<stem>-recipes.html`) that we attach alongside the main body
+    // so the recipient gets the recipe pack as a separate file. This
+    // is why the letter narrative says "recipes attached separately."
     const result = await sendClientEmailAction({
       to,
       cc: cc.trim() || undefined,
       subject,
       htmlBody: introHtml,
+      attachments: attachments.length > 0 ? attachments : undefined,
     });
 
     setIsSending(false);
@@ -192,6 +275,23 @@ ${renderedHtml}`;
               <div className="mb-4 p-3 rounded-lg border bg-muted/20 text-xs whitespace-pre-wrap text-muted-foreground">
                 {intro}
               </div>
+              {/* Attachments chip strip — confirms what rides with the email. */}
+              {attachments.length > 0 && (
+                <div className="mb-3 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+                  <span className="font-semibold uppercase tracking-wide">
+                    📎 Attached
+                  </span>
+                  {attachments.map((a, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-0.5 rounded-full border bg-muted/30 text-foreground font-mono text-[10px]"
+                      title={`${Math.round((a.contentBase64.length * 3) / 4 / 1024)} KB`}
+                    >
+                      {a.filename}
+                    </span>
+                  ))}
+                </div>
+              )}
               <div className="flex items-center justify-between mb-2">
                 <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                   Plan content preview

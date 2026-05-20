@@ -17,18 +17,29 @@
 import { loadClientById, markWhatsappInboxRead } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkWhatsAppConfigAction } from "@/app/api/whatsapp/actions";
-import { FmPageHeader, FmPanel } from "@/components/fm";
+import { FmPageHeader } from "@/components/fm";
 import { CommunicatePageShell } from "./communicate-page-shell";
 import { CommunicateClient } from "./communicate-client";
+import { NewCommunicatePanel } from "./new-communicate-panel";
+import { PlanStartDateBanner } from "./plan-start-date-banner";
+import type { Client, WeightLossGoal } from "@/lib/fmdb/types";
+import { TravelOverridesPanel } from "@/components/client-widgets/travel-overrides-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
-import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
-import { RegenerateStaleButton } from "./regenerate-stale-button";
-import { PhaseLetterPanel } from "../plan/phase-letter-panel";
 import {
-  loadLetterSendLogAction,
-  type LetterSendEntry,
-} from "@/app/api/email/actions";
-import Link from "next/link";
+  getLetterStalenessAction,
+  loadMealPlan,
+  listSavedPhasesAction,
+  type LetterType,
+  type SavedPhase,
+} from "@/lib/server-actions/plan-lifecycle";
+import { RegenerateStaleButton } from "./regenerate-stale-button";
+import { LetterGenerateTrigger } from "./letter-generate-modal";
+// PhaseLetterPanel, FmPanel, Link, LetterSendEntry imports removed
+// 2026-05-19 — they only fed the legacy `<details>` fallback block
+// that's now deleted. RegenerateStaleButton stays (used by the
+// top-of-page stale-letters banner that still surfaces actually-stale
+// letter types).
+import { loadLetterSendLogAction } from "@/app/api/email/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -36,10 +47,27 @@ const ACTIVE_STATUSES = new Set(["draft", "ready_to_publish", "published"]);
 
 export default async function CommunicateTabPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { id } = await params;
+  // Optional intent params — sent by the AddOverride toast CTA when
+  // letters are already issued and coach opts in to generate a
+  // dedicated vacation letter for the just-saved travel window. We
+  // surface a top-of-page banner with a LetterGenerateTrigger in phase
+  // mode, scoped to the week range that covers from→to. See
+  // travel-overrides-panel.tsx onSave() for the source.
+  const sp = (await searchParams) ?? {};
+  const intent =
+    typeof sp.intent === "string" ? sp.intent : undefined;
+  const vacationFrom =
+    typeof sp.from === "string" ? sp.from : undefined;
+  const vacationTo =
+    typeof sp.to === "string" ? sp.to : undefined;
+  const vacationLoc =
+    typeof sp.loc === "string" ? sp.loc : undefined;
 
   // Mark this client's WhatsApp inbox as read — coach has opened the
   // Communicate page, so the dashboard "N new WhatsApp messages" banner
@@ -96,6 +124,35 @@ export default async function CommunicateTabPage({
     ? await getLetterStalenessAction(activePlan.slug as string, id)
     : null;
 
+  // ── Saved-letter probe: check disk for each letter type so the new
+  // Communicate panel can show "Drafted" status without waiting for a
+  // send. Also pulls saved phase letters (per-fortnight files) so the
+  // weekly menu track can flip cards to Drafted/Sent correctly.
+  // Cheap: fs.stat + read on at most 5 small files + a single readdir.
+  type SavedLetterMap = Partial<
+    Record<LetterType, { savedAt: string }>
+  >;
+  const DOC_LETTER_TYPES: LetterType[] = [
+    "consolidated",
+    "supplement_plan",
+    "lifestyle_guide",
+    "exercise_plan",
+    "recipes",
+  ];
+  let savedLetters: SavedLetterMap = {};
+  let savedPhases: SavedPhase[] = [];
+  if (activePlan?.slug) {
+    const slug = activePlan.slug as string;
+    const probes = await Promise.all(
+      DOC_LETTER_TYPES.map((t) => loadMealPlan(slug, id, t)),
+    );
+    DOC_LETTER_TYPES.forEach((t, i) => {
+      const r = probes[i];
+      if (r.ok && r.savedAt) savedLetters[t] = { savedAt: r.savedAt };
+    });
+    savedPhases = await listSavedPhasesAction(slug, id);
+  }
+
   // Recent inbound was a server-side load → prop-passed list. Now the
   // child WhatsAppThreadPanel loads its own thread via server-action
   // (combines outbound + inbound, auto-refreshes), so we don't need to
@@ -115,11 +172,105 @@ export default async function CommunicateTabPage({
     ? (c.letter_types_active as string[]).filter((x) => typeof x === "string")
     : undefined;
 
+  // ── Vacation-letter intent ────────────────────────────────────────
+  // Coach saved a travel override AND letters already exist, so the
+  // AddOverride toast routed them here with the dates encoded. Convert
+  // the date range into plan-week numbers (so we can drop into the
+  // existing meal_plan_phase generator without inventing a new letter
+  // type). If the plan has no start date OR the dates are unparseable,
+  // bail out silently — banner just doesn't render; the URL params are
+  // harmless leftovers.
+  const planPeriodStart =
+    (activePlan?.plan_period_start as string | undefined) ??
+    (activePlan?.meal_plan_started_on as string | undefined) ??
+    null;
+  let vacationWeek: { startWeek: number; endWeek: number } | null = null;
+  if (
+    intent === "vacation_letter" &&
+    vacationFrom &&
+    vacationTo &&
+    planPeriodStart &&
+    activePlan
+  ) {
+    try {
+      const startMs = Date.parse(`${planPeriodStart}T00:00:00Z`);
+      const fromMs = Date.parse(`${vacationFrom}T00:00:00Z`);
+      const toMs = Date.parse(`${vacationTo}T00:00:00Z`);
+      if (
+        Number.isFinite(startMs) &&
+        Number.isFinite(fromMs) &&
+        Number.isFinite(toMs)
+      ) {
+        const dayMs = 86_400_000;
+        const fromDay = Math.floor((fromMs - startMs) / dayMs);
+        const toDay = Math.floor((toMs - startMs) / dayMs);
+        const planWeeks = (activePlan.plan_period_weeks as number | undefined) ?? 12;
+        const sw = Math.max(1, Math.floor(fromDay / 7) + 1);
+        const ew = Math.min(planWeeks, Math.floor(toDay / 7) + 1);
+        if (ew >= sw) vacationWeek = { startWeek: sw, endWeek: ew };
+      }
+    } catch {
+      // Unparseable dates → no banner. Coach can still generate the
+      // letter manually from the weekly menu.
+    }
+  }
+
   return (
     <CommunicatePageShell clientId={id}>
       {client.rework_suggestion && (
         <div style={{ marginBottom: 12 }}>
           <ReworkBanner clientId={id} suggestion={client.rework_suggestion} />
+        </div>
+      )}
+
+      {vacationWeek && activePlan && (
+        <div
+          style={{
+            marginBottom: 12,
+            padding: "12px 16px",
+            background: "rgba(99, 102, 241, 0.08)",
+            border: "1.5px solid rgba(99, 102, 241, 0.45)",
+            borderRadius: "var(--fm-radius-md)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+            <span style={{ fontSize: 20 }}>🧳</span>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#3730a3" }}>
+                Generate a vacation letter for{" "}
+                {vacationLoc ?? "this travel window"}?
+              </div>
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "#4338ca",
+                  marginTop: 2,
+                  lineHeight: 1.45,
+                }}
+              >
+                {vacationFrom} → {vacationTo} · plan weeks {vacationWeek.startWeek}
+                {vacationWeek.endWeek === vacationWeek.startWeek
+                  ? ""
+                  : `–${vacationWeek.endWeek}`}
+                . Generates a fortnight letter scoped to this window using
+                the plan, the travel override, and any recent quick notes
+                / WhatsApp signals from {displayName.split(" ")[0]}.
+              </div>
+            </div>
+          </div>
+          <LetterGenerateTrigger
+            clientId={id}
+            planSlug={activePlan.slug as string}
+            mode="phase"
+            label={`🧳 Generate vacation letter →`}
+            tone="primary"
+            phase={vacationWeek}
+          />
         </div>
       )}
 
@@ -141,7 +292,7 @@ export default async function CommunicateTabPage({
           <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
             <span style={{ fontSize: 16 }}>📄</span>
             <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 12.5, fontWeight: 700, color: "#92400e" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>
                 Letters are stale — plan edited after{" "}
                 {staleness.staleCount === 1
                   ? "1 saved letter was generated"
@@ -196,174 +347,84 @@ export default async function CommunicateTabPage({
         subtitle="Everything that goes out (or comes in) lives here — letters, WhatsApp templates, email, recent inbound. One surface after every session."
       />
 
-      {/* 🍽 Next weeks' meal plan generator. Reinstated here 2026-05-18
-          per coach request — letter generation should ALL live in the
-          Communicate tab. Plan tab is for protocol editing only.
-          This panel:
-            - Shows "Saved phases" timeline with stale indicators
-            - Auto-suggests the next phase to generate (e.g. weeks 5-6
-              if 3-4 is already saved)
-            - Shows current-week hint derived from the real start date
-              (meal_plan_started_on → supplements_started_on → plan_period_start)
-            - Generates a phase-meal-plan letter for the chosen range
-          Only visible when a plan is published — phase letters are
-          continuation content, drafts haven't been sent. */}
-      {activePlanInfo?.status === "published" && activePlan && (
-        <div style={{ marginBottom: 16 }}>
-          <PhaseLetterPanel
-            clientId={id}
-            planSlug={activePlan.slug as string}
-            planPeriodWeeks={
-              (activePlan.plan_period_weeks as number | undefined) ?? 12
-            }
-            // Use the same priority chain as Plan tab's planStartAnchor:
-            // meal_plan_started_on → supplements_started_on → plan_period_start.
-            // Without this, "currently in week N" shows the date the
-            // latest plan revision was published rather than when the
-            // client actually started the protocol.
-            planPeriodStart={
-              (activePlan.meal_plan_started_on as string | undefined) ??
-              (activePlan.supplements_started_on as string | undefined) ??
-              (activePlan.plan_period_start as string | undefined)
-            }
-          />
-        </div>
-      )}
-
-      <CommunicateClient
+      {/* ✈ Travel / festival / illness overrides — set BEFORE letter
+          generation. Decoupled from weight-loss state 2026-05-19
+          (coach feedback: travel info needed for all clients, not
+          just weight-loss ones). Storage stays on
+          client.weight_loss.week_overrides for back-compat. */}
+      <TravelOverridesPanel
         clientId={id}
-        displayName={displayName}
-        clientEmail={clientEmail}
-        clientPhone={clientPhone}
-        activePlan={activePlanInfo}
-        whatsappConfigured={whatsappConfig.configured}
-        activeLetterTypes={activeLetterTypes}
+        overrides={
+          (client as unknown as { weight_loss?: WeightLossGoal }).weight_loss
+            ?.week_overrides ?? []
+        }
+        // hasIssuedLetters = at least one saved-letter probe came back
+        // from disk. Drives the post-save CTA toast in AddOverrideModal:
+        // letters issued → ask coach about a dedicated vacation letter;
+        // no letters yet → silent save (next generation will use it).
+        hasIssuedLetters={
+          Object.keys(savedLetters).length > 0 || savedPhases.length > 0
+        }
       />
 
-      {/* Letter send history — single source of truth for "what went
-          out + when". Click any row to open the actual letter that
-          was sent in the v2 letter editor. */}
-      {sendLog.length > 0 && (
-        <div style={{ marginTop: 20 }}>
-          <FmPanel
-            title="📤 Letter send history"
-            subtitle="Every email that's gone out to this client. Click any row to open the letter that was sent."
-          >
-            <div style={{ display: "grid", gap: 6 }}>
-              {sendLog.slice(0, 20).map((e: LetterSendEntry, i) => {
-                const dt = new Date(e.sent_at);
-                const sentLabel = Number.isNaN(dt.getTime())
-                  ? e.sent_at
-                  : dt.toLocaleString("en-IN", {
-                      day: "numeric",
-                      month: "short",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    });
-                const primaryType = e.letter_types[0] ?? "consolidated";
-                const openHref = `/clients-v2/${id}/letter-editor?plan=${e.plan_slug}&type=${primaryType}`;
-                return (
-                  <Link
-                    key={`${e.sent_at}-${i}`}
-                    href={openHref}
-                    style={{
-                      fontSize: 11,
-                      padding: "7px 10px",
-                      borderLeft: "3px solid var(--fm-primary)",
-                      background: "var(--fm-bg-warm)",
-                      borderRadius:
-                        "0 var(--fm-radius-sm) var(--fm-radius-sm) 0",
-                      textDecoration: "none",
-                      color: "inherit",
-                      display: "block",
-                      transition: "background 0.15s",
-                    }}
-                    className="fm-comm-log-row"
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        gap: 8,
-                        alignItems: "baseline",
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontWeight: 700,
-                          color: "var(--fm-text-primary)",
-                        }}
-                      >
-                        ✉ {sentLabel}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: 10,
-                          color: "var(--fm-text-tertiary)",
-                          fontFamily: "var(--fm-font-mono)",
-                        }}
-                      >
-                        {e.plan_slug}
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 10.5,
-                        color: "var(--fm-text-secondary)",
-                        marginTop: 2,
-                      }}
-                    >
-                      To {e.to}
-                      {e.cc && (
-                        <span style={{ color: "var(--fm-text-tertiary)" }}>
-                          {" "}· cc {e.cc}
-                        </span>
-                      )}
-                    </div>
-                    {e.letter_types.length > 0 && (
-                      <div
-                        style={{
-                          marginTop: 4,
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: 3,
-                          alignItems: "center",
-                        }}
-                      >
-                        {e.letter_types.map((t) => (
-                          <span
-                            key={t}
-                            style={{
-                              fontSize: 9.5,
-                              padding: "1px 6px",
-                              background: "rgba(255, 107, 53, 0.10)",
-                              color: "var(--fm-primary)",
-                              borderRadius: "var(--fm-radius-pill)",
-                              fontWeight: 600,
-                            }}
-                          >
-                            {t.replace(/_/g, " ")}
-                          </span>
-                        ))}
-                        <span
-                          style={{
-                            fontSize: 10,
-                            color: "var(--fm-text-secondary)",
-                            marginLeft: "auto",
-                            fontWeight: 600,
-                          }}
-                        >
-                          Open letter →
-                        </span>
-                      </div>
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-          </FmPanel>
-        </div>
-      )}
+      {/* ✨ NEW Communicate layout — primary surface. Driven entirely
+          by real data (active plan, sendLog, saved-letter probes from
+          disk, weight_loss override window, letter staleness). Coach
+          tested + endorsed; legacy widgets below are temporarily
+          retained for fallback only and will be deleted in Phase 5. */}
+      {/* 📅 Plan start date — coach sets the client's real Day 1 here
+          BEFORE generating letters, so every letter's week numbering +
+          the recheck date anchor to it (not to the plan-generation date). */}
+      <PlanStartDateBanner
+        planSlug={activePlanInfo?.slug ?? null}
+        mealPlanStartedOn={
+          (activePlan?.meal_plan_started_on as string | undefined) ?? null
+        }
+        planPeriodStart={
+          (activePlan?.plan_period_start as string | undefined) ?? null
+        }
+        planPeriodWeeks={
+          (activePlan?.plan_period_weeks as number | undefined) ?? 12
+        }
+      />
+
+      <NewCommunicatePanel
+        clientId={id}
+        displayName={displayName}
+        client={client as unknown as Client}
+        activePlanSlug={activePlanInfo?.slug ?? null}
+        planPeriodWeeks={
+          (activePlan?.plan_period_weeks as number | undefined) ?? 12
+        }
+        planPeriodStart={
+          (activePlan?.meal_plan_started_on as string | undefined) ??
+          (activePlan?.supplements_started_on as string | undefined) ??
+          (activePlan?.plan_period_start as string | undefined) ??
+          null
+        }
+        sendLog={sendLog}
+        staleness={staleness}
+        savedLetters={savedLetters}
+        savedPhases={savedPhases}
+      />
+
+      {/* 📞💬✉ Primary comms surfaces — contact, send booking link,
+          message templates, email, WhatsApp conversation thread. These
+          are KEPT in the new layout (only the "Client letters" section
+          is suppressed because it's replaced by the panel above). */}
+      <div style={{ marginTop: 20 }}>
+        <CommunicateClient
+          clientId={id}
+          displayName={displayName}
+          clientEmail={clientEmail}
+          clientPhone={clientPhone}
+          activePlan={activePlanInfo}
+          whatsappConfigured={whatsappConfig.configured}
+          activeLetterTypes={activeLetterTypes}
+          hideLetters
+        />
+      </div>
+
     </CommunicatePageShell>
   );
 }

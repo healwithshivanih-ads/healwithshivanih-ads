@@ -161,7 +161,7 @@ export function TriadDetectionBanner({
     >
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <span style={{ fontSize: 18 }}>🔬</span>
-        <div style={{ fontSize: 13.5, fontWeight: 700, color: "#9a3412" }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: "#9a3412" }}>
           Triad pattern detected — consider MCAS / POTS / EDS framing
         </div>
       </div>
@@ -185,7 +185,7 @@ export function TriadDetectionBanner({
             background: "rgba(34, 197, 94, 0.12)",
             border: "1px solid rgba(34, 197, 94, 0.35)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 600,
             color: "#15803d",
             width: "fit-content",
@@ -213,7 +213,7 @@ export function TriadDetectionBanner({
           ✨ Add {toAdd.length} triad topic{toAdd.length === 1 ? "" : "s"} to AI context
         </button>
       )}
-      <div style={{ fontSize: 10.5, color: "#9a3412", lineHeight: 1.5 }}>
+      <div style={{ fontSize: 11, color: "#9a3412", lineHeight: 1.5 }}>
         Topics added: {TRIAD_TOPIC_SLUGS.join(" · ")}. AI synthesiser will frame
         drivers + supplements + lifestyle around the triad rather than treating
         each finding in isolation.

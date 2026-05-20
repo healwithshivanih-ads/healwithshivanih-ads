@@ -97,6 +97,242 @@ def auto_fix_plan_routing(plan: Plan, catalogue: Loaded) -> list[dict]:
     return fixes
 
 
+# ---------------------------------------------------------------------------
+# Dietary-preference consistency
+# ---------------------------------------------------------------------------
+# Real-use bug 2026-05-20: cl-007 (Archana, "Eggetarian") got a plan that
+# said "eat chicken / mutton / fish 4-5 days/week" + "bone broth daily" —
+# meat prescribed to a vegetarian. Carried over from a non-vegetarian
+# client's iron template. Also seen on Nidhi's plan: a vegetarian client
+# whose nutrition.reduce list said "avoid red meat" — not harmful, just
+# silly noise that erodes trust ("you clearly didn't read my file").
+#
+# This check catches both:
+#   - CRITICAL: a forbidden food RECOMMENDED in nutrition.add / lifestyle
+#   - INFO:     a forbidden food listed in nutrition.reduce (irrelevant
+#               noise — the client never eats it anyway; trim for polish)
+
+import re as _re
+
+# Word-boundary token sets. Keys are food groups; values are the trigger
+# words. Matched case-insensitively with \b boundaries so "egg" does not
+# fire on "eggplant" / "eggetarian", and "ham" does not fire on "hamper".
+_DIET_TOKENS: dict[str, list[str]] = {
+    "meat_poultry": [
+        "chicken", "mutton", "lamb", "beef", "pork", "goat", "turkey",
+        "bacon", "ham", "salami", "sausage", "kheema", "keema", "meat",
+        "meats", "poultry", "venison", "duck",
+    ],
+    "fish_seafood": [
+        "fish", "prawn", "prawns", "shrimp", "crab", "lobster", "salmon",
+        "mackerel", "sardine", "sardines", "tuna", "seafood", "anchovy",
+        "anchovies", "oyster", "squid",
+    ],
+    "animal_broth": ["bone broth", "bone-broth", "meat broth", "chicken broth"],
+    "egg": ["egg", "eggs", "egg yolk", "egg white", "omelette", "omelet"],
+    "dairy": [
+        "milk", "paneer", "cheese", "yogurt", "yoghurt", "curd", "cream",
+        "whey", "casein", "buttermilk",
+    ],
+    "honey": ["honey"],
+    "root_veg": [
+        "onion", "garlic", "potato", "carrot", "radish", "turnip",
+        "beetroot", "beet", "ginger root", "root vegetable",
+    ],
+}
+
+# Which food groups each diet forbids being RECOMMENDED.
+_DIET_FORBIDS: dict[str, set[str]] = {
+    "vegan": {"meat_poultry", "fish_seafood", "animal_broth", "egg",
+              "dairy", "honey"},
+    "vegetarian": {"meat_poultry", "fish_seafood", "animal_broth", "egg"},
+    "eggetarian": {"meat_poultry", "fish_seafood", "animal_broth"},
+    "jain": {"meat_poultry", "fish_seafood", "animal_broth", "egg",
+             "root_veg"},
+    "pescatarian": {"meat_poultry"},
+}
+
+# Supplement slugs / display-name fragments that are animal-derived and
+# therefore questionable for a vegetarian-spectrum client.
+_ANIMAL_SUPPLEMENT_HINTS = [
+    "fish-oil", "fish oil", "cod-liver", "cod liver", "krill",
+    "bovine", "gelatin", "gelatine", "collagen", "bone-broth",
+    "desiccated-liver", "oyster",
+]
+
+
+def _normalise_diet(pref: str | None) -> str | None:
+    """Map a freeform dietary_preference string to a canonical diet key.
+    Returns None when the preference is empty / unrecognised (check skipped)."""
+    if not pref:
+        return None
+    p = pref.strip().lower()
+    if not p:
+        return None
+    if "vegan" in p:
+        return "vegan"
+    if "jain" in p:
+        return "jain"
+    if "eggetarian" in p or "ovo" in p or "egg-etarian" in p:
+        return "eggetarian"
+    if "pescatarian" in p or "pescetarian" in p:
+        return "pescatarian"
+    # "non-vegetarian" / "non veg" / "nonveg" → nothing forbidden, skip.
+    if "non" in p and "veg" in p:
+        return "non_vegetarian"
+    if "vegetarian" in p or p == "veg":
+        return "vegetarian"
+    return None
+
+
+# Negation cues. When one of these appears just before a food word, the
+# food is being EXCLUDED, not recommended — e.g. "no meat, fish or
+# poultry", "stand-in for bone broth", "instead of chicken". The check
+# must not fire on those. Bare "free" is deliberately NOT a cue (it would
+# wrongly suppress "free-range chicken").
+_NEGATION_CUES = [
+    "no ", "not ", "non-", "non ", "without", "avoid", "skip", "never",
+    "exclud", "minus ", "instead of", "stand-in", "stand in", "rather than",
+    "replace", "free of", "free from", "-free", "sans ", "omit",
+]
+
+
+def _is_negated(low_text: str, match_start: int, match_end: int) -> bool:
+    """True when the food word at [match_start:match_end] sits in an
+    exclusionary context (preceded by a negation cue within ~40 chars,
+    or immediately followed by '-free' / ' free')."""
+    before = low_text[max(0, match_start - 40):match_start]
+    if any(cue in before for cue in _NEGATION_CUES):
+        return True
+    after = low_text[match_end:match_end + 6]
+    if after.startswith("-free") or after.startswith(" free"):
+        return True
+    return False
+
+
+def _diet_hits(text: str, groups: set[str]) -> list[tuple[str, str]]:
+    """Return (group, matched_word) for every forbidden token RECOMMENDED in
+    text, using word-boundary matching. Multi-word tokens matched as
+    phrases. Mentions in an exclusionary context are skipped (see
+    _is_negated) — 'no meat' must not be flagged as recommending meat."""
+    hits: list[tuple[str, str]] = []
+    low = text.lower()
+    for group in groups:
+        for word in _DIET_TOKENS.get(group, []):
+            pattern = r"\b" + _re.escape(word) + r"\b"
+            for m in _re.finditer(pattern, low):
+                if _is_negated(low, m.start(), m.end()):
+                    continue
+                hits.append((group, word))
+                break  # one hit per word is enough
+    return hits
+
+
+def _check_dietary_consistency(
+    plan: Plan, client: Client | None, findings: list[Finding]
+) -> None:
+    """Flag plan content that contradicts the client's dietary_preference.
+
+    Two failure modes, both seen in real use:
+      1. A forbidden food RECOMMENDED (nutrition.add / lifestyle_practices /
+         nutrition.pattern). Severity CRITICAL — meat in a vegetarian's
+         plan destroys coach credibility and the client cannot follow it.
+      2. A forbidden food listed in nutrition.reduce. Severity INFO — not
+         harmful (the client never eats it), just irrelevant noise that
+         signals the plan wasn't tailored. Trim it for polish.
+    Also WARNING on animal-derived supplements (fish oil etc.) for a
+    vegetarian-spectrum client — suggest a plant/algae alternative.
+    """
+    if client is None:
+        return
+    diet = _normalise_diet(getattr(client, "dietary_preference", None))
+    if diet is None or diet == "non_vegetarian":
+        return  # unknown or unrestricted — nothing to check
+    forbids = _DIET_FORBIDS.get(diet, set())
+    if not forbids:
+        return
+    diet_label = diet.replace("_", "-")
+
+    # --- 1. Forbidden foods RECOMMENDED (nutrition.add) ---
+    for item in plan.nutrition.add:
+        for group, word in _diet_hits(item, forbids):
+            findings.append(Finding(
+                "CRITICAL", "nutrition", "add",
+                (f"recommends {word!r} but the client is {diet_label} — "
+                 f"this food is not eaten on that diet. Replace with a "
+                 f"{diet_label}-appropriate alternative."),
+                target=word,
+            ))
+
+    # --- Forbidden foods recommended in lifestyle practices ---
+    for prac in plan.lifestyle_practices:
+        blob = f"{prac.name} {prac.details}"
+        for group, word in _diet_hits(blob, forbids):
+            findings.append(Finding(
+                "CRITICAL", "lifestyle_practices", "name",
+                (f"practice {prac.name!r} references {word!r} — not eaten "
+                 f"on a {diet_label} diet. Reword for this client."),
+                target=word,
+            ))
+
+    # --- Forbidden foods in the nutrition pattern blurb ---
+    for group, word in _diet_hits(plan.nutrition.pattern, forbids):
+        findings.append(Finding(
+            "CRITICAL", "nutrition", "pattern",
+            (f"nutrition pattern mentions {word!r} but the client is "
+             f"{diet_label}. Rewrite the pattern description."),
+            target=word,
+        ))
+
+    # --- 2. Forbidden foods in nutrition.reduce → irrelevant noise (INFO) ---
+    for item in plan.nutrition.reduce:
+        for group, word in _diet_hits(item, forbids):
+            findings.append(Finding(
+                "INFO", "nutrition", "reduce",
+                (f"'reduce {word}' is redundant — a {diet_label} client "
+                 f"already never eats it. Remove it so the plan reads as "
+                 f"genuinely tailored, not generic."),
+                target=word,
+            ))
+
+    # --- 3. Animal-derived supplements for a vegetarian-spectrum client ---
+    # Skipped entirely when the client told us at intake they accept
+    # animal-derived supplements (animal_derived_supplements_ok == "yes").
+    # When "no" the WARNING escalates to CRITICAL — they explicitly
+    # refused these. When unset / "unsure", stays WARNING.
+    accepts_animal_supp = str(
+        getattr(client, "animal_derived_supplements_ok", "") or ""
+    ).strip().lower()
+    if diet in ("vegan", "vegetarian", "eggetarian", "jain") and accepts_animal_supp != "yes":
+        supp_severity: Severity = (
+            "CRITICAL" if accepts_animal_supp == "no" else "WARNING"
+        )
+        for supp in plan.supplement_protocol:
+            blob = (
+                f"{supp.supplement_slug} {supp.display_name or ''} "
+                f"{supp.form}"
+            ).lower()
+            for hint in _ANIMAL_SUPPLEMENT_HINTS:
+                if hint in blob:
+                    refused = accepts_animal_supp == "no"
+                    findings.append(Finding(
+                        supp_severity, "supplement_protocol", "supplement_slug",
+                        (f"{supp.supplement_slug!r} appears animal-derived "
+                         f"({hint!r}) — the client is {diet_label} and "
+                         + ("told us at intake they do NOT accept "
+                            "animal-derived supplements. Swap to a "
+                            "plant/algae alternative (e.g. algal omega-3 "
+                            "for fish oil)."
+                            if refused else
+                            "their intake form did not confirm they accept "
+                            "animal-derived supplements. Confirm with them, "
+                            "or swap to a plant/algae alternative (e.g. "
+                            "algal omega-3 for fish oil).")),
+                        target=supp.supplement_slug,
+                    ))
+                    break
+
+
 def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Finding]:
     """Run deterministic checks. Returns findings sorted by severity."""
     findings: list[Finding] = []
@@ -311,6 +547,9 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
             "WARNING", "assessment", "hypothesized_drivers",
             "supplements declared without any hypothesized_drivers — what's the rationale?",
         ))
+
+    # ---------- Dietary-preference consistency ----------
+    _check_dietary_consistency(plan, client, findings)
 
     # Sort: CRITICAL first, then WARNING, then INFO
     severity_order = {"CRITICAL": 0, "WARNING": 1, "INFO": 2}

@@ -15,6 +15,7 @@
 
 import { useMemo, useState } from "react";
 import type { SessionSummary } from "@/lib/server-actions/assess";
+import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
 
 interface Props {
   client: Record<string, unknown>;
@@ -256,7 +257,7 @@ export function SOAPNotePanel({ client, clientName, clientId, sessions }: Props)
             <div className={SECTION_HEADER}>Supplement protocol (initial)</div>
             <ul className="list-disc list-inside space-y-1 mt-1">
               {supplements.map((sp, i) => {
-                const name = sp.name ?? sp.supplement_slug ?? `Supplement ${i + 1}`;
+                const name = supplementDisplayName(sp) || `Supplement ${i + 1}`;
                 const dose = sp.dose ? ` · ${sp.dose}` : "";
                 const timing = sp.timing ? ` · ${sp.timing}` : "";
                 return (

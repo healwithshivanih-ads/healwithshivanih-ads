@@ -198,7 +198,36 @@ def main() -> int:
         except FileNotFoundError:
             break
 
-    plan_weeks = int(plan_brief.get("plan_period_weeks") or 8)
+    # Default plan period = 12 weeks (matches the coach's standard
+    # protocol length). Was 8 historically — flipped 2026-05-19 because
+    # virtually every plan was extended to 12 anyway, and 8 produced
+    # misleading week counts in the new Communicate panel's fortnight
+    # track. Coach can still override per-client via the assess form's
+    # plan-period picker.
+    plan_weeks = int(plan_brief.get("plan_period_weeks") or 12)
+
+    # Auto-link supersedes when this client already has a published plan
+    # (B7 from dry-run audit 2026-05-19). Without this, week-12 recheck
+    # plans become orphan parallel published plans because coach has to
+    # remember to wire `supersedes` by hand. Picks the newest published
+    # plan for this client (by updated_at desc).
+    previous_published_slug: str | None = None
+    try:
+        published = [
+            p for p in all_plans
+            if (p.client_id or "") == client_id
+            and (getattr(p, "status", None) and str(p.status).lower() == "published")
+        ]
+        if published:
+            # Newest first by updated_at; fall back to slug if missing.
+            published.sort(
+                key=lambda p: (getattr(p, "updated_at", None) or now, p.slug),
+                reverse=True,
+            )
+            previous_published_slug = published[0].slug
+    except Exception:
+        previous_published_slug = None
+
     plan = Plan(
         slug=slug,
         client_id=client.client_id,
@@ -209,6 +238,7 @@ def main() -> int:
         created_at=now,
         updated_at=now,
         updated_by="shivani",
+        supersedes=previous_published_slug,
     )
 
     # Carry the symptoms the coach actually selected during the analyse

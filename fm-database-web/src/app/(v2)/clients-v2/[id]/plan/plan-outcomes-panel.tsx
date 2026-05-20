@@ -312,7 +312,7 @@ export function PlanOutcomesPanel({ planSlug, clientId }: Props) {
             </div>
             <div
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
                 marginTop: 6,
                 fontStyle: "italic",

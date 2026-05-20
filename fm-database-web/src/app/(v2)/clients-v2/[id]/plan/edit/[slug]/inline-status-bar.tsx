@@ -113,7 +113,7 @@ export function InlineStatusBar({
       </span>
 
       {version != null && (
-        <span style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)" }}>
+        <span style={{ fontSize: 12, color: "var(--fm-text-tertiary)" }}>
           v{version}
         </span>
       )}
@@ -174,13 +174,13 @@ export function InlineStatusBar({
         )}
 
         {status === "published" && (
-          <span style={{ fontSize: 11.5, color: "#059669", fontWeight: 600 }}>
+          <span style={{ fontSize: 12, color: "#059669", fontWeight: 600 }}>
             Plan is live. Use Advanced ↓ to revoke or supersede.
           </span>
         )}
 
         {(status === "superseded" || status === "revoked") && (
-          <span style={{ fontSize: 11.5, color: meta.tone, fontWeight: 600 }}>
+          <span style={{ fontSize: 12, color: meta.tone, fontWeight: 600 }}>
             Read-only.
           </span>
         )}

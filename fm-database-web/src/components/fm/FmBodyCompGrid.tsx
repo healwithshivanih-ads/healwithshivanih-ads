@@ -79,7 +79,7 @@ export function FmBodyCompGrid({
               color: "#fff",
               border: 0,
               padding: "6px 12px",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 600,
               borderRadius: "var(--fm-radius-sm)",
               cursor: clientId ? "pointer" : "not-allowed",
@@ -109,7 +109,7 @@ export function FmBodyCompGrid({
             >
               <div
                 style={{
-                  fontSize: 9.5,
+                  fontSize: 10,
                   textTransform: "uppercase",
                   letterSpacing: 0.7,
                   fontWeight: 700,
@@ -317,7 +317,7 @@ function LogEntryModal({
   }
 
   const labelStyle: React.CSSProperties = {
-    fontSize: 10.5,
+    fontSize: 11,
     fontWeight: 700,
     textTransform: "uppercase",
     letterSpacing: 0.5,
@@ -470,7 +470,7 @@ function Tile({ m, baseline }: { m: BodyCompMetric; baseline: Baseline }) {
       >
         <div
           style={{
-            fontSize: 9.5,
+            fontSize: 10,
             textTransform: "uppercase",
             letterSpacing: 0.7,
             fontWeight: 700,
@@ -543,7 +543,7 @@ function Tile({ m, baseline }: { m: BodyCompMetric; baseline: Baseline }) {
       >
         <div
           style={{
-            fontSize: 9.5,
+            fontSize: 10,
             textTransform: "uppercase",
             letterSpacing: 0.7,
             color: "var(--fm-text-tertiary)",
@@ -554,7 +554,7 @@ function Tile({ m, baseline }: { m: BodyCompMetric; baseline: Baseline }) {
         </div>
         <div
           style={{
-            fontSize: 8.5,
+            fontSize: 9,
             color: "var(--fm-text-tertiary)",
             fontWeight: 600,
           }}

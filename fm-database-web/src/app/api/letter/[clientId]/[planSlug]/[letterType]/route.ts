@@ -81,7 +81,23 @@ export async function GET(
   const format = (url.searchParams.get("format") ?? "html").toLowerCase();
   const download = url.searchParams.get("download") === "1";
 
-  const data = await loadMealPlan(planSlug, clientId, letterType as LetterType);
+  // For phase letters the file stem includes the week range (e.g.
+  // <slug>-meal_plan-wk3-4.md) so loadMealPlan needs the phase object.
+  // Without it the lookup falls back to <slug>-meal_plan_phase.md which
+  // doesn't exist and the route 404s. Fixed 2026-05-19 — Preview button
+  // on phase letters was always hitting this.
+  const psRaw = url.searchParams.get("phase_start");
+  const peRaw = url.searchParams.get("phase_end");
+  const ps = psRaw ? Number.parseInt(psRaw, 10) : NaN;
+  const pe = peRaw ? Number.parseInt(peRaw, 10) : NaN;
+  const phase =
+    letterType === "meal_plan_phase" &&
+    Number.isFinite(ps) &&
+    Number.isFinite(pe)
+      ? { startWeek: ps, endWeek: pe }
+      : null;
+
+  const data = await loadMealPlan(planSlug, clientId, letterType as LetterType, phase);
   if (!data.ok || !data.markdown) {
     return new NextResponse(
       `No saved ${letterType} letter found for plan ${planSlug}. Generate from /communicate first.`,

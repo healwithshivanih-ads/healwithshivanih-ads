@@ -1,24 +1,42 @@
 "use client";
 
 /**
- * TriageSections — collapsible sections for the v2 dashboard.
+ * TriageSections — collapsible, urgency-ordered triage buckets for the
+ * v2 dashboard.
  *
- * Each section can be expanded or collapsed by clicking its header.
- * Zero-count sections are styled with a faded green badge and start
- * collapsed by default (per design decision 1A — keep spatial memory,
- * don't auto-hide). Non-zero sections start expanded.
+ * Buckets are grouped into 4 urgency TIERS and rendered top-to-bottom in
+ * priority order so the coach's eye lands on the most urgent work first:
+ *
+ *   🔴 Needs action   — follow-ups, recheck-due, programmes owed
+ *   🟡 Pipeline       — labs to chase, links to nudge, prospects to convert
+ *   🔵 In progress    — clients on a live protocol (weekly glance)
+ *   ⚪ Leads & cold   — re-engagement, brand-new leads, declined
+ *
+ * Each bucket maps to ONE client-lifecycle state, computed in
+ * dashboard-v2/page.tsx::computeSignal. The lifecycle is:
+ *
+ *   new lead → discovery → [sign-up decision] → intake → plan build →
+ *   plan active → recheck
+ *
+ * Zero-count sections collapse by default (green ✓ badge); non-zero
+ * sections start expanded. Per-section collapse persists in sessionStorage.
  */
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { FmPanel, FmChip } from "@/components/fm";
 
 export type SignalKind =
   | "follow_up_due"
   | "protocol_complete"
+  | "intake_to_do"
+  | "plan_to_build"
   | "labs_pending"
+  | "booking_link_pending"
+  | "awaiting_signup"
+  | "active"
   | "returning"
-  | "new_client"
-  | "active";
+  | "new_lead"
+  | "declined";
 
 export interface TriageRow {
   client_id: string;
@@ -29,10 +47,19 @@ export interface TriageRow {
     daysOverdue?: number;
     recheckDate?: string;
     planSlug?: string;
+    draftSlug?: string;
     daysSince?: number;
     sessionDate?: string;
+    discoveryDate?: string;
     labCount?: number;
     labs?: string[];
+    /** For plan_to_build — the exact next micro-step the coach owes:
+     *  "Run intake" | "Build the plan" | "Activate the draft". */
+    microStep?: string;
+    /** For booking_link_pending — days since the link was sent + which
+     *  cal.com slug was sent. Used in the section badge + tooltip. */
+    daysSinceLinkSent?: number;
+    bookingLinkSlug?: string;
   };
 }
 
@@ -47,77 +74,153 @@ interface SectionMeta {
 }
 
 const SECTION_META: Record<SignalKind, SectionMeta> = {
+  // ── 🔴 Needs action ──────────────────────────────────────────────
   follow_up_due: {
-    title: "Follow-ups due",
-    icon: "📅",
-    accent: "rgba(155, 89, 182, 0.10)",
-    border: "rgba(155, 89, 182, 0.30)",
-    badgeColor: "#7d3c98",
-    cta: "📞 Contact",
+    title: "Follow-up overdue",
+    icon: "📞",
+    accent: "rgba(192, 57, 43, 0.09)",
+    border: "rgba(192, 57, 43, 0.34)",
+    badgeColor: "#c0392b",
+    cta: "📞 Contact now",
     ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   protocol_complete: {
     title: "Protocol complete — reassess",
     icon: "✅",
-    accent: "rgba(46, 204, 113, 0.08)",
-    border: "rgba(46, 204, 113, 0.30)",
-    badgeColor: "var(--fm-success)",
+    accent: "rgba(192, 57, 43, 0.07)",
+    border: "rgba(192, 57, 43, 0.30)",
+    badgeColor: "#c0392b",
     cta: "🧠 Record session",
-    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}/analyse`,
   },
+  intake_to_do: {
+    title: "Intake to do",
+    icon: "📝",
+    accent: "rgba(192, 57, 43, 0.07)",
+    border: "rgba(192, 57, 43, 0.30)",
+    badgeColor: "#c0392b",
+    cta: "📝 Run intake",
+    ctaHref: (r) => `/clients-v2/${r.client_id}/analyse/intake`,
+  },
+  plan_to_build: {
+    title: "Signed up — programme owed",
+    icon: "🛠",
+    accent: "rgba(192, 57, 43, 0.07)",
+    border: "rgba(192, 57, 43, 0.30)",
+    badgeColor: "#c0392b",
+    cta: "🛠 Continue build",
+    ctaHref: (r) =>
+      r.signal.draftSlug
+        ? `/clients-v2/${r.client_id}/plan/edit/${r.signal.draftSlug}`
+        : `/clients-v2/${r.client_id}/analyse`,
+  },
+  // ── 🟡 Pipeline ──────────────────────────────────────────────────
   labs_pending: {
-    title: "Labs pending",
+    title: "Labs to chase",
     icon: "🧪",
-    accent: "rgba(214, 162, 162, 0.12)",
-    border: "rgba(214, 162, 162, 0.40)",
-    badgeColor: "#a85858",
+    accent: "rgba(180, 83, 9, 0.10)",
+    border: "rgba(180, 83, 9, 0.36)",
+    badgeColor: "#b45309",
     cta: "🧪 Record results",
-    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
+    ctaHref: (r) => `/clients-v2/${r.client_id}/analyse`,
   },
-  returning: {
-    title: "Returning clients",
-    icon: "🔄",
-    accent: "rgba(26, 127, 187, 0.08)",
-    border: "rgba(26, 127, 187, 0.30)",
-    badgeColor: "var(--fm-secondary)",
-    cta: "🗓 Record session",
-    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
+  booking_link_pending: {
+    title: "Booking link sent — no response",
+    icon: "📨",
+    accent: "rgba(180, 83, 9, 0.10)",
+    border: "rgba(180, 83, 9, 0.36)",
+    badgeColor: "#b45309",
+    cta: "📞 Nudge",
+    ctaHref: (r) => `/clients-v2/${r.client_id}/communicate`,
   },
-  new_client: {
-    title: "New — awaiting assessment",
-    icon: "🆕",
-    accent: "rgba(247, 147, 30, 0.08)",
-    border: "rgba(247, 147, 30, 0.30)",
-    badgeColor: "var(--fm-accent-dark)",
-    cta: "🗓 Record session",
-    ctaHref: (r) => `/clients-v2/${r.client_id}/sessions`,
+  awaiting_signup: {
+    title: "Discovery done — awaiting sign-up",
+    icon: "🤝",
+    accent: "rgba(180, 83, 9, 0.08)",
+    border: "rgba(180, 83, 9, 0.30)",
+    badgeColor: "#b45309",
+    cta: "🤝 Confirm sign-up",
+    ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
+  // ── 🔵 In progress ───────────────────────────────────────────────
   active: {
     title: "Active protocols",
     icon: "📋",
-    accent: "var(--fm-bg-cool)",
-    border: "var(--fm-border)",
-    badgeColor: "var(--fm-text-secondary)",
+    accent: "rgba(26, 127, 187, 0.07)",
+    border: "rgba(26, 127, 187, 0.26)",
+    badgeColor: "#1a7fbb",
     cta: "View plan",
-    ctaHref: (r) => (r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`),
+    ctaHref: (r) =>
+      r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`,
+  },
+  // ── ⚪ Leads & cold ──────────────────────────────────────────────
+  returning: {
+    title: "Returning — re-engage",
+    icon: "🔄",
+    accent: "rgba(120, 120, 120, 0.07)",
+    border: "rgba(120, 120, 120, 0.26)",
+    badgeColor: "#6b7280",
+    cta: "🗓 Record session",
+    ctaHref: (r) => `/clients-v2/${r.client_id}/analyse`,
+  },
+  new_lead: {
+    title: "New leads — start discovery",
+    icon: "🆕",
+    accent: "rgba(120, 120, 120, 0.07)",
+    border: "rgba(120, 120, 120, 0.26)",
+    badgeColor: "#6b7280",
+    cta: "🔍 Start discovery",
+    ctaHref: (r) => `/clients-v2/${r.client_id}/analyse/discovery`,
+  },
+  declined: {
+    title: "Declined after discovery",
+    icon: "🚫",
+    accent: "rgba(120, 120, 120, 0.05)",
+    border: "rgba(120, 120, 120, 0.20)",
+    badgeColor: "#9ca3af",
+    cta: "View",
+    ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
 };
 
-// Priority order per coach (2026-05-13):
-//   1. Follow-ups due — needs a reply / next contact today.
-//   2. Active protocols — clients currently in-flight; coach checks weekly.
-//   3. Protocol complete — recheck time, generate next plan.
-//   4. Labs pending — waiting on results.
-//   5. Returning — re-engaged, no current plan.
-//   6. New — awaiting first assessment.
-const SECTION_ORDER: SignalKind[] = [
-  "follow_up_due",
-  "active",
-  "protocol_complete",
-  "labs_pending",
-  "returning",
-  "new_client",
+// ── Urgency tiers ────────────────────────────────────────────────────
+// Rendered top-to-bottom. Each tier gets a thin labelled divider so the
+// coach can see at a glance where "must do today" ends and "cold" begins.
+interface Tier {
+  label: string;
+  hint: string;
+  color: string;
+  kinds: SignalKind[];
+}
+
+const TIERS: Tier[] = [
+  {
+    label: "Needs action",
+    hint: "Do these today — clients are waiting on you",
+    color: "#c0392b",
+    kinds: ["follow_up_due", "protocol_complete", "intake_to_do", "plan_to_build"],
+  },
+  {
+    label: "Pipeline",
+    hint: "Convert + chase — keep the funnel moving",
+    color: "#b45309",
+    kinds: ["labs_pending", "booking_link_pending", "awaiting_signup"],
+  },
+  {
+    label: "In progress",
+    hint: "On a live protocol — weekly glance",
+    color: "#1a7fbb",
+    kinds: ["active"],
+  },
+  {
+    label: "Leads & cold",
+    hint: "Lower priority — re-engage when you have capacity",
+    color: "#6b7280",
+    kinds: ["returning", "new_lead", "declined"],
+  },
 ];
+
+const SECTION_ORDER: SignalKind[] = TIERS.flatMap((t) => t.kinds);
 
 interface TriageSectionsProps {
   /** Pre-grouped rows by signal kind. */
@@ -125,6 +228,7 @@ interface TriageSectionsProps {
 }
 
 export function TriageSections({ grouped }: TriageSectionsProps) {
+  // Initial state: zero-count sections collapsed, non-zero expanded.
   const initialCollapsed = useMemo(() => {
     const init: Partial<Record<SignalKind, boolean>> = {};
     for (const k of SECTION_ORDER) init[k] = (grouped[k]?.length ?? 0) === 0;
@@ -133,115 +237,219 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
 
   const [collapsed, setCollapsed] = useState<Record<SignalKind, boolean>>(initialCollapsed);
 
-  const toggle = (k: SignalKind) => setCollapsed((s) => ({ ...s, [k]: !s[k] }));
+  // Restore coach's per-section collapse preferences. Key bumped to v2
+  // because the bucket set changed (new SignalKind values) — old stored
+  // keys would be stale.
+  useEffect(() => {
+    try {
+      const raw = window.sessionStorage.getItem("fmcoach.triage.collapsed.v2");
+      if (!raw) return;
+      const stored = JSON.parse(raw) as Partial<Record<SignalKind, boolean>>;
+      setCollapsed((prev) => {
+        const next = { ...prev };
+        for (const k of SECTION_ORDER) {
+          if (typeof stored[k] === "boolean") next[k] = stored[k] as boolean;
+        }
+        return next;
+      });
+    } catch {
+      /* corrupt storage — fall through to initialCollapsed */
+    }
+  }, []);
+
+  const toggle = (k: SignalKind) =>
+    setCollapsed((s) => {
+      const next = { ...s, [k]: !s[k] };
+      try {
+        window.sessionStorage.setItem(
+          "fmcoach.triage.collapsed.v2",
+          JSON.stringify(next),
+        );
+      } catch {
+        /* sessionStorage may be unavailable in private windows */
+      }
+      return next;
+    });
 
   return (
-    <div style={{ display: "grid", gap: 16 }}>
-      {SECTION_ORDER.map((kind) => {
-        const meta = SECTION_META[kind];
-        const rows = grouped[kind] ?? [];
-        const isZero = rows.length === 0;
-        const isCollapsed = collapsed[kind];
-
+    <div style={{ display: "grid", gap: 8 }}>
+      {TIERS.map((tier) => {
+        const tierCount = tier.kinds.reduce(
+          (sum, k) => sum + (grouped[k]?.length ?? 0),
+          0,
+        );
         return (
-          <section key={kind}>
-            <button
-              type="button"
-              onClick={() => toggle(kind)}
+          <div key={tier.label} style={{ display: "grid", gap: 14, marginBottom: 10 }}>
+            {/* Tier divider */}
+            <div
               style={{
-                width: "100%",
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                padding: "8px 4px",
-                background: "transparent",
-                border: 0,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                textAlign: "left",
+                marginTop: 8,
               }}
-              aria-expanded={!isCollapsed}
             >
+              <span
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  background: tier.color,
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 12,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.9,
+                  color: tier.color,
+                }}
+              >
+                {tier.label}
+              </span>
               <span
                 style={{
                   fontSize: 11,
                   color: "var(--fm-text-tertiary)",
-                  width: 12,
-                  display: "inline-block",
-                  transform: isCollapsed ? "rotate(-90deg)" : "rotate(0deg)",
-                  transition: "transform 160ms var(--fm-ease-out)",
+                  fontWeight: 500,
                 }}
               >
-                ▾
+                {tier.hint}
               </span>
-              <span style={{ fontSize: 18 }}>{meta.icon}</span>
-              <h2
+              <span
                 style={{
-                  margin: 0,
-                  fontSize: 13,
-                  textTransform: "uppercase",
-                  letterSpacing: 0.7,
-                  fontWeight: 700,
-                  color: isZero ? "var(--fm-text-tertiary)" : "var(--fm-text-secondary)",
-                  fontFamily: "var(--fm-font-body)",
                   flex: 1,
-                  minWidth: 0,
+                  height: 1,
+                  background: "var(--fm-border-light)",
                 }}
-              >
-                {meta.title}
-              </h2>
+              />
               <span
                 style={{
                   fontSize: 11,
-                  padding: "2px 9px",
-                  background: isZero ? "var(--fm-success)" : meta.accent,
-                  color: isZero ? "#fff" : meta.badgeColor,
-                  border: isZero ? "1px solid var(--fm-success)" : `1px solid ${meta.border}`,
-                  borderRadius: "var(--fm-radius-pill)",
                   fontWeight: 700,
-                  opacity: isZero ? 0.6 : 1,
+                  color: tierCount === 0 ? "var(--fm-text-tertiary)" : tier.color,
                 }}
               >
-                {rows.length}
+                {tierCount}
               </span>
-            </button>
+            </div>
 
-            {!isCollapsed && (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                  gap: 12,
-                  marginTop: 10,
-                }}
-              >
-                {rows.length === 0 ? (
-                  <FmPanel
+            {tier.kinds.map((kind) => {
+              const meta = SECTION_META[kind];
+              const rows = grouped[kind] ?? [];
+              const isZero = rows.length === 0;
+              const isCollapsed = collapsed[kind];
+
+              return (
+                <section key={kind}>
+                  <button
+                    type="button"
+                    onClick={() => toggle(kind)}
                     style={{
-                      gridColumn: "1 / -1",
-                      background: "rgba(46, 204, 113, 0.04)",
-                      borderColor: "rgba(46, 204, 113, 0.20)",
-                      borderStyle: "dashed",
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      padding: "6px 4px",
+                      background: "transparent",
+                      border: 0,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                      textAlign: "left",
                     }}
+                    aria-expanded={!isCollapsed}
                   >
-                    <div
+                    <span
                       style={{
-                        textAlign: "center",
-                        padding: "12px 16px",
-                        fontSize: 12.5,
-                        color: "var(--fm-success)",
-                        fontWeight: 600,
+                        fontSize: 11,
+                        color: "var(--fm-text-tertiary)",
+                        width: 12,
+                        display: "inline-block",
+                        transform: isCollapsed ? "rotate(-90deg)" : "rotate(0deg)",
+                        transition: "transform 160ms var(--fm-ease-out)",
                       }}
                     >
-                      ✓ No clients in this bucket right now
+                      ▾
+                    </span>
+                    <span style={{ fontSize: 17 }}>{meta.icon}</span>
+                    <h2
+                      style={{
+                        margin: 0,
+                        fontSize: 13,
+                        textTransform: "uppercase",
+                        letterSpacing: 0.6,
+                        fontWeight: 700,
+                        color: isZero
+                          ? "var(--fm-text-tertiary)"
+                          : "var(--fm-text-secondary)",
+                        fontFamily: "var(--fm-font-body)",
+                        flex: 1,
+                        minWidth: 0,
+                      }}
+                    >
+                      {meta.title}
+                    </h2>
+                    <span
+                      style={{
+                        fontSize: 11,
+                        padding: "2px 9px",
+                        background: isZero ? "var(--fm-success)" : meta.accent,
+                        color: isZero ? "#fff" : meta.badgeColor,
+                        border: isZero
+                          ? "1px solid var(--fm-success)"
+                          : `1px solid ${meta.border}`,
+                        borderRadius: "var(--fm-radius-pill)",
+                        fontWeight: 700,
+                        opacity: isZero ? 0.55 : 1,
+                      }}
+                    >
+                      {rows.length}
+                    </span>
+                  </button>
+
+                  {!isCollapsed && (
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                        gap: 12,
+                        marginTop: 8,
+                      }}
+                    >
+                      {rows.length === 0 ? (
+                        <FmPanel
+                          style={{
+                            gridColumn: "1 / -1",
+                            background: "rgba(46, 204, 113, 0.04)",
+                            borderColor: "rgba(46, 204, 113, 0.20)",
+                            borderStyle: "dashed",
+                          }}
+                        >
+                          <div
+                            style={{
+                              textAlign: "center",
+                              padding: "10px 16px",
+                              fontSize: 12,
+                              color: "var(--fm-success)",
+                              fontWeight: 600,
+                            }}
+                          >
+                            ✓ Nothing here right now
+                          </div>
+                        </FmPanel>
+                      ) : (
+                        rows.map((row) => (
+                          <TriageCard key={row.client_id} row={row} meta={meta} />
+                        ))
+                      )}
                     </div>
-                  </FmPanel>
-                ) : (
-                  rows.map((row) => <TriageCard key={row.client_id} row={row} meta={meta} />)
-                )}
-              </div>
-            )}
-          </section>
+                  )}
+                </section>
+              );
+            })}
+          </div>
         );
       })}
     </div>
@@ -287,7 +495,7 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             <div
               style={{
                 fontFamily: "var(--fm-font-mono)",
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
               }}
             >
@@ -307,7 +515,7 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             {(row.active_conditions ?? []).length > 3 && (
               <span
                 style={{
-                  fontSize: 10.5,
+                  fontSize: 11,
                   color: "var(--fm-text-tertiary)",
                   alignSelf: "center",
                 }}
@@ -317,6 +525,8 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             )}
           </div>
         )}
+
+        <SignalDetail signal={row.signal} />
 
         <div
           style={{
@@ -332,7 +542,7 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             href={meta.ctaHref(row)}
             onClick={(e) => e.stopPropagation()}
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 600,
               padding: "5px 12px",
               background: "var(--fm-primary)",
@@ -352,28 +562,224 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
   );
 }
 
-function SignalBadge({ signal }: { signal: TriageRow["signal"] }) {
+/**
+ * Per-signal context line — the WHY-this-client-is-here info so the coach
+ * can scan + decide without drilling into the client page.
+ */
+function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
+  const labelStyle: React.CSSProperties = {
+    fontSize: 11,
+    fontWeight: 700,
+    textTransform: "uppercase",
+    letterSpacing: 0.6,
+    color: "var(--fm-text-tertiary)",
+    marginRight: 6,
+  };
+  const valueStyle: React.CSSProperties = {
+    fontSize: 12,
+    color: "var(--fm-text-secondary)",
+    lineHeight: 1.4,
+  };
+  const wrap: React.CSSProperties = {
+    marginBottom: 8,
+    paddingBottom: 6,
+    borderBottom: "1px dashed var(--fm-border)",
+  };
+
+  if (signal.kind === "labs_pending") {
+    const labs = signal.labs ?? [];
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Awaiting:</span>
+        <span style={valueStyle}>
+          {labs.length > 0 ? labs.join(", ") : `${signal.labCount ?? 0} test(s)`}
+        </span>
+      </div>
+    );
+  }
+
   if (signal.kind === "follow_up_due") {
     const d = signal.daysOverdue ?? 0;
     return (
-      <FmChip tone="warning">{d === 0 ? "due today" : `${d}d overdue`}</FmChip>
+      <div style={wrap}>
+        <span style={labelStyle}>Contact:</span>
+        <span style={valueStyle}>
+          {d === 0 ? "due today" : d < 0 ? `in ${Math.abs(d)} day(s)` : `${d} day(s) overdue`}
+        </span>
+      </div>
     );
   }
+
   if (signal.kind === "protocol_complete") {
-    return <FmChip tone="success">recheck {signal.recheckDate}</FmChip>;
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Recheck:</span>
+        <span style={valueStyle}>
+          {signal.recheckDate ?? "—"}
+          {signal.planSlug && (
+            <span
+              style={{
+                fontFamily: "var(--fm-font-mono)",
+                fontSize: 11,
+                marginLeft: 6,
+                color: "var(--fm-text-tertiary)",
+              }}
+            >
+              · {signal.planSlug}
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "intake_to_do") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Next step:</span>
+        <span style={valueStyle}>
+          {signal.microStep ?? "Run the 60-minute intake session"}
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "plan_to_build") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Next step:</span>
+        <span style={valueStyle}>{signal.microStep ?? "Build the programme"}</span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "awaiting_signup") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Discovery:</span>
+        <span style={valueStyle}>
+          {signal.discoveryDate
+            ? `done ${signal.discoveryDate} — confirm if they're signing up`
+            : "done — confirm if they're signing up"}
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "booking_link_pending") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Link sent:</span>
+        <span style={valueStyle}>
+          {signal.daysSinceLinkSent ?? 0} day(s) ago — no booking yet
+          {signal.bookingLinkSlug && (
+            <span
+              style={{
+                fontFamily: "var(--fm-font-mono)",
+                fontSize: 11,
+                marginLeft: 6,
+                color: "var(--fm-text-tertiary)",
+              }}
+            >
+              · {signal.bookingLinkSlug}
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "returning") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Last session:</span>
+        <span style={valueStyle}>
+          {signal.daysSince} day(s) ago{signal.sessionDate ? ` · ${signal.sessionDate}` : ""}
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "new_lead") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Status:</span>
+        <span style={valueStyle}>
+          No discovery call yet — run the 15-min fit call
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "declined") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Status:</span>
+        <span style={valueStyle}>
+          Declined after discovery{signal.discoveryDate ? ` · ${signal.discoveryDate}` : ""}
+        </span>
+      </div>
+    );
+  }
+
+  if (signal.kind === "active") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>On protocol:</span>
+        <span style={valueStyle}>
+          {signal.planSlug ?? "—"}
+          {signal.recheckDate && (
+            <span style={{ marginLeft: 6, color: "var(--fm-text-tertiary)" }}>
+              · recheck {signal.recheckDate}
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function SignalBadge({ signal }: { signal: TriageRow["signal"] }) {
+  if (signal.kind === "follow_up_due") {
+    const d = signal.daysOverdue ?? 0;
+    return <FmChip tone="danger">{d === 0 ? "due today" : `${d}d overdue`}</FmChip>;
+  }
+  if (signal.kind === "protocol_complete") {
+    return <FmChip tone="danger">recheck due</FmChip>;
+  }
+  if (signal.kind === "intake_to_do") {
+    return <FmChip tone="danger">intake pending</FmChip>;
+  }
+  if (signal.kind === "plan_to_build") {
+    return <FmChip tone="danger">programme owed</FmChip>;
   }
   if (signal.kind === "labs_pending") {
     const n = signal.labCount ?? signal.labs?.length ?? 0;
-    return <FmChip tone="danger">{n} test{n === 1 ? "" : "s"}</FmChip>;
+    return <FmChip tone="warning">{n} test{n === 1 ? "" : "s"}</FmChip>;
+  }
+  if (signal.kind === "booking_link_pending") {
+    return <FmChip tone="warning">no booking</FmChip>;
+  }
+  if (signal.kind === "awaiting_signup") {
+    return <FmChip tone="warning">not signed up</FmChip>;
+  }
+  if (signal.kind === "active") {
+    return signal.recheckDate ? (
+      <FmChip tone="secondary">recheck {signal.recheckDate}</FmChip>
+    ) : (
+      <FmChip tone="secondary">on protocol</FmChip>
+    );
   }
   if (signal.kind === "returning") {
-    return <FmChip tone="secondary">{signal.daysSince}d ago</FmChip>;
+    return <FmChip>{signal.daysSince}d gap</FmChip>;
   }
-  if (signal.kind === "new_client") {
-    return <FmChip tone="primary">awaiting assessment</FmChip>;
+  if (signal.kind === "new_lead") {
+    return <FmChip>new lead</FmChip>;
   }
-  if (signal.kind === "active" && signal.recheckDate) {
-    return <FmChip>recheck {signal.recheckDate}</FmChip>;
+  if (signal.kind === "declined") {
+    return <FmChip>declined</FmChip>;
   }
-  return <FmChip>active</FmChip>;
+  return <FmChip>—</FmChip>;
 }

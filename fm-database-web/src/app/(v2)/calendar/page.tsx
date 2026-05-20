@@ -10,7 +10,7 @@
  */
 import { FmAppShell, FmPageHeader, FmPanel } from "@/components/fm";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
-import { loadClientSessions } from "@/lib/fmdb/loader-extras";
+import { loadClientSessions, loadUpcomingBookings } from "@/lib/fmdb/loader-extras";
 import { effectiveRecheckDate } from "@/lib/fmdb/plan-timing";
 import { CalendarMonthGrid, type CalendarEvent } from "./calendar-month-grid";
 
@@ -112,6 +112,59 @@ export default async function CalendarPage({
       href: `/clients-v2/${c.client_id}`,
       tooltip: `Follow-up due ${next} — ${c.display_name ?? c.client_id}`,
     });
+  }
+
+  // ── Cal.com bookings ─────────────────────────────────────────────────
+  // Loaded from ~/fm-plans/_calcom_bookings.yaml. Both coach-initiated
+  // (createBookingAction → direct write) and client-booked (cal.com →
+  // webhook → fly server → _calcom_bookings.yaml) end up in the same
+  // store; the calendar surfaces them both as one "booking" event kind.
+  // includeAcknowledged=true so a calendar view always shows every
+  // future booking, regardless of dashboard-style "seen since" filters.
+  const clientNameMap = new Map(
+    clients.map((c) => [c.client_id, c.display_name ?? c.client_id]),
+  );
+  try {
+    const bookings = await loadUpcomingBookings(clientNameMap, {
+      includePast: true,
+      pastDays: 90, // show 3 months of history alongside future bookings
+      limit: 500,
+      includeAcknowledged: true,
+    });
+    for (const b of bookings) {
+      // start_time is ISO with TZ — render in IST so 06:00 UTC = 11:30 IST
+      // shows up on the right day. Date string for the grid is the IST day.
+      const startMs = Date.parse(b.start_time);
+      if (Number.isNaN(startMs)) continue;
+      const istDate = new Date(startMs + 5.5 * 60 * 60 * 1000)
+        .toISOString()
+        .slice(0, 10);
+      const hh = new Date(startMs).toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "Asia/Kolkata",
+      });
+      const client = clients.find((c) => c.client_id === b.client_id);
+      const name = client ? shortName(client) : b.client_id;
+      const eventLabel = (b.event_title ?? b.event_slug ?? "session")
+        .replace(/Programme\s+/i, "")
+        .replace(/between Shivani Hariharan and [^—]+/i, "")
+        .replace(/\s+/g, " ")
+        .trim();
+      events.push({
+        date: istDate,
+        kind: "booking",
+        label: `${name} · ${hh} · ${eventLabel || "booking"}`,
+        clientId: b.client_id,
+        href: b.join_url || `/clients-v2/${b.client_id}`,
+        tooltip: `📅 ${b.event_title ?? "Booking"} — ${client?.display_name ?? b.client_id} on ${istDate} at ${hh} IST`,
+      });
+    }
+  } catch (err) {
+    // Non-fatal: missing _calcom_bookings.yaml just yields zero booking
+    // events on the grid — the rest of the calendar still renders.
+    console.warn("[calendar] failed to load bookings", err);
   }
 
   // ── Plan recheck dates ───────────────────────────────────────────────

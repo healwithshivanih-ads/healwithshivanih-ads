@@ -20,6 +20,7 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { loadClientSessionsAction, type SessionSummary } from "@/lib/server-actions/assess";
 import { SoapPrintButton } from "./soap-print-button";
 import { FmAppShell } from "@/components/fm";
+import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
 import { clientQuickActions } from "../client-quick-actions";
 import { HeaderAvatar } from "../analyse/header-avatar";
 
@@ -137,7 +138,7 @@ export default async function SoapNotePage({
       <FmAppShell
         activeNavId="clients"
         crumbs={[
-          { label: "Clients", href: "/clients" },
+          { label: "Clients", href: "/clients-v2" },
           { label: "Unknown client" },
         ]}
       >
@@ -303,7 +304,7 @@ export default async function SoapNotePage({
       activeNavId="clients"
       quickActions={clientQuickActions(id)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: displayName, href: `/clients-v2/${id}` },
         { label: "SOAP Note" },
       ]}
@@ -351,7 +352,7 @@ export default async function SoapNotePage({
         <Link
           href={`/clients-v2/${id}`}
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             textDecoration: "none",
             padding: "5px 10px",
@@ -418,7 +419,7 @@ export default async function SoapNotePage({
             border: "1px solid #e5e7eb",
             borderRadius: 6,
             marginBottom: 14,
-            fontSize: 11.5,
+            fontSize: 12,
             lineHeight: 1.4,
           }}
         >
@@ -477,7 +478,7 @@ export default async function SoapNotePage({
           {/* v0.75.3 — physical exam findings from coach-led panels */}
           {hasExamFindings && (
             <div style={{ marginBottom: 8 }}>
-              <div style={{ fontSize: 10.5, color: "#6b7280", marginBottom: 3 }}>
+              <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 3 }}>
                 <strong>Physical exam findings:</strong>
               </div>
               <ul style={{ margin: 0, paddingLeft: 18 }}>
@@ -492,7 +493,7 @@ export default async function SoapNotePage({
                       🦋 Beighton {beightonScore}/9
                       {beightonHypermobile ? " — positive for hypermobility" : ""}
                     </span>
-                    <span style={{ color: "#9ca3af", fontSize: 10.5 }}>
+                    <span style={{ color: "#9ca3af", fontSize: 11 }}>
                       {" "}· assessed {fmtDate(beightonFinding.assessed_at)}
                     </span>
                   </li>
@@ -512,12 +513,12 @@ export default async function SoapNotePage({
                       {leanPotsFlag ? ", POTS pattern POSITIVE" : ""}
                     </span>
                     {leanSupineHr != null && leanPeakHr != null && (
-                      <div style={{ color: "#6b7280", fontSize: 10.5, marginLeft: 4 }}>
+                      <div style={{ color: "#6b7280", fontSize: 11, marginLeft: 4 }}>
                         Supine {leanSupineHr} → peak standing {leanPeakHr}
                         {leanSymptoms.length > 0 ? `; symptoms: ${leanSymptoms.join(", ")}` : ""}
                       </div>
                     )}
-                    <span style={{ color: "#9ca3af", fontSize: 10.5 }}>
+                    <span style={{ color: "#9ca3af", fontSize: 11 }}>
                       Assessed {fmtDate(leanFinding.assessed_at)}
                     </span>
                   </li>
@@ -527,7 +528,7 @@ export default async function SoapNotePage({
           )}
           {flaggedLabs.length > 0 ? (
             <div>
-              <div style={{ fontSize: 10.5, color: "#6b7280", marginBottom: 3 }}>
+              <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 3 }}>
                 <strong>Flagged labs ({flaggedLabs.length}):</strong>
               </div>
               <ul style={{ margin: 0, paddingLeft: 18 }}>
@@ -545,7 +546,7 @@ export default async function SoapNotePage({
                         {name} {val}{unit}{arrow}
                       </span>
                       {l.reference_range ? (
-                        <span style={{ color: "#9ca3af", fontSize: 10.5 }}> · {l.reference_range}</span>
+                        <span style={{ color: "#9ca3af", fontSize: 11 }}> · {l.reference_range}</span>
                       ) : null}
                     </li>
                   );
@@ -578,7 +579,7 @@ export default async function SoapNotePage({
           {(!synth || synth.length < 100) && intakeInsights?.patterns && intakeInsights.patterns.length > 0 && (
             <div style={{ marginBottom: 4 }}>
               <strong>Patterns (intake AI):</strong>
-              <ul style={{ margin: "2px 0 0", paddingLeft: 18, fontSize: 11.5 }}>
+              <ul style={{ margin: "2px 0 0", paddingLeft: 18, fontSize: 12 }}>
                 {intakeInsights.patterns.slice(0, 3).map((p, i) => (
                   <li key={i}>{p}</li>
                 ))}
@@ -588,7 +589,7 @@ export default async function SoapNotePage({
           {intakeInsights?.red_flags && intakeInsights.red_flags.length > 0 && (
             <div style={{ marginBottom: 4, color: "#b91c1c" }}>
               <strong>Red flags:</strong>
-              <ul style={{ margin: "2px 0 0", paddingLeft: 18, fontSize: 11.5 }}>
+              <ul style={{ margin: "2px 0 0", paddingLeft: 18, fontSize: 12 }}>
                 {intakeInsights.red_flags.slice(0, 3).map((r, i) => (
                   <li key={i}>{r}</li>
                 ))}
@@ -613,7 +614,7 @@ export default async function SoapNotePage({
               <strong>Supplements:</strong>{" "}
               {supplements
                 .slice(0, 6)
-                .map((s) => `${s.display_name ?? s.supplement_slug ?? "?"}${s.dose ? ` ${s.dose}` : ""}${s.timing ? ` (${s.timing})` : ""}`)
+                .map((s) => `${supplementDisplayName(s) || "?"}${s.dose ? ` ${s.dose}` : ""}${s.timing ? ` (${s.timing})` : ""}`)
                 .join("; ")}
               {supplements.length > 6 && ` +${supplements.length - 6} more`}
             </div>
@@ -668,7 +669,7 @@ function SoapSection({
   children: React.ReactNode;
 }) {
   return (
-    <section style={{ marginBottom: 14, paddingBottom: 10, borderBottom: "1px solid #e5e7eb", fontSize: 12.5 }}>
+    <section style={{ marginBottom: 14, paddingBottom: 10, borderBottom: "1px solid #e5e7eb", fontSize: 13 }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
         <span style={{ fontSize: 22, fontWeight: 800, color: "#2b2d42", lineHeight: 1, width: 28 }}>{letter}</span>
         <div>

@@ -191,7 +191,7 @@ function MetricChip({ label, value, unit }: { label: string; value?: number; uni
     >
       <div
         style={{
-          fontSize: 9.5,
+          fontSize: 10,
           textTransform: "uppercase",
           letterSpacing: 0.6,
           fontWeight: 700,
@@ -792,7 +792,7 @@ export function FullAssessmentForm({
           <details style={{ marginBottom: 10 }}>
             <summary
               style={{
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 cursor: "pointer",
                 color: "var(--fm-text-secondary)",
@@ -806,7 +806,7 @@ export function FullAssessmentForm({
                 gridTemplateColumns: "1fr 1fr",
                 gap: 8,
                 marginTop: 8,
-                fontSize: 11.5,
+                fontSize: 12,
                 lineHeight: 1.5,
               }}
             >
@@ -859,7 +859,7 @@ export function FullAssessmentForm({
         {(intake.food_prefs.dietary_preference ||
           intake.food_prefs.foods_to_avoid ||
           intake.food_prefs.non_negotiables) && (
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
             {intake.food_prefs.dietary_preference && (
               <span style={{ marginRight: 14 }}>
                 <strong>Diet:</strong> {intake.food_prefs.dietary_preference}
@@ -993,7 +993,7 @@ export function FullAssessmentForm({
                 background: "var(--fm-bg-warm)",
                 border: "1px dashed var(--fm-primary)",
                 borderRadius: "var(--fm-radius-sm)",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 600,
                 color: "var(--fm-primary)",
               }}
@@ -1031,7 +1031,7 @@ export function FullAssessmentForm({
                   border: "none",
                   padding: 0,
                   cursor: "pointer",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   color: "var(--fm-primary)",
                   fontWeight: 600,
                 }}
@@ -1104,7 +1104,7 @@ export function FullAssessmentForm({
                               >
                                 {f.filename}
                               </div>
-                              <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+                              <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
                                 {dateStr} · {sizeKB} KB
                               </div>
                             </div>
@@ -1333,7 +1333,7 @@ export function FullAssessmentForm({
                 border: "1px solid rgba(21,128,61,0.35)",
                 borderRadius: "var(--fm-radius-sm)",
                 color: "#14532d",
-                fontSize: 12.5,
+                fontSize: 13,
                 fontWeight: 600,
                 marginBottom: 10,
               }}
@@ -1421,7 +1421,7 @@ export function FullAssessmentForm({
             >
               {draftPending ? "Generating…" : "📋 Generate draft plan →"}
             </button>
-            <div style={{ flex: 1, fontSize: 11.5 }}>
+            <div style={{ flex: 1, fontSize: 12 }}>
               Captures everything above — AI suggestions you ticked +
               anything refined in the chat — into a structured draft.
               You can edit, preview, and activate from there.

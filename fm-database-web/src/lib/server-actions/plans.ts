@@ -197,6 +197,8 @@ export async function updatePlanStartDates(
   if (current.client_id) {
     revalidatePath(`/clients-v2/${current.client_id}`);
     revalidatePath(`/clients-v2/${current.client_id}/plan`);
+    // Letters screen reads meal_plan_started_on for its fortnight cards.
+    revalidatePath(`/clients-v2/${current.client_id}/communicate`);
   }
   revalidatePath("/dashboard-v2");
   revalidatePath("/calendar");

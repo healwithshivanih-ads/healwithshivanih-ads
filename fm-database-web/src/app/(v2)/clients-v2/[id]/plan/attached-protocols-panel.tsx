@@ -185,7 +185,7 @@ export function AttachedProtocolsPanel({
               {p.summary && (
                 <p
                   style={{
-                    fontSize: 11.5,
+                    fontSize: 12,
                     color: "var(--fm-text-secondary)",
                     margin: "4px 0 0",
                     lineHeight: 1.4,
@@ -264,7 +264,7 @@ export function AttachedProtocolsPanel({
                           style={{ marginTop: 2 }}
                         />
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: 12.5, fontWeight: 600 }}>
+                          <div style={{ fontSize: 13, fontWeight: 600 }}>
                             {p.display_name ?? pretty(p.slug)}
                           </div>
                           {p.summary && (

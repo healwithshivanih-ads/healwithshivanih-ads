@@ -38,6 +38,8 @@ import {
 } from "@/components/fm";
 import { HeaderAvatar } from "./header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
+import { BookSessionButton } from "@/components/client-widgets/book-session-modal";
+import { SendDiscoveryLabsButton } from "./send-discovery-labs-button";
 import { clientSubnavTabs } from "../client-subnav";
 import { formatLongDate } from "@/lib/fmdb/format-date";
 
@@ -167,10 +169,17 @@ export default async function AnalysePage({
   // relabelling the picker does.
   const journeyDiscovery = journey.steps.find((s) => s.id === "discovery");
   const journeyIntake = journey.steps.find((s) => s.id === "intake");
-  const fullDone = sessions.some((s) => {
-    const t = parseSessionType((s as Record<string, unknown>).presenting_complaints as string | undefined);
-    return t === "intake";
-  });
+  // "Intake / full assessment done" = a COACH intake session exists — a
+  // session with the LITERAL [session_type: intake] (or legacy
+  // [session_type: full_assessment]) tag. Must not count the client's
+  // online questionnaire or untagged legacy notes (parseSessionType
+  // defaults those to "intake"). Mirrors dashboard-v2 computeSignal +
+  // loadClientJourney so every surface agrees on "intake done".
+  const fullDone = sessions.some((s) =>
+    /\[session_type:\s*(intake|full_assessment)\]/i.test(
+      String((s as Record<string, unknown>).presenting_complaints ?? ""),
+    ),
+  );
   const completionState = {
     discovery: (journeyDiscovery?.status === "done" || journeyIntake?.status === "done")
       ? ("done" as const) : ("pending" as const),
@@ -223,11 +232,15 @@ export default async function AnalysePage({
   const age = deriveAge(client);
   const lastSession = sortedDesc[0]?.date as string | undefined;
 
-  // Most-recent assessment-class session — gets its own header strip.
-  // v2 parseSessionType returns "discovery" | "intake" | "check_in" |
-  // "quick_note"; "intake" is what we treat as a Full Assessment
-  // (discovery is the pre-call lab-order). Coach asked to see "date of
-  // last assessment + link to open" at a glance.
+  // Most-recent intake / discovery session — gets its own header strip.
+  // The data layer only stores two assessment-class types: "discovery"
+  // (15-min pre-call lab order) and "intake" (the programme intake form
+  // + full assessment session are both aliased to "intake" by
+  // parseSessionType). Coach feedback 2026-05-19: the strip was
+  // labelling intake-form submissions as "Last full assessment" which
+  // confused her — fixed by relabelling honestly ("Last intake" vs
+  // "Last discovery call") instead of inventing a session type that
+  // doesn't exist at the data layer.
   const lastAssessment = sortedDesc.find((s) => {
     const t = parseSessionType(
       (s as Record<string, unknown>).presenting_complaints as string | undefined,
@@ -244,12 +257,35 @@ export default async function AnalysePage({
       )
     : null;
 
+  // Discovery-session lab list — extracted from the session so we can
+  // surface a "📤 Send labs to client" panel right next to the discovery
+  // strip. Older sessions (saved before requested_labs became a top-level
+  // field) embed the list inside coach_notes as "[Requested labs: X, Y]";
+  // we parse both shapes here so the button works for ALL discovery
+  // sessions on disk.
+  const discoveryRequestedLabs: string[] = (() => {
+    if (!lastAssessment || lastAssessmentType !== "discovery") return [];
+    const top = (lastAssessment as { requested_labs?: unknown }).requested_labs;
+    if (Array.isArray(top) && top.length > 0) {
+      return top.map((s) => String(s)).filter(Boolean);
+    }
+    const notes = (lastAssessment as { coach_notes?: string }).coach_notes ?? "";
+    const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
+    if (m) {
+      return m[1]
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+    return [];
+  })();
+
   return (
     <FmAppShell
       activeNavId="clients"
       quickActions={clientQuickActions(id)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: displayName, href: `/clients-v2/${id}` },
         { label: "Analyse" },
       ]}
@@ -307,7 +343,7 @@ export default async function AnalysePage({
         <Link
           href={`/clients-v2/${id}`}
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             textDecoration: "none",
             padding: "5px 10px",
@@ -338,11 +374,13 @@ export default async function AnalysePage({
           }}
         >
           <span style={{ fontSize: 14 }}>
-            {lastAssessmentType === "discovery" ? "🔍" : "🔬"}
+            {lastAssessmentType === "discovery" ? "🔍" : "📝"}
           </span>
           <div style={{ flex: 1, minWidth: 0, fontSize: 12 }}>
             <strong style={{ color: "var(--fm-text-primary)" }}>
-              Last {lastAssessmentType === "discovery" ? "discovery call" : "full assessment"}:
+              Last{" "}
+              {lastAssessmentType === "discovery" ? "discovery call" : "intake"}
+              :
             </strong>{" "}
             <span style={{ color: "var(--fm-text-secondary)" }}>
               {formatLongDate(lastAssessmentDate)} ·{" "}
@@ -352,7 +390,7 @@ export default async function AnalysePage({
           <Link
             href={`/clients-v2/${id}/sessions?sid=${lastAssessmentSid ?? ""}`}
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 700,
               color: "#fff",
               background: "var(--fm-primary)",
@@ -362,8 +400,33 @@ export default async function AnalysePage({
               whiteSpace: "nowrap",
             }}
           >
-            Open assessment →
+            {lastAssessmentType === "discovery"
+              ? "Open discovery →"
+              : "Open intake →"}
           </Link>
+          {/* Discovery lab list — appears when the most-recent assessment
+              is a discovery call AND requested_labs are on the session.
+              Coach can preview / email / WhatsApp the list to the client
+              without leaving this tab. */}
+          {lastAssessmentType === "discovery" &&
+            discoveryRequestedLabs.length > 0 &&
+            lastAssessmentSid && (
+              <div
+                style={{
+                  flex: "1 1 100%",
+                  paddingTop: 8,
+                  marginTop: 4,
+                  borderTop: "1px dashed rgba(46, 110, 213, 0.30)",
+                }}
+              >
+                <SendDiscoveryLabsButton
+                  sessionId={lastAssessmentSid}
+                  clientId={id}
+                  clientEmail={client.email ?? null}
+                  labCount={discoveryRequestedLabs.length}
+                />
+              </div>
+            )}
         </div>
       )}
 
@@ -408,7 +471,7 @@ export default async function AnalysePage({
                 >
                   <span
                     style={{
-                      fontSize: 9.5,
+                      fontSize: 10,
                       fontWeight: 800,
                       letterSpacing: 0.8,
                       textTransform: "uppercase",
@@ -426,21 +489,20 @@ export default async function AnalysePage({
                       ({humanDueLabel(nextSessionDue)} · {nextSessionDue.reason})
                     </span>
                   </span>
-                  <Link
-                    href={`/clients-v2/${id}/communicate#booking`}
-                    style={{
-                      padding: "6px 12px",
-                      background: "var(--fm-primary)",
-                      color: "#fff",
-                      borderRadius: "var(--fm-radius-sm)",
-                      textDecoration: "none",
-                      fontSize: 12,
-                      fontWeight: 600,
-                      whiteSpace: "nowrap",
+                  {/* Replaced single-purpose "Send scheduling link" Link
+                      with the unified BookSessionButton 2026-05-19 —
+                      opens the modal with BOTH send-link AND direct-book
+                      flows. Client is pre-filled from the URL so coach
+                      skips the picker step. */}
+                  <BookSessionButton
+                    prefilledClient={{
+                      client_id: id,
+                      display_name: displayName,
+                      email: (client as unknown as { email?: string }).email,
+                      mobile_number: (client as unknown as { mobile_number?: string }).mobile_number,
                     }}
-                  >
-                    📨 Send scheduling link
-                  </Link>
+                    label="📅 Book session"
+                  />
                 </div>
               )}
 
@@ -465,7 +527,7 @@ export default async function AnalysePage({
                 >
                   <span
                     style={{
-                      fontSize: 9.5,
+                      fontSize: 10,
                       fontWeight: 800,
                       letterSpacing: 0.8,
                       textTransform: "uppercase",

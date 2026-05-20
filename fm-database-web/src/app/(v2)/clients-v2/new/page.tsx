@@ -32,7 +32,7 @@ export default function NewClientPage() {
           <Link
             href="/clients-v2"
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               color: "var(--fm-text-secondary)",
               textDecoration: "none",
               padding: "6px 12px",
@@ -45,7 +45,11 @@ export default function NewClientPage() {
           </Link>
         }
       />
-      <div style={{ marginTop: 16 }}>
+      <div className="fm-v2-host" style={{ marginTop: 16 }}>
+        {/* fm-v2-host re-skins the shadcn+Tailwind primitives inside the
+            new-client form (inputs / buttons / cards / selects) to FM
+            tokens so the form stops looking visually distinct from the
+            rest of the v2 app. Wave H 2026-05-20. */}
         <NewClientForm initialOpen />
       </div>
     </FmAppShell>

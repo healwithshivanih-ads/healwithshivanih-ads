@@ -157,7 +157,7 @@ export function FmMarkerPanel({ groups, subtitle, onRecompute }: FmMarkerPanelPr
               title="Walk all snapshots and recompute FM markers"
               style={{
                 padding: "4px 10px",
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: 700,
                 border: "1px solid var(--fm-border)",
                 borderRadius: "var(--fm-radius-pill)",
@@ -175,7 +175,7 @@ export function FmMarkerPanel({ groups, subtitle, onRecompute }: FmMarkerPanelPr
           {recomputeMsg && (
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: recomputeMsg.startsWith("✓")
                   ? "#1e8449"
                   : "var(--fm-danger)",
@@ -283,7 +283,7 @@ export function FmMarkerPanel({ groups, subtitle, onRecompute }: FmMarkerPanelPr
               onClick={expandAll}
               style={{
                 padding: "5px 10px",
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: 600,
                 border: "1px solid var(--fm-border)",
                 borderRadius: "var(--fm-radius-sm)",
@@ -300,7 +300,7 @@ export function FmMarkerPanel({ groups, subtitle, onRecompute }: FmMarkerPanelPr
               onClick={collapseAll}
               style={{
                 padding: "5px 10px",
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: 600,
                 border: "1px solid var(--fm-border)",
                 borderRadius: "var(--fm-radius-sm)",
@@ -390,7 +390,7 @@ function ByGroup({
               <span style={{ fontSize: 14 }}>{g.icon}</span>
               <span
                 style={{
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: 0.7,
@@ -544,7 +544,7 @@ function FlaggedFlat({
           background: "rgba(46, 204, 113, 0.04)",
           border: "1px dashed rgba(46, 204, 113, 0.30)",
           borderRadius: "var(--fm-radius-sm)",
-          fontSize: 12.5,
+          fontSize: 13,
           color: "var(--fm-success)",
           fontWeight: 600,
         }}
@@ -623,7 +623,7 @@ function MarkerTile({ m, eyebrow }: { m: FmMarker; eyebrow?: React.ReactNode }) 
       )}
       <div
         style={{
-          fontSize: 9.5,
+          fontSize: 10,
           color: "var(--fm-text-secondary)",
           textTransform: "uppercase",
           letterSpacing: 0.5,
@@ -660,7 +660,7 @@ function MarkerTile({ m, eyebrow }: { m: FmMarker; eyebrow?: React.ReactNode }) 
       {m.range && (
         <div
           style={{
-            fontSize: 9.5,
+            fontSize: 10,
             color: "var(--fm-text-tertiary)",
             marginTop: 3,
             fontFamily: "var(--fm-font-mono)",
@@ -672,7 +672,7 @@ function MarkerTile({ m, eyebrow }: { m: FmMarker; eyebrow?: React.ReactNode }) 
       {m.meta && (
         <div
           style={{
-            fontSize: 9.5,
+            fontSize: 10,
             color: "var(--fm-text-secondary)",
             marginTop: 3,
             fontStyle: "italic",

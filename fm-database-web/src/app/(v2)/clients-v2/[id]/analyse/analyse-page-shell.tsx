@@ -40,7 +40,7 @@ export async function AnalysePageShell({
       activeNavId="clients"
       quickActions={clientQuickActions(clientId)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: displayName, href: `/clients-v2/${clientId}` },
         { label: "Analyse", href: `/clients-v2/${clientId}/analyse` },
         { label: formLabel },
@@ -85,7 +85,7 @@ export async function AnalysePageShell({
         <Link
           href={`/clients-v2/${clientId}/analyse`}
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             textDecoration: "none",
             padding: "5px 10px",

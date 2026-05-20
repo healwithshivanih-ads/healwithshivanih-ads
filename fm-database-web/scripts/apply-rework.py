@@ -58,6 +58,65 @@ def _slug_from_name(name: str) -> str:
     return s or "client"
 
 
+def _ai_suggested_protocol_slugs(client_id: str, max_top: int = 2) -> list[str]:
+    """Read the most recent assess-class session for this client and pull
+    out the AI's `suggested_protocols` (ranked, top-N).
+
+    Coach feedback 2026-05-19: the rework flow's ReworkSuggestion schema
+    has no `protocol` target_kind, so the rework AI doesn't recommend a
+    protocol when generating a new draft from a check-in trigger. But
+    the assess flow DOES — its suggestions live on session.ai_analysis.
+    This bridges the two: when a rework draft is built (especially the
+    no-parent / first-time branch which used to set
+    attached_protocols=[]), pre-attach the top assess-time protocol
+    suggestions so the coach lands in the plan editor with something
+    pre-populated to review.
+
+    Returns an empty list if no recent session has suggestions, or if
+    no protocol scored above the AI's 50% fit threshold.
+    """
+    try:
+        import yaml as _yaml
+        # plan_storage.plans_root() resolves to ~/fm-plans (override via
+        # FMDB_PLANS_DIR env). Use the same accessor the rest of this
+        # script uses to avoid drift.
+        from fmdb.plan import storage as _plan_storage
+        sessions_dir = _plan_storage.plans_root() / "clients" / client_id / "sessions"
+        if not sessions_dir.exists():
+            return []
+        # Sort newest-first by filename — sessions use ISO-prefix names.
+        files = sorted(sessions_dir.glob("*.yaml"), reverse=True)
+        for f in files:
+            try:
+                data = _yaml.safe_load(f.read_text()) or {}
+            except Exception:
+                continue
+            ai = data.get("ai_analysis") or {}
+            # `suggested_protocols` lives directly under ai_analysis,
+            # not nested in a `.suggestions` sub-object — verified
+            # against real session YAMLs 2026-05-19.
+            protocols = ai.get("suggested_protocols") or []
+            if not protocols:
+                continue
+            # Already sorted top-N by the suggester; defensive sort by
+            # fit_percent desc in case the wire format changed.
+            ranked = sorted(
+                [p for p in protocols if isinstance(p, dict)],
+                key=lambda p: float(p.get("fit_percent") or 0),
+                reverse=True,
+            )
+            slugs = [
+                str(p.get("protocol_slug") or "").strip()
+                for p in ranked[:max_top]
+                if p.get("protocol_slug")
+            ]
+            if slugs:
+                return slugs
+        return []
+    except Exception:
+        return []
+
+
 def _active_plan(plans, client_id: str):
     """Return the most recent active plan for `client_id`, by status preference."""
     rank = {"published": 3, "ready_to_publish": 2, "draft": 1}
@@ -194,6 +253,11 @@ def main() -> int:
             referrals=list(parent.referrals),
             tracking=parent.tracking.model_copy(deep=True),
             attached_resources=list(parent.attached_resources),
+            # Carry parent's attached protocols. If the assess AI has
+            # since suggested a DIFFERENT top protocol (e.g. check-in
+            # revealed a gut issue not in parent's protocol), surface
+            # that as a notes-for-coach hint without auto-replacing —
+            # the coach decides whether to swap the protocol manually.
             attached_protocols=list(parent.attached_protocols),
             status=PlanStatus.draft,
             status_history=[],
@@ -206,6 +270,22 @@ def main() -> int:
             supersedes=parent.slug,
         )
         is_successor = True
+        # Surface AI's latest protocol recommendations as a notes hint
+        # if they differ from what's already attached. Doesn't auto-swap
+        # — coach decides whether to replace.
+        try:
+            ai_top = _ai_suggested_protocol_slugs(client_id)
+            parent_set = set(parent.attached_protocols or [])
+            new_picks = [s for s in ai_top if s not in parent_set]
+            if new_picks:
+                hint = (
+                    "\n\n🧭 AI also suggests these protocols based on recent data: "
+                    + ", ".join(new_picks)
+                    + ". Review and swap into `attached_protocols` if appropriate."
+                )
+                plan.notes_for_coach = (plan.notes_for_coach or "") + hint
+        except Exception:
+            pass
     else:
         # Build a minimal first-time draft scaffolded from the client's
         # active conditions + the rework supplements/topics/labs.
@@ -227,7 +307,13 @@ def main() -> int:
             referrals=[],
             tracking={"habits": [], "symptoms_to_monitor": [], "recheck_questions": []},
             attached_resources=[],
-            attached_protocols=[],
+            # First-time rework draft — there's no parent plan to
+            # inherit protocols from. Pull the AI's top suggested
+            # protocols from the most recent assess session so the new
+            # draft lands with something pre-attached rather than an
+            # empty `attached_protocols: []` (coach bug 2026-05-19:
+            # "AI is not suggesting which protocol to use for the plan").
+            attached_protocols=_ai_suggested_protocol_slugs(client_id),
             status=PlanStatus.draft,
             status_history=[],
             catalogue_snapshot=CatalogueSnapshot(snapshot_date=today),

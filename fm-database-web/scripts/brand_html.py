@@ -641,8 +641,17 @@ _CSS = f"""
     line-height: 1.55;
   }}
 
-  /* ── Supplement Schedule ── */
-  #supplement-schedule {{
+  /* ── Supplement Schedule ──
+     Hidden by default in normal screen view (coach feedback 2026-05-19:
+     "Remove 'Your Supplement Schedule' visible block. Schedule should
+     print with the button only.") The 💊 Supplements print button
+     in the top print-bar sets body[data-print-supplement] which
+     re-shows this section (see the print-isolation block below).
+     The shopping list (#supplement-shopping-list) stays visible since
+     it's a one-time "buy everything now" reference. */
+  #supplement-schedule {{ display: none; }}
+  body[data-print-supplement] #supplement-schedule {{
+    display: block;
     margin: 56px 0 0;
     padding-top: 40px;
     border-top: 1.5px solid var(--indigo);
@@ -1133,14 +1142,7 @@ def wrap_in_brand_html(
     {start_buttons_html}
 
     <!-- Body -->
-    <div class="content">
-      <!-- Recipe note — hidden until JS confirms recipes exist (inline
-           legacy) or the plan slug is set (recipes live on /recipes/<slug>) -->
-      <div class="recipe-note" id="recipe-note" data-plan-slug="{plan_slug or ''}">
-        <strong>Recipes &rarr;</strong> &nbsp;·&nbsp;
-        Dishes marked with <span class="recipe-note-symbol">✦</span> have a full recipe.
-        Click any underlined dish name to open it.
-      </div>
+    <div class="content" data-plan-slug="{plan_slug or ''}">
       {body_html}
     </div>
 
@@ -1226,15 +1228,10 @@ def wrap_in_brand_html(
       bar.appendChild(suppBtn);
     }}
 
-    // Insert the bar below the recipe note (or at top of .content if no note)
+    // Insert the bar at the top of .content (recipe-note removed 2026-05-19)
     var content = document.querySelector('.content');
-    var recipeNote = document.getElementById('recipe-note');
     if (content) {{
-      if (recipeNote && recipeNote.style.display !== 'none') {{
-        recipeNote.after(bar);
-      }} else {{
-        content.insertBefore(bar, content.firstChild);
-      }}
+      content.insertBefore(bar, content.firstChild);
     }}
 
     // Clear attributes after print so full-document print works next time
@@ -1303,19 +1300,16 @@ def wrap_in_brand_html(
     // External recipes page mode: if no inline recipes were found and a
     // plan slug is set, link every ✦-marked cell to /recipes/<slug>.
     // (Post-reformat letters strip the inline appendix entirely.)
-    var noteEl = document.getElementById('recipe-note');
-    var planSlug = noteEl ? noteEl.getAttribute('data-plan-slug') : '';
+    // Recipe-note banner was removed 2026-05-19 (coach feedback: didn't
+    // work consistently). We still keep the inline-recipe linking logic.
+    var contentEl = document.querySelector('.content');
+    var planSlug = contentEl ? contentEl.getAttribute('data-plan-slug') : '';
     var externalUrl = planSlug ? ('/recipes/' + planSlug) : '';
 
     if (recipes.length === 0 && !externalUrl) return;
 
     // Sort longest key first so substring matching prefers more specific names.
     recipes.sort(function (a, b) {{ return b.key.length - a.key.length; }});
-
-    // ── Step 2: Show the recipe note banner ──────────────────────────────────
-    if (noteEl) noteEl.style.display = 'block';
-    var bar = document.querySelector('.week-print-bar');
-    if (bar && noteEl) noteEl.after(bar);
 
     // ── Step 3: Per-line link wrapping in every meal-plan table cell ────────
     // Split each cell on <br>; for each segment, score every indexed recipe

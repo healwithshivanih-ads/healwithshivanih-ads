@@ -153,7 +153,7 @@ export function FmAppShell({
             >
               ← Legacy UI
             </Link>
-            <div style={{ marginTop: 6, fontSize: 10.5 }}>v2 preview · phase 1</div>
+            <div style={{ marginTop: 6, fontSize: 11 }}>v2 preview · phase 1</div>
           </>
         }
       />

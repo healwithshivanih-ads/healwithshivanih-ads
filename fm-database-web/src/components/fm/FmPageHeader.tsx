@@ -6,11 +6,12 @@
 
 const STYLES = `
 .fm-page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
   gap: 24px;
   margin-bottom: 32px;
+  width: 100%;
 }
 .fm-page-header-title-wrap { min-width: 0; }
 .fm-page-header-title {
@@ -28,7 +29,14 @@ const STYLES = `
   color: var(--fm-text-secondary);
   line-height: 1.55;
 }
-.fm-page-header-right { flex-shrink: 0; }
+.fm-page-header-right { min-width: 0; }
+/* Stack vertically on narrow viewports — keeps the title readable when
+   the rightSlot would otherwise crowd it (e.g. dashboard with stat tiles). */
+@media (max-width: 720px) {
+  .fm-page-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 `;
 
 export interface FmPageHeaderProps {

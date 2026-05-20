@@ -14,9 +14,12 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { Fragment } from "react";
 import { FmAppShell, FmPageHeader, FmPanel, FmInfoRow, FmChip } from "@/components/fm";
 import { DEFAULT_FM_RANGES } from "@/components/client-widgets/lab-reference-ranges";
 import { getCataloguePath } from "@/lib/fmdb/paths";
+import { loadApiUsageMtdAllClients } from "@/lib/server-actions/usage";
+import { loadAllClients } from "@/lib/fmdb/loader";
 
 export const dynamic = "force-dynamic";
 
@@ -69,7 +72,7 @@ function tableHeaderStyle(): React.CSSProperties {
 
 function tableCellStyle(striped: boolean, align: "left" | "right"): React.CSSProperties {
   return {
-    fontSize: 11.5,
+    fontSize: 12,
     padding: "5px 10px",
     background: striped
       ? "var(--fm-surface-muted, rgba(0,0,0,0.015))"
@@ -103,23 +106,7 @@ function Row({
   );
 }
 
-function StatusDot({ ok }: { ok: boolean }) {
-  return (
-    <span
-      style={{
-        display: "inline-block",
-        width: 9,
-        height: 9,
-        borderRadius: "50%",
-        background: ok ? "var(--fm-success)" : "var(--fm-text-tertiary)",
-        marginRight: 6,
-        verticalAlign: "middle",
-      }}
-    />
-  );
-}
-
-export default function SettingsPage() {
+export default async function SettingsPage() {
   const whatsappOutbound =
     envVarSet("WHATSAPP_SERVER_URL") && envVarSet("WHATSAPP_SERVER_API_KEY");
   const whatsappInboundWebhook = envVarSet("WHATSAPP_WEBHOOK_SECRET");
@@ -128,6 +115,23 @@ export default function SettingsPage() {
   const vitaone = envVarSet("VITAONE_AFFILIATE_CODE");
   const vitaoneCode = envVarValue("VITAONE_AFFILIATE_CODE");
   const heygenKey = envVarSet("HEYGEN_API_KEY");
+
+  // API spend (month-to-date) — moved here from the dashboard 2026-05-19
+  // where coach said it was noise on the at-a-glance view. Now it lives
+  // on Settings where you can check spend whenever needed.
+  const [apiMtd, clients] = await Promise.all([
+    loadApiUsageMtdAllClients(),
+    loadAllClients() as Promise<Array<{ client_id: string; display_name?: string }>>,
+  ]);
+  const clientNameMap = new Map(
+    clients.map((c) => [c.client_id, c.display_name ?? c.client_id]),
+  );
+  const monthLabel = new Date().toLocaleString("en-IN", {
+    month: "long",
+    year: "numeric",
+  });
+  const inrFmt = (n: number) =>
+    `₹${n.toLocaleString("en-IN", { maximumFractionDigits: 2 })}`;
 
   return (
     <FmAppShell activeNavId="settings" crumbs={[{ label: "Settings" }]}>
@@ -143,7 +147,7 @@ export default function SettingsPage() {
               label="Anthropic API"
               value={
                 <span>
-                  <StatusDot ok={anthropic} />
+                  
                   {anthropic ? (
                     <FmChip tone="success">Configured</FmChip>
                   ) : (
@@ -156,7 +160,7 @@ export default function SettingsPage() {
               label="WhatsApp outbound (self-hosted Cloud API)"
               value={
                 <span>
-                  <StatusDot ok={whatsappOutbound} />
+                  
                   {whatsappOutbound ? (
                     <FmChip tone="success">Connected</FmChip>
                   ) : (
@@ -169,7 +173,7 @@ export default function SettingsPage() {
               label="Gmail SMTP (client letters)"
               value={
                 <span>
-                  <StatusDot ok={gmail} />
+                  
                   {gmail ? (
                     <FmChip tone="success">Connected</FmChip>
                   ) : (
@@ -182,7 +186,7 @@ export default function SettingsPage() {
               label="VitaOne affiliate code"
               value={
                 <span>
-                  <StatusDot ok={vitaone} />
+                  
                   {vitaone ? (
                     <FmChip tone="success">{vitaoneCode}</FmChip>
                   ) : (
@@ -195,7 +199,7 @@ export default function SettingsPage() {
               label="HeyGen video API"
               value={
                 <span>
-                  <StatusDot ok={heygenKey} />
+                  
                   {heygenKey ? (
                     <FmChip tone="success">API key set</FmChip>
                   ) : (
@@ -208,7 +212,7 @@ export default function SettingsPage() {
               label="WhatsApp inbound webhook"
               value={
                 <span>
-                  <StatusDot ok={whatsappInboundWebhook} />
+                  
                   {whatsappInboundWebhook ? (
                     <FmChip tone="success">Secret set</FmChip>
                   ) : (
@@ -220,12 +224,192 @@ export default function SettingsPage() {
           </div>
         </FmPanel>
 
+        <FmPanel
+          title={`API spend · ${monthLabel}`}
+          subtitle="Anthropic (Claude) usage charged this month, summed across every client. Resets on the 1st."
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gap: 12,
+              marginBottom: 16,
+            }}
+          >
+            <div
+              style={{
+                padding: "14px 16px",
+                background: "var(--fm-bg-cool)",
+                border: "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-sm)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 10,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  fontWeight: 700,
+                  color: "var(--fm-text-tertiary)",
+                  marginBottom: 4,
+                }}
+              >
+                Spent (₹)
+              </div>
+              <div
+                style={{
+                  fontSize: 22,
+                  fontWeight: 700,
+                  fontFamily: "var(--fm-font-mono)",
+                  color: "var(--fm-text-primary)",
+                }}
+              >
+                {inrFmt(apiMtd.this_month_cost_inr)}
+              </div>
+            </div>
+            <div
+              style={{
+                padding: "14px 16px",
+                background: "var(--fm-bg-cool)",
+                border: "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-sm)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 10,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  fontWeight: 700,
+                  color: "var(--fm-text-tertiary)",
+                  marginBottom: 4,
+                }}
+              >
+                Spent (USD)
+              </div>
+              <div
+                style={{
+                  fontSize: 22,
+                  fontWeight: 700,
+                  fontFamily: "var(--fm-font-mono)",
+                  color: "var(--fm-text-secondary)",
+                }}
+              >
+                ${apiMtd.this_month_cost_usd.toLocaleString("en-US", {
+                  maximumFractionDigits: 2,
+                })}
+              </div>
+            </div>
+            <div
+              style={{
+                padding: "14px 16px",
+                background: "var(--fm-bg-cool)",
+                border: "1px solid var(--fm-border-light)",
+                borderRadius: "var(--fm-radius-sm)",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 10,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  fontWeight: 700,
+                  color: "var(--fm-text-tertiary)",
+                  marginBottom: 4,
+                }}
+              >
+                Calls
+              </div>
+              <div
+                style={{
+                  fontSize: 22,
+                  fontWeight: 700,
+                  fontFamily: "var(--fm-font-mono)",
+                  color: "var(--fm-text-secondary)",
+                }}
+              >
+                {apiMtd.this_month_calls.toLocaleString("en-IN")}
+              </div>
+            </div>
+          </div>
+
+          {apiMtd.by_client.length === 0 ? (
+            <p
+              style={{
+                fontSize: 12,
+                color: "var(--fm-text-tertiary)",
+                fontStyle: "italic",
+                margin: 0,
+              }}
+            >
+              No Anthropic calls billed this month yet.
+            </p>
+          ) : (
+            <div>
+              <div
+                style={{
+                  fontSize: 10,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  fontWeight: 700,
+                  color: "var(--fm-text-tertiary)",
+                  marginBottom: 6,
+                }}
+              >
+                By client (top spend first)
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 90px 60px",
+                  gap: 0,
+                  border: "1px solid var(--fm-border-light)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  overflow: "hidden",
+                  fontFamily: "var(--fm-font-mono)",
+                  fontSize: 12,
+                }}
+              >
+                <div style={tableHeaderStyle()}>Client</div>
+                <div style={{ ...tableHeaderStyle(), textAlign: "right" }}>
+                  Spend
+                </div>
+                <div style={{ ...tableHeaderStyle(), textAlign: "right" }}>
+                  Calls
+                </div>
+                {apiMtd.by_client.map((row, i) => (
+                  <Fragment key={row.client_id}>
+                    <div style={tableCellStyle(i % 2 === 1, "left")}>
+                      {clientNameMap.get(row.client_id) ?? row.client_id}
+                      <span
+                        style={{
+                          color: "var(--fm-text-tertiary)",
+                          marginLeft: 6,
+                          fontSize: 11,
+                        }}
+                      >
+                        {row.client_id}
+                      </span>
+                    </div>
+                    <div style={tableCellStyle(i % 2 === 1, "right")}>
+                      {inrFmt(row.cost_inr)}
+                    </div>
+                    <div style={tableCellStyle(i % 2 === 1, "right")}>
+                      {row.calls}
+                    </div>
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+          )}
+        </FmPanel>
+
         <FmPanel title="Storage">
           <div style={{ display: "grid", gap: 0 }}>
             <FmInfoRow
               label="Catalogue"
               value={
-                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 11.5 }}>
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}>
                   {process.env.FMDB_CATALOGUE_DIR ?? "../fm-database/data"}
                 </span>
               }
@@ -233,7 +417,7 @@ export default function SettingsPage() {
             <FmInfoRow
               label="Plans + clients"
               value={
-                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 11.5 }}>
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}>
                   {process.env.FMDB_PLANS_DIR ?? "~/fm-plans"}
                 </span>
               }
@@ -241,7 +425,7 @@ export default function SettingsPage() {
             <FmInfoRow
               label="Resources toolkit"
               value={
-                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 11.5 }}>
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}>
                   {process.env.FMDB_RESOURCES_DIR ?? "~/fm-resources"}
                 </span>
               }
@@ -256,7 +440,7 @@ export default function SettingsPage() {
           <div
             style={{
               fontFamily: "var(--fm-font-mono)",
-              fontSize: 11.5,
+              fontSize: 12,
               display: "grid",
               gridTemplateColumns: "minmax(140px, 1fr) 80px 80px 70px",
               gap: 0,
@@ -345,7 +529,7 @@ export default function SettingsPage() {
             <FmInfoRow
               label="Version"
               value={
-                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 11.5 }}>
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}>
                   0.1.0
                 </span>
               }
@@ -353,7 +537,7 @@ export default function SettingsPage() {
             <FmInfoRow
               label="Port"
               value={
-                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 11.5 }}>
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}>
                   3002 (PM2 process: fm-coach)
                 </span>
               }
@@ -361,7 +545,7 @@ export default function SettingsPage() {
             <FmInfoRow
               label="Node env"
               value={
-                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 11.5 }}>
+                <span style={{ fontFamily: "var(--fm-font-mono)", fontSize: 12 }}>
                   {process.env.NODE_ENV ?? "unknown"}
                 </span>
               }

@@ -156,7 +156,7 @@ export function NasaLeanTestPanel({
       >
         <span style={{ fontSize: 16 }}>🩺</span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 12.5, fontWeight: 700 }}>NASA lean test</div>
+          <div style={{ fontSize: 13, fontWeight: 700 }}>NASA lean test</div>
           {latestSavedAt ? (
             <div style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
               Last: {new Date(latestSavedAt).toLocaleDateString()} ·{" "}
@@ -176,7 +176,7 @@ export function NasaLeanTestPanel({
           onClick={() => setOpen(true)}
           style={{
             padding: "5px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             background: "transparent",
             color: "var(--fm-primary)",
@@ -223,7 +223,7 @@ export function NasaLeanTestPanel({
           ✕ Close
         </button>
       </div>
-      <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
+      <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
         Client lies supine 5 min. Note HR + BP. Then stands against a wall —
         heels ~15 cm out, head + shoulders touching, arms relaxed. Take
         readings at 1, 3, 5, 7, 10 min. Delta-HR ≥ 30 bpm + symptoms = POTS.

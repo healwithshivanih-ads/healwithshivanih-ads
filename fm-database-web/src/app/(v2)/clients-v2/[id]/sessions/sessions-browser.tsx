@@ -21,6 +21,7 @@ import { FmPanel } from "@/components/fm";
 import { SessionBriefModal } from "@/components/client-widgets/session-brief-modal";
 import { PreSessionBrief } from "@/components/client-widgets/pre-session-brief";
 import { SessionEditPanel } from "./session-edit-panel";
+import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
 
 const TYPE_META: Record<
   string,
@@ -274,7 +275,7 @@ export function SessionsBrowser({
                       : "var(--fm-text-secondary)",
                   border: `1px solid ${isActive ? "var(--fm-primary)" : "var(--fm-border)"}`,
                   borderRadius: "var(--fm-radius-pill)",
-                  fontSize: 10.5,
+                  fontSize: 11,
                   fontWeight: 700,
                   cursor: disabled ? "default" : "pointer",
                   fontFamily: "inherit",
@@ -339,7 +340,7 @@ export function SessionsBrowser({
                   >
                     <span
                       style={{
-                        fontSize: 11.5,
+                        fontSize: 12,
                         fontWeight: 700,
                         color: "var(--fm-text-primary)",
                       }}
@@ -358,7 +359,7 @@ export function SessionsBrowser({
                   </div>
                   <div
                     style={{
-                      fontSize: 10.5,
+                      fontSize: 11,
                       color: "var(--fm-text-tertiary)",
                       fontFamily: "var(--fm-font-mono)",
                       marginTop: 1,
@@ -374,7 +375,7 @@ export function SessionsBrowser({
                         display: "flex",
                         gap: 6,
                         marginTop: 4,
-                        fontSize: 9.5,
+                        fontSize: 10,
                         color: "var(--fm-text-secondary)",
                       }}
                     >
@@ -395,7 +396,7 @@ export function SessionsBrowser({
             <div
               style={{
                 padding: "10px 12px",
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "var(--fm-text-tertiary)",
                 background: "var(--fm-bg-cool)",
                 borderRadius: "var(--fm-radius-sm)",
@@ -516,7 +517,7 @@ function SessionInspector({
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
                 textTransform: "uppercase",
                 letterSpacing: 0.6,
@@ -540,7 +541,7 @@ function SessionInspector({
             </h2>
             <div
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
                 fontFamily: "var(--fm-font-mono)",
               }}
@@ -573,7 +574,7 @@ function SessionInspector({
                 title="Print or save as PDF — for sharing with a doctor / specialist"
                 style={{
                   padding: "7px 14px",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 700,
                   background: "var(--fm-surface)",
                   color: "var(--fm-text-primary)",
@@ -591,7 +592,7 @@ function SessionInspector({
                 href={`/clients-v2/${clientId}/plan/edit/${session.generated_plan_slug}`}
                 style={{
                   padding: "7px 14px",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 700,
                   background: "var(--fm-primary)",
                   color: "#fff",
@@ -607,7 +608,7 @@ function SessionInspector({
                 title={`Plan slug "${session.generated_plan_slug}" no longer exists on disk — likely deleted or pruned by the one-draft-per-client policy.`}
                 style={{
                   padding: "7px 12px",
-                  fontSize: 10.5,
+                  fontSize: 11,
                   fontWeight: 600,
                   background: "var(--fm-bg-cool)",
                   color: "var(--fm-text-tertiary)",
@@ -624,7 +625,7 @@ function SessionInspector({
         {presenting && (
           <div
             style={{
-              fontSize: 12.5,
+              fontSize: 13,
               lineHeight: 1.55,
               padding: "10px 12px",
               background: "var(--fm-bg-warm)",
@@ -665,7 +666,7 @@ function SessionInspector({
         <FmPanel title="🧠 AI synthesis" subtitle="The coach's working hypothesis from this session.">
           <div
             style={{
-              fontSize: 12.5,
+              fontSize: 13,
               lineHeight: 1.65,
               whiteSpace: "pre-wrap",
               color: "var(--fm-text-primary)",
@@ -708,7 +709,7 @@ function SessionInspector({
                   >
                     <span
                       style={{
-                        fontSize: 12.5,
+                        fontSize: 13,
                         fontWeight: 700,
                         color: "var(--fm-text-primary)",
                       }}
@@ -722,7 +723,7 @@ function SessionInspector({
                           background: "rgba(110, 76, 200, 0.10)",
                           color: "#5a3fb0",
                           borderRadius: "var(--fm-radius-pill)",
-                          fontSize: 10.5,
+                          fontSize: 11,
                           fontWeight: 700,
                         }}
                       >
@@ -733,7 +734,7 @@ function SessionInspector({
                   {d.reasoning && (
                     <div
                       style={{
-                        fontSize: 11.5,
+                        fontSize: 12,
                         color: "var(--fm-text-secondary)",
                         marginTop: 4,
                         lineHeight: 1.55,
@@ -763,8 +764,8 @@ function SessionInspector({
                   borderRadius: "var(--fm-radius-sm)",
                 }}
               >
-                <div style={{ fontSize: 12.5, fontWeight: 700 }}>
-                  {s.name ?? s.supplement_slug ?? "—"}
+                <div style={{ fontSize: 13, fontWeight: 700 }}>
+                  {supplementDisplayName(s) || "—"}
                   {s.dose && (
                     <span
                       style={{
@@ -880,7 +881,7 @@ function SessionInspector({
                   background: "var(--fm-surface)",
                   border: "1px solid var(--fm-border-light)",
                   borderRadius: "var(--fm-radius-sm)",
-                  fontSize: 11.5,
+                  fontSize: 12,
                 }}
               >
                 <div
@@ -898,7 +899,7 @@ function SessionInspector({
                 {ev.rationale && (
                   <div
                     style={{
-                      fontSize: 10.5,
+                      fontSize: 11,
                       color: "var(--fm-text-tertiary)",
                       marginTop: 2,
                     }}
@@ -932,7 +933,7 @@ function ChipLabel({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        fontSize: 9.5,
+        fontSize: 10,
         textTransform: "uppercase",
         letterSpacing: 0.6,
         fontWeight: 700,

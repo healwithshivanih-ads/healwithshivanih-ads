@@ -55,7 +55,7 @@ export function FmCancellationAlertBanner({
     >
       <p
         style={{
-          fontSize: 11.5,
+          fontSize: 12,
           color: "var(--fm-text-secondary)",
           margin: "0 0 10px",
         }}
@@ -81,7 +81,7 @@ export function FmCancellationAlertBanner({
               borderRadius: 6,
               textDecoration: "none",
               color: "inherit",
-              fontSize: 12.5,
+              fontSize: 13,
             }}
           >
             <span style={{ fontSize: 14, lineHeight: 1 }}>❌</span>
@@ -92,13 +92,13 @@ export function FmCancellationAlertBanner({
                   {r.event_title ?? r.event_slug ?? "session"}
                 </span>
               </div>
-              <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
+              <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
                 Was scheduled for {fmtStart(r.start_time)} · cancelled {fmtAgo(r.received_at)}
               </div>
             </div>
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "#a32c1c",
                 fontWeight: 700,
                 whiteSpace: "nowrap",

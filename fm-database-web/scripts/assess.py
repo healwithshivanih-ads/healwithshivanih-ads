@@ -31,6 +31,7 @@ Also persists computed lab_markers to the client YAML (latest only).
 from __future__ import annotations
 
 import base64
+import hashlib
 import json
 import os
 import re
@@ -455,6 +456,110 @@ def _synthetic_result(payload: dict) -> dict:
     }
 
 
+# ─────────────────────────────────────────────────────────────────────────
+# Assess result cache (D.4) — Haiku-first re-run gate via full-result cache
+# ─────────────────────────────────────────────────────────────────────────
+# When the coach re-runs Analyze with identical inputs (same symptoms,
+# topics, lab files, client context, presenting complaints) the previous
+# AssessResult is returned from disk instead of paying for another Sonnet
+# call. Cache key = sha256 of the canonicalised input bundle. Cache lives
+# at ~/.fm-cache/assess/<key>.json. Disabled via FM_ASSESS_NO_CACHE=1.
+#
+# Cache entries are append-only — stale entries are harmless (next coach
+# edit will produce a fresh key) and the dir is gitignored.
+
+_ASSESS_CACHE_DIR = Path(
+    os.environ.get("FM_ASSESS_CACHE_DIR")
+    or (Path.home() / ".fm-cache" / "assess")
+)
+
+
+def _hash_lab_file(path: str) -> str:
+    """Fast file hash for cache-key derivation. Reads the file once;
+    SHA-256 prefix (16 hex chars) is enough collision resistance for the
+    "did the coach upload the same lab again" check."""
+    try:
+        with open(path, "rb") as fh:
+            return hashlib.sha256(fh.read()).hexdigest()[:16]
+    except Exception:
+        return "missing"
+
+
+def _stable_json(obj) -> str:
+    """Canonical JSON for hashing — sorted keys, no whitespace."""
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"), default=str)
+
+
+def _assess_cache_key(
+    *,
+    client_ctx: dict,
+    symptoms: list[str],
+    topics: list[str],
+    complaints: str,
+    history_bundle: list[dict] | None,
+    attachments: list[dict],
+) -> str:
+    """Derive a deterministic cache key from all inputs the model sees."""
+    lab_sigs = sorted(
+        _hash_lab_file(a.get("path", "")) for a in attachments if a.get("path")
+    )
+    blob = {
+        # Strip non-deterministic fields (timestamps) from client_ctx; we
+        # only hash the substance that drives the model output.
+        "client_ctx": {
+            k: v
+            for k, v in client_ctx.items()
+            if k
+            not in (
+                "intake_token",
+                "intake_token_expires_at",
+                "intake_form_draft_saved_at",
+                "intake_last_submitted_at",
+                "next_contact_date",
+            )
+        },
+        "symptoms": sorted(symptoms),
+        "topics": sorted(topics),
+        "complaints": (complaints or "").strip(),
+        "history_bundle": history_bundle or [],
+        "labs": lab_sigs,
+    }
+    h = hashlib.sha256(_stable_json(blob).encode()).hexdigest()
+    return h[:32]  # 32 hex chars = 128 bits, plenty
+
+
+def _load_cached_assess(key: str) -> dict | None:
+    if os.environ.get("FM_ASSESS_NO_CACHE") == "1":
+        return None
+    f = _ASSESS_CACHE_DIR / f"{key}.json"
+    if not f.exists():
+        return None
+    try:
+        with open(f) as fh:
+            data = json.load(fh)
+        # Annotate that this came from cache so the UI can surface a
+        # subtle "cached" badge if it wants.
+        data["_from_cache"] = True
+        data["_cached_at"] = data.get("_cached_at", "")
+        return data
+    except Exception:
+        return None
+
+
+def _save_assess_cache(key: str, payload: dict) -> None:
+    if os.environ.get("FM_ASSESS_NO_CACHE") == "1":
+        return
+    try:
+        _ASSESS_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        f = _ASSESS_CACHE_DIR / f"{key}.json"
+        out = {**payload, "_cached_at": datetime.now(timezone.utc).isoformat()}
+        with open(f, "w") as fh:
+            json.dump(out, fh)
+    except Exception:
+        # Cache failures are NEVER fatal — fall through.
+        pass
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -510,7 +615,55 @@ def main() -> int:
         json.dump({"ok": False, "error": f"client not found: {client_id} ({e})"}, sys.stdout)
         return 2
 
-    subgraph = build_subgraph(cat, symptom_slugs=symptoms, topic_slugs=topics)
+    # ── Subgraph cache (D.5) ────────────────────────────────────────────
+    # The catalogue subgraph is a pure function of (symptoms, topics, catalogue
+    # mtime). Cache by sha256 of the slug lists + catalogue mtime so the
+    # ~35K-token bundle isn't re-walked from scratch on every Analyze.
+    # Persists at ~/.fm-cache/assess/subgraph/<key>.json. Bust manually
+    # via `rm -rf ~/.fm-cache/assess/subgraph` after catalogue edits if
+    # the mtime heuristic ever drifts (gitignored, harmless to clear).
+    subgraph: dict | None = None
+    if os.environ.get("FM_ASSESS_NO_CACHE") != "1":
+        try:
+            # Catalogue mtime — use the most recent modification across the
+            # data dir so a catalogue change invalidates all subgraph cache
+            # entries automatically.
+            cat_mtime = 0.0
+            for p in Path(os.environ.get("FMDB_CATALOGUE_DIR") or "../fm-database/data").glob("**/*.yaml"):
+                cat_mtime = max(cat_mtime, p.stat().st_mtime)
+            sg_blob = {
+                "symptoms": sorted(symptoms),
+                "topics": sorted(topics),
+                "cat_mtime": int(cat_mtime),
+            }
+            sg_key = hashlib.sha256(_stable_json(sg_blob).encode()).hexdigest()[:32]
+            sg_cache_dir = _ASSESS_CACHE_DIR / "subgraph"
+            sg_file = sg_cache_dir / f"{sg_key}.json"
+            if sg_file.exists():
+                with open(sg_file) as fh:
+                    subgraph = json.load(fh)
+        except Exception:
+            subgraph = None
+    if subgraph is None:
+        subgraph = build_subgraph(cat, symptom_slugs=symptoms, topic_slugs=topics)
+        # Best-effort save — failures don't break the assess flow.
+        try:
+            if os.environ.get("FM_ASSESS_NO_CACHE") != "1":
+                sg_cache_dir = _ASSESS_CACHE_DIR / "subgraph"
+                sg_cache_dir.mkdir(parents=True, exist_ok=True)
+                cat_mtime = 0.0
+                for p in Path(os.environ.get("FMDB_CATALOGUE_DIR") or "../fm-database/data").glob("**/*.yaml"):
+                    cat_mtime = max(cat_mtime, p.stat().st_mtime)
+                sg_blob = {
+                    "symptoms": sorted(symptoms),
+                    "topics": sorted(topics),
+                    "cat_mtime": int(cat_mtime),
+                }
+                sg_key = hashlib.sha256(_stable_json(sg_blob).encode()).hexdigest()[:32]
+                with open(sg_cache_dir / f"{sg_key}.json", "w") as fh:
+                    json.dump(subgraph, fh)
+        except Exception:
+            pass
     subgraph_bytes = len(json.dumps(subgraph))
 
     # ----- attachments (already saved by the TS layer; we re-read them as base64) -----
@@ -810,25 +963,61 @@ def main() -> int:
         if not os.environ.get("ANTHROPIC_API_KEY"):
             json.dump({"ok": False, "error": "ANTHROPIC_API_KEY not set"}, sys.stdout)
             return 2
-        from fmdb.assess.suggester import synthesize
-        try:
-            result = synthesize(
-                client_context=client_ctx,
-                selected_symptom_slugs=symptoms,
-                selected_topic_slugs=topics,
-                subgraph=subgraph,
-                lab_files=lab_files,
-                additional_notes=complaints,
-                session_history=history_bundle,
-                days_since_last_prescription=days_since_last_prescription,
-                vitaone_inventory=_load_vitaone_inventory(),
+
+        # ── Re-run cache check (D.4) ───────────────────────────────────
+        # Skip the ~$0.20 Sonnet call when the coach re-runs Analyze with
+        # identical inputs (no symptom edits, no new uploads, no client
+        # context change). Cache hit → return the previous AssessResult
+        # verbatim from disk. Persists to ~/.fm-cache/assess/<key>.json.
+        cache_key = _assess_cache_key(
+            client_ctx=client_ctx,
+            symptoms=symptoms,
+            topics=topics,
+            complaints=complaints,
+            history_bundle=history_bundle,
+            attachments=attachments,
+        )
+        cached = _load_cached_assess(cache_key)
+        if cached is not None:
+            from fmdb.assess.results import AssessSuggestions, AssessUsage
+            try:
+                suggestions = AssessSuggestions.model_validate(cached["suggestions"])
+                usage = AssessUsage.model_validate(cached["usage"]).model_dump()
+                usage["cache_hit"] = True
+                usage["cache_key"] = cache_key
+            except Exception:
+                # Cache corrupted — fall through to live call.
+                cached = None
+        if cached is None:
+            from fmdb.assess.suggester import synthesize
+            try:
+                result = synthesize(
+                    client_context=client_ctx,
+                    selected_symptom_slugs=symptoms,
+                    selected_topic_slugs=topics,
+                    subgraph=subgraph,
+                    lab_files=lab_files,
+                    additional_notes=complaints,
+                    session_history=history_bundle,
+                    days_since_last_prescription=days_since_last_prescription,
+                    vitaone_inventory=_load_vitaone_inventory(),
+                )
+            except Exception as e:
+                json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)
+                return 1
+            # `result` is an AssessResult Pydantic model with typed .suggestions.
+            suggestions = result.suggestions
+            usage = result.usage.model_dump()
+            usage["cache_hit"] = False
+            usage["cache_key"] = cache_key
+            # Persist the AssessResult for next time. Best-effort.
+            _save_assess_cache(
+                cache_key,
+                {
+                    "suggestions": suggestions.model_dump(),
+                    "usage": usage,
+                },
             )
-        except Exception as e:
-            json.dump({"ok": False, "error": f"synthesize() failed: {type(e).__name__}: {e}"}, sys.stdout)
-            return 1
-        # `result` is an AssessResult Pydantic model with typed .suggestions.
-        suggestions = result.suggestions
-        usage = result.usage.model_dump()
         try:
             from fmdb.usage import log_usage as _log_usage
             _log_usage(

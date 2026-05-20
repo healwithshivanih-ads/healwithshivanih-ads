@@ -156,7 +156,7 @@ function BookingRow({ row, isPast }: { row: UpcomingBooking; isPast: boolean }) 
         background: isCancelled ? "rgba(231, 76, 60, 0.05)" : "var(--fm-surface)",
         border: `1px solid ${isCancelled ? "rgba(231, 76, 60, 0.20)" : "var(--fm-border-light)"}`,
         borderRadius: 6,
-        fontSize: 12.5,
+        fontSize: 13,
         opacity: isPast && !isCancelled ? 0.7 : 1,
       }}
     >
@@ -177,14 +177,14 @@ function BookingRow({ row, isPast }: { row: UpcomingBooking; isPast: boolean }) 
             </span>
           )}
         </div>
-        <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
+        <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
           {fmtWhen(row.start_time)}
           {row.location && row.location !== "video" ? ` · ${row.location}` : ""}
         </div>
       </div>
       <span
         style={{
-          fontSize: 10.5,
+          fontSize: 11,
           color: "var(--fm-text-tertiary)",
           fontFamily: "var(--fm-font-mono)",
         }}

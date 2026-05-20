@@ -120,7 +120,7 @@ export function FmCatalogueCommitBanner({ initialStatus }: FmCatalogueCommitBann
             {total} uncommitted catalogue change{total === 1 ? "" : "s"}
             <span
               style={{
-                fontSize: 9.5,
+                fontSize: 10,
                 marginLeft: 8,
                 padding: "1px 6px",
                 borderRadius: 3,
@@ -134,7 +134,7 @@ export function FmCatalogueCommitBanner({ initialStatus }: FmCatalogueCommitBann
               local
             </span>
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
             {status.added > 0 && (
               <>
                 <span style={{ color: "#1E8449", fontWeight: 600 }}>
@@ -163,7 +163,7 @@ export function FmCatalogueCommitBanner({ initialStatus }: FmCatalogueCommitBann
             background: "transparent",
             border: "1px solid rgba(0,0,0,0.10)",
             padding: "6px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 600,
             color: "#8a5a08",
             borderRadius: "var(--fm-radius-sm)",
@@ -182,7 +182,7 @@ export function FmCatalogueCommitBanner({ initialStatus }: FmCatalogueCommitBann
             color: "#fff",
             border: 0,
             padding: "6px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             borderRadius: "var(--fm-radius-sm)",
             cursor: pending ? "wait" : "pointer",
@@ -313,7 +313,7 @@ export function FmCatalogueCommitBanner({ initialStatus }: FmCatalogueCommitBann
                     >
                       <span
                         style={{
-                          fontSize: 9.5,
+                          fontSize: 10,
                           fontWeight: 700,
                           letterSpacing: 0.5,
                           textTransform: "uppercase",
@@ -341,7 +341,7 @@ export function FmCatalogueCommitBanner({ initialStatus }: FmCatalogueCommitBann
           <label
             style={{
               display: "block",
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: 0.7,
@@ -518,7 +518,7 @@ function CatalogueDiffModal({
             <pre
               style={{
                 margin: 0,
-                fontSize: 11.5,
+                fontSize: 12,
                 lineHeight: 1.55,
                 fontFamily: "var(--fm-font-mono, ui-monospace, SFMono-Regular, Menlo, monospace)",
                 whiteSpace: "pre-wrap",

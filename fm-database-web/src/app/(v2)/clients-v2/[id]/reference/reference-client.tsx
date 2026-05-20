@@ -23,6 +23,7 @@
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import type { LetterSections } from "./extract-letter-sections";
+import { stripBrand, supplementDisplayName } from "@/lib/fmdb/supplement-display";
 
 interface SupplementItem {
   supplement_slug: string;
@@ -253,8 +254,8 @@ function FallbackSchedule({
                   background: "#f8fafc",
                 }}
               >
-                <div style={{ fontWeight: 600, fontSize: 13.5 }}>
-                  {nameMap[s.supplement_slug] ?? s.supplement_slug}
+                <div style={{ fontWeight: 600, fontSize: 14 }}>
+                  {stripBrand(nameMap[s.supplement_slug] ?? "") || supplementDisplayName(s)}
                 </div>
                 <div style={{ fontSize: 12, color: "#475569", marginTop: 2, display: "flex", gap: 12, flexWrap: "wrap" }}>
                   {s.dose && <span><strong>Dose:</strong> {s.dose}</span>}
@@ -263,7 +264,7 @@ function FallbackSchedule({
                   {s.take_with_food && <span><strong>Food:</strong> {s.take_with_food}</span>}
                 </div>
                 {s.coach_rationale && (
-                  <div style={{ fontSize: 11.5, color: "#64748b", marginTop: 6, whiteSpace: "pre-wrap" }}>
+                  <div style={{ fontSize: 12, color: "#64748b", marginTop: 6, whiteSpace: "pre-wrap" }}>
                     {s.coach_rationale}
                   </div>
                 )}
@@ -603,7 +604,7 @@ export function ReferenceClient({
                 </p>
               )}
               {nutrition.pattern && (
-                <div style={{ fontSize: 13.5, marginBottom: 14, color: "#475569" }}>
+                <div style={{ fontSize: 14, marginBottom: 14, color: "#475569" }}>
                   <strong>Pattern:</strong> {nutrition.pattern}
                 </div>
               )}
@@ -690,7 +691,7 @@ export function ReferenceClient({
                       </span>
                     )}
                     {p.details && (
-                      <div style={{ fontSize: 12.5, color: "#475569", marginTop: 2 }}>
+                      <div style={{ fontSize: 13, color: "#475569", marginTop: 2 }}>
                         {p.details}
                       </div>
                     )}
@@ -723,7 +724,7 @@ export function ReferenceClient({
               </h2>
               <div
                 style={{
-                  fontSize: 12.5,
+                  fontSize: 13,
                   whiteSpace: "pre-wrap",
                   lineHeight: 1.55,
                   color: "#78350f",
@@ -751,7 +752,7 @@ export function ReferenceClient({
             <span>Plan</span>
             <code
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 padding: "1px 6px",
                 background: "#f8fafc",
                 borderRadius: 4,

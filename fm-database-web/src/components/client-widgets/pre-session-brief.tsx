@@ -252,10 +252,15 @@ function QuickNoteWidget({ clientId }: { clientId: string }) {
     if (!noteText.trim()) return;
     setNoteSaving(true); setNoteError(null); setNoteSaved(false);
     const today = new Date().toISOString().slice(0, 10);
+    // Encode BOTH the surface (pre_session_brief) and the coach-selected
+    // source (coach_observation | pre_session_thought) in the tags so the
+    // Sessions browser + AI assess context can distinguish. Previously
+    // the `source` radio state was set but never written, making the
+    // radio purely cosmetic.
     const result = await saveSessionAction({
       client_id: clientId,
       session_type: "quick_note",
-      presenting_complaints: `[source: pre_session_brief]\n\n${noteText.trim()}`,
+      presenting_complaints: `[source: pre_session_brief] [origin: ${source}]\n\n${noteText.trim()}`,
       session_date: today,
     });
     setNoteSaving(false);

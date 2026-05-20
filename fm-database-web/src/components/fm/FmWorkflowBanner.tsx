@@ -106,7 +106,7 @@ export function FmWorkflowBanner({
           {title}
           <span
             style={{
-              fontSize: 9.5,
+              fontSize: 10,
               marginLeft: 8,
               padding: "1px 6px",
               borderRadius: 3,
@@ -121,7 +121,7 @@ export function FmWorkflowBanner({
           </span>
         </div>
         {detail && (
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>{detail}</div>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>{detail}</div>
         )}
       </div>
       {cta && (

@@ -138,7 +138,7 @@ export function LabsViewPanel({
                 key={m}
                 onClick={() => setMode(m)}
                 style={{
-                  fontSize: 10.5,
+                  fontSize: 11,
                   fontWeight: 600,
                   padding: "3px 9px",
                   borderRadius: 999,
@@ -179,7 +179,7 @@ export function LabsViewPanel({
         >
           <div
             style={{
-              fontSize: 12.5,
+              fontSize: 13,
               fontWeight: 700,
               color: overdueRows.length > 0 ? "#991b1b" : "#92400e",
               marginBottom: 4,
@@ -187,7 +187,7 @@ export function LabsViewPanel({
           >
             ⏰ Retest reminder
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", lineHeight: 1.5 }}>
             {overdueRows.length > 0 && (
               <div style={{ marginBottom: 4 }}>
                 <strong style={{ color: "#991b1b" }}>
@@ -206,7 +206,7 @@ export function LabsViewPanel({
                 {dueSoonRows.length > 3 && ` + ${dueSoonRows.length - 3} more`}.
               </div>
             )}
-            <div style={{ marginTop: 6, color: "var(--fm-text-tertiary)", fontSize: 10.5 }}>
+            <div style={{ marginTop: 6, color: "var(--fm-text-tertiary)", fontSize: 11 }}>
               Anchored to {SOURCE_LABEL[planStartSource]} start date{" "}
               {planStartAnchor && (
                 <span style={{ fontFamily: "var(--fm-font-mono)" }}>{fmtDate(planStartAnchor)}</span>

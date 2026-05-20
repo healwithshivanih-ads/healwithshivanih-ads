@@ -82,7 +82,7 @@ export function TierOneSuspicionsPanel({
         <span
           style={{
             marginLeft: "auto",
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             fontStyle: "italic",
           }}
@@ -111,7 +111,7 @@ export function TierOneSuspicionsPanel({
                 background: "#fff",
                 border: `1px solid ${isHigh ? "rgba(220, 38, 38, 0.30)" : "rgba(148, 163, 184, 0.4)"}`,
                 borderRadius: "var(--fm-radius-sm)",
-                fontSize: 11.5,
+                fontSize: 12,
                 lineHeight: 1.5,
                 display: "flex",
                 gap: 8,
@@ -131,7 +131,7 @@ export function TierOneSuspicionsPanel({
                     style={{
                       marginLeft: 6,
                       padding: "1px 6px",
-                      fontSize: 9.5,
+                      fontSize: 10,
                       fontWeight: 700,
                       textTransform: "uppercase",
                       letterSpacing: 0.5,
@@ -172,7 +172,7 @@ export function TierOneSuspicionsPanel({
           disabled={pending}
           style={{
             padding: "6px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             background: pending ? "#94a3b8" : "#4338ca",
             color: "#fff",
@@ -185,7 +185,7 @@ export function TierOneSuspicionsPanel({
           {pending ? "Generating…" : "📨 Re-issue intake to verify"}
         </button>
         <span
-          style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", lineHeight: 1.4 }}
+          style={{ fontSize: 11, color: "var(--fm-text-tertiary)", lineHeight: 1.4 }}
         >
           Client returns to the same form, fills only the new Tier 1 sections —
           earlier answers stay saved.

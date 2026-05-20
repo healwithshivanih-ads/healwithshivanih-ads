@@ -84,7 +84,7 @@ export default function HelpStub() {
               >
                 <div
                   style={{
-                    fontSize: 13.5,
+                    fontSize: 14,
                     fontWeight: 700,
                     color: "var(--fm-text-primary)",
                     marginBottom: 4,
@@ -94,7 +94,7 @@ export default function HelpStub() {
                 </div>
                 <div
                   style={{
-                    fontSize: 12.5,
+                    fontSize: 13,
                     color: "var(--fm-text-secondary)",
                     lineHeight: 1.55,
                   }}
@@ -124,7 +124,7 @@ export default function HelpStub() {
                 <Kbd>{s.keys}</Kbd>
                 <span
                   style={{
-                    fontSize: 11.5,
+                    fontSize: 12,
                     color: "var(--fm-text-secondary)",
                     lineHeight: 1.5,
                   }}

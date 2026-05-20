@@ -39,6 +39,10 @@ export const dynamic = "force-dynamic";
 const LETTER_TYPES: LetterType[] = [
   "consolidated",
   "meal_plan",
+  "meal_plan_phase",     // ← was missing; ?type=meal_plan_phase was silently
+                         // falling back to "consolidated" so clicking
+                         // Open on a Wks 3-4 phase card loaded the Wks 1-2
+                         // (consolidated) letter instead. Fixed 2026-05-19.
   "supplement_plan",
   "lifestyle_guide",
   "exercise_plan",
@@ -91,6 +95,15 @@ export default async function LetterEditorPage({
 
   const client = await loadClientById(id);
   if (!client) notFound();
+
+  // Cross-client guard: refuse to render a letter whose plan belongs to
+  // a different client_id than what's in the URL. Prevents URL-tampering
+  // from exposing one client's letter under another's profile.
+  const { loadPlanBySlug } = await import("@/lib/fmdb/loader");
+  const guardPlan = await loadPlanBySlug(planSlug);
+  if (guardPlan && guardPlan.client_id && guardPlan.client_id !== id) {
+    notFound();
+  }
 
   // For phase letters the filename includes the week range —
   // dhanishta-plan-2-...-meal_plan-wk3-4.md — so loadMealPlan needs the
@@ -217,7 +230,7 @@ function NoPlanFallback({
               background: "var(--fm-primary)",
               color: "#fff",
               padding: "9px 16px",
-              fontSize: 12.5,
+              fontSize: 13,
               fontWeight: 700,
               borderRadius: "var(--fm-radius-sm)",
               textDecoration: "none",
@@ -231,7 +244,7 @@ function NoPlanFallback({
               background: "var(--fm-surface)",
               border: "1px solid var(--fm-border)",
               padding: "9px 16px",
-              fontSize: 12.5,
+              fontSize: 13,
               fontWeight: 700,
               borderRadius: "var(--fm-radius-sm)",
               textDecoration: "none",

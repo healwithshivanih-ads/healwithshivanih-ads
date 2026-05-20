@@ -212,7 +212,7 @@ export function LetterRefinementChat({ clientId, planSlug, letterType, onSaved }
             onClick={clearHistory}
             style={{
               marginLeft: "auto",
-              fontSize: 10.5,
+              fontSize: 11,
               background: "none",
               border: 0,
               color: "var(--fm-text-tertiary)",
@@ -242,7 +242,7 @@ export function LetterRefinementChat({ clientId, planSlug, letterType, onSaved }
             <span style={{ fontSize: 11, fontWeight: 700, color: "#8a5a08", textTransform: "uppercase", letterSpacing: 0.5 }}>
               📋 Pending changes ({pendingEdits.length})
             </span>
-            <span style={{ fontSize: 10.5, color: "#8a5a08", opacity: 0.85 }}>
+            <span style={{ fontSize: 11, color: "#8a5a08", opacity: 0.85 }}>
               Click Finalise to apply all to the meal plan in one rewrite (~$0.05)
             </span>
             <button
@@ -266,7 +266,7 @@ export function LetterRefinementChat({ clientId, planSlug, letterType, onSaved }
               {pending ? "⏳ Applying…" : "✅ Finalise & apply"}
             </button>
           </div>
-          <ul style={{ margin: 0, paddingLeft: 18, fontSize: 11.5, color: "#1f1f1f", lineHeight: 1.55 }}>
+          <ul style={{ margin: 0, paddingLeft: 18, fontSize: 12, color: "#1f1f1f", lineHeight: 1.55 }}>
             {pendingEdits.map((p, i) => (
               <li key={i}>{p}</li>
             ))}
@@ -330,7 +330,7 @@ export function LetterRefinementChat({ clientId, planSlug, letterType, onSaved }
       )}
 
       {error && (
-        <div style={{ fontSize: 11.5, color: "var(--fm-danger, #b04646)" }}>{error}</div>
+        <div style={{ fontSize: 12, color: "var(--fm-danger, #b04646)" }}>{error}</div>
       )}
 
       <div style={{ display: "flex", gap: 8, alignItems: "flex-end" }}>
@@ -375,7 +375,7 @@ export function LetterRefinementChat({ clientId, planSlug, letterType, onSaved }
           {pending ? "…" : "✨ Apply"}
         </button>
       </div>
-      <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", lineHeight: 1.5 }}>
+      <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", lineHeight: 1.5 }}>
         Chat is free-form — propose edits, retract them, change your mind.
         The AI keeps a running pending-changes list. Nothing touches the
         meal plan on disk until you click <strong>Finalise & apply</strong>.

@@ -196,7 +196,7 @@ export function FmRecheckPanel({
           </div>
           <div
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               color: "var(--fm-text-secondary)",
               marginTop: 2,
             }}
@@ -305,7 +305,7 @@ export function FmRecheckPanel({
                 </div>
                 <div
                   style={{
-                    fontSize: 10.5,
+                    fontSize: 11,
                     color: "var(--fm-text-tertiary)",
                     marginTop: 1,
                     lineHeight: 1.4,
@@ -320,7 +320,7 @@ export function FmRecheckPanel({
                       display: "inline-block",
                       marginTop: 6,
                       padding: "3px 9px",
-                      fontSize: 10.5,
+                      fontSize: 11,
                       fontWeight: 700,
                       background: "var(--fm-surface)",
                       border: "1px solid var(--fm-border)",
@@ -341,7 +341,7 @@ export function FmRecheckPanel({
       <div
         style={{
           marginTop: 12,
-          fontSize: 10.5,
+          fontSize: 11,
           color: "var(--fm-text-tertiary)",
           lineHeight: 1.55,
         }}

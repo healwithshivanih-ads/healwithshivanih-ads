@@ -7,6 +7,7 @@ const LABEL: Record<PlanStatus, string> = {
   published: "Published",
   superseded: "Superseded",
   revoked: "Revoked",
+  graduated: "🎓 Graduated",
 };
 
 const CLASS: Record<PlanStatus, string> = {
@@ -15,6 +16,7 @@ const CLASS: Record<PlanStatus, string> = {
   published: "bg-green-100 text-green-900 border-green-300",
   superseded: "bg-orange-100 text-orange-900 border-orange-300",
   revoked: "bg-red-100 text-red-900 border-red-300",
+  graduated: "bg-emerald-100 text-emerald-900 border-emerald-300",
 };
 
 export function PlanStatusBadge({ status }: { status?: PlanStatus }) {

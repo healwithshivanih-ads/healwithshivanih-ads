@@ -22,6 +22,12 @@ export type { FmPanelProps } from "./FmPanel";
 export { FmStatTile, FmStatGrid } from "./FmStatTile";
 export type { FmStatTileProps } from "./FmStatTile";
 
+export { FmAlertGroup } from "./FmAlertGroup";
+export type { FmAlertGroupProps } from "./FmAlertGroup";
+
+export { FmGroupedPanel } from "./FmGroupedPanel";
+export type { FmGroupedPanelProps, FmGroupedTab } from "./FmGroupedPanel";
+
 export { FmChip, FmStatusPill } from "./FmChip";
 export type { FmChipProps, FmStatusPillKind } from "./FmChip";
 

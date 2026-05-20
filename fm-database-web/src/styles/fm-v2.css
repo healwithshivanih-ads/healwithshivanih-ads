@@ -74,6 +74,35 @@
                        "Helvetica Neue", system-ui, sans-serif;
   --fm-font-mono:      ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  /* ---------- Font-size scale (Wave I 2026-05-20) ----------
+     Canonical 7-step scale. The audit found 1,200+ inline `fontSize`
+     declarations across 26 distinct sizes including half-pixels — no
+     tokens. Wave I (a) snapped every half-pixel size to an integer
+     (sub-pixel-safe), and (b) introduced this scale.
+
+     USE GOING FORWARD: new code should reference these tokens, e.g.
+       style={{ fontSize: "var(--fm-text-sm)" }}
+     instead of a raw number. The existing 1,200 inline integers are
+     left as-is — migrating them all in one pass is high-risk; they
+     get swapped opportunistically as files are touched.
+
+       --fm-text-2xs  10px  micro labels, chips, eyebrows
+       --fm-text-xs   11px  secondary metadata, table cells
+       --fm-text-sm   12px  dense body, captions
+       --fm-text-base 13px  default body copy
+       --fm-text-md   14px  emphasised body, input text
+       --fm-text-lg   16px  panel titles, sub-headings
+       --fm-text-xl   20px  section headings
+     (Display sizes 22-40 for FmPageHeader live inline — they're rare
+      and page-specific, not part of the body scale.) */
+  --fm-text-2xs:  10px;
+  --fm-text-xs:   11px;
+  --fm-text-sm:   12px;
+  --fm-text-base: 13px;
+  --fm-text-md:   14px;
+  --fm-text-lg:   16px;
+  --fm-text-xl:   20px;
+
   /* ---------- Layout ---------- */
   --fm-sidebar-w:      260px;
   --fm-topbar-h:       64px;
@@ -212,3 +241,199 @@
     overflow-y: visible;
   }
 }
+
+/* =========================================================
+   .fm-v2-host — shadcn / Tailwind override layer
+   Audit Wave H (2026-05-20).
+
+   The plan editor (plan-editor.tsx, 2,401 lines) and the new-client
+   form mix shadcn+Tailwind primitives INSIDE FmAppShell. The result
+   was two coexisting visual systems — border-radii, button shapes,
+   palette, focus rings all flipped the moment the coach clicked
+   "Edit plan". This layer re-skins shadcn primitives to FM tokens
+   via their data-slot anchors, so the editor LOOKS like the rest
+   of the v2 app without rewriting all 2,401 lines.
+
+   Scope is intentional: only inside `.fm-v2-host`, so the same
+   shadcn primitives elsewhere (legacy v1 surfaces, /catalogue chips)
+   stay untouched. Apply the class to the outermost wrapper that
+   contains the shadcn elements you want re-skinned.
+   ========================================================= */
+
+.fm-v2-host {
+  font-family: var(--fm-font-body);
+  color: var(--fm-text-primary);
+}
+
+/* ---------- Buttons (data-slot="button") ---------- */
+.fm-v2-host [data-slot="button"] {
+  border-radius: var(--fm-radius-sm);
+  font-family: var(--fm-font-body);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  transition: background var(--fm-dur-1) var(--fm-ease-out),
+              border-color var(--fm-dur-1) var(--fm-ease-out);
+}
+/* default = primary action */
+.fm-v2-host [data-slot="button"].bg-primary,
+.fm-v2-host [data-slot="button"][class*="bg-primary"]:not([class*="destructive"]):not([class*="secondary"]) {
+  background: var(--fm-primary) !important;
+  color: var(--fm-text-inverse) !important;
+  border-color: transparent !important;
+}
+.fm-v2-host [data-slot="button"].bg-primary:hover,
+.fm-v2-host [data-slot="button"][class*="bg-primary"]:not([class*="destructive"]):not([class*="secondary"]):hover {
+  background: var(--fm-primary-dark) !important;
+}
+/* outline variant */
+.fm-v2-host [data-slot="button"][class*="border-border"] {
+  background: var(--fm-surface) !important;
+  color: var(--fm-text-primary) !important;
+  border-color: var(--fm-border) !important;
+}
+.fm-v2-host [data-slot="button"][class*="border-border"]:hover {
+  background: var(--fm-bg-cool) !important;
+  border-color: var(--fm-border-strong) !important;
+  color: var(--fm-text-primary) !important;
+}
+/* secondary variant */
+.fm-v2-host [data-slot="button"][class*="bg-secondary"]:not([class*="bg-primary"]) {
+  background: var(--fm-bg-cool) !important;
+  color: var(--fm-text-secondary) !important;
+}
+.fm-v2-host [data-slot="button"][class*="bg-secondary"]:hover {
+  background: var(--fm-border-light) !important;
+}
+/* ghost variant (no bg) */
+.fm-v2-host [data-slot="button"]:not([class*="bg-"]):not([class*="border-border"]) {
+  color: var(--fm-text-secondary);
+}
+.fm-v2-host [data-slot="button"]:not([class*="bg-"]):not([class*="border-border"]):hover {
+  background: var(--fm-bg-cool) !important;
+  color: var(--fm-text-primary) !important;
+}
+/* destructive variant — keep distinct red but use FM danger token */
+.fm-v2-host [data-slot="button"][class*="text-destructive"] {
+  color: var(--fm-danger) !important;
+}
+.fm-v2-host [data-slot="button"][class*="bg-destructive"] {
+  background: rgba(231, 76, 60, 0.10) !important;
+  color: var(--fm-danger) !important;
+}
+/* link variant */
+.fm-v2-host [data-slot="button"][class*="text-primary"][class*="underline"],
+.fm-v2-host [data-slot="button"][class*="hover:underline"] {
+  color: var(--fm-primary) !important;
+}
+
+/* ---------- Inputs (data-slot="input") ---------- */
+.fm-v2-host [data-slot="input"] {
+  border-radius: var(--fm-radius-sm) !important;
+  border: 1px solid var(--fm-border) !important;
+  background: var(--fm-surface) !important;
+  color: var(--fm-text-primary) !important;
+  font-family: var(--fm-font-body);
+  transition: border-color var(--fm-dur-1) var(--fm-ease-out),
+              box-shadow var(--fm-dur-1) var(--fm-ease-out);
+}
+.fm-v2-host [data-slot="input"]:focus,
+.fm-v2-host [data-slot="input"]:focus-visible {
+  border-color: var(--fm-primary) !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.18) !important;
+  outline: none !important;
+}
+
+/* ---------- Cards (data-slot="card" + parts) ---------- */
+.fm-v2-host [data-slot="card"] {
+  border-radius: var(--fm-radius-md) !important;
+  border: 1px solid var(--fm-border) !important;
+  background: var(--fm-surface) !important;
+  box-shadow: none !important;
+}
+.fm-v2-host [data-slot="card-title"] {
+  font-family: var(--fm-font-body);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--fm-text-primary);
+  letter-spacing: 0;
+}
+.fm-v2-host [data-slot="card-description"] {
+  color: var(--fm-text-tertiary);
+  font-size: 12px;
+}
+
+/* ---------- Select (data-slot="select-trigger" + content + item) ---------- */
+.fm-v2-host [data-slot="select-trigger"] {
+  border-radius: var(--fm-radius-sm) !important;
+  border: 1px solid var(--fm-border) !important;
+  background: var(--fm-surface) !important;
+  color: var(--fm-text-primary) !important;
+  font-family: var(--fm-font-body);
+}
+.fm-v2-host [data-slot="select-trigger"]:focus,
+.fm-v2-host [data-slot="select-trigger"][data-state="open"] {
+  border-color: var(--fm-primary) !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.18) !important;
+  outline: none !important;
+}
+/* select-content + select-item live in a Radix portal — they render
+   OUTSIDE the .fm-v2-host wrapper. Scope to data-slot directly + a
+   `.fm-v2-portal` class we can set on the body when v2 is active.
+   For now we leave shadcn defaults in place inside the dropdown
+   itself — most coach paths are short selects where the difference
+   is minor. */
+
+/* ---------- Tables ---------- */
+.fm-v2-host [data-slot="table"] {
+  font-family: var(--fm-font-body);
+}
+.fm-v2-host [data-slot="table-header"] {
+  background: var(--fm-bg-cool);
+}
+.fm-v2-host [data-slot="table-row"]:hover {
+  background: var(--fm-bg-cool);
+}
+
+/* ---------- Tabs (data-slot="tabs-list" / "tabs-trigger") ---------- */
+.fm-v2-host [data-slot="tabs-list"] {
+  background: var(--fm-bg-cool) !important;
+  border-radius: var(--fm-radius-md) !important;
+  padding: 3px !important;
+}
+.fm-v2-host [data-slot="tabs-trigger"] {
+  border-radius: calc(var(--fm-radius-md) - 2px) !important;
+  font-family: var(--fm-font-body);
+  font-weight: 600;
+  color: var(--fm-text-secondary) !important;
+  transition: background var(--fm-dur-1) var(--fm-ease-out),
+              color var(--fm-dur-1) var(--fm-ease-out);
+}
+.fm-v2-host [data-slot="tabs-trigger"][data-state="active"] {
+  background: var(--fm-surface) !important;
+  color: var(--fm-text-primary) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ---------- Badge ---------- */
+.fm-v2-host [data-slot="badge"] {
+  border-radius: var(--fm-radius-pill) !important;
+  font-family: var(--fm-font-body);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Headings inside the host — they should use FM display font
+              consistent with the rest of the v2 app ---------- */
+.fm-v2-host h1,
+.fm-v2-host h2,
+.fm-v2-host h3 {
+  font-family: var(--fm-font-display);
+  color: var(--fm-text-primary);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Body label / span uppercase eyebrow patterns that the
+              plan editor uses inline. Detect via uppercase + tracking
+              pattern wouldn't work in pure CSS — leave these to the
+              source files to migrate one-by-one. */

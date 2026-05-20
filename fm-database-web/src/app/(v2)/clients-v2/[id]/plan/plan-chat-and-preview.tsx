@@ -107,7 +107,7 @@ export function PlanChatAndPreview({
         <span style={{ fontSize: 16 }}>👁</span>
         <span
           style={{
-            fontSize: 12.5,
+            fontSize: 13,
             fontWeight: 700,
             color: "var(--fm-text-primary)",
           }}
@@ -116,7 +116,7 @@ export function PlanChatAndPreview({
         </span>
         <span
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             marginLeft: 6,
           }}
@@ -126,7 +126,7 @@ export function PlanChatAndPreview({
         <span
           style={{
             marginLeft: "auto",
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
           }}
         >
@@ -138,7 +138,7 @@ export function PlanChatAndPreview({
           {pending && !preview && (
             <div
               style={{
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "var(--fm-text-tertiary)",
                 fontStyle: "italic",
                 padding: "8px 0",
@@ -154,7 +154,7 @@ export function PlanChatAndPreview({
                 background: "rgba(231, 76, 60, 0.06)",
                 border: "1px solid rgba(231, 76, 60, 0.25)",
                 borderRadius: "var(--fm-radius-sm)",
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "#9b1c1c",
               }}
             >
@@ -194,7 +194,7 @@ export function PlanChatAndPreview({
                   border: "1px solid var(--fm-border-light)",
                   borderRadius: "var(--fm-radius-sm)",
                   padding: "12px 14px",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   lineHeight: 1.55,
                   fontFamily: 'ui-monospace, "SF Mono", monospace',
                   maxHeight: 440,
@@ -242,7 +242,7 @@ export function PlanChatAndPreview({
             <span style={{ fontSize: 16, opacity: 0.5 }}>💬</span>
             <span
               style={{
-                fontSize: 12.5,
+                fontSize: 13,
                 fontWeight: 700,
                 color: "var(--fm-text-secondary)",
               }}
@@ -287,7 +287,7 @@ export function PlanChatAndPreview({
                 padding: "6px 12px",
                 background: "var(--fm-primary)",
                 color: "#fff",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 borderRadius: "var(--fm-radius-sm)",
                 textDecoration: "none",
@@ -346,7 +346,7 @@ export function PlanChatAndPreview({
           <span style={{ fontSize: 16 }}>💬</span>
           <span
             style={{
-              fontSize: 12.5,
+              fontSize: 13,
               fontWeight: 700,
               color: "var(--fm-text-primary)",
             }}
@@ -355,7 +355,7 @@ export function PlanChatAndPreview({
           </span>
           <span
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               color: "var(--fm-text-tertiary)",
               marginLeft: 6,
             }}
@@ -366,7 +366,7 @@ export function PlanChatAndPreview({
           <span
             style={{
               marginLeft: "auto",
-              fontSize: 10.5,
+              fontSize: 11,
               color: "var(--fm-text-tertiary)",
             }}
           >

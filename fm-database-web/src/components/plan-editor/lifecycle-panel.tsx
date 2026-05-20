@@ -20,6 +20,7 @@ import {
 // keeps only secondary lifecycle actions.
 import {
   revokePlan,
+  graduatePlan,
   supersedePlan,
   comparePlanVersions,
   renderPlan,
@@ -134,6 +135,17 @@ export function LifecyclePanel({
     startTransition(async () => {
       const r = await revokePlan(slug, reason);
       notify(r.ok, r.ok ? "Plan archived." : r.error ?? "Archive failed.");
+      if (r.ok) refreshAfterMutate();
+    });
+  }
+
+  /** Terminal-success state — client completed the protocol. Distinct
+   *  from revoke (which is a withdrawal). Clears the plan out of active
+   *  triage; dashboard / client list bucket the client as Alumni. */
+  function handleGraduate() {
+    startTransition(async () => {
+      const r = await graduatePlan(slug, reason);
+      notify(r.ok, r.ok ? "🎓 Plan graduated — client is now in Alumni." : r.error ?? "Graduation failed.");
       if (r.ok) refreshAfterMutate();
     });
   }
@@ -392,6 +404,40 @@ export function LifecyclePanel({
                   </Button>
                 </div>
 
+                {/* Graduate — terminal-success state. Distinct from
+                    archive (withdrawal). Client completed the protocol;
+                    use this to clear active triage while preserving the
+                    historical record. Greens + 🎓. */}
+                <details className="group/grad">
+                  <summary className="cursor-pointer text-xs text-emerald-700 hover:text-emerald-800 select-none list-none flex items-center gap-1">
+                    <span className="transition-transform group-open/grad:rotate-90 text-xs">▶</span>
+                    🎓 Graduate client — protocol complete
+                  </summary>
+                  <div className="mt-2 space-y-2 rounded-md border border-emerald-200 bg-emerald-50/50 p-3">
+                    <p className="text-xs text-muted-foreground">
+                      Marks the plan as <strong>graduated</strong> — distinct from archive.
+                      Use when the client has successfully completed the protocol and is
+                      transitioning to maintenance or off active care. Plan + history are
+                      preserved; client moves to the Alumni filter on the dashboard.
+                    </p>
+                    <Input
+                      placeholder="Reason (optional — e.g. Symptoms resolved, moving to monthly touchpoints)"
+                      value={reason}
+                      onChange={(e) => setReason(e.target.value)}
+                      className="text-xs"
+                    />
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-emerald-300 text-emerald-700 hover:bg-emerald-100"
+                      onClick={handleGraduate}
+                      disabled={isPending}
+                    >
+                      {isPending ? "Graduating…" : "🎓 Graduate plan"}
+                    </Button>
+                  </div>
+                </details>
+
                 {/* Archive — buried in a danger zone */}
                 <details className="group">
                   <summary className="cursor-pointer text-xs text-muted-foreground select-none hover:text-foreground list-none flex items-center gap-1">
@@ -426,10 +472,30 @@ export function LifecyclePanel({
               </div>
             )}
 
-            {(status === "superseded" || status === "revoked") && (
-              <div className="rounded-md border border-muted bg-muted/40 p-3 text-xs text-muted-foreground">
-                This plan is <span className="font-medium">{status === "revoked" ? "archived" : status}</span>.
-                It&apos;s read-only. Create a new draft from the client page if needed.
+            {(status === "superseded" || status === "revoked" || status === "graduated") && (
+              <div
+                className={
+                  status === "graduated"
+                    ? "rounded-md border border-emerald-200 bg-emerald-50/60 p-3 text-xs text-emerald-800"
+                    : "rounded-md border border-muted bg-muted/40 p-3 text-xs text-muted-foreground"
+                }
+              >
+                {status === "graduated" ? (
+                  <>
+                    🎓 This plan is <span className="font-medium">graduated</span> —
+                    client completed the protocol successfully. It&apos;s read-only.
+                    Create a fresh maintenance / new-protocol plan from the client page
+                    if needed.
+                  </>
+                ) : (
+                  <>
+                    This plan is{" "}
+                    <span className="font-medium">
+                      {status === "revoked" ? "archived" : status}
+                    </span>
+                    . It&apos;s read-only. Create a new draft from the client page if needed.
+                  </>
+                )}
               </div>
             )}
 

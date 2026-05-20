@@ -10,7 +10,8 @@
  *     workflow, not a side-action).
  *   - Past sessions → the Sessions tab (`?tab=sessions`).
  *   - Send letters → Plan tab → 📤 Send package.
- *   - Doctor handoff packet → per-session button or page header overflow.
+ *   - Doctor handoff packet — wired into the FAB itself 2026-05-20 (was
+ *     coach-unreachable from the v2 UI; only accessible via direct URL).
  */
 import type { FmFloatingActionItem } from "@/components/fm";
 
@@ -64,6 +65,13 @@ export function clientQuickActions(clientId: string): FmFloatingActionItem[] {
       label: "SOAP Note",
       hint: "One-page S/O/A/P record — print or share for the file",
       href: `/clients-v2/${clientId}/soap`,
+    },
+    {
+      id: "handoff",
+      icon: "🩺",
+      label: "Doctor handoff",
+      hint: "Full referral packet — print-ready PDF for the clinician",
+      href: `/clients-v2/${clientId}/handoff`,
     },
   ];
 }

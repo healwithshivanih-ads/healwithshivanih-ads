@@ -164,7 +164,7 @@ export default async function ReferencePage({
       activeNavId="clients"
       quickActions={clientQuickActions(id)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: displayName, href: `/clients-v2/${id}` },
         { label: "Active plan reference" },
       ]}

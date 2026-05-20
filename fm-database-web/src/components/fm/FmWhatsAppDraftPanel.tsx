@@ -139,12 +139,12 @@ export function FmWhatsAppDraftPanel({
           {clientName.split(" ").map((s) => s[0]).filter(Boolean).slice(0, 2).join("").toUpperCase()}
         </span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 12.5, fontWeight: 700 }}>
+          <div style={{ fontSize: 13, fontWeight: 700 }}>
             {clientName}
             {clientPhone && (
               <span
                 style={{
-                  fontSize: 10.5,
+                  fontSize: 11,
                   color: "var(--fm-text-tertiary)",
                   fontWeight: 500,
                   marginLeft: 8,
@@ -154,7 +154,7 @@ export function FmWhatsAppDraftPanel({
               </span>
             )}
           </div>
-          <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
             {generated && generateAt
               ? `Draft generated ${generateAt.toLocaleTimeString([], {
                   hour: "2-digit",
@@ -171,7 +171,7 @@ export function FmWhatsAppDraftPanel({
             borderRadius: "var(--fm-radius-pill)",
             background: "rgba(110, 76, 200, 0.10)",
             color: "#5a3fb0",
-            fontSize: 9.5,
+            fontSize: 10,
             fontWeight: 700,
             letterSpacing: 0.5,
             textTransform: "uppercase",
@@ -346,7 +346,7 @@ export function FmWhatsAppDraftPanel({
               color: "#fff",
               border: 0,
               padding: "7px 14px",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 700,
               borderRadius: "var(--fm-radius-sm)",
               cursor: !draft || !clientPhone ? "not-allowed" : "pointer",

@@ -262,7 +262,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                       borderTopRightRadius: isOut ? 4 : 12,
                       borderTopLeftRadius: isOut ? 12 : 4,
                       boxShadow: "0 1px 1.5px rgba(0,0,0,0.04)",
-                      fontSize: 12.5,
+                      fontSize: 13,
                       lineHeight: 1.45,
                       color: "var(--fm-text-primary)",
                       whiteSpace: "pre-wrap",
@@ -294,7 +294,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
 
                     <div
                       style={{
-                        fontSize: 9.5,
+                        fontSize: 10,
                         color: "var(--fm-text-tertiary)",
                         marginTop: 4,
                         textAlign: "right",
@@ -362,7 +362,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
             disabled={sending}
             style={{
               width: "100%",
-              fontSize: 12.5,
+              fontSize: 13,
               padding: "6px 8px",
               border: "1px solid var(--fm-border)",
               borderRadius: "var(--fm-radius-sm)",
@@ -376,7 +376,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
               onClick={handleReplySend}
               disabled={sending || !replyText.trim()}
               style={{
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 padding: "5px 12px",
                 background: replyText.trim() && !sending ? "#25D366" : "var(--fm-border)",
@@ -389,12 +389,12 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
               {sending ? "Sending…" : "📤 Send"}
             </button>
             {replyStatus?.ok && (
-              <span style={{ fontSize: 10.5, color: "#0E6B3E", fontWeight: 600 }}>
+              <span style={{ fontSize: 11, color: "#0E6B3E", fontWeight: 600 }}>
                 ✓ Sent
               </span>
             )}
             {replyStatus?.ok === false && (
-              <span style={{ fontSize: 10.5, color: "#991b1b", fontWeight: 600 }}>
+              <span style={{ fontSize: 11, color: "#991b1b", fontWeight: 600 }}>
                 {replyStatus.error}
               </span>
             )}
@@ -410,14 +410,39 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
             background: "rgba(245, 158, 11, 0.06)",
             border: "1px dashed rgba(245, 158, 11, 0.35)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 10.5,
+            fontSize: 11,
             color: "#92400e",
             lineHeight: 1.5,
           }}
         >
-          ⏰ Free-text reply window closed ({firstName}&apos;s last message was over
-          24h ago). Meta only allows approved templates outside the window — use
-          one from the &quot;Send message&quot; panel above to start a fresh conversation.
+          ⏰ Free-text reply window closed.{" "}
+          {(() => {
+            try {
+              const d = new Date(lastInboundAt);
+              const closedAt = new Date(d.getTime() + WINDOW_MS);
+              const fmt = (x: Date) =>
+                x.toLocaleString("en-IN", {
+                  day: "numeric",
+                  month: "short",
+                  hour: "numeric",
+                  minute: "2-digit",
+                  hour12: true,
+                });
+              return (
+                <>
+                  {firstName}&apos;s last message was{" "}
+                  <strong>{fmt(d)}</strong>; the 24-hour window closed{" "}
+                  <strong>{fmt(closedAt)}</strong>.
+                </>
+              );
+            } catch {
+              return `${firstName}'s last message was over 24h ago.`;
+            }
+          })()}{" "}
+          The window only reopens when {firstName} sends a new message — it
+          does <strong>not</strong> reset on its own or when you send a
+          template. To message now, use an approved template from the
+          &quot;Send message&quot; panel above.
         </div>
       )}
 
@@ -429,7 +454,7 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
             background: "rgba(59, 130, 246, 0.06)",
             border: "1px dashed rgba(59, 130, 246, 0.35)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 10.5,
+            fontSize: 11,
             color: "#1e40af",
             lineHeight: 1.5,
           }}

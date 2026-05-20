@@ -19,6 +19,7 @@
  * Design source: FM Backlog Explorations · Group D4.
  */
 import { useMemo, useState } from "react";
+import { stripBrand } from "@/lib/fmdb/supplement-display";
 
 export interface FmSupplementGridItem {
   /** Catalogue slug — used as the primary identifier + display fallback. */
@@ -111,10 +112,14 @@ function classifySlot(timing: string | undefined): SlotDef {
 }
 
 function prettySlug(slug: string): string {
-  return slug
-    .replace(/^vitaone-/, "")
+  // Title-case + strip ALL known brand prefixes (Vitaone, Himalaya,
+  // Organic India, Now Foods, Thorne, etc.) via the shared helper so
+  // every supplement surface in the app is consistent (B-update
+  // 2026-05-19). Was previously only stripping `vitaone-`.
+  const titled = slug
     .replace(/-/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase());
+  return stripBrand(titled);
 }
 
 export function FmSupplementGrid({ items }: FmSupplementGridProps) {
@@ -145,7 +150,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
           padding: "12px 14px",
           background: "var(--fm-bg-cool)",
           borderRadius: "var(--fm-radius-sm)",
-          fontSize: 11.5,
+          fontSize: 12,
           color: "var(--fm-text-tertiary)",
         }}
       >
@@ -186,7 +191,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
           </span>
           <span
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               color: "var(--fm-text-tertiary)",
             }}
           >
@@ -248,7 +253,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
               >
                 <span
                   style={{
-                    fontSize: 9.5,
+                    fontSize: 10,
                     color: isActive
                       ? "var(--fm-primary)"
                       : "var(--fm-text-tertiary)",
@@ -302,7 +307,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
               padding: "10px 12px",
               background: "var(--fm-bg-cool)",
               borderRadius: "var(--fm-radius-sm)",
-              fontSize: 11.5,
+              fontSize: 12,
               color: "var(--fm-text-tertiary)",
             }}
           >
@@ -350,7 +355,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
                   <div style={{ minWidth: 0 }}>
                     <div
                       style={{
-                        fontSize: 12.5,
+                        fontSize: 13,
                         fontWeight: 700,
                         color: "var(--fm-text-primary)",
                         overflow: "hidden",
@@ -361,7 +366,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
                       {it.dose && (
                         <span
                           style={{
-                            fontSize: 11.5,
+                            fontSize: 12,
                             fontWeight: 600,
                             color: "var(--fm-text-secondary)",
                             marginLeft: 8,
@@ -385,7 +390,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
                     </div>
                     <div
                       style={{
-                        fontSize: 10.5,
+                        fontSize: 11,
                         color: "var(--fm-text-tertiary)",
                         fontFamily: "var(--fm-font-mono)",
                         marginTop: 1,
@@ -408,7 +413,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
                       borderRadius: "var(--fm-radius-pill)",
                       background: "rgba(255, 107, 53, 0.10)",
                       color: "var(--fm-primary)",
-                      fontSize: 10.5,
+                      fontSize: 11,
                       fontWeight: 700,
                       whiteSpace: "nowrap",
                     }}
@@ -436,7 +441,7 @@ export function FmSupplementGrid({ items }: FmSupplementGridProps) {
                   <div
                     style={{
                       padding: "0 12px 12px 12px",
-                      fontSize: 11.5,
+                      fontSize: 12,
                       lineHeight: 1.55,
                       color: "var(--fm-text-secondary)",
                       whiteSpace: "pre-wrap",

@@ -33,7 +33,7 @@ export async function PlanPageShell({
       activeNavId="clients"
       quickActions={clientQuickActions(clientId)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: displayName, href: `/clients-v2/${clientId}` },
         { label: "Plan" },
       ]}
@@ -73,7 +73,7 @@ export async function PlanPageShell({
         <Link
           href={`/clients-v2/${clientId}`}
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             textDecoration: "none",
             padding: "5px 10px",

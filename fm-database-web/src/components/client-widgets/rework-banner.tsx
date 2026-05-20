@@ -36,6 +36,10 @@ export function ReworkBanner({ clientId, suggestion }: Props) {
 
   if (!suggestion) return null;
   if (suggestion.dismissed_at) return null;
+  // Already applied into a draft plan → the rework is baked in, no point
+  // nagging the coach to apply it again. Set by applyReworkSuggestionAction
+  // once apply-rework.py creates/updates the draft.
+  if (suggestion.applied_at) return null;
   if (suggestion.benefit_pct < 30) return null;
 
   // Honour snooze

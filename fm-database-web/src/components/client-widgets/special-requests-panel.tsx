@@ -310,7 +310,7 @@ export function SpecialRequestsPanel({ onChange, disabled }: Props) {
               })}
             </div>
             {cookingStyle && (
-              <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", marginTop: 4 }}>
+              <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 4 }}>
                 {COOKING_STYLE_OPTIONS.find((o) => o.value === cookingStyle)?.desc}
               </div>
             )}
@@ -362,7 +362,7 @@ export function SpecialRequestsPanel({ onChange, disabled }: Props) {
               })}
             </div>
             {variety && (
-              <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", marginTop: 4 }}>
+              <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 4 }}>
                 {VARIETY_OPTIONS.find((o) => o.value === variety)?.desc}
               </div>
             )}
@@ -383,14 +383,14 @@ export function SpecialRequestsPanel({ onChange, disabled }: Props) {
                   placeholder="3-4"
                   style={{
                     width: 60,
-                    fontSize: 11.5,
+                    fontSize: 12,
                     padding: "3px 8px",
                     border: "1px solid var(--fm-border)",
                     borderRadius: "var(--fm-radius-sm)",
                     textAlign: "center",
                   }}
                 />
-                <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+                <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
                   (default 3-4)
                 </span>
               </div>
@@ -527,7 +527,7 @@ export function SpecialRequestsPanel({ onChange, disabled }: Props) {
               placeholder="e.g. Daughter's wedding 12 June — relaxed plan that week. Or: client is fasting Tue/Thu — no breakfast on those days."
               style={{
                 width: "100%",
-                fontSize: 11.5,
+                fontSize: 12,
                 padding: "6px 8px",
                 border: "1px solid var(--fm-border)",
                 borderRadius: "var(--fm-radius-sm)",
@@ -540,7 +540,7 @@ export function SpecialRequestsPanel({ onChange, disabled }: Props) {
           {block && (
             <div
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
                 fontFamily: "var(--fm-font-mono)",
                 whiteSpace: "pre-wrap",
@@ -574,7 +574,7 @@ function kvLabel(): React.CSSProperties {
 function dateInput(): React.CSSProperties {
   return {
     width: "100%",
-    fontSize: 11.5,
+    fontSize: 12,
     padding: "4px 8px",
     border: "1px solid var(--fm-border)",
     borderRadius: "var(--fm-radius-sm)",

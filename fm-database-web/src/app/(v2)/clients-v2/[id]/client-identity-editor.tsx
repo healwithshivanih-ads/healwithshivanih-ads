@@ -90,7 +90,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
           alignItems: "center",
           gap: 6,
           padding: "6px 12px",
-          fontSize: 11.5,
+          fontSize: 12,
           fontWeight: 600,
           background: "var(--fm-surface)",
           color: "var(--fm-text-secondary)",
@@ -126,7 +126,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
       >
         <div
           style={{
-            fontSize: 12.5,
+            fontSize: 13,
             fontWeight: 700,
             color: "var(--fm-text-primary)",
           }}
@@ -135,7 +135,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
         </div>
         <span
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             fontStyle: "italic",
           }}
@@ -239,7 +239,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
           disabled={pending}
           style={{
             padding: "7px 14px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 600,
             background: "transparent",
             color: "var(--fm-text-secondary)",
@@ -257,7 +257,7 @@ export function ClientIdentityEditor({ clientId, initial }: Props) {
           disabled={pending}
           style={{
             padding: "7px 14px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             background: "var(--fm-primary)",
             color: "#fff",
@@ -302,7 +302,7 @@ function Field({
 
 const inputStyle: React.CSSProperties = {
   padding: "6px 9px",
-  fontSize: 12.5,
+  fontSize: 13,
   background: "var(--fm-surface)",
   border: "1px solid var(--fm-border)",
   borderRadius: "var(--fm-radius-sm)",

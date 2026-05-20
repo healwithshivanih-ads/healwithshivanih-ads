@@ -80,20 +80,20 @@ export function FmUpcomingBookingsPanel({
             border: "1px solid var(--fm-border-light)",
             borderRadius: 6,
             padding: 12,
-            fontSize: 12.5,
+            fontSize: 13,
             lineHeight: 1.5,
             color: "var(--fm-text-secondary)",
           }}
         >
           <strong>Waiting on slice 2 —</strong> the WA server doesn&apos;t
           forward cal.com bookings to fm-coach yet.{" "}
-          <code style={{ fontSize: 11.5 }}>POST /api/cal-com-webhook</code>{" "}
+          <code style={{ fontSize: 12 }}>POST /api/cal-com-webhook</code>{" "}
           is live on this side, just needs the WA-server-side
-          <code style={{ fontSize: 11.5 }}>{" "}forwardBookingToFmCoach()</code>{" "}
+          <code style={{ fontSize: 12 }}>{" "}forwardBookingToFmCoach()</code>{" "}
           to be wired into{" "}
-          <code style={{ fontSize: 11.5 }}>src/routes/webhooks/cal-com.js</code>.
+          <code style={{ fontSize: 12 }}>src/routes/webhooks/cal-com.js</code>.
           See{" "}
-          <code style={{ fontSize: 11.5 }}>project_calcom_integration.md</code>{" "}
+          <code style={{ fontSize: 12 }}>project_calcom_integration.md</code>{" "}
           slice 2 for the contract.
         </div>
       </FmPanel>
@@ -143,7 +143,7 @@ export function FmUpcomingBookingsPanel({
           background: "var(--fm-surface)",
           border: "1px solid var(--fm-border-light)",
           borderRadius: 6,
-          fontSize: 12.5,
+          fontSize: 13,
         }}
       >
         <span style={{ fontSize: 16, lineHeight: 1 }}>{emoji}</span>
@@ -167,14 +167,14 @@ export function FmUpcomingBookingsPanel({
               </span>
             )}
           </div>
-          <div style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
+          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
             {r.event_title ?? r.event_slug ?? "Session"} · {when.date} {when.time}
             {r.location && r.location !== "video" ? ` · ${r.location}` : ""}
           </div>
         </Link>
         <span
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             fontWeight: 700,
             color: days <= 1 ? "#b45309" : "var(--fm-text-tertiary)",
             whiteSpace: "nowrap",
@@ -192,7 +192,7 @@ export function FmUpcomingBookingsPanel({
               borderRadius: 6,
               background: "#14532d",
               color: "white",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 700,
               textDecoration: "none",
               whiteSpace: "nowrap",
@@ -212,7 +212,7 @@ export function FmUpcomingBookingsPanel({
         <>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: 0.6,
@@ -228,7 +228,7 @@ export function FmUpcomingBookingsPanel({
         </>
       ) : (
         <p
-          style={{ color: "var(--fm-text-secondary)", fontSize: 12.5, margin: 0 }}
+          style={{ color: "var(--fm-text-secondary)", fontSize: 13, margin: 0 }}
         >
           No sessions in the next 24 hours.
         </p>

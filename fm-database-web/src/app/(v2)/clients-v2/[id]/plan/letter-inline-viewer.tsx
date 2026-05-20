@@ -211,7 +211,7 @@ function SectionFrame({
         style={{
           padding: "10px 14px",
           cursor: "pointer",
-          fontSize: 13.5,
+          fontSize: 14,
           fontWeight: 500,
           listStyle: "none",
           display: "flex",
@@ -236,7 +236,7 @@ function SectionFrame({
           {sourceLabel && (
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary, #9ca3af)",
                 fontWeight: 400,
                 textTransform: "lowercase",
@@ -347,7 +347,7 @@ export function LetterInlineViewer({ clientId, planSlug, letterType }: Props) {
 
   if (state.loading) {
     return (
-      <div style={{ padding: "8px 0", fontSize: 12.5, color: "var(--fm-text-secondary)" }}>
+      <div style={{ padding: "8px 0", fontSize: 13, color: "var(--fm-text-secondary)" }}>
         Loading letter sections…
       </div>
     );
@@ -358,7 +358,7 @@ export function LetterInlineViewer({ clientId, planSlug, letterType }: Props) {
       <div
         style={{
           padding: "8px 12px",
-          fontSize: 12.5,
+          fontSize: 13,
           color: "var(--fm-text-secondary)",
           background: "var(--fm-bg-subtle, rgba(0,0,0,0.03))",
           borderRadius: 4,
@@ -374,7 +374,7 @@ export function LetterInlineViewer({ clientId, planSlug, letterType }: Props) {
 
   if (weekSources.length === 0 && !supplements) {
     return (
-      <div style={{ fontSize: 12.5, color: "var(--fm-text-secondary)" }}>
+      <div style={{ fontSize: 13, color: "var(--fm-text-secondary)" }}>
         No week sections or supplement schedule in this letter.
       </div>
     );

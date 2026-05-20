@@ -44,6 +44,9 @@ interface ReworkSuggestion {
     description?: string;
     reason?: string;
   }>;
+  dismissed_at?: string;
+  applied_at?: string;
+  applied_to_plan?: string;
 }
 
 interface Props {
@@ -81,6 +84,8 @@ export function AIReadCard({
   const hasConcerns = concerns.length > 0;
   const hasRework =
     reworkSuggestion != null &&
+    !reworkSuggestion.applied_at &&
+    !reworkSuggestion.dismissed_at &&
     (reworkSuggestion.benefit_pct ?? 0) > 0 &&
     (reworkSuggestion.suggested_changes?.length ?? 0) > 0;
 
@@ -183,7 +188,7 @@ export function AIReadCard({
             <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 4 }}>
               <h4 style={sectionTitle()}>⚖ AI plan-check concerns</h4>
               {sanityCheck?.coherence_score != null && (
-                <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+                <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
                   coherence {sanityCheck.coherence_score}/5 · client-fit{" "}
                   {sanityCheck.client_fit_score}/5
                 </span>
@@ -193,7 +198,7 @@ export function AIReadCard({
               <p
                 style={{
                   margin: "4px 0 8px",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   color: "var(--fm-text-secondary)",
                   lineHeight: 1.5,
                 }}
@@ -208,7 +213,7 @@ export function AIReadCard({
                   <div
                     key={i}
                     style={{
-                      fontSize: 11.5,
+                      fontSize: 12,
                       padding: "6px 9px",
                       background: tone.bg,
                       color: tone.color,
@@ -234,7 +239,7 @@ export function AIReadCard({
                       <div
                         style={{
                           marginTop: 3,
-                          fontSize: 10.5,
+                          fontSize: 11,
                           opacity: 0.85,
                         }}
                       >
@@ -254,7 +259,7 @@ export function AIReadCard({
         ) : (
           <section>
             <h4 style={sectionTitle()}>⚖ AI plan-check</h4>
-            <p style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)", margin: 0 }}>
+            <p style={{ fontSize: 12, color: "var(--fm-text-tertiary)", margin: 0 }}>
               No AI sanity check has been run yet for this plan. Run it from
               the right-rail plan-check panel — it surfaces coherence /
               client-fit / sequencing / regional-availability concerns the
@@ -281,7 +286,7 @@ export function AIReadCard({
                 <strong>
                   {reworkSuggestion.benefit_pct}% estimated benefit
                 </strong>
-                <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+                <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
                   · {reworkSuggestion.confidence} confidence · triggered by{" "}
                   {reworkSuggestion.triggered_by}
                 </span>
@@ -319,7 +324,7 @@ export function AIReadCard({
 function sectionTitle(): React.CSSProperties {
   return {
     margin: 0,
-    fontSize: 11.5,
+    fontSize: 12,
     fontWeight: 700,
     textTransform: "uppercase",
     letterSpacing: 0.5,
@@ -330,7 +335,7 @@ function sectionTitle(): React.CSSProperties {
 function summaryChip(kind: "critical" | "warning" | "info"): React.CSSProperties {
   const tone = SEVERITY_TONE[kind];
   return {
-    fontSize: 10.5,
+    fontSize: 11,
     fontWeight: 700,
     padding: "2px 7px",
     background: tone.bg,

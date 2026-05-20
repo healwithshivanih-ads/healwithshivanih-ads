@@ -422,6 +422,22 @@ _TOOL_SCHEMA: dict[str, Any] = {
 }
 
 
+def _is_small_plan(plan: "Plan") -> bool:
+    """Heuristic for routing to Haiku vs Sonnet. A plan is "small" when
+    it has minimal structured content — Haiku handles the sanity check
+    accurately and ~10× cheaper. Coach can disable via
+    FMDB_AI_CHECK_DISABLE_AUTO_ROUTE=1.
+    """
+    n_supps = len(plan.supplement_protocol or [])
+    n_lifestyle = len(plan.lifestyle_practices or [])
+    n_education = len(plan.education or [])
+    n_labs = len(plan.lab_orders or [])
+    n_referrals = len(plan.referrals or [])
+    # 8-point total under threshold = "simple plan, Haiku is fine"
+    score = n_supps + n_lifestyle + n_education + n_labs + n_referrals
+    return score <= 8
+
+
 # ---------------------------------------------------------------------------
 # Public entry point
 # ---------------------------------------------------------------------------
@@ -449,10 +465,28 @@ def ai_check_plan(
         ) from e
 
     client_sdk = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
-    model_name = model or os.environ.get(
-        "FMDB_AI_CHECK_MODEL",
-        os.environ.get("FMDB_EXTRACTOR_MODEL", "claude-sonnet-4-5"),
-    )
+    # Model selection. Three layers, in priority order:
+    #   1. Explicit `model=` parameter wins (coach forces a model).
+    #   2. FMDB_AI_CHECK_MODEL env var (coach pinned a default).
+    #   3. Auto-routing: small/simple plans → Haiku ($0.01) ; otherwise
+    #      Sonnet ($0.05+). Heuristic: count meaningful plan content. A
+    #      plan with ≤2 supplements + ≤3 lifestyle items + no education
+    #      modules + minimal lab orders is "small" — Haiku handles the
+    #      sanity check just as well at 10× lower cost. Bypass via env
+    #      var FMDB_AI_CHECK_DISABLE_AUTO_ROUTE=1.
+    auto_route = os.environ.get("FMDB_AI_CHECK_DISABLE_AUTO_ROUTE") != "1"
+    pinned = os.environ.get("FMDB_AI_CHECK_MODEL")
+    fallback = os.environ.get("FMDB_EXTRACTOR_MODEL", "claude-sonnet-4-5")
+    if model:
+        model_name = model
+    elif pinned:
+        model_name = pinned
+    elif auto_route and _is_small_plan(plan):
+        model_name = os.environ.get(
+            "FMDB_AI_CHECK_HAIKU_MODEL", "claude-haiku-4-5"
+        )
+    else:
+        model_name = fallback
 
     subgraph = _build_plan_subgraph(plan, catalogue)
     plan_view = _plan_snapshot(plan)

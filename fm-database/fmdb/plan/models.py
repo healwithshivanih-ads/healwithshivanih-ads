@@ -262,6 +262,15 @@ class Client(BaseModel):
     notes: str = ""
     # Dietary preferences — used when generating the client-facing meal plan letter
     dietary_preference: str = ""   # Vegetarian | Non-vegetarian | Vegan | Eggetarian | Pescatarian | Other
+    # Whether a vegetarian-spectrum client accepts supplements that may
+    # contain animal-derived ingredients — fish-oil omega-3, gelatin
+    # capsule shells, collagen, cod-liver oil, bovine-derived actives.
+    # Asked at intake ONLY when dietary_preference is veg / eggetarian /
+    # vegan / jain. Values: "yes" | "no" | "unsure" | "" (not asked).
+    # Consumed by: plan checker (suppresses the animal-supplement WARNING
+    # when "yes"), the supplement-protocol builder, and the letter
+    # generator (so it never recommends fish oil to a "no" client).
+    animal_derived_supplements_ok: str = ""
     foods_to_avoid: str = ""       # Free form: "brinjal, bitter gourd, raw onion"
     non_negotiables: str = ""      # Things they won't give up: "morning chai, weekly mutton"
     reported_triggers: str = ""    # n=1 observations: "gluten triggers bloating; afternoon coffee → poor sleep"
@@ -802,6 +811,17 @@ class SupplementItem(BaseModel):
     titration: str = ""
     coach_rationale: str = ""            # why for this client
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
+    # Per-supplement display + buy-link overrides (2026-05-19). When the
+    # supplement_slug points at a brand (vitaone-omega-3) but the actual
+    # product the client should buy is different (e.g. Dhanishta needs
+    # algae-derived omega-3, not VitaOne fish oil), coach sets these on
+    # the plan entry to override the brand name + buy URL in the
+    # supplement schedule + shopping list. Falls back to catalogue
+    # lookup when null. See render-client-letter.py:
+    #   _build_supplement_schedule_html (display_name)
+    #   _build_complete_shopping_list_html (buy_link)
+    display_name: Optional[str] = None
+    buy_link: Optional[str] = None
 
 
 class LabOrderItem(BaseModel):
@@ -971,6 +991,14 @@ class Plan(BaseModel):
     start_confirmation_token: Optional[str] = None
     start_confirmation_expires_at: Optional[datetime] = None
     start_confirmation_used_at: Optional[datetime] = None
+
+    # ── Public letter link (tokenised /letter/<token> URL) ────────────────
+    # Minted by the letter-generation flow so the client can open the
+    # phone-friendly consolidated letter without auth. Written by the
+    # Next.js letter pipeline; declared here so plan-check (which loads
+    # plans through this Pydantic model with extra="forbid") doesn't choke.
+    letter_token: Optional[str] = None
+    letter_token_created_at: Optional[datetime] = None
 
     # ---- assessment (coach) ----
     primary_topics: list[str] = Field(default_factory=list)         # topic slugs

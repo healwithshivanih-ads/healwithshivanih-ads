@@ -39,11 +39,11 @@ export function FmDepletionBanner({ rows, onOpenInPlan }: FmDepletionBannerProps
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 10 }}>
         <span style={{ fontSize: 18 }}>💊</span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 12.5, fontWeight: 700, color: "#8a5a08", marginBottom: 2 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "#8a5a08", marginBottom: 2 }}>
             {rows.length} medication{rows.length === 1 ? "" : "s"} may deplete nutrients
             <span
               style={{
-                fontSize: 9.5,
+                fontSize: 10,
                 marginLeft: 8,
                 padding: "1px 6px",
                 borderRadius: 3,
@@ -57,7 +57,7 @@ export function FmDepletionBanner({ rows, onOpenInPlan }: FmDepletionBannerProps
               catalogue
             </span>
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
             Check matching labs before drafting the supplement plan.
           </div>
         </div>
@@ -70,7 +70,7 @@ export function FmDepletionBanner({ rows, onOpenInPlan }: FmDepletionBannerProps
               color: "#fff",
               border: 0,
               padding: "6px 12px",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 700,
               borderRadius: "var(--fm-radius-sm)",
               cursor: "pointer",
@@ -95,7 +95,7 @@ export function FmDepletionBanner({ rows, onOpenInPlan }: FmDepletionBannerProps
               display: "flex",
               alignItems: "center",
               gap: 10,
-              fontSize: 11.5,
+              fontSize: 12,
               flexWrap: "wrap",
             }}
           >

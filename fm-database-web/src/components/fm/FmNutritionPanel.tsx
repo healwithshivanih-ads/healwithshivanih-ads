@@ -77,7 +77,7 @@ export function FmNutritionPanel({ nutrition, planSlug }: FmNutritionPanelProps)
           padding: "10px 12px",
           background: "var(--fm-bg-cool)",
           borderRadius: "var(--fm-radius-sm)",
-          fontSize: 11.5,
+          fontSize: 12,
           color: "var(--fm-text-tertiary)",
         }}
       >
@@ -118,7 +118,7 @@ export function FmNutritionPanel({ nutrition, planSlug }: FmNutritionPanelProps)
           </div>
           <div
             style={{
-              fontSize: 12.5,
+              fontSize: 13,
               lineHeight: 1.6,
               color: "var(--fm-text-primary)",
               whiteSpace: "pre-wrap",
@@ -246,7 +246,7 @@ export function FmNutritionPanel({ nutrition, planSlug }: FmNutritionPanelProps)
           padding: "10px 14px",
           background: "var(--fm-bg-cool)",
           borderRadius: "var(--fm-radius-sm)",
-          fontSize: 11.5,
+          fontSize: 12,
           color: "var(--fm-text-secondary)",
         }}
       >

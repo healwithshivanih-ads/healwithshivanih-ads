@@ -192,9 +192,24 @@ export default async function IntakeViewPage({
             )}
           </p>
         </div>
+        {/* Back link converted to inline styles 2026-05-19 — coach
+            reported the Tailwind `text-emerald-700 hover:underline`
+            wasn't rendering (link looked broken / unclickable). Inline
+            border + bg make it an unmistakable button-shaped link. */}
         <Link
           href={`/clients-v2/${id}`}
-          className="text-sm text-emerald-700 hover:underline whitespace-nowrap"
+          style={{
+            display: "inline-block",
+            padding: "8px 14px",
+            background: "var(--fm-surface, #fff)",
+            border: "1px solid var(--fm-border, #E5E2DD)",
+            borderRadius: 8,
+            color: "var(--fm-text-primary, #1A1A1A)",
+            textDecoration: "none",
+            fontSize: 13,
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+          }}
         >
           ← Back to client
         </Link>

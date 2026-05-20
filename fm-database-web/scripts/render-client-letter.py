@@ -29,6 +29,7 @@ import json
 import os
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
@@ -461,20 +462,30 @@ def _load_custom_links() -> dict[str, tuple[str, str]]:
     except Exception:
         return {}
 
-# Only specify brands for items clients genuinely need guidance on.
-# Everything else (oats, ghee, oils etc.) clients can use their own preferred brands.
-INDIAN_BRANDS = """
-**Recommended brands — only where it matters:**
-
-*For everything else (oats, ghee, coconut oil, yogurt, nut butters etc.) use any brand you trust from your local store or online.*
-
-| Category | What to look for | Recommended options |
-|---|---|---|
-| **Protein bars / healthy snacks** | No refined sugar, 10g+ protein, minimal ingredients | RiteBite Max Protein bars, Yoga Bar protein bars, True Elements bars, Monsoon Harvest millet bars, Saffola Oats & Quinoa bars |
-| **Sleep support (herbal)** | Standardised extract, no fillers | Organic India Ashwagandha, Himalaya Ashwagandha, Kerala Ayurveda Ashwagandha; for sleep specifically: Organic India Sleep formula, Himalaya Tagara |
-| **Gut / digestive support (herbal)** | Certified organic where possible | Organic India Triphala, Himalaya Triphala, Charak Pharma; for probiotics: Yakult, Epigamia probiotic curd |
-| **Anti-inflammatory / adaptogens** | GMP certified, third-party tested | Organic India Tulsi, Himalaya Turmeric, Upakarma Ayurveda Shilajit |
-""".strip()
+# Brand recommendations removed 2026-05-19. Coach feedback: hardcoded
+# brand lists (RiteBite, Yoga Bar, Organic India, Himalaya, etc.) leaked
+# into every meal-plan / lifestyle / consolidated letter unprompted. That's
+# wrong — brands are CLIENT-SPECIFIC and should come from:
+#   1. The VitaOne affiliate catalog (auto-injected for supplements only,
+#      via the existing _vitaone_link / shopping-list helpers).
+#   2. Custom supplement_links coach has set in ~/fm-plans/supplement_links.yaml.
+#   3. Coach hand-typing brand guidance into coach_notes for THIS letter.
+# For non-supplement items (protein bars, herbal teas, etc.) the letter
+# now describes WHAT to look for (e.g. "no refined sugar, 10g+ protein,
+# minimal ingredients") and leaves the brand choice to the client.
+INDIAN_BRANDS = (
+    "**Brand guidance:** when the letter mentions a category like "
+    "protein bars, herbal sleep formulas, or probiotic curd, describe "
+    "what to look for (e.g. 'no refined sugar, 10g+ protein, minimal "
+    "ingredients') and let the client pick a brand they trust from their "
+    "local store. Do NOT name specific brands (RiteBite, Yoga Bar, "
+    "Organic India, Himalaya, Charak, Saffola, Epigamia, Yakult, etc.) — "
+    "the coach-curated supplement schedule below is the only place brand "
+    "recommendations belong in the letter, and those are injected "
+    "automatically. If a coach note explicitly tells you to recommend a "
+    "specific brand for a non-supplement item, follow it; otherwise stay "
+    "generic."
+)
 
 
 def _load_dotenv() -> None:
@@ -901,7 +912,21 @@ def _load_protocol_yaml(slug: str) -> dict | None:
         return None
 
 
-def _recent_client_voice_block(client_id: str, days_back: int = 14) -> str:
+# Module-level backdate override — set by main() when payload carries
+# as_of_date. All prompt-builders call _recent_client_voice_block without
+# passing the cutoff explicitly, so we read this global when as_of_iso
+# arg is None. Keeps the threading minimal.
+_AS_OF_OVERRIDE: str | None = None
+
+
+def _recent_client_voice_block(
+    client_id: str,
+    days_back: int = 14,
+    as_of_iso: str | None = None,
+) -> str:
+    # Honor module-level override (set by main() when backdating).
+    if as_of_iso is None and _AS_OF_OVERRIDE:
+        as_of_iso = _AS_OF_OVERRIDE
     """Compact block of between-session client/coach messages the letter
     generator should incorporate into the next week's meal plan.
 
@@ -931,7 +956,19 @@ def _recent_client_voice_block(client_id: str, days_back: int = 14) -> str:
     if not sessions_dir.exists():
         return ""
 
-    today = date.today()
+    # Backdating support: when the caller passes as_of_iso (e.g. coach
+    # is generating the historical "initial letter" for a client who
+    # started weeks ago), anchor the recent-voice window to that date
+    # instead of today. Sessions logged AFTER as_of_iso are excluded
+    # even if their date is technically within `days_back` — they
+    # weren't visible at the time the letter would have been written.
+    if as_of_iso:
+        try:
+            today = date.fromisoformat(as_of_iso[:10])
+        except Exception:
+            today = date.today()
+    else:
+        today = date.today()
     cutoff = today - timedelta(days=days_back)
 
     _TAG_PREFIX_RE = re.compile(r"^(\s*\[[^\]]+\]\s*)+", re.MULTILINE)
@@ -952,6 +989,10 @@ def _recent_client_voice_block(client_id: str, days_back: int = 14) -> str:
         except Exception:
             continue
         if sess_date < cutoff:
+            continue
+        # Skip sessions logged AFTER the as-of cutoff — they weren't
+        # visible when this letter would have been written.
+        if sess_date > today:
             continue
         complaints = data.get("presenting_complaints") or ""
         coach_notes = (data.get("coach_notes") or "").strip()
@@ -1033,6 +1074,154 @@ def _recent_client_voice_block(client_id: str, days_back: int = 14) -> str:
         days_ago = (today - d).days
         when = "today" if days_ago == 0 else (
             "yesterday" if days_ago == 1 else f"{days_ago}d ago"
+        )
+        lines.append(f"- **{d.isoformat()} ({when}, {channel}):** {body}")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _protocol_changes_since_plan_block(
+    client_id: str,
+    plan_publish_date_iso: str | None,
+    plan_slug: str | None = None,
+) -> str:
+    """Aggregate EVERY coach session note + every inbound client message
+    between plan publish and today, and frame them as BINDING protocol
+    decisions for subsequent letters.
+
+    The 14-day `_recent_client_voice_block` covers recency (tonal cues,
+    last week's vibe). This block covers the FULL communication arc
+    since the plan went live — so a Wks 9-10 letter generated 7 weeks
+    after the plan publish still surfaces the mouth tape, gluten
+    enzymes, and activated charcoal coach added in Wk 2.
+
+    Coach feedback 2026-05-19: phase letters were missing protocol
+    items coach added through check-ins / WhatsApp between plans. The
+    fix isn't a per-incident patch — it's wiring every subsequent
+    letter to read the full conversation since plan publish and
+    incorporate ALL coach decisions, not just the last 14 days.
+
+    Returns an empty string if there's nothing to surface (no plan
+    publish date OR no sessions in the window OR client_id missing).
+    """
+    if not client_id or not plan_publish_date_iso:
+        return ""
+    try:
+        from datetime import date
+        publish_d = date.fromisoformat(str(plan_publish_date_iso)[:10])
+    except Exception:
+        return ""
+
+    import yaml as _yaml
+    sessions_dir = PLANS_ROOT / "clients" / client_id / "sessions"
+    if not sessions_dir.exists():
+        return ""
+
+    today = date.today()
+    if _AS_OF_OVERRIDE:
+        try:
+            today = date.fromisoformat(_AS_OF_OVERRIDE[:10])
+        except Exception:
+            pass
+
+    _TAG_PREFIX_RE = re.compile(r"^(\s*\[[^\]]+\]\s*)+", re.MULTILINE)
+    _WA_ENVELOPE_RE = re.compile(
+        r"^WhatsApp message from [^\n]+\n+Received:[^\n]+\n+",
+        re.IGNORECASE,
+    )
+
+    entries: list[tuple[date, str, str]] = []  # (date, channel, body)
+    for f in sorted(sessions_dir.glob("*.yaml")):
+        try:
+            data = _yaml.safe_load(f.read_text()) or {}
+        except Exception:
+            continue
+        d_raw = data.get("date") or ""
+        try:
+            sess_date = date.fromisoformat(str(d_raw)[:10])
+        except Exception:
+            continue
+        # Only sessions BETWEEN plan publish and today (or as-of cutoff).
+        # Inclusive on both ends — same-day check-ins count.
+        if sess_date < publish_d or sess_date > today:
+            continue
+
+        complaints = data.get("presenting_complaints") or ""
+        coach_notes = (data.get("coach_notes") or "").strip()
+        body_raw = ""
+
+        if "[source: whatsapp_outbound]" in complaints:
+            # Skip outbound — don't echo coach's own messages back.
+            continue
+        if "[source: whatsapp_webhook]" in complaints:
+            channel = "client WhatsApp"
+            body_raw = _WA_ENVELOPE_RE.sub("", complaints).strip()
+            body_raw = _TAG_PREFIX_RE.sub("", body_raw).strip()
+        elif "[source: pre_session_brief]" in complaints:
+            channel = "coach observation"
+            body_raw = coach_notes or _TAG_PREFIX_RE.sub("", complaints).strip()
+        elif coach_notes:
+            channel = "coach note"
+            body_raw = coach_notes
+        elif complaints:
+            channel = "client report"
+            body_raw = _TAG_PREFIX_RE.sub("", complaints).strip()
+        else:
+            continue
+
+        # Trim for prompt budget — coach notes are deliberate clinical
+        # decisions, never truncate. WhatsApp client messages can be
+        # long ramblings, so cap at 800 chars to keep the prompt manageable.
+        if channel == "client WhatsApp":
+            body_raw = body_raw[:800] + ("…" if len(body_raw) > 800 else "")
+        if not body_raw:
+            continue
+        entries.append((sess_date, channel, body_raw))
+
+    if not entries:
+        return ""
+
+    # Chronological — oldest first — so AI sees the protocol evolve
+    # forward through time.
+    entries.sort(key=lambda t: t[0])
+
+    days_span = (today - publish_d).days
+    lines = [
+        "## FULL COMMUNICATION SINCE PLAN PUBLISHED — BINDING CONTEXT",
+        "",
+        (
+            f"Below is EVERY coach decision + client message logged between "
+            f"the plan being published ({publish_d.isoformat()}) and now "
+            f"({today.isoformat()}, {days_span} days). This is the "
+            f"continuous record of what's been added / changed / adjusted "
+            f"in the protocol DURING the active plan period."
+        ),
+        "",
+        "BINDING RULES:",
+        "  1. If a coach note mentions ADDING a supplement, practice, "
+        "product, or protocol step (e.g. mouth tape, gluten digestive "
+        "enzymes, activated charcoal, ferment-of-the-week, a new lifestyle "
+        "habit) — that item IS CURRENTLY PART OF HER PROTOCOL. Reference "
+        "it in the appropriate section of this letter (Supplements / "
+        "Lifestyle / Travel / Routine).",
+        "  2. If a client message reports a SYMPTOM CHANGE — improvement, "
+        "regression, new complaint, side effect — fold it into the "
+        "narrative + decide whether to adjust the meal plan accordingly.",
+        "  3. If a coach note REMOVES an item, do NOT mention it (the "
+        "supplement_protocol YAML is the source of truth for current "
+        "pills; this block is for ADDITIONS + observations).",
+        "  4. Quote the client's own words where it makes the letter feel "
+        "heard. Don't invent items not in this list.",
+        "",
+        "Items oldest → newest:",
+        "",
+    ]
+    for d, channel, body in entries:
+        days_ago = (today - d).days
+        when = (
+            "today" if days_ago == 0
+            else "yesterday" if days_ago == 1
+            else f"{days_ago}d ago"
         )
         lines.append(f"- **{d.isoformat()} ({when}, {channel}):** {body}")
     lines.append("")
@@ -1350,6 +1539,26 @@ def _detect_start_week(titration: str, coach_rationale: str) -> int:
     return min(candidates)
 
 
+# Brand prefixes stripped from user-facing supplement names. Coach
+# feedback 2026-05-19: "Vitaone Ashwagandha" reads weird to the client
+# — they don't care about the brand name, they care about what the
+# supplement does. Brand shows up in the badge next to the buy link
+# anyway (e.g. "Buy ↗ [VitaOne]"). Pure presentation strip — slug stays
+# untouched for catalogue lookups.
+_BRAND_PREFIX_RE = re.compile(
+    r"^\s*(vita[\s\-]*one|vitaone|himalaya|organic india|nature[\s\-]*made|now\s*foods|jarrow|thorne|garden of life)\s+",
+    re.IGNORECASE,
+)
+
+
+def _strip_brand_from_name(name: str) -> str:
+    """Remove a leading brand prefix from a display name. Idempotent.
+    'Vitaone Ashwagandha' → 'Ashwagandha'. 'Magnesium Glycinate' → 'Magnesium Glycinate'."""
+    if not name:
+        return name
+    return _BRAND_PREFIX_RE.sub("", name).strip()
+
+
 def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int) -> str:
     """Render the upfront shopping list — the "buy everything now" section
     that goes ABOVE the detailed dose schedule.
@@ -1371,7 +1580,7 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
     items: list[dict] = []
     for s in supplements:
         slug = s.get("supplement_slug", "")
-        name = s.get("display_name") or slug.replace("-", " ").title()
+        name = _strip_brand_from_name(s.get("display_name") or slug.replace("-", " ").title())
         dose = s.get("dose") or s.get("dose_display") or ""
         titration = s.get("titration") or ""
         rationale = (s.get("coach_rationale") or "").strip()
@@ -1491,7 +1700,7 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
     rows: list[dict] = []
     for s in supplements:
         slug = s.get("supplement_slug", "")
-        name = s.get("display_name") or slug.replace("-", " ").title()
+        name = _strip_brand_from_name(s.get("display_name") or slug.replace("-", " ").title())
         dose = s.get("dose") or s.get("dose_display") or ""
         timing_raw = s.get("timing") or ""
         rationale = (s.get("coach_rationale") or "").split("\n")[0].strip()
@@ -2637,7 +2846,10 @@ DOCUMENT STRUCTURE:
 
 7. **Recipe Appendix** — `## ✦ Recipe Appendix` — full recipes for every ✦ dish
 
-8. **A note from your coach** — warm closing, Shivani's name
+8. **Sign-off** — TWO LINES ONLY: "**With warmth,**" / "**Shivani** 🌿".
+   Do NOT add another "A note from your coach" section — the entire
+   letter is already written FROM Shivani TO the client, so a closing
+   note would just repeat what's above. End cleanly.
 
 RULES:
 - NO supplement tables or lists (see separate supplement document)
@@ -2896,7 +3108,8 @@ DOCUMENT STRUCTURE:
 8. **Your Check-In Questions** — `## 💬 Your Check-In Questions`
    Questions {first_name} should reflect on before each coaching session. Include both provided recheck questions and 3–4 general wellbeing prompts.
 
-9. **A note from your coach** — warm closing, remind {first_name} that this is a journey. Shivani's name.
+9. **Sign-off** — TWO LINES: "**With warmth,**" / "**Shivani** 🌿".
+   No separate "A note from coach" section — letter is already FROM her.
 
 RULES:
 - NO meal plan content (see separate meal plan document)
@@ -2949,6 +3162,7 @@ want a real, progressive movement programme.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{protocol_changes}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
 
@@ -3020,7 +3234,8 @@ WHAT TO PRODUCE — markdown document with these sections (in order):
    weight), session RPE drift over weeks, resting HR, sleep impact,
    mood/energy on training vs rest days. Frame as 'notice', not 'log'.
 
-10. **A note from your coach** — warm closing. Short. Shivani's name.
+10. **Sign-off** — TWO LINES: "**With warmth,**" / "**Shivani** 🌿".
+    No separate "A note from coach" — letter is already FROM her.
 
 WRITING RULES:
 - Indian-context exercise vocabulary where it fits: surya namaskar,
@@ -3424,6 +3639,17 @@ Per meal split (MUST roughly match):
     # adjust the next week's menu to those signals instead of just
     # re-rendering the plan.yaml verbatim.
     recent_voice = _recent_client_voice_block(client.get("client_id") or "")
+    # FULL communication arc since plan publish — captures coach
+    # protocol additions (mouth tape, gluten enzymes, activated
+    # charcoal, etc.) that happened mid-cycle through check-ins or
+    # WhatsApp and must surface in the next letter. Different from
+    # recent_voice (14d) which is for tone/recency; this one covers
+    # the entire active plan window. Coach feedback 2026-05-19.
+    protocol_changes = _protocol_changes_since_plan_block(
+        client.get("client_id") or "",
+        plan.get("plan_period_start"),
+        plan.get("slug"),
+    )
 
     phase_label_short = (
         f"Week {phase_start}"
@@ -3593,7 +3819,10 @@ client has a reference they can look at while plating each meal.
 
 9. **Recipe Appendix** — `## ✦ Recipe Appendix` — compact format
    (ingredients + 1-paragraph method per dish, not the full multi-step
-   recipe pack)."""
+   recipe pack). The save layer splits this section into a separate
+   `<stem>-recipes.md/.html` file that goes to the client as an email
+   attachment, so the main letter ships without the appendix taking up
+   pages 4-7."""
 
     prompt = f"""You are writing a CONTINUATION meal plan letter for {first_name}.
 This is a MID-CYCLE update — {first_name} is currently in week {phase_start} of her
@@ -3611,6 +3840,7 @@ the past weeks. Don't re-prescribe — continue + evolve.
 {top_of_mind}
 {cycle}
 {attached_protocol}
+{protocol_changes}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
 
@@ -3711,7 +3941,8 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
 
 {body_instructions}
 
-10. **A note from your coach** — 2–3 sentence warm close, Shivani's name.
+10. **Sign-off** — TWO LINES: "**With warmth,**" / "**Shivani** 🌿".
+    No separate "A note from coach" section — letter is already FROM her.
 
 RULES:
 - {first_name}'s supplement routine continues from the initial letter —
@@ -3863,7 +4094,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     supp_enriched = []
     for s in supplements:
         slug = s.get("supplement_slug", "")
-        name = s.get("display_name") or slug.replace("-", " ").title()
+        name = _strip_brand_from_name(s.get("display_name") or slug.replace("-", " ").title())
         dose = s.get("dose") or s.get("dose_display") or ""
         timing = s.get("timing") or ""
         rationale = (s.get("coach_rationale") or "").split("[evidence-tier note]")[0].strip()
@@ -3973,6 +4204,15 @@ MOVEMENT & WELLNESS:
     # quick notes). Lets a consolidated regenerate pick up "low veg
     # intake, constipation" without needing a full reassessment first.
     recent_voice = _recent_client_voice_block(client.get("client_id") or "")
+    # FULL communication arc since plan publish — coach protocol
+    # additions (mouth tape, gluten enzymes, activated charcoal, etc.)
+    # that happened mid-cycle. Coach feedback 2026-05-19. See helper for
+    # rules.
+    protocol_changes = _protocol_changes_since_plan_block(
+        client.get("client_id") or "",
+        plan.get("plan_period_start"),
+        plan.get("slug"),
+    )
 
     # ── Pre-compute the section 3 body ──
     # Two alternate prompt fragments depending on whether the coach has
@@ -4222,7 +4462,9 @@ The plan must have a logical therapeutic progression — each phase builds on th
    > *Your recipe pack — full ingredients, method, and tips for every ✦ dish in this meal plan — is at a separate link your coach is sending you over WhatsApp. Bookmark it on your phone for easy access in the kitchen.*
    {"DO NOT write any ✦ recipe details, ingredient lists, or methods in this letter. Recipes live on a separate page (linked from the meal plan ✦ symbols once the letter is published)." if include_daily_meal_plan else "No meal plan in this letter (per client preference) → no recipe pack needed. Skip this sub-block."}
 
-6. **A note from Shivani** — heading `## 💚 A note from Shivani`
+6. **Sign-off** — TWO LINES ONLY: "**With warmth,**" / "**Shivani** 🌿".
+   No separate "A note from Shivani" section — the entire letter is
+   already written FROM Shivani TO the client
    2–4 warm closing sentences. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint. Encourage them to message with questions. Sign off as Shivani.
 
 ---
@@ -4359,13 +4601,24 @@ def _validate_letter_specificity(
         return markdown, []
 
     # Build the TOP-OF-MIND context the validator will check tips against.
-    top_of_mind = _top_of_mind_block(client, plan).strip()
-    if not top_of_mind:
-        # No client specifics to anchor against — validator can't help here.
+    # Wrapped in try/except because any of these helpers can blow up on
+    # edge-case client/plan shapes (e.g. an exercise_plan run where the
+    # plan field shapes differ), and the validator MUST never crash the
+    # main letter render — its only job is to QA a letter we already have.
+    try:
+        top_of_mind = _top_of_mind_block(client, plan).strip()
+        if not top_of_mind:
+            # No client specifics to anchor against — validator can't help here.
+            return markdown, []
+        cycle = _cycle_block(client).strip()
+        attached_protocol_ctx = _attached_protocol_block(plan).strip()
+    except Exception as e:
+        print(
+            f"[validate] context-build failed ({type(e).__name__}: {e}) — skipping QA",
+            file=sys.stderr,
+            flush=True,
+        )
         return markdown, []
-
-    cycle = _cycle_block(client).strip()
-    attached_protocol_ctx = _attached_protocol_block(plan).strip()
 
     SYSTEM = """You are a client-specificity QA assistant for a Functional Medicine coach.
 Your only job: catch GENERIC coaching tips in a client letter and rewrite them
@@ -4398,6 +4651,17 @@ REWRITE RULES (only for tips scored < 3):
   - Match the original tone (warm, plain English, India-context).
   - If a tip really can't be made specific from the available context,
     DELETE it rather than ship a generic version.
+
+VOICE — CRITICAL:
+  The letter is written and signed by Shivani Hariharan (the coach) IN
+  FIRST PERSON to the client. Your rewrites MUST stay in first person —
+  use 'I', 'me', 'my', 'we', 'our'. NEVER introduce phrases like
+  "check with Shivani", "Shivani recommends", "your coach has advised",
+  "ask Shivani before", or any other third-person reference to the
+  coach. The coach IS the author. Saying "check with Shivani" in a
+  letter signed by Shivani is nonsensical to the client. If a tip
+  needs a "check with the coach" caveat, write "let me know before
+  you start this" or "message me first" instead.
 
 CRITICAL: Don't touch:
   - Section headings
@@ -4479,24 +4743,33 @@ CRITICAL: Don't touch:
         print(f"[validate] {type(e).__name__}: {e}", file=sys.stderr)
         return markdown, []
 
-    tool_use = next((b for b in resp.content if getattr(b, "type", None) == "tool_use"), None)
-    if not tool_use:
-        return markdown, []
+    try:
+        tool_use = next((b for b in resp.content if getattr(b, "type", None) == "tool_use"), None)
+        if not tool_use:
+            return markdown, []
 
-    payload = tool_use.input or {}
-    rewritten = payload.get("rewritten_markdown") or ""
-    changes = payload.get("changes") or []
+        payload = tool_use.input or {}
+        rewritten = payload.get("rewritten_markdown") or ""
+        changes = payload.get("changes") or []
 
-    # Sanity: don't accept a rewrite that's drastically shorter (looks like
-    # the model summarised instead of rewriting in place).
-    if not rewritten.strip() or len(rewritten) < 0.5 * len(markdown):
+        # Sanity: don't accept a rewrite that's drastically shorter (looks like
+        # the model summarised instead of rewriting in place).
+        if not rewritten.strip() or len(rewritten) < 0.5 * len(markdown):
+            print(
+                f"[validate] suspicious rewrite ({len(rewritten)} vs {len(markdown)} chars) — skipping",
+                file=sys.stderr,
+                flush=True,
+            )
+            return markdown, []
+
+        return rewritten, changes
+    except Exception as e:
         print(
-            f"[validate] suspicious rewrite ({len(rewritten)} vs {len(markdown)} chars) — skipping",
+            f"[validate] response-parse failed ({type(e).__name__}: {e}) — keeping original markdown",
             file=sys.stderr,
+            flush=True,
         )
         return markdown, []
-
-    return rewritten, changes
 
 
 def main() -> int:
@@ -4537,6 +4810,32 @@ def main() -> int:
     phase_end_raw = payload.get("phase_end")
     phase_start = int(phase_start_raw) if isinstance(phase_start_raw, (int, str)) and str(phase_start_raw).strip() else None
     phase_end = int(phase_end_raw) if isinstance(phase_end_raw, (int, str)) and str(phase_end_raw).strip() else None
+    # Backdating: coach generates the "as-of" version of a letter for a
+    # client whose protocol started weeks ago. as_of_date filters all
+    # dated client data (sessions, measurements_log, health_snapshots)
+    # to entries on/before that date, and anchors the recent-voice
+    # window to that date instead of today. Format: YYYY-MM-DD.
+    as_of_date = (payload.get("as_of_date") or "").strip() or None
+    if as_of_date:
+        # Validate ISO date BEFORE setting the module global so a malformed
+        # value can't poison the recent-voice cutoff. Empty / unparseable
+        # → treat as no-op + log to stderr. Audit feedback (B4 2026-05-19).
+        try:
+            from datetime import date as _date
+            _date.fromisoformat(as_of_date[:10])
+            valid_as_of = as_of_date
+        except Exception:
+            print(
+                f"[render-letter] as_of_date {as_of_date!r} is not ISO YYYY-MM-DD — ignoring",
+                file=sys.stderr,
+                flush=True,
+            )
+            valid_as_of = None
+            as_of_date = None
+        if valid_as_of:
+            _step(f"backdate mode — filtering client data to ≤ {valid_as_of}")
+            global _AS_OF_OVERRIDE
+            _AS_OF_OVERRIDE = valid_as_of
 
     if not plan_slug:
         json.dump({"ok": False, "markdown": "", "error": "plan_slug is required"}, sys.stdout)
@@ -4555,12 +4854,176 @@ def main() -> int:
     if client is None:
         client = {}
 
+    # Backdating: filter dated arrays on the client object so the prompt
+    # sees only what was known on/before as_of_date. Mutating a fresh
+    # dict (not the YAML on disk) — disk stays authoritative.
+    if as_of_date:
+        try:
+            from datetime import date as _date
+            cutoff = _date.fromisoformat(as_of_date[:10])
+
+            def _entry_date_le(e: dict, key: str = "date") -> bool:
+                raw = e.get(key) if isinstance(e, dict) else None
+                if not raw:
+                    # Undated entries — keep them. Safer than dropping
+                    # legitimate context that just happens to lack a
+                    # date stamp.
+                    return True
+                try:
+                    return _date.fromisoformat(str(raw)[:10]) <= cutoff
+                except Exception:
+                    return True
+
+            filtered_total = 0
+            for field in ("measurements_log", "health_snapshots", "health_data_snapshots", "weight_log"):
+                items = client.get(field)
+                if isinstance(items, list):
+                    before = len(items)
+                    kept = [it for it in items if _entry_date_le(it)]
+                    if len(kept) != before:
+                        client[field] = kept
+                        filtered_total += (before - len(kept))
+            if filtered_total:
+                _step(f"backdate: filtered out {filtered_total} post-cutoff dated entries from client")
+        except Exception as e:
+            print(f"[render-letter] backdate-filter failed ({type(e).__name__}: {e}) — continuing without filter",
+                  file=sys.stderr, flush=True)
+
     # Merge persistent catalogue coach notes with generation-time notes
     catalogue_notes = _load_catalogue_notes(plan)
     if catalogue_notes and coach_notes:
         coach_notes = f"{coach_notes}\n\n{catalogue_notes}"
     elif catalogue_notes:
         coach_notes = catalogue_notes
+
+    # Auto-inject weight_loss.week_overrides (set on the Overview tab via
+    # the WeightLossCard) into coach_notes so the existing `🧳 TRAVEL`
+    # detection in _coach_notes_block fires and the AI applies the
+    # travel-localisation rules (restaurant ordering at destination,
+    # local cuisine swaps, maintenance kcal for those dates).
+    #
+    # Coach asked for this 2026-05-19: she set Sydney travel via the
+    # weight-loss override card but the consolidated letter still didn't
+    # localise the meal plan — turned out the prompt only looked at
+    # coach_notes, never read the override. This bridges the two.
+    try:
+        wl = client.get("weight_loss") or {}
+        overrides = wl.get("week_overrides") or []
+        if isinstance(overrides, list) and overrides:
+            from datetime import date as _date, timedelta as _td
+
+            # Compute the phase letter's effective date window so we can
+            # scope overrides to it. Was previously a real bug: a Sydney
+            # override for Wks 7-8 was leaking into the Wks 5-6 letter
+            # because we only filtered on "ended before today". Now we
+            # require the override date range to OVERLAP the phase
+            # window. For non-phase letters (consolidated, supplement
+            # plan, etc.) we use the full plan window so overrides still
+            # surface as relevant background context.
+            plan_start_iso = plan.get("plan_period_start") or ""
+            plan_weeks_for_window = int(plan.get("plan_period_weeks") or 12)
+            try:
+                plan_start_d = _date.fromisoformat(str(plan_start_iso)[:10])
+            except Exception:
+                plan_start_d = None
+
+            if letter_type in ("meal_plan_phase", "meal_plan") and phase_start and phase_end and plan_start_d:
+                # Phase letters: tight window = the requested fortnight only.
+                phase_from = plan_start_d + _td(weeks=(phase_start - 1))
+                phase_to = plan_start_d + _td(weeks=phase_end) - _td(days=1)
+            elif plan_start_d:
+                # Other letters: cover the whole plan period.
+                phase_from = plan_start_d
+                phase_to = plan_start_d + _td(weeks=plan_weeks_for_window) - _td(days=1)
+            else:
+                phase_from = None
+                phase_to = None
+
+            injected_lines: list[str] = []
+            for ov in overrides:
+                if not isinstance(ov, dict):
+                    continue
+                ctx = (ov.get("context") or "").lower()
+                date_from = ov.get("date_from") or ""
+                date_to = ov.get("date_to") or ""
+                mode = ov.get("mode") or "maintenance"
+                location = (ov.get("location") or "").strip()
+                reason = (ov.get("reason") or "").strip()
+                if not date_from or not date_to:
+                    continue
+                # Skip overrides that ended before today — they're past
+                # and irrelevant to a letter being generated now.
+                try:
+                    if _date.fromisoformat(date_to[:10]) < _date.today():
+                        continue
+                except Exception:
+                    pass
+                # Scope check: skip overrides whose date range doesn't
+                # intersect this letter's effective window. Prevents
+                # "phantom Sydney section" in unrelated fortnight letters.
+                if phase_from and phase_to:
+                    try:
+                        ov_from_d = _date.fromisoformat(date_from[:10])
+                        ov_to_d = _date.fromisoformat(date_to[:10])
+                        # No intersection iff override ends before window
+                        # starts OR override starts after window ends.
+                        if ov_to_d < phase_from or ov_from_d > phase_to:
+                            _step(
+                                f"skipping override ({ctx or 'unspecified'} {date_from}→{date_to}) "
+                                f"— outside letter window {phase_from}→{phase_to}"
+                            )
+                            continue
+                    except Exception:
+                        # Malformed date — fall through and include the
+                        # override defensively (better to over-include
+                        # than to silently drop on a coach typo).
+                        pass
+                if ctx == "travel" and location:
+                    # Emoji-prefixed marker = exactly what _coach_notes_block
+                    # looks for to trigger the travel_rule prompt.
+                    line = (
+                        f"🧳 TRAVEL: {location} ({date_from} → {date_to}). "
+                        f"Override mode: {mode}. "
+                        f"Cooking access: restaurants/hotel (assume no kitchen unless coach overrides). "
+                        f"Apply travel-localisation: restaurant-ordering guide for {location}, "
+                        f"local cuisine swaps that still fit her protocol, hotel-breakfast tips, "
+                        f"hydration + jet-lag guidance."
+                    )
+                    if reason:
+                        line += f" Context note: {reason}."
+                    injected_lines.append(line)
+                elif ctx == "festival":
+                    injected_lines.append(
+                        f"🎉 FESTIVAL window ({date_from} → {date_to}): relax restrictions for cultural meals. "
+                        f"Reason: {reason or 'family / festival flexibility'}. Mode: {mode}."
+                    )
+                elif ctx == "illness":
+                    injected_lines.append(
+                        f"🤒 ILLNESS window ({date_from} → {date_to}): skip structured meal plan for these dates. "
+                        f"Reason: {reason or 'recovery'}."
+                    )
+                elif ctx == "plateau_break":
+                    injected_lines.append(
+                        f"⏸ PLATEAU BREAK ({date_from} → {date_to}): coach-initiated diet break. Mode: {mode}."
+                    )
+                else:
+                    injected_lines.append(
+                        f"🔧 OVERRIDE ({date_from} → {date_to}): {mode}. {reason}"
+                    )
+            if injected_lines:
+                override_block = (
+                    "=== ACTIVE WEIGHT-LOSS OVERRIDES (from client.weight_loss) ===\n"
+                    + "\n".join(injected_lines)
+                )
+                coach_notes = (
+                    f"{coach_notes}\n\n{override_block}" if coach_notes else override_block
+                )
+                _step(f"auto-injected {len(injected_lines)} weight-loss override(s) into coach_notes")
+    except Exception as e:
+        # Override injection is a nice-to-have; if it explodes, ship the
+        # letter without it rather than crash.
+        print(f"[render-letter] override-injection failed ({type(e).__name__}: {e}) — continuing without",
+              file=sys.stderr, flush=True)
 
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -4603,6 +5066,46 @@ def main() -> int:
 
     client_api = Anthropic(api_key=api_key)
 
+    # ── Letter cache (E.2) ─────────────────────────────────────────────
+    # The prompt string captures every input that drives Sonnet's output
+    # for this letter — plan fields, client context, coach notes, phase
+    # window, weight-loss params. Hashing the prompt + letter_type +
+    # model gives us a deterministic cache key. If a previous letter
+    # exists with the same key, we return it verbatim and skip the
+    # ~$0.05–0.30 Sonnet call. Cache lives at
+    # ~/.fm-cache/letters/<plan_slug>-<letter_type>-<keyHash>.json and
+    # persists markdown + validation report + recipes sidecar. Coach
+    # disables via FM_LETTER_NO_CACHE=1. Cache CAN be safely deleted
+    # any time — the next regen just rebuilds.
+    import hashlib as _hashlib
+    _letter_cache_dir = (
+        Path(os.environ.get("FM_LETTER_CACHE_DIR"))
+        if os.environ.get("FM_LETTER_CACHE_DIR")
+        else Path.home() / ".fm-cache" / "letters"
+    )
+    _letter_cache_disabled = os.environ.get("FM_LETTER_NO_CACHE") == "1"
+    _letter_cache_key = _hashlib.sha256(
+        (
+            f"letter_type={letter_type}\n"
+            f"model=claude-sonnet-4-6\n"
+            f"prompt={prompt}"
+        ).encode()
+    ).hexdigest()[:32]
+    _letter_cache_file = _letter_cache_dir / f"{plan_slug}-{letter_type}-{_letter_cache_key}.json"
+    if not _letter_cache_disabled and _letter_cache_file.exists():
+        try:
+            with open(_letter_cache_file) as _fh:
+                _cached = json.load(_fh)
+            _step(f"cache HIT — skipping Sonnet call (key {_letter_cache_key})")
+            # Annotate the returned payload so the TS layer / UI can show
+            # a subtle "regenerated from cache" badge if it wants.
+            _cached["_from_cache"] = True
+            _cached["_cache_key"] = _letter_cache_key
+            json.dump(_cached, sys.stdout)
+            return 0
+        except Exception as _cache_err:
+            _step(f"cache file unreadable ({_cache_err}) — falling through to live call")
+
     _step("calling Sonnet (streaming, max 16K output tokens — typical 60–180s)")
     try:
         token_count = 0
@@ -4610,10 +5113,56 @@ def main() -> int:
             model="claude-sonnet-4-6",
             max_tokens=16000,
             system=(
-                "You are a skilled health coach writer. You produce warm, practical, "
-                "beautifully formatted Markdown wellness plans for clients in India. "
-                "You write like a knowledgeable, encouraging friend — never clinical. "
-                "Output ONLY the Markdown document, nothing else."
+                "You are Shivani Hariharan — a Functional Medicine health coach in "
+                "India — writing a personal letter TO your client. Write entirely "
+                "in FIRST PERSON. Use 'I', 'me', 'my', 'we', and 'our' (you and the "
+                "client together on this journey). Never refer to yourself as "
+                "'Shivani' or 'your coach' in the third person — the letter is "
+                "signed by you, so saying 'check with Shivani' or 'Shivani recommends' "
+                "would make zero sense to the reader. The ONLY exception is when "
+                "you reference something the client and you discussed in a past "
+                "session and you're recalling it ('the wall analogy I shared with "
+                "you in our first session') — even then, prefer 'I shared' over "
+                "'Shivani shared'. "
+                "\n\nTONE — IMPORTANT: write to an intelligent adult. Be warm, "
+                "direct, and respectful — like a competent friend who happens to "
+                "be your coach. AVOID:\n"
+                "  - Patronising reassurance like 'you are not broken' or 'this is "
+                "    not your fault' (it presumes she feels broken / blaming "
+                "    herself, which we don't know).\n"
+                "  - Excessive validation ('I'm SO excited!', 'amazing job!', "
+                "    'such a gift!'). One quiet sentence of warmth at intake is "
+                "    fine; don't sprinkle exclamation marks throughout.\n"
+                "  - Therapeutic / self-help register ('honour your body', "
+                "    'sit with this', 'lean into the discomfort').\n"
+                "  - Over-explaining what the client already knows. If she's "
+                "    been through a Full Assessment session, she understands her "
+                "    diagnosis — recap in one or two sentences max, not three "
+                "    paragraphs.\n"
+                "  - Talking down ('think of your gut lining as a wall...' for "
+                "    the third letter in a row). Use analogies sparingly and only "
+                "    once per concept across the full plan.\n"
+                "PREFER: clinically grounded warmth. Plain English. Real specifics "
+                "tied to her data. Short paragraphs. Reasoning given once, not "
+                "repeated. If she's already in week 3, write to a competent adult "
+                "who's been doing the work — not a beginner who needs hand-holding.\n\n"
+                "\nSUPPLEMENT INTEGRITY — CRITICAL: the supplement protocol is "
+                "100% coach-controlled and provided to you in the prompt as a "
+                "structured list. NEVER suggest a supplement, pill, capsule, "
+                "tablet, dose, or brand that is NOT in that structured list. "
+                "If a supplement was previously prescribed and the coach has "
+                "since removed it (e.g. selenium → discontinued), do NOT "
+                "re-introduce it in the narrative. You may reference food "
+                "sources of nutrients ('your daily Brazil nuts provide "
+                "selenium for thyroid support', 'lentils give you iron') — "
+                "that's nutrition, not supplementation. The line is: do not "
+                "tell the client to take ANY pill that isn't in the list. "
+                "The Python-generated supplement schedule injected after this "
+                "section is the canonical record; your job is to weave the "
+                "supplements that ARE in the list into the narrative where "
+                "relevant, never invent new ones.\n\n"
+                "Output beautifully formatted Markdown. Output ONLY the Markdown "
+                "document, nothing else."
             ),
             messages=[{"role": "user", "content": prompt}],
         ) as stream:
@@ -4647,10 +5196,137 @@ def main() -> int:
     # facts. Returns original markdown unchanged on any failure.
     skip_validation = bool(payload.get("skip_validation"))
     _step("validating letter specificity (Haiku)")
-    markdown, validation_report = _validate_letter_specificity(
-        markdown, client, plan, skip=skip_validation
-    )
+    try:
+        markdown, validation_report = _validate_letter_specificity(
+            markdown, client, plan, skip=skip_validation
+        )
+    except Exception as e:
+        # Validator is QA-only — its failure must NEVER kill the letter we
+        # already paid Sonnet $0.30+ to generate. Log to stderr, ship the
+        # un-validated markdown.
+        import traceback
+        tb_lines = traceback.format_exc().splitlines()
+        _step(f"validator crashed ({type(e).__name__}: {e}) — shipping unvalidated letter")
+        for line in tb_lines[-6:]:
+            print(f"[validate] {line}", file=sys.stderr, flush=True)
+        validation_report = []
     _step(f"validation done ({len(validation_report) if validation_report else 0} tips rewritten)")
+
+    # ── Supplement-integrity post-check ──────────────────────────
+    # Hard regex check on top of the soft AI prompt rule. Scans the
+    # generated markdown for any mention of supplement display names
+    # NOT in the current supplement_protocol. Catches AI drift where
+    # narrative momentum re-introduces a removed supplement (e.g.
+    # selenium got dropped from the plan but the AI says "your daily
+    # selenium 200mcg"). Flags get added to validation_report; we DON'T
+    # auto-strip (false-positives on food references like "Brazil nuts
+    # → selenium" are common), just surface for coach review. (B5).
+    try:
+        active_slugs = {
+            (s.get("supplement_slug") or "").lower()
+            for s in (plan.get("supplement_protocol") or [])
+            if isinstance(s, dict)
+        }
+        active_names_lower = {
+            _strip_brand_from_name(
+                (s.get("display_name") or s.get("supplement_slug", "").replace("-", " ").title())
+            ).lower()
+            for s in (plan.get("supplement_protocol") or [])
+            if isinstance(s, dict)
+        }
+        # Known supplements coach has ever prescribed (for prior plans) —
+        # scan the body for any of these that are NOT in the current
+        # active list. We use the catalogue's published supplement slugs
+        # as the universe.
+        WATCH_LIST = {
+            "selenium", "magnesium glycinate", "magnesium", "omega-3",
+            "omega 3", "ashwagandha", "probiotics", "curcumin",
+            "vitamin d", "vitamin d3", "vitamin b12", "b12",
+            "l-glutamine", "l glutamine", "glutamine",
+            "zinc", "iron", "iodine", "tudca", "n-acetylcysteine", "nac",
+            "coq10", "alpha lipoic acid",
+        }
+        # A token is "leaked" if it appears in the markdown but its
+        # name token doesn't match any active supplement name. Use word
+        # boundaries to avoid false positives on partial matches.
+        body_lower = markdown.lower()
+        leaks: list[str] = []
+        for token in WATCH_LIST:
+            if token in active_names_lower or any(token in n for n in active_names_lower):
+                continue  # supplement is active; mentions are fine
+            if any(token in s for s in active_slugs):
+                continue
+            # Use a word-boundary check so "selenium" doesn't false-
+            # positive in "selenoprotein" (unlikely but defensive).
+            pattern = re.compile(rf"\b{re.escape(token)}\b", re.IGNORECASE)
+            if pattern.search(body_lower):
+                # Common food-source references that are LEGITIMATELY
+                # in the letter (nutrition advice, not supplementation).
+                # Allow these whitelisted contexts.
+                FOOD_CONTEXT_PATTERNS = [
+                    rf"brazil nut[s]?\b[^.]*\b{token}",
+                    rf"food source[s]?[^.]*\b{token}",
+                    rf"dietary {token}",
+                    rf"{token} from food",
+                    rf"{token}-rich food",
+                ]
+                if any(re.search(p, body_lower) for p in FOOD_CONTEXT_PATTERNS):
+                    continue
+                leaks.append(token)
+
+        if leaks:
+            _step(f"⚠ supplement-integrity check: possible mentions of removed supplements: {', '.join(leaks)}")
+            # Surface as a validation_report entry so coach sees it in
+            # the letter-editor right pane.
+            for leak in leaks:
+                validation_report.append({
+                    "original_tip": f"(any mention of '{leak}')",
+                    "score": 2,
+                    "reason": (
+                        f"⚠ Supplement-integrity flag: '{leak}' is referenced in the letter but is NOT "
+                        f"in the active supplement_protocol. This may be AI drift after a removal. "
+                        f"Check whether the mention is a food-source reference (fine) or a supplement "
+                        f"recommendation (needs fix — open the AI Refine chat and ask to remove or "
+                        f"re-anchor to a food source)."
+                    ),
+                    "rewrite": "",
+                })
+    except Exception as e:
+        print(f"[render-letter] supplement-integrity check failed ({type(e).__name__}: {e})",
+              file=sys.stderr, flush=True)
+
+    # ── Recipe split-out for phase letters ─────────────────────────
+    # Coach decision 2026-05-19: phase meal-plan letters were running
+    # 7+ pages because the recipe appendix occupied half the document.
+    # Strip the recipe appendix out of the main letter markdown,
+    # replace it with a "📎 Recipes — attached separately" pointer,
+    # and stash the recipe content for sidecar HTML/MD generation
+    # downstream. The sidecar file lives next to the main letter as
+    # `<stem>-recipes.md/.html` and ships as an email attachment.
+    #
+    # Detection: the prompt asks for `## ✦ Recipe Appendix` heading.
+    # We extract from that heading to the next `## ` (or end of doc),
+    # whichever comes first.
+    recipes_md: str | None = None
+    if letter_type in ("meal_plan_phase", "meal_plan") and markdown:
+        # Match either ✦ or ✨ for safety — the prompt currently uses ✦
+        # but older letters used ✨. Case-insensitive on the word.
+        m = re.search(
+            r"(?m)^(##\s+[✦✨]\s+Recipe\s+Appendix.*?)(?=\n##\s+|\Z)",
+            markdown,
+            flags=re.DOTALL | re.IGNORECASE,
+        )
+        if m:
+            recipes_md = m.group(1).strip() + "\n"
+            pointer = (
+                "## 📎 Recipes — attached separately\n\n"
+                f"Your recipe pack for this fortnight (full ingredients + method "
+                f"for every ✦ dish in the meal plan above) is attached as a "
+                f"separate file with this email. Save it to your phone for easy "
+                f"reference in the kitchen.\n\n"
+            )
+            markdown = markdown[: m.start()] + pointer + markdown[m.end():]
+            _step(f"split out recipe appendix ({len(recipes_md)} chars) → sidecar pending")
 
     # Generate branded HTML
     try:
@@ -4718,36 +5394,145 @@ def main() -> int:
         #   2. Detailed dose schedule — timing slots + daily routine.
         # Only inject for types that include supplements (not meal_plan/lifestyle_guide).
         supplements = plan.get("supplement_protocol") or []
-        inject_schedule = letter_type in ("consolidated", "supplement_plan")
+        # Coach feedback 2026-05-19: include the supplement schedule in
+        # follow-up phase letters too — clients forget or start skipping
+        # supplements after the initial week. Re-printing the full
+        # schedule in every fortnight's letter keeps adherence high.
+        # Was previously only consolidated + supplement_plan.
+        inject_schedule = letter_type in (
+            "consolidated",
+            "supplement_plan",
+            "meal_plan_phase",
+            "meal_plan",
+        )
         if supplements and html and inject_schedule:
             plan_weeks_int = int(plan.get("plan_period_weeks") or 12)
             shopping_list_html = _build_complete_shopping_list_html(supplements, plan_weeks_int)
             schedule_html = _build_supplement_schedule_html(supplements)
             combined = shopping_list_html + "\n" + schedule_html
-            # Insert INSIDE the .page container, right before the brand footer.
-            # This keeps the sections within the brand-styled max-width box and
-            # ensures @media print rules apply correctly.
-            footer_marker = '<footer class="brand-footer">'
-            if footer_marker in html:
-                html = html.replace(footer_marker, combined + "\n    " + footer_marker, 1)
-            elif "</body>" in html:
-                # fallback — shouldn't happen with current template
-                html = html.replace("</body>", combined + "\n</body>", 1)
+            # Position depends on letter type:
+            #
+            #  - consolidated / supplement_plan / lifestyle_guide: schedule
+            #    goes at the BOTTOM (existing behaviour). The wellness
+            #    letter narrative is the lead, supplement protocol is
+            #    reference at the end.
+            #
+            #  - meal_plan_phase / meal_plan: schedule goes at the TOP,
+            #    right after the title block (coach decision 2026-05-19).
+            #    Follow-up letters are check-in artifacts — clients have
+            #    already seen the narrative; what they need is the
+            #    current supplement schedule visible BEFORE the meal
+            #    tables so they don't forget or start skipping.
+            top_position_types = ("meal_plan_phase", "meal_plan")
+            # Inject AS A SIBLING of <div class="content">, not a child.
+            # Reason: the print-supplement CSS hides .page > .content so
+            # only the supplement schedule prints. If schedule lives
+            # inside .content, its ancestor's display:none kills it too
+            # and the print is blank (coach bug 2026-05-19). Sibling
+            # injection avoids that — schedule + content coexist as
+            # siblings of .page; CSS hides .content + shows
+            # #supplement-schedule in print mode.
+            import re as _re
+            content_open_re = _re.compile(r'(<div class="content"[^>]*>)')
+            content_close_marker = '</div>\n\n    <!-- Footer -->'
+            if letter_type in top_position_types:
+                # TOP-position: insert combined BEFORE <div class="content">
+                m = content_open_re.search(html)
+                if m:
+                    html = html[: m.start()] + combined + "\n      " + html[m.start():]
+                else:
+                    footer_marker = '<footer class="brand-footer">'
+                    if footer_marker in html:
+                        html = html.replace(footer_marker, combined + "\n    " + footer_marker, 1)
+            else:
+                # Default: bottom-insert AFTER </div> closing .content,
+                # before the brand-footer. Still siblings — print-supp
+                # isolation works either way.
+                if content_close_marker in html:
+                    html = html.replace(
+                        content_close_marker,
+                        '</div>\n\n      ' + combined + '\n\n    <!-- Footer -->',
+                        1,
+                    )
+                else:
+                    footer_marker = '<footer class="brand-footer">'
+                    if footer_marker in html:
+                        html = html.replace(footer_marker, combined + "\n    " + footer_marker, 1)
+                    elif "</body>" in html:
+                        html = html.replace("</body>", combined + "\n</body>", 1)
     except Exception as e:
         html = None  # HTML is a nice-to-have; don't fail if brand module errors
 
-    json.dump(
-        {
-            "ok": True,
-            "markdown": markdown,
-            "html": html,
-            "validation_report": validation_report,
-            "error": None,
-        },
-        sys.stdout,
-    )
+    # Build the recipes sidecar HTML if we extracted a recipe section
+    # above. Uses the same brand template (Deep Mind palette + Libre
+    # Baskerville) so the attachment looks consistent with the main
+    # letter when the client opens it.
+    recipes_html: str | None = None
+    if recipes_md:
+        try:
+            from brand_html import wrap_in_brand_html as _wrap_recipes
+            recipes_doc_title = (
+                f"Recipes — Week {phase_start}" if phase_start == phase_end
+                else f"Recipes — Weeks {phase_start}–{phase_end}"
+            ) if (phase_start and phase_end) else "Recipes"
+            recipes_html = _wrap_recipes(
+                (
+                    f"# {recipes_doc_title} ({display_name or client.get('client_id') or ''})\n\n"
+                    f"Your recipe pack for this fortnight — full ingredients + method "
+                    f"for every ✦ dish in the meal plan. Save to your phone for easy "
+                    f"kitchen reference.\n\n"
+                    + recipes_md
+                ),
+                title=recipes_doc_title,
+                subtitle=display_name,
+                doc_type="Recipe Pack",
+                client_name=display_name,
+                plan_slug=plan.get("slug"),
+                letter_type="recipes",
+            )
+        except Exception as e:
+            print(f"[render-letter] recipes-sidecar build failed ({type(e).__name__}: {e})",
+                  file=sys.stderr, flush=True)
+
+    _output_payload = {
+        "ok": True,
+        "markdown": markdown,
+        "html": html,
+        "validation_report": validation_report,
+        # Sidecar files written alongside the main letter when the
+        # save layer sees these populated. Phase-letter recipes only.
+        "recipes_markdown": recipes_md,
+        "recipes_html": recipes_html,
+        "error": None,
+    }
+
+    # ── Letter cache WRITE (E.2) ───────────────────────────────────────
+    # Persist the rendered letter + sidecar so subsequent identical
+    # regenerations short-circuit at the cache-check above. Best-effort
+    # — a failed write must never break the user flow.
+    if not _letter_cache_disabled:
+        try:
+            _letter_cache_dir.mkdir(parents=True, exist_ok=True)
+            _out_to_cache = {
+                **_output_payload,
+                "_cached_at": datetime.now(timezone.utc).isoformat(),
+                "_cache_key": _letter_cache_key,
+            }
+            with open(_letter_cache_file, "w") as _fh:
+                json.dump(_out_to_cache, _fh)
+            _step(f"cache WRITE → {_letter_cache_file.name}")
+        except Exception as _cache_err:
+            _step(f"cache write failed ({_cache_err}) — non-fatal")
+
+    json.dump(_output_payload, sys.stdout)
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    finally:
+        # Belt-and-braces: even though main() is one-shot per subprocess
+        # invocation today, reset the module-level backdate global so a
+        # future caller that reuses the process can't inherit stale state.
+        _AS_OF_OVERRIDE = None

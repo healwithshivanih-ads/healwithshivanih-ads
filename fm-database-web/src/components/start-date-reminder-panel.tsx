@@ -171,7 +171,7 @@ export function StartDateReminderPanel({ whatsappConfigured }: Props) {
                         href={`/clients-v2/${f.client_id}/plan/edit/${f.plan_slug}`}
                         style={{
                           fontWeight: 600,
-                          fontSize: 13.5,
+                          fontSize: 14,
                           color: "#0369a1",
                           textDecoration: "none",
                         }}

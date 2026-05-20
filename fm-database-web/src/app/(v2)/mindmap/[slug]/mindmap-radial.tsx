@@ -132,7 +132,7 @@ function ItemChip({ node, tone }: { node: MindMapNode; tone: Tone }) {
   const inner = (
     <span
       style={{
-        fontSize: 10.5,
+        fontSize: 11,
         fontWeight: 500,
         color: "var(--fm-text-primary)",
         padding: "1px 7px",
@@ -431,7 +431,7 @@ function ClusterCard({
         </span>
         <div
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             textTransform: "uppercase",
             letterSpacing: 0.8,
@@ -447,7 +447,7 @@ function ClusterCard({
         <div
           style={{
             marginLeft: "auto",
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
             fontWeight: 600,
@@ -466,7 +466,7 @@ function ClusterCard({
         >
           <div
             style={{
-              fontSize: 9.5,
+              fontSize: 10,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: 0.6,
@@ -538,7 +538,7 @@ function MMColumns({
         <div style={{ flex: 1, height: 1, background: "rgba(255,255,255,0.20)", minWidth: 60 }} />
         <div
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             opacity: 0.7,
             fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
             whiteSpace: "nowrap",
@@ -608,7 +608,7 @@ function MMColumns({
                     <div key={i} style={{ marginBottom: 12 }}>
                       <div
                         style={{
-                          fontSize: 9.5,
+                          fontSize: 10,
                           fontWeight: 700,
                           textTransform: "uppercase",
                           letterSpacing: 0.7,
@@ -650,7 +650,7 @@ function MMColumns({
                             <li
                               key={j}
                               style={{
-                                fontSize: 11.5,
+                                fontSize: 12,
                                 color: "var(--fm-text-primary)",
                                 fontWeight: 500,
                                 padding: "4px 0",
@@ -804,7 +804,7 @@ function MMOutline({
                             display: "flex",
                             alignItems: "baseline",
                             gap: 8,
-                            fontSize: 12.5,
+                            fontSize: 13,
                             color: "var(--fm-text-primary)",
                             lineHeight: 1.45,
                           }}

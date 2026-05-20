@@ -34,7 +34,7 @@ export interface RenderResult {
 }
 
 interface LifecyclePayload {
-  action: "submit" | "publish" | "revoke" | "supersede" | "diff";
+  action: "submit" | "publish" | "revoke" | "supersede" | "diff" | "graduate";
   slug: string;
   by?: string;
   reason?: string;
@@ -135,6 +135,85 @@ export async function publishPlan(
   return r;
 }
 
+/** Remove a single supplement from an active (published) plan in-place
+ *  without creating a successor. Coach UX shortcut (B6 from dry-run
+ *  audit 2026-05-19) — the formal supersede flow is 4 steps, but for
+ *  trivial mid-plan tweaks ("stop selenium, food source is enough") a
+ *  direct edit is what the coach actually wants.
+ *
+ *  Trade-offs: the published YAML mutates in place, which technically
+ *  breaks the "published is immutable" invariant. We mitigate by:
+ *    1. Appending a `status_history` event recording what was removed.
+ *    2. Bumping `updated_at` so the staleness detector can find it.
+ *  Plans that need real lifecycle changes (protocol pivot, new phase)
+ *  should still go through createSuccessor → publish → supersede. */
+export async function removeSupplementFromActivePlan(
+  planSlug: string,
+  supplementSlug: string,
+  reason?: string,
+): Promise<{ ok: true; removed: boolean } | { ok: false; error: string }> {
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+  if (!supplementSlug) return { ok: false, error: "supplementSlug required" };
+
+  try {
+    const root = getPlansRoot();
+    // Find the published plan file. Pattern: published/<slug>-vN.yaml
+    const dir = path.join(root, "published");
+    const names = await fs.readdir(dir).catch(() => [] as string[]);
+    const match = names.find((n) =>
+      n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"),
+    );
+    if (!match) {
+      return {
+        ok: false,
+        error: `No published plan found matching slug ${planSlug}.`,
+      };
+    }
+    const planPath = path.join(dir, match);
+    const raw = await fs.readFile(planPath, "utf-8");
+    const { default: yaml } = await import("js-yaml");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const supplements = (data.supplement_protocol as Array<Record<string, unknown>>) ?? [];
+    const before = supplements.length;
+    const filtered = supplements.filter(
+      (s) => (s.supplement_slug as string | undefined) !== supplementSlug,
+    );
+    if (filtered.length === before) {
+      return { ok: true, removed: false };
+    }
+    data.supplement_protocol = filtered;
+    data.updated_at = new Date().toISOString();
+
+    // Audit: append a status_history event capturing what changed.
+    const history = (data.status_history as Array<Record<string, unknown>>) ?? [];
+    history.push({
+      state: "published",
+      by: process.env.FMDB_USER || "shivani",
+      at: new Date().toISOString(),
+      reason: `Removed supplement: ${supplementSlug}${reason ? ` — ${reason}` : ""}`,
+    });
+    data.status_history = history;
+
+    await fs.writeFile(
+      planPath,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf-8",
+    );
+
+    // Revalidate everywhere the plan + downstream letter status surface.
+    const clientId = (data.client_id as string | undefined) ?? "";
+    if (clientId) {
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients-v2/${clientId}/plan`);
+      revalidatePath(`/clients-v2/${clientId}/communicate`);
+    }
+    revalidatePath(`/plans/${planSlug}`);
+    return { ok: true, removed: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 /** Look up client info for a freshly-published plan, then fire the
  *  follow-up sends. Separate function so the publishPlan happy-path
  *  stays linear and easy to read. */
@@ -176,6 +255,26 @@ export async function revokePlan(
   }
   const r = await lifecycle({ action: "revoke", slug, reason });
   if (r.ok) bust(slug);
+  return r;
+}
+
+/** Graduate a published plan — terminal-success state, distinct from
+ *  revoke (which is a withdrawal). Used when client has completed the
+ *  protocol and is moving to maintenance / alumni. Dashboard counts +
+ *  triage exclude graduated plans; they show under the 🎓 Alumni filter
+ *  on /clients-v2. */
+export async function graduatePlan(
+  slug: string,
+  reason?: string,
+): Promise<LifecycleResult> {
+  const r = await lifecycle({ action: "graduate", slug, reason });
+  if (r.ok) {
+    bust(slug);
+    // Also revalidate the v2 surfaces so the client list + dashboard
+    // reflect the new state immediately.
+    revalidatePath("/clients-v2");
+    revalidatePath("/dashboard-v2");
+  }
   return r;
 }
 
@@ -262,7 +361,7 @@ export async function renderLabOrders(
     `*Prepared by Functional Health Coach Shivani Hari · ${date}*`,
     "",
     "Please get the following tests done **before your next session**.",
-    "Go to a diagnostic lab of your choice (SRL, Dr Lal, Metropolis, or your local lab).",
+    "You can use whichever diagnostic lab you prefer.",
     "",
     "---",
     "",
@@ -313,7 +412,7 @@ export async function renderLabOrders(
   <h1>Lab Order Sheet — ${clientName}</h1>
   <p class="subtitle">Prepared by Functional Health Coach Shivani Hari &middot; ${date}</p>
   <p>Please get the following tests done <strong>before your next session</strong>.<br>
-  Go to a diagnostic lab of your choice (SRL, Dr Lal, Metropolis, or your local lab).</p>
+  You can use whichever diagnostic lab you prefer.</p>
   <hr>
   <h2>Tests to order</h2>
   <ul>
@@ -472,6 +571,27 @@ export async function generateFollowUpPlan(
 
   // Build successor: clone old plan + apply AI patch
   const today = new Date().toISOString().slice(0, 10);
+
+  // ── Attached protocols inheritance ───────────────────────────────────
+  // The spread of `oldRest` carries `attached_protocols` implicitly, but
+  // the audit found that the field was sometimes missing on the new
+  // draft (likely because the AI tool-call returned an empty array in
+  // `patch` for adjacent fields and a downstream merge clobbered it).
+  // Make the carry-over explicit + record it in notes_for_coach so the
+  // coach can see what was inherited and rotate if needed.
+  //
+  // For `maintenance` intent the previous protocols are usually dropped
+  // — client is graduating off the active protocol. We still carry them
+  // so coach can see what they were on, then she can detach via the
+  // AttachedProtocolsPanel on the draft.
+  const inheritedProtocols = Array.isArray(oldRest.attached_protocols)
+    ? (oldRest.attached_protocols as string[])
+    : [];
+  const protocolsNote =
+    inheritedProtocols.length > 0
+      ? `[Inherited protocols] ${inheritedProtocols.join(", ")} — carried from ${oldSlug}. ${intent === "maintenance" ? "Detach via the 🧭 Healing programs panel if maintenance no longer needs them." : "Rotate via the 🧭 Healing programs panel if phase 2 needs different protocols."}`
+      : "";
+
   const successor: Record<string, unknown> = {
     ...oldRest,
     ...patch,
@@ -482,12 +602,21 @@ export async function generateFollowUpPlan(
     status_history: [],
     catalogue_snapshot: undefined,
     updated_at: today,
-    // Prepend AI summary to notes_for_coach. Header reflects intent so
-    // coach can scan and see whether this draft is a next-phase
-    // continuation or a maintenance graduation.
-    notes_for_coach: summary
-      ? `[${intent === "maintenance" ? "Maintenance graduation" : `Next phase (${phaseWeeks})`} adjustments]\n${summary}\n\n---\n\n${(oldRest.notes_for_coach as string) ?? ""}`
-      : (patch.notes_for_coach as string ?? (oldRest.notes_for_coach as string) ?? ""),
+    // EXPLICIT carry — defensive, in case `patch` shadows it.
+    attached_protocols: inheritedProtocols,
+    // Prepend AI summary + protocols-carried note to notes_for_coach.
+    // Header reflects intent so coach can scan and see whether this
+    // draft is a next-phase continuation or a maintenance graduation.
+    notes_for_coach: [
+      summary
+        ? `[${intent === "maintenance" ? "Maintenance graduation" : `Next phase (${phaseWeeks})`} adjustments]\n${summary}`
+        : "",
+      protocolsNote,
+      "---",
+      (oldRest.notes_for_coach as string) ?? "",
+    ]
+      .filter(Boolean)
+      .join("\n\n"),
   };
 
   const root = getPlansRoot();
@@ -526,6 +655,13 @@ export interface ClientLetterResult {
   markdown?: string | null;
   html?: string | null;
   validation_report?: LetterValidationChange[] | null;
+  /** Recipe pack sidecar — populated for phase letters (meal_plan_phase /
+   *  meal_plan). When non-null, save the content alongside the main letter
+   *  as `<stem>-recipes.md/.html`. The main letter's markdown already has
+   *  a `## 📎 Recipes — attached separately` pointer; the sidecar file
+   *  is what coach attaches to the email. */
+  recipes_markdown?: string | null;
+  recipes_html?: string | null;
   error?: string | null;
 }
 
@@ -838,6 +974,18 @@ export async function generatePhaseMealPlanAction(
   if (result.html) {
     await fs.writeFile(htmlPath, result.html, "utf-8");
   }
+  // 3b. Recipe pack sidecar — phase letters strip the recipe appendix
+  // out of the main markdown and save it as `<stem>-recipes.md/.html`
+  // so it can ride along as an email attachment. Keeps the main letter
+  // under 7 pages.
+  if (result.recipes_markdown) {
+    const recipesMdPath = path.join(dir, `${stem}-recipes.md`);
+    await fs.writeFile(recipesMdPath, result.recipes_markdown, "utf-8");
+    if (result.recipes_html) {
+      const recipesHtmlPath = path.join(dir, `${stem}-recipes.html`);
+      await fs.writeFile(recipesHtmlPath, result.recipes_html, "utf-8");
+    }
+  }
   const stat = await fs.stat(mdPath);
 
   revalidatePath(`/clients-v2/${clientId}/communicate`);
@@ -983,6 +1131,13 @@ export async function getLetterStalenessAction(
   const planUpdatedAt = planUpdatedRaw ? new Date(planUpdatedRaw).toISOString() : null;
   const planUpdatedMs = planUpdatedAt ? new Date(planUpdatedAt).getTime() : 0;
 
+  // NB: travel / maintenance overrides on client.weight_loss do NOT flip
+  // staleness here. Coach's product call 2026-05-19: existing letters
+  // were already sent to the client — silently mass-regenerating them
+  // would resend the same period with surprise edits. Instead, the
+  // AddOverride flow asks the coach whether to mint a dedicated
+  // vacation/travel letter (uses plan + override + recent notes) on
+  // top of the existing letters. Saves disk + API spend + client trust.
   const entries: LetterStalenessEntry[] = [];
   for (const t of ALL_LETTER_TYPES) {
     const data = await loadMealPlan(planSlug, clientId, t);
@@ -1147,6 +1302,30 @@ export async function generateClientLetter(
       if (extracted) {
         try { await saveMealPlan(planSlug, clientId, extracted, null, partial); } catch { /* best-effort */ }
       }
+    }
+    // B10 audit (2026-05-19): mark the recipes letter stale on
+    // consolidated regen so coach sees a "regenerate recipes" prompt
+    // next time she opens /recipes/<planSlug>. Touch a sentinel file
+    // alongside the recipes letter to record the consolidated mtime.
+    try {
+      const recipesPath = path.join(dir, `${planSlug}-recipes.md`);
+      const sentinelPath = path.join(dir, `${planSlug}-recipes.stale-marker`);
+      // If recipes letter exists, mark it stale by writing a marker
+      // file whose presence the recipes-page reader can detect.
+      await fs.stat(recipesPath).then(
+        async () => {
+          await fs.writeFile(
+            sentinelPath,
+            JSON.stringify({
+              stale_since: new Date().toISOString(),
+              reason: "consolidated letter regenerated",
+            }, null, 2),
+          );
+        },
+        () => undefined,
+      );
+    } catch {
+      /* best-effort */
     }
   }
 

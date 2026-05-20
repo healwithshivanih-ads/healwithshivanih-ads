@@ -184,9 +184,15 @@ export async function recordOutboundMessageAction(input: {
   // Free-text replies use a sentinel templateName so the chat-thread
   // loader can render them WITHOUT a template chip (just the prose).
   const isFreeText = input.templateName === "(free-text reply)";
+  // Per-segment send timestamp. WITHOUT this, an appended outbound
+  // segment inherits the parent session's created_at — so a message
+  // sent today, appended into a session created N days ago, renders in
+  // the chat thread with the OLD date and looks like it never sent.
+  // loadWhatsAppThreadAction parses this `[sent_at: ISO]` tag.
+  const sentAtTag = `[sent_at: ${new Date().toISOString()}]`;
   const tags = isFreeText
-    ? "[source: whatsapp_outbound] [type: text]"
-    : `[source: whatsapp_outbound] [template: ${input.templateName}]`;
+    ? `[source: whatsapp_outbound] [type: text] ${sentAtTag}`
+    : `[source: whatsapp_outbound] [template: ${input.templateName}] ${sentAtTag}`;
   // Per-plan rollup: every WhatsApp message (in OR out) during a
   // published plan's lifetime accumulates in ONE session tagged
   // `[plan: <slug>]`. Plan supersede → next message starts a new
@@ -312,15 +318,52 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[type:[^\]]+\]/gi, "")
           .replace(/\[plan:[^\]]+\]/gi, "")
           .replace(/\[window:[^\]]+\]/gi, "")
+          .replace(/\[sent_at:[^\]]+\]/gi, "")
           .trim();
         if (!text) return;
 
-        // Synthesise a per-segment date so segments order within their
-        // session. Adds 1ms × idx to the base session timestamp.
-        const baseMs = Date.parse(sessionDate);
-        const segDate = !Number.isNaN(baseMs)
-          ? new Date(baseMs + idx).toISOString()
-          : sessionDate;
+        // ── Per-segment timestamp ────────────────────────────────────
+        // A session file accumulates many messages over its 28-day
+        // window. Each appended `---` segment must carry its OWN
+        // timestamp, otherwise everything inherits the session's
+        // created_at and a message sent today shows the session's old
+        // date. Resolution order:
+        //   1. Outbound — `[sent_at: ISO]` tag (added at record time).
+        //   2. Inbound  — the `Received: D/M/YYYY, H:MM:SS am/pm` line
+        //                 the webhook embeds in the message body.
+        //   3. Fallback — session created_at + 1ms×idx (legacy segments
+        //                 written before this tag existed).
+        let segDate: string;
+        const sentAtMatch = seg.match(/\[sent_at:\s*([^\]]+)\]/i);
+        const recvMatch = seg.match(
+          /Received:\s*(\d{1,2})\/(\d{1,2})\/(\d{4}),?\s*(\d{1,2}):(\d{2}):(\d{2})\s*(am|pm)?/i,
+        );
+        if (sentAtMatch) {
+          const ms = Date.parse(sentAtMatch[1].trim());
+          segDate = !Number.isNaN(ms)
+            ? new Date(ms).toISOString()
+            : sessionDate;
+        } else if (recvMatch) {
+          // D/M/YYYY local time (IST) — webhook writes day-first.
+          let hh = parseInt(recvMatch[4], 10);
+          const ampm = (recvMatch[7] ?? "").toLowerCase();
+          if (ampm === "pm" && hh < 12) hh += 12;
+          if (ampm === "am" && hh === 12) hh = 0;
+          const day = recvMatch[1].padStart(2, "0");
+          const mon = recvMatch[2].padStart(2, "0");
+          const yr = recvMatch[3];
+          // Treat as IST (+05:30) — the webhook formats in IST.
+          const iso = `${yr}-${mon}-${day}T${String(hh).padStart(2, "0")}:${recvMatch[5]}:${recvMatch[6]}+05:30`;
+          const ms = Date.parse(iso);
+          segDate = !Number.isNaN(ms)
+            ? new Date(ms).toISOString()
+            : sessionDate;
+        } else {
+          const baseMs = Date.parse(sessionDate);
+          segDate = !Number.isNaN(baseMs)
+            ? new Date(baseMs + idx).toISOString()
+            : sessionDate;
+        }
 
         messages.push({
           direction,

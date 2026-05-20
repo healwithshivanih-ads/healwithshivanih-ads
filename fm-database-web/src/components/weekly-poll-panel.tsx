@@ -255,7 +255,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           {!open && pollClients.length > 0 && (
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: 500,
                 color: "var(--fm-text-tertiary)",
                 marginLeft: "auto",
@@ -294,7 +294,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
         <div style={{ display: "grid", gap: 6 }}>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: 0.6,
@@ -331,7 +331,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           </div>
           <div
             style={{
-              fontSize: 11.5,
+              fontSize: 12,
               color: "rgba(0,0,0,0.6)",
               background: "rgba(5,150,105,0.06)",
               border: "1px solid rgba(5,150,105,0.2)",
@@ -342,7 +342,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           >
             <div>
               <strong>Sends:</strong> {variant.body} (template:{" "}
-              <code style={{ fontSize: 10.5 }}>{variant.campaign}</code>
+              <code style={{ fontSize: 11 }}>{variant.campaign}</code>
               {" · "}<span style={{ color: "#065f46" }}>✓ Meta-approved UTILITY</span>)
             </div>
             <div style={{ marginTop: 4 }}>
@@ -364,7 +364,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
               display: "flex",
               alignItems: "center",
               gap: 10,
-              fontSize: 10.5,
+              fontSize: 11,
             }}
           >
             <span
@@ -385,7 +385,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
                 color: "rgba(0,0,0,0.55)",
                 textDecoration: "underline",
                 cursor: "pointer",
-                fontSize: 10.5,
+                fontSize: 11,
               }}
               disabled={selectedCount === pollClients.length || pollClients.length === 0}
               onClick={() => setSelectedIds(new Set(pollClients.map((c) => c.client_id)))}
@@ -400,7 +400,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
                 color: "rgba(0,0,0,0.55)",
                 textDecoration: "underline",
                 cursor: "pointer",
-                fontSize: 10.5,
+                fontSize: 11,
               }}
               disabled={selectedCount === 0}
               onClick={() => setSelectedIds(new Set())}
@@ -411,7 +411,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           {pollClients.length === 0 && (
             <div
               style={{
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "rgba(0,0,0,0.5)",
                 fontStyle: "italic",
                 padding: "8px 10px",
@@ -465,7 +465,7 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
                       <span
                         style={{
                           marginLeft: "auto",
-                          fontSize: 10.5,
+                          fontSize: 11,
                           color: "rgba(0,0,0,0.5)",
                         }}
                       >

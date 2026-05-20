@@ -12,7 +12,12 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export type CalendarEventKind = "session" | "follow_up_due" | "follow_up_upcoming" | "recheck_due";
+export type CalendarEventKind =
+  | "session"
+  | "booking"
+  | "follow_up_due"
+  | "follow_up_upcoming"
+  | "recheck_due";
 
 export interface CalendarEvent {
   date: string;            // YYYY-MM-DD
@@ -25,6 +30,7 @@ export interface CalendarEvent {
 
 const KIND_STYLE: Record<CalendarEventKind, { bg: string; fg: string; border: string; emoji: string }> = {
   session:             { bg: "rgba(46, 110, 213, 0.10)",  fg: "#1d4ed8", border: "rgba(46, 110, 213, 0.45)",  emoji: "📋" },
+  booking:             { bg: "rgba(30, 132, 73, 0.12)",   fg: "#15803d", border: "rgba(30, 132, 73, 0.55)",   emoji: "📅" },
   follow_up_upcoming:  { bg: "rgba(245, 158, 11, 0.12)",  fg: "#b45309", border: "rgba(245, 158, 11, 0.50)",  emoji: "🟡" },
   follow_up_due:       { bg: "rgba(239, 68, 68, 0.12)",   fg: "#b91c1c", border: "rgba(239, 68, 68, 0.50)",   emoji: "🔴" },
   recheck_due:         { bg: "rgba(124, 58, 237, 0.12)",  fg: "#6d28d9", border: "rgba(124, 58, 237, 0.50)",  emoji: "🟣" },
@@ -144,7 +150,7 @@ export function CalendarMonthGrid({
         >
           Today
         </button>
-        <span style={{ marginLeft: "auto", fontSize: 11.5, color: "var(--fm-text-tertiary)", display: "flex", gap: 12, flexWrap: "wrap" }}>
+        <span style={{ marginLeft: "auto", fontSize: 12, color: "var(--fm-text-tertiary)", display: "flex", gap: 12, flexWrap: "wrap" }}>
           <span>📋 {sessionN} session{sessionN === 1 ? "" : "s"}</span>
           {overdueN > 0 && <span style={{ color: "#b91c1c" }}>🔴 {overdueN} overdue</span>}
           {upcomingN > 0 && <span style={{ color: "#b45309" }}>🟡 {upcomingN} upcoming</span>}
@@ -237,7 +243,7 @@ export function CalendarMonthGrid({
                     title={ev.tooltip ?? ev.label}
                     style={{
                       display: "block",
-                      fontSize: 10.5,
+                      fontSize: 11,
                       lineHeight: 1.3,
                       padding: "2px 5px",
                       background: s.bg,

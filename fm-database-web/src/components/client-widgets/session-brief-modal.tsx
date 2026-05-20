@@ -15,6 +15,7 @@
 
 import { useState } from "react";
 import type { SessionSummary } from "@/lib/server-actions/assess";
+import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -395,7 +396,7 @@ export function SessionBriefModal({
                 </div>
                 <ul className="list-disc list-inside space-y-1">
                   {supplements.map((sup, i) => {
-                    const name = sup.name ?? sup.supplement_slug ?? `Supplement ${i + 1}`;
+                    const name = supplementDisplayName(sup) || `Supplement ${i + 1}`;
                     const dose = sup.dose ? ` · ${sup.dose}` : "";
                     const timing = sup.timing ? ` · ${sup.timing}` : "";
                     return (

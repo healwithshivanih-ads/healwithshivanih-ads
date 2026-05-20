@@ -44,6 +44,12 @@ const STAGE_META: Record<
     fg: "#B8770A",
     border: "rgba(184, 119, 10, 0.45)",
   },
+  alumni: {
+    label: "🎓 Alumni",
+    bg: "rgba(15, 118, 110, 0.10)",
+    fg: "#0f766e",
+    border: "rgba(15, 118, 110, 0.40)",
+  },
 };
 
 function relAge(dateStr: string | undefined, todayStr: string): string {
@@ -79,7 +85,7 @@ export function ClientFilters({
   counts,
   q,
 }: {
-  active: "all" | "active" | "draft" | "no_plan" | "recheck";
+  active: "all" | "active" | "draft" | "no_plan" | "recheck" | "alumni";
   counts: Record<string, number>;
   q: string;
 }) {
@@ -113,6 +119,7 @@ export function ClientFilters({
     { id: "active", label: "✅ Active plan" },
     { id: "draft", label: "📋 Draft" },
     { id: "no_plan", label: "🔍 No plan yet" },
+    { id: "alumni", label: "🎓 Alumni" },
   ];
 
   return (
@@ -197,7 +204,7 @@ export function ClientFilters({
                 color: isActive ? "#fff" : "var(--fm-text-secondary)",
                 border: `1px solid ${isActive ? "var(--fm-primary)" : "var(--fm-border)"}`,
                 borderRadius: "var(--fm-radius-pill)",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 cursor: "pointer",
                 fontFamily: "inherit",
@@ -206,7 +213,7 @@ export function ClientFilters({
               {c.label}
               <span
                 style={{
-                  fontSize: 9.5,
+                  fontSize: 10,
                   opacity: isActive ? 0.85 : 0.55,
                   fontWeight: 700,
                 }}
@@ -293,7 +300,7 @@ export function ClientCard({
           </div>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               color: "var(--fm-text-tertiary)",
               fontFamily: "var(--fm-font-mono)",
               marginTop: 1,
@@ -320,7 +327,7 @@ export function ClientCard({
         }}
       >
         {row.age != null && <span>🎂 {row.age}</span>}
-        {row.sex && <span>{row.sex === "F" ? "♀" : row.sex === "M" ? "♂" : "·"} {row.sex}</span>}
+        {row.sex && <span>{row.sex === "F" ? "♀" : row.sex === "M" ? "♂" : `· ${row.sex}`}</span>}
         {row.city && <span>📍 {row.city}</span>}
       </div>
 
@@ -336,7 +343,7 @@ export function ClientCard({
           color: tone.fg,
           border: `1px solid ${tone.border}`,
           borderRadius: "var(--fm-radius-pill)",
-          fontSize: 10.5,
+          fontSize: 11,
           fontWeight: 700,
         }}
       >
@@ -345,7 +352,7 @@ export function ClientCard({
           <span
             style={{
               fontFamily: "var(--fm-font-mono)",
-              fontSize: 9.5,
+              fontSize: 10,
               opacity: 0.75,
               fontWeight: 600,
               maxWidth: 130,
@@ -362,7 +369,7 @@ export function ClientCard({
       {/* Last session + next contact */}
       <div
         style={{
-          fontSize: 10.5,
+          fontSize: 11,
           color: "var(--fm-text-tertiary)",
           display: "flex",
           justifyContent: "space-between",

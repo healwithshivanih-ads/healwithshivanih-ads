@@ -25,6 +25,7 @@ import { SessionsBrowser } from "./sessions-browser";
 import { SessionMarkerCharts } from "./session-marker-charts";
 import { V2TrackingCharts } from "./v2-tracking-charts";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
+// BookSessionButton import removed 2026-05-19 — moved to /analyse page.
 import type { Client } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
@@ -74,6 +75,11 @@ export default async function SessionsPage({
 
   return (
     <SessionsPageShell clientId={id}>
+      {/* BookSessionButton moved 2026-05-19 from here (the Timeline
+          tab at `/sessions`) to the Analyse tab at `/analyse` — the
+          subnav labels are inverted (route `/analyse` = label
+          "Sessions", route `/sessions` = label "Timeline"), and coach
+          actually books from the "Sessions" label tab. */}
       {client.rework_suggestion && (
         <div style={{ marginBottom: 12 }}>
           <ReworkBanner clientId={id} suggestion={client.rework_suggestion} />

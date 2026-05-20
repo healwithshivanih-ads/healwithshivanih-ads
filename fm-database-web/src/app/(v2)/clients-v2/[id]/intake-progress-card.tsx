@@ -32,6 +32,11 @@ interface Props {
   intakeLastSubmittedAt?: string | null;
   intakeFinalisedAt?: string | null;
   intakeRemindersSentAt?: string[] | null;
+  /** v0.75 two-stage flow signals — let the card disambiguate
+   *  "pre-discovery submitted; full intake re-opened for follow-up"
+   *  from "never submitted." */
+  intakeFullUnlockedAt?: string | null;
+  intakeInsightsGeneratedAt?: string | null;
 }
 
 /** Friendly "3 hours ago" / "2 days ago" — keeps the panel readable for
@@ -81,9 +86,22 @@ interface Stage {
 
 function deriveStage(p: Props): Stage {
   const now = Date.now();
+
+  // "Ever submitted" — true if ANY of the three historical signals are
+  // set. Belt + braces because token regeneration used to wipe
+  // intake_submitted_at, and intake_insights.generated_at is the most
+  // tamper-resistant proof a submission ever happened (Haiku only runs
+  // after a successful submit). Without this, regenerating the link
+  // post-signup made the card claim the client never submitted at all.
+  const everSubmitted = !!(
+    p.intakeSubmittedAt ||
+    p.intakeLastSubmittedAt ||
+    p.intakeInsightsGeneratedAt
+  );
+
   const expired =
     p.intakeTokenExpiresAt &&
-    !p.intakeSubmittedAt &&
+    !everSubmitted &&
     Date.parse(p.intakeTokenExpiresAt) < now;
 
   if (p.intakeFinalisedAt) {
@@ -94,8 +112,42 @@ function deriveStage(p: Props): Stage {
       tone: "success",
     };
   }
-  if (p.intakeSubmittedAt || p.intakeLastSubmittedAt) {
-    const ts = p.intakeLastSubmittedAt ?? p.intakeSubmittedAt!;
+
+  // v0.75 two-stage state: pre-discovery submitted, coach unlocked the
+  // full intake, but the bigger form hasn't come back in yet. Resolves
+  // the "Nidhi case" cleanly — she submitted pre-discovery, full intake
+  // is now in flight (or its link expired without a re-submit).
+  if (everSubmitted && p.intakeFullUnlockedAt) {
+    const submitTs = p.intakeLastSubmittedAt ?? p.intakeSubmittedAt ?? p.intakeInsightsGeneratedAt!;
+    const fullExpired =
+      p.intakeTokenExpiresAt && Date.parse(p.intakeTokenExpiresAt) < now;
+    const filledNow = countFilledFields(p.intakeFormDraft ?? undefined);
+    if (fullExpired) {
+      return {
+        emoji: "⏰",
+        label: "Pre-discovery in · full intake link expired",
+        hint: `Pre-discovery submitted ${relativeTime(submitTs)}. Full intake unlocked ${relativeTime(p.intakeFullUnlockedAt)} but the link expired before ${p.firstName} re-submitted. Regenerate to send a fresh one.`,
+        tone: "warn",
+      };
+    }
+    if (filledNow > 0) {
+      return {
+        emoji: "✍",
+        label: "Pre-discovery in · full intake in progress",
+        hint: `Pre-discovery submitted ${relativeTime(submitTs)}. ${p.firstName} is now filling the deeper form (${filledNow} field${filledNow === 1 ? "" : "s"} since unlock).`,
+        tone: "progress",
+      };
+    }
+    return {
+      emoji: "🔓",
+      label: "Pre-discovery in · waiting on full intake",
+      hint: `Pre-discovery submitted ${relativeTime(submitTs)}. Full intake unlocked ${relativeTime(p.intakeFullUnlockedAt)} — ${p.firstName} hasn't opened the deeper form yet.`,
+      tone: "info",
+    };
+  }
+
+  if (everSubmitted) {
+    const ts = p.intakeLastSubmittedAt ?? p.intakeSubmittedAt ?? p.intakeInsightsGeneratedAt!;
     return {
       emoji: "📥",
       label: "Submitted — still editable",
@@ -211,7 +263,7 @@ export function IntakeProgressCard(props: Props) {
             borderTop: `1px dashed ${TONE_BORDER[stage.tone]}`,
             display: "grid",
             gap: 3,
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
           }}
         >
@@ -276,7 +328,7 @@ export function IntakeProgressCard(props: Props) {
             href={`/clients-v2/${props.clientId}/intake-view`}
             style={{
               marginTop: 6,
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 600,
               color: "var(--fm-primary)",
               textDecoration: "none",

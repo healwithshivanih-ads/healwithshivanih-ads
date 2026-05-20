@@ -109,12 +109,20 @@ export async function loadClientJourney(
       String(pluck(a, "date") ?? "").localeCompare(String(pluck(b, "date") ?? "")),
     )[0];
 
+  // "Intake done" = a COACH intake session exists — a session whose
+  // presenting_complaints carries the LITERAL [session_type: intake] (or
+  // legacy [session_type: full_assessment]) tag, which is what the v2
+  // /analyse/intake flow writes. It must NOT count the client's online
+  // questionnaire ([source: client_intake_form], no session_type tag) or
+  // untagged legacy notes — parseSessionType DEFAULTS untagged sessions
+  // to "intake", which produced false "intake done" positives. Mirrors
+  // the dashboard-v2 computeSignal hasCoachIntake rule so the journey
+  // strip and the triage buckets agree.
   const intake = sessions
-    .filter(
-      (s) =>
-        parseSessionType(
-          pluck(s, "presenting_complaints") as string | undefined,
-        ) === "intake",
+    .filter((s) =>
+      /\[session_type:\s*(intake|full_assessment)\]/i.test(
+        String(pluck(s, "presenting_complaints") ?? ""),
+      ),
     )
     .sort((a, b) =>
       String(pluck(a, "date") ?? "").localeCompare(String(pluck(b, "date") ?? "")),

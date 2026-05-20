@@ -547,8 +547,35 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
           {/* ── Section 3: Clinical picture ── */}
           <Section title="Clinical picture" emoji="🩺" defaultOpen>
             <div className="grid gap-4 md:grid-cols-2">
-              <Field label={<>Active conditions{isAuto("conditions") && <AutoBadge />}</>} hint="one per line">
-                <Textarea value={conditions} onChange={setConditions} placeholder={"hashimoto's\npcos\nprediabetes"} />
+              <Field label={<>Active conditions{isAuto("conditions") && <AutoBadge />}</>} hint="one per line — include diagnosis date if known (osteopenia 2024, long COVID since Feb 2024, etc.)">
+                <Textarea value={conditions} onChange={setConditions} placeholder={"hashimoto's (2019)\npcos\nprediabetes\nosteopenia (DXA 2024)\nlong COVID (since Mar 2024)"} />
+                <div className="mt-1 flex flex-wrap gap-1 text-[10px]">
+                  <span className="text-muted-foreground mr-1">Quick add:</span>
+                  {[
+                    "osteopenia",
+                    "osteoporosis",
+                    "long COVID",
+                    "perimenopause",
+                    "fibromyalgia",
+                    "ME/CFS",
+                    "MCAS",
+                    "hEDS",
+                  ].map((q) => (
+                    <button
+                      key={q}
+                      type="button"
+                      onClick={() => {
+                        const lines = conditions.split("\n").map((s) => s.trim().toLowerCase()).filter(Boolean);
+                        if (!lines.includes(q.toLowerCase())) {
+                          setConditions((conditions ? conditions.replace(/\s+$/, "") + "\n" : "") + q);
+                        }
+                      }}
+                      className="rounded-full border border-input bg-background px-2 py-[1px] text-[10px] hover:bg-accent"
+                    >
+                      + {q}
+                    </button>
+                  ))}
+                </div>
               </Field>
               <Field label={<>Current medications{isAuto("medications") && <AutoBadge />}</>} hint="one per line, with dose">
                 <Textarea value={medications} onChange={setMedications} placeholder="levothyroxine 75mcg\nmetformin 500mg" />
@@ -754,6 +781,10 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
                   <option value="Non-vegetarian">Non-vegetarian</option>
                   <option value="Vegan">Vegan</option>
                   <option value="Pescatarian">Pescatarian (fish, no meat)</option>
+                  <option value="AIP">AIP (Autoimmune Protocol)</option>
+                  <option value="Low-FODMAP">Low-FODMAP</option>
+                  <option value="Gluten-free">Gluten-free</option>
+                  <option value="Dairy-free">Dairy-free</option>
                   <option value="Other">Other (specify in notes)</option>
                 </select>
               </Field>

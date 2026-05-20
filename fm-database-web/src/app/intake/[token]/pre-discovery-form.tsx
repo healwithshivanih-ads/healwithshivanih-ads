@@ -217,7 +217,7 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
         <h1 style={{ fontSize: 24, fontWeight: 700, marginTop: 0, marginBottom: 8 }}>
           Hi {displayName?.split(" ")[0] || "there"} — quick prep before our call
         </h1>
-        <p style={{ fontSize: 14.5, lineHeight: 1.55, color: "#555" }}>
+        <p style={{ fontSize: 15, lineHeight: 1.55, color: "#555" }}>
           This is the short version — about 10 minutes. It helps me come into
           our discovery call already knowing your story, so we can spend the
           time on what matters to you instead of starting from scratch.
@@ -452,7 +452,7 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
           : "Your answers autosave every 30 seconds — close any time, your work won't be lost."}
       </div>
 
-      <p style={{ fontSize: 11.5, color: "#999", marginTop: 18, lineHeight: 1.55, textAlign: "center" }}>
+      <p style={{ fontSize: 12, color: "#999", marginTop: 18, lineHeight: 1.55, textAlign: "center" }}>
         I understand this information is private and confidential, and will not
         be used in any manner except to help with my care. By sending, I agree.
       </p>
@@ -482,7 +482,7 @@ function Field({ label, hint, half, children }: { label: string; hint?: string; 
     <label style={{ display: "block", marginBottom: 14, flex: half ? "1 1 220px" : "1 1 100%", minWidth: 0 }}>
       <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4, color: "#2b2d42" }}>{label}</div>
       {hint && (
-        <div style={{ fontSize: 11.5, color: "#888", marginBottom: 6, lineHeight: 1.45 }}>{hint}</div>
+        <div style={{ fontSize: 12, color: "#888", marginBottom: 6, lineHeight: 1.45 }}>{hint}</div>
       )}
       <FieldStyleReset>{children}</FieldStyleReset>
     </label>

@@ -74,7 +74,7 @@ export function SessionEditPanel(props: SessionEditPanelProps) {
         title={`Edit this ${props.sessionType.replace("_", " ")} session`}
         style={{
           padding: "7px 14px",
-          fontSize: 11.5,
+          fontSize: 12,
           fontWeight: 700,
           background: "var(--fm-surface)",
           color: "var(--fm-text-primary)",
@@ -262,7 +262,7 @@ function SessionEditForm({
       <div>
         <div
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             textTransform: "uppercase",
             letterSpacing: 0.6,
             fontWeight: 700,

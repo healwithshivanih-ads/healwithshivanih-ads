@@ -59,6 +59,7 @@ const PLAN_BUCKETS: PlanStatus[] = [
   "published",
   "superseded",
   "revoked",
+  "graduated",
 ];
 
 const BUCKET_DIR: Record<PlanStatus, string> = {
@@ -67,6 +68,7 @@ const BUCKET_DIR: Record<PlanStatus, string> = {
   published: "published",
   superseded: "superseded",
   revoked: "revoked",
+  graduated: "graduated",
 };
 
 export interface PlanWithBucket extends Plan {

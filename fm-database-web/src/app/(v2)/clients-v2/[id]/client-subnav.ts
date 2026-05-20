@@ -18,21 +18,24 @@ export interface ClientSubnavTab {
 export function clientSubnavTabs(clientId: string): ClientSubnavTab[] {
   // Ordered to follow the coaching workflow left → right:
   //   1. Overview    — who is this client? (snapshot, always first)
-  //   2. Sessions    — record discovery / intake / check-in
+  //   2. Record      — discovery / intake / check-in capture forms
   //   3. Plan        — synthesise findings into a protocol
   //   4. Communicate — deliver the plan + ongoing messages
-  //   5. Timeline    — history of everything done with this client
+  //   5. History     — timeline of everything done with this client
   //   6. Catalogue   — reference material (end of the bar)
+  // Renamed 2026-05-19: "Sessions" → "Record", "Timeline" → "History" so
+  // the action-verb tab (Record) is unambiguous about what's behind it
+  // and doesn't collide with the History bucket that shows past sessions.
   return [
     { id: "overview", label: "Overview", href: `/clients-v2/${clientId}` },
-    { id: "analyse", label: "Sessions", href: `/clients-v2/${clientId}/analyse` },
+    { id: "analyse", label: "Record", href: `/clients-v2/${clientId}/analyse` },
     { id: "plan", label: "Plan", href: `/clients-v2/${clientId}/plan` },
     {
       id: "communicate",
       label: "Communicate",
       href: `/clients-v2/${clientId}/communicate`,
     },
-    { id: "sessions", label: "Timeline", href: `/clients-v2/${clientId}/sessions` },
+    { id: "sessions", label: "History", href: `/clients-v2/${clientId}/sessions` },
     {
       id: "catalogue",
       label: "Catalogue",

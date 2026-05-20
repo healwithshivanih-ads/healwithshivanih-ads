@@ -141,7 +141,7 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
         <span>🩺 Client snapshot — {name}</span>
         <span
           style={{
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             fontWeight: 500,
           }}
@@ -152,7 +152,7 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
             ? ` · ${[client.city, client.country].filter(Boolean).join(", ")}`
             : ""}
         </span>
-        <span style={{ marginLeft: "auto", fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+        <span style={{ marginLeft: "auto", fontSize: 11, color: "var(--fm-text-tertiary)" }}>
           {lastContactDate ? `Last contact ${lastContactDate}` : "No sessions yet"}
           {sessionCount != null ? ` · ${sessionCount} session${sessionCount === 1 ? "" : "s"}` : ""}
         </span>
@@ -216,7 +216,7 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
             client.non_negotiables) && (
             <div>
               <div style={kvLabel()}>Diet</div>
-              <div style={{ fontSize: 11.5, lineHeight: 1.5 }}>
+              <div style={{ fontSize: 12, lineHeight: 1.5 }}>
                 {client.dietary_preference && (
                   <span style={chip(client.dietary_preference, "info")}>
                     {client.dietary_preference}
@@ -259,7 +259,7 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
                       gridTemplateColumns: "1fr auto auto",
                       gap: 8,
                       fontFamily: "var(--fm-font-mono)",
-                      fontSize: 10.5,
+                      fontSize: 11,
                     }}
                   >
                     <span style={{ color: "var(--fm-text-secondary)" }}>{l.name}</span>

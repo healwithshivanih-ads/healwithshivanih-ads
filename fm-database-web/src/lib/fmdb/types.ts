@@ -277,7 +277,8 @@ export type PlanStatus =
   | "ready_to_publish"
   | "published"
   | "superseded"
-  | "revoked";
+  | "revoked"
+  | "graduated";
 
 /**
  * Strict declared shape for Plan — every field the editor reads or writes.
@@ -579,6 +580,8 @@ export interface ReworkSuggestion {
   }>;
   dismissed_at?: string;       // ISO datetime — coach dismissed
   snoozed_until?: string;      // ISO date — coach snoozed
+  applied_at?: string;         // ISO datetime — coach applied it into a draft plan
+  applied_to_plan?: string;    // slug of the draft created/updated by the apply
 }
 
 export type CatalogueKind =

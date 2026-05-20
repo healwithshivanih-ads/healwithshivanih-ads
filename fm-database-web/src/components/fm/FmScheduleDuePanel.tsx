@@ -141,7 +141,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
             Time to schedule next session
             <span
               style={{
-                fontSize: 9.5,
+                fontSize: 10,
                 marginLeft: 8,
                 padding: "1px 6px",
                 borderRadius: 3,
@@ -155,7 +155,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
               {rows.filter((r) => !doneIds.has(r.client_id)).length} due
             </span>
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
             12+ days since last session, or plan recheck overdue. Each row
             auto-picks the right booking type — override per row before sending.
           </div>
@@ -169,7 +169,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
             color: "#fff",
             border: 0,
             padding: "6px 14px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             borderRadius: "var(--fm-radius-sm)",
             cursor: sendingAll
@@ -218,7 +218,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
               <div style={{ minWidth: 0 }}>
                 <div
                   style={{
-                    fontSize: 12.5,
+                    fontSize: 13,
                     fontWeight: 700,
                     color: "var(--fm-text-primary)",
                   }}
@@ -250,7 +250,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
                 </div>
                 <div
                   style={{
-                    fontSize: 10.5,
+                    fontSize: 11,
                     color: "var(--fm-text-tertiary)",
                     marginTop: 1,
                   }}
@@ -263,7 +263,7 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
                 disabled={isDone || isSending}
                 onChange={(e) => setOverrideType(r.client_id, e.target.value as BookingType)}
                 style={{
-                  fontSize: 11.5,
+                  fontSize: 12,
                   padding: "3px 8px",
                   border: "1px solid var(--fm-border)",
                   borderRadius: 4,

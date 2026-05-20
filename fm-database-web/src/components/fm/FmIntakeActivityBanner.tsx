@@ -107,7 +107,7 @@ export function FmIntakeActivityBanner({ entries }: FmIntakeActivityBannerProps)
             Intake form activity
             <span
               style={{
-                fontSize: 9.5,
+                fontSize: 10,
                 marginLeft: 8,
                 padding: "1px 6px",
                 borderRadius: 3,
@@ -121,7 +121,7 @@ export function FmIntakeActivityBanner({ entries }: FmIntakeActivityBannerProps)
               fresh
             </span>
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
             {headline}
           </div>
         </div>

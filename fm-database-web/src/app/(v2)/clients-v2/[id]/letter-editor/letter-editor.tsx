@@ -21,9 +21,12 @@ import {
   saveMealPlan,
   generateClientLetter,
   generatePhaseMealPlanAction,
+  refineLetter,
+  type ChatTurn,
   type LetterType,
   type LetterValidationChange,
 } from "@/lib/server-actions/plan-lifecycle";
+import { SendToClientButton } from "@/components/plan-editor/send-to-client-modal";
 
 // Deep Mind brand palette — only used inside the letter canvas.
 const DEEP_MIND = {
@@ -105,6 +108,91 @@ export function LetterEditor({
   // and wipes any in-progress edits the coach hasn't saved.
   const [regenConfirmOpen, setRegenConfirmOpen] = useState(false);
   const [regenerating, startRegen] = useTransition();
+
+  // 💬 AI Refine chat — coach types freeform feedback ("too much ragi —
+  // swap some for jowar / bajra") and the AI rewrites the relevant
+  // sections in place. Uses the existing refineLetter() server action
+  // (Sonnet refine prompt with full markdown context). Two modes:
+  //   - discuss: AI explains what it WOULD change, no rewrite yet
+  //   - finalise: AI rewrites + saves to disk
+  // We default to finalise mode for inline editing — coach can hit the
+  // "Discuss first" toggle if she wants to see proposed changes before
+  // they land. History is per-letter, lost on page refresh (acceptable
+  // — the markdown changes ARE persisted on disk).
+  const [refineHistory, setRefineHistory] = useState<ChatTurn[]>([]);
+  const [refineDraft, setRefineDraft] = useState("");
+  const [refineMode, setRefineMode] = useState<"discuss" | "finalise">("finalise");
+  const [refining, startRefine] = useTransition();
+  const [lastRefineReply, setLastRefineReply] = useState<string | null>(null);
+
+  const onRefine = () => {
+    const msg = refineDraft.trim();
+    if (!msg) return;
+    setRefineDraft("");
+    setLastRefineReply(null);
+    // Optimistic: append user turn immediately so the chat reads naturally
+    // even while Sonnet is streaming.
+    const optimistic: ChatTurn[] = [
+      ...refineHistory,
+      { role: "user", content: msg },
+    ];
+    setRefineHistory(optimistic);
+    startRefine(async () => {
+      try {
+        const res = await refineLetter(
+          markdown,
+          msg,
+          refineHistory,        // server gets prior history; client message is the new turn
+          planSlug,
+          clientId,
+          refineMode,
+        );
+        if (!res.ok) {
+          setRefineHistory([
+            ...optimistic,
+            {
+              role: "assistant",
+              content: `⚠ ${res.error ?? "Refine failed"}`,
+            },
+          ]);
+          toast.error(res.error ?? "Refine failed");
+          return;
+        }
+        const reply = res.reply ?? "(no reply)";
+        setRefineHistory([
+          ...optimistic,
+          { role: "assistant", content: reply },
+        ]);
+        setLastRefineReply(reply);
+        // Finalise mode + markdown returned → swap in the new letter.
+        if (
+          res.mode === "finalise" &&
+          res.markdown &&
+          !res.no_update
+        ) {
+          setMarkdown(res.markdown);
+          // Mark as just-saved (refine already wrote to disk via the
+          // saveMealPlan call inside refineLetter).
+          setLastSavedAt(new Date().toISOString());
+          toast.success("Letter updated by AI");
+          // Refresh so the new mtime / saved-letters probe on Communicate
+          // picks up the change.
+          router.refresh();
+        } else if (res.mode === "discuss") {
+          toast.success("AI replied — review and Apply when ready");
+        }
+      } catch (err) {
+        setRefineHistory([
+          ...optimistic,
+          {
+            role: "assistant",
+            content: `⚠ ${(err as Error).message}`,
+          },
+        ]);
+        toast.error((err as Error).message);
+      }
+    });
+  };
 
   const sections = useMemo(() => parseSections(markdown), [markdown]);
   const wordCount = useMemo(
@@ -238,13 +326,11 @@ export function LetterEditor({
     toast.success("Rewrite applied — Save to persist.");
   };
 
-  const onSend = () => {
-    if (isDirty) {
-      toast.error("Save the letter first, then send from Communicate.");
-      return;
-    }
-    router.push(`/clients-v2/${clientId}/communicate`);
-  };
+  // onSend removed 2026-05-19 — was just pushing to Communicate which
+  // confused the coach (looked like the button did nothing). Replaced
+  // with the SendToClientButton component (compose-preview-send modal
+  // via Gmail SMTP, plan HTML pre-rendered as inline body). Same
+  // component used at the bottom of the Communicate tab.
 
   return (
     <div
@@ -310,7 +396,7 @@ export function LetterEditor({
               {letterIcon} {letterLabel}
               <span
                 style={{
-                  fontSize: 10.5,
+                  fontSize: 11,
                   color: "var(--fm-text-tertiary)",
                   fontWeight: 500,
                   marginLeft: 8,
@@ -325,7 +411,7 @@ export function LetterEditor({
                     style={{
                       marginLeft: 8,
                       padding: "1px 7px",
-                      fontSize: 9.5,
+                      fontSize: 10,
                       fontWeight: 700,
                       textTransform: "uppercase",
                       letterSpacing: 0.4,
@@ -352,11 +438,22 @@ export function LetterEditor({
             </div>
           </div>
           <div style={{ display: "flex", gap: 6 }}>
-            <Link
-              href={`/clients-v2/${clientId}/plan/edit/${planSlug}`}
+            {/* Preview opens the brand-rendered HTML for the CURRENT
+                letterType in a new tab. Was incorrectly linking to
+                /plan/edit/<slug> — fixed 2026-05-19. Phase letters
+                need ?phase_start + ?phase_end so the API route can
+                resolve the per-fortnight filename. */}
+            <a
+              href={
+                letterType === "meal_plan_phase" && phase
+                  ? `/api/letter/${clientId}/${planSlug}/${letterType}?phase_start=${phase.startWeek}&phase_end=${phase.endWeek}`
+                  : `/api/letter/${clientId}/${planSlug}/${letterType}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 padding: "6px 12px",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 600,
                 background: "var(--fm-surface)",
                 border: "1px solid var(--fm-border)",
@@ -366,7 +463,7 @@ export function LetterEditor({
               }}
             >
               👁 Preview / HTML
-            </Link>
+            </a>
             <button
               type="button"
               onClick={() => setRegenConfirmOpen(true)}
@@ -374,7 +471,7 @@ export function LetterEditor({
               title="Rebuild the letter from scratch using the current plan"
               style={{
                 padding: "6px 12px",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 background: regenerating
                   ? "var(--fm-bg-cool)"
@@ -396,7 +493,7 @@ export function LetterEditor({
               disabled={pending || !isDirty}
               style={{
                 padding: "6px 14px",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 background: "var(--fm-surface)",
                 border: "1px solid var(--fm-border)",
@@ -409,28 +506,52 @@ export function LetterEditor({
             >
               {pending ? "Saving…" : "💾 Save draft"}
             </button>
-            <button
-              type="button"
-              onClick={onSend}
-              style={{
-                padding: "6px 14px",
-                fontSize: 11.5,
-                fontWeight: 700,
-                background: "var(--fm-primary)",
-                color: "#fff",
-                border: 0,
-                borderRadius: "var(--fm-radius-sm)",
-                cursor: "pointer",
-                fontFamily: "inherit",
-              }}
-              title={
-                clientEmail
-                  ? `Send to ${clientEmail} from Communicate`
-                  : "Send via Communicate"
-              }
-            >
-              ✉ Send to client →
-            </button>
+            {/* Send to client — opens the compose-preview-send modal
+                inline (Gmail SMTP, plan HTML rendered as inline body).
+                If the letter has unsaved edits, show a toast prompting
+                Save first; otherwise the modal opens directly. */}
+            {isDirty ? (
+              <button
+                type="button"
+                onClick={() =>
+                  toast.error(
+                    "Save the letter first, then click Send.",
+                  )
+                }
+                style={{
+                  padding: "6px 14px",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  background: "var(--fm-primary)",
+                  color: "#fff",
+                  border: 0,
+                  borderRadius: "var(--fm-radius-sm)",
+                  cursor: "pointer",
+                  opacity: 0.55,
+                  fontFamily: "inherit",
+                }}
+                title="Save first, then send"
+              >
+                ✉ Send to client →
+              </button>
+            ) : (
+              <SendToClientButton
+                planSlug={planSlug}
+                clientId={clientId}
+                clientEmail={clientEmail}
+                clientName={clientName}
+                // Send the CURRENT letter being reviewed (e.g. the
+                // meal_plan_phase for Wks 3-4), not the consolidated.
+                letterType={letterType as
+                  | "consolidated"
+                  | "supplement_plan"
+                  | "lifestyle_guide"
+                  | "exercise_plan"
+                  | "recipes"
+                  | "meal_plan_phase"}
+                phase={phase ?? undefined}
+              />
+            )}
           </div>
         </div>
 
@@ -482,7 +603,7 @@ export function LetterEditor({
                   style={{
                     padding: "6px 10px",
                     paddingLeft: 10 + (s.level - 1) * 10,
-                    fontSize: 11.5,
+                    fontSize: 12,
                     marginBottom: 3,
                     borderRadius: "var(--fm-radius-sm)",
                     color: "var(--fm-text-secondary)",
@@ -502,7 +623,7 @@ export function LetterEditor({
                 background: "var(--fm-surface)",
                 border: "1px solid var(--fm-border-light)",
                 borderRadius: "var(--fm-radius-sm)",
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-secondary)",
                 lineHeight: 1.5,
               }}
@@ -550,7 +671,7 @@ export function LetterEditor({
             >
               <div
                 style={{
-                  fontSize: 9.5,
+                  fontSize: 10,
                   letterSpacing: 2,
                   color: DEEP_MIND.indigoMid,
                   marginBottom: 18,
@@ -571,7 +692,7 @@ export function LetterEditor({
                   outline: "none",
                   background: "transparent",
                   fontFamily: 'ui-monospace, "SF Mono", monospace',
-                  fontSize: 12.5,
+                  fontSize: 13,
                   lineHeight: 1.65,
                   color: DEEP_MIND.indigo,
                   whiteSpace: "pre-wrap",
@@ -627,7 +748,7 @@ export function LetterEditor({
               <span
                 style={{
                   marginLeft: "auto",
-                  fontSize: 9.5,
+                  fontSize: 10,
                   padding: "2px 8px",
                   border: "1px solid var(--fm-border)",
                   borderRadius: "var(--fm-radius-pill)",
@@ -641,7 +762,7 @@ export function LetterEditor({
             <div
               style={{
                 marginBottom: 14,
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
               }}
             >
@@ -680,7 +801,7 @@ export function LetterEditor({
                   >
                     <span
                       style={{
-                        fontSize: 9.5,
+                        fontSize: 10,
                         fontWeight: 700,
                         textTransform: "uppercase",
                         letterSpacing: 0.7,
@@ -700,7 +821,7 @@ export function LetterEditor({
                   </div>
                   <div
                     style={{
-                      fontSize: 10.5,
+                      fontSize: 11,
                       color: "var(--fm-text-secondary)",
                       fontStyle: "italic",
                       marginBottom: 6,
@@ -726,7 +847,7 @@ export function LetterEditor({
                     <>
                       <div
                         style={{
-                          fontSize: 10.5,
+                          fontSize: 11,
                           padding: "6px 8px",
                           background: "var(--fm-bg-cool)",
                           border: "1px solid var(--fm-border-light)",
@@ -765,6 +886,233 @@ export function LetterEditor({
                 </div>
               );
             })}
+
+            {/* 💬 AI Refine — freeform feedback chat.  Coach types things
+                like "too much ragi, swap some for jowar / bajra" or
+                "tone it down on the supplement section, she's already
+                tired of taking pills" → Sonnet rewrites in place.
+                Default = finalise (save to disk); flip to Discuss to
+                see proposed changes first without writing. */}
+            <div
+              style={{
+                marginTop: 22,
+                paddingTop: 16,
+                borderTop: "1px dashed var(--fm-border)",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                  marginBottom: 8,
+                }}
+              >
+                <span style={{ fontSize: 14 }}>💬</span>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: 1,
+                    color: "var(--fm-text-secondary)",
+                  }}
+                >
+                  Tell the AI to fix something
+                </span>
+              </div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "var(--fm-text-tertiary)",
+                  marginBottom: 10,
+                  lineHeight: 1.5,
+                }}
+              >
+                Plain-English feedback (e.g. <em>&quot;too much ragi — swap
+                some for jowar or bajra&quot;</em>, <em>&quot;cut the lecture
+                tone in week 2&quot;</em>, <em>&quot;add a no-onion
+                no-garlic line to the travel section&quot;</em>). AI rewrites
+                the relevant sections and saves to disk.
+              </div>
+
+              {/* Mode toggle — finalise (default, edits in place) /
+                  discuss (chat-only, no save) */}
+              <div
+                style={{
+                  display: "inline-flex",
+                  background: "var(--fm-bg-cool)",
+                  border: "1px solid var(--fm-border)",
+                  borderRadius: "var(--fm-radius-pill)",
+                  padding: 2,
+                  marginBottom: 10,
+                  fontSize: 11,
+                }}
+              >
+                {(["finalise", "discuss"] as const).map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setRefineMode(m)}
+                    disabled={refining}
+                    style={{
+                      padding: "3px 10px",
+                      border: 0,
+                      borderRadius: "var(--fm-radius-pill)",
+                      background:
+                        refineMode === m ? "var(--fm-primary)" : "transparent",
+                      color:
+                        refineMode === m ? "#fff" : "var(--fm-text-secondary)",
+                      fontWeight: 700,
+                      cursor: refining ? "wait" : "pointer",
+                    }}
+                  >
+                    {m === "finalise" ? "✏ Apply" : "🗨 Discuss"}
+                  </button>
+                ))}
+              </div>
+
+              {/* History */}
+              {refineHistory.length > 0 && (
+                <div
+                  style={{
+                    maxHeight: 280,
+                    overflow: "auto",
+                    marginBottom: 10,
+                    padding: "8px 10px",
+                    background: "var(--fm-bg-warm)",
+                    borderRadius: "var(--fm-radius-sm)",
+                    border: "1px solid var(--fm-border-light)",
+                    display: "grid",
+                    gap: 8,
+                  }}
+                >
+                  {refineHistory.map((t, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        fontSize: 12,
+                        lineHeight: 1.55,
+                        padding: "6px 9px",
+                        borderRadius: 6,
+                        background:
+                          t.role === "user"
+                            ? "rgba(255, 107, 53, 0.10)"
+                            : "var(--fm-surface)",
+                        borderLeft:
+                          t.role === "user"
+                            ? "2px solid var(--fm-primary)"
+                            : "2px solid var(--fm-border)",
+                        color:
+                          t.role === "user"
+                            ? "var(--fm-text-primary)"
+                            : "var(--fm-text-secondary)",
+                        whiteSpace: "pre-wrap",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: 10,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: 0.5,
+                          marginBottom: 2,
+                          color:
+                            t.role === "user"
+                              ? "var(--fm-primary)"
+                              : "var(--fm-text-tertiary)",
+                        }}
+                      >
+                        {t.role === "user" ? "You" : "AI"}
+                      </div>
+                      {t.content}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <textarea
+                value={refineDraft}
+                onChange={(e) => setRefineDraft(e.target.value)}
+                onKeyDown={(e) => {
+                  if (
+                    e.key === "Enter" &&
+                    (e.metaKey || e.ctrlKey) &&
+                    !refining
+                  ) {
+                    e.preventDefault();
+                    onRefine();
+                  }
+                }}
+                placeholder="Too much ragi being included — swap some for jowar or bajra…"
+                disabled={refining}
+                rows={3}
+                style={{
+                  width: "100%",
+                  padding: 8,
+                  fontSize: 12,
+                  fontFamily: "inherit",
+                  background: "var(--fm-surface)",
+                  border: "1px solid var(--fm-border)",
+                  borderRadius: "var(--fm-radius-sm)",
+                  resize: "vertical",
+                  lineHeight: 1.5,
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: 6,
+                  fontSize: 10,
+                  color: "var(--fm-text-tertiary)",
+                }}
+              >
+                <span>⌘+Enter to send</span>
+                <button
+                  type="button"
+                  onClick={onRefine}
+                  disabled={refining || !refineDraft.trim()}
+                  style={{
+                    padding: "6px 14px",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    background:
+                      refining || !refineDraft.trim()
+                        ? "var(--fm-bg-cool)"
+                        : "var(--fm-primary)",
+                    color:
+                      refining || !refineDraft.trim()
+                        ? "var(--fm-text-tertiary)"
+                        : "#fff",
+                    border: 0,
+                    borderRadius: "var(--fm-radius-sm)",
+                    cursor:
+                      refining || !refineDraft.trim() ? "not-allowed" : "pointer",
+                    fontFamily: "inherit",
+                  }}
+                >
+                  {refining
+                    ? "AI rewriting…"
+                    : refineMode === "finalise"
+                      ? "Apply ✏"
+                      : "Discuss 🗨"}
+                </button>
+              </div>
+              {lastRefineReply && refineMode === "finalise" && (
+                <div
+                  style={{
+                    marginTop: 8,
+                    fontSize: 11,
+                    color: "var(--fm-text-tertiary)",
+                    fontStyle: "italic",
+                  }}
+                >
+                  ✓ Letter on disk has been updated.
+                </div>
+              )}
+            </div>
           </aside>
         </div>
       </div>
@@ -814,7 +1162,7 @@ export function LetterEditor({
             </h2>
             <p
               style={{
-                fontSize: 12.5,
+                fontSize: 13,
                 color: "var(--fm-text-secondary)",
                 lineHeight: 1.55,
                 margin: "0 0 14px",

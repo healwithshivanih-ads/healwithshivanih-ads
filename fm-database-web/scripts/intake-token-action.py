@@ -129,10 +129,20 @@ def action_generate(payload: dict) -> dict:
     expires = datetime.now(timezone.utc) + timedelta(days=ttl_days)
     data["intake_token"] = token
     data["intake_token_expires_at"] = expires.isoformat()
-    # Reset any prior submission flag so coach can re-issue an intake
-    # without orphaning the previous one. (Submitted records still live in
-    # quick_note sessions for audit.)
-    data["intake_submitted_at"] = None
+    # NB: do NOT clear `intake_submitted_at`. It is a historical event —
+    # "this client submitted at least once." Previously this line set it
+    # to None on every regenerate, which destroyed the UI's ability to
+    # show two-stage state correctly (Nidhi case 2026-05-19: pre-
+    # discovery submitted May 15 → coach unlocked full + regenerated
+    # token May 18 → submitted_at went to null → IntakeProgressCard
+    # then showed "⏰ Link expired before she submitted", which was
+    # wrong — she'd submitted ages ago). The card now reads `_last`
+    # for "most recent activity" and `intake_submitted_at` for "ever
+    # submitted." Coach's explicit `finalise` is the only thing that
+    # locks state; regenerating a link should never erase history.
+    #
+    # The token + expiry change alone is enough to re-open the form
+    # for editing; we DON'T need to lie about submission status.
     # Enable the auto-reminder cron for this client — coach is actively
     # sending an intake link, so the daily nudge is appropriate until they
     # submit. Reset reminder history so the new token gets its own 2-strike
@@ -188,6 +198,7 @@ def _prefill_from_client(data: dict) -> dict:
         "known_allergies": data.get("known_allergies") or [],
         "goals": data.get("goals") or [],
         "dietary_preference": data.get("dietary_preference") or "",
+        "animal_derived_supplements_ok": data.get("animal_derived_supplements_ok") or "",
         "foods_to_avoid": data.get("foods_to_avoid") or "",
         "non_negotiables": data.get("non_negotiables") or "",
         "family_history": data.get("family_history") or "",
@@ -292,7 +303,8 @@ _SCALAR_FIELDS = [
     "email",
     "mobile_number",
     "address_line1", "address_line2", "city", "state", "pincode", "country",
-    "dietary_preference", "foods_to_avoid", "non_negotiables", "reported_triggers",
+    "dietary_preference", "animal_derived_supplements_ok",
+    "foods_to_avoid", "non_negotiables", "reported_triggers",
     "family_history",
     # Deep clinical narrative fields
     "digestion_notes", "sleep_notes", "energy_pattern", "menstrual_notes",

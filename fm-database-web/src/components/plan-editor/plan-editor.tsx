@@ -12,6 +12,7 @@ import { MultiSelect, type MultiSelectOption } from "@/components/multi-select";
 import { updatePlan, saveSupplementSources, checkSupplementInteractionsAction } from "@/lib/server-actions/plans";
 import type { SupplementSourcesMap, SupplementInteraction, DrugCaution } from "@/lib/server-actions/plans";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
+import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { ProtocolTemplatePicker } from "./protocol-template-picker";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
@@ -1427,7 +1428,7 @@ export function PlanEditor(props: PlanEditorProps) {
                       {supplementInteractions.map((interaction) => (
                         <div key={interaction.supplement_slug} className="text-[11px] border border-amber-200 rounded bg-white px-2.5 py-2 space-y-1">
                           <div className="font-semibold text-amber-900">
-                            {interaction.supplement_name}{" "}
+                            {stripBrand(interaction.supplement_name)}{" "}
                             <span className="text-amber-500">may interact with</span>{" "}
                             {interaction.matched_medications.join(", ")}
                           </div>

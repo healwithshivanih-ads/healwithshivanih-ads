@@ -3,6 +3,7 @@ import { loadClientById } from "@/lib/fmdb/loader-extras";
 import { FmPageHeader } from "@/components/fm";
 import { AnalysePageShell } from "../analyse-page-shell";
 import { DiscoveryForm } from "./discovery-form";
+import { buildDiscoveryPrefill } from "@/lib/fmdb/discovery-prefill";
 
 export const dynamic = "force-dynamic";
 
@@ -15,6 +16,22 @@ export default async function DiscoveryPage({
   const client = await loadClientById(id);
   if (!client) notFound();
   const displayName = client.display_name ?? client.client_id;
+
+  // Pre-fill the discovery form from data the coach already entered when
+  // creating the client. Maps active_conditions + notes → chief concern
+  // draft + extra lab panel suggestions so the coach doesn't re-type
+  // anything she's already captured at intake.
+  const cAny = client as Record<string, unknown>;
+  const prefill = buildDiscoveryPrefill({
+    display_name: client.display_name,
+    active_conditions: Array.isArray(cAny.active_conditions)
+      ? (cAny.active_conditions as string[])
+      : [],
+    notes: typeof cAny.notes === "string" ? cAny.notes : undefined,
+    goals: Array.isArray(cAny.goals) ? (cAny.goals as string[]) : [],
+    family_history:
+      typeof cAny.family_history === "string" ? cAny.family_history : null,
+  });
 
   return (
     <AnalysePageShell
@@ -34,6 +51,10 @@ export default async function DiscoveryPage({
         clientSex={
           client.sex === "F" || client.sex === "M" ? client.sex : null
         }
+        clientEmail={client.email ?? null}
+        prefillChiefConcern={prefill.chiefConcernDraft}
+        prefillExtraPanels={prefill.extraPanels}
+        prefillDetectionLabel={prefill.detectionLabel}
       />
     </AnalysePageShell>
   );

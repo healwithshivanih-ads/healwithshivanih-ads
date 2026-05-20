@@ -28,18 +28,28 @@ interface Props {
   clientId: string;
   intakeSubmittedAt?: string | null;
   intakeFullUnlockedAt?: string | null;
+  /** Fallback signal — Haiku-summarised insights only run after a real
+   *  submission, so this proves the client submitted at some point even
+   *  when intake_submitted_at got wiped by a token regen (legacy bug
+   *  patched 2026-05-19; keep this fallback so historical clients still
+   *  surface the unlock button correctly). */
+  intakeInsightsGeneratedAt?: string | null;
 }
 
 export function UnlockFullIntakeButton({
   clientId,
   intakeSubmittedAt,
   intakeFullUnlockedAt,
+  intakeInsightsGeneratedAt,
 }: Props) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
-  // Hide until client has filled at least the pre-discovery
-  if (!intakeSubmittedAt) return null;
+  // Hide until client has filled at least the pre-discovery.
+  // Tolerate intake_submitted_at being wiped — insights are an
+  // equivalent historical proof of submission.
+  const everSubmitted = !!(intakeSubmittedAt || intakeInsightsGeneratedAt);
+  if (!everSubmitted) return null;
 
   const fmtTime = (iso: string) => {
     try {
@@ -85,7 +95,7 @@ export function UnlockFullIntakeButton({
         <span style={{ fontSize: 16 }}>🔓</span>
         <div
           style={{
-            fontSize: 12.5,
+            fontSize: 13,
             fontWeight: 700,
             color: "#9a3412",
           }}
@@ -95,7 +105,7 @@ export function UnlockFullIntakeButton({
       </div>
       <div
         style={{
-          fontSize: 11.5,
+          fontSize: 12,
           color: "var(--fm-text-secondary)",
           lineHeight: 1.45,
         }}
@@ -111,7 +121,7 @@ export function UnlockFullIntakeButton({
         disabled={pending}
         style={{
           padding: "8px 14px",
-          fontSize: 12.5,
+          fontSize: 13,
           fontWeight: 700,
           background: pending ? "#94a3b8" : "#ff6b35",
           color: "#fff",
@@ -179,7 +189,7 @@ function UnlockedConfirmation({
         background: "rgba(34, 197, 94, 0.08)",
         border: "1px solid rgba(34, 197, 94, 0.35)",
         borderRadius: "var(--fm-radius-md)",
-        fontSize: 12.5,
+        fontSize: 13,
         color: "#15803d",
         display: "grid",
         gap: 8,
@@ -189,10 +199,10 @@ function UnlockedConfirmation({
         <span>✅</span>
         <div>
           <strong>Full intake unlocked</strong>{" "}
-          <span style={{ color: "var(--fm-text-secondary)", fontSize: 11.5 }}>
+          <span style={{ color: "var(--fm-text-secondary)", fontSize: 12 }}>
             · {fmtTime(unlockedAt)}
           </span>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)", marginTop: 2 }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", marginTop: 2 }}>
             Same /intake/&lt;token&gt; URL — client returns to it and sees
             the welcome-back screen + deeper sections (FM body systems,
             ACE, timeline, Joints &amp; standing, etc.) on top of their
@@ -207,7 +217,7 @@ function UnlockedConfirmation({
           disabled={notifyPending || notified === "sent"}
           style={{
             padding: "5px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             background:
               notified === "sent"
@@ -228,7 +238,7 @@ function UnlockedConfirmation({
               ? "Sending…"
               : "📨 Notify client via WhatsApp"}
         </button>
-        <span style={{ fontSize: 10.5, color: "var(--fm-text-tertiary)" }}>
+        <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
           Re-sends the intake link with the welcome-back screen
         </span>
       </div>

@@ -46,6 +46,7 @@ interface Props {
   clientId: string;
   initial: {
     dietary_preference?: string;
+    animal_derived_supplements_ok?: string;
     foods_to_avoid?: string;
     reported_triggers?: string;
     non_negotiables?: string;
@@ -62,6 +63,9 @@ export function PreferencesEditor({ clientId, initial }: Props) {
 
   const [dietaryPreference, setDietaryPreference] = useState(
     initial.dietary_preference ?? ""
+  );
+  const [animalSupplementsOk, setAnimalSupplementsOk] = useState(
+    initial.animal_derived_supplements_ok ?? ""
   );
   const [foodsToAvoid, setFoodsToAvoid] = useState(
     initial.foods_to_avoid ?? ""
@@ -101,6 +105,7 @@ export function PreferencesEditor({ clientId, initial }: Props) {
       const res = await updateClientPreferences({
         client_id: clientId,
         dietary_preference: dietaryPreference,
+        animal_derived_supplements_ok: animalSupplementsOk,
         foods_to_avoid: foodsToAvoid,
         reported_triggers: reportedTriggers,
         non_negotiables: nonNegotiables,
@@ -146,6 +151,26 @@ export function PreferencesEditor({ clientId, initial }: Props) {
               <div>
                 <span className="text-xs uppercase text-muted-foreground">Diet: </span>
                 {initial.dietary_preference}
+              </div>
+            ) : null}
+            {initial.animal_derived_supplements_ok ? (
+              <div>
+                <span className="text-xs uppercase text-muted-foreground">
+                  Animal-derived supplements:{" "}
+                </span>
+                <span
+                  className={
+                    initial.animal_derived_supplements_ok === "no"
+                      ? "text-red-700 font-medium"
+                      : "text-muted-foreground"
+                  }
+                >
+                  {initial.animal_derived_supplements_ok === "yes"
+                    ? "OK"
+                    : initial.animal_derived_supplements_ok === "no"
+                      ? "Plant / algae only"
+                      : "Unsure — discuss"}
+                </span>
               </div>
             ) : null}
             {initial.foods_to_avoid ? (
@@ -240,6 +265,33 @@ export function PreferencesEditor({ clientId, initial }: Props) {
                 <option value="Other">Other</option>
               </select>
             </div>
+
+            {/* Animal-derived supplements — only relevant for veg-spectrum
+                diets. Drives the plan-checker guard + supplement picks. */}
+            {["Vegetarian", "Vegetarian Jain", "Eggetarian", "Vegan"].includes(
+              dietaryPreference,
+            ) && (
+              <div>
+                <label className="text-xs font-medium block mb-1">
+                  OK with animal-derived supplements?
+                </label>
+                <select
+                  value={animalSupplementsOk}
+                  onChange={(e) => setAnimalSupplementsOk(e.target.value)}
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                >
+                  <option value="">— not asked —</option>
+                  <option value="yes">Yes — fish oil / gelatin etc. are fine</option>
+                  <option value="no">No — plant / algae-based only</option>
+                  <option value="unsure">Unsure — discuss on call</option>
+                </select>
+                <p className="text-[11px] text-muted-foreground mt-0.5">
+                  Omega-3 fish oil, gelatin capsules, collagen, cod-liver oil
+                  are animal-derived. &quot;No&quot; makes the plan checker
+                  block these (CRITICAL); blank/unsure → a warning.
+                </p>
+              </div>
+            )}
 
             <div>
               <label className="text-xs font-medium block mb-1">Foods they will NOT eat</label>

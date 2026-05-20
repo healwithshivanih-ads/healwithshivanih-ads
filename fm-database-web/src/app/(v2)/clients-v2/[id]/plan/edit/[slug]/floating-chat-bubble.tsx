@@ -130,7 +130,7 @@ export function FloatingChatBubble({ slug, clientId, isLocked }: Props) {
         <span style={{ fontSize: 16 }}>💬</span>
         <span
           style={{
-            fontSize: 12.5,
+            fontSize: 13,
             fontWeight: 700,
             color: "var(--fm-text-primary)",
             flex: 1,

@@ -9,9 +9,14 @@ import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { buildEmailSafeBody } from "@/lib/email-html";
 
-// Stubs preserved across the WhatsApp cutover so old callers compile. The
-// send log used to live at ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml;
-// it's no longer written from this worktree. Reads return empty.
+// Send log re-restored 2026-05-19 — the new V2 Communicate panel needs
+// to distinguish Drafted (file on disk) from Sent (email actually went
+// out). File lives at ~/fm-plans/clients/<id>/meal-plans/_send_log.yaml
+// and is an append-only list of {sent_at, letter_types, to, cc?, plan_slug?}.
+// Supports backdating via the optional `sentAt` arg on
+// recordLetterSendAction — used when retroactively marking a letter as
+// having been sent on an earlier date (e.g. client already received the
+// initial package outside the app).
 export interface LetterSendEntry {
   sent_at: string;
   letter_types: string[];
@@ -19,16 +24,119 @@ export interface LetterSendEntry {
   cc?: string;
   plan_slug?: string;
 }
-export async function loadLetterSendLogAction(_clientId: string): Promise<LetterSendEntry[]> {
-  return [];
+
+function sendLogPath(clientId: string): string {
+  return path.join(
+    getPlansRoot(),
+    "clients",
+    clientId,
+    "meal-plans",
+    "_send_log.yaml",
+  );
 }
-export async function recordLetterSendAction(_input: {
+
+export async function loadLetterSendLogAction(
+  clientId: string,
+): Promise<LetterSendEntry[]> {
+  if (!clientId) return [];
+  try {
+    const raw = await fs.readFile(sendLogPath(clientId), "utf-8");
+    const parsed = yaml.load(raw);
+    if (!Array.isArray(parsed)) return [];
+    // Lenient shape check — drop malformed entries rather than throw.
+    return parsed
+      .filter(
+        (e): e is LetterSendEntry =>
+          !!e &&
+          typeof e === "object" &&
+          typeof (e as LetterSendEntry).sent_at === "string" &&
+          Array.isArray((e as LetterSendEntry).letter_types) &&
+          typeof (e as LetterSendEntry).to === "string",
+      )
+      // Newest first — the panel slices to 8 for the sidebar.
+      .sort(
+        (a, b) =>
+          new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime(),
+      );
+  } catch {
+    return [];
+  }
+}
+
+export async function recordLetterSendAction(input: {
   clientId: string;
   planSlug: string;
   letterTypes: string[];
   to: string;
   cc?: string;
-}): Promise<{ ok: true }> {
+  /** ISO timestamp. Defaults to now. Pass a past ISO to backdate (e.g.
+   *  "2026-05-12T18:00:00+05:30" when marking an old initial-package
+   *  letter as having been sent at intake). */
+  sentAt?: string;
+}): Promise<{ ok: true } | { ok: false; error: string }> {
+  const {
+    clientId,
+    planSlug,
+    letterTypes,
+    to,
+    cc,
+    sentAt,
+  } = input;
+  if (!clientId) return { ok: false, error: "clientId required" };
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+  if (!Array.isArray(letterTypes) || letterTypes.length === 0)
+    return { ok: false, error: "letterTypes must be a non-empty array" };
+  if (!to) return { ok: false, error: "to required" };
+
+  const filePath = sendLogPath(clientId);
+  let existing: LetterSendEntry[] = [];
+  try {
+    const raw = await fs.readFile(filePath, "utf-8");
+    const parsed = yaml.load(raw);
+    if (Array.isArray(parsed)) existing = parsed as LetterSendEntry[];
+  } catch {
+    /* file may not exist yet — that's fine */
+  }
+
+  const entry: LetterSendEntry = {
+    sent_at: sentAt || new Date().toISOString(),
+    letter_types: letterTypes,
+    to,
+    ...(cc ? { cc } : {}),
+    plan_slug: planSlug,
+  };
+
+  // Dedup: don't append an identical entry (same sent_at + types + to).
+  // Lets the action be safe to retry.
+  const dupe = existing.find(
+    (e) =>
+      e.sent_at === entry.sent_at &&
+      e.to === entry.to &&
+      e.letter_types.join(",") === entry.letter_types.join(","),
+  );
+  if (dupe) {
+    revalidatePath(`/clients-v2/${clientId}/communicate`);
+    return { ok: true };
+  }
+
+  existing.push(entry);
+  try {
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    // Known limitation (B8 audit 2026-05-19): no file lock around this
+    // read-modify-write. If two concurrent sends to the same client
+    // race, the later write clobbers the earlier. In practice the
+    // dedup check above + the human-paced cadence (rarely <30s apart)
+    // mean we haven't observed losses. If automation ever drives this
+    // at scale, swap to an atomic-append JSONL format.
+    await fs.writeFile(
+      filePath,
+      yaml.dump(existing, { noRefs: true, lineWidth: 100 }),
+      "utf-8",
+    );
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+  revalidatePath(`/clients-v2/${clientId}/communicate`);
   return { ok: true };
 }
 
@@ -71,6 +179,113 @@ export async function renderPlanHtmlAction(
   }
 }
 
+/**
+ * Load the brand-formatted client letter HTML from disk for use as
+ * email body. This is the WARM, narrative, Deep Mind-styled letter
+ * (consolidated wellness letter / meal_plan_phase / supplement_plan
+ * etc.) — what the client should actually receive, NOT the structured
+ * plan dump from renderPlanHtmlAction.
+ *
+ * Returns {ok:false} if the requested letter type hasn't been generated
+ * yet on disk — caller should fall back to renderPlanHtmlAction so the
+ * Send modal still works for plans that don't have a saved letter
+ * (rare, but possible right after a fresh plan publish).
+ *
+ * Added 2026-05-19 — coach feedback: the send modal was emailing the
+ * unstyled structured plan instead of the brand-formatted letter.
+ */
+export async function loadLetterHtmlForEmailAction(
+  planSlug: string,
+  clientId: string,
+  letterType:
+    | "consolidated"
+    | "supplement_plan"
+    | "lifestyle_guide"
+    | "exercise_plan"
+    | "recipes"
+    | "meal_plan_phase" = "consolidated",
+  phase?: { startWeek: number; endWeek: number } | null,
+): Promise<
+  {
+    ok: true;
+    html: string;
+    letterType: string;
+    savedAt?: string;
+    /** Sidecar attachments to ship alongside the main letter body.
+     *  Populated when a `<stem>-recipes.html` exists next to the main
+     *  letter — phase letters carry the recipe pack as a separate file
+     *  so the main letter stays under 7 pages. Encoded as base64 strings
+     *  so they can cross the server-action wire safely. */
+    attachments?: { filename: string; contentBase64: string; mimeType: string }[];
+  }
+  | { ok: false; error: string }
+> {
+  if (!planSlug || !clientId) {
+    return { ok: false, error: "planSlug + clientId required" };
+  }
+  try {
+    const root = getPlansRoot();
+    // Stem matches letterFileStem in plan-lifecycle.ts:
+    //   consolidated → <slug>.html
+    //   meal_plan_phase + phase → <slug>-meal_plan-wkN-M.html
+    //   others → <slug>-<letterType>.html
+    let stem: string;
+    if (letterType === "consolidated") {
+      stem = planSlug;
+    } else if (letterType === "meal_plan_phase" && phase) {
+      stem = `${planSlug}-meal_plan-wk${phase.startWeek}-${phase.endWeek}`;
+    } else {
+      stem = `${planSlug}-${letterType}`;
+    }
+    const dir = path.join(root, "clients", clientId, "meal-plans");
+    const htmlPath = path.join(dir, `${stem}.html`);
+    const html = await fs.readFile(htmlPath, "utf-8");
+    const stat = await fs.stat(htmlPath);
+
+    // Recipes sidecar — phase letters strip the recipe appendix to a
+    // separate file so the main letter stays under 7 pages. When that
+    // file exists, attach it to the email. Coach feedback 2026-05-19:
+    // "letter said recipes attached but no recipe was attached."
+    const attachments: {
+      filename: string;
+      contentBase64: string;
+      mimeType: string;
+    }[] = [];
+    const recipesPath = path.join(dir, `${stem}-recipes.html`);
+    try {
+      const recipesBuf = await fs.readFile(recipesPath);
+      // Friendly filename for the recipient — uses the human-readable
+      // phase label, not the slug-y disk stem.
+      const friendlyName =
+        letterType === "meal_plan_phase" && phase
+          ? phase.startWeek === phase.endWeek
+            ? `Recipes — Week ${phase.startWeek}.html`
+            : `Recipes — Weeks ${phase.startWeek}–${phase.endWeek}.html`
+          : "Recipes.html";
+      attachments.push({
+        filename: friendlyName,
+        contentBase64: recipesBuf.toString("base64"),
+        mimeType: "text/html",
+      });
+    } catch {
+      /* no recipes sidecar — that's fine, not all letters have one */
+    }
+
+    return {
+      ok: true,
+      html,
+      letterType,
+      savedAt: stat.mtime.toISOString(),
+      attachments,
+    };
+  } catch (err) {
+    return {
+      ok: false,
+      error: `No saved ${letterType} letter on disk. Generate it from Communicate first. (${(err as Error).message})`,
+    };
+  }
+}
+
 // ── Send email via nodemailer ──────────────────────────────────────────────
 
 export interface SendEmailInput {
@@ -79,6 +294,16 @@ export interface SendEmailInput {
   subject: string;
   htmlBody: string;
   textBody?: string;
+  /** Attachments to ship alongside the email body. Used for the
+   *  recipes sidecar HTML on phase letters (and anything else the
+   *  caller wants to bundle). `contentBase64` is base64 of the raw
+   *  file bytes; the action decodes back to a Buffer before handing
+   *  to nodemailer. */
+  attachments?: {
+    filename: string;
+    contentBase64: string;
+    mimeType?: string;
+  }[];
 }
 
 export async function sendClientEmailAction(
@@ -99,12 +324,22 @@ export async function sendClientEmailAction(
       service: "gmail",
       auth: { user, pass },
     });
+    const nmAttachments =
+      input.attachments && input.attachments.length > 0
+        ? input.attachments.map((a) => ({
+            filename: a.filename,
+            content: Buffer.from(a.contentBase64, "base64"),
+            contentType: a.mimeType,
+          }))
+        : undefined;
     await transporter.sendMail({
       from: `Shivani Hari <${user}>`,
       to: input.to,
+      cc: input.cc,
       subject: input.subject,
       html: input.htmlBody,
       text: input.textBody,
+      attachments: nmAttachments,
     });
     return { ok: true };
   } catch (err) {
@@ -508,6 +743,8 @@ export async function updateClientFieldsAction(
 
     await fs.writeFile(clientFile, yaml.dump(data), "utf-8");
     revalidatePath(`/clients/${clientId}`);
+    revalidatePath(`/clients-v2/${clientId}`);
+    revalidatePath(`/clients-v2/${clientId}/analyse`);
     revalidatePath("/clients");
     revalidatePath("/");
     return { ok: true };

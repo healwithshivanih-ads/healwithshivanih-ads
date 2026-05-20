@@ -49,6 +49,7 @@ import {
   FmClientHeader,
   FmClientJourneyStrip,
   FmContactPanel,
+  FmGroupedPanel,
   FmDepletionBanner,
   FmMarkerPanel,
   FmBodyCompGrid,
@@ -65,7 +66,10 @@ import {
   type FivePillarsValue,
 } from "@/components/fm";
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
-import { MemoryPanel } from "./memory-panel";
+// MemoryPanel import removed 2026-05-19 — it duplicated ClientMemoryPanel
+// (above in the left column). File `./memory-panel.tsx` left on disk in
+// case we want to revive a read-only twin later; not imported anywhere
+// after this change.
 import { SOAPNotePanel } from "@/components/client-widgets/soap-note-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { BookingDueBanner } from "@/components/client-widgets/booking-due-banner";
@@ -540,6 +544,20 @@ export default async function ClientV2Page({
       ? (engagementRaw as "signed_up" | "declined" | "pending")
       : undefined;
 
+  // Has the client moved beyond "just created"? Any of: a discovery or
+  // intake session on file, the client submitted the online intake form,
+  // or a plan already exists. Used to decide whether to prompt for the
+  // sign-up decision. Previously the sign-up control was gated ONLY on a
+  // recorded discovery session — so a client like Archana (intake form
+  // submitted, draft plan, but no [session_type: discovery] session)
+  // had NO way for the coach to mark her signed up. See engagement
+  // callout + the always-visible Sign-up status panel below.
+  const hasAnyJourneySignal =
+    hasDiscoverySession ||
+    hasIntakeSession ||
+    Boolean((client as { intake_submitted_at?: string | null }).intake_submitted_at) ||
+    plansForClient.length > 0;
+
   // Workflow stage
   const stageInfo = deriveStage(plansForClient, todayStr, {
     hasDiscoverySession,
@@ -692,17 +710,18 @@ export default async function ClientV2Page({
       activeNavId="clients"
       quickActions={clientQuickActions(client.client_id)}
       crumbs={[
-        { label: "Clients", href: "/clients" },
+        { label: "Clients", href: "/clients-v2" },
         { label: client.display_name ?? client.client_id },
       ]}
     >
       <FmClientJourneyStrip journey={journey} />
 
-      {/* Sign-up callout — only when discovery is done AND the coach
-          hasn't yet marked the client as signed_up or declined. Helps
-          surface the "did they sign up?" decision so it doesn't fall
-          through the cracks before intake. */}
-      {hasDiscoverySession && engagement !== "signed_up" && engagement !== "declined" && (
+      {/* Sign-up callout — surfaces the "did they sign up?" decision so
+          it doesn't fall through the cracks. Shows when the client has
+          moved beyond "just created" (discovery / intake session, intake
+          form submitted, or a plan exists) AND the coach hasn't yet
+          marked them signed_up or declined. */}
+      {hasAnyJourneySignal && engagement !== "signed_up" && engagement !== "declined" && (
         <div style={{ marginBottom: 12 }}>
           <EngagementPicker
             clientId={client.client_id}
@@ -735,22 +754,14 @@ export default async function ClientV2Page({
         }
         quickActions={
           <>
-            {/* "Record session" → /analyse, the v2 Sessions tab which
-                hosts the recording forms (discovery / pre-intake / full
-                assess / check-in / quick-note). The /sessions route is
-                the read-only Timeline view — it's labelled "Timeline"
-                in the subnav and shouldn't be the destination of a
-                "Record" action. (Subnav route↔label is the confusingly
-                inverted one: route `/analyse` = label "Sessions",
-                route `/sessions` = label "Timeline".) */}
-            <QuickActionLink href={`/clients-v2/${id}/analyse`}>
-              📝 Record session
-            </QuickActionLink>
+            {/* Audit O6 (2026-05-20): the "📝 Record session" and
+                "📊 View plan" chips duplicated the Record + Plan tabs
+                two rows below in the subnav. Coach got two paths to the
+                same destination plus a noisier header. Removed; kept
+                "💬 Send message" because Communicate is a distinct
+                destination from any subnav action. */}
             <QuickActionLink href={`/clients-v2/${id}/communicate`}>
               💬 Send message
-            </QuickActionLink>
-            <QuickActionLink href={`/clients-v2/${id}/plan`}>
-              📊 View plan
             </QuickActionLink>
             {/* Inline identity editor — opens a panel above with prefilled
                 name / DOB / sex / contact fields. Mounted in quickActions
@@ -986,337 +997,414 @@ export default async function ClientV2Page({
 
         {/* RIGHT COLUMN */}
         <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
-          {/* 📝 Intake form progress — at-a-glance lifecycle status:
-              has the client opened the link? started filling? submitted?
-              Sits ABOVE IntakeInsightsCard because the insights card only
-              renders meaningful state AFTER submit; the coach needs to
-              see "still not opened" / "in progress / 12 fields filled" /
-              etc. while the intake is in flight. */}
-          <IntakeProgressCard
-            clientId={client.client_id}
-            firstName={(client.display_name ?? client.client_id).split(" ")[0]}
-            intakeToken={
-              (client as unknown as { intake_token?: string | null }).intake_token
-            }
-            intakeTokenExpiresAt={
-              (client as unknown as { intake_token_expires_at?: string | null })
-                .intake_token_expires_at
-            }
-            intakeFirstOpenedAt={
-              (client as unknown as { intake_first_opened_at?: string | null })
-                .intake_first_opened_at
-            }
-            intakeFormDraft={
-              (client as unknown as { intake_form_draft?: Record<string, unknown> | null })
-                .intake_form_draft
-            }
-            intakeFormDraftSavedAt={
-              (client as unknown as { intake_form_draft_saved_at?: string | null })
-                .intake_form_draft_saved_at
-            }
-            intakeSubmittedAt={
-              (client as unknown as { intake_submitted_at?: string | null })
-                .intake_submitted_at
-            }
-            intakeLastSubmittedAt={
-              (client as unknown as { intake_last_submitted_at?: string | null })
-                .intake_last_submitted_at
-            }
-            intakeFinalisedAt={
-              (client as unknown as { intake_finalised_at?: string | null })
-                .intake_finalised_at
-            }
-            intakeRemindersSentAt={
-              (client as unknown as { intake_reminders_sent_at?: string[] | null })
-                .intake_reminders_sent_at
-            }
-          />
+          {/* ── Wave J 2026-05-20: right rail re-architected from 11
+              stacked panels into 4 grouped panels. FmGroupedPanel gives
+              each group an eyebrow title + (where tabbed) a pill tab
+              strip; the active child keeps its own native card chrome.
+              Tab choice persists per-group in sessionStorage. ── */}
 
-          {/* 📋 Intake insights — Haiku-summarised view of the structured
-              intake. Always rendered (states: no-intake / submitted-no-AI /
-              full insights). Sits ABOVE FmContactPanel so it's the first
-              thing the coach sees in the right column. */}
-          <IntakeInsightsCard
-            clientId={client.client_id}
-            initial={intakeInsights}
-            submittedAt={
-              (client as unknown as { intake_submitted_at?: string })
-                .intake_submitted_at ?? null
-            }
-          />
-
-          <FmContactPanel pinned={pinned} more={more} />
-
-          {/* 📝 Tokenised intake form — coach clicks to generate a one-time
-              link, WhatsApps to client, client fills on their phone.
-              Submission writes back to client.yaml + appends a tagged
-              quick_note session. See send-intake-form-button.tsx. */}
-          <SendIntakeFormButton
-            clientId={client.client_id}
-            mobileNumber={
-              (client as unknown as { mobile_number?: string }).mobile_number
-            }
-            displayName={
-              (client as unknown as { display_name?: string }).display_name
-            }
-            existingToken={
-              (client as unknown as { intake_token?: string }).intake_token
-            }
-            existingExpiresAt={
-              (client as unknown as { intake_token_expires_at?: string })
-                .intake_token_expires_at
-            }
-            submittedAt={
-              (client as unknown as { intake_submitted_at?: string })
-                .intake_submitted_at
-            }
-            lastSubmittedAt={
-              (client as unknown as { intake_last_submitted_at?: string })
-                .intake_last_submitted_at
-            }
-            finalisedAt={
-              (client as unknown as { intake_finalised_at?: string })
-                .intake_finalised_at
-            }
-          />
-
-          {/* v0.75 two-stage intake — after client submits pre-discovery,
-              coach flips the gate here to unlock the full form (same URL,
-              client returns to it and the deeper sections appear). */}
-          <UnlockFullIntakeButton
-            clientId={client.client_id}
-            intakeSubmittedAt={
-              (client as unknown as { intake_submitted_at?: string | null })
-                .intake_submitted_at
-            }
-            intakeFullUnlockedAt={
-              (client as unknown as { intake_full_unlocked_at?: string | null })
-                .intake_full_unlocked_at
-            }
-          />
-
-          {/* v0.75.3 coach-led physical exam panels. Derive latest finding
-              per kind + the client's intake self-report so panels can show
-              context. Both panels are collapsed by default; coach clicks
-              "Start test" / "Verify" to expand. */}
-          {(() => {
-            const c2 = client as unknown as {
-              physical_exam_findings?: Array<{
-                kind: string;
-                assessed_at: string;
-                result?: Record<string, unknown>;
-              }>;
-              lean_test_supine_hr?: string;
-              lean_test_standing_hr?: string;
-              lean_test_symptoms?: string[];
-              beighton_self_score?: string[];
-              date_of_birth?: string;
-            };
-            const findings = c2.physical_exam_findings ?? [];
-            const latestOf = (kind: string) =>
-              findings
-                .filter((f) => f.kind === kind)
-                .sort((a, b) => (b.assessed_at ?? "").localeCompare(a.assessed_at ?? ""))[0];
-            const latestLean = latestOf("nasa_lean_test");
-            const latestBeighton = latestOf("beighton");
-            const leanDelta = latestLean?.result?.delta_hr as number | undefined;
-            const leanPots = latestLean?.result?.pots_pattern as boolean | undefined;
-            const beightonScore = latestBeighton?.result?.score as number | undefined;
-            const ageYears = c2.date_of_birth
-              ? Math.floor(
-                  (Date.now() - new Date(c2.date_of_birth).getTime()) /
-                    (365.25 * 24 * 3600 * 1000),
-                )
-              : null;
-            return (
-              <>
-                <NasaLeanTestPanel
-                  clientId={client.client_id}
-                  selfReportSupineHr={c2.lean_test_supine_hr}
-                  selfReportStandingHr={c2.lean_test_standing_hr}
-                  selfReportSymptoms={c2.lean_test_symptoms}
-                  latestSavedAt={latestLean?.assessed_at}
-                  latestDeltaHr={leanDelta}
-                  latestPotsFlag={leanPots}
-                />
-                <BeightonVerifyPanel
-                  clientId={client.client_id}
-                  selfReportTicks={c2.beighton_self_score}
-                  latestSavedAt={latestBeighton?.assessed_at}
-                  latestScore={beightonScore}
-                  ageYears={ageYears}
-                />
-                {/* v0.75.7 — retrospective Tier 1 suspicions for legacy
-                    clients (submitted pre-v0.75.2). Deterministic
-                    inference, zero API cost. Hides when client has
-                    structured Tier 1 data OR no suspicions inferred. */}
-                {(() => {
-                  const inference = computeSuspectedSignals(
-                    client as unknown as Record<string, unknown>,
-                  );
-                  return (
-                    <TierOneSuspicionsPanel
-                      clientId={client.client_id}
-                      suspicions={inference.suspicions}
-                      hasStructuredTierOne={inference.has_structured_tier_one}
-                    />
-                  );
-                })()}
-              </>
-            );
-          })()}
-
-          {/* Identity editor moved into FmClientHeader.quickActions so
-              it's always visible under the client name. */}
-
-          {/* 🧠 Profile memory — five dietary / lifestyle fields the AI
-              learns about the client over time (via plan-chat) and that
-              the meal-plan letter respects as hard rules. Coach can
-              inline-edit any field. */}
-          <ClientMemoryPanel
-            clientId={client.client_id}
-            initial={{
-              dietary_preference: (client as unknown as { dietary_preference?: string }).dietary_preference,
-              foods_to_avoid: (client as unknown as { foods_to_avoid?: string }).foods_to_avoid,
-              non_negotiables: (client as unknown as { non_negotiables?: string }).non_negotiables,
-              reported_triggers: (client as unknown as { reported_triggers?: string }).reported_triggers,
-              family_history: (client as unknown as { family_history?: string }).family_history,
-              meal_plan_style: (
-                client as unknown as {
-                  meal_plan_style?: "detailed" | "principles" | "hybrid";
-                }
-              ).meal_plan_style,
-            }}
-            lastUpdatedAt={(client as unknown as { updated_at?: string }).updated_at}
-          />
-
-          {/* ⚖ Weight-loss goal — client-level config (persists across plan
-              revisions). Shows empty state until coach sets a goal; then
-              renders sparkline, 3-up stats, per-week overrides. */}
-          <WeightLossCard
-            clientId={client.client_id}
-            goal={
-              (client as unknown as { weight_loss?: WeightLossGoal })
-                .weight_loss
-            }
-            measurementsLog={
-              (client as unknown as {
-                measurements_log?: MeasurementEntry[];
-              }).measurements_log
-            }
-          />
-
-          {/* Sign-up status pill row — always available so the coach can
-              flip the decision later (e.g. client signs up after weeks
-              of deliberation). The bigger callout above only renders
-              when the decision is unset / pending. */}
-          {hasDiscoverySession && (
-            <div
-              style={{
-                padding: "10px 12px",
-                background: "var(--fm-surface)",
-                border: "1px solid var(--fm-border-light)",
-                borderRadius: "var(--fm-radius-md)",
-                display: "grid",
-                gap: 6,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 10.5,
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: 0.6,
-                  color: "var(--fm-text-tertiary)",
-                }}
-              >
-                Sign-up status
-              </div>
-              <EngagementPicker
-                clientId={client.client_id}
-                current={engagement}
-              />
-            </div>
-          )}
-
-          <FmPanel title="Active medications">
-            {medList.length === 0 ? (
-              <p
-                style={{
-                  fontSize: 12,
-                  color: "var(--fm-text-tertiary)",
-                  fontStyle: "italic",
-                  margin: 0,
-                }}
-              >
-                No medications recorded.
-              </p>
-            ) : (
-              <div style={{ display: "grid", gap: 4 }}>
-                {medList.map((m, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      fontSize: 12.5,
-                      padding: "5px 0",
-                      borderBottom:
-                        i < medList.length - 1
-                          ? "1px dashed var(--fm-border-light)"
-                          : "none",
-                    }}
-                  >
-                    {m}
+          {/* 📋 Intake — progress / insights / send & unlock / coach exam */}
+          <FmGroupedPanel
+            id="overview.intake"
+            icon="📋"
+            title="Intake"
+            tabs={[
+              {
+                id: "progress",
+                label: "Progress",
+                content: (
+                            <IntakeProgressCard
+                              clientId={client.client_id}
+                              firstName={(client.display_name ?? client.client_id).split(" ")[0]}
+                              intakeToken={
+                                (client as unknown as { intake_token?: string | null }).intake_token
+                              }
+                              intakeTokenExpiresAt={
+                                (client as unknown as { intake_token_expires_at?: string | null })
+                                  .intake_token_expires_at
+                              }
+                              intakeFirstOpenedAt={
+                                (client as unknown as { intake_first_opened_at?: string | null })
+                                  .intake_first_opened_at
+                              }
+                              intakeFormDraft={
+                                (client as unknown as { intake_form_draft?: Record<string, unknown> | null })
+                                  .intake_form_draft
+                              }
+                              intakeFormDraftSavedAt={
+                                (client as unknown as { intake_form_draft_saved_at?: string | null })
+                                  .intake_form_draft_saved_at
+                              }
+                              intakeSubmittedAt={
+                                (client as unknown as { intake_submitted_at?: string | null })
+                                  .intake_submitted_at
+                              }
+                              intakeLastSubmittedAt={
+                                (client as unknown as { intake_last_submitted_at?: string | null })
+                                  .intake_last_submitted_at
+                              }
+                              intakeFinalisedAt={
+                                (client as unknown as { intake_finalised_at?: string | null })
+                                  .intake_finalised_at
+                              }
+                              intakeRemindersSentAt={
+                                (client as unknown as { intake_reminders_sent_at?: string[] | null })
+                                  .intake_reminders_sent_at
+                              }
+                              intakeFullUnlockedAt={
+                                (client as unknown as { intake_full_unlocked_at?: string | null })
+                                  .intake_full_unlocked_at
+                              }
+                              intakeInsightsGeneratedAt={
+                                (
+                                  client as unknown as {
+                                    intake_insights?: { generated_at?: string | null } | null;
+                                  }
+                                ).intake_insights?.generated_at ?? null
+                              }
+                            />
+                ),
+              },
+              {
+                id: "insights",
+                label: "Insights",
+                content: (
+                            <IntakeInsightsCard
+                              clientId={client.client_id}
+                              initial={intakeInsights}
+                              submittedAt={
+                                (client as unknown as { intake_submitted_at?: string })
+                                  .intake_submitted_at ?? null
+                              }
+                            />
+                ),
+              },
+              {
+                id: "send",
+                label: "Send & unlock",
+                content: (
+                  <div style={{ display: "grid", gap: 12 }}>
+                              <SendIntakeFormButton
+                                clientId={client.client_id}
+                                mobileNumber={
+                                  (client as unknown as { mobile_number?: string }).mobile_number
+                                }
+                                displayName={
+                                  (client as unknown as { display_name?: string }).display_name
+                                }
+                                existingToken={
+                                  (client as unknown as { intake_token?: string }).intake_token
+                                }
+                                existingExpiresAt={
+                                  (client as unknown as { intake_token_expires_at?: string })
+                                    .intake_token_expires_at
+                                }
+                                submittedAt={
+                                  (client as unknown as { intake_submitted_at?: string })
+                                    .intake_submitted_at
+                                }
+                                lastSubmittedAt={
+                                  (client as unknown as { intake_last_submitted_at?: string })
+                                    .intake_last_submitted_at
+                                }
+                                finalisedAt={
+                                  (client as unknown as { intake_finalised_at?: string })
+                                    .intake_finalised_at
+                                }
+                              />
+                              <UnlockFullIntakeButton
+                                clientId={client.client_id}
+                                intakeSubmittedAt={
+                                  (client as unknown as { intake_submitted_at?: string | null })
+                                    .intake_submitted_at
+                                }
+                                intakeFullUnlockedAt={
+                                  (client as unknown as { intake_full_unlocked_at?: string | null })
+                                    .intake_full_unlocked_at
+                                }
+                                intakeInsightsGeneratedAt={
+                                  (
+                                    client as unknown as {
+                                      intake_insights?: { generated_at?: string | null } | null;
+                                    }
+                                  ).intake_insights?.generated_at ?? null
+                                }
+                              />
                   </div>
-                ))}
-              </div>
-            )}
-          </FmPanel>
-
-          <FmPanel title="Allergies & flags">
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-              {allergyChips.length === 0 ? (
-                <span
-                  style={{
-                    fontSize: 12,
-                    color: "var(--fm-text-tertiary)",
-                    fontStyle: "italic",
-                  }}
-                >
-                  None recorded
-                </span>
-              ) : (
-                allergyChips.map((a) => (
-                  <FmChip key={a} tone="warning">
-                    {a}
-                  </FmChip>
-                ))
-              )}
-              {mthfrSummary && <FmChip tone="secondary">MTHFR {mthfrSummary}</FmChip>}
-              {client.pregnancy_status &&
-                client.pregnancy_status !== "not_applicable" &&
-                client.pregnancy_status !== "not_pregnant" && (
-                  <FmChip tone="primary">
-                    {client.pregnancy_status.replace(/_/g, " ")}
-                  </FmChip>
-                )}
-              {client.lactation_started && <FmChip tone="primary">lactating</FmChip>}
-            </div>
-          </FmPanel>
-
-          <FmFivePillarsWithSendCheckIn
-            latest={latestPillars ?? null}
-            daysSinceLastEntry={daysSincePillars}
-            clientId={id}
+                ),
+              },
+              {
+                id: "exam",
+                label: "Coach exam",
+                content: (
+                  (() => {
+                              const c2 = client as unknown as {
+                                physical_exam_findings?: Array<{
+                                  kind: string;
+                                  assessed_at: string;
+                                  result?: Record<string, unknown>;
+                                }>;
+                                lean_test_supine_hr?: string;
+                                lean_test_standing_hr?: string;
+                                lean_test_symptoms?: string[];
+                                beighton_self_score?: string[];
+                                date_of_birth?: string;
+                              };
+                              const findings = c2.physical_exam_findings ?? [];
+                              const latestOf = (kind: string) =>
+                                findings
+                                  .filter((f) => f.kind === kind)
+                                  .sort((a, b) => (b.assessed_at ?? "").localeCompare(a.assessed_at ?? ""))[0];
+                              const latestLean = latestOf("nasa_lean_test");
+                              const latestBeighton = latestOf("beighton");
+                              const leanDelta = latestLean?.result?.delta_hr as number | undefined;
+                              const leanPots = latestLean?.result?.pots_pattern as boolean | undefined;
+                              const beightonScore = latestBeighton?.result?.score as number | undefined;
+                              const ageYears = c2.date_of_birth
+                                ? Math.floor(
+                                    (Date.now() - new Date(c2.date_of_birth).getTime()) /
+                                      (365.25 * 24 * 3600 * 1000),
+                                  )
+                                : null;
+                              // Default-collapse the three coach physical-exam panels under
+                              // a single `<details>` disclosure 2026-05-20. For most client
+                              // views these are advanced / situational — surfacing them all
+                              // at full height stacked ~600px of mostly-empty cards above
+                              // the fold. Coach opens the disclosure when she's actually
+                              // doing a Tier-1 / orthostatic exam. Existing test-result
+                              // captions inside each panel stay intact when open.
+                              const inference = computeSuspectedSignals(
+                                client as unknown as Record<string, unknown>,
+                              );
+                              const hasSavedExamData = !!(
+                                latestLean ||
+                                latestBeighton ||
+                                (inference.suspicions && inference.suspicions.length > 0)
+                              );
+                              return (
+                                <details
+                                  open={hasSavedExamData}
+                                  style={{
+                                    background: "var(--fm-surface)",
+                                    border: "1px solid var(--fm-border-light)",
+                                    borderRadius: "var(--fm-radius-md)",
+                                    padding: "10px 14px",
+                                  }}
+                                >
+                                  <summary
+                                    style={{
+                                      cursor: "pointer",
+                                      fontSize: 12,
+                                      fontWeight: 700,
+                                      color: "var(--fm-text-secondary)",
+                                      listStyle: "none",
+                                      display: "flex",
+                                      alignItems: "center",
+                                      gap: 8,
+                                    }}
+                                  >
+                                    <span>▾ Coach physical exam</span>
+                                    <span
+                                      style={{
+                                        fontSize: 11,
+                                        fontWeight: 500,
+                                        color: "var(--fm-text-tertiary)",
+                                      }}
+                                    >
+                                      NASA lean · Beighton · Tier-1 suspicions
+                                      {hasSavedExamData ? " — data on file" : ""}
+                                    </span>
+                                  </summary>
+                                  <div style={{ marginTop: 10, display: "grid", gap: 10 }}>
+                                    <NasaLeanTestPanel
+                                      clientId={client.client_id}
+                                      selfReportSupineHr={c2.lean_test_supine_hr}
+                                      selfReportStandingHr={c2.lean_test_standing_hr}
+                                      selfReportSymptoms={c2.lean_test_symptoms}
+                                      latestSavedAt={latestLean?.assessed_at}
+                                      latestDeltaHr={leanDelta}
+                                      latestPotsFlag={leanPots}
+                                    />
+                                    <BeightonVerifyPanel
+                                      clientId={client.client_id}
+                                      selfReportTicks={c2.beighton_self_score}
+                                      latestSavedAt={latestBeighton?.assessed_at}
+                                      latestScore={beightonScore}
+                                      ageYears={ageYears}
+                                    />
+                                    {/* v0.75.7 — retrospective Tier 1 suspicions for legacy
+                                        clients (submitted pre-v0.75.2). Deterministic
+                                        inference, zero API cost. Hides when client has
+                                        structured Tier 1 data OR no suspicions inferred. */}
+                                    <TierOneSuspicionsPanel
+                                      clientId={client.client_id}
+                                      suspicions={inference.suspicions}
+                                      hasStructuredTierOne={inference.has_structured_tier_one}
+                                    />
+                                  </div>
+                                </details>
+                              );
+                            })()
+                ),
+              },
+            ]}
           />
 
-          <MemoryPanel
-            dietaryPreference={client.dietary_preference}
-            foodsToAvoid={client.foods_to_avoid}
-            nonNegotiables={client.non_negotiables}
-            reportedTriggers={
-              (client as { reported_triggers?: string }).reported_triggers
-            }
+          {/* 🌿 Client state — five pillars / weight loss / memory */}
+          <FmGroupedPanel
+            id="overview.state"
+            icon="🌿"
+            title="Client state"
+            tabs={[
+              {
+                id: "pillars",
+                label: "Five Pillars",
+                content: (
+                            <FmFivePillarsWithSendCheckIn
+                              latest={latestPillars ?? null}
+                              daysSinceLastEntry={daysSincePillars}
+                              clientId={id}
+                            />
+                ),
+              },
+              {
+                id: "weight",
+                label: "Weight loss",
+                content: (
+                            <WeightLossCard
+                              clientId={client.client_id}
+                              goal={
+                                (client as unknown as { weight_loss?: WeightLossGoal })
+                                  .weight_loss
+                              }
+                              measurementsLog={
+                                (client as unknown as {
+                                  measurements_log?: MeasurementEntry[];
+                                }).measurements_log
+                              }
+                              currentWeightKg={
+                                (client as unknown as { weight_now_kg?: number | null })
+                                  .weight_now_kg ?? null
+                              }
+                            />
+                ),
+              },
+              {
+                id: "memory",
+                label: "Memory",
+                content: (
+                            <ClientMemoryPanel
+                              clientId={client.client_id}
+                              initial={{
+                                dietary_preference: (client as unknown as { dietary_preference?: string }).dietary_preference,
+                                animal_derived_supplements_ok: (client as unknown as { animal_derived_supplements_ok?: string }).animal_derived_supplements_ok,
+                                foods_to_avoid: (client as unknown as { foods_to_avoid?: string }).foods_to_avoid,
+                                non_negotiables: (client as unknown as { non_negotiables?: string }).non_negotiables,
+                                reported_triggers: (client as unknown as { reported_triggers?: string }).reported_triggers,
+                                family_history: (client as unknown as { family_history?: string }).family_history,
+                                meal_plan_style: (
+                                  client as unknown as {
+                                    meal_plan_style?: "detailed" | "principles" | "hybrid";
+                                  }
+                                ).meal_plan_style,
+                              }}
+                              lastUpdatedAt={(client as unknown as { updated_at?: string }).updated_at}
+                            />
+                ),
+              },
+            ]}
           />
+
+          {/* 📞 Contact & engagement — plain stack, no tabs */}
+          <FmGroupedPanel id="overview.contact" icon="📞" title="Contact & engagement">
+                      <FmContactPanel pinned={pinned} more={more} />
+                      {true && (
+                        <div
+                          style={{
+                            padding: "10px 12px",
+                            background: "var(--fm-surface)",
+                            border: "1px solid var(--fm-border-light)",
+                            borderRadius: "var(--fm-radius-md)",
+                            display: "grid",
+                            gap: 6,
+                          }}
+                        >
+                          <div
+                            style={{
+                              fontSize: 11,
+                              fontWeight: 700,
+                              textTransform: "uppercase",
+                              letterSpacing: 0.6,
+                              color: "var(--fm-text-tertiary)",
+                            }}
+                          >
+                            Sign-up status
+                          </div>
+                          <EngagementPicker
+                            clientId={client.client_id}
+                            current={engagement}
+                          />
+                        </div>
+                      )}
+          </FmGroupedPanel>
+
+          {/* ⚠ Clinical flags — meds + allergies. Each already hides
+              itself when empty (Wave F.8); kept as standalone
+              conditional panels rather than a forced group. */}
+                    {medList.length > 0 && (
+                      <FmPanel title="Active medications">
+                        <div style={{ display: "grid", gap: 4 }}>
+                          {medList.map((m, i) => (
+                            <div
+                              key={i}
+                              style={{
+                                fontSize: 13,
+                                padding: "5px 0",
+                                borderBottom:
+                                  i < medList.length - 1
+                                    ? "1px dashed var(--fm-border-light)"
+                                    : "none",
+                              }}
+                            >
+                              {m}
+                            </div>
+                          ))}
+                        </div>
+                      </FmPanel>
+                    )}
+                    {(() => {
+                      const showsContext =
+                        !!mthfrSummary ||
+                        (client.pregnancy_status &&
+                          client.pregnancy_status !== "not_applicable" &&
+                          client.pregnancy_status !== "not_pregnant") ||
+                        !!client.lactation_started;
+                      if (allergyChips.length === 0 && !showsContext) return null;
+                      return (
+                        <FmPanel title="Allergies & flags">
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                            {allergyChips.map((a) => (
+                              <FmChip key={a} tone="warning">
+                                {a}
+                              </FmChip>
+                            ))}
+                            {mthfrSummary && (
+                              <FmChip tone="secondary">MTHFR {mthfrSummary}</FmChip>
+                            )}
+                            {client.pregnancy_status &&
+                              client.pregnancy_status !== "not_applicable" &&
+                              client.pregnancy_status !== "not_pregnant" && (
+                                <FmChip tone="primary">
+                                  {client.pregnancy_status.replace(/_/g, " ")}
+                                </FmChip>
+                              )}
+                            {client.lactation_started && (
+                              <FmChip tone="primary">lactating</FmChip>
+                            )}
+                          </div>
+                        </FmPanel>
+                      );
+                    })()}
         </div>
       </div>
 

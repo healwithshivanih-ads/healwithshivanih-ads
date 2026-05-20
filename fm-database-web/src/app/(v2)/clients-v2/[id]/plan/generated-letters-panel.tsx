@@ -143,7 +143,7 @@ export function GeneratedLettersPanel({ clientId, planSlug, communicateHref }: P
               display: "flex",
               alignItems: "baseline",
               gap: 8,
-              fontSize: 11.5,
+              fontSize: 12,
               color: "var(--fm-text-tertiary, #9ca3af)",
               flexWrap: "wrap",
             }}
@@ -158,7 +158,7 @@ export function GeneratedLettersPanel({ clientId, planSlug, communicateHref }: P
               href={communicateHref}
               style={{
                 marginLeft: "auto",
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "var(--fm-text-secondary)",
                 textDecoration: "none",
                 border: "1px dashed var(--fm-border)",

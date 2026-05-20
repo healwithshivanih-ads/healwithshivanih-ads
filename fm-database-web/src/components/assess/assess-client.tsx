@@ -27,6 +27,7 @@ import {
 } from "@/lib/server-actions/assess";
 import { getMindMapPathways, peekSubgraphAction, type SubgraphReadiness } from "@/lib/server-actions/mindmap";
 import { IFMMatrixCard } from "./ifm-matrix-card";
+import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { kindLabel } from "@/lib/fmdb/kinds";
 
 /** Map a singular internal kind name (topic/mechanism/symptom/...) to a
@@ -1021,7 +1022,7 @@ export function SuggestionsView({
             <span style={{ fontSize: 14 }}>Δ</span>
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: 0.8,
@@ -1032,7 +1033,7 @@ export function SuggestionsView({
             </span>
             <span
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary, #999)",
                 fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
               }}
@@ -1168,7 +1169,7 @@ export function SuggestionsView({
         >
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: 0.8,
@@ -1233,7 +1234,7 @@ export function SuggestionsView({
                         <span
                           style={{
                             marginLeft: 8,
-                            fontSize: 9.5,
+                            fontSize: 10,
                             fontWeight: 600,
                             padding: "1px 7px",
                             borderRadius: 999,
@@ -1273,7 +1274,7 @@ export function SuggestionsView({
                   <span
                     style={{
                       fontFamily: "var(--fm-font-mono, ui-monospace, monospace)",
-                      fontSize: 10.5,
+                      fontSize: 11,
                       fontWeight: 700,
                       color: barColor,
                       flexShrink: 0,
@@ -1296,7 +1297,7 @@ export function SuggestionsView({
                     <div
                       style={{
                         marginTop: 6,
-                        fontSize: 11.5,
+                        fontSize: 12,
                         color: "var(--fm-text-tertiary, #999)",
                         fontStyle: "italic",
                       }}
@@ -1305,7 +1306,7 @@ export function SuggestionsView({
                     </div>
                   )}
                   {d.supporting_evidence && d.supporting_evidence.length > 0 && (
-                    <ul style={{ marginTop: 6, paddingLeft: 18, fontSize: 11.5 }}>
+                    <ul style={{ marginTop: 6, paddingLeft: 18, fontSize: 12 }}>
                       {d.supporting_evidence.map((e, i) => (
                         <li key={i}>{e}</li>
                       ))}
@@ -1908,7 +1909,7 @@ export function SuggestionsView({
                 display: "flex",
                 alignItems: "baseline",
                 gap: 8,
-                fontSize: 12.5,
+                fontSize: 13,
               }}
             >
               <span style={{ fontSize: 16 }}>✅</span>
@@ -2069,7 +2070,7 @@ export function SuggestionsView({
           </div>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               color: "var(--fm-text-tertiary, #999)",
               lineHeight: 1.55,
             }}
@@ -3179,7 +3180,7 @@ export function PlanBriefCard({
                 <div className="flex flex-wrap gap-1">
                   {selectedTemplate.supplements.slice(0, 6).map((s) => (
                     <span key={s.supplement_slug} className="text-[10px] bg-white/70 border border-indigo-200 rounded px-1.5 py-0.5">
-                      {s.display_name}
+                      {stripBrand(s.display_name)}
                     </span>
                   ))}
                   {selectedTemplate.supplements.length > 6 && (

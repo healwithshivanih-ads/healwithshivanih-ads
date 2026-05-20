@@ -73,7 +73,7 @@ export function FmInboundMessagesBanner({
             {messages.length} new WhatsApp message{messages.length === 1 ? "" : "s"}
             <span
               style={{
-                fontSize: 9.5,
+                fontSize: 10,
                 marginLeft: 8,
                 padding: "1px 6px",
                 borderRadius: 3,
@@ -87,7 +87,7 @@ export function FmInboundMessagesBanner({
               last {windowDays} days
             </span>
           </div>
-          <div style={{ fontSize: 11.5, color: "var(--fm-text-secondary)" }}>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
             From {clients.length} client{clients.length === 1 ? "" : "s"}
           </div>
         </div>
@@ -98,7 +98,7 @@ export function FmInboundMessagesBanner({
             color: "#fff",
             border: 0,
             padding: "6px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             borderRadius: "var(--fm-radius-sm)",
             textDecoration: "none",

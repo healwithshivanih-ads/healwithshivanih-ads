@@ -88,7 +88,7 @@ export function FmFivePillars({
             background: "rgba(247, 147, 30, 0.08)",
             border: "1px solid rgba(247, 147, 30, 0.25)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 11.5,
+            fontSize: 12,
             color: "#B8770A",
             fontWeight: 600,
             display: "flex",
@@ -168,7 +168,7 @@ export function FmFivePillars({
                   border: "1px solid var(--fm-border)",
                   color: "var(--fm-text-primary)",
                   padding: "5px 11px",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   fontWeight: 600,
                   borderRadius: "var(--fm-radius-sm)",
                   cursor: "pointer",
@@ -191,7 +191,7 @@ export function FmFivePillars({
                 background: "var(--fm-primary)",
                 color: "#fff",
                 padding: "5px 11px",
-                fontSize: 11.5,
+                fontSize: 12,
                 fontWeight: 700,
                 borderRadius: "var(--fm-radius-sm)",
                 textDecoration: "none",
@@ -213,7 +213,7 @@ export function FmFivePillars({
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                fontSize: 12.5,
+                fontSize: 13,
                 padding: "5px 0",
                 borderBottom: "1px dashed var(--fm-border-light)",
               }}
@@ -266,7 +266,7 @@ export function FmFivePillars({
         <p
           style={{
             marginTop: 10,
-            fontSize: 10.5,
+            fontSize: 11,
             color: "var(--fm-text-tertiary)",
             fontStyle: "italic",
           }}

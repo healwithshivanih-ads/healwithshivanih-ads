@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PROTOCOL_TEMPLATES, type ProtocolTemplate } from "@/lib/fmdb/protocol-templates";
 import type { Plan } from "@/lib/fmdb/types";
+import { stripBrand } from "@/lib/fmdb/supplement-display";
 
 interface Props {
   onApply: (merged: Partial<Plan>) => void;
@@ -218,7 +219,7 @@ export function ProtocolTemplatePicker({ onApply, disabled }: Props) {
                   <div className="font-medium mb-1">Supplements ({preview.supplements.length})</div>
                   <ul className="space-y-0.5 text-muted-foreground">
                     {preview.supplements.map((s) => (
-                      <li key={s.supplement_slug}>• {s.display_name} — {s.dose_display}</li>
+                      <li key={s.supplement_slug}>• {stripBrand(s.display_name)} — {s.dose_display}</li>
                     ))}
                   </ul>
                 </div>

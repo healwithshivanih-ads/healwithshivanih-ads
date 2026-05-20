@@ -57,7 +57,7 @@ def ensure_layout(root: Path) -> None:
     clients/<id>.yaml to clients/<id>/client.yaml with empty files/ + sessions/
     subdirs. Idempotent: safe to call on every app start.
     """
-    for sub in ("clients", "drafts", "ready", "published", "superseded", "revoked"):
+    for sub in ("clients", "drafts", "ready", "published", "superseded", "revoked", "graduated"):
         (root / sub).mkdir(parents=True, exist_ok=True)
     _migrate_flat_clients(root)
 
@@ -93,6 +93,7 @@ _STATUS_DIR: dict[PlanStatus, str] = {
     PlanStatus.published: "published",
     PlanStatus.superseded: "superseded",
     PlanStatus.revoked: "revoked",
+    PlanStatus.graduated: "graduated",
 }
 
 
@@ -315,7 +316,7 @@ def _plan_candidate_paths(root: Path, slug: str) -> Iterable[Path]:
         if p.exists():
             yield p
     # Versioned buckets
-    for bucket in ("published", "superseded", "revoked"):
+    for bucket in ("published", "superseded", "revoked", "graduated"):
         d = root / bucket
         if not d.exists():
             continue
@@ -358,7 +359,7 @@ def list_plans(root: Path) -> list[Plan]:
                 print(f"WARN: skipping {path.name}: {e}", file=sys.stderr)
 
     # versioned buckets — group by slug, take highest version
-    for bucket in ("published", "superseded", "revoked"):
+    for bucket in ("published", "superseded", "revoked", "graduated"):
         d = root / bucket
         if not d.exists():
             continue

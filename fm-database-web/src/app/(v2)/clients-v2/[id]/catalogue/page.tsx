@@ -345,7 +345,7 @@ export default async function ClientCataloguePage({
                 <span
                   key={cond}
                   style={{
-                    fontSize: 11.5,
+                    fontSize: 12,
                     padding: "3px 9px",
                     background: "var(--fm-bg-warm, #fff5f0)",
                     border: "1px dashed var(--fm-border)",
@@ -442,7 +442,7 @@ function CatalogueSection({
             {it.summary && (
               <div
                 style={{
-                  fontSize: 11.5,
+                  fontSize: 12,
                   color: "var(--fm-text-secondary)",
                   marginTop: 5,
                   lineHeight: 1.4,
@@ -457,7 +457,7 @@ function CatalogueSection({
             )}
             <div
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-primary)",
                 fontWeight: 600,
                 marginTop: 7,

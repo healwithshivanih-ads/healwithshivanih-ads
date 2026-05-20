@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { loadActivePlanItemsAction, type PlanSupplementItem, type PlanPracticeItem } from "@/lib/server-actions/clients";
 import { saveSessionAction, appendCheckInToPlanAction } from "@/lib/server-actions/assess";
+import { supplementDisplayName } from "@/lib/fmdb/supplement-display";
 
 interface Props {
   clientId: string;
@@ -46,7 +47,7 @@ function SupplementRow({
   onStatus: (s: SuppStatus) => void;
   onNote: (n: string) => void;
 }) {
-  const name = item.supplement_slug.replace(/-/g, " ");
+  const name = supplementDisplayName(item);
   return (
     <div className="rounded-lg border bg-white p-3 space-y-2">
       <div className="text-xs font-semibold">
@@ -167,7 +168,7 @@ export function ProtocolCheckinPanel({ clientId, planSlug, onSaved }: Props) {
           const st = suppAdherence[i];
           const note = suppNotes[i];
           const emoji = st === "still_taking" ? "✅" : st === "sometimes" ? "🔄" : st === "side_effects" ? "⚠️" : st === "stopped" ? "❌" : "—";
-          const name = s.supplement_slug.replace(/-/g, " ");
+          const name = supplementDisplayName(s);
           const detail = [s.dose, s.timing].filter(Boolean).join(", ");
           lines.push(`${emoji} ${name}${detail ? ` (${detail})` : ""}${note ? `: ${note}` : ""}`);
         });

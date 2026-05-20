@@ -4,7 +4,12 @@
  *
  * The variant `highlight` paints the number primary-orange when there's
  * something the coach needs to attend to (e.g. > 0 in "Need attention").
+ *
+ * Pass `href` to make the whole tile a clickable link (Server-Component
+ * safe — uses next/link). Pass `onClick` for a client-side handler. Both
+ * apply `.clickable` styling.
  */
+import Link from "next/link";
 
 const STYLES = `
 .fm-stat-tile {
@@ -49,6 +54,15 @@ const STYLES = `
   font-size: 11px;
   font-weight: 600;
   margin-top: 2px;
+  /* Clamp long delta strings to 2 lines so a verbose "why" doesn't
+     blow out the tile's height (and through it the page-header column
+     width). Coach bug 2026-05-20: a 45-marker labs list ended up here. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  word-break: break-word;
 }
 .fm-stat-tile-delta.up    { color: var(--fm-secondary); }
 .fm-stat-tile-delta.down  { color: var(--fm-success); }
@@ -64,14 +78,19 @@ export interface FmStatTileProps {
   delta?: { text: React.ReactNode; trend: "up" | "down" | "flat" | "warn" };
   highlight?: boolean;
   onClick?: () => void;
+  /** When set, renders the tile as a next/link. Server-component safe.
+   *  Mutually exclusive with onClick (if both set, onClick wins). */
+  href?: string;
+  /** Optional native title tooltip — useful for breakdown info. */
+  title?: string;
 }
 
-export function FmStatTile({ label, value, unit, delta, highlight, onClick }: FmStatTileProps) {
+export function FmStatTile({ label, value, unit, delta, highlight, onClick, href, title }: FmStatTileProps) {
   const classes = ["fm-stat-tile"];
   if (highlight) classes.push("highlight");
-  if (onClick) classes.push("clickable");
-  return (
-    <div className={classes.join(" ")} onClick={onClick}>
+  if (onClick || href) classes.push("clickable");
+  const inner = (
+    <>
       <style>{STYLES}</style>
       <div className="fm-stat-tile-label">{label}</div>
       <div className="fm-stat-tile-value">
@@ -84,6 +103,23 @@ export function FmStatTile({ label, value, unit, delta, highlight, onClick }: Fm
           {delta.text}
         </div>
       )}
+    </>
+  );
+  if (href && !onClick) {
+    return (
+      <Link
+        href={href}
+        className={classes.join(" ")}
+        title={title}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        {inner}
+      </Link>
+    );
+  }
+  return (
+    <div className={classes.join(" ")} onClick={onClick} title={title}>
+      {inner}
     </div>
   );
 }

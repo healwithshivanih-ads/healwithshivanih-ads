@@ -296,7 +296,17 @@ export function IntakeForm({
   const [healthParsing, setHealthParsing] = useState(false);
 
   // 1 · Presenting picture
-  const [chiefComplaint, setChiefComplaint] = useState("");
+  // Chief complaint pre-fills from the most recent discovery session so
+  // the coach doesn't re-type what was captured 15 minutes ago. Coach
+  // can still edit freely; the "✨ Pre-filled" badge in the section
+  // header tells her it came from discovery (vs typed fresh).
+  const discoveryChiefConcernSeed = discoveryContext?.chief_concern ?? "";
+  const [chiefComplaint, setChiefComplaint] = useState(
+    discoveryChiefConcernSeed,
+  );
+  const chiefComplaintFromDiscovery =
+    discoveryChiefConcernSeed.length > 0 &&
+    chiefComplaint === discoveryChiefConcernSeed;
   const [hpi, setHpi] = useState("");
   // Seed transcript notes with discovery-call context so the AI synthesis
   // pass has the chief concern + labs requested before this intake.
@@ -785,7 +795,7 @@ export function IntakeForm({
             borderRadius: "var(--fm-radius-sm)",
             padding: "10px 14px",
             marginBottom: 14,
-            fontSize: 12.5,
+            fontSize: 13,
             display: "grid",
             gap: 6,
           }}
@@ -817,7 +827,7 @@ export function IntakeForm({
               <summary
                 style={{
                   cursor: "pointer",
-                  fontSize: 11.5,
+                  fontSize: 12,
                   color: "var(--fm-text-secondary)",
                 }}
               >
@@ -861,7 +871,35 @@ export function IntakeForm({
             />
           )}
         </FmField>
-        <FmField label="Chief complaint">
+        <FmField
+          label={
+            chiefComplaintFromDiscovery ? (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                Chief complaint
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    padding: "2px 6px",
+                    background: "rgba(184, 119, 10, 0.12)",
+                    color: "#B8770A",
+                    border: "1px solid rgba(184, 119, 10, 0.30)",
+                    borderRadius: "var(--fm-radius-pill)",
+                  }}
+                >
+                  ✨ from Discovery
+                </span>
+              </span>
+            ) : (
+              "Chief complaint"
+            )
+          }
+          hint={
+            chiefComplaintFromDiscovery
+              ? "Carried forward from the discovery call — edit if today's framing is different."
+              : undefined
+          }
+        >
           {({ id }) => (
             <FmTextarea
               id={id}
@@ -887,7 +925,7 @@ export function IntakeForm({
           <summary
             style={{
               cursor: "pointer",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 600,
               color: "var(--fm-text-secondary)",
               padding: "4px 0",
@@ -1155,7 +1193,7 @@ export function IntakeForm({
                   "linear-gradient(135deg, rgba(243,156,18,0.10), rgba(247,147,30,0.06))",
                 border: "1.5px solid rgba(243,156,18,0.35)",
                 borderRadius: "var(--fm-radius-md)",
-                fontSize: 11.5,
+                fontSize: 12,
               }}
             >
               <div
@@ -1173,7 +1211,7 @@ export function IntakeForm({
                 {depletionMatches.length === 1 ? "" : "s"} flagged
                 <span
                   style={{
-                    fontSize: 9.5,
+                    fontSize: 10,
                     padding: "1px 6px",
                     borderRadius: 3,
                     background: "rgba(0,0,0,0.06)",
@@ -1223,7 +1261,7 @@ export function IntakeForm({
               <div
                 style={{
                   marginTop: 6,
-                  fontSize: 10.5,
+                  fontSize: 11,
                   color: "var(--fm-text-tertiary)",
                   fontStyle: "italic",
                 }}
@@ -1435,7 +1473,7 @@ export function IntakeForm({
                     background: "var(--fm-surface)",
                     border: "1px solid var(--fm-border)",
                     borderRadius: "var(--fm-radius-sm)",
-                    fontSize: 12.5,
+                    fontSize: 13,
                     fontFamily: "inherit",
                     outline: "none",
                     width: "100%",
@@ -1460,7 +1498,7 @@ export function IntakeForm({
                     background: "var(--fm-surface)",
                     border: "1px solid var(--fm-border)",
                     borderRadius: "var(--fm-radius-sm)",
-                    fontSize: 12.5,
+                    fontSize: 13,
                     fontFamily: "inherit",
                     outline: "none",
                     width: "100%",
@@ -1520,7 +1558,7 @@ export function IntakeForm({
                     background: "var(--fm-surface)",
                     border: "1px solid var(--fm-border)",
                     borderRadius: "var(--fm-radius-sm)",
-                    fontSize: 12.5,
+                    fontSize: 13,
                     fontFamily: "inherit",
                     outline: "none",
                     width: "100%",
@@ -1607,7 +1645,7 @@ export function IntakeForm({
                   background: "var(--fm-surface)",
                   border: "1px solid var(--fm-border)",
                   borderRadius: "var(--fm-radius-sm)",
-                  fontSize: 12.5,
+                  fontSize: 13,
                   color: "var(--fm-text-primary)",
                   outline: "none",
                   fontFamily: "inherit",
@@ -1657,7 +1695,7 @@ export function IntakeForm({
             background: "var(--fm-surface)",
             border: "1px dashed var(--fm-border)",
             borderRadius: "var(--fm-radius-sm)",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 600,
             color: "var(--fm-text-secondary)",
             cursor: "pointer",
@@ -1916,7 +1954,7 @@ export function IntakeForm({
                 setHealthText("");
               }}
               style={{
-                fontSize: 11.5,
+                fontSize: 12,
                 color: "var(--fm-text-tertiary)",
                 background: "transparent",
                 border: 0,
@@ -2270,7 +2308,7 @@ function FoodJournalUploadSection({
             <span
               key={name}
               style={{
-                fontSize: 11.5,
+                fontSize: 12,
                 padding: "4px 10px",
                 background: "rgba(46, 204, 113, 0.10)",
                 color: "var(--fm-success)",
@@ -2338,7 +2376,7 @@ function HealthDataPreview({
         <div style={{ marginBottom: 8 }}>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               color: "var(--fm-text-secondary)",
               marginBottom: 4,
@@ -2369,7 +2407,7 @@ function HealthDataPreview({
         <div style={{ marginBottom: 8 }}>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               color: "var(--fm-text-secondary)",
               marginBottom: 4,
@@ -2400,7 +2438,7 @@ function HealthDataPreview({
         <div style={{ marginBottom: 8 }}>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               color: "var(--fm-text-secondary)",
               marginBottom: 4,
@@ -2431,7 +2469,7 @@ function HealthDataPreview({
         <div style={{ marginBottom: 8 }}>
           <div
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: 700,
               color: "var(--fm-text-secondary)",
               marginBottom: 4,

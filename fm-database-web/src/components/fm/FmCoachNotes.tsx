@@ -549,7 +549,7 @@ function HazardLine({
         borderLeft: `3px solid ${palette.bar}`,
         borderRadius: "0 4px 4px 0",
         margin: "6px 0 8px",
-        fontSize: 12.5,
+        fontSize: 13,
         lineHeight: 1.55,
         color: palette.ink,
         fontWeight: 500,
@@ -617,7 +617,7 @@ function SectionBlock({
                 style={{
                   margin: "0 0 10px 0",
                   paddingLeft: 18,
-                  fontSize: 12.5,
+                  fontSize: 13,
                   lineHeight: 1.65,
                   color: "var(--fm-text-primary, #1A1A1A)",
                 }}
@@ -678,7 +678,7 @@ function SectionBlock({
               key={i}
               style={{
                 margin: "0 0 10px 0",
-                fontSize: 12.5,
+                fontSize: 13,
                 lineHeight: 1.65,
                 color: "var(--fm-text-primary, #1A1A1A)",
                 maxWidth: "64ch",
@@ -794,7 +794,7 @@ export function FmCoachNotes({
             display: "flex",
             alignItems: "center",
             gap: 12,
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-tertiary, #999)",
           }}
         >
@@ -812,7 +812,7 @@ export function FmCoachNotes({
             style={{
               marginLeft: "auto",
               padding: "5px 12px",
-              fontSize: 11.5,
+              fontSize: 12,
               fontWeight: 700,
               background: "var(--fm-surface, #fff)",
               border: "1px solid var(--fm-border, #E8E8E8)",

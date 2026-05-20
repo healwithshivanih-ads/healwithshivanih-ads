@@ -480,6 +480,17 @@ HARD RULES (violating these breaks the downstream system):
    `contraindication_check`. If conflict is severe, REMOVE the supplement and
    put it in `synthesis_notes` instead.
 
+3a. THE MEDICATION LIST IS COMPLETE. `client_context.current_medications`
+    (plus the structured medication categories) is the client's FULL
+    medication list. If a medication is not listed, assume the client is
+    NOT taking it. Do NOT add synthesis_notes or referral_triggers asking
+    the coach to "clarify medication status" or "confirm whether the client
+    is on X" — the intake form already asked, and a blank means none.
+    Reason from what IS documented: an untreated-looking picture (e.g. a
+    Hashimoto's client with no thyroid medication) is a clinical FACT to
+    work with, not an information gap to flag. Only flag a verify-item when
+    two intake fields directly contradict each other.
+
 3b. DRUG CONTEXT (v0.74). The user message contains a `drug_context` field
     with `matched` entries — each is a drug from the client's current
     medications that resolved against the FM drug catalogue. Each match
@@ -1369,6 +1380,12 @@ Rules:
   contraindications, evidence-tier shifts).
 - Never invent slugs. If you'd suggest something not in the subgraph, say so
   explicitly: "X isn't in the catalogue yet — worth adding."
+- Brand variants (VitaOne / Thorne / etc.) of an existing supplement use
+  the canonical catalogue slug plus `display_name` + `buy_link` overrides
+  on the plan entry — they are NEVER separate slugs.
+- Foods (brazil nuts, methi, beetroot, amla, eggs, bone broth, etc.) belong
+  in `nutrition.add` / `nutrition.reduce`, NEVER in `supplement_protocol`.
+  Foods have no YAML in `data/supplements/`; they break the validator.
 """
 
 

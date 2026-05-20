@@ -84,23 +84,34 @@ ASK what specifically. If she gives a clear edit, queue it.
 SYSTEM_FINALISE = """\
 You are a health coach assistant.
 
-You are in FINALISE mode. The coach has built up a list of edits in the
-chat above (the <pending> block). Now apply EVERY item in that list to
-the current letter and output the complete rewritten document.
+You are in FINALISE mode. The coach wants her edits applied to the letter
+NOW. Apply every edit she asked for and output the complete rewritten
+document.
+
+WHERE THE EDITS ARE — apply edits from ANY of these, whichever are present:
+  (a) a <pending> block earlier in the chat (a built-up edit queue), AND/OR
+  (b) edit instructions stated directly in the coach's chat messages —
+      including her most recent message.
+A <pending> block is OPTIONAL. If there isn't one, the coach's plain-text
+messages ARE the edit list — apply them. NEVER ask the coach to re-state
+or "share the list of" edits — you can already see them in the conversation.
 
 RULES:
-1. Apply ALL pending changes in one pass.
+1. Apply EVERY edit the coach asked for, in one pass.
 2. Always output the COMPLETE updated letter (not just the changed
    sections). Preserve EVERYTHING the coach didn't ask you to change.
 3. Maintain the same warm, friendly, jargon-free tone.
 4. Preserve all supplement links, recipe footnotes, brand recommendations,
    and start-date buttons exactly unless explicitly told otherwise.
-5. Respect dietary preferences (vegetarian, Jain, foods_to_avoid). If a
-   queued change would violate one, skip THAT change and list it under
-   <skipped>.
-6. After the document, write a 1–3 sentence summary of what changed.
+5. Respect dietary preferences (vegetarian, Jain, eggetarian, vegan,
+   foods_to_avoid). If a requested change would violate one, skip THAT
+   change and name it in the <reply>.
+6. If — and only if — there is genuinely no edit instruction anywhere in
+   the conversation, return the letter UNCHANGED inside <document> and say
+   so in <reply>. You must ALWAYS emit a <document> block; never refuse.
+7. After the document, write a 1–3 sentence summary of what changed.
 
-Output format — use these exact tags, nothing outside them:
+Output format — use these exact tags, ALWAYS including <document>:
 <document>
 [complete updated letter in Markdown]
 </document>
@@ -198,18 +209,28 @@ def main():
 
     # Add the new request
     if mode == "finalise":
-        # No user message needed — the queued edits live in history.
-        # Inject an explicit "apply all" instruction so the model knows
-        # to commit now, not keep discussing.
-        messages.append({
-            "role": "user",
-            "content": (
-                "Apply ALL the pending changes in the <pending> block above "
-                "to the document and return the full rewritten letter. Use "
-                "the <document>...</document> envelope. After the document, "
-                "summarise what changed in <reply>...</reply>."
-            ),
-        })
+        # The coach may have typed a direct edit in the SAME box and hit
+        # Apply (the UI defaults to finalise mode) — that message must NOT
+        # be discarded. It IS the edit to apply. Include it, plus any
+        # edits queued earlier in the chat.
+        if message:
+            apply_instr = (
+                f"{message}\n\n"
+                "Apply this edit — together with any other edits I asked "
+                "for earlier in this chat (a <pending> block if present, "
+                "otherwise my plain messages) — to the document. Return the "
+                "FULL rewritten letter in <document>...</document>, then "
+                "summarise in <reply>...</reply>."
+            )
+        else:
+            apply_instr = (
+                "Apply every edit I asked for in this chat — the <pending> "
+                "block above if there is one, otherwise the edits stated "
+                "directly in my messages — to the document. Return the FULL "
+                "rewritten letter in <document>...</document>, then summarise "
+                "in <reply>...</reply>."
+            )
+        messages.append({"role": "user", "content": apply_instr})
     else:
         messages.append({"role": "user", "content": message})
 

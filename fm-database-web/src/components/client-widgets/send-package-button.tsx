@@ -199,7 +199,13 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName,
   // Save-to-profile is opt-in now (was silent auto-save before). Coach
   // sees a contextual checkbox when the typed To differs from what's on
   // file, and explicitly confirms before client.yaml is overwritten.
-  const [saveAsClientEmail, setSaveAsClientEmail] = useState<boolean>(false);
+  // Default true when the client has NO email on file yet — coach rule:
+  // "when an email is sent and no email on file, give the option to
+  // save it." When email IS on file we default false so a typo can't
+  // overwrite the canonical address without an explicit tick.
+  const [saveAsClientEmail, setSaveAsClientEmail] = useState<boolean>(
+    !currentClientEmail,
+  );
   const [emailSubject, setEmailSubject] = useState("");
   const [emailIntro, setEmailIntro] = useState(
     `Hi ${clientName?.split(" ")[0] ?? "there"},\n\nPlease find your personalised plan attached below. Let me know if you have any questions.\n\nWith care,\nShivani`

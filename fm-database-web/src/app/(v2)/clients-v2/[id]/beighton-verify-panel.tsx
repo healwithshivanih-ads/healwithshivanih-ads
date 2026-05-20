@@ -134,7 +134,7 @@ export function BeightonVerifyPanel({
       >
         <span style={{ fontSize: 16 }}>🦋</span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 12.5, fontWeight: 700 }}>Beighton verify</div>
+          <div style={{ fontSize: 13, fontWeight: 700 }}>Beighton verify</div>
           {latestSavedAt && latestScore != null ? (
             <div style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
               Last: {new Date(latestSavedAt).toLocaleDateString()} · {latestScore}/9
@@ -152,7 +152,7 @@ export function BeightonVerifyPanel({
           onClick={() => setOpen(true)}
           style={{
             padding: "5px 12px",
-            fontSize: 11.5,
+            fontSize: 12,
             fontWeight: 700,
             background: "transparent",
             color: "var(--fm-primary)",
@@ -336,7 +336,7 @@ function CheckboxRow({
         alignItems: "center",
         gap: 6,
         padding: "4px 10px",
-        fontSize: 11.5,
+        fontSize: 12,
         fontWeight: 600,
         background: active ? "var(--fm-primary)" : "transparent",
         color: active ? "#fff" : "var(--fm-text-secondary)",

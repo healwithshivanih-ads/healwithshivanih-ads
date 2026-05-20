@@ -200,7 +200,7 @@ function ActionChip({
       <div style={{ display: "flex", flexDirection: "column", textAlign: "left" }}>
         <span
           style={{
-            fontSize: 12.5,
+            fontSize: 13,
             fontWeight: 700,
             color: "var(--fm-text-primary)",
             lineHeight: 1.2,
@@ -211,7 +211,7 @@ function ActionChip({
         {item.hint && (
           <span
             style={{
-              fontSize: 10.5,
+              fontSize: 11,
               color: "var(--fm-text-tertiary)",
               marginTop: 1,
               lineHeight: 1.3,
@@ -237,7 +237,7 @@ function ActionChip({
     textDecoration: "none",
     fontFamily: "inherit",
     color: "var(--fm-text-primary)",
-    fontSize: 12.5,
+    fontSize: 13,
     transition: "transform 0.12s ease, border-color 0.12s ease",
   };
 

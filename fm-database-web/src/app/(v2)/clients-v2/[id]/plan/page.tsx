@@ -649,68 +649,12 @@ export default async function PlanTabPage({
         </div>
       )}
 
-      {/* Letter-staleness banner — plan was edited after letters were saved. */}
-      {staleness?.anyStale && activePlan && (
-        <div
-          style={{
-            marginTop: 12,
-            padding: "10px 14px",
-            background: "rgba(245, 158, 11, 0.08)",
-            border: "1.5px solid rgba(245, 158, 11, 0.55)",
-            borderRadius: "var(--fm-radius-md)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
-            <span style={{ fontSize: 16 }}>📄</span>
-            <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 12.5, fontWeight: 700, color: "#92400e" }}>
-                Letters are stale — plan edited after{" "}
-                {staleness.staleCount === 1
-                  ? "1 saved letter was generated"
-                  : `${staleness.staleCount} saved letters were generated`}
-              </div>
-              <div
-                style={{
-                  fontSize: 11,
-                  color: "#78350f",
-                  marginTop: 2,
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 6,
-                }}
-              >
-                {staleness.entries
-                  .filter((e) => e.stale)
-                  .map((e) => (
-                    <span
-                      key={e.type}
-                      style={{
-                        padding: "1px 6px",
-                        background: "rgba(245, 158, 11, 0.15)",
-                        borderRadius: 4,
-                        fontFamily: "var(--fm-font-mono)",
-                      }}
-                    >
-                      {e.type.replace(/_/g, " ")}
-                    </span>
-                  ))}
-              </div>
-            </div>
-          </div>
-          <RegenerateStaleButton
-            planSlug={activePlan.slug as string}
-            clientId={id}
-            staleTypes={staleness.entries
-              .filter((e) => e.stale)
-              .map((e) => e.type)}
-          />
-        </div>
-      )}
+      {/* Letter-staleness banner removed from Plan page 2026-05-19.
+          The Communicate tab already surfaces this banner ABOVE the
+          new layout — same fields, same RegenerateStaleButton wired
+          to the same action. Duplicating it on the Plan page added
+          noise without changing any workflow (coach lives in
+          Communicate for letter actions; Plan is for protocol edits). */}
 
       {/* Plan-conflict check — dietary preference vs non-negotiables vs
           allergies. Renders only when the rules-based detector finds
@@ -862,7 +806,7 @@ export default async function PlanTabPage({
                 >
                   <span style={{ fontSize: 20 }}>📬</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 12.5, fontWeight: 700, color: "var(--fm-text-primary)" }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
                       Letters for the client live on Communicate
                     </div>
                     <div style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
@@ -935,7 +879,7 @@ export default async function PlanTabPage({
               {supersedes && (
                 <div
                   style={{
-                    fontSize: 11.5,
+                    fontSize: 12,
                     marginBottom: 10,
                     padding: "6px 10px",
                     background: "var(--fm-bg-cool)",
@@ -1212,7 +1156,7 @@ export default async function PlanTabPage({
                     color: "#fff",
                     borderRadius: "var(--fm-radius-sm)",
                     textDecoration: "none",
-                    fontSize: 11.5,
+                    fontSize: 12,
                     fontWeight: 600,
                     whiteSpace: "nowrap",
                   }}
@@ -1303,7 +1247,7 @@ export default async function PlanTabPage({
                         background: "var(--fm-surface)",
                       }}
                     >
-                      <div style={{ flex: 1, minWidth: 0, fontSize: 11.5 }}>
+                      <div style={{ flex: 1, minWidth: 0, fontSize: 12 }}>
                         <div
                           style={{
                             fontFamily: "var(--fm-font-mono)",
@@ -1404,7 +1348,7 @@ function EmptyHint({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        fontSize: 11.5,
+        fontSize: 12,
         color: "var(--fm-text-tertiary)",
         padding: "6px 10px",
         background: "var(--fm-bg-cool)",

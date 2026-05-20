@@ -242,7 +242,7 @@ export function SendIntakeFormButton({
                 </span>
               )}
             </div>
-            <div style={{ fontSize: 11.5, opacity: 0.85, lineHeight: 1.4 }}>
+            <div style={{ fontSize: 12, opacity: 0.85, lineHeight: 1.4 }}>
               Client can still edit until you lock the form. Hit{" "}
               <strong>🔒 Lock intake</strong> before the intake call so the version
               you review is final.
@@ -320,7 +320,7 @@ export function SendIntakeFormButton({
                 border: "1px solid rgba(255, 107, 53, 0.40)",
                 cursor: loading ? "wait" : "pointer",
                 fontWeight: 600,
-                fontSize: 12.5,
+                fontSize: 13,
                 textAlign: "left",
               }}
             >
@@ -328,7 +328,7 @@ export function SendIntakeFormButton({
             </button>
             <div
               style={{
-                fontSize: 10.5,
+                fontSize: 11,
                 color: "var(--fm-text-tertiary)",
                 lineHeight: 1.45,
                 paddingLeft: 2,

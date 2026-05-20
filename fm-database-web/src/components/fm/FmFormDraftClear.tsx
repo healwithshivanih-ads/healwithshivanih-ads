@@ -50,7 +50,7 @@ export function FmFormDraftClear({
         alignItems: "center",
         gap: 6,
         padding: "5px 12px",
-        fontSize: 11.5,
+        fontSize: 12,
         fontWeight: 600,
         background: confirming ? "var(--fm-danger, #b91c1c)" : "transparent",
         color: confirming

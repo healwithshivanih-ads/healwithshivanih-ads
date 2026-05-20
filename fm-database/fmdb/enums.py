@@ -108,6 +108,11 @@ class PlanStatus(str, Enum):
     published = "published"                    # IRREVERSIBLE; client received it
     superseded = "superseded"                  # newer plan replaced this one
     revoked = "revoked"                        # withdrawn (don't act on this)
+    graduated = "graduated"                    # client completed protocol → Alumni;
+                                               # plan is closed but successfully (vs
+                                               # revoked which is a withdrawal). Used
+                                               # to clear active-triage noise while
+                                               # preserving the historical record.
 
 
 class ReferralUrgency(str, Enum):

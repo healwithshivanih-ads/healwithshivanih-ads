@@ -15,6 +15,7 @@ interface PlanRow {
   client_id?: string;
   status?: string;
   _bucket?: string;
+  plan_period_recheck_date?: string;
 }
 
 const ACTIVE_BUCKETS = new Set(["draft", "ready_to_publish", "published"]);
@@ -135,6 +136,9 @@ export default async function CheckInPage({
         clientId={id}
         displayName={displayName}
         activePlanSlug={activePlan?.slug}
+        activePlanRecheckDate={
+          activePlan?.plan_period_recheck_date ?? undefined
+        }
         previousMeasurements={previousMeasurements}
       />
     </AnalysePageShell>

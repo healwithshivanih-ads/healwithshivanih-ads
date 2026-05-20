@@ -18,10 +18,10 @@ import {
   loadClientSessions,
   getRecentInboundMessages,
   getRecentIntakeActivity,
+  getClientHealthSignals,
 } from "@/lib/fmdb/loader-extras";
-import { parseRequestedLabs } from "@/lib/fmdb/session-utils";
+import { parseRequestedLabs, parseSessionType } from "@/lib/fmdb/session-utils";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
-import { loadApiUsageMtdAllClients } from "@/lib/server-actions/usage";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
 import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
@@ -29,6 +29,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
 import {
+  FmAlertGroup,
   FmAppShell,
   FmPageHeader,
   FmPanel,
@@ -53,6 +54,10 @@ interface ClientRow {
   next_contact_date?: string;
   mobile_number?: string;
   email?: string;
+  /** Lifecycle fields — drive the triage bucket a client lands in.
+   *  engagement_status: "signed_up" | "declined" | "pending" (default). */
+  engagement_status?: string;
+  intake_submitted_at?: string | null;
 }
 
 interface PlanRow {
@@ -70,14 +75,34 @@ interface PlanRow {
   supplements_started_on?: string | null;
 }
 
-const ACTIVE_BUCKETS = new Set(["draft", "ready_to_publish", "published"]);
+const PUBLISHED_BUCKET = new Set(["published"]);
+const DRAFT_BUCKETS = new Set(["draft", "ready_to_publish"]);
 
+/**
+ * computeSignal — maps a client to exactly ONE triage bucket.
+ *
+ * The buckets mirror the client lifecycle:
+ *   new lead → discovery → [sign-up decision] → intake → plan build →
+ *   plan active → recheck
+ *
+ * Priority ladder (first match wins) — most urgent first:
+ *   1. follow_up_due      — coach set an explicit contact date, it passed
+ *   2. protocol_complete  — published plan past its recheck date
+ *   3. active             — published plan still in-flight
+ *   4. plan_to_build      — a draft/ready plan is open (mid-build)
+ *   5. labs_pending       — labs requested 7d+ ago, no results back
+ *   6. plan_to_build      — client signed up but has no plan yet
+ *   7. declined           — discovery done, client declined the programme
+ *   8. awaiting_signup    — discovery done, sign-up decision still pending
+ *   9. returning          — last session 30d+ ago, no plan
+ *  10. new_lead           — created, no discovery call yet
+ */
 async function computeSignal(
   client: ClientRow,
   clientPlans: PlanRow[],
   todayStr: string,
 ): Promise<TriageRow["signal"]> {
-  // Explicit follow-up date set by coach takes highest priority.
+  // 1. Explicit follow-up date set by coach takes highest priority.
   if (client.next_contact_date && client.next_contact_date <= todayStr) {
     const daysOverdue = Math.round(
       (new Date(todayStr).getTime() - new Date(client.next_contact_date).getTime()) /
@@ -86,10 +111,7 @@ async function computeSignal(
     return { kind: "follow_up_due", daysOverdue };
   }
 
-  // Published plan past its EFFECTIVE recheck → protocol complete.
-  // Effective recheck = effectiveMealPlanStart + plan_period_weeks × 7,
-  // i.e. it accounts for the 3-day meal-plan-adoption lag (or whatever the
-  // coach has captured via meal_plan_started_on). See lib/fmdb/plan-timing.ts.
+  // 2. Published plan past its EFFECTIVE recheck → protocol complete.
   const overduePlan = clientPlans.find((p) => {
     if ((p._bucket ?? p.status) !== "published") return false;
     return isRecheckOverdue(p, todayStr);
@@ -102,54 +124,198 @@ async function computeSignal(
     };
   }
 
-  // Active plan trumps labs-pending. Once a plan is live, the requested
-  // labs were either already factored in or the coach will revise the
-  // plan when new labs land — surfacing labs-pending for an active
-  // client is just dashboard noise. (This ordering matches the classic
-  // dashboard at src/app/page.tsx; dashboard-v2 had the checks reversed,
-  // so Geetika kept appearing in Labs pending despite plan-1 being
-  // active.)
-  const activePlan = clientPlans.find((p) => ACTIVE_BUCKETS.has(p._bucket ?? p.status ?? ""));
-  if (activePlan) {
+  // 3. Published plan still in-flight → active (steady state).
+  const publishedPlan = clientPlans.find((p) =>
+    PUBLISHED_BUCKET.has(p._bucket ?? p.status ?? ""),
+  );
+  if (publishedPlan) {
     return {
       kind: "active",
-      planSlug: activePlan.slug,
-      recheckDate: effectiveRecheckDate(activePlan) ?? activePlan.plan_period_recheck_date,
+      planSlug: publishedPlan.slug,
+      recheckDate:
+        effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date,
     };
   }
 
-  // Sessions-based signals: labs_pending, returning, new_client.
-  const sessions = await loadClientSessions(client.client_id);
-  if (sessions.length === 0) return { kind: "new_client" };
+  // A draft / ready-to-publish plan may be open — resolve it now but
+  // DON'T classify on it yet. Per coach decision (2026-05-20) intake
+  // gates everything: a draft without a completed coach intake means the
+  // intake still needs doing, so the draft alone cannot promote a client
+  // to a plan bucket. Acted on after the intake check below.
+  const draftPlan = clientPlans.find((p) =>
+    DRAFT_BUCKETS.has(p._bucket ?? p.status ?? ""),
+  );
 
-  // Labs requested but not yet uploaded — same heuristic as the legacy
-  // dashboard: scan session coach_notes for "[requested labs: …]" tags.
-  // Skipped above when an active plan exists.
-  for (const s of sessions) {
-    const labs = parseRequestedLabs(s.coach_notes as string | undefined);
-    if (labs.length > 0) {
-      return { kind: "labs_pending", labs, labCount: labs.length };
-    }
+  // ── Sessions + engagement-based signals ──────────────────────────────
+  const sessions = await loadClientSessions(client.client_id);
+  const presentingOf = (s: unknown) =>
+    String((s as Record<string, unknown>).presenting_complaints ?? "");
+  const sessionType = (s: unknown) => parseSessionType(presentingOf(s));
+
+  const discoverySessions = sessions
+    .filter((s) => sessionType(s) === "discovery")
+    .sort((a, b) =>
+      String((a as Record<string, unknown>).date ?? "").localeCompare(
+        String((b as Record<string, unknown>).date ?? ""),
+      ),
+    );
+  const hasDiscovery = discoverySessions.length > 0;
+  const discoveryDate =
+    (discoverySessions[0] as Record<string, unknown> | undefined)?.date as
+      | string
+      | undefined;
+
+  // "Intake done" = a COACH intake session exists — a session whose
+  // presenting_complaints carries the LITERAL [session_type: intake] (or
+  // legacy [session_type: full_assessment]) tag. That is exactly what the
+  // v2 /analyse/intake flow writes. It deliberately does NOT count:
+  //   - the client's online questionnaire ([source: client_intake_form],
+  //     which has NO session_type tag), nor
+  //   - untagged legacy assessment notes — parseSessionType DEFAULTS
+  //     untagged sessions to "intake", which previously produced false
+  //     "intake done" positives (e.g. Archana's leukopenia note).
+  const hasCoachIntake = sessions.some((s) =>
+    /\[session_type:\s*(intake|full_assessment)\]/i.test(presentingOf(s)),
+  );
+
+  const engagement =
+    client.engagement_status === "signed_up"
+      ? "signed_up"
+      : client.engagement_status === "declined"
+        ? "declined"
+        : "pending";
+
+  // Truly brand-new — created but no contact recorded at all.
+  if (sessions.length === 0 && !hasDiscovery) {
+    return { kind: "new_lead" };
   }
 
-  // Returning if last session was > 30 days ago, otherwise still onboarding.
+  // 4. INTAKE GATE. A client who is committed (signed up OR already has a
+  //    draft plan started) but has NO coach intake session on file lands
+  //    in "Intake to do". Intake gates every plan bucket — even a draft
+  //    plan cannot move a client to "programme owed" until the coach has
+  //    actually run the intake. (Coach decision 2026-05-20.)
+  const committed = engagement === "signed_up" || Boolean(draftPlan);
+  if (committed && !hasCoachIntake) {
+    let microStep: string;
+    if (draftPlan && engagement !== "signed_up") {
+      microStep =
+        "A draft plan exists but no intake is on record — run the intake first";
+    } else if (client.intake_submitted_at) {
+      microStep =
+        "Signed up · client submitted the intake form — run the intake session";
+    } else {
+      microStep = "Signed up — run the 60-minute intake session";
+    }
+    return { kind: "intake_to_do", microStep, draftSlug: draftPlan?.slug };
+  }
+
+  // 5. Coach intake done, no published plan → build / finish the plan.
+  if (hasCoachIntake) {
+    if (draftPlan) {
+      return {
+        kind: "plan_to_build",
+        draftSlug: draftPlan.slug,
+        microStep:
+          (draftPlan._bucket ?? draftPlan.status) === "ready_to_publish"
+            ? "Plan is ready — activate it to make it live"
+            : "Finish the draft plan + activate it",
+      };
+    }
+    return {
+      kind: "plan_to_build",
+      microStep: "Intake complete — build the protocol from the AI synthesis",
+    };
+  }
+
+  // 6. Labs requested but not yet uploaded.
+  // Fires ONLY when:
+  //   - a session has a [requested labs: …] tag in coach_notes
+  //   - that session is at least LABS_GRACE_DAYS old (default 7) so we
+  //     don't flag the coach the same hour she sends the requisition
+  //   - the client has no lab_markers / health_snapshots dated after
+  //     the request (= no results have come back yet)
+  const LABS_GRACE_DAYS = 7;
+  const todayMs = new Date(todayStr).getTime();
+  const clientAny = client as unknown as Record<string, unknown>;
+  // Latest "I have results" signal — pick the newest date across
+  // measurements_log + health_snapshots + lab_markers updated_at.
+  const latestResultDate = (() => {
+    let best = "";
+    const log = (clientAny.measurements_log as Array<Record<string, unknown>>) ?? [];
+    for (const e of log) {
+      const d = e.date as string | undefined;
+      if (d && d > best) best = d;
+    }
+    const snaps = (clientAny.health_snapshots as Array<Record<string, unknown>>) ?? [];
+    for (const e of snaps) {
+      const d = e.date as string | undefined;
+      if (d && d > best) best = d;
+    }
+    const markersUpdatedAt = (clientAny.lab_markers_updated_at as string | undefined);
+    if (markersUpdatedAt && markersUpdatedAt.slice(0, 10) > best) {
+      best = markersUpdatedAt.slice(0, 10);
+    }
+    return best;
+  })();
+  for (const s of sessions) {
+    const labs = parseRequestedLabs(s.coach_notes as string | undefined);
+    if (labs.length === 0) continue;
+    const requestDate = (s.date as string | undefined) ?? "";
+    if (!requestDate) continue;
+    // Grace period — wait LABS_GRACE_DAYS before nagging.
+    const daysSinceRequest = Math.round(
+      (todayMs - new Date(requestDate).getTime()) / 86_400_000,
+    );
+    if (daysSinceRequest < LABS_GRACE_DAYS) continue;
+    // Results already back? Skip.
+    if (latestResultDate && latestResultDate >= requestDate) continue;
+    return {
+      kind: "labs_pending",
+      labs,
+      labCount: labs.length,
+    };
+  }
+
+  // 7. Declined the programme after discovery.
+  if (engagement === "declined") {
+    return { kind: "declined", discoveryDate };
+  }
+
+  // 8. Discovery done, sign-up decision still pending → prospect to
+  //    convert. This is where a client like Pranati belongs — she had a
+  //    discovery call but hasn't committed to the programme, so she is
+  //    NOT "awaiting assessment" (that wrongly implied she's signed up).
+  if (hasDiscovery) {
+    return { kind: "awaiting_signup", discoveryDate };
+  }
+
+  // 9. Returning — last session 30d+ ago, no plan, no discovery on file.
   const lastSession = sessions[sessions.length - 1] as Record<string, unknown>;
-  const lastDate = (lastSession.date as string) ?? "";
+  const lastDate = (lastSession?.date as string) ?? "";
   if (lastDate) {
     const days = Math.round(
       (new Date(todayStr).getTime() - new Date(lastDate).getTime()) / (1000 * 60 * 60 * 24),
     );
-    if (days >= 30) return { kind: "returning", daysSince: days };
+    if (days >= 30) return { kind: "returning", daysSince: days, sessionDate: lastDate };
   }
-  return { kind: "new_client", sessionDate: lastDate };
+
+  // 10. Fallback — a lead with some activity but no discovery yet.
+  return { kind: "new_lead" };
 }
 
 export default async function DashboardV2() {
   const todayStr = new Date().toISOString().slice(0, 10);
-  const [clients, plans, apiMtd, catalogueStatus] = await Promise.all([
+  // apiMtd no longer rendered on the dashboard (tile demoted 2026-05-19)
+  // but kept in the parallel-load batch — small + cached, and the data
+  // is referenced by /settings via a separate loader so removing it
+  // here has no UX impact. If the /settings page later inlines its own
+  // loader, this can be dropped.
+  // apiMtd was fetched here historically; moved to /settings 2026-05-19
+  // where the spend counter now lives. The dashboard no longer needs it.
+  const [clients, plans, catalogueStatus] = await Promise.all([
     loadAllClients(),
     loadAllPlans(),
-    loadApiUsageMtdAllClients(),
     getCatalogueStatus(),
   ]);
 
@@ -196,6 +362,26 @@ export default async function DashboardV2() {
     7,
     latestPlanUpdateByClient,
   );
+
+  // 🔔 Proactive client-health detectors (2026-05-19): dormant clients
+  // (no sessions in 14d), plateaued (3+ measurements within ±0.3kg),
+  // regressed (≥1kg above starting weight). Each surfaces as a banner
+  // strip above the triage cards. Cheap — fs.readdir per client +
+  // existing client.yaml reads.
+  // 2026-05-20 — collapsed 3 separate scans (each reading client.yaml
+  // independently for 50+ clients) into one batched walk. Same return
+  // shape, ~30% faster dashboard render.
+  const allClientIds = (clients as ClientRow[]).map((c) => c.client_id);
+  const {
+    dormant: dormantClients,
+    plateaued: plateauedClients,
+    regressed: regressedClients,
+  } = await getClientHealthSignals(allClientIds, {
+    dormantDays: 14,
+    plateauThresholdKg: 0.3,
+    plateauMinReadings: 3,
+    regressedThresholdKg: 1.0,
+  });
 
   // "Time to schedule next session" rows — clients ≥12d since last
   // session OR with plan_period_recheck_date overdue. Each row carries
@@ -278,20 +464,223 @@ export default async function DashboardV2() {
   const grouped = {
     follow_up_due: [],
     protocol_complete: [],
+    intake_to_do: [],
+    plan_to_build: [],
     labs_pending: [],
-    returning: [],
-    new_client: [],
+    booking_link_pending: [],
+    awaiting_signup: [],
     active: [],
+    returning: [],
+    new_lead: [],
+    declined: [],
   } as Record<SignalKind, TriageRow[]>;
   for (const r of rows) grouped[r.signal.kind].push(r);
 
+  // ── Booking-link-pending overlay ─────────────────────────────────────
+  // Reads ~/fm-plans/_calcom_send_log.yaml: clients who got a cal.com
+  // booking link via WhatsApp ≥2 days ago AND have NO booking received
+  // since the link was sent. Surfaces as its own section (📨 Booking
+  // link sent — no response) so the coach knows to nudge.
+  //
+  // Coach bug 2026-05-20: Sudarshan was sent a booking link 3 days ago
+  // and the dashboard didn't surface him as needing attention.
+  try {
+    const { default: yaml } = await import("js-yaml");
+    const { default: fs } = await import("node:fs/promises");
+    const { default: pathMod } = await import("node:path");
+    const { getPlansRoot } = await import("@/lib/fmdb/paths");
+    const root = getPlansRoot();
+    type SendLogEntry = {
+      sent_at?: string;
+      client_id?: string;
+      display_name?: string;
+      slug?: string;
+    };
+    type BookingEntry = {
+      type?: string;
+      received_at?: string;
+      start_time?: string;
+    };
+    let sendLog: SendLogEntry[] = [];
+    try {
+      const raw = await fs.readFile(
+        pathMod.join(root, "_calcom_send_log.yaml"),
+        "utf-8",
+      );
+      const parsed = yaml.load(raw);
+      if (Array.isArray(parsed)) sendLog = parsed as SendLogEntry[];
+    } catch {
+      /* file may not exist on a fresh setup */
+    }
+    let bookings: Record<string, BookingEntry[]> = {};
+    try {
+      const raw = await fs.readFile(
+        pathMod.join(root, "_calcom_bookings.yaml"),
+        "utf-8",
+      );
+      const parsed = yaml.load(raw);
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+        bookings = parsed as Record<string, BookingEntry[]>;
+      }
+    } catch {
+      /* no bookings yet */
+    }
+
+    // Pick the LATEST send per client (clients can have multiple sends
+    // if coach retried). Then check whether any non-cancelled booking
+    // arrived AFTER that send.
+    const latestSendByClient = new Map<string, SendLogEntry>();
+    for (const entry of sendLog) {
+      if (!entry.client_id || !entry.sent_at) continue;
+      const existing = latestSendByClient.get(entry.client_id);
+      if (!existing || (entry.sent_at > (existing.sent_at ?? ""))) {
+        latestSendByClient.set(entry.client_id, entry);
+      }
+    }
+
+    const BOOKING_LINK_GRACE_DAYS = 2;
+    const todayMs = new Date(todayStr).getTime();
+    for (const [clientId, entry] of latestSendByClient) {
+      const sentAt = entry.sent_at ?? "";
+      const daysSinceSent = Math.round(
+        (todayMs - new Date(sentAt).getTime()) / 86_400_000,
+      );
+      if (daysSinceSent < BOOKING_LINK_GRACE_DAYS) continue;
+      const clientBookings = bookings[clientId] ?? [];
+      // Did ANY booking_created event arrive after the send? Cancellations
+      // don't count (coach still needs to nudge).
+      const respondedAfter = clientBookings.some(
+        (b) =>
+          (b.received_at ?? "") > sentAt &&
+          (b.type ?? "") !== "booking_cancelled",
+      );
+      if (respondedAfter) continue;
+      // Don't double-surface clients already in higher-priority buckets.
+      const alreadySurfaced =
+        grouped.follow_up_due.some((r) => r.client_id === clientId) ||
+        grouped.protocol_complete.some((r) => r.client_id === clientId) ||
+        grouped.intake_to_do.some((r) => r.client_id === clientId) ||
+        grouped.plan_to_build.some((r) => r.client_id === clientId) ||
+        grouped.active.some((r) => r.client_id === clientId) ||
+        grouped.labs_pending.some((r) => r.client_id === clientId);
+      if (alreadySurfaced) continue;
+      const clientRecord = (clients as ClientRow[]).find(
+        (c) => c.client_id === clientId,
+      );
+      if (!clientRecord) continue;
+      grouped.booking_link_pending.push({
+        client_id: clientId,
+        display_name: clientRecord.display_name ?? clientId,
+        active_conditions: undefined,
+        signal: {
+          kind: "booking_link_pending",
+          daysSinceLinkSent: daysSinceSent,
+          bookingLinkSlug: entry.slug,
+        },
+      });
+    }
+    grouped.booking_link_pending.sort(
+      (a, b) =>
+        (b.signal.daysSinceLinkSent ?? 0) - (a.signal.daysSinceLinkSent ?? 0),
+    );
+  } catch {
+    /* booking-link overlay is best-effort; never block the dashboard */
+  }
+
   const totalClients = clients.length;
   const monthLabel = new Date().toLocaleDateString("en-GB", { month: "short" });
+  // "Needs attention" = everything in the 🔴 Needs action + 🟡 Pipeline
+  // tiers (active / returning / new_lead / declined are steady or cold,
+  // not attention-now). Mirrors the tier split in triage-sections.tsx.
   const needsAttention =
     grouped.follow_up_due.length +
     grouped.protocol_complete.length +
+    grouped.intake_to_do.length +
+    grouped.plan_to_build.length +
     grouped.labs_pending.length +
-    grouped.returning.length;
+    grouped.booking_link_pending.length +
+    grouped.awaiting_signup.length;
+
+  // When there's exactly ONE attention item, the dashboard tile should
+  // link DIRECTLY to the relevant tab on that client (not scroll to the
+  // triage list). Coach feedback 2026-05-19: "I should be able to click
+  // and get to the real issue, not try to go everywhere and figure out
+  // what does." Bucket → tab map mirrors triage-sections.tsx SECTION_META:
+  //   follow_up_due    → /clients-v2/<id>            (Overview — needs contact)
+  //   protocol_complete → /clients-v2/<id>/sessions  (Record recheck session)
+  //   labs_pending     → /clients-v2/<id>/sessions   (Record lab results)
+  //   returning        → /clients-v2/<id>/sessions   (Record new session)
+  let singleAttentionHref: string | undefined;
+  let singleAttentionWhy: string | undefined;
+  if (needsAttention === 1) {
+    const findOne = () => {
+      if (grouped.follow_up_due[0])
+        return {
+          href: `/clients-v2/${grouped.follow_up_due[0].client_id}`,
+          why: `Follow-up due with ${grouped.follow_up_due[0].display_name ?? grouped.follow_up_due[0].client_id}`,
+        };
+      if (grouped.protocol_complete[0])
+        return {
+          href: `/clients-v2/${grouped.protocol_complete[0].client_id}/sessions`,
+          why: `Recheck due for ${grouped.protocol_complete[0].display_name ?? grouped.protocol_complete[0].client_id}`,
+        };
+      if (grouped.intake_to_do[0]) {
+        const r = grouped.intake_to_do[0];
+        return {
+          href: `/clients-v2/${r.client_id}/analyse/intake`,
+          why: `Intake to do for ${r.display_name ?? r.client_id} — ${r.signal.microStep ?? "run the intake"}`,
+        };
+      }
+      if (grouped.plan_to_build[0]) {
+        const r = grouped.plan_to_build[0];
+        return {
+          href: r.signal.draftSlug
+            ? `/clients-v2/${r.client_id}/plan/edit/${r.signal.draftSlug}`
+            : `/clients-v2/${r.client_id}/analyse`,
+          why: `Programme owed to ${r.display_name ?? r.client_id} — ${r.signal.microStep ?? "build the plan"}`,
+        };
+      }
+      if (grouped.labs_pending[0]) {
+        const r = grouped.labs_pending[0];
+        // Show a COUNT, not the full list. Old code embedded all 45
+        // marker names into the stat-tile delta which blew out the
+        // page-header grid column to ~1100px. The full list is one
+        // click away on the client's sessions tab.
+        const count = r.signal.labs?.length ?? 0;
+        const labs = count > 0 ? ` (${count} marker${count === 1 ? "" : "s"})` : "";
+        return {
+          href: `/clients-v2/${r.client_id}/sessions`,
+          why: `Labs pending for ${r.display_name ?? r.client_id}${labs}`,
+        };
+      }
+      if (grouped.booking_link_pending[0]) {
+        const r = grouped.booking_link_pending[0];
+        const days = r.signal.daysSinceLinkSent ?? 0;
+        return {
+          href: `/clients-v2/${r.client_id}/communicate`,
+          why: `Booking link sent ${days}d ago — no response from ${r.display_name ?? r.client_id}`,
+        };
+      }
+      if (grouped.awaiting_signup[0]) {
+        const r = grouped.awaiting_signup[0];
+        return {
+          href: `/clients-v2/${r.client_id}`,
+          why: `${r.display_name ?? r.client_id} had a discovery call — confirm if they're signing up`,
+        };
+      }
+      if (grouped.returning[0])
+        return {
+          href: `/clients-v2/${grouped.returning[0].client_id}/sessions`,
+          why: `${grouped.returning[0].display_name ?? grouped.returning[0].client_id} returned after ${grouped.returning[0].signal.daysSince} days`,
+        };
+      return null;
+    };
+    const one = findOne();
+    if (one) {
+      singleAttentionHref = one.href;
+      singleAttentionWhy = one.why;
+    }
+  }
 
   // Upcoming follow-ups (next 7 days)
   const in7 = new Date(todayStr);
@@ -355,155 +744,336 @@ export default async function DashboardV2() {
         title="Dashboard"
         subtitle={`Welcome back, Shivani. ${dateLabel}.`}
         rightSlot={
-          <FmStatGrid cols={3}>
-            <FmStatTile label="Clients" value={totalClients} />
-            <FmStatTile
-              label={`API spend · ${monthLabel} MTD`}
-              value={
-                <span>
-                  <span
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 600,
-                      color: "var(--fm-text-tertiary)",
-                      marginRight: 2,
-                    }}
-                  >
-                    ₹
-                  </span>
-                  {apiMtd.this_month_cost_inr.toLocaleString("en-IN", {
-                    maximumFractionDigits: 0,
-                  })}
-                </span>
-              }
-              delta={
-                apiMtd.this_month_calls > 0
-                  ? {
-                      text: `${apiMtd.this_month_calls} call${
-                        apiMtd.this_month_calls === 1 ? "" : "s"
-                      } · ${apiMtd.by_client.length} client${
-                        apiMtd.by_client.length === 1 ? "" : "s"
-                      }`,
-                      trend: "flat",
-                    }
-                  : undefined
-              }
-            />
+          // API-spend tile removed from dashboard 2026-05-19 (audit
+          // finding — useful to engineering, not actionable for coach).
+          // Two essential tiles only: total clients + needs-attention
+          // count. The MTD spend is still computed (apiMtd above) and
+          // available in /settings for when coach wants to glance.
+          // Cap the stat row at 420px so a long "Need attention" delta
+          // string can NEVER blow out the page-header grid like it did
+          // on 2026-05-20 (a 45-marker labs list ended up in the tile).
+          <div style={{ width: "100%", maxWidth: 420 }}>
+          <FmStatGrid cols={2}>
+            <FmStatTile label="Clients" value={totalClients} href="/clients-v2" />
             <FmStatTile
               label="Need attention"
               value={needsAttention}
               highlight={needsAttention > 0}
+              href={
+                needsAttention === 0
+                  ? undefined
+                  : singleAttentionHref ?? "#needs-attention"
+              }
+              title={
+                needsAttention === 0
+                  ? undefined
+                  : singleAttentionWhy
+                    ? `${singleAttentionWhy} — click to open`
+                    : [
+                        grouped.follow_up_due.length > 0 && `${grouped.follow_up_due.length} follow-up due`,
+                        grouped.protocol_complete.length > 0 && `${grouped.protocol_complete.length} recheck due`,
+                        grouped.intake_to_do.length > 0 && `${grouped.intake_to_do.length} intake${grouped.intake_to_do.length === 1 ? "" : "s"} to do`,
+                        grouped.plan_to_build.length > 0 && `${grouped.plan_to_build.length} programme${grouped.plan_to_build.length === 1 ? "" : "s"} owed`,
+                        grouped.labs_pending.length > 0 && `${grouped.labs_pending.length} labs pending`,
+                        grouped.booking_link_pending.length > 0 && `${grouped.booking_link_pending.length} booking link${grouped.booking_link_pending.length === 1 ? "" : "s"} unanswered`,
+                        grouped.awaiting_signup.length > 0 && `${grouped.awaiting_signup.length} awaiting sign-up`,
+                      ]
+                        .filter(Boolean)
+                        .join(" · ") + " — click to jump"
+              }
+              delta={
+                needsAttention === 0
+                  ? undefined
+                  : singleAttentionWhy
+                    ? { trend: "warn", text: singleAttentionWhy }
+                    : {
+                        trend: "warn",
+                        text: [
+                          grouped.follow_up_due.length > 0 && `${grouped.follow_up_due.length} follow-up`,
+                          grouped.protocol_complete.length > 0 && `${grouped.protocol_complete.length} recheck`,
+                          grouped.intake_to_do.length > 0 && `${grouped.intake_to_do.length} intake`,
+                          grouped.plan_to_build.length > 0 && `${grouped.plan_to_build.length} to build`,
+                          grouped.labs_pending.length > 0 && `${grouped.labs_pending.length} labs`,
+                          grouped.booking_link_pending.length > 0 && `${grouped.booking_link_pending.length} booking`,
+                          grouped.awaiting_signup.length > 0 && `${grouped.awaiting_signup.length} sign-up`,
+                        ]
+                          .filter(Boolean)
+                          .join(" · "),
+                      }
+              }
             />
           </FmStatGrid>
+          </div>
         }
       />
 
-      {/* Banners + strips above the triage sections */}
+      {/* Banners + strips above the triage sections.
+          Dropped the amber "Schedule a session" strip 2026-05-19 —
+          BookSessionButton is already in the page header's stat row
+          AND duplicated in the FAB, so a third entry point was just
+          stacking visual weight. */}
+      {/* Banner stack restructured 2026-05-20 (UI audit theme #3 +
+          investment #4). Previously 11 sibling banners rendered at uniform
+          visual weight; after 3-4 they became wallpaper. Now bundled into
+          two collapsible groups via FmAlertGroup:
+            🚨 Actions today  — urgent, defaults OPEN
+            📋 FYI + outbound — admin / outbound nudges, defaults COLLAPSED
+          Each group persists its open/closed state in sessionStorage
+          (per-tab) so coach's choices stick across refreshes. */}
       <div style={{ display: "grid", gap: 14, marginBottom: 24 }}>
-        {/* Broadcast — outbound WhatsApp to groups of clients. Promoted to
-            the top per coach feedback 2026-05-13 — it's a primary daily
-            action, not a "tucked at the bottom" panel. */}
-        {whatsappConfigured && (
-          <BroadcastPanel
-            clients={broadcastClientRows}
-            followUpDueIds={followUpDueIds}
-            recheckDueIds={recheckDueIds}
-            activeIds={activeIds}
-          />
-        )}
+        <FmAlertGroup
+          id="dashboard.today"
+          tier="today"
+          icon="🚨"
+          label="Actions today"
+          count={
+            recentCancellations.length +
+            upcomingBookings.length +
+            inboundMessages.length +
+            scheduleDueRows.length +
+            dormantClients.length +
+            plateauedClients.length +
+            regressedClients.length +
+            upcoming.length
+          }
+          defaultCollapsed={false}
+        >
+          {/* Cancellation alert — surfaces above upcoming so coach can't miss
+              a silent cancel. Auto-clears once she opens the client's overview. */}
+          <FmCancellationAlertBanner cancellations={recentCancellations} />
 
-        {/* 📣 Weekly check-in poll + 3-strike adherence-drop scan.
-            Always rendered so coach sees setup hint even when
-            WHATSAPP_SERVER_URL isn't set. See lib/server-actions/weekly-poll.ts
-            for the send + scan logic and api/whatsapp-webhook/route.ts
-            for inbound button-reply classification (classifyPollReply). */}
-        <WeeklyPollPanel
-          whatsappConfigured={whatsappConfigured}
-          pollClients={pollClients}
-        />
+          {/* Upcoming cal.com bookings — fed by /api/cal-com-webhook */}
+          <FmUpcomingBookingsPanel rows={upcomingBookings} webhookConfigured={bookingsWebhookConfigured} />
 
-        {/* 📅 Start-date reminders — clients whose plan published >5d ago
-            but haven't confirmed meal_plan_started_on. Auto-loads on mount;
-            self-hides when the list is empty. Per-row "📨 Send reminder"
-            fires the fm_start_date_check_v1 WhatsApp template. Inbound
-            "Started 19 May" replies are parsed by start-date-parser.ts and
-            auto-update plan.meal_plan_started_on — list clears itself once
-            client confirms. See lib/server-actions/start-date-reminders.ts. */}
-        <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
+          {/* WhatsApp inbound messages — design 10A with unread badges */}
+          <FmScheduleDuePanel rows={scheduleDueRows} unread={unreadByClient} />
+          {/* FmIntakeActivityBanner retired 2026-05-17 — its info now folds
+              into the per-client unread badge on the schedule-due rows + the
+              clients-v2 grid. */}
+          <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
 
-        {/* CatalogueIngestPanel moved to /ingest page — see ingest/page.tsx */}
-
-        {/* Catalogue commit — design 9A with change list disclosure */}
-        <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
-
-        {/* Cancellation alert — surfaces above upcoming so coach can't miss
-            a silent cancel. Auto-clears once she opens the client's overview. */}
-        <FmCancellationAlertBanner cancellations={recentCancellations} />
-
-        {/* Upcoming cal.com bookings — fed by /api/cal-com-webhook */}
-        <FmUpcomingBookingsPanel rows={upcomingBookings} webhookConfigured={bookingsWebhookConfigured} />
-
-        {/* WhatsApp inbound messages — design 10A with unread badges */}
-        <FmScheduleDuePanel rows={scheduleDueRows} unread={unreadByClient} />
-        {/* FmIntakeActivityBanner retired 2026-05-17 — its info now folds
-            into the per-client unread badge on the schedule-due rows + the
-            clients-v2 grid. Keeping the entries fetch so we can revive
-            quickly if the unified badge proves insufficient in practice. */}
-        <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
-
-        {/* Upcoming follow-ups (next 7 days, not yet due) */}
-        {upcoming.length > 0 && (
+          {/* 🔔 Proactive client-health banners (dormant / plateau /
+            regression) — added 2026-05-19. These surface as compact
+            colored strips ONLY when there's at least one match; each
+            client is a clickable chip linking to their Overview. */}
+        {(dormantClients.length > 0 || plateauedClients.length > 0 || regressedClients.length > 0) && (
           <FmPanel
             style={{
-              background: "rgba(155, 89, 182, 0.06)",
-              borderColor: "rgba(155, 89, 182, 0.25)",
-              padding: "12px 16px",
+              background: "rgba(229, 62, 62, 0.04)",
+              borderColor: "rgba(229, 62, 62, 0.20)",
+              padding: "10px 14px",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               <div
                 style={{
                   fontSize: 11,
                   textTransform: "uppercase",
                   letterSpacing: 0.7,
                   fontWeight: 700,
-                  color: "#7d3c98",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
+                  color: "#c0392b",
                 }}
               >
-                <span>📅</span>
-                <span>Upcoming this week ({upcoming.length})</span>
+                🔔 Needs your eyes
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {upcoming.map((c) => (
-                  <Link
-                    key={c.client_id}
-                    href={`/clients-v2/${c.client_id}`}
-                    style={{
-                      display: "inline-flex",
-                      gap: 6,
-                      alignItems: "center",
-                      padding: "4px 10px",
-                      background: "var(--fm-surface)",
-                      border: "1px solid rgba(155, 89, 182, 0.25)",
-                      borderRadius: "var(--fm-radius-pill)",
-                      textDecoration: "none",
-                      fontSize: 11.5,
-                    }}
-                  >
-                    <span style={{ color: "#7d3c98", fontWeight: 600 }}>
-                      {c.display_name ?? c.client_id}
+
+              {dormantClients.length > 0 && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
+                  <span style={{ fontSize: 12, color: "var(--fm-text-secondary)", marginRight: 4 }}>
+                    💤 <strong>{dormantClients.length}</strong>{" "}
+                    {dormantClients.length === 1 ? "client" : "clients"} silent for 14d+:
+                  </span>
+                  {dormantClients.slice(0, 8).map((d) => (
+                    <Link
+                      key={d.client_id}
+                      href={`/clients-v2/${d.client_id}`}
+                      style={{
+                        fontSize: 11,
+                        padding: "2px 8px",
+                        background: "rgba(120, 113, 108, 0.10)",
+                        border: "1px solid rgba(120, 113, 108, 0.30)",
+                        borderRadius: 999,
+                        textDecoration: "none",
+                        color: "var(--fm-text-primary)",
+                        fontWeight: 600,
+                      }}
+                      title={`Last signal: ${d.lastSignalAt ?? "no sessions on record"}`}
+                    >
+                      {d.display_name} · {d.daysSilent}d
+                    </Link>
+                  ))}
+                  {dormantClients.length > 8 && (
+                    <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+                      +{dormantClients.length - 8} more
                     </span>
-                    <span style={{ color: "var(--fm-text-tertiary)" }}>·</span>
-                    <FmChip tone="primary">{c.next_contact_date}</FmChip>
-                  </Link>
-                ))}
-              </div>
+                  )}
+                </div>
+              )}
+
+              {plateauedClients.length > 0 && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
+                  <span style={{ fontSize: 12, color: "var(--fm-text-secondary)", marginRight: 4 }}>
+                    ⏸ <strong>{plateauedClients.length}</strong>{" "}
+                    {plateauedClients.length === 1 ? "client" : "clients"} plateaued (3+ readings static):
+                  </span>
+                  {plateauedClients.slice(0, 8).map((p) => (
+                    <Link
+                      key={p.client_id}
+                      href={`/clients-v2/${p.client_id}`}
+                      style={{
+                        fontSize: 11,
+                        padding: "2px 8px",
+                        background: "rgba(245, 158, 11, 0.10)",
+                        border: "1px solid rgba(245, 158, 11, 0.30)",
+                        borderRadius: 999,
+                        textDecoration: "none",
+                        color: "#92400e",
+                        fontWeight: 600,
+                      }}
+                      title={`Latest ${p.latestWeightKg}kg on ${p.latestDate} · range ${p.rangeKg}kg across last ${p.consecutiveStaticReadings} readings`}
+                    >
+                      {p.display_name} · {p.latestWeightKg}kg
+                    </Link>
+                  ))}
+                  {plateauedClients.length > 8 && (
+                    <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+                      +{plateauedClients.length - 8} more
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {regressedClients.length > 0 && (
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
+                  <span style={{ fontSize: 12, color: "var(--fm-text-secondary)", marginRight: 4 }}>
+                    📈 <strong>{regressedClients.length}</strong>{" "}
+                    {regressedClients.length === 1 ? "client" : "clients"} above starting weight:
+                  </span>
+                  {regressedClients.slice(0, 8).map((r) => (
+                    <Link
+                      key={r.client_id}
+                      href={`/clients-v2/${r.client_id}`}
+                      style={{
+                        fontSize: 11,
+                        padding: "2px 8px",
+                        background: "rgba(229, 62, 62, 0.10)",
+                        border: "1px solid rgba(229, 62, 62, 0.30)",
+                        borderRadius: 999,
+                        textDecoration: "none",
+                        color: "#c0392b",
+                        fontWeight: 700,
+                      }}
+                      title={`Started ${r.startingKg}kg → now ${r.latestKg}kg (${r.latestDate})`}
+                    >
+                      {r.display_name} · +{r.gainedKg}kg
+                    </Link>
+                  ))}
+                  {regressedClients.length > 8 && (
+                    <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+                      +{regressedClients.length - 8} more
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </FmPanel>
         )}
+
+          {/* Upcoming follow-ups (next 7 days, not yet due) */}
+          {upcoming.length > 0 && (
+            <FmPanel
+              style={{
+                background: "rgba(155, 89, 182, 0.06)",
+                borderColor: "rgba(155, 89, 182, 0.25)",
+                padding: "12px 16px",
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <div
+                  style={{
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: 0.7,
+                    fontWeight: 700,
+                    color: "#7d3c98",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                  }}
+                >
+                  <span>📅</span>
+                  <span>Upcoming this week ({upcoming.length})</span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {upcoming.map((c) => (
+                    <Link
+                      key={c.client_id}
+                      href={`/clients-v2/${c.client_id}`}
+                      style={{
+                        display: "inline-flex",
+                        gap: 6,
+                        alignItems: "center",
+                        padding: "4px 10px",
+                        background: "var(--fm-surface)",
+                        border: "1px solid rgba(155, 89, 182, 0.25)",
+                        borderRadius: "var(--fm-radius-pill)",
+                        textDecoration: "none",
+                        fontSize: 12,
+                      }}
+                    >
+                      <span style={{ color: "#7d3c98", fontWeight: 600 }}>
+                        {c.display_name ?? c.client_id}
+                      </span>
+                      <span style={{ color: "var(--fm-text-tertiary)" }}>·</span>
+                      <FmChip tone="primary">{c.next_contact_date}</FmChip>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </FmPanel>
+          )}
+        </FmAlertGroup>
+
+        {/* ── FYI + outbound group ────────────────────────────────────
+            Outbound nudges (broadcast / weekly poll / start-date reminders)
+            + admin signals (catalogue commit). Defaults COLLAPSED — coach
+            opens when she wants to send something proactive, not on every
+            page load. Each child still self-hides when empty (so a coach
+            with nothing pending sees the group header alone). */}
+        <FmAlertGroup
+          id="dashboard.fyi"
+          tier="fyi"
+          icon="📋"
+          label="Outbound + admin"
+          defaultCollapsed={true}
+        >
+          {/* Broadcast — outbound WhatsApp to groups of clients. */}
+          {whatsappConfigured && (
+            <BroadcastPanel
+              clients={broadcastClientRows}
+              followUpDueIds={followUpDueIds}
+              recheckDueIds={recheckDueIds}
+              activeIds={activeIds}
+            />
+          )}
+
+          {/* 📣 Weekly check-in poll + 3-strike adherence-drop scan. */}
+          {whatsappConfigured && (
+            <WeeklyPollPanel
+              whatsappConfigured={whatsappConfigured}
+              pollClients={pollClients}
+            />
+          )}
+
+          {/* 📅 Start-date reminders — clients whose plan published >5d ago
+              but haven't confirmed meal_plan_started_on. */}
+          {whatsappConfigured && (
+            <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
+          )}
+
+          {/* Catalogue commit — design 9A with change list disclosure */}
+          <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
+        </FmAlertGroup>
       </div>
 
       {/* Triage sections — collapsible, zero-count gets faded green badge */}
@@ -556,7 +1126,9 @@ export default async function DashboardV2() {
           </div>
         </FmPanel>
       ) : (
-        <TriageSections grouped={grouped} />
+        <div id="needs-attention" style={{ scrollMarginTop: 80 }}>
+          <TriageSections grouped={grouped} />
+        </div>
       )}
 
       {/* (Broadcast panel moved to the top — above triage sections.) */}

@@ -70,7 +70,7 @@ export async function SessionsPageShell({
         <Link
           href={`/clients-v2/${clientId}`}
           style={{
-            fontSize: 11.5,
+            fontSize: 12,
             color: "var(--fm-text-secondary)",
             textDecoration: "none",
             padding: "5px 10px",
