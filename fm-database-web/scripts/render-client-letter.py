@@ -1854,14 +1854,33 @@ def _strip_brand_from_name(name: str) -> str:
     return _BRAND_PREFIX_RE.sub("", name).strip()
 
 
+# Buy-source priority. When several products cover the same catalogue
+# ingredient, the lowest rank wins — VitaOne first (Shivani's primary
+# affiliate), FM Nutrition next (fallback retailer), then Amazon / iHerb.
+_SOURCE_RANK = {
+    "vitaone": 0,
+    "fmnutrition": 1,
+    "amazon": 2,
+    "iherb": 3,
+    "other": 4,
+}
+
+
+def _source_rank(src) -> int:
+    return _SOURCE_RANK.get((str(src or "other")).strip().lower(), 4)
+
+
 def _load_supplement_links_full() -> dict[str, dict]:
     """supplement_links.yaml expanded to {catalogue-slug → product record}.
 
     Each product entry carries a `covers:` list — the catalogue supplement
     slugs that product supplies. A blend covers several; this expands
     every covers list so a plan supplement looks up its product by slug.
-    First product wins if a slug is covered by more than one entry.
-    Consumed by _resolve_supplement_products."""
+
+    When several products cover the same slug, the highest-priority
+    `source:` wins — vitaone > fmnutrition > amazon > iherb > other — so
+    file order is irrelevant. Ties within the same source fall to the
+    first entry in the file. Consumed by _resolve_supplement_products."""
     if not _CUSTOM_LINKS_PATH.exists():
         return {}
     try:
@@ -1878,13 +1897,18 @@ def _load_supplement_links_full() -> dict[str, dict]:
                 "product_key": key,
                 "display_name": val.get("display_name") or "",
                 "url": val.get("url") or "",
+                "source": (str(val.get("source") or "other")).strip().lower(),
                 "dose": val.get("dose") or "",
                 "timing": val.get("timing") or "",
                 "take_with_food": val.get("take_with_food") or "",
             }
+            rank = _source_rank(record["source"])
             for cs in covers:
                 cs = str(cs).strip().lower()
-                if cs and cs not in out:
+                if not cs:
+                    continue
+                existing = out.get(cs)
+                if existing is None or rank < _source_rank(existing.get("source")):
                     out[cs] = record
         return out
     except Exception:
