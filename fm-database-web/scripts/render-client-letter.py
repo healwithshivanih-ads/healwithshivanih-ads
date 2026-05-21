@@ -1855,31 +1855,37 @@ def _strip_brand_from_name(name: str) -> str:
 
 
 def _load_supplement_links_full() -> dict[str, dict]:
-    """supplement_links.yaml keyed by catalogue slug → the full product
-    record {display_name, url, dose, timing, take_with_food}.
+    """supplement_links.yaml expanded to {catalogue-slug → product record}.
 
-    This is the PRODUCT layer: several catalogue slugs can point at one
-    product (a blend), and an entry may carry the product's own label
-    dose / timing. Consumed by _resolve_supplement_products."""
+    Each product entry carries a `covers:` list — the catalogue supplement
+    slugs that product supplies. A blend covers several; this expands
+    every covers list so a plan supplement looks up its product by slug.
+    First product wins if a slug is covered by more than one entry.
+    Consumed by _resolve_supplement_products."""
     if not _CUSTOM_LINKS_PATH.exists():
         return {}
     try:
         import yaml
         data = yaml.safe_load(_CUSTOM_LINKS_PATH.read_text()) or {}
         out: dict[str, dict] = {}
-        for _key, val in data.items():
+        for key, val in data.items():
             if not isinstance(val, dict):
                 continue
-            sl = str(val.get("slug") or "").strip().lower()
-            if not sl:
+            covers = val.get("covers")
+            if not isinstance(covers, list):
                 continue
-            out[sl] = {
+            record = {
+                "product_key": key,
                 "display_name": val.get("display_name") or "",
                 "url": val.get("url") or "",
                 "dose": val.get("dose") or "",
                 "timing": val.get("timing") or "",
                 "take_with_food": val.get("take_with_food") or "",
             }
+            for cs in covers:
+                cs = str(cs).strip().lower()
+                if cs and cs not in out:
+                    out[cs] = record
         return out
     except Exception:
         return {}
@@ -1917,10 +1923,10 @@ def _resolve_supplement_products(supplements: list[dict]) -> list[dict]:
             continue
         slug = (s.get("supplement_slug") or "").strip().lower()
         link = links.get(slug)
-        key = link["url"] if (link and link.get("url")) else ("slug:" + slug)
+        key = ("product:" + link["product_key"]) if link else ("slug:" + slug)
         sw = _resolve_start_week(s)
         if key not in groups:
-            if link and link.get("url"):
+            if link:
                 groups[key] = {
                     "supplement_slug": slug,
                     "display_name": _clean_product_name(link["display_name"]) or slug,
@@ -1931,7 +1937,8 @@ def _resolve_supplement_products(supplements: list[dict]) -> list[dict]:
                     "titration": "",
                     "duration_weeks": s.get("duration_weeks"),
                     "start_week": sw,
-                    "buy_link": link["url"],
+                    "buy_link": link.get("url") or "",
+                    "_linked_product": True,
                     "_members": [slug],
                 }
             else:
@@ -2006,10 +2013,21 @@ def _build_complete_shopping_list_html(
 
         # Reuse the same buy-link logic as the detailed schedule.
         buy_link_override = s.get("buy_link") or ""
-        link_info = _vitaone_url_only(name, slug=slug) if not buy_link_override else None
+        # A defined blend product whose URL is not on file yet — do NOT
+        # keyword-fallback (it would resolve to the wrong single-ingredient
+        # product). Show a clear placeholder instead.
+        pending_product_link = bool(s.get("_linked_product")) and not buy_link_override
+        link_info = (
+            _vitaone_url_only(name, slug=slug)
+            if not buy_link_override and not pending_product_link
+            else None
+        )
         if buy_link_override:
             buy_html = f'<a href="{buy_link_override}" target="_blank" rel="noopener noreferrer">Buy ↗</a>'
             badge = "Custom"
+        elif pending_product_link:
+            buy_html = '<span class="buy-badge buy-badge-iherb">Link from Shivani</span>'
+            badge = "Pending"
         elif link_info:
             _, url = link_info
             is_vitaone = "vitaone.in" in url
@@ -2448,10 +2466,19 @@ def _build_supplement_schedule_html(
             rationale = rationale.split("[evidence-tier note]")[0].strip()
         # Buy link: prefer explicit buy_link on item, then catalog lookup
         buy_link_override = s.get("buy_link") or ""
-        link_info = _vitaone_url_only(name, slug=slug) if not buy_link_override else None
+        # Defined blend product, URL not on file — no keyword fallback.
+        pending_product_link = bool(s.get("_linked_product")) and not buy_link_override
+        link_info = (
+            _vitaone_url_only(name, slug=slug)
+            if not buy_link_override and not pending_product_link
+            else None
+        )
         if buy_link_override:
             buy_html = f'<a href="{buy_link_override}" target="_blank" rel="noopener noreferrer">Buy ↗</a>'
             buy_badge = "Custom link"
+        elif pending_product_link:
+            buy_html = '<span class="buy-badge buy-badge-iherb">Link from Shivani</span>'
+            buy_badge = "Pending"
         elif link_info:
             product_name, url = link_info
             is_vitaone = "vitaone.in" in url
