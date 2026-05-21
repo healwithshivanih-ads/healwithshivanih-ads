@@ -1955,7 +1955,22 @@ def _resolve_supplement_products(supplements: list[dict]) -> list[dict]:
     return [groups[k] for k in order]
 
 
-def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int) -> str:
+def _week_start_date_label(anchor_ymd, week_n) -> str:
+    """Calendar date a plan week begins on — anchor + (week-1)x7 days,
+    e.g. '28 Jun'. Returns '' when the anchor is missing or unparseable."""
+    if not anchor_ymd:
+        return ""
+    try:
+        from datetime import date as _d, timedelta as _td
+        a = _d.fromisoformat(str(anchor_ymd)[:10])
+        return (a + _td(days=(int(week_n) - 1) * 7)).strftime("%-d %b")
+    except Exception:
+        return ""
+
+
+def _build_complete_shopping_list_html(
+    supplements: list[dict], plan_weeks: int, start_anchor_ymd=None
+) -> str:
     """Render the upfront shopping list — the "buy everything now" section
     that goes ABOVE the detailed dose schedule.
 
@@ -2006,8 +2021,14 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
             buy_html = f'<a href="{IHERB_AFFILIATE}" target="_blank" rel="noopener noreferrer">Search iHerb ↗</a> <span class="buy-badge buy-badge-iherb">iHerb</span>'
             badge = "iHerb"
 
-        # Phase label: "Start now" if start_week == 1, else "Starts week N".
-        phase_label = "Start now" if start_week == 1 else f"Starts week {start_week}"
+        # Phase label: "Start now" for week-1 items; otherwise a real
+        # calendar date when the start anchor is known (clients track
+        # dates, not "week N"), falling back to "week N".
+        if start_week == 1:
+            phase_label = "Start now"
+        else:
+            _dlabel = _week_start_date_label(start_anchor_ymd, start_week)
+            phase_label = f"Starts {_dlabel}" if _dlabel else f"Starts week {start_week}"
         phase_class = "phase-now" if start_week == 1 else "phase-later"
 
         items.append({
@@ -2046,7 +2067,7 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
         later_note = (
             f"<p class='shop-note-later'>"
             f"⏰ <strong>{later_count} {noun}</strong> in this list {verb} introduced "
-            f"in a later phase of your protocol — check the <em>Starts week</em> column. "
+            f"in a later phase of your protocol — check the <em>When to start</em> column. "
             f"For convenience, order {pronoun} upfront so you don't have to wait for shipping when the time comes."
             f"</p>"
         )
@@ -2193,7 +2214,7 @@ def _routine_slots(timing_str: str, dose_str: str = "") -> list[int]:
     return slots
 
 
-def _build_daily_routine_html(plan: dict) -> str:
+def _build_daily_routine_html(plan: dict, window_end_week: int | None = None) -> str:
     """The integrated 'Your Daily Routine' timeline.
 
     One chronological strip for the whole day — every supplement placed
@@ -2205,6 +2226,14 @@ def _build_daily_routine_html(plan: dict) -> str:
     """
     # Collapse to the products the client actually buys (blends → one line).
     supplements = _resolve_supplement_products(plan.get("supplement_protocol") or [])
+    # Current-window only: a consolidated / fortnight letter shows just
+    # what the client STARTS in this window — the every-2-weeks phase
+    # letters introduce the rest. Avoids handing a new client a scary
+    # 15-line list. The shopping list still carries everything.
+    if window_end_week is not None:
+        supplements = [
+            s for s in supplements if _resolve_start_week(s) <= window_end_week
+        ]
     if not supplements:
         return ""
 
@@ -2371,8 +2400,9 @@ def _build_daily_routine_html(plan: dict) -> str:
   {prn_html}
   <p class="routine-foot">
     Times are a guide — keep the <em>order</em> (which supplement sits with
-    which meal), and shift the clock to suit your day. Items marked
-    “from week N” join later; your shopping list says when to start each.
+    which meal), and shift the clock to suit your day. This routine covers
+    what you start now; your next letter introduces the later supplements
+    when the time comes.
   </p>
 </section>
 <script>
@@ -2385,7 +2415,9 @@ function printRoutine() {{
 """
 
 
-def _build_supplement_schedule_html(supplements: list[dict]) -> str:
+def _build_supplement_schedule_html(
+    supplements: list[dict], window_end_week: int | None = None
+) -> str:
     """
     Build a self-contained HTML section: visual timeline + sortable table.
     Generated purely from structured plan data — not from AI output — so
@@ -2395,6 +2427,13 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
         return ""
     # Collapse to the products the client actually buys (blends → one line).
     supplements = _resolve_supplement_products(supplements)
+    # Current-window only — see _build_daily_routine_html note.
+    if window_end_week is not None:
+        supplements = [
+            s for s in supplements if _resolve_start_week(s) <= window_end_week
+        ]
+    if not supplements:
+        return ""
 
     # Enrich each supplement with slot info and buy link
     rows: list[dict] = []
@@ -6564,15 +6603,31 @@ def main() -> int:
         )
         if supplements and html and inject_schedule:
             plan_weeks_int = int(plan.get("plan_period_weeks") or 12)
-            shopping_list_html = _build_complete_shopping_list_html(supplements, plan_weeks_int)
-            schedule_html = _build_supplement_schedule_html(supplements)
+            # Consolidated / meal-plan letters cover the FIRST fortnight —
+            # the routine + schedule show only what the client starts in
+            # weeks 1-2 (the every-2-weeks phase letters introduce the
+            # rest, so a new client isn't handed a scary 15-line list).
+            # The shopping list still carries everything, with calendar
+            # start dates instead of "week N".
+            _supp_window = 2 if letter_type in ("consolidated", "meal_plan") else None
+            _supp_anchor = (
+                plan.get("supplements_started_on")
+                or plan.get("meal_plan_started_on")
+                or plan.get("plan_period_start")
+            )
+            shopping_list_html = _build_complete_shopping_list_html(
+                supplements, plan_weeks_int, _supp_anchor
+            )
+            schedule_html = _build_supplement_schedule_html(
+                supplements, window_end_week=_supp_window
+            )
             combined = shopping_list_html + "\n" + schedule_html
             # The integrated Daily Routine timeline — placed at the TOP of
             # the letter (right before .content) so the client can't miss
             # it. It's the one they print and keep. Injected as a sibling
             # of .content so the print-routine CSS can isolate it.
             import re as _re_dr
-            routine_html = _build_daily_routine_html(plan)
+            routine_html = _build_daily_routine_html(plan, window_end_week=_supp_window)
             if routine_html:
                 _co = _re_dr.compile(r'(<div class="content"[^>]*>)')
                 _m = _co.search(html)
