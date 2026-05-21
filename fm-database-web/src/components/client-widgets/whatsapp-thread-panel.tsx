@@ -429,16 +429,15 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
         <div
           style={{
             marginTop: 4,
-            padding: "7px 10px",
-            background: "rgba(245, 158, 11, 0.06)",
-            border: "1px dashed rgba(245, 158, 11, 0.35)",
+            padding: "8px 11px",
+            background: "rgba(59, 130, 246, 0.06)",
+            border: "1px solid rgba(59, 130, 246, 0.25)",
             borderRadius: "var(--fm-radius-sm)",
             fontSize: 11,
-            color: "#92400e",
-            lineHeight: 1.5,
+            color: "#1e40af",
+            lineHeight: 1.55,
           }}
         >
-          ⏰ Free-text reply window closed.{" "}
           {(() => {
             try {
               const d = new Date(lastInboundAt);
@@ -450,22 +449,39 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                   hour: "numeric",
                   minute: "2-digit",
                   hour12: true,
+                  timeZone: IST,
                 });
               return (
                 <>
-                  {firstName}&apos;s last message was{" "}
-                  <strong>{fmt(d)}</strong>; the 24-hour window closed{" "}
-                  <strong>{fmt(closedAt)}</strong>.
+                  <strong>
+                    💬 You can still message {firstName} — use an approved
+                    template.
+                  </strong>{" "}
+                  Templates send anytime and are <strong>not</strong> affected
+                  by the 24-hour window. Pick one from the &quot;Send
+                  message&quot; panel above.
+                  <br />
+                  <span style={{ color: "var(--fm-text-tertiary)" }}>
+                    Only <em>free-text</em> typing is paused — {firstName}
+                    &apos;s last message was {fmt(d)}, so the free-text window
+                    closed {fmt(closedAt)}. It reopens for 24 hours when{" "}
+                    {firstName} next messages.
+                  </span>
                 </>
               );
             } catch {
-              return `${firstName}'s last message was over 24h ago.`;
+              return (
+                <>
+                  <strong>
+                    💬 You can still message {firstName} — use an approved
+                    template
+                  </strong>{" "}
+                  from the &quot;Send message&quot; panel above. Only free-text
+                  typing is paused (their last message was over 24h ago).
+                </>
+              );
             }
-          })()}{" "}
-          The window only reopens when {firstName} sends a new message — it
-          does <strong>not</strong> reset on its own or when you send a
-          template. To message now, use an approved template from the
-          &quot;Send message&quot; panel above.
+          })()}
         </div>
       )}
 
