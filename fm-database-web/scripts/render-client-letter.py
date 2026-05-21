@@ -6609,7 +6609,11 @@ def main() -> int:
             # rest, so a new client isn't handed a scary 15-line list).
             # The shopping list still carries everything, with calendar
             # start dates instead of "week N".
-            _supp_window = 2 if letter_type in ("consolidated", "meal_plan") else None
+            _supp_window = (
+                phase_end
+                if (letter_type == "meal_plan_phase" and phase_end)
+                else (2 if letter_type in ("consolidated", "meal_plan") else None)
+            )
             _supp_anchor = (
                 plan.get("supplements_started_on")
                 or plan.get("meal_plan_started_on")
