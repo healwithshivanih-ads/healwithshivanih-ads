@@ -399,7 +399,7 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
                 ))}
               </div>
               <p className="text-[10px] text-muted-foreground pt-1 border-t border-dashed">
-                Sender shows as <code>+91 89765 63971</code> (WABA display
+                Sender shows as <code>+91 88501 76753</code> (WABA display
                 name &ldquo;The Ochre Tree&rdquo; still PENDING_REVIEW at
                 Meta). Branding comes from the in-body sign-off.
               </p>

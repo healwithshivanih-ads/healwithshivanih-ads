@@ -276,7 +276,7 @@ export async function markDiscoveryLabPackSent(
  * Why this exists alongside the existing `wa.me/...` link button: the wa.me
  * flow opens WhatsApp on the coach's own phone, which sends from whatever
  * personal/business number is installed there — NOT from the registered
- * Cloud API number (+91 89765 63971). For unified branding under one number,
+ * Cloud API number (+91 88501 76753). For unified branding under one number,
  * this API send is preferable. The wa.me button is kept as a fallback for
  * when the API send fails (e.g. recipient outside 24h window and no template
  * yet, or temporary outage).

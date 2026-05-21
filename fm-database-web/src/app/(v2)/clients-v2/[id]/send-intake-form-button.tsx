@@ -387,7 +387,7 @@ export function SendIntakeFormButton({
               {phone ? (
                 <>
                   {/* Primary: send via WA server API — message arrives from
-                      the registered Cloud API number (+91 89765 63971),
+                      the registered Cloud API number (+91 88501 76753),
                       not the coach's personal phone. Uses fm_intake_invite. */}
                   <button
                     type="button"
@@ -413,7 +413,7 @@ export function SendIntakeFormButton({
                   )}
                   {/* Fallback: open the coach's own WhatsApp with pre-filled
                       text. Sends from the coach's personal/business number on
-                      their phone, NOT from +91 89765 63971. Kept for when
+                      their phone, NOT from +91 88501 76753. Kept for when
                       API send is offline or coach prefers to review/edit. */}
                   <a
                     href={waLink}
