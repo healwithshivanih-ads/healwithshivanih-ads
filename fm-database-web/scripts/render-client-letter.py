@@ -1854,6 +1854,107 @@ def _strip_brand_from_name(name: str) -> str:
     return _BRAND_PREFIX_RE.sub("", name).strip()
 
 
+def _load_supplement_links_full() -> dict[str, dict]:
+    """supplement_links.yaml keyed by catalogue slug → the full product
+    record {display_name, url, dose, timing, take_with_food}.
+
+    This is the PRODUCT layer: several catalogue slugs can point at one
+    product (a blend), and an entry may carry the product's own label
+    dose / timing. Consumed by _resolve_supplement_products."""
+    if not _CUSTOM_LINKS_PATH.exists():
+        return {}
+    try:
+        import yaml
+        data = yaml.safe_load(_CUSTOM_LINKS_PATH.read_text()) or {}
+        out: dict[str, dict] = {}
+        for _key, val in data.items():
+            if not isinstance(val, dict):
+                continue
+            sl = str(val.get("slug") or "").strip().lower()
+            if not sl:
+                continue
+            out[sl] = {
+                "display_name": val.get("display_name") or "",
+                "url": val.get("url") or "",
+                "dose": val.get("dose") or "",
+                "timing": val.get("timing") or "",
+                "take_with_food": val.get("take_with_food") or "",
+            }
+        return out
+    except Exception:
+        return {}
+
+
+def _clean_product_name(name: str) -> str:
+    """Trim a product's pack-size tail for client-facing display —
+    'Autoimmunity Care H. Pylori Care, 90 Veg Capsules' →
+    'Autoimmunity Care H. Pylori Care'. Keeps text before the first comma."""
+    if not name:
+        return name
+    return name.split(",")[0].strip()
+
+
+def _resolve_supplement_products(supplements: list[dict]) -> list[dict]:
+    """Collapse a plan's supplement_protocol into the PRODUCTS the client
+    actually buys.
+
+    A blend product (e.g. 'H. Pylori Care' = berberine + mastic gum +
+    bismuth + zinc carnosine) maps several catalogue slugs to one
+    supplement_links.yaml entry (same url). This groups them so the daily
+    routine, schedule and shopping list each show the product ONCE — by
+    name, with one buy link — never each ingredient.
+
+    A supplement_links entry may carry the product's own label dose /
+    timing / take_with_food (the blend's real dosing); when present those
+    WIN over the plan item's per-ingredient values. Supplements with no
+    link pass through unchanged as their own catalogue line.
+    """
+    links = _load_supplement_links_full()
+    groups: dict[str, dict] = {}
+    order: list[str] = []
+    for s in supplements:
+        if not isinstance(s, dict):
+            continue
+        slug = (s.get("supplement_slug") or "").strip().lower()
+        link = links.get(slug)
+        key = link["url"] if (link and link.get("url")) else ("slug:" + slug)
+        sw = _resolve_start_week(s)
+        if key not in groups:
+            if link and link.get("url"):
+                groups[key] = {
+                    "supplement_slug": slug,
+                    "display_name": _clean_product_name(link["display_name"]) or slug,
+                    "dose": link.get("dose") or s.get("dose") or "",
+                    "timing": link.get("timing") or s.get("timing") or "",
+                    "take_with_food": link.get("take_with_food") or s.get("take_with_food") or "",
+                    "coach_rationale": s.get("coach_rationale") or "",
+                    "titration": "",
+                    "duration_weeks": s.get("duration_weeks"),
+                    "start_week": sw,
+                    "buy_link": link["url"],
+                    "_members": [slug],
+                }
+            else:
+                g = dict(s)
+                g["start_week"] = sw
+                g["_members"] = [slug]
+                groups[key] = g
+            order.append(key)
+        else:
+            g = groups[key]
+            g["_members"].append(slug)
+            try:
+                g["start_week"] = min(int(g.get("start_week") or 1), int(sw or 1))
+            except (TypeError, ValueError):
+                pass
+            try:
+                if int(s.get("duration_weeks") or 0) > int(g.get("duration_weeks") or 0):
+                    g["duration_weeks"] = s.get("duration_weeks")
+            except (TypeError, ValueError):
+                pass
+    return [groups[k] for k in order]
+
+
 def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int) -> str:
     """Render the upfront shopping list — the "buy everything now" section
     that goes ABOVE the detailed dose schedule.
@@ -1871,6 +1972,8 @@ def _build_complete_shopping_list_html(supplements: list[dict], plan_weeks: int)
     """
     if not supplements:
         return ""
+    # Collapse to the products the client actually buys (blends → one line).
+    supplements = _resolve_supplement_products(supplements)
 
     items: list[dict] = []
     for s in supplements:
@@ -2100,7 +2203,8 @@ def _build_daily_routine_html(plan: dict) -> str:
     deterministically from plan data. This is THE section the client
     prints and keeps on the fridge.
     """
-    supplements = plan.get("supplement_protocol") or []
+    # Collapse to the products the client actually buys (blends → one line).
+    supplements = _resolve_supplement_products(plan.get("supplement_protocol") or [])
     if not supplements:
         return ""
 
@@ -2289,6 +2393,8 @@ def _build_supplement_schedule_html(supplements: list[dict]) -> str:
     """
     if not supplements:
         return ""
+    # Collapse to the products the client actually buys (blends → one line).
+    supplements = _resolve_supplement_products(supplements)
 
     # Enrich each supplement with slot info and buy link
     rows: list[dict] = []
