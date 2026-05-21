@@ -72,6 +72,8 @@ import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 // case we want to revive a read-only twin later; not imported anywhere
 // after this change.
 import { SOAPNotePanel } from "@/components/client-widgets/soap-note-panel";
+import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
+import { PregnancySafetyPanel } from "@/components/client-widgets/pregnancy-safety-panel";
 import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { BookingDueBanner } from "@/components/client-widgets/booking-due-banner";
 import { ClientBookingsPanel } from "@/components/client-widgets/client-bookings-panel";
@@ -1432,6 +1434,14 @@ export default async function ClientV2Page({
                         </FmPanel>
                       );
                     })()}
+                    {/* Drug-nutrient depletions for current meds +
+                        pregnancy/lactation supplement-safety flags. Both
+                        self-hide when nothing applies. Re-wired here
+                        during the main→v2 merge audit — the components
+                        survived the v1→v2 migration but lost their page
+                        wiring (PRs #33 + #36). */}
+                    <MedicationImpactPanel clientId={id} />
+                    <PregnancySafetyPanel clientId={id} />
         </div>
       </div>
 
