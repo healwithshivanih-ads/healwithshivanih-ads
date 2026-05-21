@@ -5267,7 +5267,17 @@ MOVEMENT & WELLNESS:
             "- Meals MUST respect dietary preference (" + diet_pref + ") and avoid (" + foods_to_avoid + ").\n"
             "- CRITICAL: NEVER use reported triggers in any meal: " + reported_triggers + "\n"
             "- INCORPORATE non-negotiables (" + non_negotiables + ") with a workaround if needed.\n"
-            "- Use specific Indian dish names. Week 2 should vary from Week 1."
+            "- Use specific Indian dish names. Week 2 should vary from Week 1.\n\n"
+            "**3b-ii. Foods to Reduce or Avoid — ALWAYS include this section.**\n"
+            "AFTER the two meal-plan tables, ALWAYS add a clear section headed\n"
+            "## \U0001F6AB Foods to Reduce or Avoid\n"
+            "Even for a detailed plan the client needs the reduce/avoid list "
+            "spelled out explicitly. Render the coach's plan list below, each "
+            "as a bullet with a brief one-line reason:\n"
+            + ("\n".join("  - " + str(x) for x in nutrition_reduce)
+               if nutrition_reduce else "  - (coach specified none)")
+            + "\nAlso restate inline: reported triggers (NEVER eat) — "
+            + reported_triggers + "; dietary exclusions — " + foods_to_avoid + "."
         )
         recipe_appendix_instr = (
             "Detailed recipes for every ✦ dish. Format each as:\n"
@@ -5307,7 +5317,11 @@ MOVEMENT & WELLNESS:
             "  - Stop eating 3 hrs before bed\n"
             "  - [client-specific principle, e.g. \"chai with milk OK in the morning — your non-negotiable — but no sugar after week 2\"]\n\n"
             "## 🍽 Foods to emphasise\n"
-            "Two short paragraphs (NOT a daily plan):\n"
+            "START by listing the coach's plan ADD foods verbatim as bullets "
+            "(do not drop any): "
+            + ("; ".join(str(x) for x in nutrition_add) if nutrition_add else "see protocol")
+            + "\n"
+            "THEN two short paragraphs (NOT a daily plan):\n"
             "  - **In-season picks for " + location_str + " this " + season + "**: 6–10 specific items "
             "(vegetables, fruits, grains, fats, proteins) that suit the client's protocol AND respect "
             "dietary preference (" + diet_pref + ").\n"
@@ -5316,6 +5330,10 @@ MOVEMENT & WELLNESS:
             "paneer-bhurji with a small fruit; avoid the sweet upma or sugar-loaded poha that spike "
             "mid-morning energy.\"\n\n"
             "## 🚫 Foods to reduce or avoid\n"
+            "START by listing the coach's plan REDUCE/AVOID foods verbatim as "
+            "bullets (do not drop any): "
+            + ("; ".join(str(x) for x in nutrition_reduce) if nutrition_reduce else "see protocol")
+            + "\n"
             "- Reported triggers (NEVER eat): " + reported_triggers + "\n"
             "- Dietary exclusions: " + foods_to_avoid + "\n"
             "- 4–6 more items specific to this client's protocol — name them, brief reason each "
