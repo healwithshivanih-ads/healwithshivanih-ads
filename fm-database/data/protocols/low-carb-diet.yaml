@@ -1,0 +1,26 @@
+slug: low-carb-diet
+display_name: Low-Carb Diet
+category: other
+summary: A dietary strategy that strategically reduces carbohydrate intake to reset
+  metabolism, improve insulin signalling, reduce inflammation, and restore metabolic
+  flexibility. Ranges from moderate low-carb (25–30% carbs) to ketogenic (5–10% carbs)
+  with clinical applications in diabetes, PCOS, NAFLD, autoimmune conditions, obesity,
+  and cognitive decline.
+evidence_tier: fm_specific_thin
+updated_at: '2026-05-11'
+updated_by: shivani
+version: 1
+status: active
+notes_for_coach: Stub created via /catalogue/cleanup — flesh out phases, indications,
+  foods, supplements before using in a plan.
+sources:
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/
+  quote: LCHF is not a diet trend. It is a metabolic intervention that restores insulin
+    signaling and energy stability.
+aliases:
+- metabolic-health-lchf
+- ketogenic diet
+- keto
+- low-carb diet
+- metabolic reprogramming

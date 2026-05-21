@@ -1,14 +1,34 @@
 slug: blood-sugar-dysfunction
 display_name: Blood Sugar Dysfunction
 aliases:
+- blood glucose imbalance
+- type 2 diabetes risk
+- IR
 - dysglycaemia
-- glucose dysregulation
+- dysglycemia
 - glycaemic imbalance
 - insulin resistance
-- IR
-- type 2 diabetes risk
-- dysglycemia
-- blood glucose imbalance
+- glucose dysregulation
+- insulin-resistance
+- impaired insulin sensitivity
+- blood sugar dysregulation
+- glucose metabolism impairment
+- metabolic insulin dysfunction
+- cellular insulin insensitivity
+- Syndrome X
+- metabolic syndrome
+- pre-diabetes
+- hyperinsulinemia
+- glycemic dysregulation
+- metabolic syndrome nutrition
+- blood sugar imbalance
+- insulin-resistance-metabolic-syndrome
+- insulin dysregulation
+- cardiometabolic risk
+- prediabetes
+- impaired fasting glucose
+- impaired glucose tolerance
+- borderline diabetes
 summary: A spectrum of conditions ranging from insulin resistance and prediabetes
   to type 2 diabetes, characterized by impaired insulin secretion or tissue responsiveness
   to insulin. Managed through lifestyle, diet, exercise, and targeted micronutrient
@@ -72,6 +92,36 @@ sources:
   location: Micronutrients for Insulin Sensitivity
   quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
     body do not respond to insulin as expected.
+- id: thurlow-microbiome-session-4
+  location: Session 4 — Estrogen, Hormones, and the Microbiome
+  quote: We know that estrogen is an insulin-sensitizing hormone. We know that it
+    influences fat storage patterns.
+- id: vitaone-blood-sugar-cheatsheet
+  location: Insulin Resistance Cheatsheet — Clinical Symptoms
+  quote: Elevated fasting insulin, HOMA-IR
+- id: vitaone-cvs-risk-assessment
+  location: Lab Results (Slide 16)
+  quote: Insulin resistance increases risk
+- id: coconote-fm-biomarkers-cvs
+  location: Metabolic Dysfunction
+  quote: So if you can find out the insulin resistance, then that insulin resistance
+    is actually a risk for cardio, metabolic, or cardiovascular disease.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or
+    hair symptoms are linked to glycemic control.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Magnesium, potassium, chromium, omega-3, inositol, and metabolic joint or
+    hair symptoms are linked to glycemic control.
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Chronic cortisol elevation, leptin resistance, low adiponectin, PCOS, obesity,
+    and stress-related glucose dysregulation are linked to insulin resistance.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/ and POST https://www.instagram.com/p/DX6sbxqDFJ5/
+  quote: Insulin resistance is the primary driver in most metabolic diseases → TG:HDL
+    ratio is an early marker of insulin resistance
 version: 3
 status: active
 updated_at: '2026-05-04'

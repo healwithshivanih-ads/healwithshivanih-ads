@@ -3,6 +3,11 @@ display_name: Leaky Gut as Root Driver of Autoimmunity
 aliases:
 - gut-autoimmune axis
 - intestinal permeability and autoimmune disease
+- autoimmunity-leaky-gut-triad
+- Fasano triad
+- autoimmune triad
+- autoimmunity-triad
+- three-hit model of autoimmunity
 summary: 'Dr. Fasano''s model posits three co-factors for autoimmunity: genetic predisposition,
   environmental antigen exposure, and increased intestinal permeability. Leaky gut
   allows foreign antigens to enter the bloodstream where molecular mimicry triggers
@@ -40,6 +45,17 @@ sources:
     that is called genetic predisposition… And here is a classical example… leaky
     small intestine or leaky gut, that is the third important step or third important
     mechanism or third important factor.
+- id: coconote-fm-intestinal-permeability
+  location: Three Factors for Autoimmunity
+  quote: Now if you look at the basic pathophysiology of autoimmunity, and Dr. Fasano
+    had mentioned, it's clear that there are three factors that are very important
+    for autoimmune conditions and autoimmunity.
+- id: coconote-fm-body-composition-bmi
+  location: Autoimmunity / Case Discussion Section
+  quote: When you see a family history of autoimmunity, they've got the genetics to
+    develop autoimmunity. When you see significant antibiotic use and pain medication
+    use, they are at risk for increased intestinal permeability, which is that second
+    piece of that triad of autoimmunity. And then you've got the trigger.
 version: 1
 status: active
 updated_at: '2026-05-05'

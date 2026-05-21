@@ -1,16 +1,16 @@
 slug: cold-intolerance
 display_name: Cold Intolerance
 aliases:
-- always cold
-- feeling cold
-- cold hands and feet
-- heat intolerance
-- sensitivity to cold
-- feeling cold all the time
-- low body temperature
-- cold extremities
-- feeling cold when others don't
 - temperature sensitivity
+- always cold
+- cold hands and feet
+- low body temperature
+- heat intolerance
+- feeling cold when others don't
+- feeling cold all the time
+- cold extremities
+- sensitivity to cold
+- feeling cold
 category: metabolic
 severity: common
 description: Increased sensitivity to cold temperatures due to reduced oxygen delivery

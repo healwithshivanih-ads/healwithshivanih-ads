@@ -1,15 +1,17 @@
 slug: candida-overgrowth
 display_name: Candida / Fungal Overgrowth
 aliases:
-- candidiasis
-- SIFO
 - small intestinal fungal overgrowth
 - yeast overgrowth
-- intestinal candida
-- intestinal candidiasis
 - candida dysbiosis
+- candidiasis
+- SIFO
+- intestinal candidiasis
 - chronic candida
+- intestinal candida
 - fungal dysbiosis
+- fungal-overgrowth
+- candida overgrowth
 summary: Fungal overgrowth, particularly Candida, is identified as a dysbiotic pattern
   in the gut microbiome. It is addressed through broad-spectrum herbal antifungals
   (caprylic acid, garlic oil, oil of oregano) and, in severe cases, pharmaceutical
@@ -71,6 +73,10 @@ sources:
   location: Therapeutic Options Section
   quote: Antifungal, already we have discussed the capillic acid, garlic oil, and
     oil of oregano, they are the antifungal.
+- id: coconote-fm-approach-inflammation
+  location: Infection Triggers – Fungal Infection
+  quote: fungal overgrowth actually suppress the immune system... low IgA antibody,
+    particularly IgA antibody.
 version: 4
 status: active
 updated_at: '2026-05-05'

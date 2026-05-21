@@ -1,12 +1,15 @@
 slug: gut-microbiome
 display_name: Gut Microbiome
 aliases:
+- intestinal microbiota
+- gastrointestinal microbiome
+- GI microbiome
 - gut flora
 - microbiota
 - gut bacteria
-- gastrointestinal microbiome
-- GI microbiome
-- intestinal microbiota
+- gut-microbiome-and-gut-flora
+- microbiome
+- gut microbiome
 summary: The gut microbiome is a complex ecosystem communicating with the vaginal,
   urinary, oral, and even brain microbiomes. Disruption by antibiotics, food additives,
   emulsifiers, glyphosate, and dietary restriction leads to dysbiosis, SIBO, and systemic
@@ -54,6 +57,29 @@ sources:
   location: Microbiome interconnection discussion
   quote: The gastrointestinal microbiome talks to the vaginal microbiome, the urinary
     microbiome, the prostate microbiome.
+- id: barbara-oneil-gi-tract
+  location: Microbiome Section
+  quote: The microbiome is made up predominantly of lactobacillus acidophilus and
+    bifidus bacteria. They're considered the two main microorganisms living in the
+    gastrointestinal tract and there are probably, I'd endeavor to say, even millions
+    of these microorganisms.
+- id: thurlow-microbiome-mondays
+  location: 'Session 1: Microbiome Foundations and Hormone Shifts'
+  quote: we have 40 trillion with a T, bacteria, viruses, fungi, protozoa that encompass
+    the gut microbiome. There are more of them than there are of human cells in the
+    body.
+- id: thurlow-microbiome-session-6
+  location: Session 6 — Main Transcript, Microbiome Section
+  quote: We've talked about the microbiome, 40 trillion bacteria, viruses, fungi,
+    protozoa that encompass the part of our large intestine and colon.
+- id: thurlow-microbiome-session-8
+  location: Session 8 — gut-immune interface segment
+  quote: 70% of our immune system lives in the gut... the microbiome regulates the
+    immune response.
+- id: thurlow-microbiome-session-7
+  location: Fiber and estrogen section [00:07:10]
+  quote: fiber is really important for estrogen metabolism... the estrobolome is the
+    kind of key estrogen processing center of the microbiome.
 version: 2
 status: active
 updated_at: '2026-05-05'

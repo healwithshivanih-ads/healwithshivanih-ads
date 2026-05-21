@@ -1,11 +1,11 @@
 slug: inflammation
 display_name: Inflammation
 aliases:
-- systemic inflammation
-- inflammatory state
 - inflamed body
+- inflammatory state
 - body inflammation
 - chronic inflammation
+- systemic inflammation
 category: metabolic
 severity: concerning
 description: A chronic low-grade inflammatory state proposed to arise from an overly

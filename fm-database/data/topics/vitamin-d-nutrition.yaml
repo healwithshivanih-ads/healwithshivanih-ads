@@ -2,8 +2,12 @@ slug: vitamin-d-nutrition
 display_name: 'Vitamin D: Food Sources, Sun Exposure & Deficiency'
 aliases:
 - dietary vitamin D
-- vitamin D deficiency
 - cholecalciferol
+- vitamin D deficiency
+- vitamin-d-deficiency
+- low vitamin D
+- hypovitaminosis D
+- vitamin D insufficiency
 summary: Vitamin D is a fat-soluble vitamin found in few foods (fatty fish, liver,
   egg yolk) and fortified products. It is also synthesized via sun exposure. It regulates
   calcium and phosphorus, supports bone health, cell growth, and immune function.
@@ -32,6 +36,11 @@ sources:
   quote: Vitamin D helps the body absorb calcium and regulates both calcium and phosphorous
     levels in the blood. It plays an important role in bone growth and maintenance,
     influences cell growth and development, and is required for proper immune function.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Vitamin D'
+  quote: Research indicates that the current RDAs may be too low for supporting optimal,
+    non-skeletal health. Much higher intake may be required to maintain adequate blood
+    levels.
 version: 1
 status: active
 updated_at: '2026-05-04'

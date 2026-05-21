@@ -1,9 +1,11 @@
 slug: magnesium-deficiency
 display_name: Magnesium Deficiency
 aliases:
-- hypomagnesemia
-- low magnesium
 - magnesium insufficiency
+- low magnesium
+- hypomagnesemia
+- magnesium-insufficiency
+- magnesium deficiency
 summary: Magnesium is the second most abundant intracellular mineral. Widespread deficiency
   results from declining food-source concentrations, soil depletion, processed-food
   consumption, stress, diuretic medications, gut malabsorption, and increased physiological
@@ -49,6 +51,10 @@ sources:
   location: Introduction
   quote: Most of us in today's world are deficient in magnesium because of the low
     availability of magnesium in our food sources, because of the environmental conditions.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Magnesium'
+  quote: Magnesium inadequacy is very common, with almost half of adults in the US
+    getting less than the RDA.
 version: 1
 status: active
 updated_at: '2026-05-05'

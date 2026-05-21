@@ -1,9 +1,19 @@
 slug: nutrient-deficiency-depression
 display_name: Nutrient Deficiencies Mimicking Depression
 aliases:
-- nutritional depression
-- biochemical depression
 - pseudo-depression from deficiency
+- biochemical depression
+- nutritional depression
+- depression-like-symptoms
+- nutritional mood disorder
+- depression mimic
+- nutrient-related mood changes
+- biochemical mood disorder
+- low mood
+- anhedonia
+- apathy
+- emotional flatness
+- low reward sensitivity
 summary: Deficiencies in B12, folate, omega-3 fatty acids, and magnesium can produce
   depressive symptoms through disrupted methylation, impaired neurotransmitter synthesis,
   neuroinflammation, and NMDA/GABA dysregulation. Correcting these deficiencies may
@@ -39,6 +49,19 @@ sources:
   location: How Nutrient Deficiencies (B12, Folate, Omega-3, Magnesium) Mimic Depression
   quote: Often, it's a biochemical signal of unmet nutritional needs affecting neurotransmitter
     synthesis, mitochondrial function, and inflammation.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source states that depression can be a biochemical signal of unmet nutritional
+    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Page 23
+  quote: The source states that depression can be a biochemical signal of unmet nutritional
+    needs affecting neurotransmitter synthesis, mitochondrial function, and inflammation.
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Chronic stress, low serotonin, low dopamine, low endorphins, loneliness,
+    digital overstimulation, low DHEA, and nutrient insufficiency are linked to mood
+    symptoms.
 version: 1
 status: active
 updated_at: '2026-05-02'

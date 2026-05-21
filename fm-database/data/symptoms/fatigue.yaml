@@ -1,42 +1,42 @@
 slug: fatigue
 display_name: Fatigue
 aliases:
-- tiredness
-- exhaustion
-- persistent-fatigue
-- feeling-drained
-- low energy
-- persistent fatigue
-- chronic fatigue
-- no stamina
-- post-COVID fatigue
-- chronic tiredness
-- immune fatigue
-- always tired
-- no energy
 - feeling wiped out
 - feeling drained
-- lack of energy
-- low vitality
-- energy crash
-- post-exertional-crashes
-- afternoon-fatigue
-- weakness
-- energy crashes
-- feeling run-down
-- sluggishness after meals
-- post-exertional crash
-- adrenal fatigue
-- mental fatigue
-- physical fatigue
-- feeling very busy
-- feeling run down
-- feeling fatigued
-- constant tiredness
+- no stamina
+- always tired
 - yawning
-- cellular fatigue
-- wired but tired
+- persistent fatigue
+- no energy
+- energy crash
+- feeling very busy
+- energy crashes
+- post-exertional crash
+- feeling-drained
+- mental fatigue
+- exhaustion
+- feeling run down
 - can't get going
+- lack of energy
+- cellular fatigue
+- feeling run-down
+- tiredness
+- constant tiredness
+- weakness
+- low energy
+- low vitality
+- immune fatigue
+- wired but tired
+- post-exertional-crashes
+- persistent-fatigue
+- feeling fatigued
+- chronic tiredness
+- physical fatigue
+- sluggishness after meals
+- post-COVID fatigue
+- adrenal fatigue
+- afternoon-fatigue
+- chronic fatigue
 category: constitutional
 severity: common
 description: Persistent low energy or exhaustion linked to low cortisol, low DHEA,

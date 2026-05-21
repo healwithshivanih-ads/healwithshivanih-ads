@@ -1,0 +1,15 @@
+slug: intermittent-fasting
+display_name: Intermittent Fasting
+category: other
+summary: Cyclical eating patterns that alternate calorie restriction with normal eating
+  windows, including Time Restricted Feeding, Alternate Day Fasting, Modified Fasting,
+  and the Fasting Mimicking Diet, each with distinct protocols and evidence profiles
+  for cardiometabolic benefit.
+evidence_tier: fm_specific_thin
+updated_at: '2026-05-11'
+updated_by: shivani
+version: 1
+status: active
+notes_for_coach: Stub created via /catalogue/cleanup — flesh out phases, indications,
+  foods, supplements before using in a plan.
+aliases: []

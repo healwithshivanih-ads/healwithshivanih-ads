@@ -1,9 +1,18 @@
 slug: food-sensitivity
 display_name: Food Sensitivity
 aliases:
+- delayed food reaction
 - food intolerance
 - non-IgE food reaction
-- delayed food reaction
+- food-sensitivities
+- food reactivity
+- delayed food hypersensitivity
+- non-allergic food reactions
+- food-sensitivity-igg-iga-mediated
+- delayed hypersensitivity food reaction
+- type 3 hypersensitivity
+- IgG food sensitivity
+- IgA food sensitivity
 summary: A delayed, non-IgE, dose-dependent immune or digestive reaction to foods
   that can drive chronic inflammation, gut dysfunction, brain fog, joint pain, and
   mood issues. Distinguished from IgE-mediated food allergy by delayed onset (hours–days)
@@ -37,6 +46,16 @@ sources:
   location: Food Allergy vs Food Sensitivity — Page 04
   quote: A delayed immune or digestive response (non-IgE). Dose-dependent, not life-threatening,
     but can drive chronic inflammation.
+- id: thurlow-microbiome-session-2
+  location: Food sensitivity vs allergy differentiation
+  quote: Food intolerances can sometimes be related to lacking an enzyme, like think
+    about people that have a lactase deficient, or lactose deficiency, they lack the
+    enzyme lactase or a food sensitivity, which is a delayed immune response or it
+    can be an inflammatory response.
+- id: coconote-fm-food-allergies-sensitivities
+  location: Definition of Food Reactions Section
+  quote: food sensitivity, that the immune reaction with the food that is because
+    of IgA antibody or IgG antibody and we call them as a delayed hypersensitivity
 version: 1
 status: active
 updated_at: '2026-05-02'

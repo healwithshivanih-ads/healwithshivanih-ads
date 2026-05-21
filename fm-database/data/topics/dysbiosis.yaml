@@ -1,13 +1,21 @@
 slug: dysbiosis
 display_name: Gut Dysbiosis
 aliases:
-- microbial imbalance
-- microbiome dysbiosis
-- gut dysbiosis
-- LPS endotoxemia
-- microbiome imbalance
 - gut flora imbalance
+- microbiome dysbiosis
+- microbiome imbalance
 - intestinal dysbiosis
+- LPS endotoxemia
+- gut dysbiosis
+- microbial imbalance
+- gut-dysbiosis
+- dysbiotic bacteria
+- good vs bad bacteria imbalance
+- dysbiotic pattern
+- gut health
+- gut-dysbiosis-estrogen
+- estrobolome dysfunction
+- gut estrogen reabsorption
 summary: An imbalance in the gut microbial community characterised by decline in beneficial
   bacteria and overgrowth of pathogenic species. In this case, dysbiosis was identified
   as a driver of hypochlorhydria, intestinal barrier compromise, nutrient malabsorption,
@@ -84,6 +92,41 @@ sources:
   location: Blood Report Analysis
   quote: Dysbiosis — when the number or the bacterial composition in your gut changes,
     the good ones decline, the bad ones are on the rise.
+- id: vitaone-gut-cheatsheet
+  location: Gut Health Cheatsheet
+  quote: Imbalance of gut microbiota (good vs bad bacteria) — Poor diet, antibiotics,
+    toxins, low fiber, stress — Broad-spectrum probiotics, Prebiotics, Polyphenols,
+    Butyrate
+- id: vitaone-elimination-diet-cheatsheet
+  location: FODMAP Diet Cheatsheet — Introduction
+  quote: They're not 'bad foods' - they're poorly absorbed carbs that ferment and
+    feed dysbiotic bacteria, driving IBS, SIBO, and bloating.
+- id: coconote-fm-approach-inflammation
+  location: Gut Dysbiosis and Infection Triggers
+  quote: dysbiosis means you have an imbalance of good vs bad bacteria and when you
+    have a lot of bad bacteria, that creates the chronic bacterial infections.
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Gut Dysbiosis and Pathogens Lecture
+  quote: So whenever you want to treat any kind of infection, consider doing them
+    once and all. Don't try and wait and don't try and wait.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
+    joint pain, and hair loss support.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Gut health is linked to thiamin absorption, nutrient absorption, autoimmune
+    joint pain, and hair loss support.
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Stress, loneliness, digital overstimulation, gut-brain disruption, altered
+    microbiome, IBS/IBD, and probiotic or prebiotic support are discussed.
+- id: coconote-fm-estrogen-dominance
+  location: Dysbiosis and Estrogen
+  quote: If you have a dysbiosis, there is increased beta glucuronidase activity,
+    which increases deconjugation of estrogen. The estrogen that came as conjugated,
+    now it will again separate. It will again deconjugate and go inside the bloodstream
+    and increase the level of estrogen.
 version: 4
 status: active
 updated_at: '2026-05-05'

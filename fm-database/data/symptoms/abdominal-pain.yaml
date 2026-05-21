@@ -1,14 +1,14 @@
 slug: abdominal-pain
 display_name: Abdominal Pain
 aliases:
-- stomach pain
 - belly pain
-- gut pain
 - stomach cramps
-- tummy ache
+- gut pain
+- stomach pain
 - abdominal cramping
-- epigastric pain
+- tummy ache
 - visceral pain
+- epigastric pain
 category: gi
 severity: common
 description: Pain or cramping in the abdominal region related to gas production, intestinal

@@ -1,16 +1,23 @@
 slug: gut-brain-axis
 display_name: Gut-Brain Axis
 aliases:
-- gut-brain connection
-- microbiota-gut-brain axis
-- brain-gut axis
 - enteric nervous system connection
-- mind-gut connection
-- enteric nervous system communication
-- enteric-nervous-system-dysfunction
-- psychobiotics
 - vagus nerve gut connection
+- psychobiotics
+- microbiota-gut-brain axis
 - agni-mind-gut axis
+- gut-brain connection
+- enteric nervous system communication
+- mind-gut connection
+- brain-gut axis
+- enteric-nervous-system-dysfunction
+- gut-brain-axis-dysfunction
+- vagal dysregulation
+- second brain dysfunction
+- gut-brain-connection
+- gut-psychology
+- gut-mind axis
+- microbiome-brain axis
 summary: The bidirectional communication network between the enteric nervous system
   and the central nervous system, mediated by the vagus nerve, gut microbiome, and
   neuroendocrine signals. Stress, breathing patterns, and meal behaviors significantly
@@ -116,6 +123,14 @@ sources:
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: Stress hormones alter microbiome diversity, ↑ intestinal permeability ('leaky
     gut').
+- id: coconote-fm-sibo-sifo
+  location: Pathogenesis of SIBO
+  quote: The first and the most common pathogenesis or dysfunction that is responsible
+    for forming the SIBO is the microbiota gut-brain axis.
+- id: barbara-oneil-healing-mind
+  location: Gut-Brain Connection Section
+  quote: showing that the functioning of the gut directly affects the functioning
+    of the brain.
 version: 7
 status: active
 updated_at: '2026-05-04'

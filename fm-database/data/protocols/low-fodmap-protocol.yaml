@@ -1,128 +1,156 @@
 slug: low-fodmap-protocol
 display_name: Low-FODMAP Protocol
 aliases:
-  - low-fodmap
-  - fodmap
-  - fodmap-elimination
-  - monash-low-fodmap
+- fodmap-elimination
+- fodmap
+- monash-low-fodmap
+- low-fodmap
+- gut-health-fodmap-sibo
+- low-FODMAP
+- small intestinal bacterial overgrowth
+- IBS
+- gut dysbiosis
 category: elimination_diet
-summary: |
-  A 4–6 week elimination of fermentable short-chain carbs (FODMAPs) that
+summary: 'A 4–6 week elimination of fermentable short-chain carbs (FODMAPs) that
+
   feed gut bacteria — first-line for IBS-D / IBS-C / SIBO-suspected
+
   bloating. Followed by structured FODMAP reintroduction across 6–8 weeks
+
   to identify which categories trigger symptoms (fructans, GOS, lactose,
+
   fructose, polyols).
+
+  '
 indications:
-  - IBS (any subtype) — diagnosed or suspected
-  - SIBO suspected (post-meal bloating, distension, gas)
-  - bloating that worsens with onions / garlic / dal / wheat
-  - gas + alternating loose / constipated stools
-  - failed other elimination diets but symptoms persist
+- IBS (any subtype) — diagnosed or suspected
+- SIBO suspected (post-meal bloating, distension, gas)
+- bloating that worsens with onions / garlic / dal / wheat
+- gas + alternating loose / constipated stools
+- failed other elimination diets but symptoms persist
 contraindications:
-  - eating disorder history
-  - low body weight (BMI < 18.5)
-  - severe nutrient deficiencies (low-FODMAP can be restrictive long-term)
-  - children
+- eating disorder history
+- low body weight (BMI < 18.5)
+- severe nutrient deficiencies (low-FODMAP can be restrictive long-term)
+- children
 typical_duration_weeks: 12
 phases:
-  - name: "Strict elimination (weeks 1–4)"
-    weeks: 4
-    summary: |
-      Remove all high-FODMAP foods. Use Monash University FODMAP app for
-      portion-specific guidance (FODMAP load is dose-dependent).
-    key_actions:
-      - cut high-FODMAP fruits (apple, pear, mango, watermelon, dried fruit)
-      - cut high-FODMAP vegetables (onion, garlic, cauliflower, mushroom, asparagus)
-      - cut wheat / rye / barley (FODMAPs are in fructans, not gluten — gluten-free wheat substitutes still high-FODMAP)
-      - cut legumes (dal, chickpeas, beans — major fructans + GOS)
-      - cut dairy with lactose (milk, soft cheeses; lactose-free dairy + hard cheese OK)
-      - cut artificial sweeteners (sorbitol, mannitol, xylitol, isomalt)
-      - track symptoms daily
-  - name: "Structured reintroduction (weeks 5–10)"
-    weeks: 6
-    summary: |
-      Test each FODMAP category one at a time. Reintroduce a small portion,
-      track for 3 days, increase if no reaction.
-    key_actions:
-      - week 5 — fructans (small wheat dose — 1 slice bread or 30g pasta)
-      - week 6 — GOS (small dal dose — 1/2 cup cooked dal)
-      - week 7 — lactose (1 cup milk or yogurt)
-      - week 8 — fructose excess (1 mango or 1 tbsp honey)
-      - week 9 — polyols (1/4 avocado or 6 mushrooms)
-      - week 10 — sorbitol (1 stone fruit — peach, plum)
-  - name: "Personalised FODMAP balance (week 11+)"
-    weeks: 4
-    summary: |
-      Build a long-term diet that includes low-FODMAP staples + tolerated
-      portions of high-FODMAP foods. Avoid only the categories that trigger.
-    key_actions:
-      - reintroduce all categories below personal threshold
-      - reduce / avoid only confirmed triggers
-      - rotate FODMAP foods to prevent intolerance build-up
-      - re-test triggers every 6 months — tolerance often returns
+- name: Strict elimination (weeks 1–4)
+  weeks: 4
+  summary: 'Remove all high-FODMAP foods. Use Monash University FODMAP app for
+
+    portion-specific guidance (FODMAP load is dose-dependent).
+
+    '
+  key_actions:
+  - cut high-FODMAP fruits (apple, pear, mango, watermelon, dried fruit)
+  - cut high-FODMAP vegetables (onion, garlic, cauliflower, mushroom, asparagus)
+  - cut wheat / rye / barley (FODMAPs are in fructans, not gluten — gluten-free wheat
+    substitutes still high-FODMAP)
+  - cut legumes (dal, chickpeas, beans — major fructans + GOS)
+  - cut dairy with lactose (milk, soft cheeses; lactose-free dairy + hard cheese OK)
+  - cut artificial sweeteners (sorbitol, mannitol, xylitol, isomalt)
+  - track symptoms daily
+- name: Structured reintroduction (weeks 5–10)
+  weeks: 6
+  summary: 'Test each FODMAP category one at a time. Reintroduce a small portion,
+
+    track for 3 days, increase if no reaction.
+
+    '
+  key_actions:
+  - week 5 — fructans (small wheat dose — 1 slice bread or 30g pasta)
+  - week 6 — GOS (small dal dose — 1/2 cup cooked dal)
+  - week 7 — lactose (1 cup milk or yogurt)
+  - week 8 — fructose excess (1 mango or 1 tbsp honey)
+  - week 9 — polyols (1/4 avocado or 6 mushrooms)
+  - week 10 — sorbitol (1 stone fruit — peach, plum)
+- name: Personalised FODMAP balance (week 11+)
+  weeks: 4
+  summary: 'Build a long-term diet that includes low-FODMAP staples + tolerated
+
+    portions of high-FODMAP foods. Avoid only the categories that trigger.
+
+    '
+  key_actions:
+  - reintroduce all categories below personal threshold
+  - reduce / avoid only confirmed triggers
+  - rotate FODMAP foods to prevent intolerance build-up
+  - re-test triggers every 6 months — tolerance often returns
 key_steps: []
 foods_to_emphasise:
-  - low-FODMAP fruits — kiwi, banana (firm), strawberry, blueberry, orange, pineapple
-  - low-FODMAP vegetables — carrot, spinach, kale, zucchini, cucumber, bell pepper, eggplant, bok choy
-  - lactose-free dairy + hard cheeses (cheddar, parmesan)
-  - protein — meat, fish, eggs, firm tofu, tempeh
-  - rice + quinoa + oats (oats <30g) + buckwheat
-  - lactose-free yogurt + fermented hard cheese
-  - garlic-infused olive oil (allowed — fructans don't dissolve in oil)
+- low-FODMAP fruits — kiwi, banana (firm), strawberry, blueberry, orange, pineapple
+- low-FODMAP vegetables — carrot, spinach, kale, zucchini, cucumber, bell pepper,
+  eggplant, bok choy
+- lactose-free dairy + hard cheeses (cheddar, parmesan)
+- protein — meat, fish, eggs, firm tofu, tempeh
+- rice + quinoa + oats (oats <30g) + buckwheat
+- lactose-free yogurt + fermented hard cheese
+- garlic-infused olive oil (allowed — fructans don't dissolve in oil)
 foods_to_remove:
-  - onions (all forms)
-  - garlic (all forms)
-  - wheat / rye / barley
-  - all dal + legumes (during elimination)
-  - high-FODMAP fruits — apple, pear, mango, watermelon, dried fruit
-  - cauliflower, mushroom, asparagus, sugar snap peas
-  - milk + yogurt + soft cheese (with lactose)
-  - artificial sweeteners (sorbitol, mannitol, xylitol)
-  - honey + agave
+- onions (all forms)
+- garlic (all forms)
+- wheat / rye / barley
+- all dal + legumes (during elimination)
+- high-FODMAP fruits — apple, pear, mango, watermelon, dried fruit
+- cauliflower, mushroom, asparagus, sugar snap peas
+- milk + yogurt + soft cheese (with lactose)
+- artificial sweeteners (sorbitol, mannitol, xylitol)
+- honey + agave
 supplements_typically_used:
-  - probiotics
-  - digestive-enzymes
-  - peppermint-oil
-  - l-glutamine
+- probiotics
+- digestive-enzymes
+- peppermint-oil
+- l-glutamine
 expected_outcomes:
-  - 60–75% reduction in IBS symptoms by week 4 (per Monash data)
-  - reduced post-meal bloating + distension
-  - improved bowel regularity
-  - identification of personal triggers in a 3-month structured way
+- 60–75% reduction in IBS symptoms by week 4 (per Monash data)
+- reduced post-meal bloating + distension
+- improved bowel regularity
+- identification of personal triggers in a 3-month structured way
 cautions:
-  - VERY restrictive — needs Monash app for portion clarity
-  - "Indian context — onion, garlic, wheat, dal all eliminated; cooking is challenging"
-  - "Long-term low-FODMAP can reduce gut microbial diversity — DON'T stay on full elimination beyond 6 weeks"
-  - reintroduction is the most important phase; don't skip it
+- VERY restrictive — needs Monash app for portion clarity
+- Indian context — onion, garlic, wheat, dal all eliminated; cooking is challenging
+- Long-term low-FODMAP can reduce gut microbial diversity — DON'T stay on full elimination
+  beyond 6 weeks
+- reintroduction is the most important phase; don't skip it
 prerequisites: []
 recommended_followup:
-  - 5r-gut-protocol
+- 5r-gut-protocol
 incompatible_with:
-  - autoimmune-paleo-aip
-  - whole30
-  - weight-loss-metabolic-reset
+- autoimmune-paleo-aip
+- whole30
+- weight-loss-metabolic-reset
 linked_to_topics:
-  - sibo
-  - ibs
-  - bloating
+- sibo
+- ibs
+- bloating
 linked_to_mechanisms:
-  - dysbiosis
+- dysbiosis
 linked_to_symptoms:
-  - bloating
-  - gas
-  - loose-stools
-  - constipation
+- bloating
+- gas
+- loose-stools
+- constipation
 sources:
-  - id: vitaone-skill-practice-guide
-    location: low-FODMAP elimination
-  - id: vitaone-gut-toolkit
-    location: SIBO + IBS protocols
+- id: vitaone-skill-practice-guide
+  location: low-FODMAP elimination
+- id: vitaone-gut-toolkit
+  location: SIBO + IBS protocols
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXbyLyYjP__/
+  quote: 'Low-FODMAP is a therapeutic phase, not a long-term diet (2–6 weeks only)
+    → Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
+    bitters'
 evidence_tier: strong
-notes_for_coach: |
-  Best supported by research of all elimination diets (Monash University
+notes_for_coach: 'Best supported by research of all elimination diets (Monash University
+
   data). Use when clients have a clear pattern of symptoms triggered by
+
   FODMAP foods, especially when SIBO is suspected. The Monash FODMAP app is
+
   essential — recommend it during the welcome conversation.
+
+  '
 version: 1
 status: active
 updated_at: 2026-05-09

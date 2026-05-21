@@ -1,17 +1,24 @@
 slug: perimenopause
 display_name: Perimenopause
 aliases:
-- peri
-- menopause-transition
 - hormone-transition
-- middlepause
-- menopause transition
-- climacteric
-- peri-menopause
-- perimenopausal transition
-- premenopause
 - menopausal transition
+- menopause-transition
+- middlepause
+- perimenopausal transition
 - perimenopausal phase
+- menopause transition
+- premenopause
+- peri-menopause
+- peri
+- climacteric
+- perimenopause-and-menopause
+- the change
+- hormonal transition
+- post-menopause
+- perimenopause-microbiome
+- menopause microbiome
+- perimenopause vaginal health
 summary: The transitional phase approximately 3–4 years before and one year after
   menopause, characterized by irregular menstrual cycles, fluctuating hormones, vasomotor
   symptoms, mood changes, and early psychosomatic symptoms. Progesterone typically
@@ -114,6 +121,15 @@ sources:
   location: Stages of Menopause
   quote: Perimenopause is 3 to 4 years Before and one year after the menopause is
     basically a period of perimenopause.
+- id: ask-expert-hormonal-health-bhrt
+  location: Expanded Understanding of Hormones
+  quote: most people think of hormones, only when I get into perimenopause do I need
+    to take them... All of that, low set steroid hormones drive aging and elevated
+    FSH drives aging.
+- id: ask-expert-womens-health-vaginal-microbiome
+  location: Perimenopause and menopause microbiome discussion
+  quote: The most dramatic change, though, is in the menopause. When most ladies lose
+    crispatus.
 evidence_tier: strong
 version: 5
 status: active

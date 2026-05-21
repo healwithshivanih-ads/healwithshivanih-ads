@@ -2,8 +2,13 @@ slug: cardiovascular-dysfunction
 display_name: Cardiovascular Dysfunction
 aliases:
 - CVD
-- heart disease
 - cardiovascular disease
+- heart disease
+- cardiometabolic-disease
+- cardiometabolic disorder
+- cardiometabolic-health
+- cardiovascular metabolic health
+- cardio-metabolic diet
 summary: A broad clinical area encompassing atherosclerosis, coronary artery disease,
   cerebrovascular disease, peripheral vascular disease, heart failure, and cardiac
   arrhythmias. CVD is the major cause of morbidity and mortality driven by both modifiable
@@ -61,6 +66,14 @@ sources:
     resulting in coronary artery disease (CAD), cerebrovascular disease, and peripheral
     vascular disease, and the subsequent development of heart failure and cardiac
     arrhythmias.
+- id: coconote-fm-biomarkers-cvs
+  location: Introduction
+  quote: So now it's called cardiometabolic disease instead of cardiovascular disease.
+- id: vitaone-cardiometabolic-toolkit
+  location: Intermittent Fasting — Who Benefits from Fasting?
+  quote: Shorter-duration human & animal studies show that fasting may be beneficial
+    for insulin resistance, blood sugar, blood pressure, inflammation, short-term
+    weight loss, and brain health.
 version: 2
 status: active
 updated_at: '2026-05-04'

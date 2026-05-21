@@ -1,9 +1,13 @@
 slug: ph-balance
 display_name: pH Balance & Acid-Alkaline Health
 aliases:
-- acid-alkaline balance
-- body pH
 - cellular pH
+- body pH
+- acid-alkaline balance
+- ph-balance-and-diet
+- alkaline diet
+- acid-forming foods
+- alkaline-forming foods
 summary: The human body maintains blood pH within a very narrow range (7.3–7.5) via
   the lungs and kidneys. Cellular pH (~6.5) can shift based on diet, lifestyle, sleep,
   stress, and other factors. A more acidic cellular environment is associated with
@@ -38,6 +42,10 @@ sources:
   quote: Precision balance is vital for the proper functioning of the human body.
     And that balance, when it gets thrown out, it can have ramifications that affect
     the health of the body. And it's the same with the pH balance on the body.
+- id: barbara-oneil-fresh-cheeses-ph
+  location: pH Balance and Food Ratios
+  quote: To maintain this 6.5 environment, we should be consuming 70-80% alkaline
+    forming foods and 20-30% acid forming foods.
 version: 1
 status: active
 updated_at: '2026-05-05'

@@ -1,37 +1,42 @@
 slug: insulin-resistance
 display_name: Insulin Resistance
 aliases:
+- tissue insulin resistance
+- carbohydrate metabolic dysfunction
+- hyperinsulinaemia
+- blood sugar dysregulation
+- impaired insulin sensitivity
+- poor insulin sensitivity
+- impaired glucose metabolism
 - hyperinsulinemia
-- blood-sugar-instability
 - metabolic-dysfunction
-- impaired insulin signaling
-- metabolic insulin resistance
+- cellular insulin resistance
+- cellular insulin insensitivity
+- insulin dysregulation
+- glucose intolerance
 - glucose dysregulation
+- metabolic insulin dysfunction
+- IRS-1 pathway dysfunction
+- dysglycemia
+- Syndrome X
+- lowered insulin sensitivity
+- blood-sugar-instability
+- metabolic syndrome pathway
+- tissue insulin unresponsiveness
+- pre-diabetes metabolic pattern
+- metabolic inflammation
+- GLUT-4 translocation failure
 - metabolic syndrome
 - impaired insulin signalling
-- peripheral insulin resistance
-- cellular insulin insensitivity
-- impaired glucose metabolism
-- impaired insulin sensitivity
-- hyperinsulinaemia
+- metabolic insulin resistance
 - IR
-- metabolic inflammation
-- poor insulin sensitivity
-- dysglycemia
-- blood sugar dysregulation
-- IRS-1 pathway dysfunction
-- GLUT-4 translocation failure
-- tissue insulin unresponsiveness
-- lowered insulin sensitivity
-- tissue insulin resistance
-- metabolic insulin dysfunction
-- metabolic syndrome pathway
-- glucose intolerance
-- Syndrome X
-- cellular insulin resistance
-- carbohydrate metabolic dysfunction
-- pre-diabetes metabolic pattern
-- insulin dysregulation
+- peripheral insulin resistance
+- impaired insulin signaling
+- insulin-resistance-sensitivity
+- insulin resistance
+- insulin sensitivity
+- glucose metabolism
+- type 2 diabetes prevention
 category: metabolic
 summary: Reduced cellular sensitivity to insulin, driven by excess refined carbohydrate
   intake, sedentary behaviour, visceral adiposity, and chronic inflammation. Central
@@ -335,6 +340,11 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DX1jE67jI4m/
   quote: Insulin resistance is the primary driver in most metabolic diseases
+- id: espeland-2022-cold-water-immersion
+  location: Metabolic Changes
+  quote: Studies found that repeated CWI significantly increased insulin sensitivity
+    and decreased insulin concentrations, suggesting protective effects against type
+    2 diabetes and insulin resistance.
 evidence_tier: strong
 version: 25
 status: active

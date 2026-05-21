@@ -4,6 +4,14 @@ aliases:
 - sleep disruption
 - circadian rhythm
 - sleep recovery
+- insomnia
+- poor-sleep
+- sleep-onset-difficulty
+- night-waking
+- poor sleep
+- sleep disturbance
+- delayed sleep onset
+- poor REM
 summary: Low melatonin, digital overstimulation, blue light exposure, cortisol dysregulation,
   GABA-glutamate imbalance, and poor circadian recovery are linked to sleep issues.
 common_symptoms:
@@ -34,6 +42,11 @@ sources:
   quote: Poor sleep, jet lag, poor REM, and delayed sleep onset — Linked to low melatonin,
     digital overstimulation, blue light exposure, cortisol dysregulation, GABA-glutamate
     imbalance, and poor circadian recovery.
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Sleep section
+- id: vitaone-adrenal-cheatsheet
+  location: 50 Hormones Cheatsheet — Melatonin row (p.4)
+  quote: '↓ Insomnia, jet lag. Solution: Sleep hygiene, magnesium, melatonin support.'
 version: 1
 status: active
 updated_at: '2026-05-06'

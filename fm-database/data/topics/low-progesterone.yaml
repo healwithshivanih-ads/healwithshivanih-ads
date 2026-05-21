@@ -1,9 +1,12 @@
 slug: low-progesterone
 display_name: Low Progesterone / Luteal Phase Deficiency
 aliases:
-- progesterone deficiency
-- luteal phase defect
 - low luteal progesterone
+- luteal phase defect
+- progesterone deficiency
+- luteal-phase-defect
+- luteal phase deficiency
+- low progesterone relative estrogen dominance
 summary: A deficiency of progesterone — a systemic anti-inflammatory modulator — driven
   by chronic stress (pregnenolone steal), anovulation, estrogen dominance, nutrient
   deficiencies, and circadian disruption.
@@ -39,6 +42,11 @@ sources:
   location: Progesterone Is Anti-Inflammatory
   quote: Low progesterone states (chronic stress, perimenopause, luteal phase defect,
     PCOS) → drive unchecked inflammation.
+- id: coconote-fm-estrogen-dominance
+  location: What is Estrogen Dominance?
+  quote: The second thing is that the progesterone is on the lower side and the estrogen
+    is absolutely normal which is relative estrogen dominance secondary to progesterone
+    deficiency which we also call as luteal phase defect.
 version: 1
 status: active
 updated_at: '2026-05-02'

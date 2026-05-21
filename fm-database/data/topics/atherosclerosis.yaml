@@ -2,8 +2,11 @@ slug: atherosclerosis
 display_name: Atherosclerosis
 aliases:
 - arterial plaque
-- hardening of the arteries
 - arterial stenosis
+- hardening of the arteries
+- atherosclerosis-pathogenesis
+- plaque formation
+- endothelial injury cascade
 summary: A chronic, progressive condition in which fat (primarily small-dense LDL
   particles) infiltrates the endothelium, undergoes oxidation and glycation, triggers
   immune-mediated inflammation, and leads to plaque formation, arterial narrowing,
@@ -37,6 +40,12 @@ sources:
   quote: Another mechanism for blockage of artery is actually a deposition of fat
     in the wall and that leads to a slowly hardening of the vessel and blockage of
     that artery and that is called atherosclerosis.
+- id: coconote-fm-stopping-anti-cholesterol-meds
+  location: Atherosclerosis mechanism section
+  quote: If we want to develop any kind of exoskeletons, first thing is there should
+    be endothelial dysfunction. If your endothelium is cracked, then nothing can go
+    inside the endothelium. But because of so many factors, you can say oxidative
+    stress, hypertension, even any kind of inflammation.
 version: 1
 status: active
 updated_at: '2026-05-05'

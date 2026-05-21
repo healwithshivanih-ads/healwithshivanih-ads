@@ -1,11 +1,11 @@
 slug: arachidonic-acid-cascade
 display_name: Arachidonic Acid Inflammatory Cascade
 aliases:
-- AA cascade
-- eicosanoid pathway
-- omega-6 pro-inflammatory pathway
 - eicosanoid inflammatory pathway
+- eicosanoid pathway
 - COX-LOX cascade
+- omega-6 pro-inflammatory pathway
+- AA cascade
 category: immune
 summary: Phospholipase A2, activated by injury or immune stimuli, releases arachidonic
   acid from cell membranes. AA is then metabolized via the COX pathway (producing

@@ -1,13 +1,23 @@
 slug: gut-barrier-dysfunction
 display_name: Gut Barrier Dysfunction
 aliases:
+- increased intestinal permeability
+- damaged gut lining
+- impaired gut barrier
 - leaky gut
 - intestinal hyperpermeability
 - increased gut permeability
-- increased intestinal permeability
-- damaged gut lining
 - impaired intestinal barrier
-- impaired gut barrier
+- intestinal-permeability-leaky-gut
+- gut barrier dysfunction
+- intestinal-permeability
+- impaired gut lining
+- leaky small intestine
+- auto-intoxication
+- leaky-gut-syndrome
+- intestinal permeability
+- leaky-gut
+- leaky gut syndrome
 category: gut
 summary: Disruption of the intestinal epithelial barrier, which can be driven by chronic
   stress, dysbiosis, and SNS dominance. Results in impaired nutrient absorption, altered
@@ -70,6 +80,65 @@ sources:
   location: Stress Client Topic Discussion
   quote: your biome will change in a way that you're not making the vitamins and everything
     because it's affected by stress.
+- id: coconote-fm-food-allergies-sensitivities
+  location: ATM and Intestinal Permeability Section
+  quote: leaky gut is responsible for increasing food sensitivity
+- id: coconote-fm-gut-dysbiosis-pathogens
+  location: Repair Section
+  quote: glutamine is an amino acid and apart from glutamine, You can consider other
+    nutrients like zinc, vitamin A, vitamin B, and essential fatty acids including
+    omega-3. They are important.
+- id: coconote-fm-intestinal-permeability
+  location: Autoimmunity & Leaky Gut Pathophysiology
+  quote: the leaky gut or your intestinal probability is increased. And that's why
+    the immune system creates inflammation, pain, and tissue damage.
+- id: coconote-fm-intestinal-permeability-anish
+  location: Introduction / Objectives
+  quote: Since last 30 years it is discussed in the literature and concept is established
+    in 2020 by Dr. Fasano from Italy who had discovered the basic and primary mechanism
+    for celiac disease and autoimmune condition and since then you can find out more
+    than 20,000 articles about the intestinal permeability and root cause of many
+    chronic condition is basically intestinal permeability.
+- id: coconote-fm-sibo-sifo
+  location: Leaky Gut Syndrome Section
+  quote: There are two types of leaky gut syndrome. One is a parasellular kind of
+    leaky gut syndrome... This second type of leaky gut is known as trans-cellular
+    kind of leaky gut where it will open up the cell.
+- id: thurlow-microbiome-session-2
+  location: Why midlife changes food tolerance
+  quote: We know that estrogen acts as the mortar, kind of like bricks and mortar,
+    it's like the mortar. And when it starts declining, meaning when our estrogen
+    levels are declining, we are more likely to develop leaky gut.
+- id: vitaone-gut-cheatsheet
+  location: Leaky Gut & Inflammation — The Missing Link
+  quote: Tight junction damage → Increased intestinal permeability → Antigen leakage
+    → Root cause of chronic inflammation
+- id: vitaone-inflammation-cheatsheet
+  location: Autoimmune Disease Cheatsheet — Page 23
+  quote: Gut permeability (leaky gut) is a major trigger. Zonulin elevation = red
+    flag for gut barrier breakdown.
+- id: coconote-fm-chronic-pain-fatigue
+  location: Digestion Section
+  quote: leaky gut is a big one we know that i think people who walks through in what's
+    in your load maybe 100 people 90 of the people they have the leaky gut whether
+    they have the system or not whether they have any system or whether they have
+    any symptoms or not
+- id: barbara-oneil-gi-tract
+  location: Gut Flora & Leaky Gut Section
+  quote: You've heard of leaky gut? How do we heal from leaky gut? Start building
+    up your gut flora.
+- id: Vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Zinc and probiotics are connected to gut barrier integrity and autoimmune
+    or chronic diarrhea contexts.
+- id: vitaone-fm-nutrition-cheatsheets
+  location: Topics Covered
+  quote: Zinc and probiotics are connected to gut barrier integrity and autoimmune
+    or chronic diarrhea contexts.
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: Stress and loneliness are linked to altered gut barrier, gut permeability,
+    dysbiosis, autoimmune triggers, and mood changes.
 version: 4
 status: active
 updated_at: '2026-05-05'

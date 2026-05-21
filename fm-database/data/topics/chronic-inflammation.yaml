@@ -1,14 +1,19 @@
 slug: chronic-inflammation
 display_name: Chronic Inflammation
 aliases:
-- silent inflammation
 - low-grade inflammation
-- systemic inflammation
 - persistent inflammation
-- low-grade chronic inflammation
-- inflammatory burden
 - inflammatory load
 - neuroinflammation
+- silent inflammation
+- low-grade chronic inflammation
+- inflammatory burden
+- systemic inflammation
+- inflammation
+- systemic-inflammation
+- low-grade-inflammation
+- cytokine load
+- low-grade systemic inflammation
 summary: Emotional stress, loneliness, digital overstimulation, cytokines, neuroinflammation,
   and oxidative stress are described as inflammation drivers.
 common_symptoms:
@@ -122,6 +127,12 @@ sources:
   location: Topics Covered
   quote: Emotional stress, loneliness, digital overstimulation, cytokines, neuroinflammation,
     and oxidative stress are described as inflammation drivers.
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Inflammation section
+- id: vitaone-adrenal-cheatsheet
+  location: Practitioner's Clinical Takeaway — Loneliness section (p.19)
+  quote: Chronic loneliness silently activates inflammatory genes, accelerates biological
+    aging, and reduces recovery.
 version: 7
 status: active
 updated_at: '2026-05-06'

@@ -1,13 +1,16 @@
 slug: ibs
 display_name: Irritable Bowel Syndrome (IBS)
 aliases:
-- irritable bowel syndrome
-- IBS-D
 - IBS-C
 - functional bowel disorder
+- irritable bowel syndrome
 - irritable bowel
-- IBS
 - functional gut disorder
+- IBS-D
+- IBS
+- ibs-ibd-differentiation
+- functional vs inflammatory bowel
+- IBS IBD workup
 summary: A functional gastrointestinal disorder characterized by recurrent abdominal
   pain, bloating, and altered bowel habits (constipation, diarrhea, or mixed). Strongly
   linked to gut-brain axis dysregulation, FODMAP sensitivity, and intestinal motility
@@ -73,6 +76,12 @@ sources:
   location: Low Fodmap Detailed Chart — INDIAN VERSION
   quote: This Low FODMAP chart is a practical, portion-based guide for clinicians
     and patients to reduce IBS-type symptoms during the short elimination phase.
+- id: coconote-fm-intestinal-permeability
+  location: Diagnostic Markers – Calprotectin
+  quote: So if you want to differentiate IBD from IBS, then you should run the calc-reacting
+    test. And if the fecal calc-reacting is negative, then patient having an IBS is
+    likely and if the fecal calprefting is positive, then definitely rule out IBS
+    and the patient is having an IBD.
 version: 3
 status: active
 updated_at: '2026-05-04'

@@ -1,18 +1,22 @@
 slug: pcos
 display_name: PCOS (Polycystic Ovary Syndrome)
 aliases:
-- pcod
-- polycystic-ovary-syndrome
-- polycystic-ovarian-syndrome
-- PCOD
-- polycystic ovarian disease
-- polycystic ovary disease
-- polycystic ovary syndrome
-- hyperandrogenism
-- PCOS
-- polycystic ovaries
 - androgen excess
+- polycystic ovary disease
+- polycystic-ovarian-syndrome
+- polycystic ovarian disease
+- hyperandrogenism
 - hormonal hair loss
+- polycystic ovaries
+- PCOD
+- pcod
+- polycystic ovary syndrome
+- polycystic-ovary-syndrome
+- PCOS
+- pcos-fertility
+- polycystic ovarian syndrome
+- female infertility
+- hormonal infertility
 summary: Insulin resistance, high insulin, high LH, androgens, low progesterone, low
   adiponectin, stress disruption of the HPO axis, and PCOS support strategies are
   mentioned.
@@ -127,6 +131,11 @@ sources:
   quote: Insulin resistance, high insulin, high LH, androgens, low progesterone, low
     adiponectin, stress disruption of the HPO axis, and PCOS support strategies are
     mentioned.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXtzQLWjKjv/
+  quote: PCOS isn't just insulin resistance. Endometriosis isn't just estrogen dominance.
+    The root cause lives deeper in the gut, mitochondria, adrenals, and even in overlooked
+    factors like environmental toxins and circadian rhythm disruption.
 evidence_tier: confirm_with_clinician
 version: 9
 status: active

@@ -2,8 +2,18 @@ slug: autoimmune-disease
 display_name: Autoimmune Disease
 aliases:
 - autoimmunity
-- immune confusion
 - loss of immune tolerance
+- immune confusion
+- autoimmune
+- Hashimoto's
+- rheumatoid arthritis
+- celiac disease
+- immune dysregulation
+- autoimmune flares
+- autoimmune-thyroiditis
+- AIT
+- Hashimoto's thyroiditis
+- autoimmune hypothyroidism
 summary: A state of immune dysregulation in which loss of self-tolerance drives tissue
   attack. Root causes include leaky gut, infections, toxic load, stress, and methylation
   defects. Modifiable with functional medicine approaches.
@@ -38,6 +48,21 @@ sources:
   location: Autoimmune Disease Cheatsheet — Page 23
   quote: Autoimmunity is not an immune system 'attack'–it's immune confusion. The
     root cause is loss of immune tolerance, not hyperimmunity.
+- id: vitaone-skill-practice-guide
+  location: practice_guide.md, Autoimmune section
+- id: thurlow-microbiome-session-8
+  location: Session 8 — immune shift segment
+  quote: We are more prone to autoimmune conditions. We know we're four to five times
+    more likely to be diagnosed.
+- id: vitaone-adrenal-cheatsheet
+  location: Stress & Chronic Diseases Link (p.9)
+  quote: Stress triggers immune dysregulation & flares. Cortisol rhythm disruption
+    → Th1/Th2/Th17 imbalance, gut barrier breakdown.
+- id: vitaone-ldn-article
+  location: LDN and Autoimmune Thyroiditis (AIT)
+  quote: 'Likely MOI Thyroiditis: Reduce overall inflammation, Reduce levels of anti-thyroid
+    antibodies, Improve thyroid transport into cells, Increase T4 to T3 conversion,
+    Reduce T4 to reverse T3 conversion.'
 version: 1
 status: active
 updated_at: '2026-05-02'

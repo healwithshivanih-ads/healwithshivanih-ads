@@ -1,0 +1,14 @@
+slug: elimination-diet
+display_name: Elimination Diet
+category: other
+summary: A structured dietary intervention removing common trigger foods to identify
+  sensitivities and reduce baseline symptoms. RCT evidence cited for significant symptom
+  improvement in participants.
+evidence_tier: fm_specific_thin
+updated_at: '2026-05-11'
+updated_by: shivani
+version: 1
+status: active
+notes_for_coach: Stub created via /catalogue/cleanup — flesh out phases, indications,
+  foods, supplements before using in a plan.
+aliases: []

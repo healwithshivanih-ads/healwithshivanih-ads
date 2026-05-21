@@ -1,15 +1,18 @@
 slug: hpa-axis-dysregulation
 display_name: HPA Axis Dysregulation
 aliases:
-- adrenal dysfunction
-- adrenal fatigue
 - cortisol imbalance
-- allostatic load
 - HPA axis dysfunction
-- adrenal exhaustion
+- adrenal dysfunction
 - adrenal-dysregulation
 - chronic-stress-response
+- allostatic load
+- adrenal exhaustion
+- adrenal fatigue
 - cortisol-dysregulation
+- hpa-axis
+- hypothalamic-pituitary-adrenal axis
+- stress-response axis
 summary: Chronic activation of the hypothalamic-pituitary-adrenal axis leads to sustained
   cortisol elevation or exhaustion, suppressing immunity, depleting sex hormones (progesterone,
   DHEA), impairing hippocampal function, and disrupting circadian rhythm. Central
@@ -84,6 +87,10 @@ sources:
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: Continuous cortisol release → suppresses immunity, slows healing, depletes
     progesterone & DHEA.
+- id: vitaone-fm-adrenal-hormones
+  location: Topics Covered
+  quote: CRH, ACTH, cortisol, DHEA, aldosterone, and diurnal cortisol rhythm are discussed
+    as central stress-regulation pathways.
 version: 3
 status: active
 updated_at: '2026-05-04'

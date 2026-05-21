@@ -1,9 +1,20 @@
 slug: iron-deficiency
 display_name: Iron Deficiency & Dietary Iron
 aliases:
+- anaemia
 - iron deficiency anemia
 - low iron
-- anaemia
+- iron-deficiency-anemia
+- IDA
+- iron-deficiency anaemia
+- nutritional anemia
+- iron-deficiency-dysregulation
+- functional iron deficiency
+- iron dysregulation
+- iron-nutrition
+- dietary iron
+- iron deficiency
+- anaemia prevention
 summary: 'Iron is a mineral critical for oxygen transport and energy production. Deficiency
   is the most common nutritional deficiency worldwide and can cause anemia. Absorption
   varies by form: heme iron (animal sources) is better absorbed; nonheme iron (plant/animal)
@@ -30,6 +41,22 @@ sources:
   quote: Iron deficiency is the most common nutritional deficiency in the world and
     can cause anemia, a condition that affects the transport of oxygen throughout
     the body.
+- id: coconote-fm-iron-deficiency-anemia
+  location: Iron Panel Biomarkers section
+  quote: Ferritin is what we call as the storage protein for iron. So whenever we
+    want, it's basically whenever the body is going in reserve. The reserve is the
+    ferritin inside your body.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Ferritin alone is unreliable in inflammation → Hepcidin blocks iron absorption
+    when inflammation is high → Iron requires cofactors like B12, copper, Vitamin
+    A and folate
+- id: vitaone-health-coaching-toolkit
+  location: 'Food Sources: Iron'
+  quote: Iron plays an important role in hundreds of processes in the body, particularly
+    oxygen transport and energy production. Iron deficiency is the most common nutritional
+    deficiency in the world and can cause anemia, a condition that affects the transport
+    of oxygen throughout the body.
 version: 1
 status: active
 updated_at: '2026-05-02'

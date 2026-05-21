@@ -1,9 +1,15 @@
 slug: zinc-nutrition
 display_name: 'Zinc: Food Sources & Bioavailability'
 aliases:
+- zinc absorption
 - dietary zinc
 - zinc deficiency
-- zinc absorption
+- zinc-deficiency
+- zinc insufficiency
+- hypozincemia
+- zinc-sufficiency
+- low zinc
+- zinc status
 summary: Zinc is an essential trace mineral required by over 100 enzymes for immune
   function, neurological function, growth, taste and smell, and cell membrane integrity.
   Bioavailability is reduced by phytates in plant foods.
@@ -29,6 +35,16 @@ sources:
     the body require zinc to function. Zinc is necessary for normal growth and development,
     immune and neurological function, proper sense of taste and smell, and maintaining
     the structure of cell membranes, as well as protecting them from oxidative damage.
+- id: coconote-fm-zinc-deficiency
+  location: Role of Zinc / Functions Section
+  quote: Zinc plays a role in hundreds of enzymatic activities of the body. These
+    enzymatic activities include immune cell development, the production of immune
+    cells and functioning of immune cells.
+- id: vitaone-nutrition-toolkit
+  location: 'Food Sources: Zinc'
+  quote: Over 100 enzymes in the body require zinc to function. Zinc is necessary
+    for normal growth and development, immune and neurological function, proper sense
+    of taste and smell.
 version: 1
 status: active
 updated_at: '2026-05-04'

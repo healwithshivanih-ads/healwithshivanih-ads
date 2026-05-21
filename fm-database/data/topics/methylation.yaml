@@ -1,12 +1,19 @@
 slug: methylation
 display_name: Methylation Support
 aliases:
+- methylation cycle
+- MTHFR
+- activated methyl cycle
 - one-carbon metabolism
 - methyl cycle
-- activated methyl cycle
-- methylation cycle
 - MTHFR support
-- MTHFR
+- methylation-mthfr
+- MTHFR mutation
+- folate metabolism
+- methylation-defect-elevated-homocysteine
+- hyperhomocysteinemia
+- folate cycle dysfunction
+- methylation impairment
 summary: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG are
   framed as key methylation supports. Disrupted methylation is linked to mood changes,
   elevated homocysteine, impaired histamine clearance, fatigue, and neurological symptoms.
@@ -61,6 +68,13 @@ sources:
   location: Key Mechanisms Explained — methylation-support
   quote: Folate, B12, choline, riboflavin, niacin, glycine, creatine, and TMG as nutrient
     supports for methylation.
+- id: vitaone-liver-detox-cheatsheet
+  location: Methylation & MTHFR Cheatsheet
+  quote: MTHFR (methylenetetrahydrofolate reductase) is a key enzyme in the methylation
+    cycle that converts folate (B9) into its active form, 5-MTHF.
+- id: vitaone-cvs-risk-assessment
+  location: Functional Medicine Matrix (Slide 5)
+  quote: Methylation defect (elevated homocysteine)
 version: 3
 status: active
 updated_at: '2026-05-06'
