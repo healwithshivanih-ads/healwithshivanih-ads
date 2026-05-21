@@ -59,6 +59,13 @@ interface ClientRow {
    *  engagement_status: "signed_up" | "declined" | "pending" (default). */
   engagement_status?: string;
   intake_submitted_at?: string | null;
+  /** Rework markers — any of generated / applied / dismissed counts as a
+   *  "review happened" signal for the plan_review_due cadence check. */
+  rework_suggestion?: {
+    generated_at?: string;
+    applied_at?: string;
+    dismissed_at?: string;
+  } | null;
 }
 
 interface PlanRow {
@@ -74,6 +81,8 @@ interface PlanRow {
   // + 3 days for the meal plan. See lib/fmdb/plan-timing.ts.
   meal_plan_started_on?: string | null;
   supplements_started_on?: string | null;
+  /** Bumped on every plan edit / quick-edit — anchors the review cadence. */
+  updated_at?: string;
 }
 
 const PUBLISHED_BUCKET = new Set(["published"]);
@@ -125,17 +134,66 @@ async function computeSignal(
     };
   }
 
-  // 3. Published plan still in-flight → active (steady state).
+  // Load sessions once — needed both for the plan-review cadence check
+  // below and the engagement-based signals further down.
+  const sessions = await loadClientSessions(client.client_id);
+
+  // 3. Published plan still in-flight. Two sub-states:
+  //    - plan_review_due — ≥21 days since the last review touch (plan
+  //      edit / quick-edit, check-in, or an applied rework). Coach
+  //      decision 2026-05-20: a 3-week cadence so a plan doesn't sit
+  //      frozen between data events ("stuck on the same supplements").
+  //    - active — reviewed recently; steady, weekly glance.
   const publishedPlan = clientPlans.find((p) =>
     PUBLISHED_BUCKET.has(p._bucket ?? p.status ?? ""),
   );
   if (publishedPlan) {
-    return {
-      kind: "active",
-      planSlug: publishedPlan.slug,
-      recheckDate:
-        effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date,
-    };
+    const recheckDate =
+      effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date;
+    // "Last review" = most recent of: plan updated_at (edits + quick-edits
+    // bump it), the latest check-in session, an applied rework — else the
+    // plan start date as the anchor.
+    const reviewDates: string[] = [];
+    if (publishedPlan.updated_at) {
+      reviewDates.push(publishedPlan.updated_at.slice(0, 10));
+    }
+    let lastCheckin = "";
+    for (const s of sessions) {
+      const pc = String((s as Record<string, unknown>).presenting_complaints ?? "");
+      if (/\[session_type:\s*check_in\]/i.test(pc)) {
+        const d = String((s as Record<string, unknown>).date ?? "");
+        if (d > lastCheckin) lastCheckin = d;
+      }
+    }
+    if (lastCheckin) reviewDates.push(lastCheckin);
+    // Any rework engagement — generating, applying or dismissing one —
+    // counts as a review. Generating resets the cadence immediately so
+    // the "Run rework now" button clears the nudge on click.
+    const rw = client.rework_suggestion;
+    for (const d of [rw?.generated_at, rw?.applied_at, rw?.dismissed_at]) {
+      if (d) reviewDates.push(d.slice(0, 10));
+    }
+    if (reviewDates.length === 0 && publishedPlan.plan_period_start) {
+      reviewDates.push(publishedPlan.plan_period_start);
+    }
+    reviewDates.sort();
+    const lastReview = reviewDates[reviewDates.length - 1];
+    const daysSinceReview = lastReview
+      ? Math.round(
+          (new Date(todayStr).getTime() - new Date(lastReview).getTime()) /
+            86_400_000,
+        )
+      : 0;
+    const REVIEW_CADENCE_DAYS = 21;
+    if (daysSinceReview >= REVIEW_CADENCE_DAYS) {
+      return {
+        kind: "plan_review_due",
+        planSlug: publishedPlan.slug,
+        recheckDate,
+        daysSinceReview,
+      };
+    }
+    return { kind: "active", planSlug: publishedPlan.slug, recheckDate };
   }
 
   // A draft / ready-to-publish plan may be open — resolve it now but
@@ -147,8 +205,7 @@ async function computeSignal(
     DRAFT_BUCKETS.has(p._bucket ?? p.status ?? ""),
   );
 
-  // ── Sessions + engagement-based signals ──────────────────────────────
-  const sessions = await loadClientSessions(client.client_id);
+  // ── Engagement-based signals (sessions loaded above) ─────────────────
   const presentingOf = (s: unknown) =>
     String((s as Record<string, unknown>).presenting_complaints ?? "");
   const sessionType = (s: unknown) => parseSessionType(presentingOf(s));
@@ -470,6 +527,7 @@ export default async function DashboardV2() {
     labs_pending: [],
     booking_link_pending: [],
     awaiting_signup: [],
+    plan_review_due: [],
     active: [],
     returning: [],
     new_lead: [],

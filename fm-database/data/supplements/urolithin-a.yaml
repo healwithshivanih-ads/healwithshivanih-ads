@@ -1,0 +1,60 @@
+slug: urolithin-a
+display_name: Urolithin A
+aliases:
+- urolithin a
+- mitopure
+category: other
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 250
+    max: 1000
+    unit: mg
+  powder:
+    min: 250
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+notes_for_coach: 'Catalogue stub — coach-requested 2026-05-20; enrich with
+  peer-reviewed citations via the catalogue queue before front-lining. Urolithin A
+  is a postbiotic — a gut-microbiome metabolite of ellagitannins (pomegranate,
+  walnuts, berries). Not everyone produces it endogenously, which is the rationale
+  for a direct supplement. Mechanism: it stimulates mitophagy (clearance of damaged
+  mitochondria), which supports mitochondrial function, biogenesis and skeletal
+  muscle quality. Emerging human RCT evidence for muscle strength and endurance in
+  middle-aged and older adults; evidence for broader functional-medicine outcomes
+  is still building, hence evidence_tier plausible_emerging. Studied doses are
+  typically 500 mg or 1000 mg once daily. Reference branded form is Mitopure
+  (Amazentis). Consider for clients with a fatigue / low-energy / muscle-decline
+  picture AFTER the bigger levers are addressed — it is a refinement, not a
+  first-line lever. No protein/purine load, so no uric-acid or kidney concern.
+  Affiliate link to be added via the catalogue queue.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- mitochondrial-biogenesis
+- sarcopenia
+linked_to_claims: []
+notes_for_client: A supplement that supports your cells' energy factories
+  (mitochondria) by helping the body clear out worn-out ones. It is being studied
+  for muscle strength and stamina as we age.
+sources:
+- id: coach-shivani
+  location: Catalogue stub — coach-requested 2026-05-20
+version: 1
+status: active
+updated_at: '2026-05-20'
+updated_by: shivani

@@ -326,6 +326,7 @@ def main() -> int:
                 dose=sp.get("dose", "") or "",
                 timing=sp.get("timing", "") or "",
                 duration_weeks=sp.get("duration_weeks"),
+                start_week=sp.get("start_week") or 1,
                 titration=sp.get("titration", "") or "",
                 coach_rationale=(sp.get("rationale", "") or "") + (
                     f"\n\n[evidence-tier note] {sp['evidence_tier_caveat']}"

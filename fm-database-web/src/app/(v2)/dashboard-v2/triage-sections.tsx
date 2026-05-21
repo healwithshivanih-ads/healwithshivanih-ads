@@ -21,9 +21,12 @@
  * Zero-count sections collapse by default (green ✓ badge); non-zero
  * sections start expanded. Per-section collapse persists in sessionStorage.
  */
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useTransition } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { FmPanel, FmChip } from "@/components/fm";
+import { assessReworkBenefitAction } from "@/lib/server-actions/clients";
 
 export type SignalKind =
   | "follow_up_due"
@@ -33,6 +36,7 @@ export type SignalKind =
   | "labs_pending"
   | "booking_link_pending"
   | "awaiting_signup"
+  | "plan_review_due"
   | "active"
   | "returning"
   | "new_lead"
@@ -60,6 +64,9 @@ export interface TriageRow {
      *  cal.com slug was sent. Used in the section badge + tooltip. */
     daysSinceLinkSent?: number;
     bookingLinkSlug?: string;
+    /** For plan_review_due — days since the last review touch (plan edit,
+     *  check-in, or rework). Drives the 3-week cadence nudge. */
+    daysSinceReview?: number;
   };
 }
 
@@ -143,6 +150,16 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   // ── 🔵 In progress ───────────────────────────────────────────────
+  plan_review_due: {
+    title: "Plan review due (3+ weeks)",
+    icon: "🔁",
+    accent: "rgba(26, 127, 187, 0.10)",
+    border: "rgba(26, 127, 187, 0.38)",
+    badgeColor: "#1a7fbb",
+    cta: "View plan",
+    ctaHref: (r) =>
+      r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`,
+  },
   active: {
     title: "Active protocols",
     icon: "📋",
@@ -208,9 +225,9 @@ const TIERS: Tier[] = [
   },
   {
     label: "In progress",
-    hint: "On a live protocol — weekly glance",
+    hint: "On a live protocol — review every 3 weeks so it doesn't stall",
     color: "#1a7fbb",
-    kinds: ["active"],
+    kinds: ["plan_review_due", "active"],
   },
   {
     label: "Leads & cold",
@@ -536,29 +553,103 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             gap: 8,
             marginTop: 6,
             paddingTop: 6,
+            flexWrap: "wrap",
           }}
         >
-          <Link
-            href={meta.ctaHref(row)}
-            onClick={(e) => e.stopPropagation()}
+          <div
             style={{
-              fontSize: 12,
-              fontWeight: 600,
-              padding: "5px 12px",
-              background: "var(--fm-primary)",
-              color: "#fff",
-              borderRadius: "var(--fm-radius-sm)",
-              textDecoration: "none",
+              display: "flex",
+              gap: 8,
+              alignItems: "center",
+              flexWrap: "wrap",
             }}
           >
-            {meta.cta}
-          </Link>
+            {row.signal.kind === "plan_review_due" && (
+              <ReworkNowButton clientId={row.client_id} />
+            )}
+            <Link
+              href={meta.ctaHref(row)}
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                fontSize: 12,
+                fontWeight: 600,
+                padding: "5px 12px",
+                background:
+                  row.signal.kind === "plan_review_due"
+                    ? "var(--fm-surface)"
+                    : "var(--fm-primary)",
+                color:
+                  row.signal.kind === "plan_review_due"
+                    ? "var(--fm-text-secondary)"
+                    : "#fff",
+                border:
+                  row.signal.kind === "plan_review_due"
+                    ? "1px solid var(--fm-border)"
+                    : 0,
+                borderRadius: "var(--fm-radius-sm)",
+                textDecoration: "none",
+              }}
+            >
+              {meta.cta}
+            </Link>
+          </div>
           <span style={{ fontSize: 11, color: "var(--fm-primary)", fontWeight: 600 }}>
             View →
           </span>
         </div>
       </FmPanel>
     </Link>
+  );
+}
+
+/**
+ * ReworkNowButton — the one-click "Run rework now" action on a
+ * plan_review_due card. Fires the AI rework assessment ON DEMAND (API is
+ * only spent when the coach clicks). Generating the rework also stamps a
+ * fresh generated_at on the client's rework_suggestion, which resets the
+ * 3-week review cadence — so the card clears once clicked.
+ */
+function ReworkNowButton({ clientId }: { clientId: string }) {
+  const router = useRouter();
+  const [pending, start] = useTransition();
+  return (
+    <button
+      type="button"
+      disabled={pending}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        start(async () => {
+          const r = await assessReworkBenefitAction({
+            clientId,
+            triggeredBy: "quick_note",
+            eventSummary:
+              "3-week plan review — coach-initiated time-based check (no new data event).",
+          });
+          if (r.ok) {
+            toast.success(
+              "Rework assessed — open the client to review the suggestion",
+            );
+            router.refresh();
+          } else {
+            toast.error(r.error ?? "Rework assessment failed");
+          }
+        });
+      }}
+      style={{
+        fontSize: 12,
+        fontWeight: 700,
+        padding: "5px 12px",
+        background: pending ? "var(--fm-text-tertiary)" : "#1a7fbb",
+        color: "#fff",
+        border: 0,
+        borderRadius: "var(--fm-radius-sm)",
+        cursor: pending ? "wait" : "pointer",
+        fontFamily: "inherit",
+      }}
+    >
+      {pending ? "Assessing…" : "🔁 Run rework now"}
+    </button>
   );
 }
 
@@ -722,6 +813,29 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
     );
   }
 
+  if (signal.kind === "plan_review_due") {
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Last review:</span>
+        <span style={valueStyle}>
+          {signal.daysSinceReview ?? 0} days ago — time for a mid-protocol check
+          {signal.planSlug && (
+            <span
+              style={{
+                fontFamily: "var(--fm-font-mono)",
+                fontSize: 11,
+                marginLeft: 6,
+                color: "var(--fm-text-tertiary)",
+              }}
+            >
+              · {signal.planSlug}
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
   if (signal.kind === "active") {
     return (
       <div style={wrap}>
@@ -764,6 +878,11 @@ function SignalBadge({ signal }: { signal: TriageRow["signal"] }) {
   }
   if (signal.kind === "awaiting_signup") {
     return <FmChip tone="warning">not signed up</FmChip>;
+  }
+  if (signal.kind === "plan_review_due") {
+    return (
+      <FmChip tone="secondary">{signal.daysSinceReview ?? 0}d no review</FmChip>
+    );
   }
   if (signal.kind === "active") {
     return signal.recheckDate ? (

@@ -18,19 +18,18 @@ timing_options:
 - with_dinner
 - with_lunch
 take_with_food: required
-notes_for_coach: 'Quercetin is a bioflavonoid mast cell stabilizer that inhibits degranulation
-
-  and the conversion of histidine to histamine. Bioavailability is poor in
-
-  standard form — liposomal or phytosome (e.g., quercetin-bromelain combos)
-
-  preparations are markedly better absorbed. Typical clinical dose is
-
-  500-1000 mg two to three times daily, taken with food. Onset is gradual
-
-  (2-4 weeks for full effect).
-
-  '
+notes_for_coach: 'Quercetin is a bioflavonoid with three coach-relevant roles.
+  (1) Mast cell stabiliser — inhibits degranulation and the histidine-to-histamine
+  conversion; this is its strongest evidence base. (2) Anti-inflammatory — inhibits
+  NF-kB signalling and lowers inflammatory cytokines; relevant where hsCRP is
+  elevated. (3) Cardiometabolic — mild antihypertensive and endothelial support,
+  and it inhibits xanthine oxidase so it modestly lowers serum uric acid (useful
+  when uric acid runs high). Bioavailability is poor in standard form — liposomal
+  or phytosome preparations (e.g. quercetin-bromelain combos) are markedly better
+  absorbed. Typical clinical dose 500-1000 mg two to three times daily with food;
+  onset is gradual (2-4 weeks for full effect). CAUTION — quercetin has mild
+  antiplatelet activity; review before use in any client with a bleeding tendency,
+  recent epistaxis, or on blood thinners.'
 contraindications:
   conditions: []
   medications:
@@ -53,9 +52,14 @@ evidence_tier: strong
 linked_to_topics:
 - mast-cell-activation-syndrome
 - histamine-intolerance
+- essential-hypertension
+- chronic-inflammation
 linked_to_mechanisms:
 - mast-cell-degranulation
 - histamine-receptor-signaling
+- nf-kb-activation
+- systemic-inflammation
+- endothelial-dysfunction
 sources:
 - id: eds-clinic
   location: Key Supplements
@@ -64,7 +68,7 @@ sources:
   location: Mast cell-stabilizing nutrients
   quote: Quercetin acts as a mast cell stabilizer, inhibiting degranulation and histidine
     conversion.
-version: 2
+version: 3
 status: active
-updated_at: '2024-05-22'
+updated_at: '2026-05-20'
 updated_by: shivani
