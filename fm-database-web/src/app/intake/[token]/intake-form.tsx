@@ -2214,7 +2214,19 @@ export function IntakeForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!state.consent) return;
+    // Consent is the only submit gate. Previously the button was silently
+    // disabled when consent was unchecked — a client who filled the whole
+    // form then tapped a dead grey button saw nothing happen and gave up,
+    // stranding their answers as an un-submitted draft. Now the button is
+    // always live; if consent is missing we say so and scroll to the box.
+    if (!state.consent) {
+      setSubmitError(
+        "Almost there — please tick the consent box just above, then tap Submit.",
+      );
+      const el = sectionRefs.current[SEC_CONSENT];
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
     setSubmitting(true);
     setSubmitError(null);
     try {
@@ -4205,7 +4217,10 @@ export function IntakeForm({
           <input
             type="checkbox"
             checked={state.consent}
-            onChange={(e) => set("consent", e.target.checked)}
+            onChange={(e) => {
+              set("consent", e.target.checked);
+              if (e.target.checked) setSubmitError(null);
+            }}
           />
           <span className="fm-consent__box" aria-hidden="true" />
           <span className="fm-consent__text">
@@ -4231,8 +4246,8 @@ export function IntakeForm({
         <button
           type="submit"
           className="fm-submit"
-          disabled={!state.consent || submitting}
-          style={!state.consent || submitting ? { opacity: 0.4, cursor: "not-allowed" } : undefined}
+          disabled={submitting}
+          style={submitting ? { opacity: 0.4, cursor: "not-allowed" } : undefined}
         >
           {submitting ? "Submitting…" : "Submit"}
         </button>
