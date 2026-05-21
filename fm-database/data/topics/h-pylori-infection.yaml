@@ -3,9 +3,13 @@ display_name: H. Pylori Infection
 aliases:
 - Helicobacter pylori
 - H pylori
-summary: Spiral-shaped bacteria colonizing the stomach lining, weakening the protective mucous layer and increasing stomach
-  acid damage and inflammation. Can persist silently for years. Linked to gastritis, peptic ulcers, GERD, dysbiosis, leaky
-  gut, and increased risk of gastric cancer.
+- H. pylori
+- Helicobacter infection
+- helicobacter-pylori-infection
+summary: Spiral-shaped bacteria colonizing the stomach lining, weakening the protective
+  mucous layer and increasing stomach acid damage and inflammation. Can persist silently
+  for years. Linked to gastritis, peptic ulcers, GERD, dysbiosis, leaky gut, and increased
+  risk of gastric cancer.
 common_symptoms:
 - bloating
 - flatulence
@@ -14,30 +18,49 @@ common_symptoms:
 - abdominal-pain-empty-stomach
 - loss-of-appetite
 - lethargy
+- epigastric-pain
+- epigastric-burning
+- nocturnal-epigastric-pain
+- heartburn
 red_flags:
 - hematemesis
 - gi-bleeding
 - unintentional-weight-loss
 - dysphagia — urgent referral for endoscopy; increased gastric cancer risk
+- GI hemorrhage
+- perforation
+- gastric outlet obstruction — refer for emergency workup immediately
 related_topics:
 - hypochlorhydria
 - gerd
 - gut-dysbiosis
 - autoimmunity-leaky-gut-triad
+- peptic-ulcer-disease
 key_mechanisms:
 - mucosal-barrier-disruption
 - impaired-gastric-acid-production
-coaching_scope_notes: Coaches can support anti-inflammatory dietary changes, stress management, and sleep hygiene. Antimicrobial
-  protocols and H. pylori testing must be clinician-directed.
-clinician_scope_notes: 'Gold standard test: Urea Breath Test (UBT). Stool antigen test also highly accurate. Blood IgG not
-  recommended for active infection. Treat in phases: Antimicrobial → Gut healing → Microbiome restoration.'
-evidence_tier: plausible_emerging
+- h-pylori-urease-ammonia-production
+- gastric-mucin-degradation
+- gastric-mucosal-barrier-disruption
+coaching_scope_notes: Coaches can support anti-inflammatory dietary changes, stress
+  management, and sleep hygiene. Antimicrobial protocols and H. pylori testing must
+  be clinician-directed.
+clinician_scope_notes: 'Gold standard test: Urea Breath Test (UBT). Stool antigen
+  test also highly accurate. Blood IgG not recommended for active infection. Treat
+  in phases: Antimicrobial → Gut healing → Microbiome restoration.'
+evidence_tier: strong
 sources:
 - id: vitaone-gut-cheatsheet
   location: H. Pylori Infection Cheatsheet
-  quote: H. pylori = A spiral-shaped bacteria that colonizes the stomach lining. Weakens the protective mucous layer → increases
-    stomach acid damage → inflammation. Can persist silently for years, leading to chronic gut dysfunction.
-version: 1
+  quote: H. pylori = A spiral-shaped bacteria that colonizes the stomach lining. Weakens
+    the protective mucous layer → increases stomach acid damage → inflammation. Can
+    persist silently for years, leading to chronic gut dysfunction.
+- id: pizzorno-textbook-hpylori
+  location: Helicobacter pylori section, p. 781
+  quote: 'H. pylori: 90% to 100% of patients with DUs, 70% with GUs, and 50% of people
+    older than 50 years test positive for H. pylori. However, 80% of H. pylori–infected
+    people never develop ulcers.'
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-21'
 updated_by: shivani
