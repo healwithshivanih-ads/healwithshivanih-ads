@@ -301,6 +301,8 @@ VITAONE_CATALOG = {
     "immune support":            _v("advanced-immune-care-183",                           "Advanced Immune Care"),
     "immunity":                  _v("advanced-immune-care-183",                           "Advanced Immune Care"),
     "allergy shield":            _v("opti-allergy-shield-159",                            "Opti-Allergy Shield"),
+    "sulforaphane":              _v("opti-allergy-shield-159",                            "Opti-Allergy Shield"),
+    "broccoli sprout":           _v("opti-allergy-shield-159",                            "Opti-Allergy Shield"),
     "histamine":                 _v("fmn-opti-histamine-i-200gm-72",                      "FMN Opti-Histamine"),
     "dao enzyme":                _v("fmn-opti-histamine-i-200gm-72",                      "FMN Opti-Histamine"),
     "mast cell":                 _v("fmn-opti-histamine-i-200gm-72",                      "FMN Opti-Histamine"),
