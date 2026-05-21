@@ -2562,15 +2562,10 @@ def _build_supplement_schedule_html(
   </div>
 </section>
 
-<script>
-function printSchedule() {{
-  // Use data-attribute approach so the page is not destroyed:
-  // CSS body[data-print-supplement] hides everything except #supplement-schedule.
-  document.body.setAttribute('data-print-supplement', '1');
-  window.print();
-  // afterprint listener in the main page script clears the attribute.
-}}
-</script>
+<!-- printSchedule() removed 2026-05-21 — the supplement schedule no longer
+     has its own print button. The Daily Routine (printRoutine) is the
+     single supplement printout the client keeps; a second schedule-table
+     print was a confusing, contradictory duplicate. -->
 <!-- ════════════════════════════════════════════════════ -->
 """
 

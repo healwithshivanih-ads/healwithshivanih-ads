@@ -1091,8 +1091,22 @@ _CSS = f"""
       background: #fff !important;
       padding: 0 !important;
     }}
-    body[data-print-routine] .print-btn {{ display: none !important; }}
-    body[data-print-routine] .routine-row {{ page-break-inside: avoid; }}
+    /* Narration removed on print + everything compressed so all 7 day
+       anchors fit on ONE A4 page — the client's fridge copy. */
+    body[data-print-routine] .print-btn,
+    body[data-print-routine] .routine-subtitle,
+    body[data-print-routine] .routine-foot {{ display: none !important; }}
+    body[data-print-routine] .routine-header {{ margin-bottom: 6px !important; }}
+    body[data-print-routine] .routine-title {{ font-size: 16px !important; margin: 0 !important; }}
+    body[data-print-routine] #daily-routine {{
+      font-size: 11px !important;
+      line-height: 1.3 !important;
+    }}
+    body[data-print-routine] .routine-row {{
+      padding: 6px 0 !important;
+      page-break-inside: avoid;
+    }}
+    body[data-print-routine] .routine-emoji {{ font-size: 15px !important; }}
   }}
 
   @page {{
@@ -1318,8 +1332,7 @@ def wrap_in_brand_html(
     // 🖨 Print Schedule button further down the page; this one is the
     // top-level twin for symmetry with the week buttons.
     var sections = document.querySelectorAll('.week-section');
-    var supplementSection = document.getElementById('supplement-schedule');
-    if (sections.length === 0 && !supplementSection) return;
+    if (sections.length === 0) return;
 
     var bar = document.createElement('div');
     bar.className = 'week-print-bar';
@@ -1346,16 +1359,11 @@ def wrap_in_brand_html(
       bar.appendChild(btn);
     }});
 
-    if (supplementSection) {{
-      var suppBtn = document.createElement('button');
-      suppBtn.className = 'week-print-btn';
-      suppBtn.textContent = '💊 Supplements';
-      suppBtn.addEventListener('click', function () {{
-        document.body.setAttribute('data-print-supplement', '1');
-        window.print();
-      }});
-      bar.appendChild(suppBtn);
-    }}
+    // The 💊 Supplements print button was removed 2026-05-21 — it printed
+    // the supplement-schedule TABLE, a second contradictory printout of
+    // the same information the Daily Routine already gives. The Daily
+    // Routine (printRoutine → data-print-routine) is the single
+    // supplement printout the client keeps.
 
     // Insert the bar at the top of .content (recipe-note removed 2026-05-19)
     var content = document.querySelector('.content');
