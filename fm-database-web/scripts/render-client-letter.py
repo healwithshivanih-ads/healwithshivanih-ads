@@ -2311,12 +2311,14 @@ def _build_daily_routine_html(plan: dict, window_end_week: int | None = None) ->
     ]
     has_triphala = any("triphala" in r for r in remedies)
     has_ccf = any(("cumin" in r) or ("ccf" in r) or ("fennel" in r) for r in remedies)
+    has_methi = any(("methi" in r) or ("fenugreek" in r) for r in remedies)
 
     # 7 day anchors aligned to the _timing_slot indices. Each: emoji,
     # label, ~time hint, and the meal/drink/habit the client already does.
     anchors = [
         (0, "🌅", "On waking", "~7 am",
-         "Warm water — add lemon if that is your routine"),
+         "Methi (fenugreek) seed water — soak 1 tsp overnight, drink it first thing"
+         if has_methi else "Warm water — add lemon if that is your routine"),
         (1, "🍳", "Breakfast", "~8 am", "Eat breakfast"),
         (2, "🕙", "Mid-morning", "~11 am", "Mid-morning snack or drink"),
         (3, "🥗", "Lunch", "~1 pm",
