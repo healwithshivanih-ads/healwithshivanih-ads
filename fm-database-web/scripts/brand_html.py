@@ -1013,6 +1013,7 @@ _CSS = f"""
        Without this, the schedule prints as overflow after every week. */
     body[data-print-week] #supplement-schedule {{ display: none !important; }}
     body[data-print-week] #supplement-shopping-list {{ display: none !important; }}
+    body[data-print-week] #daily-routine {{ display: none !important; }}
     body[data-print-week] .brand-footer {{ display: none !important; }}
 
     /* ── Single-week density — fit one A4 page ──
