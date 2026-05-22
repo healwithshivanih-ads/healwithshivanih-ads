@@ -22,38 +22,63 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: optional
-notes_for_coach: 'Bromelain is a proteolytic (protein-digesting) enzyme complex
-  extracted from pineapple stem. A meaningful fraction is absorbed intact into the
-  bloodstream, so it acts systemically, not just in the gut.
+notes_for_coach: 'Bromelain is a complex of proteolytic enzymes (cysteine proteinases)
+  plus non-enzymatic compounds extracted from the stem and fruit of pineapple
+  (Ananas comosus). The inedible STEM is far richer than the fruit flesh — eating
+  pineapple does not deliver therapeutic doses. A meaningful fraction is absorbed
+  intact, so it acts systemically, not just in the gut.
 
-  TWO DISTINCT USES WITH OPPOSITE TIMING. (1) Protein digestion — taken WITH meals,
-  200-2000 mg, it supplements pancreatic/gastric proteases; useful where maldigestion
-  or digestive-enzyme insufficiency is suspected. (2) Systemic anti-inflammatory /
-  decongestant — taken BETWEEN meals on an empty stomach, 200-800 mg, so the enzyme
-  is absorbed rather than consumed digesting food. Get the timing right for the goal.
+  MECHANISMS. (1) Anti-inflammatory — inhibits NF-kB and MAPK signalling, suppresses
+  TNF-alpha and IL-6, lowers bradykinin at inflammatory sites and reduces prostaglandin
+  E2. (2) Digestive — hydrolyses dietary protein into peptides and amino acids,
+  similar to pepsin and trypsin. (3) Antithrombotic / fibrinolytic — inhibits platelet
+  aggregation and helps break down fibrin clots; this is the basis of the bleeding-risk
+  cautions. (4) Enzymatic debridement — a non-proteolytic component, escharase,
+  dissolves necrotic burn tissue. (5) Anticancer / metabolic — promotes apoptosis
+  and lipolysis in laboratory models.
 
-  EVIDENCE IS THIN. Examine.com grades the human research mostly C (limited): a small
-  improvement in nasal congestion in allergic rhinitis (n=116), a small decrease in
-  inflammation in acute knee pain (n=77), plus single small studies in osteoarthritis
-  and muscle soreness. The anti-inflammatory and mild decongestant effects are the
-  best-supported; treat broader claims as preliminary.
+  USES, STRONGEST TO WEAKEST. (a) Serious burns, topical prescription — STRONG;
+  FDA-approved as the Rx drug NexoBrid for debriding dead tissue, a clinician
+  procedure, not the oral supplement. (b) Post-surgical inflammation (dental / ENT /
+  orthopaedic) — MODERATE; reduces post-op pain, swelling and trismus, approved by
+  Germany''s Commission E for ENT surgery and trauma. (c) Osteoarthritis — MODERATE /
+  promising; human trials up to 16 weeks show meaningful WOMAC improvements in pain,
+  stiffness and function. (d) Sinusitis / rhinosinusitis — MODERATE; supportive
+  therapy that reduces nasal congestion and inflammation. (e) Protein digestion —
+  MODERATE; mechanistically sound, large human trials limited. (f) Weight loss /
+  metabolic health — EMERGING; small human data suggest reduced BMI and improved
+  insulin resistance (HOMA-IR) in obese / diabetic patients. (g) Cancer,
+  neuroprotection — PRELIMINARY, in-vitro / animal only.
 
-  FM RELEVANCE. Bromelain is a standard component of quercetin-bromelain combinations
-  — it improves quercetin bioavailability — and appears in histamine / mast-cell
-  blends (it is one of 23 ingredients in FMN Opti-Histamine). Reasonable anti-inflammatory
-  adjunct; not a primary intervention on its own.
+  DOSING. Potency is set by enzyme ACTIVITY (GDU or MCU), not milligrams — compare
+  the GDU figure across products. Digestion: ~500 mg/day in divided doses, WITH
+  meals. Inflammation / injury: ~500 mg up to four times daily, on an EMPTY stomach
+  so the enzyme is absorbed rather than spent digesting food. Sinusitis / trauma
+  (German Commission E): 80-320 mg/day total, split 2-3x, for 8-10 days.
+  Osteoarthritis: 400 mg twice daily up to 500-2000 mg twice daily.
 
-  POTENCY. Activity is standardised by GDU (gelatin dissolving units) or MCU (milk
-  clotting units), not by milligrams alone — two products at the same mg can differ
-  in strength. Check the GDU figure when comparing products.
+  SAFETY. FDA GRAS; tolerated up to ~12 g/day without significant toxicity. Common
+  side effects are GI — nausea, vomiting, diarrhoea; heavier-than-usual menstrual
+  bleeding can occur. CONTRAINDICATED in pineapple allergy, which cross-reacts with
+  latex, grass pollen, celery, carrots and wheat; in known bleeding disorders; and
+  it should be stopped two weeks BEFORE and AFTER any surgery. Not recommended for
+  children (insufficient safety data).
 
-  CAUTIONS. Bromelain has fibrinolytic and antiplatelet activity — additive bleeding
-  risk with anticoagulants, antiplatelet drugs and NSAIDs; advise stopping ~2 weeks
-  before any surgery. It raises serum levels of amoxicillin and tetracycline antibiotics
-  — coordinate with the prescriber rather than combining unsupervised. May intensify
-  sedatives. CONTRAINDICATED in pineapple allergy, which cross-reacts with latex,
-  grass pollen, and papain/papaya. Most common side effects are diarrhoea and gastric
-  upset; allergic skin reactions occur in sensitised individuals.'
+  INTERACTIONS. Anticoagulants / antiplatelets (warfarin, aspirin, clopidogrel,
+  NSAIDs) — additive bleeding risk. Antibiotics (amoxicillin, tetracycline) —
+  bromelain raises their absorption and serum levels. Sedatives (alcohol,
+  benzodiazepines, anti-seizure drugs) — may be potentiated; also caution with
+  sedating herbs such as valerian and kava.
+
+  PREGNANCY / LACTATION. Bromelain tablets are NOT recommended in pregnancy — high-dose
+  oral proteases carry a theoretical abnormal-bleeding risk; ordinary dietary
+  pineapple is fine because the flesh has negligible bromelain. In lactation the data
+  are insufficient — avoid as a precaution.
+
+  FM RELEVANCE. Standard partner to quercetin (it improves quercetin absorption) and
+  a routine ingredient in histamine / mast-cell blends such as FMN Opti-Histamine. A
+  reasonable anti-inflammatory adjunct; the metabolic / HOMA-IR signal is interesting
+  but still emerging — not a primary metabolic intervention.'
 notes_for_client: 'A protein-digesting enzyme from pineapple. For digestion, take it
   with meals; for its anti-inflammatory effect, take it between meals on an empty
   stomach. Skip it entirely if you are allergic to pineapple, and tell your coach if
@@ -63,13 +88,17 @@ contraindications:
   - pineapple allergy
   - latex-fruit syndrome
   - papain or papaya allergy
+  - bleeding disorders
+  - surgery scheduled within two weeks
   medications:
   - anticoagulants
   - antiplatelet drugs
   - NSAIDs
+  - sedatives
   life_stages:
   - pregnancy
   - lactation
+  - childhood
 interactions:
   with_supplements: []
   with_foods: []
@@ -86,35 +115,48 @@ interactions:
     type: avoid_together
     reason: Bromelain raises serum antibiotic levels — coordinate with the prescriber
       rather than combining unsupervised.
+  - medication: sedatives (alcohol, benzodiazepines, anti-seizure drugs)
+    type: avoid_together
+    reason: Bromelain may potentiate the strength of sedative medications.
 pregnancy_safety: caution
 lactation_safety: caution
-pregnancy_safety_note: Insufficient human safety data in pregnancy and lactation;
-  avoid unless clearly indicated and clinician-supervised.
+pregnancy_safety_note: Bromelain supplements/tablets are not recommended in pregnancy
+  (theoretical abnormal-bleeding risk from high-dose oral proteases); dietary pineapple
+  is fine. Lactation data are insufficient — avoid as a precaution.
 linked_to_topics:
 - chronic-inflammation
 - histamine-intolerance
 - mast-cell-activation-syndrome
 - digestive-enzyme-insufficiency
 - digestion-and-nutrient-absorption
+- joint-pain
+- insulin-resistance
 linked_to_mechanisms:
 - chronic-inflammation
 - systemic-inflammation
 - nf-kb-activation
 - inflammatory-cascade
 - hcl-and-pepsin-protein-digestion
+- insulin-resistance
 linked_to_claims:
 - bromelain-allergic-rhinitis-nasal-congestion
 - bromelain-knee-pain-inflammation
 - bromelain-osteoarthritis-symptoms
 - bromelain-muscle-soreness-recovery
 - bromelain-type-1-diabetes-incidence
+- bromelain-post-surgical-inflammation
+- bromelain-metabolic-weight-loss
 sources:
 - id: examine-com
   location: Bromelain — Examine Database (5 conditions, show_conditions view)
   quote: Bromelain's anti-inflammatory properties are responsible for several of its
     effects.
+- id: nccih
+  location: Bromelain — Usefulness and Safety
+- id: bromelain-critical-review
+  location: Mechanisms, therapeutic uses and safety
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-22'
 updated_by: shivani

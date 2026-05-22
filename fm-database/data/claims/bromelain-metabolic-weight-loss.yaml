@@ -1,0 +1,33 @@
+slug: bromelain-metabolic-weight-loss
+statement: Preliminary human data suggest bromelain may modestly lower BMI and improve
+  insulin resistance (HOMA-IR) in obese or diabetic patients.
+evidence_tier: plausible_emerging
+rationale: A NotebookLM synthesis of the bromelain review literature notes early
+  human studies reporting reduced BMI and improved HOMA-IR in obese and diabetic
+  patients, with proposed mechanisms of adipocyte lipolysis and dampened metabolic
+  inflammation. The studies are small and the finding is described as emerging, not
+  established.
+coaching_translation: Bromelain is not a weight-loss or blood-sugar treatment. There
+  is an early signal that, via its anti-inflammatory action, it may slightly support
+  metabolic markers — useful context for a client already on it, but the proven
+  levers (meal order, protein, movement, sleep) come first and bromelain does not
+  replace any of them.
+caveats:
+- Preliminary, small human studies only — described as an emerging signal.
+- Not a substitute for core metabolic and lifestyle interventions.
+linked_to_topics:
+- insulin-resistance
+- prediabetes-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- central-adiposity-inflammation
+linked_to_supplements:
+- bromelain
+out_of_scope_notes: ''
+sources:
+- id: bromelain-critical-review
+  location: Therapeutic uses — weight loss and metabolic health (BMI, HOMA-IR)
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

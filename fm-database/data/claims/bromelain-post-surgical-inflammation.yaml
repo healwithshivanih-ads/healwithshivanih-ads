@@ -1,0 +1,36 @@
+slug: bromelain-post-surgical-inflammation
+statement: Bromelain reduces post-operative pain, swelling and trismus after dental,
+  ENT and orthopaedic surgery.
+evidence_tier: plausible_emerging
+rationale: A NotebookLM synthesis of the bromelain review literature grades the human
+  evidence here as moderate — bromelain is widely used to reduce post-operative pain,
+  oedema and trismus, particularly after dental (impacted third molar) and ENT
+  (rhinoplasty) procedures, and is approved by Germany's Commission E for ENT surgery
+  and trauma. Mechanism — anti-inflammatory NF-kB inhibition plus reduced bradykinin
+  and prostaglandin E2.
+coaching_translation: This is an evidence-supported clinical use, but peri-operative
+  supplement decisions belong with the surgeon. If a client says their surgeon or
+  dentist suggested bromelain for post-op swelling, that is legitimate — and flag
+  the bleeding-risk rule — it must be stopped two weeks before and after surgery
+  unless the surgeon directs otherwise.
+caveats:
+- Bromelain has antiplatelet activity — peri-operative use must be surgeon-directed.
+- Potency depends on GDU/MCU enzyme activity, not milligrams.
+linked_to_topics:
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cascade
+- nf-kb-activation
+linked_to_supplements:
+- bromelain
+out_of_scope_notes: Peri-operative supplement use is a clinical decision; coaches
+  should defer to the client's surgeon and not initiate bromelain around surgery.
+sources:
+- id: bromelain-critical-review
+  location: Therapeutic uses — post-surgical inflammation; German Commission E approval
+- id: nccih
+  location: Bromelain — Usefulness and Safety
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

@@ -1,16 +1,22 @@
 slug: bromelain-osteoarthritis-symptoms
-statement: Bromelain has been studied for relief of osteoarthritis symptoms, with
-  preliminary single-study evidence only.
+statement: Bromelain may meaningfully improve osteoarthritis symptoms — pain,
+  stiffness and physical function.
 evidence_tier: plausible_emerging
-rationale: Examine.com lists one 47-participant study on osteoarthritis symptoms;
-  an overall evidence grade is not established. Bromelain's anti-inflammatory action
-  is the proposed mechanism, but the evidence base is too small to draw a conclusion.
-coaching_translation: Bromelain is sometimes used as an anti-inflammatory adjunct
-  for joint discomfort. The osteoarthritis evidence is preliminary — frame it as
-  "may help a little", and keep the focus on movement, load and weight management.
+rationale: A NotebookLM synthesis of the bromelain review literature reports human
+  trials of up to 16 weeks showing significant improvements in total WOMAC scores
+  (pain, stiffness, physical function); the evidence is graded moderate / promising.
+  The proposed mechanism is bromelain's anti-inflammatory action — NF-kB inhibition
+  and reduced prostaglandin E2. Examine.com separately lists a small osteoarthritis
+  study without an established grade, so the picture is promising but not yet
+  definitive.
+coaching_translation: Bromelain is one of the better-supported anti-inflammatory
+  adjuncts for joint discomfort — human trials show real improvements in pain and
+  function. Still frame movement, load management and weight as the primary levers,
+  with bromelain as a supportive add-on.
 caveats:
-- Single small study; overall evidence grade not established.
+- Evidence graded moderate / promising — encouraging human data but not definitive.
 - Diagnosed osteoarthritis management belongs with the client's clinician.
+- Typical osteoarthritis dosing is 400 mg twice daily up to 500-2000 mg twice daily.
 linked_to_topics:
 - joint-pain
 linked_to_mechanisms:
@@ -19,9 +25,11 @@ linked_to_supplements:
 - bromelain
 out_of_scope_notes: ''
 sources:
+- id: bromelain-critical-review
+  location: Therapeutic uses — osteoarthritis (WOMAC outcomes)
 - id: examine-com
   location: Bromelain — Examine Database, Osteoarthritis (Osteoarthritis Symptoms)
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-22'
 updated_by: shivani
