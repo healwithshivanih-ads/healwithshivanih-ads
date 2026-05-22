@@ -29,6 +29,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
+import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import {
   FmAlertGroup,
   FmAppShell,
@@ -1155,6 +1156,8 @@ export default async function DashboardV2() {
           {whatsappConfigured && (
             <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
           )}
+          <CycleDateReminderPanel whatsappConfigured={whatsappConfigured} />
+
 
           {/* Catalogue commit — design 9A with change list disclosure */}
           <FmCatalogueCommitBanner initialStatus={catalogueStatus} />

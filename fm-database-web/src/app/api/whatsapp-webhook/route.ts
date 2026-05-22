@@ -40,6 +40,7 @@ import { execFile } from "child_process";
 import yaml from "js-yaml";
 import { findClientByPhoneAction } from "@/lib/server-actions/clients";
 import { parseInboundStartDateIntent } from "@/lib/start-date-parser";
+import { recordInboundCycleDate } from "@/lib/server-actions/cycle-date-collector";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
@@ -291,6 +292,22 @@ export async function POST(req: NextRequest) {
       `⚠ Recognised as a start-date signal but couldn't auto-apply: ${applied.error}. Manual review needed.`,
     );
   }
+
+  // Cycle-date reply — a client answering the fm_cycle_date_check_v1 ask.
+  // Only attempted when the start-date handler didn't already claim the
+  // message; recordInboundCycleDate returns null for non-cycle messages.
+  const cycleApplied = applied?.ok
+    ? null
+    : await recordInboundCycleDate(match.client_id, messageText);
+  if (cycleApplied?.ok && cycleApplied.applied) {
+    noteLines.push(
+      "",
+      `🩸 Auto-applied: period start date set to ${cycleApplied.date}` +
+        (cycleApplied.previous ? ` (was ${cycleApplied.previous})` : "") +
+        ".",
+    );
+  }
+
   const noteText = noteLines.join("\n");
 
   const saveResult = await saveQuickNote(match.client_id, noteText);

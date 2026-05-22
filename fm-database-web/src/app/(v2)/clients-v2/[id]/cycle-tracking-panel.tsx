@@ -16,6 +16,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FmPanel } from "@/components/fm";
 import { updateCycleTracking } from "@/lib/server-actions/clients";
+import { sendCycleDateCheckAction } from "@/lib/server-actions/cycle-date-collector";
 
 interface Props {
   clientId: string;
@@ -24,6 +25,7 @@ interface Props {
   lastPeriodEndDate?: string;
   cycleLengthDays?: number;
   cycleRegularity?: string;
+  lastCycleAskSent?: string;
 }
 
 const REGULARITY: { v: string; label: string }[] = [
@@ -80,6 +82,8 @@ export function CycleTrackingPanel(p: Props) {
   const [reg, setReg] = useState(p.cycleRegularity ?? "");
   const [saving, setSaving] = useState(false);
   const [err, setErr] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sendMsg, setSendMsg] = useState("");
 
   if (!cycling) return null;
 
@@ -114,6 +118,19 @@ export function CycleTrackingPanel(p: Props) {
       router.refresh();
     } else {
       setErr(r.error);
+    }
+  }
+
+  async function sendCheck() {
+    setSending(true);
+    setSendMsg("");
+    const r = await sendCycleDateCheckAction(p.clientId);
+    setSending(false);
+    if (r.ok) {
+      setSendMsg("✓ Sent — her date reply will auto-fill this.");
+      router.refresh();
+    } else {
+      setSendMsg("⚠ " + (r.error ?? "Send failed"));
     }
   }
 
@@ -152,6 +169,32 @@ export function CycleTrackingPanel(p: Props) {
           >
             ✏️ Edit cycle dates
           </button>
+
+          <div className="mt-3 border-t pt-2.5">
+            <button
+              type="button"
+              onClick={sendCheck}
+              disabled={sending}
+              className={`text-[12px] font-medium hover:underline disabled:opacity-50 ${
+                stale ? "text-rose-600" : "text-indigo-600"
+              }`}
+            >
+              📲 {sending ? "Sending…" : "Send period-date check (WhatsApp)"}
+            </button>
+            {sendMsg ? (
+              <p className="mt-1 text-[11px] text-muted-foreground">{sendMsg}</p>
+            ) : p.lastCycleAskSent ? (
+              <p className="mt-1 text-[11px] text-muted-foreground">
+                Last asked {fmtDate(p.lastCycleAskSent)} — her dated reply
+                auto-fills the period start.
+              </p>
+            ) : (
+              <p className="mt-1 text-[11px] text-muted-foreground">
+                Asks the client by WhatsApp; her dated reply auto-fills the
+                period start.
+              </p>
+            )}
+          </div>
         </div>
       ) : (
         <div className="space-y-3 text-sm">

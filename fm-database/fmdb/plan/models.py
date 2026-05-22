@@ -545,6 +545,7 @@ class Client(BaseModel):
     last_period_end_date: Optional[date] = None   # last day of real flow (not spotting)
     cycle_length_days: Optional[int] = None       # typical cycle length, default 28 if unset
     cycle_regularity: Optional[str] = None        # regular | irregular | very_irregular
+    last_cycle_ask_sent: Optional[date] = None    # date the WhatsApp cycle-date check was last sent
     menopause_started: Optional[str] = None       # freeform (e.g. "2019" or "around age 51")
 
     # Pregnancy / lactation status — drives supplement safety overlay.

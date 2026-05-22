@@ -77,7 +77,7 @@ function isoFromYmd(y: number, m: number, d: number): string | null {
   return `${y}-${pad2(m)}-${pad2(d)}`;
 }
 
-function extractDate(text: string): string | null {
+export function extractDate(text: string): string | null {
   // Try ISO first (least ambiguous)
   const iso = ISO_DATE.exec(text);
   if (iso) {

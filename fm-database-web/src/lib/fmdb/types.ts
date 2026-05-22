@@ -499,6 +499,7 @@ export interface Client {
   last_period_end_date?: string;      // ISO YYYY-MM-DD — last day of real flow
   cycle_length_days?: number;          // default 28
   cycle_regularity?: "regular" | "irregular" | "very_irregular";
+  last_cycle_ask_sent?: string;        // ISO date — WhatsApp cycle-date check last sent
   menopause_started?: string;          // ISO YYYY-MM-DD
 
   // Pregnancy / lactation — drives supplement safety overlay
