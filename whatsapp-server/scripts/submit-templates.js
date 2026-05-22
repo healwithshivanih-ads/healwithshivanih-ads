@@ -251,6 +251,20 @@ const TEMPLATES = [
     body: "Hi {{1}} 👋 Quick check-in from Shivani — have you started your plan yet? If yes, just reply with the date you began (e.g. 'Started 19 May'). If you'd like more time, no rush!",
     example: [['Priya']],
   },
+  {
+    // Cycle-date collector. Fired by fm-coach when the coach approves the
+    // "ask client for next period date" action (surfaces on the client page
+    // + dashboard actions-due). The client's free-text date reply is parsed
+    // by the inbound webhook and auto-populates the client's period-date /
+    // cycle fields. Deliberately NO coach name in the body — kept
+    // coach-agnostic so the same template serves multiple coaches later.
+    name: 'fm_cycle_date_check_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}} 👋 Quick check-in. Has your period started yet? If yes, please reply with the date it began (for example: 21 May). This helps me time your plan and any tests accurately.',
+    example: [['Priya']],
+  },
 
   // Weekly poll templates — each has 3 quick-reply buttons. Button labels
   // MUST match POLL_BUTTON_LABELS in src/lib/server-actions/weekly-poll.ts
