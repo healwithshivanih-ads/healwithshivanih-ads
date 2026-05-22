@@ -1,0 +1,41 @@
+slug: insulin-postprandial
+display_name: Postprandial Insulin
+full_name: Postprandial Insulin (2-hour)
+aliases:
+- postprandial insulin
+- insulin postprandial
+- pp insulin
+- postprandial insulin 2 hr
+- insulin postprandial 2 hr
+- 2 hour insulin
+- 2 hr insulin
+- post prandial insulin
+units: µIU/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 60
+fm_optimal_low: 0
+fm_optimal_high: 30
+interpretation_low: Low postprandial insulin — generally favourable; very low alongside high
+  glucose can signal beta-cell insufficiency.
+interpretation_high: High postprandial insulin (hyperinsulinaemia) — the pancreas over-secreting
+  to clear a meal. One of the EARLIEST signs of insulin resistance, often raised well before
+  fasting insulin or HbA1c move.
+when_to_order: Insulin-resistance workup, prediabetes, PCOS, suspected hyperinsulinaemia.
+fasting_required: false
+typical_cost_inr: 600
+linked_to_topics:
+- insulin-resistance
+- prediabetes-metabolic-syndrome
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Postprandial Insulin
+evidence_tier: strong
+notes_for_coach: Read alongside HOMA-IR and fasting insulin — a raised 2-hour insulin is one
+  of the earliest, most sensitive markers of insulin resistance. Reference ranges are assay-dependent;
+  interpret against the lab's own range too.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

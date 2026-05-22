@@ -6,6 +6,8 @@ aliases:
 - sed rate
 - westergren esr
 - sedimentation rate
+- modified westergren esr
+- esr modified westergren
 units: mm/hr
 sample_type: blood
 conventional_low: 0
@@ -13,12 +15,11 @@ conventional_high: 20
 fm_optimal_low: 0
 fm_optimal_high: 10
 interpretation_low: Healthy non-inflammatory state
-interpretation_high: Non-specific systemic inflammation; > 50 warrants workup for
-  autoimmune (RA, lupus, polymyalgia rheumatica, vasculitis), chronic infection,
-  malignancy
+interpretation_high: Non-specific systemic inflammation; > 50 warrants workup for autoimmune
+  (RA, lupus, polymyalgia rheumatica, vasculitis), chronic infection, malignancy
 when_to_order: Suspected systemic inflammation, autoimmune workup, polymyalgia rheumatica
-  / temporal arteritis suspicion, response monitoring on inflammatory disease, paired
-  with hsCRP for breadth
+  / temporal arteritis suspicion, response monitoring on inflammatory disease, paired with
+  hsCRP for breadth
 fasting_required: false
 typical_cost_inr: 150
 linked_to_topics:
@@ -33,11 +34,10 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Lab interpretation — Erythrocyte Sedimentation Rate
 evidence_tier: strong
-notes_for_coach: 'Old-school inflammation marker — slower to rise + fall than hsCRP
-  (CRP responds within hours; ESR over days). Usually pair both: hsCRP for acute
-  signal, ESR for trajectory. Cheap, available everywhere in India. Mildly elevated
-  ESR with normal hsCRP often = chronic low-grade inflammation worth coaching diet,
-  sleep, stress.'
+notes_for_coach: 'Old-school inflammation marker — slower to rise + fall than hsCRP (CRP responds
+  within hours; ESR over days). Usually pair both: hsCRP for acute signal, ESR for trajectory.
+  Cheap, available everywhere in India. Mildly elevated ESR with normal hsCRP often = chronic
+  low-grade inflammation worth coaching diet, sleep, stress.'
 version: 1
 status: active
 updated_at: '2026-05-10'

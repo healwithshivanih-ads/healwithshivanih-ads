@@ -9,6 +9,8 @@ aliases:
 - creatine kinase total
 - cpk total
 - ck total
+- cpk creatine phosphokinase
+- creatine phosphokinase cpk
 units: U/L
 sample_type: blood
 conventional_low: 26
