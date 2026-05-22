@@ -19,6 +19,13 @@
  */
 import Link from "next/link";
 import { FmPanel } from "@/components/fm";
+import { PromoteDraftButton } from "./promote-draft-button";
+
+/** Minimum non-empty draft fields before we treat a stranded draft as
+ *  worth a coach recovery prompt. Below this it's noise (client tapped
+ *  the link, typed one thing, left) — the normal "In progress" / "Opened"
+ *  stages already cover that. */
+const ORPHAN_DRAFT_MIN_FIELDS = 5;
 
 interface Props {
   clientId: string;
@@ -222,6 +229,39 @@ export function IntakeProgressCard(props: Props) {
   const stage = deriveStage(props);
   const reminderCount = props.intakeRemindersSentAt?.length ?? 0;
 
+  // ── Orphaned-draft detection ─────────────────────────────────────────
+  // The form auto-saves a draft as the client fills it; the final Submit
+  // is a separate tap. A client who fills the form then closes the tab —
+  // mistaking the "Saved ✓" autosave indicator for "done" — strands every
+  // answer in intake_form_draft: no top-level fields, no intake session,
+  // and downstream panels (TierOneSuspicionsPanel, intake insights)
+  // misfire because they read promoted fields, not the draft.
+  //
+  // A successful submit NULLs the draft server-side, so a non-null draft
+  // with real content always means un-promoted answers — either (a) never
+  // submitted, or (b) edited after submitting without re-submitting.
+  const draftFieldCount = countFilledFields(props.intakeFormDraft);
+  const everSubmitted = !!(
+    props.intakeSubmittedAt ||
+    props.intakeLastSubmittedAt ||
+    props.intakeInsightsGeneratedAt
+  );
+  const draftSavedTs = props.intakeFormDraftSavedAt
+    ? Date.parse(props.intakeFormDraftSavedAt)
+    : NaN;
+  const lastSubmitIso = props.intakeLastSubmittedAt ?? props.intakeSubmittedAt;
+  const lastSubmitTs = lastSubmitIso ? Date.parse(lastSubmitIso) : NaN;
+  const draftNewerThanSubmit =
+    !Number.isNaN(draftSavedTs) &&
+    !Number.isNaN(lastSubmitTs) &&
+    draftSavedTs > lastSubmitTs;
+  // No recovery prompt once the coach has finalised (locked) the intake —
+  // action_promote_draft refuses anyway.
+  const hasOrphanedDraft =
+    !props.intakeFinalisedAt &&
+    draftFieldCount >= ORPHAN_DRAFT_MIN_FIELDS &&
+    (!everSubmitted || draftNewerThanSubmit);
+
   return (
     <FmPanel
       title="📝 Intake form progress"
@@ -338,6 +378,71 @@ export function IntakeProgressCard(props: Props) {
           </Link>
         )}
       </div>
+
+      {/* ── Orphaned-draft recovery ──────────────────────────────────────
+          Stranded answers sitting in intake_form_draft that never reached
+          the client record. One click promotes them (runs the same merge
+          as a client submit). See PromoteDraftButton / action_promote_draft. */}
+      {hasOrphanedDraft && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "12px 14px",
+            background: "rgba(245, 158, 11, 0.12)",
+            border: "1.5px solid rgba(245, 158, 11, 0.50)",
+            borderRadius: 8,
+            display: "grid",
+            gap: 8,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "baseline", gap: 8, fontSize: 13, fontWeight: 700 }}>
+            <span style={{ fontSize: 16 }}>⚠️</span>
+            {draftNewerThanSubmit
+              ? "Edited after submitting — changes not captured"
+              : "Filled but never submitted"}
+          </div>
+          <div style={{ fontSize: 12, lineHeight: 1.55, color: "var(--fm-text-secondary)" }}>
+            {draftNewerThanSubmit ? (
+              <>
+                {props.firstName} changed the intake form after submitting (
+                {draftFieldCount} field{draftFieldCount === 1 ? "" : "s"} in the
+                draft, last saved{" "}
+                {props.intakeFormDraftSavedAt
+                  ? relativeTime(props.intakeFormDraftSavedAt)
+                  : "—"}
+                ) but didn&apos;t re-submit. Those edits are saved as a draft
+                only — promote them to merge the latest answers into the record.
+              </>
+            ) : (
+              <>
+                {props.firstName} filled {draftFieldCount} field
+                {draftFieldCount === 1 ? "" : "s"} (last saved{" "}
+                {props.intakeFormDraftSavedAt
+                  ? relativeTime(props.intakeFormDraftSavedAt)
+                  : "—"}
+                ) but never tapped Submit — their answers are stranded in an
+                un-promoted draft. Nothing downstream (insights, Tier&nbsp;1
+                screening, the intake session) can see them yet. Promote the
+                draft to run it through the same merge a submit would.
+              </>
+            )}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            <PromoteDraftButton clientId={props.clientId} fieldCount={draftFieldCount} />
+            <Link
+              href={`/clients-v2/${props.clientId}/intake-view`}
+              style={{
+                fontSize: 12,
+                fontWeight: 600,
+                color: "var(--fm-primary)",
+                textDecoration: "none",
+              }}
+            >
+              Review the draft first →
+            </Link>
+          </div>
+        </div>
+      )}
     </FmPanel>
   );
 }

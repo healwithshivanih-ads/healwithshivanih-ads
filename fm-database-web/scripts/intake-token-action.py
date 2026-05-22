@@ -3,7 +3,8 @@
 
 Reads JSON from stdin:
 {
-  "action": "generate" | "lookup" | "save_draft" | "submit" | "revoke",
+  "action": "generate" | "lookup" | "save_draft" | "submit"
+            | "promote_draft" | "revoke",
   ...action-specific fields
 }
 
@@ -30,6 +31,12 @@ Actions:
       writes the raw payload to a tagged quick_note session, sets
       intake_submitted_at, clears intake_token to revoke the link.
       Returns: {ok, client_id, fields_updated, session_id}
+
+  promote_draft {client_id}
+    → Coach rescues a stranded intake_form_draft (client filled the form
+      but never tapped Submit). Runs the same merge as `submit`, resolved
+      by client_id so an expired token can't block recovery.
+      Returns: {ok, client_id, fields_updated, session_id, promoted_from_draft}
 
   revoke {client_id}
     → Coach manually invalidates the token. Returns: {ok}
@@ -932,6 +939,22 @@ def action_submit(payload_in: dict) -> dict:
     is_finalised = bool(data.get("intake_finalised_at"))
     if is_finalised:
         return {"ok": False, "error": "intake_locked_by_coach"}
+    return _apply_submit(client_id, data, submitted)
+
+
+def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
+    """Core intake-promotion logic — merges a submitted payload into the
+    real top-level client fields, marks the submit timestamps, clears the
+    draft, writes the audit session, and fires auto-insights.
+
+    Shared by two entry points:
+      - action_submit      — client taps Submit on the public form (token-auth)
+      - action_promote_draft — coach promotes a stranded intake_form_draft
+                               for a client who filled but never submitted
+                               (client_id-auth, no token needed)
+
+    Both resolve (client_id, data) their own way, then hand the actual
+    merge to this function so the two paths can never drift apart."""
     is_first_submit = not data.get("intake_submitted_at")
 
     fields_updated: list[str] = []
@@ -1187,6 +1210,40 @@ def action_submit(payload_in: dict) -> dict:
     }
 
 
+# ── action: promote_draft (coach rescues a stranded intake draft) ────────────
+
+def action_promote_draft(payload: dict) -> dict:
+    """Coach-triggered: promote a stranded `intake_form_draft` into the real
+    client fields by running the exact same merge as a client-side submit.
+
+    Why this exists: the intake form auto-saves a draft as the client fills
+    it, but the final Submit is a separate tap. A client who fills the whole
+    form and then closes the tab (mistaking "Saved ✓" for "done") leaves all
+    their answers invisible in `client.intake_form_draft` — no top-level
+    fields, no intake session, dashboard panels misfire. This action lets the
+    coach recover that data in one click.
+
+    Resolves by client_id, NOT token: the coach is acting, so an expired
+    intake token must not block recovery. Idempotent-ish — re-running after a
+    successful promote is a no-op (draft was cleared)."""
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    try:
+        data = _load_client(client_id)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+    if data.get("intake_finalised_at"):
+        return {"ok": False, "error": "intake_locked_by_coach"}
+    draft = data.get("intake_form_draft")
+    if not isinstance(draft, dict) or not draft:
+        return {"ok": False, "error": "no_draft_to_promote"}
+    result = _apply_submit(client_id, data, draft)
+    if result.get("ok"):
+        result["promoted_from_draft"] = True
+    return result
+
+
 # ── action: finalise (coach explicitly locks the intake) ─────────────────────
 
 def action_finalise(payload: dict) -> dict:
@@ -1302,6 +1359,7 @@ ACTIONS = {
     "lookup": action_lookup,
     "save_draft": action_save_draft,
     "submit": action_submit,
+    "promote_draft": action_promote_draft,
     "finalise": action_finalise,
     "revoke": action_revoke,
     # v0.75 — two-stage intake flow + discovery journey markers

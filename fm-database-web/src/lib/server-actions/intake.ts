@@ -118,6 +118,54 @@ export async function submitIntakeForm(
 }
 
 /**
+ * Coach-triggered recovery: promote a stranded `intake_form_draft` into the
+ * real client fields.
+ *
+ * The intake form auto-saves a draft as the client fills it, but the final
+ * Submit is a separate tap. A client who fills the whole form and then closes
+ * the tab — mistaking the "Saved ✓" autosave indicator for "done" — leaves
+ * every answer invisible in `client.intake_form_draft`: no top-level fields,
+ * no intake session, and downstream panels (TierOneSuspicionsPanel, intake
+ * insights) misfire because they read the promoted fields, not the draft.
+ *
+ * This runs the exact same merge as a client-side submit, resolved by
+ * `clientId` (not token) so an expired intake link can't block recovery.
+ * Surfaced as a one-click button on the client Overview when an orphaned
+ * draft is detected.
+ */
+export async function promoteIntakeDraft(
+  clientId: string,
+): Promise<
+  | {
+      ok: true;
+      client_id: string;
+      fields_updated: string[];
+      session_id: string;
+      promoted_from_draft: true;
+    }
+  | { ok: false; error: string }
+> {
+  try {
+    const res = (await runScript(
+      "intake-token-action.py",
+      { action: "promote_draft", client_id: clientId },
+      60_000,
+    )) as
+      | {
+          ok: true;
+          client_id: string;
+          fields_updated: string[];
+          session_id: string;
+          promoted_from_draft: true;
+        }
+      | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
  * Generate a fresh intake token.
  *
  * v0.75 — `unlockFull: true` for direct-signup clients (referrals, returning
