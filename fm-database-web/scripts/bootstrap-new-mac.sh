@@ -123,7 +123,7 @@ echo
 # ── Step 4: hand off to setup-laptop.sh (npm + build + pm2 + .env.local) ─────
 
 echo "→ Running setup-laptop.sh (npm install + build + pm2 start)"
-echo "  This will prompt you for Gmail + AiSensy keys if not already set."
+echo "  This will prompt you for Gmail + WhatsApp server keys if not already set."
 echo
 bash "$REPO/fm-database-web/scripts/setup-laptop.sh"
 
@@ -153,9 +153,10 @@ cat <<EOF
      ~/fm-plans/supplement_links.yaml
      ~/fm-plans/custom_templates/
 
- If you used cloudflared for AiSensy webhook before, set it up again:
-     brew install cloudflared
-     cloudflared tunnel --url http://localhost:3002
+ For inbound WhatsApp webhooks (AiSensy is decommissioned — we use
+ the self-hosted WhatsApp Cloud API server on Fly):
+   WHATSAPP_SERVER_URL and WHATSAPP_SERVER_API_KEY are the relevant
+   env vars. Webhooks are received by the Fly app, not this machine.
 
 ══════════════════════════════════════════════════════════════════════
 EOF

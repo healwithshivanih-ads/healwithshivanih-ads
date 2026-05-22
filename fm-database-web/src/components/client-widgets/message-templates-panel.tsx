@@ -509,7 +509,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
   const [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState<MessageTemplate | null>(null);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [whatsappConfigured, setAisensyConfigured] = useState<boolean>(whatsappConfiguredProp ?? false);
+  const [whatsappConfigured, setWhatsappConfigured] = useState<boolean>(whatsappConfiguredProp ?? false);
 
   const loadTemplates = useCallback(async () => {
     setLoading(true);
@@ -518,7 +518,7 @@ export function MessageTemplatesPanel({ clientId, clientName, clientPhone, clien
       checkWhatsAppConfigAction(),
     ]);
     setTemplates(ts);
-    setAisensyConfigured(cfg.configured);
+    setWhatsappConfigured(cfg.configured);
     setLoading(false);
   }, []);
 

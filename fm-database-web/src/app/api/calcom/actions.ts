@@ -510,13 +510,14 @@ export async function createBookingAction(
 }
 
 // ── Send-link flow (WhatsApp / fallback) ──────────────────────────────────────
-// Slim implementation for this worktree. If the project already exports
-// `sendBookingLinkAction` from `whatsapp/calcom-actions.ts`, prefer that and
-// delete this. Kept here so the modal can fall back without a hard import.
+// Use sendCalcomLinkAction / sendCalcomLinkTemplateAction from
+// src/app/api/whatsapp/calcom-actions.ts for the canonical send path.
+// This thin shim remains so the book-session modal doesn't need a
+// separate import; it delegates to the WhatsApp Cloud API server.
 
 export async function sendBookingLinkAction(
   input: SendBookingLinkInput,
-): Promise<{ ok: boolean; method: "whatsapp" | "aisensy" | "manual"; url: string; error?: string }> {
+): Promise<{ ok: boolean; method: "whatsapp" | "manual"; url: string; error?: string }> {
   const links = await loadCalcomLinksYaml();
   const link = links.find((l) => l.slug === input.eventTypeSlug);
   if (!link) {
@@ -524,44 +525,16 @@ export async function sendBookingLinkAction(
   }
   const url = link.template_param_url ?? link.url;
 
-  // Try AiSensy direct API if configured. Falls back to manual copy/paste
-  // when no transport is wired up.
-  const aisensyKey = process.env.AISENSY_API_KEY;
-  if (aisensyKey && input.clientPhone) {
-    const phone = input.clientPhone.replace(/[^\d]/g, "");
-    const e164 = phone.length === 10 ? `91${phone}` : phone;
+  // Try WhatsApp Cloud API if configured.
+  const waServerUrl = process.env.WHATSAPP_SERVER_URL;
+  if (waServerUrl && input.clientId) {
     try {
-      const res = await fetch("https://backend.aisensy.com/direct-apis/t1/create-message", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${aisensyKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          to: e164,
-          type: "template",
-          template: {
-            name: "fm_book_session_v1",
-            language: { code: "en" },
-            components: [
-              {
-                type: "body",
-                parameters: [
-                  { type: "text", text: input.clientName },
-                  { type: "text", text: url },
-                ],
-              },
-            ],
-          },
-        }),
-      });
-      if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        return { ok: false, method: "aisensy", url, error: `AiSensy ${res.status}: ${text.slice(0, 200)}` };
-      }
-      return { ok: true, method: "aisensy", url };
+      const { sendCalcomLinkTemplateAction } = await import("@/app/api/whatsapp/calcom-actions");
+      const r = await sendCalcomLinkTemplateAction(input.clientId, input.eventTypeSlug);
+      if (r.ok) return { ok: true, method: "whatsapp", url };
+      return { ok: false, method: "whatsapp", url, error: r.error };
     } catch (err) {
-      return { ok: false, method: "aisensy", url, error: err instanceof Error ? err.message : String(err) };
+      return { ok: false, method: "whatsapp", url, error: err instanceof Error ? err.message : String(err) };
     }
   }
   // Fallback — return the URL so the coach can paste it manually.

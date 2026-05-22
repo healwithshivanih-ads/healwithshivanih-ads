@@ -3,7 +3,7 @@
 /**
  * Cal.com booking modal — two flows in one UI:
  *
- *   A. Send link    — generates a WhatsApp/AiSensy message with the
+ *   A. Send link    — sends a WhatsApp message (via Cloud API server) with the
  *                     Cal.com self-serve URL.
  *   B. Book direct  — coach picks an available slot; we POST to Cal.com
  *                     on the client's behalf so the calendar block, Zoom
