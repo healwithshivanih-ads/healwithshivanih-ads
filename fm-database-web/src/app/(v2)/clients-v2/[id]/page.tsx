@@ -83,6 +83,7 @@ import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
 import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
+import { CycleTrackingPanel } from "./cycle-tracking-panel";
 
 export const dynamic = "force-dynamic";
 
@@ -1013,6 +1014,18 @@ export default async function ClientV2Page({
               (client as unknown as { ifm_baseline?: IfmBaseline })
                 .ifm_baseline ?? null
             }
+          />
+
+          {/* 🩸 Coach-owned menstrual-cycle dates — self-hides unless the
+              client is menstruating / perimenopausal. Foundation for the
+              cycle-aware test recommender. */}
+          <CycleTrackingPanel
+            clientId={client.client_id}
+            cycleStatus={client.cycle_status}
+            lastMenstrualPeriod={client.last_menstrual_period}
+            lastPeriodEndDate={client.last_period_end_date}
+            cycleLengthDays={client.cycle_length_days}
+            cycleRegularity={client.cycle_regularity}
           />
         </div>
 

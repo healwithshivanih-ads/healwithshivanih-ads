@@ -911,6 +911,69 @@ export async function updateClientProfile(
 }
 
 // ---------------------------------------------------------------------------
+// Cycle tracking — coach-owned period dates (Piece B foundation). The intake
+// form seeds these once; thereafter the coach refreshes them from check-ins /
+// WhatsApp / calls via the CycleTrackingPanel on the client overview.
+// ---------------------------------------------------------------------------
+
+export interface UpdateCycleTrackingInput {
+  client_id: string;
+  last_menstrual_period?: string | null; // YYYY-MM-DD — period start (Day 1); "" clears
+  last_period_end_date?: string | null;  // YYYY-MM-DD — last day of real flow; "" clears
+  cycle_length_days?: number | null;
+  cycle_regularity?: string | null;
+}
+
+export type UpdateCycleTrackingResult =
+  | { ok: true }
+  | { ok: false; error: string };
+
+export async function updateCycleTracking(
+  input: UpdateCycleTrackingInput
+): Promise<UpdateCycleTrackingResult> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml"
+  );
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = yaml.load(raw) as Record<string, unknown>;
+
+    if (input.last_menstrual_period !== undefined)
+      data.last_menstrual_period =
+        (input.last_menstrual_period || "").trim() || undefined;
+    if (input.last_period_end_date !== undefined)
+      data.last_period_end_date =
+        (input.last_period_end_date || "").trim() || undefined;
+    if (input.cycle_length_days !== undefined)
+      data.cycle_length_days =
+        input.cycle_length_days && input.cycle_length_days > 0
+          ? input.cycle_length_days
+          : undefined;
+    if (input.cycle_regularity !== undefined)
+      data.cycle_regularity = input.cycle_regularity || undefined;
+
+    data.updated_at = new Date().toISOString();
+
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8"
+    );
+
+    revalidatePath(`/clients-v2/${input.client_id}`);
+    revalidatePath("/dashboard-v2");
+    return { ok: true };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to update cycle tracking" };
+  }
+}
+
+// ---------------------------------------------------------------------------
 
 export interface ClientTimelineEvent {
   year?: number | null;

@@ -541,7 +541,8 @@ class Client(BaseModel):
     # phase-compute with low confidence; 'postmenopausal' → skip phase,
     # use stable post-meno protocols; 'not_applicable' → ignore entirely.
     cycle_status: Optional[str] = None      # menstruating | perimenopausal | postmenopausal | not_applicable
-    last_menstrual_period: Optional[date] = None  # ISO date of LMP — start of most recent cycle
+    last_menstrual_period: Optional[date] = None  # ISO date of LMP — period START (Day 1)
+    last_period_end_date: Optional[date] = None   # last day of real flow (not spotting)
     cycle_length_days: Optional[int] = None       # typical cycle length, default 28 if unset
     cycle_regularity: Optional[str] = None        # regular | irregular | very_irregular
     menopause_started: Optional[str] = None       # freeform (e.g. "2019" or "around age 51")
