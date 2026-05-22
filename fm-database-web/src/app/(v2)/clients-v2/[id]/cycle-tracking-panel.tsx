@@ -102,6 +102,30 @@ export function CycleTrackingPanel(p: Props) {
   const regLabel =
     REGULARITY.find((r) => r.v === (p.cycleRegularity ?? ""))?.label ?? "—";
 
+  // ── Cycle-aware test timing ──────────────────────────────────────────────
+  // Progesterone + oestradiol are only meaningful mid-luteal (~7 days before
+  // the next period). Compute the draw date from the current cycle dates.
+  let lutealDraw: string | null = null;
+  let lutealDay: number | null = null;
+  let drawStatus: "upcoming" | "now" | "next-cycle" = "upcoming";
+  if (p.lastMenstrualPeriod && p.cycleLengthDays && !stale) {
+    const base = addDays(p.lastMenstrualPeriod, p.cycleLengthDays - 7);
+    if (base) {
+      const age = daysSince(base); // today − base
+      if (age == null || age <= 0) {
+        lutealDraw = base;
+        drawStatus = "upcoming";
+      } else if (age <= 4) {
+        lutealDraw = base;
+        drawStatus = "now";
+      } else {
+        lutealDraw = addDays(base, p.cycleLengthDays);
+        drawStatus = "next-cycle";
+      }
+      lutealDay = p.cycleLengthDays - 6;
+    }
+  }
+
   async function save() {
     setSaving(true);
     setErr("");
@@ -160,6 +184,40 @@ export function CycleTrackingPanel(p: Props) {
             <p className="mt-2 text-[12px] text-muted-foreground">
               Add the period start date and cycle length to compute cycle timing.
             </p>
+          )}
+
+          {lutealDraw && (
+            <div className="mt-2 rounded border border-indigo-200 bg-indigo-50 px-2.5 py-2 text-[12px] space-y-1">
+              <p className="font-semibold text-indigo-900">
+                📋 Luteal hormone panel — timing
+              </p>
+              <p className="text-indigo-900">
+                Progesterone + oestradiol are only meaningful mid-luteal (~7 days
+                before her next period).{" "}
+                {drawStatus === "now" ? (
+                  <>
+                    Her luteal window is <strong>open now</strong> — draw within
+                    the next day or two (cycle day ~{lutealDay}).
+                  </>
+                ) : drawStatus === "next-cycle" ? (
+                  <>
+                    This cycle&apos;s window has passed — next opportunity{" "}
+                    <strong>{fmtDate(lutealDraw)}</strong> (cycle day ~
+                    {lutealDay}).
+                  </>
+                ) : (
+                  <>
+                    Target draw: <strong>{fmtDate(lutealDraw)}</strong> (cycle
+                    day ~{lutealDay}).
+                  </>
+                )}
+              </p>
+              <p className="text-indigo-700">
+                More precise: LH ovulation strips from day 12 — draw 7 days after
+                the surge. Best when her cycle length varies. A mid-luteal
+                progesterone also confirms she ovulated this cycle.
+              </p>
+            </div>
           )}
 
           <button
