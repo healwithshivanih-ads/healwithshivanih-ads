@@ -2424,6 +2424,16 @@ export function IntakeForm({
     <form
       onSubmit={handleSubmit}
       onBlur={handleBlur}
+      // noValidate is deliberate. The form does ALL validation in JS
+      // (handleSubmit — consent is the only gate). Without this, native
+      // HTML5 constraint validation runs first, and in ?focus=tier1 mode
+      // every non-Tier-1 section is display:none — a browser cannot focus
+      // a hidden invalid control, so Submit silently aborts ("An invalid
+      // form control is not focusable") and handleSubmit never runs. The
+      // client taps Submit, nothing happens, their answers strand in the
+      // draft. noValidate makes that failure mode structurally impossible
+      // even if a `required` attribute is added to a field later.
+      noValidate
       className={focusTier1 ? "fm-intake--focus-tier1" : undefined}
     >
       {!focusTier1 && (
