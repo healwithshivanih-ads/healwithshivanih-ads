@@ -1,0 +1,29 @@
+slug: lipase
+display_name: Lipase
+full_name: Serum Lipase
+aliases:
+- lipase
+- serum lipase
+units: U/L
+sample_type: blood
+conventional_low: 10
+conventional_high: 60
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low lipase — pancreatic insufficiency.
+interpretation_high: High lipase — acute pancreatitis (more specific than amylase).
+when_to_order: Abdominal pain, suspected pancreatitis, pancreatic enzyme status.
+fasting_required: false
+typical_cost_inr: 450
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Lipase
+evidence_tier: strong
+notes_for_coach: More pancreas-specific than amylase. A high lipase with abdominal pain needs
+  urgent assessment.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

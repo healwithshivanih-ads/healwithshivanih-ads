@@ -1,0 +1,30 @@
+slug: chloride
+display_name: Chloride
+full_name: Serum Chloride
+aliases:
+- chloride
+- serum chloride
+- cl
+- chloride serum
+units: mmol/L
+sample_type: blood
+conventional_low: 98
+conventional_high: 107
+fm_optimal_low: 100
+fm_optimal_high: 106
+interpretation_low: Low chloride — vomiting, metabolic alkalosis, over-hydration.
+interpretation_high: High chloride — dehydration, metabolic acidosis.
+when_to_order: Electrolyte panel; acid-base assessment.
+fasting_required: false
+typical_cost_inr: 110
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Chloride
+evidence_tier: strong
+notes_for_coach: Read alongside sodium and bicarbonate for acid-base context.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

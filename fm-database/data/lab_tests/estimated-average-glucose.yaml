@@ -1,0 +1,35 @@
+slug: estimated-average-glucose
+display_name: Estimated Average Glucose
+full_name: Estimated Average Glucose (from HbA1c)
+aliases:
+- eag
+- estimated average glucose
+- estimated average glucose eag
+- average glucose
+units: mg/dL
+sample_type: blood
+conventional_low: 0
+conventional_high: 137
+fm_optimal_low: 0
+fm_optimal_high: 114
+interpretation_low: Low eAG — generally good glycaemic control (interpret with hypoglycaemia
+  symptoms).
+interpretation_high: High eAG — above-optimal average glucose; mirrors HbA1c (eAG ~114 = HbA1c
+  5.7).
+when_to_order: Glycaemic control — a plain-language companion to HbA1c.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics:
+- insulin-resistance
+- prediabetes-metabolic-syndrome
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Estimated Average Glucose
+evidence_tier: strong
+notes_for_coach: Just HbA1c expressed as an average glucose. Read the HbA1c itself as the
+  primary marker.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

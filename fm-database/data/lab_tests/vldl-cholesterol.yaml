@@ -1,0 +1,33 @@
+slug: vldl-cholesterol
+display_name: VLDL Cholesterol
+full_name: Very Low Density Lipoprotein Cholesterol
+aliases:
+- vldl
+- vldl cholesterol
+- very low density lipoprotein
+- vldl c
+units: mg/dL
+sample_type: blood
+conventional_low: 5
+conventional_high: 40
+fm_optimal_low: 5
+fm_optimal_high: 25
+interpretation_low: Low VLDL — generally favourable.
+interpretation_high: High VLDL — tracks triglycerides; reflects insulin resistance and excess
+  refined carbs/alcohol.
+when_to_order: Lipid panel; insulin-resistance and triglyceride assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics:
+- insulin-resistance
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - VLDL Cholesterol
+evidence_tier: strong
+notes_for_coach: Calculated as triglycerides / 5. A raised VLDL is really a triglyceride /
+  insulin-resistance signal.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

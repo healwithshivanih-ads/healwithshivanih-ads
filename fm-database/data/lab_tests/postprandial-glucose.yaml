@@ -8,20 +8,24 @@ aliases:
 - post-meal glucose
 - ppbs
 - post prandial blood sugar
+- post prandial glucose
+- glucose post prandial
+- postprandial blood sugar
+- glucose postprandial
 units: mg/dL
 sample_type: blood
 conventional_low: 70
 conventional_high: 140
 fm_optimal_low: 70
 fm_optimal_high: 110
-interpretation_low: Hypoglycaemia (< 70). Reactive hypoglycaemia common in early insulin
-  resistance + adrenal stress; check fasting insulin + cortisol curve.
-interpretation_high: 140-199 = impaired glucose tolerance (prediabetes pattern); ≥
-  200 = diabetes pattern. FM flags > 110 as glucose dysregulation even when fasting
-  is normal — common pattern in early IR.
-when_to_order: When fasting glucose is normal but HbA1c, fasting insulin, or symptoms
-  (post-meal sleepiness / cravings) suggest glucose dysregulation. Always pair with
-  fasting glucose to see the fasting → 2h excursion.
+interpretation_low: Hypoglycaemia (< 70). Reactive hypoglycaemia common in early insulin resistance
+  + adrenal stress; check fasting insulin + cortisol curve.
+interpretation_high: 140-199 = impaired glucose tolerance (prediabetes pattern); ≥ 200 = diabetes
+  pattern. FM flags > 110 as glucose dysregulation even when fasting is normal — common pattern
+  in early IR.
+when_to_order: When fasting glucose is normal but HbA1c, fasting insulin, or symptoms (post-meal
+  sleepiness / cravings) suggest glucose dysregulation. Always pair with fasting glucose to
+  see the fasting → 2h excursion.
 fasting_required: false
 typical_cost_inr: 120
 linked_to_topics:
@@ -36,8 +40,8 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Lab interpretation — postprandial glucose
 evidence_tier: strong
-notes_for_coach: PP glucose catches early IR that fasting glucose + HbA1c miss. Order
-  with fasting glucose so you can see the post-meal excursion. Cheap test in India.
+notes_for_coach: PP glucose catches early IR that fasting glucose + HbA1c miss. Order with
+  fasting glucose so you can see the post-meal excursion. Cheap test in India.
 version: 1
 status: active
 updated_at: '2026-05-11'

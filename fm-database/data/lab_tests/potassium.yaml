@@ -1,0 +1,33 @@
+slug: potassium
+display_name: Potassium
+full_name: Serum Potassium
+aliases:
+- potassium
+- serum potassium
+- k
+- k+
+- potassium serum
+units: mmol/L
+sample_type: blood
+conventional_low: 3.5
+conventional_high: 5.1
+fm_optimal_low: 4.0
+fm_optimal_high: 4.8
+interpretation_low: Hypokalaemia — diuretics, vomiting/diarrhoea, low intake, magnesium depletion.
+interpretation_high: Hyperkalaemia — kidney impairment, ACE inhibitors; a high value needs
+  prompt clinician review.
+when_to_order: Electrolyte panel; cramps, palpitations, BP and kidney workup.
+fasting_required: false
+typical_cost_inr: 120
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Potassium
+evidence_tier: strong
+notes_for_coach: Tracks closely with magnesium. Out-of-range potassium is a clinician matter,
+  not a coaching one.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

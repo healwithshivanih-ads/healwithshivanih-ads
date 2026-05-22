@@ -1183,19 +1183,6 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # ══════════════════════════════════════════════════════════════════════════
     lt_index = _lab_test_index()
     coded_keys = {_norm_marker(r.get("marker_name")) for r in results}
-    leftovers: dict[str, dict[str, Any]] = {}
-    for lab in extracted_labs:
-        if not isinstance(lab, dict) or id(lab) in _CONSUMED_IDS:
-            continue
-        nm = str(lab.get("test_name") or "").strip()
-        if not nm:
-            continue
-        key = _norm_marker(nm)
-        if not key or key in coded_keys:
-            continue  # already represented by a coded marker
-        prev = leftovers.get(key)
-        if prev is None or _parse_lab_date(lab.get("date_drawn")) >= _parse_lab_date(prev.get("date_drawn")):
-            leftovers[key] = lab
 
     def _rng(lo: object, hi: object) -> str:
         if lo is None and hi is None:
@@ -1206,13 +1193,32 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             return f">{lo}"
         return f"{lo}-{hi}"
 
-    for key, lab in leftovers.items():
+    # Resolve each unconsumed lab against the catalogue, then dedup by the
+    # RESOLVED lab-test slug — so two different spellings of the same marker
+    # collapse to one — or by normalised name when it resolves to nothing.
+    # Latest draw date wins within a group.
+    picked: dict[str, tuple] = {}
+    for lab in extracted_labs:
+        if not isinstance(lab, dict) or id(lab) in _CONSUMED_IDS:
+            continue
+        nm = str(lab.get("test_name") or "").strip()
+        if not nm:
+            continue
+        nkey = _norm_marker(nm)
+        if not nkey or nkey in coded_keys:
+            continue  # already represented by a coded marker
+        lt = lt_index.get(nkey)
+        dkey = f"lt:{lt.get('slug')}" if lt else f"raw:{nkey}"
+        prev = picked.get(dkey)
+        if prev is None or _parse_lab_date(lab.get("date_drawn")) >= _parse_lab_date(prev[0].get("date_drawn")):
+            picked[dkey] = (lab, lt)
+
+    for lab, lt in picked.values():
         nm = str(lab.get("test_name") or "").strip()
         try:
             num = float(re.sub(r"[^0-9.\-]", "", str(lab.get("value", ""))))
         except (ValueError, TypeError):
             continue  # non-numeric / qualitative result — not a panel marker
-        lt = lt_index.get(key)
         if not lt:
             add(nm, num, str(lab.get("unit") or ""),
                 str(lab.get("reference_range") or ""), "normal",

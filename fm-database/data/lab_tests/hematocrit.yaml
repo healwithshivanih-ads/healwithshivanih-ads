@@ -1,0 +1,32 @@
+slug: hematocrit
+display_name: Hematocrit
+full_name: Haematocrit / Packed Cell Volume
+aliases:
+- hematocrit
+- haematocrit
+- pcv
+- packed cell volume
+- hct
+units: '%'
+sample_type: blood
+conventional_low: 36
+conventional_high: 46
+fm_optimal_low: 37
+fm_optimal_high: 44
+interpretation_low: Low haematocrit — anaemia (iron, B12/folate, chronic disease, blood loss).
+interpretation_high: High haematocrit — dehydration, smoking, polycythaemia.
+when_to_order: Part of the CBC; anaemia and hydration assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Hematocrit
+evidence_tier: strong
+notes_for_coach: Female reference ~36-46%. Read with haemoglobin, MCV and RDW for the anaemia
+  pattern.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

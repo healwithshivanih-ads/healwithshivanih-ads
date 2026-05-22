@@ -1,0 +1,33 @@
+slug: total-protein
+display_name: Total Protein
+full_name: Serum Total Protein
+aliases:
+- total protein
+- total proteins
+- serum total protein
+- protein total
+- total protein serum
+units: g/dL
+sample_type: blood
+conventional_low: 6.0
+conventional_high: 8.3
+fm_optimal_low: 6.8
+fm_optimal_high: 7.8
+interpretation_low: Low total protein — poor intake/absorption, liver synthetic decline, protein
+  loss.
+interpretation_high: High total protein — chronic inflammation/infection, dehydration, paraproteinaemia.
+when_to_order: Nutrition status, liver function, inflammation screen.
+fasting_required: false
+typical_cost_inr: 120
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Total Protein
+evidence_tier: strong
+notes_for_coach: Split is albumin (nutrition/liver) vs globulin (immune/inflammation) — the
+  A/G ratio is the useful read.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

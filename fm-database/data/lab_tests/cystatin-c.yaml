@@ -1,0 +1,32 @@
+slug: cystatin-c
+display_name: Cystatin C
+full_name: Cystatin C
+aliases:
+- cystatin c
+- cystatin-c
+- serum cystatin c
+units: mg/L
+sample_type: blood
+conventional_low: 0.5
+conventional_high: 1.0
+fm_optimal_low: 0.5
+fm_optimal_high: 0.8
+interpretation_low: Low cystatin C — generally favourable kidney filtration.
+interpretation_high: High cystatin C — reduced kidney filtration; less affected by muscle
+  mass than creatinine.
+when_to_order: Kidney function — especially where creatinine is unreliable (low or high muscle
+  mass).
+fasting_required: false
+typical_cost_inr: 900
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Cystatin C
+evidence_tier: strong
+notes_for_coach: A muscle-mass-independent GFR marker — useful cross-check on creatinine-based
+  eGFR.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

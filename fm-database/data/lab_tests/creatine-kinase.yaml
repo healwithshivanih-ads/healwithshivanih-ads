@@ -1,0 +1,35 @@
+slug: creatine-kinase
+display_name: Creatine Kinase
+full_name: Creatine Kinase (Total)
+aliases:
+- cpk
+- ck
+- creatine kinase
+- creatine phosphokinase
+- creatine kinase total
+- cpk total
+- ck total
+units: U/L
+sample_type: blood
+conventional_low: 26
+conventional_high: 192
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low CK — low muscle mass; rarely significant.
+interpretation_high: High CK — muscle injury or exertion, statin-related myopathy; a markedly
+  high value needs prompt review.
+when_to_order: Muscle symptoms, statin tolerance, unexplained weakness.
+fasting_required: false
+typical_cost_inr: 350
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Creatine Kinase
+evidence_tier: strong
+notes_for_coach: Rises after intense exercise — recheck rested. Persistent elevation, especially
+  on a statin, is a clinician matter.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: ige-total
+display_name: Total IgE
+full_name: Total Immunoglobulin E
+aliases:
+- ige
+- ige total
+- total ige
+- ige level
+- serum ige
+- immunoglobulin e
+- ige serum
+units: IU/mL
+sample_type: blood
+conventional_low: 0
+conventional_high: 100
+fm_optimal_low: 0
+fm_optimal_high: 50
+interpretation_low: Low IgE — not clinically significant.
+interpretation_high: High IgE — atopy/allergic disease, eczema, asthma, parasitic infection;
+  supports an allergic/mast-cell picture.
+when_to_order: Allergy / atopy screen; eczema, asthma, suspected histamine or mast-cell involvement.
+fasting_required: false
+typical_cost_inr: 800
+linked_to_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Total IgE
+evidence_tier: strong
+notes_for_coach: A raised total IgE supports an allergic/atopic tendency but is non-specific
+  — pair with the clinical picture.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

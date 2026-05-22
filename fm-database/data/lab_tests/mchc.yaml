@@ -1,0 +1,31 @@
+slug: mchc
+display_name: MCHC
+full_name: Mean Corpuscular Haemoglobin Concentration
+aliases:
+- mchc
+- mean corpuscular hemoglobin concentration
+- mean cell hemoglobin concentration
+- mean corpuscular haemoglobin concentration
+units: g/dL
+sample_type: blood
+conventional_low: 32
+conventional_high: 36
+fm_optimal_low: 33
+fm_optimal_high: 35
+interpretation_low: Low MCHC (hypochromia) — iron deficiency, thalassaemia trait.
+interpretation_high: High MCHC — uncommon; spherocytosis or a lab artefact.
+when_to_order: Part of the CBC; anaemia characterisation.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - MCHC
+evidence_tier: strong
+notes_for_coach: A CBC red-cell index. Low MCHC with low MCV and high RDW points to iron-deficiency
+  anaemia.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

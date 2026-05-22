@@ -1,0 +1,33 @@
+slug: rbc-count
+display_name: RBC Count
+full_name: Red Blood Cell Count
+aliases:
+- rbc
+- rbc count
+- red blood cell count
+- total rbc count
+- erythrocyte count
+- red cell count
+units: mill/cu.mm
+sample_type: blood
+conventional_low: 3.8
+conventional_high: 4.8
+fm_optimal_low: 4.0
+fm_optimal_high: 4.6
+interpretation_low: Low RBC count — anaemia of various causes.
+interpretation_high: High RBC count — dehydration, smoking, polycythaemia, chronic hypoxia.
+when_to_order: Part of the CBC; anaemia and polycythaemia assessment.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - RBC Count
+evidence_tier: strong
+notes_for_coach: Female reference ~3.8-4.8 mill/cu.mm. Always interpreted within the full
+  CBC pattern.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

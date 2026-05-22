@@ -7,6 +7,9 @@ aliases:
 - 24-hr urine ca
 - spot urine calcium creatinine
 - urinary ca excretion
+- spot urine calcium
+- urine calcium spot
+- calcium urine
 units: mg/24hr
 sample_type: urine
 conventional_low: 100
@@ -14,14 +17,12 @@ conventional_high: 300
 fm_optimal_low: 100
 fm_optimal_high: 250
 interpretation_low: Low calcium intake, severe vitamin D deficiency, pregnancy / lactation
-  with high tissue need, malabsorption (low gastric acid, coeliac, IBD), thiazide
-  use
-interpretation_high: Bone resorption (postmenopausal, hyperthyroid, hyperparathyroid,
-  long-term glucocorticoid), high calcium / vitamin D intake, kidney stone risk,
-  dietary acid load
+  with high tissue need, malabsorption (low gastric acid, coeliac, IBD), thiazide use
+interpretation_high: Bone resorption (postmenopausal, hyperthyroid, hyperparathyroid, long-term
+  glucocorticoid), high calcium / vitamin D intake, kidney stone risk, dietary acid load
 when_to_order: Bone health workup, recurrent kidney stones, suspected hyperparathyroidism,
-  evaluating calcium balance in postmenopausal / steroid-using clients; collect 24-hour
-  urine on usual diet
+  evaluating calcium balance in postmenopausal / steroid-using clients; collect 24-hour urine
+  on usual diet
 fasting_required: false
 typical_cost_inr: 600
 linked_to_topics:
@@ -32,11 +33,11 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Lab interpretation — 24-hour Urinary Calcium
 evidence_tier: strong
-notes_for_coach: Excess urinary calcium is wasted bone calcium. High dietary acid
-  load (lots of meat, soft drinks, low vegetable intake) drives calcium loss; alkaline
-  diet with vegetables / mineral water + adequate magnesium / potassium reduces it.
-  Pair with serum calcium + PTH + vitamin D for full bone picture. Spot urine Ca:Cr
-  ratio is a cheaper screening test (about 200 INR).
+notes_for_coach: Excess urinary calcium is wasted bone calcium. High dietary acid load (lots
+  of meat, soft drinks, low vegetable intake) drives calcium loss; alkaline diet with vegetables
+  / mineral water + adequate magnesium / potassium reduces it. Pair with serum calcium + PTH
+  + vitamin D for full bone picture. Spot urine Ca:Cr ratio is a cheaper screening test (about
+  200 INR).
 version: 1
 status: active
 updated_at: '2026-05-10'

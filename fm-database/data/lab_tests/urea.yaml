@@ -1,0 +1,32 @@
+slug: urea
+display_name: Urea
+full_name: Blood Urea
+aliases:
+- urea
+- serum urea
+- blood urea
+- urea serum
+units: mg/dL
+sample_type: blood
+conventional_low: 15
+conventional_high: 40
+fm_optimal_low: 20
+fm_optimal_high: 35
+interpretation_low: Low urea — low protein intake, liver synthetic decline, over-hydration,
+  pregnancy.
+interpretation_high: High urea — dehydration, high protein load, kidney impairment, GI bleeding.
+when_to_order: Kidney function, hydration and protein status.
+fasting_required: false
+typical_cost_inr: 120
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Urea
+evidence_tier: strong
+notes_for_coach: Urea is roughly BUN x 2.14. Read with creatinine and eGFR; isolated mild
+  changes are usually hydration/diet.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

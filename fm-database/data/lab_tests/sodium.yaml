@@ -1,0 +1,32 @@
+slug: sodium
+display_name: Sodium
+full_name: Serum Sodium
+aliases:
+- sodium
+- serum sodium
+- na
+- na+
+- sodium serum
+units: mmol/L
+sample_type: blood
+conventional_low: 135
+conventional_high: 145
+fm_optimal_low: 137
+fm_optimal_high: 142
+interpretation_low: Hyponatraemia — overhydration, SIADH, adrenal insufficiency, diuretics.
+interpretation_high: Hypernatraemia — dehydration, excess salt, mineralocorticoid excess.
+when_to_order: Electrolyte panel; fatigue, cramps, BP changes, adrenal workup.
+fasting_required: false
+typical_cost_inr: 120
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Sodium
+evidence_tier: strong
+notes_for_coach: Core electrolyte. Mildly off values are usually hydration or diet; persistent
+  shifts warrant a clinician look.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

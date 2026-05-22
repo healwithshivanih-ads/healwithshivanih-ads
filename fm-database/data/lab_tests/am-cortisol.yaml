@@ -6,6 +6,12 @@ aliases:
 - cortisol
 - cortisol am
 - morning cortisol
+- cortisol morning
+- am cortisol
+- serum cortisol
+- cortisol level morning
+- cortisol level
+- cortisol serum
 units: µg/dL
 sample_type: blood
 conventional_low: 6
@@ -25,8 +31,8 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Lab interpretation — Morning Serum Cortisol (8 AM)
 evidence_tier: strong
-notes_for_coach: Single timepoint blood cortisol is less informative than 4-point
-  saliva or DUTCH. FM uses AM serum as screen; refers to DUTCH if abnormal.
+notes_for_coach: Single timepoint blood cortisol is less informative than 4-point saliva or
+  DUTCH. FM uses AM serum as screen; refers to DUTCH if abnormal.
 version: 1
 status: active
 updated_at: '2026-05-10'

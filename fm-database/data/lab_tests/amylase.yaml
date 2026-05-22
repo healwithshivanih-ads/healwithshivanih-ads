@@ -1,0 +1,30 @@
+slug: amylase
+display_name: Amylase
+full_name: Serum Amylase
+aliases:
+- amylase
+- serum amylase
+- amylase total
+units: U/L
+sample_type: blood
+conventional_low: 25
+conventional_high: 125
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low amylase — pancreatic insufficiency, cystic fibrosis.
+interpretation_high: High amylase — pancreatitis, salivary gland or biliary disease.
+when_to_order: Abdominal pain, suspected pancreatic or salivary pathology.
+fasting_required: false
+typical_cost_inr: 350
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Amylase
+evidence_tier: strong
+notes_for_coach: Pair with lipase, which is more pancreas-specific. Abnormal values are a
+  clinician workup.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

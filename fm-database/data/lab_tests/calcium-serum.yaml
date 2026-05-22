@@ -1,0 +1,36 @@
+slug: calcium-serum
+display_name: Total Calcium
+full_name: Serum Total Calcium
+aliases:
+- total calcium
+- serum calcium
+- calcium total serum
+- calcium total
+- calcium
+- ca
+- calcium serum
+units: mg/dL
+sample_type: blood
+conventional_low: 8.5
+conventional_high: 10.5
+fm_optimal_low: 9.2
+fm_optimal_high: 10.2
+interpretation_low: Low calcium — vitamin D deficiency, hypoparathyroidism, low albumin (correct
+  for it).
+interpretation_high: High calcium — hyperparathyroidism, excess vitamin D; an unexplained
+  high value warrants workup.
+when_to_order: Bone health, vitamin D / parathyroid workup, cramps.
+fasting_required: false
+typical_cost_inr: 150
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Total Calcium
+evidence_tier: strong
+notes_for_coach: Always interpret with albumin (corrected calcium) and vitamin D. Ionised
+  calcium is more precise if borderline.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani
