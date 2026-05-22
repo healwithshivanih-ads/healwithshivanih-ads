@@ -532,8 +532,10 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         r"\buacr\b|urine.albumin.creatinine|albumin.creatinine.ratio|microalbumin.creatinine|albumin/creatinine|ua.cr")
     bun = _find(extracted_labs,
         r"\bbun\b|blood urea nitrogen|urea nitrogen|serum urea")
+    # Anchored negative lookaheads so a urine microalbumin/creatinine RATIO
+    # (or spot urine creatinine) can't leak its value into serum creatinine.
     creatinine = _find(extracted_labs,
-        r"\bcreatinine\b|serum creatinine|s-creatinine")
+        r"^(?!.*urine)(?!.*ratio)(?!.*albumin)(?!.*clearance).*\bcreatinine\b")
     egfr = _find(extracted_labs,
         r"\begfr\b|glomerular filtration|estimated gfr|gfr\b")
 
