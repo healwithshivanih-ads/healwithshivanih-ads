@@ -445,6 +445,43 @@ export async function broadcastAction(
   return { sent, failed, errors };
 }
 
+// ── Check-in nudge ────────────────────────────────────────────────────────────
+
+/**
+ * sendCheckinNudgeAction — sends the fm_checkin_nudge WhatsApp template to a
+ * client from the dashboard "Check-in needed" triage card. Loads the client's
+ * name + phone from their YAML and records the outbound message.
+ */
+export async function sendCheckinNudgeAction(
+  clientId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  const { loadClientById } = await import("@/lib/fmdb/loader-extras");
+  const client = await loadClientById(clientId).catch(() => null);
+  if (!client) return { ok: false, error: "Client not found" };
+
+  const phone = (client as Record<string, unknown>).mobile_number as string | undefined;
+  if (!phone?.trim()) return { ok: false, error: "No mobile number on file for this client" };
+
+  const firstName =
+    ((client as Record<string, unknown>).display_name as string | undefined)
+      ?.split(" ")[0] ?? "there";
+
+  // fm_checkin_nudge template params: {{1}} = name, {{2}} = symptom (optional — use "your symptoms")
+  const result = await sendWhatsAppAction(phone, "fm_checkin_nudge", [firstName, "your symptoms"], {
+    name: firstName,
+  });
+  if (!result.ok) return result;
+
+  const nudgeBody = `Hi ${firstName}, just checking in! How are you feeling on the protocol? Any changes in your symptoms? Would love to hear how things are going. 🌿\n\n— Shivani`;
+  await recordOutboundMessageAction({
+    clientId,
+    templateName: "fm_checkin_nudge",
+    renderedBody: nudgeBody,
+  });
+
+  return { ok: true };
+}
+
 // ── Config check ──────────────────────────────────────────────────────────────
 
 export async function checkWhatsAppConfigAction(): Promise<{

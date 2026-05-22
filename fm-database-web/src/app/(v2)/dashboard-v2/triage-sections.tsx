@@ -26,7 +26,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FmPanel, FmChip } from "@/components/fm";
-import { assessReworkBenefitAction } from "@/lib/server-actions/clients";
+import { sendCheckinNudgeAction } from "@/app/api/whatsapp/actions";
 
 export type SignalKind =
   | "follow_up_due"
@@ -151,14 +151,13 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
   },
   // ── 🔵 In progress ───────────────────────────────────────────────
   plan_review_due: {
-    title: "Plan review due (3+ weeks)",
-    icon: "🔁",
+    title: "Check-in needed (3+ weeks quiet)",
+    icon: "💬",
     accent: "rgba(26, 127, 187, 0.10)",
     border: "rgba(26, 127, 187, 0.38)",
     badgeColor: "#1a7fbb",
-    cta: "View plan",
-    ctaHref: (r) =>
-      r.signal.planSlug ? `/clients-v2/${r.client_id}/plan` : `/clients-v2/${r.client_id}`,
+    cta: "View client",
+    ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   active: {
     title: "Active protocols",
@@ -565,7 +564,7 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             }}
           >
             {row.signal.kind === "plan_review_due" && (
-              <ReworkNowButton clientId={row.client_id} />
+              <SendCheckinNudgeButton clientId={row.client_id} clientName={row.display_name} />
             )}
             <Link
               href={meta.ctaHref(row)}
@@ -603,14 +602,19 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
 }
 
 /**
- * ReworkNowButton — the one-click "Run rework now" action on a
- * plan_review_due card. Fires the AI rework assessment ON DEMAND (API is
- * only spent when the coach clicks). Generating the rework also stamps a
- * fresh generated_at on the client's rework_suggestion, which resets the
- * 3-week review cadence — so the card clears once clicked.
+ * SendCheckinNudgeButton — one-click "💬 Send check-in" on a plan_review_due
+ * card. Sends the fm_checkin_nudge WhatsApp template to the client asking
+ * how they're getting on. No AI call — just a nudge to get feedback.
+ * The 3-week clock resets automatically once the client responds and you
+ * log a check-in session.
  */
-function ReworkNowButton({ clientId }: { clientId: string }) {
-  const router = useRouter();
+function SendCheckinNudgeButton({
+  clientId,
+  clientName,
+}: {
+  clientId: string;
+  clientName?: string;
+}) {
   const [pending, start] = useTransition();
   return (
     <button
@@ -620,19 +624,11 @@ function ReworkNowButton({ clientId }: { clientId: string }) {
         e.preventDefault();
         e.stopPropagation();
         start(async () => {
-          const r = await assessReworkBenefitAction({
-            clientId,
-            triggeredBy: "quick_note",
-            eventSummary:
-              "3-week plan review — coach-initiated time-based check (no new data event).",
-          });
+          const r = await sendCheckinNudgeAction(clientId);
           if (r.ok) {
-            toast.success(
-              "Rework assessed — open the client to review the suggestion",
-            );
-            router.refresh();
+            toast.success(`Check-in nudge sent to ${clientName ?? clientId}`);
           } else {
-            toast.error(r.error ?? "Rework assessment failed");
+            toast.error(r.error ?? "Failed to send check-in message");
           }
         });
       }}
@@ -648,7 +644,7 @@ function ReworkNowButton({ clientId }: { clientId: string }) {
         fontFamily: "inherit",
       }}
     >
-      {pending ? "Assessing…" : "🔁 Run rework now"}
+      {pending ? "Sending…" : "💬 Send check-in"}
     </button>
   );
 }
@@ -816,9 +812,9 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
   if (signal.kind === "plan_review_due") {
     return (
       <div style={wrap}>
-        <span style={labelStyle}>Last review:</span>
+        <span style={labelStyle}>Last check-in:</span>
         <span style={valueStyle}>
-          {signal.daysSinceReview ?? 0} days ago — time for a mid-protocol check
+          {signal.daysSinceReview ?? 0} days ago — get feedback from client
           {signal.planSlug && (
             <span
               style={{
@@ -881,7 +877,7 @@ function SignalBadge({ signal }: { signal: TriageRow["signal"] }) {
   }
   if (signal.kind === "plan_review_due") {
     return (
-      <FmChip tone="secondary">{signal.daysSinceReview ?? 0}d no review</FmChip>
+      <FmChip tone="secondary">{signal.daysSinceReview ?? 0}d no check-in</FmChip>
     );
   }
   if (signal.kind === "active") {

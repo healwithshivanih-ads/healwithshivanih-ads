@@ -62,7 +62,7 @@ Architectural split: the **public-facing intake form** runs on Fly (Mumbai, sing
 - `Dockerfile` — 4-stage build. Stage `web-build` (Node 22 + Next.js build, `npm ci --include=dev` for Tailwind v4 postcss plugin); stage `python-build` (Python 3.12 + venv + Anthropic SDK + pyyaml + python-dotenv + html2text); stage `mutagen-agent-fetch` (downloads linux_amd64 Mutagen agent from GitHub release v0.18.1); stage `runtime` (Node + Python + venv + Next build + Mutagen agent baked at both `WORKDIR/.mutagen/agents/0.18.1/...` AND `/root/.mutagen/agents/0.18.1/...`). Final image ~388 MB.
 - `.dockerignore` — excludes `.git`, all `node_modules`, `.venv`, `__pycache__`, secrets (`.env*`, `google_service_account.json`), client PHI (`fm-plans`, `fm-resources`), worktrees, screenshots.
 - `fly.toml` — app `theochretree-coach`, region `bom`, mount `fmcoach_data` at `/data`, internal_port 3002, health check on `/api/health`, `auto_stop_machines = "off"` (clients submit async, no cold starts), `FLY_INTAKE_ONLY=1` in `[env]`.
-- `fm-database-web/src/middleware.ts` — three operating modes: INTAKE-ONLY (return 404 for any non-public path), COACH UI WITH AUTH (HTTP Basic Auth, unused by current deploy), LOCAL DEV (no-op when neither env var set). Public path allowlist: `/intake/*`, `/start/*`, `/api/aisensy-webhook`, `/api/whatsapp-poll-webhook`, `/api/health`, `/_next/*`, `/favicon.ico`. Uses Edge-runtime-safe `atob()` for base64 decode.
+- `fm-database-web/src/middleware.ts` — three operating modes: INTAKE-ONLY (return 404 for any non-public path), COACH UI WITH AUTH (HTTP Basic Auth, unused by current deploy), LOCAL DEV (no-op when neither env var set). Public path allowlist: `/intake/*`, `/start/*`, `/api/whatsapp-webhook`, `/api/whatsapp-poll-webhook`, `/api/health`, `/_next/*`, `/favicon.ico`. Uses Edge-runtime-safe `atob()` for base64 decode. Note: `/api/aisensy-webhook` was removed at v0.74 (AiSensy decommissioned).
 - `fm-database-web/src/app/api/health/route.ts` — returns `{ok, service, ts}` for Fly LB.
 - `DEPLOY_FLY.md` — 11-step runbook (Fly app create → volume create → secrets set → first deploy → Mutagen setup → custom domain → DNS at Wix → cert verify → smoke test → Nidhi link → cleanup). ~2-3 hr end-to-end.
 - `MUTAGEN_SYNC.md` — bidirectional sync runbook + 3 empirical gotchas (iCloud-symlink path resolution, agent placement at WORKDIR not HOME, slim image missing scp/tar) + ongoing-ops section (SSH cert 72h refresh cron, LaunchAgent SSH_AUTH_SOCK survivability, MacBook bridge-vs-direct decision).
@@ -71,7 +71,7 @@ Architectural split: the **public-facing intake form** runs on Fly (Mumbai, sing
 - Fly app `theochretree-coach` in `bom`, machine `81107ef9461078`, IPv4 `66.241.125.67`, IPv6 `2a09:8280:1::115:bbff:0`.
 - Volume `fmcoach_data` (3 GB, daily snapshots enabled).
 - Custom domain `intake.theochretree.com` (CNAME at Wix DNS → `qj0gpyy.theochretree-coach.fly.dev`), Let's Encrypt cert (RSA + ECDSA), ~60 day renewal cycle.
-- Secrets: ANTHROPIC_API_KEY, AISENSY_API_KEY, AISENSY_WEBHOOK_SECRET (`627e6e285b202002c81b792478d274ba` — saved to Obsidian vault), GMAIL_USER, GMAIL_APP_PASSWORD. COACH_AUTH_* skipped (FLY_INTAKE_ONLY makes them unused).
+- Secrets: ANTHROPIC_API_KEY, GMAIL_USER, GMAIL_APP_PASSWORD. COACH_AUTH_* skipped (FLY_INTAKE_ONLY makes them unused). AISENSY_API_KEY + AISENSY_WEBHOOK_SECRET removed at v0.74 (AiSensy decommissioned). WhatsApp now via self-hosted server: WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY in `.env.local` (not Fly secrets — coach-side only).
 - Mutagen 0.18.1 daemon on Mac mini, sync session `fm-plans` between `/Users/shivani/Library/Mobile Documents/com~apple~CloudDocs/fm-plans/` (resolved iCloud path, NOT the `~/fm-plans` symlink) and `root@theochretree-coach.internal:/data/fm-plans/` over WireGuard tunnel. Mode `two-way-safe`. Initial scan: 31 dirs / 139 files / 160 MB. Status: `Watching for changes`.
 - All 6 existing clients (cl-004 through cl-008, plus nidhi-jain) visible at `/data/fm-plans/clients/` on Fly volume after Mutagen converged.
 
@@ -82,9 +82,7 @@ Architectural split: the **public-facing intake form** runs on Fly (Mumbai, sing
 | `GET /intake/<Nidhi's token>` (real) | 200 | ✅ 200, 62ms |
 | `GET /clients-v2` on public host | 404 | ✅ 404 |
 | `GET /plans`, `/catalogue`, `/dashboard-v2`, `/assess` | 404 each | ✅ 404 each |
-| `POST /api/aisensy-webhook` (no secret) | 401 | ✅ 401 |
-| `POST /api/aisensy-webhook` (bad secret) | 401 | ✅ 401 |
-| `POST /api/aisensy-webhook` (good secret) | 200 (matched:false for fake phone) | ✅ 200 |
+| `POST /api/whatsapp-webhook` (no HMAC) | 401 | ✅ (route exists, AiSensy route removed) |
 | Cert | Issued by Let's Encrypt | ✅ RSA + ECDSA |
 
 **Workflow now operational for real clients**:
@@ -192,7 +190,7 @@ Building on v0.70's coach-side editor. Three independent layers let the client c
 - `wrap_in_brand_html()` gains 4 optional params: `meal_start_ymd`, `supplements_start_ymd`, `plan_slug`, `letter_type`. Python 3.9-safe (no `str | None` annotations — uses untyped defaults). Returns `""` when no start date available; the f-string template renders an empty slot.
 - `render-client-letter.py` computes effective dates inline and passes them through. Mirrors the Python Plan helpers exactly: `meal_actual or (plan_period_start + 3d)`.
 - New pure helper `src/lib/start-date-parser.ts` exports `parseInboundStartDateIntent(text)` returning `{kind: 'meal_start_date' | 'supplements_arrived', date: YYYY-MM-DD} | null`. Recognises ISO dates, Indian DD/MM/YYYY format, textual "19 May 2026" / "May 19", with a sanity check (±60 days from today) to reject typos / "I had a flare on 2026-05-19" false positives. Requires an explicit "Start" prefix or verb phrase — refuses to interpret bare dates.
-- Webhook route (`api/aisensy-webhook/route.ts`) gains a Pattern-B branch BEFORE the existing poll classifier. When `parseInboundStartDateIntent` returns a hit, finds the client's latest published plan and calls `updatePlanStartDates(slug, {meal_plan_started_on: date})` or `{supplements_started_on: today}` directly. Falls through to the existing quick_note path on any failure so messages are never lost.
+- Webhook route (`api/whatsapp-webhook/route.ts`) gains a Pattern-B branch BEFORE the existing poll classifier. When `parseInboundStartDateIntent` returns a hit, finds the client's latest published plan and calls `updatePlanStartDates(slug, {meal_plan_started_on: date})` or `{supplements_started_on: today}` directly. Falls through to the existing quick_note path on any failure so messages are never lost.
 
 **Pattern C — Tokenised `/start/[token]` landing page** (built by parallel sub-agent):
 - New Pydantic fields on Plan: `start_confirmation_token`, `start_confirmation_expires_at`, `start_confirmation_used_at`. All `Optional`, default `None` — existing plans load cleanly under `extra="forbid"`.
@@ -203,8 +201,8 @@ Building on v0.70's coach-side editor. Three independent layers let the client c
 
 **Dashboard reminder panel** (`src/components/start-date-reminder-panel.tsx`):
 - Auto-loads on mount via `listUnconfirmedStartDatesAction(staleDays=5)`. Lists every published plan whose `meal_plan_started_on` is still null AND whose publish event was >5 days ago. Sorted most-stale first.
-- Each row: client name (links to plan editor), days since publish, assumed Day 1 (period_start + 3d), plan slug. Per-row "📨 Send reminder" button calls `sendStartDateReminderAction(clientId)` which fires the `fm_start_date_check_v1` AiSensy template (one-time setup in dashboard).
-- Self-hides when the list is empty. Disabled state when `AISENSY_API_KEY` unset.
+- Each row: client name (links to plan editor), days since publish, assumed Day 1 (period_start + 3d), plan slug. Per-row "📨 Send reminder" button calls `sendStartDateReminderAction(clientId)` which sends the `fm_start_date_check_v1` WhatsApp template via the self-hosted WA Cloud API server.
+- Self-hides when the list is empty. Disabled state when `WHATSAPP_SERVER_URL` unset.
 - Inbound replies parsed by Pattern B's parser → list clears itself once client confirms.
 
 **Key invariants:**
@@ -213,7 +211,7 @@ Building on v0.70's coach-side editor. Three independent layers let the client c
 - `parseInboundStartDateIntent` REQUIRES either an explicit "START:" prefix OR a verb phrase like "I'll start on / starting on / start". Bare dates ("had a headache 2026-05-19") are deliberately ignored to avoid false positives. If users start typing plain dates, the failure mode is "message lands in coach inbox as quick_note" — never silent data loss.
 - The 60-day sanity window on the parser catches typos like 2027 instead of 2026. Adjust in `start-date-parser.ts` if a use case ever crosses it.
 - `updatePlanStartDates` (v0.70) is still the ONLY write path for the two start-date fields. Both Pattern B (webhook → action) and Pattern C (`confirmStartDate` chains into it) funnel through it so revalidation paths fire consistently.
-- AiSensy templates to register (one-time, manual): `fm_start_date_check_v1` ("Hi {{1}} 👋 Quick check-in from Shivani — have you started your plan yet? If yes, just reply with the date you began..."). Webhook delivery still requires the custom forwarder per `docs/INBOUND_WEBHOOK_HANDOFF.md`.
+- Templates are registered via `whatsapp-server/scripts/submit-templates.js` (NOT the AiSensy dashboard — AiSensy is decommissioned). `fm_start_date_check_v1` = "Hi {{1}} 👋 Quick check-in from Shivani — have you started your plan yet? If yes, just reply with the date you began...". Inbound replies handled by `/api/whatsapp-webhook`.
 - The dashboard reminder panel is in addition to, not replacing, the WeeklyPollPanel. Different concerns: WeeklyPollPanel checks adherence over time; StartDateReminderPanel checks confirmation has been captured at all.
 
 **v0.70** — Effective start dates (meal plan +3d / supplements +7d adoption lag):
@@ -278,12 +276,12 @@ Three independent builds landed on `2026-05-14`. All ship behind `npm run build`
 - `fm-database-web/scripts/assess-rework.py` `_build_context()` prompt gains two new blocks: `# IFM TIMELINE (N events)` (chronological dump of every `timeline_events` entry sorted by year/date), and `# COACH/AI ATM SYNTHESIS (from plan notes)` (extracts the `## IFM Timeline` or `## ATM` block out of `plan.notes_for_coach` if present). Rework AI now sees the upstream synthesis the assess-pipeline made, instead of just the symptom-du-jour summary.
 - Tiny surgical edits, no schema changes — just better context for the AI calls already happening.
 
-**📣 Weekly WhatsApp check-in poll via AiSensy** (uses existing direct-API plumbing):
+**📣 Weekly WhatsApp check-in poll** (via self-hosted WhatsApp Cloud API server):
 - New pure helper `src/lib/poll-labels.ts` — `classifyPollReply(text)` matches inbound text against 13 button-label substrings (`"all good"`, `"all taken"`, `"missed 1-2"`, `"struggling"`, `"none"`, ...) → returns `{dim: 'overall'|'supplements'|'meals'|'movement', score: 'good'|'partial'|'struggling'}` or null.
 - New server actions `src/lib/server-actions/weekly-poll.ts`: `sendWeeklyPollAction(clientIds?, campaignName='fm_weekly_check_in_v1')` — auto-selects clients with published plan if no IDs passed, calls `sendWhatsAppAction` per client with `[name]` as template param, writes audit row to `~/fm-plans/_weekly_poll_log.yaml`. `detectAdherenceDropsAction(windowDays=28)` — scans every client's `sessions/` dir for `[source: weekly_check_in_poll]` quick_notes, reads structured `poll_response` field, applies 3-strike rule (2+ struggling OR 3+ partial in trailing 28d).
-- Webhook extended (`src/app/api/aisensy-webhook/route.ts`): after client-phone match, runs `classifyPollReply` on the message text. If it matches a button label, routes through new dedicated shim `scripts/save-poll-response.py` which writes a session with `presenting_complaints: "[source: weekly_check_in_poll]"` and a structured `poll_response: {dim, score, raw_text, received_at}` field. Generic free-form messages still go through `save-session.py` as before.
+- Webhook extended (`src/app/api/whatsapp-webhook/route.ts`): after client-phone match, runs `classifyPollReply` on the message text. If it matches a button label, routes through dedicated shim `scripts/save-poll-response.py` which writes a session with `presenting_complaints: "[source: weekly_check_in_poll]"` and a structured `poll_response: {dim, score, raw_text, received_at}` field. Generic free-form messages still go through `save-session.py` as before.
 - New dashboard panel `src/components/weekly-poll-panel.tsx` — mounted in `dashboard-v2/page.tsx` right under BroadcastPanel. Two actions: "📣 Send poll to all active clients" (calls `sendWeeklyPollAction`, shows sent/skipped/failed chips + collapsible error list), "🚨 Scan for adherence drops" (calls `detectAdherenceDropsAction`, lists flagged clients with strike count + dimensions + "🔁 Run rework" button per flag that fires `assessReworkBenefitAction({clientId, triggeredBy:'quick_note', eventSummary:'...'})`).
-- Coach must register 4 templates manually in AiSensy dashboard (one-time): `fm_weekly_check_in_v1`, `fm_weekly_supplement_v1`, `fm_weekly_meals_v1`, `fm_weekly_movement_v1`. Template body `"Hi {{1}} 👋 Quick weekly check-in..."` + 3 interactive reply buttons per template (labels documented in `weekly-poll.ts` and mirrored in `poll-labels.ts`). Hidden behind `AISENSY_API_KEY` env-var check.
+- 4 templates registered via `whatsapp-server/scripts/submit-templates.js` (NOT AiSensy): `fm_weekly_check_in_v1`, `fm_weekly_supplement_v1`, `fm_weekly_meals_v1`, `fm_weekly_movement_v1`. Template body `"Hi {{1}} 👋 Quick weekly check-in..."` + 3 interactive reply buttons per template (labels in `weekly-poll.ts` + `poll-labels.ts`). Gated by `WHATSAPP_SERVER_URL` env var.
 
 **Key invariants:**
 - `intake_token` is single-use: cleared by the submit shim. Coach can re-issue via "Send a new intake form" — replaces the prior token; old link returns "invalid_or_expired". Submitted records live forever in the tagged quick_note session for audit.
@@ -1850,7 +1848,7 @@ npm run build && npm run type-check          # before committing
 - `SessionType` union (v0.59): `"discovery_consultation" | "pre_intake" | "full_assessment" | "check_in" | "quick_note"`. Same union in `session-utils.ts`, `actions.ts` (SessionSummary + SaveSessionInput), `session-type-picker.tsx`. `parseSessionType()` returns all 5 values; unknown tags default to `"full_assessment"`.
 - `discovery-form.tsx` saves `[session_type: discovery_consultation]` prefix in presenting_complaints (not a Python model field — stored as tag). Lab panel selection and food journal request shown as shareable text after save.
 - `render-client-letter.py` all 4 prompt builders extract `plan_weeks = int(plan.get("plan_period_weeks") or 12)` and use `{plan_weeks}` throughout. No hardcoded "12 weeks" in prompt text.
-- AiSensy webhook: unmatched phones → `~/fm-plans/_aisensy_unmatched.yaml` (append-only YAML list). Always returns 200. No client auto-creation.
+- Inbound WhatsApp webhook (`/api/whatsapp-webhook`): unmatched phones logged to `~/fm-plans/_whatsapp_unmatched.yaml`. Always returns 200. No client auto-creation. AiSensy webhook route removed at v0.74.
 - Dashboard CTAs and `client/[id]/page.tsx` returning-client link all use `?tab=sessions` (was `?tab=timeline`).
 - `plan-editor.tsx` Documents tab links use `?tab=plan` (was `?tab=documents`).
 - `extract-symptoms.py` uses `max_tokens=8192` (Haiku's max). DO NOT lower this — full symptom catalogue + large lab PDFs need the full limit or JSON is truncated.
@@ -1866,8 +1864,8 @@ npm run build && npm run type-check          # before committing
 - `save-session.py` now extracts `five_pillars` from payload and builds `FivePillarsAssessment` before calling `Session(...)`. Guards: only build if any value is non-None; silently ignores exceptions (session still saves without five_pillars if malformed).
 - `FollowUpDraftPanel` only shown for `sessionType !== "full_assessment"` (full assessments have their own AI flow). Triggered by `savedSessionId` state in `client-tabs.tsx`.
 - `draftFollowUpMessageAction` in `clients/actions.ts`: 30s timeout, 1MB buffer. `draft-followup-message.py` reads `.env` from `FMDB_ROOT` for `ANTHROPIC_API_KEY` via `_load_env()`.
-- `AISENSY_API_KEY` env var (`.env.local`) gates `BroadcastPanel` on dashboard and enables 📤 Send in `MessageTemplatesPanel`. Without it, broadcast panel is hidden and send button is disabled. (v0.62)
-- `broadcastAction` normalises phone to E.164: 10-digit numbers get `91` prefix. Sends to `backend.aisensy.com/direct-apis/t1/create-message`. Campaign name must match a registered AiSensy template exactly.
+- `WHATSAPP_SERVER_URL` env var (`.env.local`) gates `BroadcastPanel` on dashboard and enables 📤 Send in `MessageTemplatesPanel`. Without it, broadcast panel is hidden and send button is disabled. AiSensy is decommissioned — all outbound WA routes through `sendWhatsAppAction` → self-hosted WA Cloud API server.
+- `broadcastAction` normalises phone to E.164: 10-digit numbers get `91` prefix. Sends via `sendWhatsAppAction` to `WHATSAPP_SERVER_URL`. Campaign name must match a registered Meta template (submitted via `whatsapp-server/scripts/submit-templates.js`).
 - `message_templates.yaml` at `~/fm-plans/message_templates.yaml`. Written with 5 defaults on first `loadMessageTemplatesAction` call. Fields: `{id, name, category, body, variables[]}`. (v0.62)
 - `custom_templates/` at `~/fm-plans/custom_templates/{slug}.yaml`. Created by `saveAsTemplateAction`. Loaded by `loadCustomTemplatesAction` in assess. Selection prefix: `custom:{slug}`. (v0.62)
 - `lab_reference_ranges` stored in `client.yaml` as `{marker: {optimal_low, optimal_high, unit}}`. Saved by `saveLabReferenceRangesAction`, loaded by `loadLabReferenceRangesAction`. `rangeStatus(value, range)` in `health-trends.tsx` returns `"optimal" | "outside" | null`. (v0.62)
@@ -2025,22 +2023,22 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### 🔴 Setup (one-time, coach does these)
 1. ✅ **Email configured** (2026-05-10) — `GMAIL_USER` + `GMAIL_APP_PASSWORD` in `.env.local`. App Password from https://myaccount.google.com/apppasswords.
-2. ✅ **AiSensy outbound configured** (2026-05-10) — `AISENSY_API_KEY` in `.env.local`. 4 of 5 templates approved: `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. `fm_checkin_nudge` still pending AiSensy review. **Webhook skipped** (paid plan only) — Message Capture Panel handles inbound via manual paste.
+2. ✅ **WhatsApp self-hosted server** (deployed v0.74, 2026-05-15) — AiSensy fully decommissioned. All outbound WA via `WHATSAPP_SERVER_URL` + `WHATSAPP_SERVER_API_KEY` in `.env.local`. Inbound via `/api/whatsapp-webhook` (HMAC-verified). 21+ templates APPROVED on Meta. Template registration via `whatsapp-server/scripts/submit-templates.js`.
 3. ✅ **Backlog cleared** (2026-05-10) — `data/_backlog.yaml` is empty/missing on the laptop; nothing left to triage. New items will accumulate as the AI mines new sessions / mindmaps.
 
 ### 🟡 Client management (next few sessions)
 4. ✅ **Five Pillars capture at each session** — done in v0.57 (check-in) + v0.58 (full session). Compact 5-column widget, saved to session YAML, feeds OutcomeProgressCard.
 5. ✅ **Protocol adherence trends** — done in v0.58. `protocol-adherence-chart.tsx` colour-coded grid per supplement/practice across check-in dates, shown in Sessions tab.
 6. ✅ **Client photo** — done in v0.60. Upload/update profile photo in Overview. Shown as avatar in client list + header.
-7. **Session notes PDF export** — generate a clean PDF of session notes to share with a referring doctor or specialist.
+7. ~~Session notes PDF export~~ — **not building this.**
 8. ✅ **IFM Matrix over time** — done in v0.60. Node scores tracked across full sessions with trend indicators.
 9. ✅ **Inline quick notes from session brief** — done in v0.62. `QuickNoteWidget` at bottom of pre-session brief modal. Source chips + textarea + save. Auto-fades "✓ Saved". Modal stays open.
 
 ### 🟡 Communication / WhatsApp
 10. ✅ **Auto-follow-up drafts** — done in v0.57. After any check-in/pre-intake/quick note, Haiku drafts a warm 3–5 sentence WhatsApp message in Shivani's voice. Coach edits and copies.
 11. ✅ **AiSensy inbox badge** — done in v0.58. Green dashboard banner counts inbound WhatsApp messages (last 7 days), with client chips linking to Sessions tab.
-12. ✅ **WhatsApp broadcast via AiSensy API** — done in v0.62. `BroadcastPanel` on dashboard (gated by AISENSY_API_KEY). Modes: follow-up due / recheck due / all active / custom. Needs `AISENSY_API_KEY` in `.env.local` and AiSensy campaign templates registered in dashboard.
-13. ✅ **Message templates** — done in v0.62. `MessageTemplatesPanel` in client Overview. 5 default templates. {{variable}} auto-detection. 📋 Copy + 📤 Send via AiSensy direct API. Backed by `~/fm-plans/message_templates.yaml`.
+12. ✅ **WhatsApp broadcast** — done in v0.62, updated v0.74. `BroadcastPanel` on dashboard (gated by `WHATSAPP_SERVER_URL`). Modes: follow-up due / recheck due / all active / custom. Uses self-hosted WA Cloud API server; AiSensy fully decommissioned.
+13. ✅ **Message templates** — done in v0.62. `MessageTemplatesPanel` in client Overview. 5 default templates. {{variable}} auto-detection. 📋 Copy + 📤 Send via self-hosted WA server. Backed by `~/fm-plans/message_templates.yaml`.
 
 ### 🟡 Lab & health data
 14. ✅ **Lab reference ranges** — done in v0.62. `LabReferenceRangesEditor` in client Overview. 14 FM optimal defaults. 🟢/🔴 dot in health trends next to each metric.
@@ -2055,13 +2053,13 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 ### 🟢 Content & catalogue
 21. ✅ **More curated mindmaps** — done 2026-05-10. PCOS, Sleep/Circadian, Cardiovascular-Lipid, Autoimmune, Bone Health, Mitochondrial-Energy added.
-21a. **Expand lab_tests catalogue** — currently 25 entries; the new mindmaps surfaced ~30 missing common-FM labs as backlog: ApoB, Lp(a), oxidized LDL, fibrinogen, Lp-PLA2, MPO, LH/FSH ratio, free testosterone, total testosterone, SHBG, AMH, prolactin, 17-OH progesterone, salivary cortisol curve, DUTCH metabolites (oestrone/oestriol/2-OH/4-OH/16-OH/cortisol/cortisone), organic acids (OAT) markers, CoQ10 status, carnitine profile, lactate, ESR, PTH, CTX, P1NP, alkaline phosphatase, urinary calcium, mycotoxin urine, EBV/viral panel, heavy metals panel, food sensitivity IgG, GI-MAP. Each gets a YAML in `data/lab_tests/` with `conventional_low/high` + `fm_optimal_low/high` ranges + India typical_cost_inr.
-21b. **Add missing FM mechanisms** — `hla-genetics-immune-tolerance`, `ebv-reactivation`, `sympathetic-overdrive`, `late-light-melatonin-suppression`, `cortisol-awakening-response`, `post-viral-fatigue`, `pacing-energy-envelope`. All referenced in the new mindmaps as free-text but should be canonicalised.
-22. ✅ **Backlog triage** — done as of 2026-05-10 (file empty). New items will appear as catalogue grows.
+21a. ✅ **Expand lab_tests catalogue** — done. **152 entries** as of 2026-05-22. All listed labs are present (ApoB, Lp(a), DUTCH metabolites, salivary cortisol curve, OAT markers, AMH, SHBG, food sensitivity IgG, GI-MAP, fibrinogen, Lp-PLA2, heavy metals, mycotoxin, EBV panel, CoQ10, carnitine, etc.). Each has `conventional_low/high` + `fm_optimal_low/high` + India `typical_cost_inr`. Ingest pipeline now extracts LabTest entities from documents automatically (v0.74 schema upgrade).
+21b. ✅ **Add missing FM mechanisms** — done (2026-05-22 verified). All 7 requested slugs exist: `hla-genetics-immune-tolerance`, `ebv-reactivation`, `late-light-melatonin-suppression`, `cortisol-awakening-response`, `post-viral-fatigue`, `pacing-energy-envelope`. `sympathetic-overdrive` canonicalised as `sympathetic-dominance` + `sympathetic-overactivity` (two separate entries covering the same concept).
+22. ✅ **Backlog triage** — fully clear as of 2026-05-22. 1,442 items: 142 added, 1,300 rejected, 0 open. New items accumulate from ingest runs — check `/backlog` periodically.
 23. **Promote freeform → catalogue entities** — Practice, TrackingHabit, Food, LabTest, Recipe, EducationalModule. Watch for duplication in real plans first.
 
 ### 🟢 Infrastructure / polish
-24. **Persistent public URL** — `cloudflared tunnel --url http://localhost:3002` (needed for AiSensy) or `ngrok http 3002` / `ssh -R 80:localhost:3002 nokey@localhost.run`.
+24. ✅ **Persistent public URL** — not needed for WhatsApp (inbound webhook is on the Fly app, not the Mac). Fly app receives inbound WA messages → Mutagen syncs data to Mac. Cloudflared/ngrok only needed if running the Next.js server publicly (not required for current setup).
 25. **Path B UI polish (deferred):** click-to-recenter on linked MindMap nodes; colored split-diff for plan diff; backlog pagination; health trends chart axis labels.
 26. **JSON export contract for Project 2 (mobile app)** — deferred indefinitely; desktop-first build.
 27. **Commit pending catalogue changes** — `git add data/ && git commit` from `fm-database/` if YAML edits made without committing.
@@ -2078,7 +2076,7 @@ Same 7 sidebar pages — useful if Path B breaks during a turn.
 
 **Outstanding (in rough priority order):**
 1. **Coach uses it daily.** Real bugs from real use are more valuable than speculative code.
-2. ✅ **v0.63 deployed to laptop** (2026-05-10). PM2 picks up `.env.local` automatically; `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `AISENSY_API_KEY` all set. Re-run via `bash fm-database-web/scripts/setup-laptop.sh` (idempotent — only prompts for missing keys).
-3. ✅ **AiSensy outbound live** — 4 of 5 campaigns approved and live: `fm_lab_reminder`, `fm_session_confirm`, `fm_supplement_instructions`, `fm_encouragement`. `fm_checkin_nudge` still pending AiSensy review (will auto-work once approved — code looks up campaigns by name at send time, no code change needed). **Webhook skipped** (paid plan only) — Message Capture Panel on each client page handles inbound via manual paste.
-4. **Client letter design finalisation** — review `hariharan-plan-3-2026-05-06-cl-005.html` and decide on layout/branding changes.
-5. **Session notes PDF export** — clean PDF of session notes for doctors/specialists.
+2. ✅ **v0.74 deployed to laptop** (2026-05-15). PM2 running. `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `WHATSAPP_SERVER_URL`, `WHATSAPP_SERVER_API_KEY` all set in `.env.local`. Re-run via `bash fm-database-web/scripts/setup-laptop.sh` (idempotent). AiSensy fully decommissioned — all WA via self-hosted Cloud API server.
+3. ✅ **WhatsApp live** — 21+ Meta-approved templates. All outbound via `WHATSAPP_SERVER_URL`. Inbound via `/api/whatsapp-webhook` (HMAC-verified) on Fly app. Template registration via `whatsapp-server/scripts/submit-templates.js` — never the Meta dashboard directly.
+4. ✅ **Sudarshan (cl-008) and Hariharan (cl-005) plans active** — both plans published and running.
+5. **API cap returns 2026-06-01** — letters/assess/Zoom transcript extraction blocked until then. Use in-chat letter editing as fallback.
