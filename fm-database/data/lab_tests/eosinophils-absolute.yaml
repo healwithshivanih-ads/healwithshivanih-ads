@@ -1,0 +1,39 @@
+slug: eosinophils-absolute
+display_name: Absolute Eosinophil Count
+full_name: Absolute Eosinophil Count
+aliases:
+- eosinophil absolute
+- absolute eosinophil count
+- eosinophil absolute count
+- absolute eosinophils
+- aec
+- eosinophil count
+- eosinophil
+units: cells/µL
+sample_type: blood
+conventional_low: 30
+conventional_high: 350
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low absolute eosinophils — acute stress / steroid effect; rarely significant.
+interpretation_high: High absolute eosinophils (eosinophilia) — allergic / atopic disease,
+  parasites, drug reaction; persistent marked elevation needs a workup.
+when_to_order: Allergy / atopy assessment, suspected parasitic infection, eczema / asthma
+  workup.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+- food-allergy-ige-mediated
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Absolute Eosinophil Count
+evidence_tier: strong
+notes_for_coach: The absolute count is more reliable than the percentage. Worth tracking where
+  an allergic, histamine or mast-cell picture is suspected.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: eosinophils-percent
+display_name: Eosinophils %
+full_name: Eosinophil Percentage
+aliases:
+- eosinophils
+- eosinophils percent
+- eosinophil percentage
+- eosinophils %
+- eos %
+- eosinophil %
+units: '%'
+sample_type: blood
+conventional_low: 1
+conventional_high: 6
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low eosinophils — acute stress or steroid effect; rarely significant.
+interpretation_high: High eosinophils — allergy / atopy, asthma, parasitic infection, drug
+  reaction; supports an allergic / mast-cell picture.
+when_to_order: Allergy / atopy assessment, suspected parasitic infection, eczema / asthma
+  workup.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+- food-allergy-ige-mediated
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Eosinophils %
+evidence_tier: strong
+notes_for_coach: A raised eosinophil count is a useful objective pointer toward an allergic
+  / atopic tendency — read alongside total IgE and the clinical picture.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

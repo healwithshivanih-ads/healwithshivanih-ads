@@ -1,0 +1,33 @@
+slug: monocytes-percent
+display_name: Monocytes %
+full_name: Monocyte Percentage
+aliases:
+- monocytes
+- monocytes percent
+- monocyte percentage
+- monocytes %
+- monocyte %
+units: '%'
+sample_type: blood
+conventional_low: 2
+conventional_high: 10
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low monocytes — rarely significant in isolation.
+interpretation_high: High monocytes — chronic infection / inflammation, recovery phase after
+  acute infection, some autoimmune conditions.
+when_to_order: Part of the CBC differential.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Monocytes %
+evidence_tier: strong
+notes_for_coach: A CBC differential value. Mild changes are usually non-specific; read within
+  the whole differential.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

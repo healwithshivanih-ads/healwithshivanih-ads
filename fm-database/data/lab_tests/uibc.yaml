@@ -1,0 +1,31 @@
+slug: uibc
+display_name: UIBC
+full_name: Unsaturated Iron Binding Capacity
+aliases:
+- uibc
+- unsaturated iron binding capacity
+- unsaturated ibc
+units: µg/dL
+sample_type: blood
+conventional_low: 110
+conventional_high: 370
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low UIBC — iron overload, or inflammation lowering transferrin.
+interpretation_high: High UIBC — iron deficiency (transferrin rises to scavenge scarce iron).
+when_to_order: Iron-studies panel; UIBC + serum iron = TIBC.
+fasting_required: false
+typical_cost_inr: 200
+linked_to_topics:
+- iron-deficiency-anemia
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - UIBC
+evidence_tier: strong
+notes_for_coach: Read inside the iron panel — serum iron + UIBC give TIBC and transferrin
+  saturation, which are the markers that actually matter.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

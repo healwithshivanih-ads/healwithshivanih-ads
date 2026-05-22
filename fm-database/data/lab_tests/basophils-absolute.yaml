@@ -1,0 +1,34 @@
+slug: basophils-absolute
+display_name: Absolute Basophil Count
+full_name: Absolute Basophil Count
+aliases:
+- basophil absolute
+- absolute basophil count
+- basophil absolute count
+- absolute basophils
+- basophil
+units: cells/µL
+sample_type: blood
+conventional_low: 0
+conventional_high: 200
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low absolute basophils — rarely significant.
+interpretation_high: High absolute basophils — allergic / inflammatory states; rarely myeloproliferative
+  disease.
+when_to_order: Part of the CBC differential.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics:
+- histamine-intolerance
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Absolute Basophil Count
+evidence_tier: strong
+notes_for_coach: Basophils are histamine-bearing cells — a raised count can accompany an allergic
+  picture but is non-specific in isolation.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

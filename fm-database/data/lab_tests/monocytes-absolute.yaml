@@ -1,0 +1,33 @@
+slug: monocytes-absolute
+display_name: Absolute Monocyte Count
+full_name: Absolute Monocyte Count
+aliases:
+- monocyte absolute
+- absolute monocyte count
+- monocyte absolute count
+- absolute monocytes
+- monocyte
+units: cells/µL
+sample_type: blood
+conventional_low: 200
+conventional_high: 800
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Low absolute monocytes — rarely significant in isolation.
+interpretation_high: High absolute monocytes — chronic infection / inflammation, post-acute-infection
+  recovery.
+when_to_order: Part of the CBC differential.
+fasting_required: false
+typical_cost_inr: null
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Lab interpretation - Absolute Monocyte Count
+evidence_tier: strong
+notes_for_coach: The absolute count is the more reliable read. Non-specific in isolation —
+  interpret within the full CBC.
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani
