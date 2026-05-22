@@ -53,7 +53,7 @@ def _find(labs: list[dict], *patterns: str) -> float | None:
     best_value: float | None = None
     best_ts: float = -1.0
     for lab in labs:
-        n = str(lab.get("test_name", "")).lower()
+        n = str(lab.get("test_name", "")).lower().replace(".", "")
         for pat in patterns:
             if re.search(pat.lower(), n):
                 _CONSUMED_IDS.add(id(lab))
@@ -77,7 +77,7 @@ def _find_range(labs: list[dict], *patterns: str) -> str | None:
     best_range: str | None = None
     best_ts: float = -1.0
     for lab in labs:
-        n = str(lab.get("test_name", "")).lower()
+        n = str(lab.get("test_name", "")).lower().replace(".", "")
         for pat in patterns:
             if re.search(pat.lower(), n):
                 _CONSUMED_IDS.add(id(lab))
@@ -143,7 +143,7 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     glucose = _find(extracted_labs,
         r"fasting.glucose|glucose.fast|blood glucose|plasma glucose|fasting blood sugar|fbs\b")
     insulin = _find(extracted_labs,
-        r"fasting.insulin|insulin.fast|serum insulin")
+        r"insulin.*fast|fast.*insulin|serum insulin")
     hba1c = _find(extracted_labs,
         r"hba1c|hemoglobin a1c|glycated haemoglobin|glycosylated haemoglobin|a1c\b")
     uric_acid = _find(extracted_labs,
@@ -382,7 +382,7 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     ast = _find(extracted_labs,
         r"\bast\b|sgot\b|aspartate.amino|aspartate transaminase")
     ggt = _find(extracted_labs,
-        r"\bggt\b|gamma.glutamyl|gamma-gt|γ-gt")
+        r"\bggtp?\b|gamma.glutamyl|gamma-gt|γ-gt")
     alp = _find(extracted_labs,
         r"\balp\b|alkaline phosphatase|alk phos")
     bilirubin_total = _find(extracted_labs,
@@ -550,13 +550,14 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     homocysteine = _find(extracted_labs,
         r"homocysteine|hcy\b|plasma homocysteine")
     hscrp = _find(extracted_labs,
-        r"hs.crp|high.sensitivity.crp|hscrp|high sensitivity c.reactive|hs-crp")
+        r"hs.crp|high.sensitivity.crp|hscrp|high sensitivity c.reactive|hs-crp"
+        r"|c.?reactive.*sensitiv|sensitiv.*c.?reactive|crp.*sensitiv")
     apob = _find(extracted_labs,
         r"\bapo[ -]?b\b|apolipoprotein.b\b|apob\b")
     apoa1 = _find(extracted_labs,
         r"\bapo[ -]?a[ -]?1\b|apolipoprotein.a1?\b|apoa1?\b")
     lpa = _find(extracted_labs,
-        r"\blp\(?a\)?\b|lipoprotein.a\b|lipoprotein.little.a")
+        r"\blp\(?a\)?\b|lipoprotein.{0,5}a\b|lipoprotein.little.a")
 
     if tc is not None:
         flag = "low" if tc < 160 else ("high" if tc > 240 else "optimal")
@@ -1056,7 +1057,7 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         f"resistance; high SHBG lowers free hormone availability.",
         PANEL_HORMONES_F)
 
-    dheas = _find(extracted_labs, r"\bdhea\b|dhea.s|dheas|dehydroepiandrosterone")
+    dheas = _find(extracted_labs, r"\bdhea\b|dhea.s|dheas|dehydro.?epiandrosterone")
     add("DHEA-S", dheas, "µg/dL",
         "Female, age-dependent — read against the report's own range",
         "normal",
