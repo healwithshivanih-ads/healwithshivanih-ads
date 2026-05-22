@@ -1,0 +1,120 @@
+slug: bromelain
+display_name: Bromelain
+aliases:
+- pineapple-extract
+- pineapple-enzyme
+category: enzyme
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 200
+    max: 2000
+    unit: mg
+  tablet:
+    min: 200
+    max: 2000
+    unit: mg
+timing_options:
+- on_empty_stomach
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+notes_for_coach: 'Bromelain is a proteolytic (protein-digesting) enzyme complex
+  extracted from pineapple stem. A meaningful fraction is absorbed intact into the
+  bloodstream, so it acts systemically, not just in the gut.
+
+  TWO DISTINCT USES WITH OPPOSITE TIMING. (1) Protein digestion — taken WITH meals,
+  200-2000 mg, it supplements pancreatic/gastric proteases; useful where maldigestion
+  or digestive-enzyme insufficiency is suspected. (2) Systemic anti-inflammatory /
+  decongestant — taken BETWEEN meals on an empty stomach, 200-800 mg, so the enzyme
+  is absorbed rather than consumed digesting food. Get the timing right for the goal.
+
+  EVIDENCE IS THIN. Examine.com grades the human research mostly C (limited): a small
+  improvement in nasal congestion in allergic rhinitis (n=116), a small decrease in
+  inflammation in acute knee pain (n=77), plus single small studies in osteoarthritis
+  and muscle soreness. The anti-inflammatory and mild decongestant effects are the
+  best-supported; treat broader claims as preliminary.
+
+  FM RELEVANCE. Bromelain is a standard component of quercetin-bromelain combinations
+  — it improves quercetin bioavailability — and appears in histamine / mast-cell
+  blends (it is one of 23 ingredients in FMN Opti-Histamine). Reasonable anti-inflammatory
+  adjunct; not a primary intervention on its own.
+
+  POTENCY. Activity is standardised by GDU (gelatin dissolving units) or MCU (milk
+  clotting units), not by milligrams alone — two products at the same mg can differ
+  in strength. Check the GDU figure when comparing products.
+
+  CAUTIONS. Bromelain has fibrinolytic and antiplatelet activity — additive bleeding
+  risk with anticoagulants, antiplatelet drugs and NSAIDs; advise stopping ~2 weeks
+  before any surgery. It raises serum levels of amoxicillin and tetracycline antibiotics
+  — coordinate with the prescriber rather than combining unsupervised. May intensify
+  sedatives. CONTRAINDICATED in pineapple allergy, which cross-reacts with latex,
+  grass pollen, and papain/papaya. Most common side effects are diarrhoea and gastric
+  upset; allergic skin reactions occur in sensitised individuals.'
+notes_for_client: 'A protein-digesting enzyme from pineapple. For digestion, take it
+  with meals; for its anti-inflammatory effect, take it between meals on an empty
+  stomach. Skip it entirely if you are allergic to pineapple, and tell your coach if
+  you are on any blood thinner or have surgery coming up.'
+contraindications:
+  conditions:
+  - pineapple allergy
+  - latex-fruit syndrome
+  - papain or papaya allergy
+  medications:
+  - anticoagulants
+  - antiplatelet drugs
+  - NSAIDs
+  life_stages:
+  - pregnancy
+  - lactation
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+  - medication: anticoagulants and antiplatelet drugs
+    type: avoid_together
+    reason: Bromelain has fibrinolytic and antiplatelet activity — additive bleeding
+      risk.
+  - medication: NSAIDs
+    type: avoid_together
+    reason: Additive bleeding and GI-irritation risk; bromelain inhibits platelet
+      aggregation.
+  - medication: amoxicillin and tetracycline antibiotics
+    type: avoid_together
+    reason: Bromelain raises serum antibiotic levels — coordinate with the prescriber
+      rather than combining unsupervised.
+pregnancy_safety: caution
+lactation_safety: caution
+pregnancy_safety_note: Insufficient human safety data in pregnancy and lactation;
+  avoid unless clearly indicated and clinician-supervised.
+linked_to_topics:
+- chronic-inflammation
+- histamine-intolerance
+- mast-cell-activation-syndrome
+- digestive-enzyme-insufficiency
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- chronic-inflammation
+- systemic-inflammation
+- nf-kb-activation
+- inflammatory-cascade
+- hcl-and-pepsin-protein-digestion
+linked_to_claims:
+- bromelain-allergic-rhinitis-nasal-congestion
+- bromelain-knee-pain-inflammation
+- bromelain-osteoarthritis-symptoms
+- bromelain-muscle-soreness-recovery
+- bromelain-type-1-diabetes-incidence
+sources:
+- id: examine-com
+  location: Bromelain — Examine Database (5 conditions, show_conditions view)
+  quote: Bromelain's anti-inflammatory properties are responsible for several of its
+    effects.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

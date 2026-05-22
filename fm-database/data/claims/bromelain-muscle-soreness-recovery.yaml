@@ -1,0 +1,29 @@
+slug: bromelain-muscle-soreness-recovery
+statement: Bromelain has been studied for reducing muscle soreness after exercise,
+  with preliminary single-study evidence only.
+evidence_tier: plausible_emerging
+rationale: Examine.com lists one 39-participant study on muscle soreness under muscle
+  recovery; an overall evidence grade is not established. A separate acute-knee-pain
+  cohort did not show a clear muscle-soreness benefit, so the evidence is mixed and
+  thin.
+coaching_translation: Bromelain is sometimes taken to ease post-exercise soreness.
+  The evidence is preliminary and inconsistent — fine to mention as a low-stakes
+  option, but adequate protein, sleep and a sensible training progression matter
+  far more.
+caveats:
+- Single small study; overall evidence grade not established; a second cohort was
+  inconclusive.
+- Take between meals for the systemic effect.
+linked_to_topics: []
+linked_to_mechanisms:
+- systemic-inflammation
+linked_to_supplements:
+- bromelain
+out_of_scope_notes: ''
+sources:
+- id: examine-com
+  location: Bromelain — Examine Database, Muscle Recovery (Muscle Soreness)
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

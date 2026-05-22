@@ -1,0 +1,29 @@
+slug: bromelain-allergic-rhinitis-nasal-congestion
+statement: Bromelain may produce a small improvement in nasal congestion in allergic
+  rhinitis.
+evidence_tier: plausible_emerging
+rationale: Examine.com grades the human evidence C (limited) — a single 116-participant
+  study found a small improvement in nasal congestion. The proposed mechanism is
+  bromelain's systemic anti-inflammatory / decongestant action, which is plausible
+  but rests on one small trial.
+coaching_translation: For a client with allergy-related nasal stuffiness, bromelain
+  is a plant enzyme that may take the edge off congestion — a modest effect, not a
+  substitute for identifying and removing the allergen trigger.
+caveats:
+- Single small study; Examine evidence grade C (limited).
+- For a systemic effect bromelain should be taken between meals, not with food.
+linked_to_topics:
+- histamine-intolerance
+- chronic-inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+linked_to_supplements:
+- bromelain
+out_of_scope_notes: ''
+sources:
+- id: examine-com
+  location: Bromelain — Examine Database, Allergic Rhinitis (Nasal Congestion)
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

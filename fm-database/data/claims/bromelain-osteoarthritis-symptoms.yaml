@@ -1,0 +1,27 @@
+slug: bromelain-osteoarthritis-symptoms
+statement: Bromelain has been studied for relief of osteoarthritis symptoms, with
+  preliminary single-study evidence only.
+evidence_tier: plausible_emerging
+rationale: Examine.com lists one 47-participant study on osteoarthritis symptoms;
+  an overall evidence grade is not established. Bromelain's anti-inflammatory action
+  is the proposed mechanism, but the evidence base is too small to draw a conclusion.
+coaching_translation: Bromelain is sometimes used as an anti-inflammatory adjunct
+  for joint discomfort. The osteoarthritis evidence is preliminary — frame it as
+  "may help a little", and keep the focus on movement, load and weight management.
+caveats:
+- Single small study; overall evidence grade not established.
+- Diagnosed osteoarthritis management belongs with the client's clinician.
+linked_to_topics:
+- joint-pain
+linked_to_mechanisms:
+- synovial-inflammation
+linked_to_supplements:
+- bromelain
+out_of_scope_notes: ''
+sources:
+- id: examine-com
+  location: Bromelain — Examine Database, Osteoarthritis (Osteoarthritis Symptoms)
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

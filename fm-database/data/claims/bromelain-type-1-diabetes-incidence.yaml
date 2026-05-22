@@ -1,0 +1,26 @@
+slug: bromelain-type-1-diabetes-incidence
+statement: Bromelain has been examined in relation to type 1 diabetes incidence in
+  a single very small study; no conclusion can be drawn.
+evidence_tier: confirm_with_clinician
+rationale: Examine.com lists one 20-participant study touching on type 1 diabetes
+  incidence; an overall evidence grade is not established. A sample this small cannot
+  support any claim of benefit, and type 1 diabetes is a clinical autoimmune disease.
+coaching_translation: Not actionable. Bromelain has no established role in type 1
+  diabetes and this must never be presented to a client as a benefit.
+caveats:
+- Single 20-participant study; no evidence grade; far too small for any conclusion.
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_mechanisms: []
+linked_to_supplements:
+- bromelain
+out_of_scope_notes: Type 1 diabetes is a clinical autoimmune condition outside health-coaching
+  scope. Bromelain is not a recognised intervention for it. All diabetes management
+  and monitoring must stay with the client's physician.
+sources:
+- id: examine-com
+  location: Bromelain — Examine Database, Type 1 Diabetes (Type 1 Diabetes Incidence)
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani

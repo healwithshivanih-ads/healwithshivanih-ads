@@ -1,0 +1,20 @@
+id: examine-com
+title: Examine.com — Independent Supplement & Nutrition Research Database
+source_type: website
+quality: high
+authors: []
+publisher: Examine.com
+url: https://examine.com
+notes: 'Independent, non-industry-funded database summarising the human research on
+
+  supplements and nutrition. Each health outcome carries an explicit evidence grade
+
+  (A-D) and participant count. No sponsors, no industry ties. Used here as a
+
+  provenance anchor for supplement entries ingested from examine.com pages.
+
+  '
+version: 1
+status: active
+updated_at: '2026-05-22'
+updated_by: shivani
