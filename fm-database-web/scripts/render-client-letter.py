@@ -1865,9 +1865,58 @@ _SOURCE_RANK = {
     "other": 4,
 }
 
+# Module-level active client for contradiction checking.
+# Set by main() after loading the client YAML. Read by
+# _resolve_supplement_products() so callers need no signature changes.
+_ACTIVE_CLIENT: dict = {}
+
 
 def _source_rank(src) -> int:
     return _SOURCE_RANK.get((str(src or "other")).strip().lower(), 4)
+
+
+def _build_client_avoid_set(client: dict) -> set[str]:
+    """Normalised set of ingredient tokens the client must avoid.
+
+    Built from: known_allergies, foods_to_avoid, reported_triggers.
+    Medications are intentionally excluded — drug-nutrient interactions
+    need a proper database (handled by the plan-checker's contraindication
+    model, not a substring match). Each value lowercased and stripped.
+    """
+    out: set[str] = set()
+    for field in ("known_allergies", "foods_to_avoid", "reported_triggers"):
+        val = client.get(field) or []
+        if isinstance(val, str):
+            val = [v.strip() for v in val.split(",") if v.strip()]
+        if isinstance(val, list):
+            for item in val:
+                token = str(item).strip().lower()
+                if token:
+                    out.add(token)
+    return out
+
+
+def _product_clashes_with(product: dict, avoid_set: set[str]) -> str | None:
+    """Return the first clashing ingredient name, or None if the product is safe.
+
+    A clash is a bidirectional substring match: 'dairy' matches
+    'dairy whey protein' AND 'casein (dairy)' matches 'dairy'.
+    Returns the offending ingredient string for logging.
+    """
+    if not avoid_set:
+        return None
+    ingredients: list[str] = product.get("active_ingredients") or []
+    for ingr in ingredients:
+        ingr_n = ingr.strip().lower()
+        if not ingr_n:
+            continue
+        for avoid in avoid_set:
+            avoid_n = avoid.strip().lower()
+            if not avoid_n:
+                continue
+            if ingr_n in avoid_n or avoid_n in ingr_n:
+                return ingr_n
+    return None
 
 
 def _load_supplement_links_full() -> dict[str, dict]:
@@ -1877,22 +1926,33 @@ def _load_supplement_links_full() -> dict[str, dict]:
     slugs that product supplies. A blend covers several; this expands
     every covers list so a plan supplement looks up its product by slug.
 
-    When several products cover the same slug, the highest-priority
-    `source:` wins — vitaone > fmnutrition > amazon > iherb > other — so
-    file order is irrelevant. Ties within the same source fall to the
-    first entry in the file. Consumed by _resolve_supplement_products."""
+    Source-priority selection with optional contradiction check:
+    - Primary ranking: vitaone > fmnutrition > amazon > iherb > other
+    - When _ACTIVE_CLIENT is set, any product whose active_ingredients clash
+      with the client's allergies / foods_to_avoid is skipped in favour of
+      the next-ranked product for that slug.
+    - If ALL candidates for a slug clash, the top-ranked one is used anyway
+      (better to give a link than no link — the plan-checker handles clinical
+      contraindications separately via the catalogue's contraindications field).
+
+    Consumed by _resolve_supplement_products."""
     if not _CUSTOM_LINKS_PATH.exists():
         return {}
     try:
         import yaml
         data = yaml.safe_load(_CUSTOM_LINKS_PATH.read_text()) or {}
-        out: dict[str, dict] = {}
+
+        avoid_set = _build_client_avoid_set(_ACTIVE_CLIENT) if _ACTIVE_CLIENT else set()
+
+        # First pass: collect all products per slug, sorted by rank ascending
+        all_per_slug: dict[str, list[tuple[int, dict]]] = {}
         for key, val in data.items():
             if not isinstance(val, dict):
                 continue
             covers = val.get("covers")
             if not isinstance(covers, list):
                 continue
+            active_ingredients = val.get("active_ingredients") or []
             record = {
                 "product_key": key,
                 "display_name": val.get("display_name") or "",
@@ -1901,15 +1961,36 @@ def _load_supplement_links_full() -> dict[str, dict]:
                 "dose": val.get("dose") or "",
                 "timing": val.get("timing") or "",
                 "take_with_food": val.get("take_with_food") or "",
+                "active_ingredients": [str(i).strip().lower() for i in active_ingredients if i],
             }
             rank = _source_rank(record["source"])
             for cs in covers:
                 cs = str(cs).strip().lower()
                 if not cs:
                     continue
-                existing = out.get(cs)
-                if existing is None or rank < _source_rank(existing.get("source")):
-                    out[cs] = record
+                all_per_slug.setdefault(cs, []).append((rank, record))
+
+        # Second pass: for each slug pick the best non-clashing product
+        out: dict[str, dict] = {}
+        for cs, candidates in all_per_slug.items():
+            candidates.sort(key=lambda x: x[0])   # stable sort: rank asc, file order within rank
+            chosen: dict | None = None
+            for _rank, record in candidates:
+                clash = _product_clashes_with(record, avoid_set)
+                if clash:
+                    print(
+                        f"[render-letter] skip {record['product_key']!r} for slug {cs!r} "
+                        f"— ingredient {clash!r} clashes with client avoid list",
+                        file=__import__("sys").stderr,
+                        flush=True,
+                    )
+                    continue
+                chosen = record
+                break
+            if chosen is None:
+                # All candidates clash — use top-ranked (better than no link)
+                chosen = candidates[0][1]
+            out[cs] = chosen
         return out
     except Exception:
         return {}
@@ -6072,6 +6153,12 @@ def main() -> int:
     client = _load_client(client_id) if client_id else {}
     if client is None:
         client = {}
+
+    # Expose client to the supplement contradiction checker so product
+    # blends that clash with the client's allergies / foods_to_avoid are
+    # skipped in favour of the next-ranked alternative.
+    global _ACTIVE_CLIENT
+    _ACTIVE_CLIENT = client
 
     # Weight-loss fallback: when the caller didn't pass a weight_loss config
     # (e.g. phase-letter generation, which doesn't re-ask the weight-loss
