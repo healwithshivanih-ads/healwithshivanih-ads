@@ -28,16 +28,22 @@ const PANEL_META: Record<
   "Key Nutrients":           { icon: "💊", order: 7, description: "Vitamin D, B12, folate, magnesium, zinc" },
 };
 
+function isNeutralFlag(flag: string) {
+  return !flag || flag === "normal" || flag === "info";
+}
+
 function flagDot(flag: string) {
   if (flag === "optimal") return { dot: "🟢", cls: "text-emerald-700 bg-emerald-50 border-emerald-200" };
   if (flag === "suboptimal" || flag === "low-normal") return { dot: "🟡", cls: "text-amber-700 bg-amber-50 border-amber-200" };
+  if (isNeutralFlag(flag)) return { dot: "⚪", cls: "text-slate-600 bg-slate-50 border-slate-200" };
   return { dot: "🔴", cls: "text-red-700 bg-red-50 border-red-200" };
 }
 
 function panelSummary(markers: LabMarker[]) {
   const optimal = markers.filter((m) => m.flag === "optimal").length;
   const suboptimal = markers.filter((m) => m.flag === "suboptimal" || m.flag === "low-normal").length;
-  const flagged = markers.length - optimal - suboptimal;
+  const neutral = markers.filter((m) => isNeutralFlag(m.flag)).length;
+  const flagged = markers.length - optimal - suboptimal - neutral;
   return { optimal, suboptimal, flagged };
 }
 

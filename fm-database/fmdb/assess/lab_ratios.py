@@ -14,6 +14,12 @@ from datetime import datetime
 from typing import Any
 
 
+# Tracks id() of every extracted lab dict claimed by _find / _find_range during
+# a compute_ratios run, so the passthrough at the end can surface anything no
+# coded handler matched. Cleared at the start of each compute_ratios call.
+_CONSUMED_IDS: set[int] = set()
+
+
 def _parse_lab_date(d: object) -> float:
     """Parse a lab date string to a Unix timestamp for comparison.
 
@@ -50,6 +56,7 @@ def _find(labs: list[dict], *patterns: str) -> float | None:
         n = str(lab.get("test_name", "")).lower()
         for pat in patterns:
             if re.search(pat.lower(), n):
+                _CONSUMED_IDS.add(id(lab))
                 try:
                     val = float(re.sub(r"[^0-9.\-]", "", str(lab.get("value", ""))))
                     ts = _parse_lab_date(lab.get("date_drawn"))
@@ -73,6 +80,7 @@ def _find_range(labs: list[dict], *patterns: str) -> str | None:
         n = str(lab.get("test_name", "")).lower()
         for pat in patterns:
             if re.search(pat.lower(), n):
+                _CONSUMED_IDS.add(id(lab))
                 ts = _parse_lab_date(lab.get("date_drawn"))
                 if best_range is None or ts > best_ts:
                     rng = lab.get("reference_range")
@@ -104,6 +112,7 @@ def _range_upper(rng: str | None) -> float | None:
 def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Return list of FM-interpreted markers + computed ratios, grouped by panel."""
     results: list[dict[str, Any]] = []
+    _CONSUMED_IDS.clear()
 
     def add(name: str, value: float | None, unit: str, ref_range: str,
             flag: str, interpretation: str, panel: str, computed: bool = False) -> None:
@@ -997,11 +1006,111 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             f"1h glucose {one_hr_glucose}: {'≥155 — strong prediabetes signal even with normal fasting + HbA1c; address IR now' if one_hr_glucose>155 else 'Above FM optimal — early glucose dysregulation' if one_hr_glucose>130 else 'FM optimal — good early glucose handling'}",
             PANEL_META)
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # FEMALE SEX HORMONES
+    # Cycle-phase dependent — surfaced with descriptive ranges and a neutral
+    # flag, NOT auto-flagged high/low, because compute_ratios does not know the
+    # cycle day the sample was drawn. Interpret each against that phase.
+    # ══════════════════════════════════════════════════════════════════════════
+    PANEL_HORMONES_F = "Hormones — Female"
+
+    estradiol = _find(extracted_labs, r"estradiol|oestradiol|\be2\b")
+    add("Estradiol (E2)", estradiol, "pg/mL",
+        "Follicular 30–90; Ovulation 60–530; Luteal 60–230; Postmenopausal <140 pg/mL",
+        "normal",
+        f"Estradiol {estradiol}: interpret against the cycle phase on the day drawn. "
+        f"A single value cannot establish oestrogen:progesterone balance; sustained "
+        f"low oestradiol with a raised FSH points to the menopause transition.",
+        PANEL_HORMONES_F)
+
+    progesterone = _find(extracted_labs, r"^(?!.*17)(?!.*hydroxy).*progesterone")
+    add("Progesterone", progesterone, "ng/mL",
+        "Follicular <1; mid-luteal >3 confirms ovulation (assay-dependent)",
+        "normal",
+        f"Progesterone {progesterone}: only meaningful in the mid-luteal phase "
+        f"(~7 days after ovulation). A mid-luteal value above roughly 3 ng/mL "
+        f"confirms ovulation occurred; a low follicular-phase value is expected.",
+        PANEL_HORMONES_F)
+
+    testosterone = _find(extracted_labs, r"^(?!.*free).*testosterone")
+    add("Testosterone (total)", testosterone, "ng/dL",
+        "Female ~15–70 ng/dL (assay-dependent)",
+        "normal",
+        f"Total testosterone {testosterone}: raised levels suggest a PCOS / androgen-excess "
+        f"pattern — assess alongside free testosterone, SHBG and fasting insulin.",
+        PANEL_HORMONES_F)
+
+    free_t = _find(extracted_labs, r"free.testosterone|free.androgen")
+    add("Free Testosterone", free_t, "",
+        "Assay-dependent — read against the report's own range",
+        "normal",
+        f"Free testosterone {free_t}: the biologically active fraction, more sensitive than "
+        f"total testosterone for androgen excess. Interpret against the lab's range.",
+        PANEL_HORMONES_F)
+
+    shbg = _find(extracted_labs, r"\bshbg\b|sex.hormone.binding")
+    add("SHBG", shbg, "nmol/L",
+        "Female ~20–130 nmol/L (assay-dependent)",
+        "normal",
+        f"SHBG {shbg}: low SHBG raises free androgen and is a classic marker of insulin "
+        f"resistance; high SHBG lowers free hormone availability.",
+        PANEL_HORMONES_F)
+
+    dheas = _find(extracted_labs, r"\bdhea\b|dhea.s|dheas|dehydroepiandrosterone")
+    add("DHEA-S", dheas, "µg/dL",
+        "Female, age-dependent — read against the report's own range",
+        "normal",
+        f"DHEA-S {dheas}: an adrenal androgen — raised in adrenal androgen excess, low with "
+        f"adrenal under-function. Age-dependent; interpret against the lab's range.",
+        PANEL_HORMONES_F)
+
+    amh = _find(extracted_labs, r"\bamh\b|anti.mullerian|anti.müllerian|mullerian hormone")
+    add("AMH (Anti-Müllerian Hormone)", amh, "ng/mL",
+        "Age-dependent ovarian-reserve marker — read against the report's own range",
+        "normal",
+        f"AMH {amh}: reflects ovarian reserve — falls through perimenopause toward menopause; "
+        f"a high AMH is common in PCOS. Interpret with age.",
+        PANEL_HORMONES_F)
+
+    prolactin = _find(extracted_labs, r"\bprolactin\b|\bprl\b")
+    add("Prolactin", prolactin, "ng/mL",
+        "Non-pregnant female ~5–25 ng/mL (assay-dependent)",
+        "normal",
+        f"Prolactin {prolactin}: raised prolactin can suppress ovulation and cause cycle "
+        f"irregularity — confirm with a repeat morning, rested sample before acting.",
+        PANEL_HORMONES_F)
+
     # LH/FSH ratio — PCOS workup. Elevated ratio classic feature.
     lh = _find(extracted_labs,
         r"\blh\b|luteinising hormone|luteinizing hormone")
     fsh = _find(extracted_labs,
         r"\bfsh\b|follicle.stimulating|follicle stimulating")
+    add("Luteinising Hormone (LH)", lh, "mIU/mL",
+        "Follicular 2–13; Ovulatory 14–96; Luteal 1–11; Postmenopausal 8–59 mIU/mL",
+        "normal",
+        f"LH {lh}: interpret by cycle phase / day of draw. Paired with FSH as the ratio below.",
+        PANEL_HORMONES_F)
+    add("Follicle Stimulating Hormone (FSH)", fsh, "mIU/mL",
+        "Follicular 3.5–12.5; Ovulatory 4.7–21.5; Luteal 1.7–7.7; Postmenopausal 25–135 mIU/mL",
+        "normal",
+        f"FSH {fsh}: an early-follicular value above roughly 10–12 signals declining ovarian "
+        f"reserve / the menopause transition.",
+        PANEL_HORMONES_F)
+
+    h_pylori = _find(extracted_labs,
+        r"helicobacter|h\.?\s?pylori|pylori antigen|pylori.stool")
+    if h_pylori is not None:
+        hp_flag = "high" if h_pylori >= 1.1 else ("suboptimal" if h_pylori >= 0.9 else "optimal")
+        add("H. pylori (stool antigen)", h_pylori, "index",
+            "<0.9 negative; 0.9–1.1 equivocal; ≥1.1 positive",
+            hp_flag,
+            f"H. pylori antigen {h_pylori}: "
+            + ("Positive — active infection; a driver of gastritis, low stomach acid "
+               "and B12/iron malabsorption" if h_pylori >= 1.1
+               else "Equivocal — repeat testing advised" if h_pylori >= 0.9
+               else "Negative — H. pylori ruled out as a gut driver"),
+            "Gut & Digestive")
+
     if lh is not None and fsh is not None and fsh > 0:
         lh_fsh = lh / fsh
         flag = "high" if lh_fsh > 2.5 else ("suboptimal" if lh_fsh > 2.0 else "optimal")
@@ -1010,5 +1119,46 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             flag,
             f"LH/FSH {round(lh_fsh,2)}: {'Elevated — classic PCOS pattern; pair with AMH, free testosterone, fasting insulin, pelvic US' if lh_fsh>2.5 else 'Borderline — watch trend; ovulatory dysfunction possible' if lh_fsh>2.0 else 'Balanced HPO axis'}",
             "Hormones — Female", computed=True)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # PASSTHROUGH — never silently drop an extracted lab.
+    # Any numeric value not claimed by a coded handler above is surfaced
+    # uninterpreted under the "Other" panel so the coach still sees it on the
+    # record. Names are normalised so a value already emitted by a coded handler
+    # (or a naming variant of one) is not duplicated, and so the same marker
+    # appearing across several snapshots collapses to its most recent value.
+    # ══════════════════════════════════════════════════════════════════════════
+    def _norm(s: str) -> str:
+        s = s.lower()
+        s = re.sub(r"\[[^\]]*\]", "", s)   # drop [bracketed] qualifiers
+        s = re.sub(r"\([^)]*\)", "", s)    # drop (parenthetical) qualifiers
+        return re.sub(r"[^a-z0-9]", "", s)
+
+    coded_norms = {_norm(str(r.get("marker_name") or "")) for r in results}
+    leftovers: dict[str, dict[str, Any]] = {}
+    for lab in extracted_labs:
+        if not isinstance(lab, dict) or id(lab) in _CONSUMED_IDS:
+            continue
+        nm = str(lab.get("test_name") or "").strip()
+        if not nm:
+            continue
+        key = _norm(nm)
+        if not key or key in coded_norms:
+            continue  # already represented by a coded marker
+        prev = leftovers.get(key)
+        if prev is None or _parse_lab_date(lab.get("date_drawn")) >= _parse_lab_date(prev.get("date_drawn")):
+            leftovers[key] = lab
+    for lab in leftovers.values():
+        nm = str(lab.get("test_name") or "").strip()
+        try:
+            num = float(re.sub(r"[^0-9.\-]", "", str(lab.get("value", ""))))
+        except (ValueError, TypeError):
+            continue  # non-numeric / qualitative result — not a panel marker
+        add(nm, num, str(lab.get("unit") or ""),
+            str(lab.get("reference_range") or ""),
+            "normal",
+            "Captured from the lab report. No FM-specific interpretation is coded "
+            "for this marker yet — value shown so it is not lost.",
+            "Other")
 
     return results

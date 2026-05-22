@@ -379,7 +379,7 @@ export function HealthTrends({ client }: { client: Client }) {
               <div key={i} className="rounded border px-3 py-2 text-xs space-y-0.5 min-w-[120px]">
                 <p className="font-medium">{lm.marker_name}</p>
                 <p>
-                  <span className={`font-semibold ${lm.flag === "optimal" ? "text-emerald-700" : lm.flag === "suboptimal" ? "text-amber-600" : "text-red-600"}`}>
+                  <span className={`font-semibold ${lm.flag === "optimal" ? "text-emerald-700" : lm.flag === "suboptimal" ? "text-amber-600" : (!lm.flag || lm.flag === "normal" || lm.flag === "info") ? "text-slate-600" : "text-red-600"}`}>
                     {lm.value}
                   </span>
                   {lm.unit && <span className="text-muted-foreground ml-1">{lm.unit}</span>}
