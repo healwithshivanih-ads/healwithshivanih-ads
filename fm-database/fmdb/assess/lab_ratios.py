@@ -11,6 +11,7 @@ Each returned dict includes:
 from __future__ import annotations
 import re
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
 
@@ -18,6 +19,55 @@ from typing import Any
 # a compute_ratios run, so the passthrough at the end can surface anything no
 # coded handler matched. Cleared at the start of each compute_ratios call.
 _CONSUMED_IDS: set[int] = set()
+
+# Process-cached {normalised name -> LabTest dict} index, built lazily from the
+# LabTest catalogue the first time compute_ratios' passthrough needs it.
+_LAB_TEST_INDEX: dict | None = None
+
+
+def _norm_marker(s: object) -> str:
+    """Word-order- and punctuation-insensitive key for matching a lab name
+    against the LabTest catalogue: lowercase, drop dots, tokenise, sort, join.
+    So 'S.G.O.T.', 'Morning Cortisol' and 'Cortisol (Morning)' all collapse
+    onto a stable key the catalogue's aliases can be matched against."""
+    t = str(s or "").lower().replace(".", "")
+    toks = sorted(tok for tok in re.split(r"[^a-z0-9]+", t) if tok)
+    return "".join(toks)
+
+
+def _lab_test_index() -> dict:
+    """Build (once per process) a {normalised name/alias -> lab_test dict}
+    index from the LabTest catalogue, so compute_ratios' passthrough can give
+    catalogue-known markers proper FM interpretation instead of dumping them
+    uninterpreted. Fails soft to an empty index if the catalogue is unreadable."""
+    global _LAB_TEST_INDEX
+    if _LAB_TEST_INDEX is not None:
+        return _LAB_TEST_INDEX
+    idx: dict = {}
+    try:
+        import os
+        import yaml as _yaml
+        base = os.environ.get("FMDB_CATALOGUE_DIR")
+        data_dir = Path(base) if base else Path(__file__).resolve().parents[2] / "data"
+        for p in sorted((data_dir / "lab_tests").glob("*.yaml")):
+            if p.name.startswith("_"):
+                continue
+            try:
+                lt = _yaml.safe_load(p.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if not isinstance(lt, dict):
+                continue
+            names = [lt.get("slug"), lt.get("display_name"), lt.get("full_name")]
+            names += lt.get("aliases") or []
+            for nm in names:
+                k = _norm_marker(nm)
+                if k:
+                    idx.setdefault(k, lt)
+    except Exception:
+        pass
+    _LAB_TEST_INDEX = idx
+    return idx
 
 
 def _parse_lab_date(d: object) -> float:
@@ -1123,19 +1173,16 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
 
     # ══════════════════════════════════════════════════════════════════════════
     # PASSTHROUGH — never silently drop an extracted lab.
-    # Any numeric value not claimed by a coded handler above is surfaced
-    # uninterpreted under the "Other" panel so the coach still sees it on the
-    # record. Names are normalised so a value already emitted by a coded handler
-    # (or a naming variant of one) is not duplicated, and so the same marker
-    # appearing across several snapshots collapses to its most recent value.
+    # Anything not claimed by a coded handler above is resolved against the
+    # LabTest catalogue: a catalogue match becomes a properly interpreted
+    # marker under "Additional Markers"; an unmatched value lands in "Other",
+    # which is therefore the live catalogue-gap backlog — add a LabTest entry
+    # or alias to clear it. Names are normalised so a marker already emitted
+    # by a coded handler is not duplicated and cross-snapshot variants of the
+    # same marker collapse to the most recent value.
     # ══════════════════════════════════════════════════════════════════════════
-    def _norm(s: str) -> str:
-        s = s.lower()
-        s = re.sub(r"\[[^\]]*\]", "", s)   # drop [bracketed] qualifiers
-        s = re.sub(r"\([^)]*\)", "", s)    # drop (parenthetical) qualifiers
-        return re.sub(r"[^a-z0-9]", "", s)
-
-    coded_norms = {_norm(str(r.get("marker_name") or "")) for r in results}
+    lt_index = _lab_test_index()
+    coded_keys = {_norm_marker(r.get("marker_name")) for r in results}
     leftovers: dict[str, dict[str, Any]] = {}
     for lab in extracted_labs:
         if not isinstance(lab, dict) or id(lab) in _CONSUMED_IDS:
@@ -1143,23 +1190,65 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
         nm = str(lab.get("test_name") or "").strip()
         if not nm:
             continue
-        key = _norm(nm)
-        if not key or key in coded_norms:
+        key = _norm_marker(nm)
+        if not key or key in coded_keys:
             continue  # already represented by a coded marker
         prev = leftovers.get(key)
         if prev is None or _parse_lab_date(lab.get("date_drawn")) >= _parse_lab_date(prev.get("date_drawn")):
             leftovers[key] = lab
-    for lab in leftovers.values():
+
+    def _rng(lo: object, hi: object) -> str:
+        if lo is None and hi is None:
+            return ""
+        if lo is None:
+            return f"<{hi}"
+        if hi is None:
+            return f">{lo}"
+        return f"{lo}-{hi}"
+
+    for key, lab in leftovers.items():
         nm = str(lab.get("test_name") or "").strip()
         try:
             num = float(re.sub(r"[^0-9.\-]", "", str(lab.get("value", ""))))
         except (ValueError, TypeError):
             continue  # non-numeric / qualitative result — not a panel marker
-        add(nm, num, str(lab.get("unit") or ""),
-            str(lab.get("reference_range") or ""),
-            "normal",
-            "Captured from the lab report. No FM-specific interpretation is coded "
-            "for this marker yet — value shown so it is not lost.",
-            "Other")
+        lt = lt_index.get(key)
+        if not lt:
+            add(nm, num, str(lab.get("unit") or ""),
+                str(lab.get("reference_range") or ""), "normal",
+                "Captured from the lab report — not yet in the lab-test catalogue. "
+                "Add a LabTest entry or alias to give it FM interpretation.",
+                "Other")
+            continue
+        fl, fh = lt.get("fm_optimal_low"), lt.get("fm_optimal_high")
+        cl, ch = lt.get("conventional_low"), lt.get("conventional_high")
+        flag = "normal"
+        if fl is not None and fh is not None:
+            if num < fl:
+                flag = "suboptimal" if (cl is not None and num >= cl) else "low"
+            elif num > fh:
+                flag = "suboptimal" if (ch is not None and num <= ch) else "high"
+            else:
+                flag = "optimal"
+        parts = []
+        if _rng(fl, fh):
+            parts.append(f"FM optimal {_rng(fl, fh)}")
+        if _rng(cl, ch):
+            parts.append(f"conventional {_rng(cl, ch)}")
+        ref = "; ".join(parts) or str(lab.get("reference_range") or "")
+        if flag == "low":
+            interp = lt.get("interpretation_low") or ""
+        elif flag == "high":
+            interp = lt.get("interpretation_high") or ""
+        elif flag == "suboptimal":
+            base = (lt.get("interpretation_low") if num < (fl or 0) else lt.get("interpretation_high")) or ""
+            interp = ("Within the lab's normal range but outside FM-optimal. " + base).strip()
+        else:
+            interp = lt.get("notes_for_coach") or ""
+        if not interp:
+            interp = f"{lt.get('display_name') or nm} — {num}{(' ' + lt.get('units')) if lt.get('units') else ''}."
+        add(lt.get("display_name") or nm, num,
+            lt.get("units") or str(lab.get("unit") or ""),
+            ref, flag, interp, "Additional Markers")
 
     return results
