@@ -721,21 +721,6 @@ export default async function ClientV2Page({
     >
       <FmClientJourneyStrip journey={journey} />
 
-      {/* Sign-up callout — surfaces the "did they sign up?" decision so
-          it doesn't fall through the cracks. Shows when the client has
-          moved beyond "just created" (discovery / intake session, intake
-          form submitted, or a plan exists) AND the coach hasn't yet
-          marked them signed_up or declined. */}
-      {hasAnyJourneySignal && engagement !== "signed_up" && engagement !== "declined" && (
-        <div style={{ marginBottom: 12 }}>
-          <EngagementPicker
-            clientId={client.client_id}
-            current={engagement}
-            callout
-          />
-        </div>
-      )}
-
       <FmClientHeader
         clientId={client.client_id}
         displayName={client.display_name ?? client.client_id}
@@ -1026,6 +1011,7 @@ export default async function ClientV2Page({
             lastPeriodEndDate={client.last_period_end_date}
             cycleLengthDays={client.cycle_length_days}
             cycleRegularity={client.cycle_regularity}
+            lastCycleAskSent={client.last_cycle_ask_sent}
           />
         </div>
 

@@ -1146,51 +1146,6 @@ export default async function PlanTabPage({
               />
             )}
 
-            {/* Continue meal plan moved BACK to Communicate tab on
-                2026-05-18 per coach decision: "letter generation should
-                only sit in the communication tab. Plan tab for
-                underlying plan changes."
-                See /clients-v2/[id]/communicate — PhaseLetterPanel is
-                rendered there above the SendPackageButton. */}
-            {isPublished && activePlan && (
-              <div
-                style={{
-                  padding: "10px 14px",
-                  marginBottom: 14,
-                  background: "var(--fm-bg-cool)",
-                  border: "1px dashed var(--fm-border-light)",
-                  borderRadius: "var(--fm-radius-sm)",
-                  fontSize: 12,
-                  color: "var(--fm-text-secondary)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 12,
-                }}
-              >
-                <span>
-                  🍽 Generate next weeks' meal plan letter — moved to the
-                  Communicate tab so all client-facing letters live in one
-                  place.
-                </span>
-                <Link
-                  href={`/clients-v2/${id}/communicate`}
-                  style={{
-                    padding: "5px 10px",
-                    background: "var(--fm-primary)",
-                    color: "#fff",
-                    borderRadius: "var(--fm-radius-sm)",
-                    textDecoration: "none",
-                    fontSize: 12,
-                    fontWeight: 600,
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Open Communicate →
-                </Link>
-              </div>
-            )}
-
             {/* Follow-up plan generator — only when the live plan is
                 published. Closes the v1/v2 workflow gap: previously the
                 coach had to drop into /clients/<id> (v1) to spin up a
