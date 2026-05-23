@@ -439,11 +439,37 @@ const TEMPLATES = [
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/j/12345678901']],
   },
   {
+    // V2 of starting-now: original v1 got reclassified MARKETING by Meta
+    // (likely due to "we're live", "come on in", "See you in there" —
+    // event/promotional energy). Reworded as a neutral service notification
+    // about a workshop the recipient already registered for. New name so
+    // Meta re-evaluates fresh.
+    name: 'workshop_starting_now_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, your workshop *{{2}}* is starting now. Your join link is below:\n\n{{3}}\n\nReply here if you have any trouble joining.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/j/12345678901']],
+  },
+  {
     name: 'workshop_replay_v1',
     category: 'UTILITY',
     language: 'en',
     body:
       "Hi {{1}},\n\nThank you for joining *{{2}}*.\n\nHere's the replay — available for a limited time:\n\n{{3}}\n\nIf something came up for you after, just reply here.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/rec/share/abc123']],
+  },
+  {
+    // V2 of replay: original v1 got reclassified MARKETING by Meta (likely
+    // due to "available for a limited time" scarcity + "Thank you for
+    // joining" promotional framing). Reworded to be a neutral service
+    // follow-up so Meta's classifier lands it as UTILITY. New name so Meta
+    // re-evaluates fresh.
+    name: 'workshop_replay_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, your replay for *{{2}}* is ready. You can watch it any time using this link:\n\n{{3}}\n\nIf anything came up for you after the session, just reply here and I will get back to you.\n\n— The Ochre Tree",
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/rec/share/abc123']],
   },
 ];
