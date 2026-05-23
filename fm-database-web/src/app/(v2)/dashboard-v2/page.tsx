@@ -20,7 +20,7 @@ import {
   getRecentIntakeActivity,
   getClientHealthSignals,
 } from "@/lib/fmdb/loader-extras";
-import { parseRequestedLabs, parseSessionType } from "@/lib/fmdb/session-utils";
+import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
@@ -187,11 +187,22 @@ async function computeSignal(
       : 0;
     const REVIEW_CADENCE_DAYS = 21;
     if (daysSinceReview >= REVIEW_CADENCE_DAYS) {
+      // Read the last fm_checkin_nudge send time off the sessions so the
+      // triage card's "Send check-in" button renders "✓ Sent X ago ·
+      // Resend" (with confirm). Durable rule
+      // feedback-send-buttons-persist-state. lastTemplateSentAt scans
+      // for the [template: fm_checkin_nudge] [sent_at: ISO] tag that
+      // recordOutboundMessageAction writes.
+      const lastCheckinNudgeAt = lastTemplateSentAt(
+        sessions as ReadonlyArray<{ presenting_complaints?: string }>,
+        "fm_checkin_nudge",
+      );
       return {
         kind: "plan_review_due",
         planSlug: publishedPlan.slug,
         recheckDate,
         daysSinceReview,
+        lastCheckinNudgeAt,
       };
     }
     return { kind: "active", planSlug: publishedPlan.slug, recheckDate };

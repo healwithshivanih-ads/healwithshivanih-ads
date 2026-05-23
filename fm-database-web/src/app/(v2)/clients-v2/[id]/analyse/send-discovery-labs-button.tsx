@@ -16,6 +16,7 @@
 
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 import {
   generateDiscoveryLabRequisitionAction,
   emailLabRequisitionAction,
@@ -28,6 +29,11 @@ interface Props {
   clientId: string;
   clientEmail?: string | null;
   labCount: number;
+  /** ISO of most-recent fm_lab_reminder send (any channel — email or WA).
+   *  Read from disk (sessions tagged [template: fm_lab_reminder]) so the
+   *  button renders persisted "✓ Sent X ago · Resend" state across reloads
+   *  — see feedback-send-buttons-persist-state memory. */
+  lastSentAt?: string | null;
 }
 
 export function SendDiscoveryLabsButton({
@@ -35,6 +41,7 @@ export function SendDiscoveryLabsButton({
   clientId,
   clientEmail,
   labCount,
+  lastSentAt,
 }: Props) {
   const [pending, start] = useTransition();
   const [previewHtml, setPreviewHtml] = useState<string | null>(null);
@@ -59,65 +66,60 @@ export function SendDiscoveryLabsButton({
     });
   };
 
-  const onEmail = () => {
+  // Combined send: email (full sheet) + WhatsApp (templated nudge).
+  // The WA template body says "full list in the email" so they MUST go
+  // together — sending WA alone leaves the client looking for an email
+  // that never arrived. If no email is on file we open the inline strip
+  // first so the coach types one before either send fires.
+  const onSendBoth = () => {
     const to = emailTo.trim();
     if (!to) {
-      toast.error("Add an email address first");
+      setEmailOpen(true);
+      toast.message("Add the client's email — both sends fire from one tap.");
       return;
     }
+    // Persisted-state guard: if labs were already sent (any channel),
+    // confirm before re-firing. Coach rule
+    // feedback-send-buttons-persist-state — every send button must gate
+    // resends with the time of the last send visible in the prompt.
+    if (lastSentAt) {
+      const ago = relativeTimeShort(lastSentAt);
+      const ok = confirm(
+        `Lab list was already sent to this client ${ago}.\n\n` +
+        `Send the email + WhatsApp nudge AGAIN?`
+      );
+      if (!ok) return;
+    }
     start(async () => {
-      const r = await emailLabRequisitionAction({
-        sessionId,
-        clientId,
-        to,
-      });
-      if (!r.ok) {
-        toast.error(r.error);
+      const e = await emailLabRequisitionAction({ sessionId, clientId, to });
+      if (!e.ok) {
+        toast.error(`Email failed — ${e.error}. WhatsApp NOT sent.`);
+        return;
+      }
+      const w = await sendDiscoveryLabsViaWhatsappAction({ sessionId, clientId });
+      if (!w.ok) {
+        toast.error(`Email sent to ${to}, but WhatsApp failed — ${w.error}`);
         return;
       }
       setEmailOpen(false);
-      // If the client.yaml had no email on file when this component
-      // mounted, offer to save the typed address now. Coach rule:
-      // "when an email is sent and no email on file, give the option to
-      // save it" — applies across every client-email send surface.
+      const msg = `✓ Email sent to ${to} · 💬 WhatsApp nudge sent to ${w.sentTo}`;
       if (!initialEmailOnFile) {
-        toast.success(`✉ Lab list emailed to ${to}`, {
+        toast.success(msg, {
           duration: 9000,
           action: {
-            label: "💾 Save to profile",
+            label: "💾 Save email to profile",
             onClick: () => {
               start(async () => {
                 const u = await updateClientFieldsAction(clientId, { email: to });
-                if (u.ok) {
-                  toast.success("Email saved to client profile");
-                } else {
-                  toast.error(u.error ?? "Couldn't save");
-                }
+                if (u.ok) toast.success("Email saved to client profile");
+                else toast.error(u.error ?? "Couldn't save");
               });
             },
           },
         });
       } else {
-        toast.success(`✉ Lab list emailed to ${to}`);
+        toast.success(msg);
       }
-    });
-  };
-
-  const onWhatsApp = () => {
-    // Route through the in-app WhatsApp pipeline (Meta-approved
-    // `fm_lab_reminder` template) — NO native wa.me handoff. The full
-    // sheet ships via email; the WhatsApp message is a templated nudge
-    // with the panel summary.
-    start(async () => {
-      const r = await sendDiscoveryLabsViaWhatsappAction({
-        sessionId,
-        clientId,
-      });
-      if (!r.ok) {
-        toast.error(r.error);
-        return;
-      }
-      toast.success(`💬 WhatsApp sent to ${r.sentTo}`);
     });
   };
 
@@ -166,15 +168,41 @@ export function SendDiscoveryLabsButton({
         👁 Preview
       </button>
       <button
-        onClick={() => setEmailOpen((v) => !v)}
+        onClick={onSendBoth}
         disabled={pending}
-        style={btn}
+        style={{
+          ...btn,
+          background: lastSentAt ? "var(--fm-surface)" : "var(--fm-primary)",
+          color: lastSentAt ? "var(--fm-text-secondary)" : "#fff",
+          border: lastSentAt ? "1px solid var(--fm-border)" : 0,
+        }}
+        title={
+          lastSentAt
+            ? `Last sent ${relativeTimeShort(lastSentAt)} — tap to resend (confirm prompt)`
+            : "Emails the full lab sheet AND sends the fm_lab_reminder WhatsApp nudge in one tap"
+        }
       >
-        📧 Email
+        {pending
+          ? "Sending…"
+          : lastSentAt
+            ? `↻ Resend (sent ${relativeTimeShort(lastSentAt)})`
+            : "📧 Send via Email and a WhatsApp Update"}
       </button>
-      <button onClick={onWhatsApp} disabled={pending} style={btn}>
-        💬 WhatsApp
-      </button>
+      {lastSentAt && !pending && (
+        <span
+          style={{
+            fontSize: 11,
+            color: "#059669",
+            fontWeight: 600,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 4,
+          }}
+          title={`Last labs send recorded ${new Date(lastSentAt).toLocaleString()}`}
+        >
+          ✓ Sent {relativeTimeShort(lastSentAt)}
+        </span>
+      )}
 
       {/* Email-confirm inline strip */}
       {emailOpen && (
@@ -224,7 +252,7 @@ export function SendDiscoveryLabsButton({
             </span>
           )}
           <button
-            onClick={onEmail}
+            onClick={onSendBoth}
             disabled={pending || !emailTo.trim()}
             style={{
               ...btn,
@@ -233,7 +261,7 @@ export function SendDiscoveryLabsButton({
               border: 0,
             }}
           >
-            {pending ? "Sending…" : "Send"}
+            {pending ? "Sending…" : "📧 Email + 💬 WhatsApp"}
           </button>
           <button onClick={() => setEmailOpen(false)} disabled={pending} style={btn}>
             Cancel

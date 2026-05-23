@@ -161,6 +161,19 @@ export async function firePlanPublishFollowups(input: {
     );
     if (res.ok) {
       letterSent = true;
+      // Persist a thread record so the coach can see proof the plan-link
+      // WhatsApp actually went out (durable rule
+      // feedback-send-buttons-persist-state). Without this the publish
+      // path was silent — no entry in the WA panel, no "last sent" timestamp
+      // anywhere on the client page.
+      try {
+        const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+        await recordOutboundMessageAction({
+          clientId: input.clientId,
+          templateName: "fm_plan_letter_link_v1",
+          renderedBody: `Hi ${fname}, your plan is ready: ${letterUrl}\n\n— Shivani`,
+        });
+      } catch { /* best-effort */ }
     } else {
       errors.push(`letter_send: ${res.error || "send_failed"}`);
     }
@@ -243,6 +256,17 @@ export async function tickPendingSends(): Promise<{
       );
       if (res.ok) {
         fired++;
+        // Persist a thread record (durable rule:
+        // feedback-send-buttons-persist-state). Cron-fired messages were
+        // invisible in WA threads + had no per-client timestamp anywhere.
+        try {
+          const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+          await recordOutboundMessageAction({
+            clientId: r.client_id,
+            templateName: r.template_name,
+            renderedBody: `[${r.kind}] params=[${r.template_params.join(" | ")}]`,
+          });
+        } catch { /* best-effort */ }
       } else {
         failed++;
         errors.push({ id: r.id, kind: r.kind, error: res.error || "send_failed" });

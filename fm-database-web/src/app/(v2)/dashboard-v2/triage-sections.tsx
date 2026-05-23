@@ -27,6 +27,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { FmPanel, FmChip } from "@/components/fm";
 import { sendCheckinNudgeAction } from "@/app/api/whatsapp/actions";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 export type SignalKind =
   | "follow_up_due"
@@ -67,6 +68,12 @@ export interface TriageRow {
     /** For plan_review_due — days since the last review touch (plan edit,
      *  check-in, or rework). Drives the 3-week cadence nudge. */
     daysSinceReview?: number;
+    /** For plan_review_due — ISO of most-recent fm_checkin_nudge send to
+     *  this client (read from sessions tagged [template: fm_checkin_nudge]).
+     *  When set, the "Send check-in" button reads "↻ Resend (sent X ago)"
+     *  and confirms before re-firing. Durable rule
+     *  feedback-send-buttons-persist-state. */
+    lastCheckinNudgeAt?: string | null;
   };
 }
 
@@ -564,7 +571,11 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
             }}
           >
             {row.signal.kind === "plan_review_due" && (
-              <SendCheckinNudgeButton clientId={row.client_id} clientName={row.display_name} />
+              <SendCheckinNudgeButton
+                clientId={row.client_id}
+                clientName={row.display_name}
+                lastSentAt={row.signal.lastCheckinNudgeAt ?? null}
+              />
             )}
             <Link
               href={meta.ctaHref(row)}
@@ -611,11 +622,27 @@ function TriageCard({ row, meta }: { row: TriageRow; meta: SectionMeta }) {
 function SendCheckinNudgeButton({
   clientId,
   clientName,
+  lastSentAt,
 }: {
   clientId: string;
   clientName?: string;
+  /** ISO of most-recent fm_checkin_nudge send. When set, button label
+   *  becomes "↻ Resend (sent X ago)" and asks for confirmation if the
+   *  last send was inside the 7-day check-in window. */
+  lastSentAt?: string | null;
 }) {
   const [pending, start] = useTransition();
+  const alreadySent = Boolean(lastSentAt);
+  const ago = lastSentAt ? relativeTimeShort(lastSentAt) : "";
+  const fire = () =>
+    start(async () => {
+      const r = await sendCheckinNudgeAction(clientId);
+      if (r.ok) {
+        toast.success(`Check-in nudge sent to ${clientName ?? clientId}`);
+      } else {
+        toast.error(r.error ?? "Failed to send check-in message");
+      }
+    });
   return (
     <button
       type="button"
@@ -623,28 +650,46 @@ function SendCheckinNudgeButton({
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        start(async () => {
-          const r = await sendCheckinNudgeAction(clientId);
-          if (r.ok) {
-            toast.success(`Check-in nudge sent to ${clientName ?? clientId}`);
-          } else {
-            toast.error(r.error ?? "Failed to send check-in message");
-          }
-        });
+        // Resend gate: nudge templates spam easily — coach taps quickly
+        // through 5 rows + a row that already got nudged 2 days ago
+        // shouldn't silently re-fire. Durable rule
+        // feedback-send-buttons-persist-state.
+        if (alreadySent) {
+          if (
+            !confirm(
+              `Check-in nudge was already sent to ${clientName ?? clientId} ${ago}. Send another?`,
+            )
+          )
+            return;
+        }
+        fire();
       }}
       style={{
         fontSize: 12,
         fontWeight: 700,
         padding: "5px 12px",
-        background: pending ? "var(--fm-text-tertiary)" : "#1a7fbb",
-        color: "#fff",
-        border: 0,
+        background: pending
+          ? "var(--fm-text-tertiary)"
+          : alreadySent
+            ? "transparent"
+            : "#1a7fbb",
+        color: alreadySent && !pending ? "var(--fm-text-secondary)" : "#fff",
+        border: alreadySent && !pending ? "1px solid var(--fm-border)" : 0,
         borderRadius: "var(--fm-radius-sm)",
         cursor: pending ? "wait" : "pointer",
         fontFamily: "inherit",
       }}
+      title={
+        alreadySent
+          ? `Last check-in nudge sent ${ago}`
+          : "Sends fm_checkin_nudge WhatsApp template"
+      }
     >
-      {pending ? "Sending…" : "💬 Send check-in"}
+      {pending
+        ? "Sending…"
+        : alreadySent
+          ? `✓ Sent ${ago} · ↻ Resend`
+          : "💬 Send check-in"}
     </button>
   );
 }

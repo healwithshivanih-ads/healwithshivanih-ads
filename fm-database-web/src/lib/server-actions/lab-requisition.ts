@@ -119,12 +119,29 @@ export async function emailLabRequisitionAction(input: {
     </div>
   `.trim();
 
-  return sendClientEmailAction({
+  const sent = await sendClientEmailAction({
     to: input.to,
     subject,
     htmlBody,
     textBody: `${intro}\n\n${req.markdown}`,
   });
+
+  // Persist a thread record so the labs-send button can render
+  // "✓ Sent X ago · Resend" on next page load (durable rule
+  // feedback-send-buttons-persist-state). Logged under the same template
+  // name as the WA path so a single scan picks up either channel as
+  // "labs sent". Best-effort — never block on audit logging.
+  if (sent.ok) {
+    try {
+      const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+      await recordOutboundMessageAction({
+        clientId: input.clientId,
+        templateName: "fm_lab_reminder",
+        renderedBody: `📧 Emailed lab requisition to ${input.to}\nSubject: ${subject}`,
+      });
+    } catch { /* never block on audit */ }
+  }
+  return sent;
 }
 
 /** Build the `wa.me/<phone>?text=` deep-link payload — encoded. */
@@ -204,6 +221,22 @@ export async function sendDiscoveryLabsViaWhatsappAction(input: {
 
   const res = await sendWhatsAppAction(phoneRaw, "fm_lab_reminder", [firstName, labsLabel]);
   if (!res.ok) return { ok: false, error: res.error ?? "WhatsApp send failed" };
+
+  // Persist a thread record (durable rule feedback-send-buttons-persist-state).
+  // Renders both in the WhatsApp chat panel AND lets the labs button
+  // show "✓ Sent X ago · Resend" on next page load. Best-effort.
+  try {
+    const { recordOutboundMessageAction } = await import("@/app/api/whatsapp/actions");
+    const body =
+      `Hi ${firstName}, a gentle reminder to get your labs done before our next session. ` +
+      `Here are the tests we discussed: ${labsLabel}. ` +
+      `Please share the report at least 2 days before our appointment. 🙏\n\n— Shivani Hari\nYour Functional Health Coach`;
+    await recordOutboundMessageAction({
+      clientId: input.clientId,
+      templateName: "fm_lab_reminder",
+      renderedBody: body,
+    });
+  } catch { /* never block on audit */ }
   return { ok: true, sentTo: phoneRaw };
 }
 

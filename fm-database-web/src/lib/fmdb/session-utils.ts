@@ -45,3 +45,64 @@ export function parseRequestedLabs(coach_notes?: string): string[] {
   if (!m) return [];
   return m[1].split(",").map((s) => s.trim()).filter(Boolean);
 }
+
+/**
+ * Scan an array of session records for the most-recent send of a given
+ * WhatsApp/email template, returning the ISO timestamp or null.
+ *
+ * Source of truth: `recordOutboundMessageAction` appends a line tagged
+ *   [source: whatsapp_outbound] [template: <name>] [sent_at: <ISO>]
+ * into a quick_note session's `presenting_complaints` (often multiple
+ * lines within the same day's session). This helper extracts the
+ * latest `sent_at` across all sessions for a given template name.
+ *
+ * Used by every coach-side "send X to client" button to render a
+ * persisted "✓ Sent X ago · Resend" idle state, instead of looking
+ * fresh after every page reload. See the durable-rule memory
+ * `feedback-send-buttons-persist-state`.
+ *
+ * Pass `Sessions[]` from `loadClientSessions(id)` — the raw record
+ * carries `presenting_complaints` directly.
+ */
+export function lastTemplateSentAt(
+  sessions: ReadonlyArray<{ presenting_complaints?: string | null }>,
+  templateName: string,
+): string | null {
+  const re = new RegExp(
+    `\\[template:\\s*${templateName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\][^\\[]*\\[sent_at:\\s*([^\\]]+)\\]`,
+    "g",
+  );
+  const stamps: string[] = [];
+  for (const s of sessions) {
+    const pc = s.presenting_complaints;
+    if (typeof pc !== "string") continue;
+    let m: RegExpExecArray | null;
+    re.lastIndex = 0;
+    while ((m = re.exec(pc)) !== null) stamps.push(m[1].trim());
+  }
+  if (stamps.length === 0) return null;
+  stamps.sort();
+  return stamps[stamps.length - 1];
+}
+
+/**
+ * Human-readable "3 hrs ago" / "2 days ago" for a UTC ISO timestamp.
+ * Returns "" for null / unparseable. Used in idle "✓ Sent X ago" badges.
+ */
+export function relativeTimeShort(iso: string | null | undefined): string {
+  if (!iso) return "";
+  try {
+    const diffMs = Date.now() - new Date(iso).getTime();
+    if (diffMs < 0) return "just now";
+    const mins = Math.round(diffMs / 60000);
+    if (mins < 1) return "just now";
+    if (mins < 60) return `${mins} min ago`;
+    const hrs = Math.round(mins / 60);
+    if (hrs < 24) return `${hrs} hr${hrs === 1 ? "" : "s"} ago`;
+    const days = Math.round(hrs / 24);
+    if (days < 14) return `${days} day${days === 1 ? "" : "s"} ago`;
+    return new Date(iso).toLocaleDateString();
+  } catch {
+    return "";
+  }
+}

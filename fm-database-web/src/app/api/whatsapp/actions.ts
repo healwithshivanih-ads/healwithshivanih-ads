@@ -436,6 +436,19 @@ export async function broadcastAction(
     });
     if (result.ok) {
       sent++;
+      // Persist a thread record per success so each client's WhatsApp
+      // panel + per-client "✓ Sent X ago" badges reflect the broadcast.
+      // Without this, bulk broadcasts are invisible in client threads
+      // and there's no per-client "did the broadcast actually reach
+      // them" signal — coach rule feedback-send-buttons-persist-state.
+      try {
+        const renderedBody = `[broadcast: ${campaignName}] params=[${templateParams.join(" | ")}]`;
+        await recordOutboundMessageAction({
+          clientId,
+          templateName: campaignName,
+          renderedBody,
+        });
+      } catch { /* never block on audit */ }
     } else {
       errors.push(`${clientId}: ${result.error}`);
       failed++;

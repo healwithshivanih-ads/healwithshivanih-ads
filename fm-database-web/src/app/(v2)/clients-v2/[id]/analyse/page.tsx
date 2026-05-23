@@ -24,6 +24,7 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import {
   parseSessionType,
+  lastTemplateSentAt,
   type SessionType,
 } from "@/lib/fmdb/session-utils";
 import { loadClientJourney } from "@/lib/fmdb/client-journey";
@@ -441,6 +442,10 @@ export default async function AnalysePage({
                   clientId={id}
                   clientEmail={client.email ?? null}
                   labCount={discoveryRequestedLabs.length}
+                  lastSentAt={lastTemplateSentAt(
+                    sessions as ReadonlyArray<{ presenting_complaints?: string }>,
+                    "fm_lab_reminder",
+                  )}
                 />
               </div>
             )}

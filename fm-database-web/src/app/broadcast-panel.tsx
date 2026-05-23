@@ -137,6 +137,23 @@ export function BroadcastPanel({ clients, followUpDueIds, recheckDueIds, activeI
       setError(`Fill in ${missing.map((m) => `{{${m}}}`).join(", ")} before sending`);
       return;
     }
+    // Hard confirm gate (durable rule: feedback-send-buttons-persist-state).
+    // Bulk sends have the largest misclick blast radius in the whole app —
+    // one tap fans out to N clients with no per-row "are you sure".
+    // Spell out the cohort size + template + the literal {{1}} / {{2}}
+    // values that will be substituted, so the coach catches typos in the
+    // params or a stale "all active" recipient set BEFORE Meta sends N
+    // copies. Confirms once; no second prompt on per-client failures.
+    const n = selectedIds.size;
+    const paramSummary = sendParams
+      .map((v, i) => `  {{${i + 1}}} = ${v || "(empty)"}`)
+      .join("\n");
+    const ok = confirm(
+      `Send "${campaignName.trim()}" to ${n} client${n === 1 ? "" : "s"}?\n\n` +
+      `${paramSummary}\n\n` +
+      `This fires the template to every selected client and cannot be undone.`,
+    );
+    if (!ok) return;
     setError(null);
     setSending(true);
     setResult(null);

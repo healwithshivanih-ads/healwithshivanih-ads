@@ -25,6 +25,7 @@
 
 import { useState } from "react";
 import { FmPanel, FmChip } from "@/components/fm";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Props {
   clientId: string;
@@ -35,6 +36,13 @@ interface Props {
   submittedAt?: string | null;
   lastSubmittedAt?: string | null;        // Path A — updates on each re-submit
   finalisedAt?: string | null;            // coach-locked, no more edits possible
+  /** ISO timestamp of the most recent fm_intake_invite send to this client
+   *  (derived from sessions tagged [template: fm_intake_invite]). When set,
+   *  the "📨 Send via WhatsApp" button changes to "↻ Resend intake" and
+   *  asks for confirmation — guards against the common misclick of resending
+   *  intake when the coach actually meant to send a different template
+   *  (e.g. lab list after a discovery call). Bug fix 2026-05-23. */
+  lastIntakeSentAt?: string | null;
 }
 
 function buildPublicUrl(path: string): string {
@@ -77,6 +85,7 @@ export function SendIntakeFormButton({
   submittedAt,
   lastSubmittedAt,
   finalisedAt,
+  lastIntakeSentAt,
 }: Props) {
   const [token, setToken] = useState<string | null>(existingToken ?? null);
   const [expiresAt, setExpiresAt] = useState<string | null>(existingExpiresAt ?? null);
@@ -155,6 +164,20 @@ export function SendIntakeFormButton({
   }
 
   async function handleSendViaApi() {
+    // Misclick guard 2026-05-23: if intake was already sent to this client,
+    // require an explicit confirm before resending. The most common slip
+    // is the coach pressing "Send via WhatsApp" here when she meant to
+    // send the discovery lab list (lives on a different surface) — and
+    // the client gets the intake form for a second / third time.
+    if (lastIntakeSentAt) {
+      const sentAgo = relativeTimeShort(lastIntakeSentAt);
+      const ok = confirm(
+        `The intake form was already sent to this client ${sentAgo}.\n\n` +
+        `Send it AGAIN? (If you meant to send the lab list after a discovery, ` +
+        `cancel and use the “🔬 Send labs” panel above this one instead.)`
+      );
+      if (!ok) return;
+    }
     setApiSending(true);
     setApiSentOk(false);
     setError(null);
@@ -404,7 +427,11 @@ export function SendIntakeFormButton({
                       fontSize: 13,
                     }}
                   >
-                    {apiSending ? "Sending…" : "📨 Send via WhatsApp"}
+                    {apiSending
+                      ? "Sending…"
+                      : lastIntakeSentAt
+                        ? `↻ Resend intake (last sent ${relativeTimeShort(lastIntakeSentAt)})`
+                        : "📨 Send via WhatsApp"}
                   </button>
                   {apiSentOk && (
                     <span style={{ fontSize: 12, color: "#059669", fontWeight: 600 }}>

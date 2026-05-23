@@ -31,6 +31,7 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { SendIntakeFormButton } from "./send-intake-form-button";
+import { OverviewSendLabsCard } from "./overview-send-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
 import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
@@ -44,7 +45,8 @@ import { ClientMemoryPanel } from "./client-memory-panel";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
-import { parseSessionType } from "@/lib/fmdb/session-utils";
+import { parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
+import { formatLongDate } from "@/lib/fmdb/format-date";
 import {
   FmAppShell,
   FmClientHeader,
@@ -543,6 +545,53 @@ export default async function ClientV2Page({
   );
   const hasDiscoverySession = _sessionTypes.some((t) => t === "discovery");
   const hasIntakeSession = _sessionTypes.some((t) => t === "intake");
+
+  // Persisted last-sent timestamps per template — every "send X" button
+  // on this page reads these to render "✓ Sent X ago · Resend" idle state
+  // instead of looking fresh after every page reload. Durable coach rule
+  // 2026-05-23 (see feedback-send-buttons-persist-state memory). Source of
+  // truth: `recordOutboundMessageAction` tags
+  //   [template: <name>] [sent_at: <ISO>]
+  // into a quick_note session for each successful WA/email send.
+  const sessRecords = sessions as ReadonlyArray<{ presenting_complaints?: string }>;
+  const lastIntakeSentAt = lastTemplateSentAt(sessRecords, "fm_intake_invite");
+  const lastLabsSentAt = lastTemplateSentAt(sessRecords, "fm_lab_reminder");
+
+  // Most-recent discovery session that has a parsed requested_labs list —
+  // feeds the OverviewSendLabsCard so the coach can send labs straight from
+  // Overview without bouncing to the Analyse tab. Older sessions embed labs
+  // inside coach_notes as "[Requested labs: A, B, C]"; we parse that shape
+  // (the only shape on disk right now) and the future top-level field too.
+  const latestDiscoveryWithLabs: {
+    sessionId: string;
+    labs: string[];
+    date: string | null;
+  } | null = (() => {
+    const sorted = [...sessions].sort((a, b) =>
+      String(b.date ?? "").localeCompare(String(a.date ?? "")),
+    );
+    for (const s of sorted) {
+      const sr = s as Record<string, unknown>;
+      const t = parseSessionType(sr.presenting_complaints as string | undefined);
+      if (t !== "discovery") continue;
+      const top = (sr as { requested_labs?: unknown }).requested_labs;
+      let labs: string[] = [];
+      if (Array.isArray(top) && top.length > 0) {
+        labs = top.map((x) => String(x)).filter(Boolean);
+      } else {
+        const notes = String((sr as { coach_notes?: string }).coach_notes ?? "");
+        const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
+        if (m) labs = m[1].split(",").map((x) => x.trim()).filter(Boolean);
+      }
+      if (labs.length === 0) continue;
+      return {
+        sessionId: String(sr.session_id ?? ""),
+        labs,
+        date: (sr.date as string | undefined) ?? null,
+      };
+    }
+    return null;
+  })();
   const engagementRaw = (client as unknown as { engagement_status?: string }).engagement_status;
   const engagement =
     engagementRaw === "signed_up" || engagementRaw === "declined" || engagementRaw === "pending"
@@ -1023,6 +1072,27 @@ export default async function ClientV2Page({
               strip; the active child keeps its own native card chrome.
               Tab choice persists per-group in sessionStorage. ── */}
 
+          {/* 🔬 Discovery labs — appears only when the latest discovery
+              session captured a requested-labs list and that list hasn't
+              been mooted by an intake/plan. Lives ABOVE Intake so the
+              coach reaches for the right "send" button next to discovery,
+              not the prominent Intake one. Misclick fix 2026-05-23 (the
+              "I meant to send labs, but sent intake form again" bug). */}
+          {latestDiscoveryWithLabs && (
+            <OverviewSendLabsCard
+              clientId={client.client_id}
+              sessionId={latestDiscoveryWithLabs.sessionId}
+              labCount={latestDiscoveryWithLabs.labs.length}
+              clientEmail={(client as unknown as { email?: string | null }).email ?? null}
+              discoveryDateLabel={
+                latestDiscoveryWithLabs.date
+                  ? formatLongDate(latestDiscoveryWithLabs.date)
+                  : null
+              }
+              lastSentAt={lastLabsSentAt}
+            />
+          )}
+
           {/* 📋 Intake — progress / insights / send & unlock / coach exam */}
           <FmGroupedPanel
             id="overview.intake"
@@ -1131,6 +1201,7 @@ export default async function ClientV2Page({
                                   (client as unknown as { intake_finalised_at?: string })
                                     .intake_finalised_at
                                 }
+                                lastIntakeSentAt={lastIntakeSentAt}
                               />
                               <UnlockFullIntakeButton
                                 clientId={client.client_id}

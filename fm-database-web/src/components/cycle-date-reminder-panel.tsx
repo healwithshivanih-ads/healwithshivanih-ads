@@ -15,6 +15,7 @@
 
 import { useEffect, useState } from "react";
 import { FmPanel, FmChip } from "@/components/fm";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Flag {
   client_id: string;
@@ -131,7 +132,16 @@ export function CycleDateReminderPanel({ whatsappConfigured }: Props) {
             }}
           >
             {flags.map((f) => {
-              const sent = sentIds.has(f.client_id);
+              // Persisted-sent state: trust the YAML-backed
+              // last_cycle_ask_sent timestamp on the flag record so a
+              // coach reloading the dashboard hours/days later still
+              // sees which asks have already gone out. The ephemeral
+              // sentIds Set keeps the freshly-clicked rows in-sync
+              // until the next data refresh — without this OR the YAML
+              // field, the chip flashed "✓ Check sent" once then
+              // reverted to a button at the next render. Durable rule:
+              // feedback-send-buttons-persist-state.
+              const sent = sentIds.has(f.client_id) || Boolean(f.last_cycle_ask_sent);
               const sendErr = sendErrors[f.client_id];
               return (
                 <li
@@ -174,7 +184,34 @@ export function CycleDateReminderPanel({ whatsappConfigured }: Props) {
                     </div>
                     <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                       {sent ? (
-                        <FmChip tone="success">✓ Check sent</FmChip>
+                        <>
+                          <FmChip tone="success">
+                            ✓ Sent {f.last_cycle_ask_sent ? relativeTimeShort(f.last_cycle_ask_sent) : "just now"}
+                          </FmChip>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const ago = f.last_cycle_ask_sent
+                                ? relativeTimeShort(f.last_cycle_ask_sent)
+                                : "just now";
+                              if (confirm(`Cycle-date check already sent ${ago}. Send again?`)) {
+                                void handleSend(f.client_id);
+                              }
+                            }}
+                            disabled={!whatsappConfigured || sendingId === f.client_id || !f.mobile_number}
+                            style={{
+                              fontSize: 11,
+                              padding: "3px 7px",
+                              background: "transparent",
+                              border: "1px solid var(--fm-border)",
+                              borderRadius: 6,
+                              cursor: "pointer",
+                              color: "var(--fm-text-secondary)",
+                            }}
+                          >
+                            ↻ Resend
+                          </button>
+                        </>
                       ) : (
                         <button
                           type="button"

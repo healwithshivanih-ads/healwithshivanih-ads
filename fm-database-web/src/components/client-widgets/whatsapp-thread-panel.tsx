@@ -28,6 +28,7 @@ import {
   recordOutboundMessageAction,
   type ChatThreadMessage,
 } from "@/app/api/whatsapp/actions";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Props {
   clientId: string;
@@ -112,6 +113,12 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
   const [replyText, setReplyText] = useState("");
   const [replyStatus, setReplyStatus] = useState<{ ok?: boolean; error?: string } | null>(null);
   const [sending, setSending] = useState(false);
+  // Loader error state — surfaces stale-Server-Action failures + network
+  // errors instead of swallowing them. Without this the panel rendered
+  // the empty state on every load failure → coach assumed inbound never
+  // arrived. See refresh() comment block.
+  const [loadError, setLoadError] = useState<string | null>(null);
+  const [lastLoadedAt, setLastLoadedAt] = useState<string | null>(null);
 
   // 24-hour conversation window — derived from the most recent inbound
   // message. Meta allows free-text only within 24h of client's last
@@ -140,6 +147,24 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
     try {
       const res = await loadWhatsAppThreadAction(clientId, daysBack);
       setMessages(res);
+      setLoadError(null);
+      setLastLoadedAt(new Date().toISOString());
+    } catch (e) {
+      // Critical: every fm-coach rebuild rotates Server Action IDs, so a
+      // browser tab that's been open across a redeploy fails its next
+      // poll with "Failed to find Server Action ...". Used to swallow
+      // silently → panel rendered the empty state and the coach thought
+      // the client had never replied (cl-008 Sudarshan, 2026-05-23 —
+      // 10 inbound on disk, all invisible because of this swallow).
+      // Now we surface the error explicitly and keep whatever messages
+      // we already had loaded so the thread doesn't blank out.
+      const msg = e instanceof Error ? e.message : String(e);
+      const isStale = /Server Action|older or newer deployment/i.test(msg);
+      setLoadError(
+        isStale
+          ? "This tab is from an older build. Hard-refresh the page (⌘⇧R) to load the latest messages."
+          : `Couldn't load thread: ${msg.slice(0, 200)}`,
+      );
     } finally {
       setLoading(false);
     }
@@ -219,18 +244,55 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
 
   if (messages.length === 0) {
     return (
-      <div
-        style={{
-          fontSize: 11,
-          color: "var(--fm-text-tertiary)",
-          padding: "12px 14px",
-          background: "var(--fm-bg-cool)",
-          borderRadius: "var(--fm-radius-sm)",
-        }}
-      >
-        No WhatsApp messages with {firstName} yet. Outbound sends from the
-        Send-message panel above + inbound replies from the client will
-        appear here as bubbles.
+      <div style={{ display: "grid", gap: 8 }}>
+        {loadError && (
+          <div
+            style={{
+              fontSize: 12,
+              color: "#7c2d12",
+              padding: "10px 12px",
+              background: "rgba(251, 146, 60, 0.10)",
+              border: "1px solid rgba(251, 146, 60, 0.40)",
+              borderRadius: "var(--fm-radius-sm)",
+              display: "flex",
+              gap: 8,
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+            }}
+          >
+            <span><strong>⚠ Thread load failed.</strong> {loadError}</span>
+            <button
+              type="button"
+              onClick={() => void refresh()}
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                padding: "4px 10px",
+                background: "#fff",
+                border: "1px solid #7c2d12",
+                borderRadius: 6,
+                color: "#7c2d12",
+                cursor: "pointer",
+              }}
+            >
+              ↻ Try again
+            </button>
+          </div>
+        )}
+        <div
+          style={{
+            fontSize: 11,
+            color: "var(--fm-text-tertiary)",
+            padding: "12px 14px",
+            background: "var(--fm-bg-cool)",
+            borderRadius: "var(--fm-radius-sm)",
+          }}
+        >
+          {loadError
+            ? `Showing empty state because the loader didn't return. Inbound messages may exist on disk — fix the load first.`
+            : `No WhatsApp messages with ${firstName} yet. Outbound sends from the Send-message panel above + inbound replies from the client will appear here as bubbles.`}
+        </div>
       </div>
     );
   }
@@ -247,6 +309,49 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
         overflowY: "auto",
       }}
     >
+      {loadError && (
+        // Sticky stale-load banner shown when refresh failed but we still
+        // have prior messages cached. Without this the thread looked
+        // current; coach didn't know the latest inbound never made it in.
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 2,
+            fontSize: 11,
+            color: "#7c2d12",
+            padding: "6px 10px",
+            background: "rgba(251, 146, 60, 0.18)",
+            border: "1px solid rgba(251, 146, 60, 0.40)",
+            borderRadius: "var(--fm-radius-sm)",
+            display: "flex",
+            gap: 8,
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+          }}
+        >
+          <span>
+            ⚠ Showing cached thread — last refresh failed. {loadError}
+          </span>
+          <button
+            type="button"
+            onClick={() => void refresh()}
+            style={{
+              fontSize: 10,
+              fontWeight: 700,
+              padding: "3px 8px",
+              background: "#fff",
+              border: "1px solid #7c2d12",
+              borderRadius: 5,
+              color: "#7c2d12",
+              cursor: "pointer",
+            }}
+          >
+            ↻ Retry
+          </button>
+        </div>
+      )}
       {grouped.map((g) => (
         <div key={g.day}>
           {/* Day separator */}
@@ -513,6 +618,33 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
         }}
       >
         ↻ Auto-refresh every 30s
+        {lastLoadedAt && (
+          <>
+            {" · "}
+            <span title={new Date(lastLoadedAt).toLocaleString()}>
+              last refresh {relativeTimeShort(lastLoadedAt)}
+            </span>
+          </>
+        )}
+        {" · "}
+        <span>{messages.length} message{messages.length === 1 ? "" : "s"} on disk</span>
+        {" · "}
+        <button
+          type="button"
+          onClick={() => void refresh()}
+          disabled={loading}
+          style={{
+            background: "transparent",
+            border: 0,
+            color: "var(--fm-primary)",
+            fontSize: 10,
+            cursor: loading ? "wait" : "pointer",
+            padding: 0,
+            textDecoration: "underline",
+          }}
+        >
+          refresh now
+        </button>
       </div>
     </div>
   );
