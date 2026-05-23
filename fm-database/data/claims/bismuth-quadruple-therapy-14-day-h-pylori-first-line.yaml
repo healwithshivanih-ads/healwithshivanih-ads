@@ -1,0 +1,36 @@
+slug: bismuth-quadruple-therapy-14-day-h-pylori-first-line
+statement: Optimised Bismuth Quadruple Therapy (bismuth + nitroimidazole / metronidazole
+  1.5-2 g daily + tetracycline 500 mg QID + PPI) for 14 days is the strongly-recommended
+  first-line conventional regimen for H. pylori in the era of clarithromycin resistance
+  (now 32% globally). It is also the only regimen suitable for penicillin-allergic
+  patients.
+evidence_tier: strong
+rationale: 2024 ACG / Maastricht consensus guidelines support bismuth quadruple as
+  first-line where clarithromycin resistance exceeds 15%. Clarithromycin triple therapy
+  is no longer recommended empirically.
+coaching_translation: If your doctor is offering clarithromycin triple therapy, ask
+  about bismuth quadruple instead — it's now first-line because the older regimen
+  fails about a third of the time due to antibiotic resistance.
+caveats:
+- Clinician-prescribed — coaching scope is education + adjunctive natural support.
+- Metronidazole resistance is also high (42%) but bismuth + tetracycline + PPI compensate.
+- 14 days, not 7 — shorter courses underdose.
+- Side effects — dark stools, metallic taste, GI upset — coach for adherence.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements:
+- bismuth-subcitrate
+out_of_scope_notes: Prescription regimen — clinician-only.
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Conventional Eradication — Bismuth Quadruple Therapy
+  quote: Optimized Bismuth Quadruple Therapy is strongly recommended — Bismuth salt
+    + Nitroimidazole (Metronidazole 1.5-2g daily) + Tetracycline (500mg QID) + PPI
+    for 14 days. This is the only regimen suitable for patients with penicillin allergies.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

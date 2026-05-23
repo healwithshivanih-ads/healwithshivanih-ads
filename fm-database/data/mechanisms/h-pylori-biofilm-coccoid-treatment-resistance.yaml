@@ -1,0 +1,45 @@
+slug: h-pylori-biofilm-coccoid-treatment-resistance
+display_name: H. pylori Biofilm + Coccoid Form Treatment Resistance
+aliases:
+- h-pylori-biofilm
+- coccoid-h-pylori
+- h-pylori-dormant-form
+- antibiotic-resistance-biofilm
+category: immune
+summary: Two H. pylori survival strategies drive antibiotic treatment failure. Biofilm
+  formation — aggregated layers of bacteria protected by an extracellular polymeric
+  matrix — physically blocks antibiotic penetration and shields the bacteria from
+  immune cells. The coccoid (dormant) form converts the bacterium into a metabolically
+  inactive spherical state that survives harsh gastric conditions and standard eradication
+  regimens, then reverts to active spiral form when conditions improve. Together these
+  explain the rising treatment failure rates and the rationale for adjunctive natural
+  agents (mastic gum, sulforaphane, lactoferrin) that disrupt biofilm.
+upstream_drivers:
+- prior-antibiotic-exposure
+- subtherapeutic-antibiotic-dosing
+- low-gastric-acid-output
+- chronic-immune-suppression
+downstream_effects:
+- eradication-failure
+- recurrent-h-pylori-infection
+- antibiotic-resistance
+- chronic-gastritis
+related_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-caga-vaca-virulence
+- gut-dysbiosis
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+evidence_tier: strong
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Pathogenesis — Biofilm + Immune Evasion section
+  quote: H. pylori forms biofilms — aggregated layers protected by an extracellular
+    matrix — that hinder the action of antibiotics and immune cells, contributing
+    significantly to treatment failure. The bacteria can convert into an inactive
+    coccoid form that evades the immune system and survives harsh conditions.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

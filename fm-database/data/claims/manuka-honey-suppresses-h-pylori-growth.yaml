@@ -1,0 +1,35 @@
+slug: manuka-honey-suppresses-h-pylori-growth
+statement: Manuka honey (Leptospermum scoparium) with high methylglyoxal (MGO ≥ 250)
+  or UMF (≥ 10) rating suppresses H. pylori growth in gastric epithelial cells via
+  methylglyoxal-mediated antibacterial activity, providing an adjunctive natural agent
+  alongside or following conventional eradication therapy.
+evidence_tier: plausible_emerging
+rationale: Multiple in-vitro and small clinical studies demonstrate H. pylori suppression
+  by Manuka honey. Mechanism via methylglyoxal (the active marker behind MGO rating)
+  is well-characterised. Most clinical evidence is adjunctive rather than monotherapy.
+coaching_translation: Manuka honey at MGO 250+ or UMF 10+ on an empty stomach (1 tsp
+  20 min before meals) is one of the better-tolerated natural anti-H. pylori options.
+  Pair with mastic gum and probiotics; not strong enough as solo therapy.
+caveats:
+- MGO/UMF rating matters — supermarket honey doesn't have the same effect.
+- Cost is significant — therapeutic doses run ~$50-100/month.
+- Still a sugar source; caution in diabetes or fructose malabsorption.
+- Never give to infants under 12 months.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-biofilm-coccoid-treatment-resistance
+linked_to_supplements:
+- manuka-honey
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication — Manuka Honey
+  quote: Manuka honey is highlighted as one of the most effective types, as it has
+    been shown to suppress the growth of H. pylori in gastric cells.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

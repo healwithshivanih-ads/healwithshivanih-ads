@@ -1,0 +1,52 @@
+slug: manuka-honey
+display_name: Manuka Honey (Leptospermum scoparium)
+aliases:
+- manuka
+- mgo-honey
+- leptospermum-honey
+- methylglyoxal-honey
+category: other
+forms_available:
+- liquid
+- whole_food
+timing_options:
+- morning
+- on_empty_stomach
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- atopic-dermatitis
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-biofilm-coccoid-treatment-resistance
+linked_to_claims:
+- manuka-honey-suppresses-h-pylori-growth
+notes_for_coach: Look for MGO (methylglyoxal) rating ≥ 250 or UMF rating ≥ 10 for
+  therapeutic anti-H. pylori effect. Typical protocol — 1 tsp on empty stomach 20-30
+  min before meals, BID-TID for 8 weeks. Pair with mastic gum / sulforaphane / probiotics
+  for compounded effect. Pause if blood sugar is poorly controlled (still raises insulin).
+  Not for infants under 12 months (botulism spore risk).
+notes_for_client: A specific honey from New Zealand with research-backed antibacterial
+  activity against H. pylori and other gut pathogens. Take 1 teaspoon 20 minutes before
+  meals on an empty stomach. Look for MGO 250+ or UMF 10+ rating.
+contraindications:
+  conditions:
+  - diabetes-poorly-controlled
+  - severe-fructose-malabsorption
+  medications: []
+  life_stages:
+  - infancy-under-12-months
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication Agents — Manuka Honey
+  quote: Manuka honey is highlighted as one of the most effective types, as it has
+    been shown to suppress the growth of H. pylori in gastric cells. High-quality
+    Manuka honey is recognized for its potent antibacterial activity.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

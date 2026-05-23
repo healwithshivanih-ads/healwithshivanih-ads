@@ -1,0 +1,45 @@
+slug: ayurvedic-vidanga-kamadudha-60-day-h-pylori-eradication
+statement: An Ayurvedic protocol of Vidanga Churna (Embelia ribes, 2g powder with
+  honey BID after meals) plus Kamadudha Rasa (250mg tablet BID after meals) for 60
+  days achieved 100% H. pylori eradication (confirmed by negative Rapid Urease Test)
+  in a published JETIR case report — providing a low-cost India-accessible adjunctive
+  or alternative pathway, especially relevant for clients who can't tolerate standard
+  antibiotics or have prior eradication failure.
+evidence_tier: fm_specific_thin
+rationale: Single case report level evidence — n=1, not a controlled trial. Mechanism
+  plausibility — Vidanga is a documented krimihara (antimicrobial) Ayurvedic herb;
+  Kamadudha Rasa provides mucosal protection and acid buffering. Worth knowing about
+  for Indian context but should not replace standard care without clinician oversight.
+coaching_translation: A 60-day Ayurvedic combo of Vidanga Churna (with honey) plus
+  Kamadudha Rasa fully eradicated H. pylori in a published case study. Single-patient
+  evidence so far, but mechanistically plausible and very low cost. Worth discussing
+  with a BAMS practitioner alongside conventional options.
+caveats:
+- Single case report — not RCT-grade evidence.
+- Source Vidanga and Kamadudha from reputable Ayurvedic pharmacy (Kerala Ayurveda,
+  AVP, Vaidyaratnam, Baidyanath).
+- Rasashastra preparations like Kamadudha can have heavy metal concerns — insist on
+  lab-tested batches.
+- Confirm eradication with breath test or stool antigen after 60 days; do not assume.
+- Best used as adjunct or in clients who can't tolerate conventional antibiotics;
+  not first-line monotherapy.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements:
+- vidanga-churna
+- kamadudha-rasa
+out_of_scope_notes: Use under BAMS practitioner oversight; verify eradication with
+  conventional test post-protocol.
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Ayurvedic Protocol — Vidanga + Kamadudha 60-day case study
+  quote: Vidanga Churna 2g powder twice daily with honey after food + Kamadudha Rasa
+    250mg tablet twice daily after food for 60 days. In a case report, this protocol
+    resulted in 100% eradication (confirmed by negative RUT).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

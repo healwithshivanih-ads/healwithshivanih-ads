@@ -1,0 +1,39 @@
+slug: h-pylori-biofilm-drives-eradication-failure
+statement: H. pylori biofilm formation and conversion to the dormant coccoid form
+  are major drivers of antibiotic eradication failure — biofilms physically block
+  antibiotic penetration while coccoid bacteria are metabolically inactive and survive
+  standard regimens, reverting to active form once treatment ends.
+evidence_tier: strong
+rationale: Multiple microbiology studies confirm biofilm + coccoid form as treatment-failure
+  mechanisms. Pizzorno-style FM thinking and modern gastroenterology converge here.
+  Mechanism explains why first-line therapy now fails in 20-40% of cases globally.
+coaching_translation: If first-line antibiotics didn't fully clear H. pylori, biofilm
+  or coccoid (dormant) forms are likely why. This is the rationale for adding biofilm-disruptors
+  (mastic gum, NAC, sulforaphane, lactoferrin) alongside any second-line attempt.
+caveats:
+- Coccoid forms can re-activate months after apparent eradication — re-test 4-8 weeks
+  post-treatment.
+- Biofilm disruptors work best as adjuncts, not standalone.
+- Resistance testing (especially clarithromycin) is the most powerful predictor of
+  success now.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-biofilm-coccoid-treatment-resistance
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements:
+- mastic-gum
+- sulforaphane-broccoli-sprouts
+- lactoferrin
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Pathogenesis — Biofilm + Immune Evasion
+  quote: H. pylori forms biofilms protected by an extracellular matrix that hinder
+    the action of antibiotics, contributing significantly to treatment failure. The
+    coccoid form evades the immune system and survives harsh conditions.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

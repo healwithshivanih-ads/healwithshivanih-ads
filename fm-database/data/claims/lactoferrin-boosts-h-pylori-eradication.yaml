@@ -1,0 +1,36 @@
+slug: lactoferrin-boosts-h-pylori-eradication
+statement: Bovine lactoferrin (200-400 mg/day) added to standard triple or quadruple
+  eradication therapy increases H. pylori eradication rates by binding iron away from
+  the bacterium (it requires iron for growth), disrupting biofilm, and modulating
+  mucosal immune response — multiple meta-analyses support 10-15% absolute eradication
+  improvement.
+evidence_tier: strong
+rationale: Multiple RCT meta-analyses (Sachdeva, Zou) show statistically significant
+  eradication rate improvement when lactoferrin is added to triple therapy. Mechanism
+  — iron sequestration plus direct anti-microbial peptide effect plus immune modulation.
+coaching_translation: Adding lactoferrin (200-400 mg/day during the eradication course)
+  bumps success rates by about 10-15 percentage points. The bacterium needs iron to
+  grow; lactoferrin grabs it first. Worth pairing with any H. pylori protocol, conventional
+  or natural.
+caveats:
+- Bovine source — avoid in dairy-protein allergy.
+- Best taken on empty stomach, away from iron supplements.
+- 8-week course is standard; can be longer in refractory cases.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-biofilm-coccoid-treatment-resistance
+linked_to_supplements:
+- lactoferrin
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication — Lactoferrin
+  quote: Lactoferrin, a glycoprotein from milk, inhibits bacterial growth; supplementing
+    it with standard therapy increases eradication chances.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

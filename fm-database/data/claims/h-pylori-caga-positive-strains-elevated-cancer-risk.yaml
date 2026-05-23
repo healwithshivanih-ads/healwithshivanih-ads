@@ -1,0 +1,35 @@
+slug: h-pylori-caga-positive-strains-elevated-cancer-risk
+statement: H. pylori strains carrying the cagA gene inject CagA oncoprotein into gastric
+  epithelial cells via a type IV secretion system, disrupting cell signalling and
+  substantially elevating the risk of peptic ulcers and gastric cancer compared to
+  cagA-negative strains.
+evidence_tier: strong
+rationale: Well-established molecular epidemiology — CagA-positive strains drive most
+  ulcer and gastric-cancer cases. Mainstream gastroenterology consensus. Mechanism
+  via type IV secretion system + downstream SHP-2/Rac1 signalling disruption is reproducible
+  in vitro and in vivo.
+coaching_translation: Not all H. pylori strains are equally dangerous. The CagA-positive
+  variant is the one that drives most ulcers and gastric cancer. Some labs can test
+  for CagA-positivity, which helps triage how aggressively to treat.
+caveats:
+- Routine clinical testing doesn't always distinguish CagA status.
+- CagA-positive doesn't guarantee cancer; CagA-negative doesn't guarantee safety.
+- Eradication is recommended regardless of strain.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-caga-vaca-virulence
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Pathogenesis — CagA section
+  quote: CagA is injected into host cells via a type IV secretion system. Strains
+    carrying the cagA gene are associated with a higher risk of peptic ulcers and
+    gastric cancer.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

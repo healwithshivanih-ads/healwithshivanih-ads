@@ -1,0 +1,34 @@
+slug: cranberry-anti-adhesion-h-pylori-and-uti
+statement: Cranberry proanthocyanidins (PACs, ≥ 36 mg/day) prevent H. pylori adhesion
+  to gastric mucosa via the same anti-adhesion mechanism that prevents E. coli adhesion
+  to urinary epithelium — providing a dual-purpose natural agent for clients with
+  concurrent H. pylori plus recurrent UTI patterns.
+evidence_tier: plausible_emerging
+rationale: Cranberry's PAC anti-adhesion mechanism is established for UTI prevention
+  and extends to H. pylori in observational and small RCT data. Notebook source highlights
+  this dual effect.
+coaching_translation: Cranberry isn't just for UTIs — it stops H. pylori from sticking
+  to the stomach wall the same way it stops E. coli sticking to bladder. Useful in
+  clients with both gut + urinary issues. Use standardised extract (≥ 36 mg PACs/day),
+  not sweetened juice.
+caveats:
+- Standardised extract preferred over juice (sugar load).
+- Mild CYP3A4 interaction; coordinate with warfarin.
+- High doses can drive oxalate stones in susceptible clients.
+linked_to_topics:
+- h-pylori-infection
+- urinary-tract-infection
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements:
+- cranberry-extract
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication — Cranberry
+  quote: Cranberries may help suppress the growth of H. pylori and prevents adhesion
+    to the stomach lining.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

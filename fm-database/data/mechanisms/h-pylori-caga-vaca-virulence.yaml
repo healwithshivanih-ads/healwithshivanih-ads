@@ -1,0 +1,44 @@
+slug: h-pylori-caga-vaca-virulence
+display_name: H. pylori CagA + VacA Virulence Factors
+aliases:
+- caga-oncoprotein
+- vaca-vacuolating-cytotoxin
+- type-iv-secretion-h-pylori
+- cag-pathogenicity-island
+category: immune
+summary: H. pylori virulence depends on two major secreted factors. CagA (Cytotoxin-Associated
+  Antigen A) is delivered into host gastric epithelial cells via a type IV secretion
+  system, disrupting cell cytoskeleton and signalling; cagA-positive strains carry
+  a substantially elevated risk of peptic ulcers and gastric cancer. VacA (Vacuolating
+  Cytotoxin A) creates progressive vacuolation (holes) in epithelial cells, driving
+  cell death and providing an intracellular reservoir that protects the bacteria from
+  immune surveillance and antibiotics.
+upstream_drivers:
+- h-pylori-colonisation
+- cag-pathogenicity-island-strain
+- low-gastric-acid-output
+downstream_effects:
+- peptic-ulcer-disease
+- atrophic-gastritis
+- gastric-cancer-risk
+- malt-lymphoma-risk
+- epithelial-cell-death
+related_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-urease-ammonia-production
+- chronic-inflammation
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+evidence_tier: strong
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Pathogenesis — CagA/VacA section
+  quote: CagA is injected into host cells via a type IV secretion system; cagA-positive
+    strains are associated with higher risk of peptic ulcers and gastric cancer. VacA
+    causes progressive vacuolation of epithelial cells, providing an intracellular
+    reservoir for the bacteria.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

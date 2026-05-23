@@ -1,0 +1,51 @@
+slug: cranberry-extract
+display_name: Cranberry Extract (Vaccinium macrocarpon)
+aliases:
+- cranberry
+- cranberry-juice-extract
+- proanthocyanidins-cranberry
+- vaccinium-macrocarpon
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+- powder
+timing_options:
+- morning
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- h-pylori-infection
+- urinary-tract-infection
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_claims:
+- cranberry-anti-adhesion-h-pylori-and-uti
+notes_for_coach: Active fraction is proanthocyanidins (PACs) — anti-adhesion effect
+  prevents H. pylori binding to gastric mucosa and E. coli binding to urinary epithelium.
+  Look for standardised extract delivering ≥ 36 mg PACs/day. Unsweetened juice (~1
+  cup) provides similar effect but with sugar load. Caution with warfarin (mild CYP
+  interaction). Some clients get GI upset on high dose.
+notes_for_client: Cranberry prevents H. pylori (and UTI bacteria) from sticking to
+  your stomach and bladder lining. Use a standardised extract with at least 36 mg
+  proanthocyanidins daily, or 1 cup of unsweetened cranberry juice.
+contraindications:
+  conditions:
+  - kidney-stones-oxalate-history
+  medications:
+  - warfarin
+  life_stages: []
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication Agents — Cranberry
+  quote: Cranberries may help suppress the growth of H. pylori. Cranberry helps suppress
+    bacterial growth and prevents adhesion to the stomach lining.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

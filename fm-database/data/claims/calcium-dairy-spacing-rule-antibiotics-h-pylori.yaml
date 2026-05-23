@@ -1,0 +1,31 @@
+slug: calcium-dairy-spacing-rule-antibiotics-h-pylori
+statement: Calcium and dairy must be spaced at least 2 hours before or 4 hours after
+  tetracycline (or fluoroquinolones) during H. pylori eradication — calcium binds
+  these antibiotics in the gut and reduces absorption by up to 50%, causing eradication
+  failure. The same applies to magnesium-, aluminium-, and iron-containing supplements/antacids.
+evidence_tier: strong
+rationale: Well-established pharmacokinetic interaction. Failure to space causes a
+  meaningful proportion of H. pylori treatment failures in motivated patients.
+coaching_translation: If you're on tetracycline for H. pylori, no dairy, calcium supplements,
+  iron, magnesium, or antacids within 2 hours before or 4 hours after each dose. Set
+  a phone reminder if needed — this single mistake fails eradication in many patients.
+caveats:
+- Same rule applies to ciprofloxacin, levofloxacin (fluoroquinolones).
+- Probiotics also need 2-hour spacing from antibiotic doses.
+- PPI doses are timed differently (typically 30 min before meals).
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Lifestyle Factors — Medication Spacing
+  quote: Calcium/Dairy must be spaced 2 hours before or 4 hours after taking Tetracycline
+    or Fluoroquinolones, as calcium can reduce drug absorption by 50%.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,38 @@
+slug: sulforaphane-kills-h-pylori-human-trials
+statement: Sulforaphane from broccoli sprouts kills H. pylori and decreases gastric
+  inflammation in both animal and human trials — Yanaka et al 2009 showed 70 g of
+  broccoli sprouts daily for 8 weeks significantly reduced H. pylori colonisation
+  markers and pepsinogen I/II ratio in infected patients.
+evidence_tier: strong
+rationale: Yanaka 2009 randomised crossover trial is the headline human-trial reference.
+  Mechanism via NRF2 activation and direct antibacterial effect of sulforaphane on
+  H. pylori. Pizzorno-style FM thinking has adopted this as standard adjunctive.
+coaching_translation: Broccoli sprouts (or sulforaphane supplement) at 70g daily for
+  8 weeks measurably knocks down H. pylori. Grow sprouts at home cheaply or buy standardised
+  glucoraphanin/sulforaphane capsules.
+caveats:
+- Mature broccoli has 10-100x less sulforaphane than 3-day-old sprouts.
+- Supplement form — look for standardised "active sulforaphane" or "glucoraphanin
+  + myrosinase" combo.
+- Mild GI gas during first 2 weeks typical.
+- Synergistic with mastic gum + probiotics; weaker as monotherapy.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- gastric-cancer-prevention
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-biofilm-coccoid-treatment-resistance
+linked_to_supplements:
+- sulforaphane-broccoli-sprouts
+- sulforaphane
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication — Broccoli Sprouts / Sulforaphane
+  quote: Sulforaphane has been shown in human trials to kill H. pylori and decrease
+    gastric inflammation.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

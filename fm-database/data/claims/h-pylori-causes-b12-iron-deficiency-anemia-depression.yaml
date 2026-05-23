@@ -1,0 +1,43 @@
+slug: h-pylori-causes-b12-iron-deficiency-anemia-depression
+statement: Persistent H. pylori colonisation reduces gastric acid and damages parietal
+  cells, impairing intrinsic-factor-dependent B12 absorption and food-bound iron absorption
+  — driving B12-deficiency anemia, iron-deficiency anemia, depression and anxiety,
+  and neurological symptoms (tingling, cognitive decline) via myelin sheath degradation.
+  Eradication halts further depletion but reversal depends on duration of deficiency.
+evidence_tier: strong
+rationale: Well-established gastroenterology — H. pylori is now in the standard work-up
+  for unexplained iron-deficiency anemia and pernicious anemia. B12-depression mechanism
+  via serotonin/dopamine synthesis is well-characterised in neuroscience literature
+  though notebook source notes this as outside-source extension.
+coaching_translation: Unexplained low iron or low B12, especially with mood symptoms,
+  should trigger an H. pylori workup. Once eradicated, replete B12 (methylcobalamin)
+  and iron (bisglycinate); reversal of nerve symptoms depends on how long the deficiency
+  went unrecognised.
+caveats:
+- Check ferritin, B12 (with MMA for accuracy), folate, homocysteine in any unexplained
+  anemia.
+- H. pylori breath test or stool antigen for diagnosis.
+- B12 absorption never fully recovers if atrophic gastritis is advanced — may need
+  lifelong supplementation.
+- Iron supplementation should wait until eradication is confirmed (iron feeds H. pylori).
+linked_to_topics:
+- h-pylori-infection
+- iron-deficiency-anemia
+- vitamin-b12-deficiency
+- major-depressive-disorder
+- chronic-fatigue-syndrome
+linked_to_mechanisms:
+- h-pylori-b12-iron-malabsorption
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Extragastric Associations — Hematologic + Mental Health
+  quote: Strong associations exist with iron-deficiency anemia and Vitamin B12 deficiency
+    anemia. H. pylori-induced gastritis is frequently accompanied by depression and
+    anxiety. Persistent colonization is linked to certain neurological disorders.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

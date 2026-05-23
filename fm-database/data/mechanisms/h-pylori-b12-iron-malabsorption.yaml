@@ -1,0 +1,49 @@
+slug: h-pylori-b12-iron-malabsorption
+display_name: H. pylori-Driven B12 and Iron Malabsorption
+aliases:
+- h-pylori-vitamin-b12-deficiency
+- h-pylori-iron-deficiency
+- pernicious-anemia-h-pylori
+- gastric-atrophy-b12
+category: gut
+summary: Persistent H. pylori colonisation reduces gastric acid output and damages
+  parietal cells over time. Low stomach acid impairs intrinsic factor secretion (required
+  for B12 absorption) and iron solubilisation (required for iron absorption from food).
+  Result — iron-deficiency anemia and B12-deficiency anemia are documented extragastric
+  complications. B12 deficiency then drives downstream neurological symptoms (myelin
+  sheath degradation, tingling/numbness, cognitive decline) and depressive mood (B12
+  cofactor in serotonin/dopamine synthesis). Eradication therapy halts further depletion
+  but reversal of advanced nerve damage depends on duration of deficiency.
+upstream_drivers:
+- h-pylori-colonisation
+- chronic-atrophic-gastritis
+- low-gastric-acid-output
+- damaged-parietal-cells
+downstream_effects:
+- iron-deficiency-anemia
+- b12-deficiency-anemia
+- neurological-decline
+- depression
+- chronic-fatigue
+related_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- atrophic-gastritis
+- demyelination
+linked_to_topics:
+- h-pylori-infection
+- iron-deficiency-anemia
+- vitamin-b12-deficiency
+- major-depressive-disorder
+evidence_tier: strong
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Extragastric Associations + B12 nerve discussion
+  quote: H. pylori is identified as a cause of complications outside the stomach,
+    specifically anemia resulting from Vitamin B12 deficiency and iron deficiency.
+    Persistent colonization is linked to certain neurological disorders. B12 is essential
+    for myelin sheath maintenance and for synthesis of neurotransmitters like serotonin
+    and dopamine.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

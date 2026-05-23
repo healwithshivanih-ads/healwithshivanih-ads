@@ -1,0 +1,41 @@
+slug: garlic-allicin-suppresses-h-pylori-and-supports-gut-flora
+statement: Allicin from raw or freshly-crushed garlic (or standardised garlic extract
+  delivering 5,000-10,000 mcg allicin potential daily) suppresses H. pylori growth
+  in vitro and supports beneficial gut flora — making garlic a low-cost adjunctive
+  agent in any H. pylori protocol.
+evidence_tier: plausible_emerging
+rationale: Multiple in-vitro studies confirm allicin's anti-H. pylori effect; in-vivo
+  human trials more mixed but generally supportive. Mechanism via sulfhydryl-group
+  reactivity disrupts microbial enzymes. Allicin is unstable — crushed garlic must
+  rest 10 min for formation, then consumed promptly.
+coaching_translation: Raw garlic — 2-3 cloves chopped and rested 10 minutes (so allicin
+  forms), then eaten with food, daily — provides meaningful H. pylori suppression.
+  Standardised garlic capsules with stated allicin potential work too. Aged garlic
+  extract has weaker allicin activity but is odorless.
+caveats:
+- Crush + rest 10 min before consuming for allicin formation.
+- GI irritation common in clients with active gastritis — start with cooked garlic
+  and titrate up.
+- Bleeding risk before surgery; coordinate with prescriber if on warfarin or antiplatelets.
+- Strong odor often a social barrier — aged garlic is the odorless alternative.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- atherosclerosis
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- gut-dysbiosis
+linked_to_supplements:
+- garlic-allicin
+- aged-garlic-extract
+- garlic
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication — Garlic (Allicin)
+  quote: Garlic is noted for its ability to suppress bacterial growth and help promote
+    a healthier gut environment. Allicin is the active anti-H. pylori compound.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

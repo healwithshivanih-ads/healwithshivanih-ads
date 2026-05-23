@@ -1,0 +1,40 @@
+slug: probiotic-lacto-bifido-reduces-eradication-side-effects
+statement: Lactobacillus + Bifidobacterium multistrain probiotics taken alongside
+  H. pylori eradication therapy reduce antibiotic-associated side effects (diarrhea,
+  nausea, dysgeusia) by ~50% and modestly increase eradication rates by competing
+  for gastric mucosa adhesion sites and supporting butyrate-producing flora that restore
+  mucosal immunity.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Wang, Tong, Lau) confirm both effects. Mechanism
+  — competition for adhesion sites + immune modulation + microbiome resilience during
+  antibiotic exposure. Specific strains with strongest evidence — L. rhamnosus GG,
+  L. reuteri DSM 17648, S. boulardii, Bifidobacterium lactis.
+coaching_translation: Take a multistrain Lactobacillus + Bifidobacterium probiotic
+  during your H. pylori antibiotic course. Cuts side effects in half and modestly
+  improves eradication. Continue 4-6 weeks after antibiotics to rebuild flora.
+caveats:
+- Take probiotics 2 hours away from antibiotic doses.
+- L. reuteri DSM 17648 has specific anti-H. pylori adhesion data.
+- S. boulardii (yeast) is the antibiotic-resistant strain — survives the antibiotic
+  course.
+- Continue for 4-6 weeks post-eradication to rebuild microbiome.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- gut-dysbiosis
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- gut-dysbiosis
+linked_to_supplements:
+- lactobacillus-rhamnosus-gg
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication — Probiotics
+  quote: Lactobacillus and Bifidobacterium are the most clinically supported strains.
+    They compete for adhesion sites and reduce antibiotic side effects like diarrhea.
+    Butyrate-producing bacteria enhance the mucosal immune barrier.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

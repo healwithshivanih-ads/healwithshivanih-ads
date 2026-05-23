@@ -1,0 +1,52 @@
+slug: kamadudha-rasa
+display_name: Kamadudha Rasa (Ayurvedic Mineral-Herb Compound)
+aliases:
+- kamadudha
+- kamdudha-rasa
+- ayurvedic-pitta-pacifier
+category: other
+forms_available:
+- tablet
+- powder
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- gerd
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_claims:
+- ayurvedic-vidanga-kamadudha-60-day-h-pylori-eradication
+notes_for_coach: Classical Ayurvedic compound used for amlapitta (hyperacidity / gastritis).
+  Contains processed pearl, conch shell, mukta-pishti (pearl calx), and cooling herbs.
+  Mineral content provides mild acid-buffering + mucosal-protective effects. Case-study
+  dose — 250 mg tablet twice daily after food, 60 days, paired with Vidanga Churna.
+  Source from BAMS-supervised pharmacy. Heavy metals are a real concern with Bhasma-containing
+  rasashastra preparations — insist on lab-tested batches (Kerala Ayurveda, AVP, Vaidyaratnam
+  are reputable). Not for long-term continuous use without practitioner oversight.
+notes_for_client: A traditional Ayurvedic compound formulated to cool excess stomach
+  acid and protect the stomach lining. 250 mg tablet twice daily after meals. Always
+  source from a reputable Ayurvedic pharmacy and use under supervision of a BAMS practitioner.
+contraindications:
+  conditions:
+  - pregnancy
+  - chronic-kidney-disease
+  - heavy-metal-burden
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Ayurvedic Protocol — Kamadudha Rasa
+  quote: Kamadudha Rasa 250mg tablet twice daily after food for 60 days, paired with
+    Vidanga Churna, achieved 100% eradication in case report.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

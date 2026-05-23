@@ -1,0 +1,39 @@
+slug: h-pylori-low-residue-diet-acute-then-reintroduction
+statement: H. pylori acute-phase nutrition is a low-residue easily-digestible pattern
+  — white rice / white bread / lean white meats / peeled-cooked fruits (apples, pears,
+  bananas, papaya) / fermented foods (yogurt, kefir) — strictly avoiding gastric stimulants
+  (caffeine, alcohol, carbonated drinks, spicy foods, citrus, fatty fried foods).
+  Recovery phase gradually reintroduces whole grains, legumes, raw salads, and nuts
+  as inflammation resolves.
+evidence_tier: plausible_emerging
+rationale: Clinical pattern matching low-residue principles used for any inflamed-gut
+  condition (active IBD, post-surgery, gastritis). Mechanism — reduces mechanical
+  irritation and acid stimulation while inflammation persists. Notebook source emphasises
+  evidence-based clinical recommendations.
+coaching_translation: During active H. pylori treatment, eat soft / cooked / low-fibre
+  foods that don't poke the inflamed stomach. White rice over brown, peeled cooked
+  fruit over raw salad, white fish over fatty meat, yogurt over coffee. Once you feel
+  better, reintroduce whole grains, beans, raw vegetables, and nuts gradually.
+caveats:
+- Acute phase = 2-4 weeks during active treatment.
+- Yogurt/kefir specifically helps with antibiotic-associated diarrhea.
+- Hydration — 2-2.5 L water, between meals, not with meals.
+- Smaller, more frequent meals reduce gastric distension.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_supplements: []
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Dietary Protocols — Acute and Recovery Phases
+  quote: Acute phase — easily digestible grains (white rice, white bread), lean white
+    proteins, peeled and cooked fruits, fermented foods. Avoid caffeine, alcohol,
+    spicy foods, sour fruits, fatty meats, processed foods, high-fibre raw vegetables
+    during the acute inflammatory stage.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

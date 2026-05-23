@@ -1,0 +1,54 @@
+slug: vidanga-churna
+display_name: Vidanga Churna (Embelia ribes)
+aliases:
+- vidanga
+- embelia-ribes
+- vidanga-powder
+- false-black-pepper
+category: herb
+forms_available:
+- powder
+- capsule
+- tablet
+timing_options:
+- with_breakfast
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- intestinal-parasites
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+linked_to_claims:
+- ayurvedic-vidanga-kamadudha-60-day-h-pylori-eradication
+notes_for_coach: Classical Ayurvedic krimihara (antimicrobial) herb, traditionally
+  used for intestinal parasites and now researched for H. pylori. Case-study protocol
+  — 2 g powder twice daily with honey after meals, 60 days. Paired with Kamadudha
+  Rasa (250 mg BID). In a published case report, this combo achieved 100% H. pylori
+  eradication confirmed by negative Rapid Urease Test. Source — JETIR Ayurvedic case
+  report. Quality varies — source from reputable Ayurvedic pharmacy (Baidyanath, Dabur,
+  Kerala Ayurveda) or BAMS-prescribing clinician.
+notes_for_client: A traditional Ayurvedic herb (also known as Vidanga) used as a powder
+  for intestinal infections, including H. pylori. Take 2 grams (about 1/2 teaspoon)
+  twice a day mixed with honey, after meals.
+contraindications:
+  conditions:
+  - pregnancy
+  - active-bleeding
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Ayurvedic Protocol — Vidanga Churna
+  quote: Vidanga Churna 2g powder twice daily with honey after food for 60 days as
+    part of Ayurvedic H. pylori protocol. Case report resulted in 100% eradication
+    confirmed by negative RUT.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

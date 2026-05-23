@@ -1,0 +1,61 @@
+slug: garlic-allicin
+display_name: Garlic / Allicin Extract (Allium sativum)
+aliases:
+- allicin
+- garlic-extract-allicin
+- aged-garlic
+- raw-garlic
+- allium-sativum
+category: herb
+forms_available:
+- capsule
+- tablet
+- liquid
+- whole_food
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: required
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- atherosclerosis
+- cardiovascular-disease-prevention
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- gut-dysbiosis
+linked_to_claims:
+- garlic-allicin-suppresses-h-pylori-and-supports-gut-flora
+notes_for_coach: Active anti-H. pylori compound is allicin (released when raw garlic
+  is crushed/chopped). Standardised supplement — 5,000-10,000 mcg allicin potential
+  daily, divided. Whole-food path — 2-3 raw cloves daily (chop, rest 10 min for allicin
+  formation, take with food). Caution — bleeding risk before surgery; GI irritation
+  in some clients; avoid in severe gastritis flare. Strong odor often a turnoff for
+  clients; aged garlic extract is odorless alternative but loses some allicin activity.
+notes_for_client: Garlic contains allicin, which fights H. pylori bacteria. Either
+  crush 2-3 raw garlic cloves and let rest 10 minutes before eating with food, or
+  take a standardised garlic supplement at 5,000-10,000 mcg allicin daily.
+contraindications:
+  conditions:
+  - bleeding-disorders
+  - severe-gastritis-flare
+  medications:
+  - warfarin
+  - antiplatelet-drugs
+  - hiv-protease-inhibitors
+  life_stages:
+  - pregnancy-large-doses
+  - lactation-large-doses
+evidence_tier: plausible_emerging
+typical_dose_range: {}
+sources:
+- id: notebooklm-h-pylori-2026
+  location: Natural Eradication Agents — Garlic (Allicin)
+  quote: Garlic is noted for its ability to suppress bacterial growth and help promote
+    a healthier gut environment. Allicin is the active compound used to suppress bacterial
+    growth.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
