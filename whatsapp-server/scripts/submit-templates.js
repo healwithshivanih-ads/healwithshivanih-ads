@@ -507,6 +507,18 @@ const TEMPLATES = [
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
   },
   {
+    // V2: v1 reclassified MARKETING ("Here is the payment link to complete
+    // your registration" reads as a sales CTA). Reworded to mirror the
+    // service-notification pattern that landed fm_book_session_v2 UTILITY:
+    // passive framing + explicit "reply here" support hook.
+    name: 'workshop_payment_link_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, your registration payment link for *{{2}}* is below:\n\n{{3}}\n\nReply here if you have any questions about completing the payment.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
+  },
+  {
     // Reminder for an unpaid registration. Factual ("still active") not
     // urgent — references the prior creation of the payment link. Same
     // UTILITY-friendly pattern as fm_intake_reminder.
