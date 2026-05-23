@@ -1,0 +1,47 @@
+slug: matula-tea-traditional-h-pylori-remedy
+statement: Matula Tea — a proprietary South African herbal blend — is used as a natural
+  adjunctive remedy for H. pylori eradication. Standard course is one 30-day pack,
+  one cup brewed twice daily on an empty stomach. Best stacked with mastic gum, sulforaphane,
+  manuka honey, lactoferrin, and Lactobacillus + Bifidobacterium probiotics; not a
+  replacement for clinician-prescribed eradication therapy when indicated.
+evidence_tier: fm_specific_thin
+rationale: Manufacturer-published clinical case data plus FM-coach clinical observation.
+  No published RCT-level evidence yet. Mechanism plausibly via the same anti-microbial
+  / biofilm-disrupting / mucosal-soothing pathways as other natural H. pylori agents
+  (mastic gum, manuka, sulforaphane). Coach (Shivani) recommends as part of layered
+  natural protocol.
+coaching_translation: Matula Tea is a herbal tea specifically blended to help clear
+  H. pylori. One 30-day pack, two cups a day on empty stomach. Best results when combined
+  with mastic gum, sulforaphane (broccoli sprout extract), manuka honey, and a Lactobacillus
+  + Bifidobacterium probiotic.
+caveats:
+- Evidence is largely manufacturer + practitioner clinical, not RCT-level.
+- Position as adjunct or alternative path, not replacement when conventional eradication
+  is indicated.
+- Confirm eradication with urea breath test or stool antigen after course completes
+  — don't assume.
+- Avoid in pregnancy and lactation unless cleared by clinician.
+- Cost is significant; some clients may need to choose between Matula and mastic-gum
+  stack.
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-biofilm-coccoid-treatment-resistance
+linked_to_supplements:
+- matula-tea
+- mastic-gum
+- sulforaphane-broccoli-sprouts
+- manuka-honey
+- lactoferrin
+out_of_scope_notes: ''
+sources:
+- id: matula-tea-coach-knowledge
+  location: Coach clinical practice — H. pylori protocol
+  quote: Matula Tea is an excellent herbal remedy for treating H. pylori. Affiliate
+    link maintained in coach supplement_links catalogue for client letter integration.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

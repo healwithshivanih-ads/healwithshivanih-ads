@@ -1,0 +1,56 @@
+slug: matula-tea
+display_name: Matula Tea (Herbal H. pylori Remedy)
+aliases:
+- matula
+- matula-herbal-tea
+- matulatea
+- matula-h-pylori-tea
+category: herb
+forms_available:
+- liquid
+- whole_food
+timing_options:
+- morning
+- evening
+- on_empty_stomach
+take_with_food: avoid
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- gerd
+- chronic-candidiasis
+linked_to_mechanisms:
+- h-pylori-mucosal-defense-breakdown
+- h-pylori-biofilm-coccoid-treatment-resistance
+linked_to_claims:
+- matula-tea-traditional-h-pylori-remedy
+notes_for_coach: 'Proprietary South African herbal tea blend marketed as a natural
+  anti-H. pylori remedy. Coach (Shivani) recommends as part of the FM H. pylori protocol
+  — typical course is one 30-day pack, 1 cup BID on empty stomach (morning + bedtime),
+  brewed as directed on packaging. Often paired with mastic gum, sulforaphane, manuka
+  honey, lactoferrin, and Lactobacillus + Bifidobacterium probiotics for layered effect.
+  Evidence base is largely manufacturer-published case data plus practitioner clinical
+  observation — not RCT-level. Position as adjunctive option, not replacement for
+  clinician-prescribed eradication when indicated. Coach-curated affiliate link in
+  ~/fm-plans/supplement_links.yaml under key matula_tea — slug: matula-tea binding
+  added so letter renderer surfaces it automatically.'
+notes_for_client: A herbal tea blend specifically formulated to help eradicate H.
+  pylori. One 30-day pack provides a full course — brew 1 cup twice daily on an empty
+  stomach. Best paired with the other gut-healing supplements your protocol recommends.
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+evidence_tier: fm_specific_thin
+typical_dose_range: {}
+sources:
+- id: matula-tea-coach-knowledge
+  location: Coach clinical practice — H. pylori protocol
+  quote: Matula Tea is an excellent herbal remedy for treating H. pylori. Coach-curated
+    affiliate link maintained in supplement_links.yaml for use in client letters.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
