@@ -529,6 +529,18 @@ const TEMPLATES = [
       "Hi {{1}},\n\nA reminder — your payment link for *{{2}}* is still active:\n\n{{3}}\n\n— The Ochre Tree",
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
   },
+  {
+    // V2 reminder: v1 reclassified MARKETING. Mirroring the framing of
+    // fm_intake_reminder (which landed UTILITY despite being a reminder):
+    // "your registration is still open" frames as a service status, not a
+    // payment CTA. The link is incidental to the status update.
+    name: 'workshop_payment_link_reminder_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, your registration for *{{2}}* is still open. The payment link is here whenever you are ready:\n\n{{3}}\n\nReply here with any questions about completing it.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
+  },
 ];
 
 // ---------------------------------------------------------------------------
