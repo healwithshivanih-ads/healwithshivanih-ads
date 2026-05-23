@@ -1,0 +1,38 @@
+slug: ac-200-280mg-for-digestive-gas-flatulence
+statement: Activated charcoal at 200-280 mg orally (1-2 capsules daily, or 1 g 30
+  minutes before and after meals) significantly reduces bloating and post-prandial
+  fullness — particularly when combined with simethicone. Regulatory bodies like SAHPRA
+  permit digestive gas / flatulence as an allowable supplement claim for AC.
+evidence_tier: plausible_emerging
+rationale: Multiple small RCTs (Hall 1981, Jain 1986) support AC for gas symptoms.
+  SAHPRA approval reflects the strongest of the supplement-use evidence base for AC.
+  Mechanism — adsorbs intestinal gas-producing compounds plus binds bile-acid metabolites
+  that drive bloating.
+coaching_translation: For occasional bloating and gas, 1-2 capsules of activated charcoal
+  (or 1 g 30 minutes before and after a problem meal) can help — especially combined
+  with simethicone. Don't make it daily; pair with the 1-2 hour medication spacing
+  rule.
+caveats:
+- Occasional use only — chronic daily use depletes nutrients and interferes with meds.
+- Black stools are expected and harmless.
+- If gas is chronic, the right move is workup (SIBO, FODMAPs, dysbiosis), not AC.
+linked_to_topics:
+- ibs
+- sibo
+- gut-dysbiosis
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 3 — Digestive Gas and Flatulence
+  quote: Clinical trials have shown a significant reduction in bloating and post-prandial
+    fullness when AC is used, often in combination with simethicone. Standard dosing
+    for gas is 200-280 mg orally, 1-2 capsules daily, or 1 g 30 minutes before and
+    after meals.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,71 @@
+slug: acute-toxic-ingestion
+display_name: Acute Toxic Ingestion / Poisoning
+aliases:
+- poisoning
+- overdose
+- acute-overdose
+- toxic-exposure
+- acute-poisoning
+summary: A medical emergency involving ingestion of a substance in toxic amounts —
+  accidental (especially pediatric) or intentional (overdose, suicide attempt). Management
+  depends on the toxin class, time since ingestion, patient stability, and whether
+  the airway can be protected. Activated charcoal (AC) is the most common gastrointestinal
+  decontamination tool, most effective within 1 hour of ingestion. AC does NOT bind
+  metals (iron, lithium, lead, mercury), alcohols (ethanol, methanol, ethylene glycol),
+  corrosives (lye, strong acids), hydrocarbons (gasoline, kerosene), or electrolytes
+  — these require different management (chelation, specific antidotes, supportive
+  care). Multi-dose AC (MDAC) provides 'gastrointestinal dialysis' for carbamazepine,
+  dapsone, phenobarbital, quinine, and theophylline overdoses. Home use of AC is appropriate
+  ONLY when directed by Poison Control Center (US 1-800-222-1222).
+common_symptoms:
+- altered-mental-status
+- nausea
+- vomiting
+- seizures
+- coma
+- respiratory-depression
+- hypotension
+- tachycardia
+red_flags:
+- altered mental status / unconsciousness
+- seizures
+- respiratory depression
+- known ingestion of >2x toxic dose
+- ingestion of caustic / corrosive substance
+- ingestion of hydrocarbon (gasoline / kerosene)
+- ingestion in pediatric patient (any non-food substance)
+- suicidal intent
+related_topics:
+- environmental-toxin-load
+- liver-detoxification
+- metabolic-detoxification
+key_mechanisms:
+- charcoal-adsorption-surface-area
+- gastrointestinal-dialysis
+coaching_scope_notes: STRICTLY OUT OF SCOPE for coaching. Refer immediately to ER
+  (911 / 102 India) or Poison Control Center (US 1-800-222-1222 / India equivalent).
+  Coach role limited to (1) general client education that activated charcoal is hospital-administered
+  for true poisoning, (2) discouraging unsupervised home use of AC for "detox" or
+  hangover, (3) flagging the specific contraindications where AC would cause harm
+  (caustics, hydrocarbons, unprotected airway). Never coach acute poisoning management.
+clinician_scope_notes: AC 1 g/kg PO or NG, within 1 hour of ingestion ideal, up to
+  4 hours with motility-slowing toxins. MDAC 50-100 g loading then 12.5 g/h for life-threatening
+  carbamazepine, dapsone, phenobarbital, quinine, theophylline. Airway protection
+  (intubation) before AC in altered mental status. Pediatric — 0.5-1 g/kg, not under
+  7 months without specific medical direction. Avoid AC + cathartics in infants (severe
+  hypernatremia/hypermagnesemia risk).
+notes_for_coach: NotebookLM source emphasises AC is hospital territory. Two coaching-relevant
+  points only — (1) AC does NOT bind alcohols, so it is useless for hangover; (2)
+  regular AC use for "detox cleanses" can deplete nutrients and interfere with medications
+  including OCPs and antidepressants — strongly discourage.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 2 — Acute Poisoning Indications
+  quote: AC is the most common form of gastrointestinal decontamination, most effective
+    when administered within 1 hour of ingestion. Used in hospital or clinic settings
+    by trained staff. Home use only if specifically directed by Poison Control Center.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

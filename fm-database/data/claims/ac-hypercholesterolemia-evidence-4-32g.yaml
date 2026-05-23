@@ -1,0 +1,41 @@
+slug: ac-hypercholesterolemia-evidence-4-32g
+statement: Clinical trial evidence shows activated charcoal at 4-32 g/day for 3 weeks
+  reduces total cholesterol by up to 29% and LDL cholesterol by up to 41% — comparable
+  efficacy to cholestyramine in severe hypercholesterolemia cases. Despite this, AC
+  is not a standard long-term therapy because of bile acid disruption, nutrient binding,
+  medication interference, and constipation risk.
+evidence_tier: plausible_emerging
+rationale: Kuusisto 1986 and follow-up trials cited in the StatPearls / position-paper
+  synthesis. Mechanism — AC binds bile acids in the gut, forcing the liver to draw
+  on circulating cholesterol to synthesise more bile, lowering serum cholesterol.
+  Same mechanism as bile acid sequestrants like cholestyramine.
+coaching_translation: There's real evidence activated charcoal can lower cholesterol
+  significantly (up to 41% LDL drop), but the downsides — disrupting fat-soluble vitamins,
+  blocking medications, constipation — make it impractical as a long-term therapy.
+  Standard FM cholesterol levers (Mediterranean diet, fish oil, niacin, plant sterols,
+  exercise) are better choices.
+caveats:
+- Not standard practice; clinician supervision essential if attempted.
+- Will deplete fat-soluble vitamins (A, D, E, K) with chronic use.
+- Interferes with statins and most other cholesterol-lowering medications.
+- Constipation common; pair with hydration + fibre.
+linked_to_topics:
+- dyslipidemia
+- atherosclerosis
+- cardiovascular-disease-prevention
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 3 — Hypercholesterolaemia subsection
+  quote: A clinical trial demonstrated that doses of 4 g to 32 g daily over three
+    weeks could reduce total cholesterol by up to 29% and LDL-cholesterol by up to
+    41%. AC performed similarly to cholestyramine in severe cases. Despite this efficacy,
+    it is not a standard long-term therapy.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

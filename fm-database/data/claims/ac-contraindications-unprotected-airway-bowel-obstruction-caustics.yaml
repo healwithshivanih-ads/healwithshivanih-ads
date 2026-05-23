@@ -1,0 +1,40 @@
+slug: ac-contraindications-unprotected-airway-bowel-obstruction-caustics
+statement: Activated charcoal is absolutely contraindicated in patients with — unprotected
+  airway / depressed consciousness without intubation (aspiration pneumonitis risk,
+  can be fatal), known bowel obstruction or perforation, caustic ingestion (lye /
+  strong acids — AC doesn't bind, increases endoscopy difficulty), and hydrocarbon
+  ingestion (gasoline / kerosene — high aspiration risk). Imminent endoscopy is a
+  relative contraindication because charcoal obscures GI mucosa visualisation.
+evidence_tier: strong
+rationale: AACT/EAPCCT and ACEP position statements. Aspiration pneumonitis from AC
+  slurry into the lungs has caused bronchiolitis obliterans and death — the single
+  most serious AC complication. Airway protection (intubation) is mandatory before
+  AC in any obtunded patient.
+coaching_translation: NEVER attempt to give activated charcoal to someone who is unconscious,
+  vomiting heavily, can't swallow safely, or has swallowed bleach/drain cleaner/gasoline.
+  AC in those cases can kill via aspiration into the lungs. Always call Poison Control
+  or 911 first.
+caveats:
+- Hospitals intubate patients with depressed consciousness before AC.
+- Caustic ingestions need urgent endoscopy; AC blocks the view.
+- Hydrocarbons cause chemical pneumonitis if aspirated; AC adds volume risk.
+- Bowel obstruction can be exacerbated by MDAC bezoar formation.
+linked_to_topics:
+- acute-toxic-ingestion
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Coach role = refer to ER. Never administer AC in these scenarios.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 6 — Specific Contraindications
+  quote: AC is absolutely contraindicated in patients with a depressed level of consciousness
+    who are not endotracheally intubated. Must not be used if there is a known intestinal
+    obstruction, gastrointestinal perforation, or if the gut is not anatomically intact.
+    Should not be used for caustic (lye, acids) or hydrocarbon ingestions due to high
+    aspiration risk and lack of binding efficacy.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

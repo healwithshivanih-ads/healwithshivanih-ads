@@ -1,0 +1,44 @@
+slug: gastrointestinal-dialysis
+display_name: Gastrointestinal Dialysis (AC Enterohepatic Interruption)
+aliases:
+- gi-dialysis
+- ac-mdac-enterohepatic-interruption
+- enterohepatic-toxin-trapping
+- multi-dose-charcoal-mechanism
+category: metabolic
+summary: A pharmacokinetic mechanism by which repeated doses of activated charcoal
+  enhance elimination of toxins already in the bloodstream — not just those still
+  in the GI tract. AC binds toxins as they diffuse from the systemic circulation back
+  into the gut lumen (via enterohepatic, enterogastric, and enteroenteric recirculation),
+  creating a 'sink' that maintains a concentration gradient favourable for net excretion
+  of toxin through the stool. Indications for Multi-Dose AC (MDAC) — life-threatening
+  carbamazepine, dapsone, phenobarbital, quinine, or theophylline ingestions. Typical
+  regimen — 50-100 g loading dose, then 12.5 g/h or 0.25-0.5 g/kg every 1-6 hours.
+upstream_drivers:
+- mdac-administration
+- intact-enterohepatic-circulation
+- toxin-with-enterohepatic-recirculation
+downstream_effects:
+- enhanced-toxin-clearance
+- shortened-toxin-half-life
+- reduced-need-for-hemodialysis
+related_mechanisms:
+- charcoal-adsorption-surface-area
+- estrogen-enterohepatic-recirculation
+linked_to_topics:
+- acute-toxic-ingestion
+evidence_tier: strong
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 1 — Systemic Clearance subsection
+  quote: AC can enhance the elimination of drugs already in the bloodstream. This
+    occurs through the interruption of enterohepatic, enterogastric, and enteroenteric
+    recirculation. By binding toxins as they diffuse from the circulation back into
+    the gut lumen — a process known as 'gastrointestinal dialysis' — AC creates a
+    'sink' that maintains a concentration gradient favorable for toxin excretion.
+    MDAC is specifically indicated for life-threatening ingestions of carbamazepine,
+    dapsone, phenobarbital, quinine, or theophylline.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

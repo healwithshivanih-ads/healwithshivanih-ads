@@ -1,0 +1,43 @@
+slug: ac-coaching-scope-er-vs-home
+statement: For activated charcoal in any acute poisoning scenario, coach role is strictly
+  REFER — Poison Control Center (US 1-800-222-1222 / India equivalent) or ER 911/102,
+  immediately. Home use of AC is only reasonable when (a) specifically directed by
+  Poison Control for a documented benign ingestion, or (b) for minor digestive gas
+  at standard OTC dosing. Strongly discourage AC for hangover prevention (no evidence),
+  routine "detox cleanses" (nutrient and medication depletion), and celiac accidental
+  exposure (worsens malabsorption).
+evidence_tier: strong
+rationale: Reflects AACT scope-of-practice and FM coaching scope. Coach role is education
+  + appropriate referral, not acute toxicology management.
+coaching_translation: For any real poisoning suspicion, call Poison Control or 911.
+  Never administer charcoal at home unless they tell you to. The only safe home uses
+  are occasional gas/bloating capsules and the dental-amalgam-removal protocol. Discourage
+  hangover use, detox cleanses, and celiac use entirely.
+caveats:
+- Save Poison Control numbers in client phones during intake.
+- For Indian clients, equivalent is the National Poisons Information Centre at AIIMS
+  — 011-26593677/26589391.
+- Coach should explicitly debunk the hangover, gluten, and "daily detox" misconceptions
+  when AC comes up.
+linked_to_topics:
+- acute-toxic-ingestion
+- environmental-toxin-load
+- metabolic-detoxification
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+- gastrointestinal-dialysis
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Acute poisoning management is strictly out of coaching scope.
+  Refer always.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 7 — Family Medicine Coaching Scope
+  quote: Patients must be referred to emergency services immediately for any toxic
+    ingestion, suicidal attempt, or if the patient exhibits seizures or loss of consciousness.
+    Home use is reasonable only for minor digestive issues using standard OTC dosing,
+    or for acute poisoning only if instructed by a Poison Control Center.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

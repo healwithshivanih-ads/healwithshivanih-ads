@@ -1,0 +1,42 @@
+slug: ac-medication-spacing-rule-1-2-hours
+statement: Orally administered activated charcoal binds many essential medications
+  (propranolol, digoxin, amlodipine, phenobarbital, carbamazepine, phenytoin, aripiprazole,
+  rifampin, ciprofloxacin, estrogen, progestin) reducing their bioavailability. AC
+  must be spaced at least 1-2 hours before or after any other oral medication. Dairy
+  should also be spaced at least 2 hours after AC. Regular AC use can deplete vitamins,
+  minerals, and antioxidants.
+evidence_tier: strong
+rationale: Well-established pharmacokinetic interaction. Coach-relevant because clients
+  sometimes use AC casually (for gas, "detox") without realising it can render their
+  oral contraceptive, antidepressant, or thyroid medication ineffective.
+coaching_translation: If a client takes activated charcoal for any reason — including
+  occasional gas relief — they must space it at least 1-2 hours away from every other
+  medication and supplement. Especially critical for oral contraceptives, antidepressants,
+  thyroid meds, blood pressure meds. Daily long-term AC use can also deplete vitamins
+  and minerals.
+caveats:
+- Most concerning interactions — OCPs (unintended pregnancy risk), antidepressants
+  (relapse), thyroid (TSH instability), warfarin (clotting changes), antiretrovirals
+  (resistance).
+- Discourage routine "detox" use for this reason alone.
+- Even capsule-form AC behaves the same way.
+linked_to_topics:
+- acute-toxic-ingestion
+- environmental-toxin-load
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 4 — Drug Interactions and Absorption Interference
+  quote: Orally administered AC should generally be taken at least 1 to 2 hours before
+    or after any other oral medications. AC binds to many common drugs — propranolol,
+    pindolol, digoxin, amlodipine, phenobarbital, carbamazepine, phenytoin, aripiprazole,
+    rifampin, ciprofloxacin, estrogen, progestin. Regular consumption may lead to
+    deficiencies in vitamins, minerals, and antioxidants.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

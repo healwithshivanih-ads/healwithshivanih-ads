@@ -1,0 +1,41 @@
+slug: ac-aspiration-pneumonitis-bezoar-major-risks
+statement: Pulmonary aspiration of activated charcoal slurry leading to aspiration
+  pneumonitis is the most serious AC complication — has caused bronchiolitis obliterans
+  and death, particularly from emesis during rapid administration or misplaced nasogastric
+  tube. Bezoar formation (intraluminal obstruction) occurs with multi-dose AC or in
+  pre-existing motility disorders. Cathartic co-administration (sorbitol, magnesium
+  citrate) can cause severe dehydration, hypernatremia, or hypermagnesemia — especially
+  in infants.
+evidence_tier: strong
+rationale: AACT position statement and pediatric case series. Aspiration is THE reason
+  airway protection is mandatory before AC in obtunded patients. Bezoar risk is the
+  reason MDAC has a duration limit and patient monitoring.
+coaching_translation: Activated charcoal isn't a benign supplement. Its real risks
+  are — vomiting it back up and inhaling it (which can cause permanent lung damage
+  or death), causing a blockage in the gut, or — if mixed with laxatives like sorbitol
+  — causing dangerous dehydration in children. This is why hospital administration
+  is the standard.
+caveats:
+- Slow, monitored administration reduces aspiration risk.
+- NG tube placement must be confirmed before AC slurry.
+- Cathartic co-administration is now usually avoided.
+- Pediatric infants are highest-risk for fluid/electrolyte complications.
+linked_to_topics:
+- acute-toxic-ingestion
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: ''
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 5 — Adverse Effects
+  quote: The most concerning risk is pulmonary aspiration leading to aspiration pneumonitis.
+    Aspiration has resulted in bronchiolitis obliterans and death. Bowel obstruction
+    (bezoars) has occurred, particularly with MDAC. Use of AC with cathartics (like
+    sorbitol or magnesium citrate) can cause severe dehydration, hypernatremia, or
+    hypermagnesemia, particularly in infants.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

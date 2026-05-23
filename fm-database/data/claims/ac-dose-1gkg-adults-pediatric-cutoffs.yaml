@@ -1,0 +1,35 @@
+slug: ac-dose-1gkg-adults-pediatric-cutoffs
+statement: Standard single-dose activated charcoal is 1 g/kg body weight (adults typically
+  25-100 g, children 1-12 years 25-50 g or 0.5-1 g/kg, infants under 1 year 10-25
+  g or 0.5-1 g/kg). If the toxin quantity is known, aim for a 10:1 charcoal-to-toxin
+  ratio. AC should NOT be given to children under 7 months old without specific medical
+  direction.
+evidence_tier: strong
+rationale: AACT/EAPCCT position statement dosing standards. Pediatric cutoff under
+  7 months reflects swallowing reflex maturity and risk of aspiration. The 10:1 ratio
+  is the toxicology textbook gold standard when the ingested amount is documented.
+coaching_translation: Adult dose is roughly 1 gram per kg body weight (so a 60 kg
+  adult ≈ 60 g). Children get half to a full gram per kg. Infants under 7 months should
+  never be given AC without a doctor's specific direction. None of this is coach-administered
+  — it's hospital territory.
+caveats:
+- Coach role is education only — AC dosing is clinician/EMT-administered.
+- Pediatric doses require clinician oversight regardless of age.
+- 10:1 ratio rule requires knowing the toxin amount, which is often guessed.
+linked_to_topics:
+- acute-toxic-ingestion
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Clinician/EMT only. Coach role is education.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 2 — Weight-Based / Age-Based Standard Doses
+  quote: Adults — 25 to 100 g (or 1 g/kg). Children (1-12 years) — 25 to 50 g (or
+    0.5-1 g/kg). Infants (<1 year) — 10 to 25 g (or 0.5-1 g/kg). AC should not be
+    given to any child under 7 months old unless medically warranted.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

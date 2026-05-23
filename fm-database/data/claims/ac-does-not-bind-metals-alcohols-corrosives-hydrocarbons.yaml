@@ -1,0 +1,41 @@
+slug: ac-does-not-bind-metals-alcohols-corrosives-hydrocarbons
+statement: Activated charcoal does NOT effectively adsorb several common toxin classes
+  — metals (iron, lithium, lead, mercury), electrolytes (sodium, potassium, magnesium),
+  alcohols (ethanol, methanol, ethylene glycol), strong acids and alkalis (caustics),
+  and hydrocarbons (gasoline, kerosene, paint thinner). For these ingestions, AC is
+  either useless (alcohols, metals) or contraindicated (caustics, hydrocarbons — high
+  aspiration risk plus no binding benefit).
+evidence_tier: strong
+rationale: Pharmacology of adsorption — AC binds nonionized, nonpolar, poorly-water-soluble
+  molecules. Ionic, polar, water-soluble substances pass right through. Caustics and
+  hydrocarbons are actively contraindicated because the volume of AC slurry plus emesis
+  risk far outweighs any (absent) benefit.
+coaching_translation: Activated charcoal is useless for hangovers (alcohol doesn't
+  bind), useless for iron or lithium poisoning (metals don't bind), and dangerous
+  if given for swallowed lye or gasoline. Specific antidotes or supportive care are
+  needed for these.
+caveats:
+- Hangover is the most common misconception — explicitly debunk with clients.
+- For metal poisoning (lead, mercury), chelation (DMSA, DMPS) is the path, not AC.
+- For alcohol poisoning, supportive care + fomepizole (for methanol/ethylene glycol)
+  is the path.
+- For caustic / hydrocarbon ingestion — DO NOT induce vomiting, DO NOT give AC, go
+  to ER.
+linked_to_topics:
+- acute-toxic-ingestion
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Critical education point — debunks common home-remedy misuse.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 1 — Substances NOT Effectively Bound
+  quote: AC is generally ineffective against polar, water-soluble, or ionized molecules.
+    Specifically it does not bind — metals (iron, lithium, lead, mercury), electrolytes
+    (sodium, potassium, magnesium), alcohols (ethanol, methanol, ethylene glycol),
+    strong acids and alkalis, hydrocarbons (gasoline, kerosene, paint thinner).
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

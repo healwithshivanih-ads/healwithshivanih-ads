@@ -1,0 +1,37 @@
+slug: ac-most-effective-within-1-hour-of-toxic-ingestion
+statement: Activated charcoal is most effective when given within 1 hour of toxic
+  ingestion — volunteer data shows toxin absorption reduction drops from 47.3% at
+  30 minutes to 16.5% at 120 minutes. Extended administration up to 4 hours may be
+  justified for large ingestions, delayed-release formulations, or toxins with anticholinergic/opioid
+  properties that slow gut motility.
+evidence_tier: strong
+rationale: Consistent with American Academy of Clinical Toxicology / European Association
+  of Poisons Centres position statements. Reflects pharmacokinetic reality — AC works
+  only on toxin still in the GI tract, and most toxins absorb within 1-2 hours.
+coaching_translation: For any toxic ingestion, time is everything. AC works best in
+  the first hour and is largely useless after a few hours unless the toxin slows gut
+  motility (opioids, anticholinergics, tricyclics). Don't wait — call Poison Control
+  immediately.
+caveats:
+- Hospital administration is the norm; home use only with Poison Control direction.
+- Time-from-ingestion estimation often unreliable in the field; AC is still typically
+  tried.
+- After 4 hours, MDAC or hemodialysis becomes the consideration, not single-dose AC.
+linked_to_topics:
+- acute-toxic-ingestion
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Coaching scope = refer to ER / Poison Control. Never coach acute
+  poisoning management.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 2 — Time Window
+  quote: AC is most effective when administered within 1 hour of ingestion. Effectiveness
+    decreases significantly as time elapses — volunteer data shows absorption reduction
+    falls from 47.3% at 30 minutes to 16.5% at 120 minutes.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,38 @@
+slug: mdac-for-carbamazepine-dapsone-phenobarbital-quinine-theophylline
+statement: Multi-Dose Activated Charcoal (MDAC) — loading 50-100 g followed by 12.5
+  g/h (or 0.25-0.5 g/kg every 1-6 hours) — is specifically indicated for life-threatening
+  ingestions of carbamazepine, dapsone, phenobarbital, quinine, or theophylline. MDAC
+  enhances elimination via 'gastrointestinal dialysis' (interrupting enterohepatic,
+  enterogastric, enteroenteric recirculation).
+evidence_tier: strong
+rationale: AACT/EAPCCT consensus on MDAC indications — the five drugs that demonstrably
+  benefit from gastrointestinal dialysis. Other drugs may be considered if severe
+  and other treatments unavailable, but these five have the strongest evidence.
+coaching_translation: Some drug overdoses (specifically carbamazepine, dapsone, phenobarbital,
+  quinine, theophylline) get repeated doses of charcoal over hours — this enhances
+  elimination from the bloodstream, not just the gut. Hospital-only intervention.
+  Worth knowing the list so you recognise the protocol.
+caveats:
+- ICU-level intervention; coach role is education.
+- Requires intact gut motility — anticholinergic/opioid co-ingestion can cause bowel
+  obstruction.
+- Risk of bezoar formation with MDAC; monitor for ileus.
+- Theophylline and carbamazepine are the strongest-evidence indications.
+linked_to_topics:
+- acute-toxic-ingestion
+linked_to_mechanisms:
+- gastrointestinal-dialysis
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: ICU-level intervention; coach education only.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 2 — MDAC Indications
+  quote: Multiple-dose activated charcoal is specifically indicated for life-threatening
+    ingestions of carbamazepine, dapsone, phenobarbital, quinine, or theophylline.
+    Typical loading dose of 50-100 g followed by 12.5 g/h.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

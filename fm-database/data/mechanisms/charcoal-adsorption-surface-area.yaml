@@ -1,0 +1,42 @@
+slug: charcoal-adsorption-surface-area
+display_name: Activated Charcoal Adsorption via High Surface Area
+aliases:
+- ac-adsorption
+- adsorption-pyrolysis
+- charcoal-pore-binding
+- ac-surface-area-mechanism
+category: metabolic
+summary: Activated charcoal is produced by pyrolysis of organic materials (wood, coconut
+  shell, peat, coal) followed by steam/heat activation that creates millions of microscopic
+  pores and tunnels. Medicinal AC has a surface area of 950-2000 m²/g. Unlike absorption
+  (substance taken into a material), adsorption is surface-based — toxin molecules
+  adhere to the internal and external pore surfaces via van der Waals forces. AC most
+  effectively adsorbs toxins in their nonionized, nonpolar, poorly water-soluble forms.
+  AC adsorbs only in the dissolved liquid phase via direct contact. Substances NOT
+  effectively bound — metals (iron, lithium, lead, mercury), electrolytes (sodium,
+  potassium, magnesium), alcohols (ethanol, methanol, ethylene glycol), strong acids/alkalis,
+  hydrocarbons (gasoline, kerosene, paint thinner).
+upstream_drivers:
+- ingestion-of-adsorbable-toxin
+- patient-cooperation-or-intubation
+- toxin-in-gi-tract-still-dissolved
+downstream_effects:
+- reduced-toxin-bioavailability
+- prevented-systemic-absorption
+- toxin-elimination-via-stool
+related_mechanisms:
+- gastrointestinal-dialysis
+linked_to_topics:
+- acute-toxic-ingestion
+- environmental-toxin-load
+evidence_tier: strong
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 1 — Mechanism of Action
+  quote: Activated charcoal acts as a gastrointestinal adsorbent. Medicinal charcoal
+    typically has a surface area of 950 to 2000 m²/g. It most effectively adsorbs
+    toxins in their nonionized, nonpolar, and poorly water-soluble forms.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

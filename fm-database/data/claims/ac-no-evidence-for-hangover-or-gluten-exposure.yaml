@@ -1,0 +1,42 @@
+slug: ac-no-evidence-for-hangover-or-gluten-exposure
+statement: Activated charcoal does NOT prevent hangovers (ethanol does not effectively
+  bind to AC) and there is NO clinical evidence that AC binds gluten or prevents the
+  autoimmune response in accidental celiac exposure. Worse, because celiac is a malabsorption
+  condition, regular AC use can worsen the existing nutrient deficiencies — making
+  it potentially harmful for celiac patients.
+evidence_tier: strong
+rationale: Pharmacology of adsorption confirms alcohols are not effectively bound
+  (Section 1). Notebook source emphasises absence of clinical evidence for gluten
+  exposure use. The malabsorption-AC interaction in celiac is a specific harm flag
+  worth noting.
+coaching_translation: Activated charcoal does NOT work for hangovers (no science backs
+  it; alcohol doesn't stick to charcoal) and does NOT help if you accidentally eat
+  gluten as a celiac. For celiac specifically, AC may make things worse by binding
+  the nutrients you're already not absorbing well. Skip both uses.
+caveats:
+- Genuine acute alcohol poisoning (medical emergency) still goes to ER, but AC is
+  not the treatment there either.
+- For celiac accidental exposure, the only evidence-based path is symptom management
+  + waiting it out.
+- The "AC detox cleanse" market is largely unfounded and can deplete nutrients.
+linked_to_topics:
+- acute-toxic-ingestion
+- celiac-disease
+- environmental-toxin-load
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Important client education — debunks two common myths.
+sources:
+- id: notebooklm-activated-charcoal-2026
+  location: Section 3 — Chronic and Supplement Use Claims (Hangover + Gluten subsections)
+  quote: There is no evidence AC prevents hangovers, as alcohols (ethanol) do not
+    bind effectively to AC. Although sometimes used to mitigate getting glutened,
+    there is a lack of clinical evidence that AC can bind gluten or prevent an autoimmune
+    response. Experts caution that because celiac is a malabsorption condition, AC
+    may worsen existing nutrient deficiencies.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
