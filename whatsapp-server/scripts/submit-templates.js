@@ -210,6 +210,17 @@ const TEMPLATES = [
       'Hi {{1}}, ready to book your next session? You can grab a time that works for you here:\n\n{{2}}\n\nLooking forward to it.\n\n— Shivani Hari\nYour Functional Health Coach',
     example: [['Priya', 'https://cal.com/shivani-hariharan-0xyy3l/discovery-consultation']],
   },
+  {
+    // V2 of fm_book_session_v1: original landed MARKETING by Meta (likely
+    // "ready to book your next session?" promotional CTA + "Looking
+    // forward to it" warm closing). Reworded as a neutral service link.
+    name: 'fm_book_session_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, here is the link to schedule your next session:\n\n{{2}}\n\nPick a time that works for you. Reply here if you cannot find a slot that suits, and I will add availability.\n\n— Shivani Hari\nYour Functional Health Coach',
+    example: [['Priya', 'https://cal.com/shivani-hariharan-0xyy3l/discovery-consultation']],
+  },
   // ── Plan-publish follow-up templates (fired by fm-coach after a plan
   //    is published — see fm-coach commit ab71ac8 plan-publish-followups.ts) ──
   {
@@ -226,6 +237,18 @@ const TEMPLATES = [
     language: 'en',
     body:
       "Hey {{1}}, this is your supplement starter pack for the protocol — tap the link below for the full list with order options for each:\n\n{{2}}\n\nBrand and dosage matter a lot — if you're unsure about any of them, please reach out before ordering. They take 2-3 days to reach you, so earlier the better. — Shivani",
+    example: [['Priya', 'https://intake.theochretree.com/supplements/priya-plan-1-2026-05-17']],
+  },
+  {
+    // V2 of fm_supplement_order_v1: original landed MARKETING (likely "tap
+    // the link below" CTA + "earlier the better" urgency). Reworded as a
+    // neutral service notification — recipient already has a protocol;
+    // this is just the order list for the supplements I've prescribed.
+    name: 'fm_supplement_order_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, your supplement order list from the protocol is ready:\n\n{{2}}\n\nEach link shows the brand and dose I have prescribed. Reply here with any questions before placing the order.\n\n— Shivani Hari",
     example: [['Priya', 'https://intake.theochretree.com/supplements/priya-plan-1-2026-05-17']],
   },
   {
