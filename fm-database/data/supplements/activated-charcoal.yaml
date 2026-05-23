@@ -19,6 +19,7 @@ linked_to_topics:
 linked_to_claims:
 - activated-charcoal-binds-ingested-mercury
 - activated-charcoal-binds-ingested-mercury-post-amalgam-removal
+- ac-coach-experience-alcohol-gluten-binding
 notes_for_coach: 'Used specifically around dental amalgam removal: 800-1000mg immediately
   before procedure, immediately after, and next morning/afternoon. Discontinue by
   day 2 post-procedure. Do not take within 2 hours of chlorella. Adult doses only.'
@@ -40,5 +41,5 @@ sources:
     mercury.'
 version: 2
 status: active
-updated_at: '2026-05-04'
-updated_by: shivani
+updated_at: '2026-05-18'
+updated_by: Shivani

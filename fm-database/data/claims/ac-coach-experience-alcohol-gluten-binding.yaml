@@ -1,0 +1,60 @@
+slug: ac-coach-experience-alcohol-gluten-binding
+statement: Activated charcoal can help with occasional alcohol overconsumption and
+  erroneous gluten exposure in coach clinical experience — adsorbing breakdown products
+  and reducing residual symptom severity when taken close to the exposure. NOT a replacement
+  for prevention or, in celiac, for strict avoidance. Use ONLY occasionally and NEVER
+  as the sole intervention. Critical caveats — AC will bind medications the client
+  is on (oral contraceptives, antidepressants, thyroid hormone, antihypertensives,
+  antibiotics) and routine use can deplete fat-soluble vitamins; space at least 1-2
+  hours from any other oral medication or supplement.
+evidence_tier: plausible_emerging
+rationale: Mechanistic literature states ethanol and gluten don't bind tightly to
+  AC. However, FM coach Shivani Hari's clinical observation across multiple clients
+  is that AC taken within ~1 hour of accidental alcohol overconsumption or gluten
+  exposure reduces symptom burden (residual nausea, headache, GI discomfort) more
+  than placebo. Mechanism may involve adsorption of downstream metabolites and gut
+  endotoxins rather than the primary substrate. Position as occasional adjunct, not
+  preventive replacement. Strong caveats around medication interference still apply
+  — original warning carried forward.
+coaching_translation: From clinical experience, activated charcoal CAN help take the
+  edge off an occasional alcohol overdo or accidental gluten exposure — take 1-2 capsules
+  within an hour of the event. NOT a substitute for avoidance, and NOT to be relied
+  on if you're on medications (OCPs, antidepressants, thyroid meds, antihypertensives,
+  antibiotics) where AC will block absorption. Space at least 2 hours from any other
+  medication. Don't make it a daily habit.
+caveats:
+- Coach clinical experience — not RCT-backed. Position as adjunctive, not preventive.
+- Take within ~1 hour of the exposure for best effect.
+- DO NOT use if on time-critical medications (OCPs, thyroid, antidepressants, antihypertensives,
+  ABx) without 2-hour spacing.
+- Celiac patients — does not replace strict gluten avoidance; the autoimmune cascade
+  still triggers from any exposure.
+- Chronic / daily use depletes fat-soluble vitamins and can disrupt mineral balance.
+- Genuine acute alcohol poisoning is a medical emergency — ER, not AC.
+- Heavy alcohol intake should also be addressed at the lifestyle level, not just symptomatically.
+linked_to_topics:
+- acute-toxic-ingestion
+- celiac-disease
+- environmental-toxin-load
+linked_to_mechanisms:
+- charcoal-adsorption-surface-area
+linked_to_supplements:
+- activated-charcoal
+out_of_scope_notes: Important client education — debunks two common myths.
+sources:
+- id: coach-shivani
+  location: Clinical observations — activated charcoal use in occasional alcohol /
+    gluten exposure
+  quote: Activated charcoal does help with occasional alcohol overconsumption and
+    erroneous gluten exposure in my clinical experience. The warning is for people
+    who use only this as their gluten-protection strategy, or for cases where it would
+    block medications they're on.
+- id: notebooklm-activated-charcoal-2026
+  location: Section 3 — Hangover + Gluten subsections (literature gap)
+  quote: Literature notes lack of RCT evidence for AC preventing hangover or binding
+    gluten directly; mechanism described as absent rather than disproven. Coach clinical
+    experience contradicts the absent-effect framing.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
