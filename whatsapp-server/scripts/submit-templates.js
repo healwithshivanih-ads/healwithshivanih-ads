@@ -408,6 +408,44 @@ const TEMPLATES = [
       exampleSuffix: 'cortisol-belly-may21',
     }],
   },
+
+  // ── Workshop reminder series (4 templates: -24h / -1h / starting now / replay) ─
+  //    All UTILITY, all body-URL pattern (auto-linkified by WhatsApp — same shape
+  //    as fm_book_session_v1). Sign-off matches the email + WhatsApp brand voice.
+  {
+    name: 'workshop_reminder_24h_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}},\n\nReminder — *{{2}}* is {{3}}.\n\nYour join link, ready when you are:\n\n{{4}}\n\nBring your questions. See you tomorrow.\n\n— The Ochre Tree',
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'tomorrow at 7:30 PM IST', 'https://us06web.zoom.us/j/12345678901']],
+  },
+  {
+    name: 'workshop_reminder_1h_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}},\n\n*{{2}}* starts in about an hour, at {{3}}.\n\nTap to join when you're ready:\n\n{{4}}\n\nSettle in a few minutes early — we'll be live on Zoom.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', '7:30 PM IST', 'https://us06web.zoom.us/j/12345678901']],
+  },
+  {
+    name: 'workshop_starting_now_v1',
+    category: 'UTILITY',
+    language: 'en',
+    // Body must NOT start (or end) with a variable per Meta rule
+    // (subcode 2388299). "Hi {{1}}" prepended instead of bare "{{1}}".
+    body:
+      "Hi {{1}}, we're live.\n\n*{{2}}* has started — come on in:\n\n{{3}}\n\nSee you in there.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/j/12345678901']],
+  },
+  {
+    name: 'workshop_replay_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}},\n\nThank you for joining *{{2}}*.\n\nHere's the replay — available for a limited time:\n\n{{3}}\n\nIf something came up for you after, just reply here.\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/rec/share/abc123']],
+  },
 ];
 
 // ---------------------------------------------------------------------------
