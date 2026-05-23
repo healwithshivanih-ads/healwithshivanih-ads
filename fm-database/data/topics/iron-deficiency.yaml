@@ -29,6 +29,11 @@ sources:
   quote: Iron deficiency is the most common nutritional deficiency in the world and
     can cause anemia, a condition that affects the transport of oxygen throughout
     the body.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DXy9b_KjJT2/
+  quote: Ferritin alone is unreliable in inflammation → Hepcidin blocks iron absorption
+    when inflammation is high → Iron requires cofactors like B12, copper, Vitamin
+    A and folate
 version: 1
 status: active
 updated_at: '2026-05-02'

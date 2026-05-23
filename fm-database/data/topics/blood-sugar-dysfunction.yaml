@@ -69,6 +69,10 @@ sources:
   location: Micronutrients for Insulin Sensitivity
   quote: Insulin resistance (IR) is a condition where muscles & other tissues in the
     body do not respond to insulin as expected.
+- id: vitaone-instagram-posts
+  location: POST https://www.instagram.com/p/DX1jE67jI4m/ and POST https://www.instagram.com/p/DX6sbxqDFJ5/
+  quote: Insulin resistance is the primary driver in most metabolic diseases → TG:HDL
+    ratio is an early marker of insulin resistance
 version: 3
 status: active
 updated_at: '2026-05-04'
