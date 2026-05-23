@@ -102,8 +102,7 @@ export function IntakeInsightsCard({ clientId, initial, submittedAt }: Props) {
             padding: "8px 0",
           }}
         >
-          No intake form on file yet. Use the Send intake form button below
-          to share a tokenised link.
+          No intake form on file yet. Go to the Send &amp; unlock tab to share a tokenised link.
         </div>
       </FmPanel>
     );

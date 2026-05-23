@@ -166,7 +166,7 @@ function deriveStage(p: Props): Stage {
     return {
       emoji: "🚫",
       label: "Not invited yet",
-      hint: `No intake form has been generated for ${p.firstName}. Use Send intake form below.`,
+      hint: `No intake form has been generated for ${p.firstName}. Go to the Send & unlock tab to generate one.`,
       tone: "neutral",
     };
   }

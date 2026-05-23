@@ -1346,7 +1346,7 @@ export default async function ClientV2Page({
           {/* 📞 Contact & engagement — plain stack, no tabs */}
           <FmGroupedPanel id="overview.contact" icon="📞" title="Contact & engagement">
                       <FmContactPanel pinned={pinned} more={more} />
-                      {true && (
+                      {hasAnyJourneySignal && (
                         <div
                           style={{
                             padding: "10px 12px",
