@@ -1,0 +1,62 @@
+slug: dry-eye-syndrome
+display_name: Dry Eye Syndrome (Keratoconjunctivitis Sicca)
+aliases:
+- dry-eye
+- dry-eyes
+- keratoconjunctivitis-sicca
+- kcs
+- sicca-syndrome
+- ocular-surface-disease
+summary: Chronic ocular surface disease characterised by reduced tear production,
+  increased tear evaporation, or both, leading to irritation, burning, blurred vision,
+  and visual fluctuation. Common drivers in FM practice — diabetic microvascular damage
+  (lacrimal gland), autoimmune (Sjögren's, RA, Hashimoto's), perimenopausal estrogen
+  decline (androgens normally support meibomian gland function), screen-induced reduced
+  blink rate, omega-3 deficiency, vitamin A deficiency, anticholinergic medications.
+  Diabetic dry eye affects up to 50% of T2DM patients and is associated with diabetic
+  retinopathy risk.
+common_symptoms:
+- burning-eyes
+- gritty-sensation
+- blurred-vision
+- light-sensitivity
+- excessive-tearing-paradox
+red_flags:
+- corneal abrasion or ulcer
+- severe pain or vision change
+- signs of Sjögren's (dry mouth + joint pain + fatigue) → rheumatology referral
+- sudden onset
+related_topics:
+- type-2-diabetes-mellitus
+- autoimmune-thyroiditis
+- perimenopause-and-menopause
+- diabetic-retinopathy
+- environmental-toxin-load
+key_mechanisms:
+- diabetic-microvascular-damage
+- estrogen-decline
+- chronic-inflammation
+coaching_scope_notes: Coaching role — omega-3 EPA/DHA repletion (2-3 g/day, RCT evidence
+  for dry eye), screen hygiene (20-20-20 rule), humidifier, hydration, blink exercises,
+  vitamin A from food sources (orange/yellow vegetables + animal sources), warm compress
+  for meibomian gland dysfunction. Identify and reduce anticholinergic medications
+  with prescriber where possible. Refer for autoimmune workup (anti-Ro/anti-La) if
+  sicca symptoms + joint pain.
+clinician_scope_notes: Schirmer test, tear breakup time, ocular surface stain. Artificial
+  tears, cyclosporine ophthalmic, lifitegrast. Punctal plugs. Rule out Sjögren's —
+  anti-Ro/SSA, anti-La/SSB, ANA, RF, salivary gland biopsy if needed.
+notes_for_coach: Diabetic dry eyes are mechanistically tied to glycemic control —
+  improving HbA1c often improves ocular symptoms over months. For perimenopausal women,
+  dry eye often co-occurs with vaginal dryness — both estrogen-decline downstream.
+  Omega-3 RCT evidence is strongest at 2-3 g EPA+DHA combined.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-008 Sudarshan (T2DM + dry eyes)
+  quote: Diabetic dry eye is one of the most common comorbidities of T2DM and an underappreciated
+    marker for microvascular complications. Omega-3 plus glycemic control is the FM-standard
+    approach.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

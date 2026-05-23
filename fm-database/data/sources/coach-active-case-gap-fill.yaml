@@ -1,0 +1,13 @@
+id: coach-active-case-gap-fill
+title: Coach Active-Case Gap Fill — entries surfaced by current client load
+source_type: expert_consensus
+quality: moderate
+authors:
+- Shivani Hari
+notes: Gap-fill catalogue entries created when a scan of active client conditions
+  revealed missing topics / symptoms. Each entry is seeded with FM-standard content;
+  enriches as relevant ingest material accumulates.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,68 @@
+slug: functional-dyspepsia
+display_name: Functional Dyspepsia
+aliases:
+- non-ulcer-dyspepsia
+- fd
+- chronic-indigestion
+- postprandial-distress-syndrome
+- epigastric-pain-syndrome
+summary: Persistent upper GI symptoms — early satiety, postprandial fullness, epigastric
+  pain, burning — without identifiable structural or biochemical cause on standard
+  workup. Rome IV subtypes — Postprandial Distress Syndrome (early satiety + fullness)
+  and Epigastric Pain Syndrome. FM-relevant drivers — hypochlorhydria (common in elderly
+  + chronic PPI use), low pancreatic enzyme output, H. pylori (treat if positive),
+  SIBO, food sensitivities, vagal tone dysfunction, chronic stress / HPA dysregulation,
+  and gut-brain axis disturbance. FM-standard intervention — bitter herbs and digestive
+  enzymes before meals, betaine HCl titration (under supervision, ruled-out PUD),
+  HPA-axis support, vagal tone work (gargle, humming, breathwork), food allergen elimination,
+  peppermint oil for spasm, mastic gum + DGL if H. pylori positive.
+common_symptoms:
+- early-satiety
+- postprandial-fullness
+- epigastric-pain
+- bloating
+- belching
+- nausea
+red_flags:
+- weight loss / anemia / persistent vomiting / hematemesis / dysphagia / age >55 with
+  new onset → endoscopy
+- alarm symptoms (Rome IV) — bleeding, anemia, anorexia, progressive dysphagia, mass
+related_topics:
+- gerd
+- h-pylori-infection
+- peptic-ulcer-disease
+- hypochlorhydria
+- sibo
+- irritable-bowel-syndrome
+- gut-brain-axis-dysfunction
+key_mechanisms:
+- low-stomach-acid
+- pancreatic-enzyme-insufficiency
+- altered-gi-motility
+- h-pylori-mucosal-defense-breakdown
+- gut-brain-skin-axis
+coaching_scope_notes: Coaching role — bitters before meals (Iberogast, gentian, dandelion),
+  digestive enzyme trial, betaine HCl titration with caution (rule out active ulcer
+  first), food allergen elimination, peppermint oil for spasm, vagal tone practices,
+  stress management, eating-environment work (slow + chew + no screens). Refer for
+  endoscopy if alarm symptoms or age >55 new onset. Test for H. pylori with breath
+  / stool antigen.
+clinician_scope_notes: Rome IV criteria for diagnosis after ruling out organic disease.
+  PPI trial / prokinetic / tricyclic / SSRI / SNRI per gastroenterology. Cognitive
+  Behavioral Therapy increasingly used for refractory functional dyspepsia.
+notes_for_coach: Most "GERD" diagnoses in older adults on chronic PPI are actually
+  hypochlorhydria — counterintuitive but the FM-standard reframe. Betaine HCl titration
+  is the diagnostic + therapeutic trial. Iberogast is the herbal multi-effect blend
+  most consistently effective.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-008 Sudarshan (suspected functional dyspepsia + chronic
+    hypochlorhydria)
+  quote: Functional dyspepsia is one of the most common "no diagnosis" GI presentations
+    and almost always responds to the FM digestive support stack — bitters, enzymes,
+    HCl titration, allergen elimination, vagal tone work.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

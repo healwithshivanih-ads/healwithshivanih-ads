@@ -1,0 +1,65 @@
+slug: tendinopathy
+display_name: Tendinopathy and Weak Tendons
+aliases:
+- tendon-injury
+- weak-tendons
+- chronic-tendonitis
+- tendinosis
+- recurrent-tendon-pain
+- knee-tendon-injury
+- achilles-tendinopathy
+- rotator-cuff-tendinopathy
+summary: Chronic non-inflammatory degeneration of tendon collagen matrix (now understood
+  as tendinosis, not tendinitis) — characterised by pain on loading, stiffness, and
+  impaired performance. FM-relevant drivers — collagen synthesis deficits (low vitamin
+  C, low silica, low manganese, low protein intake), insulin resistance (impairs tissue
+  repair), chronic systemic inflammation, hypothyroidism (impaired connective tissue
+  turnover), fluoroquinolone antibiotic exposure (Cipro, Levaquin — known tendon-rupture
+  risk especially with concurrent corticosteroids), perimenopausal estrogen decline
+  (estrogen modulates tendon collagen). Eccentric loading is the evidence-based rehab
+  approach; nutritional support amplifies recovery.
+common_symptoms:
+- joint-pain
+- stiffness-after-rest
+- pain-on-loading
+- muscle-aches-joint-pain
+red_flags:
+- sudden tendon rupture (Achilles, biceps, quadriceps) — surgical emergency
+- recent fluoroquinolone exposure plus tendon pain — discontinue + refer
+- bilateral symmetric tendinopathy → autoimmune workup
+related_topics:
+- insulin-resistance
+- hypothyroidism
+- perimenopause-and-menopause
+- rheumatoid-arthritis
+- chronic-inflammation
+key_mechanisms:
+- chronic-inflammation
+- impaired-collagen-synthesis
+- estrogen-decline
+- insulin-resistance
+coaching_scope_notes: Coaching role — collagen peptides (10-20 g daily, paired with
+  vitamin C 50-100 mg for hydroxylation), eccentric loading protocols (Alfredson for
+  Achilles, slow heavy resistance for patellar), adequate protein (1.2-1.6 g/kg),
+  address insulin resistance + thyroid + estrogen, omega-3 anti-inflammatory, magnesium
+  for muscle quality. Eliminate fluoroquinolones with prescriber where possible. Refer
+  for physiotherapy assessment if persistent.
+clinician_scope_notes: Imaging only if surgical decision needed. Eccentric loading
+  is first-line. Corticosteroid injection cautioned — short-term pain relief but worsens
+  long-term outcomes. PRP and ECSWT emerging options. Surgical repair only after 6-12
+  months conservative failure.
+notes_for_coach: For perimenopausal women — estrogen decline + insulin resistance
+  together explain a lot of "out of nowhere" tendon issues (frozen shoulder, knee
+  tendon, plantar fasciitis). Collagen peptides + vitamin C + eccentric loading is
+  the FM core stack. Track HbA1c and TSH if tendon symptoms persist.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-005 Hariharan + cl-011 Deepti (knee injury / weak tendons)
+  quote: Tendon pain and weakness in perimenopausal women + men with insulin resistance
+    is increasingly common; collagen + vitamin C + eccentric loading + addressing
+    root metabolic drivers is the FM playbook.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

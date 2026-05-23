@@ -1,0 +1,65 @@
+slug: atherogenic-dyslipidemia
+display_name: Atherogenic Dyslipidemia
+aliases:
+- atherogenic-lipid-pattern
+- diabetic-dyslipidemia
+- metabolic-dyslipidemia
+- small-dense-ldl-pattern
+- pattern-b-lipid-profile
+summary: A specific lipid triad — elevated triglycerides (≥150 mg/dL), low HDL-C (<40
+  men / <50 women), and a high proportion of small dense LDL particles ("Pattern B")
+  — that confers far higher cardiovascular risk than total cholesterol or LDL-C alone
+  would suggest. Driven primarily by insulin resistance and visceral adiposity. Often
+  paired with elevated ApoB, elevated Lp(a), elevated hsCRP, and elevated fasting
+  insulin. Standard LDL targets miss this pattern; ApoB and TG/HDL ratio (target <1.5)
+  capture it better. FM-standard intervention — address insulin resistance first (carb
+  load, exercise, weight), then omega-3 (specifically high-EPA for TG), niacin or
+  red yeast rice for HDL/ApoB, plant sterols, soluble fibre, Mediterranean pattern.
+common_symptoms:
+- central-adiposity
+- skin-tags
+- acanthosis-nigricans
+red_flags:
+- known coronary artery disease
+- familial hypercholesterolemia pattern (very high LDL + family history of early CAD)
+- TG >500 → pancreatitis risk → referral
+related_topics:
+- dyslipidemia
+- insulin-resistance
+- metabolic-syndrome
+- type-2-diabetes-mellitus
+- atherosclerosis
+- cardiovascular-disease-prevention
+- nafld
+key_mechanisms:
+- insulin-resistance
+- small-dense-ldl-atherogenesis
+- visceral-adipose-inflammation
+- ldl-oxidation
+- apob-atherogenic-particle-burden
+coaching_scope_notes: Coaching role — diet structured for insulin sensitivity (lower
+  carb, especially refined / liquid), exercise (resistance + aerobic), omega-3 2-4
+  g/day (TG drops), soluble fibre, plant sterols, Mediterranean pattern, weight loss
+  if visceral adiposity. Sleep and stress also drive insulin resistance. Standard
+  lipid panel insufficient — recommend ApoB, fasting insulin, hsCRP, and TG/HDL ratio
+  be added.
+clinician_scope_notes: Add ApoB, Lp(a), hsCRP, fasting insulin to workup. Statins
+  for ASCVD prevention per guidelines; niacin / red yeast rice / fibrate adjuncts.
+  Bempedoic acid + PCSK9 for refractory. Treat insulin resistance with lifestyle ±
+  metformin / SGLT2i / GLP-1.
+notes_for_coach: TG/HDL ratio is the single best screening number for this pattern
+  in clinic — under 1.5 is healthy, 2-3 suspicious, >3 atherogenic. Most clients with
+  prediabetes / T2DM / metabolic syndrome have this pattern even when their "cholesterol"
+  looks fine. ApoB > 90 is the modern gold-standard atherogenic marker.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active cases — cl-005 Hariharan, cl-006 Geetika, cl-008 Sudarshan, nidhi-jain
+    (all have this lipid pattern)
+  quote: Multiple active clients show the atherogenic dyslipidemia pattern. Standard
+    lipid panel under-detects it; ApoB and TG/HDL ratio are the FM-preferred markers.
+    Treatment is insulin-resistance-first.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

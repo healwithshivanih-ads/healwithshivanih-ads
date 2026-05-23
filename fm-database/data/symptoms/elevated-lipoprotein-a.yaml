@@ -1,0 +1,39 @@
+slug: elevated-lipoprotein-a
+display_name: Elevated Lipoprotein(a) [Lp(a)]
+aliases:
+- elevated-lp-a
+- high-lipoprotein-a
+- lp-a-high
+- lp(a)-elevated
+category: cardiovascular
+severity: concerning
+description: Lipoprotein(a) is an LDL-like particle with an attached apolipoprotein(a)
+  tail; serum levels are 80-90% genetically determined and remain stable across life.
+  Elevated Lp(a) >50 mg/dL (or >125 nmol/L) is an independent cardiovascular risk
+  factor — confers roughly 2× elevated atherothrombotic risk and accelerates aortic
+  valve stenosis. Standard lipid-lowering drugs (statins) have minimal effect on Lp(a);
+  niacin reduces it modestly (10-30%); newer therapies (pelacarsen, olpasiran) are
+  in trials. FM-relevant approach — recognise as a "fixed" inheritance marker, treat
+  ALL other modifiable cardiovascular risks aggressively (LDL, ApoB, BP, glycemia,
+  inflammation, lifestyle).
+when_to_refer: Elevated Lp(a) plus any of — family history of early CAD, established
+  ASCVD, T2DM, hypertension. Lp(a) >180 mg/dL = very high risk irrespective of other
+  factors → cardiology consultation.
+linked_to_topics:
+- atherogenic-dyslipidemia
+- atherosclerosis
+- cardiovascular-disease-prevention
+- dyslipidemia
+linked_to_mechanisms:
+- lipoprotein-a-atherogenicity
+- apob-atherogenic-particle-burden
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-006 Geetika (elevated Lp(a))
+  quote: Elevated Lp(a) is genetically determined and stable across life. Treat all
+    other modifiable CV risks aggressively when present. Niacin modestly reduces;
+    newer Lp(a)-specific therapies in trials.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

@@ -1,0 +1,61 @@
+slug: autoimmune-dermatitis
+display_name: Autoimmune Dermatitis
+aliases:
+- autoimmune-skin-disease
+- dermatitis-autoimmune-pattern
+- immune-mediated-dermatitis
+summary: Skin conditions in which an autoimmune mechanism is the primary driver —
+  distinct from atopic dermatitis (Th2-IgE-mediated) and contact dermatitis (delayed
+  hypersensitivity). Includes dermatitis herpetiformis (gluten-driven), pemphigus,
+  pemphigoid, lichen planus, lupus skin manifestations, dermatomyositis, and the dermatitis
+  pattern that frequently accompanies Hashimoto's thyroiditis and other systemic autoimmune
+  disease. FM-relevant levers — gluten elimination (especially in dermatitis herpetiformis),
+  gut-skin axis repair (leaky gut + dysbiosis), low-dose naltrexone, vitamin D repletion
+  to 50-80 ng/mL, omega-3, stress / HPA-axis modulation, identification and removal
+  of environmental triggers.
+common_symptoms:
+- skin-rash
+- chronic-itching
+- skin-inflammation
+- skin-discoloration
+red_flags:
+- mucous membrane involvement (Stevens-Johnson, pemphigus)
+- bullae or blistering
+- systemic symptoms (fever, joint pain) → rheumatology referral
+- pediatric severe presentations
+related_topics:
+- autoimmune-thyroiditis
+- celiac-disease
+- atopic-dermatitis
+- gut-brain-skin-axis
+- chronic-inflammation
+- leaky-gut
+key_mechanisms:
+- molecular-mimicry
+- gut-brain-skin-axis
+- leaky-gut
+- chronic-inflammation
+coaching_scope_notes: Coaching role — strict gluten-free trial 3-6 months (especially
+  if Hashimoto's or celiac antibodies suspected), gut healing (5R), vitamin D to 50-80
+  ng/mL, omega-3, identify food allergens through elimination, dental amalgam workup
+  if mercury exposure suspected, stress management. Refer to dermatology for biopsy
+  + diagnosis confirmation. Refer to rheumatology if systemic signs.
+clinician_scope_notes: Direct immunofluorescence biopsy, ANA, anti-Ro/La, anti-tTG
+  IgA, total IgA, complement levels. Topical / systemic immunosuppressants per dermatology
+  and rheumatology. Low-dose naltrexone increasingly used adjunctively.
+notes_for_coach: In Hashimoto's patients with skin involvement, the autoimmune dermatitis
+  often improves significantly with the same gut + gluten + vitamin D + selenium +
+  omega-3 protocol used for the thyroid antibodies — both are driven by the same molecular
+  mimicry + leaky gut axis.
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-004 Dhanishta (Hashimoto''s + autoimmune dermatitis)
+  quote: When Hashimoto''s patients present with concurrent autoimmune dermatitis,
+    the gut-thyroid-skin triad is treated as one axis — gluten elimination, leaky
+    gut repair, vitamin D, omega-3, selenium, stress modulation all serve both conditions
+    simultaneously.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani

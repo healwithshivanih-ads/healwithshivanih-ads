@@ -1,0 +1,35 @@
+slug: dry-eyes
+display_name: Dry Eyes (Symptom)
+aliases:
+- dry-eye-symptom
+- eye-dryness
+- ocular-dryness
+- gritty-eyes
+- burning-eyes
+category: other
+severity: common
+description: Subjective complaint of eye dryness, grittiness, burning, fluctuating
+  vision, or paradoxical reflex tearing. Distinct from dry-eye-syndrome (the clinical
+  diagnosis) as a symptom that may be intermittent or situational. Common in screen-heavy
+  work, contact lens users, perimenopausal women, T2DM, autoimmune conditions, and
+  clients on anticholinergic medications.
+when_to_refer: Persistent symptoms despite basic lifestyle measures (omega-3, screen
+  hygiene, humidifier); pain or vision change; sicca pattern with dry mouth + joint
+  pain → autoimmune workup.
+linked_to_topics:
+- dry-eye-syndrome
+- type-2-diabetes-mellitus
+- perimenopause-and-menopause
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- estrogen-decline
+- chronic-inflammation
+sources:
+- id: coach-active-case-gap-fill
+  location: Active case — cl-008 Sudarshan
+  quote: Dry-eye symptom flagged in T2DM intake; common comorbidity needing distinct
+    symptom slug for tracking.
+version: 1
+status: active
+updated_at: '2026-05-18'
+updated_by: Shivani
