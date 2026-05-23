@@ -495,6 +495,17 @@ const TEMPLATES = [
       "Hi {{1}}, your replay for *{{2}}* is ready. You can watch it any time using this link:\n\n{{3}}\n\nIf anything came up for you after the session, just reply here and I will get back to you.\n\n— The Ochre Tree",
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://us06web.zoom.us/rec/share/abc123']],
   },
+  {
+    // Payment link send for a registered workshop. Transactional reference
+    // to the recipient's prior action ("complete your registration"), no
+    // urgency, no promo claims — designed to land UTILITY on first try.
+    name: 'workshop_payment_link_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}},\n\nHere is the payment link to complete your registration for *{{2}}*:\n\n{{3}}\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
+  },
 ];
 
 // ---------------------------------------------------------------------------
