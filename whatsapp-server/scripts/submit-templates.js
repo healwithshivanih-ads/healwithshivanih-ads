@@ -506,6 +506,17 @@ const TEMPLATES = [
       "Hi {{1}},\n\nHere is the payment link to complete your registration for *{{2}}*:\n\n{{3}}\n\n— The Ochre Tree",
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
   },
+  {
+    // Reminder for an unpaid registration. Factual ("still active") not
+    // urgent — references the prior creation of the payment link. Same
+    // UTILITY-friendly pattern as fm_intake_reminder.
+    name: 'workshop_payment_link_reminder_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}},\n\nA reminder — your payment link for *{{2}}* is still active:\n\n{{3}}\n\n— The Ochre Tree",
+    example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
+  },
 ];
 
 // ---------------------------------------------------------------------------
