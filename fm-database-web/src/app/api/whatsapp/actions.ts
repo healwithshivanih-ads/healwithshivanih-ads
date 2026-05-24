@@ -5,6 +5,7 @@ import path from "node:path";
 import os from "node:os";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
+import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
 
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
 
@@ -197,7 +198,11 @@ export async function recordOutboundMessageAction(input: {
   // published plan's lifetime accumulates in ONE session tagged
   // `[plan: <slug>]`. Plan supersede → next message starts a new
   // session. Pre-programme clients accumulate under `[plan: prospect]`.
-  const { getActivePlanSlugForClient } = await import("@/lib/fmdb/active-plan-slug");
+  // Static import — was a dynamic await import() which hit ChunkLoadError
+  // intermittently after rebuilds (Next 16 turbopack chunk-hash mismatch
+  // when PM2 holds a reference across the build). That threw, BOTH call
+  // sites swallowed silently → message went out fine but never landed in
+  // the rolling thread (durable bug surfaced 2026-05-24).
   const { marker } = await getActivePlanSlugForClient(input.clientId);
   const presenting = `${marker} ${tags}\n\n${input.renderedBody}`;
   const payload = JSON.stringify({

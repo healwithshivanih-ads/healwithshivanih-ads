@@ -290,27 +290,38 @@ function ComposeView({
 
     // Log the outbound to client's sessions/ with [source: whatsapp_outbound]
     // tag so the chat-thread view can combine it with inbound replies.
-    // Best-effort — failures are silent (the send already succeeded; this
-    // is just for the thread view).
+    // Errors here used to be swallowed — but THE durable bug is: send
+    // succeeds on WhatsApp, record fails locally, message never appears
+    // in the chat panel, coach thinks it didn't go. Now surfaced.
+    // (memory: feedback_send_buttons_persist_state, 2026-05-24.)
     if (res.ok) {
       try {
-        await recordOutboundMessageAction({
+        const rec = await recordOutboundMessageAction({
           clientId,
           templateName: template.whatsapp_template_name,
           renderedBody: filled,
         });
-        // Tell WhatsAppThreadPanel (and any other listener) to re-fetch
-        // immediately — your own outbound bubble shows up in <1s instead
-        // of waiting up to 30s for the next auto-poll tick. CustomEvent
-        // is decoupled (no prop drilling) and survives across page-level
-        // unrelated re-renders.
+        if (!rec.ok) {
+          // Surface alongside the success result. The WA send succeeded
+          // (client got the message); only the local record failed.
+          setSendResult({
+            ok: false,
+            error: `Sent on WhatsApp ✓ but failed to record locally: ${rec.error ?? "unknown"}. The client received the message; chat panel won't show it until the record retry succeeds.`,
+          });
+          console.error("[message-templates] recordOutbound failed:", rec.error);
+        }
         if (typeof window !== "undefined") {
           window.dispatchEvent(
             new CustomEvent("whatsapp-message-sent", { detail: { clientId } }),
           );
         }
-      } catch {
-        /* silent — thread view will just be missing this entry */
+      } catch (e) {
+        const errMsg = (e as Error).message;
+        setSendResult({
+          ok: false,
+          error: `Sent on WhatsApp ✓ but record threw: ${errMsg}. Client received the message; chat panel won't reflect it.`,
+        });
+        console.error("[message-templates] recordOutbound threw:", e);
       }
     }
   };

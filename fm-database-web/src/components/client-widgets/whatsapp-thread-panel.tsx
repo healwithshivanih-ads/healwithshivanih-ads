@@ -204,22 +204,41 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
       name: clientName,
     });
     if (res.ok) {
-      // Log + clear + instant-refresh via the same event the templates
-      // panel uses, so the bubble shows up in <1s.
+      // Log the outbound to the rolling thread session. If THIS fails,
+      // the message went out on WhatsApp but won't appear in the chat
+      // panel — surface the failure loudly instead of swallowing.
+      // Durable bug 2026-05-24 (memory: feedback_send_buttons_persist_state).
+      let recordOk = true;
+      let recordErr: string | null = null;
       try {
-        await recordOutboundMessageAction({
+        const rec = await recordOutboundMessageAction({
           clientId,
           templateName: "(free-text reply)",
           renderedBody: replyText.trim(),
         });
-      } catch {
-        /* silent — best effort */
+        if (!rec.ok) {
+          recordOk = false;
+          recordErr = rec.error ?? "record failed";
+        }
+      } catch (e) {
+        recordOk = false;
+        recordErr = (e as Error).message;
       }
-      setReplyText("");
-      setReplyStatus({ ok: true });
-      void refresh();
-      // Auto-dismiss success badge after 3s
-      setTimeout(() => setReplyStatus(null), 3000);
+      if (recordOk) {
+        setReplyText("");
+        setReplyStatus({ ok: true });
+        void refresh();
+        setTimeout(() => setReplyStatus(null), 3000);
+      } else {
+        // Don't clear the textarea — coach may want to retry. Show a
+        // partial-success banner so they know the message DID send but
+        // won't appear in the chat below.
+        setReplyStatus({
+          ok: false,
+          error: `Sent on WhatsApp but failed to record locally: ${recordErr}. The message went through to the client; refresh & it may still appear if a retry succeeds.`,
+        });
+        console.error("[whatsapp-thread] recordOutbound failed:", recordErr);
+      }
     } else {
       setReplyStatus({ ok: false, error: res.error });
     }

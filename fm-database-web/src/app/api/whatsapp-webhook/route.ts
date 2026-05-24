@@ -70,6 +70,7 @@ import yaml from "js-yaml";
 import { findClientByPhoneAction } from "@/lib/server-actions/clients";
 import { parseInboundStartDateIntent } from "@/lib/start-date-parser";
 import { recordInboundCycleDate } from "@/lib/server-actions/cycle-date-collector";
+import { getActivePlanSlugForClient } from "@/lib/fmdb/active-plan-slug";
 import {
   classifyPollReply,
   pillarFromDimension,
@@ -113,7 +114,9 @@ async function saveQuickNote(
   // Each segment keeps its own [source: whatsapp_webhook] /
   // [source: whatsapp_outbound] tag so the thread panel renders
   // direction correctly after splitting on `---`.
-  const { getActivePlanSlugForClient } = await import("@/lib/fmdb/active-plan-slug");
+  // Static import — was dynamic await import() which intermittently hit
+  // ChunkLoadError after rebuilds and silently dropped inbound messages
+  // (PM2 holds a stale chunk hash across `next build`). Fixed 2026-05-24.
   const { marker } = await getActivePlanSlugForClient(clientId);
   const payload = {
     client_id: clientId,
@@ -433,9 +436,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, skipped: true, reason: "empty message" });
   }
 
+  // IST formatting is non-negotiable: the Fly app runs in UTC, so a bare
+  // toLocaleString("en-IN") formats UTC time with en-IN STYLING, not IST
+  // time. An 08:17 IST inbound was rendering as "2:47 am" in the chat
+  // thread — coach reads it as "back-dated" because that time hasn't
+  // happened yet locally. Always pin the timeZone option.
   const ts = body.timestamp
-    ? new Date(body.timestamp as string).toLocaleString("en-IN")
-    : new Date().toLocaleString("en-IN");
+    ? new Date(body.timestamp as string).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+    : new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
 
   const match = await findClientByPhoneAction(rawPhone);
   if (!match.ok || !match.client_id) {
