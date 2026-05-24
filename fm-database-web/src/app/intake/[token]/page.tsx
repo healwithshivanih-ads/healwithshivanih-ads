@@ -48,7 +48,7 @@ export default async function IntakeTokenPage({
         <p className="fm-thanks__body">{body}</p>
         {showWaCta && (
           <a
-            href={`https://wa.me/918850176753?text=${waMsg}`}
+            href={`https://wa.me/918976563971?text=${waMsg}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{

@@ -1124,7 +1124,7 @@ def _start_date_buttons_html(
     supplements_start_ymd,     # Optional[str]
     plan_slug,                 # Optional[str]
     letter_type,               # Optional[str]
-    coach_phone_e164: str = "918850176753",
+    coach_phone_e164: str = "918976563971",
     include_supplements: bool = False,
 ) -> str:
     """Inject WhatsApp 'confirm or change start date' buttons into the letter.
@@ -1298,7 +1298,7 @@ def wrap_in_brand_html(
       </div>
       <div class="contact">
         <a href="https://www.theochretree.com" target="_blank" rel="noopener">www.theochretree.com</a><br>
-        WhatsApp: <a href="https://wa.me/918850176753">+91 88501 76753</a><br>
+        WhatsApp: <a href="https://wa.me/918976563971">+91 89765 63971</a><br>
         <a href="mailto:reachochretree@gmail.com">reachochretree@gmail.com</a><br>
         <span style="font-size:10px;color:#8D99AE;">This document is for personal use only and is not medical advice.</span>
       </div>
@@ -1308,7 +1308,7 @@ def wrap_in_brand_html(
 
   <!-- Repeating contact footer — visible on every printed page -->
   <div class="print-page-footer">
-    The Ochre Tree &nbsp;·&nbsp; www.theochretree.com &nbsp;·&nbsp; WhatsApp: +91 88501 76753 &nbsp;·&nbsp; reachochretree@gmail.com
+    The Ochre Tree &nbsp;·&nbsp; www.theochretree.com &nbsp;·&nbsp; WhatsApp: +91 89765 63971 &nbsp;·&nbsp; reachochretree@gmail.com
   </div>
 
   <!-- Per-week print functionality + client name injection -->

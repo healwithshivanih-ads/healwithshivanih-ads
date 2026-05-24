@@ -183,7 +183,7 @@ Building on v0.70's coach-side editor. Three independent layers let the client c
 
 **Pattern B — WhatsApp buttons in the printed letter HTML** (`brand_html.py` + `src/lib/start-date-parser.ts` + webhook):
 - New `_start_date_buttons_html()` injects up to 3 `wa.me` deep-link buttons into the letter directly below the title block. Pre-composed structured messages:
-  - `✅ Yes — {date} works` → `wa.me/918976563971?text=✅%20START:%20YYYY-MM-DD%20[plan:%20<slug>]`
+  - `✅ Yes — {date} works` → `wa.me/918850176753?text=✅%20START:%20YYYY-MM-DD%20[plan:%20<slug>]`
   - `📅 I'll start a different day` → soft pre-fill, coach reviews
   - `📦 My supplements have arrived` → only on `supplement_plan` + `consolidated` letter types
 - Buttons styled sage-green / indigo / amber, hidden on print (`.no-print-buttons` class added to the existing print CSS rules).
@@ -206,7 +206,7 @@ Building on v0.70's coach-side editor. Three independent layers let the client c
 - Inbound replies parsed by Pattern B's parser → list clears itself once client confirms.
 
 **Key invariants:**
-- The four `wa.me` confirm/edit/supps buttons all point to the coach's number (`918976563971` — hardcoded in `brand_html.py` matching the existing footer link). If the coach number changes, update in both places.
+- The four `wa.me` confirm/edit/supps buttons all point to the coach's number (`918850176753` — hardcoded in `brand_html.py` matching the existing footer link). If the coach number changes, update in both places.
 - The `[plan: <slug>]` tag in the structured pre-composed message is forward-compatible — the webhook today resolves to "latest published plan" regardless of the tag. We could later parse it and let a client confirm against a specific plan if they have multiple.
 - `parseInboundStartDateIntent` REQUIRES either an explicit "START:" prefix OR a verb phrase like "I'll start on / starting on / start". Bare dates ("had a headache 2026-05-19") are deliberately ignored to avoid false positives. If users start typing plain dates, the failure mode is "message lands in coach inbox as quick_note" — never silent data loss.
 - The 60-day sanity window on the parser catches typos like 2027 instead of 2026. Adjust in `start-date-parser.ts` if a use case ever crosses it.

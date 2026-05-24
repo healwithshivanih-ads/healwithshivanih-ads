@@ -152,7 +152,7 @@ function AddTemplateForm({
       <p className="text-[10px] leading-relaxed text-muted-foreground bg-blue-50 border border-blue-200 rounded px-2 py-1.5">
         <strong>Sender name:</strong> WABA display name &ldquo;The Ochre
         Tree&rdquo; is still <em>PENDING_REVIEW</em> at Meta. Until it clears,
-        clients see <code>+91 88501 76753</code> as the sender — the in-body
+        clients see <code>+91 89765 63971</code> as the sender — the in-body
         sign-off (<em>&mdash; Shivani Hari / Your Functional Health Coach</em>)
         is the only branding signal. Keep that sign-off on every manual
         template body.
