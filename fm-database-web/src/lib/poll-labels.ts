@@ -117,15 +117,19 @@ export const PILLAR_ROTATION: PillarKey[] = [
   "connection",
 ];
 
-/** Pillar → WA template name. Reuses existing meals/movement templates
- *  + the three new sleep/stress/connection templates submitted via
- *  whatsapp-server/scripts/submit-templates.js on 2026-05-24. */
+/** Pillar → WA template name.
+ *  sleep/stress/connection: rich-body v2 (APPROVED + MARKETING category
+ *  per Meta auto-classifier 2026-05-24 — coach accepted 6× cost trade
+ *  for warmer messaging). movement + nutrition stay UTILITY v1.
+ *  NB: sleep_v2 may briefly be PENDING when the rotation runs; sends
+ *  will error loudly via the visible-error banner until Meta approves
+ *  (usually <1h after submission). */
 export function pillarToTemplateName(pillar: PillarKey): string {
   switch (pillar) {
-    case "sleep": return "fm_weekly_sleep_v1";
-    case "stress": return "fm_weekly_stress_v1";
-    case "movement": return "fm_weekly_movement_v1";
-    case "nutrition": return "fm_weekly_meals_v1";
-    case "connection": return "fm_weekly_connection_v1";
+    case "sleep": return "fm_weekly_sleep_v2";          // MARKETING (warm)
+    case "stress": return "fm_weekly_stress_v2";        // MARKETING (warm)
+    case "movement": return "fm_weekly_movement_v1";    // UTILITY
+    case "nutrition": return "fm_weekly_meals_v1";      // UTILITY
+    case "connection": return "fm_weekly_connection_v2"; // MARKETING (warm)
   }
 }

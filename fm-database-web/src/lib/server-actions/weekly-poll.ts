@@ -451,12 +451,41 @@ export async function sendPillarRotationAction(
 
     // Body mirrors the approved Meta template body so the rolling-thread
     // record reads naturally in the chat panel.
+    // Mirror the Meta-approved template bodies so the rolling-thread
+    // record reads identically to what the client received. v2 bodies
+    // for sleep/stress/connection (MARKETING, warm); v1 bodies for
+    // movement/nutrition (UTILITY, dry). Keep these in sync with
+    // whatsapp-server/scripts/submit-templates.js.
     const bodyByPillar: Record<PillarKey, string> = {
-      sleep: `Hi ${name}, how's your sleep been this week?`,
-      stress: `Hi ${name}, how is stress feeling this week?`,
+      sleep:
+        `*Your weekly sleep check-in* 🌙\n\n` +
+        `Hi ${name}, taking a moment to feel into how this week went for sleep.\n\n` +
+        `Was it:\n` +
+        `• *Restorative* — falling asleep easily, waking refreshed\n` +
+        `• *Patchy* — some nights great, some restless\n` +
+        `• *Hard* — struggling to fall or stay asleep\n\n` +
+        `Tap below — your answer flows into next week's adjustments.\n\n` +
+        `— Shivani`,
+      stress:
+        `*Your weekly stress check-in* 🌿\n\n` +
+        `Hi ${name}, how is your nervous system doing this week?\n\n` +
+        `Was the load:\n` +
+        `• *Manageable* — handled what came up, came back to baseline\n` +
+        `• *Some pressure* — felt it, mostly stayed steady\n` +
+        `• *Overwhelming* — full, hard to come down\n\n` +
+        `Tap below — your answer shapes which practices we lean on next week.\n\n` +
+        `— Shivani`,
       movement: `Hi ${name}, movement this week?`,
       nutrition: `Hi ${name}, sticking to the meal plan this week?`,
-      connection: `Hi ${name}, how connected do you feel this week — to people, routine, yourself?`,
+      connection:
+        `*Your weekly connection check-in* 🤝\n\n` +
+        `Hi ${name}, checking in on how connected you've felt this week — to people, routine, yourself.\n\n` +
+        `Did you feel:\n` +
+        `• *Connected* — present, anchored in routine\n` +
+        `• *Some of the time* — moments of both\n` +
+        `• *Disconnected* — pulled away, hard to land\n\n` +
+        `Tap below — your answer guides where we lean next.\n\n` +
+        `— Shivani`,
     };
     const renderedBody = bodyByPillar[pillar];
 
