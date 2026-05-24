@@ -343,8 +343,50 @@ async function computeSignal(
     return { kind: "intake_to_do", microStep, draftSlug: draftPlan?.slug };
   }
 
-  // 5. Coach intake done, no published plan → build / finish the plan.
+  // 5. Coach intake done, no published plan.
+  //    BEFORE saying "build the plan", check if labs were requested at
+  //    discovery but never received. Coach feedback 2026-05-24: Pranati +
+  //    Kshitija had their labs requested at discovery + intake-assessment
+  //    done from chat-ingest, but labs never came back — they were
+  //    showing as "programme owed" when really they're blocked on labs.
+  //    Labs-pending takes precedence over plan_to_build when present.
+  //
+  //    NO grace period in this branch — once intake is done, the coach
+  //    is genuinely waiting for labs to build the protocol regardless of
+  //    how recently they were requested. The grace at step 6 below is
+  //    for the pre-intake "labs chase" case (where 7-day grace prevents
+  //    the dashboard nagging the same week of request).
   if (hasCoachIntake) {
+    const clientAny2 = client as unknown as Record<string, unknown>;
+    const latestResultDate2 = (() => {
+      let best = "";
+      const log = (clientAny2.measurements_log as Array<Record<string, unknown>>) ?? [];
+      for (const e of log) {
+        const d = e.date as string | undefined;
+        if (d && d > best) best = d;
+      }
+      const snaps = (clientAny2.health_snapshots as Array<Record<string, unknown>>) ?? [];
+      for (const e of snaps) {
+        const d = e.date as string | undefined;
+        if (d && d > best) best = d;
+      }
+      const markersUpdatedAt = (clientAny2.lab_markers_updated_at as string | undefined);
+      if (markersUpdatedAt && markersUpdatedAt.slice(0, 10) > best) {
+        best = markersUpdatedAt.slice(0, 10);
+      }
+      return best;
+    })();
+    for (const s of sessions) {
+      const labs = parseRequestedLabs(s.coach_notes as string | undefined);
+      if (labs.length === 0) continue;
+      const requestDate = (s.date as string | undefined) ?? "";
+      if (!requestDate) continue;
+      // Results already back? Skip (look only at lab_markers / snapshots
+      // dated on or after the request — older lab data doesn't count as
+      // the response to a fresh request).
+      if (latestResultDate2 && latestResultDate2 >= requestDate) continue;
+      return { kind: "labs_pending", labs, labCount: labs.length };
+    }
     if (draftPlan) {
       return {
         kind: "plan_to_build",
