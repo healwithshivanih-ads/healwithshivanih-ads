@@ -73,6 +73,20 @@ interface Props {
  *  dimension they're asking about. */
 const POLL_VARIANTS: { key: string; campaign: string; label: string; emoji: string; buttons: string[]; body: string }[] = [
   {
+    // Tier 1 rotating Five Pillars poll (added 2026-05-24). Each client
+    // gets the next pillar in their personal rotation (sleep → stress →
+    // movement → nutrition → connection → sleep ...). Triggers
+    // sendPillarRotationAction, NOT sendWeeklyPollAction. Recommended
+    // weekly send — over 5 weeks every client has a fresh Five Pillars
+    // snapshot from button taps alone.
+    key: "rotation",
+    campaign: "fm_pillar_rotation_v1",
+    label: "Five Pillars (rotating)",
+    emoji: "🔄",
+    buttons: ["sleep / stress / movement / nutrition / connection"],
+    body: "Next pillar per client — sends one of fm_weekly_{sleep,stress,movement,meals,connection}_v1",
+  },
+  {
     key: "overall",
     campaign: "fm_weekly_check_in_v1",
     label: "Overall check-in",
@@ -165,14 +179,38 @@ export function WeeklyPollPanel({
     setSendError(null);
     setSendResult(null);
     try {
-      const { sendWeeklyPollAction } = await import(
-        "@/lib/server-actions/weekly-poll"
-      );
-      const r = await sendWeeklyPollAction(
-        Array.from(selectedIds),
-        variant.campaign,
-      );
-      setSendResult(r);
+      // Tier 1 rotation has its own server action — picks next pillar per
+      // client based on lastTemplateSent scan. The other 4 variants stay
+      // on the legacy single-template path.
+      if (variant.campaign === "fm_pillar_rotation_v1") {
+        const { sendPillarRotationAction } = await import(
+          "@/lib/server-actions/weekly-poll"
+        );
+        const r = await sendPillarRotationAction(Array.from(selectedIds));
+        // Shape-adapt to SendResult for the existing render path.
+        setSendResult({
+          ok: r.ok,
+          sent: r.sent,
+          skipped: r.skipped,
+          failed: r.failed,
+          errors: r.outcomes
+            .filter((o) => !o.ok)
+            .map(
+              (o) =>
+                `${o.client_id}: ${o.skipped_reason ?? o.error ?? "failed"}`,
+            ),
+          sent_to: r.outcomes.filter((o) => o.ok).map((o) => o.client_id),
+        });
+      } else {
+        const { sendWeeklyPollAction } = await import(
+          "@/lib/server-actions/weekly-poll"
+        );
+        const r = await sendWeeklyPollAction(
+          Array.from(selectedIds),
+          variant.campaign,
+        );
+        setSendResult(r);
+      }
     } catch (e) {
       setSendError(e instanceof Error ? e.message : "Failed");
     } finally {

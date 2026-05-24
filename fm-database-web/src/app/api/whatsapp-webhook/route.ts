@@ -70,7 +70,11 @@ import yaml from "js-yaml";
 import { findClientByPhoneAction } from "@/lib/server-actions/clients";
 import { parseInboundStartDateIntent } from "@/lib/start-date-parser";
 import { recordInboundCycleDate } from "@/lib/server-actions/cycle-date-collector";
-import { classifyPollReply } from "@/lib/poll-labels";
+import {
+  classifyPollReply,
+  pillarFromDimension,
+  scoreToPillarRating,
+} from "@/lib/poll-labels";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
@@ -204,6 +208,64 @@ async function savePollResponse(
     return parsed.session_id ?? null;
   } catch (e) {
     throw new Error(`save-poll-response.py invalid output: ${(e as Error).message}`);
+  }
+}
+
+// ── Five Pillars derived-snapshot rollup (Tier 1, 2026-05-24) ───────────────
+//
+// When the inbound reply maps to a pillar dimension (sleep / stress /
+// movement / nutrition / connection — NOT overall or supplements which
+// are adherence signals), merge a single-pillar score into
+// client.yaml#derived_five_pillars.{pillar}. The OutcomeProgressCard +
+// Overview Five Pillars tile read this alongside session-based manual
+// captures. Returns true on success, false on any failure (best-effort —
+// never block the inbound webhook on the rollup).
+async function writeDerivedPillar(
+  clientId: string,
+  pillar: string,
+  rating: number,
+  rawText: string,
+  receivedAt: string,
+): Promise<boolean> {
+  const scriptPath = path.join(SCRIPTS_DIR, "update-derived-pillar.py");
+  const payload = {
+    client_id: clientId,
+    pillar,
+    rating,
+    raw_text: rawText,
+    received_at: receivedAt,
+    source: "weekly_poll",
+  };
+  try {
+    const child = execFile(PYTHON, [scriptPath], {
+      timeout: 10_000,
+      maxBuffer: 256 * 1024,
+      cwd: FMDB_REPO,
+    });
+    child.stdin?.end(JSON.stringify(payload));
+    let stdout = "";
+    let stderr = "";
+    child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
+    child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
+    await new Promise<void>((resolve, reject) => {
+      child.on("error", reject);
+      child.on("close", () => resolve());
+    });
+    if (!stdout.trim()) {
+      console.warn(
+        `[whatsapp-webhook] update-derived-pillar.py empty stdout. stderr: ${stderr.slice(0, 200)}`,
+      );
+      return false;
+    }
+    const parsed = JSON.parse(stdout) as { ok: boolean; error?: string };
+    if (!parsed.ok) {
+      console.warn(`[whatsapp-webhook] update-derived-pillar.py: ${parsed.error}`);
+      return false;
+    }
+    return true;
+  } catch (e) {
+    console.warn(`[whatsapp-webhook] update-derived-pillar.py threw: ${(e as Error).message}`);
+    return false;
   }
 }
 
@@ -457,6 +519,26 @@ export async function POST(req: NextRequest) {
           `📊 Weekly poll reply detected — ${pollMatched.dim}: ${pollMatched.score}` +
             (pollSessionId ? ` (audit session: ${pollSessionId})` : ""),
         );
+        // Tier 1 — if this dim is one of the 5 pillars, also write a
+        // single-pillar entry to client.derived_five_pillars so the
+        // OutcomeProgressCard + Overview tile reflect it. Best-effort;
+        // no throw if the shim fails (already classified + saved).
+        const pillar = pillarFromDimension(pollMatched.dim as never);
+        if (pillar) {
+          const rating = scoreToPillarRating(pollMatched.score as never);
+          const wrote = await writeDerivedPillar(
+            match.client_id,
+            pillar,
+            rating,
+            messageText.trim(),
+            ts,
+          );
+          if (wrote) {
+            noteLines.push(
+              `   ↳ Five Pillars updated: ${pillar} = ${rating}/5`,
+            );
+          }
+        }
       } catch (err) {
         console.error(
           `[whatsapp-webhook] Poll-classifier matched but save-poll-response failed:`,
