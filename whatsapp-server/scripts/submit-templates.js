@@ -423,6 +423,42 @@ const TEMPLATES = [
     example: [['Priya']],
     buttons: ['Connected', 'Some of the time', 'Disconnected'],
   },
+  // Tier 1 pilot extension (2026-05-24): warm v2 for the two remaining
+  // pillars so client experience is consistent. Same MARKETING-likely
+  // classification as the other v2 trio; coach accepted the warm-tax
+  // for full consistency.
+  {
+    name: 'fm_weekly_movement_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "*Your weekly movement check-in* 🏃\n\n" +
+      "Hi {{1}}, how did your body get to move this week?\n\n" +
+      "Movement happened:\n" +
+      "• *Most days* — walks, workouts, stretching woven through the week\n" +
+      "• *A few times* — a couple of sessions or active days\n" +
+      "• *None* — felt too full, too tired, too stretched\n\n" +
+      "Tap below — your answer shapes what we lean into next week.\n\n" +
+      "— Shivani",
+    example: [['Priya']],
+    buttons: ['Most days', 'A few times', 'None'],
+  },
+  {
+    name: 'fm_weekly_meals_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "*Your weekly nutrition check-in* 🍽\n\n" +
+      "Hi {{1}}, how did meals + food feel this week?\n\n" +
+      "Was eating:\n" +
+      "• *Yes mostly* — aligned with the plan, recipes came together\n" +
+      "• *Half the time* — some meals on track, others off\n" +
+      "• *Struggling* — hard to plan, eat, or stay with it\n\n" +
+      "Tap below — your answer guides next week's meal focus.\n\n" +
+      "— Shivani",
+    example: [['Priya']],
+    buttons: ['Yes mostly', 'Half the time', 'Struggling'],
+  },
 
   // ── Upcoming-webinar broadcast templates ────────────────────────────────────
   //
