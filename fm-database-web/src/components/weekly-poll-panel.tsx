@@ -26,6 +26,7 @@
 
 import { useState } from "react";
 import { FmPanel, FmChip } from "@/components/fm";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface SendResult {
   ok: boolean;
@@ -58,6 +59,12 @@ interface Props {
    *  client travelling, or someone who specifically asked not to be polled
    *  this week). Selection is per-send, not persistent. */
   pollClients?: PollClient[];
+  /** Most-recent send timestamp per campaign name. Derived server-side
+   *  from `_weekly_poll_log.yaml` (append-only log written by the action).
+   *  Drives the persisted "✓ Sent X ago · Resend" state on each variant
+   *  chip so coach reload-survives the send history. (Durable rule:
+   *  feedback_send_buttons_persist_state 2026-05-23.) */
+  lastSentByCampaign?: Record<string, string>;
 }
 
 /** All 4 weekly poll variants. Each is an APPROVED Meta UTILITY template
@@ -99,9 +106,16 @@ const POLL_VARIANTS: { key: string; campaign: string; label: string; emoji: stri
   },
 ];
 
-export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props) {
+export function WeeklyPollPanel({
+  whatsappConfigured,
+  pollClients = [],
+  lastSentByCampaign = {},
+}: Props) {
   const [variantKey, setVariantKey] = useState(POLL_VARIANTS[0].key);
   const variant = POLL_VARIANTS.find((v) => v.key === variantKey) ?? POLL_VARIANTS[0];
+  // Persisted-send state for the CURRENTLY-selected variant
+  const variantLastSent = lastSentByCampaign[variant.campaign] ?? null;
+  const variantLastSentAgo = variantLastSent ? relativeTimeShort(variantLastSent) : "";
 
   // Selected recipients — pre-checked from props, freely editable per send.
   const [selectedIds, setSelectedIds] = useState<Set<string>>(
@@ -132,9 +146,18 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
       setSendError("Select at least one recipient");
       return;
     }
+    // Persistence-aware resend gate (durable rule 2026-05-23). When the
+    // currently-selected campaign was already sent recently, the confirm
+    // prompt names the elapsed time so coach can't double-send by
+    // muscle-memory.
+    const recipients = `${selectedCount} client${selectedCount !== 1 ? "s" : ""}`;
+    const resendNote = variantLastSent
+      ? `\n\n⚠ This ${variant.label} poll was last sent ${variantLastSentAgo}. ` +
+        `Are you sure you want to resend NOW?`
+      : "";
     if (
       !confirm(
-        `Send the ${variant.label} poll to ${selectedCount} client${selectedCount !== 1 ? "s" : ""}?`,
+        `Send the ${variant.label} poll to ${recipients}?${resendNote}`,
       )
     )
       return;
@@ -306,6 +329,9 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
             {POLL_VARIANTS.map((v) => {
               const active = v.key === variantKey;
+              // Per-variant persisted send state (durable rule 2026-05-23).
+              const lastSent = lastSentByCampaign[v.campaign];
+              const lastSentAgo = lastSent ? relativeTimeShort(lastSent) : "";
               return (
                 <button
                   key={v.key}
@@ -321,10 +347,31 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
                     fontWeight: active ? 700 : 500,
                     cursor: "pointer",
                     fontFamily: "inherit",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
                   }}
-                  title={`Template: ${v.campaign}`}
+                  title={
+                    lastSent
+                      ? `Template: ${v.campaign} · last sent ${lastSentAgo} (${new Date(lastSent).toLocaleString()})`
+                      : `Template: ${v.campaign} · never sent`
+                  }
                 >
-                  {v.emoji} {v.label}
+                  <span>{v.emoji} {v.label}</span>
+                  {lastSent && (
+                    <span
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 500,
+                        opacity: active ? 0.95 : 0.6,
+                        background: active ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.06)",
+                        padding: "1px 6px",
+                        borderRadius: 999,
+                      }}
+                    >
+                      ✓ {lastSentAgo}
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -506,7 +553,9 @@ export function WeeklyPollPanel({ whatsappConfigured, pollClients = [] }: Props)
           >
             {sendLoading
               ? "Sending…"
-              : `📣 Send ${variant.label.toLowerCase()} poll to ${selectedCount} client${selectedCount !== 1 ? "s" : ""}`}
+              : variantLastSent
+                ? `↻ Resend ${variant.label.toLowerCase()} poll to ${selectedCount} client${selectedCount !== 1 ? "s" : ""} (last sent ${variantLastSentAgo})`
+                : `📣 Send ${variant.label.toLowerCase()} poll to ${selectedCount} client${selectedCount !== 1 ? "s" : ""}`}
           </button>
           {sendResult && (
             <div

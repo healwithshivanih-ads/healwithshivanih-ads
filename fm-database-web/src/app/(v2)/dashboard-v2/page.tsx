@@ -917,6 +917,35 @@ export default async function DashboardV2() {
       mobile_number: c.mobile_number,
     }));
 
+  // Persisted-send state for WeeklyPollPanel (Fix 2026-05-24 — durable rule
+  // "every send button shows ✓ Sent X ago · Resend on reload").
+  // Read the canonical send-log file (~/fm-plans/_weekly_poll_log.yaml,
+  // append-only, one row per campaign send) and reduce to the most-recent
+  // sent_at per campaign name. WeeklyPollPanel uses this to flip each
+  // variant tile from "Send" to "↻ Resend (last X ago)".
+  const lastPollSentByCampaign: Record<string, string> = await (async () => {
+    try {
+      const fs = await import("node:fs/promises");
+      const path = await import("node:path");
+      const yaml = (await import("js-yaml")).default;
+      const root = process.env.FMDB_PLANS_DIR ?? path.join(process.env.HOME ?? "", "fm-plans");
+      const raw = await fs.readFile(path.join(root, "_weekly_poll_log.yaml"), "utf-8");
+      const entries = yaml.load(raw) as Array<{ sent_at?: string; campaign?: string }> | null;
+      if (!Array.isArray(entries)) return {};
+      const out: Record<string, string> = {};
+      for (const e of entries) {
+        if (!e?.campaign || !e?.sent_at) continue;
+        if (!out[e.campaign] || e.sent_at > out[e.campaign]) {
+          out[e.campaign] = e.sent_at;
+        }
+      }
+      return out;
+    } catch {
+      // file may not exist yet
+      return {};
+    }
+  })();
+
   const dateLabel = new Date().toLocaleDateString("en-GB", {
     weekday: "long",
     day: "numeric",
@@ -1279,6 +1308,7 @@ export default async function DashboardV2() {
             <WeeklyPollPanel
               whatsappConfigured={whatsappConfigured}
               pollClients={pollClients}
+              lastSentByCampaign={lastPollSentByCampaign}
             />
           )}
 

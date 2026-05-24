@@ -26,6 +26,56 @@
 
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import yaml from "js-yaml";
+
+const PLANS_ROOT =
+  process.env.FMDB_PLANS_DIR ??
+  path.join(process.env.HOME ?? "", "fm-plans");
+
+const START_REMINDER_TEMPLATE = "fm_start_date_check_v1";
+
+/**
+ * Scan a client's sessions for the most recent outbound segment tagged
+ * `[template: <templateName>]` and return its `[sent_at: <ISO>]` value.
+ * Returns null when no matching send exists yet. Used by the dashboard
+ * reminder panel to persist "✓ Sent {when}" across refreshes (durable
+ * rule: feedback_send_buttons_persist_state).
+ */
+async function lastTemplateSendAt(
+  clientId: string,
+  templateName: string,
+): Promise<string | null> {
+  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  let names: string[];
+  try {
+    names = await fs.readdir(dir);
+  } catch {
+    return null;
+  }
+  let bestIso: string | null = null;
+  for (const name of names) {
+    if (!(name.endsWith(".yaml") || name.endsWith(".yml"))) continue;
+    try {
+      const raw = await fs.readFile(path.join(dir, name), "utf8");
+      const data = yaml.load(raw) as Record<string, unknown>;
+      const complaints = String(data?.presenting_complaints ?? "");
+      if (!complaints.includes(`[template: ${templateName}]`)) continue;
+      const segments = complaints.split(/\n\s*---\s*\n/);
+      for (const seg of segments) {
+        if (!seg.includes(`[template: ${templateName}]`)) continue;
+        const m = seg.match(/\[sent_at:\s*([^\]]+)\]/);
+        if (!m) continue;
+        const iso = m[1].trim();
+        if (!bestIso || iso > bestIso) bestIso = iso;
+      }
+    } catch {
+      /* skip unreadable session */
+    }
+  }
+  return bestIso;
+}
 
 export interface UnconfirmedStartFlag {
   client_id: string;
@@ -36,6 +86,7 @@ export interface UnconfirmedStartFlag {
   plan_period_start: string | null;
   days_since_published: number | null;
   assumed_meal_start: string | null;  // plan_period_start + 3d
+  last_reminder_sent_at: string | null; // ISO; most recent fm_start_date_check_v1 send
 }
 
 /**
@@ -107,6 +158,7 @@ export async function listUnconfirmedStartDatesAction(
         plan_period_start: periodStart,
         days_since_published: daysSince,
         assumed_meal_start: assumedStart,
+        last_reminder_sent_at: null, // filled below after dedupe
       });
     }
 
@@ -135,6 +187,17 @@ export async function listUnconfirmedStartDatesAction(
     // Most stale first
     deduped.sort(
       (a, b) => (b.days_since_published ?? 0) - (a.days_since_published ?? 0),
+    );
+
+    // Fill last_reminder_sent_at in parallel so the dashboard panel can
+    // render "✓ Sent {when}" instead of a transient local-only chip.
+    await Promise.all(
+      deduped.map(async (f) => {
+        f.last_reminder_sent_at = await lastTemplateSendAt(
+          f.client_id,
+          START_REMINDER_TEMPLATE,
+        );
+      }),
     );
 
     return { ok: true, flags: deduped };

@@ -18,6 +18,7 @@
 
 import { useEffect, useState } from "react";
 import { FmPanel, FmChip } from "@/components/fm";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Flag {
   client_id: string;
@@ -28,6 +29,7 @@ interface Flag {
   plan_period_start: string | null;
   days_since_published: number | null;
   assumed_meal_start: string | null;
+  last_reminder_sent_at: string | null;
 }
 
 interface Props {
@@ -143,7 +145,17 @@ export function StartDateReminderPanel({ whatsappConfigured }: Props) {
             }}
           >
             {flags.map((f) => {
-              const sent = sentIds.has(f.client_id);
+              // Persisted send-state from disk (last [template:
+              // fm_start_date_check_v1] segment in the client's sessions)
+              // plus this-tab transient state for instant feedback after
+              // the coach hits the button. Durable rule:
+              // feedback_send_buttons_persist_state.
+              const sentThisTab = sentIds.has(f.client_id);
+              const persistedSentAt = f.last_reminder_sent_at;
+              const sent = sentThisTab || !!persistedSentAt;
+              const sentLabel = persistedSentAt
+                ? `✓ Sent ${relativeTimeShort(persistedSentAt)}`
+                : "✓ Reminder sent";
               const sendErr = sendErrors[f.client_id];
               return (
                 <li
@@ -186,7 +198,44 @@ export function StartDateReminderPanel({ whatsappConfigured }: Props) {
                     </div>
                     <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                       {sent ? (
-                        <FmChip tone="success">✓ Reminder sent</FmChip>
+                        <>
+                          <FmChip
+                            tone="success"
+                            title={
+                              persistedSentAt
+                                ? `Last sent ${new Date(persistedSentAt).toLocaleString()}`
+                                : undefined
+                            }
+                          >
+                            {sentLabel}
+                          </FmChip>
+                          <button
+                            type="button"
+                            onClick={() => handleSend(f.client_id)}
+                            disabled={
+                              !whatsappConfigured ||
+                              sendingId === f.client_id ||
+                              !f.mobile_number
+                            }
+                            title="Send another reminder now"
+                            style={{
+                              fontSize: 11,
+                              padding: "3px 7px",
+                              borderRadius: 4,
+                              background: "transparent",
+                              color: "#0369a1",
+                              border: "1px solid #0369a1",
+                              cursor:
+                                !whatsappConfigured ||
+                                sendingId === f.client_id ||
+                                !f.mobile_number
+                                  ? "not-allowed"
+                                  : "pointer",
+                            }}
+                          >
+                            {sendingId === f.client_id ? "…" : "↻ Resend"}
+                          </button>
+                        </>
                       ) : (
                         <button
                           type="button"

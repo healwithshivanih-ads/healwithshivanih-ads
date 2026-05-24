@@ -28,7 +28,11 @@ import {
 import {
   sendClientLettersAction,
   updateClientFieldsAction,
+  loadLetterSendLogAction,
+  recordLetterSendAction,
+  type LetterSendEntry,
 } from "@/app/api/email/actions";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 import { WeightLossForm } from "./client-letter-button";
 import { LetterRefinementChat } from "./letter-refinement-chat";
 import { SpecialRequestsPanel } from "./special-requests-panel";
@@ -215,6 +219,25 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName,
   );
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [emailError, setEmailError] = useState<string | null>(null);
+
+  // Last-sent persistence: read _send_log.yaml on mount so the trigger /
+  // send button can show "✓ Sent {N days ago} · Resend". Without this the
+  // coach can't tell whether the package already went out; durable rule
+  // (see memory: feedback_send_buttons_persist_state).
+  const [lastSend, setLastSend] = useState<LetterSendEntry | null>(null);
+  useEffect(() => {
+    void (async () => {
+      try {
+        const entries = await loadLetterSendLogAction(clientId);
+        // Newest-first already. Filter to this plan if slug matches.
+        const match =
+          entries.find((e) => e.plan_slug === planSlug) ?? entries[0] ?? null;
+        setLastSend(match);
+      } catch {
+        // best-effort; missing log is fine
+      }
+    })();
+  }, [clientId, planSlug]);
 
   // Load saved letters on mount
   useEffect(() => {
@@ -423,6 +446,33 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName,
       if (result.ok) {
         const ccNote = ccTrimmed ? ` (cc ${ccTrimmed})` : "";
         toast.success(`Email sent to ${emailTo.trim()}${ccNote}`);
+        // Persist sent-state to _send_log.yaml so the trigger button can
+        // show "✓ Sent {when}" on next mount + so the communicate inbox
+        // history stays accurate. Per durable rule
+        // (feedback_send_buttons_persist_state) every send surface must
+        // record + display sent_at.
+        const sentLetterTypes = selectedLetters.map((l) => l.label);
+        const sentAtIso = new Date().toISOString();
+        try {
+          await recordLetterSendAction({
+            clientId,
+            planSlug,
+            letterTypes: sentLetterTypes,
+            to: emailTo.trim(),
+            cc: ccTrimmed || undefined,
+            sentAt: sentAtIso,
+          });
+          setLastSend({
+            sent_at: sentAtIso,
+            letter_types: sentLetterTypes,
+            to: emailTo.trim(),
+            cc: ccTrimmed || undefined,
+            plan_slug: planSlug,
+          });
+        } catch (logErr) {
+          // Logging is best-effort; don't fail the UX if it doesn't write.
+          console.warn("recordLetterSendAction failed:", logErr);
+        }
         // Save the To value to the client's profile ONLY when the coach
         // explicitly ticked the checkbox AND it differs from what's on
         // file. Previously this fired silently after every send — a
@@ -477,10 +527,18 @@ export function SendPackageButton({ planSlug, clientId, clientEmail, clientName,
           background: isOpen ? "rgba(43,45,66,0.05)" : "white",
         }}
       >
-        📤 Send package
+        {lastSend ? "↻ Resend package" : "📤 Send package"}
         {savedCount > 0 && !isOpen && (
           <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
             {savedCount} saved
+          </span>
+        )}
+        {lastSend && !isOpen && (
+          <span
+            className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-sky-100 text-sky-800"
+            title={`Sent ${new Date(lastSend.sent_at).toLocaleString()} to ${lastSend.to}`}
+          >
+            ✓ Sent {relativeTimeShort(lastSend.sent_at)}
           </span>
         )}
         <span className="text-xs opacity-50">{isOpen ? "▲" : "▼"}</span>
