@@ -737,12 +737,20 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
   };
 
   if (signal.kind === "labs_pending") {
+    // Coach feedback 2026-05-24: dashboard card was rendering the full
+    // 46/55-test "AWAITING:" list, making the card 4-6 lines tall and
+    // the dashboard cluttered. The individual test list belongs on the
+    // client page, not in a triage summary. Show count + first 2 tests
+    // as a flavour hint, link out for the rest.
     const labs = signal.labs ?? [];
+    const n = signal.labCount ?? labs.length;
+    const preview = labs.slice(0, 2).join(", ");
     return (
       <div style={wrap}>
         <span style={labelStyle}>Awaiting:</span>
         <span style={valueStyle}>
-          {labs.length > 0 ? labs.join(", ") : `${signal.labCount ?? 0} test(s)`}
+          {n} test{n === 1 ? "" : "s"}
+          {preview ? ` · ${preview}${labs.length > 2 ? ", …" : ""}` : ""}
         </span>
       </div>
     );
