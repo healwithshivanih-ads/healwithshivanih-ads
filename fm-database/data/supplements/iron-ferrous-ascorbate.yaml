@@ -1,0 +1,87 @@
+slug: iron-ferrous-ascorbate
+display_name: Iron (Ferrous Ascorbate)
+category: mineral
+forms_available:
+- liquid
+- tablet
+typical_dose_range:
+  liquid:
+    min: 16
+    max: 33
+    unit: mg
+  tablet:
+    min: 60
+    max: 100
+    unit: mg
+timing_options:
+- mid_morning
+- morning
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- iron-deficiency-anemia
+- hairfall
+- hypochlorhydria
+- chronic-fatigue
+linked_to_mechanisms: []
+linked_to_claims:
+- iron-not-absorbed-with-damaged-gut-lining
+notes_for_coach: |
+  Ferrous ascorbate is iron molecularly chelated to ascorbic acid (vitamin C)
+  within the molecule itself — distinct from bisglycinate (iron + 2× glycine)
+  and from inorganic salts (sulfate / fumarate). The vit-C-chelation has two
+  consequences: (1) absorption is enhanced without needing a separate vit C
+  cofactor, and (2) GI + headache tolerance is markedly better than
+  bisglycinate in headache-sensitive clients.
+
+  WHEN TO REACH FOR THIS FORM (over bisglycinate or inorganic salts):
+  - Headache or migraine triggered by iron bisglycinate (sometimes histamine-
+    or chelate-mediated; ferrous ascorbate sidesteps the trigger).
+  - Sensitive GI / nausea on inorganic salts (sulfate, fumarate).
+  - Pediatric / perimenopausal clients who prefer syrup over capsules.
+  - Strict vegetarian + supplement-averse — syrup feels less "medical".
+
+  INDIAN AVAILABILITY (the practical reason to keep this as a separate
+  catalogue entry rather than just aliasing into bisglycinate):
+  - Tonoferon Liquid (Glenmark) — primary recommendation. OTC at most Indian
+    pharmacies, ₹130-180 per 150 ml bottle. ~33 mg elemental per 15 ml; halve
+    to 7.5 ml (~16 mg) for headache-sensitive starts.
+  - Tonoferon Drops (Glenmark) — for very-low-dose pediatric use, also adult-
+    sensitive starts.
+  - Ferium XT (Emcure) — tablet form ferrous ascorbate + folic acid; daily dose.
+  - Orofer XT (Emcure) — tablet form, ferrous ascorbate.
+
+  Defer iron supplementation if gut lining is actively inflamed (same caveat
+  as all iron forms — absorption is impaired during active gut inflammation).
+  Confirm iron deficiency with ferritin before prescribing; target ferritin
+  > 50 (restless-legs threshold), ideal 70-100 (FM optimal).
+notes_for_client: |
+  Iron in a syrup form, chelated to vitamin C — gentler on the gut and on
+  headaches than the capsule form. Best taken between meals, away from
+  tea / coffee / calcium by at least 90 minutes. Vitamin C is already in
+  the syrup, but a small glass of amla water or lemon water alongside
+  doubles the absorption again.
+evidence_tier: confirm_with_clinician
+sources:
+- id: coach-shivani
+  location: 2026-05-24 — Deepti (cl-011) form swap rationale + Tonoferon brand recommendation
+  quote: Ferrous ascorbate is iron molecularly chelated to vitamin C in the syrup itself;
+    tolerance is dramatically better than bisglycinate in headache-sensitive clients.
+- id: vitaone-supplementation-dosage
+  location: Page 1 — Supplement Table (iron dosing context)
+  quote: Iron — Hemoglobin, oxygen transport — 18–30 mg/day — post any meal or with vitamin C
+version: 1
+status: active
+updated_at: '2026-05-24'
+updated_by: shivani
+pregnancy_safety: safe
+lactation_safety: safe
+pregnancy_safety_note: |
+  Ferrous ascorbate is well-tolerated in pregnancy — Tonoferon is widely
+  prescribed in Indian antenatal care. Standard 30-60 mg elemental/day if
+  ferritin < 50. Better GI + headache tolerance than ferrous sulfate.
+aliases:
+- ferrous-ascorbate
+- tonoferon
+- ferium-xt
+- orofer-xt
