@@ -70,6 +70,7 @@ import {
   type BodyCompMetric,
   type DepletionRow,
   type FivePillarsValue,
+  type DerivedFivePillars,
 } from "@/components/fm";
 import { FmFivePillarsWithSendCheckIn } from "./five-pillars-bridge";
 // MemoryPanel import removed 2026-05-19 — it duplicated ClientMemoryPanel
@@ -862,6 +863,18 @@ export default async function ClientV2Page({
       )
     : null;
 
+  // Tier 1 derived-pillar rollup — written by update-derived-pillar.py
+  // on every weekly-poll button reply. Read raw from client.yaml (the
+  // Pydantic Client model is extra="ignore" so it'd drop this field on
+  // model load; the TS loader keeps it lenient). Per-pillar entries
+  // override the latestPillars session on a per-pillar basis whenever
+  // their `received_at` is newer — see mergedRow() in FmFivePillars.
+  const derivedFivePillars =
+    ((client as Record<string, unknown>).derived_five_pillars as
+      | DerivedFivePillars
+      | null
+      | undefined) ?? null;
+
   // Drug-nutrient depletions.
   //
   // D9 fix 2026-05-23 — also pull from the STRUCTURED medication-category
@@ -1599,6 +1612,8 @@ export default async function ClientV2Page({
                 content: (
                             <FmFivePillarsWithSendCheckIn
                               latest={latestPillars ?? null}
+                              latestSessionAt={pillarsDate ?? null}
+                              derived={derivedFivePillars}
                               daysSinceLastEntry={daysSincePillars}
                               clientId={id}
                             />

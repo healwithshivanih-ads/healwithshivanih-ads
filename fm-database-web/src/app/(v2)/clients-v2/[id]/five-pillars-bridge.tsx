@@ -10,14 +10,22 @@
  * hint (small follow-up); the route gets the coach to the right surface.
  */
 import { useRouter } from "next/navigation";
-import { FmFivePillars, type FivePillarsValue } from "@/components/fm";
+import {
+  FmFivePillars,
+  type FivePillarsValue,
+  type DerivedFivePillars,
+} from "@/components/fm";
 
 export function FmFivePillarsWithSendCheckIn({
   latest,
+  latestSessionAt,
+  derived,
   daysSinceLastEntry,
   clientId,
 }: {
   latest: FivePillarsValue | null;
+  latestSessionAt?: string | null;
+  derived?: DerivedFivePillars | null;
   daysSinceLastEntry: number | null;
   clientId: string;
 }) {
@@ -25,6 +33,8 @@ export function FmFivePillarsWithSendCheckIn({
   return (
     <FmFivePillars
       latest={latest}
+      latestSessionAt={latestSessionAt}
+      derived={derived}
       daysSinceLastEntry={daysSinceLastEntry}
       onSendCheckIn={() =>
         // For now both "Ask client via WhatsApp" and "Capture from check-in"

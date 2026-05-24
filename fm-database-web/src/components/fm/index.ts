@@ -52,7 +52,12 @@ export { FmContactPanel } from "./FmContactPanel";
 export type { FmContactPanelProps, FmContactRow } from "./FmContactPanel";
 
 export { FmFivePillars } from "./FmFivePillars";
-export type { FmFivePillarsProps, FivePillarsValue } from "./FmFivePillars";
+export type {
+  FmFivePillarsProps,
+  FivePillarsValue,
+  DerivedFivePillars,
+  DerivedPillarEntry,
+} from "./FmFivePillars";
 
 export { FmDepletionBanner } from "./FmDepletionBanner";
 export type { FmDepletionBannerProps, DepletionRow } from "./FmDepletionBanner";
