@@ -56,12 +56,17 @@ depletes:
   mechanism: Reduced absorption due to GI disruption + diarrhea.
   monitoring_recommendation: Empirical
   typical_supplement_dose: 400 mg magnesium glycinate
-condition_implications:
-- label: Recent or chronic infection requiring systemic antibiotics
-  confidence: high
-  rationale: Broad-spectrum antibiotics indicate a recent or recurrent infection significant enough to warrant systemic therapy.
-    Coach should also assess gut dysbiosis fallout (can persist 18 months to 8 years).
-  topic_slug: antibiotic-induced-dysbiosis
+# D3 fix 2026-05-23 — condition_implications removed. Antibiotic exposure
+# is a HISTORICAL event, not an ongoing diagnosis — the actual infection
+# could have been UTI / sinus / dental / post-op anything, none of which
+# is the "condition" the client lives with now. Adding a descriptive
+# prose label like "Recent or chronic infection requiring systemic
+# antibiotics" to a client's active_conditions reads as a fake diagnosis
+# (Sudarshan cl-008 had this surface on chart). The drug-nutrient
+# depletion entries below still flag K2 / biotin / B-vitamin / Mg work
+# via the medication-impact panel — that's the legitimate role of this
+# catalogue entry.
+condition_implications: []
 protocol_cautions: []
 timing_separations:
 - Probiotics — separate by 2-3 hours from antibiotic dose.

@@ -468,6 +468,21 @@ HARD RULES (violating these breaks the downstream system):
    later. Do NOT write coach-facing lectures about catalogue gaps in
    `synthesis_notes` — that field is for clinical synthesis of THIS client.
 
+1a. ROOT-CAUSE FIRST (Fix B 2026-05-23). Most clients present with 5-10
+    diagnoses (Hashimoto's + PCOS + IR + IBS + migraine + Vit D + anxiety
+    + eczema, etc.). DO NOT design 10 parallel protocols. If
+    `client_context.intake_insights.root_cause` is populated, that label is
+    the FM keystone — treat it as the upstream driver and anchor your
+    `likely_drivers` list to it (the root should appear as the #1-ranked
+    driver, with related mechanisms ranked behind it). Frame downstream
+    conditions in `synthesis_notes` as "will improve as we address the
+    root" rather than parallel targets. If no root_cause is supplied,
+    identify ONE upstream driver yourself and lead `likely_drivers` with it
+    — never present a flat list of unrelated diagnoses. The supplement +
+    lifestyle + lab plan should be PROPORTIONATE: a focused 3-5 item
+    protocol addressing the root, not a 12-item bag covering every
+    diagnosis simultaneously.
+
 2. Respect `evidence_tier`:
    - `strong`: teach confidently
    - `plausible_emerging`: teach as "research suggests"

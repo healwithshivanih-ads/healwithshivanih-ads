@@ -169,6 +169,39 @@ class IntakeInsightHypothesis(BaseModel):
     reasoning: str = ""              # one sentence
 
 
+class IntakeRootCause(BaseModel):
+    """Fix B 2026-05-23 — the ROOT CAUSE of the client's clinical picture.
+
+    FM philosophy: instead of stacking 4 protocols to "fix" 10 conditions
+    in parallel, identify the upstream driver and frame the rest as
+    downstream effects that will improve as the root is addressed.
+
+    For Maya Iyer (Hashimoto's + PCOS + IR + IBS-D + migraine + Vit D
+    deficiency + IDA + anxiety + eczema + perimenstrual mood) the AI
+    would identify e.g. "HPT-axis dysregulation driving systemic
+    inflammation and metabolic disruption" as the root — with PCOS, IR,
+    eczema, perimenstrual mood, and migraine all flowing downstream.
+
+    Letters and plans then lead with the root and frame everything else
+    as "these will improve as we address X" rather than parallel-treat
+    every condition.
+
+    Optional — older intake_insights records without this section still
+    load cleanly via the default. Coach can also override the AI's pick
+    via coach_notes_for_ai which flows back through downstream calls.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    label: str                       # one-line root: "HPT-axis dysregulation driving …"
+    reasoning: str = ""              # 2-4 sentences: WHY this is the root
+    downstream_effects: list[str] = Field(default_factory=list)
+    # ↑ List of conditions/symptoms framed as flowing FROM the root.
+    #   e.g. ["PCOS — likely improves as thyroid stabilises",
+    #         "IBS-D — gut-brain axis cascade from chronic inflammation",
+    #         "Perimenstrual migraine — hormone-cycle-modulated"]
+    confidence: float = 0.5          # 0-1
+
+
 class IntakeInsights(BaseModel):
     """AI-generated clinical summary of the structured intake. Generated once
     by Haiku after intake submission, refreshed on demand by the coach via the
@@ -185,6 +218,11 @@ class IntakeInsights(BaseModel):
 
     generated_at: datetime
     model: str = "claude-haiku-4-5"
+    # Fix B 2026-05-23 — root_cause is the new FM-philosophy section.
+    # Older intake_insights records have this as None; the renderer
+    # falls back to the existing top_hypotheses[0] when absent so no
+    # historical data needs to be regenerated.
+    root_cause: IntakeRootCause | None = None
     patterns: list[str] = Field(default_factory=list)            # 3-5 specific FM patterns
     red_flags: list[str] = Field(default_factory=list)           # protocol-gating concerns
     top_hypotheses: list[IntakeInsightHypothesis] = Field(default_factory=list)
