@@ -327,6 +327,102 @@ const TEMPLATES = [
     example: [['Priya']],
     buttons: ['Most days', 'A few times', 'None'],
   },
+  // ── Five Pillars rotating-poll templates (added 2026-05-24) ────────────
+  // The Tier 1 weekly poll rotates through sleep → stress → movement →
+  // nutrition (meals) → connection, one ping per week per client. movement
+  // + meals reuse the existing templates above; the three below complete
+  // the rotation. Button labels MUST match POLL_BUTTON_LABELS in
+  // src/lib/poll-labels.ts so the webhook classifier maps clicks back to
+  // structured pillar scores that feed client.derived_five_pillars.
+  {
+    name: 'fm_weekly_sleep_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: "Hi {{1}}, how's your sleep been this week?",
+    example: [['Priya']],
+    buttons: ['Sleeping well', 'Some restless nights', 'Struggling to sleep'],
+  },
+  {
+    name: 'fm_weekly_stress_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, how is stress feeling this week?',
+    example: [['Priya']],
+    buttons: ['Manageable', 'Some pressure', 'Overwhelming'],
+  },
+  {
+    name: 'fm_weekly_connection_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body: 'Hi {{1}}, how connected do you feel this week — to people, routine, yourself?',
+    example: [['Priya']],
+    buttons: ['Connected', 'Some of the time', 'Disconnected'],
+  },
+
+  // ── Tier 1 PILOT — rich-body v2 templates (added 2026-05-24) ────────────
+  //
+  // Replaces the dry one-liner v1 bodies with multi-paragraph warmth +
+  // bullet structure + Shivani signature, keeping every UTILITY anchor:
+  //   - "Your weekly check-in" → recipient-specific, not broadcast
+  //   - "next week's adjustments" / "which practices we lean on" →
+  //     transactional intent (their answer shapes their protocol)
+  //   - No promotional language, no generic CTA, no third-party benefit
+  // If Meta auto-classifier downgrades any of these to MARKETING on
+  // submission, we either soften further or accept the 6× cost on those
+  // 3 only — v1 stays approved as fallback. Code in
+  // src/lib/poll-labels.ts continues to point at v1 until coach confirms
+  // v2 is APPROVED, then we flip pillarToTemplateName() in a 1-line PR.
+  //
+  // Body uses WhatsApp text formatting: *bold*, _italic_, • bullet (Unicode).
+  // All three under 500 chars (Meta limit is 1024).
+  {
+    name: 'fm_weekly_sleep_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "*Your weekly sleep check-in* 🌙\n\n" +
+      "Hi {{1}}, taking a moment to feel into how this week went for sleep.\n\n" +
+      "Was it:\n" +
+      "• *Restorative* — falling asleep easily, waking refreshed\n" +
+      "• *Patchy* — some nights great, some restless\n" +
+      "• *Hard* — struggling to fall or stay asleep\n\n" +
+      "Tap below — your answer flows into next week's adjustments.\n\n" +
+      "— Shivani",
+    example: [['Priya']],
+    buttons: ['Sleeping well', 'Some restless nights', 'Struggling to sleep'],
+  },
+  {
+    name: 'fm_weekly_stress_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "*Your weekly stress check-in* 🌿\n\n" +
+      "Hi {{1}}, how is your nervous system doing this week?\n\n" +
+      "Was the load:\n" +
+      "• *Manageable* — handled what came up, came back to baseline\n" +
+      "• *Some pressure* — felt it, mostly stayed steady\n" +
+      "• *Overwhelming* — full, hard to come down\n\n" +
+      "Tap below — your answer shapes which practices we lean on next week.\n\n" +
+      "— Shivani",
+    example: [['Priya']],
+    buttons: ['Manageable', 'Some pressure', 'Overwhelming'],
+  },
+  {
+    name: 'fm_weekly_connection_v2',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "*Your weekly connection check-in* 🤝\n\n" +
+      "Hi {{1}}, checking in on how connected you've felt this week — to people, routine, yourself.\n\n" +
+      "Did you feel:\n" +
+      "• *Connected* — present, anchored in routine\n" +
+      "• *Some of the time* — moments of both\n" +
+      "• *Disconnected* — pulled away, hard to land\n\n" +
+      "Tap below — your answer guides where we lean next.\n\n" +
+      "— Shivani",
+    example: [['Priya']],
+    buttons: ['Connected', 'Some of the time', 'Disconnected'],
+  },
 
   // ── Upcoming-webinar broadcast templates ────────────────────────────────────
   //
