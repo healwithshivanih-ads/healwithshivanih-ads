@@ -10,8 +10,9 @@
  *   type: 'inbound_message',
  *   wa_id: '919876543210',
  *   profile_name: 'Priya Sharma' | null,
- *   message_type: 'text' | 'image' | 'audio' | ...,
- *   body: 'Hi Shivani, feeling better...',
+ *   message_type: 'text' | 'button' | 'interactive' | 'button_reply'
+ *               | 'image' | 'audio' | ...,
+ *   body: 'Hi Shivani, feeling better...' | 'All good' (button title),
  *   external_message_id: 'wamid....',
  *   timestamp: '2026-05-14T12:34:56.000Z',
  *   contact_id: uuid | null,
@@ -21,10 +22,38 @@
  *   raw_payload: <Meta event object>,
  * }
  *
- * Security: signed with HMAC-SHA256 over the raw body. The signature is sent
- * in the `X-Whatsapp-Signature-256` header as `sha256=<hex>`. The shared
- * secret is `WHATSAPP_WEBHOOK_SECRET` (matches the WA server's
- * FM_COACH_WEBHOOK_SECRET).
+ * Architecture (cleaned up 2026-05-24 after coach reported Hariharan's
+ * reply not showing in chat panel — turned out interactive button taps
+ * were being silently dropped because the filter was `msgType !== "text"`):
+ *
+ *   1. Verify HMAC signature → reject 401 if invalid.
+ *   2. Parse + extract wa_id / body / message_type / sender.
+ *   3. Allowlist message types we KNOW carry a text-shaped body:
+ *      - "text"           — free-text reply
+ *      - "button"         — quick-reply button on a template (Meta sends
+ *                            messages.button.text as the label)
+ *      - "interactive"    — interactive list/button replies
+ *      - "button_reply"   — alt name from forwarder for the same thing
+ *      - "list_reply"     — interactive list selection
+ *      Any other type (image/audio/video/document/location/etc) is logged
+ *      LOUDLY (not silent) and acknowledged as `skipped: true`.
+ *   4. Match phone → client. Unmatched → _whatsapp_unmatched.yaml.
+ *   5. Detect structured intents from the body in order:
+ *      a. start-date intent ("✅ START: 2026-05-19 [plan: …]")
+ *      b. cycle date ("LMP 2026-05-19")
+ *      c. weekly poll button-label ("All good" / "Struggling" / …)
+ *         → also write a dedicated <date>-NNN-poll.yaml session via
+ *           save-poll-response.py so detectAdherenceDropsAction can
+ *           iterate the structured `poll_response: {dim, score}` field.
+ *   6. ALWAYS write to the rolling per-plan WhatsApp thread session via
+ *      save-session.py (append_if_today_match + match_anywhere). Even
+ *      poll-button replies go here — so the chat panel shows the
+ *      reply in context. Dual-write is intentional.
+ *
+ * Security: HMAC-SHA256 over the raw body. Signature in the
+ * `X-Whatsapp-Signature-256` header as `sha256=<hex>`. Shared secret
+ * `WHATSAPP_WEBHOOK_SECRET` matches the WA server's
+ * FM_COACH_WEBHOOK_SECRET.
  *
  * Always returns 2xx — if processing fails, we log and continue so the WA
  * server doesn't retry (it would just duplicate work; the raw event already
@@ -41,6 +70,7 @@ import yaml from "js-yaml";
 import { findClientByPhoneAction } from "@/lib/server-actions/clients";
 import { parseInboundStartDateIntent } from "@/lib/start-date-parser";
 import { recordInboundCycleDate } from "@/lib/server-actions/cycle-date-collector";
+import { classifyPollReply } from "@/lib/poll-labels";
 
 const FMDB_REPO = path.resolve(process.cwd(), "../fm-database");
 const PLANS_ROOT = process.env.FMDB_PLANS_DIR ?? path.join(os.homedir(), "fm-plans");
@@ -117,6 +147,63 @@ async function saveQuickNote(
     return JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string };
   } catch {
     return { ok: false, error: `Invalid JSON from save-session.py: ${stdout.slice(0, 200)}` };
+  }
+}
+
+// ── Apply structured start-date intent ────────────────────────────────────────
+//
+// ── Poll-reply structured save (Fix 2026-05-24) ──────────────────────────────
+//
+// When classifyPollReply matches a known weekly-poll button label, we
+// write a dedicated <date>-NNN-poll.yaml session via save-poll-response.py
+// with the structured `poll_response: {dim, score, raw_text}` field. That
+// dedicated file is what detectAdherenceDropsAction iterates over. The
+// inbound reply ALSO lands in the rolling WhatsApp thread via the
+// regular saveQuickNote call below — so the chat panel shows the reply.
+async function savePollResponse(
+  clientId: string,
+  dim: string,
+  score: string,
+  rawText: string,
+  phone: string,
+  receivedAt: string,
+): Promise<string | null> {
+  const scriptPath = path.join(SCRIPTS_DIR, "save-poll-response.py");
+  const payload = {
+    client_id: clientId,
+    raw_text: rawText,
+    dim,
+    score,
+    phone,
+    received_at: receivedAt,
+  };
+
+  const child = execFile(PYTHON, [scriptPath], {
+    timeout: 15_000,
+    maxBuffer: 1024 * 1024,
+    cwd: FMDB_REPO,
+  });
+  child.stdin?.end(JSON.stringify(payload));
+  let stdout = "";
+  let stderr = "";
+  child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
+  child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
+  await new Promise<void>((resolve, reject) => {
+    child.on("error", reject);
+    child.on("close", () => resolve());
+  });
+
+  if (!stdout.trim()) {
+    throw new Error(`save-poll-response.py: empty stdout. stderr: ${stderr.slice(0, 300)}`);
+  }
+  try {
+    const parsed = JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string };
+    if (!parsed.ok) {
+      throw new Error(`save-poll-response.py: ${parsed.error}`);
+    }
+    return parsed.session_id ?? null;
+  } catch (e) {
+    throw new Error(`save-poll-response.py invalid output: ${(e as Error).message}`);
   }
 }
 
@@ -247,11 +334,40 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "Missing wa_id" }, { status: 400 });
   }
 
-  if (msgType !== "text") {
-    return NextResponse.json({ ok: true, skipped: true, reason: `non-text: ${msgType}` });
+  // Fix 2026-05-24: previously this branch was `msgType !== "text"` which
+  // SILENTLY DROPPED button taps on interactive templates. Quick-reply
+  // button replies on Meta WhatsApp templates come through as
+  // message_type "button" / "interactive" / "button_reply" with the
+  // button label in `body`. The drop was returning 200 OK so nothing
+  // surfaced in logs — Hariharan's check-in reply was lost this way.
+  //
+  // Allowlist message types that carry a text-shaped body. Anything else
+  // (image/audio/video/document/location/sticker/reaction etc.) is
+  // logged LOUDLY and acknowledged as skipped — but never silently.
+  const TEXT_LIKE_TYPES = new Set([
+    "text",
+    "button",
+    "interactive",
+    "button_reply",
+    "list_reply",
+    "button_text",  // some forwarders use this variant
+  ]);
+  if (!TEXT_LIKE_TYPES.has(msgType)) {
+    console.log(
+      `[whatsapp-webhook] SKIP non-text msgType="${msgType}" from ${rawPhone}` +
+        ` (body bytes=${messageText.length}). Forwarder should still log the raw event.`,
+    );
+    return NextResponse.json({
+      ok: true,
+      skipped: true,
+      reason: `non-text-like: ${msgType}`,
+    });
   }
 
   if (!messageText.trim()) {
+    console.log(
+      `[whatsapp-webhook] SKIP empty body from ${rawPhone} (msgType="${msgType}")`,
+    );
     return NextResponse.json({ ok: true, skipped: true, reason: "empty message" });
   }
 
@@ -308,6 +424,51 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Weekly-poll button-label classifier (Fix 2026-05-24: was dead code —
+  // defined in lib/poll-labels.ts but never wired into the webhook,
+  // which meant detectAdherenceDropsAction had nothing to iterate over).
+  //
+  // When the body matches a known poll-button label ("All good" /
+  // "Struggling" / "Missed 1-2 days" / etc), we DUAL-WRITE:
+  //   1. A dedicated <date>-NNN-poll.yaml via save-poll-response.py
+  //      — carries the structured `poll_response: {dim, score}` field
+  //      that detectAdherenceDropsAction reads.
+  //   2. ALSO falls through to saveQuickNote below so the reply lands
+  //      in the rolling WhatsApp thread for the chat panel.
+  //
+  // Only attempted when start-date + cycle handlers didn't already
+  // claim the message (those are more specific patterns).
+  let pollMatched: { dim: string; score: string } | null = null;
+  let pollSessionId: string | null = null;
+  if (!applied?.ok && !cycleApplied?.applied) {
+    pollMatched = classifyPollReply(messageText);
+    if (pollMatched) {
+      try {
+        pollSessionId = await savePollResponse(
+          match.client_id,
+          pollMatched.dim,
+          pollMatched.score,
+          messageText.trim(),
+          rawPhone,
+          ts,
+        );
+        noteLines.push(
+          "",
+          `📊 Weekly poll reply detected — ${pollMatched.dim}: ${pollMatched.score}` +
+            (pollSessionId ? ` (audit session: ${pollSessionId})` : ""),
+        );
+      } catch (err) {
+        console.error(
+          `[whatsapp-webhook] Poll-classifier matched but save-poll-response failed:`,
+          err,
+        );
+        // Fall through to the rolling-thread write below — the reply
+        // is still captured in the chat panel even if the structured
+        // audit didn't land.
+      }
+    }
+  }
+
   const noteText = noteLines.join("\n");
 
   const saveResult = await saveQuickNote(match.client_id, noteText);
@@ -316,16 +477,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: saveResult.error }, { status: 500 });
   }
 
+  const extras: string[] = [];
   if (applied?.ok) {
-    console.log(
-      `[whatsapp-webhook] ✓ ${rawPhone} → ${match.client_id} (session: ${saveResult.session_id}) · ` +
-        `auto-applied ${applied.field_updated}=${applied.new_value} on ${applied.plan_slug}`,
-    );
-  } else {
-    console.log(
-      `[whatsapp-webhook] ✓ ${rawPhone} → ${match.client_id} (session: ${saveResult.session_id})`,
-    );
+    extras.push(`auto-applied ${applied.field_updated}=${applied.new_value} on ${applied.plan_slug}`);
   }
+  if (cycleApplied?.applied) {
+    extras.push(`cycle ${cycleApplied.date}`);
+  }
+  if (pollMatched) {
+    extras.push(`poll ${pollMatched.dim}=${pollMatched.score}${pollSessionId ? ` (${pollSessionId})` : ""}`);
+  }
+  console.log(
+    `[whatsapp-webhook] ✓ ${rawPhone} → ${match.client_id} (msgType=${msgType}, session: ${saveResult.session_id})` +
+      (extras.length ? ` · ${extras.join(" · ")}` : ""),
+  );
 
   return NextResponse.json({
     ok: true,
