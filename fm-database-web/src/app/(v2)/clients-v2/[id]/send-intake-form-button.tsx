@@ -104,7 +104,52 @@ export function SendIntakeFormButton({
   //   - "never submitted" — no submittedAt. Same as before.
   const hasSubmittedRecord = Boolean(submittedAt);
   const isFinalised = Boolean(localFinalisedAt);
-  const isEditableAfterSubmit = hasSubmittedRecord && !isFinalised && Boolean(token);
+  // B4 fix 2026-05-23 — detect expired tokens. Without this, the active-
+  // link panel shows the URL as "Link active until 5/21/2026" long after
+  // expiry, while the Progress card on the same page correctly says
+  // "Link expired." Dhanishta cl-004 + Nidhi both hit this.
+  const isExpired = Boolean(
+    expiresAt && Date.parse(expiresAt) < Date.now(),
+  );
+  const hasUsableToken = Boolean(token) && !isExpired;
+  const isEditableAfterSubmit = hasSubmittedRecord && !isFinalised && hasUsableToken;
+
+  /**
+   * B9 — undo a finalise. Coach asked 2026-05-23 (Deepti cl-011): how
+   * do I re-issue a form for a client whose intake is locked? Previously
+   * there was no path — the locked banner said "see Sessions tab" with
+   * no way back. Now coach clicks this button, intake_finalised_at
+   * clears, the Send-pre-discovery / Skip-full-intake buttons return,
+   * and coach can mint a fresh token.
+   */
+  async function handleReopen() {
+    if (!confirm(
+      "Re-open the intake form so you can send a fresh link? " +
+      "The client's previous answers stay on file and will pre-fill the new form. " +
+      "After re-open, use the Send buttons that appear to issue a new link."
+    )) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const { reopenFinalisedIntake } = await import("@/lib/server-actions/intake");
+      const res = await reopenFinalisedIntake(clientId);
+      if (!res.ok) {
+        setError(res.error || "Failed to re-open intake");
+        return;
+      }
+      setLocalFinalisedAt(null);
+      // Page refresh so the Send-and-unlock panel + IntakeProgressCard
+      // re-derive from the new state. Without this the locked banner
+      // would persist until next nav.
+      if (typeof window !== "undefined") {
+        window.location.reload();
+      }
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Failed to re-open intake");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function handleFinalise() {
     if (!confirm(
@@ -294,20 +339,74 @@ export function SendIntakeFormButton({
         {isFinalised && (
           <div
             style={{
-              padding: "8px 10px",
+              padding: "10px 12px",
               borderRadius: 8,
               background: "rgba(16, 185, 129, 0.08)",
               border: "1px solid rgba(16, 185, 129, 0.3)",
               fontSize: 13,
+              display: "grid",
+              gap: 8,
             }}
           >
-            🔒 Intake locked on{" "}
-            {localFinalisedAt ? new Date(localFinalisedAt).toLocaleDateString() : "—"}.
-            See Sessions tab → quick_note for the captured intake.
+            <div>
+              🔒 Intake locked on{" "}
+              {localFinalisedAt ? new Date(localFinalisedAt).toLocaleDateString() : "—"}.
+              See Sessions tab → quick_note for the captured intake.
+            </div>
+            <button
+              type="button"
+              onClick={handleReopen}
+              disabled={loading}
+              style={{
+                padding: "5px 10px",
+                fontSize: 12,
+                fontWeight: 600,
+                background: "transparent",
+                color: "#047857",
+                border: "1px solid rgba(16, 185, 129, 0.5)",
+                borderRadius: 6,
+                cursor: loading ? "wait" : "pointer",
+                width: "fit-content",
+              }}
+              title="Re-open so you can send a fresh editable link. Previous answers stay and pre-fill the new form."
+            >
+              {loading ? "Re-opening…" : "🔓 Re-open for edits + new send"}
+            </button>
           </div>
         )}
 
-        {!token && (
+        {/* Expired-token callout — when there's an old token on file
+            that has timed out but the intake was never submitted, the
+            previous UI showed "Link active until 5/21/2026" as if still
+            valid (Dhanishta cl-004). Render an honest expired notice
+            instead, then let the Send buttons below offer a fresh link. */}
+        {!hasUsableToken && Boolean(token) && !isFinalised && !hasSubmittedRecord && (
+          <div
+            style={{
+              padding: "8px 10px",
+              borderRadius: 8,
+              background: "rgba(239, 68, 68, 0.06)",
+              border: "1px solid rgba(239, 68, 68, 0.30)",
+              fontSize: 13,
+              color: "#991b1b",
+            }}
+          >
+            ⏰ Previous link expired
+            {expiresAt ? ` (${new Date(expiresAt).toLocaleDateString()})` : ""}.
+            Generate a fresh one below.
+          </div>
+        )}
+
+        {/* Send buttons render when there's no USABLE token (expired
+            counts as no token here) AND intake isn't locked. Once
+            finalised, the locked banner above explains the state;
+            offering "send pre-discovery intake" would be wrong (intake
+            is already captured) AND broken (the shim would issue a new
+            token but submit-paths refuse on a locked record). For a
+            Tier-1 top-up after lock, use the TierOneSuspicionsPanel on
+            the Overview tab; for a full re-issue, unlock the intake
+            first on the Coach Exam tab. */}
+        {!hasUsableToken && !isFinalised && (
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <button
               type="button"
@@ -326,9 +425,7 @@ export function SendIntakeFormButton({
             >
               {loading
                 ? "Generating…"
-                : isFinalised
-                  ? "📨 Send pre-discovery intake (~10 min)"
-                  : "📨 Send pre-discovery intake (~10 min)"}
+                : "📨 Send pre-discovery intake (~10 min)"}
             </button>
             <button
               type="button"
@@ -365,7 +462,41 @@ export function SendIntakeFormButton({
           </div>
         )}
 
-        {token && open && (
+        {/* When intake is finalised AND no active token, surface the
+            two legitimate re-issue paths so coach isn't stranded on this
+            panel. Tier-1 top-up = a focused re-issue for just the Tier-1
+            section (joints / lean / PEM / environment). Full re-issue
+            requires explicit unlock first to make accidental data loss
+            visible. */}
+        {!hasUsableToken && isFinalised && (
+          <div
+            style={{
+              fontSize: 12,
+              lineHeight: 1.5,
+              color: "var(--fm-text-secondary)",
+              padding: "4px 2px",
+            }}
+          >
+            <div style={{ fontWeight: 600, marginBottom: 4, color: "var(--fm-text-primary)" }}>
+              Need to send something else?
+            </div>
+            <ul style={{ margin: 0, paddingLeft: 18, display: "grid", gap: 4 }}>
+              <li>
+                For a <strong>full re-issue</strong>: tap{" "}
+                <strong>🔓 Re-open for edits + new send</strong> in the locked
+                banner above. The Send buttons return, and the client&apos;s
+                previous answers pre-fill the new form.
+              </li>
+              <li>
+                For a <strong>Tier-1 top-up</strong> only (joints / standing /
+                PEM / mould / MCAS): open the Overview tab → <em>Tier 1 signals</em>
+                {" "}panel → <em>Re-issue Tier 1 intake</em>.
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {hasUsableToken && open && (
           <div style={{ display: "grid", gap: 10 }}>
             <div style={{ fontSize: 12, opacity: 0.7 }}>
               Link active until{" "}

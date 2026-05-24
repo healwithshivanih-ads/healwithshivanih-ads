@@ -214,12 +214,23 @@ export async function loadClientJourney(
   // ── Build the steps array.
   const steps: JourneyStep[] = [];
 
+  // Fix F6 2026-05-23 — legacy / direct-intake clients have intake
+  // submitted but no discovery session on record. The Discovery step
+  // used to render as "pending — —", reading as "stuff is missing"
+  // when it actually isn't. If intake is done and discovery is null,
+  // mark the Discovery step as N/A with "(joined directly)" caption.
+  // This is INDEPENDENT of engagement_status — a signed-up client can
+  // still have skipped the discovery step.
+  const intakeDoneNoDiscovery = !!intake && !discovery;
+
   // Step 1 — Discovery
   steps.push({
     id: "discovery",
     label: "Discovery",
-    status: discovery ? "done" : "pending",
-    caption: (asString(pluck(discovery, "date")) as string | undefined) ?? "—",
+    status: discovery ? "done" : intakeDoneNoDiscovery ? "na" : "pending",
+    caption:
+      (asString(pluck(discovery, "date")) as string | undefined) ??
+      (intakeDoneNoDiscovery ? "joined directly" : "—"),
   });
 
   // Step 2 — Engagement decision. Sits between Discovery and Intake
@@ -236,13 +247,33 @@ export async function loadClientJourney(
         ? "declined"
         : "pending";
   if (!discovery) {
-    // No discovery yet — engagement step is just an upcoming slot.
-    steps.push({
-      id: "engagement",
-      label: "Sign-up",
-      status: "pending",
-      caption: "—",
-    });
+    // No discovery yet — engagement step is just an upcoming slot UNLESS
+    // engagement was explicitly recorded (signed_up / declined) or this
+    // is a legacy direct-intake client.
+    // Fix F6 2026-05-23 — collapse the "—" caption to a clearer state.
+    if (engagement === "signed_up") {
+      steps.push({
+        id: "engagement",
+        label: "Sign-up",
+        status: "done",
+        caption: "Confirmed",
+      });
+    } else if (engagement === "declined") {
+      steps.push({
+        id: "engagement",
+        label: "Sign-up",
+        status: "declined",
+        caption: "Declined",
+      });
+    } else {
+      const isLegacyNoSignup = intakeDoneNoDiscovery;
+      steps.push({
+        id: "engagement",
+        label: "Sign-up",
+        status: isLegacyNoSignup ? "na" : "pending",
+        caption: isLegacyNoSignup ? "joined directly" : "—",
+      });
+    }
   } else if (engagement === "signed_up") {
     steps.push({
       id: "engagement",
@@ -321,10 +352,21 @@ export async function loadClientJourney(
   // check-in" even right after the coach finished one. Bug surfaced
   // for cl-004 18 May 2026.
   if (publishedPlan && currentWeek != null && planWeeks) {
+    // Fix F10 2026-05-23 — daysIn used to clamp at 0, so plans
+    // published with a future plan_period_start showed "0 days in"
+    // on the day they were prepared. Now we surface a "Starts in N
+    // days" caption when the plan hasn't begun yet, and only flip to
+    // "N days in" once start ≤ today.
     let daysIn: number | null = null;
+    let daysUntilStart: number | null = null;
     if (planStart) {
       const start = new Date(`${planStart}T00:00:00`).getTime();
-      daysIn = Math.max(0, Math.floor((todayMs - start) / (24 * 60 * 60 * 1000)));
+      const diffDays = Math.floor((todayMs - start) / (24 * 60 * 60 * 1000));
+      if (diffDays >= 0) {
+        daysIn = diffDays;
+      } else {
+        daysUntilStart = -diffDays;
+      }
     }
 
     // Most recent check-in date (any session whose presenting_complaints
@@ -349,15 +391,26 @@ export async function loadClientJourney(
       checkinDoneThisWeek = daysSince >= 0 && daysSince < 7;
     }
 
+    // Fix F10 — when plan hasn't started yet, the "Week N of M" step is
+    // pre-active rather than active; caption explains the wait.
+    const notStartedYet = daysUntilStart != null;
     steps.push({
       id: "week",
-      label: `Week ${currentWeek} of ${planWeeks}`,
-      status: checkinDoneThisWeek ? "done" : "active",
-      caption: checkinDoneThisWeek
-        ? `Check-in logged${lastCheckinIso ? ` ${lastCheckinIso}` : ""}`
-        : daysIn != null
-          ? `${daysIn} day${daysIn === 1 ? "" : "s"} in`
-          : undefined,
+      label: notStartedYet ? `Week 1 of ${planWeeks}` : `Week ${currentWeek} of ${planWeeks}`,
+      status: notStartedYet ? "pending" : checkinDoneThisWeek ? "done" : "active",
+      caption: notStartedYet
+        ? daysUntilStart === 1
+          ? "Starts tomorrow"
+          : daysUntilStart === 0
+            ? "Starts today"
+            : `Starts in ${daysUntilStart} days`
+        : checkinDoneThisWeek
+          ? `Check-in logged${lastCheckinIso ? ` ${lastCheckinIso}` : ""}`
+          : daysIn != null
+            ? daysIn === 0
+              ? "Day 1 today"
+              : `${daysIn} day${daysIn === 1 ? "" : "s"} in`
+            : undefined,
     });
   } else {
     steps.push({

@@ -13,11 +13,15 @@
  *  - Broadcast panel (when WHATSAPP_SERVER_URL is set)
  */
 import Link from "next/link";
+import path from "node:path";
+import fs from "node:fs/promises";
+import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import {
   loadClientSessions,
   getRecentInboundMessages,
   getRecentIntakeActivity,
+  getStrandedIntakeDrafts,
   getClientHealthSignals,
 } from "@/lib/fmdb/loader-extras";
 import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
@@ -41,6 +45,7 @@ import {
   FmCatalogueCommitBanner,
   FmInboundMessagesBanner,
   FmIntakeActivityBanner,
+  FmStrandedIntakeBanner,
   FmScheduleDuePanel,
   FmUpcomingBookingsPanel,
   FmCancellationAlertBanner,
@@ -151,6 +156,64 @@ async function computeSignal(
   if (publishedPlan) {
     const recheckDate =
       effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date;
+
+    // B5 fix 2026-05-23 — phase letter overdue signal. Mirrors the
+    // logic in client-journey.ts: phases are 2 weeks long ([1-2],
+    // [3-4], [5-6]…), the phase letter is sent 2 days before the next
+    // phase starts. If the next phase's due date is in the past AND no
+    // saved phase letter exists for that range, flag it. Surfaces on
+    // Hariharan + Geetika who both have wk 3-4 phase letters owed.
+    const planStart = publishedPlan.plan_period_start;
+    const planWeeks = publishedPlan.plan_period_weeks;
+    if (planStart && planWeeks) {
+      const startMs = new Date(planStart + "T00:00:00").getTime();
+      const todayMs = new Date(todayStr).getTime();
+      const daysSinceStart = Math.floor((todayMs - startMs) / 86_400_000);
+      const currentWeek = Math.max(1, Math.floor(daysSinceStart / 7) + 1);
+      const currentPhase = Math.ceil(currentWeek / 2);
+      const nextPhaseStartWeek = currentPhase * 2 + 1;
+      if (nextPhaseStartWeek <= planWeeks) {
+        // Due 2 days before next phase starts.
+        const dueMs = startMs + ((nextPhaseStartWeek - 1) * 7 - 2) * 86_400_000;
+        if (dueMs < todayMs) {
+          // Check whether a saved phase letter already exists for this
+          // range. The communicate path saves them as files named
+          // {planSlug}-meal_plan-wkN-M[-recipes].html in the plan's
+          // letter dir. If a file exists for this range, the coach has
+          // already sent it — skip the nudge.
+          const range = {
+            start: nextPhaseStartWeek,
+            end: Math.min(nextPhaseStartWeek + 1, planWeeks),
+          };
+          const stem = `${publishedPlan.slug}-meal_plan-wk${range.start}-${range.end}`;
+          let alreadySent = false;
+          try {
+            const letterDir = path.join(
+              getPlansRoot(),
+              "clients",
+              client.client_id,
+              "meal-plans",
+            );
+            const entries = await fs.readdir(letterDir).catch(() => [] as string[]);
+            alreadySent = entries.some((n) => n.startsWith(stem));
+          } catch {
+            // Best-effort — if we can't read the dir, fall through to
+            // surfacing the signal (false negatives > false positives
+            // for a nudge).
+          }
+          if (!alreadySent) {
+            return {
+              kind: "phase_letter_due",
+              planSlug: publishedPlan.slug,
+              recheckDate,
+              phaseLetterRange: range,
+              phaseLetterDueDate: new Date(dueMs).toISOString().slice(0, 10),
+            };
+          }
+        }
+      }
+    }
+
     // "Last review" = most recent of: plan updated_at (edits + quick-edits
     // bump it), the latest check-in session, an applied rework — else the
     // plan start date as the anchor.
@@ -433,6 +496,15 @@ export default async function DashboardV2() {
     latestPlanUpdateByClient,
   );
 
+  // Stranded intake drafts — substantial answers sitting in
+  // intake_form_draft, never promoted to a real submit. (Pranati cl-009
+  // hit this 2026-05-23, 63 fields lost in plain sight.) Banner appears
+  // only when ≥1 client has ≥5 filled fields un-promoted.
+  const strandedIntakeDrafts = await getStrandedIntakeDrafts(
+    clients as Array<Record<string, unknown>>,
+    5,
+  );
+
   // 🔔 Proactive client-health detectors (2026-05-19): dormant clients
   // (no sessions in 14d), plateaued (3+ measurements within ±0.3kg),
   // regressed (≥1kg above starting weight). Each surfaces as a banner
@@ -539,6 +611,7 @@ export default async function DashboardV2() {
     labs_pending: [],
     booking_link_pending: [],
     awaiting_signup: [],
+    phase_letter_due: [],
     plan_review_due: [],
     active: [],
     returning: [],
@@ -868,7 +941,7 @@ export default async function DashboardV2() {
                     : [
                         grouped.follow_up_due.length > 0 && `${grouped.follow_up_due.length} follow-up due`,
                         grouped.protocol_complete.length > 0 && `${grouped.protocol_complete.length} recheck due`,
-                        grouped.intake_to_do.length > 0 && `${grouped.intake_to_do.length} intake${grouped.intake_to_do.length === 1 ? "" : "s"} to do`,
+                        grouped.intake_to_do.length > 0 && `${grouped.intake_to_do.length} intake session${grouped.intake_to_do.length === 1 ? "" : "s"} to do`,
                         grouped.plan_to_build.length > 0 && `${grouped.plan_to_build.length} programme${grouped.plan_to_build.length === 1 ? "" : "s"} owed`,
                         grouped.labs_pending.length > 0 && `${grouped.labs_pending.length} labs pending`,
                         grouped.booking_link_pending.length > 0 && `${grouped.booking_link_pending.length} booking link${grouped.booking_link_pending.length === 1 ? "" : "s"} unanswered`,
@@ -947,6 +1020,11 @@ export default async function DashboardV2() {
           {/* FmIntakeActivityBanner retired 2026-05-17 — its info now folds
               into the per-client unread badge on the schedule-due rows + the
               clients-v2 grid. */}
+          {/* Stranded intake drafts — clients who filled the form but
+              never tapped Submit. One-click Promote per row. Auto-hides
+              when none. */}
+          <FmStrandedIntakeBanner drafts={strandedIntakeDrafts} />
+
           <FmInboundMessagesBanner messages={inboundMessages} windowDays={7} inboxHref="/messages" />
 
           {/* 🔔 Proactive client-health banners (dormant / plateau /

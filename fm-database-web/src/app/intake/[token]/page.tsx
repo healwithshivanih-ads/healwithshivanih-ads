@@ -31,14 +31,44 @@ export default async function IntakeTokenPage({
       title = "We couldn't find this link";
       body = "Please check that you opened the most recent link from your coach.";
     }
+    // F14 2026-05-23 — add tap-to-WhatsApp CTA so client isn't stuck
+    // hunting for coach's number. Skip the CTA on already_submitted
+    // (their answers are in; no action needed).
+    const showWaCta = res.error !== "already_submitted";
+    const waMsg = encodeURIComponent(
+      "Hi Shivani, my intake link has expired or isn't working — could you send me a fresh one?"
+    );
     return (
       <div className="fm-thanks">
         <div className="fm-thanks__eyebrow">
           <span className="pulse" aria-hidden="true" />
-          <span>Heal with Shivani</span>
+          <span>Shivani Hari</span>
         </div>
         <h1 className="fm-thanks__title">{title}</h1>
         <p className="fm-thanks__body">{body}</p>
+        {showWaCta && (
+          <a
+            href={`https://wa.me/918850176753?text=${waMsg}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 20,
+              padding: "10px 18px",
+              background: "#25D366",
+              color: "white",
+              borderRadius: 8,
+              fontSize: 15,
+              fontWeight: 600,
+              textDecoration: "none",
+              fontFamily: "system-ui, sans-serif",
+            }}
+          >
+            💬 WhatsApp Shivani for a fresh link
+          </a>
+        )}
       </div>
     );
   }

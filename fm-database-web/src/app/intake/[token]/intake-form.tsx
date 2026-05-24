@@ -943,16 +943,78 @@ function mergeInitial(
     weight_trend_current: asString(get("weight_trend_current")),
     weight_change_trigger: asString(get("weight_change_trigger")),
     work_pattern: asStringArray(get("work_pattern")),
-    // v2.3 body comp — both unit options accepted; submit pipeline prefers metric
-    height_cm: get("height_cm") == null ? "" : asString(get("height_cm")),
-    height_ft: get("height_ft") == null ? "" : asString(get("height_ft")),
-    height_in: get("height_in") == null ? "" : asString(get("height_in")),
-    weight_now_kg: get("weight_now_kg") == null ? "" : asString(get("weight_now_kg")),
-    weight_now_lb: get("weight_now_lb") == null ? "" : asString(get("weight_now_lb")),
-    waist_cm: get("waist_cm") == null ? "" : asString(get("waist_cm")),
-    waist_in: get("waist_in") == null ? "" : asString(get("waist_in")),
-    hip_cm: get("hip_cm") == null ? "" : asString(get("hip_cm")),
-    hip_in: get("hip_in") == null ? "" : asString(get("hip_in")),
+    // v0.75.7 body comp — IMPERIAL-only inputs visible to the client (kg
+    // for weight, ft+in for height, inches for waist/hip). Pre-existing
+    // cm/lb values on file are DERIVED to imperial here so a returning
+    // intake (e.g. Deepti cl-011 2026-05-23) shows her body comp inputs
+    // populated instead of looking lost. We also zero out the cm-side
+    // state once the derivation runs, so the form's buildPayload sends
+    // ONLY imperial — preventing the "stored cm overrides new imperial
+    // entry" silent-data-loss bug that lived in the shim's measurement
+    // resolver.
+    //
+    // Logic per metric:
+    //   - imperial value already in prefill → use it as-is
+    //   - else, metric value in prefill → derive imperial + clear metric
+    //   - else, all empty
+    ...(() => {
+      const cmRaw = get("height_cm");
+      const ftRaw = get("height_ft");
+      const inRaw = get("height_in");
+      let height_ft = ftRaw == null ? "" : asString(ftRaw);
+      let height_in = inRaw == null ? "" : asString(inRaw);
+      let height_cm = cmRaw == null ? "" : asString(cmRaw);
+      if (!height_ft && !height_in && height_cm) {
+        const cm = Number(height_cm);
+        if (cm > 0) {
+          const totalIn = cm / 2.54;
+          const ft = Math.floor(totalIn / 12);
+          const inches = Math.round((totalIn - ft * 12) * 10) / 10;
+          height_ft = String(ft);
+          height_in = String(inches);
+          height_cm = ""; // imperial now owns it
+        }
+      }
+      const wKgRaw = get("weight_now_kg");
+      const wLbRaw = get("weight_now_lb");
+      let weight_now_kg = wKgRaw == null ? "" : asString(wKgRaw);
+      let weight_now_lb = wLbRaw == null ? "" : asString(wLbRaw);
+      if (!weight_now_kg && weight_now_lb) {
+        const lb = Number(weight_now_lb);
+        if (lb > 0) {
+          weight_now_kg = String(Math.round(lb * 0.453592 * 10) / 10);
+          weight_now_lb = "";
+        }
+      }
+      const wCm = get("waist_cm");
+      const wIn = get("waist_in");
+      let waist_cm = wCm == null ? "" : asString(wCm);
+      let waist_in = wIn == null ? "" : asString(wIn);
+      if (!waist_in && waist_cm) {
+        const cm = Number(waist_cm);
+        if (cm > 0) {
+          waist_in = String(Math.round((cm / 2.54) * 10) / 10);
+          waist_cm = "";
+        }
+      }
+      const hCm = get("hip_cm");
+      const hIn = get("hip_in");
+      let hip_cm = hCm == null ? "" : asString(hCm);
+      let hip_in = hIn == null ? "" : asString(hIn);
+      if (!hip_in && hip_cm) {
+        const cm = Number(hip_cm);
+        if (cm > 0) {
+          hip_in = String(Math.round((cm / 2.54) * 10) / 10);
+          hip_cm = "";
+        }
+      }
+      return {
+        height_cm, height_ft, height_in,
+        weight_now_kg, weight_now_lb,
+        waist_cm, waist_in,
+        hip_cm, hip_in,
+      };
+    })(),
     bp_systolic: get("bp_systolic") == null ? "" : asString(get("bp_systolic")),
     bp_diastolic: get("bp_diastolic") == null ? "" : asString(get("bp_diastolic")),
     why_here: asString(draft.why_here) || (goals[0] || ""),
@@ -1911,6 +1973,15 @@ export function IntakeForm({
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  // Sparse-submit guard. When the client taps Submit on a mostly-empty
+  // form, we ask "you've filled X of N sections — submit anyway?" once.
+  // If they confirm, we set this flag so the second tap goes through
+  // without re-asking. (Deepti cl-011 + Kshitija cl-010 both submitted
+  // near-empty forms because the form let them — this catches that.)
+  const [sparseConfirmed, setSparseConfirmed] = useState(false);
+  const [sparseWarning, setSparseWarning] = useState<{ filled: number; total: number } | null>(
+    null,
+  );
   const [hasBegun, setHasBegun] = useState<boolean>(() => {
     return Boolean(
       initial.display_name ||
@@ -1927,9 +1998,16 @@ export function IntakeForm({
   // 1 About you · 2 Concerns · 3 Diagnoses/meds/allergies/COVID · 4 Medications layered
   // 5 Timeline · 6 Day-to-day · 7 Five pillars · 8 Past & environment · 9 Diet
   // 10 Body systems · [11 Cycle & hormones (women only)] · 12 Readiness · 13 Anything else · 14 Consent
-  // v0.75.2 — totalSections bumped by 1 for the new "Movement, joints,
-  // standing" section between Body and Cycle.
-  const totalSections = isFemale ? 15 : 14;
+  //
+  // Coach feedback 2026-05-24: the Tier 1 screening section (joints +
+  // standing + PEM + mould) is REMOVED from the default render. It now
+  // only appears in ?focus=tier1 mode (coach re-issues via the topup
+  // template when something in the first submission suggests screening
+  // is warranted). Without focusTier1, the form is 14 sections (F) /
+  // 13 (M) — one less than the v0.75.2 count.
+  const totalSections = focusTier1
+    ? (isFemale ? 15 : 14)
+    : (isFemale ? 14 : 13);
 
   const sectionRefs = useRef<Record<number, HTMLElement | null>>({});
   const setSectionRef = (n: number) => (el: HTMLElement | null) => {
@@ -2212,6 +2290,118 @@ export function IntakeForm({
     }
   };
 
+  // Section-coverage gate. We do NOT block submit on sparse data — coach
+  // wants the form to be permissive — but we DO warn once so the client
+  // realises she may have scrolled past most sections. Each entry is the
+  // smallest signature that says "this section was engaged with."
+  //
+  // Demographics (about / concerns / consent) are excluded because they
+  // pre-fill from coach data and would always pass.
+  const sectionFillSignals: Array<{ name: string; filled: boolean }> = [
+    { name: "Timeline", filled: state.timeline_events.some((t) => Boolean(t.event)) },
+    {
+      name: "Day-to-day",
+      filled: Boolean(
+        state.digestion_notes ||
+          state.sleep_notes ||
+          state.energy_pattern ||
+          state.stress_response,
+      ),
+    },
+    {
+      name: "Five pillars",
+      filled: Boolean(
+        (state.fp_sleep_quality ?? 0) > 0 ||
+          (state.fp_stress ?? 0) > 0 ||
+          (state.fp_movement_days ?? 0) > 0 ||
+          (state.fp_nutrition_quality ?? 0) > 0,
+      ),
+    },
+    {
+      name: "Past health & environment",
+      filled: Boolean(
+        state.childhood_history ||
+          state.toxic_exposures ||
+          state.what_has_worked ||
+          state.covid_history.length > 0,
+      ),
+    },
+    {
+      name: "Diet",
+      filled: Boolean(
+        state.dietary_preference || state.foods_to_avoid || state.non_negotiables,
+      ),
+    },
+    {
+      name: "Body composition",
+      filled: Boolean(
+        state.weight_now_kg ||
+          state.height_cm ||
+          state.waist_cm ||
+          state.bp_systolic,
+      ),
+    },
+    {
+      name: "Movement & joints (Tier 1)",
+      filled: Boolean(
+        state.beighton_self_score.length > 0 ||
+          state.pem_screen.length > 0 ||
+          state.mould_exposure.length > 0,
+      ),
+    },
+    {
+      name: "Sleep & energy",
+      filled: Boolean(
+        state.time_to_fall_asleep ||
+          state.wake_time_pattern.length > 0 ||
+          state.snore_or_apnoea ||
+          state.energy_crashes.length > 0 ||
+          state.morning_state,
+      ),
+    },
+    {
+      name: "Digestion detail",
+      filled: Boolean(
+        state.bristol_stool_typical.length > 0 ||
+          state.bowel_frequency_per_day ||
+          state.bowel_pattern.length > 0,
+      ),
+    },
+    {
+      name: "Hair / nails / skin / pain",
+      filled: Boolean(
+        state.hair_loss_pattern ||
+          state.hair_texture_change ||
+          state.nail_signs.length > 0 ||
+          state.acne_pattern.length > 0 ||
+          state.pain_locations.length > 0,
+      ),
+    },
+    ...(isFemale
+      ? [
+          {
+            name: "Cycle & hormones",
+            filled: Boolean(
+              state.menstrual_notes ||
+                state.period_pain_severity ||
+                state.perimenopause_inventory.length > 0,
+            ),
+          },
+        ]
+      : []),
+    {
+      name: "Sun & vit D",
+      filled: Boolean(state.sun_exposure_daily || state.vit_d_supplement),
+    },
+  ];
+
+  const filledSectionCount = sectionFillSignals.filter((s) => s.filled).length;
+  const totalSectionCount = sectionFillSignals.length;
+  // Empirical threshold: under 1/3 of clinical sections engaged = the
+  // form is missing too much to be useful. Demographic-only submits are
+  // the failure mode we're guarding against.
+  const SPARSE_THRESHOLD = Math.ceil(totalSectionCount / 3);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Consent is the only submit gate. Previously the button was silently
@@ -2227,6 +2417,16 @@ export function IntakeForm({
       if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
     }
+    // Sparse-submit guard. Show an inline confirm once if the form is
+    // mostly empty — the client can still submit, just intentionally.
+    // Skipped on a re-tap (sparseConfirmed) so this doesn't loop.
+    if (!sparseConfirmed && filledSectionCount < SPARSE_THRESHOLD) {
+      setSparseWarning({ filled: filledSectionCount, total: totalSectionCount });
+      const el = sectionRefs.current[SEC_CONSENT];
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    setSparseWarning(null);
     setSubmitting(true);
     setSubmitError(null);
     try {
@@ -2398,11 +2598,17 @@ export function IntakeForm({
     );
   }
 
-  // Computed section numbers (1-indexed). v0.75.2 — SEC_MOVEMENT slotted
-  // between BODY (10) and CYCLE (11), bumping subsequent section numbers
-  // by 1. The new section covers Beighton hypermobility + NASA lean
-  // orthostatic + PEM screen — Tier 1 screening for the MCAS-POTS-EDS /
-  // long-COVID family of conditions.
+  // Computed section numbers (1-indexed). Coach feedback 2026-05-24:
+  // Section 11 (Tier 1: Beighton + NASA lean + PEM + mould) is REMOVED
+  // from the default full-intake render. It only renders in
+  // ?focus=tier1 mode (coach re-issues via fm_intake_topup_v1 template
+  // when something in the submitted intake suggests the screen is
+  // warranted). Detection happens coach-side on the Overview — see
+  // tier1-advisory-card.tsx.
+  //
+  // So in the default render, sections 12-15 renumber down by 1:
+  //   default render → 14 sections (female) / 13 sections (male)
+  //   focus=tier1 render → just Section 11 + Consent
   const SEC_ABOUT = 1;
   const SEC_CONCERNS = 2;
   const SEC_DIAGNOSES = 3;
@@ -2413,11 +2619,17 @@ export function IntakeForm({
   const SEC_PAST = 8;
   const SEC_DIET = 9;
   const SEC_BODY = 10;
+  // SEC_MOVEMENT keeps its slot number (11) so its server-side
+  // labelling stays consistent across renders; it's just conditionally
+  // rendered (only in focusTier1 OR if explicitly kept).
   const SEC_MOVEMENT = 11;
-  const SEC_CYCLE = isFemale ? 12 : -1;
-  const SEC_READINESS = isFemale ? 13 : 12;
-  const SEC_NOTES = isFemale ? 14 : 13;
-  const SEC_CONSENT = isFemale ? 15 : 14;
+  // Subsequent sections shift up when Tier 1 is hidden (the common case).
+  const tier1Visible = focusTier1;
+  const _offset = tier1Visible ? 0 : -1;
+  const SEC_CYCLE = isFemale ? 12 + _offset : -1;
+  const SEC_READINESS = (isFemale ? 13 : 12) + _offset;
+  const SEC_NOTES = (isFemale ? 14 : 13) + _offset;
+  const SEC_CONSENT = (isFemale ? 15 : 14) + _offset;
 
   // ── Main form ────────────────────────────────────────────────────────
   return (
@@ -2528,92 +2740,76 @@ export function IntakeForm({
           </FG>
         </div>
 
-        {/* v2.3 — Body composition today. Either unit per row is fine.
-            Coach prefers metric; imperial accepted for clients used to lb/in. */}
+        {/* Body composition today. v0.75.7 — imperial-only on the form per
+            coach (2026-05-23). Clients in India consistently enter ft+in
+            for height and inches for waist/hip; the cm inputs caused
+            silent unit-mismatch bugs (Pranati cl-009 entered waist 32 and
+            hip 40 into the CM inputs; what she meant was inches but the
+            form stored them as 32 cm and 40 cm — physically impossible).
+            Weight stays in kg (universal in India).
+
+            The submit shim still converts imperial → metric and stores
+            canonical metric values in client.measurements, so all
+            downstream code (BMI, waist:hip, lab interpretation) is
+            unchanged. The hidden state fields (height_cm, waist_cm,
+            hip_cm, weight_now_lb) stay in FormState so the payload
+            signature is stable; they're just always empty going
+            forward. */}
         <h3 className="fm-section__sub" style={{ marginTop: 16 }}>Body measurements today</h3>
         <p className="fm-hint" style={{ marginTop: -4 }}>
-          Skip anything you don&apos;t know off-hand — fill in either unit (e.g. cm OR ft+in).
+          Skip anything you don&apos;t know off-hand.
         </p>
-        <div className="fm-row-2">
-          <FG label="Height (cm)" optional="optional">
+        <FG label="Height" optional="optional">
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <TextInput
-              type="number" inputMode="decimal" step={0.5} min={80} max={230}
-              value={state.height_cm}
-              onChange={(e) => set("height_cm", e.target.value)}
-              placeholder="e.g. 165"
+              type="number" inputMode="numeric" min={3} max={8}
+              value={state.height_ft}
+              onChange={(e) => set("height_ft", e.target.value)}
+              placeholder="ft"
             />
-          </FG>
-          <FG label="Height (ft + in)" optional="optional">
-            <div style={{ display: "flex", gap: 8 }}>
-              <TextInput
-                type="number" inputMode="numeric" min={3} max={8}
-                value={state.height_ft}
-                onChange={(e) => set("height_ft", e.target.value)}
-                placeholder="ft"
-              />
-              <TextInput
-                type="number" inputMode="numeric" min={0} max={11}
-                value={state.height_in}
-                onChange={(e) => set("height_in", e.target.value)}
-                placeholder="in"
-              />
-            </div>
-          </FG>
-        </div>
-        <div className="fm-row-2">
-          <FG label="Current weight (kg)" optional="optional">
+            <span style={{ opacity: 0.5, fontSize: 13 }}>ft</span>
+            <TextInput
+              type="number" inputMode="numeric" min={0} max={11}
+              value={state.height_in}
+              onChange={(e) => set("height_in", e.target.value)}
+              placeholder="in"
+            />
+            <span style={{ opacity: 0.5, fontSize: 13 }}>in</span>
+          </div>
+        </FG>
+        <FG label="Current weight" optional="optional">
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <TextInput
               type="number" inputMode="decimal" step={0.5} min={20} max={300}
               value={state.weight_now_kg}
               onChange={(e) => set("weight_now_kg", e.target.value)}
               placeholder="e.g. 68"
             />
-          </FG>
-          <FG label="Current weight (lb)" optional="optional">
-            <TextInput
-              type="number" inputMode="decimal" step={0.5} min={40} max={660}
-              value={state.weight_now_lb}
-              onChange={(e) => set("weight_now_lb", e.target.value)}
-              placeholder="e.g. 150"
-            />
-          </FG>
-        </div>
-        <div className="fm-row-2">
-          <FG label="Waist (cm)" optional="optional" hint="At the belly button.">
-            <TextInput
-              type="number" inputMode="decimal" step={0.5} min={40} max={200}
-              value={state.waist_cm}
-              onChange={(e) => set("waist_cm", e.target.value)}
-              placeholder="e.g. 82"
-            />
-          </FG>
-          <FG label="Waist (in)" optional="optional">
+            <span style={{ opacity: 0.6, fontSize: 13 }}>kg</span>
+          </div>
+        </FG>
+        <FG label="Waist" optional="optional" hint="At the belly button.">
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <TextInput
               type="number" inputMode="decimal" step={0.5} min={16} max={80}
               value={state.waist_in}
               onChange={(e) => set("waist_in", e.target.value)}
               placeholder="e.g. 32"
             />
-          </FG>
-        </div>
-        <div className="fm-row-2">
-          <FG label="Hips (cm)" optional="optional" hint="Widest point.">
-            <TextInput
-              type="number" inputMode="decimal" step={0.5} min={50} max={220}
-              value={state.hip_cm}
-              onChange={(e) => set("hip_cm", e.target.value)}
-              placeholder="e.g. 96"
-            />
-          </FG>
-          <FG label="Hips (in)" optional="optional">
+            <span style={{ opacity: 0.6, fontSize: 13 }}>inches</span>
+          </div>
+        </FG>
+        <FG label="Hips" optional="optional" hint="Widest point.">
+          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <TextInput
               type="number" inputMode="decimal" step={0.5} min={20} max={88}
               value={state.hip_in}
               onChange={(e) => set("hip_in", e.target.value)}
               placeholder="e.g. 38"
             />
-          </FG>
-        </div>
+            <span style={{ opacity: 0.6, fontSize: 13 }}>inches</span>
+          </div>
+        </FG>
         <FG
           label="Blood pressure"
           optional="optional"
@@ -3603,6 +3799,17 @@ export function IntakeForm({
       </FormSection>
 
       {/* ════════════════════════════════════════════════════════════════════
+          Section 11 — Tier 1 screening (Beighton + NASA lean + PEM + mould)
+          is ONLY rendered when the coach has explicitly re-issued the
+          intake with ?focus=tier1 (via the fm_intake_topup_v1 WhatsApp
+          template). Default intake render skips it entirely so we don't
+          interrogate every client about hypermobility / dysautonomia.
+          Detection of "this client might benefit from Tier 1" happens
+          coach-side on the Overview — see tier1-advisory-card.
+          Coach feedback 2026-05-24.
+         ════════════════════════════════════════════════════════════════════ */}
+      {tier1Visible && (<>
+      {/* ════════════════════════════════════════════════════════════════════
           11. Movement, joints, standing (v0.75.2 — Tier 1 screening)
 
           Five blocks:
@@ -3799,6 +4006,7 @@ export function IntakeForm({
           call — your self-report is a starting point, not the final word.
         </p>
       </FormSection>
+      </>)}{/* end tier1-only Section 11 */}
 
       {/* 12. Cycle & hormones (women only) */}
       {isFemale ? (
@@ -4251,6 +4459,87 @@ export function IntakeForm({
           >
             {submitError}
           </p>
+        ) : null}
+
+        {sparseWarning ? (
+          <div
+            style={{
+              padding: "12px 14px",
+              marginBottom: 16,
+              background: "rgba(245, 158, 11, 0.10)",
+              border: "1px solid rgba(245, 158, 11, 0.40)",
+              borderRadius: 8,
+              fontSize: 14,
+              lineHeight: 1.55,
+              color: "#7c2d12",
+            }}
+          >
+            <div style={{ fontWeight: 700, marginBottom: 6 }}>
+              You&apos;ve answered {sparseWarning.filled} of {sparseWarning.total} sections
+            </div>
+            <div style={{ fontSize: 13, marginBottom: 10 }}>
+              The more you tell me before our session, the more personalised your plan will be —
+              and the less time we&apos;ll spend on history during the call. Sleep, digestion,
+              pain, energy, past health… these matter a lot for your protocol.
+            </div>
+            <div style={{ fontSize: 13, marginBottom: 12 }}>
+              You can scroll back up and fill more, or submit what you have now and complete the rest later.
+              Your answers are <strong>already saved</strong> — nothing will be lost if you close this and come back.
+            </div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button
+                type="button"
+                onClick={() => {
+                  setSparseWarning(null);
+                  // Scroll to the first incomplete section so they can keep going.
+                  const firstEmpty = sectionFillSignals.findIndex((s) => !s.filled);
+                  if (firstEmpty >= 0) {
+                    // The clinical sections live below the demographics block —
+                    // scroll to roughly the timeline (section 5) as a safe anchor.
+                    const el = sectionRefs.current[SEC_TIMELINE];
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                style={{
+                  padding: "8px 16px",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  background: "#92400e",
+                  color: "white",
+                  border: "none",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                }}
+              >
+                ↑ Keep filling
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setSparseConfirmed(true);
+                  setSparseWarning(null);
+                  // Re-trigger submit with the flag set so this guard is bypassed.
+                  // Use a microtask to give state a beat to settle before re-firing.
+                  setTimeout(() => {
+                    const form = document.querySelector<HTMLFormElement>("form");
+                    form?.requestSubmit();
+                  }, 0);
+                }}
+                style={{
+                  padding: "8px 16px",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  background: "transparent",
+                  color: "#7c2d12",
+                  border: "1px solid rgba(124, 45, 18, 0.4)",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                }}
+              >
+                Submit what I have anyway
+              </button>
+            </div>
+          </div>
         ) : null}
 
         <button

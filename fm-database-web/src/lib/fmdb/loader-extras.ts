@@ -381,6 +381,70 @@ export async function getRecentIntakeActivity(
   return out.sort((a, b) => b.at.localeCompare(a.at));
 }
 
+// ── Stranded intake drafts ──────────────────────────────────────────────────
+
+export interface StrandedIntakeDraft {
+  client_id: string;
+  display_name?: string;
+  /** When the auto-save last fired — i.e. the last time they touched the form. */
+  draft_saved_at: string;
+  /** How many filled fields are sitting in the draft. */
+  fields_filled: number;
+  /** Hours since last edit. */
+  hours_since_edit: number;
+}
+
+/**
+ * Scan all clients for orphaned intake drafts — substantial data sitting
+ * in `intake_form_draft` that was never promoted to top-level via Submit.
+ *
+ * Drives FmStrandedIntakeBanner on the dashboard so coach catches every
+ * "filled the form, closed the tab" case without opening each client.
+ * (Pranati cl-009 hit this 2026-05-23 — 63 fields stranded, never visible
+ * until coach opened her Overview. This banner fixes that.)
+ *
+ * Criteria: draft has ≥ minFields filled AND
+ *   (a) intake_submitted_at is null OR
+ *   (b) draft was saved AFTER the latest submit (post-submit edits).
+ * AND intake_finalised_at is null (once coach locks, action_promote_draft
+ * refuses anyway).
+ *
+ * Sorted by `fields_filled` descending — most-filled drafts surface first
+ * because they're the highest-value recoveries.
+ */
+export async function getStrandedIntakeDrafts(
+  clients: Array<Record<string, unknown>>,
+  minFields = 5,
+): Promise<StrandedIntakeDraft[]> {
+  const now = Date.now();
+  const out: StrandedIntakeDraft[] = [];
+  for (const c of clients) {
+    const finalised = c.intake_finalised_at as string | undefined;
+    if (finalised) continue;
+    const draft = c.intake_form_draft;
+    const filled = countDraftFields(draft);
+    if (filled < minFields) continue;
+    const submittedAt = (c.intake_submitted_at ?? c.intake_last_submitted_at) as string | undefined;
+    const draftSavedAt = c.intake_form_draft_saved_at as string | undefined;
+    if (!draftSavedAt) continue;
+    if (submittedAt) {
+      // Post-submit edits also count, but ONLY if the draft is newer.
+      if (Date.parse(draftSavedAt) <= Date.parse(submittedAt)) continue;
+    }
+    const draftMs = Date.parse(draftSavedAt);
+    if (Number.isNaN(draftMs)) continue;
+    out.push({
+      client_id: c.client_id as string,
+      display_name: c.display_name as string | undefined,
+      draft_saved_at: draftSavedAt,
+      fields_filled: filled,
+      hours_since_edit: Math.round((now - draftMs) / 3_600_000),
+    });
+  }
+  // Most-filled drafts first — biggest recoveries at the top.
+  return out.sort((a, b) => b.fields_filled - a.fields_filled);
+}
+
 /**
  * Scans all client session dirs for quick_note sessions tagged
  * `[source: whatsapp_webhook]` within the last `daysBack` days.

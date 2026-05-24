@@ -470,9 +470,21 @@ SYSTEM_PROMPT = (
     "You are an FM-trained clinical reasoning assistant helping Shivani Hariharan, "
     "a functional medicine coach, prepare for her first session with a new client. "
     "The client has just submitted a detailed intake form. Your job is to surface "
-    "the 3-5 most clinically significant PATTERNS, the protocol-gating RED FLAGS, "
-    "the top 3 FM-driver HYPOTHESES, and 3-5 things Shivani should VERIFY in the "
-    "upcoming session.\n\n"
+    "the ONE FM ROOT CAUSE driving the picture, the 3-5 most clinically "
+    "significant PATTERNS, the protocol-gating RED FLAGS, the top 3 FM-driver "
+    "HYPOTHESES, and 3-5 things Shivani should VERIFY in the upcoming session.\n\n"
+    "ROOT CAUSE FIRST — this is the keystone of FM reasoning. Most clients "
+    "present with 5-10 diagnoses (Hashimoto's + PCOS + IR + IBS + migraine + "
+    "Vit D + anxiety + eczema, etc.). DO NOT design 10 parallel protocols. "
+    "Identify the ONE upstream driver (or a tightly-coupled triad like "
+    "MCAS-POTS-EDS) from which the others cascade — HPA-axis dysregulation, "
+    "gut dysbiosis, insulin resistance, chronic infection, mould/CIRS, etc. "
+    "Populate `root_cause` with the label, 2-4 sentences of reasoning citing "
+    "intake evidence, the downstream conditions expected to improve as the "
+    "root is addressed, and a confidence score. The downstream conditions are "
+    "framed as 'will improve as we address X' rather than separate targets. "
+    "If the intake is truly too sparse to infer a root, omit the field, but "
+    "prefer a moderate-confidence root (0.5-0.6) over none.\n\n"
     "LENGTH DISCIPLINE — this is the most important rule. Each item across ALL "
     "four lists is at most 2 short sentences. Coach reads this in 90 seconds. "
     "Don't pile 5 facts into one pattern — split them into separate patterns, or "
@@ -605,6 +617,55 @@ TOOL_SCHEMA = {
     "input_schema": {
         "type": "object",
         "properties": {
+            "root_cause": {
+                "type": "object",
+                "description": (
+                    "Fix B 2026-05-23 — the FM ROOT CAUSE: the upstream "
+                    "driver from which the client's other conditions cascade. "
+                    "Identify ONE root (or a tightly coupled triad) rather "
+                    "than treating every diagnosis as a parallel target. "
+                    "Downstream conditions are framed as 'will improve as "
+                    "we address X' rather than separate protocols. Omit "
+                    "ONLY if intake is so sparse no upstream driver is "
+                    "inferable — prefer a moderate-confidence root over none."
+                ),
+                "properties": {
+                    "label": {
+                        "type": "string",
+                        "description": (
+                            "Short clinical label, e.g. 'HPA-axis "
+                            "dysregulation driving thyroid + metabolic "
+                            "downstream', 'Gut dysbiosis → systemic "
+                            "inflammation', 'MCAS-POTS-EDS triad with PEM'."
+                        ),
+                    },
+                    "reasoning": {
+                        "type": "string",
+                        "description": (
+                            "2-4 sentences citing intake evidence for why "
+                            "this is the upstream driver, not a downstream "
+                            "expression."
+                        ),
+                    },
+                    "downstream_effects": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": (
+                            "Conditions / symptoms expected to improve "
+                            "secondarily as the root cause is addressed. "
+                            "e.g. ['hypothyroidism (low T3)', 'PCOS-pattern "
+                            "irregular cycles', 'fasting glucose 106']."
+                        ),
+                    },
+                    "confidence": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "description": "0.5-0.7 typical; 0.8+ only when intake evidence is overwhelming.",
+                    },
+                },
+                "required": ["label", "reasoning", "downstream_effects", "confidence"],
+            },
             "patterns": {
                 "type": "array",
                 "items": {"type": "string"},
@@ -647,6 +708,23 @@ TOOL_SCHEMA = {
 
 def _mock_insights() -> dict[str, Any]:
     return {
+        "root_cause": {
+            "label": "Post-PPI nutrient depletion + gut dysbiosis driving downstream fatigue / thyroid / metabolic picture",
+            "reasoning": (
+                "6-year pantoprazole has predictably depleted B12 / iron / Mg and "
+                "raised gastric pH enough to seed dysbiosis. The fatigue, "
+                "brittle nails, reflux-on-taper and weight-regain-after-GLP-1 "
+                "all read as downstream of impaired absorption + microbial "
+                "shift, not as parallel diagnoses. Family Hashimoto's is a "
+                "vulnerability layer rather than the upstream driver here."
+            ),
+            "downstream_effects": [
+                "fatigue + brittle nails (B12/iron depletion)",
+                "weight regain after GLP-1 (microbial + insulin-axis)",
+                "subclinical thyroid concern (low absorption of selenium/zinc)",
+            ],
+            "confidence": 0.7,
+        },
         "patterns": [
             "Chronic PPI use (pantoprazole 6 yrs) → likely B12/iron/Mg depletion + gastric pH disruption",
             "GLP-1 in last 12 months → delayed gastric emptying may explain bloating after meals",

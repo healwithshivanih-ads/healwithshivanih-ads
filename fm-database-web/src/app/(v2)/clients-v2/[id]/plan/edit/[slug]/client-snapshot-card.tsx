@@ -21,6 +21,19 @@ interface HealthSnapshot {
   lab_values?: LabValue[];
 }
 
+/**
+ * Fix F7 2026-05-23 — intake_insights.root_cause flows into the plan
+ * editor's client snapshot so the coach sees the FM keystone driver
+ * BEFORE building the protocol. Optional so legacy clients without
+ * an Insights pass still render the card cleanly.
+ */
+interface RootCause {
+  label?: string;
+  reasoning?: string;
+  downstream_effects?: string[];
+  confidence?: number;
+}
+
 interface Props {
   client: {
     client_id?: string;
@@ -40,6 +53,7 @@ interface Props {
     country?: string;
     health_snapshots?: HealthSnapshot[];
     next_contact_date?: string;
+    intake_insights?: { root_cause?: RootCause | null } | null;
   } | null;
   lastContactDate?: string;
   sessionCount?: number;
@@ -157,6 +171,64 @@ export function ClientSnapshotCard({ client, lastContactDate, sessionCount }: Pr
           {sessionCount != null ? ` · ${sessionCount} session${sessionCount === 1 ? "" : "s"}` : ""}
         </span>
       </summary>
+
+      {/* Fix F7 2026-05-23 — root cause keystone bar. The protocol must
+          anchor to this driver; show it ABOVE bio so coach sees it before
+          scrolling into conditions/meds/labs. Self-hides when no
+          intake_insights.root_cause exists yet (legacy clients). */}
+      {client.intake_insights?.root_cause?.label && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "8px 12px",
+            background: "rgba(46,125,90,0.08)",
+            border: "1px solid rgba(46,125,90,0.30)",
+            borderRadius: 6,
+            display: "grid",
+            gap: 4,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 10,
+              textTransform: "uppercase",
+              letterSpacing: 0.6,
+              color: "#2e7d5a",
+              fontWeight: 700,
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <span>🎯 FM ROOT CAUSE — anchor the plan here</span>
+            {client.intake_insights.root_cause.confidence != null && (
+              <span
+                style={{
+                  fontSize: 9,
+                  background: "rgba(46,125,90,0.18)",
+                  color: "#2e7d5a",
+                  padding: "1px 5px",
+                  borderRadius: 8,
+                  letterSpacing: 0,
+                  textTransform: "none",
+                }}
+              >
+                {Math.round((client.intake_insights.root_cause.confidence ?? 0) * 100)}%
+              </span>
+            )}
+          </div>
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 600,
+              lineHeight: 1.35,
+              color: "var(--fm-text-primary)",
+            }}
+          >
+            {client.intake_insights.root_cause.label}
+          </div>
+        </div>
+      )}
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 12 }}>
         {/* LEFT — bio / clinical */}

@@ -239,6 +239,40 @@ export async function finaliseIntakeForm(
 }
 
 /**
+ * B9 fix 2026-05-23 — undo a finalise so coach can send the client a
+ * fresh editable link. Pairs with the new "🔓 Re-open for edits" button
+ * in the Send-and-unlock panel.
+ *
+ * Clears `intake_finalised_at`. The Send-pre-discovery / Skip-full-intake
+ * buttons (gated on `!isFinalised`) become visible again on the next
+ * page render so coach can mint a new token + send.
+ *
+ * Coach asked 2026-05-23 (Deepti cl-011): "How do I re-issue Deepti's
+ * intake form? It says go to Coach exam to unlock but there is no
+ * option to re-issue on Coach exam." The old guidance referenced an
+ * unlock button that never existed; this server action + the button
+ * fix that gap.
+ */
+export async function reopenFinalisedIntake(
+  clientId: string
+): Promise<
+  | { ok: true; client_id: string; was_finalised: boolean }
+  | { ok: false; error: string }
+> {
+  try {
+    const res = (await runScript("intake-token-action.py", {
+      action: "reopen_finalised_intake",
+      client_id: clientId,
+    })) as
+      | { ok: true; client_id: string; was_finalised: boolean }
+      | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+/**
  * v0.75 — flip the intake form from pre-discovery to full. Coach calls
  * this after the client signs up for the package. Opens the deeper
  * sections (FM body systems, ACE-lite, timeline, etc.) on the same
@@ -384,8 +418,14 @@ export async function sendIntakeInviteViaApi(
         `together — it saves as you go, so you can stop and resume any time:\n\n` +
         `${url}\n\n— Shivani Hari / Your Functional Health Coach`,
     });
-  } catch {
-    /* non-fatal — the WhatsApp message already went out */
+  } catch (e) {
+    // Non-fatal for the SEND — the WhatsApp message already went out. But
+    // if the record fails, the chat panel will show nothing for this
+    // outbound. Log loudly so the failure is visible in pm2 logs instead
+    // of accumulating invisibly. (Deepti cl-011 hit this 2026-05-23.)
+    console.error(
+      `[intake] WA invite to ${clientId} sent but record threw: ${(e as Error).message}`,
+    );
   }
   return { ok: true, url };
 }

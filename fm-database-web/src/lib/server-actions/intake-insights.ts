@@ -52,9 +52,22 @@ export interface IntakeInsightHypothesis {
   reasoning: string;
 }
 
+/**
+ * Fix B 2026-05-23 — FM root cause. The upstream driver from which the
+ * client's other conditions cascade. Optional + backward-compatible: legacy
+ * records without root_cause continue to load + render fine.
+ */
+export interface IntakeRootCause {
+  label: string;
+  reasoning: string;
+  downstream_effects: string[];
+  confidence: number; // 0-1
+}
+
 export interface IntakeInsights {
   generated_at: string;
   model: string;
+  root_cause?: IntakeRootCause | null;
   patterns: string[];
   red_flags: string[];
   top_hypotheses: IntakeInsightHypothesis[];
@@ -128,9 +141,27 @@ export async function loadIntakeInsights(
     const insights = parsed?.intake_insights as IntakeInsights | undefined;
     if (!insights) return null;
     // Defensive normalisation — older records may be missing fields.
+    const rc = (insights as { root_cause?: unknown }).root_cause;
+    const normRootCause: IntakeRootCause | null =
+      rc && typeof rc === "object"
+        ? {
+            label: String((rc as Record<string, unknown>).label ?? ""),
+            reasoning: String((rc as Record<string, unknown>).reasoning ?? ""),
+            downstream_effects: Array.isArray(
+              (rc as Record<string, unknown>).downstream_effects,
+            )
+              ? ((rc as Record<string, unknown>)
+                  .downstream_effects as string[])
+              : [],
+            confidence: Number(
+              (rc as Record<string, unknown>).confidence ?? 0.5,
+            ),
+          }
+        : null;
     return {
       generated_at: String(insights.generated_at ?? ""),
       model: String(insights.model ?? "claude-haiku-4-5"),
+      root_cause: normRootCause && normRootCause.label ? normRootCause : null,
       patterns: Array.isArray(insights.patterns) ? insights.patterns : [],
       red_flags: Array.isArray(insights.red_flags) ? insights.red_flags : [],
       top_hypotheses: Array.isArray(insights.top_hypotheses)

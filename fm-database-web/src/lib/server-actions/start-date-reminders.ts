@@ -25,7 +25,7 @@
  */
 
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
-import { sendWhatsAppAction } from "@/app/api/whatsapp/actions";
+import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
 
 export interface UnconfirmedStartFlag {
   client_id: string;
@@ -160,7 +160,19 @@ export async function sendStartDateReminderAction(
     const phone = (c.mobile_number as string | undefined) ?? "";
     if (!phone.trim()) return { ok: false, error: "No mobile number on file" };
     const name = (c.display_name as string | undefined) ?? "there";
-    return await sendWhatsAppAction(phone, campaignName, [name]);
+    // fm_start_date_check_v1 body: "Hi {{1}} 👋 Just checking in — have you started your plan? …"
+    // Mirror the template-approved body for the chat-thread record.
+    const renderedBody =
+      `Hi ${name} 👋 Just checking in — have you started your plan? ` +
+      `If yes, reply with the date you began (e.g. 17 May). ` +
+      `If not yet, no worries — just let me know what's getting in the way.`;
+    return await sendAndRecordOutboundAction({
+      phone,
+      clientId,
+      templateName: campaignName,
+      templateParams: [name],
+      renderedBody,
+    });
   } catch (err) {
     const e = err as { message?: string };
     return { ok: false, error: e.message ?? "Send failed" };

@@ -16,6 +16,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { ProtocolTemplatePicker } from "./protocol-template-picker";
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
+import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
 
 interface SupplementItem {
   supplement_slug: string;
@@ -1381,6 +1382,11 @@ export function PlanEditor(props: PlanEditorProps) {
                 )}
               </summary>
               <div className="pt-3 space-y-3 px-1">
+                {/* Fix D 2026-05-23 — inline drug-nutrient depletion lookup
+                   so the coach sees which supplements each medication is
+                   pulling out of the client BEFORE building the protocol.
+                   Self-hides when no medications match the catalogue. */}
+                {clientId && <MedicationImpactPanel clientId={clientId} />}
                 {/* ── Drug-derived protocol cautions (v0.74) ── */}
                 {drugCautions.length > 0 && (() => {
                   const critical = drugCautions.filter((c) => c.severity === "critical");

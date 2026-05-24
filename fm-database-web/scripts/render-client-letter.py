@@ -555,6 +555,180 @@ def _load_plan(slug: str) -> dict | None:
     return None
 
 
+def _supplement_key(s: dict) -> str:
+    """Canonical supplement identity for diffing — slug if present, else name."""
+    return str(
+        (s.get("slug") or s.get("supplement_slug") or s.get("name") or "")
+    ).strip().lower()
+
+
+def _supplement_display(s: dict) -> str:
+    return str(
+        s.get("name")
+        or s.get("display_name")
+        or s.get("supplement_slug")
+        or s.get("slug")
+        or "supplement"
+    ).strip()
+
+
+def _supplement_dose_signature(s: dict) -> str:
+    """Compact dose-string for diff comparison — catches re-dosed supplements."""
+    parts = [
+        str(s.get("dose") or "").strip(),
+        str(s.get("dose_amount") or "").strip(),
+        str(s.get("dose_unit") or "").strip(),
+        str(s.get("frequency") or "").strip(),
+        str(s.get("timing") or "").strip(),
+    ]
+    return " · ".join(p for p in parts if p) or "(no dose)"
+
+
+def _find_predecessor_by_slug_pattern(plan: dict) -> dict | None:
+    """Fix F11 2026-05-23 — historical plans pre-dating the auto-supersedes
+    wiring (in generate-draft.py) have plan.supersedes = None even when
+    they're clearly plan-N with a plan-(N-1) on disk. Fall back to
+    slug-pattern lookup: parse `<stem>-plan-N-<date>-<client>` →
+    find the highest-numbered `<stem>-plan-<n<N>>` across all buckets.
+
+    Returns the predecessor plan dict, or None if nothing matches.
+    """
+    import re
+    slug = str(plan.get("slug") or "")
+    # Match "<stem>-plan-<N>-<rest>"; N is required to be an integer.
+    m = re.match(r"^(.+?)-plan-(\d+)-(.+)$", slug)
+    if not m:
+        return None
+    stem, n_str, _ = m.group(1), m.group(2), m.group(3)
+    try:
+        n = int(n_str)
+    except ValueError:
+        return None
+    if n <= 1:
+        return None
+    # Try N-1, N-2, ... down to 1 — first hit wins.
+    for predecessor_n in range(n - 1, 0, -1):
+        prefix = f"{stem}-plan-{predecessor_n}-"
+        for bucket in ["superseded", "revoked", "published", "drafts", "ready"]:
+            bucket_dir = PLANS_ROOT / bucket
+            if not bucket_dir.exists():
+                continue
+            for candidate in bucket_dir.glob(f"{prefix}*.yaml"):
+                try:
+                    import yaml
+                    return yaml.safe_load(candidate.read_text())
+                except Exception:
+                    pass
+    return None
+
+
+def _plan_changes_block(plan: dict) -> str:
+    """Fix C 2026-05-23 — for phase / continuation letters, compare the
+    CURRENT plan against its supersedes-predecessor and surface what
+    changed. Client reads this as "WHAT'S NEW VS YOUR LAST PROTOCOL"
+    so a fortnight letter explicitly acknowledges any inline edits
+    or follow-up plan tweaks since the previous letter.
+
+    Returns "" when no predecessor is locatable OR no meaningful
+    changes detected — letter prompts skip the block cleanly.
+
+    Predecessor resolution (Fix F11 2026-05-23):
+      1. `plan.supersedes` if explicitly set
+      2. Slug-pattern fallback: `<stem>-plan-N-…` → look up `…-plan-(N-1)-…`
+    """
+    supersedes = (plan.get("supersedes") or "").strip()
+    prior: dict | None = None
+    if supersedes:
+        prior = _load_plan(supersedes)
+    if not isinstance(prior, dict):
+        # Fix F11 — fall back to slug-pattern lookup so historical plans
+        # without explicit supersedes still get a diff block.
+        prior = _find_predecessor_by_slug_pattern(plan)
+    if not isinstance(prior, dict):
+        return ""
+
+    cur_supps = plan.get("supplement_protocol") or []
+    prior_supps = prior.get("supplement_protocol") or []
+    cur_by_key = {
+        _supplement_key(s): s for s in cur_supps if isinstance(s, dict) and _supplement_key(s)
+    }
+    prior_by_key = {
+        _supplement_key(s): s for s in prior_supps if isinstance(s, dict) and _supplement_key(s)
+    }
+
+    added = [cur_by_key[k] for k in cur_by_key if k not in prior_by_key]
+    removed = [prior_by_key[k] for k in prior_by_key if k not in cur_by_key]
+    redosed: list[tuple[dict, str, str]] = []
+    for k in cur_by_key:
+        if k in prior_by_key:
+            old_sig = _supplement_dose_signature(prior_by_key[k])
+            new_sig = _supplement_dose_signature(cur_by_key[k])
+            if old_sig != new_sig:
+                redosed.append((cur_by_key[k], old_sig, new_sig))
+
+    # Lab orders — only added (removing a pending order is rarely
+    # interesting for the client; coach handles it offline)
+    def _lab_keys(items: list) -> set[str]:
+        return {
+            str(it.get("test_name") or it.get("name") or "").strip().lower()
+            for it in (items or [])
+            if isinstance(it, dict)
+        }
+    lab_added = _lab_keys(plan.get("lab_orders") or []) - _lab_keys(
+        prior.get("lab_orders") or []
+    )
+
+    # Lifestyle practices — same logic as supplements
+    def _lifestyle_keys(items: list) -> set[str]:
+        return {
+            str(it.get("name") or it.get("practice") or "").strip().lower()
+            for it in (items or [])
+            if isinstance(it, dict)
+        }
+    lifestyle_added = _lifestyle_keys(plan.get("lifestyle_practices") or []) - _lifestyle_keys(
+        prior.get("lifestyle_practices") or []
+    )
+
+    if not (added or removed or redosed or lab_added or lifestyle_added):
+        return ""
+
+    lines: list[str] = []
+    if added:
+        lines.append(
+            "  ➕ NEW supplements: "
+            + "; ".join(f"{_supplement_display(s)} ({_supplement_dose_signature(s)})" for s in added[:6])
+        )
+    if removed:
+        lines.append(
+            "  ➖ DISCONTINUED supplements: "
+            + "; ".join(_supplement_display(s) for s in removed[:6])
+        )
+    if redosed:
+        for s, old_sig, new_sig in redosed[:6]:
+            lines.append(
+                f"  🔄 RE-DOSED {_supplement_display(s)}: was [{old_sig}] → now [{new_sig}]"
+            )
+    if lifestyle_added:
+        lines.append("  ➕ NEW practices: " + "; ".join(sorted(lifestyle_added)[:5]))
+    if lab_added:
+        lines.append("  🧪 NEW labs ordered: " + "; ".join(sorted(lab_added)[:5]))
+
+    return (
+        "═══════════════════════════════════════════════════════════\n"
+        "WHAT CHANGED SINCE THE LAST PROTOCOL (frame for the client):\n"
+        "Open the letter with ONE short paragraph acknowledging these\n"
+        "changes naturally — 'Since your last fortnight, I've added X\n"
+        "and adjusted Y because…'. Don't just dump the diff; reason\n"
+        "from the root cause (top-of-mind block) into WHY each change\n"
+        "was made. If a supplement was removed, explain the rationale\n"
+        "(target met, side effect, simplification). Keep this whole\n"
+        "preamble to ~80 words.\n"
+        "═══════════════════════════════════════════════════════════\n"
+        + "\n".join(lines)
+        + "\n═══════════════════════════════════════════════════════════"
+    )
+
+
 # Antihistamine + mast-cell-stabiliser drug list (lowercased substring match).
 # Add new entries here as we encounter them; keep generic + brand names both.
 _HISTAMINE_MEDS = (
@@ -2106,7 +2280,7 @@ def _build_complete_shopping_list_html(
     for s in supplements:
         slug = s.get("supplement_slug", "")
         name = _strip_brand_from_name(s.get("display_name") or slug.replace("-", " ").title())
-        dose = s.get("dose") or s.get("dose_display") or ""
+        dose = _clientify_dose(s.get("dose") or s.get("dose_display") or "")
         titration = s.get("titration") or ""
         rationale = (s.get("coach_rationale") or "").strip()
         dur = s.get("duration_weeks")
@@ -2540,6 +2714,48 @@ function printRoutine() {{
 """
 
 
+def _clientify_dose(text: str) -> str:
+    """Coach feedback 2026-05-23 — clients can't titrate in mg increments
+    (no scale; only fixed-size capsules). Strip "titrate by N mg" verbs
+    and coach-only caveats from the dose text so the client sees only
+    the starting dose + simple instructions. The full titration logic
+    stays on the coach's plan editor; clients message the coach if
+    anything's unclear.
+
+    Idempotent + safe — when the dose has no titrate language we just
+    return it unchanged.
+    """
+    import re as _re
+    if not text:
+        return ""
+    s = str(text)
+    # Drop ", titrate up/down by N mg every M nights to …" clauses
+    s = _re.sub(r"[;,]\s*titrat\w*[^.;]*(?:[.;]|$)", ". ", s, flags=_re.IGNORECASE)
+    # Drop standalone parentheticals like "(typical landing dose 300-400 mg)"
+    s = _re.sub(
+        r"\((?:typical|target|aim for|usually|landing|usual)[^)]*\)",
+        "",
+        s,
+        flags=_re.IGNORECASE,
+    )
+    # Drop "back off one step if …" coach adjustments
+    s = _re.sub(r"\bback off[^.;]*(?:[.;]|$)", "", s, flags=_re.IGNORECASE)
+    # Drop "reassess at week N …" coach reminders
+    s = _re.sub(r"\breassess at week \d+[^.;]*(?:[.;]|$)", "", s, flags=_re.IGNORECASE)
+    # Drop "re-test … at week N" coach reminders
+    s = _re.sub(
+        r"\bre-?test[^.;]*\b(?:week|month)\b[^.;]*(?:[.;]|$)",
+        "",
+        s,
+        flags=_re.IGNORECASE,
+    )
+    # Tidy doubled whitespace + trailing punctuation
+    s = _re.sub(r"\s{2,}", " ", s)
+    s = _re.sub(r"\s+([.,;])", r"\1", s)
+    s = _re.sub(r"[;.]\s*$", "", s).strip()
+    return s
+
+
 def _build_supplement_schedule_html(
     supplements: list[dict], window_end_week: int | None = None
 ) -> str:
@@ -2565,7 +2781,7 @@ def _build_supplement_schedule_html(
     for s in supplements:
         slug = s.get("supplement_slug", "")
         name = _strip_brand_from_name(s.get("display_name") or slug.replace("-", " ").title())
-        dose = s.get("dose") or s.get("dose_display") or ""
+        dose = _clientify_dose(s.get("dose") or s.get("dose_display") or "")
         timing_raw = s.get("timing") or ""
         rationale = (s.get("coach_rationale") or "").split("\n")[0].strip()
         # Strip evidence-tier note suffix if present
@@ -3437,6 +3653,23 @@ def _top_of_mind_block(client: dict, plan: dict) -> str:
     # without needing a full regenerate.
     insights = client.get("intake_insights")
     if insights and isinstance(insights, dict):
+        # Fix B 2026-05-23 — ROOT CAUSE leads. Letter generator frames
+        # downstream conditions as "will improve as we address X" instead
+        # of stacking 10 parallel protocols.
+        rc = insights.get("root_cause")
+        if rc and isinstance(rc, dict) and (rc.get("label") or "").strip():
+            rc_label = str(rc.get("label", "")).strip()
+            rc_reasoning = str(rc.get("reasoning", "")).strip()
+            downstream = rc.get("downstream_effects") or []
+            line = f"- 🎯 ROOT CAUSE (anchor the letter here): {rc_label}"
+            if rc_reasoning:
+                line += f" — {rc_reasoning[:280]}"
+            bullets.append(line)
+            if isinstance(downstream, list) and downstream:
+                bullets.append(
+                    "- ↪ Downstream (frame as 'will improve as we address the root', NOT as parallel targets): "
+                    + "; ".join(str(d) for d in downstream[:5])
+                )
         red_flags = insights.get("red_flags") or []
         if red_flags:
             bullets.append(
@@ -3836,6 +4069,20 @@ If a tip would apply equally to ANY client, REWRITE it to apply uniquely
 to this client OR REMOVE it entirely. We'd rather a shorter document
 that reads like it was written FOR this person than a long one of FM
 boilerplate.
+
+NO TITRATE LANGUAGE — Coach rule 2026-05-23. Clients don't have a scale
+and don't dose in milligrams — they buy capsules of fixed strengths.
+NEVER tell a client to "titrate up by N mg" or "increase by X mg every
+3 nights". Use PILL-COUNT language instead:
+  - BAD: "Start 200 mg, titrate up by 100 mg every 3 nights to 400 mg."
+  - GOOD: "Start with 1 capsule (200 mg) at bedtime. If stools are still
+    hard after 3 nights, add a second capsule. Most people land on
+    1–2 capsules. Message me if you're unsure."
+The coach's titration intent stays in plan.notes_for_coach — never
+surface mg-level titration to the client. Same rule for back-off:
+  - BAD: "Back off one step if stool turns loose."
+  - GOOD: "If stools become too loose, drop back to 1 capsule and
+    message me."
 """
 
 
@@ -4901,6 +5148,13 @@ Per meal split (MUST roughly match):
         plan.get("slug"),
     )
 
+    # Fix C 2026-05-23 — supersedes-diff: when this plan superseded a prior
+    # plan (e.g. follow-up phase, recheck rewrite, quick-edit republish),
+    # compare the two and surface added / removed / re-dosed supplements
+    # + new labs + new practices. Distinct from protocol_changes (which
+    # reads session notes); this one reads structured plan YAML diff.
+    plan_changes_block = _plan_changes_block(plan)
+
     phase_label_short = (
         f"Week {phase_start}"
         if phase_start == phase_end
@@ -5086,6 +5340,7 @@ the past weeks. Don't re-prescribe — continue + evolve.
 
 {phase_context}
 {protocol_changes}
+{plan_changes_block}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
 
@@ -5359,7 +5614,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
     for s in supplements:
         slug = s.get("supplement_slug", "")
         name = _strip_brand_from_name(s.get("display_name") or slug.replace("-", " ").title())
-        dose = s.get("dose") or s.get("dose_display") or ""
+        dose = _clientify_dose(s.get("dose") or s.get("dose_display") or "")
         timing = s.get("timing") or ""
         rationale = (s.get("coach_rationale") or "").split("[evidence-tier note]")[0].strip()
         slot_idx, slot_label, slot_emoji = _timing_slot(timing)

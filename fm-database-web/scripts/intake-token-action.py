@@ -468,13 +468,67 @@ _INTAKE_REPEATER_FIELDS = [
 ]
 
 
-def _merge_lists(existing: list[str] | None, incoming: list[str] | None) -> tuple[list[str], bool]:
+def _canonicalise_condition(s: str) -> str:
+    """D2 fix 2026-05-23 — semantic key for active_conditions dedup.
+    Strips parens content + punctuation + whitespace + lowercases, AND
+    tokenises so word-order variants normalise (so "Depression / anxiety
+    (on treatment)" matches "Anxiety/Depression (on treatment)"). Without
+    this, Kshitija cl-010 ended up with both phrasings stacked + the
+    auto-derived "Suspected: …" variants on top.
+
+    Used ONLY for active_conditions merge — not for general list fields
+    (we don't want "vitamin D" and "vitamin D3" to collide on the
+    supplements list, for example)."""
+    import re
+    s2 = re.sub(r"\(.*?\)", "", s).lower()
+    s2 = re.sub(r"[^a-z0-9 ]+", " ", s2)
+    s2 = re.sub(r"\s+", " ", s2).strip()
+    # Tokenise + sort so "depression anxiety" == "anxiety depression"
+    tokens = sorted(t for t in s2.split() if t and t not in {"on", "treatment", "the", "a", "of"})
+    return " ".join(tokens)
+
+
+def _merge_lists(existing: list[str] | None, incoming: list[str] | None, semantic_dedup: bool = False) -> tuple[list[str], bool]:
     existing = existing or []
-    incoming = [str(x).strip() for x in (incoming or []) if str(x).strip()]
+    # DEFENCE: if a caller mis-types and passes a string instead of a list,
+    # `for x in <string>` iterates CHARACTERS and we end up with the
+    # field stored as 50+ single-character entries (Archana cl-007 was
+    # hit by exactly this — `goals` ballooned to 56 entries: 2 real + 54
+    # chars from a third string-typed goal). Wrap a bare string in a
+    # single-element list, and log loudly so the source can be found.
+    if isinstance(incoming, str):
+        print(
+            f"WARN: _merge_lists received a STRING (not list) — wrapping. "
+            f"value={incoming[:80]!r}",
+            file=sys.stderr,
+        )
+        incoming = [incoming]
+    elif incoming is None:
+        incoming = []
+    elif not isinstance(incoming, list):
+        print(
+            f"WARN: _merge_lists got non-list/non-string ({type(incoming).__name__}) — coercing to empty.",
+            file=sys.stderr,
+        )
+        incoming = []
+    incoming = [str(x).strip() for x in incoming if str(x).strip()]
     if not incoming:
         return existing, False
-    lower = {e.lower() for e in existing}
-    added = [x for x in incoming if x.lower() not in lower]
+    if semantic_dedup:
+        # D2 — token-sorted canonical key catches "Depression / anxiety
+        # (on treatment)" ≡ "Anxiety/Depression (on treatment)" etc.
+        existing_keys = {_canonicalise_condition(e) for e in existing}
+        added: list[str] = []
+        seen_in_added: set[str] = set()
+        for x in incoming:
+            key = _canonicalise_condition(x)
+            if key in existing_keys or key in seen_in_added:
+                continue
+            added.append(x)
+            seen_in_added.add(key)
+    else:
+        lower = {e.lower() for e in existing}
+        added = [x for x in incoming if x.lower() not in lower]
     if not added:
         return existing, False
     return existing + added, True
@@ -530,10 +584,18 @@ def _match_drug(med_text: str) -> dict | None:
     matching the shorter entry when a more specific one exists.
     """
     idx = _build_drug_index()
-    text = (med_text or "").lower()
+    text = (med_text or "").strip().lower()
+    # GUARD: too-short med text would falsely match any short alias
+    # (e.g. catalogue has 't4' as a levothyroxine alias — if a corrupted
+    # current_medications entry was 't', this matcher would happily
+    # flag levothyroxine for everyone with that garbage entry). 3-char
+    # floor mirrors the TS-side guard in checkMedicationImpactsAction
+    # (see Archana cl-007 phantom-match incident 2026-05-23).
+    if len(text) < 3:
+        return None
     best: tuple[int, dict] | None = None
     for alias, drug in idx["aliases"].items():
-        if alias and alias in text:
+        if alias and len(alias) >= 2 and alias in text:
             if best is None or len(alias) > best[0]:
                 best = (len(alias), drug)
     return best[1] if best else None
@@ -559,6 +621,34 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
     def add(label: str) -> None:
         if not any(c.lower() == label.lower() for c in out):
             out.append(label)
+
+    # D7 fix 2026-05-23 — when a condition is matched from FREE TEXT
+    # (goals, chief_complaint, notes) it must be prefixed "Suspected:"
+    # because the client's wording is the LEAST authoritative source.
+    # Pranati cl-009 wrote `"? Diabetes"` and `"Recurrence of
+    # hypertension after 3 yrs"` in her goals; the matcher caught the
+    # bare words "diabet" / "hypertens" and added BOTH as confirmed
+    # diagnoses. Going forward: free-text matches → Suspected, structured
+    # medication matches → confirmed (medication on chart implies a
+    # treating clinician already diagnosed). Additionally we skip the
+    # add entirely when the client's wording explicitly says "?" near
+    # the matched word — that's the client wondering whether they have
+    # it, not asserting it.
+    def add_from_freetext(label: str, matched_text: str, source: str) -> None:
+        # Question-mark sentinel — "? Diabetes" / "Diabetes ?" / "do I
+        # have diabetes" — client is asking, not telling. Skip.
+        if "?" in source and label.lower().split(":", 1)[-1].strip()[:6] in source.lower():
+            return
+        # Otherwise add as Suspected — coach reviews and promotes.
+        prefixed = f"Suspected: {label}" if not label.lower().startswith("suspected") else label
+        if not any(c.lower() == prefixed.lower() for c in out):
+            # If the confirmed version is already present (from a
+            # medication match upstream), DON'T re-add the suspected
+            # version on top.
+            if any(c.lower() == label.lower() for c in out):
+                return
+            out.append(prefixed)
+        _ = matched_text  # currently unused; kept for future audit logging
 
     # ── Stage 1: catalogue-driven drug → condition lookup ──
     def _collect_med_strings(payload: dict) -> list[str]:
@@ -638,19 +728,20 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
         " insulin ", " insulin,", " insulin/", "insulin pen",
         "for diabetes", "diabetes med", "diabetic med",
     )
+    # Medication-driven → confirmed. Free-text → Suspected (per D7 fix).
     if any(k in all_meds for k in DIABETES_KEYS):
         add("Diabetes")
     if glp1.strip():  # any GLP1 entry present → likely diabetes or obesity
         if "ozempic" in glp1 or "mounjaro" in glp1 or "tirzepatide" in glp1 or "semaglutide" in glp1 or "wegovy" in glp1 or "saxenda" in glp1:
             add("Diabetes" if "diabetes" in (goals_text + chief) else "Obesity")
     if any(k in free_text for k in ("diabet", "hba1c", "blood sugar", "sugar med", "sugar is high", "fasting glucose")):
-        add("Diabetes")
+        add_from_freetext("Diabetes", "diabet/HbA1c", free_text)
 
     STATIN_KEYS = ("atorvastatin", "rosuvastatin", "simvastatin", "pitavastatin", "lovastatin", "pravastatin", " statin", "fenofibrate", "ezetimibe")
     if any(k in all_meds for k in STATIN_KEYS):
         add("Dyslipidaemia")
     if any(k in free_text for k in ("high cholesterol", "dyslipid", "ldl is high", "triglycerides")):
-        add("Dyslipidaemia")
+        add_from_freetext("Dyslipidaemia", "cholesterol/dyslipid", free_text)
 
     BP_KEYS = (
         "telmisartan", "olmesartan", "losartan", "valsartan", "candesartan",
@@ -663,12 +754,12 @@ def _derive_conditions_from_intake(payload: dict) -> list[str]:
     if any(k in all_meds for k in BP_KEYS):
         add("Hypertension")
     if any(k in free_text for k in ("hypertens", "high bp", "blood pressure med")):
-        add("Hypertension")
+        add_from_freetext("Hypertension", "hypertens/high bp", free_text)
 
     if thyroid.strip() or any(k in all_meds for k in ("levothyroxine", "eltroxin", "thyronorm", "synthroid", "liothyronine", "armour")):
         add("Hypothyroidism")
     if any(k in free_text for k in ("hashimoto", "hypothyroid", "thyroid is")):
-        add("Hypothyroidism")
+        add_from_freetext("Hypothyroidism", "hashimoto/hypothyroid", free_text)
 
     if biologics.strip():
         add("Autoimmune disease (on immunomodulator)")
@@ -862,16 +953,25 @@ def _measurements_from_intake(submitted: dict) -> dict:
 
     out: dict = {}
 
-    # Height — cm direct, else (ft, in) → cm.
-    h_cm = _num("height_cm")
+    # v0.75.7 — IMPERIAL WINS when present. The form now shows imperial
+    # inputs only (kg / ft+in / inches); a stale cm value on a returning
+    # intake would silently override the client's new imperial entry if
+    # we checked cm first. So we prefer imperial whenever it's set, and
+    # fall back to cm only when imperial is empty.
+
+    # Height — (ft, in) → cm, else cm direct.
+    h_cm = None
+    ft, inch = _num("height_ft"), _num("height_in")
+    if ft is not None or inch is not None:
+        h_cm = round((ft or 0) * 30.48 + (inch or 0) * 2.54, 1)
     if h_cm is None:
-        ft, inch = _num("height_ft"), _num("height_in")
-        if ft is not None or inch is not None:
-            h_cm = round((ft or 0) * 30.48 + (inch or 0) * 2.54, 1)
+        h_cm = _num("height_cm")
     if h_cm:
         out["height_cm"] = h_cm
 
-    # Weight — kg direct, else lb → kg.
+    # Weight — kg direct (universal in India), else lb → kg.
+    # Kg stays first here because the form's only weight input IS kg —
+    # lb only exists as a legacy fallback for old data.
     w_kg = _num("weight_now_kg")
     if w_kg is None:
         lb = _num("weight_now_lb")
@@ -880,21 +980,23 @@ def _measurements_from_intake(submitted: dict) -> dict:
     if w_kg:
         out["weight_kg"] = w_kg
 
-    # Waist — cm direct, else in → cm.
-    waist = _num("waist_cm")
+    # Waist — in → cm, else cm direct.
+    waist = None
+    waist_in_v = _num("waist_in")
+    if waist_in_v is not None:
+        waist = round(waist_in_v * 2.54, 1)
     if waist is None:
-        waist_in = _num("waist_in")
-        if waist_in is not None:
-            waist = round(waist_in * 2.54, 1)
+        waist = _num("waist_cm")
     if waist:
         out["waist_cm"] = waist
 
-    # Hip — cm direct, else in → cm.
-    hip = _num("hip_cm")
+    # Hip — in → cm, else cm direct.
+    hip = None
+    hip_in_v = _num("hip_in")
+    if hip_in_v is not None:
+        hip = round(hip_in_v * 2.54, 1)
     if hip is None:
-        hip_in = _num("hip_in")
-        if hip_in is not None:
-            hip = round(hip_in * 2.54, 1)
+        hip = _num("hip_cm")
     if hip:
         out["hip_cm"] = hip
 
@@ -999,9 +1101,17 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 pass
 
     # ── list fields (additive merge — case-insensitive dedup) ──
+    # D2 — active_conditions gets semantic dedup (token-sorted, parens
+    # stripped, stopwords removed) so phrasing variants of the same
+    # condition collapse. Other list fields keep strict case-insensitive
+    # dedup (e.g. supplements where "vitamin D" vs "vitamin D3" matter).
     for field in _LIST_FIELDS:
         if field in submitted:
-            merged, changed = _merge_lists(data.get(field), submitted.get(field))
+            merged, changed = _merge_lists(
+                data.get(field),
+                submitted.get(field),
+                semantic_dedup=(field == "active_conditions"),
+            )
             if changed:
                 data[field] = merged
                 fields_updated.append(field)
@@ -1266,6 +1376,40 @@ def action_finalise(payload: dict) -> dict:
     return {"ok": True, "client_id": client_id, "intake_finalised_at": data["intake_finalised_at"]}
 
 
+# ── action: reopen_finalised_intake (B9 fix 2026-05-23) ─────────────────────
+
+def action_reopen_finalised_intake(payload: dict) -> dict:
+    """Coach-triggered: undo a finalise so the intake form can be re-issued.
+
+    The action_finalise path locks an intake (clears the token, stamps
+    intake_finalised_at). There was no inverse — once locked, coach had
+    no UI path to send the client a fresh editable link. The send-and-
+    unlock panel said "open Coach exam and re-unlock" but that button
+    never existed.
+
+    This action clears intake_finalised_at so the coach-side gates
+    (`!isFinalised`) reopen — the Send-pre-discovery / Skip-full-intake
+    buttons then become visible again, and a new token can be minted.
+
+    Idempotent — safe to call when already not finalised.
+    """
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    try:
+        data = _load_client(client_id)
+    except FileNotFoundError as e:
+        return {"ok": False, "error": str(e)}
+    was_finalised = bool(data.get("intake_finalised_at"))
+    data["intake_finalised_at"] = None
+    _save_client(client_id, data)
+    return {
+        "ok": True,
+        "client_id": client_id,
+        "was_finalised": was_finalised,
+    }
+
+
 # ── action: unlock_full_intake (v0.75 — flip pre_discovery → full) ───────────
 
 def action_unlock_full_intake(payload: dict) -> dict:
@@ -1361,6 +1505,7 @@ ACTIONS = {
     "submit": action_submit,
     "promote_draft": action_promote_draft,
     "finalise": action_finalise,
+    "reopen_finalised_intake": action_reopen_finalised_intake,
     "revoke": action_revoke,
     # v0.75 — two-stage intake flow + discovery journey markers
     "unlock_full_intake": action_unlock_full_intake,

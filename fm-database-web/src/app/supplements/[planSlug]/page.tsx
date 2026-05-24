@@ -57,6 +57,36 @@ function describeDose(s: Record<string, unknown>): string | undefined {
   return parts.join(" ").trim() || undefined;
 }
 
+/**
+ * Coach feedback 2026-05-23 — clients can't titrate in mg increments
+ * (they don't have a scale; they buy capsules of a fixed size). Strip
+ * "titrate by X mg" verbs and trailing clinical caveats from the dose
+ * text so the client just sees "Start with [dose]". The full titration
+ * logic stays on the coach's plan editor; the client-facing letter
+ * speaks pill-count language and tells them to message the coach if
+ * they're unsure.
+ */
+function clientifyDose(text: string | undefined): string | undefined {
+  if (!text) return undefined;
+  let s = text;
+  // Drop "; titrate up/down by N mg every M nights to <whatever>" clause
+  // and everything that follows on the same sentence.
+  s = s.replace(/[;,]\s*titrat\w*[^.;]*(?:[.;]|$)/gi, ". ");
+  // Drop standalone parentheticals like "(typical landing dose 300-400 mg)"
+  s = s.replace(/\((?:typical|target|aim for|usually|landing|usual)[^)]*\)/gi, "");
+  // Drop "back off one step if …" instructions — coach-side adjustment.
+  s = s.replace(/\bback off[^.;]*(?:[.;]|$)/gi, "");
+  // Drop "reassess at week N …" coach instructions.
+  s = s.replace(/\breassess at week \d+[^.;]*(?:[.;]|$)/gi, "");
+  // Drop "re-test … at week N" coach instructions.
+  s = s.replace(/\bre-?test[^.;]*\b(week|month)\b[^.;]*(?:[.;]|$)/gi, "");
+  // Tidy doubled punctuation + whitespace.
+  s = s.replace(/\s{2,}/g, " ").replace(/\s+([.,;])/g, "$1").trim();
+  // If we ended up with a trailing semicolon/period only, lose it.
+  s = s.replace(/[;.]\s*$/, "").trim();
+  return s || undefined;
+}
+
 export default async function SupplementsPage({
   params,
 }: {
@@ -82,15 +112,31 @@ export default async function SupplementsPage({
 
   const rows: SupplementRow[] = await Promise.all(
     supps.map(async (s): Promise<SupplementRow> => {
+      // Fix F26 2026-05-23 — the canonical Plan field is
+      // `supplement_slug` (e.g. "magnesium-citrate"). Earlier code only
+      // looked at display_name / name / slug, so the 5/6 supplements
+      // with a populated supplement_slug but null display_name rendered
+      // the literal "Supplement" placeholder. Read supplement_slug too,
+      // and humanise the dashed slug for display when nothing better.
       const rawName =
         ((s.display_name as string | undefined) ??
           (s.name as string | undefined) ??
           (s.slug as string | undefined) ??
+          (s.supplement_slug as string | undefined) ??
           "Supplement").trim();
-      const name = stripBrand(rawName) || rawName;
+      const humanised = rawName
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+      const name = stripBrand(humanised) || humanised;
+      const rawDose =
+        describeDose(s) ??
+        (s.dose_summary as string | undefined) ??
+        (typeof s.dose === "string" ? (s.dose as string) : undefined);
       return {
         name,
-        dose: describeDose(s) ?? (s.dose_summary as string | undefined),
+        // Strip "titrate by N mg" verbs + coach-only clauses — clients
+        // can't dose in mg increments, only in capsule counts.
+        dose: clientifyDose(rawDose),
         timing: (s.timing as string | undefined) ?? (s.when as string | undefined),
         link: await resolveSupplementLink(name),
       };
@@ -125,7 +171,7 @@ export default async function SupplementsPage({
         <p style={P}>This plan doesn&apos;t list any supplements yet.</p>
       )}
       <footer style={FOOTER}>
-        Heal with Shivani · questions? Just reply on WhatsApp.
+        Shivani Hari · questions? Just reply on WhatsApp.
       </footer>
     </Wrap>
   );

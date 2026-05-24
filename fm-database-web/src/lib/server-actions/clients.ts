@@ -1382,6 +1382,81 @@ export async function addMeasurementAction(
   }
 }
 
+/**
+ * B2 fix 2026-05-23 — delete a body-comp snapshot.
+ *
+ * Coach corrected Archana cl-007's weight 68→60 by adding a NEW snapshot;
+ * the old 68 stayed on file, so the body comp tile showed "−8 kg in 10
+ * days" (which was a typo correction, not a real loss). Without a delete
+ * affordance the only recourse was hand-editing client.yaml.
+ *
+ * Handles BOTH storage paths the body-comp panel reads from:
+ *   - `measurements_log[]` (FmBodyCompGrid "+ Log entry" writes here)
+ *   - `health_snapshots[]` (older assess-pipeline writes here)
+ *
+ * Identity for a snapshot is (origin, date, source). `source` only
+ * disambiguates within health_snapshots — measurements_log entries have
+ * no source field, so date alone is the key there.
+ */
+export interface DeleteSnapshotInput {
+  client_id: string;
+  origin: "measurements_log" | "health_snapshots";
+  date: string;
+  source?: string;
+}
+
+export async function deleteMeasurementSnapshotAction(
+  input: DeleteSnapshotInput,
+): Promise<{ ok: true; removed: number } | { ok: false; error: string }> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml",
+  );
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    let removed = 0;
+    if (input.origin === "measurements_log") {
+      const log = (data.measurements_log as Record<string, unknown>[]) ?? [];
+      const next = log.filter((e) => String(e.date) !== input.date);
+      removed = log.length - next.length;
+      data.measurements_log = next;
+    } else {
+      const snaps = (data.health_snapshots as Record<string, unknown>[]) ?? [];
+      const next = snaps.filter(
+        (s) =>
+          !(
+            String(s.date) === input.date &&
+            (input.source ? String(s.source ?? "") === input.source : true)
+          ),
+      );
+      removed = snaps.length - next.length;
+      data.health_snapshots = next;
+    }
+    if (removed === 0) {
+      return { ok: false, error: "No matching snapshot found." };
+    }
+    data.updated_at = new Date().toISOString();
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8",
+    );
+    revalidatePath(`/clients/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}/plan`);
+    revalidatePath(`/clients-v2/${input.client_id}/analyse`);
+    revalidatePath(`/clients-v2/${input.client_id}/sessions`);
+    return { ok: true, removed };
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Failed to delete snapshot" };
+  }
+}
+
 // ── Weight loss goal CRUD ────────────────────────────────────────────────────
 // Per-client commitment that drives every meal-plan letter. Set once on
 // Overview, applies to all letters automatically. Per-week overrides
@@ -2226,15 +2301,39 @@ export async function checkMedicationImpactsAction(
     const unmatched: string[] = [];
 
     for (const med of dedupedMeds) {
-      const medLower = med.toLowerCase();
+      const medLower = med.toLowerCase().trim();
+      // GUARD: substring matching with a short med string would match
+      // almost every catalogue drug alias by accident. Archana cl-007 hit
+      // this 2026-05-23 — her current_medications had been corrupted
+      // into 49 single-character entries by an upstream string-spread
+      // bug ('a','c','i','d',…). Each single-char satisfied
+      // `cLower.includes(medLower)` against the first alphabetical drug
+      // containing that letter, producing 18 phantom matches (ACE
+      // Inhibitors / ARBs ×15, Antibiotics ×3, etc.). The upstream fix
+      // hardened _merge_lists to reject string inputs, but defending at
+      // this matcher too prevents any future garbage-medication entry
+      // from creating spurious depletion warnings.
+      //
+      // 3 chars is the smallest legitimate medication keyword we care
+      // about (e.g. "PPI", "OCP", "NAC", "HRT"). Anything shorter is
+      // junk.
+      if (medLower.length < 3) {
+        unmatched.push(med);
+        continue;
+      }
       let hit: typeof records[number] | null = null;
       let matchedAlias = "";
 
       outer: for (const rec of records) {
         const candidates = [rec.drug_name, ...(rec.drug_aliases ?? [])].filter(Boolean);
         for (const c of candidates) {
-          const cLower = c.toLowerCase();
-          // Match if EITHER side is contained in the other (handles "Eltroxin 50mcg" vs alias "eltroxin")
+          const cLower = c.toLowerCase().trim();
+          // Both sides also need to clear the 3-char floor — a 1-char
+          // alias would re-introduce the same bug from the other side.
+          if (cLower.length < 3) continue;
+          // Match if EITHER side is contained in the other (handles
+          // "Eltroxin 50mcg" vs alias "eltroxin"). The 3-char floor
+          // above means a med like "AB" can't trigger this.
           if (medLower.includes(cLower) || cLower.includes(medLower)) {
             hit = rec;
             matchedAlias = c;
@@ -2351,14 +2450,23 @@ export async function checkMedsAgainstCatalogueAction(
     const unmatched: string[] = [];
 
     for (const med of dedupedMeds) {
-      const medLower = med.toLowerCase();
+      const medLower = med.toLowerCase().trim();
+      // Same 3-char floor as checkMedicationImpactsAction — prevents
+      // garbage single-character entries from substring-matching the
+      // whole catalogue (see Archana cl-007 phantom-match incident
+      // 2026-05-23).
+      if (medLower.length < 3) {
+        unmatched.push(med);
+        continue;
+      }
       let hit: typeof records[number] | null = null;
       let matchedAlias = "";
 
       outer: for (const rec of records) {
         const candidates = [rec.drug_name, ...(rec.drug_aliases ?? [])].filter(Boolean);
         for (const c of candidates) {
-          const cLower = c.toLowerCase();
+          const cLower = c.toLowerCase().trim();
+          if (cLower.length < 3) continue;
           if (medLower.includes(cLower) || cLower.includes(medLower)) {
             hit = rec;
             matchedAlias = c;

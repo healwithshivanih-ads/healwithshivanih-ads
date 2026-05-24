@@ -56,8 +56,34 @@ const PRINT_CSS = `
 }
 `;
 
+/** Boilerplate phrases that some intake-submit paths write into
+ *  presenting_complaints as a placeholder. They're not actual complaints —
+ *  SOAP should treat them as empty so the section falls back to a
+ *  meaningful summary (goals / active conditions). */
+const STUB_COMPLAINT_PHRASES = new Set<string>([
+  "client-submitted intake questionnaire.",
+  "client-submitted intake questionnaire",
+  "cap-test",
+  "test",
+]);
+
 function stripTag(text: string): string {
-  return text.replace(/^\[(?:session_type|source):[^\]]+\]\s*/i, "").trim();
+  // B7 fix 2026-05-23 — Strip ALL leading bracketed tags, not just one.
+  // Geetika cl-006 had presenting_complaints "[session_type: intake]
+  // [session_type: intake] " (duplicated), and the old single-strip
+  // regex left the SECOND tag rendering as the chief complaint.
+  let out = text;
+  while (true) {
+    const next = out.replace(/^\[[^\]]+\]\s*/i, "");
+    if (next === out) break;
+    out = next;
+  }
+  out = out.trim();
+  // Drop placeholder-only complaints — the SOAP renderer's caller will
+  // see this as null and fall back to a section-empty state, which
+  // routes the eye to the goals + active conditions below instead.
+  if (STUB_COMPLAINT_PHRASES.has(out.toLowerCase())) return "";
+  return out;
 }
 
 function pickIntake(sessions: SessionSummary[]): SessionSummary | null {
@@ -66,6 +92,35 @@ function pickIntake(sessions: SessionSummary[]): SessionSummary | null {
   if (intakes.length > 0) return intakes[0]; // sessions arrive newest-first
   const discovery = sessions.filter((s) => s.session_type === "discovery");
   return discovery[0] ?? null;
+}
+
+/** D10 fix 2026-05-23 — symptom + topic slugs come back as kebab-case
+ *  (e.g. "joint-pain", "white-tongue-coating", "daytime-fatigue").
+ *  Rendering them raw on a SOAP note shared with a referring clinician
+ *  reads unprofessionally. This is a simple title-case fallback that
+ *  doesn't need to round-trip through the catalogue — catalogue
+ *  display_name is usually just the slug with hyphens swapped, so
+ *  reconstruction is faithful for the overwhelming majority of cases.
+ *  Special-cases preserve common medical capitalisations (FM, GI, IBS,
+ *  GERD, NAFLD, MCAS, PCOS, T1D, T2D, OCD, PTSD, ADHD, ME/CFS, HPA, IBD,
+ *  IBS, IBS-D, IBS-C, SIBO, OCP, HRT, etc.) — extend as needed. */
+function slugToDisplay(slug: string): string {
+  if (!slug) return slug;
+  const KEEP_UPPER = new Set([
+    "fm","gi","ibs","gerd","nafld","mcas","pcos","t1d","t2d","ocd","ptsd",
+    "adhd","ibd","sibo","ocp","hrt","copd","cfs","mecfs","ms","ra","sle",
+    "hpa","hpv","tb","uti","sti","stf","sars","aids","hiv","obg","pms",
+    "pmdd","tia","mi","ecg","ekg","mri","ct","crp","tsh","fmla",
+  ]);
+  return slug
+    .split("-")
+    .map((part, idx) => {
+      const lc = part.toLowerCase();
+      if (KEEP_UPPER.has(lc)) return lc.toUpperCase();
+      if (idx === 0) return lc.charAt(0).toUpperCase() + lc.slice(1);
+      return lc;
+    })
+    .join(" ");
 }
 
 function fmtDate(s?: string): string {
@@ -127,33 +182,46 @@ export function SOAPNotePanel({ client, clientName, clientId, sessions }: Props)
         </p>
       </div>
 
-      {/* S — Subjective */}
-      <section className="space-y-1.5">
-        <h2 className="soap-section-h text-xs font-bold uppercase tracking-widest text-gray-700 border-b border-gray-200 pb-1">
-          S — Subjective
-        </h2>
-        {cleanComplaints && (
-          <div className="space-y-1">
-            <div className={SECTION_HEADER}>Chief complaints</div>
-            <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">{cleanComplaints}</p>
-          </div>
-        )}
-        {symptoms.length > 0 && (
-          <div className="space-y-1">
-            <div className={SECTION_HEADER}>Reported symptoms</div>
-            <p className="text-sm text-gray-800">{symptoms.join(" · ")}</p>
-          </div>
-        )}
-        {topics.length > 0 && (
-          <div className="space-y-1">
-            <div className={SECTION_HEADER}>Clinical areas raised</div>
-            <p className="text-sm text-gray-800">{topics.join(", ")}</p>
-          </div>
-        )}
-        {!cleanComplaints && symptoms.length === 0 && topics.length === 0 && (
-          <p className="text-xs italic text-gray-500">No subjective data captured.</p>
-        )}
-      </section>
+      {/* S — Subjective. When a session has no real chief complaint
+          text (placeholder or only-tags), fall back to the client's
+          goals — that's the best summary of "what they came for" we
+          have. Prevents the empty-S section common on client-submitted
+          intakes where the form path writes a sentinel string. */}
+      {(() => {
+        const goalsList = (client.goals as string[] | undefined) ?? [];
+        const showGoalsAsComplaint = !cleanComplaints && goalsList.length > 0;
+        const headerLabel = cleanComplaints ? "Chief complaints" : "What they came for (goals)";
+        return (
+          <section className="space-y-1.5">
+            <h2 className="soap-section-h text-xs font-bold uppercase tracking-widest text-gray-700 border-b border-gray-200 pb-1">
+              S — Subjective
+            </h2>
+            {(cleanComplaints || showGoalsAsComplaint) && (
+              <div className="space-y-1">
+                <div className={SECTION_HEADER}>{headerLabel}</div>
+                <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed">
+                  {cleanComplaints || goalsList.join(" · ")}
+                </p>
+              </div>
+            )}
+            {symptoms.length > 0 && (
+              <div className="space-y-1">
+                <div className={SECTION_HEADER}>Reported symptoms</div>
+                <p className="text-sm text-gray-800">{symptoms.map(slugToDisplay).join(" · ")}</p>
+              </div>
+            )}
+            {topics.length > 0 && (
+              <div className="space-y-1">
+                <div className={SECTION_HEADER}>Clinical areas raised</div>
+                <p className="text-sm text-gray-800">{topics.map(slugToDisplay).join(", ")}</p>
+              </div>
+            )}
+            {!cleanComplaints && !showGoalsAsComplaint && symptoms.length === 0 && topics.length === 0 && (
+              <p className="text-xs italic text-gray-500">No subjective data captured.</p>
+            )}
+          </section>
+        );
+      })()}
 
       {/* O — Objective */}
       <section className="space-y-1.5">
@@ -225,7 +293,25 @@ export function SOAPNotePanel({ client, clientName, clientId, sessions }: Props)
             <div className={SECTION_HEADER}>Likely drivers (functional medicine framing)</div>
             <ol className="list-decimal list-inside space-y-1.5 mt-1">
               {drivers.map((d, i) => {
-                const name = d.mechanism ?? d.mechanism_slug ?? `Driver ${i + 1}`;
+                // B6 fix 2026-05-23 — sessions write the label as `driver`
+                // (free-text), older sessions sometimes used `mechanism` or
+                // `mechanism_slug`. Check all three before falling back to
+                // a placeholder. Sudarshan cl-008 had all drivers named
+                // "Driver 1 / Driver 2 / Driver 3..." because his session
+                // used `driver` and the renderer only knew about
+                // `mechanism` / `mechanism_slug`.
+                const dx = d as Record<string, unknown>;
+                const name =
+                  (typeof dx.driver === "string" && dx.driver) ||
+                  (typeof dx.mechanism === "string" && dx.mechanism) ||
+                  (typeof dx.mechanism_slug === "string" && dx.mechanism_slug) ||
+                  `Driver ${i + 1}`;
+                // Rationale field also varies — Sudarshan's sessions use
+                // `rationale`, others use `reasoning`. Read both.
+                const explain =
+                  (typeof dx.reasoning === "string" && dx.reasoning) ||
+                  (typeof dx.rationale === "string" && dx.rationale) ||
+                  "";
                 const conf = d.confidence != null
                   ? ` (${typeof d.confidence === "number" ? `${Math.round(d.confidence * 100)}% confidence` : d.confidence})`
                   : "";
@@ -233,8 +319,8 @@ export function SOAPNotePanel({ client, clientName, clientId, sessions }: Props)
                   <li key={i} className="text-sm text-gray-800">
                     <span className="font-semibold">{name}</span>
                     <span className="text-gray-600 text-xs">{conf}</span>
-                    {d.reasoning && (
-                      <span className="block ml-5 text-xs text-gray-700 mt-0.5 leading-snug">{d.reasoning}</span>
+                    {explain && (
+                      <span className="block ml-5 text-xs text-gray-700 mt-0.5 leading-snug">{explain}</span>
                     )}
                   </li>
                 );

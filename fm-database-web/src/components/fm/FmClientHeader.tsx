@@ -32,6 +32,10 @@ export interface FmClientHeaderProps {
   stageCtaHref?: string;
   /** Quick-action buttons rendered on the right (Record / Message / Plan). */
   quickActions?: React.ReactNode;
+  /** Fix F5 2026-05-23 — FM root-cause label from intake_insights.
+   *  Renders as a one-line indigo strip under the name so coach sees
+   *  the keystone driver before the workflow banner. Hidden when null. */
+  rootCauseLabel?: string | null;
 }
 
 export function FmClientHeader({
@@ -46,6 +50,7 @@ export function FmClientHeader({
   stageCta,
   stageCtaHref,
   quickActions,
+  rootCauseLabel,
 }: FmClientHeaderProps) {
   return (
     <header
@@ -87,6 +92,43 @@ export function FmClientHeader({
           <span style={{ fontFamily: "var(--fm-font-mono)" }}>📋 {clientId}</span>
           <span>🕐 Last contact: {lastSessionDate ? formatLongDate(lastSessionDate) : "Never"}</span>
         </div>
+
+        {/* Fix F5 2026-05-23 — root-cause keystone strip above the
+            workflow banner. Coach sees the FM driver at the highest
+            possible position on the client page (just under the name).
+            Self-hides for legacy clients without intake_insights. */}
+        {rootCauseLabel && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "6px 10px",
+              marginBottom: 10,
+              background: "rgba(46,125,90,0.07)",
+              border: "1px solid rgba(46,125,90,0.28)",
+              borderRadius: 5,
+              fontSize: 12.5,
+              lineHeight: 1.4,
+              color: "var(--fm-text-primary)",
+            }}
+            title="From the intake AI summary — anchors every protocol decision"
+          >
+            <span
+              style={{
+                fontSize: 10,
+                textTransform: "uppercase",
+                letterSpacing: 0.5,
+                color: "#2e7d5a",
+                fontWeight: 700,
+                flexShrink: 0,
+              }}
+            >
+              🎯 Driving
+            </span>
+            <span style={{ fontWeight: 500 }}>{rootCauseLabel}</span>
+          </div>
+        )}
 
         <FmWorkflowBanner
           stage={stage}

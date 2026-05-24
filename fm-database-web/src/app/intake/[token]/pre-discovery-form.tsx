@@ -191,7 +191,7 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
       <div className="fm-thanks">
         <div className="fm-thanks__eyebrow">
           <span className="pulse" aria-hidden="true" />
-          <span>Heal with Shivani</span>
+          <span>Shivani Hari</span>
         </div>
         <h1 className="fm-thanks__title">Thank you — sent to Shivani 💚</h1>
         <p className="fm-thanks__body">
@@ -212,7 +212,7 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
     >
       <header style={{ marginBottom: 28 }}>
         <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.2, color: "#8a8a8a", marginBottom: 4 }}>
-          Heal with Shivani · pre-discovery intake
+          Shivani Hari · pre-discovery intake
         </div>
         <h1 style={{ fontSize: 24, fontWeight: 700, marginTop: 0, marginBottom: 8 }}>
           Hi {displayName?.split(" ")[0] || "there"} — quick prep before our call

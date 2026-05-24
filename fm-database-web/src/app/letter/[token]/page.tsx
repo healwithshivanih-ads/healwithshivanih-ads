@@ -14,6 +14,7 @@
  */
 import { lookupLetterToken } from "@/lib/server-actions/letter-token";
 import { loadMealPlan } from "@/lib/server-actions/plan-lifecycle";
+import { AutoSizedLetterIframe } from "./auto-sized-letter-iframe";
 
 export const dynamic = "force-dynamic";
 
@@ -79,20 +80,10 @@ export default async function LetterTokenPage({
   }
 
   // The HTML from disk is a full standalone document (brand_html wraps
-  // it with <!doctype html> + CSS + body). Serve it as-is via srcDoc
-  // in a full-bleed iframe — keeps brand CSS isolated from Next's
-  // ambient global styles.
-  return (
-    <iframe
-      title="Your healing plan"
-      srcDoc={letter.html}
-      style={{
-        position: "fixed",
-        inset: 0,
-        width: "100vw",
-        height: "100vh",
-        border: 0,
-      }}
-    />
-  );
+  // it with <!doctype html> + CSS + body). Serve it via a srcDoc iframe
+  // — keeps brand CSS isolated from Next's ambient global styles. The
+  // AutoSizedLetterIframe wrapper resizes the iframe to its content so
+  // the OUTER page scrolls (native mobile momentum + URL-bar auto-hide).
+  // Fix F22 2026-05-23.
+  return <AutoSizedLetterIframe srcDoc={letter.html} />;
 }

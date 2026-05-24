@@ -26,6 +26,13 @@ interface Props {
   cycleLengthDays?: number;
   cycleRegularity?: string;
   lastCycleAskSent?: string;
+  /** B8 — when cycle_status is null we still want to surface the panel
+   *  for female clients in the 35-65 band as a "pick your stage" prompt,
+   *  AND auto-derive a hint when the intake's menstrual_notes prose
+   *  mentions "perimenopause" / "postmenopause" / "still cycling". */
+  sex?: string;
+  ageYears?: number;
+  menstrualNotes?: string;
 }
 
 const REGULARITY: { v: string; label: string }[] = [
@@ -71,6 +78,45 @@ function Row({ label, value }: { label: string; value: string }) {
 export function CycleTrackingPanel(p: Props) {
   const cycling =
     p.cycleStatus === "menstruating" || p.cycleStatus === "perimenopausal";
+  const postmenopausal = p.cycleStatus === "postmenopausal";
+
+  // Postmenopausal: cycle tracking doesn't apply. Render a compact
+  // status tile instead of the LMP / cycle-length / next-period form
+  // (which is meaningless when she hasn't menstruated in 12+ months).
+  // Hormone-axis context is still relevant (E2/progesterone/FSH stays
+  // on her labs list), but the cycle dates DON'T need refreshing.
+  if (postmenopausal) {
+    return (
+      <FmPanel
+        title="🌙 Hormonal stage"
+        subtitle="Cycle tracking doesn't apply — labs and hormone work continue."
+      >
+        <div
+          style={{
+            padding: "10px 14px",
+            background: "rgba(168, 85, 247, 0.06)",
+            border: "1px solid rgba(168, 85, 247, 0.22)",
+            borderRadius: 8,
+            fontSize: 14,
+            lineHeight: 1.5,
+            color: "var(--fm-text-primary)",
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <span style={{ fontSize: 18 }}>🌙</span>
+          <div>
+            <strong>Postmenopausal</strong>
+            <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", marginTop: 2 }}>
+              FSH / E2 / progesterone labs still relevant for HRT decisions and
+              bone / cardiovascular risk reads. No cycle-date refresh needed.
+            </div>
+          </div>
+        </div>
+      </FmPanel>
+    );
+  }
 
   const router = useRouter();
   const [editing, setEditing] = useState(false);
@@ -84,6 +130,102 @@ export function CycleTrackingPanel(p: Props) {
   const [err, setErr] = useState("");
   const [sending, setSending] = useState(false);
   const [sendMsg, setSendMsg] = useState("");
+
+  // B8 — when cycle_status is not set on a female client of any age,
+  // surface a prompt rather than silently hiding the panel. Helps coach
+  // catch the gap (Kshitija cl-010 — menstrual_notes literally said
+  // "Perimenopause. Sometimes in 3 months and sometimes in 6 months"
+  // but cycle_status was null so the panel never rendered). Auto-derives
+  // a suggested status from menstrual_notes when possible.
+  const isFemale = (p.sex ?? "").toLowerCase() === "f" ||
+    (p.sex ?? "").toLowerCase() === "female";
+  const noStatus = !p.cycleStatus;
+  if (!cycling && noStatus && isFemale) {
+    const notes = (p.menstrualNotes ?? "").toLowerCase();
+    let suggested: "perimenopausal" | "postmenopausal" | "menstruating" | null = null;
+    let suggestedFrom = "";
+    if (/postmenopaus|post-menopaus|menopaus.{0,30}(complete|ended|finished)/i.test(notes)) {
+      suggested = "postmenopausal";
+      suggestedFrom = "menstrual_notes mentions postmenopause";
+    } else if (/perimenopaus/i.test(notes)) {
+      suggested = "perimenopausal";
+      suggestedFrom = "menstrual_notes mentions perimenopause";
+    } else if (/(still|currently)\s+(cycling|menstruating)|regular\s+period/i.test(notes)) {
+      suggested = "menstruating";
+      suggestedFrom = "menstrual_notes describes regular cycles";
+    }
+    return (
+      <FmPanel
+        title="🩸 Hormonal stage — not set"
+        subtitle="Cycle / menopause status is unrecorded. Set it so the cycle-aware test recommender + hormone interpretations work."
+      >
+        <div
+          style={{
+            padding: "10px 14px",
+            background: "rgba(245, 158, 11, 0.08)",
+            border: "1px solid rgba(245, 158, 11, 0.30)",
+            borderRadius: 8,
+            fontSize: 13,
+            lineHeight: 1.5,
+            color: "var(--fm-text-primary)",
+            display: "grid",
+            gap: 8,
+          }}
+        >
+          {suggested ? (
+            <div>
+              <strong>Suggestion:</strong>{" "}
+              <em>{suggested}</em>{" "}
+              <span style={{ color: "var(--fm-text-tertiary)" }}>
+                ({suggestedFrom})
+              </span>
+            </div>
+          ) : (
+            <div>
+              No menstrual notes on file. Ask the client and set the
+              status — it changes hormone lab interpretation + meal-plan
+              framing significantly.
+            </div>
+          )}
+          <button
+            type="button"
+            onClick={() => setEditing(true)}
+            style={{
+              padding: "5px 12px",
+              fontSize: 12,
+              fontWeight: 600,
+              background: "#b45309",
+              color: "white",
+              border: 0,
+              borderRadius: 5,
+              cursor: "pointer",
+              width: "fit-content",
+            }}
+          >
+            🩸 Set hormonal stage + cycle dates
+          </button>
+          {editing && (
+            <div
+              style={{
+                marginTop: 6,
+                padding: "10px 12px",
+                background: "rgba(255,255,255,0.7)",
+                border: "1px solid rgba(245, 158, 11, 0.30)",
+                borderRadius: 6,
+                fontSize: 12,
+                color: "var(--fm-text-secondary)",
+              }}
+            >
+              Use the <strong>✏️ Edit identity</strong> button on the client
+              header to set <code>cycle_status</code>, then come back here
+              to log Day-1 dates and cycle length. (A direct picker for the
+              stage on this panel is a planned upgrade.)
+            </div>
+          )}
+        </div>
+      </FmPanel>
+    );
+  }
 
   if (!cycling) return null;
 

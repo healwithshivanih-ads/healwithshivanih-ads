@@ -32,7 +32,10 @@ import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { SendIntakeFormButton } from "./send-intake-form-button";
 import { OverviewSendLabsCard } from "./overview-send-labs-card";
+import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
+import { Tier1AdvisoryCard } from "./tier1-advisory-card";
+import { detectTier1Advisory } from "@/lib/fmdb/tier1-advisory";
 import { IntakeProgressCard } from "./intake-progress-card";
 import { loadIntakeInsights } from "@/lib/server-actions/intake-insights";
 import { EngagementPicker } from "./engagement-picker";
@@ -346,30 +349,95 @@ function buildBodyCompMetrics(
     return out;
   }
 
-  const weight = series("weight_kg");
+  /** Same as series() but returns the per-point ISO dates, so the tile
+   *  can show the real elapsed window for the delta ("−8 kg in 10 days"
+   *  instead of the hardcoded "−8 kg in 8 wks"). */
+  function seriesWithDates(key: MeasurementKey): { values: number[]; dates: string[] } {
+    const values: number[] = [];
+    const dates: string[] = [];
+    for (const s of allDated) {
+      const v = s.measurements[key];
+      if (typeof v === "number" && !Number.isNaN(v)) {
+        values.push(v);
+        dates.push(s.date);
+      }
+    }
+    return { values, dates };
+  }
+
+  const weight = seriesWithDates("weight_kg");
   const height = series("height_cm");
-  const bmi: number[] = weight.length
-    ? weight.map((w, i) => {
+  const bmi: number[] = weight.values.length
+    ? weight.values.map((w, i) => {
         const h = height[i] ?? height[0];
         if (!h) return NaN;
         const m = h / 100;
         return w / (m * m);
       })
     : [];
+  // BMI dates align with weight dates (BMI is derived from weight at each point).
+  const bmiDates = weight.dates.slice(0, bmi.length);
+
+  // Waist + hip: display in inches because that's what clients enter
+  // in the form (storage stays metric — only the readout is converted).
+  // 1 cm = 0.3937 in.
+  const CM_TO_IN = 0.3937;
+  const waist = seriesWithDates("waist_cm");
+  const hip = seriesWithDates("hip_cm");
+  const waistIn = waist.values.map((v) => Math.round(v * CM_TO_IN * 10) / 10);
+  const hipIn = hip.values.map((v) => Math.round(v * CM_TO_IN * 10) / 10);
+  const bpSys = seriesWithDates("bp_systolic");
+  const bpDia = seriesWithDates("bp_diastolic");
+  const hr = seriesWithDates("hr_bpm");
 
   return [
-    { label: "Weight", unit: "kg", series: weight, goalDirection: "down" },
+    {
+      label: "Weight",
+      unit: "kg",
+      series: weight.values,
+      seriesDates: weight.dates,
+      goalDirection: "down",
+    },
     {
       label: "BMI",
       unit: "",
       series: bmi.filter((v) => !Number.isNaN(v)),
+      seriesDates: bmiDates.filter((_, i) => !Number.isNaN(bmi[i])),
       goalDirection: "down",
     },
-    { label: "Waist", unit: "cm", series: series("waist_cm"), goalDirection: "down" },
-    { label: "Hip", unit: "cm", series: series("hip_cm"), goalDirection: "neutral" },
-    { label: "BP (sys)", unit: "", series: series("bp_systolic"), goalDirection: "down" },
-    { label: "BP (dia)", unit: "", series: series("bp_diastolic"), goalDirection: "down" },
-    { label: "Resting HR", unit: "bpm", series: series("hr_bpm"), goalDirection: "down" },
+    {
+      label: "Waist",
+      unit: "in",
+      series: waistIn,
+      seriesDates: waist.dates,
+      goalDirection: "down",
+    },
+    {
+      label: "Hip",
+      unit: "in",
+      series: hipIn,
+      seriesDates: hip.dates,
+      goalDirection: "neutral",
+    },
+    // Blood pressure rendered as one compound tile "<sys>/<dia>" instead of
+    // two separate cards — easier to read at a glance + matches how BP is
+    // always communicated. Sparkline + delta track systolic (the more
+    // load-bearing number); diastolic shown alongside in muted colour.
+    {
+      label: "Blood pressure",
+      unit: "",
+      series: bpSys.values,
+      seriesDates: bpSys.dates,
+      secondarySeries: bpDia.values,
+      goalDirection: "down",
+    },
+    {
+      label: "Resting HR",
+      unit: "bpm",
+      series: hr.values,
+      seriesDates: hr.dates,
+      goalDirection: "down",
+    },
   ];
 }
 
@@ -556,6 +624,13 @@ export default async function ClientV2Page({
   const sessRecords = sessions as ReadonlyArray<{ presenting_complaints?: string }>;
   const lastIntakeSentAt = lastTemplateSentAt(sessRecords, "fm_intake_invite");
   const lastLabsSentAt = lastTemplateSentAt(sessRecords, "fm_lab_reminder");
+  // 2026-05-23 send-button audit — UnlockFullIntakeButton's "Notify client"
+  // CTA fires either fm_intake_unlocked_v1 OR fm_intake_invite (env-switched
+  // fallback). Take the latest of the two so the badge survives a flag flip.
+  const _u1 = lastTemplateSentAt(sessRecords, "fm_intake_unlocked_v1");
+  const _u2 = lastTemplateSentAt(sessRecords, "fm_intake_invite");
+  const lastUnlockNotifyAt =
+    !_u1 && !_u2 ? null : (_u1 || "") > (_u2 || "") ? _u1 : _u2;
 
   // Most-recent discovery session that has a parsed requested_labs list —
   // feeds the OverviewSendLabsCard so the coach can send labs straight from
@@ -714,6 +789,62 @@ export default async function ClientV2Page({
       .measurements_log,
   );
 
+  // B2 — collect ALL body-comp snapshots from both storage paths so the
+  // "Manage entries" expander on the FmBodyCompGrid can offer per-row
+  // delete. Same shape both sides: {origin, date, source?, values[]}.
+  const bodyCompSnapshots: Array<{
+    origin: "measurements_log" | "health_snapshots";
+    date: string;
+    source?: string;
+    values: Array<{ label: string; text: string }>;
+  }> = [];
+  const _CM_TO_IN = 0.3937;
+  const _formatHsValues = (
+    m: Record<string, unknown>,
+  ): Array<{ label: string; text: string }> => {
+    const out: Array<{ label: string; text: string }> = [];
+    if (typeof m.weight_kg === "number") out.push({ label: "Weight", text: `${m.weight_kg} kg` });
+    if (typeof m.height_cm === "number") {
+      const totalIn = m.height_cm * _CM_TO_IN;
+      const ft = Math.floor(totalIn / 12);
+      const inches = Math.round((totalIn - ft * 12) * 10) / 10;
+      out.push({ label: "Height", text: `${ft} ft ${inches} in` });
+    }
+    if (typeof m.waist_cm === "number") out.push({ label: "Waist", text: `${Math.round(m.waist_cm * _CM_TO_IN * 10) / 10} in` });
+    if (typeof m.hip_cm === "number") out.push({ label: "Hip", text: `${Math.round(m.hip_cm * _CM_TO_IN * 10) / 10} in` });
+    if (typeof m.bp_systolic === "number" && typeof m.bp_diastolic === "number") {
+      out.push({ label: "BP", text: `${m.bp_systolic}/${m.bp_diastolic}` });
+    } else if (typeof m.blood_pressure_systolic === "number" && typeof m.blood_pressure_diastolic === "number") {
+      out.push({ label: "BP", text: `${m.blood_pressure_systolic}/${m.blood_pressure_diastolic}` });
+    }
+    if (typeof m.hr_bpm === "number") out.push({ label: "HR", text: `${m.hr_bpm} bpm` });
+    else if (typeof m.resting_heart_rate === "number") out.push({ label: "HR", text: `${m.resting_heart_rate} bpm` });
+    return out;
+  };
+  for (const s of client.health_snapshots ?? []) {
+    const m = (s.measurements as Record<string, unknown>) ?? {};
+    const values = _formatHsValues(m);
+    if (values.length > 0) {
+      bodyCompSnapshots.push({
+        origin: "health_snapshots",
+        date: s.date,
+        source: s.source,
+        values,
+      });
+    }
+  }
+  const _log =
+    (client as unknown as { measurements_log?: Array<Record<string, unknown>> })
+      .measurements_log ?? [];
+  for (const e of _log) {
+    if (typeof e.date !== "string") continue;
+    bodyCompSnapshots.push({
+      origin: "measurements_log",
+      date: e.date,
+      values: _formatHsValues(e),
+    });
+  }
+
   // Five pillars — latest from sessions, else from client.five_pillars.
   const sessionsWithPillars = sortedSessions.filter(
     (s) => (s as Record<string, unknown>).five_pillars,
@@ -731,11 +862,84 @@ export default async function ClientV2Page({
       )
     : null;
 
-  // Drug-nutrient depletions
-  const meds = [
+  // Drug-nutrient depletions.
+  //
+  // D9 fix 2026-05-23 — also pull from the STRUCTURED medication-category
+  // fields the intake form captures (psych_medications, statins_bp_diabetes,
+  // glp1_medications, acid_suppressants, nsaids_daily, antibiotics_last_12mo,
+  // hormonal_contraception_hrt, thyroid_medication, biologics_immunosuppressants,
+  // thyroid_medication). Without this, Kshitija cl-010's SSRI + unnamed 40mg
+  // drug were invisible in the Active medications panel because the form
+  // wrote them into category arrays, not into current_medications.
+  //
+  // Each entry can be either a string OR a dict {name, dose, started,
+  // still_taking, side_effects}. We surface the name with metadata
+  // inline ("Telma 40 — 40 mg, started 3 years ago"). Stopped entries
+  // (still_taking === false) get a "stopped" suffix so they're visible
+  // but de-emphasised.
+  type StructuredMed = {
+    name?: string;
+    dose?: string;
+    started?: string;
+    still_taking?: boolean;
+    side_effects?: string;
+  };
+  const _formatStructuredMed = (entry: StructuredMed | string): string | null => {
+    if (typeof entry === "string") return entry.trim() || null;
+    if (!entry || typeof entry !== "object") return null;
+    const name = (entry.name ?? "").trim();
+    const dose = (entry.dose ?? "").trim();
+    const started = (entry.started ?? "").trim();
+    const stopped = entry.still_taking === false;
+    if (!name && !dose && !started) return null;
+    const bits: string[] = [];
+    bits.push(name || "(unnamed)");
+    const meta: string[] = [];
+    if (dose) meta.push(dose);
+    if (started) meta.push(`started ${started}`);
+    if (stopped) meta.push("stopped");
+    if (meta.length > 0) bits.push(`— ${meta.join(", ")}`);
+    return bits.join(" ");
+  };
+  const _structuredMedFields: Array<keyof typeof client | string> = [
+    "psych_medications",
+    "statins_bp_diabetes",
+    "glp1_medications",
+    "acid_suppressants",
+    "nsaids_daily",
+    "antibiotics_last_12mo",
+    "hormonal_contraception_hrt",
+    "thyroid_medication",
+    "biologics_immunosuppressants",
+  ];
+  const _structuredMeds: string[] = [];
+  for (const f of _structuredMedFields) {
+    const raw = (client as unknown as Record<string, unknown>)[f as string];
+    if (!Array.isArray(raw)) continue;
+    for (const entry of raw) {
+      const formatted = _formatStructuredMed(entry as StructuredMed | string);
+      if (formatted) _structuredMeds.push(formatted);
+    }
+  }
+  const _rawMeds = [
     ...(client.current_medications ?? []),
     ...(((client as unknown as { medications?: string[] }).medications) ?? []),
+    ..._structuredMeds,
   ];
+  // Dedup — case-insensitive on the FIRST WORD (the drug name). Prevents
+  // "Telma 40" (from current_medications) duplicating "Telma 40 — 40 mg,
+  // started 3 years ago" (from statins_bp_diabetes). Keeps the longer
+  // entry (more metadata) when the first-word matches.
+  const _seenMed = new Map<string, string>();
+  for (const m of _rawMeds) {
+    const key = String(m).trim().split(/\s+/)[0]?.toLowerCase() ?? "";
+    if (!key) continue;
+    const existing = _seenMed.get(key);
+    if (!existing || String(m).length > existing.length) {
+      _seenMed.set(key, String(m));
+    }
+  }
+  const meds = Array.from(_seenMed.values());
   const depletionResult = meds.length > 0
     ? await checkMedicationImpactsAction(id)
     : { ok: true, matches: [] as Array<{ drug_name: string; depletes: Array<{ nutrient: string; severity?: string }> }> };
@@ -776,6 +980,13 @@ export default async function ClientV2Page({
         age={age}
         lastSessionDate={lastSessionDate}
         photoUrl={client.photo_filename ? `/api/client-photo/${client.client_id}` : null}
+        // Fix F5 2026-05-23 — surface intake_insights.root_cause.label
+        // directly under the name as a one-line keystone strip.
+        rootCauseLabel={
+          (client as unknown as {
+            intake_insights?: { root_cause?: { label?: string } | null } | null;
+          }).intake_insights?.root_cause?.label ?? null
+        }
         stage={stageInfo.stage}
         stageTitle={stageInfo.title}
         stageDetail={stageInfo.detail}
@@ -937,6 +1148,7 @@ export default async function ClientV2Page({
           <FmBodyCompGrid
             metrics={bodyComp}
             clientId={client.client_id}
+            snapshots={bodyCompSnapshots}
             prefill={(() => {
               // Pre-fill the "+ Log entry" form from the canonical
               // measurements block. (The old code read flat client.*
@@ -1061,6 +1273,9 @@ export default async function ClientV2Page({
             cycleLengthDays={client.cycle_length_days}
             cycleRegularity={client.cycle_regularity}
             lastCycleAskSent={client.last_cycle_ask_sent}
+            sex={client.sex as string | undefined}
+            ageYears={derivedAge(client)}
+            menstrualNotes={(client as unknown as { menstrual_notes?: string }).menstrual_notes}
           />
         </div>
 
@@ -1072,25 +1287,34 @@ export default async function ClientV2Page({
               strip; the active child keeps its own native card chrome.
               Tab choice persists per-group in sessionStorage. ── */}
 
-          {/* 🔬 Discovery labs — appears only when the latest discovery
-              session captured a requested-labs list and that list hasn't
-              been mooted by an intake/plan. Lives ABOVE Intake so the
-              coach reaches for the right "send" button next to discovery,
-              not the prominent Intake one. Misclick fix 2026-05-23 (the
-              "I meant to send labs, but sent intake form again" bug). */}
-          {latestDiscoveryWithLabs && (
-            <OverviewSendLabsCard
-              clientId={client.client_id}
-              sessionId={latestDiscoveryWithLabs.sessionId}
-              labCount={latestDiscoveryWithLabs.labs.length}
-              clientEmail={(client as unknown as { email?: string | null }).email ?? null}
-              discoveryDateLabel={
-                latestDiscoveryWithLabs.date
-                  ? formatLongDate(latestDiscoveryWithLabs.date)
-                  : null
-              }
-              lastSentAt={lastLabsSentAt}
-            />
+          {/* 🔬 Labs panel. Two variants, mutually exclusive:
+              - If there's an active (published) plan: show the plan's
+                upcoming retest labs ("New labs to be ordered"). Calm
+                read-only until a due date is ≤2 days away, then amber
+                actionable.
+              - Otherwise (pre-plan onboarding): show the Discovery labs
+                send card so coach can email/WhatsApp the discovery lab
+                list to the client.
+              Coach asked 2026-05-23: showing Discovery labs forever on
+              an active-plan client is wrong — they were already ordered;
+              the relevant question is "what retest is next?". */}
+          {publishedPlan ? (
+            <OverviewPlanLabsCard plan={publishedPlan} today={todayStr} />
+          ) : (
+            latestDiscoveryWithLabs && (
+              <OverviewSendLabsCard
+                clientId={client.client_id}
+                sessionId={latestDiscoveryWithLabs.sessionId}
+                labCount={latestDiscoveryWithLabs.labs.length}
+                clientEmail={(client as unknown as { email?: string | null }).email ?? null}
+                discoveryDateLabel={
+                  latestDiscoveryWithLabs.date
+                    ? formatLongDate(latestDiscoveryWithLabs.date)
+                    : null
+                }
+                lastSentAt={lastLabsSentAt}
+              />
+            )
           )}
 
           {/* 📋 Intake — progress / insights / send & unlock / coach exam */}
@@ -1159,6 +1383,18 @@ export default async function ClientV2Page({
                 id: "insights",
                 label: "Insights",
                 content: (
+                  <div style={{ display: "grid", gap: 12 }}>
+                    {/* Coach feedback 2026-05-24: Section 11 (Tier 1 — Beighton,
+                        NASA lean, PEM, mould) was removed from the default
+                        intake. Detection now happens here — when the submitted
+                        intake has triggering signals, flash an advisory with a
+                        one-click "Reissue Tier 1" button (fires the existing
+                        fm_intake_topup_v1 template). Self-hides cleanly when
+                        no signals OR when client already filled Tier 1. */}
+                    <Tier1AdvisoryCard
+                      clientId={client.client_id}
+                      advisory={detectTier1Advisory(client as unknown as Record<string, unknown>)}
+                    />
                             <IntakeInsightsCard
                               clientId={client.client_id}
                               initial={intakeInsights}
@@ -1167,6 +1403,7 @@ export default async function ClientV2Page({
                                   .intake_submitted_at ?? null
                               }
                             />
+                  </div>
                 ),
               },
               {
@@ -1213,6 +1450,14 @@ export default async function ClientV2Page({
                                   (client as unknown as { intake_full_unlocked_at?: string | null })
                                     .intake_full_unlocked_at
                                 }
+                                intakeFinalisedAt={
+                                  (client as unknown as { intake_finalised_at?: string | null })
+                                    .intake_finalised_at ?? null
+                                }
+                                engagementStatus={
+                                  (client as unknown as { engagement_status?: string | null })
+                                    .engagement_status ?? null
+                                }
                                 intakeInsightsGeneratedAt={
                                   (
                                     client as unknown as {
@@ -1220,6 +1465,7 @@ export default async function ClientV2Page({
                                     }
                                   ).intake_insights?.generated_at ?? null
                                 }
+                                lastUnlockNotifyAt={lastUnlockNotifyAt}
                               />
                   </div>
                 ),

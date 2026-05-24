@@ -34,7 +34,7 @@
  * the coach has to do manually outside this app.
  */
 
-import { sendWhatsAppAction } from "@/app/api/whatsapp/actions";
+import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
 import { loadAllClients, loadAllPlans } from "@/lib/fmdb/loader";
 import type { PollDimension, PollScore } from "@/lib/poll-labels";
 import path from "node:path";
@@ -106,7 +106,20 @@ export async function sendWeeklyPollAction(
       continue;
     }
     const name = (c.display_name as string | undefined) ?? "there";
-    const r = await sendWhatsAppAction(phone, campaignName, [name]);
+    // Approximate body — Meta templates fm_weekly_check_in_v1 / supplement / meals / movement
+    // all use the same "Hi {{1}} 👋 Quick weekly check-in…" preamble (per
+    // CLAUDE.md v0.69 notes). The exact button copy is template-specific
+    // but the chat-thread record only needs the body text.
+    const renderedBody =
+      `Hi ${name} 👋 Quick weekly check-in — how did the past 7 days go? ` +
+      `Tap one of the buttons below to let me know.`;
+    const r = await sendAndRecordOutboundAction({
+      phone,
+      clientId: id,
+      templateName: campaignName,
+      templateParams: [name],
+      renderedBody,
+    });
     if (r.ok) {
       sent++;
       sentTo.push(id);

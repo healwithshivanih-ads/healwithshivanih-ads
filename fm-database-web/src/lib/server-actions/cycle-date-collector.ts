@@ -24,7 +24,7 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { sendWhatsAppAction } from "@/app/api/whatsapp/actions";
+import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
 import { extractDate } from "@/lib/start-date-parser";
 
 const CYCLE_TEMPLATE = "fm_cycle_date_check_v1";
@@ -128,7 +128,18 @@ export async function sendCycleDateCheckAction(
     const name = (c.display_name as string) ?? "there";
     const firstName = name.split(/\s+/)[0] || name;
 
-    const sent = await sendWhatsAppAction(phone, CYCLE_TEMPLATE, [firstName]);
+    // fm_cycle_date_check_v1 body (approved Meta template):
+    const renderedBody =
+      `Hi ${firstName} 👋 quick one — when did your last period start? ` +
+      `Even a rough date helps me read your hormone labs correctly. ` +
+      `Reply with the date (e.g. 14 May).`;
+    const sent = await sendAndRecordOutboundAction({
+      phone,
+      clientId,
+      templateName: CYCLE_TEMPLATE,
+      templateParams: [firstName],
+      renderedBody,
+    });
     if (!sent.ok) return { ok: false, error: sent.error ?? "WhatsApp send failed" };
 
     const p = clientYamlPath(clientId);

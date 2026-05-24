@@ -331,14 +331,23 @@ async function fireOnboardingKit(
   // 3. Send the welcome WhatsApp template
   if (result.intake_url) {
     try {
-      const { sendWhatsAppAction } = await import("@/app/api/whatsapp/actions");
+      const { sendAndRecordOutboundAction } = await import("@/app/api/whatsapp/actions");
       const firstName = identity.display_name.split(" ")[0] || identity.display_name;
-      const wa = await sendWhatsAppAction(
-        identity.phone_e164,
-        "fm_programme_welcome",
-        [firstName, result.intake_url, result.calcom_url],
-        { name: identity.display_name },
-      );
+      // fm_programme_welcome body (approved Meta template):
+      const renderedBody =
+        `Hi ${firstName} 🎉 Welcome to the programme — I'm so glad you're here.\n\n` +
+        `Two things to do this week to get us started:\n\n` +
+        `1) Your full intake form (saves as you go): ${result.intake_url}\n\n` +
+        `2) Book your programme intake session: ${result.calcom_url}\n\n` +
+        `Message me here if anything's unclear.\n\n— Shivani`;
+      const wa = await sendAndRecordOutboundAction({
+        phone: identity.phone_e164,
+        clientId,
+        templateName: "fm_programme_welcome",
+        templateParams: [firstName, result.intake_url, result.calcom_url],
+        renderedBody,
+        opts: { name: identity.display_name },
+      });
       if (wa.ok) {
         result.whatsapp_sent = true;
       } else {

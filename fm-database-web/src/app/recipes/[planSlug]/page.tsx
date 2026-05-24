@@ -239,7 +239,7 @@ export default async function RecipesPage({
   const fullHtml = `<!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Your recipe pack · Heal with Shivani</title>
+<title>Your recipe pack · Shivani Hari</title>
 <style>${WRAP_CSS}</style>
 </head>
 <body>
@@ -247,7 +247,7 @@ export default async function RecipesPage({
   <h1>Your recipe pack</h1>
   <p class="header-sub">Full recipes for every ✦ dish in your meal plan. Bookmark this on your phone for easy access in the kitchen.</p>
   ${markdownToBasicHtml(body)}
-  <div class="footer">Heal with Shivani · questions? Message me on WhatsApp.</div>
+  <div class="footer">Shivani Hari · questions? Message me on WhatsApp.</div>
 </div>
 </body>
 </html>`;

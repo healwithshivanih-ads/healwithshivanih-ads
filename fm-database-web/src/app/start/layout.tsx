@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Confirm your start date · Heal with Shivani",
+  title: "Confirm your start date · Shivani Hari",
   description: "Confirm when your plan begins",
 };
 
@@ -17,7 +17,7 @@ export default function StartLayout({ children }: { children: React.ReactNode })
         <div className="mx-auto flex max-w-2xl items-baseline justify-between gap-4 px-4 py-4 sm:px-6">
           <div>
             <h1 className="text-lg font-semibold tracking-tight text-emerald-900 sm:text-xl">
-              Heal with Shivani
+              Shivani Hari
             </h1>
             <p className="text-xs text-stone-500">Confirm your plan start</p>
           </div>

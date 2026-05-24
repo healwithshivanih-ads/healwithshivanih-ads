@@ -237,6 +237,71 @@ export async function recordOutboundMessageAction(input: {
   });
 }
 
+// ── Atomic send + record ─────────────────────────────────────────────────────
+//
+// THE durable bug: many callsites call sendWhatsAppAction() and forget to
+// also call recordOutboundMessageAction() — the message goes out fine but
+// never appears in the client's chat panel, looking like a failed send.
+// Bit us on the booking link, intake invite (Nidhi), intake invite again
+// (Deepti cl-011), and the 6 files this helper now covers: start-date
+// reminders, cycle date collector, weekly poll, handover welcome, intake
+// reminder cron, cal.com appointment confirmation.
+//
+// This helper does both in one call so a future site CAN'T skip the
+// record half. The record-failure is logged to console.error (not silently
+// swallowed) so when a Python shim crashes or save-session times out, the
+// gap is visible in pm2 logs instead of accumulating invisibly on disk.
+//
+// Callers MUST provide `clientId` + `renderedBody` (the message body Meta
+// actually sent, with template vars filled in). If a caller can't easily
+// know clientId at the send site (e.g. cron job iterating a list), still
+// call this — `clientId: ""` will skip the record half cleanly with a
+// warn, NOT silently. That makes the audit gap visible.
+
+export async function sendAndRecordOutboundAction(input: {
+  phone: string;
+  clientId: string;            // "" allowed but logged as a warning
+  templateName: string;        // Meta template name
+  templateParams: string[];    // params to fill {{1}}, {{2}}, ...
+  renderedBody: string;        // the message text with vars substituted, exactly as Meta rendered
+  opts?: { name?: string; templateLanguage?: string };
+}): Promise<{ ok: boolean; error?: string; recorded?: boolean }> {
+  const send = await sendWhatsAppAction(
+    input.phone,
+    input.templateName,
+    input.templateParams,
+    input.opts,
+  );
+  if (!send.ok) {
+    return { ok: false, error: send.error, recorded: false };
+  }
+  if (!input.clientId) {
+    console.warn(
+      `[whatsapp] send succeeded but clientId empty — chat thread will not show this ${input.templateName} message (phone: ${input.phone.slice(0, 7)}…)`,
+    );
+    return { ok: true, recorded: false };
+  }
+  try {
+    const rec = await recordOutboundMessageAction({
+      clientId: input.clientId,
+      templateName: input.templateName,
+      renderedBody: input.renderedBody,
+    });
+    if (!rec.ok) {
+      console.error(
+        `[whatsapp] WA send OK but record failed for ${input.clientId} (${input.templateName}): ${rec.error}`,
+      );
+      return { ok: true, recorded: false, error: `recorded=false: ${rec.error}` };
+    }
+    return { ok: true, recorded: true };
+  } catch (e) {
+    console.error(
+      `[whatsapp] WA send OK but record threw for ${input.clientId} (${input.templateName}): ${(e as Error).message}`,
+    );
+    return { ok: true, recorded: false, error: `recorded=false: ${(e as Error).message}` };
+  }
+}
+
 // ── Chat thread loader (combines inbound + outbound for a client) ────────────
 
 export interface ChatThreadMessage {

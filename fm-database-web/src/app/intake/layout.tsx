@@ -3,7 +3,7 @@ import "./_design/design-system.css";
 import "./_design/form.css";
 
 export const metadata: Metadata = {
-  title: "Intake form · Heal with Shivani",
+  title: "Intake form · Shivani Hari",
   description: "Client intake questionnaire",
 };
 

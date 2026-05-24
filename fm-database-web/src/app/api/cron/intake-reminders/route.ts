@@ -26,7 +26,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { loadAllClients } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
-import { sendWhatsAppAction } from "@/app/api/whatsapp/actions";
+import { sendAndRecordOutboundAction } from "@/app/api/whatsapp/actions";
 
 export const dynamic = "force-dynamic";
 
@@ -140,12 +140,19 @@ export async function POST(req: NextRequest) {
       ? new Date(cand.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short" })
       : "soon";
 
-    const r = await sendWhatsAppAction(
-      cand.mobile,
-      TEMPLATE_NAME,
-      [firstName, expiresLabel, url],
-      { name: cand.display_name },
-    );
+    // fm_intake_reminder body (approved Meta template):
+    const renderedBody =
+      `Hi ${firstName} 👋 just a gentle nudge — your intake form is still ` +
+      `waiting for you. It expires ${expiresLabel}.\n\n${url}\n\n` +
+      `— Shivani`;
+    const r = await sendAndRecordOutboundAction({
+      phone: cand.mobile,
+      clientId: cand.client_id,
+      templateName: TEMPLATE_NAME,
+      templateParams: [firstName, expiresLabel, url],
+      renderedBody,
+      opts: { name: cand.display_name },
+    });
 
     if (!r.ok) {
       failed.push({ client_id: cand.client_id, error: r.error || "send failed" });

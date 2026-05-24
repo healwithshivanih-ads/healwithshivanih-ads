@@ -459,7 +459,7 @@ export async function createBookingAction(
     let whatsappSent = false;
     if (input.clientPhone) {
       try {
-        const { sendWhatsAppAction } = await import("@/app/api/whatsapp/actions");
+        const { sendAndRecordOutboundAction } = await import("@/app/api/whatsapp/actions");
         const firstName = (input.clientName || "there").split(" ")[0];
         const slotDate = new Date(input.slotIso);
         const dateStr = slotDate.toLocaleDateString("en-IN", {
@@ -476,11 +476,19 @@ export async function createBookingAction(
             timeZone: IST_TZ,
           }) + " IST";
         // appt_confirmation params: [name, date, time, sessionType]
-        const waRes = await sendWhatsAppAction(
-          input.clientPhone,
-          "appt_confirmation",
-          [firstName, dateStr, timeStr, opt.label || "coaching"],
-        );
+        // Mirrors the approved Meta template body for the chat-thread record.
+        const renderedBody =
+          `Hi ${firstName} ✅ Your ${opt.label || "coaching"} session is ` +
+          `confirmed for ${dateStr} at ${timeStr}. ` +
+          `Cal.com will send the calendar invite + Zoom link separately. ` +
+          `Message me here if anything comes up.\n\n— Shivani`;
+        const waRes = await sendAndRecordOutboundAction({
+          phone: input.clientPhone,
+          clientId: input.clientId,
+          templateName: "appt_confirmation",
+          templateParams: [firstName, dateStr, timeStr, opt.label || "coaching"],
+          renderedBody,
+        });
         whatsappSent = waRes.ok;
         if (!waRes.ok) {
           console.warn(

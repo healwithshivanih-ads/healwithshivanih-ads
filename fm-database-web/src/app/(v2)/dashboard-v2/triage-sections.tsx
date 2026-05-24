@@ -37,6 +37,7 @@ export type SignalKind =
   | "labs_pending"
   | "booking_link_pending"
   | "awaiting_signup"
+  | "phase_letter_due"
   | "plan_review_due"
   | "active"
   | "returning"
@@ -74,6 +75,11 @@ export interface TriageRow {
      *  and confirms before re-firing. Durable rule
      *  feedback-send-buttons-persist-state. */
     lastCheckinNudgeAt?: string | null;
+    /** For phase_letter_due — the week range that letter covers
+     *  (e.g. {start: 3, end: 4}) + the due date that's now in the past.
+     *  Surfaced in the card so coach knows which fortnight she owes. */
+    phaseLetterRange?: { start: number; end: number };
+    phaseLetterDueDate?: string;
   };
 }
 
@@ -108,12 +114,15 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}/analyse`,
   },
   intake_to_do: {
-    title: "Intake to do",
+    // F1 2026-05-23 — "Intake to do" was misread by coach because the
+    // form IS submitted; what's pending is the coach SESSION. Reworded
+    // header + pill to make the action unambiguous.
+    title: "Intake session to do",
     icon: "📝",
     accent: "rgba(192, 57, 43, 0.07)",
     border: "rgba(192, 57, 43, 0.30)",
     badgeColor: "#c0392b",
-    cta: "📝 Run intake",
+    cta: "📝 Run intake session",
     ctaHref: (r) => `/clients-v2/${r.client_id}/analyse/intake`,
   },
   plan_to_build: {
@@ -157,6 +166,15 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   // ── 🔵 In progress ───────────────────────────────────────────────
+  phase_letter_due: {
+    title: "Phase letter overdue",
+    icon: "✉️",
+    accent: "rgba(26, 127, 187, 0.10)",
+    border: "rgba(26, 127, 187, 0.38)",
+    badgeColor: "#1a7fbb",
+    cta: "✉️ Generate letter",
+    ctaHref: (r) => `/clients-v2/${r.client_id}/communicate`,
+  },
   plan_review_due: {
     title: "Check-in needed (3+ weeks quiet)",
     icon: "💬",
@@ -233,7 +251,7 @@ const TIERS: Tier[] = [
     label: "In progress",
     hint: "On a live protocol — review every 3 weeks so it doesn't stall",
     color: "#1a7fbb",
-    kinds: ["plan_review_due", "active"],
+    kinds: ["phase_letter_due", "plan_review_due", "active"],
   },
   {
     label: "Leads & cold",
@@ -854,6 +872,35 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
     );
   }
 
+  if (signal.kind === "phase_letter_due") {
+    const r = signal.phaseLetterRange;
+    return (
+      <div style={wrap}>
+        <span style={labelStyle}>Phase letter:</span>
+        <span style={valueStyle}>
+          {r ? `Week ${r.start}–${r.end}` : "next phase"}
+          {signal.phaseLetterDueDate && (
+            <span style={{ marginLeft: 6, color: "var(--fm-text-tertiary)" }}>
+              · due {signal.phaseLetterDueDate}
+            </span>
+          )}
+          {signal.planSlug && (
+            <span
+              style={{
+                fontFamily: "var(--fm-font-mono)",
+                fontSize: 11,
+                marginLeft: 6,
+                color: "var(--fm-text-tertiary)",
+              }}
+            >
+              · {signal.planSlug}
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
   if (signal.kind === "plan_review_due") {
     return (
       <div style={wrap}>
@@ -905,7 +952,12 @@ function SignalBadge({ signal }: { signal: TriageRow["signal"] }) {
     return <FmChip tone="danger">recheck due</FmChip>;
   }
   if (signal.kind === "intake_to_do") {
-    return <FmChip tone="danger">intake pending</FmChip>;
+    // F1 + F3 2026-05-23 — pill says SESSION pending (the form is in).
+    // Tone switched from danger (red, used for overdue/recheck) to
+    // secondary (blue, "informational state") so it visually separates
+    // from the orange action button. Coach feedback: red pill next to
+    // orange CTA created false urgency.
+    return <FmChip tone="secondary">session pending</FmChip>;
   }
   if (signal.kind === "plan_to_build") {
     return <FmChip tone="danger">programme owed</FmChip>;

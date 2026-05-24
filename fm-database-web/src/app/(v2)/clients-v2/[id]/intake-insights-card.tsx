@@ -270,6 +270,104 @@ export function IntakeInsightsCard({ clientId, initial, submittedAt }: Props) {
           </div>
         )}
 
+        {/* ROOT CAUSE — emerald keystone, leads the card (Fix B 2026-05-23) */}
+        {insights.root_cause && insights.root_cause.label && (
+          <div
+            style={{
+              border: "1px solid rgba(46,125,90,0.35)",
+              background: "rgba(46,125,90,0.06)",
+              borderRadius: 6,
+              padding: "10px 12px",
+              display: "grid",
+              gap: 8,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: 0.6,
+                color: "#2e7d5a",
+                fontWeight: 600,
+              }}
+            >
+              <span>🎯 Root cause</span>
+              <span
+                style={{
+                  fontSize: 10,
+                  background: "rgba(46,125,90,0.15)",
+                  color: "#2e7d5a",
+                  padding: "1px 6px",
+                  borderRadius: 10,
+                  letterSpacing: 0,
+                  textTransform: "none",
+                }}
+              >
+                confidence {Math.round((insights.root_cause.confidence ?? 0) * 100)}%
+              </span>
+            </div>
+            <div
+              style={{
+                fontSize: 14,
+                lineHeight: 1.4,
+                color: "var(--fm-text-primary)",
+                fontWeight: 600,
+              }}
+            >
+              {insights.root_cause.label}
+            </div>
+            {insights.root_cause.reasoning && (
+              <div
+                style={{
+                  fontSize: 12,
+                  lineHeight: 1.5,
+                  color: "var(--fm-text-secondary)",
+                }}
+              >
+                {insights.root_cause.reasoning}
+              </div>
+            )}
+            {insights.root_cause.downstream_effects.length > 0 && (
+              <div style={{ display: "grid", gap: 4 }}>
+                <div
+                  style={{
+                    fontSize: 10,
+                    textTransform: "uppercase",
+                    letterSpacing: 0.5,
+                    color: "var(--fm-text-tertiary)",
+                  }}
+                >
+                  Will improve as root is addressed
+                </div>
+                <ul
+                  style={{
+                    margin: 0,
+                    paddingLeft: 16,
+                    display: "grid",
+                    gap: 2,
+                  }}
+                >
+                  {insights.root_cause.downstream_effects.map((d, i) => (
+                    <li
+                      key={i}
+                      style={{
+                        fontSize: 12,
+                        lineHeight: 1.45,
+                        color: "var(--fm-text-secondary)",
+                      }}
+                    >
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* RED FLAGS — rose tint, protocol-gating */}
         {insights.red_flags.length > 0 && (
           <Section
