@@ -475,8 +475,24 @@ export async function sendPillarRotationAction(
         `• *Overwhelming* — full, hard to come down\n\n` +
         `Tap below — your answer shapes which practices we lean on next week.\n\n` +
         `— Shivani`,
-      movement: `Hi ${name}, movement this week?`,
-      nutrition: `Hi ${name}, sticking to the meal plan this week?`,
+      movement:
+        `*Your weekly movement check-in* 🏃\n\n` +
+        `Hi ${name}, how did your body get to move this week?\n\n` +
+        `Movement happened:\n` +
+        `• *Most days* — walks, workouts, stretching woven through the week\n` +
+        `• *A few times* — a couple of sessions or active days\n` +
+        `• *None* — felt too full, too tired, too stretched\n\n` +
+        `Tap below — your answer shapes what we lean into next week.\n\n` +
+        `— Shivani`,
+      nutrition:
+        `*Your weekly nutrition check-in* 🍽\n\n` +
+        `Hi ${name}, how did meals + food feel this week?\n\n` +
+        `Was eating:\n` +
+        `• *Yes mostly* — aligned with the plan, recipes came together\n` +
+        `• *Half the time* — some meals on track, others off\n` +
+        `• *Struggling* — hard to plan, eat, or stay with it\n\n` +
+        `Tap below — your answer guides next week's meal focus.\n\n` +
+        `— Shivani`,
       connection:
         `*Your weekly connection check-in* 🤝\n\n` +
         `Hi ${name}, checking in on how connected you've felt this week — to people, routine, yourself.\n\n` +

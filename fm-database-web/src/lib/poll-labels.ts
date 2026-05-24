@@ -118,18 +118,17 @@ export const PILLAR_ROTATION: PillarKey[] = [
 ];
 
 /** Pillar → WA template name.
- *  sleep/stress/connection: rich-body v2 (APPROVED + MARKETING category
- *  per Meta auto-classifier 2026-05-24 — coach accepted 6× cost trade
- *  for warmer messaging). movement + nutrition stay UTILITY v1.
- *  NB: sleep_v2 may briefly be PENDING when the rotation runs; sends
- *  will error loudly via the visible-error banner until Meta approves
- *  (usually <1h after submission). */
+ *  All 5 pillars use rich-body v2 (APPROVED 2026-05-24). Meta
+ *  auto-classified 4 as MARKETING and 1 (nutrition/meals) as UTILITY —
+ *  the explicit "the plan" anchor in the meals body gave it a clearer
+ *  transactional read. Coach accepted the warm-tax (~₹10k/yr at 300
+ *  clients, ~₹2.80/client/month) for consistent client experience. */
 export function pillarToTemplateName(pillar: PillarKey): string {
   switch (pillar) {
     case "sleep": return "fm_weekly_sleep_v2";          // MARKETING (warm)
     case "stress": return "fm_weekly_stress_v2";        // MARKETING (warm)
-    case "movement": return "fm_weekly_movement_v1";    // UTILITY
-    case "nutrition": return "fm_weekly_meals_v1";      // UTILITY
+    case "movement": return "fm_weekly_movement_v2";    // MARKETING (warm)
+    case "nutrition": return "fm_weekly_meals_v2";      // UTILITY (warm)
     case "connection": return "fm_weekly_connection_v2"; // MARKETING (warm)
   }
 }
