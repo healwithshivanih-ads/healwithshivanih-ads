@@ -157,12 +157,12 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}/communicate`,
   },
   awaiting_signup: {
-    title: "Discovery done — awaiting sign-up",
-    icon: "🤝",
+    title: "Considering the programme",
+    icon: "🤔",
     accent: "rgba(180, 83, 9, 0.08)",
     border: "rgba(180, 83, 9, 0.30)",
     badgeColor: "#b45309",
-    cta: "🤝 Confirm sign-up",
+    cta: "View client",
     ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   // ── 🔵 In progress ───────────────────────────────────────────────
@@ -205,12 +205,12 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}/analyse`,
   },
   new_lead: {
-    title: "New leads — start discovery",
-    icon: "🆕",
+    title: "Discovery done — record session",
+    icon: "🔍",
     accent: "rgba(120, 120, 120, 0.07)",
     border: "rgba(120, 120, 120, 0.26)",
     badgeColor: "#6b7280",
-    cta: "🔍 Start discovery",
+    cta: "📝 Record call",
     ctaHref: (r) => `/clients-v2/${r.client_id}/analyse/discovery`,
   },
   declined: {
@@ -263,12 +263,70 @@ const TIERS: Tier[] = [
 
 const SECTION_ORDER: SignalKind[] = TIERS.flatMap((t) => t.kinds);
 
+// ── Per-view tier definitions ────────────────────────────────────────
+type DashboardView = "attention" | "active" | "discovery" | "past";
+
+const VIEW_TIERS: Record<DashboardView, Tier[]> = {
+  attention: [
+    {
+      label: "Do now",
+      hint: "Clients waiting on you",
+      color: "#c0392b",
+      kinds: ["follow_up_due", "protocol_complete", "intake_to_do", "plan_to_build"],
+    },
+    {
+      label: "This week",
+      hint: "Keep things moving",
+      color: "#b45309",
+      kinds: ["labs_pending", "phase_letter_due", "plan_review_due"],
+    },
+  ],
+  active: [
+    {
+      label: "Needs attention",
+      hint: "On a live protocol — action needed",
+      color: "#c0392b",
+      kinds: ["phase_letter_due", "plan_review_due", "protocol_complete"],
+    },
+    {
+      label: "On protocol",
+      hint: "Steady — check in every 3 weeks",
+      color: "#1a7fbb",
+      kinds: ["active"],
+    },
+  ],
+  discovery: [
+    {
+      label: "Decision pending",
+      hint: "Had discovery, considering the programme",
+      color: "#b45309",
+      kinds: ["awaiting_signup", "booking_link_pending"],
+    },
+    {
+      label: "Record call",
+      hint: "Discovery done — log the session",
+      color: "#6b7280",
+      kinds: ["new_lead"],
+    },
+  ],
+  past: [
+    {
+      label: "Past clients",
+      hint: "Completed programme or declined",
+      color: "#6b7280",
+      kinds: ["returning", "declined"],
+    },
+  ],
+};
+
 interface TriageSectionsProps {
   /** Pre-grouped rows by signal kind. */
   grouped: Record<SignalKind, TriageRow[]>;
 }
 
 export function TriageSections({ grouped }: TriageSectionsProps) {
+  const [view, setView] = useState<DashboardView>("attention");
+
   // Initial state: zero-count sections collapsed, non-zero expanded.
   const initialCollapsed = useMemo(() => {
     const init: Partial<Record<SignalKind, boolean>> = {};
@@ -278,12 +336,11 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
 
   const [collapsed, setCollapsed] = useState<Record<SignalKind, boolean>>(initialCollapsed);
 
-  // Restore coach's per-section collapse preferences. Key bumped to v2
-  // because the bucket set changed (new SignalKind values) — old stored
-  // keys would be stale.
+  // Restore coach's per-section collapse preferences. Key bumped to v3
+  // because the visible kind set changes per view — old keys would be stale.
   useEffect(() => {
     try {
-      const raw = window.sessionStorage.getItem("fmcoach.triage.collapsed.v2");
+      const raw = window.sessionStorage.getItem("fmcoach.triage.collapsed.v3");
       if (!raw) return;
       const stored = JSON.parse(raw) as Partial<Record<SignalKind, boolean>>;
       setCollapsed((prev) => {
@@ -303,7 +360,7 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
       const next = { ...s, [k]: !s[k] };
       try {
         window.sessionStorage.setItem(
-          "fmcoach.triage.collapsed.v2",
+          "fmcoach.triage.collapsed.v3",
           JSON.stringify(next),
         );
       } catch {
@@ -312,187 +369,289 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
       return next;
     });
 
+  const activeTiers = VIEW_TIERS[view];
+
+  // For "attention" view: check whether ALL sections across all tiers are empty.
+  const attentionIsAllClear =
+    view === "attention" &&
+    activeTiers.every((tier) => tier.kinds.every((k) => (grouped[k]?.length ?? 0) === 0));
+
   return (
     <div style={{ display: "grid", gap: 8 }}>
-      {TIERS.map((tier) => {
-        const tierCount = tier.kinds.reduce(
-          (sum, k) => sum + (grouped[k]?.length ?? 0),
-          0,
-        );
-        return (
-          <div key={tier.label} style={{ display: "grid", gap: 14, marginBottom: 10 }}>
-            {/* Tier divider */}
-            <div
+      {/* ── Tab switcher ─────────────────────────────────────────── */}
+      <div style={{ display: "flex", gap: 6, marginBottom: 20, flexWrap: "wrap" }}>
+        {(["attention", "active", "discovery", "past"] as DashboardView[]).map((v) => {
+          const labels: Record<DashboardView, string> = {
+            attention: "🎯 Needs attention",
+            active: "📋 Active clients",
+            discovery: "🔍 Post-discovery",
+            past: "🗂 Past",
+          };
+          const isActive = view === v;
+          const count = VIEW_TIERS[v]
+            .flatMap((t) => t.kinds)
+            .reduce((s, k) => s + (grouped[k]?.length ?? 0), 0);
+          return (
+            <button
+              key={v}
+              type="button"
+              onClick={() => setView(v)}
               style={{
+                fontSize: 12,
+                fontWeight: isActive ? 700 : 500,
+                padding: "6px 14px",
+                background: isActive ? "var(--fm-primary)" : "var(--fm-surface)",
+                color: isActive ? "#fff" : "var(--fm-text-secondary)",
+                border: isActive
+                  ? "1px solid var(--fm-primary)"
+                  : "1px solid var(--fm-border)",
+                borderRadius: "var(--fm-radius-pill)",
+                cursor: "pointer",
+                fontFamily: "inherit",
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
-                marginTop: 8,
+                gap: 6,
               }}
             >
-              <span
+              {labels[v]}
+              {count > 0 && (
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    padding: "1px 6px",
+                    background: isActive
+                      ? "rgba(255,255,255,0.25)"
+                      : v === "attention"
+                        ? "rgba(192,57,43,0.12)"
+                        : "rgba(0,0,0,0.07)",
+                    color: isActive
+                      ? "#fff"
+                      : v === "attention" && count > 0
+                        ? "#c0392b"
+                        : "var(--fm-text-secondary)",
+                    borderRadius: "var(--fm-radius-pill)",
+                  }}
+                >
+                  {count}
+                </span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* ── All-clear message for "attention" view ───────────────── */}
+      {attentionIsAllClear && (
+        <FmPanel
+          style={{
+            background: "rgba(46, 204, 113, 0.04)",
+            borderColor: "rgba(46, 204, 113, 0.20)",
+            borderStyle: "dashed",
+          }}
+        >
+          <div
+            style={{
+              textAlign: "center",
+              padding: "18px 16px",
+              fontSize: 13,
+              color: "var(--fm-success)",
+              fontWeight: 600,
+            }}
+          >
+            ✓ Nothing needs your attention right now
+          </div>
+        </FmPanel>
+      )}
+
+      {/* ── Tier sections ────────────────────────────────────────── */}
+      {!attentionIsAllClear &&
+        activeTiers.map((tier) => {
+          const tierCount = tier.kinds.reduce(
+            (sum, k) => sum + (grouped[k]?.length ?? 0),
+            0,
+          );
+
+          // In "attention" view, skip tiers with zero items entirely.
+          if (view === "attention" && tierCount === 0) return null;
+
+          return (
+            <div key={tier.label} style={{ display: "grid", gap: 14, marginBottom: 10 }}>
+              {/* Tier divider */}
+              <div
                 style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  background: tier.color,
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 800,
-                  textTransform: "uppercase",
-                  letterSpacing: 0.9,
-                  color: tier.color,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginTop: 8,
                 }}
               >
-                {tier.label}
-              </span>
-              <span
-                style={{
-                  fontSize: 11,
-                  color: "var(--fm-text-tertiary)",
-                  fontWeight: 500,
-                }}
-              >
-                {tier.hint}
-              </span>
-              <span
-                style={{
-                  flex: 1,
-                  height: 1,
-                  background: "var(--fm-border-light)",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: tierCount === 0 ? "var(--fm-text-tertiary)" : tier.color,
-                }}
-              >
-                {tierCount}
-              </span>
-            </div>
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    background: tier.color,
+                    flexShrink: 0,
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: 0.9,
+                    color: tier.color,
+                  }}
+                >
+                  {tier.label}
+                </span>
+                <span
+                  style={{
+                    fontSize: 11,
+                    color: "var(--fm-text-tertiary)",
+                    fontWeight: 500,
+                  }}
+                >
+                  {tier.hint}
+                </span>
+                <span
+                  style={{
+                    flex: 1,
+                    height: 1,
+                    background: "var(--fm-border-light)",
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    color: tierCount === 0 ? "var(--fm-text-tertiary)" : tier.color,
+                  }}
+                >
+                  {tierCount}
+                </span>
+              </div>
 
-            {tier.kinds.map((kind) => {
-              const meta = SECTION_META[kind];
-              const rows = grouped[kind] ?? [];
-              const isZero = rows.length === 0;
-              const isCollapsed = collapsed[kind];
+              {tier.kinds.map((kind) => {
+                const meta = SECTION_META[kind];
+                const rows = grouped[kind] ?? [];
+                const isZero = rows.length === 0;
+                const isCollapsed = collapsed[kind];
 
-              return (
-                <section key={kind}>
-                  <button
-                    type="button"
-                    onClick={() => toggle(kind)}
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      padding: "6px 4px",
-                      background: "transparent",
-                      border: 0,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      textAlign: "left",
-                    }}
-                    aria-expanded={!isCollapsed}
-                  >
-                    <span
-                      style={{
-                        fontSize: 11,
-                        color: "var(--fm-text-tertiary)",
-                        width: 12,
-                        display: "inline-block",
-                        transform: isCollapsed ? "rotate(-90deg)" : "rotate(0deg)",
-                        transition: "transform 160ms var(--fm-ease-out)",
-                      }}
-                    >
-                      ▾
-                    </span>
-                    <span style={{ fontSize: 17 }}>{meta.icon}</span>
-                    <h2
-                      style={{
-                        margin: 0,
-                        fontSize: 13,
-                        textTransform: "uppercase",
-                        letterSpacing: 0.6,
-                        fontWeight: 700,
-                        color: isZero
-                          ? "var(--fm-text-tertiary)"
-                          : "var(--fm-text-secondary)",
-                        fontFamily: "var(--fm-font-body)",
-                        flex: 1,
-                        minWidth: 0,
-                      }}
-                    >
-                      {meta.title}
-                    </h2>
-                    <span
-                      style={{
-                        fontSize: 11,
-                        padding: "2px 9px",
-                        background: isZero ? "var(--fm-success)" : meta.accent,
-                        color: isZero ? "#fff" : meta.badgeColor,
-                        border: isZero
-                          ? "1px solid var(--fm-success)"
-                          : `1px solid ${meta.border}`,
-                        borderRadius: "var(--fm-radius-pill)",
-                        fontWeight: 700,
-                        opacity: isZero ? 0.55 : 1,
-                      }}
-                    >
-                      {rows.length}
-                    </span>
-                  </button>
+                // In "attention" view, skip empty sections entirely.
+                if (view === "attention" && isZero) return null;
 
-                  {!isCollapsed && (
-                    <div
+                return (
+                  <section key={kind}>
+                    <button
+                      type="button"
+                      onClick={() => toggle(kind)}
                       style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                        gap: 12,
-                        marginTop: 8,
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        padding: "6px 4px",
+                        background: "transparent",
+                        border: 0,
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        textAlign: "left",
                       }}
+                      aria-expanded={!isCollapsed}
                     >
-                      {rows.length === 0 ? (
-                        <FmPanel
-                          style={{
-                            gridColumn: "1 / -1",
-                            background: "rgba(46, 204, 113, 0.04)",
-                            borderColor: "rgba(46, 204, 113, 0.20)",
-                            borderStyle: "dashed",
-                          }}
-                        >
-                          <div
+                      <span
+                        style={{
+                          fontSize: 11,
+                          color: "var(--fm-text-tertiary)",
+                          width: 12,
+                          display: "inline-block",
+                          transform: isCollapsed ? "rotate(-90deg)" : "rotate(0deg)",
+                          transition: "transform 160ms var(--fm-ease-out)",
+                        }}
+                      >
+                        ▾
+                      </span>
+                      <span style={{ fontSize: 17 }}>{meta.icon}</span>
+                      <h2
+                        style={{
+                          margin: 0,
+                          fontSize: 13,
+                          textTransform: "uppercase",
+                          letterSpacing: 0.6,
+                          fontWeight: 700,
+                          color: isZero
+                            ? "var(--fm-text-tertiary)"
+                            : "var(--fm-text-secondary)",
+                          fontFamily: "var(--fm-font-body)",
+                          flex: 1,
+                          minWidth: 0,
+                        }}
+                      >
+                        {meta.title}
+                      </h2>
+                      <span
+                        style={{
+                          fontSize: 11,
+                          padding: "2px 9px",
+                          background: isZero ? "var(--fm-success)" : meta.accent,
+                          color: isZero ? "#fff" : meta.badgeColor,
+                          border: isZero
+                            ? "1px solid var(--fm-success)"
+                            : `1px solid ${meta.border}`,
+                          borderRadius: "var(--fm-radius-pill)",
+                          fontWeight: 700,
+                          opacity: isZero ? 0.55 : 1,
+                        }}
+                      >
+                        {rows.length}
+                      </span>
+                    </button>
+
+                    {!isCollapsed && (
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                          gap: 12,
+                          marginTop: 8,
+                        }}
+                      >
+                        {rows.length === 0 ? (
+                          <FmPanel
                             style={{
-                              textAlign: "center",
-                              padding: "10px 16px",
-                              fontSize: 12,
-                              color: "var(--fm-success)",
-                              fontWeight: 600,
+                              gridColumn: "1 / -1",
+                              background: "rgba(46, 204, 113, 0.04)",
+                              borderColor: "rgba(46, 204, 113, 0.20)",
+                              borderStyle: "dashed",
                             }}
                           >
-                            ✓ Nothing here right now
-                          </div>
-                        </FmPanel>
-                      ) : (
-                        rows.map((row) => (
-                          <TriageCard key={row.client_id} row={row} meta={meta} />
-                        ))
-                      )}
-                    </div>
-                  )}
-                </section>
-              );
-            })}
-          </div>
-        );
-      })}
+                            <div
+                              style={{
+                                textAlign: "center",
+                                padding: "10px 16px",
+                                fontSize: 12,
+                                color: "var(--fm-success)",
+                                fontWeight: 600,
+                              }}
+                            >
+                              ✓ Nothing here right now
+                            </div>
+                          </FmPanel>
+                        ) : (
+                          rows.map((row) => (
+                            <TriageCard key={row.client_id} row={row} meta={meta} />
+                          ))
+                        )}
+                      </div>
+                    )}
+                  </section>
+                );
+              })}
+            </div>
+          );
+        })}
     </div>
   );
 }
@@ -861,9 +1020,9 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
   if (signal.kind === "new_lead") {
     return (
       <div style={wrap}>
-        <span style={labelStyle}>Status:</span>
+        <span style={labelStyle}>Next step:</span>
         <span style={valueStyle}>
-          No discovery call yet — run the 15-min fit call
+          Record the discovery call — run the 15-min fit call session
         </span>
       </div>
     );
