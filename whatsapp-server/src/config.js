@@ -80,6 +80,27 @@ export const config = {
     secret: process.env.OCHRE_FLOW_WEBHOOK_SECRET || '',
   },
 
+  // Ochre Funnels app webhook — for CTWA leads (inbound messages whose
+  // body carries a `ref:<funnel-slug>` token). The funnels app runs the
+  // AI agent + cockpit Conversations panel for those leads. Inbounds
+  // WITHOUT a known funnel slug fall through to the fm-coach forwarder
+  // (the historical default). Same HMAC-SHA256 pattern.
+  funnelsAppWebhook: {
+    url: process.env.FUNNELS_APP_WEBHOOK_URL || '',
+    secret: process.env.FUNNELS_APP_WEBHOOK_SECRET || '',
+  },
+
+  // Funnels-app slugs the router will recognise in inbound message bodies.
+  // Comma-separated env (e.g. "40s-decade,perimenopause-2026"). A `ref:<slug>`
+  // (or `[funnel:<slug>]`) token in the inbound body whose slug is in this
+  // list routes the inbound to the funnels app; everything else goes to
+  // fm-coach. Hardcoded list keeps the routing self-contained — when the
+  // funnels app gains more slugs, append here + redeploy.
+  funnelsAppSlugs: (process.env.FUNNELS_APP_SLUGS || '40s-decade')
+    .split(',')
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean),
+
   // Coach booking alerts. When set, every cal.com booking event
   // (created / rescheduled / cancelled) fires a `coach_booking_alert_v1`
   // WhatsApp template to this number so the coach gets a heads-up on her
