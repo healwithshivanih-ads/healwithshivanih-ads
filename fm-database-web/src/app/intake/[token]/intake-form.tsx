@@ -1982,11 +1982,15 @@ export function IntakeForm({
   const [sparseWarning, setSparseWarning] = useState<{ filled: number; total: number } | null>(
     null,
   );
+  // hasBegun tracks whether the CLIENT has actually started filling the
+  // form. We deliberately exclude display_name / email / mobile_number
+  // and other coach-prefilled fields — those are always set before the
+  // client even opens the link, so they must not trigger "begun".
+  // autosave is gated on this flag so prefill data is never written back
+  // to intake_form_draft before the client touches the form.
   const [hasBegun, setHasBegun] = useState<boolean>(() => {
     return Boolean(
-      initial.display_name ||
-        initial.date_of_birth ||
-        initial.why_here ||
+      initial.why_here ||
         initial.timeline_events.some((t) => t.event)
     );
   });
@@ -2175,6 +2179,11 @@ export function IntakeForm({
 
   useEffect(() => {
     if (submitted) return;
+    // Never autosave before the client has actually typed anything.
+    // Without this guard, prefill data (coach-entered name/conditions/etc.)
+    // would be written to intake_form_draft on first render, making the
+    // coach think the client has started filling the form.
+    if (!hasBegun) return;
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(() => {
       void persistDraft();
@@ -2182,7 +2191,7 @@ export function IntakeForm({
     return () => {
       if (saveTimer.current) clearTimeout(saveTimer.current);
     };
-  }, [state, persistDraft, submitted]);
+  }, [state, persistDraft, submitted, hasBegun]);
 
   const handleBlur = useCallback(() => {
     if (submitted) return;

@@ -66,14 +66,34 @@ function relativeTime(iso: string): string {
   });
 }
 
-/** Count meaningful (non-empty) entries in the draft dict. The intake
- *  form auto-saves the whole payload every section change so empty
- *  string / null / empty array fields are normal — we want a sense of
- *  "real progress", not raw key count. */
+/**
+ * Fields that the server ALWAYS prefills from coach-entered client data.
+ * These are present in intake_form_draft even before the client types a
+ * single character — excluding them prevents false "In progress" signals
+ * for clients who haven't touched the form yet (e.g. a draft that was
+ * auto-saved on first page-load before the hasBegun guard was added).
+ *
+ * Mirrors the keys returned by _prefill_from_client() in
+ * scripts/intake-token-action.py.
+ */
+const COACH_PREFILL_KEYS = new Set([
+  "display_name", "date_of_birth", "sex", "email", "mobile_number",
+  "city", "country", "active_conditions", "medical_history",
+  "current_medications", "known_allergies", "goals",
+  "dietary_preference", "animal_derived_supplements_ok",
+  "foods_to_avoid", "non_negotiables", "family_history",
+]);
+
+/** Count meaningful (non-empty) entries in the draft dict that the
+ *  CLIENT filled in. Skips coach-prefilled fields and empty values.
+ *  The intake form auto-saves the whole payload so empty string / null
+ *  / empty array fields are normal — we want a sense of "real client
+ *  progress", not raw key count. */
 function countFilledFields(draft: Record<string, unknown> | null | undefined): number {
   if (!draft || typeof draft !== "object") return 0;
   let n = 0;
-  for (const v of Object.values(draft)) {
+  for (const [k, v] of Object.entries(draft)) {
+    if (COACH_PREFILL_KEYS.has(k)) continue; // skip coach-prefilled keys
     if (v == null) continue;
     if (typeof v === "string" && v.trim() === "") continue;
     if (Array.isArray(v) && v.length === 0) continue;
