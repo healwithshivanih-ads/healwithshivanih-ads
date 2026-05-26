@@ -168,15 +168,30 @@ export default async function IntakeViewPage({
   const submittedAt = client.intake_submitted_at as string | null | undefined;
   const submitted = !!submittedAt;
   const displayName = (client.display_name as string) || id;
+
+  // When the client hasn't submitted yet, read from the auto-saved draft
+  // (intake_form_draft) rather than the top-level client.yaml fields —
+  // the top-level fields were pre-filled by the coach when creating the
+  // record and are NOT what the client typed. The draft is written by the
+  // form's auto-save on every section change, so it reflects real
+  // in-progress answers even before the client hits Submit.
+  const draft = (client.intake_form_draft ?? null) as Record<string, Val> | null;
+  const hasDraft = draft && Object.values(draft).some((v) => !isEmpty(v));
+  // Which object do we read fields from?
+  //   submitted → top-level client fields (promoted from the submit handler)
+  //   in-progress draft → intake_form_draft
+  //   nothing → show a clear "nothing yet" message
+  const src: Record<string, Val> = submitted ? client : (hasDraft ? draft! : {});
+
   // Body composition lives in the canonical `measurements` block — the
   // intake submit handler converts the form's flat height/weight/waist/
   // hip/BP fields (metric or imperial) into metric here. Reading the old
   // flat `client.height_cm` etc. always showed blank: those flat fields
   // were never persisted (intake field-drop bug, fixed 2026-05-20).
-  const meas = (client.measurements ?? {}) as Record<
-    string,
-    number | undefined
-  >;
+  // For a draft, measurements may be stored flat in the draft object.
+  const meas = (submitted
+    ? (client.measurements ?? {})
+    : (src.measurements ?? {})) as Record<string, number | undefined>;
 
   return (
     <FmAppShell
@@ -196,8 +211,12 @@ export default async function IntakeViewPage({
           <p className="text-xs text-stone-500 mt-0.5">
             {submitted ? (
               <>Submitted <span className="text-stone-800 font-medium">{fmtIST(submittedAt)}</span></>
+            ) : hasDraft ? (
+              <span className="text-amber-700 font-medium">
+                ✍ Draft in progress — client has NOT submitted yet. These are their saved-but-unsubmitted answers.
+              </span>
             ) : (
-              <span className="text-amber-700">Not yet submitted — only fields the coach pre-filled will show below.</span>
+              <span className="text-stone-400">Client has opened the form but hasn't filled anything yet.</span>
             )}
           </p>
         </div>
@@ -224,14 +243,24 @@ export default async function IntakeViewPage({
         </Link>
       </div>
 
+      {!submitted && !hasDraft && (
+        <div className="bg-stone-50 border border-stone-200 rounded-lg px-5 py-8 text-center text-stone-500 text-sm">
+          <div className="text-2xl mb-3">👀</div>
+          <div className="font-medium text-stone-700 mb-1">{displayName} hasn&apos;t filled anything yet</div>
+          <div className="text-xs text-stone-400">The form was opened but no answers have been saved. Check back once they start filling it.</div>
+        </div>
+      )}
+
+      {(submitted || hasDraft) && (
+        <>
       <Section num={1} title="About you">
-        <Field label="Name" value={client.display_name} />
-        <Field label="Date of birth" value={client.date_of_birth} />
-        <Field label="Sex" value={client.sex} />
-        <Field label="Email" value={client.email} />
-        <Field label="Mobile" value={client.mobile_number} />
-        <Field label="City" value={client.city} />
-        <Field label="Country" value={client.country} />
+        <Field label="Name" value={src.display_name} />
+        <Field label="Date of birth" value={src.date_of_birth} />
+        <Field label="Sex" value={src.sex} />
+        <Field label="Email" value={src.email} />
+        <Field label="Mobile" value={src.mobile_number} />
+        <Field label="City" value={src.city} />
+        <Field label="Country" value={src.country} />
         <Field
           label="Height"
           value={meas.height_cm ? `${meas.height_cm} cm` : null}
@@ -256,141 +285,146 @@ export default async function IntakeViewPage({
               : null
           }
         />
-        <Field label="Highest adult weight (kg)" value={client.weight_highest_adult} />
-        <Field label="Lowest adult weight (kg)" value={client.weight_lowest_adult} />
-        <Field label="Weight trend" value={client.weight_trend_current} />
-        <Field label="What changed" value={client.weight_change_trigger} />
-        <Field label="Work pattern" value={client.work_pattern} />
+        <Field label="Highest adult weight (kg)" value={src.weight_highest_adult} />
+        <Field label="Lowest adult weight (kg)" value={src.weight_lowest_adult} />
+        <Field label="Weight trend" value={src.weight_trend_current} />
+        <Field label="What changed" value={src.weight_change_trigger} />
+        <Field label="Work pattern" value={src.work_pattern} />
       </Section>
 
       <Section num={2} title="Why you're here">
-        <Field label="Goals" value={client.goals} />
-        <Field label="Reported triggers" value={client.reported_triggers} />
+        <Field label="Goals" value={src.goals} />
+        <Field label="Reported triggers" value={src.reported_triggers} />
       </Section>
 
       <Section num={3} title="Diagnoses, allergies & family">
-        <Field label="Active conditions" value={client.active_conditions} />
-        <Field label="Medical history" value={client.medical_history} />
-        <Field label="Known allergies" value={client.known_allergies} />
-        <Field label="Family history (freeform)" value={client.family_history} />
-        <Field label="Family — specific conditions" value={client.family_specific_conditions} />
-        <Field label="COVID infections" value={client.covid_history} />
-        <Field label="COVID long symptoms" value={client.covid_long_symptoms} />
-        <Field label="COVID vaccine history" value={client.covid_vaccine_history} />
-        <Field label="COVID vaccine brand" value={client.covid_vaccine_brand} />
-        <Field label="COVID vaccine reactions" value={client.covid_vaccine_reactions} />
-        <Field label="COVID vaccine reaction detail" value={client.covid_vaccine_reaction_detail} />
+        <Field label="Active conditions" value={src.active_conditions} />
+        <Field label="Medical history" value={src.medical_history} />
+        <Field label="Known allergies" value={src.known_allergies} />
+        <Field label="Family history (freeform)" value={src.family_history} />
+        <Field label="Family — specific conditions" value={src.family_specific_conditions} />
+        <Field label="COVID infections" value={src.covid_history} />
+        <Field label="COVID long symptoms" value={src.covid_long_symptoms} />
+        <Field label="COVID vaccine history" value={src.covid_vaccine_history} />
+        <Field label="COVID vaccine brand" value={src.covid_vaccine_brand} />
+        <Field label="COVID vaccine reactions" value={src.covid_vaccine_reactions} />
+        <Field label="COVID vaccine reaction detail" value={src.covid_vaccine_reaction_detail} />
       </Section>
 
       <Section num={4} title="Medications, current and past">
-        <Field label="Current medications" value={client.current_medications} />
-        <Field label="Current supplements" value={client.current_supplements} />
-        <Field label="GLP-1 medications" value={client.glp1_medications} />
-        <Field label="Acid suppressants" value={client.acid_suppressants} />
-        <Field label="NSAIDs (daily)" value={client.nsaids_daily} />
-        <Field label="Antibiotics (last 12mo)" value={client.antibiotics_last_12mo} />
-        <Field label="Hormonal contraception / HRT" value={client.hormonal_contraception_hrt} />
-        <Field label="Thyroid medication" value={client.thyroid_medication} />
-        <Field label="Psych medications" value={client.psych_medications} />
-        <Field label="Biologics / immunosuppressants" value={client.biologics_immunosuppressants} />
-        <Field label="Statins / BP / diabetes" value={client.statins_bp_diabetes} />
+        <Field label="Current medications" value={src.current_medications} />
+        <Field label="Current supplements" value={src.current_supplements} />
+        <Field label="GLP-1 medications" value={src.glp1_medications} />
+        <Field label="Acid suppressants" value={src.acid_suppressants} />
+        <Field label="NSAIDs (daily)" value={src.nsaids_daily} />
+        <Field label="Antibiotics (last 12mo)" value={src.antibiotics_last_12mo} />
+        <Field label="Hormonal contraception / HRT" value={src.hormonal_contraception_hrt} />
+        <Field label="Thyroid medication" value={src.thyroid_medication} />
+        <Field label="Psych medications" value={src.psych_medications} />
+        <Field label="Biologics / immunosuppressants" value={src.biologics_immunosuppressants} />
+        <Field label="Statins / BP / diabetes" value={src.statins_bp_diabetes} />
       </Section>
 
       <Section num={5} title="Health story, in time">
-        <Field label="Timeline events" value={client.timeline_events} />
+        <Field label="Timeline events" value={src.timeline_events} />
       </Section>
 
       <Section num={6} title="Day to day — how you're living">
-        <Field label="Postprandial pattern" value={client.postprandial_pattern} />
-        <Field label="Cold / heat tolerance" value={client.cold_heat_tolerance} />
-        <Field label="Time to fall asleep (min)" value={client.time_to_fall_asleep} />
-        <Field label="Wake pattern" value={client.wake_time_pattern} />
-        <Field label="Snore / apnoea" value={client.snore_or_apnoea} />
-        <Field label="Restless legs" value={client.restless_legs} />
-        <Field label="Sleep tracker owned" value={client.sleep_tracker_owned} />
-        <Field label="CGM owned" value={client.cgm_owned} />
-        <Field label="Energy crashes" value={client.energy_crashes} />
-        <Field label="Caffeine dependency" value={client.caffeine_dependency} />
-        <Field label="Morning state" value={client.morning_state} />
-        <Field label="Sleep notes" value={client.sleep_notes} />
-        <Field label="Energy pattern" value={client.energy_pattern} />
-        <Field label="Digestion notes" value={client.digestion_notes} />
+        <Field label="Postprandial pattern" value={src.postprandial_pattern} />
+        <Field label="Cold / heat tolerance" value={src.cold_heat_tolerance} />
+        <Field label="Time to fall asleep (min)" value={src.time_to_fall_asleep} />
+        <Field label="Wake pattern" value={src.wake_time_pattern} />
+        <Field label="Snore / apnoea" value={src.snore_or_apnoea} />
+        <Field label="Restless legs" value={src.restless_legs} />
+        <Field label="Sleep tracker owned" value={src.sleep_tracker_owned} />
+        <Field label="CGM owned" value={src.cgm_owned} />
+        <Field label="Energy crashes" value={src.energy_crashes} />
+        <Field label="Caffeine dependency" value={src.caffeine_dependency} />
+        <Field label="Morning state" value={src.morning_state} />
+        <Field label="Sleep notes" value={src.sleep_notes} />
+        <Field label="Energy pattern" value={src.energy_pattern} />
+        <Field label="Digestion notes" value={src.digestion_notes} />
       </Section>
 
       <Section num={7} title="Five pillars + sleep depth">
-        <Field label="Five pillars" value={client.five_pillars} />
-        <Field label="Stress response" value={client.stress_response} />
+        <Field label="Five pillars" value={src.five_pillars} />
+        <Field label="Stress response" value={src.stress_response} />
       </Section>
 
       <Section num={8} title="Childhood, environment, what's been tried">
-        <Field label="Childhood history" value={client.childhood_history} />
-        <Field label="Toxic exposures" value={client.toxic_exposures} />
-        <Field label="What has worked" value={client.what_has_worked} />
-        <Field label="What hasn't worked" value={client.what_hasnt_worked} />
+        <Field label="Childhood history" value={src.childhood_history} />
+        <Field label="Toxic exposures" value={src.toxic_exposures} />
+        <Field label="What has worked" value={src.what_has_worked} />
+        <Field label="What hasn't worked" value={src.what_hasnt_worked} />
       </Section>
 
       <Section num={9} title="How you eat">
-        <Field label="Dietary preference" value={client.dietary_preference} />
-        <Field label="Foods to avoid" value={client.foods_to_avoid} />
-        <Field label="Non-negotiables" value={client.non_negotiables} />
+        <Field label="Dietary preference" value={src.dietary_preference} />
+        <Field label="Foods to avoid" value={src.foods_to_avoid} />
+        <Field label="Non-negotiables" value={src.non_negotiables} />
       </Section>
 
       <Section num={10} title="Body systems — what's bothering you">
-        <Field label="Bristol stool (typical)" value={client.bristol_stool_typical} />
-        <Field label="Bowel frequency / day" value={client.bowel_frequency_per_day} />
-        <Field label="Bowel pattern" value={client.bowel_pattern} />
-        <Field label="Bowel — historical" value={client.bowel_historical} />
-        <Field label="Hair loss pattern" value={client.hair_loss_pattern} />
-        <Field label="Hair texture change" value={client.hair_texture_change} />
-        <Field label="Hair — other" value={client.hair_other} />
-        <Field label="Nail signs" value={client.nail_signs} />
-        <Field label="Acne pattern" value={client.acne_pattern} />
-        <Field label="Skin signs" value={client.skin_signs} />
-        <Field label="Pain locations" value={client.pain_locations} />
-        <Field label="Headache type" value={client.headache_type} />
-        <Field label="Pain pattern" value={client.pain_pattern} />
-        <Field label="Pain quality" value={client.pain_quality} />
-        <Field label="Belly fat pattern" value={client.belly_fat_pattern} />
-        <Field label="Histamine signals" value={client.histamine_signals} />
-        <Field label="Chemical sensitivity" value={client.chemical_sensitivity} />
-        <Field label="Oral signs" value={client.oral_signs} />
+        <Field label="Bristol stool (typical)" value={src.bristol_stool_typical} />
+        <Field label="Bowel frequency / day" value={src.bowel_frequency_per_day} />
+        <Field label="Bowel pattern" value={src.bowel_pattern} />
+        <Field label="Bowel — historical" value={src.bowel_historical} />
+        <Field label="Hair loss pattern" value={src.hair_loss_pattern} />
+        <Field label="Hair texture change" value={src.hair_texture_change} />
+        <Field label="Hair — other" value={src.hair_other} />
+        <Field label="Nail signs" value={src.nail_signs} />
+        <Field label="Acne pattern" value={src.acne_pattern} />
+        <Field label="Skin signs" value={src.skin_signs} />
+        <Field label="Pain locations" value={src.pain_locations} />
+        <Field label="Headache type" value={src.headache_type} />
+        <Field label="Pain pattern" value={src.pain_pattern} />
+        <Field label="Pain quality" value={src.pain_quality} />
+        <Field label="Belly fat pattern" value={src.belly_fat_pattern} />
+        <Field label="Histamine signals" value={src.histamine_signals} />
+        <Field label="Chemical sensitivity" value={src.chemical_sensitivity} />
+        <Field label="Oral signs" value={src.oral_signs} />
       </Section>
 
       <Section num={11} title="Cycle, contraception, pregnancies">
-        <Field label="Cycle status" value={client.cycle_status} />
-        <Field label="Last menstrual period" value={client.last_menstrual_period} />
-        <Field label="Cycle length (days)" value={client.cycle_length_days} />
-        <Field label="Cycle regularity" value={client.cycle_regularity} />
-        <Field label="Menopause started" value={client.menopause_started} />
-        <Field label="Pregnancy status" value={client.pregnancy_status} />
-        <Field label="Period pain severity" value={client.period_pain_severity} />
-        <Field label="Period pain impact" value={client.period_pain_impact} />
-        <Field label="PMDD signs" value={client.pmdd_signs} />
-        <Field label="Contraception history" value={client.contraception_history} />
-        <Field label="Pregnancies" value={client.pregnancies} />
-        <Field label="Reproductive diagnoses" value={client.repro_diagnoses} />
-        <Field label="Perimenopause inventory" value={client.perimenopause_inventory} />
-        <Field label="Menstrual notes" value={client.menstrual_notes} />
+        <Field label="Cycle status" value={src.cycle_status} />
+        <Field label="Last menstrual period" value={src.last_menstrual_period} />
+        <Field label="Cycle length (days)" value={src.cycle_length_days} />
+        <Field label="Cycle regularity" value={src.cycle_regularity} />
+        <Field label="Menopause started" value={src.menopause_started} />
+        <Field label="Pregnancy status" value={src.pregnancy_status} />
+        <Field label="Period pain severity" value={src.period_pain_severity} />
+        <Field label="Period pain impact" value={src.period_pain_impact} />
+        <Field label="PMDD signs" value={src.pmdd_signs} />
+        <Field label="Contraception history" value={src.contraception_history} />
+        <Field label="Pregnancies" value={src.pregnancies} />
+        <Field label="Reproductive diagnoses" value={src.repro_diagnoses} />
+        <Field label="Perimenopause inventory" value={src.perimenopause_inventory} />
+        <Field label="Menstrual notes" value={src.menstrual_notes} />
       </Section>
 
       <Section num={12} title="Sun, environment & recent labs">
-        <Field label="Sun exposure (daily)" value={client.sun_exposure_daily} />
-        <Field label="Sunscreen use" value={client.sunscreen_use} />
-        <Field label="Vitamin D supplement" value={client.vit_d_supplement} />
-        <Field label="Barefoot outdoors" value={client.barefoot_outdoors} />
-        <Field label="Recent labs done" value={client.recent_labs_done} />
-        <Field label="When were labs done" value={client.recent_labs_when} />
-        <Field label="Willing to share labs" value={client.willing_to_share_labs} />
-        <Field label="Readiness confidence (1–10)" value={client.readiness_confidence} />
+        <Field label="Sun exposure (daily)" value={src.sun_exposure_daily} />
+        <Field label="Sunscreen use" value={src.sunscreen_use} />
+        <Field label="Vitamin D supplement" value={src.vit_d_supplement} />
+        <Field label="Barefoot outdoors" value={src.barefoot_outdoors} />
+        <Field label="Recent labs done" value={src.recent_labs_done} />
+        <Field label="When were labs done" value={src.recent_labs_when} />
+        <Field label="Willing to share labs" value={src.willing_to_share_labs} />
+        <Field label="Readiness confidence (1–10)" value={src.readiness_confidence} />
       </Section>
 
       <Section num={13} title="Anything else">
-        <Field label="Notes" value={client.notes} />
+        <Field label="Notes" value={src.notes} />
       </Section>
 
-      <Section num={14} title="Intake insights (AI-derived)">
-        <Field label="Insights" value={client.intake_insights} />
-      </Section>
+      {/* AI insights only exist after submission */}
+      {submitted && (
+        <Section num={14} title="Intake insights (AI-derived)">
+          <Field label="Insights" value={client.intake_insights} />
+        </Section>
+      )}
+        </>
+      )}
     </div>
     </FmAppShell>
   );

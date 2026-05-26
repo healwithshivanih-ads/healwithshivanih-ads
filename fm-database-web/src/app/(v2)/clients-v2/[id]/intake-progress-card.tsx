@@ -362,8 +362,7 @@ export function IntakeProgressCard(props: Props) {
         </div>
 
         {(stage.label === "Submitted — still editable" ||
-          stage.label === "In progress" ||
-          stage.label === "Opened, not started") && (
+          stage.label === "In progress") && (
           <Link
             href={`/clients-v2/${props.clientId}/intake-view`}
             style={{
@@ -374,7 +373,9 @@ export function IntakeProgressCard(props: Props) {
               textDecoration: "none",
             }}
           >
-            See what they&apos;ve filled →
+            {stage.label === "In progress"
+              ? "Preview draft answers →"
+              : "See what they've filled →"}
           </Link>
         )}
       </div>
