@@ -118,7 +118,6 @@ export default async function V2PlanEditorPage({
     allClients,
     rawClient,
     clientSessions,
-    allProtocols,
   ] = await Promise.all([
     loadAllOfKind<Topic>("topics"),
     loadAllOfKind<Symptom>("symptoms"),
@@ -132,7 +131,6 @@ export default async function V2PlanEditorPage({
     loadAllClients(),
     plan.client_id ? loadClientById(plan.client_id) : Promise.resolve(null),
     plan.client_id ? loadClientSessions(plan.client_id) : Promise.resolve([]),
-    loadAllOfKind<{ slug: string; display_name?: string; category?: string; summary?: string }>("protocols"),
   ]);
 
   const allPlanSlugs = allPlans.map((p) => p.slug).sort();
@@ -387,11 +385,16 @@ export default async function V2PlanEditorPage({
           <div style={{ marginBottom: 16 }}>
             <AttachedProtocolsPanel
               planSlug={plan.slug}
-              attached={
-                ((plan as { attached_protocols?: string[] }).attached_protocols) ?? []
-              }
-              allProtocols={allProtocols}
               locked={locked}
+              plan={{
+                attached_protocols: ((plan as { attached_protocols?: string[] }).attached_protocols) ?? [],
+                supplement_protocol: (plan as { supplement_protocol?: unknown[] }).supplement_protocol ?? [],
+                lifestyle_practices: (plan as { lifestyle_practices?: unknown[] }).lifestyle_practices ?? [],
+                primary_topics: (plan as { primary_topics?: string[] }).primary_topics ?? [],
+                nutrition: (plan as { nutrition?: Record<string, unknown> }).nutrition ?? {},
+                tracking: (plan as { tracking?: Record<string, unknown> }).tracking ?? {},
+                lab_orders: (plan as { lab_orders?: unknown[] }).lab_orders ?? [],
+              }}
             />
           </div>
 

@@ -13,7 +13,8 @@ import { updatePlan, saveSupplementSources, checkSupplementInteractionsAction } 
 import type { SupplementSourcesMap, SupplementInteraction, DrugCaution } from "@/lib/server-actions/plans";
 import type { Plan, PlanStatus } from "@/lib/fmdb/types";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
-import { ProtocolTemplatePicker } from "./protocol-template-picker";
+// ProtocolTemplatePicker removed — superseded by the unified AttachedProtocolsPanel
+// on the plan edit page, which handles both protocol selection and content seeding.
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
 import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
@@ -1064,12 +1065,6 @@ export function PlanEditor(props: PlanEditorProps) {
     setDirty(true);
   }
 
-  function applyTemplate(merged: Partial<Plan>) {
-    setPlan((p) => ({ ...p, ...merged }));
-    setDirty(true);
-    toast.success("Protocol template applied — review changes and save");
-  }
-
   function patchSource(slug: string, field: keyof SupplementSourcesMap[string], value: string) {
     setSources((prev) => ({
       ...prev,
@@ -1202,8 +1197,6 @@ export function PlanEditor(props: PlanEditorProps) {
           {isPending ? "Saving…" : "Save"}
         </Button>
       </div>
-
-      <ProtocolTemplatePicker onApply={applyTemplate} disabled={effectiveLocked} />
 
       {/* ── Plan timeline ── */}
       <PlanTimelineCard

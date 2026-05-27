@@ -269,11 +269,10 @@ export default async function PlanTabPage({
   // Clears plan/system-alerts chip on the unread badge for this client.
   void markCoachTabViewed(id, "plan");
 
-  const [client, allPlans, catalogueChips, allProtocols] = await Promise.all([
+  const [client, allPlans, catalogueChips] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadCatalogueChipDict(),
-    loadAllOfKind<{ slug: string; display_name?: string; category?: string; summary?: string }>("protocols"),
   ]);
   if (!client) {
     return (
@@ -951,11 +950,16 @@ export default async function PlanTabPage({
             {/* Attached FM protocol(s) — 5R, AIP, Whole30, etc. */}
             <AttachedProtocolsPanel
               planSlug={activePlan.slug}
-              attached={
-                (activePlan.attached_protocols as string[] | undefined) ?? []
-              }
-              allProtocols={allProtocols}
               locked={status !== "draft"}
+              plan={{
+                attached_protocols: (activePlan.attached_protocols as string[] | undefined) ?? [],
+                supplement_protocol: (activePlan.supplement_protocol as unknown[] | undefined) ?? [],
+                lifestyle_practices: (activePlan.lifestyle_practices as unknown[] | undefined) ?? [],
+                primary_topics: (activePlan.primary_topics as string[] | undefined) ?? [],
+                nutrition: (activePlan.nutrition as Record<string, unknown> | undefined) ?? {},
+                tracking: (activePlan.tracking as Record<string, unknown> | undefined) ?? {},
+                lab_orders: (activePlan.lab_orders as unknown[] | undefined) ?? [],
+              }}
             />
 
             {/* Supplements — timing bubble row + click-to-filter detail list.
