@@ -274,10 +274,25 @@ export interface IntakeActivityEntry {
 
 /** Count non-empty entries in a draft dict — matches the rule used in
  *  IntakeProgressCard so dashboard + Overview agree on "in progress". */
+/**
+ * Fields the server always prefills from coach-entered client data.
+ * Mirrors _prefill_from_client() in scripts/intake-token-action.py.
+ * Excluded from countDraftFields so a client who only ever loaded the
+ * form (without typing) shows 0, not 12.
+ */
+const COACH_PREFILL_KEYS = new Set([
+  "display_name", "date_of_birth", "sex", "email", "mobile_number",
+  "city", "country", "active_conditions", "medical_history",
+  "current_medications", "known_allergies", "goals",
+  "dietary_preference", "animal_derived_supplements_ok",
+  "foods_to_avoid", "non_negotiables", "family_history",
+]);
+
 function countDraftFields(draft: unknown): number {
   if (!draft || typeof draft !== "object" || Array.isArray(draft)) return 0;
   let n = 0;
-  for (const v of Object.values(draft as Record<string, unknown>)) {
+  for (const [k, v] of Object.entries(draft as Record<string, unknown>)) {
+    if (COACH_PREFILL_KEYS.has(k)) continue; // skip coach-prefilled fields
     if (v == null) continue;
     if (typeof v === "string" && v.trim() === "") continue;
     if (Array.isArray(v) && v.length === 0) continue;
