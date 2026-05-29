@@ -23,11 +23,16 @@ import * as appointments from '../../services/appointments/index.js';
 import * as tagsSvc from '../../services/contacts/tags.js';
 
 export const wixBookingsWebhook = Router();
-wixBookingsWebhook.use(express.json({ limit: '5mb' }));
+// Wix sends bookings webhooks as JWT strings with content-type: text/plain.
+// Accept everything as text so the raw body survives for later JWT decode.
+wixBookingsWebhook.use(express.text({ type: '*/*', limit: '5mb' }));
 
 wixBookingsWebhook.post('/', async (req, res) => {
-  const body = req.body || {};
+  const rawBody = typeof req.body === 'string' ? req.body : '';
+  const body = parseMaybeJson(rawBody);
   const eventType = pickEventType(body);
+  const looksLikeJwt = /^eyJ[\w-]+\./.test(rawBody.trim());
+  logger.info({ path: req.originalUrl, ct: req.get('content-type') || null, looksLikeJwt, raw_len: rawBody.length }, 'wix-bookings webhook hit');
 
   let signatureValid = null;
   const secret = process.env.WIX_BOOKINGS_WEBHOOK_SECRET
@@ -43,10 +48,12 @@ wixBookingsWebhook.post('/', async (req, res) => {
     const ws = await getDefaultWorkspace().catch(() => null);
     const { data } = await db().from('webhook_events').insert({
       workspace_id: ws?.id || null,
+      // DB check-constraint only allows the canonical source enum values.
+      // Use `wix` and discriminate at read time via payload.request_path.
       source: 'wix',
       event_type: eventType,
       signature_valid: signatureValid,
-      payload: body,
+      payload: { parsed: body, raw_body: rawBody, request_path: req.originalUrl, looks_like_jwt: looksLikeJwt },
       headers: scrubHeaders(req.headers),
       processed: false,
     }).select('id').single();
@@ -263,6 +270,13 @@ async function handleCancelled(booking) {
     .eq('external_id', `wix_booking:${booking.id}`).maybeSingle();
   if (!appt) return;
   await appointments.cancel(appt.id, booking.cancelReason);
+}
+
+function parseMaybeJson(s) {
+  if (!s) return {};
+  const t = s.trim();
+  if (!t.startsWith('{') && !t.startsWith('[')) return {};
+  try { return JSON.parse(t); } catch { return {}; }
 }
 
 function scrubHeaders(h) {
