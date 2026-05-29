@@ -90,6 +90,15 @@ async function processCalCom(body, webhookRowId) {
       case 'BOOKING_CANCELED':
         await handleBookingCancelled(payload);
         break;
+      // Cal.com fires MEETING_STARTED when at least one participant joins
+      // the Zoom call. We use it to cancel the T+5min no-show probe — the
+      // probe is scheduled at booking-create time and only fires if the
+      // runner picks it up at T+5min, so cancelling beats firing in the
+      // common (= client joined) case.
+      // Requires Shivani's Cal.com webhook to subscribe to this event.
+      case 'MEETING_STARTED':
+        await handleMeetingStarted(payload);
+        break;
       default:
         logger.info({ eventType }, 'cal.com: unhandled event type');
     }
@@ -136,6 +145,11 @@ async function handleBookingCreated(payload) {
   await tagsSvc.addToContact(contact.id, 'booked-call', 'cal_com_webhook').catch((e) =>
     logger.warn({ err: e.message }, 'tag booked-call failed'));
 
+  // Cal.com bookings are always Zoom-based (FM coaching offering uses
+  // cal.com/shivani-hariharan-0xyy3l/* event types, all video). The
+  // `zoom` classification drives the reminder set:
+  //   confirmation_zoom (immediate) → t_minus_1h_zoom_client →
+  //   t_minus_1h_zoom_coach → t_plus_5min_noshow_zoom_client.
   const appt = await appointments.create({
     workspaceId: ws.id,
     contactId: contact.id,
@@ -146,6 +160,7 @@ async function handleBookingCreated(payload) {
     title,
     location,
     joinUrl,
+    classification: 'zoom',
     metadata: {
       cal_com_uid: payload.uid || null,
       cal_com_booking_id: payload.bookingId || payload.id || null,
@@ -163,48 +178,18 @@ async function handleBookingCreated(payload) {
     logger.warn({ err: err.message }, 'forwardBookingToFmCoach failed (booking_created)'),
   );
 
-  // WhatsApp confirmation to the customer — fires the `appt_confirmation`
-  // template, the SAME one fm-coach's createBookingAction sends when the
-  // COACH books a slot. Both booking paths → one consistent message.
-  // Cal.com already emails the customer; this adds the WhatsApp nudge.
-  // Best-effort: a send failure must never break the webhook (we already
-  // 200'd + stored the booking). Skipped silently when there's no phone.
-  if (phone) {
-    try {
-      const first = String(name || 'there').split(' ')[0];
-      const start = new Date(startsAt);
-      const dateStr = start.toLocaleDateString('en-IN', {
-        day: 'numeric', month: 'short', year: 'numeric',
-        timeZone: 'Asia/Kolkata',
-      });
-      const timeStr = start.toLocaleTimeString('en-IN', {
-        hour: 'numeric', minute: '2-digit', hour12: true,
-        timeZone: 'Asia/Kolkata',
-      }) + ' IST';
-      // Strip the verbose "between Shivani … and …" suffix cal.com adds.
-      const sessionType = String(title)
-        .replace(/\s*between\s+Shivani[^—|]*$/i, '')
-        .trim() || 'coaching';
-      await sendTemplate({
-        to: phone,
-        templateName: 'appt_confirmation',
-        languageCode: 'en',
-        components: [{
-          type: 'body',
-          parameters: [first, dateStr, timeStr, sessionType].map(
-            (t) => ({ type: 'text', text: String(t) }),
-          ),
-        }],
-      });
-      logger.info({ to: phone }, 'cal.com: appt_confirmation WhatsApp sent');
-    } catch (err) {
-      logger.warn(
-        { err: err.message },
-        'cal.com: appt_confirmation WhatsApp send failed (non-fatal)',
-      );
-    }
-  }
-
+  // Customer-facing confirmation used to be sent inline here as the legacy
+  // `appt_confirmation` template. That's now handled by the reminder runner
+  // emitting `confirmation_zoom` (a `confirmation_*` kind whose
+  // scheduled_for is `now()` — fires on the next tick, typically within
+  // ~30s). The new template includes a tappable "Join Zoom" button via
+  // the URL-suffix param built from `appt.join_url`. See
+  // services/reminders/template-params.js.
+  //
+  // notifyCoachOfBooking() (below) is the IMMEDIATE coach heads-up — it
+  // fires `coach_booking_alert_v1` to Shivani's number. Distinct from the
+  // `t_minus_1h_zoom_coach` reminder which lands 1h before the session
+  // with the join link. Different purposes; both kept.
   await notifyCoachOfBooking(payload, 'new booking');
 }
 
@@ -243,6 +228,49 @@ async function handleBookingRescheduled(payload) {
   );
 
   await notifyCoachOfBooking(payload, 'reschedule');
+}
+
+/**
+ * Cancel pending no-show probe reminders for this booking. Triggered by
+ * Cal.com's MEETING_STARTED webhook (fires when a participant joins the
+ * Zoom call) — proves the client made it, no probe needed.
+ *
+ * Match by external_id (cal_com:{uid}). Skips all reminders whose kind
+ * starts with `t_plus_5min_noshow_` — currently just the one Zoom kind,
+ * but the prefix match means any future no-show variants we add (e.g.
+ * a T+15min escalation) will also be cancelled by this signal.
+ */
+async function handleMeetingStarted(payload) {
+  const ws = await getDefaultWorkspace();
+  const uid = String(payload.uid || payload.bookingId || payload.id || '');
+  if (!uid) {
+    logger.warn({ payload }, 'cal.com: MEETING_STARTED has no uid, skipping');
+    return;
+  }
+  const { data: appt } = await db().from('appointments').select('id')
+    .eq('workspace_id', ws.id).eq('source', 'calendly')
+    .eq('external_id', `cal_com:${uid}`).maybeSingle();
+  if (!appt) {
+    logger.info({ uid }, 'cal.com: MEETING_STARTED for unknown booking, ignoring');
+    return;
+  }
+
+  // Skip-as-update only the no-show kinds, leaving sent/failed/already-skipped
+  // rows alone. Idempotent — re-firing this for the same meeting is a no-op.
+  const { data: skipped, error } = await db().from('reminders')
+    .update({ status: 'skipped', error: { reason: 'meeting_started_before_probe' } })
+    .eq('appointment_id', appt.id)
+    .eq('status', 'pending')
+    .like('kind', 't_plus_5min_noshow_%')
+    .select('id, kind');
+  if (error) {
+    logger.warn({ err: error.message, appt: appt.id }, 'cal.com: skip noshow probe failed');
+    return;
+  }
+  logger.info(
+    { appt: appt.id, uid, cancelled: (skipped || []).length },
+    'cal.com: MEETING_STARTED → noshow probe cancelled',
+  );
 }
 
 async function handleBookingCancelled(payload) {

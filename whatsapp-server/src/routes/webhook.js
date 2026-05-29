@@ -14,6 +14,7 @@ import { publish, EVENTS } from '../services/events/index.js';
 import { handleFlowCompletion } from '../services/flow-completion/index.js';
 import { matchKeyword } from '../services/keywords/index.js';
 import { sendFlow } from '../channels/whatsapp/client.js';
+import { handleProbeReply } from '../services/noshow/index.js';
 
 export const webhookRouter = Router();
 
@@ -127,6 +128,16 @@ async function processMetaWebhook(body, webhookRowId) {
         if (ev.type === 'flow') {
           handleFlowCompletion({ event: ev, contact, conversation: conv })
             .catch((err) => logger.error({ err: err.message }, 'flow completion failed'));
+        }
+        // Quick-reply button tap on a no-show probe — route to the
+        // dedicated handler which acks the client / pings Shivani /
+        // sends a reschedule link. Returns false if the button reply
+        // isn't on one of our probes, so other interactive flows are
+        // unaffected. Fire-and-forget; failures log but don't break
+        // the rest of inbound processing.
+        if (ev.type === 'interactive_button') {
+          handleProbeReply({ event: ev, contact, conversation: conv, message })
+            .catch((err) => logger.error({ err: err.message }, 'noshow probe reply handler failed'));
         }
         // Inbound text keyword → Flow trigger. If the user texted "40s"
         // or another configured keyword, fire the Flow back as an
