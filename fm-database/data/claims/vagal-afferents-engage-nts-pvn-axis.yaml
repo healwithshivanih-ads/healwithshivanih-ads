@@ -1,0 +1,23 @@
+slug: vagal-afferents-engage-nts-pvn-axis
+statement: Auricular vagal afferents synapse at the nucleus tractus solitarius, which
+  projects inhibitory fibres to the hypothalamic paraventricular nucleus and dampens
+  CRH release — the proposed pathway by which vagal-tone practices (slow breathing,
+  humming, cold exposure, taVNS) blunt acute stress-induced cortisol surges.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- vagal-tone
+- hpa-axis-dysregulation
+- transcutaneous-auricular-vagus-nerve-stimulation
+linked_to_mechanisms:
+- nts-to-pvn-cortisol-suppression
+- vagal-tone-enhancement
+sources:
+- id: cuberos-2025-tavns-cortisol
+  location: introduction and discussion
+  quote: taVNS activates inhibitory pathways to the hypothalamic paraventricular nucleus,
+    potentially reducing CRH release.
+rationale: Reported directly in the cited paper.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

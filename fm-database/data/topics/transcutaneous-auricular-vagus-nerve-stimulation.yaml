@@ -1,0 +1,53 @@
+slug: transcutaneous-auricular-vagus-nerve-stimulation
+display_name: Transcutaneous Auricular Vagus Nerve Stimulation (taVNS)
+aliases:
+- taVNS
+- auricular vagus stimulation
+- ear vagus stimulation
+- non-invasive vagus nerve stimulation
+summary: 'Non-invasive electrical stimulation of the auricular branch of the vagus
+  nerve via a clip-on ear electrode (typically cymba conchae or tragus). Activates
+  afferent vagal fibres that project to the nucleus tractus solitarius (NTS) and from
+  there to autonomic and limbic regions. Investigational use for stress-induced cortisol
+  elevation, chronic inflammatory conditions (psoriasis, RA, IBD), depression, epilepsy,
+  migraine, and POTS. Devices range from clinical units to consumer wearables (Nurosym,
+  Xen by Neuvana). Coaching scope: education on availability and limitations only;
+  device selection and use protocols belong to clinicians.'
+common_symptoms:
+- chronic-stress
+- anxiety
+- sleep-disturbance
+- chronic-inflammation
+key_mechanisms:
+- vagal-tone-enhancement
+- nts-to-pvn-cortisol-suppression
+- cholinergic-anti-inflammatory-pathway
+related_topics:
+- vagal-tone
+- chronic-stress
+- hpa-axis-dysregulation
+- psoriasis
+- stress-management
+sources:
+- id: cuberos-2025-tavns-cortisol
+  location: full text
+  quote: taVNS activates inhibitory pathways to the hypothalamic paraventricular nucleus,
+    potentially reducing CRH release.
+evidence_tier: plausible_emerging
+coaching_scope_notes: Coach role — educate that taVNS exists as a non-invasive option
+  for stress-induced cortisol elevation and chronic inflammatory conditions, mention
+  regulated device categories, refer to physician for protocol. Pair with breathwork,
+  cold exposure, humming/gargling, and meditation as zero-cost vagal-tone practices
+  that share the underlying mechanism.
+clinician_scope_notes: Device selection, electrode placement (cymba conchae vs tragus),
+  pulse parameters (typically 20-25 Hz, 200-500 μs pulse width, intensity titrated
+  to mild paresthesia below pain threshold), session duration, and contraindication
+  screening (active arrhythmia, implanted cardiac devices, pregnancy).
+notes_for_coach: Evidence base is small but growing. Cuberos 2025 is n=12 healthy
+  adults + one psoriasis case — too small to recommend prescriptively, but enough
+  to mention as an emerging adjunct when a client asks about HRV trackers or vagus-nerve
+  devices. Free practices first.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

@@ -1,0 +1,39 @@
+slug: nts-to-pvn-cortisol-suppression
+display_name: NTS-to-PVN Inhibitory Projection Suppressing CRH Release
+aliases:
+- vagal afferent cortisol suppression
+- NTS-PVN axis
+- vagal inhibition of HPA axis
+category: neurological
+summary: Afferent fibres of the auricular branch of the vagus nerve synapse at the
+  nucleus tractus solitarius (NTS) in the brainstem. NTS neurons project to the hypothalamic
+  paraventricular nucleus (PVN), the master generator of corticotropin-releasing hormone
+  (CRH). When the NTS projection is engaged — by taVNS, slow nasal breathing, humming,
+  or cold-water face immersion — it dampens PVN CRH output, blunting the downstream
+  ACTH-cortisol rise to a stressor. This is the proposed mechanism by which vagal-tone
+  interventions reduce stress-induced cortisol without blunting baseline circadian
+  cortisol.
+upstream_drivers:
+- vagal-tone-enhancement
+- chronic-stress
+downstream_effects:
+- cortisol-elevation
+- chronic-inflammation
+related_mechanisms:
+- vagal-tone-enhancement
+- cholinergic-anti-inflammatory-pathway
+- hpa-axis-dysregulation
+linked_to_topics:
+- vagal-tone
+- hpa-axis-dysregulation
+- transcutaneous-auricular-vagus-nerve-stimulation
+sources:
+- id: cuberos-2025-tavns-cortisol
+  location: discussion section
+  quote: taVNS activates inhibitory pathways to the hypothalamic paraventricular nucleus,
+    potentially reducing CRH release.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

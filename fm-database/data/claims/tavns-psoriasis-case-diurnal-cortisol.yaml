@@ -1,0 +1,24 @@
+slug: tavns-psoriasis-case-diurnal-cortisol
+statement: A 3-month case study of a plaque psoriasis patient receiving daily taVNS
+  showed reduced diurnal salivary cortisol exposure (area under curve dropped from
+  58.2 ± 35.2 to 34.9 ± 13.8 ng/mL·h), suggesting potential benefit for glucocorticoid-resistant
+  inflammatory skin conditions.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- transcutaneous-auricular-vagus-nerve-stimulation
+- psoriasis
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- nts-to-pvn-cortisol-suppression
+sources:
+- id: cuberos-2025-tavns-cortisol
+  location: case report section
+  quote: A psoriasis patient receiving 3 months of daily taVNS showed reduced diurnal
+    salivary cortisol levels (58.2 ± 35.2 to 34.9 ± 13.8 ng/mL·h).
+out_of_scope_notes: Single case — hypothesis-generating only. No control arm, no skin-lesion
+  endpoint quantified.
+rationale: Reported directly in the cited paper.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

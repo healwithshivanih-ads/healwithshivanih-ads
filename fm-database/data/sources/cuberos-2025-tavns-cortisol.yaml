@@ -1,0 +1,26 @@
+id: cuberos-2025-tavns-cortisol
+title: Transcutaneous auricular vagus nerve stimulation inhibits mental stress-induced
+  cortisol release — Potential implications for inflammatory conditions
+authors:
+- Cuberos Paredes E
+- Goyes D
+- Mak S
+- Yardimian R
+- Ortiz N
+- McLaren A
+- Stauss HM
+year: 2025
+publisher: Physiological Reports
+source_type: peer_reviewed_paper
+quality: moderate
+url: https://pubmed.ncbi.nlm.nih.gov/39936474/
+doi: 10.14814/phy2.70251
+notes: Crossover RCT in 12 healthy adults plus 3-month case study in a plaque psoriasis
+  patient. taVNS blunted stress-induced cortisol rise (~50% vs ~106% with sham) and
+  reduced diurnal cortisol in the psoriasis case. Authors propose NTS-mediated inhibitory
+  projection to hypothalamic PVN suppresses CRH release. Small n; primary endpoint
+  salivary cortisol.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

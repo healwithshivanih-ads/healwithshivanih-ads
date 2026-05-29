@@ -1,0 +1,25 @@
+slug: tavns-blunts-stress-induced-cortisol-rise
+statement: In a crossover trial of 12 healthy adults, 30 minutes of transcutaneous
+  auricular vagus nerve stimulation cut the salivary cortisol rise during a mental
+  arithmetic stress test by roughly half (49.5% above baseline) compared with sham
+  stimulation (106.0% above baseline, p < 0.05).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- transcutaneous-auricular-vagus-nerve-stimulation
+- hpa-axis-dysregulation
+- chronic-stress
+linked_to_mechanisms:
+- nts-to-pvn-cortisol-suppression
+- vagal-tone-enhancement
+sources:
+- id: cuberos-2025-tavns-cortisol
+  location: results — salivary cortisol
+  quote: Salivary cortisol was lower during taVNS (49.5 ± 48.0%) than during sham-taVNS
+    (106.0 ± 81.1%; p < 0.05).
+out_of_scope_notes: n=12, single-session crossover; effect size highly variable. Does
+  not establish chronic-condition benefit on its own.
+rationale: Reported directly in the cited paper.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani
