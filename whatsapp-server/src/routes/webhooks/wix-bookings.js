@@ -14,13 +14,13 @@
 
 import { Router } from 'express';
 import express from 'express';
-import process from 'node:process';
 import { db } from '../../db.js';
 import { logger } from '../../logger.js';
 import { getDefault as getDefaultWorkspace } from '../../services/workspaces.js';
 import { matchContact } from '../../services/contacts/matcher.js';
 import * as appointments from '../../services/appointments/index.js';
 import * as tagsSvc from '../../services/contacts/tags.js';
+import { decodeWixWebhook, WixJwtVerifyError } from '../../integrations/wix/jwt.js';
 
 export const wixBookingsWebhook = Router();
 // Wix sends bookings webhooks as JWT strings with content-type: text/plain.
@@ -29,19 +29,31 @@ wixBookingsWebhook.use(express.text({ type: '*/*', limit: '5mb' }));
 
 wixBookingsWebhook.post('/', async (req, res) => {
   const rawBody = typeof req.body === 'string' ? req.body : '';
-  const body = parseMaybeJson(rawBody);
-  const eventType = pickEventType(body);
   const looksLikeJwt = /^eyJ[\w-]+\./.test(rawBody.trim());
   logger.info({ path: req.originalUrl, ct: req.get('content-type') || null, looksLikeJwt, raw_len: rawBody.length }, 'wix-bookings webhook hit');
 
+  // Verify JWT signature against the WIX_WEBHOOK_PUBLIC_KEY (RS256), then
+  // double-unwrap to get the real event envelope. The fallback to plain
+  // JSON parsing keeps local probe/test calls working when there's no JWT.
   let signatureValid = null;
-  const secret = process.env.WIX_BOOKINGS_WEBHOOK_SECRET
-    || process.env.WIX_WEBHOOK_SECRET
-    || '';
-  if (secret) {
-    const headerSecret = req.header('x-wix-secret') || req.header('x-wix-webhook-secret') || '';
-    signatureValid = headerSecret === secret;
+  let decoded = null;
+  let decodeError = null;
+  if (looksLikeJwt) {
+    try {
+      decoded = decodeWixWebhook(rawBody);
+      signatureValid = true;
+    } catch (e) {
+      signatureValid = false;
+      decodeError = e instanceof WixJwtVerifyError ? `${e.code}: ${e.message}` : e.message;
+      logger.warn({ err: decodeError }, 'wix-bookings: JWT decode/verify failed');
+    }
   }
+
+  // For diagnostics and the legacy handlers, we still want a flattened
+  // body. Prefer the decoded envelope when available; fall back to a
+  // best-effort JSON parse for non-JWT probe calls.
+  const body = decoded?.envelope || parseMaybeJson(rawBody);
+  const eventType = decoded?.eventType || decoded?.slug || pickEventType(body);
 
   let webhookRowId = null;
   try {
@@ -53,7 +65,15 @@ wixBookingsWebhook.post('/', async (req, res) => {
       source: 'wix',
       event_type: eventType,
       signature_valid: signatureValid,
-      payload: { parsed: body, raw_body: rawBody, request_path: req.originalUrl, looks_like_jwt: looksLikeJwt },
+      payload: {
+        parsed: body,
+        raw_body: rawBody,
+        request_path: req.originalUrl,
+        looks_like_jwt: looksLikeJwt,
+        decoded_envelope: decoded?.envelope || null,
+        entity_fqdn: decoded?.entityFqdn || null,
+        decode_error: decodeError || null,
+      },
       headers: scrubHeaders(req.headers),
       processed: false,
     }).select('id').single();
@@ -62,10 +82,13 @@ wixBookingsWebhook.post('/', async (req, res) => {
     logger.error({ err: e.message }, 'webhook_events insert (wix-bookings) failed');
   }
 
-  if (secret && signatureValid === false) {
-    return res.status(401).json({ error: 'invalid_signature' });
-  }
+  // Always 200 — Wix retries on 4xx/5xx and the raw payload survives in
+  // webhook_events for replay. If signature failed we log + drop.
   res.sendStatus(200);
+  if (looksLikeJwt && signatureValid === false) {
+    logger.warn({ err: decodeError }, 'wix-bookings: dropping unverified JWT');
+    return;
+  }
 
   processWixBooking(body, eventType, webhookRowId).catch((err) =>
     logger.error({ err: err.message, stack: err.stack }, 'wix-bookings process failed'));

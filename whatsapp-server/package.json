@@ -19,6 +19,7 @@
     "express": "^4.21.0",
     "express-rate-limit": "^7.4.0",
     "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.3",
     "libphonenumber-js": "^1.11.12",
     "multer": "^2.0.0",
     "node-fetch": "^3.3.2",
