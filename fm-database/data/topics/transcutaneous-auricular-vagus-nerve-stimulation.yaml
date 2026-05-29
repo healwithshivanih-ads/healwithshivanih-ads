@@ -14,10 +14,10 @@ summary: 'Non-invasive electrical stimulation of the auricular branch of the vag
   Xen by Neuvana). Coaching scope: education on availability and limitations only;
   device selection and use protocols belong to clinicians.'
 common_symptoms:
-- chronic-stress
 - anxiety
-- sleep-disturbance
-- chronic-inflammation
+- sleep-disruption
+- fatigue
+- mood-changes-and-anxiety
 key_mechanisms:
 - vagal-tone-enhancement
 - nts-to-pvn-cortisol-suppression

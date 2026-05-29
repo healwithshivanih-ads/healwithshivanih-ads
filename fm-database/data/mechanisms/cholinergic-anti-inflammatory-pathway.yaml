@@ -1,0 +1,36 @@
+slug: cholinergic-anti-inflammatory-pathway
+display_name: Cholinergic Anti-Inflammatory Pathway
+aliases:
+- CAIP
+- vagal cholinergic anti-inflammatory reflex
+- inflammatory reflex
+- alpha7 nAChR pathway
+category: immune
+summary: Efferent vagus nerve fibres release acetylcholine, which binds alpha-7 nicotinic
+  acetylcholine receptors (α7nAChR) on tissue macrophages — particularly in the spleen,
+  liver, and gut. Receptor binding suppresses NF-κB activation and downregulates TNF-α,
+  IL-1β, IL-6, and HMGB1 release. This is the efferent arm of the vagus-mediated inflammatory
+  reflex (the NTS-PVN axis is the afferent/HPA arm) and is the proposed pathway by
+  which vagal-tone enhancement, taVNS, and α7nAChR agonists reduce systemic inflammation
+  in conditions like RA, IBD, psoriasis, and post-operative ileus.
+upstream_drivers:
+- vagal-tone-enhancement
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- vagal-tone-enhancement
+- nts-to-pvn-cortisol-suppression
+linked_to_topics:
+- vagal-tone
+- chronic-inflammation
+- transcutaneous-auricular-vagus-nerve-stimulation
+sources:
+- id: cuberos-2025-tavns-cortisol
+  location: introduction
+  quote: taVNS has been proposed as a therapeutic option for chronic inflammatory
+    conditions.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani
