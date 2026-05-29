@@ -21,6 +21,7 @@ import { matchContact } from '../../services/contacts/matcher.js';
 import * as appointments from '../../services/appointments/index.js';
 import * as tagsSvc from '../../services/contacts/tags.js';
 import { decodeWixWebhook, WixJwtVerifyError } from '../../integrations/wix/jwt.js';
+import { classifyWixBooking, pickLocationAddress } from '../../integrations/wix/classify.js';
 
 export const wixBookingsWebhook = Router();
 // Wix sends bookings webhooks as JWT strings with content-type: text/plain.
@@ -252,6 +253,12 @@ async function handleCreated(booking) {
   await tagsSvc.addToContact(contact.id, 'booked-call', 'wix_bookings_webhook').catch((e) =>
     logger.warn({ err: e.message }, 'tag booked-call failed'));
 
+  // Classify against the raw booking object (not our flattened `booking`
+  // shape) — the classifier walks the canonical v2 webhook payload.
+  // booking.raw is the original `entity` we extracted from.
+  const classification = classifyWixBooking(booking.raw || {});
+  const address = pickLocationAddress(booking.raw || {}) || booking.location || null;
+
   await appointments.create({
     workspaceId: ws.id,
     contactId: contact.id,
@@ -260,12 +267,17 @@ async function handleCreated(booking) {
     startsAt: booking.startsAt,
     endsAt: booking.endsAt,
     title: booking.title,
-    location: booking.location,
+    location: address,
     joinUrl: booking.joinUrl,
+    classification,
     metadata: {
       wix_booking_id: booking.id,
+      // Preserved for template-param builders (next task) so the runner
+      // can read the address without re-parsing the raw booking.
+      wix_location_address: address,
     },
   });
+  logger.info({ id: booking.id, classification, address }, 'wix-bookings: appointment created');
 }
 
 async function handleRescheduled(booking) {

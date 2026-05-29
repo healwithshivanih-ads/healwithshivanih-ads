@@ -8,11 +8,14 @@
 //   5. messages.send(template, origin='reminder', originRef=reminder.id)
 //   6. on success: markSent. on failure: markFailedOrRetry (5min back, max 3 attempts).
 
+import process from 'node:process';
 import { db } from '../../db.js';
 import { logger } from '../../logger.js';
 import * as reminders from './index.js';
 import * as messages from '../messages/index.js';
 import { getOrCreate as getOrCreateConversation } from '../conversations/index.js';
+import { matchContact } from '../contacts/matcher.js';
+import { buildTemplateComponents } from './template-params.js';
 
 const BATCH_LIMIT = 50;
 
@@ -77,38 +80,68 @@ async function sendOne(reminder, attempts) {
     return;
   }
 
-  const contact = appt.contact;
-  if (!contact || !contact.primary_phone) {
+  const clientContact = appt.contact;
+  if (!clientContact || !clientContact.primary_phone) {
     throw new Error('contact has no primary_phone');
   }
 
-  const conv = await getOrCreateConversation(appt.workspace_id, contact.id, 'whatsapp');
+  // Audience routing: '_coach'-suffixed kinds go to Shivani; everything
+  // else goes to the booked client. The template-params builder still
+  // reads the CLIENT contact for first-name / phone, regardless of who
+  // the message gets DELIVERED to — coach templates reference the
+  // client's name + phone in their body.
+  const audience = reminders.audienceForKind(reminder.kind);
+  let recipientContact = clientContact;
+  if (audience === 'coach') {
+    recipientContact = await resolveCoachContact(appt.workspace_id);
+    if (!recipientContact) {
+      throw new Error('coach contact not resolvable — set SHIVANI_WHATSAPP env var');
+    }
+  }
+
+  const conv = await getOrCreateConversation(appt.workspace_id, recipientContact.id, 'whatsapp');
 
   // Locale → en | hi (only suffix swap for now). Anything else falls back to en.
-  const lang = inferLanguage(contact.locale);
+  // Use the RECIPIENT's locale, not the client's, so coach reminders are
+  // in whichever language Shivani prefers.
+  const lang = inferLanguage(recipientContact.locale);
   const baseTemplate = reminders.REMINDER_TEMPLATES[reminder.kind];
   const templateName = lang === 'hi' ? `${baseTemplate}_hi` : baseTemplate;
 
-  const vars = templateVariables(appt, contact);
-  const components = [{
-    type: 'body',
-    parameters: vars.bodyParams.map((v) => ({ type: 'text', text: String(v) })),
-  }];
+  // Build params from the booked client + appointment context.
+  const { components, resolved } = buildTemplateComponents(reminder.kind, appt, clientContact);
 
   const sent = await messages.send({
     workspaceId: appt.workspace_id,
     conversationId: conv.id,
-    contactId: contact.id,
+    contactId: recipientContact.id,
     channel: 'whatsapp',
     type: 'template',
     templateName,
     templateLanguage: lang,
-    templateVariables: { components, resolved: vars },
+    templateVariables: { components, resolved },
     origin: 'reminder',
     originRef: reminder.id,
   });
 
   await reminders.markSent(reminder.id, sent.id, attempts);
+}
+
+// Lazy per-process cache so we don't matchContact on every reminder.
+let _coachContactCache = null;
+
+async function resolveCoachContact(workspaceId) {
+  if (_coachContactCache && _coachContactCache.workspace_id === workspaceId) {
+    return _coachContactCache;
+  }
+  const phone = process.env.SHIVANI_WHATSAPP;
+  if (!phone) return null;
+  const { contact } = await matchContact(workspaceId, {
+    phone,
+    display_name: process.env.SHIVANI_DISPLAY_NAME || 'Shivani Hari',
+  });
+  _coachContactCache = contact;
+  return contact;
 }
 
 /** Best-effort locale → WA language code. */

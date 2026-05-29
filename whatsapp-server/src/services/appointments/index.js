@@ -46,6 +46,9 @@ export async function create(input) {
   const {
     contactId, source, externalId, startsAt, endsAt,
     title, notes, location, joinUrl, metadata,
+    // Drives reminder kind selection in services/reminders.
+    // Values: 'in_person' | 'distance' | 'zoom' | null (legacy fallback).
+    classification,
   } = input;
 
   if (!contactId) throw new ValidationError('contactId required');
@@ -78,6 +81,11 @@ export async function create(input) {
     }
   }
 
+  // Stash classification on metadata until a top-level column lands.
+  // services/reminders.kindsFor() reads both places.
+  const mergedMeta = { ...(metadata || {}) };
+  if (classification) mergedMeta.classification = classification;
+
   const row = stripUndef({
     workspace_id: wsId,
     contact_id: contactId,
@@ -89,7 +97,7 @@ export async function create(input) {
     notes: notes || null,
     location: location || null,
     join_url: joinUrl || null,
-    metadata: metadata || {},
+    metadata: mergedMeta,
     status: 'scheduled',
   });
 
