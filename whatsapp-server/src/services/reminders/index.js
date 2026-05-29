@@ -88,8 +88,12 @@ export function audienceForKind(kind) {
   return /_coach$/.test(kind) ? 'coach' : 'client';
 }
 
-/** Compute the scheduled timestamp (ms epoch) for a kind given starts_at ms. */
-function scheduledMsFor(kind, startsMs, nowMs) {
+/**
+ * Compute the scheduled timestamp (ms epoch) for a kind given starts_at ms.
+ * Exported for dry-run / test harnesses; the scheduler is the only caller
+ * in production.
+ */
+export function scheduledMsFor(kind, startsMs, nowMs) {
   // Confirmation kinds always fire now.
   if (kind === 'confirmation' || kind.startsWith('confirmation_')) return nowMs;
   // T-minus kinds — offset BEFORE startsAt.
