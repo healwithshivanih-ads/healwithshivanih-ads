@@ -84,8 +84,9 @@ chapters:
     body_pg_start: 1451
     body_pg_end: 1466
     priority: 10
-    serves: [future]
-    status: pending
+    serves: [universal — psoriasis + autoimmune dermatitis spectrum]
+    status: ingested
+    batch_id: 20260530T200000-murray-ch88-psoriasis-chat
   - ch: 50
     title: Eczema
     body_pg_start: 920

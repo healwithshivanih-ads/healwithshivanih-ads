@@ -16,8 +16,12 @@ take_with_food: required
 linked_to_topics:
 - sluggish-bile-flow
 - candida-overgrowth
+- psoriasis
+- psoriasis-gut-immune
+- autoimmune
 linked_to_claims:
 - sluggish-bile-flow-overlooked-root-cause
+- murray-bile-acid-psoriasis-dramatic
 notes_for_coach: Direct bile replacement — particularly useful post-cholecystectomy
   or severe steatorrhea. Take with fat-containing meals. Clinician oversight for dosing.
 notes_for_client: Ox bile provides direct bile salts to help digest fats — especially
@@ -29,7 +33,10 @@ sources:
 - id: vitaone-gut-cheatsheet
   location: Sluggish Bile Flow — Supplements That Improve Bile Flow
   quote: Ox Bile — Direct bile replacement — Steatorrhea, after gallbladder removal
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

@@ -1,0 +1,42 @@
+slug: murray-fish-oil-3g-psoriasis
+statement: Fish oil at 3,000 mg/day combined EPA + DHA produces significant psoriasis
+  improvement in multiple double-blind clinical studies — by reducing inflammatory
+  cytokine production that stimulates skin cell proliferation AND modulating immune
+  mechanisms that drive psoriatic plaque formation. Effect is substantially amplified
+  when arachidonic acid sources (meat, dairy) are simultaneously reduced. Same 3 g
+  dose threshold + sustained duration applies as in rheumatoid arthritis.
+evidence_tier: strong
+rationale: Multiple DB-RCTs cited (Bjorneboe 1988, Bittiner 1988, Maurice 1987). Mechanism
+  — EPA-derived resolvins + reduced arachidonic acid → reduced inflammatory PGE2/LTB4;
+  immune-modulating effect on Th17 axis. The dose-threshold finding (3g, sustained)
+  parallels RA — most negative trials used insufficient dose or duration.
+coaching_translation: 'Same dose as for RA: 3 g/day combined EPA+DHA fish oil for
+  at least 12 weeks. Reduce meat and dairy alongside. Effect on skin builds slowly
+  — set 8-12 week expectation. Bonus: same dose protects cardiovascular system (psoriasis
+  is an independent CV risk factor).'
+caveats:
+- 3 g threshold dose (most multivitamins have 10× less)
+- 12-week minimum trial
+- Combine with reduced arachidonic acid (meat, dairy) for amplified effect
+- Quality matters — third-party tested
+- Mild antiplatelet
+linked_to_topics:
+- psoriasis
+- autoimmune
+- autoimmune-dermatitis
+- chronic-inflammation
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1455–1456
+  quote: Several double-blind clinical studies have demonstrated that supplementing
+    the diet with 3,000 mg EPA and DHA results in significant improvement in psoriasis.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -4,9 +4,11 @@ aliases:
 - eczema
 - AD
 - atopic eczema
-summary: Chronic inflammatory skin condition driven by filaggrin gene mutations impairing epidermal barrier, Th2 immune dysregulation
-  via TSLP, food allergen sensitization, gut permeability, Candida overgrowth, and environmental triggers including phthalates.
-  The 'outside-to-inside, back to outside' paradigm emphasizes barrier repair alongside systemic gut and immune normalization.
+summary: Chronic inflammatory skin condition driven by filaggrin gene mutations impairing
+  epidermal barrier, Th2 immune dysregulation via TSLP, food allergen sensitization,
+  gut permeability, Candida overgrowth, and environmental triggers including phthalates.
+  The 'outside-to-inside, back to outside' paradigm emphasizes barrier repair alongside
+  systemic gut and immune normalization.
 common_symptoms:
 - skin-itching
 - dry-skin
@@ -28,18 +30,24 @@ key_mechanisms:
 - tslp-driven-th2-polarization
 - leaky-gut
 - dysbiosis
-coaching_scope_notes: Coaches can support elimination diet, rotation diet, fish oil supplementation, probiotic use, avoidance
-  of phthalates, and emollient use. H. pylori testing and thyroid evaluation are clinician scope.
-clinician_scope_notes: Screen for H. pylori (positive in 70% of AD patients). Evaluate thyroid. Consider skin-prick testing,
-  ELISA IgE/IgG4 food testing. Wet wraps and topical glycyrrhetinic acid preparations are evidence-supported adjuncts.
+coaching_scope_notes: Coaches can support elimination diet, rotation diet, fish oil
+  supplementation, probiotic use, avoidance of phthalates, and emollient use. H. pylori
+  testing and thyroid evaluation are clinician scope.
+clinician_scope_notes: Screen for H. pylori (positive in 70% of AD patients). Evaluate
+  thyroid. Consider skin-prick testing, ELISA IgE/IgG4 food testing. Wet wraps and
+  topical glycyrrhetinic acid preparations are evidence-supported adjuncts.
 evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi-2
   location: Atopic Dermatitis (Eczema) — General Considerations
-  quote: 'Etiopathogenesis of AD involves interplay of the following: Cutaneous barrier dysfunction and mutations in genes
-    coding for skin proteins (filaggrin); Dysregulation of immune system and role of thymic stromal lymphopoietin (TSLP) in
-    allergic inflammation; Environmental factors.'
-version: 1
+  quote: 'Etiopathogenesis of AD involves interplay of the following: Cutaneous barrier
+    dysfunction and mutations in genes coding for skin proteins (filaggrin); Dysregulation
+    of immune system and role of thymic stromal lymphopoietin (TSLP) in allergic inflammation;
+    Environmental factors.'
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

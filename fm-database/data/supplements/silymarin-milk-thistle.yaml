@@ -12,18 +12,27 @@ take_with_food: optional
 linked_to_topics:
 - metabolic-detoxification
 - liver-detoxification
+- psoriasis
+- psoriasis-gut-immune
+- autoimmune-dermatitis
 linked_to_claims:
 - silymarin-antioxidant-phase-i-hepatic-protection
-notes_for_coach: Listed as a Phase I antioxidant protective nutrient in the document's detox diagram. Specific doses not provided
-  — verify with clinician. Well-known hepatoprotective herb in functional medicine.
-notes_for_client: Silymarin, from milk thistle, helps protect your liver cells from damage during the detoxification process.
+- murray-milk-thistle-silymarin-psoriasis
+notes_for_coach: Listed as a Phase I antioxidant protective nutrient in the document's
+  detox diagram. Specific doses not provided — verify with clinician. Well-known hepatoprotective
+  herb in functional medicine.
+notes_for_client: Silymarin, from milk thistle, helps protect your liver cells from
+  damage during the detoxification process.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Nutrients for Phase 1 and Phase 2 Detoxification
   quote: Silymarin
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani

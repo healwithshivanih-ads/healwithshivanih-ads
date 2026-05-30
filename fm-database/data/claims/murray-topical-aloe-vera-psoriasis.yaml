@@ -1,0 +1,45 @@
+slug: murray-topical-aloe-vera-psoriasis
+statement: Topical aloe vera extract cream applied 3× daily improved chronic plaque
+  psoriasis in 83.3% (25/30) of patients vs only 6.6% (2/30) placebo in a DB-RCT —
+  and significantly cleared psoriatic plaques in 82.8% of treated patients vs 7.7%
+  placebo. In a head-to-head comparison against topical triamcinolone (0.1% corticosteroid)
+  over 8 weeks, aloe vera matched the corticosteroid (mean psoriasis score 11.6→3.9
+  with aloe vs 10.9→4.3 with steroid) — without corticosteroid side effects.
+evidence_tier: plausible_emerging
+rationale: Syed 1996 DB-RCT + Choonhakarn 2010 comparison vs triamcinolone. Mechanism
+  — aloe polysaccharides (acemannan) modulate skin innate immunity; anthraquinones
+  provide mild anti-inflammatory effect; emollient barrier-restoration component.
+  Long-term corticosteroid-free option avoids the skin atrophy + steroid-rebound complications
+  of chronic topical steroid use.
+coaching_translation: Topical aloe vera 3× daily helped 83% of psoriasis patients
+  in a placebo-controlled trial — and matched topical hydrocortisone-class steroids
+  over 8 weeks WITHOUT the skin-thinning side effects of long-term corticosteroid
+  use. Use pure aloe gel (no added fragrance) — fresh from a plant if available, or
+  100% aloe vera juice frozen into ice cubes for cooling application during flares.
+  Stacks safely with topical curcumin.
+caveats:
+- Use 100% pure aloe (no alcohol, fragrance, colour additives)
+- Patch test in known atopic / sensitive skin
+- Fresh plant gel > bottled (bottled often has stabilisers + thickeners)
+- Continue for 4-12 weeks to assess full effect
+- Long-term corticosteroid-free alternative avoids skin atrophy
+linked_to_topics:
+- psoriasis
+- autoimmune-dermatitis
+- autoimmune
+- atopic-dermatitis
+linked_to_supplements:
+- aloe-vera
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1460
+  quote: The aloe extract cream had improved the psoriasis in 25 of 30 patients (83.3%)
+    compared with the placebo improvement rate of only 2 of 30 (6.6%). These results
+    indicate aloe's effects may be on a par with conventional corticosteroid cream,
+    but without the side effects.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

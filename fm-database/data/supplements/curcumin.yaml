@@ -53,6 +53,7 @@ linked_to_topics:
 - tendinopathy
 - rheumatoid-arthritis
 - autoimmune
+- autoimmune-dermatitis
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - loneliness-activates-inflammatory-pathways
@@ -71,6 +72,7 @@ linked_to_claims:
 - ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
 - murray-curcumin-bioavailable-forms
 - murray-curcumin-equals-phenylbutazone-ra
+- murray-topical-curcumin-vs-calcipotriene
 notes_for_coach: Curcumin has both anti-inflammatory properties and is cited as a
   stimulant of enzymatic activity. Bioavailability is enhanced with black pepper (piperine)
   or fat. Source is expert consensus lecture.
@@ -136,7 +138,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 17
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 18
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

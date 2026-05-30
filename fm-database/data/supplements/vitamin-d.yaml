@@ -20,9 +20,11 @@ linked_to_topics:
 - autoimmune
 - autoimmune-disease
 - autoimmune-dermatitis
+- psoriasis
 linked_to_claims:
 - vitamin-d-deficiency-increases-cvd-risk
 - murray-vitamin-d-autoimmune-correlation
+- murray-vitamin-d-psoriasis-5000iu
 notes_for_coach: Target 25-OH-D ≥30 ng/mL (FM optimal often cited as 50–80 ng/mL).
   1000–4000 IU/day per therapeutic approach. Monitor 25-OH-D levels. Take with fat-containing
   meal for absorption.
@@ -37,7 +39,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

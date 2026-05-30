@@ -54,8 +54,11 @@ sources:
     the gut-thyroid-skin triad is treated as one axis — gluten elimination, leaky
     gut repair, vitamin D, omega-3, selenium, stress modulation all serve both conditions
     simultaneously.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

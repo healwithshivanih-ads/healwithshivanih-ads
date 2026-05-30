@@ -1,0 +1,50 @@
+slug: murray-milk-thistle-silymarin-psoriasis
+statement: Milk thistle (Silybum marianum) standardised extract — 140–210 mg silymarin
+  three times daily (or silymarin phytosome 120 mg two to three times daily between
+  meals) — supports psoriasis treatment by improving hepatic detoxification of the
+  bowel-derived endotoxins that drive psoriatic skin inflammation, inhibiting NF-κB-driven
+  inflammation directly, and reducing excessive cellular proliferation. Particularly
+  relevant given Murray's gut-liver-skin axis model where impaired liver function
+  is a key link in the psoriatic chain.
+evidence_tier: plausible_emerging
+rationale: Multiple clinical and preclinical studies; long traditional use. Mechanism
+  — silymarin upregulates glutathione production, scavenges free radicals, stabilises
+  hepatocyte membranes, antagonises leukotriene synthesis. Phytosome formulation (siliphos)
+  achieves 7-10× plasma silymarin levels of plain extract. Particularly important
+  in psoriasis patients with concurrent alcohol use, NAFLD, or polypharmacy load on
+  liver.
+coaching_translation: Milk thistle (silymarin) at 140-210 mg three times daily is
+  a foundational supplement when liver detoxification capacity is a limiting factor
+  in psoriasis. Phytosome form (120 mg two to three times daily) is more bioavailable.
+  Particularly important for psoriasis patients who drink alcohol, have NAFLD, or
+  take multiple medications. Pairs with bile acid for complete gut-liver detox support.
+  Effect builds over 3-6 months.
+caveats:
+- Generally well-tolerated; rare mild laxative effect
+- Phytosome (siliphos) form much better absorbed than plain extract
+- May interact with some drugs metabolised by CYP3A4 (mild)
+- Pregnancy safety not well established at supplement doses
+- May reduce blood sugar slightly — monitor in diabetes
+- Allergic cross-reaction with daisy/ragweed family
+linked_to_topics:
+- psoriasis
+- psoriasis-gut-immune
+- autoimmune-dermatitis
+- autoimmune
+linked_to_supplements:
+- milk-thistle
+- silymarin
+- silymarin-milk-thistle
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1454, Treatment Summary pg 1464
+  quote: Silymarin, the flavonoid component of milk thistle (Silybum marianum), has
+    been reported to be of value in the treatment of psoriasis. Presumably this is
+    a result of its ability to improve liver function, inhibit inflammation, and reduce
+    excessive cellular proliferation.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

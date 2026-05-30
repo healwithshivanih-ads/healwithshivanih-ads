@@ -42,6 +42,9 @@ interactions:
 evidence_tier: strong
 linked_to_topics:
 - detoxification
+- psoriasis
+- psoriasis-gut-immune
+- autoimmune-dermatitis
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - phase-1-biotransformation
@@ -49,7 +52,12 @@ sources:
 - id: ifm-textbook-fig-3-5-liver-detox-pathways
   location: Antioxidant Protective Nutrients and Plant Derivatives panel
   quote: Silymarin
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 4
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-05-30'
 updated_by: shivani
+linked_to_claims:
+- murray-milk-thistle-silymarin-psoriasis

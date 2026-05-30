@@ -1,0 +1,52 @@
+slug: murray-gut-liver-skin-axis-psoriasis
+statement: 'Psoriasis is fundamentally a downstream manifestation of a 4-link gut-liver-skin
+  axis: (1) Incomplete protein digestion (often from hypochlorhydria) → bowel bacteria
+  convert undigested amino acids to polyamines (putrescine, spermidine, cadaverine)
+  that drive skin cell hyperproliferation; (2) Bowel toxaemia — bacterial endotoxins
+  (LPS), Candida albicans overgrowth, and other gut-derived toxins enter circulation;
+  (3) Liver detoxification overload — when hepatic clearance is impaired, systemic
+  toxin load rises and psoriasis worsens; (4) Resulting circulating toxins trigger
+  immune-mediated skin cell signalling. Lower polyamine levels correlate with clinical
+  improvement; circulating endotoxin levels correlate with severity and response.'
+evidence_tier: plausible_emerging
+rationale: Multiple mechanistic studies cited — polyamine measurements (Proctor 1979),
+  endotoxin studies (Itoh 1994), gut permeability measurements (Hamilton 1985, Humbert
+  1991). The 4-link model is Murray's organising framework for psoriasis FM treatment.
+  It explains why interventions targeting any link (HCl, fibre, bile, milk thistle,
+  probiotics) all produce skin improvement — they all reduce the toxin load reaching
+  the systemic circulation.
+coaching_translation: 'Psoriasis is a SKIN symptom of an underlying GUT-LIVER problem.
+  The chain: low stomach acid → undigested protein → gut bacteria make polyamine toxins
+  → leaky gut lets toxins + bacterial endotoxins through → liver overwhelmed → toxins
+  reach skin → skin cells over-replicate. This is why interventions at ANY link in
+  the chain help — Betaine HCl (link 1), fibre + sarsaparilla (link 2), milk thistle
+  (link 3), bile acid (link 2-3). The deeper the intervention, the more durable the
+  result.'
+caveats:
+- Stress is a strong trigger that amplifies gut permeability — address parallel to
+  gut work
+- Alcohol damages BOTH gut lining AND liver — strict elimination needed in psoriasis
+- Heavy NSAID + steroid use worsens gut permeability — coordinate taper with prescriber
+- Some clients will see worsening before improving (Herxheimer reaction) — usually
+  resolves in 1-2 weeks
+linked_to_topics:
+- psoriasis
+- psoriasis-gut-immune
+- autoimmune
+- autoimmunity-leaky-gut-connection
+- gut-skin-hormone-axis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1452–1455
+  quote: Incomplete protein digestion or poor intestinal absorption of protein breakdown
+    products can result in elevations of amino acids and polypeptides in the bowel.
+    These polyamines have been shown to contribute to the excessive rate of cell proliferation
+    in psoriasis. Lowered skin and urinary levels of polyamines are associated with
+    clinical improvement in psoriasis.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

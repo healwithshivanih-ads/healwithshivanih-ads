@@ -11,8 +11,12 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - gut-dysbiosis
+- psoriasis
+- psoriasis-gut-immune
+- autoimmune
 linked_to_claims:
 - bile-salts-indicated-for-fat-digestion-impairment
+- murray-bile-acid-psoriasis-dramatic
 notes_for_coach: Bile salts are indicated in patients who have had removal surgeries
   or have difficulty digesting fats. Available as supplements. Typically taken with
   fat-containing meals.
@@ -27,7 +31,10 @@ sources:
   quote: if your patient is having any kind of removal surgeries or you see that patient
     having difficulty in digesting the fat consider giving them a bile salt it's also
     available as supplements
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

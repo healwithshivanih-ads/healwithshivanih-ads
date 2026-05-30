@@ -26,12 +26,14 @@ linked_to_topics:
 - gut-skin-hormone-axis
 - rheumatoid-arthritis
 - autoimmune
+- autoimmune-dermatitis
 linked_to_claims:
 - vitamin-d-critical-for-treg-function
 - vitamin-d-k2-immune-tolerance
 - fm-intervention-improved-insulin-resistance-lipids-homocysteine
 - high-dose-d3-improves-psoriasis-symptoms
 - murray-vitamin-d-autoimmune-correlation
+- murray-vitamin-d-psoriasis-5000iu
 notes_for_coach: Even when vitamin D levels appear 'normal' on standard ranges, higher-dose
   D3 has been researched for autoimmune/psoriatic conditions. K2 is co-administered
   to direct calcium appropriately. High-dose D3 (above 4000 IU) should be supervised
@@ -56,7 +58,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 4
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 5
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

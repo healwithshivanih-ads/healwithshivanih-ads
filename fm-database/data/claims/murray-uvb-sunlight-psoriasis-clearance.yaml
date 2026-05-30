@@ -1,0 +1,47 @@
+slug: murray-uvb-sunlight-psoriasis-clearance
+statement: 'Sunlight and UVB exposure produce dramatic psoriasis clearance — a 4-week
+  outdoor sunbathing protocol cleared symptoms significantly in 84% of 373 psoriatic
+  patients; Dead Sea climatotherapy clears 80–85% of psoriatic conditions in 4 weeks
+  (where UVB wavelengths are dominant). UVB alone is as effective as drug + UV combination
+  therapy (PUVA) in some studies, with fewer side effects — suggesting the drug component
+  is not essential. Mechanism: UVB inhibits skin cell hyperproliferation directly
+  + drives endogenous vitamin D3 synthesis.'
+evidence_tier: strong
+rationale: 'Multiple consistent observations across decades + Dead Sea climatotherapy
+  literature. UVB phototherapy is standard dermatology adjunct. The 295-305 nm narrowband
+  UVB (3 minutes 3× weekly) is the modern protocol. Coach context: most clients can
+  access sun exposure (free) before considering medical phototherapy. Caution required
+  in skin cancer risk populations and lighter skin types.'
+coaching_translation: Sunlight is one of the most powerful psoriasis treatments. 4
+  weeks of outdoor sunbathing cleared symptoms in 84% of patients in a 373-person
+  study; the Dead Sea clears 80-85% in 4 weeks (the UVB wavelengths dominate there).
+  Aim for 15-30 minutes of direct sun on affected areas daily, before 10 AM or after
+  3 PM to avoid sunburn. Don't apply sunblock on the psoriatic plaques themselves
+  (unaffected skin needs SPF). Medical narrowband UVB phototherapy is the alternative
+  if winter or climate makes sun impossible.
+caveats:
+- Risk + benefit assessment in fair-skinned clients + family history of skin cancer
+- Avoid sunburn — increases inflammation + skin cancer risk
+- Vitamin D supplementation may still be needed; sun alone doesn't always achieve
+  target levels
+- Topical retinoids + UV exposure increases photosensitivity risk
+- Narrowband UVB (311 nm) at 2-3 min, 3× weekly is the medical equivalent
+linked_to_topics:
+- psoriasis
+- autoimmune
+- autoimmune-dermatitis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Medical phototherapy + Dead Sea climatotherapy referral are clinician
+  scope. Sun exposure education is appropriate coaching scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1458–1459
+  quote: An outdoor four-week sunbathing therapy was shown to promote significant
+    clearance of psoriatic symptoms in 84% of 373 subjects. At the Dead Sea, where
+    80% to 85% of psoriatic conditions clear in four weeks, UVB wavelengths are known
+    to be dominant.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,49 @@
+slug: murray-vitamin-d-psoriasis-5000iu
+statement: Vitamin D inhibits the excessive skin cell replication that drives psoriasis
+  through both topical and systemic mechanisms — sunlight, UVB phototherapy, oral
+  vitamin D analogues, AND topical vitamin D3 all improve psoriasis. Patients with
+  longer-term psoriasis (≥3 years) show low plasma selenium AND low vitamin D status.
+  Murray's psoriasis dose recommendation reaches the upper limit — 5,000 IU/day vitamin
+  D3 — with blood-level monitoring to target the upper end of the optimal range (50-80
+  ng/ml 25(OH)D).
+evidence_tier: strong
+rationale: Multiple lines of evidence — population studies + UVB phototherapy mechanism
+  + topical vitamin D analogue efficacy (calcipotriene is standard psoriasis Rx).
+  Mechanism — vitamin D receptor (VDR) is expressed in keratinocytes; vitamin D directly
+  inhibits keratinocyte hyperproliferation and modulates Th17 cells driving psoriatic
+  inflammation. The 5,000 IU/day dose is psoriasis-specific (higher than the 2,000-4,000
+  IU general recommendation) reflecting the local skin demand.
+coaching_translation: 'Vitamin D is foundational in psoriasis — works topically AND
+  systemically. Take 5,000 IU/day vitamin D3 (higher than the general 2,000-4,000
+  recommendation) and target 25(OH)D blood level 50-80 ng/ml. Pair with K2 (MK-7 100
+  mcg). The conventional topical Dovonex (calcipotriene) is a vitamin D analogue —
+  you''re addressing the same mechanism orally and durably. Sunlight is the dual-action
+  option: clears plaques + makes vitamin D.'
+caveats:
+- 5,000 IU/day requires blood-level monitoring (every 3-6 months) to titrate
+- Pair with K2 (MK-7 100 mcg) for calcium-direction support
+- Test serum calcium periodically to rule out hypercalcemia
+- Magnesium adequacy required for vitamin D activation — co-supplement
+- Topical calcipotriene (Dovonex) is the conventional vitamin D analogue option
+linked_to_topics:
+- psoriasis
+- autoimmune
+- autoimmune-dermatitis
+- autoimmune-disease
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3
+- vitamin-d3-k2
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1457–1458
+  quote: 'Vitamin D status is low in patients with psoriasis and appears to be a contributing
+    factor. Sunlight, UVB phototherapy, oral vitamin D analogues, and topical vitamin
+    D3 all improve psoriasis. In psoriasis, we recommend the upper limit of vitamin
+    D: doses of up to 5,000 IU per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -13,9 +13,13 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - gerd-ppi-tapering
+- psoriasis
+- autoimmune-dermatitis
+- atopic-dermatitis
 linked_to_claims:
 - aloe-vera-repairs-gut-lining
 - ppi-tapering-supplement-support-repair-protect-antioxidant
+- murray-topical-aloe-vera-psoriasis
 notes_for_coach: Listed under 'Repair' in PPI tapering protocol. Aloe vera juice/gel
   may soothe the GI lining. Use decolorized (anthraquinone-free) form to avoid laxative
   effects.
@@ -35,9 +39,12 @@ sources:
 - id: vitaone-gut-cheatsheet
   location: H. Pylori Infection Cheatsheet — Gut Healing Nutrients
   quote: 'Aloe vera extract: 1–2 oz juice or 300 mg capsule/day'
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases:
 - aloe-vera-extract

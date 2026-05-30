@@ -1,0 +1,44 @@
+slug: murray-topical-curcumin-vs-calcipotriene
+statement: Topical curcumin gel achieved 90% plaque resolution in 50% of psoriasis
+  patients within 2–6 weeks; the remainder showed 50–85% improvement. Curcumin was
+  twice as effective as calcipotriene cream (Dovonex, a vitamin D analogue), which
+  generally takes 3 months for full effect. Topical curcumin's anti-inflammatory action
+  targets the NF-κB-driven cytokine cascade central to psoriatic plaque formation.
+evidence_tier: plausible_emerging
+rationale: Heng 2000 open-label study; effect-size substantial. Mechanism — curcumin
+  inhibits phosphorylase kinase, NF-κB, and TNF-α — all elevated in psoriatic plaques.
+  Bioavailability is not the issue for topical (direct skin absorption); compounding
+  into a gel base or skin-penetrating delivery system is the practical question. Pairs
+  well with oral curcumin (bioavailable form) for systemic + topical coverage.
+coaching_translation: Topical curcumin gel cleared 90% of psoriatic plaques in half
+  the patients within 2-6 weeks — and was twice as fast as the conventional vitamin
+  D analogue Dovonex. Topical curcumin can be compounded by a pharmacist (1-5% in
+  cream or gel base) or some FM-friendly brands offer ready preparations. Pair with
+  oral curcumin (Meriva, BCM-95, or Theracurmin) for combined topical + systemic effect.
+caveats:
+- Yellow staining of skin and clothing — apply at night, cover loose-fitting cotton
+- May cause mild skin irritation in sensitive skin (patch test)
+- Compounded preparations vary in concentration — start at 1% and increase
+- Combination with topical corticosteroid in early treatment may speed initial response
+- Continue for 4-6 weeks minimum to assess effect
+linked_to_topics:
+- psoriasis
+- autoimmune-dermatitis
+- autoimmune
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+- turmeric
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis, pg 1460–1461
+  quote: Topical application of curcumin in a gel yielded 90% resolution of plaques
+    in 50% of patients within two to six weeks; the remainder of the study subjects
+    showed 50% to 85% improvement. Curcumin was found to be twice as effective as
+    calcipotriene cream.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

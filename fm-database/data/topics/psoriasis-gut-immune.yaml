@@ -3,9 +3,10 @@ display_name: Psoriasis (Gut & Immune-Driven)
 aliases:
 - psoriatic skin condition
 - autoimmune skin disease
-summary: Psoriasis viewed through a functional medicine lens as an autoimmune skin condition driven by immune dysregulation
-  and gut dysfunction. Key features include chronic immune activation, nutritional deficiencies (zinc, vitamin D), and gut
-  barrier compromise. High-dose vitamin D3 and gut-healing protocols are highlighted interventions.
+summary: Psoriasis viewed through a functional medicine lens as an autoimmune skin
+  condition driven by immune dysregulation and gut dysfunction. Key features include
+  chronic immune activation, nutritional deficiencies (zinc, vitamin D), and gut barrier
+  compromise. High-dose vitamin D3 and gut-healing protocols are highlighted interventions.
 common_symptoms:
 - psoriasis-skin-patches
 - cracked-knuckles
@@ -23,16 +24,21 @@ related_topics:
 key_mechanisms:
 - gut-immune-dysregulation
 - leaky-gut
-coaching_scope_notes: Coaches can support elimination diets, supplementation guidance (zinc, omega-3, vitamin D3 under clinician
-  oversight), and lifestyle changes. High-dose vitamin D3 for autoimmune conditions requires clinician involvement.
-clinician_scope_notes: Prescription of high-dose vitamin D3 for psoriasis, topical steroid applications, and immunosuppressant
-  therapies are clinician-managed.
+coaching_scope_notes: Coaches can support elimination diets, supplementation guidance
+  (zinc, omega-3, vitamin D3 under clinician oversight), and lifestyle changes. High-dose
+  vitamin D3 for autoimmune conditions requires clinician involvement.
+clinician_scope_notes: Prescription of high-dose vitamin D3 for psoriasis, topical
+  steroid applications, and immunosuppressant therapies are clinician-managed.
 evidence_tier: plausible_emerging
 sources:
 - id: coconote-fm-gut-skin-hormone-axis
   location: Key Supplements Discussion
-  quote: High dose vitamin D3 does help with healing or improving the symptoms of psoriasis.
-version: 1
+  quote: High dose vitamin D3 does help with healing or improving the symptoms of
+    psoriasis.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

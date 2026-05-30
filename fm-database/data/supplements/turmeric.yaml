@@ -22,10 +22,13 @@ linked_to_topics:
 - chronic-inflammation
 - rheumatoid-arthritis
 - autoimmune
+- psoriasis
+- autoimmune-dermatitis
 linked_to_claims:
 - phytonutrient-smoothies-support-cardio-and-brain-health
 - murray-curcumin-bioavailable-forms
 - murray-curcumin-equals-phenylbutazone-ra
+- murray-topical-curcumin-vs-calcipotriene
 notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Control
   Smoothie. Fresh or ground form used. Bioavailability enhanced by pairing with black
   pepper (piperine); toolkit does not specify this but coaches may suggest it.
@@ -43,7 +46,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 89 — Rheumatoid Arthritis
   quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 88 — Psoriasis
+  quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani
