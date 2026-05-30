@@ -1,0 +1,41 @@
+slug: murray-omega-3-omega-6-ratio-inflammation
+statement: The dietary ratio of omega-3 to omega-6 fatty acids is a major determinant
+  of silent inflammation and CRP levels. Modern Western diets have shifted from an
+  ancestral ratio of ~1:1 to current ratios of 1:15-20 (heavily omega-6 dominant from
+  processed seed oils — corn, soybean, sunflower, safflower). This imbalance promotes
+  pro-inflammatory eicosanoid production (PGE2, LTB4). Restoring balance requires
+  BOTH increasing omega-3 (fatty fish, fish oil 1-3 g EPA+DHA/day, walnuts, flax,
+  chia) AND DECREASING omega-6 (eliminating refined seed oils, reducing processed
+  food). Diet alone often insufficient — supplementation with fish oil is foundational.
+evidence_tier: strong
+rationale: Decades of fatty acid research. Mechanism — omega-3 and omega-6 share the
+  same enzymes (delta-6-desaturase, COX, LOX); displacement effect. Ratio matters
+  more than absolute amount.
+coaching_translation: 'The omega-3 vs omega-6 ratio in your diet directly drives inflammation.
+  Modern diet ratio: 1:15+. Healthy ancestral ratio: 1:1 to 1:4. Fix it BOTH ways:
+  increase omega-3 (fatty fish, fish oil 1-3 g EPA+DHA, walnuts, flax) AND decrease
+  omega-6 (eliminate refined seed oils — corn, soybean, sunflower, safflower, canola
+  — and the processed foods made with them). Diet alone usually isn''t enough; fish
+  oil is foundational.'
+caveats:
+- Avoid soybean, corn, sunflower, safflower, canola oils
+- Olive oil + avocado oil + coconut oil = better cooking fats
+- Fish oil omega-3 index target > 8% (testable)
+- Vegetarian alternatives — algal DHA (lower EPA)
+linked_to_topics:
+- chronic-inflammation
+- atherogenic-dyslipidemia
+- rheumatoid-arthritis
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 14 — Silent Inflammation, Quick Review pg 326
+  quote: The ratio of omega-3 to omega-6 fatty acids is a major factor in determining
+    the degree of silent inflammation and CRP levels.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

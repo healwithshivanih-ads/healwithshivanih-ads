@@ -1,0 +1,39 @@
+slug: murray-curcumin-crp-resistant-cases
+statement: 'When diet + lifestyle interventions fail to lower hs-CRP after a 3-month
+  trial, Murray recommends adding bioavailable curcumin: Meriva 500-1,000 mg twice
+  daily, BCM-95 750-1,500 mg twice daily, OR Theracurmin 300 mg one to three times
+  daily. Curcumin produces broad anti-inflammatory effects via NF-κB + COX-2 + 5-LOX
+  + STAT3 inhibition, lowering CRP in both healthy individuals + chronic disease patients.
+  The pairing with hs-CRP feedback creates an evidence-based, measurable intervention:
+  titrate curcumin until CRP drops below 1 mg/L.'
+evidence_tier: strong
+rationale: Multiple RCTs of curcumin specifically targeting hs-CRP. Mechanism — multipathway
+  anti-inflammatory effect.
+coaching_translation: 'If you''ve fixed diet + exercise + weight + sleep and hs-CRP
+  is still high after 3 months, add bioavailable curcumin: Meriva 500-1,000 mg twice
+  daily, BCM-95 750-1,500 mg twice daily, or Theracurmin 300 mg 1-3 times daily. Plain
+  curcumin won''t work — bioavailability is the make-or-break. Use hs-CRP to track
+  effect — aim to drop CRP below 1 mg/L.'
+caveats:
+- Bioavailable curcumin form essential
+- Mild antiplatelet effect — pause before surgery
+- Effect builds 4-12 weeks
+- Pregnancy avoid therapeutic doses
+- Use CRP feedback to titrate dose
+linked_to_topics:
+- chronic-inflammation
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 14 — Silent Inflammation, Treatment Summary pg 327–328
+  quote: 'If the high-sensitivity C-reactive protein test shows that CRP is not responding
+    to the above recommendations after a three-month trial, add one of the following
+    curcumin products: Meriva: 500 to 1,000 mg twice daily. BCM95 Complex: 750 to
+    1,500 mg twice daily. Theracurmin: 300 mg one to three times daily.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

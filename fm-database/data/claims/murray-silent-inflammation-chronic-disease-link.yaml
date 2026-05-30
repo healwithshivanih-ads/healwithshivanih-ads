@@ -1,0 +1,44 @@
+slug: murray-silent-inflammation-chronic-disease-link
+statement: '''Silent inflammation'' — chronic low-grade systemic inflammation without
+  overt symptoms — is a major factor in virtually every major chronic degenerative
+  disease: cardiovascular disease, type 2 diabetes, cancer, Alzheimer''s disease,
+  depression, autoimmune conditions, allergies. Measured primarily via high-sensitivity
+  C-reactive protein (hs-CRP). Key drivers: abdominal obesity (the STRONGEST independent
+  predictor of CRP elevation), high-glycaemic diet, omega-6:omega-3 imbalance, sedentary
+  lifestyle, smoking, chronic stress, sleep deprivation, gut dysbiosis, environmental
+  toxins. Murray''s clinical insight: testing CRP is essential at any age, not just
+  for known cardiovascular risk, because silent inflammation drives so many disease
+  processes.'
+evidence_tier: strong
+rationale: Multiple decades of inflammation-disease research. Mechanism — chronic
+  low-grade inflammation drives endothelial dysfunction, insulin resistance, neurodegeneration,
+  immune dysregulation, oncogenic signalling.
+coaching_translation: 'Silent (chronic low-grade) inflammation drives virtually every
+  chronic disease — heart disease, diabetes, cancer, Alzheimer''s, depression, autoimmunity,
+  allergies. Test hs-CRP on every adult, not just heart-risk clients. The biggest
+  driver is belly fat (abdominal obesity is the STRONGEST predictor of inflammation).
+  Address: lose belly fat, low-glycaemic diet, increase omega-3, exercise, sleep,
+  manage stress, fix gut, reduce toxin exposure.'
+caveats:
+- hs-CRP test inexpensive + widely available
+- Target hs-CRP < 1 mg/L (low); 1-3 (moderate); >3 (high)
+- Acute infection inflates CRP — test when well
+- Belly fat (waist circumference) more important than total weight
+linked_to_topics:
+- chronic-inflammation
+- atherogenic-dyslipidemia
+- insulin-resistance
+- autoimmune
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 14 — Silent Inflammation, Quick Review pg 325
+  quote: Silent inflammation is a major factor in the development of virtually every
+    major chronic degenerative disease, including cardiovascular disease, allergies,
+    type 2 diabetes, cancer, and Alzheimer's disease. The most common test to measure
+    silent inflammation is blood determination of C-reactive protein (CRP). Abdominal
+    obesity is the strongest predictor of silent inflammation and CRP levels.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

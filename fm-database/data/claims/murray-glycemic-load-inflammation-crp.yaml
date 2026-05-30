@@ -1,0 +1,39 @@
+slug: murray-glycemic-load-inflammation-crp
+statement: Higher dietary glycaemic load (refined carbohydrates + added sugars) directly
+  raises hs-CRP and silent inflammation through insulin-driven cytokine production
+  + glycation of proteins + reactive oxygen species generation. CRP levels generally
+  CORRESPOND to insulin sensitivity — when insulin sensitivity is good, CRP is low;
+  when insulin resistance progresses (toward type 2 diabetes), CRP rises in parallel.
+  This is why insulin resistance + diabetes + cardiovascular disease + Alzheimer's
+  all cluster epidemiologically — they share the common driver of chronic glycaemic
+  + inflammatory load.
+evidence_tier: strong
+rationale: Multiple studies linking glycaemic load to inflammation markers. Mechanism
+  — hyperglycaemia → AGE formation → RAGE receptor activation → NF-κB inflammation;
+  insulin resistance itself drives adipose inflammation.
+coaching_translation: 'Sugar + refined carbs directly raise inflammation. Your hs-CRP
+  tracks your insulin sensitivity — good insulin sensitivity = low CRP; insulin resistance
+  = high CRP. This is why diabetes, heart disease, Alzheimer''s, and obesity all travel
+  together — they share the same root: chronic glycaemic + inflammatory load. Low-glycaemic
+  Mediterranean diet directly drops CRP often without any supplements.'
+caveats:
+- Continuous glucose monitoring is increasingly accessible for personal data
+- Glycaemic LOAD > glycaemic index (accounts for portion size)
+- Even healthy carbs (fruit, whole grain) raise CRP in insulin-resistant clients
+- Time-restricted eating + intermittent fasting shows CRP-lowering effects
+linked_to_topics:
+- chronic-inflammation
+- insulin-resistance
+- type-2-diabetes
+- atherogenic-dyslipidemia
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 14 — Silent Inflammation, Quick Review pg 325, Treatment Summary
+    pg 326
+  quote: The higher the diet is in foods that raise blood sugar levels, the higher
+    the CRP level will be. CRP levels generally correspond to insulin sensitivity.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
