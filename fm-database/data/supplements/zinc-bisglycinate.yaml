@@ -16,6 +16,7 @@ take_with_food: required
 linked_to_topics:
 - hairfall
 - knee-pain
+- celiac-disease
 linked_to_claims:
 - zinc-copper-ratio-balance-required
 notes_for_coach: Bisglycinate has superior absorption vs sulfate/oxide. Always balance
@@ -29,7 +30,7 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin & Mineral Inactive vs Bio-Available Form Cheatsheet
   quote: 'Zinc Bisglycinate: Bisglycinate has superior absorption'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

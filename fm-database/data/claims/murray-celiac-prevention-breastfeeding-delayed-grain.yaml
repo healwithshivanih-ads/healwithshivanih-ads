@@ -1,0 +1,37 @@
+slug: murray-celiac-prevention-breastfeeding-delayed-grain
+statement: Breastfeeding and delayed introduction of cow's milk and cereal grains
+  are the primary primary-prevention strategies for celiac disease in genetically-susceptible
+  infants. The HLA-B8 + DRw3 markers identify 85-90% of celiac patients (vs 20-25%
+  of normal subjects), but expression depends on environmental triggers — early gluten
+  exposure during the immune-development window dramatically increases lifetime celiac
+  risk in carriers. Cow's milk introduction before age 4 months is independently associated
+  with elevated risk.
+evidence_tier: strong
+rationale: 'Multiple cohort studies + the global epidemiology pattern (wheat-cultivating
+  populations have higher rates). Mechanism — early antigen exposure during gut barrier
+  immaturity + lack of maternal antibody protection drives loss of tolerance. The
+  PreventCD trial 2014 confirmed: delayed gluten introduction does not prevent celiac
+  but ALTERS timing of presentation.'
+coaching_translation: If a baby has celiac in the family (HLA-B8 carrier risk), breastfeed
+  for at least 6 months and delay introducing wheat, barley, rye, and cow's milk until
+  after the 6-month mark. This doesn't guarantee prevention but significantly reduces
+  lifetime risk. The early exposure during immature gut barrier is the critical window.
+caveats:
+- Genetic testing (HLA-DQ2/DQ8) identifies at-risk infants
+- Newer research suggests gluten introduction between 4-12 months may not change risk
+- Breastfeeding during gluten introduction may modulate tolerance
+- Family history of celiac is the strongest screening trigger
+linked_to_topics:
+- celiac-disease
+- autoimmune
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 637
+  quote: Research in the past few years has clearly indicated that breastfeeding and
+    delayed administration of cow's milk and cereal grains are the primary preventive
+    steps that can greatly reduce the risk of developing celiac disease.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

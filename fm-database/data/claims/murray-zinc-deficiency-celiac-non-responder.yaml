@@ -1,0 +1,39 @@
+slug: murray-zinc-deficiency-celiac-non-responder
+statement: Celiac patients who remain symptomatic despite strict gluten-free diet
+  adherence should be screened for ZINC deficiency — Murray identifies this as one
+  of two main reasons for apparent treatment failure (the other being misdiagnosis).
+  Celiac-driven malabsorption depletes zinc; zinc is required for villous regeneration
+  and mucosal healing; without zinc repletion, the villi cannot rebuild even when
+  the antigen is removed. Therapeutic zinc 30 mg/day in bisglycinate form for 3+ months,
+  paired with copper 1-2 mg to prevent zinc-induced copper deficiency.
+evidence_tier: plausible_emerging
+rationale: Long clinical observation + multiple zinc-status studies in celiac. Mechanism
+  — zinc cofactor for over 300 enzymes including those in epithelial regeneration;
+  chronic malabsorption + low intake compound deficiency.
+coaching_translation: If someone with celiac strictly avoids gluten for 3+ months
+  and STILL isn't getting better, check zinc levels. Zinc deficiency is one of the
+  top reasons people don't heal even on a perfect GF diet — you can't rebuild your
+  gut lining without it. Zinc bisglycinate 30 mg/day for 3 months, paired with copper
+  1-2 mg. Retest after.
+caveats:
+- Test serum zinc + RBC zinc; serum levels can be normal with cellular deficiency
+- Pair zinc with copper 1-2 mg to prevent zinc-induced copper deficiency
+- Take on empty stomach (food + calcium block absorption)
+- Bisglycinate or picolinate forms better than oxide
+linked_to_topics:
+- celiac-disease
+- autoimmune
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 641
+  quote: If a patient does not appear to respond, either the diagnosis is not correct
+    or there may be some obstacle to a cure, such as zinc deficiency (celiac disease
+    symptoms will not respond to gluten elimination if an underlying zinc deficiency
+    is present).
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,42 @@
+slug: murray-strict-gluten-free-curative
+statement: A strict, lifelong gluten-free diet is curative for celiac disease — 30%
+  respond clinically within 3 days, another 50% within a month, 10% within another
+  month; only 10% take 24-36 months for full recovery. If a patient on strict GF diet
+  fails to respond, either the diagnosis is wrong OR zinc deficiency is blocking recovery
+  (celiac symptoms will not resolve when underlying zinc deficiency is present). Hidden
+  gluten sources are pervasive — soy sauce, modified food starch, ice cream, soup,
+  beer, wine, vodka, whiskey, malt — making strict adherence challenging in modern
+  food environments.
+evidence_tier: strong
+rationale: Mechanism — removing the antigenic trigger allows villous architecture
+  to regenerate (3-12 month timeline). Zinc deficiency commonly secondary to malabsorption;
+  impaired wound healing prevents villous recovery.
+coaching_translation: 'A strict gluten-free diet IS the cure — 80% see clinical improvement
+  within a month. The catch: strict means strict. Hidden gluten in sauces, processed
+  foods, even alcohol (beer, malt whisky) can keep symptoms going. And if someone
+  seems unresponsive after 2-3 months of perfect adherence, check zinc — deficient
+  zinc blocks villous healing.'
+caveats:
+- Strict means ALL sources eliminated — cross-contamination matters
+- Oats may or may not be tolerated; trial individually (50g/day oats trial)
+- Continued dairy elimination initially until villous recovery complete
+- 10-day vs 24-month responder range — set patience expectations
+- Zinc 30 mg + with copper (if zinc 3+ months)
+linked_to_topics:
+- celiac-disease
+- autoimmune
+linked_to_supplements:
+- zinc
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 641
+  quote: Usually with gluten elimination, clinical improvement will be obvious within
+    a few days or weeks (30% respond within three days, another 50% within a month,
+    and 10% within another month). However, 10% of patients respond only after 24
+    to 36 months of gluten avoidance. If a patient does not appear to respond, either
+    the diagnosis is not correct or there may be some obstacle to a cure, such as
+    zinc deficiency.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

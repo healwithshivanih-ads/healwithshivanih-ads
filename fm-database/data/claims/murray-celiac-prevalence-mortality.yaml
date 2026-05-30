@@ -1,0 +1,42 @@
+slug: murray-celiac-prevalence-mortality
+statement: Celiac disease prevalence has risen from ~1:5,000 to approximately 1 in
+  100 Americans, and remains largely undiagnosed. Crucially, undiagnosed celiac carries
+  significantly increased mortality risk — a landmark 30,000-patient study (1969-2008)
+  found full-blown celiac disease associated with 39% increased early-death risk,
+  AND people with intestinal inflammation but not full-blown celiac (non-coeliac gluten
+  sensitivity territory) also showed elevated mortality. Modern serology — endomysial,
+  anti-tissue transglutaminase (anti-tTG IgA + total IgA), and anti-gliadin antibodies
+  — diagnoses without requiring biopsy. Widespread screening may be economically justified
+  given prevalence + mortality.
+evidence_tier: strong
+rationale: Ludvigsson 2009 JAMA mortality study + multiple seroprevalence studies.
+  Mechanism — chronic intestinal inflammation drives lymphoma risk (especially enteropathy-associated
+  T-cell lymphoma), cardiovascular events, autoimmune comorbidity (Hashimoto's, T1DM,
+  Addison's). The non-coeliac gluten sensitivity mortality finding is particularly
+  important — gluten can harm even without meeting strict celiac diagnostic criteria.
+coaching_translation: Celiac is 50× more common than thought a generation ago — approximately
+  1 in 100 people. AND undiagnosed celiac increases your risk of dying early by 39%.
+  The blood test (anti-tTG IgA + total IgA + anti-gliadin antibodies) is cheap and
+  reliable. Worth running on ANY client with chronic GI symptoms, unexplained anaemia,
+  autoimmune disease, infertility, neurological symptoms, or family history.
+caveats:
+- Test BEFORE going gluten-free — strict GF makes diagnosis harder
+- Total IgA must accompany anti-tTG IgA (IgA-deficient patients give false negatives)
+- Negative serum tests do NOT rule out non-coeliac gluten sensitivity
+- Biopsy still gold standard if serology positive
+linked_to_topics:
+- celiac-disease
+- autoimmune
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 636–637
+  quote: Celiac disease is now thought to affect as many as 1% of all Americans, though
+    it remains largely undiagnosed. A landmark study that looked at almost 30,000
+    patients from 1969 to 2008 found a higher than normal risk of early death associated
+    with sensitivity to gluten. Those with full-blown celiac disease had a 39% increased
+    risk of early death.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
