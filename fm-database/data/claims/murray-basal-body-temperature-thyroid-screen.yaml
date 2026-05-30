@@ -1,0 +1,35 @@
+slug: murray-basal-body-temperature-thyroid-screen
+statement: Basal body temperature (taken in the armpit for 10 minutes immediately
+  on waking, before any movement) reflects metabolic rate and is a low-cost screening
+  tool for thyroid status — values consistently below 97.6°F suggest possible hypothyroidism,
+  though specificity is limited by adrenal function, body composition, activity level,
+  menstrual status, and immune function. Menstruating women should measure on cycle
+  days 2–4.
+evidence_tier: fm_specific_thin
+rationale: Long-standing functional medicine adjunct screen (Barnes 1976). Specificity
+  is poor (confounded by many factors per Murray himself); sensitivity for severe
+  hypothyroidism is reasonable. Useful as a free at-home prompt for follow-up labs,
+  not a diagnostic. Strength of evidence sits in fm_specific_thin territory.
+coaching_translation: 'A simple at-home check: 10 minutes with a thermometer in your
+  armpit on waking — before moving. Repeat on 3 mornings (menstruating women on cycle
+  days 2, 3, 4). Below 97.6°F consistently is worth flagging to your doctor for a
+  thyroid panel, but it''s a hint, not a diagnosis.'
+caveats:
+- Many false positives (adrenal under-function, sleep deprivation, ageing slow metabolism)
+- Not a substitute for TSH, free T4, free T3, TPO Ab, anti-Tg testing
+- Useful when client suspects thyroid issue but standard labs were 'within range'
+linked_to_topics:
+- hypothyroidism
+- thyroid-dysfunction
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, pg 1132–1133
+  quote: Basal body temperature should be between 97.6 and 98.2°F. Low basal body
+    temperatures are quite common and may reflect hypothyroidism.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

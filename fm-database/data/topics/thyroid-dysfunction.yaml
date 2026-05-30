@@ -4,9 +4,10 @@ aliases:
 - thyroid disease
 - thyroid imbalance
 - thyroid disorder
-summary: A broad clinical area encompassing disruptions in thyroid hormone production, conversion, and cellular sensitivity.
-  Includes hypothyroidism, subclinical hypothyroidism, and autoimmune thyroid disease. The thyroid gland regulates metabolism,
-  energy production, and many bodily functions via T4/T3 hormones.
+summary: A broad clinical area encompassing disruptions in thyroid hormone production,
+  conversion, and cellular sensitivity. Includes hypothyroidism, subclinical hypothyroidism,
+  and autoimmune thyroid disease. The thyroid gland regulates metabolism, energy production,
+  and many bodily functions via T4/T3 hormones.
 common_symptoms:
 - lethargy
 - unexplained-weight-gain
@@ -30,17 +31,24 @@ key_mechanisms:
 - impaired-t4-to-t3-conversion
 - reverse-t3-dominance
 - thyroid-autoimmunity
-coaching_scope_notes: Coaches can support thyroid health through nutrient optimization, dietary changes, stress management,
-  and lifestyle coaching. Lab interpretation, medication management, and supplement dosing require clinician oversight.
-clinician_scope_notes: Diagnosis requires TSH, free T4, thyroid antibody panel (Anti-TPO, Anti-Tg), and possibly thyroid ultrasound.
-  Hormone replacement therapy (levothyroxine or NDT) is a clinician decision.
+coaching_scope_notes: Coaches can support thyroid health through nutrient optimization,
+  dietary changes, stress management, and lifestyle coaching. Lab interpretation,
+  medication management, and supplement dosing require clinician oversight.
+clinician_scope_notes: Diagnosis requires TSH, free T4, thyroid antibody panel (Anti-TPO,
+  Anti-Tg), and possibly thyroid ultrasound. Hormone replacement therapy (levothyroxine
+  or NDT) is a clinician decision.
 evidence_tier: strong
 sources:
 - id: vitaone-health-coaching-toolkit
   location: Understanding Hashimoto's Hypothyroidism
-  quote: The thyroid gland, located at the base of the neck, is responsible for producing hormones that regulate metabolism,
-    energy production, and many other bodily functions.
-version: 1
+  quote: The thyroid gland, located at the base of the neck, is responsible for producing
+    hormones that regulate metabolism, energy production, and many other bodily functions.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism
+  quote: Natural treatment strategies for normalizing thyroid function vary depending
+    on whether there is an autoimmune hypothyroid condition, clinical hypothyroidism,
+    subclinical hypothyroidism, or hypothyroid syndrome.
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani

@@ -1,0 +1,49 @@
+id: murray-pizzorno-2012-encyclopedia
+title: The Encyclopedia of Natural Medicine, Third Edition
+authors:
+- Murray MT
+- Pizzorno JE
+year: 2012
+publisher: Atria Books / Simon & Schuster
+source_type: textbook
+quality: high
+url: https://www.simonandschuster.com/books/The-Encyclopedia-of-Natural-Medicine-Third-Edition
+notes: 'The Murray-Pizzorno *Encyclopedia of Natural Medicine* (3rd ed, 2012, ISBN
+  978-1-4516-6300-6).
+
+  83 condition chapters (Section IV), preceded by foundational chapters on diet /
+  supplements /
+
+  detoxification / digestion / cardiovascular / immune / inflammation / stress.
+
+  Co-authored by two of the founding figures of naturopathic medicine — Joseph Pizzorno
+
+  (co-founder of Bastyr University; lead author of the parallel professional *Textbook
+  of
+
+  Natural Medicine*) and Michael Murray (Natural Factors product development).
+
+
+  Caveat — Murray has a commercial relationship with Natural Factors. Brand-specific
+  product
+
+  recommendations should be treated as commercially influenced; dose ranges + nutrient
+
+  recommendations are evidence-based and generally cited.
+
+
+  Ingestion plan: chat-ingest, by chapter, no API. Priority queue is in
+
+  fm-database/data/_murray_chapters_queue.yaml. This source entry covers ALL future
+  Murray
+
+  chapter ingests; new claims should cite it as `id: murray-pizzorno-2012-encyclopedia`
+  with
+
+  `location: Chapter NN — <title>, pg N`.
+
+  '
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

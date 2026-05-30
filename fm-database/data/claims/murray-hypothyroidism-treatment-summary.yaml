@@ -1,0 +1,47 @@
+slug: murray-hypothyroidism-treatment-summary
+statement: Murray & Pizzorno's evidence-based functional protocol for hypothyroidism
+  includes iodine 300 mcg/day (avoiding sustained intake above 600 mcg/day which can
+  paradoxically suppress thyroid function), selenium 100–200 mcg/day, zinc 15–30 mg/day,
+  copper 1–1.5 mg/day, vitamin D3 2,000–4,000 IU/day (titrated to blood level), fish
+  oil 1,000 mg EPA+DHA, and a flavonoid-rich antioxidant providing 3,000–6,000 ORAC
+  units/day, on a low-goitrogen diet with cooked rather than raw brassicas / soy /
+  cassava / millet.
+evidence_tier: plausible_emerging
+rationale: Consolidated clinical-protocol summary from the Murray-Pizzorno textbook
+  — a leading naturopathic reference. Doses are within ranges supported by individual
+  nutrient trials (selenium for thyroid antibodies, iodine RDI, vitamin D adequacy,
+  etc.) and are clinician-vetted for safety. Best used as a starting framework — individual
+  nutrient evidence carries varied tiers (selenium for autoimmune thyroid is strong;
+  copper 1–1.5 mg is more conventional-textbook than RCT-driven).
+coaching_translation: 'The Murray naturopathic protocol for thyroid recovery: iodine
+  300 mcg (not more — too much shuts the thyroid down), selenium 100–200 mcg, zinc
+  15–30 mg, vitamin D 2,000–4,000 IU, fish oil 1,000 mg EPA+DHA, plus copper, an antioxidant,
+  and a diet where you cook brassicas / soy / millet rather than eating them raw.'
+caveats:
+- Brand-author conflict — Murray works for Natural Factors. Doses are reasonable;
+  brand specificity is not endorsed.
+- Generic protocol — does not replace per-client assessment of iodine status, Hashimoto's
+  antibody titres, and meds.
+- Iodine > 600 mcg/day sustained can suppress thyroid (paradoxical effect)
+- Vitamin D should ideally be titrated to 25(OH)D blood level
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- thyroid-dysfunction
+linked_to_supplements:
+- selenium
+- iodine
+- zinc
+- vitamin-d
+- fish-oil-epa-dha
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, Treatment Summary pg 1136–1137
+  quote: 'Key individual nutrients: Copper 1 to 1.5 mg/day, Iodine 300 mcg/day, Selenium
+    100 to 200 mcg/day, Zinc 15 to 30 mg/day, Vitamin D3 2,000 to 4,000 IU/day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

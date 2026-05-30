@@ -1,0 +1,36 @@
+slug: murray-gluten-hashimoto-antibodies
+statement: Gluten sensitivity may drive the formation of thyroid-related autoantibodies
+  in susceptible individuals; Murray & Pizzorno recommend ruling out gluten sensitivity
+  as part of any hypothyroidism workup, particularly for Hashimoto's thyroiditis,
+  given evidence of cross-reactivity between gliadin antibodies and thyroid tissue.
+evidence_tier: plausible_emerging
+rationale: Mechanism (molecular mimicry between transglutaminase 2 in coeliac disease
+  and thyroid peroxidase) is well-described in immunology literature. Observational
+  data link coeliac and Hashimoto's. The 'gluten-free trial reduces TPO Abs' claim
+  has weaker direct RCT evidence but is consistent enough to justify a 3–6 month gluten-free
+  trial as part of any FM Hashimoto's protocol.
+coaching_translation: 'For anyone with Hashimoto''s or unexplained hypothyroidism:
+  a 3–6 month strict gluten-free trial is part of the standard FM workup. The proteins
+  in wheat can mimic thyroid tissue and feed the autoimmune attack in sensitive people.'
+caveats:
+- Strength of evidence for gluten-free reducing TPO antibodies in non-coeliac Hashimoto's
+  is moderate at best (small RCTs)
+- 3–6 month strict trial needed before judging response
+- Coeliac antibodies (anti-tTG IgA + total IgA) worth checking before going GF — strict
+  GF before testing makes coeliac harder to diagnose
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+- celiac-disease
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, Treatment Summary pg 1136
+  quote: We also recommend ruling out gluten sensitivity, as gluten may lead to the
+    formation of thyroid-related autoantibodies in sensitive individuals.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

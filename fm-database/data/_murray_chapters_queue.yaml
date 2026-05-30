@@ -1,0 +1,97 @@
+source_id: murray-pizzorno-2012-encyclopedia
+pdf_path: /Users/shivani/Downloads/The Encyclopedia O fNatural Medicine.pdf
+extracted_text: /tmp/murray-extract/full.txt
+last_updated: '2026-05-30'
+
+# Priority queue — chapters ordered by active-client impact.
+# Status: pending | in_progress | ingested
+chapters:
+  - ch: 68
+    title: Hypothyroidism
+    body_pg_start: 1126
+    body_pg_end: 1138
+    priority: 1
+    serves: [cl-004 Dhanishta — Hashimoto's]
+    status: ingested
+    batch_id: 20260530T100000-murray-encyclopedia-ch68-chat
+  - ch: 64
+    title: High Cholesterol and/or Triglycerides
+    body_pg_start: 1072
+    body_pg_end: 1126
+    priority: 2
+    serves: [cl-005 Hariharan, cl-006 Geetika, cl-008 Sudarshan, nidhi-jain]
+    status: pending
+  - ch: 75
+    title: Menopause
+    body_pg_start: 1230
+    body_pg_end: ~  # to find
+    priority: 3
+    serves: [cl-006 Geetika perimenopause]
+    status: pending
+  - ch: 93
+    title: Sports Injuries, Tendinitis, and Bursitis
+    body_pg_start: 1511
+    body_pg_end: ~
+    priority: 4
+    serves: [cl-005 Hariharan, cl-011 Deepti]
+    status: pending
+  - ch: 45
+    title: Diabetes
+    body_pg_start: 357
+    body_pg_end: ~
+    priority: 5
+    serves: [cl-008 Sudarshan T2DM]
+    status: pending
+  - ch: 23
+    title: Anxiety
+    body_pg_start: 497
+    body_pg_end: ~
+    priority: 6
+    serves: [cl-011 Deepti]
+    status: pending
+  - ch: 71
+    title: Insomnia
+    body_pg_start: 1177
+    body_pg_end: 1230
+    priority: 7
+    serves: [cl-011 Deepti]
+    status: pending
+  - ch: 85
+    title: Premenstrual Syndrome
+    body_pg_start: 1398
+    body_pg_end: 1451
+    priority: 8
+    serves: [future PMS]
+    status: pending
+  - ch: 89
+    title: Rheumatoid Arthritis
+    body_pg_start: 1466
+    body_pg_end: 1511
+    priority: 9
+    serves: [cl-004 autoimmune adjacent]
+    status: pending
+  - ch: 88
+    title: Psoriasis
+    body_pg_start: 1451
+    body_pg_end: 1466
+    priority: 10
+    serves: [future]
+    status: pending
+  - ch: 50
+    title: Eczema
+    body_pg_start: 920
+    body_pg_end: ~
+    priority: 11
+    serves: [cl-004 autoimmune-dermatitis adjacent]
+    status: pending
+
+# How to resume:
+# 1. Open /tmp/murray-extract/full.txt
+# 2. Pick next pending chapter; jump to "=== PG <body_pg_start> ==="
+# 3. Read up to next chapter's body_pg_start
+# 4. Build batch dir data/staging/<timestamp>-murray-encyclopedia-ch<NN>-chat/{sources,claims}
+# 5. Source already exists (murray-pizzorno-2012-encyclopedia) — don't duplicate;
+#    just cite location: "Chapter NN — <title>, pg N" + verbatim quote
+# 6. Build 5-7 claims with rationale + caveats + coaching_translation
+# 7. Cross-link to existing topics + supplements
+# 8. Run sweep + approve --update; git commit; mark chapter ingested here.

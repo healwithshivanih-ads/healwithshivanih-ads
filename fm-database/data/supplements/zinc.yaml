@@ -99,6 +99,8 @@ linked_to_claims:
 - bph-zinc-reduces-prostate-size
 - zinc-mucin-production-curative-pu
 - zinc-protective-beta-cells-diabetics-excrete-excess
+- murray-zinc-restores-thyroid-function
+- murray-hypothyroidism-treatment-summary
 notes_for_coach: 30 mg/day for diabetics. Take with food to avoid nausea. Long-term
   use above 30 mg may deplete copper — consider 2 mg copper supplementation with sustained
   use.
@@ -193,9 +195,12 @@ sources:
   location: Nutritional and Herbal Supplements / Zinc
   quote: Diabetics excrete Zn excessively in urine. Supplements improve insulin levels
     in T1DM and T2DM. Dose for diabetics is 30 mg q.d.
-version: 26
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, Treatment Summary
+  quote: Zinc included in Murray hypothyroidism nutrient protocol.
+version: 27
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 pregnancy_safety: safe
 lactation_safety: safe

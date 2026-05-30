@@ -1,0 +1,40 @@
+slug: murray-iodine-upper-limit-thyroid-suppression
+statement: Sustained iodine intake above ~600 mcg/day can paradoxically suppress thyroid
+  hormone synthesis (Wolff-Chaikoff effect persistence). Murray & Pizzorno recommend
+  dietary plus supplementary iodine NOT exceed 600 mcg/day for any extended period,
+  and supplemental iodine itself in excess of 1,000 mcg/day is listed among medications/exposures
+  that induce goiter.
+evidence_tier: strong
+rationale: The Wolff-Chaikoff effect (acute iodine excess → transient T4 suppression)
+  is well-established physiology; persistence of the effect in susceptible individuals
+  (esp. those with Hashimoto's, nodular goiter, history of postpartum thyroiditis)
+  is documented. Iodine-induced hypothyroidism is a recognised clinical entity. This
+  is a SAFETY CEILING claim — important to counterbalance enthusiastic 'high-dose
+  iodine' protocols circulating in functional medicine circles.
+coaching_translation: More iodine is NOT better. Above about 600 mcg/day taken consistently,
+  iodine can do the opposite of what's intended — it can shut down thyroid production
+  rather than support it. Especially risky in anyone with Hashimoto's antibodies or
+  nodules. Stick to the 150–300 mcg/day RDI-range unless a clinician is monitoring
+  you.
+caveats:
+- Especially relevant for Hashimoto's patients — iodine can flare antibody titres
+- High-dose iodine (12–50 mg) protocols (Brownstein, Abraham) are controversial and
+  out of scope for coaching without clinician oversight
+- Acute Wolff-Chaikoff is normally transient (~10 days); persistence is the concern
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements:
+- iodine
+linked_to_mechanisms: []
+out_of_scope_notes: High-dose iodine protocols are clinician scope only; this claim
+  is a safety ceiling, not a discouragement of physiological dosing.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, pg 1129, 1134
+  quote: It is recommended that dietary levels or supplementation of iodine not exceed
+    600 mcg per day for any length of time.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

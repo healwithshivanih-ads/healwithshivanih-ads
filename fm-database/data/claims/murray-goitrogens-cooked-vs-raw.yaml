@@ -1,0 +1,38 @@
+slug: murray-goitrogens-cooked-vs-raw
+statement: Goitrogenic foods — brassica family (cabbage, kale, broccoli, brussels
+  sprouts, mustard, cauliflower, turnips), cassava, soybeans, peanuts, pine nuts,
+  and millet — block iodine utilisation when eaten raw. Cooking inactivates the goitrogenic
+  compounds (glucosinolates and progoitrin), so cooked versions are largely safe for
+  thyroid patients.
+evidence_tier: plausible_emerging
+rationale: Mechanism (myrosinase-mediated conversion of glucosinolates to thiocyanates
+  that block sodium-iodide symporter) is well-described; heat denatures the relevant
+  enzymes and unstable intermediates. Practical clinical-translation claim. Most thyroid
+  patients don't need to AVOID brassicas (which carry valuable sulforaphane and indole-3-carbinol)
+  — they need to COOK them.
+coaching_translation: Goitrogens — cabbage, kale, broccoli, soy, millet, cassava —
+  only block iodine when raw. Cooked versions are fine for thyroid patients. Don't
+  ban the cruciferous family from a Hashimoto's diet; just cook it. The sulforaphane
+  in cooked broccoli is actively helpful for autoimmune detox.
+caveats:
+- In already very iodine-deficient diets, even cooked goitrogens may contribute marginally
+- Raw cruciferous smoothies daily are the realistic clinical concern
+- Soy isoflavones additionally bind thyroid peroxidase — soy moderation is sensible
+  in Hashimoto's regardless of cooking
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, pg 1129–1136
+  quote: Cooking usually inactivates goitrogens. Goitrogens to be limited include
+    brassica-family foods, cassava root, soybeans, peanuts, pine nuts, and millet.
+    When these foods are eaten, they should be cooked to break down their goitrogenic
+    constituents.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

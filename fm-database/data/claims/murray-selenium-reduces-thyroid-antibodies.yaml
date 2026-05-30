@@ -1,0 +1,37 @@
+slug: murray-selenium-reduces-thyroid-antibodies
+statement: Selenium supplementation (100–200 mcg/day) normalises thyroid activity
+  and decreases thyroid antibody levels in autoimmune thyroid conditions; selenium
+  deficiency reduces extra-thyroidal T4-to-T3 conversion (a thyroid-blood T4-T3 conversion
+  that is preserved within the gland itself) and elevates T4 + TSH.
+evidence_tier: strong
+rationale: Cited in Murray & Pizzorno; selenium-for-Hashimoto's is one of the better-supported
+  FM nutrient claims with multiple RCTs (Gärtner 2002, Mazokopakis 2007, Toulis 2010
+  meta-analysis showing ~40% TPO-Ab reduction at 6 months). Effect size meaningful
+  and consistent across trials.
+coaching_translation: Selenium 100–200 mcg/day is the single best-evidenced nutrient
+  for Hashimoto's. It lowers TPO antibodies, supports the conversion of inactive T4
+  into active T3 outside the thyroid, and corrects a deficiency that's surprisingly
+  common.
+caveats:
+- Use selenomethionine or selenium-enriched yeast; sodium selenite is less bioavailable
+- Upper limit ~400 mcg/day; selenium toxicity (selenosis) above 800 mcg/day
+- Brazil nuts vary wildly in selenium content (40–500 mcg per nut); not reliable as
+  sole source
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+- thyroid-dysfunction
+linked_to_supplements:
+- selenium
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, pg 1134–1135
+  quote: Supplementation with selenium results in a decrease in T4 and TSH, a normalization
+    of thyroid activity, and decreased thyroid antibody levels in autoimmune thyroid
+    conditions.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

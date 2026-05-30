@@ -40,6 +40,8 @@ linked_to_claims:
 - selenium-antioxidant-support-phase-i-detox
 - antioxidant-nutrients-restore-metabolic-resilience
 - vitamin-e-coq10-selenium-synergistic-antioxidant
+- murray-selenium-reduces-thyroid-antibodies
+- murray-hypothyroidism-treatment-summary
 notes_for_coach: Component of glutathione peroxidase; works with vitamin E to prevent
   free radical damage to cell membranes. Low selenium status associated with CAD.
   Do not exceed 400 mcg/day (toxicity threshold).
@@ -108,9 +110,12 @@ sources:
   quote: Selenium is a component of antioxidant enzyme glutathione peroxidase. This
     enzyme works with vitamin E to prevent free radical damage to cell membranes.
     Low selenium status is associated with CAD.
-version: 16
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, Treatment Summary
+  quote: Selenium included in Murray hypothyroidism nutrient protocol.
+version: 17
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - selenium (deiodinase enzymes)

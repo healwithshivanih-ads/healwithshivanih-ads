@@ -1,0 +1,34 @@
+slug: murray-zinc-restores-thyroid-function
+statement: Zinc supplementation can re-establish normal thyroid function in zinc-deficient
+  hypothyroid patients, even when serum T4 levels appear normal — particularly relevant
+  in older adults, where both zinc deficiency and hypothyroidism are common.
+evidence_tier: plausible_emerging
+rationale: Murray cites Nishiyama 1994 and others. Zinc is a cofactor for deiodinases
+  (T4→T3 conversion) and for thyroid receptor zinc-finger transcription. Mechanism
+  solid; clinical RCTs in zinc-deficient sub-populations show benefit; less convincing
+  in zinc-replete patients.
+coaching_translation: Zinc 15–30 mg/day helps thyroid function — especially in older
+  adults, who are often quietly zinc-deficient. It's a cofactor in turning the inactive
+  T4 into the active T3.
+caveats:
+- Match dose with copper (zinc-induced copper deficiency at higher doses or longer
+  durations)
+- Take away from coffee/iron/calcium for absorption
+- Pair with 1–2 mg copper if taking ≥30 mg zinc/day for > 3 months
+linked_to_topics:
+- hypothyroidism
+- thyroid-dysfunction
+linked_to_supplements:
+- zinc
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 68 — Hypothyroidism, pg 1134
+  quote: Supplementation with zinc has been shown to reestablish normal thyroid function
+    in hypothyroid patients who were zinc deficient, even though they had supposedly
+    normal serum T4 levels.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
