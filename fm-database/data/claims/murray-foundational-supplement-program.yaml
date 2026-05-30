@@ -1,0 +1,45 @@
+slug: murray-foundational-supplement-program
+statement: 'Murray''s foundational supplement program for every adult — non-negotiable
+  regardless of specific condition: (1) High-quality multivitamin/multimineral supplement,
+  (2) Plant-based antioxidants (flavonoid extracts OR green foods providing 3,000-6,000
+  ORAC units/day), (3) Fish oil providing 1,000 mg combined EPA+DHA/day, (4) Vitamin
+  D3 2,000-4,000 IU/day titrated to 25(OH)D blood level 50-80 ng/ml. These four pillars
+  address the documented marginal nutrient deficiencies present in ~50% of the US
+  population (NHANES data) and form the substrate on which condition-specific protocols
+  build.'
+evidence_tier: strong
+rationale: NHANES + Ten-State Nutrition Survey + USDA data confirming widespread marginal
+  deficiencies. Mechanism — enzymes require vitamin/mineral cofactors; chronic borderline
+  deficiency impairs hundreds of enzymatic reactions; supplementation restores cofactor
+  availability.
+coaching_translation: 'Every adult needs four foundational supplements regardless
+  of any specific condition: (1) a quality multivitamin, (2) a flavonoid/antioxidant
+  complex, (3) fish oil 1,000 mg combined EPA+DHA, (4) vitamin D3 (2,000-4,000 IU
+  titrated to 50-80 ng/ml blood level). This is the FM substrate — condition-specific
+  supplements build on top of this base, not instead of it.'
+caveats:
+- Multivitamin quality varies enormously — avoid cheap drug-store brands
+- Vitamin D dosing requires blood-level testing (vitamin D receptor polymorphisms)
+- Fish oil quality + freshness critical
+- Plant antioxidants > synthetic isolated vitamins for general use
+- Foundational does NOT mean condition-treating
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-d3
+- vitamin-d
+- fish-oil
+- fish-oil-epa-dha
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 6 — Supplementary Measures, Quick Review pg 142
+  quote: 'The components of a foundational nutritional supplement program are: Take
+    a high-quality multiple vitamin and mineral supplement. Take extra plant-based
+    antioxidants such as flavonoid extracts or green foods. Take a high-quality fish
+    oil product to provide 1,000 mg EPA + DHA per day. Take enough vitamin D3 (typically
+    2,000 to 4,000 IU per day) to elevate your blood levels to the optimal range.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

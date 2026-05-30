@@ -1,0 +1,38 @@
+slug: murray-marginal-nutrient-deficiency-prevalence
+statement: 'Marginal nutrient deficiencies exist in approximately 50% of the US population
+  per government surveillance (NHANES I-III + 2007-8, Ten-State Nutrition Survey,
+  USDA studies). These are NOT outright vitamin-deficiency disease states but rather
+  suboptimal status that impairs hundreds of enzymatic reactions and contributes to
+  chronic disease risk. The most commonly deficient nutrients in modern Western diets:
+  vitamin D, magnesium, zinc, B-vitamins (especially B6, folate, B12), omega-3 fatty
+  acids, vitamin C, calcium. Functional medicine assesses these via serum testing
+  (vitamin D, B12, ferritin, RBC magnesium, omega-3 index) rather than relying on
+  absence of overt deficiency disease.'
+evidence_tier: strong
+rationale: Government-sponsored nutrition surveys cited. Mechanism — modern food processing
+  strips micronutrients; soil mineral depletion reduces produce content; lifestyle
+  factors (caffeine, alcohol, medications) increase nutrient requirements. Marginal
+  deficiency model bridges clinical nutrition + functional medicine.
+coaching_translation: 'About half of all adults are marginally deficient in key nutrients
+  — not enough to cause classic deficiency disease, but enough to impair energy, cognition,
+  immunity, and increase chronic disease risk. The most common gaps: vitamin D, magnesium,
+  zinc, B-vitamins, omega-3s. Test these specifically (25-OH-D, RBC magnesium, B12,
+  ferritin, omega-3 index) rather than waiting for symptoms.'
+caveats:
+- Functional testing (RBC magnesium, omega-3 index) better than serum for many nutrients
+- Vegetarians + vegans need B12, iron, zinc, omega-3 attention
+- Athletes + chronically stressed have higher requirements
+- Medications affect status (PPI + B12, metformin + B12, statins + CoQ10)
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 6 — Supplementary Measures, pg 121
+  quote: Marginal nutrient deficiencies exist in a substantial portion of the U.S.
+    population (approximately 50%).
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
