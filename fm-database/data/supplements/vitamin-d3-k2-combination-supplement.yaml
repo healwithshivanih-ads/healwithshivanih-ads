@@ -22,8 +22,12 @@ linked_to_topics:
 - vitamin-d3-k2-synergy
 - vitamin-d3
 - vitamin-k2
+- osteoporosis
+- bone-health
 linked_to_claims:
 - vitamin-d3-k2-preferred-combination
+- murray-vitamin-d-osteoporosis-5000iu-target
+- murray-vitamin-k2-mk7-osteocalcin
 notes_for_coach: The preferred ratio cited is 5,000 IU D3 with 200 mcg K2. This combination
   is ideal for most supplementation protocols as it provides both calcium absorption
   support (D3) and calcium direction to bone (K2). Always recommend with fat-containing
@@ -37,7 +41,10 @@ sources:
   location: Vitamin D + K2 Synergy Section
   quote: ideally a supplementation of vitamin D of 5000 international units and K1200
     MCG is preferred.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

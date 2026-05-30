@@ -1,0 +1,48 @@
+slug: murray-weight-bearing-exercise-bone
+statement: 'Weight-bearing exercise — walking, dancing, hiking, jumping, stair-climbing
+  — and strength training (resistance with progressive overload) are the non-pharmacologic
+  foundations of bone health, building bone density during youth and slowing bone
+  loss with age. Murray''s protocol: weight-bearing exercise 4× per week PLUS strength
+  training 2+ times per week. Mechanism: bone responds to mechanical loading through
+  Wolff''s law — osteocytes sense strain and signal osteoblasts to deposit new bone
+  matrix where the mechanical demand is greatest. Sedentary lifestyle is one of the
+  major modifiable risk factors for osteoporosis.'
+evidence_tier: strong
+rationale: Decades of trial + epidemiological data. Mechanism — osteocytes are mechanosensors
+  via the lacuno-canalicular network; mechanical strain → sclerostin downregulation
+  → Wnt signalling → osteoblast activation. Effect is site-specific (tennis players
+  have greater BMD in dominant arm; cyclists in legs but not spine). Loading must
+  be impact + progressive to be effective; swimming and cycling alone are insufficient
+  for bone.
+coaching_translation: 'Bone responds to LOADING. Without weight-bearing impact + resistance,
+  bone doesn''t get the signal to maintain density. Murray''s prescription: weight-bearing
+  exercise 4 days per week (walking, dancing, hiking, jumping) PLUS strength training
+  2+ days per week (bodyweight squats, resistance bands, dumbbells). Swimming and
+  cycling alone do NOT count for bone — they''re great for cardiovascular fitness
+  but bone needs gravity + impact. For older clients, well-supervised resistance training
+  is safer + more effective than walking alone.'
+caveats:
+- Swimming + cycling alone insufficient for bone — need impact + resistance
+- Progressive overload — gradually increase weight or resistance over weeks
+- Form > heavy weight, especially in clients with existing osteopenia
+- Established severe osteoporosis with vertebral fractures — avoid spinal flexion
+  + heavy lifting; physiotherapist guidance
+- Tai chi specifically helps balance + fall prevention in older clients
+- Jumping/plyometric loading particularly effective in pre-menopausal years
+linked_to_topics:
+- osteoporosis
+- bone-health
+- perimenopause-and-menopause
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis, Treatment Summary pg 1361
+  quote: Weight-bearing exercise four times a week plus strength training two or more
+    times a week. The benefits of physical activity in reducing the risk of osteoporosis
+    cannot be overemphasized.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

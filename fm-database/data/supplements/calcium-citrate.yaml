@@ -16,6 +16,8 @@ take_with_food: optional
 linked_to_topics:
 - knee-pain
 - premenstrual-syndrome
+- osteoporosis
+- bone-health
 notes_for_coach: Citrate form absorbed without stomach acid (preferred over carbonate
   for older adults or PPI users). Always pair with vitamin D3 and K2. Hydroxyapatite
   is a natural alternative that also provides phosphorus and other bone minerals.
@@ -25,6 +27,8 @@ evidence_tier: strong
 linked_to_mechanisms: []
 linked_to_claims:
 - murray-calcium-1200mg-pms
+- murray-calcium-alone-insufficient-osteoporosis
+- murray-ppi-acid-blockers-hip-fracture-risk
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Calcium & Phosphorus – The Bone Builders
@@ -32,7 +36,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

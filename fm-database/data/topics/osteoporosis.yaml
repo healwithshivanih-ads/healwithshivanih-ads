@@ -52,8 +52,11 @@ sources:
     with serum 25(OH)D3 and inversely with fractures of all types. Osteocalcin pulls
     calcium into bone, and matrix Gla protein prevents calcium deposition in arteries
     — both vitamin K-dependent proteins.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

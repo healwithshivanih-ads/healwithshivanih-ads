@@ -1,0 +1,54 @@
+slug: murray-vitamin-k2-mk7-osteocalcin
+statement: Vitamin K2 (specifically MK-7, found concentrated in natto and produced
+  by gut bacteria) activates osteocalcin — the protein that ANCHORS calcium molecules
+  into bone matrix. Without adequate K2, calcium fails to deposit in bone properly
+  and may instead deposit in soft tissue and arteries. Dose 100 mcg/day MK-7 (half-life
+  96 hours vs 8 hours for K1 and MK-4), 180 mcg/day in organ transplant osteoporosis
+  trial, or 360 mcg/day in early menopause trials. Vitamin K appears to reduce fracture
+  risk INDEPENDENT of effects on bone mineral density — suggesting it works by improving
+  bone tensile strength rather than raw density.
+evidence_tier: strong
+rationale: Multiple trials cited including the 5 mg K1 trial (postmenopausal osteopenia
+  — fewer fractures, no BMD change) + natto epidemiology + Nurses Health Study (low
+  dietary K1 = increased hip fractures). Mechanism — K is the cofactor for the gamma-carboxylase
+  enzyme that converts glutamate residues to gamma-carboxyglutamate (Gla) on osteocalcin,
+  enabling calcium binding. MK-7 superiority over K1 + MK-4 reflects bioavailability
+  + half-life. Pairs essentially with vitamin D + calcium — the trio is the modern
+  FM bone-protective core.
+coaching_translation: Vitamin K2 (MK-7 form) is the third leg of the bone-health stool
+  — calcium provides the building block, vitamin D opens the door to absorption, and
+  K2 directs the calcium INTO bone rather than into arteries and soft tissue. 100
+  mcg/day MK-7 is the standard dose. Concentrated in natto (fermented soybeans, traditional
+  Japanese food) and small amounts in aged cheeses and egg yolks. Important — K1 from
+  leafy greens is NOT the same as K2 for bone health. Pair routinely with vitamin
+  D and calcium.
+caveats:
+- MK-7 form preferred (half-life 96 hours vs 8 hours for K1 or MK-4)
+- K2 may reduce fracture risk WITHOUT improving BMD on scans — don't expect DEXA changes
+- Warfarin contraindication — K antagonist, will reduce anticoagulant effect
+- Newer DOACs (apixaban, dabigatran) are NOT affected by vitamin K
+- Pair with calcium + vitamin D for full bone-direction effect
+- Pregnancy + breastfeeding safety established
+linked_to_topics:
+- osteoporosis
+- bone-health
+- perimenopause-and-menopause
+- menopause
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- vitamin-k2
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis, pg 1346, 1354–1355
+  quote: A deficiency of vitamin K leads to impaired bone health due to inadequate
+    osteocalcin levels. MK7 has been found in animal studies to be more potent and
+    more bioavailable as well as to have a longer half-life than MK4. There is no
+    question that vitamin K is performing a vital function in bone health and appears
+    to reduce fractures, but it is unlikely to produce a significant improvement in
+    BMD on its own.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

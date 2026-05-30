@@ -88,6 +88,8 @@ linked_to_topics:
 - chronic-stress
 - sleep-quality
 - premenstrual-syndrome
+- osteoporosis
+- bone-health
 linked_to_mechanisms: []
 linked_to_claims:
 - magnesium-glycinate-improves-sleep-quality
@@ -123,6 +125,7 @@ linked_to_claims:
 - murray-magnesium-pyruvate-anxiety
 - murray-nocturnal-hypoglycemia-sleep-maintenance
 - murray-b6-magnesium-pms-foundation
+- murray-calcium-alone-insufficient-osteoporosis
 notes_for_coach: Glycinate form is well-tolerated and preferred for its calming and
   sleep-supportive effects. Recommended for PPI-induced depletion and LCHF adaptation
   electrolyte support. Dosing range to be confirmed by clinician.
@@ -216,8 +219,11 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
 evidence_tier: plausible_emerging
-version: 26
+version: 27
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

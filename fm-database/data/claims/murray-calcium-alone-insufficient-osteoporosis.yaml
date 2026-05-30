@@ -1,0 +1,55 @@
+slug: murray-calcium-alone-insufficient-osteoporosis
+statement: 'Calcium supplementation ALONE provides only modest osteoporosis protection
+  — meta-analysis of trials showed calcium 500–2,000 mg/day produced only a 2.05%
+  total body bone-loss reduction vs placebo. Calcium combined with vitamin D reduced
+  hip fractures by 12% overall, but 29% among adherent women (the Women''s Health
+  Initiative subgroup analysis). The take-home: calcium needs vitamin D + vitamin
+  K + magnesium + boron + adequate phosphorus to actually build bone. There is NO
+  benefit from going above 1,000 mg/day calcium supplementation — higher doses impair
+  magnesium and other mineral absorption.'
+evidence_tier: strong
+rationale: Shea 2002 meta-analysis + WHI 2006 cited. Mechanism — calcium is necessary
+  but not sufficient for bone matrix formation; vitamin D needed for intestinal absorption;
+  vitamin K for osteocalcin activation; magnesium for hydroxyapatite crystal formation;
+  boron for vitamin D activation. The 'calcium alone' messaging that dominated 1990s-2000s
+  public health was incomplete. Modern FM approach treats calcium as ONE of several
+  required cofactors.
+coaching_translation: The old 'take calcium for your bones' advice is incomplete.
+  Calcium alone gives only marginal benefit. To actually build and protect bone, you
+  need calcium PLUS vitamin D PLUS vitamin K2 PLUS magnesium PLUS boron — they work
+  as a team. And there is NO benefit from going above 1,000 mg/day of calcium supplement
+  — higher doses actually IMPAIR magnesium absorption. Tricalcium phosphate or calcium
+  citrate forms are best. Take with meals.
+caveats:
+- Cap calcium supplementation at 1,000 mg/day — higher doses block other minerals
+- Calcium citrate or tricalcium phosphate > calcium carbonate for low-stomach-acid
+  clients
+- Carbonate is fine if taken WITH meals (acid required)
+- Avoid oyster shell + dolomite + bonemeal — lead contamination
+- Cardiovascular caveat — some controversy on high-dose calcium + CV events; food-first
+  preferred
+- Always pair with vitamin D AND vitamin K2 AND magnesium
+linked_to_topics:
+- osteoporosis
+- bone-health
+- perimenopause-and-menopause
+- menopause
+linked_to_supplements:
+- calcium
+- calcium-citrate
+- calcium-supplementation
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis, pg 1349–1350
+  quote: Calcium alone provides very little benefit in protecting against osteoporosis;
+    vitamin D, vitamin K, and other nutrients are required as well. There is no reason
+    to take more than 1,000 mg per day as a supplement. Studies are clear that the
+    benefits seen at 2,000 mg per day are not greater than those seen with 1,000 mg.
+    Taking large doses of calcium can impair the absorption of magnesium and other
+    minerals.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

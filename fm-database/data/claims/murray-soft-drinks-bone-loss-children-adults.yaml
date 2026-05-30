@@ -1,0 +1,48 @@
+slug: murray-soft-drinks-bone-loss-children-adults
+statement: 'Soft drinks containing phosphoric acid and sugar significantly accelerate
+  bone loss in both children and adults. In a 228-child study, 66.7% of children with
+  low blood calcium drank ≥4 bottles of phosphate-containing soft drinks weekly, vs
+  only 28% of children with normal calcium. The mechanism — phosphoric acid + sugar
+  drives a calcium-leaching response (phosphate binds calcium and drives urinary excretion;
+  sugar elevates insulin → cortisol → bone resorption). Population implication: children
+  weaned on soft drinks face dramatically higher osteoporosis risk as they age, and
+  the US ranks first globally in soft drink consumption (~15 oz/day per capita).'
+evidence_tier: strong
+rationale: Wyshak 1994 + Wyshak 2000 + multiple cohort studies. Mechanism — phosphoric
+  acid is a hydrogen-ion donor that the kidney buffers by leaching bicarbonate from
+  bone (carrying calcium with it). Effect compounds over years of habitual consumption.
+  The childhood-osteopenia → adult-osteoporosis pathway is particularly important
+  coaching messaging.
+coaching_translation: Soft drinks (Coke, Pepsi, energy drinks, fizzy drinks) actively
+  dissolve your bones. The phosphoric acid in them forces your body to leach calcium
+  from bone to buffer the acid. In a study of 228 children, two-thirds of those with
+  low blood calcium were heavy soft-drink drinkers. Children weaned on soft drinks
+  today face an osteoporosis epidemic in 30-40 years. This is a critical message for
+  any client with children or grandchildren — and for clients themselves, every soft
+  drink eliminated is a deposit in your bone bank.
+caveats:
+- Phosphoric acid is the main culprit; carbonated water (no phosphoric acid) is less
+  concerning
+- Cola is worse than non-cola (cola has more phosphoric acid)
+- Diet soft drinks STILL contain phosphoric acid — switching to diet doesn't help
+- Caffeine adds a secondary calcium-leaching effect
+- Sugar content adds insulin/cortisol pathway
+- Replacement strategies — sparkling water with lemon, herbal teas, kombucha
+linked_to_topics:
+- osteoporosis
+- bone-health
+- insulin-resistance
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis, pg 1345–1346
+  quote: Of the 57 children with low blood calcium levels, 38 (66.7%) drank more than
+    four bottles per week, but only 48 (28%) of the 171 children with normal serum
+    calcium levels drank that many soft drinks. The link between soft drink consumption
+    and bone loss is significant.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

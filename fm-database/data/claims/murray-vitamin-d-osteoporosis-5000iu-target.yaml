@@ -1,0 +1,53 @@
+slug: murray-vitamin-d-osteoporosis-5000iu-target
+statement: Vitamin D is the single most important supplement for osteoporosis prevention
+  and treatment. Murray recommends 5,000 IU/day vitamin D3 for women and men with
+  reduced bone density or osteoporosis (vs 2,000 IU/day for general health), titrated
+  to a target 25(OH)D blood level of 50–80 ng/ml. Beyond calcium absorption, vitamin
+  D improves muscle strength and balance, reducing the risk of falls — the immediate
+  precipitant of most osteoporotic fractures. Vitamin D requirement is highly individual;
+  some achieve target on 600 IU/day, others need 10,000 IU/day owing to vitamin D
+  receptor polymorphisms.
+evidence_tier: strong
+rationale: Multiple meta-analyses including the Bischoff-Ferrari series showing 700-800
+  IU reduces hip + nonvertebral fractures. Mechanism — vitamin D drives intestinal
+  calcium absorption via TRPV6 channel; activates osteoblasts; enhances muscle protein
+  synthesis (the fall-prevention pathway). Critical FM message — testing 25(OH)D is
+  essential because dose-response varies 16-fold by genotype. The fall-prevention
+  effect via muscle is underappreciated in conventional dermatology + endocrinology.
+coaching_translation: Vitamin D is the single most important osteoporosis supplement
+  — more important than calcium itself. Take 5,000 IU/day vitamin D3 if you have osteoporosis
+  or osteopenia (vs 2,000 IU for general prevention). Target 25(OH)D blood level 50-80
+  ng/ml. Beyond bones, vitamin D builds muscle strength and balance — directly reducing
+  your risk of FALLING in the first place. Pair with K2 (MK-7 100 mcg) for bone-direction
+  support.
+caveats:
+- Test 25(OH)D every 3-6 months to titrate accurately
+- Target 50-80 ng/ml (higher than conventional 30 ng/ml minimum)
+- Pair with K2 (MK-7 100 mcg/day) for proper calcium routing
+- Magnesium adequacy required for vitamin D activation
+- Hypercalcemia is rare but the serious complication of overdosing
+- Vitamin D receptor polymorphisms cause dose variation; testing is mandatory
+linked_to_topics:
+- osteoporosis
+- bone-health
+- perimenopause-and-menopause
+- menopause
+- sleep-deprivation
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3
+- vitamin-d3-k2
+- vitamin-d3-k2-combination-supplement
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis, pg 1351–1352
+  quote: For general health we recommend a dosage of 2,000 IU per day, but for women
+    or men with reduced bone density or osteoporosis we recommend a dosage of 5,000
+    IU per day. Vitamin D has also been shown to improve muscle strength and balance,
+    thereby reducing the risk of falling.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

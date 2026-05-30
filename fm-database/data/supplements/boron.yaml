@@ -21,15 +21,23 @@ take_with_food: required
 notes_for_coach: Supports bone health, testosterone metabolism, and cognition; often
   overlooked trace mineral in functional protocols.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- osteoporosis
+- bone-health
+- perimenopause-and-menopause
+- menopause
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- murray-boron-bone-vitamin-d-estrogen
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Boron - Bone, hormone, cognition - 3–6 mg/day - With meals
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-30'
 updated_by: shivani

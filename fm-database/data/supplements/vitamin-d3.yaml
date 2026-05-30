@@ -51,6 +51,8 @@ linked_to_topics:
 - autoimmune-disease
 - autoimmune-dermatitis
 - psoriasis
+- osteoporosis
+- bone-health
 linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - vitamin-d-low-linked-recurrent-candida
@@ -70,6 +72,7 @@ linked_to_claims:
 - vitamin-d-deficiency-300-percent-t1dm-risk
 - murray-vitamin-d-autoimmune-correlation
 - murray-vitamin-d-psoriasis-5000iu
+- murray-vitamin-d-osteoporosis-5000iu-target
 notes_for_coach: 'T1DM prevention/early intervention: 2000 IU protective dose; recently
   diagnosed T1DM: 4000–8000 IU. Cod liver oil provides both vitamin D and omega-3.
   Paediatric dosing requires physician supervision.'
@@ -213,7 +216,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 15
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
+version: 16
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

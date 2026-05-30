@@ -1,0 +1,51 @@
+slug: murray-ppi-acid-blockers-hip-fracture-risk
+statement: 'Long-term proton-pump-inhibitor (PPI) use is associated with significantly
+  increased hip fracture risk. The mechanism: PPIs (omeprazole, pantoprazole, esomeprazole,
+  lansoprazole, etc.) suppress stomach acid that is required to ionise calcium for
+  absorption — even when calcium intake appears adequate, hypochlorhydria from PPIs
+  prevents the body from absorbing it. Additional contributions: PPI-induced hypomagnesemia,
+  vitamin B12 malabsorption, and altered gut microbiome. Coaching scope: PPI tapering
+  (clinician-coordinated) belongs in any FM osteoporosis protocol where chronic PPI
+  use is contributing.'
+evidence_tier: strong
+rationale: Multiple meta-analyses (Yang 2006 JAMA, Khalili 2012 BMJ, others). Mechanism
+  — gastric acid is required to dissolve calcium salts for ionisation + absorption;
+  PPIs raise gastric pH to 4-6 vs normal 1-2. Calcium citrate (already ionised) is
+  partially protective; calcium carbonate requires acid. Long-term PPI use also increases
+  SIBO + Clostridium difficile risk. The fracture-risk signal is now in FDA labelling.
+  The original indication (GERD, peptic ulcer) is usually short-term; chronic use
+  is often inertia rather than evidence-based.
+coaching_translation: 'Long-term acid-blocker medications (Prilosec, Nexium, Pantoprazole,
+  Omeprazole) significantly increase hip fracture risk. The mechanism — they block
+  the stomach acid your body needs to absorb calcium properly. Many clients are on
+  PPIs long-term for habits they could address differently (food triggers, eating
+  patterns, weight). The FM approach: identify the original reason for the PPI, address
+  root causes (gut healing, elimination of triggers), then taper with the prescriber.
+  If a PPI must continue, calcium CITRATE (already ionised) is better than calcium
+  carbonate. Pair with magnesium and B12 testing.'
+caveats:
+- NEVER advise abrupt PPI discontinuation — severe acid rebound, can re-precipitate
+  ulcer disease
+- Gradual taper coordinated with prescriber over 4-8 weeks
+- Substitute H2 blockers (famotidine) during taper as bridge
+- Address root causes — food triggers, weight, eating patterns, H. pylori
+- Calcium CITRATE if PPI must continue (does not require gastric acid)
+- Monitor B12, magnesium status in long-term PPI users
+- Severe GERD with esophagitis is still a PPI indication — assess + discuss with prescriber
+linked_to_topics:
+- osteoporosis
+- bone-health
+- autoimmunity-leaky-gut-connection
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: PPI tapering is clinician scope. Coach role — patient education
+  on risk + supporting root-cause work + gut healing.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis, pg 1359
+  quote: There is an association between long-term use of proton-pump acid-blocking
+    drugs and an increased risk of hip fracture.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

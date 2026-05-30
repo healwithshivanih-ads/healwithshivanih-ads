@@ -95,6 +95,14 @@ chapters:
     serves: [cl-004 Dhanishta autoimmune-dermatitis direct, universal pediatric + adult atopic disease]
     status: ingested
     batch_id: 20260530T210000-murray-ch50-eczema-chat
+  - ch: 81
+    title: Osteoporosis
+    body_pg_start: 1326
+    body_pg_end: 1363
+    priority: 12
+    serves: [universal women's health + aging — postmenopausal bone loss + osteopenia]
+    status: ingested
+    batch_id: 20260530T220000-murray-ch81-osteoporosis-chat
 
 # How to resume:
 # 1. Open /tmp/murray-extract/full.txt

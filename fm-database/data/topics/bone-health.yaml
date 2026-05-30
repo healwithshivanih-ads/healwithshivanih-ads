@@ -33,7 +33,10 @@ sources:
   quote: Vitamin K as directing calcium into bone and away from arteries, kidneys,
     and cartilage while calcium, phosphorus, vitamin D, magnesium, boron, and K2 act
     as a bone team.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 81 — Osteoporosis
+  quote: Comprehensive natural prevention + treatment of osteoporosis.
+version: 2
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-05-30'
 updated_by: shivani
