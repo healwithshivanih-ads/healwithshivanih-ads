@@ -1,0 +1,56 @@
+slug: maitake-mushroom
+display_name: Maitake Mushroom (Grifola frondosa)
+aliases:
+- hen-of-the-woods
+- maitake D-fraction
+- grifola-frondosa
+category: herb
+forms_available:
+- capsule
+- powder
+- liquid
+- whole_food
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 3000
+    unit: mg
+  powder:
+    min: 500
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- immune-support
+- insulin-resistance
+- chronic-inflammation
+linked_to_mechanisms:
+- dectin-1-trained-immunity
+- innate-immune-modulation
+notes_for_coach: 'Maitake contains β-(1,6)-glucans with β-(1,3) side chains — the
+  D-fraction (proteoglucan) is the most-studied immunomodulatory component. Adjunctive
+  use studied in oncology (NK-cell activation). Also has modest insulin-sensitising
+  effects (Konno 2001 case series, T2DM). Doses 500–3000 mg/day standardised extract;
+  D-fraction trials use 35–100 mg/day. Generally well-tolerated; rare GI upset. Caution:
+  may potentiate oral hypoglycaemics.'
+notes_for_client: Maitake is an immune-supportive mushroom used in Japanese traditional
+  medicine. It contains the same family of fibres (β-glucans) found in oats and yeast
+  that train your immune cells to respond better.
+evidence_tier: plausible_emerging
+contraindications:
+  conditions: []
+  medications:
+  - oral hypoglycaemics (potential additive effect — monitor blood sugar)
+  life_stages:
+  - pregnancy (insufficient data)
+sources:
+- id: vitaone-inflammation-toolkit
+  location: immune support section
+  quote: Medicinal mushrooms including maitake provide β-glucan-mediated immune modulation.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

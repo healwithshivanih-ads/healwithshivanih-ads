@@ -9,6 +9,7 @@ coaching_translation: Adding oatmeal or oat bran daily can meaningfully lower ch
 linked_to_topics:
 - dyslipidemia
 - atherosclerosis
+- atherogenic-dyslipidemia
 out_of_scope_notes: ''
 caveats: []
 linked_to_mechanisms: []
@@ -18,7 +19,7 @@ sources:
   location: Importance of Soluble Dietary Fiber in Lowering Cholesterol
   quote: In individuals with high cholesterol levels above 200 mg/dL, consuming 3
     g of soluble oat fiber lowers TC by 8% to 23%.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-29'
 updated_by: Shivani

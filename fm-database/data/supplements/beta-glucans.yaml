@@ -22,6 +22,8 @@ linked_to_topics:
 - immune-support
 - chronic-inflammation
 - immune-support-covid-19
+- atherogenic-dyslipidemia
+- insulin-resistance
 linked_to_claims:
 - beta-glucans-immune-modulation-respiratory
 - beta-glucans-enhance-immunity-and-reduce-respiratory-infections
@@ -33,7 +35,9 @@ notes_for_client: Beta-glucans are natural immune-training fibers found in oats,
   and yeast. They help your immune system stay alert and ready to respond to infections,
   especially in your respiratory tract.
 evidence_tier: plausible_emerging
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dectin-1-trained-immunity
+- innate-immune-modulation
 sources:
 - id: vitaone-inflammation-toolkit
   location: 'COVID-19: Nutraceutical and Botanical Recommendations for Patients'
@@ -45,7 +49,7 @@ sources:
   quote: Beta glucans are both anti-inflammatory and enhance immune function while
     specifically benefitting those with upper respiratory tract infections caused
     by viruses.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-29'
 updated_by: shivani

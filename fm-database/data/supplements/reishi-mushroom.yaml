@@ -25,7 +25,8 @@ evidence_tier: plausible_emerging
 linked_to_topics:
 - hpa-axis-cortisol-regulation
 - sleep-quality
-linked_to_mechanisms: []
+linked_to_mechanisms:
+- dectin-1-trained-immunity
 linked_to_claims:
 - reishi-reduces-sleep-latency-cortisol
 notes_for_client: Reishi mushroom contains calming compounds called triterpenoids
@@ -39,7 +40,7 @@ sources:
   quote: Research suggests it can reduce sleep latency, increase total sleep time,
     and improve cortisol responses, possibly through microbiome-mediated mechanisms
     and serotonin modulation.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-29'
 updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: dectin-1-trained-immunity
+display_name: Dectin-1-Mediated Trained Immunity
+aliases:
+- dectin-1 pathway
+- β-glucan trained immunity
+- trained innate immunity
+- innate immune memory
+category: immune
+summary: Yeast and fungal β-(1,3)/(1,6)-glucans bind the dectin-1 C-type lectin receptor
+  on monocytes, macrophages, and dendritic cells. Receptor engagement triggers Syk-CARD9
+  signalling that drives epigenetic and metabolic reprogramming of innate immune cells
+  (H3K4 trimethylation, glycolytic shift via mTOR-HIF-1α). The result is 'trained
+  immunity' — primed monocytes that respond more robustly to unrelated subsequent
+  pathogen exposures (heterologous protection). This is the canonical mechanism behind
+  the URI-protective effect of yeast β-glucan supplements (250–500 mg/day) and explains
+  why oat β-glucan (β-1,3/1,4) — which does not bind dectin-1 — has stronger cardiometabolic
+  than immune effects.
+upstream_drivers:
+- innate-immune-modulation
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- innate-immune-modulation
+- cholinergic-anti-inflammatory-pathway
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+sources:
+- id: auinger-2013-beta-glucan-uri
+  location: discussion
+  quote: Yeast (1,3)-(1,6)-β-glucan engages innate immune receptors including dectin-1
+    on monocytes and macrophages.
+- id: dharsono-2019-yeast-beta-glucan
+  location: mechanism section
+  quote: β-glucan binding to dectin-1 primes innate immune cells for enhanced response
+    to subsequent pathogen challenge.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

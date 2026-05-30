@@ -10,6 +10,7 @@ coaching_translation: Adding oats, beans, and fleshy fruits to meals can help sm
 linked_to_topics:
 - blood-sugar-dysfunction
 - insulin-resistance
+- atherogenic-dyslipidemia
 linked_to_supplements: []
 caveats:
 - Source is an FM synthesis document; no specific RCT cited.
@@ -20,7 +21,7 @@ sources:
   location: Section 1.1 — Structural Classification, Fibre sub-types note
   quote: Soluble fibre forms viscous gels that lower LDL cholesterol and blunt post-prandial
     glycaemia.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-29'
 updated_by: shivani

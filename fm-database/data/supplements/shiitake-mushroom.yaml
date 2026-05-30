@@ -1,0 +1,54 @@
+slug: shiitake-mushroom
+display_name: Shiitake Mushroom (Lentinula edodes)
+aliases:
+- lentinan
+- lentinula-edodes
+- black forest mushroom
+category: herb
+forms_available:
+- capsule
+- powder
+- whole_food
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 2000
+    unit: mg
+  powder:
+    min: 500
+    max: 2000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_mechanisms:
+- dectin-1-trained-immunity
+- innate-immune-modulation
+notes_for_coach: 'Shiitake contains lentinan — a β-(1,3)-glucan with β-(1,6) branches,
+  well-studied adjunct in Japanese oncology (intravenous formulation approved for
+  gastric cancer). Dietary shiitake (whole food, 5–10 g/day dried) is a sensible food-first
+  option before extract. Eritadenine, a separate compound, has modest cholesterol-lowering
+  effects. Caution: shiitake dermatitis (flagellate erythema) from raw or undercooked
+  mushrooms — always cook thoroughly.'
+notes_for_client: Shiitake is a traditional Asian medicinal mushroom rich in immune-training
+  β-glucans. Eat it cooked — raw shiitake can cause a temporary skin rash in some
+  people.
+evidence_tier: plausible_emerging
+contraindications:
+  conditions:
+  - shiitake dermatitis history
+  medications: []
+  life_stages: []
+sources:
+- id: vitaone-inflammation-toolkit
+  location: immune support section
+  quote: Medicinal mushrooms including shiitake provide β-glucan-mediated immune modulation.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani
