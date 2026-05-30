@@ -1,0 +1,36 @@
+slug: murray-weight-longevity-curve
+statement: The body-weight-and-longevity relationship is U-shaped — both overweight
+  AND severely underweight individuals have the shortest lifespan; the longest lifespan
+  correlates with weight JUST BELOW average for height. This challenges both the 'thinner
+  is better' narrative and the 'BMI 25-30 is fine' position. The optimal target is
+  closer to a lean-muscular phenotype than either extreme. Adequate protein + resistance
+  training prevent the unintentional underweight + sarcopenic profile that predicts
+  mortality at the lower end.
+evidence_tier: strong
+rationale: Multiple longevity cohort studies showing U-shaped curve. Mechanism — overweight
+  drives chronic disease; underweight reflects sarcopenia + malnutrition + frailty;
+  mid-range with muscle mass is the sweet spot.
+coaching_translation: Both extremes of body weight shorten life — severely underweight
+  people die early (sarcopenia + frailty) just as obese people do (chronic disease).
+  The longest-lived people are slightly BELOW average weight for height with adequate
+  muscle mass. The goal isn't 'thin' — it's lean + strong. Protect muscle through
+  resistance training + adequate protein throughout life.
+caveats:
+- BMI is a crude measure; body composition (muscle vs fat) matters more
+- Older adults need MORE protein, not less (1.0-1.2 g/kg)
+- Unintentional weight loss in older adults is mortality predictor
+- Diet + exercise priorities differ at each life stage
+linked_to_topics:
+- cognitive-decline
+- sleep-deprivation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 13 — Longevity, Quick Review pg 316–317
+  quote: Individuals who are either overweight or severely underweight have the shortest
+    life span, while those individuals whose weight is just below the average weight
+    for height have the longest life span.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

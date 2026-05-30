@@ -1,0 +1,40 @@
+slug: murray-exercise-2-hour-longevity-return
+statement: Researchers have estimated that for every hour of exercise, there is approximately
+  a 2-hour increase in longevity — exercise is one of the few interventions with documented
+  return-on-time-invested for lifespan. Maintaining muscle mass through resistance
+  training is foundational to any life-extension plan — sarcopenia (age-related muscle
+  loss) predicts mortality, falls, hospitalisation, and loss of independence. Both
+  aerobic and resistance training required; cardio alone is insufficient. Resistance
+  training must be progressive (increasing weight/resistance over time) to drive ongoing
+  adaptation.
+evidence_tier: strong
+rationale: Multiple longevity cohort studies. Mechanism — mitochondrial biogenesis,
+  telomere preservation, insulin sensitivity, brain BDNF, mitokine signalling. Sarcopenia
+  as mortality predictor well-documented.
+coaching_translation: Every hour of exercise buys you ~2 hours of life — one of the
+  best returns on time investment in existence. After age 35, sarcopenia (muscle loss)
+  accelerates and predicts virtually every bad outcome of ageing — falls, hospitalisation,
+  dementia, mortality. RESISTANCE training is non-negotiable, not just cardio. Both
+  required. Progressive overload — you must increase weight or resistance over time
+  to keep adapting.
+caveats:
+- Resistance training non-negotiable after age 35
+- Progressive overload required (not just doing the same workout forever)
+- 1-2 strength sessions per week minimum
+- Protein intake during ageing should INCREASE (1.0-1.2 g/kg, not RDA 0.8)
+- Walking + cycling alone insufficient — need impact + resistance
+linked_to_topics:
+- osteoporosis
+- bone-health
+- cognitive-decline
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 13 — Longevity, Quick Review pg 317
+  quote: Researchers have estimated that for every hour of exercise, there is a two-hour
+    increase in longevity. Maintaining muscle mass must be a major goal in any life
+    extension plan.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

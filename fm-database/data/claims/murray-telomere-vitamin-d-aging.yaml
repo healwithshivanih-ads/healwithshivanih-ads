@@ -1,0 +1,40 @@
+slug: murray-telomere-vitamin-d-aging
+statement: 'Telomeres (end caps of DNA chromosomes) shorten with each cell division
+  and serve as the ''clocks of cellular ageing.'' Obesity, smoking, lack of physical
+  activity, and chronic stress accelerate telomere shortening; antioxidants slow it.
+  Vitamin D appears to PROTECT telomere length — higher vitamin D status overcame
+  the telomere-shortening effects of obesity, smoking, and physical inactivity in
+  cohort studies. Practical implication: vitamin D supplementation (2,000-4,000 IU/day
+  titrated to 50-80 ng/ml blood level) is one of the few measurable interventions
+  with telomere-protective evidence.'
+evidence_tier: plausible_emerging
+rationale: Multiple cohort studies linking vitamin D status to telomere length. Mechanism
+  — vitamin D modulates inflammation + oxidative stress; both telomere-shortening
+  pathways.
+coaching_translation: Telomeres are the protective caps at the end of your chromosomes
+  — they shorten as you age, and the rate of shortening predicts your biological age.
+  Smoking, obesity, inactivity, chronic stress speed it up. Vitamin D appears to PROTECT
+  telomeres — high vitamin D status counteracted even obesity + smoking in studies.
+  Another reason to maintain 25(OH)D 50-80 ng/ml — you're literally slowing cellular
+  ageing.
+caveats:
+- Telomere length testing available but interpretation evolving
+- Antioxidants, exercise, meditation also protect telomeres
+- Resveratrol effect on telomeres debated
+- Caloric restriction + intermittent fasting also slow shortening
+linked_to_topics:
+- cognitive-decline
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 13 — Longevity, Quick Review pg 317
+  quote: Telomeres, the end cap of our DNA molecules, are the 'clocks of aging.' Vitamin
+    D may slow aging by increasing the length of telomeres. Obesity, smoking, and
+    lack of physical activity can shorten telomere length, but researchers have found
+    that increasing vitamin D levels overcame these effects.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

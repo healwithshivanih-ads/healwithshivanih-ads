@@ -1,0 +1,40 @@
+slug: murray-healthspan-vs-lifespan
+statement: 'The 20th century''s apparent ~30-year increase in average life expectancy
+  was driven primarily by infant mortality reduction — removing infant mortality from
+  the calculation reveals only a ~6-year improvement in adult lifespan, while the
+  burden of chronic degenerative disease has skyrocketed. Murray''s framing: the real
+  goal of FM is HEALTHSPAN (years lived in good health) not just LIFESPAN. Adding
+  years of disability + cognitive decline + dependency is not the goal; compressing
+  morbidity to the final months/years is. This reframes the entire FM approach to
+  ageing — interventions should preserve function, not just extend duration.'
+evidence_tier: strong
+rationale: Established demographic + gerontology data. Mechanism — modern medicine
+  extends terminal disease duration rather than fundamentally addressing underlying
+  ageing processes. The compressed-morbidity model (Fries 1980) is the FM target.
+coaching_translation: 'Most of the 20th century''s ''longer life'' was babies surviving
+  — adult lifespan barely budged ~6 years while chronic disease exploded. The FM goal
+  isn''t more years at any cost — it''s healthier years (HEALTHSPAN). Better to die
+  healthy at 88 after running marathons than to die at 95 after 15 years of dementia
+  + diabetes + falls. Frame all longevity interventions around preserving function:
+  muscle, cognition, mobility, independence.'
+caveats:
+- Compressed morbidity is the goal — quality vs duration
+- Family history of longevity sets some boundaries
+- Genetic + epigenetic + lifestyle interact
+- Don't sacrifice today's quality for marginal future gains
+linked_to_topics:
+- cognitive-decline
+- sleep-deprivation
+- bone-health
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 13 — Longevity and Life Extension, Quick Review pg 316
+  quote: If infant mortality is taken out of the calculations, life expectancy really
+    improved a maximum of only six years during the past century, while the burden
+    of degenerative disease has skyrocketed. The real goal is improving health span,
+    not just life span.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
