@@ -1,0 +1,41 @@
+slug: glaucoma
+display_name: Glaucoma
+aliases:
+- chronic open-angle glaucoma
+- normotensive glaucoma
+- low-tension glaucoma
+- acute glaucoma
+summary: 'Optic neuropathy most often associated with elevated intraocular pressure
+  from imbalanced aqueous humour production and outflow, but ~25-30% of cases (normotensive
+  glaucoma) occur at normal pressure and are driven by reduced ocular blood flow,
+  collagen matrix changes, and excitotoxicity. Murray frames prevention and chronic
+  management as twin tracks — lowering intraocular pressure AND supporting collagen
+  integrity of the trabecular meshwork. Coach lever: nutrients that strengthen collagen
+  (vitamin C, flavonoids) plus circulatory support (magnesium, ginkgo) and lifestyle
+  (aerobic exercise, caffeine avoidance).'
+key_mechanisms:
+- collagen-integrity-disruption
+- ocular-blood-flow-reduction
+- glutamate-excitotoxicity
+common_symptoms:
+- blurred vision
+- tunnel vision
+- eye pain
+- peripheral vision loss
+- halos around lights
+red_flags:
+- acute closed-angle glaucoma is a medical emergency requiring ophthalmologic care
+  within 12-48 hours to prevent permanent blindness
+- sudden severe eye pain with nausea, vomiting, and fixed dilated pupil
+related_topics:
+- dry-eye-syndrome
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 54 — Glaucoma, pg 972-981
+  quote: Prevention and treatment of chronic glaucoma are dependent on reduction of
+    intraocular pressure and improvement of collagen metabolism.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

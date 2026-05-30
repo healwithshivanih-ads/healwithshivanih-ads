@@ -1,0 +1,27 @@
+slug: glaucoma-exercise-lowers-iop
+statement: Regular aerobic exercise produces immediate and sustained reduction in
+  intraocular pressure, especially in sedentary glaucoma patients moving to moderate-heavy
+  exertion. The drop is roughly 7-13% greater in glaucoma patients than healthy controls
+  after walking/jogging or running, and the post-exercise pressure drop persists for
+  about 84 minutes. The effect wears off within three weeks of stopping exercise —
+  durable benefit requires consistency. Caffeine should be avoided because regular
+  coffee (180 mg caffeine) raises IOP measurably at 30-90 minutes in both chronic
+  and normotensive glaucoma.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- glaucoma
+linked_to_mechanisms:
+- ocular-blood-flow-reduction
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 54 — Glaucoma, pg 979-980
+  quote: The drop in intraocular pressure is approximately 23% in normal individuals,
+    while people with glaucoma usually experience a greater drop and longer duration
+    of postexercise recovery. If one stops exercising, the effect wears off in three
+    weeks.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Lifestyle lever the coach owns end-to-end. Useful pairing of exercise prescription
+  with caffeine avoidance — two opposing vasomotor inputs on IOP.

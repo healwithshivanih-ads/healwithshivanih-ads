@@ -1,0 +1,31 @@
+slug: glaucoma-vitamin-c-lowers-iop
+statement: Supplemental vitamin C reliably lowers intraocular pressure in glaucoma,
+  with short-term high doses acting through an osmotic effect and long-term moderate
+  doses supporting collagen integrity of ocular tissues. Coach-actionable range from
+  Murray's treatment summary is 500-1,000 mg three times per day (1,500-3,000 mg/day
+  total), with intraocular pressure monitoring required to find the individual response
+  dose. Abdominal discomfort at high doses usually tapers off after three to four
+  days.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- glaucoma
+linked_to_supplements:
+- vitamin-c
+linked_to_mechanisms:
+- collagen-integrity-disruption
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 54 — Glaucoma, pg 975-976
+  quote: Supplemental vitamin C has been demonstrated to lower intraocular pressure
+    in many clinical studies. Some patients respond to as little as 2 g per day, while
+    others will respond only to extremely high doses (35 g per day). The short-term
+    benefits of high doses of vitamin C are primarily due to an osmotic effect, while
+    long-term use of moderate doses is necessary to promote improved collagen strength
+    and integrity of eye tissues.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Murray pairs two distinct mechanisms (osmotic vs collagen) with different
+  dose strategies — coach should default to the moderate long-term dose and refer
+  to ophthalmologist for IOP monitoring.

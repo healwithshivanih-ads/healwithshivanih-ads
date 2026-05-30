@@ -1,0 +1,32 @@
+slug: glaucoma-bilberry-pine-bark-reduces-iop
+statement: A combination of bilberry anthocyanoside extract (160 mg) and pine bark
+  extract (80 mg) lowered mean intraocular pressure from 25.2 to 22.2 mm Hg after
+  two months and improved retinal blood flow in 19 of 20 asymptomatic subjects with
+  elevated IOP after five months, with no observed side effects. Anthocyanosides and
+  proanthocyanosides exert a vitamin-C-sparing effect, stabilise the collagen matrix,
+  and prevent enzymatic cleavage of collagen.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- glaucoma
+linked_to_supplements:
+- bilberry-extract
+- pine-bark-extract
+- grapeseed-pine-bark-extract
+linked_to_mechanisms:
+- collagen-integrity-disruption
+- ocular-blood-flow-reduction
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 54 — Glaucoma, pg 977
+  quote: A combination of bilberry anthocyanoside extract (160 mg) and pine bark extract
+    (80 mg) was studied in 38 asymptomatic subjects with increased intraocular pressure.
+    After two months of supplementation with the flavonoids, mean intraocular pressure
+    decreased from a baseline of 25.2 mm Hg to 22.2 mm Hg. After an additional three
+    months of treatment, 19 of the 20 patients taking the flavonoids showed decreased
+    intraocular pressure.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific paired dose with measurable IOP delta plus a dual mechanism (collagen
+  + perfusion). FM-distinctive — flavonoid pair is not standard ophthalmology care.

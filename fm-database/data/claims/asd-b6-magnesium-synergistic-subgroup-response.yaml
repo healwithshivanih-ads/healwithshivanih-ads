@@ -1,0 +1,26 @@
+slug: asd-b6-magnesium-synergistic-subgroup-response
+statement: Vitamin B6 combined with magnesium produces meaningful behavioural improvement
+  in roughly 20% of children with ASD, with about 10% showing dramatic response. Neither
+  nutrient was significantly effective when used alone; the combination correlates
+  with reduced urinary homovanillic acid (HVA), suggesting normalisation of dopamine/catecholamine
+  handling. Murray's treatment-summary dosing is B6 25 mg two-to-three times per day
+  with magnesium 250-400 mg per day.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- autism-spectrum-disorder
+linked_to_supplements:
+- vitamin-b6
+- magnesium
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 26 — Autism Spectrum Disorder, pg 555-557
+  quote: The combination of B6 and magnesium resulted in significant improvement in
+    behavior that was closely associated with decreases in HVA. However, magnesium
+    and vitamin B6 were not significantly effective when used alone.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Synergy is the load-bearing finding — coach should never trial B6 in isolation
+  for ASD without paired magnesium. Honest subgroup-response framing (20/10 split)
+  sets realistic expectations.

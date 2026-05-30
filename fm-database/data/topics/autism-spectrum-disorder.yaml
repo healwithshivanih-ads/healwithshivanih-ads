@@ -1,0 +1,41 @@
+slug: autism-spectrum-disorder
+display_name: Autism Spectrum Disorder
+aliases:
+- ASD
+- autism
+- Asperger syndrome
+- PDD-NOS
+- pervasive developmental disorder
+summary: Neurodevelopmental condition characterised by difficulties with social interaction,
+  verbal/non-verbal communication, and repetitive or restricted behaviours, usually
+  apparent before age 3. Murray frames ASD as polygenic with substantial dietary and
+  environmental modifiers — gluten/casein sensitivity, food allergies, intestinal
+  permeability, neurotransmitter imbalance (low BH4, altered serotonin), omega-3 insufficiency,
+  and disturbed melatonin rhythms are surface-level handles for nutritional intervention.
+key_mechanisms:
+- intestinal-permeability
+- food-sensitivity-immune-activation
+- neurotransmitter-imbalance
+- tetrahydrobiopterin-bh4-deficiency
+common_symptoms:
+- poor eye contact
+- delayed speech
+- repetitive behaviours
+- sleep disturbance
+- sensory sensitivities
+- self-injurious behaviour
+- food selectivity
+related_topics:
+- food-allergy
+- leaky-gut
+- attention-deficit-hyperactivity-disorder
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 26 — Autism Spectrum Disorder, pg 550-557
+  quote: Children with ASD require a combination of specialized and supportive educational
+    programming, communication training, social skills support, and behavioral intervention.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

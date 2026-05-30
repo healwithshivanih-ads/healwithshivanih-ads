@@ -1,0 +1,26 @@
+slug: asd-gluten-casein-free-trial-improves-behaviour
+statement: A trial of a gluten-free and casein-free (or gluten-reduced and milk-reduced)
+  diet for at least three months may produce meaningful improvements in social contact,
+  self-injurious behaviour, and 'dreamy state' periods in a subset of children with
+  autism spectrum disorder, with parallel reductions in urinary peptide excretion.
+  Results are individualised but occasionally dramatic.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- autism-spectrum-disorder
+- food-allergy
+linked_to_mechanisms:
+- intestinal-permeability
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 26 — Autism Spectrum Disorder, pg 553
+  quote: 19 children with ASD were treated with either a gluten-free and milk-reduced
+    diet or a milk-free and gluten-reduced diet. After the diet was followed for one
+    year, social contact had increased, self-mutilating behaviors such as head banging
+    had ceased, and 'dreamy state' periods had decreased.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach-actionable 3-month elimination trial with explicit duration, measurable
+  behavioural endpoints, and a candidate mechanism (peptidase defect + opioid-like
+  peptides crossing leaky gut).

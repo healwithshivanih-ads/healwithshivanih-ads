@@ -1,0 +1,24 @@
+slug: asd-omega-3-reduces-hyperactivity
+statement: Omega-3 fatty acid supplementation providing 1.3-1.5 g/day EPA+DHA for
+  6-12 weeks has been shown in small double-blind trials to reduce hyperactivity and
+  repetitive/ritualistic movement in children aged 3-17 with autism spectrum disorder.
+  Coach-actionable target dose for children with ASD is 1,500 to 3,000 mg EPA+DHA
+  per day per Murray's treatment summary.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- autism-spectrum-disorder
+linked_to_supplements:
+- fish-oil-epa-dha
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 26 — Autism Spectrum Disorder, pg 554
+  quote: 13 children ages 5 to 17 with ASD accompanied by severe tantrums, aggression,
+    or self-injurious behavior were given 1.5 g EPA + DHA a day for six weeks. Children
+    taking the EPA + DHA showed improvements in hyperactivity and repetitive or ritualistic
+    movement compared with children taking a placebo.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific dose range with paediatric population, clear behavioural endpoint,
+  and outcome stronger in younger children than adults per the open-label follow-up.

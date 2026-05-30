@@ -1,0 +1,25 @@
+slug: asd-melatonin-improves-sleep
+statement: Melatonin 0.75-6 mg taken before bedtime shortens sleep latency and lengthens
+  sleep duration in children with ASD, with downstream improvements in daytime behaviour.
+  Meta-analyses report minimal side effects (occasional mild morning sleepiness);
+  in an open trial 86% of parents reported complete elimination or significant improvement
+  of sleep disturbance.
+evidence_tier: strong
+linked_to_topics:
+- autism-spectrum-disorder
+linked_to_supplements:
+- melatonin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 26 — Autism Spectrum Disorder, pg 555-556
+  quote: Several clinical studies have also shown that melatonin produces significant
+    benefit in improving sleep quality in ASD at dosages ranging from 0.75 mg to 6
+    mg prior to bedtime. Meta-analyses of existing data have concluded that melatonin
+    administration in ASD is associated with improved sleep, better daytime behavior,
+    and minimal side effects.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Three double-blind RCTs plus meta-analyses earn strong tier; paediatric
+  dose range is clearly bounded and coach-actionable.

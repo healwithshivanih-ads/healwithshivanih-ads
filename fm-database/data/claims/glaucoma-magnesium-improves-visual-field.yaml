@@ -1,0 +1,30 @@
+slug: glaucoma-magnesium-improves-visual-field
+statement: Oral magnesium acts as a physiological calcium-channel blocker and improves
+  visual field measurements and peripheral circulation in patients with chronic and
+  normotensive glaucoma. Two small trials used 121.5 mg twice daily for one month
+  and 300 mg magnesium citrate daily for one month with measurable visual field improvement.
+  Murray's treatment-summary dose is 200-300 mg three times per day bound to aspartate,
+  citrate, fumarate, malate, or succinate.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- glaucoma
+linked_to_supplements:
+- magnesium
+- magnesium-citrate
+linked_to_mechanisms:
+- ocular-blood-flow-reduction
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 54 — Glaucoma, pg 978
+  quote: Magnesium was given at a modest dose of 121.5 mg twice a day for one month.
+    After four weeks of treatment, the visual fields improved, and measures of blood
+    flow showed improvement. These results demonstrate that magnesium supplementation
+    improves peripheral circulation and seems to have a beneficial effect on the visual
+    field in patients with glaucoma.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Mechanism (calcium-channel blockade → vasodilation) gives coach a way to
+  explain why this works for normotensive glaucoma where IOP is normal. Well-absorbed
+  forms specified.
