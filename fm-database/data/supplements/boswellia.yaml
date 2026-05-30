@@ -17,6 +17,7 @@ linked_to_topics:
 - chronic-inflammation
 - autoimmune-disease
 - knee-pain
+- asthma
 linked_to_claims:
 - quercetin-boswellia-resveratrol-anti-inflammatory
 - curcumin-boswellia-joint-inflammation
@@ -34,7 +35,7 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Knee Pain Cheatsheet
   quote: Collagen, Bromelain, Vitamin C, Boswellia
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

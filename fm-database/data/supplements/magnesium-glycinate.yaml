@@ -90,6 +90,7 @@ linked_to_topics:
 - premenstrual-syndrome
 - osteoporosis
 - bone-health
+- asthma
 linked_to_mechanisms: []
 linked_to_claims:
 - magnesium-glycinate-improves-sleep-quality
@@ -223,7 +224,7 @@ sources:
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
 evidence_tier: plausible_emerging
-version: 27
+version: 28
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

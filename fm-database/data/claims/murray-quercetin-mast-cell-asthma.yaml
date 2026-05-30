@@ -1,0 +1,35 @@
+slug: murray-quercetin-mast-cell-asthma
+statement: Quercetin (a bioflavonoid found in onions, apples, capers, and tea) stabilises
+  mast cells, inhibiting histamine and leukotriene release central to allergic asthma.
+  Dose 400 mg 20 minutes before meals, or enzymatically-modified isoquercitrin (EMIQ
+  — far better absorbed) 100 mg/day. Synergises with vitamin C (which prolongs quercetin's
+  half-life).
+evidence_tier: plausible_emerging
+rationale: Mechanism well-established — quercetin inhibits hyaluronidase, blocks NF-κB,
+  and is a mast-cell stabiliser similar in profile to cromolyn. Clinical evidence
+  in asthma is more mechanistic + small-trial than large-RCT. EMIQ form addresses
+  quercetin's poor oral bioavailability (~3% with plain aglycone).
+coaching_translation: Quercetin is a natural mast-cell stabiliser — works on the same
+  allergy-blocking pathway as the prescription cromolyn. Plain quercetin is poorly
+  absorbed; use EMIQ (enzymatically-modified isoquercitrin) 100 mg/day OR quercetin
+  400 mg with vitamin C before meals. Especially useful in allergic asthma (eosinophil-driven)
+  + concurrent hay fever or food sensitivity.
+caveats:
+- Plain quercetin poorly absorbed; EMIQ or quercetin-phytosome forms preferred
+- Pair with vitamin C 500-1000 mg
+- May interact with cyclosporine + some chemotherapy (mild)
+linked_to_topics:
+- asthma
+- food-allergy-ige-mediated
+- chronic-inflammation
+linked_to_supplements:
+- quercetin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 24 — Asthma, pg 536
+  quote: 'Quercetin: 400 mg 20 minutes before meals, or enzymatically modified isoquercitrin
+    (EMIQ) 100 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

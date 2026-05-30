@@ -44,6 +44,7 @@ linked_to_topics:
 - premenstrual-syndrome
 - osteoporosis
 - bone-health
+- asthma
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -164,7 +165,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
-version: 21
+version: 22
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

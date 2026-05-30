@@ -1,0 +1,34 @@
+slug: murray-boswellia-asthma
+statement: Boswellia serrata gum resin at 300 mg three times daily for 6 weeks improved
+  asthma in 70% of patients vs 27% placebo in a DB-RCT — shortness of breath, attack
+  frequency, breathing capacity, and eosinophil counts all improved. Boswellic acids
+  inhibit 5-lipoxygenase, blocking leukotriene synthesis (the inflammatory pathway
+  central to asthma).
+evidence_tier: strong
+rationale: Gupta 1998 DB-RCT in 40 patients. Mechanism — 5-LOX inhibition uniquely
+  targets leukotrienes (anti-inflammatory effect that mainstream montelukast/zafirlukast
+  also exploit). Ayurvedic herbal heritage + modern RCT validation.
+coaching_translation: Boswellia (Indian frankincense) at 300 mg three times daily
+  helped 70% of asthma patients in a trial — almost 3× the placebo response. Works
+  on the same leukotriene pathway that the asthma drug montelukast (Singulair) targets.
+  Look for products standardised to ≥65% boswellic acids.
+caveats:
+- Look for ≥65% boswellic acid standardisation; AKBA-enriched products more potent
+- GI upset possible
+- Pregnancy avoid
+linked_to_topics:
+- asthma
+- chronic-inflammation
+- autoimmune
+linked_to_supplements:
+- boswellia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 24 — Asthma, pg 533
+  quote: Bronchial asthma was reduced in 70% of 40 patients treated with boswellia
+    gum resin at 300 mg three times per day for six weeks, whereas only 27% of the
+    control group improved.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

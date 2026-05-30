@@ -1,0 +1,37 @@
+slug: murray-food-elimination-vegan-asthma
+statement: Food allergens and additives are central triggers in many asthma cases.
+  A 4-week elimination diet followed by careful reintroduction identifies offending
+  foods in most allergic asthmatics. For unresponsive or severe cases, a vegan diet
+  (with possible inclusion of cold-water fish) for 4-12 months produces dramatic improvement
+  in many — eliminates dairy + egg + meat-driven arachidonic acid pro-inflammatory
+  load. Salt should be restricted in all asthmatics.
+evidence_tier: plausible_emerging
+rationale: Lindahl 1985 vegan diet trial + multiple elimination diet studies in pediatric
+  asthma. Mechanism — Th2-skewed immune response + IgE production against food antigens
+  overlaps with airway hyperresponsiveness; dietary AA reduction lowers PGE2/LTB4.
+  Salt restriction reflects sodium-induced bronchoconstriction reproducibility studies.
+coaching_translation: Food triggers drive asthma more than most realise. Run a 4-week
+  elimination of the common offenders (dairy, eggs, gluten, soy, peanuts, food colourings
+  + preservatives) then reintroduce one at a time. For stubborn or severe asthma,
+  consider a 4-12 month vegan trial (with fish allowed) — many improve dramatically.
+  Salt restriction across the board.
+caveats:
+- 4-week strict elimination needed
+- Nutritional adequacy during vegan trial (B12, iron, calcium, omega-3)
+- Pediatric asthma + eating disorder history — clinician guidance
+linked_to_topics:
+- asthma
+- food-allergy-ige-mediated
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 24 — Asthma, Treatment Summary pg 535
+  quote: All food allergens and food additives should be eliminated. If the patient
+    is willing, or if his or her asthma is unresponsive to recommended therapy, a
+    vegan diet (with the possible inclusion of cold-water fish) should be tried for
+    a minimum of four months to one year.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

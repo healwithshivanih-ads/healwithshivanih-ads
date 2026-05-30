@@ -1,0 +1,33 @@
+slug: murray-vitamin-c-asthma-airway
+statement: High-dose vitamin C (10–30 mg/kg in divided doses, ~500–2,000 mg total)
+  reduces asthma severity. Vitamin C concentrates in airway epithelial lining fluid
+  where it serves as the primary aqueous antioxidant; asthmatic airways consistently
+  show vitamin C depletion. Effect amplified when combined with flavonoid-rich extracts
+  (grape seed/pine bark PCOs 100-300 mg/day) and vitamin E (mixed tocopherols 100-200
+  IU).
+evidence_tier: plausible_emerging
+rationale: Multiple smaller trials + mechanism (airway lining fluid vit C depletion
+  is reproducible). Effect modest as monotherapy; works best as part of antioxidant
+  + bioflavonoid stack.
+coaching_translation: 'Vitamin C 500-1,500 mg/day in divided doses is foundational
+  for any asthma protocol — your airway lining literally uses it as its first-line
+  antioxidant. Most effective combined with flavonoids (grape seed/pine bark extract)
+  and vitamin E. Bowel-tolerance dosing: increase until loose stools, back off.'
+caveats:
+- Split doses (vitamin C half-life ~30 min)
+- Bowel tolerance dose-limits
+- Buffered or liposomal forms for higher doses
+linked_to_topics:
+- asthma
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-c
+- vitamin-c-ascorbyl-palmitate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 24 — Asthma, Treatment Summary pg 535
+  quote: 'Vitamin C: 10 to 30 mg/kg in divided doses.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

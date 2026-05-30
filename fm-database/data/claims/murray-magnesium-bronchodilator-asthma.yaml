@@ -1,0 +1,37 @@
+slug: murray-magnesium-bronchodilator-asthma
+statement: Magnesium relaxes bronchial smooth muscle (demonstrated since 1912 by Trendelenburg)
+  and at oral doses of 200–400 mg three times daily (citrate/malate/aspartate/glycinate
+  forms) reduces asthma severity and frequency. IV magnesium is established standard-of-care
+  for acute severe asthma exacerbations in emergency departments; the oral dose targets
+  chronic baseline tone. Asthmatics consistently show low intracellular magnesium
+  status.
+evidence_tier: strong
+rationale: Multiple decades of evidence, IV form in standard pulmonology practice.
+  Mechanism — magnesium blocks calcium influx into bronchial smooth muscle, reducing
+  contraction. Oral chronic dose less studied than IV acute but mechanistically aligned.
+coaching_translation: Magnesium is a natural bronchodilator. 200-400 mg three times
+  daily (glycinate or citrate) as part of any asthma protocol. Doesn't replace rescue
+  inhalers for acute attacks (IV form is for ED use) but reduces baseline airway tightness
+  and exacerbation frequency.
+caveats:
+- Glycinate or citrate; avoid oxide
+- Renal impairment caution
+- GI tolerance often dose-limiting
+linked_to_topics:
+- asthma
+- chronic-inflammation
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+- magnesium-citrate
+out_of_scope_notes: Acute severe asthma requires emergency care; IV magnesium is clinician
+  scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 24 — Asthma, pg 528, 535
+  quote: 'Magnesium relaxed bovine bronchial smooth muscle. Magnesium (citrate, malate,
+    aspartate, or glycinate): 200 to 400 mg three times per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

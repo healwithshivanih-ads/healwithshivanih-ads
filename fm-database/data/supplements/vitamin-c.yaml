@@ -73,6 +73,7 @@ linked_to_topics:
 - diabetic-retinopathy
 - essential-hypertension
 - tendinopathy
+- asthma
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
@@ -163,7 +164,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 21
+version: 22
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

@@ -1,0 +1,38 @@
+slug: asthma
+display_name: Asthma
+aliases:
+- bronchial asthma
+- allergic asthma
+- reactive airway disease
+common_symptoms:
+- airway-inflammation-asthma
+- shortness-of-breath
+- breathing-irregularity
+key_mechanisms:
+- chronic-inflammation
+related_topics:
+- food-allergy-ige-mediated
+- chronic-inflammation
+- autoimmune
+summary: Chronic inflammatory airway disease characterised by reversible bronchoconstriction,
+  mucus hypersecretion, and airway hyperresponsiveness. Murray's functional medicine
+  framing treats asthma as primarily an allergy + inflammation-driven condition rather
+  than just a smooth-muscle problem. Cases and severity are increasing globally. The
+  natural medicine first step is reducing the allergic threshold by eliminating airborne
+  and food allergens, followed by anti-inflammatory nutrient therapy.
+coaching_scope_notes: Coach role — support food + airborne allergen identification
+  + elimination, nutrient repletion (vitamin D, magnesium, fish oil, vitamin C, quercetin),
+  and lifestyle modifications. Rescue inhalers + ICS/LABA medications remain conventional
+  first-line for acute control; coach does NOT discourage them.
+clinician_scope_notes: Pulmonary function testing, acute exacerbation management,
+  oral corticosteroid courses, biologic therapy (anti-IgE, anti-IL5) for severe phenotypes.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 24 — Asthma
+  quote: The first step in the natural approach to asthma is to reduce the allergic
+    threshold.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
