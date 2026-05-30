@@ -33,6 +33,7 @@ linked_to_topics:
 - dental-amalgam-mercury
 - metabolic-detoxification
 - mitochondrial-health-nutrients
+- high-blood-pressure
 linked_to_claims:
 - coq10-supports-mitochondrial-function-on-statins
 - coq10-carnitine-support-mitochondrial-repair
@@ -42,10 +43,12 @@ linked_to_claims:
 - coq10-nad-support-mitochondria-in-chronic-fatigue
 - coq10-antioxidant-protection-during-detox
 - coq10-supports-mitochondrial-atp-production
-notes_for_coach: CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol form may have better bioavailability,
-  especially in older adults. Fat-soluble — always take with food. Dose should be verified with clinician.
-notes_for_client: CoQ10 is like fuel for your cell's energy factories (mitochondria). It can help reduce fatigue and mental
-  sluggishness. Take it with a meal containing some fat for best absorption.
+notes_for_coach: CoQ10 is a key mitochondrial antioxidant and ATP co-factor. Ubiquinol
+  form may have better bioavailability, especially in older adults. Fat-soluble —
+  always take with food. Dose should be verified with clinician.
+notes_for_client: CoQ10 is like fuel for your cell's energy factories (mitochondria).
+  It can help reduce fatigue and mental sluggishness. Take it with a meal containing
+  some fat for best absorption.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
@@ -60,47 +63,54 @@ sources:
   quote: Fatigue, muscle pain common. Replenish CoQ10 (100–200 mg/day), monitor 25(OH)D.
 - id: vitaone-blood-sugar-toolkit
   location: Micronutrients for Insulin Sensitivity
-  quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do not have diabetes & may modestly lower
-    glucose in individuals who have type 2 diabetes.
+  quote: CoQ10 has been shown to increase insulin sensitivity in individuals who do
+    not have diabetes & may modestly lower glucose in individuals who have type 2
+    diabetes.
 - id: vitaone-health-coaching-toolkit
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: 'Support mitochondria: CoQ10, B-vitamins, carnitine, NAD+, rest–recovery cycles.'
+  quote: 'Support mitochondria: CoQ10, B-vitamins, carnitine, NAD+, rest–recovery
+    cycles.'
 - id: vitaone-health-coaching-cheatsheet
   location: Why Emotional Healing Is Important in Chronic Diseases
-  quote: 'Support mitochondria: CoQ10, B-vitamins, carnitine, NAD+, rest–recovery cycles.'
+  quote: 'Support mitochondria: CoQ10, B-vitamins, carnitine, NAD+, rest–recovery
+    cycles.'
 - id: vitaone-cv-toolkit
   location: Cardiovascular Drugs and Potential Nutrient Deficiency
   quote: 'Beta Blockers: CoQ10, Melatonin'
 - id: vitaone-nutrition-toolkit
   location: Nutrients for Mitochondrial Health
-  quote: Coenzyme Q10 (CoQ10) is a key component in cellular energy production. It has anti-inflammatory and antioxidant properties,
-    helping mitochondria remain efficient and healthy.
+  quote: Coenzyme Q10 (CoQ10) is a key component in cellular energy production. It
+    has anti-inflammatory and antioxidant properties, helping mitochondria remain
+    efficient and healthy.
 - id: vitaone-liver-detox-toolkit
   location: Dental Amalgam Removal Protocol — Pre-Procedure
   quote: 'CoQ-10: 100–300 mg'
 - id: coconote-fm-preventing-cvd-cholesterol
   location: Micronutrients in Clinical Practice
-  quote: Every one of my patients leaves the office with vitamin D, vitamin K, certainly a statin, certainly CoQ10 if they
-    come in on a statin.
+  quote: Every one of my patients leaves the office with vitamin D, vitamin K, certainly
+    a statin, certainly CoQ10 if they come in on a statin.
 - id: vitaone-practice-guide
-  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health > Coaching interventions
+  location: Seven Clinical Focus Areas > 5. Cholesterol and Cardiovascular Health
+    > Coaching interventions
   quote: 'Supplement support: Fish oil (if tolerated), CoQ10 if on statins, niacin'
 - id: vitaone-supplementation-dosage
   location: Page 1 - Supplement Table
-  quote: CoQ10 (Ubiquinone/Ubiquinol) - Mitochondrial energy, heart health - 100–300 mg/day - With meal
+  quote: CoQ10 (Ubiquinone/Ubiquinol) - Mitochondrial energy, heart health - 100–300
+    mg/day - With meal
 - id: vitaone-sex-hormones-cheatsheet
   location: Advanced PCOS-Specific Support
   quote: 'CoQ10: Enhances mitochondrial & egg quality; 100–200 mg/day preconception.'
 - id: vitaone-adrenal-cheatsheet
   location: Organ–Emotion Axis (p.11)
-  quote: 'Heart: Grief, lack of joy. Hypertension, palpitations, CAD. CoQ10, meditation, heart-rate variability work.'
-version: 7
+  quote: 'Heart: Grief, lack of joy. Hypertension, palpitations, CAD. CoQ10, meditation,
+    heart-rate variability work.'
+version: 8
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani
 pregnancy_safety: likely_safe
 lactation_safety: likely_safe
-pregnancy_safety_note: Limited pregnancy data but no signal of harm; 100 mg/day commonly used in fertility / preeclampsia
-  prevention.
+pregnancy_safety_note: Limited pregnancy data but no signal of harm; 100 mg/day commonly
+  used in fertility / preeclampsia prevention.
 aliases:
 - coq10-ubiquinone

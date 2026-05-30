@@ -1,0 +1,41 @@
+slug: murray-garlic-vitamin-c-htn
+statement: Garlic (equivalent of 4,000 mg fresh garlic daily, or standardised extract
+  providing ≥10 mg alliin / 4,000 mcg allicin potential) reduces systolic BP 7-9 mm
+  Hg and diastolic 4-6 mm Hg in meta-analyses — equivalent to single-agent antihypertensive
+  medication. Vitamin C 500-1,000 mg three times daily independently lowers BP via
+  endothelial NO support and oxidative stress reduction. The higher the dietary +
+  supplemental vitamin C intake, the lower the population BP across multiple cohort
+  studies.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Ried 2008 + 2016 for garlic, Juraschek 2012 for
+  vitamin C). Mechanism — garlic releases hydrogen sulfide gas (an endogenous vasodilator);
+  vitamin C regenerates BH4 cofactor for eNOS, supporting nitric oxide production.
+  Both target the endothelial NO axis.
+coaching_translation: Garlic at therapeutic dose (4,000 mg fresh equivalent or standardised
+  allicin product) reduces blood pressure as much as some prescription drugs. Vitamin
+  C 500-1,000 mg three times daily adds independent BP-lowering effect. Both work
+  via the nitric oxide pathway in your blood vessels. Stack well with the magnesium
+  + CoQ10 foundation.
+caveats:
+- Garlic standardisation matters (≥10 mg alliin or 4,000 mcg allicin)
+- Mild antiplatelet — caution + anticoagulants
+- Garlic odour management — enteric coating helps
+- Vitamin C bowel tolerance dose-limiting
+- Calcium oxalate kidney stone history — citrate form
+linked_to_topics:
+- high-blood-pressure
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- garlic
+- garlic-allicin
+- aged-garlic-extract
+- vitamin-c
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, Treatment Summary pg 1070
+  quote: 'Vitamin C: 500 to 1,000 mg three times/day. Garlic: the equivalent of 4,000
+    mg per day of fresh garlic.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

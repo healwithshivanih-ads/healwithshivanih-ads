@@ -21,6 +21,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - essential-hypertension
+- high-blood-pressure
 linked_to_claims:
 - hibiscus-extract-comparable-to-captopril
 notes_for_coach: 'Protocol: three 240 mL cups brewed tea daily OR extract providing
@@ -36,7 +37,7 @@ sources:
   location: Botanical Medicines / Hibiscus sabdariffa
   quote: Three 240-mL servings of brewed tea daily for 6 weeks lowered systolic BP
     by 7.2 mm Hg.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

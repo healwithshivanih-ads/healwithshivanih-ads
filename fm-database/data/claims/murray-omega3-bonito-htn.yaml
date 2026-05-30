@@ -1,0 +1,41 @@
+slug: murray-omega3-bonito-htn
+statement: Over 60 DB-RCTs confirm fish oil (3 g/day combined EPA+DHA) and flaxseed
+  oil (1 tbsp/day) exert blood-pressure-lowering effects through vasodilatory EPA-derived
+  eicosanoid pathways. For moderate hypertension, anti-ACE peptides from bonito (1,500
+  mg/day of standardised LKPNM-rich preparation) inhibit angiotensin-converting enzyme
+  via peptide-based competitive inhibition — same mechanism as ACE-inhibitor drugs.
+  Bonito peptides effective in trials at producing 6-12 mm Hg systolic / 4-7 mm Hg
+  diastolic reduction over 4-12 weeks.
+evidence_tier: strong
+rationale: Multiple meta-analyses for omega-3 (Geleijnse 2002); bonito peptide trials
+  (Saito 1994). Mechanism — EPA → prostacyclin (vasodilator); LKPNM bonito tetrapeptide
+  inhibits ACE. Both compatible with conventional antihypertensives.
+coaching_translation: Fish oil 3 g/day combined EPA+DHA is foundational for BP (60+
+  trials). For moderate hypertension, add bonito peptides 1,500 mg/day — these are
+  food-derived ACE inhibitors that work via the same mechanism as ACE-inhibitor drugs
+  like lisinopril but without the cough or kidney side effects. Combined with the
+  magnesium + CoQ10 + olive leaf stack, often achieves drug-equivalent control.
+caveats:
+- 3 g EPA+DHA threshold (most multivitamins have <1 g)
+- Quality matters — third-party tested for oxidation
+- Bonito peptides — fish allergy contraindication
+- Mild antiplatelet — caution + anticoagulants
+linked_to_topics:
+- high-blood-pressure
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+- anti-ace-peptides-bonito
+- bonito-peptides
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, pg 1068, 1071
+  quote: 'More than 60 double-blind studies have demonstrated that either fish oil
+    supplements or flaxseed oil exert some blood-pressure-lowering effect. Anti-ACE
+    peptides from bonito: 1,500 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

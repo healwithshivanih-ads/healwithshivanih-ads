@@ -1,0 +1,45 @@
+slug: murray-olive-leaf-hibiscus-hawthorn-htn
+statement: 'Three botanical anti-hypertensives with DB-RCT evidence approaching prescription-drug
+  efficacy: (1) Olive leaf extract 500 mg twice daily (17-23% oleuropein) — in head-to-head
+  vs captopril, comparable BP reduction. (2) Hibiscus sabdariffa — 3 cups tea daily
+  OR standardised extract (10-20 mg total anthocyanidins/day) — dropped systolic BP
+  17 mm Hg + diastolic 12 mm Hg in trials, achieving lisinopril-comparable effect.
+  (3) Hawthorn extract (10% proanthocyanidins or 1.8% vitexin-4''-rhamnoside) 100-250
+  mg three times daily — modest effect but pairs with cardiotonic + arrhythmia benefits.
+  Use ONE at therapeutic dose rather than all three.'
+evidence_tier: strong
+rationale: 'Multiple DB-RCTs cited (Susalit 2011 olive vs captopril, Mozaffari-Khosravi
+  2009 hibiscus, Schmidt 1994 hawthorn). Mechanisms — olive: ACE inhibition + endothelial
+  NO; hibiscus: ACE inhibition + diuretic; hawthorn: oligomeric proanthocyanidins
+  → endothelial NO + Na/K-ATPase modulation.'
+coaching_translation: 'Three RCT-evidenced botanicals for hypertension that approach
+  prescription-drug strength: olive leaf 500 mg twice daily (17-23% oleuropein), hibiscus
+  tea 3 cups daily or 10-20 mg anthocyanidin extract, or hawthorn 100-250 mg three
+  times daily. Pick ONE at therapeutic dose. Olive leaf has the strongest single-agent
+  evidence; hibiscus is India-friendly + cheap; hawthorn pairs benefit if also have
+  arrhythmia or CHF.'
+caveats:
+- Pick ONE at full therapeutic dose
+- Olive leaf vs captopril head-to-head — comparable BP effect
+- Hibiscus mild diuretic effect; monitor potassium with potassium-sparing diuretics
+- Hawthorn potentiates digoxin (cardiac glycosides) — clinician supervision
+- 6-12 weeks for full effect
+linked_to_topics:
+- high-blood-pressure
+linked_to_supplements:
+- olive-leaf-extract
+- hibiscus
+- hibiscus-tea
+- hawthorn-extract
+- hawthorn-berry
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, pg 1068–1071
+  quote: In another study, 232 patients with high BP were given either olive leaf
+    extract (500 mg twice per day) or the conventional antihypertensive drug captopril
+    (12.5 mg twice per day). Hibiscus extract decreased systolic blood pressure by
+    17.14 mm Hg and diastolic by 11.97 mm Hg.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

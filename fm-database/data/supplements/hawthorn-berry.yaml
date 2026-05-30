@@ -14,6 +14,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - cardiometabolic-diet
+- high-blood-pressure
 notes_for_coach: Included as a base liquid tea herb (2 tablespoons brewed). Hawthorn
   has traditional and emerging evidence for cardiovascular support (blood pressure,
   heart failure). At tea-base doses this is culinary level; higher therapeutic doses
@@ -30,9 +31,9 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: Hawthorne berry extract
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases:
 - hawthorn-berry-extract

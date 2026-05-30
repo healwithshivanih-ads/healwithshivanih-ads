@@ -20,6 +20,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - essential-hypertension
+- high-blood-pressure
 linked_to_claims:
 - hawthorn-mild-bp-lowering-2-4-weeks
 notes_for_coach: 'Standardise to 10% procyanidins or 1.8% vitexin-4''-rhamnoside.
@@ -35,7 +36,7 @@ sources:
   quote: Extracts of hawthorn berries and flowering tops lower BP and improve heart
     function. BP-lowering effect of hawthorn is quite mild and requires at least 2
     to 4 weeks before effect is apparent.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

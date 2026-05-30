@@ -1,0 +1,43 @@
+slug: murray-coq10-magnesium-htn
+statement: CoQ10 deficiency is present in 39% of hypertensive patients; supplementation
+  at 200-300 mg/day reduces blood pressure 10-17 mm Hg systolic / 8-10 mm Hg diastolic
+  over 8-12 weeks in multiple RCTs — comparable to single-agent antihypertensive medication.
+  Magnesium (citrate form, 6-10 mg/kg/day in divided doses) acts as natural calcium-channel-blocker
+  producing arterial smooth muscle relaxation. Both work mechanistically distinct
+  from each other and from standard antihypertensives, making them additive both with
+  each other and with drug therapy.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Rosenfeldt 2007 for CoQ10, Zhang 2016 for magnesium).
+  Mechanism — CoQ10 stabilises mitochondrial membranes + cofactor for NO synthesis;
+  magnesium directly inhibits L-type calcium channels in vascular smooth muscle. Both
+  target vascular tone via different cellular mechanisms.
+coaching_translation: 'Two foundational supplements for hypertension: CoQ10 200-300
+  mg/day (40% of hypertensives are deficient) and magnesium citrate 6-10 mg/kg/day
+  in divided doses (acts like a calcium channel blocker but without side effects).
+  Both safely combine with standard BP medications. Effect builds over 8-12 weeks.
+  Take CoQ10 with food (fat-soluble).'
+caveats:
+- CoQ10 with food (fat-soluble)
+- Ubiquinol form better absorbed than ubiquinone, especially > age 50
+- Magnesium citrate vs oxide for absorption
+- Renal impairment caution + magnesium
+- Combine safely with ACE-inhibitors, ARBs, calcium channel blockers
+linked_to_topics:
+- high-blood-pressure
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- coq10
+- magnesium
+- magnesium-glycinate
+- magnesium-citrate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, pg 1068, 1070
+  quote: 'CoQ10 deficiency has been shown to be present in 39% of patients with high
+    blood pressure, and supplementation with CoQ10 can lower blood pressure. CoQ10:
+    200 to 300 mg per day. Magnesium (preferably citrate): 6 to 10 mg/kg per day,
+    in divided doses.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -19,6 +19,7 @@ take_with_food: optional
 linked_to_topics:
 - beta-blocker-deprescribing
 - hypertension
+- high-blood-pressure
 typical_dose_range: {}
 linked_to_mechanisms: []
 linked_to_claims: []
@@ -30,7 +31,7 @@ sources:
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients
     — Supplement Schedule'
   quote: Hibiscus tea
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani

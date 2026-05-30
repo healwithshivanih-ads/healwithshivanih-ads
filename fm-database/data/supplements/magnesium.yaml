@@ -45,6 +45,7 @@ linked_to_topics:
 - osteoporosis
 - bone-health
 - asthma
+- high-blood-pressure
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -165,7 +166,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
-version: 22
+version: 23
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani
