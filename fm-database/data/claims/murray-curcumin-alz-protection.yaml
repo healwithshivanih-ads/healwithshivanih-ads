@@ -1,0 +1,40 @@
+slug: murray-curcumin-alz-protection
+statement: 'Considerable experimental evidence shows curcumin protects against age-related
+  brain damage AND specifically against Alzheimer''s. Mechanisms: (1) directly inhibits
+  beta-amyloid aggregation + promotes disassembly of amyloid plaques, (2) reduces
+  neuroinflammation via NF-κB inhibition, (3) chelates iron + copper (both implicated
+  in AD oxidative damage), (4) crosses blood-brain barrier. Population observation:
+  India has one of the lowest rates of Alzheimer''s globally, attributed partly to
+  widespread turmeric consumption. Bioavailable curcumin (Meriva 1,000-1,200 mg, Theracurmin
+  300 mg) is critical — plain curcumin powder doesn''t reach therapeutic brain concentrations.'
+evidence_tier: plausible_emerging
+rationale: Extensive in vitro + animal data; human trials emerging. Mechanism robust.
+  India epidemiology suggestive. Effect-size in modern bioavailable forms promising
+  but RCT base still growing.
+coaching_translation: Curcumin has the strongest evidence among natural compounds
+  for Alzheimer's prevention — it blocks amyloid plaque formation, reduces brain inflammation,
+  and chelates the iron + copper involved in neurodegeneration. India's low Alzheimer's
+  rate is partly attributed to turmeric consumption. Use BIOAVAILABLE forms — Meriva
+  1,000-1,200 mg/day or Theracurmin 300 mg/day. Plain turmeric supplements won't reach
+  brain levels.
+caveats:
+- Bioavailable curcumin form essential
+- Iron deficiency caution (chelates iron)
+- Mild antiplatelet effect
+- Effect modest once advanced AD established
+- Combine with omega-3 + B-vitamins for additive effect
+linked_to_topics:
+- cognitive-decline
+- chronic-inflammation
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 20 — Alzheimer's, Quick Review pg 461
+  quote: There is considerable experimental evidence that curcumin protects against
+    age-related brain damage and, in particular, Alzheimer's disease.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

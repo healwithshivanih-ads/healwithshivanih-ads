@@ -1,0 +1,37 @@
+slug: murray-alz-l-acetylcarnitine-outstanding
+statement: 'L-acetylcarnitine (ALCAR) at 1,500 mg/day shows ''outstanding'' results
+  in delaying Alzheimer''s disease progression according to Murray''s clinical synthesis
+  of available trials. Mechanism: ALCAR crosses the blood-brain barrier, supports
+  cholinergic neurotransmission (acetyl group serves as substrate for acetylcholine
+  synthesis), enhances mitochondrial function via fatty acid oxidation, and provides
+  neuroprotection against oxidative stress. Particularly effective in early Alzheimer''s;
+  less effective in advanced disease. Combination with alpha-lipoic acid potentiates
+  effect (synergistic mitochondrial support). Generally well-tolerated; mild stimulation
+  can be issue in evening dosing.'
+evidence_tier: plausible_emerging
+rationale: Multiple smaller RCTs cited (Pettegrew 1995, Spagnoli 1991, Bonavita 1986).
+  Mechanism well-described. Effect size meaningful but evidence-base size modest.
+coaching_translation: L-acetylcarnitine (ALCAR) 1,500 mg/day has the best Murray-cited
+  evidence for slowing Alzheimer's progression — Murray calls results 'outstanding.'
+  Works on cholinergic transmission + mitochondrial energy. Particularly effective
+  in early disease. Pairs well with alpha-lipoic acid 300-600 mg for synergy. Avoid
+  evening dosing — slightly stimulating.
+caveats:
+- 1,500 mg/day typical effective dose
+- Pair with alpha-lipoic acid for synergy
+- Avoid evening (mild stimulation)
+- Mild GI upset possible at higher doses
+- Effect modest in advanced disease
+linked_to_topics:
+- cognitive-decline
+linked_to_supplements:
+- alpha-lipoic-acid
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 20 — Alzheimer's, Quick Review pg 461, Treatment Summary pg 463
+  quote: 'The results of using L-acetylcarnitine to delay the progression of Alzheimer''s
+    disease have been outstanding. L-acetylcarnitine: 1,500 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,37 @@
+slug: murray-ginkgo-huperzine-alz
+statement: 'Two evidence-backed botanicals for early-stage Alzheimer''s: (1) Ginkgo
+  biloba (24% flavone glycosides) 240-320 mg/day — helps reverse or delay mental deterioration
+  ONLY during early stages (multiple DB-RCTs); ineffective in advanced disease, (2)
+  Huperzine A 200-400 mcg/day — selective acetylcholinesterase inhibitor (same mechanism
+  as donepezil/Aricept) but more selective and substantially less toxic than conventional
+  cholinesterase inhibitors. Huperzine works at all stages of AD (unlike ginkgo).
+  Both can be combined safely. Effect generally builds over 12 weeks.'
+evidence_tier: strong
+rationale: Multiple DB-RCTs for both. Mechanism — ginkgo improves cerebral blood flow
+  + has direct neuroprotective effects; huperzine A is a potent reversible acetylcholinesterase
+  inhibitor.
+coaching_translation: 'Two botanicals for early Alzheimer''s: Ginkgo biloba 240-320
+  mg/day (24% flavone glycosides) — works best in EARLY stages, not advanced. Huperzine
+  A 200-400 mcg/day — same mechanism as the prescription Aricept but cleaner side-effect
+  profile. Both can be combined. Effect over 12+ weeks.'
+caveats:
+- Ginkgo only effective in early disease
+- Huperzine A — risk of cholinergic excess at higher doses (nausea, vomiting)
+- Mild antiplatelet effect of ginkgo
+- Avoid huperzine + Rx cholinesterase inhibitors (additive effect)
+- Quality matters for both (standardised extracts)
+linked_to_topics:
+- cognitive-decline
+linked_to_supplements:
+- ginkgo-biloba
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 20 — Alzheimer's, Quick Review pg 461
+  quote: It appears that ginkgo biloba helps reverse or delay mental deterioration
+    only during the early stages of Alzheimer's disease. Huperzine A is more selective
+    and substantially less toxic than the acetylcholine esterase inhibitors currently
+    used in conventional medicine.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
