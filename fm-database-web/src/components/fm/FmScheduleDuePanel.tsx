@@ -3,18 +3,18 @@
 /**
  * FmScheduleDuePanel — dashboard surface for "who needs a booking link".
  *
- * Companion to FmInboundMessagesBanner + FmIntakeActivityBanner: a
- * passive heads-up that becomes actionable in two clicks.
+ * Two visual sections, both served from the same getSchedulingDueRows scan:
  *
- * Rules (computed server-side in scheduling-due.ts):
- *   - Flag clients ≥ 12 days since their last session
- *   - Flag clients whose plan_period_recheck_date has passed
- *   - Each row gets an auto-picked event type:
- *       Active programme → Coaching (or "next-cycle Coaching" if
- *                                     plan recheck overdue)
- *       Intake-in-flight → Programme Intake
- *       Prospect         → Discovery
- *   - Coach can override the type per row via dropdown
+ *   Amber "Due soon" (proactive, 3-day advance signal):
+ *     - upcoming_in_days set (plan recheck / next_contact_date / session
+ *       gap approaching 12-day threshold) AND not yet overdue
+ *
+ *   Indigo "Overdue" (already past the threshold):
+ *     - plan_period_recheck_date already passed, OR
+ *     - ≥ 12 days since last session
+ *
+ * Cal.com cross-reference: clients with a future booking are already
+ * excluded server-side (scheduling-due.ts) — they never appear here.
  *
  * Bulk send: each row has its OWN slug. The "Send to N selected" button
  * fires sends respecting each row's individual slug — so a mixed batch
@@ -46,6 +46,15 @@ export interface FmScheduleDuePanelProps {
   unread?: Record<string, ClientUnreadCounts>;
 }
 
+/** True when a row is the "proactive due soon" signal (not yet overdue). */
+function isUpcomingOnly(r: SchedulingDueRow): boolean {
+  return (
+    r.upcoming_in_days !== undefined &&
+    !r.plan_recheck_overdue_days &&
+    (r.days_since_last_session ?? 0) < 12
+  );
+}
+
 export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDuePanelProps) {
   const router = useRouter();
   const [rows, setRows] = useState<
@@ -56,6 +65,10 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
   const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
 
   if (rows.length === 0) return null;
+
+  // Split into two groups
+  const upcomingRows = rows.filter((r) => isUpcomingOnly(r));
+  const overdueRows = rows.filter((r) => !isUpcomingOnly(r));
 
   const selected = rows.filter((r) => r.selected && !doneIds.has(r.client_id));
   const byType = selected.reduce<Record<BookingType, number>>(
@@ -126,19 +139,139 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
     }
   };
 
+  /** Shared row renderer — used in both sections. */
+  const renderRow = (r: typeof rows[number]) => {
+    const isDone = doneIds.has(r.client_id);
+    const isSending = sendingRow === r.client_id;
+    const type = r.override_type ?? r.recommended_type;
+    const meta = TYPE_META[type];
+    const upcoming = isUpcomingOnly(r);
+    return (
+      <div
+        key={r.client_id}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "auto 1fr auto auto",
+          gap: 10,
+          alignItems: "center",
+          padding: "6px 10px",
+          background: isDone
+            ? "rgba(16, 185, 129, 0.08)"
+            : upcoming
+              ? "rgba(245, 158, 11, 0.04)"
+              : "var(--fm-surface)",
+          border: `1px solid ${
+            isDone
+              ? "rgba(16, 185, 129, 0.35)"
+              : upcoming
+                ? "rgba(245, 158, 11, 0.30)"
+                : "var(--fm-border-light)"
+          }`,
+          borderRadius: "var(--fm-radius-sm)",
+          opacity: isDone ? 0.7 : 1,
+        }}
+      >
+        <input
+          type="checkbox"
+          checked={r.selected && !isDone}
+          disabled={isDone}
+          onChange={() => toggleRow(r.client_id)}
+          style={{ accentColor: upcoming ? "#d97706" : "#4338ca" }}
+        />
+        <div style={{ minWidth: 0 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
+            {r.display_name}
+            <UnreadBadge counts={unread?.[r.client_id]} />
+            {upcoming && (
+              <span
+                style={{
+                  marginLeft: 8,
+                  fontSize: 9,
+                  fontWeight: 700,
+                  letterSpacing: 0.4,
+                  textTransform: "uppercase",
+                  padding: "2px 6px",
+                  background: "rgba(245, 158, 11, 0.18)",
+                  color: "#8a5a08",
+                  border: "1px solid rgba(245, 158, 11, 0.45)",
+                  borderRadius: "var(--fm-radius-pill)",
+                }}
+              >
+                {r.upcoming_in_days === 0 ? "due today" : `in ${r.upcoming_in_days}d`}
+              </span>
+            )}
+          </div>
+          <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
+            {r.reason}
+          </div>
+        </div>
+        <select
+          value={type}
+          disabled={isDone || isSending}
+          onChange={(e) => setOverrideType(r.client_id, e.target.value as BookingType)}
+          style={{
+            fontSize: 12,
+            padding: "3px 8px",
+            border: "1px solid var(--fm-border)",
+            borderRadius: 4,
+            background: "var(--fm-surface)",
+            cursor: "pointer",
+            fontFamily: "inherit",
+          }}
+        >
+          <option value="discovery">🔍 Discovery</option>
+          <option value="programme-intake">🌿 Programme Intake</option>
+          <option value="coaching">💬 Coaching</option>
+        </select>
+        <button
+          type="button"
+          onClick={() => onSendOne(r.client_id)}
+          disabled={isDone || isSending || sendingAll}
+          style={{
+            padding: "4px 10px",
+            borderRadius: 4,
+            border: 0,
+            background: isDone
+              ? "rgba(16, 185, 129, 0.2)"
+              : isSending
+                ? "rgba(0,0,0,0.1)"
+                : "#25D366",
+            color: isDone ? "#065f46" : "#fff",
+            fontSize: 11,
+            fontWeight: 600,
+            cursor: isDone || isSending ? "default" : "pointer",
+            fontFamily: "inherit",
+            whiteSpace: "nowrap",
+            minWidth: 64,
+          }}
+          title={
+            isDone
+              ? "Already sent in this session"
+              : `Send ${meta.label} booking link to ${r.display_name}`
+          }
+        >
+          {isDone ? "✓ Sent" : isSending ? "…" : `📤 ${meta.emoji}`}
+        </button>
+      </div>
+    );
+  };
+
+  const totalDue = rows.filter((r) => !doneIds.has(r.client_id)).length;
+
   return (
     <FmPanel
       style={{
         padding: "12px 16px",
-        background: "linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(168, 85, 247, 0.05))",
-        borderColor: "rgba(99, 102, 241, 0.3)",
+        background: "linear-gradient(135deg, rgba(99, 102, 241, 0.07), rgba(168, 85, 247, 0.04))",
+        borderColor: "rgba(99, 102, 241, 0.28)",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+      {/* ── Panel header ── */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
         <span style={{ fontSize: 22 }}>📅</span>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: "#3730a3" }}>
-            Time to schedule next session
+            Booking links to send
             <span
               style={{
                 fontSize: 10,
@@ -152,12 +285,12 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
                 fontWeight: 700,
               }}
             >
-              {rows.filter((r) => !doneIds.has(r.client_id)).length} due
+              {totalDue} client{totalDue === 1 ? "" : "s"}
             </span>
           </div>
           <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
-            12+ days since last session, or plan recheck overdue. Each row
-            auto-picks the right booking type — override per row before sending.
+            Clients without a future cal.com booking who need a link sent.
+            Auto-picks event type per client — override per row.
           </div>
         </div>
         <button
@@ -172,143 +305,107 @@ export function FmScheduleDuePanel({ rows: initialRows, unread }: FmScheduleDueP
             fontSize: 12,
             fontWeight: 700,
             borderRadius: "var(--fm-radius-sm)",
-            cursor: sendingAll
-              ? "wait"
-              : selected.length === 0
-                ? "not-allowed"
-                : "pointer",
+            cursor: sendingAll ? "wait" : selected.length === 0 ? "not-allowed" : "pointer",
             fontFamily: "inherit",
             whiteSpace: "nowrap",
           }}
         >
-          {sendingAll
-            ? "Sending…"
-            : `📤 Send to ${selected.length} selected`}
+          {sendingAll ? "Sending…" : `📤 Send to ${selected.length} selected`}
         </button>
       </div>
 
-      <div style={{ display: "grid", gap: 4 }}>
-        {rows.map((r) => {
-          const isDone = doneIds.has(r.client_id);
-          const isSending = sendingRow === r.client_id;
-          const type = r.override_type ?? r.recommended_type;
-          const meta = TYPE_META[type];
-          return (
-            <div
-              key={r.client_id}
+      {/* ── Amber section: Due soon (proactive 1–3 day signal) ── */}
+      {upcomingRows.length > 0 && (
+        <div style={{ marginBottom: overdueRows.length > 0 ? 12 : 0 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              marginBottom: 6,
+              paddingBottom: 4,
+              borderBottom: "1px solid rgba(245, 158, 11, 0.25)",
+            }}
+          >
+            <span style={{ fontSize: 13 }}>⏰</span>
+            <span
               style={{
-                display: "grid",
-                gridTemplateColumns: "auto 1fr auto auto",
-                gap: 10,
-                alignItems: "center",
-                padding: "6px 10px",
-                background: isDone ? "rgba(16, 185, 129, 0.08)" : "var(--fm-surface)",
-                border: `1px solid ${isDone ? "rgba(16, 185, 129, 0.35)" : "var(--fm-border-light)"}`,
-                borderRadius: "var(--fm-radius-sm)",
-                opacity: isDone ? 0.7 : 1,
+                fontSize: 11,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: 0.6,
+                color: "#92400e",
               }}
             >
-              <input
-                type="checkbox"
-                checked={r.selected && !isDone}
-                disabled={isDone}
-                onChange={() => toggleRow(r.client_id)}
-                style={{ accentColor: "#4338ca" }}
-              />
-              <div style={{ minWidth: 0 }}>
-                <div
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "var(--fm-text-primary)",
-                  }}
-                >
-                  {r.display_name}
-                  <UnreadBadge counts={unread?.[r.client_id]} />
-                  {r.upcoming_in_days !== undefined &&
-                    r.plan_recheck_overdue_days === undefined &&
-                    !((r.days_since_last_session ?? 0) >= 12) && (
-                      <span
-                        style={{
-                          marginLeft: 8,
-                          fontSize: 9,
-                          fontWeight: 700,
-                          letterSpacing: 0.4,
-                          textTransform: "uppercase",
-                          padding: "2px 6px",
-                          background: "rgba(245, 158, 11, 0.15)",
-                          color: "#8a5a08",
-                          border: "1px solid rgba(245, 158, 11, 0.45)",
-                          borderRadius: "var(--fm-radius-pill)",
-                        }}
-                      >
-                        {r.upcoming_in_days === 0
-                          ? "due today"
-                          : `in ${r.upcoming_in_days}d`}
-                      </span>
-                    )}
-                </div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: "var(--fm-text-tertiary)",
-                    marginTop: 1,
-                  }}
-                >
-                  {r.reason}
-                </div>
-              </div>
-              <select
-                value={type}
-                disabled={isDone || isSending}
-                onChange={(e) => setOverrideType(r.client_id, e.target.value as BookingType)}
+              Due soon
+            </span>
+            <span
+              style={{
+                fontSize: 10,
+                padding: "1px 6px",
+                borderRadius: 3,
+                background: "rgba(245, 158, 11, 0.15)",
+                color: "#92400e",
+                fontWeight: 700,
+              }}
+            >
+              {upcomingRows.filter((r) => !doneIds.has(r.client_id)).length}
+            </span>
+            <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginLeft: 4 }}>
+              — send now so they can book before the gap grows
+            </span>
+          </div>
+          <div style={{ display: "grid", gap: 4 }}>
+            {upcomingRows.map(renderRow)}
+          </div>
+        </div>
+      )}
+
+      {/* ── Indigo section: Already overdue ── */}
+      {overdueRows.length > 0 && (
+        <div>
+          {upcomingRows.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                marginBottom: 6,
+                paddingBottom: 4,
+                borderBottom: "1px solid rgba(99, 102, 241, 0.20)",
+              }}
+            >
+              <span style={{ fontSize: 13 }}>⚠️</span>
+              <span
                 style={{
-                  fontSize: 12,
-                  padding: "3px 8px",
-                  border: "1px solid var(--fm-border)",
-                  borderRadius: 4,
-                  background: "var(--fm-surface)",
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                }}
-              >
-                <option value="discovery">🔍 Discovery</option>
-                <option value="programme-intake">🌿 Programme Intake</option>
-                <option value="coaching">💬 Coaching</option>
-              </select>
-              <button
-                type="button"
-                onClick={() => onSendOne(r.client_id)}
-                disabled={isDone || isSending || sendingAll}
-                style={{
-                  padding: "4px 10px",
-                  borderRadius: 4,
-                  border: 0,
-                  background: isDone
-                    ? "rgba(16, 185, 129, 0.2)"
-                    : isSending
-                      ? "rgba(0,0,0,0.1)"
-                      : "#25D366",
-                  color: isDone ? "#065f46" : "#fff",
                   fontSize: 11,
-                  fontWeight: 600,
-                  cursor: isDone || isSending ? "default" : "pointer",
-                  fontFamily: "inherit",
-                  whiteSpace: "nowrap",
-                  minWidth: 64,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.6,
+                  color: "#3730a3",
                 }}
-                title={
-                  isDone
-                    ? "Already sent in this session"
-                    : `Send ${meta.label} booking link to ${r.display_name}`
-                }
               >
-                {isDone ? "✓ Sent" : isSending ? "…" : `📤 ${meta.emoji}`}
-              </button>
+                Overdue
+              </span>
+              <span
+                style={{
+                  fontSize: 10,
+                  padding: "1px 6px",
+                  borderRadius: 3,
+                  background: "rgba(99, 102, 241, 0.12)",
+                  color: "#3730a3",
+                  fontWeight: 700,
+                }}
+              >
+                {overdueRows.filter((r) => !doneIds.has(r.client_id)).length}
+              </span>
             </div>
-          );
-        })}
-      </div>
+          )}
+          <div style={{ display: "grid", gap: 4 }}>
+            {overdueRows.map(renderRow)}
+          </div>
+        </div>
+      )}
     </FmPanel>
   );
 }
