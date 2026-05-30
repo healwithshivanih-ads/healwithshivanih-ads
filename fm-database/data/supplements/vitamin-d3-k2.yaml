@@ -24,11 +24,14 @@ linked_to_topics:
 - psoriasis-gut-immune
 - immune-dysregulation
 - gut-skin-hormone-axis
+- rheumatoid-arthritis
+- autoimmune
 linked_to_claims:
 - vitamin-d-critical-for-treg-function
 - vitamin-d-k2-immune-tolerance
 - fm-intervention-improved-insulin-resistance-lipids-homocysteine
 - high-dose-d3-improves-psoriasis-symptoms
+- murray-vitamin-d-autoimmune-correlation
 notes_for_coach: Even when vitamin D levels appear 'normal' on standard ranges, higher-dose
   D3 has been researched for autoimmune/psoriatic conditions. K2 is co-administered
   to direct calcium appropriately. High-dose D3 (above 4000 IU) should be supervised
@@ -50,7 +53,10 @@ sources:
   quote: High dose vitamin D3 does help with healing or improving the symptoms of
     psoriasis. There have been researches which show that for the problem of psoriasis
     — any autoimmune issue — high dose vitamin D3 does help.
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 4
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

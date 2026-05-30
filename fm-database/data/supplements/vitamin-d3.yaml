@@ -46,6 +46,10 @@ linked_to_topics:
 - benign-prostatic-hyperplasia
 - cancer-integrated-naturopathic-support
 - type-1-diabetes-mellitus
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- autoimmune-dermatitis
 linked_to_claims:
 - low-carb-improves-pcos-hormonal-markers
 - vitamin-d-low-linked-recurrent-candida
@@ -63,6 +67,7 @@ linked_to_claims:
 - vitamin-d-shifts-vaginal-microbiome-to-crispatus
 - bph-vitamin-d-reduced-risk
 - vitamin-d-deficiency-300-percent-t1dm-risk
+- murray-vitamin-d-autoimmune-correlation
 notes_for_coach: 'T1DM prevention/early intervention: 2000 IU protective dose; recently
   diagnosed T1DM: 4000–8000 IU. Cod liver oil provides both vitamin D and omega-3.
   Paediatric dosing requires physician supervision.'
@@ -200,9 +205,12 @@ sources:
   quote: Children taking vitamin D from cod liver oil have an 80% reduced risk of
     T1DM; vitamin D–deficient children have a 300% increased risk. Protective dose
     is 2000 international units (IU) daily.
-version: 13
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 14
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - vitamin-d3-supplement

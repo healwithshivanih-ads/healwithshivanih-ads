@@ -18,11 +18,14 @@ linked_to_topics:
 - cardiovascular-disease-prevention
 - metabolic-syndrome
 - tendinopathy
+- rheumatoid-arthritis
+- autoimmune
 linked_to_claims:
 - turmeric-is-nf-kb-inhibitor
 - turmeric-downregulates-nf-kappab-upregulates-nrf2
 - turmeric-lowers-blood-sugar-and-hba1c
 - murray-curcumin-bioavailable-forms
+- murray-curcumin-equals-phenylbutazone-ra
 notes_for_coach: Clinician uses 500mg twice daily. Downregulates NF-κB and upregulates
   NRF2. Bioavailability enhanced with piperine (black pepper extract). Anti-inflammatory,
   blood sugar lowering, and HbA1c lowering properties noted.
@@ -45,7 +48,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

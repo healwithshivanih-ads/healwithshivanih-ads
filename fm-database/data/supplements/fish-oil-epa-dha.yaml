@@ -24,6 +24,9 @@ linked_to_topics:
 - menopause
 - anxiety
 - chronic-stress
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
 linked_to_claims:
 - omega-3-index-8pct-greatest-cvd-protection
 - omega-3s-reduce-cvd-mortality-45pct
@@ -31,6 +34,7 @@ linked_to_claims:
 - murray-fish-oil-tg-not-cholesterol
 - murray-fish-oil-cuts-hot-flashes
 - murray-fish-oil-cytokine-anxiety
+- murray-fish-oil-3g-ra-12-week-threshold
 notes_for_coach: 'Use pharmaceutical-grade (free of mercury, PCBs, solvents). Recently
   diagnosed T1DM: 1000 mg each EPA + DHA. Level 1 T1DM/T2DM: 600 mg each. Combined
   EPA+DHA target 1100–1600 mg/day.'
@@ -56,7 +60,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 5
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 6
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

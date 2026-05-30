@@ -53,8 +53,11 @@ sources:
   location: Rheumatoid Arthritis — General Considerations (pp 875-877)
   quote: RA is the most common form of polyarthritis and is a chronic inflammatory
     condition affecting the entire body but especially synovial membranes of joints.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

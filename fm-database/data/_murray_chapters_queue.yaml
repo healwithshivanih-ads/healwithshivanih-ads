@@ -74,10 +74,11 @@ chapters:
   - ch: 89
     title: Rheumatoid Arthritis
     body_pg_start: 1466
-    body_pg_end: 1511
+    body_pg_end: 1491
     priority: 9
-    serves: [cl-004 autoimmune adjacent]
-    status: pending
+    serves: [cl-004 Dhanishta autoimmune adjacent, universal autoimmune]
+    status: ingested
+    batch_id: 20260530T190000-murray-ch89-ra-chat
   - ch: 88
     title: Psoriasis
     body_pg_start: 1451

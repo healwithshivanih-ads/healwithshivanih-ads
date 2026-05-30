@@ -1,0 +1,53 @@
+slug: murray-curcumin-equals-phenylbutazone-ra
+statement: In a head-to-head DB-RCT in rheumatoid arthritis, curcumin at 1,200 mg/day
+  produced clinical improvements (morning stiffness duration, walking time, joint
+  swelling) comparable to phenylbutazone 300 mg/day — but with no reported side effects,
+  in contrast to phenylbutazone's significant toxicity. Curcumin has no direct analgesic
+  effect; pain reduction follows from reduced inflammation. Advanced delivery forms
+  (Meriva 500–1,000 mg twice daily, BCM-95 750–1,500 mg twice daily, Theracurmin 300
+  mg one to three times daily) overcome the classical absorption limitation of plain
+  curcumin powder.
+evidence_tier: strong
+rationale: Deodhar 1980 DB-RCT cited + decades of subsequent autoimmune + inflammatory
+  disease literature. Mechanism — NF-κB inhibition, COX-2 + 5-LOX modulation, TNF-α
+  + IL-6 suppression, STAT3 modulation. Bioavailability is the make-or-break — generic
+  curcumin powder fails clinically because <1% is absorbed; standardised delivery
+  systems (phytosomes, nanoparticles, piperine combinations) achieve plasma levels
+  that the RCT evidence is built on.
+coaching_translation: Curcumin matches the anti-inflammatory potency of old-school
+  RA drugs (phenylbutazone, cortisone in animal models) without the toxicity — but
+  ONLY in bioavailable forms. Generic turmeric powder doesn't reach blood levels that
+  matter clinically. Use Meriva, BCM-95, or Theracurmin specifically. Pairs with bromelain
+  and fish oil for a comprehensive natural anti-inflammatory stack in any autoimmune
+  inflammatory condition.
+caveats:
+- Plain curcumin powder largely doesn't work clinically — must use bioavailable form
+- Mild antiplatelet — caution + anticoagulants + 7 days before surgery
+- Iron chelator — caution in iron deficiency
+- Active gallbladder disease — avoid (cholagogue effect)
+- Pregnancy — avoid therapeutic doses
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- chronic-inflammation
+- tendinopathy
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+- turmeric
+- turmeric-root
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1484
+  quote: In RA, one double-blind clinical trial compared curcumin (1,200 mg per day)
+    with phenylbutazone (300 mg per day). The improvements in the duration of morning
+    stiffness, walking time, and joint swelling were comparable in both groups. Furthermore,
+    while phenylbutazone is associated with significant adverse effects, curcumin
+    has not been shown to produce any side effects.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

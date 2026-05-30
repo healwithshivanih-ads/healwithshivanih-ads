@@ -17,6 +17,8 @@ take_with_food: optional
 linked_to_topics:
 - vitamin-b-complex-deficiency
 - adrenal-fatigue
+- rheumatoid-arthritis
+- autoimmune
 notes_for_coach: B5 is a cofactor for coenzyme A, required for adrenal steroidogenesis.
   Commonly included in adrenal support protocols. Often part of a B-complex formulation.
 notes_for_client: Vitamin B5 is essential for your adrenal glands to produce stress
@@ -25,6 +27,7 @@ evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 linked_to_claims:
 - magnesium-b5-c-zinc-omega3-support-adrenal-resilience
+- murray-pantothenic-acid-ra
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Vitamin B5 (Pantothenic Acid)
@@ -33,9 +36,12 @@ sources:
 - id: vitaone-instagram-posts
   location: POST https://www.instagram.com/p/DXg8Y9NjIwF/
   quote: Magnesium, B5, C, Zinc, Omega-3 (for adrenal resilience)
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases:
 - vitamin-b5

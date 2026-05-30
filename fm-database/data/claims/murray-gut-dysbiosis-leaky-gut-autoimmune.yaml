@@ -1,0 +1,55 @@
+slug: murray-gut-dysbiosis-leaky-gut-autoimmune
+statement: Rheumatoid arthritis (and by extension other connective-tissue autoimmune
+  diseases — SLE, scleroderma, ankylosing spondylitis, polymyalgia rheumatica) is
+  mechanistically tied to gut dysbiosis + small intestinal bacterial overgrowth (SIBO,
+  present in 51% of RA patients) + abnormal intestinal permeability ('leaky gut').
+  RA fecal microbiomes show significantly reduced bifidobacteria, Bacteroides, Porphyromonas,
+  and Prevotella species. Periodontal bacteria DNA has been identified in 100% of
+  joint fluid samples and 83.5% of blood samples from RA patients, with anti-periodontal-bacteria
+  antibodies correlating with anti-CCP autoantibodies. The functional medicine approach
+  treats the gut as the primary intervention target in any autoimmune connective tissue
+  disease.
+evidence_tier: strong
+rationale: Multiple lines of evidence — fecal microbiome studies, SIBO prevalence
+  studies (Henriksson 1993), periodontal-RA studies (Mukherjee 2018), gut permeability
+  measurements (Sundqvist 1982, Smith 1985). Mechanism — molecular mimicry between
+  bacterial antigens (especially Prevotella copri) and joint proteins; LPS endotoxin
+  translocation across leaky gut activates systemic immunity; oral-gut-joint axis
+  via periodontal disease. This is the SINGLE MOST IMPORTANT conceptual shift Murray
+  brings to RA — autoimmunity is not just genetic, it's gut-driven.
+coaching_translation: 'Rheumatoid arthritis and most connective-tissue autoimmune
+  diseases are gut-driven. Half of RA patients have SIBO; their gut bacteria are different
+  from non-RA people; their gut wall is leaky. Even periodontal disease bacteria from
+  the mouth have been found in RA joint fluid. The functional medicine RA protocol
+  starts with gut healing: SIBO testing + treatment, intestinal permeability assessment,
+  oral hygiene support, eliminating reactive foods, restoring beneficial flora. This
+  isn''t a side intervention — it''s the central one.'
+caveats:
+- SIBO requires breath testing (lactulose or glucose) for diagnosis
+- Leaky gut testing (lactulose/mannitol or zonulin) is functional medicine territory;
+  mainstream debated
+- Periodontal care often overlooked — refer to dental specialist
+- Antibiotic-induced dysbiosis is a common precipitant of RA flare
+- Bacterial translocation worsens during NSAID use — vicious cycle
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- autoimmunity-leaky-gut-connection
+- autoimmunity-leaky-gut-triad
+- sibo
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: SIBO breath testing and antibiotic/herbal treatment is clinician
+  scope. Coach role — flag SIBO red flags, support gut-repair nutrients, dietary protocol.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1470–1472
+  quote: Many RA patients have small-intestine bacterial overgrowth (SIBO), 51% in
+    one study, and the degree of SIBO was associated with the severity of symptoms
+    and disease activity. One study found identical periodontal bacterial DNA in 100%
+    of joint fluid samples and 83.5% of blood samples of RA patients.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

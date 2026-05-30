@@ -1,0 +1,51 @@
+slug: murray-elimination-diet-food-triggers-ra
+statement: 20–40% of rheumatoid arthritis patients show clinical improvement on a
+  structured elimination diet followed by reintroduction. The most common reactive
+  foods are wheat, corn, dairy, beef, nightshades (tomatoes, potatoes, eggplant, peppers),
+  pork, citrus, oats, rye, egg, coffee, peanuts, cane sugar, lamb, and soy. Importantly,
+  jejunal IgA, IgG, and IgM antibodies against food antigens are significantly elevated
+  in RA patients compared with controls — and these antibodies cross-react with normal
+  body proteins, providing a mechanism for the modest-additive-hypersensitivity model.
+  Standard serum food-antibody testing does NOT detect these jejunal antibodies, so
+  a negative blood food-allergy panel does not rule out food-driven inflammation.
+evidence_tier: plausible_emerging
+rationale: Multiple studies cited including the jejunal antibody work (Hvatum 2006).
+  Mechanism — modest IgG/IgM responses to multiple food antigens become clinically
+  significant when summed; gliadin, casein, and other antigens cross-react with body
+  proteins (molecular mimicry). Effect-size variable but substantial in the responder
+  subset. The CRITICAL coaching point — negative blood test doesn't equal no food
+  reactivity; elimination-reintroduction is the gold standard.
+coaching_translation: Structured elimination of common reactive foods followed by
+  careful reintroduction helps 20-40% of RA patients meaningfully — but blood food-allergy
+  tests often miss these reactions because the relevant antibodies are in the gut
+  (jejunum), not the blood. A 3-4 week strict elimination of the common offenders
+  (gluten, dairy, eggs, nightshades, soy, corn, peanuts, coffee, sugar) followed by
+  careful one-at-a-time reintroduction every 3-4 days is the practical FM protocol.
+  Document symptoms in a journal.
+caveats:
+- Negative serum food allergy test does NOT rule out food-driven RA
+- Elimination diet should be 3-4 weeks strict before reintroduction
+- Nightshades worth eliminating in RA specifically (capsaicin solanine reactivity)
+- Some clients need nutritional support (B12, iron, calcium) during elimination
+- Eating-disorder history is a relative contraindication to restrictive diets
+- Therapeutic fasting is mentioned but should be clinician-supervised
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- autoimmune-conditions-igg-food-triggers
+- autoimmune-dermatitis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1471–1472, 1488
+  quote: Studies utilizing larger doses of food antigens tend to show a positive correlation
+    between RA and food allergies in 20 to 40% of patients. While serum food antibodies
+    were not correlated with RA, jejunal IgA, IgG, and especially IgM were significantly
+    elevated against nearly all food antigens in RA patients compared with controls.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,53 @@
+slug: murray-vitamin-d-autoimmune-correlation
+statement: Population studies show vitamin D deficiency significantly increases incidence
+  of multiple autoimmune diseases including rheumatoid arthritis; the latitude gradient
+  (higher RA prevalence in northern Europe vs southern) is partly explained by reduced
+  UV-driven endogenous vitamin D synthesis. Within RA populations, lower 25(OH)-vitamin
+  D levels significantly correlate with worse disease symptoms in both northern and
+  southern hemispheres. Therapeutic dose 2,000–4,000 IU/day vitamin D3, titrated to
+  a target 25(OH)D blood level of 50–80 ng/ml (often higher than conventional 30 ng/ml
+  minimum).
+evidence_tier: strong
+rationale: Cantorna 2008, Merlino 2004, Pelajo 2010, Lin 2016 cited across the wider
+  literature. Mechanism — vitamin D modulates regulatory T-cell function, suppresses
+  Th17 (autoimmune driver), reduces pro-inflammatory cytokines, supports gut barrier
+  integrity. The latitude gradient is one of the strongest pieces of evidence for
+  vitamin D in autoimmunity. Targeting 50-80 ng/ml is the functional medicine standard
+  above the 30 ng/ml laboratory floor.
+coaching_translation: Low vitamin D is a major driver of autoimmunity. RA is more
+  common in northern countries (less sun); within any country, RA patients with lower
+  vitamin D have worse disease. Target 25(OH)D blood level 50-80 ng/ml — most people
+  need 4,000-5,000 IU/day to reach that, with periodic blood monitoring. Pair with
+  K2 (MK-7 100 mcg/day) for calcium-direction support. Sunlight 15-20 min daily on
+  bare arms + legs around midday is the natural complement.
+caveats:
+- Test 25(OH)D blood level every 3-6 months to titrate; don't dose blind
+- Target 50-80 ng/ml is higher than conventional 30 ng/ml minimum
+- Pair with vitamin K2 (MK-7 100 mcg/day) for calcium-direction support
+- Doses above 10,000 IU/day chronic require clinician monitoring
+- Hypercalcemia is the rare but serious complication of overdosing
+- Magnesium status affects vitamin D conversion — co-supplement
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- autoimmune-dermatitis
+- autoimmune-thyroiditis
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3
+- vitamin-d3-k2
+- vitamin-d3-k2-combination-supplement
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1482
+  quote: Population-based studies indicate a significant association between vitamin
+    D deficiency and an increased incidence of several autoimmune diseases, including
+    RA. In both northern and southern Europe, low 25(OH)-vitamin D levels were significantly
+    correlated with worse RA symptoms.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

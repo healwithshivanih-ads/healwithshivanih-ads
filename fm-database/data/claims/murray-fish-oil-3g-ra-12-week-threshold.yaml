@@ -1,0 +1,50 @@
+slug: murray-fish-oil-3g-ra-12-week-threshold
+statement: Fish oil at a minimum of 3 g/day combined EPA + DHA, taken for at least
+  12 weeks, produces convincing reductions in morning stiffness duration, number of
+  tender and swollen joints, joint pain severity, fatigue duration, and serum inflammation
+  markers in rheumatoid arthritis — and reduces long-term NSAID use. Effect is substantially
+  enhanced when arachidonic acid sources (red meat, dairy) are simultaneously reduced.
+  Cardiovascular protection is a parallel benefit important to RA patients who carry
+  elevated CV risk.
+evidence_tier: strong
+rationale: Multiple meta-analyses (Goldberg-Katz 2007, Lee 2012, Miles-Calder 2012).
+  Mechanism — EPA-derived resolvins and protectins actively resolve inflammation (not
+  just suppress it); reduced arachidonic acid → reduced PGE2 and LTB4. Dose threshold
+  + duration are critical — most failed trials used too-low doses or too-short durations.
+  The 3 g/12-week minimum is the operational threshold.
+coaching_translation: Fish oil for RA needs to be a serious dose — 3 grams/day combined
+  EPA + DHA minimum — taken for at least 12 weeks before judging effect. Lower doses
+  or shorter trials fail. Combine with reducing red meat and dairy (arachidonic acid
+  sources) to amplify the effect. Quality matters enormously — third-party tested
+  for oxidation, heavy metals, PCBs. The same dose protects the cardiovascular system,
+  which is at elevated risk in RA.
+caveats:
+- Threshold dose 3 g EPA+DHA — common 1 g multivitamin doses won't reach RA effect
+- 12-week minimum trial period before judging response
+- Quality + freshness — oxidised fish oil is pro-inflammatory
+- Combine with reduced red meat + dairy for amplified effect
+- Mild antiplatelet — caution + anticoagulants
+- Vegetarian alternative — algal DHA + EPA (lower EPA content; may need higher dose)
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- chronic-inflammation
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1483
+  quote: Supplements may need to be consumed for at least 12 weeks at a minimum dose
+    of 3 g per day combined EPA and DHA before effects are apparent. Also, the benefits
+    of omega-3 fatty acid supplementation are substantially enhanced when sources
+    of arachidonic acid, including red meat and dairy products, are also significantly
+    reduced.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

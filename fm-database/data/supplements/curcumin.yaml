@@ -51,6 +51,8 @@ linked_to_topics:
 - pancreatic-insufficiency
 - digestive-enzyme-supplementation
 - tendinopathy
+- rheumatoid-arthritis
+- autoimmune
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - loneliness-activates-inflammatory-pathways
@@ -68,6 +70,7 @@ linked_to_claims:
 - curcumin-reduces-neuroinflammation
 - ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
 - murray-curcumin-bioavailable-forms
+- murray-curcumin-equals-phenylbutazone-ra
 notes_for_coach: Curcumin has both anti-inflammatory properties and is cited as a
   stimulant of enzymatic activity. Bioavailability is enhanced with black pepper (piperine)
   or fat. Source is expert consensus lecture.
@@ -130,7 +133,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 16
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 17
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

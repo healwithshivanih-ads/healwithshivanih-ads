@@ -1,0 +1,45 @@
+slug: murray-pantothenic-acid-ra
+statement: Blood pantothenic acid (vitamin B5) levels are consistently lower in rheumatoid
+  arthritis patients than controls, and inversely correlated with disease activity.
+  Calcium pantothenate at 2 g/day produced subjective improvement in morning stiffness
+  duration, disability degree, and pain severity in a double-blind trial. Correction
+  of low pantothenic acid status is part of Murray's broader pattern — RA reflects
+  multiple coexisting nutrient deficiencies that compound rather than a single causal
+  deficit.
+evidence_tier: plausible_emerging
+rationale: General Practitioner Research Group 1980 DB-RCT cited. Mechanism — pantothenic
+  acid is the precursor of coenzyme A, which is central to fatty-acid metabolism +
+  steroid hormone synthesis (including endogenous cortisol). RA's chronic inflammation
+  depletes pantothenic acid faster than dietary intake replenishes. Effect-size modest
+  but consistent + safety profile excellent.
+coaching_translation: Vitamin B5 (pantothenic acid) at 2 g/day as calcium pantothenate
+  is one of the older but well-evidenced RA nutritional supports. It helps stiffness,
+  disability, and pain. The bigger lesson — RA represents multiple compounding nutrient
+  deficiencies (B5, B6, vitamin D, selenium, zinc, vitamin C, magnesium) and addressing
+  them ALL with a high-potency multivitamin + targeted single agents works better
+  than relying on any one supplement.
+caveats:
+- 2 g/day is high — start at 500 mg and titrate up over 2 weeks if tolerated
+- GI upset possible at 2 g/day
+- Pantethine (the active form) is more potent for cholesterol; standard pantothenic
+  acid is appropriate for RA
+- Generally well-tolerated; no significant toxicity
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- chronic-inflammation
+linked_to_supplements:
+- pantothenic-acid-b5
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1481
+  quote: Blood pantothenic acid levels have been reported to be lower in patients
+    with RA than in normal controls and inversely correlated with disease activity.
+    In one double-blind study, subjective improvement of RA symptoms was noted in
+    patients receiving 2 g per day of calcium pantothenate.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -59,8 +59,11 @@ sources:
   location: Stress & Chronic Diseases Link (p.9)
   quote: Stress triggers immune dysregulation & flares. Cortisol rhythm disruption
     → Th1/Th2/Th17 imbalance, gut barrier breakdown.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
 evidence_tier: plausible_emerging
-version: 3
+version: 4
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

@@ -22,8 +22,11 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - chronic-inflammation
+- rheumatoid-arthritis
+- autoimmune
 linked_to_claims:
 - ginger-anti-inflammatory-1g-per-day
+- murray-ginger-ra-pain-mobility
 notes_for_coach: Ginger extract at 1g/day or 3–4 cups of ginger green tea daily is
   recommended. Food-first approach preferred. Ginger green tea is a practical and
   sustainable way for clients to incorporate this daily.
@@ -36,7 +39,10 @@ sources:
   location: Anti-Inflammatory Herbs – Ginger
   quote: Ginger, you can use ginger extract and those is really important. You should
     use one gram per day or you can use a ginger tea in your patient's diet.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

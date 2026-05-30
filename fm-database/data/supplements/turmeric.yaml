@@ -20,9 +20,12 @@ linked_to_topics:
 - phytonutrient-dense-diet
 - tendinopathy
 - chronic-inflammation
+- rheumatoid-arthritis
+- autoimmune
 linked_to_claims:
 - phytonutrient-smoothies-support-cardio-and-brain-health
 - murray-curcumin-bioavailable-forms
+- murray-curcumin-equals-phenylbutazone-ra
 notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Control
   Smoothie. Fresh or ground form used. Bioavailability enhanced by pairing with black
   pepper (piperine); toolkit does not specify this but coaches may suggest it.
@@ -37,7 +40,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

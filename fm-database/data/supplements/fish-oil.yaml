@@ -31,6 +31,9 @@ linked_to_topics:
 - menopause
 - anxiety
 - chronic-stress
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
 linked_to_claims:
 - ad-fish-oil-dha-correlates-improvement
 - adhd-omega3-deficiency-brain
@@ -39,6 +42,7 @@ linked_to_claims:
 - murray-fish-oil-tg-not-cholesterol
 - murray-fish-oil-cuts-hot-flashes
 - murray-fish-oil-cytokine-anxiety
+- murray-fish-oil-3g-ra-12-week-threshold
 notes_for_coach: DHA-rich formulas preferred over EPA-dominant products for BP reduction.
   3000 mg total EPA+DHA recommended in therapeutic approach. Ensure lab-certified
   purity against pollutants and peroxides.
@@ -65,7 +69,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 5
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 6
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

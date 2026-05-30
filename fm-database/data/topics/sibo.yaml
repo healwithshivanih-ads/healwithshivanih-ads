@@ -115,7 +115,10 @@ sources:
   quote: 'Low-FODMAP is a therapeutic phase, not a long-term diet (2–6 weeks only)
     → Gut healing requires nutrients: glutamine, zinc carnosine, omega-3, B-complex,
     bitters'
-version: 5
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 6
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

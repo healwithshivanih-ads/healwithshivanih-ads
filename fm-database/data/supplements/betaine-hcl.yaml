@@ -30,6 +30,8 @@ linked_to_topics:
 - gerd
 - gut-dysfunction
 - gut-dysbiosis
+- rheumatoid-arthritis
+- autoimmune
 linked_to_mechanisms: []
 linked_to_claims:
 - betaine-hcl-corrects-hypochlorhydria
@@ -41,6 +43,7 @@ linked_to_claims:
 - low-stomach-acid-drives-dysbiosis-reinfection
 - betaine-hcl-titration-diagnoses-hypochlorhydria
 - betaine-hcl-replaces-gastric-acid
+- murray-low-stomach-acid-ra-sibo-cascade
 notes_for_client: These capsules contain hydrochloric acid to support your stomach's
   digestion. Always take with a protein-containing meal. Start low and increase slowly
   as guided by your practitioner.
@@ -72,7 +75,10 @@ sources:
   quote: There's a test with a betaine HCL. Betaine HCL are capsules which contain
     hydrochloric acid. Each capsule contains somewhere around 350 to 750 mg of betaine
     HCL.
-version: 6
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 7
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

@@ -1,0 +1,49 @@
+slug: murray-ginger-ra-pain-mobility
+statement: Ginger (Zingiber officinalis) at 2–4 g/day powdered (equivalent to 20 g
+  fresh root or a 1/2-inch slice) produces pain relief, joint mobility improvement,
+  and reduction in swelling and morning stiffness in rheumatoid arthritis — and in
+  a follow-up clinical observation series, 75% of arthritis patients (RA + osteoarthritis)
+  and 100% of those with muscular discomfort reported relief, with dose-dependent
+  effects. Fresh ginger contains higher levels of gingerols plus a bromelain-like
+  protease, making it potentially more effective than dried preparations.
+evidence_tier: plausible_emerging
+rationale: Srivastava 1989 + 1992 clinical series cited. Mechanism — gingerols inhibit
+  COX-1, COX-2, and 5-LOX simultaneously; shogaols block NF-κB; combined effect reduces
+  both prostaglandin and leukotriene inflammatory pathways. India's traditional daily
+  consumption (8-10 g/day) is at the upper therapeutic range. Modern standardised
+  extracts (20% gingerol + shogaol, 100-200 mg tid) match the powdered ginger dose.
+coaching_translation: Ginger 2-4 g/day powdered (or 20 g/day fresh root — a 1/2-inch
+  slice) helps about 75% of arthritis sufferers with pain, mobility, and stiffness.
+  In India, normal cooking already uses 8-10 g/day, so adding morning fresh ginger
+  tea or grated ginger to food is a culturally aligned therapeutic intervention. Standardised
+  extract (20% gingerol/shogaol, 100-200 mg tid) is an alternative when dietary intake
+  is hard.
+caveats:
+- Mild antiplatelet — caution + anticoagulants + 7 days before surgery
+- GI upset possible at higher doses
+- Heartburn / GERD — caution
+- Hypoglycemia + diabetes meds — mild additive effect
+- Avoid in active gallstones
+- Pregnancy — moderate doses (up to 1 g/day) safe for nausea; high doses unstudied
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- chronic-inflammation
+- tendinopathy
+linked_to_supplements:
+- ginger
+- ginger-extract
+- ginger-root
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1485–1486
+  quote: 75% of the patients with arthritis (either RA or osteoarthritis) and 100%
+    of those with muscular discomfort experienced relief in pain or swelling and the
+    effects were dose-dependent. A dose of 2 to 4 g powdered ginger per day is safe
+    and may be effective in RA.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

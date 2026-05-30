@@ -26,15 +26,21 @@ take_with_food: required
 notes_for_coach: Anti-inflammatory and digestive herb; useful for nausea, indigestion,
   and inflammatory conditions.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- murray-ginger-ra-pain-mobility
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Ginger Root - Anti-inflammatory, digestion - 500–1000 mg/day - With meals
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-30'
 updated_by: shivani

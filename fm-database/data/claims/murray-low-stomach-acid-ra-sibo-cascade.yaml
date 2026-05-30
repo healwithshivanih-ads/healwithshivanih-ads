@@ -1,0 +1,54 @@
+slug: murray-low-stomach-acid-ra-sibo-cascade
+statement: 80% of untreated rheumatoid arthritis patients have reduced gastric acid
+  output (hypochlorhydria). Inadequate stomach acid drives a cascade — impaired food
+  digestion → undigested food fragments crossing leaky gut → food antigen-driven immune
+  activation → bacterial overgrowth (SIBO present in 50% of hypochlorhydric RA patients)
+  → further inflammation. NSAIDs given to suppress RA inflammation make this worse
+  by directly damaging gut lining; PPIs given to mitigate NSAID damage make it worse
+  again by further suppressing acid. Restoring gastric acidity (Betaine HCl supplementation
+  or addressing root causes — H. pylori, atrophic gastritis, chronic stress) can break
+  this cycle.
+evidence_tier: plausible_emerging
+rationale: Multiple older clinical observation studies + decades of FM clinical experience.
+  Mechanism — gastric acid is the first defence against ingested bacteria, the trigger
+  for pancreatic enzyme release, and necessary for protein digestion + B12/iron/calcium/zinc
+  absorption. The 80% prevalence figure is older but consistent with subsequent functional
+  medicine observations. The 'cascade' framing is the key teaching point — autoimmune
+  disease is downstream of upper-GI dysfunction more often than appreciated.
+coaching_translation: 8 out of 10 RA patients have low stomach acid — and the standard
+  medical approach to RA (NSAIDs + PPIs) makes this worse. Low stomach acid → poor
+  digestion → undigested food crossing leaky gut → immune activation → more autoimmunity.
+  Test stomach acid (Heidelberg, baking soda burp test, or trial Betaine HCl) before
+  assuming acid is high. If low, Betaine HCl with each protein-containing meal can
+  break the cycle. Address H. pylori if present. Reduce stress (vagal tone is essential
+  for normal acid production).
+caveats:
+- Betaine HCl contraindicated with active ulcer, gastritis, NSAID use, alcoholism
+- Heidelberg test is gold standard but expensive + not widely available
+- Practical home test — baking soda burp test (1/4 tsp in water on empty stomach AM;
+  burp within 3 min = adequate acid)
+- H. pylori testing important before assuming functional hypochlorhydria
+- Atrophic gastritis (autoimmune) is a separate clinical entity requiring vit B12
+  monitoring
+- Don't recommend HCl alongside PPI/H2 blocker without clinician oversight
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- sibo
+- autoimmunity-leaky-gut-connection
+linked_to_supplements:
+- betaine-hcl
+linked_to_mechanisms: []
+out_of_scope_notes: Hypochlorhydria diagnosis + HCl prescribing in active ulcer disease
+  is clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1482–1483
+  quote: In one study, 80% of untreated RA patients had reduced gastric acid output.
+    Half of RA patients who have inadequate hydrochloric acid secretion also have
+    SIBO, and restoration of gastric pH can help resolve the overgrowth.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

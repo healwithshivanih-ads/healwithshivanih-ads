@@ -18,10 +18,14 @@ linked_to_topics:
 - gerd-ppi-tapering
 - pancreatic-insufficiency
 - digestive-enzyme-supplementation
+- rheumatoid-arthritis
+- autoimmune
+- tendinopathy
 linked_to_claims:
 - ginger-modulates-gi-transit
 - ppi-tapering-supplement-support-repair-protect-antioxidant
 - ginger-curcumin-coriander-onion-stimulate-enzymatic-activity
+- murray-ginger-ra-pain-mobility
 notes_for_coach: Ginger is cited as a food/herb that stimulates endogenous enzymatic
   activity. Well-tolerated and broadly safe as a culinary and supplement addition.
   Supports digestive function coaching conversations.
@@ -51,7 +55,10 @@ sources:
   quote: Certain food which helps in terms of stimulating the enzymatic activity is
     ginger, curcumin, coriander, onion, all are these certain foods which help in
     terms of stimulating the production of enzymatic activity.
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis
+  quote: Comprehensive natural treatment for RA + connective-tissue autoimmune disease.
+version: 4
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

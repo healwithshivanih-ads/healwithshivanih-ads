@@ -1,0 +1,57 @@
+slug: murray-nsaid-corticosteroid-harm-cascade
+statement: 'NSAIDs and corticosteroids — the foundation of conventional RA treatment
+  — actually accelerate the underlying disease process while suppressing symptoms.
+  NSAIDs inhibit cartilage formation, promote joint destruction, increase gut permeability,
+  alter gut flora, increase free radicals in synovial fluid, promote SIBO, cause an
+  estimated 107,000 hospitalisations and 16,500 deaths annually in arthritis patients
+  (from GI bleeds + ulcers), and damage kidneys. Long-term corticosteroids at even
+  small doses (≤ 7.5 mg prednisone) increase mortality 14% at 1 year and 49% at 10+
+  years vs untreated RA patients, while causing severe cartilage damage, osteoporosis,
+  increased gut permeability, cardiovascular disease, and sleep fragmentation. Coach
+  role: ensure clients understand the trade-offs and combine pharmacotherapy with
+  FM gut + nutrient + diet strategies that reduce drug requirements over time.'
+evidence_tier: strong
+rationale: Multiple cited studies + decades of pharmacovigilance. Mechanism — NSAIDs
+  disrupt prostaglandin-mediated gut healing; corticosteroids cause widespread connective-tissue
+  catabolism via cortisol-pathway saturation. The harm-cascade framing is important
+  coaching scope — clients are rarely told the cumulative price. NOT a call to discontinue
+  drugs unilaterally; a call to combine + reduce + plan tapering with prescriber.
+coaching_translation: 'Standard RA medications — NSAIDs and steroids — suppress symptoms
+  but actively worsen the underlying disease over time. NSAIDs alone cause an estimated
+  16,500 deaths per year in arthritis patients (GI bleeds) and accelerate cartilage
+  damage. Even low-dose prednisone increases mortality by 14% after one year and 49%
+  after 10+ years. Coaching role: NEVER recommend discontinuing these drugs (withdrawal
+  can be dangerous), but help client + prescriber move toward lower drug burden through
+  gut healing, nutrient optimisation, and anti-inflammatory diet over 6-12 months.
+  The fish oil + curcumin + gut work reduces NSAID requirement.'
+caveats:
+- NEVER advise abrupt discontinuation of corticosteroids — adrenal crisis risk
+- NSAID tapering should be coordinated with prescriber + replacement strategy in place
+- Severe active RA flares often require pharmacotherapy — coach role is parallel support,
+  not substitution
+- Methotrexate + biologics (DMARDs) prevent joint erosion when started within 3 months
+  of diagnosis — generally beneficial
+- Coach role explicitly NOT to discourage prescribed medications; role is to add FM
+  strategies that reduce drug requirements over time
+linked_to_topics:
+- rheumatoid-arthritis
+- autoimmune
+- autoimmune-disease
+- chronic-inflammation
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: All medication tapering is clinician scope. Coach role — patient
+  education on long-term risks + FM strategies to reduce drug requirement over time.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 89 — Rheumatoid Arthritis, pg 1473–1475
+  quote: NSAIDs led to 107,000 hospitalizations and 16,500 deaths in one year among
+    arthritis patients alone. Even small doses (up to 7.5 mg prednisone or the equivalent)
+    carry increased risk for infection and death when used over the long term. One
+    study found the risk of mortality increased 14% after one year and 49% after more
+    than 10 years of use when the subjects were compared with RA patients who had
+    not been treated with low-dose corticosteroids.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
