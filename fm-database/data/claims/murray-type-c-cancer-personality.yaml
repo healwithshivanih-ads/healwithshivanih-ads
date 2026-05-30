@@ -1,0 +1,37 @@
+slug: murray-type-c-cancer-personality
+statement: 'The ''Type C'' personality pattern — associated with chronic denial and
+  suppression of emotions, particularly anger — has been observationally linked to
+  elevated cancer risk and worse cancer outcomes. Proposed mechanisms include chronic
+  cortisol elevation, suppressed immune surveillance (NK cell activity), and chronic
+  stress-driven inflammatory state. While the framework remains debated in psycho-oncology,
+  the practical implication is clear: emotional expression + processing of difficult
+  emotions (therapy, journaling, support groups, mindfulness) is a legitimate component
+  of comprehensive cancer prevention + survivorship care.'
+evidence_tier: plausible_emerging
+rationale: Greer + Temoshok original Type C work + subsequent psycho-oncology research.
+  Mechanism debated but cortisol + immune surveillance link well-documented. Causation
+  vs correlation contested.
+coaching_translation: 'Some research suggests that chronically suppressing emotions
+  — especially anger — may increase cancer risk. The ''Type C personality'' pattern.
+  The mechanism: chronic suppression keeps cortisol elevated, immune surveillance
+  suppressed, and inflammation high. Practical translation: encourage emotional expression,
+  therapy if needed, journaling, support groups, mindfulness — these aren''t just
+  mental health interventions, they''re cancer-prevention adjuncts.'
+caveats:
+- Framework controversial in modern psycho-oncology
+- Causation vs correlation debated
+- Does NOT mean cancer is the patient's fault — avoid victim-blaming
+- Stress management is the actionable component
+linked_to_topics:
+- chronic-stress
+- hpa-axis-cortisol-regulation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 8 — Cancer Prevention, Quick Review pg 176
+  quote: The typical cancer personality is type C, associated with the denial and
+    suppression of emotions, in particular anger.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

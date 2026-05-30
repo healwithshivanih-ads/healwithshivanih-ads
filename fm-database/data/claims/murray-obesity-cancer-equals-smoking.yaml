@@ -1,0 +1,38 @@
+slug: murray-obesity-cancer-equals-smoking
+statement: 'A RAND Corporation analysis found that obesity contributes AT LEAST as
+  much to chronic degenerative disease (including cancer) as smoking does. Mechanisms:
+  adipose-tissue-driven chronic inflammation (elevated IL-6, TNF-α, CRP), aromatase-driven
+  estrogen excess in postmenopausal women (breast + endometrial cancer), insulin +
+  IGF-1 elevations promoting cell proliferation, leptin-mediated tumour growth signalling.
+  Cancer risk increases for breast (postmenopausal), endometrial, oesophageal, colorectal,
+  kidney, pancreatic, and liver. Weight management is therefore foundational cancer
+  prevention — not just for cardiometabolic disease.'
+evidence_tier: strong
+rationale: 'RAND analysis + IARC obesity-cancer reports + multiple cohort studies.
+  Mechanism — multiple convergent pathways: inflammation, hormone modulation, insulin/IGF-1,
+  adipokine signalling.'
+coaching_translation: Obesity contributes to cancer at least as much as smoking does.
+  The fat tissue actively produces inflammation, excess estrogen (in postmenopausal
+  women), and insulin-like growth signals that all promote cancer. Weight management
+  is foundational cancer prevention — particularly for breast (post-menopause), endometrial,
+  colorectal, oesophageal, kidney, pancreatic, and liver cancers.
+caveats:
+- Weight loss reduces cancer risk progressively over years
+- Bariatric surgery reduces cancer risk substantially
+- Anti-inflammatory diet alongside weight loss compounds benefit
+- Sarcopenic obesity (low muscle + high fat) is particularly cancer-promoting
+linked_to_topics:
+- chronic-inflammation
+- atherogenic-dyslipidemia
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 8 — Cancer Prevention, Quick Review pg 177
+  quote: A report by RAND Corporation researchers found that obesity contributes at
+    least as much to the development of chronic degenerative disease — including cancer
+    — as smoking does.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

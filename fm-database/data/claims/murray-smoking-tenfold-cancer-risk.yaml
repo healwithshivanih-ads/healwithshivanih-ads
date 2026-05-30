@@ -1,0 +1,36 @@
+slug: murray-smoking-tenfold-cancer-risk
+statement: 'Cigarette smokers have a relative cancer risk of 10 vs non-smokers (10-fold
+  or 1,000% higher risk of lung cancer), driven by direct DNA damage from tobacco-derived
+  carcinogens (>70 known) + chronic oxidative stress + immune suppression. Smoking
+  is associated with elevated risk across multiple cancers — lung, oral, oesophageal,
+  bladder, kidney, pancreas, cervix. Coach scope: smoking cessation is the single
+  largest cancer prevention intervention; quitting reduces risk progressively over
+  10-15 years toward never-smoker baseline.'
+evidence_tier: strong
+rationale: Doll & Hill + decades of replication. Mechanism — benzo[a]pyrene + other
+  carcinogens; nicotine-driven oxidative stress; immune dysregulation.
+coaching_translation: 'Smokers face 10× higher lung cancer risk than non-smokers.
+  Beyond lungs — oral, oesophageal, bladder, kidney, pancreatic, cervical cancer risk
+  all increase. The good news: quitting works. Cancer risk decreases progressively
+  over 10-15 years toward never-smoker baseline. Combine smoking cessation with antioxidant
+  nutrient repletion (vitamin C, E, glutathione, selenium, omega-3) — smokers chronically
+  deplete these.'
+caveats:
+- Smoking cessation is single largest cancer prevention intervention
+- Nicotine replacement / varenicline / bupropion all clinician scope
+- Smokers should NOT take high-dose beta-carotene (ATBC + CARET — increased lung cancer)
+- Vitamin C requirement is doubled in smokers
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 8 — Cancer Prevention, Quick Review pg 176
+  quote: Compared with nonsmokers, cigarette smokers are said to have a relative cancer
+    risk of 10 — in other words, they are 10 times, or 1,000%, more likely to get
+    lung cancer than someone who never smoked.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

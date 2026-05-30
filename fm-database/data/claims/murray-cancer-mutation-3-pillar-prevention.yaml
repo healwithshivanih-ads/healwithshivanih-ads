@@ -1,0 +1,40 @@
+slug: murray-cancer-mutation-3-pillar-prevention
+statement: 'Cancer originates from DNA mutations driven by chronic free-radical damage
+  to DNA. Murray''s three-pillar prevention strategy: (1) Reduce free radical formation
+  in the body (avoid smoking, excess alcohol, chronic inflammation, sleep deprivation,
+  chronic stress), (2) Limit exposure to dietary and environmental sources of free
+  radicals (processed foods, charred meats, pesticides, environmental chemicals, ionising
+  radiation), (3) Increase antioxidant intake and substances that support immune surveillance
+  (immune cells normally identify and destroy emerging cancer cells before they establish).
+  This framework applies to both primary prevention and recurrence prevention.'
+evidence_tier: strong
+rationale: Decades of cancer epidemiology + mechanism. Mechanism — oxidative DNA damage
+  causes mutations; chronic inflammation provides growth signalling; immunosurveillance
+  failure allows escape. The three-pillar framework simplifies complex evidence into
+  actionable behaviour change.
+coaching_translation: 'Cancer is a disease of DNA damage. Prevention has three parts:
+  (1) reduce what damages your DNA (smoking, alcohol excess, chronic inflammation,
+  stress, poor sleep), (2) reduce environmental exposures (processed food, charred
+  meat, pesticides, chemicals), (3) boost protection (antioxidant foods + nutrients
+  + immune-supporting lifestyle). Same approach applies whether you''re preventing
+  initial cancer or recurrence.'
+caveats:
+- Genetic predisposition (BRCA, Lynch, etc.) requires specialised surveillance
+- Established cancer requires oncology — these strategies complement not replace
+- High-dose antioxidants during chemotherapy controversial — clinician scope
+- Vitamin D, omega-3, cruciferous vegetables have strongest evidence
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 8 — Cancer Prevention, Quick Review pg 176
+  quote: 'Cancer is the result of mutations in a cell''s DNA. To reduce your risk
+    of cancer, it''s important to: Reduce free radical formation in the body. Limit
+    exposure to dietary and environmental sources of free radicals. Increase your
+    intake of antioxidant nutrients and other substances that support immune function.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
