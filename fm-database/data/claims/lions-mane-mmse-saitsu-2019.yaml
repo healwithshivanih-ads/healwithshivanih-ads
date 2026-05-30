@@ -1,0 +1,30 @@
+slug: lions-mane-mmse-saitsu-2019
+statement: A 12-week DB-RCT of Hericium erinaceus fruiting body supplementation showed
+  significant improvement on MMSE scores and prevented cognitive deterioration; Benton
+  visual retention and S-PA tests showed no significant change.
+evidence_tier: plausible_emerging
+rationale: Adds to the Mori 2009 evidence base. Mixed within-trial results (MMSE positive,
+  other scales null) suggest the effect is real but selective. Multicentre design
+  strengthens external validity.
+coaching_translation: A second Japanese trial supported lion's mane's cognitive benefit
+  on the MMSE — the most commonly used global cognitive screen — over 12 weeks, with
+  no improvement on more specific memory subtests.
+caveats:
+- Mixed within-trial results across scales
+- Industry-sponsored authorship pattern (Japan mushroom research network)
+linked_to_topics:
+- cognitive-decline
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+linked_to_supplements:
+- lions-mane
+out_of_scope_notes: ''
+sources:
+- id: saitsu-2019-hericium-cognitive
+  location: results
+  quote: MMSE alone showed that oral intake of H. erinaceus significantly improved
+    cognitive functions and prevented from the deterioration.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

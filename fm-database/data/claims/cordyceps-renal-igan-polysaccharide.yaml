@@ -1,0 +1,34 @@
+slug: cordyceps-renal-igan-polysaccharide
+statement: Cordyceps sinensis polysaccharide fractions show renal-protective activity
+  in preclinical and clinical settings — CPS-1 (antioxidant + glucose-lowering), CPS-2
+  (inhibits PDGF-driven mesangial cell proliferation via PDGF/ERK and TGF-β1/Smad),
+  and H1-A (used clinically for IgA nephropathy / Berger's disease).
+evidence_tier: fm_specific_thin
+rationale: Mechanism review citing both in-vitro and clinical applications. Specific
+  to certain extracted fractions (CPS-1, CPS-2, H1-A) which are NOT necessarily present
+  in over-the-counter cordyceps powder. Chronic kidney disease care belongs to nephrology
+  — coaching scope is educational.
+coaching_translation: Specific fractions of Cordyceps sinensis are studied for kidney
+  protection, with one (H1-A) used clinically in a kidney autoimmune condition (IgA
+  nephropathy). These are extracted fractions — generic over-the-counter cordyceps
+  powder does not necessarily contain meaningful amounts.
+caveats:
+- Mechanism review, not RCT
+- Specific fractions (CPS-1, CPS-2, H1-A) not present in standard OTC products
+- Renal disease is clinician scope — refer to nephrology for management
+linked_to_topics: []
+linked_to_mechanisms:
+- cordycepin-adenosine-modulation
+linked_to_supplements:
+- cordyceps
+out_of_scope_notes: 'Kidney disease management is nephrology scope. Coach role: educate
+  that the evidence exists for specific fractions, not generic powders.'
+sources:
+- id: yue-2015-cordyceps-constituents-review
+  location: pharmacological actions — renal
+  quote: H1-A suppresses activated mesangial cells; alleviates IgAN (Berger's disease)
+    with clinical improvement.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

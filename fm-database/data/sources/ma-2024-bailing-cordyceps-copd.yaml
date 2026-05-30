@@ -1,0 +1,21 @@
+id: ma-2024-bailing-cordyceps-copd
+title: Therapeutic efficacy and pharmacological mechanism of Bailing capsule on chronic
+  obstructive pulmonary disease — a meta-analysis and network pharmacology
+authors:
+- Ma G
+- Jin Y
+year: 2024
+publisher: Pharmaceutical Biology
+source_type: peer_reviewed_paper
+quality: moderate
+url: https://pubmed.ncbi.nlm.nih.gov/39460586/
+doi: 10.1080/13880209.2024.2415643
+notes: 'Meta-analysis of 27 RCTs. Bailing capsule (Cordyceps sinensis-derived) + standard
+  COPD therapy vs standard alone. Significant improvements in FEV1, FEV1/FVC, 6-min
+  walk test, reduced acute exacerbations, improved QoL. Network pharmacology identified
+  SRC, HIF1A, NFKB1, HDAC2, PRKACA as core targets. Quality caveat: Chinese RCTs with
+  variable methodology; effect size meaningful but needs Western replication.'
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

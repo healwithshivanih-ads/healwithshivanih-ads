@@ -1,0 +1,32 @@
+slug: lions-mane-acute-stroop-docherty-2023
+statement: A pilot DB-RCT (n=41 healthy adults aged 18–45) found that a single 1.8
+  g dose of Hericium erinaceus accelerated Stroop-task performance at 60 minutes post-dose
+  (p=0.005); 28-day supplementation showed a trend toward reduced subjective stress
+  (p=0.051).
+evidence_tier: fm_specific_thin
+rationale: Pilot study, healthy non-elderly cohort, n=41 — small sample. Authors explicitly
+  urge cautious interpretation. Useful only as preliminary signal for acute cognitive
+  effect outside the MCI/elderly demographic.
+coaching_translation: Early evidence suggests lion's mane may have an acute cognitive-speed
+  effect in healthy younger adults too — but the sample size is small and this finding
+  needs replication before it changes practice.
+caveats:
+- Pilot — small sample
+- Trend (not significant) on chronic stress outcome
+- Acute effect on a single attention test only
+linked_to_topics:
+- cognitive-decline
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+linked_to_supplements:
+- lions-mane
+out_of_scope_notes: ''
+sources:
+- id: docherty-2023-hericium-young-adults
+  location: results
+  quote: Following a single dose of Lion's mane, participants performed quicker on
+    the Stroop task (p=0.005) at 60 min post dose.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

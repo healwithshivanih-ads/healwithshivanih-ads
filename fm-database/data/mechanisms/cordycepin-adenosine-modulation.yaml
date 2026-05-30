@@ -1,0 +1,44 @@
+slug: cordycepin-adenosine-modulation
+display_name: Cordycepin / Adenosine Signalling Modulation
+aliases:
+- 3'-deoxyadenosine pathway
+- cordycepin signalling
+- cordyceps polysaccharide immunomodulation
+category: immune
+summary: Cordyceps mushrooms (C. sinensis, C. militaris) contain a cluster of nucleoside
+  analogues — most notably cordycepin (3'-deoxyadenosine) — and a family of polysaccharides
+  (EPSF, CPS-1, CPS-2, cordyglucans). Cordycepin functions as a structural analogue
+  of adenosine that incorporates into nucleic acid synthesis and modulates adenosine-receptor
+  signalling on immune cells. Polysaccharides drive cell-mediated immunity via dendritic-cell
+  maturation, NK-cell activation, and conversion of resident macrophages from the
+  anti-inflammatory M2 phenotype to the pathogen-fighting M1 phenotype (NF-κB-dependent).
+  Distinct fractions also exhibit renal-protective activity (CPS-1 antioxidant + glucose-lowering;
+  CPS-2 inhibits mesangial cell proliferation via PDGF/ERK and TGF-β1/Smad pathways;
+  H1-A used clinically in IgA nephropathy). Mitochondrial / ATP-generating effects
+  are proposed to underlie the VO₂max and time-to-exhaustion gains seen in exercise
+  trials. Important quality caveat — cordycepin is present only in wild C. sinensis
+  at very low levels and is largely absent from cultured material; bioactive content
+  varies enormously between products.
+upstream_drivers: []
+downstream_effects:
+- chronic-inflammation
+related_mechanisms:
+- innate-immune-modulation
+- dectin-1-trained-immunity
+- mitochondrial-dysfunction
+linked_to_topics:
+- immune-support
+sources:
+- id: yue-2015-cordyceps-constituents-review
+  location: review summary
+  quote: Cordycepin can intensively regulate the functions of human immune cells in
+    vitro.
+- id: kang-2015-cordyceps-immunity
+  location: results
+  quote: C. militaris enhanced NK cell activity and lymphocyte proliferation and partially
+    increased Th1 cytokine secretion.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

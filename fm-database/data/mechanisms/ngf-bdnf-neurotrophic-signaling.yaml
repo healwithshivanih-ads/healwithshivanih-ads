@@ -1,0 +1,43 @@
+slug: ngf-bdnf-neurotrophic-signaling
+display_name: NGF / BDNF Neurotrophic Signalling
+aliases:
+- nerve growth factor signalling
+- brain-derived neurotrophic factor
+- neurotrophin pathway
+- NGF synthesis
+- hericenone-erinacine pathway
+category: neurological
+summary: Nerve growth factor (NGF) and brain-derived neurotrophic factor (BDNF) are
+  the two principal neurotrophins maintaining neuronal survival, synaptic plasticity,
+  and neurogenesis in the adult hippocampus and cortex. NGF in particular sustains
+  cholinergic neurons whose loss is a hallmark of Alzheimer-type cognitive decline.
+  Hericium erinaceus (Lion's Mane) contains two structurally distinct compound families
+  that stimulate NGF synthesis — hericenones in the fruiting body and erinacines in
+  the mycelium. Erinacine A is the most-studied and crosses the blood-brain barrier,
+  making oral mycelium-based extracts mechanistically distinct from fruiting-body
+  extracts. Downstream effects include preserved cholinergic transmission, enhanced
+  hippocampal neurogenesis, and improved cognitive performance on standardised scales
+  (HDS-R, MMSE). The pathway is also implicated in mood — Nagano 2010 found anxiolytic
+  effects independent of NGF, suggesting parallel anti-inflammatory and serotonergic
+  mechanisms.
+upstream_drivers:
+- chronic-inflammation
+downstream_effects: []
+related_mechanisms:
+- chronic-inflammation
+linked_to_topics:
+- cognitive-decline
+sources:
+- id: mori-2009-hericium-mci
+  location: introduction
+  quote: Hericenones and erinacines isolated from Hericium erinaceus stimulate nerve
+    growth factor synthesis.
+- id: szydlowska-2025-hericium-narrative-review
+  location: mechanism section
+  quote: Erinacine A is highlighted as particularly potent in increasing brain NGF
+    levels, promoting neurogenesis and neuronal survival.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

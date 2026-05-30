@@ -1,0 +1,22 @@
+id: saitsu-2019-hericium-cognitive
+title: Improvement of cognitive functions by oral intake of Hericium erinaceus
+authors:
+- Saitsu Y
+- Nishide A
+- Kikushima K
+- Shimizu K
+- Ohnuki K
+year: 2019
+publisher: Biomedical Research (Tokyo)
+source_type: peer_reviewed_paper
+quality: moderate
+url: https://pubmed.ncbi.nlm.nih.gov/31413233/
+doi: 10.2220/biomedres.40.125
+notes: RCT, DB-PC parallel-group, 12 weeks Hericium fruiting body. Significant MMSE
+  improvement + prevention of cognitive deterioration; no significant change in Benton
+  or S-PA tests. Authors speculate hericenones drive the effect. Notes safety + convenience
+  as preventive supplementation.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

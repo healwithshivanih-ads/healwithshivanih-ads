@@ -1,0 +1,34 @@
+slug: cordyceps-vo2max-hirsch-2016
+statement: After 3 weeks of supplementation with 4 g/day of a Cordyceps militaris-containing
+  mushroom blend, VO₂max improved significantly (+4.8 ml/kg/min, p=0.042) in healthy
+  adults, alongside increased time-to-exhaustion at both 1 week (+28.1 s) and 3 weeks
+  (+69.8 s); no benefit was seen at 1 week for VO₂max alone.
+evidence_tier: plausible_emerging
+rationale: DB-RCT crossover with objective performance endpoints (VO₂max, TTE on cycle
+  ergometer). Effect size meaningful but timing-dependent (3 weeks > 1 week), consistent
+  with adaptogen-class mechanism. Used a mushroom BLEND, so the cordyceps-specific
+  contribution is inferred not isolated.
+coaching_translation: Cordyceps improved endurance and aerobic capacity in a randomised
+  trial — but only after 3 weeks of daily intake. It's not a single-dose pre-workout.
+  Worth considering for clients building consistent exercise capacity.
+caveats:
+- Mushroom blend, not pure cordyceps — effect can't be exclusively attributed
+- Healthy young adults; effect in older / deconditioned populations unstudied
+- 4 g/day blend dose is high; cordyceps fraction within the blend not disclosed
+linked_to_topics:
+- immune-support
+linked_to_mechanisms:
+- cordycepin-adenosine-modulation
+- mitochondrial-dysfunction
+linked_to_supplements:
+- cordyceps
+out_of_scope_notes: ''
+sources:
+- id: hirsch-2016-cordyceps-exercise
+  location: results
+  quote: After 3 weeks, VO₂max significantly improved (p=0.042) in MR (+4.8 ml/kg/min),
+    but not PL (+0.9 ml/kg/min).
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

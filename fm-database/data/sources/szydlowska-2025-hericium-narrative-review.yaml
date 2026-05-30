@@ -1,0 +1,21 @@
+id: szydlowska-2025-hericium-narrative-review
+title: 'Lion''s Mane Mushroom (Hericium erinaceus): A Neuroprotective Fungus with
+  Antioxidant, Anti-Inflammatory, and Antimicrobial Potential — A Narrative Review'
+authors:
+- Multiple
+year: 2025
+publisher: PMC (PMC12030463)
+source_type: peer_reviewed_paper
+quality: moderate
+url: https://pmc.ncbi.nlm.nih.gov/articles/PMC12030463/
+notes: '2025 narrative review consolidating Hericium evidence. Mechanism: hericenones
+  (fruiting body) + erinacines (mycelium) stimulate NGF synthesis; erinacine A crosses
+  blood-brain barrier and is the most potent. Anti-inflammatory via NF-κB inhibition
+  + COX-2/iNOS suppression; reduces IL-6/TNF-α/IL-1β. Antimicrobial against S. aureus
+  (incl. MRSA), some Gram-negative + H. pylori, C. albicans. Notes major gaps: dose
+  standardisation lacking, human bioavailability poorly characterised, drug interactions
+  not thoroughly studied.'
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

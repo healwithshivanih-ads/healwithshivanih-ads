@@ -1,0 +1,29 @@
+slug: lions-mane-safety-livertox
+statement: NIH LiverTox monograph assigns Hericium erinaceus a Likelihood Score E
+  — unlikely cause of clinically apparent liver injury. Clinical trial doses range
+  1.05 g to 2 g/day for 4–48 weeks; mild GI effects (abdominal discomfort, nausea,
+  diarrhoea) in less than 10% of users; one documented acute hypersensitivity reaction.
+  Long-term human safety data + drug interactions remain inadequately characterised.
+evidence_tier: strong
+rationale: NIH-curated authoritative safety registry. Likelihood-Score E means the
+  substance does not appear in major hepatotoxicity case registries — high-quality
+  reassurance for clinicians.
+coaching_translation: Lion's mane has a good safety profile. Mushroom allergies are
+  the main reason to avoid it. Mild stomach upset is uncommon but possible.
+caveats:
+- Long-term human safety > 1 year not well studied
+- Drug interaction data is sparse
+- Mushroom allergy is a clear contraindication
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- lions-mane
+out_of_scope_notes: ''
+sources:
+- id: livertox-lions-mane
+  location: hepatotoxicity profile
+  quote: Likelihood Score E (unlikely cause of clinically apparent liver injury).
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

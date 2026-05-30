@@ -19,18 +19,39 @@ take_with_food: optional
 notes_for_coach: Medicinal mushroom for energy, stamina, and immune support; best
   taken morning or pre-workout.
 evidence_tier: plausible_emerging
-linked_to_topics: []
-linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_mechanisms:
+- cordycepin-adenosine-modulation
+- innate-immune-modulation
+- mitochondrial-dysfunction
+- dectin-1-trained-immunity
+linked_to_claims:
+- cordyceps-cell-mediated-immunity-kang-2015
+- cordyceps-vo2max-hirsch-2016
+- cordyceps-copd-bailing-ma-2024
+- cordyceps-renal-igan-polysaccharide
+- cordyceps-quality-variability-cordycepin
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Cordyceps - Energy, stamina, immune support - 500–1000 mg/day - Morning or
     before workout
-version: 1
+- id: kang-2015-cordyceps-immunity
+  location: results
+  quote: C. militaris enhanced NK cell activity and lymphocyte proliferation.
+- id: hirsch-2016-cordyceps-exercise
+  location: results
+  quote: VO2max significantly improved (p=0.042) in MR (+4.8 ml/kg/min).
+- id: yue-2015-cordyceps-constituents-review
+  location: quality discussion
+  quote: Cordycepin is only found in natural C. sinensis with very low content and
+    cannot be detected in the cultured ones.
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-29'
 updated_by: shivani
 aliases:
 - cordyceps 1g bid

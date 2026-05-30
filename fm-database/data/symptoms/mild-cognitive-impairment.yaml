@@ -1,0 +1,35 @@
+slug: mild-cognitive-impairment
+display_name: Mild Cognitive Impairment (MCI)
+aliases:
+- MCI
+- early cognitive impairment
+- subjective cognitive decline
+- pre-dementia
+- age-related memory complaints
+category: neurological
+severity: concerning
+description: 'Measurable decline in cognitive function — typically memory, attention,
+  or executive function — that exceeds expected age-related change but does not yet
+  meet criteria for dementia. Common scales: HDS-R (Hasegawa Dementia Scale Revised),
+  MMSE (Mini Mental State Examination), MoCA. Annual conversion rate to dementia ~10–15%.
+  Functional medicine framing emphasises reversible drivers — chronic inflammation,
+  insulin resistance, vitamin/mineral deficiencies (B12, D), sleep apnoea, thyroid,
+  vascular health, micronutrient status — before assuming neurodegenerative trajectory.'
+when_to_refer: New objective cognitive decline noted on a validated scale, especially
+  with functional impact; rapid progression over weeks-to-months; focal neurological
+  signs; suspected reversible cause (hypothyroidism, B12 deficiency, depression-pseudodementia,
+  sleep apnoea); family history of early-onset dementia. Refer to neurology / cognitive
+  clinic for formal workup.
+linked_to_topics:
+- cognitive-decline
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+- chronic-inflammation
+sources:
+- id: mori-2009-hericium-mci
+  location: study population description
+  quote: 50- to 80-year-old Japanese men and women diagnosed with mild cognitive impairment.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

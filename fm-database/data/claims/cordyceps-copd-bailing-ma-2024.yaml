@@ -1,0 +1,37 @@
+slug: cordyceps-copd-bailing-ma-2024
+statement: A meta-analysis of 27 RCTs of Bailing capsule (a Cordyceps sinensis-derived
+  preparation) added to standard COPD therapy showed significant improvements in FEV1,
+  FEV1/FVC ratio, 6-minute walk test distance, reduced acute exacerbations, and improved
+  quality of life versus standard therapy alone.
+evidence_tier: fm_specific_thin
+rationale: 'Large meta-analysis with multiple aligned endpoints, but exclusively Chinese
+  RCTs with variable methodological quality; Western replication absent. The Bailing
+  capsule is a specific manufactured preparation, not interchangeable with generic
+  cordyceps. Coaching scope: educate about emerging respiratory evidence; refer COPD
+  management to pulmonology.'
+coaching_translation: Chinese research has shown that a Cordyceps-derived medicine
+  (Bailing capsule) can improve lung function and quality of life when added to standard
+  COPD treatment. Lung disease management remains a doctor's job — but cordyceps is
+  part of the supportive landscape worth mentioning.
+caveats:
+- All trials from Chinese sources — methodological quality variable
+- Bailing capsule is a specific manufactured preparation; generic cordyceps is not
+  interchangeable
+- Adjunctive use only (alongside standard COPD therapy)
+linked_to_topics:
+- immune-support
+linked_to_mechanisms:
+- cordycepin-adenosine-modulation
+linked_to_supplements:
+- cordyceps
+out_of_scope_notes: COPD management is clinician scope; coach role is education about
+  the evidence base only.
+sources:
+- id: ma-2024-bailing-cordyceps-copd
+  location: results
+  quote: Bailing capsules have shown promising results in the treatment of stable
+    COPD.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

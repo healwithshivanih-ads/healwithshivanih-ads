@@ -1,0 +1,33 @@
+slug: cordyceps-quality-variability-cordycepin
+statement: Cordycepin (3'-deoxyadenosine), the signature bioactive of natural Cordyceps
+  sinensis, is present only at very low levels in wild material and is largely absent
+  from cultured / mycelium products — meaning bioactive content varies enormously
+  between commercial products and many over-the-counter cordyceps supplements may
+  lack the very compound their marketing implies.
+evidence_tier: plausible_emerging
+rationale: 'Important commercial-quality caveat reported in the pharmacological review.
+  Has practical purchase implications: clients buying cordyceps for adenosine-pathway
+  or immune effects may be paying for material that lacks the marker compound.'
+coaching_translation: Cordyceps quality varies wildly. The signature compound (cordycepin)
+  is mostly in wild Cordyceps sinensis and is largely missing from cultured/mycelium-based
+  products. If a client is serious about cordyceps, look for products that test for
+  cordycepin content and disclose it.
+caveats:
+- Quality and bioactive content vary widely between brands
+- Cordyceps militaris (different species) can be cultured to produce higher cordycepin
+  levels; check the binomial
+linked_to_topics: []
+linked_to_mechanisms:
+- cordycepin-adenosine-modulation
+linked_to_supplements:
+- cordyceps
+out_of_scope_notes: ''
+sources:
+- id: yue-2015-cordyceps-constituents-review
+  location: quality discussion
+  quote: Cordycepin is only found in natural C. sinensis with very low content and
+    cannot be detected in the cultured ones.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

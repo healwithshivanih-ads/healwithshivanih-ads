@@ -22,9 +22,12 @@ take_with_food: optional
 notes_for_coach: Potent antioxidant medicinal mushroom; used for immunity, detox,
   and anti-aging; morning dosing preferred.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- immune-support
+- chronic-inflammation
 linked_to_mechanisms:
 - dectin-1-trained-immunity
+- innate-immune-modulation
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -32,7 +35,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: Chaga Mushroom - Antioxidant, immune health - 500–1000 mg/day - Morning or
     with meals
-version: 2
+version: 3
 status: active
 updated_at: '2026-05-29'
 updated_by: shivani

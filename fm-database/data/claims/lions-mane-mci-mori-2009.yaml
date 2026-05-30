@@ -1,0 +1,36 @@
+slug: lions-mane-mci-mori-2009
+statement: In a 16-week DB-RCT of 30 Japanese adults aged 50–80 with mild cognitive
+  impairment, 3 g/day of Hericium erinaceus dry powder significantly improved scores
+  on the Revised Hasegawa Dementia Scale (HDS-R) at weeks 8, 12, and 16 versus placebo;
+  benefit declined within 4 weeks of stopping, suggesting sustained intake is required.
+evidence_tier: plausible_emerging
+rationale: Small but well-designed (DB, parallel-group, placebo-controlled) RCT in
+  the target population. Effect direction consistent across multiple time points +
+  reversal on cessation supports a true intervention effect. Effect magnitude not
+  enough to claim 'strong'. Author conflict (Hokuto Mushroom Lab) noted but methodology
+  adequate.
+coaching_translation: Lion's mane has the best clinical evidence among medicinal mushrooms
+  for mild cognitive impairment. The trial used 3 g/day for 16 weeks, and benefits
+  faded within a month of stopping — so it's a daily, ongoing supplement, not a short
+  course.
+caveats:
+- n=30 — small sample
+- Lead author affiliated with mushroom manufacturer (Hokuto)
+- HDS-R is a Japanese clinical scale; not directly translatable to Western MMSE
+- Doesn't establish dementia-prevention, only MCI symptom improvement
+linked_to_topics:
+- cognitive-decline
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+linked_to_supplements:
+- lions-mane
+out_of_scope_notes: ''
+sources:
+- id: mori-2009-hericium-mci
+  location: results
+  quote: At weeks 8, 12 and 16 of the trial, the Yamabushitake group showed significantly
+    increased scores on the cognitive function scale compared with the placebo group.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

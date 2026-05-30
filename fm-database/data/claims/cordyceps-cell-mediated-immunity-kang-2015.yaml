@@ -1,0 +1,37 @@
+slug: cordyceps-cell-mediated-immunity-kang-2015
+statement: In a 4-week DB-RCT of 79 healthy Korean men, 1.5 g/day ethanol-extracted
+  Cordyceps militaris significantly increased NK-cell activity (p=0.0010), lymphocyte
+  proliferation index (p<0.0001), IL-2 (p=0.0096), and IFN-γ (p=0.0126) versus placebo,
+  with no significant adverse reactions.
+evidence_tier: plausible_emerging
+rationale: DB-RCT with multiple aligned positive immune endpoints + clean safety profile.
+  Sample size adequate for the surrogate-marker outcomes used. Single-population (Korean
+  men) limits generalisability; ethanol-extracted format may not match commonly sold
+  powder/capsule formats.
+coaching_translation: Cordyceps militaris has the cleanest randomised trial evidence
+  among medicinal mushrooms for boosting cell-mediated immunity — specifically NK
+  cells and Th1 cytokines that handle viral threats. 1.5 g/day for 4 weeks was the
+  trial dose.
+caveats:
+- Single-population (Korean men only)
+- Ethanol-extracted form — not directly comparable to all commercial products
+- Surrogate markers (cytokines/NK activity) — no clinical endpoint (infection rate)
+linked_to_topics:
+- immune-support
+- chronic-inflammation
+linked_to_mechanisms:
+- cordycepin-adenosine-modulation
+- innate-immune-modulation
+linked_to_supplements:
+- cordyceps
+out_of_scope_notes: ''
+sources:
+- id: kang-2015-cordyceps-immunity
+  location: results
+  quote: The C. militaris group showed a statistically significant greater increase
+    in NK200, lymphocyte PI, IL-2, and IFN-γ compared with the basal level than the
+    placebo group.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani

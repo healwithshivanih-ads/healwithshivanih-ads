@@ -1,0 +1,36 @@
+slug: lions-mane-mood-menopause-nagano-2010
+statement: In a 4-week DB-RCT of 30 menopausal Japanese women, Hericium erinaceus
+  intake significantly reduced depression scores on the CES-D scale and the Indefinite
+  Complaints Index versus placebo, with subscale improvements in 'insentive' and 'palpitatio'.
+  The authors propose a mechanism distinct from NGF-enhancement.
+evidence_tier: plausible_emerging
+rationale: DB-RCT in the target population (peri/menopausal women) with validated
+  mood scales. Short duration (4 weeks) + small n=30 limit strength. Useful adjunct
+  claim for clients presenting with menopausal mood + anxiety where standard supportive
+  measures are in place.
+coaching_translation: A small Japanese trial in menopausal women found lion's mane
+  reduced symptoms of low mood and anxiety after 4 weeks. Not a substitute for professional
+  mental-health support but a reasonable adjunct for mild symptoms alongside the usual
+  perimenopause toolkit.
+caveats:
+- n=30, 4-week duration — pilot-scale
+- Hericium-containing cookies (not standardised extract) — dosing unclear
+- Mood improvement modest in magnitude
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+- chronic-inflammation
+linked_to_supplements:
+- lions-mane
+out_of_scope_notes: ''
+sources:
+- id: nagano-2010-hericium-mood-menopause
+  location: results
+  quote: Each of the CES-D and the ICI score after the HE intake was significantly
+    lower than that before.
+version: 1
+status: active
+updated_at: '2026-05-29'
+updated_by: shivani
