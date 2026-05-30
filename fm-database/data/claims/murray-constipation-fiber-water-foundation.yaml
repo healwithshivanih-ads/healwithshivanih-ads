@@ -1,0 +1,40 @@
+slug: murray-constipation-fiber-water-foundation
+statement: 'Constipation is a SYMPTOM, not a disease — most commonly caused by inadequate
+  dietary fibre + fluids + sedentary lifestyle. First-line treatment: increase dietary
+  fibre to 25-35 g/day from food sources, drink 6-8 glasses of water daily, and exercise
+  ≥20 minutes 3× weekly. Soluble fibre supplement (psyllium 5 g in 8 oz water, followed
+  by another 8 oz water, 1-2× daily) when food sources insufficient. Establish reflex
+  by sitting on toilet at same time daily — ideally immediately after breakfast or
+  exercise — even when no urge present.'
+evidence_tier: strong
+rationale: Well-established physiology. Mechanism — fibre increases stool bulk and
+  water content; gastrocolic reflex post-meal is strongest morning trigger; physical
+  activity stimulates peristalsis. Most chronic constipation is functional and resolves
+  with these basic measures.
+coaching_translation: Constipation is almost always about fibre, water, and movement.
+  Target 25-35 g fibre daily from food (start gradually to avoid bloating). 6-8 glasses
+  water minimum. 20 min activity 3× weekly. Sit on the toilet at the same time each
+  morning after breakfast — train the reflex even without urge. Psyllium 5 g with
+  16 oz water 1-2× daily if food alone isn't enough.
+caveats:
+- Increase fibre gradually (avoid bloating + gas)
+- Always pair fibre with water — psyllium without enough water worsens constipation
+- Sudden new-onset constipation in age >50 needs colonoscopy referral (rule out malignancy)
+- Pelvic floor dysfunction (anismus) doesn't respond to fibre — needs physio
+linked_to_topics:
+- constipation
+- ibd
+linked_to_supplements:
+- psyllium
+- psyllium-husk
+- dietary-fiber-psyllium
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 41 — Constipation, pg 716–719
+  quote: The most common causes are inadequate consumption of dietary fiber and fluids
+    and/or a sedentary lifestyle. Try to consume 25 to 35 g fiber from dietary sources
+    each day and drink at least six to eight glasses of water per day.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

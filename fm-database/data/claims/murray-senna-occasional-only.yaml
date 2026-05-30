@@ -1,0 +1,41 @@
+slug: murray-senna-occasional-only
+statement: 'Senna (15-30 mg sennosides at bedtime) is the preferred natural stimulant
+  laxative when fibre + hydration + lifestyle fail — works by increasing intestinal
+  smooth muscle contraction. CRITICAL: limit to occasional use only, maximum 7 days
+  continuous without clinician oversight. Long-term use leads to laxative dependence,
+  electrolyte loss (especially potassium), and pseudomelanosis coli (benign blackish
+  pigmentation of colon lining, reversible 4-15 months after discontinuation). Contraindications:
+  abdominal pain, nausea/vomiting, intestinal obstruction, IBD, appendicitis, pregnancy,
+  breastfeeding. Tapering protocol for laxative-dependent users: start one stimulant
+  nightly + decrease dose by half each week.'
+evidence_tier: strong
+rationale: Well-established clinical herbalist and pharmacological evidence. Mechanism
+  — sennosides metabolised by colonic bacteria to rhein anthrone which stimulates
+  colonic motility. Dependence + electrolyte risk well documented; pseudomelanosis
+  is harmless but unsettling on colonoscopy.
+coaching_translation: 'Senna works fast but should be occasional only. 15-30 mg sennosides
+  at bedtime, maximum 7 days. NEVER use during pregnancy, with abdominal pain, or
+  in IBD flare. For clients already dependent on stimulant laxatives, taper slowly:
+  nightly dose first week, halve each week. Reach for fibre + prunes + water + activity
+  FIRST.'
+caveats:
+- Maximum 7 days without medical supervision
+- Pseudomelanosis coli — benign but reverses 4-15 months post-stop
+- Potassium depletion — caution with digoxin, diuretics
+- Decreases absorption of other oral medications (space 2+ hours)
+- Avoid in pregnancy, breastfeeding, IBD, intestinal obstruction
+linked_to_topics:
+- constipation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 41 — Constipation, pg 717–719
+  quote: When a stimulant laxative is required, we prefer senna. Senna relieves constipation
+    by increasing the strength of contraction of the intestinal muscles. Like other
+    stimulant laxatives, it should be limited to occasional use, as long-term use
+    of senna can lead to dependence. Do not use senna for more than seven days unless
+    directed by your doctor.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
