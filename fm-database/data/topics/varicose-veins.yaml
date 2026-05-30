@@ -1,0 +1,37 @@
+slug: varicose-veins
+display_name: Varicose Veins / Chronic Venous Insufficiency
+aliases:
+- chronic-venous-insufficiency
+- cvi
+- venous-insufficiency
+- venous-stasis
+- venous-ulcer
+summary: Dilated tortuous veins from valvular incompetence + venous wall weakness.
+  Affects nearly 50% of middle-aged adults; women 4x more than men. Primary FM drivers
+  are low-fibre diet (straining raises abdominal pressure), prolonged standing, obesity,
+  pregnancy, and weak vascular wall integrity. Conservative therapy — fibre, compression,
+  leg-elevation, exercise, weight reduction — paired with flavonoid-rich diet and
+  venotonic herbs (horse chestnut, gotu kola, butcher's broom) prevents progression
+  and avoids surgery in early stages.
+key_mechanisms:
+- chronic-inflammation
+- vascular-wall-degradation
+common_symptoms:
+- leg-heaviness
+- leg-aching
+- leg-swelling
+related_topics:
+- hemorrhoids
+- cardiovascular-health
+- chronic-inflammation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 102 — Varicose Veins, pg 1556-1564
+  quote: Varicose veins affect nearly 50% of middle-aged adults. A diet high in fibre
+    helps prevent varicose veins. Veins can be strengthened with flavonoid-rich extracts.
+    Several herbal extracts have been shown to act as venotonics.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

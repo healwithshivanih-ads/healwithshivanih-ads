@@ -1,0 +1,31 @@
+slug: sore-throat-goldenseal-echinacea-vitamin-c
+statement: Goldenseal (Hydrastis canadensis) berberine inhibits adherence of group
+  A streptococci to pharyngeal epithelial cells and exerts direct antibiotic activity.
+  Echinacea inhibits streptococcal hyaluronidase, inactivates GABHS, and reduces the
+  pro-inflammatory response. Vitamin C 500-1,000 mg every two waking hours during
+  acute illness is critical — rheumatic fever is virtually nonexistent in tropical
+  populations where vitamin C intake is high, and 18% of high-risk children have subnormal
+  serum vitamin C levels. Add zinc 30 mg/day.
+evidence_tier: strong
+linked_to_topics:
+- sore-throat
+- immune-system-support
+linked_to_supplements:
+- goldenseal-hydrastis
+- echinacea
+- vitamin-c
+- zinc
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Strep Throat, pg 1521-1523
+  quote: The berberine alkaloid of goldenseal exerts antibiotic activity against streptococci
+    and, perhaps more important, has been shown to inhibit the attachment of group
+    A streptococci to pharyngeal epithelial cells. Echinacea also exerts action against
+    streptococci infection. Vitamin C is very important in the prevention of rheumatic
+    fever.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach acute-throat stack — goldenseal + echinacea liquid TID, vitamin C
+  every 2h, zinc lozenge between, gargle with warm salt water.

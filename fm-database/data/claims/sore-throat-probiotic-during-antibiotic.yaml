@@ -1,0 +1,27 @@
+slug: sore-throat-probiotic-during-antibiotic
+statement: If antibiotics are used for strep throat (or any infection), co-administer
+  Lactobacillus acidophilus + Bifidobacterium bifidum 15-20 billion CFU per day DURING
+  antibiotic therapy, spaced as far from antibiotic doses as possible. Research supports
+  L. acidophilus during (not just after) antibiotic administration to prevent superinfection,
+  antibiotic-induced diarrhoea, candida overgrowth, and UTIs. After the antibiotic
+  course, drop to 2-5 billion CFU/day for maintenance.
+evidence_tier: strong
+linked_to_topics:
+- sore-throat
+- leaky-gut
+- immune-system-support
+linked_to_supplements:
+- probiotics-lactobacillus-bifidobacterium
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Strep Throat, pg 1520
+  quote: Reductions of friendly bacteria and/or superinfection with antibiotic-resistant
+    flora may be prevented by administering L. acidophilus products during antibiotic
+    therapy. A dosage of at least 15 billion to 20 billion organisms is required during
+    antibiotic usage.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach script — every antibiotic prescription comes with a probiotic protocol,
+  spaced 2-3 hours apart from antibiotic doses.

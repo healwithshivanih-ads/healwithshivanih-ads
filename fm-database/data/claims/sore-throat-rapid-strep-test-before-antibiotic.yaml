@@ -1,0 +1,25 @@
+slug: sore-throat-rapid-strep-test-before-antibiotic
+statement: Over 90% of sore throats are viral and self-limiting. Even when GABHS strep
+  is confirmed, antibiotic prescription does not significantly reduce post-streptococcal
+  complications (rheumatic fever, glomerulonephritis) compared with no antibiotic.
+  Reserve antibiotics for severe infections, those unresponsive to one week of immune-supportive
+  therapy, and patients with prior rheumatic fever or glomerulonephritis history.
+  Insist on rapid strep antigen testing before antibiotics are prescribed (only 53%
+  of sore-throat antibiotic prescriptions are preceded by testing).
+evidence_tier: strong
+linked_to_topics:
+- sore-throat
+- immune-system-support
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Strep Throat, pg 1518-1520
+  quote: Strep throat is usually a self-limiting disease and most research has shown
+    that clinical recovery is similar in cases in which antibiotics are prescribed
+    and those in which they are not. Antibiotic administration does not significantly
+    reduce the incidence of these complications.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach educates clients to ask the GP for rapid strep antigen test BEFORE
+  accepting an antibiotic — prevents unnecessary microbiome damage.

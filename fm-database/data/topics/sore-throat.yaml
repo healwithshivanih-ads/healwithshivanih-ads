@@ -1,0 +1,37 @@
+slug: sore-throat
+display_name: Sore Throat (Pharyngitis incl. Strep)
+aliases:
+- pharyngitis
+- strep-throat
+- streptococcal-pharyngitis
+- gabhs-pharyngitis
+- tonsillitis
+summary: Over 90% of sore throats are viral and self-limiting. The 10-25% caused by
+  group A beta-hemolytic streptococci (GABHS) require rule-out via rapid strep antigen
+  test before any antibiotic prescription, since antibiotic use does not significantly
+  reduce the incidence of post-streptococcal complications (rheumatic fever, glomerulonephritis)
+  and recovery rates are similar with vs without antibiotics in uncomplicated strep.
+  Functional medicine focus is immune support, mucosal defence, and rebuilding the
+  gut microbiome whenever antibiotics are used.
+key_mechanisms:
+- immune-dysregulation
+common_symptoms:
+- sore-throat
+- fever
+- tender-lymph-nodes
+related_topics:
+- common-cold
+- immune-system-support
+- leaky-gut
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Strep Throat (Streptococcal Pharyngitis), pg 1518-1524
+  quote: More than 90% of all sore throats are caused by viruses. Strep throat is
+    usually a self-limiting disease and most research has shown that clinical recovery
+    is similar in cases in which antibiotics are prescribed and those in which they
+    are not.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
