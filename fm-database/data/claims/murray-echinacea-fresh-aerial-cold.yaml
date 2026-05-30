@@ -1,0 +1,38 @@
+slug: murray-echinacea-fresh-aerial-cold
+statement: 'Echinacea purpurea — specifically as FLUID EXTRACT or freshly-pressed
+  JUICE of the AERIAL plant portion (NOT dried root) at 2-4 ml three times daily —
+  reduces cold symptom development by approximately 30% versus placebo when started
+  early. Murray''s interpretation of mixed echinacea trial results: failures largely
+  reflect insufficient alkamide content in dried root products; fresh-aerial products
+  consistently show benefit. Begin at first sign of symptoms and continue 7-10 days.'
+evidence_tier: plausible_emerging
+rationale: Multiple trials cited including the EchinaGuard study (Schoneberger 2003).
+  Mechanism — alkamides bind CB2 cannabinoid receptors on immune cells; polysaccharides
+  activate macrophages + NK cells. The form-and-extraction-method dependence explains
+  the inconsistent meta-analyses.
+coaching_translation: Echinacea works — but the form is everything. Use FRESH-AERIAL
+  fluid extract or juice (not dried root capsules). Start at first sniffle, 2-4 ml
+  three times daily for 7-10 days. The tingling sensation on your tongue confirms
+  the product is potent. Most failed trials used the wrong plant part.
+caveats:
+- FRESH-AERIAL products only; dried root much less effective
+- Autoimmune disease — theoretical caution (immune-stimulating)
+- Echinacea purpurea > E. angustifolia for colds
+- Pregnancy safety not fully established
+- Start EARLY for best effect
+linked_to_topics:
+- common-cold
+- immune-support
+linked_to_supplements:
+- echinacea
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 39 — Common Cold, pg 694–697
+  quote: Colds developed in 58% of echinacea recipients compared with 82% of placebo
+    recipients. Mixed results from clinical studies with echinacea are most likely
+    due to insufficient quantity of active compounds. Clinical trials of an extract
+    from freshly harvested E. purpurea plants have shown excellent results.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

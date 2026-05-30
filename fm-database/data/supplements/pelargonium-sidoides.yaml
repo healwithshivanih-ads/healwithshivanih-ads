@@ -16,6 +16,8 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - bacterial-sinusitis
+- common-cold
+- immune-support
 linked_to_claims:
 - sinusitis-pelargonium-sidoides-rct
 notes_for_coach: 'EPs 7630 extract: Adults 3 mL t.i.d. or 2×20 mg tablets t.i.d. for
@@ -30,7 +32,7 @@ sources:
   location: Bacterial Sinusitis — Pelargonium Sidoides
   quote: P. sidoides has immune-enhancing effects, antibacterial and antiviral effects,
     and ability to prevent adhesion of bacteria to epithelial cells.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

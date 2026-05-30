@@ -1,0 +1,32 @@
+slug: common-cold
+display_name: Common Cold
+aliases:
+- viral upper respiratory infection
+- rhinovirus infection
+- URI
+common_symptoms:
+- shortness-of-breath
+key_mechanisms: []
+related_topics:
+- immune-support
+- chronic-inflammation
+summary: Acute viral upper respiratory infection — most commonly rhinovirus, but also
+  coronavirus, RSV, influenza, parainfluenza. With healthy immune function, should
+  resolve within 3-4 days; persistent or recurrent colds signal immune compromise.
+  Many cold symptoms are body defence mechanisms (fever, mucus, inflammation) — suppressing
+  them with NSAIDs and decongestants may prolong viral shedding. FM approach focuses
+  on prevention via immune resilience + symptom support with vitamin C, zinc lozenges,
+  echinacea, and elderberry.
+coaching_scope_notes: Coach role — immune-support education, supplement protocols,
+  hygiene + rest + hydration. Refer high fever > 39°C, chest pain, productive purulent
+  sputum, symptoms > 10 days.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 39 — Common Cold
+  quote: With a healthy, functioning immune system, a cold should not last more than
+    three or four days.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

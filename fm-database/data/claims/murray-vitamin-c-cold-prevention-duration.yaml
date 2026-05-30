@@ -1,0 +1,34 @@
+slug: murray-vitamin-c-cold-prevention-duration
+statement: 'Vitamin C reduces both cold incidence (in physically stressed populations)
+  and duration in everyone. Therapeutic acute-cold dose: 500-1,000 mg every 2 hours
+  (decrease if loose stools or excessive gas) paired with 1,000 mg mixed bioflavonoids/day.
+  Bowel-tolerance dosing during active illness — many tolerate 10-15 g/day during
+  the first few days that they would not tolerate at baseline.'
+evidence_tier: strong
+rationale: Cochrane meta-analysis (Hemilä 2013) — vitamin C does not prevent colds
+  in general population but reduces severity + duration by ~8% in adults and 14% in
+  children. In athletes/stressed populations, also reduces incidence by 50%. Bowel-tolerance
+  during illness reflects increased metabolic demand.
+coaching_translation: Vitamin C 500-1,000 mg every 2 hours during a cold cuts symptoms
+  and duration. Pair with bioflavonoids 1,000 mg/day. Your bowel tolerance jumps dramatically
+  during illness — most can tolerate 10-15 g/day while sick that would cause loose
+  stools at baseline. Buffered or liposomal forms tolerated better at high doses.
+caveats:
+- Bowel-tolerance dose-limiting; back off if loose stools
+- Pair with bioflavonoids for synergy
+- Calcium oxalate kidney stone history — citrate form preferred
+- Liposomal forms expensive but well-tolerated at very high doses
+linked_to_topics:
+- common-cold
+- immune-support
+linked_to_supplements:
+- vitamin-c
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 39 — Common Cold, Treatment Summary pg 697
+  quote: 'Vitamin C: 500 to 1,000 mg every two hours (decrease if it produces excessive
+    gas or diarrhea) along with 1,000 mg mixed bioflavonoids per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

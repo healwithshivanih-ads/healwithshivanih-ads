@@ -74,6 +74,7 @@ linked_to_topics:
 - essential-hypertension
 - tendinopathy
 - asthma
+- common-cold
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
@@ -164,7 +165,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
   quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
-version: 22
+version: 23
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

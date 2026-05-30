@@ -1,0 +1,37 @@
+slug: murray-pelargonium-cold-duration
+statement: 'Pelargonium sidoides (South African geranium / Umckaloabo / EPs 7630)
+  at 30 drops (1.5 ml) or 20 mg three times daily reduced cold symptom severity by
+  14.6 points vs 7.6 placebo over 5 days and shortened illness duration by ~1 day;
+  at day 10, 78.8% were clinically cured vs 31.4% placebo. Also evidenced in bronchitis
+  and sinusitis. Mechanism: antimicrobial (especially against streptococcal bacterial
+  co-infection) plus immunomodulatory and mucociliary clearance effects.'
+evidence_tier: strong
+rationale: Multiple DB-RCTs cited (Lizogub 2007 + others); Cochrane review supportive
+  for acute bronchitis. EPs 7630 is the specific patented extract with consistent
+  trial outcomes. Particularly useful in viral URIs with productive cough or sinusitis
+  component.
+coaching_translation: Pelargonium sidoides (sold as Umcka or EPs 7630) cuts cold severity
+  and shortens illness by about a day. 1.5 ml three times daily for adults, lower
+  doses for children. Especially good when there's a cough + sinus involvement, not
+  just a simple cold. Pair with zinc + vitamin C.
+caveats:
+- EPs 7630 standardised extract is the trial-tested form
+- Children's dosing — 7-12 yrs 1 ml tid; under 6 yrs 0.5 ml tid
+- Rare hepatotoxicity reports — discontinue if jaundice
+- Use up to 14 days
+linked_to_topics:
+- common-cold
+- immune-support
+linked_to_supplements:
+- pelargonium-sidoides
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 39 — Common Cold, pg 695
+  quote: From baseline to day five, symptom intensity improved by 14.6 points in the
+    EPs 7630 group compared with 7.6 points in the placebo group. After 10 days, 78.8%
+    of those in the EPs 7630 group vs. 31.4% in the placebo group were clinically
+    cured.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

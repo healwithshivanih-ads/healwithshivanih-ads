@@ -1,0 +1,69 @@
+slug: echinacea
+display_name: Echinacea (Echinacea purpurea)
+aliases:
+- purple coneflower
+- echinacea-purpurea
+- EchinaGuard
+category: herb
+forms_available:
+- capsule
+- liquid
+- powder
+- whole_food
+typical_dose_range:
+  liquid:
+    min: 6
+    max: 12
+    unit: ml
+  capsule:
+    min: 450
+    max: 900
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+take_with_food: optional
+linked_to_topics:
+- common-cold
+- immune-support
+linked_to_mechanisms: []
+notes_for_coach: 'Most effective form: fluid extract of FRESH AERIAL portion of E.
+  purpurea
+
+  (1:1) 2-4 ml three times daily, OR juice stabilised in 22% ethanol. Dried
+
+  root preparations are less effective. Best taken at FIRST sign of symptoms;
+
+  continue 7-10 days. Mixed clinical trial results largely due to insufficient
+
+  quantity of active compounds (alkamides) in many commercial products.
+
+  '
+notes_for_client: 'Echinacea works best when started at the first sign of a cold or
+  sore throat —
+
+  not after symptoms have set in. Use a quality liquid extract from FRESH plant
+
+  material (not dried). Take 3 times daily for 7-10 days. The slight tingling
+
+  on the tongue is a good sign the product is potent.
+
+  '
+evidence_tier: plausible_emerging
+contraindications:
+  conditions:
+  - autoimmune disease (immune-stimulating; theoretical concern)
+  medications:
+  - immunosuppressants (theoretical interaction)
+  life_stages:
+  - pregnancy (safety not fully established)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 39 — Common Cold
+  quote: Clinical trials of an extract from freshly harvested E. purpurea plants have
+    shown excellent results.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

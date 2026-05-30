@@ -1,0 +1,40 @@
+slug: murray-zinc-lozenges-cold-duration
+statement: Zinc lozenges (15–25 mg elemental zinc per lozenge, dissolved in the mouth
+  every 2 waking hours after an initial double dose) significantly reduce the duration
+  and severity of common cold symptoms — but ONLY when formulated correctly. Lozenges
+  containing citric acid, mannitol, or sorbitol as sweeteners chelate the zinc and
+  abolish efficacy; glycine-sweetened lozenges retain ionic zinc. Limit use to maximum
+  7 days at this dose — prolonged use may suppress immune function and induce copper
+  deficiency.
+evidence_tier: strong
+rationale: Eby 1984 first DB-RCT + multiple subsequent meta-analyses; Cochrane review
+  supportive. Mechanism — Zn²⁺ ions bind to ICAM-1 receptor on respiratory epithelial
+  cells, blocking rhinovirus entry; also reduces viral protein assembly. Formulation
+  matters because acidic sweeteners chelate the zinc into bioinactive complexes.
+coaching_translation: 'Zinc lozenges cut cold duration by 1-3 days — but the form
+  matters more than almost any other supplement choice. ONLY buy lozenges sweetened
+  with glycine. Avoid anything with citric acid, mannitol, or sorbitol (they bind
+  the zinc and make it useless). Start at first sniffle: 15-25 mg elemental zinc,
+  dissolve in mouth, every 2 waking hours. STOP after 7 days — longer suppresses immunity.'
+caveats:
+- GLYCINE-sweetened only; avoid citric acid, mannitol, sorbitol formulations
+- Maximum 7 days at this dose
+- Pair with copper 1-2 mg if taking longer than 1 week
+- Metallic taste is normal — dissolve in mouth, don't crunch
+- Take between meals (food + calcium block absorption)
+linked_to_topics:
+- common-cold
+- immune-support
+linked_to_supplements:
+- zinc
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 39 — Common Cold, Treatment Summary pg 697
+  quote: 'Zinc lozenges: The best lozenges are those that utilize glycine as the sweetener.
+    Those that use citric acid, mannitol, or sorbitol should be avoided. Use lozenges
+    supplying 15 to 25 mg elemental zinc. Dissolve in the mouth every two waking hours
+    after an initial double dose.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
