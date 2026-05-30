@@ -22,6 +22,7 @@ linked_to_topics:
 - testosterone-dht-conversion
 - hair-loss-women
 - polycystic-ovary-syndrome
+- hair-loss
 notes_for_coach: Standardised extract 85-95% fatty acids and sterols, 320 mg/day.
   Inhibits 5-alpha-reductase (same mechanism as finasteride) and DHT-receptor binding.
   Used in BPH and female-pattern hair loss (androgenic alopecia) as well as PCOS-related
@@ -54,9 +55,9 @@ sources:
   quote: Saw palmetto extract inhibits formation of DHT by enzyme 5-alpha-reductase,
     also increased in male and female pattern baldness (the same mechanism as finasteride).
     Dose 320 mg q.d. of extract standardized to 85-95% fatty acids and sterols.
-version: 4
+version: 5
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - saw-palmetto-berry

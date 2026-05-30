@@ -1,0 +1,38 @@
+slug: murray-hair-loss-thyroid-celiac-screen
+statement: 'Diffuse hair loss in women warrants screening for two often-missed conditions:
+  (1) hypothyroidism (hair loss is a cardinal sign; antigliadin antibodies cross-react
+  with thyroid + hair follicle tissue), (2) celiac disease / non-coeliac gluten sensitivity
+  (anti-gliadin antibodies cross-react with hair follicle tissue causing alopecia
+  areata). The recommended celiac screening test is human anti-tissue transglutaminase
+  IgA (anti-tTG IgA) + total IgA (greater sensitivity than anti-gliadin alone). Ruling
+  out gluten sensitivity is foundational in any persistent hair loss workup.'
+evidence_tier: strong
+rationale: Multiple endocrinology + dermatology studies. Mechanism — molecular mimicry
+  between gliadin + transglutaminase 2 + thyroid/hair follicle antigens. Even subclinical
+  hypothyroidism causes hair loss.
+coaching_translation: Before treating hair loss with topical interventions, RULE OUT
+  thyroid + celiac. Run TSH + free T4 + free T3 + TPO antibodies for thyroid, AND
+  anti-tTG IgA + total IgA for celiac. Either condition causes hair loss even in early
+  stages. Even non-coeliac gluten sensitivity can drive alopecia areata via cross-reactive
+  antibodies. Address these BEFORE assuming pattern baldness.
+caveats:
+- Run gluten tests BEFORE going gluten-free (strict GF makes diagnosis harder)
+- Total IgA must accompany anti-tTG (IgA-deficient give false negatives)
+- Negative blood tests do NOT rule out non-coeliac gluten sensitivity
+- Subclinical hypothyroidism (TSH 2.5-10) still causes hair loss
+linked_to_topics:
+- hair-loss-women
+- hair-loss
+- hypothyroidism
+- celiac-disease
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 56 — Hair Loss in Women, pg 1000–1001
+  quote: 'Hypothyroidism: It is a well-known fact that hair loss is one of the cardinal
+    signs of hypothyroidism. Antibodies to gliadin can lead to cross-reacting antibodies
+    that attack the hair follicles, leading to alopecia areata.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

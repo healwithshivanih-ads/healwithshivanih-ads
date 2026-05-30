@@ -17,6 +17,8 @@ linked_to_topics:
 - hairfall
 - hypochlorhydria
 - gut-skin-hormone-axis
+- hair-loss-women
+- hair-loss
 notes_for_coach: Bisglycinate form preferred for tolerability and absorption. Critically,
   iron supplementation should be deferred until gut lining is healing and symptoms
   are improving — absorption will be poor and potentially counterproductive if initiated
@@ -50,9 +52,9 @@ sources:
 - id: vitaone-thyroid-cheatsheet
   location: Clinical Action Steps — Support T4→T3 Conversion
   quote: Selenium (100–200 µg/day), Zinc Glycinate (20–30 mg/day), Iron, Active B2/B6/B12
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe

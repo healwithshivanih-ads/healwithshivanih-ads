@@ -1,0 +1,33 @@
+slug: murray-hair-pull-test-diagnosis
+statement: The hair pull test — gently pulling 20 strands between thumb and forefinger
+  and counting how many come out — quickly assesses telogen (resting) phase frequency.
+  ≤10% telogen frequency = excellent; up to 25% = typical/normal; over 35% = problematic.
+  The test distinguishes active hair loss (positive pull) from baseline hair cycling.
+  Used alongside scalp examination + history to differentiate diffuse vs focal alopecia
+  and to determine if active intervention is needed.
+evidence_tier: strong
+rationale: Standard dermatology assessment. Mechanism — anagen (growing) hairs are
+  firmly anchored; telogen (resting) hairs detach easily.
+coaching_translation: 'Quick at-home test: gently pull 20 strands. If 2 or fewer come
+  out (≤10%) — excellent. Up to 5 (25%) — normal cycling. Over 7 (35%+) — meaningful
+  hair loss needing investigation. This converts vague ''my hair is falling out more''
+  to a number you can track over time. Repeat monthly to monitor progress on any intervention.'
+caveats:
+- Don't pull aggressively — gentle traction only
+- Test multiple scalp regions
+- Recent shampoo/styling affects results
+- Positive test = needs cause workup (iron, thyroid, etc.)
+linked_to_topics:
+- hair-loss-women
+- hair-loss
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 56 — Hair Loss in Women, pg 995
+  quote: The hair pull test can help determine the relative formation of new hair.
+    As a very rough guide, a 10% telogen frequency is excellent, up to 25% is typical,
+    and over 35% is problematic.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

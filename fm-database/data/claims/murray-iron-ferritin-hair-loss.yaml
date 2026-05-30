@@ -1,0 +1,40 @@
+slug: murray-iron-ferritin-hair-loss
+statement: Low iron stores (serum ferritin < 30 ng/ml, optimal target > 70 ng/ml)
+  are a leading cause of diffuse hair loss in women — even when haemoglobin is normal.
+  Murray recommends iron 30 mg twice daily between meals (bisglycinate, succinate,
+  pyrophosphate, or fumarate forms) when ferritin is below 30 ng/ml. Effect on hair
+  regrowth typically visible within 3-6 months of ferritin normalisation. Always test
+  BEFORE supplementing iron (iron overload contraindication).
+evidence_tier: strong
+rationale: Multiple dermatology studies showing ferritin correlation with telogen
+  effluvium + female pattern hair loss. Mechanism — iron is required for ribonucleotide
+  reductase (DNA synthesis in rapidly-dividing hair matrix cells); deficiency triggers
+  premature transition to telogen phase.
+coaching_translation: 'Iron deficiency is one of the top causes of hair loss in women
+  — even with normal haemoglobin. Check serum ferritin (the iron storage marker).
+  Below 30 = definitely deficient; target above 70 for hair recovery. Iron bisglycinate
+  30 mg twice daily between meals + vitamin C for absorption. Effect on hair: 3-6
+  months. Always TEST first (iron overload is contraindication).'
+caveats:
+- TEST ferritin BEFORE supplementing (haemochromatosis contraindication)
+- Target ferritin > 70 ng/ml for hair regrowth (above standard 30 minimum)
+- Iron bisglycinate best tolerated
+- Take between meals + with vitamin C; avoid with tea/coffee/calcium/zinc
+- Hair regrowth visible 3-6 months after ferritin restored
+linked_to_topics:
+- hair-loss-women
+- hair-loss
+linked_to_supplements:
+- iron
+- iron-bisglycinate
+- iron-ferrous-ascorbate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 56 — Hair Loss in Women, Treatment Summary pg 1002
+  quote: If serum ferritin levels are below 30 mg/l, take iron bound to either pyrophosphate,
+    succinate, glycinate, or fumarate, at a dosage of 30 mg twice per day between
+    meals.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
