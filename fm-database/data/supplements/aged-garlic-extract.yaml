@@ -15,8 +15,11 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - cardiovascular-disease-prevention
+- atherogenic-dyslipidemia
+- dyslipidemia
 linked_to_claims:
 - aged-garlic-slows-coronary-calcification-progression
+- murray-garlic-allicin-standardized-dose
 notes_for_coach: Budoff's research cited showing 600mg twice daily slowed progression
   of coronary calcification. Anti-inflammatory and anti-thrombotic properties also
   described.
@@ -30,7 +33,10 @@ sources:
   location: Nutraceuticals — Aged Garlic Extract
   quote: Aged garlic extract. Please look at Budoff's work showing slowed down progression
     of coronary calcification. 600 milligrams twice a day.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

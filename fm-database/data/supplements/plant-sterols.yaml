@@ -21,9 +21,12 @@ take_with_food: required
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-disease-prevention
+- atherogenic-dyslipidemia
+- familial-hypercholesterolemia
 linked_to_claims:
 - plant-sterols-block-cholesterol-absorption
 - plant-sterols-3g-12-percent-cholesterol-reduction
+- murray-plant-sterols-2g-ldl-10pct
 notes_for_coach: 3g/day associated with 12% reduction in total cholesterol. Hard to
   achieve therapeutic dose from food alone without supplementation, though Mediterranean
   diet foods contain meaningful amounts.
@@ -39,7 +42,10 @@ sources:
 - id: coconote-fm-preventing-cvd-cholesterol
   location: LDL-Lowering Nutraceuticals
   quote: Plant sterols, three grams a day, 12% reduction in cholesterol.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

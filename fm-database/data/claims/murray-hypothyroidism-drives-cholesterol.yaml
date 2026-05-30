@@ -1,0 +1,40 @@
+slug: murray-hypothyroidism-drives-cholesterol
+statement: Hypothyroidism — even subclinical — predisposes to atherosclerosis by elevating
+  cholesterol, triglycerides, homocysteine, and C-reactive protein, and can raise
+  blood pressure, reduce cardiac function, and slow heart rate. Murray & Pizzorno
+  explicitly flag that elevated cholesterol in clinical practice should trigger thyroid
+  screening (TSH, free T4, free T3, TPO antibodies) before lipid-lowering therapy
+  is escalated.
+evidence_tier: strong
+rationale: Hypothyroid dyslipidemia is well-established endocrinology. Restoring euthyroid
+  status typically normalises lipids without need for additional pharmacotherapy.
+  Important diagnostic anchor in functional medicine — TSH should be on every lipid
+  panel.
+coaching_translation: Before going down the lipid-medication path, rule out underactive
+  thyroid. Even slightly low thyroid function raises cholesterol, triglycerides, and
+  inflammation markers. A full thyroid panel (TSH, free T4, free T3, TPO antibodies)
+  belongs alongside any cholesterol check.
+caveats:
+- Subclinical hypothyroidism (TSH 4-10, normal T4) is the missed diagnosis to look
+  for
+- Lipid normalization after thyroid optimization can take 3-6 months
+- Statin myalgia is worse in hypothyroid patients — clinically important
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 + Chapter 68 cross-reference
+  quote: Hypothyroidism, even in very mild cases, is thought to predispose people
+    to atherosclerosis because of increases in cholesterol and triglycerides as well
+    as homocysteine and C-reactive protein. Elevations in cholesterol may be the result
+    of low thyroid function.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

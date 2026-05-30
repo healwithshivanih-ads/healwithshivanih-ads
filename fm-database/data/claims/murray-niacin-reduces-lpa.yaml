@@ -1,0 +1,38 @@
+slug: murray-niacin-reduces-lpa
+statement: Niacin at 3–4 g/day reduces Lipoprotein(a) by 35–38% — among the few therapies
+  that meaningfully lower Lp(a). Statins do not lower Lp(a); lifestyle has minimal
+  effect. Elevated Lp(a) (>40 mg/dl) carries roughly 10× the heart disease risk of
+  elevated LDL cholesterol alone.
+evidence_tier: strong
+rationale: Replicated across multiple trials including comparative studies with lovastatin
+  and atorvastatin. Lp(a) is genetically determined and largely refractory to other
+  interventions, making niacin clinically distinctive here. Recently complemented
+  by PCSK9 inhibitors (clinician-only) which also lower Lp(a) modestly. For functional
+  medicine coaching, niacin remains the primary nutritional lever for elevated Lp(a).
+coaching_translation: Lipoprotein(a) is genetically set and statins don't touch it
+  — but niacin lowers it by 35% or more. If a client has elevated Lp(a) (above 40
+  mg/dl), niacin is the strongest natural option. Doses for Lp(a) typically need to
+  be higher (2-3 g/day) than for general lipid lowering.
+caveats:
+- Higher doses (3 g+) more effective for Lp(a) but more flushing + metabolic effects
+- PCSK9 inhibitors (Repatha, Praluent) also lower Lp(a) — clinician scope
+- Aspirin (clinician decision) and lifestyle (low saturated fat, high omega-3) have
+  minor effects
+- Genetic test for LPA gene apo(a) isoform size predicts who benefits most
+linked_to_topics:
+- atherogenic-dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- niacin
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1074, 1082
+  quote: Niacin produced a 35% reduction in Lp(a) levels, [and a previous study showed]
+    niacin (4 g per day) reduced Lp(a) levels by 38%. Lovastatin did not produce any
+    effect.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

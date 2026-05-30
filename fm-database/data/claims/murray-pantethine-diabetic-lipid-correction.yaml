@@ -1,0 +1,39 @@
+slug: murray-pantethine-diabetic-lipid-correction
+statement: Pantethine — the stable active form of vitamin B5 — at 900 mg/day reduces
+  triglycerides ~32%, total cholesterol ~19%, LDL ~21%, and raises HDL ~23%. Effects
+  are particularly notable in diabetic patients. Pantothenic acid (the standard B5
+  form) has little to no lipid-lowering effect; only pantethine works.
+evidence_tier: plausible_emerging
+rationale: Multiple small clinical trials cited (Bertolini 1986, Gaddi 1984, Coronel
+  1991, Da Col 1984). Effect sizes meaningful and consistent. Mechanism — pantethine
+  is the active form participating in coenzyme A and ACP, accelerating fatty acid
+  oxidation. Generally clean safety profile makes it especially attractive in T2DM
+  where niacin requires more monitoring.
+coaching_translation: Pantethine (the active form of vitamin B5, NOT the more common
+  pantothenic acid) at 900 mg/day improves all four lipid fractions and is especially
+  useful in diabetic clients where niacin's metabolic effects require monitoring.
+  The cheaper plain pantothenic acid does NOT work — you need pantethine.
+caveats:
+- Standard pantothenic acid (B5) does NOT have this effect; must be pantethine
+- 900 mg/day is the typical effective dose; lower doses less consistent
+- Often expensive — practical barrier in India
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+- insulin-resistance
+linked_to_supplements:
+- pantethine
+- pantethine-vitamin-b5
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1086–1087
+  quote: Pantethine at 900 mg per day has been shown to significantly reduce levels
+    of serum triglyceride (32%), total cholesterol (19%), and LDL cholesterol (21%)
+    while increasing HDL cholesterol (23%). It appears to be especially useful in
+    diabetics.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

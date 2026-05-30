@@ -25,11 +25,14 @@ linked_to_topics:
 - chronic-fatigue-syndrome
 - benign-prostatic-hyperplasia
 - essential-hypertension
+- atherogenic-dyslipidemia
+- dyslipidemia
 linked_to_claims:
 - ad-fish-oil-dha-correlates-improvement
 - adhd-omega3-deficiency-brain
 - omega3-reduces-heart-attack-risk-dart
 - omega-3-dha-reduces-24hr-ambulatory-bp
+- murray-fish-oil-tg-not-cholesterol
 notes_for_coach: DHA-rich formulas preferred over EPA-dominant products for BP reduction.
   3000 mg total EPA+DHA recommended in therapeutic approach. Ensure lab-certified
   purity against pollutants and peroxides.
@@ -47,7 +50,10 @@ sources:
   quote: Products with higher content of DHA are preferred. In one double-blind trial
     comparing 4 g q.d. of purified EPA, DHA, or olive oil (placebo), only DHA reduced
     24-hour and daytime ambulatory BP.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 3
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

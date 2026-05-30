@@ -17,8 +17,10 @@ take_with_food: optional
 linked_to_topics:
 - dyslipidemia
 - cardiovascular-disease-prevention
+- atherogenic-dyslipidemia
 linked_to_claims:
 - b5-300mg-tid-lowers-ldl
+- murray-pantethine-diabetic-lipid-correction
 notes_for_coach: Cited at 300mg three times a day for LDL lowering. Can be combined
   with other lipid-modifying agents.
 notes_for_client: Pantethine (a form of Vitamin B5) at higher doses may help lower
@@ -31,7 +33,10 @@ sources:
   location: LDL-Lowering Nutraceuticals
   quote: B5, 300 milligrams, three times a day will lower LDL and can be mixed with
     other medications.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

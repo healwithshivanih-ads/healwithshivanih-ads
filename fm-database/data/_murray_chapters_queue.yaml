@@ -17,10 +17,11 @@ chapters:
   - ch: 64
     title: High Cholesterol and/or Triglycerides
     body_pg_start: 1072
-    body_pg_end: 1126
+    body_pg_end: 1090
     priority: 2
     serves: [cl-005 Hariharan, cl-006 Geetika, cl-008 Sudarshan, nidhi-jain]
-    status: pending
+    status: ingested
+    batch_id: 20260530T120000-murray-ch64-cholesterol-chat
   - ch: 75
     title: Menopause
     body_pg_start: 1230

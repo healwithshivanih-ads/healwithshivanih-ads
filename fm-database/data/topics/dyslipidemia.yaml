@@ -92,7 +92,10 @@ sources:
     total cholesterol (TC) below 200 mg/dL; LDL-C below 130 mg/dL; high-density–lipoprotein
     cholesterol (HDL-C) above 40 mg/dL in men and 50 mg/dL in women; triglycerides
     (TGs) below 150 mg/dL.'
-version: 4
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 5
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

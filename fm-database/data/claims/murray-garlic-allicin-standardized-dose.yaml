@@ -1,0 +1,44 @@
+slug: murray-garlic-allicin-standardized-dose
+statement: Garlic preparations standardised to deliver ≥10 mg alliin or 4,000 mcg
+  allicin potential daily reduce total cholesterol 10–12%, LDL 15%, triglycerides
+  15%, and raise HDL 10% — but trials using products that fail to deliver this dose
+  generally fail to lower lipids. Product standardisation is the single most important
+  determinant of garlic's lipid effect.
+evidence_tier: plausible_emerging
+rationale: Murray flags that the heterogeneity in garlic trial results is explained
+  by product variability. Garlic also offers ancillary benefits — blood pressure reduction,
+  antiplatelet effect, fibrinolysis, LDL oxidation prevention — which justify its
+  use even when lipid effects are modest. The 'plausible_emerging' tier reflects meta-analytic
+  heterogeneity in lipid outcomes despite mechanism support.
+coaching_translation: Garlic only works for lipids if you get the right product. Look
+  for standardisation to ≥4,000 mcg allicin potential or ≥10 mg alliin per dose. Cheap
+  garlic powder with no standardisation generally fails. Beyond cholesterol, garlic
+  also lowers blood pressure and prevents clot formation.
+caveats:
+- Most retail garlic supplements are NOT properly standardised — read labels
+- Aged garlic extract (Kyolic-style) loses allicin but retains other benefits
+- Blood-thinning effect — caution with anticoagulants + 7-10 days before surgery
+- Strong odour from raw garlic; enteric-coated tablets preferred
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+- high-blood-pressure
+linked_to_supplements:
+- garlic
+- garlic-allicin
+- aged-garlic-extract
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1087
+  quote: Daily supplementation with commercial preparations providing at least 10
+    mg alliin or a total allicin potential of 4,000 mcg can lower total serum cholesterol
+    by about 10 to 12%, LDL cholesterol by about 15%, and triglycerides by around
+    15%, with HDL cholesterol levels usually increasing by about 10%. However, most
+    trials not using products that can deliver this dosage of allicin fail to produce
+    a lipid-lowering effect.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

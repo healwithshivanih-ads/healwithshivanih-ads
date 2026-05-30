@@ -22,11 +22,14 @@ linked_to_topics:
 - peptic-ulcer-disease
 - atherosclerosis
 - cardiovascular-disease-prevention
+- atherogenic-dyslipidemia
+- dyslipidemia
 linked_to_mechanisms:
 - h-pylori-mucosal-defense-breakdown
 - gut-dysbiosis
 linked_to_claims:
 - garlic-allicin-suppresses-h-pylori-and-supports-gut-flora
+- murray-garlic-allicin-standardized-dose
 notes_for_coach: Active anti-H. pylori compound is allicin (released when raw garlic
   is crushed/chopped). Standardised supplement — 5,000-10,000 mcg allicin potential
   daily, divided. Whole-food path — 2-3 raw cloves daily (chop, rest 10 min for allicin
@@ -55,7 +58,10 @@ sources:
   quote: Garlic is noted for its ability to suppress bacterial growth and help promote
     a healthier gut environment. Allicin is the active compound used to suppress bacterial
     growth.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

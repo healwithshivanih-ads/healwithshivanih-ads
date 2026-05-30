@@ -30,6 +30,8 @@ linked_to_topics:
 - insulin-resistance
 - essential-fatty-acids
 - mitochondrial-health-nutrition
+- atherogenic-dyslipidemia
+- dyslipidemia
 linked_to_claims:
 - gluten-free-reduces-hashimotos-triggers
 - omega-3-modulates-estrogen-receptor-lowers-prostaglandins
@@ -38,6 +40,7 @@ linked_to_claims:
 - omega3-curcumin-reduce-il6-tnfa-insulin-signalling
 - omega-3-ratio-4-to-1-reduces-inflammation
 - omega-3-supplementation-muscle-mass-elderly
+- murray-fish-oil-tg-not-cholesterol
 notes_for_coach: Take with a meal for absorption and to reduce fishy aftertaste. Quality
   varies greatly — advise clients to choose brands tested for heavy metals. High doses
   may affect bleeding; refer to clinician.
@@ -110,9 +113,12 @@ sources:
   quote: Fish oil plays a big role in the vaginal microbiome, so much so that if a
     woman takes omega-3s during pregnancy, the likelihood of premature labor drops
     precipitously.
-version: 7
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 8
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases:
 - epa-dha-fish-oil

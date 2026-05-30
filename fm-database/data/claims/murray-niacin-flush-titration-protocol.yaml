@@ -1,0 +1,44 @@
+slug: murray-niacin-flush-titration-protocol
+statement: Crystalline (immediate-release) niacin should be started at 100 mg/day
+  and titrated upward over 4–6 weeks to a therapeutic 1.5–3 g/day, taken at night
+  since most cholesterol synthesis occurs during sleep. Inositol hexaniacinate or
+  intermediate-release niacin start at 500 mg/night and titrate to 1,500 mg after
+  2 weeks. Liver function should be monitored every 3 months. Niacin is contraindicated
+  in pre-existing liver disease or elevated liver enzymes.
+evidence_tier: strong
+rationale: Standard clinical protocol. Early sustained-release (now obsolete) caused
+  52% hepatotoxicity; modern intermediate-release products are well tolerated in large
+  trials. Inositol hexaniacinate has European clinical heritage with better tolerability
+  + comparable lipid effect. Timing recommendation (at night) reflects diurnal HMG-CoA
+  reductase activity peaking at night.
+coaching_translation: 'How to take niacin without misery: start at 100 mg/day, increase
+  weekly over 4-6 weeks to 1.5-3 g/day, all at bedtime since the liver makes most
+  cholesterol overnight. Take with food, sip cold water at first flush, and ask your
+  doctor for liver enzyme checks every 3 months. If flushing is intolerable, switch
+  to inositol hexaniacinate or the newer intermediate-release forms.'
+caveats:
+- Avoid OLD sustained-release niacin (high hepatotoxicity)
+- Liver enzymes every 3 months — non-negotiable
+- Active liver disease or elevated LFTs = contraindicated
+- Active peptic ulcer disease = caution
+- Pregnancy + breastfeeding = not for therapeutic lipid doses
+- May aggravate gout (raises uric acid)
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+linked_to_supplements:
+- niacin
+linked_to_mechanisms: []
+out_of_scope_notes: Liver enzyme monitoring is clinician scope. Coach role — educate
+  about the titration protocol and ensure client has a prescriber overseeing labs.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1085–1086
+  quote: For best results niacin should be taken at night, as most cholesterol synthesis
+    occurs during sleep. If pure crystalline niacin is being used, begin with a dose
+    of 100 mg a day and increase carefully over four to six weeks to the full therapeutic
+    dose of 1.5 to 3 g per day.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

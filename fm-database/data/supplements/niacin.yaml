@@ -20,11 +20,15 @@ take_with_food: optional
 linked_to_topics:
 - dyslipidemia
 - atherosclerosis
+- atherogenic-dyslipidemia
 linked_to_claims:
 - niacin-raises-hdl-lowers-lpa
 - niacin-only-cholesterol-agent-reducing-overall-mortality
 - niacin-outperforms-statins-on-hdl-and-lpa
 - niacin-and-vitamin-c-reduce-lpa-35-27pct
+- murray-niacin-superior-statin-lipoprotein-particle
+- murray-niacin-reduces-lpa
+- murray-niacin-flush-titration-protocol
 notes_for_coach: 'Therapeutic doses (1500–3000 mg/day) require clinician supervision.
   Inositol hexaniacinate is better tolerated with fewer flushing side effects. Monitor
   liver enzymes and glucose quarterly. Take at night (cholesterol synthesis peaks
@@ -61,9 +65,12 @@ sources:
   quote: Niacin is the only proven cholesterol-lowering agent that actually reduces
     overall mortality. For best results, niacin should be taken at night, because
     most cholesterol synthesis occurs during sleep.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 3
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - niacin-b3

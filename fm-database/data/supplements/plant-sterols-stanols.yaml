@@ -15,8 +15,11 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - dyslipidemia
+- atherogenic-dyslipidemia
+- familial-hypercholesterolemia
 linked_to_claims:
 - plant-sterols-2g-reduce-ldl-10pct
+- murray-plant-sterols-2g-ldl-10pct
 notes_for_coach: Effective at 2 g/day with food; additive to diet and statins. Higher
   doses may reduce carotenoid absorption — ensure adequate fruit/vegetable intake.
   Best for high cholesterol absorbers (vs. overproducers).
@@ -28,7 +31,10 @@ sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Plant Sterols and Stanols
   quote: Daily intake of 2 g of stanols or sterols reduces LDL-C by 10%.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

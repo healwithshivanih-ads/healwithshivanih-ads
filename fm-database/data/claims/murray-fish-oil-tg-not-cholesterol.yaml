@@ -1,0 +1,37 @@
+slug: murray-fish-oil-tg-not-cholesterol
+statement: Fish oil EPA+DHA does NOT significantly lower total or LDL cholesterol
+  but exerts exceptional triglyceride-lowering action (typically 20–50% TG reduction
+  at therapeutic doses of 2–4 g/day combined EPA+DHA). It also lowers blood pressure
+  modestly, reduces inflammation (CRP, IL-6), and reduces sudden cardiac death risk.
+evidence_tier: strong
+rationale: Meta-analyses across decades support TG-specific effect (Harris 1997, Balk
+  2006, AHA 2017 advisory). Mechanism — reduced hepatic VLDL synthesis. Importantly,
+  fish oil should not be used as the primary cholesterol-lowering agent; it is the
+  primary natural triglyceride-lowering agent.
+coaching_translation: Fish oil isn't really a cholesterol drug — but it's the best
+  natural triglyceride drug. 2-4 g/day combined EPA+DHA cuts triglycerides by 20-50%.
+  For clients with TG over 200 mg/dL it's the go-to. For clients with high LDL alone,
+  niacin or pantethine work better.
+caveats:
+- Therapeutic TG dose 2-4 g EPA+DHA — not the 500 mg in most multivitamins
+- Quality matters — third-party tested for oxidation + heavy metals
+- Mild blood-thinning — caution + anticoagulants, surgery
+- Some clients report fishy burps — solved by enteric coating or freezing capsules
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1088
+  quote: Fish oils do not significantly lower cholesterol but do exert exceptional
+    triglyceride-lowering action.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

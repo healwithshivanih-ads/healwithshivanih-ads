@@ -62,7 +62,10 @@ sources:
   quote: 'Atherosclerosis: underlying pathogenesis in a group of disorders collectively
     termed cardiovascular disease (CVD)—heart disease or coronary artery disease (CAD),
     and myocardial, pulmonary, and cerebral infarction.'
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 3
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

@@ -16,8 +16,11 @@ take_with_food: optional
 linked_to_topics:
 - dyslipidemia
 - atherosclerosis
+- atherogenic-dyslipidemia
+- insulin-resistance
 linked_to_claims:
 - pantethine-900mg-reduces-tg-32pct
+- murray-pantethine-diabetic-lipid-correction
 notes_for_coach: Preferred for hypertriglyceridemia, especially in diabetics. Also
   normalizes platelet lipid composition and blood viscosity. Virtually non-toxic —
   useful when niacin is not tolerated. Active form of vitamin B5.
@@ -31,7 +34,10 @@ sources:
   quote: Pantethine therapy (900 mg/day) reduces serum TG (−32%), TC (-19%) and LDL-C
     (−21%) and increases HDL-C (+23%). It appears to be especially useful in lowering
     blood lipids in diabetic patients.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

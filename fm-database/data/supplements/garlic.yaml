@@ -31,6 +31,7 @@ linked_to_topics:
 - dyslipidemia
 - atherosclerosis
 - essential-hypertension
+- atherogenic-dyslipidemia
 sources:
 - id: vitaone-mind-map-tool
   location: Surfaced from MindMap 'hypertension' under branch 'ACE Inhibitors (Foods)'
@@ -46,16 +47,20 @@ sources:
   quote: Dried garlic powder standardized to contain 1.3% alliin at dose of 600 to
     900 mg q.d. can lower systolic BP by 11 mm Hg and diastolic BP by 5.0 mm Hg over
     a 1- to 3-month period.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
 notes_for_coach: 'Standardise to 1.3% alliin (7.8–11.7 mg alliin/dose). Therapeutic
   approach: fresh garlic equivalent of 4000 mg/day. Garlic BP reductions 8–11 mm Hg
   systolic, 5–8 mm Hg diastolic. Also lowers cholesterol.'
 status: active
-version: 3
-updated_at: '2026-05-18'
+version: 4
+updated_at: '2026-05-30'
 updated_by: Shivani
 linked_to_claims:
 - garlic-lowers-tc-10-12pct-ldl-15pct
 - garlic-lowers-systolic-11mmhg
+- murray-garlic-allicin-standardized-dose
 notes_for_client: Fresh garlic daily or a standardised supplement (look for 'alliin'
   content on the label) can meaningfully lower blood pressure over 1–3 months.
 linked_to_mechanisms: []

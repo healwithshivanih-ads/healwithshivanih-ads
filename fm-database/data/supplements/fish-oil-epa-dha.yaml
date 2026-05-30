@@ -19,10 +19,12 @@ linked_to_topics:
 - dyslipidemia
 - type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
+- atherogenic-dyslipidemia
 linked_to_claims:
 - omega-3-index-8pct-greatest-cvd-protection
 - omega-3s-reduce-cvd-mortality-45pct
 - fish-oil-no-adverse-glycemic-effect-at-3-18g
+- murray-fish-oil-tg-not-cholesterol
 notes_for_coach: 'Use pharmaceutical-grade (free of mercury, PCBs, solvents). Recently
   diagnosed T1DM: 1000 mg each EPA + DHA. Level 1 T1DM/T2DM: 600 mg each. Combined
   EPA+DHA target 1100–1600 mg/day.'
@@ -39,7 +41,10 @@ sources:
   location: Nutritional and Herbal Supplements / Omega-3 fatty acids
   quote: At doses of 3 to 18 g/day (18% eicosapentaenoic acid [EPA] and 12% docosahexaenoic
     acid [DHA]), fish oil has no adverse effect on glycemic control.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
+version: 3
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

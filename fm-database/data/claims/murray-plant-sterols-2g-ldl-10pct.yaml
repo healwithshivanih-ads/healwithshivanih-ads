@@ -1,0 +1,38 @@
+slug: murray-plant-sterols-2g-ldl-10pct
+statement: Plant sterols and stanols at 2 g/day reduce LDL cholesterol ~10% by displacing
+  cholesterol from intestinal micelles and increasing excretion; higher dosages add
+  little additional benefit. Combined with a low-saturated-fat diet, LDL reductions
+  of 20% are achievable, and adding sterols to statin therapy is more effective than
+  doubling the statin dose.
+evidence_tier: strong
+rationale: Meta-analysis of 41 trials confirms the dose-response plateau at ~2 g/day
+  with LDL reduction ~10%. FDA-approved health claim. Mechanism well-established.
+  Caveat — at higher doses, sterols modestly reduce carotenoid absorption (alpha/beta-carotene,
+  lutein, lycopene by 11–23%); partially offset by increased fruit + vegetable intake.
+coaching_translation: Plant sterols at 2 g/day reliably lower LDL by ~10%. More than
+  2 g doesn't add much benefit. Available in fortified spreads, OJ, and capsules.
+  Combine with a Mediterranean-style diet for an additive 20% LDL drop. At doses above
+  2 g, pair with extra fruits and vegetables to protect carotenoid status.
+caveats:
+- LDL effect plateaus at 2 g/day
+- At 6+ g/day reduces carotenoid absorption; offset with extra colorful produce
+- Sitosterolemia (rare genetic condition) is a contraindication — sterols accumulate
+- More effective alongside diet than alone
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+- familial-hypercholesterolemia
+linked_to_supplements:
+- plant-sterols
+- plant-sterols-stanols
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1086
+  quote: A meta-analysis of 41 trials showed that an intake of 2 g stanols or sterols
+    per day reduced LDL by 10%. Taking higher dosages added little additional benefit.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -58,8 +58,11 @@ sources:
   quote: Multiple active clients show the atherogenic dyslipidemia pattern. Standard
     lipid panel under-detects it; ApoB and TG/HDL ratio are the FM-preferred markers.
     Treatment is insulin-resistance-first.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides
+  quote: Comprehensive natural treatment summary for dyslipidemia.
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

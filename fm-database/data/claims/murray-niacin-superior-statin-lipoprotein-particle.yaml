@@ -1,0 +1,42 @@
+slug: murray-niacin-superior-statin-lipoprotein-particle
+statement: Niacin (1.5–3 g/day at night) reduces LDL cholesterol ~23%, raises HDL
+  ~32%, lowers triglycerides ~26%, and uniquely reduces Lipoprotein(a) by 35–38% —
+  an effect statins do not produce. In head-to-head trials with atorvastatin, niacin
+  was more effective at increasing LDL particle size and raising the protective HDL2
+  fraction, even though atorvastatin reduced total LDL more.
+evidence_tier: strong
+rationale: Multiple comparative trials cited in Murray (Goldberg 1989, Capuzzi 1998,
+  McKenney 2001, Brown 2001). Niacin's Lp(a) effect is uniquely well-replicated and
+  clinically meaningful for the ~20% of high-risk patients with elevated Lp(a). Caveat
+  — AIM-HIGH (2011) found no added benefit of niacin on top of well-controlled simvastatin,
+  but niacin monotherapy + small/dense LDL phenotype + low HDL + elevated Lp(a) remains
+  a strong FM use case.
+coaching_translation: Niacin is the single most effective natural lipid agent — especially
+  for clients with elevated Lp(a), low HDL, or the small-dense LDL pattern. 1.5–3
+  g/day, taken at night when most cholesterol is made. The flush is the cost; flush-free
+  inositol hexaniacinate is the alternative.
+caveats:
+- Liver enzymes need monitoring every 3 months
+- Avoid in pre-existing liver disease, elevated LFTs, or active gallbladder disease
+- 3 g+ doses can impair glycemic control; 1–1.5 g is safe in T2DM
+- Acute flush — take with food + start low (100 mg) and titrate over 4-6 weeks
+- AIM-HIGH 2011 — no added benefit on top of well-controlled statin; niacin shines
+  as monotherapy or in low-HDL/high-Lp(a) phenotypes
+linked_to_topics:
+- atherogenic-dyslipidemia
+- dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- niacin
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 64 — High Cholesterol and/or Triglycerides, pg 1081–1086
+  quote: Although Lipitor reduced total LDL cholesterol levels substantially more
+    than niacin did, niacin was more effective at increasing LDL particle size and
+    raising HDL and HDL2 than Lipitor was.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
