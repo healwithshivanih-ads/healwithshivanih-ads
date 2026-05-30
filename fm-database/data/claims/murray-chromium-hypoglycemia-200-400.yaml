@@ -1,0 +1,42 @@
+slug: murray-chromium-hypoglycemia-200-400
+statement: Chromium (200-400 mcg/day picolinate or polynicotinate, NOT chromium yeast)
+  alleviates reactive hypoglycaemia symptoms by acting as a glucose tolerance factor
+  cofactor that potentiates insulin action. In one DB crossover trial, 200 mcg chromium
+  twice daily for 3 months alleviated hypoglycaemic symptoms and improved the 2-4-hour
+  glucose nadir after glucose load, with concurrent improvement in insulin binding
+  + insulin receptor numbers. Marginal chromium deficiency is widespread in modern
+  Western diets and is implicated in both reactive hypoglycaemia and progression to
+  type 2 diabetes.
+evidence_tier: strong
+rationale: Multiple studies including the cited DB crossover (Anderson 1991). Mechanism
+  — chromium is part of chromodulin (low molecular weight chromium-binding substance)
+  that amplifies insulin receptor tyrosine kinase activity.
+coaching_translation: Chromium 200-400 mcg/day (picolinate form preferred) is foundational
+  for reactive hypoglycaemia. It makes insulin work better so you don't get the spike-and-crash
+  cycle. Effect builds over weeks. NOT chromium-rich yeast (didn't work in newer trials).
+  Same chromium-biotin combo from Diabetes chapter applies here too — 600 mcg + 2
+  mg biotin for stubborn cases.
+caveats:
+- Picolinate or polynicotinate form (not yeast-bound)
+- Combination with biotin (2 mg) enhances effect
+- Monitor blood glucose if on hypoglycaemic medications
+- Generally well-tolerated
+linked_to_topics:
+- hypoglycemia
+- insulin-resistance
+- type-2-diabetes
+- prediabetes
+linked_to_supplements:
+- chromium
+- chromium-picolinate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 67 — Hypoglycemia, pg 1122–1123, 1125
+  quote: Marginal chromium deficiency is quite common in the United States and may
+    be responsible for many cases of reactive hypoglycemia. 200 mcg chromium (as chromium
+    chloride) given twice per day for three months alleviated hypoglycemic symptoms
+    and the glucose nadir two to four hours after a glucose load.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

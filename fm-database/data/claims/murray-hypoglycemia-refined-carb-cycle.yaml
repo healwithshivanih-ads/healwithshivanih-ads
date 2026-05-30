@@ -1,0 +1,45 @@
+slug: murray-hypoglycemia-refined-carb-cycle
+statement: 'Reactive hypoglycemia is a complex symptom set caused by faulty carbohydrate
+  metabolism induced almost always by a diet too high in refined sugars and processed
+  carbohydrates. Mechanism: refined carbs cause rapid glucose spike → excessive insulin
+  secretion → reactive blood-sugar crash 2-4 hours later → adrenaline + cortisol release
+  to mobilise glucose → symptoms (dizziness, headache, blurred vision, blunted mental
+  acuity, emotional instability, confusion, anxiety, irritability). The same pattern
+  over time develops into metabolic syndrome → insulin resistance → type 2 diabetes.
+  Foundation treatment: eliminate refined carbohydrates + sugar, eat low-glycaemic-load
+  meals, frequent small portions, avoid alcohol.'
+evidence_tier: strong
+rationale: Well-established carbohydrate physiology. Mechanism — insulin overshoot
+  in response to rapid glucose rise drives the crash. Connection to hypoglycaemia-driven
+  psychiatric symptoms + violent/impulsive behaviour documented in multiple controlled
+  studies. Migraine trigger connection also well-documented.
+coaching_translation: 'Reactive hypoglycaemia (the 2-4 hours after meals crash with
+  shakiness, brain fog, irritability) is almost always driven by refined carbs and
+  sugar. The cycle: spike → insulin overshoot → crash → adrenaline + cortisol → symptoms.
+  Same pattern over years becomes insulin resistance + type 2 diabetes. Fix: eliminate
+  refined carbs, eat low-GL meals every 3-4 hours, skip alcohol. Often resolves anxiety,
+  panic attacks, migraines, and irritability that have been mis-attributed to other
+  causes.'
+caveats:
+- 4-week strict trial before judging effect
+- Address concurrent caffeine + alcohol use
+- Often resolves anxiety, migraines, behaviour issues mis-attributed elsewhere
+- 5-hour glucose tolerance test gold standard but symptoms-based diagnosis usually
+  adequate
+linked_to_topics:
+- hypoglycemia
+- insulin-resistance
+- prediabetes-metabolic-syndrome
+- prediabetes
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 67 — Hypoglycemia, Treatment Summary pg 1124
+  quote: Reactive hypoglycemia is not a disease; it is simply a complex set of symptoms
+    caused by faulty carbohydrate metabolism induced by an inappropriate diet. Hypoglycemia
+    is a complex set of symptoms caused by faulty carbohydrate metabolism, almost
+    always induced by a diet too high in refined sugars.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

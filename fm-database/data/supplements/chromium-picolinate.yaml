@@ -25,6 +25,7 @@ linked_to_topics:
 - prediabetes-metabolic-syndrome
 - type-2-diabetes
 - prediabetes
+- hypoglycemia
 linked_to_claims:
 - micronutrient-deficiency-impairs-insulin-receptor-signalling
 - whole-foods-supply-micronutrients-supporting-insulin-sensitivity
@@ -51,7 +52,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 3
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

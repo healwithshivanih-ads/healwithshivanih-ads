@@ -25,6 +25,7 @@ linked_to_topics:
 - type-2-diabetes
 - type-2-diabetes-mellitus
 - prediabetes
+- hypoglycemia
 linked_to_claims:
 - chromium-biotin-combo-may-lower-hba1c
 - chromium-evidence-inconsistent-for-ir
@@ -66,7 +67,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 7
+version: 8
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

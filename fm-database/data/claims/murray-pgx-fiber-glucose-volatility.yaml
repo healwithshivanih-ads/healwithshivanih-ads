@@ -1,0 +1,39 @@
+slug: murray-pgx-fiber-glucose-volatility
+statement: PolyGlycopleX (PGX) — a proprietary highly-viscous soluble fibre blend
+  — at 1,500-5,000 mg before meals significantly reduces post-prandial glucose elevation
+  in a dose-dependent manner, independent of food type. Continuous glucose monitor
+  research showed low-glycaemic diet alone has little effect on glucose volatility,
+  but low-GI diet PLUS PGX dramatically smooths the curve. Generic soluble fibres
+  (glucomannan, psyllium, guar gum) work similarly via slowed gastric emptying and
+  reduced glucose absorption — less viscous than PGX but more affordable and accessible.
+evidence_tier: plausible_emerging
+rationale: Multiple DB-RCTs cited (Lyon-Vuksan series). Mechanism — fibre forms viscous
+  gel slowing gastric emptying + reducing small intestine glucose absorption rate.
+  PGX is a proprietary blend; mechanism is generic to soluble fibre.
+coaching_translation: 'Soluble fibre before meals dramatically smooths blood sugar
+  peaks. PGX is the most-studied (1,500-5,000 mg before meals) but pricey + branded.
+  Generic alternatives that work similarly: glucomannan 1-2 g, psyllium 5-10 g, or
+  guar gum 5 g — in water 15 minutes before meals. Especially helpful for clients
+  with reactive hypoglycaemia, insulin resistance, or weight loss goals.'
+caveats:
+- Take in water 15 minutes before meals
+- Drink plenty of additional water with fibre
+- May affect oral medication absorption (separate by 2 hours)
+- Introduce gradually to avoid bloating
+linked_to_topics:
+- hypoglycemia
+- insulin-resistance
+- type-2-diabetes
+linked_to_supplements:
+- psyllium
+- psyllium-husk
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 67 — Hypoglycemia, pg 1122, 1125
+  quote: Several double-blind studies have shown that PGX reduces after-meal elevations
+    in blood sugar in a dose-dependent manner, independent of the type of food consumed.
+    Typical dosage of PGX is 1,500 to 5,000 mg before meals.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

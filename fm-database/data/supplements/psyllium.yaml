@@ -20,6 +20,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - dyslipidemia
+- hypoglycemia
 linked_to_claims:
 - fiber-psyllium-glucomannan-lowers-ldl-tg
 notes_for_coach: Take with a large glass of water. Must be taken well away from medications
@@ -33,7 +34,7 @@ sources:
 - id: vitaone-cv-cheatsheet
   location: Dyslipidemia Cheatsheet — Section 5
   quote: 'Fiber (psyllium, glucomannan): ↓LDL, ↓TG.'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani
