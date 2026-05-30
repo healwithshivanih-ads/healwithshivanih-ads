@@ -1,0 +1,40 @@
+slug: murray-colon-health-triad
+statement: 'Achieving and maintaining good colon health is straightforward: (1) High-fibre
+  diet (25-50 g/day soluble + insoluble — vegetables, fruits, legumes, whole grains,
+  nuts, seeds), (2) Plenty of water (6-8 glasses/day), (3) Maintain health-promoting
+  microflora (probiotics + prebiotic fibres + diverse plant foods). This triad addresses
+  transit time, stool bulk + water content, and microbiome composition simultaneously.
+  Most chronic constipation and dysbiosis resolves on this foundation alone. Failure
+  to maintain these three is the leading cause of preventable colon-related disease
+  (constipation, diverticulosis, hemorrhoids, colon cancer).'
+evidence_tier: strong
+rationale: Decades of nutritional + microbiome research. Mechanism — fibre provides
+  bulk + SCFA substrate; water maintains stool hydration; microbiome composition determines
+  SCFA production + immune training + bile acid metabolism.
+coaching_translation: 'Colon health is simple — three things consistently maintained:
+  (1) 25-50 g fibre/day from food, (2) 6-8 glasses water, (3) diverse plant foods
+  + occasional probiotic for microbiome diversity. Get these three right and you prevent
+  most chronic colon disease. Get them wrong and you set up constipation, diverticulitis,
+  hemorrhoids, and elevated colon cancer risk.'
+caveats:
+- Increase fibre gradually to avoid bloating
+- 30+ different plant foods per week for microbiome diversity (Tim Spector data)
+- Hydration scales with fibre intake
+- Active IBD flare requires temporary low-fibre approach
+linked_to_topics:
+- constipation
+- ibs-ibd-differentiation
+- ibd
+linked_to_supplements:
+- psyllium
+- psyllium-husk
+- probiotics
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 10 — Digestion, Quick Review pg 237
+  quote: 'Achieving and maintaining good colon health are straightforward: eat a high-fiber
+    diet, drink plenty of water, and maintain health-promoting microflora.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,44 @@
+slug: murray-low-stomach-acid-vs-high
+statement: 'Indigestion symptoms (heartburn, bloating, gas, reflux) are frequently
+  caused by LOW stomach acid (hypochlorhydria) rather than high — particularly in
+  clients over 50, on PPIs/H2 blockers, with H. pylori infection, atrophic gastritis,
+  or chronic stress. Mechanism: insufficient acid allows lower esophageal sphincter
+  relaxation, slow gastric emptying, putrefactive bacteria growth, and impaired protein
+  digestion driving food sensitivities. The conventional ''add antacid'' approach
+  often worsens the underlying problem. Functional medicine approach: AID digestion
+  (Betaine HCl with each protein meal, digestive enzymes, bitters) rather than block
+  it. Baking soda burp test (1/4 tsp in water on empty stomach AM; burp within 3 min
+  = adequate acid) is a simple screening tool.'
+evidence_tier: strong
+rationale: Chronic hypochlorhydria + reflux paradox documented. Mechanism — gastric
+  acid signals lower esophageal sphincter closure; absent signal allows reflux of
+  even small acid amounts. Stomach acid declines ~1% per year after age 30.
+coaching_translation: 'Most reflux + indigestion is actually LOW stomach acid, not
+  high — especially over age 50 or after PPI use. Counterintuitively, ADDING acid
+  (Betaine HCl 500-650 mg with each protein meal) often resolves what antacids couldn''t.
+  The home test: 1/4 tsp baking soda in water first thing AM on empty stomach — burp
+  within 3 minutes = adequate acid. Murray''s approach: AID digestion, don''t block
+  it.'
+caveats:
+- Active ulcer or NSAID use — Betaine HCl contraindicated
+- PPI/H2 blocker tapering is clinician scope
+- H. pylori test before assuming functional hypochlorhydria
+- Atrophic gastritis (autoimmune) is separate clinical entity
+- Start with 1 capsule, titrate up to warmth/burning then back off
+linked_to_topics:
+- autoimmunity-leaky-gut-connection
+- sibo
+linked_to_supplements:
+- betaine-hcl
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 10 — Digestion and Elimination, Quick Review pg 236
+  quote: Indigestion can be attributed to a great many causes, including not only
+    increased secretion of stomach acid but also decreased secretion of stomach acid
+    and other digestive factors and enzymes. The natural approach to chronic indigestion
+    focuses on aiding digestion rather than on blocking the digestive process with
+    antacids.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

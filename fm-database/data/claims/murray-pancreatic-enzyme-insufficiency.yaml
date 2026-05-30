@@ -1,0 +1,38 @@
+slug: murray-pancreatic-enzyme-insufficiency
+statement: 'Common symptoms of pancreatic enzyme insufficiency: abdominal bloating
+  + discomfort, gas, indigestion, passing of undigested food in stool, fatty/floating
+  stools (steatorrhoea), unexplained weight loss, and progressive nutrient deficiencies
+  (especially fat-soluble vitamins A, D, E, K). Coach-recognition: visible undigested
+  food in stool (vegetables, meat fibres, fat droplets) suggests enzyme insufficiency.
+  Pancreatic enzyme replacement (pancreatin 10X USP, 350-750 mg with each meal) restores
+  digestion. Often coexists with hypochlorhydria — both warrant evaluation together.
+  Cholecystectomy patients lose bile-storage capacity making enzyme support particularly
+  valuable.'
+evidence_tier: strong
+rationale: Established gastroenterology. Mechanism — pancreatic lipase + amylase +
+  protease deficiency causes specific malabsorption patterns. Common in cystic fibrosis,
+  chronic pancreatitis, ageing, post-cholecystectomy. Less severe forms underrecognised.
+coaching_translation: If undigested food shows up in your stool, you have gas + bloating
+  after meals, fatty floating stools, or unexplained weight loss + nutrient deficiencies
+  — pancreatic enzymes are likely insufficient. Pancreatin 10X USP 350-750 mg with
+  each meal restores digestion. Particularly relevant after gallbladder removal, with
+  ageing, after chronic stress. Pairs with Betaine HCl when low stomach acid also
+  present.
+caveats:
+- Pancreatin (porcine) — vegetarian alternative is bromelain + papain
+- Active pancreatitis is clinician scope
+- Cystic fibrosis requires high-dose Rx pancreatic enzymes (Creon)
+- Take with the meal (not before or after)
+linked_to_topics:
+- autoimmunity-leaky-gut-connection
+- gallstones
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 10 — Digestion, Quick Review pg 237
+  quote: Common symptoms of pancreatic insufficiency include abdominal bloating and
+    discomfort, gas, indigestion, and the passing of undigested food in the stool.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
