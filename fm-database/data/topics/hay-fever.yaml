@@ -1,0 +1,45 @@
+slug: hay-fever
+display_name: Hay Fever (Allergic Rhinitis)
+aliases:
+- allergic rhinitis
+- pollinosis
+- seasonal allergies
+- perennial allergic rhinitis
+summary: IgE-mediated allergic inflammation of nasal airways and eyes, triggered by
+  inhaled allergens (pollens, dust, mold). Mast cell histamine release drives sneezing,
+  watery discharge, itchy eyes, and nasal congestion. Affects roughly 25% of US adults
+  annually; ragweed is the dominant trigger in North America (~75% of cases). Perennial
+  forms often have food, mold, or dust mite drivers rather than pollen alone.
+common_symptoms:
+- sneezing
+- watery-nasal-discharge
+- itchy-eyes
+- nasal-congestion
+red_flags:
+- anaphylactic-like throat swelling
+- severe asthma exacerbation
+related_topics:
+- food-allergy-ige-mediated
+- asthma
+- chronic-sinusitis
+key_mechanisms:
+- chronic-inflammation
+- leaky-gut
+coaching_scope_notes: Coaches can guide environmental control (HEPA filtration, pollen
+  tracking, nasal irrigation with neti pot, removing carpets/upholstery), elimination
+  of common food allergens that lower allergic threshold, anti-inflammatory diet,
+  and evidence-based bioflavonoid intake (quercetin/EMIQ, apple polyphenols).
+clinician_scope_notes: Sublingual or subcutaneous immunotherapy, RAST blood testing,
+  anaphylaxis risk assessment, prescription antihistamines/steroids, and severe perennial
+  allergy workup require clinician referral.
+evidence_tier: strong
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Hay Fever chapter, p 1003-1008
+  quote: Hay fever (also known as allergic rhinitis and pollinosis) is an allergic
+    inflammation of the nasal airways and eyes. About 25% of the adult US population
+    will experience hay fever symptoms each year.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

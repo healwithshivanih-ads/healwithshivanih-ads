@@ -1,0 +1,22 @@
+slug: anemia-iron-deficiency-impairs-energy-before-anemia
+statement: Anemia is the LAST stage of iron deficiency, not the first. Iron-dependent
+  enzymes involved in energy production and metabolism are impaired long before hemoglobin
+  drops, so fatigue and reduced work capacity show up well before standard CBC turns
+  abnormal. Serum ferritin is the best lab test for body iron stores.
+evidence_tier: strong
+linked_to_topics:
+- iron-deficiency-anemia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Anemia chapter, p 466-467
+  quote: Anemia is the last stage of iron deficiency. Iron-dependent enzymes involved
+    in energy production and metabolism are the first to be affected by low iron levels.
+    Serum ferritin is the best laboratory test for determining body iron stores. It
+    has been clearly demonstrated that even a slight iron deficiency leads to a reduction
+    in physical work capacity and productivity.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors why we order ferritin (not just hemoglobin) on fatigue panels for
+  menstruating women.

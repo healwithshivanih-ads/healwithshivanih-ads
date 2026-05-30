@@ -1,0 +1,24 @@
+slug: sle-dhea-reduces-flares-corticosteroid-dose
+statement: In double-blind trials, DHEA 200 mg/day in SLE patients reduced lupus flares
+  (3 vs 8 in placebo), allowed a 30% reduction in corticosteroid dose, and improved
+  quality of life scores. The defect in male sex hormone (androgen) production typical
+  of SLE is the proposed mechanism. Dosing this high requires physician monitoring
+  — common side effect is mild acne.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- systemic-lupus-erythematosus
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: SLE chapter, p 1534-1535
+  quote: In the patients receiving DHEA, the average dosage of corticosteroids dropped
+    by 30% while the dosage rose by 40% in the placebo group. There were three lupus
+    flare-ups in the DHEA group, compared with eight in the placebo group. A larger
+    double-blind trial involving 191 patients with SLE confirmed that DHEA supplementation
+    could be associated with a modest stabilization of disease and reduction in steroid
+    dose.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach can flag DHEA as worth a clinician conversation for SLE clients on
+  chronic steroids.

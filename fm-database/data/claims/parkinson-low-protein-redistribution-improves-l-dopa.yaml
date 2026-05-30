@@ -1,0 +1,24 @@
+slug: parkinson-low-protein-redistribution-improves-l-dopa
+statement: L-dopa absorption is delayed or diminished by dietary amino acids. Shifting
+  most daily protein intake to dinner (eliminating protein from breakfast and lunch,
+  keeping total daily protein under 50g for men and 40g for women) reduces tremors
+  and improves Parkinson's symptoms during waking hours. Patients on L-dopa should
+  take medication with a high-carbohydrate meal.
+evidence_tier: strong
+linked_to_topics:
+- parkinson-disease
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Parkinson chapter, p 1366
+  quote: A low-protein diet can enhance the action of L-dopa therapy. The usual recommendation
+    is to eliminate as much protein as possible from breakfast and lunch while eating
+    a typical dinner, so that total daily protein intake is less than 50 g per day
+    for men and 40 g per day for women. Since L-dopa absorption is delayed or diminished
+    by the amino acids in protein, patients on L-dopa should take their medication
+    with a high-carbohydrate meal.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific meal-timing intervention that meaningfully improves quality of
+  life for L-dopa users.

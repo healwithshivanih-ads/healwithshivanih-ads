@@ -1,0 +1,25 @@
+slug: otitis-media-cows-milk-allergy-primary-driver
+statement: 85 to 93% of children with chronic otitis media have allergies — 16% to
+  inhalants only, 14% to food only, and 70% to both. Cow's milk is among the most
+  commonly implicated foods. Allergic swelling of the eustachian tube and the Toynbee
+  phenomenon (swallowing with mouth and nose closed) drive middle-ear fluid accumulation.
+  Eliminating wheat, egg, peanut, corn, citrus, chocolate, and dairy during the first
+  nine months can prevent food allergy development.
+evidence_tier: strong
+linked_to_topics:
+- otitis-media
+- food-allergy-ige-mediated
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Otitis Media chapter, p 885
+  quote: The role of allergies as the major cause of chronic otitis media has been
+    firmly established in the research literature. Most studies show that 85 to 93%
+    of these children have allergies. The allergic reaction causes blockage of the
+    eustachian tube by two mechanisms — inflammatory swelling of the mucous membranes
+    lining the tube and inflammatory swelling of the nose.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors why a dairy-elimination trial is reasonable before another round
+  of antibiotics or tubes.

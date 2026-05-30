@@ -1,0 +1,23 @@
+slug: otitis-media-watchful-waiting-80pct-resolution
+statement: 80% of children with acute otitis media achieve spontaneous resolution
+  within 2 to 14 days without antibiotics. Three meta-analyses found no significant
+  difference in clinical course between antibiotic treatment and placebo. The wait-and-see
+  approach (filling a safety prescription only if no improvement in 2 days) reduced
+  antibiotic use by 31%.
+evidence_tier: strong
+linked_to_topics:
+- otitis-media
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Otitis Media chapter, p 882-883
+  quote: Three meta-analyses independently found that approximately 80% of children
+    with acute otitis media had spontaneous relief within 2 to 14 days. In one study
+    the parents of children with acute otitis media were given a safety prescription
+    of antibiotics to be filled only if there was no improvement within two days.
+    This wait-and-see method reduced antibiotic use by 31%.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Empowers parents to push back on reflexive antibiotic prescribing and reduce
+  gut-microbiome disruption.

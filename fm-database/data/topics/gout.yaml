@@ -1,0 +1,49 @@
+slug: gout
+display_name: Gout
+aliases:
+- gouty arthritis
+- urate arthropathy
+- hyperuricemia with arthritis
+summary: Inflammatory arthritis driven by deposition of monosodium urate crystals
+  in joints, tendons, and kidneys when serum uric acid exceeds saturation point. First
+  attack classically affects the big toe overnight. Risk rises sharply above 9 mg/dL
+  serum uric acid. Strongly tied to obesity, metabolic syndrome, alcohol (especially
+  beer), fructose, purine-rich foods (organ meats, anchovies, sardines), and diuretic
+  use. 90% of cases are primary; 10% secondary to cell turnover, kidney disease, or
+  drugs.
+common_symptoms:
+- joint-pain
+- intense-big-toe-pain
+- fever
+- chills
+red_flags:
+- recurrent kidney stones with renal impairment
+- chronic tophaceous gout with deformity
+related_topics:
+- metabolic-syndrome
+- insulin-resistance
+- kidney-stones
+- obesity
+key_mechanisms:
+- chronic-inflammation
+- insulin-resistance
+coaching_scope_notes: Coaches can support low-purine alkaline-forming diet (less organ
+  meat, anchovies, beer, hard liquor; more cherries, vegetables, complex carbs), fructose
+  reduction, weight loss, hydration, and identifying trigger foods. Cherry intake
+  is the most studied food intervention.
+clinician_scope_notes: Acute gout management with colchicine or NSAIDs, urate-lowering
+  therapy (allopurinol, febuxostat, probenecid), serum uric acid monitoring, and renal
+  function assessment require clinician oversight.
+evidence_tier: strong
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Gout chapter, p 982-987
+  quote: Gout is a common type of arthritis caused by an increased concentration of
+    uric acid in biological fluids. Several dietary factors are known to lead to the
+    development of gout — alcohol, especially beer and hard liquor; high-purine foods;
+    fats; refined carbohydrates, particularly high amounts of fructose; and overconsumption
+    of calories.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

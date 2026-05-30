@@ -1,0 +1,22 @@
+slug: kidney-stones-calcium-supplementation-counterintuitive-prevention
+statement: Counter to conventional advice, calcium supplementation (300 to 1000 mg
+  per day as calcium carbonate, citrate, or malate) actually REDUCES oxalate absorption
+  and excretion, helping prevent calcium-oxalate stone formation. Avoiding calcium
+  in stone-formers is outdated guidance.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- kidney-stones
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Kidney Stones chapter, p 1207
+  quote: Most conventional doctors tell their patients with kidney stones to avoid
+    calcium supplements. However, studies show that calcium supplementation (300 mg
+    per day of calcium, given as calcium carbonate, citrate, or malate) actually reduced
+    oxalate absorption and excretion, and thus would help to prevent stone formation.
+    Taking 300 to 1,000 mg calcium per day may be a useful preventive strategy.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Reverses widely-believed myth; useful when clients ask whether calcium
+  will cause more stones.

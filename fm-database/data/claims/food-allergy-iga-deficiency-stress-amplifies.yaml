@@ -1,0 +1,23 @@
+slug: food-allergy-iga-deficiency-stress-amplifies
+statement: People with food allergies typically have unusually low intestinal secretory
+  IgA, which normally barricades against food antigen entry. Stress further suppresses
+  IgA secretion, so even short-term IgA deficiency predisposes a person to new food
+  allergy development.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- food-allergy-ige-mediated
+linked_to_mechanisms:
+- leaky-gut
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Food Allergy chapter, p 938
+  quote: During stressful times, food allergies tend to develop or become worse. This
+    situation probably results from a stress-induced decrease in secretory IgA levels.
+    People with food allergies typically have unusually low levels of IgA, making
+    them particularly susceptible.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Connects stress management to food-allergy reduction — coaching-actionable
+  lever.

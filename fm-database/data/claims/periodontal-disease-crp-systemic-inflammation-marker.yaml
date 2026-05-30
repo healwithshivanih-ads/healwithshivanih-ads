@@ -1,0 +1,25 @@
+slug: periodontal-disease-crp-systemic-inflammation-marker
+statement: Periodontal disease elevates C-reactive protein and is an independent risk
+  factor for cardiovascular disease. The collagen matrix of the periodontium turns
+  over constantly and is vulnerable when cofactors are missing — protein, zinc, copper,
+  vitamins C, B6, and A. Smoking compounds the damage via free radicals and by depleting
+  vitamin C. Faulty dental work (overhanging fillings, amalgam mercury release) is
+  a common local driver.
+evidence_tier: strong
+linked_to_topics:
+- periodontal-disease
+- cardiovascular-disease
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Periodontal Disease chapter, p 1386-1390
+  quote: Periodontal disease is associated with an elevation in C-reactive protein
+    — an important marker for systemic inflammation and an independent risk factor
+    for heart disease. Tobacco smoking is associated with increased susceptibility
+    to severe periodontal disease and tooth loss. Smoking greatly reduces vitamin
+    C levels.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors why oral health is part of cardiometabolic risk reduction, not
+  just dental hygiene.

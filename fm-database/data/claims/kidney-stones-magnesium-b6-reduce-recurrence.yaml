@@ -1,0 +1,25 @@
+slug: kidney-stones-magnesium-b6-reduce-recurrence
+statement: Magnesium increases the solubility of calcium oxalate and inhibits calcium
+  oxalate and calcium phosphate stone formation. A low urinary magnesium-to-calcium
+  ratio is an independent risk factor. Adding vitamin B6 (which reduces oxalate production
+  and excretion) to magnesium produces a greater effect than magnesium alone in preventing
+  recurrent kidney stones.
+evidence_tier: strong
+linked_to_topics:
+- kidney-stones
+linked_to_supplements:
+- magnesium-citrate
+- vitamin-b6
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Kidney Stones chapter, p 1206-1207
+  quote: Adequate levels of magnesium have been shown to increase the solubility of
+    calcium oxalate and inhibit the formation of both calcium phosphate and calcium
+    oxalate stones. However, when it is used in conjunction with vitamin B6, an even
+    greater effect is noted. Supplemental vitamin B6 is known to reduce the production
+    and urinary excretion of oxalates.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Cheap, safe combo with strong evidence for recurrent oxalate-stone formers.

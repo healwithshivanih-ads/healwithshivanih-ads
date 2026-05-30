@@ -1,0 +1,23 @@
+slug: adhd-mineral-deficiency-magnesium-zinc-iron
+statement: Children with ADHD frequently show low magnesium, zinc, and iron status
+  in serum, red blood cells, and hair. Supplementation trials with each mineral have
+  improved behavior; iron supplementation in non-anemic ADHD children reduced symptoms
+  within 30 days.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- adhd
+linked_to_supplements:
+- magnesium-citrate
+- zinc
+- iron
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: ADHD chapter, p 543-544
+  quote: Magnesium levels in serum, red blood cells, and hair have all been shown
+    to be low in the majority of children with ADHD. Iron supplementation in non-anemic
+    children with ADHD resulted in diminished ADHD symptoms within 30 days.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Basic-mineral screen worth checking before any stimulant escalation conversation.

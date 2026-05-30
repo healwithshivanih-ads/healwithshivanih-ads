@@ -1,0 +1,22 @@
+slug: ms-vitamin-d-deficiency-linked-to-ms-risk
+statement: Low serum 25-hydroxyvitamin D levels are strongly correlated with increased
+  multiple sclerosis risk. MS prevalence rises with distance from the equator, and
+  early vitamin D status (including maternal levels in the third trimester) influences
+  lifetime risk. Moving from a low-MS-risk area to a high-risk area before age 15
+  raises later risk; moving after age 15 preserves the original lower risk.
+evidence_tier: strong
+linked_to_topics:
+- multiple-sclerosis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: MS chapter, p 1281-1282
+  quote: The research is now very clear — low levels of vitamin D, as measured by
+    serum 25-hydroxyvitamin D, are strongly correlated with an increased risk of MS.
+    Early sunlight exposure (which is correlated to serum vitamin D levels) in the
+    first two decades of life influences the risk of developing MS.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors why we check vitamin D and recommend safe sun exposure for any
+  MS-history client.

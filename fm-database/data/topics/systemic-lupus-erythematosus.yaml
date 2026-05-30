@@ -1,0 +1,52 @@
+slug: systemic-lupus-erythematosus
+display_name: Systemic Lupus Erythematosus (SLE)
+aliases:
+- lupus
+- SLE
+- sle
+- drug-induced-lupus
+summary: Systemic autoimmune disease that can affect any organ — heart, joints, skin,
+  lungs, blood vessels, liver, kidneys, nervous system. Marked by relapse-remit cycles
+  (flares). 9 times more common in women than men, peaking in childbearing years (ages
+  15 to 35). Genetic predisposition requires environmental triggers. Defective male
+  sex hormone (androgen) production is a feature, with DHEA supplementation showing
+  benefit in several trials. Drug-induced lupus (DILE) is reversible by stopping the
+  trigger drug (hydralazine, procainamide, isoniazid).
+common_symptoms:
+- joint-pain
+- malar-rash
+- photosensitivity
+- fatigue
+- fever
+red_flags:
+- lupus nephritis with renal impairment
+- CNS lupus (seizures, psychosis)
+- severe hemolytic anemia
+related_topics:
+- rheumatoid-arthritis
+- autoimmune-disease
+- leaky-gut
+- food-allergy-ige-mediated
+key_mechanisms:
+- chronic-inflammation
+- leaky-gut
+coaching_scope_notes: Coaches can support elimination diet (top SLE triggers — wheat,
+  corn, dairy, beef, nightshades, pork, citrus, oats, rye, egg, coffee, peanuts, cane
+  sugar, lamb, soy), vegetarian/Mediterranean diet (lowers arachidonic acid), fish
+  oil intake, stress management, photosensitivity counseling, and gut restoration.
+clinician_scope_notes: DHEA supplementation requires physician monitoring at doses
+  studied (200 mg/day). Hydroxychloroquine, corticosteroids, biologics, kidney function
+  monitoring, flare management, and pregnancy planning are clinician-only.
+evidence_tier: strong
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: SLE chapter, p 1533-1538
+  quote: Systemic lupus erythematosus (SLE) is a systemic autoimmune disease that
+    can affect any part of the body. The general approach to SLE from a naturopathic
+    perspective is nearly identical to the approach to rheumatoid arthritis. Vegetarian
+    diets are often beneficial in the treatment of inflammatory conditions such as
+    SLE.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: endometriosis-trans-fat-risk-omega3-protective
+statement: In 12 years of Nurses Health Study II data, women with the highest trans-fat
+  intake were 48% more likely to be diagnosed with endometriosis, while those with
+  the highest long-chain omega-3 fatty acid intake were 22% less likely. Higher omega-6
+  to omega-3 ratios drive greater interleukin-8 secretion from endometrial cells.
+evidence_tier: strong
+linked_to_topics:
+- endometriosis
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Endometriosis chapter, p 894-895
+  quote: Those women who consumed the most trans-fatty acids were 48% more likely
+    to be diagnosed with endometriosis. In contrast, those women with the highest
+    consumption of long-chain omega-3 fatty acids were 22% less likely to be diagnosed
+    with endometriosis.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors dietary fat counseling for endometriosis clients — trans-fats out,
+  fish-oil in.

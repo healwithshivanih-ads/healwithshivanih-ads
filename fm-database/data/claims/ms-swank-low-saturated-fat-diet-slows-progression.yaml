@@ -1,0 +1,23 @@
+slug: ms-swank-low-saturated-fat-diet-slows-progression
+statement: Roy Swank's decades-long research showed that a sustained low-saturated-fat
+  diet reduces MS attack frequency, slows disease progression, and decreases mortality.
+  Norwegian inland farming communities (high animal fat, high dairy) had higher MS
+  rates than coastal communities (more cold-water fish), pointing to dietary fat pattern
+  as a modifiable factor.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- multiple-sclerosis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: MS chapter, p 1283
+  quote: Roy Swank provided strong evidence over a lifetime of research that a diet
+    low in saturated fats, maintained over a long period of time, tends to retard
+    the disease process, reduce the number of attacks, and decrease mortality. It
+    was discovered that the diets of the farmers were much higher in animal and dairy
+    products than the diets of the coastal dwellers, whose diet featured more cold-water
+    fish.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific dietary pattern with longest-running outcome data for MS clients.

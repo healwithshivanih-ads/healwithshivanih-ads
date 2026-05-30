@@ -1,0 +1,24 @@
+slug: hay-fever-emiq-quercetin-mast-cell-stabilization
+statement: Quercetin stabilizes mast cells and basophils, preventing histamine release.
+  The enzymatically modified isoquercitrin (EMIQ) form is far more bioavailable than
+  standard quercetin. In double-blind trials, 100 mg EMIQ twice daily for 8 weeks
+  during pollen season significantly reduced ocular symptoms of hay fever versus placebo.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hay-fever
+linked_to_supplements:
+- quercetin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Hay Fever chapter, p 1005-1006
+  quote: A highly bioavailable enzymatically modified form of isoquercitrin (EMIQ)
+    has been developed. This form has shown significant effects in improving some
+    of the symptoms of hay fever in double-blind clinical studies. Total ocular score
+    and ocular itching score were significantly lower for the EMIQ group than for
+    the placebo group.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific evidence-based form to recommend over generic quercetin for seasonal
+  allergy clients.

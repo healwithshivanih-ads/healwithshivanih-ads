@@ -1,0 +1,51 @@
+slug: parkinson-disease
+display_name: Parkinson's Disease
+aliases:
+- PD
+- parkinsons
+- idiopathic parkinsonism
+summary: Progressive neurodegenerative disorder marked by tremor, rigidity, slowed
+  movement, postural instability, masked facial expression, and gastrointestinal symptoms
+  (constipation often appears earliest). Cell loss in the substantia nigra reduces
+  dopamine production. Constipation often precedes motor symptoms by years. Underlying
+  drivers include glutathione depletion, mitochondrial dysfunction, oxidative damage,
+  and neurotoxin exposure (pesticides, heavy metals — copper, iron, lead, manganese).
+  By the time motor symptoms are diagnosed, more than 50% of substantia nigra is already
+  destroyed.
+common_symptoms:
+- tremor
+- bradykinesia
+- rigidity
+- constipation
+- masked-face
+- postural-instability
+red_flags:
+- rapid progression with autonomic failure (consider atypical parkinsonism)
+- early dementia
+related_topics:
+- chronic-inflammation
+- mitochondrial-dysfunction
+- detoxification
+key_mechanisms:
+- chronic-inflammation
+- oxidative-stress
+coaching_scope_notes: Coaches can support low-protein redistribution diet (protein
+  at dinner only to preserve L-dopa absorption during waking hours), antioxidant-rich
+  Mediterranean pattern, constipation management, pesticide avoidance (organic produce),
+  CoQ10 use under physician oversight, and movement/balance practices.
+clinician_scope_notes: L-dopa/carbidopa titration, MAO-B inhibitors, deep brain stimulation,
+  gene therapy, and progression monitoring require neurology specialist care. Never
+  recommend stopping or adjusting Parkinson medications.
+evidence_tier: strong
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Parkinson chapter, p 1363-1369
+  quote: Parkinson's disease is the result of damage to the nerves in the area of
+    the brain that is responsible for controlling muscle tension and movement — the
+    substantia nigra of the basal ganglia. The first biochemical abnormality in Parkinson's
+    disease is a decrease in the level of glutathione. By the time Parkinson's disease
+    is typically diagnosed, more than 50% of the substantia nigra has been destroyed.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

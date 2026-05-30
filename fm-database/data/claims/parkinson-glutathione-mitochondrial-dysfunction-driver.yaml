@@ -1,0 +1,26 @@
+slug: parkinson-glutathione-mitochondrial-dysfunction-driver
+statement: The earliest biochemical change in Parkinson's disease is a decrease in
+  glutathione, the brain's primary antioxidant. This makes neurons vulnerable to oxidative
+  damage from environmental toxins. Pesticides, heavy metals (copper, iron, lead,
+  manganese), and well water exposure all share a common mechanism — they deplete
+  glutathione and disrupt mitochondrial function. Total neurotoxin load may matter
+  more than any single exposure.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- parkinson-disease
+linked_to_mechanisms:
+- oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Parkinson chapter, p 1364-1365
+  quote: The first biochemical abnormality in Parkinson's disease is a decrease in
+    the level of glutathione, the brain cell's primary antioxidant. What all of these
+    environmental toxins have in common is that they cause depletion of glutathione
+    and disruption of the mitochondrial function. It may be the total load of neurotoxins
+    — instead of any single agent — that matters.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Mechanistic basis for prioritising organic produce and environmental toxin
+  reduction in PD families.

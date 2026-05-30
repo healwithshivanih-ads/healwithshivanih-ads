@@ -1,0 +1,48 @@
+slug: otitis-media
+display_name: Otitis Media (Ear Infection)
+aliases:
+- ear infection
+- middle ear infection
+- glue ear
+- chronic otitis media with effusion
+- serous otitis media
+summary: Inflammation and fluid accumulation in the middle ear, acute or chronic.
+  Two-thirds of American children experience an episode by age two. The underlying
+  mechanism is eustachian tube obstruction, usually downstream of food allergy (cow's
+  milk most commonly), upper respiratory infection, secondhand smoke, or bottle-feeding
+  while supine. 85 to 93% of children with chronic otitis media show allergy-driven
+  patterns. 70 to 90% of acute cases resolve in 7 to 14 days without antibiotics.
+common_symptoms:
+- earache
+- fever
+- hearing-loss
+- irritability
+red_flags:
+- mastoiditis
+- severe persistent hearing loss
+- meningitis signs
+related_topics:
+- food-allergy-ige-mediated
+- chronic-sinusitis
+- asthma
+key_mechanisms:
+- leaky-gut
+- chronic-inflammation
+coaching_scope_notes: Coaches can support breastfeeding promotion, eliminating common
+  allergenic foods (especially cow's milk, wheat, egg, peanuts, corn, citrus), avoiding
+  bottle-propping, reducing secondhand smoke exposure, and watchful-waiting framing.
+  Discuss xylitol chewing gum and humidification.
+clinician_scope_notes: Antibiotic decisions, myringotomy tube placement, audiology
+  testing, and evaluation of recurrent infections require clinician/ENT referral.
+evidence_tier: strong
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Otitis Media chapter, p 880-885
+  quote: The role of allergies as the major cause of chronic otitis media has been
+    firmly established in the research literature. Most studies show that 85 to 93%
+    of these children have allergies. In most children with acute otitis media (70
+    to 90%) the infection clears up by itself within 7 to 14 days.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

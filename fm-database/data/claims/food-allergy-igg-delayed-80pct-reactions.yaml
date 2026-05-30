@@ -1,0 +1,22 @@
+slug: food-allergy-igg-delayed-80pct-reactions
+statement: Approximately 80% of food allergy reactions are delayed-type IgG and IgG4
+  reactions, occurring more than two hours and sometimes days after exposure. Only
+  10 to 15% of food allergies are classic immediate IgE type I reactions. Delayed
+  reactions are the harder ones to identify clinically without elimination diet or
+  testing.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- food-allergy-ige-mediated
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Food Allergy chapter, p 940
+  quote: It is estimated that 10 to 15% of all food allergies are type I reactions.
+    These responses are of the delayed type, often occurring more than two hours or
+    even days after exposure. It is estimated that 80% of food allergy reactions involve
+    IgG and IgG4.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors why elimination diet beats single-snapshot IgE skin test for chronic-symptom
+  clients.

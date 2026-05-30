@@ -1,0 +1,22 @@
+slug: anemia-b12-absorption-requires-hcl-intrinsic-factor
+statement: Vitamin B12 deficiency is most often a problem of absorption, not intake.
+  B12 must be liberated from food by hydrochloric acid and bound to intrinsic factor
+  (secreted by gastric parietal cells alongside HCl) before ileal absorption. Low
+  stomach acid, PPI use, atrophic gastritis, and pernicious anemia all impair this
+  cascade. Neurological symptoms (numbness, depression, confusion) can appear BEFORE
+  anemia is detectable.
+evidence_tier: strong
+linked_to_topics:
+- b12-folate-anemia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Anemia chapter, p 467-468
+  quote: Vitamin B12 deficiency is most often due to a defect in absorption, not a
+    dietary lack. It appears that a deficiency of vitamin B12 will affect the brain
+    and nervous system before anemia develops.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Critical for older clients on PPIs and metformin where B12 deficiency presents
+  as cognitive change first.
