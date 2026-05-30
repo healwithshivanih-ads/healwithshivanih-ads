@@ -1,0 +1,43 @@
+slug: murray-ibs-multifactorial-fodmap-allergens
+statement: 'Irritable bowel syndrome (IBS) is a multifactorial gut-brain disorder
+  requiring multi-modal treatment: (1) increase dietary fibre, (2) eliminate food
+  allergens/intolerances, (3) eliminate refined sugars, (4) reduce dietary FODMAPs
+  (fermentable oligosaccharides, disaccharides, monosaccharides, and polyols), (5)
+  probiotics, (6) enteric-coated peppermint oil, (7) stress management. No single
+  intervention addresses all IBS — combined approach essential. Effect typically builds
+  over 8-12 weeks. Low-FODMAP diet should be temporary (6-8 weeks elimination + structured
+  reintroduction); long-term strict low-FODMAP disrupts microbiome.'
+evidence_tier: strong
+rationale: Multiple meta-analyses + multi-modal IBS clinical practice. Mechanism —
+  FODMAP fermentation drives gas + osmotic distension; food allergies activate mast
+  cells; dysbiosis disrupts gut-brain signalling; visceral hypersensitivity amplifies
+  sensation.
+coaching_translation: 'IBS isn''t one problem — it''s a cluster needing a multi-pronged
+  attack: more fibre + eliminate food triggers (often dairy, gluten, FODMAPs) + cut
+  refined sugars + probiotics + enteric peppermint oil + stress management. Try a
+  6-8 week low-FODMAP elimination then reintroduce one FODMAP group every 3 days to
+  identify personal triggers. DO NOT stay strict low-FODMAP long-term — it strips
+  your microbiome.'
+caveats:
+- Low-FODMAP elimination temporary (6-8 weeks); structured reintroduction essential
+- Rule out celiac BEFORE going gluten-free
+- Stress is a major driver — psychological work belongs in protocol
+- SIBO can mimic/coexist with IBS — breath test if symptoms refractory
+- Severe symptoms or red flags (weight loss, blood) — clinician workup
+linked_to_topics:
+- ibs-ibd-differentiation
+- sibo
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — Irritable Bowel Syndrome, Treatment Summary pg 1199–1200
+  quote: 'Because IBS represents a health condition caused by many interrelated factors,
+    the best approach is to address each of the following major factors: Increasing
+    dietary fiber, Eliminating foods to which there is an allergy or intolerance,
+    Eliminating refined sugars, Reducing dietary FODMAPs, Taking probiotics, Taking
+    enteric-coated peppermint oil, Controlling psychological components, especially
+    stress.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

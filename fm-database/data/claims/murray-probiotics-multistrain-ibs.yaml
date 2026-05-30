@@ -1,0 +1,37 @@
+slug: murray-probiotics-multistrain-ibs
+statement: 'Multi-strain probiotic supplements containing Lactobacillus and Bifidobacterium
+  species at 5-20 billion CFU/day reduce IBS symptoms in meta-analyses — improving
+  overall symptoms, bloating, and stool consistency. Strain specificity matters: Bifidobacterium
+  infantis 35624 (Align), VSL#3 (multi-strain), and L. plantarum 299v have the most
+  evidence. Saccharomyces boulardii useful particularly in diarrhoea-predominant IBS
+  + post-antibiotic recovery. Effect builds over 4-12 weeks. Higher doses (>20 billion)
+  may worsen bloating initially before improving.'
+evidence_tier: strong
+rationale: Multiple meta-analyses; effect-size modest but consistent. Mechanism —
+  modulation of gut-brain axis via vagal signalling, SCFA production (especially butyrate),
+  tight-junction support, competitive exclusion of pathobionts.
+coaching_translation: 'Multi-strain probiotics at 5-20 billion CFU/day help IBS. Specific
+  evidence-backed strains: Bifidobacterium infantis 35624 (Align), VSL#3 (Visbiome),
+  Lactobacillus plantarum 299v. For diarrhoea-predominant IBS add Saccharomyces boulardii
+  250 mg twice daily. Effect builds over 4-12 weeks; sometimes initial bloating before
+  improvement. Pair with prebiotic fibre.'
+caveats:
+- Strain specificity matters — Align (B. infantis 35624) most-evidenced single-strain
+- Higher doses may worsen bloating initially (titrate up)
+- Spore-based probiotics may be too aggressive for some IBS sub-types
+- Severely immunocompromised — clinician guidance
+linked_to_topics:
+- ibs-ibd-differentiation
+- sibo
+linked_to_supplements:
+- probiotics
+- probiotics-lactobacillus-bifidobacterium
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — IBS, Treatment Summary pg 1200
+  quote: 'Probiotic supplement (multistrain, including species of lactobacillus and
+    bifidobacteria): 5 billion to 20 billion live organisms per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

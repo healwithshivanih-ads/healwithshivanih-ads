@@ -1,0 +1,36 @@
+slug: murray-enteric-peppermint-ibs
+statement: 'Enteric-coated peppermint oil (0.2-0.4 ml twice daily between meals) reduces
+  IBS abdominal pain, bloating, and global symptoms versus placebo across multiple
+  DB-RCTs and meta-analyses. Effect comparable to or better than antispasmodic drugs.
+  Mechanism: menthol is a calcium-channel blocker producing intestinal smooth-muscle
+  relaxation; also has antimicrobial activity against SIBO-associated bacteria. CRITICAL:
+  must be ENTERIC-COATED — non-enteric peppermint oil is destroyed in stomach acid
+  and can cause reflux + worsened symptoms.'
+evidence_tier: strong
+rationale: Cochrane meta-analysis supportive (Khanna 2014). Mechanism — menthol blocks
+  L-type calcium channels in intestinal smooth muscle reducing contraction force.
+  Enteric coating delivers oil to small intestine + colon where it acts.
+coaching_translation: 'Enteric-coated peppermint oil capsules — 0.2-0.4 ml twice daily
+  between meals — is the most-evidenced single supplement for IBS. Works as well as
+  or better than prescription antispasmodics. CRITICAL: must be enteric-coated (the
+  non-coated form causes reflux and makes things worse). Effect within 2-4 weeks.
+  Common products: IBgard, Mintec.'
+caveats:
+- ENTERIC-COATED essential
+- Between meals (food dilutes effect + may break coating)
+- GERD caution (LES relaxation; enteric form usually OK)
+- Peppermint oil + iron supplements - separate by 2 hours
+- Pregnancy avoid therapeutic doses
+linked_to_topics:
+- ibs-ibd-differentiation
+- sibo
+linked_to_supplements:
+- peppermint-oil-enteric
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — IBS, Treatment Summary pg 1200
+  quote: 'Enteric-coated peppermint oil: 0.2 to 0.4 ml twice per day between meals.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
