@@ -16,6 +16,7 @@ take_with_food: optional
 linked_to_topics:
 - sibo
 - gallstones
+- ibs-ibd-differentiation
 linked_to_claims:
 - peppermint-saponins-reduce-methane-sibo
 notes_for_coach: Peppermint contains saponins that act as molecular sponges for excess
@@ -31,7 +32,7 @@ sources:
   quote: These are peppermint and coir-baked white extract. They contain stannins
     and large decollized pleurite structures that acts as molecular sponges for access
     hydrogen and methane.
-version: 2
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

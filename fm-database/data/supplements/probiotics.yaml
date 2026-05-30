@@ -34,6 +34,7 @@ linked_to_topics:
 - autoimmune-dermatitis
 - ibd
 - autoimmune
+- ibs-ibd-differentiation
 linked_to_claims:
 - probiotics-gut-microbiome-detox-support
 - gut-microbiome-diversity-restores-tolerance
@@ -119,7 +120,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 9
+version: 10
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

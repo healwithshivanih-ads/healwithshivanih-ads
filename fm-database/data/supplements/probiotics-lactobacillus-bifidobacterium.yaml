@@ -22,6 +22,7 @@ linked_to_topics:
 - autoimmune-dermatitis
 - ibd
 - autoimmune
+- ibs-ibd-differentiation
 linked_to_claims:
 - probiotic-diversity-essential-for-gut-healing
 - 5rs-re-inoculate-probiotics
@@ -42,7 +43,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 3
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani
