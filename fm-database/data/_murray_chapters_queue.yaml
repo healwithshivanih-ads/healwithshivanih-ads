@@ -33,10 +33,11 @@ chapters:
   - ch: 93
     title: Sports Injuries, Tendinitis, and Bursitis
     body_pg_start: 1511
-    body_pg_end: ~
+    body_pg_end: 1518
     priority: 4
     serves: [cl-005 Hariharan, cl-011 Deepti]
-    status: pending
+    status: ingested
+    batch_id: 20260530T140000-murray-ch93-sports-chat
   - ch: 45
     title: Diabetes
     body_pg_start: 357

@@ -17,10 +17,12 @@ linked_to_topics:
 - chronic-inflammation
 - cardiovascular-disease-prevention
 - metabolic-syndrome
+- tendinopathy
 linked_to_claims:
 - turmeric-is-nf-kb-inhibitor
 - turmeric-downregulates-nf-kappab-upregulates-nrf2
 - turmeric-lowers-blood-sugar-and-hba1c
+- murray-curcumin-bioavailable-forms
 notes_for_coach: Clinician uses 500mg twice daily. Downregulates NF-κB and upregulates
   NRF2. Bioavailability enhanced with piperine (black pepper extract). Anti-inflammatory,
   blood sugar lowering, and HbA1c lowering properties noted.
@@ -40,7 +42,10 @@ sources:
   quote: Turmeric is a beauty. It downregulates NF-kappa B. Turmeric actually lowers
     blood sugar. Turmeric lowers hemoglobin A1Cs, and it lowers inflammation. So if
     I'm going to give turmeric, it's going to be about 500 milligrams twice a day.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
+  quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

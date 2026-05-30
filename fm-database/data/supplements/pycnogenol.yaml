@@ -18,9 +18,11 @@ linked_to_topics:
 - atherosclerosis
 - perimenopause-and-menopause
 - menopause
+- tendinopathy
 linked_to_claims:
 - pycnogenol-adhd-antioxidant-benefit
 - murray-pycnogenol-multi-symptom-perimenopause
+- murray-flavonoids-halve-sports-injury-recovery
 notes_for_coach: 'For ADHD: 1 mg/kg body weight daily. For atherosclerosis/general
   antioxidant: 100 mg daily. Rich in procyanidolic oligomers; broad-spectrum antioxidant.
   Can be used interchangeably with grapeseed extract for antioxidant purposes.'
@@ -37,7 +39,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
+  quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

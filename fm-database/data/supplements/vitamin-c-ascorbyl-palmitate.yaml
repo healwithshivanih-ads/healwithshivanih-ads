@@ -50,6 +50,7 @@ evidence_tier: strong
 linked_to_topics:
 - histamine-intolerance
 - mast-cell-activation-syndrome
+- tendinopathy
 linked_to_mechanisms:
 - histamine-metabolism
 - mast-cell-degranulation
@@ -58,7 +59,12 @@ sources:
   location: MC Stabilizer support
   quote: Ascorbyl Palmitate is a hypoallergenic form of Vitamin C that inhibits histamine
     production.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
+  quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
+version: 3
 status: active
-updated_at: '2024-05-22'
+updated_at: '2026-05-30'
 updated_by: shivani
+linked_to_claims:
+- murray-vitamin-c-collagen-tendon-repair

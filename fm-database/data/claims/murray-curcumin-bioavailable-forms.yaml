@@ -1,0 +1,48 @@
+slug: murray-curcumin-bioavailable-forms
+statement: 'Curcumin matches cortisone and phenylbutazone for anti-inflammatory potency
+  in head-to-head animal studies, with no comparable toxicity. Standard curcumin is
+  poorly absorbed; advanced delivery forms achieve dramatically higher plasma levels
+  — Meriva (curcumin-phosphatidylcholine complex) 5× regular curcumin, BCM-95 standardised
+  oleoresin, and Theracurmin (colloidal nanoparticle) up to 27× regular curcumin.
+  Effective tendinitis/bursitis dosing: Meriva 500–1,000 mg twice daily, BCM-95 750–1,500
+  mg twice daily, or Theracurmin 300 mg one to three times daily.'
+evidence_tier: strong
+rationale: Multi-decade research base + multiple bioavailability head-to-head pharmacokinetic
+  studies. Mechanism — NF-κB inhibition + COX-2 + 5-LOX + STAT3 modulation. Clinical
+  equivalence to ibuprofen demonstrated in knee osteoarthritis trials (Kuptniratsaikul
+  2014 n=367). Critical FM-translation point — generic curcumin powder fails because
+  of poor absorption; the chosen form matters.
+coaching_translation: Curcumin works as well as ibuprofen for joint/tendon inflammation
+  without the side effects — but only if you use a properly bioavailable form. Plain
+  turmeric powder doesn't make it into your bloodstream in meaningful amounts. Look
+  for Meriva, BCM-95, or Theracurmin on the label. Effective dose depends on the form;
+  cheaper 'standardised 95% curcumin' without a delivery system is largely wasted
+  money.
+caveats:
+- Plain curcumin powder is poorly absorbed; specific delivery forms (Meriva / BCM-95
+  / Theracurmin) required for clinical effect
+- Mild antiplatelet — caution + anticoagulants + 7 days before surgery
+- Iron chelator — caution in iron deficiency
+- Avoid in active gallbladder disease (cholagogue effect)
+- Pregnancy — avoid therapeutic doses
+linked_to_topics:
+- tendinopathy
+- chronic-inflammation
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+- turmeric
+- turmeric-root
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis, pg 1514–1515
+  quote: Curcumin is as effective as cortisone or the potent anti-inflammatory drug
+    phenylbutazone in animal studies. Studies with another advanced form of curcumin,
+    Theracurmin, shows even greater absorption (e.g., 27 times greater than regular
+    curcumin).
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

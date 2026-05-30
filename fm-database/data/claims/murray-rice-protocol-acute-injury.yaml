@@ -1,0 +1,41 @@
+slug: murray-rice-protocol-acute-injury
+statement: RICE — Rest, Ice, Compression, Elevation — applied immediately after acute
+  sports injury within the first 24–48 hours, decreases swelling, bleeding, and tissue
+  damage. Application detail matters — ice for 30 minutes followed by 15 minutes off
+  (recirculation window), towel between skin and ice pack, compression bandage tight
+  enough to limit swelling but not impair circulation, injured part above heart level.
+  After 48 hours, transition to alternating hot/cold + gradually increasing range-of-motion
+  + stretching to prevent adhesions.
+evidence_tier: strong
+rationale: 'Long-standing first-aid orthopaedic standard. Note: more recent reviews
+  (Mirkin 2014 and others) have questioned ice''s role in healing — it may slow inflammatory
+  resolution and recovery slightly. Modern PEACE & LOVE protocol replaces ice with
+  optimal loading. Murray''s RICE remains the accessible mainstream framework worth
+  knowing; coach should mention the emerging alternative.'
+coaching_translation: 'For the first 24-48 hours after a sprain or strain: Rest the
+  area, Ice for 30 minutes followed by 15 minutes off (towel between skin and ice),
+  Compression bandage (snug not tight), Elevation above heart. After 48 hours start
+  gentle movement to prevent stiffness. Newer research questions whether ice helps
+  OR hinders healing — many sports physiotherapists now use PEACE & LOVE protocol
+  instead. For severe pain, joint injury, or anything lasting > 2 weeks: see a doctor.'
+caveats:
+- Newer evidence suggests prolonged ice may slow inflammatory resolution
+- PEACE & LOVE (Protect, Elevate, Avoid anti-inflammatories, Compress, Educate / Load,
+  Optimism, Vascularisation, Exercise) is the current physio-evidence successor
+- Severe pain, joint injury, loss of function, persistent > 2 weeks = doctor referral
+- Don't ice for more than 20-30 min continuous (tissue damage)
+linked_to_topics:
+- tendinopathy
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Diagnosis and management of significant injury is clinical scope.
+  Coach role — education on first aid + referral.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis, pg 1512
+  quote: 'After an injury or sprain, immediate first aid is very important. The acronym
+    RICE summarizes the approach: Rest, Ice, Compress, Elevate.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

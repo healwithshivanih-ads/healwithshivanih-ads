@@ -1,0 +1,40 @@
+slug: murray-vitamin-c-collagen-tendon-repair
+statement: Vitamin C deficiency causes defective formation and maintenance of tendon,
+  ligament, and bursal tissue because vitamin C is an obligate cofactor for prolyl
+  and lysyl hydroxylases — the enzymes that hydroxylate proline + lysine residues
+  in collagen, enabling stable triple-helix formation. Therapeutic dose for sports
+  injury and tendinopathy 500–1,000 mg one to three times daily, ideally with bioflavonoids
+  for synergy.
+evidence_tier: strong
+rationale: Vitamin C as a collagen cofactor is well-established biochemistry. The
+  clinical translation — supplementing during active injury accelerates repair — has
+  decades of nutrient evidence behind it. Subclinical scurvy + low vitamin C status
+  is more common in modern Western diets than usually recognised. Pairs with bioflavonoids
+  (Murray's combined recommendation) for additive collagen-protective effect.
+coaching_translation: Vitamin C is structural — it literally builds the collagen triple
+  helix that makes up tendons, ligaments, and bursae. During active injury or chronic
+  tendinopathy, take 500-1,000 mg one to three times daily with food. Add bioflavonoids
+  (or eat the whole citrus including pith) for stronger effect. Bowel-tolerance method
+  — increase until loose stools, then back off.
+caveats:
+- Split doses across the day (vitamin C plasma half-life ~30 minutes)
+- Bowel tolerance dose-limits
+- Mild oxalate effect — caution + history of calcium oxalate kidney stones
+- Liposomal or buffered forms better tolerated at higher doses
+linked_to_topics:
+- tendinopathy
+linked_to_supplements:
+- vitamin-c
+- vitamin-c-ascorbyl-palmitate
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis, pg 1512–1513
+  quote: Vitamin C plays a major role in the prevention and repair of injuries. Deficiency
+    of vitamin C is associated with defective formation and maintenance of tendon
+    and bursal tissues.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

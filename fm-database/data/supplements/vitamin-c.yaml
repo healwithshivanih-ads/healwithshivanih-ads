@@ -72,6 +72,7 @@ linked_to_topics:
 - diabetic-neuropathy
 - diabetic-retinopathy
 - essential-hypertension
+- tendinopathy
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - oxidative-stress-from-toxicants
@@ -94,6 +95,7 @@ linked_to_claims:
 - niacin-and-vitamin-c-reduce-lpa-35-27pct
 - vitamin-c-reduces-sorbitol-accumulation
 - vitamin-c-500mg-lowers-bp-5mmhg
+- murray-vitamin-c-collagen-tendon-repair
 notes_for_client: Vitamin C helps protect blood vessels from oxidative damage and
   gently lowers blood pressure. Three 500 mg doses spread through the day is a good
   target.
@@ -158,9 +160,12 @@ sources:
   location: Therapeutic Considerations / Vitamin C
   quote: The higher the intake of vitamin C, the lower the BP. Daily dose of 500 mg
     produces the same benefit as higher doses (1000 or 2000 mg q.d.).
-version: 20
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
+  quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
+version: 21
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - vitamin-c-ascorbic-acid

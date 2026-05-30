@@ -18,8 +18,11 @@ take_with_food: optional
 linked_to_topics:
 - cardiometabolic-health
 - phytonutrient-dense-diet
+- tendinopathy
+- chronic-inflammation
 linked_to_claims:
 - phytonutrient-smoothies-support-cardio-and-brain-health
+- murray-curcumin-bioavailable-forms
 notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Control
   Smoothie. Fresh or ground form used. Bioavailability enhanced by pairing with black
   pepper (piperine); toolkit does not specify this but coaches may suggest it.
@@ -31,9 +34,12 @@ sources:
 - id: vitaone-cardiometabolic-toolkit
   location: Phytonutrient Smoothie Recipes — Brain Smoothie
   quote: ½ to 1 teaspoon turmeric, ground
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 93 — Sports Injuries, Tendinitis, and Bursitis
+  quote: Natural treatment for tendinitis, bursitis, and sports injury recovery.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: likely_safe
