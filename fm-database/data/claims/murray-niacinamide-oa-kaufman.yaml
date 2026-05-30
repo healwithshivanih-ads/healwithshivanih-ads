@@ -1,0 +1,38 @@
+slug: murray-niacinamide-oa-kaufman
+statement: 'Niacinamide (vitamin B3 amide form) at 1,000 mg three times daily — pioneered
+  by Dr. William Kaufman in the 1940s-50s — improves joint mobility and reduces pain
+  in osteoarthritis. Modern small RCTs confirmed benefit. Mechanism: NAD+ precursor
+  effects on chondrocyte metabolism + possible immune-modulation. CRITICAL: requires
+  medical supervision with regular liver function monitoring at this dose — hepatotoxicity
+  risk increases above 2 g/day. Adds to the FM OA protocol when glucosamine + curcumin
+  + SAM-e insufficient.'
+evidence_tier: plausible_emerging
+rationale: Kaufman 1940s clinical observation series + Jonas 1996 confirmatory RCT.
+  Mechanism — NAD+ precursor effects on sirtuin-mediated chondrocyte metabolism +
+  PARP-mediated DNA repair. Higher doses than typical anti-pellagra dose.
+coaching_translation: 'For stubborn osteoarthritis after trying glucosamine + curcumin
+  + SAM-e, niacinamide 1,000 mg three times daily has Kaufman''s 1940s + modern trial
+  evidence. CRITICAL: needs liver function monitoring with the prescriber — this is
+  a high dose with hepatotoxicity risk. Coordinate with physician; not a coach-initiated
+  supplement.'
+caveats:
+- REQUIRES medical supervision + liver enzyme monitoring
+- Hepatotoxicity risk above 2 g/day
+- Not for clients with existing liver disease
+- Niacinamide (amide form) NOT niacin (no flushing)
+- Add only after glucosamine + curcumin + SAM-e tried
+linked_to_topics:
+- osteoarthritis
+linked_to_supplements:
+- niacinamide
+out_of_scope_notes: 1g tid niacinamide requires physician oversight + LFT monitoring.
+  Coach role — education + ensure prescriber is involved.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1324
+  quote: 'Niacinamide: 1,000 mg three times per day (under medical supervision; liver
+    enzymes must be regularly checked).'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

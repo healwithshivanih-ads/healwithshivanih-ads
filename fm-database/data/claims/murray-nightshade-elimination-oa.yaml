@@ -1,0 +1,39 @@
+slug: murray-nightshade-elimination-oa
+statement: Eliminating nightshade family plants (Solanaceae — tomatoes, potatoes,
+  eggplant, peppers, paprika, cayenne, tobacco) produces dramatic improvement in many
+  osteoarthritis patients. The mechanism involves solanine alkaloids that inhibit
+  cholinesterase, increase muscle stiffness, and may interfere with cartilage regeneration
+  in susceptible individuals. Try a strict 3-month elimination trial; only 10-20%
+  of OA patients respond strongly, but those who do experience significant joint pain
+  relief that returns rapidly on reintroduction.
+evidence_tier: plausible_emerging
+rationale: Norman Childers 1970s observational research + decades of clinical reports.
+  Mechanism — solanine alkaloid cholinesterase inhibition; calcitriol disruption.
+  Not all OA patients respond, but the responders show dramatic effect; cheap and
+  reversible intervention worth trying.
+coaching_translation: 10-20% of arthritis patients dramatically improve when they
+  cut out nightshades — tomatoes, potatoes, eggplant, peppers (including chilli, capsicum,
+  paprika, cayenne). Try a strict 3-month elimination then reintroduce one at a time.
+  If your joint pain returns with reintroduction, you're a responder. The solanine
+  alkaloids in these plants interfere with joint metabolism in susceptible people.
+caveats:
+- Only 10-20% of OA patients respond — but those who do, dramatically
+- 3-month strict trial; reintroduction confirms responder status
+- Nutritionally challenging in some cuisines (Indian, Italian, Mexican)
+- Sweet potato, yam are NOT nightshades (safe)
+- Smokers should consider tobacco as the nightshade contributor
+linked_to_topics:
+- osteoarthritis
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1321, 1323
+  quote: One of the most effective dietary strategies in osteoarthritis is eliminating
+    foods from the family Solanaceae (nightshade family). Some people have reported
+    benefits by eliminating plants of the Solanaceae family (tomatoes, potatoes, eggplant,
+    peppers, etc.).
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

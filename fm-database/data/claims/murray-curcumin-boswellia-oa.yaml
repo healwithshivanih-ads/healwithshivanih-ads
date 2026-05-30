@@ -1,0 +1,44 @@
+slug: murray-curcumin-boswellia-oa
+statement: Bioavailable curcumin (Meriva 500-1,000 mg twice daily, BCM-95 750-1,500
+  mg twice daily, OR Theracurmin 300 mg one to three times daily) plus Boswellia serrata
+  extract (equivalent 400 mg boswellic acids three times daily) are Murray's headline
+  anti-inflammatory botanicals for osteoarthritis. Two DB-RCTs of Meriva specifically
+  show meaningful WOMAC pain + function improvements equivalent to or better than
+  NSAIDs without GI toxicity. Boswellia separately inhibits 5-LOX (the leukotriene
+  pathway involved in cartilage degradation). The Meriva-vs-celecoxib head-to-head
+  trial showed comparable pain relief with significantly reduced rescue analgesic
+  use.
+evidence_tier: strong
+rationale: 'Multiple DB-RCTs cited for both. Mechanism — curcumin: NF-κB + COX-2 inhibition;
+  boswellia: 5-LOX inhibition. Bioavailable formulations are make-or-break for curcumin
+  clinical effect.'
+coaching_translation: Curcumin + boswellia is the natural medicine equivalent of NSAID
+  + COX-2 inhibitor for osteoarthritis — without the GI bleeding or kidney damage.
+  Use BIOAVAILABLE curcumin (Meriva, BCM-95, or Theracurmin) + Boswellia 400 mg boswellic
+  acids 3× daily. Effect builds over 4-8 weeks. Stack with glucosamine + fish oil
+  for the full natural OA protocol.
+caveats:
+- Bioavailable curcumin form essential
+- Mild antiplatelet effect of both
+- Pause before surgery
+- Pregnancy avoid therapeutic doses
+- Effect builds 4-8 weeks
+linked_to_topics:
+- osteoarthritis
+- tendinopathy
+- rheumatoid-arthritis
+- chronic-inflammation
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+- boswellia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1324
+  quote: 'Curcumin: Meriva: 500 to 1,000 mg twice daily. BCM95 Complex: 750 to 1,500
+    mg twice daily. Theracurmin: 300 mg one to three times daily. Boswellia extract:
+    equivalent of 400 mg boswellic acids three times per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

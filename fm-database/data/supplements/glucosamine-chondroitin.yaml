@@ -16,6 +16,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - knee-pain
+- osteoarthritis
 linked_to_claims:
 - collagen-glucosamine-chondroitin-cartilage
 notes_for_coach: 'Standard dosing: 1500 mg glucosamine sulfate + 1200 mg chondroitin
@@ -30,7 +31,7 @@ sources:
 - id: vitaone-nutrition-cheatsheet
   location: Knee Pain Cheatsheet
   quote: Collagen peptides, MSM, Glucosamine + Chondroitin, Vitamin D3 + K2
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

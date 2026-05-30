@@ -1,0 +1,41 @@
+slug: murray-glucosamine-sulfate-oa-superior-to-nsaid
+statement: Glucosamine sulfate at 1,500 mg/day produces significantly better results
+  than NSAIDs, placebo, OR acetaminophen for osteoarthritis pain and inflammation
+  across multiple DB-RCTs — AND unlike NSAIDs, it appears to slow disease progression
+  (modifies cartilage matrix degradation rather than just blocking pain). Higher doses
+  (up to 3,000 mg/day) may be necessary for obese individuals, those on diuretics,
+  athletes, or anyone subjecting joints to greater wear. Effect window 4-8 weeks.
+  Glucosamine SULFATE specifically — hydrochloride form has weaker evidence. Add SAM-e
+  if no benefit after 4-6 weeks; then hyaluronic acid; then niacinamide.
+evidence_tier: strong
+rationale: Multiple meta-analyses including the Rotta-funded GAIT trial (though commercially
+  funded methodology critiqued). Mechanism — glucosamine is a precursor for glycosaminoglycans
+  + proteoglycans in cartilage matrix; bioavailable orally; preferred substrate over
+  de novo synthesis.
+coaching_translation: Glucosamine SULFATE 1,500 mg/day works better than NSAIDs for
+  arthritis pain in studies — AND it actually protects cartilage rather than just
+  numbing pain. Effect builds over 4-8 weeks. Higher doses (3,000 mg) for heavier
+  clients, diuretic users, athletes. If glucosamine alone isn't enough after 4-6 weeks,
+  add SAM-e 200-400 mg three times daily.
+caveats:
+- Glucosamine SULFATE (not hydrochloride)
+- Shellfish allergy — some products derived from shellfish; vegan glucosamine available
+- Effect builds over 4-8 weeks
+- Mild blood glucose effect — monitor in diabetes meds
+- Pair with chondroitin only modestly synergistic; glucosamine alone often sufficient
+linked_to_topics:
+- osteoarthritis
+- tendinopathy
+linked_to_supplements:
+- glucosamine
+- glucosamine-chondroitin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, Treatment Summary pg 1321, 1324
+  quote: 'Numerous double-blind studies have shown that glucosamine produces much
+    better results compared with NSAIDs, placebos, or acetaminophen in relieving the
+    pain and inflammation of osteoarthritis. Glucosamine sulfate: 1,500 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

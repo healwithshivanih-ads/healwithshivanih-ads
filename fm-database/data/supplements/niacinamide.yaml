@@ -17,6 +17,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - type-1-diabetes-mellitus
+- osteoarthritis
 linked_to_claims:
 - niacinamide-prolongs-t1dm-remission
 - murray-niacinamide-preserves-t1-beta-cells
@@ -36,7 +37,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

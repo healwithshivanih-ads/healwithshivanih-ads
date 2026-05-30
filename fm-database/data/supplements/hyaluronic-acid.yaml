@@ -1,0 +1,51 @@
+slug: hyaluronic-acid
+display_name: Hyaluronic Acid (Oral)
+aliases:
+- HA
+- sodium hyaluronate
+- hyaluronan
+category: other
+forms_available:
+- capsule
+- tablet
+typical_dose_range:
+  capsule:
+    min: 100
+    max: 200
+    unit: mg
+timing_options:
+- on_empty_stomach
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- osteoarthritis
+- tendinopathy
+linked_to_mechanisms: []
+notes_for_coach: 'Murray dose 100-200 mg/day oral; add when glucosamine alone insufficient.
+
+  Low-molecular-weight HA preferred for absorption. Effect on cartilage hydration
+  +
+
+  synovial fluid viscosity. Also benefits skin hydration as bonus effect.
+
+  '
+notes_for_client: 'Oral hyaluronic acid 100-200 mg daily supports joint cushioning
+  + skin hydration.
+
+  Take on empty stomach. Effect on joints builds over 8-12 weeks.
+
+  '
+evidence_tier: plausible_emerging
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy (insufficient data)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis
+  quote: 'Hyaluronic acid: 100 to 200 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
