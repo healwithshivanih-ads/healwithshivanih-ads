@@ -1,0 +1,43 @@
+slug: murray-abdominal-fat-adipokine-vicious-cycle
+statement: 'Abdominal (visceral) fat is not metabolically inert storage — it actively
+  secretes adipokines (leptin, adiponectin, TNF-α, IL-6) that drive insulin resistance,
+  chronic inflammation, AND increased appetite. This creates a self-perpetuating vicious
+  cycle: abdominal fat → altered adipokines → insulin resistance + appetite increase
+  → more abdominal fat → worse adipokine profile. Breaking this cycle requires intervention
+  at MULTIPLE points simultaneously — caloric reduction alone often fails because
+  hormonal drivers persist. Effective interventions: insulin-sensitivity supports
+  (chromium, ALA, berberine), inflammation reduction (omega-3, curcumin), appetite-pattern
+  interventions (fibre, time-restricted eating), and exercise (especially resistance
+  training).'
+evidence_tier: strong
+rationale: Decades of obesity-metabolism research. Mechanism — visceral adipocytes
+  secrete different adipokine profile than subcutaneous; insulin resistance + inflammation
+  + appetite dysregulation are mutually reinforcing.
+coaching_translation: 'Belly fat isn''t just stored energy — it''s an active inflammatory
+  gland that drives insulin resistance AND increases appetite. The vicious cycle:
+  belly fat creates the hormones that create more belly fat. Why caloric restriction
+  alone often fails — you have to break the cycle at multiple points: insulin-sensitivity
+  (chromium, ALA, berberine), inflammation (omega-3, curcumin), appetite pattern (fibre,
+  time-restricted eating), AND exercise (especially resistance).'
+caveats:
+- Visceral fat (waist circumference) more important than total weight
+- Time-restricted eating + intermittent fasting address insulin + appetite
+- Resistance training preserves muscle during weight loss (preventing rebound)
+- Sleep quality + cortisol drive belly fat independently
+- Rapid weight loss diets fail because they don't address adipokine dysregulation
+linked_to_topics:
+- insulin-resistance
+- prediabetes
+- chronic-inflammation
+- atherogenic-dyslipidemia
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 16 — Obesity and Weight Management, Quick Review pg 385
+  quote: As abdominal fat accumulates it leads to alterations in adipokines that ultimately
+    promote insulin resistance and an increased appetite, thereby adding more abdominal
+    fat.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

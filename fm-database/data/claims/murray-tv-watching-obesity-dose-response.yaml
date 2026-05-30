@@ -1,0 +1,39 @@
+slug: murray-tv-watching-obesity-dose-response
+statement: 'Television watching shows a dose-response relationship with obesity onset
+  — the more TV watched, the greater the degree of obesity. Mechanism: TV viewing
+  combines (1) sedentary behaviour replacing physical activity, (2) reduced metabolic
+  rate during viewing (lower than even sitting reading), (3) snacking + emotional
+  eating during programs, (4) food advertising exposure driving consumption, (5) reduced
+  sleep quality from evening screen exposure disrupting melatonin. Modern equivalent
+  extends to all screen-based passive entertainment (streaming, social media scrolling,
+  video games, phone use). Limit recreational screen time to <2 hours/day for weight
+  management.'
+evidence_tier: strong
+rationale: Multiple cohort studies; mechanism multifactorial. Modern application extends
+  beyond TV to all passive screen consumption. Dose-response makes intervention straightforward
+  — every hour reduced helps.
+coaching_translation: 'TV watching causes obesity in dose-response fashion — more
+  TV = more obesity. The mechanism combines: sedentary behaviour, low metabolic rate
+  during viewing, snacking habits triggered by shows, food advertising, and disrupted
+  sleep from evening screen exposure. Modern equivalent: ALL recreational screen time
+  (streaming, social media, video games, phone scrolling). Limit recreational screen
+  time to <2 hours/day for weight management.'
+caveats:
+- Modern application includes ALL passive screen time
+- Active screen use (working, learning) different from passive consumption
+- Evening blue light specifically disrupts melatonin + sleep
+- Replace screen time with movement, social connection, hobby
+linked_to_topics:
+- insulin-resistance
+- sleep-quality
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 16 — Obesity and Weight Management, Quick Review pg 385
+  quote: 'Television watching has been demonstrated to be linked to the onset of obesity,
+    and there is a dose-related effect: the more TV watched, the greater the degree
+    of obesity.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

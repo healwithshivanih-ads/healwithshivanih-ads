@@ -1,0 +1,45 @@
+slug: murray-5htp-chromium-fiber-weight-stack
+statement: 'Murray''s nutritional-supplement weight-management stack: (1) PGX (or
+  generic soluble fibre) 1.5-5 g before meals — reduces glycemic load + caloric absorption
+  + satiety, (2) Chromium 200-400 mcg/day — improves insulin sensitivity + reduces
+  body weight while INCREASING lean body mass, (3) 5-HTP 50-100 mg 20 minutes before
+  meals (titrating to 300 mg if weight loss <1 lb/week after 2 weeks) — reduces calorie
+  intake via serotonin-mediated appetite suppression, (4) MCT oil 1-2 tbsp/day, (5)
+  Hydroxycitrate (Garcinia cambogia HCA) 1,500 mg three times daily — inhibits ATP
+  citrate lyase, blocking fat synthesis from carbohydrate. The 5-HTP titration includes
+  a transient nausea side effect that resolves after 6 weeks of use.'
+evidence_tier: plausible_emerging
+rationale: Multiple component RCTs of varying quality. Mechanism — multi-target intervention
+  addressing insulin sensitivity + appetite + thermogenesis + lipogenesis simultaneously.
+  Effect-size modest individually; combination may be additive.
+coaching_translation: 'Murray''s supplement weight-management stack — for clients
+  ALREADY doing the diet + exercise + lifestyle work: (1) Soluble fibre/PGX 1.5-5
+  g before meals, (2) Chromium 200-400 mcg/day, (3) 5-HTP 50-100 mg before meals (titrate
+  to 300 mg if weight loss <1 lb/week; transient nausea for ~6 weeks), (4) MCT oil
+  1-2 tbsp/day, (5) Hydroxycitrate 1,500 mg 3× daily. SUPPLEMENTS WON''T WORK WITHOUT
+  THE FOUNDATION. Use 5-HTP cautiously — SSRI contraindication.'
+caveats:
+- 5-HTP + SSRI/SNRI/MAOI absolutely contraindicated
+- Effect modest without diet + exercise foundation
+- Supplements alone are not weight-loss strategy
+- Coordinate 5-HTP with prescriber if on psychiatric medication
+- Hydroxycitrate hepatotoxicity rare reports — discontinue if jaundice
+linked_to_topics:
+- insulin-resistance
+- prediabetes
+linked_to_supplements:
+- psyllium
+- chromium
+- 5-htp
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 16 — Obesity and Weight Management, Treatment Summary pg 386
+  quote: 'PGX: 1.5 to 5 g before meals. Chromium: 200 to 400 mcg per day. Medium-chain
+    triglycerides: up to 1 to 2 tbsp per day. 5-HTP: for the first two weeks, 50 to
+    100 mg 20 minutes before meals; after two weeks, if weight loss has been less
+    than 1 lb per week, double the dosage, to a maximum of 300 mg. Hydroxycitrate
+    (from G. cambogia): 1,500 mg three times per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

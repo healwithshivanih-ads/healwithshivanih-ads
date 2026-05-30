@@ -1,0 +1,39 @@
+slug: murray-mct-thermogenesis-weight
+statement: 'Medium-chain triglycerides (MCTs) — 6-12 carbon saturated fats found primarily
+  in coconut oil — promote weight loss by increasing thermogenesis ~3-fold compared
+  with long-chain triglycerides (LCTs), AND do NOT elevate blood fat levels (whereas
+  LCTs raised blood fat 68% in head-to-head comparison at equal calories). Mechanism:
+  MCTs bypass standard fat-digestion pathway, transport directly via portal vein to
+  liver, undergo immediate beta-oxidation rather than storage. Effective dose 1-2
+  tbsp MCT oil or coconut oil daily, replacing LCT cooking oils rather than added
+  to existing diet. Substituting MCTs for LCTs produces weight loss at constant calorie
+  intake.'
+evidence_tier: plausible_emerging
+rationale: Multiple smaller trials. Mechanism well-documented — MCT digestion bypasses
+  chylomicron pathway. Effect modest but real; popular interest exceeds evidence-base
+  size.
+coaching_translation: Coconut oil + MCT oil increase your body's heat production (thermogenesis)
+  ~3× more than other fats — at the same calories. 1-2 tbsp daily, REPLACING other
+  cooking oils (not adding to existing diet). Effective for weight management when
+  substituted for long-chain fats. Stack with protein + fibre at meals for the most
+  metabolic effect.
+caveats:
+- Replace LCT, don't add — calories still count
+- Pure MCT oil (C8 + C10) vs whole coconut oil (mixed) different effects
+- GI upset (loose stools) at higher doses initially
+- Ketogenic diet + MCT combination drives ketosis
+- Saturated fat overall context matters
+linked_to_topics:
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 16 — Obesity and Weight Management, Quick Review pg 385–386
+  quote: Medium-chain triglycerides (MCTs) may promote weight loss by increasing thermogenesis.
+    The thermic effect of MCTs over six hours was three times greater than that of
+    LCTs. Substituting MCTs for LCTs would produce weight loss as long as the calorie
+    level remained the same.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
