@@ -12,14 +12,16 @@
  * panel decides emphasis via the `prominent` prop).
  */
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 import {
   generateLabRequisitionAction,
   emailLabRequisitionAction,
   sendDiscoveryLabsViaWhatsappAction,
 } from "@/lib/server-actions/lab-requisition";
+import { getLastSentAtAction } from "@/app/api/whatsapp/actions";
 import { updateClientFieldsAction } from "@/app/api/email/actions";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Props {
   planSlug: string;
@@ -42,6 +44,16 @@ export function LabRequisitionButtons({
   // Coach rule: when no email on file and one's typed at send time,
   // prompt to save it back to client.yaml.
   const initialEmailOnFile = Boolean(clientEmail);
+  // Persisted WhatsApp sent_at — loaded from session files on mount.
+  // Implements durable rule: feedback_send_buttons_persist_state 2026-05-23.
+  const [waSentAt, setWaSentAt] = useState<string | null>(null);
+
+  useEffect(() => {
+    void (async () => {
+      const { sentAt } = await getLastSentAtAction(clientId, "fm_lab_reminder");
+      setWaSentAt(sentAt);
+    })();
+  }, [clientId]);
 
   const onPreview = () => {
     start(async () => {
@@ -104,6 +116,8 @@ export function LabRequisitionButtons({
         toast.error(r.error);
         return;
       }
+      const now = new Date().toISOString();
+      setWaSentAt(now);
       toast.success(`💬 WhatsApp sent to ${r.sentTo}`);
     });
   };
@@ -174,8 +188,8 @@ export function LabRequisitionButtons({
         <button onClick={() => setEmailOpen((v) => !v)} disabled={pending} style={btnStyle}>
           📧 Email to client
         </button>
-        <button onClick={onWhatsApp} disabled={pending} style={btnStyle}>
-          💬 WhatsApp
+        <button onClick={onWhatsApp} disabled={pending} style={waSentAt ? { ...btnStyle, borderColor: "rgba(16, 185, 129, 0.45)" } : btnStyle}>
+          {waSentAt ? `✓ WA ${relativeTimeShort(waSentAt)} · Resend` : "💬 WhatsApp"}
         </button>
       </div>
 

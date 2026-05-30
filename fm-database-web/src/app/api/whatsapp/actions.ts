@@ -747,3 +747,148 @@ export async function deleteMessageTemplateAction(
     return { ok: false, error: e.message ?? "Failed to delete template" };
   }
 }
+
+// ── Send-state persistence ────────────────────────────────────────────────────
+
+/**
+ * Return the most recent `sent_at` ISO string for any outbound session segment
+ * matching the given template name (or prefix, when `prefix=true`).
+ *
+ * Implements the durable coach rule: "every send button must read its sent_at
+ * from disk on page load and render '✓ Sent X ago · Resend'" (memory note:
+ * feedback_send_buttons_persist_state 2026-05-23, triggered by cl-010).
+ *
+ * Usage:
+ *   // exact template name
+ *   getLastSentAtAction(clientId, "fm_lab_reminder")
+ *   // prefix match (e.g. fm_book_session_v1:discovery, fm_book_session_v1:followup)
+ *   getLastSentAtAction(clientId, "fm_book_session_v1:", { prefix: true })
+ *
+ * Scans all session files in the past `daysBack` days (default 180).
+ */
+export async function getLastSentAtAction(
+  clientId: string,
+  templateName: string,
+  opts?: { prefix?: boolean; daysBack?: number },
+): Promise<{ sentAt: string | null }> {
+  if (!clientId || !templateName) return { sentAt: null };
+
+  const daysBack = opts?.daysBack ?? 180;
+  const isPrefix = opts?.prefix ?? false;
+
+  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  let names: string[];
+  try {
+    names = await fs.readdir(dir);
+  } catch {
+    return { sentAt: null };
+  }
+
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - daysBack);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  let best: string | null = null;
+
+  for (const name of names) {
+    if (!(name.endsWith(".yaml") || name.endsWith(".yml"))) continue;
+    const dateMatch = name.match(/(\d{4}-\d{2}-\d{2})/);
+    if (!dateMatch || dateMatch[1] < cutoffStr) continue;
+    try {
+      const raw = await fs.readFile(path.join(dir, name), "utf8");
+      const data = yaml.load(raw) as Record<string, unknown>;
+      const complaints = String(data?.presenting_complaints ?? "");
+      if (!complaints.includes("[source: whatsapp_outbound]")) continue;
+      if (!complaints.includes("[template:")) continue;
+
+      const segments = complaints.split(/\n\s*---\s*\n/);
+      for (const seg of segments) {
+        if (!seg.includes("[source: whatsapp_outbound]")) continue;
+        const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
+        if (!tplMatch) continue;
+        const tpl = tplMatch[1].trim();
+        const matches = isPrefix ? tpl.startsWith(templateName) : tpl === templateName;
+        if (!matches) continue;
+        const atMatch = seg.match(/\[sent_at:\s*([^\]]+)\]/);
+        if (!atMatch) continue;
+        const at = atMatch[1].trim();
+        if (!best || at > best) best = at;
+      }
+    } catch {
+      /* skip unreadable */
+    }
+  }
+
+  return { sentAt: best };
+}
+
+/**
+ * Batch version — returns a map of templateName → most recent sent_at.
+ * Use when a single component needs to check multiple templates at once
+ * (e.g. SendBookingLinkPanel checks one per booking-link slug).
+ */
+export async function getLastSentAtBatchAction(
+  clientId: string,
+  templateNames: string[],
+  opts?: { prefix?: boolean; daysBack?: number },
+): Promise<Record<string, string | null>> {
+  if (!clientId || templateNames.length === 0) {
+    return Object.fromEntries(templateNames.map((t) => [t, null]));
+  }
+
+  const daysBack = opts?.daysBack ?? 180;
+  const isPrefix = opts?.prefix ?? false;
+
+  const dir = path.join(PLANS_ROOT, "clients", clientId, "sessions");
+  let names: string[];
+  try {
+    names = await fs.readdir(dir);
+  } catch {
+    return Object.fromEntries(templateNames.map((t) => [t, null]));
+  }
+
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - daysBack);
+  const cutoffStr = cutoff.toISOString().slice(0, 10);
+
+  const best: Record<string, string | null> = Object.fromEntries(
+    templateNames.map((t) => [t, null]),
+  );
+
+  for (const name of names) {
+    if (!(name.endsWith(".yaml") || name.endsWith(".yml"))) continue;
+    const dateMatch = name.match(/(\d{4}-\d{2}-\d{2})/);
+    if (!dateMatch || dateMatch[1] < cutoffStr) continue;
+    try {
+      const raw = await fs.readFile(path.join(dir, name), "utf8");
+      const data = yaml.load(raw) as Record<string, unknown>;
+      const complaints = String(data?.presenting_complaints ?? "");
+      if (!complaints.includes("[source: whatsapp_outbound]")) continue;
+      if (!complaints.includes("[template:")) continue;
+
+      const segments = complaints.split(/\n\s*---\s*\n/);
+      for (const seg of segments) {
+        if (!seg.includes("[source: whatsapp_outbound]")) continue;
+        const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
+        if (!tplMatch) continue;
+        const tpl = tplMatch[1].trim();
+        const atMatch = seg.match(/\[sent_at:\s*([^\]]+)\]/);
+        if (!atMatch) continue;
+        const at = atMatch[1].trim();
+
+        for (const candidate of templateNames) {
+          const matches = isPrefix
+            ? tpl.startsWith(candidate)
+            : tpl === candidate;
+          if (matches && (!best[candidate] || at > (best[candidate] as string))) {
+            best[candidate] = at;
+          }
+        }
+      }
+    } catch {
+      /* skip */
+    }
+  }
+
+  return best;
+}

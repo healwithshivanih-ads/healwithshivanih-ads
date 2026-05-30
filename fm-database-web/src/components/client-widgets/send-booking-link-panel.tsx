@@ -30,8 +30,10 @@ import {
   sendCalcomLinkTemplateAction,
   sendCalcomLinkAction,
 } from "@/app/api/whatsapp/calcom-actions";
+import { getLastSentAtBatchAction } from "@/app/api/whatsapp/actions";
 import { renderCalcomBody, type CalcomLink } from "@/app/api/whatsapp/calcom-types";
 import { FmPanel } from "@/components/fm";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Props {
   clientId: string;
@@ -52,7 +54,11 @@ export function SendBookingLinkPanel({
 
   const [links, setLinks] = useState<CalcomLink[] | null>(null);
   const [sendingSlug, setSendingSlug] = useState<string | null>(null);
+  // lastSent: in-memory "just sent" (< 4s) — slug → timestamp ms
   const [lastSent, setLastSent] = useState<{ slug: string; at: number } | null>(null);
+  // persistedSentAt: loaded from disk on mount — slug → ISO string
+  // Implements durable rule: feedback_send_buttons_persist_state 2026-05-23
+  const [persistedSentAt, setPersistedSentAt] = useState<Record<string, string | null>>({});
   const [customMode, setCustomMode] = useState(false);
   const [customSlug, setCustomSlug] = useState<string>("");
   const [customBody, setCustomBody] = useState("");
@@ -71,6 +77,24 @@ export function SendBookingLinkPanel({
       setLinks(r);
     })();
   }, []);
+
+  // Once links are loaded, fetch persisted sent_at per slug from session files.
+  // Template name recorded by sendCalcomLinkTemplateAction is `fm_book_session_v1:${slug}`.
+  useEffect(() => {
+    if (!links || links.length === 0) return;
+    const templateNames = links.map((l) => `fm_book_session_v1:${l.slug}`);
+    void (async () => {
+      const raw = await getLastSentAtBatchAction(clientId, templateNames);
+      // Re-key from "fm_book_session_v1:slug" → "slug"
+      const bySlug: Record<string, string | null> = {};
+      for (const [tpl, at] of Object.entries(raw)) {
+        const slug = tpl.replace(/^fm_book_session_v1:/, "");
+        bySlug[slug] = at;
+      }
+      setPersistedSentAt(bySlug);
+    })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [clientId, links?.length]);
 
   // Pick up `?type=<slug>` so the Booking-due banner can deep-link with
   // its recommended event type pre-highlighted (one-click intent).
@@ -153,7 +177,13 @@ export function SendBookingLinkPanel({
     try {
       const r = await sendCalcomLinkTemplateAction(clientId, link.slug);
       if (r.ok) {
-        setLastSent({ slug: link.slug, at: Date.now() });
+        const now = Date.now();
+        setLastSent({ slug: link.slug, at: now });
+        // Update persisted state immediately so reload shows the new timestamp
+        setPersistedSentAt((prev) => ({
+          ...prev,
+          [link.slug]: new Date(now).toISOString(),
+        }));
         toast.success(`📅 ${link.label} link sent to ${firstName}`);
         // Tell WhatsApp thread panel to refresh immediately
         if (typeof window !== "undefined") {
@@ -229,8 +259,9 @@ export function SendBookingLinkPanel({
           >
             {links.map((link) => {
               const recentlySent = lastSent?.slug === link.slug && Date.now() - lastSent.at < 4000;
+              const diskSentAt = persistedSentAt[link.slug] ?? null;
               const sending = sendingSlug === link.slug;
-              const isRecommended = highlightedSlug === link.slug && !recentlySent;
+              const isRecommended = highlightedSlug === link.slug && !recentlySent && !diskSentAt;
               return (
                 <button
                   key={link.slug}
@@ -239,13 +270,13 @@ export function SendBookingLinkPanel({
                   disabled={sending || !!sendingSlug}
                   style={{
                     padding: "14px 12px",
-                    background: recentlySent
+                    background: recentlySent || diskSentAt
                       ? "rgba(16, 185, 129, 0.12)"
                       : isRecommended
                         ? "rgba(99, 102, 241, 0.08)"
                         : "var(--fm-surface)",
                     border: `${isRecommended ? 2 : 1}px solid ${
-                      recentlySent
+                      recentlySent || diskSentAt
                         ? "rgba(16, 185, 129, 0.45)"
                         : isRecommended
                           ? "#4338ca"
@@ -299,12 +330,18 @@ export function SendBookingLinkPanel({
                   <div
                     style={{
                       fontSize: 11,
-                      color: recentlySent ? "#065f46" : "#25D366",
+                      color: recentlySent || diskSentAt ? "#065f46" : "#25D366",
                       fontWeight: 600,
                       marginTop: 8,
                     }}
                   >
-                    {sending ? "Sending…" : recentlySent ? "✓ Sent" : "📤 Send to " + firstName}
+                    {sending
+                      ? "Sending…"
+                      : recentlySent
+                        ? "✓ Sent"
+                        : diskSentAt
+                          ? `✓ Sent ${relativeTimeShort(diskSentAt)} · Resend`
+                          : "📤 Send to " + firstName}
                   </div>
                 </button>
               );

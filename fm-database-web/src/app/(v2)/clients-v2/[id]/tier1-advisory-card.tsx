@@ -15,10 +15,12 @@
  * has already filled the Tier 1 fields.
  */
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { FmPanel, FmChip } from "@/components/fm";
 import type { Tier1Advisory } from "@/lib/fmdb/tier1-advisory";
+import { getLastSentAtAction } from "@/app/api/whatsapp/actions";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 interface Props {
   clientId: string;
@@ -29,6 +31,16 @@ export function Tier1AdvisoryCard({ clientId, advisory }: Props) {
   const [pending, startTransition] = useTransition();
   const [dismissed, setDismissed] = useState(false);
   const [sent, setSent] = useState<"idle" | "sent" | "failed">("idle");
+  // Persisted sent_at loaded from disk — survives page reload.
+  // Durable rule: feedback_send_buttons_persist_state 2026-05-23.
+  const [lastSentAt, setLastSentAt] = useState<string | null>(null);
+
+  useEffect(() => {
+    void (async () => {
+      const { sentAt } = await getLastSentAtAction(clientId, "fm_intake_topup_v1");
+      setLastSentAt(sentAt);
+    })();
+  }, [clientId]);
 
   if (!advisory || dismissed) return null;
 
@@ -40,6 +52,7 @@ export function Tier1AdvisoryCard({ clientId, advisory }: Props) {
       const res = await reissueTierOneIntakeAction(clientId);
       if (res.ok) {
         setSent("sent");
+        setLastSentAt(new Date().toISOString());
         toast.success(
           res.via === "free_text"
             ? "📨 Tier 1 link sent via free-text (template fallback)"
@@ -148,21 +161,21 @@ export function Tier1AdvisoryCard({ clientId, advisory }: Props) {
           <button
             type="button"
             onClick={handleReissue}
-            disabled={pending || sent === "sent"}
+            disabled={pending}
             style={{
               padding: "6px 14px",
               fontSize: 12,
               fontWeight: 700,
               background:
-                sent === "sent"
+                sent === "sent" || lastSentAt
                   ? "rgba(34, 197, 94, 0.18)"
                   : pending
                     ? "#94a3b8"
                     : "#f59e0b",
-              color: sent === "sent" ? "#15803d" : "#fff",
-              border: "none",
+              color: sent === "sent" || lastSentAt ? "#15803d" : "#fff",
+              border: sent === "sent" || lastSentAt ? "1px solid rgba(34,197,94,0.35)" : "none",
               borderRadius: 5,
-              cursor: pending || sent === "sent" ? "default" : "pointer",
+              cursor: pending ? "default" : "pointer",
               fontFamily: "inherit",
             }}
           >
@@ -170,7 +183,9 @@ export function Tier1AdvisoryCard({ clientId, advisory }: Props) {
               ? "✓ Tier 1 re-issued"
               : pending
                 ? "Sending…"
-                : "📨 Reissue intake with Tier 1 screen"}
+                : lastSentAt
+                  ? `✓ Sent ${relativeTimeShort(lastSentAt)} · Resend`
+                  : "📨 Reissue intake with Tier 1 screen"}
           </button>
           <button
             type="button"
