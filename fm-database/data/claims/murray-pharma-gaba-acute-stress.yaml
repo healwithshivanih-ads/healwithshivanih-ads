@@ -1,0 +1,38 @@
+slug: murray-pharma-gaba-acute-stress
+statement: 'PharmaGABA — a naturally-fermented GABA produced by Lactobacillus hilgardii
+  (vs synthetic GABA which has variable absorption) — at 100-200 mg up to 6× daily
+  produces measurable anti-stress effects with onset within 30-60 minutes. EEG studies
+  show increased alpha-wave activity (relaxed wakefulness) without sedation. Particularly
+  useful for situational acute stress: presentations, traffic anxiety, dental procedures,
+  exam anxiety. Murray positions PharmaGABA as Level 2 stress support — bridge between
+  lifestyle alone (Level 1) and adaptogen daily use (Level 3).'
+evidence_tier: plausible_emerging
+rationale: Multiple smaller clinical trials cited; mechanism reasonable. The blood-brain-barrier
+  crossing of oral GABA debated; PharmaGABA may work via vagal afferents + peripheral
+  GABA effects + minor BBB crossing.
+coaching_translation: 'PharmaGABA 100-200 mg up to 6× daily works fast (30-60 min)
+  for acute situational stress — presentations, traffic, dental appointments, exams.
+  Effect: relaxed but alert (alpha brain waves), no sedation. Unlike adaptogens which
+  build effect over weeks, PharmaGABA works the same hour. Use as bridge between daily
+  adaptogen support (Level 3) and acute stress moments (Level 2).'
+caveats:
+- PharmaGABA (fermented) > generic GABA
+- Effect transient (3-6 hour duration)
+- Combine safely with adaptogens + magnesium
+- Pregnancy data limited
+- Mild blood pressure lowering at higher doses
+linked_to_topics:
+- chronic-stress
+- anxiety
+linked_to_supplements:
+- gaba
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 15 — Stress Management, Quick Review pg 351, Level 2 pg 352
+  quote: Clinical studies with PharmaGABA have shown it to produce significant antistress
+    effects. Level 2 support encompasses Level 1 support plus the use of PharmaGABA
+    (100 to 200 mg up to six times per day) to deal with situational stress and nervousness.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

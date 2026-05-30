@@ -1,0 +1,46 @@
+slug: murray-adaptogen-class-stress-resilience
+statement: 'The adaptogen class — Panax ginseng (Chinese), Eleutherococcus senticosus
+  (Siberian ginseng), Rhodiola rosea, Withania somnifera (ashwagandha) — exerts non-specific
+  stress-resilience effects through HPA-axis normalisation. Mechanism: adaptogens
+  modulate cortisol output (lowering when elevated, raising when suppressed), support
+  adrenal function, and enhance physiological resistance to stress without the stimulant-rebound
+  profile of caffeine. Effect typically builds over 4-8 weeks. Differential prescribing:
+  ashwagandha for anxiety + insomnia + Hashimoto''s caution; rhodiola for fatigue
+  + low mood + stimulating (avoid evening); Panax ginseng for cognitive depletion
+  + men''s vitality; Siberian ginseng for chronic stress + resilience-building.'
+evidence_tier: strong
+rationale: Multiple DB-RCTs across adaptogen class. Mechanism — HPA + sympathetic-adrenomedullary
+  axis modulation. Bidirectional cortisol effect (lower if high, raise if low) is
+  the adaptogen signature.
+coaching_translation: 'Adaptogens normalise stress response — they lower cortisol
+  when too high AND raise it when too low. Four main options with different best uses:
+  ASHWAGANDHA (anxiety + insomnia; CAREFUL with Hashimoto''s), RHODIOLA (fatigue +
+  low mood; avoid evening — stimulating), PANAX GINSENG (cognitive depletion + men''s
+  vitality), SIBERIAN GINSENG (chronic stress resilience). Effect builds over 4-8
+  weeks. Pick ONE and stick with it for 3 months.'
+caveats:
+- Ashwagandha + Hashimoto's — can stimulate thyroid antibodies
+- Rhodiola stimulating — avoid evening; bipolar caution
+- Ginseng + hypertension — caution at high doses
+- Rotate adaptogens every 3-6 months for sustained effect
+- One at a time to assess response
+linked_to_topics:
+- chronic-stress
+- hpa-axis-cortisol-regulation
+- anxiety
+- perimenopause-and-menopause
+linked_to_supplements:
+- ashwagandha
+- rhodiola
+- panax-ginseng
+- ginseng
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 15 — Stress Management, Quick Review pg 351
+  quote: Chinese ginseng (Panax ginseng) and Siberian ginseng (Eleutherococcus senticosus),
+    rhodiola (Rhodiola rosea), and ashwagandha (Withania somnifera) exert beneficial
+    effects on adrenal function and enhance resistance to stress.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
