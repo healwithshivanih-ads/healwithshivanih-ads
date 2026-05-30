@@ -1,0 +1,23 @@
+slug: hepatitis-vitamin-d-deficiency
+statement: Vitamin D is directly antiviral against hepatitis C and supports immune-mediated
+  viral clearance. Low vitamin D levels correlate with more serious cases, progression
+  to chronic hepatitis, and cirrhosis — more than 90% of patients with chronic hepatitis
+  C have low vitamin D levels. Several studies show improved outcomes when vitamin
+  D is added to conventional antiviral therapy. Protocol dose — 2,000-4,000 IU/day
+  with blood-level-guided adjustment.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hepatitis
+linked_to_supplements:
+- vitamin-d3
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 61 — Hepatitis, pg 1035
+  quote: New research is showing that vitamin D not only is directly antiviral — specifically
+    against hepatitis C — but also promotes immune function. One study found that
+    more than 90% of patients with chronic hepatitis C had low levels of vitamin D.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Vitamin D status assessment is essential in chronic hepatitis C management.

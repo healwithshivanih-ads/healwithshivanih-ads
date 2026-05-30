@@ -1,0 +1,28 @@
+slug: armd-lutein-zeaxanthin-bilberry
+statement: Lutein 10 mg per day improves visual function in early ARMD (LAST trial,
+  12 months). The macula's yellow colour comes from lutein and zeaxanthin concentrated
+  in the fovea. Dietary sources — spinach, corn, kale, kiwi, paprika, lycopene from
+  tomatoes. Fish, nuts, and long-chain omega-3s slow ARMD progression; animal fat,
+  fried/grilled foods, baked goods, and beer accelerate it. Bilberry extract standardised
+  to 25% anthocyanidins has high affinity for retinal pigmented epithelium and is
+  the most useful flavonoid for ARMD; ginkgo (24% flavonglycosides) is preferred when
+  cerebral blood-flow concerns coexist.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- macular-degeneration
+linked_to_supplements:
+- bilberry-extract
+- ginkgo-biloba
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1222-1227
+  quote: Patients receiving lutein (10 mg) alone or in combination with other vitamins
+    and minerals showed improvements in visual function. Bilberry extracts standardized
+    to contain 25% anthocyanidins appear to be the most useful. The anthocyanosides
+    of bilberry have a very strong affinity for the retinal pigmented epithelium.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific dose for lutein plus bilberry and dietary pattern for macular
+  health.

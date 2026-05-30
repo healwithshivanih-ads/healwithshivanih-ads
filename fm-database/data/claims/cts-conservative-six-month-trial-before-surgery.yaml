@@ -1,0 +1,25 @@
+slug: cts-conservative-six-month-trial-before-surgery
+statement: 'CTS surgery should not be considered before at least six months of conservative
+  care: full-time neutral-position wrist splint worn for four weeks (most effective
+  within three months of onset), contrast hydrotherapy (hand past wrist — 3 min hot
+  then 30 sec cold, 3-5 cycles), acupuncture (as effective as oral prednisolone in
+  a randomised trial with better muscle-function outcomes), B6 plus riboflavin, fish
+  oils 3,000 mg EPA+DHA. To avoid permanent nerve damage, however, surgery should
+  not be delayed beyond three years after first onset of symptoms.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- carpal-tunnel-syndrome
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 622-625
+  quote: Surgery for CTS should definitely not be considered before more conservative
+    treatment has been tried for six months. The most recommended initial treatment
+    is four weeks in a neutral wrist splint worn full-time. To prevent permanent nerve
+    damage, however, surgery should not be delayed beyond three years after first
+    onset of symptoms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Decision-frame for coaches — conservative trial bracket plus surgery-window
+  caveat.

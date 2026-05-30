@@ -1,0 +1,24 @@
+slug: tension-headache-relaxation-training
+statement: Progressive relaxation training is effective for chronic tension headache.
+  In a school-based study of children aged 10-15 with chronic tension headache, nurse-administered
+  relaxation training produced at least 50% headache reduction in 69% of children
+  at six weeks and 73% at six months, vs 8% and 27% in controls. Chiropractic and
+  physical therapy (posture education, home exercise, cervical stretching) also reduce
+  frequency and severity.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- tension-type-headache
+- chronic-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1011-1012
+  quote: After six weeks and at the six-month follow-up, 69% and 73%, respectively,
+    of the students who received relaxation training had achieved at least a 50% reduction
+    in headaches as compared with 8% and 27%, respectively, of those in the control
+    group.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Non-pharm primary therapy for chronic tension headache; useful for children
+  and adults alike.

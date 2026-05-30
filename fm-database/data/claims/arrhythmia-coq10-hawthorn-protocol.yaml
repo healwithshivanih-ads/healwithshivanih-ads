@@ -1,0 +1,26 @@
+slug: arrhythmia-coq10-hawthorn-protocol
+statement: CoQ10 plays a critical role in cardiac cellular energy production; supplementation
+  (150-300 mg/day) is indicated in any condition affecting the heart due to its safety
+  profile. Hawthorn (Crataegus species) extract standardised to 1.8% vitexin-4'-rhamnoside
+  or 10% proanthocyanidin (100-250 mg three times daily) has a long history of use
+  in minor arrhythmias and double-blind support in congestive heart failure.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- heart-arrhythmias
+- congestive-heart-failure
+linked_to_supplements:
+- coq10
+- hawthorn-berry
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 59 — Heart Arrhythmias, pg 1019-1021
+  quote: 'Coenzyme Q10 plays a critical role in the cellular production of energy.
+    Because of its safety and possible benefit, CoQ10 supplementation is indicated
+    in any condition affecting the heart. Hawthorn (Crataegus species) extract (1.8%
+    vitexin-4''-rhamnoside or 10% proanthocyanidin content): 100 to 250 mg three times
+    per day.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: CoQ10 and hawthorn doses for cardiac support — must coordinate with cardiology.

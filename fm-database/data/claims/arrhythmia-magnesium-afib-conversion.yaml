@@ -1,0 +1,24 @@
+slug: arrhythmia-magnesium-afib-conversion
+statement: In an 18-patient double-blind trial of new-onset atrial fibrillation (less
+  than seven days), IV digoxin plus magnesium produced normal-rhythm conversion in
+  6 of 10 patients (60%) vs 3 of 8 (37.5%) with digoxin alone; heart rate dropped
+  within 15 minutes. Oral magnesium dose for arrhythmia — approximately 6 to 10 mg/kg
+  per day in well-absorbed form (citrate); typically 200-300 mg three times daily.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- heart-arrhythmias
+linked_to_supplements:
+- magnesium-citrate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 59 — Heart Arrhythmias, pg 1018-1019
+  quote: In the magnesium group, 6 of 10 patients (60%) converted to normal rhythm,
+    whereas just 3 of 8 in the digoxin-only group (37.5%) converted. The recommended
+    intake for oral magnesium in arrhythmia appears to be approximately 6 to 10 mg/kg
+    per day.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete magnesium dose range for arrhythmia support — must coordinate
+  with treating cardiologist.

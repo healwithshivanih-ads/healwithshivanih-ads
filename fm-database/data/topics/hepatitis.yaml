@@ -1,0 +1,42 @@
+slug: hepatitis
+display_name: Hepatitis (Viral)
+aliases:
+- viral-hepatitis
+- hepatitis-a
+- hepatitis-b
+- hepatitis-c
+- liver-inflammation
+summary: Liver inflammation caused by hepatitis A, B, C, D, E, or G viruses (also
+  herpes simplex, CMV, EBV) or drugs and toxins. Hepatitis A is fecal-oral; B is blood
+  and sexual contact; C is parenteral with highest mortality (1-12%). Chronic forms
+  develop in 10% of B and 10-40% of C cases (70-80% if transfusion-acquired C), with
+  risks of cirrhosis and hepatocellular carcinoma. FM therapeutic goals — protect
+  liver, support immune clearance, inhibit viral replication, stimulate hepatocyte
+  regeneration. Key remedies — licorice (glycyrrhizin), milk thistle (silymarin),
+  vitamin C, selenium, alpha-lipoic acid, vitamin D.
+key_mechanisms:
+- viral-replication
+- oxidative-liver-damage
+- impaired-cell-mediated-immunity
+- glutathione-depletion
+common_symptoms:
+- jaundice
+- fatigue
+- dark-urine
+- nausea
+- abdominal-discomfort
+related_topics:
+- liver-detoxification
+- cirrhosis
+- immune-dysfunction
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 61 — Hepatitis, pg 1030-1041
+  quote: Hepatitis is a serious disease requiring the care of a physician. Several
+    nutrients and herbs have been shown to inhibit viral reproduction, improve immune
+    system function, and greatly stimulate regeneration of damaged liver cells.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

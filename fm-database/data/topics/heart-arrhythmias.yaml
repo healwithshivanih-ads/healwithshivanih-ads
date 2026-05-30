@@ -1,0 +1,39 @@
+slug: heart-arrhythmias
+display_name: Heart Arrhythmias
+aliases:
+- arrhythmia
+- afib
+- palpitations
+- ventricular-tachycardia
+summary: Disturbance in heartbeat rhythm — ranges from benign premature ventricular
+  contractions and mild atrial fibrillation to life-threatening ventricular tachycardia
+  and fibrillation. Atrial fibrillation, while rarely immediately life-threatening,
+  can lead to congestive heart failure and raises stroke risk over time. Therapeutic
+  goals — improve cardiac energy metabolism, improve blood supply, ensure normal nerve
+  function. Magnesium and potassium depletion within heart muscle is a recurring driver
+  across many arrhythmia subtypes. Coumadin (warfarin) drug interactions with herbs
+  and nutrients require careful monitoring.
+key_mechanisms:
+- magnesium-depletion
+- potassium-depletion
+- impaired-mitochondrial-energy
+- electrolyte-imbalance
+common_symptoms:
+- palpitations
+- shortness-of-breath
+- fatigue
+- ankle-swelling
+related_topics:
+- congestive-heart-failure
+- cardiovascular-health
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 59 — Heart Arrhythmias, pg 1015-1021
+  quote: Many disorders of heart rhythm are related to an insufficient level of magnesium
+    in the heart muscle. Magnesium was first shown to be of value in the treatment
+    of cardiac arrhythmias in 1935.
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

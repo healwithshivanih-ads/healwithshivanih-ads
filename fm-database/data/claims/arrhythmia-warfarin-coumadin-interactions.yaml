@@ -1,0 +1,26 @@
+slug: arrhythmia-warfarin-coumadin-interactions
+statement: Patients on warfarin (Coumadin) must keep vitamin K intake (green leafy
+  vegetables, green teas) stable rather than increasing — INR is monitored to adjust
+  the dose. CoQ10 and St. John's wort may reduce warfarin efficacy; proteolytic enzymes,
+  Chinese ginseng, devil's claw, and dong quai may increase its effects. Garlic and
+  ginkgo at high doses reduce platelet aggregation (avoid more than one clove garlic
+  or 240 mg ginkgo extract per day). Iron, magnesium, and zinc bind warfarin and must
+  be spaced at least two hours apart.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- heart-arrhythmias
+- cardiovascular-health
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 59 — Heart Arrhythmias, pg 1017-1018
+  quote: Coenzyme Q10 and Saint-John's-wort may reduce the efficacy of Coumadin, while
+    proteolytic enzymes and several herbs, including Chinese ginseng, devil's claw,
+    and dong quai, can increase its effects. Iron, magnesium, and zinc may bind with
+    Coumadin. Take Coumadin at least two hours before or after any product that contains
+    iron, magnesium, or zinc.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Critical safety reference for any client on warfarin — must screen before
+  any supplement.

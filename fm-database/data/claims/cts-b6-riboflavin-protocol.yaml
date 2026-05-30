@@ -1,0 +1,26 @@
+slug: cts-b6-riboflavin-protocol
+statement: Carpal tunnel syndrome has been associated with vitamin B6 functional insufficiency
+  since 1950, and is more common in groups with greater B6 need (pregnancy, oral contraceptives,
+  menopause, hemodialysis). Several clinical studies support B6 supplementation (start
+  50 mg, titrate to 100 mg daily; do not exceed 100 mg) with even greater effect when
+  combined with riboflavin (B2). If B6 fails within weeks, switch to P5P (pyridoxal-5-phosphate)
+  10 mg per day.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- carpal-tunnel-syndrome
+linked_to_supplements:
+- pyridoxine-b6
+- riboflavin-b2
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 32 — Carpal Tunnel Syndrome, pg 623-625
+  quote: Several clinical studies demonstrated the efficacy of vitamin B6 supplementation
+    for CTS; the initial dose was 50 mg initially, increased to 200 to 300 mg. Even
+    greater effect was seen when B6 and B2 (riboflavin) were given together. We recommend
+    dosages no greater than 100 mg per day.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific B6 dose ceiling (100 mg) plus P5P fallback — coach-actionable
+  and safety-bounded.

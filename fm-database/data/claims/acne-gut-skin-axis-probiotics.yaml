@@ -1,0 +1,23 @@
+slug: acne-gut-skin-axis-probiotics
+statement: The gut-brain-skin axis hypothesis (Stokes and Pillsbury, 1940s) links
+  emotional stress, altered gut microflora, intestinal permeability, and systemic
+  inflammation to acne. As many as 40% of acne patients have hypochlorhydria; one
+  study showed 50% of severe-acne patients had elevated blood toxins absorbed from
+  the gut. Lactobacillus acidophilus and probiotic support are indicated, especially
+  after antibiotic courses.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- acne-vulgaris
+- leaky-gut
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 17 — Acne, pg 392
+  quote: One study showed that 50% of patients with severe acne had increased blood
+    levels of toxins absorbed from the intestines. They also noted that as many as
+    40% of those with acne have hypochlorhydria.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: FM-distinctive root-cause framing for acne (gut-skin) supporting probiotic
+  and digestive-support recommendations.

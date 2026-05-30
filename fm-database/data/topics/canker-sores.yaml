@@ -1,0 +1,36 @@
+slug: canker-sores
+display_name: Canker Sores (Recurrent Aphthous Ulcers)
+aliases:
+- recurrent-aphthous-ulcers
+- aphthous-stomatitis
+- rau
+- mouth-ulcers
+summary: Recurrent shallow painful oral ulcers affecting roughly 20% of the U.S. population.
+  Root drivers include food allergies (especially milk and gluten), gluten sensitivity
+  (often subclinical celiac), nutrient deficiency (thiamine, B12, folate, iron, riboflavin,
+  pyridoxine, zinc), stress, NSAID use, and local trauma. Lesions usually heal in
+  7-21 days but recur. Correction of underlying allergens and nutrient status produces
+  complete remission in most cases.
+key_mechanisms:
+- food-allergen-response
+- gluten-sensitivity
+- nutrient-deficiency
+- impaired-mucosal-immunity
+common_symptoms:
+- mouth-ulcer
+- oral-pain
+- recurrent-ulceration
+related_topics:
+- celiac-disease
+- food-allergies
+- leaky-gut
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 31 — Canker Sores, pg 616-620
+  quote: Recurrent canker sores can be caused by trauma, food sensitivities (especially
+    milk and gluten sensitivities), stress, and/or nutrient deficiency.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

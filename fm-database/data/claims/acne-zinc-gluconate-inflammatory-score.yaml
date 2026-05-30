@@ -1,0 +1,23 @@
+slug: acne-zinc-gluconate-inflammatory-score
+statement: In a double-blind trial of 66 patients with inflammatory acne, zinc gluconate
+  (30 mg elemental zinc daily) for two months reduced the inflammatory score from
+  49 to 27 vs 58 to 47 on placebo. Effervescent zinc sulfate showed efficacy similar
+  to tetracycline; most patients need ~12 weeks of supplementation.
+evidence_tier: strong
+linked_to_topics:
+- acne-vulgaris
+linked_to_supplements:
+- zinc
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 17 — Acne, pg 396-397
+  quote: 66 patients with inflammatory acne were given zinc gluconate (30 mg elemental
+    zinc) or a placebo for two months. In the placebo group the inflammatory score
+    dropped from 58 to 47, while in the treatment group the score dropped from 49
+    to 27.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete zinc dose with form preference (gluconate, picolinate, citrate
+  over plain sulfate).

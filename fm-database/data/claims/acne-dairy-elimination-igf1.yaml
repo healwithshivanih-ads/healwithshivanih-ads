@@ -1,0 +1,19 @@
+slug: acne-dairy-elimination-igf1
+statement: Milk contains hormones including precursors to DHT and raises IGF-1, which
+  binds sebaceous-gland receptors and stimulates sebum production. Elimination of
+  all milk and dairy products plus high-sugar foods is recommended for acne.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- acne-vulgaris
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 17 — Acne, pg 395
+  quote: Milk contains hormones, including precursors to DHT, and it promotes an increase
+    in insulin-like growth factor 1 (IGF-1). Receptors for IGF-1 are present on the
+    sebaceous gland. When IGF-1 binds to these receptors it stimulates sebum production.
+    Elimination of all milk and dairy products and high-sugar foods is recommended.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Common acne dietary lever; client-actionable elimination protocol.

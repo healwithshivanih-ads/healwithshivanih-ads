@@ -1,0 +1,23 @@
+slug: tension-headache-analgesic-rebound
+statement: Approximately 70% of patients with chronic headaches suffer from drug-induced
+  (analgesic rebound) headache. In a study of 200 patients with analgesic-rebound
+  headache, simply discontinuing the medications produced a 52% improvement in the
+  total headache index, with specific gains in frequency, severity, sleep, and mood.
+evidence_tier: strong
+linked_to_topics:
+- tension-type-headache
+- migraine-headache
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1010
+  quote: Approximately 70% of patients with chronic headaches suffer from drug-induced
+    headaches, a result of the medications they are taking to suppress the symptoms
+    of headache. In one study of 200 patients suffering from analgesic rebound headache,
+    discontinuation of these medications resulted in a 52% improvement in the total
+    headache index.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Critical screening prompt — assess analgesic use before any other intervention
+  for chronic headache.

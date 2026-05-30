@@ -1,0 +1,21 @@
+slug: acne-low-glycemic-load-diet-reduces-dht
+statement: Acne sufferers consume diets with higher glycemic load than typical Americans;
+  a high-carbohydrate diet increases conversion of testosterone to the more potent
+  DHT in skin, raising sebum production. A diet roughly 45% protein, 35% carbohydrate,
+  and 20% fat produces substantially less DHT formation and enhances estrogen clearance.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- acne-vulgaris
+- insulin-resistance
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 17 — Acne, pg 395-396
+  quote: Acne sufferers generally have a diet higher in glycemic load than that of
+    even the typical American. A high-carbohydrate diet increases the conversion of
+    testosterone to the more potent DHT in the skin.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: FM-distinctive macronutrient pattern for acne worth surfacing for adolescent
+  and adult acne coaching.

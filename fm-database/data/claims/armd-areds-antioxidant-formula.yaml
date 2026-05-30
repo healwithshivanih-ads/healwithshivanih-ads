@@ -1,0 +1,29 @@
+slug: armd-areds-antioxidant-formula
+statement: The Age-Related Eye Disease Study (AREDS) formula — vitamin C 500 mg, vitamin
+  E 400 IU, beta-carotene 15 mg (≈25,000 IU vitamin A equivalent), zinc 80 mg (as
+  zinc oxide), copper 2 mg — produces better protection against ARMD progression than
+  any single nutrient alone. Risk-factor frame — smoking, aging, atherosclerosis,
+  hypertension. Smoking one pack per day raises ARMD risk 2-3× and risk does not return
+  to baseline until 15 years after cessation. Family history of macular degeneration
+  raises lifetime late- stage risk to 50% vs 12% for those without.
+evidence_tier: strong
+linked_to_topics:
+- macular-degeneration
+linked_to_supplements:
+- vitamin-c
+- vitamin-e
+- zinc
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 74 — Macular Degeneration, pg 1223-1224
+  quote: Studies conducted by the Age-Related Eye Disease Study Research Group (AREDS)
+    confirm that a combination of these nutrients will be likely to produce better
+    results than any single nutrient alone. The specific amounts of antioxidants and
+    zinc used in the study were 500 mg vitamin C, 400 IU vitamin E, 15 mg beta-carotene,
+    80 mg zinc (as zinc oxide), and 2 mg copper (as cupric oxide).
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: AREDS dosing — landmark formula every coach should recognise for ARMD risk
+  clients.

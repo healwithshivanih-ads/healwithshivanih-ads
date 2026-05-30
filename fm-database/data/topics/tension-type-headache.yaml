@@ -1,0 +1,36 @@
+slug: tension-type-headache
+display_name: Tension-Type Headache
+aliases:
+- tension-headache
+- nonmigraine-headache
+- muscle-tension-headache
+summary: Gradual-onset mild-to-moderate steady headache with vise-like or pressure
+  quality, usually originating at the back of the head or forehead and spreading.
+  Typically caused by tightening of face, neck, or scalp muscles from stress, poor
+  posture, or structural misalignment. Other major causes are drug-rebound headache
+  (~70% of chronic headache sufferers), magnesium insufficiency, and food allergies.
+  Shares features with migraine — both respond to magnesium, 5-HTP, allergen elimination,
+  and reduction of analgesic rebound.
+key_mechanisms:
+- muscle-tension
+- analgesic-rebound
+- magnesium-insufficiency
+- food-allergen-response
+common_symptoms:
+- headache
+- neck-tension
+- pressure-sensation
+related_topics:
+- migraine-headache
+- chronic-pain
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1009-1014
+  quote: A tension headache is usually caused by tightening in the muscles of the
+    face, neck, or scalp as a result of stress or poor posture. The other most important
+    causes are drug reactions and magnesium insufficiency.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

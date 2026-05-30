@@ -1,0 +1,27 @@
+slug: hepatitis-licorice-glycyrrhizin-protocol
+statement: Licorice (Glycyrrhiza glabra) — protects liver, enhances immunity, potentiates
+  interferon, is directly antiviral. Japanese product SNMC (200 mg glycyrrhizin +
+  cysteine + glycine IV) achieved ~40% complete resolution in chronic hepatitis B
+  and C — comparable to alpha-interferon. Oral equivalent — 5% glycyrrhetinic acid
+  solid extract 250-500 mg three times daily. Above 100 mg/day glycyrrhizin can cause
+  sodium-water retention and hypertension; contraindicated in hypertension, renal
+  failure, or digitalis use. Increase potassium-rich foods and follow low-sodium diet
+  with chronic use.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hepatitis
+linked_to_supplements:
+- licorice-root
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 61 — Hepatitis, pg 1036-1037, 1041
+  quote: SNMC has demonstrated impressive results in treating chronic hepatitis B
+    or C. Approximately 40% of patients will have complete resolution. Over longer
+    periods, licorice root (more than 3 g per day for more than six weeks) or glycyrrhizin
+    (more than 100 mg per day) may cause sodium and water retention, leading to high
+    blood pressure.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Glycyrrhizin protocol with critical BP and electrolyte safety caveats.

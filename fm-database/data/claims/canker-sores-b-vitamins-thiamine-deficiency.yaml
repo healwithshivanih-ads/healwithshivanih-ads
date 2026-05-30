@@ -1,0 +1,26 @@
+slug: canker-sores-b-vitamins-thiamine-deficiency
+statement: Thiamine deficiency is the most significant nutrient deficiency in RAU
+  — one study found low transketolase (thiamine-dependent enzyme) in 49 of 70 RAU
+  patients vs 2 of 50 controls. Targeted supplementation includes thiamine 50-100
+  mg, B6 25-50 mg, folic acid 400-800 mcg, B12 (methylcobalamin) 1,000 mcg, vitamin
+  C 500-1,000 mg twice daily, and zinc 20-30 mg per day. B12 1,000 mcg/day alone has
+  shown benefit regardless of deficiency status. DGL mouthwash (200 mg in 200 ml warm
+  water 4×/day) speeds healing.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- canker-sores
+linked_to_supplements:
+- thiamine-b1
+- vitamin-b12
+- zinc
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 31 — Canker Sores, pg 618-619
+  quote: Low levels of transketolase were found in 49 of 70 patients with RAU, compared
+    with only 2 of 50 among the controls. Even taking extra vitamin B12 (1,000 mcg
+    per day) alone has shown benefit regardless of whether deficiency exists or not.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific dose stack + DGL protocol for client-actionable canker sore plan.

@@ -1,0 +1,20 @@
+slug: canker-sores-gluten-elimination-remission
+statement: Recurrent aphthous ulcers (RAU) are increased in celiac disease patients;
+  withdrawing gluten produces complete remission of RAU in those with celiac disease
+  and improvement in others. Food allergies (especially milk) should also be eliminated.
+evidence_tier: strong
+linked_to_topics:
+- canker-sores
+- celiac-disease
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 31 — Canker Sores, pg 617-618
+  quote: Considerable evidence indicates that sensitivity to gluten is associated
+    with RAU. Withdrawing gluten from the diet results in complete remission of RAU
+    in patients with celiac disease and some improvement in others.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Strongest single dietary lever for chronic canker sores; warrants celiac
+  screening.

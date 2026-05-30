@@ -1,0 +1,25 @@
+slug: herpes-zinc-vitamin-c
+statement: Oral zinc 50 mg/day reduces HSV recurrence frequency, duration, and severity
+  (primarily via enhanced cell-mediated immunity). Topical zinc sulfate 0.025% solution
+  applied three times daily reduces symptoms and inhibits recurrences. Vitamin C plus
+  bioflavonoids (200 mg each, three to five times daily for 3 days at symptom onset)
+  shortens healing — in one trial, lesions healed in 4.2 days vs 10 days on placebo.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- herpes-simplex
+linked_to_supplements:
+- zinc
+- vitamin-c
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 62 — Herpes, pg 1043-1044, 1049
+  quote: Oral supplementation with zinc (50 mg per day) has been shown to be effective.
+    Topical application of a 0.01 to 0.025% zinc sulfate solution has also been shown
+    to be effective. Those treated with bioflavonoids and vitamin C three times per
+    day saw remission of symptoms in 4.2 days; those on the placebo did not heal until
+    after 10 days.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete zinc and vitamin C doses for HSV outbreak management.

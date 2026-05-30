@@ -1,0 +1,42 @@
+slug: herpes-simplex
+display_name: Herpes Simplex (HSV-1 and HSV-2)
+aliases:
+- herpes
+- cold-sores
+- genital-herpes
+- hsv
+- hsv-1
+- hsv-2
+- recurrent-herpes
+summary: Recurrent viral infection of skin and mucous membranes (lips, mouth, genitals,
+  eye) — 20-40% of U.S. population has recurrent HSV; ~90% of adults show past HSV-1
+  exposure. After primary infection the virus lies dormant in nerve ganglia and can
+  reactivate with sun exposure, stress, menses, food allergy, drugs, or sexual activity.
+  Cell-mediated immunity is the major determinant of clinical outcome. FM therapeutic
+  goals — reduce outbreak frequency, severity, viral shedding, and transmission by
+  supporting immunity, raising lysine-arginine ratio, and applying topical antivirals
+  (lemon balm, glycyrrhetinic acid).
+key_mechanisms:
+- viral-replication
+- impaired-cell-mediated-immunity
+- arginine-lysine-imbalance
+common_symptoms:
+- cold-sores
+- genital-blisters
+- skin-blisters
+- lymph-node-swelling
+related_topics:
+- immune-dysfunction
+- chronic-stress
+- food-allergies
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 62 — Herpes, pg 1042-1049
+  quote: Enhancement of the immune status is key to the prevention and control of
+    herpes infection. A diet that avoids arginine-rich foods while promoting lysine-rich
+    foods can be quite effective.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

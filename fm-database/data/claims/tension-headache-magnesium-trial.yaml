@@ -1,0 +1,24 @@
+slug: tension-headache-magnesium-trial
+statement: In an Italian study of children with chronic or episodic tension-type headache,
+  magnesium 180 mg twice daily produced symptom reduction of 87.5%, with 100% achieving
+  at least 50% reduction and analgesic use dropping 65.4%. Adult dosing per Murray
+  protocol — magnesium 150-250 mg (bound to aspartate, citrate, fumarate, malate,
+  or succinate) 2-3 times per day.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- tension-type-headache
+linked_to_supplements:
+- magnesium-citrate
+- magnesium-glycinate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 58 — Headache, Nonmigraine Tension Type, pg 1012-1013
+  quote: A study in Italy showed just how effective magnesium supplementation can
+    be for children with chronic or episodic tension-type headaches. Supplementation
+    with 180 mg magnesium twice per day produced a symptom reduction of 87.5%, with
+    100% of the patients experiencing at least a 50% reduction in symptoms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete magnesium dose with form preferences (organic salts over oxide).
