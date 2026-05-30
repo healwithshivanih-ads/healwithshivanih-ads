@@ -1,0 +1,36 @@
+slug: menorrhagia
+display_name: Menorrhagia (Excessive Menstrual Bleeding)
+aliases:
+- heavy menstrual bleeding
+- excessive menstrual bleeding
+- HMB
+- polymenorrhea
+common_symptoms:
+- pallor-dizziness-breathlessness
+key_mechanisms: []
+related_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- premenstrual-syndrome
+summary: 'Functional menorrhagia (>80 ml blood loss per cycle, bleeding >7 days, cycles
+  <21 days apart, or pad/tampon change every hour for half-day) involves endometrial
+  biochemical abnormalities — chronic iron deficiency, hypothyroidism, vitamin A deficiency,
+  IUDs, and altered arachidonic acid → series-2 prostaglandin metabolism. Key insight:
+  iron deficiency is BOTH a cause and consequence of menorrhagia (vicious cycle).
+  Hypothyroidism is one of the most-missed contributors. Murray''s nutritional protocol
+  — iron, vitamin C + bioflavonoids, vitamin K, omega-3s, B-complex, chasteberry —
+  resolves most cases without medication. Always rule out fibroids, polyps, adenomyosis
+  via imaging.'
+coaching_scope_notes: Coach role — nutrient repletion, dietary anti-inflammatory shift
+  (low AA, high omega-3), chasteberry support. Refer for urgent care if changing pad
+  every 30 min, fainting, severe anaemia, postmenopausal bleeding.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 76 — Menorrhagia
+  quote: Menorrhagia is a common female complaint that may be entirely prevented in
+    many cases by taking proper nutritional measures.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

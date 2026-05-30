@@ -37,6 +37,7 @@ linked_to_topics:
 - psoriasis
 - autoimmune-dermatitis
 - high-blood-pressure
+- menorrhagia
 linked_to_claims:
 - ad-fish-oil-dha-correlates-improvement
 - adhd-omega3-deficiency-brain
@@ -83,7 +84,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 9
+version: 10
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

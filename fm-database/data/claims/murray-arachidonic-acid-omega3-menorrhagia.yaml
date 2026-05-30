@@ -1,0 +1,41 @@
+slug: murray-arachidonic-acid-omega3-menorrhagia
+statement: 'Functional menorrhagia involves abnormal arachidonic acid → series-2 prostaglandin
+  metabolism in the endometrium — the same inflammatory cascade NSAIDs (mefenamic
+  acid, ibuprofen) target. Murray''s dietary approach: REDUCE arachidonic acid sources
+  (meat + dairy — animal foods exclusively) and INCREASE omega-3 fatty acids (fish,
+  nuts, seeds, fish oil supplementation 1,000 mg+ EPA+DHA daily) to shift prostaglandin
+  balance toward less inflammatory series-1 and series-3 metabolites. Effect builds
+  over 2-3 cycles.'
+evidence_tier: strong
+rationale: Multiple prostaglandin biochemistry studies + dietary intervention trials.
+  Mechanism — competitive substrate inhibition at cyclooxygenase; omega-3 EPA produces
+  less inflammatory PGE3 + thromboxane A3 vs AA → PGE2/TXA2.
+coaching_translation: 'Heavy periods are partly driven by inflammatory prostaglandins
+  made from arachidonic acid (in meat + dairy). Shift the balance: reduce animal foods,
+  increase fish, nuts, seeds, fish oil (1,000+ mg EPA+DHA daily). This is the same
+  biochemical pathway NSAIDs target — but without the GI side effects. Builds over
+  2-3 cycles. Stack with iron + chasteberry for the FM heavy-bleeding protocol.'
+caveats:
+- 2-3 cycle window for full effect
+- Vegan trial particularly effective in some
+- Combine with iron repletion + chasteberry
+- Fish oil mild antiplatelet — monitor heavy bleeders carefully
+linked_to_topics:
+- menorrhagia
+- chronic-inflammation
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 76 — Menorrhagia, pg 1255, 1258
+  quote: The endometrium of women who have menorrhagia concentrates arachidonic acid
+    to a much greater extent than normal, resulting in increased production of series
+    2 prostaglandins, which are thought to be the major factor both in the excessive
+    bleeding and in the accompanying menstrual cramps. The diet should be relatively
+    low in meat and dairy products, to reduce the intake of arachidonic acid.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

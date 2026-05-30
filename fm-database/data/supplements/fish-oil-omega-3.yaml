@@ -42,6 +42,7 @@ linked_to_topics:
 - autoimmune-dermatitis
 - atopic-dermatitis
 - high-blood-pressure
+- menorrhagia
 linked_to_claims:
 - gluten-free-reduces-hashimotos-triggers
 - omega-3-modulates-estrogen-receptor-lowers-prostaglandins
@@ -146,7 +147,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 14
+version: 15
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

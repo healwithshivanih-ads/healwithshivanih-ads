@@ -31,6 +31,7 @@ linked_to_topics:
 - autoimmune-dermatitis
 - atopic-dermatitis
 - high-blood-pressure
+- menorrhagia
 linked_to_claims:
 - omega-3-index-8pct-greatest-cvd-protection
 - omega-3s-reduce-cvd-mortality-45pct
@@ -75,7 +76,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 9
+version: 10
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

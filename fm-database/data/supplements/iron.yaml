@@ -22,6 +22,7 @@ linked_to_topics:
 - thyroid-dysfunction
 - hair-loss-women
 - hair-loss
+- menorrhagia
 linked_to_claims:
 - key-nutrients-required-for-thyroid-hormone-production
 - iron-required-for-thyroid-hormone-production
@@ -40,7 +41,7 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: Key Nutrients to Consider in Thyroid Regulation — Routine daily supplementation
   quote: 'Iron: 15-20 mg (in a menstruating woman)'
-version: 3
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani
