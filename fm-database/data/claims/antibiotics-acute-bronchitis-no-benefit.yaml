@@ -1,0 +1,20 @@
+slug: antibiotics-acute-bronchitis-no-benefit
+statement: Antibiotics provide NO benefit in acute bronchitis (90% of which is viral)
+  — confirmed in more than a dozen double-blind trials and explicit American College
+  of Chest Physicians guidance. Despite this, about 70% of doctors still prescribe
+  them. The harms — Candida overgrowth, microbiome disruption, antibiotic resistance.
+  Coach educates clients that fever alone is NOT an indication for antibiotics in
+  bronchitis.
+evidence_tier: strong
+linked_to_topics:
+- bronchitis-and-pneumonia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 29 — Bronchitis and Pneumonia, pg 583
+  quote: The widespread use of antibiotics for the treatment of acute bronchitis is
+    not justified, and vigorous efforts to curtail their use should be encouraged.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach-actionable education to push back on overprescribing.

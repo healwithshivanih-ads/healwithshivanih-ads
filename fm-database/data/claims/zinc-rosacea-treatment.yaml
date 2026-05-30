@@ -1,0 +1,23 @@
+slug: zinc-rosacea-treatment
+statement: Zinc sulfate 23 mg three times daily (about 69 mg elemental/day) for 3
+  months produced significant rosacea symptom reduction in a crossover RCT. Coach-friendly
+  dose — 45 to 60 mg zinc/day for 3 months loading dose, then 20 to 30 mg maintenance.
+  Take with food to prevent mild GI upset (the only reported side effect). Pair with
+  copper 1 to 2 mg/day on extended zinc to prevent copper deficiency.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- rosacea
+linked_to_supplements:
+- zinc-bisglycinate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 90 — Rosacea, pg 1496-1498
+  quote: Twenty-five patients with rosacea were assessed with a clinical score, then
+    randomly allocated to receive either zinc (23 mg from zinc sulfate) or identical
+    placebo capsules three times per day... The authors concluded that zinc is a good
+    option in the treatment of rosacea.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach-prescribable mineral with safety guidance.

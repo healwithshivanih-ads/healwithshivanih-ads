@@ -1,0 +1,34 @@
+slug: fibrocystic-breast-disease
+display_name: Fibrocystic Breast Disease
+aliases:
+- fbd
+- diffuse-cystic-mastopathy
+- benign-breast-disease
+summary: Fibrocystic breast disease is cyclical bilateral breast nodularity with cysts,
+  pain, and tenderness — affecting 20 to 40% of premenopausal women and considered
+  a (modest) breast cancer risk factor. Driven by elevated estrogen-to-progesterone
+  ratio, elevated prolactin, caffeine/methylxanthines (improvement in 75 to 97% with
+  elimination), constipation (women with fewer than 3 BMs/week have 4.5x higher FBD
+  risk via increased estrogen reabsorption), subclinical hypothyroidism, and iodine
+  deficiency. Functional medicine approach centres on caffeine elimination, plant-forward
+  low-fat (<20% kcal) high-fiber diet, lipotropic estrogen clearance (B vitamins,
+  choline, methionine, I3C/DIM), evening primrose oil, vitamin E, and chasteberry
+  for the prolactin lever.
+key_mechanisms:
+- estrogen-enterohepatic-recirculation
+common_symptoms:
+- breast-tenderness
+- fibrocystic-breasts
+related_topics:
+- premenstrual-syndrome
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 51 — Fibrocystic Breast Disease, pg 927-934
+  quote: FBD is apparently the result of an increased estrogen-to-progesterone ratio.
+    However, other hormones are also important. For example, the changes within the
+    breast in FBD may be due to the hormone prolactin.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

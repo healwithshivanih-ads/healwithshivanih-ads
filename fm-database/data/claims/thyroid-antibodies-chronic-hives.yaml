@@ -1,0 +1,21 @@
+slug: thyroid-antibodies-chronic-hives
+statement: In chronic idiopathic hives, screen for anti-thyroid antibodies — a known
+  subset (about 14% in one 624-patient series) carry thyroid autoimmunity, and L-thyroxine
+  treatment of antibody-positive patients produces dramatic remission in a meaningful
+  fraction. Coach should refer for TPO/TG antibody testing in any unexplained chronic
+  urticaria.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hives-urticaria
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 65 — Hives, pg 1102
+  quote: One study evaluated a group of 624 patients with presumed idiopathic chronic
+    hives and/or angioedema. Of these, 90 patients were found to have thyroid antibodies.
+    Forty-six of these patients were treated with L-thyroxine therapy, and eight of
+    them had a remission within four weeks of therapy.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach screening trigger — thyroid antibodies in unexplained chronic hives.

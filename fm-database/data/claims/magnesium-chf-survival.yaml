@@ -1,0 +1,23 @@
+slug: magnesium-chf-survival
+statement: Low magnesium (especially WBC magnesium) is common in CHF and PREDICTS
+  SURVIVAL — at 1 year, 71% survival with normal magnesium vs 45% with low; at 2 years,
+  61% vs 42%. Magnesium also reduces ventricular arrhythmia frequency in digoxin-treated
+  CHF without digoxin toxicity. Coach dose 200 to 300 mg magnesium citrate 1 to 3
+  times daily. WARNING — avoid magnesium supplementation in kidney failure (risk of
+  hypermagnesemia which raises mortality). Monitor serum magnesium in any client on
+  digoxin.
+evidence_tier: strong
+linked_to_topics:
+- congestive-heart-failure
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 40 — CHF, pg 701-702
+  quote: CHF patients with normal levels of magnesium had one- and two-year survival
+    rates of 71% and 61%, respectively, compared with rates of 45% and 42%, respectively,
+    for patients with lower magnesium levels.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Strong evidence + safety guardrail (kidney failure exclusion) coach must
+  teach.

@@ -1,0 +1,24 @@
+slug: lactobacilli-restoration-vaginitis
+statement: The primary goal in treating and preventing recurrent vaginitis is reestablishing
+  vaginal lactobacilli, which maintain pH 3.5 to 4.5, produce hydrogen peroxide, and
+  outcompete pathogens for adherence. Both oral probiotic supplementation AND vaginal
+  douching with a lactobacillus solution (10 billion CFU dissolved in 10 ml water,
+  twice daily) eliminate candidal vaginitis in multiple clinical studies. Women with
+  vaginal yeast overgrowth almost always have GI overgrowth too — treat both compartments.
+evidence_tier: strong
+linked_to_topics:
+- vaginitis
+- vaginal-microbiome-dysbiosis
+linked_to_supplements:
+- lactobacillus-probiotic
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 98 — Vaginitis, pg 1550-1551
+  quote: Several clinical studies have confirmed that the use of lactobacillus in
+    the vagina as well as oral supplementation is effective in eliminating candidal
+    vaginitis and improving the vaginal flora.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach-actionable dual-compartment probiotic protocol.

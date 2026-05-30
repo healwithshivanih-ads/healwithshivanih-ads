@@ -1,0 +1,19 @@
+slug: iron-deficiency-female-infertility
+statement: Iron deficiency is the most common nutritional deficiency in women and
+  a measurable cause of infertility. The Nurses Health Study II found women taking
+  iron supplements had a 60% lower infertility risk. Coach should aim for ferritin
+  70 to 80 ng/ml before conception — well above the typical lab "in-range" floor.
+evidence_tier: strong
+linked_to_topics:
+- female-infertility
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 69 — Female Infertility, pg 1143
+  quote: Results from the Nurses Health Study II suggested that women who consumed
+    iron supplements had a 60% lower risk of infertility than women who did not. Achieving
+    a level of 70 to 80 ng/ml is recommended prior to conception.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific ferritin target for preconception — actionable lab marker.

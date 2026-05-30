@@ -1,0 +1,20 @@
+slug: hypochlorhydria-rosacea
+statement: Rosacea patients commonly have hypochlorhydria or achlorhydria; HCl supplementation
+  produces marked clinical improvement in this subset. Pancreatic lipase secretion
+  is also diminished in rosacea patients, and pancreatic enzyme supplementation (pancreatin
+  8 to 10X USP, 350 to 500 mg before meals) provides additional benefit. Coach trials
+  betaine HCl and digestive enzymes alongside H. pylori screen.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- rosacea
+- hypochlorhydria
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 90 — Rosacea, pg 1493-1499
+  quote: Hydrochloric acid supplementation results in marked improvement in those
+    patients with rosacea who have achlorhydria or hypochlorhydria.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach-actionable digestive support for rosacea root cause.

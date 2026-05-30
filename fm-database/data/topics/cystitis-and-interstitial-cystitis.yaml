@@ -1,0 +1,39 @@
+slug: cystitis-and-interstitial-cystitis
+display_name: Cystitis and Interstitial Cystitis
+aliases:
+- urinary-tract-infection
+- uti
+- bladder-infection
+- painful-bladder-syndrome
+- interstitial-cystitis
+summary: Acute cystitis is bacterial bladder infection (usually E. coli); interstitial
+  cystitis (IC) or painful bladder syndrome (PBS) is chronic non-infectious bladder
+  wall inflammation. UTIs affect 10 to 20% of women yearly; 55% of recurrent UTIs
+  eventually involve the kidneys. Repeated antibiotic use disturbs vaginal lactobacilli
+  and breeds resistant E. coli, fueling recurrence. Functional medicine focuses on
+  increasing urine flow (64 fl oz/day), urine alkalinisation (citrate salts), preventing
+  bacterial adherence (cranberry proanthocyanidins, uva ursi, goldenseal), and restoring
+  the lactobacillus shield around the urethra. For IC/PBS the focus shifts to bladder
+  wall integrity (hyaluronic acid, gotu kola, aloe vera) and removing dietary triggers
+  (coffee, citrus, artificial sweeteners, hot peppers, alcohol).
+key_mechanisms:
+- dysbiosis
+- mucosal-immune-dysfunction
+common_symptoms:
+- urinary-frequency
+- urinary-urgency
+- pelvic-pain
+- urinary-tract-infections
+related_topics:
+- vaginitis
+- vaginal-microbiome-dysbiosis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 43 — Cystitis and Interstitial Cystitis, pg 745-754
+  quote: The primary goal in the natural approach to treating infectious cystitis
+    is enhancing normal host protective measures against UTI.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

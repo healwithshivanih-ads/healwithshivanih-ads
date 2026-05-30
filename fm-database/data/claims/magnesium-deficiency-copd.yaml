@@ -1,0 +1,21 @@
+slug: magnesium-deficiency-copd
+statement: 47% of COPD patients are magnesium deficient — driven largely by inhaled
+  bronchodilators and steroids that deplete it. Magnesium deficiency in COPD correlates
+  with longer hospital stays. IV magnesium is a powerful bronchodilator in acute COPD
+  flares (28% vs 42% hospital admission rate in placebo-controlled trial). Coach must
+  check magnesium status; oral supplementation 200 to 300 mg three times daily (citrate/malate/glycinate
+  forms) is strongly indicated.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- copd
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 38 — COPD, pg 683
+  quote: One group of researchers reported that 47% of people with COPD had a magnesium
+    deficiency. In this study, magnesium deficiency was also linked to increased hospital
+    stays.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Drug-induced nutrient depletion the coach addresses proactively.

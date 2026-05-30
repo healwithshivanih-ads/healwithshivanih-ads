@@ -1,0 +1,25 @@
+slug: fiber-and-vegetarian-diet-gallstones
+statement: Gallstones are a Western-diet disease. High-fiber soluble-fiber-rich diets
+  prevent gallstone formation by binding deoxycholic acid in the gut (which otherwise
+  reduces cholesterol solubility in bile) and promoting its excretion. Vegetarian
+  diets in matched-cohort comparisons show significantly lower gallstone prevalence.
+  Animal protein (especially dairy casein) raises gallstone risk; vegetable proteins
+  (soy, buckwheat) lower it. Coach prescribes plant-forward pattern, soluble fiber
+  emphasis.
+evidence_tier: strong
+linked_to_topics:
+- gallstones
+- constipation
+linked_to_supplements:
+- psyllium-husk
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 53 — Gallstones, pg 961-963
+  quote: A diet high in fiber, especially soluble fiber, which is capable of binding
+    to deoxycholic acid, is extremely important in both the prevention and the reversal
+    of gallstones.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Foundational pattern shift for any gallstone client.

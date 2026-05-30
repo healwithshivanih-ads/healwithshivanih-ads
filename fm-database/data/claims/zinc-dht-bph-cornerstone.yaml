@@ -1,0 +1,23 @@
+slug: zinc-dht-bph-cornerstone
+statement: Adequate zinc intake and absorption is paramount in BPH management. Zinc
+  inhibits 5-alpha- reductase (the enzyme converting testosterone to DHT), blocks
+  androgen receptor binding, and inhibits pituitary prolactin (which would otherwise
+  drive prostate testosterone uptake). Zinc absorption is impaired by elevated estrogens
+  and high-meat diets — both of which are common in BPH. Coach screens zinc status
+  (RBC or plasma) and supplements 15 to 30 mg/day alongside lower red meat intake.
+evidence_tier: strong
+linked_to_topics:
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- zinc-bisglycinate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 87 — BPH, pg 1441-1442
+  quote: Paramount in an effective BPH treatment plan is adequate zinc intake and
+    absorption. Studies done in the 1970s showed that zinc supplementation reduces
+    the size of the prostate and decreases symptoms in the majority of patients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Foundational mineral for any BPH client.

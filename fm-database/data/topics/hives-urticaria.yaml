@@ -1,0 +1,38 @@
+slug: hives-urticaria
+display_name: Hives (Urticaria)
+aliases:
+- urticaria
+- hives
+- wheals
+- angioedema
+summary: Hives are histamine-driven wheal-and-flare skin lesions from mast cell or
+  basophil degranulation. Acute hives resolve in under six weeks; chronic hives persist
+  beyond. In adults the leading triggers are drugs (penicillin family, aspirin/NSAIDs),
+  food allergies, food additives (tartrazine, benzoates, sulfites, BHT/BHA), Candida
+  overgrowth, chronic infections, stress, and low/autoimmune thyroid. Up to 85% of
+  chronic-hives patients show gut digestive dysfunction (low gastric acid, altered
+  motility) that increases allergen absorption. Functional medicine work-up focuses
+  on elimination diet, additive avoidance, gut/digestion repair, and treating thyroid
+  antibodies when present.
+key_mechanisms:
+- mast-cell-degranulation-histamine-release
+- mast-cell-degranulation
+- leaky-gut
+common_symptoms:
+- skin-itching
+- skin-rash
+- urticaria-hives
+related_topics:
+- histamine-intolerance
+- mast-cell-activation-syndrome
+- food-allergy-ige-mediated
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 65 — Hives (Urticaria), pg 1089-1104
+  quote: The basic cause of hives involves the release of inflammatory mediators from
+    mast cells or basophils.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

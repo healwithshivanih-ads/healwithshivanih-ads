@@ -1,0 +1,21 @@
+slug: h-pylori-rosacea-eradication
+statement: H. pylori (especially CagA-positive strains) is found in 67% of rosacea
+  patients vs 32% of controls and drives flushing via histamine, prostaglandins, and
+  leukotrienes. Eradication of H. pylori cleared rosacea symptoms in 51 of 53 patients
+  in one series — and 19 of 20 acne rosacea patients tested positive in another Irish
+  study. Coach screens H. pylori (stool antigen or breath test) in any persistent
+  rosacea client and refers for eradication.
+evidence_tier: strong
+linked_to_topics:
+- rosacea
+- h-pylori-infection
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 90 — Rosacea, pg 1493-1495
+  quote: After eradication of H. pylori infection in the rosacea patients, symptoms
+    disappeared in almost all patients (51 of 53).
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: High-yield diagnostic — H. pylori screen for any rosacea client.

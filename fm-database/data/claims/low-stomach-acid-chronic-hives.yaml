@@ -1,0 +1,25 @@
+slug: low-stomach-acid-chronic-hives
+statement: Up to 85% of chronic hives patients show altered digestive function. In
+  one study of 77 chronic hives patients, 31% had no gastric acid output and 53% had
+  low acid output; treatment with hydrochloric acid plus B-complex produced impressive
+  clinical results. Address gastric acidity, motility, and gut barrier integrity in
+  any chronic urticaria work-up.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hives-urticaria
+- histamine-intolerance
+linked_to_mechanisms:
+- leaky-gut
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 65 — Hives, pg 1095
+  quote: In one study of 77 patients with chronic hives, 24 (31%) were diagnosed as
+    having no gastric acid output, and 41 (53%) were shown to have low gastric acid
+    output. Treatment with a hydrochloric acid supplement and a vitamin B complex
+    gave impressive clinical results.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Surfaces low HCl as a hidden driver — coach can screen via Heidelberg or
+  trial.

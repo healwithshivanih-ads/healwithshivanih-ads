@@ -1,0 +1,32 @@
+slug: hemorrhoids
+display_name: Hemorrhoids
+aliases:
+- piles
+- haemorrhoids
+- anal varices
+summary: Hemorrhoids are engorged, prolapsed venous cushions of the anal canal driven
+  by chronic straining, low-fiber diet, prolonged sitting/standing, and pelvic congestion.
+  The rectal veins lack valves, so any pressure increase (constipation, pregnancy,
+  portal congestion from liver disease) promotes formation. Functional medicine approach
+  centers on a high-fiber plant-rich diet, soluble fiber supplements (psyllium), venotonic
+  flavonoids, and topical/hydrotherapy for symptom relief.
+key_mechanisms:
+- venous-return-enhancement
+- chronic-inflammation
+common_symptoms:
+- rectal-bleeding
+- skin-itching
+- constipation
+related_topics:
+- constipation
+- varicose-veins
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 60 — Hemorrhoids, pg 1025-1029
+  quote: A high-fiber diet is perhaps the most important component in the prevention
+    of hemorrhoids.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

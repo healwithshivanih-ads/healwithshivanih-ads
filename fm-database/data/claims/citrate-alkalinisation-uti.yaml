@@ -1,0 +1,20 @@
+slug: citrate-alkalinisation-uti
+statement: Alkalinising the urine with citrate salts (potassium citrate or sodium
+  citrate, 125 to 250 mg elemental three to four times per day) provides symptomatic
+  relief in 80% of women with acute UTI symptoms within 48 hours, regardless of bacterial
+  culture status. Alkaline urine also maximises the antimicrobial action of berberine
+  (goldenseal) and hydroquinone (uva ursi). Coach uses citrate as bridge therapy while
+  urine culture is pending.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cystitis-and-interstitial-cystitis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 43 — Cystitis, pg 748-749
+  quote: Women presenting with symptoms of a UTI were given 4 g sodium citrate every
+    8 hours for 48 hours. Of the 64 women evaluated, 80% had relief of symptoms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Bridge therapy during acute UTI workup — coach can recommend OTC citrate.

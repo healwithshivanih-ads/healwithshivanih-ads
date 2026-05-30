@@ -1,0 +1,21 @@
+slug: chlamydia-male-infertility
+statement: Chronic chlamydia infection of the male genitourinary tract (urethra, prostate,
+  seminal vesicles, epididymis) is the most common and serious infection causing male
+  infertility — 28 to 71% of infertile men show evidence of chlamydial infection,
+  often asymptomatic. Chlamydia produces antisperm antibodies and reproductive tract
+  scarring paralleling tubal damage in women. Both partners must be tested and treated.
+  Antibiotics (tetracyclines, erythromycin) are required but eradication can be incomplete
+  since chlamydia is intracellular.
+evidence_tier: strong
+linked_to_topics:
+- male-infertility-oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 70 — Male Infertility, pg 1156
+  quote: It is estimated that 28 to 71% of infertile men show evidence of a chlamydial
+    infection.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Clinician-referral screen — chlamydia testing in any unexplained male infertility.

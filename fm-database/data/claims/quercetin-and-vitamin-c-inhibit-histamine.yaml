@@ -1,0 +1,24 @@
+slug: quercetin-and-vitamin-c-inhibit-histamine
+statement: Quercetin (200 to 400 mg twenty minutes before each meal; or EMIQ 50 to
+  100 mg before each meal) inhibits both the manufacture and the release of histamine
+  from mast cells and basophils. Vitamin C at 2,000 mg/day or more prevents histamine
+  secretion by white blood cells and increases its detoxification — useful in any
+  allergy-driven skin reaction.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hives-urticaria
+- histamine-intolerance
+linked_to_supplements:
+- quercetin
+- vitamin-c
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 65 — Hives, pg 1101-1104
+  quote: Vitamin C prevents the secretion of histamine by white blood cells and increases
+    the detoxification of histamine. Dosages of at least 2,000 mg per day appear necessary
+    to produce these effects.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific quercetin and vitamin C doses for mast-cell modulation.

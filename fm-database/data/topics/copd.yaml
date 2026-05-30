@@ -1,0 +1,34 @@
+slug: copd
+display_name: Chronic Obstructive Pulmonary Disease
+aliases:
+- chronic-obstructive-pulmonary-disease
+- chronic-bronchitis
+- emphysema
+summary: COPD covers two overlapping forms — chronic bronchitis (inflamed mucus-producing
+  bronchial linings) and emphysema (destroyed alveoli). Smoking is the leading cause;
+  secondhand smoke, occupational gases, indoor biomass cooking smoke without ventilation,
+  and rare alpha-1 antitrypsin deficiency are other drivers. Generally irreversible.
+  Functional medicine focus is on (1) mucus expectoration (lobelia, ivy leaf, salt
+  pipe, bottle blowing), (2) mucolysis (NAC, bromelain, guaifenesin), (3) immune support,
+  (4) reducing lung inflammation (antioxidants, omega-3). Up to 47% of COPD patients
+  are magnesium deficient (driven by inhaled steroids and beta agonists) — oral magnesium
+  is strongly indicated and IV magnesium acts as a bronchodilator in acute flares.
+key_mechanisms:
+- chronic-inflammation
+- oxidative-stress
+common_symptoms:
+- shortness-of-breath
+- chronic-fatigue
+related_topics:
+- asthma
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 38 — COPD, pg 681-686
+  quote: 'The natural approach to COPD involves four primary goals: stimulation of
+    normal processes that promote the expectoration of mucus, thinning the mucus to
+    aid expectoration, enhancement of immune function, and reduction of lung inflammation.'
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

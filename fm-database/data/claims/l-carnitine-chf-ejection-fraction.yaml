@@ -1,0 +1,22 @@
+slug: l-carnitine-chf-ejection-fraction
+statement: L-carnitine 500 mg three times daily (1.5 g/day) measurably improves cardiac
+  function in CHF — at 6 months, 25.9% increase in max exercise time and 13.6% increase
+  in ejection fraction. In a 3-year study of 80 patients with dilated cardiomyopathy
+  NYHA III to IV, carnitine 2 g/day produced significantly better survival vs placebo
+  (1 death vs 6 deaths). Coach prescribes L-carnitine alongside CoQ10 for any CHF
+  client.
+evidence_tier: strong
+linked_to_topics:
+- congestive-heart-failure
+linked_to_supplements:
+- l-carnitine
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 40 — CHF, pg 703-704
+  quote: After six months of use, the carnitine group demonstrated a 25.9% increase
+    in maximum exercise time and a 13.6% increase in ventricular ejection fraction.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific carnitine dose with mortality endpoint — coach-prescribable.

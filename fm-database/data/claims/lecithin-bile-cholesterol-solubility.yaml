@@ -1,0 +1,22 @@
+slug: lecithin-bile-cholesterol-solubility
+statement: Lecithin (phosphatidylcholine) is the primary cholesterol solubiliser in
+  bile. Dosing 100 mg three times daily measurably raises biliary lecithin; higher
+  doses (up to 10 g) raise it more. Used as supportive therapy for cholesterol-saturated
+  bile alongside fiber and weight management — won't dissolve existing stones on its
+  own but improves bile composition.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- gallstones
+linked_to_supplements:
+- phosphatidylcholine
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 53 — Gallstones, pg 965
+  quote: Taking as little as 100 mg lecithin three times per day will increase the
+    concentration of lecithin in the bile, while larger doses (up to 10 g) produce
+    even greater increases.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Adjunctive supplement for bile sluggishness — coach prescribes lecithin/PC.

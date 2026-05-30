@@ -1,0 +1,36 @@
+slug: congestive-heart-failure
+display_name: Congestive Heart Failure
+aliases:
+- chf
+- heart-failure
+- systolic-heart-failure
+summary: Congestive heart failure (CHF) is the inability of the heart to pump enough
+  blood, leading to fluid backup, reduced kidney perfusion, sodium retention, and
+  compensatory tachycardia with cardiac remodelling. Most often caused by long-standing
+  hypertension, prior MI, valve disease, cardiomyopathy, or chronic lung disease.
+  Always characterised by impaired myocardial energy production, which responds to
+  nutritional repletion. Functional medicine focus — low-sodium high-potassium diet
+  (sodium <1.8 g/day), magnesium (low levels predict mortality), thiamine (often depleted
+  by furosemide), L-carnitine and CoQ10 for mitochondrial energy. Natural measures
+  most effective in NYHA stages I and II; adjunctive in stages III and IV alongside
+  conventional ACE/diuretic/digitalis therapy.
+key_mechanisms:
+- chronic-inflammation
+- oxidative-stress
+common_symptoms:
+- shortness-of-breath
+- edema
+related_topics:
+- hypertension
+- atherosclerosis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 40 — Congestive Heart Failure, pg 698-707
+  quote: The natural approach focuses on improving energy production within the heart
+    muscle, as CHF is always characterized by impaired energy production within the
+    myocardium.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

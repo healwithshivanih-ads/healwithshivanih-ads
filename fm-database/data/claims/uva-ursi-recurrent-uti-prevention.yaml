@@ -1,0 +1,20 @@
+slug: uva-ursi-recurrent-uti-prevention
+statement: Uva ursi (Arctostaphylos uva ursi) leaves contain 6 to 10% arbutin which
+  converts to hydroquinone in alkaline urine and prevents bacterial growth. In a 12-month
+  double-blind trial of 57 women, 5/27 placebo patients recurred but ZERO of 30 uva
+  ursi patients did. Always pair with urine alkalinisation (potassium or sodium citrate)
+  for full effect. WARNING — dosages above 0.5 oz dried leaves can cause hydroquinone
+  toxicity; not for long- term self-care.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cystitis-and-interstitial-cystitis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 43 — Cystitis, pg 751-752
+  quote: At the end of one year, 5 of 27 women in the placebo group had a recurrence,
+    while none of the 30 women receiving the uva ursi extract had a recurrence.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach screens for safety — short-course only, clinician-supervised.

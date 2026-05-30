@@ -1,0 +1,23 @@
+slug: thiamine-furosemide-depletion-chf
+statement: Furosemide (Lasix) depletes thiamine — 98% of patients on >=80 mg/day furosemide
+  and 57% on 40 mg/day show biochemical thiamine deficiency. Thiamine 200 to 250 mg/day
+  repletion raises left ventricular ejection fraction by 13 to 22% — a survival-relevant
+  gain. Coach prescribes thiamine to any CHF client on chronic furosemide; thiamine
+  deficiency itself causes wet beriberi heart failure.
+evidence_tier: strong
+linked_to_topics:
+- congestive-heart-failure
+linked_to_supplements:
+- thiamin-b1
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 40 — CHF, pg 702-703
+  quote: Several subsequent studies have shown that daily doses of 80 to 240 mg thiamine
+    per day resulted in a 13% to 22% increase of left ventricular ejection fraction.
+    In one study, biochemical evidence of severe thiamine deficiency was found in
+    98% of patients receiving at least 80 mg per day of furosemide.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Drug-induced nutrient depletion — coach addresses proactively.

@@ -1,0 +1,21 @@
+slug: iron-deficiency-bidirectional-menorrhagia
+statement: Iron deficiency both CAUSES and RESULTS FROM menorrhagia — bidirectional.
+  In a 83-patient series 74 responded to iron alone (organic disease excluded); a
+  placebo-controlled trial showed 75% improvement with iron vs 32.5% placebo. Serum
+  ferritin is the first marker to drop — coach must order it (Hb/MCV/MCH stay normal
+  until late). For confirmed low ferritin, iron 30 mg twice daily between meals (or
+  30 mg three times with meals if GI intolerance) in a well-tolerated form like glycinate.
+evidence_tier: strong
+linked_to_topics:
+- menorrhagia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 76 — Menorrhagia, pg 1255-1259
+  quote: A significant double-blind placebo-controlled study displaying improvement
+    in 75% of those given iron supplementation, compared with 32.5% of those given
+    the placebo.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Foundational coach intervention with measurable lab marker.

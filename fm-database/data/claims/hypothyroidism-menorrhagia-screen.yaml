@@ -1,0 +1,19 @@
+slug: hypothyroidism-menorrhagia-screen
+statement: Even minimal/subclinical hypothyroidism is a common cause of menorrhagia.
+  Patients often show dramatic response to thyroid hormone replacement. Coach must
+  screen TSH (and ideally free T4, free T3, TPO/TG antibodies) in any unexplained
+  heavy bleeding before assuming it's hormonal in the estrogen-progesterone sense.
+evidence_tier: strong
+linked_to_topics:
+- menorrhagia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 76 — Menorrhagia, pg 1255
+  quote: A common cause of functional menorrhagia is hypothyroidism. Even minimal
+    thyroid dysfunction may be responsible for menorrhagia and other menstrual disturbances.
+    These patients often show dramatic response to thyroid hormone replacement.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach screens thyroid as early step in heavy-bleed work-up.

@@ -1,0 +1,22 @@
+slug: coq10-chf-mitochondrial
+statement: CoQ10 100 mg/day improves CHF symptoms and reduces hospitalisations in
+  multiple trials — largest study of 2,664 NYHA II to III patients showed 54% had
+  improvement in 3+ symptoms. In advanced CHF, plasma CoQ10 often fails to reach the
+  2.5 mcg/ml threshold on ubiquinone alone — switching to UBIQUINOL (450 to 900 mg/day)
+  raised plasma CoQ10 from 1.6 to 6.5 mcg/ml and ejection fraction from 22% to 39%.
+  Coach prescribes ubiquinol form for any client on statins or with advanced CHF.
+evidence_tier: strong
+linked_to_topics:
+- congestive-heart-failure
+linked_to_supplements:
+- coq10
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 40 — CHF, pg 705-706
+  quote: Average plasma CoQ10 levels increased from 1.6 mcg/ml to 6.5 mcg/ml. The
+    average ejection fraction improved from 22% to 39%.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Critical form-distinction — ubiquinol vs ubiquinone in advanced CHF.

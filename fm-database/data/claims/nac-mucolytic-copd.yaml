@@ -1,0 +1,20 @@
+slug: nac-mucolytic-copd
+statement: N-acetylcysteine (NAC) 200 mg three times daily is a clinically proven
+  mucolytic for COPD, helping clear bronchial mucus by breaking disulphide bonds in
+  airway secretions. In more serious cases NAC can be inhaled together with glutathione
+  to additionally reduce lung inflammation. Use alongside hydration, expectorants,
+  and any bronchodilator regimen.
+evidence_tier: strong
+linked_to_topics:
+- copd
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 38 — COPD, pg 682-686
+  quote: An especially useful therapy for COPD is the use of oral NAC (N-acetylcysteine);
+    in more serious cases it can be inhaled with the addition of glutathione. The
+    NAC acts as a mucolytic.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: First-line natural mucolytic — coach-recommendable supplement.

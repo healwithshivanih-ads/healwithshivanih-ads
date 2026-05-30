@@ -1,0 +1,21 @@
+slug: rosacea-trigger-avoidance
+statement: First-line rosacea coaching — eliminate flush triggers — hot beverages,
+  alcohol, spicy foods, refined sugars, trans fats (margarine, shortening, fried foods),
+  milk and milk products, plus avoid extreme heat/cold, excessive sun, and hot baths/showers.
+  CAUTION — high-dose B-complex (especially riboflavin, B6, B12) can AGGRAVATE rosacea
+  in a subset of patients (documented case reports) — start low and watch for paradoxical
+  flare.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- rosacea
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 90 — Rosacea, pg 1493-1498
+  quote: Although B vitamins are important for patients with rosacea, care must be
+    exercised because some patients' rosacea may be aggravated by large dosages of
+    these common nutrients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Trigger education plus safety warning on B-vitamin paradox.

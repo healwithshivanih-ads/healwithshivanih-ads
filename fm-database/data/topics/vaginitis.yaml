@@ -1,0 +1,38 @@
+slug: vaginitis
+display_name: Vaginitis
+aliases:
+- vulvovaginitis
+- vaginal-infection
+- bacterial-vaginosis
+- candidal-vaginitis
+summary: Vaginitis is an infection or dysbiosis of the vaginal tract. 90% of vulvovaginitis
+  is caused by Candida albicans (cottage-cheese discharge with vulvar itching), Gardnerella
+  vaginalis (bacterial vaginosis — fishy odour, gray discharge) or Trichomonas vaginalis
+  (frothy green- yellow discharge, sexually transmitted). Predisposing factors include
+  antibiotic use, oral contraceptives, steroids, diabetes, pregnancy, panty hose (three-fold
+  increase vs cotton), gastrointestinal candida reservoir, and douching that disrupts
+  vaginal lactobacilli. Chronic vaginitis is a leading reservoir for recurrent UTIs.
+  Functional medicine approach centres on restoring lactobacilli dominance with oral
+  plus topical probiotics, addressing GI candida, removing simple sugars/yeast foods,
+  and selective topical antiseptics (boric acid, tea tree, povidone-iodine) for active
+  infection.
+key_mechanisms:
+- dysbiosis
+- mucosal-immune-dysfunction
+common_symptoms:
+- vaginal-itching
+- vaginal-discharge
+related_topics:
+- vaginal-microbiome
+- vaginal-microbiome-dysbiosis
+- chronic-candidiasis
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 98 — Vaginitis, pg 1545-1554
+  quote: 'Approximately 90% of cases of vulvovaginitis will be associated with one
+    of three organisms: Trichomonas vaginalis, Candida albicans, or Gardnerella vaginalis.'
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: folate-cervical-dysplasia-ocp
+statement: Folate deficiency is a major cofactor in cervical dysplasia — especially
+  for women on oral contraceptives, who develop localized folate metabolism interference
+  even with normal serum levels (use erythrocyte folate as the tissue marker). In
+  RCTs of OCP-using women with dysplasia, folic acid 10 mg/day produced normalization
+  rates of 20 to 100% across studies, vs typical untreated regression of just 1.3%
+  for mild and 0% for moderate dysplasia. Low RBC folate independently associates
+  with high-risk HPV persistence.
+evidence_tier: strong
+linked_to_topics:
+- cervical-dysplasia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 36 — Cervical Dysplasia, pg 657-658
+  quote: In controlled clinical studies of women with cervical dysplasia taking oral
+    contraceptives, a very high dosage of folic acid (10 mg per day) resulted in the
+    improvement or normalization of Pap smears.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific high-dose folate protocol for OCP-using clients with abnormal
+  Pap.

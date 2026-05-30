@@ -1,0 +1,37 @@
+slug: rosacea
+display_name: Rosacea
+aliases:
+- acne-rosacea
+- erythematotelangiectatic-rosacea
+- papulopustular-rosacea
+summary: Rosacea is a chronic vascular inflammatory facial skin disorder — flushing,
+  persistent erythema, papules/pustules on cheeks/nose, sometimes progressing to rhinophyma
+  or ocular involvement. Affects 13+ million Americans, women 3x more often but more
+  severely in men. Triggered by hot drinks, alcohol, spicy foods, sun, temperature
+  extremes, and stress. Functional medicine drivers — hypochlorhydria (responds to
+  HCl supplementation), Helicobacter pylori (CagA strain — 67% rosacea vs 32% controls;
+  eradication clears symptoms in 51 of 53 patients), food allergies, and B vitamin
+  deficiency. Coach focus is gastric acid restoration, H. pylori screening/eradication
+  referral, trigger food elimination, zinc 45 to 60 mg/day for 3 months then 20 to
+  30 mg maintenance.
+key_mechanisms:
+- hypochlorhydria
+- chronic-inflammation
+common_symptoms:
+- skin-rash
+- flushing
+related_topics:
+- acne-vulgaris
+- h-pylori-infection
+- hypochlorhydria
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 90 — Rosacea, pg 1491-1499
+  quote: The natural approach to rosacea is to try to identify and eliminate contributing
+    factors if possible. Key factors to address are hypochlorhydria, eradication of
+    Helicobacter pylori, elimination of food allergies, and optimal intake of B vitamins.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

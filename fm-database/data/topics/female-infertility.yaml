@@ -1,0 +1,34 @@
+slug: female-infertility
+display_name: Female Infertility
+aliases:
+- infertility-female
+- female-subfertility
+summary: Female infertility is the inability to conceive after 12 months of regular
+  unprotected intercourse. Ovulation disorders (40% — including PCOS, thyroid, hyperprolactinemia,
+  premature ovarian failure), tubal factors (30%), endometriosis (15%), and uterine/cervical
+  factors are the main drivers. Age (especially after 31), body fat percentage outside
+  20-25%, smoking, caffeine, alcohol, environmental toxicants, and iron deficiency
+  all measurably reduce fecundity. Functional medicine approach centers on preconception
+  nutrition (Mediterranean pattern, whole-fat dairy, plant protein, low GI carbs,
+  iron, antioxidants), removing inhibitors (smoking, alcohol, caffeine, toxins), and
+  herbs like chasteberry to address prolactin-driven cycle irregularities.
+key_mechanisms:
+- oxidative-stress
+- hpa-axis-dysregulation
+common_symptoms:
+- irregular-periods
+- infertility-female
+- infertility
+related_topics:
+- pcos-fertility
+- endometriosis
+- male-infertility-oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 69 — Infertility (Female), pg 1137-1148
+  quote: A woman's fertility is usually a reflection of her general health and well-being.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
