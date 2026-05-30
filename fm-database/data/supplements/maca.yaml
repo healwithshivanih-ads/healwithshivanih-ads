@@ -1,0 +1,93 @@
+slug: maca
+display_name: Maca (Lepidium meyenii)
+aliases:
+- Peruvian ginseng
+- lepidium-meyenii
+- gelatinized maca
+- maca-go
+- black maca
+- red maca
+category: herb
+forms_available:
+- powder
+- capsule
+- liquid
+- whole_food
+typical_dose_range:
+  capsule:
+    min: 1500
+    max: 3500
+    unit: mg
+  powder:
+    min: 1500
+    max: 3500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms: []
+notes_for_coach: 'Adaptogen from the Peruvian Andes. Mechanism distinct from phytoestrogenic
+  herbs —
+
+  Maca contains no plant estrogens or hormones; its plant sterols stimulate the
+
+  HPA axis directly (hypothalamus, pituitary, adrenal). Result: the body produces
+
+  more of its own estradiol while cortisol drops.
+
+
+  Forms — gelatinized (heat-treated, easier on digestion + more concentrated) preferred
+
+  over raw powder for menopausal symptoms. Standardised Maca-GO extract has the most
+
+  trial evidence (Meissner 2006).
+
+
+  Dose — Maca-GO trial used 2 g/day (1,000 mg × 2). Raw powdered maca trials use
+
+  3.5 g/day for 6 weeks. Effects typically appear within 2 months.
+
+
+  Multi-symptom — works across hot flushes, insomnia, depression, nervousness,
+
+  concentration, sexual dysfunction. Small bone density benefit. Less narrowly
+
+  targeted than black cohosh.
+
+  '
+notes_for_client: 'Maca is a Peruvian root that helps your body make its own estrogen
+  rather than
+
+  adding estrogen from outside. It works gently on multiple menopausal symptoms —
+
+  mood, hot flushes, energy, libido — and often takes 4-8 weeks to show effects.
+
+  Use the gelatinized form for better tolerance.
+
+  '
+evidence_tier: plausible_emerging
+contraindications:
+  conditions:
+  - hormone-sensitive cancers (use with clinician guidance — direction of effect on
+    tumour estrogens unclear)
+  - thyroid disease (maca contains glucosinolates — limit raw maca to ≤ 5 g/day; gelatinized
+    form is preferred)
+  medications: []
+  life_stages:
+  - pregnancy (insufficient safety data)
+  - breastfeeding (insufficient safety data)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1246–1247
+  quote: Maca can increase the body's production of estrogen — vs. simply adding estrogen
+    replacement to the body — and reduce levels of cortisol. The herb appears not
+    to contain plant estrogens or hormones.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

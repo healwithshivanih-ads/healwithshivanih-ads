@@ -1,0 +1,39 @@
+slug: murray-flaxseed-halves-hot-flashes
+statement: Ground flaxseed at 2 tablespoons twice daily (~25 g/day) reduced hot flash
+  frequency by ~50% and intensity by 57% within 6 weeks in menopausal women — driven
+  by lignan-derived phytoestrogens (enterodiol and enterolactone) produced by gut
+  bacteria from secoisolariciresinol diglucoside (SDG).
+evidence_tier: plausible_emerging
+rationale: Pruthi 2007 single-arm trial + several subsequent RCTs (Lemay 2002, Pruthi
+  2012 controlled). Effect size meaningful and reproducible across multiple studies.
+  The gut-microbiome lignan-conversion step explains inter-individual variability
+  — clients with disturbed microbiomes (recent antibiotics, low fibre) may respond
+  less. Bonus benefit on lipid panel + bowel regularity.
+coaching_translation: 2 tablespoons of ground flax twice daily — about 25 g/day —
+  can cut hot flushes in half within 6 weeks. Always ground (not whole), refrigerated,
+  and split across meals. Buys you cardiovascular + bowel benefits at the same time.
+  Skip if recent antibiotics — needs healthy gut flora to convert the lignans.
+caveats:
+- MUST be ground; whole seeds pass through largely unabsorbed
+- Refrigerate ground flax — high omega-3 oxidation
+- High soluble fibre — start with 1 tbsp and titrate to avoid GI upset
+- Gut microbiome quality affects conversion to active lignans
+- Avoid in active bowel obstruction
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- flax-seed
+- flaxseed-oil
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1242
+  quote: Women who consumed 2 tbsp of flaxseed twice per day halved their number of
+    hot flashes within six weeks and reduced the intensity of the hot flashes by 57%.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

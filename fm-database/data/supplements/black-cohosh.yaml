@@ -12,9 +12,12 @@ take_with_food: required
 linked_to_topics:
 - testosterone-health
 - testosterone-dht-conversion
+- perimenopause-and-menopause
+- menopause
 linked_to_claims:
 - 5ar-inhibition-reduces-bph-hair-loss-acne
 - 5ar-inhibitors-reduce-dht-prevent-bph-hair-loss-acne
+- murray-black-cohosh-vs-conjugated-estrogen
 notes_for_coach: Listed as a 5-α reductase inhibitor. More commonly used in FM for
   menopausal symptom relief. Clinician should supervise use especially in women with
   hormone-sensitive conditions.
@@ -30,7 +33,10 @@ sources:
 - id: vitaone-health-coaching-toolkit
   location: 'Maintaining Healthy Testosterone Levels: 5-a Reductase Inhibitors'
   quote: Black Cohosh (Actaea racemosa) [listed under Herbs that Inhibit 5-a Reductase]
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause
+  quote: Comprehensive natural treatment summary for menopausal symptoms.
+version: 3
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani

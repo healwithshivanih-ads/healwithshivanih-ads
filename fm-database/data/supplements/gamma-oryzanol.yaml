@@ -18,9 +18,12 @@ linked_to_topics:
 - menopause
 - hot-flashes
 - menopausal-migraine
+- atherogenic-dyslipidemia
+- dyslipidemia
 linked_to_mechanisms:
 - estrogen-signaling
-linked_to_claims: []
+linked_to_claims:
+- murray-gamma-oryzanol-dual-menopause-lipid
 notes_for_coach: Mixture of ferulic acid esters from rice bran oil. Pizzorno includes
   gamma-oryzanol among supplements for menopausal vasomotor symptoms and menopausal
   migraine. Typical research dose 300 mg/day. Generally well tolerated.
@@ -37,7 +40,10 @@ sources:
   location: Menopause — Hot flashes / Menopausal migraine (pp 625)
   quote: Vitamin E, Gamma-oryzanol... listed as natural interventions for hot flashes
     and menopausal migraine.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause
+  quote: Comprehensive natural treatment summary for menopausal symptoms.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

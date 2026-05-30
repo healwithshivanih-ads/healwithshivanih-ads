@@ -1,0 +1,36 @@
+slug: murray-pycnogenol-multi-symptom-perimenopause
+statement: Pine bark procyanidolic oligomers (Pycnogenol, 100 mg twice daily for 6
+  months) significantly improved depression, vasomotor symptoms, memory, anxiety,
+  sexual function, and sleep in 230 perimenopausal Taiwanese women aged 45–55 — with
+  benefits visible as early as one month.
+evidence_tier: plausible_emerging
+rationale: Yang 2007 DB-RCT — single trial but well-powered (n=230), broad symptom
+  benefit, and corroborated by similar PCO/grape-seed-extract data. Mechanism — vascular
+  endothelial protection + NO-mediated vasodilation explains the vasomotor + sexual
+  function effects; flavonoid antioxidant effect plausibly underlies mood + memory.
+coaching_translation: Pycnogenol (pine bark extract) at 100 mg twice daily for 6 months
+  helped across all the perimenopausal complaints in a 230-woman trial — mood, hot
+  flushes, memory, anxiety, sex, sleep. Effect started within a month. A reasonable
+  single supplement when symptoms are mixed and not dominated by hot flushes alone.
+caveats:
+- 6-month trial duration — short-term effects may be smaller
+- Standardised pine bark extract ≥95% procyanidolic oligomers needed
+- Grape seed extract is an interchangeable PCO source
+- Mild antiplatelet — caution + anticoagulants
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+linked_to_supplements:
+- pycnogenol
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1243
+  quote: PCOs significantly improved both the severity and the frequency of problems
+    relating to depression, vasomotor symptoms, memory, anxiety, sexual function,
+    and sleep as soon as one month after the treatment was started.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

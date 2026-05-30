@@ -1,0 +1,42 @@
+slug: murray-maca-raises-own-estradiol-lowers-cortisol
+statement: Maca (Lepidium meyenii, 2 g/day gelatinized Maca-GO over 4 months) increased
+  women's own estradiol production and decreased FSH and cortisol — distinct from
+  HRT or phytoestrogenic herbs because maca contains no plant estrogens or hormones.
+  Its plant sterols are thought to stimulate the hypothalamic-pituitary-adrenal-ovarian
+  axis directly, producing benefit across hot flushes, insomnia, depression, nervousness,
+  and concentration, with a small bone density gain.
+evidence_tier: plausible_emerging
+rationale: Meissner 2006 DB-RCT in early postmenopause + Brooks 2008 14-woman DB-RCT
+  both cited. Mechanism (HPA-axis stimulation rather than receptor agonism) explains
+  the multi-symptom effect. Smaller sample sizes than black cohosh evidence base;
+  effect size on individual hormone markers modest but consistent direction.
+coaching_translation: 'Unlike most menopausal herbs that ADD estrogen-like compounds,
+  maca helps your body MAKE more of its own estrogen — while also lowering stress
+  hormone (cortisol). That''s why it tends to work on multiple symptoms at once: hot
+  flushes, mood, sleep, energy, libido. Trial dose: 2 g/day gelatinized maca, give
+  it 8 weeks.'
+caveats:
+- Gelatinized maca (heat-treated, more concentrated, better tolerated) preferred over
+  raw powder
+- Standardised Maca-GO has most trial evidence
+- Raw maca is goitrogenic — limit to ≤ 5 g/day if any thyroid concern; gelatinized
+  form is safer
+- Effects gradual — 4-8 weeks before noticeable
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- hpa-axis-cortisol-regulation
+linked_to_supplements:
+- maca
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1246–1247
+  quote: After two months, estrogen (specifically estradiol) production had increased
+    and FSH and cortisol had decreased. The maca also had a small effect on increasing
+    bone density and alleviated numerous menopausal symptoms.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

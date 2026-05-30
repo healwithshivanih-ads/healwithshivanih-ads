@@ -1,0 +1,43 @@
+slug: murray-black-cohosh-vs-conjugated-estrogen
+statement: Black cohosh extract (40 mg/day, standardised to 27-deoxyacteine) was clinically
+  equivalent to 0.6 mg conjugated estrogens for menopausal symptom relief over 3 months
+  — with the critical safety advantage of NO endometrial thickening, while still producing
+  beneficial effects on bone metabolism and vaginal cell maturation. This profile
+  supports SERM-like (selective estrogen receptor modifier) activity rather than a
+  pure estrogenic effect.
+evidence_tier: strong
+rationale: Murray cites the Wuttke 2003 head-to-head RCT plus a 629-woman observational
+  study (Stoll 1987) where ~80% reported clear improvement at 4 weeks. Multiple subsequent
+  meta-analyses (Leach 2012, Castelo-Branco 2021) show moderate effect on vasomotor
+  symptoms. The endometrial-safety advantage over conjugated estrogens is the headline
+  FM use case.
+coaching_translation: 'Black cohosh is the best-studied herbal alternative to HRT.
+  At 40 mg/day standardised extract, it matches conjugated estrogen for hot flushes
+  and bone but — unlike estrogen — it doesn''t thicken the uterine lining (the mechanism
+  behind HRT''s uterine cancer risk). Typical effect window: 4-12 weeks. Most effective
+  for hot flushes, mood swings, sleep, and body aches.'
+caveats:
+- Rare reports of hepatotoxicity — pause if jaundice, dark urine, or abdominal pain
+- Avoid in active liver disease
+- Effects often take 4-12 weeks to fully manifest
+- Use Remifemin or equivalent standardised extract (1 mg terpene glycosides per tablet,
+  2 tablets/day)
+- Does not improve vaginal dryness or libido (despite vaginal cell-maturation effect)
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+linked_to_supplements:
+- black-cohosh
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1245–1246
+  quote: Black cohosh extract was equal to the conjugated estrogens and superior to
+    the placebo in reducing menopausal complaints. Both black cohosh extract and the
+    conjugated estrogens produced beneficial effects on bone metabolism, but the black
+    cohosh extract had no effect on endometrial thickness.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

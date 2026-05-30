@@ -24,11 +24,14 @@ linked_to_topics:
 - chronic-inflammation
 - omega-3-omega-6-balance
 - essential-hypertension
+- perimenopause-and-menopause
+- menopause
 linked_to_claims:
 - avocado-flaxseed-oil-smoothie-for-healthy-fats
 - flaxseed-oil-provides-ala-not-epa-dha
 - omega-3-membrane-replacement-takes-3-months
 - omega-3-dha-reduces-24hr-ambulatory-bp
+- murray-flaxseed-halves-hot-flashes
 notes_for_coach: 1 tablespoon daily reduces systolic and diastolic BP by up to 9 mm
   Hg. Cost-effective alternative to fish oil; requires concurrent reduction in saturated
   and omega-6 fats. Each 1% increase in body alpha-linolenic acid reduces mean BP
@@ -51,7 +54,10 @@ sources:
   location: Therapeutic Considerations / Omega-3 oils
   quote: One tablespoon daily of flaxseed oil reduces systolic and diastolic BP by
     up to 9 mm Hg.
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause
+  quote: Comprehensive natural treatment summary for menopausal symptoms.
+version: 4
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

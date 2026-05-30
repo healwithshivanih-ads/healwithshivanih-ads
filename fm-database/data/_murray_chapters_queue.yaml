@@ -25,10 +25,11 @@ chapters:
   - ch: 75
     title: Menopause
     body_pg_start: 1230
-    body_pg_end: ~  # to find
+    body_pg_end: 1254
     priority: 3
     serves: [cl-006 Geetika perimenopause]
-    status: pending
+    status: ingested
+    batch_id: 20260530T130000-murray-ch75-menopause-chat
   - ch: 93
     title: Sports Injuries, Tendinitis, and Bursitis
     body_pg_start: 1511

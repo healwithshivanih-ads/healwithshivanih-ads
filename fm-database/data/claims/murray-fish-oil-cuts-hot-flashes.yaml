@@ -1,0 +1,38 @@
+slug: murray-fish-oil-cuts-hot-flashes
+statement: Fish oil at 1,200 mg/day EPA + DHA for 8 weeks reduced hot flash frequency
+  by 55% in midlife women with moderate-to-severe psychological distress (n=120 DB-RCT),
+  with 58.5% responder rate vs 34.4% placebo. The same dose also delivers cardiometabolic
+  + triglyceride-lowering benefits.
+evidence_tier: plausible_emerging
+rationale: Lucas 2009 single DB-RCT cited; corroborated by separate hot-flash + cardiometabolic
+  literature. Mechanism — EPA modulates serotonin + endothelial NO. Stacks well with
+  other supplements; no drug-supplement interactions typical at this dose.
+coaching_translation: Fish oil at 1,200 mg/day combined EPA+DHA cut hot flushes by
+  55% in a trial of midlife women with mood distress. It's one of the few interventions
+  that also helps cardiovascular risk and triglycerides in the same dose — important
+  since perimenopause is when cardiometabolic risk starts climbing.
+caveats:
+- Quality matters — third-party tested for oxidation + heavy metals
+- Mild blood-thinning effect — caution + anticoagulants or before surgery
+- Splits the difference between hot flush + cardiometabolic benefit — useful single
+  addition
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1242
+  quote: After eight weeks, the hot flash frequency decreased by an average of 1.58
+    per day (a 55% drop) in the fish oil group but by only 0.50 per day in the placebo
+    group (25%).
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

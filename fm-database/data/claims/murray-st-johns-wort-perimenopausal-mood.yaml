@@ -1,0 +1,38 @@
+slug: murray-st-johns-wort-perimenopausal-mood
+statement: St John's Wort (Hypericum perforatum) extract — 900 mg/day standardised
+  to 0.3% hypericin — significantly improves psychological + psychosomatic menopausal
+  symptoms, mood, sleep, and sexual well-being in ~75% of women across multiple trials.
+  Combination with black cohosh further improves hot flush severity.
+evidence_tier: plausible_emerging
+rationale: Grube 1999 + Uebelhack 2006 + Abdali 2010 trials cited. Mechanism — multimodal
+  serotonin/dopamine/norepinephrine reuptake modulation. Well-established as antidepressant;
+  menopausal use leverages the depression evidence applied to a population with high
+  rates of subclinical mood disturbance.
+coaching_translation: St John's Wort at 900 mg/day for at least 12 weeks helps mood,
+  sleep, and quality of life in perimenopausal women — about 3 in 4 see clear benefit.
+  Stacks well with black cohosh for hot flushes + mood combined. The cautions matter
+  though — major drug interactions through CYP450/PGP induction.
+caveats:
+- MAJOR drug interaction risk via CYP3A4 + P-glycoprotein induction
+- Reduces effectiveness of oral contraceptives, warfarin, immunosuppressants, some
+  HIV/cancer drugs
+- Serotonin syndrome risk if combined with SSRIs, SNRIs, MAOIs, triptans, tramadol
+- Photosensitivity at higher doses
+- Pharmacist review of full medication list essential before starting
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+linked_to_supplements:
+- st-johns-wort
+linked_to_mechanisms: []
+out_of_scope_notes: Drug-interaction screening is clinician scope. Coach role — refer
+  for medication review before recommending.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 75 — Menopause, pg 1248–1249
+  quote: About three-quarters of the women experienced improvement in both psychological
+    and psychosomatic menopausal symptoms as well as a feeling of sexual well-being.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
