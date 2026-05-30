@@ -17,7 +17,11 @@ take_with_food: optional
 linked_to_topics:
 - chronic-inflammation
 - fasting-immune-health
-linked_to_claims: []
+- anxiety
+- chronic-stress
+- hpa-axis-cortisol-regulation
+linked_to_claims:
+- murray-adaptogens-anxiety-mild-moderate
 notes_for_coach: Stimulating adaptogen — best taken in the morning. May worsen insomnia
   if taken late. Useful in fatigue-dominant presentations with stress axis involvement.
 notes_for_client: Rhodiola is an energizing adaptogen best taken in the morning to
@@ -50,9 +54,12 @@ sources:
   location: Why Emotional Healing Is Important in Chronic Diseases
   quote: 'Adrenal support: adaptogens (ashwagandha, rhodiola), breathwork, morning
     sunlight, magnesium, sleep hygiene.'
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani
 pregnancy_safety: caution
 lactation_safety: caution

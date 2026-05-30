@@ -41,6 +41,7 @@ linked_to_topics:
 - hpa-axis-cortisol-regulation
 - sleep-quality
 - anxiety
+- chronic-stress
 linked_to_claims:
 - ashwagandha-cortisol-hair-loss
 - high-cortisol-inhibits-t4-to-t3-conversion
@@ -51,6 +52,7 @@ linked_to_claims:
 - ashwagandha-reduces-cortisol-fatigue
 - ashwagandha-reduces-morning-cortisol
 - ashwagandha-improves-sleep-onset
+- murray-adaptogens-anxiety-mild-moderate
 notes_for_coach: 'Look for standardized extracts (withanolide content). Studies cited
   show >60% reduction in morning cortisol and improved overall sleep performance.
   Somnifera means ''sleep inducer''. Source: Coach Shivani clinical observations.'
@@ -101,9 +103,12 @@ sources:
   location: Clinical Interventions — Integrative Framework (p.12)
   quote: 'Neuroendocrine Support: Rebalance HPA axis. Ashwagandha, Phosphatidylserine,
     Rhodiola, Liposomal Vitamin C, Active B5.'
-version: 9
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 10
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-30'
 updated_by: Shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution

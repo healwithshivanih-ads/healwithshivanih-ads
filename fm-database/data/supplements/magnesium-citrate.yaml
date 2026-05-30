@@ -30,6 +30,7 @@ linked_to_topics:
 - gut-dysbiosis
 - gut-skin-hormone-axis
 - magnesium-nutrition
+- anxiety
 linked_to_claims:
 - magnesium-supports-gut-motility-constipation
 - magnesium-reduces-migraine-frequency
@@ -39,40 +40,48 @@ linked_to_claims:
 - magnesium-non-negotiable-for-gut-health
 - magnesium-citrate-soluble-bioavailable
 - fix-nutritional-foundations-first-in-sibo
-notes_for_coach: Magnesium citrate supports bowel motility and is particularly useful in methane-dominant SIBO with constipation.
-  Also supports HPA axis and sleep.
-notes_for_client: Magnesium citrate supports healthy gut movement and can help relieve constipation associated with bacterial
-  overgrowth.
+- murray-magnesium-pyruvate-anxiety
+notes_for_coach: Magnesium citrate supports bowel motility and is particularly useful
+  in methane-dominant SIBO with constipation. Also supports HPA axis and sleep.
+notes_for_client: Magnesium citrate supports healthy gut movement and can help relieve
+  constipation associated with bacterial overgrowth.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: vitaone-gut-cheatsheet
   location: 100 Gut Symptoms — Constipation
-  quote: Constipation + fatigue — Low magnesium — Smooth muscle dysfunction — Magnesium citrate
+  quote: Constipation + fatigue — Low magnesium — Smooth muscle dysfunction — Magnesium
+    citrate
 - id: vitaone-elimination-diet-toolkit
   location: FODMAP Plan SOS Solutions — Migraine/Headache
   quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels.
 - id: vitaone-health-coaching-toolkit
   location: MIGRAINE / HEADACHE — 3. Magnesium Citrate / Glycinate
-  quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels. Helps neurotransmitter regulation.
+  quote: Magnesium Citrate / Glycinate (200–300 mg). Relaxes cerebral blood vessels.
+    Helps neurotransmitter regulation.
 - id: coconote-fm-chronic-pain-fatigue
   location: Constipation Protocol / Case Study
-  quote: So with her, I started with ambig of the magnesium citrate, if you know the protocol, you have to reach to the level
-    with a loose stool and then you have to slow down.
+  quote: So with her, I started with ambig of the magnesium citrate, if you know the
+    protocol, you have to reach to the level with a loose stool and then you have
+    to slow down.
 - id: coconote-fm-gut-skin-hormone-axis
   location: Key Supplements / Q&A
-  quote: We chose magnesium citrate because magnesium citrate helps in easing your bowel movements and easing basically symptoms
-    of constipation.
+  quote: We chose magnesium citrate because magnesium citrate helps in easing your
+    bowel movements and easing basically symptoms of constipation.
 - id: coconote-fm-magnesium-deficiency
   location: Supplementation — forms of magnesium
-  quote: A good soil and a soluble form is a magnesium cyclate. Higher considerable amount of content, around 16% is there,
-    it is soluble and quite high in its bio-element.
+  quote: A good soil and a soluble form is a magnesium cyclate. Higher considerable
+    amount of content, around 16% is there, it is soluble and quite high in its bio-element.
 - id: coconote-fm-sibo-sifo
   location: Non-Pharmacological Treatment / SIBO Protocol
-  quote: Non-pharmacological, number one, number one, number one. Always fix the enzyme and the HCL... Test everything, the
-    magnesium citrate, the esporbate, vitamin D, spinach mitters, all of them will come on the later side.
-version: 7
+  quote: Non-pharmacological, number one, number one, number one. Always fix the enzyme
+    and the HCL... Test everything, the magnesium citrate, the esporbate, vitamin
+    D, spinach mitters, all of them will come on the later side.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 8
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases: []

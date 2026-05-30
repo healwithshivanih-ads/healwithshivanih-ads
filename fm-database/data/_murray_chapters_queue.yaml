@@ -50,10 +50,11 @@ chapters:
   - ch: 23
     title: Anxiety
     body_pg_start: 497
-    body_pg_end: ~
+    body_pg_end: 511
     priority: 6
     serves: [cl-011 Deepti]
-    status: pending
+    status: ingested
+    batch_id: 20260530T160000-murray-ch23-anxiety-chat
   - ch: 71
     title: Insomnia
     body_pg_start: 1177

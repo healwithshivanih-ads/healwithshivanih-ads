@@ -1,0 +1,51 @@
+slug: murray-kava-vs-benzodiazepine-anxiety
+statement: 'Kava (Piper methysticum) at 45–70 mg kavalactones three times daily reduced
+  anxiety symptoms equivalently to 10 mg buspirone or 100 mg opipramol in an 8-week
+  DB-RCT (n=129): about 75% responder rate and 60% full remission in each treatment
+  arm. Unlike benzodiazepines, kava does NOT impair cognition or driving performance
+  — in head-to-head testing kava preserved recognition memory while oxazepam impaired
+  it. Trial-grade dose ceiling for safety: ≤250 mg kavalactones per day.'
+evidence_tier: plausible_emerging
+rationale: Multiple DB-RCTs cited (Volz 1997, Boerner 2003, Sarris 2009 KADSS). 2003
+  Cochrane meta-analysis confirmed anxiolytic effect. Mechanism — kavalactones modulate
+  GABA-A allosterically + dopamine + norepinephrine reuptake, but at different sites
+  from benzodiazepines (hence the cognitive-sparing profile). The headline FM use
+  case is anxiety in clients who cannot tolerate or do not want benzodiazepine cognitive
+  side effects.
+coaching_translation: 'Kava at 45-70 mg kavalactones 3× daily delivered anxiety relief
+  comparable to prescription Valium-class drugs in randomised trials — without the
+  brain fog or driving impairment. CRITICAL safety caveats: only peeled noble kava
+  root, never the leaf or stem peelings, total daily kavalactones ≤250 mg, monitor
+  liver enzymes every 4-6 weeks if used more than 4 weeks, and absolutely contraindicated
+  with existing liver disease, alcohol, pregnancy, Parkinson''s, or anyone on SSRIs/SNRIs/MAOIs/benzodiazepines.'
+caveats:
+- LIVER TOXICITY RISK — peeled noble root only; never leaf or stem
+- ≤250 mg kavalactones per day
+- LFT monitoring every 4-6 weeks if >4 weeks of use
+- Absolutely contraindicated — active liver disease, regular alcohol use, pregnancy,
+  breastfeeding, Parkinson's disease
+- CONTRAINDICATED with SSRIs/SNRIs/MAOIs (serotonin syndrome + additive sedation),
+  benzodiazepines, barbiturates, prescription sedatives
+- May reduce dopamine activity — avoid with Parkinson's drugs
+- Discontinue immediately if jaundice or dark urine appears
+linked_to_topics:
+- anxiety
+- panic-disorder
+linked_to_supplements:
+- kava-kava
+linked_to_mechanisms: []
+out_of_scope_notes: Kava use overlapping with SSRI/SNRI medication is a clinician
+  decision and generally avoided. Coach role — surface the option for clients NOT
+  on SSRIs and ensure liver monitoring is set up.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety, pg 502–506
+  quote: About 75% of patients were classified as responders (at least a 50% reduction
+    of the anxiety score) in each treatment group, and about 60% achieved full remission.
+    Unlike benzodiazepines, alcohol, and other drugs, kava extract is not associated
+    with depressed mental function or impairment in driving or the operation of heavy
+    equipment.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -21,7 +21,9 @@ linked_to_topics:
 - anxiety
 linked_to_mechanisms:
 - gaba-receptor-modulation
-linked_to_claims: []
+linked_to_claims:
+- murray-kava-vs-benzodiazepine-anxiety
+- murray-kava-cognitive-preservation-vs-benzo
 notes_for_coach: Polynesian botanical with significant anxiolytic effect. Pizzorno
   lists kava for anxiety component of depression. Standardised extract 60-120 mg kavalactones
   twice daily. RARE but serious hepatotoxicity — banned in some countries. Use only
@@ -51,7 +53,10 @@ sources:
   location: Affective Disorders — anxiety component (pp 9)
   quote: Kava kava and Ginkgo listed as supplements for the anxiety component of affective
     disorders.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

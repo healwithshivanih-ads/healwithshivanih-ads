@@ -14,9 +14,12 @@ linked_to_topics:
 - hpa-axis-dysregulation
 - type-2-diabetes
 - type-2-diabetes-mellitus
+- anxiety
+- chronic-stress
 linked_to_claims:
 - ginseng-licorice-support-adrenal
 - murray-american-ginseng-postprandial-glucose
+- murray-adaptogens-anxiety-mild-moderate
 notes_for_coach: Document mentions 'ginseng tea for support' in adrenal restoration.
   Ginseng is a classic adaptogen used in FM for HPA support. Dosing and species (Panax
   vs. Siberian) not specified. Verify form and dose with clinician.
@@ -33,7 +36,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

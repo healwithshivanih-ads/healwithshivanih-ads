@@ -1,0 +1,47 @@
+slug: murray-lactate-anxiety-six-nutritional-drivers
+statement: 'Elevated blood lactate and an elevated lactate-to-pyruvate ratio are the
+  most consistent biochemical findings in people with chronic anxiety and panic disorder
+  — and infusing lactate into people who get panic attacks reproducibly induces a
+  severe panic attack, while doing the same to controls produces nothing. Six nutritional
+  factors drive elevated lactate: alcohol, caffeine, refined sugar, B-vitamin deficiency
+  (niacin, B6, thiamine), calcium or magnesium deficiency, and food allergens. Addressing
+  these is foundational anxiety care before any supplement or herb is considered.'
+evidence_tier: plausible_emerging
+rationale: Pitts & McClure 1967 + Liebowitz 1985 lactate-infusion studies are the
+  foundational physiology — pharmacological models of panic still use lactate. Mechanism
+  — lactate is the end-product of anaerobic glucose metabolism; magnesium + B-vitamins
+  are cofactors for pyruvate dehydrogenase which keeps glucose oxidation aerobic.
+  The six-driver model gives the coach a concrete behavioural + dietary checklist
+  before pharmacology.
+coaching_translation: 'Before starting any anxiety supplement, address the six lactate-raising
+  factors: caffeine, alcohol, refined sugar, B-vitamin gaps, low calcium/magnesium,
+  and food allergens. Lactate is the biochemical fuel of panic — and infusing it produces
+  a panic attack in panic-prone people while doing nothing in others. The fix is often
+  less dramatic than the symptoms: trade the third coffee for water, fix magnesium,
+  eat regular meals.'
+caveats:
+- Lactate-infusion model is research-only; lactate testing is not routine
+- Food allergens here means IgE + IgG-mediated + non-celiac sensitivity, not just
+  true allergy
+- Caffeine elimination must be gradual (withdrawal headache + rebound anxiety)
+linked_to_topics:
+- anxiety
+- chronic-stress
+- panic-disorder
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety, pg 498–500
+  quote: Perhaps the most significant biochemical disturbance noted in people with
+    anxiety and panic attacks is an elevated blood lactic acid level and an increased
+    ratio of lactic acid to pyruvic acid. If people who get panic attacks are injected
+    with lactate, severe panic attacks are produced. In normal individuals nothing
+    happens.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

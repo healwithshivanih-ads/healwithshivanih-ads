@@ -1,0 +1,45 @@
+slug: murray-magnesium-pyruvate-anxiety
+statement: Magnesium (350–500 mg/day, ideally glycinate for absorption and absence
+  of laxative effect) is foundational anxiety nutrition because it is a cofactor for
+  pyruvate dehydrogenase — the enzyme that prevents pyruvate from being shunted into
+  lactate (the biochemical driver of panic). Magnesium deficiency is extremely common
+  (suboptimal red blood cell magnesium ~50% of urban populations) and uniquely well-tolerated
+  even at higher doses with the right form.
+evidence_tier: strong
+rationale: Multi-mechanism foundation — pyruvate dehydrogenase cofactor + NMDA receptor
+  antagonist + GABA receptor co-agonist + HPA modulation. Multiple RCTs in mild anxiety
+  + premenstrual anxiety; consistent direction. Boyle 2017 systematic review supports
+  magnesium for anxiety. Murray flags magnesium deficiency as one of the six core
+  nutritional drivers of elevated lactate.
+coaching_translation: Magnesium 350-500 mg/day (glycinate form preferred — best absorbed,
+  no laxative effect) is the single most important nutrient in chronic anxiety. It
+  blocks the pyruvate-to-lactate shunt at the biochemical level. Most modern diets
+  are deficient. Easier to recommend than kava, safer than benzodiazepines, and works
+  alongside SSRIs without interaction concerns. Start here for any anxious client.
+caveats:
+- Form matters — glycinate (best), citrate (mid), oxide (poorest absorption)
+- Citrate + oxide can cause loose stools at higher doses
+- Caution in renal impairment (creatinine clearance < 30 ml/min)
+- May potentiate effect of magnesium-containing antacids
+- Time of day — evening dose helps sleep onset
+linked_to_topics:
+- anxiety
+- chronic-stress
+- panic-disorder
+- perimenopause-and-menopause
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+- magnesium-citrate
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety, pg 500 + Treatment Summary pg 508
+  quote: 'Deficiency of calcium or magnesium [is one of] at least six nutritional
+    factors that may be responsible for elevated lactate levels or ratios of lactic
+    acid to pyruvic acid. Magnesium: 350 to 500 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

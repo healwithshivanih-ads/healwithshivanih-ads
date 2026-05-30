@@ -1,0 +1,42 @@
+slug: murray-fish-oil-cytokine-anxiety
+statement: Fish oil at 2.5 g/day combined EPA + DHA (2,085 mg EPA + 348 mg DHA) for
+  12 weeks produced a 20% reduction in anxiety symptoms and a parallel 14% reduction
+  in inflammatory cytokine production in stressed medical students — implicating a
+  neuroinflammatory pathway in chronic anxiety. The omega-6:omega-3 ratio in modern
+  Western and most urban Indian diets is heavily inflammatory-skewed.
+evidence_tier: plausible_emerging
+rationale: Kiecolt-Glaser 2011 DB-RCT in medical students cited. Mechanism — EPA modulates
+  serotonin + dopamine + reduces inflammatory cytokines (IL-6, TNF-α) that cross blood-brain
+  barrier and contribute to anxiety/depression. Effect size meaningful + safety profile
+  excellent + the cytokine biomarker validation strengthens the causal story.
+coaching_translation: Fish oil at 2.5 g/day EPA+DHA cut anxiety symptoms by 20% in
+  stressed medical students — and the cytokine measurements showed the effect runs
+  through reduced inflammation, not just generic 'fatty acid status.' Worth including
+  in any chronic anxiety protocol. Most multivitamins have 200-300 mg of EPA+DHA —
+  that won't reach this dose. Quality matters — third-party tested for oxidation.
+caveats:
+- 2.5 g/day combined EPA+DHA is therapeutic; most multivitamins have ~10× less
+- Quality + oxidation — third-party tested only
+- Mild antiplatelet — caution + anticoagulants
+- Stacks with vitamin E for stability
+- Vegetarian alternative — algal DHA (lower EPA)
+linked_to_topics:
+- anxiety
+- chronic-stress
+- panic-disorder
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety, pg 501–502
+  quote: 2.5 g long-chain omega-3 fatty acids (2,085 mg EPA and 348 mg DHA) from fish
+    oils per day produced a 14% decrease in cytokine production and a 20% reduction
+    in anxiety symptoms.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

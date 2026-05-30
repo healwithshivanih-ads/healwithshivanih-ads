@@ -39,6 +39,8 @@ linked_to_topics:
 - atherosclerosis
 - essential-hypertension
 - normal-renin-essential-hypertension
+- anxiety
+- chronic-stress
 linked_to_claims:
 - magnesium-phase-ii-cofactor
 - magnesium-deficiency-increases-t2d-risk
@@ -59,6 +61,8 @@ linked_to_claims:
 - magnesium-depletion-from-water-filtration
 - magnesium-deficiency-promotes-endothelial-dysfunction
 - magnesium-lowers-bp-dose-dependent
+- murray-magnesium-pyruvate-anxiety
+- murray-lactate-anxiety-six-nutritional-drivers
 notes_for_coach: 'Preferred forms: aspartate, malate, citrate, succinate, fumarate.
   Avoid oxide, sulfate, or chloride (laxative effect). Recommended 6–10 mg/kg/day
   for hypertensives. Use in divided doses. Caution in kidney disease or high-grade
@@ -146,9 +150,12 @@ sources:
   location: Therapeutic Considerations / Mg
   quote: Supplement Mg (400 to 1200 mg q.d. in divided doses) with K. This may lower
     BP. Mg lowers BP in a dose-dependent way.
-version: 18
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 19
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - magnesium 400-600mg

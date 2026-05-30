@@ -1,0 +1,49 @@
+slug: murray-adaptogens-anxiety-mild-moderate
+statement: For mild-to-moderate chronic anxiety driven by stress, adaptogens — Panax
+  ginseng (1.5–2 g crude root or 250–500 mg 5%-ginsenoside extract daily), Siberian
+  ginseng (Eleutherococcus senticosus), Rhodiola rosea (100–600 mg standardised to
+  rosavin), or Withania somnifera (ashwagandha, 125–250 mg Sensoril) — are Murray's
+  preferred first-line botanicals because they normalise HPA-axis dysregulation underlying
+  chronic stress responses without the cognitive or hepatotoxic risks of kava.
+evidence_tier: plausible_emerging
+rationale: Multiple RCTs for each adaptogen (ashwagandha — Chandrasekhar 2012 cited
+  multiple times; rhodiola — Bystritsky 2008, Olsson 2009; ginseng — many). Mechanism
+  — adaptogen class shares cortisol modulation + HPA-axis normalisation effect. Effect
+  on validated anxiety scales (HAM-A, Stress Index) is moderate but consistent. Safety
+  advantage over kava is the headline coaching point — especially for clients on SSRIs/SNRIs
+  where kava is off the table.
+coaching_translation: For ongoing background anxiety driven by chronic stress (rather
+  than panic-attack-level acute anxiety), the adaptogen family is Murray's preferred
+  starting point — ashwagandha 125-250 mg, rhodiola 100-300 mg, Panax ginseng, or
+  Siberian ginseng. Safer than kava, especially for clients on antidepressants. Pick
+  ONE adaptogen and give it 8 weeks; rotate if not responding.
+caveats:
+- Ashwagandha — Hashimoto's caution (may stimulate thyroid antibodies in some), avoid
+  in pregnancy, watch + thyroid hormone replacement
+- Rhodiola — stimulating; avoid evening doses + bipolar
+- Panax ginseng — caution + hypertension at high doses, avoid evening doses
+- Siberian ginseng — caution + acute hypertension
+- Adaptogens take 4-8 weeks before full effect — set expectation
+- Use one at a time to assess response
+linked_to_topics:
+- anxiety
+- chronic-stress
+- hpa-axis-cortisol-regulation
+- perimenopause-and-menopause
+linked_to_supplements:
+- ashwagandha
+- rhodiola
+- panax-ginseng
+- ginseng
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety, Treatment Summary pg 509–510
+  quote: Panax ginseng, Siberian ginseng, Rhodiola rosea, Withania somnifera (ashwagandha)
+    — for moderate to severe anxiety, follow all of the recommendations as well as
+    those discussed below; substitute kava for the adrenal adaptogen.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

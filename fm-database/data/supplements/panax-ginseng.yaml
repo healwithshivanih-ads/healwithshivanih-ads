@@ -26,10 +26,13 @@ linked_to_topics:
 - hpa-axis-cortisol-regulation
 - type-2-diabetes
 - type-2-diabetes-mellitus
+- anxiety
+- chronic-stress
 linked_to_mechanisms: []
 linked_to_claims:
 - ginseng-reduces-cortisol-supports-neuroplasticity
 - murray-american-ginseng-postprandial-glucose
+- murray-adaptogens-anxiety-mild-moderate
 notes_for_client: Ginseng may help your body adapt to stress by moderating stress
   hormone release and supporting brain resilience.
 sources:
@@ -44,7 +47,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 45 — Diabetes
   quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

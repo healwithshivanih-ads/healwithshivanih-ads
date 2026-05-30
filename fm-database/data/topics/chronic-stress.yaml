@@ -6,8 +6,9 @@ aliases:
 - chronic psychological stress
 - perceived stress
 - psychosocial stress
-summary: Stress is presented as a primary driver of chronic disease through HPA activation, sympathetic dominance, inflammation,
-  mitochondrial strain, gut disruption, and hormonal shifts.
+summary: Stress is presented as a primary driver of chronic disease through HPA activation,
+  sympathetic dominance, inflammation, mitochondrial strain, gut disruption, and hormonal
+  shifts.
 common_symptoms:
 - lethargy
 - insomnia
@@ -50,25 +51,32 @@ key_mechanisms:
 - noradrenaline-signaling
 - cortisol-elevation
 - neuroimmune-inflammation-loop
-coaching_scope_notes: Stress awareness, digital hygiene, community connection, sleep regularity, movement, breathwork, journaling,
-  and mindfulness are coaching-safe domains.
-clinician_scope_notes: Stress-driven hormone imbalances, medication-related neurotransmitter effects, autoimmune flares, and
-  cardiovascular risk require clinician evaluation.
+coaching_scope_notes: Stress awareness, digital hygiene, community connection, sleep
+  regularity, movement, breathwork, journaling, and mindfulness are coaching-safe
+  domains.
+clinician_scope_notes: Stress-driven hormone imbalances, medication-related neurotransmitter
+  effects, autoimmune flares, and cardiovascular risk require clinician evaluation.
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-adrenal-toolkit
   location: Effects of Chronic Stress
-  quote: People who report higher levels of chronic stress are more likely to develop heart disease, depression, diabetes,
-    dementia, cancer, digestive symptoms, and more.
+  quote: People who report higher levels of chronic stress are more likely to develop
+    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
+    more.
 - id: vitaone-health-coaching-toolkit
   location: Effects of Chronic Stress
-  quote: People who report higher levels of chronic stress are more likely to develop heart disease, depression, diabetes,
-    dementia, cancer, digestive symptoms, and more.
+  quote: People who report higher levels of chronic stress are more likely to develop
+    heart disease, depression, diabetes, dementia, cancer, digestive symptoms, and
+    more.
 - id: vitaone-fm-adrenal-hormones
   location: Topics Covered
-  quote: Stress is presented as a primary driver of chronic disease through HPA activation, sympathetic dominance, inflammation,
-    mitochondrial strain, gut disruption, and hormonal shifts.
-version: 3
+  quote: Stress is presented as a primary driver of chronic disease through HPA activation,
+    sympathetic dominance, inflammation, mitochondrial strain, gut disruption, and
+    hormonal shifts.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 4
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-05-30'
 updated_by: shivani

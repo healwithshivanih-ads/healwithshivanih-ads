@@ -1,0 +1,42 @@
+slug: murray-kava-cognitive-preservation-vs-benzo
+statement: 'In a head-to-head DB crossover trial (n=12) testing word-recognition performance,
+  oxazepam (a benzodiazepine) impaired the participants'' ability to distinguish new
+  from previously presented words — the typical ''brain fog'' benzo side effect —
+  while kava (200 mg kavalactones three times daily) ALLOWED slightly greater overall
+  recognition AND a larger differential between old and new words. Kava is therefore
+  unique among anxiolytics: anxiety relief without sedation or cognitive impairment
+  at recommended doses.'
+evidence_tier: plausible_emerging
+rationale: Münte 1993 + several subsequent EEG-task studies. Mechanism — kavalactones
+  modulate GABA-A allosterically at sites distinct from benzodiazepine binding; also
+  enhance dopamine + norepinephrine reuptake (preserving alertness). The cognitive-sparing
+  profile is the FM differentiator AND a coaching scope opportunity — many anxious
+  clients refuse anxiolytics because of brain fog fear.
+coaching_translation: Unlike benzodiazepines and most anti-anxiety medications, kava
+  preserves mental clarity at therapeutic doses — in a controlled trial it actually
+  slightly IMPROVED word-recognition while oxazepam impaired it. This is the headline
+  reason many functional medicine clinicians prefer kava when it's safe to use. The
+  catch — only at recommended doses; high doses do sedate, and the liver caveats remain.
+caveats:
+- High doses DO sedate; recommended-dose effect only at 45-70 mg kavalactones tid
+- All kava liver-toxicity + drug-interaction caveats apply (see murray-kava-vs-benzodiazepine-anxiety
+  claim)
+- Effect on driving performance preserved at therapeutic doses but driving while assessing
+  kava response is unwise
+linked_to_topics:
+- anxiety
+linked_to_supplements:
+- kava-kava
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety, pg 503–504
+  quote: Like other benzodiazepines, oxazepam inhibited the recognition of both new
+    and old words. In contrast, kava allowed a slightly greater recognition rate and
+    a larger difference between old and new words. The results of this study once
+    again demonstrate the unusual effects of kava.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -34,6 +34,7 @@ linked_to_topics:
 - dyslipidemia
 - perimenopause-and-menopause
 - menopause
+- chronic-stress
 linked_to_claims:
 - gluten-free-reduces-hashimotos-triggers
 - omega-3-modulates-estrogen-receptor-lowers-prostaglandins
@@ -44,6 +45,7 @@ linked_to_claims:
 - omega-3-supplementation-muscle-mass-elderly
 - murray-fish-oil-tg-not-cholesterol
 - murray-fish-oil-cuts-hot-flashes
+- murray-fish-oil-cytokine-anxiety
 notes_for_coach: Take with a meal for absorption and to reduce fishy aftertaste. Quality
   varies greatly — advise clients to choose brands tested for heavy metals. High doses
   may affect bleeding; refer to clinician.
@@ -122,7 +124,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
-version: 9
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 23 — Anxiety
+  quote: Comprehensive natural treatment summary for anxiety + panic.
+version: 10
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani
