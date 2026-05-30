@@ -1,0 +1,41 @@
+slug: murray-st-johns-wort-younger-ginkgo-older
+statement: 'Murray''s age-stratified primary botanical recommendations for depression:
+  Saint-John''s Wort extract (0.3% hypericin) 900-1,800 mg/day is the best choice
+  for people younger than 50; Ginkgo biloba extract (24% flavone glycosides) 240-320
+  mg/day is the best choice for people older than 50 — reflecting depression''s age-dependent
+  overlap with cerebrovascular insufficiency in the elderly. Both can be combined
+  with 5-HTP 50-100 mg three times daily in severe cases.'
+evidence_tier: strong
+rationale: Multiple DB-RCTs for both. Mechanism — SJW modulates serotonin/dopamine/norepinephrine
+  reuptake; Ginkgo improves cerebral blood flow + has direct serotonergic effects.
+  Age stratification reflects observation that elderly depression often co-exists
+  with cognitive vascular dysfunction Ginkgo addresses simultaneously.
+coaching_translation: 'For depression: under 50 → St John''s Wort 900-1,800 mg/day
+  (standardised to 0.3% hypericin). Over 50 → Ginkgo biloba 240-320 mg/day (24% flavone
+  glycosides). Severe cases combine either with 5-HTP. CRITICAL drug interactions
+  for SJW — contraindicated with SSRIs, oral contraceptives, warfarin, immunosuppressants.
+  Ginkgo has milder antiplatelet effect.'
+caveats:
+- SJW MAJOR drug interaction profile (CYP3A4 + P-gp induction)
+- SJW contraindicated with SSRIs/SNRIs/MAOIs/tramadol
+- SJW reduces oral contraceptive effectiveness
+- Ginkgo mild antiplatelet — pause 7 days before surgery
+- Pharmacist review essential before either
+linked_to_topics:
+- major-depressive-disorder
+- depression-mood-disorder
+- cognitive-decline
+linked_to_supplements:
+- st-johns-wort
+- ginkgo-biloba
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression, Treatment Summary pg 795
+  quote: 'Saint-John''s-wort extract (0.3% hypericin content): 900 to 1,800 mg per
+    day (probably the best choice for people younger than 50). Ginkgo biloba extract
+    (24% ginkgo flavonglycosides content): 240 to 320 mg per day (perhaps the best
+    choice for people older than 50).'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

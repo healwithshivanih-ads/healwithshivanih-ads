@@ -62,6 +62,8 @@ linked_to_topics:
 - gut-brain-axis
 - sleep-quality
 - sleep-optimisation
+- major-depressive-disorder
+- depression-mood-disorder
 linked_to_mechanisms: []
 linked_to_claims:
 - serotonin-gut-microbiome-mood-link
@@ -80,7 +82,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 71 — Insomnia
   quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
-version: 3
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

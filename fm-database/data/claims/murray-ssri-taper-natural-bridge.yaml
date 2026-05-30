@@ -1,0 +1,47 @@
+slug: murray-ssri-taper-natural-bridge
+statement: 'When discontinuing SSRI antidepressants, gradual tapering is essential
+  — abrupt discontinuation causes dizziness, loss of coordination, fatigue, tingling,
+  burning sensations, blurred vision, insomnia, vivid dreams, GI symptoms, irritability,
+  anxiety, and crying spells. Murray''s bridging protocol: in MILD depression, add
+  5-HTP 50 mg/day OR St John''s Wort 900 mg/day, then halve the SSRI for 2-4 weeks
+  before stopping. In SEVERE depression, ADD St John''s Wort to the current SSRI dose,
+  evaluate at 1 month, then taper SSRI if mood-elevation sufficient. Theoretical serotonin
+  syndrome risk requires close physician monitoring — to date, no documented cases
+  with SJW or 5-HTP + SSRI combination.'
+evidence_tier: plausible_emerging
+rationale: Clinical experience + pharmacological rationale. Mechanism — overlapping
+  serotonergic support during taper window. Coach scope explicitly NOT to initiate;
+  supports an already-decided clinician taper plan.
+coaching_translation: 'Coming off SSRIs needs to be done slowly and with medical supervision.
+  The natural medicine bridge: add 5-HTP 50 mg or St John''s Wort 900 mg, then halve
+  the SSRI for 2-4 weeks before stopping (mild depression). For severe depression,
+  add St John''s Wort to existing SSRI, evaluate at 1 month, then taper. The theoretical
+  serotonin syndrome risk means a physician must monitor. NEVER advise abrupt SSRI
+  discontinuation.'
+caveats:
+- NEVER advise abrupt SSRI discontinuation
+- Physician monitoring during combination phase
+- Serotonin syndrome theoretical but real risk — early warning signs (confusion, fever,
+  sweating, tremor)
+- Coach role is supportive education + nutrient repletion; tapering plan is clinical
+- Combination with MAOIs ABSOLUTELY contraindicated
+linked_to_topics:
+- major-depressive-disorder
+- depression-mood-disorder
+linked_to_supplements:
+- 5-htp
+- st-johns-wort
+out_of_scope_notes: SSRI tapering is clinician scope. Coach role — patient education
+  + supportive nutrient + lifestyle work alongside clinician's taper plan.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression, Treatment Summary pg 792–793
+  quote: If you wish to discontinue any antidepressant drug, we recommend that you
+    work with your physician on this goal. In general, discontinuing a SSRI has to
+    be done gradually. In mild cases of depression, we recommend using either 5-HTP
+    (50 mg per day) or Saint-John's-wort extract (900 mg per day) while you work with
+    your doctor to reduce the drug to half the daily dosage for two to four weeks.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

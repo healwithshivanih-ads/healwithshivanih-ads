@@ -1,0 +1,60 @@
+slug: lavender-extract
+display_name: Lavender Extract (Lavandula angustifolia)
+aliases:
+- silexan
+- lavender oil
+- lavandula-angustifolia
+category: herb
+forms_available:
+- capsule
+- liquid
+typical_dose_range:
+  capsule:
+    min: 80
+    max: 300
+    unit: mg
+timing_options:
+- with_breakfast
+- bedtime
+take_with_food: optional
+linked_to_topics:
+- anxiety
+- major-depressive-disorder
+- depression-mood-disorder
+- sleep-quality
+linked_to_mechanisms: []
+notes_for_coach: 'Silexan is the patented oral lavender oil preparation with RCT evidence
+
+  comparable to lorazepam and paroxetine for generalised anxiety disorder.
+
+  Murray dose: 150 mg twice daily of 4:1 extract; Silexan trials use 80 mg/day.
+
+  Effect develops over 2-4 weeks. Generally well-tolerated; mild lavender
+
+  reflux sometimes occurs (enteric-coated forms help). Not the same as
+
+  aromatherapy lavender oil.
+
+  '
+notes_for_client: 'Lavender oil capsules (Silexan or equivalent) work as well as some
+
+  prescription anxiety medications without the sedation. 80-150 mg/day.
+
+  Take with food to reduce mild burping. Effect builds over 2-4 weeks.
+
+  '
+evidence_tier: plausible_emerging
+contraindications:
+  conditions: []
+  medications:
+  - sedatives (mild additive effect)
+  life_stages:
+  - pregnancy (insufficient data)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression
+  quote: 'Lavender extract (4:1): 150 mg twice per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

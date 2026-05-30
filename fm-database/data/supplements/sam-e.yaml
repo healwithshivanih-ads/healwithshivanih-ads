@@ -1,0 +1,68 @@
+slug: sam-e
+display_name: SAM-e (S-Adenosyl-L-Methionine)
+aliases:
+- s-adenosyl-methionine
+- ademetionine
+category: amino_acid
+forms_available:
+- tablet
+- capsule
+typical_dose_range:
+  tablet:
+    min: 400
+    max: 1200
+    unit: mg
+  capsule:
+    min: 400
+    max: 1200
+    unit: mg
+timing_options:
+- on_empty_stomach
+- with_breakfast
+take_with_food: optional
+linked_to_topics:
+- major-depressive-disorder
+- depression-mood-disorder
+- osteoarthritis
+linked_to_mechanisms: []
+notes_for_coach: 'Active methyl donor for over 100 methylation reactions including
+  neurotransmitter
+
+  synthesis. Murray dose for depression: 200 mg twice daily up to 400 mg three times
+
+  daily (~1,200 mg/day). Enteric-coated tablets essential — non-enteric forms largely
+
+  destroyed by stomach acid. Effect typically within 1-2 weeks (faster than SSRIs).
+
+  Also has strong evidence for osteoarthritis (matches NSAIDs for symptom relief).
+
+  '
+notes_for_client: 'SAM-e is a natural compound your body makes for hundreds of essential
+  functions.
+
+  As a supplement, it can lift mild-to-moderate depression often faster than
+
+  prescription antidepressants. Take on empty stomach 30 min before breakfast +
+
+  again before lunch. Enteric-coated form only — others are destroyed by stomach acid.
+
+  '
+evidence_tier: strong
+contraindications:
+  conditions:
+  - bipolar disorder (can trigger mania)
+  - active manic episode
+  medications:
+  - MAOIs (serotonin syndrome risk)
+  - SSRIs (clinician-supervised only)
+  - L-DOPA (Parkinson's medication interaction)
+  life_stages:
+  - pregnancy (limited data; consult clinician)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression
+  quote: 'SAM-e: 200 mg twice a day up to 400 mg three times a day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

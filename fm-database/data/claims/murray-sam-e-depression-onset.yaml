@@ -1,0 +1,37 @@
+slug: murray-sam-e-depression-onset
+statement: 'SAM-e (S-adenosyl-methionine) at 400 mg twice to 400 mg three times daily
+  produces antidepressant effects in mild-to-moderate depression typically within
+  1-2 weeks — faster than SSRIs (4-6 weeks). Mechanism: SAM-e is the universal methyl
+  donor for the synthesis of neurotransmitters serotonin, dopamine, and norepinephrine
+  via methylation reactions. Multiple DB-RCTs show efficacy comparable to tricyclic
+  antidepressants without the cardiac, anticholinergic, or weight-gain side effects.
+  Use enteric-coated form only — non-enteric tablets are destroyed by stomach acid.'
+evidence_tier: strong
+rationale: Cochrane review supports antidepressant efficacy. Mechanism through one-carbon
+  metabolism + neurotransmitter methylation. Effect-size meaningful + side-effect
+  profile better than tricyclics. Also evidenced in osteoarthritis at same doses.
+coaching_translation: 'SAM-e is faster than SSRIs and gentler — 1-2 week onset vs
+  4-6 weeks for SSRIs. Use 400 mg twice or three times daily. CRITICAL: enteric-coated
+  form only (non-enteric is destroyed by stomach acid). Take on empty stomach 30 min
+  before meals. Avoid in bipolar disorder (can trigger mania). Expensive but works.'
+caveats:
+- ENTERIC-COATED form essential
+- Bipolar disorder contraindication — can trigger mania
+- MAOI absolute contraindication
+- SSRI combination — clinician-supervised only
+- L-DOPA interaction (worsens Parkinson's dyskinesia)
+- Expensive supplement
+linked_to_topics:
+- major-depressive-disorder
+- depression-mood-disorder
+- osteoarthritis
+linked_to_supplements:
+- sam-e
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression, Treatment Summary pg 794
+  quote: 'SAM-e: 200 mg twice a day up to 400 mg three times a day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,38 @@
+slug: murray-5htp-depression
+statement: 5-Hydroxytryptophan (5-HTP) at 50-100 mg three times daily is Murray's
+  preferred natural antidepressant for restoring serotonin in mild-to-moderate depression.
+  Unlike L-tryptophan, 5-HTP crosses the blood-brain barrier without competing for
+  the amino acid transporter, producing more reliable elevation of brain serotonin.
+  Multiple DB-RCTs show efficacy comparable to imipramine and fluvoxamine with fewer
+  side effects. Effect onset 1-2 weeks (faster than SSRIs).
+evidence_tier: strong
+rationale: Multiple DB-RCTs including head-to-head trials. Mechanism — 5-HTP is the
+  precursor immediately upstream of serotonin; aromatic amino acid decarboxylase converts
+  it to 5-HT. Bypasses the rate-limiting tryptophan hydroxylase step. Effect on sleep
+  + anxiety + mood simultaneously.
+coaching_translation: 5-HTP 50-100 mg three times daily is Murray's go-to natural
+  antidepressant — works on serotonin like SSRIs but faster (1-2 weeks vs 4-6) and
+  gentler. Start at 50 mg with food for 3 days, then titrate up. Particularly useful
+  when depression overlaps with insomnia and anxiety. Take last dose 1-2 hours before
+  bed.
+caveats:
+- Contraindicated with SSRIs/SNRIs/MAOIs (serotonin syndrome)
+- Carbidopa (Parkinson's) interaction — clinical scope
+- Start at 50 mg for 3-5 days before increasing
+- Take with carb snack (insulin enhances brain uptake)
+- Discontinue 2 weeks before any planned anaesthesia
+linked_to_topics:
+- major-depressive-disorder
+- depression-mood-disorder
+- insomnia
+- anxiety
+linked_to_supplements:
+- 5-htp
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression, Treatment Summary pg 794
+  quote: '5-HTP: 50 to 100 mg three times per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
