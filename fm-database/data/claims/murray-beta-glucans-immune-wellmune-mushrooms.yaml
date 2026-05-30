@@ -1,0 +1,39 @@
+slug: murray-beta-glucans-immune-wellmune-mushrooms
+statement: 'Beta-glucans activate innate immune cells (macrophages, NK cells, neutrophils)
+  via dectin-1 + complement receptor 3 binding. Best-researched sources: (1) Wellmune
+  WGP (whole-glucan particle from baker''s yeast) 250-500 mg/day — extensive RCT evidence
+  in URI prevention + post-exercise immune recovery, (2) Maitake D-fraction or MD-fraction
+  (0.5-1.0 mg/kg body weight/day), (3) Shiitake or reishi mushroom (6-9 g dried mushroom
+  equivalent/day). Mechanism: trained immunity (dectin-1 epigenetic reprogramming
+  → enhanced response to subsequent pathogen challenge) + direct innate activation.'
+evidence_tier: strong
+rationale: Multiple DB-RCTs including Auinger 2013 + Dharsono 2019 (already in catalogue
+  as sources). Mechanism well-established.
+coaching_translation: 'Beta-glucans train your innate immune system to respond faster
+  to pathogens. The most-researched: Wellmune WGP from yeast 250-500 mg/day. Mushroom
+  alternatives: maitake D-fraction 0.5-1 mg/kg, OR 6-9 g shiitake/reishi equivalent.
+  Particularly good for clients with recurrent URIs, athletes during heavy training,
+  or anyone exposed to crowds + travel. Stack with astragalus + zinc + vitamin D for
+  comprehensive immune support.'
+caveats:
+- Wellmune WGP > generic baker's yeast beta-glucan
+- Mushroom products vary in actual beta-glucan content (>20% required)
+- Autoimmune disease — theoretical caution with strong immune stimulants
+- Effect builds over 4-8 weeks
+linked_to_topics:
+- immune-support
+- common-cold
+linked_to_supplements:
+- beta-glucans
+- maitake-mushroom
+- shiitake-mushroom
+- reishi-mushroom
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 12 — Immune System Support, Quick Review pg 294
+  quote: One of the best-researched beta-glucan sources is Wellmune WGP, a whole glucan
+    particle derived from the cell walls of baker's yeast.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

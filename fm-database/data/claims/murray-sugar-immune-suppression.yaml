@@ -1,0 +1,40 @@
+slug: murray-sugar-immune-suppression
+statement: 'Dietary sugar (refined sucrose, fructose, glucose) suppresses white blood
+  cell function — specifically neutrophil phagocytic activity — for HOURS after ingestion.
+  Studies dating back to 1973 show that ~100 g sugar (the amount in 3 cans of soda)
+  reduces phagocyte function by ~50% for 1-5 hours after ingestion. During active
+  infection, Murray''s recommendation: limit simple sugar consumption (including fruit
+  sugars) to <50 g/day total. This is one of the most concrete + actionable immune
+  interventions clients can implement immediately, and explains why bingeing sweets
+  while sick prolongs illness.'
+evidence_tier: strong
+rationale: Sanchez 1973 + multiple subsequent studies. Mechanism — vitamin C + glucose
+  share the same cellular transport (GLUT receptors); high glucose competitively inhibits
+  vitamin C uptake into phagocytes. Effect transient but profound during ingestion
+  + post-prandial window.
+coaching_translation: 'Sugar suppresses your immune system for hours after eating
+  it. A bowl of ice cream or a few sodas cut your white blood cells'' bacteria-killing
+  ability in half for 1-5 hours. During illness: limit ALL simple sugars (including
+  fruit sugars + fruit juice) to under 50 g/day. The ''feed a cold'' folk wisdom is
+  exactly backward — sugar slows recovery. Soups, broths, vegetables, water — not
+  sugary drinks and treats.'
+caveats:
+- Effect transient (1-5 hours) but cumulative with frequent sugar intake
+- Includes fruit juice + honey + sweetened yoghurt during active illness
+- Whole fruit OK in moderation (fibre slows glucose release)
+- Long-term sugar excess drives chronic immune dysfunction beyond acute effect
+linked_to_topics:
+- immune-support
+- common-cold
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 12 — Immune System Support, Quick Review pg 294, Treatment Summary
+    pg 295
+  quote: Too much sugar in the diet leads to lowered white blood cell activity. Limit
+    your simple sugar consumption (including fruit sugars) to less than 50 g per day.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

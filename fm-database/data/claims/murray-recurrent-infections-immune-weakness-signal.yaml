@@ -1,0 +1,40 @@
+slug: murray-recurrent-infections-immune-weakness-signal
+statement: 'Recurrent or chronic infections — even mild repeating colds and flu —
+  are a clinical signal that immune function is weakened, not a coincidence or bad
+  luck. Murray''s framework: the body normally clears 3-4 day common cold infections
+  without external intervention; longer or more frequent episodes indicate underlying
+  immune compromise. Coaching investigation priorities: (1) chronic sugar excess (impairs
+  neutrophil function), (2) chronic stress + cortisol elevation (suppresses Th1 immunity),
+  (3) sleep deprivation (reduces NK cell activity), (4) nutrient deficiencies (vitamin
+  D, zinc, selenium, vitamin C, B-vitamins), (5) gut dysbiosis (70% of immune cells
+  in gut-associated lymphoid tissue). Frequent infections deserve workup, not just
+  symptom treatment.'
+evidence_tier: strong
+rationale: Established immunology + clinical observation. Mechanism — multiple convergent
+  pathways suppressing innate + adaptive immunity. The 'just a bad year for colds'
+  narrative often masks correctable underlying issues.
+coaching_translation: 'If you get sick often — even just mild colds repeatedly — your
+  immune system is signalling weakness. Healthy immune system clears a cold in 3-4
+  days; longer or more frequent episodes mean something''s off. Investigate: sugar
+  intake, sleep quality, chronic stress, nutrient status (vitamin D, zinc, B12), gut
+  health. Don''t just treat each infection — treat the underlying immunocompromise.'
+caveats:
+- Severe or unusual infections (PCP, opportunistic) need immunology workup
+- Pediatric frequent infections during daycare/school is normal exposure pattern
+- Splenectomy + transplant + chemotherapy = different rules
+- Chronic active EBV + CMV reactivation as immune-weakness indicators
+linked_to_topics:
+- immune-support
+- chronic-stress
+- common-cold
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 12 — Immune System Support, Quick Review pg 294
+  quote: Recurrent or chronic infections, even very mild colds and flu, are signs
+    that the immune system is weakened. With a healthy, functioning immune system,
+    a cold should not last more than three or four days.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
