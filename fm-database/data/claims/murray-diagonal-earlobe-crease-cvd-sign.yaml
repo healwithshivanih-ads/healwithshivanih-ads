@@ -1,0 +1,36 @@
+slug: murray-diagonal-earlobe-crease-cvd-sign
+statement: 'A diagonal earlobe crease (Frank''s sign) — visible diagonal crease across
+  the earlobe — has been recognised since 1973 as a clinical sign of cardiovascular
+  disease. Multiple subsequent studies confirm Frank''s sign is independently associated
+  with coronary artery disease, increased intima-media thickness, and adverse cardiovascular
+  events. The proposed mechanism: shared microvascular degeneration affecting both
+  the ear''s terminal capillary bed and coronary microcirculation. Practical clinical
+  use: presence of Frank''s sign warrants further CV risk assessment even when other
+  risk factors appear normal.'
+evidence_tier: plausible_emerging
+rationale: Frank 1973 + multiple confirmatory studies (Edston 2006, Korkmaz 2014).
+  Mechanism — both ear and heart have terminal capillary networks vulnerable to common
+  microvascular damage. Sensitivity moderate; specificity higher.
+coaching_translation: A diagonal crease across the earlobe (Frank's sign) is a recognised
+  marker of cardiovascular disease — even when other risk factors appear normal. If
+  you or a client has a visible diagonal earlobe crease, request a thorough cardiovascular
+  workup including hs-CRP, lipid subfractions, and possibly coronary calcium scoring.
+  The shared mechanism is microvascular degeneration.
+caveats:
+- Frank's sign is a CLUE, not a diagnosis
+- Negative Frank's sign does NOT rule out CVD
+- Bilateral creases (both ears) carry stronger association than unilateral
+- More useful as a prompt for further workup than standalone diagnostic
+linked_to_topics:
+- atherosclerosis
+- atherogenic-dyslipidemia
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 11 — Heart and Cardiovascular Health, Quick Review pg 272
+  quote: The presence of a diagonal earlobe crease has been recognized as a sign of
+    CVD since 1973.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,41 @@
+slug: murray-mediterranean-olive-omega3-cv
+statement: The Mediterranean diet's cardioprotective effect is largely driven by the
+  combination of olive oil (monounsaturated fats + polyphenol antioxidants) PLUS adequate
+  omega-3 fatty acids from fish, nuts, and seeds. Multiple large population studies
+  (Nurses Health Study, Iowa Health Study, Physicians Health Study) confirm that higher
+  nut and seed consumption substantially reduces CVD risk. Mechanism extends beyond
+  lipid effects — these foods reduce hs-CRP, support endothelial function, improve
+  insulin sensitivity, and shift fatty acid composition of cell membranes toward anti-inflammatory
+  phenotype.
+evidence_tier: strong
+rationale: Lyon Diet Heart Study + PREDIMED + multiple cohorts. Mechanism — oleocanthal
+  in olive oil acts as natural ibuprofen; EPA/DHA shift eicosanoid balance; tree nuts
+  provide L-arginine + magnesium + fibre.
+coaching_translation: 'The Mediterranean diet works for the heart largely because
+  it combines TWO key elements: olive oil (monounsaturated fat + polyphenols) AND
+  omega-3 sources (fish, walnuts, flax). Both together do more than either alone.
+  Population studies (Nurses Health, Physicians Health) show nuts + seeds significantly
+  cut heart disease. 1-2 tbsp olive oil daily + 30g nuts/seeds + 2-3 servings oily
+  fish per week + fish oil supplement for the gap.'
+caveats:
+- Extra-virgin olive oil only (regular is too refined)
+- Cold-pressed extra-virgin highest polyphenol content
+- Tree nuts > peanuts (which are legumes)
+- 30 g nuts/day is the trial-tested amount
+linked_to_topics:
+- atherogenic-dyslipidemia
+- atherosclerosis
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 11 — Heart and Cardiovascular Health, Quick Review pg 271
+  quote: One of the most important aspects of the Mediterranean diet may be the combination
+    of olive oil (a source of monounsaturated fats and antioxidants) and the intake
+    of omega-3 fatty acids. Higher consumption of nuts and seeds has been shown to
+    significantly reduce the risk of CVD.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

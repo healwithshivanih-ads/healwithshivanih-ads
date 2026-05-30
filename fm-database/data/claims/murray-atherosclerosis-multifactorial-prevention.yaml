@@ -1,0 +1,41 @@
+slug: murray-atherosclerosis-multifactorial-prevention
+statement: 'Atherosclerosis — the underlying disease process in cardiovascular disease
+  — is multifactorial and largely preventable. Smoking is the single most important
+  modifiable risk factor (70% greater CVD death rate vs non-smokers). Other major
+  risk factors: elevated LDL cholesterol, high-sensitivity CRP (inflammation marker
+  independently predicts CAD), insulin resistance, hypertension, obesity, sedentary
+  lifestyle. Dietary modifications not only prevent recurrent heart attacks more effectively
+  than aspirin but can REVERSE established arterial blockage (Ornish lifestyle program
+  documented). Cardiovascular prevention is one of the FM areas where lifestyle medicine
+  substantially outperforms pharmaceutical intervention.'
+evidence_tier: strong
+rationale: Decades of evidence — Framingham, Nurses Health Study, Lyon Diet Heart
+  Study, Ornish reversal trial. Mechanism — multifactorial atherogenesis driven by
+  endothelial dysfunction + lipid deposition + chronic inflammation.
+coaching_translation: 'Heart disease is largely preventable AND in many cases reversible
+  through lifestyle. The big modifiable factors: smoking (70% higher CVD death), high
+  LDL + low HDL, elevated hs-CRP (chronic inflammation), insulin resistance, hypertension,
+  obesity, sedentary lifestyle. Ornish-style intensive lifestyle programs have actually
+  REVERSED arterial blockages — something cardiac drugs rarely accomplish.'
+caveats:
+- hs-CRP > 3 mg/L = high CV risk
+- LDL particle number + size matters more than total LDL
+- Lp(a) elevation requires niacin therapy (genetic risk factor)
+- Established CVD requires ongoing cardiology — lifestyle complements not replaces
+linked_to_topics:
+- atherogenic-dyslipidemia
+- atherosclerosis
+- high-blood-pressure
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 11 — Heart and Cardiovascular Health, Quick Review pg 271–272
+  quote: Atherosclerosis — hardening of the artery walls — is the underlying disease
+    process in cardiovascular disease (CVD). Several studies have shown that dietary
+    modifications not only are more effective in preventing recurrent heart attack
+    than aspirin but also can reverse the blockage of clogged arteries.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

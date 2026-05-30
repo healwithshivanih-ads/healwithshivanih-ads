@@ -1,0 +1,38 @@
+slug: murray-hs-crp-inflammation-marker
+statement: 'High-sensitivity C-reactive protein (hs-CRP) is an INDEPENDENT risk factor
+  for coronary artery disease — even when traditional lipids are normal, elevated
+  hs-CRP predicts CVD events. Target hs-CRP < 1 mg/L (low risk); 1-3 mg/L (moderate
+  risk); >3 mg/L (high risk). FM interventions that reduce hs-CRP: anti-inflammatory
+  diet (Mediterranean, low refined carb), weight loss, exercise, fish oil 1-3 g EPA+DHA
+  daily, vitamin D adequacy, curcumin, and resolving sources of chronic inflammation
+  (gum disease, gut dysbiosis, chronic infection). hs-CRP belongs on every CV risk
+  panel, not just lipids.'
+evidence_tier: strong
+rationale: Ridker + Jupiter trials cited. Mechanism — chronic inflammation drives
+  endothelial activation + lipoprotein retention + plaque instability. CRP itself
+  may directly contribute to endothelial dysfunction.
+coaching_translation: Inflammation drives heart disease as much as cholesterol does.
+  The blood test is hs-CRP (high-sensitivity C-reactive protein). Target < 1 mg/L.
+  Above 3 = high risk. Lower hs-CRP through anti-inflammatory diet, exercise, fish
+  oil, vitamin D, curcumin, and addressing chronic inflammation sources (gum disease,
+  gut dysbiosis, chronic infection). Belongs on every annual blood panel.
+caveats:
+- hs-CRP rises with acute infection — test when well
+- Elevated hs-CRP alone — investigate source (oral health, gut, chronic infection)
+- Statin reduces hs-CRP but FM lifestyle work more durable
+- Pair with traditional lipid panel for full picture
+linked_to_topics:
+- atherogenic-dyslipidemia
+- atherosclerosis
+- chronic-inflammation
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 11 — Heart and Cardiovascular Health, Quick Review pg 271
+  quote: High-sensitivity C-reactive protein, a blood marker that reflects different
+    degrees of inflammation, has been identified as an independent risk factor for
+    coronary artery disease.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
