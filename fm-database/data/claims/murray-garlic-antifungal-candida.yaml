@@ -1,0 +1,37 @@
+slug: murray-garlic-antifungal-candida
+statement: Garlic (Allium sativum) demonstrates antifungal activity against C. albicans
+  more potent than nystatin, gentian violet, and six other antifungal agents in head-to-head
+  in vitro studies. Allicin is the active sulfur-containing compound; for therapeutic
+  effect, products must deliver ≥4,000 mcg allicin potential (or 10 mg alliin) daily.
+  Fresh crushed garlic (allowed to sit 10 minutes before cooking) releases active
+  allicin and is dietary equivalent.
+evidence_tier: plausible_emerging
+rationale: Multiple in vitro studies; clinical RCTs in oral candidiasis. Mechanism
+  — allicin disrupts fungal cell membrane lipid bilayer + inhibits ergosterol synthesis
+  (same target as azole drugs).
+coaching_translation: Garlic was more effective against candida than nystatin and
+  7 other antifungals in lab studies. Use standardised allicin-yielding extract (≥4,000
+  mcg allicin potential) or 3-5 fresh crushed cloves daily. Crush + wait 10 minutes
+  before eating/cooking to maximise allicin release.
+caveats:
+- Mild antiplatelet effect; pause before surgery
+- Strong odour
+- Aged garlic extract loses allicin but retains other benefits
+linked_to_topics:
+- chronic-candidiasis
+- candida-overgrowth
+- fungal-overgrowth
+linked_to_supplements:
+- garlic
+- garlic-allicin
+- aged-garlic-extract
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 30 — Candidiasis Chronic, pg 612
+  quote: Its inhibition of C. albicans in both animal and test tube studies has shown
+    it to be more potent than nystatin, gentian violet, and six other reputed antifungal
+    agents.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

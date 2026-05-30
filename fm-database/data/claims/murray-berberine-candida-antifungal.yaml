@@ -1,0 +1,39 @@
+slug: murray-berberine-candida-antifungal
+statement: Berberine (an alkaloid found in goldenseal, barberry, Oregon grape, and
+  goldthread) at 25–50 mg three times daily exhibits broad-spectrum antibiotic activity
+  against bacteria, protozoa, and fungi including C. albicans — and in some studies
+  stronger than several commonly used pharmaceutical antibiotics. Particularly useful
+  in candidiasis because it simultaneously addresses bacterial overgrowth that often
+  coexists. Also has antidiarrheal activity relevant to candidiasis-associated GI
+  symptoms.
+evidence_tier: strong
+rationale: Multiple in vitro and clinical studies cited. Mechanism — DNA intercalation
+  + cell wall disruption + biofilm inhibition. Same active compound used in modern
+  integrative SIBO + H. pylori protocols.
+coaching_translation: 'Berberine 25-50 mg three times daily (preferred form: berberine
+  HCl 500 mg tid OR a standardised berberine-containing extract — goldenseal solid
+  extract 250-500 mg tid). Works on candida AND bacterial overgrowth simultaneously.
+  Take between meals. Higher doses may interfere with B vitamin metabolism; avoid
+  in pregnancy.'
+caveats:
+- Pregnancy avoid
+- High doses may interfere with B vitamins — supplement
+- Hypoglycemic effect — monitor in diabetes meds
+- Cycle 4 weeks on / 1 week off to prevent gut microbiome dysbiosis
+linked_to_topics:
+- chronic-candidiasis
+- candida-overgrowth
+- sibo
+- fungal-overgrowth
+linked_to_supplements:
+- berberine
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 30 — Candidiasis Chronic, pg 611
+  quote: Berberine exhibits a broad spectrum of antibiotic activity, having shown
+    activity against bacteria, protozoa, and fungi, including C. albicans. The recommended
+    dosage of berberine is 25 to 50 mg three times per day.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -17,6 +17,9 @@ linked_to_topics:
 - cardiovascular-disease-prevention
 - atherogenic-dyslipidemia
 - dyslipidemia
+- chronic-candidiasis
+- candida-overgrowth
+- fungal-overgrowth
 linked_to_claims:
 - aged-garlic-slows-coronary-calcification-progression
 - murray-garlic-allicin-standardized-dose
@@ -36,7 +39,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 64 — High Cholesterol and/or Triglycerides
   quote: Comprehensive natural treatment summary for dyslipidemia.
-version: 2
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

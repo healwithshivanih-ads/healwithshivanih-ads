@@ -1,0 +1,33 @@
+slug: murray-candida-control-diet
+statement: The C. albicans control diet — eliminate refined and simple sugars (the
+  primary candida fuel), dairy products, foods with high yeast/mold content (alcoholic
+  beverages, cheeses, dried fruits, melons, peanuts), and all known/suspected food
+  allergies. Sugar elimination is foundational; yeasts thrive on simple sugars and
+  refined carbohydrates. The diet must be sustained for a minimum of 2 weeks before
+  adding antifungal agents to prevent severe Herxheimer reaction.
+evidence_tier: plausible_emerging
+rationale: Mechanism — candida switches between commensal yeast and pathogenic hyphal
+  form in response to nutrient availability + immune state. Sugar elimination starves
+  the organism; allergen elimination reduces gut inflammation that supports overgrowth.
+coaching_translation: 'Step one of any candida protocol: eliminate sugar (the candida''s
+  food), dairy, alcohol, cheeses, dried fruits, melons, peanuts. Run the diet alone
+  for 2 weeks BEFORE adding antifungals — otherwise the die-off (Herxheimer) reaction
+  can be miserable. Then add berberine, garlic, oregano oil one at a time.'
+caveats:
+- 2-week strict diet before antifungals (prevent severe Herxheimer)
+- Nutritional support during restriction
+- Include some healthy fats + protein
+linked_to_topics:
+- chronic-candidiasis
+- candida-overgrowth
+- fungal-overgrowth
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 30 — Candidiasis Chronic, pg 614
+  quote: Eliminate refined and simple sugars. Eliminate milk and other dairy products.
+    Eliminate foods with a high content of yeast or mold.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

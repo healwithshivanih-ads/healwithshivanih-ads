@@ -22,6 +22,8 @@ linked_to_topics:
 - sibo
 - gut-dysbiosis
 - h-pylori-infection
+- chronic-candidiasis
+- fungal-overgrowth
 linked_to_claims:
 - berberine-antimicrobial-blood-sugar
 notes_for_coach: Carvacrol ≥70% is the active antifungal/antimicrobial component.
@@ -47,9 +49,9 @@ sources:
   quote: oil of oregano, garlic oil, Indian barberry root extract, right? All of these
     basically are responsible, even amla itself, they are all responsible for healing
     down the gut.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases:
 - oil-of-oregano

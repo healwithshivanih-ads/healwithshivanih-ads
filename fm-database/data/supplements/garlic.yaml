@@ -32,6 +32,9 @@ linked_to_topics:
 - atherosclerosis
 - essential-hypertension
 - atherogenic-dyslipidemia
+- chronic-candidiasis
+- candida-overgrowth
+- fungal-overgrowth
 sources:
 - id: vitaone-mind-map-tool
   location: Surfaced from MindMap 'hypertension' under branch 'ACE Inhibitors (Foods)'
@@ -54,7 +57,7 @@ notes_for_coach: 'Standardise to 1.3% alliin (7.8–11.7 mg alliin/dose). Therap
   approach: fresh garlic equivalent of 4000 mg/day. Garlic BP reductions 8–11 mm Hg
   systolic, 5–8 mm Hg diastolic. Also lowers cholesterol.'
 status: active
-version: 4
+version: 5
 updated_at: '2026-05-30'
 updated_by: Shivani
 linked_to_claims:
