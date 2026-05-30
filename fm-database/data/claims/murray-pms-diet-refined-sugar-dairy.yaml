@@ -1,0 +1,45 @@
+slug: murray-pms-diet-refined-sugar-dairy
+statement: Compared with symptom-free women, women with PMS consume 62% more refined
+  carbohydrates, 275% more refined sugar, 79% more dairy products, 78% more sodium
+  — and 53% less iron, 77% less manganese, 52% less zinc. C-reactive protein (a systemic
+  inflammation marker) correlates with PMS symptom severity. The dietary intervention
+  with the strongest evidence is a low-fat (25% of calories), high-fibre (40 g/day)
+  eating pattern, which reduces blood estrogen by ~36% over 8–10 weeks; combine with
+  elimination of caffeine, alcohol, and excess refined sugar.
+evidence_tier: plausible_emerging
+rationale: Goei 1982 + Boyd 1988 + Rossignol 1991 cited for the dietary comparison
+  data; Bertone-Johnson 2014 for CRP correlation. Mechanism — refined sugar drives
+  insulin spikes that cause sodium retention (bloating) and impair estrogen hepatic
+  clearance; dairy provides bovine estrogen + IGF-1 that may compound. Vegetarian
+  women excrete 2-3× more estrogen and have 50% lower free serum estrogen than omnivores.
+coaching_translation: Before any supplement, address the diet. PMS sufferers eat dramatically
+  more refined sugar, more dairy, more sodium, more refined carbs — and less iron,
+  zinc, manganese. A low-fat (25% of calories), high-fibre (40 g/day) Mediterranean-style
+  diet drops blood estrogen by a third in 8-10 weeks. Eliminate caffeine and alcohol.
+  Reduce dairy (especially in dominant breast symptoms). This intervention alone produces
+  meaningful PMS improvement before adding any nutrient.
+caveats:
+- Vegetarian shift has strongest estrogen-lowering effect — culturally aligned in
+  India
+- Dairy reduction is particularly important when breast tenderness dominates
+- Caffeine + sugar combination has the most documented mood/bloating effect
+- Implement gradually over 2-3 cycles, not abruptly
+- Iron, zinc, manganese deficiencies common — pair with multivitamin
+linked_to_topics:
+- premenstrual-syndrome
+- chronic-inflammation
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1403–1405
+  quote: 'Compared with the diets of symptom-free women, the diets of PMS patients
+    are more likely to feature the following: 62% more refined carbohydrates, 275%
+    more refined sugar, 79% more dairy products, 78% more sodium. C-reactive protein,
+    a marker of inflammation, has been correlated with the severity of both physical
+    and psychological symptoms of PMS.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

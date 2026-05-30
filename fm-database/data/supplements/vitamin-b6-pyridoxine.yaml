@@ -23,24 +23,32 @@ linked_to_topics:
 - mthfr-gene-variant
 - homocysteine-and-methylation
 - methylation
+- premenstrual-syndrome
 linked_to_claims:
 - b-vitamins-anti-inflammatory-b3-b6
 - b6-b2-support-folate-cycle-and-homocysteine
-notes_for_coach: B6 is a cofactor for the transsulfuration pathway converting homocysteine to cysteine and ultimately glutathione.
-  Also supports neurotransmitter synthesis. Doses above 200mg/day long-term may cause peripheral neuropathy — refer to clinician
+- murray-b6-magnesium-pms-foundation
+notes_for_coach: B6 is a cofactor for the transsulfuration pathway converting homocysteine
+  to cysteine and ultimately glutathione. Also supports neurotransmitter synthesis.
+  Doses above 200mg/day long-term may cause peripheral neuropathy — refer to clinician
   for high-dose protocols.
-notes_for_client: Vitamin B6 helps your body process homocysteine through an alternative pathway and supports production of
-  your natural antioxidant glutathione.
+notes_for_client: Vitamin B6 helps your body process homocysteine through an alternative
+  pathway and supports production of your natural antioxidant glutathione.
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-approach-inflammation
   location: Nutrition – Anti-Inflammatory Vitamins
-  quote: Vitamin C is anti-inflammatory, vitamin B3 is anti-inflammatory, and vitamin B6 is anti-inflammatory.
+  quote: Vitamin C is anti-inflammatory, vitamin B3 is anti-inflammatory, and vitamin
+    B6 is anti-inflammatory.
 - id: coconote-fm-vitamin-b9-b12-mthfr
   location: Cofactors / Supplementation section
-  quote: For the sulfation pathway to actually carry out, vitamin B6 is an important cofactor.
-version: 2
+  quote: For the sulfation pathway to actually carry out, vitamin B6 is an important
+    cofactor.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

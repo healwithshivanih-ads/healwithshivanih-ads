@@ -44,10 +44,12 @@ interactions:
   with_medications: []
 linked_to_topics:
 - perimenopause
+- premenstrual-syndrome
 linked_to_mechanisms:
 - bone-mineral-density
 - calcium-magnesium-balance
-linked_to_claims: []
+linked_to_claims:
+- murray-calcium-1200mg-pms
 notes_for_coach: 'STUB — dose deliberately blank. FM stance is FOOD-FIRST for calcium:
 
   dairy, sardines/small fish with bones, leafy greens (collards, kale),
@@ -87,8 +89,11 @@ sources:
   location: practice_guide.md (referenced via magnesium spacing rule)
 - id: vitaone-practice-guide
   location: Mineral balance discussions
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
 evidence_tier: confirm_with_clinician
-version: 1
+version: 2
 status: active
-updated_at: 2026-04-29
+updated_at: '2026-05-30'
 updated_by: shivani

@@ -22,12 +22,14 @@ linked_to_topics:
 - anxiety
 - perimenopause-and-menopause
 - menopause
+- premenstrual-syndrome
 linked_to_mechanisms:
 - serotonin-melatonin-sleep-axis
 - tryptophan-kynurenine-shunt
 linked_to_claims:
 - st-johns-wort-effective-for-mild-moderate-depression
 - murray-st-johns-wort-perimenopausal-mood
+- murray-st-johns-wort-pms
 notes_for_coach: First-line botanical for mild-to-moderate depression in Pizzorno's
   framework. Standardised extract (0.3% hypericin or 3-5% hyperforin), 300 mg three
   times daily. Numerous SSRI-comparable RCTs. Major drug interactions via CYP3A4 induction
@@ -89,7 +91,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

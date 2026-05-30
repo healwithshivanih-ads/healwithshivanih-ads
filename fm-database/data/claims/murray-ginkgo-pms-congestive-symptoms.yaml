@@ -1,0 +1,40 @@
+slug: murray-ginkgo-pms-congestive-symptoms
+statement: Ginkgo biloba extract (24% ginkgo flavone glycosides) at 80 mg twice daily,
+  taken from day 16 of one cycle through day 5 of the next, is effective specifically
+  against the CONGESTIVE symptoms of PMS — fluid retention, breast pain, breast tenderness,
+  vascular congestion. In a 165-woman placebo-controlled trial, ginkgo significantly
+  improved breast pain + tenderness; in an 85-woman follow-up trial, overall PMS severity
+  score dropped from 34.80 to 11.11 versus 34.38 to 25.64 for placebo.
+evidence_tier: plausible_emerging
+rationale: Tamborini 1993 RCT + Ozgoli 2009 + multiple smaller trials. Mechanism —
+  ginkgo's vasodilatory effect via PAF antagonism + nitric oxide modulation specifically
+  targets the vascular congestion underlying fibrocystic breast changes and luteal-phase
+  fluid retention. Particularly useful when PMS symptoms have a dominant 'puffy +
+  heavy + tender' quality.
+coaching_translation: Ginkgo biloba 80 mg twice daily from cycle day 16 to day 5 of
+  the next cycle specifically reduces the congestive PMS symptoms — breast tenderness,
+  water retention, that puffy luteal-phase feeling. Doesn't help mood much; it's a
+  vascular-focused herb. Use 24% standardised flavone glycoside extract. Stacks well
+  with chasteberry for combined congestive + hormonal balance picture.
+caveats:
+- Mild antiplatelet — caution + anticoagulants + 7 days before surgery
+- Cyclical dosing (day 16 to day 5 next cycle) — explain calendar tracking
+- Use 24% standardised extract — cheaper unstandardised preparations don't work
+- Mild GI upset possible at higher doses
+- Multiple drug interactions via CYP modulation — review medication list
+linked_to_topics:
+- premenstrual-syndrome
+- cognitive-decline
+linked_to_supplements:
+- ginkgo-biloba
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1414
+  quote: Ginkgo biloba extract was effective against the congestive symptoms of PMS,
+    particularly breast pain and breast tenderness.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

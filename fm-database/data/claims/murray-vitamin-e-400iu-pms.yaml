@@ -1,0 +1,41 @@
+slug: murray-vitamin-e-400iu-pms
+statement: Vitamin E (mixed tocopherols) at 400 IU/day for three months produced a
+  33% reduction in physical PMS symptoms (weight gain, breast tenderness), 38% reduction
+  in anxiety, and 27% reduction in depression versus 14% reduction in physical symptoms
+  with placebo (London 1987 DB-RCT). Additional benefits — improved energy, reduced
+  headaches, and fewer cravings for sweets.
+evidence_tier: plausible_emerging
+rationale: London 1987 DB-RCT + several subsequent confirmations. Mechanism — vitamin
+  E reduces prostaglandin-mediated inflammation in breast tissue; mild estrogen-modulating
+  effect. Best evidence for breast tenderness specifically (cyclic mastalgia). Use
+  mixed tocopherols (containing gamma-tocopherol) rather than alpha-tocopherol alone
+  — the natural mix is more physiologically active.
+coaching_translation: Vitamin E 400 IU/day (mixed tocopherols) over 3 months reduces
+  PMS breast tenderness by a third and improves anxiety and depression dimensions.
+  Most useful when breast tenderness is a dominant symptom. Use 'mixed tocopherols'
+  on the label, not just alpha-tocopherol — natural form is more active. Pairs well
+  with calcium + B6 + magnesium stack.
+caveats:
+- Mixed tocopherols > alpha-tocopherol alone (synthetic 'dl-alpha' is least active)
+- Mild antiplatelet — caution + anticoagulants + 7 days before surgery
+- Doses above 800 IU long-term — some controversy on all-cause mortality (Miller 2005
+  meta-analysis); 400 IU is the trial-tested ceiling
+- Avoid in active hemorrhagic disease
+linked_to_topics:
+- premenstrual-syndrome
+- perimenopause-and-menopause
+linked_to_supplements:
+- vitamin-e
+- vitamin-e-mixed-tocopherols
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1411
+  quote: Patients receiving vitamin E (400 IU per day) demonstrated a 33% reduction
+    in physical symptoms (such as weight gain and breast tenderness), a 38% reduction
+    in anxiety, and a 27% reduction in depression after three months of use.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

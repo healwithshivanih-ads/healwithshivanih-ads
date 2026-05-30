@@ -28,6 +28,7 @@ linked_to_topics:
 - type-2-diabetes-mellitus
 - diabetic-neuropathy
 - diabetic-retinopathy
+- premenstrual-syndrome
 linked_to_claims:
 - vitamin-e-antioxidant-nafld
 - vitamin-e-antioxidant-gi-protection
@@ -38,6 +39,7 @@ linked_to_claims:
 - nutritional-deficiencies-zinc-copper-vitamins-impair-enzyme-production
 - vitamin-a-protective-chronic-gastric-ulcer
 - vitamin-e-lowers-cv-events-hp-2-2-diabetics
+- murray-vitamin-e-400iu-pms
 notes_for_coach: Prefer mixed tocopherols. Monitor blood pressure — some T2DM patients
   show 6–7 mmHg systolic increase with 500 mg alpha-tocopherol. Hp 2-2 genotype patients
   benefit most for CVD outcomes. Ensures magnesium entry into cells when co-administered.
@@ -85,9 +87,12 @@ sources:
   quote: 'Vitamin E improves insulin action, prevents free radical damage to LDL and
     vascular lining, improves the functioning of blood vessels and endothelium...
     Dose: 400 to 800 IU daily.'
-version: 11
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 12
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases: []
 contraindications:

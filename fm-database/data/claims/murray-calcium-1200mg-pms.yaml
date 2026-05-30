@@ -1,0 +1,46 @@
+slug: murray-calcium-1200mg-pms
+statement: Calcium at 1,200 mg/day (carbonate) for three menstrual cycles produced
+  a 48% reduction in total PMS symptom scores versus 30% reduction with placebo in
+  a 479-woman multicentre RCT (Thys-Jacobs 1998). Effect was consistent across mood,
+  water retention, breast tenderness, food cravings, and pain dimensions. Calcium
+  deficiency may directly mimic PMS symptoms, and the parathyroid-vitamin D-calcium
+  axis interacts with cyclical estrogen fluctuation.
+evidence_tier: strong
+rationale: 'Thys-Jacobs 1998 was the landmark trial that brought calcium into mainstream
+  PMS care; subsequent trials (Bertone-Johnson 2005) confirm and add vitamin D synergy.
+  Mechanism — calcium acts directly on neuronal calcium channels modulating mood +
+  pain perception; the cyclical fluctuation of calcium homeostasis tracks the estrogen
+  cycle. Coaching note: calcium citrate or hydroxyapatite forms better absorbed than
+  carbonate, especially in low-stomach-acid clients.'
+coaching_translation: Calcium 1,200 mg/day across three cycles cuts PMS symptoms nearly
+  in half — one of the strongest pieces of evidence in women's health nutrition. Use
+  calcium citrate (better absorption + can take without food) or split carbonate doses
+  with meals. Always pair with vitamin D3 2,000-4,000 IU/day — the absorption and
+  the menstrual benefit both improve. Effect builds over 2-3 cycles.
+caveats:
+- Split doses — calcium absorption ceiling is ~500 mg per dose
+- Citrate > carbonate for absorption (especially in PPI users or low stomach acid)
+- PAIR with vitamin D3 (2,000-4,000 IU) — calcium without D is poorly absorbed
+- Caution with calcium > 1,500 mg/day in cardiovascular disease — some controversy
+  on cardiovascular risk; food-first preferred when possible
+- Kidney stone history — citrate form preferred; assess oxalate status
+linked_to_topics:
+- premenstrual-syndrome
+linked_to_supplements:
+- calcium
+- calcium-citrate
+- calcium-supplementation
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1410
+  quote: An important multicenter clinical trial was conducted with 479 women who
+    were given either 1,200 mg calcium carbonate or a placebo for three menstrual
+    cycles. By the end of the third cycle, calcium resulted in a 48% reduction in
+    total symptom scores from baseline compared with a 30% reduction in the placebo
+    group.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

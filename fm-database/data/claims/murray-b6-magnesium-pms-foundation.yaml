@@ -1,0 +1,50 @@
+slug: murray-b6-magnesium-pms-foundation
+statement: Vitamin B6 (50–100 mg/day) and magnesium (250 mg twice daily of glycinate/citrate/malate,
+  ideally calculated as 6–12 mg/kg body weight) together form the foundational nutritional
+  treatment for PMS — and act synergistically because B6 is required to transport
+  magnesium INTO cells. Red blood cell magnesium concentrations are consistently lower
+  in PMS sufferers across four independent studies, despite plasma magnesium often
+  appearing normal. Combined B6 + magnesium reduces nervousness in 89% of women, breast
+  tenderness in 96%, and weight gain in 95% of those treated.
+evidence_tier: strong
+rationale: '12+ DB-RCTs on B6 in PMS since 1975; meta-analysis (Wyatt 1999) confirms
+  efficacy at 50-100 mg/day for mood + physical symptoms. Magnesium evidence: Facchinetti
+  1991, Walker 1998, plus the four independent RBC magnesium studies. The B6/magnesium
+  synergy is well-established intracellular biochemistry — RBC magnesium correlates
+  with intracellular status. Plasma magnesium is unreliable; functional medicine should
+  measure RBC magnesium if testing.'
+coaching_translation: B6 50-100 mg/day + magnesium glycinate 250 mg twice daily is
+  the foundational PMS nutrient stack. They work better together than either alone
+  — B6 is what gets magnesium INTO your cells. Most PMS sufferers have low cell magnesium
+  despite normal blood tests. Effect builds over 2-3 cycles. Pair with calcium 1,200
+  mg/day for the strongest evidence-based foundation.
+caveats:
+- B6 above 200 mg/day chronic can cause peripheral neuropathy — stay at 50-100 mg/day
+- Use pyridoxal-5-phosphate (P5P) at 15 mg/day if pyridoxine seems ineffective (some
+  women can't convert)
+- Magnesium form matters — glycinate, citrate, malate, succinate (not oxide)
+- Renal impairment is contraindication for high magnesium
+- RBC magnesium is the right functional test, not serum magnesium
+linked_to_topics:
+- premenstrual-syndrome
+- anxiety
+- chronic-stress
+linked_to_supplements:
+- vitamin-b6
+- vitamin-b6-pyridoxine
+- pyridoxal-5-phosphate
+- magnesium-glycinate
+- magnesium-citrate
+- magnesium
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1408–1410
+  quote: One clinical trial of magnesium in PMS showed a remarkable reduction of nervousness
+    in 89% of subjects, of breast tenderness in 96%, and of weight gain in 95%. Without
+    vitamin B6, magnesium does not get inside the cell.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

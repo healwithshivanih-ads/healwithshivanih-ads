@@ -21,9 +21,11 @@ take_with_food: required
 linked_to_topics:
 - calcium-deficiency
 - calcium-metabolism
+- premenstrual-syndrome
 linked_to_claims:
 - calcium-supplementation-rarely-needed
 - correct-albumin-before-calcium-supplementation
+- murray-calcium-1200mg-pms
 notes_for_coach: Calcium supplementation is rarely the correct first intervention
   for low serum calcium. Coaches should encourage clients to work with their clinician
   to rule out albumin deficiency, magnesium deficiency, low vitamin D, and hypochlorhydria
@@ -38,7 +40,10 @@ sources:
   location: Causes of Low Serum Calcium
   quote: If you find out the low calcium in the serum, that doesn't mean that patient
     is deficient in calcium and they require calcium supplementation.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

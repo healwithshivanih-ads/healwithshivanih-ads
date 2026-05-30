@@ -1,0 +1,45 @@
+slug: murray-st-johns-wort-pms
+statement: St John's Wort extract (900 mg/day standardised to 0.18% hypericin + 3.38%
+  hyperforin) significantly outperformed placebo for PMS-related food cravings, swelling,
+  poor coordination, insomnia, confusion, headaches, crying, and fatigue across two
+  menstrual cycles in a 36-woman DB crossover trial. An observational study showed
+  51% overall PMS symptom reduction with two-thirds of women achieving ≥50% improvement
+  in severity scores — best improvement in mood subscale (57%), with crying (92%),
+  depression (85%), and confusion (75%) showing the largest individual symptom drops.
+evidence_tier: plausible_emerging
+rationale: Stevinson 2000 DB-RCT + Hicks 2004 observational study + extensive depression
+  literature. Mechanism — multimodal serotonin/dopamine/norepinephrine reuptake modulation.
+  Particularly effective when PMS is dominated by the dysphoric / mood / crying axis
+  (PMDD-spectrum). MAJOR drug-interaction profile (CYP3A4 + P-gp induction) is the
+  limiting factor.
+coaching_translation: 'St John''s Wort 900 mg/day in PMS works best for mood-dominant
+  PMS — crying, depression, confusion, fatigue, food cravings. Particularly useful
+  at the PMDD end of the spectrum. The CRITICAL caveat is drug interactions: contraindicated
+  with SSRIs/SNRIs/MAOIs, oral contraceptives (reduces effectiveness), warfarin, immunosuppressants,
+  and many cancer/HIV drugs. Always do a pharmacist medication review before starting.'
+caveats:
+- MAJOR drug-interaction risk via CYP3A4 + P-gp induction
+- Reduces effectiveness of oral contraceptives — explicit warning
+- Contraindicated with SSRIs/SNRIs/MAOIs/tramadol — serotonin syndrome
+- Reduces warfarin INR + cyclosporine levels + many cancer/HIV drugs
+- Photosensitivity at higher doses
+- Pharmacist review of full medication list essential
+linked_to_topics:
+- premenstrual-syndrome
+- depression-mood-disorder
+- perimenopause-and-menopause
+linked_to_supplements:
+- st-johns-wort
+linked_to_mechanisms: []
+out_of_scope_notes: Drug-interaction screening is clinician scope. Coach role — refer
+  for full medication review before any St John's Wort recommendation.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1414–1415
+  quote: The degree of improvement in overall PMS scores between the beginning of
+    the study and the end was 51%, with more than two-thirds of the women having at
+    least a 50% decrease in the severity of symptoms.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

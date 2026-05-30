@@ -13,9 +13,11 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - atherosclerosis
+- premenstrual-syndrome
 linked_to_claims:
 - vitamin-e-400iu-clinically-significant-ldl-protection
 - vitamin-e-coq10-selenium-synergistic-antioxidant
+- murray-vitamin-e-400iu-pms
 notes_for_coach: 'Use natural d-alpha tocopherol (or mixed tocopherols) — NOT synthetic
   dl-alpha. Works synergistically with CoQ10 and selenium; statin drugs interfere
   with vitamin E and CoQ10 metabolism, increasing need for both. Dose: 100–400 IU/day.'
@@ -27,7 +29,10 @@ sources:
 - id: pizzorno-cardiometabolic-atherosclerosis
   location: Therapeutic Approach — Supplements
   quote: 'Vitamin E (mixed tocopherols): 100 to 400 IU q.d.'
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

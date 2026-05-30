@@ -1,0 +1,45 @@
+slug: murray-hypothyroidism-drives-pms
+statement: Low thyroid function is dramatically over-represented in women with PMS
+  — in one study, 51 of 54 PMS subjects (94%) showed hypothyroid status versus 0 of
+  12 controls; in another, 7 of 10 vs 0 of 9. Many women with confirmed hypothyroidism
+  plus PMS achieve COMPLETE relief of PMS symptoms when thyroid hormone replacement
+  is appropriately titrated. A full thyroid panel (TSH, free T4, free T3, TPO antibodies,
+  anti-Tg antibodies) belongs in the workup of any persistent PMS, particularly when
+  premenstrual symptoms include cold sensitivity, dry skin, hair changes, weight stickiness,
+  depression, or constipation.
+evidence_tier: strong
+rationale: 'Multiple older clinical observation studies (Brayshaw 1986, Korzekwa 1996)
+  cited; subsequent endocrine literature reinforces. Mechanism — thyroid hormone is
+  required for hepatic estrogen clearance; subclinical hypothyroidism allows estrogen
+  accumulation across the luteal phase. Coach context: thyroid screening should be
+  standard before assuming PMS is a primary disorder.'
+coaching_translation: Many PMS cases are actually undiagnosed hypothyroidism. Before
+  chasing PMS symptoms with herbs and supplements, run a full thyroid panel — TSH,
+  free T4, free T3, TPO antibodies, anti-thyroglobulin. Look especially if cold-intolerant,
+  dry skin, depressed, gaining weight, constipated, or hair changes. Many women's
+  PMS disappears completely when their thyroid is properly treated.
+caveats:
+- Subclinical hypothyroidism (TSH > 2.5 but < 10 with normal T4) is the most-missed
+  pattern in PMS
+- Anti-TPO + anti-Tg antibodies catch Hashimoto's earlier than TSH
+- Selenium deficiency + iodine status worth checking alongside (see Ch 68 Hypothyroidism
+  for full protocol)
+- Thyroid hormone dosing is clinician scope
+linked_to_topics:
+- premenstrual-syndrome
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Thyroid hormone replacement is clinician scope. Coach role — ensure
+  full thyroid panel done before assuming PMS is the primary diagnosis.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1405–1406
+  quote: In one study, 51 of 54 subjects with PMS demonstrated low thyroid status
+    compared with 0 of 12 in the control group. Many women with PMS and confirmed
+    hypothyroidism who are given thyroid hormone experience complete relief of symptoms.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

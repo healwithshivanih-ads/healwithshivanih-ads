@@ -15,6 +15,7 @@ timing_options:
 take_with_food: optional
 linked_to_topics:
 - knee-pain
+- premenstrual-syndrome
 notes_for_coach: Citrate form absorbed without stomach acid (preferred over carbonate
   for older adults or PPI users). Always pair with vitamin D3 and K2. Hydroxyapatite
   is a natural alternative that also provides phosphorus and other bone minerals.
@@ -22,14 +23,18 @@ notes_for_client: Calcium citrate can be taken with or without food, unlike calc
   carbonate. Always pair with vitamin D and K2.
 evidence_tier: strong
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- murray-calcium-1200mg-pms
 sources:
 - id: vitaone-nutrition-cheatsheet
   location: Calcium & Phosphorus – The Bone Builders
   quote: 'Supplement: Citrate (best absorption); hydroxyapatite bone meal (natural).'
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe

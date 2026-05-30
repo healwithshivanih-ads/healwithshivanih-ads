@@ -1,0 +1,44 @@
+slug: murray-saffron-pms-depression
+statement: Saffron (Crocus sativus) at 15 mg twice daily for four menstrual cycles
+  produced ≥50% PMS symptom reduction in 76% of women (19/25) versus 8% placebo (2/25)
+  in a DB-RCT — and on the depression subscale, 60% of saffron group responded vs
+  4% placebo. Mechanism — crocin and safranal modulate serotonin reuptake, dopamine,
+  and glutamate; saffron has demonstrated equivalent efficacy to fluoxetine 20 mg
+  in mild-to-moderate depression in separate trials.
+evidence_tier: plausible_emerging
+rationale: Agha-Hosseini 2008 PMS RCT + Akhondzadeh 2005 (vs fluoxetine in depression)
+  + Akhondzadeh 2004 (vs imipramine). The depression evidence base strengthens the
+  PMS dysphoric-subtype application. Effect size meaningful and consistent. Petal
+  extract (much cheaper than stigma) preserves efficacy in newer trials — important
+  for India where high-quality Kashmir saffron is accessible.
+coaching_translation: Saffron (kesar) 15 mg twice daily across cycles cuts PMS symptoms
+  in half in 3 out of 4 women — and is particularly effective for the mood/depression
+  dimension. The cheaper saffron petal extract works as well as the stigma extract.
+  Effect builds over 2-3 cycles. India has excellent saffron at competitive prices.
+  Good choice when low mood dominates the PMS picture.
+caveats:
+- SSRI/SNRI/MAOI use — serotonin syndrome risk
+- Mild antiplatelet — caution + anticoagulants
+- Pregnancy first trimester — uterine stimulant at higher doses
+- Effect builds over 2-3 cycles
+- Quality matters — adulteration with other red plant material is common; buy from
+  reputable source
+linked_to_topics:
+- premenstrual-syndrome
+- depression-mood-disorder
+- anxiety
+linked_to_supplements:
+- saffron
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1415
+  quote: 19 of the 25 women in the saffron group responded with at least a 50% reduction
+    in severity of symptoms vs. only 2 of 25 in the placebo group. Based on a depression
+    rating scale, 15 of 25 women in the saffron group responded to treatment vs. only
+    1 of 25 in the placebo group.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -17,8 +17,11 @@ take_with_food: optional
 linked_to_topics:
 - estrogen-dominance
 - luteal-phase-defect
+- premenstrual-syndrome
+- perimenopause-and-menopause
 linked_to_claims:
 - dim-and-chasteberry-naturally-support-progesterone-and-lower-estrogen
+- murray-chasteberry-most-important-pms-herb
 notes_for_coach: Chasteberry (Vitex) acts on the pituitary to support LH secretion
   and may help normalize progesterone production in the luteal phase. Used in cycle
   syncing protocols. Effects are gradual (may take 3+ cycles). Suitable for long-term
@@ -34,7 +37,10 @@ sources:
   quote: What is your take on Chasteberry and DIM? That's also a natural form of increasing
     the progesterone inside the body and lowering the estrogen. You can definitely
     go for the same if it's working for the patients.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

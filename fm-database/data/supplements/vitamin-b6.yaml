@@ -30,6 +30,7 @@ linked_to_topics:
 - diabetic-neuropathy
 - type-2-diabetes-mellitus
 - essential-hypertension
+- premenstrual-syndrome
 linked_to_mechanisms:
 - elevated-homocysteine
 typical_dose_range:
@@ -48,6 +49,7 @@ linked_to_claims:
 - folic-acid-b12-b6-lower-homocysteine
 - vitamin-b6-protects-against-diabetic-neuropathy
 - b6-reduces-systolic-diastolic-and-norepinephrine
+- murray-b6-magnesium-pms-foundation
 sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
@@ -72,8 +74,11 @@ sources:
   location: Therapeutic Considerations / Folic acid and vitamin B6
   quote: B6 alone lowers BP. B6 oral dosage of 5 mg/kg body weight for 4 weeks reduced
     systolic and diastolic BP and serum norepinephrine.
-version: 7
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 8
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases: []

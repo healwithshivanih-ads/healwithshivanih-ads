@@ -1,0 +1,68 @@
+slug: saffron
+display_name: Saffron (Crocus sativus)
+aliases:
+- kesar
+- saffron petal extract
+- crocus-sativus
+- safranal
+- crocin
+category: herb
+forms_available:
+- capsule
+- liquid
+- whole_food
+typical_dose_range:
+  capsule:
+    min: 28
+    max: 30
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+linked_to_topics:
+- premenstrual-syndrome
+- perimenopause-and-menopause
+- depression-mood-disorder
+- anxiety
+linked_to_mechanisms: []
+notes_for_coach: "Active compounds — crocin, crocetin, safranal, picrocrocin. Mechanism:\
+  \ serotonin\n+ dopamine + glutamate modulation; mild MAO-A inhibition. Comparable\
+  \ efficacy to\nfluoxetine 20 mg in mild-to-moderate depression (Akhondzadeh 2005)\
+  \ and to\nimipramine (Akhondzadeh 2004).\n\nTwo practical forms:\n- Stigma extract\
+  \ (the red threads, expensive) — research-grade, traditional\n- Petal extract (the\
+  \ purple flower petals, much cheaper) — Murray's recommendation\n  when budget is\
+  \ a factor; comparable efficacy in newer trials (Hosseinzadeh 2010)\n\nTrial dose\
+  \ for PMS, depression, anxiety: 15 mg twice daily (30 mg total). Effect\ndevelops\
+  \ over 4-8 weeks. Generally well-tolerated. India produces high-quality\nKashmir\
+  \ saffron at competitive prices.\n"
+notes_for_client: 'Saffron (kesar) — the world''s most expensive spice but the most
+  concentrated form
+
+  is 15 mg twice daily as an extract. Used in Persian + Indian traditional medicine
+
+  for low mood + women''s hormonal symptoms. Modern trials show it works as well as
+
+  Prozac for mild-to-moderate depression. Effect builds over 4-8 weeks.
+
+  '
+evidence_tier: plausible_emerging
+contraindications:
+  conditions: []
+  medications:
+  - SSRIs / SNRIs / MAOIs (serotonin syndrome risk)
+  - anticoagulants (mild antiplatelet effect)
+  life_stages:
+  - pregnancy (uterine stimulant at higher doses — avoid > 5 g/day; supplement dose
+    probably safe but avoid first trimester)
+  - breastfeeding (insufficient data)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome, pg 1415
+  quote: 19 of the 25 women in the saffron group responded with at least a 50% reduction
+    in severity of symptoms vs. only 2 of 25 in the placebo group. Saffron has been
+    shown to have an antidepressant effect in women with mild to moderate depression.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

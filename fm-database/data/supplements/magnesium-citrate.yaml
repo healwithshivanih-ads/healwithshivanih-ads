@@ -31,6 +31,7 @@ linked_to_topics:
 - gut-skin-hormone-axis
 - magnesium-nutrition
 - anxiety
+- premenstrual-syndrome
 linked_to_claims:
 - magnesium-supports-gut-motility-constipation
 - magnesium-reduces-migraine-frequency
@@ -41,6 +42,7 @@ linked_to_claims:
 - magnesium-citrate-soluble-bioavailable
 - fix-nutritional-foundations-first-in-sibo
 - murray-magnesium-pyruvate-anxiety
+- murray-b6-magnesium-pms-foundation
 notes_for_coach: Magnesium citrate supports bowel motility and is particularly useful
   in methane-dominant SIBO with constipation. Also supports HPA axis and sleep.
 notes_for_client: Magnesium citrate supports healthy gut movement and can help relieve
@@ -80,7 +82,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 8
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 85 — Premenstrual Syndrome
+  quote: Comprehensive natural treatment for PMS + PMDD.
+version: 9
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

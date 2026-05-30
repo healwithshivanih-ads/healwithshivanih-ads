@@ -66,10 +66,11 @@ chapters:
   - ch: 85
     title: Premenstrual Syndrome
     body_pg_start: 1398
-    body_pg_end: 1451
+    body_pg_end: 1419
     priority: 8
-    serves: [future PMS]
-    status: pending
+    serves: [future PMS + perimenopause clients — universal]
+    status: ingested
+    batch_id: 20260530T180000-murray-ch85-pms-chat
   - ch: 89
     title: Rheumatoid Arthritis
     body_pg_start: 1466
