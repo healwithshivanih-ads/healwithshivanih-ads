@@ -1,0 +1,48 @@
+slug: murray-valerian-vs-benzodiazepine-no-morning-grogginess
+statement: More than 20 double-blind clinical trials substantiate that valerian (Valeriana
+  officinalis) root extract — dried root 2–3 g, or 150–300 mg standardised to 0.8%
+  valerenic acid, taken 45 minutes before bed — improves sleep quality and reduces
+  sleep latency. Valerian is comparably effective to small doses of barbiturates or
+  benzodiazepines for sleep induction, but uniquely REDUCES morning sleepiness while
+  those drugs increase it.
+evidence_tier: strong
+rationale: 20+ DB-RCT base + Cochrane review (Taibi 2007 mixed; Bent 2006 positive).
+  Mechanism — valerenic acid + valepotriates modulate GABA-A receptors at sites distinct
+  from benzodiazepines (less receptor downregulation + tolerance). Cumulative effect
+  with continued use is a feature, not a bug — best effect at 2-4 weeks of nightly
+  use. The cognitive-sparing morning profile is the FM differentiator + a major coaching
+  advantage.
+coaching_translation: 'Valerian is the best-evidenced herb for sleep — 20+ randomised
+  trials. Take 45 minutes before bed: 150-300 mg of an extract standardised to 0.8%
+  valerenic acid, or 2-3 g dried root as a tea. It works as well as small doses of
+  sleeping pills for falling asleep but DOESN''T leave you groggy in the morning.
+  Best after 2-4 weeks of consistent nightly use rather than as an occasional rescue.'
+caveats:
+- Smell is sulphurous — many clients hate the tea; capsules preferred
+- Effect builds over 2-4 weeks of consistent use; not great as an occasional rescue
+- Some clients (~10%) get the opposite stimulating effect — try a different herb if
+  so
+- Mild morning carryover possible at higher doses
+- Caution + alcohol, benzodiazepines, sedatives (additive)
+- Pregnancy + breastfeeding — avoid
+linked_to_topics:
+- insomnia
+- sleep-quality
+- anxiety
+- sleep-optimisation
+linked_to_supplements:
+- valerian-root
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1186–1187
+  quote: More than 20 double-blind clinical studies have now substantiated valerian's
+    ability to improve sleep quality and relieve insomnia. Valerian is as effective
+    at bringing on sleep as small doses of barbiturates or benzodiazepines. However,
+    although these latter compounds also increase morning sleepiness, valerian usually
+    reduces morning sleepiness.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

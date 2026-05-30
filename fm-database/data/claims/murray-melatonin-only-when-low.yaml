@@ -1,0 +1,51 @@
+slug: murray-melatonin-only-when-low
+statement: Melatonin supplementation produces sedative effects only when endogenous
+  melatonin levels are low — in normal subjects or insomniacs with normal melatonin
+  levels, supplemental melatonin produces no sedative effect because there is already
+  a normal pre-sleep rise. Effective dose for insomnia in the elderly (where melatonin
+  deficiency is common) is 1–3 mg at bedtime — and doses as low as 0.1–0.3 mg can
+  be effective when melatonin levels are low. High doses (8 mg/day for just 4 days)
+  cause significant disruption of other hormone secretion, undermining the entire
+  'more is better' assumption.
+evidence_tier: strong
+rationale: Murray cites Garfinkel 1995 and the Brzezinski-Buscemi meta-analyses. Mechanism
+  — melatonin binds MT1/MT2 receptors in the suprachiasmatic nucleus + peripheral
+  tissues; receptor sensitivity inversely correlates with endogenous levels. The age-dependent
+  decline in pineal melatonin (~50% from age 30 to 60) explains why melatonin works
+  in older insomniacs but often disappoints younger ones. The high-dose harm finding
+  is important coaching territory — many clients take 5-10 mg routinely with no benefit
+  and possible HPA disruption.
+coaching_translation: 'Melatonin is a chronobiotic, not a sleeping pill. It works
+  only when YOUR melatonin is low — typical in adults over 50, in jet lag, and in
+  shift work. It rarely works in younger adults with normal sleep timing. Dose: 0.3-3
+  mg is plenty; 5-10 mg is too much and can disrupt other hormones. Take 30 minutes
+  before desired sleep onset. The slow-release form works better for sleep maintenance
+  (staying asleep).'
+caveats:
+- Almost completely ineffective in young adults with normal sleep timing
+- Doses above 3 mg routinely have NO better effect and risk hormone disruption
+- Best evidence — elderly insomniacs, jet lag, shift-work circadian shifts
+- Caution + autoimmune disease (immune-stimulating)
+- Caution + warfarin (mild antiplatelet)
+- Slow-release / sustained-release form better for sleep maintenance
+linked_to_topics:
+- insomnia
+- sleep-quality
+- circadian-rhythm-disruption
+- sleep-optimisation
+linked_to_supplements:
+- melatonin
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1183–1184
+  quote: The sleep-promoting effects of melatonin are apparent only if melatonin levels
+    are low. When melatonin is taken just before going to bed by normal subjects or
+    by patients with insomnia who have normal melatonin levels, it produces no sedative
+    effect. A dosage of 8 mg per day for only four days resulted in significant alterations
+    in hormone secretions.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

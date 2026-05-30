@@ -1,0 +1,53 @@
+slug: murray-restless-legs-iron-ferritin
+statement: Low iron stores — assessed by serum ferritin (NOT serum iron, hemoglobin,
+  B12, or folate, which often appear normal) — drive both restless legs syndrome (RLS)
+  and SSRI-induced akathisia. Ferritin below 18 ng/ml is associated with severe RLS;
+  iron supplementation (30 mg twice daily of bisglycinate / succinate / fumarate between
+  meals) reduces RLS severity by 4 points on validated scales in subjects with ferritin
+  under 18, by 3 points at 18–45, and by 1 point at 45–100 — suggesting an optimal
+  RLS-management ferritin target above 75 ng/ml. For SSRI-induced akathisia, ferritin
+  under 35 ng/ml should be corrected before considering antidepressant switch.
+evidence_tier: strong
+rationale: O'Keeffe 1994 cited; subsequent IRLSSG (International Restless Legs Syndrome
+  Study Group) guidelines (2018) confirm iron-deficiency as the most-actionable RLS
+  subtype. Mechanism — iron is cofactor for tyrosine hydroxylase in nigrostriatal
+  dopamine synthesis; iron-deficient dopamine deficiency presents as RLS + akathisia
+  + reduced reward response. The ferritin > 75 ng/ml target is well-supported by sleep
+  medicine specialty consensus.
+coaching_translation: Restless legs at night and akathisia (jitteriness) on SSRIs
+  are often iron deficiency in disguise — even when haemoglobin is normal. The KEY
+  test is serum ferritin (the iron storage marker), not regular iron labs. Target
+  ferritin above 75 ng/ml — below 35 is definitely deficient, 35-75 is suboptimal
+  for RLS. Iron bisglycinate 30 mg twice daily between meals is well-tolerated. Pair
+  with vitamin C for absorption.
+caveats:
+- Always check ferritin BEFORE supplementing iron — iron overload (hereditary haemochromatosis)
+  is a contraindication
+- Bisglycinate form is best tolerated; sulphate causes more GI upset
+- Between meals for absorption; vitamin C enhances; tea/coffee/calcium/zinc block
+- Constipation is the most common side effect
+- Goal — ferritin > 75 ng/ml for RLS; reassess at 3 months
+- SSRI-induced akathisia + low ferritin — correct iron BEFORE switching antidepressants
+linked_to_topics:
+- insomnia
+- sleep-quality
+- anxiety
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Iron prescribing in pregnancy + paediatrics + suspected haemochromatosis
+  is clinician scope. Coach role — recommend ferritin testing + bisglycinate within
+  over-the-counter dose range.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1184–1185
+  quote: Serum ferritin levels were inversely correlated with the severity of symptoms.
+    The severity of restless legs syndrome decreased by an average of 4 points in
+    sixteen patients with an initial ferritin level lower than 18 mg/l. Low serum
+    ferritin levels have been found in psychiatric patients experiencing a condition
+    called akathisia, a drug-induced state of agitation. The drugs that most commonly
+    produce akathisia are antidepressant drugs, such as fluoxetine (Paxil, Prozac)
+    and sertraline (Zoloft).
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

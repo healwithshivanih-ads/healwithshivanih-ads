@@ -58,10 +58,11 @@ chapters:
   - ch: 71
     title: Insomnia
     body_pg_start: 1177
-    body_pg_end: 1230
+    body_pg_end: 1191
     priority: 7
-    serves: [cl-011 Deepti]
-    status: pending
+    serves: [cl-011 Deepti, universal]
+    status: ingested
+    batch_id: 20260530T170000-murray-ch71-insomnia-chat
   - ch: 85
     title: Premenstrual Syndrome
     body_pg_start: 1398

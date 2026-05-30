@@ -1,0 +1,55 @@
+slug: murray-sleep-apnea-always-rule-out
+statement: Approximately 18 million Americans (~6% of the adult population) have sleep
+  apnea — most undiagnosed — and any client with chronic insomnia, loud snoring, witnessed
+  breathing pauses, or excessive daytime sleepiness should be screened. Sleep apnea
+  is linked to high blood pressure, arrhythmia, heart attack, stroke, and progressive
+  cognitive decline; it cannot be diagnosed clinically and requires polysomnography
+  in a sleep laboratory. Obstructive sleep apnea (the common form) is driven by airway
+  fat accumulation and is reversible with weight loss; CPAP is first-line treatment
+  while weight loss is achieved. Alcohol and sedatives (including some 'natural' sleep
+  aids at high doses) WORSEN sleep apnea by increasing pause duration.
+evidence_tier: strong
+rationale: Well-established epidemiology + clinical guidelines (AASM). Screening tools
+  (STOP-BANG, Epworth) catch ~75% of moderate-to-severe cases. The cognitive + cardiovascular
+  consequences make missed diagnosis a serious harm — surgical alternatives are unreliable;
+  uvulopalatoplasty initially works in 90% but most regress within 1 year due to scar
+  tissue.
+coaching_translation: 'Before chasing insomnia with supplements, RULE OUT sleep apnea.
+  Red flags: loud snoring, witnessed breathing pauses, gasping awakenings, morning
+  headache, severe daytime sleepiness, treatment-resistant hypertension. Refer for
+  a sleep study. The diagnosis is critical because sleep apnea increases stroke, heart
+  attack, and dementia risk — and any sedating supplement (including melatonin, valerian,
+  5-HTP at high doses) can WORSEN it. CPAP is first-line; weight loss is the long-term
+  fix.'
+caveats:
+- STOP-BANG questionnaire (8 questions) is a useful first screen — sensitivity ~93%
+  for moderate-to-severe OSA
+- Sleep study referral is standard if STOP-BANG ≥ 3 or partner reports witnessed apnea
+- Sedating supplements at high doses can WORSEN OSA — caution recommending until ruled
+  out
+- Surgery (uvulopalatoplasty) is rarely the right answer — most regress
+- Weight loss is the most important long-term management for obesity-related OSA
+- Central sleep apnea (no obstruction) requires different management
+linked_to_topics:
+- insomnia
+- sleep-apnea
+- sleep-apnea-cardiovascular-risk
+- sleep-quality
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Sleep study referral + CPAP titration + surgical consideration
+  are clinician scope. Coach role — screening, referral, weight-loss support, avoid
+  sedating supplements until ruled out.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1178–1179
+  quote: Early recognition and treatment of sleep apnea are important because the
+    disorder is also associated with irregular heartbeat, high blood pressure, heart
+    attack, and stroke as well as a loss of memory function and of other intellectual
+    capabilities. Alcohol and sleeping pills increase the frequency and duration of
+    breathing pauses in people with sleep apnea. Obesity is the major risk factor,
+    and weight loss is the most important aspect of long-term management.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

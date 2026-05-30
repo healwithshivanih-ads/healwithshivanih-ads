@@ -86,6 +86,7 @@ linked_to_topics:
 - metabolic-health-lchf
 - adrenal-fatigue
 - chronic-stress
+- sleep-quality
 linked_to_mechanisms: []
 linked_to_claims:
 - magnesium-glycinate-improves-sleep-quality
@@ -119,6 +120,7 @@ linked_to_claims:
 - lchf-electrolytes-prevent-keto-flu
 - magnesium-b5-c-zinc-omega3-support-adrenal-resilience
 - murray-magnesium-pyruvate-anxiety
+- murray-nocturnal-hypoglycemia-sleep-maintenance
 notes_for_coach: Glycinate form is well-tolerated and preferred for its calming and
   sleep-supportive effects. Recommended for PPI-induced depletion and LCHF adaptation
   electrolyte support. Dosing range to be confirmed by clinician.
@@ -206,8 +208,11 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
 evidence_tier: plausible_emerging
-version: 24
+version: 25
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

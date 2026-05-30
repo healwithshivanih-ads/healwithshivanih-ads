@@ -43,6 +43,8 @@ linked_to_topics:
 - circadian-rhythm-disruption
 - jet-lag
 - peptic-ulcer-disease
+- sleep-quality
+- sleep-optimisation
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - melatonin-as-acid-suppressor-gerd
@@ -51,6 +53,7 @@ linked_to_claims:
 - melatonin-supports-estrogen-metabolism
 - melatonin-reduces-inflammation-and-promotes-sleep
 - melatonin-mitigates-gastric-lining-breakdown-du
+- murray-melatonin-only-when-low
 notes_for_coach: Most applicable for duodenal ulcers with acid hypersecretion. Antioxidant
   and cytoprotective roles in gastric mucosa described. Research mostly in animal/hypersecretion
   models; human clinical evidence limited.
@@ -97,9 +100,12 @@ sources:
   quote: Melatonin mitigates gastric lining breakdown and ulcer formation. Research
     has focused on hypersecretion situations; therefore melatonin may be most applicable
     for DUs, entailing acid hypersecretion.
-version: 12
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
+version: 13
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 contraindications:
   conditions:

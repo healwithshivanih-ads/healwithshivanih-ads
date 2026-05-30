@@ -5,9 +5,10 @@ aliases:
 - sleep latency
 - sleep architecture
 - restorative sleep
-summary: Restorative sleep depends on adequate sleep onset, duration, REM architecture, and suppression of nocturnal cortisol.
-  Dysregulated HPA activity, neurotransmitter imbalance (GABA/glutamate), and microbiome disruption are key drivers of poor
-  sleep quality.
+summary: Restorative sleep depends on adequate sleep onset, duration, REM architecture,
+  and suppression of nocturnal cortisol. Dysregulated HPA activity, neurotransmitter
+  imbalance (GABA/glutamate), and microbiome disruption are key drivers of poor sleep
+  quality.
 common_symptoms:
 - sleep-disruption
 - difficulty-falling-asleep
@@ -23,17 +24,21 @@ key_mechanisms:
 - gabaergic-modulation
 - melatonin-secretion
 - hpa-axis-dysregulation
-coaching_scope_notes: Coaches can recommend evidence-informed adaptogens, sleep hygiene, and dietary strategies to support
-  sleep. Prescription sleep aids and formal insomnia diagnosis are clinician scope.
+coaching_scope_notes: Coaches can recommend evidence-informed adaptogens, sleep hygiene,
+  and dietary strategies to support sleep. Prescription sleep aids and formal insomnia
+  diagnosis are clinician scope.
 evidence_tier: plausible_emerging
 clinician_scope_notes: ''
 sources:
 - id: coach-shivani
   location: Coach Observation — Microbial and Dietary Compounds
-  quote: Specific postbiotics, such as those from Limosilactobacillus fermentum PS150 and Bifidobacterium breve BB091109,
-    can lower cortisol, increase melatonin secretion, and improve sleep quality by rebalancing neurotransmitters like GABA
-    and glutamate.
-version: 1
+  quote: Specific postbiotics, such as those from Limosilactobacillus fermentum PS150
+    and Bifidobacterium breve BB091109, can lower cortisol, increase melatonin secretion,
+    and improve sleep quality by rebalancing neurotransmitters like GABA and glutamate.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-30'
 updated_by: Shivani

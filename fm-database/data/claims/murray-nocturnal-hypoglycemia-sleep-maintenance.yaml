@@ -1,0 +1,46 @@
+slug: murray-nocturnal-hypoglycemia-sleep-maintenance
+statement: 'Rapid drops in nocturnal blood glucose are an underappreciated cause of
+  sleep-maintenance insomnia (waking through the night, especially 2–4 AM) — the brain
+  depends on glucose for energy, and a quick fall in blood sugar triggers release
+  of adrenaline and cortisol, which together promote awakening. The pattern is classically:
+  fall asleep fine, wake 3-4 hours later wired, take 30+ minutes to return to sleep.
+  Low-glycemic-load diet + stable carbohydrate intake + earlier dinner + a small protein-fat
+  snack 1-2 hours before bed are first-line corrections.'
+evidence_tier: plausible_emerging
+rationale: Glucose-counter-regulation physiology is well-established. Continuous glucose
+  monitor data in non-diabetics shows nocturnal dips correlating with adrenergic arousals.
+  Mechanism — glucose < 70 mg/dl triggers epinephrine + cortisol release; both are
+  alerting hormones with half-lives ~30 minutes. Clinically validated by the population
+  overlap between hypoglycemia-prone clients (reactive hypoglycemia, peri-diabetic
+  patterns, alcohol consumers) and 2-4 AM awakening complaints.
+coaching_translation: Waking at 2-4 AM wired and unable to fall back asleep is often
+  blood sugar crash, not stress. The fix isn't melatonin — it's stable blood sugar.
+  Eat dinner earlier, include some fat and protein, avoid alcohol (which crashes glucose
+  3-4 hours later), consider a small bedtime snack (a tablespoon of almond butter
+  or a few nuts). Magnesium glycinate before bed helps both glucose stability and
+  sleep onset.
+caveats:
+- Most relevant for clients with metabolic syndrome, reactive hypoglycemia, alcohol
+  use, or perimenopausal blood sugar swings
+- CGM data helpful but not routinely available
+- Alcohol is the most common contributor — even moderate consumption
+- Refined carbs at dinner are the dietary trigger
+linked_to_topics:
+- insomnia
+- sleep-quality
+- hypoglycemia
+- insulin-resistance
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1181, 1190
+  quote: Dips in blood glucose levels during the night may be an important cause of
+    sleep-maintenance insomnia, especially when the drops are rapid. The brain is
+    highly dependent on glucose for energy, and a quick drop in blood glucose level
+    stimulates the release of adrenaline and cortisol, which promote awakening.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

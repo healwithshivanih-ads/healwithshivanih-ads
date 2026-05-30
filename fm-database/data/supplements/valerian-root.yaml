@@ -19,18 +19,26 @@ take_with_food: optional
 notes_for_coach: Take 30–60 min before bed; useful for insomnia and anxiety; effects
   may build over 1–2 weeks of consistent use.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- insomnia
+- sleep-quality
+- anxiety
+- sleep-optimisation
 linked_to_mechanisms: []
-linked_to_claims: []
+linked_to_claims:
+- murray-valerian-vs-benzodiazepine-no-morning-grogginess
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
   location: Page 3 - Supplement Table
   quote: Valerian Root - Sleep aid, relaxation - 300–600 mg/day - 30–60 minutes before
     bed
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-30'
 updated_by: shivani
 aliases:
 - valerian root 100-200mg

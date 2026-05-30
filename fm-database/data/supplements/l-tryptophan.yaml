@@ -55,32 +55,37 @@ contraindications:
   - lactation
 pregnancy_safety: contraindicated
 lactation_safety: contraindicated
-pregnancy_safety_note: Insufficient safety data; affects fetal serotonin signalling — avoid.
+pregnancy_safety_note: Insufficient safety data; affects fetal serotonin signalling
+  — avoid.
 interactions: {}
 linked_to_topics:
 - insomnia
 - anxiety
 - depression-lifestyle
+- sleep-quality
 linked_to_mechanisms:
 - serotonin-melatonin-sleep-axis
-linked_to_claims: []
-notes_for_coach: >-
-  L-tryptophan is an upstream serotonin precursor (one step before 5-HTP).
-  Same serotonin-syndrome risk as 5-HTP when combined with SSRIs / SNRIs /
-  MAOIs / tramadol / triptans / dextromethorphan / linezolid / lithium.
-  Historical EMS (eosinophilia-myalgia syndrome) outbreak in 1989 was linked
-  to a contaminated supplier — pharmaceutical-grade product is considered
-  safe now, but anyone with personal or family history of EMS should avoid.
-  Typically dosed 500-2000 mg at bedtime for sleep/mood support; up to 3 g
-  in clinical contexts. Clinician oversight strongly recommended.
+linked_to_claims:
+- murray-5htp-rem-deep-sleep
+notes_for_coach: L-tryptophan is an upstream serotonin precursor (one step before
+  5-HTP). Same serotonin-syndrome risk as 5-HTP when combined with SSRIs / SNRIs /
+  MAOIs / tramadol / triptans / dextromethorphan / linezolid / lithium. Historical
+  EMS (eosinophilia-myalgia syndrome) outbreak in 1989 was linked to a contaminated
+  supplier — pharmaceutical-grade product is considered safe now, but anyone with
+  personal or family history of EMS should avoid. Typically dosed 500-2000 mg at bedtime
+  for sleep/mood support; up to 3 g in clinical contexts. Clinician oversight strongly
+  recommended.
 notes_for_client: ''
 sources:
 - id: vitaone-supplementation-dosage
   location: Amino Acids — Serotonin/Sleep Support
   quote: L-tryptophan and 5-HTP are upstream precursors of serotonin and melatonin;
     contraindicated with SSRI/SNRI/MAOI due to serotonin syndrome risk.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: shivani

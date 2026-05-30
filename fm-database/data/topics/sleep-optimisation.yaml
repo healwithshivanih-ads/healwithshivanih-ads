@@ -5,6 +5,10 @@ summary: Surfaced from MindMap 'blood-sugar-insulin-resistance' under branch 'St
   & Sleep' (depth 2).
 evidence_tier: fm_specific_thin
 status: active
-version: 1
-updated_at: '2026-05-18'
+version: 2
+updated_at: '2026-05-30'
 updated_by: Shivani
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.

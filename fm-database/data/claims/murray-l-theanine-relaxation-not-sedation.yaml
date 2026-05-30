@@ -1,0 +1,43 @@
+slug: murray-l-theanine-relaxation-not-sedation
+statement: L-theanine — an amino acid uniquely found in green tea — at 200–600 mg
+  before bed promotes relaxation, anxiety reduction, and improved subjective sleep
+  quality WITHOUT producing daytime sedation, by increasing brain alpha-wave activity
+  (associated with relaxed wakefulness) and modulating GABA, dopamine, and serotonin.
+  Particularly effective in clients whose insomnia is driven by mental hyperactivity
+  rather than circadian or hormonal causes.
+evidence_tier: plausible_emerging
+rationale: Multiple smaller clinical trials (Lyon 2011 in ADHD children, Kimura 2007).
+  Mechanism — l-theanine crosses the blood-brain barrier within 30 minutes; binds
+  AMPA + kainate + NMDA receptors as a glutamate analogue; increases alpha-wave EEG
+  within 30-45 minutes; raises GABA + dopamine modestly. Safety profile excellent
+  — used routinely in green tea (~25 mg/cup). No tolerance or withdrawal.
+coaching_translation: L-theanine 200-600 mg before bed is the gentle option for the
+  'busy mind' insomnia — racing thoughts that prevent sleep onset rather than physical
+  agitation or hot flushes. Unlike most sleep aids, it doesn't sedate during the day,
+  so it can also be used for daytime anxiety without grogginess. Often combined with
+  magnesium glycinate for a foundational stack. Safe long-term.
+caveats:
+- Effects modest in clients with hormonal or circadian insomnia
+- Pairs well with magnesium glycinate
+- May lower blood pressure mildly — usually beneficial but consider in hypotensive
+  clients
+- Pregnancy safety not well established at supplement doses
+- Quality matters — synthetic D/L-theanine has half the activity of natural L-theanine
+linked_to_topics:
+- insomnia
+- sleep-quality
+- anxiety
+- chronic-stress
+- sleep-optimisation
+linked_to_supplements:
+- l-theanine
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, Treatment Summary pg 1190
+  quote: 'L-theanine: 200 to 600 mg.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

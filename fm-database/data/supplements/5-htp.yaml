@@ -48,7 +48,8 @@ contraindications:
   - lactation
 pregnancy_safety: contraindicated
 lactation_safety: contraindicated
-pregnancy_safety_note: Insufficient safety data in pregnancy and lactation; affects fetal serotonin signalling.
+pregnancy_safety_note: Insufficient safety data in pregnancy and lactation; affects
+  fetal serotonin signalling.
 notes_for_coach: Direct serotonin precursor. Do NOT combine with SSRIs/SNRIs or MAOIs
   (serotonin syndrome risk — potentially fatal). Also avoid with tramadol, triptans,
   dextromethorphan, linezolid (all serotonergic). Should not be used long-term without
@@ -59,9 +60,12 @@ linked_to_topics:
 - anxiety
 - insomnia
 - gut-brain-axis
+- sleep-quality
+- sleep-optimisation
 linked_to_mechanisms: []
 linked_to_claims:
 - serotonin-gut-microbiome-mood-link
+- murray-5htp-rem-deep-sleep
 notes_for_client: 5-HTP helps your body make serotonin — the mood-balancing brain
   chemical. It's best taken in the evening.
 sources:
@@ -73,7 +77,10 @@ sources:
   location: The Anti-Stress Hormones (p.22)
   quote: 'Serotonin: Calms nervous system, regulates appetite, mood, and gut motility.
     Anxiety, depression, gut dysmotility, sugar cravings.'
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
+version: 3
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

@@ -1,0 +1,52 @@
+slug: murray-sleeping-pill-mortality-risk
+statement: 'Eighteen population-based studies link prescribed sleeping pills (benzodiazepines,
+  Z-drugs like zolpidem/eszopiclone, ramelteon) to significantly increased all-cause
+  mortality and cancer incidence. Kripke 2012 matched-cohort study found 5× higher
+  2.5-year mortality (6.1% vs 1.2%) and 35% higher cancer risk in users vs matched
+  non-users; population-attributable estimates suggest sleeping pills are linked to
+  320,000–507,000 US deaths annually. This is foundational coaching scope: any client
+  on chronic sleeping pills should be informed of the evidence + supported in tapering
+  with clinician oversight.'
+evidence_tier: strong
+rationale: Kripke 2012 BMJ Open study + Cancer Prevention Study I + II + 18 population-based
+  studies cited. Causality debated (residual confounding by sleep disorder severity),
+  but four trials specifically found increased cancer mortality independent of underlying
+  insomnia. Even residual confounding interpretation supports the coaching role —
+  chronic sleeping pill use is a marker of unaddressed underlying issues. Z-drugs
+  (Ambien, Lunesta, Sonata) carry the same risk profile as older benzodiazepines.
+coaching_translation: 'Sleeping pills — both old benzodiazepines and newer Z-drugs
+  (Ambien, Lunesta, Sonata) — are linked to significantly higher death rates and cancer
+  in 18+ studies. Even occasional use shows ~10-15% increased mortality. Most clients
+  aren''t told this when prescribed. The coaching opportunity: support a slow taper
+  (always with the prescriber''s oversight) using natural sleep aids — valerian, magnesium,
+  addressing nocturnal hypoglycemia, sleep hygiene — to reduce dependence.'
+caveats:
+- Causality is debated — residual confounding by underlying disease severity
+- Never advise client to stop sleeping pills abruptly — benzodiazepine withdrawal
+  can be dangerous including seizures
+- Tapering is clinician scope; coach role is education + adjunctive natural support
+- Z-drugs are NOT safer than older benzodiazepines despite marketing
+- Trazodone is sometimes presented as safer; evidence is limited
+linked_to_topics:
+- insomnia
+- sleep-quality
+- sleep-deprivation
+- sleep-optimisation
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Sleeping pill tapering is clinician scope. Coach role — share
+  the evidence, support sleep-hygiene + natural alternatives, refer back to prescriber
+  for tapering plan.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1187–1188
+  quote: There are now 18 population-based studies that show a clear link between
+    the use of sleeping pills and increased mortality risk. The death rate for those
+    who did not use sleeping pills was 1.2%. It was 6.1% for people with sleeping
+    pill prescriptions. They also had a 35% higher risk of cancer. Kripke and colleagues
+    estimate that sleeping pills are linked to 320,000 to 507,000 U.S. deaths each
+    year.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -34,11 +34,15 @@ linked_to_topics:
 - emotional-healing-chronic-disease
 - emotional-healing-in-chronic-disease
 - adhd
+- sleep-quality
+- chronic-stress
+- sleep-optimisation
 linked_to_claims:
 - magnesium-supports-cortisol-gaba-sleep
 - l-theanine-glycine-increase-alpha-waves-relaxation
 - l-theanine-increases-alpha-waves-relaxation
 - l-theanine-adhd-sleep-quality
+- murray-l-theanine-relaxation-not-sedation
 notes_for_coach: 'Research dose for boys with ADHD: 400 mg daily. Amino acid found
   in green tea; improves sleep quality, reduces anxiety, stabilizes mood without sedation,
   enhances cerebral dopaminergic activity. Safe for children.'
@@ -72,9 +76,12 @@ sources:
 - id: pizzorno-textbook-gi-2
   location: Attention Deficit Hyperactivity Disorder — L-Theanine
   quote: 'Research dose for boys with ADHD: 400 mg l-theanine q.d.'
-version: 9
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
+version: 10
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 aliases:
 - l-theanine 200-1200mg

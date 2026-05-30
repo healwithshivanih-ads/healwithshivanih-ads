@@ -61,7 +61,10 @@ sources:
 - id: menolascino-sleep-fm-perspective-fmca-transcript
   location: Clock genes and routine section
   quote: we now have clock genes, that our DNA has coding for time
-version: 3
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
+version: 4
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-05-30'
 updated_by: shivani

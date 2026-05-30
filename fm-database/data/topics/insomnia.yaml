@@ -80,9 +80,12 @@ sources:
   location: Insomnia — General Considerations
   quote: Insomnia is an extremely common complaint with many causes. Up to 30% of
     the population experience insomnia.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia
+  quote: Comprehensive natural treatment summary for insomnia + sleep architecture.
 evidence_tier: strong
-version: 6
+version: 7
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 notes_for_coach: ''

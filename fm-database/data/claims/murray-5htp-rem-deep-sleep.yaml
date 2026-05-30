@@ -1,0 +1,49 @@
+slug: murray-5htp-rem-deep-sleep
+statement: 5-hydroxytryptophan (5-HTP) at 100–300 mg taken 30–45 minutes before bed
+  produces dramatically better sleep results than tryptophan at lower doses by bypassing
+  tryptophan's transport-system bottleneck and directly increasing brain serotonin.
+  5-HTP increases REM sleep by approximately 25% and increases deep slow-wave sleep
+  (stages 3 and 4) without lengthening total sleep time — the reduction comes from
+  less-important non-REM stages 1 and 2.
+evidence_tier: plausible_emerging
+rationale: Multiple older clinical trials cited (Soulairac 1977, Wyatt 1971). Mechanism
+  — 5-HTP crosses the blood-brain barrier without competing for the large neutral
+  amino acid transporter that limits tryptophan entry. The selective architecture
+  effect (more REM + more deep sleep, less light sleep) is unique among sleep aids
+  — benzodiazepines do the opposite. Effect-size meaningful but evidence is older
+  + smaller trials.
+coaching_translation: 5-HTP at 100-300 mg taken 30-45 minutes before bed is one of
+  the cleanest sleep supports — start at 100 mg for 3 nights before increasing. Unlike
+  sleeping pills, it actually deepens sleep architecture (more REM, more deep sleep,
+  less of the shallow stages). Best for sleep-onset (trouble falling asleep) more
+  than sleep-maintenance (waking through the night).
+caveats:
+- SSRI/SNRI/MAOI use is a contraindication — serotonin syndrome risk
+- Start at 100 mg for 3 nights before titrating up
+- Carbidopa interaction (Parkinson's) — can shift to peripheral metabolism + cause
+  nausea/dystonia
+- Take on empty stomach for best absorption; small carb snack OK (insulin enhances
+  uptake)
+- GI upset possible — try enteric-coated form
+- Pregnancy + breastfeeding — avoid
+linked_to_topics:
+- insomnia
+- sleep-quality
+- sleep-optimisation
+- anxiety
+linked_to_supplements:
+- 5-htp
+- l-tryptophan
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 71 — Insomnia, pg 1183
+  quote: One of the key benefits of 5-HTP is its ability to increase REM sleep (typically
+    by about 25%) while increasing deep sleep (stages 3 and 4) without lengthening
+    total sleep time. The dosage recommendation for 5-HTP is 100 to 300 mg taken 30
+    to 45 minutes before retiring.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
