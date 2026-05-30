@@ -1,0 +1,54 @@
+slug: murray-staphylococcus-aureus-eczema-cycle
+statement: 'Staphylococcus aureus colonises the skin in 90% of eczema patients (versus
+  ~10% of unaffected controls), driven by two compounding immune defects: reduced
+  bactericidal capacity in atopic skin + scratch-induced skin barrier disruption.
+  The colonisation is bidirectional — Staph aureus superantigens activate T-cells
+  and amplify the eczema inflammation, creating a self-perpetuating cycle. Severe
+  atopic flares often have a hidden infectious component that explains poor response
+  to anti-inflammatory therapy alone.'
+evidence_tier: strong
+rationale: Multiple well-replicated observations + culture studies. Mechanism — Staph
+  aureus enterotoxins (especially SEB) act as superantigens directly activating T-cells;
+  biofilm formation on filaggrin-deficient skin; reduced antimicrobial peptide (cathelicidin
+  LL-37, beta-defensin) production in atopic skin. Practical translation — antibacterial
+  considerations belong in any chronic or treatment-resistant eczema protocol; bleach
+  baths (clinician-supervised at 0.005% concentration) are an evidence-based dermatology
+  intervention; topical antimicrobials and skin-barrier repair matter as much as anti-inflammatory
+  therapy.
+coaching_translation: '9 out of 10 people with eczema have Staphylococcus aureus living
+  on their skin (versus 1 in 10 controls) — and these bacteria actively WORSEN the
+  eczema through superantigen-driven inflammation. This is why eczema flares often
+  respond poorly to creams alone. Strategies that address the bacterial component:
+  gentle antimicrobial moisturisers, dilute bleach baths (1/4 cup bleach per full
+  bath for 5-10 min, 2-3× weekly — supervised), tea tree or manuka honey in carrier
+  oils, and probiotics that compete for skin niches. Skin barrier repair (ceramide-containing
+  moisturisers) reduces colonisation by reducing dry skin breaks.'
+caveats:
+- Bleach baths must be properly diluted (0.005% concentration) and supervised
+- Tea tree oil too concentrated can be irritating; dilute to 5-10% in carrier
+- Manuka honey (UMF 10+) shown effective for skin staphylococcus topically
+- Avoid topical antibiotics for chronic colonisation — resistance + barrier disruption
+- Active superinfection (yellow crusting, fever, spreading erythema) = clinical urgency,
+  not coaching scope
+- Skin barrier repair (ceramides) is the foundational long-term strategy
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Active superinfection management is clinician scope (oral or topical
+  antibiotics may be required). Bleach bath protocols should be initiated with clinician
+  guidance especially in children.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema, pg 921
+  quote: There are also immune defects in patients with eczema that lead to increased
+    susceptibility to other infections of the skin. A defect in the ability to kill
+    bacteria. This defect in immune function, coupled with scratching and the predominance
+    of the bacteria Staphylococcus aureus in the skin flora in 90% of eczema patients,
+    leads to an increased susceptibility to potentially severe staph infections of
+    the skin.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,50 @@
+slug: murray-breastfeeding-maternal-allergen-avoidance
+statement: Breastfeeding offers significant protection against developing eczema and
+  allergic disease generally. When a breastfed infant develops eczema, maternal avoidance
+  of common food allergens (especially milk, eggs, and peanuts; secondarily fish,
+  soy, wheat, citrus, and chocolate) is associated with complete resolution in the
+  majority of cases — trace food antigens crossing into breast milk are sufficient
+  to trigger atopic skin reactions in sensitised infants. This is one of the highest-leverage
+  low-risk interventions in infant atopic dermatitis.
+evidence_tier: strong
+rationale: 'Multiple population studies + RCTs cited. Mechanism — secretory IgA +
+  dietary protein traces appear in breast milk; sensitised infant immune system responds.
+  Coach context: this empowers nursing mothers with a meaningful tool rather than
+  premature formula switching.'
+coaching_translation: Breastfed babies get less eczema than formula-fed babies — and
+  when a breastfed baby DOES develop eczema, the answer is usually for MUM to eliminate
+  the common allergens (dairy, eggs, peanuts first; then if needed soy, wheat, fish,
+  citrus, chocolate). The food antigens cross into breast milk in small amounts that
+  are enough to trigger the eczema. Maternal elimination resolves most cases. Continue
+  breastfeeding — DO NOT switch to formula prematurely.
+caveats:
+- Maternal nutritional adequacy must be maintained (especially calcium + B12 if dairy
+  eliminated)
+- 4-week strict elimination trial before adding back
+- Vitamin D supplementation for the baby (breastfed infants are universally vitamin
+  D deficient — 400 IU/day for infants)
+- DO NOT switch to formula as first-line — breastfeeding protection is strong even
+  with maternal elimination
+- Severe atopic disease + concurrent failure to thrive — clinician scope (hydrolysed
+  or amino acid formulas)
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+- food-allergy-ige-mediated
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema, pg 921–922
+  quote: Breastfeeding offers significant protection against developing eczema as
+    well as allergies in general. Mothers of breastfed infants with allergies should
+    avoid the common food allergens (especially milk, eggs, and peanuts and, to a
+    lesser extent, fish, soy, wheat, citrus, and chocolate) themselves, to prevent
+    traces of food antigens from appearing in their breast milk. Maternal avoidance
+    of these common allergens is associated with complete resolution in the majority
+    of cases.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

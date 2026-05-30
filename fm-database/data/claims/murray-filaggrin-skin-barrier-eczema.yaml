@@ -1,0 +1,52 @@
+slug: murray-filaggrin-skin-barrier-eczema
+statement: 'A major genetic defect underlying eczema is impaired manufacture of filaggrin
+  — a protein that maintains skin integrity and moisture content. Filaggrin loss-of-function
+  mutations are present in 20–50% of European/East Asian atopic dermatitis patients
+  and produce dry, water-losing, cracked skin that allows allergen + microbial penetration
+  AND amplifies transepidermal water loss. Practical FM translation: aggressive ongoing
+  barrier repair (ceramide-containing moisturisers applied multiple times daily) is
+  non-negotiable foundation therapy regardless of any anti-inflammatory or dietary
+  intervention. Treat the skin as one would treat a wound — keep it moisturised, protected
+  from irritants, and let it heal.'
+evidence_tier: strong
+rationale: Filaggrin-eczema link is one of the most-replicated findings in dermatology
+  genetics (Palmer 2006 and many subsequent). Mechanism — filaggrin is a major component
+  of the cornified envelope that holds water in the stratum corneum and generates
+  natural moisturising factor (NMF) on degradation. Ceramide depletion is a parallel
+  finding. Modern ceramide-containing emollients (CeraVe, Aveeno Eczema Therapy, Eucerin
+  Eczema Relief, Cetaphil Restoraderm) replace what the skin can't make. Application
+  frequency matters more than brand.
+coaching_translation: 'Eczema isn''t just an immune issue — it''s also a skin barrier
+  issue. About 1 in 3 eczema patients have a genetic defect in filaggrin (the protein
+  that keeps skin water-tight). The practical message: aggressive moisturising is
+  NON-NEGOTIABLE foundation therapy. Apply ceramide-containing moisturiser (CeraVe,
+  Aveeno Eczema Therapy, Cetaphil Restoraderm) at least 2-3 times daily — within 3
+  minutes of stepping out of the bath/shower (soak-and-seal). Treat the skin as you
+  would a wound. This alone, without any anti-inflammatory intervention, meaningfully
+  reduces flares.'
+caveats:
+- Apply within 3 minutes of bathing while skin is damp (soak-and-seal method)
+- Avoid hot water (irritates + strips lipids); use lukewarm
+- Avoid scented + foaming products; use synthetic detergent (syndet) cleansers like
+  CeraVe Hydrating Cleanser
+- Cotton clothing — wool + synthetics aggravate
+- Humidifier in dry climates
+- Ceramide content is what matters; brand is less important
+- Severe filaggrin-deficient patients may need petrolatum-based products (Vaseline,
+  Aquaphor)
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema, pg 921, 925
+  quote: One of the major genetic defects appears to be in the manufacture of filaggrin,
+    a protein that facilitates proper integrity and moisture content of the skin.
+    Ceramide-containing moisturizers can be used to reduce water loss from the skin.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

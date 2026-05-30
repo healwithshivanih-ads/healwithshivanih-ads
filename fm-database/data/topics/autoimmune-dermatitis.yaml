@@ -57,8 +57,11 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema (Atopic Dermatitis)
+  quote: Comprehensive natural treatment for eczema + atopic dermatitis.
 evidence_tier: strong
-version: 2
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

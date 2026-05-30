@@ -40,6 +40,7 @@ linked_to_topics:
 - autoimmune-disease
 - psoriasis
 - autoimmune-dermatitis
+- atopic-dermatitis
 linked_to_claims:
 - gluten-free-reduces-hashimotos-triggers
 - omega-3-modulates-estrogen-receptor-lowers-prostaglandins
@@ -53,6 +54,7 @@ linked_to_claims:
 - murray-fish-oil-cytokine-anxiety
 - murray-fish-oil-3g-ra-12-week-threshold
 - murray-fish-oil-3g-psoriasis
+- murray-fish-oil-vs-evening-primrose-eczema
 notes_for_coach: Take with a meal for absorption and to reduce fishy aftertaste. Quality
   varies greatly — advise clients to choose brands tested for heavy metals. High doses
   may affect bleeding; refer to clinician.
@@ -140,7 +142,10 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 12
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema (Atopic Dermatitis)
+  quote: Comprehensive natural treatment for eczema + atopic dermatitis.
+version: 13
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

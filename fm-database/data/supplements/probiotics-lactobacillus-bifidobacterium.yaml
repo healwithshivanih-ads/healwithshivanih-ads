@@ -18,21 +18,29 @@ linked_to_topics:
 - sibo
 - sifo
 - autoimmunity-leaky-gut-triad
+- atopic-dermatitis
+- autoimmune-dermatitis
 linked_to_claims:
 - probiotic-diversity-essential-for-gut-healing
 - 5rs-re-inoculate-probiotics
-notes_for_coach: Emphasize strain diversity; single-strain supplementation is often insufficient. Introduce after enzyme and
-  HCL support are established. Typical duration 6 weeks minimum for SIBO/SIFO.
-notes_for_client: Probiotics help re-establish a diverse, healthy community of gut bacteria. Different conditions call for
-  different strains — your provider will guide the right combination for you.
+- murray-probiotics-rhamnosus-reuteri-infant-eczema
+notes_for_coach: Emphasize strain diversity; single-strain supplementation is often
+  insufficient. Introduce after enzyme and HCL support are established. Typical duration
+  6 weeks minimum for SIBO/SIFO.
+notes_for_client: Probiotics help re-establish a diverse, healthy community of gut
+  bacteria. Different conditions call for different strains — your provider will guide
+  the right combination for you.
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:
 - id: coconote-fm-sibo-sifo
   location: SIFO Treatment Protocol
-  quote: Probiotics like lactobacillus and if so, we have to maintain different strains of bacterial species as well, daily
-    for a period of 6 weeks.
-version: 1
+  quote: Probiotics like lactobacillus and if so, we have to maintain different strains
+    of bacterial species as well, daily for a period of 6 weeks.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema (Atopic Dermatitis)
+  quote: Comprehensive natural treatment for eczema + atopic dermatitis.
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

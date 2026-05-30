@@ -1,0 +1,49 @@
+slug: murray-topical-glycyrrhetinic-acid-eczema
+statement: 'Topical glycyrrhetinic acid (the active anti-inflammatory aglycone from
+  licorice root, Glycyrrhiza glabra) in ointment form matches or exceeds topical hydrocortisone
+  in eczema and atopic dermatitis — in head-to-head studies, 93% of glycyrrhetinic-acid-treated
+  eczema patients improved vs 83% with cortisone, AND 9 of 12 patients with eczema
+  unresponsive to other treatments achieved marked improvement on glycyrrhetinic acid.
+  Critical advantage: no risk of the skin atrophy, telangiectasia, or steroid-rebound
+  seen with long-term topical corticosteroid use.'
+evidence_tier: strong
+rationale: Multiple head-to-head trials cited + decades of European phytotherapy use.
+  Mechanism — glycyrrhetinic acid inhibits 11-beta-hydroxysteroid dehydrogenase, locally
+  amplifying endogenous cortisol effect; also direct anti-inflammatory + antiviral
+  activity. Long-term safety advantage over topical steroids is the headline FM use
+  case in chronic eczema where children + adults face cumulative steroid exposure.
+coaching_translation: Topical glycyrrhetinic acid (the active part of licorice root)
+  works as well as — or better than — topical hydrocortisone in eczema, without the
+  skin-thinning side effects of long-term steroid use. 93% improved on glycyrrhetinic
+  acid vs 83% with cortisone in head-to-head. Look for licorice-extract creams with
+  disclosed glycyrrhetinic acid content. This is one of the safest long-term topical
+  anti-inflammatories — particularly valuable for children's chronic eczema where
+  cumulative steroid exposure is a real concern.
+caveats:
+- Apply 1-3 times daily on affected areas
+- Patch test in highly sensitive skin
+- Topical use only — oral whole licorice has potassium loss + pseudoaldosteronism
+  risks (DGL form for oral)
+- Combination with low-potency hydrocortisone in flares + glycyrrhetinic acid for
+  maintenance is a sensible step-down strategy
+- Pregnancy safety for topical use likely safe; clinician decision for face/genital
+  area
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+- psoriasis
+linked_to_supplements:
+- licorice-root
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema, pg 925–926
+  quote: Several studies have shown glycyrrhetinic acid to exert an effect similar
+    to that of topical hydrocortisone in the treatment of eczema, contact and allergic
+    dermatitis, and psoriasis. In another study, 93% of the patients with eczema who
+    applied glycyrrhetinic acid demonstrated improvement compared with 83% using cortisone.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

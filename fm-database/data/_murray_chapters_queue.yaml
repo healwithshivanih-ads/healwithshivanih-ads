@@ -90,10 +90,11 @@ chapters:
   - ch: 50
     title: Eczema
     body_pg_start: 920
-    body_pg_end: ~
+    body_pg_end: 927
     priority: 11
-    serves: [cl-004 autoimmune-dermatitis adjacent]
-    status: pending
+    serves: [cl-004 Dhanishta autoimmune-dermatitis direct, universal pediatric + adult atopic disease]
+    status: ingested
+    batch_id: 20260530T210000-murray-ch50-eczema-chat
 
 # How to resume:
 # 1. Open /tmp/murray-extract/full.txt

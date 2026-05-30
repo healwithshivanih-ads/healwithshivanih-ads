@@ -1,0 +1,47 @@
+slug: murray-probiotics-rhamnosus-reuteri-infant-eczema
+statement: 'Lactobacillus rhamnosus alone or combined with Lactobacillus reuteri significantly
+  reduces eczema severity in infants — particularly those with concurrent cow''s milk
+  allergy. Effective dose 5–10 billion CFU/day. Mechanism: probiotics modulate Th1/Th2
+  immune balance away from atopic Th2-skewing, reduce intestinal permeability, and
+  shift the developing infant microbiome toward immunoregulatory phenotypes. Both
+  prevention (in atopy-risk pregnancies/early infancy) and treatment effects documented.'
+evidence_tier: strong
+rationale: Multiple DB-RCTs cited (Kalliomäki 2001, Rosenfeldt 2003, Weston 2005).
+  Mechanism — gut microbial signals during the critical window of infant immune development
+  shape lifelong allergic disease risk. L. rhamnosus GG is the most-studied strain;
+  L. reuteri DSM 17938 + L. rhamnosus combination shows additive effect. Effect-size
+  meaningful + safety profile excellent — one of the cleanest atopic interventions.
+coaching_translation: Probiotics — specifically Lactobacillus rhamnosus and Lactobacillus
+  reuteri at 5-10 billion CFU/day — meaningfully reduce eczema severity in infants
+  and children. The biggest effect is in babies with cow's milk allergy concurrent
+  with eczema. Use strain-specific products (L. rhamnosus GG or L. rhamnosus + L.
+  reuteri combination), not generic Lactobacillus. Effect builds over 6-8 weeks. Safe
+  long-term.
+caveats:
+- Strain matters — L. rhamnosus GG (LGG) is the most-studied
+- L. reuteri DSM 17938 has additional infant safety data (also used for colic)
+- Heat-stable spore-based probiotics may not work for atopic dermatitis (different
+  mechanism)
+- Generally well-tolerated; rare bloating/gas
+- Severely immunocompromised — clinician guidance
+- Effect builds over 6-8 weeks; not an immediate intervention
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+- food-allergy-ige-mediated
+linked_to_supplements:
+- lactobacillus-probiotic
+- probiotics
+- probiotics-lactobacillus-bifidobacterium
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema, pg 923
+  quote: Administration of the probiotic Lactobacillus rhamnosus alone or in conjunction
+    with Lactobacillus reuteri to infants with eczema and cow's milk allergy demonstrates
+    significant reduction of the severity of eczema.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

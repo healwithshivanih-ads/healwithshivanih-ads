@@ -1,0 +1,54 @@
+slug: murray-food-allergy-driver-eczema
+statement: 'Food allergy is the major driver in eczema (atopic dermatitis): IgE is
+  elevated in 80% of patients, all eczema patients have positive allergy tests, two-thirds
+  have family history of allergic disease, and elimination of milk, eggs, peanuts,
+  tomatoes, and artificial colours/preservatives produces significant improvement
+  in at least 75% of cases. In childhood eczema, milk + eggs + peanuts alone account
+  for 81% of cases; in severe childhood eczema, 60% have a positive challenge to eggs,
+  cow''s milk, peanuts, fish, wheat, or soy. After 12 months of elimination, 26% no
+  longer react to the major five allergens (egg, milk, wheat, soy, peanut), and 66%
+  no longer react to other allergens — supporting time-limited rather than permanent
+  avoidance for many.'
+evidence_tier: strong
+rationale: Sampson 1990, Eigenmann 1998, Lever 1998, others cited. Mechanism — Th2-skewed
+  immune response with IgE production against food antigens; mast cell degranulation
+  in skin releases histamine + cytokines. The 26% / 66% tolerance-restoration figures
+  are critical coaching scope — clients should NOT assume lifetime restriction; reassess
+  every 6-12 months. Elimination + challenge remains the gold-standard diagnostic;
+  serum IgE testing is supportive but not definitive.
+coaching_translation: 'Eczema is fundamentally a food-driven allergic condition. The
+  big four — dairy, eggs, peanuts, gluten — cause 80% of childhood cases. A structured
+  elimination diet (4 weeks strict, then careful reintroduction) helps 75% of all
+  eczema cases. Important to know: most kids OUTGROW food allergies — 26% no longer
+  react to the top 5 after a year, 66% no longer react to other food allergens. So
+  avoidance should be time-limited and reassessed, not assumed lifetime.'
+caveats:
+- Use 4-week strict elimination + careful one-at-a-time reintroduction (every 3-4
+  days)
+- Reassess every 6-12 months — many allergies resolve with extended avoidance
+- Children with severe atopic disease — clinician-supervised reintroductions (anaphylaxis
+  risk)
+- Nutritional adequacy during elimination — especially calcium + vitamin D + B12 when
+  dairy out
+- Eating disorder history is a relative contraindication
+- In infants on formula — hydrolysed or amino-acid-based formulas may be needed
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+- food-allergy-ige-mediated
+linked_to_supplements: []
+linked_to_mechanisms: []
+out_of_scope_notes: Infant + childhood food allergy management with anaphylaxis risk
+  is clinician scope.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema (Atopic Dermatitis), pg 921–922
+  quote: Elimination of milk products, eggs, peanuts, tomatoes, and artificial colors
+    and preservatives results in significant improvement in at least 75% of cases.
+    After one year, 26% of patients with eczema were no longer allergic to the five
+    major allergens (egg, milk, wheat, soy, and peanut), and 66% were no longer allergic
+    to other food allergens.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

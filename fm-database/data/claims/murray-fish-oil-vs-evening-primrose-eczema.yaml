@@ -1,0 +1,51 @@
+slug: murray-fish-oil-vs-evening-primrose-eczema
+statement: 'Fish oil (1,000–3,000 mg EPA + DHA daily) outperforms evening primrose
+  oil (GLA) for eczema treatment AND eczema prevention, with multiple DB-RCTs demonstrating
+  protective and therapeutic effects of fish oil while several large evening primrose
+  oil trials failed to demonstrate benefit. The mechanism gap: fish oil delivers long-chain
+  omega-3s (EPA + DHA) DOWNSTREAM in the anti-inflammatory pathway; evening primrose
+  oil contains GLA at the START of the omega-3 conversion chain, requiring functional
+  desaturase enzymes that atopic individuals often have impaired.'
+evidence_tier: strong
+rationale: Multiple meta-analyses contrast the two — Hoff 2009 + Bath-Hextall 2012
+  evening primrose negative; multiple fish oil RCTs positive (Bjorneboe, Mayser, Soyland).
+  Mechanism — GLA→DGLA→PGE1 conversion requires delta-6-desaturase which atopic individuals
+  often have reduced. EPA bypasses this bottleneck. Critical clinical-translation
+  point — clients have spent years and money on EPO that doesn't work; fish oil is
+  the correct recommendation.
+coaching_translation: Fish oil works for eczema; evening primrose oil mostly doesn't.
+  The difference is that EPO provides GLA at the START of the anti-inflammatory conversion
+  chain, but atopic people often can't convert it well. Fish oil delivers the already-converted
+  EPA + DHA — bypasses the bottleneck. 1-3 g/day combined EPA + DHA. Same logic applies
+  for any inflammatory skin condition in atopic individuals.
+caveats:
+- Quality matters — third-party tested for oxidation + heavy metals
+- Pediatric dose lower (250-500 mg EPA+DHA for ages 4-10; 500-1000 mg for adolescents)
+- Vegetarian alternative — algal DHA + EPA (lower EPA content)
+- Mild antiplatelet
+- Atopic individuals often have impaired delta-6-desaturase — explains why GLA doesn't
+  help them
+linked_to_topics:
+- atopic-dermatitis
+- autoimmune-dermatitis
+- chronic-inflammation
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+- fish-oil-omega-3
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 50 — Eczema, pg 923
+  quote: Fish oil supplements providing EPA and DHA are showing significant protective
+    effects against allergy development as well as therapeutic effects in double-blind
+    clinical trials. The difference in response is probably due to several factors.
+    One is that fish oils contain primarily long-chain omega-3 fatty acids, which
+    are further down the anti-inflammatory pathway. Some people, such as those with
+    atopic disease, have poorer-functioning enzymes for the conversion to the anti-inflammatory
+    prostaglandins.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
