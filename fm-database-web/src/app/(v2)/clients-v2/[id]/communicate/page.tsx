@@ -136,6 +136,18 @@ export default async function CommunicateTabPage({
   ];
   let savedLetters: SavedLetterMap = {};
   let savedPhases: SavedPhase[] = [];
+  // When a published plan has a newer draft sibling (coach just ran
+  // an assessment and the new plan is in draft), phase letters are
+  // authored against the DRAFT, not the published plan. Use the draft
+  // slug for the phase scan so the Drafted pills appear correctly.
+  const pendingDraftPlan = activePlan && statusOf(activePlan) === "published"
+    ? plans.find(
+        (p) =>
+          p !== activePlan &&
+          (statusOf(p) === "draft" || statusOf(p) === "ready_to_publish"),
+      )
+    : undefined;
+  const phasePlan = pendingDraftPlan ?? activePlan;
   if (activePlan?.slug) {
     const slug = activePlan.slug as string;
     const probes = await Promise.all(
@@ -145,7 +157,9 @@ export default async function CommunicateTabPage({
       const r = probes[i];
       if (r.ok && r.savedAt) savedLetters[t] = { savedAt: r.savedAt };
     });
-    savedPhases = await listSavedPhasesAction(slug, id);
+    // Scan phase letters from the phase plan (draft if one exists, else active)
+    const phaseScanSlug = (phasePlan?.slug ?? slug) as string;
+    savedPhases = await listSavedPhasesAction(phaseScanSlug, id);
   }
 
   // Recent inbound was a server-side load → prop-passed list. Now the
@@ -311,10 +325,18 @@ export default async function CommunicateTabPage({
         displayName={displayName}
         client={client as unknown as Client}
         activePlanSlug={activePlanInfo?.slug ?? null}
+        phasePlanSlug={
+          pendingDraftPlan?.slug != null
+            ? (pendingDraftPlan.slug as string)
+            : null
+        }
         planPeriodWeeks={
-          (activePlan?.plan_period_weeks as number | undefined) ?? 12
+          ((phasePlan?.plan_period_weeks ?? activePlan?.plan_period_weeks) as number | undefined) ?? 12
         }
         planPeriodStart={
+          (phasePlan?.meal_plan_started_on as string | undefined) ??
+          (phasePlan?.supplements_started_on as string | undefined) ??
+          (phasePlan?.plan_period_start as string | undefined) ??
           (activePlan?.meal_plan_started_on as string | undefined) ??
           (activePlan?.supplements_started_on as string | undefined) ??
           (activePlan?.plan_period_start as string | undefined) ??

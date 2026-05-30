@@ -222,10 +222,11 @@ export function PhaseLetterPanel({
                 p.startWeek === p.endWeek
                   ? `Week ${p.startWeek}`
                   : `Weeks ${p.startWeek}–${p.endWeek}`;
+              const editorHref = `/clients-v2/${clientId}/letter-editor?plan=${planSlug}&type=meal_plan_phase&phase_start=${p.startWeek}&phase_end=${p.endWeek}`;
+              const printHref = `/api/letter/${clientId}/${planSlug}/meal_plan_phase?phase_start=${p.startWeek}&phase_end=${p.endWeek}`;
               return (
-                <a
+                <div
                   key={`${p.startWeek}-${p.endWeek}`}
-                  href={`/clients-v2/${clientId}/letter-editor?plan=${planSlug}&type=meal_plan_phase&phase_start=${p.startWeek}&phase_end=${p.endWeek}`}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -239,7 +240,6 @@ export function PhaseLetterPanel({
                       ? "1px solid rgba(245, 158, 11, 0.55)"
                       : "1px solid var(--fm-border-light)",
                     borderRadius: "var(--fm-radius-sm)",
-                    textDecoration: "none",
                     fontSize: 12,
                     color: "var(--fm-text-primary)",
                   }}
@@ -272,15 +272,47 @@ export function PhaseLetterPanel({
                       </span>
                     )}
                   </div>
-                  <span
-                    style={{
-                      color: p.stale ? "#92400e" : "var(--fm-primary)",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {p.stale ? "Regenerate →" : "Open →"}
-                  </span>
-                </a>
+                  <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                    {/* Direct HTML — opens the branded file with all
+                        per-week + supplement print buttons intact */}
+                    <a
+                      href={printHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        padding: "4px 10px",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        background: "rgba(16,185,129,0.10)",
+                        border: "1px solid rgba(16,185,129,0.40)",
+                        borderRadius: "var(--fm-radius-sm)",
+                        color: "#047857",
+                        textDecoration: "none",
+                      }}
+                    >
+                      🖨 Print / HTML
+                    </a>
+                    <a
+                      href={editorHref}
+                      style={{
+                        padding: "4px 10px",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        background: p.stale
+                          ? "rgba(146,64,14,0.12)"
+                          : "rgba(110,76,200,0.10)",
+                        border: p.stale
+                          ? "1px solid rgba(146,64,14,0.40)"
+                          : "1px solid rgba(110,76,200,0.35)",
+                        borderRadius: "var(--fm-radius-sm)",
+                        color: p.stale ? "#92400e" : "#5a3fb0",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {p.stale ? "Regenerate →" : "Edit →"}
+                    </a>
+                  </div>
+                </div>
               );
             })}
           </div>

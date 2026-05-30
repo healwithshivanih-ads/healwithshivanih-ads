@@ -274,7 +274,17 @@ function buildFortnights(planStart: Date, planWeeks: number): WeekCard[] {
 // dateFrom (typical case: coach sends Friday for Monday start).
 // ───────────────────────────────────────────────────────────────────
 type WeekState =
-  | { kind: "sent"; pillLabel: string; note: string; stamp: string }
+  | {
+      kind: "sent";
+      pillLabel: string;
+      note: string;
+      stamp: string;
+      /** When the file on disk has been modified AFTER the recorded send
+       *  (e.g. coach regenerated via chat-ingest or letter editor without
+       *  re-sending). Surfaces an amber "Updated since send" chip + a
+       *  Resend button so the new content actually reaches the client. */
+      regeneratedAt?: string;
+    }
   | { kind: "drafted"; pillLabel: string; note: string }
   | { kind: "stale"; pillLabel: string; note: string }
   | { kind: "override"; pillLabel: string; note: string }
@@ -319,11 +329,21 @@ function deriveWeekStates(
     // Sent? (matched upstream — see deriveSendsByWeek.)
     const send = sendsByWeek[i];
     if (send) {
+      // If a draft is on disk AND its mtime is newer than the recorded
+      // send, the coach regenerated the letter (chat-ingest or letter
+      // editor) without re-sending. Flag it so the UI surfaces an
+      // amber "Updated since send" chip + a Resend button.
+      const draft = draftsByWeek[i];
+      const regeneratedAt =
+        draft && draft.savedAt > send.sent_at ? draft.savedAt : undefined;
       return {
         kind: "sent",
         pillLabel: "Sent",
         stamp: fmtDateTime(send.sent_at),
-        note: `Delivered ${fmtDateTime(send.sent_at)}.`,
+        note: regeneratedAt
+          ? `Sent ${fmtDateTime(send.sent_at)}. Updated on disk ${fmtDateTime(regeneratedAt)} — not yet re-sent.`
+          : `Delivered ${fmtDateTime(send.sent_at)}.`,
+        regeneratedAt,
       };
     }
 
@@ -467,6 +487,11 @@ type DocState = {
   pillLabel: string;
   stamp: string;
   action: string;
+  /** When the file on disk has been modified AFTER the recorded send
+   *  (coach regenerated via chat-ingest / letter editor without
+   *  re-sending). Surfaces an amber "Updated since send" chip + a
+   *  "Resend" CTA so the new content actually reaches the client. */
+  regeneratedAt?: string;
 };
 
 /** Doc status priority: sent (sendLog hit) > drafted (file on disk) > idle.
@@ -484,11 +509,15 @@ function deriveDocStates(
           new Date(b.sent_at).getTime() - new Date(a.sent_at).getTime(),
       )[0];
     if (lastSend) {
+      const saved = savedLetters[d.letter];
+      const regeneratedAt =
+        saved && saved.savedAt > lastSend.sent_at ? saved.savedAt : undefined;
       return {
         kind: "sent",
         pillLabel: "Sent",
         stamp: fmtDateTime(lastSend.sent_at),
-        action: "Open",
+        action: regeneratedAt ? "Resend" : "Open",
+        regeneratedAt,
       };
     }
     const saved = savedLetters[d.letter];
@@ -687,6 +716,11 @@ export interface NewCommunicatePanelProps {
   /** Per-fortnight phase letters saved on disk — drives Drafted state
    *  on weekly menu cards. */
   savedPhases?: SavedPhase[];
+  /** Plan slug to use for phase letter hrefs + generate triggers.
+   *  Defaults to activePlanSlug. Override with the pending draft slug
+   *  when a newer draft exists alongside the published plan — phase
+   *  letters are authored against the draft, not the published plan. */
+  phasePlanSlug?: string | null;
   /** Rendered immediately AFTER the big orange hero CTA. Used to slot the
    *  travel-overrides panel right under the hero so it's seen, not
    *  missed above it (coach feedback 2026-05-20). */
@@ -701,6 +735,7 @@ export function NewCommunicatePanel({
   displayName,
   client,
   activePlanSlug,
+  phasePlanSlug,
   planPeriodWeeks,
   planPeriodStart,
   sendLog,
@@ -709,6 +744,8 @@ export function NewCommunicatePanel({
   savedPhases = [],
   slotAfterHero,
 }: NewCommunicatePanelProps) {
+  // Phase letters may belong to a newer draft plan; use phasePlanSlug when set.
+  const effectivePhasePlanSlug = phasePlanSlug ?? activePlanSlug;
   const today = new Date();
   const startDate =
     parseIso(planPeriodStart) ??
@@ -945,11 +982,31 @@ export function NewCommunicatePanel({
                           <div className="wk-card-dates">{wk.dates}</div>
                         </div>
                       </div>
-                      <div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
                         <span className={`pill pill--${st.kind}`}>
                           <span className="dot" />
                           {st.pillLabel}
                         </span>
+                        {/* "Updated since send" amber chip — appears when
+                            the on-disk file mtime is newer than the
+                            recorded sent_at. Coach has regenerated via
+                            chat-ingest / letter editor but hasn't resent. */}
+                        {st.kind === "sent" && st.regeneratedAt && (
+                          <span
+                            className="pill"
+                            style={{
+                              background: "rgba(245, 158, 11, 0.15)",
+                              color: "#92400E",
+                              fontSize: 10,
+                              padding: "2px 7px",
+                              borderRadius: 999,
+                              fontWeight: 700,
+                            }}
+                            title={`Letter file updated ${fmtDateTime(st.regeneratedAt)} — newer than send recorded ${st.stamp}. Open + Resend so the client gets the latest version.`}
+                          >
+                            🔄 Updated since send
+                          </span>
+                        )}
                       </div>
                       <div
                         style={{
@@ -1015,8 +1072,8 @@ export function NewCommunicatePanel({
               <>
                 {/* Phase meal-plan card for the selected fortnight */}
                 {(() => {
-                  const phaseHref = activePlanSlug
-                    ? `/clients-v2/${clientId}/letter-editor?plan=${activePlanSlug}&type=meal_plan_phase&phase_start=${selWk?.weekStart}&phase_end=${selWk?.weekEnd}`
+                  const phaseHref = effectivePhasePlanSlug
+                    ? `/clients-v2/${clientId}/letter-editor?plan=${effectivePhasePlanSlug}&type=meal_plan_phase&phase_start=${selWk?.weekStart}&phase_end=${selWk?.weekEnd}`
                     : null;
                   const phaseKind = selSend
                     ? "sent"
@@ -1033,6 +1090,14 @@ export function NewCommunicatePanel({
                     : selDraft
                       ? fmtDateTime(selDraft.savedAt)
                       : "—";
+                  // "Updated since send" detection — if the on-disk
+                  // letter mtime is newer than the recorded send_at, the
+                  // coach has regenerated (chat-ingest / letter editor)
+                  // without re-sending. Surface a Resend CTA.
+                  const phaseRegeneratedAt =
+                    selSend && selDraft && selDraft.savedAt > selSend.sent_at
+                      ? selDraft.savedAt
+                      : null;
                   return (
                     <div className="doc-list">
                       <div className="doc-row" data-state={phaseKind}>
@@ -1045,17 +1110,35 @@ export function NewCommunicatePanel({
                             Fortnight-specific meal tables for {selWk?.dates}. Supplements + lifestyle stay locked.
                           </div>
                         </div>
-                        <span className={`pill pill--${phaseKind}`}>
-                          <span className="dot" />
-                          {phasePill}
+                        <span style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                          <span className={`pill pill--${phaseKind}`}>
+                            <span className="dot" />
+                            {phasePill}
+                          </span>
+                          {phaseRegeneratedAt && (
+                            <span
+                              className="pill"
+                              style={{
+                                background: "rgba(245, 158, 11, 0.15)",
+                                color: "#92400E",
+                                fontSize: 10,
+                                padding: "2px 7px",
+                                borderRadius: 999,
+                                fontWeight: 700,
+                              }}
+                              title={`Letter file updated ${fmtDateTime(phaseRegeneratedAt)} — newer than send recorded ${fmtDateTime(selSend!.sent_at)}. Open + Resend so the client gets the latest version.`}
+                            >
+                              🔄 Updated since send
+                            </span>
+                          )}
                         </span>
                         <div className="doc-stamp">{phaseStamp}</div>
                         <div className="doc-actions">
                           {phaseKind === "idle" ? (
-                            activePlanSlug && selWk ? (
+                            effectivePhasePlanSlug && selWk ? (
                               <LetterGenerateTrigger
                                 clientId={clientId}
-                                planSlug={activePlanSlug}
+                                planSlug={effectivePhasePlanSlug}
                                 mode="phase"
                                 label="Generate"
                                 tone="primary"
@@ -1082,15 +1165,34 @@ export function NewCommunicatePanel({
                                 padding: "5px 11px",
                                 borderRadius: 6,
                                 background:
-                                  phaseKind === "sent"
-                                    ? "rgba(16, 185, 129, 0.15)"
-                                    : "var(--fm-primary, #FF6B35)",
-                                color: phaseKind === "sent" ? "#047857" : "#fff",
+                                  // Resend (regenerated since send) →
+                                  // amber primary; sent (clean) → muted
+                                  // green; anything else → orange CTA.
+                                  phaseKind === "sent" && phaseRegeneratedAt
+                                    ? "rgba(245, 158, 11, 0.95)"
+                                    : phaseKind === "sent"
+                                      ? "rgba(16, 185, 129, 0.15)"
+                                      : "var(--fm-primary, #FF6B35)",
+                                color:
+                                  phaseKind === "sent" && phaseRegeneratedAt
+                                    ? "#fff"
+                                    : phaseKind === "sent"
+                                      ? "#047857"
+                                      : "#fff",
                                 fontSize: 12,
                                 fontWeight: 700,
                               }}
+                              title={
+                                phaseKind === "sent" && phaseRegeneratedAt
+                                  ? `Letter regenerated ${fmtDateTime(phaseRegeneratedAt)} (newer than send ${fmtDateTime(selSend!.sent_at)}). Click to open the editor and resend.`
+                                  : undefined
+                              }
                             >
-                              {phaseKind === "sent" ? "Open" : "Review"} →
+                              {phaseKind === "sent"
+                                ? phaseRegeneratedAt
+                                  ? "Resend"
+                                  : "Open"
+                                : "Review"}{" "}→
                             </a>
                           ) : null}
                         </div>
@@ -1189,9 +1291,27 @@ export function NewCommunicatePanel({
                       <div className="doc-title">{d.label}</div>
                       <div className="doc-sub">{d.desc}</div>
                     </div>
-                    <span className={`pill pill--${st.kind}`}>
-                      <span className="dot" />
-                      {st.pillLabel}
+                    <span style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                      <span className={`pill pill--${st.kind}`}>
+                        <span className="dot" />
+                        {st.pillLabel}
+                      </span>
+                      {st.kind === "sent" && st.regeneratedAt && (
+                        <span
+                          className="pill"
+                          style={{
+                            background: "rgba(245, 158, 11, 0.15)",
+                            color: "#92400E",
+                            fontSize: 10,
+                            padding: "2px 7px",
+                            borderRadius: 999,
+                            fontWeight: 700,
+                          }}
+                          title={`Letter file updated ${fmtDateTime(st.regeneratedAt)} — newer than send recorded ${st.stamp}. Open + Resend so the client gets the latest version.`}
+                        >
+                          🔄 Updated since send
+                        </span>
+                      )}
                     </span>
                     <div className="doc-stamp">{st.stamp}</div>
                     <div className="doc-actions">
@@ -1244,16 +1364,28 @@ export function NewCommunicatePanel({
                               padding: "5px 11px",
                               borderRadius: 6,
                               background:
-                                st.kind === "sent"
-                                  ? "rgba(16, 185, 129, 0.15)"
-                                  : "var(--fm-primary, #FF6B35)",
+                                // Resend (regenerated since send) → amber
+                                // primary; sent (clean) → muted green;
+                                // anything else → orange primary CTA.
+                                st.kind === "sent" && st.regeneratedAt
+                                  ? "rgba(245, 158, 11, 0.95)"
+                                  : st.kind === "sent"
+                                    ? "rgba(16, 185, 129, 0.15)"
+                                    : "var(--fm-primary, #FF6B35)",
                               color:
-                                st.kind === "sent"
-                                  ? "#047857"
-                                  : "#fff",
+                                st.kind === "sent" && st.regeneratedAt
+                                  ? "#fff"
+                                  : st.kind === "sent"
+                                    ? "#047857"
+                                    : "#fff",
                               fontSize: 12,
                               fontWeight: 700,
                             }}
+                            title={
+                              st.kind === "sent" && st.regeneratedAt
+                                ? `Letter regenerated ${fmtDateTime(st.regeneratedAt)} (newer than send ${st.stamp}). Click to open the editor and resend the updated version.`
+                                : undefined
+                            }
                           >
                             {st.action} →
                           </a>

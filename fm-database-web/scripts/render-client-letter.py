@@ -1948,11 +1948,30 @@ _TIMING_SLOTS: list[tuple[int, str, str, list[str]]] = [
 ]
 
 def _timing_slot(timing_str: str) -> tuple[int, str, str]:
-    """Return (sort_index, slot_label, slot_emoji) for a supplement timing string."""
+    """Return (sort_index, slot_label, slot_emoji) for a supplement timing string.
+
+    Uses WORD-BOUNDARY matching, not naive substring matching. Previous
+    behaviour matched "am" inside any word containing those characters —
+    so "amla" / "vitamin" / "dampens" / "ammonia" all matched the
+    Breakfast slot, and "afternoon" matched the Lunch slot (because it
+    contains "noon"). Coach feedback 2026-05-29: too many silent
+    mis-classifications. Word boundaries fix the entire class of traps:
+    multi-word keywords still substring-match (because regex \\b also
+    works mid-string), but single short keywords like "am" or "noon"
+    now require actual word boundaries on both sides.
+    """
     tl = (timing_str or "").lower()
     for idx, label, emoji, keywords in _TIMING_SLOTS:
-        if any(kw in tl for kw in keywords):
-            return (idx, label, emoji)
+        for kw in keywords:
+            # Multi-word keywords ("empty stomach", "with food", etc.) still
+            # need plain substring match because they're already specific
+            # enough. Single-word keywords need word boundaries.
+            if " " in kw or "-" in kw:
+                if kw in tl:
+                    return (idx, label, emoji)
+            else:
+                if re.search(rf"\b{re.escape(kw)}\b", tl):
+                    return (idx, label, emoji)
     # Default: with breakfast
     return (1, "With Breakfast", "☀️")
 
@@ -2455,21 +2474,39 @@ def _parse_routine_pos(text: str) -> dict[int, int]:
     mark(6, "bedtime", "before bed", "before sleep", "at night")
     mark(2, "mid-morning", "mid morning")
     mark(4, "mid-afternoon", "mid afternoon", "afternoon")
-    mark(1, "breakfast")
-    # NB: don't test bare "noon" — it is a substring of "afternoon".
-    mark(3, "lunch", "midday", "12 noon")
+    # "before breakfast" (e.g. "30 min before breakfast") → On waking (slot 0),
+    # not Breakfast (slot 1). The client takes it, waits, then eats. Likewise
+    # "before lunch" → Mid-morning (slot 2). Handled BEFORE the bare meal marks
+    # so the bare mark doesn't fire for the same occurrence.
+    if "before breakfast" in t:
+        i = t.find("before breakfast")
+        pos[0] = min(pos.get(0, i), i)
+    else:
+        mark(1, "breakfast")
+    if "before lunch" in t:
+        i = t.find("before lunch")
+        pos[2] = min(pos.get(2, i), i)
+    else:
+        # NB: don't test bare "noon" — it is a substring of "afternoon".
+        mark(3, "lunch", "midday", "12 noon")
     mark(5, "dinner", "supper", "evening meal")
     # Bare 'morning' → breakfast, only if no mid-morning / breakfast already.
     # BUT 'morning on empty stomach / fasting' (with no breakfast option
     # named) belongs at On Waking — the fasted, pre-breakfast anchor — not
     # alongside breakfast. A supplement taken on an empty stomach should
     # not sit at the 'eat breakfast' slot.
+    # EXCEPTION: 'between meals' + 'morning' → mid-morning (slot 2), not
+    # Breakfast, because "between meals in the morning" means the gap
+    # between breakfast and lunch — a genuinely between-meal timing.
     fasted = any(
         k in t for k in
         ("empty stomach", "fasting", "on waking", "first thing", "before food")
     )
     if "morning" in t and 2 not in pos and 1 not in pos:
-        mark(0 if fasted else 1, "morning")
+        if "between meal" in t:
+            mark(2, "morning")   # between-meals morning → mid-morning
+        else:
+            mark(0 if fasted else 1, "morning")
     # Bare 'evening' (not 'evening meal') → afternoon, if no dinner already.
     if "evening" in t and 5 not in pos:
         mark(4, "evening")
@@ -2492,13 +2529,51 @@ def _routine_slots(timing_str: str, dose_str: str = "") -> list[int]:
     listed twice. The dose text is consulted first (it often pins the
     intended slot precisely — 'magnesium glycinate at bedtime'); failing
     that, the slot mentioned first in the timing wins. Only true 'and'
-    multi-dose timings keep multiple slots."""
+    multi-dose timings keep multiple slots.
+
+    'Between X and Y' (e.g. 'between breakfast and lunch (mid-morning)')
+    is a single-window timing — the meal keywords X and Y describe the
+    boundaries of the window, NOT separate doses. Collapse to the most
+    specific slot named (a parenthetical like '(mid-morning)' wins;
+    failing that, use the midpoint slot between X and Y)."""
     t = (timing_str or "").lower()
     pos = _parse_routine_pos(timing_str)
     if not pos:
         pos = {1: 0}  # safe default: with breakfast
 
     slots = sorted(pos)
+
+    # 'Between X and Y' where X and Y are two *specific* meal names
+    # (breakfast/lunch/dinner) → single-window; collapse to one anchor.
+    # Contrast: 'Between meals — morning and evening' uses a generic
+    # 'between meals' phrase + separate time-of-day hints (morning /
+    # evening) — that's two distinct between-meal windows (e.g. mid-
+    # morning AND afternoon for twice-daily zinc carnosine), so it must
+    # NOT be collapsed.
+    _meal_names = {"breakfast", "lunch", "dinner"}
+    _between_meal_pair = (
+        len(slots) > 1
+        and "between" in t
+        # Require two explicit meal names in the text (not just "morning",
+        # "evening", or bare "meals") so generic 'between meals' phrases
+        # are excluded from single-window collapse.
+        and sum(1 for m in _meal_names if m in t) >= 2
+    )
+    if _between_meal_pair:
+        # A more specific mid-slot (parenthetical like '(mid-morning)')
+        # wins; fall back to deriving the midpoint from the named pair.
+        # Known mid-slot candidates: 2 (mid-morning), 4 (afternoon).
+        specific = [s for s in slots if s in (2, 4)]
+        if specific:
+            return [min(specific, key=lambda s: pos[s])]
+        if 1 in pos and 3 in pos:
+            return [2]   # between breakfast and lunch → mid-morning
+        if 3 in pos and 5 in pos:
+            return [4]   # between lunch and dinner → afternoon
+        if 1 in pos and 5 in pos:
+            return [4]   # between breakfast and dinner → afternoon
+        return [min(slots, key=lambda s: pos[s])]
+
     # 'X or Y' / 'X / Y' → once-daily, pick one.
     if len(slots) > 1 and (" or " in t or " / " in t):
         # If the dose text pins exactly one of the candidate slots, use it.
@@ -3993,7 +4068,16 @@ def _start_when_block(plan: dict, scope: str) -> str:
             f"\n"
             f"{pushback_meal_instruction}\n"
             f"\n"
-            f"All week numbering throughout the letter is RELATIVE to her Day 1, not today."
+            f"All week numbering throughout the letter is RELATIVE to her Day 1, not today.\n"
+            f"\n"
+            f"USE-DATES-NOT-WEEKS RULE (coach feedback 2026-05-29): for any "
+            f"sentence the CLIENT reads, use specific calendar dates "
+            f"(e.g. \"Sun {_human(meal_eff).split(' ', 1)[1] if ' ' in _human(meal_eff) else _human(meal_eff)}\"), "
+            f"NEVER bare \"Week N\" phrasing. Clients don't track week numbers in their "
+            f"head — they navigate by calendar dates. Acceptable: \"Sun 24 May "
+            f"(start of Week 2)\". UNACCEPTABLE: just \"Week 2\" with no date anchor. "
+            f"Week numbers are coach-facing shorthand; the client letter must "
+            f"spell out the actual dates every time."
         )
 
     if scope == "supplement":
@@ -4083,6 +4167,26 @@ surface mg-level titration to the client. Same rule for back-off:
   - BAD: "Back off one step if stool turns loose."
   - GOOD: "If stools become too loose, drop back to 1 capsule and
     message me."
+
+SEASONAL GRAIN RULE — India-specific, non-negotiable:
+Bajra (pearl millet) is a WINTER grain (Nov–Feb). It generates internal
+heat (Ayurvedic: heating, agni-increasing). NEVER recommend bajra during
+April–September (summer + monsoon). This includes bajra roti, bajra
+khichdi, bajra bhakri.
+
+Summer-appropriate grains (March–September) — use these instead:
+  - Jowar / sorghum (primary swap — cooling, low GI, ideal for IR/diabetes)
+  - Sama / barnyard millet (cooling, light, good for gut-sensitive clients)
+  - Foxtail millet (neutral-cooling, versatile)
+  - Kodo millet (neutral, easy to digest)
+  - Ragi (cooling in Ayurveda — appropriate year-round in South India,
+    use in moderation in North Indian summer as it is dense)
+
+GRAIN ROTATION RULE: Never repeat the same grain at both lunch and
+dinner on the same day. Rotate across at least 3 different grains across
+the week — do not default to jowar roti for every meal (common failure
+mode: every lunch AND dinner becomes jowar roti). Use rice, sama, kodo,
+foxtail, ragi, and jowar in rotation.
 """
 
 
@@ -6493,12 +6597,27 @@ def main() -> int:
             # window. For non-phase letters (consolidated, supplement
             # plan, etc.) we use the full plan window so overrides still
             # surface as relevant background context.
-            plan_start_iso = plan.get("plan_period_start") or ""
+            # DURABLE RULE: Day 1 of the 12-week protocol is meal_plan_started_on
+            # (coach-asserted) — NOT plan_period_start. plan_period_start is when
+            # the YAML was authored; meal_plan_started_on is when the client
+            # actually began executing. Use the same +3d fallback as
+            # _start_when_block / wrap_in_brand_html convention. Once Day 1 is set,
+            # the 12-week clock is FIXED — regenerations do not extend the protocol.
             plan_weeks_for_window = int(plan.get("plan_period_weeks") or 12)
+            _plan_start_raw = plan.get("plan_period_start") or ""
+            _meal_started_raw = plan.get("meal_plan_started_on") or ""
             try:
-                plan_start_d = _date.fromisoformat(str(plan_start_iso)[:10])
+                _period_start_d = _date.fromisoformat(str(_plan_start_raw)[:10]) if _plan_start_raw else None
             except Exception:
-                plan_start_d = None
+                _period_start_d = None
+            try:
+                _meal_actual_d = _date.fromisoformat(str(_meal_started_raw)[:10]) if _meal_started_raw else None
+            except Exception:
+                _meal_actual_d = None
+            # Effective Day 1 = coach-asserted meal_plan_started_on, else period_start + 3d
+            plan_start_d = _meal_actual_d or (
+                _period_start_d + _td(days=3) if _period_start_d else None
+            )
 
             if letter_type in ("meal_plan_phase", "meal_plan") and phase_start and phase_end and plan_start_d:
                 # Phase letters: tight window = the requested fortnight only.

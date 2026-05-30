@@ -14,15 +14,28 @@ linked_to_topics:
 - microbiome
 linked_to_claims:
 - psyllium-husk-best-tolerated-fiber-supplement
-notes_for_coach: Speaker notes PHGG mixes well and is well tolerated by some, but
-  others (including speaker personally) find it causes bloating at any dose. Presented
-  as a secondary option to psyllium husk. Bio-individual tolerance varies considerably.
-  No dose was explicitly stated by speaker.
+notes_for_coach: |
+  PHGG mixes well and is well tolerated by some, but others find it causes
+  bloating at any dose. Presented as a secondary option to psyllium husk in
+  Thurlow Session 7. Bio-individual tolerance varies considerably.
+
+  FM TITRATION (coach feedback 2026-05-29 — added when no original dose was
+  specified): start LOW at 1 g/day in plain water (≈ a level quarter teaspoon,
+  or 1/5 of the 5 g scoop most bottles include). Add 1 g (another quarter-tsp)
+  per week until reaching a target of ~5 g/day by week 5–6. If bloating or
+  histamine flare at any step, HOLD at the current dose for an extra week
+  before titrating up. Client-facing measurement guidance should use
+  fraction-of-included-scoop — most clients don't have a kitchen scale that
+  measures 1 g accurately.
 notes_for_client: PHGG is a type of soluble fiber supplement that dissolves easily
   in water. Some people love it; others find it causes bloating. If you try it, start
   with a very small amount and see how your body responds.
 evidence_tier: fm_specific_thin
-typical_dose_range: {}
+typical_dose_range:
+  powder:
+    min: 1
+    max: 5
+    unit: g
 linked_to_mechanisms: []
 sources:
 - id: thurlow-microbiome-session-7

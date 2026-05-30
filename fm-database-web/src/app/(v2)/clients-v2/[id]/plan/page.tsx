@@ -57,9 +57,7 @@ import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { QuickEditSupplementsPanel } from "./quick-edit-supplements-panel";
 import { FollowUpPanel } from "./follow-up-panel";
-// PhaseLetterPanel was here through 2026-05-18 — moved back to the
-// Communicate tab so letter generation lives in one place. Import kept
-// out of this file to avoid an unused-import warning.
+import { PhaseLetterPanel } from "./phase-letter-panel";
 import { PlanOutcomesPanel } from "./plan-outcomes-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 // GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
@@ -1136,6 +1134,30 @@ export default async function PlanTabPage({
                 />
               </div>
             </FmPanel>
+
+            {/* 🍽 Phase letters — use the pending draft's slug when one
+                exists (phase letters are authored against the NEW plan),
+                otherwise fall back to the active plan.
+                Visible for all plan statuses so the coach can open a
+                saved phase letter (e.g. wk3-4) without going to the
+                Communicate tab. */}
+            {activePlan && (() => {
+              const phaseTarget = pendingDraft ?? activePlan;
+              return (
+                <PhaseLetterPanel
+                  clientId={id}
+                  planSlug={phaseTarget.slug as string}
+                  planPeriodWeeks={
+                    (phaseTarget.plan_period_weeks as number | undefined) ?? 12
+                  }
+                  planPeriodStart={
+                    (phaseTarget.meal_plan_started_on as string | undefined) ??
+                    (phaseTarget.supplements_started_on as string | undefined) ??
+                    (phaseTarget.plan_period_start as string | undefined)
+                  }
+                />
+              );
+            })()}
 
             {/* 📊 Outcomes since plan publish — Phase 1 of the outcome
                 feedback loop. Pulls Plan.baseline_snapshot (captured at
