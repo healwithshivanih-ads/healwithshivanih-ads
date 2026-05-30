@@ -1,0 +1,42 @@
+slug: murray-chromium-biotin-fasting-glucose-a1c
+statement: Chromium picolinate at 600 mcg/day combined with biotin 2 mg/day produced
+  significant improvements in glycemic control in type 2 diabetes — fasting glucose
+  dropped ~10 mg/dl and HbA1c dropped ~0.54%. Chromium polynicotinate or picolinate
+  at 400–600 mcg/day is more effective than chromium-rich yeast, which failed in recent
+  trials. Benefit is most reliable in subjects who are chromium-deficient at baseline.
+evidence_tier: strong
+rationale: Chromium is the central trace element in glucose tolerance factor (GTF),
+  facilitating insulin receptor binding and downstream signalling. Multi-decade RCT
+  base for chromium alone is mixed (positive in deficient subjects, modest in repleted).
+  The chromium-biotin combo (Diachrome) trial — Geohas 2007 + Albarracin 2008 — showed
+  reliable A1C reduction even on top of oral hypoglycemics.
+coaching_translation: Chromium 400-600 mcg/day (picolinate or polynicotinate, NOT
+  yeast-bound) plus biotin 2 mg/day delivered a meaningful A1C drop in type 2 diabetes
+  on top of standard treatment. Most useful for clients with marginal chromium status
+  — common in modern Indian diets dominated by refined carbohydrates.
+caveats:
+- Chromium picolinate or polynicotinate forms — NOT chromium yeast
+- Effect strongest in chromium-deficient subjects (which is most modern populations)
+- Monitor blood glucose closely if adding to existing hypoglycemic medication
+- Rarely, GI upset at higher doses
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- insulin-resistance
+- prediabetes
+linked_to_supplements:
+- chromium
+- chromium-picolinate
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, pg 837
+  quote: Several recent studies with 600 mcg chromium picolinate in combination with
+    2 mg biotin showed considerable benefit in helping patients with type 2 improve
+    blood sugar control, as fasting glucose levels dropped 10 mg/dl and A1C levels
+    dropped 0.54%.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

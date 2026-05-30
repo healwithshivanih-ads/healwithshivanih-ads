@@ -1,0 +1,48 @@
+slug: murray-fenugreek-insulin-sensitivity-4-hydroxyisoleucine
+statement: Fenugreek (Trigonella foenum-graecum) seed reduces fasting blood glucose
+  and improves insulin sensitivity in both type 1 and type 2 diabetes — 1 g/day fenugreek
+  seed extract for 2 months dropped fasting glucose from 148.3 to 119.9 mg/dl while
+  simultaneously DECREASING insulin output, indicating improved insulin sensitivity
+  rather than increased secretion. Active principles — soluble fibre, trigonelline
+  alkaloid, and 4-hydroxyisoleucine.
+evidence_tier: plausible_emerging
+rationale: Sharma 1990 (T1) + Gupta 2001 (T2 extract) + dozens of subsequent trials.
+  Mechanism — 4-hydroxyisoleucine is a unique amino acid that enhances insulin secretion
+  glucose-dependently; soluble galactomannan fibre slows glucose absorption. The insulin-sensitisation
+  effect (lower glucose AND lower insulin) is the FM differentiator from secretagogue
+  drugs.
+coaching_translation: Fenugreek (methi) at 1 g/day extract — or 15 g soaked seeds
+  — drops fasting blood glucose meaningfully AND improves insulin sensitivity (rather
+  than just driving more insulin release like many drugs). Indian dietary tradition
+  already uses methi-soaked water in the morning; that's the home-remedy form of this
+  clinical finding. Bonus benefit on cholesterol + triglycerides.
+caveats:
+- Maple-syrup body odour at high doses (harmless but socially noticeable)
+- Galactomannan binds drug + nutrient absorption — take 2 h away from other medications
+  + multivitamins
+- Avoid in pregnancy (uterine stimulant + traditional abortifacient)
+- Allergic cross-reaction with chickpea + peanut family
+- 15 g powder dose is impractical for daily long-term use; extract preferred
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- insulin-resistance
+- prediabetes
+- atherogenic-dyslipidemia
+linked_to_supplements:
+- fenugreek
+- fenugreek-extract
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, pg 849–850
+  quote: Fasting blood glucose levels dropped from 148.3 to 119.9 mg/dl, but there
+    was a significant decrease in insulin output. This finding indicates that there
+    was a significant improvement in insulin sensitivity. This effect is most likely
+    due to the 4-hydroxyleucine.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

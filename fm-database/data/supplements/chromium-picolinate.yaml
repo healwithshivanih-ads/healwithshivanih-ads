@@ -23,10 +23,13 @@ linked_to_topics:
 - blood-sugar-dysfunction
 - type-2-diabetes-mellitus
 - prediabetes-metabolic-syndrome
+- type-2-diabetes
+- prediabetes
 linked_to_claims:
 - micronutrient-deficiency-impairs-insulin-receptor-signalling
 - whole-foods-supply-micronutrients-supporting-insulin-sensitivity
 - chromium-improves-glycemic-control-deficient
+- murray-chromium-biotin-fasting-glucose-a1c
 notes_for_coach: Cr picolinate + biotin (600 mcg Cr + 2 mg biotin) combination shown
   to drop fasting glucose 10 mg/dL and HbA1c 0.54%. Effects are meaningful only in
   chromium-deficient individuals. At least 200 mcg/day for diabetics; 200–400 mcg/day
@@ -45,7 +48,10 @@ sources:
   location: Nutritional and Herbal Supplements / Chromium
   quote: Supplementing Cr decreases fasting glucose, improves glucose tolerance, lowers
     insulin, decreases total cholesterol and triglycerides, and increases HDL.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 3
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

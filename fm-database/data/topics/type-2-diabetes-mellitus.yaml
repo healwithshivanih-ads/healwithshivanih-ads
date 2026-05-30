@@ -4,8 +4,9 @@ aliases:
 - T2DM
 - adult-onset diabetes
 - non-insulin-dependent diabetes
-summary: Progressive disorder of insulin resistance and eventual beta-cell dysfunction, driven by obesity, diet, sedentary
-  lifestyle, persistent organic pollutants, and oxidative stress. Ninety percent of all diabetics have T2DM.
+summary: Progressive disorder of insulin resistance and eventual beta-cell dysfunction,
+  driven by obesity, diet, sedentary lifestyle, persistent organic pollutants, and
+  oxidative stress. Ninety percent of all diabetics have T2DM.
 evidence_tier: strong
 common_symptoms:
 - chronic-fatigue
@@ -33,16 +34,20 @@ key_mechanisms:
 - lipotoxicity
 - glucotoxicity
 - hepatic-gluconeogenesis
-coaching_scope_notes: Coach supports low-GL whole-food diet, exercise, weight normalisation, supplement protocol (foundation
-  + level 1/2). Medication titration is physician-only.
-clinician_scope_notes: Monitor HbA1c, fasting glucose, C-peptide, lipids, microalbuminuria, GGTP, homocysteine, ferritin.
-  Oral drugs or insulin if targets not met at Level 2.
+coaching_scope_notes: Coach supports low-GL whole-food diet, exercise, weight normalisation,
+  supplement protocol (foundation + level 1/2). Medication titration is physician-only.
+clinician_scope_notes: Monitor HbA1c, fasting glucose, C-peptide, lipids, microalbuminuria,
+  GGTP, homocysteine, ferritin. Oral drugs or insulin if targets not met at Level
+  2.
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: General Considerations / Classification
-  quote: Ninety percent of all diabetics have T2DM. Initially, insulin is elevated in T2DM, indicating loss of tissue sensitivity
-    to insulin.
-version: 1
+  quote: Ninety percent of all diabetics have T2DM. Initially, insulin is elevated
+    in T2DM, indicating loss of tissue sensitivity to insulin.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

@@ -1,0 +1,98 @@
+slug: bitter-melon
+display_name: Bitter Melon (Momordica charantia)
+aliases:
+- karela
+- bitter gourd
+- momordica-charantia
+- balsam pear
+- charantin
+category: herb
+forms_available:
+- liquid
+- capsule
+- powder
+- whole_food
+typical_dose_range:
+  liquid:
+    min: 60
+    max: 120
+    unit: ml
+  capsule:
+    min: 500
+    max: 2000
+    unit: mg
+  powder:
+    min: 1000
+    max: 3000
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+- with_dinner
+- on_empty_stomach
+take_with_food: optional
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- insulin-resistance
+- prediabetes
+linked_to_mechanisms: []
+notes_for_coach: 'Traditional Asian and Indian (Ayurveda — karela) anti-diabetic herb.
+  Three
+
+  distinct active compounds: charantin (mixed steroids, alcohol-extracted, more
+
+  potent than tolbutamide in animal studies); polypeptide-P (insulin-like, lowers
+
+  glucose when injected in T1); vicine (precursor of favism — caution G6PD
+
+  deficiency).
+
+
+  Murray''s clinical dose — 2 fl oz (60 ml) fresh juice of the unripe fruit daily.
+
+  Whole vegetable use in cooking is the traditional Indian approach; tincture +
+
+  standardised extracts available but fresh juice is what the trials used.
+
+
+  Very effective for postprandial glucose control. Pairs well with the standard
+
+  T2DM toolkit (chromium, ALA, gymnema). Particularly useful in India where karela
+
+  is culturally familiar and inexpensive.
+
+  '
+notes_for_client: 'Bitter melon (karela) is a vegetable widely used in Indian cooking
+  that lowers
+
+  blood sugar — both after meals and fasting. The bitter taste is the point; sweet
+
+  varieties don''t work. Fresh juice 60 ml/day shows the strongest effect, but
+
+  including karela 3-4 times a week in cooking is a sustainable alternative.
+
+  '
+evidence_tier: plausible_emerging
+contraindications:
+  conditions:
+  - G6PD deficiency (vicine content can trigger favism-like haemolysis)
+  - hypoglycemia history
+  medications:
+  - oral hypoglycemics (additive effect — monitor BG closely)
+  - insulin (additive effect — adjust doses with clinician)
+  life_stages:
+  - pregnancy (uterine stimulant + abortifacient effects historically; avoid)
+  - breastfeeding (insufficient data)
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, pg 1330–1331
+  quote: The blood-glucose-lowering action of the fresh juice or extract of the unripe
+    fruit has been clearly established in modern scientific studies in both type 1
+    and type 2. Taking as little as 2 fl oz of the juice has shown good results in
+    clinical trials.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

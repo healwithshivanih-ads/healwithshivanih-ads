@@ -1,0 +1,43 @@
+slug: murray-benfotiamine-diabetic-neuropathy-nephropathy
+statement: Benfotiamine — a fat-soluble derivative of thiamine (vitamin B1) with markedly
+  better tissue penetration than thiamine HCl — at 600 mg/day is Murray's recommended
+  dose for both diabetic neuropathy and diabetic nephropathy, blocking three of the
+  major hyperglycemia-driven damage pathways (advanced glycation end-product formation,
+  hexosamine pathway, protein kinase C pathway).
+evidence_tier: plausible_emerging
+rationale: Stracke 2008, Haupt 2005, BENDIP trial — meaningful pain + symptom improvements
+  in diabetic peripheral neuropathy. Mechanism — benfotiamine activates transketolase,
+  redirecting upstream glycolytic intermediates away from the four damaging pathways
+  downstream of hyperglycemia. Effect on hard outcomes (neuropathy progression, nephropathy
+  markers) more modest than symptom improvement, but the mechanism story is compelling
+  and safety is excellent.
+coaching_translation: Benfotiamine 600 mg/day is the smart-pick B1 form for any diabetic
+  complication — neuropathy, nephropathy, retinopathy. Regular thiamine doesn't penetrate
+  tissues well; benfotiamine does. Pair with alpha-lipoic acid for synergistic neuropathy
+  support. Especially worth considering in clients with poorly controlled glucose
+  history regardless of current A1C.
+caveats:
+- Tissue saturation may take 4-12 weeks before symptom improvement
+- Take with food for stable absorption
+- Caution + chemotherapy regimens that use thiamine depletion as part of mechanism
+- Largely outside clinician awareness in India — coach may need to print Stracke 2008
+  trial summary
+linked_to_topics:
+- diabetic-neuropathy
+- diabetic-nephropathy
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+linked_to_supplements:
+- benfotiamine
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, Treatment Summary pg 865
+  quote: 'For diabetic neuropathy: Benfotiamine 600 mg per day. For diabetic nephropathy:
+    Benfotiamine 600 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -16,8 +16,12 @@ take_with_food: required
 linked_to_topics:
 - diabetic-neuropathy
 - diabetic-nephropathy
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
 linked_to_claims:
 - benfotiamine-reduces-age-formation
+- murray-benfotiamine-diabetic-neuropathy-nephropathy
 notes_for_coach: 600 mg benfotiamine + 300 mg ALA shown to outperform benfotiamine
   alone for reducing hyperglycaemic damage in T1DM. Raises blood thiamine 120–240%
   vs regular thiamine. Monotherapy for neuropathy results are modest.
@@ -32,7 +36,10 @@ sources:
   quote: Benfotiamine is a fat-soluble form of thiamine or vitamin B1 that is more
     effective in raising blood thiamine levels (up to 120% to 240% versus regular
     thiamine).
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

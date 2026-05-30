@@ -24,9 +24,12 @@ notes_for_coach: 'Active constituents: ginsenosides. Reduces acute exercise-indu
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hpa-axis-cortisol-regulation
+- type-2-diabetes
+- type-2-diabetes-mellitus
 linked_to_mechanisms: []
 linked_to_claims:
 - ginseng-reduces-cortisol-supports-neuroplasticity
+- murray-american-ginseng-postprandial-glucose
 notes_for_client: Ginseng may help your body adapt to stress by moderating stress
   hormone release and supporting brain resilience.
 sources:
@@ -38,7 +41,10 @@ sources:
   quote: It has been reported to reduce acute exercise-induced cortisol and improve
     neuroplasticity in the hippocampus, which is often damaged by chronic cortisol
     elevation.
-version: 2
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 3
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-05-30'
 updated_by: Shivani

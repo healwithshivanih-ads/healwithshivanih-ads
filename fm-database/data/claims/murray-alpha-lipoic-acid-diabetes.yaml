@@ -1,0 +1,41 @@
+slug: murray-alpha-lipoic-acid-diabetes
+statement: Alpha-lipoic acid (ALA) at 400–600 mg/day is a Murray Level 1 recommendation
+  across both type 1 and type 2 diabetes — it functions as a fat- and water-soluble
+  universal antioxidant, regenerates other antioxidants (vitamin C, vitamin E, glutathione),
+  enhances cellular glucose uptake, and has the strongest evidence base in diabetic
+  neuropathy where 600 mg IV daily improves nerve conduction and reduces neuropathic
+  pain.
+evidence_tier: strong
+rationale: ALADIN, SYDNEY, NATHAN-1 trials cited across the wider literature. Mechanism
+  — cofactor for pyruvate dehydrogenase + alpha-ketoglutarate dehydrogenase; AMPK
+  activator; recycles glutathione. The dual antioxidant solubility (fat + water) is
+  unique and explains broad nerve + retina + kidney benefits.
+coaching_translation: Alpha-lipoic acid 400-600 mg/day is a core supplement in any
+  diabetes protocol — for blood sugar control, for nerve protection, and for the broader
+  oxidative stress that drives diabetic complications. R-ALA form is more bioavailable
+  than the racemic mix; take on empty stomach for best absorption.
+caveats:
+- Take on empty stomach for best absorption
+- R-ALA form (R-isomer) more bioavailable than racemic R/S mix; lower dose needed
+  (~200 mg R-ALA ≈ 400 mg racemic)
+- May enhance effect of hypoglycemic medications — monitor BG
+- Caution + thyroid medications (may affect thyroid hormone levels)
+- Biotin depletion possible at high doses + chronic use; co-supplement biotin
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- insulin-resistance
+- diabetic-neuropathy
+linked_to_supplements:
+- alpha-lipoic-acid
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, Treatment Summary pg 862
+  quote: 'Alpha-lipoic acid: 400 to 600 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -40,11 +40,13 @@ chapters:
     batch_id: 20260530T140000-murray-ch93-sports-chat
   - ch: 45
     title: Diabetes
-    body_pg_start: 357
-    body_pg_end: ~
+    body_pg_start: 796
+    body_pg_end: 866
     priority: 5
     serves: [cl-008 Sudarshan T2DM]
-    status: pending
+    status: ingested
+    batch_id: 20260530T150000-murray-ch45-diabetes-chat
+    note: "pg 357 in earlier queue was wrong — was a complication list in Obesity chapter. True body page 796."
   - ch: 23
     title: Anxiety
     body_pg_start: 497

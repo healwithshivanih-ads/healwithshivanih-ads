@@ -16,8 +16,11 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - type-2-diabetes-mellitus
+- type-2-diabetes
+- insulin-resistance
 linked_to_claims:
 - american-ginseng-most-evidence-based-herb-t2dm
+- murray-american-ginseng-postprandial-glucose
 notes_for_coach: 3 g whole powdered root before each meal. Most evidence-based herbal
   therapy for T2DM. Monitor for interaction with warfarin and stimulant effects. Standardised
   whole root powder preferred over extracts for studied outcomes.
@@ -31,7 +34,10 @@ sources:
   quote: American ginseng is the most evidence-based herbal therapy for T2DM. Whole
     powdered American ginseng root at 3 g before each meal reduces postprandial glucose
     in T2DM.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

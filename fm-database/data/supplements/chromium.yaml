@@ -22,9 +22,13 @@ linked_to_topics:
 - pcos
 - insulin-resistance
 - blood-sugar-dysfunction
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- prediabetes
 linked_to_claims:
 - chromium-biotin-combo-may-lower-hba1c
 - chromium-evidence-inconsistent-for-ir
+- murray-chromium-biotin-fasting-glucose-a1c
 notes_for_coach: 'Evidence is inconsistent. Chromium picolinate is the most studied
   form. Contraindicated in kidney disease — screen before recommending. Chromium +
   biotin combination may enhance effects. Food sources: broccoli, turkey breast, green
@@ -59,7 +63,10 @@ sources:
   quote: Chromium is trace mineral required in very small amounts by the body. It
     is thought to play a role in insulin function, but it's exact mechanism is not
     fully understood.
-version: 6
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 7
 status: active
-updated_at: '2026-05-04'
+updated_at: '2026-05-30'
 updated_by: shivani

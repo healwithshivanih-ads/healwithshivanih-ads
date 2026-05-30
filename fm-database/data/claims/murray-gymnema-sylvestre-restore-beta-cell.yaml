@@ -1,0 +1,43 @@
+slug: murray-gymnema-sylvestre-restore-beta-cell
+statement: Gymnema sylvestre extract standardised to 24% gymnemic acid at 200 mg twice
+  daily (or up to 2,400 mg/day) reduces blood glucose, HbA1c, and oral hypoglycemic
+  medication requirements in type 2 diabetes — in published trials, 5 of 27 type 2
+  patients were able to discontinue their conventional medication entirely while maintaining
+  glucose control on gymnema alone. No reported side effects.
+evidence_tier: plausible_emerging
+rationale: Shanmugasundaram 1990 + Baskaran 1990 controlled studies cited. Mechanism
+  — gymnemic acids structurally resemble glucose and bind sweet-taste receptors (the
+  leaf transiently abolishes sweet taste); also appear to stimulate pancreatic beta-cell
+  regeneration in animal models. Effect develops over 18-20 months in human trials
+  — slow but durable.
+coaching_translation: Gymnema sylvestre (gurmar — 'sugar destroyer' in Ayurveda) at
+  200 mg twice daily standardised to 24% gymnemic acid is the Murray Level 2 add-on
+  when standard recommendations + chromium + ALA aren't enough. Effect builds over
+  6-12 months — not a quick fix. In published trials, about 1 in 5 patients could
+  discontinue their diabetes medication entirely. Pair with consistent blood glucose
+  monitoring.
+caveats:
+- Effect develops slowly — 4-6 months minimum
+- Standardised to 24% gymnemic acid (not all extracts disclose this)
+- Monitor blood glucose closely if adding to oral hypoglycemics — additive risk
+- Avoid in active hypoglycemia
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- insulin-resistance
+linked_to_supplements:
+- gymnema-sylvestre-extract
+linked_to_mechanisms: []
+out_of_scope_notes: Medication tapering is clinician scope. Coach role — educate about
+  gymnema's track record and ensure prescriber knows the supplement is being added.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, pg 848
+  quote: 5 were able to discontinue their medication and maintain blood glucose control
+    with the gymnema extract alone. The dosage for gymnema extract (standardized to
+    contain 24% gymnemic acid) can range between 200 mg twice a day and 2,400 mg per
+    day. No side effects have been reported from gymnema extract.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

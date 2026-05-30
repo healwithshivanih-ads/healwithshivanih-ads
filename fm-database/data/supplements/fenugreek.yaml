@@ -22,8 +22,12 @@ take_with_food: optional
 linked_to_topics:
 - insulin-resistance
 - type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- atherogenic-dyslipidemia
 linked_to_claims:
 - fenugreek-overnight-soak-blood-sugar
+- murray-fenugreek-insulin-sensitivity-4-hydroxyisoleucine
 notes_for_coach: 'Coach Shivani''s original tip: ''Soak methi seeds in water overnight
   and drink the sieved water the next morning. Good for insulin resistance and diabetes.''
   Preparation: soak ~1–2 tsp of whole methi seeds in a glass of water overnight; strain
@@ -40,7 +44,10 @@ sources:
   location: Coach Observation
   quote: Soak methi seeds in water overnight and drink the sieved water the next morning.
     Good for insulin resistance and diabetes.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-06'
+updated_at: '2026-05-30'
 updated_by: shivani

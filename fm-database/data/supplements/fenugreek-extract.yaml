@@ -16,8 +16,12 @@ take_with_food: required
 linked_to_topics:
 - type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
+- type-2-diabetes
+- insulin-resistance
+- atherogenic-dyslipidemia
 linked_to_claims:
 - fenugreek-reduces-fasting-glucose-t1dm-t2dm
+- murray-fenugreek-insulin-sensitivity-4-hydroxyisoleucine
 notes_for_coach: 'Level 2 insulin enhancer for T2DM: 1 g/day extract. Active compounds:
   soluble fibre, trigonelline, 4-hydroxyisoleucine. Also lowers LDL/VLDL/TG. Defatted
   seed powder used in T1DM trials at 50 g b.i.d.'
@@ -31,7 +35,10 @@ sources:
   quote: Type 2 diabetics on 1 g/day fenugreek seed extract for 2 months had improved
     blood glucose (fasting glucose dropped from 148.3 to 119.9 mg/dL) but with decreased
     insulin output, indicating improved insulin sensitivity.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

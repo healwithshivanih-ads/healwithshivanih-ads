@@ -19,6 +19,7 @@ linked_to_topics:
 - type-1-diabetes-mellitus
 linked_to_claims:
 - niacinamide-prolongs-t1dm-remission
+- murray-niacinamide-preserves-t1-beta-cells
 notes_for_coach: 'Dose is 25–50 mg/kg/day (max 3 g/day) divided. Monitor liver enzymes
   every 3 months. Immediate-release preferred over timed-release for peak immune-blocking
   effect. Physician must direct. Children: 100–200 mg/day.'
@@ -32,7 +33,10 @@ sources:
   quote: A dose of 3 g niacinamide daily may prolong non–insulin-requiring remission,
     lower insulin requirements, improve metabolic control, and increase beta-cell
     function as determined by C-peptide secretion.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

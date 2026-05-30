@@ -4,8 +4,9 @@ aliases:
 - T1DM
 - juvenile-onset diabetes
 - insulin-dependent diabetes
-summary: Autoimmune destruction of pancreatic beta cells resulting in absolute insulin deficiency, requiring lifelong exogenous
-  insulin. Triggered by genetic susceptibility plus environmental factors (viral infection, dietary proteins, nitrosamines).
+summary: Autoimmune destruction of pancreatic beta cells resulting in absolute insulin
+  deficiency, requiring lifelong exogenous insulin. Triggered by genetic susceptibility
+  plus environmental factors (viral infection, dietary proteins, nitrosamines).
 evidence_tier: strong
 common_symptoms:
 - polyuria
@@ -30,15 +31,20 @@ key_mechanisms:
 - autoimmune-beta-cell-destruction
 - insulin-deficiency
 - leaky-gut
-coaching_scope_notes: Coach supports dietary discipline, low-GL eating, supplement protocol (foundation + level 1/2), exercise,
-  and stress management. Insulin management is physician-only.
-clinician_scope_notes: Lifelong insulin required. Monitor HbA1c, C-peptide, glucose, liver enzymes (niacinamide). Refer for
-  DKA, hyperosmolarity.
+coaching_scope_notes: Coach supports dietary discipline, low-GL eating, supplement
+  protocol (foundation + level 1/2), exercise, and stress management. Insulin management
+  is physician-only.
+clinician_scope_notes: Lifelong insulin required. Monitor HbA1c, C-peptide, glucose,
+  liver enzymes (niacinamide). Refer for DKA, hyperosmolarity.
 sources:
 - id: pizzorno-cardiometabolic-diabetes
   location: General Considerations / Classification
-  quote: 'T1DM: autoimmune disease caused by destruction of the beta cells of pancreas, which synthesize insulin.'
-version: 1
+  quote: 'T1DM: autoimmune disease caused by destruction of the beta cells of pancreas,
+    which synthesize insulin.'
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

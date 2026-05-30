@@ -16,8 +16,11 @@ take_with_food: required
 linked_to_topics:
 - type-1-diabetes-mellitus
 - type-2-diabetes-mellitus
+- type-2-diabetes
+- insulin-resistance
 linked_to_claims:
 - gymnema-reduces-insulin-requirements
+- murray-gymnema-sylvestre-restore-beta-cell
 notes_for_coach: Standardised to 24% gymnemic acid; 200 mg b.i.d. Monitor blood glucose
   closely — insulin or drug doses may need reduction. Capsules/tablets reduce carbohydrate
   cravings but don't produce tongue sweetness blockade.
@@ -32,7 +35,10 @@ sources:
   quote: In T1DM, leaf extract reduces insulin requirements and fasting glucose and
     improves glycemic control. It improves glycemic control in T2DM, reducing hypoglycemic
     drug needs.
-version: 1
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani

@@ -52,6 +52,7 @@ linked_to_claims:
 - ala-nac-glutathione-advanced-antioxidants
 - nac-alpha-lipoic-support-phase-2-estrogen-detox
 - alpha-lipoic-acid-improves-diabetic-neuropathy
+- murray-alpha-lipoic-acid-diabetes
 notes_for_client: Alpha-lipoic acid is a powerful antioxidant that protects nerves
   and improves blood sugar metabolism. Take daily with or without food.
 sources:
@@ -102,9 +103,12 @@ sources:
   quote: 'It is an approved drug in Germany for diabetic neuropathy. Dose: 300 to
     600 mg q.d. It improves glucose metabolism, improves blood flow to peripheral
     nerves, stimulates regeneration of nerve fibers, and increases insulin sensitivity.'
-version: 11
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes
+  quote: Comprehensive natural treatment summary for diabetes types 1 and 2.
+version: 12
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-05-30'
 updated_by: Shivani
 pregnancy_safety: caution
 lactation_safety: caution

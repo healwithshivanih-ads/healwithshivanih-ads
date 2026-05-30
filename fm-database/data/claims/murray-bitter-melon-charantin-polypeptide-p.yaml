@@ -1,0 +1,45 @@
+slug: murray-bitter-melon-charantin-polypeptide-p
+statement: Bitter melon (Momordica charantia) reduces blood glucose in both type 1
+  and type 2 diabetes via three distinct compounds — charantin (mixed steroid, more
+  potent than tolbutamide in animal studies), polypeptide-P (insulin-like, lowers
+  glucose when injected in type 1), and additional glycosides. Clinical effect demonstrated
+  with as little as 2 fl oz (60 ml) of fresh juice of the unripe fruit daily.
+evidence_tier: plausible_emerging
+rationale: Multiple older trials (Welihinda 1986, Khanna 1981, Akhtar 1981) plus extensive
+  Asian traditional use. Mechanism is multi-target — both insulin-mimetic and insulin-sensitising
+  effects. Strong tradition + multi-compound mechanism + low cost in India + dietary
+  integration as a vegetable make this a high-value coaching tool for Indian clients.
+  Effect size on FBG and PPG meaningful but study quality is older + smaller-sample.
+coaching_translation: 'Karela (bitter melon) has the strongest Indian traditional
+  + modern evidence among anti-diabetic herbs. 60 ml fresh juice daily lowers blood
+  glucose by mimicking insulin (polypeptide-P) and through charantin''s mixed-steroid
+  effect. The cheaper, more sustainable approach: include karela in cooking 3-4 times
+  a week. Effect on both fasting and post-meal glucose.'
+caveats:
+- G6PD deficiency — bitter melon contains vicine which can trigger favism-like haemolysis
+  (~5-10% prevalence in some Indian populations — caution)
+- Avoid in pregnancy (uterine stimulant + traditional abortifacient use)
+- Additive effect with hypoglycemics — monitor BG
+- Fresh juice strongest; cooking reduces but does not eliminate effect
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- type-1-diabetes-mellitus
+- insulin-resistance
+- prediabetes
+linked_to_supplements:
+- bitter-melon
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, pg 848–849
+  quote: Charantin, extracted by alcohol, is a hypoglycemic agent composed of mixed
+    steroids that is more potent than the oral hypoglycemic drug tolbutamide. Bitter
+    melon also contains an insulin-like polypeptide, polypeptide-P, which lowers blood
+    glucose levels when injected like insulin into type 1 diabetics. Taking as little
+    as 2 fl oz of the juice has shown good results in clinical trials.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,40 @@
+slug: murray-niacinamide-preserves-t1-beta-cells
+statement: In recent-onset type 1 diabetes, niacinamide (the amide form of niacin,
+  NOT inositol hexaniacinate) at 25–50 mg/kg body weight can preserve residual pancreatic
+  beta-cell function and prolong the honeymoon period of partial insulin independence.
+  This dose is dramatically different from niacin's lipid-lowering dose and does NOT
+  cause flushing. Effect strongest when initiated within months of T1 diagnosis.
+evidence_tier: fm_specific_thin
+rationale: 'ENDIT trial (2004) was largely negative for prevention, but multiple smaller
+  trials suggest a role in recent-onset disease (Pozzilli 1996, Vague 1989). Mechanism
+  — niacinamide inhibits poly-ADP-ribose polymerase (PARP), protecting beta cells
+  from autoimmune-mediated free-radical destruction. Coach context: this is a clinician-led
+  decision; coach role is education + ensuring family asks the endocrinologist about
+  it within the first 6 months of T1 diagnosis.'
+coaching_translation: For a newly diagnosed type 1 diabetic — especially a child within
+  the first 6 months — niacinamide at 25-50 mg per kg body weight may help preserve
+  some of the remaining insulin-producing cells and stretch the honeymoon period of
+  needing less insulin. This is niacinamide (the flush-free form), NOT niacin. Discuss
+  with the diabetes specialist; this is not coach scope to initiate alone.
+caveats:
+- Niacinamide ≠ Niacin (lipid-lowering form) — they have different physiological effects
+- Clinician-supervised — works only in recent-onset T1, not established disease
+- Dose by body weight (25-50 mg/kg) is high; standard 100 mg capsules require careful
+  counting
+- Hepatotoxicity at very high doses + chronic use — LFT monitoring
+linked_to_topics:
+- type-1-diabetes-mellitus
+linked_to_supplements:
+- niacinamide
+linked_to_mechanisms: []
+out_of_scope_notes: Initiation of niacinamide in recent-onset T1 is clinician scope.
+  Coach role — make sure the family knows to ask about it during the first endocrinology
+  visit.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, Treatment Summary pg 861
+  quote: 'Niacinamide: 25 to 50 mg/kg body weight.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

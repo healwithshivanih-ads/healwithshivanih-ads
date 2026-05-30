@@ -1,0 +1,46 @@
+slug: murray-american-ginseng-postprandial-glucose
+statement: American ginseng (Panax quinquefolius) — 3 g whole powdered root taken
+  before each meal — significantly reduces postprandial blood glucose in type 2 diabetes.
+  The University of Toronto Risk Factor Modification Center research established American
+  ginseng as 'the herbal therapy with the strongest evidence of efficacy in type 2.'
+  Panax ginseng (Chinese ginseng) at 200 mg/day also improved HbA1c and physical activity
+  in a 36-patient DB-RCT.
+evidence_tier: plausible_emerging
+rationale: Vuksan / Sievenpiper Toronto trial series (2000-2009) cited — multiple
+  aligned DB-RCTs with pre-meal dosing. Mechanism — proposed adenosine + ginsenoside
+  modulation of glucose absorption and incretin response. American + Asian Panax species
+  have different ginsenoside profiles; American is the more-studied for blood glucose.
+coaching_translation: 'American ginseng 3 g whole powdered root before each meal is
+  the herb with the strongest randomised-trial evidence for type 2 diabetes glucose
+  control. Asian (Panax) ginseng 200 mg/day also works. Pre-meal dosing matters —
+  that''s when it slows glucose absorption. Practical: a 9 g/day total adds up quickly;
+  pair with food.'
+caveats:
+- Pre-meal timing is essential for postprandial effect
+- Caution + warfarin (mixed direction reports)
+- Avoid in active hypertension at high doses (>1 g/day)
+- Stimulating — avoid at bedtime
+- American ginseng + Panax ginseng are different species with different ginsenoside
+  profiles
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- insulin-resistance
+- prediabetes
+linked_to_supplements:
+- american-ginseng-extract
+- panax-ginseng
+- ginseng
+linked_to_mechanisms: []
+out_of_scope_notes: ''
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 45 — Diabetes, pg 849
+  quote: 3 g whole powdered American ginseng (Panax quinquefolius) root taken before
+    each meal reduced postprandial blood glucose significantly in type 2 diabetics.
+    American ginseng is now considered by authorities to be the herbal therapy with
+    the strongest evidence of efficacy in type 2.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
