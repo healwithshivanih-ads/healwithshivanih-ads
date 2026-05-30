@@ -1,0 +1,27 @@
+statement: 5-HTP 200-600 mg/day prevents migraine attacks at least as effectively
+  as standard prophylactic drugs (methysergide, pizotifen, propranolol) with significantly
+  fewer side effects. In a 124-patient 6-month head-to-head trial, 5-HTP 600 mg/day
+  produced greater than 50% reduction in attack frequency in 71% (vs 75% for methysergide),
+  but with zero withdrawals for side effects (vs 12.5% on methysergide). Effect builds
+  over time — better results at 60 days than 30 days — via 5-HT1c receptor desensitization
+  and 5-HT1d sensitization. Bonus mood lift.
+slug: migraine-5htp-prevention-200-600mg
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+linked_to_supplements:
+- 5-htp
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 77 — Migraine Headache, pg 1268-1270
+  quote: 5-HTP is at least as effective as other pharmacological agents used in the
+    prevention of migraine headaches and is safer and better tolerated. 71% of the
+    patients taking 5-HTP demonstrated significant improvement vs 75% on methysergide;
+    five patients in the methysergide group withdrew due to side effects vs zero in
+    the 5-HTP group.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach first-line migraine prophylaxis for clients wary of triptans/beta-blockers
+  — also helps depression and sleep.

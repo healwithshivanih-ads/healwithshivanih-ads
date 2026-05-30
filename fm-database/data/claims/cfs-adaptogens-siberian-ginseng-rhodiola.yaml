@@ -1,0 +1,30 @@
+slug: cfs-adaptogens-siberian-ginseng-rhodiola
+statement: Siberian ginseng (Eleutherococcus senticosus) fluid extract produced significant
+  increases in T-helper cells and NK cell activity in a 4-week double-blind trial
+  — both directly relevant to the NK cell deficit central to CFS. Rhodiola rosea standardized
+  extract (200-300 mg/day, 3% rosavins + 0.8-1% salidroside) reduced stress-related
+  fatigue, improved concentration, and lowered cortisol response in a 60-patient RCT.
+evidence_tier: strong
+linked_to_topics:
+- chronic-fatigue-syndrome
+- adrenal-fatigue
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- immune-dysregulation
+linked_to_supplements:
+- siberian-ginseng
+- rhodiola-rosea
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 37 — Chronic Fatigue Syndrome, pg 676-677
+  quote: Most notable were a significant increase in T-helper cells and an increase
+    in NK cell activity, both of which are of value in the treatment of CFS. Rhodiola
+    was found to have an antifatigue effect that increased mental performance, particularly
+    the ability to concentrate, as well as decreased the cortisol response to stress.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Adaptogen selection guide for CFS — Siberian ginseng for immune-dominant
+  pictures, Rhodiola for cognitive fatigue + cortisol dysregulation.

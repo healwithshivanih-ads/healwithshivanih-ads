@@ -1,0 +1,30 @@
+slug: migraine-magnesium-deficiency-low-rbc-mg
+statement: Low tissue magnesium is common in migraineurs but is missed by standard
+  serum magnesium (which reflects only late-stage deficiency). RBC magnesium and ionized
+  magnesium are more sensitive markers. IV magnesium sulfate 1 g produced greater
+  than 50% pain reduction within 15 minutes in 86% of acute migraine patients with
+  ionized magnesium less than 0.54 mmol/L, vs only 16% in those above that threshold.
+  Oral magnesium citrate/malate/aspartate forms are preferred over inorganic salts;
+  add B6 50 mg to boost intracellular magnesium uptake. Magnesium deficiency also
+  links migraine to mitral valve prolapse (85% of MVP patients are chronically deficient).
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+- magnesium-deficiency
+linked_to_supplements:
+- magnesium
+- magnesium-citrate
+- magnesium-malate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 77 — Migraine Headache, pg 1270-1272
+  quote: Pain relief lasted at least 24 hours in 18 of 21 patients (86%) with serum
+    ionized magnesium levels below 0.54 mmol/L and in 3 of 19 patients (16%) with
+    ionized magnesium levels at or above 0.54 mmol/L. Magnesium bound to citrate,
+    malate, or aspartate is better absorbed and better tolerated than inorganic forms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Order RBC magnesium not serum. Choose citrate/malate/glycinate over oxide.
+  B6 50 mg as co-factor.

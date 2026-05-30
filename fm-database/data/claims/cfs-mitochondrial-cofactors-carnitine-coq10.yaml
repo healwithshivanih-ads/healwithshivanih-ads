@@ -1,0 +1,29 @@
+slug: cfs-mitochondrial-cofactors-carnitine-coq10
+statement: In CFS, L-carnitine 900-1,500 mg/day produced statistically significant
+  clinical improvement in 12 of 18 indicators after 8 weeks (compared with amantadine
+  which was poorly tolerated and produced no significant change). CoQ10 100-200 mg/day
+  is indicated because low blood CoQ10 levels are found in CFS patients vs controls.
+  Both are essential mitochondrial cofactors for energy production.
+evidence_tier: strong
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- mitochondrial-dysfunction
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- l-carnitine
+- coenzyme-q10
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 37 — Chronic Fatigue Syndrome, pg 675
+  quote: With carnitine, there was a statistically significant clinical improvement
+    in 12 of the 18 studied indicators after eight weeks of treatment. Low blood levels
+    of CoQ10 have been found in CFS patients compared with normal subjects, suggesting
+    that supplementation may be useful.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach uses mitochondrial cofactor stack as foundational for CFS/fibromyalgia/post-viral
+  fatigue clients.

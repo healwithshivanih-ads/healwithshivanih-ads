@@ -1,0 +1,23 @@
+slug: nafld-iron-restriction-low-iron-diet
+statement: Considerable research shows increased iron concentration in the liver in
+  NAFLD. Because iron generates pro-oxidants that further damage hepatocytes, avoid
+  iron supplements and follow a low-iron diet unless clearly indicated (iron-deficiency
+  anemia confirmed). This is the opposite of the standard reflex to supplement iron
+  for "fatigue."
+evidence_tier: plausible_emerging
+linked_to_topics:
+- nafld
+- liver-detoxification
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — NAFLD/NASH, pg 1295
+  quote: Considerable research indicates an increase in iron concentration in the
+    liver in people with NAFLD. Given its ability to generate pro-oxidants, iron should
+    be avoided unless there is a medical reason for iron supplementation. Follow a
+    low-iron diet and avoid iron supplements.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach checks ferritin BEFORE iron supplementation in NAFLD clients — high
+  ferritin is a worsening factor, not deficiency.

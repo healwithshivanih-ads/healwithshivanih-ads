@@ -1,14 +1,24 @@
 slug: chronic-fatigue-syndrome
-display_name: Chronic Fatigue Syndrome
+display_name: Chronic Fatigue Syndrome (CFS / ME)
 aliases:
 - CFS
 - myalgic encephalomyelitis
 - ME/CFS
 - chronic fatigue and immune dysfunction syndrome
 - CFIDS
-summary: Complex multisystem condition characterized by debilitating fatigue, post-exertional malaise, sleep disturbance,
-  cognitive dysfunction, and immune dysregulation. No single infectious cause established. Multiple contributing factors include
-  hypothyroidism, hypoadrenalism, candidiasis, food allergies, EFA deficiency, hypoglycemia, and impaired liver detoxification.
+- cfs
+- me-cfs
+- myalgic-encephalomyelitis
+- chronic-fatigue-and-immune-dysfunction-syndrome
+- cfids
+- postviral-fatigue-syndrome
+summary: Multifactorial condition defined by recurrent fatigue >6 months with 50%
+  activity reduction. Centrally features disturbed immune function (decreased NK cell
+  activity, altered T-helper:T-suppressor ratio, low or high interferon), mitochondrial
+  energy failure, and overlap with fibromyalgia and multiple chemical sensitivity.
+  Effective FM approach addresses liver detoxification, food allergy elimination,
+  gut restoration, adrenal/HPA support, and mitochondrial cofactors (carnitine, CoQ10,
+  magnesium).
 common_symptoms:
 - chronic-fatigue
 - muscle-pain
@@ -18,6 +28,9 @@ common_symptoms:
 - recurrent-sore-throat
 - lymph-node-pain
 - brain-fog
+- fatigue
+- sleep-disturbance
+- sore-throat
 red_flags:
 - Rule out serious underlying infection
 - Rule out depression requiring psychiatric referral
@@ -27,21 +40,36 @@ related_topics:
 - hypoadrenalism
 - food-allergy
 - autoimmunity-leaky-gut-triad
+- fibromyalgia
+- adrenal-fatigue
+- food-sensitivities
+- leaky-gut
+- mitochondrial-dysfunction
 key_mechanisms:
 - mitochondrial-dysfunction
 - hpa-axis-dysregulation
 - dysbiosis
 - impaired-immune-function
-coaching_scope_notes: Coaches can support low-glycemic whole-foods diet, stress management, low-intensity exercise, and supplement
-  protocols. Hypothyroidism and hypoadrenalism require clinician evaluation.
-clinician_scope_notes: Evaluate thyroid, adrenal, Candida, food allergies, EFA status, magnesium, NADH, CoQ10. Consider anti-Candida
-  protocol and liver detox program.
-evidence_tier: plausible_emerging
+- immune-dysregulation
+- leaky-gut
+coaching_scope_notes: Coaches can support low-glycemic whole-foods diet, stress management,
+  low-intensity exercise, and supplement protocols. Hypothyroidism and hypoadrenalism
+  require clinician evaluation.
+clinician_scope_notes: Evaluate thyroid, adrenal, Candida, food allergies, EFA status,
+  magnesium, NADH, CoQ10. Consider anti-Candida protocol and liver detox program.
+evidence_tier: strong
 sources:
 - id: pizzorno-textbook-gi-2
   location: Chronic Fatigue Syndrome — Etiology
-  quote: CFS may have multiple causes leading to a common end point; thus some infectious agents may play contributing roles.
-version: 1
+  quote: CFS may have multiple causes leading to a common end point; thus some infectious
+    agents may play contributing roles.
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 37 — Chronic Fatigue Syndrome, pg 663-680
+  quote: A disturbed immune system plays a central role in chronic fatigue syndrome
+    (CFS). The strong correlation between CFS, FM, and MCS suggests that all three
+    conditions may respond to liver detoxification, food allergy control, and a gut-restoration
+    diet.
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: 2026-05-30
 updated_by: Shivani

@@ -1,0 +1,25 @@
+slug: autoimmune-thyroid-celiac-screen
+statement: Patients with autoimmune thyroid disease — Graves' disease or Hashimoto's
+  thyroiditis — are more likely than the general population to have celiac disease
+  and/or gluten sensitivity. Celiac/gluten must be ruled out and food allergies identified
+  as part of standard workup for any autoimmune thyroid presentation.
+evidence_tier: strong
+linked_to_topics:
+- hyperthyroidism
+- hypothyroidism
+- hashimotos-thyroiditis
+- celiac-disease
+- food-sensitivities
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 66 — Hyperthyroidism, pg 1108
+  quote: Patients with autoimmune thyroid disease, either Graves' disease or Hashimoto's
+    thyroiditis (the major cause of low thyroid function), are more likely than the
+    general population to suffer from celiac disease and/or gluten sensitivity. Therefore,
+    these conditions must be ruled out.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach standard — anti-tTG IgA + gluten elimination trial for every new
+  autoimmune thyroid case.

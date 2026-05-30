@@ -1,0 +1,28 @@
+slug: migraine-food-allergy-elimination-trial
+statement: 'Food allergy/intolerance is the most important precipitant in migraine.
+  Elimination trials produce 30-93% success rates with most studies showing remarkably
+  high improvement. Top offenders (in descending order): cow''s milk and dairy, wheat,
+  chocolate, egg, orange, benzoic acid, tomato, tartrazine, peanut, MSG. Add histamine-
+  releasing triggers — red wine, aged cheese, cured meats — especially in women, whose
+  diamine oxidase activity is roughly half that of men.'
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+- food-sensitivities
+- histamine-intolerance
+linked_to_mechanisms:
+- immune-dysregulation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 77 — Migraine Headache, pg 1266-1268
+  quote: Clinical studies have demonstrated that the detection and removal of allergenic
+    or intolerable foods can eliminate or greatly reduce migraine symptoms in the
+    majority of patients. Success rates range from 30 to 93%. Top offenders cow's
+    milk, wheat, chocolate, egg, orange, benzoic acid, tomato, tartrazine, peanut,
+    MSG.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: 3-week strict elimination (top 10 foods) before any prophylactic supplement
+  trial — coach standard for new migraine clients.

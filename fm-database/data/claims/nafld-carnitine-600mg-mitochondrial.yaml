@@ -1,0 +1,27 @@
+slug: nafld-carnitine-600mg-mitochondrial
+statement: L-carnitine 600 mg/day improved liver function and mitochondrial markers
+  in a 45-patient NAFLD trial. Carnitine drives fatty acid transport into mitochondria;
+  low hepatic carnitine increases NAFLD susceptibility. Especially valuable when fatty
+  infiltration is linked to alcohol or toxin/pesticide exposure — supplemental carnitine
+  reduces free fatty acids and triglycerides while raising HDL in alcohol- induced
+  fatty liver.
+evidence_tier: strong
+linked_to_topics:
+- nafld
+- mitochondrial-dysfunction
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- l-carnitine
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — NAFLD/NASH, pg 1296-1297
+  quote: 45 NAFLD patients were given either carnitine (600 mg per day) or placebo.
+    Results demonstrated significant improvements in the carnitine group, including
+    improvement in liver function and evidence of improved mitochondrial function.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach adds carnitine to standard NAFLD stack for clients with elevated
+  ALT + insulin resistance + fatigue cluster.

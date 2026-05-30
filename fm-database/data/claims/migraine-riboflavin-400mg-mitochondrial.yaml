@@ -1,0 +1,27 @@
+slug: migraine-riboflavin-400mg-mitochondrial
+statement: Riboflavin (vitamin B2) 400 mg/day is superior to placebo for preventing
+  migraine attacks. Up to 40% of migraine sufferers have impaired mitochondrial energy
+  production in nerve cells; riboflavin is required for key mitochondrial enzymes.
+  Effect begins at 1 month, maximal at 3 months. Excellent therapeutic option due
+  to safety and low cost vs prescription prophylaxis. Side effects limited to occasional
+  diarrhea and increased urinary frequency.
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+- mitochondrial-dysfunction
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- riboflavin-b2
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 77 — Migraine Headache, pg 1270
+  quote: A double-blind study demonstrated that a dose of 400 mg riboflavin per day
+    was superior to a placebo in preventing migraine attacks. The effect began at
+    one month, with maximal effect after three months.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Cheap, safe, evidence-strong. Coach pairs riboflavin 400 mg + magnesium
+  + CoQ10 as a "mitochondrial migraine stack".

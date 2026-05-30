@@ -1,0 +1,26 @@
+slug: hyperthyroidism-carnitine-2-4g-antagonist
+statement: Carnitine 2-4 g/day acts as a peripheral thyroid hormone antagonist by
+  inhibiting T3/T4 entry into the cell nucleus. A 6-month RCT in 50 women on suppressive
+  thyroxine showed carnitine reversed thyrotoxic symptoms, improved bone and liver
+  markers, and maintained benefits while on therapy. Especially valuable when antithyroid
+  drugs are unwanted — pregnancy, lactation, liver disease, blood disorders — because
+  carnitine has extremely low toxicity.
+evidence_tier: strong
+linked_to_topics:
+- hyperthyroidism
+linked_to_supplements:
+- l-carnitine
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 66 — Hyperthyroidism, pg 1109-1110
+  quote: Carnitine has been shown to be an antagonist of thyroid hormone in peripheral
+    tissues, inhibiting the hormone's entry into the cell nucleus. The authors of
+    this study recommend considering carnitine for Graves' disease-induced thyrotoxicosis
+    during pregnancy, during lactation, or in other conditions in which antithyroid
+    drugs may be unwanted.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Safe peripheral T4 antagonist — coach uses 2 g BID for Graves' clients
+  hesitant about RIA, or as adjunct to methimazole.

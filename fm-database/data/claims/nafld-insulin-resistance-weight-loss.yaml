@@ -1,0 +1,28 @@
+slug: nafld-insulin-resistance-weight-loss
+statement: 'NAFLD affects more than 20% of Americans (highest prevalence among US
+  liver diseases). Insulin resistance is the primary risk factor; simple steatosis
+  occurs in 70% at 10% above ideal body weight and nearly 100% in obesity. Weight
+  loss is the most effective treatment — addresses both the mechanical fat-load and
+  the underlying IR. Strict elimination of high-glycemic-index foods (one study: 80%
+  of NAFLD patients drank enough sugary drinks/juices to add 12 tsp sugar daily) is
+  the most critical dietary step.'
+evidence_tier: strong
+linked_to_topics:
+- nafld
+- insulin-resistance
+- obesity
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — NAFLD/NASH, pg 1293-1295
+  quote: NAFLD is associated with insulin resistance. Weight loss is the most effective
+    treatment for NAFLD in overweight individuals. 80% of NAFLD patients drank enough
+    soft drinks and juices to add the equivalent of 12 tsp sugar or more to their
+    diet.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach foundational — no NAFLD plan succeeds without cutting added sugar
+  + visible improvement in HOMA-IR.

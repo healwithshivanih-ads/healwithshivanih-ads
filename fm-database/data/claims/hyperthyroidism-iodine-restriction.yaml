@@ -1,0 +1,21 @@
+slug: hyperthyroidism-iodine-restriction
+statement: In iodine-sufficient regions, iodine doses above 600 mcg — from potassium
+  iodide, iodized salt, kelp/seaweed, amiodarone, or imaging contrast — can trigger
+  Graves' disease and toxic multinodular goiter in susceptible individuals. For active
+  hyperthyroidism, avoid iodized salt, kelp, other seaweeds, seafood, and supplements
+  containing more than 300 mcg iodine.
+evidence_tier: strong
+linked_to_topics:
+- hyperthyroidism
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 66 — Hyperthyroidism, pg 1107-1108
+  quote: Iodine from other sources in doses above 600 mcg, such as potassium iodide,
+    iodine supplements, medications such as amiodarone, and imaging contrast agents,
+    can trigger Graves' disease and toxic multinodular goiter.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Iodine is the universal modifier — pro-thyroid in hypo, pro-flare in Graves.
+  Coach checks supplement stack + multivitamin for hidden iodine.

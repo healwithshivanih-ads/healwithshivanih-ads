@@ -1,0 +1,31 @@
+slug: cfs-magnesium-krebs-cycle-chelates
+statement: Even mild magnesium deficiency can produce chronic fatigue and CFS-like
+  symptoms. Krebs-cycle chelates (aspartate, citrate, fumarate, malate, succinate)
+  are better absorbed, used, and tolerated than inorganic salts (chloride, oxide,
+  carbonate) and feed directly into mitochondrial energy production. Therapeutic dose
+  200-300 mg three times per day. Injectable magnesium is not required to restore
+  status.
+evidence_tier: strong
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- mitochondrial-dysfunction
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+- magnesium-malate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 37 — Chronic Fatigue Syndrome, pg 674-675
+  quote: An underlying magnesium deficiency, even if very mild, can result in chronic
+    fatigue and symptoms similar to those of CFS. Krebs cycle components (including
+    aspartate, citrate, fumarate, malate, and succinate) usually provide a better
+    mineral chelate.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Form selection matters — coach favours magnesium malate/citrate/glycinate
+  over oxide for fatigue and muscle pain.

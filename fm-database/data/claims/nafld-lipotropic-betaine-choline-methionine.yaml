@@ -1,0 +1,29 @@
+slug: nafld-lipotropic-betaine-choline-methionine
+statement: Lipotropic factors — betaine, choline, methionine, B6, folate, B12 — promote
+  bile and fat flow through the liver, raise SAM-e and glutathione, and decongest
+  the fatty liver. Betaine alone was effective in NAFLD up to 10 g BID, but a balanced
+  formula at 1,000 mg each of betaine + choline + methionine/cysteine per day is the
+  more rational approach. SAM-e 200-400 mg/day is an alternative. Ox bile 500 mg with
+  meals (or prescription ursodeoxycholic acid 13-15 mg/kg/day, escalating to 28-35
+  mg/kg/day in biopsy-proven NASH per a 12-month RCT showing safe ALT improvement).
+evidence_tier: strong
+linked_to_topics:
+- nafld
+- liver-detoxification
+linked_to_supplements:
+- betaine-trimethylglycine
+- sam-e
+- ox-bile
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — NAFLD/NASH, pg 1295-1297
+  quote: Betaine as a single agent has been shown to be quite helpful in NAFLD when
+    given at dosages up to 10 g twice a day. The important thing is to take enough
+    to provide a daily dose of 1,000 mg betaine, 1,000 mg choline, and 1,000 mg methionine
+    and/or cysteine.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach stacks lipotropics + milk thistle for any fatty-liver client — addresses
+  methylation and bile flow simultaneously.

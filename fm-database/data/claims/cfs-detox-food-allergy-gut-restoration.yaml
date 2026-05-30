@@ -1,0 +1,30 @@
+slug: cfs-detox-food-allergy-gut-restoration
+statement: The strong overlap between CFS, fibromyalgia, and multiple chemical sensitivity
+  (70% of FM patients meet CFS criteria; 30% of MCS do; 80% of FM/MCS meet the 6-month
+  50%-activity-reduction criterion) suggests all three respond to the same therapeutic
+  triad — liver detoxification support, food allergy identification + elimination,
+  and gut restoration. Chronic fatigue was recognized as a key feature of food allergies
+  as far back as 1930.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- food-sensitivities
+- leaky-gut
+- liver-detoxification
+linked_to_mechanisms:
+- leaky-gut
+- immune-dysregulation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 37 — Chronic Fatigue Syndrome, pg 667-678
+  quote: 70% of the patients diagnosed with FM and 30% of those diagnosed with MCS
+    met the CDC criteria for CFS. The strong correlation between CFS, FM, and MCS
+    suggests that all three conditions may respond to liver detoxification, food allergy
+    control, and a gut-restoration diet.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Foundational FM framing — when standard CFS workup is negative, coach pivots
+  to liver-gut-allergy axis.

@@ -1,0 +1,26 @@
+slug: graves-emotional-stress-trigger
+statement: The most common precipitating event for Graves' disease is "actual or threatened
+  separation from an individual upon whom the patient is emotionally dependent" —
+  divorce, death, difficult separation. Stress control and HPA-axis support are core
+  to normalizing thyroid status and preventing relapse. Adequate rest including a
+  post-lunch nap is specifically recommended.
+evidence_tier: strong
+linked_to_topics:
+- hyperthyroidism
+- hpa-axis-dysregulation
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 66 — Hyperthyroidism, pg 1106-1108
+  quote: One of the key causes of hyperthyroidism and/or Graves' disease is recent
+    stress. The most common precipitating event is an actual or threatened separation
+    from an individual upon whom the patient is emotionally dependent. Stress control
+    is important in normalization of the thyroid.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Always probe for recent loss/separation in new Graves' diagnosis — coach
+  uses this to scope HPA/limbic work alongside antithyroid drugs.
