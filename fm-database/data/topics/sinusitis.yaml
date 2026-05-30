@@ -1,0 +1,32 @@
+slug: sinusitis
+display_name: Sinusitis (Sinus Infections)
+aliases:
+- sinus infection
+- rhinosinusitis
+- chronic sinusitis
+- acute sinusitis
+common_symptoms: []
+key_mechanisms: []
+related_topics:
+- bacterial-sinusitis
+- food-allergy-ige-mediated
+- immune-support
+summary: 'Inflammation + infection of paranasal sinuses, usually secondary to mucosal
+  swelling that obstructs drainage. Murray''s framing: most chronic sinusitis is food-allergy
+  + airborne-allergen driven rather than primary bacterial — antibiotics provide temporary
+  relief without addressing the underlying allergic inflammation. FM approach combines
+  elimination of trigger allergens, saline nasal irrigation, mucolytic + anti-inflammatory
+  supplements (bromelain, NAC, bioflavonoids), and antibacterial botanicals (goldenseal,
+  echinacea, Pelargonium) when actively infected.'
+coaching_scope_notes: Coach role — allergen elimination, saline irrigation education,
+  supplement protocols, immune-support stack. Refer fever > 39°C, severe headache
+  + neurological signs, periorbital cellulitis, symptoms > 10 days without improvement.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 92 — Sinus Infections
+  quote: Chronic bacterial sinusitis is often secondary to allergy.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

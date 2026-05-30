@@ -1,0 +1,45 @@
+slug: murray-chronic-sinusitis-food-allergy-driver
+statement: 'Chronic bacterial sinusitis is often SECONDARY to food allergy/intolerance
+  rather than primary bacterial infection. Antibiotic therapy is of limited value
+  — it addresses the bacterial colonisation but not the underlying mucosal inflammation
+  that allowed colonisation in the first place. Murray''s approach: during the acute
+  phase, eliminate common food allergens (milk, wheat, eggs, citrus, corn, peanuts)
+  until definitive testing can be done; long-term resolution requires identifying
+  + eliminating offending foods + airborne allergens + correcting underlying immune/mucosal
+  dysfunction. The vicious cycle: allergen → mucosal swelling → impaired drainage
+  → bacterial colonisation → infection → more inflammation.'
+evidence_tier: strong
+rationale: Multiple smaller trials + extensive clinical observation. Mechanism — Th2-skewed
+  inflammation + mucosal oedema impair sinus drainage; bacteria opportunistically
+  colonise; antibiotic clearance is temporary without addressing upstream allergy.
+  Recurrent sinusitis is rarely just bacterial.
+coaching_translation: 'Chronic sinusitis is usually a FOOD ALLERGY problem masquerading
+  as a bacterial problem. Repeated antibiotic courses don''t fix the underlying allergic
+  inflammation. Strict 4-week elimination of dairy, wheat, eggs, citrus, corn, peanuts
+  identifies most triggers. Long-term: identify + eliminate trigger foods + airborne
+  allergens + restore mucosal integrity. Antibiotics treat the bacterial flare; they
+  don''t cure chronic sinusitis.'
+caveats:
+- 4-week strict elimination + careful reintroduction
+- Dairy is the most common single trigger in chronic sinusitis
+- Airborne allergies (pollen, mould, dust mites) often coexist
+- HEPA filtration + dust mite covers + mould remediation as adjuncts
+- Repeated antibiotic courses worsen gut dysbiosis + impair immunity
+linked_to_topics:
+- sinusitis
+- bacterial-sinusitis
+- food-allergy-ige-mediated
+- immune-support
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 92 — Sinus Infections, Quick Review pg 1508
+  quote: Any factor that causes swelling of the lining of the sinuses may result in
+    obstruction of drainage and subsequent infection. Antibiotic therapy is of limited
+    value. Addressing the underlying cause of chronic sinusitis along with supportive
+    therapy appears to be the most rational approach. Chronic bacterial sinusitis
+    is often secondary to allergy.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

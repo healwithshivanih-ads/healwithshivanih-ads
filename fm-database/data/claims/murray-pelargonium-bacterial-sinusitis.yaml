@@ -1,0 +1,42 @@
+slug: murray-pelargonium-bacterial-sinusitis
+statement: 'Pelargonium sidoides (South African geranium / EPs 7630 / Umckaloabo)
+  at 3 ml three times daily or 20 mg tablets three times daily for up to 14 days significantly
+  reduces acute bacterial sinusitis symptoms — 5.5-point vs 2.5-point reduction in
+  severity scores (placebo-controlled trial, n=103). Mechanism combines: antibacterial
+  activity, antiviral activity, prevention of bacterial adhesion to epithelial cells,
+  and immune-enhancing effects. Particularly useful as alternative to antibiotics
+  in mild-to-moderate acute sinusitis — and as adjunct in those requiring antibiotics.
+  Also evidence base in bronchitis (where the herb originated).'
+evidence_tier: strong
+rationale: Bachert 2009 + Cochrane review supportive. Mechanism multi-modal — bacterial
+  adhesion inhibition is the distinctive antimicrobial property.
+coaching_translation: 'Pelargonium sidoides (sold as Umcka or EPs 7630) is one of
+  the strongest single botanicals for acute bacterial sinusitis — 3 ml three times
+  daily for up to 14 days. Works through multiple mechanisms: kills bacteria, prevents
+  them from sticking to your sinus lining, AND boosts your immune response. Excellent
+  alternative to antibiotics for mild-moderate cases. Same product useful for bronchitis.'
+caveats:
+- EPs 7630 is the trial-validated standardised extract
+- Adult dose 3 ml tid OR 20 mg tablet tid
+- Children 7-12 - 30 drops tid; under 6 - 10 drops tid
+- Rare hepatotoxicity reports — discontinue if jaundice
+- Use up to 14 days
+linked_to_topics:
+- sinusitis
+- bacterial-sinusitis
+- common-cold
+- immune-support
+linked_to_supplements:
+- pelargonium-sidoides
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 92 — Sinus Infections, pg 1507–1508
+  quote: In one double-blind, placebo-controlled trial, 103 patients with acute sinusitis
+    of presumably bacterial origin were given an extract of P. sidoides (EPs 7630,
+    sold under the name Umcka) for a maximum of 22 days. The average decrease in symptom
+    severity score was 5.5 points in the EPs 7630 group compared with 2.5 points in
+    the placebo group.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,42 @@
+slug: murray-bromelain-nac-sinus-mucolytic
+statement: 'Two mucolytic + anti-inflammatory supplements significantly improve sinusitis
+  outcomes: (1) Bromelain (1,200-1,800 MCU) 250-500 mg three times daily BETWEEN MEALS
+  for systemic anti-inflammatory + mucolytic effect (alternative: serratiopeptidase
+  enteric-coated 30-50 mg three times daily between meals), (2) N-acetylcysteine (NAC)
+  200 mg three times daily — thins mucus by breaking disulfide bonds in mucin glycoproteins
+  AND increases glutathione production. Combined with saline irrigation + bioflavonoids
+  + zinc + vitamin C, this stack reduces severity + duration of both acute and chronic
+  sinusitis without antibiotic use in mild cases.'
+evidence_tier: strong
+rationale: Multiple trials for both. Mechanism — bromelain proteolytic activity reduces
+  mucosal oedema + fibrin; NAC breaks mucin disulfide bonds (same mechanism as Rx
+  mucolytics like acetylcysteine for COPD).
+coaching_translation: 'Two mucus-thinning anti-inflammatory supplements for sinusitis:
+  BROMELAIN 250-500 mg three times daily between meals (1,200-1,800 MCU activity rating),
+  and N-ACETYLCYSTEINE (NAC) 200 mg three times daily. NAC literally breaks the chemical
+  bonds that make sinus mucus thick. Take both away from meals for systemic effect.
+  Combine with saline irrigation for maximum effect.'
+caveats:
+- Bromelain BETWEEN meals for systemic effect (with meals it just digests food)
+- NAC sulphur smell — enteric coating helps
+- Mild antiplatelet effect of bromelain
+- Pineapple allergy contraindication for bromelain
+- Asthma — rare bronchospasm with NAC; clinical caution
+linked_to_topics:
+- sinusitis
+- bacterial-sinusitis
+- chronic-inflammation
+linked_to_supplements:
+- bromelain
+- n-acetylcysteine
+- nac
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 92 — Sinus Infections, Treatment Summary pg 1509–1510
+  quote: 'N-acetylcysteine: 200 mg three times per day. Bromelain (1,200 to 1,800
+    MCU): 250 to 500 mg three times per day between meals. Serratia peptidase (enteric-coated):
+    30 to 50 mg three times per day between meals.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

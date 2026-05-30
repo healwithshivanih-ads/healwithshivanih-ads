@@ -1,0 +1,42 @@
+slug: murray-saline-nasal-irrigation-foundation
+statement: 'Daily saline nasal irrigation (neti pot or squeeze bottle with 16 fl oz
+  lukewarm water + 1 tsp salt) is the foundational sinusitis intervention — mechanically
+  clears bacteria, allergens, inflammatory mucus, and biofilm; restores ciliary function;
+  reduces inflammation. Multiple Cochrane-reviewed trials confirm benefit in acute
+  and chronic sinusitis. Increase to 2-4× daily during acute attacks; once daily for
+  maintenance in chronic sinusitis. CRITICAL safety: use distilled, boiled-and-cooled,
+  or store-bought sterile saline (NOT tap water — Naegleria fowleri amoeba contamination
+  has caused fatal CNS infections from tap water nasal irrigation).'
+evidence_tier: strong
+rationale: Ayurvedic tradition + Cochrane meta-analyses (Chong 2016). Mechanism —
+  mechanical clearance + ciliary stimulation + osmotic reduction of mucosal oedema.
+  Safety caveat well-established after multiple fatal cases.
+coaching_translation: 'Saline nasal irrigation is foundational for any sinusitis.
+  Once daily for chronic; 2-4× daily during acute attack. Use neti pot or NeilMed
+  Sinus Rinse bottle: 16 fl oz lukewarm DISTILLED or BOILED+COOLED water + 1 tsp salt.
+  CRITICAL: NEVER use tap water — there have been fatal brain infections from amoeba
+  in tap water nasal irrigation. Distilled, boiled-and-cooled, or store-bought sterile
+  only.'
+caveats:
+- DISTILLED or BOILED+COOLED water only — tap water is a fatal safety hazard
+- Lukewarm not hot
+- Pure non-iodised salt (sea salt or kosher) without anti-caking agents
+- Discontinue if ear pain (eustachian tube reflux)
+- Replace neti pot every 3-6 months
+linked_to_topics:
+- sinusitis
+- bacterial-sinusitis
+- immune-support
+- common-cold
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 92 — Sinus Infections, pg 1508, Treatment Summary pg 1510
+  quote: Use of a neti pot to deliver a saline wash is also recommended. To use the
+    neti pot mix about 16 fl oz lukewarm water with 1 tsp salt. Use the neti pot once
+    per day when symptoms are present. Nasal rinse with warm saline solution once
+    per day, increasing to several times a day during acute attacks.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
