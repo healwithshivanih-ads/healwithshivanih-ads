@@ -1,0 +1,43 @@
+slug: murray-liver-phase1-phase2-detox
+statement: 'The liver''s four-fold detoxification mechanisms: (1) Blood filtration
+  via Kupffer cells removing bacteria + LPS + cellular debris, (2) Bile formation
+  transporting fat-soluble toxins, hormones, cholesterol metabolites to the gut, (3)
+  Phase I biotransformation — cytochrome P450 enzymes oxidise/reduce/hydrolyse fat-soluble
+  toxins (producing intermediate metabolites often MORE reactive than parent compounds),
+  (4) Phase II conjugation — glucuronidation, sulfation, methylation, glutathione
+  conjugation, acetylation, glycine conjugation that water-solubilise Phase I intermediates
+  for excretion. Phase I/Phase II IMBALANCE (fast P1, slow P2) creates a build-up
+  of reactive intermediates causing oxidative damage — a major FM concept in chronic
+  disease.'
+evidence_tier: strong
+rationale: Established hepatic biochemistry. Mechanism — induction/inhibition of P450
+  enzymes by foods + drugs; Phase II requires specific cofactors (glutathione, sulfate,
+  glycine, methyl donors, glucuronic acid) that become rate-limiting.
+coaching_translation: 'Your liver detoxifies in two main phases: Phase 1 (CYP450 enzymes
+  change toxins chemically — but often into MORE reactive intermediates) + Phase 2
+  (binds those intermediates to glutathione, sulfate, methyl groups for excretion).
+  If Phase 1 is fast but Phase 2 is slow (common in genetic methylation issues), reactive
+  intermediates build up causing damage. The FM detox protocol supports BOTH phases:
+  cruciferous vegetables for Phase 1, sulfur foods + methyl donors + glutathione precursors
+  for Phase 2.'
+caveats:
+- Phase 1 inducers — grapefruit (CYP3A4 inhibitor); cruciferous vegetables (CYP1A2
+  inducer); cigarette smoke
+- Phase 2 cofactors — glutathione (NAC + glycine), sulfate (cysteine + MSM), glycine
+  (~1g/day), methyl donors (folate, B12, betaine, SAM-e)
+- Genetic methylation polymorphisms (MTHFR) affect Phase 2 capacity
+- Many drug interactions arise through Phase 1 modulation
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- silymarin
+- milk-thistle
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 9 — Detoxification, Quick Review pg 211–212
+  quote: 'The liver''s detoxification mechanisms include: Filtration of the blood.
+    Formation of bile. Phase I detoxification reactions. Phase II detoxification reactions.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

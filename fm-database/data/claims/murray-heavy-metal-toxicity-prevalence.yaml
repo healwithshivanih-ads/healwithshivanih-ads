@@ -1,0 +1,42 @@
+slug: murray-heavy-metal-toxicity-prevalence
+statement: An estimated 25% of the US population has some degree of heavy metal toxicity
+  — primarily mercury (dental amalgams, large predatory fish), lead (older paint,
+  plumbing, soil), aluminium (cookware, antiperspirants, vaccines), arsenic (rice,
+  contaminated water), and cadmium (smoking, industrial exposure). Heavy metals concentrate
+  in fatty tissues including brain and bone, causing neurological symptoms (fatigue,
+  cognitive decline, mood disorders, peripheral neuropathy), endocrine disruption,
+  and immune dysfunction. Specialised testing (provoked urine challenge for stored
+  metals, blood for recent exposure, hair for cumulative) identifies burden. Detoxification
+  of stored metals is clinician scope — requires careful chelation under medical supervision.
+evidence_tier: strong
+rationale: Multiple epidemiology + NHANES data. Mechanism — heavy metals bind sulfhydryl
+  groups disrupting enzymes; oxidative damage to mitochondria; immune dysregulation.
+  Hair + urine testing established; chelation protocols require medical supervision.
+coaching_translation: 'About 1 in 4 people carry meaningful heavy metal burden — mercury
+  (fish, dental fillings), lead (old paint/plumbing), aluminium (cookware/antiperspirants),
+  arsenic (rice, water), cadmium (smoking). These cause cognitive decline, fatigue,
+  mood issues, peripheral neuropathy. Coach role: identify exposure sources and reduce
+  them. Testing + chelation = clinician scope (improper chelation can mobilise metals
+  into more damaging locations). Daily detox support: cruciferous vegetables, chlorella,
+  cilantro, sulphur foods, glutathione precursors.'
+caveats:
+- Chelation therapy is CLINICIAN scope — improper mobilisation can worsen symptoms
+- Provoked urine testing (DMSA/DMPS) interpretation requires expertise
+- Hair mineral analysis interpretation also clinician scope
+- Exposure reduction is coach-appropriate first intervention
+- Pregnancy + chelation contraindicated
+linked_to_topics:
+- chronic-inflammation
+- autoimmune
+linked_to_supplements: []
+out_of_scope_notes: Heavy metal chelation requires medical supervision. Coach role
+  is exposure reduction + supportive detox nutrient repletion.
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 9 — Detoxification, Quick Review pg 211
+  quote: It is conservatively estimated that up to 25% of the U.S. population suffers
+    from heavy metal poisoning to some extent.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

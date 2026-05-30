@@ -1,0 +1,39 @@
+slug: murray-glutathione-vitamin-c-detox
+statement: Glutathione is the body's master detoxification compound — required for
+  Phase II conjugation of dozens of toxins and serving as the primary intracellular
+  antioxidant. Oral glutathione is poorly absorbed; the most cost-effective method
+  to raise tissue glutathione levels is vitamin C supplementation (which spares +
+  regenerates glutathione) PLUS NAC (N-acetylcysteine) 600-1,200 mg/day as a glutathione
+  precursor. Alpha-lipoic acid 300-600 mg/day additionally regenerates glutathione.
+  Liposomal glutathione is the only oral form with reliable absorption.
+evidence_tier: strong
+rationale: Multiple studies of glutathione status + intervention. Mechanism — glutathione
+  cycle requires NADPH regeneration; vitamin C regenerates oxidised glutathione (GSSG
+  → GSH); NAC provides cysteine (rate-limiting amino acid in GSH synthesis); ALA is
+  universal antioxidant + GSH regenerator.
+coaching_translation: 'Glutathione is the body''s master detoxifier. Direct oral glutathione
+  doesn''t absorb well — but you can boost levels via: vitamin C (cheapest, most effective
+  — regenerates spent glutathione), NAC 600-1,200 mg (provides the cysteine for synthesis),
+  alpha-lipoic acid 300-600 mg (regenerates glutathione). Liposomal glutathione is
+  the only direct oral form that works. This stack is the foundation of any FM detox
+  protocol.'
+caveats:
+- Oral non-liposomal glutathione largely wasted (poor absorption)
+- NAC sulfur smell — enteric coating helps
+- High-dose vitamin C bowel tolerance dose-limiting
+- Alpha-lipoic acid empty stomach for absorption
+- Asthma + NAC — rare bronchospasm reports; clinical caution
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-c
+- alpha-lipoic-acid
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 9 — Detoxification, Quick Review pg 212
+  quote: Glutathione is an important detoxification compound; vitamin C supplementation
+    is the most cost-effective method to raise glutathione levels.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
