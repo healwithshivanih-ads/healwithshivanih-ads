@@ -1,0 +1,32 @@
+slug: gamma-tocopherol-fivefold-prostate-cancer-reduction
+statement: Gamma-tocopherol, not alpha-tocopherol, is the form of vitamin E most strongly
+  associated with prostate cancer protection. Men with the highest plasma gamma-tocopherol
+  levels had a fivefold reduction in prostate cancer risk vs the lowest quintile.
+  Protective effects of selenium and alpha-tocopherol were observed only when gamma-tocopherol
+  was also high. The SELECT trial likely failed because it used isolated alpha-tocopherol
+  at 400 IU (which displaces gamma-tocopherol from tissues); natural mixed tocopherols
+  containing both alpha and gamma are required to replicate the observational findings.
+  Avoid synthetic dl-alpha-tocopherol entirely.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- prostate-cancer-prevention
+linked_to_supplements:
+- vitamin-e-mixed-tocopherols
+linked_to_mechanisms:
+- oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 86 — Prostate Cancer (Prevention), pg 1428-1430
+  quote: For gamma-tocopherol, men with the highest levels had a fivefold reduction
+    in the risk of developing prostate cancer compared with men with the lowest levels.
+    Statistically significant protective associations for high levels of selenium
+    and alpha-tocopherol were observed only when gamma-tocopherol concentrations were
+    high as well... natural mixed tocopherols that include both alpha- and gamma-tocopherol
+    should be used, rather than only alpha-tocopherol.
+rationale: 'Critical product-selection point: most "vitamin E" supplements are alpha-only
+  and can actively displace gamma-tocopherol. Specify mixed tocopherols (d-alpha +
+  d-gamma) at 100–200 mg/day.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,41 @@
+slug: breast-cancer-prevention
+display_name: Breast Cancer Prevention
+aliases:
+- breast cancer risk reduction
+- mammary cancer prevention
+summary: 'Breast cancer risk is dominantly modifiable through diet, lifestyle, and
+  environmental exposures even in the presence of genetic susceptibility (BRCA1/2).
+  US rates are ~5× those in Japan; second/third-generation Japanese women in the US
+  converge on US rates, demonstrating that diet/lifestyle drive most of the difference.
+  Key risk levers include obesity (≥30% increased risk), saturated/grilled meat intake
+  (charred meats up to 4.6× risk), alcohol (dose-dependent), night-shift work (suppresses
+  melatonin), and low intake of omega-3s, fibre, brassica vegetables, soy isoflavones,
+  flax lignans, and antioxidants. Protective levers: Mediterranean diet, soy (pre/during
+  adolescence is most protective), flaxseed (lignans + ALA), cruciferous vegetables
+  (I3C/DIM shift estrogen metabolism toward 2-hydroxyestrone), exercise (up to 60%
+  risk reduction), breastfeeding, green tea, vitamin D, and calcium-D-glucarate (inhibits
+  intestinal beta-glucuronidase, reducing estrogen reabsorption).'
+key_mechanisms:
+- estrogen-metabolism
+- estrobolome
+- inflammation
+- insulin-resistance
+common_symptoms:
+- breast lump
+- nipple discharge
+- breast skin dimpling
+related_topics:
+- estrogen-dominance
+- cervical-dysplasia
+- fibrocystic-breast-disease
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 28 — Breast Cancer (Prevention), pg 562-578
+  quote: Genetics is an important risk factor, but in most cases a genetic predisposition
+    is strongly affected by dietary, lifestyle, and environmental factors. In other
+    words, breast cancer risk is largely a result of diet and lifestyle.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

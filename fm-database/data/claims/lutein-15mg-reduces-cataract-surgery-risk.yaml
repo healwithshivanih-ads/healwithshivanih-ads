@@ -1,0 +1,28 @@
+slug: lutein-15mg-reduces-cataract-surgery-risk
+statement: Lutein, a yellow-orange carotene concentrated in the human lens, is inversely
+  associated with cataract surgery risk (20–50% risk reduction in observational studies).
+  In a small double-blind trial, supplementation with 15 mg lutein three times weekly
+  for up to two years improved visual acuity and glare sensitivity in patients with
+  age-related cataracts, while placebo showed decline.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cataracts
+linked_to_supplements:
+- lutein
+linked_to_mechanisms:
+- oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 33 — Cataracts, pg 628-629
+  quote: Intake of lutein was inversely associated with cataract surgery (20 to 50%
+    risk reduction). In a double-blind intervention trial, 17 patients with age-related
+    cataracts received either lutein (15 mg), vitamin E, or placebo three times a
+    week for up to two years. Visual performance actually improved in the lutein group.
+rationale: FM-relevant nutrient for any client with early lens opacity, family history
+  of cataracts, or heavy near-UV exposure. Pair with broad-spectrum antioxidants —
+  single-nutrient strategies generally underperform combination support in ARES-style
+  trials.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

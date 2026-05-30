@@ -1,0 +1,32 @@
+slug: ginkgo-biloba-240mg-improves-cerebral-perfusion-stroke
+statement: 'Ginkgo biloba extract standardized to 24% ginkgo flavonglycosides, dosed
+  at 240–320 mg per day, increases cerebral blood flow, improves energy production
+  within nerve cells, and lowers blood viscosity — all relevant mechanisms for post-stroke
+  recovery. Caution: ginkgo has antiplatelet activity; doses above 240 mg per day
+  combined with antiplatelet drugs (aspirin, warfarin, clopidogrel) increase bleeding
+  risk, and natural antiplatelet stacking (e.g. nattokinase + ginkgo + high-dose garlic)
+  with an antiplatelet drug has been associated with hemorrhagic stroke case reports.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- stroke-recovery
+- cerebral-vascular-insufficiency
+linked_to_supplements:
+- ginkgo-biloba
+linked_to_mechanisms:
+- cerebral-perfusion
+- platelet-aggregation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Stroke (Recovery From), pg 1528-1533
+  quote: Ginkgo biloba extract increases blood flow to the brain, improves the production
+    of energy within nerve cells, and favorably affects blood viscosity, resulting
+    in improved blood flow characteristics within the brain... if several natural
+    antiplatelet agents are used at the same time or if nattokinase is used, it is
+    important to avoid the use of antiplatelet drugs.
+rationale: Coordinate with the treating physician before starting. Stable dose during
+  Coumadin therapy is generally tolerated; new starts or dose increases must be monitored
+  with INR.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

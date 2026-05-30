@@ -1,0 +1,34 @@
+slug: calcium-d-glucarate-inhibits-beta-glucuronidase-breast-cancer
+statement: Beta-glucuronidase, a bacterial enzyme in the gut, breaks the bond between
+  estrogen and glucuronic acid, causing estrogen to be reabsorbed instead of excreted.
+  Excessive activity is associated with increased estrogen-dependent breast cancer
+  risk and is raised by high-fat, low-fibre diets. Calcium-D-glucarate inhibits beta-glucuronidase;
+  preliminary research at M.D. Anderson and Memorial Sloan-Kettering suggests 200–400
+  mg per day for prevention (400–1,200 mg per day for active cancer). Foods high in
+  glucaric acid include apples, brussels sprouts, broccoli, cabbage, and lettuce;
+  Lactobacillus acidophilus and Bifidobacterium also lower glucuronidase activity.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- breast-cancer-prevention
+- estrogen-dominance
+linked_to_supplements:
+- calcium-d-glucarate
+linked_to_mechanisms:
+- estrogen-metabolism
+- estrobolome
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 28 — Breast Cancer (Prevention), pg 574-576
+  quote: Glucuronidase is a bacterial enzyme that breaks the bond between estrogen
+    and glucuronic acid, leading to less excretion of estrogen. Thus it is not surprising
+    that excessive glucuronidase activity is associated with an increased cancer risk,
+    particularly for estrogen-dependent breast cancer... Calcium D-glucarate is a
+    dietary supplement used to inhibit glucuronidase. The recommended daily dosage
+    for prevention is 200 to 400 mg.
+rationale: Estrobolome-focused intervention — pairs naturally with fibre, probiotic
+  foods (dahi, kefir), and brassica vegetables. Use for clients with estrogen-dominance
+  pattern, fibrocystic breasts, or family history. No known interactions.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: selenium-glutathione-peroxidase-cataract-protection
+statement: Selenium is required by lens glutathione peroxidase, the enzyme that breaks
+  down hydrogen peroxide (found at up to 25× normal levels in cataract aqueous humor).
+  Serum and aqueous humor selenium are significantly lower in cataract patients; lens
+  content is only ~15% of normal. Supplementation at 100–200 mcg per day with vitamin
+  E (mixed tocopherols 100–200 IU) is the synergistic pairing — vitamin E alone does
+  not slow cataract progression.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cataracts
+linked_to_supplements:
+- selenium
+- vitamin-e-mixed-tocopherols
+linked_to_mechanisms:
+- oxidative-stress
+- selenium-deficiency
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 33 — Cataracts, pg 630-631
+  quote: Selenium levels in the serum and aqueous humor were found to be significantly
+    lower in patients with cataracts than in normal controls... Because selenium-dependent
+    glutathione peroxidase is responsible for the breakdown of hydrogen peroxide,
+    it is quite obvious why low selenium levels appear to be a major factor in the
+    development of cataracts. In order for vitamin E to function in protecting the
+    lens against free radical damage, it requires selenium, and vice versa.
+rationale: Never recommend vitamin E for cataract without companion selenium — the
+  pair is functionally inseparable in the lens. Watch for selenium-rich food sources
+  (Brazil nuts) in any FM eye plan.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

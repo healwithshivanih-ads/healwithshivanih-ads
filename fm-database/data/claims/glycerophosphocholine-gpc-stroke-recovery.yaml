@@ -1,0 +1,31 @@
+slug: glycerophosphocholine-gpc-stroke-recovery
+statement: 'Glycerophosphocholine (alpha-GPC), another highly bioavailable choline
+  source, has been studied in six clinical trials totaling nearly 3,000 post-stroke
+  patients. Standard protocol: 1,000 mg intramuscularly daily during inpatient phase
+  (first 28 days), then 400 mg three times per day orally through day 180. In the
+  largest trial (2,044 patients across 176 Italian centers), investigators rated GPC
+  as "very good" or "good" in 78% of patients, "moderate" in 17%, and "poor/none"
+  in just 5%, with no significant side effects.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- stroke-recovery
+linked_to_supplements:
+- alpha-gpc
+linked_to_mechanisms:
+- cerebral-perfusion
+- mitochondrial-function
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Stroke (Recovery From), pg 1530
+  quote: GPC is even better studied, as it has been administered in six clinical trials
+    to almost 3,000 patients suffering from a stroke. The single largest trial was
+    conducted at 176 centers in Italy and included 2,044 patients. At the end of the
+    six-month trial, the investigators found that GPC significantly helped more than
+    95% of patients and was without side effects.
+rationale: Choose either citicoline OR GPC, not both — same pathway. GPC has the larger
+  evidence base; oral 400 mg three times daily is the practical sustained dose after
+  the initial IM phase.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

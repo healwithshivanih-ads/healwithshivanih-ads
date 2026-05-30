@@ -1,0 +1,30 @@
+slug: green-tea-egcg-reduces-prostate-cancer-progression
+statement: 'Green tea polyphenols (especially epigallocatechin gallate, EGCG) inhibit
+  both hormone-sensitive and hormone-insensitive prostate cancer cells in vitro and
+  reach prostate tissue when consumed. In a one-year proof-of-principle trial of 60
+  men with pre-cancerous lesions, 600 mg per day green tea polyphenol extract led
+  to only 1 cancer in 30 treated men vs 9 in 30 placebo. PSA dropped consistently
+  in the green tea group. Effective dose: 300–400 mg per day green tea extract standardized
+  to ≥80% polyphenols, or 3–5 cups brewed daily.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- prostate-cancer-prevention
+linked_to_supplements:
+- green-tea
+linked_to_mechanisms:
+- androgen-signalling
+- oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 86 — Prostate Cancer (Prevention), pg 1434-1436
+  quote: The 60 men in the study were given either a placebo or 600 mg green tea polyphenol
+    extract per day. After one year, only one tumor was diagnosed among the 30 extract-treated
+    men, whereas nine cancers were found among the 30 placebo-treated men. Total PSA
+    levels were consistently lower in the green tea group.
+rationale: Strongest clinical evidence for any single botanical in prostate cancer
+  prevention. Watch caffeine sensitivity at higher doses — use decaffeinated extract
+  if needed.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

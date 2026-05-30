@@ -1,0 +1,27 @@
+slug: night-shift-melatonin-breast-cancer-link
+statement: 'Women working night shifts have up to 60% increased breast cancer risk,
+  with risk rising with cumulative shift years. Mechanism: artificial light at night
+  suppresses nocturnal pineal melatonin secretion; melatonin has direct anticancer
+  effects, particularly against breast cancer, and regulates the circadian hormone
+  biorhythm. For night-shift workers, 3 mg melatonin at bedtime (regardless of clock
+  time) is recommended.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- breast-cancer-prevention
+linked_to_supplements:
+- melatonin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 28 — Breast Cancer (Prevention), pg 576-577
+  quote: Several studies have shown quite dramatically that women working the so-called
+    graveyard shift have an increased risk of developing breast cancer. In one study
+    graveyard shift work was associated with a 60% increased breast cancer risk...
+    To offset the increased risk of breast cancer that comes with night shift work,
+    we recommend taking 3 mg melatonin at bedtime for night shift workers.
+rationale: 'Coaching opportunity: night-shift clients need aggressive circadian hygiene
+  plus melatonin. Pair with blue-light blockers post-shift, blackout curtains, and
+  rigorous sleep window.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

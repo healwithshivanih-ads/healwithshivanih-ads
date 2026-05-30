@@ -1,0 +1,37 @@
+slug: cataracts
+display_name: Cataracts
+aliases:
+- senile cataract
+- age-related cataract
+- lens opacity
+summary: Cataracts are clouding of the crystalline lens of the eye caused by oxidative
+  damage to lens proteins, leading to gradual vision loss. The lens depends on antioxidant
+  enzymes (SOD, catalase, glutathione peroxidase) and dietary antioxidants (lutein,
+  vitamins C and E, selenium, zinc) to prevent free-radical damage. In cataract formation
+  these protective mechanisms fail. Risk rises with age, UV exposure, diabetes, smoking,
+  heavy metal accumulation (cadmium), and low antioxidant status. Early lesions can
+  be slowed or reversed with nutritional support; established cataracts may still
+  require surgical extraction.
+key_mechanisms:
+- oxidative-stress
+- glutathione-depletion
+- selenium-deficiency
+common_symptoms:
+- blurred vision
+- glare sensitivity
+- gradual vision loss
+related_topics:
+- macular-degeneration
+- diabetes
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 33 — Cataracts, pg 627-635
+  quote: Cataracts are white, opaque blemishes on the normally transparent lens of
+    the eye. They occur as a result of damage to the protein structure of the lens...
+    In cataract formation, the normal protective mechanisms are unable to prevent
+    free radical damage to the cells of the lens.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

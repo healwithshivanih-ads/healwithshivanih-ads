@@ -1,0 +1,49 @@
+slug: stroke-recovery
+display_name: Stroke (Recovery From)
+aliases:
+- post-stroke recovery
+- cerebrovascular accident recovery
+- poststroke rehabilitation
+summary: 'Stroke is loss of nerve function ≥24 hours due to brain ischemia (clot/embolism)
+  or hemorrhage; US leading cause of adult disability and third-leading cause of death.
+  Hypertension accounts for 35–50% of stroke risk; atrial fibrillation, diabetes,
+  smoking, high cholesterol, and high saturated-fat/low-omega-3 diets are other major
+  contributors. Recovery goals from an FM perspective: maximize cerebral blood flow,
+  energy production in damaged neurons, and platelet rheology while supporting rehab
+  (physical, occupational, speech therapy). Evidence-supported natural interventions:
+  ginkgo biloba (240–320 mg/day, 24% flavonglycoside extract — improves cerebral perfusion
+  and energy production), citicoline (CDP-choline, 500–2000 mg/day — 29% improvement
+  in ADL recovery, 42% improvement in functional capacity at 3 months in pooled US
+  trials), glycerophosphocholine (GPC, 1200 mg/day oral after IM loading — 95% benefit
+  in 2,044-patient Italian trial), fish oils (omega-3), grape-seed/pine-bark procyanidins,
+  acupuncture. Major caution: do not combine multiple antiplatelet natural agents
+  (nattokinase, ginkgo, high-dose garlic) with antiplatelet drugs (aspirin, warfarin,
+  clopidogrel) — case reports of hemorrhagic stroke. Patients on Coumadin must keep
+  vitamin-K and supplement intake stable, not increased.'
+key_mechanisms:
+- cerebral-perfusion
+- oxidative-stress
+- platelet-aggregation
+- mitochondrial-function
+common_symptoms:
+- hemiparesis
+- aphasia
+- dysphagia
+- post-stroke depression
+- emotional lability
+related_topics:
+- hypertension
+- heart-and-cardiovascular-health
+- cerebral-vascular-insufficiency
+- high-cholesterol-and-or-triglycerides
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Stroke (Recovery From), pg 1525-1533
+  quote: From a natural medicine perspective the goals are similar, but more focused
+    on maximizing blood flow and nutrition to the damaged areas. In addition, acupuncture
+    has shown significant benefits in aiding stroke recovery.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

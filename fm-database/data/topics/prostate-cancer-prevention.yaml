@@ -1,0 +1,39 @@
+slug: prostate-cancer-prevention
+display_name: Prostate Cancer Prevention
+aliases:
+- prostate cancer risk reduction
+summary: 'Prostate cancer is the most-diagnosed cancer in American men and is largely
+  a nutritional disease (Memorial Sloan-Kettering, Dr William Fair). Key dietary drivers:
+  red and well-done meats (50–80% increased risk for aggressive forms), high-fat dairy
+  (milk 111% increased risk; phosphorus content implicated, not calcium), high-glycemic-index
+  foods (64% increased risk), high omega-6 to omega-3 ratio, low brassica/isothiocyanate
+  intake. Protective levers: fish (44% risk reduction), tomato/lycopene (especially
+  cooked, with oil; advanced disease 86% lower risk in high-lycopene group), green
+  tea EGCG (clinical PSA reduction), soy isoflavones (men drinking soy milk had 70%
+  risk reduction), gamma-tocopherol-rich mixed vitamin E (fivefold risk reduction
+  at high gamma levels — SELECT trial used wrong form), selenium (200 mcg/day associated
+  with 63% reduction in one trial), pygeum (androgen-independent prostate cancer cell
+  growth suppression), grape seed extract (41% risk reduction with any use). Mediterranean
+  diet pattern is protective overall.'
+key_mechanisms:
+- androgen-signalling
+- oxidative-stress
+- inflammation
+common_symptoms:
+- urinary frequency at night
+- weak urine stream
+- difficulty starting urination
+- blood in urine or semen
+related_topics:
+- prostate-enlargement-bph
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 86 — Prostate Cancer (Prevention), pg 1419-1437
+  quote: There is so much convincing evidence on the role of diet in prostate cancer
+    that Dr. William Fair and colleagues from Memorial Sloan-Kettering Cancer Center
+    went so far as to suggest that prostate cancer may be a nutritional disease.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

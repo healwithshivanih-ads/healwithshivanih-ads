@@ -1,0 +1,33 @@
+slug: i3c-dim-shifts-estrogen-to-2-hydroxyestrone
+statement: Indole-3-carbinol (I3C) and its stomach metabolite diindolylmethane (DIM),
+  formed when cruciferous vegetables are crushed or chewed, accelerate the breakdown
+  of estrogen via the cytochrome P450 pathway and shift the ratio away from the proliferative
+  16-alpha-hydroxyestrone toward the safer 2-hydroxyestrone. Adding 500 g per day
+  of broccoli, or taking I3C 400 mg per day or DIM 2 mg/kg per day, improves urinary
+  estrogen-metabolite ratios. Broccoli sprouts are the most concentrated source (1
+  lb sprouts ≈ 40 lb mature broccoli).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- breast-cancer-prevention
+- cervical-dysplasia
+linked_to_supplements:
+- indole-3-carbinol
+- dim
+linked_to_mechanisms:
+- estrogen-metabolism
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 28 — Breast Cancer (Prevention), pg 573-574
+  quote: The body can break down estrogen into either 16-alpha-hydroxyestrone, a compound
+    that promotes the growth of breast tumors; or 2-hydroxyestrone, which does not
+    stimulate breast cancer cells. Adding 500 g per day of broccoli to the diet or
+    taking IC3 (400 mg per day) or DIM (a daily dose of 2 mg/kg) improves the ratio
+    of good to bad estrogen breakdown products.
+rationale: Food-first wherever possible — daily 1-cup cooked cruciferous serving plus
+  broccoli sprouts is the safe baseline. Reserve supplemental I3C/DIM for high-risk
+  clients (BRCA carriers, prior fibrocystic changes, perimenopause with estrogen dominance
+  pattern).
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

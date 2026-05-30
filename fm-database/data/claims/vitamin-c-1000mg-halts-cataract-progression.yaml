@@ -1,0 +1,27 @@
+slug: vitamin-c-1000mg-halts-cataract-progression
+statement: Vitamin C is concentrated in the lens of the eye at roughly 20× blood levels.
+  Supplementation at ≥1,000 mg per day raises lens vitamin C content; lower doses
+  (e.g., 500 mg) appear insufficient. Observational and small clinical studies suggest
+  1 g per day can halt cataract progression and reduce the need for surgical extraction
+  across multi-year follow-up.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cataracts
+linked_to_supplements:
+- vitamin-c
+linked_to_mechanisms:
+- oxidative-stress
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 33 — Cataracts, pg 629-630
+  quote: It appears that the dosage of vitamin C necessary to increase the vitamin
+    C content of the lens is 1,000 mg... 450 patients with incipient cataracts were
+    started on a nutritional program that included 1,000 mg per day of vitamin C,
+    which led to a significant reduction in cataract development.
+rationale: Use 500 mg twice per day (split dosing) for lens-relevant tissue saturation.
+  Trials using only 500 mg per day failed to show benefit — dose threshold matters
+  here.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

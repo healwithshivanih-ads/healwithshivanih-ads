@@ -1,0 +1,28 @@
+slug: citicoline-improves-stroke-adl-recovery
+statement: Citicoline (CDP-choline), a highly bioavailable choline donor, improved
+  stroke recovery in a 2002 pooled analysis of four US double-blind trials (500, 1000,
+  or 2000 mg/day oral, started within 24 hours of ischemic stroke and continued for
+  six weeks). At three months, citicoline improved the probability of regaining independence
+  in activities of daily living by 29% and functional capacity by 42% vs placebo.
+  Significant neurological recovery was not increased, but the ADL benefit translates
+  to meaningful real-life improvement.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- stroke-recovery
+linked_to_mechanisms:
+- cerebral-perfusion
+- mitochondrial-function
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 95 — Stroke (Recovery From), pg 1529-1530
+  quote: A 2002 analysis looked at four double-blind studies with oral citicoline
+    for acute ischemic stroke... citicoline improved by 29% the probability that the
+    patient would recover the ability to participate in activities of daily living
+    and by 42% the probability of recovering functional capacity.
+rationale: Must be started early (within 24h ideally). For Indian clients, citicoline
+  is available OTC and affordable. Coordinate with the treating neurologist — does
+  not replace tPA or rehab.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

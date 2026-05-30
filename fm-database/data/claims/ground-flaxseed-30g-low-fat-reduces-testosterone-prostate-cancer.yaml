@@ -1,0 +1,28 @@
+slug: ground-flaxseed-30g-low-fat-reduces-testosterone-prostate-cancer
+statement: 'In men with existing prostate cancer, a low-fat diet (≤20% calories from
+  fat) supplemented with 30 g ground flaxseed per day (~2 tbsp) for 34 days reduced
+  serum testosterone by 15%, slowed cancer cell growth rate, and increased cancer
+  cell death rate. Flaxseed lignans bind male hormone receptors and promote testosterone
+  elimination. Note: ground flaxseed (lignans) is preferred over flaxseed oil for
+  prostate-cancer prevention — ALA itself shows mixed signals in prostate tissue,
+  but the lignans of whole ground seed override that concern.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- prostate-cancer-prevention
+linked_to_supplements:
+- flaxseed-oil
+linked_to_mechanisms:
+- androgen-signalling
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 86 — Prostate Cancer (Prevention), pg 1427
+  quote: In a study of men with prostate cancer, a low-fat diet (with fat providing
+    20% or less of total calories) supplemented with 30 g ground flaxseed (roughly
+    2 tbsp) reduced serum testosterone by 15%, slowed the growth rate of cancer cells,
+    and increased the death rate of cancer cells after only 34 days.
+rationale: 'Key distinction for male clients: ground seed yes, flaxseed oil capsules
+  no for prostate. Inverse of the breast cancer recommendation where both forms work.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
