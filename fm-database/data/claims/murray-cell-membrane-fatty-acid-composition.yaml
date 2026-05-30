@@ -1,0 +1,42 @@
+slug: murray-cell-membrane-fatty-acid-composition
+statement: Cell membrane fatty acid composition directly determines cellular function,
+  hormone responsiveness, and disease risk. Higher RBC EPA+DHA content correlates
+  with 70% reduction in heart attack risk; higher trans-fatty acid content with 3-fold
+  INCREASED heart attack risk. Long-chain omega-3 + monounsaturated fats improve insulin
+  response; saturated + trans-fats + excess membrane cholesterol have opposite effects.
+  Cell membrane composition can be modified within months through dietary fat changes
+  — explaining how dietary intervention produces cellular-level disease modification.
+evidence_tier: strong
+rationale: Multiple cohort + intervention studies; RBC fatty acid panels are validated
+  biomarkers. Mechanism — membrane fluidity affects receptor function (insulin, leptin,
+  neurotransmitters); eicosanoid precursors (PGE2, PGE3, resolvins, protectins) determined
+  by membrane fatty acid pool composition.
+coaching_translation: Your cell membranes ARE what you eat — and their composition
+  determines how well hormones work, how much inflammation you make, how prone you
+  are to heart attacks. Higher EPA+DHA in your red blood cell membranes = 70% lower
+  heart attack risk. Higher trans-fats = 3× higher risk. Change takes 3-6 months of
+  dietary shift. This is why eating well actually changes cellular function, not just
+  averages.
+caveats:
+- RBC fatty acid panel (omega-3 index) is the best functional test
+- Effect on membrane composition takes 3-6 months
+- Trans-fats from partially hydrogenated oils + high-heat frying
+- Monounsaturated fats from olive oil, nuts, avocado
+linked_to_topics:
+- chronic-inflammation
+- atherogenic-dyslipidemia
+- insulin-resistance
+linked_to_supplements:
+- fish-oil
+- fish-oil-epa-dha
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 7 — A Cellular Approach to Health, pg 145
+  quote: Subjects who had higher levels of the long-chain omega-3 fatty acids EPA
+    + DHA in their red blood cell membranes had a 70% reduction in the risk of having
+    a heart attack. Those with higher levels of trans-fatty acids in their red blood
+    cells had a threefold increase in the risk of having a heart attack.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

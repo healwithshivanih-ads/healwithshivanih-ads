@@ -1,0 +1,39 @@
+slug: murray-antioxidant-network-not-single-nutrient
+statement: The body's antioxidant system is a NETWORK requiring multiple interdependent
+  nutrients — vitamin C, vitamin E, glutathione, selenium, zinc, alpha-lipoic acid,
+  CoQ10, flavonoids — that regenerate one another in cascade. Single high-dose antioxidant
+  supplementation (e.g., vitamin E alone) can paradoxically INCREASE oxidative stress
+  when other network members are insufficient (vitamin E radical not properly recycled).
+  Comprehensive antioxidant support requires diverse food sources PLUS targeted supplementation,
+  never relying on isolated single nutrients.
+evidence_tier: strong
+rationale: 'ATBC + CARET trials showed single high-dose beta-carotene + vitamin E
+  paradoxically increased mortality in smokers; SELECT trial vitamin E alone increased
+  prostate cancer. Network biochemistry explains: each antioxidant becomes a pro-oxidant
+  radical until recycled by the next in the chain (Frei + Packer 1998).'
+coaching_translation: 'Antioxidants work as a TEAM, not solo. Vitamin C, vitamin E,
+  glutathione, CoQ10, lipoic acid, selenium, zinc, and flavonoids all recycle each
+  other. Take just one in high doses and it can backfire (vitamin E alone showed increased
+  cancer risk in trials). Best approach: colourful diet for diverse polyphenols +
+  a complete antioxidant supplement OR food-derived green powder, not isolated mega-doses.'
+caveats:
+- Single high-dose isolated antioxidants (vit E, beta-carotene) can backfire
+- Food sources (berries, dark greens, herbs, spices) provide diverse network coverage
+- Polyphenol-rich green powder is a reasonable supplemental adjunct
+- NAC is unique among antioxidants — relatively safe at higher doses (glutathione
+  precursor)
+linked_to_topics:
+- chronic-inflammation
+linked_to_supplements:
+- vitamin-c
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 7 — A Cellular Approach to Health, Quick Review pg 157
+  quote: The antioxidant system of the body relies on a complex interplay of many
+    different dietary antioxidants. Taking any single antioxidant nutrient is not
+    enough. Total protection requires a strategic, comprehensive dietary and supplement
+    program.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -1,0 +1,46 @@
+slug: murray-mitochondrial-dysfunction-disease
+statement: 'Mitochondria produce ~97% of the body''s chemical energy (ATP). Mitochondrial
+  dysfunction is implicated in Alzheimer''s, Parkinson''s, autism, chronic fatigue
+  syndrome, cardiovascular disease, diabetes, and migraine headache. Murray''s three-part
+  mitochondrial optimisation strategy: (1) provide mitochondrial-supporting nutrients
+  (CoQ10, B-vitamins, magnesium, carnitine, alpha-lipoic acid, NAC), (2) increase
+  antioxidant intake to protect mitochondrial membranes from oxidative damage, (3)
+  reduce exposure to mitochondrial toxins (environmental chemicals, certain medications,
+  oxidative stress sources). CoQ10 is an essential mitochondrial electron-transport-chain
+  component; supplementation 100-300 mg/day benefits across multiple chronic disease
+  contexts.'
+evidence_tier: strong
+rationale: Multiple lines of evidence — mitochondrial DNA mutations in age-related
+  disease, CoQ10 trials in CHF + Parkinson's + migraine, statin-CoQ10 depletion documented.
+  Mechanism — electron transport chain integrity, ATP production, ROS generation/quenching.
+coaching_translation: 'Your mitochondria make 97% of your body''s energy. When they
+  get damaged or starved of cofactors, you get the diseases of low energy: chronic
+  fatigue, dementia, Parkinson''s, diabetes, migraine. The mitochondrial protocol:
+  (1) feed them — CoQ10 100-300 mg, B-vitamins, magnesium, carnitine, alpha-lipoic
+  acid; (2) protect them — antioxidants; (3) reduce damage — environmental toxins,
+  certain drugs (statins deplete CoQ10). Foundation for energy + age-related disease
+  prevention.'
+caveats:
+- CoQ10 ubiquinol form better absorbed > age 50
+- Statin users particularly need CoQ10 (statins block CoQ10 synthesis)
+- Mitochondrial myopathy is a separate genetic disease
+- PQQ may be adjunctive for mitochondrial biogenesis
+linked_to_topics:
+- mitochondrial-dysfunction
+- cognitive-decline
+- sleep-deprivation
+linked_to_supplements:
+- coq10
+- alpha-lipoic-acid
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 7 — A Cellular Approach to Health, Quick Review pg 157
+  quote: 'Mitochondria are the energy factories of the body, responsible for producing
+    97% of the body''s chemical energy. Many diseases have been associated with mitochondrial
+    damage: Alzheimer''s disease and other types of dementia, Parkinson''s disease,
+    autism, chronic fatigue syndrome, cardiovascular disease, diabetes, and migraine
+    headache.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
