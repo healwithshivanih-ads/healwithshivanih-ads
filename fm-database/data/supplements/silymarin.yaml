@@ -45,6 +45,7 @@ linked_to_topics:
 - psoriasis
 - psoriasis-gut-immune
 - autoimmune-dermatitis
+- gallstones
 linked_to_mechanisms:
 - antioxidant-buffering-of-phase-1-intermediates
 - phase-1-biotransformation
@@ -55,7 +56,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 4
+version: 5
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

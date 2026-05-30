@@ -54,6 +54,7 @@ linked_to_topics:
 - rheumatoid-arthritis
 - autoimmune
 - autoimmune-dermatitis
+- gallstones
 linked_to_claims:
 - omega-3-reduces-cytokine-load-stress
 - loneliness-activates-inflammatory-pathways
@@ -141,7 +142,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 19
+version: 20
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

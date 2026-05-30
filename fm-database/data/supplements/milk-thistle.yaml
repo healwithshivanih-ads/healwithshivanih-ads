@@ -37,6 +37,7 @@ linked_to_topics:
 - psoriasis
 - psoriasis-gut-immune
 - autoimmune-dermatitis
+- gallstones
 linked_to_mechanisms: []
 linked_to_claims:
 - fluoride-bpa-block-thyroid-receptors
@@ -80,7 +81,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 8
+version: 9
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

@@ -1,0 +1,40 @@
+slug: murray-gallstone-prevention-fiber-fat
+statement: Gallstone prevention centres on a high-fibre, moderate-calorie, low-saturated-fat
+  diet. Soluble fibre (flaxseed, oat bran, guar gum, pectin) binds cholesterol and
+  bile acids in the intestine, increasing bile cholesterol solubility and reducing
+  precipitation. Buckwheat specifically is mentioned for its bile-friendly nutrient
+  profile. Adequate hydration (6-8 glasses water daily) maintains bile water content.
+  Once gallstones develop, avoid food allergens + fatty foods to limit acute gallbladder
+  attacks. Rapid weight loss is the most-overlooked trigger — gallstone risk increases
+  ~30% during rapid weight loss diets.
+evidence_tier: strong
+rationale: Multiple cohort studies + clinical observation. Mechanism — fibre alters
+  bile acid recirculation; saturated fat increases cholesterol secretion in bile;
+  dehydration concentrates bile. Rapid weight loss (>1.5 kg/week) decreases bile production
+  and increases cholesterol saturation.
+coaching_translation: 'Gallstones are largely preventable through diet: high soluble
+  fibre (flax, oats, guar gum, pectin), moderate calories, low saturated fat, plenty
+  of water. Buckwheat is a specifically supportive grain. Once stones develop, also
+  avoid food allergens + fatty foods to prevent attacks. CRITICAL — rapid weight loss
+  diets (>1.5 kg/week) actively cause gallstones; gradual loss preferred.'
+caveats:
+- Slow gradual weight loss (<1 kg/week) for at-risk clients
+- During active attack — low fat, easy to digest foods
+- Surgical referral for recurrent severe attacks
+- Cholecystectomy patients lose bile-storage capacity — pancreatic enzymes + ox bile
+  become valuable
+linked_to_topics:
+- gallstones
+linked_to_supplements:
+- psyllium
+- psyllium-husk
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 53 — Gallstones, Treatment Summary pg 969
+  quote: A healthful diet rich in dietary fiber, moderate in calories, and low in
+    saturated fats is adequate prevention. Drink six to eight glasses of water each
+    day to maintain the water content of the bile.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

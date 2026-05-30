@@ -1,0 +1,37 @@
+slug: murray-lipotropic-phosphatidylcholine-bile
+statement: 'Lipotropic factors (betaine 1,000 mg + choline 1,000 mg + cysteine or
+  methionine 1,000 mg daily) OR SAM-e (200-400 mg/day) plus phosphatidylcholine (500
+  mg/day) increase bile fluidity and decrease cholesterol-stone precipitation. Mechanism:
+  these methylation cofactors increase hepatic phosphatidylcholine production which
+  is the major phospholipid in bile that keeps cholesterol soluble. Phosphatidylcholine
+  deficiency is implicated in cholesterol gallstone formation.'
+evidence_tier: plausible_emerging
+rationale: Multiple smaller trials + extensive mechanistic data. Mechanism — bile
+  cholesterol must remain micellar; phosphatidylcholine is the carrier. Methionine
+  + choline + SAM-e all support phosphatidylcholine synthesis.
+coaching_translation: To make bile less likely to form stones, support the liver's
+  phosphatidylcholine production. Take a lipotropic formula with betaine + choline
+  + methionine (1,000 mg each) OR SAM-e 200-400 mg/day, PLUS phosphatidylcholine 500
+  mg/day. This thins the bile so cholesterol stays dissolved instead of crystallising
+  into stones. Especially valuable for clients with mild liver enzyme elevation or
+  NAFLD.
+caveats:
+- Betaine in TMG (trimethylglycine) form well-tolerated
+- High-dose choline can cause body odour (fishy)
+- SAM-e enteric-coated only
+- Active common bile duct obstruction — STOP supplements + emergency referral
+linked_to_topics:
+- gallstones
+linked_to_supplements:
+- phosphatidylcholine
+- sam-e
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 53 — Gallstones, Treatment Summary pg 969
+  quote: 'Lipotropic formula providing 1,000 mg betaine, 1,000 mg choline, and 1,000
+    mg cysteine or methionine. SAM-e: 200 to 400 mg per day. Phosphatidylcholine:
+    500 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

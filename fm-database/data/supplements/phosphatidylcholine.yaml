@@ -10,6 +10,7 @@ timing_options:
 take_with_food: required
 linked_to_topics:
 - liver-detoxification
+- gallstones
 linked_to_claims:
 - phosphatidylcholine-bile-flow-support
 notes_for_coach: Phosphatidylcholine is a key component of bile and cell membranes.
@@ -24,7 +25,7 @@ sources:
 - id: vitaone-liver-detox-cheatsheet
   location: Liver Disease Cheatsheet — Gallstone-Related Liver Dysfunction
   quote: Taurine, Phosphatidylcholine, Digestive enzymes
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-05-30'
 updated_by: shivani

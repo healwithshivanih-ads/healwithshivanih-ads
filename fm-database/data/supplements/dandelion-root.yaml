@@ -21,7 +21,8 @@ take_with_food: required
 notes_for_coach: Supports liver and kidney detox and fluid retention; gentle diuretic
   herb — ensure adequate hydration.
 evidence_tier: plausible_emerging
-linked_to_topics: []
+linked_to_topics:
+- gallstones
 linked_to_mechanisms: []
 linked_to_claims: []
 notes_for_client: ''
@@ -29,7 +30,7 @@ sources:
 - id: vitaone-supplementation-dosage
   location: Page 2 - Supplement Table
   quote: Dandelion Root - Liver and kidney detox - 500–1000 mg/day - With meals
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-05-30'
 updated_by: shivani

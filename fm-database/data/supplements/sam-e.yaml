@@ -24,6 +24,7 @@ linked_to_topics:
 - major-depressive-disorder
 - depression-mood-disorder
 - osteoarthritis
+- gallstones
 linked_to_mechanisms: []
 notes_for_coach: 'Active methyl donor for over 100 methylation reactions including
   neurotransmitter
@@ -62,7 +63,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 44 — Depression
   quote: 'SAM-e: 200 mg twice a day up to 400 mg three times a day.'
-version: 1
+version: 2
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani
