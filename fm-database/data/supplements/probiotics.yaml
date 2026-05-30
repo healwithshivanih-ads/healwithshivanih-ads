@@ -32,6 +32,8 @@ linked_to_topics:
 - estrogen-dominance
 - atopic-dermatitis
 - autoimmune-dermatitis
+- ibd
+- autoimmune
 linked_to_claims:
 - probiotics-gut-microbiome-detox-support
 - gut-microbiome-diversity-restores-tolerance
@@ -117,7 +119,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 8
+version: 9
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

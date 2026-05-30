@@ -22,6 +22,7 @@ linked_to_topics:
 - autoimmune
 - psoriasis
 - autoimmune-dermatitis
+- ibd
 linked_to_claims:
 - turmeric-is-nf-kb-inhibitor
 - turmeric-downregulates-nf-kappab-upregulates-nrf2
@@ -57,7 +58,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 5
+version: 6
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

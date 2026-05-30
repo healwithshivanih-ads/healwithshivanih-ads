@@ -13,6 +13,8 @@ linked_to_topics:
 - gut-dysbiosis
 - sibo
 - gut-microbiome
+- ibd
+- autoimmune
 linked_to_claims:
 - prebiotics-required-to-support-probiotic-fermentation
 - sibo-yogurt-protocol-reduces-fecal-overgrowth
@@ -38,7 +40,7 @@ sources:
   location: SIBO yogurt formulation discussion
   quote: We use long fermentation in the presence with the addition of a prebiotic
     fiber like a tablespoon of inulin and we get hundreds of billions.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-05-30'
 updated_by: shivani

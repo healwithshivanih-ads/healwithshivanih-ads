@@ -64,6 +64,8 @@ linked_to_topics:
 - type-2-diabetes-mellitus
 - celiac-disease
 - common-cold
+- ibd
+- autoimmune
 linked_to_claims:
 - zinc-supports-thyroid-conversion
 - zinc-regulates-aromatase-balances-estrogen-testosterone
@@ -200,7 +202,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 68 — Hypothyroidism, Treatment Summary
   quote: Zinc included in Murray hypothyroidism nutrient protocol.
-version: 29
+version: 30
 status: active
 updated_at: '2026-05-30'
 updated_by: Shivani

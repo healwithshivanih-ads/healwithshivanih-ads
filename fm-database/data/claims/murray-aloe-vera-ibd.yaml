@@ -1,0 +1,38 @@
+slug: murray-aloe-vera-ibd
+statement: Oral aloe vera (gel 100 ml/day, juice, or standardised acemannan 400-800
+  mg/day) is part of Murray's IBD botanical protocol. The acemannan polysaccharide
+  and aloe glycoproteins exert anti-inflammatory effects on intestinal mucosa, support
+  epithelial repair, and modulate gut immune signalling. Effect modest but well-tolerated
+  and useful as adjunctive to curcumin + boswellia + nutrient repletion. Use only
+  inner-leaf gel preparations — outer leaf contains aloin (anthraquinone laxative
+  compounds) which can cause cramping and electrolyte loss.
+evidence_tier: plausible_emerging
+rationale: Langmead 2004 DB-RCT in active UC + multiple supportive trials. Mechanism
+  — acemannan binds dectin-1 + mannose receptors; aloe-emodin (if outer leaf NOT used)
+  suppresses NF-κB. Form purity matters more than dose.
+coaching_translation: 'Aloe vera (oral, inner-leaf only) is supportive for IBD — 100
+  ml gel daily or 400-800 mg standardised acemannan. Mild effect on its own; works
+  best alongside curcumin + boswellia. Critical: must be INNER-LEAF aloe, NOT whole-leaf
+  (whole-leaf contains anthraquinones that cause cramping). ''Aloe vera juice'' often
+  varies — read labels.'
+caveats:
+- INNER-LEAF aloe only; whole-leaf contains aloin which is harsh and electrolyte-depleting
+- Standardised acemannan content preferred
+- Pregnancy avoid (uterine stimulant)
+- May lower blood sugar (monitor in diabetes meds)
+- Some bowel irritation possible in sensitive clients
+linked_to_topics:
+- ibd
+- autoimmune
+- chronic-inflammation
+linked_to_supplements:
+- aloe-vera
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — IBD, Treatment Summary pg 743–744
+  quote: 'Aloe vera, one of the following: Aloe vera gel: 100 ml per day orally. Acemannan:
+    400 to 800 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

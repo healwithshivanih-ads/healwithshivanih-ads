@@ -1,0 +1,38 @@
+slug: murray-probiotics-prebiotics-ibd
+statement: Probiotic (Lactobacillus + Bifidobacterium, minimum 5-10 billion CFU/day)
+  plus prebiotic fibre (inulin or fructo-oligosaccharides, 5 g/day) supports IBD treatment
+  by restoring beneficial flora, producing short-chain fatty acids (especially butyrate)
+  that fuel colonocytes, and competing with pathobionts. Strain-specific evidence
+  strongest for VSL#3-style multi-strain blends and Saccharomyces boulardii. Effect
+  builds over 6-12 weeks.
+evidence_tier: plausible_emerging
+rationale: Multiple meta-analyses confirm modest benefit; VSL#3 specifically has Cochrane
+  support for pouchitis (post-colectomy UC). Mechanism — bacterial cell wall components
+  engage Toll-like receptors → IL-10 induction; SCFA-mediated colonocyte fuel + tight-junction
+  support.
+coaching_translation: Probiotics + prebiotics support IBD management — 5-10 billion
+  CFU/day of Lactobacillus + Bifidobacterium plus 5 g inulin or FOS. Strain matters;
+  VSL#3 (now Visbiome) has the most evidence. Effect builds over 6-12 weeks. Saccharomyces
+  boulardii is particularly useful during active flares + antibiotic courses.
+caveats:
+- Strain matters — VSL#3/Visbiome, Lactobacillus GG, S. boulardii most evidence
+- Spore-based probiotics may be too aggressive in active IBD
+- Prebiotics can worsen symptoms during active flare — introduce in remission
+- Severely immunocompromised — clinician guidance
+linked_to_topics:
+- ibd
+- autoimmune
+linked_to_supplements:
+- probiotics
+- probiotics-lactobacillus-bifidobacterium
+- inulin-prebiotic
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — IBD, Treatment Summary pg 743
+  quote: 'Probiotic (active lactobacillus and bifidobacteria cultures): a minimum
+    of 5 billion to 10 billion colony-forming units per day. Prebiotics (inulin, fructose
+    oligosaccharides, etc.): 5 g per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

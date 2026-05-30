@@ -1,0 +1,41 @@
+slug: murray-ibd-food-allergens-elimination
+statement: 'In inflammatory bowel disease (Crohn''s + UC), the first step is identifying
+  and removing factors initiating or aggravating intestinal inflammation — particularly
+  food allergens. Murray''s specific elimination targets: wheat, corn, dairy products,
+  and carrageenan-containing foods (added to many processed dairy alternatives, ice
+  cream, infant formula). Diet should be high in dietary fibre and low in sugar and
+  refined carbohydrates. Combined elimination diet + Mediterranean-style anti-inflammatory
+  eating reduces flare frequency and severity in many patients.'
+evidence_tier: plausible_emerging
+rationale: Multiple smaller studies + extensive clinical experience. Carrageenan specifically
+  implicated by animal studies + observational data. The 'food allergen' framing here
+  includes both IgE-mediated true allergy + non-celiac sensitivities + microbiome-disrupting
+  additives.
+coaching_translation: IBD has dietary drivers — eliminate wheat, corn, dairy, and
+  carrageenan (a thickener in many processed dairy alternatives, ice creams, and even
+  infant formula). Strict for 4 weeks then reintroduce one at a time to identify personal
+  triggers. Combine with high-fibre Mediterranean eating for the long-term anti-inflammatory
+  effect.
+caveats:
+- 4-week strict elimination + careful reintroduction
+- During active flare, low-fibre diet temporarily — high fibre as inflammation calms
+- Nutritional adequacy during elimination (B12, iron, vitamin D)
+- Carrageenan in dairy alternatives often overlooked
+- Coordinate medication management with gastroenterologist
+linked_to_topics:
+- ibd
+- autoimmune
+- food-allergy-ige-mediated
+linked_to_supplements: []
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — Crohn's Disease and Ulcerative Colitis (IBD), Treatment Summary
+    pg 742
+  quote: The first step is to identify and remove all factors that may be initiating
+    or aggravating the inflammatory reaction, such as food allergens and low levels
+    of omega-3 fatty acids or dietary antioxidants. All allergens, wheat, corn, and
+    dairy products, and carrageenan-containing foods should be eliminated.
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

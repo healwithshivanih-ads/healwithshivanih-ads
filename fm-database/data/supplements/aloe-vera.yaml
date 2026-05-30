@@ -16,6 +16,8 @@ linked_to_topics:
 - psoriasis
 - autoimmune-dermatitis
 - atopic-dermatitis
+- ibd
+- autoimmune
 linked_to_claims:
 - aloe-vera-repairs-gut-lining
 - ppi-tapering-supplement-support-repair-protect-antioxidant
@@ -42,7 +44,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 88 — Psoriasis
   quote: Comprehensive natural treatment for psoriasis — gut-liver-skin axis.
-version: 3
+version: 4
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

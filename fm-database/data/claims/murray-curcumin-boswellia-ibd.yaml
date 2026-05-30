@@ -1,0 +1,43 @@
+slug: murray-curcumin-boswellia-ibd
+statement: Curcumin (1,000 mg two to three times daily before meals, in bioavailable
+  form — Meriva/BCM-95/Theracurmin) and Boswellia serrata extract (equivalent of 400
+  mg boswellic acids three times daily) are Murray's two headline botanical anti-inflammatories
+  for IBD. Curcumin works through NF-κB and COX-2 inhibition; Boswellia uniquely inhibits
+  5-lipoxygenase (5-LOX) blocking leukotriene synthesis (the same pathway 5-ASA drugs
+  target). Combined use addresses both major inflammatory pathways. Both have RCT
+  evidence for maintaining UC remission.
+evidence_tier: strong
+rationale: Multiple DB-RCTs — Hanai 2006 (curcumin in UC maintenance), Gupta 1997
+  + 2001 (boswellia in IBD). Mechanism complementary — curcumin on prostaglandins,
+  boswellia on leukotrienes. Generally safer than mesalazine for long-term maintenance;
+  reduces relapse risk.
+coaching_translation: Curcumin + boswellia is the natural medicine version of mesalazine
+  for inflammatory bowel disease — both have RCT evidence for keeping ulcerative colitis
+  in remission. Use bioavailable curcumin (Meriva, BCM-95, or Theracurmin) at 1,000
+  mg twice or three times daily, plus boswellia standardised to ≥65% boswellic acids
+  at 400 mg three times daily. Long-term maintenance use. Coordinate with gastroenterologist
+  — these reduce but don't eliminate mainstream medications.
+caveats:
+- Bioavailable curcumin form required (plain doesn't work)
+- Boswellia at ≥65% boswellic acids; AKBA-enriched stronger
+- Antiplatelet effects of both — caution + anticoagulants, pre-surgery
+- During active severe flare, may not be sufficient alone — combine with conventional
+  Rx
+- Pregnancy avoid therapeutic doses
+linked_to_topics:
+- ibd
+- autoimmune
+- chronic-inflammation
+linked_to_supplements:
+- curcumin
+- turmeric-curcumin
+- boswellia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — IBD, Treatment Summary pg 743
+  quote: 'Curcumin (Curcuma longa): 1,000 mg two to three times per day before meals.
+    Boswellia extract: equivalent of 400 mg boswellic acids three times per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani

@@ -20,6 +20,8 @@ linked_to_topics:
 - autoimmunity-leaky-gut-triad
 - atopic-dermatitis
 - autoimmune-dermatitis
+- ibd
+- autoimmune
 linked_to_claims:
 - probiotic-diversity-essential-for-gut-healing
 - 5rs-re-inoculate-probiotics
@@ -40,7 +42,7 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 50 — Eczema (Atopic Dermatitis)
   quote: Comprehensive natural treatment for eczema + atopic dermatitis.
-version: 2
+version: 3
 status: active
 updated_at: '2026-05-30'
 updated_by: shivani

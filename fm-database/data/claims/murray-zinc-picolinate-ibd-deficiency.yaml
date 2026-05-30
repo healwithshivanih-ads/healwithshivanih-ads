@@ -1,0 +1,41 @@
+slug: murray-zinc-picolinate-ibd-deficiency
+statement: 'IBD patients consistently show zinc deficiency from chronic inflammation-driven
+  malabsorption + diarrhoea-driven losses. Murray recommends zinc picolinate at 30-45
+  mg/day for IBD specifically (higher than the general 15-30 mg recommendation). Zinc
+  is essential for mucosal regeneration; without zinc repletion, the bowel cannot
+  heal even when inflammation is controlled. Other critical IBD nutrients: vitamin
+  A 2,500-5,000 IU, folic acid 800 mcg, B12 800 mcg, vitamin D3 2,000-4,000 IU, magnesium
+  adequate intake.'
+evidence_tier: strong
+rationale: Multiple studies showing zinc deficiency in 40-60% of active IBD patients.
+  Mechanism — zinc is cofactor for matrix metalloproteinases involved in epithelial
+  regeneration; intestinal-tight-junction protein synthesis requires zinc. Picolinate
+  form preferred for malabsorption.
+coaching_translation: If you have IBD, you're almost certainly zinc deficient — the
+  gut needs zinc to rebuild its lining. Zinc picolinate 30-45 mg/day (slightly higher
+  than general dosing because of malabsorption). Pair with copper 1-2 mg to prevent
+  zinc-induced copper deficiency. Also test vitamin A, folate, B12, vitamin D — IBD
+  patients are typically depleted in all of these.
+caveats:
+- Picolinate form better absorbed in IBD (vs oxide)
+- Pair with copper 1-2 mg/day after 1 month
+- Vitamin A >3,000 IU contraindicated in pregnancy
+- Active flare may need IV/parenteral nutrient repletion
+- Long-term zinc >30 mg requires copper monitoring
+linked_to_topics:
+- ibd
+- autoimmune
+- autoimmunity-leaky-gut-connection
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — IBD, Treatment Summary pg 742–743
+  quote: 'Particularly important are the nutrients zinc, folic acid, vitamin B12,
+    magnesium, vitamin A, and possibly vitamin D. Zinc (picolinate form recommended):
+    30 to 45 mg per day.'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: shivani
