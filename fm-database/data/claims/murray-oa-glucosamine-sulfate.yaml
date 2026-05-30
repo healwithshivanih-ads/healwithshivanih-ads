@@ -1,0 +1,30 @@
+slug: murray-oa-glucosamine-sulfate
+statement: Glucosamine sulfate at 1,500 mg per day (single or divided dose) slows
+  progression of knee osteoarthritis, halts joint-space narrowing, and reduces total
+  joint replacement incidence up to five years after treatment ends — effects not
+  seen with the hydrochloride form. Obese patients may need 20 mg/kg/day and athletes
+  up to 3,000 mg/day for cartilage protection. Onset of benefit is two to four weeks;
+  superior tolerability vs ibuprofen (6 percent vs 35 percent side effects).
+evidence_tier: strong
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+linked_to_supplements:
+- glucosamine
+- glucosamine-chondroitin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, pg 1305-1309
+  quote: The standard dosage for glucosamine is 1,500 mg per day. Obese individuals
+    may need higher dosages, based on their body weight (e.g., 20 mg/kg per day).
+    Athletes or individuals who subject their joints to greater wear and tear may
+    need to increase the dosage to 3,000 mg. Glucosamine sulfate appears to be more
+    effective than glucosamine hydrochloride. The results from the two longest placebo-controlled
+    trials show quite convincingly that glucosamine slows down the progression of
+    osteoarthritis and in many cases produces regression of the disease.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Form-specific (sulfate) and dose-specific guidance — most consumer products
+  are hydrochloride, so the coach must steer to the correct form.

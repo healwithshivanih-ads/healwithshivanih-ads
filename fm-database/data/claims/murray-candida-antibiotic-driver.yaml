@@ -1,0 +1,29 @@
+slug: murray-candida-antibiotic-driver
+statement: Prolonged antibiotic use is the single most important predisposing factor
+  in chronic candidiasis (yeast syndrome) — antibiotics suppress the protective intestinal
+  bacteria that normally hold Candida albicans in check, and also dampen immune function.
+  Other major contributors are decreased digestive secretions, oral steroids, oral
+  contraceptives, diets high in refined sugar and yeast, impaired liver function,
+  and nutrient deficiencies. Treatment must address predisposing factors first; antifungals
+  alone are insufficient.
+evidence_tier: strong
+linked_to_topics:
+- chronic-candidiasis
+- candida-overgrowth
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 30 — Chronic Candidiasis, pg 595-596
+  quote: 'Prolonged antibiotic use is believed to be the most important factor in
+    the development of chronic candidiasis in most cases. By suppressing normal intestinal
+    bacteria that prevent yeast overgrowth and suppression of the immune system, antibiotics
+    strongly promote the overgrowth of candida. Predisposing Factors in Candida albicans
+    Overgrowth: Decreased digestive secretions, Dietary factors, Impaired immunity,
+    Nutrient deficiency, Drugs, Prolonged antibiotic use, Impaired liver function,
+    Underlying disease states, Altered bowel flora.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach must screen any "chronic fatigue / brain fog / bloating + history
+  of repeated antibiotics or OCP" presentation for candida — and address the upstream
+  drivers, not just throw antifungals.

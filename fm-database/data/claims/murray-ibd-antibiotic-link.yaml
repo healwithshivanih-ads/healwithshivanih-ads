@@ -1,0 +1,30 @@
+slug: murray-ibd-antibiotic-link
+statement: Antibiotic exposure two to five years before IBD diagnosis is dose-dependently
+  associated with disease development — the more prescriptions, the higher the risk.
+  The post-1953 rise in IBD incidence parallels the rise in oral antibiotic use globally.
+  NSAIDs (ibuprofen, indomethacin, naproxen) and isotretinoin (Accutane) are also
+  implicated. Sublethal antibiotic dosing may drive normally commensal flora to adapt
+  and become more virulent. All IBD patients should be screened for active GI infection
+  (bacterial, mycobacterial, fungal, viral, Candida) at diagnosis and during flares.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ibd
+- ibs-ibd-differentiation
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — Crohn's Disease and Ulcerative Colitis, pg 723-724
+  quote: Exposure to antibiotics is being linked to IBD. Subjects diagnosed with IBD
+    were more likely to have been prescribed antibiotics two to five years before
+    their diagnosis. A dose-dependent relationship was shown — the more prescriptions
+    for antibiotics, the greater the risk for IBD. Penicillin and tetracycline have
+    been available in oral form since 1953. The annual increase in prescriptions of
+    antibiotics parallels the rise in the annual incidence of IBD. Gastrointestinal
+    infections with various microbes and the yeast Candida albicans can trigger a
+    flare-up of disease, and all patients with IBD should be tested for gastrointestinal
+    infections.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Antibiotic history is rarely asked about in IBD workup — coach can flag
+  it and request the GI infection panel.

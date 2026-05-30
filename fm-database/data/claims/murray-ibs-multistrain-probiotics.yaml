@@ -1,0 +1,29 @@
+slug: murray-ibs-multistrain-probiotics
+statement: Multistrain probiotic supplementation (5 to 20 billion CFU per day) containing
+  Lactobacillus rhamnosus GG, L. plantarum, Bifidobacterium infantis, and B. breve
+  produces measurable improvement in IBS total symptom scores (pain, distension, flatulence,
+  bowel rumbling) versus placebo across multiple controlled trials. Multistrain blends
+  are preferred over single-strain products because they more closely mimic native
+  microbiota.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ibs
+- irritable-bowel-syndrome
+linked_to_supplements:
+- lactobacillus-probiotic
+- bifidobacterium-probiotic
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — Irritable Bowel Syndrome, pg 1196-1197
+  quote: 'While probiotics appear to be a key component in a comprehensive approach
+    to treating IBS, they should be used in combination with diet therapy. In general,
+    we prefer probiotic formulations that include multiple species rather than a single
+    one, as these are more similar to what is found in nature. Probiotic supplement
+    (multistrain, including species of lactobacillus and bifidobacteria): 5 billion
+    to 20 billion live organisms per day.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach-actionable dose range; reinforces "diet first, supplement second"
+  sequencing for IBS protocols.

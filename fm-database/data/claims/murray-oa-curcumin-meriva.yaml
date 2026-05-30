@@ -1,0 +1,28 @@
+slug: murray-oa-curcumin-meriva
+statement: High-absorption curcumin formulations (Meriva phosphatidylcholine complex
+  at 1,000 mg providing 200 mg curcumin daily or Theracurmin) reduce osteoarthritis
+  symptom scores by ~58 percent, prolong treadmill walking distance from 76 m to 332
+  m, and lower CRP from 168 to 11.3 mg/L over 3 to 8 months. Plain curcumin has poor
+  absorption — formulation matters.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+linked_to_supplements:
+- curcumin
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, pg 1315-1316
+  quote: Meriva has been used in two studies of patients with osteoarthritis. 50 patients
+    were given 1,000 mg Meriva (providing 200 mg curcumin) for three months, after
+    which symptom scores decreased by 58 percent, walking distance in the treadmill
+    test was prolonged from 76 meters to 332 meters, and the level of an inflammatory
+    marker (CRP) in the blood decreased from 168 to 11.3 mg/l. Studies with another
+    advanced form of curcumin, Theracurmin, show even better absorption (27 times
+    greater than regular curcumin).
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specifies the formulation (Meriva / Theracurmin) — plain turmeric capsules
+  are widely sold but largely ineffective at OA doses.

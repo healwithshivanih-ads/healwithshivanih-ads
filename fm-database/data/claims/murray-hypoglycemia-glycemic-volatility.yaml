@@ -1,0 +1,28 @@
+slug: murray-hypoglycemia-glycemic-volatility
+statement: Reactive hypoglycemia symptoms (irritability, shakiness, afternoon fatigue,
+  sweet cravings, palpitations, brain fog, mood swings) correlate more reliably with
+  rapid drops in blood glucose ("glycemic volatility") than with absolute glucose
+  levels below 50 mg/dL — many symptomatic patients have normal or elevated readings.
+  Continuous glucose monitoring data show that rapid swings are the proximate driver
+  of symptoms and of insulin resistance, and are made worse by high-glycemic-impact
+  foods. A 14-item symptom questionnaire (score >=6) is a practical screen.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hypoglycemia
+- insulin-resistance
+- metabolic-syndrome
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 67 — Hypoglycemia, pg 1113-1115
+  quote: Many times people with glucose levels below 50 mg/dl have no symptoms, while
+    people with symptoms of hypoglycemia can have normal or even elevated glucose
+    levels. Symptoms appear to correlate better with rapid drops in blood glucose
+    than with drops below 50 mg/dl. Dr. Lyon has found that symptoms of hypoglycemia
+    occur when blood sugar drops rapidly, even when blood sugar was above the normal
+    range. Increased glycemic volatility is at the heart of most weight problems.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Reframes the FM approach to "low blood sugar" — coach watches symptom patterns
+  and rate-of-change, not just absolute fasting numbers.

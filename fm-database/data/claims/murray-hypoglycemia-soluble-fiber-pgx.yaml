@@ -1,0 +1,32 @@
+slug: murray-hypoglycemia-soluble-fiber-pgx
+statement: Soluble fibers (hemicelluloses, mucilages, gums, pectin from legumes, oat
+  bran, psyllium husks, nuts, apples, pears, vegetables) slow carbohydrate digestion,
+  increase insulin sensitivity, and improve hepatic glucose uptake — daily intake
+  target ~50 g. The viscous functional fiber PolyGlycopleX (PGX) at 1,500 to 5,000
+  mg before meals significantly reduces post-meal glucose elevations in a dose-dependent
+  way, independent of food type, and is more effective at blunting glycemic volatility
+  than a low-glycemic-index diet alone.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hypoglycemia
+- insulin-resistance
+- metabolic-syndrome
+linked_to_supplements:
+- psyllium-husk
+- dietary-fiber-psyllium
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 67 — Hypoglycemia, pg 1121-1122
+  quote: Soluble fiber has the most beneficial effects on blood sugar control. Slowing
+    down the digestion and absorption of carbohydrates, thereby preventing rapid rises
+    in blood sugar; increasing cell sensitivity to insulin, and thereby preventing
+    the excessive secretion of insulin. 50 g of fiber is a healthful goal. Dr. Lyon
+    has found that the most effective method of reducing glycemic volatility is a
+    low-glycemic diet with the addition of a novel soluble fiber product called PolyGlycopleX
+    (PGX). Typical dosage of PGX is 1,500 to 5,000 mg before meals.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Defines a concrete fibre target (50 g/day) and a pre-meal PGX dose strategy
+  — both translate directly to plan-supplement entries.

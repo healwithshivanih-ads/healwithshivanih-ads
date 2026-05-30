@@ -1,0 +1,26 @@
+slug: murray-ibd-carrageenan-avoidance
+statement: Strict avoidance of carrageenan is warranted in IBD. Carrageenan (an extract
+  of red seaweed, used as stabilizer and thickener in dairy, ice cream, plant-milk,
+  cottage cheese, milk chocolate, processed meats) reliably induces ulcerative-colitis-like
+  lesions in animals when degraded by low-grade acid hydrolysis or by Bacteroides
+  vulgatus metabolism. IBD patients have ~6x higher fecal Bacteroides vulgatus, putting
+  them at theoretical risk. Coach should read every food label.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ibd
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — Crohn's Disease and Ulcerative Colitis, pg 728-729
+  quote: The bacteria linked to facilitating the carrageenan-induced damage in animals
+    are a strain of Bacteroides vulgatus. This organism is found in much higher concentrations
+    (six times as high) in the fecal cultures of patients with UC. Strict avoidance
+    of carrageenan appears warranted at this time for individuals with IBD until further
+    research clarifies its safety for them. Read food labels carefully. Carrageenan
+    compounds are used by the food industry as stabilizing and suspending agents in
+    products that contain milk, such as cottage cheese, ice cream, and milk chocolate.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Specific, actionable food additive to remove from an IBD plan — easy coach
+  win, often missed because it hides in "natural" labels.

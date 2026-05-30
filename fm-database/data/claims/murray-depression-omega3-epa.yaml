@@ -1,0 +1,32 @@
+slug: murray-depression-omega3-epa
+statement: EPA-predominant omega-3 fatty acid supplementation (typically 1 g EPA per
+  day, added to standard antidepressant therapy) significantly improves depression
+  scores from week 2 onward in placebo-controlled trials. Cross-population data show
+  inverse correlation between dietary omega-3 intake and depression prevalence. Low
+  EPA / DHA status, excess saturated fat, and high sugar all impair tryptophan-to-serotonin
+  conversion.
+evidence_tier: strong
+linked_to_topics:
+- depression-like-symptoms
+- depression-lifestyle
+- major-depressive-disorder
+- nutrient-deficiency-depression
+linked_to_supplements:
+- fish-oil-epa-dha
+- omega-3
+- fish-oil
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression, pg 776-778
+  quote: An insufficiency of the long-chain omega-3 fatty acids eicosapentaenoic acid
+    (EPA) and docosahexaenoic acid (DHA) has been linked to depression. Patients were
+    given placebo or EPA added to their ongoing antidepressant therapy. The effect
+    of EPA was significant from week two of treatment, similar to the placebo was
+    minimal. Item analysis showed that EPA also reduced symptoms. Decreased consumption
+    of omega-3 fatty acids correlates with depression prevalence.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: EPA dose target for mood support; fits cleanly alongside any plan also
+  addressing CV/inflammation.

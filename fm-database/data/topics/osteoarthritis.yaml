@@ -1,0 +1,41 @@
+slug: osteoarthritis
+display_name: Osteoarthritis (Degenerative Joint Disease)
+aliases:
+- OA
+- degenerative joint disease
+- DJD
+- wear and tear arthritis
+summary: Osteoarthritis is the most common form of arthritis, driven by progressive
+  loss of joint cartilage and breakdown of the collagen matrix. It affects roughly
+  80 percent of people over 50, predominantly weight-bearing joints (knees, hips,
+  spine) and the hands. Severity of X-ray findings correlates poorly with pain — about
+  40 percent of those with the worst imaging are pain-free. Key drivers include cumulative
+  mechanical stress, obesity, insulin resistance (which impairs cartilage regeneration),
+  and post-injury / hypermobility joint instability. NSAIDs offer short-term symptom
+  relief but accelerate cartilage destruction in experimental studies. Coach-actionable
+  levers are weight loss, Mediterranean-pattern diet, structured aerobic + resistance
+  exercise, and glucosamine sulfate, with SAM-e, niacinamide (clinician-supervised),
+  curcumin (Meriva form), boswellia, and Pycnogenol as supportive nutraceutical layers.
+key_mechanisms:
+- chronic-inflammation
+- insulin-resistance
+common_symptoms:
+- joint-pain
+- joint-stiffness-and-swelling
+- morning-stiffness
+related_topics:
+- joint-pain
+- rheumatoid-arthritis
+- insulin-resistance
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, pg 1300-1320
+  quote: Osteoarthritis is the most common form of arthritis, also known as degenerative
+    joint disease because it is characterized by joint degeneration and loss of cartilage.
+    More than 40 million Americans have osteoarthritis, including 80 percent of those
+    over the age of 50.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

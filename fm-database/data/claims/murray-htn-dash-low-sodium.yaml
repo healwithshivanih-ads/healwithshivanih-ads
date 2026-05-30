@@ -1,0 +1,29 @@
+slug: murray-htn-dash-low-sodium
+statement: The DASH dietary pattern (rich in fruits, vegetables, low-fat dairy; low
+  in saturated fat, cholesterol; high in potassium, calcium, magnesium, fibre) lowers
+  systolic BP by 11.4 mmHg and diastolic by 5.5 mmHg in hypertensive patients without
+  sodium restriction. Coupling DASH with sodium reduction to under 1,500 mg per day
+  produces an additional ~11.5 mmHg systolic drop — superior to either intervention
+  alone.
+evidence_tier: strong
+linked_to_topics:
+- hypertension
+- essential-hypertension
+- blood-pressure-management
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, pg 1056-1057
+  quote: The DASH diet is rich in fruits, vegetables, and low-fat dairy foods and
+    low in saturated and total fat. In the first trial, the DASH diet produced a net
+    blood pressure reduction of 11.4 and 5.5 mm Hg systolic and diastolic, respectively,
+    in patients with high BP. The DASH diet with the lower sodium level led to a mean
+    systolic blood pressure that was 7.1 mm Hg lower in participants without hypertension
+    and 11.5 mm Hg lower in participants with hypertension. These results indicate
+    that a sodium intake below 1,500 mg per day can significantly and quickly lower
+    blood pressure.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Defines the first-line dietary pattern and the sodium target (under 1.5
+  g/d) for any plan with HTN.

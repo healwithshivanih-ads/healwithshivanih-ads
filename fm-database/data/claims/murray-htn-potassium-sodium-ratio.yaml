@@ -1,0 +1,32 @@
+slug: murray-htn-potassium-sodium-ratio
+statement: Most Western diets have a potassium-to-sodium ratio below 1:2; a dietary
+  K:Na ratio above 5:1 is needed for normal BP, and a fruit-and-vegetable-rich pattern
+  easily reaches 50:1 to 100:1. Potassium supplementation at 2.5 to 5 g per day lowers
+  systolic and diastolic BP by 4.4 and 2.5 mmHg on average (meta-analysis of 33 trials,
+  2,609 participants) and up to 12/16 mmHg in mild hypertensives, with greater effect
+  in those with high sodium intake. Contraindicated in kidney disease and with ACE
+  inhibitors, potassium-sparing diuretics, or digitalis.
+evidence_tier: strong
+linked_to_topics:
+- hypertension
+- essential-hypertension
+- blood-pressure-management
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, pg 1058-1060
+  quote: Most Americans have a potassium-to-sodium (K:Na) ratio of less than 1:2.
+    Epidemiological and experimental research suggests that a dietary K:Na ratio greater
+    than 5:1 is necessary to maintain health. In a meta-analysis of 33 randomized,
+    controlled trials totaling 2,609 participants, potassium supplementation was associated
+    with a reduction in mean systolic and diastolic blood pressure of 4.44 and 2.45
+    mm Hg, respectively. The dosage of potassium typically used in the studies ranged
+    from 2.5 to 5 g per day. Potassium supplementation is also contraindicated when
+    a patient is using any of a number of prescription medications including digitalis,
+    potassium-sparing diuretics, and the ACE inhibitor class of antihypertensive drugs.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Reframes BP management around the K:Na ratio (food-first) and flags the
+  medication exclusions every coach must check before suggesting potassium-rich foods
+  or salt substitutes.

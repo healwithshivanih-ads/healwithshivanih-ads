@@ -1,0 +1,27 @@
+slug: murray-constipation-dairy-elimination-children
+statement: 'Approximately 70 percent of childhood constipation cases resolve when
+  cow''s milk and dairy are eliminated (substitute almond, soy, or rice milk). Responders
+  also see reduction in runny nose, eczema, and asthma symptoms — pointing to underlying
+  dairy intolerance as both gut and immune trigger. First step for any constipated
+  child: eliminate dairy and increase high-fibre fruits (pears, apples). Avoid mineral
+  oil and stimulant laxatives unless absolutely necessary.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- constipation
+- elimination-diet
+- food-intolerance
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 41 — Constipation, pg 715-716
+  quote: Cow's milk intolerance can also lead to constipation and is a major cause
+    of childhood constipation. About 70 percent of cases of childhood constipation
+    are cured by eliminating cow's milk from the diet and substituting soy, nut (e.g.,
+    almond), or rice milk. Children with constipation who respond to milk elimination
+    also experience a decreased frequency of allergy symptoms, including runny nose,
+    eczema, and asthma.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: India context — dairy is heavy in most kids' diets; this is a high-yield
+  trial for paediatric constipation that coach may otherwise miss.

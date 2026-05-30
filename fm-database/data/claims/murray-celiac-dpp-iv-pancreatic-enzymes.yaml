@@ -1,0 +1,35 @@
+slug: murray-celiac-dpp-iv-pancreatic-enzymes
+statement: Pancreatic enzyme supplementation (5,000 IU lipase / 2,900 IU amylase /
+  330 IU protease per capsule, two with each meal) significantly enhances the clinical
+  benefit of a gluten-free diet in the first 30 days after celiac diagnosis; benefit
+  fades by day 60. A better long-term choice is enzyme preparations containing dipeptidyl
+  peptidase IV (DPP-IV) from fungal sources, which targets both gliadin and casein
+  and is depleted in the intestinal mucosa of celiac patients. DPP-IV preparations
+  are useful as protection against hidden gluten exposure.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- celiac-disease
+linked_to_supplements:
+- digestive-enzymes
+- digestive-enzymes-broad-spectrum
+- dpp-iv-enzyme
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 641-642
+  quote: In this study patients followed a gluten-free diet and received with each
+    meal either two capsules of pancreatic enzymes (each capsule containing 5,000
+    IU lipase, 2,900 IU amylase, and 330 IU protease) or two placebo capsules. Results
+    indicated that pancreatic enzyme supplementation enhanced the clinical benefit
+    of a gluten-free diet during the first 30 days but did not provide any greater
+    benefit than the placebo after 60 days. A better choice than pancreatic enzymes
+    may be enzyme preparations containing dipeptidyl peptidase IV (DPP-IV) from fungal
+    sources. This enzyme targets both gliadin and casein. Use of preparations containing
+    DPP-IV is often recommended in order to safeguard against any hidden sources of
+    gluten.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: DPP-IV is the FM-distinctive answer for "what if I accidentally eat gluten
+  at a restaurant" — coach should know to recommend a hidden-gluten enzyme on plans
+  for celiac/gluten-sensitive clients.

@@ -1,0 +1,30 @@
+slug: murray-depression-st-johns-wort
+statement: Standardized Saint-John's-wort (Hypericum perforatum) extract is the best-researched
+  botanical antidepressant — more than 30 RCTs with 2,200+ patients show comparable
+  efficacy to standard antidepressants for mild to moderate depression with markedly
+  fewer side effects. Standard dose is 900 mg per day of a 0.3 percent hypericin extract
+  (300 mg three times daily). Major caveat — St John's wort induces CYP3A4 and reduces
+  blood levels of many drugs including oral contraceptives, warfarin, ciclosporin,
+  digoxin, several HIV and cancer drugs, and SSRIs (serotonin syndrome risk). Coach
+  must screen the entire medication list before suggesting it.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- depression-like-symptoms
+- depression-lifestyle
+- major-depressive-disorder
+linked_to_supplements:
+- st-johns-wort
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 44 — Depression, pg 787-788
+  quote: Extracts of Saint-John's-wort (Hypericum perforatum) standardized for hypericin
+    are the most thoroughly researched natural antidepressants. More than 30 double-blind,
+    randomized trials involving more than 2,200 patients with mild to moderately severe
+    depression have shown that standardized Saint-John's-wort extracts yield excellent
+    results with far fewer side effects than standard antidepressant medications.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Dose and the drug-interaction warning every coach must check first — St
+  John's wort is the most-asked-about supplement on a depression conversation.

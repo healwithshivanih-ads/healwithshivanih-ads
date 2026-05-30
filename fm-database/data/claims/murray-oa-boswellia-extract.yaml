@@ -1,0 +1,30 @@
+slug: murray-oa-boswellia-extract
+statement: Boswellia serrata extracts standardized for boswellic acids decrease knee
+  pain and swelling, improve knee flexion and walking distance, and lower cartilage
+  breakdown markers in knee osteoarthritis. Mechanisms include inhibition of inflammatory
+  mediators, preservation of glycosaminoglycan synthesis, and improved blood supply
+  to joint tissues. No side effects from boswellic acids have been reported in published
+  trials.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+linked_to_supplements:
+- boswellia
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, pg 1316-1317
+  quote: Boswellia (Boswellia serrata) yields a gum resin known as salai guggul that
+    has been used for centuries for arthritic conditions. Among several mechanisms
+    of action are inhibition of inflammatory mediators, prevention of decreased GAG
+    synthesis, and improved blood supply to joint tissues. Clinical studies using
+    herbal formulas with boswellia have yielded good results in osteoarthritis of
+    the knee, with patients experiencing decreased knee pain, decreased swelling,
+    and increased knee flexion and walking distance. No side effects due to boswellic
+    acids have been reported.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Ayurvedic herb readily available in India; clean safety profile makes it
+  a good first-line botanical alongside glucosamine.

@@ -1,0 +1,30 @@
+slug: murray-hairloss-five-causes
+statement: 'Five common causes of hair loss in women, in order of frequency, are:
+  (1) female-pattern hair loss (linked to testosterone excess, insulin resistance,
+  PCOS, low antioxidant status); (2) prescription drug side effects (SSRIs, beta-blockers,
+  ACE inhibitors, anticoagulants, NSAIDs, lithium, valproate, cimetidine, ranitidine,
+  chemotherapy); (3) nutritional deficiencies (zinc, vitamin A, essential fatty acids,
+  iron — often together when stomach acid is low); (4) hypothyroidism (up to 20 percent
+  of American women); and (5) antigliadin antibodies / celiac disease cross-reacting
+  with hair follicles to produce alopecia areata.'
+evidence_tier: strong
+linked_to_topics:
+- hair-loss-women
+- hair-loss
+- hairfall
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 56 — Hair Loss in Women, pg 997-1001
+  quote: Five common causes of hair loss in women are female-pattern hair loss, drugs,
+    nutritional deficiencies, hypothyroidism, and the presence of antigliadin antibodies.
+    Deficiencies of zinc, vitamin A, essential fatty acids, and iron are the most
+    important nutrition-related causes of hair loss in women. Antibodies to gliadin
+    can lead to cross-reacting antibodies that attack the hair follicles, leading
+    to alopecia areata. The prevalence of hypothyroidism in American women is estimated
+    to be as high as 20 percent.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Structured differential the coach can walk a hair-loss client through to
+  make sure no driver is missed before jumping to topicals.

@@ -1,0 +1,29 @@
+slug: murray-oa-diet-plus-exercise
+statement: Combining moderate weight loss (~5 percent body weight over 18 months)
+  with structured aerobic plus resistance training (three hour-long sessions per week)
+  produces significantly greater improvement in self-reported physical function, walking
+  distance, stair-climb time, and knee pain than diet alone or exercise alone in obese
+  elderly patients with X-ray-confirmed knee osteoarthritis. Insulin resistance impairs
+  cartilage proteoglycan synthesis and worsens OA — improving insulin sensitivity
+  is a mechanistic target.
+evidence_tier: strong
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+- insulin-resistance
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 80 — Osteoarthritis, pg 1303
+  quote: One study involved 252 obese elderly patients with a body mass index greater
+    than 28 and X-ray-confirmed osteoarthritis who were randomized into healthful-lifestyle
+    (control), diet-only, exercise-only, and diet-plus-exercise groups. The exercise
+    program involved hour-long sessions that focused on aerobics and resistance training
+    three times a week. The most benefit was demonstrated in the diet-plus-exercise
+    group. Insulin resistance not only increases inflammation but also impairs cartilage
+    regeneration.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Anchors the FM "exercise plus dietary pattern beats either alone" principle
+  with concrete protocol — three hour-long combined sessions per week.

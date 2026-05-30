@@ -1,0 +1,29 @@
+slug: murray-hairloss-ferritin-threshold
+statement: Serum ferritin below 30 ng/mL is strongly associated with diffuse hair
+  loss in women — at this level the body conserves iron and impairs hair growth even
+  when haemoglobin is normal. Treatment is 30 mg of elemental iron (bound to bisglycinate,
+  fumarate, succinate, or pyrophosphate) twice daily between meals, or three times
+  daily with meals if GI upset. Serum ferritin is the recommended screening test,
+  not haemoglobin alone.
+evidence_tier: strong
+linked_to_topics:
+- hair-loss-women
+- hair-loss
+- hairfall
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 56 — Hair Loss in Women, pg 998-1002
+  quote: For evaluating iron status, a blood test for serum ferritin is recommended.
+    If the serum ferritin is less than 30 ng/l, iron intake must be increased via
+    diet and supplementation. When serum ferritin levels fall below this level, hair
+    growth and regeneration are impaired, as the body seeks to conserve iron. There
+    is a very strong association between low body iron stores and diffuse hair loss
+    in women. If serum ferritin levels are below 30 ng/l, take iron bound to either
+    pyrophosphate, succinate, glycinate, or fumarate, at a dosage of 30 mg twice per
+    day between meals.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach must request ferritin (not just Hb) for any hair-loss workup — and
+  know the 30 ng/mL threshold and the well-tolerated iron forms.

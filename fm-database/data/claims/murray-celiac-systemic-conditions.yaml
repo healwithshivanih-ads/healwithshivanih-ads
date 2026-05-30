@@ -1,0 +1,31 @@
+slug: murray-celiac-systemic-conditions
+statement: Celiac disease and gluten sensitivity are linked to 55 distinct conditions
+  including IBS, IBD, anemia, migraine, epilepsy, osteoporosis, RA, lupus, multiple
+  sclerosis, Hashimoto's thyroiditis, type 1 diabetes, schizophrenia, dermatitis herpetiformis,
+  and increased risk of non-Hodgkin lymphoma. A 30,000-patient cohort showed 39 percent
+  increased mortality for full celiac, 72 percent for gluten-related intestinal inflammation,
+  and 35 percent for gluten sensitivity with negative biopsy. Anti-tissue transglutaminase,
+  anti-endomysial, and anti-gliadin antibodies are blood tests that have largely replaced
+  biopsy as first-line screen.
+evidence_tier: strong
+linked_to_topics:
+- celiac-disease
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 637-638
+  quote: A landmark study that looked at almost 30,000 patients from 1969 to 2008
+    found a higher than normal risk of early death associated with sensitivity to
+    gluten. Those with full-blown celiac disease had a 39 percent increased risk of
+    early death compared with controls; those with inflammation of the intestine but
+    not full-blown celiac disease had a 72 percent increased risk; and those with
+    gluten sensitivity (elevated gluten antibodies) but negative intestinal biopsy
+    had a 35 percent increased risk. A review article listed 55 health conditions
+    linked to celiac disease and gluten sensitivity. Thyroid abnormalities, insulin-dependent
+    diabetes, psychiatric disturbances have also been linked to gluten intolerance.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Even non-biopsy-positive gluten sensitivity carries elevated mortality
+  risk — strong rationale for trialing gluten elimination in autoimmune, neurological,
+  and chronic-fatigue presentations.

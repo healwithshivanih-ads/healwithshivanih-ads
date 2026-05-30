@@ -1,0 +1,24 @@
+slug: murray-ibs-low-fodmap-trial
+statement: Open studies and a randomized placebo-controlled rechallenge trial indicate
+  roughly three out of four IBS patients experience symptom reduction (bloating, flatulence,
+  abdominal pain) when fermentable oligosaccharides, disaccharides, monosaccharides
+  and polyols (FODMAPs) — including wheat fructans, legume galactans, lactose, fructose-rich
+  fruits, and polyol sweeteners — are restricted from the diet.
+evidence_tier: strong
+linked_to_topics:
+- ibs
+- irritable-bowel-syndrome
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — Irritable Bowel Syndrome, pg 1195-1196
+  quote: Open studies have suggested that three out of four patients with IBS will
+    see a decrease in symptoms when they restrict intake of FODMAPs. A randomized
+    placebo-controlled rechallenge trial confirmed that the benefit was likely to
+    be due to reduction of FODMAP intake.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Low-FODMAP is a first-line dietary trial worth running before reaching
+  for symptomatic drugs; specifies the food-group buckets so a coach can build a 4-week
+  elimination.

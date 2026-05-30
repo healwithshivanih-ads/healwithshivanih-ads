@@ -1,0 +1,31 @@
+slug: murray-ibd-fish-oil-relapse
+statement: Fish oil supplementation at 2.7 to 5.1 g total omega-3 per day prevents
+  or delays relapses in both Crohn's disease and ulcerative colitis; in one trial
+  the one-year relapse rate dropped by half (absolute risk reduction 31 percent).
+  IBD patients show elevated inflammatory eicosanoids; reducing omega-6 sources (corn,
+  safflower, sunflower, soy oil, conventional beef, dairy) and increasing EPA/DHA
+  from cold-water fish or supplements is a core dietary intervention. Fish oil alone
+  is insufficient to maintain remission — other factors must be addressed in parallel.
+evidence_tier: strong
+linked_to_topics:
+- ibd
+linked_to_supplements:
+- fish-oil-epa-dha
+- omega-3
+- fish-oil
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 42 — Crohn's Disease and Ulcerative Colitis, pg 727-728
+  quote: Detailed analyses of double-blind studies with fish oil supplements (2.7
+    to 5.1 g total omega-3 oils per day) have demonstrated an ability to prevent or
+    delay relapses in both CD and UC. In one study an omega-3 fatty acid supplement
+    reduced the one-year relapse rate by half with an absolute risk reduction of 31
+    percent. The formation of these inflammatory compounds can be decreased by reducing
+    or eliminating consumption of omega-6-rich foods and increasing consumption of
+    the longer-chain omega-3 fatty acids.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete dose range for IBD relapse prevention, plus the omega-6 reduction
+  angle that often gets missed when only fish oil is added.

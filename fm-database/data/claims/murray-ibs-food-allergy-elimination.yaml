@@ -1,0 +1,29 @@
+slug: murray-ibs-food-allergy-elimination
+statement: Approximately two-thirds of IBS patients have at least one food intolerance
+  identifiable by double-blind challenge, with dairy (40 to 44 percent) and grains/wheat
+  (40 to 60 percent) the most common allergens. A structured elimination diet followed
+  by a rotation diet plus probiotic support has produced symptom improvement in 100
+  percent of treated patients in small open trials.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ibs
+- irritable-bowel-syndrome
+- food-intolerance
+- elimination-diet
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — Irritable Bowel Syndrome, pg 1194-1195
+  quote: According to double-blind challenge methods, approximately two-thirds of
+    patients with IBS have at least one food intolerance, and some have multiple intolerances.
+    The most common allergens are dairy products (40 to 44 percent) and grains (40
+    to 60 percent). In one of the most recent studies, 20 patients with IBS who had
+    had no success with standard medical therapy were evaluated for food allergies
+    by means of IgG blood tests and treated with an elimination diet followed by an
+    allergy rotation diet and probiotic supplementation. 100 percent of the study
+    subjects reported improvement in symptoms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Justifies running a dairy + gluten elimination before locking in a low-FODMAP
+  — two top hits are usually addressed by elimination alone.

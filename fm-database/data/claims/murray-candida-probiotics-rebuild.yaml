@@ -1,0 +1,28 @@
+slug: murray-candida-probiotics-rebuild
+statement: Probiotic supplements containing Lactobacillus and Bifidobacterium species
+  at 5 to 10 billion viable CFU per day reseed competing flora during and after antifungal
+  treatment for chronic candidiasis. Doses above 10 billion may cause mild GI disturbance;
+  doses below 5 billion may not colonize. Soluble fibre at bedtime helps escort die-off
+  yeast cells out before they are reabsorbed.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-candidiasis
+- candida-overgrowth
+linked_to_supplements:
+- lactobacillus-probiotic
+- bifidobacterium-probiotic
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 30 — Chronic Candidiasis, pg 609-610
+  quote: Probiotic supplements can be used both to support overall good health and
+    during treatment for chronic candidiasis. The dosage of a commercial probiotic
+    supplement containing lactobacillus or bifidobacteria cultures is based on the
+    number of live organisms. A dosage of 5 billion to 10 billion viable cells per
+    day is sufficient for most people. Soluble fiber at bedtime, to ensure that dead
+    yeast cells are excreted and not absorbed.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Defines the rebuild-phase probiotic dose and the "fibre at bedtime to soak
+  up die-off" trick that prevents post-antifungal flares.

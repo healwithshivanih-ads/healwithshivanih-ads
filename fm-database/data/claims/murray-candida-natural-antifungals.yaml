@@ -1,0 +1,39 @@
+slug: murray-candida-natural-antifungals
+statement: 'Four natural antifungals with the strongest profile for chronic candidiasis
+  are: berberine-containing botanicals (goldenseal, barberry, Oregon grape) at 25
+  to 50 mg berberine three times per day; garlic providing at least 10 mg allicin
+  (or 4,000 mg total allicin potential, ~1 fresh clove) daily; enteric-coated oregano
+  volatile oil at 0.2 to 0.4 ml twice per day between meals (>100x more potent than
+  caprylic acid in vitro); and propolis at 100 to 500 mg three times per day. Start
+  low and titrate over a month to minimize Herxheimer die-off; precede by two weeks
+  of anti-candida diet and liver support.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-candidiasis
+- candida-overgrowth
+linked_to_supplements:
+- berberine
+- garlic
+- garlic-allicin
+- oregano-oil
+- caprylic-acid
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 30 — Chronic Candidiasis, pg 610-613
+  quote: 'The four approaches we feel most comfortable in recommending as natural
+    agents against C. albicans are: Berberine-containing plants, Garlic, Enteric-coated
+    volatile oil preparations like oregano, Propolis. The recommended dosage of berberine
+    is 25 to 50 mg three times per day. The treatment of chronic candidiasis requires
+    a daily dose of at least 10 mg allicin or a total allicin potential of 4,000 mg.
+    An effective dosage for an enteric-coated volatile oil preparation is 0.2 to 0.4
+    ml twice per day between meals. The typical dosage of propolis is 100 to 500 mg
+    three times per day. The Herxheimer reaction can be minimized by following the
+    dietary recommendations for a minimum of two weeks before taking an antiyeast
+    agent and starting in low doses and gradually increasing over the course of one
+    month.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete dose ladders for the 4 most coach-relevant antifungals, plus the
+  slow-titration protocol that avoids the Herxheimer wall clients often quit over.

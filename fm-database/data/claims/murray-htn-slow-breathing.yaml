@@ -1,0 +1,25 @@
+slug: murray-htn-slow-breathing
+statement: Slow diaphragmatic breathing at six breaths per minute, practiced for 15
+  minutes per day (with or without a guidance device like RESPeRATE), reduces systolic
+  BP by ~10 mmHg and diastolic by ~3.6 mmHg over eight weeks. Shallow breathing conversely
+  promotes sodium retention and may itself contribute to high BP.
+evidence_tier: strong
+linked_to_topics:
+- hypertension
+- essential-hypertension
+- blood-pressure-management
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 63 — High Blood Pressure, pg 1053-1054
+  quote: Regular, short sessions of slow and regular diaphragmatic breathing have
+    also been shown to lower blood pressure. Deep, slow breathing (six breaths per
+    minute) has been shown to improve oxygen saturation, exercise tolerance, and blood
+    pressure. RESPeRATE used for 15 minutes per day can lead to significant reduction
+    in blood pressure. In one eight-week study, systolic BP was reduced by 10.0 mm
+    Hg and diastolic BP by 3.6 mm Hg in the subjects who used RESPeRATE.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: 15-min/day breathing protocol is free, accessible, and has BP-lowering
+  data comparable to many drugs — ideal coach-led lifestyle intervention.

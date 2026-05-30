@@ -1,0 +1,33 @@
+slug: murray-celiac-gluten-free-diet-protocol
+statement: 'A strict gluten-free diet (no wheat, rye, barley, triticale; oats only
+  if tolerated) is curative for celiac disease. 30 percent of patients respond within
+  three days, 50 percent more within a month, 10 percent within a further month, and
+  10 percent only after 24 to 36 months. Dairy should be eliminated initially. Buckwheat
+  and millet contain prolamins with antigenic activity similar to gliadin and may
+  need to be excluded. Replacement grains: amaranth, quinoa, brown/red/black/wild
+  rice. Hidden gluten in soy sauce, ice cream, modified food starch, beer, vodka,
+  whisky, malt — label-reading is essential. Co-supplement vitamin D3 2,000 to 4,000
+  IU, EPA+DHA 1,000 mg, B-complex (folate 800 mcg + B12 500 mcg + B6 3 mg), probiotics
+  5 to 10 billion CFU, and check zinc — zinc deficiency blocks recovery.'
+evidence_tier: strong
+linked_to_topics:
+- celiac-disease
+- elimination-diet
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 34 — Celiac Disease, pg 639-644
+  quote: Usually with gluten elimination, clinical improvement will be obvious within
+    a few days or weeks (30 percent respond within three days, another 50 percent
+    within a month, and 10 percent within another month). However, 10 percent of patients
+    respond only after 24 to 36 months of gluten avoidance. If a patient does not
+    appear to respond, either the diagnosis is not correct or there may be some obstacle
+    to a cure, such as zinc deficiency. Vitamin D3 2,000 to 4,000 IU per day. Fish
+    oils 1,000 mg EPA + DHA per day. Probiotic 5 billion to 10 billion CFU per day.
+    Buckwheat and millet contain compounds known as prolamins with antigenic activity
+    similar to that of gliadin.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Complete elimination + co-supplement protocol with realistic response timeline
+  — sets client expectations and catches the zinc-deficient non-responders.

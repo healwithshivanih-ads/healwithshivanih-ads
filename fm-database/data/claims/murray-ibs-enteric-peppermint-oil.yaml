@@ -1,0 +1,25 @@
+slug: murray-ibs-enteric-peppermint-oil
+statement: Enteric-coated peppermint oil (ECPO) at 0.2 to 0.4 ml twice daily between
+  meals reduces colonic spasm and improves major IBS symptoms — abdominal pain, distension,
+  stool frequency, flatulence — with one controlled trial showing ~79-83 percent symptom
+  improvement vs ~22-43 percent on placebo. Enteric coating prevents upper-GI release
+  that would cause heartburn and esophageal reflux.
+evidence_tier: strong
+linked_to_topics:
+- ibs
+- irritable-bowel-syndrome
+linked_to_supplements:
+- peppermint-oil-enteric
+sources:
+- id: murray-pizzorno-2012-encyclopedia
+  location: Chapter 72 — Irritable Bowel Syndrome, pg 1197-1198
+  quote: 'A detailed analysis of five studies supported the efficacy of peppermint
+    oil, with most of the studies using ECPO at a dosage of 0.2 ml twice per day between
+    meals. The results are quite impressive: abdominal pain 79 percent improvement
+    with ECPO vs 43 percent placebo; distension 83 vs 29; flatulence 79 vs 22.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete actionable dose with strong RCT data — easy first-line botanical
+  for IBS-D / mixed presentations alongside dietary work.
