@@ -325,7 +325,6 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!mobileNumber.trim()) { toast.error("Mobile number is required"); return; }
-    if (!dateOfBirth) { toast.error("Date of birth is required"); return; }
 
     // Build five pillars if any rated
     const anyPillar = sleepQuality || stressLevel || nutritionQuality || connectionQuality;
@@ -343,7 +342,7 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
       const res = await createClient({
         display_name: displayName.trim() || undefined,
         intake_date: intakeDate,
-        date_of_birth: dateOfBirth,
+        date_of_birth: dateOfBirth || undefined,
         sex,
         mobile_number: mobileNumber.trim(),
         email: email.trim() || undefined,
@@ -499,8 +498,8 @@ export function NewClientForm({ initialOpen = false }: { initialOpen?: boolean }
               <Field label={<>Intake date{isAuto("intakeDate") && <AutoBadge />}</>}>
                 <Input type="date" value={intakeDate} onChange={(e) => setIntakeDate(e.target.value)} required />
               </Field>
-              <Field label={<>Date of birth *{isAuto("dateOfBirth") && <AutoBadge />}</>} hint="age calculated automatically">
-                <Input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} required max={today()} />
+              <Field label={<>Date of birth{isAuto("dateOfBirth") && <AutoBadge />}</>} hint="optional here — client fills this in the intake form">
+                <Input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} max={today()} />
               </Field>
               <Field label={<>Sex *{isAuto("sex") && <AutoBadge />}</>}>
                 <select value={sex} onChange={(e) => setSex(e.target.value as "F" | "M" | "other")}

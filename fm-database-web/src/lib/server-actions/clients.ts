@@ -52,7 +52,7 @@ export type CreateClientInput = {
   // client_id is auto-generated; not collected from the form
   display_name?: string;
   intake_date: string;       // YYYY-MM-DD
-  date_of_birth: string;     // YYYY-MM-DD — system calculates age from this
+  date_of_birth?: string;    // YYYY-MM-DD — optional here; client fills via intake form
   sex: "F" | "M" | "other";
   mobile_number: string;     // required — used for duplicate detection
   email?: string;
@@ -157,8 +157,8 @@ async function nextClientId(): Promise<string> {
 export async function createClient(
   input: CreateClientInput
 ): Promise<CreateClientResult> {
-  if (!input.intake_date || !input.date_of_birth || !input.sex) {
-    return { ok: false, error: "intake_date, date_of_birth, sex are required" };
+  if (!input.intake_date || !input.sex) {
+    return { ok: false, error: "intake_date and sex are required" };
   }
   if (!input.mobile_number?.trim()) {
     return { ok: false, error: "mobile_number is required" };
@@ -193,13 +193,12 @@ export async function createClient(
     clientId,
     "--intake-date",
     input.intake_date,
-    "--dob",
-    input.date_of_birth,
     "--sex",
     input.sex,
     "--mobile",
     input.mobile_number.trim(),
   ];
+  if (input.date_of_birth) args.push("--dob", input.date_of_birth);
   if (input.display_name) args.push("--display-name", input.display_name);
   for (const c of input.conditions ?? []) args.push("--condition", c);
   for (const m of input.medications ?? []) args.push("--medication", m);
