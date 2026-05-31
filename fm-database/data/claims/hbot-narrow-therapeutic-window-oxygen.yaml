@@ -1,0 +1,23 @@
+slug: hbot-narrow-therapeutic-window-oxygen
+statement: Effective cellular metabolism depends on a narrow therapeutic range of
+  oxygen. Both hypoxia (deficiency) and hyperoxia (excess) are powerful biological
+  signals that can be either regenerative or damaging depending on dose, duration,
+  and fluctuation pattern. The clinical art of HBOT is operating inside this window
+  — delivering enough hyperoxia to trigger the regenerative paradox without crossing
+  into oxygen-toxicity territory.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 1 Introduction
+  quote: Effective metabolism is highly dependent on a narrow therapeutic range of
+    oxygen. Accordingly, low levels of oxygen, or hypoxia, are one of the most powerful
+    inducers of gene expression, metabolic changes, and regenerative processes, including
+    angiogenesis and stimulation of stem cell proliferation, migration, and differentiation.
+rationale: Conceptual anchor for both HBOT efficacy and its safety boundaries.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

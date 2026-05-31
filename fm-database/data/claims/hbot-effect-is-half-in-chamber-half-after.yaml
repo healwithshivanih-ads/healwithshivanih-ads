@@ -1,0 +1,25 @@
+slug: hbot-effect-is-half-in-chamber-half-after
+statement: A significant fraction (Sonners estimates 50-75 percent) of the clinical
+  benefit of HBOT happens AFTER the session ends — as accumulated dissolved oxygen
+  comes out of solution it acts as an active signalling molecule, interacting with
+  cells in the hours that follow. The in-chamber phase delivers the oxygen surplus;
+  the post-session phase delivers the cell signalling cascade (HIF-1-alpha, VEGF,
+  stem cell mobilisation). This is why session frequency and accumulation across days
+  matters more than a single long session.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: sonners-mercola-podcast-2024
+  location: Podcast — post-session mechanism discussion
+  quote: Roughly about half of the treatment is occurring while you are in the chamber
+    and the other half of the therapy is when you get out. That oxygen can no longer
+    stay in solution — as it is coming out it is interacting with all of our cells
+    triggering a massive cascade of cellular communication. I would probably even
+    say maybe 70 to 75 percent of the treatment is actually after getting out.
+rationale: Important client-counselling point about why one session is not therapeutic.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

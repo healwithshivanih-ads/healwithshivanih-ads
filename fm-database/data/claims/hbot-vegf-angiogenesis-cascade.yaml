@@ -1,0 +1,24 @@
+slug: hbot-vegf-angiogenesis-cascade
+statement: Vascular Endothelial Growth Factor (VEGF) is the principal downstream effector
+  of HIF-1-alpha responsible for HBOT-induced angiogenesis. The paradox cascade —
+  intermittent hyperoxia, perceived hypoxia, HIF-1-alpha stabilisation, VEGF gene
+  transcription, endothelial proliferation, capillary network expansion — is the mechanistic
+  basis for HBOT's documented effects on stroke recovery, wound healing, diabetic
+  foot ulcer, and Efrati's brain-cardiac-penile angiogenesis findings.
+evidence_tier: strong
+linked_to_topics:
+- hyperoxic-hypoxic-paradox
+- hyperbaric-oxygen-therapy
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 4 Hyperoxic Hypoxic Paradox — Figure 3 cascade
+  quote: Most of the cellular cascades initiated by hypoxia can be induced by intermittent
+    hyperoxia, the so-called hyperoxic-hypoxic paradox. HIF, VEGF, SIRT, mitochondrial
+    biogenesis, and stem cell proliferation and migration could all be induced by
+    biological fooling of the cells with certain protocols of repeated intermittent
+    hyperoxia.
+rationale: Reinforces the VEGF-angiogenesis mechanism with peer-reviewed citation.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

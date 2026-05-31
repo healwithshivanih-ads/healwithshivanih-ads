@@ -1,0 +1,25 @@
+slug: hbot-cns-oxygen-toxicity-seizure-incidence
+statement: Modern HBOT protocols mitigate oxygen toxicity (the dose-limiting safety
+  concern) by capping session length at 60-90 minutes, holding oxygen partial pressure
+  at or below 2.4 ATA, and inserting air-brake intervals every 20-30 minutes. In a
+  pooled analysis of 62,614 hyperbaric sessions reported in the literature, the incidence
+  of seizures was 0.011 percent (approximately 1 in 8,945 sessions). Pulmonary toxicity
+  is also rare under these protocols and reversible in patients without pre-existing
+  chronic lung disease.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 4.6 Oxygen Toxicity
+  quote: The new HBOT protocol used today includes repeated daily sessions limited
+    to 60-90 min with oxygen partial pressure not exceeding 2.4 ATA, as well as air
+    brakes every 20-30 min. In a recent analysis of 62,614 hyperbaric sessions, the
+    overall incidence of seizures during hyperbaric sessions was 0.011 percent (1
+    in 8,945 sessions). In patients without chronic lung diseases, currently used
+    HBOT protocols do not cause any pulmonary toxicity following 60 repeated exposures.
+rationale: Quantitative safety anchor essential for any client risk conversation.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

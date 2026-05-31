@@ -1,0 +1,27 @@
+slug: hbot-mitochondrial-biogenesis-via-ampk-sirt1
+statement: Mitochondrial biogenesis triggered by the hyperoxic-hypoxic paradox is
+  regulated through two converging axes — the AMPK-PGC-1-alpha pathway (energy-stress
+  sensing) and the SIRT1-PGC-1-alpha pathway (NAD+ dependent deacetylation). Both
+  pathways overlap with HIF signalling. Crucially, intermittent hyperoxia drives mitochondrial
+  biogenesis without the energetic stress and oxygen-consumption-induced worsening
+  that prolonged hypoxia would cause — a key reason HBOT preserves mitochondrial function
+  while delivering the hypoxia-like signal.
+evidence_tier: strong
+linked_to_topics:
+- hyperoxic-hypoxic-paradox
+- hyperbaric-oxygen-therapy
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 3.4 + 4.4 Mitochondrial Biogenesis
+  quote: The AMP-activated kinase (AMPK)-PGC-1a axis and Sirtuin 1 (SIRT1)-PGC-1a
+    are two major pathways that regulate mitochondrial biogenesis. AMPK can be activated
+    by physiological stimuli such as exercise, starvation, and transient hypoxia.
+    Once AMPK activation occurs under hypoxic conditions, additional mitochondrial
+    biogenesis and oxygen consumption would further decrease oxygen availability and
+    worsen the stress. Therefore, HIF signaling under prolonged hypoxia generally
+    acts to decrease mitochondrial biogenesis and mass.
+rationale: Explains why intermittent hyperoxia outperforms chronic hypoxia for biogenesis.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

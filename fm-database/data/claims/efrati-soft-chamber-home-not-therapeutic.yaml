@@ -1,0 +1,24 @@
+slug: efrati-soft-chamber-home-not-therapeutic
+statement: Soft-shell home HBOT bags running at pressures below ~1.5 ATA and lacking
+  oxygen-concentrator quality assurance, professional ventilation control, or medical
+  supervision do not reach the threshold pressure (~2 ATA with 100 percent oxygen)
+  required to drive the hyperoxic-hypoxic paradox and may pose contamination risk
+  from uncontrolled compressor intake air. The Aviv-style clinical protocol is built
+  for medical-grade chambers — soft chambers should not be confused with that protocol.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — Efrati on home soft chambers
+  quote: All of those soft chambers and all of these tubes are not reaching even close
+    to that pressure. They are usually below 1 ATA point — so this is not the dose,
+    this is homeopathy. The quality of those tools — these people are buying these
+    sacks in Home Depot — there is no quality assurance, the air coming from a compressor
+    that anybody can use, nobody knows what is going inside.
+rationale: Important counterpoint to the existing hbot-soft-vs-hard-chamber-distinction
+  claim in the catalogue — anchors clinical-grade definition.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

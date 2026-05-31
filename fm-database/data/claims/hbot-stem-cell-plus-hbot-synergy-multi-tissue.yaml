@@ -1,0 +1,22 @@
+slug: hbot-stem-cell-plus-hbot-synergy-multi-tissue
+statement: When stem-cell injections are combined with HBOT versus delivered alone,
+  synergistic beneficial effects have been demonstrated across multiple tissue types
+  in published studies — brain, spinal cord and peripheral nerves, myocardium, and
+  diabetic wounds. This validates HBOT's role as the supportive oxygenation and signalling
+  scaffold that allows injected stem cells to engraft and differentiate.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 4.5 Stem Cells — combination therapy
+  quote: The potential added value of using HBOT in addition to stem cell injections
+    was seen in a variety of tissues, including brain, spinal cord and peripheral
+    nerves, myocardium, and diabetic wounds. In all those studies, adding HBOT to
+    stem cell injections had synergistic beneficial effects.
+rationale: Useful when clients ask whether HBOT pairs with regenerative injection
+  therapies.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

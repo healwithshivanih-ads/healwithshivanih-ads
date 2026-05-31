@@ -1,0 +1,25 @@
+slug: hbot-no-fda-stroke-approval-no-ip-driver
+statement: Despite decades of mechanistic and clinical evidence supporting HBOT for
+  stroke recovery, FDA approval remains limited to 14 specific indications (radiation
+  injury, non-healing wounds, diabetic foot ulcer, gangrene, osteomyelitis, decompression
+  sickness, certain wound types, etc.) — not stroke. Efrati attributes this to the
+  absence of intellectual property — there is no patent on oxygen, so no commercial
+  sponsor will fund the multi-year regulatory submission process. Coaches should recognise
+  that lack of FDA stroke approval reflects regulatory economics rather than evidence
+  quality.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- stroke-recovery
+sources:
+- id: efrati-perlmutter-empowering-neurologist-2024
+  location: Podcast — regulatory discussion
+  quote: There is no IP — no intellectual property of oxygen — so actually there is
+    no commercial company who wants to push it forward and have the resources to do
+    it. There is nobody who can pay a regulatory company to take this and push it
+    through the FDA.
+rationale: Anchors a common client objection — "if it worked, why is not it covered?"
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

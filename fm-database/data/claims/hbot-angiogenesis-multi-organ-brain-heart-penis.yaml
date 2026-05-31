@@ -1,0 +1,24 @@
+slug: hbot-angiogenesis-multi-organ-brain-heart-penis
+statement: The same angiogenesis triggered by HBOT in brain tissue (demonstrated by
+  perfusion MRI and DTI) has been independently demonstrated in cardiac muscle (cardiac
+  MRI in Sagol cohort) and penile tissue (custom MRI protocol — erectile improvement
+  when the limitation is vascular rather than hormonal or neurological). The mechanism
+  is body-wide because the hyperoxic-hypoxic paradox triggers VEGF and HIF-1-alpha
+  systemically, not only at a target organ.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — multi-organ angiogenesis discussion
+  quote: The same angiogenesis that we have in the brain we can demonstrate in the
+    myocardium, just finished analysis in one of our research studies. The same process
+    in the penis — for people who do not have erection or good enough erection because
+    of blood flow, not testosterone or neurological damage, we can demonstrate this
+    angiogenesis.
+rationale: Important for client questions about HBOT for cardiac and male sexual health.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

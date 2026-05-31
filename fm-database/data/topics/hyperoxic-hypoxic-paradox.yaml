@@ -1,0 +1,45 @@
+slug: hyperoxic-hypoxic-paradox
+display_name: Hyperoxic-Hypoxic Paradox (HHP)
+aliases:
+- hhp
+- intermittent hyperoxia
+- oxygen fluctuation therapy
+summary: The hyperoxic-hypoxic paradox (HHP) is the cellular signalling phenomenon
+  that gives modern HBOT protocols their regenerative effect. Cells do not sense the
+  absolute oxygen level — they sense the FLUCTUATION. When a person breathes 100 percent
+  oxygen at 2 ATA, arterial oxygen rises from ~100 mmHg to ~1,500 mmHg; on removing
+  the mask the level falls back toward normal within minutes. That FAST DECLINE from
+  very high back to baseline is interpreted by cells as relative hypoxia and triggers
+  the same hypoxia-inducible factor (HIF-1-alpha) cascade as true hypoxia — angiogenesis
+  (via VEGF), stem cell proliferation and migration, mitochondrial biogenesis (via
+  SIRT1) — but WITHOUT the energy deficit or tissue damage that real hypoxia would
+  cause. In effect the body gets the regenerative signal of altitude/breath-holding
+  alongside the energy surplus needed to actually rebuild tissue. The paradox is the
+  mechanistic rationale for the modern HBOT protocol of repeated daily sessions with
+  air-brake cycles (20-minute mask-off intervals) rather than continuous high-pressure
+  exposure.
+key_mechanisms:
+- mitohormesis
+- mitochondrial-biogenesis
+- hif-1-alpha-cellular-cascade
+- stem-cell-mobilisation-via-paradox
+common_symptoms:
+- fatigue
+- brain-fog
+- cognitive-decline-symptoms
+related_topics:
+- hyperbaric-oxygen-therapy
+- exercise-mitochondrial-biogenesis
+- mitochondrial-health-nutrients
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — Efrati explanation of the paradox
+  quote: The body senses fluctuations, not absolute values. Taking the mask off making
+    a fast decline back to around the normal — this decline is interpreted by the
+    body as hypoxia, as lack of oxygen, even though we have extra oxygen. This is
+    what we call the hyperoxic hypoxic paradox.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

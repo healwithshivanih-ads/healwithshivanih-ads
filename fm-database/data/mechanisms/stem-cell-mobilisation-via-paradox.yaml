@@ -1,0 +1,48 @@
+slug: stem-cell-mobilisation-via-paradox
+display_name: Stem Cell Mobilisation via Intermittent Hyperoxia
+aliases:
+- hbot stem cell release
+- intermittent hyperoxia stem cell proliferation
+category: signaling
+summary: Adult stem cells — including hematopoietic, mesenchymal, neuronal (NSCs concentrated
+  in the hippocampus), and vasculogenic populations — exist in quiescent niches and
+  are released into circulation in response to specific physiological signals, classically
+  tissue injury and hypoxia. Intermittent hyperoxia delivered through HBOT mimics
+  the hypoxic-release signal via the hyperoxic-hypoxic paradox (HIF-1-alpha pathway)
+  WITHOUT requiring actual tissue oxygen deficit. The result is stem cell proliferation
+  in their niches, migration into circulation, and homing to tissues expressing repair-cytokine
+  gradients. Critical advantage over true hypoxia — stem cell differentiation and
+  tissue rebuilding are ATP-dependent processes that fail in oxygen-deprived environments,
+  so HBOT-mediated mobilisation pairs the recruitment signal with the energy substrate
+  needed for the cells to actually do their job. Demonstrated effects in human studies
+  — neuronal stem cell proliferation in hippocampus (post-stroke, post-TBI), vasculogenic
+  stem cells supporting angiogenesis, osteogenic mesenchymal stem cell activation,
+  muscle satellite cell engagement.
+upstream_drivers:
+- intermittent-hyperoxia
+- hif-1-alpha-cellular-cascade
+- tissue-injury-signalling
+downstream_effects:
+- neurogenesis
+- angiogenesis
+- tissue-regeneration
+- wound-healing
+related_mechanisms:
+- hif-1-alpha-cellular-cascade
+- mitochondrial-biogenesis
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+- stroke-recovery
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — Efrati on stem cell mobilisation in brain
+  quote: For the first time in humans, we can demonstrate that we can induce new blood
+    vessels in the brain, which we call angiogenesis in the brain, and we can induce
+    also neuronal stem cells proliferation and neurogenesis. And that is a huge breakthrough
+    because just like a wound in the leg, we can see it also in the brain.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

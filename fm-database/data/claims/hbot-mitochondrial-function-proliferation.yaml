@@ -1,0 +1,23 @@
+slug: hbot-mitochondrial-function-proliferation
+statement: In mid-age athletes following the Sagol HBOT protocol, mitochondrial proliferation
+  and improved mitochondrial function were demonstrated — reflecting that the hyperoxic-hypoxic
+  paradox triggers mitochondrial biogenesis (through SIRT1 and PGC-1-alpha signalling)
+  without the energetic stress that prolonged hypoxia would impose. This is a key
+  mechanism behind reported improvements in physical performance metrics.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — athletes section
+  quote: We have demonstrated on athletes mid-age, proliferation and improved function
+    of the mitochondria — all of these come together to a better performance from
+    different physical aspects, because we are actually inducing regeneration where
+    needed.
+rationale: Establishes mitochondrial benefit pathway for FM clients with fatigue/CFS
+  who may consider HBOT.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

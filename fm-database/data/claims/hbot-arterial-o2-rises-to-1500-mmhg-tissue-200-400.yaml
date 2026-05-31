@@ -1,0 +1,25 @@
+slug: hbot-arterial-o2-rises-to-1500-mmhg-tissue-200-400
+statement: In clinical HBOT delivering 100 percent oxygen at pressures exceeding 1
+  ATA, arterial PO2 typically exceeds 1,500 mmHg while tissue PO2 levels reach 200-400
+  mmHg. Because haemoglobin is already 94-99 percent saturated at normal atmospheric
+  conditions, the additional therapeutic effect in a hyperbaric environment derives
+  entirely from DISSOLVED plasma oxygen — the diffusion-gradient component that drives
+  oxygen from capillaries into mitochondria.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 4 Hyperoxic Hypoxic Paradox — HBOT physiology
+  quote: During HBOT, the arterial O2 tension typically exceeds 1500 mmHg, and levels
+    of 200-400 mmHg occur in tissues. In a normal individual at a normal environment
+    (20.8 percent oxygen at 1 ATA) the hemoglobin is almost entirely saturated (94-99
+    percent). Accordingly, when in a hyperbaric environment, the effect is only in
+    the dissolved oxygen — the fraction responsible for the diffusion gradient from
+    the capillaries to the mitochondria.
+rationale: Anchors the dissolved-oxygen-plasma physics that underlies all of HBOT.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

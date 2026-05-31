@@ -1,0 +1,25 @@
+slug: paradox-fluctuation-interpreted-as-hypoxia
+statement: Hadanny and Efrati's review formally establishes that at the cellular level,
+  fluctuations in free oxygen concentration — not the absolute level — drive HIF-1-alpha
+  expression. Cells interpret the change from normoxia to hypoxia OR the change from
+  hyperoxia back to normoxia as an oxygen shortage, inducing HIF-1-regulated gene
+  synthesis. The proposed mechanism involves reactive oxygen species availability
+  and scavenger enzymes (glutathione peroxidase, superoxide dismutase) influencing
+  PHD-mediated hydroxylation of HIF-1-alpha.
+evidence_tier: strong
+linked_to_topics:
+- hyperoxic-hypoxic-paradox
+- hyperbaric-oxygen-therapy
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 4.1 Hypoxia-Inducible Factor
+  quote: It has been proposed that the relative changes in oxygen availability rather
+    than constant hypoxia or hyperoxia have a more dominant effect on HIF expression.
+    According to this hypothesis, the cells interpret the change from normoxia to
+    hypoxia or the change back to normoxia following a hyperoxic exposure as an oxygen
+    shortage and induce HIF-1-regulated gene synthesis.
+rationale: Peer-reviewed anchor for the paradox mechanism cited across the catalogue.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

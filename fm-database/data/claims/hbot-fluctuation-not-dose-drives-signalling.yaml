@@ -1,0 +1,25 @@
+slug: hbot-fluctuation-not-dose-drives-signalling
+statement: Sonners' clinical observation aligned with Efrati's published mechanism
+  — the signalling switch that drives stem cell mobilisation, SIRT1 upregulation,
+  and mitochondrial biogenesis is the FLUCTUATION of oxygen and pressure, not the
+  absolute dose. Maximising dose alone (holding at the highest tolerable pressure
+  for as long as possible) misses most of the therapeutic benefit. Modern protocols
+  intentionally introduce wave-cycles of both pressure and oxygen percentage during
+  a single session to maximise cellular signalling switches per unit time.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: sonners-mercola-podcast-2024
+  location: Podcast — fluctuation discussion
+  quote: If all we cared about was the physical dose, we would stay at 100 percent
+    oxygen as long as we could at the highest pressure we could tolerate. I do not
+    think that is where the majority of benefit exists. Every time you change pressure
+    or percentage of oxygen, you are stimulating HIF-1-alpha, changing reactive oxygen
+    species load, signalling sirtuins, creating hormetic effect.
+rationale: Mechanistic explanation for the air-brake / fluctuation protocol.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

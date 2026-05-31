@@ -1,0 +1,23 @@
+slug: hbot-stroke-lesion-size-reduction-imaging
+statement: A randomised study from the Sagol Center on chronic post-stroke patients
+  demonstrated significant reduction in stroke lesion size on imaging in the HBOT
+  group versus sham, alongside clinical improvement. The advance over prior trials
+  was combining metabolic (SPECT/perfusion) imaging with anatomical (MRI) imaging
+  to identify which tissue was hibernating versus dead — making outcome both predictable
+  and visualisable for the patient.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- stroke-recovery
+sources:
+- id: efrati-perlmutter-empowering-neurologist-2024
+  location: Podcast — Israeli stroke study
+  quote: In this study, for the first time we did a combination between metabolic
+    imaging of the brain to the anatomical imaging. By doing that, we understand for
+    the first time in a clear-cut fashion — because you can see it — what we are actually
+    doing.
+rationale: Provides peer-reviewed evidence backing for HBOT in chronic stroke.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

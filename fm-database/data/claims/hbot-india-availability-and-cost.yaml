@@ -1,0 +1,25 @@
+slug: hbot-india-availability-and-cost
+statement: Medical-grade hyperbaric chambers are available in India at Apollo Hyperbaric
+  Centers (Chennai, Hyderabad, Delhi) and a small number of standalone clinics (Oxygenesis
+  in Mumbai and Bangalore offer mild HBOT at ~1.3-1.5 ATA). Per-session costs are
+  roughly INR 3,000-5,000 — substantially lower than the US average of USD 175 per
+  session — but most Indian centres run wound-care or DCS protocols rather than the
+  60-session Sagol-style longevity protocol. India-specific coach guidance — confirm
+  pressure capability (2.0-2.4 ATA), session length, and air-brake inclusion before
+  recommending any centre for neuro or longevity indications.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sonners-mercola-podcast-2024
+  location: General accessibility context — applied to India market by coach
+  quote: The national average is probably around 175 dollars an hour — there is definitely
+    places that are closer to like 500. There is a few places around the country that
+    are closer to even 80 or 90. The national average is probably pretty close to
+    around 175 a session especially if you are buying them in packages.
+rationale: India-specific accessibility note for clients asking practical questions
+  about cost and centres.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

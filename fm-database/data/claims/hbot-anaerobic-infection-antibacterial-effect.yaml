@@ -1,0 +1,24 @@
+slug: hbot-anaerobic-infection-antibacterial-effect
+statement: HBOT works against anaerobic bacterial infections (gangrene, necrotising
+  fasciitis, certain bone infections) through multiple mechanisms — anaerobes cannot
+  survive in high-oxygen environments, reactive oxygen species activate white-blood-cell
+  bacterial killing, oxygen blocks toxin activity in some species, and high oxygen
+  helps break down protective biofilms. This is why HBOT remains an evidence-based
+  insurance-covered treatment for those acute severe infections.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sonners-mercola-podcast-2024
+  location: Podcast — anaerobic infection discussion
+  quote: Even traditionally gangrene or necrotising fasciitis — one of the main reasons
+    hyperbaric works in those severe conditions is those bacteria are anaerobic, they
+    do not live in high oxygen environments. Putting a patient in high oxygen environment
+    massively decreases that bacteria's ability to function, helps to kill that infection,
+    helps to block the toxicity, helps to break down biofilms.
+rationale: Evidence-based core indication; useful for explaining FDA-approved use
+  cases.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

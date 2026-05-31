@@ -1,0 +1,25 @@
+slug: efrati-life-protocol-60-sessions-5-per-week
+statement: The Sagol Center longevity protocol used in Efrati's randomised trials
+  consists of 60 daily HBOT sessions delivered 5 days per week (approximately 12 weeks
+  total), with each session running ~2 hours at clinical pressures (~2 ATA, 100 percent
+  oxygen via mask) and incorporating intermittent air-brake cycles every 20 minutes
+  to trigger the hyperoxic-hypoxic paradox. Coach scope — pressures, durations, and
+  total session counts must be set by a qualified hyperbaric physician based on the
+  individual's indication and pre-treatment imaging.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — protocol description
+  quote: We need 60 sessions, six zero sessions, daily session, each session two hours
+    generating the fluctuation that we discussed in five days a week. So it is not
+    magic — with each session to the other we are increasing the stem cells, bringing
+    the mediators that are responsible for regeneration.
+rationale: Anchors any coach client question about HBOT dosing to the published Sagol
+  protocol.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

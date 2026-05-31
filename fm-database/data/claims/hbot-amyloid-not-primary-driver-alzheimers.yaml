@@ -1,0 +1,25 @@
+slug: hbot-amyloid-not-primary-driver-alzheimers
+statement: Efrati's view aligned with current FM thinking — amyloid plaque is a BIOMARKER
+  of Alzheimer pathology, not the primary cause. Decades of pharmaceutical investment
+  in anti-amyloid antibodies has succeeded at clearing plaque without producing the
+  expected clinical change, suggesting the true primary driver lies upstream — often
+  small-vessel ischaemia and chronic neuroinflammation that produce amyloid as a downstream
+  consequence. In a mouse Alzheimer model, HBOT reduced amyloid plaque by targeting
+  upstream inflammation rather than the plaque itself.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- cognitive-decline
+sources:
+- id: efrati-perlmutter-empowering-neurologist-2024
+  location: Podcast — Alzheimer's mechanism discussion
+  quote: Today we understand that the amyloid is not the primary cause of the disease
+    — it is actually a biomarker. After investing a lot of years in research and development
+    of antibodies that can take the amyloid out — we can take it down, but it does
+    not make a significant clinical change. The primary cause can be actually ischemia,
+    lack of perfusion, hypoxia, and inflammation as part of that.
+rationale: Major FM-aligned position on Alzheimer's pathogenesis worth surfacing.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

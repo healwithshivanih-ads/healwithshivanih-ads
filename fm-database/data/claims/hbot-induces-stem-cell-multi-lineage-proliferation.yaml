@@ -1,0 +1,27 @@
+slug: hbot-induces-stem-cell-multi-lineage-proliferation
+statement: Hadanny and Efrati's review documents that HBOT promotes proliferation
+  across multiple stem cell lineages — neuronal stem cells (NSCs in the hippocampus),
+  vasculogenic stem cells supporting angiogenesis, colonic stem cells supporting mucosal
+  healing, mesenchymal stem cells with improved osteogenic properties, and muscle
+  myoblasts enhancing muscle regeneration. The advantage of HBOT mobilisation over
+  true hypoxia is that stem cell DIFFERENTIATION is energy-dependent and fails in
+  low-oxygen environments — HBOT pairs the signal with the substrate.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: hadanny-efrati-2020-hyperoxic-hypoxic-paradox
+  location: Section 4.5 Stem Cells
+  quote: HBOT promotes neuronal stem cell proliferation, stimulates vasculogenic stem
+    cell growth and differentiation, stimulates colonic stem cells and induces mucosal
+    healing, improves the osteogenic properties of mesenchymal stem cells, and increases
+    myoblast growth rate and enhances muscle regeneration. The main advantage of stimulating
+    stem cells by intermittent hyperoxia instead of hypoxia, is that stem cell proliferation
+    and differentiation, similar to any other regenerative process, is energy-dependent
+    and cannot be accomplished in a hypoxic environment.
+rationale: Comprehensive lineage-level evidence base for HBOT stem cell effects.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

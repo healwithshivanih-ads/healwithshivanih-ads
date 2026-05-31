@@ -1,0 +1,48 @@
+slug: hif-1-alpha-cellular-cascade
+display_name: HIF-1-alpha Hypoxia-Inducible Factor Cascade
+aliases:
+- hypoxia-inducible factor
+- hif-1a
+- hif1a
+- hif-1alpha pathway
+category: signaling
+summary: Hypoxia-Inducible Factor 1-alpha (HIF-1-alpha) is the master transcription
+  factor that orchestrates the cell's response to oxygen scarcity. In normoxia, HIF-1-alpha
+  is continuously degraded by prolyl hydroxylase (PHD) tagging and proteasomal breakdown.
+  When oxygen drops — or when the cell perceives a fast oxygen DROP after hyperoxic
+  exposure (the hyperoxic-hypoxic paradox) — PHD is inhibited, HIF-1-alpha stabilises,
+  enters the nucleus, dimerises with HIF-1-beta, and transcribes hundreds of target
+  genes including VEGF (angiogenesis), erythropoietin (red cell production), glycolytic
+  enzymes (metabolic adaptation), and stem-cell-mobilising factors. The cascade is
+  energy-dependent — stem-cell proliferation and tissue rebuilding cannot happen in
+  true hypoxia for lack of ATP, but CAN happen when the HIF-1-alpha signal is triggered
+  via intermittent hyperoxia (HBOT) while energy supply remains abundant. Dysregulated
+  HIF signalling underlies poor wound healing in diabetes, accelerated aging, and
+  impaired post-stroke recovery.
+upstream_drivers:
+- tissue-hypoxia
+- intermittent-hyperoxia
+- aging-related-prolyl-hydroxylase-decline
+downstream_effects:
+- angiogenesis
+- vegf-upregulation
+- stem-cell-proliferation
+- mitochondrial-biogenesis
+related_mechanisms:
+- mitohormesis
+- mitochondrial-biogenesis
+linked_to_topics:
+- hyperoxic-hypoxic-paradox
+- hyperbaric-oxygen-therapy
+sources:
+- id: efrati-insidetracker-podcast-2024-cognition
+  location: Podcast — Efrati explanation of HIF-1-alpha mechanism
+  quote: HIF is going up — that stands for hypoxic induced factor — and the promoter
+    of the trigger VEGF vascular endothelial growth factor, mitochondria patterns
+    changing the metabolism, generation of new blood vessels, stem cells proliferation,
+    all the elements that are needed for repair.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

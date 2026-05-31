@@ -1,0 +1,24 @@
+slug: hbot-molecular-hydrogen-co-therapy
+statement: Co-administration of molecular hydrogen (H2) 45-60 minutes before an HBOT
+  session helps buffer the oxidative stress that intense hyperoxia generates, while
+  preserving the beneficial cell signalling. Unlike high-dose vitamin C or glutathione
+  (which act as direct antioxidants and may dampen the hormetic signalling itself),
+  H2 stimulates the Nrf2 pathway and lets the body's own antioxidant capacity (SOD,
+  catalase, glutathione) up-regulate only as needed. Particularly useful for oxidative-stress-sensitive
+  clients (chronic Lyme, ME/CFS).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+sources:
+- id: sonners-mercola-podcast-2024
+  location: Podcast — antioxidant co-therapy discussion
+  quote: Through conversations with you, molecular hydrogen has become one of my most
+    favorite antioxidants — we will do somewhere between 45 minutes to an hour before
+    exposures and start loading people with molecular hydrogen as a mechanism to reduce
+    the consequences but there are benefits.
+rationale: Practical co-therapy guidance for clients undertaking HBOT protocols.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
