@@ -1,0 +1,44 @@
+slug: mitochondria-as-immune-sensors
+display_name: Mitochondria as Cellular Immune Sensors
+aliases:
+- extracellular atp danger signal
+- eatp signalling
+category: immune
+summary: Naviaux's paradigm-shifting insight that mitochondria are not just energy
+  factories — they are the cell's primary immune sensors. When they detect a change
+  in the supply of upstream substrates (often the first sign of viral hijacking),
+  they downregulate ATP synthesis AND export ATP to the extracellular space, where
+  it acts as a danger-associated molecular pattern (eATP / DAMP) that recruits white
+  blood cells and triggers inflammation in neighbouring cells. This extracellular
+  ATP halo is the FIRST signal of inflammation in the body — preceding cytokines like
+  interferon-gamma by hours. Mitochondria also physically change shape during CDR
+  — from connected spaghetti-like networks (high ATP output) to fragmented "meatball"
+  forms (low output, defensive). Recovery requires fission/fusion to return to networked
+  form.
+upstream_drivers:
+- chronic-inflammation
+- hpa-axis-dysregulation
+downstream_effects:
+- chronic-inflammation
+- mitochondrial-dysfunction
+- neuroinflammation
+related_mechanisms:
+- chronic-inflammation
+- mitochondrial-dysfunction
+- inflammatory-cytokine-elevation
+linked_to_topics:
+- cell-danger-response
+- chronic-fatigue-syndrome
+sources:
+- id: gordon-energy-blueprint-podcast-2026
+  location: Podcast — mitochondria as immune sensors segment
+  quote: The idea that the mitochondria were actually are immune sensors. They sense
+    change. When the mitochondria sense a little bit of danger, they start to put
+    more ATP outside the cell. This is probably the first signal of inflammation in
+    the body. The mitochondria go from connected spaghetti-like things to like what
+    he calls meatball — really separate.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

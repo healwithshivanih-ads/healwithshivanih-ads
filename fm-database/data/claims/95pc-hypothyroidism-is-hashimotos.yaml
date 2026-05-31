@@ -1,0 +1,23 @@
+slug: 95pc-hypothyroidism-is-hashimotos
+statement: Approximately 95% of hypothyroidism is autoimmune Hashimoto's, with only
+  the remaining 5-10% caused by over-exercise/under-eating, certain medications, or
+  radiation/chemotherapy. This makes a TPO + TGab antibody screen mandatory for any
+  client with hypothyroid symptoms — running only TSH and free T4 (the conventional
+  default) misses the underlying autoimmunity that needs lifestyle intervention.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+sources:
+- id: hornaman-energy-blueprint-podcast-2026
+  location: Podcast — Hashimoto's prevalence segment
+  quote: 95% of all hypothyroidism is Hashimoto's, which is the autoimmune form of
+    hypothyroidism. The other 5% is usually caused by either over-exercising, under-eating,
+    extreme dieting, certain medications, cancer with radiation or chemotherapy near
+    the site.
+rationale: Drives lab-ordering coaching — TSH alone is not enough; TPO + TGab + free
+  T3 + reverse T3 are needed at intake.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

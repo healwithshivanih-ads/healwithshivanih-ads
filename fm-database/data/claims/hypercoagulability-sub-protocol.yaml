@@ -1,0 +1,26 @@
+slug: hypercoagulability-sub-protocol
+statement: 'A subset of cognitive-decline clients have a genetic hypercoagulable state
+  (factor V Leiden, prothrombin variants, MTHFR-driven hyperhomocysteinaemia) which
+  contributes to microinfarcts and reduced cerebral perfusion. Bredesen''s precision
+  sub-protocol uses nattokinase and/or pycnogenol — sometimes lumbrokinase — to support
+  flow. CRITICAL contraindication: clients with a bleeding tendency, on anticoagulants
+  such as warfarin or DOACs, or with prior haemorrhagic stroke must NOT take these
+  supplements; coach refers back to the prescribing clinician.'
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- recode-protocol
+- cognitive-decline
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — hypercoagulability segment
+  quote: For some people they have a hypercoagulable state. You can pick that up on
+    genetics and we treat them with nattokinase and/or pycnogenol, sometimes lumbrokinase.
+    If you have a bleeding tendency you don't want to be on those things. You have
+    to kind of decide am I more on the hypercoagulable side or am I more on the bleeding
+    tendency side.
+rationale: Surfaces a real interaction the coach must screen for before any nattokinase
+  recommendation; pairs with current-medication intake field.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

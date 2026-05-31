@@ -1,0 +1,27 @@
+slug: postbiotic-definition-distinction
+statement: Hawrelak clarifies the regulatory definition — a PROBIOTIC must be (1)
+  ALIVE, (2) administered in an adequate dose, AND (3) supported by published evidence
+  that the specific strain at the specific dose confers a health benefit. Supplements
+  containing dead bacteria are POSTBIOTICS, not probiotics — they can still be clinically
+  helpful (e.g. heat-killed Lactobacillus plantarum has demonstrated immune-modulating
+  effects) but the mechanism, evidence, and labelling are distinct. Strains with no
+  published research are not probiotics by this definition, even when sold as such.
+  Coach implication — check label for strain name + CFU dose + research before recommending.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- microbiome
+- gut-microbiome
+sources:
+- id: hawrelak-energy-blueprint-podcast-2026
+  location: Podcast — definition segment
+  quote: The strict definition is live microbes that when administered in adequate
+    amounts confer a health benefit. If you have a supplement that contains dead bacteria
+    it can still be very helpful but it won't be a probiotic at that point — it should
+    be termed a postbiotic. If you have a strain that has no research on it at all,
+    they wouldn't call it a probiotic.
+rationale: Helps coach decode supplement labels — "X billion CFU multistrain blend"
+  with no named strains is a marketing claim, not a probiotic.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

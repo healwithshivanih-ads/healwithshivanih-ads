@@ -1,0 +1,34 @@
+slug: molecular-mimicry-gluten-thyroid
+display_name: Gluten-Thyroid Molecular Mimicry
+aliases:
+- gliadin thyroid cross reactivity
+summary: The hypothesis that the molecular structure of gluten gliadin closely resembles
+  that of thyroid peroxidase (TPO) and thyroglobulin (TGab), so that TPO/TGab antibodies
+  generated in response to gluten exposure cross-react and attack thyroid tissue.
+  Hornaman positions this as a central driver of the Hashimoto's epidemic — denatured
+  wheat, rising gluten content, and constant exposure produce sustained B-cell activation
+  against gluten that overlaps with self-tissue. Coach implication — for any client
+  with elevated TPO/TGab antibodies, a 90-day strict gluten-free trial is a high-leverage
+  first move regardless of negative coeliac screening.
+key_mechanisms:
+- chronic-inflammation
+common_symptoms:
+- fatigue
+- brain-fog
+related_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+- thyroid-dysfunction
+sources:
+- id: hornaman-energy-blueprint-podcast-2026
+  location: Podcast — gluten molecular mimicry segment
+  quote: Gluten is a molecular structure that is very similar to the thyroid gland.
+    We call it molecular mimicry. Your soldiers — your TPO and TG antibodies — when
+    you eat gluten go 'there's an invader that looks like the thyroid gland that we
+    like to destroy. Let's go kill the invader.' They can't really tell the difference
+    between your thyroid gland and the gluten molecule.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

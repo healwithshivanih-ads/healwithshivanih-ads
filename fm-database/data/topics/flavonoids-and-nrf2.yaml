@@ -1,0 +1,41 @@
+slug: flavonoids-and-nrf2
+display_name: Flavonoids and Nrf2 Antioxidant Pathway
+aliases:
+- nrf2 activation
+- polyphenol nrf2 signalling
+summary: Over 8,000 flavonoids have been identified — the plant pigments responsible
+  for the medicinal effects of foods like dark chocolate, berries, pomegranate, green
+  tea, and traditional botanicals (Ginkgo, St John's Wort, bilberry). When ingested,
+  flavonoids are immediately glucuronidated and circulate in INACTIVE bound form —
+  this is why early studies claimed they had no nutritional value. But cells under
+  stress (inflammation, mitochondrial damage) secrete glucuronidase enzyme that LOCALLY
+  cleaves the bond, releasing the active flavonoid exactly where it is needed. The
+  freed flavonoid enters the cell, traffics to nucleus AND mitochondria, and modulates
+  gene expression — primarily via Nrf2 activation of endogenous antioxidant defences
+  (glutathione, SOD, catalase) and direct mitochondrial repair signals. This is "biological
+  response modification" — context-aware pharmacology nature provides for free. Coach
+  prescription — daily diverse flavonoid-rich foods (5+ colours) rather than chasing
+  one direct antioxidant in pill form.
+key_mechanisms:
+- mitochondrial-dysfunction
+- chronic-inflammation
+common_symptoms:
+- fatigue
+- brain-fog
+related_topics:
+- mitochondrial-health-nutrients
+- cell-danger-response
+sources:
+- id: murray-energy-blueprint-podcast-2026
+  location: Podcast — flavonoids segment
+  quote: There are over 8,000 flavonoids identified chemically. They are nature's
+    biological response modifiers. In areas of inflammation or damage or low mitochondrial
+    function, cells start secreting a compound called glucuronidase. That enzyme breaks
+    the bond and frees up that flavonoid that then gets transferred into the cell
+    — to the nucleus and the mitochondria. They showed quercetin was able to repair
+    that mitochondria.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

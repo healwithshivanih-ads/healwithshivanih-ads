@@ -1,0 +1,32 @@
+slug: lipotoxicity-and-visceral-ectopic-fat
+statement: Once subcutaneous fat cells reach storage capacity and become lipid-overloaded,
+  they release fatty acids back into circulation. The body cannot tolerate free fatty
+  acids at high concentration (LIPOTOXICITY) so it deposits them in ECTOPIC sites
+  that should never store fat — visceral adipose around organs, liver (NAFLD), muscle
+  (intramyocellular lipid), pancreas (beta-cell dysfunction), heart. Each of these
+  ectopic deposits drives its own pathology — NAFLD progresses to NASH and fibrosis;
+  pancreatic ectopic fat impairs insulin secretion; cardiac ectopic fat drives heart
+  failure. Coach implication — visceral adiposity (waist circumference > 80 cm women,
+  > 94 cm men) is a more important metric than BMI for predicting trouble.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- structural-cause-of-insulin-resistance
+- insulin-resistance
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+- chronic-inflammation
+- visceral-adipose-inflammation
+sources:
+- id: leaf-energy-blueprint-podcast-2026
+  location: Podcast — lipotoxicity ectopic fat segment
+  quote: These fat cells that are now lipid overloaded start secreting their fat back
+    into circulation. Having a bunch of fatty acids in your blood can cause damage
+    to tissues — lipotoxicity. So your body says we need to get out of the blood.
+    So what we're going to do is start putting it in places where it shouldn't go.
+    This is what leads to the development of visceral fat.
+rationale: Concrete tracking metric — coach uses waist circumference + waist:height
+  ratio over BMI for at-risk clients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

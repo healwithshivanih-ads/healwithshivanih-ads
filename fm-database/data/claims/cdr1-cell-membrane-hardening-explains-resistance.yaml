@@ -1,0 +1,30 @@
+slug: cdr1-cell-membrane-hardening-explains-resistance
+statement: In CDR1, one of the first changes is hardening of the cell membrane to
+  reduce the cell's ability to receive incoming molecular information. This explains
+  common clinical patterns in chronic illness — clients whose thyroid hormone "doesn't
+  work" despite correct dosing, whose insulin sensitivity drops without weight gain,
+  whose sex-hormone replacement underperforms. The hormone is present in the blood
+  but the cells in CDR1 cannot receive the signal. Replacing more hormone does not
+  fix the receptor problem; resolving the danger signal does. Coach script — "your
+  hormone level may be fine but your cells may not be listening" gives a kinder frame
+  than "your thyroid medication doesn't work."
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cell-danger-response
+- chronic-fatigue-syndrome
+- hypothyroidism
+linked_to_mechanisms:
+- mitochondria-as-immune-sensors
+sources:
+- id: gordon-energy-blueprint-podcast-2026
+  location: Podcast — CDR1 membrane segment
+  quote: When the cell goes into the CDR1, one of the first things it does is it hardens
+    the membrane. It stops receiving information as well. That's where people start
+    noticing their thyroid isn't working or the hormones aren't working as well because
+    some of their cells are not responding to the information.
+rationale: Lets coach reframe stubborn hormone-resistance pictures without abandoning
+  the client to "try a higher dose" loops.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,25 @@
+slug: cognoscopy-blood-screen-at-40
+statement: Bredesen recommends a "cognoscopy" — a baseline cognitive risk blood panel
+  — for every adult aged 40 or over, analogous to the colonoscopy at 50. Core markers
+  include pTau-181, the A-beta 42:40 ratio (both indicate ongoing Alzheimer's-related
+  activity in the brain), and GFAP (an emerging early astrocyte-activation marker
+  that, when normal, is strongly reassuring because it rises so early in the disease
+  arc).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cognitive-decline
+- recode-protocol
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — cognoscopy segment
+  quote: Just as we know you should get a colonoscopy when you turn 50, get a cognoscopy
+    if you're 40 or over. Find out where you stand. Now you can include pTau-181 and
+    A-beta 42:40 ratio. Pretty soon we'll be able to include GFAP, which is even an
+    earlier marker — not as specific for Alzheimer's, but it's an early marker of
+    astrocyte activation.
+rationale: Concrete coach handoff — three blood markers a client can ask their physician
+  to order from age 40, before symptoms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

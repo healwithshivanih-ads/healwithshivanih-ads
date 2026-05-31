@@ -1,0 +1,44 @@
+slug: amyloid-as-innate-immune-response
+display_name: Amyloid Beta as Innate-Immune Sequesterant
+aliases:
+- amyloid antimicrobial peptide
+- amyloid as antimicrobial
+category: immune
+summary: Reframing of amyloid beta plaques from "the cause of Alzheimer's" to a beautiful
+  innate-immune response. Amyloid is an antimicrobial peptide (first shown by Robert
+  Moir and Rudy Tanzi at Harvard) with antiviral, antibacterial, and antifungal activity
+  that physically sequesters pathogens. It is also stored as innate-immune memory
+  in bone marrow, tissue macrophages, and endothelial cells. The therapeutic implication
+  is that anti-amyloid drugs that simply clear the peptide without addressing what
+  triggered it (chronic infection, mycotoxins, inflammation, insulin resistance, ACEs)
+  leave the underlying network insufficiency intact — explaining why monoclonal antibody
+  trials such as lecanemab show faster brain atrophy than the untreated controls.
+  The functional approach instead removes the upstream insults (pathogens, toxins,
+  inflammatory diet) so amyloid is no longer recruited.
+upstream_drivers:
+- chronic-inflammation
+- hpa-axis-dysregulation
+- mitochondrial-dysfunction
+- insulin-resistance
+downstream_effects:
+- neuroinflammation
+- oxidative-stress
+related_mechanisms:
+- chronic-inflammation
+- neuroinflammation
+- inflammatory-cytokine-elevation
+linked_to_topics:
+- cognitive-decline
+- recode-protocol
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — amyloid reframing segment
+  quote: The amyloid is there for a reason. It turns out that it is a beautiful response
+    to various insults. It is an antimicrobial peptide that's been shown beautifully
+    and first discovered actually by Professor Robert Moir and Rudy Tanzi at Harvard.
+    It has antiviral activity. It has antibacterial activity. It has antifungal activity.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

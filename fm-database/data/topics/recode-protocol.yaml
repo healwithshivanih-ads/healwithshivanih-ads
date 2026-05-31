@@ -1,0 +1,51 @@
+slug: recode-protocol
+display_name: ReCODE Protocol (Reversal of Cognitive Decline)
+aliases:
+- bredesen protocol
+- reversal of cognitive decline
+- end of alzheimers protocol
+summary: 'Bredesen''s precision-medicine framework for preventing and reversing early-stage
+  Alzheimer''s disease, framed as treating a network insufficiency rather than a single
+  molecular target. The protocol layers a seven-pillar CORE applied to every client
+  (diet, exercise, sleep, stress, brain training, detoxification, targeted supplements)
+  with PRECISION sub-protocols driven by individual testing — pathogen eradication
+  (P. gingivalis, HSV-1, HHV-6A), hypercoagulability support (nattokinase, pycnogenol,
+  lumbrokinase), mycotoxin clearance, bioidentical hormone replacement when neurosteroids
+  (estradiol, progesterone, testosterone, pregnenolone, DHEA) are low, and APOE4-aware
+  inflammation reduction. Foundational premise — Alzheimer''s pathology starts 20
+  years before diagnosis through two dominant drivers: too little energetics and too
+  much inflammation ("cytokine drizzle"). Reported outcomes in Bredesen''s published
+  cohort include 84% improvement in MCI (mild cognitive impairment) and approximately
+  100% improvement in SCI (subjective cognitive impairment), with documented sustained
+  improvement over a decade in early cases.'
+key_mechanisms:
+- hpa-axis-dysregulation
+- chronic-inflammation
+- mitochondrial-dysfunction
+- insulin-resistance
+common_symptoms:
+- brain-fog
+- fatigue
+- memory-loss
+related_topics:
+- cognitive-decline
+- insulin-resistance-metabolic-syndrome
+- hpa-axis-cortisol-regulation
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — early framework segment
+  quote: Alzheimer's disease now is really a network insufficiency. You have this
+    amazing network, you have about a 100 billion neurons. Each one has nearly 10,000
+    connections on average. When the supply is outstripped by the demand chronically
+    or repeatedly, of course, it has to downsize.
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — protocol structure segment
+  quote: We're going to do a core piece which is seven things for everybody. Just
+    some of the things you mentioned, diet, exercise, sleep, stress, brain training,
+    detox, and so many of us are exposed to toxins. And then some targeted supplements.
+    These are all benign. So the main side effect of our protocol is better health.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

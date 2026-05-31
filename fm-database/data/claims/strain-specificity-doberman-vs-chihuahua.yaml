@@ -1,0 +1,29 @@
+slug: strain-specificity-doberman-vs-chihuahua
+statement: Probiotic strain specificity is NOT marketing — different strains within
+  the same species behave as differently as a Doberman and a Chihuahua. A 1970s study
+  found only 4% of 90 strains of Lactobacillus fermentum survived stomach acid + bile
+  passage. Lactobacillus reuteri DSM-17938 (Biogaia) at 100-200 million CFU prevents
+  SIBO in 94% of clients starting PPIs (vs 44% on placebo); a 60-billion-CFU four-strain
+  blend in a 1,000+ patient Lancet trial showed NO benefit for antibiotic-associated
+  diarrhoea. Coach implication — ask "which strain" and "what dose" before recommending
+  any probiotic; pick by published evidence for the specific condition (ProbioticAdvisor.com
+  is the curated database Hawrelak runs).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- microbiome
+- gut-microbiome
+sources:
+- id: hawrelak-energy-blueprint-podcast-2026
+  location: Podcast — strain specificity segment
+  quote: A good analogy here is breeds of dog — all dogs are canids, they all have
+    certain traits in common, but there are differences. There was a study in 2010
+    — 90 strains of Lactobacillus fermentum exposed to stomach acid and bile — only
+    4% could tolerate those things. Lactobacillus reuteri DSM-17938 — SIBO developed
+    in 56% of placebo group versus 6% in probiotic group. A Lancet study with 60 billion
+    CFU four strains for antibiotic-associated diarrhoea — did not work.
+rationale: Lets coach refuse "any probiotic will do" approach and choose strains by
+  published evidence per indication.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

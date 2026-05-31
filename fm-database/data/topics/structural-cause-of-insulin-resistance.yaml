@@ -1,0 +1,44 @@
+slug: structural-cause-of-insulin-resistance
+display_name: Structural Cause of Insulin Resistance (Cell Dysfunction)
+aliases:
+- fat cell overflow hypothesis
+- lipotoxicity model of t2d
+summary: Leaf's reframing of type-2 diabetes — the root cause is STRUCTURAL cellular
+  dysfunction (small under-used muscle tissue + overfilled lipid-overloaded fat cells),
+  NOT a biochemistry problem of high glucose to be treated by lowering glucose. The
+  fat-cell-overflow cascade — (1) lifetime calorie excess fills adipocytes to capacity;
+  (2) cells withdraw insulin receptors as a SELF-PROTECTIVE mechanism (cells are intelligent,
+  not defective); (3) pancreas pumps more insulin to force storage; (4) fat cells
+  become lipid-overloaded, trigger local immune attack, release fatty acids back into
+  blood; (5) lipotoxic fatty acids deposit in visceral and ectopic sites (liver =
+  NAFLD, muscle, pancreas, heart) where they should never be. Muscle tissue handles
+  80% of post-meal glucose disposal — small/sedentary muscle = no glucose sink. Coach
+  implication — strength training + walking 12,000 steps + sleep + calorie alignment
+  is the structural treatment; metformin / berberine / keto manage SYMPTOMS without
+  changing structure.
+key_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+- mitochondrial-dysfunction
+common_symptoms:
+- fatigue
+- brain-fog
+- weight-gain
+related_topics:
+- insulin-resistance
+- insulin-resistance-metabolic-syndrome
+- exercise-mitochondrial-biogenesis
+sources:
+- id: leaf-energy-blueprint-podcast-2026
+  location: Podcast — structural cause segment
+  quote: The more that you dig, the more that you realize that the cause of diabetes
+    is fundamentally cellular dysfunction. Your cells are not structurally robust
+    and because structure dictates function their function is no longer advantageous
+    to your health. The most common cause of insulin resistance is because their fat
+    cells have stored so much energy that the cell says hey I can't put more energy
+    inside me so I'm going to shut myself off from insulin signal.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,43 @@
+slug: cell-danger-response
+display_name: Cell Danger Response (Naviaux CDR Framework)
+aliases:
+- cdr
+- naviaux cdr
+- salugenesis
+summary: Robert Naviaux's reframing of mitochondrial chronic illness — mitochondria
+  are not primarily ATP factories that "break" in disease; they are immune sensors
+  that detect changes in cellular surroundings and trigger a stereotyped defence cascade
+  called the Cell Danger Response when they sense pathogenic, toxic, or metabolic
+  threats. CDR has THREE sequential stages — CDR1 (inflammatory signalling, ATP released
+  to cell surface as a "danger halo" that recruits the innate immune system; cell
+  membrane hardens reducing hormonal and signalling input); CDR2 (proliferative repair,
+  new cell growth — explains atheromas, fibrosis, some cancer behaviour); CDR3 (restoration
+  of cell-to-cell communication and reintegration with neighbours). Chronic illness
+  is the state where a MOSAIC of cells in various organs is stuck mid-cycle — not
+  all cells, just enough to disrupt whole-body symphony. Salugenesis is the parallel
+  concept — the active, multi-signal process the body must navigate to exit CDR and
+  return to health.
+key_mechanisms:
+- mitochondrial-dysfunction
+- chronic-inflammation
+- hpa-axis-dysregulation
+common_symptoms:
+- fatigue
+- brain-fog
+related_topics:
+- chronic-fatigue-syndrome
+- mitochondrial-health-nutrients
+- mast-cell-activation-syndrome
+sources:
+- id: gordon-energy-blueprint-podcast-2026
+  location: Podcast — three stages of CDR segment
+  quote: Dr Naviaux's created three stages. In first stage, there's a lot of inflammatory
+    noise happening. In the second stage, there's a lot of growth happening — that's
+    when you get things like atheromas, calcifications in your blood vessels. CDR2
+    is also where cancers are. CDR3 is when the cells have repaired and now they have
+    to restore cell-to-cell communication.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

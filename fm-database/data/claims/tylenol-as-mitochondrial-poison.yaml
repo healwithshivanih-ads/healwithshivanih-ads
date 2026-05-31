@@ -1,0 +1,29 @@
+slug: tylenol-as-mitochondrial-poison
+statement: Acetaminophen (Tylenol / paracetamol) is one of the most damaging mitochondrial
+  toxins in common use — every dose dramatically depletes hepatic and systemic glutathione
+  stores, leaving mitochondria vulnerable to oxidative damage. Approximately 50 million
+  Americans take acetaminophen at least weekly, often for "minor" aches or as a sleep
+  aid in PM formulations. Coach intake screen — ask every fatigue client about acetaminophen
+  frequency; consider N-acetylcysteine (NAC) referral to clinician for clients who
+  cannot stop using it. Daily/weekly users with unexplained fatigue should consider
+  this as a candidate cause before expensive testing.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- flavonoids-and-nrf2
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+sources:
+- id: murray-energy-blueprint-podcast-2026
+  location: Podcast — Tylenol segment
+  quote: One of the worst mitochondrial damagers is Tylenol, acetaminophen. We have
+    50 million Americans that regularly use acetaminophen or Tylenol on a weekly basis.
+    Every time you take a Tylenol, it dramatically reduces your glutathione stores.
+    And as a result, it makes your mitochondria more susceptible to damage and that
+    leads to decreased function.
+rationale: Concrete intake-screen item that many coaches miss — chronic Tylenol use
+  is widely under-reported and easy to flag.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: inflammation-is-downstream-find-upstream-cause
+statement: When a client presents with chronic inflammation (high hs-CRP, inflammatory
+  cytokine elevation), Sandison emphasises that inflammation itself is downstream
+  and the coach must investigate what is TRIGGERING it — common upstream drivers include
+  chronic infection, traumatic brain injury, sleep apnoea, high blood sugar, structural
+  airway problems, mycotoxin exposure, or unresolved emotional stress. Simply piling
+  on anti-inflammatory supplements (fish oil, turmeric) or pharmaceutical anti-inflammatories
+  (NSAIDs, steroids) without addressing the trigger misses the healing opportunity
+  and can do harm — steroids in particular suppress immunity, drive bone loss and
+  exacerbate adrenal dysfunction.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cognitive-decline
+- recode-protocol
+linked_to_mechanisms:
+- chronic-inflammation
+- inflammatory-cytokine-elevation
+sources:
+- id: sandison-energy-blueprint-podcast-2026
+  location: Podcast — inflammation reframing segment
+  quote: Inflammation is a natural process. If that inflammation lasts for a really
+    long time we want to understand what happened. Typically inflammation starts because
+    something triggers it. And if we miss the opportunity to ask what was the trigger
+    we miss the opportunity to get real healing. Why not take anti-inflammatory drugs
+    if the cause is inflammation? Steroids suppress immune function, make us more
+    at risk for other infections, can create bone loss, can create adrenal issues.
+rationale: Reframes "I have high CRP, give me anti-inflammatories" into "let's find
+  what's driving the CRP" — central coach narrative.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

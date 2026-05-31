@@ -1,0 +1,27 @@
+slug: full-thyroid-panel-vs-tsh-only
+statement: TSH alone is insufficient for screening or monitoring thyroid health because
+  Hornaman regularly sees clients with overt hypothyroid symptoms and a TSH of 1 (within
+  "optimal" by even functional standards). The minimum thyroid panel Hornaman recommends
+  includes TSH, free T4, free T3, reverse T3, TPO antibodies, and TGab antibodies.
+  Optimal targets are roughly — TSH below 2 mIU/L, free T3 in the upper quartile of
+  range (often ≥3.5 pg/mL on the common 2.0-4.4 assay), reverse T3 below 12 ng/dL,
+  ANY detectable TPO/TGab antibody treated as start of autoimmunity. Coach uses this
+  set when asking the GP for lab orders.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- thyroid-dysfunction
+sources:
+- id: hornaman-energy-blueprint-podcast-2026
+  location: Podcast — full panel segment
+  quote: I have seen hypothyroidism with TSHs of a one. You have to keep going and
+    look at all the different hormones. I want to know how much active thyroid hormone
+    is in your body, free, unbound. I also want to know your reverse T3 level. An
+    antibody is an antibody — any antibodies are the beginnings of Hashimoto's.
+rationale: Coach lab-order template — keep this list handy when a client asks "what
+  tests should I request from my GP?"
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

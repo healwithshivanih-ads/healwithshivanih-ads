@@ -1,0 +1,29 @@
+slug: iron-deficiency-as-most-common-fatigue-driver
+statement: Iron deficiency is the most common nutrient deficiency worldwide and a
+  major hidden cause of fatigue. Murray cites the seminal 1950s study that treadmill
+  endurance time at 3 mph was directly proportional to iron stores in women; over
+  80% of female endurance athletes and swimmers are iron-deficient. Plant-based diets,
+  menstruating women, growing children, and older adults (reduced absorption) are
+  highest risk groups. Murray's coach-actionable threshold — serum ferritin BELOW
+  50 ng/mL warrants intervention regardless of "normal range" on the lab printout
+  (most labs flag only <15-20). Heme iron from animal sources (especially calf liver,
+  fish liver) absorbs far better than non-heme from plant sources; supplemental non-heme
+  iron typically needs 60-120 mg per day for several months to restore stores.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- flavonoids-and-nrf2
+- mitochondrial-health-nutrients
+sources:
+- id: murray-energy-blueprint-podcast-2026
+  location: Podcast — iron deficiency segment
+  quote: Iron deficiency is the most common deficiency in the world. In studies of
+    female endurance athletes or swimmers, over 80% are deficient in iron. Every menstruating
+    woman should have at least a yearly serum ferritin test. If it's below 50, they
+    need to eat more iron rich foods. Maybe eating some liver, calf's liver or fish
+    liver once or twice a week.
+rationale: Concrete coach intake — serum ferritin <50 ng/mL in any fatigue client
+  triggers iron-repletion conversation, regardless of "normal" lab flag.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

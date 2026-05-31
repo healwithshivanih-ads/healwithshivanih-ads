@@ -1,0 +1,40 @@
+slug: iodine-excess-and-autoimmune-thyroid
+display_name: Iodine Excess as a Driver of Autoimmune Thyroid Disease
+aliases:
+- iodine and hashimotos
+- high iodine thyroid risk
+summary: Christianson's position — iodine is NOT a thyroid panacea; it has a narrow
+  therapeutic window with both a deficiency floor and a toxicity ceiling. Approximately
+  20-30% of the US population is exposed to excess iodine (>200 mcg/day for the susceptible
+  subset, with overt harm above 1,100 mcg/day per WHO data). After voluntary US iodine
+  fortification in 1924 the rate of autoimmune thyroid disease rose from a few per
+  100,000 to substantially higher within a decade. Coastal-ancestry populations have
+  deiodinase variants that clear excess iodine well; inland-ancestry populations preserve
+  iodine but cannot dump it — these clients are most at risk of autoimmunity from
+  supplementation. Coach implication — for any client with Hashimoto's, elevated TPO,
+  or family-history of autoimmune thyroid disease, AVOID iodine-containing thyroid
+  support supplements and high-iodine seaweed; prefer trout and other low-iodine seafood
+  for thyroid-friendly omega-3 + selenium.
+key_mechanisms:
+- chronic-inflammation
+common_symptoms:
+- fatigue
+- brain-fog
+related_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+- thyroid-dysfunction
+sources:
+- id: christianson-energy-blueprint-podcast-2026
+  location: Podcast — iodine segment
+  quote: About 20 to 30% of the US population at present is exposed to amounts that
+    we know are excessive for some people. Anyone can get overtly harmed by levels
+    of greater than about 1,100 micrograms per day. But some people, if they're above
+    200 micrograms, they're prone to have thyroid disease come on. In the US we fortified
+    with iodine starting in 1924 — before then the rate of autoimmune thyroid disease
+    was a few per 100,000.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

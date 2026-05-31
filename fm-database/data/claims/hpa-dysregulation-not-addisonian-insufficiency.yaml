@@ -1,0 +1,30 @@
+slug: hpa-dysregulation-not-addisonian-insufficiency
+statement: Wentz emphasises that what clients call "adrenal fatigue" is best understood
+  as HPA-axis dysregulation — an adaptive downshift of cortisol output by an intact
+  adrenal gland in response to chronic stress — NOT true Addisonian insufficiency.
+  True Addison's disease shows high ACTH with low cortisol on lab and is medical emergency-grade.
+  HPA dysregulation shows variable ACTH with a flattened diurnal cortisol curve on
+  functional testing and responds to lifestyle work, not hydrocortisone replacement.
+  Coach should never describe a client as having "adrenal fatigue" in a way that implies
+  organ failure.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- adrenal-transformation-protocol
+- adrenal-fatigue
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: wentz-energy-blueprint-podcast-2026
+  location: Podcast — Addisonian vs adaptive segment
+  quote: True Addison's disease is the actual inability of the adrenal glands to produce
+    enough cortisol. What you're saying is that these people have adrenal glands that
+    are still perfectly capable of producing enough cortisol, but there is an adaptive
+    thing that is occurring in response to chronic stress. HPA dysfunction is probably
+    the more accurate term.
+rationale: Keeps coach inside scope — protects against accidentally implying organ
+  failure (which is a medical diagnosis) when describing flat curves to clients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

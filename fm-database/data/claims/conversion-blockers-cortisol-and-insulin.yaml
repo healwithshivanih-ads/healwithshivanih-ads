@@ -1,0 +1,30 @@
+slug: conversion-blockers-cortisol-and-insulin
+statement: T4-to-T3 conversion (the "ten Tough Mudders" step Hornaman names) is blocked
+  by several specific conditions — elevated cortisol from chronic stress drives T4
+  down the reverse-T3 pathway, insulin resistance blunts deiodinase activity, oestrogen
+  dominance binds active thyroid hormone, heavy metals (mercury, lead) directly inhibit
+  deiodinase enzymes, chronic infection (EBV, Lyme) raises rT3, and DIO1/DIO2 single-nucleotide
+  polymorphisms genetically slow conversion. Implication for coach — clients with
+  poor conversion (high TSH or normal-feeling-bad despite T4 medication) typically
+  need stress, insulin, oestrogen, and heavy-metal work upstream of any T3-containing
+  replacement decision.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hypothyroidism
+- reverse-t3-anti-thyroid-hormone
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- cortisol-elevation
+- insulin-resistance
+sources:
+- id: hornaman-energy-blueprint-podcast-2026
+  location: Podcast — T4 conversion segment
+  quote: T4 will convert over to T3. It is really hard for the body to do. There's
+    many factors that can interfere with that conversion. Estrogen dominance, insulin
+    resistance, heavy metals, underlying infections, a genetic snip on the DIO1 DIO2.
+rationale: Names six specific blockers — coach can map intake findings to which one
+  is most likely driving a "stuck T4" pattern.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

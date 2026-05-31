@@ -1,0 +1,27 @@
+statement: Any client showing early signs of cognitive decline should be referred
+  for a formal sleep study to rule out obstructive sleep apnoea. Sandison frames each
+  night of untreated apnoea-driven hypoxia as "a traumatic brain injury each night,"
+  because measurable amyloid accumulation occurs after even a single night of sleep
+  deprivation. Mouth tape is an adjunct for mild sleep-disordered breathing — also
+  reportedly helpful for anxiety, sinus congestion, and overall cognition.
+slug: sleep-apnea-screen-mandatory-for-cognitive-decline
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cognitive-decline
+- recode-protocol
+sources:
+- id: sandison-energy-blueprint-podcast-2026
+  location: Podcast — sleep tips
+  quote: If there is any sign of cognitive decline get a sleep study. Do not wait
+    to find out you have sleep apnea in 5 years because each night of sleep deprivation
+    and hypoxia is damaging to your brain. It's like a traumatic brain injury each
+    night. Make sure that you get that treated. And mouth tape is one of my favorite
+    things — treats mild sleep apnea, helps with anxiety, helps with cognition, helps
+    with sinuses.
+rationale: Concrete referral trigger — when client mentions snoring, daytime sleepiness,
+  or any cognitive concern, refer for sleep study; coach does not diagnose but can
+  pre-empt the GP visit.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

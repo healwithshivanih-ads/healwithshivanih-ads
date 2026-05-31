@@ -1,0 +1,38 @@
+slug: reverse-t3-anti-thyroid-hormone
+display_name: Reverse T3 as Anti-Thyroid Hormone
+aliases:
+- rt3
+- reverse triiodothyronine
+summary: Reverse T3 (rT3) is the inactive isomer of T3 produced when T4 takes the
+  "survival" conversion path instead of becoming free T3. It occupies T3 receptors
+  without activating them — functionally an anti-thyroid hormone. Elevated rT3 is
+  adaptive when fighting major illness or trauma (it conserves energy by shutting
+  down peripheral metabolism) but pathological when present in day-to-day life — it
+  manifests as classic hypothyroid symptoms despite "normal" TSH and free T4. Common
+  drivers of high rT3 — chronic stress (elevated cortisol), insulin resistance, heavy-metal
+  toxicity, chronic infection, DIO1/DIO2 SNPs, low-calorie dieting, and prolonged
+  intermittent fasting. Coach should request reverse T3 on every full thyroid panel
+  — Hornaman's optimal range is below 12 ng/dL.
+key_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+common_symptoms:
+- fatigue
+- brain-fog
+related_topics:
+- hypothyroidism
+- thyroid-dysfunction
+- autoimmune-thyroiditis
+sources:
+- id: hornaman-energy-blueprint-podcast-2026
+  location: Podcast — reverse T3 segment
+  quote: Reverse T3 is the anti-thyroid hormone. I always use the analogy of a bouncer
+    at a club, standing outside the cell door, arms crossed, telling T3 it can't get
+    in. If your reverse T3 is high on a day-to-day basis, where you're not trying
+    to survive — that T4 hormone has chosen the reverse T3 path and basically put
+    your body into survival mode.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

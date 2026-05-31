@@ -1,0 +1,29 @@
+slug: amyloid-is-correlated-not-causal
+statement: Less than 2% of the population has no amyloid at any age — and at older
+  ages there are cognitively-perfect adults with heavy amyloid burden and clinically-demented
+  adults with little amyloid. Removing amyloid pharmacologically (monoclonal antibodies
+  aducanumab, lecanemab, donanemab) slows progression by approximately 30% but does
+  NOT produce cognitive improvement, while carrying a 30%-range risk of brain bleeding
+  or swelling on follow-up MRI. Amyloid is therefore best treated as a downstream
+  marker of dysregulation, not the cause.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cognitive-decline
+- recode-protocol
+linked_to_mechanisms:
+- amyloid-as-innate-immune-response
+sources:
+- id: sandison-energy-blueprint-podcast-2026
+  location: Podcast — amyloid hypothesis segment
+  quote: Less than 2% of the population doesn't have amyloid. There are people with
+    perfect cognition who have lots of amyloid and there are people with poor cognition
+    with dementia who don't have any amyloid. When you take amyloid away you don't
+    get an improvement in cognition. No one gets better. You get a slowing of the
+    disease process by about 30%. The risks are brain bleeding and brain swelling
+    and this happens in about 30% of patients.
+rationale: Coach response to clients asking "should I get on lecanemab?" — names the
+  30% slowing vs 30% serious-AE numbers explicitly.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

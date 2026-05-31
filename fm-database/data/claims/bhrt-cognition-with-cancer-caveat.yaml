@@ -1,0 +1,28 @@
+slug: bhrt-cognition-with-cancer-caveat
+statement: Optimal levels of the neurosteroids estradiol, progesterone, testosterone,
+  pregnenolone, and DHEA support cognition because Alzheimer's behaves as a network
+  insufficiency that benefits from physiological hormonal signalling. Bredesen flags
+  clear caveats — clients with a history of hormone-sensitive cancer (notably breast
+  cancer) need careful selection of agent, dose, and duration in partnership with
+  their oncologist; bioidentical hormone replacement is a clinician-only decision,
+  never a coaching prescription.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- recode-protocol
+- cognitive-decline
+- bhrt
+- hrt
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — bioidentical hormones segment
+  quote: Bioidentical hormone replacement — if your hormones are low you're going
+    to do better with your cognition because again this is a network insufficiency.
+    By having the appropriate levels of estradiol, progesterone, testosterone, pregnenolone,
+    DHEA, all those neurosteroids. For people who have breast cancer for example we
+    have to be very careful about which ones and for how long.
+rationale: Coach scope guardrail — flags BHRT as clinician-led, not coach-led; useful
+  when client asks "should I be on HRT for brain protection?"
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

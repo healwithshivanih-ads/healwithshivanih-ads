@@ -1,0 +1,28 @@
+slug: oral-microbiome-p-gingivalis-link
+statement: Chronic infections drive cognitive decline through neuroinflammation, with
+  three repeatedly implicated organisms — Porphyromonas gingivalis (oral cavity, found
+  in Alzheimer brain tissue), herpes simplex virus type 1, and human herpesvirus 6A.
+  Bredesen reports that treating clients carrying HSV reactivation with low-dose valacyclovir
+  produces "dramatic reductions in risk for decline," giving the coach a concrete
+  referral cue when oral health is poor or cold sore history is significant.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- recode-protocol
+- cognitive-decline
+- oral-microbiome
+linked_to_mechanisms:
+- chronic-inflammation
+- neuroinflammation
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — precision sub-protocol segment
+  quote: There are many other people where it's about P. gingivalis or it's about
+    herpes simplex or HHV-6A. Do you have herpes simplex, in which case we should
+    give you some valacyclovir, which is a very benign drug and actually gets rid
+    of the herpes — dramatic reductions in risk for decline.
+rationale: Coach trigger — flags oral hygiene + cold-sore history during intake as
+  cognition-relevant; referral path for valacyclovir is via the client's GP.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

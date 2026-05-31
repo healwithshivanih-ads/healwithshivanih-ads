@@ -1,0 +1,31 @@
+slug: hormetic-stress-via-nrf2-not-direct-quenching
+statement: The simple "antioxidants good, oxidants bad" model is wrong because it
+  ignores Nrf2, the body's master regulator of endogenous antioxidant defences. Hormetic
+  stressors (exercise-induced ROS, fasting, polyphenol exposure, sauna, cold) activate
+  Nrf2 which upregulates glutathione synthesis, superoxide dismutase, and catalase
+  — building lasting antioxidant capacity. Direct antioxidant supplements (high-dose
+  vitamin C, E, N-acetylcysteine) consumed AROUND exercise have repeatedly been shown
+  to BLUNT the metabolic adaptations exercise produces. ROS are signalling molecules
+  required for mitochondrial biogenesis. Coach implication — do not pile on direct-quenching
+  antioxidants around training; emphasise polyphenol-rich whole foods that signal
+  via Nrf2; use NAC and similar agents strategically, not prophylactically.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- flavonoids-and-nrf2
+- mitochondrial-health-nutrients
+- cell-danger-response
+sources:
+- id: murray-energy-blueprint-podcast-2026
+  location: Podcast — Nrf2 and hormesis segment
+  quote: Nrf2 is the body's antioxidant response. If you look at what stimulates Nrf2
+    activation, it's both stressors to the antioxidant system and natural compounds
+    that support the antioxidant system. Supplemented antioxidants to people doing
+    exercise — what they found is that it actually cancelled out or mostly negated
+    many of the metabolic benefits of doing exercise. Those reactive oxygen species
+    are not just bad guys.
+rationale: Pushes coach away from blanket high-dose antioxidant stacking and toward
+  whole-food polyphenols + hormetic stressors.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

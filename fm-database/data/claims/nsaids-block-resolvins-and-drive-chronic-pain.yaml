@@ -1,0 +1,31 @@
+slug: nsaids-block-resolvins-and-drive-chronic-pain
+statement: Murray cites emerging research arguing that NSAID (ibuprofen, naproxen,
+  aspirin) use to treat acute pain paradoxically INCREASES the risk of developing
+  chronic pain. The mechanism — NSAIDs suppress the acute inflammatory cascade that
+  produces RESOLVINS (specialised pro-resolving mediators derived from omega-3 fatty
+  acids). Without resolvins, the inflammatory process never properly resolves, and
+  the tissue progresses from acute to chronic inflammation. Coach implication — for
+  clients with acute injury, encourage non- pharmacological pain management (cold/heat,
+  movement, omega-3-rich diet) before reaching for daily NSAIDs; for clients with
+  chronic pain on regular NSAIDs, surface the discussion with their clinician.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- flavonoids-and-nrf2
+- chronic-fatigue-syndrome
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: murray-energy-blueprint-podcast-2026
+  location: Podcast — NSAIDs and resolvins segment
+  quote: Everything that we thought we knew about pain relief was wrong because what
+    they found was that the treatment of acute pain led to an increase in chronic
+    pain. If you're using non-steroidal anti-inflammatory drugs like ibuprofen after
+    surgery — it reduces the acute inflammatory process and in the process of suppressing
+    that inflammation it also suppresses the formation of compounds in our body called
+    resolvins.
+rationale: Coach surfaces a hidden iatrogenic driver of chronic pain — NSAID use during
+  acute injury phase.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

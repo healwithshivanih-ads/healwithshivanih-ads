@@ -1,0 +1,43 @@
+slug: metabolic-endotoxemia-lps
+display_name: Metabolic Endotoxaemia (LPS Translocation from Gut)
+aliases:
+- endotoxemia
+- lipopolysaccharide translocation
+summary: Lipopolysaccharide (LPS) is the cell-wall component of gram-negative bacteria
+  (Proteobacteria are the most inflammatory subgroup, with cell walls 80% LPS). When
+  the gut barrier is compromised AND/OR Proteobacteria proportion is high AND/OR transit
+  time is slow, LPS leaks into systemic circulation in a steady drip and spikes after
+  certain meals — this is metabolic endotoxaemia. Downstream effects — drops insulin
+  sensitivity, damages the blood-brain barrier, shifts neurotransmitter production,
+  drives neuroinflammation, and POISONS mitochondrial function. Hawrelak cites Alzheimer's
+  brain autopsies showing dramatically higher endotoxin load than age-matched controls.
+  Coach implication — slow transit + high-fat / refined-carb meals + leaky gut is
+  the high-LPS phenotype; rebalancing all three drops the LPS load.
+key_mechanisms:
+- chronic-inflammation
+- mitochondrial-dysfunction
+- insulin-resistance
+common_symptoms:
+- brain-fog
+- fatigue
+- bloating
+related_topics:
+- microbiome
+- gut-microbiome
+- leaky-gut
+- cell-danger-response
+sources:
+- id: hawrelak-energy-blueprint-podcast-2026
+  location: Podcast — endotoxaemia segment
+  quote: We've got these bacteria releasing these toxins and some people are releasing
+    a lot more. Sometimes with certain meals you get a spike of lipopolysaccharide
+    hitting the bloodstream — that's termed endotoxaemia. It decreases insulin sensitivity.
+    It can damage the blood-brain barrier. It causes inflammation in the brain. It
+    interferes with mitochondrial function. Alzheimer's brain autopsies — super rich
+    in endotoxin. People without Alzheimer's, it's not in their brains nowhere near
+    as a degree.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

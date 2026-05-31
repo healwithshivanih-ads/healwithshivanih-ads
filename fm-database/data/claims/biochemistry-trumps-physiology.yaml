@@ -1,0 +1,30 @@
+slug: biochemistry-trumps-physiology
+statement: Masterjohn's bias — "all hormones ever do is communicate what's going on
+  in one tissue with another tissue." Hormones are messengers, never causes. When
+  a client presents with what looks like a hormonal disorder (hyperinsulinaemia, hyperthyroidism,
+  hypercortisolism), the upstream story is almost always at the biochemical / cellular
+  level — a nutrient deficiency, a toxic overload, a genetic enzyme impairment, or
+  a tumour. Insulin secretion by the pancreatic beta cell, for instance, is a response
+  to the ATP it generated from glucose — not to glucose itself. Implication for coach
+  — chase the biochemistry / mitochondrial / nutrient story beneath the apparent hormonal
+  signal, especially in stubborn cases.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-health-nutrients
+- leptin-insulin-cortisol-energy-gate
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+sources:
+- id: masterjohn-energy-blueprint-podcast-2026
+  location: Podcast — biochemistry trumps physiology segment
+  quote: My particular bias is to not give the primacy to hormones under any circumstances
+    ever because all hormones ever do is communicating what's going on in one tissue
+    with another tissue. Biochemistry always trumps physiology. Even insulin in a
+    pancreatic beta cell is not even a response to glucose. It is a response to the
+    ATP made from glucose.
+rationale: Keeps coach from chasing "balance the hormones" loops without addressing
+  the cellular fuel and nutrient infrastructure underneath.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

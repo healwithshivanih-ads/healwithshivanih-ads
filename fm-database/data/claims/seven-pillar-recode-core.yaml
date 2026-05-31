@@ -1,0 +1,24 @@
+slug: seven-pillar-recode-core
+statement: The ReCODE core protocol applied to every client consists of seven pillars
+  — diet (insulin-sensitising, anti-inflammatory, polyunsaturated omega-3 emphasis),
+  exercise, sleep, stress regulation, brain training, detoxification (mycotoxin and
+  heavy-metal aware), and targeted supplements. Bredesen frames the side-effect of
+  the core as "better health" — better mitochondrial function, more energy, improved
+  sleep, resolution of mild sleep apnoea — making it broadly safe even for asymptomatic
+  adults pursuing prevention.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- recode-protocol
+- cognitive-decline
+sources:
+- id: bredesen-energy-blueprint-podcast-2026
+  location: Podcast — protocol structure segment
+  quote: We're going to do a core piece which is seven things for everybody — diet,
+    exercise, sleep, stress, brain training, detox, and some targeted supplements.
+    These are all benign. The main side effect of our protocol is better health.
+rationale: Coach-deliverable scaffold — gives the seven pillars to cover in a prevention-focused
+  lifestyle plan, before any precision testing.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
