@@ -1,0 +1,23 @@
+slug: melatonin-not-recommended-for-natural-conception
+statement: Melatonin supplementation is not recommended for women trying to conceive
+  naturally because it may interfere with the hormonal signalling that regulates ovulation
+  timing. The benefit-vs-risk equation flips only in IVF, where ovulation is artificially
+  controlled with stimulation drugs and the antioxidant benefit dominates.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+- preconception-protocol
+linked_to_supplements:
+- melatonin
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 7 — Melatonin and Other Antioxidants, pg 103-104
+  quote: It is probably not a good idea to take a melatonin supplement if you are
+    trying to conceive naturally because it appears that melatonin may have a direct
+    role in regulating the production of hormones that control the ovulation cycle.
+rationale: Critical safety nuance — many clients self-prescribe melatonin without
+  knowing this caveat.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

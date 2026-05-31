@@ -1,0 +1,27 @@
+slug: pcos-metabolic-targeting-transforms-egg-quality
+statement: In a significant subset of PCOS patients with prior failed IVF, aggressively
+  targeting insulin resistance and inflammation (continuous glucose monitor-guided
+  diet, weight loss, anti-inflammatory protocol) before another IVF cycle dramatically
+  improves egg quality and euploidy rates. Patients have moved from zero euploid embryos
+  in prior cycles to multiple euploids or spontaneous conception. CRP and fasting
+  glucose are the practical tracking markers.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- pcos-fertility
+- egg-quality
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- myo-inositol
+sources:
+- id: eyvazzadeh-palter-egg-whisperer-2024
+  location: minute 25:00 — Palter on Heather (46-egg PCOS case)
+  quote: We have so many people like this that we treat our PCOS protocol where it's
+    shocking — women that will have had no blasts or no euploids that we target insulin
+    resistance and inflammation and they then end up with huge numbers of euploids
+    or even conceive spontaneously.
+rationale: Concrete clinical-outcomes data for the PCOS insulin-targeting framing.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

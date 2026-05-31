@@ -1,0 +1,30 @@
+slug: coq10-ubiquinol-supports-egg-mitochondrial-atp
+statement: CoQ10, particularly the more bioavailable ubiquinol form, is a critical
+  component of the mitochondrial electron transport chain and supports ATP production
+  in developing oocytes. Animal and clinical studies suggest supplementation in the
+  3-6 months preceding conception or IVF can improve egg numbers, embryo quality,
+  and pregnancy rates, especially in women 35+ or with diminished ovarian reserve.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- preconception-protocol
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- mitochondrial-energy-production
+linked_to_supplements:
+- coq10
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 6 — The Power of Coenzyme Q10, pg 87-96
+  quote: Supplementing with mitochondrial nutrients such as CoQ10 may lead to improvement
+    in egg and embryo quality and pregnancy outcome. CoQ10 may be needed for as long
+    as four to six months in advance of an IVF cycle to make a significant difference
+    in the chance of success.
+rationale: Single highest-impact supplement claim for advanced-maternal-age egg freezing
+  prep. Tier strong because of Bentov mouse data, follicular-fluid CoQ10 correlation,
+  and broad safety record.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

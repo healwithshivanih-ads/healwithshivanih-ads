@@ -1,0 +1,25 @@
+slug: coq10-dose-tiered-by-fertility-status
+statement: 'Fett''s tiered dosing: Basic plan 100 mg ubiquinol (or 200 mg ubiquinone)
+  for women under 35 without fertility concerns; Intermediate 200 mg ubiquinol (400
+  mg ubiquinone) for 35+ or planning IVF; Advanced 300 mg ubiquinol (600 mg ubiquinone)
+  for diminished ovarian reserve, previous failed IVF, or AMA egg freezing. Take with
+  a fat-containing breakfast for absorption and to avoid late-evening energy boost.'
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- preconception-protocol
+linked_to_supplements:
+- coq10
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 6 — The Power of Coenzyme Q10, pg 95-96
+  quote: 'Basic Fertility Plan: 100 mg ubiquinol (or 200 mg ubiquinone). Intermediate:
+    200 mg ubiquinol. Advanced: 300 mg ubiquinol. Doctors recommend taking it with
+    breakfast because it may boost energy too much at night.'
+rationale: Tier confirm_with_clinician because dose recommendation crosses into prescriptive
+  territory; coach educates, clinician confirms.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

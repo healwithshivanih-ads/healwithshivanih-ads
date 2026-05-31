@@ -1,0 +1,24 @@
+slug: oocyte-donation-confirms-egg-not-uterus-is-rate-limiting
+statement: Pregnancy rates in women over 40 who use donor eggs from younger women
+  are comparable to those of younger patients undergoing IVF. This donor-egg outcome
+  data is the cleanest evidence in clinical fertility that oocyte quality — not uterine
+  receptivity or systemic maternal age — is the rate-limiting factor in advanced-maternal-age
+  conception, and therefore that interventions targeting oocyte quality (mitochondrial
+  support, antioxidants, toxin avoidance) are the highest-leverage preconception strategies.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- preconception-protocol
+sources:
+- id: bentov-2011-mitochondrial-reproductive-aging
+  location: Abstract — Purpose
+  quote: Women over 40 undergoing in vitro fertilization with oocytes donated by younger
+    women have success rates comparable to young patients. Apart from oocyte donation,
+    there is no known intervention to improve the pregnancy outcome of older patients.
+rationale: Anchor evidence for the egg-quality-centric framing of AMA fertility. Quoted
+  directly by Fett.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

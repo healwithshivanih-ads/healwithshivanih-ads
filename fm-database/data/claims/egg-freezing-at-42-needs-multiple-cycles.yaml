@@ -1,0 +1,36 @@
+slug: egg-freezing-at-42-needs-multiple-cycles
+statement: Egg freezing at age 42 typically yields 3-7 mature oocytes per cycle vs
+  12-15 at age 32; expected aneuploidy rate of frozen eggs at 42 is 60-80%, meaning
+  even successful retrieval and freeze cycles produce a small number of euploid eggs.
+  Most clinicians recommend 2-3 retrieval cycles to bank enough euploid eggs for a
+  meaningful future pregnancy chance, and a 3-6 month preconception protocol (CoQ10/ubiquinol
+  300 mg, DHEA if low AMH and not PCOS, melatonin during stim, Mediterranean diet,
+  BPA/phthalate avoidance, prenatal vitamins, vitamin D repletion) before each retrieval
+  cycle.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- preconception-protocol
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- aneuploidy-meiotic-spindle-error
+linked_to_supplements:
+- coq10
+- dhea
+- melatonin
+- vitamin-d3
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 1 — Understanding Egg Quality, pg 22; Chapter 6 — CoQ10, pg 93;
+    Chapter 9 — DHEA, pg 132
+  quote: In women over 40, more than half of eggs may be chromosomally abnormal. CoQ10
+    may be needed for as long as four to six months in advance of an IVF cycle. The
+    dose of DHEA most often recommended by fertility clinics is 25 mg, three times
+    per day.
+rationale: Synthesis claim for the specific clinical scenario of advanced-maternal-age
+  egg freezing — useful for the immediate client.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

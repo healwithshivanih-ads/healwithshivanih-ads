@@ -1,0 +1,23 @@
+slug: nad-precursors-have-limited-bioavailability
+statement: NAD+ precursors (NR, NMN) have generated excitement as anti-aging supplements
+  with possible application to oocyte mitochondrial energy, but bioavailability of
+  oral, sublingual, and subcutaneous forms is contested — most do not achieve meaningful
+  intracellular concentrations. Clinical use in fertility is experimental and lacks
+  hard data despite enthusiasm in functional-medicine spaces.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- diminished-ovarian-reserve
+- egg-quality
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+sources:
+- id: eyvazzadeh-palter-egg-whisperer-2024
+  location: minute 07:00 — Palter on NAD precursors
+  quote: I've always been excited about a lot of the NAD precursors. There's a lot
+    of controversy about how well they can get into the intracellular matrix. A lot
+    of them really don't work well.
+rationale: Tempers enthusiasm clients may have picked up from longevity podcasts/marketing.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

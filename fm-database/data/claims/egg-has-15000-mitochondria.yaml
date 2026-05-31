@@ -1,0 +1,21 @@
+slug: egg-has-15000-mitochondria
+statement: A single mature oocyte contains over fifteen thousand mitochondria — more
+  than ten times any other cell type in the body — reflecting the enormous ATP demand
+  of meiotic chromosome processing, fertilisation, and the first days of embryo development
+  before implantation.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 6 — The Power of Coenzyme Q10, pg 88
+  quote: Each egg has more than fifteen thousand mitochondria — over ten times more
+    than any other cell in the body. The follicle cells surrounding the egg also contain
+    many mitochondria and supply the egg with additional ATP.
+rationale: Anchor fact justifying the mitochondrial-focused protocol stack.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

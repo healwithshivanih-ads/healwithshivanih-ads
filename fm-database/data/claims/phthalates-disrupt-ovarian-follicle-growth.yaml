@@ -1,0 +1,23 @@
+slug: phthalates-disrupt-ovarian-follicle-growth
+statement: Phthalates (DEHP, MEHP and related, found in soft plastics, vinyl, fragrances,
+  nail polish, conventional cleaning products) suppress estrogen production by ovarian
+  follicle cells, reduce follicle growth, and drive oxidative stress in developing
+  eggs. Biologically active phthalates are detectable in 95% of pregnant women. Higher
+  exposure is associated with endometriosis (~2x rate) and increased miscarriage risk.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+- preconception-protocol
+linked_to_mechanisms:
+- endocrine-disruptor-oocyte-damage
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 3 — Phthalates and Other Toxins, pg 47-56
+  quote: Even at low doses, phthalate exposure suppressed the production of estrogen
+    by the follicle cells, which would be expected to suppress follicle growth. Phthalates
+    may weaken eggs natural antioxidant defense systems.
+rationale: Anchor claim for phthalate avoidance in preconception coaching.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

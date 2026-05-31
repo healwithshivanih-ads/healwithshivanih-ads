@@ -1,0 +1,42 @@
+slug: egg-quality
+display_name: Egg Quality (Oocyte Competence)
+aliases:
+- oocyte quality
+- oocyte competence
+- egg competence
+summary: Egg quality refers to the potential of an oocyte to mature with the correct
+  number of chromosomes, fertilise, develop to blastocyst stage, implant, and carry
+  a pregnancy to term. The single largest determinant is the chromosomal status of
+  the egg at the point of ovulation. In women over 40, 50-80% of eggs are aneuploid;
+  even in women under 35, up to 25% of eggs are chromosomally abnormal. Crucially,
+  most chromosomal errors occur in the final 3-4 months before ovulation rather than
+  accumulating gradually over the woman's lifetime, making egg quality modifiable
+  through targeted nutrition, supplements, and toxin avoidance during that preconception
+  window. Mitochondrial energy supply is now widely regarded as the central modifiable
+  lever of egg quality.
+key_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- aneuploidy-meiotic-spindle-error
+- endocrine-disruptor-oocyte-damage
+- mitochondrial-dysfunction
+common_symptoms:
+- infertility
+- recurrent miscarriage
+- failed IVF cycles
+related_topics:
+- female-infertility
+- pcos-fertility
+- perimenopause
+- mitochondrial-dysfunction
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 1 — Understanding Egg Quality, pg 20-29
+  quote: Aging does not directly cause chromosomal abnormalities; rather, it creates
+    conditions that predispose eggs to mature incorrectly shortly before ovulation.
+    This means that by changing those conditions before ovulation, you can increase
+    the odds of an egg maturing with the correct number of chromosomes.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

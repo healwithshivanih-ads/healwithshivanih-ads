@@ -1,0 +1,22 @@
+slug: dhea-contraindicated-in-pcos
+statement: DHEA supplementation is contraindicated in PCOS and in women with hormone-sensitive
+  cancers because it raises ovarian androgen levels, which would worsen the testosterone
+  excess already driving PCOS pathophysiology. PCOS clients should not take DHEA even
+  when struggling with conception.
+evidence_tier: strong
+linked_to_topics:
+- pcos-fertility
+- preconception-protocol
+linked_to_supplements:
+- dhea
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 9 — DHEA for Diminished Ovarian Reserve, pg 120, 128
+  quote: You should not take DHEA if you have PCOS or certain cancers. This is why
+    DHEA is not recommended for women with PCOS or a history of hormone-sensitive
+    cancers.
+rationale: Hard contraindication — must be surfaced in any DHEA discussion.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

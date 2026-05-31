@@ -1,0 +1,40 @@
+slug: preconception-protocol
+display_name: Preconception Protocol (Egg Freezing, IVF Prep, Natural Conception)
+aliases:
+- preconception care
+- egg freezing preparation
+- IVF preparation
+- pre-pregnancy protocol
+summary: 'Structured 3-6 month preconception window targeting modifiable inputs to
+  oocyte maturation. The biological rationale is that oocytes spend approximately
+  90-120 days transitioning from primordial to ovulatory follicle, during which mitochondrial
+  replication, energy production, chromosome alignment, and antioxidant defenses can
+  be supported or disrupted. Core preconception levers: prenatal multivitamin with
+  adequate folate, vitamin B12, vitamin B6 (started 3+ months pre-conception); CoQ10/ubiquinol
+  for mitochondrial energy; melatonin (IVF only) and other antioxidants for oxidative
+  stress; myo-inositol for PCOS/insulin resistance; DHEA for DOR; vitamin D repletion;
+  Mediterranean-pattern diet with low glycemic load; systematic avoidance of BPA,
+  phthalates, and trans fats; screening for hypothyroidism (including TPO antibodies)
+  and celiac disease.'
+key_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- aneuploidy-meiotic-spindle-error
+- endocrine-disruptor-oocyte-damage
+common_symptoms: []
+related_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- female-infertility
+- pcos-fertility
+- male-infertility-oxidative-stress
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 13 — Putting It All Together, pg 175+ (action plan)
+  quote: Eggs take at least three to four months to develop, and CoQ10 takes several
+    weeks or months to build up in tissues. The most important time for reducing your
+    exposure to BPA is in the three or four months before you try to conceive.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

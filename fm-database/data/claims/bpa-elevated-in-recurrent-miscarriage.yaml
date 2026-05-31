@@ -1,0 +1,21 @@
+slug: bpa-elevated-in-recurrent-miscarriage
+statement: Women with a history of three or more first-trimester miscarriages have
+  on average roughly three times higher BPA levels than fertile controls, and the
+  top quartile of BPA exposure carries an 80% greater miscarriage risk than the bottom
+  quartile in women already pregnant.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+linked_to_mechanisms:
+- endocrine-disruptor-oocyte-damage
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 2 — The Dangers of BPA, pg 38-39
+  quote: The average BPA level in the women with recurrent miscarriage was about three
+    times higher than in the control group. Women in the top quartile of BPA had an
+    80 percent greater risk of miscarriage than women in the lowest quartile.
+rationale: Adds BPA to the recurrent-miscarriage workup checklist.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

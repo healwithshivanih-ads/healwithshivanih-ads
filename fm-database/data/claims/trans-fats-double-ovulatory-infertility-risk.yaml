@@ -1,0 +1,22 @@
+slug: trans-fats-double-ovulatory-infertility-risk
+statement: 'Replacing even a small amount of monounsaturated fat with trans fat is
+  associated with more than double the risk of ovulatory infertility in the Nurses
+  Health Study. Trans fats are found in commercial baked goods, fried foods, and any
+  product listing partially hydrogenated oil. The avoidance rule is simple: cut commercial
+  bakery and fast food.'
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- preconception-protocol
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 11 — The Egg Quality Diet, pg 154-155
+  quote: Consuming even a small amount of trans fat rather than monounsaturated fat
+    was associated with a more than doubled risk of ovulatory infertility.
+rationale: Clear, simple avoidance rule with substantial effect size.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

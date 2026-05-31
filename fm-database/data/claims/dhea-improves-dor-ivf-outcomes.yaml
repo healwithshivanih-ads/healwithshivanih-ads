@@ -1,0 +1,27 @@
+slug: dhea-improves-dor-ivf-outcomes
+statement: DHEA 25 mg three times daily for 3+ months before IVF has been shown in
+  cohort studies and small randomised trials to increase egg numbers, embryo quality,
+  live birth rates (23% vs 4% in one randomised trial), and reduce miscarriage rates
+  in women with diminished ovarian reserve, premature ovarian aging, and poor responders.
+  Mechanism likely involves increased ovarian androgen substrate supporting early-stage
+  follicle recruitment and mitochondrial function.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- diminished-ovarian-reserve
+- preconception-protocol
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+linked_to_supplements:
+- dhea
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 9 — DHEA for Diminished Ovarian Reserve, pg 120-134
+  quote: DHEA is in the process of revolutionizing infertility care for older women
+    and for younger women with premature aging ovaries. 28 percent of DHEA-treated
+    women became pregnant, compared to just 10 percent of controls.
+rationale: Critical for DOR clients prepping for egg freezing or IVF. Tier plausible_emerging
+  — controversial because few large RCTs, but consistent positive signal.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

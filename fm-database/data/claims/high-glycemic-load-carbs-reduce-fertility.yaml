@@ -1,0 +1,27 @@
+slug: high-glycemic-load-carbs-reduce-fertility
+statement: 'The Nurses Health Study showed women eating predominantly fast-release
+  carbohydrates (white bread, white rice, potatoes, breakfast cereals) had 78% higher
+  risk of ovulatory infertility than women eating slow-release carbohydrates. Even
+  modest elevations in HbA1c — within the normal range — halved 6-month conception
+  rates. Mechanism: hyperinsulinaemia drives ovarian androgen production and disrupts
+  hormonal signalling.'
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- pcos-fertility
+- preconception-protocol
+linked_to_mechanisms:
+- insulin-resistance
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 11 — The Egg Quality Diet, pg 142-145
+  quote: Women who ate more of the quickly digested carbohydrates that rapidly raise
+    blood sugar were 78 percent more likely to have ovulatory infertility. Women with
+    high but still normal A1C levels were only half as likely to get pregnant over
+    six months compared to women with lower A1C levels.
+rationale: Justifies low-glycemic-load nutrition as a fertility intervention, not
+  just a metabolic-health one.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

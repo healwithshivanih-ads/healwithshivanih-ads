@@ -1,0 +1,40 @@
+slug: diminished-ovarian-reserve
+display_name: Diminished Ovarian Reserve and Advanced Maternal Age Fertility
+aliases:
+- DOR
+- diminished ovarian reserve
+- premature ovarian aging
+- low ovarian reserve
+- poor responder
+summary: Diminished ovarian reserve (DOR) describes a low number of remaining follicles
+  available for recruitment, marked by low AMH, high FSH, and few antral follicles
+  on ultrasound. It is universally assumed in women over 40 and can occur much younger
+  as premature ovarian aging. DOR is associated with high rates of aneuploidy, low
+  IVF egg yield, high cycle cancellation rates, low implantation rates, and elevated
+  miscarriage risk. Targeted preconception protocols including CoQ10 (ubiquinol),
+  DHEA, melatonin, and Mediterranean-pattern nutrition have been shown to improve
+  egg numbers, embryo quality, and live birth rates in DOR patients preparing for
+  IVF, egg freezing, or natural conception.
+key_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- aneuploidy-meiotic-spindle-error
+- mitochondrial-dysfunction
+common_symptoms:
+- infertility
+- failed IVF cycles
+- low egg yield on stimulation
+related_topics:
+- egg-quality
+- female-infertility
+- perimenopause
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 9 — DHEA for Diminished Ovarian Reserve, pg 120-134
+  quote: Women with diminished ovarian reserve have exceptionally low success rates
+    in IVF — by some measures, as low as 2-4%. DHEA is in the process of revolutionizing
+    infertility care for older women and for younger women with premature aging ovaries.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

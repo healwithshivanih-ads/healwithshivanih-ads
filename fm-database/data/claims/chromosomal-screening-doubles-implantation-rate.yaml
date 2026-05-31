@@ -1,0 +1,24 @@
+slug: chromosomal-screening-doubles-implantation-rate
+statement: Preimplantation genetic screening for chromosomal abnormalities (CCS/PGT-A)
+  in IVF embryos dramatically improves implantation rates — at one leading clinic,
+  the implantation rate for transferred embryos in 41-42 year olds jumped from 13%
+  to 38% when only chromosomally normal embryos were selected. Even in young good-prognosis
+  patients, pregnancy rates rose from 41% to 69% with screening.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+linked_to_mechanisms:
+- aneuploidy-meiotic-spindle-error
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 1 — Understanding Egg Quality, pg 23-26
+  quote: Instead of the usual 13 percent of transferred embryos successfully implanting
+    for patients 41-42 years old, selecting only chromosomally normal embryos boosted
+    the implantation rate to 38 percent.
+rationale: Educates clients about the value-add of PGT-A — particularly relevant for
+  AMA IVF and egg freezing.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

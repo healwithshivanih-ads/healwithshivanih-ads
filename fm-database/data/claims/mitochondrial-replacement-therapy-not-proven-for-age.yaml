@@ -1,0 +1,24 @@
+slug: mitochondrial-replacement-therapy-not-proven-for-age
+statement: Mitochondrial replacement therapy (three-parent IVF, where young-donor
+  mitochondria are transferred to older eggs) is approved in the UK only for women
+  with mitochondrial disease, not for age-related infertility. It is banned by the
+  US FDA. Early trials largely did not show benefit for age-related egg quality. Clinicians
+  treat it as experimental — last resort when all other hope has been lost.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- diminished-ovarian-reserve
+- egg-quality
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+sources:
+- id: eyvazzadeh-palter-egg-whisperer-2024
+  location: minute 10:00 — Palter on MRT for age
+  quote: It is banned by the FDA because you're mixing DNA from different people.
+    A lot of the early trials failed. They did not show a benefit. I don't think the
+    data shows that it works for age-related loss yet.
+rationale: Sets realistic expectations for clients researching exotic IVF interventions
+  abroad.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

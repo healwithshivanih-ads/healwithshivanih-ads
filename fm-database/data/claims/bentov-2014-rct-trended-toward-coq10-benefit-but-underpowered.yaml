@@ -1,0 +1,31 @@
+slug: bentov-2014-rct-trended-toward-coq10-benefit-but-underpowered
+statement: The 2014 Bentov et al double-blind placebo-controlled RCT of 600 mg/day
+  CoQ10 vs placebo in IVF-ICSI patients aged 35-43 was terminated early after enrolling
+  39 patients (24 completing cycles). Aneuploidy rates trended in favour of CoQ10
+  (46.5% vs 62.8% in placebo) and clinical pregnancy rates were 33% vs 26.7%, but
+  the trial was underpowered to detect a significant difference. This is the only
+  RCT-level evidence on CoQ10 and oocyte aneuploidy and explains why CoQ10 is most
+  accurately framed as plausible-emerging despite enthusiasm in the integrative-fertility
+  community.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- aneuploidy-meiotic-spindle-error
+linked_to_supplements:
+- coq10
+sources:
+- id: bentov-2014-coq10-oocyte-aneuploidy-rct
+  location: Abstract — Results and Conclusion
+  quote: The rate of aneuploidy was 46.5 percent in the CoQ10 group compared to 62.8
+    percent in the control. Clinical pregnancy rate was 33 percent for the CoQ10 group
+    and 26.7 percent for the control group. The final study was underpowered to detect
+    a difference in the rate of aneuploidy.
+rationale: Honest evidence-tiering — the RCT trended positive but the headline claim
+  remains underpowered. Client coaching should reflect this.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

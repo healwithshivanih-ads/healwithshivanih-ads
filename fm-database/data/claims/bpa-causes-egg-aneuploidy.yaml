@@ -1,0 +1,26 @@
+slug: bpa-causes-egg-aneuploidy
+statement: Bisphenol A directly interferes with the microtubule spindle apparatus
+  during meiosis, causing chromosome misalignment and aneuploidy in eggs at doses
+  people are exposed to in daily life. The original 1998 Hunt lab discovery (BPA leached
+  from damaged plastic cages) showed a jump from 1-2% to 40% chromosomally abnormal
+  eggs in mice; subsequent controlled studies confirmed dose-response causation.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- preconception-protocol
+linked_to_mechanisms:
+- endocrine-disruptor-oocyte-damage
+- aneuploidy-meiotic-spindle-error
+- bpa-endocrine-disruption
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 2 — The Dangers of BPA, pg 31-40
+  quote: Even a low dose of BPA during the final stages of egg development is enough
+    to interfere with meiosis and cause chromosomal abnormalities in eggs. BPA interferes
+    with the scaffold-like structures of tubules that organize and separate chromosomes
+    during egg development.
+rationale: Anchor mechanism claim for BPA avoidance in preconception.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

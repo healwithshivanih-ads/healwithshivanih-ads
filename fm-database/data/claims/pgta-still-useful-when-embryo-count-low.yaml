@@ -1,0 +1,26 @@
+slug: pgta-still-useful-when-embryo-count-low
+statement: Even with very few embryos from low-yield IVF cycles, PGT-A (preimplantation
+  genetic screening for aneuploidy) remains useful because it avoids the time, expense,
+  and emotional cost of transferring chromosomally abnormal embryos that cannot implant
+  or that will miscarry. The test does not improve success rate when embryos are scarce
+  but it directs the patient's next decision — whether to retest, switch protocols,
+  or move to donor egg.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+linked_to_mechanisms:
+- aneuploidy-meiotic-spindle-error
+sources:
+- id: eyvazzadeh-palter-egg-whisperer-2024
+  location: minute 40:00 — Palter on PGT-A with few embryos
+  quote: If you have nothing to choose between, it's not going to impact your success
+    rate, but it's going to help you understand what you're working with, and it's
+    going to prevent months of wasted time transferring embryos that aren't going
+    to work.
+rationale: Decision-support claim for AMA clients weighing PGT-A cost vs benefit at
+  low embryo counts.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

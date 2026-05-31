@@ -1,0 +1,23 @@
+slug: higher-bpa-reduces-ivf-success
+statement: In observational studies of IVF patients, higher urinary BPA correlates
+  with fewer eggs retrieved, lower estrogen response to stimulation, lower fertilisation
+  rate, fewer blastocyst-stage embryos, and nearly twice the odds of implantation
+  failure. Effect appears more pronounced in women with diminished ovarian reserve.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+linked_to_mechanisms:
+- endocrine-disruptor-oocyte-damage
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 2 — The Dangers of BPA, pg 36-38
+  quote: Women with above-average BPA levels also had fewer five-day old embryos available
+    to transfer. The quarter of women with the highest BPA exposure had almost twice
+    the odds of implantation failure compared to the quarter of women with the lowest
+    BPA levels.
+rationale: Quantifies the IVF-cycle cost of BPA exposure — useful for client motivation.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

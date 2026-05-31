@@ -1,0 +1,50 @@
+slug: aneuploidy-meiotic-spindle-error
+display_name: Egg Aneuploidy from Meiotic Spindle Error
+aliases:
+- egg aneuploidy
+- chromosomal abnormalities in eggs
+- meiotic non-disjunction
+- chromosome segregation error
+category: structural
+summary: Aneuploidy — eggs ending up with an incorrect number of chromosome copies
+  — is the single largest cause of failed fertilisation, failed implantation, and
+  first-trimester miscarriage. The mechanism is failure of the microtubule spindle
+  apparatus that physically separates chromosome pairs during the first and second
+  meiotic divisions. The spindle assembly occurs in the final weeks before ovulation
+  and is acutely sensitive to ATP supply, oxidative stress, and chemical interference.
+  Bisphenol A (BPA) directly disrupts spindle microtubule organisation; insufficient
+  mitochondrial ATP prevents proper spindle assembly and chromosome pulling; reactive
+  oxygen species damage spindle proteins. Because most aneuploidy errors occur in
+  this brief preovulatory window, modifiable inputs in the 90-120 days before ovulation
+  can meaningfully reduce aneuploidy rates, with implications for natural conception,
+  IVF success, miscarriage risk, and Down syndrome incidence.
+upstream_drivers:
+- oocyte mitochondrial dysfunction
+- BPA and phthalate exposure
+- chronic oxidative stress
+- chronological aging
+- high blood sugar
+downstream_effects:
+- failed fertilisation
+- implantation failure
+- first-trimester miscarriage
+- Down syndrome and other trisomies
+related_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- endocrine-disruptor-oocyte-damage
+- chronic-oxidative-stress
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 1 — Understanding Egg Quality, pg 22-29
+  quote: The process of separating and ejecting chromosomes is very energy-intensive.
+    Scientists have actually seen the mitochondria cluster together and suddenly produce
+    a burst of ATP at the precise time and place needed to form the structure that
+    separates the chromosomes.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

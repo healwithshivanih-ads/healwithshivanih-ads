@@ -1,0 +1,39 @@
+slug: sperm-quality
+display_name: Sperm Quality and Male Preconception Care
+aliases:
+- male fertility
+- sperm DNA fragmentation
+- sperm quality
+summary: 'Sperm quality encompasses traditional semen parameters (count, motility,
+  morphology) plus DNA integrity (fragmentation, aneuploidy, mutations). Up to 80%
+  of male infertility is attributable to oxidative damage during the approximately
+  75-day spermatogenesis cycle. Male age matters more than conventionally appreciated
+  — sperm DNA fragmentation roughly doubles from age 30 to 45, and paternal age over
+  40 raises offspring risk of birth defects, autism, and miscarriage. Daily antioxidant
+  supplementation (vitamin C, vitamin E, zinc, selenium, folate, CoQ10) is the most
+  studied intervention, with multiple trials showing 4-5x higher pregnancy and live
+  birth rates. Lifestyle drivers: avoid scrotal heat (laptops, hot baths, tight underwear),
+  tobacco, excessive alcohol, BPA, and phthalates; Mediterranean-pattern diet with
+  omega-3 emphasis.'
+key_mechanisms:
+- mitochondrial-dysfunction
+- chronic-oxidative-stress
+common_symptoms:
+- infertility
+- recurrent miscarriage
+related_topics:
+- male-infertility-oxidative-stress
+- preconception-protocol
+- egg-quality
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 12 — Sperm Quality, pg 165-177
+  quote: Oxidative damage is thought to be a contributing factor in up to 80% of all
+    cases of male infertility. Men who take antioxidant supplements had more than
+    a 4 times higher chance of conceiving and nearly a 5 times higher chance of a
+    live birth.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

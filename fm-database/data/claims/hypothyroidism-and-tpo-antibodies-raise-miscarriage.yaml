@@ -1,0 +1,23 @@
+slug: hypothyroidism-and-tpo-antibodies-raise-miscarriage
+statement: Even subclinical hypothyroidism and the presence of TPO antibodies (without
+  overt thyroid dysfunction) double or triple miscarriage rates and are strongly overrepresented
+  in unexplained infertility, ovulation disorders, and premature ovarian failure.
+  Levothyroxine treatment normalises miscarriage risk in antibody-positive women.
+  Every woman with infertility or recurrent loss should have TSH, free T4, and TPO
+  antibodies checked.
+evidence_tier: strong
+linked_to_topics:
+- preconception-protocol
+- hypothyroidism
+- female-infertility
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 4 — Unexpected Obstacles to Fertility, pg 68-71
+  quote: In women with thyroid antibodies, the miscarriage rate more than doubled.
+    When women with thyroid antibodies received thyroid hormone treatments during
+    pregnancy, the miscarriage rate dropped to just 3.5 percent.
+rationale: Critical screening claim for preconception workup.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

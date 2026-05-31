@@ -1,0 +1,24 @@
+slug: cytoplasmic-transfer-proved-mitochondria-rescue-eggs
+statement: Cytoplasmic transfer experiments in the late 1990s — injecting young-donor
+  mitochondria into older eggs — rescued otherwise poor-quality eggs and produced
+  successful pregnancies. The procedure was banned for safety reasons but provided
+  direct human evidence that mitochondrial energy supply is a rate-limiting step in
+  egg quality.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- egg-quality
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 6 — The Power of Coenzyme Q10, pg 89
+  quote: This experimental fertility procedure rescued the poor quality eggs and significantly
+    improved embryo development. Experts believe this occurred because the younger
+    mitochondria were able to make up for the energy deficiency from older, poorly
+    functioning mitochondria.
+rationale: Proof-of-concept for the mitochondrial-rescue framing of preconception
+  protocols.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

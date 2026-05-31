@@ -1,0 +1,23 @@
+slug: male-infertility-half-of-cases
+statement: Male factor contributes to nearly 50% of couple infertility cases, but
+  is often overlooked because clinic treatment focuses on the female partner. Traditional
+  semen analysis (count, motility, morphology) misses DNA fragmentation, which is
+  the better predictor of fertilisation, embryo quality, and miscarriage risk. Sperm
+  DNA fragmentation index above 30% is associated with substantially higher miscarriage
+  rates.
+evidence_tier: strong
+linked_to_topics:
+- sperm-quality
+- male-infertility-oxidative-stress
+- preconception-protocol
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 12 — Sperm Quality, pg 165-167
+  quote: Male infertility contributes to nearly 50 percent of all cases in which a
+    couple has difficulty conceiving. The latest research suggests that DNA quality
+    matters more than conventional semen parameters.
+rationale: Reframes infertility as a couple-level workup.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

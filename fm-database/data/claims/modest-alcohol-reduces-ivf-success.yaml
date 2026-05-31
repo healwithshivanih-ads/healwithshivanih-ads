@@ -1,0 +1,20 @@
+slug: modest-alcohol-reduces-ivf-success
+statement: More than 4 alcoholic drinks per week is associated with a 16% lower live
+  birth rate in IVF (Harvard 2011, n=2000+), and any alcohol consumption in the week
+  before IVF doubles miscarriage rate in one earlier study. Effect on natural conception
+  is smaller and inconsistent below 5 drinks/week but is detectable in women over
+  30.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- preconception-protocol
+- egg-quality
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 11 — The Egg Quality Diet, pg 162
+  quote: Compared to women reporting fewer than 4 alcoholic drinks per week, women
+    drinking more than this amount had a 16 percent lower chance of a live birth.
+rationale: Coachable alcohol-limit benchmark for IVF prep.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

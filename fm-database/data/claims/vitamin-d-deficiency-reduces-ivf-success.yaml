@@ -1,0 +1,26 @@
+slug: vitamin-d-deficiency-reduces-ivf-success
+statement: Vitamin D deficiency (common, particularly in winter, in PCOS, and at higher
+  latitudes) is associated with substantially lower IVF success rates — Caucasian
+  women with high vitamin D had 4x higher pregnancy odds vs deficient women in one
+  study. Mechanism includes uterine receptivity, AMH regulation, and possibly ovarian
+  estrogen support. Most women need 2000+ IU/day vitamin D3 in an oil-based capsule
+  taken with a fatty meal.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- preconception-protocol
+- egg-quality
+- pcos-fertility
+linked_to_supplements:
+- vitamin-d3
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 4 — Unexpected Obstacles to Fertility, pg 64-67
+  quote: The odds of pregnancy were four times higher for women with high vitamin
+    D levels compared to those with a vitamin D deficiency. Many doctors will recommend
+    at least 2,000 international units of vitamin D per day.
+rationale: Tier plausible_emerging because evidence inconsistent by ethnicity, but
+  worth checking at baseline.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

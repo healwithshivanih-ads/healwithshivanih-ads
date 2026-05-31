@@ -1,0 +1,54 @@
+slug: endocrine-disruptor-oocyte-damage
+display_name: Endocrine Disruptor Damage to Developing Oocytes
+aliases:
+- BPA-induced oocyte damage
+- phthalate oocyte damage
+- EDC reproductive toxicity
+category: signaling
+summary: Bisphenol A (BPA), phthalates (DEHP, MEHP and related), parabens, and several
+  pesticides act as endocrine disruptors that interfere with oocyte maturation through
+  three convergent pathways. First, they mimic or antagonise estrogen and androgen
+  at multiple receptors, blunting the hormonal signaling that drives follicle growth
+  and oocyte maturation. Second, they reduce follicular estrogen production by interfering
+  with steroidogenic enzymes. Third, they directly disrupt the microtubule spindle
+  apparatus during meiosis, causing chromosome misalignment and aneuploidy at doses
+  people are exposed to in daily life. BPA also reduces uterine receptivity, raising
+  implantation failure rates. Phthalates drive oxidative stress in follicular fluid
+  and have been linked to endometriosis, miscarriage, and reduced IVF success. The
+  window of greatest concern is the 3-4 months before conception, during which avoidance
+  of plastic food containers (especially heated/damaged), canned foods with BPA linings,
+  thermal-paper receipts, fragranced personal care products, vinyl, and conventional
+  cleaning products meaningfully reduces internal bioburden.
+upstream_drivers:
+- BPA exposure from plastics and can linings
+- phthalate exposure from soft plastics, fragrances, personal care
+- paraben exposure from cosmetics
+- pesticide residue in food
+downstream_effects:
+- reduced follicular estrogen production
+- meiotic spindle disruption
+- egg aneuploidy
+- reduced fertilisation rate
+- implantation failure
+- increased miscarriage risk
+related_mechanisms:
+- bpa-endocrine-disruption
+- endocrine-disruption-by-toxicants
+- aneuploidy-meiotic-spindle-error
+- oocyte-mitochondrial-dysfunction
+linked_to_topics:
+- egg-quality
+- preconception-protocol
+- female-infertility
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 2 — The Dangers of BPA, pg 30-46; Chapter 3 — Phthalates, pg 47-63
+  quote: Even a low dose of BPA during the final stages of egg development is enough
+    to interfere with meiosis and cause chromosomal abnormalities in eggs. BPA interferes
+    with the scaffold-like structures of tubules that organize and separate chromosomes
+    during egg development.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

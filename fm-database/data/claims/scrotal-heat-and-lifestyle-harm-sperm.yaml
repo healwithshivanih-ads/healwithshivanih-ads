@@ -1,0 +1,24 @@
+slug: scrotal-heat-and-lifestyle-harm-sperm
+statement: Scrotal heat exposure (hot baths, saunas, laptops on lap, tight underwear,
+  prolonged sitting) impairs spermatogenesis. Tobacco use, excessive alcohol, BPA/phthalate
+  exposure, and obesity also reduce sperm quality. These factors are reversible —
+  sperm produced 90 days after lifestyle change reflect the new conditions.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sperm-quality
+- preconception-protocol
+linked_to_mechanisms:
+- chronic-oxidative-stress
+- endocrine-disruptor-oocyte-damage
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 12 — Sperm Quality, pg 168-175
+  quote: When lifestyle factors such as toxin exposure or vitamin deficiencies cause
+    too much oxidation or compromise the antioxidant defense system, the result is
+    oxidative damage, which is thought to be a contributing factor in up to 80 percent
+    of all cases of male infertility.
+rationale: Coachable lifestyle levers for male preconception protocol.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

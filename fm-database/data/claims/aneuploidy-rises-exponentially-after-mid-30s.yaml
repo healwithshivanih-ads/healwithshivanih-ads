@@ -1,0 +1,23 @@
+slug: aneuploidy-rises-exponentially-after-mid-30s
+statement: The rate of chromosomally abnormal eggs rises exponentially from the mid-
+  to late 30s onward; under-35s average about 25% aneuploid eggs, while women over
+  40 carry 50-80% aneuploid eggs, which is the dominant driver of declining natural
+  conception, IVF success, and rising miscarriage rates with age.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+linked_to_mechanisms:
+- aneuploidy-meiotic-spindle-error
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 1 — Understanding Egg Quality, pg 22
+  quote: In women over 40, more than half of eggs may be chromosomally abnormal. In
+    fact, by some measures, the rate of abnormalities in women over 40 is as high
+    as 70-80%. Even in women under 35, up to a quarter of eggs are aneuploid on average.
+rationale: Foundational age-aneuploidy claim — needed to frame every advanced-maternal-
+  age fertility conversation including egg freezing prep.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

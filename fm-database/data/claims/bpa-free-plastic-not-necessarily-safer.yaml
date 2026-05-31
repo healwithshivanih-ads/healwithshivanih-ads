@@ -1,0 +1,21 @@
+slug: bpa-free-plastic-not-necessarily-safer
+statement: BPA-free plastics often leach other estrogenic chemicals (bisphenol S,
+  bisphenol F, and unidentified substitutes), some of which are equally or more endocrine-disrupting
+  than BPA. The safer default is to move out of plastic entirely for food contact
+  — glass, stainless steel, ceramic, wood — rather than switching to BPA-free plastic.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- preconception-protocol
+linked_to_mechanisms:
+- endocrine-disruptor-oocyte-damage
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 2 — The Dangers of BPA, pg 42-43
+  quote: Scientists tested more than 500 commercially available plastic food containers
+    and found that almost all products leached chemicals having estrogen-like activity,
+    including those advertised as BPA-free.
+rationale: Counter-marketing claim — BPA-free labels create false reassurance.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

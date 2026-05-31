@@ -1,0 +1,26 @@
+slug: preovulatory-window-is-when-aneuploidy-occurs
+statement: Most chromosomal abnormalities in eggs do not accumulate gradually over
+  decades of storage but instead happen in the final 3-4 months before ovulation,
+  when the oocyte completes meiosis. This makes egg quality modifiable through targeted
+  preconception inputs during that window.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- preconception-protocol
+linked_to_mechanisms:
+- aneuploidy-meiotic-spindle-error
+- oocyte-mitochondrial-dysfunction
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 1 — Understanding Egg Quality, pg 27-28
+  quote: Most of the chromosomal abnormalities in eggs do not accumulate gradually
+    over 30 or 40 years as an egg ages, but instead happen in the couple of months
+    before an egg is ovulated. Aging does not directly cause chromosomal abnormalities;
+    rather, it creates conditions that predispose eggs to mature incorrectly shortly
+    before ovulation.
+rationale: This is the central claim that makes preconception coaching meaningful.
+  Without it, the whole protocol stack lacks biological rationale.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

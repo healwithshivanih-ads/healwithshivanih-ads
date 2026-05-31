@@ -1,0 +1,52 @@
+slug: oocyte-mitochondrial-dysfunction
+display_name: Oocyte Mitochondrial Dysfunction
+aliases:
+- egg mitochondrial dysfunction
+- oocyte energy deficit
+- ovarian mitochondrial aging
+category: signaling
+summary: Each oocyte contains over fifteen thousand mitochondria — more than ten times
+  any other cell — and depends on a precisely timed burst of ATP for meiotic spindle
+  assembly, chromosome separation, polar body extrusion, and post-fertilisation development
+  to blastocyst. Aging eggs accumulate mitochondrial DNA mutations, structural mitochondrial
+  damage, and reduced CoQ10 levels, causing ATP supply to fall below the threshold
+  required for correct chromosomal processing. Insufficient mitochondrial ATP at meiosis
+  is now regarded as a leading cause of egg aneuploidy, failed fertilisation, arrested
+  embryo development, and implantation failure. Cytoplasmic transfer experiments confirmed
+  that injecting young donor mitochondria into older eggs rescued egg quality, providing
+  direct proof that mitochondrial energy is the rate-limiting input. Modifiable via
+  CoQ10/ubiquinol supplementation, antioxidants (melatonin, vitamin E, alpha-lipoic
+  acid, NAC), avoidance of oxidative stressors, and blood-sugar control to prevent
+  hyperglycaemia- induced mitochondrial damage.
+upstream_drivers:
+- chronological aging
+- high blood sugar
+- chronic oxidative stress
+- endocrine disruptor exposure (BPA, phthalates)
+- declining CoQ10 synthesis with age
+downstream_effects:
+- egg aneuploidy
+- failed fertilisation
+- arrested embryo development
+- implantation failure
+- early miscarriage
+related_mechanisms:
+- mitochondrial-dysfunction
+- mitochondrial-energy-production
+- aneuploidy-meiotic-spindle-error
+- chronic-oxidative-stress
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- female-infertility
+sources:
+- id: fett-it-starts-with-the-egg-2019
+  location: Chapter 6 — The Power of Coenzyme Q10, pg 87-96
+  quote: Each egg has more than fifteen thousand mitochondria — over ten times more
+    than any other cell in the body. The ability to make energy when needed is the
+    single most important factor in determining the competence of eggs and embryos.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

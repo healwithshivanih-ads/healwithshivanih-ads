@@ -1,0 +1,28 @@
+slug: aneuploidy-and-follicle-depletion-drive-ama-live-birth-decline
+statement: 'The age-related decline in live birth rate is attributable principally
+  to two convergent biological problems: high oocyte aneuploidy rate (preventing fertilisation,
+  implantation, and continued embryonic development) and follicle depletion (reducing
+  the pool of available oocytes per cycle). Both are explained mechanistically by
+  mitochondrial dysfunction. This framing focuses preconception protocols on aneuploidy
+  reduction (mitochondrial support, antioxidants) and follicle preservation (avoiding
+  toxins, maintaining metabolic health) rather than diffuse general-health interventions.'
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- diminished-ovarian-reserve
+- preconception-protocol
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- aneuploidy-meiotic-spindle-error
+sources:
+- id: bentov-2014-coq10-oocyte-aneuploidy-rct
+  location: Abstract — Background
+  quote: The age-related reduction in live-birth rate is attributed to a high rate
+    of aneuploidy and follicle depletion. We showed in an animal model that treatment
+    with Coenzyme Q10 markedly improved reproductive outcome.
+rationale: Two-axis explanation of AMA fertility decline that underpins the entire
+  egg-quality protocol stack.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani
