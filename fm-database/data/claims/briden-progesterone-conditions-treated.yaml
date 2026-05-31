@@ -1,0 +1,34 @@
+slug: briden-progesterone-conditions-treated
+statement: Body-identical progesterone has clinical use across heavy/painful periods,
+  endometriosis and adenomyosis, PCOS (cyclic progesterone therapy), menstrual migraines,
+  PMDD and premenstrual mood symptoms, perimenopause symptoms (insomnia, night sweats,
+  heavy periods), and menopause (with or without estrogen depending on uterus). For
+  PCOS and early perimenopause, cyclic dosing (2 weeks on, 2 weeks off) is typical;
+  for heavy bleeding or migraine prevention, continuous nightly dosing may be needed.
+evidence_tier: plausible_emerging
+rationale: 'Each indication has independent literature: cyclic progesterone for PCOS
+  (Prior), micronised progesterone for perimenopause hot flushes (Prior 2012 RCT),
+  progesterone for endometriosis suppression. Migraines and adenomyosis use have clinical
+  but more limited RCT support.'
+coaching_translation: Progesterone is one of the most versatile tools in women's hormonal
+  health. The schedule depends on the goal — cyclic for PCOS and early perimenopause,
+  continuous for heavy bleeding, migraine, or late perimenopause.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- endometriosis
+- perimenopause
+- low-progesterone
+- premenstrual-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-guide-progesterone-womens-health
+  location: Blog post — Conditions that benefit section
+  quote: Body-identical progesterone can be an effective treatment for PCOS, PMDD,
+    migraines, endometriosis, adenomyosis, and perimenopause.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

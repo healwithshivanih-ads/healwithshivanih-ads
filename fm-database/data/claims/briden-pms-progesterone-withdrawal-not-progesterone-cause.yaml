@@ -1,0 +1,35 @@
+slug: briden-pms-progesterone-withdrawal-not-progesterone-cause
+statement: Most premenstrual mood symptoms are caused by withdrawal from progesterone
+  (kicking in around day 8-9 after ovulation, when progesterone drops) rather than
+  by progesterone itself. Only about 1 in 20 women experience a paradoxical anxiety
+  effect from allopregnanolone (suggesting unusual GABA receptor sensitivity, often
+  related to inflammation or histamine). For most women, supplementing body-identical
+  progesterone in the luteal phase relieves rather than causes mood symptoms.
+evidence_tier: plausible_emerging
+rationale: The withdrawal-from-progesterone framing is supported by emerging research
+  and reflects a shift from the conventional 'progesterone causes PMDD' position.
+  The ~5% paradoxical reaction rate is Briden's clinical observation.
+coaching_translation: The conventional view that 'progesterone causes PMS' is being
+  challenged. For most women, the symptoms come from the drop in progesterone late
+  in the cycle — and supplementing progesterone (as a bedtime capsule) often helps
+  rather than worsens.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+- low-progesterone
+- hormonal-depression-progesterone
+linked_to_mechanisms:
+- allopregnanolone-deficiency
+- gaba-receptor-modulation
+linked_to_supplements: []
+sources:
+- id: briden-blog-top-6-pms-mood-treatments
+  location: Blog post — Withdrawal theory section
+  quote: Premenstrual mood symptoms are, at least in part, the result of withdrawal
+    from progesterone. And can therefore be relieved by taking progesterone, either
+    a cream or an oral capsule.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: briden-pcos-adrenal-isolated-dheas-elevation
+statement: Adrenal PCOS (~10% of cases) presents with elevated DHEAS but normal testosterone
+  and androstenedione. Cycles are often regular. It resembles late-onset congenital
+  adrenal hyperplasia and reflects an epigenetic upregulation of adrenal androgen
+  synthesis rather than insulin resistance or inflammation. Treatment uses magnesium,
+  zinc, licorice, adaptogens, and pantothenic acid (vitamin B5) to support adrenal
+  regulation.
+evidence_tier: fm_specific_thin
+rationale: The discrete 'adrenal subtype' draws on DHEAS-only hyperandrogenism described
+  in PCOS phenotype literature. Treatment with adaptogens and B5 has limited RCT evidence;
+  it is a clinical FM strategy.
+coaching_translation: When the only high androgen on a lab panel is DHEAS, the protocol
+  shifts from insulin/inflammation work to adrenal support — and cycles may be relatively
+  regular even with androgen symptoms.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- pcos-adrenal
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: briden-blog-pcos-4-types-flowchart
+  location: Blog post — Step 5 Adrenal PCOS section
+  quote: If you have only elevated DHEAS — but normal testosterone and androstenedione
+    — you may have adrenal PCOS. It's an epigenetic upregulation of adrenal androgens.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

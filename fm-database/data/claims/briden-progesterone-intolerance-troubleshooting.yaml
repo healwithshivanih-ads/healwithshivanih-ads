@@ -1,0 +1,33 @@
+slug: briden-progesterone-intolerance-troubleshooting
+statement: 'Negative reactions to body-identical progesterone fall into recognisable
+  categories with practical workarounds: transient mood effects (usually settle in
+  3-7 days), sodium loss with palpitations (add electrolytes), blood sugar instability
+  (more protein, regular meals), gut symptoms (address SIBO/dysbiosis), sleep disruption
+  (good sleep hygiene), and paradoxical neurosteroid response (try higher dose, vaginal
+  route, or reduce inflammation/histamine first). Most women feel well on progesterone.'
+evidence_tier: fm_specific_thin
+rationale: The mechanism map (sodium-aldosterone, gut motility, ALLO-GABA biphasic
+  effect) is consistent with progesterone pharmacology. The troubleshooting algorithm
+  is Briden's clinical synthesis rather than RCT data.
+coaching_translation: Progesterone 'intolerance' is often solvable. The first move
+  is to give it 3-7 days for receptor recalibration. After that, target the specific
+  symptom — electrolytes for palpitations, protein for blood sugar, gut work for bloating,
+  lower dose or vaginal route for paradoxical mood.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- low-progesterone
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-troubleshooting-progesterone
+  location: Blog post — Negative mood symptoms section
+  quote: Transient mood effects are common in the first few days. If they persist
+    beyond seven days, it could be from sodium loss, blood sugar instability, increased
+    nutrient demand, gut inflammation, sleep disruption, or paradoxical neurosteroid
+    response.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

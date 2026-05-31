@@ -1,0 +1,33 @@
+slug: briden-peony-licorice-anti-androgen
+statement: The peony (Paeonia lactiflora) and licorice (Glycyrrhiza glabra) combination
+  is a long-used TCM formula with documented anti-androgen activity. Peony slows testosterone
+  production and promotes aromatase (testosterone-to-estrogen conversion). Licorice
+  downregulates CYP17A1 (the testosterone-synthesis enzyme) and provides phytoestrogens
+  that block androgen receptors. A 2017 clinical trial showed benefit in PCOS. Licorice
+  raises blood pressure — clinician must rule out hypertension and limit duration.
+evidence_tier: confirm_with_clinician
+rationale: The 2017 clinical trial in PCOS supports the combination. Each herb's mechanism
+  is independently documented in pharmacology. Licorice-induced hypertension via mineralocorticoid
+  receptor activation is well-established.
+coaching_translation: Peony + licorice is a recognised herbal PCOS anti-androgen option
+  but the licorice raises blood pressure — never recommend without a clinician monitoring
+  BP and a defined duration limit (typically not beyond 4-6 weeks at therapeutic dose).
+out_of_scope_notes: ''
+caveats:
+- Licorice contraindicated in hypertension, kidney disease, heart failure, pregnancy.
+- Time-limit therapeutic licorice doses to 4-6 weeks without clinician monitoring.
+linked_to_topics:
+- pcos
+linked_to_mechanisms: []
+linked_to_supplements:
+- licorice-root
+sources:
+- id: briden-blog-natural-anti-androgens-hirsutism
+  location: Blog post — Peony and licorice section
+  quote: Peony slows testosterone production and promotes the enzyme aromatase. Licorice
+    downregulates the enzyme (CYP17A1) that produces testosterone. Licorice raises
+    blood pressure, so consult a clinician about safe use.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

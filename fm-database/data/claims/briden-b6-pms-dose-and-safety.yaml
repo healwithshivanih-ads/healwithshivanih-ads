@@ -1,0 +1,33 @@
+slug: briden-b6-pms-dose-and-safety
+statement: Vitamin B6 (pyridoxine or preferably P5P / pyridoxal-5-phosphate) at 30-60
+  mg per day during the luteal phase relieves premenstrual mood symptoms by boosting
+  serotonin and GABA and lowering histamine and prolactin. Taking B6 only during the
+  luteal phase (not continuously) reduces the rare risk of peripheral nerve damage
+  seen with chronic high doses. The P5P form is also safer than pyridoxine for prolonged
+  use.
+evidence_tier: confirm_with_clinician
+rationale: At least one PMS clinical trial supports vitamin B6. The neuropathy risk
+  at chronic doses >100 mg/day is documented and dose-dependent.
+coaching_translation: If a clinician suggests B6 for PMS, the safer pattern is luteal-phase
+  only (cycle days 14-28), 30-60 mg, in the P5P form. Stop if any numbness or tingling
+  appears.
+out_of_scope_notes: ''
+caveats:
+- Chronic doses >100 mg/day can cause peripheral neuropathy — luteal-phase-only dosing
+  is safer.
+- P5P (pyridoxal-5-phosphate) form is preferred over plain pyridoxine for prolonged
+  use.
+linked_to_topics:
+- premenstrual-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-top-6-pms-mood-treatments
+  location: Blog post — Vitamin B6 section
+  quote: Vitamin B6 works via several mechanisms including boosting serotonin and
+    GABA, as well as lowering histamine and prolactin. I usually prescribe B6 in the
+    range of 30 to 60 mg but only during the luteal phase.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,66 @@
+slug: histamine-perimenopause
+display_name: Histamine and Mast Cell Activation in Perimenopause
+aliases:
+- estrogen-histamine perimenopause
+- perimenopausal histamine intolerance
+- mast cell perimenopause
+summary: 'During the early years of perimenopause, estrogen tends to swing higher
+  than baseline — and high estrogen drives high histamine. Estrogen activates mast
+  cells (which release histamine and heparin), upregulates histidine decarboxylase
+  (the enzyme that makes histamine), and downregulates the DAO enzyme that clears
+  histamine. Histamine in turn stimulates the ovaries to make more estrogen, setting
+  up a vicious cycle. At the same time, progesterone — which normally stabilises mast
+  cells and upregulates DAO — drops first in perimenopause. The result is a tougher
+  perimenopause with overlapping histamine-driven symptoms: night sweats, anxiety,
+  insomnia, fluid retention, breast pain, migraines, brain fog, hives, and heavy menstrual
+  bleeding.'
+common_symptoms:
+- night sweats
+- anxiety
+- insomnia
+- fluid retention
+- breast tenderness
+- migraines
+- brain fog
+- urticaria or hives
+- tinnitus
+- heavy menstrual bleeding
+red_flags:
+- Anaphylaxis or systemic mast cell symptoms — refer to immunology/allergy
+- Heavy menstrual bleeding with anemia — clinician work-up for fibroids, adenomyosis,
+  coagulopathy
+related_topics:
+- perimenopause
+- perimenopause-and-menopause
+- histamine-intolerance
+- mast-cell-activation-syndrome
+- premenstrual-syndrome
+- low-progesterone
+- estrogen-dominance
+key_mechanisms:
+- estrogen-decline
+- mast-cell-activation
+- histamine-metabolism
+coaching_scope_notes: 'Coach an antihistamine lifestyle approach during the perimenopause
+  window: dairy-free trial (A1 casein is mast-cell-stimulating), reduce alcohol especially
+  red wine, manage SIBO/gut symptoms, support methylation with B-vitamin-rich foods
+  (clinician to dose B6/SAMe/quercetin). Educate on tracking symptom-cycle pattern
+  (worst just before period). Coaching scope ends at any prescription/dose decision.'
+clinician_scope_notes: Clinician may trial OTC antihistamine (loratadine or diphenhydramine)
+  as both diagnostic and treatment. Body-identical progesterone (Prometrium/Utrogestan)
+  is the most direct intervention because it both counterbalances estrogen and has
+  independent mast-cell-stabilising effects. Dose B6 carefully — high doses risk neuropathy.
+notes_for_coach: Briden's framing — perimenopause symptoms that resemble histamine
+  symptoms (hives, anxiety, breast pain) should prompt a histamine trial before assuming
+  straight estrogen-decline pathology. The histamine-estrogen feedback loop explains
+  why some women feel dramatically worse in their early 40s than at actual menopause.
+sources:
+- id: briden-blog-high-histamine-perimenopause
+  location: Blog post — How estrogen increases histamine section
+  quote: The net result can be a vicious cycle of estrogen causing high histamine,
+    causing high estrogen, causing even more histamine.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: briden-dim-androgen-and-estrogen-modulator
+statement: DIM (diindolylmethane), a phytonutrient from cruciferous vegetables (broccoli,
+  Brussels sprouts, cabbage, kale), reduces androgens by downregulating 5-alpha-reductase
+  and modulating steroid hormone metabolism enzymes. It may also influence androgen
+  receptor activity and shifts estrogen metabolism toward more favourable 2-hydroxy
+  metabolites. Briden prescribes 100 mg per day for both acne and hirsutism.
+evidence_tier: plausible_emerging
+rationale: DIM's effects on CYP1A1 and estrogen metabolism are documented. Anti-androgen
+  action via 5-alpha-reductase has limited but consistent in-vitro and small clinical
+  data.
+coaching_translation: DIM 100 mg per day is a reasonable adjunct for PCOS acne and
+  hirsutism, especially when there is also estrogen-excess pattern. Eating cruciferous
+  vegetables daily provides smaller but real food-form support.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- estrogen-dominance
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
+linked_to_supplements:
+- dim
+sources:
+- id: briden-blog-natural-anti-androgens-hirsutism
+  location: Blog post — DIM section
+  quote: DIM may influence androgen receptor activity, potentially reducing tissue
+    sensitivity to androgens. I prescribe DIM at a dose of 100 mg per day for both
+    acne and hirsutism.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

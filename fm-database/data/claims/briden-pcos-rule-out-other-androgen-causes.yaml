@@ -1,0 +1,29 @@
+slug: briden-pcos-rule-out-other-androgen-causes
+statement: 'Before diagnosing PCOS, rule out other causes of androgen excess: high-androgen
+  birth control (drospirenone, cyproterone, levonorgestrel-type progestins), congenital
+  adrenal hyperplasia (up to 9% of androgen-excess cases), and high prolactin. Each
+  has distinct treatment paths separate from PCOS protocols.'
+evidence_tier: strong
+rationale: Late-onset CAH and prolactinoma are both well-documented mimics of PCOS
+  in conventional endocrinology. Drospirenone and cyproterone withdrawal-androgen
+  rebound is described in the Briden post-pill PCOS literature.
+coaching_translation: PCOS is a diagnosis of exclusion. Two simple blood tests — 17-hydroxyprogesterone
+  (for CAH) and prolactin — can rule out two important mimics before settling on a
+  PCOS treatment plan.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- hormonal-birth-control-withdrawal
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-pcos-4-types-flowchart
+  location: Blog post — Step 1 Is it really PCOS section
+  quote: Other causes of androgen excess must be ruled out, such as high-androgen
+    birth control, congenital adrenal hyperplasia (up to 9% of androgen excess cases),
+    and high prolactin.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

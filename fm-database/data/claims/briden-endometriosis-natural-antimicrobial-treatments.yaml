@@ -1,0 +1,34 @@
+slug: briden-endometriosis-natural-antimicrobial-treatments
+statement: Natural antimicrobial treatments — berberine, N-acetylcysteine (NAC), and
+  (carefully dosed) iodine — may help endometriosis by addressing the bacterial-microbiome
+  component. These are layered on top of dietary work (wheat-free, dairy-free trial),
+  correcting zinc and vitamin A deficiency, and treating SIBO if present. Surgery
+  for deep infiltrating lesions or endometriomas remains an option; the natural antimicrobial
+  work is complementary, not a replacement.
+evidence_tier: fm_specific_thin
+rationale: Berberine and NAC have antimicrobial and antioxidant data; their specific
+  use in endometriosis is clinical FM practice rather than RCT-based. NAC has a small
+  RCT for endometriosis lesion reduction.
+coaching_translation: If endometriosis is in play, working on the gut and trialling
+  a dairy-free, wheat-free diet is reasonable to suggest in scope. Specific supplements
+  (berberine, NAC, iodine) are clinician decisions because of dosing and interaction
+  considerations.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- endometriosis
+- endometriosis-microbiome
+linked_to_mechanisms: []
+linked_to_supplements:
+- berberine
+- nac
+- iodine
+sources:
+- id: briden-blog-endometriosis-microbiome-story
+  location: Blog post — Treatment ideas section
+  quote: Natural antimicrobial treatments for endometriosis include berberine, N-acetyl
+    cysteine and maybe iodine.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

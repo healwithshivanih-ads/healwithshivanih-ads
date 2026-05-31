@@ -1,0 +1,28 @@
+slug: briden-zinc-period-pain-meta-analysis
+statement: Zinc supplementation can significantly reduce period pain (dysmenorrhoea)
+  according to a 2024 meta-analysis. The proposed mechanisms are reduction of prostaglandins,
+  normalisation of progesterone receptors, improved uterine circulation, and prevention
+  of uterine muscle spasm. Effective dose is around 30 mg per day with food.
+evidence_tier: strong
+rationale: Briden cites a 2024 meta-analysis showing significant reduction in period
+  pain. The prostaglandin-modulation mechanism is consistent with zinc's known role
+  as a cofactor in eicosanoid metabolism.
+coaching_translation: For period pain, a 2-3 month trial of zinc 30 mg daily after
+  dinner is well-supported by recent meta-analytic evidence and is a low-risk first-pass
+  intervention.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+linked_to_mechanisms: []
+linked_to_supplements:
+- zinc
+sources:
+- id: briden-blog-zinc-rescues-hormones
+  location: Blog post — Period pain bullet section
+  quote: According to a 2024 meta-analysis, sustained zinc supplementation can significantly
+    reduce period pain.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

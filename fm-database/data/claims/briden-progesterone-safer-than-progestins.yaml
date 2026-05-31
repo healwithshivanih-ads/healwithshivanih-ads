@@ -1,0 +1,32 @@
+slug: briden-progesterone-safer-than-progestins
+statement: Unlike estrogen and many progestins, real body-identical progesterone does
+  not increase the risk of breast cancer or blood clots. This makes oral micronised
+  progesterone a safer alternative to progestins for heavy bleeding (alongside or
+  instead of a hormonal IUD), and a safer companion to estrogen in menopause hormone
+  therapy.
+evidence_tier: plausible_emerging
+rationale: The breast cancer differential between micronised progesterone and synthetic
+  progestins is supported by the French E3N cohort and re-analyses of the Women's
+  Health Initiative. The thromboembolism-neutral profile of micronised progesterone
+  (vs progestin-associated VTE risk) is established in the menopause hormone therapy
+  literature.
+coaching_translation: When prescribing options are being discussed, ask about body-identical
+  progesterone (Prometrium or Utrogestan) — it has a safer breast and clot profile
+  than progestins and is widely available off-label.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- bhrt
+- perimenopause
+- low-progesterone
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-guide-progesterone-womens-health
+  location: Blog post — Final tip section
+  quote: Unlike estrogen and many progestins, real progesterone does not increase
+    the risk of breast cancer or blood clots.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

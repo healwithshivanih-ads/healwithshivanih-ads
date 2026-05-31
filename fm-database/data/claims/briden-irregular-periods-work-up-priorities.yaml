@@ -1,0 +1,34 @@
+slug: briden-irregular-periods-work-up-priorities
+statement: 'Before settling on PCOS or hypothalamic amenorrhea, rule out the common
+  medical causes of irregular periods: pregnancy, hypothyroidism, high prolactin (incl.
+  prolactinoma), medication side effects (some antidepressants), nutrient deficiencies
+  (iron, vitamin D), autoimmune disease including celiac, history of concussion (rare
+  but documented), and primary ovarian insufficiency (FSH consistently >25 below age
+  40). Hormone tests must be timed to cycle day 2-3 if cycles are present; random
+  testing risks measuring a pre-ovulatory LH surge that misleads.'
+evidence_tier: strong
+rationale: Standard reproductive endocrinology work-up. POI cut-off of FSH >25 is
+  consistent with international diagnostic criteria.
+coaching_translation: An irregular-period work-up needs pregnancy test, thyroid panel,
+  prolactin, FSH (timed to day 2-3), celiac screen, and iron studies before any FM
+  'PCOS subtype' analysis. Skipping these risks missing easily-treated causes.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- irregular-periods
+- hypothalamic-amenorrhea
+- pcos
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-irregular-periods-pcos-vs-hypothalamic
+  location: Blog post — Work-up section
+  quote: The next and most important steps involve testing for and ruling out all
+    the possible explanations, such as pregnancy, underactive thyroid, high prolactin,
+    a medication side effect, a deficiency of iron, vitamin D or really any nutrient,
+    or an illness like autoimmune disease, including celiac disease.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

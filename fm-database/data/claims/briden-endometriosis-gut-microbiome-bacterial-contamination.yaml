@@ -1,0 +1,33 @@
+slug: briden-endometriosis-gut-microbiome-bacterial-contamination
+statement: 'Two mechanisms link gut and microbiome to endometriosis: (1) the 2018
+  bacterial contamination hypothesis — LPS toxin from gram-negative bacteria enters
+  the pelvis via retrograde menstruation and intestinal permeability, driving inflammation;
+  (2) the 2023 Fusobacterium pathway — Fusobacterium infection of endometrial cells
+  activates growth factors and fibroblasts that promote lesion formation. Intestinal
+  permeability is driven by gluten sensitivity, dysbiosis, SIBO, and zinc/vitamin
+  A deficiency.'
+evidence_tier: plausible_emerging
+rationale: The 2018 bacterial contamination paper and the 2023 Fusobacterium paper
+  are both in peer-reviewed journals (Briden cites a 2024 Nature article and a 2024
+  Emerging Bacterial Factors paper). The mechanisms are emerging but increasingly
+  recognised.
+coaching_translation: Working on gut health — fixing SIBO, addressing dairy or gluten
+  sensitivity, correcting zinc and vitamin A deficiency — is a legitimate lever for
+  endometriosis, distinct from the conventional surgical approach.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- endometriosis
+- endometriosis-microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-endometriosis-microbiome-story
+  location: Blog post — Bacterial contamination hypothesis update
+  quote: There are at least two mechanisms by which bacteria or the microbiome could
+    play a role in the development of the serious type of endometriosis lesions. Making
+    the gut microbiome a great target for treatment.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: briden-zinc-deficiency-prevalence-women
+statement: Zinc deficiency affects roughly one in three women and is more common with
+  heavy periods (zinc loss in menstrual blood), alcohol intake, stomach acid-suppressing
+  medication, hypothyroidism, and hormonal birth control. Signs include hair loss,
+  dermatitis, impaired immunity, and white spots on fingernails. The plasma zinc reference
+  range is 11-23 umol/L or 70-150 ug/dL. Plant foods are low in zinc; best sources
+  are red meat, seafood, and eggs.
+evidence_tier: plausible_emerging
+rationale: Zinc deficiency prevalence figures align with public health surveys. The
+  link to hypothyroidism (zinc is required for T3 production) and to oral contraceptives
+  (zinc depletion) is documented. The Briden post cites a 2020 review and a 2024 meta-analysis.
+coaching_translation: Zinc is one of the most useful first-pass supplements in women's
+  hormonal health and the deficiency is common — especially in vegetarian and plant-based
+  diets, which are widespread in Indian coaching context. Plasma zinc is a cheap test
+  that many doctors will run.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- premenstrual-syndrome
+- endometriosis
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
+linked_to_supplements:
+- zinc
+sources:
+- id: briden-blog-zinc-rescues-hormones
+  location: Blog post — Zinc deficiency section
+  quote: Zinc deficiency affects about one in three women and is more common with
+    heavy periods, alcohol, stomach acid medication, hypothyroidism, and hormonal
+    birth control.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

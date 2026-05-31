@@ -1,0 +1,35 @@
+slug: briden-iodine-thyroid-antibody-test-before-high-dose
+statement: Before trying higher-dose iodine (>300 mcg), thyroid antibodies (anti-TPO
+  or anti-thyroglobulin) must be tested. A positive antibody result means high-dose
+  iodine — especially as potassium iodide — can trigger or worsen autoimmune thyroid
+  disease (Hashimoto's). With negative antibodies, doses of 1000-3000 mcg can be considered,
+  preferably as molecular iodine (I2) and combined with selenium for thyroid protection.
+evidence_tier: confirm_with_clinician
+rationale: The iodine-induced autoimmune thyroiditis literature is well-established.
+  Molecular iodine has been shown to be less thyroid-disruptive than potassium iodide.
+  The 300 mcg upper safe limit for autoimmune-prone women is conservative clinical
+  practice.
+coaching_translation: Never start a high-dose iodine supplement without checking thyroid
+  antibodies first. If antibodies are positive, the ceiling is 300 mcg total daily
+  (food + supplement).
+out_of_scope_notes: ''
+caveats:
+- Higher-dose iodine is not safe during pregnancy or breastfeeding without specialist
+  guidance.
+- Selenium should accompany iodine supplementation to protect the thyroid.
+- Stop iodine immediately if thyroid function becomes abnormal.
+linked_to_topics:
+- iodine-excess-and-autoimmune-thyroid
+linked_to_mechanisms: []
+linked_to_supplements:
+- iodine
+sources:
+- id: briden-blog-iodine-breast-pain-ovarian-cysts-pms
+  location: Blog post — Don't take iodine without testing thyroid antibodies section
+  quote: If your thyroid antibody test is positive, do not take more than 0.3 mg (300
+    mcg) of iodine — especially potassium iodide — as it can aggravate or trigger
+    autoimmune thyroid disease.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

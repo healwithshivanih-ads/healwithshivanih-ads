@@ -1,0 +1,33 @@
+slug: briden-anti-androgen-supplements-overview
+statement: 'Natural anti-androgen supplements for PCOS hirsutism work via three pathways:
+  (1) downregulate 5-alpha-reductase (zinc, reishi, DIM, progesterone, saw palmetto),
+  (2) reduce androgen synthesis (peony, licorice via CYP17A1, DIM), (3) block androgen
+  receptors (licorice phytoestrogens, progesterone). Anti-androgens are layered on
+  top of treatment for the underlying PCOS subtype, not used as standalone treatment.
+  Coach should pick one or two anti-androgens at a time, not stack all of them.'
+evidence_tier: fm_specific_thin
+rationale: Each individual supplement has independent rationale and some trial data
+  (zinc 8-week RCT, peony-licorice 2017 RCT, DIM mechanism studies). Synthesis is
+  Briden's clinical practice.
+coaching_translation: There are many anti-androgen options — the trick is not to throw
+  them all at the problem. Start with the core treatment for the PCOS subtype (insulin
+  resistance, post-pill, inflammatory, or adrenal), then layer one or two anti-androgens.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+linked_to_mechanisms: []
+linked_to_supplements:
+- zinc
+- dim
+- licorice-root
+- spearmint-tea
+sources:
+- id: briden-blog-natural-anti-androgens-hirsutism
+  location: Blog post — Overall section
+  quote: Anti-androgen supplements are not a stand-alone treatment for facial hair
+    or acne. You still need to fix the underlying reason for androgen excess.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

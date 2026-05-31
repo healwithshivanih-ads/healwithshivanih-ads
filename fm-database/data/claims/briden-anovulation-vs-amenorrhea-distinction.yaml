@@ -1,0 +1,33 @@
+slug: briden-anovulation-vs-amenorrhea-distinction
+statement: An anovulatory cycle (cycle with estrogen but no progesterone due to no
+  ovulation) can present as a regular bleed and look like a normal period — but provides
+  no progesterone and is detectable only by temperature charting or precisely-timed
+  luteal progesterone testing. Hypothalamic suppression can show up first as anovulatory
+  cycles or shortened luteal phases (mild), then long cycles (moderate), then complete
+  amenorrhea (severe). PCOS more commonly presents with long cycles than amenorrhea
+  because estrogen production is preserved.
+evidence_tier: strong
+rationale: Anovulation detection via cycle charting and luteal progesterone testing
+  is standard reproductive endocrinology. The graded HA presentation (luteal insufficiency
+  → long cycles → amenorrhea) reflects Prof Jerilynn Prior's framework.
+coaching_translation: A cycle that bleeds on time is not automatically an ovulatory
+  cycle. If progesterone matters (sleep, mood, fertility, bone), then ovulation needs
+  to be confirmed by temperature tracking or a properly-timed luteal blood test.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- irregular-periods
+- hypothalamic-amenorrhea
+- low-progesterone
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-irregular-periods-pcos-vs-hypothalamic
+  location: Blog post — Refresher section
+  quote: It's entirely possible to have a cycle where you make estrogen, but did not
+    manage to ovulate, so made no progesterone. That's called an anovulatory cycle.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

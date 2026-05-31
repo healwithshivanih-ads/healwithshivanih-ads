@@ -1,0 +1,35 @@
+slug: briden-histamine-estrogen-feedback-loop
+statement: 'Estrogen and histamine reinforce each other in a vicious cycle: estrogen
+  activates mast cells (releasing histamine and heparin), upregulates histidine decarboxylase
+  (the histamine-producing enzyme), and downregulates DAO (the histamine-clearing
+  enzyme). At the same time, histamine stimulates the ovaries to make more estrogen.
+  In early perimenopause — when estrogen surges — this loop amplifies and produces
+  overlapping perimenopause-histamine symptoms.'
+evidence_tier: plausible_emerging
+rationale: Each leg of the feedback loop (estrogen-mast-cell activation, estrogen-HDC,
+  estrogen-DAO suppression, histamine-ovarian estrogen stimulation) is documented
+  in pharmacology and immunology literature. The integrative 'vicious cycle' framing
+  is Briden's clinical synthesis.
+coaching_translation: When perimenopause symptoms resemble allergy or histamine symptoms
+  — hives, anxiety, ringing in the ears, fluid retention, migraines — the estrogen-histamine
+  loop is likely in play. A trial of an OTC antihistamine is a low-cost diagnostic.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- histamine-perimenopause
+- perimenopause
+- histamine-intolerance
+linked_to_mechanisms:
+- mast-cell-activation
+- histamine-metabolism
+- estrogen-decline
+linked_to_supplements: []
+sources:
+- id: briden-blog-high-histamine-perimenopause
+  location: Blog post — How estrogen increases histamine section
+  quote: The net result can be a vicious cycle of estrogen causing high histamine,
+    causing high estrogen, causing even more histamine.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: briden-zinc-pcos-mechanism-5-alpha-reductase
+statement: Zinc reduces androgen excess in PCOS by downregulating the enzyme 5-alpha-reductase,
+  which converts testosterone to the more potent dihydrotestosterone (DHT). This action
+  directly reduces androgen symptoms — acne, hirsutism (facial hair), and androgenic
+  hair loss. Zinc also nourishes ovarian follicles, supports ovulation, and (via collagen
+  and tissue support) relieves vaginal dryness in menopause.
+evidence_tier: plausible_emerging
+rationale: Zinc as a 5-alpha-reductase inhibitor is documented in dermatology literature
+  (rationale for zinc in acne). Clinical trials in PCOS hirsutism (8-week trial cited
+  by Briden) show benefit. Zinc-androgen pathway is consistent with the Anti-Androgen
+  Hirsutism post.
+coaching_translation: Zinc 30 mg per day with food can be a useful addition for clients
+  with PCOS who have acne or facial hair — the mechanism is direct (it blocks the
+  testosterone-to-DHT conversion in the skin and hair follicle). Don't take on empty
+  stomach.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- pcos-insulin-resistant
+- pcos-post-pill
+linked_to_mechanisms:
+- 5-alpha-reductase-dht-conversion
+linked_to_supplements:
+- zinc
+sources:
+- id: briden-blog-zinc-rescues-hormones
+  location: Blog post — PCOS bullet section
+  quote: Zinc is one of several natural androgen blockers that can reduce testosterone
+    and improve androgen symptoms such as acne and hirsutism. It works by downregulating
+    5α-reductase.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

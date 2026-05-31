@@ -1,0 +1,53 @@
+slug: leptin-energy-availability-signaling
+display_name: Leptin and Energy Availability Signalling (GnRH Suppression)
+aliases:
+- energy availability signaling
+- leptin GnRH axis
+- low energy availability
+category: endocrine
+summary: Leptin (secreted by adipocytes in proportion to fat mass) and other energy-availability
+  signals (insulin, ghrelin, free T3) report whole-body energy status to the hypothalamus.
+  When energy intake is chronically below expenditure — whether from undereating,
+  overtraining, illness, or psychological stress — leptin falls below a critical threshold
+  and the hypothalamic GnRH pulse generator slows or stops. Reduced GnRH pulsatility
+  lowers pituitary LH and FSH, which in turn fails to drive ovarian estrogen production
+  and ovulation. The result is hypothalamic suppression or amenorrhea — an adaptive
+  shutdown of reproduction during perceived famine or threat. Recovery requires restoring
+  energy availability (more food, less exercise, reduced stress) for long enough that
+  leptin and metabolic signals normalise; the hypothalamus then resumes GnRH pulsing
+  and ovulation can return.
+upstream_drivers:
+- undereating
+- overtraining
+- chronic stress
+- low body fat
+- psychological stress
+- illness
+downstream_effects:
+- reduced GnRH pulsatility
+- low LH and FSH
+- anovulation
+- low estrogen
+- low progesterone
+- amenorrhea
+- low bone density
+related_mechanisms:
+- hpa-axis-dysregulation
+linked_to_topics:
+- hypothalamic-amenorrhea
+- irregular-periods
+- low-progesterone
+notes_for_coach: 'The ''energy availability'' framing is more useful in coaching than
+  ''body fat percentage'' — even lean athletes can recover periods at low weights
+  if energy intake matches expenditure. Practical rule of thumb: many active women
+  need >2500 kcal/day to restore cycles, and recovery lag is typically 3-6 months.'
+sources:
+- id: briden-blog-irregular-periods-pcos-vs-hypothalamic
+  location: Blog post — Hypothalamic suppression treatment section
+  quote: For hypothalamic suppression, the treatment is to convince your hypothalamus
+    that all is well. In most cases, that means eating more—a lot more.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

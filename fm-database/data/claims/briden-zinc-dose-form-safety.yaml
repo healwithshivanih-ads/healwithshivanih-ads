@@ -1,0 +1,30 @@
+slug: briden-zinc-dose-form-safety
+statement: Effective zinc dose is 30 mg per day, taken immediately after a large meal
+  to avoid nausea. Preferred forms are zinc citrate, zinc picolinate, or zinc bisglycinate.
+  Ongoing doses above 80 mg per day can deplete copper, so prolonged high-dose use
+  requires monitoring or copper co-supplementation. Plasma zinc test confirms deficiency
+  before high-dose use.
+evidence_tier: plausible_emerging
+rationale: Standard supplementation guidance. The 80 mg copper-depletion ceiling is
+  consistent with the IOM upper limit.
+coaching_translation: Stick to 30 mg per day for general use, after dinner, in citrate/picolinate/bisglycinate
+  form. If a higher dose is suggested by a clinician, copper status should be monitored.
+out_of_scope_notes: ''
+caveats:
+- Take with food to avoid nausea.
+- Doses >80 mg/day for >3 months can cause copper deficiency anaemia.
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- zinc
+- zinc-bisglycinate
+sources:
+- id: briden-blog-zinc-rescues-hormones
+  location: Blog post — Dose and safety section
+  quote: A safe and effective dose is 30 mg per day, and the best types are zinc citrate,
+    zinc picolinate, or zinc bisgylcinate. Ongoing doses of greater than 80 mg can
+    deplete copper.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

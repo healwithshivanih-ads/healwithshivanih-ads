@@ -1,0 +1,35 @@
+slug: briden-pms-mood-6-treatments-overview
+statement: 'Briden''s clinically-derived top 6 treatments for premenstrual mood symptoms
+  are: (1) antihistamine approach including dairy-free trial of A1 casein, (2) magnesium
+  300 mg glycinate luteal phase, (3) vitamin B6 30-60 mg luteal phase (P5P form for
+  safety), (4) iodine 1-3 mg molecular iodine (with thyroid antibody screen first),
+  (5) vitex chaste tree (avoid in PCOS), (6) body-identical progesterone capsule at
+  bedtime. Different women respond to different combinations — there is no single
+  mechanism for PMS.'
+evidence_tier: fm_specific_thin
+rationale: Each individual treatment has independent (often RCT-grade) evidence —
+  magnesium (2017 review), B6 (clinical trials), iodine (mastalgia RCT), vitex (multiple
+  RCTs), progesterone (Prior). The integrated 6-treatment algorithm is Briden's clinical
+  synthesis from 25 years of practice.
+coaching_translation: 'PMS mood is one of the most treatable hormonal complaints —
+  most women respond to one or a small combination of these six interventions. Start
+  with the cluster that matches the symptom: breast pain → iodine, allergy-like →
+  antihistamine + dairy-free, irritability and insomnia → magnesium and progesterone.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+linked_to_mechanisms: []
+linked_to_supplements:
+- magnesium-glycinate
+- chasteberry
+- iodine
+- zinc
+sources:
+- id: briden-blog-top-6-pms-mood-treatments
+  location: Blog post — All six treatments section
+  quote: Today, I'll share the six treatments I've found to be most effective.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

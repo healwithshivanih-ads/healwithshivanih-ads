@@ -1,0 +1,29 @@
+slug: briden-hirsutism-slow-to-respond
+statement: 'Hirsutism (facial and body hair from androgen excess) is the slowest PCOS
+  symptom to improve. Even with all the right treatment in place — addressing the
+  underlying PCOS subtype plus an anti-androgen — visible improvement may take up
+  to 12 months. Coaching realistic expectations is part of the work: clients need
+  to commit to the protocol for a year, not 8 weeks.'
+evidence_tier: plausible_emerging
+rationale: Hair follicle cycle physiology (anagen-catagen-telogen) takes months to
+  years to reset after androgen normalisation. Clinical observation across PCOS treatment
+  literature confirms slow hirsutism resolution.
+coaching_translation: When a client is starting anti-androgen work for facial hair,
+  set the expectation up front — measurable improvement takes 6-12 months, not weeks.
+  Continue cosmetic management (waxing, laser, electrolysis) in parallel.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-natural-anti-androgens-hirsutism
+  location: Blog post — Hirsutism can take a long time section
+  quote: Facial hair or hirsutism is one of the most frustrating symptoms of PCOS
+    and the slowest to improve. Even once you have all the right treatment in place,
+    you may still have to wait twelve months to see an improvement.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

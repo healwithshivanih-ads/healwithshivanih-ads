@@ -1,0 +1,32 @@
+slug: briden-pcos-defined-by-androgen-excess-not-cysts
+statement: PCOS is best defined as androgen excess (elevated testosterone or androgen
+  symptoms such as jawline acne or facial hair) once other causes are ruled out —
+  not by the appearance of polycystic ovaries on ultrasound. Polycystic-appearing
+  ovaries are simply follicles that have not yet matured, and they can occur with
+  completely normal hormones.
+evidence_tier: strong
+rationale: The Rotterdam criteria require two of three features (androgen excess,
+  anovulation, polycystic ovaries on ultrasound), but Briden's framing reflects the
+  Androgen Excess Society position that androgen excess is the core defining feature.
+  Ultrasound alone cannot diagnose or rule out PCOS — a position supported by the
+  2018 international evidence-based guideline.
+coaching_translation: If you have been told you have PCOS based only on an ultrasound
+  finding, ask whether you actually have signs of high androgens (facial hair, jawline
+  acne, hair thinning, irregular periods). Without androgen excess, the diagnosis
+  may not be PCOS.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- irregular-periods
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-pcos-4-types-flowchart
+  location: Blog post — What is PCOS section
+  quote: Polycystic ovary syndrome is best defined as androgen excess once all other
+    causes have been ruled out. PCOS has nothing to do with ovarian cysts.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

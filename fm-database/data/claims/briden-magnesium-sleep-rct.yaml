@@ -1,0 +1,31 @@
+slug: briden-magnesium-sleep-rct
+statement: A 2023 randomised controlled trial found that magnesium supplementation
+  improved sleep quality — especially deep and REM stages — and enhanced next-day
+  mood and energy. Mechanisms include enhanced GABA signalling, melatonin regulation,
+  blood sugar stabilisation, and lowering of core body temperature (a natural part
+  of sleep onset).
+evidence_tier: strong
+rationale: The 2023 RCT is cited directly in the post. GABA-magnesium and melatonin-magnesium
+  pathways are documented.
+coaching_translation: For perimenopausal sleep disturbance — especially difficulty
+  maintaining sleep — magnesium glycinate or bisglycinate at 300-400 mg before bed
+  has solid RCT evidence behind it.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+- magnesium-threonate
+sources:
+- id: briden-blog-magnesium-perimenopause
+  location: Blog post — Magnesium promotes sleep section
+  quote: A 2023 randomized controlled trial found that magnesium supplements improved
+    sleep quality—especially the deep and REM stages—and enhanced mood and energy
+    the next day.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: briden-pcos-post-pill-transient-3-6-months
+statement: Post-pill PCOS is a transient androgen-excess state that follows withdrawal
+  from drospirenone- or cyproterone-containing pills (Yasmin, Yaz, Diane, Brenda).
+  Symptoms typically begin 3-6 months after stopping the pill and may resolve over
+  12-24 months as the ovary and pituitary recalibrate. Post-pill PCOS is distinguished
+  from other subtypes by absence of insulin resistance and clear temporal relationship
+  to pill cessation.
+evidence_tier: plausible_emerging
+rationale: Post-pill androgen rebound is described clinically in functional medicine
+  and naturopathic literature; conventional endocrinology recognises post-pill amenorrhea
+  but is less consistent on transient hyperandrogenism. Anti-androgen progestins like
+  cyproterone suppress endogenous androgens during pill use, with rebound on cessation.
+coaching_translation: If acne or facial hair appeared 3-6 months after stopping a
+  low-androgen pill, do not assume permanent PCOS. Cyclic progesterone and supportive
+  care may be all that is needed while the system recalibrates.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- pcos-post-pill
+- hormonal-birth-control-withdrawal
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-pcos-4-types-flowchart
+  location: Blog post — Step 3 Post-pill PCOS section
+  quote: It's common to experience a temporary surge in androgens when coming off
+    drospirenone or cyproterone type of birth control. That surge in androgens is
+    enough to qualify for the diagnosis of PCOS, even though it's temporary.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

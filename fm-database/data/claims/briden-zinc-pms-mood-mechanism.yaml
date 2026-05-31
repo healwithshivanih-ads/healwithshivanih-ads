@@ -1,0 +1,34 @@
+slug: briden-zinc-pms-mood-mechanism
+statement: Zinc improves premenstrual mood symptoms (including perimenopausal mood
+  symptoms) by calming glutamate receptors (tipping the balance toward GABA), supporting
+  the hippocampus (which regulates the HPA stress axis), reducing inflammation, and
+  dampening histamine activity. A 2025 systematic review and meta-analysis of RCTs
+  found significant PMS improvement with zinc supplementation.
+evidence_tier: strong
+rationale: The 2025 meta-analysis cited by Briden supports the PMS benefit. The glutamate-GABA,
+  HPA, and histamine mechanisms are independently documented in zinc neurobiology
+  literature.
+coaching_translation: Zinc has a wider mood-modulating action than is usually appreciated
+  — it is not only an androgen blocker. For premenstrual irritability, anxiety, or
+  perimenopausal mood, zinc 30 mg daily is a reasonable lifestyle-tier addition.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+- perimenopause
+- histamine-perimenopause
+linked_to_mechanisms:
+- gaba-glutamate-balance
+- histamine-receptor-signaling
+linked_to_supplements:
+- zinc
+sources:
+- id: briden-blog-zinc-rescues-hormones
+  location: Blog post — Premenstrual mood section
+  quote: A 2025 systematic review and meta-analysis of randomised controlled trials
+    found zinc can significantly improve PMS. It works by calming glutamate receptors,
+    which tips the balance toward more GABA.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

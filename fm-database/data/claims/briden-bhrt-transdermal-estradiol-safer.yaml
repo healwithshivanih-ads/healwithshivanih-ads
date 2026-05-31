@@ -1,0 +1,34 @@
+slug: briden-bhrt-transdermal-estradiol-safer
+statement: Transdermal bioidentical estradiol (patch, gel, spray) is safer than oral
+  estrogen because it enters the bloodstream directly and bypasses the liver — avoiding
+  the first-pass production of clotting factors that drove the blood-clot and stroke
+  signal seen with older oral conjugated equine estrogens (Premarin). Transdermal
+  estradiol is the preferred route for menopause hormone therapy when symptoms warrant
+  it.
+evidence_tier: strong
+rationale: Transdermal vs oral estrogen thrombosis risk differential is established
+  (ESTHER study, meta-analyses). The WHI safety signal was largely attributable to
+  oral CEE plus medroxyprogesterone; modern transdermal bioidentical regimens have
+  a more favourable risk profile.
+coaching_translation: When a client is discussing HRT options with their doctor, the
+  route matters — patch, gel, or spray is generally safer than oral tablets. The progesterone
+  partner should also be body-identical (Prometrium, Utrogestan) where possible.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- bhrt
+- perimenopause-and-menopause
+- perimenopause
+linked_to_mechanisms:
+- estrogen-decline
+linked_to_supplements: []
+sources:
+- id: briden-blog-body-identical-hrt
+  location: Blog post — Bioidentical hormone therapy is safer section
+  quote: Modern estrogen therapy is usually bioidentical estradiol and transdermal,
+    which allows it to directly enter the bloodstream and not form dangerous blood-clotting
+    factors in the liver.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

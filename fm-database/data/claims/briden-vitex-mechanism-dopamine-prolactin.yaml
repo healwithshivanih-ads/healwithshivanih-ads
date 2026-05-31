@@ -1,0 +1,31 @@
+slug: briden-vitex-mechanism-dopamine-prolactin
+statement: Vitex (Vitex agnus-castus, chaste tree) works primarily by boosting dopamine
+  signalling at the pituitary, which lowers prolactin. Lower prolactin can relieve
+  premenstrual mood symptoms, breast pain, acne, and high-prolactin-driven androgen
+  excess. The dopamine-prolactin pathway also indirectly promotes ovulation.
+evidence_tier: plausible_emerging
+rationale: Vitex's dopaminergic effect at the pituitary is documented in pharmacology
+  literature. Several RCTs of standardised extracts (e.g., Ze 440) show benefit for
+  cyclic mastalgia and PMS. Effect on ovulation in non-prolactin-driven anovulation
+  is less clear.
+coaching_translation: Vitex is most likely to help when prolactin is at the high end
+  of normal or above — breast pain, mood symptoms, and acne are the symptoms to watch
+  for. Take it in the morning when the pituitary is most responsive.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+- irregular-periods
+linked_to_mechanisms: []
+linked_to_supplements:
+- chasteberry
+sources:
+- id: briden-blog-vitex-for-period-problems
+  location: Blog post — How does vitex work section
+  quote: Vitex promotes ovulation by boosting dopamine and lowering prolactin. It
+    can relieve symptoms of high prolactin, such as premenstrual mood symptoms, breast
+    pain, acne, and facial hair.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

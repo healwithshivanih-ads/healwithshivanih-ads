@@ -1,0 +1,32 @@
+slug: briden-progesterone-typical-doses-by-route
+statement: Oral micronised progesterone is typically dosed 100-300 mg at bedtime because
+  of its sleep-promoting effect. Vaginal or topical progesterone delivers more progesterone
+  to tissues (bypassing first-pass metabolism) and uses lower doses (20-100 mg), with
+  flexible timing. Dose should be based on clinical context and symptoms, not blood
+  or urine testing.
+evidence_tier: confirm_with_clinician
+rationale: Standard dosing ranges align with Prometrium/Utrogestan licensed dosing
+  for menopause hormone therapy. The reliance on symptoms over labs is consistent
+  with Prof. Jerilynn Prior's protocols and Briden's clinical practice.
+coaching_translation: Coaching scope ends at the dose decision. Educate the client
+  that the doctor will choose route (oral, vaginal, cream) based on the goal — sleep
+  and anxiety favour oral, heavy bleeding or adenomyosis favours vaginal.
+out_of_scope_notes: ''
+caveats:
+- Topical creams cannot be relied upon to protect the uterine lining due to variable
+  blood levels.
+linked_to_topics:
+- bhrt
+- low-progesterone
+linked_to_mechanisms: []
+linked_to_supplements:
+- natural-progesterone-cream
+sources:
+- id: briden-blog-troubleshooting-progesterone
+  location: Blog post — What's the best dose section
+  quote: Oral progesterone is typically dosed at 100–300 mg at bedtime. Vaginal or
+    topical formulations usually require lower doses, such as 20–100 mg.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

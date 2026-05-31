@@ -1,0 +1,34 @@
+slug: briden-pcos-cyclic-progesterone-therapy
+statement: Cyclic progesterone therapy — body-identical oral micronised progesterone
+  (100-300 mg at bedtime) for 14 days of each cycle, then off for 14 days — is an
+  evidence-based natural treatment for PCOS. It lowers LH (a key PCOS driver), reduces
+  androgens, restores regular ovulation over time, and protects the uterine lining
+  from estrogen-only exposure. Inositol is another commonly used PCOS treatment. Both
+  are layered on top of treatment for the underlying PCOS subtype.
+evidence_tier: fm_specific_thin
+rationale: Cyclic progesterone for PCOS is Prof Jerilynn Prior's protocol with clinical
+  and small-trial evidence. Inositol (myo-inositol and D-chiro-inositol blends) has
+  multiple RCTs for insulin-resistant PCOS.
+coaching_translation: Cyclic progesterone therapy is one of the more useful PCOS interventions
+  for cycle regulation — it works by lowering LH and giving the uterine lining a controlled
+  shed. Inositol blends are well-supported for the insulin-resistant subtype.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- pcos-insulin-resistant
+- low-progesterone
+linked_to_mechanisms: []
+linked_to_supplements:
+- inositol
+- myo-inositol
+- d-chiro-inositol
+sources:
+- id: briden-blog-irregular-periods-pcos-vs-hypothalamic
+  location: Blog post — PCOS treatment section
+  quote: Natural anti-androgen treatments include things like zinc, inositol, and
+    cyclic progesterone therapy.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

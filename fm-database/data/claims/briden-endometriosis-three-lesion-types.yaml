@@ -1,0 +1,33 @@
+slug: briden-endometriosis-three-lesion-types
+statement: 'Endometriosis lesions come in three forms: endometriomas (ovarian chocolate
+  cysts), deep infiltrating lesions (>5 mm penetration into tissue, often rectovaginal),
+  and superficial lesions. Endometriomas and deep infiltrating lesions typically co-occur
+  and reliably explain pain and infertility. Superficial lesions alone may not explain
+  symptoms — they are common in asymptomatic women (a 1991 study found 43% of women
+  undergoing tubal sterilisation had them) and may be a normal physiological feature
+  of menstruation.'
+evidence_tier: plausible_emerging
+rationale: The three-type classification is consensus in endometriosis surgical literature.
+  The 'superficial lesions may not cause symptoms' framing is supported by the 2019
+  BJOG article Briden cites and the work of Dr Peta Wright; it is a shift from the
+  historical century-old paradigm.
+coaching_translation: If endometriosis surgery only finds superficial lesions, the
+  source of the pain may be elsewhere — pelvic congestion, pelvic floor tension, fibromyalgia,
+  or interstitial cystitis. Diagnosis of lesion type matters more than stage.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- endometriosis
+- endometriosis-microbiome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-endometriosis-microbiome-story
+  location: Blog post — Three types of endometriosis lesions
+  quote: Endometriomas and deep infiltrating lesions can definitely be the explanation
+    for symptoms like pain and infertility. Superficial lesions alone, without the
+    other types, may not be the explanation for your pelvic pain or other symptoms.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

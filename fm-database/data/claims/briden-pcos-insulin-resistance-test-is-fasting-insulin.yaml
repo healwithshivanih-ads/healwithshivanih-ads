@@ -1,0 +1,32 @@
+slug: briden-pcos-insulin-resistance-test-is-fasting-insulin
+statement: Insulin resistance — the driver of the most common (~70%) PCOS subtype
+  — cannot be ruled out by normal fasting glucose, HbA1c, or continuous glucose monitor
+  results. The most sensitive screen is fasting insulin (or triglycerides and ALT
+  as proxies). Insulin can be elevated for years before glucose markers shift.
+evidence_tier: plausible_emerging
+rationale: Hyperinsulinaemia precedes hyperglycaemia by years to decades in the metabolic
+  syndrome literature. Briden's framing reflects standard FM practice (HOMA-IR via
+  fasting glucose and insulin, or TG:HDL ratio). The 70% figure for insulin-resistant
+  PCOS subtype is consistent with PCOS phenotype literature.
+coaching_translation: If a doctor has 'ruled out' insulin resistance using HbA1c or
+  glucose alone, ask for a fasting insulin — it is the earliest signal that this subtype
+  is driving the picture.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- pcos-insulin-resistant
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: briden-blog-pcos-4-types-flowchart
+  location: Blog post — Step 2 Do you have insulin resistance section
+  quote: A normal blood glucose, HbA1C, or continuous glucose monitor cannot rule
+    out insulin resistance. The best way to test for it is to measure triglycerides,
+    ALT, or the hormone insulin.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

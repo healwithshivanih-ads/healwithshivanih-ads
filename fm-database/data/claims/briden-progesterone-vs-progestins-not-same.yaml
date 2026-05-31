@@ -1,0 +1,33 @@
+slug: briden-progesterone-vs-progestins-not-same
+statement: Body-identical progesterone (Prometrium, Utrogestan, Famenita, Teva) is
+  molecularly identical to ovarian progesterone. Progestins (drospirenone, levonorgestrel,
+  medroxyprogesterone, norethisterone) are structurally different molecules with different
+  physiological effects — some progestins worsen blood pressure, insulin resistance,
+  lipids, and may carry breast cancer risk, while real progesterone supports cardiovascular
+  and metabolic health and may reduce breast cancer risk.
+evidence_tier: strong
+rationale: The progesterone vs progestin distinction is established in pharmacology
+  and the Women's Health Initiative reanalysis (the breast cancer signal was driven
+  by medroxyprogesterone, not bioidentical progesterone). The E3N French cohort showed
+  neutral or protective effect of micronised progesterone.
+coaching_translation: 'If a client reports having tried ''progesterone'' and feeling
+  worse, the first question is: was it actually body-identical progesterone (Prometrium/Utrogestan),
+  or a progestin (Provera, Mirena, pill)? They are not interchangeable.'
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- bhrt
+- low-progesterone
+linked_to_mechanisms: []
+linked_to_supplements:
+- natural-progesterone-cream
+sources:
+- id: briden-blog-troubleshooting-progesterone
+  location: Blog post — How is progesterone different from progestins section
+  quote: Body-identical progesterone is molecularly identical to what the ovaries
+    make. Progestins such as drospirenone, levonorgestrel, or medroxyprogesterone
+    are entirely different structures.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: briden-progesterone-allopregnanolone-gaba-mechanism
+statement: Oral micronised progesterone converts in the liver to the neurosteroid
+  allopregnanolone (ALLO), which modulates GABA-A receptors in the brain to improve
+  sleep, anxiety, and migraine. This neurosteroid pathway explains progesterone's
+  calming effect and why oral progesterone (which has higher first-pass ALLO conversion)
+  is preferred for sleep and mood, while vaginal progesterone (less ALLO) is preferred
+  for adenomyosis, fertility, or when ALLO-sensitivity occurs.
+evidence_tier: plausible_emerging
+rationale: The allopregnanolone-GABA-A modulation pathway is well-documented in neurosteroid
+  pharmacology and explains anxiolytic and sedating effects of luteal-phase progesterone.
+  Route-dependent ALLO production is clinically established.
+coaching_translation: Take oral micronised progesterone at bedtime — it is sedating
+  because it makes allopregnanolone, the same neurosteroid the brain makes after ovulation.
+  If progesterone makes you wired, switching to vaginal route can lower ALLO.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- low-progesterone
+- perimenopause
+linked_to_mechanisms:
+- allopregnanolone-deficiency
+- gaba-receptor-modulation
+linked_to_supplements: []
+sources:
+- id: briden-blog-troubleshooting-progesterone
+  location: Blog post — Which form is best section
+  quote: Oral progesterone passes through the liver, so produces more of the neurosteroid
+    ALLO. That's why oral progesterone has a stronger brain-calming effect.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

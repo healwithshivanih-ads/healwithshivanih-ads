@@ -1,0 +1,68 @@
+slug: hypothalamic-amenorrhea
+display_name: Hypothalamic Amenorrhea and Hypothalamic Suppression
+aliases:
+- hypothalamic suppression
+- HA
+- functional hypothalamic amenorrhea
+- FHA
+- undereating amenorrhea
+summary: Hypothalamic amenorrhea (HA) is the brain's adaptive shutdown of regular
+  ovulation when it perceives the body is unsafe to support pregnancy. Triggers include
+  undereating (overall calories or specifically carbohydrates), overtraining, chronic
+  stress, and illness. Milder forms (hypothalamic suppression) show up as shortened
+  luteal phases or anovulatory cycles; more severe forms produce long cycles or complete
+  absence of periods with low estrogen. Hypothalamic suppression is frequently misdiagnosed
+  as PCOS, but the two conditions are physiologically opposite — HA has low or normal
+  androgens and low/normal insulin, while PCOS has elevated androgens and (in the
+  common subtype) insulin resistance. Treatment is to convince the hypothalamus conditions
+  are safe — eat more, train less, rest more, correct nutrient deficiencies (especially
+  zinc, iron, iodine), and address chronic stress.
+common_symptoms:
+- absent periods
+- irregular periods
+- long gaps between periods
+- shortened luteal phase
+- anovulatory cycles
+- low libido
+- cold intolerance
+- low resting heart rate
+- hair thinning
+- stress fractures or low bone density
+red_flags:
+- Periods absent for >6 months — work-up needed to rule out POI (FSH >25), prolactinoma,
+  thyroid disease
+- BMI < 18.5 or rapid weight loss — refer for eating disorder assessment
+- Concurrent low bone density on DEXA — clinician follow-up for fracture risk
+related_topics:
+- pcos
+- irregular-periods
+- healthy-menstrual-cycle-baseline
+- low-progesterone
+- hormonal-birth-control-withdrawal
+key_mechanisms:
+- hpa-axis-dysregulation
+- leptin-energy-availability-signaling
+coaching_scope_notes: Coach the food-first recovery — adequate calories (often >2500
+  kcal/day for active women), regular meals including carbohydrate, protein at every
+  meal, healthy fats, full micronutrient nourishment. Coach rest, sleep, stress regulation.
+  The lag time to period return can be 3-6 months even with everything right. Do NOT
+  prescribe vitex or any cycle-regulating herb in active HA — first restore energy
+  availability.
+clinician_scope_notes: Clinician work-up rules out other amenorrhea causes (FSH/LH,
+  prolactin, TSH/free T4, hCG, celiac, iron studies, vitamin D, ferritin). DEXA scan
+  if amenorrhea >6 months. Refer to eating disorder specialist when relevant.
+notes_for_coach: 'Briden: hypothalamic suppression is not a disorder — it is the brain''s
+  intelligent adaptation. The treatment is to convince the hypothalamus that all is
+  well. In Indian coaching context, watch for undereating in highly active women,
+  restrictive ''clean eating'' patterns, and chronic stress; vegetarian protein adequacy
+  and iron status frequently need attention.'
+sources:
+- id: briden-blog-irregular-periods-pcos-vs-hypothalamic
+  location: Blog post — PCOS vs hypothalamic suppression contrast section
+  quote: Hypothalamic suppression is not a disorder, but rather it's the brain's adaptive,
+    intelligent response to protect the body from pregnancy when it would not be safe.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

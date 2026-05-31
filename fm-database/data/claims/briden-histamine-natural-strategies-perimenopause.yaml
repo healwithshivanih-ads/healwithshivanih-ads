@@ -1,0 +1,38 @@
+slug: briden-histamine-natural-strategies-perimenopause
+statement: 'Practical antihistamine strategies for perimenopausal symptoms: avoid
+  histamine-stimulating foods (alcohol, A1 cow''s dairy), reduce histamine-containing
+  foods (red wine, aged cheese, sauerkraut, kombucha), support methylation (B vitamins,
+  choline, SAM-e for HNMT enzyme), increase bitter compounds (coffee, cruciferous
+  veg, berberine, perilla seed — mast cell stabilisers), address gut issues like SIBO,
+  consider quercetin (mast cell stabiliser) and vitamin B6 (upregulates DAO), and
+  trial body-identical progesterone (counterbalances estrogen and independently stabilises
+  mast cells).'
+evidence_tier: plausible_emerging
+rationale: Each strategy has independent rationale. Quercetin and SAM-e have small
+  RCTs in histamine intolerance. The dairy-A1 casein link draws on Briden's own clinical
+  experience and a small but growing literature.
+coaching_translation: A dairy-free trial (specifically A1 cow's dairy) and reduced
+  alcohol are the two highest-yield lifestyle moves for perimenopausal histamine symptoms
+  — easy to coach in scope. Supplements (B6, quercetin, SAM-e) are clinician decisions.
+out_of_scope_notes: ''
+caveats:
+- High-dose B6 (>50 mg/day for prolonged periods) carries a rare risk of peripheral
+  neuropathy.
+linked_to_topics:
+- histamine-perimenopause
+- perimenopause
+- histamine-intolerance
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_supplements:
+- dim
+sources:
+- id: briden-blog-high-histamine-perimenopause
+  location: Blog post — Natural antihistamine strategies section
+  quote: Try avoiding histamine-stimulating foods, such as alcohol and cow's dairy.
+    Try body-identical progesterone, which can counterbalance high estrogen and relieve
+    histamine symptoms.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

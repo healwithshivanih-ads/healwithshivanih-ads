@@ -1,0 +1,35 @@
+slug: briden-pcos-vs-hypothalamic-key-differences
+statement: 'PCOS and hypothalamic suppression are physiologically opposite despite
+  both presenting as irregular periods. Key distinctions: PCOS shows androgen excess
+  (hirsutism, jawline acne, sometimes high testosterone or DHEAS); hypothalamic suppression
+  does not. PCOS (insulin-resistant subtype) shows high triglycerides, ALT, fasting
+  insulin; hypothalamic suppression shows low fasting insulin or normal metabolic
+  markers. PCOS shows LH:FSH ratio > 2:1; hypothalamic suppression shows low LH and
+  low FSH. PCOS rarely causes full amenorrhea (estrogen is preserved); severe hypothalamic
+  suppression does. Treatment is opposite — PCOS lowers androgens and corrects insulin;
+  HA restores energy availability.'
+evidence_tier: strong
+rationale: Each differential point is standard reproductive endocrinology. The LH:FSH
+  ratio differentiator, while not absolutely specific, is well-recognised. Briden's
+  framing as 'often misdiagnosed' reflects real clinical confusion in the field.
+coaching_translation: When 'lean PCOS' is suggested, it is worth asking whether hypothalamic
+  suppression has been ruled out — the treatment is opposite (eat more vs lower androgens).
+  The simplest screen is LH and FSH timed correctly, plus a careful eating-and-training
+  history.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- hypothalamic-amenorrhea
+- irregular-periods
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-irregular-periods-pcos-vs-hypothalamic
+  location: Blog post — Compare and contrast section
+  quote: With PCOS, the LH-to-FSH ratio is often high, at greater than 2-to-1, while
+    with hypothalamic suppression, the ratio is typically low.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

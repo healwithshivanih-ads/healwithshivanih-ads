@@ -1,0 +1,35 @@
+slug: briden-pmdd-progesterone-antihistamine-mechanism
+statement: Natural body-identical progesterone helps PMS/PMDD partly through an antihistamine
+  mechanism — it stabilises mast cells and upregulates DAO (the histamine-clearing
+  enzyme). For PMDD specifically, higher-dose oral progesterone capsules at bedtime
+  may be needed to overcome paradoxical GABA-receptor sensitivity (the ALLO biphasic
+  'Goldilocks' effect).
+evidence_tier: fm_specific_thin
+rationale: The progesterone-DAO upregulation is documented in animal studies. The
+  biphasic ALLO-GABA effect is documented in neurosteroid pharmacology. Clinical use
+  of higher-dose progesterone for PMDD has limited RCT evidence and is FM/ND practice.
+coaching_translation: Real (body-identical) progesterone may calm PMDD symptoms —
+  not despite the histamine mechanism, but partly because of it. A higher-dose oral
+  capsule at bedtime is the format with the best brain effect; clinician sets the
+  dose.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+- histamine-intolerance
+- low-progesterone
+- hormonal-depression-progesterone
+linked_to_mechanisms:
+- allopregnanolone-deficiency
+- mast-cell-activation
+linked_to_supplements: []
+sources:
+- id: briden-blog-histamine-pms-pmdd
+  location: Blog post — Natural treatments section
+  quote: Take natural progesterone, as it can calm mast cells and upregulate DAO,
+    the enzyme that clears histamine. Higher-dose progesterone capsules can also overcome
+    the progesterone sensitivity associated with PMDD.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: briden-magnesium-perimenopause-nervous-system
+statement: Magnesium calms the nervous system in perimenopause by regulating NMDA
+  receptors, reducing cortisol, and increasing parasympathetic tone. This calming
+  effect helps relieve hot flashes, night sweats, and brain fog by supporting the
+  brain's recalibration through the perimenopausal transition. One proposed mechanism
+  is that magnesium normalises the action of progesterone on the central nervous system.
+evidence_tier: plausible_emerging
+rationale: Magnesium's NMDA-receptor modulation and cortisol-lowering effects are
+  documented. The 'normalises progesterone action on CNS' framing is cited from a
+  review in the original blog.
+coaching_translation: Magnesium glycinate 300-400 mg at bedtime is a low-risk, high-value
+  intervention across most of the perimenopause symptom picture. It is one of the
+  most consistent FM recommendations for this life stage.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- perimenopause
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- gaba-glutamate-balance
+linked_to_supplements:
+- magnesium
+- magnesium-glycinate
+sources:
+- id: briden-blog-magnesium-perimenopause
+  location: Blog post — Magnesium calms the nervous system section
+  quote: Magnesium can help by regulating NMDA receptors, reducing cortisol, and increasing
+    parasympathetic tone — the 'rest-and-digest' mode of your nervous system.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

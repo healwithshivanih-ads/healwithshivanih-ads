@@ -1,0 +1,37 @@
+slug: briden-vitex-cautions-and-contraindications
+statement: 'Vitex is not appropriate in three situations: immediately after stopping
+  the oral contraceptive pill (allow 3-6 months for the HPO axis to recommunicate
+  first), in combination with IVF/fertility medication (risk of ovarian hyperstimulation),
+  and in girls under 18 (HPO axis still maturing). For PCOS, vitex helps high-prolactin-driven
+  androgen excess but can worsen other PCOS subtypes.'
+evidence_tier: fm_specific_thin
+rationale: Clinical caution drawn from Briden's 25-year practice. The pill-and-vitex
+  caution is consensus among naturopathic prescribers. The PCOS-worsening caveat is
+  consistent with the Anti-Androgen Hirsutism post — vitex is contraindicated in non-prolactin
+  androgen excess.
+coaching_translation: Vitex is not a universal cycle regulator. Wait at least 3 months
+  after stopping the pill, avoid in teenagers, and stop if PCOS symptoms worsen. For
+  hypothalamic amenorrhea, restore energy availability first.
+out_of_scope_notes: ''
+caveats:
+- Vitex can worsen androgen excess in non-prolactin-driven PCOS subtypes.
+- For hypothalamic amenorrhea, increase caloric intake to >2500 kcal/day before trialling
+  vitex.
+- Most effective in first 3-6 months; consider a break after 6-month course.
+linked_to_topics:
+- pcos
+- premenstrual-syndrome
+- hormonal-birth-control-withdrawal
+- hypothalamic-amenorrhea
+linked_to_mechanisms: []
+linked_to_supplements:
+- chasteberry
+sources:
+- id: briden-blog-vitex-for-period-problems
+  location: Blog post — Don'ts section
+  quote: Don't start too soon after stopping the oral contraceptive pill. Don't give
+    it to teenagers. Vitex can, in some cases, worsen PCOS.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

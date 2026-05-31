@@ -1,0 +1,31 @@
+slug: briden-histamine-pms-mid-cycle-pattern
+statement: 'Histamine fluctuates with the menstrual cycle, peaking just before ovulation
+  and during the luteal phase — when estrogen is highest and dropping. Premenstrual
+  symptoms that overlap with high histamine (irritability, anxiety, insomnia, brain
+  fog, breast pain, headaches) often respond to antihistamine strategies. Diagnostic
+  clue: symptoms also include hives/dermatographia, nasal congestion, joint pain,
+  fluid retention, or nausea.'
+evidence_tier: plausible_emerging
+rationale: Cyclical histamine rise pre-ovulation and luteal is documented in immunology
+  literature on estrogen-histamine interactions.
+coaching_translation: If PMS comes with allergy-type symptoms (hives, congestion,
+  fluid retention), histamine is likely a driver. Tracking symptoms across the cycle
+  helps confirm — they will worsen pre-ovulation and pre-period.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+- histamine-intolerance
+- histamine-perimenopause
+linked_to_mechanisms:
+- mast-cell-activation
+linked_to_supplements: []
+sources:
+- id: briden-blog-histamine-pms-pmdd
+  location: Blog post — What are mast cells section
+  quote: Histamine is highest just before ovulation and during the luteal phase. Irritability,
+    insomnia, brain fog, breast pain, and headaches are all typical symptoms of PMS.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

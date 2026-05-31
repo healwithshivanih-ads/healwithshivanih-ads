@@ -1,0 +1,31 @@
+slug: briden-iodine-anti-estrogenic-effects
+statement: Iodine has anti-estrogenic effects on reproductive tissue — it promotes
+  healthy estrogen metabolism, downregulates estrogen receptors, and stabilises estrogen-sensitive
+  tissue. This makes iodine clinically useful for fibrocystic breasts, breast pain,
+  ovulation pain, prevention of ovarian cysts, heavy periods, fibroids, endometriosis,
+  and premenstrual mood symptoms.
+evidence_tier: plausible_emerging
+rationale: Iodine's effects on breast tissue have a stronger evidence base (RCT for
+  cyclic mastalgia with molecular iodine). The broader anti-estrogenic and ovarian
+  effects are extrapolated from animal and observational data plus clinical experience.
+coaching_translation: Iodine deficiency is often missed in women with breast tenderness
+  and fibrocystic changes. Briden uses iodine first-line when breast pain dominates
+  the premenstrual picture.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- premenstrual-syndrome
+- endometriosis
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements:
+- iodine
+sources:
+- id: briden-blog-iodine-breast-pain-ovarian-cysts-pms
+  location: Blog post — Iodine for women's health section
+  quote: Iodine has beneficial anti-estrogenic effects that can relieve breast pain,
+    ovulation pain, and premenstrual mood symptoms.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani

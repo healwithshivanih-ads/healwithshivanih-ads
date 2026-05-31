@@ -1,0 +1,32 @@
+slug: briden-pcos-inflammatory-driver-recognised
+statement: Inflammatory PCOS is the subtype where chronic inflammation — from food
+  sensitivities (especially A1 cow's dairy), gut dysfunction (SIBO, IBS), autoimmune
+  disease (Hashimoto's), or mast cell activation — is the primary driver of androgen
+  excess. Hallmarks include unexplained fatigue, bowel symptoms, autoimmune conditions,
+  joint pain, and chronic skin conditions (psoriasis, eczema, hives) alongside PCOS
+  features.
+evidence_tier: fm_specific_thin
+rationale: The inflammation-androgen link in PCOS is supported by cytokine literature
+  (TNF-alpha, IL-6 stimulate ovarian theca cell androgen production). The discrete
+  'inflammatory subtype' is a Briden-specific framing rather than a conventional Rotterdam
+  category, but clinically useful for treatment direction.
+coaching_translation: If PCOS comes with bowel issues, autoimmune disease, or chronic
+  skin problems and there is no insulin resistance, the inflammation may be the lever
+  to pull. Identify and remove the trigger (dairy, gluten, SIBO) before reaching for
+  anti-androgen herbs.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- pcos
+- pcos-inflammatory
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-blog-pcos-4-types-flowchart
+  location: Blog post — Step 4 Inflammatory PCOS section
+  quote: Chronic inflammation can stimulate the ovaries to make too much testosterone.
+    When chronic inflammation is the primary factor, it's inflammatory PCOS.
+version: 1
+status: active
+updated_at: '2026-05-31'
+updated_by: Shivani
