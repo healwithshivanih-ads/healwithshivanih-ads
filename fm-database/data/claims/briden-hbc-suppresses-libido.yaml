@@ -1,0 +1,37 @@
+slug: briden-hbc-suppresses-libido
+statement: Hormonal birth control suppresses endogenous testosterone production by
+  the ovaries and adrenal axis and can cause reduced libido, reduced sexual arousal,
+  fewer orgasms, vaginal dryness, and an increased risk of vaginismus. Recovery of
+  libido after stopping can take months to years.
+evidence_tier: strong
+rationale: Well documented in reproductive endocrinology — CHCs reduce free testosterone
+  by suppressing ovarian production and by raising sex hormone binding globulin (SHBG).
+  Briden cites survey data showing higher rates of reduced sexual function in HBC
+  users and small clinical studies showing slow recovery of free testosterone after
+  stopping.
+coaching_translation: Hormonal birth control turns off the testosterone that drives
+  your sex drive. It can also make sex itself less comfortable. After stopping, libido
+  can take months to come back fully because the SHBG protein that ties up testosterone
+  is slow to normalise.
+caveats:
+- Not every woman experiences a libido drop; individual response varies.
+- Many other things affect libido (relationship, sleep, stress, thyroid) so it is
+  not always the pill.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Loss of Libido or Sex Drive, pg 32
+  quote: Hormonal birth control can be bad for your sex life because it switches off
+    the testosterone you need for libido. It can also cause vaginal dryness and put
+    you at risk of a condition called vaginismus, which makes sex painful. Unfortunately,
+    it can take months, or even years, for libido to return to normal once the pill
+    is stopped.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

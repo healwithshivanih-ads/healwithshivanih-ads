@@ -1,0 +1,41 @@
+slug: briden-hbc-causes-nutrient-deficiencies
+statement: Hormonal birth control is associated with deficiency of multiple micronutrients
+  important for mood, methylation, and connective tissue — particularly vitamins B6,
+  B12, folate, vitamin C, vitamin E, magnesium, selenium, and zinc. HBC also alters
+  intestinal and vaginal bacterial communities, raising the risk of yeast infections,
+  abnormal pap smears, and digestive symptoms, and may impair bone mineral acquisition
+  in adolescents and young adults.
+evidence_tier: strong
+rationale: Pill-induced micronutrient depletion is one of the most consistently replicated
+  findings in HBC pharmacology research; clinical implications for mood (via B6 and
+  folate methylation) and bone (via altered estrogen signalling on osteoblasts) are
+  well documented. Briden cites specific studies on bone mineral density in pill users.
+coaching_translation: The pill depletes several nutrients your body needs — especially
+  the B vitamins your brain uses to make serotonin, plus magnesium, zinc, and selenium.
+  It also shifts your gut and vaginal bacteria. Asking your clinician about a B-complex
+  with active folate and methylated B12 is a sensible step while you are on it or
+  have just come off.
+caveats:
+- Replacing the nutrients does not eliminate the other side effects.
+- For adolescents on HBC, peak bone mass accrual may be impaired — long-term significance
+  is debated.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements:
+- vitamin-b6
+- zinc
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — But Wait There's More, pg 34
+  quote: Hormonal birth control can also cause high blood pressure, nutrient deficiency,
+    and reduced thyroid function. Hormonal birth control alters both your intestinal
+    and vaginal bacteria and that can lead to digestive problems, yeast infections,
+    and abnormal PAP smears. Finally, studies have shown that hormonal birth control
+    may prevent you from forming healthy bones.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

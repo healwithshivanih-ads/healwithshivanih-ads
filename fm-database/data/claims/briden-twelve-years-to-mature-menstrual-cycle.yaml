@@ -1,0 +1,44 @@
+slug: briden-twelve-years-to-mature-menstrual-cycle
+statement: According to endocrinologist Dr Jerilynn Prior, it can take up to twelve
+  years after menarche for a young woman to develop a fully mature menstrual cycle
+  characterised by regular ovulation and optimal luteal-phase progesterone production.
+  Initiating combined hormonal contraception during this developmental window suspends
+  the maturation process and may contribute to post-pill amenorrhoea or PCOS-like
+  presentation when the drug is stopped years later.
+evidence_tier: plausible_emerging
+rationale: Dr Jerilynn Prior (Centre for Menstrual Cycle and Ovulation Research, UBC)
+  is a Canadian endocrinologist whose published work documents the slow maturation
+  of ovulatory function from menarche through the early twenties. The specific "twelve
+  years" figure is from her published research and clinical writing. Combined hormonal
+  contraception's effect on HPO axis maturation is biologically plausible but the
+  long-term clinical consequences are extrapolated.
+coaching_translation: Your menstrual cycle is not fully grown up until your early
+  twenties — it takes about a decade after your first period for your ovaries and
+  brain to learn how to ovulate reliably each month. If a teenage girl is put on the
+  pill, that development pauses, which is one reason cycles can stay irregular years
+  after she stops.
+caveats:
+- Most women on hormonal contraception during adolescence still go on to have normal
+  cycles eventually — this is a risk factor, not a guarantee of post-pill problems.
+- Other inputs (nutrition, body weight, stress, thyroid) also influence cycle maturation.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- healthy-menstrual-cycle-baseline
+- pcos-post-pill
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — The Beginning of Periods, pg 12
+  quote: According to Dr Jerilynn C. Prior, a Canadian endocrinologist with expertise
+    in reproductive hormones, it can take up to twelve years to develop a mature menstrual
+    cycle with healthy regular ovulation and an optimal level of progesterone. Twelve
+    years to mature your menstrual cycle. So what happens if you take hormonal birth
+    control as a teen and hit the pause button on that maturation process? You will
+    probably need some time to get things going again.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

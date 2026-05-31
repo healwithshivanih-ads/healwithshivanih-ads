@@ -1,0 +1,46 @@
+slug: briden-vitex-for-post-pill-amenorrhea
+statement: Vitex agnus-castus (chaste tree berry) supports the resumption of regular
+  ovulatory cycles after stopping hormonal birth control by promoting healthy dopaminergic
+  and prolactin-modulating signalling between the hypothalamus, pituitary, and ovaries.
+  Briden's clinical use is typically one tablet daily for approximately three months
+  in women with post-pill amenorrhoea.
+evidence_tier: confirm_with_clinician
+rationale: Vitex's mechanism (dopamine D2 receptor agonism, prolactin reduction) is
+  documented in herbal pharmacology and the clinical case use for post-pill amenorrhoea
+  is supported by case reports and naturopathic clinical literature. However, RCT
+  evidence for this specific indication is limited. Vitex is contraindicated with
+  dopamine antagonists, in pregnancy, and complicates fertility-tracking interpretation.
+  Dose and duration should be set by a trained herbalist or naturopath, not coached
+  unsupervised.
+coaching_translation: A herbal medicine called Vitex (chaste tree berry) can help
+  the ovaries re-start regular cycles after coming off the pill. It works on the brain-ovary
+  conversation. This is one we coordinate with a herbalist or naturopath rather than
+  starting on your own — it interacts with some medications and is not for pregnancy.
+caveats:
+- Contraindicated in pregnancy and with dopamine antagonists (antipsychotics, metoclopramide).
+- Should not be taken at the same time as fertility tracking IVF protocols without
+  clinical guidance.
+- Vitex can take 3 months to show effect.
+- Not all post-pill amenorrhoea responds to Vitex — if hypothalamic amenorrhoea from
+  undereating or overexercise is present, those need addressing first.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- pcos-post-pill
+- low-progesterone
+out_of_scope_notes: Coaches should not initiate Vitex dosing for clients. Refer to
+  a naturopath/herbalist for prescription and monitoring.
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+- low-progesterone
+linked_to_supplements:
+- chaste-tree-berry
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Christine case study, pg 14
+  quote: I suggested Christine take the herbal medicine Vitex agnus-castus, which
+    promotes communication between the pituitary and ovaries. Christine took one Vitex
+    tablet per day for three months and then had a period.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

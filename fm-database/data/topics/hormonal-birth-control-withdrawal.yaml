@@ -1,0 +1,77 @@
+slug: hormonal-birth-control-withdrawal
+display_name: Hormonal Birth Control Withdrawal & Post-Pill Recovery
+aliases:
+- post-pill syndrome
+- coming off the pill
+- pill withdrawal
+- post-pill recovery
+- hbc withdrawal
+- stopping the pill
+- post-pill amenorrhea
+summary: The constellation of physiological adjustments and symptoms women experience
+  after stopping hormonal birth control (combined pill, mini-pill, hormonal IUD, implant,
+  patch, ring, injection). Because hormonal contraceptives suppress ovulation and
+  replace endogenous estradiol/progesterone with synthetic pseudo-hormones, the ovaries
+  must re-activate the HPO (hypothalamic-pituitary-ovarian) axis when the drug is
+  stopped. Common post-pill presentations include rebound acne (peaking ~6 months
+  as sebum-suppressed skin up-regulates oil production AND ovaries temporarily over-produce
+  androgens), new-onset PMS (the body re-encountering natural cyclical hormone fluctuations
+  after years of flat synthetic dosing), post-pill amenorrhoea/stalled menstruation
+  (especially in women who started the pill as teenagers before HPO maturation), and
+  post-pill PCOS (transient androgen excess on ultrasound or labs in the months after
+  stopping). Briden frames this as the first item on a woman's "monthly report card"
+  — what shows up when the suppressive drug is removed tells the clinician what was
+  going on underneath.
+common_symptoms:
+- post-pill acne
+- post-pill amenorrhea
+- new-onset PMS
+- breast tenderness
+- mood swings
+- low libido
+- hair loss
+- irregular cycles
+- anovulatory cycles
+- spotting between periods
+red_flags:
+- amenorrhoea persisting beyond 12 months post-pill (refer for endocrine workup)
+- severe depression or suicidality during withdrawal
+- new-onset severe migraine
+- visual disturbance
+key_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+- hpa-axis-dysregulation
+- progesterone-deficiency
+- estrogen-decline
+related_topics:
+- premenstrual-syndrome
+- pcos-post-pill
+- pcos
+- low-progesterone
+- hair-loss-women
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Breaking Up with Hormonal Birth Control, pp 35-37
+  quote: You will probably feel better when you stop hormonal birth control. Better
+    mood, more energy, and regular cycles. That is the most common experience. You
+    may, however, develop problems such as post-pill acne, PMS, or amenorrhea.
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Post-Pill Acne, pg 36
+  quote: Post-pill acne is the result of a double-whammy of rebound sebum as you withdraw
+    from a sebum-suppressing drug, and rebound androgens as your ovaries become active
+    again. Post-pill acne typically peaks after about six months.
+coaching_scope_notes: Coaches can support clients through the post-pill transition
+  with nutrition (zinc, magnesium, B6), stress management, cycle tracking, and education.
+  They should set expectations about timeframe (skin can take 6 months to settle;
+  cycles can take 3-12 months to regularise). They should NOT diagnose post-pill PCOS
+  — transient ovulatory disturbance is common in the first 3-6 months and does not
+  equal a PCOS diagnosis.
+clinician_scope_notes: Amenorrhoea persisting beyond 6-12 months post-pill warrants
+  endocrine evaluation (FSH, LH, prolactin, TSH, testosterone, DHEA-S, AMH). Vitex
+  agnus-castus dosing and herbal protocols for post-pill recovery are within the scope
+  of a trained herbalist or naturopath, not unsupervised coaching.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

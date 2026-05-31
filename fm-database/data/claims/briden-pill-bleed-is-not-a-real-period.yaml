@@ -1,0 +1,41 @@
+slug: briden-pill-bleed-is-not-a-real-period
+statement: A bleed on hormonal birth control is a pharmaceutically induced withdrawal
+  bleed from the drug dosing schedule, not a true menstrual period. A real menstrual
+  period proceeds from ovulation and the subsequent corpus-luteum progesterone rise;
+  combined-pill bleeds occur because the synthetic estrogen-and-progestin dose is
+  interrupted during the placebo week, and they carry no diagnostic information about
+  ovarian function.
+evidence_tier: strong
+rationale: This is a well-established physiological distinction in reproductive endocrinology
+  and is explicit in pharmacology of combined oral contraceptives (CHC mechanism is
+  HPO suppression with scheduled withdrawal bleed). Briden references the historical
+  1950s decision to schedule a 28-day bleed as primarily a marketing and patient-reassurance
+  choice rather than a medical one, which is well documented.
+coaching_translation: If you are on the pill, the monthly bleed you have is the drug
+  switching off, not your ovaries doing their job. It cannot tell us whether your
+  hormones are healthy. That is why coming off the pill is sometimes the first step
+  before we can really understand what is going on.
+caveats:
+- True for combined pill, ring, patch — i.e. anything with a scheduled hormone-free
+  interval.
+- Progestin-only methods (mini-pill, hormonal IUD, implant, injection) produce irregular
+  breakthrough bleeds, not scheduled withdrawal bleeds — but these are also not real
+  periods.
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Pill Bleeds Are Not Periods, pp 18-19
+  quote: Pill bleeds are pharmaceutically induced bleeds that are arbitrarily coordinated
+    into a 28-day pattern to reassure you that your body is doing something natural.
+    A real period is a finale in a series of hormonal events which includes ovulation
+    and the making of progesterone.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

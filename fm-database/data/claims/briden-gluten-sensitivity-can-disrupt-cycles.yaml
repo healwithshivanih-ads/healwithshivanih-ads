@@ -1,0 +1,42 @@
+slug: briden-gluten-sensitivity-can-disrupt-cycles
+statement: Non-celiac gluten sensitivity can present as a clustered triad of skin
+  inflammation (psoriasis, eczema), iron deficiency, and irregular or absent menstrual
+  cycles. In the clinical setting Briden describes, a 6-month gluten elimination trial
+  can normalise both the skin and the menstrual cycle even when celiac serology is
+  negative.
+evidence_tier: plausible_emerging
+rationale: Briden describes a single illustrative case (Meagan, ch 1) rather than
+  an RCT, but the underlying mechanisms (gluten-driven intestinal permeability impairing
+  iron absorption; gluten-driven systemic inflammation suppressing HPO function; gluten
+  as a psoriasis trigger in a subset of patients) are documented in the functional
+  medicine and dermatology literature. Non-celiac gluten sensitivity remains a contested
+  diagnosis in conventional medicine.
+coaching_translation: Sometimes irregular periods, low iron, and skin trouble are
+  all the same story — a sensitivity to gluten that is too mild to show up on the
+  standard celiac blood test. A clean 6-month gluten-free trial is a reasonable thing
+  to try before assuming the cycle problem needs a hormonal fix.
+caveats:
+- Always rule out celiac disease first (anti-tTG IgA + total IgA) before starting
+  a long elimination trial — going gluten-free first invalidates the test.
+- Improvement on gluten-free elimination is not specific to gluten — could reflect
+  general dietary cleanup.
+- 6 months is a long commitment; reintroduction challenge confirms the link.
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Meagan case study, pp 5-7
+  quote: Meagan had a group of symptoms which suggested to me a possible sensitivity
+    to wheat — psoriasis, iron deficiency, and irregular periods. I asked her to avoid
+    gluten for six months. After six months, she got her first period and went on
+    to have regular periods. The right treatment for Meagan's general health was also
+    the right treatment for her periods. It is always like this — fix your health,
+    and you will fix your period.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

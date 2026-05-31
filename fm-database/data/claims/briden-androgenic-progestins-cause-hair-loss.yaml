@@ -1,0 +1,42 @@
+slug: briden-androgenic-progestins-cause-hair-loss
+statement: Progestins with a high androgen index — medroxyprogesterone acetate (Depo),
+  levonorgestrel (Mirena IUD, many pills), norgestrel, etonogestrel (Nexplanon, NuvaRing)
+  — can drive miniaturisation of scalp hair follicles, manifesting clinically as androgenetic
+  alopecia ("female pattern hair loss"). Low-androgen- index progestins (drospirenone,
+  norgestimate, cyproterone) do not cause hair loss during use but can cause a rebound
+  surge in androgens and androgen sensitivity that triggers hair loss when they are
+  stopped.
+evidence_tier: strong
+rationale: Documented in dermatology literature and acknowledged by the American Hair
+  Loss Association. The androgen index of each progestin is a published pharmacological
+  parameter. The "rebound androgenic alopecia" phenomenon after stopping anti-androgenic
+  pills is well described clinically.
+coaching_translation: Some forms of hormonal birth control cause hair loss because
+  the synthetic progestin in them acts like testosterone in your scalp. Other forms
+  (Yasmin, Diane, Yaz) protect your hair while you are on them but can trigger hair
+  loss when you stop them, which is one reason coming off needs a plan.
+caveats:
+- Genetic predisposition to androgenetic alopecia varies — not every woman on high-androgen-index
+  progestins will lose hair.
+- Iron deficiency, thyroid dysfunction, and postpartum hormonal shifts also cause
+  hair loss and need ruling out.
+linked_to_topics:
+- hair-loss-women
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Hair Loss, pp 33-34
+  quote: Progestins with a high androgen index include medroxyprogesterone acetate,
+    levonorgestrel, norgestrel, and etonogestrel. They cause hair loss by shrinking
+    (or miniaturising) hair follicles. Progestins with a low androgen index include
+    drospirenone, norgestimate, and cyproterone. They do not cause hair loss when
+    you take them, but they can cause hair loss when you stop them because they cause
+    a rebound surge in androgens and androgen sensitivity.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

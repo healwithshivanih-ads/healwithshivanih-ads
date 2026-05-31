@@ -1,0 +1,40 @@
+slug: briden-hbc-blood-clot-risk
+statement: All hormonal birth control carries an increased risk of venous thromboembolism
+  (deep vein thrombosis, pulmonary embolism). The absolute risk is small — approximately
+  9.7 clot events per 10,000 women per year on the highest-risk method (NuvaRing)
+  versus 2.1 in non-users — but smoking, age over 35, prior personal or family clot
+  history, and certain progestin formulations (e.g. drospirenone) substantially elevate
+  this risk.
+evidence_tier: strong
+rationale: CHC-associated VTE risk is one of the most extensively studied and well
+  established side effects in pharmacovigilance. The specific NuvaRing 9.7-per-10,000
+  figure comes from published comparative cohort studies. The smoking interaction
+  is on the package insert of every CHC formulation.
+coaching_translation: Hormonal birth control raises your risk of dangerous blood clots
+  — the chance is still small per individual, but smoking, being over 35, or having
+  a family history of clots can push it up significantly. If you smoke, please talk
+  to your prescriber.
+caveats:
+- Absolute risk is small for most healthy young women.
+- Pregnancy itself carries a higher clot risk than the pill — context matters for
+  risk-benefit conversations.
+- Risk varies by progestin (drospirenone, etonogestrel = higher; levonorgestrel =
+  lower).
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: Risk stratification for HBC prescribing is clinician scope. Coaches
+  can flag red-flag factors (smoking, prior clot, migraine with aura, prolonged immobility)
+  for the client to discuss with their prescriber.
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Blood Clots, pp 28-29
+  quote: The absolute risk of a blood clot from any hormonal contraceptive is small.
+    Even NuvaRing, which carries the highest risk, has an absolute risk of only 9.7
+    clot-events per 10,000 women per year compared to 2.1 clot-events in non-users
+    of hormonal birth control. The clot risk goes way up if you smoke.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

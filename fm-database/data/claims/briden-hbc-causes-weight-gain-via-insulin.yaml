@@ -1,0 +1,38 @@
+slug: briden-hbc-causes-weight-gain-via-insulin
+statement: Hormonal birth control can promote weight gain by interfering with insulin
+  signalling (driving insulin resistance and sugar cravings), by preventing the expected
+  lean-mass gains from resistance exercise, and by depositing fat on the hips and
+  upper thighs via synthetic estrogen action. Depo-Provera in particular is associated
+  with substantial and often unresponsive weight gain.
+evidence_tier: plausible_emerging
+rationale: CHC effects on insulin sensitivity, glucose tolerance, and body composition
+  are documented in metabolic studies, though magnitude varies by formulation. The
+  link between Depo-Provera and weight gain is well established (boxed warnings and
+  patient information leaflets cite it). The "blunting of muscle gain from exercise"
+  claim is plausible but less robustly studied.
+coaching_translation: Some women gain weight on hormonal birth control because the
+  synthetic hormones make them more insulin resistant — they crave sugar and store
+  fat more easily, particularly on hips and thighs. The Depo injection is the worst
+  offender for stubborn weight gain.
+caveats:
+- Individual response varies — many women have stable weight on HBC.
+- Lifestyle, sleep, and stress also affect weight; cannot blame HBC for all weight
+  change.
+- Pill-related weight gain often reverses after stopping.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Weight Gain, pg 34
+  quote: Hormonal birth control can cause weight gain because it interferes with a
+    hormone called insulin. The pill also causes sugar cravings and prevents the muscle
+    gain that you would expect to see with exercise. The pill's synthetic estrogen
+    causes fat to be deposited on the hips and upper thighs and can worsen cellulite.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

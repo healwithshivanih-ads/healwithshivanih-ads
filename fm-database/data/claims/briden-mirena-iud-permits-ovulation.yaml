@@ -1,0 +1,44 @@
+slug: briden-mirena-iud-permits-ovulation
+statement: The Mirena hormonal IUD (levonorgestrel-releasing intrauterine system)
+  is unique among hormonal contraceptives in that it suppresses ovulation in only
+  approximately 85 percent of cycles during the first year and 15 percent of cycles
+  thereafter — most users continue to ovulate and therefore make their own progesterone.
+  For this reason, Briden views Mirena as the least hormonally suppressive of the
+  modern hormonal contraceptive options, though it still carries the side-effect signature
+  of levonorgestrel exposure (depression risk, reduced stress tolerance).
+evidence_tier: plausible_emerging
+rationale: The ovulation-suppression rates Briden cites come from clinical research
+  on the Mirena IUD. The mechanism (local progestin action on cervical mucus and uterine
+  lining with limited systemic absorption) is well documented. The depression and
+  stress-tolerance concerns reference the same Danish cohort data discussed elsewhere
+  in the book.
+coaching_translation: Of all the hormonal birth control options, the Mirena IUD is
+  the gentlest on your overall hormone system — most women keep ovulating and making
+  their own progesterone while it is in place. It still uses a synthetic progestin
+  so it can still affect mood and stress tolerance, but if you and your clinician
+  have decided hormonal contraception is needed, this is the option that protects
+  ovulation best.
+caveats:
+- Insertion is invasive and can be painful.
+- Heavy bleeding, adenomyosis, and endometriosis are accepted clinical indications.
+- Should not be the default first choice in women without a clinical indication for
+  it.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- endometriosis
+out_of_scope_notes: IUD insertion, monitoring, and removal are clinician scope.
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Mirena and Skyla IUDs, pp 26-27
+  quote: The hormonal IUD suppresses ovulation in 85 percent of cycles in the first
+    year, but then only 15 percent of cycles after that. Because Mirena does not completely
+    suppress ovulation, I view it as the least harmful of all hormonal birth control.
+    With most hormonal birth control, you bleed but do not cycle. With a Mirena IUD,
+    you cycle but do not bleed.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

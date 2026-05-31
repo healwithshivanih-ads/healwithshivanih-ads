@@ -1,0 +1,47 @@
+slug: briden-perimenopause-can-start-at-35
+statement: Perimenopause is the hormonal transition phase characterised by progressively
+  decreasing progesterone (which falls first) and fluctuating estradiol, ending one
+  year after the final menstrual period. It can begin as early as the mid-30s (up
+  to twelve years before menopause) and the normal age range for menopause itself
+  is 45-55. Hormonal birth control cannot delay menopause and may slightly bring it
+  forward.
+evidence_tier: strong
+rationale: Standard reproductive endocrinology. The progesterone-falls-first-then-estrogen
+  pattern is well documented. The 35-as-earliest-start observation comes from ovulation
+  tracking data and clinical experience and is consistent with the Stages of Reproductive
+  Aging Workshop (STRAW) staging criteria.
+coaching_translation: Perimenopause is not just one year before menopause — it is
+  the whole 5-12 year run-up, when progesterone starts to slip first and estradiol
+  swings wildly. It can start as early as your mid-30s. The pill does not freeze your
+  ovaries in time; if anything it may bring menopause a little earlier.
+caveats:
+- Individual variation is large; some women have very mild perimenopause and some
+  severe.
+- Early perimenopause symptoms (insomnia, anxiety, heavy periods, night sweats) can
+  be confused with thyroid dysfunction or HPA dysregulation — workup matters.
+linked_to_topics:
+- perimenopause
+- perimenopause-and-menopause
+- low-progesterone
+- hormonal-birth-control-withdrawal
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- age-related-progesterone-decline
+- estrogen-decline
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Getting Ready for the End of Periods, pg 15
+  quote: The normal age for menopause is anywhere from 45 to 55. The normal age for
+    perimenopause is up to twelve years before that, so as young as 35! Perimenopause
+    refers to the hormonal changes (such as increased estrogen and decreased progesterone)
+    that occur during the two to twelve years before menopause.
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Hormonal Birth Control Does Not Preserve Fertility, pg 23
+  quote: Your doctor may have told you that hormonal birth control can preserve fertility
+    and delay menopause. It is not true. Quite simply, the pill cannot delay menopause.
+    If anything, it can bring menopause earlier.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

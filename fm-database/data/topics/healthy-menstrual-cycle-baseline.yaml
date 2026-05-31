@@ -1,0 +1,71 @@
+slug: healthy-menstrual-cycle-baseline
+display_name: Healthy Menstrual Cycle Baseline (Period as Vital Sign)
+aliases:
+- period as vital sign
+- normal menstrual cycle
+- healthy period
+- menstrual cycle baseline
+- ovulatory cycle
+summary: 'The reference framework Lara Briden (and the American College of Obstetricians
+  and Gynecologists 2015 statement) uses for what a healthy menstrual cycle looks
+  like. The cycle is treated as a "monthly report card" — a vital sign reflecting
+  overall metabolic, thyroid, gut, immune, and HPA-axis health. Key features of a
+  healthy ovulatory cycle: cycle length 21-35 days (typically ~28), menstrual flow
+  3-7 days, ovulation occurring mid-cycle with measurable rise in basal body temperature
+  and mid-luteal progesterone, fertile cervical mucus around ovulation, minimal-to-mild
+  PMS, no debilitating pain, and a steady predictable rhythm. The defining biochemical
+  event is ovulation followed by corpus-luteum progesterone production — a real period
+  proceeds from ovulation; a pill bleed does not and is more accurately called a withdrawal
+  bleed.'
+common_symptoms:
+- light cramping at ovulation
+- mild premenstrual breast tenderness
+- fertile cervical mucus mid-cycle
+- temperature rise after ovulation
+red_flags:
+- cycle length consistently >35 or <21 days
+- absent periods for >3 months (refer)
+- flooding or soaking through a pad/tampon hourly
+- debilitating pain interfering with daily activity
+- bleeding between periods (refer)
+- bleeding after 12 months of amenorrhoea
+key_mechanisms:
+- progesterone-deficiency
+- estrogen-decline
+- ovulation-suppression-pseudo-hormone-replacement
+related_topics:
+- premenstrual-syndrome
+- low-progesterone
+- pcos
+- perimenopause
+- hormonal-birth-control-withdrawal
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Period Revolution / Your Period Is Trying to Tell You Something,
+    pp 3-9
+  quote: Your period is not just your period. It is an expression of your underlying
+    health. When you are healthy, your menstrual cycle will arrive smoothly, regularly,
+    and without symptoms. When you are unhealthy in some way, your cycle will tell
+    the story.
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Period Revolution / ACOG vital sign citation, pg 4
+  quote: In December 2015, together with the American Academy of Pediatrics, ACOG
+    issued a groundbreaking statement called Menstruation in Girls and Adolescents
+    — Using the Menstrual Cycle as a Vital Sign.
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Be a Detective, pg 10
+  quote: Ovulation matters because it is how you progress through all the menstrual
+    cycle phases to your menstrual flow or period. Ovulation is also how you make
+    progesterone.
+coaching_scope_notes: Coaches can teach clients cycle tracking (apps, BBT, cervical
+  mucus, period diary), what a healthy cycle looks like, when to seek clinical evaluation,
+  and how to interpret cycle symptoms as feedback on overall health. This is one of
+  the most actionable FM coaching topics.
+clinician_scope_notes: Hormonal testing (FSH, LH, estradiol, progesterone, AMH), pelvic
+  ultrasound, and any pharmacological management of cycle disorders are clinician
+  scope.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

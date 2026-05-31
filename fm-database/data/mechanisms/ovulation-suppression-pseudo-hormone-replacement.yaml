@@ -1,0 +1,72 @@
+slug: ovulation-suppression-pseudo-hormone-replacement
+display_name: Ovulation Suppression and Pseudo-Hormone Replacement (Hormonal Birth
+  Control Mechanism)
+aliases:
+- pill mechanism
+- combined oral contraceptive mechanism
+- progestin mechanism
+- hbc mechanism
+- hpo axis suppression
+- ovarian shutdown by oral contraceptives
+category: endocrine
+summary: Hormonal birth control (combined pill, mini-pill, hormonal IUD, implant,
+  patch, ring, injection) works primarily by suppressing the hypothalamic-pituitary-
+  ovarian (HPO) axis, abolishing ovulation, and substituting endogenous estradiol
+  and progesterone with synthetic steroid drugs (ethinylestradiol plus a progestin
+  such as levonorgestrel, drospirenone, etonogestrel, or medroxyprogesterone acetate).
+  Briden emphasises that these drugs are NOT human hormones — they are pseudo-hormones
+  with different molecular structures (e.g. levonorgestrel is structurally closer
+  to testosterone than to progesterone) and different downstream receptor effects.
+  Functional consequences during use — no endogenous progesterone production (which
+  depends on ovulation), no real menstrual cycle (scheduled bleeds are withdrawal
+  bleeds from drug dosing, not period proper), loss of progesterone's benefits for
+  mood, bone, brain, thyroid, and immune function. Functional consequences after stopping
+  — temporary HPO dysregulation, rebound sebum and androgen production (post-pill
+  acne), unmasking of underlying PCOS or thyroid dysfunction previously concealed
+  by the drug, and a re-encounter with natural cyclical hormone fluctuations (post-pill
+  PMS).
+upstream_drivers:
+- pharmaceutical contraception use
+- prescription for non-contraceptive indications (acne, cycle regulation, endometriosis,
+  PCOS)
+downstream_effects:
+- chronic anovulation while drug is active
+- progesterone-deficiency
+- estrogen-decline
+- depression
+- low libido
+- hair-loss
+- weight gain
+- nutrient deficiency (B6, B12, folate, zinc, magnesium, selenium)
+- altered gut and vaginal microbiome
+- reduced bone mineral acquisition (especially in adolescents)
+- post-pill acne
+- post-pill amenorrhoea
+- post-pill PCOS presentation
+related_mechanisms:
+- low-progesterone
+- estrogen-decline
+- hpa-axis-dysregulation
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- healthy-menstrual-cycle-baseline
+- premenstrual-syndrome
+- pcos-post-pill
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Why Hormonal Birth Control Is Not the Answer, pp 7-9
+  quote: On the pill, you have no sex hormones of your own. Instead, you have steroid
+    drugs given to you as a kind of hormone replacement. Hormone replacement might
+    be okay if the steroid drugs were as good as your own hormones, but they are not.
+    The pill does not regulate hormones. It switches them off entirely.
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Pill Drugs Are Not Hormones, pp 19-22
+  quote: Levonorgestrel is actually more similar to testosterone than it is to progesterone.
+    Their biggest side effect is that they rob you of your own beneficial progesterone.
+    They do so by suppressing ovulation, which is, of course, their purpose, but unfortunately,
+    without ovulation, you cannot make progesterone.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

@@ -1,0 +1,46 @@
+slug: briden-hbc-increases-depression-risk
+statement: The 2016 JAMA Psychiatry study by Skovlund, Lidegaard and colleagues ("Association
+  of Hormonal Contraception With Depression") followed more than one million Danish
+  women for thirteen years and found a statistically significant increase in the risk
+  of being prescribed antidepressants or diagnosed with depression among hormonal-contraceptive
+  users compared with non-users. The risk was greatest in adolescents and in users
+  of progestin-only methods such as the hormonal IUD and the implant.
+evidence_tier: strong
+rationale: This is a published large-scale national-registry cohort study (Skovlund
+  CW et al., JAMA Psychiatry 2016) with appropriate confounder adjustment. The same
+  research group's 2018 follow-up paper (Skovlund et al., AJP) showed an elevated
+  suicide risk in HBC users. The findings are consistent with long-observed clinical
+  experience and biological plausibility (HBC alters brain structure, neuroactive
+  steroid balance, and HPA-axis reactivity).
+coaching_translation: A very large Danish study found that women on hormonal contraception
+  are significantly more likely to be diagnosed with depression than women who are
+  not. The risk is highest for teenagers and for progestin-only methods like the hormonal
+  IUD and the implant. If your mood changed after starting birth control, that is
+  real and worth talking to your prescriber about.
+caveats:
+- Observational cohort — not RCT. Cannot prove causation.
+- The absolute increase per individual is modest; for many women HBC is well tolerated.
+- Selection bias possible — women prone to depression may also be more likely to seek
+  HBC.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- hormonal-depression-progesterone
+out_of_scope_notes: Depression diagnosis and antidepressant management are clinician
+  scope. Coaches can flag the temporal association and support clients in raising
+  it with their prescriber.
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Depression, pp 29-31 (citing JAMA Psychiatry 2016)
+  quote: Researchers from the University of Copenhagen tracked one million women over
+    thirteen years and found that girls and women who use hormonal birth control are
+    significantly more likely to be diagnosed with depression. The risk was greatest
+    for teens using progestin-only methods such as an implant or Mirena IUD. A follow-up
+    study from the same group of researchers found that women taking hormonal birth
+    control had triple the risk of suicide.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

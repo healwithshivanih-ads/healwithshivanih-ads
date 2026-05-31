@@ -1,0 +1,42 @@
+slug: briden-ovulation-is-how-you-make-progesterone
+statement: Endogenous progesterone is produced by the corpus luteum, the temporary
+  gland formed in the ovary after ovulation. No ovulation means no corpus luteum,
+  and no corpus luteum means no meaningful luteal-phase progesterone. Therefore any
+  intervention that reliably suppresses ovulation (combined hormonal contraception,
+  long-term Depo-Provera, severe HPA dysregulation, hypothalamic amenorrhoea, some
+  PCOS phenotypes) also suppresses progesterone — with downstream consequences for
+  mood, sleep, bone, and uterine-lining protection.
+evidence_tier: strong
+rationale: Core reproductive endocrinology — undisputed mechanism. Briden uses this
+  as the conceptual anchor of the entire book and as the rationale for why "regular
+  pill bleeds" do not equal hormonal health.
+coaching_translation: Progesterone is made only in the two weeks after you ovulate.
+  If you do not ovulate — whether because of the pill, severe stress, or a hormone
+  condition — your body cannot make this protective, calming hormone. Restoring ovulation
+  is the single most important goal in functional period repair.
+caveats:
+- Adrenals make a tiny amount of pregnenolone-derived progesterone, but this does
+  not replace ovarian luteal-phase progesterone.
+- Anovulatory bleeds can still occur in the absence of progesterone — bleeding is
+  not proof of ovulation.
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- low-progesterone
+- premenstrual-syndrome
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+- low-progesterone
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 1 — Be a Detective, pg 10
+  quote: Ovulation matters because it is how you progress through all the menstrual
+    cycle phases to your menstrual flow or period. Ovulation is also how you make
+    progesterone, which is an amazing hormone, to say the least. A real period is
+    a finale in a series of hormonal events which includes ovulation and the making
+    of progesterone.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

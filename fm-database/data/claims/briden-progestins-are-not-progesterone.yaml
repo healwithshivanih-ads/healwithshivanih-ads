@@ -1,0 +1,43 @@
+slug: briden-progestins-are-not-progesterone
+statement: Synthetic progestins (levonorgestrel, drospirenone, etonogestrel, medroxyprogesterone
+  acetate, norgestimate, cyproterone, norelgestromin) are not bioidentical to human
+  progesterone. Levonorgestrel in particular is structurally closer to testosterone
+  than to progesterone and exerts androgenic effects on hair follicles, sebaceous
+  glands, and mood. The terms progestin and progesterone are pharmacologically distinct
+  and cannot be used interchangeably.
+evidence_tier: strong
+rationale: This is established medicinal chemistry — the molecular structures and
+  receptor affinity profiles of named progestins are well published. The androgen
+  index of each progestin is a documented pharmacological parameter used by prescribers
+  to predict androgenic side effects. Briden references published studies linking
+  high-androgen-index progestins to hair loss, acne, and depression.
+coaching_translation: The pill calls its second ingredient a progestin, which sounds
+  like progesterone, but they are different molecules with different effects on your
+  body. Some progestins act more like testosterone — that is why some pills cause
+  hair loss, acne, and mood changes that resolve when you stop them.
+caveats:
+- Natural micronised progesterone (bioidentical) is a different drug and is used in
+  HRT and luteal-phase support — different safety and efficacy profile from synthetic
+  progestins.
+- Cyproterone and drospirenone are low-androgen-index progestins and have a different
+  side-effect signature (rebound androgens after stopping).
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- hair-loss-women
+- premenstrual-syndrome
+out_of_scope_notes: ''
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: briden-period-repair-manual-2018
+  location: Chapter 2 — Pill Drugs Are Not Hormones, pp 19-21
+  quote: Progestin is a general term for drugs that are similar to progesterone. Progestin
+    drugs include levonorgestrel and drospirenone, which have some of the same effects
+    as progesterone but also have many opposite effects. The terms progestin and progesterone
+    cannot be used interchangeably. Levonorgestrel is actually more similar to testosterone
+    than it is to progesterone.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani
