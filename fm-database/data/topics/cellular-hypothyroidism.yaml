@@ -1,0 +1,43 @@
+slug: cellular-hypothyroidism
+display_name: Cellular Hypothyroidism (Adaptive Cell Defense)
+aliases:
+- cellular hypothyroid
+- adaptive thyroid downregulation
+- non-glandular hypothyroidism
+summary: A framework in which low intracellular T3 and downstream hypothyroid symptoms
+  reflect an adaptive, protective response of cells flipping from manufacturing mode
+  into cell-defense mode (per the Naviaux Cell Danger Response paradigm). Triggers
+  include hypoxia, emotional stress, trauma, infections, toxins, and chronic micronutrient
+  deficiencies. The cell deliberately reduces mitochondrial number and metabolic throughput
+  to lower free-radical production while preserving antioxidant reserves for the defense
+  response. Clinical implication — pushing more T4, T3, or T2 replacement against
+  a cell that is intentionally downregulated tends to drive oxidative stress higher
+  rather than resolve symptoms. The correct intervention is identifying and removing
+  the stressors that are signalling defense mode.
+key_mechanisms:
+- impaired-t4-to-t3-conversion
+- mitochondria-as-immune-sensors
+- mitochondrial-dysfunction
+- cell-danger-response-mitochondrial
+common_symptoms:
+- fatigue
+- brain-fog
+- cold-intolerance
+- weight-gain
+related_topics:
+- hypothyroidism
+- cell-danger-response
+- mitochondrial-health-nutrition
+- reverse-t3-anti-thyroid-hormone
+sources:
+- id: balcavage-energy-blueprint-podcast-2026
+  location: Podcast — Cellular hypothyroidism vs glandular failure
+  quote: Maybe we're not in manufacturing mode. Maybe we're in cell defense mode.
+    Maybe that's why this treatment didn't work and the next treatment didn't work
+    and this hormone replacement is not working. It's not because we just didn't jam
+    enough into the system because it's not the right strategy.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

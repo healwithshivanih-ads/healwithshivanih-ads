@@ -1,0 +1,25 @@
+slug: ppi-use-major-osteoporosis-risk
+statement: Chronic proton-pump-inhibitor (PPI) use — Nexium, Prilosec, Pantoprazole
+  and similar — is a major modifiable risk factor for osteoporosis. The mechanism
+  — suppression of stomach acid impairs protein digestion and reduces absorption of
+  calcium, magnesium, B12, and other bone-building nutrients. Coach implication —
+  for any client on long-term PPIs presenting with low bone density, discuss with
+  prescribing physician about tapering and addressing the root cause of reflux (often
+  dietary triggers, hiatal hernia, H. pylori, low not high stomach acid).
+evidence_tier: strong
+linked_to_topics:
+- osteoporosis
+- mechanical-loading-bone-density
+sources:
+- id: bissinger-energy-blueprint-podcast-2026
+  location: Podcast — PPIs and bone loss
+  quote: One of the biggest ones is the proton pump inhibitors. There's a big correlation
+    with people who've been on proton pump inhibitors and osteoporosis because it
+    reduces stomach acid and we need that stomach acid to break down the proteins
+    and the nutrients for the bone.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Common silent contributor missed in standard bone-health counselling; high-yield
+  for clients on long-term reflux meds.

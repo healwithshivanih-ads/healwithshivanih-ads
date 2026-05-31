@@ -1,0 +1,25 @@
+slug: orthostatic-tolerance-test-disambiguates-hrv
+statement: An orthostatic tolerance test — measuring heart-rate and blood-pressure
+  response on going from supine or seated to standing — disambiguates ventral vagal
+  dominance from dorsal vagal shutdown before interpreting an HRV reading. Normal
+  — heart rate rises modestly and blood pressure climbs. POTS — heart rate spikes
+  (vagal brake releases too abruptly). Dorsal vagal dominance — heart rate fails to
+  rise or drops, and blood pressure does not climb (cerebral perfusion at risk). For
+  clients in the third pattern, a high HRV number does not indicate health.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- heart-rate-variability-interpretation
+- polyvagal-theory
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — Orthostatic tolerance and HRV interpretation
+  quote: If you stand up and your heart rate doesn't go up, maybe even it goes down,
+    and your blood pressure doesn't go up — that is a sign that the dorsal vagal survival
+    shutdown part of the vagus nerve is too active. If someone is in that camp, then
+    I would question the interpretation of a higher HRV meaning that they are healthier.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Cheap, in-clinic test the coach can run before recommending HRV-targeted
+  interventions to a client with dysautonomia symptoms.

@@ -1,0 +1,24 @@
+slug: coq10-normal-in-cellular-hypothyroid
+statement: When intracellular T3 is downregulated as part of an adaptive cell-defense
+  response, CoQ10 measured in serum often appears normal or even elevated — not deficient
+  — because mitochondria are not consuming it. Reflexively prescribing high-dose CoQ10
+  in this state misses the root cause (the cell is intentionally throttling throughput)
+  and rarely resolves fatigue.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cellular-hypothyroidism
+- mitochondrial-health-nutrition
+linked_to_supplements:
+- coenzyme-q10
+sources:
+- id: balcavage-energy-blueprint-podcast-2026
+  location: Podcast — CoQ10 in cellular hypothyroidism
+  quote: CoQ10 is often not deficient when somebody has downregulated mitochondria
+    because they're not using it. When you have downregulation of T3 in the cell,
+    you actually have more CoQ10 because they can't use it efficiently.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Counters a common functional-medicine reflex of stacking mitochondrial
+  co-factors without first removing stressors.

@@ -1,0 +1,41 @@
+slug: perceptions-activate-cell-danger-response
+display_name: Perceptions Activate the Cell Danger Response
+aliases:
+- perception cdr
+- thought-mitochondria signalling
+category: signaling
+summary: In the Abhidhamma (Buddhist phenomenology), each perception passes through
+  17 sequential steps. The midpoint offers a "gateway" where a new skill can replace
+  a habitual reaction. When that gateway is missed and the object of perception is
+  collapsed around with an afflictive emotion (fear, anger, attachment, aversion),
+  the limbic system activates regardless of whether real danger exists. That activation
+  cascades to mitochondria — within seconds, cellular energy production is throttled,
+  free-radical burst readiness is increased, and the cell danger response is engaged.
+  This mechanism explains how chronic self-narratives ("I'm not safe," "I'm not good
+  enough") drive measurable physiological inflammation and downregulated mitochondrial
+  output even without external threats.
+upstream_drivers:
+- chronic-stress
+- hpa-axis-dysregulation
+downstream_effects:
+- mitochondrial-dysfunction
+- chronic-inflammation
+related_mechanisms:
+- cell-danger-response-mitochondrial
+- mitochondria-as-immune-sensors
+linked_to_topics:
+- hurt-model-trauma-resolution
+- cell-danger-response
+- chronic-inflammation
+sources:
+- id: ewers-energy-blueprint-podcast-2026
+  location: Podcast — Perceptions and the limbic system
+  quote: Cortisol sure, but what gets that activated? Your perceptions. Same with
+    mitochondria — your perceptions are first. People will start talking about — we
+    have to heal our limbic system. No, you need to heal your perceptions because
+    that's what activates your limbic system.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

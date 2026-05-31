@@ -1,0 +1,37 @@
+slug: cholinergic-anti-inflammatory-vagal-reflex
+display_name: Cholinergic Anti-Inflammatory Vagal Reflex
+aliases:
+- vagal anti-inflammatory pathway
+- cap
+category: signaling
+summary: A major endogenous anti-inflammatory pathway mediated by efferent vagal signalling
+  through acetylcholine binding to α7 nicotinic receptors on macrophages and other
+  immune cells, suppressing the release of pro-inflammatory cytokines (TNF-α, IL-1β,
+  IL-6). Functional ventral vagal tone is a prerequisite for this reflex. Chronically
+  low vagal tone, as reflected in low respiratory-sinus-arrhythmia HRV, removes the
+  brake on systemic inflammation — one of the mechanistic reasons HRV correlates so
+  robustly with inflammatory and all-cause-mortality outcomes.
+upstream_drivers:
+- chronic-stress
+- vagal-tone-dysregulation
+downstream_effects:
+- chronic-inflammation
+- inflammaging
+related_mechanisms:
+- vagal-tone-enhancement
+- vagal-nerve-dysregulation
+linked_to_topics:
+- polyvagal-theory
+- heart-rate-variability-interpretation
+- chronic-inflammation
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — Anti-inflammatory vagal reflex
+  quote: The big anti-inflammatory reflex of the body is through the vagus nerve.
+    Heart rate variability is very strongly correlated with inflammation because vagal
+    tone has the anti-inflammatory response for when we are stressed or infected.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

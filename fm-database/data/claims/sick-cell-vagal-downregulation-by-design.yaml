@@ -1,0 +1,26 @@
+slug: sick-cell-vagal-downregulation-by-design
+statement: When cells are stressed, injured, or infected, the vagus nerve actively
+  downregulates to reduce the coherence and complexity of the system — allowing cells
+  to "go offline" from network signalling and run older repair programs (the Naviaux
+  cell danger response). This explains why HRV drops during illness — not because
+  the system is failing, but because vagal withdrawal is part of the healing program.
+  Reflexive vagal stimulation during this phase can be counter-productive; the appropriate
+  sequence is to let the healing cycle complete and HRV will recover spontaneously.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- heart-rate-variability-interpretation
+- polyvagal-theory
+- cell-danger-response
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — Vagal downregulation in illness
+  quote: If someone is sick enough that they don't feel well and they have to lie
+    down, the vagus nerve is actually going to turn itself down in order to reduce
+    the coherence of the system so that it can go through this process. So if you
+    are sick, your heart rate variability is lower — because that's by design.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Important nuance for clients who panic at a low Oura/Whoop HRV reading
+  during a cold or after a stressful event — coach can explain it as design, not failure.

@@ -1,0 +1,42 @@
+slug: cell-danger-response-mitochondrial
+display_name: Cell Danger Response — Mitochondrial Sensing
+aliases:
+- cdr mitochondrial sensing
+- mitochondrial threat sensing
+category: signaling
+summary: Mitochondria function not only as ATP generators but as the cell's principal
+  energy-flow sensors. When energy flow drops below threshold, mitochondrial signalling
+  triggers the cell danger response (Naviaux) — a coordinated downshift in manufacturing
+  (protein, peptide, and hormone synthesis), reduction of mitochondrial density, and
+  a more efficient (but lower-throughput) energy output that limits free-radical exhaust.
+  This frees antioxidant reserves for defense responses (free-radical bursts against
+  pathogens) and reduces oxidative damage during prolonged threat. The downside is
+  the symptom cluster of low cellular energy — fatigue, brain fog, cold intolerance
+  — which is often misread as "broken physiology" rather than intelligent adaptation.
+upstream_drivers:
+- chronic-infections
+- environmental-toxin-load
+- chronic-stress
+- micronutrient-deficiency
+downstream_effects:
+- mitochondrial-dysfunction
+- impaired-t4-to-t3-conversion
+- reduced-cellular-atp-output
+related_mechanisms:
+- mitochondria-as-immune-sensors
+- mitochondrial-efficiency
+linked_to_topics:
+- cellular-hypothyroidism
+- cell-danger-response
+sources:
+- id: balcavage-energy-blueprint-podcast-2026
+  location: Podcast — Mitochondrial sensing and the CDR
+  quote: The mitochondria seem to have ability to sense energy flow. And when they
+    sense that there's a drop in energy flow, that can initiate the change in physiology
+    from manufacturing to defense mode. Reducing mitochondrial numbers and function
+    is a large part of a protective cell danger response.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

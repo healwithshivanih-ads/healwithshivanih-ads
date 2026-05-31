@@ -1,0 +1,26 @@
+slug: cgm-post-meal-vigorous-exercise-can-backfire
+statement: Continuous-glucose-monitor (CGM) coaching that prescribes vigorous post-meal
+  exercise to flatten glucose spikes can backfire in chronically stressed clients.
+  The intervention forces an additional acute stress on already-dysregulated nervous
+  and metabolic systems and can worsen baseline glycaemic control over weeks. The
+  bigger driver of resting glucose in many cases is autonomic dysregulation, not refined-carbohydrate
+  intake — addressing the nervous system upstream often does more than chasing the
+  postprandial number.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- heart-rate-variability-interpretation
+- circadian-rhythm-disruption
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — CGM-driven post-meal exercise as a hack
+  quote: Going on a rebounder after eating in order to drop the blood sugar — overall
+    these patients were making their systems more stressed and it wasn't really good
+    advice in general to exercise vigorously immediately after eating. For a lot of
+    people it's their nervous system that's actually making the bigger contributor
+    to what their resting glucose is.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Important nuance for the CGM-curious client — useful in plan letters where
+  coach is recommending CGM monitoring.

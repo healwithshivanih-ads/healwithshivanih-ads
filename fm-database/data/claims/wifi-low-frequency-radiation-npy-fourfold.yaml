@@ -1,0 +1,22 @@
+slug: wifi-low-frequency-radiation-npy-fourfold
+statement: Low-frequency radiofrequency radiation from Wi-Fi devices has been reported
+  to increase neuropeptide Y (NPY) — an orexigenic (hunger-promoting) signal — approximately
+  fourfold in some experimental studies. Practical implication for sleep and weight
+  protocols — turn off household Wi-Fi at night, particularly given that night-time
+  device use also drives carbohydrate craving via this NPY pathway.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- cellular-hypothyroidism
+- circadian-rhythm-disruption
+sources:
+- id: balcavage-energy-blueprint-podcast-2026
+  location: Podcast — Wi-Fi, NPY, and night-time carb craving
+  quote: There are some studies where low frequency radiation increases NPY four-fold.
+    NPY is an orexigenic hormone which then tells the body I'm still hungry. And so
+    now we consume more carbohydrates as a result of that.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Concrete, low-cost evening-hygiene intervention coach can recommend for
+  clients with stubborn weight or night-eating patterns.

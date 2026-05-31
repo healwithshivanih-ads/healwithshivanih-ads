@@ -1,0 +1,27 @@
+slug: cortisol-suppresses-osteoblast-activity
+statement: Chronically elevated cortisol — whether from prescription corticosteroids
+  (inhalers, oral, topical) or endogenously from chronic stress — directly suppresses
+  osteoblast (bone-building cell) activity and accelerates osteoclast (bone-resorbing
+  cell) activity. Stress management, sleep hygiene, and addressing the source of chronic
+  activation are essential adjuncts to any bone protocol. Inhaled corticosteroid users
+  are particularly often overlooked in osteoporosis risk assessment.
+evidence_tier: strong
+linked_to_topics:
+- osteoporosis
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- cortisol-bone-suppression
+- cortisol-elevation
+sources:
+- id: bissinger-energy-blueprint-podcast-2026
+  location: Podcast — Cortisol and bone
+  quote: Stress is the body's own cortisol — it increases your body's own inflammation
+    and the cortisol has been shown to reduce the activity of the bone-building cells.
+    Steroids significantly reduce bone — corticosteroids — whether they're on inhalers
+    or for different conditions.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Connects stress-management work directly to a measurable bone outcome;
+  useful for motivating clients who dismiss the "stress affects everything" framing.

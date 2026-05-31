@@ -1,0 +1,25 @@
+slug: blood-pressure-houston-three-drivers
+statement: Per cardiologist Mark Houston's framework, the three proximate mechanisms
+  underlying essential hypertension are vascular inflammation, oxidative stress, and
+  immune-vascular disorders. Each then has dozens of distinct root causes — micronutrient
+  deficiencies, toxic exposures, chronic infections, gut dysbiosis, sleep apnoea,
+  structural cervical issues, and so on. Lowering blood pressure with medication without
+  identifying which of these is driving the response addresses only the surface marker
+  and leaves the root cause to manifest as another condition.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- essential-hypertension
+- hypertension
+- blood-pressure-management
+sources:
+- id: pickard-energy-blueprint-podcast-2026
+  location: Podcast — Houston framework for hypertension
+  quote: Dr Mark Houston says there are three main reasons for high blood pressure
+    — there's inflammation, there's oxidative stress, and there's immune-related vascular
+    disorders. But each of those three have myriads of other causes.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Useful taxonomy to share when client asks "why do I have high BP?" — points
+  to the next layer of investigation rather than reflexive medication.

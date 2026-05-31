@@ -1,0 +1,35 @@
+slug: heart-rate-variability-interpretation
+display_name: Heart Rate Variability — Context-Aware Interpretation
+aliases:
+- hrv interpretation
+- respiratory sinus arrhythmia
+- rsa
+summary: Heart-rate variability (HRV) describes the beat-to-beat variation in heart
+  rate. The "healthy" component is respiratory sinus arrhythmia (RSA) — heart rate
+  rising on inhale and falling on exhale — driven by ventral vagal tone. Higher HRV
+  from RSA correlates with greater health, all-cause mortality reduction, anti-inflammatory
+  vagal reflex, executive function, and athletic recovery. However, HRV can also rise
+  from non-RSA sources (dorsal vagal shutdown, neurogenic bradycardia, autonomic instability),
+  which is why HRV climbs paradoxically in some overtrained athletes and in clinical
+  crisis states. Orthostatic tolerance testing (heart-rate and blood-pressure response
+  to standing) helps disambiguate ventral vagal dominance from dorsal vagal shutdown
+  before interpreting an HRV number. Measurement context (seated vs supine vs standing)
+  must be held constant across readings.
+key_mechanisms:
+- vagal-tone-dysregulation
+- vagal-tone-enhancement
+common_symptoms: []
+related_topics:
+- polyvagal-theory
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — Why higher HRV is not always better
+  quote: Higher heart rate variability is usually associated with being healthier,
+    but sometimes it's not, because the ventral vagal part that's associated with
+    resilience and recovery will increase HRV, but so will that shutdown of life-threat.
+    The shutdown of life-threat will also increase HRV.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

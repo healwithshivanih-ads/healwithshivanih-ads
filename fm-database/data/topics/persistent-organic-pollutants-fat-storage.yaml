@@ -1,0 +1,40 @@
+slug: persistent-organic-pollutants-fat-storage
+display_name: Persistent Organic Pollutants and Fat-Cell Storage
+aliases:
+- pops
+- forever chemicals fat storage
+- pfas storage
+summary: Persistent organic pollutants (POPs) — including PFAS (per- and polyfluoroalkyl
+  substances, the "forever chemicals" found in non-stick coatings, water-repellent
+  fabrics, and some bottled-water brands), flame retardants, phthalates, certain pesticides,
+  and dioxins — are sequestered in adipose tissue (and to a lesser extent bone, brain,
+  and organs) when the liver's conjugation capacity is overwhelmed. Bloodstream concentration
+  of POPs measured during deliberate weight loss correlates with propensity to regain
+  weight — the body appears to pull fat back on partly to re-sequester released toxins.
+  Practical implication — slow, supported weight loss combined with active detoxification
+  pathways (binders, fibre, sweating, hydration) yields more durable results than
+  rapid restriction.
+key_mechanisms:
+- environmental-toxin-load
+- mitochondrial-toxin-disruption
+common_symptoms:
+- weight-gain
+- fatigue
+related_topics:
+- environmental-toxin-load
+- environmental-toxin-exposure
+- detoxification
+- endocrine-disruption-and-detox
+sources:
+- id: trubow-energy-blueprint-podcast-2026
+  location: Podcast — POPs and weight regain
+  quote: Toxins, if you over exceed your body's ability to get rid of them, they get
+    stored. Where do they get stored? Your bones, your organs, your fat, your brain.
+    So when you lose fat, the contents of those fat cells get dumped back into the
+    bloodstream — these chemicals were essentially pulling the fat back on as some
+    sort of protective mechanism.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,25 @@
+slug: wash-new-clothes-before-wearing-formaldehyde
+statement: New clothing is typically treated with anti-moth chemicals (often formaldehyde-based)
+  during transport from manufacturing to retail, producing the characteristic "new
+  clothing" smell. Washing before first wear — and sometimes multiple washes if the
+  smell persists — substantially reduces residual chemical exposure. Dry cleaning
+  uses formaldehyde-derived solvents that re-deposit on fabric; most "dry clean only"
+  garments can in fact be hand-washed or gentle-cycle washed safely.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- environmental-toxin-exposure
+- environmental-toxin-load
+- five-category-toxin-reduction-framework
+sources:
+- id: trubow-energy-blueprint-podcast-2026
+  location: Podcast — Clothing chemicals
+  quote: Don't wear clothes from the store that haven't been washed because to prevent
+    them from getting moths on the way from the country of manufacture to you, they're
+    sprayed with chemicals. Do your best to wash them before you wear them. We don't
+    take our clothes to the dry cleaners — they use a form of formaldehyde.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Low-friction client habit; particularly important for chemically-sensitive
+  clients or those with autoimmune, MCAS, or skin-reactive presentations.

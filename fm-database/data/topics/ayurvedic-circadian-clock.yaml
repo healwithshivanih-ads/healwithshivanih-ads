@@ -1,0 +1,37 @@
+slug: ayurvedic-circadian-clock
+display_name: Ayurvedic Circadian Clock (Dosha Time of Day)
+aliases:
+- ayurvedic time of day
+- dosha clock
+- ayurvedic daily rhythm
+summary: Ayurveda partitions the 24-hour day into six four-hour blocks, each ruled
+  by one of the three doshas, and prescribes activities aligned with that block. 2–6
+  am (vata) is for meditation, breath work, journaling; 6–10 am (kapha) is for self-care
+  rituals and starting the day with slower movement; 10 am–2 pm (pitta) is peak digestive-fire
+  time, the appropriate window for the largest meal of the day and for focused work;
+  2–6 pm (vata again) is unfocused — siesta or task-completion only; 6–10 pm (kapha)
+  is for winding down with dinner finished by 6–7 pm; 10 pm–2 am (pitta at night)
+  is when the body uses fire to clear inflammation, lymphatic backup, and what modern
+  science calls glymphatic washing of the brain. Eating misaligned with this clock
+  (late dinners, snacking through digestive-fire windows) is framed as driving inflammation
+  by working against nature's rhythm.
+key_mechanisms:
+- circadian-rhythm-disruption
+common_symptoms: []
+related_topics:
+- circadian-rhythm-disruption
+- circadian-alertness-rhythm
+- inflammaging
+- ayurvedic-elemental-design-doshas
+sources:
+- id: gupta-energy-blueprint-podcast-2026
+  location: Podcast — Ayurvedic circadian clock
+  quote: 10 to 2 on the clock is pitta time of day, fire. Ayurveda said 5,000 years
+    ago 10 to 2 is the most important time to be asleep. When that pitta fire comes
+    out at night, it's there to clean and clear inflammation, our lymphatic system,
+    what we now call the glymphatic system, the lymphatic system of the brain.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

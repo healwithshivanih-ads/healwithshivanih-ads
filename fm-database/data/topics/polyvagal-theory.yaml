@@ -1,0 +1,37 @@
+slug: polyvagal-theory
+display_name: Polyvagal Theory (Porges)
+aliases:
+- polyvagal
+- porges polyvagal
+- ventral vagal dorsal vagal
+summary: A neurophysiological model developed by Stephen Porges that frames the autonomic
+  nervous system as a three-layered hierarchy rather than a simple sympathetic-parasympathetic
+  binary. The dorsal vagal complex (oldest, evolutionarily) drives shutdown and dissociation
+  under life-threat. The sympathetic system mobilises fight-or-flight. The ventral
+  vagal complex (newest, myelinated, social engagement) supports rest, digest, connection,
+  and recovery. Heart-rate variability is largely a window into ventral vagal tone,
+  but during severe stress or sickness, paradoxical HRV increases can come from dorsal-vagal
+  shutdown — the "vagal paradox" Porges first observed in NICU infants where rising
+  HRV preceded bradycardic crashes. Useful for interpreting trauma responses, dysautonomia,
+  POTS, and the apparent HRV-context mismatches seen in overtraining and burnout.
+key_mechanisms:
+- vagal-tone-dysregulation
+- vagal-nerve-dysregulation
+common_symptoms:
+- fatigue
+- anxiety
+related_topics:
+- adverse-childhood-experiences-aces
+- birth-trauma
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — Polyvagal theory and the vagal paradox
+  quote: Polyvagal theory was developed by Stephen Porges. He found that as babies
+    in the NICU got closer to more dangerous zone of dying, their heart rate would
+    drop but their heart rate variability would go up. He said — you just rediscovered
+    the vagal paradox that led me to develop polyvagal theory.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

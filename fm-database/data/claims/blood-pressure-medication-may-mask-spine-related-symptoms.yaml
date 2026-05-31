@@ -1,0 +1,25 @@
+slug: blood-pressure-medication-may-mask-spine-related-symptoms
+statement: Some blood-pressure medications can produce acid-base or kidney-perfusion
+  disturbances that manifest as musculoskeletal pain elsewhere — a documented case
+  of refractory back pain resolved on discontinuing a BP drug after blood-chemistry
+  analysis revealed a kidney-mediated acid-base dysregulation traced to that medication.
+  Functional blood-chemistry analysis (per Dr Bryan Walsh) using narrower optimal
+  ranges than conventional cut-offs can surface these patterns before they generate
+  additional prescribing.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- essential-hypertension
+- blood-pressure-management
+sources:
+- id: pickard-energy-blueprint-podcast-2026
+  location: Podcast — Blood-chemistry analysis case
+  quote: His blood test actually told me what was causing his back pain because the
+    chiropractor wasn't going anywhere. He had a kidney problem causing acid-base
+    dysregulation and it was probably being caused by one of his blood pressure pills.
+    When he stops that blood pressure medication his back pain goes away.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Useful pattern to file when a client on multiple BP meds reports new musculoskeletal
+  pain — prompts review of full med list with prescribing physician.

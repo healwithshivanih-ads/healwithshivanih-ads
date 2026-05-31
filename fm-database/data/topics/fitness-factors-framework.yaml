@@ -1,0 +1,32 @@
+slug: fitness-factors-framework
+display_name: Fitness Factors Framework (Cell Defense Stressor Audit)
+aliases:
+- fitness factors
+- balcavage fitness scoring
+summary: A seven-domain clinical scoring system used to identify whether a patient's
+  physiology is biased toward manufacturing mode or cell-defense mode. Each domain
+  is rated 0 to 10 by the patient — emotional fitness (rumination, worry, presence),
+  physical fitness (capacity to walk, lift, recover), metabolic fitness (blood-chemistry
+  markers), dietary fitness (whole food vs ultra-processed), sleep fitness (duration,
+  depth, consistency), respiratory fitness (nasal breathing, breath capacity), and
+  habitual fitness (daily behaviours, environment, toxic load). The lowest-scoring
+  domain becomes the starting point. Concrete incrementalism is encouraged — if a
+  patient cannot walk five minutes, start with four; if they cannot lift, start with
+  chair stands; build a foundation before adding supplements.
+key_mechanisms: []
+common_symptoms: []
+related_topics:
+- cellular-hypothyroidism
+- cell-danger-response
+sources:
+- id: balcavage-energy-blueprint-podcast-2026
+  location: Podcast — Fitness factors framework
+  quote: Emotional fitness, physical fitness, metabolic fitness, dietary fitness,
+    sleep fitness, respiratory fitness, habitual fitness. I give them a scale of 0
+    to 10 and rate yourself. We just start with — okay, this is the weakest one. Your
+    sleep is terrible. Let's start there.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

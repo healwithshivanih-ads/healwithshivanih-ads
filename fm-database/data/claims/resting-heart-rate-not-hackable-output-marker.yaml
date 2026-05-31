@@ -1,0 +1,24 @@
+slug: resting-heart-rate-not-hackable-output-marker
+statement: Resting heart rate is an "index" or output marker — a downstream summary
+  of nervous-system, immune, metabolic, and recovery inputs — rather than a target
+  to hack directly. Attempting to lower resting heart rate through targeted interventions
+  (specific supplements, exercise timing) without first addressing the upstream drivers
+  (sleep, stress, inflammation, dysautonomia) tends to fail or backfire. Better —
+  track resting heart rate as a background signal while applying first-principles
+  interventions, and let it move as the upstream physiology improves.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- heart-rate-variability-interpretation
+sources:
+- id: koppelman-polyvagal-energy-blueprint-podcast-2026
+  location: Podcast — Treating HRV and resting HR as index markers
+  quote: Let's say we're looking at resting heart rate. We're looking at the output
+    of a system. My approach is to not address it directly. We think that the cleverer
+    we get, the better we are at changing those biomarkers, and it almost always causes
+    problems because we're just not smarter than our own system.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Useful counter-balance to wearable-driven "biohacking" obsessions; reframes
+  wearables as monitoring tools rather than steering wheels.

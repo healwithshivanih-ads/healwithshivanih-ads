@@ -1,0 +1,24 @@
+slug: spinach-oxalates-block-calcium
+statement: Spinach is often mistakenly assumed to be a calcium-rich food for bone
+  health, but its high oxalate content binds calcium into an indigestible oxalate
+  complex, blocking absorption of both that meal's calcium and (per animal data) additional
+  minerals. Better leafy-green calcium sources include collard greens (~265 mg per
+  serving), bok choy (~150 mg), and kale — all relatively low in oxalates. Cooking
+  methods (blanching, fermenting) reduce oxalate burden in higher-oxalate greens.
+evidence_tier: strong
+linked_to_topics:
+- osteoporosis
+sources:
+- id: bissinger-energy-blueprint-podcast-2026
+  location: Podcast — Oxalates and calcium absorption
+  quote: Spinach is high in oxalates, and oxalic acid combines with calcium to make
+    it an indigestible compound. So you're not going to absorb the calcium. There's
+    even animal studies showing that with the oxalates, it even binds to additional
+    things to reduce the calcium.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Practical India-relevant point — palak (spinach) is daily staple but other
+  saags (sarson, methi, chaulai) offer better calcium availability for bone-focused
+  clients.

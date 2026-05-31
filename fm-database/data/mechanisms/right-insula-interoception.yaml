@@ -1,0 +1,38 @@
+slug: right-insula-interoception
+display_name: Right Insula and Interoception
+aliases:
+- right insula interoception
+- interoceptive awareness
+- body-mapping insula
+category: neurological
+summary: The right insular cortex is the brain region most centrally involved in interoception
+  — the sense of the internal state of the body, including digestion, heartbeat, inflammation,
+  hormonal shifts, and emotional tone. When the right hemisphere develops underweight
+  relative to the left, interoceptive awareness is reduced. Clinical consequences
+  include not noticing temperature (children running in shorts in cold weather), under-reporting
+  pain, missing early warning signals of cardiovascular disease, and difficulty identifying
+  emotional states. This explains why left-hemisphere-dominant adults can present
+  with a heart attack as the first symptom of years of silent inflammation — they
+  did not feel the upstream signals.
+upstream_drivers:
+- functional-disconnection-syndrome
+downstream_effects:
+- reduced-interoception
+- delayed-symptom-recognition
+related_mechanisms: []
+linked_to_topics:
+- functional-disconnection-syndrome
+- retained-primitive-reflexes
+sources:
+- id: koppelman-childhood-brain-energy-blueprint-podcast-2026
+  location: Podcast — Right insula and interoception
+  quote: Our interoception, our ability to sense our own body map and plan and levels
+    of inflammation, hormones, lives in the right insula. If you are left-hemisphere
+    dominant and the right hemisphere is underdeveloped, you might not be able to
+    feel your own body very well — you might not feel temperature, might not feel
+    pain as directly.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

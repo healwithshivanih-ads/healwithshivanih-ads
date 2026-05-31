@@ -1,0 +1,25 @@
+slug: protein-needs-for-bone-exceed-rda
+statement: Older protein-causes-bone-loss claims have been superseded — current evidence
+  shows that protein intake above the RDA supports bone density and reduces fracture
+  risk. A useful target in bone-health populations is approximately 0.5 g of protein
+  per pound of body weight (≈1.1 g per kg) — meaningfully above the RDA — distributed
+  across meals. Quality matters — organic grass-fed and wild-caught animal sources
+  or carefully combined plant sources both work; what matters more is hitting the
+  daily total and digesting it (sufficient stomach acid, pancreatic enzymes).
+evidence_tier: strong
+linked_to_topics:
+- osteoporosis
+- mechanical-loading-bone-density
+sources:
+- id: bissinger-energy-blueprint-podcast-2026
+  location: Podcast — Protein for bone
+  quote: Years ago they felt these high-protein diets or too much protein is going
+    to cause calcium to be leached from the bone, but it's just the opposite. The
+    research now shows we need enough protein and we need more than the RDA. Take
+    your body weight divide by 0.5.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Useful anchor for clients (especially older women, vegetarians) who fear
+  protein intake; gives a concrete daily target.
