@@ -1,0 +1,47 @@
+slug: diaphragm-pelvic-floor-coupling
+display_name: Diaphragm-Pelvic Floor Mechanical Coupling
+aliases:
+- core piston model
+- diaphragm pelvic floor synergy
+category: structural
+summary: The respiratory diaphragm and the pelvic floor function as the roof and floor
+  of a single pressurised core cylinder. On inhalation, the diaphragm descends and
+  the pelvic floor relaxes downward (lengthens) to accommodate the rise in intra-abdominal
+  pressure. On exhalation, the diaphragm ascends and the pelvic floor lifts, expelling
+  air and gently massaging the pelvic organs. Healthy pelvic floor function therefore
+  DEPENDS on diaphragmatic breathing as its rhythmic input. Chronic chest breathing
+  (use of scalenes, sternocleidomastoid, and other secondary respiratory muscles)
+  deprives the pelvic floor of this synchronous cue, causing it to lose coordinated
+  activation patterns and drift toward either hypertonicity or hypotonicity. The clinical
+  consequence — pelvic-floor strengthening protocols (e.g. Kegels alone) often fail
+  because they target a muscle that has been deprived of its primary motor cue. The
+  intervention sequence is therefore breath first, posture second, direct pelvic-floor
+  work third. The somato-emotional dimension is encoded in the name of the main innervating
+  nerve — pudendal, from the Latin pudendus meaning "shameful" — reflecting how culturally
+  suppressed emotion and chronic stress lodge in this tissue.
+upstream_drivers:
+- chronic-stress
+- poor-posture
+- chest-breathing-pattern
+downstream_effects:
+- urinary-incontinence
+- dyspareunia
+- erectile-dysfunction
+- chronic-low-back-pain
+related_mechanisms:
+- hpa-axis-dysregulation
+- chronic-inflammation
+linked_to_topics:
+- pelvic-floor-dysfunction
+- breathwork-for-health
+sources:
+- id: danielson-energy-blueprint-podcast-2026
+  location: Podcast — diaphragm pelvic floor segment
+  quote: The pelvic floor as the floor of the core responds to the diaphragm. So if
+    we're not breathing the pelvic floor is going to start to become dysfunctional
+    because it relies on the diaphragm to give it cues.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

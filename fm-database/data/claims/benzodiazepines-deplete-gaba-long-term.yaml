@@ -1,0 +1,27 @@
+slug: benzodiazepines-deplete-gaba-long-term
+statement: Benzodiazepines, Z-drugs (zolpidem, eszopiclone), barbiturates, and alcohol
+  all bind tightly to the GABA-A receptor at allosteric sites and increase GABA binding
+  affinity. Chronic use produces receptor downregulation, tolerance, dependence, and
+  rebound GABA deficiency on cessation — driving the well-known withdrawal syndromes.
+  By contrast, plant-derived GABA-mimetics (cava, magnolia bark honokiol, CBD, CBG,
+  low-dose muscimol from Amanita muscaria) modulate the GABA system more gently and
+  carry lower (though not zero) tolerance risk. THC works in the OPPOSITE direction
+  at the GABA receptor and can paradoxically increase glutamate dominance, which is
+  why some users experience anxiety on cannabis.
+evidence_tier: strong
+linked_to_topics:
+- gaba-deficiency-sympathetic-dominance
+linked_to_mechanisms:
+- gaba-glutamate-balance
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — GABA receptor pharmacology segment
+  quote: Benzos and alcohol bind so tightly to the GABA receptor that they deplete
+    GABA very quickly and they make the GABA system remodel itself in a way that makes
+    it over the long term tolerance dependence and withdrawal.
+rationale: Critical for any client on chronic benzodiazepine or sleep meds — withdrawal
+  must be slow and clinician-supervised; coach can help identify the pattern.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

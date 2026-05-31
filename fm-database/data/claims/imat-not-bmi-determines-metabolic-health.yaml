@@ -1,0 +1,23 @@
+slug: imat-not-bmi-determines-metabolic-health
+statement: Intramuscular adipose tissue (IMAT), the fat infiltrated INTO skeletal
+  muscle tissue, is a stronger determinant of metabolic dysfunction, infertility (including
+  PCOS), and metabolic syndrome than BMI or even DEXA body-fat percentage. Lyon describes
+  the visual contrast as a fillet (lean, contractile, metabolically flexible muscle)
+  versus wagyu marbling (fat-infiltrated, contractile-impaired muscle). IMAT is not
+  routinely measured today but can be assessed by MRI and emerging ultrasound techniques.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- insulin-resistance
+sources:
+- id: lyon-energy-blueprint-podcast-2026
+  location: Podcast — PCOS and IMAT story
+  quote: It has nothing to do with body fat percentage. It has everything to do with
+    the fat that is infiltrated into the muscle. It's the IMAT the intramuscular adipose
+    tissue that determines if someone is going to struggle with fertility or not.
+rationale: Helps coach explain to women with PCOS or normal-BMI insulin resistance
+  why their labs look bad despite appearing slim ("thin outside fat inside" / TOFI).
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

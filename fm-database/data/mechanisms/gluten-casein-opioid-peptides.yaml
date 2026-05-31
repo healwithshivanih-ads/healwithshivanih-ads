@@ -1,0 +1,47 @@
+slug: gluten-casein-opioid-peptides
+display_name: Gluten and Casein Opioid Peptides (Exorphins)
+aliases:
+- exorphins
+- gliadorphin
+- casomorphin
+- food-derived opioid peptides
+category: neurological
+summary: Partial proteolysis of gluten (from wheat, barley, rye) yields gluteomorphins
+  (gliadorphins), and partial proteolysis of casein (from cow's milk, paneer, curd,
+  butter) yields beta-casomorphins. These short peptides have opioid-like activity
+  at mu-opioid receptors in the brain. In a healthy gut with intact mucosa, gluten
+  and casein are degraded to free amino acids before absorption; in dysfunctional
+  digestion (low dipeptidyl peptidase-IV activity, leaky gut, pancreatic insufficiency)
+  the intact opioid peptides can cross the intestinal barrier, evade DPP-IV degradation,
+  cross a permeable blood-brain barrier, and bind central opioid receptors. The proposed
+  clinical consequences include reduced focus and language, altered pain perception,
+  social withdrawal, food cravings and apparent food addiction (children gravitate
+  to dairy and bread, refusing other foods), and exacerbation of autistic and ADHD
+  symptoms. Clinical observation supporting the mechanism — children on strict GFCF
+  elimination frequently broaden their food repertoire dramatically within weeks once
+  the "addictive" foods are removed.
+upstream_drivers:
+- leaky-gut
+- dpp4-deficiency
+downstream_effects:
+- language-delay
+- food-addiction
+- poor-attention
+related_mechanisms:
+- leaky-gut
+- gaba-glutamate-balance
+linked_to_topics:
+- pediatric-neurodevelopmental-nutrition
+- autism-spectrum-disorder
+- adhd
+sources:
+- id: matthews-energy-blueprint-podcast-2026
+  location: Podcast — gluten-casein opioid segment
+  quote: Gluten and dairy can convert to opioid compounds when our digestion isn't
+    working well, fit in the opiate receptor and create all sorts of challenges with
+    language and focus and all sorts of things.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

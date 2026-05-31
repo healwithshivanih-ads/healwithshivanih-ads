@@ -1,0 +1,26 @@
+slug: leaky-gut-leaky-brain-gaba-test
+statement: Oral GABA does not normally cross an intact blood-brain barrier (it is
+  too large and polar). If a client feels a clear calming or sedating effect from
+  oral GABA supplementation, this is presumptive clinical evidence of blood-brain
+  barrier permeability, which commonly co-occurs with intestinal permeability (leaky
+  gut). Sherr uses this as a low-cost diagnostic — positive subjective response to
+  GABA supports prioritising gut healing (heal the gut, restore the BBB, and the underlying
+  GABA deficiency typically resolves with the parasympathetic restoration that follows).
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- gaba-deficiency-sympathetic-dominance
+linked_to_mechanisms:
+- leaky-gut
+- gaba-glutamate-balance
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — leaky gut leaky brain segment
+  quote: If you take GABA and you feel more relaxed it's almost diagnostic that that
+    barrier is not doing what it's supposed to do. And that correlates of course to
+    having a leaky gut as well.
+rationale: Useful pragmatic clinical heuristic when a client mentions they tried oral
+  GABA and felt calmer — flags gut-barrier work as priority.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: methylene-blue-dose-response-and-safety
+statement: Methylene blue has a non-linear dose-response curve. Low doses (4-16 mg
+  orally, up to ~1 mg/kg) act as a redox modulator, an alternative electron acceptor
+  at mitochondrial complex IV, and a mild antioxidant; this is the dose range used
+  clinically for energy support, cognitive enhancement, and hypoxia mitigation, and
+  has decades of safety data. Very high doses (used historically as an IV antidote
+  for methemoglobinemia and cyanide poisoning) can become pro-oxidant. Critical contraindications
+  — methylene blue is a potent monoamine oxidase inhibitor (MAOI) and is ABSOLUTELY
+  contraindicated with SSRIs, SNRIs, MAOIs, and other serotonergic agents due to risk
+  of serotonin syndrome. It is contraindicated in G6PD deficiency (hemolysis risk).
+  USP / pharmaceutical-grade only — aquarium-grade and laboratory-grade methylene
+  blue contain toxic contaminants and must NEVER be ingested. Universal side effect
+  at any dose — blue urine, often blue tongue.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- mitochondrial-health-nutrients
+- gaba-deficiency-sympathetic-dominance
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — methylene blue dose response segment
+  quote: Very low doses four milligrams 8 milligrams 16 up to even a milligram per
+    kilogram orally are very very safe. The dose response curve thing is probably
+    the most important. The naysayers are not looking at the dose response aspect.
+rationale: Coach must know contraindications cold before any client mentions methylene
+  blue self-experimentation. SSRI overlap is the catastrophic risk.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

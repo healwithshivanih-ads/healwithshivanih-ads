@@ -1,0 +1,47 @@
+slug: mitohormesis
+display_name: Mitohormesis
+aliases:
+- mitochondrial hormesis
+- adaptive mitochondrial stress
+category: metabolic
+summary: Mitohormesis is the phenomenon where a brief, sub-lethal stress to the mitochondrion
+  triggers adaptive responses that strengthen the cell beyond baseline — analogous
+  to how resistance training stresses muscle to produce hypertrophy. Mechanism — transient
+  mitochondrial reactive oxygen species (ROS) or related stress signals activate redox-sensitive
+  transcription factors (Nrf2, NF-kB, PGC-1alpha), upregulating endogenous antioxidant
+  machinery (catalase, superoxide dismutase, glutathione peroxidase), DNA repair,
+  mitochondrial biogenesis, and autophagy. Classic mitohormetic inputs include exercise,
+  cold exposure, heat exposure (sauna), fasting, intermittent hypoxia, polyphenols,
+  and — per growing evidence — molecular hydrogen. The paradox dissolved by mitohormesis
+  is why blunting exercise-induced ROS with high-dose antioxidant supplementation
+  (vitamin C, vitamin E) actually impairs adaptation and lifespan benefit — the stress
+  signal is the message. Therapeutically, this reframes the goal not as "more antioxidants"
+  but as protecting and stimulating the body's own adaptive capacity.
+upstream_drivers:
+- exercise
+- cold-exposure
+- intermittent-fasting
+downstream_effects:
+- mitochondrial-biogenesis
+- improved-insulin-sensitivity
+- enhanced-stress-resilience
+related_mechanisms:
+- mitochondrial-biogenesis
+- mitochondrial-dysfunction
+- cell-danger-response-mitochondrial
+linked_to_topics:
+- molecular-hydrogen-therapy
+- exercise-mitochondrial-biogenesis
+- oxidative-stress
+sources:
+- id: tarnava-energy-blueprint-podcast-2026
+  location: Podcast — H2 as adaptive stressor segment
+  quote: Hydrogen is an adaptive stressor. It's basically kind of like exercise for
+    our mitochondria. Something called a mitohormetic factor. So it stresses out the
+    cell for a very short amount of time. Our mitochondria gets stronger it produces
+    more mitochondria.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

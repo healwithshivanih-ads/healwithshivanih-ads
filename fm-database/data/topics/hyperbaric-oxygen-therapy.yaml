@@ -1,0 +1,52 @@
+slug: hyperbaric-oxygen-therapy
+display_name: Hyperbaric Oxygen Therapy (HBOT)
+aliases:
+- hbot
+- hyperbaric therapy
+- pressurised oxygen therapy
+summary: Hyperbaric oxygen therapy (HBOT) delivers 100 percent oxygen (or pressurised
+  ambient air in soft chambers) at increased atmospheric pressure inside a sealed
+  chamber. By Henry's Law, pressurised oxygen dissolves into blood plasma in addition
+  to red-blood-cell-bound oxygen — at 3.0 ATA, plasma alone can carry enough oxygen
+  to meet basal needs without any hemoglobin, the basis of historic emergency use
+  in Jehovah's Witness trauma cases. At therapeutic pressures (1.3 ATA soft chambers
+  up to 2.0-2.4 ATA hard chambers), tissue oxygen diffusion depth increases ~4-fold
+  and capillary diameter contracts (a vasoconstrictive effect that paradoxically increases
+  net oxygen delivery and limits exudate from injured vessels). The acute stimulus
+  is mitohormetic — a controlled oxidative pulse that upregulates Nrf2-driven endogenous
+  antioxidants, mitochondrial biogenesis, stem cell mobilisation from bone marrow,
+  and angiogenesis. Chronic protocols (60-90 minute sessions, Mon-Fri, 20-60 sessions)
+  drive epigenetic remodelling — new blood vessel growth in brain, heart, and even
+  penile tissue (Shai Efrati's Tel Aviv reverse-aging programme has a 20,000-person
+  waiting list). FDA-approved insurance-covered indications — diabetic foot ulcer,
+  radiation tissue injury, chronic osteomyelitis, sudden sensorineural hearing loss,
+  carbon monoxide poisoning, traumatic crush injury. Investigational but well-supported
+  — TBI / post-concussive syndrome, stroke recovery, complex regional pain syndrome,
+  autoimmune flares, MS, cognitive enhancement, athletic recovery. Critical contraindication
+  — chronic Lyme, ME/CFS, and oxidative-stress-overwhelmed clients herx severely at
+  deep pressures and need very slow titration starting at 1.3-1.5 ATA; soft chambers
+  are inadequate for infection clearance but useful for cognitive and post-exercise
+  applications.
+key_mechanisms:
+- mitohormesis
+- henrys-law-oxygen-dissolution
+- angiogenesis
+common_symptoms:
+- fatigue
+- brain-fog
+- chronic-pain
+related_topics:
+- extrapineal-melatonin-and-mitochondria
+- molecular-hydrogen-therapy
+- oxidative-stress
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — full episode
+  quote: You can saturate enough oxygen into plasma that you don't actually need red
+    blood cells to carry oxygen. 1.3 atmospheres which is about 20 feet of sea equivalent
+    is going to increase the amount of oxygen in circulation by 46 percent.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

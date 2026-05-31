@@ -1,0 +1,48 @@
+slug: molecular-hydrogen-therapy
+display_name: Molecular Hydrogen Therapy
+aliases:
+- h2 therapy
+- hydrogen water
+- hydrogen gas
+- h2 tablets
+summary: Molecular hydrogen (H2) is the smallest neutral molecule, with selective
+  biological activity discovered over the last two decades. Endogenously, gut bacteria
+  ferment dietary fiber to produce H2, which is absorbed into portal circulation and
+  distributed systemically; modern average fiber intake (~14 g/day) is approximately
+  one-seventh the paleolithic norm (~100 g/day), and gut dysbiosis in middle-aged
+  and overweight adults further suppresses H2 production (60-80 percent of such individuals
+  produce no H2 even after a fiber challenge per hydrogen breath testing). Exogenous
+  H2 is delivered most efficiently dissolved in water (drinking concentrates H2 in
+  gut, liver, and systemic tissues) or by inhalation (better lung delivery, ~100x
+  dose needed for equivalent systemic effect). H2 is not a direct antioxidant in the
+  classical sense — it is a mitohormetic adaptive stressor that regulates production
+  of endogenous antioxidants (Nrf2 pathway) AND beneficial pro-oxidants (H2O2, nitric
+  oxide), restoring redox homeostasis without causing reductive stress. 170+ clinical
+  trials show benefits across metabolic syndrome (reversal), NAFLD, weight loss, brain
+  metabolism in elderly (improved DNA methylation, lengthened telomeres, doubled TET2
+  protein, improved sit-to-stand function), exercise performance and recovery, and
+  reduced delayed-onset muscle soreness. Practical use — 1-2 tablets dissolved in
+  500 mL room-temperature water, chugged within seconds of full dissolution, on an
+  empty stomach, ideally morning or 10 minutes pre-exercise.
+key_mechanisms:
+- mitohormesis
+- redox-homeostasis-regulation
+- mitochondrial-biogenesis
+common_symptoms:
+- fatigue
+- brain-fog
+related_topics:
+- mitochondrial-health-nutrients
+- oxidative-stress
+- exercise-mitochondrial-biogenesis
+sources:
+- id: tarnava-energy-blueprint-podcast-2026
+  location: Podcast — full episode
+  quote: Hydrogen is an adaptive stressor similar to exercise cold exposure fasting
+    heat exposure. It regulates our production of antioxidants and also beneficial
+    pro-oxidative and nitrogen stressors. This leads to redox homeostasis.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

@@ -1,0 +1,24 @@
+slug: melatonin-no-negative-feedback-loop
+statement: Unlike testosterone, cortisol, thyroid hormone, or estrogen, exogenous
+  melatonin supplementation has NOT been shown to suppress endogenous pineal melatonin
+  production. Pineal melatonin synthesis is light-driven via the retinohypothalamic
+  tract and resets each day with darkness onset; it does not adjust output based on
+  circulating melatonin concentration. Clients can take high-dose melatonin chronically
+  and stop without endogenous-production suppression — though some report transient
+  sleep disturbance on cessation that likely reflects re-equilibration of secondary
+  systems rather than melatonin-axis suppression per se. This eliminates one common
+  objection to high-dose melatonin protocols.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- extrapineal-melatonin-and-mitochondria
+sources:
+- id: lurance-energy-blueprint-podcast-2026
+  location: Podcast — negative feedback segment
+  quote: There is no negative feedback loop. So we'll produce just as much melatonin.
+    If you take large amounts for extended periods of time you could stop and just
+    the very next day.
+rationale: Disarms the "I'll become dependent" objection coach hears from clients.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

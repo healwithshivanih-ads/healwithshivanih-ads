@@ -1,0 +1,42 @@
+slug: henrys-law-oxygen-dissolution
+display_name: Henry's Law Oxygen Dissolution in HBOT
+aliases:
+- oxygen plasma saturation
+- hyperbaric oxygen physics
+category: metabolic
+summary: Henry's Law states that at equilibrium, the amount of a gas dissolved in
+  a liquid is proportional to the partial pressure of that gas above the liquid. In
+  hyperbaric oxygen therapy, breathing 100 percent oxygen at increased atmospheric
+  pressure forces dramatically more oxygen into solution in blood plasma — at 1 ATA
+  with 21 percent O2, plasma carries ~0.3 mL O2 per 100 mL plasma; at 2.5 ATA with
+  100 percent O2, plasma carries ~6 mL O2 per 100 mL (a roughly 20-fold increase).
+  Tissue oxygen diffusion depth from a capillary increases ~4-fold under these conditions,
+  allowing oxygen to reach hypoxic regions where normal perfusion has failed (diabetic
+  foot, radiation-damaged tissue, post-stroke penumbra, traumatic crush injury margins).
+  The vasoconstriction that accompanies hyperoxia paradoxically improves the oxygen
+  delivery profile by reducing fluid leak from damaged vessels while plasma-dissolved
+  oxygen still diffuses freely. The acute stimulus is also a controlled oxidative
+  pulse, triggering downstream mitohormetic adaptations.
+upstream_drivers:
+- hyperbaric-pressure
+- high-fio2
+downstream_effects:
+- increased-tissue-oxygen-delivery
+- mitohormesis
+- angiogenesis
+related_mechanisms:
+- mitohormesis
+- mitochondrial-energy-production
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — physics of HBOT segment
+  quote: The more oxygen you put under pressure or the more gas you put under the
+    pressure more pressure is going to exert an effect on the blood vessels to allow
+    that gas to go into liquid form.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

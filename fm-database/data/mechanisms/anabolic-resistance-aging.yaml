@@ -1,0 +1,44 @@
+slug: anabolic-resistance-aging
+display_name: Anabolic Resistance with Aging
+aliases:
+- anabolic resistance
+- blunted muscle protein synthesis
+- reduced amino acid sensing
+category: metabolic
+summary: Anabolic resistance is the age-related decline in skeletal muscle sensitivity
+  to amino acid and resistance-training stimuli. Younger muscle responds robustly
+  to ~20 g of high-quality protein per meal; aging muscle requires substantially more
+  (often 30-50 g) to achieve the same muscle protein synthesis response. The mechanism
+  involves blunted mTORC1 activation in response to leucine, reduced postprandial
+  amino acid delivery, and lower basal turnover. Practically, this inverts a common
+  assumption — the OLDER and MORE SEDENTARY a person is, the MORE protein they need
+  per meal, not less. Lyon's protein-decision algorithm orders inputs as (1) age,
+  (2) physical activity, (3) metabolic health, (4) personal preference. The condition
+  is overcome with adequate per-meal protein boluses, leucine threshold (2.5-3 g per
+  meal), and resistance training.
+upstream_drivers:
+- chronic-inflammation
+- mitochondrial-dysfunction
+- insulin-resistance
+downstream_effects:
+- sarcopenia
+- frailty
+- osteoporosis
+related_mechanisms:
+- mitochondrial-dysfunction
+- mitochondrial-biogenesis
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- protein-adequacy-vegetarian
+- strength-training
+sources:
+- id: lyon-energy-blueprint-podcast-2026
+  location: Podcast — anabolic resistance segment toward close
+  quote: Anabolic resistance is when the body is less efficient at sensing these amino
+    acids. The older you are the more protein you need. The more sedentary you are
+    the more protein you need.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

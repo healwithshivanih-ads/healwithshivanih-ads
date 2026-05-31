@@ -1,0 +1,52 @@
+slug: pediatric-neurodevelopmental-nutrition
+display_name: Pediatric Neurodevelopmental Nutrition
+aliases:
+- autism nutrition
+- adhd diet
+- therapeutic diets for kids
+- neurodevelopmental diet therapy
+summary: A functional nutrition approach to children with autism spectrum disorder,
+  ADHD, anxiety, sensory processing differences, and other neurodevelopmental conditions.
+  Targets common physiologic substrates — gut microbiome dysbiosis, intestinal hyperpermeability
+  with gluten/casein opioid peptide formation, mitochondrial dysfunction, sulfation
+  pathway deficits (low sulfate / impaired sulfation in roughly the majority of autistic
+  children), and inflammation. Matthews's 13-diet survey (n=800 families, published
+  2024) shows therapeutic diets significantly outperform both psychiatric/seizure
+  medications and neutraceuticals for overall benefit while producing fewer adverse
+  effects. Top-evidence diets — gluten-free casein-free (GFCF), low-salicylate (Feingold)
+  diet, ketogenic (for seizures and some mitochondrial presentations), low-FODMAP,
+  low-oxalate, low-amine/histamine. Symptom-cluster matching (Feingold/low-salicylate
+  for hyperactivity, irritability, aggression; ketogenic for seizures; GFCF for language,
+  focus, GI). Staged approach starts with removing artificial additives + sugar, adding
+  nutrient density, then layering more restrictive therapeutic diets only if symptoms
+  warrant, and finally evolves the diet back to widest sustainable variety once the
+  gut/microbiome heals. The gluten-casein opioid hypothesis — exorphin peptides from
+  partial protein breakdown bind brain opioid receptors and explain both food addiction
+  patterns and symptomatic improvement on elimination.
+key_mechanisms:
+- gluten-casein-opioid-peptides
+- leaky-gut
+- mitochondrial-dysfunction
+- chronic-inflammation
+common_symptoms:
+- hyperactivity
+- brain-fog
+- irritability
+- bloating
+related_topics:
+- adhd
+- autism-spectrum-disorder
+- leaky-gut
+- gaba-deficiency-sympathetic-dominance
+sources:
+- id: matthews-energy-blueprint-podcast-2026
+  location: Podcast — full episode
+  quote: A gluten-free dairy-free diet that had a multivitamin essential fatty acids
+    and several other things significantly improved the individuals — they had sevenfold
+    improvement in non-verbal IQ, four and a half times the developmental age improvement,
+    improvements in symptoms digestive cognitive language all sorts of things.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

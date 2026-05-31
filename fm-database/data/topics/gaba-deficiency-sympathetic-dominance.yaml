@@ -1,0 +1,47 @@
+slug: gaba-deficiency-sympathetic-dominance
+display_name: GABA Deficiency and Sympathetic Dominance
+aliases:
+- gaba deficiency
+- low gaba
+- chronic sympathetic state
+- sensory gating dysfunction
+summary: 'GABA (gamma-aminobutyric acid) is the brain''s primary inhibitory neurotransmitter
+  and balances glutamate, the primary excitatory neurotransmitter. Together GABA and
+  glutamate account for roughly 80 percent of brain neurotransmission. Chronic sympathetic-dominant
+  lifestyles — hustle culture, sleep restriction, screen-saturated days, unresolved
+  childhood stress — keep cortisol and norepinephrine chronically elevated, deplete
+  GABA, and create a state Sherr calls clinically diagnostic GABA deficiency. Symptoms:
+  racing thoughts (average human has 70,000 thoughts/day, more if anxious), inability
+  to fall or stay asleep, anxiety, depression frequently misdiagnosed as serotonin
+  deficiency, irritability, headaches, and feeling overwhelmed by sensory input (failed
+  sensory gating). The brain converts glutamine to glutamate to GABA, requiring vitamin
+  B6 and magnesium as cofactors. Leaky gut commonly co-presents with leaky blood-brain
+  barrier, and an unusual clinical clue is that oral GABA supplementation produces
+  a felt calming effect — normally GABA is too large to cross an intact BBB, so a
+  positive response is almost diagnostic of barrier permeability. Family history of
+  alcoholism is a risk marker (alcohol binds the GABA-A receptor and self-medicates
+  GABA deficiency).'
+key_mechanisms:
+- gaba-glutamate-balance
+- hpa-axis-dysregulation
+- leaky-gut
+common_symptoms:
+- anxiety
+- brain-fog
+- fatigue
+related_topics:
+- chronic-stress
+- stress-and-the-sympathetic-nervous-system
+- mindful-breathing
+- breathwork-for-health
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — GABA segment
+  quote: People are walking around being GABA deficient and they don't know it and
+    they'll go to their doctor complaining of anxiety insomnia depression but really
+    they are GABA deficient actually instead.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

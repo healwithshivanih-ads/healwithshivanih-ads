@@ -1,0 +1,27 @@
+slug: h2-tablets-delivery-protocol
+statement: Magnesium-based H2 tablets release H2 gas as quasi-dissolved nano-bubbles
+  (10-30 nm) — far smaller than the 5 micron threshold at which bubbles dissipate
+  out of solution. Practical delivery — drop 1-2 tablets into 500 mL (about 17 oz)
+  of room-temperature water in an open glass, allow full dissolution (typically 60-90
+  seconds at room temp), then drink the entire volume immediately. Cold water slows
+  dissolution kinetics, giving more time for nano-bubbles to coalesce past 5 microns
+  and escape, reducing delivered dose. Take on an empty stomach (at least 2-3 hours
+  after a fiber-rich meal, since fiber can trap H2 in foams in the gut, slowing systemic
+  absorption). Best times — first thing in the morning, 10 minutes pre-exercise, or
+  mid-afternoon slump. Inhaled H2 requires ~100x the dose for equivalent systemic
+  tissue concentration.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- molecular-hydrogen-therapy
+sources:
+- id: tarnava-energy-blueprint-podcast-2026
+  location: Podcast — practical dosing segment
+  quote: Room temperature and chug it down. Chug it as soon as that tablet finishes
+    dissolving. You need a sufficient amount of water to give enough space for all
+    those bubbles. I recommend 500 milliliters.
+rationale: Coach guidance for any client who buys an H2 product — most users get suboptimal
+  results from cold water and slow sipping.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

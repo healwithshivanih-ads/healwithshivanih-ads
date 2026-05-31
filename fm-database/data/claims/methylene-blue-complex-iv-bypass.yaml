@@ -1,0 +1,31 @@
+slug: methylene-blue-complex-iv-bypass
+statement: Methylene blue concentrates in mitochondria and acts as an alternative
+  electron carrier — it can accept electrons from NADH and donate them downstream,
+  bypassing blocked or dysfunctional complexes in the electron transport chain (especially
+  complex IV) and supporting ATP production even when oxygen delivery is compromised
+  or upstream complexes are sluggish. This is the mechanism invoked for benefit in
+  hypoxia (airplane travel, altitude), cyanide poisoning (FDA-approved indication
+  for IV methylene blue, alongside methemoglobinemia), and mitochondrial dysfunction
+  states such as chronic fatigue syndrome and neurodegenerative disease. Synergy with
+  red light at 660-680 nm wavelength (the methylene blue absorption peak) appears
+  in Francisco Gonzalez-Lima's University of Texas Austin research, showing benefit
+  in animal Alzheimer's models.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- mitochondrial-energy-production
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — methylene blue mechanism segment
+  quote: Cyanide destroys complex 4 and prevents it from working but methylene blue
+    can bypass and compensate for that allowing you to make some energy even if you
+    don't have complex 4. It concentrates in your mitochondria and that's where it
+    does all of its redox.
+rationale: Coach should understand the mechanism; relevant when clients with fatigue
+  states ask about it.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

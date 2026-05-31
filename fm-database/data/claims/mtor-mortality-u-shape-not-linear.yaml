@@ -1,0 +1,26 @@
+slug: mtor-mortality-u-shape-not-linear
+statement: The popular claim that dietary protein causes cancer via mTOR activation
+  is unsupported. mTOR is a central signaling kinase activated by amino acids, resistance
+  training, growth hormone, and insulin; it is required for muscle protein synthesis
+  and tissue repair, not a cancer initiator. The relationship between mTOR signaling
+  and all-cause mortality follows a U-shaped curve — both very high and very low mTOR
+  activity associate with elevated mortality. By the same reductive logic that "protein
+  causes cancer via mTOR", resistance training would also cause cancer, which is contradicted
+  by every longevity dataset.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- protein-adequacy-vegetarian
+sources:
+- id: lyon-energy-blueprint-podcast-2026
+  location: Podcast — mTOR and cancer myth segment
+  quote: mTOR is not an initiator of cancer. It's a protein complex. The mechanism
+    is the same, the input is different but the mechanism is the same. So that protein
+    causes cancer because of mTOR is the same way of saying exercise causes cancer
+    because of mTOR in muscle.
+rationale: Disarms a common client objection ("won't more protein give me cancer?");
+  coach can reframe with confidence.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

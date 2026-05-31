@@ -1,0 +1,26 @@
+slug: lactobacillus-bifidobacterium-produce-gut-gaba
+statement: Specific gut bacteria — particularly Lactobacillus and Bifidobacterium
+  species — synthesise GABA in the gut lumen. This luminal GABA does not enter the
+  systemic circulation in usable quantity but signals to the brain indirectly via
+  vagal acetylcholine release, contributing to central GABAergic tone. The mechanism
+  partially explains why probiotic supplementation and fermented foods (curd, kimchi,
+  sauerkraut, fermented dosa batter) can produce calming and anxiolytic effects in
+  some clients, and why dysbiosis correlates with anxiety and sleep disturbance.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- gaba-deficiency-sympathetic-dominance
+linked_to_mechanisms:
+- gaba-glutamate-balance
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — gut-brain GABA signalling segment
+  quote: In the gut you have certain bacteria like lactobacillus and bifidobacterium
+    specifically that make GABA in the gut and that causes vagal signaling via acetylcholine
+    that causes signaling cascades in the brain that help with the conversion of glutamate
+    to GABA.
+rationale: Coach can frame fermented foods + probiotic strategy as part of GABA-restoration
+  in anxious clients.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

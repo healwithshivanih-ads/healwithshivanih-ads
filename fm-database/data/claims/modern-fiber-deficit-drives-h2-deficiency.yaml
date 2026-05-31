@@ -1,0 +1,29 @@
+slug: modern-fiber-deficit-drives-h2-deficiency
+statement: Endogenous molecular hydrogen production depends on colonic fermentation
+  of dietary fiber by H2-producing bacteria (clostridia, ruminococci, bacteroides).
+  Paleolithic humans likely consumed 100+ grams of fiber daily; modern average intake
+  is approximately 14 g/day, a roughly 7-fold deficit. Compounding this, hydrogen
+  breath testing shows 60-80 percent of middle-aged or overweight adults produce NO
+  measurable H2 even when challenged with lactulose, because gut dysbiosis has displaced
+  the hydrogenogenic species (often in favour of methanogens). The deficit can be
+  partially addressed by gradual fiber restoration (must be very gradual — Tarnava
+  reports 2-3 months of GI symptoms when ramping from 15 to 70 g/day) and probiotic
+  strategies, but exogenous H2 supplementation may be the more accessible intervention
+  for dysbiotic clients.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- molecular-hydrogen-therapy
+linked_to_mechanisms:
+- microbial-diversity-decline
+sources:
+- id: tarnava-energy-blueprint-podcast-2026
+  location: Podcast — evolutionary context segment
+  quote: Throughout all of human evolution we would have consumed well over 100 gram
+    of fiber per day. Today the average person gets 14 grams of fiber a day. Upwards
+    between 60 to 80% of people produce no hydrogen gas at all.
+rationale: Reframes fiber adequacy as not just regularity but as metabolic substrate;
+  supports coach's gradual-fiber-progression rule.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

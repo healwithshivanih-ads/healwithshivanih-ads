@@ -1,0 +1,46 @@
+slug: sarcopenia-skeletal-muscle-loss
+display_name: Sarcopenia and Skeletal Muscle Loss
+aliases:
+- sarcopenia
+- muscle wasting
+- age-related muscle loss
+- undermuscled
+summary: Sarcopenia is the progressive loss of skeletal muscle mass and strength,
+  typically 3-8 percent per decade after age 30 and accelerating after age 60. Functionally
+  it manifests as slower gait, frailty, falls, and difficulty with normal activities
+  (lifting bags, standing from a chair). Lyon reframes the obesity epidemic as fundamentally
+  an undermuscling epidemic — skeletal muscle is the organ of longevity, the largest
+  endocrine organ, the primary site of glucose disposal, and the dominant driver of
+  resting fatty-acid oxidation. Sarcopenia and obesity are two sides of the same coin
+  (sarcopenic obesity); fat infiltrating muscle tissue (intramuscular adipose tissue
+  or IMAT) is the metabolically relevant marker, not BMI or DEXA body-fat percentage.
+  Sarcopenia raises all-cause mortality, fracture risk, infertility (PCOS via IMAT),
+  erectile dysfunction, and dementia risk. It is preventable and reversible at any
+  age through resistance training and adequate protein (1.2-1.6 g/kg/day high-quality
+  protein, 30-50 g per meal). GLP-1 agonists accelerate sarcopenia (50 percent of
+  weight loss can be muscle) unless paired with resistance training and high protein
+  intake.
+key_mechanisms:
+- anabolic-resistance-aging
+- mitochondrial-dysfunction
+- chronic-inflammation
+common_symptoms:
+- fatigue
+- weakness
+- weight-gain
+related_topics:
+- strength-training
+- protein-adequacy-vegetarian
+- insulin-resistance
+- exercise-mitochondrial-biogenesis
+sources:
+- id: lyon-energy-blueprint-podcast-2026
+  location: Podcast — opening framing and IMAT segment
+  quote: The majority of people do not have enough healthy skeletal muscle and that
+    is the ultimate problem. It has everything to do with the fat that is infiltrated
+    into the muscle. Sarcopenia is decreased muscle mass and strength.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

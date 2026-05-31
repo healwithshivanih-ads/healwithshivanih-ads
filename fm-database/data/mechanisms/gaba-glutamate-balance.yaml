@@ -1,0 +1,48 @@
+slug: gaba-glutamate-balance
+display_name: GABA-Glutamate Balance
+aliases:
+- excitatory inhibitory balance
+- gaba glutamate axis
+category: neurological
+summary: Brain neurotransmission is dominated by two amino acid neurotransmitters
+  in dynamic balance — glutamate (primary excitatory, ~40 percent of synapses) and
+  GABA (primary inhibitory, ~40 percent). They share a common precursor — glutamine,
+  derived from the gut and also the primary fuel of enterocytes. In the brain, glutamine
+  is converted to glutamate, then to GABA by glutamic acid decarboxylase (GAD), an
+  enzyme requiring vitamin B6 (pyridoxal-5-phosphate) and inhibited by inflammation.
+  Chronic sympathetic activation, inflammation, magnesium or B6 deficiency, gut barrier
+  compromise, and gut dysbiosis all shift the equilibrium toward glutamate excess
+  and functional GABA deficiency. Acute glutamate overload (MSG-laden meal, head injury,
+  certain seizure states) produces the classic syndrome of headache, irritability,
+  insomnia, and feeling wired-but-tired. Lactobacillus and Bifidobacterium species
+  produce GABA in the gut, which does not cross the blood-brain barrier directly but
+  signals to the brain via vagal acetylcholine release. Treatment targets — heal the
+  gut, restore cofactors, reduce sympathetic drive, supplement GABA-mimetics that
+  cross the BBB.
+upstream_drivers:
+- hpa-axis-dysregulation
+- leaky-gut
+- chronic-inflammation
+- cortisol-elevation
+downstream_effects:
+- anxiety
+- insomnia
+- depression
+related_mechanisms:
+- hpa-axis-dysregulation
+- leaky-gut
+- mitochondrial-dysfunction
+linked_to_topics:
+- gaba-deficiency-sympathetic-dominance
+- chronic-stress
+sources:
+- id: sherr-energy-blueprint-podcast-2026-methylene-blue
+  location: Podcast — GABA biochemistry segment
+  quote: Glutamate is converted into GABA in the brain. You need the cofactors vitamin
+    B6 and magnesium to do that. Glutamate is the most between glutamate and GABA
+    80% of your brain's neurotransmission actually altogether.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

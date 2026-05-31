@@ -1,0 +1,27 @@
+slug: hbot-chronic-illness-cumulative-protocol
+statement: Therapeutic HBOT for chronic conditions (TBI, post-stroke, chronic Lyme,
+  ME/CFS, autoimmune flares) requires CUMULATIVE epigenetic dosing — 60-90 minute
+  sessions, Monday through Friday, with weekends off, for 20-60 sessions total (some
+  protocols extend to 80). Acute injury protocols can show benefit at as few as 3-5
+  sessions. The mechanism is gene-expression remodelling — repeated oxidative pulses
+  upregulate HIF-1alpha, VEGF, BDNF, stem-cell mobilisation, and the Nrf2 antioxidant
+  cascade, requiring multiple stimuli to embed adaptive changes. Single sessions,
+  or sessions spread weeks apart, fail to produce these adaptations. Clients evaluating
+  HBOT must understand both the time commitment (often 2-3 months Monday-Friday) and
+  the out-of-pocket cost for the investigational indications.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+linked_to_mechanisms:
+- mitohormesis
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — protocol design segment
+  quote: 60 to 90 minutes per treatment that's done Monday through Friday with the
+    weekends off. If it's more of a chronic issue then we're talking 20-40 sometimes
+    as many as 60 or 80 treatments.
+rationale: Sets realistic expectations for clients considering an HBOT program.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

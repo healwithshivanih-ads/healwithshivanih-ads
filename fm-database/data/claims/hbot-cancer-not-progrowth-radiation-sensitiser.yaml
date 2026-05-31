@@ -1,0 +1,28 @@
+slug: hbot-cancer-not-progrowth-radiation-sensitiser
+statement: Multiple systematic reviews show no evidence that hyperbaric oxygen therapy
+  promotes cancer growth (a common concern given HBOT-induced angiogenesis); some
+  data suggest mildly regressive effects in glioblastoma and breast cancer, possibly
+  because pathologic tumour neovasculature responds differently to oxygen than normal
+  injury-induced angiogenesis. HBOT is clinically useful in oncology as an ADJUVANT
+  — it sensitises tumours to radiation therapy (radiation requires oxygen to generate
+  the DNA-damaging free radicals that kill cancer cells, and hyperoxygenated tissue
+  treated immediately after HBOT shows enhanced radiation response, the basis of "radiosensitising"
+  protocols), enhances chemotherapy efficacy in some regimens, and accelerates surgical
+  recovery. HBOT is the standard of care for radiation tissue injury (cystitis, proctitis,
+  osteoradionecrosis) AFTER cancer treatment. It is NOT a primary cancer therapy and
+  should never be marketed as such.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — cancer segment
+  quote: There's no indication at all that hyperbaric therapy has any progressive
+    effect on cancer. We know that it helps chemotherapeutic sensitivity and it helps
+    with radiation sensitivity as well.
+rationale: Addresses oncology-anxious clients; coach can frame HBOT as recovery-supportive,
+  not primary treatment.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

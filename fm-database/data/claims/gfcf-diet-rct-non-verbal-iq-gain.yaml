@@ -1,0 +1,26 @@
+slug: gfcf-diet-rct-non-verbal-iq-gain
+statement: In a published randomised controlled trial referenced by Matthews, a gluten-free
+  casein-free (GFCF) diet plus multivitamin and essential fatty acids in children
+  with autism produced a sevenfold improvement in non-verbal IQ scores and a 4.5-fold
+  gain in developmental age compared with the comparison group, along with broad improvement
+  in digestive, cognitive, and language symptoms. The 2024 survey paper (n=800 families
+  across 13 therapeutic diets) found GFCF to be the most consistently beneficial diet
+  with high adherence.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- pediatric-neurodevelopmental-nutrition
+- autism-spectrum-disorder
+linked_to_mechanisms:
+- gluten-casein-opioid-peptides
+sources:
+- id: matthews-energy-blueprint-podcast-2026
+  location: Podcast — closing research summary
+  quote: A gluten-free dairy free diet that had a multivitamin essential fatty acids
+    significantly improved the individuals — sevenfold improvement in non-verbal IQ,
+    four and a half times the developmental age improvement.
+rationale: Anchors the GFCF recommendation in published data when coach is asked "is
+  there evidence for this?"
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

@@ -1,0 +1,52 @@
+slug: epigenetic-gene-expression
+display_name: Epigenetic Gene Expression
+aliases:
+- epigenome
+- dna methylation
+- histone modification
+- gene expression regulation
+category: signaling
+summary: Every cell in a human body shares the same genome (the recipe book — all
+  the DNA inherited from the original zygote), yet expresses radically different structure
+  and function depending on cell type and environmental context. This is mediated
+  by the epigenome — a regulatory layer of DNA methylation, histone acetylation/methylation,
+  non-coding RNAs, and chromatin remodelling that determines which genes are accessible
+  for transcription at a given moment. The epigenome acts as the "master chef" choosing
+  which recipe pages from the genome to cook at the kitchen (ribosome). Critically,
+  the epigenome is not fixed at conception — it is continuously rewritten by environmental
+  inputs across the lifespan, including diet (methyl donors B12, folate, betaine,
+  choline; polyphenols), exercise (PGC-1alpha and Nrf2 cascades), sleep (melatonin-driven
+  repair), stress (cortisol-driven histone modifications), toxin exposure (epigenetic
+  perturbation by heavy metals, glyphosate, PAHs), and social experience (loneliness
+  produces measurable methylation shifts). This is why interventions at the lifestyle
+  level can shift disease trajectory even when the underlying DNA sequence is unchanged
+  — and why the "bad genes" framing of chronic disease is misleading for the 98 percent
+  of illnesses that are NOT true monogenic disorders.
+upstream_drivers:
+- diet-quality
+- physical-activity
+- sleep-quality
+- stress-load
+- toxin-exposure
+- social-connection
+downstream_effects:
+- cellular-structure-and-function
+- mitochondrial-biogenesis
+- inflammation-modulation
+related_mechanisms:
+- mitohormesis
+- methylation-cycle
+- chronic-inflammation
+linked_to_topics:
+- lifestyle-epigenetic-mismatch-paradigm
+sources:
+- id: chestnut-energy-blueprint-podcast-2026
+  location: Podcast — epigenome master chef segment
+  quote: The genes you possess determine that you can only express human structure
+    and function. But whether or not you're expressing healthy or sick is based on
+    which particular genes you're expressing. That's controlled by the epigenome.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

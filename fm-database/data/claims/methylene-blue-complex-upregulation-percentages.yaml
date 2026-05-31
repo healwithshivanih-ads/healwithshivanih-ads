@@ -1,0 +1,25 @@
+slug: methylene-blue-complex-upregulation-percentages
+statement: Methylene blue upregulates mitochondrial respiratory complexes I, II, and
+  III by approximately 110 percent, but complex IV (cytochrome c oxidase) by only
+  approximately 70 percent — creating a residual bottleneck at the final step. Red
+  light at 660 nm directly stimulates cytochrome c, addressing this bottleneck and
+  completing the synergistic effect. This is the mechanistic reason combining methylene
+  blue with 660 nm red light therapy outperforms either alone, especially for cognitive
+  enhancement, neurodegenerative disease support, and post-exertion fatigue recovery.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- extrapineal-melatonin-and-mitochondria
+- molecular-hydrogen-therapy
+linked_to_mechanisms:
+- mitochondrial-energy-production
+sources:
+- id: lurance-energy-blueprint-podcast-2026
+  location: Podcast — methylene blue + red light segment
+  quote: Methylene blue upregulates the first second and third by 110% yet it only
+    upregulates the fourth by 70%. That fourth complex is called the cytochrome C.
+    So when you add light it supports that last protein.
+rationale: Mechanistic anchor for the methylene-blue + red-light combination protocol.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: methylene-blue-ssri-warning-revised
+statement: The FDA black-box warning against combining methylene blue with SSRIs derives
+  from five cases of serotonin syndrome occurring specifically during parathyroidectomy
+  surgery using very high IV methylene blue doses (1000-2000+ mg) intraoperatively
+  for tissue staining. Mayo Clinic and Canadian health authorities have since narrowed
+  the warning to that surgical scenario; oral doses in the standard outpatient range
+  (0.5-4 mg/kg) have not produced serotonin syndrome cases in published literature.
+  However, the contraindication remains conservatively listed by the FDA and prescribers
+  — coach should always defer to the client's psychiatrist or prescriber, and any
+  client on serotonergic medication considering methylene blue MUST have clinician
+  oversight before starting. Practical implication — many depressed clients on SSRIs
+  are excluded from a potentially beneficial intervention on the basis of an outdated
+  warning, which Francisco Gonzalez-Lima (the leading academic on methylene blue and
+  cognition) has publicly criticised as a missed clinical opportunity.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- extrapineal-melatonin-and-mitochondria
+sources:
+- id: lurance-energy-blueprint-podcast-2026
+  location: Podcast — SSRI warning segment
+  quote: Mayo Clinic came out and rescinded this warning saying that we only warn
+    SSRIs if you're getting this one surgery with these really high doses of methylene
+    blue. The whole country of Canada has rescinded this warning.
+rationale: Coach should know the nuance but must NOT advise clients on SSRIs to take
+  methylene blue without clinician sign-off — defer always.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: hbot-chronic-lyme-cfs-titration-warning
+statement: Clients with chronic Lyme, ME/CFS, fibromyalgia, MCAS, or other states
+  of oxidative-stress overload may herx severely from standard HBOT pressures and
+  report being bedbound for days after a session. Sherr's protocol — DO NOT start
+  chronic Lyme clients in HBOT until they have stabilised to roughly 80 percent baseline
+  through other means (antimicrobials with a Lyme-literate clinician, gut work, drainage
+  support, methylation cofactors); start at 1.3-1.5 ATA rather than the standard 2.0-2.4
+  ATA; pre-load endogenous antioxidant capacity through Nrf2 activators (sulforaphane,
+  polyphenols) before the first session even though this attenuates the hormetic stimulus,
+  because tolerability matters more than maximal stimulus in this population; and
+  ensure parallel detoxification support (sauna, lymphatic drainage, binders). Many
+  of these clients also harbour undiagnosed infections that contribute to their inability
+  to tolerate hormetic stressors — HBOT done without a comprehensive workup risks
+  worsening symptoms.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — chronic illness titration segment
+  quote: Often especially in Lyme disease I don't recommend patients going to a chamber
+    until they've actually gotten about 80% better because that's when the power of
+    that last 20% that we can really help with.
+rationale: Critical safety guidance for the exact population most likely to ask coach
+  about HBOT.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

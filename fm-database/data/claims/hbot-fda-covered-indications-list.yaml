@@ -1,0 +1,28 @@
+slug: hbot-fda-covered-indications-list
+statement: In the US, hyperbaric oxygen therapy is FDA-approved AND Medicare/commercial-insurance
+  covered for a defined set of indications — (1) diabetic foot ulcer (Wagner Grade
+  III or higher) — prevents amputations, (2) radiation tissue injury (cystitis, proctitis,
+  osteoradionecrosis) — the single most effective treatment, often resolves years
+  of bleeding, (3) chronic refractory osteomyelitis, (4) sudden sensorineural hearing
+  loss — regenerates auditory function if treated within weeks of onset (often missed
+  because ENTs don't refer fast enough), (5) carbon monoxide poisoning, (6) traumatic
+  crush injury and compartment syndrome, (7) air or gas embolism (decompression sickness
+  — the original use case), (8) gas gangrene and necrotising soft tissue infections.
+  Everything else (TBI, stroke, autoimmune, longevity, athletic recovery, cognitive
+  enhancement, complex regional pain syndrome) is INVESTIGATIONAL and out-of-pocket,
+  despite often-strong evidence for several of these.
+evidence_tier: strong
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — covered indications segment
+  quote: Diabetic foot ulcers is number one. Number two is radiation injury from cancer
+    — probably the best treatment for radiation injury hands down. The third one is
+    chronic bone infection — osteomyelitis. Another one is sudden hearing loss.
+rationale: Practical referral knowledge — coach can flag clients who may be eligible
+  for insurance-covered HBOT.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

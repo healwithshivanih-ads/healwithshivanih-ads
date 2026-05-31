@@ -1,0 +1,29 @@
+slug: hbot-soft-vs-hard-chamber-distinction
+statement: Hyperbaric chambers come in two classes with materially different clinical
+  capabilities. Soft chambers (mild HBOT, "mHBOT") operate at 1.3 ATA (approximately
+  20 feet of sea water equivalent), use pressurised ambient air with an optional oxygen
+  concentrator delivering 90-95 percent O2 via mask, and increase circulating oxygen
+  approximately 46 percent over baseline. They are well-suited to cognitive enhancement,
+  post-exercise recovery, lymphatic stimulation, and stress recovery; they are NOT
+  adequate for clearing biofilm-protected anaerobic infections (Borrelia, Bartonella,
+  Babesia) which require deeper pressures. Hard chambers (medical HBOT) operate at
+  2.0-2.4 ATA up to 3.0 ATA with 100 percent O2 delivery, are built to medical-device
+  standards, and are required for infection eradication, severe wound healing, radiation
+  injury, traumatic brain injury, post-stroke neuroplasticity, and oncologic adjuvant
+  work. Mixing up the two classes leads to disappointed clients who paid for the wrong
+  chamber for their condition.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+sources:
+- id: sherr-energy-blueprint-podcast-2026-hbot
+  location: Podcast — soft vs hard chamber segment
+  quote: Soft chambers go to 1.3 atmospheres. If you're using hyperbaric therapy for
+    infection I do not recommend the soft chambers because you really need to get
+    to those deeper pressures.
+rationale: Coach must know the difference before discussing HBOT options with clients
+  researching it.
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani

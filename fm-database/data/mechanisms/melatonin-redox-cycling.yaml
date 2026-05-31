@@ -1,0 +1,47 @@
+slug: melatonin-redox-cycling
+display_name: Melatonin Redox Cycling and Mitochondrial Hormetic Buffering
+aliases:
+- melatonin antioxidant cascade
+- melatonin mitochondrial protection
+category: metabolic
+summary: Melatonin is an unusual antioxidant — each molecule of melatonin can neutralise
+  up to 10 reactive species through a cascade of metabolites (AFMK, AMK, c3OHM) that
+  each retain antioxidant activity, rather than being spent on a single radical encounter
+  as vitamin C or vitamin E are. Inside the mitochondrial matrix, melatonin scavenges
+  hydroxyl, peroxyl, peroxynitrite, and singlet oxygen radicals; upregulates the Nrf2-driven
+  endogenous antioxidant cascade (catalase, superoxide dismutase, glutathione peroxidase);
+  stabilises cytochrome c on the inner mitochondrial membrane preventing apoptosis-triggering
+  release; supports the integrity of the electron transport chain under stress; and
+  prevents the Warburg shift — the switch from efficient mitochondrial oxidative phosphorylation
+  (32-36 ATP per glucose) to inefficient anaerobic glycolysis / fermentation (2 ATP
+  per glucose) that occurs when the cell exceeds its hormetic stress window. This
+  last property is mechanistically why melatonin is being investigated in cancer (cancer
+  cells live on the Warburg shift), chronic fatigue syndrome, sepsis, and severe infection
+  — the cell can endure more stress before flipping into the inefficient metabolic
+  state.
+upstream_drivers:
+- oxidative-stress
+- mitochondrial-dysfunction
+- cell-danger-response
+downstream_effects:
+- reduced-warburg-shift
+- enhanced-stress-resilience
+- improved-mitochondrial-energy-production
+related_mechanisms:
+- mitohormesis
+- mitochondrial-dysfunction
+- mitochondrial-energy-production
+linked_to_topics:
+- extrapineal-melatonin-and-mitochondria
+- molecular-hydrogen-therapy
+sources:
+- id: lurance-energy-blueprint-podcast-2026
+  location: Podcast — Warburg and melatonin segment
+  quote: Melatonin sits in the mitochondria and it allows it to absorb more stress
+    and adapt at a deeper level without switching. And that's why there's great research
+    on melatonin with cancer.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-31
+updated_by: Shivani
