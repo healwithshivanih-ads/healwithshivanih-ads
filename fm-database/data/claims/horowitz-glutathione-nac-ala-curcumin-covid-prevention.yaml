@@ -1,0 +1,37 @@
+slug: horowitz-glutathione-nac-ala-curcumin-covid-prevention
+statement: Horowitz's published COVID protocol — N-acetylcysteine (glutathione precursor)
+  + alpha-lipoic acid (regenerates glutathione) + liposomal glutathione + curcumin
+  — blocks the NFκB inflammatory switch and supports endogenous antioxidant defence.
+  Of his patients on this protocol during the pandemic, none died of ARDS or COVID
+  complications. Mechanism — SARS-CoV-2 must deplete cellular glutathione to replicate,
+  and lung tissue holds approximately 144,000- fold more glutathione than other tissue,
+  so glutathione-depleted patients are the ones who progress to ARDS. Same antioxidant
+  + anti-NFκB strategy is protective against other inflammatory viral illnesses (Marburg,
+  Ebola — under active research) and is foundational to the MSIDS toxin/infection-management
+  layer.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- long-covid
+- msids-framework
+- chronic-inflammation
+linked_to_supplements:
+- n-acetylcysteine
+- alpha-lipoic-acid
+- glutathione-liposomal
+- curcumin
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — COVID protocol case study
+  quote: I published the first study in the world medical literature on using glutathione.
+    Not one of my patients died during the entire COVID pandemic — blocking a switch
+    of inflammation in the nucleus called NFκB. They took N-acetylcysteine, alpha-lipoic
+    acid which regenerates glutathione, turmeric curcumin. The COVID virus had to
+    lower glutathione to replicate.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach acute-respiratory-support stack — NAC 600 mg BID + ALA 600 mg + liposomal
+  glutathione 500 mg + curcumin 500 mg BID at first viral sign.

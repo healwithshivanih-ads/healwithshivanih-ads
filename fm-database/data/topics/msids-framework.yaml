@@ -1,0 +1,55 @@
+slug: msids-framework
+display_name: MSIDS Framework (Multiple Systemic Infectious Disease Syndrome)
+aliases:
+- msids
+- msids-model
+- 16-point-model
+- horowitz-16-point-framework
+- multiple-systemic-infectious-disease-syndrome
+summary: Dr Richard Horowitz's 16-point clinical framework for diagnosing and treating
+  complex chronic illness. Originally developed for chronic Lyme disease and now published
+  with associations to Alzheimer's (J Alzheimer's Dis Reports 2026), long COVID (J
+  Microorganisms 2024), chronic fatigue syndrome, fibromyalgia, RA, Crohn's, autism,
+  and ADHD. Built bottom-up from 41 years of clinical practice and 13,000+ patients.
+  Architecture is 6 "rivers of inflammation" (causes) + 10 downstream effects. RIVERS
+  — (1) infections (bacteria/viruses/parasites/ fungi), (2) environmental toxins (mold,
+  heavy metals, microplastics), (3) gut microbiome dysbiosis, (4) leaky gut + mast
+  cell activation, (5) vitamin/mineral deficiencies, (6) sleep disorders. DOWNSTREAM
+  EFFECTS — mitochondrial dysfunction, hormonal dysregulation (adrenal/thyroid/sex
+  hormones), POTS/ dysautonomia, neuropsychiatric symptoms, liver dysfunction, deconditioning,
+  immune dysregulation (autoimmunity as bystander effect), pain pathway sensitisation,
+  allergies/MCAS, and weight/metabolic changes. Practical implication — never address
+  a chronic illness as a single-mechanism single-drug problem; unravel into the 16
+  components, prioritise infections + toxins first, then microbiome + sleep + nutrients,
+  then layer mitochondrial + hormonal + limbic.
+key_mechanisms:
+- chronic-inflammation
+- immune-dysregulation
+- mitochondrial-dysfunction
+- hpa-axis-dysregulation
+- leaky-gut
+common_symptoms:
+- fatigue
+- brain-fog
+- joint-pain
+- sleep-disturbance
+related_topics:
+- chronic-lyme-disease
+- chronic-fatigue-syndrome
+- fibromyalgia
+- mold-toxicity
+- long-covid
+- mitochondrial-dysfunction
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — MSIDS model overview segment
+  quote: Six rivers of inflammation that go into an ocean of inflammation, and then
+    there are 10 downstream effects of inflammation. Infections, toxins, microbiome,
+    leaky gut with mast cell activation, vitamin mineral deficiencies, and sleep disorders.
+    Then mitochondrial dysfunction, hormonal dysregulation, POTS dysautonomia, neuropsychiatric,
+    liver dysfunction, deconditioning, immune dysregulation.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

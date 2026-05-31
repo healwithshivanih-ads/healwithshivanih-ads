@@ -1,0 +1,28 @@
+slug: lyme-coinfection-screen-babesia-bartonella
+statement: In Horowitz's clinical cohort, approximately 80% of chronic Lyme patients
+  have Babesia and 90% have Bartonella co-infection. Babesia hallmark is drenching
+  night sweats in a patient who is NOT menopausal, hypothyroid, tubercular, or has
+  lymphoma — plus air hunger and migratory pain. Bartonella hallmark is rheumatoid-factor-positive
+  joint pain, endothelial dysfunction (elevated VEGF — also seen in long COVID), characteristic
+  skin striations, and neuropsychiatric symptoms including aphasia. Standard tick-borne
+  workup MUST screen for both, not just Borrelia. Reactivated viruses (EBV, HHV-6/7,
+  CMV, herpes 1/2) and fungal/mold overgrowth are the next layer.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-lyme-disease
+- babesiosis
+- bartonellosis
+- msids-framework
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — co-infection epidemiology segment
+  quote: Parasites like Babesia is really common — we find it in at least 80%. Up
+    to 90% have Bartonella. Then I do find a fair number of my patients with fungal
+    overgrowth with Candida, with mold toxicity — up to five different mycotoxins
+    showing up in nine out of ten patients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach pre-flight — never treat Lyme alone; always screen the co-infection
+  stack first because missed co-infections sabotage protocols.

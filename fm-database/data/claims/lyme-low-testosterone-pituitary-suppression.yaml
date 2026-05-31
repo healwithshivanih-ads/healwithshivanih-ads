@@ -1,0 +1,30 @@
+slug: lyme-low-testosterone-pituitary-suppression
+statement: 99% of Horowitz's chronic Lyme patients show low adrenal function, and
+  a substantial subset of male patients in their 20s and 30s present with low testosterone
+  driven by Lyme-mediated pituitary suppression of luteinising hormone. Many of these
+  men arrive already on testosterone replacement (shots, creams, gels) without realising
+  the upstream driver was an active infection shutting down the HPG axis. Treating
+  the underlying infection often restores endogenous pituitary signalling. Implication
+  — before initiating TRT in a young male with low T and fatigue, screen for tick-borne
+  disease, mould, and chronic-fatiguing illness rather than assuming primary hypogonadism.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- chronic-lyme-disease
+- msids-framework
+- hypogonadism
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — hormonal dysregulation segment
+  quote: 99% of my patients have low adrenal function. Men in their 20s come in with
+    low testosterone, and they're coming in on shots and creams and gels without realising
+    it was the Lyme that was shutting down their pituitary gland, making luteinising
+    hormone, so they weren't making testosterone.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach guidance — for young male clients on TRT with persistent fatigue/cognition
+  issues, run a tick-borne + mould workup before assuming TRT is the answer.

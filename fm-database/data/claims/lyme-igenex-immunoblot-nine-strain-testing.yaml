@@ -1,0 +1,26 @@
+slug: lyme-igenex-immunoblot-nine-strain-testing
+statement: iGenex Laboratories (Palo Alto, California) offers a Lyme immunoblot panel
+  testing 9 strains of Borrelia (including the European B. afzelii and B. garinii
+  strains that the US CDC panel misses), with a sensitivity and specificity profile
+  that catches a substantial fraction of patients who are negative on CDC two-tier
+  testing. Recommended in symptomatic patients with negative conventional results,
+  particularly when migratory pain or HMQ score above 35 is present. The CDC's own
+  position is that Lyme is a CLINICAL diagnosis; their two-tier testing is a tool,
+  not a gate. iGenex also offers Bartonella, Babesia, and Mycoplasma panels in the
+  same workup.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-lyme-disease
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — testing recommendation segment
+  quote: What I usually suggest is a blood test from a lab called iGenex Laboratories
+    in California, and this particular laboratory does a test called an immunoblot
+    that checks for nine strains of Lyme disease. The CDC will tell you it's a clinical
+    diagnosis.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach lab guidance — when standard Lyme panel is negative but clinical
+  suspicion is high, refer to iGenex (or ArminLabs in Europe) for expanded testing.

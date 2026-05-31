@@ -1,0 +1,27 @@
+slug: lyme-western-blot-five-band-bingo
+statement: CDC two-tier Lyme testing (ELISA followed by Western blot) misses approximately
+  half of chronic Lyme cases because Lyme, Bartonella, mold toxicity, and long COVID
+  T-cell exhaustion all suppress antibody production. Even when conventional interpretation
+  reports a Western blot as negative, the presence of ANY ONE of five specific bands
+  indicates Borrelia exposure — 23 (Outer Surface Protein C), 31 (OspA), 34 (OspB),
+  39, and 83/93. Band 31 alone can false-positive with Epstein-Barr or autoimmunity,
+  but in combination with chronic-fatiguing musculoskeletal illness and migratory
+  pain it is diagnostic. iGenex Laboratories (California) immunoblot tests 9 Borrelia
+  strains and is preferred over the standard two-tier protocol in symptomatic patients.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-lyme-disease
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — testing segment
+  quote: Half of my patients will never test positive by an ELISA or a Western blot.
+    There are five numbers on a Western blot or an immunoblot that if any one of these
+    numbers is positive, you have been exposed to Lyme disease — 23, 31, 34, 39, and
+    83/93. iGenex Laboratories in California does an immunoblot that checks for nine
+    strains of Lyme disease.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach guidance — if client presents with migratory pain + brain fog + negative
+  standard Lyme panel, escalate to iGenex immunoblot rather than ruling out.

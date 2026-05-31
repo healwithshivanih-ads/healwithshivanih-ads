@@ -1,0 +1,32 @@
+slug: lyme-mold-mycotoxin-90-percent-overlap
+statement: Approximately 90% of Horowitz's chronic Lyme patients also test positive
+  for mycotoxin exposure on urine testing (Realtime Laboratories, Texas). Up to five
+  different mycotoxins — aflatoxin, gliotoxin, ochratoxin, trichothecenes, zearalenone
+  — can co-exist in a single patient. Mycotoxins drive the same inflammatory cascade
+  as chronic Lyme (NFκB, NLRP3 inflammasome, oxidative stress, immune suppression)
+  and produce overlapping symptoms — fatigue, cognitive impairment, joint pain, brain
+  fog, autoimmunity. When chronic Lyme treatment plateaus, mould/mycotoxin and heavy-metal
+  evaluation is the next diagnostic step, because mycotoxins suppress the immune system
+  and prevent clearance of biofilm persister bacteria.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-lyme-disease
+- mold-toxicity
+- msids-framework
+linked_to_mechanisms:
+- immune-dysregulation
+- chronic-inflammation
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — mold + Lyme overlap segment
+  quote: We find mold toxins in about 90% of our patients these days, which by the
+    way could cause pain and fatigue and memory issues. We were finding aflatoxins,
+    gliotoxins, trichothecenes — all of these immunosuppressive toxins. The Lyme was
+    suppressing the immune system; Bartonella made it worse. Then long COVID came
+    along and you got T-cell exhaustion.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach rule — always run a mycotoxin urine panel and home water-damage history
+  at chronic-Lyme intake; do not assume a clean home.

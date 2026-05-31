@@ -1,0 +1,45 @@
+slug: bartonellosis
+display_name: Bartonellosis (Bartonella Bacterial Co-infection)
+aliases:
+- bartonella
+- bartonella-henselae
+- cat-scratch-fever
+- bartonella-tick-borne
+summary: Intracellular biofilm-forming bacterial co-infection frequently transmitted
+  alongside Lyme disease via Ixodes ticks (also via cat scratches, fleas, sand flies).
+  At least 18 pathogenic species exist beyond the well-known B. henselae (cat-scratch
+  fever). Found in roughly 90% of chronic Lyme patients in Dr Horowitz's clinical
+  cohort. Strongly associated with rheumatological symptoms (elevated rheumatoid factors,
+  joint pain), endothelial dysfunction with elevated VEGF (also seen in long COVID),
+  aphasia/speech disturbance, neuropsychiatric symptoms, and characteristic striae-like
+  skin striations. Often invisible to conventional rheumatology workups because most
+  physicians screen only for B. henselae and miss the broader species spectrum.
+key_mechanisms:
+- biofilm-persister-bacteria
+- immune-dysregulation
+- chronic-inflammation
+common_symptoms:
+- joint-pain
+- rheumatoid-factors
+- fatigue
+- brain-fog
+- skin-striae
+related_topics:
+- chronic-lyme-disease
+- msids-framework
+- long-covid
+- rheumatoid-arthritis
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — Bartonella aphasia case + endothelial dysfunction segment
+  quote: Up to 90% have bartonella, another intracellular bacterial infection. Most
+    doctors who go through med school have heard about Bartonella henselae, cat scratch
+    fever. They're not aware that there are 18 other pathogenic species of bartonella.
+    We discovered even in long COVID that many of these patients who had inflammation
+    in their endothelium — there's a marker called VEGF — those patients most of the
+    time had bartonella.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

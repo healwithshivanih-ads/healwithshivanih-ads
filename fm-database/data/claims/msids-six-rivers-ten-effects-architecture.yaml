@@ -1,0 +1,39 @@
+slug: msids-six-rivers-ten-effects-architecture
+statement: The MSIDS 16-point framework decomposes any chronic illness into 6 upstream
+  "rivers of inflammation" plus 10 downstream effects. RIVERS — (1) infections (Borrelia,
+  Bartonella, Babesia, EBV, HHV-6, HHV-7, CMV, herpes 1/2, Candida, Mycoplasma, Chlamydia
+  pneumoniae), (2) environmental toxins (mold/mycotoxins, heavy metals, microplastics,
+  endocrine disruptors), (3) gut microbiome dysbiosis, (4) leaky gut + mast cell activation,
+  (5) vitamin/mineral deficiencies, (6) sleep disorders. DOWNSTREAM — mitochondrial
+  dysfunction, hormonal dysregulation (adrenal, thyroid, sex hormones), POTS/dysautonomia,
+  neuropsychiatric, liver dysfunction, deconditioning, immune dysregulation (autoimmunity
+  as bystander), pain pathway sensitisation, MCAS/allergic, and metabolic. All 16
+  factors are independently associated with chronic Lyme, Alzheimer's, long COVID,
+  chronic fatigue syndrome, and fibromyalgia per Horowitz's published meta-reviews.
+  Practical implication — never treat a chronic illness as a single-mechanism single-drug
+  problem.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- msids-framework
+- chronic-lyme-disease
+- chronic-fatigue-syndrome
+- fibromyalgia
+- alzheimers-disease
+- long-covid
+linked_to_mechanisms:
+- chronic-inflammation
+- mitochondrial-dysfunction
+- hpa-axis-dysregulation
+- leaky-gut
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — MSIDS model overview
+  quote: Six rivers of inflammation that go into an ocean of inflammation, and then
+    there are 10 downstream effects of inflammation. Infections, toxins, microbiome,
+    leaky gut with mast cell activation, vitamin mineral deficiencies, and sleep disorders.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Coach uses MSIDS as a structured intake checklist for any client who has
+  failed multiple specialists — ensures no major driver is missed.

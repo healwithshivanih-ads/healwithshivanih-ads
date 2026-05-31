@@ -1,0 +1,44 @@
+slug: biofilm-persister-bacteria
+display_name: Biofilm Persister Bacteria
+aliases:
+- persister-cells
+- bacterial-biofilm
+- dormant-persister-state
+category: immune
+summary: A subpopulation of bacterial cells that exists in a dormant, metabolically
+  inactive state inside protective biofilm matrices. Persisters survive standard antibiotic
+  courses because most antibiotics require active bacterial metabolism to kill the
+  organism. Documented across tuberculosis, leprosy, Helicobacter pylori, Porphyromonas
+  gingivalis, and Borrelia burgdorferi. Discovered as the mechanism behind chronic
+  Lyme persistence by Johns Hopkins, Stanford, University of New Haven, and Northeastern
+  around 2015-2016. Therapeutic implication — short antibiotic courses fail; multi-drug
+  regimens that hit cell-wall, intracellular, and cystic/persister forms simultaneously
+  (TB-style or leprosy-style protocols, e.g. rifampin + dapsone + doxycycline) are
+  required.
+upstream_drivers:
+- inappropriate-antibiotic-short-course
+- immune-suppression
+- host-tissue-niche-selection
+downstream_effects:
+- chronic-inflammation
+- immune-dysregulation
+- recurrent-relapse-after-treatment
+related_mechanisms:
+- chronic-inflammation
+- immune-dysregulation
+linked_to_topics:
+- chronic-lyme-disease
+- bartonellosis
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — biofilm persister discovery segment
+  quote: It's only in the last 10 years we discovered from John Hopkins University
+    that these bacteria are very specific bacteria called biofilm persister bacteria.
+    Just like when you go to the dentist to have them take plaque off your teeth —
+    Porphyromonas gingivalis can go up into the brain and cause Alzheimer's. In a
+    similar way, Lyme is a persister biofilm bacteria like tuberculosis, like leprosy.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

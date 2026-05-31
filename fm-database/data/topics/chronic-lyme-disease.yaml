@@ -1,0 +1,54 @@
+slug: chronic-lyme-disease
+display_name: Chronic Lyme Disease (Persistent Borrelia burgdorferi Infection)
+aliases:
+- chronic-lyme
+- persistent-lyme
+- post-treatment-lyme-disease-syndrome
+- ptlds
+- chronic-borreliosis
+- lyme-msids
+summary: 'Tick-borne spirochetal infection (Borrelia burgdorferi) that persists in
+  biofilm and intracellular forms after standard antibiotic courses. Discovered ~2015
+  at Johns Hopkins to be a biofilm persister bacterium akin to TB and leprosy, which
+  explains failure of the historical 30-day doxycycline model. Acute presentation
+  may include erythema migrans (bullseye rash — solid in 50% of cases) or a spreading
+  red rash; chronic presentation mimics chronic fatigue syndrome, ME/CFS, fibromyalgia,
+  MS, and Alzheimer-type dementia. Migratory pain — pain that moves body region to
+  body region without explanation — is present in ~95% of chronic cases and is the
+  single most useful clinical anchor. Standard CDC two-tier testing (ELISA → Western
+  blot) misses about half of chronic cases because Lyme, Bartonella, mold, and long-COVID
+  T-cell exhaustion suppress antibody production. Strongly co-infected with Babesia
+  (~80%) and Bartonella (~90%) per clinical cohort data. Treatment paradigm: rifampin
+  + dapsone + doxycycline 8-9 week oral combination (Dapsone Combination Therapy,
+  DDS-CT) hits all three forms — cell wall, intracellular, and cystic/persister.'
+key_mechanisms:
+- biofilm-persister-bacteria
+- immune-dysregulation
+- chronic-inflammation
+- mitochondrial-dysfunction
+common_symptoms:
+- migratory-pain
+- fatigue
+- brain-fog
+- joint-pain
+- neuropathy
+- sleep-disturbance
+related_topics:
+- chronic-fatigue-syndrome
+- fibromyalgia
+- alzheimers-disease
+- multiple-sclerosis
+- mold-toxicity
+- long-covid
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast interview, opening + Lyme overview segment
+  quote: Lyme is a persist biofilm bacteria like tuberculosis, like leprosy. There
+    are five numbers on a Western blot that if any one of these numbers is positive,
+    you have been exposed to Lyme disease — 23, 31, 34, 39, 83/93. 95% of my patients
+    have migratory pain.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

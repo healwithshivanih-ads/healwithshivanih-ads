@@ -1,0 +1,24 @@
+slug: horowitz-symptom-questionnaire-hmq
+statement: The Horowitz-Borrascano Lyme symptom questionnaire (HMQ), validated in
+  a 1,600-patient cohort across three medical practices with SUNY researchers (published
+  2017), gives a clinical pre-test probability of Lyme disease. Score above 63 = high
+  probability; 35-62 = moderate probability; 25-34 = possible; below 25 = unlikely.
+  Symptoms graded mild/moderate/severe across fatigue, migratory joint pain, muscle
+  pain, nerve pain, sleep, cognitive, mood, and autonomic categories. Free at canigetbetter.com.
+  Used as a triage tool BEFORE ordering blood work in suspected chronic Lyme.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-lyme-disease
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — HMQ validation segment
+  quote: We took 1,600 people from three medical practices and validated a Lyme symptom
+    questionnaire. It's on my website canigetbetter.com. If you score over 63, it
+    means you have a very high probability of having Lyme disease. If you score 35
+    to 62, there's a moderate probability.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Use HMQ as a structured intake form for any client presenting with multi-system
+  fatigue + pain — saves cost vs ordering panels blind.

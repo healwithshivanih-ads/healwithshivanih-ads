@@ -1,0 +1,42 @@
+slug: babesiosis
+display_name: Babesiosis (Babesia Parasitic Co-infection)
+aliases:
+- babesia
+- babesia-microti
+- babesia-duncani
+- tick-borne-babesiosis
+summary: Intra-erythrocytic protozoan parasite transmitted by the same Ixodes ticks
+  as Lyme disease. Causes malaria-like symptoms including drenching night sweats,
+  air hunger, fatigue, headache, and migratory pain. Found in roughly 80% of chronic
+  Lyme patients in Dr Horowitz's clinical cohort. Hallmark distinguishing feature
+  — drenching sweats in a patient who is NOT in menopause, does NOT have hypothyroidism,
+  TB, or non-Hodgkin's lymphoma. First clinical signal that led Horowitz to recognise
+  parasitic co-infection was a 35-year-old wheelchair-bound patient who walked out
+  (and later went skiing) after Mepron (atovaquone) + Zithromax for Babesia. Standard
+  antimicrobial regimen — atovaquone + azithromycin (or proguanil combinations) —
+  typically pulsed.
+key_mechanisms:
+- immune-dysregulation
+- chronic-inflammation
+common_symptoms:
+- night-sweats
+- fatigue
+- migratory-pain
+- air-hunger
+related_topics:
+- chronic-lyme-disease
+- msids-framework
+- chronic-fatigue-syndrome
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — Babesia case study segment
+  quote: A woman in a wheelchair comes in in the early 90s, 35 years old, paralysed
+    from the waist down for 5 years. She's got drenching sweats at 35, not in menopause.
+    This sounds like a parasite I just learned about at a conference called Babesia.
+    Lo and behold, we find Babesia. I give her a 10-day treatment of Mepron Zithromax,
+    and 6 months later the woman is walking out of a wheelchair and skiing.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

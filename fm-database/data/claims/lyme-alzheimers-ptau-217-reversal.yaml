@@ -1,0 +1,30 @@
+slug: lyme-alzheimers-ptau-217-reversal
+statement: Horowitz's 2026 case study in the Journal of Alzheimer's Disease Reports
+  describes the first documented reversal of an Alzheimer's biomarker in a live patient
+  using infection-targeted therapy. Plasma p-tau 217 — the most sensitive and specific
+  Alzheimer's biomarker — dropped 63% in 9 weeks on Dapsone Combination Therapy for
+  chronic Lyme, vs ~23% over 6 years with anti-amyloid monoclonal antibodies (lecanemab,
+  donanemab) per the Cochrane meta-analysis. The patient also reversed long-standing
+  positive rheumatoid factors to normal, consistent with autoimmunity-as-bystander
+  resolving once the infectious driver was treated. Suggests 30-40% of Alzheimer's
+  cases may have an infectious driver (Borrelia, P. gingivalis, herpes 1/2, HHV-6,
+  Chlamydia pneumoniae). Implication — screen for Lyme + tick-borne co-infections
+  before initiating anti-amyloid monoclonal therapy.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- chronic-lyme-disease
+- alzheimers-disease
+- msids-framework
+sources:
+- id: horowitz-energy-blueprint-podcast-2026
+  location: Podcast — Alzheimer's case study segment
+  quote: The anti-amyloid monoclonal antibodies like lecanemab and donanemab lower
+    p-tau by about 23% over 6 years; we lowered it by 63% in 9 weeks. The reason being
+    the amyloid that was being produced in the brain — the phosphorylated tau was
+    coming from an infection.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Single-case evidence only — but worth flagging for any Alzheimer's-suspect
+  client with a tick-bite or chronic-fatigue history before they commit to mAb therapy.
