@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import {
   saveMealPlan,
   generateClientLetter,
+  reRenderClientLetter,
   generatePhaseMealPlanAction,
   refineLetter,
   type ChatTurn,
@@ -108,6 +109,37 @@ export function LetterEditor({
   // and wipes any in-progress edits the coach hasn't saved.
   const [regenConfirmOpen, setRegenConfirmOpen] = useState(false);
   const [regenerating, startRegen] = useTransition();
+  // 🔄 Re-render (no API): save current markdown, then re-run only the
+  // deterministic HTML assembly (brand wrap, portion plate, supplement
+  // schedule with current plan timing, print buttons). $0 — no Sonnet,
+  // no Haiku. Use after manual edits or a plan-data / rule change.
+  const [rerendering, startRerender] = useTransition();
+
+  const onRerender = () => {
+    if (letterType === "meal_plan_phase") {
+      toast.error("Phase letters: use Regenerate. Re-render covers the main letter types.");
+      return;
+    }
+    startRerender(async () => {
+      try {
+        // Persist the current editor markdown first so the script reads
+        // the latest text from disk (html=null forces a fresh build).
+        await saveMealPlan(planSlug, clientId, markdown, null, letterType);
+        const res = await reRenderClientLetter(planSlug, clientId, letterType);
+        if (!res.ok || !res.markdown) {
+          toast.error(`Re-render failed: ${res.error ?? "unknown error"}`);
+          return;
+        }
+        setMarkdown(res.markdown);
+        setLastSavedAt(
+          new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }),
+        );
+        toast.success("🔄 Re-rendered (no API, $0) — HTML, plate & schedule refreshed");
+      } catch (e) {
+        toast.error(`Re-render failed: ${(e as Error).message.slice(0, 120)}`);
+      }
+    });
+  };
 
   // 💬 AI Refine chat — coach types freeform feedback ("too much ragi —
   // swap some for jowar / bajra") and the AI rewrites the relevant
@@ -464,6 +496,25 @@ export function LetterEditor({
             >
               👁 Preview / HTML
             </a>
+            <button
+              type="button"
+              onClick={onRerender}
+              disabled={rerendering || regenerating}
+              title="Re-render the HTML from the current text — refreshes plate, supplement schedule & formatting. No API, free."
+              style={{
+                padding: "6px 12px",
+                fontSize: 12,
+                fontWeight: 700,
+                background: rerendering ? "var(--fm-bg-cool)" : "rgba(47, 106, 60, 0.10)",
+                border: "1px solid rgba(47, 106, 60, 0.40)",
+                borderRadius: "var(--fm-radius-sm)",
+                color: rerendering ? "var(--fm-text-tertiary)" : "#2f6a3c",
+                cursor: rerendering ? "wait" : "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              {rerendering ? "🔄 Re-rendering…" : "🔄 Re-render (free)"}
+            </button>
             <button
               type="button"
               onClick={() => setRegenConfirmOpen(true)}

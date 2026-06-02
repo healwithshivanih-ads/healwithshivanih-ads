@@ -2850,6 +2850,69 @@ def _clientify_dose(text: str) -> str:
     return s
 
 
+def _build_portion_plate_html(meal_style: str = "hybrid") -> str:
+    """Self-contained 'how to build your plate' portions visual.
+
+    Deterministic — no AI, no plan data needed. Shows the FM balanced-plate
+    rule (½ non-starchy veg, ¼ protein, ¼ smart carbs + a thumb of healthy
+    fat) as an SVG plate + legend, with India-context food examples.
+
+    Included in EVERY meal-bearing letter regardless of meal_plan_style
+    (Principles / Detailed / Hybrid) — it's the orienting visual the client
+    keeps. Print-safe (kept on one page, prints with the letter body).
+    """
+    VEG = "#4a6152"      # forest — non-starchy veg (half)
+    PROTEIN = "#a9651f"  # ochre — protein (quarter)
+    CARB = "#c2832e"     # warm gold — smart carbs (quarter)
+    INK = "#262219"
+    MUTED = "#6f6a5d"
+    PAPER = "#faf9f7"
+    style = (meal_style or "hybrid").lower()
+    if style == "principles":
+        caption = (
+            "Your plan gives you principles, not a fixed menu — use this plate "
+            "as your guide at every meal."
+        )
+    elif style == "detailed":
+        caption = (
+            "Your daily menu already follows this balance — this is the shape "
+            "behind every meal I've planned for you."
+        )
+    else:
+        caption = (
+            "Build each main meal to this shape — it's the simplest way to keep "
+            "every plate balanced without counting anything."
+        )
+    return f"""
+<section class="portion-plate-card" style="margin:18px 0;padding:20px 22px;border:1px solid #e6dfd1;border-radius:14px;background:{PAPER};page-break-inside:avoid;break-inside:avoid;">
+  <h2 style="margin:0 0 4px;font-family:Georgia,serif;font-size:20px;color:{INK};">🍽 Building Your Plate</h2>
+  <p style="margin:0 0 16px;font-size:13.5px;color:{MUTED};line-height:1.5;">{caption}</p>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;">
+    <svg width="190" height="190" viewBox="0 0 200 200" role="img" aria-label="Balanced plate: half vegetables, quarter protein, quarter smart carbs" style="flex:0 0 auto;">
+      <circle cx="100" cy="100" r="94" fill="#ffffff" stroke="#d6cdbb" stroke-width="3"/>
+      <path d="M100,12 A88,88 0 0 0 100,188 Z" fill="{VEG}"/>
+      <path d="M100,100 L100,12 A88,88 0 0 1 188,100 Z" fill="{PROTEIN}"/>
+      <path d="M100,100 L188,100 A88,88 0 0 1 100,188 Z" fill="{CARB}"/>
+      <line x1="100" y1="12" x2="100" y2="188" stroke="#ffffff" stroke-width="2.5"/>
+      <line x1="100" y1="100" x2="188" y2="100" stroke="#ffffff" stroke-width="2.5"/>
+      <text x="52" y="98" text-anchor="middle" fill="#ffffff" font-family="Georgia,serif" font-size="15" font-weight="bold">½</text>
+      <text x="52" y="116" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="9">Veg</text>
+      <text x="143" y="62" text-anchor="middle" fill="#ffffff" font-family="Georgia,serif" font-size="13" font-weight="bold">¼</text>
+      <text x="143" y="76" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="8.5">Protein</text>
+      <text x="143" y="142" text-anchor="middle" fill="#ffffff" font-family="Georgia,serif" font-size="13" font-weight="bold">¼</text>
+      <text x="143" y="156" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="8.5">Carbs</text>
+    </svg>
+    <ul style="flex:1 1 240px;margin:0;padding:0;list-style:none;font-size:13.5px;color:{INK};line-height:1.55;">
+      <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{VEG};margin-right:8px;"></span><strong>½ plate — non-starchy veg.</strong> Sabzi, salad, greens, lauki, bhindi, beans, gourds. Aim for colour + variety.</li>
+      <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{PROTEIN};margin-right:8px;"></span><strong>¼ plate — protein.</strong> Dal, rajma, chana, paneer, eggs, fish, chicken, tofu, curd. Roughly a palm-sized portion.</li>
+      <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{CARB};margin-right:8px;"></span><strong>¼ plate — smart carbs.</strong> Millet, brown rice, 1–2 rotis, sweet potato, oats. Cupped-hand portion.</li>
+      <li style="margin-bottom:0;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#9b9587;margin-right:8px;"></span><strong>+ a thumb of healthy fat</strong> (ghee, cold-pressed oil, nuts, seeds) and a <strong>glass of water</strong>. Skip sugary drinks.</li>
+    </ul>
+  </div>
+</section>
+"""
+
+
 def _build_supplement_schedule_html(
     supplements: list[dict], window_end_week: int | None = None
 ) -> str:
@@ -6803,7 +6866,7 @@ def main() -> int:
         ).encode()
     ).hexdigest()[:32]
     _letter_cache_file = _letter_cache_dir / f"{plan_slug}-{letter_type}-{_letter_cache_key}.json"
-    if not _letter_cache_disabled and _letter_cache_file.exists():
+    if not _letter_cache_disabled and not payload.get("reuse_markdown") and _letter_cache_file.exists():
         try:
             with open(_letter_cache_file) as _fh:
                 _cached = json.load(_fh)
@@ -6817,114 +6880,127 @@ def main() -> int:
         except Exception as _cache_err:
             _step(f"cache file unreadable ({_cache_err}) — falling through to live call")
 
-    _step("calling Sonnet (streaming, max 16K output tokens — typical 60–180s)")
-    try:
-        token_count = 0
-        with client_api.messages.stream(
-            model="claude-sonnet-4-6",
-            max_tokens=16000,
-            system=(
-                "You are Shivani Hariharan — a Functional Medicine health coach in "
-                "India — writing a personal letter TO your client. Write entirely "
-                "in FIRST PERSON. Use 'I', 'me', 'my', 'we', and 'our' (you and the "
-                "client together on this journey). Never refer to yourself as "
-                "'Shivani' or 'your coach' in the third person — the letter is "
-                "signed by you, so saying 'check with Shivani' or 'Shivani recommends' "
-                "would make zero sense to the reader. The ONLY exception is when "
-                "you reference something the client and you discussed in a past "
-                "session and you're recalling it ('the wall analogy I shared with "
-                "you in our first session') — even then, prefer 'I shared' over "
-                "'Shivani shared'. "
-                "\n\nTONE — IMPORTANT: write to an intelligent adult. Be warm, "
-                "direct, and respectful — like a competent friend who happens to "
-                "be your coach. AVOID:\n"
-                "  - Patronising reassurance like 'you are not broken' or 'this is "
-                "    not your fault' (it presumes she feels broken / blaming "
-                "    herself, which we don't know).\n"
-                "  - Excessive validation ('I'm SO excited!', 'amazing job!', "
-                "    'such a gift!'). One quiet sentence of warmth at intake is "
-                "    fine; don't sprinkle exclamation marks throughout.\n"
-                "  - Therapeutic / self-help register ('honour your body', "
-                "    'sit with this', 'lean into the discomfort').\n"
-                "  - Over-explaining what the client already knows. If she's "
-                "    been through a Full Assessment session, she understands her "
-                "    diagnosis — recap in one or two sentences max, not three "
-                "    paragraphs.\n"
-                "  - Talking down ('think of your gut lining as a wall...' for "
-                "    the third letter in a row). Use analogies sparingly and only "
-                "    once per concept across the full plan.\n"
-                "PREFER: clinically grounded warmth. Plain English. Real specifics "
-                "tied to her data. Short paragraphs. Reasoning given once, not "
-                "repeated. If she's already in week 3, write to a competent adult "
-                "who's been doing the work — not a beginner who needs hand-holding.\n\n"
-                "\nSUPPLEMENT INTEGRITY — CRITICAL: the supplement protocol is "
-                "100% coach-controlled and provided to you in the prompt as a "
-                "structured list. NEVER suggest a supplement, pill, capsule, "
-                "tablet, dose, or brand that is NOT in that structured list. "
-                "If a supplement was previously prescribed and the coach has "
-                "since removed it (e.g. selenium → discontinued), do NOT "
-                "re-introduce it in the narrative. You may reference food "
-                "sources of nutrients ('your daily Brazil nuts provide "
-                "selenium for thyroid support', 'lentils give you iron') — "
-                "that's nutrition, not supplementation. The line is: do not "
-                "tell the client to take ANY pill that isn't in the list. "
-                "The Python-generated supplement schedule injected after this "
-                "section is the canonical record; your job is to weave the "
-                "supplements that ARE in the list into the narrative where "
-                "relevant, never invent new ones.\n\n"
-                "CONSISTENCY RULES — avoid these specific contradictions:\n"
-                "  - IRON/MINERAL TIMING: if the client is on a thyroid tablet "
-                "(levothyroxine / Thyronorm), iron, calcium and magnesium MUST be "
-                "described as taken AT LEAST 4 HOURS APART from it — NEVER 'first "
-                "thing in the morning' / 'on an empty stomach' (that slot belongs to "
-                "the thyroid tablet). The prose AND the supplement schedule must "
-                "agree on this.\n"
-                "  - DAIRY: do NOT assume the client is dairy-free. Only suggest "
-                "dairy-free swaps (coconut yogurt, coconut milk, etc.) when the "
-                "client is explicitly flagged dairy-free. Never mix dairy-free items "
-                "with dairy ones (coconut yogurt AND golden milk AND curd) in the "
-                "same plan — use what matches the client's actual diet.\n"
-                "  - SEED CYCLING: do NOT frame flax / pumpkin / sesame / sunflower "
-                "as 'seed cycling' or phase-timed unless the plan explicitly calls "
-                "for it. For estrogen-dominance / endometriosis clients, present "
-                "these as daily nutrients (fibre, omega-3, zinc) — not seed cycling.\n"
-                "  - NO REPETITION: give the 'foods to emphasise / foods to reduce' "
-                "list exactly ONCE. Do not repeat the same eat-more/eat-less list in "
-                "two different sections.\n\n"
-                "Output beautifully formatted Markdown. Output ONLY the Markdown "
-                "document, nothing else."
-            ),
-            messages=[{"role": "user", "content": prompt}],
-        ) as stream:
-            # Stream text chunks so we get heartbeat output; otherwise the
-            # script is silent for 1–3 min while the API generates.
-            for _ in stream.text_stream:
-                token_count += 1
-                if token_count % 200 == 0:
-                    _step(f"streaming… ~{token_count} chunks received")
-            final_message = stream.get_final_message()
-            markdown = final_message.content[0].text
-            _step(f"API call done ({len(markdown)} chars markdown)")
-        # Log API spend to ~/fm-plans/clients/<id>/_api_usage.jsonl for MIS
+    # ── No-API re-render mode ────────────────────────────────────────
+    # When the caller passes reuse_markdown, skip the Sonnet call entirely
+    # and reuse the already-generated/edited markdown. Only the
+    # deterministic post-processing below (brand HTML, supplement schedule,
+    # portion-plate, print buttons) runs. $0, no API. Used after manual
+    # letter edits or when a rendering rule changes.
+    reuse_md = payload.get("reuse_markdown")
+    if reuse_md:
+        markdown = reuse_md
+        _step(f"reuse_markdown mode — skipping Sonnet + Haiku ({len(markdown)} chars, $0 — re-rendering HTML only)")
+    if not reuse_md:
+        _step("calling Sonnet (streaming, max 16K output tokens — typical 60–180s)")
         try:
-            from fmdb.usage import log_usage as _log_usage
-            _log_usage(
-                client_id=client_id,
-                script="render-client-letter.py",
+            token_count = 0
+            with client_api.messages.stream(
                 model="claude-sonnet-4-6",
-                usage=final_message.usage,
-                notes=f"letter_type={letter_type} chars={len(markdown)}",
-            )
-        except Exception:
-            pass  # never let usage logging break the user flow
-    except Exception as e:
-        json.dump({"ok": False, "markdown": "", "error": f"API call failed: {e}"}, sys.stdout)
-        return 1
+                max_tokens=16000,
+                system=(
+                    "You are Shivani Hariharan — a Functional Medicine health coach in "
+                    "India — writing a personal letter TO your client. Write entirely "
+                    "in FIRST PERSON. Use 'I', 'me', 'my', 'we', and 'our' (you and the "
+                    "client together on this journey). Never refer to yourself as "
+                    "'Shivani' or 'your coach' in the third person — the letter is "
+                    "signed by you, so saying 'check with Shivani' or 'Shivani recommends' "
+                    "would make zero sense to the reader. The ONLY exception is when "
+                    "you reference something the client and you discussed in a past "
+                    "session and you're recalling it ('the wall analogy I shared with "
+                    "you in our first session') — even then, prefer 'I shared' over "
+                    "'Shivani shared'. "
+                    "\n\nTONE — IMPORTANT: write to an intelligent adult. Be warm, "
+                    "direct, and respectful — like a competent friend who happens to "
+                    "be your coach. AVOID:\n"
+                    "  - Patronising reassurance like 'you are not broken' or 'this is "
+                    "    not your fault' (it presumes she feels broken / blaming "
+                    "    herself, which we don't know).\n"
+                    "  - Excessive validation ('I'm SO excited!', 'amazing job!', "
+                    "    'such a gift!'). One quiet sentence of warmth at intake is "
+                    "    fine; don't sprinkle exclamation marks throughout.\n"
+                    "  - Therapeutic / self-help register ('honour your body', "
+                    "    'sit with this', 'lean into the discomfort').\n"
+                    "  - Over-explaining what the client already knows. If she's "
+                    "    been through a Full Assessment session, she understands her "
+                    "    diagnosis — recap in one or two sentences max, not three "
+                    "    paragraphs.\n"
+                    "  - Talking down ('think of your gut lining as a wall...' for "
+                    "    the third letter in a row). Use analogies sparingly and only "
+                    "    once per concept across the full plan.\n"
+                    "PREFER: clinically grounded warmth. Plain English. Real specifics "
+                    "tied to her data. Short paragraphs. Reasoning given once, not "
+                    "repeated. If she's already in week 3, write to a competent adult "
+                    "who's been doing the work — not a beginner who needs hand-holding.\n\n"
+                    "\nSUPPLEMENT INTEGRITY — CRITICAL: the supplement protocol is "
+                    "100% coach-controlled and provided to you in the prompt as a "
+                    "structured list. NEVER suggest a supplement, pill, capsule, "
+                    "tablet, dose, or brand that is NOT in that structured list. "
+                    "If a supplement was previously prescribed and the coach has "
+                    "since removed it (e.g. selenium → discontinued), do NOT "
+                    "re-introduce it in the narrative. You may reference food "
+                    "sources of nutrients ('your daily Brazil nuts provide "
+                    "selenium for thyroid support', 'lentils give you iron') — "
+                    "that's nutrition, not supplementation. The line is: do not "
+                    "tell the client to take ANY pill that isn't in the list. "
+                    "The Python-generated supplement schedule injected after this "
+                    "section is the canonical record; your job is to weave the "
+                    "supplements that ARE in the list into the narrative where "
+                    "relevant, never invent new ones.\n\n"
+                    "CONSISTENCY RULES — avoid these specific contradictions:\n"
+                    "  - IRON/MINERAL TIMING: if the client is on a thyroid tablet "
+                    "(levothyroxine / Thyronorm), iron, calcium and magnesium MUST be "
+                    "described as taken AT LEAST 4 HOURS APART from it — NEVER 'first "
+                    "thing in the morning' / 'on an empty stomach' (that slot belongs to "
+                    "the thyroid tablet). The prose AND the supplement schedule must "
+                    "agree on this.\n"
+                    "  - DAIRY: do NOT assume the client is dairy-free. Only suggest "
+                    "dairy-free swaps (coconut yogurt, coconut milk, etc.) when the "
+                    "client is explicitly flagged dairy-free. Never mix dairy-free items "
+                    "with dairy ones (coconut yogurt AND golden milk AND curd) in the "
+                    "same plan — use what matches the client's actual diet.\n"
+                    "  - SEED CYCLING: do NOT frame flax / pumpkin / sesame / sunflower "
+                    "as 'seed cycling' or phase-timed unless the plan explicitly calls "
+                    "for it. For estrogen-dominance / endometriosis clients, present "
+                    "these as daily nutrients (fibre, omega-3, zinc) — not seed cycling.\n"
+                    "  - NO REPETITION: give the 'foods to emphasise / foods to reduce' "
+                    "list exactly ONCE. Do not repeat the same eat-more/eat-less list in "
+                    "two different sections.\n\n"
+                    "Output beautifully formatted Markdown. Output ONLY the Markdown "
+                    "document, nothing else."
+                ),
+                messages=[{"role": "user", "content": prompt}],
+            ) as stream:
+                # Stream text chunks so we get heartbeat output; otherwise the
+                # script is silent for 1–3 min while the API generates.
+                for _ in stream.text_stream:
+                    token_count += 1
+                    if token_count % 200 == 0:
+                        _step(f"streaming… ~{token_count} chunks received")
+                final_message = stream.get_final_message()
+                markdown = final_message.content[0].text
+                _step(f"API call done ({len(markdown)} chars markdown)")
+            # Log API spend to ~/fm-plans/clients/<id>/_api_usage.jsonl for MIS
+            try:
+                from fmdb.usage import log_usage as _log_usage
+                _log_usage(
+                    client_id=client_id,
+                    script="render-client-letter.py",
+                    model="claude-sonnet-4-6",
+                    usage=final_message.usage,
+                    notes=f"letter_type={letter_type} chars={len(markdown)}",
+                )
+            except Exception:
+                pass  # never let usage logging break the user flow
+        except Exception as e:
+            json.dump({"ok": False, "markdown": "", "error": f"API call failed: {e}"}, sys.stdout)
+            return 1
 
     # Post-validation pass: Haiku scores each coaching tip 1–5 for client-
     # specificity and rewrites tips < 3 to reference the client's TOP-OF-MIND
     # facts. Returns original markdown unchanged on any failure.
-    skip_validation = bool(payload.get("skip_validation"))
+    # In reuse_markdown (no-API re-render) mode, skip the Haiku validation
+    # pass too — it's an API call and the markdown is already final.
+    skip_validation = bool(payload.get("skip_validation")) or bool(payload.get("reuse_markdown"))
     _step("validating letter specificity (Haiku)")
     try:
         markdown, validation_report = _validate_letter_specificity(
@@ -7129,6 +7205,20 @@ def main() -> int:
             plan_slug=plan.get("slug"),
             letter_type=letter_type,
         )
+        # Inject the "Building Your Plate" portions visual at the top of the
+        # letter body for every meal-bearing letter — Principles, Detailed
+        # AND Hybrid. It's the orienting visual the client keeps. Placed as
+        # the first child of .content so it flows + prints with the body.
+        if html and letter_type in ("consolidated", "meal_plan", "meal_plan_phase"):
+            try:
+                import re as _re_plate
+                plate_html = _build_portion_plate_html(client.get("meal_plan_style") or "hybrid")
+                _pm = _re_plate.search(r'(<div class="content"[^>]*>)', html)
+                if _pm and plate_html:
+                    html = html[: _pm.end()] + "\n      " + plate_html + html[_pm.end():]
+            except Exception as _plate_err:
+                print(f"[render-letter] plate inject failed ({type(_plate_err).__name__}: {_plate_err})",
+                      file=sys.stderr, flush=True)
         # Inject Python-generated supplement sections (guaranteed complete +
         # buy-link-correct regardless of what the AI wrote). Two pieces:
         #   1. Shopping list — upfront "buy everything now" table with

@@ -1465,6 +1465,58 @@ export async function generateClientLetter(
 }
 
 
+/**
+ * Re-render a letter's HTML from the already-saved markdown — NO API, $0.
+ *
+ * Reuses the existing/edited `.md` and re-runs ONLY the deterministic
+ * post-processing (brand HTML wrap, portion plate, supplement schedule with
+ * current plan timing, print buttons). Use this after a manual markdown edit
+ * or after a rendering rule / plan-data change, instead of paying Sonnet to
+ * regenerate the prose. Skips Sonnet AND the Haiku validation pass.
+ *
+ * Returns ok:false if no saved markdown exists for this letter type yet.
+ */
+export async function reRenderClientLetter(
+  planSlug: string,
+  clientId: string,
+  letterType: LetterType = "consolidated",
+): Promise<ClientLetterResult> {
+  const dir = await getMealPlanDir(clientId);
+  const stem = letterFileStem(planSlug, letterType);
+  let markdown: string;
+  try {
+    markdown = await fs.readFile(path.join(dir, `${stem}.md`), "utf-8");
+  } catch {
+    return { ok: false, markdown: "", error: "No saved letter to re-render — generate it first." };
+  }
+  if (!markdown.trim()) {
+    return { ok: false, markdown: "", error: "Saved letter is empty — nothing to re-render." };
+  }
+
+  const result = await runShim<ClientLetterResult>(
+    "render-client-letter.py",
+    {
+      plan_slug: planSlug,
+      client_id: clientId,
+      letter_type: letterType,
+      reuse_markdown: markdown,
+    },
+    120_000, // generous; no API call, just post-processing
+  );
+  if (!result.ok || !result.markdown) return result;
+
+  await saveMealPlan(
+    planSlug,
+    clientId,
+    result.markdown,
+    result.html ?? null,
+    letterType,
+    result.validation_report ?? null,
+  );
+  return result;
+}
+
+
 // ---------------------------------------------------------------------------
 // v0.73 — Letter inline section extraction.
 //
