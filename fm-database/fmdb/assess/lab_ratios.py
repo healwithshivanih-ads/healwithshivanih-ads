@@ -754,7 +754,7 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     ferritin = _find(extracted_labs,
         r"\bferritin\b|serum ferritin")
     iron = _find(extracted_labs,
-        r"\biron\b|serum iron|s-iron")
+        r"serum iron|s-iron|\biron\b(?!\s*binding)")
     tibc = _find(extracted_labs,
         r"\btibc\b|total iron binding|iron binding capacity")
     mcv = _find(extracted_labs,
