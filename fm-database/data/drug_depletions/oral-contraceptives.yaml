@@ -82,7 +82,11 @@ condition_implications:
   rationale: OCPs / combined hormonal contraceptives are usually prescribed for contraception, menstrual regulation, acne,
     PCOS, or menorrhagia.
   topic_slug: hormonal-contraception
-protocol_cautions: []
+protocol_cautions:
+- kind: avoid_supplement
+  item: "St John's Wort"
+  severity: warning
+  reason: 'Induces CYP enzymes and reduces contraceptive efficacy — risk of breakthrough bleeding / contraceptive failure.'
 timing_separations: []
 contraindicated_supplements:
 - st-johns-wort
@@ -118,7 +122,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: OCP nutrient depletions
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

@@ -44,7 +44,15 @@ condition_implications:
   rationale: Low-dose aspirin (75-100 mg) suggests CV secondary prevention; higher doses suggest analgesic / anti-inflammatory
     use.
   topic_slug: cardiovascular-prevention
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Take with food'
+  severity: warning
+  reason: 'Take with food to reduce GI irritation.'
+- kind: timing
+  item: 'Iron'
+  severity: warning
+  reason: 'Separate from supplemental iron by 2 hours (iron + ASA both irritate GI).'
 timing_separations:
 - Take with food to reduce GI irritation.
 - Separate from supplemental iron by 2 hours (iron + ASA both irritate GI).
@@ -73,7 +81,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Anti-platelet drug-nutrient interactions
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

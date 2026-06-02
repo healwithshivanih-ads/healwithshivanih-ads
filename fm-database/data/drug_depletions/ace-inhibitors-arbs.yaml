@@ -46,7 +46,11 @@ condition_implications:
   confidence: moderate
   rationale: ACE/ARBs are reno-protective in diabetic kidney disease + proteinuric CKD.
   topic_slug: chronic-kidney-disease
-protocol_cautions: []
+protocol_cautions:
+- kind: avoid_supplement
+  item: 'High-dose potassium'
+  severity: critical
+  reason: 'ACE inhibitors / ARBs raise potassium — added high-dose potassium risks hyperkalaemia. Only under prescriber monitoring.'
 timing_separations: []
 contraindicated_supplements:
 - high-dose-potassium
@@ -82,7 +86,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Cardiovascular drug interactions
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

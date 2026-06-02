@@ -64,7 +64,15 @@ condition_implications:
   rationale: Long-term PPI use (> 12 months) often masks underlying hypochlorhydria + dysbiosis; coach should consider weaning
     under prescriber supervision.
   topic_slug: hypochlorhydria
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Dose timing'
+  severity: warning
+  reason: 'Take 30 min before breakfast for max efficacy.'
+- kind: timing
+  item: 'Bisphosphonates'
+  severity: warning
+  reason: 'Bisphosphonates need acid for absorption — separate.'
 timing_separations:
 - Take 30 min before breakfast for max efficacy.
 - Bisphosphonates need acid for absorption — separate.
@@ -98,7 +106,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: PPI long-term use considerations
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

@@ -46,7 +46,15 @@ condition_implications:
   confidence: high
   rationale: Thiazide diuretics (HCTZ, indapamide, chlorthalidone) are first-line or adjunct for hypertension management.
   topic_slug: hypertension
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Dose timing'
+  severity: warning
+  reason: 'Take in morning to avoid nighttime urination.'
+- kind: avoid_supplement
+  item: 'High-dose potassium'
+  severity: warning
+  reason: 'Thiazides alter potassium balance — supplement potassium only under prescriber monitoring.'
 timing_separations:
 - Take in morning to avoid nighttime urination.
 contraindicated_supplements:
@@ -78,7 +86,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Diuretic depletions
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

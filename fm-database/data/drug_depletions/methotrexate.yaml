@@ -40,7 +40,19 @@ condition_implications:
   rationale: Methotrexate at FM-encountered doses (7.5-25 mg/week) is almost always for autoimmune disease — rheumatoid arthritis,
     psoriatic arthritis, psoriasis, IBD, juvenile arthritis.
   topic_slug: autoimmune-inflammation
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Folate'
+  severity: warning
+  reason: 'Take folate / folic acid at least 24h after MTX dose to preserve MTX efficacy (typically the day after MTX).'
+- kind: timing
+  item: 'Folate (same day as MTX)'
+  severity: warning
+  reason: 'Take folate/folic acid >=24h after the methotrexate dose (usually the next day) — same-day high-dose folate blunts MTX efficacy.'
+- kind: avoid_supplement
+  item: "St John's Wort"
+  severity: critical
+  reason: 'Photosensitivity + altered methotrexate handling — avoid.'
 timing_separations:
 - Take folate / folic acid at least 24h after MTX dose to preserve MTX efficacy (typically the day after MTX).
 contraindicated_supplements:
@@ -76,7 +88,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: MTX folate supplementation protocol
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

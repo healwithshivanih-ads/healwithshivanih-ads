@@ -78,7 +78,31 @@ condition_implications:
   rationale: SNRIs (especially duloxetine) are also indicated for fibromyalgia, diabetic peripheral neuropathy, and chronic
     musculoskeletal pain.
   topic_slug: chronic-pain
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Dose timing'
+  severity: warning
+  reason: 'Take same time daily — consistent levels matter.'
+- kind: timing
+  item: 'Grapefruit'
+  severity: warning
+  reason: 'Avoid grapefruit juice (CYP3A4 inhibition for some SSRIs).'
+- kind: avoid_supplement
+  item: "St John's Wort"
+  severity: critical
+  reason: 'Serotonin syndrome risk with SSRIs/SNRIs — do not combine.'
+- kind: avoid_supplement
+  item: '5-HTP'
+  severity: critical
+  reason: 'Serotonergic — combined with SSRIs/SNRIs risks serotonin syndrome.'
+- kind: avoid_supplement
+  item: 'SAM-e'
+  severity: critical
+  reason: 'Serotonergic — combined with SSRIs/SNRIs risks serotonin syndrome.'
+- kind: avoid_supplement
+  item: 'Tryptophan'
+  severity: critical
+  reason: 'Serotonergic — combined with SSRIs/SNRIs risks serotonin syndrome.'
 timing_separations:
 - Take same time daily — consistent levels matter.
 - Avoid grapefruit juice (CYP3A4 inhibition for some SSRIs).
@@ -117,7 +141,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Antidepressant nutrient interactions
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

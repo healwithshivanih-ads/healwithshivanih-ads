@@ -54,7 +54,15 @@ condition_implications:
   confidence: moderate
   rationale: Metformin is commonly used in PCOS for insulin sensitisation and cycle regularisation.
   topic_slug: pcos
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Take with food'
+  severity: warning
+  reason: 'Take WITH meals to reduce GI side effects (nausea, diarrhea).'
+- kind: timing
+  item: 'Minerals (Ca/Mg/Zn)'
+  severity: warning
+  reason: 'Calcium 1200 mg/day may reduce B12 absorption interference (clinical relevance debated).'
 timing_separations:
 - Take WITH meals to reduce GI side effects (nausea, diarrhea).
 - Calcium 1200 mg/day may reduce B12 absorption interference (clinical relevance debated).
@@ -82,7 +90,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Drug-nutrient depletions
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

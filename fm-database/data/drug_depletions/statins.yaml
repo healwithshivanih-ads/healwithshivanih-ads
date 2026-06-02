@@ -52,7 +52,15 @@ condition_implications:
   confidence: high
   rationale: Statins are prescribed for primary or secondary cardiovascular prevention based on lipid panel and ASCVD risk.
   topic_slug: dyslipidaemia
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Take with food'
+  severity: warning
+  reason: 'Take with evening meal (cholesterol synthesis peaks at night).'
+- kind: avoid_supplement
+  item: 'Red Yeast Rice'
+  severity: critical
+  reason: 'Contains natural lovastatin — stacking with a statin risks myopathy / rhabdomyolysis. Do not combine.'
 timing_separations:
 - Take with evening meal (cholesterol synthesis peaks at night).
 contraindicated_supplements:
@@ -82,7 +90,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Statin myopathy + CoQ10
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

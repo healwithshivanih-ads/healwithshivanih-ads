@@ -67,7 +67,19 @@ depletes:
 # via the medication-impact panel — that's the legitimate role of this
 # catalogue entry.
 condition_implications: []
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Probiotics'
+  severity: warning
+  reason: 'Probiotics — separate by 2-3 hours from antibiotic dose.'
+- kind: timing
+  item: 'Probiotics'
+  severity: warning
+  reason: 'Saccharomyces boulardii (yeast probiotic) is NOT killed by antibiotics — can be co-administered.'
+- kind: timing
+  item: 'Iron'
+  severity: warning
+  reason: 'Fluoroquinolones (cipro, levo) — separate from calcium / iron / magnesium / zinc by 4 hours (chelation reduces absorption).'
 timing_separations:
 - Probiotics — separate by 2-3 hours from antibiotic dose.
 - Saccharomyces boulardii (yeast probiotic) is NOT killed by antibiotics — can be co-administered.
@@ -91,7 +103,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Antibiotic gut support protocol
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

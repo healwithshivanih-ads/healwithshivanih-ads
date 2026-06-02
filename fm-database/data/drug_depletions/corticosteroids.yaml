@@ -72,7 +72,15 @@ condition_implications:
   rationale: Corticosteroids indicate an active inflammatory / autoimmune process. Coach must understand the specific condition
     before designing protocols.
   topic_slug: autoimmune-inflammation
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: 'Dose timing'
+  severity: warning
+  reason: 'Take morning dose to mimic natural cortisol rhythm + reduce HPA suppression.'
+- kind: avoid_supplement
+  item: 'Licorice (non-DGL)'
+  severity: warning
+  reason: 'Non-DGL licorice potentiates cortisol/steroid effect and raises BP — use DGL (deglycyrrhizinated) only.'
 timing_separations:
 - Take morning dose to mimic natural cortisol rhythm + reduce HPA suppression.
 contraindicated_supplements:
@@ -114,7 +122,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Steroid-induced bone loss prevention
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani
