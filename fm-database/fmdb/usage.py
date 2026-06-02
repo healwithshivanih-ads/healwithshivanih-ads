@@ -47,7 +47,7 @@ PRICING_USD_PER_MTOK: dict[str, tuple[float, float]] = {
     "claude-3-5-haiku":  (0.80, 4.0),
 }
 
-USD_TO_INR = float(os.environ.get("FMDB_USD_TO_INR", "85"))  # rough; override via env
+USD_TO_INR = float(os.environ.get("FMDB_USD_TO_INR", "100"))  # rough; override via env
 
 
 def _pricing_for(model: str | None) -> tuple[float, float]:

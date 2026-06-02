@@ -114,7 +114,7 @@ export async function loadClientApiSpend(clientId: string): Promise<ClientApiSpe
   } catch {
     return out;
   }
-  const rate = Number(process.env.FMDB_USD_TO_INR ?? 85);
+  const rate = Number(process.env.FMDB_USD_TO_INR ?? 100);
   const monthStart = new Date();
   monthStart.setDate(1);
   monthStart.setHours(0, 0, 0, 0);
@@ -126,7 +126,6 @@ export async function loadClientApiSpend(clientId: string): Promise<ClientApiSpe
       const e = JSON.parse(t) as { ts?: string; cost_usd?: number; cost_inr?: number };
       const usd = Number(e.cost_usd ?? 0);
       out.all_time_usd += usd;
-      out.all_time_inr += Number(e.cost_inr ?? usd * rate);
       out.all_time_calls += 1;
       if (e.ts && e.ts >= monthStartIso) out.this_month_usd += usd;
     } catch {
@@ -134,7 +133,10 @@ export async function loadClientApiSpend(clientId: string): Promise<ClientApiSpe
     }
   }
   out.all_time_usd = Math.round(out.all_time_usd * 100) / 100;
-  out.all_time_inr = Math.round(out.all_time_inr);
+  // Derive INR from USD at the current rate (₹100/USD) so the chip is
+  // consistent even though historical log entries stored cost_inr at an
+  // older rate.
+  out.all_time_inr = Math.round(out.all_time_usd * rate);
   out.this_month_usd = Math.round(out.this_month_usd * 100) / 100;
   return out;
 }
