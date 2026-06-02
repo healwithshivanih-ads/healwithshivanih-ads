@@ -593,12 +593,22 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # `ldl.cholesterol` pattern matches the substring "ldl cholesterol"
     # INSIDE "vldl cholesterol", so a VLDL result silently overwrites LDL.
     # (Caught 2026-05-20: Sudarshan's LDL 172.2 showed as VLDL's 20.8.)
+    # Lipid panels often include derived RATIO rows (TG:HDL, LDL/HDL, TC/HDL,
+    # Non-HDL) as their own lab_values. Bare \bhdl\b / \btg\b / \bldl\b match
+    # those ratio names and grab the ratio value instead of the real marker
+    # (e.g. TG:HDL=3.826 captured as HDL). Negative-lookahead "ratio" + the
+    # cross-marker names so each primary lipid only matches its own row.
+    # Exclude ratio rows two ways: the literal word "ratio", AND any name with
+    # ":" or "/" (e.g. "TG:HDL", "LDL/HDL" — ratios that omit the word), plus
+    # the cross-marker names so each primary lipid matches only its own row.
     ldl = _find(extracted_labs,
-        r"\bldl\b|\bldl.cholesterol|\blow.density.lipoprotein")
+        r"^(?!.*ratio)(?!.*[:/])(?!.*\bhdl\b)(?!.*\bvldl\b).*(?:\bldl\b|low.density.lipoprotein)")
     hdl = _find(extracted_labs,
-        r"\bhdl\b|hdl.cholesterol|high.density.lipoprotein")
+        r"^(?!.*ratio)(?!.*[:/])(?!.*non.?hdl).*(?:\bhdl\b|high.density.lipoprotein)")
     tg = _find(extracted_labs,
-        r"\btriglyceride|\btg\b|triglycerides\b")
+        # \btg\b also matches "anti-tg" (thyroglobulin antibody) and "tg:hdl"
+        # — exclude antibody/thyroid/ratio names so TG only grabs triglycerides.
+        r"^(?!.*ratio)(?!.*[:/])(?!.*hdl)(?!.*anti)(?!.*thyroglob).*(?:\btriglyceride|\btg\b)")
     homocysteine = _find(extracted_labs,
         r"homocysteine|hcy\b|plasma homocysteine")
     hscrp = _find(extracted_labs,
