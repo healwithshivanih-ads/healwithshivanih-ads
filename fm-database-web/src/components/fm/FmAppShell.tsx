@@ -14,7 +14,7 @@
  * legacy layout can drop and this becomes the only shell.
  */
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { FmSidebarNav, type FmNavSection } from "./FmSidebarNav";
 import { FmTopBar, type FmBreadcrumb } from "./FmTopBar";
@@ -108,7 +108,14 @@ export function FmAppShell({
   children,
 }: FmAppShellProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const [, setKbarOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
+  // Close the mobile nav drawer whenever the route changes.
+  useEffect(() => {
+    setNavOpen(false);
+  }, [pathname]);
 
   // ⌘K → existing /search route (Phase 5 replaces this with an inline palette
   // overlay; for now we just route there because /search already does the
@@ -140,6 +147,8 @@ export function FmAppShell({
       <FmSidebarNav
         sections={NAV}
         activeId={activeNavId}
+        open={navOpen}
+        onClose={() => setNavOpen(false)}
         brand={{
           name: "shivani hari",
           eyebrow: "functional medicine",
@@ -170,6 +179,7 @@ export function FmAppShell({
           crumbs={crumbs}
           rightSlot={topbarRightSlot}
           onSearchClick={() => router.push("/search")}
+          onMenuClick={() => setNavOpen(true)}
           user={{ initials: "SH", name: "Shivani Hari" }}
         />
         <main

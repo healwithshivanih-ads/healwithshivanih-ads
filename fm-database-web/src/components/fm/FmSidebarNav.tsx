@@ -41,6 +41,10 @@ export interface FmSidebarNavProps {
   };
   /** Footer block (e.g. user name, version). */
   footer?: React.ReactNode;
+  /** Mobile drawer open state. On desktop the sidebar is always shown. */
+  open?: boolean;
+  /** Called to close the mobile drawer (backdrop tap, close button, nav tap). */
+  onClose?: () => void;
 }
 
 const STYLES = `
@@ -160,6 +164,49 @@ const STYLES = `
   text-align: center;
   line-height: 1.5;
 }
+.fm-sidebar-close {
+  display: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+.fm-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 240;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+/* Mobile / small tablet: sidebar becomes an off-canvas drawer. */
+@media (max-width: 820px) {
+  .fm-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(82vw, 300px);
+    z-index: 250;
+    transform: translateX(-100%);
+    transition: transform 0.25s var(--fm-ease-out, ease);
+    box-shadow: 2px 0 24px rgba(0,0,0,0.35);
+  }
+  .fm-sidebar.fm-sidebar--open { transform: translateX(0); }
+  .fm-sidebar-close { display: inline-flex; align-items: center; justify-content: center; }
+  .fm-sidebar-backdrop.fm-sidebar-backdrop--show { display: block; }
+}
 `;
 
 export function FmSidebarNav({
@@ -167,10 +214,26 @@ export function FmSidebarNav({
   activeId,
   brand,
   footer,
+  open,
+  onClose,
 }: FmSidebarNavProps) {
   return (
-    <aside className="fm-sidebar">
+    <>
+      <div
+        className={`fm-sidebar-backdrop${open ? " fm-sidebar-backdrop--show" : ""}`}
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      <aside className={`fm-sidebar${open ? " fm-sidebar--open" : ""}`}>
       <style>{STYLES}</style>
+      <button
+        type="button"
+        className="fm-sidebar-close"
+        onClick={onClose}
+        aria-label="Close menu"
+      >
+        ✕
+      </button>
       {brand && (
         <div className="fm-sidebar-header">
           <Link href={brand.href ?? "/"} className="fm-sidebar-brand">
@@ -191,6 +254,7 @@ export function FmSidebarNav({
             <Link
               key={item.id}
               href={item.href}
+              onClick={onClose}
               className={`fm-nav-item${activeId === item.id ? " active" : ""}`}
             >
               <span className="fm-nav-item-icon">{item.icon}</span>
@@ -202,6 +266,7 @@ export function FmSidebarNav({
       ))}
       <div className="fm-sidebar-spacer" />
       {footer && <div className="fm-sidebar-footer">{footer}</div>}
-    </aside>
+      </aside>
+    </>
   );
 }

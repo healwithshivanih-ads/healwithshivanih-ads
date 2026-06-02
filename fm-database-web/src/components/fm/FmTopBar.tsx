@@ -23,6 +23,8 @@ export interface FmTopBarProps {
   onSearchClick?: () => void;
   /** Override the user label (initials, name). */
   user?: { initials: string; name?: string };
+  /** Called when the mobile hamburger is tapped (opens the nav drawer). */
+  onMenuClick?: () => void;
 }
 
 const STYLES = `
@@ -114,12 +116,45 @@ const STYLES = `
   flex-shrink: 0;
   cursor: pointer;
 }
+.fm-topbar-menu {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: 1px solid var(--fm-border);
+  background: var(--fm-surface-2);
+  color: var(--fm-text-primary);
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+/* Mobile: show hamburger, shrink the search box to an icon. */
+@media (max-width: 820px) {
+  .fm-topbar { padding: 0 12px; gap: 10px; }
+  .fm-topbar-menu { display: inline-flex; }
+  .fm-topbar-search { min-width: 0; padding: 0 10px; }
+  .fm-topbar-search-placeholder,
+  .fm-topbar-search-kbd { display: none; }
+}
 `;
 
-export function FmTopBar({ crumbs, rightSlot, onSearchClick, user }: FmTopBarProps) {
+export function FmTopBar({ crumbs, rightSlot, onSearchClick, user, onMenuClick }: FmTopBarProps) {
   return (
     <header className="fm-topbar">
       <style>{STYLES}</style>
+      {onMenuClick && (
+        <button
+          type="button"
+          className="fm-topbar-menu"
+          onClick={onMenuClick}
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+      )}
       <div className="fm-topbar-crumbs">
         {(crumbs ?? []).map((c, i, arr) => {
           const isLast = i === arr.length - 1;

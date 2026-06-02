@@ -269,14 +269,7 @@ export default async function V2PlanEditorPage({
 
       {/* 2-col layout — editor on left, plan-check on right. Mirrors v1
           /plans/<slug> exactly. */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) 320px",
-          gap: 24,
-          alignItems: "start",
-        }}
-      >
+      <div className="fm-v2-2col">
         <div style={{ minWidth: 0, maxWidth: "100%" }}>
           {/* ────────────────────────────────────────────────────────────
               NEW (2026-05-14): three context+action surfaces ABOVE the

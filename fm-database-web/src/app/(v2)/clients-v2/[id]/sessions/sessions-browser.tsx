@@ -241,7 +241,7 @@ export function SessionsBrowser({
         <div style={{ marginBottom: 14 }}>{trackingChartsSlot}</div>
       )}
 
-    <div className="fm-v2-2col" style={{ gridTemplateColumns: "340px minmax(0, 1fr)" }}>
+    <div className="fm-v2-2col list-first">
       {/* LEFT — filter chips + session list */}
       <aside className="fm-v2-2col-rail" style={{ padding: 0 }}>
         <div

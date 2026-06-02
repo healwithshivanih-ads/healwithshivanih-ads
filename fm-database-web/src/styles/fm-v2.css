@@ -116,6 +116,24 @@
   -webkit-font-smoothing: antialiased;
 }
 
+/* Mobile: tighter page padding so content isn't squeezed on phones. */
+@media (max-width: 820px) {
+  .fm-v2 { --fm-page-pad: 14px; }
+}
+
+/* Responsive content/rail layout: two columns on desktop, stacked on mobile. */
+.fm-v2 .fm-two-col {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 24px;
+}
+@media (max-width: 820px) {
+  .fm-v2 .fm-two-col {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
 /* =========================================================
    Headings — Libre Baskerville for display, sans for body
    ========================================================= */
@@ -220,6 +238,10 @@
 .fm-v2-2col.tight {
   grid-template-columns: minmax(0, 1fr) 340px;
 }
+/* Rail-first variant (e.g. a list on the left, detail on the right). */
+.fm-v2-2col.list-first {
+  grid-template-columns: 340px minmax(0, 1fr);
+}
 .fm-v2-2col-rail {
   position: sticky;
   top: 24px;
@@ -232,7 +254,8 @@
 }
 @media (max-width: 1180px) {
   .fm-v2-2col,
-  .fm-v2-2col.tight {
+  .fm-v2-2col.tight,
+  .fm-v2-2col.list-first {
     grid-template-columns: minmax(0, 1fr);
   }
   .fm-v2-2col-rail {

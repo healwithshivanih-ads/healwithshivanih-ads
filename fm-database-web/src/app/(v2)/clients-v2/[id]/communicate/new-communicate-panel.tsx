@@ -927,14 +927,7 @@ export function NewCommunicatePanel({
       )}
 
       {/* Main 2-col body */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) 320px",
-          gap: 24,
-          marginTop: 18,
-        }}
-      >
+      <div className="fm-v2-2col" style={{ marginTop: 18 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           {/* Weekly menus track */}
           <section className="FmPanel FmPanel--flush">
