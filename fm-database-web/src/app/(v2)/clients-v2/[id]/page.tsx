@@ -90,6 +90,7 @@ import { clientSubnavTabs } from "./client-subnav";
 import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";
 import { ClientQuickChatPanel } from "./client-quick-chat-panel";
 import { HandoutDripPanel } from "./handout-drip-panel";
+import { loadClientApiSpend } from "@/lib/server-actions/usage";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 import { CycleTrackingPanel } from "./cycle-tracking-panel";
 
@@ -978,6 +979,9 @@ export default async function ClientV2Page({
   const medList = meds.slice(0, 8);
   const allergyChips = (client.known_allergies ?? []).slice(0, 8);
 
+  // API spend logged against this client (all-time) — surfaced as a header chip.
+  const apiSpend = await loadClientApiSpend(client.client_id);
+
   return (
     <FmAppShell
       activeNavId="clients"
@@ -1056,6 +1060,23 @@ export default async function ClientV2Page({
         }
       />
 
+      <div style={{ display: "flex", justifyContent: "flex-end", marginTop: -2, marginBottom: 4 }}>
+        <span
+          title={`${apiSpend.all_time_calls} AI calls logged · $${apiSpend.this_month_usd} this month`}
+          style={{
+            fontSize: 11,
+            color: "#64748b",
+            background: "#f1f5f9",
+            border: "1px solid #e2e8f0",
+            borderRadius: 999,
+            padding: "2px 10px",
+            fontWeight: 600,
+          }}
+        >
+          💸 API spend: ₹{apiSpend.all_time_inr.toLocaleString("en-IN")} (${apiSpend.all_time_usd}) · {apiSpend.all_time_calls} calls
+        </span>
+      </div>
+
       <div
         style={{
           display: "flex",
@@ -1112,13 +1133,7 @@ export default async function ClientV2Page({
 
       <HandoutDripPanel clientId={client.client_id} />
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "minmax(0, 2fr) minmax(280px, 1fr)",
-          gap: 24,
-        }}
-      >
+      <div className="fm-two-col">
         {/* LEFT COLUMN */}
         <div style={{ display: "grid", gap: 16, minWidth: 0 }}>
           <FmPanel title="Clinical summary">

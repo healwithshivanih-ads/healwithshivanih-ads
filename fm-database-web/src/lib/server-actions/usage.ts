@@ -96,6 +96,49 @@ export async function loadApiUsageMtdAllClients(): Promise<ApiUsageMtdRollup> {
   };
 }
 
+export interface ClientApiSpend {
+  all_time_usd: number;
+  all_time_inr: number;
+  all_time_calls: number;
+  this_month_usd: number;
+}
+
+/** Total API spend logged against ONE client (all-time + this-month).
+ *  Reads clients/<id>/_api_usage.jsonl. Returns zeros if none. Cheap. */
+export async function loadClientApiSpend(clientId: string): Promise<ClientApiSpend> {
+  const out: ClientApiSpend = { all_time_usd: 0, all_time_inr: 0, all_time_calls: 0, this_month_usd: 0 };
+  const filePath = path.join(getPlansRoot(), "clients", clientId, "_api_usage.jsonl");
+  let raw: string;
+  try {
+    raw = await fs.readFile(filePath, "utf-8");
+  } catch {
+    return out;
+  }
+  const rate = Number(process.env.FMDB_USD_TO_INR ?? 85);
+  const monthStart = new Date();
+  monthStart.setDate(1);
+  monthStart.setHours(0, 0, 0, 0);
+  const monthStartIso = monthStart.toISOString();
+  for (const line of raw.split("\n")) {
+    const t = line.trim();
+    if (!t) continue;
+    try {
+      const e = JSON.parse(t) as { ts?: string; cost_usd?: number; cost_inr?: number };
+      const usd = Number(e.cost_usd ?? 0);
+      out.all_time_usd += usd;
+      out.all_time_inr += Number(e.cost_inr ?? usd * rate);
+      out.all_time_calls += 1;
+      if (e.ts && e.ts >= monthStartIso) out.this_month_usd += usd;
+    } catch {
+      // skip malformed line
+    }
+  }
+  out.all_time_usd = Math.round(out.all_time_usd * 100) / 100;
+  out.all_time_inr = Math.round(out.all_time_inr);
+  out.this_month_usd = Math.round(out.this_month_usd * 100) / 100;
+  return out;
+}
+
 export interface ApiUsageEntry {
   ts: string;
   script: string;
