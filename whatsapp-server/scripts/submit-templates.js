@@ -61,6 +61,147 @@ const TEMPLATES = [
     example: [['Priya', '15 May 2026', '5:00 PM', 'Cortisol Reset']],
   },
 
+  // ── Wix Bookings — in-person sessions (4) ──────────────────────────────────
+  // Driven by the wix-bookings webhook. Location classification:
+  // distance = Wix location id 05fd2dd8-a460-4f7f-9c79-fa5adc16ddb3 ("IN");
+  // anything else = in-person. Address passed dynamically from the booking
+  // payload's formattedAddress (falls back to location name).
+  {
+    name: 'appt_confirm_inperson_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}! Your in-person {{4}} session is confirmed for {{2}} at {{3}}.\n\n📍 {{5}}\n\nLooking forward to seeing you. If anything changes, just reply here.\n\n— Shivani',
+    example: [[
+      'Priya',
+      '20 May 2026',
+      '5:00 PM',
+      'Bach Flower Remedy',
+      'ICC TWO, Island City Center, G D Ambekar Road, Dadar East, Mumbai',
+    ]],
+  },
+  {
+    name: 'appt_reminder_24h_inperson_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, a gentle reminder — your in-person {{4}} session is tomorrow ({{2}}) at {{3}}.\n\n📍 {{5}}\n\nSee you then! 🌿\n\n— Shivani',
+    example: [[
+      'Priya',
+      '20 May 2026',
+      '5:00 PM',
+      'Bach Flower Remedy',
+      'ICC TWO, Island City Center, G D Ambekar Road, Dadar East, Mumbai',
+    ]],
+  },
+  {
+    // Coach-side 24h reminder — only fires for in-person (Shivani doesn't
+    // need a 24h on distance sessions per spec).
+    name: 'appt_reminder_24h_inperson_coach',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi Shivani, you have an in-person {{3}} session tomorrow with {{1}} at {{2}}.\n\n📍 {{4}}\n📞 {{5}}\n\nGet ready 🌿',
+    example: [[
+      'Priya Sharma',
+      '5:00 PM',
+      'Bach Flower Remedy',
+      'ICC TWO, Island City Center, G D Ambekar Road, Dadar East, Mumbai',
+      '+91 98765 43210',
+    ]],
+  },
+  {
+    name: 'appt_reminder_1h_inperson_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, your in-person {{3}} session is in about an hour — at {{2}} today.\n\n📍 {{4}}\n\nSee you soon! 🙏\n\n— Shivani',
+    example: [[
+      'Priya',
+      '5:00 PM',
+      'Bach Flower Remedy',
+      'ICC TWO, Island City Center, G D Ambekar Road, Dadar East, Mumbai',
+    ]],
+  },
+
+  // ── Wix Bookings — distance healing (1) ────────────────────────────────────
+  // Distance bookings (Wix location "IN") get no confirmation and no coach
+  // reminder per spec — only this 5-min nudge to the client.
+  {
+    name: 'appt_reminder_5min_distance_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, your distance {{2}} session is starting in 5 minutes.\n\nFind a quiet, comfortable spot, take a few deep breaths, and settle in. I\'ll be tuning in shortly.\n\n🌿 — Shivani',
+    example: [['Priya', 'Bach Flower Remedy']],
+  },
+
+  // ── Cal.com — Zoom sessions (3 + 1 interactive) ────────────────────────────
+  // Zoom join URL passed as the meeting suffix (e.g. "85123456789?pwd=abc").
+  // Uses zoom.us/j/ — Zoom's universal redirector that works across all
+  // data centers (us02web, eu01web, etc.).
+  {
+    name: 'appt_confirm_zoom_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}! Your {{4}} session is confirmed for {{2}} at {{3}}.\n\nWe\'ll meet on Zoom — tap the button below to join when it\'s time.\n\n— Shivani',
+    example: [['Priya', '20 May 2026', '5:00 PM', 'Coaching Session']],
+    buttons: [{
+      type: 'URL',
+      text: 'Join Zoom',
+      url: 'https://zoom.us/j/{{1}}',
+      exampleSuffix: '85123456789?pwd=abc123',
+    }],
+  },
+  {
+    name: 'appt_reminder_1h_zoom_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, your {{3}} session is in about an hour — at {{2}} today.\n\nTap below to join Zoom when it\'s time. See you soon!\n\n— Shivani',
+    example: [['Priya', '5:00 PM', 'Coaching Session']],
+    buttons: [{
+      type: 'URL',
+      text: 'Join Zoom',
+      url: 'https://zoom.us/j/{{1}}',
+      exampleSuffix: '85123456789?pwd=abc123',
+    }],
+  },
+  {
+    name: 'appt_reminder_1h_zoom_coach',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi Shivani, you have a {{3}} session in an hour with {{1}} at {{2}}.\n\nTap to join Zoom.',
+    example: [['Priya Sharma', '5:00 PM', 'Coaching Session']],
+    buttons: [{
+      type: 'URL',
+      text: 'Join Zoom',
+      url: 'https://zoom.us/j/{{1}}',
+      exampleSuffix: '85123456789?pwd=abc123',
+    }],
+  },
+  {
+    // Fires T+5min if the no-show signal trips (Cal.com tracking matrix
+    // primary; Zoom API poll fallback). 3 quick-reply buttons — replies
+    // come back as interactive.button_reply events; the handler:
+    //   "Be there in 5" → ack only
+    //   "Be there in 15" → ack + ping Shivani
+    //   "Need to reschedule" → free-form follow-up with Cal.com link
+    name: 'appt_noshow_probe_client',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      'Hi {{1}}, just checking in — I haven\'t seen you on Zoom yet for our {{2}} session. Running late, or need to move it?',
+    example: [['Priya', 'Coaching Session']],
+    buttons: [
+      'Be there in 5',
+      'Be there in 15',
+      'Need to reschedule',
+    ],
+  },
+
   // ── FM coach manual templates (Message Templates panel on client page) ─────
   {
     name: 'fm_lab_reminder',
@@ -287,6 +428,22 @@ const TEMPLATES = [
     body:
       'Hi {{1}} 👋 Quick check-in. Has your period started yet? If yes, please reply with the date it began (for example: 21 May). This helps me time your plan and any tests accurately.',
     example: [['Priya']],
+  },
+  {
+    // Handout drip — fired by fm-coach on a staggered schedule (one guide
+    // every 1-2 weeks, anchored to the client's plan Day 1). UTILITY framing:
+    // each handout is a deliverable of the protocol the client is ALREADY on
+    // (recipient-state anchor "your plan" / "what we're already working on"),
+    // a neutral service notification — NOT a promotion, no CTA urgency (that's
+    // what landed fm_supplement_order_v1 in MARKETING). {{2}} = guide title,
+    // {{3}} = public S3 link to the 1-page branded PDF
+    // (healwithshivanih-public-media/handouts/<slug>.pdf).
+    name: 'fm_handout_v1',
+    category: 'UTILITY',
+    language: 'en',
+    body:
+      "Hi {{1}}, here's a short guide that goes with your plan — {{2}}. It's a phone-friendly page with a few simple, doable steps to support what we're already working on:\n\n{{3}}\n\nTake it at your own pace, and reply here anytime if anything doesn't sit right for you. — Shivani Hari",
+    example: [['Priya', 'Building your iron', 'https://healwithshivanih-public-media.s3.ap-south-1.amazonaws.com/handouts/iron-for-vegetarians.pdf']],
   },
 
   // Weekly poll templates — each has 3 quick-reply buttons. Button labels
