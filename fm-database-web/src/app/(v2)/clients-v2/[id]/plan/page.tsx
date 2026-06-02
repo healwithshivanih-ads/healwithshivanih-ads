@@ -60,6 +60,7 @@ import { FollowUpPanel } from "./follow-up-panel";
 import { PhaseLetterPanel } from "./phase-letter-panel";
 import { PlanOutcomesPanel } from "./plan-outcomes-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
+import { SendEducationPackButton } from "@/components/client-widgets/send-education-pack-button";
 // GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
 // around line 745 for the pointer card that replaced it.
 // RegenerateStaleButton import removed 2026-05-20 — the letter-staleness
@@ -267,10 +268,11 @@ export default async function PlanTabPage({
   // Clears plan/system-alerts chip on the unread badge for this client.
   void markCoachTabViewed(id, "plan");
 
-  const [client, allPlans, catalogueChips] = await Promise.all([
+  const [client, allPlans, catalogueChips, allTopicsList] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
     loadCatalogueChipDict(),
+    loadAllOfKind<{ slug?: string; display_name?: string }>("topics"),
   ]);
   if (!client) {
     return (
@@ -576,6 +578,26 @@ export default async function PlanTabPage({
   const primaryTopics = (activePlan?.primary_topics ?? []) as string[];
   const contributingTopics = (activePlan?.contributing_topics ?? []) as string[];
   const presentingSymptoms = (activePlan?.presenting_symptoms ?? []) as string[];
+
+  // Build topic lists for SendEducationPackButton.
+  // assessmentTopics = primary + contributing topics from the active plan,
+  // with display names looked up from the catalogue. allTopics = full list.
+  const topicSlugToName = new Map<string, string>(
+    allTopicsList
+      .filter((t) => t.slug)
+      .map((t) => [t.slug!, t.display_name ?? t.slug!]),
+  );
+  const assessmentTopicSlugs = [...new Set([...primaryTopics, ...contributingTopics])];
+  const assessmentTopicsForPicker = assessmentTopicSlugs.map((slug) => ({
+    slug,
+    label: topicSlugToName.get(slug) ?? slug.replace(/-/g, " "),
+  }));
+  const allTopicsForPicker = allTopicsList
+    .filter((t) => t.slug && t.display_name)
+    .map((t) => ({ slug: t.slug!, display_name: t.display_name! }))
+    .sort((a, b) => a.display_name.localeCompare(b.display_name));
+  const clientEmail = (client as { email?: string } | null)?.email ?? undefined;
+  const clientName = (client as { display_name?: string } | null)?.display_name ?? undefined;
   const notesForCoach = (activePlan?.notes_for_coach as string | undefined) ?? "";
   const planPeriodWeeks = activePlan?.plan_period_weeks;
   // Plan timeline dates — already on disk, surfaced here so the coach can
@@ -1044,19 +1066,32 @@ export default async function PlanTabPage({
               </FmPanel>
             )}
 
-            {/* Education modules */}
-            {education.length > 0 && (
-              <FmPanel
-                title={`🎓 Education (${education.length})`}
-                subtitle="Condition / root-cause explainers attached to the client letter."
-              >
+            {/* Education modules + send education pack */}
+            <FmPanel
+              title={`🎓 Education`}
+              subtitle="Condition / root-cause explainers. Send as a personalised email with NHS/NIH/WHO references."
+              rightSlot={
+                <SendEducationPackButton
+                  clientId={id}
+                  clientEmail={clientEmail}
+                  clientName={clientName}
+                  assessmentTopics={assessmentTopicsForPicker}
+                  allTopics={allTopicsForPicker}
+                />
+              }
+            >
+              {education.length > 0 ? (
                 <div style={{ display: "grid", gap: 6 }}>
                   {education.map((e, i) => (
                     <Row key={`${e.label}-${i}`} label={e.label} detail={e.detail} />
                   ))}
                 </div>
-              </FmPanel>
-            )}
+              ) : (
+                <EmptyHint>
+                  No education modules on this plan — use &ldquo;Send education pack&rdquo; to email a topic brief anyway.
+                </EmptyHint>
+              )}
+            </FmPanel>
 
             {/* Drivers */}
             {drivers.length > 0 && (
