@@ -20,7 +20,32 @@
  * on whatever data is there).
  */
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
-import { saveIntakeDraft, submitIntakeForm } from "@/lib/server-actions/intake";
+// Using stable /api/intake fetch calls — see intake-form.tsx for the reason
+async function saveIntakeDraft(
+  token: string,
+  draft: Record<string, unknown>
+): Promise<{ ok: true; saved_at: string } | { ok: false; error: string }> {
+  const res = await fetch("/api/intake", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "save_draft", token, draft }),
+  });
+  return res.json();
+}
+async function submitIntakeForm(
+  token: string,
+  payload: Record<string, unknown>
+): Promise<
+  | { ok: true; client_id: string; fields_updated: string[]; session_id: string }
+  | { ok: false; error: string }
+> {
+  const res = await fetch("/api/intake", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "submit", token, payload }),
+  });
+  return res.json();
+}
 
 interface Props {
   token: string;

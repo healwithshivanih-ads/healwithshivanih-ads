@@ -1,7 +1,36 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { saveIntakeDraft, submitIntakeForm } from "@/lib/server-actions/intake";
+// saveIntakeDraft and submitIntakeForm are called via the stable /api/intake
+// HTTP endpoint rather than Next.js Server Actions. Server Action hashes
+// change on every build, breaking any browser tab opened before a restart.
+// API routes are stable — open tabs survive server restarts.
+async function apiSaveIntakeDraft(
+  token: string,
+  draft: Record<string, unknown>
+): Promise<{ ok: true; saved_at: string } | { ok: false; error: string }> {
+  const res = await fetch("/api/intake", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "save_draft", token, draft }),
+  });
+  return res.json();
+}
+
+async function apiSubmitIntakeForm(
+  token: string,
+  payload: Record<string, unknown>
+): Promise<
+  | { ok: true; client_id: string; fields_updated: string[]; session_id: string }
+  | { ok: false; error: string }
+> {
+  const res = await fetch("/api/intake", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "submit", token, payload }),
+  });
+  return res.json();
+}
 import { FormChrome } from "./form-chrome";
 import { BristolStoolIcon } from "./bristol-stool-icon";
 import { PainBodyMap } from "./pain-body-map";
@@ -2163,7 +2192,7 @@ export function IntakeForm({
     setSaving(true);
     try {
       const draftBody = buildPayload(stateRef.current);
-      const res = await saveIntakeDraft(token, draftBody);
+      const res = await apiSaveIntakeDraft(token, draftBody);
       if (res.ok) {
         const now = new Date();
         const hh = String(now.getHours()).padStart(2, "0");
@@ -2440,7 +2469,7 @@ export function IntakeForm({
     setSubmitError(null);
     try {
       const payload = buildPayload(state);
-      const res = await submitIntakeForm(token, payload);
+      const res = await apiSubmitIntakeForm(token, payload);
       if (res.ok) {
         setSubmitted(true);
         window.scrollTo({ top: 0, behavior: "smooth" });
