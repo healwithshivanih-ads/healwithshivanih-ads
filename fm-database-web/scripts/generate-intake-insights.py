@@ -257,6 +257,7 @@ def _build_intake_payload(client_dict: dict[str, Any]) -> str:
     dl += _format_list("Reported triggers (n=1)", c.get("reported_triggers"))
     dl += _format_list("Postprandial pattern", c.get("postprandial_pattern"))
     dl += _format_list("Cold / heat tolerance", c.get("cold_heat_tolerance"))
+    dl += _format_list("OK with animal-derived supplements?", c.get("animal_derived_supplements_ok"))
     if dl:
         sections.append("=== DIET & LIFESTYLE ===\n" + dl.rstrip())
 
@@ -332,6 +333,8 @@ def _build_intake_payload(client_dict: dict[str, Any]) -> str:
         ts += _format_list("Lean test — standing HR after 10 min (bpm)", c.get("lean_test_standing_hr"))
     ts += _format_list("Standing-tolerance / lean-test symptoms", c.get("lean_test_symptoms"))
     ts += _format_list("Post-exertional malaise (PEM) screen", c.get("pem_screen"))
+    ts += _format_list("STOP-BANG sleep-apnoea signals", c.get("stop_bang_signals"))
+    ts += _format_list("Adverse childhood experiences (ACE) signals", c.get("ace_signals"))
     ts += _format_list("Mould / environmental exposure", c.get("mould_exposure"))
     if c.get("large_fish_frequency"):
         ts += _format_list("Large-fish frequency", c.get("large_fish_frequency"))
@@ -379,6 +382,7 @@ def _build_intake_payload(client_dict: dict[str, Any]) -> str:
         rp += _format_list("Period pain severity (1-10)", c.get("period_pain_severity"))
         rp += _format_list("Period pain impact", c.get("period_pain_impact"))
         rp += _format_list("PMDD signs", c.get("pmdd_signs"))
+        rp += _format_list("Endometriosis / adeno / fibroid signals", c.get("endometriosis_signals"))
         rp += _format_list("Repro diagnoses", c.get("repro_diagnoses"))
         rp += _format_list("Perimenopause inventory", c.get("perimenopause_inventory"))
         rp += _format_list("Pregnancy status", c.get("pregnancy_status"))
