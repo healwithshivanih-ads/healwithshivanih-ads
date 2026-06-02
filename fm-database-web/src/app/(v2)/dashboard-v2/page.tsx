@@ -307,9 +307,23 @@ async function computeSignal(
   //   - untagged legacy assessment notes — parseSessionType DEFAULTS
   //     untagged sessions to "intake", which previously produced false
   //     "intake done" positives (e.g. Archana's leukopenia note).
-  const hasCoachIntake = sessions.some((s) =>
-    /\[session_type:\s*(intake|full_assessment)\]/i.test(presentingOf(s)),
-  );
+  const hasCoachIntake = sessions.some((s) => {
+    // 1. The explicit tag (what the /analyse flow now writes).
+    if (/\[session_type:\s*(intake|full_assessment)\]/i.test(presentingOf(s))) return true;
+    const so = s as unknown as Record<string, unknown>;
+    // 2. The structured session_type field, when set.
+    const st = String(so.session_type ?? "").toLowerCase();
+    if (st === "intake" || st === "full_assessment") return true;
+    // 3. A completed AI synthesis IS a coach intake even if the session was
+    //    never tagged — assess.py historically persisted ai_analysis with no
+    //    [session_type] tag, leaving fully-assessed clients (e.g. cl-013)
+    //    stuck in "intake to do". Source is now fixed; this covers existing
+    //    sessions retroactively without a data migration.
+    const ai = so.ai_analysis as Record<string, unknown> | undefined;
+    const drivers = ai?.likely_drivers;
+    if (Array.isArray(drivers) && drivers.length > 0) return true;
+    return false;
+  });
 
   const engagement =
     client.engagement_status === "signed_up"

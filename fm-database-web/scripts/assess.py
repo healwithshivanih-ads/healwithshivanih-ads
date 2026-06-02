@@ -1213,6 +1213,15 @@ def main() -> int:
     except Exception:
         pass  # non-fatal — ratios still returned in the response
 
+    # Tag the persisted session as a full assessment so downstream surfaces
+    # (dashboard intake gate, client journey strip) recognise that a coach
+    # intake/assessment actually ran. The full-form passes untagged free-text
+    # complaints; without this the client stays stuck in "intake to do" even
+    # after a full AI synthesis. Done AFTER the AI call + cache key above so
+    # the tag never pollutes the model input or cache key.
+    if "[session_type:" not in (complaints or ""):
+        complaints = f"[session_type: full_assessment] {complaints}".strip()
+
     # ----- persist session (reuse today's or create new) -----
     if existing_sid:
         # Update existing session for today
