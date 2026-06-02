@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { toast } from "sonner";
 import {
   loadLetterHtmlForEmailAction,
   sendClientEmailAction,
   recordLetterSendAction,
+  loadLetterSendLogAction,
   updateClientFieldsAction,
 } from "@/app/api/email/actions";
+import { relativeTimeShort } from "@/lib/fmdb/session-utils";
 
 type LetterType =
   | "consolidated"
@@ -42,15 +44,55 @@ export function SendToClientButton({
   phase,
 }: Props) {
   const [open, setOpen] = useState(false);
+  // Persisted-send state (coach rule: send buttons show "Sent · Resend").
+  // Read this letter's last send from the append-only send-log on mount, and
+  // flip optimistically when the modal reports a successful send.
+  const [sentAt, setSentAt] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!clientId) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const entries = await loadLetterSendLogAction(clientId);
+        if (cancelled || !Array.isArray(entries)) return;
+        const match = entries.find(
+          (e) =>
+            (!e.plan_slug || e.plan_slug === planSlug) &&
+            Array.isArray(e.letter_types) &&
+            e.letter_types.includes(letterType),
+        );
+        if (match?.sent_at) setSentAt(match.sent_at);
+      } catch {
+        /* non-fatal — button just shows the fresh action */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [clientId, planSlug, letterType]);
 
   return (
     <>
       <button
         onClick={() => setOpen(true)}
         className="text-xs font-semibold px-3 py-1.5 rounded-lg border hover:bg-muted/50 transition-all flex items-center gap-1.5"
+        title={
+          sentAt
+            ? `Last sent ${relativeTimeShort(sentAt)} — opens the composer to resend`
+            : "Compose and send this letter to the client"
+        }
       >
-        📧 Send to client
+        {sentAt ? "↻ Resend to client" : "📧 Send to client"}
       </button>
+      {sentAt && (
+        <span
+          className="text-[11px] text-emerald-600 font-semibold ml-1.5"
+          title={`Last sent ${new Date(sentAt).toLocaleString()}`}
+        >
+          ✓ Sent {relativeTimeShort(sentAt)}
+        </span>
+      )}
       {open && (
         <SendModal
           planSlug={planSlug}
@@ -59,6 +101,7 @@ export function SendToClientButton({
           clientName={clientName}
           letterType={letterType}
           phase={phase}
+          onSent={() => setSentAt(new Date().toISOString())}
           onClose={() => setOpen(false)}
         />
       )}
@@ -75,6 +118,7 @@ function SendModal({
   clientName,
   letterType,
   phase,
+  onSent,
   onClose,
 }: {
   planSlug: string;
@@ -83,6 +127,7 @@ function SendModal({
   clientName?: string;
   letterType: LetterType;
   phase?: { startWeek: number; endWeek: number };
+  onSent?: () => void;
   onClose: () => void;
 }) {
   const [step,      setStep]      = useState<"compose" | "preview" | "done">("compose");
@@ -237,9 +282,10 @@ ${renderedHtml}`;
     }
 
     setStep("done");
+    onSent?.();
     const ccNote = cc.trim() ? ` (cc ${cc.trim()})` : "";
     toast.success(`Plan sent to ${to}${ccNote}`);
-  }, [to, cc, subject, intro, renderedHtml, saveAsClientEmail, clientId]);
+  }, [to, cc, subject, intro, renderedHtml, saveAsClientEmail, clientId, onSent]);
 
   // Backdrop click closes
   const handleBackdropClick = (e: React.MouseEvent) => {
