@@ -9,9 +9,21 @@ aliases:
 - autoimmune thyroiditis
 - chronic lymphocytic thyroiditis
 - hashimotos-thyroiditis
-summary: Autoimmune attack on thyroid tissue driven by anti-thyroid antibodies and
-  chronic inflammation, leading to progressive hypothyroidism. LDN is proposed to
-  reduce inflammation, lower anti-thyroid antibody levels, and improve T4→T3 conversion.
+- seronegative hashimoto's
+- seronegative autoimmune thyroiditis
+- antibody-negative hashimoto's
+- antibody-negative thyroiditis
+- seronegative-hashimotos
+summary: Autoimmune attack on thyroid tissue, leading to progressive hypothyroidism.
+  The destruction is primarily T-cell (cell-mediated); anti-thyroid antibodies (TPO,
+  TgAb) are markers of the process rather than the destructive engine. Because of
+  this, a SERONEGATIVE (antibody-negative) form exists — normal TPO and TgAb do NOT
+  rule out autoimmune thyroiditis (an estimated 10–20% of cases). Thyroid ultrasound
+  (hypoechoic, heterogeneous, hypervascular gland) confirms autoimmune thyroiditis
+  when antibodies are negative. Antibodies also fluctuate and can decline over time
+  or with selenium/dietary change, so a single negative result is only a snapshot.
+  LDN is proposed to reduce inflammation, lower anti-thyroid antibody levels, and
+  improve T4→T3 conversion.
 common_symptoms:
 - lethargy
 - brain-fog
@@ -23,13 +35,32 @@ red_flags:
 - severe-hypothyroid-symptoms
 related_topics:
 - low-dose-naltrexone
+- hypothyroidism
+- autoimmunity-leaky-gut-triad
 key_mechanisms:
+- thyroid-autoimmunity
+- molecular-mimicry
+- leaky-gut
+- hpa-axis-dysregulation
 - endorphin-immune-modulation
 - ldn-endorphin-rebound
 coaching_scope_notes: Coaches may support lifestyle and dietary factors. LDN prescribing
   and thyroid hormone monitoring are clinician scope.
 clinician_scope_notes: LDN may reduce anti-thyroid antibodies and inflammation. Monitor
   thyroid hormone levels closely as thyroid dose requirements may change with LDN.
+notes_for_coach: 'Seronegative recognition (common, easily missed): when a client
+  has hypothyroid labs (high-ish TSH, low/low-normal fT4) and hypothyroid symptoms
+  but NORMAL TPO and TgAb, do not assume "not autoimmune." Hashimoto''s is T-cell
+  mediated, so an antibody-negative (seronegative) form is real and accounts for an
+  estimated 10–20% of cases. Antibody titres also fluctuate and can fall over time
+  or with selenium/diet — a single negative is a snapshot, not a ruling-out. Watch
+  for trigger/unmasking history: postpartum or miscarriage, viral infection (COVID,
+  EBV), and metabolic inflammation (e.g. gestational diabetes). 🟡/🔴 To settle the
+  question, the client''s clinician can order a thyroid ultrasound (hypoechoic, heterogeneous,
+  hypervascular gland confirms it even when antibodies are negative), recheck TPO/TgAb,
+  and screen for coeliac disease. The FM levers overlap regardless of antibody status:
+  selenium, vitamin D, iron and zinc as immune-tolerance + conversion cofactors, gut-barrier
+  support, anti-inflammatory diet, and HPA/stress work.'
 evidence_tier: plausible_emerging
 sources:
 - id: vitaone-ldn-article
@@ -56,7 +87,7 @@ sources:
   quote: Natural treatment strategies for normalizing thyroid function vary depending
     on whether there is an autoimmune hypothyroid condition, clinical hypothyroidism,
     subclinical hypothyroidism, or hypothyroid syndrome.
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-02'
 updated_by: shivani

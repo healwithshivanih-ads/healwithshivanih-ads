@@ -14,10 +14,17 @@ aliases:
 - hashimotos-autoimmune-cascade
 - TPO antibody elevation
 - molecular mimicry thyroid
+- cell-mediated thyroid destruction
+- T-cell mediated thyroiditis
+- seronegative thyroid autoimmunity
+- antibody-negative thyroid autoimmunity
 category: immune
 summary: The immune system produces antibodies (Anti-TPO, Anti-Tg) against thyroid tissue components. T-cells (helper, cytotoxic,
-  regulatory) mediate actual destruction. Triggered by leaky gut, molecular mimicry, infections, and genetic predisposition.
-  Degree of destruction depends on T-cell activity, not antibody levels alone.
+  regulatory) mediate the actual tissue destruction. Triggered by leaky gut, molecular mimicry, infections (e.g. COVID, EBV),
+  postpartum immune shifts, and genetic predisposition. Degree of destruction depends on T-cell activity, not antibody levels
+  alone — which is why antibody titre does not track severity, and why a SERONEGATIVE (antibody-negative) form exists. Normal
+  TPO/TgAb therefore does not exclude autoimmune thyroiditis; thyroid ultrasound (hypoechoic, heterogeneous, hypervascular)
+  confirms it when antibodies are negative.
 upstream_drivers:
 - leaky-gut
 - molecular-mimicry
@@ -53,7 +60,7 @@ sources:
 - id: vitaone-thyroid-cheatsheet
   location: Thyroid Disorders Cheatsheet — Anti-TPO row
   quote: Leaky gut, gluten sensitivity, molecular mimicry, toxins
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-02'
 updated_by: shivani

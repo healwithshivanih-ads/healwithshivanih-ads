@@ -1,0 +1,35 @@
+slug: hashimotos-destruction-is-t-cell-mediated
+statement: In Hashimoto's thyroiditis the thyroid tissue destruction is primarily
+  T-cell (cell-mediated), with cytotoxic T-cell infiltration and a Th1-skewed immune
+  response. Anti-TPO and anti-Tg antibodies are markers of the autoimmune process,
+  and antibody titre does not reliably track the severity or rate of gland destruction.
+evidence_tier: strong
+rationale: The histopathology of Hashimoto's is lymphocytic infiltration with T-cell-mediated
+  thyrocyte destruction; this is established immunology. Antibody levels correlate
+  poorly with functional decline, which is why dosing and progression are tracked
+  by thyroid function (TSH, fT4, fT3) rather than antibody titre.
+coaching_translation: Hashimoto's damage is done mainly by immune cells attacking
+  the thyroid, not by the antibodies themselves. The antibodies are a flag that the
+  process is happening — but how high they are doesn't tell you how much damage there
+  is. That's why how someone feels and their thyroid hormone levels matter more than
+  the antibody number.
+out_of_scope_notes: Interpreting a specific client's antibody or thyroid hormone values
+  and any medication decisions are clinician scope.
+caveats:
+- Antibodies still have diagnostic value when positive; this claim addresses what
+  they do and don't tell you, not that they are useless.
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+linked_to_mechanisms:
+- thyroid-autoimmunity
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: T-cell mechanism of Hashimoto's (clinical synthesis, 2026-06)
+  quote: Hashimoto's destruction is T-cell mediated; antibodies are markers and titre
+    does not track destruction severity.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani

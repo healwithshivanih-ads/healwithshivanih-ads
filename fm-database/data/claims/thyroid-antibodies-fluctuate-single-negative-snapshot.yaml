@@ -1,0 +1,37 @@
+slug: thyroid-antibodies-fluctuate-single-negative-snapshot
+statement: Thyroid antibody levels fluctuate over time and can decline with disease
+  duration (as the gland "burns out") or with interventions such as selenium repletion
+  and dietary change. A single negative TPO/TgAb result is therefore a snapshot and
+  does not establish that a person has never had, or does not have, autoimmune thyroiditis.
+evidence_tier: plausible_emerging
+rationale: Longitudinal data show anti-TPO/anti-Tg titres vary and frequently fall
+  over the course of Hashimoto's; selenium supplementation reduces TPO antibodies
+  at 3–6 months in deficient patients (Huwiler et al., Thyroid, 2024). A one-off normal
+  result thus cannot exclude prior or current autoimmunity.
+coaching_translation: Antibody numbers go up and down over time, and can drop as the
+  condition progresses or with things like selenium and diet changes. So one normal
+  reading isn't proof there's no autoimmune thyroid issue — especially if it was never
+  checked earlier when it may have been higher.
+out_of_scope_notes: Deciding whether and when to retest antibodies, and any supplement
+  dosing, are clinician scope.
+caveats:
+- Selenium's antibody-lowering effect is clearest in selenium-deficient patients;
+  benefit in replete patients is less certain.
+- This claim is about interpretation of a negative result, not a recommendation to
+  repeatedly test antibodies.
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+linked_to_mechanisms:
+- thyroid-autoimmunity
+linked_to_supplements:
+- selenium
+sources:
+- id: coach-shivani
+  location: Antibody fluctuation interpretation (clinical synthesis, 2026-06)
+  quote: Thyroid antibodies fluctuate and can decline over time or with selenium/diet;
+    a single negative is a snapshot, not a ruling-out.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani

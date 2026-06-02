@@ -1,0 +1,40 @@
+statement: The postpartum period (including after miscarriage), viral infection (e.g.
+  COVID-19, Epstein-Barr virus), and metabolic inflammation (e.g. gestational diabetes,
+  insulin resistance) are recognised triggers or unmaskers of autoimmune thyroiditis.
+  A new or worsening hypothyroid picture in the months after pregnancy or infection
+  should raise suspicion of autoimmune thyroiditis even when antibodies are negative.
+slug: postpartum-viral-metabolic-triggers-autoimmune-thyroiditis
+evidence_tier: plausible_emerging
+rationale: Postpartum thyroiditis is a well-described entity occurring within ~12 months
+  of pregnancy and can evolve into permanent hypothyroidism; the postpartum immune
+  rebound is a classic unmasker of underlying thyroid autoimmunity. Viral infection
+  (EBV established as a multiple-sclerosis risk factor; emerging links to Hashimoto's)
+  and chronic metabolic inflammation are plausible contributors via immune activation
+  and loss of tolerance.
+coaching_translation: Pregnancy and the time after it (including after a miscarriage),
+  viral infections like COVID, and blood-sugar problems in pregnancy can all set off
+  or reveal an autoimmune thyroid issue. If thyroid symptoms appear or worsen after
+  any of these, it's worth flagging for a proper thyroid work-up — even if antibodies
+  come back normal.
+out_of_scope_notes: Diagnosing postpartum thyroiditis and ordering/interpreting the
+  work-up are clinician scope. The coach surfaces the timeline link and refers.
+caveats:
+- Trigger associations are mechanistic/observational; they indicate when to look harder,
+  not a definite cause in any individual.
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+linked_to_mechanisms:
+- thyroid-autoimmunity
+- molecular-mimicry
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Triggers/unmaskers of autoimmune thyroiditis (clinical synthesis, 2026-06)
+  quote: Postpartum, viral infection, and metabolic inflammation are recognised triggers/unmaskers
+    of autoimmune thyroiditis; suspect it post-pregnancy/infection even if antibodies
+    are negative.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani

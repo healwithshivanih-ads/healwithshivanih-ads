@@ -1,0 +1,40 @@
+slug: seronegative-hashimotos-normal-antibodies-do-not-exclude
+statement: Normal TPO and thyroglobulin antibodies do not rule out autoimmune thyroiditis.
+  A seronegative (antibody-negative) form of Hashimoto's exists and is estimated to
+  account for roughly 10–20% of cases. When antibodies are negative but the clinical
+  picture fits, a thyroid ultrasound showing a hypoechoic, heterogeneous, hypervascular
+  gland confirms autoimmune thyroiditis.
+evidence_tier: plausible_emerging
+rationale: Hashimoto's is fundamentally a T-cell (cell-mediated) disease; anti-TPO
+  and anti-Tg are B-cell markers, not the destructive mechanism, so destruction can
+  proceed with normal or low antibody titres. Seronegative autoimmune thyroiditis
+  is well described in endocrinology, with ultrasound as the established confirmatory
+  modality when serology is negative. The 10–20% prevalence is an approximate figure
+  reported across cohorts and should be treated as indicative rather than exact.
+coaching_translation: A normal thyroid-antibody test does not mean it's "not autoimmune."
+  Because Hashimoto's is driven by immune cells rather than antibodies alone, some
+  people have the autoimmune form with normal antibodies. If the symptoms and thyroid
+  labs fit, it's worth your clinician looking further (e.g. a thyroid ultrasound)
+  rather than ruling it out on antibodies alone.
+out_of_scope_notes: Ordering/interpreting thyroid ultrasound and antibody panels and
+  making the diagnosis are clinician scope. The coach educates and flags the pattern
+  for referral.
+caveats:
+- Prevalence figure (10–20%) is approximate and varies by population and assay.
+- A normal ultrasound does not fully exclude early/mild autoimmune thyroiditis either;
+  serial follow-up may be needed.
+linked_to_topics:
+- autoimmune-thyroiditis
+- hypothyroidism
+linked_to_mechanisms:
+- thyroid-autoimmunity
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Seronegative Hashimoto's recognition (clinical synthesis, 2026-06)
+  quote: Normal TPO/TgAb does not exclude autoimmune thyroiditis; the seronegative,
+    T-cell-mediated form exists and is confirmed on ultrasound.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani
