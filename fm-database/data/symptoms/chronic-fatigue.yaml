@@ -21,6 +21,7 @@ when_to_refer: 'Refer if fatigue is severe, progressive, accompanied by weight l
 
   '
 linked_to_topics:
+- hyperbaric-oxygen-therapy
 - toxin-load
 - detoxification
 - intestinal-protozoan-infestation
@@ -37,7 +38,7 @@ sources:
 - id: pizzorno-textbook-gi
   location: Intestinal Protozoan Infestation — Giardia Species
   quote: 'Common chief complaint: chronic fatigue.'
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-02'
 updated_by: Shivani

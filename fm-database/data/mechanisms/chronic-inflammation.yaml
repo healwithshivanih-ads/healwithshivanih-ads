@@ -87,6 +87,7 @@ related_mechanisms:
 - fibrinogen-elevation
 - macrophage-foam-cell-formation
 linked_to_topics:
+- hyperbaric-oxygen-therapy
 - inflammation
 - autoimmune
 - perimenopause
@@ -141,7 +142,7 @@ sources:
     permeability, her uncertainty, her fear, the injury, her poor diet, it's all interconnected
     and influencing the inflammation in her body.
 evidence_tier: strong
-version: 8
+version: 9
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-02'
 updated_by: shivani

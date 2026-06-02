@@ -12,6 +12,7 @@ description: Persistent daytime fatigue may indicate undiagnosed obstructive sle
 when_to_refer: If sleep apnea is suspected, refer for formal sleep study. Fatigue
   with cardiac symptoms warrants urgent evaluation.
 linked_to_topics:
+- hyperbaric-oxygen-therapy
 - sleep-apnea-cardiovascular-risk
 linked_to_mechanisms:
 - sympathetic-activation-sleep-apnea
@@ -20,7 +21,7 @@ sources:
   location: Sleep Apnea Screening
   quote: Are they waking up with headaches? Are they fatigued during the day? This
     is missed all the time.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-02'
 updated_by: shivani

@@ -12,6 +12,7 @@ description: Persistent fatigue following viral illness, linked to immune dysreg
 when_to_refer: If severe functional impairment, cardiac symptoms, or dyspnea — refer
   for medical evaluation.
 linked_to_topics:
+- hyperbaric-oxygen-therapy
 - fasting-immune-health
 - chronic-inflammation
 - autoimmune-disease
@@ -22,7 +23,7 @@ sources:
 - id: vitaone-inflammation-cheatsheet
   location: Fasting & Immune Health Link — Page 15
   quote: 'Post-viral fatigue: Supports cellular repair'
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-02'
 updated_by: shivani

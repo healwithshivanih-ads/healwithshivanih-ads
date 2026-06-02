@@ -1,0 +1,50 @@
+slug: hbot-early-protocol-fatigue-and-confounders
+statement: Increased sleepiness and daytime tiredness in the first few weeks of an
+  HBOT course are common and usually transient — a post-session "oxygen hangover"
+  reflecting the hormetic/repair response (mitochondrial biogenesis, parasympathetic
+  rebound) rather than harm. Before attributing new fatigue to HBOT (or stopping a
+  course that is otherwise helping), rule out unaddressed fatigue drivers — under-replaced
+  hypothyroidism, iron deficiency, low B12/vitamin D — because HBOT raises oxygen
+  delivery but cannot compensate for the cofactors and thyroid hormone the body needs
+  to actually use it.
+evidence_tier: plausible_emerging
+rationale: HBOT works largely through the hyperoxic-hypoxic paradox — intermittent
+  oxidative signalling that drives repair, which can produce transient fatigue while
+  the body adapts, often resolving as the protocol continues (see hbot-effect-is-half-in-chamber-half-after,
+  hbot-chronic-illness-cumulative-protocol). In chronic-fatigue/post-viral states a
+  slower titration is advised (hbot-chronic-lyme-cfs-titration-warning). Persistent
+  fatigue is frequently better explained by untreated thyroid/iron/B12/D status than
+  by HBOT itself. Mechanistic/clinical reasoning; not a controlled trial of HBOT-induced
+  fatigue specifically.
+coaching_translation: Feeling more sleepy in the first couple of weeks of hyperbaric
+  oxygen is common — the body is doing repair work — and usually settles. It's "feeling
+  better but tired," not necessarily a reason to stop. But before deciding, it's worth
+  making sure the usual energy basics are handled — thyroid dose, iron, B12, vitamin
+  D — because oxygen alone can't fix those. The decision to continue, pause, or change
+  the protocol sits with the HBOT clinician.
+out_of_scope_notes: Whether to continue, pause, or adjust an HBOT protocol is the prescribing
+  HBOT clinician's decision. The coach educates, helps address the foundational fatigue
+  drivers within scope, and refers back to the provider — and flags red flags (vision
+  change, ear pain, seizure, worsening rather than easing fatigue) for prompt review.
+caveats:
+- Transient-fatigue framing applies to the early adaptation phase; fatigue that worsens
+  or is accompanied by new symptoms warrants prompt clinician review.
+- HBOT evidence for fatigue/post-viral states is emerging, not established.
+linked_to_topics:
+- hyperbaric-oxygen-therapy
+- hyperoxic-hypoxic-paradox
+linked_to_mechanisms:
+- post-viral-fatigue
+- chronic-inflammation
+- mitohormesis
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: HBOT early-protocol fatigue + confounders (clinical synthesis, 2026-06)
+  quote: Early-course HBOT sleepiness is usually transient; rule out untreated thyroid/iron/B12/D
+    before attributing fatigue to HBOT or stopping; continuation is the HBOT clinician's
+    call.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani

@@ -64,6 +64,7 @@ related_mechanisms:
 - leaky-gut
 - neuroinflammation
 linked_to_topics:
+- hyperbaric-oxygen-therapy
 - chronic-pain-and-fatigue
 - immune-support-covid-19
 - chronic-stress
@@ -79,7 +80,7 @@ notes_for_coach: Recovery is months to years, not weeks. The single most damagin
   mitochondrial support (CoQ10, alpha-lipoic acid, B-complex, magnesium), HPA recovery, gentle vagal toning, anti-inflammatory
   diet, addressing co-existing infections (EBV reactivation common). Refer to long-COVID clinic if available; psychological
   support for grief / loss of function is essential.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-10'
+updated_at: '2026-06-02'
 updated_by: shivani
