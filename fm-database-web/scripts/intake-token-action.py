@@ -120,6 +120,215 @@ def _find_client_by_token(token: str) -> tuple[str, dict] | None:
     return None
 
 
+# ── staging layer (scope Fly to active intakes only) ─────────────────────────
+#
+# Goal: the public intake form on Fly should only ever hold clients with an
+# OPEN form, and that data should evaporate from Fly once the coach finalises
+# (or the token is revoked / expires). The full authoritative ~/fm-plans store
+# stays on the Mac and is NOT synced to Fly.
+#
+# Mechanism: a separate staging dir (FMDB_STAGING_DIR, e.g. ~/fm-plans-staging)
+# is the ONLY tree Mutagen mirrors to Fly. The Mac copies a minimal per-client
+# stub into staging when a token is issued; a cron reconciler mirrors drafts +
+# submissions back into the authoritative store; finalise/revoke/expiry delete
+# the staging dir on the Mac (Mutagen propagates the removal to Fly, leaving the
+# authoritative copy untouched).
+#
+# CRITICAL: every function here is a NO-OP when FMDB_STAGING_DIR is unset, so
+# this whole feature is dormant until the env var is set in Phase 2. Existing
+# behaviour (single-tree, full replica) is unchanged until then.
+
+# Fields the public form needs to render + round-trip. Everything else in
+# client.yaml (plans, AI rework, provenance, health snapshots, …) stays on the
+# Mac and never crosses to Fly.
+_STAGING_STUB_KEYS = (
+    "client_id",
+    "display_name",
+    "date_of_birth",
+    "sex",
+    "email",
+    "mobile_number",
+    "city",
+    "country",
+    "active_conditions",
+    "medical_history",
+    "current_medications",
+    "known_allergies",
+    "goals",
+    "dietary_preference",
+    "animal_derived_supplements_ok",
+    "foods_to_avoid",
+    "non_negotiables",
+    "family_history",
+    "timeline_events",
+    # intake lifecycle fields that lookup/save_draft/submit read
+    "intake_token",
+    "intake_token_expires_at",
+    "intake_full_unlocked_at",
+    "intake_submitted_at",
+    "intake_last_submitted_at",
+    "intake_first_opened_at",
+    "intake_finalised_at",
+    "intake_form_draft",
+    "engagement_status",
+)
+
+
+def _staging_root() -> "Path | None":
+    env = os.environ.get("FMDB_STAGING_DIR")
+    if not env:
+        return None
+    return Path(env).expanduser().resolve()
+
+
+def _staging_client_yaml(client_id: str) -> "Path | None":
+    root = _staging_root()
+    if root is None:
+        return None
+    return root / "clients" / client_id / "client.yaml"
+
+
+def _write_staging_stub(client_id: str, data: dict) -> bool:
+    """Mirror the form-relevant subset of an authoritative client.yaml into the
+    Fly-synced staging dir. No-op (returns False) when FMDB_STAGING_DIR is unset."""
+    p = _staging_client_yaml(client_id)
+    if p is None:
+        return False
+    import yaml  # type: ignore
+    stub = {k: data[k] for k in _STAGING_STUB_KEYS if k in data}
+    stub["client_id"] = client_id
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open("w", encoding="utf-8") as f:
+        yaml.safe_dump(stub, f, sort_keys=False, allow_unicode=True)
+    return True
+
+
+def _purge_staging(client_id: str) -> bool:
+    """Delete a client's staging dir (Mac-side delete → Mutagen propagates the
+    removal to Fly; the authoritative copy in a DIFFERENT tree is untouched).
+    No-op (returns False) when FMDB_STAGING_DIR is unset or the dir is absent."""
+    root = _staging_root()
+    if root is None:
+        return False
+    import shutil
+    d = root / "clients" / client_id
+    if d.exists():
+        shutil.rmtree(d, ignore_errors=True)
+        return True
+    return False
+
+
+def _staging_last_submitted_payload(client_id: str) -> dict:
+    """The raw form payload from the most recent submission, read from the
+    audit session the Fly-side _apply_submit wrote into the staging tree
+    (same `ai_analysis.raw_intake_payload` contract as _last_submitted_payload,
+    but rooted at FMDB_STAGING_DIR). Returns {} when none."""
+    root = _staging_root()
+    if root is None:
+        return {}
+    import yaml  # type: ignore
+    sessions_dir = root / "clients" / client_id / "sessions"
+    try:
+        files = sorted(sessions_dir.glob("*-intake-form.yaml"))
+    except Exception:
+        return {}
+    if not files:
+        return {}
+    try:
+        with files[-1].open("r", encoding="utf-8") as f:
+            sdata = yaml.safe_load(f) or {}
+        payload = ((sdata.get("ai_analysis") or {}).get("raw_intake_payload")) or {}
+        return payload if isinstance(payload, dict) else {}
+    except Exception:
+        return {}
+
+
+def _should_purge_staging(adata: dict) -> bool:
+    """An intake's staging copy should exist only while the form is live.
+    Live = authoritative has an active token, not finalised, not expired.
+    Returns True once it's finalised / revoked (token cleared) / expired."""
+    if adata.get("intake_finalised_at"):
+        return True
+    if not adata.get("intake_token"):
+        return True  # revoked, or token cleared
+    exp = adata.get("intake_token_expires_at")
+    if exp:
+        try:
+            e = datetime.fromisoformat(str(exp))
+            if e.tzinfo is None:
+                e = e.replace(tzinfo=timezone.utc)
+            if datetime.now(timezone.utc) > e:
+                return True
+        except Exception:
+            pass
+    return False
+
+
+def _reconcile_one(client_id: str) -> dict:
+    """Bring a single client's staging state into the authoritative store.
+
+    Runs on the Mac, where _plans_root() = authoritative (~/fm-plans) and
+    _staging_root() = the Fly-synced staging tree. Two things happen:
+
+      1. Live-watch mirror — copy intake_form_draft + intake_first_opened_at
+         from staging into the authoritative client.yaml, so the coach UI keeps
+         seeing fields populate as the client types (~1 min lag on cron).
+      2. Submission merge — if staging shows a newer submission than we've
+         reconciled, re-run the exact _apply_submit merge against the
+         authoritative store (derives conditions/symptoms, writes the audit
+         session, fires insights). Idempotent via intake_staging_reconciled_at.
+
+    No-op when staging is disabled or the client has no staging dir."""
+    sp = _staging_client_yaml(client_id)
+    if sp is None or not sp.exists():
+        return {"client_id": client_id, "actions": [], "reason": "no_staging"}
+    import yaml  # type: ignore
+    try:
+        with sp.open("r", encoding="utf-8") as f:
+            sdata = yaml.safe_load(f) or {}
+    except Exception as e:
+        return {"client_id": client_id, "actions": [], "error": f"staging_read: {e}"}
+    try:
+        adata = _load_client(client_id)
+    except FileNotFoundError:
+        return {"client_id": client_id, "actions": [], "error": "authoritative_missing"}
+
+    actions: list[str] = []
+
+    # 1. live-watch mirror (draft + first-opened)
+    changed = False
+    for k in ("intake_form_draft", "intake_first_opened_at"):
+        sv = sdata.get(k)
+        if sv is not None and sv != adata.get(k):
+            adata[k] = sv
+            changed = True
+    if changed:
+        actions.append("draft_mirrored")
+
+    # 2. submission merge (re-run _apply_submit against authoritative)
+    s_last = sdata.get("intake_last_submitted_at") or sdata.get("intake_submitted_at")
+    if s_last and s_last != adata.get("intake_staging_reconciled_at"):
+        raw = _staging_last_submitted_payload(client_id)
+        # mark BEFORE merge so the marker is persisted by _apply_submit's save
+        adata["intake_staging_reconciled_at"] = s_last
+        if raw:
+            _apply_submit(client_id, adata, raw)  # saves authoritative + writes session
+            actions.append("submission_merged")
+            return {"client_id": client_id, "actions": actions}
+        # No raw payload recoverable — carry the submission markers at least.
+        if sdata.get("intake_submitted_at") and not adata.get("intake_submitted_at"):
+            adata["intake_submitted_at"] = sdata["intake_submitted_at"]
+        adata["intake_last_submitted_at"] = s_last
+        changed = True
+        actions.append("submission_marker_only")
+
+    if changed:
+        _save_client(client_id, adata)
+    if not actions:
+        actions.append("noop")
+    return {"client_id": client_id, "actions": actions}
+
+
 # ── action: generate ─────────────────────────────────────────────────────────
 
 def action_generate(payload: dict) -> dict:
@@ -175,6 +384,15 @@ def action_generate(payload: dict) -> dict:
             data["intake_full_unlocked_at"] = _now_iso()
         data["engagement_status"] = "signed_up"
     _save_client(client_id, data)
+
+    # Mirror a minimal stub into the Fly-synced staging tree so the public
+    # form can resolve this token. No-op when FMDB_STAGING_DIR is unset (the
+    # legacy full-replica mode). Non-fatal: log loudly if it fails — the token
+    # is issued either way, but on Fly the form would 404 without the stub.
+    try:
+        _write_staging_stub(client_id, data)
+    except Exception as e:
+        print(f"[intake-token-action] staging stub write failed for {client_id}: {e}", file=sys.stderr)
 
     return {
         "ok": True,
@@ -1457,6 +1675,13 @@ def action_finalise(payload: dict) -> dict:
     client_id = (payload.get("client_id") or "").strip()
     if not client_id:
         return {"ok": False, "error": "client_id required"}
+    # Pull any last-second staging edits into the authoritative store before we
+    # lock + purge, so finalising can never strand a final submission on Fly.
+    # No-op when staging is disabled.
+    try:
+        _reconcile_one(client_id)
+    except Exception as e:
+        print(f"[intake-token-action] finalise reconcile failed for {client_id}: {e}", file=sys.stderr)
     try:
         data = _load_client(client_id)
     except FileNotFoundError as e:
@@ -1467,6 +1692,12 @@ def action_finalise(payload: dict) -> dict:
     data["intake_token_expires_at"] = None
     data["intake_finalised_at"] = _now_iso()
     _save_client(client_id, data)
+    # Form is locked — it no longer needs to exist on Fly. Mac-side delete;
+    # Mutagen propagates the removal. No-op when staging is disabled.
+    try:
+        _purge_staging(client_id)
+    except Exception as e:
+        print(f"[intake-token-action] finalise purge failed for {client_id}: {e}", file=sys.stderr)
     return {"ok": True, "client_id": client_id, "intake_finalised_at": data["intake_finalised_at"]}
 
 
@@ -1580,6 +1811,11 @@ def action_revoke(payload: dict) -> dict:
     client_id = (payload.get("client_id") or "").strip()
     if not client_id:
         return {"ok": False, "error": "client_id required"}
+    # Capture anything the client saved before we pull the link + purge.
+    try:
+        _reconcile_one(client_id)
+    except Exception as e:
+        print(f"[intake-token-action] revoke reconcile failed for {client_id}: {e}", file=sys.stderr)
     try:
         data = _load_client(client_id)
     except FileNotFoundError as e:
@@ -1587,7 +1823,68 @@ def action_revoke(payload: dict) -> dict:
     data["intake_token"] = None
     data["intake_token_expires_at"] = None
     _save_client(client_id, data)
+    try:
+        _purge_staging(client_id)
+    except Exception as e:
+        print(f"[intake-token-action] revoke purge failed for {client_id}: {e}", file=sys.stderr)
     return {"ok": True}
+
+
+# ── action: reconcile_from_staging (single client) ───────────────────────────
+
+def action_reconcile_from_staging(payload: dict) -> dict:
+    """Reconcile ONE client's staging copy into the authoritative store, then
+    purge the staging dir if the form is no longer live. Mac-side only."""
+    client_id = (payload.get("client_id") or "").strip()
+    if not client_id:
+        return {"ok": False, "error": "client_id required"}
+    if _staging_root() is None:
+        return {"ok": True, "staging_disabled": True}
+    r = _reconcile_one(client_id)
+    purged = False
+    try:
+        adata = _load_client(client_id)
+    except FileNotFoundError:
+        adata = {}
+    if _should_purge_staging(adata):
+        purged = _purge_staging(client_id)
+    return {"ok": True, "purged": purged, **r}
+
+
+# ── action: reconcile_all (cron — every minute) ──────────────────────────────
+
+def action_reconcile_all(payload: dict) -> dict:
+    """Iterate every client in the staging tree: mirror drafts/submissions into
+    the authoritative store, then sweep (purge) any whose form is finalised /
+    revoked / expired. Driven by the per-minute cron. No-op when staging is
+    disabled."""
+    root = _staging_root()
+    if root is None:
+        return {"ok": True, "staging_disabled": True, "reconciled": [], "purged": []}
+    clients_dir = root / "clients"
+    if not clients_dir.exists():
+        return {"ok": True, "reconciled": [], "purged": []}
+    reconciled: list[dict] = []
+    purged: list[str] = []
+    errors: list[dict] = []
+    for sub in sorted(clients_dir.iterdir()):
+        if not sub.is_dir():
+            continue
+        cid = sub.name
+        try:
+            reconciled.append(_reconcile_one(cid))
+            try:
+                adata = _load_client(cid)
+            except FileNotFoundError:
+                adata = {}
+            if _should_purge_staging(adata) and _purge_staging(cid):
+                purged.append(cid)
+        except Exception as e:
+            errors.append({"client_id": cid, "error": f"{type(e).__name__}: {e}"})
+    out = {"ok": True, "reconciled": reconciled, "purged": purged}
+    if errors:
+        out["errors"] = errors
+    return out
 
 
 # ── dispatcher ───────────────────────────────────────────────────────────────
@@ -1605,6 +1902,9 @@ ACTIONS = {
     "unlock_full_intake": action_unlock_full_intake,
     "mark_discovery_session_complete": action_mark_discovery_session_complete,
     "mark_discovery_lab_pack_sent": action_mark_discovery_lab_pack_sent,
+    # staging layer — scope Fly to active intakes (no-op until FMDB_STAGING_DIR set)
+    "reconcile_from_staging": action_reconcile_from_staging,
+    "reconcile_all": action_reconcile_all,
 }
 
 

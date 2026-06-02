@@ -35,7 +35,12 @@ primary_region = "bom"
   # CRITICAL: marks this machine as intake-only. The middleware reads
   # this to return 404 for any non-public route. Don't unset on Fly.
   FLY_INTAKE_ONLY = "1"
-  FMDB_PLANS_DIR = "/data/fm-plans"
+  # Phase 2 (2026-06-02): Fly serves the public intake form from a STAGING tree
+  # that holds only active intakes. The Mac mirrors per-client stubs in and
+  # reconciles drafts/submissions back into the authoritative ~/fm-plans, then
+  # purges finalised/revoked/expired intakes. The full replica no longer lives
+  # on Fly. (Was /data/fm-plans pre-cutover.)
+  FMDB_PLANS_DIR = "/data/fm-plans-staging"
   FMDB_RESOURCES_DIR = "/data/fm-resources"
   NEXT_PUBLIC_APP_URL = "https://intake.theochretree.com"
 

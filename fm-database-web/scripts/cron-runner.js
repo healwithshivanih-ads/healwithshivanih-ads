@@ -8,9 +8,10 @@
  *
  * Schedules (all IST — Asia/Kolkata):
  *
- *   08:30  intake-reminders     — nudge clients whose intake token is open,
- *                                 not submitted, ≥5d since last reminder.
- *                                 (slice b adds: 09:00 appointment-reminders)
+ *   08:30  intake-reminders        — nudge clients whose intake token is open,
+ *                                    not submitted, ≥5d since last reminder.
+ *   09:00  appointment-reminders  — morning-of WhatsApp reminder to every
+ *                                    client with a booking TODAY. Idempotent.
  *                                 (slice c adds: 09:00 motivational-messages)
  *
  * Logs to PM2 stdout: `pm2 logs fm-coach-cron`.
@@ -55,6 +56,13 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 09:00 IST daily — morning-of session reminder to clients with a booking today
+cron.schedule(
+  "0 9 * * *",
+  () => fire("appointment-reminders"),
+  { timezone: "Asia/Kolkata" },
+);
+
 // Every minute — drain due rows from _pending_sends.yaml (supplement-order
 // nudge queued 6h after plan publish, with a 9am IST floor). Cheap when
 // queue is empty; only sends a WhatsApp template when a row is due.
@@ -64,10 +72,22 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// Every minute — drain the intake staging layer: mirror open-form drafts +
+// submissions from the Fly-synced staging tree back into the authoritative
+// store, and purge finalised/revoked/expired intakes off Fly. No-op when
+// FMDB_STAGING_DIR is unset (legacy full-replica mode).
+cron.schedule(
+  "* * * * *",
+  () => fire("intake-reconcile"),
+  { timezone: "Asia/Kolkata" },
+);
+
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
     + "\n  · 08:30 IST  intake-reminders"
-    + "\n  · * * * * *  pending-sends",
+    + "\n  · 09:00 IST  appointment-reminders"
+    + "\n  · * * * * *  pending-sends"
+    + "\n  · * * * * *  intake-reconcile",
 );
 
 // Keep the process alive (node-cron handles its own timers).

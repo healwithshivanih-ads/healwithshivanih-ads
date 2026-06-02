@@ -40,6 +40,35 @@ async function runScript(
   }
 }
 
+/**
+ * Cron-driven reconciler for the intake staging layer.
+ *
+ * When FMDB_STAGING_DIR is set (the scoped-to-active-intakes deployment), the
+ * public form on Fly only ever holds clients with an OPEN intake. This walks
+ * the staging tree: mirrors each client's draft/submission back into the
+ * authoritative ~/fm-plans store (so the coach keeps seeing fields populate),
+ * then purges any whose form has been finalised / revoked / expired so the data
+ * stops sitting on Fly. No-op (`staging_disabled: true`) when the env var is
+ * unset — safe to call in the legacy full-replica mode.
+ *
+ * Called from POST /api/cron/intake-reconcile every minute.
+ */
+export async function reconcileIntakeStaging(): Promise<
+  | { ok: true; staging_disabled?: boolean; reconciled?: unknown[]; purged?: string[]; errors?: unknown[] }
+  | { ok: false; error: string }
+> {
+  try {
+    // 120s: a reconcile that merges a fresh submission re-runs _apply_submit,
+    // which fires the Haiku insights subprocess (up to ~60s).
+    const res = (await runScript("intake-token-action.py", { action: "reconcile_all" }, 120_000)) as
+      | { ok: true; staging_disabled?: boolean; reconciled?: unknown[]; purged?: string[]; errors?: unknown[] }
+      | { ok: false; error: string };
+    return res;
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
 export type IntakeStage = "pre_discovery" | "full";
 
 export type IntakeLookupOk = {
