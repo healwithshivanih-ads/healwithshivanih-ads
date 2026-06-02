@@ -41,7 +41,21 @@ condition_implications:
   rationale: Most levothyroxine prescriptions in adult women have Hashimoto's as the underlying cause — coach should ask about
     TPO / TgAb antibodies.
   topic_slug: hashimotos-thyroiditis
-protocol_cautions: []
+protocol_cautions:
+- kind: timing
+  item: Iron supplements
+  severity: warning
+  reason: Iron binds levothyroxine and blocks its absorption — take iron at least 4 hours
+    apart from the thyroid tablet (LT4 in the morning on an empty stomach, iron later in the day).
+- kind: timing
+  item: Calcium, magnesium and multivitamins
+  severity: warning
+  reason: Divalent minerals bind levothyroxine — separate by at least 4 hours.
+- kind: timing
+  item: Coffee, tea, soy and high-fibre meals
+  severity: warning
+  reason: Take levothyroxine on an empty stomach 30-60 min before food; caffeine, soy
+    and high-fibre meals reduce absorption.
 timing_separations:
 - Take LT4 first thing in morning, 30-60 min BEFORE food + coffee + tea (caffeine reduces absorption).
 - Separate from calcium / iron / magnesium / multivitamin by AT LEAST 4 HOURS.
@@ -69,7 +83,7 @@ sources:
 - id: vitaone-skill-practice-guide
   location: Thyroid section — supplement-medication interactions
 evidence_tier: strong
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-09
+updated_at: '2026-06-02'
 updated_by: shivani

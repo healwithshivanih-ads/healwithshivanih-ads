@@ -911,6 +911,25 @@ def _load_drug_cautions_for_client(client: dict) -> list[dict]:
                 meds.append(str(m))
     elif raw:
         meds.append(str(raw))
+    # Also flatten layered medication categories captured at intake
+    # (thyroid_medication, glp1_medications, acid_suppressants, statins_bp_diabetes,
+    # psych_medications, …). These are stored as their own client fields, NOT in
+    # current_medications — so a client's Thyronorm / Ozempic / PPI would otherwise
+    # never trigger drug cautions in the letter.
+    for fld in (
+        "thyroid_medication", "glp1_medications", "acid_suppressants",
+        "nsaids_daily", "antibiotics_last_12mo", "hormonal_contraception_hrt",
+        "psych_medications", "biologics_immunosuppressants", "statins_bp_diabetes",
+    ):
+        v = client.get(fld) or []
+        if isinstance(v, list):
+            for m in v:
+                if isinstance(m, dict):
+                    n = (m.get("name") or "").strip()
+                    if n:
+                        meds.append(n)
+                elif m:
+                    meds.append(str(m))
     if not meds:
         return out
 
