@@ -361,6 +361,34 @@ def main() -> int:
                 client_facing_summary=ed.get("client_facing_summary", ""),
             ))
 
+    # Deterministic fallback — if the synthesiser emitted no education_framings,
+    # seed the Education section from the plan's own primary topics + drivers so
+    # every draft ships with client teaching points (coach edits/trims). No API.
+    if not plan.education:
+        try:
+            _topic_by_slug = {t.slug: t for t in _cat.topics}
+            _mech_by_slug = {m.slug: m for m in _cat.mechanisms}
+            for ts in plan.primary_topics:
+                if len(plan.education) >= 5:
+                    break
+                t = _topic_by_slug.get(ts)
+                if t:
+                    plan.education.append(EducationModule(
+                        target_kind="topic", target_slug=ts,
+                        client_facing_summary=(t.summary or "")[:400],
+                    ))
+            for drv in plan.hypothesized_drivers:
+                if len(plan.education) >= 5:
+                    break
+                m = _mech_by_slug.get(drv.mechanism)
+                if m:
+                    plan.education.append(EducationModule(
+                        target_kind="mechanism", target_slug=m.slug,
+                        client_facing_summary=(m.summary or "")[:400],
+                    ))
+        except Exception:
+            pass
+
     # ── Attach AI-suggested protocols (radio-selected by coach) ──────────────
     # Picks key format: `protocol_<slug>` is True when the coach selected
     # that protocol via the radio in the SuggestionsView. Drives meal/
@@ -627,6 +655,37 @@ def main() -> int:
 
     if notes_parts:
         plan.notes_for_coach = "\n\n".join(notes_parts)
+
+    # Auto-attach matching resources (deterministic, no API). Match the plan's
+    # topics / mechanisms / supplements against each resource's related_* links;
+    # attach client-shareable, active resources that overlap. No-op until the
+    # resource library is populated — then plans self-attach handouts.
+    try:
+        import yaml as _yaml
+        _res_root = Path(os.environ.get("FMDB_RESOURCES_DIR") or os.path.expanduser("~/fm-resources")) / "resources"
+        if _res_root.is_dir():
+            _ptopics = set(plan.primary_topics) | set(plan.contributing_topics)
+            _pmechs = {d.mechanism for d in plan.hypothesized_drivers if d.mechanism}
+            _psupps = {s.supplement_slug for s in plan.supplement_protocol}
+            _seen = set(plan.attached_resources)
+            for _rp in sorted(_res_root.glob("*.yaml")):
+                if len(plan.attached_resources) >= 12:
+                    break
+                try:
+                    _r = _yaml.safe_load(_rp.read_text()) or {}
+                except Exception:
+                    continue
+                if _r.get("status", "active") != "active" or _r.get("audience") == "coach":
+                    continue
+                if (set(_r.get("related_topics") or []) & _ptopics
+                        or set(_r.get("related_mechanisms") or []) & _pmechs
+                        or set(_r.get("related_supplements") or []) & _psupps):
+                    _slug = _r.get("slug")
+                    if _slug and _slug not in _seen:
+                        plan.attached_resources.append(_slug)
+                        _seen.add(_slug)
+    except Exception:
+        pass
 
     path = plan_storage.write_plan(root, plan)
 
