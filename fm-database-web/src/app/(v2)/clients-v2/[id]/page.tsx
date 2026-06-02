@@ -89,6 +89,7 @@ import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
 import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";
 import { ClientQuickChatPanel } from "./client-quick-chat-panel";
+import { HandoutDripPanel } from "./handout-drip-panel";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 import { CycleTrackingPanel } from "./cycle-tracking-panel";
 
@@ -1108,6 +1109,8 @@ export default async function ClientV2Page({
         clientId={client.client_id}
         clientName={client.display_name ?? client.client_id}
       />
+
+      <HandoutDripPanel clientId={client.client_id} />
 
       <div
         style={{

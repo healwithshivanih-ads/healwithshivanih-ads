@@ -51,6 +51,11 @@ const PUBLIC_PATH_PREFIXES = [
   // the meal plan. Split out of the consolidated letter (post-reformat)
   // so the letter stays under 7 pages.
   "/recipes/",
+  // Public client handouts — short branded 1-page guides (iron, thyroid,
+  // blood sugar, …) dripped to clients on a schedule. Static HTML served
+  // from public/handouts/<slug>.html. Generic educational content, safe to
+  // serve unauthenticated (no client data). Built by scripts/build-handouts.py.
+  "/handouts/",
   // v0.73 WhatsApp cutover — inbound from the self-hosted Fly app
   // (whatsapp-server-shivani) lands here. HMAC-verified by route handler
   // using WHATSAPP_WEBHOOK_SECRET. /api/aisensy-webhook removed
