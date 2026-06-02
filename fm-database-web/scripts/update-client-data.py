@@ -291,9 +291,49 @@ def main() -> int:
         snap["conditions"] = new_conditions
 
     existing_snaps: list = data.get("health_snapshots") or []
-    # Deduplicate: if same date+source already exists, replace it
-    existing_snaps = [s for s in existing_snaps if not (s.get("date") == snap["date"] and s.get("source") == snap["source"])]
-    existing_snaps.append(snap)
+    # MERGE into an existing same-date + same-source snapshot rather than
+    # replacing it. A client routinely uploads several reports drawn the same
+    # day (e.g. a biochemistry panel AND a CBC/Hemogram), all tagged source
+    # "lab_report". The old behaviour deleted the earlier snapshot and appended
+    # the new one, silently dropping the first report's values. Now we union
+    # lab_values by test_name (new value wins on conflict) and merge the other
+    # snapshot fields so both reports accumulate.
+    prior = next(
+        (s for s in existing_snaps
+         if s.get("date") == snap["date"] and s.get("source") == snap["source"]),
+        None,
+    )
+    if prior is not None:
+        merged_labs = [lv for lv in (prior.get("lab_values") or []) if isinstance(lv, dict)]
+        seen = {str(lv.get("test_name", "")).lower() for lv in merged_labs}
+        for lv in (snap.get("lab_values") or []):
+            if not isinstance(lv, dict):
+                continue
+            name = str(lv.get("test_name", "")).lower()
+            if name in seen:
+                merged_labs = [x for x in merged_labs
+                               if str(x.get("test_name", "")).lower() != name]
+            merged_labs.append(lv)
+            seen.add(name)
+        if merged_labs:
+            prior["lab_values"] = merged_labs
+        if snap.get("measurements"):
+            merged_meas = dict(prior.get("measurements") or {})
+            merged_meas.update(snap["measurements"])
+            prior["measurements"] = merged_meas
+        for key in ("medications", "conditions"):
+            if snap.get(key):
+                combined = list(prior.get(key) or [])
+                low = {str(x).lower() for x in combined}
+                for v in snap[key]:
+                    if str(v).lower() not in low:
+                        combined.append(v)
+                        low.add(str(v).lower())
+                prior[key] = combined
+        if snap.get("linked_session_id") and not prior.get("linked_session_id"):
+            prior["linked_session_id"] = snap["linked_session_id"]
+    else:
+        existing_snaps.append(snap)
     data["health_snapshots"] = existing_snaps
 
     # ── Compute FM-interpreted lab_markers from the merged-lab history ────────
