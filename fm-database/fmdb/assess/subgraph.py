@@ -13,6 +13,31 @@ from typing import Any
 
 from ..validator import Loaded
 
+# ── Size caps — keep the assessment subgraph focused so prompts stay small
+# and cheap. Broad conditions (e.g. hypothyroidism + insulin-resistance) can
+# otherwise match many hundreds of claims, ballooning the prompt to ~800K
+# tokens (~$3/assessment). Items are ranked core-first (linked to a SELECTED
+# topic/symptom) then by evidence tier, so caps drop the least-relevant tail.
+MAX_CLAIMS = 80
+MAX_CANDIDATE_SYMPTOMS = 30
+MAX_SUPPLEMENTS = 50
+MAX_TOPICS = 60
+MAX_MECHANISMS = 60
+
+_TIER_RANK = {
+    "strong": 0,
+    "plausible_emerging": 1,
+    "fm_specific_thin": 2,
+    "confirm_with_clinician": 3,
+}
+
+
+def _tier_rank(ev) -> int:
+    try:
+        return _TIER_RANK.get(ev.value, 5)
+    except AttributeError:
+        return _TIER_RANK.get(str(ev), 5)
+
 
 def build_subgraph(
     cat: Loaded,
@@ -51,6 +76,11 @@ def build_subgraph(
             for m in sym.linked_to_mechanisms:
                 mech_set.add(m)
 
+    # Capture the CORE topic set (explicitly selected + symptom-linked) before
+    # any related-topic expansion — used to rank claims/supplements/symptoms so
+    # the size caps keep the most relevant items.
+    core_topic_set = set(topic_set)
+
     # Expand topics: add related_topics + key_mechanisms (one hop)
     topic_by_slug = {t.slug: t for t in cat.topics}
     for _ in range(extra_topic_hops):
@@ -78,6 +108,8 @@ def build_subgraph(
         if canonical in mech_by_slug:
             canonical_mech_set.add(canonical)
     mech_set = canonical_mech_set
+    # Core mechanisms (pre related-mechanism expansion) for ranking.
+    core_mech_set = set(mech_set)
 
     # Expand mechanisms: pull in related_mechanisms one hop
     new_mech: set[str] = set()
@@ -95,6 +127,14 @@ def build_subgraph(
     for c in cat.claims:
         if (set(c.linked_to_topics) & topic_set) or (set(c.linked_to_mechanisms) & mech_set):
             relevant_claims.append(c)
+    # Rank core-first (touches a selected/symptom-linked topic or mechanism),
+    # then by evidence tier, then slug for determinism; cap to MAX_CLAIMS.
+    relevant_claims.sort(key=lambda c: (
+        0 if (set(c.linked_to_topics) & core_topic_set or set(c.linked_to_mechanisms) & core_mech_set) else 1,
+        _tier_rank(c.evidence_tier),
+        c.slug,
+    ))
+    relevant_claims = relevant_claims[:MAX_CLAIMS]
 
     # Supplements that link to selected topics OR mechanisms OR claims
     claim_set = {c.slug for c in relevant_claims}
@@ -106,6 +146,12 @@ def build_subgraph(
             or set(s.linked_to_claims) & claim_set
         ):
             relevant_supplements.append(s)
+    relevant_supplements.sort(key=lambda s: (
+        0 if (set(s.linked_to_topics) & core_topic_set or set(s.linked_to_mechanisms) & core_mech_set) else 1,
+        _tier_rank(s.evidence_tier),
+        s.slug,
+    ))
+    relevant_supplements = relevant_supplements[:MAX_SUPPLEMENTS]
 
     # Cooking adjustments + home remedies linked to selected topics or mechanisms
     relevant_cooking = [
@@ -136,6 +182,13 @@ def build_subgraph(
             continue
         if set(s.linked_to_topics) & topic_set or set(s.linked_to_mechanisms) & mech_set:
             candidate_symptoms.append(s)
+    # Rank core-linked + red-flag first; cap to MAX_CANDIDATE_SYMPTOMS.
+    candidate_symptoms.sort(key=lambda s: (
+        0 if (set(s.linked_to_topics) & core_topic_set or set(s.linked_to_mechanisms) & core_mech_set) else 1,
+        0 if getattr(s.severity, "value", str(s.severity)) == "red_flag" else 1,
+        s.slug,
+    ))
+    candidate_symptoms = candidate_symptoms[:MAX_CANDIDATE_SYMPTOMS]
 
     # ----- pack as compact dicts -----
     def _t(t):
@@ -254,11 +307,20 @@ def build_subgraph(
             "notes_for_coach": pr.notes_for_coach[:300],
         }
 
+    ordered_topics = sorted(
+        (t for t in topic_set if t in topic_by_slug),
+        key=lambda ts: (0 if ts in core_topic_set else 1, ts),
+    )[:MAX_TOPICS]
+    ordered_mechs = sorted(
+        (m for m in mech_set if m in mech_by_slug),
+        key=lambda ms: (0 if ms in core_mech_set else 1, ms),
+    )[:MAX_MECHANISMS]
+
     return {
         "selected_symptoms": [_s(s) for s in selected_symptoms],
         "candidate_symptoms": [_s(s) for s in candidate_symptoms],
-        "topics": [_t(topic_by_slug[t]) for t in topic_set if t in topic_by_slug],
-        "mechanisms": [_m(mech_by_slug[m]) for m in mech_set if m in mech_by_slug],
+        "topics": [_t(topic_by_slug[t]) for t in ordered_topics],
+        "mechanisms": [_m(mech_by_slug[m]) for m in ordered_mechs],
         "claims": [_c(c) for c in relevant_claims],
         "supplements": [_supp(s) for s in relevant_supplements],
         "cooking_adjustments": [_ca(ca) for ca in relevant_cooking],
