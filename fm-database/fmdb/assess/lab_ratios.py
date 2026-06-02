@@ -843,6 +843,10 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             PANEL_IRON)
 
     if wbc is not None:
+        # Indian labs report WBC in cells/cumm (e.g. 7050); FM thresholds are in
+        # 10³/µL (e.g. 7.05). Auto-normalize when the value is in cells/cumm.
+        if wbc > 1000:
+            wbc = wbc / 1000.0
         flag = "low" if wbc < 4 else ("high" if wbc > 11 else ("suboptimal" if wbc > 7.5 else "optimal"))
         add("WBC", wbc, "10³/μL",
             "5.0–7.5 FM optimal; <4 leucopenia; >11 leucocytosis",
@@ -851,6 +855,10 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
             PANEL_IRON)
 
     if platelets is not None:
+        # Indian labs report platelets in cells/cumm (e.g. 263000); FM thresholds
+        # are in 10³/µL (e.g. 263). Auto-normalize when the value is in cells/cumm.
+        if platelets > 3000:
+            platelets = platelets / 1000.0
         flag = "low" if platelets < 150 else ("high" if platelets > 450 else "optimal")
         add("Platelets", platelets, "10³/μL",
             "150–450 normal; >450 often reactive (inflammation/iron def)",
