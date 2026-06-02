@@ -38,13 +38,17 @@ const PENDING_FILE = "_pending_sends.yaml";
 interface PendingSend {
   id: string;
   send_at: string; // ISO
-  kind: "plan_letter_link" | "supplement_order" | string;
+  kind: "plan_letter_link" | "supplement_order" | "no_join_check" | "appt_reminder_1h" | string;
   client_id: string;
   plan_slug: string;
   phone: string;
   name?: string;
   template_name: string;
   template_params: string[];
+  /** For templates with a URL CTA button (e.g. appt_reminder_1h_zoom_client),
+   *  the dynamic suffix appended to the button's base URL — e.g. the Zoom
+   *  meeting ID + password string "85123456789?pwd=abc". */
+  button_url_param?: string;
   created_at: string;
 }
 
@@ -252,7 +256,7 @@ export async function tickPendingSends(): Promise<{
         r.phone,
         r.template_name,
         r.template_params,
-        { name: r.name ?? "" },
+        { name: r.name ?? "", buttonUrlParam: r.button_url_param },
       );
       if (res.ok) {
         fired++;
@@ -293,4 +297,132 @@ export async function tickPendingSends(): Promise<{
   }
 
   return { fired, failed, errors };
+}
+
+// ── Appointment reminders ────────────────────────────────────────────────────
+const IST_TZ_PF = "Asia/Kolkata";
+
+/** Extract the Zoom meeting ID + password suffix from a join URL.
+ *  e.g. "https://us06web.zoom.us/j/85123456789?pwd=abc" → "85123456789?pwd=abc"
+ *  The WA server appends this to https://zoom.us/j/ in the template button URL. */
+function extractZoomSuffix(joinUrl: string | null | undefined): string | null {
+  if (!joinUrl) return null;
+  const m = joinUrl.match(/zoom\.us\/j\/(.+)/i);
+  return m ? m[1] : null;
+}
+
+/**
+ * Queue a "haven't seen you on Zoom yet" probe for 5 minutes after a
+ * booking starts.
+ *
+ * Uses `appt_noshow_probe_client` (2 params: firstName, sessionType) with
+ * 3 quick-reply buttons: "Be there in 5" / "Be there in 15" / "Need to reschedule".
+ *
+ * Idempotent — deduped by booking uid.
+ */
+export async function queueNoJoinNudge(opts: {
+  clientId: string;
+  bookingUid: string;
+  phone: string;
+  name: string;
+  startTimeIso: string;
+  joinUrl?: string | null;
+  sessionType?: string;
+}): Promise<void> {
+  const startMs = Date.parse(opts.startTimeIso);
+  if (Number.isNaN(startMs)) return;
+
+  const sendAt = new Date(startMs + 5 * 60 * 1000);
+
+  const existing = await readPending();
+  if (existing.some((r) => r.kind === "no_join_check" && r.plan_slug === opts.bookingUid)) return;
+
+  const firstName = opts.name.split(/\s+/)[0] || "there";
+  const sessionType = opts.sessionType || "Coaching Session";
+
+  await queuePending({
+    send_at: sendAt.toISOString(),
+    kind: "no_join_check",
+    client_id: opts.clientId,
+    plan_slug: opts.bookingUid,
+    phone: opts.phone,
+    name: opts.name,
+    template_name: "appt_noshow_probe_client",
+    template_params: [firstName, sessionType],
+    // No buttonUrlParam — appt_noshow_probe_client uses quick-reply buttons, not URL buttons
+  });
+}
+
+/**
+ * Queue a 1-hour-before Zoom session reminder.
+ *
+ * Uses `appt_reminder_1h_zoom_client` (3 params: firstName, timeStr, sessionType)
+ * with a "Join Zoom" URL button. buttonUrlParam = the Zoom meeting ID suffix
+ * extracted from join_url (e.g. "85123456789?pwd=abc").
+ *
+ * Falls back to `appt_reminder_2h` (4 params: name, date, time, sessionType)
+ * when no Zoom join URL is available (phone / in-person sessions).
+ *
+ * Idempotent — deduped by booking uid.
+ */
+export async function queueOneHourReminder(opts: {
+  clientId: string;
+  bookingUid: string;
+  phone: string;
+  name: string;
+  startTimeIso: string;
+  joinUrl?: string | null;
+  sessionType?: string;
+}): Promise<void> {
+  const startMs = Date.parse(opts.startTimeIso);
+  if (Number.isNaN(startMs)) return;
+
+  const sendAt = new Date(startMs - 60 * 60 * 1000); // T-1h
+  // Don't queue if the reminder time has already passed
+  if (sendAt.getTime() <= Date.now()) return;
+
+  const existing = await readPending();
+  if (existing.some((r) => r.kind === "appt_reminder_1h" && r.plan_slug === opts.bookingUid)) return;
+
+  const firstName = opts.name.split(/\s+/)[0] || "there";
+  const sessionType = opts.sessionType || "Coaching Session";
+  const startDate = new Date(opts.startTimeIso);
+  const timeStr =
+    startDate.toLocaleTimeString("en-IN", {
+      hour: "numeric", minute: "2-digit", hour12: true, timeZone: IST_TZ_PF,
+    }) + " IST";
+  const dateStr = startDate.toLocaleDateString("en-IN", {
+    day: "numeric", month: "short", year: "numeric", timeZone: IST_TZ_PF,
+  });
+
+  const zoomSuffix = extractZoomSuffix(opts.joinUrl);
+
+  if (zoomSuffix) {
+    // appt_reminder_1h_zoom_client: {{1}} firstName, {{2}} timeStr, {{3}} sessionType
+    // + URL button with buttonUrlParam = zoomSuffix
+    await queuePending({
+      send_at: sendAt.toISOString(),
+      kind: "appt_reminder_1h",
+      client_id: opts.clientId,
+      plan_slug: opts.bookingUid,
+      phone: opts.phone,
+      name: opts.name,
+      template_name: "appt_reminder_1h_zoom_client",
+      template_params: [firstName, timeStr, sessionType],
+      button_url_param: zoomSuffix,
+    });
+  } else {
+    // appt_reminder_2h: {{1}} name, {{2}} date, {{3}} time, {{4}} sessionType
+    // (no button — used for non-Zoom sessions)
+    await queuePending({
+      send_at: sendAt.toISOString(),
+      kind: "appt_reminder_1h",
+      client_id: opts.clientId,
+      plan_slug: opts.bookingUid,
+      phone: opts.phone,
+      name: opts.name,
+      template_name: "appt_reminder_2h",
+      template_params: [firstName, dateStr, timeStr, sessionType],
+    });
+  }
 }

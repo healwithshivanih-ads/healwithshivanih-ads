@@ -37,7 +37,7 @@ export async function sendWhatsAppAction(
   phone: string,
   campaignName: string,
   templateParams: string[],
-  opts?: { name?: string; templateLanguage?: string }
+  opts?: { name?: string; templateLanguage?: string; buttonUrlParam?: string }
 ): Promise<{ ok: boolean; error?: string; backend?: "wa_server" }> {
   if (!phone?.trim()) return { ok: false, error: "Phone number required" };
 
@@ -56,9 +56,9 @@ async function sendViaWaServer(
   phone: string,
   templateName: string,
   templateParams: string[],
-  opts?: { name?: string; templateLanguage?: string }
+  opts?: { name?: string; templateLanguage?: string; buttonUrlParam?: string }
 ): Promise<{ ok: boolean; error?: string; backend: "wa_server" }> {
-  const body = {
+  const body: Record<string, unknown> = {
     phone,
     name: opts?.name,
     type: "template",
@@ -68,6 +68,9 @@ async function sendViaWaServer(
     origin: "api",
     originRef: "fm-coach",
   };
+  // Pass buttonUrlParam for templates with a URL CTA button (e.g. "Join Zoom").
+  // The WA server appends a button component with sub_type:"url" when this is set.
+  if (opts?.buttonUrlParam) body.buttonUrlParam = opts.buttonUrlParam;
 
   try {
     const res = await fetch(`${WA_SERVER_URL}/api/send`, {
@@ -269,7 +272,7 @@ export async function sendAndRecordOutboundAction(input: {
   templateName: string;        // Meta template name
   templateParams: string[];    // params to fill {{1}}, {{2}}, ...
   renderedBody: string;        // the message text with vars substituted, exactly as Meta rendered
-  opts?: { name?: string; templateLanguage?: string };
+  opts?: { name?: string; templateLanguage?: string; buttonUrlParam?: string };
 }): Promise<{ ok: boolean; error?: string; recorded?: boolean }> {
   const send = await sendWhatsAppAction(
     input.phone,

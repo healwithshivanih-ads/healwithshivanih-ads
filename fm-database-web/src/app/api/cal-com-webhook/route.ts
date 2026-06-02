@@ -49,12 +49,87 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { queueNoJoinNudge, queueOneHourReminder } from "@/lib/server-actions/plan-publish-followups";
+
+// ── Coach notification ──────────────────────────────────────────────────────
+const IST_TZ = "Asia/Kolkata";
+
+/**
+ * Notify the coach on every booking event.
+ *
+ * Primary: `coach_booking_alert_v1` WhatsApp to COACH_NOTIFY_PHONE.
+ *   Params: [eventVerb, clientName, sessionType, dateStr, timeStr]
+ *
+ * Fallback: Gmail to GMAIL_USER when WhatsApp is not configured or fails.
+ */
+async function notifyCoachOfBooking(opts: {
+  clientId: string;
+  attendeeName?: string | null;
+  startTime?: string | null;
+  eventTitle?: string | null;
+  joinUrl?: string | null;
+  eventType: string;
+}) {
+  let dateLabel = "unknown date";
+  let timeLabel = "";
+  if (opts.startTime) {
+    try {
+      const d = new Date(opts.startTime);
+      dateLabel = d.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short", year: "numeric", timeZone: IST_TZ });
+      timeLabel = d.toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit", hour12: true, timeZone: IST_TZ }) + " IST";
+    } catch { /* leave defaults */ }
+  }
+
+  const eventVerb =
+    opts.eventType === "booking_rescheduled" ? "rescheduled booking" :
+    opts.eventType === "booking_cancelled" ? "cancellation" : "new booking";
+  const clientName = opts.attendeeName || opts.clientId;
+  const sessionType = opts.eventTitle?.replace(/between.*/i, "").trim() || "Coaching Session";
+
+  // ── Primary: WhatsApp coach alert ──────────────────────────────────────
+  const coachPhone = process.env.COACH_NOTIFY_PHONE;
+  if (coachPhone) {
+    try {
+      const { sendWhatsAppAction } = await import("@/app/api/whatsapp/actions");
+      const r = await sendWhatsAppAction(
+        coachPhone,
+        "coach_booking_alert_v1",
+        [eventVerb, clientName, sessionType, dateLabel, timeLabel],
+        { name: "Shivani" },
+      );
+      if (r.ok) {
+        console.log(`[cal-com-webhook] coach WA alert sent: ${eventVerb} · ${clientName}`);
+        return; // WA succeeded — skip email fallback
+      }
+      console.warn(`[cal-com-webhook] coach WA alert failed: ${r.error}`);
+    } catch (e) {
+      console.warn(`[cal-com-webhook] coach WA alert threw:`, (e as Error).message);
+    }
+  }
+
+  // ── Fallback: Gmail email ───────────────────────────────────────────────
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
+  if (!user || !pass) return;
+
+  const subject = `📅 Session ${eventVerb}: ${clientName} — ${dateLabel} at ${timeLabel}`;
+  const joinLine = opts.joinUrl ? `\nJoin link: ${opts.joinUrl}` : "\n(No video link)";
+  const text =
+    `${clientName} — ${eventVerb}.\n\nClient ID: ${opts.clientId}\n` +
+    `Session: ${sessionType}\nDate: ${dateLabel}\nTime: ${timeLabel}` +
+    joinLine + `\n\n— fm-coach auto-notification`;
+
+  const nodemailer = await import("nodemailer");
+  const transporter = nodemailer.default.createTransport({ service: "gmail", auth: { user, pass } });
+  await transporter.sendMail({ from: user, to: user, subject, text });
+  console.log(`[cal-com-webhook] coach email fallback sent: ${subject}`);
+}
 
 export const dynamic = "force-dynamic";
 
 // ── Mode A (slice 2) payload ────────────────────────────────────────────────
 interface SliceTwoPayload {
-  type?: "booking_created" | "booking_rescheduled" | "booking_cancelled";
+  type?: "booking_created" | "booking_rescheduled" | "booking_cancelled" | "booking_no_show";
   booking?: {
     uid?: string;
     external_id?: string;
@@ -110,6 +185,7 @@ interface CalDirectPayload {
 
 interface StoredBooking {
   received_at: string;
+  /** booking_created | booking_rescheduled | booking_cancelled | booking_no_show */
   type: string;
   uid: string;
   external_id?: string;
@@ -217,6 +293,53 @@ async function matchClient(
   return null;
 }
 
+/**
+ * Send an immediate "you didn't join" WhatsApp when cal.com fires
+ * BOOKING_NO_SHOW. Best-effort — never throws.
+ *
+ * Uses `appt_confirmation` as a stand-in until `fm_no_join_nudge` is
+ * approved on Meta. See queueNoJoinNudge() in plan-publish-followups.ts
+ * for the TODO comment on the dedicated template.
+ */
+async function sendNoShowNudge(opts: {
+  clientId: string;
+  phone: string;
+  name: string;
+  startTime?: string | null;
+  joinUrl?: string | null;
+  eventTitle?: string | null;
+}): Promise<void> {
+  const { sendAndRecordOutboundAction } = await import("@/app/api/whatsapp/actions");
+  const firstName = opts.name.split(/\s+/)[0] || "there";
+  const startDate = opts.startTime ? new Date(opts.startTime) : new Date();
+  const dateStr = startDate.toLocaleDateString("en-IN", {
+    day: "numeric", month: "short", year: "numeric", timeZone: IST_TZ,
+  });
+  const timeStr =
+    startDate.toLocaleTimeString("en-IN", {
+      hour: "numeric", minute: "2-digit", hour12: true, timeZone: IST_TZ,
+    }) + " IST";
+  const joinLine = opts.joinUrl
+    ? `Here's the link to join now: ${opts.joinUrl}`
+    : "Check your email for the Zoom link.";
+  const sessionType = opts.eventTitle?.replace(/between.*/i, "").trim() || "Coaching Session";
+  const renderedBody =
+    `Hi ${firstName}, just checking in — I haven't seen you on Zoom yet for our ` +
+    `${sessionType} session. Running late, or need to move it? ` +
+    (opts.joinUrl ? `\n\nJoin: ${opts.joinUrl}` : "");
+  // appt_noshow_probe_client: {{1}} firstName, {{2}} sessionType
+  // Has 3 quick-reply buttons: "Be there in 5", "Be there in 15", "Need to reschedule"
+  await sendAndRecordOutboundAction({
+    phone: opts.phone,
+    clientId: opts.clientId,
+    templateName: "appt_noshow_probe_client",
+    templateParams: [firstName, sessionType],
+    renderedBody,
+    opts: { name: opts.name },
+  });
+  console.log(`[cal-com-webhook] no-show nudge sent to ${opts.clientId}`);
+}
+
 /** Append (or dedup-replace) a booking event into the file. */
 async function storeBooking(clientId: string, evt: StoredBooking): Promise<void> {
   const data = await readBookingsFile();
@@ -265,6 +388,7 @@ function fromCalcom(body: CalDirectPayload): {
     BOOKING_RESCHEDULED: "booking_rescheduled",
     BOOKING_CANCELLED: "booking_cancelled",
     BOOKING_CANCELED: "booking_cancelled",
+    BOOKING_NO_SHOW: "booking_no_show",
   };
   const type = typeMap[trigger];
   if (!type) return null;
@@ -389,6 +513,58 @@ export async function POST(req: Request) {
       matched_by: match.matchedBy,
     };
     await storeBooking(match.clientId, evt);
+
+    if (body.type === "booking_created" || body.type === "booking_rescheduled") {
+      // Notify coach immediately
+      notifyCoachOfBooking({
+        clientId: match.clientId,
+        attendeeName: evt.attendee_name,
+        startTime: evt.start_time,
+        eventTitle: evt.event_title,
+        joinUrl: evt.join_url,
+        eventType: body.type,
+      }).catch((e: Error) => console.error("[cal-com-webhook] coach notify failed:", e.message));
+      // Queue 1h-before reminder + 5-min no-join nudge
+      const clientPhone = evt.attendee_phone || body.attendee?.phone;
+      const clientName = evt.attendee_name || body.attendee?.name || match.clientId;
+      const sessionType = evt.event_title?.replace(/between.*/i, "").trim() || "Coaching Session";
+      if (clientPhone && evt.start_time) {
+        queueOneHourReminder({
+          clientId: match.clientId,
+          bookingUid: evt.uid,
+          phone: clientPhone,
+          name: clientName,
+          startTimeIso: evt.start_time,
+          joinUrl: evt.join_url,
+          sessionType,
+        }).catch((e: Error) => console.error("[cal-com-webhook] 1h reminder queue failed:", e.message));
+        queueNoJoinNudge({
+          clientId: match.clientId,
+          bookingUid: evt.uid,
+          phone: clientPhone,
+          name: clientName,
+          startTimeIso: evt.start_time,
+          joinUrl: evt.join_url,
+          sessionType,
+        }).catch((e: Error) => console.error("[cal-com-webhook] no-join queue failed:", e.message));
+      }
+    }
+
+    // BOOKING_NO_SHOW fired by cal.com — send immediate nudge
+    if (body.type === "booking_no_show") {
+      const clientPhone = evt.attendee_phone || body.attendee?.phone;
+      if (clientPhone) {
+        sendNoShowNudge({
+          clientId: match.clientId,
+          phone: clientPhone,
+          name: evt.attendee_name || body.attendee?.name || match.clientId,
+          startTime: evt.start_time,
+          joinUrl: evt.join_url,
+          eventTitle: evt.event_title,
+        }).catch((e: Error) => console.error("[cal-com-webhook] no-show nudge failed:", e.message));
+      }
+    }
+
     return NextResponse.json({
       ok: true,
       matched: true,
@@ -429,6 +605,58 @@ export async function POST(req: Request) {
       matched_by: match.matchedBy,
     };
     await storeBooking(match.clientId, evt);
+
+    if (converted.evt.type === "booking_created" || converted.evt.type === "booking_rescheduled") {
+      // Notify coach immediately
+      notifyCoachOfBooking({
+        clientId: match.clientId,
+        attendeeName: evt.attendee_name,
+        startTime: evt.start_time,
+        eventTitle: evt.event_title,
+        joinUrl: evt.join_url,
+        eventType: converted.evt.type,
+      }).catch((e: Error) => console.error("[cal-com-webhook] coach notify failed:", e.message));
+      // Queue 1h-before reminder + 5-min no-join nudge
+      const clientPhone = evt.attendee_phone || converted.attendee.phone;
+      const clientName = evt.attendee_name || converted.attendee.name || match.clientId;
+      const sessionType = evt.event_title?.replace(/between.*/i, "").trim() || "Coaching Session";
+      if (clientPhone && evt.start_time) {
+        queueOneHourReminder({
+          clientId: match.clientId,
+          bookingUid: evt.uid,
+          phone: clientPhone,
+          name: clientName,
+          startTimeIso: evt.start_time,
+          joinUrl: evt.join_url,
+          sessionType,
+        }).catch((e: Error) => console.error("[cal-com-webhook] 1h reminder queue failed:", e.message));
+        queueNoJoinNudge({
+          clientId: match.clientId,
+          bookingUid: evt.uid,
+          phone: clientPhone,
+          name: clientName,
+          startTimeIso: evt.start_time,
+          joinUrl: evt.join_url,
+          sessionType,
+        }).catch((e: Error) => console.error("[cal-com-webhook] no-join queue failed:", e.message));
+      }
+    }
+
+    // BOOKING_NO_SHOW fired by cal.com — send immediate nudge
+    if (converted.evt.type === "booking_no_show") {
+      const clientPhone = evt.attendee_phone || converted.attendee.phone;
+      if (clientPhone) {
+        sendNoShowNudge({
+          clientId: match.clientId,
+          phone: clientPhone,
+          name: evt.attendee_name || converted.attendee.name || match.clientId,
+          startTime: evt.start_time,
+          joinUrl: evt.join_url,
+          eventTitle: evt.event_title,
+        }).catch((e: Error) => console.error("[cal-com-webhook] no-show nudge failed:", e.message));
+      }
+    }
+
     return NextResponse.json({
       ok: true,
       matched: true,
