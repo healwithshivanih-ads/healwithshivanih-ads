@@ -297,9 +297,7 @@ async function matchClient(
  * Send an immediate "you didn't join" WhatsApp when cal.com fires
  * BOOKING_NO_SHOW. Best-effort — never throws.
  *
- * Uses `appt_confirmation` as a stand-in until `fm_no_join_nudge` is
- * approved on Meta. See queueNoJoinNudge() in plan-publish-followups.ts
- * for the TODO comment on the dedicated template.
+ * Sends the dedicated `appt_noshow_probe_client` template (APPROVED on Meta).
  */
 async function sendNoShowNudge(opts: {
   clientId: string;
