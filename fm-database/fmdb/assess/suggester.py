@@ -92,6 +92,24 @@ def _collect_drug_context(client_ctx: dict[str, Any]) -> dict[str, Any]:
     elif raw:
         meds.append(str(raw))
 
+    # Also include layered medication categories captured at intake
+    # (thyroid_medication, glp1_medications, acid_suppressants, statins_bp_diabetes,
+    # psych_medications, …). These live under `medications_layered` and would
+    # otherwise be invisible to drug-depletion / condition-implication matching —
+    # e.g. Thyronorm sits here, not in current_medications.
+    layered = client_ctx.get("medications_layered") or {}
+    if isinstance(layered, dict):
+        for entries in layered.values():
+            if not isinstance(entries, list):
+                continue
+            for m in entries:
+                if isinstance(m, dict):
+                    n = (m.get("name") or "").strip()
+                    if n:
+                        meds.append(n)
+                elif m:
+                    meds.append(str(m))
+
     def match_drug(med_text: str) -> dict[str, Any] | None:
         text = med_text.lower()
         best: tuple[int, dict[str, Any]] | None = None

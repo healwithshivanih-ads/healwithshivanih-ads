@@ -1,0 +1,38 @@
+statement: Acid reflux / dyspepsia can trigger or worsen headaches. Clients frequently
+  report headaches that track with acidity flares, and reflux is an associated factor
+  in migraine and tension-type headache. Reaching for antacids on demand treats the
+  symptom while leaving the driver (often dysmotility, low stomach acid mistaken for
+  high, meal timing, or trigger foods) unaddressed.
+slug: acidity-triggered-headaches
+evidence_tier: plausible_emerging
+rationale: Epidemiological links between GERD/dyspepsia and headache (including migraine)
+  are reported, with shared autonomic / visceral-sensitisation and vagal mechanisms
+  proposed. The direction and mechanism are not fully settled, but the clinical pattern
+  — "headaches when my acidity is bad" — is common and actionable through meal timing,
+  trigger-food review, and addressing the underlying gut driver rather than chronic
+  antacid use.
+coaching_translation: For some people headaches come on when their acidity flares. If
+  that pattern fits, it's worth looking at what's driving the acidity — meal timing,
+  trigger foods, eating late, stress — rather than just reaching for an antacid each
+  time. Settling the gut often eases the headaches too.
+out_of_scope_notes: Persistent or severe headaches, or chronic reflux needing medication,
+  are clinician scope. Frequent antacid self-medication should be reviewed by a clinician
+  (it can mask low stomach acid and affect nutrient absorption).
+caveats:
+- Association, not established causation — headaches have many drivers; this is one
+  pattern to explore, not assume.
+- New, severe, or changing headaches are a red flag for medical assessment.
+linked_to_topics:
+- gerd
+- low-stomach-acid
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Acidity-triggered headaches pattern (clinical synthesis, 2026-06)
+  quote: Reflux/dyspepsia can trigger headaches; address the acidity driver (meal timing,
+    triggers, gut) rather than chronic antacids.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani

@@ -1,0 +1,42 @@
+slug: iron-deficiency-amplifies-thyroid-conversion-impairment
+statement: Iron deficiency impairs thyroid function at two points — iron is a cofactor
+  for thyroid peroxidase (TPO) in thyroid hormone synthesis, and adequate iron status
+  supports peripheral T4→T3 conversion. So low ferritin both worsens hypothyroid symptoms
+  and blunts the response to levothyroxine, even when the dose looks adequate on paper.
+evidence_tier: strong
+rationale: TPO is a haem-dependent enzyme; iron deficiency reduces its activity, lowering
+  T4/T3 synthesis. Iron-deficient patients on levothyroxine commonly have persistent
+  symptoms until ferritin is repleted. This is well-described in the thyroid-nutrition
+  literature and is a frequently-missed reason for "treated but still symptomatic"
+  hypothyroidism.
+coaching_translation: Low iron makes an underactive thyroid worse — and can stop thyroid
+  medication from working properly — because the body needs iron both to make thyroid
+  hormone and to switch it into its active form. If someone is on thyroid medication
+  but still tired with hair loss and their ferritin is low, fixing the iron is often
+  the missing piece (alongside the prescriber reviewing the dose).
+out_of_scope_notes: Thyroid medication dosing and lab interpretation are clinician
+  scope. The coach can educate on iron-rich foods + absorption and flag the iron–thyroid
+  link for the prescriber.
+caveats:
+- Iron repletion supports thyroid function but does not replace appropriate thyroid
+  dosing where that is the primary problem.
+- Over-supplementing iron when stores are adequate carries its own risks — confirm
+  deficiency (ferritin) first.
+linked_to_topics:
+- iron-deficiency
+- hypothyroidism
+- autoimmune-thyroiditis
+linked_to_mechanisms:
+- impaired-t4-to-t3-conversion
+- thyroid-nutrient-synergy
+linked_to_supplements:
+- iron-bisglycinate
+sources:
+- id: coach-shivani
+  location: Iron–thyroid interaction (clinical synthesis, 2026-06)
+  quote: Iron deficiency impairs TPO-dependent synthesis and T4→T3 conversion; low
+    ferritin worsens hypothyroidism and blunts levothyroxine response.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani

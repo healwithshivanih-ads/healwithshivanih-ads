@@ -1,0 +1,44 @@
+slug: postpartum-hpa-nutritional-collapse
+statement: The postpartum period — especially after a complicated pregnancy, IVF, or
+  miscarriage — can produce a compounding "collapse" of energy: nutrient depletion
+  (iron, B12, vitamin D), HPA-axis dysregulation from acute and chronic stress, and
+  unmasking of thyroid autoimmunity (postpartum thyroiditis). These stack to cause
+  profound fatigue that no single intervention resolves.
+evidence_tier: plausible_emerging
+rationale: Pregnancy and lactation deplete maternal iron and B12; the postpartum immune
+  rebound is a recognised trigger for thyroid autoimmunity; and acute stressors (loss,
+  prolonged medicalised pregnancy) drive cortisol-mediated T4→reverse-T3 shunting.
+  Each is individually supported; the combined "postpartum collapse" pattern is a
+  clinical synthesis that explains why these clients need a multi-system, paced plan
+  rather than a single fix.
+coaching_translation: After a hard pregnancy, IVF, or a loss, exhaustion often has
+  several causes layered together — depleted iron and B12, a stress-overloaded system,
+  and sometimes a thyroid that's been knocked off balance. Because it's several things
+  at once, the plan works best when it's gentle and addresses them together, not one
+  dramatic change.
+out_of_scope_notes: Diagnosing postpartum thyroiditis or a mood disorder, and any medication
+  decisions, are clinician scope. The coach supports nutrient repletion, gentle pacing,
+  stress/sleep, and flags the pattern for medical review.
+caveats:
+- A descriptive clinical pattern, not a single diagnosis — the contributing pieces
+  should each be assessed.
+- Postpartum mood changes / red flags (e.g. severe depression) require prompt clinician
+  referral, not lifestyle coaching alone.
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- iron-deficiency
+- perimenopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- thyroid-autoimmunity
+linked_to_supplements: []
+sources:
+- id: coach-shivani
+  location: Postpartum HPA + nutritional collapse pattern (clinical synthesis, 2026-06)
+  quote: Postpartum nutrient depletion + HPA dysregulation + unmasked thyroid autoimmunity
+    compound into profound fatigue needing a paced, multi-system plan.
+version: 1
+status: active
+updated_at: '2026-06-02'
+updated_by: shivani
