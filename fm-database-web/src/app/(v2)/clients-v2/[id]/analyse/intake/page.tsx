@@ -134,10 +134,66 @@ export default async function IntakePage({
     hr_bpm: hrVal,
   };
 
-  // Current meds: prefer `current_medications`, fall back to `medications`.
-  const medsList = asStrArray(c.current_medications).length > 0
+  // Build a comprehensive medications string from ALL medication fields.
+  // The client intake form stores structured repeaters (thyroid_medication,
+  // psych_medications, etc.) separately from the flat current_medications list.
+  // Both need to be surfaced so the coach sees the full picture on the form.
+  function medRepeaterToLines(
+    field: unknown,
+    category?: string,
+  ): string[] {
+    if (!Array.isArray(field)) return [];
+    return (field as Array<Record<string, unknown>>)
+      .filter((m) => m && typeof m === "object" && (m.name || m.medication))
+      .map((m) => {
+        const name = s(m.name ?? m.medication);
+        const dose = s(m.dose ?? m.dosage);
+        const suffix = category ? ` (${category})` : "";
+        return [name, dose].filter(Boolean).join(" ") + suffix;
+      })
+      .filter(Boolean);
+  }
+  const flatMeds = asStrArray(c.current_medications).length > 0
     ? asStrArray(c.current_medications)
     : asStrArray(c.medications);
+  const structuredMeds = [
+    ...medRepeaterToLines(c.thyroid_medication, "thyroid"),
+    ...medRepeaterToLines(c.psych_medications, "psych"),
+    ...medRepeaterToLines(c.acid_suppressants, "acid suppressor"),
+    ...medRepeaterToLines(c.nsaids_daily, "NSAID"),
+    ...medRepeaterToLines(c.antibiotics_last_12mo, "antibiotic"),
+    ...medRepeaterToLines(c.hormonal_contraception_hrt, "hormonal"),
+    ...medRepeaterToLines(c.biologics_immunosuppressants, "biologic"),
+    ...medRepeaterToLines(c.statins_bp_diabetes, "statin/BP/DM"),
+    ...medRepeaterToLines(c.glp1_medications, "GLP-1"),
+  ];
+  // Merge: flat meds first, then structured (deduped by name prefix)
+  const seenMedNames = new Set(flatMeds.map((m) => m.toLowerCase().split(" ")[0]));
+  const dedupedStructured = structuredMeds.filter(
+    (m) => !seenMedNames.has(m.toLowerCase().split(" ")[0]),
+  );
+  const medsList = [...flatMeds, ...dedupedStructured];
+
+  // Five pillars — read from client.yaml top-level five_pillars field
+  // (written there by intake-token-action.py on client form submission).
+  // Initialize the coach intake form sliders with what the client reported.
+  const fp = c.five_pillars as Record<string, unknown> | null | undefined;
+  const existingFivePillars = fp
+    ? {
+        sleep: typeof fp.sleep_quality === "number" ? String(fp.sleep_quality) : "",
+        stress: typeof fp.stress_level === "number" ? String(fp.stress_level) : "",
+        movement:
+          typeof fp.movement_days_per_week === "number"
+            ? String(fp.movement_days_per_week)
+            : "",
+        nutrition:
+          typeof fp.nutrition_quality === "number" ? String(fp.nutrition_quality) : "",
+        connection:
+          typeof fp.connection_quality === "number"
+            ? String(fp.connection_quality)
+            : "",
+      }
+    : null;
 
   // Timeline events
   const timelineEvents = Array.isArray(c.timeline_events)
@@ -233,6 +289,7 @@ export default async function IntakePage({
         }}
         existingMeasurements={existingMeasurements}
         existingMedications={medsList.join("\n")}
+        existingFivePillars={existingFivePillars}
         existingFamilyHistory={s(c.family_history)}
         existingPrefs={{
           dietary_preference: s(c.dietary_preference),

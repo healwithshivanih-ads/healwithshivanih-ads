@@ -189,6 +189,7 @@ export function IntakeForm({
   verifyInSession,
   insightsModelLabel,
   existingLabMarkers = [],
+  existingFivePillars = null,
 }: {
   clientId: string;
   displayName: string;
@@ -221,6 +222,15 @@ export function IntakeForm({
   // Used by the IFM auto-score so a node with no SYMPTOMS but clear LAB
   // dysfunction (e.g. Energy with HOMA-IR 3.7) isn't scored 1 = optimal.
   existingLabMarkers?: Array<{ marker_name: string; panel?: string; flag?: string }>;
+  // Five pillars baseline from the client's submitted intake form.
+  // Null when the client hasn't filled the five pillars section.
+  existingFivePillars?: {
+    sleep: string;
+    stress: string;
+    movement: string;
+    nutrition: string;
+    connection: string;
+  } | null;
 }) {
   const router = useRouter();
   const [pending, start] = useTransition();
@@ -389,11 +399,11 @@ export function IntakeForm({
   }, [medications]);
 
   // 5 · Five Pillars
-  const [sleep, setSleep] = useState("");
-  const [stress, setStress] = useState("");
-  const [movement, setMovement] = useState("");
-  const [nutrition, setNutrition] = useState("");
-  const [connection, setConnection] = useState("");
+  const [sleep, setSleep] = useState(existingFivePillars?.sleep ?? "");
+  const [stress, setStress] = useState(existingFivePillars?.stress ?? "");
+  const [movement, setMovement] = useState(existingFivePillars?.movement ?? "");
+  const [nutrition, setNutrition] = useState(existingFivePillars?.nutrition ?? "");
+  const [connection, setConnection] = useState(existingFivePillars?.connection ?? "");
 
   // 6 · Trial-and-error
   // Supplement-history textarea is session-scoped (different supplements
@@ -560,9 +570,57 @@ export function IntakeForm({
       if (connection) fp.connection_quality = Number(connection);
       const hasPillars = Object.keys(fp).length > 0;
 
+      // ── Auto-compute IFM if coach hasn't scored yet ───────────────
+      // Prevent the "all 1/5" stale-score problem: if no node has been
+      // explicitly scored (scores empty or all at floor 1), auto-compute
+      // from conditions + lab markers before saving so the session record
+      // always has meaningful scores rather than the default placeholder.
+      let scoreSnapshot = { ...ifmScores };
+      const allDefault = IFM_NODES.every(
+        (n) => !scoreSnapshot[n.id] || scoreSnapshot[n.id] === 1,
+      );
+      if (allDefault && (conditions.length > 0 || existingLabMarkers.length > 0)) {
+        const allSignals = [
+          ...symptoms,
+          ...conditions.map((c) => c.toLowerCase().replace(/\s+/g, "-")),
+        ];
+        const matrix = computeIFMMatrix([], [], allSignals);
+        const symptomBucket = (s: number) =>
+          s <= 20 ? 1 : s <= 40 ? 2 : s <= 60 ? 3 : s <= 80 ? 4 : 5;
+        const PANEL_NODE: Record<string, IFMNodeId> = {
+          "Metabolic & Insulin": "energy", Thyroid: "communication",
+          "Liver Function": "biotransformation", "Kidney Function": "biotransformation",
+          "Cardiovascular & Lipids": "transport", "Iron & Blood": "transport",
+          "Key Nutrients": "assimilation",
+        };
+        const labBurden: Record<string, number> = {};
+        for (const m of existingLabMarkers) {
+          const flag = (m.flag ?? "").toLowerCase();
+          if (!flag || flag === "ok" || flag === "optimal" || flag === "normal") continue;
+          const w = flag === "high" || flag === "low" ? 2 : 1;
+          const name = (m.marker_name ?? "").toLowerCase();
+          let node: IFMNodeId | undefined;
+          if (/\b(hs.?crp|crp|esr|fibrinogen)\b/.test(name) ||
+              /\bwbc\b|white blood|neutrophil|lymphocyte|\bnlr\b|platelet/.test(name)) {
+            node = "defense_repair";
+          } else if (/homocystein/.test(name)) {
+            node = "biotransformation";
+          } else { node = PANEL_NODE[m.panel ?? ""]; }
+          if (!node) continue;
+          labBurden[node] = (labBurden[node] ?? 0) + w;
+        }
+        const labBucket = (sum: number) =>
+          sum <= 0 ? 0 : sum <= 2 ? 2 : sum <= 5 ? 3 : sum <= 9 ? 4 : 5;
+        for (const n of matrix.nodes) {
+          const sScore = symptomBucket(n.score);
+          const lScore = labBucket(labBurden[n.node] ?? 0);
+          scoreSnapshot[n.node as IFMNodeId] = Math.max(sScore, lScore, 1);
+        }
+      }
+
       // ── Build IFM section ─────────────────────────────────────
       const ifmLines = IFM_NODES.flatMap((n) => {
-        const score = ifmScores[n.id];
+        const score = scoreSnapshot[n.id];
         const note = ifmNotes[n.id]?.trim();
         if (!score && !note) return [];
         return [`${n.emoji} ${n.label}${score ? ` · ${score}/5` : ""}${note ? ` — ${note}` : ""}`];
@@ -1816,18 +1874,19 @@ export function IntakeForm({
                   return 5;
                 };
 
-                setIfmScores((prev) => {
-                  const next = { ...prev };
-                  // Each blank node = the HIGHER of symptom-burden and
-                  // lab-burden (floor 1 = optimal). Coach overrides any cell.
-                  for (const n of matrix.nodes) {
-                    if (next[n.node] != null) continue; // keep coach edits
-                    const sScore = symptomBucket(n.score);
-                    const lScore = labBucket(labBurden[n.node] ?? 0);
-                    next[n.node as IFMNodeId] = Math.max(sScore, lScore, 1);
-                  }
-                  return next;
-                });
+                // Auto-score always recomputes all nodes from the available
+                // signals. Coach can edit individual cells afterward.
+                // NOTE: we do NOT skip existing scores — the old guard
+                // `if (next[n.node] != null) continue` caused a bug where
+                // a stale localStorage draft with all-1s prevented the
+                // auto-score from ever updating anything.
+                const autoScored: Record<string, number> = {};
+                for (const n of matrix.nodes) {
+                  const sScore = symptomBucket(n.score);
+                  const lScore = labBucket(labBurden[n.node] ?? 0);
+                  autoScored[n.node as IFMNodeId] = Math.max(sScore, lScore, 1);
+                }
+                setIfmScores(autoScored);
               }}
               style={{
                 fontSize: 12,
@@ -1845,11 +1904,11 @@ export function IntakeForm({
               ✨ Auto-score from symptoms + labs
             </button>
             <span style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
-              Pre-fills any blank nodes from {symptoms.length} symptom
+              Scores all 7 nodes from {symptoms.length} symptom
               {symptoms.length === 1 ? "" : "s"}
               {conditions.length > 0 && `, ${conditions.length} condition${conditions.length === 1 ? "" : "s"}`}
               {existingLabMarkers.length > 0 && `, ${existingLabMarkers.length} lab marker${existingLabMarkers.length === 1 ? "" : "s"}`}.
-              Each node takes the higher of symptom + lab signal. Edit any cell to override.
+              Takes the higher of symptom + lab signal. Edit any cell to override.
             </span>
           </div>
         )}

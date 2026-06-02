@@ -224,23 +224,42 @@ export default async function IntakeViewPage({
             reported the Tailwind `text-emerald-700 hover:underline`
             wasn't rendering (link looked broken / unclickable). Inline
             border + bg make it an unmistakable button-shaped link. */}
-        <Link
-          href={`/clients-v2/${id}`}
-          style={{
-            display: "inline-block",
-            padding: "8px 14px",
-            background: "var(--fm-surface, #fff)",
-            border: "1px solid var(--fm-border, #E5E2DD)",
-            borderRadius: 8,
-            color: "var(--fm-text-primary, #1A1A1A)",
-            textDecoration: "none",
-            fontSize: 13,
-            fontWeight: 600,
-            whiteSpace: "nowrap",
-          }}
-        >
-          ← Back to client
-        </Link>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <Link
+            href={`/clients-v2/${id}/analyse/intake`}
+            style={{
+              display: "inline-block",
+              padding: "8px 14px",
+              background: "var(--fm-primary, #E8622A)",
+              border: "none",
+              borderRadius: 8,
+              color: "#fff",
+              textDecoration: "none",
+              fontSize: 13,
+              fontWeight: 700,
+              whiteSpace: "nowrap",
+            }}
+          >
+            📋 Open intake form
+          </Link>
+          <Link
+            href={`/clients-v2/${id}`}
+            style={{
+              display: "inline-block",
+              padding: "8px 14px",
+              background: "var(--fm-surface, #fff)",
+              border: "1px solid var(--fm-border, #E5E2DD)",
+              borderRadius: 8,
+              color: "var(--fm-text-primary, #1A1A1A)",
+              textDecoration: "none",
+              fontSize: 13,
+              fontWeight: 600,
+              whiteSpace: "nowrap",
+            }}
+          >
+            ← Back to client
+          </Link>
+        </div>
       </div>
 
       {!submitted && !hasDraft && (
