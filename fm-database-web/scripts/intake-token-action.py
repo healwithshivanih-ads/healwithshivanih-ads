@@ -877,6 +877,100 @@ def _derive_symptoms_from_intake(payload: dict) -> list[str]:
     if "shut down" in sr or "overwhelm" in sr or "anxio" in sr:
         add("stress-sensitivity")
 
+    # ══════════════════════════════════════════════════════════════════════
+    # Expanded structured-field mapping — parity with the Analyse page helper
+    # (src/lib/fmdb/intake-symptoms.ts). The two callers intentionally mirror
+    # each other; keep them in sync.
+    # ══════════════════════════════════════════════════════════════════════
+    def txt(field: str) -> str:
+        v = payload.get(field)
+        return str(v).lower() if v else ""
+
+    # Hair — ANY reported loss pattern (clumps_shower, widening_part, …)
+    hl = txt("hair_loss_pattern")
+    if hl and hl not in ("none", "no", "no_loss", "no concerns"):
+        add("hair-loss")
+
+    # Energy / fatigue
+    if payload.get("energy_crashes"):
+        add("chronic-fatigue")
+        if has_substr("energy_crashes", "meal"):
+            add("daytime-fatigue")
+    if has_substr("postprandial_pattern", "sleepy"):
+        add("daytime-fatigue")
+
+    # Bowel — constipation + occult blood were previously unhandled
+    if (has_substr("bowel_pattern", "constipation")
+            or has_substr("bowel_pattern", "straining")
+            or has_substr("bowel_pattern", "incomplete")):
+        add("constipation")
+    if has_substr("bowel_pattern", "loose") or has_substr("bowel_pattern", "diarrh"):
+        add("diarrhea")
+    if has_substr("bowel_pattern", "blood"):
+        add("rectal-bleeding")
+    bs2 = payload.get("bristol_stool_typical") or []
+    if isinstance(bs2, list) and any(int(x) in (1, 2) for x in bs2 if str(x).isdigit()):
+        add("constipation")
+
+    # Digestion notes (free text)
+    if "constipat" in txt("digestion_notes"):
+        add("constipation")
+    if "acid" in txt("digestion_notes"):
+        add("heartburn")
+    if "headache" in txt("digestion_notes"):
+        add("headache")
+
+    # Headache
+    if payload.get("headache_type"):
+        add("headache")
+
+    # Sleep — fragmented / multiple waking
+    if has_substr("wake_time_pattern", "multiple") or has_substr("wake_time_pattern", "wake"):
+        add("insomnia")
+
+    # Pain — widespread / spinal → chronic-pain
+    if isinstance(pl, list) and (
+        len(pl) >= 3
+        or any(k in " ".join(str(x).lower() for x in pl)
+               for k in ("back", "scapula", "sacrum", "spine"))
+    ):
+        add("chronic-pain")
+
+    # Histamine / food sensitivity
+    if payload.get("histamine_signals"):
+        add("food-sensitivities")
+        add("histamine-intolerance")
+
+    # Menstrual
+    if has_substr("endometriosis_signals", "heavy") or has_substr("endometriosis_signals", "clot"):
+        add("heavy-periods")
+    if (has_substr("endometriosis_signals", "pain")
+            or has_substr("repro_diagnoses", "endometriosis")
+            or has_substr("repro_diagnoses", "adenomyosis")):
+        add("dysmenorrhea")
+    pps = payload.get("period_pain_severity")
+    try:
+        if pps is not None and float(pps) >= 4:
+            add("dysmenorrhea")
+    except (TypeError, ValueError):
+        pass
+
+    # Constitutional / skin / weight
+    if "cold" in txt("cold_heat_tolerance"):
+        add("cold-intolerance")
+    if has_substr("skin_signs", "dry"):
+        add("dry-skin")
+    if "gain" in txt("weight_trend_current"):
+        add("unexplained-weight-gain")
+
+    # ── Validate against the symptom catalogue — never emit an unknown slug ──
+    try:
+        valid = {p.stem for p in (FMDB_ROOT / "data" / "symptoms").glob("*.yaml")}
+        if valid:
+            out = [s for s in out if s in valid]
+    except Exception:
+        pass
+
     return out
 
 
