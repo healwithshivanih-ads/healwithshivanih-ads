@@ -36,5 +36,19 @@ module.exports = {
       restart_delay: 5000,
       log_date_format: "YYYY-MM-DD HH:mm:ss",
     },
+    {
+      // Persistent fly proxy so Mutagen can SSH to theochretree-coach.internal
+      // on port 2424 without requiring the WireGuard VPN to be active.
+      // SSH config routes *.internal through ProxyCommand → localhost:2424.
+      name: "fly-ssh-proxy",
+      script: "/Users/shivani/.fly/bin/flyctl",
+      args: "proxy 2424:22 -a theochretree-coach",
+      cwd: __dirname,
+      interpreter: "none",
+      max_restarts: 100,
+      restart_delay: 2000,
+      log_date_format: "YYYY-MM-DD HH:mm:ss",
+      autorestart: true,
+    },
   ],
 };
