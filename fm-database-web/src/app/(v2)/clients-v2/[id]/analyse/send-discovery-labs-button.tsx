@@ -48,6 +48,9 @@ export function SendDiscoveryLabsButton({
   const [previewMd, setPreviewMd] = useState<string>("");
   const [emailOpen, setEmailOpen] = useState(false);
   const [emailTo, setEmailTo] = useState(clientEmail ?? "");
+  // Optimistic sent-state: seed from the persisted prop, flip immediately on a
+  // successful send so the button shows "Sent · Resend" without a reload.
+  const [sentAt, setSentAt] = useState<string | null>(lastSentAt ?? null);
   // Remember whether the client had an email on file at mount-time. If
   // not, we prompt to save the typed address to the client profile after
   // a successful send so the coach doesn't have to type it again next
@@ -82,8 +85,8 @@ export function SendDiscoveryLabsButton({
     // confirm before re-firing. Coach rule
     // feedback-send-buttons-persist-state — every send button must gate
     // resends with the time of the last send visible in the prompt.
-    if (lastSentAt) {
-      const ago = relativeTimeShort(lastSentAt);
+    if (sentAt) {
+      const ago = relativeTimeShort(sentAt);
       const ok = confirm(
         `Lab list was already sent to this client ${ago}.\n\n` +
         `Send the email + WhatsApp nudge AGAIN?`
@@ -102,6 +105,7 @@ export function SendDiscoveryLabsButton({
         return;
       }
       setEmailOpen(false);
+      setSentAt(new Date().toISOString());
       const msg = `✓ Email sent to ${to} · 💬 WhatsApp nudge sent to ${w.sentTo}`;
       if (!initialEmailOnFile) {
         toast.success(msg, {
@@ -172,23 +176,23 @@ export function SendDiscoveryLabsButton({
         disabled={pending}
         style={{
           ...btn,
-          background: lastSentAt ? "var(--fm-surface)" : "var(--fm-primary)",
-          color: lastSentAt ? "var(--fm-text-secondary)" : "#fff",
-          border: lastSentAt ? "1px solid var(--fm-border)" : 0,
+          background: sentAt ? "var(--fm-surface)" : "var(--fm-primary)",
+          color: sentAt ? "var(--fm-text-secondary)" : "#fff",
+          border: sentAt ? "1px solid var(--fm-border)" : 0,
         }}
         title={
-          lastSentAt
-            ? `Last sent ${relativeTimeShort(lastSentAt)} — tap to resend (confirm prompt)`
+          sentAt
+            ? `Last sent ${relativeTimeShort(sentAt)} — tap to resend (confirm prompt)`
             : "Emails the full lab sheet AND sends the fm_lab_reminder WhatsApp nudge in one tap"
         }
       >
         {pending
           ? "Sending…"
-          : lastSentAt
-            ? `↻ Resend (sent ${relativeTimeShort(lastSentAt)})`
+          : sentAt
+            ? `↻ Resend (sent ${relativeTimeShort(sentAt)})`
             : "📧 Send via Email and a WhatsApp Update"}
       </button>
-      {lastSentAt && !pending && (
+      {sentAt && !pending && (
         <span
           style={{
             fontSize: 11,
@@ -198,9 +202,9 @@ export function SendDiscoveryLabsButton({
             alignItems: "center",
             gap: 4,
           }}
-          title={`Last labs send recorded ${new Date(lastSentAt).toLocaleString()}`}
+          title={`Last labs send recorded ${new Date(sentAt).toLocaleString()}`}
         >
-          ✓ Sent {relativeTimeShort(lastSentAt)}
+          ✓ Sent {relativeTimeShort(sentAt)}
         </span>
       )}
 

@@ -96,6 +96,10 @@ export function SendIntakeFormButton({
   const [copyOk, setCopyOk] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [localFinalisedAt, setLocalFinalisedAt] = useState<string | null>(finalisedAt ?? null);
+  // Optimistic persisted-send state — seed from the prop, flip on a successful
+  // API send so the button shows "Resend (last sent …)" immediately, not just
+  // a 6s transient badge (coach rule: send buttons persist state).
+  const [localIntakeSentAt, setLocalIntakeSentAt] = useState<string | null>(lastIntakeSentAt ?? null);
 
   // PATH A states (2026-05-15):
   //   - "submitted but still editable" — submittedAt set, token still active,
@@ -214,8 +218,8 @@ export function SendIntakeFormButton({
     // is the coach pressing "Send via WhatsApp" here when she meant to
     // send the discovery lab list (lives on a different surface) — and
     // the client gets the intake form for a second / third time.
-    if (lastIntakeSentAt) {
-      const sentAgo = relativeTimeShort(lastIntakeSentAt);
+    if (localIntakeSentAt) {
+      const sentAgo = relativeTimeShort(localIntakeSentAt);
       const ok = confirm(
         `The intake form was already sent to this client ${sentAgo}.\n\n` +
         `Send it AGAIN? (If you meant to send the lab list after a discovery, ` +
@@ -234,6 +238,7 @@ export function SendIntakeFormButton({
         return;
       }
       setApiSentOk(true);
+      setLocalIntakeSentAt(new Date().toISOString());
       // Clear the success badge after a few seconds so coach can resend if needed.
       setTimeout(() => setApiSentOk(false), 6000);
     } catch (e) {
@@ -560,8 +565,8 @@ export function SendIntakeFormButton({
                   >
                     {apiSending
                       ? "Sending…"
-                      : lastIntakeSentAt
-                        ? `↻ Resend intake (last sent ${relativeTimeShort(lastIntakeSentAt)})`
+                      : localIntakeSentAt
+                        ? `↻ Resend intake (last sent ${relativeTimeShort(localIntakeSentAt)})`
                         : "📨 Send via WhatsApp"}
                   </button>
                   {apiSentOk && (
