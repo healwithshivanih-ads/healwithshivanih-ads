@@ -88,6 +88,7 @@ import { loadClientSessionsAction } from "@/lib/server-actions/assess";
 import { clientQuickActions } from "./client-quick-actions";
 import { clientSubnavTabs } from "./client-subnav";
 import { MarkerPanelWithRecompute } from "./marker-panel-with-recompute";
+import { ClientQuickChatPanel } from "./client-quick-chat-panel";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 import { CycleTrackingPanel } from "./cycle-tracking-panel";
 
@@ -1102,6 +1103,11 @@ export default async function ClientV2Page({
       />
 
       <ClientBookingsPanel rows={clientBookings} />
+
+      <ClientQuickChatPanel
+        clientId={client.client_id}
+        clientName={client.display_name ?? client.client_id}
+      />
 
       <div
         style={{
