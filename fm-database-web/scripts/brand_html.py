@@ -106,6 +106,15 @@ _DAY_ROW_RE = re.compile(
     re.IGNORECASE,
 )
 
+# A whole cell that IS a day name (optionally with a trailing date) — used to
+# detect the TRANSPOSED meal-table orientation where days are the COLUMN
+# headers (e.g. "| | Mon | Tue | … | Sun |") and meals are the rows. Anchored
+# so "Breakfast" / "Activity" / "Duration" never match.
+_DAY_NAME_RE = re.compile(
+    r"^(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)(?:day|sday|nesday|rsday|urday)?(?:\s+.+)?$",
+    re.IGNORECASE,
+)
+
 
 def _convert_meal_tables_to_day_cards(html: str) -> str:
     """Convert markdown-rendered meal-plan tables into the Ochre Tree
@@ -140,8 +149,11 @@ def _convert_meal_tables_to_day_cards(html: str) -> str:
         )
         if not thead_m or not tbody_m:
             return match.group(0)
+        # Capture EMPTY header cells too (.*? not .+?): transposed meal
+        # tables start with a blank corner cell ("| | Mon | Tue | …"); if we
+        # drop it, the day columns shift by one and Monday is lost.
         header_cells = re.findall(
-            r"<th[^>]*>(.+?)</th>", thead_m.group(1), re.DOTALL | re.IGNORECASE
+            r"<th[^>]*>(.*?)</th>", thead_m.group(1), re.DOTALL | re.IGNORECASE
         )
         if len(header_cells) < 3:
             return match.group(0)  # not a meal-plan-shaped table
@@ -163,6 +175,54 @@ def _convert_meal_tables_to_day_cards(html: str) -> str:
 
         first_cell_text = _strip_inline(first_row_cells[0])
         if not _DAY_ROW_RE.match(first_cell_text):
+            # ── Transposed orientation ──────────────────────────────────
+            # Days as COLUMN headers, meals as ROWS:
+            #   | | Mon | Tue | … | Sun |
+            #   | Breakfast | … | … |
+            # Convert one day-card per day column (so it never spills off
+            # the page as a 7-column table). Detect: header cells after the
+            # first are ALL day names.
+            day_headers = [_strip_inline(h) for h in header_cells[1:]]
+            if len(day_headers) >= 4 and all(
+                _DAY_NAME_RE.match(d) for d in day_headers if d
+            ) and all(day_headers):
+                parsed_rows: list[tuple[str, list[str]]] = []
+                for row in row_blocks:
+                    rcells = re.findall(
+                        r"<td[^>]*>(.*?)</td>", row, re.DOTALL | re.IGNORECASE
+                    )
+                    if not rcells:
+                        continue
+                    parsed_rows.append((_strip_inline(rcells[0]), rcells[1:]))
+                t_cards: list[str] = []
+                for di, day_full in enumerate(day_headers):
+                    dm = re.match(r"^(\w+?)\s+(.+)$", day_full)
+                    t_dow = dm.group(1) if dm else day_full
+                    t_date = dm.group(2) if dm else ""
+                    t_rows: list[str] = []
+                    for meal_label, day_cells in parsed_rows:
+                        if di >= len(day_cells):
+                            continue
+                        cell_inner = day_cells[di].strip()
+                        if not _strip_inline(cell_inner):
+                            continue
+                        t_rows.append(
+                            f'        <div class="meal-row"><span class="ml">{meal_label}</span><span class="md">{cell_inner}</span></div>'
+                        )
+                    if not t_rows:
+                        continue
+                    t_cards.append(
+                        '    <article class="day-card">\n'
+                        f'      <div class="day-card__head"><span class="dow">{t_dow}</span><span class="date">{t_date}</span></div>\n'
+                        '      <div class="day-card__body">\n'
+                        + "\n".join(t_rows)
+                        + "\n      </div>\n"
+                        "    </article>"
+                    )
+                if t_cards:
+                    return (
+                        '<div class="meal-grid">\n' + "\n".join(t_cards) + "\n  </div>"
+                    )
             return match.group(0)  # not a meal-plan table — leave alone
 
         # Build day cards
@@ -1040,6 +1100,14 @@ body[data-print-supplement] #supplement-schedule {{
   h2 {{ page-break-before: avoid; }}
   h1:first-of-type {{ page-break-before: avoid; }}
 
+  /* Supplement schedule + shopping tables must never spill off the page
+     in any print mode — fixed layout + wrap, drop the screen min-width,
+     and disable the screen overflow-x scroll wrapper (no scrolling on paper). */
+  .schedule-table, .shop-table {{ table-layout: fixed !important; width: 100% !important; min-width: 0 !important; }}
+  .schedule-table th, .schedule-table td,
+  .shop-table th, .shop-table td {{ word-wrap: break-word; overflow-wrap: anywhere; }}
+  .schedule-table-wrap, .shop-table-wrap, .table-wrap {{ overflow: visible !important; }}
+
   /* Supplement schedule — page break, no buy column */
   #supplement-schedule {{ page-break-before: always; }}
   .timeline-track {{ overflow: visible; flex-wrap: wrap; }}
@@ -1108,7 +1176,8 @@ body[data-print-supplement] #supplement-schedule {{
   body[data-print-supplement] .signoff {{ display: none !important; }}
   body[data-print-supplement] #supplement-schedule {{
     page-break-before: avoid !important;
-    margin-top: 0 !important; padding-top: 16px !important; border-top: none !important;
+    /* Supply page margins here — no .page wrapper to lean on. */
+    margin: 0 !important; padding: 8mm 14mm 0 !important; border-top: none !important;
     display: block !important;
   }}
   body[data-print-supplement] .schedule-subtitle,
@@ -1131,7 +1200,9 @@ body[data-print-supplement] #supplement-schedule {{
   body[data-print-routine] .signoff {{ display: none !important; }}
   body[data-print-routine] #daily-routine {{
     margin: 0 !important; border: none !important;
-    background: #fff !important; padding: 0 !important;
+    /* No .page wrapper exists in this template, so the section itself must
+       supply the page margins — otherwise the routine prints edge-to-edge. */
+    background: #fff !important; padding: 8mm 14mm 0 !important;
   }}
   body[data-print-routine] .routine-subtitle,
   body[data-print-routine] .routine-foot {{ display: none !important; }}
