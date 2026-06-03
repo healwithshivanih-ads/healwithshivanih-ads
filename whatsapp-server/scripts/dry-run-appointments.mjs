@@ -177,6 +177,76 @@ check('pickLocationId handles bare location',
 check('pickLocationId returns null on missing',
   pickLocationId({}) === null);
 
+// REAL v2 webhook envelope shape (from prod 2026-05-29 webhook_events row).
+// The booking is at createdEvent.entity, NOT body root. This is the shape
+// that broke the original extractBooking + classifyWixBooking pair.
+const realV2DistanceHealing = {
+  // This is the SHAPE of decoded.envelope (i.e. what decodeWixWebhook
+  // returns from a real Wix dashboard webhook), not the body root.
+  slug: 'created',
+  entityId: '2f7b0f38-8e6e-4d8d-93e9-995d6d0bea5f',
+  entityFqdn: 'wix.bookings.v2.booking',
+  createdEvent: {
+    entity: {
+      id: '2f7b0f38-8e6e-4d8d-93e9-995d6d0bea5f',
+      status: 'CONFIRMED',
+      startDate: '2026-05-29T13:30:00Z',
+      endDate: '2026-05-29T14:15:00Z',
+      bookedEntity: {
+        slot: {
+          serviceId: '99d59509-616e-4c29-9587-ad419b12d194',
+          startDate: '2026-05-29T19:00:00.000+05:30',
+          endDate: '2026-05-29T19:45:00.000+05:30',
+          location: {
+            locationType: 'OWNER_CUSTOM',
+            formattedAddress: 'Done distantly based on on pre-decided time',
+            // ← no `id` field! (this is the OWNER_CUSTOM pattern)
+          },
+        },
+        title: 'Distance Healing',
+      },
+    },
+  },
+};
+
+// Run the booking through the SAME path wix-bookings.js follows: pull
+// the inner entity, classify on it.
+const realInnerBooking = realV2DistanceHealing.createdEvent.entity;
+check('real v2 Distance Healing — entity.id reachable',
+  realInnerBooking.id === '2f7b0f38-8e6e-4d8d-93e9-995d6d0bea5f');
+check('real v2 Distance Healing — classifyWixBooking → distance',
+  classifyWixBooking(realInnerBooking) === 'distance',
+  `(catches title="Distance Healing" via name regex even with no location.id)`);
+check('real v2 Distance Healing — pickLocationAddress returns formattedAddress',
+  pickLocationAddress(realInnerBooking) === 'Done distantly based on on pre-decided time');
+
+// Additional name-pattern variants we should classify as distance
+const namePatterns = [
+  ['Distance Healing', 'distance'],
+  ['Remote Sound Healing', 'distance'],
+  ['Online Coaching Call', 'distance'],
+  ['Virtual Reiki', 'distance'],
+  ['Tele-consultation', 'distance'],
+  ['Bach Flower Remedy', 'in_person'],          // no distance words
+  ['Crystal Spa', 'in_person'],
+  ['Access Bars: Get your Bars Run', 'in_person'],
+];
+for (const [title, expected] of namePatterns) {
+  const synthetic = { bookedEntity: { title, slot: { location: { locationType: 'OWNER_CUSTOM' } } } };
+  const got = classifyWixBooking(synthetic);
+  check(`title pattern "${title}" → ${got}`, got === expected,
+    got === expected ? '' : `expected ${expected}`);
+}
+
+// Address-pattern fallback (title is plain but address mentions distance)
+const addressPattern = {
+  bookedEntity: {
+    title: 'Bach Flower Remedy',
+    slot: { location: { locationType: 'OWNER_CUSTOM', formattedAddress: 'Online via Zoom' } },
+  },
+};
+check('address contains "Online" → distance', classifyWixBooking(addressPattern) === 'distance');
+
 // ──────────────────────────────────────────────────────────────────────
 // 2. SCHEDULER — kinds emitted per classification
 // ──────────────────────────────────────────────────────────────────────
@@ -555,6 +625,16 @@ check('verifies JWT via decodeWixWebhook',
 check('drops bad-sig with 200 (no retry storm)',
   wixSrc.includes('dropping unverified JWT')
   && /res\.sendStatus\(200\)[\s\S]*looksLikeJwt\s*&&\s*signatureValid\s*===\s*false/.test(wixSrc));
+
+// Bug regression — extractBooking MUST walk the v2 envelope shapes
+// (createdEvent.entity, updatedEvent.currentEntityAsJson, etc.).
+// Original implementation only had body.booking / body.data / etc.
+check('extractBooking walks createdEvent.entity (v2 created/confirmed)',
+  wixSrc.includes('createdEvent?.entity'));
+check('extractBooking walks updatedEvent.currentEntityAsJson (v2 updated)',
+  wixSrc.includes('updatedEvent') && wixSrc.includes('currentEntityAsJson'));
+check('extractBooking parses currentEntityAsJson if string',
+  /JSON\.parse\(updatedEntityRaw\)/.test(wixSrc));
 
 // ──────────────────────────────────────────────────────────────────────
 // 12. END-TO-END SCENARIO TRACE — full path through synthetic bookings

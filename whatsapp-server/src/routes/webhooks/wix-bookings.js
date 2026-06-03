@@ -154,12 +154,32 @@ function classifyAction(eventType, body) {
 // Booking extraction — handles multiple Wix payload shapes defensively
 // ---------------------------------------------------------------------------
 function extractBooking(body) {
-  // Common locations: body.booking, body.data.booking, body.actionEvent.body.booking,
-  // body.data.data.booking, body.payload.booking
+  // Wix v2 webhooks nest the booking entity under createdEvent.entity (for
+  // Created/Updated/Confirmed) or updatedEvent.currentEntityAsJson (for
+  // Updated). Older event shapes put it directly under data/payload/etc.
+  // Walk all known locations defensively.
+  const updatedEntityRaw = body?.updatedEvent?.currentEntityAsJson;
+  let updatedEntity = null;
+  if (updatedEntityRaw) {
+    // Sometimes a JSON string, sometimes already an object.
+    if (typeof updatedEntityRaw === 'string') {
+      try { updatedEntity = JSON.parse(updatedEntityRaw); } catch { /* ignore */ }
+    } else if (typeof updatedEntityRaw === 'object') {
+      updatedEntity = updatedEntityRaw;
+    }
+  }
   const candidates = [
+    // v2 webhook envelopes — observed in prod from real Wix dashboard
+    // webhook subscriptions (Booking Created/Updated, Booking Confirmed).
+    body?.createdEvent?.entity,
+    body?.confirmedEvent?.entity,
+    body?.canceledEvent?.entity,
+    body?.cancelledEvent?.entity,
+    updatedEntity,
+    // Older / Automations / direct-shape paths.
     body?.booking,
     body?.data?.booking,
-    body?.data,                                  // sometimes booking IS the data
+    body?.data,
     body?.actionEvent?.body?.booking,
     body?.actionEvent?.bodyAsJson?.booking,
     body?.payload?.booking,

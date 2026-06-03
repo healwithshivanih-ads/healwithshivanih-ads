@@ -17,22 +17,59 @@
 // If you onboard more distance locations later, add their ids to
 // DISTANCE_LOCATION_IDS.
 
-// Wix location id "IN" — Shivani's distance-session marker.
+// Wix location id "IN" — Shivani's distance-session marker (a registered
+// business location with formattedAddress just "India").
 const DISTANCE_LOCATION_IDS = new Set([
   '05fd2dd8-a460-4f7f-9c79-fa5adc16ddb3',
 ]);
 
+// Wix service-id direct map — most reliable signal when present. Populate
+// from `services_v2/query` (see scripts/audit-wix-services.mjs).
+const DISTANCE_SERVICE_IDS = new Set([
+  // (none mapped yet — extend when service ids are known)
+]);
+
+// Fallback heuristic: when a service uses an OWNER_CUSTOM location with no
+// `id` (a per-service free-form address, not a registered business
+// location), Wix gives us nothing structural to classify on. We fall back
+// to matching distance keywords in the service title or the formatted
+// address — covers the "Distance Healing" service whose address is
+// "Done distantly based on on pre-decided time".
+const DISTANCE_NAME_RE = /\b(distance|distant|remote|online|virtual|tele)\w*\b/i;
+
 /**
  * Returns 'distance' | 'in_person' for a decoded Wix booking envelope.
- * Defaults to 'in_person' if the location can't be read.
+ * Defaults to 'in_person' if no distance signal is found.
  *
  * Input: the inner envelope shape from decodeWixWebhook(), i.e. the
- * payload at createdEvent.entity (or updatedEvent.currentEntity) — same
- * shape extractBooking() in wix-bookings.js already navigates.
+ * payload at createdEvent.entity (or updatedEvent.currentEntityAsJson) —
+ * same shape extractBooking() in wix-bookings.js already navigates.
+ *
+ * Detection priority (first match wins):
+ *   1. location.id is in DISTANCE_LOCATION_IDS
+ *      (the registered "IN" business location)
+ *   2. serviceId is in DISTANCE_SERVICE_IDS
+ *      (direct override for known services — most reliable)
+ *   3. service title or location formattedAddress matches DISTANCE_NAME_RE
+ *      (catches Distance Healing + similar free-form custom-location
+ *       services)
  */
 export function classifyWixBooking(booking) {
+  if (!booking) return 'in_person';
+
   const locationId = pickLocationId(booking);
   if (locationId && DISTANCE_LOCATION_IDS.has(locationId)) return 'distance';
+
+  const serviceId = pickServiceId(booking);
+  if (serviceId && DISTANCE_SERVICE_IDS.has(serviceId)) return 'distance';
+
+  // Name-based fallback. Checks both the service title and the location's
+  // formatted address so e.g. "Distance Healing" (title) and "Done
+  // distantly…" (address) both resolve.
+  const title = pickServiceTitle(booking) || '';
+  const address = pickLocationAddress(booking) || '';
+  if (DISTANCE_NAME_RE.test(title) || DISTANCE_NAME_RE.test(address)) return 'distance';
+
   return 'in_person';
 }
 
@@ -50,6 +87,30 @@ export function pickLocationId(booking) {
     || booking.bookedEntity?.location?.id
     || booking.slot?.location?.id
     || booking.location?.id
+    || null
+  );
+}
+
+/** Pull the service id out of any of the known Wix booking payload shapes. */
+export function pickServiceId(booking) {
+  if (!booking) return null;
+  return (
+    booking.bookedEntity?.slot?.serviceId
+    || booking.bookedEntity?.serviceId
+    || booking.slot?.serviceId
+    || booking.serviceId
+    || null
+  );
+}
+
+/** Pull the service title (e.g. "Distance Healing"). */
+export function pickServiceTitle(booking) {
+  if (!booking) return null;
+  return (
+    booking.bookedEntity?.title
+    || booking.bookedEntity?.serviceName
+    || booking.serviceName
+    || booking.title
     || null
   );
 }
