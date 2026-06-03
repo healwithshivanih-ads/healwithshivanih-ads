@@ -44,6 +44,9 @@ sendRouter.post('/', async (req, res, next) => {
       buttonUrlParam,
       origin = 'api',
       originRef,
+      // Which number to send AS: 'marketing' (88501) | 'clients'/'default' (89765).
+      // Omit → default number. Multi-number support; back-compat for existing callers.
+      from,
     } = req.body || {};
 
     if (!phone) throw new ValidationError('phone required');
@@ -78,6 +81,7 @@ sendRouter.post('/', async (req, res, next) => {
       type,
       origin,
       originRef: originRef && UUID_RE.test(originRef) ? originRef : undefined,
+      from: from || undefined,
     };
 
     if (type === 'text') {

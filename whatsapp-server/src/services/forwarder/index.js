@@ -34,15 +34,47 @@ function extractFunnelSlug(body) {
   return m ? m[1].toLowerCase() : null;
 }
 
+/**
+ * PURE routing decision. Returns { name: 'funnels-app'|'fm-coach', slug }.
+ *
+ * Number-aware (multi-number support):
+ *   - Inbound on the MARKETING number (88501) → always the funnels app, since
+ *     that number carries only CTWA/acquisition traffic. We still extract a
+ *     slug for attribution, but route there even if none is found.
+ *   - Inbound on the DEFAULT/clients number (89765) → the original
+ *     content-based routing: `ref:<slug>` in a known funnel → funnels app,
+ *     everything else → fm-coach.
+ *
+ * Back-compat: when no marketing number is configured (marketingPhoneNumberId
+ * null), the number branch never fires and behaviour is exactly as before.
+ */
+export function chooseRoute(event, { marketingPhoneNumberId, funnelsAppSlugs }) {
+  const slug = extractFunnelSlug(event.body);
+  const onMarketingNumber =
+    marketingPhoneNumberId &&
+    event.phone_number_id &&
+    String(event.phone_number_id) === String(marketingPhoneNumberId);
+  if (onMarketingNumber) {
+    return { name: 'funnels-app', slug };
+  }
+  if (slug && (funnelsAppSlugs || []).includes(slug)) {
+    return { name: 'funnels-app', slug };
+  }
+  return { name: 'fm-coach', slug: null };
+}
+
 /** Pick the destination (URL + secret + name for logging) for an inbound. */
 function pickDestination(event) {
-  const slug = extractFunnelSlug(event.body);
-  if (slug && config.funnelsAppSlugs.includes(slug)) {
+  const route = chooseRoute(event, {
+    marketingPhoneNumberId: config.whatsapp.numbers?.marketing?.phoneNumberId || null,
+    funnelsAppSlugs: config.funnelsAppSlugs,
+  });
+  if (route.name === 'funnels-app') {
     return {
       name: 'funnels-app',
       url: config.funnelsAppWebhook.url,
       secret: config.funnelsAppWebhook.secret,
-      slug,
+      slug: route.slug,
     };
   }
   return {

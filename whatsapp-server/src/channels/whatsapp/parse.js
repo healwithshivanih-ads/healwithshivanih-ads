@@ -24,6 +24,9 @@ export function parseIncoming(envelope) {
   for (const entry of envelope.entry || []) {
     for (const change of entry.changes || []) {
       const value = change.value || {};
+      // Which of our numbers received this event (multi-number support).
+      // Meta puts it on value.metadata; null for older/edge payloads.
+      const phoneNumberId = value.metadata?.phone_number_id || null;
       const profileByWaId = Object.fromEntries(
         (value.contacts || []).map((c) => [c.wa_id, c.profile?.name || null]),
       );
@@ -38,6 +41,7 @@ export function parseIncoming(envelope) {
           kind: 'message',
           wa_id: waId,
           profile_name: profileByWaId[waId] || null,
+          phone_number_id: phoneNumberId,
           external_message_id: m.id,
           timestamp: tsIso,
           type: TYPE_MAP[m.type] || m.type || 'text',
@@ -98,6 +102,7 @@ export function parseIncoming(envelope) {
         events.push({
           kind: 'status',
           external_message_id: s.id,
+          phone_number_id: phoneNumberId,
           status: s.status, // sent | delivered | read | failed
           recipient_id: s.recipient_id,
           errors: s.errors || null,

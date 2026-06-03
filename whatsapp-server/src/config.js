@@ -45,6 +45,25 @@ export const config = {
     verifyToken: process.env.VERIFY_TOKEN || '',
     appSecret: process.env.META_APP_SECRET || '',
     graphVersion: process.env.META_GRAPH_VERSION || 'v21.0',
+
+    // Additional named numbers on this same server (multi-number support).
+    // The legacy single number above is the DEFAULT (key 'default'/'clients'),
+    // so every existing caller is unchanged. A named number only becomes
+    // active when its env vars are set — until then the server behaves exactly
+    // as before. `marketing` (88501) is for the ochre-funnel CTWA/acquisition
+    // traffic; the default number stays the clients/FM-coach line (89765).
+    // verifyToken + appSecret are shared (one Meta app, both WABAs subscribed).
+    numbers: {
+      marketing: process.env.MKT_PHONE_NUMBER_ID
+        ? {
+            phoneNumberId: process.env.MKT_PHONE_NUMBER_ID,
+            businessAccountId: process.env.MKT_WHATSAPP_BUSINESS_ACCOUNT_ID || '',
+            // Falls back to the shared token if a number-specific one isn't set
+            // (a single system-user token can cover both WABAs in one business).
+            token: process.env.MKT_WHATSAPP_TOKEN || process.env.WHATSAPP_TOKEN || '',
+          }
+        : null,
+    },
   },
 
   supabase: {
@@ -107,6 +126,41 @@ export const config = {
   // own phone. E.164-without-plus (e.g. 919833083720). No-op if unset.
   coachNotifyPhone: process.env.COACH_NOTIFY_PHONE || '',
 };
+
+/**
+ * Resolve a logical number key to its Cloud API credentials. PURE (takes the
+ * whatsapp config as an arg) so it's unit-testable without env.
+ *
+ *   key undefined | 'default' | 'clients'  → the legacy single number (default)
+ *   key 'marketing' (or any named number)  → that number, or throws if unconfigured
+ *
+ * Back-compat: existing callers pass no key → always get the default number,
+ * so behaviour is unchanged until a named number is configured AND requested.
+ * A named-but-unconfigured key throws (loud) rather than silently falling back,
+ * so we never send marketing traffic from the clients number by accident.
+ */
+export function pickNumber(whatsappConfig, key) {
+  const isDefault = key == null || key === 'default' || key === 'clients';
+  if (isDefault) {
+    return {
+      phoneNumberId: whatsappConfig.phoneNumberId,
+      token: whatsappConfig.token,
+      businessAccountId: whatsappConfig.businessAccountId,
+    };
+  }
+  const named = whatsappConfig.numbers?.[key];
+  if (!named || !named.phoneNumberId) {
+    throw new Error(`Unknown or unconfigured WhatsApp number: "${key}"`);
+  }
+  return {
+    phoneNumberId: named.phoneNumberId,
+    token: named.token || whatsappConfig.token,
+    businessAccountId: named.businessAccountId || '',
+  };
+}
+
+/** Convenience wrapper bound to the live config. */
+export const resolveWhatsappNumber = (key) => pickNumber(config.whatsapp, key);
 
 export function configSummary() {
   const mask = (s) => (s ? `${s.slice(0, 4)}…${s.slice(-2)} (${s.length} chars)` : '(empty)');

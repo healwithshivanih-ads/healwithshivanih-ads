@@ -39,6 +39,8 @@ conversationsRouter.post('/:id/reply', async (req, res, next) => {
     const c = await conv.get(req.params.id);
     const {
       type = 'text', body, templateName, templateLanguage, templateVariables,
+      // Which number to reply AS ('marketing'/'clients'/default). Omit → default.
+      from,
     } = req.body || {};
 
     if (!['text', 'template'].includes(type)) {
@@ -60,6 +62,7 @@ conversationsRouter.post('/:id/reply', async (req, res, next) => {
       templateLanguage,
       templateVariables,
       origin: 'manual',
+      from: from || undefined,
     });
     res.json(sent);
   } catch (e) {

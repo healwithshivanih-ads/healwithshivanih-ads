@@ -3,10 +3,10 @@
 // the response.
 
 import fetch from 'node-fetch';
-import { config } from '../../config.js';
+import { config, resolveWhatsappNumber } from '../../config.js';
 
-const graphUrl = () =>
-  `https://graph.facebook.com/${config.whatsapp.graphVersion}/${config.whatsapp.phoneNumberId}/messages`;
+const graphUrl = (phoneNumberId) =>
+  `https://graph.facebook.com/${config.whatsapp.graphVersion}/${phoneNumberId}/messages`;
 
 class WhatsAppApiError extends Error {
   constructor(message, { status, body } = {}) {
@@ -17,15 +17,18 @@ class WhatsAppApiError extends Error {
   }
 }
 
-async function _post(payload, { retries = 1 } = {}) {
-  const url = graphUrl();
+async function _post(payload, { retries = 1, from } = {}) {
+  // `from` selects which number to send AS (multi-number support). Undefined →
+  // the default/legacy number, so existing callers are unchanged.
+  const number = resolveWhatsappNumber(from);
+  const url = graphUrl(number.phoneNumberId);
   let lastErr;
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
       const res = await fetch(url, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${config.whatsapp.token}`,
+          Authorization: `Bearer ${number.token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
@@ -61,7 +64,7 @@ function pickExternalId(apiRes) {
   return apiRes?.messages?.[0]?.id || null;
 }
 
-export async function sendText({ to, body }) {
+export async function sendText({ to, body, from }) {
   const payload = {
     messaging_product: 'whatsapp',
     recipient_type: 'individual',
@@ -69,11 +72,11 @@ export async function sendText({ to, body }) {
     type: 'text',
     text: { body, preview_url: false },
   };
-  const res = await _post(payload);
+  const res = await _post(payload, { from });
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
-export async function sendTemplate({ to, templateName, languageCode = 'en', components = [] }) {
+export async function sendTemplate({ to, templateName, languageCode = 'en', components = [], from }) {
   const payload = {
     messaging_product: 'whatsapp',
     to,
@@ -84,7 +87,7 @@ export async function sendTemplate({ to, templateName, languageCode = 'en', comp
       components,
     },
   };
-  const res = await _post(payload);
+  const res = await _post(payload, { from });
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
@@ -110,6 +113,7 @@ export async function sendCtaUrl({
   footerText,
   displayText,
   url,
+  from,
 }) {
   let header = null;
   if (headerImageId) {
@@ -138,11 +142,11 @@ export async function sendCtaUrl({
       },
     },
   };
-  const res = await _post(payload);
+  const res = await _post(payload, { from });
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
-export async function sendInteractiveButtons({ to, body, buttons }) {
+export async function sendInteractiveButtons({ to, body, buttons, from }) {
   const payload = {
     messaging_product: 'whatsapp',
     to,
@@ -158,11 +162,11 @@ export async function sendInteractiveButtons({ to, body, buttons }) {
       },
     },
   };
-  const res = await _post(payload);
+  const res = await _post(payload, { from });
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
-export async function sendInteractiveList({ to, body, button, sections }) {
+export async function sendInteractiveList({ to, body, button, sections, from }) {
   const payload = {
     messaging_product: 'whatsapp',
     to,
@@ -173,7 +177,7 @@ export async function sendInteractiveList({ to, body, button, sections }) {
       action: { button, sections },
     },
   };
-  const res = await _post(payload);
+  const res = await _post(payload, { from });
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
@@ -198,6 +202,7 @@ export async function sendFlow({
   bodyText,
   footerText,
   initialScreen = 'WELCOME',
+  from,
 }) {
   const payload = {
     messaging_product: 'whatsapp',
@@ -224,16 +229,16 @@ export async function sendFlow({
       },
     },
   };
-  const res = await _post(payload);
+  const res = await _post(payload, { from });
   return { externalMessageId: pickExternalId(res), payload, raw: res };
 }
 
-export async function markRead(externalMessageId) {
+export async function markRead(externalMessageId, { from } = {}) {
   await _post({
     messaging_product: 'whatsapp',
     status: 'read',
     message_id: externalMessageId,
-  });
+  }, { from });
 }
 
 export { WhatsAppApiError };

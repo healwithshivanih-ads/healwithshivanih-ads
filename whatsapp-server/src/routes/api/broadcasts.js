@@ -66,6 +66,9 @@ broadcastsRouter.post('/', async (req, res, next) => {
       dryRun = false,
       origin = 'broadcast',
       originRef,
+      // Which number to send AS: 'marketing' (88501) | 'clients'/'default' (89765).
+      // Omit → default number. Applies to every recipient in this broadcast.
+      from,
     } = req.body || {};
 
     if (!templateName) throw new ValidationError('templateName required');
@@ -164,6 +167,7 @@ broadcastsRouter.post('/', async (req, res, next) => {
             : undefined,
           origin,
           originRef: broadcastId,
+          from: from || undefined,
         });
         results.push({
           phone: normalised,

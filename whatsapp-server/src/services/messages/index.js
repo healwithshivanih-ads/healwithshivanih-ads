@@ -48,6 +48,8 @@ export async function send(input) {
     body, payload, templateName, templateLanguage, templateVariables,
     origin = 'manual', originRef, aiGenerated = false, aiConfidence,
     aiReviewStatus, aiJobId,
+    // Which number to send AS (multi-number support). Undefined → default number.
+    from,
   } = input;
 
   if (!workspaceId || !conversationId || !contactId) {
@@ -107,17 +109,17 @@ export async function send(input) {
     try {
       let res;
       if (type === 'text') {
-        res = await wa.sendText({ to, body });
+        res = await wa.sendText({ to, body, from });
       } else if (type === 'template') {
         const components = templateVariables?.components || [];
         res = await wa.sendTemplate({
-          to, templateName, languageCode: templateLanguage || 'en', components,
+          to, templateName, languageCode: templateLanguage || 'en', components, from,
         });
       } else if (type === 'interactive_button') {
-        res = await wa.sendInteractiveButtons({ to, body, buttons: payload?.buttons || [] });
+        res = await wa.sendInteractiveButtons({ to, body, buttons: payload?.buttons || [], from });
       } else if (type === 'interactive_list') {
         res = await wa.sendInteractiveList({
-          to, body, button: payload?.button, sections: payload?.sections || [],
+          to, body, button: payload?.button, sections: payload?.sections || [], from,
         });
       } else {
         throw new ValidationError(`unsupported type for whatsapp: ${type}`);
