@@ -19,7 +19,7 @@ import { canSendFreeText } from '../conversations/service-window.js';
 import { touchOutbound, touchInbound } from '../conversations/index.js';
 import * as wa from '../../channels/whatsapp/client.js';
 
-const FREE_TEXT_TYPES = new Set(['text', 'interactive_button', 'interactive_list']);
+const FREE_TEXT_TYPES = new Set(['text', 'interactive_button', 'interactive_list', 'order_details']);
 
 /**
  * Send an outbound message. Returns the messages row.
@@ -120,6 +120,20 @@ export async function send(input) {
       } else if (type === 'interactive_list') {
         res = await wa.sendInteractiveList({
           to, body, button: payload?.button, sections: payload?.sections || [], from,
+        });
+      } else if (type === 'order_details') {
+        res = await wa.sendOrderDetails({
+          to,
+          body,
+          footer: payload?.footer,
+          headerImageUrl: payload?.headerImageUrl,
+          referenceId: payload?.referenceId,
+          configName: payload?.configName,
+          amountPaise: payload?.amountPaise,
+          currency: payload?.currency || 'INR',
+          item: payload?.item,
+          notes: payload?.notes || {},
+          from,
         });
       } else {
         throw new ValidationError(`unsupported type for whatsapp: ${type}`);

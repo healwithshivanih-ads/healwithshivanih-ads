@@ -38,7 +38,7 @@ conversationsRouter.get('/:id', async (req, res, next) => {
 //           payload?, from? }
 //   - interactive_button: payload = { buttons: [{ id, title }] }   (≤3)
 //   - interactive_list:   payload = { button, sections: [...] }     (≤10 rows)
-const REPLY_TYPES = ['text', 'template', 'interactive_button', 'interactive_list'];
+const REPLY_TYPES = ['text', 'template', 'interactive_button', 'interactive_list', 'order_details'];
 conversationsRouter.post('/:id/reply', async (req, res, next) => {
   try {
     const c = await conv.get(req.params.id);
@@ -60,6 +60,11 @@ conversationsRouter.post('/:id/reply', async (req, res, next) => {
     }
     if (type === 'interactive_list' && !payload?.sections?.length) {
       throw new ValidationError('payload.sections required for interactive_list');
+    }
+    if (type === 'order_details') {
+      if (!payload?.referenceId) throw new ValidationError('payload.referenceId required for order_details');
+      if (!payload?.configName) throw new ValidationError('payload.configName required for order_details');
+      if (!(payload?.amountPaise > 0)) throw new ValidationError('payload.amountPaise (>0) required for order_details');
     }
 
     const sent = await msgs.send({

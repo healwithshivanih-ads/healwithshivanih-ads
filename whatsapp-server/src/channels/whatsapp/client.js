@@ -182,6 +182,71 @@ export async function sendInteractiveList({ to, body, button, sections, from }) 
 }
 
 /**
+ * Send an in-chat WhatsApp Pay order (interactive `order_details` /
+ * `review_and_pay`) — India payments. The user reviews the order + pays inside
+ * the chat via the configured payment gateway (Razorpay → UPI / cards). Meta
+ * later sends a payment-status webhook (statuses[].type === 'payment').
+ *
+ *  - `amountPaise`  total in minor units; Meta wants {value, offset:100}
+ *                   (₹210 → value 21000).
+ *  - `referenceId`  unique per order; we reconcile the webhook back by it.
+ *  - `configName`   the WhatsApp Manager → Payment configurations → India name.
+ *  - `notes`        attribution carried to the PSP (slug, conversationId, email).
+ *  - `headerImageUrl` optional; omit and Meta uses a product image fallback.
+ */
+export async function sendOrderDetails({
+  to, body, footer, headerImageUrl,
+  referenceId, configName, amountPaise, currency = 'INR', item, notes = {}, from,
+}) {
+  const amount = { value: amountPaise, offset: 100 };
+  const payload = {
+    messaging_product: 'whatsapp',
+    recipient_type: 'individual',
+    to,
+    type: 'interactive',
+    interactive: {
+      type: 'order_details',
+      ...(headerImageUrl ? { header: { type: 'image', image: { link: headerImageUrl } } } : {}),
+      body: { text: body },
+      ...(footer ? { footer: { text: String(footer).slice(0, 60) } } : {}),
+      action: {
+        name: 'review_and_pay',
+        parameters: {
+          reference_id: referenceId,
+          type: 'digital-goods',
+          payment_settings: [
+            {
+              type: 'payment_gateway',
+              payment_gateway: {
+                type: 'razorpay',
+                configuration_name: configName,
+                razorpay: { receipt: referenceId, notes },
+              },
+            },
+          ],
+          currency,
+          total_amount: amount,
+          order: {
+            status: 'pending',
+            items: [
+              {
+                retailer_id: referenceId,
+                name: String(item || 'Order').slice(0, 60),
+                amount,
+                quantity: 1,
+              },
+            ],
+            subtotal: amount,
+          },
+        },
+      },
+    },
+  };
+  const res = await _post(payload, { from });
+  return { externalMessageId: pickExternalId(res), payload, raw: res };
+}
+
+/**
  * Send a published Meta WhatsApp Flow to a user as an interactive message.
  * Triggered by inbound keyword matches (services/keywords) — when someone
  * texts "40s" to the WABA number, we reply with this so the Flow opens

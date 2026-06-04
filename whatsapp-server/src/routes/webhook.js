@@ -9,7 +9,7 @@ import { matchContact } from '../services/contacts/matcher.js';
 import { getOrCreate } from '../services/conversations/index.js';
 import { logInbound, updateStatus } from '../services/messages/index.js';
 import { getDefault as getDefaultWorkspace } from '../services/workspaces.js';
-import { forwardInbound } from '../services/forwarder/index.js';
+import { forwardInbound, forwardPaymentStatus } from '../services/forwarder/index.js';
 import { publish, EVENTS } from '../services/events/index.js';
 import { handleFlowCompletion } from '../services/flow-completion/index.js';
 import { matchKeyword } from '../services/keywords/index.js';
@@ -166,13 +166,24 @@ async function processMetaWebhook(body, webhookRowId) {
           }
         }
       } else if (ev.kind === 'status') {
-        const errPayload = ev.errors ? { errors: ev.errors } : null;
-        await updateStatus(ev.external_message_id, 'whatsapp', ev.status, errPayload);
-        publish(EVENTS.OUTBOUND_STATUS, {
-          external_message_id: ev.external_message_id,
-          status: ev.status,
-          ts: new Date().toISOString(),
-        });
+        if (ev.status_type === 'payment') {
+          // In-chat WhatsApp Pay confirmation — not a message receipt. Forward to
+          // the funnels app, which reconciles by reference_id + registers the lead.
+          logger.info(
+            { ref: ev.payment?.reference_id, payment_status: ev.status },
+            'payment status webhook',
+          );
+          forwardPaymentStatus({ event: ev }).catch((err) =>
+            logger.error({ err: err.message }, 'payment_status forward failed'));
+        } else {
+          const errPayload = ev.errors ? { errors: ev.errors } : null;
+          await updateStatus(ev.external_message_id, 'whatsapp', ev.status, errPayload);
+          publish(EVENTS.OUTBOUND_STATUS, {
+            external_message_id: ev.external_message_id,
+            status: ev.status,
+            ts: new Date().toISOString(),
+          });
+        }
       }
     } catch (e) {
       logger.error({ err: e.message, kind: ev.kind }, 'event handler failed');

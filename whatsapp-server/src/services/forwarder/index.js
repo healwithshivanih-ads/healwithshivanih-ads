@@ -85,6 +85,60 @@ function pickDestination(event) {
   };
 }
 
+/**
+ * Forward an India-payment status update to the funnels app. In-chat WhatsApp
+ * Pay (order_details) confirmations arrive as `statuses[].type === 'payment'`;
+ * the funnels app reconciles by `reference_id` and marks the lead registered.
+ * Payments only ever belong to the funnels app (acquisition), so — unlike
+ * inbound messages — there's no fm-coach branch. Fire-and-forget.
+ */
+export async function forwardPaymentStatus({ event }) {
+  const url = config.funnelsAppWebhook.url;
+  const secret = config.funnelsAppWebhook.secret;
+  if (!url) return; // funnels app not configured
+
+  const payment = event.payment || {};
+  const payload = {
+    type: 'payment_status',
+    reference_id: payment.reference_id || null,
+    // captured | pending | failed (the overall payment status)
+    payment_status: event.status || payment.status || null,
+    recipient_id: event.recipient_id || null,
+    external_message_id: event.external_message_id || null,
+    timestamp: event.timestamp,
+    raw_payload: event.payload || null,
+  };
+
+  const bodyStr = JSON.stringify(payload);
+  const headers = { 'Content-Type': 'application/json' };
+  if (secret) {
+    const sig = createHmac('sha256', secret).update(bodyStr).digest('hex');
+    headers['X-Whatsapp-Signature-256'] = `sha256=${sig}`;
+  }
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const res = await fetch(url, { method: 'POST', headers, body: bodyStr, signal: controller.signal });
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      logger.warn(
+        { status: res.status, url, ref: payload.reference_id, body: text.slice(0, 200) },
+        'funnels-app payment_status forward returned non-2xx',
+      );
+    } else {
+      logger.info(
+        { ref: payload.reference_id, payment_status: payload.payment_status },
+        'funnels-app payment_status forwarded',
+      );
+    }
+  } catch (err) {
+    logger.warn({ err: err.message, url, ref: payload.reference_id }, 'funnels-app payment_status forward failed');
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function forwardInbound({ event, contact, conversation, message }) {
   const dest = pickDestination(event);
   if (!dest.url) return; // destination disabled / unset

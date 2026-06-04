@@ -101,9 +101,14 @@ export function parseIncoming(envelope) {
       for (const s of value.statuses || []) {
         events.push({
           kind: 'status',
+          // For an India-payment status, s.type === 'payment' and s.payment holds
+          // the payment detail (reference_id + captured/failed/pending). For a
+          // normal message receipt, s.type is absent and s.status is the receipt.
+          status_type: s.type || 'message',
           external_message_id: s.id,
           phone_number_id: phoneNumberId,
-          status: s.status, // sent | delivered | read | failed
+          status: s.status, // sent | delivered | read | failed | (payment) captured | pending | failed
+          payment: s.payment || null,
           recipient_id: s.recipient_id,
           errors: s.errors || null,
           timestamp: s.timestamp
