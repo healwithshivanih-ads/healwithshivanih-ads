@@ -1,0 +1,20 @@
+slug: maca-no-ssri-interaction-signal
+statement: In the only RCT examining maca co-administered with SSRIs, maca at 1.5
+  to 3.0 g/day was well tolerated across a 12-week dosing window with no signal of
+  pharmacokinetic or pharmacodynamic interaction. Sample size is small; ongoing clinician
+  oversight remains essential for any client on serotonergic medication.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- ssri-induced-sexual-dysfunction
+linked_to_supplements:
+- maca
+sources:
+- id: dording-2008-maca-ssri-sexual-dysfunction
+  location: Results
+  quote: Maca was well tolerated.
+rationale: Pilot trial only — absence of signal in 20 subjects is reassuring but not
+  pivotal. Coach should defer to prescriber.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

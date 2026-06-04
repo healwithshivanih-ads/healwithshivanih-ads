@@ -1,0 +1,27 @@
+slug: maca-clinical-use-hpa-amenorrhea-post-pill-libido
+statement: Functional medicine clinical use of maca extends beyond menopause to HPA-driven
+  amenorrhea and post-pill libido recovery — both contexts where direct hormonal intervention
+  is inappropriate and a non-phytoestrogenic adaptogen that supports endogenous hormone
+  production via HPA-axis modulation is preferable. Typical dose 1.5 to 3 g/day of
+  gelatinized maca; expect 8 to 12 weeks for full effect.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- hpa-axis-cortisol-regulation
+- female-infertility
+linked_to_supplements:
+- maca
+sources:
+- id: gonzales-2002-maca-sexual-desire-men
+  location: Conclusion
+  quote: Maca improved sexual desire from week 8 of treatment.
+- id: brooks-2008-maca-postmenopausal-psychological-sexual
+  location: Conclusion
+  quote: Maca reduced psychological symptoms and sexual dysfunction in postmenopausal
+    women.
+rationale: FM clinical synthesis extrapolating mechanism (HPA-axis, non-hormonal)
+  to adjacent indications. Honest about extrapolation — fm_specific_thin reflects
+  clinical reasoning beyond trial populations.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

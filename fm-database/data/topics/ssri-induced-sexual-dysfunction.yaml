@@ -1,0 +1,36 @@
+slug: ssri-induced-sexual-dysfunction
+display_name: SSRI-Induced Sexual Dysfunction
+aliases:
+- ssri-sexual-side-effects
+- antidepressant-sexual-dysfunction
+- post-ssri-sexual-dysfunction
+summary: Selective serotonin reuptake inhibitors and serotonin-norepinephrine reuptake
+  inhibitors commonly produce sexual side effects — reduced libido, delayed orgasm,
+  anorgasmia, genital anaesthesia, and erectile difficulties — that persist while
+  the drug is taken and sometimes after discontinuation. Reported prevalence ranges
+  from 25 to 80 percent depending on instrument and population. Mechanisms include
+  increased post-synaptic serotonergic tone (5-HT2A/2C), reduced dopaminergic and
+  noradrenergic activity in arousal pathways, and nitric oxide suppression. Functional
+  medicine approach centres on identifying whether residual depression versus the
+  medication itself is driving symptoms, optimising HPA-axis function and micronutrient
+  cofactors for neurotransmitter synthesis, and trialling adjuncts (maca, bupropion-style
+  activation through lifestyle) under prescriber oversight. Never recommend stopping
+  or switching the SSRI — refer to the prescribing clinician.
+key_mechanisms:
+- hpa-axis-dysregulation
+common_symptoms:
+- low-libido
+- depression
+related_topics:
+- major-depressive-disorder
+- female-infertility
+sources:
+- id: dording-2008-maca-ssri-sexual-dysfunction
+  location: Introduction and Discussion
+  quote: SSRI-induced sexual dysfunction affects 30 to 70 percent of patients on these
+    medications.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

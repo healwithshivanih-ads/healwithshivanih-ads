@@ -1,0 +1,23 @@
+slug: maca-postmenopausal-mood-and-sexual-function
+statement: In a randomized double-blind placebo-controlled crossover trial of 14 postmenopausal
+  women, powdered maca at 3.5 g/day for 6 weeks significantly reduced Greene Climacteric
+  Scale subscales for anxiety, depression, and sexual dysfunction. Serum estradiol,
+  FSH, LH, and SHBG were unchanged, and yeast-receptor assays showed no estrogenic
+  or androgenic activity.
+evidence_tier: strong
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+linked_to_supplements:
+- maca
+sources:
+- id: brooks-2008-maca-postmenopausal-psychological-sexual
+  location: Results and Conclusion
+  quote: Maca reduced psychological symptoms and sexual dysfunction independent of
+    estrogenic and androgenic activity.
+rationale: Crossover RCT design strengthens evidence despite n=14. Confirms HPA-axis
+  (not phytoestrogenic) mechanism.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

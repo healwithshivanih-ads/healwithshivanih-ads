@@ -1,0 +1,22 @@
+slug: maca-3g-day-improves-ssri-sexual-dysfunction
+statement: In a double-blind randomized pilot trial of 20 remitted depressed outpatients
+  (17 women) with SSRI-induced sexual dysfunction, maca at 3.0 g/day significantly
+  improved ASEX and MGH-SFQ scores while 1.5 g/day did not, suggesting a dose-related
+  benefit. Maca was well tolerated and no SSRI interaction signal emerged.
+evidence_tier: strong
+linked_to_topics:
+- ssri-induced-sexual-dysfunction
+- major-depressive-disorder
+linked_to_supplements:
+- maca
+sources:
+- id: dording-2008-maca-ssri-sexual-dysfunction
+  location: Results and Conclusion
+  quote: ITT subjects on 3.0 g/day maca had significant improvement in ASEX and MGH-SFQ
+    scores.
+rationale: RCT design supports a strong tier for clinical use at 3 g/day for SSRI
+  sexual dysfunction; small sample (n=20) is the main caveat.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

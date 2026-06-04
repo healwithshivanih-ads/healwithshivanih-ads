@@ -1,0 +1,22 @@
+slug: red-maca-reduces-prostate-size
+statement: In male rats, aqueous red maca extract significantly reduced ventral prostate
+  weight and epithelial height, and prevented prostate enlargement induced by testosterone
+  enanthate. Yellow and black maca had no prostate effect. Serum testosterone and
+  estradiol were unchanged across all three ecotypes.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- benign-prostatic-hyperplasia
+- prostate-cancer-prevention
+linked_to_supplements:
+- maca
+sources:
+- id: gonzales-2005-red-maca-prostate-reduction
+  location: Results and Conclusion
+  quote: Red maca but neither yellow nor black maca reduced significantly ventral
+    prostate size in rats.
+rationale: Animal-only pre-clinical signal for red-maca-specific use in BPH. Mechanism
+  likely glucosinolate-related; not yet replicated in human trials.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

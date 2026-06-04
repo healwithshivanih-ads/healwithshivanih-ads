@@ -1,0 +1,25 @@
+slug: maca-safety-pregnancy-thyroid-cautions
+statement: Maca has no safety data in pregnancy or lactation and should be discontinued
+  at conception until evidence emerges. As a cruciferous plant containing glucosinolates,
+  raw maca powder may interfere with thyroid hormone synthesis at high doses — clients
+  with hypothyroidism or Hashimoto's should choose gelatinized maca (heat-deactivates
+  goitrogenic compounds) and discuss with their clinician. No interaction signal emerged
+  with SSRIs in the only co-administration trial.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- thyroid
+- autoimmune-thyroiditis
+- hypothyroidism
+linked_to_supplements:
+- maca
+sources:
+- id: dording-2008-maca-ssri-sexual-dysfunction
+  location: Results
+  quote: Maca was well tolerated.
+rationale: Safety framing pulled together from absence of pregnancy data, cruciferous-glucosinolate
+  goitrogenicity at high raw doses, and the single co-administration trial. Coach
+  defers to clinician.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

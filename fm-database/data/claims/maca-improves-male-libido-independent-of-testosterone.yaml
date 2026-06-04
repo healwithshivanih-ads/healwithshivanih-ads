@@ -1,0 +1,21 @@
+slug: maca-improves-male-libido-independent-of-testosterone
+statement: In a 12-week randomized placebo-controlled trial of healthy men aged 21
+  to 56, gelatinized maca at 1500 or 3000 mg/day improved self-reported sexual desire
+  from week 8 onwards, with no change in serum testosterone, estradiol, or Hamilton
+  scores for depression and anxiety.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- male-infertility-oxidative-stress
+linked_to_supplements:
+- maca
+sources:
+- id: gonzales-2002-maca-sexual-desire-men
+  location: Results and Conclusion
+  quote: Maca has an independent effect on sexual desire not because of changes in
+    mood or serum testosterone.
+rationale: Rigorous RCT design but small sample. Mechanism is non-hormonal and non-mood-mediated,
+  consistent with adaptogenic action.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

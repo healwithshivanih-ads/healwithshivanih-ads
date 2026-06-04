@@ -1,0 +1,22 @@
+slug: maca-improves-sperm-count-and-motility
+statement: In a four-month open-label trial of nine adult men, maca tablets at 1500
+  or 3000 mg/day increased seminal volume, total sperm count per ejaculum, motile
+  sperm count, and sperm motility without changing serum LH, FSH, prolactin, testosterone,
+  or estradiol.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- male-infertility-oxidative-stress
+- sperm-quality
+linked_to_supplements:
+- maca
+sources:
+- id: gonzales-2001-maca-sperm-parameters
+  location: Results and Conclusion
+  quote: Maca improved sperm production and sperm motility by mechanisms not related
+    to LH, FSH, PRL, T and E2.
+rationale: Small open-label trial; effect was independent of dose and hormone changes,
+  suggesting a non-hormonal mechanism.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

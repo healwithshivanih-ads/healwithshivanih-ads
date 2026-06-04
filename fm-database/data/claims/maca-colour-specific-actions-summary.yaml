@@ -1,0 +1,28 @@
+slug: maca-colour-specific-actions-summary
+statement: Across pre-clinical and limited human trials, the three maca ecotypes show
+  divergent biological actions — black maca best supports sperm production and motility,
+  red maca selectively reduces prostate size, and yellow maca functions primarily
+  as a general adaptogen without organ-specific reproductive effects. Most commercial
+  mixed-colour maca will not deliver targeted benefits.
+evidence_tier: fm_specific_thin
+linked_to_topics:
+- male-infertility-oxidative-stress
+- sperm-quality
+- benign-prostatic-hyperplasia
+linked_to_supplements:
+- maca
+sources:
+- id: gonzales-2006-maca-ecotypes-spermatogenesis
+  location: Results
+  quote: There were differences in the biological response of the three ecotypes of
+    maca.
+- id: gonzales-2005-red-maca-prostate-reduction
+  location: Results
+  quote: Red maca but neither yellow nor black maca reduced ventral prostate size.
+rationale: FM clinical synthesis combining two pre-clinical studies. Honest about
+  evidence ceiling — sources colour-specific maca when the indication maps to that
+  ecotype.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
