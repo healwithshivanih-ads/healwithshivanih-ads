@@ -33,22 +33,33 @@ conversationsRouter.get('/:id', async (req, res, next) => {
 });
 
 // POST /api/conversations/:id/reply
-//   body: { type:'text'|'template', body?, templateName?, templateLanguage?, templateVariables? }
+//   body: { type:'text'|'template'|'interactive_button'|'interactive_list', body?,
+//           templateName?, templateLanguage?, templateVariables?,
+//           payload?, from? }
+//   - interactive_button: payload = { buttons: [{ id, title }] }   (≤3)
+//   - interactive_list:   payload = { button, sections: [...] }     (≤10 rows)
+const REPLY_TYPES = ['text', 'template', 'interactive_button', 'interactive_list'];
 conversationsRouter.post('/:id/reply', async (req, res, next) => {
   try {
     const c = await conv.get(req.params.id);
     const {
-      type = 'text', body, templateName, templateLanguage, templateVariables,
+      type = 'text', body, payload, templateName, templateLanguage, templateVariables,
       // Which number to reply AS ('marketing'/'clients'/default). Omit → default.
       from,
     } = req.body || {};
 
-    if (!['text', 'template'].includes(type)) {
-      throw new ValidationError(`reply type must be text or template, got ${type}`);
+    if (!REPLY_TYPES.includes(type)) {
+      throw new ValidationError(`reply type must be one of ${REPLY_TYPES.join('|')}, got ${type}`);
     }
-    if (type === 'text' && !body) throw new ValidationError('body required for text reply');
+    if (type !== 'template' && !body) throw new ValidationError('body required');
     if (type === 'template' && !templateName) {
       throw new ValidationError('templateName required for template reply');
+    }
+    if (type === 'interactive_button' && !payload?.buttons?.length) {
+      throw new ValidationError('payload.buttons required for interactive_button');
+    }
+    if (type === 'interactive_list' && !payload?.sections?.length) {
+      throw new ValidationError('payload.sections required for interactive_list');
     }
 
     const sent = await msgs.send({
@@ -58,6 +69,7 @@ conversationsRouter.post('/:id/reply', async (req, res, next) => {
       channel: c.channel,
       type,
       body,
+      payload,
       templateName,
       templateLanguage,
       templateVariables,
