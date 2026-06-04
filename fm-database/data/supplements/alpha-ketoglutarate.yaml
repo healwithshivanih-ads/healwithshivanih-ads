@@ -1,0 +1,47 @@
+slug: alpha-ketoglutarate
+display_name: Alpha-Ketoglutarate (AKG)
+aliases:
+- AKG
+- calcium alpha-ketoglutarate
+- Ca-AKG
+- 2-oxoglutarate
+- alpha ketoglutarate
+category: other
+forms_available:
+- capsule
+- powder
+typical_dose_range:
+  capsule:
+    min: 300
+    max: 1000
+    unit: mg
+timing_options:
+- with_breakfast
+take_with_food: optional
+contraindications:
+  conditions: []
+  medications: []
+  life_stages:
+  - pregnancy
+  - lactation
+linked_to_topics:
+- biological-age-reversal
+- methylation
+linked_to_mechanisms:
+- dna-methylation-adaptogen-rebalancing
+- methylation-cycle
+notes_for_coach: Listed by Fitzgerald among the nutrient-class DNA methylation adaptogens
+  — a required cofactor for the TET demethylase enzymes that actively remove errant
+  methyl marks, and an emerging longevity supplement. Evidence is largely animal/cell;
+  treat as plausible-emerging, food-and-lifestyle first. Endogenous to the citric-acid
+  cycle.
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 3 — nutrient adaptogens (vitamins A, C, D3, alpha-ketoglutarate)
+  quote: 'for the nutrients: vitamins A, C, and D3, and alpha ketoglutarate... the
+    nutrients help actively remove unfavorable methylation marks.'
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

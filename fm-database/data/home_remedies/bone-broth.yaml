@@ -1,0 +1,55 @@
+slug: bone-broth
+display_name: Bone Broth (Healing Broth)
+aliases:
+- healing broth
+- meat stock
+- bone stock
+- collagen broth
+- beef broth
+- chicken bone broth
+category: kitchen_remedy
+summary: Long-simmered broth from animal bones (and connective tissue/feet) that extracts collagen,
+  gelatin, glycosaminoglycans (GAGs), the amino acids glycine/proline/arginine, and minerals
+  (potassium, selenium, molybdenum, some magnesium/calcium). Traditionally used for gut repair,
+  joint and connective-tissue support, sleep and recovery from illness. Vegetable/mushroom-kombu
+  broths give a vegetarian mineral-rich alternative. Used in the Younger You program as a delivery
+  vehicle for methyl-donor and adaptogen 'boosts' (turmeric, ginger, green tea).
+indications:
+- leaky-gut
+- gut-dysbiosis
+- joint-pain
+- insomnia
+- inflammation
+contraindications:
+- histamine intolerance (long-simmered broth is high-histamine — use short-cooked meat stock
+  instead)
+- severe hyperkalaemia / advanced kidney disease (broth is potassium-rich — refer)
+- glutamate sensitivity in a minority
+preparation: 'Cover grass-fed/organic bones (add a few chicken feet or a knuckle for extra gelatin)
+  with water and a splash of vinegar; simmer gently 8-24h (beef) or 4-12h (chicken), skim, strain.
+  Vegetarian: simmer kombu, mushrooms, onion, garlic, ginger and vegetable scraps ~1h. Add ''boosts''
+  (turmeric+black pepper, ginger, green tea) near the end.'
+typical_dose: 1-2 cups (240-480 ml) daily, sipped warm or used as a base for soups, curries
+  and tonics.
+duration: Daily; safe long-term as a food. Especially useful during gut-healing or post-illness
+  phases.
+timing_notes: Glycine content makes an evening cup helpful for sleep and overnight blood-sugar
+  stability. Use the cleanest bones you can source despite the low measured lead.
+linked_to_topics:
+- gut-dysbiosis
+- joint-pain
+- inflammation
+linked_to_mechanisms:
+- leaky-gut
+- chronic-inflammation
+- glutathione-depletion
+sources:
+- id: fitzgerald-davenport-better-broths-2022
+  location: Introduction — Benefits of Broth
+  quote: Bone broth contains glycosaminoglycan polysaccharides (GAGS)... that help repair both
+    gut lining and joint tissue.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

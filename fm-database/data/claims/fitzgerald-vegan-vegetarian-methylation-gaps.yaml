@@ -1,0 +1,26 @@
+slug: fitzgerald-vegan-vegetarian-methylation-gaps
+statement: 'Plant-exclusive eaters are prone to deficits in DNA-methylation-supportive
+  nutrients: the sulfur amino acids methionine/cysteine/taurine, vitamin B12, choline,
+  DHA, iron and vitamin D. Fitzgerald supplements vegans/vegetarians on the program
+  with an essential-amino-acid protein powder, algae-based EPA/DHA, B12 (methyl/adeno/hydroxocobalamin
+  ~500 mcg/day, not cyanocobalamin), choline bitartrate 450-550 mg, vitamin D, and
+  iron only if labs confirm deficiency (40-80 mg elemental every other day).'
+linked_to_topics:
+- methylation
+linked_to_supplements:
+- taurine
+- vitamin-b12
+- omega-3
+linked_to_mechanisms:
+- methylation-cycle
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 8 — additional supplements for vegetarians and vegans
+  quote: There are a handful of nutrients that vegetarians and vegans tend to be deficient
+    in... methionine, cysteine, taurine, B12, choline, and DHA.
+rationale: Critical for India's large vegetarian client base on a methylation program.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

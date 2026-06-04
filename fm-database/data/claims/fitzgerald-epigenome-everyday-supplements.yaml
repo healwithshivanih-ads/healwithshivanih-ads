@@ -1,0 +1,31 @@
+slug: fitzgerald-epigenome-everyday-supplements
+statement: Beyond food, Fitzgerald's near-universal epigenome supports are vitamin
+  D (2,000-10,000 IU/day, target blood level 50-70 ng/mL, taken with fat), omega-3
+  EPA+DHA ~2,000 mg/day (up to 5,000 mg with inflammation, plus SPMs 1,000 mg), standardized
+  green tea extract 500-600 mg (≈250-300 mg EGCG), curcumin 500-1,000 mg with black
+  pepper/fat, vitamin C 500-1,000 mg, and vitamin A ≤2,500 IU retinol — all ideally
+  guided by labs.
+linked_to_topics:
+- biological-age-reversal
+- inflammation
+linked_to_supplements:
+- vitamin-d3
+- omega-3
+- egcg
+- green-tea
+- curcumin
+- quercetin
+linked_to_mechanisms:
+- dna-methylation-adaptogen-rebalancing
+- chronic-inflammation
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 8 — epigenome-friendly supplements nearly everyone needs
+  quote: Vitamin D... 5,000 IU is the sweet spot... omega-3 around 2,000 mg per day...
+    green tea extract 500-600 mg... curcumin 500-1,000 mg.
+rationale: Dose ranges a coach can hold while the clinician individualises.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

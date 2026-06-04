@@ -1,0 +1,28 @@
+slug: fitzgerald-bone-broth-collagen-glycine-benefits
+statement: 'Bone broth delivers collagen/gelatin and the amino acids glycine, proline
+  and arginine plus minerals (potassium, selenium, molybdenum, some magnesium): GAGs
+  and gelatin support gut-lining and joint/connective-tissue repair; arginine supports
+  immune defence; glycine is calming to the CNS, aids sleep, improves insulin sensitivity
+  and is one of three amino acids needed to make glutathione for detoxification.'
+linked_to_topics:
+- gut-dysbiosis
+- inflammation
+linked_to_supplements:
+- collagen-peptides
+- glycine
+linked_to_mechanisms:
+- leaky-gut
+- glutathione-depletion
+- chronic-inflammation
+sources:
+- id: fitzgerald-davenport-better-broths-2022
+  location: Introduction — Benefits of Broth (collagen & glycine)
+  quote: The glycine in bone broth is also helpful for detoxification... it's one
+    of the three amino acids we need to make glutathione.
+rationale: Mechanistic backbone for prescribing broth in gut, joint, sleep and detox
+  contexts.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

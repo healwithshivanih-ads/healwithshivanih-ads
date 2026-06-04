@@ -1,0 +1,46 @@
+slug: dna-methylation-adaptogen-rebalancing
+display_name: DNA Methylation Adaptogen Rebalancing
+aliases:
+- methylation adaptogen
+- DNA methylation adaptogens
+- epigenetic adaptogen
+- methyladaptogen
+- TET demethylation support
+- DNMT modulation by polyphenols
+category: signaling
+summary: 'A class of dietary flavonoid polyphenols and nutrient cofactors that nudge
+  DNA methylation toward balance rather than blanket increase/decrease. Flavonoids
+  (curcumin, EGCG, rosmarinic acid, quercetin, luteolin, sulforaphane, genistein)
+  chiefly inhibit pathological hypermethylation (DNMT inhibition), while nutrient
+  cofactors (vitamins A, C, D3, alpha-ketoglutarate) support the TET enzyme family
+  that actively removes errant methyl groups. Net effect in the pilot trial: methyl
+  groups were removed from beneficial youthful genes and added to pro-aging genes
+  — a selective ''portfolio rebalancing'' rather than global demethylation.'
+upstream_drivers:
+- methylation-cycle
+downstream_effects:
+- epigenetic-gene-expression
+related_mechanisms:
+- methylation-cycle
+- epigenetic-gene-expression
+- epigenetic-modulation
+- oxidative-stress
+linked_to_topics:
+- biological-age-reversal
+- methylation
+- epigenetics-lifestyle-gene-expression
+notes_for_coach: 'Practical translation: methyl donors supply the raw methyl groups;
+  adaptogens direct WHERE they land. Both halves are needed — high-dose methyl donors
+  without adaptogens can drive indiscriminate methylation. Food-first delivery (turmeric,
+  green tea, rosemary, cruciferous, berries, onions/apples for quercetin) is the safe
+  default.'
+sources:
+- id: fitzgerald-younger-you-2022
+  location: 'Ch 3 — Younger You Formula Component #2: DNA methylation adaptogens'
+  quote: DNA methylation adaptogens help DNA methylation find its sweet spot of not
+    too much, not too little, and in just the right places.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

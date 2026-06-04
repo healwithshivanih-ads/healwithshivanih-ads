@@ -1,0 +1,29 @@
+slug: fitzgerald-dna-methylation-adaptogen-foods
+statement: DNA methylation adaptogens are flavonoid polyphenols — curcumin (turmeric),
+  EGCG (green tea), rosmarinic acid (rosemary), quercetin (apples/onions/berries/capers),
+  luteolin, lycopene, sulforaphane (cruciferous), genistein (soy) — plus nutrient
+  cofactors vitamins A/C/D3 and alpha-ketoglutarate. They selectively rebalance DNA
+  methylation rather than blanketing it.
+linked_to_topics:
+- biological-age-reversal
+- methylation
+linked_to_supplements:
+- curcumin
+- egcg
+- green-tea
+- quercetin
+- sulforaphane
+- alpha-ketoglutarate
+linked_to_mechanisms:
+- dna-methylation-adaptogen-rebalancing
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 3 — DNA methylation adaptogens
+  quote: Members of the flavonoid team are curcumin, EGCG, rosmarinic acid, quercetin,
+    luteolin, lycopene, sulphoraphane, and genistein.
+rationale: Concrete adaptogen shopping list, mostly already in Indian kitchens.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

@@ -1,0 +1,55 @@
+slug: biological-age-reversal
+display_name: Biological Age Reversal (Epigenetic Aging)
+aliases:
+- bio age
+- biological age
+- epigenetic age
+- DNA methylation age
+- epigenetic clock
+- Horvath clock
+- methylation age reversal
+- younger you program
+- epigenetic aging
+- anti-aging methylation
+summary: 'Biological (bio) age estimates accumulated tissue/cellular damage and is
+  measured by DNA-methylation ''epigenetic clocks'' (e.g. Horvath, PhenoAge, DunedinPACE).
+  Unlike chronological age it can move in reverse. Fitzgerald''s 8-week diet-and-lifestyle
+  program — methyl donors + DNA methylation adaptogens + sleep/exercise/relaxation/toxin
+  reduction — lowered bio age ~3.2 years in a pilot trial without drugs or prolonged
+  fasting. Coaching frame: a measurable longevity target driven by food and lifestyle
+  rather than a diagnosis.'
+common_symptoms:
+- fatigue
+- brain-fog
+- cognitive-decline
+- weight-gain
+red_flags: []
+related_topics:
+- epigenetics-lifestyle-gene-expression
+- methylation
+- methylation-cycle
+- homocysteine-and-methylation
+- inflammaging
+key_mechanisms:
+- epigenetic-gene-expression
+- methylation-cycle
+- dna-methylation-adaptogen-rebalancing
+coaching_scope_notes: Coach the food-first program (cruciferous + leafy greens, beets,
+  seeds, eggs/liver or vegan equivalents, green tea, turmeric, rosemary) plus the
+  four lifestyle levers (7h sleep, regular exercise, 2x10min relaxation, toxin reduction).
+  Educate on epigenetic clocks as a motivation tool. Do NOT interpret clock test results
+  clinically.
+clinician_scope_notes: Bio-age clock testing (TruDiagnostic, etc.) and any folate/B12
+  dosing in clients with cancer history, MTHFR variants, or on methotrexate belongs
+  with the clinician — over-methylation and folic-acid over-supplementation carry
+  real risk.
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Introduction + Ch 1-3 (the new science of aging)
+  quote: Our study participants lowered their biological age by an average of 3.23
+    years vs the control group.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

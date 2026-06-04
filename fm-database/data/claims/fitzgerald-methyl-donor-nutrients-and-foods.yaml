@@ -1,0 +1,27 @@
+slug: fitzgerald-methyl-donor-nutrients-and-foods
+statement: 'Primary dietary methyl donors are folate (B9) and vitamin B12 — which
+  build SAMe, the universal methyl donor — supported by betaine and choline, the minerals
+  zinc/magnesium/potassium/sulfur, B vitamins riboflavin/niacin/pyridoxine, the amino
+  acids methionine/cysteine/taurine, and the omega-3 DHA. Richest whole-food sources:
+  liver, clams/fish, beans/chickpeas, beets, spinach, quinoa, egg yolks, lentils.'
+linked_to_topics:
+- methylation
+- homocysteine-and-methylation
+linked_to_supplements:
+- methylfolate-b9
+- vitamin-b12
+- tmg
+- taurine
+linked_to_mechanisms:
+- methylation-cycle
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 3 — methyl donor foods table
+  quote: The most important methyl donors are folate and vitamin B12... other supporting
+    players include betaine and choline.
+rationale: Lets coaches build methylation-supportive meals from food, India-friendly.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: strong

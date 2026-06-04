@@ -1,0 +1,27 @@
+slug: fitzgerald-backdoor-methylation-folate-caution
+statement: Rather than pushing high-dose methyl donors, Fitzgerald favours 'backdoor
+  methylation' — getting folate/B12 from whole foods and protecting existing methyl
+  donors with abundant DNA methylation adaptogens. She cautions against over-supplementing
+  folic acid/folate (especially in older adults and anyone with a cancer history),
+  and against relying on fortified foods, because too much methylation is as harmful
+  as too little.
+linked_to_topics:
+- methylation
+- homocysteine-and-methylation
+linked_to_supplements:
+- methylfolate-b9
+- folate-folic-acid
+linked_to_mechanisms:
+- methylation-cycle
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 8 — preserving methyl donors / backdoor methylation
+  quote: A more prudent strategy for boosting your level of methyl donors than supplementing
+    with them directly.
+rationale: Safety guardrail — over-methylation and folic acid risk in cancer/older
+  clients.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: plausible_emerging

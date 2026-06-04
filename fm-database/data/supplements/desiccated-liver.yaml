@@ -1,0 +1,55 @@
+slug: desiccated-liver
+display_name: Desiccated Liver (Freeze-Dried Liver Glandular)
+aliases:
+- liver glandular
+- freeze-dried liver
+- beef liver capsules
+- bovine liver supplement
+- liver tablets
+- nondefatted liver
+category: other
+forms_available:
+- capsule
+- tablet
+- powder
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 1500
+    unit: mg
+  tablet:
+    min: 500
+    max: 1500
+    unit: mg
+timing_options:
+- with_breakfast
+- with_lunch
+take_with_food: optional
+contraindications:
+  conditions:
+  - haemochromatosis
+  - iron-overload
+  - elevated-ferritin
+  - vitamin-a-toxicity
+  medications: []
+  life_stages: []
+linked_to_topics:
+- biological-age-reversal
+- methylation
+linked_to_mechanisms:
+- methylation-cycle
+notes_for_coach: Fitzgerald's stand-in for clients who won't eat liver 2-3x/week —
+  'a methylation multivitamin in a food matrix' (folate, B12, choline, vitamin A,
+  iron). Use clean-sourced, nondefatted, freeze-dried, third-party tested product.
+  Check iron/ferritin first; refer if high iron. Up to ~1500 mg/day ≈ nutrients in
+  ~1/2 oz bovine liver.
+sources:
+- id: fitzgerald-younger-you-2022
+  location: Ch 8 — Younger You Intensive supplements (liver supplement)
+  quote: Take a clean-sourced, nondefatted, freeze-dried liver supplement... up to
+    1,500 mg per day.
+version: 1
+status: active
+updated_at: '2026-06-04'
+updated_by: Shivani
+evidence_tier: fm_specific_thin
