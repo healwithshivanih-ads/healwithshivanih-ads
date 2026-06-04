@@ -197,7 +197,7 @@ create table messages (
   type text not null check (type in (
     'text','template','interactive_button','interactive_list',
     'image','document','video','audio','sticker',
-    'flow','status','system','reaction'
+    'flow','status','system','reaction','order_details'
   )),
 
   body text,
