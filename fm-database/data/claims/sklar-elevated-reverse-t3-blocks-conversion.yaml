@@ -1,0 +1,20 @@
+slug: sklar-elevated-reverse-t3-blocks-conversion
+statement: Sklar describes a clinical pattern where TSH and T4 look normal but reverse
+  T3 is elevated, indicating that the body is producing thyroid hormone but shunting
+  it toward the inactive reverse-T3 pathway instead of active T3 — a subclinical conversion
+  problem that disrupts ovulation until addressed.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hypothyroidism
+- pre-ivf-root-cause-workup
+sources:
+- id: sklar-fertility-expert-5-hidden-reasons
+  location: Episode body — hidden reason 2
+  quote: Her reverse T3 was elevated, meaning her body was producing thyroid hormone,
+    but not converting it properly.
+rationale: Concrete pattern to flag when running full thyroid panels — common in high-stress
+  clients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,47 @@
+slug: natural-killer-cells-implantation
+display_name: Natural Killer Cells & Implantation Failure
+aliases:
+- elevated nk cells
+- nk cell dysregulation
+- uterine nk cells
+- reproductive immunology nk
+summary: Natural killer (NK) cells are innate-immune lymphocytes; peripheral-blood
+  NK cells differ functionally from uterine NK cells (uNK) which dominate the decidua
+  at implantation and normally support trophoblast invasion and spiral-artery remodelling.
+  Reproductive immunology proposes that in a subset of women with repeat implantation
+  failure or recurrent pregnancy loss, elevated NK percentage, absolute count, or
+  cytotoxicity drives an over-aggressive immune response against the implanting embryo.
+  The clinical picture is contested — there is no universally accepted assay, reference
+  range, or treatment standard; uNK biopsy is invasive, and peripheral NK does not
+  reliably mirror uterine NK function. Sklar's clinical position is that for women
+  with multiple failed transfers of genetically normal embryos and otherwise unrevealing
+  workup, an NK panel adds diagnostic information and may guide immune-modulating
+  interventions (intralipid infusion, low-dose steroids, IVIG in select cases — all
+  specialist-prescribed and evidence-mixed). Coaching scope is to flag the category
+  for clients with repeat euploid transfer failure and support referral to a reproductive
+  immunologist; the functional adjuncts (gut barrier repair, anti-inflammatory nutrition,
+  vitamin D optimisation, stress regulation) target the systemic environment that
+  may upregulate NK activity.
+key_mechanisms:
+- chronic-inflammation
+common_symptoms:
+- failed embryo transfer
+- recurrent miscarriage
+- euploid embryo transfer failure
+- implantation failure
+related_topics:
+- recurrent-pregnancy-loss
+- pre-ivf-root-cause-workup
+- antiphospholipid-syndrome-fertility
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — area 2 "autoimmune and inflammatory causes"
+  quote: Elevated natural killer cells that were attacking her pregnancies.
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — area 4 "immune and clotting function"
+  quote: Natural killer cell dysregulation and implantation-related immune markers.
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

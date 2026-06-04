@@ -1,0 +1,51 @@
+slug: antiphospholipid-syndrome-fertility
+display_name: Antiphospholipid Syndrome in Fertility & Pregnancy Loss
+aliases:
+- aps
+- antiphospholipid antibody syndrome
+- hughes syndrome
+- aps in pregnancy
+- sticky blood
+summary: 'Antiphospholipid syndrome (APS) is an autoimmune clotting disorder in which
+  antibodies against phospholipid-binding proteins drive a prothrombotic state that
+  disrupts placental microcirculation, impairs implantation, and is a leading identifiable
+  cause of recurrent pregnancy loss and repeat IVF transfer failure. The obstetric
+  APS workup screens for three antibodies — lupus anticoagulant, anticardiolipin IgG/IgM,
+  and beta-2 glycoprotein I IgG/IgM — with the international Sapporo/Sydney criteria
+  requiring confirmed positivity on two samples 12 weeks apart together with a clinical
+  event (vascular thrombosis or defined pregnancy morbidity: one fetal loss at or
+  after 10 weeks, three consecutive losses before 10 weeks, or one preterm birth before
+  34 weeks for placental insufficiency). Sklar emphasises that APS is testable, identifiable,
+  and treatable — the standard obstetric protocol of low-dose aspirin from before
+  conception plus prophylactic low-molecular-weight heparin (enoxaparin) from positive
+  pregnancy test through the postpartum window meaningfully reduces loss rates. The
+  functional adjunct is to address the inflammatory and immune environment that may
+  underlie or coexist with APS — gut repair, anti-inflammatory nutrition, stress regulation,
+  vitamin D sufficiency, and where appropriate co-management for endometriosis. Coaching
+  scope is education and advocacy for the workup; prescription and monitoring stay
+  with hematology or maternal-fetal medicine.'
+key_mechanisms:
+- chronic-inflammation
+- microclot-formation
+common_symptoms:
+- recurrent miscarriage
+- failed embryo transfer
+- second-trimester loss
+- history of dvt or pe
+- placental insufficiency
+related_topics:
+- recurrent-pregnancy-loss
+- pre-ivf-root-cause-workup
+- female-infertility
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — area 2 "autoimmune and inflammatory causes"
+  quote: Antiphospholipid syndrome, which causes sticky blood and blood clotting issues.
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — area 4 "immune and clotting function" — Sandrine case
+  quote: Antibodies that can interfere with blood supply to a developing embryo.
+evidence_tier: strong
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,21 @@
+slug: sklar-day-21-progesterone-snapshot-misses-luteal-trajectory
+statement: A single day-21 serum progesterone draw cannot reveal how long progesterone
+  is sustained across the luteal phase, whether it crashes early, or whether the luteal
+  phase itself is long enough (12 to 14 days) to support implantation and early pregnancy
+  development; full-cycle DUTCH mapping and BBT charting are required to surface these
+  patterns.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- low-progesterone
+- luteal-phase-defect
+- pre-ivf-root-cause-workup
+sources:
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — area 3 progesterone
+  quote: That single snapshot doesn't tell you how long progesterone is sustained
+    across your luteal phase.
+rationale: Coach guidance for ordering serial vs single-point progesterone tests.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

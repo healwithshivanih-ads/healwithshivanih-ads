@@ -1,0 +1,18 @@
+slug: sklar-recurrent-loss-two-or-more-not-random
+statement: Sklar's clinical position is that two or more miscarriages should never
+  be dismissed as random bad luck — recurrent loss almost always points to an identifiable,
+  testable, and treatable root cause (autoimmune, thrombophilic, methylation, microbiome,
+  hormonal, or thyroid) that the standard miscarriage workup is too narrow to detect.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- recurrent-pregnancy-loss
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — opening
+  quote: Two or more miscarriages is not normal and it's not random.
+rationale: Direct quote coach can use when clients arrive after being told "just bad
+  luck."
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

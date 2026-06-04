@@ -1,0 +1,24 @@
+slug: sklar-estrogen-metabolism-via-dutch-not-serum
+statement: A single serum estradiol level captures one moment in time but says nothing
+  about how the body is metabolising estrogen across the three hydroxylation pathways
+  (2-OH protective, 4-OH and 16-OH inflammatory); the DUTCH panel maps this metabolism
+  and surfaces whether excess estrogen is being cleared safely or driving an inflammatory
+  uterine environment that compromises implantation.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- estrogen-dominance
+- estrogen-metabolism
+- pre-ivf-root-cause-workup
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- estrogen-phase-ii-methylation-deficit
+- estrogen-16-hydroxylation
+sources:
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — area 1 estrogen dominance
+  quote: A standard blood test checks only one estrogen number at one moment in time.
+rationale: Anchors why coach orders DUTCH over isolated estradiol for fertility cases.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

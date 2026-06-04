@@ -1,0 +1,24 @@
+slug: sklar-ivf-cannot-fix-underlying-root-causes
+statement: Sklar argues that IVF does not address the underlying root causes of pregnancy
+  loss — even genetically tested euploid embryos can fail in a uterine environment
+  compromised by untreated antiphospholipid syndrome, silent endometriosis, MTHFR-driven
+  hyperhomocysteinaemia, or chronic endometritis. When repeat transfers of good embryos
+  fail, the workup must investigate the environment, not just the embryo.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- pre-ivf-root-cause-workup
+- recurrent-pregnancy-loss
+- silent-endometriosis
+- antiphospholipid-syndrome-fertility
+sources:
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — opening
+  quote: Why isn't the embryo implanting in the first place?
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — area 3
+  quote: IVF doesn't fix these underlying causes.
+rationale: Coach reframe for clients pressured into IVF without root-cause workup.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

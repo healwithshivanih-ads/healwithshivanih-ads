@@ -1,0 +1,54 @@
+slug: recurrent-pregnancy-loss
+display_name: Recurrent Pregnancy Loss (RPL) — Functional Workup
+aliases:
+- recurrent miscarriage
+- reoccurring pregnancy loss
+- repeat miscarriage workup
+- habitual abortion
+- rpl
+summary: 'Recurrent pregnancy loss is conventionally defined as two or more consecutive
+  clinical miscarriages, and Sklar argues this pattern is rarely random — it almost
+  always points to an identifiable, treatable root cause that the standard workup
+  misses. A functional RPL panel layers five categories on top of the conventional
+  karyotype + uterine cavity workup: (1) autoimmune and reproductive-immunology markers
+  — antiphospholipid antibodies (anticardiolipin, beta-2 glycoprotein, lupus anticoagulant),
+  elevated natural killer cell percentage and cytotoxicity, ANA, thyroid antibodies
+  (TPO, Tg); (2) inherited and acquired thrombophilias — Factor V Leiden, prothrombin
+  G20210A, Protein C and Protein S deficiency, antithrombin III, homocysteine, PAI-1;
+  (3) methylation status — MTHFR C677T and A1298C (homozygous variants most clinically
+  relevant) with serum folate, B12, and homocysteine to confirm functional impact;
+  (4) reproductive-tract microbiome and chronic endometritis — uterine and vaginal
+  microbiome (EMMA/ALICE or equivalent), ureaplasma and mycoplasma PCR; (5) full thyroid
+  panel with TSH targeted to under 2.0 mIU/L preconception. After two losses with
+  no answers, this expanded workup is warranted; after three, it is essential. The
+  coaching role is to help the client advocate for the right tests, support the foundations
+  (anti-inflammatory nutrition, gut repair, stress regulation), and collaborate with
+  hematology and reproductive immunology when findings warrant medication (low-dose
+  aspirin, low-molecular-weight heparin).'
+key_mechanisms:
+- chronic-inflammation
+- homocysteine-remethylation
+- mthfr-enzyme-dysfunction
+- hpa-axis-dysregulation
+common_symptoms:
+- two or more miscarriages
+- chemical pregnancy
+- early pregnancy loss
+- unexplained infertility
+- implantation failure
+related_topics:
+- female-infertility
+- pre-ivf-root-cause-workup
+- methylation-mthfr
+- endometriosis
+- vaginal-microbiome-dysbiosis
+- low-progesterone
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — "the testing gap"
+  quote: Two or more miscarriages is not normal and it's not random.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

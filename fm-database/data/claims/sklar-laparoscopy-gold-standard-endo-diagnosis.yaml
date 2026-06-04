@@ -1,0 +1,22 @@
+slug: sklar-laparoscopy-gold-standard-endo-diagnosis
+statement: Definitive endometriosis diagnosis still requires surgical visualisation
+  and biopsy via laparoscopy; ultrasound and MRI miss many cases (especially superficial
+  peritoneal disease), and non-invasive proxies like elevated inflammatory markers
+  or ReceptivaDx can raise clinical suspicion but cannot replace tissue diagnosis.
+  Excision (not ablation) by an endometriosis specialist remains the gold-standard
+  surgical management.
+evidence_tier: strong
+linked_to_topics:
+- endometriosis
+- silent-endometriosis
+sources:
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — area 2
+  quote: It doesn't always show up on ultrasound, and a definitive diagnosis requires
+    surgery.
+rationale: Coach should not over-promise inflammatory markers as diagnostic — they
+  are screening prompts, not replacements for laparoscopy.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

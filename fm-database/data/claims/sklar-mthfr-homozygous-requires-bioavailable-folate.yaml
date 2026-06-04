@@ -1,0 +1,26 @@
+slug: sklar-mthfr-homozygous-requires-bioavailable-folate
+statement: Homozygous MTHFR variants (especially C677T/C677T) significantly reduce
+  enzyme activity, meaning the synthetic folic acid in most prenatals cannot be efficiently
+  converted to active methylfolate (5-MTHF) — the form actually required for DNA synthesis,
+  neural-tube formation, and pregnancy maintenance. Substituting bioavailable methylfolate,
+  paired with methylcobalamin (B12) and serial homocysteine monitoring, is the targeted
+  intervention.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- methylation-mthfr
+- recurrent-pregnancy-loss
+- preconception-protocol
+linked_to_mechanisms:
+- mthfr-enzyme-dysfunction
+- homocysteine-remethylation
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — area 3 genetic and clotting
+  quote: When we find MTHFR mutations, we use specific forms of folate that your body
+    can actually utilize.
+rationale: Reinforces methylfolate-not-folic-acid prenatal recommendation for MTHFR-positive
+  clients.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: sklar-tsh-within-range-can-still-impair-implantation
+statement: Sklar emphasises that TSH values within the standard wide reference range
+  but on the higher end (commonly above 2.0-2.5 mIU/L) can significantly impair implantation
+  and increase miscarriage risk; a fertility-appropriate thyroid workup adds free
+  T3, free T4, reverse T3, and TPO/Tg antibodies to surface subclinical patterns that
+  a basic TSH-only test will miss.
+evidence_tier: strong
+linked_to_topics:
+- hypothyroidism
+- autoimmune-thyroiditis
+- female-infertility
+- pre-ivf-root-cause-workup
+sources:
+- id: sklar-fertility-expert-5-hidden-reasons
+  location: Episode body — hidden reason 2
+  quote: Even TSH values within the normal range but on the higher end can significantly
+    impair implantation and increase miscarriage risk.
+rationale: Reinforces the preconception TSH-under-2 target the coach already uses
+  and the case for a full panel beyond TSH-only.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

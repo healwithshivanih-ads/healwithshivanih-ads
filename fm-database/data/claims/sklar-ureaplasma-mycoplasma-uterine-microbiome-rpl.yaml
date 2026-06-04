@@ -1,0 +1,22 @@
+slug: sklar-ureaplasma-mycoplasma-uterine-microbiome-rpl
+statement: Hidden reproductive-tract infections — particularly Ureaplasma urealyticum
+  and Mycoplasma species — and uterine microbiome dysbiosis can drive chronic low-grade
+  endometritis that interferes with implantation and early pregnancy, yet these are
+  routinely missed in conventional workups because they require specific PCR or molecular-microbiome
+  testing (EMMA / ALICE) rather than standard cultures.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- uterine-microbiome-infection-fertility
+- recurrent-pregnancy-loss
+- vaginal-microbiome-dysbiosis
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — area 4 microbiome connection
+  quote: Hidden infections like ureaplasma and mycoplasma which can interfere with
+    implantation.
+rationale: Useful for clients with unexplained RPL who have only had standard STI
+  panels.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

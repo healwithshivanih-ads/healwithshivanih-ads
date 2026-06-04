@@ -1,0 +1,24 @@
+slug: sklar-rpl-comprehensive-workup-categories
+statement: Sklar's comprehensive recurrent-miscarriage panel covers five categories
+  beyond the conventional workup — blood clotting factors (Factor V Leiden, prothrombin
+  G20210A, Protein C and S), autoimmune markers (antiphospholipid antibodies, ANA,
+  lupus screen), genetic mutations (MTHFR C677T and A1298C, homocysteine), inflammatory
+  markers (hsCRP, advanced cytokine panel, thyroid antibodies), and reproductive-tract
+  microbiome with hidden infections (ureaplasma, mycoplasma, uterine microbiome).
+evidence_tier: plausible_emerging
+linked_to_topics:
+- recurrent-pregnancy-loss
+- pre-ivf-root-cause-workup
+- methylation-mthfr
+- uterine-microbiome-infection-fertility
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — "the testing gap"
+  quote: Blood clotting factors, autoimmune markers, genetic mutations, and inflammatory
+    markers that most doctors never check.
+rationale: Reference list for what coach should ensure has been worked up before accepting
+  "unexplained" RPL.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

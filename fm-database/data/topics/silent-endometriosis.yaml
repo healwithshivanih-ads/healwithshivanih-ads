@@ -1,0 +1,50 @@
+slug: silent-endometriosis
+display_name: Silent Endometriosis (Asymptomatic / Mild-Symptom Endo)
+aliases:
+- asymptomatic endometriosis
+- hidden endometriosis
+- subclinical endometriosis
+- non-painful endometriosis
+summary: Silent endometriosis describes the substantial subset of women with histologically
+  confirmed endometriosis — sometimes stage III or IV at laparoscopy — who present
+  with no pain, mild bloating only, or symptoms attributed to other causes. Sklar
+  consistently sees this in women with regular clockwork cycles, normal AMH, good-quality
+  embryos, and unexplained IVF failure or recurrent loss. Because pain is the dominant
+  diagnostic trigger in conventional practice, these women are routinely missed. The
+  pathology still drives a chronically inflammatory pelvic and uterine environment
+  that compromises endometrial receptivity and implantation, even when the cycle and
+  embryo look perfect on paper. Workup options short of diagnostic laparoscopy (the
+  gold standard) include serum and tissue inflammatory markers (hsCRP and advanced
+  cytokine panels), ReceptivaDx (BCL6 immunohistochemistry on endometrial biopsy —
+  a non-invasive proxy with documented sensitivity but real limitations and false-negative
+  rates), MRI with endometriosis protocol, and clinical pattern recognition (RPL,
+  repeated implantation failure with euploid embryos, family history). The coaching
+  position is to flag the possibility to clients with this profile and support referral
+  to an excision specialist for definitive diagnosis and treatment while in parallel
+  working on the systemic inflammatory load.
+key_mechanisms:
+- chronic-inflammation
+- estrogen-dominance-thyroid-blunting
+- hepatic-estrogen-metabolism
+common_symptoms:
+- failed embryo transfer
+- implantation failure
+- early miscarriage
+- mild bloating
+- normal-appearing cycles
+related_topics:
+- endometriosis
+- endometriosis-microbiome
+- pre-ivf-root-cause-workup
+- recurrent-pregnancy-loss
+- estrogen-dominance
+sources:
+- id: sklar-fertility-expert-estrogen-dominance-endo-ivf
+  location: Episode body — area 2 "inflammatory and immune markers"
+  quote: Stage three endometriosis. She had zero symptoms. No one had ever suspected
+    it.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

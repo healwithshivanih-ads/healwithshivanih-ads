@@ -1,0 +1,51 @@
+slug: uterine-microbiome-infection-fertility
+display_name: Uterine Microbiome, Chronic Endometritis & Hidden Infections in Fertility
+aliases:
+- chronic endometritis
+- uterine dysbiosis
+- ureaplasma fertility
+- mycoplasma fertility
+- emma alice testing
+summary: 'The uterine cavity is not sterile — a low-biomass microbiome dominated by
+  Lactobacillus species supports endometrial receptivity, while dysbiosis, chronic
+  endometritis, and low-grade infection with organisms like Ureaplasma urealyticum,
+  Mycoplasma hominis, and Mycoplasma genitalium are increasingly implicated in unexplained
+  implantation failure and recurrent pregnancy loss. Sklar flags this category as
+  routinely skipped in conventional workups despite emerging research showing meaningful
+  improvements in pregnancy outcomes after diagnosis and treatment. Testing options
+  include endometrial biopsy with CD138 immunohistochemistry (the conventional standard
+  for chronic endometritis), molecular microbiome panels such as EMMA (Endometrial
+  Microbiome Metagenomic Analysis) and ALICE (Analysis of Infectious Chronic Endometritis),
+  and PCR testing of cervical or endometrial samples for Ureaplasma and Mycoplasma.
+  Treatment is targeted: appropriate antibiotic course for confirmed infection or
+  chronic endometritis (commonly doxycycline-based regimens, specialist prescribed),
+  followed by vaginal and oral probiotic protocols (Lactobacillus crispatus-dominant
+  strains where available) to re-establish a Lactobacillus-dominant flora. Coaching
+  role is to flag the category for clients with implantation failure or RPL who have
+  not been worked up beyond standard panels, and to support the microbiome-restoration
+  foundations during and after treatment.'
+key_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- chronic-inflammation
+common_symptoms:
+- implantation failure
+- recurrent miscarriage
+- chronic vaginal discharge
+- failed embryo transfer
+- unexplained infertility
+related_topics:
+- recurrent-pregnancy-loss
+- pre-ivf-root-cause-workup
+- endometriosis-microbiome
+- vaginal-microbiome-dysbiosis
+- endometrial-receptivity-window
+sources:
+- id: sklar-fertility-expert-recurrent-miscarriage-causes
+  location: Episode body — area 4 "the microbiome connection"
+  quote: Hidden infections like ureaplasma and mycoplasma which can interfere with
+    implantation and early pregnancy development.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
