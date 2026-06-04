@@ -1,0 +1,50 @@
+slug: pre-ivf-root-cause-workup
+display_name: Pre-IVF Root-Cause Workup (Beyond the Standard Panel)
+aliases:
+- hidden ivf tests
+- ivf failure workup
+- root cause testing before ivf
+- failed ivf investigation
+summary: 'Standard IVF panels — AMH, FSH, estradiol, antral follicle count, baseline
+  ultrasound, HSG, semen analysis — assess ovarian reserve and structural factors
+  but rarely test the systemic conditions that determine whether an embryo can implant
+  and a pregnancy can be sustained. A more complete pre-IVF workup adds five functional
+  categories: (1) reproductive immunology (NK cell percentage and absolute count,
+  activated T cells, CRP, TNF-alpha, antiphospholipid antibodies, thyroid antibodies);
+  (2) endometrial receptivity and uterine microbiome (ERA for window-of- implantation
+  timing, EMMA / ALICE for chronic endometritis and dysbiosis); (3) advanced thyroid
+  (free T3, free T4, reverse T3, TPO and Tg antibodies — TSH alone is insufficient,
+  optimal range 0.5-2.0 mIU/L); (4) methylation and thrombophilia (MTHFR C677T and
+  A1298C, Factor V Leiden, prothrombin G20210A, Protein C, Protein S, PAI-1, homocysteine);
+  (5) comprehensive gut health (stool analysis, organic acids test, food sensitivities).
+  The framework is most relevant after two or more failed transfers with good-quality
+  embryos, recurrent pregnancy loss or chemical pregnancies, but is also a useful
+  menu when coaching a client preparing for a first IVF cycle who wants the highest
+  possible odds.'
+key_mechanisms:
+- chronic-inflammation
+- thyroid-autoimmunity
+- oocyte-mitochondrial-dysfunction
+- homocysteine-remethylation
+common_symptoms:
+- failed embryo transfer
+- chemical pregnancy
+- early miscarriage
+- fatigue
+- bloating
+related_topics:
+- female-infertility
+- methylation-mthfr
+- hypothyroidism
+- autoimmune-thyroiditis
+- chronic-inflammation
+- gut-dysbiosis
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body
+  quote: When IVF fails repeatedly, there is always a reason.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

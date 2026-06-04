@@ -1,0 +1,20 @@
+slug: sklar-thrombophilia-panel-rpl
+statement: 'A recurrent-pregnancy-loss thrombophilia panel covers Factor V Leiden,
+  Prothrombin G20210A, Protein C and Protein S deficiency, PAI-1 polymorphism and
+  antiphospholipid antibodies. Indication: two or more losses, or chemical pregnancies
+  after good-quality embryo transfer. Many of the findings are actionable — low-dose
+  aspirin, enoxaparin in select cases, methylated folate replacing folic acid — but
+  require the test results in hand. Coaching scope is education and referral.'
+evidence_tier: strong
+linked_to_topics:
+- pre-ivf-root-cause-workup
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body — thrombophilia section
+  quote: This is typically called a recurrent pregnancy loss panel or a thrombophilia
+    panel.
+rationale: Concrete test menu coaches can advocate for.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

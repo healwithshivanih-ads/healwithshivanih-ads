@@ -1,0 +1,25 @@
+slug: sklar-follicular-fluid-ros-cortisol
+statement: Recent 2025 follicular-fluid research indicates that women with chronically
+  elevated cortisol show significantly higher reactive oxygen species inside the fluid
+  surrounding their developing oocytes. These free radicals attack egg DNA and mitochondrial
+  DNA directly — providing a cellular-level explanation for unexplained poor egg quality
+  and unexplained low embryo quality in women whose AMH and antral counts otherwise
+  look adequate.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-stress
+- egg-quality
+- oxidative-stress
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- oxidative-stress
+sources:
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — 2025 study reference
+  quote: Significantly higher concentration of reactive oxygen species in the high-cortisol
+    group.
+rationale: Cellular bridge between stress experience and egg-quality outcomes.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

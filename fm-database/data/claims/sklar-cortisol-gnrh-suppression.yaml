@@ -1,0 +1,25 @@
+slug: sklar-cortisol-gnrh-suppression
+statement: Chronically elevated cortisol suppresses hypothalamic GnRH (gonadotropin-
+  releasing hormone) release, which in turn lowers pituitary FSH and LH output. Less
+  FSH and LH means follicles develop in a poorer hormonal environment, the maturing
+  oocyte is compromised, and egg quality declines — explaining the clinical pattern
+  of poor IVF response and poor embryo quality in women with high chronic stress burden
+  despite apparently normal AMH and antral counts.
+evidence_tier: strong
+linked_to_topics:
+- hpa-axis-dysregulation
+- chronic-stress
+- egg-quality
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- oocyte-mitochondrial-dysfunction
+sources:
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — HPA-axis section
+  quote: It suppresses the release of GnRH, the signal your hypothalamus sends to
+    start the reproductive cascade.
+rationale: Mechanistic anchor for why stress matters in egg-quality coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

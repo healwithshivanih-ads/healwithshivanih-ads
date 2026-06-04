@@ -1,0 +1,19 @@
+slug: sklar-antiphospholipid-microclots
+statement: Antiphospholipid antibodies (anti-cardiolipin, beta-2-glycoprotein, anti-phosphatidylserine)
+  cause microthrombi in the placental micro-vasculature — the embryo may implant successfully,
+  but blood flow to the developing placenta is progressively compromised, presenting
+  as early pregnancy loss or chemical pregnancy. Standard fertility panels rarely
+  test this set.
+evidence_tier: strong
+linked_to_topics:
+- pre-ivf-root-cause-workup
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body — methylation and clotting section
+  quote: Those tiny blood vessels that are supposed to feed your developing placenta
+    start clotting off and you lose the pregnancy.
+rationale: Highlights a treatable miscarriage cause clients are rarely screened for.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

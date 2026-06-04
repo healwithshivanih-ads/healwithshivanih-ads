@@ -1,0 +1,18 @@
+slug: sklar-granulosa-cell-cortisol-impairment
+statement: Cortisol directly impairs granulosa cell function inside the developing
+  follicle — reducing their oestradiol output, increasing local inflammatory signalling
+  and lowering antioxidant enzyme expression that would normally protect the oocyte
+  from oxidative stress. The result is a maturing egg developing in a hostile micro-environment.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- chronic-stress
+- egg-quality
+sources:
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — granulosa cell section
+  quote: Cortisol directly impairs granulosa cell function.
+rationale: Cellular mechanism for stress-mediated egg-quality loss.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

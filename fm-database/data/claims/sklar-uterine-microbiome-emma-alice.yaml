@@ -1,0 +1,23 @@
+slug: sklar-uterine-microbiome-emma-alice
+statement: Comprehensive uterine microbiome panels (EMMA for beneficial-bacteria profile,
+  ALICE for chronic-endometritis pathogens, ReceptivaDx-style receptivity testing)
+  reveal chronic infections, dysbiosis and yeast overgrowth in the reproductive tract
+  that create an inflammatory environment hostile to implantation — none of which
+  surface on standard hysteroscopy or saline sonogram.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- vaginal-microbiome-dysbiosis
+- endometrial-receptivity-window
+- pre-ivf-root-cause-workup
+sources:
+- id: sklar-fertility-expert-42-low-amh
+  location: Episode body — Fertilysis section
+  quote: Standard fertility clinics do not usually run this test.
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body — receptivity section
+  quote: The Emma and Alice tests look at the microbiome of your uterus.
+rationale: Underused test category in the AMA / failed-transfer workup.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

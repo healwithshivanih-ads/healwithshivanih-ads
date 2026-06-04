@@ -1,0 +1,46 @@
+slug: testicular-thermoregulation-disruption
+display_name: Testicular Thermoregulation Disruption and Spermatogenesis Impairment
+aliases:
+- testicular heat stress
+- scrotal hyperthermia
+- heat-induced sperm damage
+category: structural
+summary: The testes are externally located precisely because spermatogenesis requires
+  a temperature 2-4 degrees Celsius below core body temperature. Sustained elevations
+  in testicular temperature impair the spermatogenic germ cell cycle, increase oxidative
+  stress in developing sperm, reduce count, lower forward motility, and increase DNA
+  fragmentation and abnormal morphology. The temperature exposures Sklar flags as
+  most common and most actionable in clinic are saunas, hot tubs and hot baths, prolonged
+  uninterrupted sitting (commuters, desk workers), laptop use on the lap, synthetic
+  and tight underwear (polyester is repeatedly flagged in research), and lycra cycling
+  shorts. Recovery is plausible within the 60-75-day spermatogenesis cycle once heat
+  exposure is removed. Practically, this is one of the cheapest and most under- utilised
+  interventions in male-factor coaching — switching underwear, avoiding hot baths
+  and saunas, taking sitting breaks every 30-45 minutes, and never resting a laptop
+  on the lap.
+upstream_drivers:
+- prolonged sitting and commuting
+- sauna and hot tub use
+- tight synthetic underwear
+- laptop on lap
+downstream_effects:
+- reduced sperm concentration
+- reduced progressive motility
+- increased abnormal morphology
+- increased sperm DNA fragmentation
+related_mechanisms:
+- oxidative-stress-sperm-damage
+linked_to_topics:
+- sperm-quality
+- male-infertility-oxidative-stress
+- couples-90-day-fertility-reset
+sources:
+- id: sklar-fertility-expert-couples-90-day-reset
+  location: Episode body — testicular temperature section
+  quote: A 2-degree increase in testicular temperature for 15 hours per day resulted
+    in a 90 percent drop in sperm count.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

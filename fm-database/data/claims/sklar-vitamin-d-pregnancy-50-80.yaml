@@ -1,0 +1,23 @@
+slug: sklar-vitamin-d-pregnancy-50-80
+statement: Optimal preconception and pregnancy 25-hydroxyvitamin D levels target 50-80
+  ng/mL — meaningfully above the 30 ng/mL cutoff most labs flag as sufficient. Adequate
+  vitamin D supports implantation, modulates immune tolerance of the embryo, supports
+  thyroid function and reduces miscarriage risk. Most women are deficient by lab cutoffs
+  and even more are sub-optimal by fertility targets — supplementation typically needed
+  in Indian and high-latitude contexts.
+evidence_tier: strong
+linked_to_topics:
+- preconception-protocol
+- autoimmune-thyroiditis
+linked_to_supplements:
+- vitamin-d
+- vitamin-d3
+sources:
+- id: sklar-fertility-expert-42-low-amh
+  location: Episode body — pregnancy support
+  quote: We want your vitamin D levels between 50 and 80 for optimal pregnancy outcomes.
+rationale: Concrete vitamin D target for fertility / pregnancy coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

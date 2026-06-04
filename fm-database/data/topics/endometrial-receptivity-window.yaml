@@ -1,0 +1,40 @@
+slug: endometrial-receptivity-window
+display_name: Endometrial Receptivity and the Window of Implantation
+aliases:
+- era test
+- window of implantation
+- displaced receptivity
+- endometrial receptivity analysis
+summary: The uterine lining is only molecularly receptive to embryo implantation for
+  roughly 24-48 hours each cycle. Standard ultrasound thickness (≥7-8 mm, triple-layer
+  pattern) tells us the lining looks structurally prepared but does not confirm the
+  gene-expression pattern needed for receptivity. In a subset of women — Sklar quotes
+  recurrent failed transfers despite genetically normal embryos — the receptive window
+  is displaced earlier or later than the standard day-5 transfer protocol assumes.
+  An endometrial receptivity analysis (ERA) takes a small biopsy during a mock cycle
+  and reads the receptivity gene signature; if the window is shifted, the next transfer
+  is re-timed accordingly. Companion uterine-microbiome panels (EMMA for the beneficial-bacteria
+  profile, ALICE for chronic endometritis pathogens) detect dysbiosis that creates
+  a hostile environment even when receptivity timing is correct. For coaching scope,
+  this is education and referral-to-REI territory — the takeaway is that "lining looks
+  good" on ultrasound is not the same thing as receptive.
+key_mechanisms:
+- chronic-inflammation
+- mucosal-inflammation
+common_symptoms:
+- failed embryo transfer
+- chronic pelvic discomfort
+- recurrent implantation failure
+related_topics:
+- female-infertility
+- vaginal-microbiome-dysbiosis
+- chronic-inflammation
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body
+  quote: Your window of implantation is only about 24 to 48 hours long.
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

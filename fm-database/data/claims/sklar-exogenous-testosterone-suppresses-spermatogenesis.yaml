@@ -1,0 +1,24 @@
+slug: sklar-exogenous-testosterone-suppresses-spermatogenesis
+statement: 'Exogenous testosterone (testosterone replacement therapy, anabolic steroids,
+  some topical "boosters") suppresses pituitary FSH and LH release through negative
+  feedback, which in turn shuts down intra-testicular testosterone production and
+  the spermatogenic cycle. Result: declining sperm count and, in some men, complete
+  azoospermia. Any male partner on TRT who wants to conceive needs to stop the exogenous
+  source and work with an andrologist on HCG / clomiphene-based recovery — supplementation
+  alone will not rescue sperm output.'
+evidence_tier: strong
+linked_to_topics:
+- sperm-quality
+- couples-90-day-fertility-reset
+linked_to_mechanisms:
+- testicular-thermoregulation-disruption
+sources:
+- id: sklar-fertility-expert-couples-90-day-reset
+  location: Episode body — testosterone warning
+  quote: Exogenous testosterone actually suppresses your body's natural production
+    of sperm.
+rationale: Critical male-factor warning often missed in coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: sklar-cgm-blood-sugar-fertility
+statement: A continuous glucose monitor worn for 2-4 weeks during preconception reveals
+  individual postprandial spikes and reactive crashes that fasting glucose and HbA1c
+  miss — surfacing meal-specific patterns (carbohydrate load, meal timing, sequence)
+  that drive cortisol and inflammation and in turn impair egg quality. Most useful
+  for clients with PCOS, insulin resistance, afternoon energy crashes, sugar cravings
+  or unexplained brain fog.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- insulin-resistance
+- pcos
+- egg-quality
+sources:
+- id: sklar-fertility-expert-90-day-egg-quality
+  location: Episode body — pillar one
+  quote: I had her wear a continuous glucose monitor for two weeks and what we discovered
+    was eye-opening.
+rationale: Concrete diagnostic tool recommendation for blood-sugar coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,27 @@
+slug: sklar-mthfr-homocysteine-miscarriage
+statement: Homozygous MTHFR C677T or compound heterozygous MTHFR variants impair folate-cycle
+  methylation and tend to elevate plasma homocysteine, which increases prothrombotic
+  risk and compromises placental blood flow, contributing to recurrent early pregnancy
+  loss. Practical management is methylated folate (5-MTHF) rather than synthetic folic
+  acid, plus B12, B6 and riboflavin to support the remethylation cycle, with homocysteine
+  retested 8-12 weeks after starting.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- methylation-mthfr
+- mthfr-gene-variant
+- pre-ivf-root-cause-workup
+linked_to_mechanisms:
+- homocysteine-remethylation
+- methylation-cycle-dysfunction
+linked_to_supplements:
+- methylfolate-b9
+- l-methylfolate
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body — methylation section
+  quote: It can lead to elevated homocysteine which increases blood clotting risk.
+rationale: Connects methylation to clotting and recurrent loss for coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

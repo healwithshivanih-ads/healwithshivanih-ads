@@ -1,0 +1,23 @@
+slug: sklar-oocyte-mitochondrial-density
+statement: Oocytes carry one of the highest mitochondrial densities of any cell in
+  the human body, which is why mitochondrial dysfunction shows up early as reduced
+  fertilisation rates, slowed embryo development and increased rates of chromosomal
+  abnormality. Mitochondrial DNA does not repair itself in the way nuclear DNA can
+  — oxidative damage accumulates.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- oxidative-stress
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- mitochondrial-dysfunction
+sources:
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — mitochondria section
+  quote: Mitochondrial DNA does not repair itself the way nuclear DNA does.
+rationale: Why mitochondrial support matters for AMA fertility coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

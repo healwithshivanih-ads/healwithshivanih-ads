@@ -1,0 +1,23 @@
+slug: sklar-progesterone-pregnenolone-steal
+statement: Under chronic HPA-axis activation the body diverts steroidogenic precursors
+  (pregnenolone, and clinically progesterone) toward cortisol production — the so-called
+  pregnenolone or cortisol steal pattern. This shows up as low luteal progesterone,
+  shortened luteal phase, pre-menstrual spotting and recurrent implantation failure,
+  even when the woman believes she is "managing her stress" well.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hpa-axis-dysregulation
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- low-progesterone
+- progesterone-deficiency
+sources:
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — pregnenolone-steal section
+  quote: Your body essentially steals progesterone to make more cortisol.
+rationale: Explains low-progesterone presentations linked to chronic stress.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

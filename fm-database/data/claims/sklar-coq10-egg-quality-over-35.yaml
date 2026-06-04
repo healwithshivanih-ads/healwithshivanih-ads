@@ -1,0 +1,31 @@
+slug: sklar-coq10-egg-quality-over-35
+statement: CoQ10 is the most-researched supplement for supporting oocyte mitochondrial
+  function and reducing oxidative stress in the follicular environment, particularly
+  in women over 35. It is most effective once foundational drivers (blood sugar, gut,
+  inflammation, toxin load) have been addressed — otherwise it is fuelling a system
+  that is still leaking energy. Practical dosing in fertility coaching commonly runs
+  200-600 mg/day of ubiquinol (preferred over ubiquinone in older women) but specific
+  dosing is a clinician decision.
+evidence_tier: strong
+linked_to_topics:
+- egg-quality
+- oxidative-stress
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- oocyte-mitochondrial-dysfunction
+- mitochondrial-dysfunction
+linked_to_supplements:
+- coq10
+sources:
+- id: sklar-fertility-expert-90-day-egg-quality
+  location: Episode body — pillar five
+  quote: This is well researched for improving egg quality especially in women over
+    35.
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — CoQ10 section
+  quote: It acts as both an antioxidant and a mitochondrial fuel.
+rationale: Concrete supplement guidance with sequencing caveat.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

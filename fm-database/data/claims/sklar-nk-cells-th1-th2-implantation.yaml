@@ -1,0 +1,20 @@
+slug: sklar-nk-cells-th1-th2-implantation
+statement: Elevated peripheral natural killer (NK) cell percentage and absolute count,
+  and activated CD3 / CD25 T-cell populations, are markers of immune over- activation.
+  In susceptible women they can attack an implanting embryo, contributing to recurrent
+  implantation failure and early pregnancy loss even with morphologically perfect
+  euploid embryos. The pattern is treatable — but only if a reproductive-immunology
+  panel was ordered.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- pre-ivf-root-cause-workup
+- chronic-inflammation
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body — immune panel section
+  quote: Her immune system was essentially rejecting the embryos.
+rationale: Immune-based RIF mechanism rarely tested in standard IVF panels.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

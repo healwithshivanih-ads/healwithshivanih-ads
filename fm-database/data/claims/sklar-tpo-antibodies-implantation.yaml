@@ -1,0 +1,22 @@
+slug: sklar-tpo-antibodies-implantation
+statement: Elevated TPO (thyroid peroxidase) or thyroglobulin antibodies indicate
+  active autoimmune attack on the thyroid and are independently associated with higher
+  rates of implantation failure and first-trimester loss, regardless of whether TSH,
+  free T3 and free T4 are still in the reference range. Antibody testing belongs on
+  every preconception thyroid panel.
+evidence_tier: strong
+linked_to_topics:
+- autoimmune-thyroiditis
+- thyroid-dysfunction
+- pre-ivf-root-cause-workup
+linked_to_mechanisms:
+- thyroid-autoimmunity
+sources:
+- id: sklar-fertility-expert-5-ivf-root-cause-tests
+  location: Episode body — thyroid section
+  quote: You can have normal thyroid hormone levels but still have Hashimoto's thyroiditis.
+rationale: Antibody-positive Hashimoto's hidden behind a normal TSH.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

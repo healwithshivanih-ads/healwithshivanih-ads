@@ -1,0 +1,24 @@
+slug: sklar-blood-sugar-cortisol-feedback-loop
+statement: Skipped meals and reactive hypoglycaemia trigger cortisol release as a
+  backup fuel-mobilisation signal — so chronically unstable blood sugar produces multiple
+  unrecognised daily cortisol spikes that worsen HPA-axis dysregulation, even when
+  fasting glucose and HbA1c look unremarkable. A practical countermeasure is eating
+  within 30-60 minutes of waking, including protein at every meal, and never going
+  more than four hours without food during the day.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- insulin-resistance
+- chronic-stress
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+sources:
+- id: sklar-fertility-expert-stress-egg-quality-2025
+  location: Episode body — pillar one
+  quote: Every time your blood sugar drops, your body releases cortisol as a backup
+    fuel source.
+rationale: Connects glycaemic stability to fertility through cortisol.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
