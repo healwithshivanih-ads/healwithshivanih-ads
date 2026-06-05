@@ -137,7 +137,8 @@ def main() -> int:
     existing["updated_at"] = _now_iso()
     data["derived_five_pillars"] = existing
 
-    yaml_path.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
+    from atomic_write import write_text_atomic  # audit Phase-1b: atomic client.yaml write
+    write_text_atomic(yaml_path, yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
 
     json.dump(
         {

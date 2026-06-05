@@ -141,11 +141,14 @@ def main() -> int:
                     appended = existing_complaints.rstrip() + divider + new_body
                     existing["presenting_complaints"] = appended
                     existing["updated_at"] = datetime.now(timezone.utc).isoformat()
-                    p.write_text(
-                        _yaml.dump(existing, sort_keys=False,
-                                   default_flow_style=False, allow_unicode=True,
-                                   width=120)
-                    )
+                    # Atomic write (audit Phase-1b): temp+os.replace avoids a
+                    # truncated session file on a crash mid-write. (A cross-
+                    # process lock to fully close the concurrent inbound+outbound
+                    # lost-append race remains an open item.)
+                    from atomic_write import write_text_atomic
+                    write_text_atomic(p, _yaml.dump(existing, sort_keys=False,
+                                                    default_flow_style=False, allow_unicode=True,
+                                                    width=120))
                     existing_id = str(existing.get("session_id") or p.stem)
                     json.dump(
                         {"ok": True, "session_id": existing_id, "error": None,

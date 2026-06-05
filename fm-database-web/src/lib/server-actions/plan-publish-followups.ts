@@ -90,24 +90,47 @@ function applyIstFloor(candidate: Date): Date {
 }
 
 async function readPending(): Promise<PendingSend[]> {
+  const file = path.join(getPlansRoot(), PENDING_FILE);
+  let raw: string;
   try {
-    const raw = await fs.readFile(path.join(getPlansRoot(), PENDING_FILE), "utf-8");
-    const parsed = yaml.load(raw);
-    if (Array.isArray(parsed)) return parsed as PendingSend[];
-  } catch {
-    /* missing → empty */
+    raw = await fs.readFile(file, "utf-8");
+  } catch (e) {
+    // A truly missing file → empty queue is correct. Any OTHER read error must
+    // NOT be silently treated as "empty" (audit Phase-1b: that path let a
+    // corrupt/locked file read as [], after which the next write overwrote it
+    // and destroyed every queued reminder).
+    if ((e as NodeJS.ErrnoException)?.code === "ENOENT") return [];
+    throw e;
   }
-  return [];
+  let parsed: unknown;
+  try {
+    parsed = yaml.load(raw);
+  } catch (e) {
+    // Corrupt YAML: do NOT return [] (that would let writePending clobber the
+    // queue). Quarantine the broken file so it's visible + not auto-destroyed.
+    console.error(`[pending-sends] corrupt ${PENDING_FILE} — quarantining:`, e);
+    try {
+      await fs.rename(file, `${file}.broken.${Date.now()}`);
+    } catch {
+      /* best-effort */
+    }
+    return [];
+  }
+  return Array.isArray(parsed) ? (parsed as PendingSend[]) : [];
 }
 
 async function writePending(rows: PendingSend[]): Promise<void> {
   const root = getPlansRoot();
   await fs.mkdir(root, { recursive: true });
-  await fs.writeFile(
-    path.join(root, PENDING_FILE),
-    yaml.dump(rows),
-    "utf-8",
-  );
+  // Atomic write (audit Phase-1b): temp + rename so an interrupted write can't
+  // truncate the queue (which then reads as [] and silently drops every queued
+  // reminder/nudge). NOTE: this does NOT close the cross-process lost-update
+  // race between the cron drain and queuePending/handout-drip — that needs a
+  // shared advisory lock and is tracked as an open item.
+  const target = path.join(root, PENDING_FILE);
+  const tmp = `${target}.${process.pid}.tmp`;
+  await fs.writeFile(tmp, yaml.dump(rows), "utf-8");
+  await fs.rename(tmp, target);
 }
 
 async function queuePending(row: Omit<PendingSend, "id" | "created_at">): Promise<void> {

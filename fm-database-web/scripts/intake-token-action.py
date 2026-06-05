@@ -94,8 +94,11 @@ def _save_client(client_id: str, data: dict) -> None:
     p = _client_yaml(client_id)
     data["updated_at"] = _now_iso()
     data["updated_by"] = data.get("updated_by") or "intake-form"
-    with p.open("w", encoding="utf-8") as f:
-        yaml.safe_dump(data, f, sort_keys=False, allow_unicode=True)
+    # Atomic write (audit Phase-1b): the public intake form autosaves the WHOLE
+    # client.yaml every ~5s; a direct truncate-then-write left it corrupt on a
+    # crash mid-write (PHI loss). temp+os.replace makes each save crash-safe.
+    from atomic_write import write_text_atomic
+    write_text_atomic(p, yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
 
 
 def _find_client_by_token(token: str) -> tuple[str, dict] | None:

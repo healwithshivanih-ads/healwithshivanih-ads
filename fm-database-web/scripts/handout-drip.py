@@ -158,7 +158,8 @@ def _enqueue(root: Path, client: dict, plan: dict, sched: list[dict]) -> int:
             continue
         existing.append(row)
         added += 1
-    pend_file.write_text(yaml.safe_dump(existing, sort_keys=False, allow_unicode=True))
+    from atomic_write import write_text_atomic  # audit Phase-1b: atomic _pending_sends write
+    write_text_atomic(pend_file, yaml.safe_dump(existing, sort_keys=False, allow_unicode=True))
     return added
 
 
