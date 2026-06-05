@@ -2,35 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../api.js';
 import Button from '../components/Button.jsx';
 
-// Approved templates on our WABA. Update when new ones are approved.
-// `params` defines each placeholder in order: label shown above the input
-// (matches the {{N}} index) + placeholder text shown inside the empty input.
-const TEMPLATES = [
-  {
-    name: 'appt_reminder_2h',
-    language: 'en',
-    params: [
-      { label: 'Name', placeholder: 'Priya' },
-      { label: 'Time', placeholder: '5:00 PM' },
-      { label: 'Session type', placeholder: 'Cortisol Reset' },
-    ],
-  },
-  {
-    name: 'appt_reminder_24h',
-    language: 'en',
-    params: [
-      { label: 'Name', placeholder: 'Priya' },
-      { label: 'Date', placeholder: '15 May 2026' },
-      { label: 'Time', placeholder: '5:00 PM' },
-    ],
-  },
+// Last-resort fallback when /api/templates is unreachable. The UI
+// fetches live from Meta on mount via GET /api/templates and falls back
+// to this list only on hard failure.
+const FALLBACK_TEMPLATES = [
   {
     name: 'appt_confirmation',
     language: 'en',
+    category: 'UTILITY',
     params: [
-      { label: 'Name', placeholder: 'Priya' },
-      { label: 'Date', placeholder: '15 May 2026' },
-      { label: 'Time', placeholder: '5:00 PM' },
+      { index: 1, label: 'Variable 1', placeholder: 'Priya' },
+      { index: 2, label: 'Variable 2', placeholder: '15 May 2026' },
+      { index: 3, label: 'Variable 3', placeholder: '5:00 PM' },
     ],
   },
 ];
@@ -50,8 +33,18 @@ function parseRecipients(text) {
 }
 
 export default function Broadcast() {
-  const [tplName, setTplName] = useState(TEMPLATES[0].name);
-  const [tplLang, setTplLang] = useState(TEMPLATES[0].language);
+  // Live template list fetched from Meta via /api/templates. Loaded on
+  // mount with a 60s server-side cache. Falls back to FALLBACK_TEMPLATES
+  // if the fetch fails entirely. We split the list into "broadcast"
+  // (everything that isn't an appointment template — what coaches
+  // actually mass-send) and "appointment" (the appt_* ones, used for
+  // the booking pipeline — surfaced but de-emphasised).
+  const [templates, setTemplates] = useState(FALLBACK_TEMPLATES);
+  const [tplLoadErr, setTplLoadErr] = useState('');
+  const [tplLoading, setTplLoading] = useState(true);
+  const [showAppt, setShowAppt] = useState(false);
+  const [tplName, setTplName] = useState(FALLBACK_TEMPLATES[0].name);
+  const [tplLang, setTplLang] = useState(FALLBACK_TEMPLATES[0].language);
   // paramValues is keyed by template name so switching templates doesn't wipe
   // half-filled inputs in the other.
   const [paramValues, setParamValues] = useState({});
@@ -60,9 +53,49 @@ export default function Broadcast() {
   const [result, setResult] = useState(null);
   const [err, setErr] = useState('');
 
-  const tpl = TEMPLATES.find((t) => t.name === tplName) || TEMPLATES[0];
-  const currentValues = paramValues[tpl.name] || [];
-  const params = tpl.params.map((_, i) => (currentValues[i] || '').trim());
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch('/api/templates', {
+          headers: { 'x-api-key': localStorage.getItem('wa_admin_key') || '' },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (cancelled) return;
+        const items = (data.items || []).filter((t) => t.params.length === 0 || t.params.length > 0);
+        if (items.length === 0) {
+          setTplLoadErr('No approved templates returned from Meta');
+        } else {
+          setTemplates(items);
+          // Pre-select the first non-appointment template if there is one,
+          // since broadcasts are usually the marketing/utility messages,
+          // not the 1-to-1 appointment ones.
+          const firstNonAppt = items.find((t) => !t.name.startsWith('appt_'));
+          if (firstNonAppt) {
+            setTplName(firstNonAppt.name);
+            setTplLang(firstNonAppt.language);
+          } else {
+            setTplName(items[0].name);
+            setTplLang(items[0].language);
+          }
+        }
+      } catch (e) {
+        if (!cancelled) setTplLoadErr(`Couldn't load templates (${e.message}) — using fallback list`);
+      } finally {
+        if (!cancelled) setTplLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  // Show appt_* templates only when the user explicitly opts in.
+  const visibleTemplates = templates.filter((t) =>
+    showAppt ? true : !t.name.startsWith('appt_'));
+
+  const tpl = visibleTemplates.find((t) => t.name === tplName) || visibleTemplates[0] || templates[0];
+  const currentValues = paramValues[tpl?.name] || [];
+  const params = (tpl?.params || []).map((_, i) => (currentValues[i] || '').trim());
   const allParamsFilled = params.every((p) => p.length > 0);
   const recipients = parseRecipients(recipientsText);
 
@@ -87,7 +120,7 @@ export default function Broadcast() {
       return;
     }
     if (!allParamsFilled) {
-      setErr(`Fill all ${tpl.params.length} param fields for "${tpl.name}".`);
+      setErr(`Fill all ${tpl?.params?.length || 0} param fields for "${tpl?.name}".`);
       return;
     }
     setStage('confirm');
@@ -145,6 +178,12 @@ export default function Broadcast() {
           setTplName={setTplName}
           tplLang={tplLang}
           setTplLang={setTplLang}
+          visibleTemplates={visibleTemplates}
+          totalTemplates={templates.length}
+          showAppt={showAppt}
+          setShowAppt={setShowAppt}
+          tplLoading={tplLoading}
+          tplLoadErr={tplLoadErr}
           params={params}
           updateParam={updateParam}
           recipientsText={recipientsText}
@@ -174,25 +213,42 @@ export default function Broadcast() {
 
 function ComposeStep({
   tpl, tplName, setTplName, tplLang, setTplLang,
+  visibleTemplates, totalTemplates, showAppt, setShowAppt,
+  tplLoading, tplLoadErr,
   params, updateParam, recipientsText, setRecipientsText,
   recipients, err, onReview,
 }) {
+  const apptCount = totalTemplates - visibleTemplates.length;
+  const apptCountWhenShowing = totalTemplates
+    - (showAppt ? totalTemplates - apptCount : visibleTemplates.length);
   return (
     <div className="space-y-6 rounded-lg border border-slate-200 bg-white p-5">
       <Section title="1 · Template">
+        {tplLoading && (
+          <div className="mb-2 rounded-md bg-slate-50 px-3 py-2 text-xs text-slate-500">
+            Loading templates from Meta…
+          </div>
+        )}
+        {tplLoadErr && (
+          <div className="mb-2 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800">
+            {tplLoadErr}
+          </div>
+        )}
         <div className="flex gap-2">
           <select
             className="input flex-1"
             value={tplName}
             onChange={(e) => {
-              const t = TEMPLATES.find((x) => x.name === e.target.value);
+              const t = visibleTemplates.find((x) => x.name === e.target.value);
               setTplName(e.target.value);
               if (t) setTplLang(t.language);
             }}
           >
-            {TEMPLATES.map((t) => (
-              <option key={t.name} value={t.name}>
-                {t.name} ({t.params.length} params)
+            {visibleTemplates.map((t) => (
+              <option key={t.name + '@' + t.language} value={t.name}>
+                {t.name} · {t.category || '?'} · {t.params.length} param{t.params.length === 1 ? '' : 's'}
+                {t.hasUrlButton ? ' · 🔗 URL btn' : ''}
+                {t.quickReplyButtons?.length ? ` · ${t.quickReplyButtons.length} quick-reply btn(s)` : ''}
               </option>
             ))}
           </select>
@@ -202,26 +258,72 @@ function ComposeStep({
             <option value="hi">hi</option>
           </select>
         </div>
+        <div className="mt-2 flex items-center justify-between text-xs">
+          <span className="text-slate-500">
+            {visibleTemplates.length} template{visibleTemplates.length === 1 ? '' : 's'} shown
+            {apptCount > 0 && !showAppt && <> · <span className="text-slate-400">{apptCount} appointment template{apptCount === 1 ? '' : 's'} hidden</span></>}
+          </span>
+          <label className="flex cursor-pointer items-center gap-1.5 text-slate-600 hover:text-slate-900">
+            <input
+              type="checkbox"
+              checked={showAppt}
+              onChange={(e) => setShowAppt(e.target.checked)}
+              className="h-3.5 w-3.5"
+            />
+            Show appt_* templates (1-to-1, rarely broadcast)
+          </label>
+        </div>
+
+        {/* Preview the selected template's body */}
+        {tpl?.bodyText && (
+          <div className="mt-3 rounded-md border border-slate-200 bg-slate-50 p-3">
+            <div className="mb-1.5 flex items-center justify-between text-xs">
+              <span className="font-medium text-slate-700">Preview</span>
+              <span className="font-mono text-slate-400">
+                {tpl.category} · {tpl.language}
+              </span>
+            </div>
+            <pre className="whitespace-pre-wrap font-sans text-sm text-slate-800">{tpl.bodyText}</pre>
+            {tpl.hasUrlButton && (
+              <div className="mt-2 inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-900">
+                🔗 {tpl.urlButtonText || 'URL button'} → {tpl.urlButtonUrl}
+              </div>
+            )}
+            {tpl.quickReplyButtons?.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {tpl.quickReplyButtons.map((b, i) => (
+                  <span key={i} className="rounded-full bg-slate-200 px-3 py-1 text-xs font-medium text-slate-700">
+                    {b}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </Section>
 
       <Section title={`2 · Params`}>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {tpl.params.map((p, i) => (
-            <label key={i} className="block">
-              <div className="mb-1 text-xs font-medium text-slate-700">
-                {p.label}{' '}
-                <span className="font-mono text-slate-400">{`{{${i + 1}}}`}</span>
-              </div>
-              <input
-                type="text"
-                className="input w-full"
-                placeholder={p.placeholder}
-                value={params[i] || ''}
-                onChange={(e) => updateParam(i, e.target.value)}
-              />
-            </label>
-          ))}
-        </div>
+        {tpl?.params?.length === 0 ? (
+          <p className="text-sm text-slate-500">This template has no variable placeholders.</p>
+        ) : (
+          <div className="grid gap-3 sm:grid-cols-2">
+            {(tpl?.params || []).map((p, i) => (
+              <label key={i} className="block">
+                <div className="mb-1 text-xs font-medium text-slate-700">
+                  {p.label}{' '}
+                  <span className="font-mono text-slate-400">{`{{${p.index || i + 1}}}`}</span>
+                </div>
+                <input
+                  type="text"
+                  className="input w-full"
+                  placeholder={p.placeholder}
+                  value={params[i] || ''}
+                  onChange={(e) => updateParam(i, e.target.value)}
+                />
+              </label>
+            ))}
+          </div>
+        )}
         <p className="mt-2 text-xs text-slate-500">
           Same params sent to every recipient. (Per-recipient personalisation comes later when
           broadcasting from ochre-followup.)

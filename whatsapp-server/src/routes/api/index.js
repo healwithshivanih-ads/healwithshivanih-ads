@@ -13,6 +13,7 @@ import { importsRouter } from './imports.js';
 import { sendRouter } from './send.js';
 import { broadcastsRouter } from './broadcasts.js';
 import { eventsRouter } from './events.js';
+import { templatesRouter } from './templates.js';
 
 export const apiRouter = Router();
 
@@ -35,3 +36,4 @@ apiRouter.use('/imports', importsRouter);
 apiRouter.use('/send', sendRouter);
 apiRouter.use('/broadcasts', broadcastsRouter);
 apiRouter.use('/events', eventsRouter);
+apiRouter.use('/templates', templatesRouter);
