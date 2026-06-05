@@ -22,6 +22,7 @@ import { createHmac } from 'node:crypto';
 import { config } from '../../config.js';
 import { logger } from '../../logger.js';
 import * as wa from '../../channels/whatsapp/client.js';
+import { scheduleWarmNudge } from '../warm-nudge-forwarder/index.js';
 
 const OCHRE_FORWARD_TIMEOUT_MS = 5000;
 
@@ -225,6 +226,17 @@ export async function handleFlowCompletion({ event, contact /* , conversation */
     logger.warn({ wa_id: event.wa_id, formData }, 'flow completion: campaign not matched, skipping follow-up');
     return;
   }
+
+  // Fire-and-forget: schedule a +6h warm nudge on ochre-funnel. Receiver
+  // is keyed on funnelSlug — campaign.slug matches the Funnel.slug column.
+  // Idempotent: same (funnel, contact) just bumps scheduledFor.
+  scheduleWarmNudge({
+    phone: event.wa_id,
+    funnelSlug: campaign.slug,
+    trigger: 'flow_completed',
+    firstName: formData.first_name || undefined,
+    email: formData.email || undefined,
+  }).catch(() => {});
 
   const lpUrl = buildLpUrl(campaign, formData, event.wa_id);
   const body = buildFollowUpBody(campaign, formData);
