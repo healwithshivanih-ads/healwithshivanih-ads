@@ -43,6 +43,10 @@ primary_region = "bom"
   FMDB_PLANS_DIR = "/data/fm-plans-staging"
   FMDB_RESOURCES_DIR = "/data/fm-resources"
   NEXT_PUBLIC_APP_URL = "https://intake.theochretree.com"
+  # Server-only alias — used by route handlers whose code is compiled before
+  # this runtime env is available (NEXT_PUBLIC_ vars get baked in at build time
+  # when the remote builder doesn't have them set as secrets).
+  APP_ORIGIN = "https://intake.theochretree.com"
 
 [[mounts]]
   source = "fmcoach_data"
