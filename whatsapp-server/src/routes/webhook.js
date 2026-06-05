@@ -89,7 +89,12 @@ async function processMetaWebhook(body, webhookRowId) {
           phone: ev.wa_id,
           display_name: ev.profile_name,
         });
-        const conv = await getOrCreate(ws.id, contact.id, 'whatsapp');
+        // Pass the receiving phone_number_id so the conversation is
+        // attributed to the right Inbox tab. parse.js extracts it from
+        // value.metadata; null for older/edge payloads → conversation
+        // keeps existing attribution (or falls into the default tab
+        // when newly created).
+        const conv = await getOrCreate(ws.id, contact.id, 'whatsapp', ev.phone_number_id);
         const message = await logInbound({
           workspaceId: ws.id,
           conversationId: conv.id,

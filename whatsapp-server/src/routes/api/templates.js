@@ -25,26 +25,48 @@
 
 import { Router } from 'express';
 import fetch from 'node-fetch';
-import { config } from '../../config.js';
+import { config, resolveWhatsappNumber } from '../../config.js';
 import { logger } from '../../logger.js';
 
 export const templatesRouter = Router();
 
-let cache = null; // { fetchedAt: ms, items: [...] }
+// Per-number-key cache so switching between main and marketing doesn't
+// thrash. Keyed by the resolved phoneNumberId+wabaId so misconfigs don't
+// leak between numbers.
+const caches = new Map(); // key → { fetchedAt: ms, items: [...] }
 const CACHE_TTL_MS = 60_000;
 
 templatesRouter.get('/', async (req, res, next) => {
   try {
-    if (req.query.refresh === '1') cache = null;
-    if (cache && Date.now() - cache.fetchedAt < CACHE_TTL_MS) {
-      return res.json({ items: cache.items, cached_age_ms: Date.now() - cache.fetchedAt });
+    // `from` selects which WABA to list templates from:
+    //   undefined | 'default' | 'clients' → Ochre Tree (89765, the main number)
+    //   'marketing'                       → HealwithshivaniH (88501, broadcasts)
+    // Both share the same System User token. Each WABA has its OWN approved
+    // template set — broadcasts page should use 'marketing'.
+    const from = (req.query.from || 'default').toString();
+    let number;
+    try {
+      number = resolveWhatsappNumber(from);
+    } catch (e) {
+      return res.status(400).json({ error: e.message });
     }
-
-    const wabaId = config.whatsapp.businessAccountId;
-    const token = config.whatsapp.token;
+    const wabaId = number.businessAccountId;
+    const token = number.token;
     const graphVersion = config.whatsapp.graphVersion || 'v21.0';
     if (!wabaId || !token) {
-      return res.status(500).json({ error: 'WABA id or token not configured' });
+      return res.status(500).json({ error: `WABA id or token not configured for "${from}"` });
+    }
+
+    const cacheKey = `${wabaId}|${number.phoneNumberId}`;
+    if (req.query.refresh === '1') caches.delete(cacheKey);
+    const cached = caches.get(cacheKey);
+    if (cached && Date.now() - cached.fetchedAt < CACHE_TTL_MS) {
+      return res.json({
+        items: cached.items,
+        from,
+        waba_id: wabaId,
+        cached_age_ms: Date.now() - cached.fetchedAt,
+      });
     }
 
     const url = `https://graph.facebook.com/${graphVersion}/${wabaId}/message_templates`
@@ -58,8 +80,8 @@ templatesRouter.get('/', async (req, res, next) => {
     const body = await r.json();
     const raw = body?.data || [];
     const items = raw.map(normalise).filter(Boolean);
-    cache = { fetchedAt: Date.now(), items };
-    res.json({ items, cached_age_ms: 0 });
+    caches.set(cacheKey, { fetchedAt: Date.now(), items });
+    res.json({ items, from, waba_id: wabaId, cached_age_ms: 0 });
   } catch (e) {
     next(e);
   }

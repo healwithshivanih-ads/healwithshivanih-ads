@@ -57,7 +57,11 @@ export default function Broadcast() {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch('/api/templates', {
+        // Broadcasts go through the MKT WABA (88501 / HealwithshivaniH).
+        // That WABA has its own approved template set — distinct from the
+        // Ochre Tree WABA (89765) which holds the appt_* + main client
+        // templates. So we ALWAYS pull broadcast templates with ?from=marketing.
+        const res = await fetch('/api/templates?from=marketing', {
           headers: { 'x-api-key': localStorage.getItem('wa_admin_key') || '' },
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -143,6 +147,9 @@ export default function Broadcast() {
           recipients,
           origin: 'broadcast',
           originRef: 'admin_ui',
+          // Send AS the marketing number (88501 / HealwithshivaniH).
+          // The MKT WABA owns the broadcast templates we're picking from.
+          from: 'marketing',
         }),
       });
       const data = await res.json();
@@ -162,6 +169,12 @@ export default function Broadcast() {
           <h1 className="text-xl font-semibold text-slate-900">📣 Broadcast</h1>
           <p className="text-sm text-slate-500">
             Send a WhatsApp template message to a list of recipients.
+          </p>
+          <p className="mt-1 text-xs text-slate-500">
+            <span className="font-medium text-slate-700">Sending from:</span>{' '}
+            <span className="font-mono">+91 88501 76753</span> ·{' '}
+            <span className="font-medium">HealwithshivaniH</span>{' '}
+            <span className="text-slate-400">(broadcast number)</span>
           </p>
         </div>
         {stage !== 'compose' && (

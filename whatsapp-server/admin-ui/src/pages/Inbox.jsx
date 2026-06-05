@@ -35,19 +35,53 @@ export default function Inbox() {
   const nav = useNavigate();
   const [list, setList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [tabs, setTabs] = useState([]);
+  // Active tab persisted in localStorage so refreshes don't jump tabs.
+  const [activeTab, setActiveTab] = useState(
+    () => localStorage.getItem('wa_inbox_tab') || 'main',
+  );
+
+  // Fetch tabs (counts + the per-tab phoneNumberId). Cheap — done once
+  // on mount + after each refresh so unread counts stay current.
+  async function refreshTabs() {
+    try {
+      const key = localStorage.getItem('wa_admin_key') || '';
+      const res = await fetch('/api/conversations/inbox-tabs', {
+        headers: { 'x-api-key': key },
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      setTabs(data.tabs || []);
+    } catch { /* swallow */ }
+  }
 
   // `silent` = true skips the loading flash so the auto-poll doesn't flicker
   // the left rail every 10 s.
   async function refresh(silent = false) {
     if (!silent) setLoading(true);
     try {
-      const res = await api.conversations({ status: 'open', limit: 100 });
+      const tab = tabs.find((t) => t.key === activeTab);
+      const params = { status: 'open', limit: 100 };
+      if (tab?.phoneNumberId) params.phoneNumberId = tab.phoneNumberId;
+      const res = await api.conversations(params);
       setList(res.items || []);
+      // Tab counts may have changed if a new inbound arrived; refresh.
+      refreshTabs();
     } finally { if (!silent) setLoading(false); }
   }
 
+  function switchTab(key) {
+    setActiveTab(key);
+    localStorage.setItem('wa_inbox_tab', key);
+  }
+
+  // Refetch the conversation list whenever the tab changes.
   useEffect(() => {
-    refresh();
+    if (tabs.length) refresh();
+  }, [activeTab, tabs.length]);
+
+  useEffect(() => {
+    refreshTabs();
     // Polling fallback. SSE below is the fast path; the 10 s poll catches
     // anything SSE missed (dropped connection, restart, multi-VM split).
     const t = setInterval(() => { refresh(true); }, POLL_MS);
@@ -78,10 +112,41 @@ export default function Inbox() {
       <aside className="flex w-80 shrink-0 flex-col border-r border-slate-200 bg-white">
         <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
           <h1 className="text-sm font-semibold text-slate-800">Inbox</h1>
-          <button onClick={refresh} className="text-xs text-slate-500 hover:text-slate-800">
+          <button onClick={() => refresh()} className="text-xs text-slate-500 hover:text-slate-800">
             ↻ Refresh
           </button>
         </div>
+        {tabs.length > 1 && (
+          <div className="flex border-b border-slate-200 bg-slate-50 text-xs">
+            {tabs.map((t) => {
+              const active = t.key === activeTab;
+              return (
+                <button
+                  key={t.key}
+                  onClick={() => switchTab(t.key)}
+                  className={`flex flex-1 flex-col items-start gap-0.5 border-b-2 px-3 py-2 text-left transition ${
+                    active
+                      ? 'border-emerald-600 bg-white text-slate-900'
+                      : 'border-transparent text-slate-500 hover:bg-slate-100'
+                  }`}
+                  title={`${t.verified_name} · ${t.display_phone}`}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span className="font-mono text-[11px] font-medium">{t.display_phone}</span>
+                    {t.priority === 1 && (
+                      <span className="rounded-full bg-amber-100 px-1.5 text-[9px] font-medium uppercase tracking-wide text-amber-800">
+                        priority
+                      </span>
+                    )}
+                  </span>
+                  <span className="text-[10px] text-slate-500">
+                    {t.verified_name} · {t.conversation_count} conv
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
         <div className="flex-1 overflow-y-auto">
           {loading && <div className="p-4 text-sm text-slate-400">Loading…</div>}
           {!loading && list.length === 0 && (

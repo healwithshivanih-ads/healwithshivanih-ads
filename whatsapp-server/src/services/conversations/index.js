@@ -6,7 +6,18 @@ import { NotFoundError, ValidationError } from '../../errors.js';
 const VALID_CHANNELS = new Set(['whatsapp', 'instagram', 'sms', 'email']);
 const VALID_STATUSES = new Set(['open', 'closed', 'blocked', 'archived']);
 
-export async function getOrCreate(workspaceId, contactId, channel) {
+/**
+ * Get or create the conversation for (workspace, contact, channel).
+ * Last-touch attribution on `received_via_phone_number_id`:
+ *   - new conversation → stamped with the phone_number_id that received
+ *     the first inbound message (or null if not provided)
+ *   - existing conversation + new phoneNumberId → row is updated to the
+ *     new number (the conversation "moves" to that tab in the inbox)
+ *
+ * Backward compat: callers passing no phoneNumberId leave the existing
+ * attribution untouched. The Inbox UI tabs by this column.
+ */
+export async function getOrCreate(workspaceId, contactId, channel, phoneNumberId) {
   if (!VALID_CHANNELS.has(channel)) {
     throw new ValidationError(`unknown channel: ${channel}`);
   }
@@ -19,12 +30,33 @@ export async function getOrCreate(workspaceId, contactId, channel) {
     .eq('channel', channel)
     .maybeSingle();
   if (e1) throw e1;
-  if (existing) return existing;
+  if (existing) {
+    // Last-touch: if a phoneNumberId is supplied and it differs from the
+    // stored value (incl. null → some-id), update so the conversation
+    // appears in the correct Inbox tab.
+    if (phoneNumberId && existing.received_via_phone_number_id !== phoneNumberId) {
+      const { data: updated, error: uErr } = await supabase
+        .from('conversations')
+        .update({ received_via_phone_number_id: phoneNumberId })
+        .eq('id', existing.id)
+        .select()
+        .single();
+      if (uErr) throw uErr;
+      return updated;
+    }
+    return existing;
+  }
 
   const { data, error } = await supabase
     .from('conversations')
     .upsert(
-      { workspace_id: workspaceId, contact_id: contactId, channel, status: 'open' },
+      {
+        workspace_id: workspaceId,
+        contact_id: contactId,
+        channel,
+        status: 'open',
+        received_via_phone_number_id: phoneNumberId || null,
+      },
       { onConflict: 'workspace_id,contact_id,channel' },
     )
     .select()
@@ -40,12 +72,24 @@ export async function get(id) {
   return data;
 }
 
-export async function list({ status, limit = 50, offset = 0, search } = {}) {
+export async function list({ status, limit = 50, offset = 0, search, phoneNumberId, defaultPhoneNumberId } = {}) {
   let q = db().from('conversations')
     .select('*, contact:contacts(id, display_name, primary_phone, primary_email)', { count: 'exact' })
     .order('last_inbound_at', { ascending: false, nullsFirst: false })
     .range(offset, offset + limit - 1);
   if (status) q = q.eq('status', status);
+  // Inbox tab filtering. `phoneNumberId` matches the
+  // received_via_phone_number_id column. When the caller passes
+  // `defaultPhoneNumberId` AND the requested phoneNumberId equals it,
+  // we ALSO include rows with NULL attribution (legacy conversations
+  // from before this column existed default to the main number tab).
+  if (phoneNumberId) {
+    if (defaultPhoneNumberId && phoneNumberId === defaultPhoneNumberId) {
+      q = q.or(`received_via_phone_number_id.eq.${phoneNumberId},received_via_phone_number_id.is.null`);
+    } else {
+      q = q.eq('received_via_phone_number_id', phoneNumberId);
+    }
+  }
   // Search filters by joined contact name/phone — small lists make this cheap.
   if (search) {
     const like = `%${search.replace(/[%_]/g, (m) => `\\${m}`)}%`;

@@ -3,10 +3,16 @@ import * as conv from '../../services/conversations/index.js';
 import * as msgs from '../../services/messages/index.js';
 import { canSendFreeText } from '../../services/conversations/service-window.js';
 import { OutsideServiceWindowError, ValidationError } from '../../errors.js';
+import { config } from '../../config.js';
 
 export const conversationsRouter = Router();
 
-// GET /api/conversations?status=open&limit=&offset=&search=
+// GET /api/conversations?status=open&limit=&offset=&search=&phoneNumberId=
+//
+// `phoneNumberId` filters to conversations whose received_via_phone_number_id
+// matches (i.e. Inbox tab). When phoneNumberId === the default (main) number,
+// legacy rows with NULL attribution are also included so pre-tabs conversations
+// fall into the main tab.
 conversationsRouter.get('/', async (req, res, next) => {
   try {
     const limit = Math.min(parseInt(req.query.limit || '50', 10), 200);
@@ -14,9 +20,45 @@ conversationsRouter.get('/', async (req, res, next) => {
     const result = await conv.list({
       status: req.query.status || undefined,
       search: req.query.search || undefined,
+      phoneNumberId: req.query.phoneNumberId || undefined,
+      defaultPhoneNumberId: config.whatsapp.phoneNumberId,
       limit, offset,
     });
     res.json(result);
+  } catch (e) { next(e); }
+});
+
+// GET /api/conversations/inbox-tabs
+// Exposes the number of conversations per tab so the UI can render counts.
+// Both tabs are computed from the same query as /api/conversations.
+conversationsRouter.get('/inbox-tabs', async (req, res, next) => {
+  try {
+    const mainId = config.whatsapp.phoneNumberId;
+    const mktId = config.whatsapp.numbers?.marketing?.phoneNumberId || null;
+    const [main, mkt] = await Promise.all([
+      mainId ? conv.list({ phoneNumberId: mainId, defaultPhoneNumberId: mainId, limit: 1 }) : { total: 0 },
+      mktId  ? conv.list({ phoneNumberId: mktId, defaultPhoneNumberId: mainId, limit: 1 }) : { total: 0 },
+    ]);
+    res.json({
+      tabs: [
+        {
+          key: 'main',
+          phoneNumberId: mainId,
+          display_phone: '+91 89765 63971',
+          verified_name: 'The Ochre Tree',
+          priority: 1,
+          conversation_count: main.total ?? 0,
+        },
+        ...(mktId ? [{
+          key: 'marketing',
+          phoneNumberId: mktId,
+          display_phone: '+91 88501 76753',
+          verified_name: 'HealwithshivaniH',
+          priority: 2,
+          conversation_count: mkt.total ?? 0,
+        }] : []),
+      ],
+    });
   } catch (e) { next(e); }
 });
 
