@@ -13,11 +13,14 @@ export async function GET(
   if (!res.ok) {
     return new NextResponse("Not found", { status: 404 });
   }
-  // NEXT_PUBLIC_APP_URL is the canonical public origin (set in fly.toml).
+  // APP_ORIGIN is the canonical public origin (set in fly.toml [env]).
   // req.url / req.nextUrl.origin resolve to the internal localhost:3002 address
-  // on the Fly machine, so we can't use them for the redirect destination.
+  // on Fly. NEXT_PUBLIC_APP_URL gets statically replaced at build time (empty
+  // on the remote builder), so we use the server-only APP_ORIGIN instead.
   const base =
-    process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ?? req.nextUrl.origin;
+    process.env.APP_ORIGIN?.replace(/\/$/, "") ??
+    process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ??
+    req.nextUrl.origin;
   const dest = new URL(`/intake/${res.intake_token}`, base);
   return NextResponse.redirect(dest, 302);
 }
