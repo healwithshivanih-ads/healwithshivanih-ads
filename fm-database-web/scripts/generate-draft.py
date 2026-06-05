@@ -687,6 +687,30 @@ def main() -> int:
     except Exception:
         pass
 
+    # ── Protein top-up on the structured plan ─────────────────────────
+    # Coach rule: vegetarians (who routinely under-eat protein), OR anyone
+    # with a lab protein-gap signal, get a protein-powder item on the
+    # supplement protocol — never when kidney disease / gout contraindicate
+    # raising protein. Best-effort; never blocks plan generation.
+    try:
+        import protein_logic
+        client_d = client.model_dump()
+        plan_d = plan.model_dump()
+        add, _reason = protein_logic.should_add_protein_supplement(client_d, plan_d)
+        if add and not protein_logic.plan_has_protein(plan_d):
+            f = protein_logic.build_protein_supplement_fields(client_d, plan_d)
+            plan.supplement_protocol.append(SupplementItem(
+                supplement_slug=f["supplement_slug"],
+                form=f["form"],
+                dose=f["dose"],
+                timing=f["timing"],
+                take_with_food=f.get("take_with_food", "") or "",
+                duration_weeks=f.get("duration_weeks"),
+                coach_rationale=f["coach_rationale"],
+            ))
+    except Exception:
+        pass
+
     path = plan_storage.write_plan(root, plan)
 
     # Mirror Streamlit: stamp the session with the generated plan slug.
