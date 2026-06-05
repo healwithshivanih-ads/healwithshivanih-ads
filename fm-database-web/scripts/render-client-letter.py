@@ -6358,6 +6358,15 @@ def main() -> int:
     phase_end_raw = payload.get("phase_end")
     phase_start = int(phase_start_raw) if isinstance(phase_start_raw, (int, str)) and str(phase_start_raw).strip() else None
     phase_end = int(phase_end_raw) if isinstance(phase_end_raw, (int, str)) and str(phase_end_raw).strip() else None
+    # Default a meal_plan_phase letter's bounds to weeks 3-4 — matching the
+    # prompt builder's `phase_start or 3, phase_end or 4` — so the injected
+    # supplement schedule/routine window matches the narrative instead of
+    # showing the full 12-week list (audit Phase-1b).
+    if letter_type == "meal_plan_phase":
+        if phase_start is None:
+            phase_start = 3
+        if phase_end is None:
+            phase_end = 4
     # Backdating: coach generates the "as-of" version of a letter for a
     # client whose protocol started weeks ago. as_of_date filters all
     # dated client data (sessions, measurements_log, health_snapshots)
@@ -6943,7 +6952,11 @@ def main() -> int:
         # letter used ⭐). Anchor on the words "Recipe Appendix" and
         # allow any decorative prefix between "## " and the words.
         m = re.search(
-            r"(?m)^(##\s+[^\n]*?Recipe\s+Appendix.*?)(?=\n##\s+|\Z)",
+            # Stop the capture before the sign-off too (audit Phase-1b): the
+            # AI closing ("**With warmth,** / **Shivani**" / "— Shivani") has no
+            # ## heading, so the old `(?=\n##\s+|\Z)` ran to \Z and swallowed it
+            # into the recipe sidecar — the main letter ended abruptly.
+            r"(?m)^(##\s+[^\n]*?Recipe\s+Appendix.*?)(?=\n##\s+|\n\s*\*\*With\s+warmth|\n\s*—\s*Shivani|\Z)",
             markdown,
             flags=re.DOTALL | re.IGNORECASE,
         )
