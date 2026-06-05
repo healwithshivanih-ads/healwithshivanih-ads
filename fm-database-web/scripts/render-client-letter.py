@@ -6641,20 +6641,12 @@ def main() -> int:
         return 1
     _step(f"prompt built ({len(prompt)} chars)")
 
-    # Explicit timeouts + retries. Without these the client had NO read
-    # timeout: a stalled connection (transient API/network latency) would
-    # hang until the caller's 10-min SIGKILL, surfacing as the opaque
-    # "exited null with no stdout" the coach kept hitting. read=180s only
-    # trips on a genuine stall — healthy streaming sends bytes continuously
-    # — so it fails FAST and CATCHABLY (→ clean JSON error). max_retries
-    # lets the SDK self-heal transient 429/5xx/connection blips before the
-    # stream starts.
-    import httpx as _httpx
-    client_api = Anthropic(
-        api_key=api_key,
-        timeout=_httpx.Timeout(600.0, connect=15.0, read=180.0),
-        max_retries=3,
-    )
+    # Timeout + retry config lives in the shared scripts/anthropic_client.py
+    # helper (audit Phase-1 H2) — single source of truth so every shim's
+    # timeout config can't drift. Without a read timeout a stalled connection
+    # hangs to the caller's SIGKILL ("exited null with no stdout").
+    from anthropic_client import build_client
+    client_api = build_client(api_key)
 
     # ── Letter cache (E.2) ─────────────────────────────────────────────
     # The prompt string captures every input that drives Sonnet's output

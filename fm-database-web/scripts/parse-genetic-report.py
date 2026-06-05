@@ -240,7 +240,8 @@ def main() -> int:
             {"type": "text", "text": "Extract every clinically relevant SNP with genotype + FM implications."},
         ]
 
-    aclient = Anthropic(api_key=api_key)
+    from anthropic_client import build_client
+    aclient = build_client(api_key)
     try:
         with aclient.messages.stream(
             model="claude-sonnet-4-6",

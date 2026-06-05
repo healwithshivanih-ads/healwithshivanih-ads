@@ -31,6 +31,15 @@ from ..enums import PlanStatus
 from .models import Client, Plan, Session
 
 
+def _atomic_write_text(path: Path, text: str) -> None:
+    """Write text atomically: temp file then os.replace, so a crash or a
+    concurrent write mid-write can't leave a truncated / unparseable PHI file
+    (audit Phase-1 M1). os.replace is atomic on the same filesystem."""
+    tmp = path.with_name(path.name + f".{os.getpid()}.tmp")
+    tmp.write_text(text)
+    os.replace(tmp, path)
+
+
 # ---------------------------------------------------------------------------
 # Locating the plans dir
 # ---------------------------------------------------------------------------
@@ -133,7 +142,7 @@ def write_client(root: Path, client: Client) -> Path:
     (cdir / "files").mkdir(exist_ok=True)
     (cdir / "sessions").mkdir(exist_ok=True)
     p = client_path(root, client.client_id)
-    p.write_text(yaml.safe_dump(client.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
+    _atomic_write_text(p, yaml.safe_dump(client.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
     return p
 
 
@@ -252,7 +261,7 @@ def write_session(root: Path, session: Session) -> Path:
     p = sdir / f"{session.session_id}.yaml"
     if p.exists():
         raise FileExistsError(f"session already exists: {p}")
-    p.write_text(yaml.safe_dump(session.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
+    _atomic_write_text(p, yaml.safe_dump(session.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
     return p
 
 
@@ -262,7 +271,7 @@ def update_session(root: Path, session: Session) -> Path:
     sdir = client_sessions_dir(root, session.client_id)
     sdir.mkdir(parents=True, exist_ok=True)
     p = sdir / f"{session.session_id}.yaml"
-    p.write_text(yaml.safe_dump(session.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
+    _atomic_write_text(p, yaml.safe_dump(session.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
     return p
 
 
@@ -426,7 +435,7 @@ def write_plan(root: Path, plan: Plan) -> Path:
                 break
 
     plan.updated_at = datetime.now(timezone.utc)
-    p.write_text(yaml.safe_dump(plan.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
+    _atomic_write_text(p, yaml.safe_dump(plan.model_dump(mode="json"), sort_keys=False, allow_unicode=True))
 
     # One-draft-per-client prune. Best-effort — read each YAML and unlink
     # if client_id matches. Bad YAML / missing client_id / unlink failure

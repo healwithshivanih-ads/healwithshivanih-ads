@@ -2,6 +2,7 @@ import "server-only";
 import { loadClientSessions } from "./loader-extras";
 import { loadAllPlans } from "./loader";
 import { parseSessionType } from "./session-utils";
+import { effectiveMealPlanStart, effectiveRecheckDate } from "./plan-timing";
 
 /**
  * ClientJourney — the workflow-stage snapshot rendered as the
@@ -150,26 +151,31 @@ export async function loadClientJourney(
   // protocol for weeks (cl-004 Dhanishta hit this — plan #2 published
   // 12 May, real start 6 May; Analyse banner said week 1 on 18 May
   // instead of correct week 2).
-  const planStart =
-    asString(pluck(publishedPlan, "meal_plan_started_on")) ??
-    asString(pluck(publishedPlan, "supplements_started_on")) ??
-    asString(pluck(publishedPlan, "plan_period_start"));
-  const planWeeks = asNumber(pluck(publishedPlan, "plan_period_weeks"));
+  // Day-1 + recheck come from the SINGLE source of truth (plan-timing.ts) —
+  // the same helper the dashboard / calendar / drip panel use. This file used
+  // to have its own divergent chain (…→ supplements_started_on →
+  // plan_period_start, no +3d), so the journey strip showed a different
+  // week/recheck than every other surface for some clients (audit Phase-1 H1).
+  const planLike = {
+    meal_plan_started_on: asString(pluck(publishedPlan, "meal_plan_started_on")) ?? undefined,
+    plan_period_start: asString(pluck(publishedPlan, "plan_period_start")) ?? undefined,
+    plan_period_weeks: asNumber(pluck(publishedPlan, "plan_period_weeks")) ?? undefined,
+    plan_period_recheck_date:
+      asString(pluck(publishedPlan, "plan_period_recheck_date")) ?? undefined,
+  };
+  const planStart = effectiveMealPlanStart(planLike);
+  const planWeeks = planLike.plan_period_weeks ?? null;
   let currentWeek: number | null = null;
-  let recheckDateIso: string | null = null;
+  const recheckDateIso: string | null =
+    effectiveRecheckDate(planLike) ?? planLike.plan_period_recheck_date ?? null;
   if (planStart && planWeeks) {
-    const start = new Date(`${planStart}T00:00:00`);
-    const today = new Date(`${todayIso}T00:00:00`);
+    const start = new Date(`${planStart}T00:00:00Z`);
+    const today = new Date(`${todayIso}T00:00:00Z`);
     const msPerWeek = 7 * 24 * 60 * 60 * 1000;
     currentWeek = Math.max(
       1,
       Math.min(planWeeks, Math.floor((today.getTime() - start.getTime()) / msPerWeek) + 1),
     );
-    const recheck = new Date(start);
-    recheck.setDate(recheck.getDate() + planWeeks * 7);
-    recheckDateIso = recheck.toISOString().slice(0, 10);
-  } else {
-    recheckDateIso = asString(pluck(publishedPlan, "plan_period_recheck_date")) ?? null;
   }
 
   // ── Compute next-phase-letter window (mid-cycle communication).

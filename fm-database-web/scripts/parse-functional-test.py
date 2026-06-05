@@ -382,7 +382,8 @@ def _detect_with_vision(raw_pdf: bytes, api_key: str) -> str:
     except ImportError:
         return "unknown"
     try:
-        api = Anthropic(api_key=api_key)
+        from anthropic_client import build_client
+        api = build_client(api_key)
         resp = api.messages.create(
             model="claude-haiku-4-5",
             max_tokens=20,

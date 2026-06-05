@@ -870,7 +870,8 @@ def main() -> int:
         json.dump({"ok": False, "error": f"anthropic not installed: {e}"}, sys.stdout)
         return 1
 
-    api = Anthropic(api_key=api_key)
+    from anthropic_client import build_client
+    api = build_client(api_key)
     model_id = "claude-haiku-4-5"
     try:
         with api.messages.stream(

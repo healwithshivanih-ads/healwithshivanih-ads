@@ -149,7 +149,12 @@ export async function writePlan(plan: Plan): Promise<void> {
     lineWidth: 120,
     noRefs: true,
   });
-  await fs.writeFile(target, dump, "utf-8");
+  // Atomic write: temp file then rename, so a crash or concurrent write
+  // mid-write can't leave a truncated / unparseable PHI plan file
+  // (audit Phase-1 M1). rename() is atomic on the same filesystem.
+  const tmp = `${target}.${process.pid}.tmp`;
+  await fs.writeFile(tmp, dump, "utf-8");
+  await fs.rename(tmp, target);
 
   // One-draft-per-client: when we just wrote a NEW draft (the file didn't
   // exist anywhere before this call), purge older drafts for this client.

@@ -134,7 +134,8 @@ def _draft_message(context: str, session_type: str, client_name: str, client_id:
     _load_env()
 
     import anthropic
-    client = anthropic.Anthropic()
+    from anthropic_client import build_client
+    client = build_client()
 
     first_name = client_name.split()[0] if client_name else "there"
     type_label = session_type.replace("_", " ")
