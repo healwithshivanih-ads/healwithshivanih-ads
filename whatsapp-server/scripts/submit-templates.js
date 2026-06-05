@@ -830,6 +830,62 @@ const TEMPLATES = [
       "Hi {{1}}, your registration for *{{2}}* is still open. The payment link is here whenever you are ready:\n\n{{3}}\n\nReply here with any questions about completing it.\n\n— The Ochre Tree",
     example: [['Priya', '40s: The Decade No One Prepared You For', 'https://rzp.io/rzp/OZY887WS']],
   },
+
+  // ── Broadcast invite template (MKT WABA / 88501) ───────────────────────
+  // First template approved on the broadcast number. Sent from the admin
+  // UI's Broadcast page; per-recipient body params + URL-button suffix
+  // resolved by ochre-funnel's variable resolver from the Funnel row.
+  //
+  // Primary CTA is a FLOW button that opens webinar_register_v1 in-chat
+  // (no LP detour). flow_id = 980608031362870 — published on the MKT WABA
+  // 2026-06-04 (see scripts/submit-flow.js webinar-register-v1).
+  //
+  // V1 ships with NO image header — Meta requires a Resumable Upload
+  // handle for IMAGE headers which adds a media-upload step. Adding image
+  // header in v3 once a sample is uploaded. Body still has all workshop
+  // info via {{N}} variables.
+  {
+    name: 'webinar_invite_v2',
+    category: 'MARKETING',
+    language: 'en',
+    target: 'marketing',          // → MKT WABA 976963491396839
+    body:
+      "Hi {{1}} 🌿\n\n"
+      + "I'm hosting a live workshop on *{{2}}* — and I'd love for you to join me.\n\n"
+      + "{{3}}\n\n"
+      + "You'll walk away with:\n\n"
+      + "{{4}}\n\n"
+      + "Price: {{5}}\n"
+      + "Recording yours to keep, even if you can't attend live.\n\n"
+      + "This is the kind of thing I wish someone had handed me earlier. Save your seat below — let's do this together.",
+    example: [[
+      'Priya',
+      '40s: The Decade No One Prepared You For',
+      'Thursday, 11 June at 7:30 PM IST',
+      "✓ The biology behind your symptoms — explained simply\n"
+        + "✓ Specific changes you can start the same week\n"
+        + "✓ My personal go-to protocols (recipes, supplements, routines)\n"
+        + "✓ Live Q&A — bring your questions",
+      '₹299',
+    ]],
+    footer: 'Heal With Shivani · The Ochre Tree',
+    buttons: [
+      {
+        type: 'FLOW',
+        text: 'Save my spot',
+        flowId: '980608031362870',     // webinar_register_v1 on MKT WABA
+        flowAction: 'navigate',
+        navigateScreen: 'WELCOME',
+      },
+      {
+        type: 'URL',
+        text: 'Add to calendar',
+        url: 'https://lp.theochretree.com/cal/{{1}}',
+        exampleSuffix: '40s-decade',
+      },
+      'Tell me more',                 // QUICK_REPLY
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -874,20 +930,46 @@ function fail(msg) {
 // Graph API calls
 // ---------------------------------------------------------------------------
 function buildComponents(tpl) {
-  const components = [
-    {
-      type: 'BODY',
-      text: tpl.body,
-      ...(tpl.example ? { example: { body_text: tpl.example } } : {}),
-    },
-  ];
-  // Buttons (max 3 per template per Meta spec). Two flavours:
-  //   - plain string  → QUICK_REPLY (existing behaviour, weekly polls etc.)
-  //   - { type, text, url, exampleSuffix } → URL CTA. Meta requires:
-  //       url:     "https://prefix.example.com/path/{{1}}"
-  //       example: ["https://prefix.example.com/path/concrete-value"]
-  //     where the {{1}} is filled in at send time. The hardcoded prefix
-  //     locks down the domain (anti-phishing); only the suffix is dynamic.
+  const components = [];
+
+  // HEADER — TEXT or IMAGE. IMAGE submission requires a media-upload
+  // session handle (Meta's Resumable Upload API), supplied as
+  // `tpl.header.exampleHandle`. We don't auto-upload from here — caller
+  // pre-uploads and pastes the handle string.
+  if (tpl.header) {
+    if (tpl.header.format === 'TEXT') {
+      components.push({
+        type: 'HEADER',
+        format: 'TEXT',
+        text: tpl.header.text,
+        ...(tpl.header.example ? { example: { header_text: tpl.header.example } } : {}),
+      });
+    } else if (tpl.header.format === 'IMAGE') {
+      components.push({
+        type: 'HEADER',
+        format: 'IMAGE',
+        example: { header_handle: [tpl.header.exampleHandle] },
+      });
+    }
+  }
+
+  components.push({
+    type: 'BODY',
+    text: tpl.body,
+    ...(tpl.example ? { example: { body_text: tpl.example } } : {}),
+  });
+
+  if (tpl.footer) {
+    components.push({ type: 'FOOTER', text: String(tpl.footer).slice(0, 60) });
+  }
+
+  // Buttons (max 3 per template per Meta spec). Three flavours:
+  //   - plain string                             → QUICK_REPLY
+  //   - { type: 'URL', text, url, exampleSuffix} → URL CTA
+  //   - { type: 'FLOW', text, flowId,
+  //       flowAction='navigate', navigateScreen} → FLOW button (opens
+  //         the published Flow in-chat; Meta validates that flow_id
+  //         exists at template-approval time)
   if (Array.isArray(tpl.buttons) && tpl.buttons.length > 0) {
     components.push({
       type: 'BUTTONS',
@@ -901,7 +983,6 @@ function buildComponents(tpl) {
             text: String(b.text || 'Open').slice(0, 25),
             url: b.url,
           };
-          // Example is required by Meta when the URL contains a {{N}} var.
           if (b.url && b.url.includes('{{')) {
             btn.example = b.example || [b.exampleSuffix
               ? b.url.replace(/\{\{\d+\}\}/, b.exampleSuffix)
@@ -909,7 +990,15 @@ function buildComponents(tpl) {
           }
           return btn;
         }
-        // Fallback — treat unknown shape as a quick reply.
+        if (b?.type === 'FLOW') {
+          return {
+            type: 'FLOW',
+            text: String(b.text || 'Open').slice(0, 25),
+            flow_id: String(b.flowId),
+            flow_action: b.flowAction || 'navigate',
+            navigate_screen: b.navigateScreen || 'WELCOME',
+          };
+        }
         return { type: 'QUICK_REPLY', text: String(b.text || b).slice(0, 25) };
       }),
     });
@@ -1030,6 +1119,21 @@ const WABA_ID = env.WHATSAPP_BUSINESS_ACCOUNT_ID;
 if (!TOKEN) fail('WHATSAPP_TOKEN missing from .env');
 if (!WABA_ID) fail('WHATSAPP_BUSINESS_ACCOUNT_ID missing from .env');
 
+/**
+ * Per-target WABA resolver. Templates with `target: 'marketing'` submit
+ * to the MKT WABA (HealwithshivaniH / 88501). Default/legacy templates
+ * stay on the Ochre Tree WABA (89765). Same WHATSAPP_TOKEN covers both.
+ */
+function resolveTarget(target) {
+  if (!target || target === 'default') return { wabaId: WABA_ID, token: TOKEN, label: 'default (Ochre Tree)' };
+  if (target === 'marketing') {
+    const w = env.MKT_WHATSAPP_BUSINESS_ACCOUNT_ID;
+    if (!w) fail('target=marketing but MKT_WHATSAPP_BUSINESS_ACCOUNT_ID missing from .env');
+    return { wabaId: w, token: env.MKT_WHATSAPP_TOKEN || TOKEN, label: 'marketing (HealwithshivaniH)' };
+  }
+  fail(`unknown target: ${target}`);
+}
+
 if (args.includes('--check')) {
   const live = await listLive(WABA_ID, TOKEN);
   const localNames = new Set(TEMPLATES.map((t) => t.name));
@@ -1057,13 +1161,14 @@ if (targets.length === 0) {
   fail(`no templates matched: ${requested.join(', ')}`);
 }
 
-console.log(`Submitting ${targets.length} template(s) to WABA ${WABA_ID}...\n`);
+console.log(`Submitting ${targets.length} template(s) …\n`);
 
 const results = [];
 for (const tpl of targets) {
-  process.stdout.write(`  ${tpl.name} ... `);
+  const t = resolveTarget(tpl.target);
+  process.stdout.write(`  ${tpl.name} → ${t.label} ... `);
   try {
-    const r = await submitOne(WABA_ID, TOKEN, tpl);
+    const r = await submitOne(t.wabaId, t.token, tpl);
     if (r.ok) {
       const tag = r.mode === 'edited' ? '✎ edited' : '✓ created';
       console.log(`${tag} ${r.body.id || ''} (${r.body.status || 'queued'})`);

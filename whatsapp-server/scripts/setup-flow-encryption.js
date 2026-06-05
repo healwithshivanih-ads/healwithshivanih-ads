@@ -51,12 +51,22 @@ function loadEnv() {
 }
 
 const env = loadEnv();
+// Allow --target=marketing to register the key against the MKT phone
+// (88501 / HealwithshivaniH) instead of the default 89765. Each phone
+// number on the WABA needs its own public key registered before Flows
+// can publish through it.
+const args = process.argv.slice(2);
+const targetArg = (args.find((a) => a.startsWith('--target=')) || '').slice('--target='.length);
+const target = targetArg || 'default';
 const TOKEN = env.WHATSAPP_TOKEN;
-const PHONE = env.PHONE_NUMBER_ID;
+const PHONE = target === 'marketing'
+  ? env.MKT_PHONE_NUMBER_ID
+  : env.PHONE_NUMBER_ID;
 if (!TOKEN || !PHONE) {
-  console.error('✗ need WHATSAPP_TOKEN + PHONE_NUMBER_ID in .env');
+  console.error(`✗ need WHATSAPP_TOKEN + ${target === 'marketing' ? 'MKT_PHONE_NUMBER_ID' : 'PHONE_NUMBER_ID'} in .env`);
   process.exit(1);
 }
+console.log(`Registering Flow encryption key against ${target} phone (${PHONE})…\n`);
 
 // 1. Generate fresh RSA-2048 key pair. Private key is encrypted with a
 //    random passphrase — Meta requires PKCS#8 encrypted PEM format.

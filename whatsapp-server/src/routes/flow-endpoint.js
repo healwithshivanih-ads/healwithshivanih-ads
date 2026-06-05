@@ -45,14 +45,49 @@ import { logger } from '../logger.js';
 export const flowEndpointRouter = Router();
 flowEndpointRouter.use(express.json({ limit: '256kb' }));
 
-function loadPrivateKey() {
+/**
+ * Load all configured private keys, newest/preferred first. Each entry is
+ * a (suffix, pem, passphrase) tuple. We try them in order when decrypting
+ * — handles the multi-WABA case where each phone number has its own
+ * registered public key (e.g. main 89765 + marketing 88501).
+ *
+ * Env var pattern (suffix _MKT etc. added per new phone):
+ *   WHATSAPP_FLOWS_PRIVATE_KEY      / WHATSAPP_FLOWS_PASSPHRASE      (default)
+ *   WHATSAPP_FLOWS_PRIVATE_KEY_MKT  / WHATSAPP_FLOWS_PASSPHRASE_MKT  (marketing)
+ */
+function loadPrivateKeys() {
+  const keys = [];
+  // Try marketing key FIRST — most recent registration, so a new Flow
+  // publish health-check will encrypt with this key.
+  const mktPem = process.env.WHATSAPP_FLOWS_PRIVATE_KEY_MKT;
+  const mktPass = process.env.WHATSAPP_FLOWS_PASSPHRASE_MKT;
+  if (mktPem && mktPass) {
+    const normalised = mktPem.includes('\\n') ? mktPem.replace(/\\n/g, '\n') : mktPem;
+    try {
+      keys.push({
+        label: 'mkt',
+        privateKey: createPrivateKey({ key: normalised, format: 'pem', passphrase: mktPass }),
+      });
+    } catch (e) {
+      logger.warn({ err: e.message }, 'mkt private key parse failed');
+    }
+  }
+  // Fall back to legacy/default key.
   const pem = process.env.WHATSAPP_FLOWS_PRIVATE_KEY;
   const passphrase = process.env.WHATSAPP_FLOWS_PASSPHRASE;
-  if (!pem) throw new Error('WHATSAPP_FLOWS_PRIVATE_KEY not set');
-  if (!passphrase) throw new Error('WHATSAPP_FLOWS_PASSPHRASE not set');
-  // Fly secrets may have escaped \n — normalise to real newlines.
-  const normalised = pem.includes('\\n') ? pem.replace(/\\n/g, '\n') : pem;
-  return createPrivateKey({ key: normalised, format: 'pem', passphrase });
+  if (pem && passphrase) {
+    const normalised = pem.includes('\\n') ? pem.replace(/\\n/g, '\n') : pem;
+    try {
+      keys.push({
+        label: 'default',
+        privateKey: createPrivateKey({ key: normalised, format: 'pem', passphrase }),
+      });
+    } catch (e) {
+      logger.warn({ err: e.message }, 'default private key parse failed');
+    }
+  }
+  if (keys.length === 0) throw new Error('no Flow private keys configured');
+  return keys;
 }
 
 function decryptRequest(body) {
@@ -61,17 +96,30 @@ function decryptRequest(body) {
     throw new Error('missing encrypted fields');
   }
 
-  // 1. Decrypt the AES session key with our RSA private key (OAEP+SHA256
-  //    is Meta's default).
-  const privateKey = loadPrivateKey();
-  const aesKey = privateDecrypt(
-    {
-      key: privateKey,
-      padding: cryptoConstants.RSA_PKCS1_OAEP_PADDING,
-      oaepHash: 'sha256',
-    },
-    Buffer.from(encrypted_aes_key, 'base64'),
-  );
+  // 1. Decrypt the AES session key with whichever RSA private key matches
+  //    the public key Meta encrypted under. Try all configured keys in
+  //    priority order; first one that decrypts wins. OAEP+SHA256 is Meta's
+  //    default padding.
+  const keys = loadPrivateKeys();
+  let aesKey = null;
+  let lastErr = null;
+  for (const { label, privateKey } of keys) {
+    try {
+      aesKey = privateDecrypt(
+        {
+          key: privateKey,
+          padding: cryptoConstants.RSA_PKCS1_OAEP_PADDING,
+          oaepHash: 'sha256',
+        },
+        Buffer.from(encrypted_aes_key, 'base64'),
+      );
+      logger.debug({ keyLabel: label }, 'flow-endpoint: decrypted with key');
+      break;
+    } catch (e) {
+      lastErr = e;
+    }
+  }
+  if (!aesKey) throw lastErr || new Error('all private keys failed to decrypt');
 
   // 2. Decrypt the flow data with AES-128-GCM. Meta appends the 16-byte
   //    auth tag to the ciphertext, so split it off.

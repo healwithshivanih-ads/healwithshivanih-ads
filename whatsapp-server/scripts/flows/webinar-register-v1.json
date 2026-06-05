@@ -1,0 +1,88 @@
+{
+  "version": "7.0",
+  "data_api_version": "3.0",
+  "routing_model": {
+    "WELCOME": []
+  },
+  "screens": [
+    {
+      "id": "WELCOME",
+      "title": "Heal With Shivani",
+      "terminal": true,
+      "data": {
+        "workshop_name": {
+          "type": "string",
+          "__example__": "40s: The Decade No One Prepared You For"
+        },
+        "when": {
+          "type": "string",
+          "__example__": "Thursday, 11 June at 7:30 PM IST"
+        },
+        "price": {
+          "type": "string",
+          "__example__": "₹299"
+        }
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextHeading",
+            "text": "Hey 👋 glad you're here."
+          },
+          {
+            "type": "TextBody",
+            "text": "I'm Shivani. I'd love to have you join me live for:\n\n${data.workshop_name}\n\n📅 ${data.when}\nPrice: ${data.price} · 60 min on Zoom\n\nA few quick details and I'll send you the registration link 🌿"
+          },
+          {
+            "type": "Form",
+            "name": "lead_form",
+            "init-values": {
+              "first_name": "",
+              "email": ""
+            },
+            "children": [
+              {
+                "type": "TextInput",
+                "name": "first_name",
+                "label": "What should I call you?",
+                "helper-text": "Optional — leave blank if you'd rather skip"
+              },
+              {
+                "type": "TextInput",
+                "name": "email",
+                "label": "Your email",
+                "helper-text": "Optional — I'll send the recording here if you can't make it live",
+                "input-type": "email"
+              },
+              {
+                "type": "Dropdown",
+                "name": "intent",
+                "label": "Where are you with this?",
+                "required": true,
+                "data-source": [
+                  { "id": "ready", "title": "Ready to register" },
+                  { "id": "curious", "title": "Curious — want more info" },
+                  { "id": "considering", "title": "Considering, still deciding" },
+                  { "id": "future", "title": "Just keeping an eye on future ones" }
+                ]
+              },
+              {
+                "type": "Footer",
+                "label": "Send me the link 🌿",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "first_name": "${form.first_name}",
+                    "email": "${form.email}",
+                    "intent": "${form.intent}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

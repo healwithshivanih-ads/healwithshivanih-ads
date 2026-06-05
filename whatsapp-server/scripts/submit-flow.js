@@ -43,10 +43,33 @@ const FLOWS = [
     // Meta categories: SIGN_UP / SIGN_IN / APPOINTMENT_BOOKING /
     // LEAD_GENERATION / SHOPPING / CONTACT_US / CUSTOMER_SUPPORT / SURVEY / OTHER.
     categories: ['LEAD_GENERATION'],
+    // target: which WABA to register against. 'default' = WHATSAPP_BUSINESS_ACCOUNT_ID
+    // (Ochre Tree, 89765). 'marketing' = MKT_WHATSAPP_BUSINESS_ACCOUNT_ID
+    // (HealwithshivaniH, 88501).
+    target: 'default',
     // No endpoint_uri — this is a "client-only" Flow. Completion fires the
     // standard WhatsApp inbound webhook with the form payload; we handle it
     // there. (Endpoint-style flows are for mid-flow server data exchange,
     // which we don't need.)
+  },
+  {
+    slug: 'webinar-register-v1',
+    // Human-friendly name shown in Meta's Flow Builder + Ads UI.
+    name: 'Webinar registration · generic v1',
+    categories: ['LEAD_GENERATION'],
+    // Lives on the MARKETING WABA so it can be referenced by the
+    // webinar_invite_v2 template's FLOW button. Same WHATSAPP_TOKEN
+    // covers both WABAs (single System User), so just the WABA id
+    // changes when target='marketing'.
+    target: 'marketing',
+    // Meta now requires endpoint_uri on every publishable Flow, even
+    // client-only ones. Our generic flow endpoint just handles the
+    // "ping" health check Meta sends — never serves real data exchange.
+    endpoint_uri: 'https://whatsapp-server-shivani.fly.dev/whatsapp-flow-endpoint',
+    // No endpoint_uri — same client-only pattern as 40s-decade. Workshop
+    // info comes through flow_action_payload.data at send time and renders
+    // on the WELCOME screen. Completion fires standard inbound webhook +
+    // services/flow-completion routes by flow_token = 'webinar:{slug}'.
   },
 ];
 
@@ -172,6 +195,40 @@ if (args.includes('--list')) {
 }
 
 const env = loadEnv();
+
+/**
+ * Per-target {WABA_ID, TOKEN} resolver. Honours the `target` field on each
+ * FLOWS entry (default | marketing). Both targets share the same System User
+ * token unless MKT_WHATSAPP_TOKEN is explicitly set.
+ */
+function resolveTarget(target) {
+  if (!target || target === 'default') {
+    return {
+      wabaId: env.WHATSAPP_BUSINESS_ACCOUNT_ID,
+      token: env.WHATSAPP_TOKEN,
+      label: 'default (Ochre Tree / 89765)',
+    };
+  }
+  if (target === 'marketing') {
+    return {
+      wabaId: env.MKT_WHATSAPP_BUSINESS_ACCOUNT_ID,
+      token: env.MKT_WHATSAPP_TOKEN || env.WHATSAPP_TOKEN,
+      label: 'marketing (HealwithshivaniH / 88501)',
+    };
+  }
+  throw new Error(`Unknown flow target: ${target}`);
+}
+
+// Validate at startup that every target referenced by a FLOWS entry resolves.
+const seenTargets = new Set(FLOWS.map((f) => f.target || 'default'));
+for (const t of seenTargets) {
+  const r = resolveTarget(t);
+  if (!r.token) fail(`token missing for target "${t}" — set WHATSAPP_TOKEN${t === 'marketing' ? ' or MKT_WHATSAPP_TOKEN' : ''}`);
+  if (!r.wabaId) fail(`WABA id missing for target "${t}" — set ${t === 'default' ? 'WHATSAPP_BUSINESS_ACCOUNT_ID' : 'MKT_WHATSAPP_BUSINESS_ACCOUNT_ID'}`);
+}
+
+// Legacy globals — kept for the --check / --publish paths which still
+// operate on the default WABA. Per-flow ops use resolveTarget(def.target).
 const TOKEN = env.WHATSAPP_TOKEN;
 const WABA_ID = env.WHATSAPP_BUSINESS_ACCOUNT_ID;
 if (!TOKEN) fail('WHATSAPP_TOKEN missing from .env');
@@ -199,11 +256,12 @@ if (args.includes('--publish')) {
   if (!slug) fail('--publish needs a slug');
   const def = FLOWS.find((f) => f.slug === slug);
   if (!def) fail(`no local flow with slug ${slug}`);
-  const live = await listFlows(WABA_ID, TOKEN);
+  const t = resolveTarget(def.target);
+  const live = await listFlows(t.wabaId, t.token);
   const match = live.find((f) => f.name === def.name);
-  if (!match) fail(`flow "${def.name}" not found on Meta — submit first`);
-  console.log(`Publishing ${match.name} (${match.id}) …`);
-  const r = await publishFlow(match.id, TOKEN);
+  if (!match) fail(`flow "${def.name}" not found on Meta (${t.label}) — submit first`);
+  console.log(`Publishing ${match.name} (${match.id}) on ${t.label} …`);
+  const r = await publishFlow(match.id, t.token);
   if (r.ok) {
     console.log(`✓ published.`);
   } else {
@@ -219,21 +277,29 @@ const targets = requested.length
   : FLOWS;
 if (targets.length === 0) fail(`no flows matched: ${requested.join(', ')}`);
 
-console.log(`Submitting ${targets.length} flow(s) to WABA ${WABA_ID}...\n`);
+console.log(`Submitting ${targets.length} flow(s) …\n`);
 
-// Pre-fetch the list of live flows so we can do create-or-update by name.
-const live = await listFlows(WABA_ID, TOKEN);
+// Cache per-WABA live-flow lists so we don't re-fetch for each entry.
+const liveByWaba = new Map();
+async function liveFor(t) {
+  if (!liveByWaba.has(t.wabaId)) {
+    liveByWaba.set(t.wabaId, await listFlows(t.wabaId, t.token));
+  }
+  return liveByWaba.get(t.wabaId);
+}
 
 for (const def of targets) {
-  process.stdout.write(`  ${def.slug} ... `);
+  const t = resolveTarget(def.target);
+  process.stdout.write(`  ${def.slug} → ${t.label} ... `);
 
+  const live = await liveFor(t);
   let flowId;
   const existing = live.find((f) => f.name === def.name);
   if (existing) {
     flowId = existing.id;
     process.stdout.write(`(exists ${flowId}) `);
   } else {
-    const created = await createFlow(WABA_ID, TOKEN, def);
+    const created = await createFlow(t.wabaId, t.token, def);
     if (!created.ok) {
       console.log(`✗ create failed: ${JSON.stringify(created.body)}`);
       continue;
@@ -243,7 +309,7 @@ for (const def of targets) {
   }
 
   const json = readFlowJson(def.slug);
-  const uploaded = await uploadFlowJson(flowId, TOKEN, json);
+  const uploaded = await uploadFlowJson(flowId, t.token, json);
   if (!uploaded.ok) {
     console.log(`✗ asset upload failed: ${JSON.stringify(uploaded.body)}`);
     continue;
