@@ -9,6 +9,10 @@
  * the matching token. Revoking a plan clears the token so the URL
  * 404s.
  *
+ * Also manages letter_short_code — a 7-char base62 code issued
+ * alongside letter_token for shorter WhatsApp-friendly share links
+ * (/l/<code> → /letter/<token>). Generated lazily by ensureLetterToken.
+ *
  * Read-side here; the write-side (token generation at publish time)
  * lives in the Python plan-publish flow. The TypeScript layer just
  * reads.
@@ -63,16 +67,59 @@ function newLetterToken(): string {
   return crypto.randomBytes(24).toString("base64url");
 }
 
+const SHORT_CODE_ALPHABET =
+  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+/** Generate a 7-char base62 short code. NOT collision-checked (caller must verify). */
+function newShortCode(length = 7): string {
+  const bytes = crypto.randomBytes(length * 2);
+  let code = "";
+  for (let i = 0; i < bytes.length && code.length < length; i++) {
+    // Rejection sampling: only use bytes < 62 * floor(256/62) to avoid bias
+    if (bytes[i] < 248) code += SHORT_CODE_ALPHABET[bytes[i] % 62];
+  }
+  // Pad with extra random picks if rejection left us short (very rare)
+  while (code.length < length) {
+    code += SHORT_CODE_ALPHABET[crypto.randomBytes(1)[0] % 62];
+  }
+  return code;
+}
+
+/** Collect every letter_short_code in use across all published plans. */
+async function allLetterShortCodes(): Promise<Set<string>> {
+  const root = getPlansRoot();
+  const dir = path.join(root, "published");
+  const codes = new Set<string>();
+  let entries: string[];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return codes;
+  }
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    try {
+      const raw = await fs.readFile(path.join(dir, name), "utf-8");
+      const d = yaml.load(raw) as Record<string, unknown> | null;
+      const c = d?.letter_short_code;
+      if (typeof c === "string") codes.add(c);
+    } catch {
+      /* skip */
+    }
+  }
+  return codes;
+}
+
 /**
- * Lazily ensure a published plan has a letter_token. Reads the published
- * plan YAML, returns the existing token if present, otherwise generates,
- * writes back, and returns the new token. Idempotent.
+ * Lazily ensure a published plan has a letter_token (and letter_short_code).
+ * Reads the published plan YAML, returns existing token if present, otherwise
+ * generates, writes back, and returns the new token. Idempotent.
  *
  * Returns null if the plan isn't published (no token issued for drafts).
  */
 export async function ensureLetterToken(
   planSlug: string,
-): Promise<{ ok: true; token: string } | { ok: false; error: string }> {
+): Promise<{ ok: true; token: string; short_code: string } | { ok: false; error: string }> {
   const root = getPlansRoot();
   const dir = path.join(root, "published");
   let entries: string[];
@@ -90,12 +137,91 @@ export async function ensureLetterToken(
   const filePath = path.join(dir, matches[0]);
   const raw = await fs.readFile(filePath, "utf-8");
   const data = yaml.load(raw) as Record<string, unknown>;
-  if (typeof data.letter_token === "string" && data.letter_token.length >= 16) {
-    return { ok: true, token: data.letter_token };
+  const hasToken = typeof data.letter_token === "string" && data.letter_token.length >= 16;
+  const hasCode = typeof data.letter_short_code === "string" && data.letter_short_code.length > 0;
+  if (hasToken && hasCode) {
+    return { ok: true, token: data.letter_token as string, short_code: data.letter_short_code as string };
   }
-  const token = newLetterToken();
+  const token = hasToken ? (data.letter_token as string) : newLetterToken();
+  let short_code = hasCode ? (data.letter_short_code as string) : "";
+  if (!short_code) {
+    const used = await allLetterShortCodes();
+    for (let i = 0; i < 100; i++) {
+      const candidate = newShortCode();
+      if (!used.has(candidate)) { short_code = candidate; break; }
+    }
+    if (!short_code) return { ok: false, error: "short_code_collision" };
+  }
   data.letter_token = token;
-  data.letter_token_created_at = new Date().toISOString();
+  data.letter_token_created_at = data.letter_token_created_at ?? new Date().toISOString();
+  data.letter_short_code = short_code;
   await fs.writeFile(filePath, yaml.dump(data, { sortKeys: false }), "utf-8");
-  return { ok: true, token };
+  return { ok: true, token, short_code };
+}
+
+// ── Short-code redirect lookups ───────────────────────────────────────────────
+
+/**
+ * Resolve an intake short code → the client's intake_token so the /s/[code]
+ * route can 302 to /intake/<token>.
+ */
+export async function lookupIntakeShortCode(
+  code: string,
+): Promise<{ ok: true; intake_token: string } | { ok: false }> {
+  if (!code || code.length !== 7) return { ok: false };
+  const clientsDir = path.join(getPlansRoot(), "clients");
+  let subdirs: string[];
+  try {
+    subdirs = await fs.readdir(clientsDir);
+  } catch {
+    return { ok: false };
+  }
+  for (const id of subdirs) {
+    const yml = path.join(clientsDir, id, "client.yaml");
+    try {
+      const raw = await fs.readFile(yml, "utf-8");
+      const d = yaml.load(raw) as Record<string, unknown> | null;
+      if (!d) continue;
+      if (d.intake_short_code !== code) continue;
+      const tok = d.intake_token;
+      if (typeof tok !== "string" || !tok) continue;
+      return { ok: true, intake_token: tok };
+    } catch {
+      /* skip */
+    }
+  }
+  return { ok: false };
+}
+
+/**
+ * Resolve a letter short code → the plan's letter_token so the /l/[code]
+ * route can 302 to /letter/<token>.
+ */
+export async function lookupLetterShortCode(
+  code: string,
+): Promise<{ ok: true; letter_token: string } | { ok: false }> {
+  if (!code || code.length !== 7) return { ok: false };
+  const root = getPlansRoot();
+  const dir = path.join(root, "published");
+  let entries: string[];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return { ok: false };
+  }
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    try {
+      const raw = await fs.readFile(path.join(dir, name), "utf-8");
+      const d = yaml.load(raw) as Record<string, unknown> | null;
+      if (!d) continue;
+      if (d.letter_short_code !== code) continue;
+      const tok = d.letter_token;
+      if (typeof tok !== "string" || !tok) continue;
+      return { ok: true, letter_token: tok };
+    } catch {
+      /* skip */
+    }
+  }
+  return { ok: false };
 }

@@ -43,6 +43,13 @@ const PUBLIC_PATH_PREFIXES = [
   // token-based URL (plan.letter_token). Generated at publish; cleared
   // on revoke. Behaviour mirrors /intake/.
   "/letter/",
+  // Short-link redirects:
+  //   /s/<code> → /intake/<intake_token>  (7-char base62 short code)
+  //   /l/<code> → /letter/<letter_token>  (7-char base62 short code)
+  // These must be public so the redirect works on Fly (FLY_INTAKE_ONLY mode)
+  // without requiring auth.
+  "/s/",
+  "/l/",
   // Public supplement order page: lists supplements from the plan with
   // buy links. No auth needed — the URL contains the plan slug only,
   // which is non-guessable in practice (UUID-ish).

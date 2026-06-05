@@ -174,7 +174,9 @@ export async function firePlanPublishFollowups(input: {
   }
 
   const origin = publicOrigin();
-  const letterUrl = `${origin}/letter/${tokRes.token}`;
+  const letterUrl = tokRes.short_code
+    ? `${origin}/l/${tokRes.short_code}`
+    : `${origin}/letter/${tokRes.token}`;
   const suppUrl = `${origin}/supplements/${input.planSlug}`;
 
   // Template 1: fire now.

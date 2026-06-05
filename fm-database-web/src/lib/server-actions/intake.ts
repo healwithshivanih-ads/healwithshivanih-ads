@@ -208,7 +208,7 @@ export async function generateIntakeToken(
   ttlDays?: number,
   unlockFull?: boolean,
 ): Promise<
-  { ok: true; token: string; url_path: string; expires_at: string; unlock_full: boolean } | { ok: false; error: string }
+  { ok: true; token: string; short_code?: string; url_path: string; expires_at: string; unlock_full: boolean } | { ok: false; error: string }
 > {
   try {
     const res = (await runScript("intake-token-action.py", {
@@ -217,7 +217,7 @@ export async function generateIntakeToken(
       ttl_days: ttlDays ?? 14,
       unlock_full: !!unlockFull,
     })) as
-      | { ok: true; token: string; url_path: string; expires_at: string; unlock_full: boolean }
+      | { ok: true; token: string; short_code?: string; url_path: string; expires_at: string; unlock_full: boolean }
       | { ok: false; error: string };
     return res;
   } catch (e) {
@@ -429,7 +429,8 @@ export async function sendIntakeInviteViaApi(
         "NEXT_PUBLIC_APP_URL is unset or points to localhost — refusing to send an unreachable link. Set it to the public origin (e.g. https://intake.theochretree.com) in .env.local and restart pm2.",
     };
   }
-  const url = `${rawOrigin}/intake/${token}`;
+  const shortCode = (c.intake_short_code as string | undefined) ?? "";
+  const url = shortCode ? `${rawOrigin}/s/${shortCode}` : `${rawOrigin}/intake/${token}`;
 
   const sendRes = await sendWhatsAppAction(phone, "fm_intake_invite", [firstName, url]);
   if (!sendRes.ok) return { ok: false, error: sendRes.error || "Send failed" };

@@ -101,6 +101,42 @@ def _save_client(client_id: str, data: dict) -> None:
     write_text_atomic(p, yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
 
 
+_SHORT_CODE_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+
+
+def _all_intake_short_codes() -> set[str]:
+    """Collect every intake_short_code in use across all clients."""
+    import yaml  # type: ignore
+    codes: set[str] = set()
+    clients_dir = _plans_root() / "clients"
+    if not clients_dir.exists():
+        return codes
+    for sub in clients_dir.iterdir():
+        yml = sub / "client.yaml"
+        if not yml.exists():
+            continue
+        try:
+            with yml.open("r", encoding="utf-8") as f:
+                d = yaml.safe_load(f) or {}
+            code = d.get("intake_short_code")
+            if code:
+                codes.add(str(code))
+        except Exception:
+            pass
+    return codes
+
+
+def _generate_short_code_unique(length: int = 7) -> str:
+    """Generate a collision-free base62 short code."""
+    existing = _all_intake_short_codes()
+    for _ in range(100):
+        code = "".join(secrets.choice(_SHORT_CODE_ALPHABET) for _ in range(length))
+        if code not in existing:
+            return code
+    # Astronomically unlikely, but fail loudly rather than silently re-use.
+    raise RuntimeError("could not generate a unique short code after 100 attempts")
+
+
 def _find_client_by_token(token: str) -> tuple[str, dict] | None:
     """Scan all clients/<id>/client.yaml for matching intake_token."""
     import yaml  # type: ignore
@@ -348,6 +384,12 @@ def action_generate(payload: dict) -> dict:
     expires = datetime.now(timezone.utc) + timedelta(days=ttl_days)
     data["intake_token"] = token
     data["intake_token_expires_at"] = expires.isoformat()
+    # Short code — 7 random base62 chars (~42 bits). Collision-checked against
+    # all existing clients. A new code is always issued with each new token so
+    # the short URL stays in sync. If a collision is found we retry (extremely
+    # unlikely at practice scale, but correct to check).
+    short_code = _generate_short_code_unique()
+    data["intake_short_code"] = short_code
     # NB: do NOT clear `intake_submitted_at`. It is a historical event —
     # "this client submitted at least once." Previously this line set it
     # to None on every regenerate, which destroyed the UI's ability to
@@ -401,6 +443,7 @@ def action_generate(payload: dict) -> dict:
         "ok": True,
         "unlock_full": unlock_full,
         "token": token,
+        "short_code": short_code,
         "expires_at": expires.isoformat(),
         "url_path": f"/intake/{token}",
     }
