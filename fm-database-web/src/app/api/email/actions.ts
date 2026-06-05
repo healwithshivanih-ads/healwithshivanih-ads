@@ -40,6 +40,12 @@ export interface LetterSendEntry {
   to: string;
   cc?: string;
   plan_slug?: string;
+  // Fortnight range for phase (meal_plan_phase) letters, so a "Sent" badge
+  // attaches to the RIGHT fortnight instead of every phase letter sharing the
+  // latest meal_plan_phase send (coach bug 2026-06-05: wk5-6 showed the wk3-4
+  // send date). Absent on non-phase letters and on pre-2026-06-05 entries.
+  phase_start?: number;
+  phase_end?: number;
 }
 
 function sendLogPath(clientId: string): string {
@@ -90,6 +96,10 @@ export async function recordLetterSendAction(input: {
    *  "2026-05-12T18:00:00+05:30" when marking an old initial-package
    *  letter as having been sent at intake). */
   sentAt?: string;
+  /** Fortnight range — pass for meal_plan_phase letters so the "Sent" badge
+   *  attaches to the correct fortnight (not every phase letter). */
+  phaseStart?: number;
+  phaseEnd?: number;
 }): Promise<{ ok: true } | { ok: false; error: string }> {
   const {
     clientId,
@@ -98,6 +108,8 @@ export async function recordLetterSendAction(input: {
     to,
     cc,
     sentAt,
+    phaseStart,
+    phaseEnd,
   } = input;
   if (!clientId) return { ok: false, error: "clientId required" };
   if (!planSlug) return { ok: false, error: "planSlug required" };
@@ -121,6 +133,8 @@ export async function recordLetterSendAction(input: {
     to,
     ...(cc ? { cc } : {}),
     plan_slug: planSlug,
+    ...(typeof phaseStart === "number" ? { phase_start: phaseStart } : {}),
+    ...(typeof phaseEnd === "number" ? { phase_end: phaseEnd } : {}),
   };
 
   // Dedup: don't append an identical entry (same sent_at + types + to).

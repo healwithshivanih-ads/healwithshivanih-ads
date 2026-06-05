@@ -56,12 +56,21 @@ export function SendToClientButton({
       try {
         const entries = await loadLetterSendLogAction(clientId);
         if (cancelled || !Array.isArray(entries)) return;
-        const match = entries.find(
-          (e) =>
-            (!e.plan_slug || e.plan_slug === planSlug) &&
-            Array.isArray(e.letter_types) &&
-            e.letter_types.includes(letterType),
-        );
+        const match = entries.find((e) => {
+          if (e.plan_slug && e.plan_slug !== planSlug) return false;
+          if (!Array.isArray(e.letter_types) || !e.letter_types.includes(letterType))
+            return false;
+          // Phase letters must match the SPECIFIC fortnight — otherwise every
+          // phase letter shares the latest meal_plan_phase send (wk5-6 showing
+          // the wk3-4 date). Entries without a recorded range (pre-2026-06-05)
+          // don't attach to any specific fortnight.
+          if (letterType === "meal_plan_phase" && phase) {
+            return (
+              e.phase_start === phase.startWeek && e.phase_end === phase.endWeek
+            );
+          }
+          return true;
+        });
         if (match?.sent_at) setSentAt(match.sent_at);
       } catch {
         /* non-fatal — button just shows the fresh action */
@@ -70,7 +79,7 @@ export function SendToClientButton({
     return () => {
       cancelled = true;
     };
-  }, [clientId, planSlug, letterType]);
+  }, [clientId, planSlug, letterType, phase?.startWeek, phase?.endWeek]);
 
   return (
     <>
@@ -256,6 +265,11 @@ ${renderedHtml}`;
           letterTypes: [letterType],
           to: to.trim(),
           cc: cc.trim() || undefined,
+          // Record the fortnight so the "Sent" badge attaches to THIS phase
+          // letter only (not every meal_plan_phase letter).
+          ...(letterType === "meal_plan_phase" && phase
+            ? { phaseStart: phase.startWeek, phaseEnd: phase.endWeek }
+            : {}),
         });
       } catch {
         /* send already succeeded — swallow */
