@@ -88,6 +88,7 @@ export function SendIntakeFormButton({
   lastIntakeSentAt,
 }: Props) {
   const [token, setToken] = useState<string | null>(existingToken ?? null);
+  const [shortCode, setShortCode] = useState<string | null>(null);
   const [expiresAt, setExpiresAt] = useState<string | null>(existingExpiresAt ?? null);
   const [open, setOpen] = useState<boolean>(Boolean(existingToken));
   const [loading, setLoading] = useState(false);
@@ -203,6 +204,7 @@ export function SendIntakeFormButton({
         return;
       }
       setToken(res.token);
+      if (res.short_code) setShortCode(res.short_code);
       setExpiresAt(res.expires_at);
       setOpen(true);
     } catch (e) {
@@ -284,7 +286,11 @@ export function SendIntakeFormButton({
     }
   }
 
-  const publicUrl = token ? buildPublicUrl(`/intake/${token}`) : "";
+  const publicUrl = shortCode
+    ? buildPublicUrl(`/s/${shortCode}`)
+    : token
+      ? buildPublicUrl(`/intake/${token}`)
+      : "";
   const phone = (mobileNumber || "").trim();
   const waLink =
     publicUrl && phone

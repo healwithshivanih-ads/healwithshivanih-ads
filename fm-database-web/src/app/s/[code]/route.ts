@@ -13,6 +13,8 @@ export async function GET(
   if (!res.ok) {
     return new NextResponse("Not found", { status: 404 });
   }
-  const dest = new URL(`/intake/${res.intake_token}`, req.url);
+  // Use nextUrl.origin so Fly's x-forwarded-host is respected (req.url is the
+  // internal localhost:3002 URL on the Fly machine, not the public hostname).
+  const dest = new URL(`/intake/${res.intake_token}`, req.nextUrl.origin);
   return NextResponse.redirect(dest, 302);
 }
