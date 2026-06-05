@@ -62,6 +62,14 @@ broadcastsRouter.post('/', async (req, res, next) => {
       // supported via `recipient.buttonUrlParam` if mail-merge ever needs
       // different slugs (unusual).
       buttonUrlParam,
+      // Shared IMAGE-header URL for templates with an IMAGE header
+      // (webinar_invite_v2 + the workshop_reminder_24h_v3 family). Must
+      // be a publicly reachable JPG/PNG ≤5MB. Per-recipient override via
+      // `recipient.headerImageUrl` is supported but rarely useful.
+      // ochre-funnel's wa.broadcast() ships it as `headerMediaUrl` — we
+      // accept either name.
+      headerImageUrl,
+      headerMediaUrl,
       recipients,
       dryRun = false,
       origin = 'broadcast',
@@ -113,6 +121,9 @@ broadcastsRouter.post('/', async (req, res, next) => {
       // Per-recipient URL-button param override (rare) falls back to the
       // shared top-level value.
       const recipientButtonUrlParam = r.buttonUrlParam || buttonUrlParam;
+      const recipientHeaderImageUrl =
+        r.headerImageUrl || r.headerMediaUrl
+        || headerImageUrl || headerMediaUrl;
 
       if (dryRun) {
         results.push({
@@ -134,11 +145,20 @@ broadcastsRouter.post('/', async (req, res, next) => {
         });
         const conv = await convSvc.getOrCreate(ws.id, contact.id, 'whatsapp');
 
-        // Assemble template components: body params (if any) + URL button
-        // param (if any). Either, both, or neither — empty array means
-        // "fire the template with no variables" which works for static
-        // templates.
+        // Assemble template components: HEADER (if any) + body params
+        // (if any) + URL button param (if any). Empty array means "fire
+        // the template with no variables" — fine for static templates.
+        // HEADER must come BEFORE body in Meta's components array.
         const tplComponents = [];
+        if (recipientHeaderImageUrl) {
+          tplComponents.push({
+            type: 'header',
+            parameters: [{
+              type: 'image',
+              image: { link: recipientHeaderImageUrl },
+            }],
+          });
+        }
         if (params.length) {
           tplComponents.push({
             type: 'body',
