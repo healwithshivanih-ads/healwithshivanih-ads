@@ -1,0 +1,28 @@
+statement: Methylene blue at antimicrobial doses kills pathogens by triggering localised
+  hydrogen peroxide release rather than acting as a broad-spectrum cytocide, which
+  is why Sherr describes it as relatively gut-sparing compared with conventional antibiotics
+  like amoxicillin or augmentin. Where standard broad-spectrum antibiotics behave
+  like a nuclear bomb that wipes out the commensal microbiome alongside the target
+  organism, methylene blue's selectivity profile lets it be used for acute gut dysbiosis,
+  parasites and bacterial overgrowth without producing the same collateral damage
+  to Lactobacillus and Bifidobacterium populations. This is one rationale for preferring
+  methylene blue over repeated antibiotic courses in clients with a history of post-antibiotic
+  dysbiosis or SIBO relapses.
+slug: mindpump-sherr-methylene-blue-selective-antimicrobial-gut-sparing
+rationale: Gut-sparing antimicrobial framing is a distinct angle from EB-Sherr claims;
+  relevant for India context (heavy antibiotic prescribing) and for FM coaches managing
+  SIBO/dysbiosis clients.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: sherr-mind-pump-2837-methylene-blue-2026
+  location: Podcast — antimicrobial selectivity segment
+  quote: Methylene blue is more selective than that. If you take amoxicillin or augmentin,
+    these are nuclear bombs to your gut. What methylene blue does, it really does
+    have a more selective capacity.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: mindpump-sherr-methylene-blue-usp-grade-sourcing-warning
+statement: 'Methylene blue sold on Amazon and many DTC supplement sites is frequently
+  contaminated with heavy metals (lead, mercury, cadmium, arsenic) from industrial-grade
+  or aquarium-grade manufacturing processes, even when the label claims USP pharmaceutical
+  grade. Sherr''s company tested products from multiple suppliers that carried a USP
+  certificate of analysis from the manufacturer but failed independent re-testing
+  — and liquid drop preparations were the worst offenders, with actual potency drifting
+  far below label dose. Practical guidance for clients self-supplementing: avoid liquid
+  drops where dose-per-drop is unverified, avoid Amazon listings, look for vendors
+  who re-test every batch in-house rather than trusting the upstream certificate,
+  and never buy aquarium-cleaner methylene blue regardless of price.'
+rationale: Sourcing/quality-control angle is critical for India context where Amazon
+  is the default supplement channel; specific failure modes (label USP without real
+  USP, liquid drop potency drift, aquarium-grade contamination) are actionable.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: sherr-mind-pump-2837-methylene-blue-2026
+  location: Podcast — supplement sourcing segment
+  quote: The problem with methylene blue is that when you make it, it's often made
+    in a lab and it could be contaminated with heavy metals like lead, mercury, cadmium,
+    and arsenic. The liquids out there are probably the worst offenders because their
+    potency is nowhere near what it says on the label.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

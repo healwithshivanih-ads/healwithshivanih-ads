@@ -1,0 +1,26 @@
+slug: mindpump-sherr-methylene-blue-uti-bladder-concentration
+statement: Methylene blue is renally excreted and concentrates in the bladder — which
+  is why oral dosing visibly turns urine blue. Sherr uses this pharmacokinetic quirk
+  clinically for urinary tract infections at higher doses (roughly 1–2 mg/kg, well
+  above the cognitive-support range), where the compound acts as a direct antimicrobial
+  in the bladder lumen and is reported to disrupt biofilms that protect resistant
+  uropathogens from standard antibiotics. This is a specifically clinical use case
+  — not a generic mitochondrial-support dose — and should be run with a clinician
+  who can rule out kidney disease, G6PD deficiency and SSRI interactions before going
+  up to antimicrobial doses.
+rationale: Specific clinical UTI/biofilm use case from this episode; not in the prior
+  4 EB-Sherr claims. Flagged confirm_with_clinician because antimicrobial dosing is
+  well outside coaching scope.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: sherr-mind-pump-2837-methylene-blue-2026
+  location: Podcast — UTI and bladder concentration segment
+  quote: Methylene blue makes your urine blue, concentrates in the bladder. It breaks
+    up biofilms. It's an antimicrobial at high doses.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

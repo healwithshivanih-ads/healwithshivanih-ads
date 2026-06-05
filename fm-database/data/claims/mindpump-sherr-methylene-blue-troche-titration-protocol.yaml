@@ -1,0 +1,28 @@
+slug: mindpump-sherr-methylene-blue-troche-titration-protocol
+statement: Sherr's practical titration protocol — built around the Troscriptions troche
+  (a dissolvable 16 mg lozenge that can be quartered) — starts at 4 mg in the morning
+  on an empty stomach for three days, then steps up to 8 mg, 12 mg and 16 mg in 3-day
+  blocks while the client tracks subjective sharpness, verbal fluency and perceived
+  edge. Most adults land between 8 and 16 mg as their working dose; going higher typically
+  produces jitteriness or an over-stimulated edge rather than more cognitive lift,
+  so more is not better. Methylene blue is highly bioavailable orally — buccal absorption
+  from the troche and gut absorption from swallowing both deliver almost the full
+  dose, unlike most supplements where oral bioavailability is a fraction of IV.
+rationale: Concrete coach-friendly titration ladder (4→8→12→16 mg in 3-day blocks)
+  not previously documented; high-bioavailability point matters for client expectations
+  vs IV-only narratives.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: sherr-mind-pump-2837-methylene-blue-2026
+  location: Podcast — dose titration segment
+  quote: Take a quarter, which is 4 mg, and then you try that for a couple days. Try
+    it in the morning on an empty stomach. You don't feel much, go up to 8. Often
+    times I find between eight and 16 is the dose for most people.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

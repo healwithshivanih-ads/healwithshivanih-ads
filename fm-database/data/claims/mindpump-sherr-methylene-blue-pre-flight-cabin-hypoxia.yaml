@@ -1,0 +1,28 @@
+slug: mindpump-sherr-methylene-blue-pre-flight-cabin-hypoxia
+statement: 'Commercial aircraft cabins are pressurised to the equivalent of around
+  8,000 ft above sea level (roughly 17–18 percent effective oxygen), creating an immediate
+  hypoxic stress that even mitochondrially healthy passengers feel as post-takeoff
+  fatigue. Sherr uses methylene blue as a pre-flight stack — dose before boarding,
+  then re-dose every four hours on long-haul flights to match its half-life — to keep
+  the electron transport chain supplied with an alternative electron pathway while
+  ambient oxygen is low. The reasoning is the same as the cellular case for altitude
+  or sub-acute hypoxia: methylene blue lets cytochrome c oxidase keep working when
+  oxygen as the final electron acceptor becomes scarce.'
+rationale: Travel/altitude-stack angle absent from prior catalogue claims; concrete
+  dose-interval (every 4 h matching half-life) is practical.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-energy-production
+linked_to_supplements: []
+sources:
+- id: sherr-mind-pump-2837-methylene-blue-2026
+  location: Podcast — travel and hypoxia segment
+  quote: Airplane, you're pressurized on a plane to 8,000 ft above sea level. So as
+    soon as that cabin door closes, you get tired. Taking methylene blue before you
+    get on an airplane is transformative.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

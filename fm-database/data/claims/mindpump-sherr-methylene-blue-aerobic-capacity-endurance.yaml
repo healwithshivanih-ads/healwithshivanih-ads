@@ -1,0 +1,28 @@
+slug: mindpump-sherr-methylene-blue-aerobic-capacity-endurance
+statement: Methylene blue at endurance-relevant doses extends aerobic capacity by
+  acting as an alternative electron acceptor when oxygen delivery to mitochondria
+  becomes rate-limiting, pushing back the lactic threshold so athletes can hold a
+  target heart rate for longer before crossing into anaerobic territory. Sherr cites
+  a Leadville 100 ultramarathon runner who cut three hours off his finishing time
+  dosing 32 mg every four hours during the race, plus dog studies showing delayed
+  lactic threshold under methylene blue. The mechanism is not stimulant-like — it
+  is a redox effect on the electron transport chain — so the endurance benefit shows
+  up most clearly in athletes who can hold a steady-state aerobic effort.
+rationale: New endurance-performance angle not covered in the Energy Blueprint Sherr
+  claims; includes a specific dose pattern (32 mg every 4 h) and a named race anecdote.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-energy-production
+linked_to_supplements: []
+sources:
+- id: sherr-mind-pump-2837-methylene-blue-2026
+  location: Podcast — endurance performance segment
+  quote: I work with a guy that did the Leadville race, the ultra-marathon where I
+    live in Colorado, and he cut 3 hours off his time using methylene blue, 32 mg
+    every 4 hours.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
