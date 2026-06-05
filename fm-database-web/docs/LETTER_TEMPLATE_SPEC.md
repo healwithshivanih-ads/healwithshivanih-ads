@@ -60,12 +60,19 @@ Lean check-in + the next two weeks. This order:
 | # | Section | Owner | Notes |
 |---|---------|-------|-------|
 | 1 | Short progress note + what's evolving this phase | AI | references her actual progress; no re-teaching basics |
-| 2 | 📋 Your Daily Routine (day schedule) | Python | **KEPT** — current supplements for THIS fortnight's window; reflects any changes |
-| 3 | 💊 What's new / changed this phase | AI | **only** additions/removals/changes vs last phase, **each new supplement with its purchase link + one-line why**; "everything else is unchanged — full details in your main plan." Omit the section entirely if nothing changed. |
+| 1b | 📝 Responding to your note | AI | **CONDITIONAL** — include ONLY when the between-session voice / coach notes carry the client's own questions, swaps, or updates this fortnight; answer each point tied to her plan. **Skip entirely if nothing new** — never fabricate. |
+| 2 | ✨ What's new this phase | AI | **ONE merged section** for everything new — food/practice additions AND supplement changes (**each new supplement with its purchase link + one-line why**). Do NOT split into separate food vs supplement "new this phase" sections. Do NOT re-list the full routine. Omit entirely if nothing is new. |
+| 3 | 📋 Your Daily Routine (day schedule) | Python | **KEPT** — current supplements for THIS fortnight's window; reflects any changes |
 | 4 | **Weeks N–M** meal plan (day cards) | AI | the next two weeks |
 | 5 | New dishes + recipes | AI → split to sidecar | only the new dishes this phase |
 | 6 | What to notice this phase / phase tips | AI | 3–4 observations |
 | 7 | (optional) travel / looking-ahead note | AI | when relevant |
+
+**Cut from fortnight letters (coach 2026-06-05):** the standalone "how to swap
+meals" reminder (boilerplate — first letter only) and the standalone "calorie
+target" section (the targets already sit on the meal cards) — folded to a single
+line. The two competing "new this phase" sections (food + supplements) are merged
+into the one ✨ section above.
 
 **DROPPED from fortnight letters (vs today):**
 - 🍽 Building Your Plate — first letter only (static reference).

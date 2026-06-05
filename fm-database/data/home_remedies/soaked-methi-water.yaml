@@ -1,0 +1,54 @@
+slug: soaked-methi-water
+display_name: Soaked Methi (Fenugreek) Water
+aliases:
+  - methi-water
+  - fenugreek-water
+  - methi-seed-water
+  - soaked-fenugreek-water
+  - methi-dana-water
+category: infused_water
+summary: |
+  Whole fenugreek (methi) seeds soaked overnight in water and the water
+  drunk first thing in the morning (the softened seeds can be chewed or
+  eaten). A traditional Indian morning ritual used to support blood-sugar
+  control, insulin sensitivity, and digestion. The soluble fibre
+  (galactomannan) slows glucose absorption and adds a gentle prebiotic
+  effect; well-suited to insulin-resistance, PCOS, and perimenopausal
+  metabolic patterns.
+indications:
+  - blood-sugar-dysregulation
+  - insulin-resistance
+  - bloating
+  - perimenopause
+  - constipation
+contraindications:
+  - pregnancy (fenugreek is a uterine stimulant in larger amounts — consult clinician)
+  - on glucose-lowering medication (additive effect — monitor for lows)
+  - fenugreek / legume allergy
+preparation: |
+  Soak 1 tsp whole methi (fenugreek) seeds in ~1 cup water overnight
+  (8-10 hours). In the morning, strain and drink the water on an empty
+  stomach, 20-30 minutes before breakfast. The softened seeds may be
+  chewed or swallowed with the water.
+typical_dose: |
+  1 tsp seeds soaked per day, the water drunk first thing in the morning.
+duration: |
+  Daily for 8-12 weeks, then evaluate. Safe for ongoing use unless on
+  glucose-lowering medication (monitor).
+timing_notes: |
+  First thing in the morning, on an empty stomach, 20-30 minutes before
+  breakfast — and at least 2 hours apart from a thyroid tablet if taken.
+linked_to_topics:
+  - insulin-resistance
+  - blood-sugar-dysregulation
+  - perimenopause
+linked_to_mechanisms:
+  - insulin-resistance
+sources:
+  - id: vitaone-skill-practice-guide
+    location: practice_guide.md, Home Remedies / Indian Tradition
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-05
+updated_by: shivani

@@ -5386,28 +5386,36 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
    paragraph with no phase-change language at all. Concrete and specific,
    tied to her labs/symptoms — NOT generic.
 
-2a. **💊 What's new this phase** — per LETTER_TEMPLATE_SPEC, do NOT re-list
-    the full supplement routine: the printable day schedule and the full
-    doses/where-to-buy table are auto-inserted into this letter, so repeating
-    them is duplication. Instead:
+1b. **📝 Responding to your note** — CONDITIONAL: include this section ONLY IF
+    the BETWEEN-SESSION VOICE block above (or coach notes / special requests)
+    contains the client's OWN questions, concerns, food swaps, or updates since
+    the last letter. If so, open with a short warm section that answers each
+    point specifically and practically, tied to her plan (2–4 bullets, one per
+    point — e.g. "Hung curd: fine in a small portion 2–3×/week, keep it separate
+    from fruit"). If there is NOTHING from the client this fortnight, SKIP this
+    section entirely — do NOT fabricate questions or write a generic placeholder.
 
-      - If the "NEW SUPPLEMENTS TO INTRODUCE" or "TITRATING UP" blocks above
-        have entries, write a short **🆕 New this phase** / **⬆ Stepping up**
-        section: one bullet per change — name, dose, timing, a one-sentence
-        "why this, why now" rationale, AND its purchase link as a markdown
-        link, e.g. "👉 [Order it here](<BUY LINK from the block above>)".
-        ALWAYS include the buy link when the block provides one.
-      - If there are NO changes this phase, write ONE warm sentence only:
-        "Your supplements stay exactly the same this fortnight — keep going
-        with your routine (it's all in your day schedule below)." Then STOP —
-        no list.
+2a. **✨ What's new this phase** — ONE combined section for everything that's
+    new this fortnight — food AND supplements together. Do NOT split this into
+    two separate "new this phase" sections, and do NOT re-list the full
+    supplement routine (the day schedule + doses/buy table are already in this
+    letter). Use up to two short groups, and include a group ONLY if it has
+    content. If NOTHING at all is new this phase, skip this whole section.
 
-2b. **🔁 Quick reminder — how to swap meals** — short box (3 bullets,
-    ≤ 4 lines total):
-    - Swap within the same meal slot across days
-    - Don't move breakfast into the lunch column
-    - If a meal doesn't fit, repeat one you liked from earlier in the
-      week rather than skipping
+      **In your food & routine:** any new foods, practices, or focus for this
+      phase, drawn from the PROTOCOL PHASE intent above (e.g. "add one daily
+      fermented food", "lightly steamed sprouts 3× this week", "start
+      mouth-taping at night"). 2–4 bullets max, each with a one-line why.
+      Don't invent — only what the phase actually calls for.
+
+      **In your supplements:** changes ONLY.
+        - For each NEW supplement (from "NEW SUPPLEMENTS TO INTRODUCE"): name,
+          dose, timing, one-line why, AND its purchase link as a markdown link
+          "👉 [Order it here](<BUY LINK from the block above>)". ALWAYS include
+          the link when the block provides one.
+        - For each step-up (from "TITRATING UP"): name + new dose + why.
+        - If no supplement changes: one short line — "Your supplements stay the
+          same this fortnight — keep going (it's all in your day schedule below)."
 
 2c. **✈ For your travel** — INCLUDE THIS SECTION ONLY IF the RECENT
     BETWEEN-SESSION VOICE block above OR special requests / coach notes
