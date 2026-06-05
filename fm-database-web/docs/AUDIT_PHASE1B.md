@@ -91,3 +91,32 @@ messaging/queue layer, and the public web routes:
   panels (#7), the recipe-split sign-off + phase-schedule desync (#8 subset).
 - **Tier 2:** the remaining letter-render polish (dead print buttons, print CSS,
   plate placement), corrupt-YAML surfacing, low-severity webhook hardening.
+
+---
+
+## Remediation status (2026-06-05)
+
+**FIXED + deployed** (commits 16a1ce2, 1f76d16, 5531b4e, dfef9e5, 28fa254):
+- Wrong-drug substring match → word-boundary.
+- LLM truncation guards on all 4 call-sites (letter, assess, functional-test, genetic).
+- Webhooks fail-closed (whatsapp/zoom/cal-com) + cal-com no-secret bypass removed.
+- cal-com verified-but-unmatched events persisted + 200 (no silent drop).
+- Recipe-split sign-off retained; meal_plan_phase schedule-window desync.
+- Atomic writes for intake autosave, derived-pillar, save-session append,
+  handout-drip + plan-publish-followups queue; corrupt-queue quarantine.
+- Ghost-inbox try/catch on plan-outcomes, handout-drip, cycle-tracking,
+  session-edit panels.
+
+**OPEN (decided to defer):**
+1. **Token-gate /supplements + /recipes** (PHI exposure) — HELD by coach
+   (breaks already-sent recipe links). TOP open item.
+2. **Cross-process LOCK** on _pending_sends.yaml + client.yaml — atomicity done,
+   but the multi-process lost-update race needs a shared advisory lock
+   (cron vs queue vs handout-drip; intake autosave vs inbound webhook).
+
+**OPEN (Tier-2 polish, not yet scheduled):**
+- Dead per-week "Print Week N" buttons (emoji week-heading regex in brand_html).
+- Per-week print CSS only covers weeks 1–5.
+- Plate guardrail placement when the eat-heading regex fails.
+- Corrupt drug_depletion YAML silently dropping a drug's cautions (surface it).
+- Low-severity webhook hardening already covered by the fail-close fix.
