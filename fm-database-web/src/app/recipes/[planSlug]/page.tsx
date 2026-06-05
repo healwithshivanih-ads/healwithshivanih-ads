@@ -21,6 +21,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { lookupLetterToken } from "@/lib/server-actions/letter-token";
 
 export const dynamic = "force-dynamic";
 
@@ -184,7 +185,12 @@ export default async function RecipesPage({
 }: {
   params: Promise<{ planSlug: string }>;
 }) {
-  const { planSlug } = await params;
+  const { planSlug: routeParam } = await params;
+  // Resolve a stable letter_token → the plan's real slug; fall back to treating
+  // the param AS the slug (legacy links still work). Token-first means a
+  // client's link stays stable even when the letter is regenerated.
+  const tok = await lookupLetterToken(routeParam);
+  const planSlug = tok.ok ? tok.plan_slug : routeParam;
   const plan = await loadPublishedPlan(planSlug);
   if (!plan?.client_id) {
     return emptyPage(

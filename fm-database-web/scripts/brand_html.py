@@ -1348,6 +1348,7 @@ def wrap_in_brand_html(
     supplements_start_ymd=None,
     plan_slug=None,
     letter_type=None,
+    recipes_link_id=None,
 ) -> str:
     """Wrap markdown content in the Ochre Tree brand template.
 
@@ -1440,7 +1441,7 @@ def wrap_in_brand_html(
   {start_buttons_html}
 
   <!-- ═══════════ BODY ═══════════ -->
-  <div class="content" data-plan-slug="{plan_slug or ''}">
+  <div class="content" data-plan-slug="{plan_slug or ''}" data-recipes-id="{recipes_link_id or plan_slug or ''}">
     {body_html}
   </div>
 
@@ -1561,7 +1562,10 @@ def wrap_in_brand_html(
 
   var contentEl  = document.querySelector('.content');
   var planSlug   = contentEl ? contentEl.getAttribute('data-plan-slug') : '';
-  var externalUrl = planSlug ? ('/recipes/' + planSlug) : '';
+  // Prefer the stable letter_token (data-recipes-id) so ✦ recipe links survive
+  // regeneration + aren't guessable; fall back to the slug.
+  var recipesId  = (contentEl && contentEl.getAttribute('data-recipes-id')) || planSlug;
+  var externalUrl = recipesId ? ('/recipes/' + recipesId) : '';
 
   if (recipes.length === 0 && !externalUrl) return;
 

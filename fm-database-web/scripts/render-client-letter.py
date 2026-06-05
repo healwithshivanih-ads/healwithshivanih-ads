@@ -6969,7 +6969,11 @@ def main() -> int:
             # recipe pack actually reaches the client — the old wording
             # said "attached to this email", which is no longer true
             # since the WhatsApp cutover.
-            recipes_url = f"/recipes/{plan_slug}"
+            # Use the stable per-plan letter_token when present so the client's
+            # recipe link survives letter regeneration (and is unguessable);
+            # fall back to the slug. The /recipes route resolves either.
+            _recipes_id = plan.get("letter_token") or plan_slug
+            recipes_url = f"/recipes/{_recipes_id}"
             pointer = (
                 "## 📎 Your Recipe Pack\n\n"
                 f"The recipes for this fortnight's new dishes — full "
@@ -7064,6 +7068,7 @@ def main() -> int:
             supplements_start_ymd=supp_ymd.isoformat() if supp_ymd else None,
             plan_slug=plan.get("slug"),
             letter_type=letter_type,
+            recipes_link_id=plan.get("letter_token"),
         )
         # Inject the "Building Your Plate" portions visual at the top of the
         # letter body. Per LETTER_TEMPLATE_SPEC (coach-approved 2026-06-04):

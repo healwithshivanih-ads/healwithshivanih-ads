@@ -16,6 +16,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { lookupLetterToken } from "@/lib/server-actions/letter-token";
 import { resolveSupplementLink, type SupplementLink } from "@/lib/server-actions/supplement-links";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 
@@ -92,7 +93,10 @@ export default async function SupplementsPage({
 }: {
   params: Promise<{ planSlug: string }>;
 }) {
-  const { planSlug } = await params;
+  const { planSlug: routeParam } = await params;
+  // Resolve a stable letter_token → real slug; fall back to slug (legacy links).
+  const tok = await lookupLetterToken(routeParam);
+  const planSlug = tok.ok ? tok.plan_slug : routeParam;
   const plan = await loadPublishedPlan(planSlug);
 
   if (!plan) {
