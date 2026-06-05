@@ -644,6 +644,15 @@ def main() -> int:
         json.dump({"ok": False, "test_type": test_type, "error": f"API call failed: {type(e).__name__}: {e}"}, sys.stdout)
         return 1
 
+    # Truncation guard (audit Phase-1b): if the parse hit the output token cap
+    # the lab findings are partial. Bail BEFORE persisting / writing source_sha
+    # so a truncated lab record isn't saved + dedup-cached as complete (which
+    # would skip re-parsing on every future re-upload of the same PDF).
+    if getattr(resp, "stop_reason", None) == "max_tokens":
+        json.dump({"ok": False, "test_type": test_type,
+                   "error": "lab parse truncated — hit the output token limit; not saved. Retry."}, sys.stdout)
+        return 1
+
     tool_use = next((b for b in resp.content if getattr(b, "type", None) == "tool_use"), None)
     if not tool_use:
         json.dump({"ok": False, "test_type": test_type, "error": "no tool_use in response"}, sys.stdout)

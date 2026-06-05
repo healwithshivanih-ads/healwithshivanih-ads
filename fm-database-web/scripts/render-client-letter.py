@@ -957,7 +957,11 @@ def _load_drug_cautions_for_client(client: dict) -> list[dict]:
             aliases = [d.get("drug_name") or ""] + list(d.get("drug_aliases") or [])
             for a in aliases:
                 a = (a or "").strip().lower()
-                if a and a in text:
+                # Word-boundary match (audit Phase-1b): a plain `a in text`
+                # made short aliases like 'arb' match 'carbamazepine' and 'pan'
+                # match 'panadol', attaching the WRONG drug's binding HARD-RULE
+                # protocol cautions to a client's letter. Longest-alias-wins.
+                if a and _kw_matches(a, text):
                     if best is None or len(a) > best[0]:
                         best = (len(a), d)
         return best[1] if best else None
@@ -6785,6 +6789,15 @@ def main() -> int:
                     if token_count % 200 == 0:
                         _step(f"streaming… ~{token_count} chunks received")
                 final_message = stream.get_final_message()
+                # Truncation guard (audit Phase-1b): if Sonnet hit the output
+                # token cap the letter is cut off mid-sentence. Bail BEFORE any
+                # post-processing or cache write so a truncated clinical letter
+                # is never shipped/cached as ok:true.
+                if getattr(final_message, "stop_reason", None) == "max_tokens":
+                    json.dump({"ok": False, "markdown": "",
+                               "error": "letter truncated — hit the output token limit; not saved. Retry or shorten the plan."},
+                              sys.stdout)
+                    return 1
                 markdown = final_message.content[0].text
                 _step(f"API call done ({len(markdown)} chars markdown)")
             # Log API spend to ~/fm-plans/clients/<id>/_api_usage.jsonl for MIS

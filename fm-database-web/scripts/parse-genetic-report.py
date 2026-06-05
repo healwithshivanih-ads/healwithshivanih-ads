@@ -267,6 +267,13 @@ def main() -> int:
         json.dump({"ok": False, "error": f"API call failed: {e}"}, sys.stdout)
         return 1
 
+    # Truncation guard (audit Phase-1b): a long SNP panel can exceed the output
+    # token cap; the partial tool_use input would be saved as the client's
+    # complete genetic findings with SNPs silently dropped. Bail before persist.
+    if getattr(resp, "stop_reason", None) == "max_tokens":
+        json.dump({"ok": False, "error": "genetic report parse truncated — hit the output token limit; not saved. Retry."}, sys.stdout)
+        return 1
+
     tool_input = None
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use":

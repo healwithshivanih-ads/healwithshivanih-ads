@@ -155,8 +155,11 @@ export async function POST(req: Request) {
   }
 
   // ── Signature verification for real events ────────────────────────────────
-  if (secret && !verifyZoomSignature(rawBody, tsHeader, sigHeader, secret)) {
-    console.warn("[zoom-webhook] invalid signature");
+  // Fail CLOSED (audit Phase-1b): an unset secret must REJECT events, not
+  // process them unverified. (The URL-validation request above handles the
+  // legitimate no-secret case separately and returns before here.)
+  if (!secret || !verifyZoomSignature(rawBody, tsHeader, sigHeader, secret)) {
+    console.warn("[zoom-webhook] missing secret or invalid signature");
     return NextResponse.json({ ok: false, error: "invalid_signature" }, { status: 401 });
   }
 

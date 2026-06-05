@@ -460,11 +460,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: "invalid_signature_calcom" }, { status: 401 });
     }
     mode = "calcom_direct";
-  } else if (!waSecret && !calSecret) {
-    // Dev: no secrets set but a signature header IS present. Allow but
-    // skip verification — used in tests where we mock signatures.
-    mode = waSig ? "slice2" : "calcom_direct";
   } else {
+    // Fail CLOSED (audit Phase-1b): no matching configured+verified secret →
+    // reject. The previous "no secrets set → process unverified" branch let a
+    // forged signature header through in production (booking spoofing).
     return NextResponse.json({ ok: false, error: "no_matching_secret" }, { status: 401 });
   }
 

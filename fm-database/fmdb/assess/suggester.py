@@ -1470,6 +1470,17 @@ def synthesize(
         cache_read_input_tokens=getattr(usage, "cache_read_input_tokens", None),
     )
 
+    # Truncation guard (audit Phase-1b): if the call hit the output token cap
+    # the tool_use payload is partial — model_validate would silently fill the
+    # missing drivers/supplements/labs with empty defaults, and the caller would
+    # cache that blank result as a "success". Fail loudly so the shim emits
+    # ok:false and nothing is cached.
+    if usage_obj.stop_reason == "max_tokens":
+        raise RuntimeError(
+            "assessment truncated — hit the output token limit; not saved. "
+            "Retry with fewer symptoms/topics."
+        )
+
     for block in resp.content:
         if getattr(block, "type", None) == "tool_use" and block.name == "synthesize_assessment":
             suggestions = AssessSuggestions.model_validate(block.input or {})
@@ -1485,7 +1496,13 @@ def synthesize(
             suggestions.suggested_protocols = suggestions.suggested_protocols[:2]
             return AssessResult(suggestions=suggestions, usage=usage_obj)
 
-    return AssessResult(suggestions=AssessSuggestions(), usage=usage_obj)
+    # No synthesize_assessment tool block in the response — the model didn't
+    # produce an assessment. Don't return a blank result the caller would cache
+    # as success (audit Phase-1b).
+    raise RuntimeError(
+        "assessment synthesis produced no result (model returned no "
+        "synthesize_assessment block) — not saved."
+    )
 
 
 # ---------------------------------------------------------------------------

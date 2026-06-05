@@ -373,13 +373,17 @@ export async function POST(req: NextRequest) {
   const rawBody = await req.text();
 
   const secret = process.env.WHATSAPP_WEBHOOK_SECRET;
-  if (secret) {
-    const sig = req.headers.get("x-whatsapp-signature-256");
-    if (!verifySignature(rawBody, sig, secret)) {
-      console.warn("[whatsapp-webhook] invalid signature");
-      // Return 401 so the sender knows — the WA server logs and moves on.
-      return NextResponse.json({ ok: false, error: "Invalid signature" }, { status: 401 });
-    }
+  // Fail CLOSED (audit Phase-1b): if no secret is configured we cannot verify
+  // the sender, so reject rather than processing an unsigned body (which would
+  // let anyone who finds the public URL inject fake client messages).
+  if (!secret) {
+    console.error("[whatsapp-webhook] WHATSAPP_WEBHOOK_SECRET not set — rejecting unverifiable request");
+    return NextResponse.json({ ok: false, error: "webhook secret not configured" }, { status: 401 });
+  }
+  const sig = req.headers.get("x-whatsapp-signature-256");
+  if (!verifySignature(rawBody, sig, secret)) {
+    console.warn("[whatsapp-webhook] invalid signature");
+    return NextResponse.json({ ok: false, error: "Invalid signature" }, { status: 401 });
   }
 
   // Parse body
