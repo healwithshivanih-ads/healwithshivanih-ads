@@ -13,8 +13,12 @@ export async function GET(
   if (!res.ok) {
     return new NextResponse("Not found", { status: 404 });
   }
-  // Use nextUrl.origin so Fly's x-forwarded-host is respected (req.url is the
-  // internal localhost:3002 URL on the Fly machine, not the public hostname).
-  const dest = new URL(`/intake/${res.intake_token}`, req.nextUrl.origin);
+  // Build origin from x-forwarded-* headers (set by Fly's proxy). req.url and
+  // req.nextUrl.origin both resolve to the internal localhost:3002 address on Fly.
+  const proto = req.headers.get("x-forwarded-proto") ?? "https";
+  const host =
+    req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "";
+  const base = host ? `${proto}://${host}` : req.nextUrl.origin;
+  const dest = new URL(`/intake/${res.intake_token}`, base);
   return NextResponse.redirect(dest, 302);
 }
