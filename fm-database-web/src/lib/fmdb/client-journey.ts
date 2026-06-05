@@ -190,10 +190,13 @@ export async function loadClientJourney(
     const nextPhaseEndWeek = Math.min(nextPhaseStartWeek + 1, planWeeks);
     if (nextPhaseStartWeek <= planWeeks) {
       const d = new Date(start);
-      // The phase letter is sent at the END of the previous phase (i.e. at the
-      // start of the new phase). Subtract a couple of days so the coach has
-      // breathing room — convention: send 2 days before the new phase starts.
-      d.setDate(d.getDate() + (nextPhaseStartWeek - 1) * 7 - 2);
+      // Coach rule 2026-06-04: send the next fortnight letter 3 days BEFORE
+      // the current fortnight expires. Current fortnight = currentPhase,
+      // covering days [(cp-1)*14+1 .. cp*14]; expiry offset from Day 1 =
+      // cp*14 - 1, minus the 3-day lead → cp*14 - 4. Since
+      // (nextPhaseStartWeek-1)*7 == cp*14, that's the same as -4 here.
+      // Matches MealPlanDripPanel + the dashboard phase_letter_due signal.
+      d.setDate(d.getDate() + (nextPhaseStartWeek - 1) * 7 - 4);
       nextPhaseStartIso = d.toISOString().slice(0, 10);
       nextPhaseRange = { start: nextPhaseStartWeek, end: nextPhaseEndWeek };
     }

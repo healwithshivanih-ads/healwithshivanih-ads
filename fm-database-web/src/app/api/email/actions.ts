@@ -8,6 +8,23 @@ import { revalidatePath } from "next/cache";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { buildEmailSafeBody } from "@/lib/email-html";
+import { loadPlanBySlug } from "@/lib/fmdb/loader";
+import { updatePlanStartDates } from "@/lib/server-actions/plans";
+
+// Letter types that deliver a meal plan to the client. The 12-week clock
+// (meal_plan_started_on / Day 1) is anchored to the first of these we send.
+const MEAL_BEARING_LETTER_TYPES = new Set([
+  "consolidated",
+  "meal_plan",
+  "meal_plan_phase",
+]);
+
+/** Calendar date (YYYY-MM-DD) of an ISO timestamp in IST (Asia/Kolkata, +05:30). */
+function istDateOnly(iso: string): string {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso.slice(0, 10);
+  return new Date(d.getTime() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+}
 
 // Send log re-restored 2026-05-19 — the new V2 Communicate panel needs
 // to distinguish Drafted (file on disk) from Sent (email actually went
@@ -136,6 +153,36 @@ export async function recordLetterSendAction(input: {
   } catch (err) {
     return { ok: false, error: (err as Error).message };
   }
+
+  // Rule (coach 2026-06-04): the client's 12-week clock starts on the day we
+  // send them the first meal plan. If this send includes a meal-plan-bearing
+  // letter and the plan has no Day 1 yet, anchor meal_plan_started_on to the
+  // EARLIEST meal-bearing send on record (handles out-of-order / backdated
+  // recording). Only fires when meal_plan_started_on is still null, so a
+  // coach-set or client-confirmed Day 1 is never overwritten.
+  if (entry.letter_types.some((t) => MEAL_BEARING_LETTER_TYPES.has(t))) {
+    try {
+      const plan = await loadPlanBySlug(planSlug);
+      const currentDay1 = plan
+        ? (plan as Record<string, unknown>).meal_plan_started_on
+        : undefined;
+      if (plan && !currentDay1) {
+        const earliestMealSend = existing
+          .filter((e) =>
+            (e.letter_types ?? []).some((t) => MEAL_BEARING_LETTER_TYPES.has(t)),
+          )
+          .map((e) => e.sent_at)
+          .filter(Boolean)
+          .sort()[0];
+        const day1 = istDateOnly(earliestMealSend || entry.sent_at);
+        await updatePlanStartDates(planSlug, { meal_plan_started_on: day1 });
+      }
+    } catch (anchorErr) {
+      // Non-fatal — the send still succeeded; coach can set Day 1 manually.
+      console.warn("auto meal_plan_started_on anchor failed:", anchorErr);
+    }
+  }
+
   revalidatePath(`/clients-v2/${clientId}/communicate`);
   return { ok: true };
 }

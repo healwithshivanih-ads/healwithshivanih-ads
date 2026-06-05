@@ -33,6 +33,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
+import { MealPlanDripPanel } from "@/components/meal-plan-drip-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import {
   FmAlertGroup,
@@ -157,24 +158,33 @@ async function computeSignal(
     const recheckDate =
       effectiveRecheckDate(publishedPlan) ?? publishedPlan.plan_period_recheck_date;
 
-    // B5 fix 2026-05-23 — phase letter overdue signal. Mirrors the
-    // logic in client-journey.ts: phases are 2 weeks long ([1-2],
-    // [3-4], [5-6]…), the phase letter is sent 2 days before the next
-    // phase starts. If the next phase's due date is in the past AND no
-    // saved phase letter exists for that range, flag it. Surfaces on
-    // Hariharan + Geetika who both have wk 3-4 phase letters owed.
+    // Phase letter overdue signal. Phases are 2 weeks long ([1-2], [3-4],
+    // [5-6]…). Coach rule 2026-06-04: each fortnight letter is sent 3 days
+    // BEFORE the current fortnight expires, and the whole clock is anchored
+    // to Day 1 = meal_plan_started_on (first meal-plan send), falling back
+    // to plan_period_start + 3d. This matches MealPlanDripPanel exactly so
+    // the dashboard card and the drip panel show the same dates.
     const planStart = publishedPlan.plan_period_start;
     const planWeeks = publishedPlan.plan_period_weeks;
-    if (planStart && planWeeks) {
-      const startMs = new Date(planStart + "T00:00:00").getTime();
+    const day1Str =
+      publishedPlan.meal_plan_started_on ??
+      (planStart
+        ? new Date(new Date(planStart + "T00:00:00Z").getTime() + 3 * 86_400_000)
+            .toISOString()
+            .slice(0, 10)
+        : null);
+    if (day1Str && planWeeks) {
+      const startMs = new Date(day1Str + "T00:00:00").getTime();
       const todayMs = new Date(todayStr).getTime();
       const daysSinceStart = Math.floor((todayMs - startMs) / 86_400_000);
       const currentWeek = Math.max(1, Math.floor(daysSinceStart / 7) + 1);
       const currentPhase = Math.ceil(currentWeek / 2);
       const nextPhaseStartWeek = currentPhase * 2 + 1;
       if (nextPhaseStartWeek <= planWeeks) {
-        // Due 2 days before next phase starts.
-        const dueMs = startMs + ((nextPhaseStartWeek - 1) * 7 - 2) * 86_400_000;
+        // Send 3 days before the CURRENT fortnight expires. Current
+        // fortnight (currentPhase) covers days [(cp-1)*14+1 .. cp*14];
+        // expiry offset from Day 1 = cp*14 - 1, minus the 3-day lead.
+        const dueMs = startMs + (currentPhase * 14 - 1 - 3) * 86_400_000;
         if (dueMs < todayMs) {
           // Check whether a saved phase letter already exists for this
           // range. The communicate path saves them as files named
@@ -1331,6 +1341,12 @@ export default async function DashboardV2() {
           {whatsappConfigured && (
             <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
           )}
+
+          {/* 🍽 Fortnight meal-plan drip — next 2-week letter due per active
+              client, anchored to first meal-plan send (coach rule 2026-06-04).
+              Remind-and-approve only; no auto-send. */}
+          <MealPlanDripPanel />
+
           <CycleDateReminderPanel whatsappConfigured={whatsappConfigured} />
 
 

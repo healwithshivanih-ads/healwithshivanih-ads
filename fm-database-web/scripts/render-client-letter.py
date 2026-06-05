@@ -2783,6 +2783,7 @@ def _build_daily_routine_html(plan: dict, window_end_week: int | None = None) ->
         Your whole day at a glance — when to take each supplement, and
         which meal or drink it sits beside. Print this and keep it where
         you'll see it: the fridge, or a photo on your phone.
+        <br><a class="no-print" href="#supplement-schedule" style="color:#a9651f;font-weight:600;text-decoration:none;">👉 See doses &amp; where to buy each one</a>
       </p>
     </div>
     <button class="print-btn no-print" onclick="printRoutine()">🖨 Print my routine</button>
@@ -2850,7 +2851,7 @@ def _clientify_dose(text: str) -> str:
     return s
 
 
-def _build_portion_plate_html(meal_style: str = "hybrid") -> str:
+def _build_portion_plate_html(meal_style: str = "hybrid", dietary_preference: str = "") -> str:
     """Self-contained 'how to build your plate' portions visual.
 
     Deterministic — no AI, no plan data needed. Shows the FM balanced-plate
@@ -2883,6 +2884,27 @@ def _build_portion_plate_html(meal_style: str = "hybrid") -> str:
             "Build each main meal to this shape — it's the simplest way to keep "
             "every plate balanced without counting anything."
         )
+    # Diet-aware protein examples. CRITICAL: never list flesh foods or eggs
+    # for vegetarian / Jain / vegan clients (coach rule 2026-06-04 — a Jain
+    # client saw "chicken" on her plate card). Check non-veg FIRST so that
+    # "non-vegetarian" isn't swallowed by the "vegetarian" substring test.
+    _dp = (dietary_preference or "").lower()
+    _nonveg = any(m in _dp for m in ("non-veg", "non veg", "nonveg", "omnivore",
+                                     "chicken", "fish", "mutton", "meat", "prawn"))
+    _vegan = "vegan" in _dp
+    _veg = (not _nonveg) and (("veg" in _dp) or ("jain" in _dp) or _vegan)
+    _eats_eggs = ("egg" in _dp) and not _vegan
+    if _vegan:
+        protein_examples = "Dal, rajma, chana, tofu, tempeh, soya, nuts and seeds"
+    elif _veg:
+        protein_examples = "Dal, rajma, chana, paneer, tofu, curd" + (", eggs" if _eats_eggs else "")
+    elif _nonveg:
+        protein_examples = "Dal, rajma, chana, paneer, curd, eggs, fish, chicken, tofu"
+    else:
+        # Diet unknown — stay vegetarian-safe by default; name flesh foods
+        # only as a conditional aside so a veg client is never shown meat.
+        protein_examples = ("Dal, rajma, chana, paneer, tofu, curd "
+                            "(plus eggs, fish or chicken if those are part of your diet)")
     return f"""
 <section class="portion-plate-card" style="margin:18px 0;padding:20px 22px;border:1px solid #e6dfd1;border-radius:14px;background:{PAPER};page-break-inside:avoid;break-inside:avoid;">
   <h2 style="margin:0 0 4px;font-family:Georgia,serif;font-size:20px;color:{INK};">🍽 Building Your Plate</h2>
@@ -2904,7 +2926,7 @@ def _build_portion_plate_html(meal_style: str = "hybrid") -> str:
     </svg>
     <ul style="flex:1 1 240px;margin:0;padding:0;list-style:none;font-size:13.5px;color:{INK};line-height:1.55;">
       <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{VEG};margin-right:8px;"></span><strong>½ plate — non-starchy veg.</strong> Sabzi, salad, greens, lauki, bhindi, beans, gourds. Aim for colour + variety.</li>
-      <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{PROTEIN};margin-right:8px;"></span><strong>¼ plate — protein.</strong> Dal, rajma, chana, paneer, eggs, fish, chicken, tofu, curd. Roughly a palm-sized portion.</li>
+      <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{PROTEIN};margin-right:8px;"></span><strong>¼ plate — protein.</strong> {protein_examples}. Roughly a palm-sized portion.</li>
       <li style="margin-bottom:9px;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:{CARB};margin-right:8px;"></span><strong>¼ plate — smart carbs.</strong> Millet, brown rice, 1–2 rotis, sweet potato, oats. Cupped-hand portion.</li>
       <li style="margin-bottom:0;"><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#9b9587;margin-right:8px;"></span><strong>+ a thumb of healthy fat</strong> (ghee, cold-pressed oil, nuts, seeds) and a <strong>glass of water</strong>. Skip sugary drinks.</li>
     </ul>
@@ -3032,7 +3054,10 @@ def _build_supplement_schedule_html(
 
     return f"""
 <!-- ════════════════ SUPPLEMENT SCHEDULE ════════════════ -->
-<section id="supplement-schedule">
+<!-- Screen-only (no-print) per LETTER_TEMPLATE_SPEC: the printable
+     at-a-glance version is Your Daily Routine; this full doses/buy-links
+     table is reference, hyperlinked from the routine, kept off the print. -->
+<section id="supplement-schedule" class="no-print">
   <div class="schedule-header">
     <div>
       <h2 class="schedule-title">💊 Your Supplement Schedule</h2>
@@ -3238,238 +3263,16 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
 #                           suppression flags
 # See fm-database/data/sources/protein-intake-guidance.yaml.
 
-_PROTEIN_KIDNEY_TERMS = (
-    "kidney disease", "chronic kidney", "ckd", "renal failure",
-    "renal insufficiency", "renal disease", "nephropathy", "dialysis",
-)
-_PROTEIN_URIC_TERMS = (
-    "gout", "hyperuricemia", "hyperuricaemia", "high uric acid",
-    "elevated uric acid", "raised uric acid",
-)
-_PROTEIN_HISTAMINE_TERMS = ("histamine", "mcas", "mast cell")
-_PROTEIN_GUT_TERMS = ("sibo", "candida", "candidiasis", "dysbiosis")
-_PROTEIN_GUT_SLUG_HINTS = (
-    "5r", "sibo", "candida", "gut-heal", "gut-repair", "gut-restoration",
-)
-_PROTEIN_DAIRY_FREE_TERMS = (
-    "vegan", "dairy-free", "dairy free", "no dairy", "without dairy",
-    "plant-based", "plant based",
-)
-_PROTEIN_DAIRY_AVOID_TERMS = ("dairy", "milk", "lactose", "casein")
-# Kept deliberately narrow — yeast protein is a rare niche, so auto-routing
-# to it should require an explicit pea/legume-protein sensitivity, not a
-# casual "I avoid soy" note.
-_PROTEIN_LEGUME_TERMS = ("pea protein", "legume allergy", "pulse allergy")
-
-
-def _protein_condition_text(client: dict) -> str:
-    """Lowercased blob of every place a condition / diet note could live."""
-    parts: list[str] = []
-    for key in ("active_conditions", "medical_history"):
-        v = client.get(key)
-        if isinstance(v, list):
-            parts.extend(str(x) for x in v)
-        elif v:
-            parts.append(str(v))
-    for key in ("notes", "dietary_preference"):
-        if client.get(key):
-            parts.append(str(client[key]))
-    return " ".join(parts).lower()
-
-
-def _protein_lab_marker_high(client: dict, name_terms: tuple) -> bool:
-    """True if a lab marker whose name matches any term carries a
-    high / elevated flag. `lab_markers` rows look like
-    {marker_name, value, unit, reference_range, flag, ...}."""
-    for m in (client.get("lab_markers") or []):
-        if not isinstance(m, dict):
-            continue
-        name = str(m.get("marker_name") or m.get("name") or "").lower()
-        if not any(t in name for t in name_terms):
-            continue
-        flag = str(m.get("flag") or "").lower()
-        if any(w in flag for w in ("high", "elevat", "above", "raised")):
-            return True
-    return False
-
-
-def _calc_protein_target(client: dict, plan: dict | None = None) -> dict | None:
-    """Daily protein target for the client.
-
-    Returns a dict with low_g / high_g (1.2-1.5 g/kg of body weight,
-    adjusted body weight when BMI >= 30), or None if weight is missing.
-
-    When the client has a contraindication to a RAISED protein intake —
-    kidney disease or hyperuricemia / gout — `suppressed` is True,
-    low_g/high_g are None, and the letter must show a 'keep moderate,
-    confirm with your doctor' note instead of a number. The app never
-    pushes protein up for these clients.
-    """
-    m = client.get("measurements") or {}
-
-    def _f(*vals) -> float:
-        for v in vals:
-            try:
-                f = float(v)
-                if f:
-                    return f
-            except (TypeError, ValueError):
-                continue
-        return 0.0
-
-    weight_kg = _f(m.get("weight_kg"), client.get("weight_kg"))
-    height_cm = _f(m.get("height_cm"), client.get("height_cm"))
-    if not weight_kg:
-        return None
-
-    # ── Contraindication scan — kidney disease + high uric acid / gout ──
-    cond_text = _protein_condition_text(client)
-    kidney = any(t in cond_text for t in _PROTEIN_KIDNEY_TERMS) or \
-        _protein_lab_marker_high(client, ("creatinine",))
-    uric = any(t in cond_text for t in _PROTEIN_URIC_TERMS) or \
-        _protein_lab_marker_high(client, ("uric acid", "urate"))
-    suppress_reason = "kidney" if kidney else ("uric_acid" if uric else "")
-
-    # ── Adjusted body weight for high BMI ──────────────────────────────
-    # On actual weight a high-BMI client's gram target over-shoots — lean
-    # mass doesn't scale 1:1 with fat mass. At BMI >= 30 use adjusted body
-    # weight = IBW + 0.4 x (actual - IBW), IBW pinned at BMI 22.5.
-    basis = "actual"
-    basis_weight = weight_kg
-    bmi = None
-    if height_cm:
-        h_m = height_cm / 100.0
-        bmi = weight_kg / (h_m * h_m)
-        if bmi >= 30:
-            ibw = 22.5 * h_m * h_m
-            if weight_kg > ibw:
-                basis_weight = ibw + 0.4 * (weight_kg - ibw)
-                basis = "adjusted"
-
-    per_kg_low, per_kg_high = 1.2, 1.5
-    low_g = round(basis_weight * per_kg_low)
-    high_g = round(basis_weight * per_kg_high)
-    basis_label = "adjusted body weight" if basis == "adjusted" else "body weight"
-
-    if suppress_reason:
-        why = ("kidney function" if suppress_reason == "kidney"
-               else "high uric acid / gout")
-        return {
-            "suppressed": True,
-            "suppress_reason": suppress_reason,
-            "low_g": None, "high_g": None,
-            "actual_weight_kg": round(weight_kg, 1),
-            "basis": basis, "basis_weight_kg": round(basis_weight, 1),
-            "bmi": round(bmi, 1) if bmi else None,
-            "per_kg_low": per_kg_low, "per_kg_high": per_kg_high,
-            "rationale": (
-                f"Protein intake should be kept moderate and guided by the "
-                f"client's doctor — {why} is a reason not to raise protein "
-                f"without medical advice."
-            ),
-        }
-
-    return {
-        "suppressed": False,
-        "suppress_reason": "",
-        "low_g": low_g, "high_g": high_g,
-        "actual_weight_kg": round(weight_kg, 1),
-        "basis": basis, "basis_weight_kg": round(basis_weight, 1),
-        "bmi": round(bmi, 1) if bmi else None,
-        "per_kg_low": per_kg_low, "per_kg_high": per_kg_high,
-        "rationale": (
-            f"Target {low_g}-{high_g} g protein/day "
-            f"({per_kg_low}-{per_kg_high} g/kg of {basis_label})."
-        ),
-    }
-
-
-def _pick_protein_source(client: dict, plan: dict | None = None) -> dict:
-    """Pick which protein powder to recommend — from the client's dairy
-    status plus histamine / gut-protocol suppression flags.
-
-    Returns {slug, display, reason, dairy_free, histamine, gut_protocol,
-    legume_sensitive}. `slug` is one of protein-whey-isolate /
-    protein-plant-blend / protein-yeast-fermented and always resolves —
-    this answers "if a protein powder is needed, which one"; whether one
-    is actually needed is the gap analysis, done separately.
-    """
-    cond_text = _protein_condition_text(client)
-
-    diet = str(client.get("dietary_preference") or "").lower()
-    avoid = str(client.get("foods_to_avoid") or "").lower()
-    allergies = " ".join(
-        str(x) for x in (client.get("known_allergies") or [])
-    ).lower()
-    dairy_free = (
-        any(t in diet for t in _PROTEIN_DAIRY_FREE_TERMS)
-        or any(t in avoid for t in _PROTEIN_DAIRY_AVOID_TERMS)
-        or any(t in allergies for t in _PROTEIN_DAIRY_AVOID_TERMS)
-    )
-
-    histamine = any(t in cond_text for t in _PROTEIN_HISTAMINE_TERMS)
-
-    # Gut protocol — 5R / SIBO / candida, from conditions OR an attached
-    # catalogue protocol whose slug hints at gut-dysbiosis work.
-    gut_protocol = any(t in cond_text for t in _PROTEIN_GUT_TERMS)
-    if plan and not gut_protocol:
-        for slug in (plan.get("attached_protocols") or []):
-            s = str(slug).lower()
-            if any(h in s for h in _PROTEIN_GUT_SLUG_HINTS):
-                gut_protocol = True
-                break
-
-    legume_sensitive = any(
-        t in avoid or t in allergies for t in _PROTEIN_LEGUME_TERMS
-    )
-
-    WHEY = ("protein-whey-isolate", "Whey Protein Isolate")
-    PLANT = ("protein-plant-blend", "Plant Protein Blend (Mung & Pea)")
-    YEAST = ("protein-yeast-fermented", "Fermented Yeast Protein")
-
-    # ── Decision tree ──────────────────────────────────────────────────
-    if histamine:
-        # Fermented yeast AND dairy are both plausible histamine triggers,
-        # so the plant blend is the safest fit regardless of dairy status.
-        slug, display = PLANT
-        reason = ("Plant protein blend — fermented yeast and dairy are both "
-                  "plausible histamine triggers, so the plant blend is the "
-                  "safest fit for a histamine-sensitive client.")
-    elif gut_protocol:
-        # Suppress yeast during a gut-dysbiosis protocol.
-        if dairy_free:
-            slug, display = PLANT
-            reason = ("Plant protein blend — fermented yeast is the wrong "
-                      "signal during a gut-dysbiosis protocol, and dairy is "
-                      "being eliminated.")
-        else:
-            slug, display = WHEY
-            reason = ("Whey isolate — dairy is still tolerated, and "
-                      "fermented yeast is avoided during a gut-dysbiosis "
-                      "protocol.")
-    elif not dairy_free:
-        slug, display = WHEY
-        reason = ("Whey isolate — dairy is tolerated; whey isolate is the "
-                  "lightest, most palatable option.")
-    elif legume_sensitive:
-        slug, display = YEAST
-        reason = ("Fermented yeast protein — dairy-free, and the client also "
-                  "reacts to legume / plant proteins, so the most "
-                  "allergen-free option fits best.")
-    else:
-        slug, display = PLANT
-        reason = ("Plant protein blend — dairy-free, and legumes are "
-                  "tolerated.")
-
-    return {
-        "slug": slug,
-        "display": display,
-        "reason": reason,
-        "dairy_free": dairy_free,
-        "histamine": histamine,
-        "gut_protocol": gut_protocol,
-        "legume_sensitive": legume_sensitive,
-    }
+# Protein heuristics now live in the shared protein_logic module so the plan
+# generator (generate-draft.py) and this letter generator stay in lock-step.
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import protein_logic as _protein
+# Back-compat aliases — _protein_guidance_block below calls these names.
+_calc_protein_target = _protein.calc_protein_target
+_pick_protein_source = _protein.pick_protein_source
+_protein_condition_text = _protein.protein_condition_text
+_protein_lab_marker_high = _protein.protein_lab_marker_high
 
 
 def _protein_guidance_block(client: dict, plan: dict | None = None) -> str:
@@ -3488,8 +3291,7 @@ def _protein_guidance_block(client: dict, plan: dict | None = None) -> str:
         return ""
 
     if target.get("suppressed"):
-        why = ("kidney function" if target.get("suppress_reason") == "kidney"
-               else "high uric acid / gout")
+        why = _protein.suppress_why(target.get("suppress_reason"))
         return (
             "PROTEIN — KEEP MODERATE (do NOT push):\n"
             f"This client has a medical reason ({why}) not to raise protein "
@@ -5211,12 +5013,21 @@ def _build_prompt_meal_plan_phase(
             phase_start <= start_week <= phase_end
             and not has_step_up_cue
         ):
+            _slug = s.get("supplement_slug") or s.get("slug")
+            _u = s.get("buy_link") or ""
+            if not _u:
+                try:
+                    _resolved = _vitaone_url_only(name, slug=_slug)
+                    _u = _resolved[1] if _resolved else ""
+                except Exception:
+                    _u = ""
             introducing.append({
                 "name": name,
                 "dose": s.get("dose") or "",
                 "timing": s.get("timing") or "",
                 "rationale": rationale.split("\n")[0] if rationale else "",
                 "titration": titration,
+                "buy_link": _u,
             })
         else:
             continuing.append(name)
@@ -5241,6 +5052,8 @@ def _build_prompt_meal_plan_phase(
                 line += f" · titration: {it['titration']}"
             if it["rationale"]:
                 line += f" · why: {it['rationale']}"
+            if it.get("buy_link"):
+                line += f" · BUY LINK (include in the letter): {it['buy_link']}"
             lines.append(f"- {line}")
         supp_phase_block_parts.append("\n".join(lines))
     if titrating_up:
@@ -5573,26 +5386,21 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
    paragraph with no phase-change language at all. Concrete and specific,
    tied to her labs/symptoms — NOT generic.
 
-2a. **💊 Your supplement routine this phase** — ALWAYS INCLUDE THIS SECTION.
-    Coach explicit ask: reinforce the routine every fortnight even if no
-    changes — clients want to know whether to keep going. Format:
+2a. **💊 What's new this phase** — per LETTER_TEMPLATE_SPEC, do NOT re-list
+    the full supplement routine: the printable day schedule and the full
+    doses/where-to-buy table are auto-inserted into this letter, so repeating
+    them is duplication. Instead:
 
-      **Continuing as before:**
-      [bullet list of currently-running supplements — from "Supplements
-      continuing" in the CURRENT ROUTINE block above. Name + dose + timing.
-      Keep concise — one line per supplement.]
-
-      🆕 **New this phase:** (only if "NEW SUPPLEMENTS TO INTRODUCE" block
-      above has entries — otherwise SKIP this sub-section entirely)
-      [one bullet per new supplement: name, dose, timing, + brief one-
-      sentence "why this, why now" rationale tied to the phase intent.]
-
-      ⬆ **Stepping up:** (only if "TITRATING UP" block above has entries —
-      otherwise SKIP)
-      [one bullet per step-up: name + new dose + rationale.]
-
-    Lead with the warmth: "You're staying on your foundation — these
-    are working in the background." Then list. Then call out changes.
+      - If the "NEW SUPPLEMENTS TO INTRODUCE" or "TITRATING UP" blocks above
+        have entries, write a short **🆕 New this phase** / **⬆ Stepping up**
+        section: one bullet per change — name, dose, timing, a one-sentence
+        "why this, why now" rationale, AND its purchase link as a markdown
+        link, e.g. "👉 [Order it here](<BUY LINK from the block above>)".
+        ALWAYS include the buy link when the block provides one.
+      - If there are NO changes this phase, write ONE warm sentence only:
+        "Your supplements stay exactly the same this fortnight — keep going
+        with your routine (it's all in your day schedule below)." Then STOP —
+        no list.
 
 2b. **🔁 Quick reminder — how to swap meals** — short box (3 bullets,
     ≤ 4 lines total):
@@ -6139,74 +5947,61 @@ The plan must have a logical therapeutic progression — each phase builds on th
 
 {healing_arc}
 
-## Document structure (action-first, 5–7 pages — don't overwhelm):
+## Document structure — MANDATORY ORDER (action-first, 5–7 pages — don't overwhelm):
 
-1. **Welcome & what we found** — heading `## 🌱 Welcome, {first_name}`
-   2–3 warm sentences welcoming them, naming this as a {plan_weeks}-week journey. Then a short "What we found" paragraph: name the 1–2 key drivers from the assessment in plain language ("your stress-response system is running hot" / "your gut isn't absorbing nutrients well right now"). No clinical jargon. Set an excited-but-calm tone. End with 1 sentence on what the next {plan_weeks} weeks will focus on.
+Output the sections in EXACTLY this order: **Why → Take → Eat → Do → Track → Recipes → Sign-off.**
+Where you see a placeholder line like `<!--FM:TAKE-->` or `<!--FM:PLATE-->`, output that
+literal HTML comment on its OWN line — it marks where a ready-made section is inserted
+automatically. **DO NOT write** a supplement table/list/schedule, a daily routine, a
+shopping list, or a portion-plate description anywhere in the letter — those are injected
+at the placeholders. Write only the narrative + the meal tables.
 
-2. **What to do this week** — heading `## 💪 What to do this week`
-   This is THE action layer. Keep it tight (under 1 page). Three sub-blocks in this order:
+1. **Why this plan** — heading `## 🌱 Why this plan, {first_name}`
+   This LEADS the letter — she should understand WHY before WHAT. 3–5 short paragraphs:
+   - A warm 1–2 sentence hello, naming this as a {plan_weeks}-week journey.
+   - **What we found:** name the 1–2 key drivers from her assessment in plain language ("your stress-response system is running hot", "your gut isn't absorbing nutrients well right now"). No jargon.
+   - **The plan in brief + why it fits you:** in 2–4 sentences, say what this plan does and the ORDER it does it in (e.g. "first we calm the immune trigger, then rebuild the gut, then steady your blood sugar"), and why that approach is right for HER specifically.
+   - The {plan_weeks}-week arc, one short line per phase (no meal plans, just narrative):
+   {roadmap_calorie_lines}
+   - **Weeks 3–4** (Continuation):{weeks_3_4_calorie_line}
+   - Weeks 5–8 (Deepening) · Weeks 9–10 (Easing) · Weeks 11–12 (Sustaining)
 
-   **2a. Supplements** — Add ONLY this short callout (NO table, NO list):
-   > *Your supplement schedule — exact doses, timings, and where to order each one — is in the printable section below. Order them ASAP; they take 2–3 days to reach you.*
-   DO NOT write a supplement table or list here. The detailed schedule is auto-injected as a separate printable section after the letter body.
+2. **What to take** — heading `## 💊 What to take`
+   ONE short sentence only: "Here's your supplement routine — your printable day schedule is below, with the full doses and where to order each one just under it." Then output this placeholder on its OWN line and write nothing else in this section (no table, no list, no supplement names):
+   <!--FM:TAKE-->
 
-   **2b. Daily non-negotiables** — bullet list. 3–5 lines MAX. Sleep, stress / breathwork, movement, sun, connection. Each bullet ≤12 words. Specific to this client's assessment — don't list everything, list what matters for THEM.
+3. **What to eat** — heading `## 🍽 What to eat`
+   First output this placeholder on its OWN line:
+   <!--FM:PLATE-->
+   Then:
 
-   **2c. Eat more / Eat less** — TWO short bulleted columns (NOT a table, NOT prose paragraphs). Format as:
-   ```
-   **Eat more**
-   - <item 1> — <one-line why>
-   - <item 2> — <one-line why>
-   ...
-
-   **Eat less / avoid**
-   - <item 1> — <one-line why>
-   - Reported triggers: NEVER eat <list from {reported_triggers}>
-   ```
-   6–8 bullets per column. The "why" is the hook that drives compliance.
-
-3. **YOUR PLAN — WEEKS 1 & 2: Foundation** — heading `## 🗓 Weeks 1 & 2 — your meal plan`
-   The "how" of the eating pattern. Detailed for weeks 1–2; later weeks roadmap-only.
-
-   **3a. Theme for weeks 1–2** — 1 short paragraph. What is the body doing in this phase?
+   **3a. Theme for weeks 1–2** — 1 short paragraph: what is the body doing in this phase?
    {calorie_callout}
 
    {meal_plan_section}
 
-   **3b. Movement schedule** — heading `### 🏃 Movement this week`
-   Simple 7-day table (Mon-Sun) with Day | Type | Duration | Notes columns. At least 1 REST day. Match {first_name}'s baseline movement_days_per_week and movement_type. For women in menstruating / perimenopausal phases: add 2-line cycle-aware modification (no HIIT during menstrual phase or PMS week — restorative only). For postmenopausal women: prioritise strength 3×/week. Keep it scannable (8-10 lines). {"A separate detailed exercise_plan letter HAS been generated for this client — add this one-liner at the end of the section: 'See your detailed exercise plan for the full weekly progression and exercise specifics.'" if has_exercise_plan else "No separate exercise_plan letter exists for this client — DO NOT reference one. This simple schedule IS the entire movement plan."}
+   **3b. Eat more / Eat less** — TWO short bulleted columns (NOT a table, NOT prose). 6–8 bullets each, each with a one-line why. In "Eat less / avoid" include: "Reported triggers: NEVER eat <list from {reported_triggers}>".
 
-   **3c. What to notice in Weeks 1–2** — 4–6 positive tracking prompts. Frame as curiosity, not surveillance.
+4. **What to do daily** — heading `## 🌿 What to do daily`
 
-4. **Why this works — the bigger picture** — heading `## 📚 Why this works`
-   The education / philosophy section, for the curious-client. Keep it SHORT (under 1 page). Two sub-blocks:
+   **4a. Daily non-negotiables** — bullet list, 3–5 lines MAX, ≤12 words each. Sleep, stress / breathwork, movement, sun, connection. Only what matters for THIS client — don't list everything.
 
-   **4a. The {plan_weeks}-week roadmap** — One short paragraph per phase (3 short sentences MAX each). No meal plans. Just narrative.
-   {roadmap_calorie_lines}
-   - **Weeks 3–4** (Continuation):{weeks_3_4_calorie_line}
-   - Weeks 5–8 (Deepening)
-   - Weeks 9–10 (Easing)
-   - Weeks 11–12 (Sustaining)
+   **4b. Movement this week** — heading `### 🏃 Movement this week`
+   Simple 7-day table (Day | Type | Duration | Notes). At least 1 REST day. Match {first_name}'s baseline movement_days_per_week and movement_type. Cycle-aware for menstruating / perimenopausal women (no HIIT in menstrual/PMS week — restorative only); strength 3×/week for postmenopausal. Scannable (8–10 lines). {"A separate detailed exercise_plan letter HAS been generated for this client — add this one-liner at the end of the section: 'See your detailed exercise plan for the full weekly progression and exercise specifics.'" if has_exercise_plan else "No separate exercise_plan letter exists for this client — DO NOT reference one. This simple schedule IS the entire movement plan."}
 
-   **4b. Home remedies & daily teas** — heading `### 🌿 Daily teas & home remedies`
-   Brief — any from the plan, simply described. If none, skip this sub-block entirely.
+   **4c. Daily teas & home remedies** — heading `### 🌿 Daily teas & home remedies` — brief, any from the plan, simply described. Skip entirely if none.
 
-5. **Admin: labs & products** — heading `## 🔬 Labs & products`
+5. **What to track** — heading `## 📊 What to track`
 
-   **5a. Labs ordered** — Only if the plan has lab_orders. Bullet list with marker name + when to draw. If no labs, skip this sub-block.
+   **5a. What to notice in Weeks 1–2** — 4–6 positive tracking prompts. Curiosity, not surveillance.
 
-   **5b. Product guide** — heading `### 🛒 Brands to look for`
-   Only the specific brands from the approved list below that are RELEVANT to this plan. ≤6 items. NOT a long catalogue.
+   **5b. Labs to recheck** — Only if the plan has lab_orders. Bullet list with marker name + when to draw. Skip this sub-block if no labs.
 
-   **5c. Recipe pack** — Add ONLY this callout (DO NOT write the recipes inline):
+6. **Recipe pack** — Add ONLY this callout (DO NOT write the recipes inline):
    > *Your recipe pack — full ingredients, method, and tips for every ✦ dish in this meal plan — is at a separate link your coach is sending you over WhatsApp. Bookmark it on your phone for easy access in the kitchen.*
    {"DO NOT write any ✦ recipe details, ingredient lists, or methods in this letter. Recipes live on a separate page (linked from the meal plan ✦ symbols once the letter is published)." if include_daily_meal_plan else "No meal plan in this letter (per client preference) → no recipe pack needed. Skip this sub-block."}
 
-6. **Sign-off** — TWO LINES ONLY: "**With warmth,**" / "**Shivani** 🌿".
-   No separate "A note from Shivani" section — the entire letter is
-   already written FROM Shivani TO the client
-   2–4 warm closing sentences. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint. Encourage them to message with questions. Sign off as Shivani.
+7. **Sign-off** — 2–4 warm closing sentences, then TWO LINES ONLY: "**With warmth,**" / "**Shivani** 🌿". No separate "A note from Shivani" heading — the whole letter is already FROM Shivani. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint.
 
 ---
 
@@ -6838,7 +6633,20 @@ def main() -> int:
         return 1
     _step(f"prompt built ({len(prompt)} chars)")
 
-    client_api = Anthropic(api_key=api_key)
+    # Explicit timeouts + retries. Without these the client had NO read
+    # timeout: a stalled connection (transient API/network latency) would
+    # hang until the caller's 10-min SIGKILL, surfacing as the opaque
+    # "exited null with no stdout" the coach kept hitting. read=180s only
+    # trips on a genuine stall — healthy streaming sends bytes continuously
+    # — so it fails FAST and CATCHABLY (→ clean JSON error). max_retries
+    # lets the SDK self-heal transient 429/5xx/connection blips before the
+    # stream starts.
+    import httpx as _httpx
+    client_api = Anthropic(
+        api_key=api_key,
+        timeout=_httpx.Timeout(600.0, connect=15.0, read=180.0),
+        max_retries=3,
+    )
 
     # ── Letter cache (E.2) ─────────────────────────────────────────────
     # The prompt string captures every input that drives Sonnet's output
@@ -7194,6 +7002,32 @@ def main() -> int:
             meal_ymd = _ps + _td(days=3)
         supp_ymd = _sa if _sa else (_ps + _td(days=7) if _ps else None)
 
+        # Template guardrail (LETTER_TEMPLATE_SPEC): a consolidated letter MUST
+        # carry the <!--FM:TAKE--> and <!--FM:PLATE--> markers so the Take/Eat
+        # blocks land in the coach-approved order (Why → Take → Eat → …). The
+        # dashboard prompt emits them automatically; a hand-authored
+        # (reuse_markdown / chat) letter might omit them. If so, auto-insert at
+        # the right anchors + warn — so BOTH generation paths produce the
+        # identical structure regardless of how the markdown was authored.
+        if letter_type == "consolidated":
+            _missing = []
+            if "<!--FM:TAKE-->" not in markdown:
+                _missing.append("TAKE")
+                _eat = re.search(r'(?im)^##\s.*(what to eat|🍽|meal plan|🗓)', markdown)
+                if _eat:
+                    markdown = markdown[:_eat.start()] + "<!--FM:TAKE-->\n\n" + markdown[_eat.start():]
+                else:
+                    markdown += "\n\n<!--FM:TAKE-->\n"
+            if "<!--FM:PLATE-->" not in markdown:
+                _missing.append("PLATE")
+                _eat = re.search(r'(?im)^##\s.*(what to eat|🍽|meal plan|🗓).*$', markdown)
+                if _eat:
+                    markdown = markdown[:_eat.end()] + "\n\n<!--FM:PLATE-->\n" + markdown[_eat.end():]
+                else:
+                    markdown = markdown.replace("<!--FM:TAKE-->", "<!--FM:TAKE-->\n\n<!--FM:PLATE-->", 1)
+            if _missing:
+                _step(f"⚠ template guardrail: auto-inserted missing marker(s) {', '.join(_missing)} — structure normalized to spec")
+
         html = wrap_in_brand_html(
             markdown,
             title=doc_title,
@@ -7206,16 +7040,23 @@ def main() -> int:
             letter_type=letter_type,
         )
         # Inject the "Building Your Plate" portions visual at the top of the
-        # letter body for every meal-bearing letter — Principles, Detailed
-        # AND Hybrid. It's the orienting visual the client keeps. Placed as
-        # the first child of .content so it flows + prints with the body.
-        if html and letter_type in ("consolidated", "meal_plan", "meal_plan_phase"):
+        # letter body. Per LETTER_TEMPLATE_SPEC (coach-approved 2026-06-04):
+        # the plate is a FIRST-LETTER section only — fortnight (meal_plan_phase)
+        # letters drop it (it's a static reference the client already has).
+        if html and letter_type in ("consolidated", "meal_plan"):
             try:
                 import re as _re_plate
-                plate_html = _build_portion_plate_html(client.get("meal_plan_style") or "hybrid")
-                _pm = _re_plate.search(r'(<div class="content"[^>]*>)', html)
-                if _pm and plate_html:
-                    html = html[: _pm.end()] + "\n      " + plate_html + html[_pm.end():]
+                plate_html = _build_portion_plate_html(
+                    client.get("meal_plan_style") or "hybrid",
+                    client.get("dietary_preference") or "",
+                )
+                if plate_html and "<!--FM:PLATE-->" in html:
+                    # Marker mode: plate sits in the "Eat" group where the body placed it.
+                    html = html.replace("<!--FM:PLATE-->", plate_html, 1)
+                else:
+                    _pm = _re_plate.search(r'(<div class="content"[^>]*>)', html)
+                    if _pm and plate_html:
+                        html = html[: _pm.end()] + "\n      " + plate_html + html[_pm.end():]
             except Exception as _plate_err:
                 print(f"[render-letter] plate inject failed ({type(_plate_err).__name__}: {_plate_err})",
                       file=sys.stderr, flush=True)
@@ -7256,20 +7097,44 @@ def main() -> int:
                 or plan.get("meal_plan_started_on")
                 or plan.get("plan_period_start")
             )
-            shopping_list_html = _build_complete_shopping_list_html(
-                supplements, plan_weeks_int, _supp_anchor
+            # Per LETTER_TEMPLATE_SPEC: the complete shopping list (bulk
+            # weekly-supply buying math) is a FIRST-LETTER section only.
+            # Fortnight (meal_plan_phase) letters omit it — any NEW supplement
+            # that fortnight is surfaced in the AI "what's new this phase"
+            # section with its own buy link instead.
+            shopping_list_html = (
+                ""
+                if letter_type == "meal_plan_phase"
+                else _build_complete_shopping_list_html(
+                    supplements, plan_weeks_int, _supp_anchor
+                )
             )
             schedule_html = _build_supplement_schedule_html(
                 supplements, window_end_week=_supp_window
             )
-            combined = shopping_list_html + "\n" + schedule_html
+            combined = (
+                shopping_list_html + "\n" + schedule_html
+                if shopping_list_html
+                else schedule_html
+            )
             # The integrated Daily Routine timeline — placed at the TOP of
             # the letter (right before .content) so the client can't miss
             # it. It's the one they print and keep. Injected as a sibling
             # of .content so the print-routine CSS can isolate it.
             import re as _re_dr
             routine_html = _build_daily_routine_html(plan, window_end_week=_supp_window)
-            if routine_html:
+            # Marker mode (LETTER_TEMPLATE_SPEC): if the letter body contains
+            # the <!--FM:TAKE--> placeholder, the whole "Take" block (day
+            # schedule → screen-only supplement table → shopping list) is
+            # placed there, in the coach-approved order (Why → Take → Eat …).
+            # Otherwise fall back to the legacy positional injection.
+            _take_marker = "<!--FM:TAKE-->"
+            _take_marker_mode = bool(routine_html) and _take_marker in (html or "")
+            if _take_marker_mode:
+                # Day schedule leads the Take block; combined (table + list)
+                # follows. Final placement happens at the marker below.
+                combined = routine_html + "\n" + combined
+            elif routine_html:
                 _co = _re_dr.compile(r'(<div class="content"[^>]*>)')
                 _m = _co.search(html)
                 if _m:
@@ -7304,7 +7169,10 @@ def main() -> int:
             import re as _re
             content_open_re = _re.compile(r'(<div class="content"[^>]*>)')
             content_close_marker = '</div>\n\n    <!-- Footer -->'
-            if letter_type in top_position_types:
+            if _take_marker_mode:
+                # Marker mode: drop the whole Take block where the body asked.
+                html = html.replace(_take_marker, combined, 1)
+            elif letter_type in top_position_types:
                 # TOP-position: insert combined BEFORE <div class="content">
                 m = content_open_re.search(html)
                 if m:

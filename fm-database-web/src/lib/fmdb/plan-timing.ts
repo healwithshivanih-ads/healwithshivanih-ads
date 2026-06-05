@@ -58,11 +58,15 @@ function parseYmd(value: unknown): Date | null {
   } else if (typeof value === "string") {
     const trimmed = value.trim();
     if (!trimmed) return null;
-    // YYYY-MM-DD only → append local midnight; otherwise let Date parse
-    // (handles full ISO timestamps with timezone).
+    // YYYY-MM-DD only → parse as UTC midnight so it round-trips cleanly
+    // through toYmd() (which formats via toISOString(), i.e. UTC). Using
+    // local midnight shifted the date back a day in TZs east of UTC (IST
+    // +5:30); effectiveRecheckDate round-trips twice → −2 days (recheck
+    // rendered 2 days early). Full ISO timestamps still parse with their
+    // own offset.
     d =
       /^\d{4}-\d{2}-\d{2}$/.test(trimmed)
-        ? new Date(trimmed + "T00:00:00")
+        ? new Date(trimmed + "T00:00:00Z")
         : new Date(trimmed);
   } else {
     if (process.env.NODE_ENV !== "production") {
@@ -85,8 +89,10 @@ function toYmd(d: Date | null): string | null {
 }
 
 function addDays(d: Date, n: number): Date {
+  // Advance in UTC to stay consistent with UTC parsing/formatting above —
+  // setDate() (local) would re-introduce the timezone skew this module had.
   const r = new Date(d);
-  r.setDate(r.getDate() + n);
+  r.setUTCDate(r.getUTCDate() + n);
   return r;
 }
 
