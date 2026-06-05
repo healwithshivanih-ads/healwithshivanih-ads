@@ -271,32 +271,46 @@ export function CycleTrackingPanel(p: Props) {
   async function save() {
     setSaving(true);
     setErr("");
-    const r = await updateCycleTracking({
-      client_id: p.clientId,
-      last_menstrual_period: start || "",
-      last_period_end_date: end || "",
-      cycle_length_days: len ? parseInt(len, 10) : null,
-      cycle_regularity: reg || "",
-    });
-    setSaving(false);
-    if (r.ok) {
-      setEditing(false);
-      router.refresh();
-    } else {
-      setErr(r.error);
+    try {
+      const r = await updateCycleTracking({
+        client_id: p.clientId,
+        last_menstrual_period: start || "",
+        last_period_end_date: end || "",
+        cycle_length_days: len ? parseInt(len, 10) : null,
+        cycle_regularity: reg || "",
+      });
+      if (r.ok) {
+        setEditing(false);
+        router.refresh();
+      } else {
+        setErr(r.error);
+      }
+    } catch (e) {
+      // Audit Phase-1b: a thrown action (rotated Server Action ID, network)
+      // previously left the spinner stuck with no error. Surface it.
+      setErr((e as Error).message);
+    } finally {
+      setSaving(false);
     }
   }
 
   async function sendCheck() {
     setSending(true);
     setSendMsg("");
-    const r = await sendCycleDateCheckAction(p.clientId);
-    setSending(false);
-    if (r.ok) {
-      setSendMsg("✓ Sent — her date reply will auto-fill this.");
-      router.refresh();
-    } else {
-      setSendMsg("⚠ " + (r.error ?? "Send failed"));
+    try {
+      const r = await sendCycleDateCheckAction(p.clientId);
+      if (r.ok) {
+        setSendMsg("✓ Sent — her date reply will auto-fill this.");
+        router.refresh();
+      } else {
+        setSendMsg("⚠ " + (r.error ?? "Send failed"));
+      }
+    } catch (e) {
+      // Audit Phase-1b: don't leave "Sending…" stuck on a thrown action — the
+      // coach must know whether the WhatsApp check actually went out.
+      setSendMsg("⚠ " + (e as Error).message);
+    } finally {
+      setSending(false);
     }
   }
 

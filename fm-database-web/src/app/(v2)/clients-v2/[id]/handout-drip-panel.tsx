@@ -26,17 +26,24 @@ export function HandoutDripPanel({ clientId }: { clientId: string }) {
   useEffect(() => {
     if (!open || items !== null) return;
     start(async () => {
-      const loaded = await loadHandoutScheduleAction(clientId);
-      if (loaded.ok && (loaded.schedule?.length ?? 0) > 0) {
-        setItems(loaded.schedule!);
-        setActive(true);
-      } else {
-        const prev = await previewHandoutDripAction(clientId);
-        if (prev.ok) setItems(prev.schedule ?? []);
-        else {
-          setItems([]);
-          setMsg(prev.error ?? "");
+      try {
+        const loaded = await loadHandoutScheduleAction(clientId);
+        if (loaded.ok && (loaded.schedule?.length ?? 0) > 0) {
+          setItems(loaded.schedule!);
+          setActive(true);
+        } else {
+          const prev = await previewHandoutDripAction(clientId);
+          if (prev.ok) setItems(prev.schedule ?? []);
+          else {
+            setItems([]);
+            setMsg(prev.error ?? "");
+          }
         }
+      } catch (e) {
+        // Audit Phase-1b: a thrown action left the panel blank (no loading, no
+        // content, no error). Show the failure instead.
+        setItems([]);
+        setMsg((e as Error).message);
       }
     });
   }, [open, items, clientId]);

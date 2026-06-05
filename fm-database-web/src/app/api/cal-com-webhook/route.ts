@@ -664,7 +664,21 @@ export async function POST(req: Request) {
     });
   }
 
-  return NextResponse.json({ ok: false, error: "missing_fields_or_unknown_mode" }, { status: 400 });
+  // Fall-through: the event was signature-VERIFIED but didn't match either
+  // known payload shape. Persist it (so a real booking that deviates is never
+  // silently lost — audit Phase-1b #5) and return 200 so cal.com doesn't retry
+  // over the already-flaky pipe. The coach can recover it from _calcom_unmatched.
+  try {
+    await appendUnmatched({
+      at: new Date().toISOString(),
+      reason: "verified_but_unknown_shape",
+      mode,
+      raw: body as unknown as Record<string, unknown>,
+    });
+  } catch (e) {
+    console.error("[cal-com-webhook] failed to persist unmatched verified event:", e);
+  }
+  return NextResponse.json({ ok: true, persisted: "unmatched_verified" }, { status: 200 });
 }
 
 export async function GET() {

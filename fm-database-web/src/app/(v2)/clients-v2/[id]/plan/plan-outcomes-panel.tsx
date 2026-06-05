@@ -81,10 +81,19 @@ export function PlanOutcomesPanel({ planSlug, clientId }: Props) {
     let cancelled = false;
     setLoading(true);
     void (async () => {
-      const r = await computePlanOutcomesAction(planSlug, clientId);
-      if (cancelled) return;
-      setResult(r);
-      setLoading(false);
+      try {
+        const r = await computePlanOutcomesAction(planSlug, clientId);
+        if (cancelled) return;
+        setResult(r);
+      } catch (e) {
+        // Audit Phase-1b: without this catch a thrown action (malformed YAML,
+        // rotated Server Action ID on a stale tab) left the panel stuck on
+        // "Loading…" forever. Surface it via the existing error branch.
+        if (!cancelled)
+          setResult({ ok: false, error: (e as Error).message } as PlanOutcomesResult);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     })();
     return () => {
       cancelled = true;

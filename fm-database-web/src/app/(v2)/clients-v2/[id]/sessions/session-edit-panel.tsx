@@ -152,14 +152,22 @@ function SessionEditForm({
         bp_diastolic: parseMaybe(bpDia, initialMeasurements?.bp_diastolic),
         hr_bpm: parseMaybe(hr, initialMeasurements?.hr_bpm),
       };
-      const result = await updateSessionFieldsAction({
-        client_id: clientId,
-        session_id: sessionId,
-        coach_notes: coachNotes !== initialCoachNotes ? coachNotes : undefined,
-        presenting_complaints:
-          presenting !== (initialPresenting ?? "") ? presenting : undefined,
-        measurements,
-      });
+      let result;
+      try {
+        result = await updateSessionFieldsAction({
+          client_id: clientId,
+          session_id: sessionId,
+          coach_notes: coachNotes !== initialCoachNotes ? coachNotes : undefined,
+          presenting_complaints:
+            presenting !== (initialPresenting ?? "") ? presenting : undefined,
+          measurements,
+        });
+      } catch (e) {
+        // Audit Phase-1b: a thrown action (rotated Server Action ID, etc.)
+        // previously left the panel open with NO toast. Surface it.
+        toast.error("Save failed: " + (e as Error).message);
+        return;
+      }
 
       // Also flow numeric measurement values into measurements_log so the
       // body comp trend + outcomes panel + dashboard see them. Edit panel
@@ -183,16 +191,25 @@ function SessionEditForm({
         const bps = bpSys ? parseFloat(bpSys) : undefined;
         const bpd = bpDia ? parseFloat(bpDia) : undefined;
         const hrate = hr ? parseFloat(hr) : undefined;
-        await addMeasurementAction({
-          client_id: clientId,
-          date: dateForLog,
-          weight_kg: Number.isFinite(w) ? w : undefined,
-          waist_cm: Number.isFinite(wc) ? wc : undefined,
-          blood_pressure_systolic: Number.isFinite(bps) ? bps : undefined,
-          blood_pressure_diastolic: Number.isFinite(bpd) ? bpd : undefined,
-          resting_heart_rate: Number.isFinite(hrate) ? hrate : undefined,
-          notes: `from session ${sessionId} edit`,
-        });
+        try {
+          const mr = await addMeasurementAction({
+            client_id: clientId,
+            date: dateForLog,
+            weight_kg: Number.isFinite(w) ? w : undefined,
+            waist_cm: Number.isFinite(wc) ? wc : undefined,
+            blood_pressure_systolic: Number.isFinite(bps) ? bps : undefined,
+            blood_pressure_diastolic: Number.isFinite(bpd) ? bpd : undefined,
+            resting_heart_rate: Number.isFinite(hrate) ? hrate : undefined,
+            notes: `from session ${sessionId} edit`,
+          });
+          // Audit Phase-1b: don't silently ignore a failed measurement push —
+          // the session saved but the trend/outcomes would diverge. Warn.
+          if (mr && (mr as { ok?: boolean }).ok === false) {
+            toast.warning("Session saved, but the measurement trend couldn't be updated.");
+          }
+        } catch {
+          toast.warning("Session saved, but the measurement trend couldn't be updated.");
+        }
       }
 
       if (result.ok) {
