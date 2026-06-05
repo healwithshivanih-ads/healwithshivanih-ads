@@ -49,7 +49,7 @@ export async function scheduleWarmNudge(args) {
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
     const res = await fetch(
-      `${url.replace(/\/$/, '')}/api/jobs/schedule-warm-nudge`,
+      `${url.replace(/\/$/, '')}/api/webhooks/schedule-warm-nudge`,
       {
         method: 'POST',
         headers,
