@@ -1,0 +1,26 @@
+slug: chappus-sherr-methylene-blue-bbb-permeability-gaba-leakybrain-marker
+statement: Methylene blue is both lipophilic and hydrophilic, making it freely permeable
+  across the blood-brain barrier and most cellular membranes. Contrast — GABA taken
+  orally normally does NOT cross an intact BBB. Practical clinical diagnostic — if
+  a client reports clear cognitive or calming effect from oral GABA supplementation,
+  they likely have BBB leakiness (often paralleled by gut barrier dysfunction). The
+  same client should expect methylene blue to reach its mitochondrial targets reliably
+  without permeability concerns.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-dysfunction
+- leaky-gut
+- blood-brain-barrier-dysfunction
+linked_to_supplements:
+- gaba
+sources:
+- id: sherr-chappus-94pct-mitochondrial-2026
+  location: Podcast — BBB permeability + GABA leaky-brain marker segment
+  quote: If you take GABA and it works for you, you have a leaky brain and a leaky
+    gut. Methylene blue is highly permeable, goes pretty much everywhere.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Useful diagnostic heuristic — clients who feel oral GABA acutely are flagging
+  BBB + gut permeability. Add to intake screening.

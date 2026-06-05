@@ -1,0 +1,28 @@
+slug: chappus-sherr-methylene-blue-sympathetic-spiral-of-doom
+statement: Sherr names two principal upstream drivers of mitochondrial dysfunction
+  — insulin resistance (chronic glucose flux generates excessive ATP plus reactive
+  oxygen species that deplete antioxidants over time) and the "sympathetic spiral
+  of doom" (persistent fight-or-flight tone with chronically elevated cortisol, epinephrine,
+  and norepinephrine stressing the mitochondria). Both must be addressed at the lifestyle
+  level alongside any methylene blue intervention; otherwise symptoms recur on cessation.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-dysfunction
+- insulin-resistance
+- hpa-axis-dysregulation
+- chronic-stress
+linked_to_mechanisms:
+- mitochondrial-dysfunction
+- hpa-axis-dysregulation
+- insulin-resistance
+sources:
+- id: sherr-chappus-94pct-mitochondrial-2026
+  location: Podcast — drivers of mitochondrial dysfunction segment
+  quote: Two major causes — insulin resistance, and the sympathetic spiral of doom
+    where your body's always in fight or flight.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Two-driver framing for client education — insulin + nervous system. Cleaner
+  than the older 16-driver Horowitz model when introducing the concept.

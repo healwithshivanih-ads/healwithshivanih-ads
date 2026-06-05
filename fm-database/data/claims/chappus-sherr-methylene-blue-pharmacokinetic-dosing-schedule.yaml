@@ -1,0 +1,23 @@
+slug: chappus-sherr-methylene-blue-pharmacokinetic-dosing-schedule
+statement: Methylene blue oral bioavailability is unusually close to IV. Sublingual
+  onset is around 15-20 minutes; swallowed on empty stomach is 30-45 minutes. Eating
+  15-20 minutes after swallowing speeds absorption via peristalsis. Peak effect 1-2
+  hours after dosing; half-life 4-6 hours; renal excretion. Practical schedule — morning
+  dose around 7-8am plus optional early-afternoon dose around 12-1pm; AVOID late-day
+  dosing (sleep disruption in sensitive individuals). Above 30 mg/day take one day
+  off per week; above 70 mg/day take two days off per week to prevent methaemoglobinaemia
+  risk from accumulation.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-dysfunction
+sources:
+- id: sherr-chappus-94pct-mitochondrial-2026
+  location: Podcast — bioavailability + dosing schedule + cycling segments
+  quote: Half-life is 4-6 hours. Above 50-70 mg I make sure they take at least one
+    day off per week; above 70 mg, two days off.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Use this as the schedule template for any client starting methylene blue
+  — morning + early afternoon, plus weekly cycling above 30 mg/day.

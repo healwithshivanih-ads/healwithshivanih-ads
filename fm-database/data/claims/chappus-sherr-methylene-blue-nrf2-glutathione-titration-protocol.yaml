@@ -1,0 +1,30 @@
+slug: chappus-sherr-methylene-blue-nrf2-glutathione-titration-protocol
+statement: At higher antimicrobial doses (~1 mg/kg or above) methylene blue increases
+  endogenous hydrogen peroxide, which upregulates the NRF2 pathway to boost glutathione
+  production — IF the client has the capacity to make glutathione. Clients who feel
+  awful on high-dose methylene blue typically lack adequate antioxidant reserve. Practical
+  protocol — start at 4 mg, hold 3-5 days, increase by 4 mg increments; when escalating
+  into the higher antimicrobial range pair with antioxidant support (glutathione/NAC
+  dosed SEPARATELY from methylene blue), toxin binders, daily bowel movements, and
+  sauna for Herxheimer mitigation.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-dysfunction
+- chronic-inflammation
+linked_to_supplements:
+- glutathione
+- n-acetylcysteine
+linked_to_mechanisms:
+- chronic-inflammation
+- immune-dysregulation
+sources:
+- id: sherr-chappus-94pct-mitochondrial-2026
+  location: Podcast — NRF2 pathway + titration protocol segment
+  quote: If somebody feels like crap on methylene blue it's because they're making
+    hydrogen peroxide but don't have the capacity to make enough glutathione.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Use as the high-dose escalation protocol — never push past 30 mg/day without
+  paired antioxidant + binder + bowel + sauna support.

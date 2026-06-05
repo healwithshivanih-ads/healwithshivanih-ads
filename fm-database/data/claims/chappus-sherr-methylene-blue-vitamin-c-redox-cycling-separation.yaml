@@ -1,0 +1,24 @@
+slug: chappus-sherr-methylene-blue-vitamin-c-redox-cycling-separation
+statement: Methylene blue is a redox cycler — its oxidised form (blue) accepts electrons,
+  its reduced form (leucomethylene blue, colourless) donates them. Co-dosing with
+  antioxidants like vitamin C immediately reduces methylene blue to its colourless
+  form before it reaches the mitochondria — potentially negating its electron-donor
+  capacity. Sherr's clinical preference is to keep methylene blue and antioxidants
+  separated by 2-3 hours. Bonus practical tip — buffered vitamin C is the best household
+  stain-remover for methylene blue spills on surfaces and fabrics.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- mitochondrial-dysfunction
+linked_to_supplements:
+- vitamin-c
+sources:
+- id: sherr-chappus-94pct-mitochondrial-2026
+  location: Podcast — vitamin C interaction + blue bottle experiment segment
+  quote: Vitamin C donates electrons to methylene blue, changing it from blue to colourless.
+    Don't take antioxidants at the same time as methylene blue.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
+rationale: Critical timing rule for any client on methylene blue stack — separate
+  from vitamin C, glutathione, NAC, and most antioxidants by at least 2 hours.
