@@ -2077,6 +2077,45 @@ export function IntakeForm({
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // "Photo your medicine strips" — token-scoped upload of an image/PDF to the
+  // client's files dir (route validates the token → client_id server-side).
+  // Saves the client the tedium of typing names for multiple meds.
+  const [medPhotos, setMedPhotos] = useState<string[]>([]);
+  const [medPhotoStatus, setMedPhotoStatus] = useState<"idle" | "uploading" | "error">("idle");
+  const [medPhotoErr, setMedPhotoErr] = useState<string | null>(null);
+  const onMedPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const f = e.target.files?.[0];
+    e.target.value = ""; // allow re-selecting the same file
+    if (!f) return;
+    setMedPhotoStatus("uploading");
+    setMedPhotoErr(null);
+    try {
+      const fd = new FormData();
+      fd.append("token", token);
+      fd.append("file", f);
+      const r = await fetch("/api/intake/upload", { method: "POST", body: fd });
+      const j = (await r.json().catch(() => null)) as
+        | { ok?: boolean; filename?: string; error?: string }
+        | null;
+      if (!r.ok || !j?.ok || !j.filename) {
+        setMedPhotoErr(
+          j?.error === "file_too_large"
+            ? "That file is too large (max 15 MB)."
+            : j?.error === "unsupported_type"
+              ? "Please upload a photo or a PDF."
+              : "Couldn't upload — please try again, or just list your medicines below.",
+        );
+        setMedPhotoStatus("error");
+        return;
+      }
+      setMedPhotos((p) => [...p, j.filename as string]);
+      setMedPhotoStatus("idle");
+    } catch {
+      setMedPhotoErr("Couldn't upload — please try again, or just list your medicines below.");
+      setMedPhotoStatus("error");
+    }
+  };
   // Sparse-submit guard. When the client taps Submit on a mostly-empty
   // form, we ask "you've filled X of N sections — submit anyway?" once.
   // If they confirm, we set this flag so the second tap goes through
@@ -3207,6 +3246,35 @@ export function IntakeForm({
         sub="The categories that quietly reshape gut, hormones, sleep. Skip what doesn't apply."
         soft
       >
+        <div className="fm-fg">
+          <label className="fm-fg__label">📷 Easiest: photo your medicine strips or prescription</label>
+          <span className="fm-fg__hint">
+            Snap a clear photo (or upload a PDF) of your strips or prescription and Shivani will
+            read the names — no typing needed. Optional; you can also list them below.
+          </span>
+          <input
+            type="file"
+            accept="image/*,application/pdf"
+            capture="environment"
+            onChange={onMedPhoto}
+            disabled={medPhotoStatus === "uploading"}
+            style={{ marginTop: 4 }}
+          />
+          {medPhotoStatus === "uploading" && (
+            <span className="fm-fg__hint">Uploading…</span>
+          )}
+          {medPhotos.length > 0 && (
+            <span className="fm-fg__hint" style={{ color: "#15803d" }}>
+              ✓ {medPhotos.length} photo{medPhotos.length > 1 ? "s" : ""} uploaded — thank you
+            </span>
+          )}
+          {medPhotoErr && (
+            <span className="fm-fg__hint" style={{ color: "#b91c1c" }}>
+              {medPhotoErr}
+            </span>
+          )}
+        </div>
+
         <div className="fm-fg">
           <label className="fm-fg__label">Have you ever taken any of these regularly?</label>
           <span className="fm-fg__hint">

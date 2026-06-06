@@ -70,6 +70,11 @@ const PUBLIC_PATH_PREFIXES = [
   "/api/whatsapp-webhook",
   "/api/whatsapp-poll-webhook",
   "/api/health",
+  // Token-scoped public file upload for the intake form ("photo your
+  // medicine strips"). NOT trust-by-client_id: the route resolves the
+  // intake token → client_id server-side and refuses invalid/expired
+  // tokens. Public so it works on the Fly intake machine without Basic Auth.
+  "/api/intake/",
   // Cron endpoints — hit by the fm-coach-cron PM2 sidecar. Auth is
   // enforced at the route level via x-cron-secret header (CRON_SECRET
   // env). Public middleware bypass needed because there's no Basic Auth
