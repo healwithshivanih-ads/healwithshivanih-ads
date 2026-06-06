@@ -2084,36 +2084,45 @@ export function IntakeForm({
   const [medPhotos, setMedPhotos] = useState<string[]>([]);
   const [medPhotoStatus, setMedPhotoStatus] = useState<"idle" | "uploading" | "error">("idle");
   const [medPhotoErr, setMedPhotoErr] = useState<string | null>(null);
+  const MED_PHOTO_CAP = 10; // generous — covers any real med list
   const onMedPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const f = e.target.files?.[0];
-    e.target.value = ""; // allow re-selecting the same file
-    if (!f) return;
-    setMedPhotoStatus("uploading");
+    const files = Array.from(e.target.files ?? []);
+    e.target.value = ""; // allow re-selecting the same file(s)
+    if (files.length === 0) return;
     setMedPhotoErr(null);
-    try {
-      const fd = new FormData();
-      fd.append("token", token);
-      fd.append("file", f);
-      const r = await fetch("/api/intake/upload", { method: "POST", body: fd });
-      const j = (await r.json().catch(() => null)) as
-        | { ok?: boolean; filename?: string; error?: string }
-        | null;
-      if (!r.ok || !j?.ok || !j.filename) {
-        setMedPhotoErr(
-          j?.error === "file_too_large"
-            ? "That file is too large (max 15 MB)."
-            : j?.error === "unsupported_type"
-              ? "Please upload a photo or a PDF."
-              : "Couldn't upload — please try again, or just list your medicines below.",
-        );
-        setMedPhotoStatus("error");
-        return;
+    const remaining = MED_PHOTO_CAP - medPhotos.length;
+    if (remaining <= 0) {
+      setMedPhotoErr(`You've reached the limit of ${MED_PHOTO_CAP} photos.`);
+      return;
+    }
+    const toUpload = files.slice(0, remaining);
+    const dropped = files.length - toUpload.length;
+    setMedPhotoStatus("uploading");
+    const added: string[] = [];
+    let failed = 0;
+    for (const f of toUpload) {
+      try {
+        const fd = new FormData();
+        fd.append("token", token);
+        fd.append("file", f);
+        const r = await fetch("/api/intake/upload", { method: "POST", body: fd });
+        const j = (await r.json().catch(() => null)) as
+          | { ok?: boolean; filename?: string; error?: string }
+          | null;
+        if (!r.ok || !j?.ok || !j.filename) failed += 1;
+        else added.push(j.filename);
+      } catch {
+        failed += 1;
       }
-      setMedPhotos((p) => [...p, j.filename as string]);
-      setMedPhotoStatus("idle");
-    } catch {
-      setMedPhotoErr("Couldn't upload — please try again, or just list your medicines below.");
-      setMedPhotoStatus("error");
+    }
+    if (added.length) setMedPhotos((p) => [...p, ...added]);
+    setMedPhotoStatus("idle");
+    if (failed > 0) {
+      setMedPhotoErr(
+        `${failed} photo${failed > 1 ? "s" : ""} didn't upload (must be an image or PDF, max 15 MB each) — please try again.`,
+      );
+    } else if (dropped > 0) {
+      setMedPhotoErr(`Added the first ${toUpload.length}. Limit is ${MED_PHOTO_CAP} photos in total.`);
     }
   };
   // Sparse-submit guard. When the client taps Submit on a mostly-empty
@@ -3249,23 +3258,26 @@ export function IntakeForm({
         <div className="fm-fg">
           <label className="fm-fg__label">📷 Easiest: photo your medicine strips or prescription</label>
           <span className="fm-fg__hint">
-            Snap a clear photo (or upload a PDF) of your strips or prescription and Shivani will
-            read the names — no typing needed. Optional; you can also list them below.
+            Take a clear photo of <strong>each</strong> strip or prescription — add as many as you
+            need (you can pick several from your gallery at once, or snap them one by one). Make
+            sure the medicine name and strength are readable. PDFs are fine too. Shivani will read
+            the names — no typing needed. Optional; you can also list them below.
           </span>
           <input
             type="file"
             accept="image/*,application/pdf"
-            capture="environment"
+            multiple
             onChange={onMedPhoto}
-            disabled={medPhotoStatus === "uploading"}
+            disabled={medPhotoStatus === "uploading" || medPhotos.length >= MED_PHOTO_CAP}
             style={{ marginTop: 4 }}
           />
           {medPhotoStatus === "uploading" && (
             <span className="fm-fg__hint">Uploading…</span>
           )}
-          {medPhotos.length > 0 && (
+          {medPhotos.length > 0 && medPhotoStatus !== "uploading" && (
             <span className="fm-fg__hint" style={{ color: "#15803d" }}>
-              ✓ {medPhotos.length} photo{medPhotos.length > 1 ? "s" : ""} uploaded — thank you
+              ✓ {medPhotos.length} photo{medPhotos.length > 1 ? "s" : ""} uploaded
+              {medPhotos.length < MED_PHOTO_CAP ? " — add more above if needed" : ""}
             </span>
           )}
           {medPhotoErr && (

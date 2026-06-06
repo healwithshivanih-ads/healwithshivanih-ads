@@ -95,6 +95,17 @@ export async function POST(req: NextRequest) {
     const dir = path.join(plansRoot(), "clients", clientId, "files");
     await fs.mkdir(dir, { recursive: true });
 
+    // Server-side abuse cap (defence-in-depth; the client UI caps at 10).
+    // A valid token shouldn't be able to dump unlimited files.
+    try {
+      const existing = await fs.readdir(dir);
+      if (existing.filter((f) => f.includes("-intake-")).length >= 25) {
+        return NextResponse.json({ ok: false, error: "limit_reached" }, { status: 429 });
+      }
+    } catch {
+      /* dir just created / unreadable — ignore */
+    }
+
     const fileExt = path.extname(safeBase);
     const stem = path.basename(safeBase, fileExt);
     let stored = `${today}-intake-${safeBase}`;
