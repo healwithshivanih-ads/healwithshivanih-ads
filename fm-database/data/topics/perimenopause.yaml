@@ -12,9 +12,9 @@ aliases:
 - premenopause
 - menopausal transition
 - perimenopausal phase
-summary: The transitional phase approximately 3–4 years before and one year after menopause, characterized by irregular menstrual
-  cycles, fluctuating hormones, vasomotor symptoms, mood changes, and early psychosomatic symptoms. Progesterone typically
-  declines first, potentially creating relative estrogen dominance.
+summary: The midlife transition of declining and irregular ovarian hormone production;
+  the speaker notes earlier onset and links it to lifestyle incompatibility with the
+  infradian rhythm and accelerated ovarian aging.
 common_symptoms:
 - night sweats / hot flashes
 - insomnia
@@ -49,7 +49,8 @@ red_flags:
 - bleeding >15 days
 - new onset severe anxiety or depression
 - palpitations without cardiac cause
-- Irregular cycles in women under 35 should not be assumed to be perimenopause without workup
+- Irregular cycles in women under 35 should not be assumed to be perimenopause without
+  workup
 - Persistent amenorrhea in young women — rule out PCOS
 related_topics:
 - insomnia
@@ -69,6 +70,7 @@ related_topics:
 - menopause
 - bhrt
 - cortisol-steal
+- cycle-syncing
 key_mechanisms:
 - low-progesterone
 - estrogen-decline
@@ -77,31 +79,35 @@ key_mechanisms:
 - leaky-gut
 - progesterone-deficiency
 - ovarian-follicle-depletion
-coaching_scope_notes: Coaches can support lifestyle modifications, stress management, and nutrition. Diagnosis and hormonal
-  management are clinician scope.
-clinician_scope_notes: 'HRT decisions and prescribing require menopause-certified clinician.
-
-  Coach can prepare client for that conversation but does not initiate.
-
-  '
+coaching_scope_notes: Coaches can support lifestyle modifications, stress management,
+  and nutrition. Diagnosis and hormonal management are clinician scope.
+clinician_scope_notes: HRT decisions and lab interpretation (e.g., FSH, estrogen forms)
+  are clinician-led.
 sources:
 - id: vitaone-skill-practice-guide
   location: practice_guide.md, Menopause/Perimenopause section
 - id: thurlow-microbiome-session-6
   location: Session 6 — Main Transcript, Introduction
-  quote: These are all hormonally mediated and they are sometimes worsened by neurotransmitter changes.
+  quote: These are all hormonally mediated and they are sometimes worsened by neurotransmitter
+    changes.
 - id: vitaone-sex-hormones-cheatsheet
   location: Common Triggers for Low Progesterone
   quote: Perimenopause & menopause → Natural decline in ovarian progesterone.
 - id: coconote-fm-estrogen-dominance
   location: Types of Estrogen Dominance
-  quote: Somebody who is at the age of 45, their progesterone dips down. Because the progesterone has dipped down, the estrogen
-    is relatively a bit on the higher side, the chances of getting fibroids and phylloadenoma, cystic breast kind of increases.
+  quote: Somebody who is at the age of 45, their progesterone dips down. Because the
+    progesterone has dipped down, the estrogen is relatively a bit on the higher side,
+    the chances of getting fibroids and phylloadenoma, cystic breast kind of increases.
 - id: coconote-fm-sex-hormones
   location: Stages of Menopause
-  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is basically a period of perimenopause.
+  quote: Perimenopause is 3 to 4 years Before and one year after the menopause is
+    basically a period of perimenopause.
+- id: ask-expert-cycle-syncing
+  location: Current situation
+  quote: for the first time in all of human history women are going through perimenopause
+    earlier.
 evidence_tier: strong
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-05'
 updated_by: shivani

@@ -1,0 +1,25 @@
+slug: hrt-useful-but-not-a-panacea-test-and-pair-with-lifestyle
+statement: HRT (often estradiol-only) is a useful but incomplete tool; the body makes
+  three estrogens (estradiol, estrone, estriol), FSH testing can help confirm whether
+  HRT is working, and diet/lifestyle support is still required.
+evidence_tier: confirm_with_clinician
+rationale: The speaker argues for a more nuanced, tested approach to HRT rather than
+  treating it as a fix-all.
+coaching_translation: If a client is on HRT, support diet and lifestyle and encourage
+  testing/follow-up conversations with their prescriber.
+out_of_scope_notes: HRT prescribing and lab (FSH/estrogen) interpretation are clinician-led.
+caveats:
+- Educational only; not a recommendation to start or stop HRT.
+linked_to_topics:
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: HRT Q&A
+  quote: hrt is also not a panacea you still have to do the work of taking care of
+    your diet and lifestyle inputs to make that hrt as effective as possible
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

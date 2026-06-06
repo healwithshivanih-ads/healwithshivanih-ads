@@ -1,0 +1,25 @@
+slug: cgm-as-behavior-change-tool-for-luteal-blood-sugar
+statement: A continuous glucose monitor (CGM) can accelerate behavior change by showing
+  clients how their blood sugar destabilizes in the luteal phase, motivating cycle-aligned
+  eating.
+evidence_tier: fm_specific_thin
+coaching_translation: For data-driven clients, a CGM can make luteal blood-sugar swings
+  visible and motivate eating more and more often in that phase.
+rationale: Seeing objective glucose data reframes the conversation from dietary theory
+  to a concrete, personal pattern.
+linked_to_topics:
+- cycle-syncing
+out_of_scope_notes: ''
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Key takeaways / Q&A
+  quote: a cgm a continuous glucose monitor can be a wonderful tool to get them to
+    really look at the black and white kind of data world ... a huge motivator to
+    start that behavior change process
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

@@ -1,5 +1,5 @@
 slug: breast-tenderness
-display_name: Breast Tenderness
+display_name: Cyclical Breast Tenderness
 aliases:
 - mastalgia
 - breast pain
@@ -7,11 +7,11 @@ aliases:
 - fibrocystic breast changes
 - nipple tenderness
 - cystic breast
+- sore breasts before period
 category: hormonal
 severity: common
-description: Pain, swelling, or tenderness in breast tissue. Associated with estrogen
-  dominance, fibrocystic breast disease, and can be worsened by excess estrogen exposure
-  (e.g., OCP use, relative progesterone deficiency).
+description: Cyclical breast tenderness, here associated with estrogen overload around
+  the ovulatory phase.
 when_to_refer: If lump is detected or symptoms persist; refer for mammogram/ultrasound
   and oncology evaluation if indicated.
 linked_to_topics:
@@ -22,6 +22,7 @@ linked_to_mechanisms:
 - estrogen-enterohepatic-recirculation
 - low-progesterone
 - estrogen-driven-cell-proliferation
+- estrogen-clearance-liver-gut
 sources:
 - id: vitaone-sex-hormones-cheatsheet
   location: Estrogen Detoxification Pathways — When You See These Patterns Clinically
@@ -30,7 +31,9 @@ sources:
   location: Types of Estrogen Dominance / BHRT Cautions
   quote: The chances of getting fibroids and phylloadenoma, cystic breast kind of
     increases. These patients can have breast pain, nipple tenderness.
-version: 2
+- id: ask-expert-cycle-syncing
+  quote: they'll have breast tenderness
+version: 3
 status: active
-updated_at: '2026-05-05'
+updated_at: '2026-06-05'
 updated_by: shivani

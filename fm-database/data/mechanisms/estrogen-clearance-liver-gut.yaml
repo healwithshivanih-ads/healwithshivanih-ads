@@ -1,0 +1,26 @@
+slug: estrogen-clearance-liver-gut
+display_name: Estrogen Clearance via Liver and Gut (Estrobolome)
+aliases:
+- estrobolome
+- estrogen detoxification
+category: metabolic
+summary: Estrogen is broken down in the liver and excreted via the gut and estrobolome;
+  impaired liver detox or constipation/IBS leads to estrogen-overload symptoms (breast
+  tenderness, breakouts, bloating, irritability), especially around the ovulatory
+  estrogen surge.
+linked_to_topics:
+- premenstrual-syndrome
+evidence_tier: plausible_emerging
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Hormone metabolism by phase
+  quote: the liver needs extra support to break down that estrogen ... estrobolum
+    function, constipation or IBS further compromising their ability to break down
+    estrogen in the liver
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

@@ -1,0 +1,22 @@
+slug: premenstrual-mood-changes
+display_name: Premenstrual Irritability / Anxiety
+aliases:
+- mood swings before period
+- luteal anxiety
+- pms irritability
+category: mood
+severity: common
+description: Irritability and anxiety in the premenstrual/luteal phase; luteal anxiety
+  is partly attributed to blood-sugar instability.
+linked_to_mechanisms:
+- luteal-metabolic-shift
+linked_to_topics: []
+when_to_refer: ''
+sources:
+- id: ask-expert-cycle-syncing
+  quote: women have so much anxiety simply due to blood sugar mismanagement in the
+    luteal phase
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

@@ -1,18 +1,13 @@
 slug: premenstrual-syndrome
-display_name: Premenstrual Syndrome (PMS) and PMDD
+display_name: Premenstrual Syndrome (PMS)
 aliases:
 - pms
 - pmdd
 - premenstrual-dysphoric-disorder
 - luteal-phase-symptoms
-summary: A cyclic constellation of physical and emotional symptoms appearing during
-  the luteal phase and resolving by the end of menses, affecting 30-40% of menstruating
-  women. Peak in 30s-40s. PMDD is the severe DSM-V variant (2.5-5% of women) requiring
-  5+ symptoms peaking pre-menses. Pizzorno's etiologic framework — cyclic ovarian
-  steroid changes alter brain serotonin (most implicated), GABA, and endorphins; estrogen
-  excess plus cholestasis worsens via impaired estrogen clearance; vitamin B6 dysfunction
-  amplifies. Hypothyroidism affects a large percentage of PMS patients and often resolves
-  symptoms when corrected.
+summary: Cyclical physical and mood symptoms in the luteal phase; framed here as a
+  signal of poor cycle health that needs root-cause support (blood sugar, estrogen
+  clearance, stress) rather than symptom suppression.
 common_symptoms:
 - low-mood
 - irritability
@@ -23,6 +18,9 @@ common_symptoms:
 - food-cravings
 - fatigue
 - water-retention
+- premenstrual-sugar-cravings
+- premenstrual-mood-changes
+- cyclical-bloating
 red_flags:
 - suicidal ideation during PMDD episodes
 - severe self-harm urges
@@ -38,10 +36,8 @@ key_mechanisms:
 - serotonin-melatonin-sleep-axis
 - hpa-axis-dysregulation
 - gaba-receptor-modulation
-coaching_scope_notes: Symptom diary for 2+ cycles confirms luteal-phase pattern. Coaching
-  role — diet (lower fat / higher fibre / lower sugar / lower caffeine / lower salt),
-  B6 / Mg / Zn / vitamin E repletion, Vitex, vitamin D, exercise. Refer PMDD with
-  suicidal ideation immediately; complex hormonal patterns to BHRT clinician.
+coaching_scope_notes: Coaches can support PMS via cycle-aligned nutrition, blood-sugar
+  stability, movement, and stress management.
 clinician_scope_notes: PMDD per DSM-V; SSRIs (fluoxetine, sertraline, paroxetine)
   for moderate-severe; OCP / cyclic progestogens for refractory; rule out hypothyroidism,
   depression masquerade.
@@ -59,8 +55,12 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 85 — Premenstrual Syndrome
   quote: Comprehensive natural treatment for PMS + PMDD.
+- id: ask-expert-cycle-syncing
+  location: Key takeaways
+  quote: remind the people that you're working with that pms is a flag for poor cycle
+    health and it needs a root cause support not symptom management
 evidence_tier: strong
-version: 2
+version: 3
 status: active
-updated_at: '2026-05-30'
-updated_by: Shivani
+updated_at: '2026-06-05'
+updated_by: shivani

@@ -1,0 +1,25 @@
+slug: premenstrual-sugar-cravings
+display_name: Premenstrual Sugar/Carb Cravings
+aliases:
+- luteal cravings
+- carb cravings before period
+- premenstrual binge eating
+category: metabolic
+severity: common
+description: Strong cravings (often carbohydrate/sugar) in the luteal/premenstrual
+  phase, linked to the metabolic-rate increase and blood-sugar instability of that
+  phase.
+linked_to_topics:
+- premenstrual-syndrome
+- cycle-syncing
+linked_to_mechanisms:
+- luteal-metabolic-shift
+when_to_refer: ''
+sources:
+- id: ask-expert-cycle-syncing
+  quote: women are tremendously vulnerable during the luteal phase to cravings and
+    binge eating
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

@@ -1,0 +1,26 @@
+slug: cycle-syncing-pilot-reduced-pms-symptoms
+statement: In a self-funded 3-month pilot (about 50 participants), 80% reported roughly
+  a 75% reduction in the number and severity of PMS symptoms by the end of the first
+  month (preliminary, unpublished).
+evidence_tier: plausible_emerging
+rationale: The speaker's own pilot study using CGM and hormone urinalysis; data described
+  as preliminary, with peer-reviewed publication pending.
+caveats:
+- Preliminary, self-funded, unpublished, and conducted by the method's creator. Treat
+  as promising signal, not established efficacy, until peer-reviewed.
+linked_to_topics:
+- cycle-syncing
+- premenstrual-syndrome
+coaching_translation: ''
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Study results
+  quote: 80% of the participants saw 75% reduction of the number of PMS symptoms and
+    the severity of them by the end of the first month
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

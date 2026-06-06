@@ -1,0 +1,26 @@
+slug: oral-contraceptive-suppresses-cycle-and-depletes-micronutrients
+statement: The oral contraceptive pill suppresses ovulation and endogenous hormone
+  production and is associated with micronutrient depletion (e.g., B vitamins, vitamin
+  D3), gut microbiome disruption, and effects on weight, muscle, and mood.
+evidence_tier: plausible_emerging
+rationale: The pill holds the infradian rhythm in suspension; micronutrient depletion
+  is well documented, broader effects less so.
+coaching_translation: Clients on or coming off the pill may benefit from micronutrient
+  and gut support, coordinated with their provider.
+out_of_scope_notes: Contraception decisions are clinician-led; coaches never advise
+  starting or stopping medication.
+linked_to_topics:
+- cycle-syncing
+caveats: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Birth control
+  quote: we know that the pill depletes our micronutrient stores like vitamin D3 etc
+    we know it disrupts the gut microbiome we know that it has negative impacts on
+    weight and muscle
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

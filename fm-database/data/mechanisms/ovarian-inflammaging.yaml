@@ -1,0 +1,23 @@
+slug: ovarian-inflammaging
+display_name: Ovarian Inflammaging / Accelerated Ovarian Aging
+category: endocrine
+summary: A proposed mechanism whereby chronic mismatch between lifestyle and the infradian
+  rhythm drives ovarian inflammation and faster ovarian aging; newly described 'rete
+  ovarii' structures may sense interstitial micronutrient and inflammation levels
+  and modulate ovulation and AMH.
+evidence_tier: plausible_emerging
+aliases: []
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms: []
+linked_to_topics: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: New ovarian research
+  quote: there are these microtubules in the ovary which are called rete ovari that
+    are translating the interstitial fluid of the body around the ovary ... scanning
+    it for micronutrient levels inflammation markers and more
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

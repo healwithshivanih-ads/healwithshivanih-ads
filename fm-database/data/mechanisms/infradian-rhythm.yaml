@@ -1,0 +1,26 @@
+slug: infradian-rhythm
+display_name: Infradian Rhythm
+aliases:
+- infradian clock
+- female monthly biological clock
+category: endocrine
+summary: The roughly monthly hormonal rhythm governing the menstrual cycle that also
+  modulates brain regions, immune function, metabolic rate, microbiome, and stress
+  response across the follicular, ovulatory, luteal, and menstrual phases.
+downstream_effects:
+- luteal-metabolic-shift
+linked_to_topics:
+- cycle-syncing
+evidence_tier: plausible_emerging
+upstream_drivers: []
+related_mechanisms: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Two biological clocks
+  quote: the infradian rhythm is the rhythm that governs the menstrual cycle but ...
+    really affects major systems of the body your brain your immune system your metabolic
+    rate is changing throughout the menstrual cycle your microbiome your stress response
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

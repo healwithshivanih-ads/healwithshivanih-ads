@@ -1,0 +1,23 @@
+slug: luteal-metabolic-shift
+display_name: Luteal-Phase Metabolic Increase
+category: metabolic
+summary: In the luteal phase metabolism rises (an estimated ~280 kcal/day higher need)
+  to support endometrial development; under-fueling drives blood-sugar instability
+  and cravings, and later carbohydrate-driven night sweats and hot flashes in midlife.
+linked_to_topics:
+- cycle-syncing
+evidence_tier: fm_specific_thin
+aliases: []
+upstream_drivers: []
+downstream_effects: []
+related_mechanisms: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Nutrition by phase
+  quote: the studies show you need about 280 more calories per day relative to yourself
+    ... women are tremendously vulnerable during the luteal phase to cravings and
+    binge eating
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

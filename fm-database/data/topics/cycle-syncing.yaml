@@ -1,0 +1,33 @@
+slug: cycle-syncing
+display_name: Cycle Syncing
+aliases:
+- cycle-sinking
+- cycle syncing method
+- infradian self-care
+summary: A diet, fitness, and lifestyle method that aligns daily inputs with the four
+  phases of the menstrual cycle (the infradian rhythm) to reduce PMS, support ovulation
+  and progesterone, and slow ovarian aging.
+common_symptoms:
+- premenstrual-sugar-cravings
+- cyclical-bloating
+- breast-tenderness
+key_mechanisms:
+- infradian-rhythm
+- luteal-metabolic-shift
+coaching_scope_notes: Phase-based food, movement, and routine adjustments are within
+  health-coaching scope as education and lifestyle support.
+clinician_scope_notes: Diagnosis/management of PCOS, endometriosis, contraception,
+  HRT, and lab interpretation are clinician-led.
+evidence_tier: plausible_emerging
+red_flags: []
+related_topics: []
+sources:
+- id: ask-expert-cycle-syncing
+  location: Methodology overview
+  quote: the cycle syncing method and the purpose of this method is to help us align
+    with our biological rhythms, our hormonal patterns to really optimize our cycle
+    health, boost our fertility and slow down hormonal aging.
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani

@@ -1,0 +1,21 @@
+slug: cyclical-bloating
+display_name: Cyclical Bloating
+aliases:
+- period bloat
+- puffy belly before period
+category: gi
+severity: common
+description: Bloating tied to the cycle — ovulatory estrogen overload and luteal slowed
+  bowel transit from rising progesterone.
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+linked_to_topics: []
+when_to_refer: ''
+sources:
+- id: ask-expert-cycle-syncing
+  quote: cramping, the ovulation pain, bloating, irritability all of which are signs
+    of estrogen overload
+version: 1
+status: active
+updated_at: '2026-06-05'
+updated_by: shivani
