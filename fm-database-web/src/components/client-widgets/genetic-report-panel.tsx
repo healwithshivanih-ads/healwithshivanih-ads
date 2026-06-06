@@ -18,7 +18,7 @@ import {
   type GeneticReportResult,
   type GeneticSnp,
 } from "@/lib/server-actions/clients";
-import { uploadFileAction } from "@/lib/server-actions/assess";
+import { uploadClientFile } from "@/lib/fmdb/upload-client-file";
 
 interface Props {
   clientId: string;
@@ -57,10 +57,7 @@ export function GeneticReportPanel({ clientId }: Props) {
     setIsParsing(true);
     setParseError(null);
     try {
-      const fd = new FormData();
-      fd.append("client_id", clientId);
-      fd.append("file", file);
-      const filePath = await uploadFileAction(fd);
+      const filePath = await uploadClientFile(clientId, file);
       startTransition(async () => {
         const result = await parseGeneticReportAction(clientId, filePath);
         if (!result.ok) {

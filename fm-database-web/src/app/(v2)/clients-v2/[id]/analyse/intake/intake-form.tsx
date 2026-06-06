@@ -39,9 +39,9 @@ import {
   applyTranscriptDataAction,
   parseHealthTextAction,
   extractTranscriptAction,
-  uploadFileAction,
   type FivePillarsData,
 } from "@/lib/server-actions/assess";
+import { uploadClientFile } from "@/lib/fmdb/upload-client-file";
 /** Inline shape mirroring ExtractedHealthData from lib/fmdb/anthropic.ts
  *  (which is "use server" — types from there don't cross the boundary
  *  cleanly into this client component). */
@@ -2645,8 +2645,8 @@ function HealthDataPreview({
 
 /* ─────────────────────────────────────────────────────────────────────────
  * TranscriptUploadBox
- * Accepts PDF / TXT / MD / image. Streams file → uploadFileAction →
- * extractTranscriptAction. Calls onExtracted with matched symptom slugs
+ * Accepts PDF / TXT / MD / image. Streams file → uploadClientFile (route
+ * handler) → extractTranscriptAction. Calls onExtracted with matched symptom slugs
  * and the saved file path so the intake form can merge symptoms + record
  * the on-disk path in transcript_notes.
  * ──────────────────────────────────────────────────────────────────────── */
@@ -2681,10 +2681,7 @@ function TranscriptUploadBox({
 
     startBusy(async () => {
       try {
-        const fd = new FormData();
-        fd.append("client_id", clientId);
-        fd.append("file", f);
-        const path = await uploadFileAction(fd);
+        const path = await uploadClientFile(clientId, f);
         setSavedPath(path);
 
         const result = await extractTranscriptAction(

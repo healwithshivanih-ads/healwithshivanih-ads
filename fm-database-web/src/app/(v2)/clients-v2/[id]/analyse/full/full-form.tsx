@@ -26,11 +26,11 @@ import { toast } from "sonner";
 import {
   runAssessAction,
   generateDraftAction,
-  uploadFileAction,
   loadLatestSynthesisAction,
   autoRouteUploadedReportAction,
   type SessionSummary,
 } from "@/lib/server-actions/assess";
+import { uploadClientFile } from "@/lib/fmdb/upload-client-file";
 import {
   listClientFilesAction,
   resolveClientFileAction,
@@ -508,11 +508,8 @@ export function FullAssessmentForm({
     if (!files || files.length === 0) return;
     startUpload(async () => {
       for (const file of Array.from(files)) {
-        const fd = new FormData();
-        fd.append("client_id", clientId);
-        fd.append("file", file);
         try {
-          const filePath = await uploadFileAction(fd);
+          const filePath = await uploadClientFile(clientId, file);
           setUploads((prev) => [
             ...prev,
             {

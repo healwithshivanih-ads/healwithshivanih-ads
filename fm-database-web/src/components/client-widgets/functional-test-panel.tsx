@@ -17,7 +17,8 @@ import {
   assessReworkBenefitAction,
   type FunctionalTestSummary,
 } from "@/lib/server-actions/clients";
-import { uploadFileAction, checkDuplicateUploadAction } from "@/lib/server-actions/assess";
+import { checkDuplicateUploadAction } from "@/lib/server-actions/assess";
+import { uploadClientFile } from "@/lib/fmdb/upload-client-file";
 
 interface Props {
   clientId: string;
@@ -151,10 +152,7 @@ export function FunctionalTestPanel({ clientId }: Props) {
         return;
       }
 
-      const fd = new FormData();
-      fd.append("client_id", clientId);
-      fd.append("file", file);
-      const filePath = await uploadFileAction(fd);
+      const filePath = await uploadClientFile(clientId, file);
       setLastFilePath(filePath);
       setForcedType(null);
       runParse(filePath);

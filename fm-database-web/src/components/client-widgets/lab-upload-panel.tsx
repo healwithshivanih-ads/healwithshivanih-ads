@@ -5,7 +5,6 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { detectLabPatterns, IFM_NODES } from "@/lib/fmdb/ifm-matrix";
 import {
-  uploadFileAction,
   extractTranscriptAction,
   applyTranscriptDataAction,
   loadLatestLabSnapshotAction,
@@ -492,8 +491,15 @@ export function LabUploadPanel({ clientId }: Props) {
           );
         }
         const base64Bytes = typeof window !== "undefined" ? window.btoa(b64) : "";
-        const dupCheck = await checkDuplicateUploadAction(clientId, base64Bytes);
-        if (dupCheck.ok && dupCheck.duplicate) {
+        // Dup-check is a convenience (saves a redundant extraction). Never let
+        // it block the upload — if it errors, just proceed.
+        let dupCheck: Awaited<ReturnType<typeof checkDuplicateUploadAction>> | null = null;
+        try {
+          dupCheck = await checkDuplicateUploadAction(clientId, base64Bytes);
+        } catch {
+          dupCheck = null;
+        }
+        if (dupCheck?.ok && dupCheck.duplicate) {
           const proceed = window.confirm(
             `This file (or an identical copy) was already uploaded for this client as:\n\n` +
             `  📄 ${dupCheck.existing_filename}\n` +
@@ -507,12 +513,30 @@ export function LabUploadPanel({ clientId }: Props) {
           }
         }
 
-        // 1. Upload file to client's files directory via FormData
-        // (Next 16 RSC can't serialize multi-MB Uint8Array — FormData streams.)
+        // 1. Upload file via a Route Handler (NOT a Server Action). A File sent
+        // through a Server Action is array-counted by React Flight's deserializer
+        // (1e6 slot limit, byteLength counted + reference-forked), so a ~1 MB
+        // upload throws "Maximum array nesting exceeded" on the server BEFORE the
+        // action body runs — the file never saves and the client sees a generic
+        // server error. Small files slip under the limit, which is why this only
+        // bit large lab PDFs. Route handlers parse FormData natively, no limit.
+        // See src/app/api/upload-client-file/route.ts.
         const fd = new FormData();
-        fd.append("client_id", clientId);
+        fd.append("clientId", clientId);
         fd.append("file", file);
-        const savedPath = await uploadFileAction(fd);
+        const upRes = await fetch("/api/upload-client-file", {
+          method: "POST",
+          body: fd,
+        });
+        const upJson = (await upRes.json().catch(() => null)) as
+          | { ok?: boolean; filePath?: string; error?: string }
+          | null;
+        if (!upRes.ok || !upJson?.ok || !upJson.filePath) {
+          setExtractError(upJson?.error ?? `Upload failed (HTTP ${upRes.status})`);
+          toast.error("Upload failed");
+          return;
+        }
+        const savedPath = upJson.filePath;
         setFilePath(savedPath);
 
         // 2. Extract lab values using existing transcript extractor
