@@ -236,6 +236,7 @@ def _build_markdown(plan: dict, client: dict) -> str:
     lines.append("---")
     lines.append("")
     lines.append("**Notes for the patient**")
+    lines.append("- Please also ask the lab to record: blood pressure, height, weight, and waist circumference.")
     lines.append("- Ask the lab to share results directly with you (PDF) so we can review them together.")
     lines.append("- If any test is unavailable, the lab can suggest a closest equivalent — please ask before substituting.")
     lines.append("- Send the report to me on WhatsApp / email once it's back.")

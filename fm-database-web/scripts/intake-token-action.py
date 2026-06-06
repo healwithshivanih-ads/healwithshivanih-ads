@@ -632,6 +632,11 @@ _SCALAR_FIELDS = [
     "digestion_notes", "sleep_notes", "energy_pattern", "menstrual_notes",
     "stress_response", "childhood_history", "toxic_exposures",
     "what_has_worked", "what_hasnt_worked",
+    # Lifestyle exposures + mental-health care (single-string radios/text)
+    "smoking_status", "smoking_detail", "alcohol_intake",
+    "current_mental_health_care",
+    # Intimate / urinary health (women only) — single-select frequency
+    "vaginal_yeast_frequency",
     # Cycle / pregnancy
     "cycle_status", "cycle_regularity",
     "pregnancy_status",
@@ -702,7 +707,9 @@ _INTAKE_LIST_FIELDS = [
     "acne_pattern", "skin_signs",
     "pain_locations", "headache_type", "pain_pattern", "pain_quality",
     "histamine_signals", "chemical_sensitivity", "oral_signs",
+    "eye_signs",
     "repro_diagnoses", "perimenopause_inventory",
+    "vaginal_signs",
     "recent_labs_done",
     # ── v0.75.2 Tier 1 screening chip-arrays ──
     "beighton_self_score", "beighton_supplemental",
@@ -1218,6 +1225,23 @@ def _derive_symptoms_from_intake(payload: dict) -> list[str]:
             add("dysmenorrhea")
     except (TypeError, ValueError):
         pass
+
+    # Intimate / urinary health (women only) — yeast / microbiome / dryness
+    yeast_freq = txt("vaginal_yeast_frequency")
+    if (has_substr("vaginal_signs", "frequent yeast")
+            or has_substr("vaginal_signs", "paneer")
+            or has_substr("vaginal_signs", "cottage cheese")
+            or "2–3" in yeast_freq or "4 or more" in yeast_freq):
+        add("chronic-candida-infections")
+    if (has_substr("vaginal_signs", "unusual or increased discharge")
+            or has_substr("vaginal_signs", "greyish")):
+        add("vaginal-discharge")
+    if has_substr("vaginal_signs", "itching"):
+        add("vaginal-itching")
+    if has_substr("vaginal_signs", "vaginal dryness"):
+        add("vaginal-dryness")
+    if has_substr("vaginal_signs", "frequent urine") or has_substr("vaginal_signs", "uti"):
+        add("urinary-tract-infections")
 
     # Constitutional / skin / weight
     if "cold" in txt("cold_heat_tolerance"):

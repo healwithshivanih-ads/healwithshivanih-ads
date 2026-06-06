@@ -375,6 +375,10 @@ export default async function IntakeViewPage({
         <Field label="Toxic exposures" value={src.toxic_exposures} />
         <Field label="What has worked" value={src.what_has_worked} />
         <Field label="What hasn't worked" value={src.what_hasnt_worked} />
+        <Field label="Smoking / tobacco" value={src.smoking_status} />
+        <Field label="Smoking — detail" value={src.smoking_detail} />
+        <Field label="Alcohol intake" value={src.alcohol_intake} />
+        <Field label="Mental-health care" value={src.current_mental_health_care} />
       </Section>
 
       <Section num={9} title="How you eat">
@@ -402,6 +406,7 @@ export default async function IntakeViewPage({
         <Field label="Histamine signals" value={src.histamine_signals} />
         <Field label="Chemical sensitivity" value={src.chemical_sensitivity} />
         <Field label="Oral signs" value={src.oral_signs} />
+        <Field label="Eye signs" value={src.eye_signs} />
       </Section>
 
       <Section num={11} title="Cycle, contraception, pregnancies">
@@ -418,6 +423,8 @@ export default async function IntakeViewPage({
         <Field label="Pregnancies" value={src.pregnancies} />
         <Field label="Reproductive diagnoses" value={src.repro_diagnoses} />
         <Field label="Perimenopause inventory" value={src.perimenopause_inventory} />
+        <Field label="Intimate / urinary signs" value={src.vaginal_signs} />
+        <Field label="Yeast infection frequency" value={src.vaginal_yeast_frequency} />
         <Field label="Menstrual notes" value={src.menstrual_notes} />
       </Section>
 

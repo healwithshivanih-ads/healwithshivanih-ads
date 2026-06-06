@@ -490,6 +490,7 @@ class Client(BaseModel):
     histamine_signals: list[str] = Field(default_factory=list)
     chemical_sensitivity: list[str] = Field(default_factory=list)
     oral_signs: list[str] = Field(default_factory=list)
+    eye_signs: list[str] = Field(default_factory=list)
 
     # Section 12 — Periods (women only) — depth fields + repeaters
     period_pain_severity: Optional[int] = None       # 1-10 slider
@@ -499,6 +500,9 @@ class Client(BaseModel):
     pregnancies: list[PregnancyEntry] = Field(default_factory=list)
     repro_diagnoses: list[str] = Field(default_factory=list)
     perimenopause_inventory: list[str] = Field(default_factory=list)
+    # Intimate / urinary health (women only) — yeast / microbiome / dryness
+    vaginal_signs: list[str] = Field(default_factory=list)
+    vaginal_yeast_frequency: str = ""
 
     # Section 14 — Environment (sun + vit D + grounding)
     sun_exposure_daily: str = ""
@@ -598,6 +602,14 @@ class Client(BaseModel):
     toxic_exposures: str = ""            # mold, heavy metals, chemical exposures, long-term medication history
     what_has_worked: str = ""            # past interventions (diet, supplements, lifestyle) that helped
     what_hasnt_worked: str = ""          # things tried that made no difference or worsened symptoms
+
+    # Lifestyle exposures — smoking / tobacco + alcohol (structured)
+    smoking_status: str = ""             # never / former / current / chew / prefer-not
+    smoking_detail: str = ""             # rough amount + duration (free text)
+    alcohol_intake: str = ""             # none / occasional / weekly / most-days / prefer-not
+
+    # Current mental-health care (sensitively framed, optional)
+    current_mental_health_care: str = ""  # no / therapist / psychiatrist / both / prefer-not
 
     # ── Five pillars baseline ─────────────────────────────────────────────────
     five_pillars: Optional[FivePillarsAssessment] = None

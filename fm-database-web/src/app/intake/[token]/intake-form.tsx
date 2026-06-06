@@ -169,6 +169,14 @@ interface FormState {
   what_has_worked: string;
   what_hasnt_worked: string;
 
+  // Lifestyle exposures — smoking / tobacco + alcohol (structured)
+  smoking_status: string;
+  smoking_detail: string;
+  alcohol_intake: string;
+
+  // Current mental-health care (sensitively framed, optional)
+  current_mental_health_care: string;
+
   // v2.2 — environment
   sun_exposure_daily: string;
   sunscreen_use: string;
@@ -208,6 +216,7 @@ interface FormState {
   histamine_signals: string[];
   chemical_sensitivity: string[];
   oral_signs: string[];
+  eye_signs: string[];
 
   // v0.75.2 — Tier 1 screening: hypermobility (Beighton self-score),
   // orthostatic intolerance (NASA lean self-check, device-conditional),
@@ -246,6 +255,9 @@ interface FormState {
   pregnancies: PregnancyRowState[];
   repro_diagnoses: string[];
   perimenopause_inventory: string[];
+  // Intimate / urinary health (women only)
+  vaginal_signs: string[];
+  vaginal_yeast_frequency: string;
 
   // v2.2 — Readiness
   recent_labs_done: string[];
@@ -742,6 +754,62 @@ const ORAL_SIGNS = [
   "sensitive teeth",
 ];
 
+const EYE_SIGNS = [
+  "Dry, gritty or burning eyes",
+  "Eyes tire or strain easily",
+  "Blurring or changes in vision",
+  "Night vision worse than before",
+  "Floaters",
+  "Light sensitivity",
+  "No concerns",
+];
+
+// Lifestyle exposures — smoking / tobacco + alcohol
+const SMOKING_STATUS = [
+  { value: "Never", label: "Never" },
+  { value: "Former — I quit", label: "Former — I quit" },
+  { value: "Currently smoke or vape", label: "Currently smoke or vape" },
+  { value: "I chew tobacco / gutka / paan", label: "I chew tobacco / gutka / paan" },
+  { value: "Prefer not to say", label: "Prefer not to say" },
+];
+const ALCOHOL_INTAKE = [
+  { value: "None", label: "None" },
+  { value: "Occasional (a few times a month)", label: "Occasional (a few times a month)" },
+  { value: "Weekly (1–7 drinks a week)", label: "Weekly (1–7 drinks a week)" },
+  { value: "Most days", label: "Most days" },
+  { value: "Prefer not to say", label: "Prefer not to say" },
+];
+
+// Current mental-health care (sensitively framed)
+const MENTAL_HEALTH_CARE = [
+  { value: "No", label: "No" },
+  { value: "Yes — seeing a therapist/counsellor", label: "Yes — seeing a therapist/counsellor" },
+  { value: "Yes — under a psychiatrist", label: "Yes — under a psychiatrist" },
+  { value: "Yes — both", label: "Yes — both" },
+  { value: "Prefer not to say", label: "Prefer not to say" },
+];
+
+// Intimate / urinary health (women only)
+const VAGINAL_SIGNS = [
+  "Unusual or increased discharge",
+  "Thick white discharge (crumbly, like paneer / cottage cheese)",
+  "Greyish discharge with a fishy smell",
+  "Itching or irritation around the vaginal area",
+  "Frequent yeast / fungal infections",
+  "Frequent urine infections (UTIs)",
+  "Vaginal dryness",
+  "Discomfort or pain during sex",
+  "None of these",
+  "Prefer to discuss in person",
+];
+const VAGINAL_YEAST_FREQUENCY = [
+  { value: "Never / rarely", label: "Never / rarely" },
+  { value: "About once in the past year", label: "About once in the past year" },
+  { value: "2–3 times in the past year", label: "2–3 times in the past year" },
+  { value: "4 or more times in the past year", label: "4 or more times in the past year" },
+  { value: "Not sure", label: "Not sure" },
+];
+
 // Periods
 const PERIOD_PAIN_IMPACT = [
   { value: "none", label: "Doesn't affect my day" },
@@ -872,6 +940,16 @@ const EMPTY_MED_ENTRY: MedicationCategoryEntry = {
   still_taking: null,
   side_effects: "",
 };
+
+// Common brand/generic names for the medication name typeahead (native
+// <datalist>). Suggestions only — clients can type anything.
+const COMMON_MED_BRANDS = [
+  "Thyronorm", "Eltroxin", "Ecosprin", "Telma", "Telmikind", "Amlodipine",
+  "Glycomet", "Metformin", "Janumet", "Galvus Met", "Pantop", "Pan-D",
+  "Omez", "Razo", "Nexpro", "Storvas", "Rosuvas", "Atorva", "Shelcal",
+  "Levothyroxine", "Sertraline", "Escitalopram", "Clonazepam", "Alprazolam",
+  "Vitamin D3", "Cholecalciferol",
+];
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -1097,6 +1175,10 @@ function mergeInitial(
     toxic_exposures: asString(get("toxic_exposures")),
     what_has_worked: asString(get("what_has_worked")),
     what_hasnt_worked: asString(get("what_hasnt_worked")),
+    smoking_status: asString(get("smoking_status")),
+    smoking_detail: asString(get("smoking_detail")),
+    alcohol_intake: asString(get("alcohol_intake")),
+    current_mental_health_care: asString(get("current_mental_health_care")),
     sun_exposure_daily: asString(get("sun_exposure_daily")),
     sunscreen_use: asString(get("sunscreen_use")),
     vit_d_supplement: asString(get("vit_d_supplement")),
@@ -1126,6 +1208,7 @@ function mergeInitial(
     histamine_signals: asStringArray(get("histamine_signals")),
     chemical_sensitivity: asStringArray(get("chemical_sensitivity")),
     oral_signs: asStringArray(get("oral_signs")),
+    eye_signs: asStringArray(get("eye_signs")),
     // v0.75.2 — Tier 1 screening fields
     beighton_self_score: asStringArray(get("beighton_self_score")),
     beighton_supplemental: asStringArray(get("beighton_supplemental")),
@@ -1153,6 +1236,8 @@ function mergeInitial(
     pregnancies: asPregnancyRows(get("pregnancies")),
     repro_diagnoses: asStringArray(get("repro_diagnoses")),
     perimenopause_inventory: asStringArray(get("perimenopause_inventory")),
+    vaginal_signs: asStringArray(get("vaginal_signs")),
+    vaginal_yeast_frequency: asString(get("vaginal_yeast_frequency")),
     recent_labs_done: asStringArray(get("recent_labs_done")),
     recent_labs_when: asString(get("recent_labs_when")),
     willing_to_share_labs: asString(get("willing_to_share_labs")),
@@ -1259,6 +1344,10 @@ function buildPayload(s: FormState): Record<string, unknown> {
     toxic_exposures: s.toxic_exposures,
     what_has_worked: s.what_has_worked,
     what_hasnt_worked: s.what_hasnt_worked,
+    smoking_status: s.smoking_status,
+    smoking_detail: s.smoking_detail,
+    alcohol_intake: s.alcohol_intake,
+    current_mental_health_care: s.current_mental_health_care,
     dietary_preference: s.dietary_preference,
     animal_derived_supplements_ok: s.animal_derived_supplements_ok,
     foods_to_avoid: s.foods_to_avoid,
@@ -1341,6 +1430,7 @@ function buildPayload(s: FormState): Record<string, unknown> {
     histamine_signals: s.histamine_signals,
     chemical_sensitivity: s.chemical_sensitivity,
     oral_signs: s.oral_signs,
+    eye_signs: s.eye_signs,
     // v0.75.2 — Tier 1 screening fields
     beighton_self_score: s.beighton_self_score,
     beighton_supplemental: s.beighton_supplemental,
@@ -1362,6 +1452,8 @@ function buildPayload(s: FormState): Record<string, unknown> {
     pregnancies: pregnancies,
     repro_diagnoses: s.repro_diagnoses,
     perimenopause_inventory: s.perimenopause_inventory,
+    vaginal_signs: s.vaginal_signs,
+    vaginal_yeast_frequency: s.vaginal_yeast_frequency,
     sun_exposure_daily: s.sun_exposure_daily,
     sunscreen_use: s.sunscreen_use,
     vit_d_supplement: s.vit_d_supplement,
@@ -1909,24 +2001,7 @@ function MedMiniCardForm({
             value={data.name}
             onChange={(e) => onChange({ name: e.target.value })}
             placeholder={bucket.hint}
-          />
-        </div>
-        <div>
-          <span className="fm-medcard__minilabel">Dose</span>
-          <input
-            className={"fm-input" + (data.dose ? " fm-input--filled" : "")}
-            value={data.dose}
-            onChange={(e) => onChange({ dose: e.target.value })}
-            placeholder="e.g. 40mg daily"
-          />
-        </div>
-        <div>
-          <span className="fm-medcard__minilabel">Started when</span>
-          <input
-            className={"fm-input" + (data.started ? " fm-input--filled" : "")}
-            value={data.started}
-            onChange={(e) => onChange({ started: e.target.value })}
-            placeholder="year or rough date"
+            list="fm-common-med-brands"
           />
         </div>
         <div className="fm-medcard__full">
@@ -2686,6 +2761,13 @@ export function IntakeForm({
       noValidate
       className={focusTier1 ? "fm-intake--focus-tier1" : undefined}
     >
+      {/* Shared typeahead suggestions for the medication name inputs. */}
+      <datalist id="fm-common-med-brands">
+        {COMMON_MED_BRANDS.map((b) => (
+          <option key={b} value={b} />
+        ))}
+      </datalist>
+
       {!focusTier1 && (
         <FormChrome
           currentSection={currentSection}
@@ -3494,12 +3576,50 @@ export function IntakeForm({
             onChange={(v) => set("ace_signals", v)}
           />
         </FG>
+        <FG
+          label="Are you currently working with a mental-health professional?"
+          optional="optional"
+          hint="No judgement here — knowing this helps me coordinate care and avoid stepping on anything you're already doing."
+        >
+          <RadiosColumn
+            name="current_mental_health_care"
+            value={state.current_mental_health_care}
+            options={MENTAL_HEALTH_CARE}
+            onChange={(v) => set("current_mental_health_care", v)}
+          />
+        </FG>
         <FG label="Exposures" optional="optional">
           <TextArea
             rows={3}
             value={state.toxic_exposures}
             onChange={(e) => set("toxic_exposures", e.target.value)}
             placeholder="Mould, chemicals at work, long-term medication, smoking history"
+          />
+        </FG>
+        <FG label="Smoking / tobacco" optional="optional">
+          <RadiosColumn
+            name="smoking_status"
+            value={state.smoking_status}
+            options={SMOKING_STATUS}
+            onChange={(v) => set("smoking_status", v)}
+          />
+        </FG>
+        <FG
+          label="If you smoke/chew now or used to — roughly how much, and for how long?"
+          optional="optional"
+        >
+          <TextInput
+            value={state.smoking_detail}
+            onChange={(e) => set("smoking_detail", e.target.value)}
+            placeholder="e.g. 5 cigarettes a day for 10 years, quit 2020"
+          />
+        </FG>
+        <FG label="Alcohol" optional="optional">
+          <RadiosColumn
+            name="alcohol_intake"
+            value={state.alcohol_intake}
+            options={ALCOHOL_INTAKE}
+            onChange={(v) => set("alcohol_intake", v)}
           />
         </FG>
         <FG label="What has genuinely helped you" optional="even temporarily">
@@ -3768,6 +3888,13 @@ export function IntakeForm({
             value={state.skin_signs}
             options={SKIN_SIGNS}
             onChange={(v) => set("skin_signs", v)}
+          />
+        </FG>
+        <FG label="Eyes" optional="tick all that apply">
+          <ChipMulti
+            value={state.eye_signs}
+            options={EYE_SIGNS}
+            onChange={(v) => set("eye_signs", v)}
           />
         </FG>
 
@@ -4384,6 +4511,33 @@ export function IntakeForm({
               />
             </FG>
           ) : null}
+
+          <hr className="fm-divider-thin" style={{ margin: "24px 0 8px" }} />
+
+          {/* Intimate & urinary health — yeast / microbiome / dryness.
+              Optional and private; helps spot candida + microbiome imbalances
+              that tie into gut and hormone health. */}
+          <h3 className="fm-section__sub" style={{ marginTop: 16 }}>Intimate &amp; urinary health</h3>
+          <p className="fm-microcopy" style={{ marginBottom: 14 }}>
+            Optional and private — only Shivani sees this. These help us spot
+            yeast or microbiome imbalances that tie into gut and hormone health.
+            Skip anything you&apos;d rather talk through in person.
+          </p>
+          <FG label="Anything you've noticed" optional="tick all that apply">
+            <ChipMulti
+              value={state.vaginal_signs}
+              options={VAGINAL_SIGNS}
+              onChange={(v) => set("vaginal_signs", v)}
+            />
+          </FG>
+          <FG label="How often do you get yeast / fungal infections?" optional="optional">
+            <RadiosColumn
+              name="vaginal_yeast_frequency"
+              value={state.vaginal_yeast_frequency}
+              options={VAGINAL_YEAST_FREQUENCY}
+              onChange={(v) => set("vaginal_yeast_frequency", v)}
+            />
+          </FG>
 
           <p className="fm-foot">
             You can leave any of this blank if you&apos;d rather talk through it in person —
