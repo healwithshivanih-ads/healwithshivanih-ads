@@ -53,15 +53,24 @@ export function FmClientHeader({
   rootCauseLabel,
 }: FmClientHeaderProps) {
   return (
-    <header
-      style={{
-        display: "grid",
-        gridTemplateColumns: "120px 1fr auto",
-        gap: 20,
-        alignItems: "start",
-        marginBottom: 24,
-      }}
-    >
+    <header className="fm-client-header">
+      <style>{`
+        .fm-client-header {
+          display: grid;
+          grid-template-columns: 120px 1fr auto;
+          gap: 20px;
+          align-items: start;
+          margin-bottom: 24px;
+        }
+        @media (max-width: 600px) {
+          .fm-client-header {
+            grid-template-columns: 1fr;
+          }
+          .fm-client-header > :first-child {
+            display: none;
+          }
+        }
+      `}</style>
       <PhotoSlot photoUrl={photoUrl ?? null} clientId={clientId} displayName={displayName} />
 
       <div style={{ minWidth: 0 }}>

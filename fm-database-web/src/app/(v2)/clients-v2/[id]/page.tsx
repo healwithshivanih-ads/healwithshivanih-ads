@@ -1853,7 +1853,11 @@ function SubNav({ id, active }: { id: string; active: string }) {
         gap: 4,
         marginBottom: 20,
         borderBottom: "1px solid var(--fm-border)",
-      }}
+        overflowX: "auto",
+        WebkitOverflowScrolling: "touch" as React.CSSProperties["WebkitOverflowScrolling"],
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      } as React.CSSProperties}
     >
       {tabs.map((t) => (
         <Link

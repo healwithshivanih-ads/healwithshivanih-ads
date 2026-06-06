@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 import { SidebarNav } from "@/components/sidebar-nav";
@@ -24,6 +24,11 @@ const libreBaskerville = Libre_Baskerville({
 export const metadata: Metadata = {
   title: "FM Database",
   description: "Functional Medicine coaching catalogue + plan editor",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

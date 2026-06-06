@@ -187,7 +187,7 @@ export function FmAppShell({
             flex: 1,
             padding: "var(--fm-page-pad)",
             overflowY: "auto",
-            overflowX: "hidden",
+            overflowX: "clip",
           }}
         >
           <div
