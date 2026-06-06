@@ -401,6 +401,65 @@ export async function checkDuplicateUploadAction(
 }
 
 /**
+ * Rebuild an extraction result as FLAT primitives before it crosses the Server
+ * Action boundary back to the client. Next 16's RSC serializer rejects payloads
+ * with deeply-nested arrays ("Maximum array nesting exceeded") — which an
+ * AI-produced extraction can occasionally contain (a value returned as a nested
+ * list, a malformed structure). Reconstructing with only the known primitive
+ * fields guarantees the result always serializes (and drops junk). 2026-06-06.
+ */
+function sanitizeExtractResult(r: ExtractSymptomsResult): ExtractSymptomsResult {
+  const str = (v: unknown): string =>
+    v == null ? "" : typeof v === "object" ? JSON.stringify(v).slice(0, 200) : String(v);
+  const num = (v: unknown): number | null => {
+    const n = typeof v === "number" ? v : parseFloat(String(v));
+    return Number.isFinite(n) ? n : null;
+  };
+  const ed = r.extracted_data;
+  const m = (ed?.measurements ?? {}) as Record<string, unknown>;
+  return {
+    ok: !!r.ok,
+    matched_slugs: Array.isArray(r.matched_slugs)
+      ? r.matched_slugs.map(str).slice(0, 500)
+      : [],
+    mentions: Array.isArray(r.mentions)
+      ? r.mentions
+          .map((x) => ({ slug: str((x as { slug?: unknown })?.slug), quote: str((x as { quote?: unknown })?.quote) }))
+          .slice(0, 500)
+      : [],
+    extracted_data: ed
+      ? {
+          lab_values: Array.isArray(ed.lab_values)
+            ? ed.lab_values
+                .map((l) => {
+                  const lv = l as unknown as Record<string, unknown>;
+                  return {
+                    test_name: str(lv?.test_name),
+                    value: str(lv?.value),
+                    unit: str(lv?.unit),
+                    date_drawn: lv?.date_drawn == null ? null : str(lv?.date_drawn),
+                  };
+                })
+                .slice(0, 500)
+            : [],
+          measurements: {
+            height_cm: num(m.height_cm),
+            weight_kg: num(m.weight_kg),
+            bp_systolic: num(m.bp_systolic),
+            bp_diastolic: num(m.bp_diastolic),
+            hr_bpm: num(m.hr_bpm),
+            waist_cm: num(m.waist_cm),
+            hip_cm: num(m.hip_cm),
+          },
+          medications: Array.isArray(ed.medications) ? ed.medications.map(str).slice(0, 200) : [],
+          conditions: Array.isArray(ed.conditions) ? ed.conditions.map(str).slice(0, 200) : [],
+        }
+      : undefined,
+    error: r.error ?? null,
+  };
+}
+
+/**
  * Extract symptoms/health data from a file that is already saved on disk.
  * Accepts a filePath (returned by uploadFileAction) instead of raw bytes so
  * that no binary data crosses the Server Action serialization boundary.
@@ -422,7 +481,7 @@ export async function extractTranscriptAction(
     if (!result.ok) {
       console.error("[extractTranscriptAction] extraction returned ok:false", result.error);
     }
-    return result;
+    return sanitizeExtractResult(result);
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("[extractTranscriptAction] threw:", msg);
@@ -445,7 +504,7 @@ export async function extractTranscriptUrlAction(
       symptom_catalogue: symptomCatalogue,
       dry_run: dryRun,
     };
-    return await extractSymptomsFromTranscript(input);
+    return sanitizeExtractResult(await extractSymptomsFromTranscript(input));
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     return { ok: false, matched_slugs: [], mentions: [], error: msg.slice(0, 400) };
