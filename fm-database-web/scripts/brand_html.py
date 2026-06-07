@@ -772,7 +772,8 @@ body[data-print-supplement] #supplement-schedule {{
 }}
 .buy-here:hover {{ background: var(--forest); }}
 .buy-here--pending {{ background: transparent; color: var(--muted) !important; font-weight: 600; }}
-.buy-src {{ font-size: 11px; color: var(--muted); margin-left: 8px; }}
+.buy-cta {{ display: flex; align-items: center; gap: 8px; flex-shrink: 0; }}
+.buy-src {{ font-size: 11px; color: var(--muted); }}
 @media print {{ .supp-buy {{ display: none !important; }} }}
 
 .slot-chip {{

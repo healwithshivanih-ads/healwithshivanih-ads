@@ -2985,7 +2985,8 @@ def _build_supplement_buy_list_html(supplements: list[dict]) -> str:
                 f'rel="noopener noreferrer" class="buy-here">Search iHerb ↗</a>'
             )
         rows.append(
-            f'      <li class="buy-row"><span class="buy-row-name">{name}</span>{link_html}</li>'
+            f'      <li class="buy-row"><span class="buy-row-name">{name}</span>'
+            f'<span class="buy-cta">{link_html}</span></li>'
         )
     return (
         '<section id="supplement-buy-list" class="supp-buy">\n'
