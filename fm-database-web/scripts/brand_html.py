@@ -102,7 +102,13 @@ _NO_PRINT_HEADING_RE = re.compile(
 
 
 _DAY_ROW_RE = re.compile(
-    r"(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)(?:day|sday|nesday|rsday|urday)?\s+\d+",
+    # Matches a meal-plan row's first cell. Accepts (so hand-authored AND
+    # AI letters both convert to day-cards regardless of label style):
+    #   "Mon 9 Jun" / "Monday 9 June"  (weekday + date — original)
+    #   "Mon" / "Monday"               (bare weekday)
+    #   "Day 1" / "Day 14"             (generic day number)
+    r"(?:Day\s+\d+"
+    r"|(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)(?:day|sday|nesday|rsday|urday)?(?:\s+\d+)?)\b",
     re.IGNORECASE,
 )
 
