@@ -2787,7 +2787,7 @@ def _build_daily_routine_html(plan: dict, window_end_week: int | None = None) ->
         Your whole day at a glance — when to take each supplement, and
         which meal or drink it sits beside. Print this and keep it where
         you'll see it: the fridge, or a photo on your phone.
-        <br><a class="no-print" href="#supplement-schedule" style="color:#a9651f;font-weight:600;text-decoration:none;">👉 See doses &amp; where to buy each one</a>
+        <br><a class="no-print" href="#supplement-schedule" onclick="var e=document.getElementById('supplement-schedule');if(e){e.scrollIntoView({behavior:'smooth'});}return false;" style="color:#a9651f;font-weight:600;text-decoration:none;">👉 See doses &amp; where to buy each one (below)</a>
       </p>
     </div>
     <button class="print-btn no-print" onclick="printRoutine()">🖨 Print my routine</button>

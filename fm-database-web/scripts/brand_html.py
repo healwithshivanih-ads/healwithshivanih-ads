@@ -692,11 +692,13 @@ a.recipe-link:hover {{ color: var(--ochre); text-decoration-color: var(--ochre);
 
 /* ============================================================
    9. SUPPLEMENT SCHEDULE
-   — display:none by default (coach feedback: "schedule should
-     print via button only"). Shown by body[data-print-supplement].
-   — Shopping list (#supplement-shopping-list) stays visible.
+   — VISIBLE on screen (coach 2026-06-07: clients/coach need to see
+     the doses + where-to-buy links). Hidden only in normal print via
+     the .no-print class; the dedicated print-schedule button still
+     works via body[data-print-supplement].
+   — Shopping list (#supplement-shopping-list) stays visible too.
    ============================================================ */
-#supplement-schedule {{ display: none; }}
+#supplement-schedule {{ display: block; }}
 body[data-print-supplement] #supplement-schedule {{
   display: block; margin: var(--s7) 0 0; padding-top: var(--s6);
   border-top: 1.5px solid var(--forest);
