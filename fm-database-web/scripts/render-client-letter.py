@@ -2418,8 +2418,6 @@ def _build_complete_shopping_list_html(
     <h2 class="shop-title">📦 Your Complete Supplement Shopping List</h2>
     <p class="shop-subtitle">
       Everything you'll need for your full {plan_weeks}-week journey, listed upfront so you can order in one go.
-      Each link below is hand-picked — VitaOne (where Shivani's affiliate is set up so quality + prices are vouched for),
-      Amazon, or iHerb depending on what's available in India.
     </p>
     {later_note}
   </div>
@@ -2787,7 +2785,7 @@ def _build_daily_routine_html(plan: dict, window_end_week: int | None = None) ->
         Your whole day at a glance — when to take each supplement, and
         which meal or drink it sits beside. Print this and keep it where
         you'll see it: the fridge, or a photo on your phone.
-        <br><a class="no-print" href="#supplement-schedule" onclick="var e=document.getElementById('supplement-schedule');if(e){{e.scrollIntoView({{behavior:'smooth'}});}}return false;" style="color:#a9651f;font-weight:600;text-decoration:none;">👉 See doses &amp; where to buy each one (below)</a>
+        <br><a class="no-print" href="#supplement-buy-list" onclick="var e=document.getElementById('supplement-buy-list');if(e){{e.scrollIntoView({{behavior:'smooth'}});}}return false;" style="color:#a9651f;font-weight:600;text-decoration:none;">👉 Where to buy each one (below)</a>
       </p>
     </div>
     <button class="print-btn no-print" onclick="printRoutine()">🖨 Print my routine</button>
@@ -2937,6 +2935,68 @@ def _build_portion_plate_html(meal_style: str = "hybrid", dietary_preference: st
   </div>
 </section>
 """
+
+
+def _build_supplement_buy_list_html(supplements: list[dict]) -> str:
+    """Simple supplement buy-links list — FIRST LETTER ONLY.
+
+    Coach 2026-06-07: the letter needs the daily schedule (Daily Routine) plus
+    a plain 'Buy here' list — NOT the full dose/why table and NOT the weekly-
+    quantity shopping list (those duplicated the buy links and felt like the
+    schedule appeared three times). Each row is just: supplement name + one
+    'Buy here ↗' link (+ source badge). Reuses the same link resolution as the
+    old schedule so VitaOne / Amazon / iHerb still resolve with the referral.
+    """
+    if not supplements:
+        return ""
+    rows: list[str] = []
+    for s in supplements:
+        slug = s.get("supplement_slug", "")
+        name = _strip_brand_from_name(
+            s.get("display_name") or slug.replace("-", " ").title()
+        )
+        buy_link_override = s.get("buy_link") or ""
+        pending_product_link = bool(s.get("_linked_product")) and not buy_link_override
+        link_info = (
+            _vitaone_url_only(name, slug=slug)
+            if not buy_link_override and not pending_product_link
+            else None
+        )
+        if buy_link_override:
+            link_html = (
+                f'<a href="{buy_link_override}" target="_blank" '
+                f'rel="noopener noreferrer" class="buy-here">Buy here ↗</a>'
+            )
+        elif pending_product_link:
+            link_html = '<span class="buy-here buy-here--pending">link from Shivani</span>'
+        elif link_info:
+            _, url = link_info
+            is_vitaone = "vitaone.in" in url
+            is_amazon = "amzn" in url or "amazon." in url
+            src = "VitaOne" if is_vitaone else ("Amazon" if is_amazon else "")
+            badge = f' <span class="buy-src">{src}</span>' if src else ""
+            link_html = (
+                f'<a href="{url}" target="_blank" rel="noopener noreferrer" '
+                f'class="buy-here">Buy here ↗</a>{badge}'
+            )
+        else:
+            link_html = (
+                f'<a href="{IHERB_AFFILIATE}" target="_blank" '
+                f'rel="noopener noreferrer" class="buy-here">Search iHerb ↗</a>'
+            )
+        rows.append(
+            f'      <li class="buy-row"><span class="buy-row-name">{name}</span>{link_html}</li>'
+        )
+    return (
+        '<section id="supplement-buy-list" class="supp-buy">\n'
+        '  <h2 class="supp-buy-title">🛒 Where to buy your supplements</h2>\n'
+        '  <p class="supp-buy-sub">Your full set for this plan — tap “Buy here” for each. '
+        "I'll share these links just this once, here in your first letter.</p>\n"
+        '  <ul class="buy-list">\n'
+        + "\n".join(rows)
+        + "\n  </ul>\n"
+        "</section>"
+    )
 
 
 def _build_supplement_schedule_html(
@@ -7133,21 +7193,18 @@ def main() -> int:
             # Fortnight (meal_plan_phase) letters omit it — any NEW supplement
             # that fortnight is surfaced in the AI "what's new this phase"
             # section with its own buy link instead.
-            shopping_list_html = (
+            # Coach 2026-06-07: replace the full dose/why schedule table + the
+            # weekly-quantity shopping list (both carried the buy links, so the
+            # supplements appeared ~3 times) with a single plain "Buy here"
+            # list. FIRST LETTER ONLY — fortnight (meal_plan_phase) letters omit
+            # it; a new supplement that phase carries its own link in the AI
+            # "what's new this phase" section instead.
+            buy_list_html = (
                 ""
                 if letter_type == "meal_plan_phase"
-                else _build_complete_shopping_list_html(
-                    supplements, plan_weeks_int, _supp_anchor
-                )
+                else _build_supplement_buy_list_html(supplements)
             )
-            schedule_html = _build_supplement_schedule_html(
-                supplements, window_end_week=_supp_window
-            )
-            combined = (
-                shopping_list_html + "\n" + schedule_html
-                if shopping_list_html
-                else schedule_html
-            )
+            combined = buy_list_html
             # The integrated Daily Routine timeline — placed at the TOP of
             # the letter (right before .content) so the client can't miss
             # it. It's the one they print and keep. Injected as a sibling

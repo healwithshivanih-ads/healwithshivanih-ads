@@ -746,13 +746,34 @@ body[data-print-supplement] #supplement-schedule {{
 .schedule-table {{ width: 100%; border-collapse: collapse; font-size: 13.5px; }}
 .schedule-table th {{
   text-align: left; font-size: 11px; font-weight: 600; letter-spacing: .05em;
-  text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--forest);
+  text-transform: uppercase; color: #fff; border-bottom: 1.5px solid var(--forest);
   padding: 6px 10px 8px;
 }}
 .schedule-table td {{
   vertical-align: top; padding: 10px; border-bottom: 1px solid var(--line); line-height: 1.5;
 }}
 .schedule-table tr:last-child td {{ border-bottom: none; }}
+
+/* Simple "Buy here" list (first letter only) — replaces the schedule table */
+.supp-buy {{ margin: 22px 0 6px; }}
+.supp-buy-title {{ font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--forest); margin: 0 0 4px; }}
+.supp-buy-sub {{ font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0 0 12px; max-width: 560px; }}
+.buy-list {{ list-style: none; margin: 0; padding: 0; }}
+.buy-row {{
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 11px 2px; border-bottom: 1px solid var(--line);
+}}
+.buy-row:last-child {{ border-bottom: none; }}
+.buy-row-name {{ font-weight: 600; color: {INK}; font-size: 14.5px; }}
+.buy-here {{
+  flex-shrink: 0; font-weight: 700; font-size: 13px; color: #fff !important;
+  background: var(--ochre); padding: 6px 14px; border-radius: 999px;
+  text-decoration: none; white-space: nowrap;
+}}
+.buy-here:hover {{ background: var(--forest); }}
+.buy-here--pending {{ background: transparent; color: var(--muted) !important; font-weight: 600; }}
+.buy-src {{ font-size: 11px; color: var(--muted); margin-left: 8px; }}
+@media print {{ .supp-buy {{ display: none !important; }} }}
 
 .slot-chip {{
   display: inline-block; background: var(--forest-wash); border-radius: 4px;
