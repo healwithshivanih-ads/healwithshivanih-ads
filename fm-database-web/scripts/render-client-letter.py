@@ -2439,8 +2439,8 @@ def _build_complete_shopping_list_html(
     </table>
   </div>
   <p class="shop-disclaimer">
-    💬 <em>Please check with your doctor before starting any new supplement, especially if you're on medication.
-    Your detailed dose schedule (further down this letter) shows exactly when each one comes into your daily routine.</em>
+    💬 <em>If anything's unclear, feel free to check with your doctor before adding a new supplement.
+    Your dose schedule shows exactly when each one fits into your day.</em>
   </p>
 </section>
 """
