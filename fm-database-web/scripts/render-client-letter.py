@@ -2967,6 +2967,28 @@ def _load_home_remedy(slug: str) -> dict | None:
         return None
 
 
+def _inject_after_last_meal_grid(html: str, snippet: str) -> "str | None":
+    """Insert snippet right after the LAST <div class="meal-grid">…</div> (the
+    Week-N day cards) so '🍵 Drinks & digestives' sits next to the meal plan.
+    Returns new html, or None if there's no meal grid (e.g. principles-mode
+    letters) — caller then falls back to the supplement block."""
+    import re as _re
+    key = '<div class="meal-grid">'
+    idx = html.rfind(key)
+    if idx == -1:
+        return None
+    depth = 0
+    for m in _re.finditer(r"<div\b|</div>", html[idx:]):
+        if m.group(0) == "</div>":
+            depth -= 1
+            if depth == 0:
+                pos = idx + m.end()
+                return html[:pos] + "\n" + snippet + html[pos:]
+        else:
+            depth += 1
+    return None
+
+
 def _build_remedies_html(plan: dict) -> str:
     """Conditional '🍵 Drinks & digestives' section. Renders the plan's catalogue
     home_remedies (churan / tea / juice / infused water — with preparation) PLUS
@@ -7317,11 +7339,16 @@ def main() -> int:
             )
             combined = buy_list_html
             # Conditional '🍵 Drinks & digestives' — only if the plan carries
-            # catalogue home_remedies or bespoke custom_remedies. Shown in every
-            # letter type (it's a daily ritual, not a first-letter-only block).
+            # catalogue home_remedies or bespoke custom_remedies. Placed right
+            # AFTER the meal plan (coach 2026-06-07: it's a food/drink ritual).
+            # Falls back to the supplement (TAKE) block when there's no meal grid.
             remedies_html = _build_remedies_html(plan)
             if remedies_html:
-                combined = (combined + "\n" + remedies_html) if combined else remedies_html
+                _placed = _inject_after_last_meal_grid(html, remedies_html)
+                if _placed is not None:
+                    html = _placed
+                else:
+                    combined = (combined + "\n" + remedies_html) if combined else remedies_html
             # The integrated Daily Routine timeline — placed at the TOP of
             # the letter (right before .content) so the client can't miss
             # it. It's the one they print and keep. Injected as a sibling
