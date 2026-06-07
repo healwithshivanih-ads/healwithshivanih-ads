@@ -2955,6 +2955,20 @@ def _build_portion_plate_html(meal_style: str = "hybrid", dietary_preference: st
 """
 
 
+def _buy_source_label(url: str) -> str:
+    """Retailer label for a supplement buy link (shown beside 'Buy here')."""
+    u = (url or "").lower()
+    if "vitaone.in" in u:
+        return "VitaOne"
+    if "fmnutrition" in u:
+        return "FM Nutrition"
+    if "amzn" in u or "amazon." in u:
+        return "Amazon"
+    if "iherb" in u:
+        return "iHerb"
+    return "Buy"
+
+
 def _build_supplement_buy_list_html(supplements: list[dict]) -> str:
     """Simple supplement buy-links list — FIRST LETTER ONLY.
 
@@ -2980,31 +2994,33 @@ def _build_supplement_buy_list_html(supplements: list[dict]) -> str:
             if not buy_link_override and not pending_product_link
             else None
         )
+        # badge (source label) sits LEFT of the button so every "Buy here"
+        # button right-aligns to a clean vertical column.
+        badge = ""
         if buy_link_override:
-            link_html = (
+            button = (
                 f'<a href="{buy_link_override}" target="_blank" '
                 f'rel="noopener noreferrer" class="buy-here">Buy here ↗</a>'
             )
+            badge = f'<span class="buy-src">{_buy_source_label(buy_link_override)}</span>'
         elif pending_product_link:
-            link_html = '<span class="buy-here buy-here--pending">link from Shivani</span>'
+            button = '<span class="buy-here buy-here--pending">link from Shivani</span>'
         elif link_info:
             _, url = link_info
-            is_vitaone = "vitaone.in" in url
-            is_amazon = "amzn" in url or "amazon." in url
-            src = "VitaOne" if is_vitaone else ("Amazon" if is_amazon else "")
-            badge = f' <span class="buy-src">{src}</span>' if src else ""
-            link_html = (
+            button = (
                 f'<a href="{url}" target="_blank" rel="noopener noreferrer" '
-                f'class="buy-here">Buy here ↗</a>{badge}'
+                f'class="buy-here">Buy here ↗</a>'
             )
+            badge = f'<span class="buy-src">{_buy_source_label(url)}</span>'
         else:
-            link_html = (
+            button = (
                 f'<a href="{IHERB_AFFILIATE}" target="_blank" '
-                f'rel="noopener noreferrer" class="buy-here">Search iHerb ↗</a>'
+                f'rel="noopener noreferrer" class="buy-here">Buy here ↗</a>'
             )
+            badge = '<span class="buy-src">iHerb</span>'
         rows.append(
             f'      <li class="buy-row"><span class="buy-row-name">{name}</span>'
-            f'<span class="buy-cta">{link_html}</span></li>'
+            f'<span class="buy-cta">{badge}{button}</span></li>'
         )
     return (
         '<section id="supplement-buy-list" class="supp-buy">\n'
