@@ -1,0 +1,46 @@
+slug: nac-pcos-clomiphene-resistant-rct
+statement: "In clomiphene-resistant PCOS (n=150), adding N-acetylcysteine (NAC) 1.2–1.8 g/day
+  to clomiphene produced a ~50% ovulation rate vs 1% in the clomiphene-only group, and a
+  21% pregnancy rate vs 0% (Rizk et al., Fertility and Sterility, 2005). A separate
+  trial showed NAC 600 mg three times daily (1.8 g/day) for minimum 24 weeks is
+  comparable to metformin in lowering insulin and androgens and restoring menstrual
+  regularity in PCOS, with fewer GI side effects. Mechanism: glutathione precursor
+  improving insulin signalling and reducing oxidative stress in the ovary."
+evidence_tier: plausible_emerging
+rationale: "The Rizk 2005 RCT in clomiphene-resistant PCOS is the strongest evidence:
+  n=150 double-blind, ovulation 50% vs 1%, pregnancy 21% vs 0%. The metformin-comparable
+  data is from a smaller trial. NAC is safe, inexpensive (available India as generic),
+  and relevant for PCOS clients who are not responding to first-line insulin sensitisers
+  or who cannot tolerate metformin. Complements existing nac-improves-ovulation-and-reduces-miscarriage
+  claim which covers miscarriage angle and book source; this claim adds the specific
+  clomiphene-resistant RCT context."
+coaching_translation: "For clients with PCOS who want to improve ovulation — especially
+  those already on or considering clomiphene, or not tolerating metformin well — NAC
+  1.8 g/day (600 mg with each meal) has good RCT evidence. It won't raise testosterone
+  or disrupt the cycle. Minimum 24 weeks for meaningful effect. Very inexpensive as
+  generic capsules. Tell your doctor/gynaecologist you're adding it."
+caveats:
+  - Rizk 2005 data is for clomiphene-resistant PCOS specifically — not all PCOS presentations
+  - Rare but serious allergic reactions in asthmatics (sulphur-containing compound)
+  - Metformin-comparable effect from smaller, less powered trial — treat as supportive
+    not definitive
+  - Does not replace medical evaluation for clomiphene resistance
+linked_to_topics:
+  - pcos-fertility
+  - fertility-and-ovulation
+linked_to_mechanisms:
+  - insulin-resistance
+  - chronic-oxidative-stress
+linked_to_supplements:
+  - n-acetylcysteine
+sources:
+  - id: romm-pcos-herbs-supplements-website
+    location: NAC section, Dose and Evidence
+    quote: "Almost 50 percent ovulation rate vs 1% when combined with clomiphene in
+      clomiphene-resistant PCOS (n=150); 21% pregnancy rate vs 0% (Rizk et al., Fertility
+      and Sterility, 2005). Comparable to metformin in lowering insulin and androgens
+      at 600mg three times daily for minimum 24 weeks."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

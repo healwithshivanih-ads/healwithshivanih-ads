@@ -1,0 +1,47 @@
+slug: spearmint-pcos-anti-androgenic
+statement: "Spearmint tea (2 cups daily, steeped 10 minutes) has anti-androgenic
+  properties demonstrated in two clinical trials in PCOS and hirsutism. It reduces
+  free testosterone and LH while increasing FSH, improving hormonal balance without
+  the side effects of pharmaceutical anti-androgens. Minimum 30 days for effect;
+  results accumulate over 3+ months. Grant 2010 RCT showed significant reduction
+  in free testosterone and improvement in hirsutism scores."
+evidence_tier: plausible_emerging
+rationale: "Two clinical trials (including Grant 2010 RCT) show consistent anti-androgenic
+  signal in PCOS and hirsutism. Studies are small and evidence is preliminary per
+  Romm's own assessment. However: spearmint is safe, inexpensive, has no known
+  contraindications in PCOS, and is accessible in India (dried spearmint widely
+  available in supermarkets and online). Strong risk:benefit ratio makes it worth
+  recommending as adjunct therapy even with thin evidence."
+coaching_translation: "For clients with PCOS-driven hirsutism, hair loss, or acne —
+  2 cups of spearmint tea daily is worth adding. Steep 2 tsp dried organic spearmint
+  in boiling water for 10 minutes. It gently blocks androgen signals. Safe to combine
+  with inositol, NAC, or any other PCOS protocol. Set expectation: minimum 3 months
+  to see meaningful change in hirsutism. Available as loose-leaf or teabags from
+  organic brands."
+caveats:
+  - Evidence is small and preliminary (Romm's own characterisation); not yet confirmed
+    in large RCTs
+  - Spearmint is not the same as peppermint — confirm clients are using spearmint
+    (Mentha spicata), not peppermint
+  - Effect is mild anti-androgenic, not equivalent to spironolactone or OCP
+  - India availability: loose-leaf spearmint available from organic/health food stores;
+    some brands sell spearmint tea bags
+linked_to_topics:
+  - pcos-fertility
+  - hirsutism-and-androgen-excess
+linked_to_mechanisms:
+  - androgen-excess
+  - insulin-resistance
+linked_to_supplements:
+  - spearmint-tea
+sources:
+  - id: romm-pcos-herbs-supplements-website
+    location: Spearmint Tea section
+    quote: "Two promising studies showing anti-androgenic properties; small and preliminary
+      but safe. Grant 2010 RCT: significant reduction in free testosterone and LH,
+      improved hirsutism scores. Dose: 2 cups daily, steep 2 tsp organic dried spearmint
+      in 1 cup boiling water for 10 minutes."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani
