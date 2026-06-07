@@ -81,6 +81,16 @@ interface ReferralItem {
   urgency: string; // matches ReferralUrgency enum
 }
 
+// Bespoke per-client kitchen remedy (NutritionPlan.custom_remedies).
+interface CustomRemedyT {
+  name: string;
+  kind?: string;        // churan | tea | juice | infused_water | other
+  ingredients?: string;
+  preparation?: string;
+  timing?: string;
+  reason?: string;
+}
+
 const REFERRAL_URGENCIES = ["routine", "soon", "urgent", "emergency"] as const;
 
 // Curated allowlist for the Education module topic picker.
@@ -1106,6 +1116,13 @@ export function PlanEditor(props: PlanEditorProps) {
   const referrals: ReferralItem[] = (plan.referrals as ReferralItem[]) ?? [];
   const nutritionAdd: string[] = (nutrition.add as string[]) ?? [];
   const nutritionReduce: string[] = (nutrition.reduce as string[]) ?? [];
+  const customRemedies: CustomRemedyT[] = (nutrition.custom_remedies as CustomRemedyT[]) ?? [];
+  const updateCustomRemedy = (i: number, field: keyof CustomRemedyT, value: string) => {
+    patchNutrition(
+      "custom_remedies",
+      customRemedies.map((r, j) => (j === i ? { ...r, [field]: value } : r))
+    );
+  };
 
   // Filtered topic list for the Education module — curated, no duplicates.
   const educationTopicOptions = topicOptions.filter((o) =>
@@ -1689,6 +1706,77 @@ export function PlanEditor(props: PlanEditorProps) {
                     value={(nutrition.home_remedies as string[]) ?? []}
                     onChange={(v) => patchNutrition("home_remedies", v)}
                   />
+                </div>
+                {/* Bespoke per-client remedies — render in the letter's
+                    "🍵 Drinks & digestives" section alongside catalogue ones. */}
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Custom remedies <span className="font-normal text-muted-foreground">· bespoke for this client</span>
+                  </label>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    A kitchen-spice churan, tea, or juice authored just for this client (e.g. a jeera-saunf-ajwain
+                    digestive). Shows in the letter&apos;s &ldquo;🍵 Drinks &amp; digestives&rdquo; section.
+                  </p>
+                  {customRemedies.map((r, i) => (
+                    <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20 mb-2">
+                      <div className="flex gap-2">
+                        <Input
+                          placeholder="Name (e.g. After-meal digestive churan)"
+                          value={r.name ?? ""}
+                          onChange={(e) => updateCustomRemedy(i, "name", e.target.value)}
+                        />
+                        <Input
+                          placeholder="Kind (churan / tea / juice)"
+                          className="max-w-[170px]"
+                          value={r.kind ?? ""}
+                          onChange={(e) => updateCustomRemedy(i, "kind", e.target.value)}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          disabled={locked}
+                          onClick={() =>
+                            patchNutrition("custom_remedies", customRemedies.filter((_, j) => j !== i))
+                          }
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                      <Input
+                        placeholder="When to take (e.g. ½ tsp with warm water after lunch & dinner)"
+                        value={r.timing ?? ""}
+                        onChange={(e) => updateCustomRemedy(i, "timing", e.target.value)}
+                      />
+                      <textarea
+                        placeholder="What's in it — kitchen-spice ingredients + rough quantities"
+                        value={r.ingredients ?? ""}
+                        onChange={(e) => updateCustomRemedy(i, "ingredients", e.target.value)}
+                        className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                      />
+                      <textarea
+                        placeholder="How to make it"
+                        value={r.preparation ?? ""}
+                        onChange={(e) => updateCustomRemedy(i, "preparation", e.target.value)}
+                        className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                      />
+                      <textarea
+                        placeholder="Why — coach rationale (shown in italics to the client)"
+                        value={r.reason ?? ""}
+                        onChange={(e) => updateCustomRemedy(i, "reason", e.target.value)}
+                        className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                      />
+                    </div>
+                  ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    disabled={locked}
+                    onClick={() => patchNutrition("custom_remedies", [...customRemedies, { name: "" }])}
+                  >
+                    + Add custom remedy
+                  </Button>
                 </div>
                 <FreeformStringList
                   label="Foods to add"
