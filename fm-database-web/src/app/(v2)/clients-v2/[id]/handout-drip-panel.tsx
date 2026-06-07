@@ -54,7 +54,7 @@ export function HandoutDripPanel({ clientId }: { clientId: string }) {
       if (res.ok) {
         setItems(res.schedule ?? []);
         setActive(true);
-        setMsg(`✓ Drip activated — ${res.enqueued ?? 0} guides queued. They send automatically once the WhatsApp template is approved.`);
+        setMsg(`✓ Drip activated — ${res.enqueued ?? 0} guide(s) queued. They'll send automatically on schedule via WhatsApp.`);
       } else {
         setMsg(res.error ?? "Setup failed");
       }
@@ -120,8 +120,8 @@ export function HandoutDripPanel({ clientId }: { clientId: string }) {
           )}
 
           <p className="text-[10px] text-muted-foreground mt-2">
-            Sends fire via the WhatsApp <code>fm_handout_v1</code> template (pending Meta approval). Until approved, the
-            schedule is set but messages wait in the queue.
+            Sends fire automatically via the Meta-approved WhatsApp <code>fm_handout_v1</code> template, each on its
+            scheduled date.
           </p>
         </div>
       )}
