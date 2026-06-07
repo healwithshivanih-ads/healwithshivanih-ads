@@ -1,0 +1,31 @@
+slug: amla-aloe-juice
+display_name: Amla-Aloe Juice
+aliases:
+- amla-juice
+category: vegetable_juice
+summary: Indian gooseberry (amla) with a little aloe vera — a vitamin-C-rich tonic traditionally used
+  for hair, skin, immunity and gut soothing.
+indications:
+- vitamin-c-support
+- hair-health
+- immune-support
+- gut-soothing
+contraindications:
+- aloe latex has a laxative effect — use inner-gel juice only, small amounts
+- pregnancy (aloe internally not advised)
+- space amla away from thyroid medicine
+preparation: Mix 15-20 ml fresh amla juice with 10-15 ml inner-leaf aloe vera juice in a glass of water;
+  add a little honey if needed.
+typical_dose: 1 small glass on an empty stomach in the morning.
+duration: Daily for 6-8 weeks, then review.
+timing_notes: First thing in the morning; keep separate from thyroid medication by a few hours.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: fennel-cardamom-tea
+display_name: Fennel-Cardamom Tea
+aliases:
+- saunf-elaichi-tea
+category: herbal_tea
+summary: Fennel (saunf) seeds with green cardamom — a gentle, fragrant after-meal tea that settles bloating,
+  freshens breath and is mildly calming.
+indications:
+- bloating
+- indigestion
+- bad-breath
+contraindications:
+- none significant in food amounts
+preparation: Simmer 1 tsp fennel seeds + 2 crushed cardamom pods in 2 cups water for 5 min; strain.
+typical_dose: 1 cup after meals.
+duration: Daily; safe long-term.
+timing_notes: After lunch or dinner.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

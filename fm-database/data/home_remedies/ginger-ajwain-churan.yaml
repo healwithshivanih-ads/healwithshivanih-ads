@@ -1,0 +1,27 @@
+slug: ginger-ajwain-churan
+display_name: Ginger-Ajwain Appetite Churan
+aliases: []
+category: ayurvedic_churan
+summary: Dried ginger (saunth), ajwain and a pinch of black salt — warming churan that kindles appetite
+  and relieves heaviness and nausea before meals.
+indications:
+- low-appetite
+- nausea
+- sluggish-digestion
+contraindications:
+- acid reflux / gastritis flare (warming, can aggravate)
+- pregnancy (limit ajwain)
+preparation: Mix 2 tbsp dried ginger powder, 1 tbsp roasted ground ajwain, 1/2 tsp black salt.
+typical_dose: 1/4 tsp with warm water ~15 min before meals.
+duration: As needed.
+timing_notes: Before meals to stimulate appetite.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: jeera-water
+display_name: Jeera (Cumin) Water
+aliases:
+- jeera-pani
+category: infused_water
+summary: Cumin seeds boiled or soaked in water — a simple daily digestive tonic that eases bloating and
+  supports metabolism.
+indications:
+- bloating
+- sluggish-digestion
+- water-retention
+contraindications:
+- none significant in food amounts
+preparation: Boil 1 tsp cumin in 2 cups water for 5 min (or soak overnight); strain.
+typical_dose: 1-2 cups through the day, warm.
+duration: Daily; safe long-term.
+timing_notes: Between meals or first thing in the morning.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

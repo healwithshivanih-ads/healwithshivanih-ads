@@ -1,0 +1,30 @@
+slug: ginger-tulsi-tea
+display_name: Ginger-Tulsi Tea
+aliases:
+- adrak-tulsi-chai
+category: herbal_tea
+summary: Fresh ginger and holy basil (tulsi) leaves simmered in water — warming, anti-inflammatory infusion
+  for immunity, colds, sore throat and general inflammatory load.
+indications:
+- immune-support
+- cold-and-cough
+- sore-throat
+- inflammation
+contraindications:
+- blood thinners (high ginger intake)
+- acid reflux (ginger can aggravate for some)
+preparation: Simmer a 1-inch piece of crushed ginger + 8-10 tulsi leaves in 2 cups water for 5-7 min.
+  Strain; add lemon/honey off the heat if desired.
+typical_dose: 1-2 cups a day.
+duration: Daily through cold season or during flares.
+timing_notes: Morning or when fighting a cold; not late at night (ginger is mildly stimulating).
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: coriander-seed-water
+display_name: Coriander-Seed (Dhania) Water
+aliases:
+- dhania-water
+category: infused_water
+summary: Coriander seeds soaked overnight in water — a gentle cooling infusion sipped in the morning,
+  traditionally used to soothe heat, support thyroid comfort and aid hydration.
+indications:
+- cooling
+- thyroid-support
+- hydration
+contraindications:
+- none significant
+preparation: Soak 1 tbsp coriander seeds in 1 glass water overnight; strain in the morning.
+typical_dose: 1 glass on an empty stomach in the morning.
+duration: Daily for 4-8 weeks, then review.
+timing_notes: First thing in the morning.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

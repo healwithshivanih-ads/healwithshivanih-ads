@@ -1,0 +1,28 @@
+slug: ajwain-water
+display_name: Ajwain (Carom) Water
+aliases:
+- ajwain-pani
+category: infused_water
+summary: Carom seeds boiled in water — a strong carminative water for gas, acidity-with-gas and post-meal
+  bloating; also a traditional post-partum digestive.
+indications:
+- gas
+- bloating
+- indigestion
+contraindications:
+- pregnancy (large amounts)
+- active peptic ulcer
+preparation: Boil 1 tsp ajwain in 2 cups water for 5 min; strain.
+typical_dose: 1/2-1 cup warm when bloated, or after a heavy meal.
+duration: As needed; safe daily in moderation.
+timing_notes: After meals or when gassy.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

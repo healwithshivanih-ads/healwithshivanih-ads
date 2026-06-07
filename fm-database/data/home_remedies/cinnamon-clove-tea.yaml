@@ -1,0 +1,29 @@
+slug: cinnamon-clove-tea
+display_name: Cinnamon-Clove Tea
+aliases:
+- dalchini-laung-tea
+category: herbal_tea
+summary: Ceylon cinnamon and a clove or two, steeped warm — a comforting tea used to support blood-sugar
+  balance and curb sweet cravings.
+indications:
+- blood-sugar-balance
+- sugar-cravings
+- warming
+contraindications:
+- blood-sugar-lowering medication (additive — monitor)
+- blood thinners (clove/high cassia cinnamon)
+- use Ceylon not cassia cinnamon (coumarin) for daily use
+preparation: Simmer a small Ceylon cinnamon stick + 1-2 cloves in 2 cups water for 5-7 min; strain.
+typical_dose: 1 cup a day, ideally with or after a carbohydrate meal.
+duration: Daily; prefer Ceylon cinnamon for ongoing use.
+timing_notes: With or after a meal; not essential at bedtime.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

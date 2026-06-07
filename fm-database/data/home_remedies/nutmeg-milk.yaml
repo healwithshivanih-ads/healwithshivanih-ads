@@ -1,0 +1,29 @@
+slug: nutmeg-milk
+display_name: Nutmeg (Jaiphal) Milk
+aliases:
+- jaiphal-doodh
+category: kitchen_remedy
+summary: 'Warm milk with a tiny pinch of nutmeg — a traditional bedtime drink to wind down and support
+  sleep. SAFETY: use only a small pinch (nutmeg is toxic in large amounts).'
+indications:
+- poor-sleep
+- racing-mind
+- wind-down
+contraindications:
+- use only a small pinch — large nutmeg doses are toxic
+- pregnancy (avoid medicinal amounts)
+preparation: 'Warm 1 cup milk (dairy or plant); stir in a small pinch (1/8 tsp or less) of grated/ground
+  nutmeg. Optional: a thread of saffron or a little jaggery.'
+typical_dose: 1 cup about 30-45 min before bed.
+duration: Nightly as part of a wind-down routine.
+timing_notes: Bedtime.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

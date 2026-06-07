@@ -1,0 +1,30 @@
+slug: abc-juice
+display_name: ABC Juice (Apple-Beetroot-Carrot)
+aliases:
+- apple-beetroot-carrot-juice
+category: vegetable_juice
+summary: Fresh apple, beetroot and carrot juiced together — a nutrient-dense glass rich in plant iron,
+  folate and antioxidants, traditionally used for skin, blood and general vitality.
+indications:
+- low-iron
+- skin-health
+- general-nutrition
+- fatigue
+contraindications:
+- diabetes / blood-sugar concerns (natural sugars — dilute and keep small, or eat whole instead)
+- kidney-stone history (beet oxalates)
+preparation: Juice 1 small apple, 1 small beetroot, 1-2 carrots; add a squeeze of lemon (helps iron +
+  flavour). Drink fresh.
+typical_dose: 1 small glass (~150-200 ml), a few times a week.
+duration: Ongoing; rotate with whole fruit/veg.
+timing_notes: Morning or mid-morning, fresh. Pair with vitamin C (lemon) for iron.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

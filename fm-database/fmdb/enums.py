@@ -129,6 +129,7 @@ class HomeRemedyCategory(str, Enum):
     kashayam = "kashayam"                    # decoctions
     kitchen_remedy = "kitchen_remedy"        # ginger-lemon-honey, golden milk
     spice_blend = "spice_blend"              # gunpowder masala, gut-healing blends
+    vegetable_juice = "vegetable_juice"      # ABC juice, lauki juice, amla juice
     other = "other"
 
 

@@ -1,0 +1,29 @@
+slug: bottle-gourd-juice
+display_name: Bottle Gourd (Lauki) Juice
+aliases:
+- lauki-juice
+category: vegetable_juice
+summary: 'Fresh bottle-gourd juice — a light, cooling, alkalising drink traditionally used for heat, blood
+  pressure and weight support. SAFETY: only ever use sweet, non-bitter lauki.'
+indications:
+- cooling
+- blood-pressure-support
+- weight-support
+contraindications:
+- NEVER drink if the lauki tastes bitter (toxic cucurbitacins — discard immediately)
+- take small amounts; do not replace meals
+preparation: Peel and taste a small piece of raw lauki first — if bitter, discard. If sweet, juice with
+  a little water, mint and lemon. Drink fresh, never stored.
+typical_dose: 1 small glass (~150 ml), fresh, a few mornings a week.
+duration: Ongoing; always taste-test for bitterness first.
+timing_notes: Fresh in the morning on an empty stomach.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -1,0 +1,27 @@
+slug: saunf-water
+display_name: Saunf (Fennel) Water
+aliases:
+- saunf-pani
+category: infused_water
+summary: Fennel seeds soaked or simmered in water — a cooling, gentle digestive sip that settles bloating
+  and is soothing for breastfeeding mothers.
+indications:
+- bloating
+- indigestion
+- cooling
+contraindications:
+- none significant
+preparation: Soak 1 tbsp fennel seeds in 1 glass water overnight (or simmer 5 min); strain.
+typical_dose: 1 glass in the morning or sipped after meals.
+duration: Daily; safe long-term.
+timing_notes: Morning or after meals.
+linked_to_topics: []
+linked_to_mechanisms: []
+sources:
+- id: vitaone-skill-practice-guide
+  location: Coach clinical knowledge — Indian kitchen remedies
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani
