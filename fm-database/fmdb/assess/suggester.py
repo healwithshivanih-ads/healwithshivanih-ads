@@ -1173,10 +1173,13 @@ HARD RULES (violating these breaks the downstream system):
 21. VEGETARIAN SUPPLEMENT SUBSTITUTIONS (apply these automatically based on
     dietary_preference — never suggest the contraindicated form):
     - Omega-3:
-      Vegetarian/Vegan: ALWAYS use algae-derived omega-3 (DHA + EPA from
-      marine algae — same end product as fish oil, without the fish).
+      Vegan: ALWAYS algae-derived omega-3 (DHA + EPA from marine algae) —
+      NEVER fish oil.
+      Vegetarian: default to algae-derived omega-3, UNLESS
+      `client_context.animal_derived_supplements_ok` == "yes" — then fish oil
+      is PREFERRED (higher EPA/DHA per dose, cheaper than algae). If that flag
+      is "no", blank, or absent, use algae.
       Eggetarian/Pescatarian/Non-veg: fish oil is appropriate.
-      DO NOT suggest "fish oil" to a Vegetarian or Vegan client.
     - Collagen: not suitable for vegetarians. Suggest: vitamin C + zinc +
       silica-rich foods (cucumber skin, horsetail tea) as cofactors for
       endogenous collagen synthesis.

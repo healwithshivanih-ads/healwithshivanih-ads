@@ -2091,6 +2091,7 @@ def render_assess_page():
                         "estimated_age": age,
                         "sex": client.sex,
                         "dietary_preference": client.dietary_preference or "Vegetarian",
+                        "animal_derived_supplements_ok": getattr(client, "animal_derived_supplements_ok", None) or None,
                         "active_conditions": client.active_conditions,
                         "medical_history": client.medical_history,
                         "current_medications": client.current_medications,

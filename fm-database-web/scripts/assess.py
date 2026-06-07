@@ -753,6 +753,7 @@ def main() -> int:
         "date_of_birth": client.date_of_birth.isoformat() if client.date_of_birth else None,
         "sex": client.sex,
         "dietary_preference": client.dietary_preference or "Vegetarian",
+        "animal_derived_supplements_ok": getattr(client, "animal_derived_supplements_ok", None) or None,
         # Persisted coach-observed prefs (written by Intake form, profile
         # editor, and plan-chat client_patch). All free-form strings; pass
         # through as-is. The AI is instructed to treat foods_to_avoid as a
