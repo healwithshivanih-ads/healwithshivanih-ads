@@ -5410,6 +5410,10 @@ Per meal split (MUST roughly match):
        if span_weeks > 1 else ""
    )}
 
+   After the table(s), add ONE short warm note: she can mix the days around —
+   just swap like for like (a lunch for another lunch, a breakfast for a
+   breakfast) so each day stays balanced.
+
 4. **A few new dishes to try** — list 3–5 NEW recipes/dishes introduced
    this phase (different from initial-letter weeks). Tag each with ✦
    and add full recipes in the Appendix.
@@ -5473,7 +5477,9 @@ Per meal split (MUST roughly match):
    | **Dinner** | ... |
 
    Only ONE week — NOT both weeks in range. This is inspiration, not
-   prescription.
+   prescription. After the table, add ONE short warm note: she can mix the
+   days around — just swap like for like (a lunch for another lunch, a
+   breakfast for a breakfast) so each day stays balanced.
 
 7. **A few new dishes to try** — 3–5 ✦-tagged dishes from the sample
    week table. Include compact recipe entries (ingredients + 1-para
