@@ -16,8 +16,11 @@ preparation: Lightly roast 2 tbsp cumin, grind; mix with 1/4 tsp hing (gluten-fr
 typical_dose: 1/4-1/2 tsp with warm water when bloated, or after a heavy meal.
 duration: As needed; safe daily.
 timing_notes: With or just after meals, or at the first sign of gas.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- dysbiosis
+- altered-gi-motility
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

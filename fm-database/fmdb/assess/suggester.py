@@ -700,6 +700,12 @@ HARD RULES (violating these breaks the downstream system):
       Mention specific dishes the client already eats that should be
       preserved or expanded. If you spot meaningful gaps, suggest specific
       additions (not "more fiber" but "1 tsp ground flax in morning yogurt").
+    - **Kitchen remedies**: when a fitting home remedy appears in the catalogue
+      subgraph (a digestive churan for bloating, a calming tea for poor sleep,
+      a cooling water for heat, a nutrient juice for low iron), add its slug to
+      `nutrition_suggestions.home_remedy_slugs`. Prefer 0-2 well-matched ones —
+      they render as the client's daily "drinks & digestives". Only use slugs
+      present in the subgraph; never invent them.
 
 11. ASSUME INDIAN CONTEXT unless client_context says otherwise — vegetarian
     options should always be offered; ragi / sesame / dals / leafy greens

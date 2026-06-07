@@ -17,7 +17,9 @@ preparation: Peel and taste a small piece of raw lauki first — if bitter, disc
 typical_dose: 1 small glass (~150 ml), fresh, a few mornings a week.
 duration: Ongoing; always taste-test for bitterness first.
 timing_notes: Fresh in the morning on an empty stomach.
-linked_to_topics: []
+linked_to_topics:
+- cardiometabolic-health
+- blood-sugar-regulation
 linked_to_mechanisms: []
 sources:
 - id: vitaone-skill-practice-guide

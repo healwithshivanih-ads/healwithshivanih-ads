@@ -18,7 +18,9 @@ preparation: Juice 1 small apple, 1 small beetroot, 1-2 carrots; add a squeeze o
 typical_dose: 1 small glass (~150-200 ml), a few times a week.
 duration: Ongoing; rotate with whole fruit/veg.
 timing_notes: Morning or mid-morning, fresh. Pair with vitamin C (lemon) for iron.
-linked_to_topics: []
+linked_to_topics:
+- iron-deficiency
+- iron-deficiency-anemia
 linked_to_mechanisms: []
 sources:
 - id: vitaone-skill-practice-guide

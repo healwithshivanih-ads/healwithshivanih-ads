@@ -15,7 +15,9 @@ preparation: Soak 1 tbsp coriander seeds in 1 glass water overnight; strain in t
 typical_dose: 1 glass on an empty stomach in the morning.
 duration: Daily for 4-8 weeks, then review.
 timing_notes: First thing in the morning.
-linked_to_topics: []
+linked_to_topics:
+- thyroid
+- hypothyroidism
 linked_to_mechanisms: []
 sources:
 - id: vitaone-skill-practice-guide

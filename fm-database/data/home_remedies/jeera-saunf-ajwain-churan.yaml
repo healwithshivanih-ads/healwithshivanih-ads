@@ -20,8 +20,11 @@ preparation: Dry-roast equal parts jeera, saunf and ajwain until fragrant; cool 
 typical_dose: 1/2 tsp with a little warm water after lunch and dinner.
 duration: Daily; safe for ongoing use.
 timing_notes: After meals (post-lunch and post-dinner).
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- dysbiosis
+- altered-gi-motility
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

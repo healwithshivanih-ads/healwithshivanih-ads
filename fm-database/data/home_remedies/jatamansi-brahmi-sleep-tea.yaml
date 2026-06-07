@@ -18,8 +18,12 @@ preparation: Steep 1/4 tsp jatamansi + 1/4 tsp brahmi (or a few fresh brahmi lea
 typical_dose: 1 cup about an hour before bed.
 duration: Nightly for 4-6 weeks, then review.
 timing_notes: Evening / before bed.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- insomnia
+- sleep
+- anxiety
+linked_to_mechanisms:
+- cortisol-elevation
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

@@ -16,8 +16,11 @@ preparation: Boil 1 tsp ajwain in 2 cups water for 5 min; strain.
 typical_dose: 1/2-1 cup warm when bloated, or after a heavy meal.
 duration: As needed; safe daily in moderation.
 timing_notes: After meals or when gassy.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- dysbiosis
+- altered-gi-motility
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

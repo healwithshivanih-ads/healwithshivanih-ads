@@ -15,8 +15,11 @@ preparation: Boil 1 tsp cumin in 2 cups water for 5 min (or soak overnight); str
 typical_dose: 1-2 cups through the day, warm.
 duration: Daily; safe long-term.
 timing_notes: Between meals or first thing in the morning.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- dysbiosis
+- altered-gi-motility
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

@@ -17,8 +17,11 @@ preparation: 'Warm 1 cup milk (dairy or plant); stir in a small pinch (1/8 tsp o
 typical_dose: 1 cup about 30-45 min before bed.
 duration: Nightly as part of a wind-down routine.
 timing_notes: Bedtime.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- insomnia
+- sleep
+linked_to_mechanisms:
+- cortisol-elevation
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

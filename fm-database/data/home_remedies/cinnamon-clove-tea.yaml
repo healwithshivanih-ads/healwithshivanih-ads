@@ -17,8 +17,11 @@ preparation: Simmer a small Ceylon cinnamon stick + 1-2 cloves in 2 cups water f
 typical_dose: 1 cup a day, ideally with or after a carbohydrate meal.
 duration: Daily; prefer Ceylon cinnamon for ongoing use.
 timing_notes: With or after a meal; not essential at bedtime.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- blood-sugar-regulation
+- blood-sugar-dysfunction
+linked_to_mechanisms:
+- insulin-resistance
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

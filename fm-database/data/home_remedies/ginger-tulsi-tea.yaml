@@ -18,8 +18,10 @@ preparation: Simmer a 1-inch piece of crushed ginger + 8-10 tulsi leaves in 2 cu
 typical_dose: 1-2 cups a day.
 duration: Daily through cold season or during flares.
 timing_notes: Morning or when fighting a cold; not late at night (ginger is mildly stimulating).
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- anti-inflammatory-diet
+linked_to_mechanisms:
+- chronic-inflammation
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies

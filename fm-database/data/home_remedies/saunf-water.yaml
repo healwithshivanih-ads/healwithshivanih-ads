@@ -15,8 +15,10 @@ preparation: Soak 1 tbsp fennel seeds in 1 glass water overnight (or simmer 5 mi
 typical_dose: 1 glass in the morning or sipped after meals.
 duration: Daily; safe long-term.
 timing_notes: Morning or after meals.
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- dysbiosis
 sources:
 - id: vitaone-skill-practice-guide
   location: Coach clinical knowledge — Indian kitchen remedies
