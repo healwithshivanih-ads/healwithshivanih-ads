@@ -1061,6 +1061,10 @@ class Plan(BaseModel):
     # plans through this Pydantic model with extra="forbid") doesn't choke.
     letter_token: Optional[str] = None
     letter_token_created_at: Optional[datetime] = None
+    # 7-char public short code for the letter link (/l/<code> → /letter/<token>),
+    # written by the Next.js letter-token Server Action. Declared here so
+    # plan-check + the Python letter pipeline (extra="forbid") don't choke.
+    letter_short_code: Optional[str] = None
 
     # ---- assessment (coach) ----
     primary_topics: list[str] = Field(default_factory=list)         # topic slugs
