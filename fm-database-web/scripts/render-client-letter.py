@@ -2955,6 +2955,76 @@ def _build_portion_plate_html(meal_style: str = "hybrid", dietary_preference: st
 """
 
 
+def _load_home_remedy(slug: str) -> dict | None:
+    """Load a HomeRemedy YAML from fm-database/data/home_remedies/<slug>.yaml."""
+    import yaml as _yaml
+    p = FMDB_ROOT / "data" / "home_remedies" / f"{slug}.yaml"
+    if not p.exists():
+        return None
+    try:
+        return _yaml.safe_load(p.read_text()) or None
+    except Exception:
+        return None
+
+
+def _build_remedies_html(plan: dict) -> str:
+    """Conditional '🍵 Drinks & digestives' section. Renders the plan's catalogue
+    home_remedies (churan / tea / juice / infused water — with preparation) PLUS
+    any bespoke custom_remedies (a kitchen-spice blend authored for this client).
+    Returns '' when the plan has none, so the section only shows when relevant.
+    """
+    nutrition = plan.get("nutrition") or {}
+    cards: list[str] = []
+
+    def _card(name: str, kind: str, body_parts: list[str]) -> str:
+        kind_chip = f' <span class="remedy-kind">{kind}</span>' if kind else ""
+        return (
+            f'    <article class="remedy-card"><h3 class="remedy-name">{name}{kind_chip}</h3>'
+            + "".join(p for p in body_parts if p)
+            + "</article>"
+        )
+
+    # 1. Catalogue remedies (by slug)
+    for slug in (nutrition.get("home_remedies") or []):
+        hr = _load_home_remedy(str(slug))
+        if not hr:
+            continue
+        name = hr.get("display_name") or str(slug).replace("-", " ").title()
+        prep = (hr.get("preparation") or "").strip()
+        when = (hr.get("typical_dose") or hr.get("timing_notes") or "").strip()
+        cards.append(_card(name, str(hr.get("category") or "").replace("_", " "), [
+            f'<p class="remedy-prep">{prep}</p>' if prep else "",
+            f'<p class="remedy-when"><strong>When:</strong> {when}</p>' if when else "",
+        ]))
+
+    # 2. Bespoke custom remedies (authored for this client)
+    for cr in (nutrition.get("custom_remedies") or []):
+        if not isinstance(cr, dict):
+            continue
+        name = (cr.get("name") or "").strip()
+        if not name:
+            continue
+        cards.append(_card(name, (cr.get("kind") or "").strip(), [
+            f'<p class="remedy-why">{cr["reason"]}</p>' if cr.get("reason") else "",
+            f'<p class="remedy-prep"><strong>What\'s in it:</strong> {cr["ingredients"]}</p>' if cr.get("ingredients") else "",
+            f'<p class="remedy-prep"><strong>How to make it:</strong> {cr["preparation"]}</p>' if cr.get("preparation") else "",
+            f'<p class="remedy-when"><strong>When:</strong> {cr["timing"]}</p>' if cr.get("timing") else "",
+        ]))
+
+    if not cards:
+        return ""
+    return (
+        '<section id="remedies" class="remedies">\n'
+        '  <h2 class="remedies-title">🍵 Your daily drinks &amp; digestives</h2>\n'
+        '  <p class="remedies-sub">Simple kitchen preparations chosen for you — gentle, '
+        "easy to make, and part of your daily rhythm.</p>\n"
+        '  <div class="remedy-grid">\n'
+        + "\n".join(cards)
+        + "\n  </div>\n"
+        "</section>"
+    )
+
+
 def _buy_source_label(url: str) -> str:
     """Retailer label for a supplement buy link (shown beside 'Buy here')."""
     u = (url or "").lower()
@@ -7240,6 +7310,12 @@ def main() -> int:
                 else _build_supplement_buy_list_html(supplements)
             )
             combined = buy_list_html
+            # Conditional '🍵 Drinks & digestives' — only if the plan carries
+            # catalogue home_remedies or bespoke custom_remedies. Shown in every
+            # letter type (it's a daily ritual, not a first-letter-only block).
+            remedies_html = _build_remedies_html(plan)
+            if remedies_html:
+                combined = (combined + "\n" + remedies_html) if combined else remedies_html
             # The integrated Daily Routine timeline — placed at the TOP of
             # the letter (right before .content) so the client can't miss
             # it. It's the one they print and keep. Injected as a sibling

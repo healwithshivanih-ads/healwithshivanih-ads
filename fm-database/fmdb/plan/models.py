@@ -833,6 +833,20 @@ class PracticeItem(BaseModel):
     intake_evidence: list[str] = Field(default_factory=list)  # v0.72 — see HypothesizedDriver
 
 
+class CustomRemedy(BaseModel):
+    """A bespoke kitchen remedy authored for ONE client (not a catalogue slug):
+    a digestive churan blended for their symptoms, a vegetable juice, a tea, an
+    infused water, etc. Rendered in the letter's 'Drinks & digestives' section
+    when present. Standard catalogue remedies still go in home_remedies (slugs)."""
+    model_config = ConfigDict(extra="forbid")
+    name: str
+    kind: str = ""            # churan | tea | juice | infused_water | decoction | other
+    ingredients: str = ""     # kitchen-spice ingredients + rough quantities
+    preparation: str = ""     # how to make it
+    timing: str = ""          # when / how often to take
+    reason: str = ""          # coach rationale (why this, for this client)
+
+
 class NutritionPlan(BaseModel):
     model_config = ConfigDict(extra="forbid")
     pattern: str = ""                    # short label like "gentle anti-inflammatory"
@@ -841,6 +855,7 @@ class NutritionPlan(BaseModel):
     meal_timing: str = ""
     cooking_adjustments: list[str] = Field(default_factory=list)  # CookingAdjustment slugs
     home_remedies: list[str] = Field(default_factory=list)        # HomeRemedy slugs
+    custom_remedies: list[CustomRemedy] = Field(default_factory=list)  # bespoke per-client
 
 
 class EducationModule(BaseModel):

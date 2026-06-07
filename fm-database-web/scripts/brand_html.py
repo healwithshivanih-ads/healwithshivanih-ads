@@ -774,6 +774,20 @@ body[data-print-supplement] #supplement-schedule {{
 .buy-here--pending {{ background: transparent; color: var(--muted) !important; font-weight: 600; }}
 .buy-cta {{ display: flex; align-items: center; gap: 8px; flex-shrink: 0; }}
 .buy-src {{ font-size: 11px; color: var(--muted); }}
+
+/* 🍵 Drinks & digestives — conditional kitchen-remedy section */
+.remedies {{ margin: 24px 0 6px; }}
+.remedies-title {{ font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--forest); margin: 0 0 4px; }}
+.remedies-sub {{ font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0 0 14px; max-width: 560px; }}
+.remedy-grid {{ display: grid; gap: 14px; grid-template-columns: 1fr; }}
+@media (min-width: 620px) {{ .remedy-grid {{ grid-template-columns: 1fr 1fr; }} }}
+.remedy-card {{ border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; background: var(--forest-wash, #f6f4ee); }}
+.remedy-name {{ font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--forest); margin: 0 0 6px; }}
+.remedy-kind {{ font-family: var(--sans); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: #fff; background: var(--ochre); padding: 2px 8px; border-radius: 999px; vertical-align: middle; margin-left: 6px; }}
+.remedy-why {{ font-size: 13px; font-style: italic; color: var(--muted); margin: 0 0 8px; }}
+.remedy-prep {{ font-size: 13.5px; color: {INK}; line-height: 1.5; margin: 0 0 6px; }}
+.remedy-when {{ font-size: 13px; color: {INK}; line-height: 1.45; margin: 4px 0 0; }}
+.remedy-when strong, .remedy-prep strong {{ color: var(--forest); }}
 @media print {{ .supp-buy {{ display: none !important; }} }}
 
 .slot-chip {{
