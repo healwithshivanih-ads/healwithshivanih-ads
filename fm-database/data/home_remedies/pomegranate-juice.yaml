@@ -1,0 +1,39 @@
+slug: pomegranate-juice
+display_name: Pomegranate Juice (Anar Ras)
+aliases:
+  - anar-juice
+  - anar-ras
+  - pomegranate-arils-juice
+category: vegetable_juice
+summary: >-
+  Fresh juice from pomegranate arils — a long-standing Indian household offer
+  for cardiovascular health, oxidative stress, and fertility support. Rich in
+  punicalagins and anthocyanins; best consumed fresh and unsweetened.
+indications:
+  - cardiovascular disease prevention
+  - oxidative stress
+  - egg quality and fertility support
+  - male fertility and sperm quality
+  - mild hypertension
+  - post-exercise recovery
+contraindications:
+  - statins (potential CYP3A4 interaction at high doses)
+  - ACE inhibitors (additive BP lowering)
+  - severe diabetes without monitoring (natural sugar load)
+preparation: >-
+  Deseed 1 medium pomegranate. Blend the arils briefly (do not over-blend or
+  the seeds will release bitterness), strain through a sieve. Drink fresh.
+typical_dose: 120-180 ml
+duration: daily for 8-12 weeks during a cardiovascular or fertility focus phase
+timing_notes: mid-morning or with a meal; not late evening
+linked_to_topics:
+  - cardiovascular-disease-prevention
+  - egg-quality
+linked_to_mechanisms:
+  - endothelial-dysfunction
+  - oxidative-stress
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-07
+updated_by: Shivani

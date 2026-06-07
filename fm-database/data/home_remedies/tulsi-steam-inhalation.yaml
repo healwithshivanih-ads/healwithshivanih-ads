@@ -1,0 +1,40 @@
+slug: tulsi-steam-inhalation
+display_name: Tulsi Steam Inhalation
+aliases:
+  - holy-basil-steam
+  - tulsi-bhap
+  - tulsi-inhalation
+category: kitchen_remedy
+summary: >-
+  A simple, generations-old Indian household remedy — fresh tulsi (holy basil)
+  leaves dropped into a bowl of just-boiled water, then inhaled under a towel
+  tent. Opens nasal passages, soothes throat irritation, and provides gentle
+  antimicrobial support during a cold or sinus flare.
+indications:
+  - common cold
+  - bacterial or viral sinusitis
+  - nasal congestion
+  - sore throat
+  - early-stage cough
+contraindications:
+  - active asthma flare (steam may trigger)
+  - young children (burn risk, supervised use only)
+  - severely hypertensive episode (avoid hot-steam vasodilation)
+preparation: >-
+  Bring 1 litre water to a boil. Off heat, drop in 10-15 fresh tulsi leaves
+  (and optionally a teaspoon of ajwain or 2 cloves). Cover head with a towel,
+  tent over the bowl at a safe distance, breathe in through the nose for 5-7
+  minutes.
+typical_dose: 1 session
+duration: 1-2 times daily during a cold or sinus flare; 3-5 days
+timing_notes: morning and bedtime; not immediately after eating
+linked_to_topics:
+  - common-cold
+  - bacterial-sinusitis
+linked_to_mechanisms:
+  - chronic-inflammation
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-07
+updated_by: Shivani

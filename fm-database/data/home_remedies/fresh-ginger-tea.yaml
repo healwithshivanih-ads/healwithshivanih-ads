@@ -1,0 +1,40 @@
+slug: fresh-ginger-tea
+display_name: Fresh Ginger Tea (Adrak Chai)
+aliases:
+  - adrak-tea
+  - fresh-ginger-infusion
+  - ginger-root-tea
+category: herbal_tea
+summary: >-
+  A simple infusion of fresh ginger root in hot water — the most universal
+  Indian kitchen remedy for nausea, queasiness, motion sickness, and
+  post-meal indigestion. Warming, gently anti-inflammatory, and safe enough
+  to keep as a daily ritual.
+indications:
+  - nausea and morning sickness
+  - motion sickness
+  - functional indigestion
+  - mild GERD (low-dose)
+  - cold weather circulation
+  - menstrual cramps
+contraindications:
+  - active gallstone disease (high doses)
+  - anticoagulants (warfarin, DOACs) at high doses
+  - active peptic ulcer with heat sensitivity
+preparation: >-
+  Slice or smash a 1-inch piece of fresh ginger root. Simmer in 1.5 cups
+  water for 7-8 minutes. Strain. Optionally add a squeeze of lemon and
+  1/2 teaspoon raw honey once warm (not hot).
+typical_dose: 1 cup, up to 2-3 times daily
+duration: as needed
+timing_notes: 20 minutes before travel for motion sickness; after meals for digestion
+linked_to_topics:
+  - ibs
+  - gerd
+linked_to_mechanisms:
+  - chronic-inflammation
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-07
+updated_by: Shivani

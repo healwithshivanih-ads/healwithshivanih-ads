@@ -1,0 +1,42 @@
+slug: mulethi-tea
+display_name: Mulethi (Licorice Root) Tea
+aliases:
+  - licorice-root-tea
+  - yashtimadhu-tea
+  - jeshtamadh-tea
+category: herbal_tea
+summary: >-
+  A traditional Indian and Ayurvedic infusion of dried licorice root (mulethi).
+  Soothing for the throat, used through generations for dry cough, mild reflux
+  irritation, and as a gentle adrenal-supportive tea. Naturally sweet — no
+  sugar needed.
+indications:
+  - sore throat
+  - dry cough
+  - mild GERD or reflux irritation
+  - adrenal fatigue support
+  - low energy with salt cravings
+contraindications:
+  - hypertension
+  - hypokalaemia (low potassium)
+  - heart failure or fluid retention
+  - chronic kidney disease
+  - prolonged use beyond 4-6 weeks
+  - pregnancy
+  - concurrent diuretics or corticosteroids
+preparation: >-
+  Simmer 1 teaspoon dried licorice root pieces in 1.5 cups water for 8-10
+  minutes, strain. Drink warm.
+typical_dose: 1 cup
+duration: short courses of 2-4 weeks with breaks
+timing_notes: morning or mid-afternoon; avoid late evening if energising
+linked_to_topics:
+  - sore-throat
+  - adrenal-fatigue
+linked_to_mechanisms:
+  - cortisol-elevation
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: 2026-06-07
+updated_by: Shivani

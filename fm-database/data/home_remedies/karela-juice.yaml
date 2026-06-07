@@ -1,0 +1,39 @@
+slug: karela-juice
+display_name: Karela (Bitter Gourd) Juice
+aliases:
+  - bitter-gourd-juice
+  - bitter-melon-juice
+  - momordica-juice
+category: vegetable_juice
+summary: >-
+  Fresh juice of karela (bitter gourd), often blended with cucumber or amla
+  to cut the bitterness. A long-standing Indian household practice for
+  morning blood-sugar support and gentle liver detoxification.
+indications:
+  - type 2 diabetes
+  - insulin resistance
+  - PCOS with insulin resistance
+  - fatty liver
+  - poor morning glucose pattern
+contraindications:
+  - hypoglycaemia
+  - concurrent insulin or sulfonylureas without monitoring
+  - pregnancy (uterine-stimulating in animal studies)
+  - active peptic ulcer
+preparation: >-
+  Wash 1 medium karela, scrape out the seeds, chop and blend with a small
+  piece of cucumber, a wedge of amla or lemon, and 1/2 cup water. Strain.
+  Drink fresh.
+typical_dose: 30-60 ml (start small)
+duration: 4-8 weeks with reassessment of glucose markers
+timing_notes: first thing in the morning on an empty stomach
+linked_to_topics:
+  - insulin-resistance
+  - pcos-insulin-resistant
+linked_to_mechanisms:
+  - gut-microbiome-glucose-regulation
+evidence_tier: confirm_with_clinician
+version: 1
+status: active
+updated_at: 2026-06-07
+updated_by: Shivani
