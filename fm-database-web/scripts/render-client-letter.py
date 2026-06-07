@@ -2062,12 +2062,30 @@ _BRAND_PREFIX_RE = re.compile(
 )
 
 
-def _strip_brand_from_name(name: str) -> str:
-    """Remove a leading brand prefix from a display name. Idempotent.
-    'Vitaone Ashwagandha' → 'Ashwagandha'. 'Magnesium Glycinate' → 'Magnesium Glycinate'."""
+# Common supplement acronyms that .title() mangles ("coq10" → "Coq10"). Used
+# to re-case slug-derived names so client-facing letters read correctly.
+_SUPP_ACRONYMS = {
+    "coq10": "CoQ10", "epa": "EPA", "dha": "DHA", "b12": "B12", "b6": "B6",
+    "b9": "B9", "b3": "B3", "d3": "D3", "k2": "K2", "hcl": "HCl", "nac": "NAC",
+    "mct": "MCT", "pqq": "PQQ", "tmg": "TMG", "gla": "GLA", "ala": "ALA",
+    "dim": "DIM", "msm": "MSM", "udca": "UDCA", "tudca": "TUDCA",
+}
+
+
+def _prettify_supp_acronyms(name: str) -> str:
+    """Fix acronym casing in a supplement display name (post .title())."""
     if not name:
         return name
-    return _BRAND_PREFIX_RE.sub("", name).strip()
+    out = " ".join(_SUPP_ACRONYMS.get(w.lower(), w) for w in name.split())
+    return out.replace("EPA DHA", "EPA + DHA")
+
+
+def _strip_brand_from_name(name: str) -> str:
+    """Remove a leading brand prefix from a display name + fix acronym casing.
+    Idempotent. 'Vitaone Ashwagandha' → 'Ashwagandha'. 'Coq10' → 'CoQ10'."""
+    if not name:
+        return name
+    return _prettify_supp_acronyms(_BRAND_PREFIX_RE.sub("", name).strip())
 
 
 # Buy-source priority. When several products cover the same catalogue
