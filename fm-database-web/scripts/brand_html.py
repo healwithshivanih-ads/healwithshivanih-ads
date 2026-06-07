@@ -1174,6 +1174,19 @@ body[data-print-supplement] #supplement-schedule {{
   body[data-print-week] .week-section {{ page-break-inside: avoid; margin: 0 !important; }}
   body[data-print-week] .week-section h2 {{ font-size: 13px; margin: 0 0 6px; padding-top: 0; border: none; }}
 
+  /* ── Day-card compaction so a full week (7 cards) fits ONE page ── */
+  body[data-print-week] .meal-grid {{ gap: 7px !important; margin: 0 !important; }}
+  body[data-print-week] .day-card {{ break-inside: avoid; margin: 0 !important; border-radius: 6px; }}
+  body[data-print-week] .day-card__head {{ padding: 4px 11px !important; }}
+  body[data-print-week] .day-card__head .dow {{ font-size: 11px !important; }}
+  body[data-print-week] .day-card__head .date {{ font-size: 9px !important; }}
+  body[data-print-week] .day-card__body {{ padding: 2px 11px 5px !important; }}
+  body[data-print-week] .meal-row {{ padding: 2.5px 0 !important; }}
+  body[data-print-week] .meal-row .ml {{ font-size: 8px !important; letter-spacing: .04em; }}
+  body[data-print-week] .meal-row .md {{ font-size: 9.5px !important; line-height: 1.28 !important; }}
+  /* Drop the trailing prose paragraph from a meal-only print */
+  body[data-print-week] .week-section > p {{ display: none !important; }}
+
   /* ── Supplement schedule isolation ──
      body[data-print-supplement] shows only #supplement-schedule */
   body[data-print-supplement] .letter > .masthead,
