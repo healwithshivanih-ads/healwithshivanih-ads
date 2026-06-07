@@ -4,6 +4,9 @@ full_name: Fasting Insulin
 aliases:
 - insulin (fasting)
 - insulin fasting
+- insulin level
+- serum insulin
+- fasting insulin level
 units: µIU/mL
 sample_type: blood
 conventional_low: 2
