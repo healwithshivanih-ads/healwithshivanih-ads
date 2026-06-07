@@ -1,0 +1,64 @@
+slug: hops-humulus-lupulus
+display_name: Hops (Humulus lupulus)
+aliases:
+  - hops
+  - humulus-lupulus
+  - hop-flower
+  - hop-corymbs
+category: herb
+forms_available:
+  - capsule
+  - tablet
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 500
+    unit: mg
+timing_options:
+  - with_dinner
+  - bedtime
+take_with_food: optional
+linked_to_topics:
+  - perimenopause-and-menopause
+  - menopause
+  - anxiety-and-stress
+  - sleep-quality
+linked_to_mechanisms:
+  - gabaergic-modulation
+linked_to_claims:
+  - herbalgram-hops-menopausal-anxiety-depression
+notes_for_coach: "Hops corymbs (the female flower cones) contain 2-methyl-3-buten-2-ol
+  (a sedative metabolite of humulone) and 8-prenylnaringenin (the most potent known
+  phytoestrogen). The sedative/anxiolytic effect is GABAergic. RCT evidence: 500mg/day
+  powder significantly reduced anxiety and depression in menopausal women at all
+  timepoints (P<0.001) over 12 weeks. CONTRAINDICATED in hormone-sensitive cancers
+  (ER-positive breast cancer, endometrial cancer) due to 8-prenylnaringenin.
+  Commonly found in sleep formulas combined with valerian and passionflower — the
+  combination is synergistic. AVOID daytime dosing (sedation); do not combine with
+  alcohol, benzodiazepines, or other CNS depressants."
+notes_for_client: Hops is the flower used in brewing beer, but taken as a supplement
+  it helps calm anxiety and support restful sleep — especially useful during
+  perimenopause. Take in the evening with dinner or at bedtime.
+contraindications:
+  conditions:
+    - hormone-sensitive-breast-cancer
+    - estrogen-positive-breast-cancer
+    - endometrial-cancer
+    - estrogen-sensitive-cancers
+  medications:
+    - benzodiazepines
+    - sedative-hypnotics
+  life_stages:
+    - pregnancy
+    - lactation
+evidence_tier: plausible_emerging
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Research Reviews — Systematic Review of Herbal Medicines for Depression
+      and Anxiety in Menopausal Women, pp 42–44
+    quote: "500mg/day powdered hops corymbs significantly decreased anxiety and depression
+      vs placebo at 2, 4, 8, and 12 weeks (P<0.001 for all timepoints)"
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

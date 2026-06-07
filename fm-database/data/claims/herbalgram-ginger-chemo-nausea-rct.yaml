@@ -1,0 +1,41 @@
+slug: herbalgram-ginger-chemo-nausea-rct
+statement: Ginger 0.5–1.0 g/day for 6 days per chemotherapy cycle significantly
+  reduces chemotherapy-induced nausea (CIN) vs placebo. RCT of 744 patients (74%
+  breast cancer): all doses of ginger reduced nausea on day 1 (P=0.003 overall);
+  0.5 g and 1.0 g doses were most effective (P=0.017 and P=0.036 respectively).
+  Higher doses (1.5 g) were no more effective than lower doses.
+evidence_tier: strong
+rationale: Large, well-powered RCT (n=744) with majority breast cancer population.
+  The dose-response finding (0.5-1g optimal, not higher) is clinically useful and
+  distinguishes this from dietary ginger use. This is the most robust single-agent
+  botanical evidence for CIN in the oncology context. Ginger is already validated
+  for pregnancy nausea — the CIN data extends the mechanistic rationale.
+coaching_translation: "For cancer clients going through chemotherapy, ginger 500–1000mg
+  daily during treatment cycles is evidence-backed and inexpensive. Start on the day
+  of chemo, continue for 6 days. Capsule form (not the culinary spice at cooking doses)
+  is needed. Important: high doses (1500mg+) may actually be less effective and carry
+  more bleeding risk — 500mg twice daily is the sweet spot. Available at any Indian
+  pharmacy as ginger extract capsules."
+caveats:
+  - Potential antiplatelet/antithrombotic effect at higher doses — caution with
+    anticoagulants (warfarin, aspirin, NSAIDs) and with low platelet counts
+  - Possible CYP2C9 and CYP3A4 inhibition in vitro — monitor drug interactions
+    in complex chemotherapy regimens (discuss with oncologist)
+  - Does not eliminate nausea — reduces it. Best combined with standard antiemetics.
+  - Dose precision matters: 500–1000mg effective; 1500mg no more effective
+linked_to_topics:
+  - cancer-adjunctive-support
+  - nausea-and-vomiting
+linked_to_mechanisms: []
+linked_to_supplements:
+  - ginger
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "RCT of 744 patients, 74% breast cancer: all ginger doses reduced nausea
+      vs placebo on day 1 (P=0.003 overall); 0.5g and 1g most effective (P=0.017
+      and P=0.036). Caution antiplatelet and CYP2C9/3A4 inhibition in vitro."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

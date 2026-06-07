@@ -1,0 +1,44 @@
+slug: herbalgram-american-ginseng-cancer-fatigue-rct
+statement: American ginseng (*Panax quinquefolius*) 2g/day root extract for 8 weeks
+  significantly improved cancer-related fatigue (CRF) in cancer patients receiving
+  curative-intent chemotherapy vs placebo (P=0.003; RCT n=364). Mechanism involves
+  anti-inflammatory effects and cortisol modulation. American ginseng is non-estrogenic
+  (water-extracted/crude root) and showed in vitro inhibitory effects on breast cancer
+  cells, with no significant P450 enzyme interactions.
+evidence_tier: plausible_emerging
+rationale: Well-powered RCT (n=364), statistically significant primary endpoint.
+  Cancer-related fatigue is undertreated and patients frequently report it as
+  worse than pain — a botanical option with this evidence base is clinically
+  valuable. American ginseng (Panax quinquefolius) is distinct from Asian ginseng
+  (Panax ginseng) — milder and non-stimulating. The non-oestrogenic property
+  (confirmed via water extraction) makes it safer in breast cancer than Asian ginseng.
+coaching_translation: "Cancer-related fatigue (CRF) is one of the most disabling
+  symptoms during chemo and often not addressed medically. American ginseng (not
+  Asian/Korean ginseng — the North American species) at 2g/day for 8 weeks has the
+  best botanical evidence for CRF of any herb. It works via anti-inflammatory
+  pathways and adrenal/cortisol support — not stimulants. Available at iHerb or
+  specialty stores (NOW Foods American Ginseng is well-studied)."
+caveats:
+  - Must specify American ginseng (Panax quinquefolius) — different from Asian/Korean
+    ginseng (Panax ginseng), which has more stimulant and estrogenic activity
+  - Oncologist should be informed; discuss timing relative to chemotherapy infusions
+  - Avoid in severe thrombocytopenia
+  - Some fatigue reduction may take 4+ weeks to manifest
+linked_to_topics:
+  - cancer-adjunctive-support
+  - fatigue-and-energy
+linked_to_mechanisms:
+  - hpa-axis-dysregulation
+linked_to_supplements:
+  - american-ginseng-extract
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "RCT of 364 adults receiving curative-intent chemotherapy: 2g/day American
+      ginseng root extract × 8 weeks — significant improvement in cancer-related
+      fatigue vs placebo (P=0.003). Non-estrogenic (water-extracted/crude root).
+      In vitro inhibitory effect on breast cancer cells. No significant P450 effects."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

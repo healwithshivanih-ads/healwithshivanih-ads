@@ -1,0 +1,61 @@
+slug: turkey-tail-trametes-versicolor
+display_name: Turkey Tail Mushroom (Trametes versicolor / PSK)
+aliases:
+  - turkey-tail
+  - trametes-versicolor
+  - coriolus-versicolor
+  - psk
+  - krestin
+  - polysaccharide-k
+  - cloud-mushroom
+category: supplement
+forms_available:
+  - capsule
+  - powder
+typical_dose_range:
+  capsule:
+    min: 2000
+    max: 3000
+    unit: mg
+  powder:
+    min: 3000
+    max: 3000
+    unit: mg
+timing_options:
+  - with_breakfast
+  - with_lunch
+  - with_dinner
+take_with_food: required
+linked_to_topics:
+  - cancer-adjunctive-support
+  - immune-function
+  - gut-health
+linked_to_mechanisms:
+  - chronic-inflammation
+  - microbial-diversity-decline
+linked_to_claims:
+  - herbalgram-turkey-tail-psk-cancer-survival
+notes_for_coach: "The PSK (polysaccharide-K) extract from Trametes versicolor is
+  a licensed adjuvant cancer treatment in Japan (Krestin). Meta-analysis of 13 trials
+  (n=2,587): 9% absolute improvement in 5-year overall survival. No known herb-drug
+  interactions — one of the safest botanical adjuvants in oncology. The Japanese
+  pharmaceutical PSK is not available as a retail supplement; the closest equivalents
+  are Host Defense Turkey Tail (Paul Stamets / Fungi Perfecti, hot-water + alcohol
+  dual extract, third-party tested) or standardised beta-glucan-content extracts.
+  Also has prebiotic effects on gut microbiome (increases Bifidobacterium and
+  Lactobacillus). Do not confuse with mycelium-only products — fruiting body preferred
+  for polysaccharide content. Indian availability: iHerb import (Host Defense or
+  NOW Foods)."
+notes_for_client: Turkey tail is a well-researched medicinal mushroom used as a
+  supportive therapy alongside cancer treatment. It works with your immune system
+  and has shown meaningful benefits in clinical studies. Take with meals.
+evidence_tier: plausible_emerging
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "PSK 3g/day adjuvant: meta-analysis 13 clinical trials, 2,587 subjects —
+      9% absolute 5-year overall survival benefit. No known herb-drug interactions."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

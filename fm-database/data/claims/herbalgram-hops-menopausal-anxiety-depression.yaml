@@ -1,0 +1,46 @@
+slug: herbalgram-hops-menopausal-anxiety-depression
+statement: Hops (*Humulus lupulus*) 500 mg/day of powdered hops corymbs for 12 weeks
+  significantly decreased anxiety and depression in menopausal women vs placebo
+  at all measurement points (2, 4, 8, and 12 weeks; P<0.001 for all timepoints).
+  This is the most consistent signal from a systematic review of four botanical
+  interventions (soy, hops, kava, red clover) for menopausal depression and anxiety.
+evidence_tier: plausible_emerging
+rationale: Drawn from a systematic review of 9 RCTs (HerbalGram 121). Hops showed
+  the most statistically robust findings (P<0.001 at all timepoints) among the four
+  herbs reviewed. However, this remains one RCT within a systematic review — not
+  yet a large-scale independently replicated finding. Mechanism likely involves
+  2-methyl-3-buten-2-ol (a metabolite of the bitter acid humulone), which has known
+  sedative/anxiolytic properties via GABA-A receptor modulation.
+coaching_translation: "Hops 500mg/day is an underused botanical option for menopausal
+  women struggling with anxiety and low mood — often more acceptable than kava
+  (liver safety concerns) and better evidenced than soy for this specific indication.
+  Available as capsule or as part of sleep formulas (hops is already in many sleep
+  blends with valerian and passionflower). Not the culprit behind beer bloating —
+  the powder form is well-tolerated."
+caveats:
+  - Only one RCT supports this specific indication — not yet replicated at large scale
+  - Women with hormone-sensitive cancers should avoid hops (phytooestrogenic activity
+    of 8-prenylnaringenin, the most potent phytoestrogen known)
+  - Sedative effect — take in the evening; caution with alcohol and benzodiazepines
+  - Do not confuse with hop flower extract used in beer brewing — standardised
+    supplement form needed
+linked_to_topics:
+  - perimenopause-and-menopause
+  - menopause
+  - depression-symptoms
+  - anxiety-and-stress
+linked_to_mechanisms:
+  - gabaergic-modulation
+linked_to_supplements:
+  - hops-humulus-lupulus
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Research Reviews — Systematic Review of Herbal Medicines for Depression
+      and Anxiety in Menopausal Women, pp 42–44
+    quote: "500 mg/day powdered hops corymbs significantly decreased anxiety and depression
+      versus placebo at 2, 4, 8, and 12 weeks (P<0.001 for all); overall evidence
+      of beneficial effects still indeterminate due to poor methodology and limited RCTs."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani
