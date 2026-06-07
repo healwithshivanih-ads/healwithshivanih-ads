@@ -1,0 +1,20 @@
+slug: mayo-anxiety-benzodiazepine-cautions
+statement: Benzodiazepines (alprazolam, lorazepam, clonazepam, diazepam) cause physical
+  dependence, sedation, cognitive blunting, and falls in older clients; coach should
+  flag long-term daily use to the prescribing clinician and never recommend abrupt
+  cessation.
+evidence_tier: strong
+linked_to_topics:
+- anxiety
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-anxiety-2026
+  location: Mayo Clinic page — Sedatives
+  quote: These medications can be habit-forming and cause physical dependence.
+rationale: Benzo deprescribing is a clinical taper, not a self-discontinuation — coach
+  must redirect to MD.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

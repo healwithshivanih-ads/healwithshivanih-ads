@@ -1,0 +1,20 @@
+slug: mayo-jet-lag-pre-trip-schedule-shift
+statement: Beginning to shift bedtime and wake time by 30 to 60 minutes per day in
+  the direction of the destination for 2 to 3 days before travel measurably reduces
+  jet-lag severity.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- circadian-rhythm-disruption
+- sleep-quality
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-jet-lag-disorder-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Try gradually adjusting your sleep schedule before you leave home. Go to
+    bed about an hour earlier or later, depending on your direction of travel.
+rationale: Pre-trip planning prevents most of the symptom load — high-leverage coaching.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

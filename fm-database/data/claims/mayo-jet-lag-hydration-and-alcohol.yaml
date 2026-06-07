@@ -1,0 +1,21 @@
+slug: mayo-jet-lag-hydration-and-alcohol
+statement: Mayo emphasises hydration during flight and avoidance of alcohol and caffeine
+  within several hours of the destination bedtime — both fragment sleep architecture
+  and prolong adaptation.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- circadian-rhythm-disruption
+- sleep-quality
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-jet-lag-disorder-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Drink plenty of water before, during and after your flight. Avoid alcohol
+    and caffeine.
+rationale: Alcohol especially undermines the light-timing work — coach calls this
+  out specifically.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: mayo-yeast-infection-recurrent-infection-workup
+statement: Four or more documented yeast infections in 12 months is recurrent vulvovaginal
+  candidiasis and warrants screening for uncontrolled diabetes, immunosuppression,
+  recent antibiotic exposure, oestrogen-dominant contraception, or non-albicans Candida
+  species that need extended or alternative antifungal therapy.
+evidence_tier: strong
+linked_to_topics:
+- candida-overgrowth
+- chronic-candidiasis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-yeast-infection-2026
+  location: Mayo Clinic page — Treatment
+  quote: If you have severe symptoms or have frequent yeast infections, your healthcare
+    professional might recommend long-course vaginal therapy.
+rationale: Recurrent infection is an FM-rich picture; conventional workup uncovers
+  the driver.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

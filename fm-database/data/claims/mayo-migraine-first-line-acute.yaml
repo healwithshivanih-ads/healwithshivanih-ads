@@ -1,0 +1,21 @@
+slug: mayo-migraine-first-line-acute
+statement: Acute migraine pain typically responds best to medication taken at the
+  first sign of an attack, with OTC options like ibuprofen or aspirin for mild attacks
+  and prescription triptans (sumatriptan, rizatriptan, eletriptan) for moderate-to-severe
+  attacks.
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-migraine-2026
+  location: Mayo Clinic page — Treatment, Pain-relieving medicines
+  quote: Medicines used to relieve migraine pain work best when taken as soon as symptoms
+    begin.
+rationale: Acute migraine treatment is well-established standard of care; Mayo''s
+  ladder reflects published guidelines.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

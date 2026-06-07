@@ -1,0 +1,21 @@
+slug: mayo-shingles-postherpetic-neuralgia-management
+statement: Postherpetic neuralgia — pain persisting more than 90 days after rash resolution
+  — is managed with gabapentin or pregabalin, tricyclic antidepressants (nortriptyline,
+  amitriptyline), topical lidocaine patches, and capsaicin cream; opioids are reserved
+  for refractory cases.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- herpes-simplex
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-shingles-2026
+  location: Mayo Clinic page — Treatment
+  quote: Shingles can cause severe pain, so your healthcare professional might prescribe
+    medications such as numbing agents and certain antidepressants.
+rationale: PHN is a specialist-managed pain syndrome — coach surfaces the options
+  for shared decision-making.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

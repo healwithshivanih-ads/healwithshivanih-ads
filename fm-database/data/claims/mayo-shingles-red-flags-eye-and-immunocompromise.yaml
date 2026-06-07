@@ -1,0 +1,21 @@
+slug: mayo-shingles-red-flags-eye-and-immunocompromise
+statement: Rash on the forehead, around or in the eye (herpes zoster ophthalmicus),
+  rash on the ear with facial weakness (Ramsay Hunt syndrome), or shingles in an immunocompromised
+  client (chemotherapy, HIV, biologics, post-transplant) is an emergency requiring
+  urgent specialist input.
+evidence_tier: strong
+linked_to_topics:
+- herpes-simplex
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-shingles-2026
+  location: Mayo Clinic page — Complications
+  quote: Shingles in or around an eye can cause painful eye infections that may result
+    in vision loss.
+rationale: Eye involvement can cause permanent vision loss — coach escalates without
+  exploring root cause first.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

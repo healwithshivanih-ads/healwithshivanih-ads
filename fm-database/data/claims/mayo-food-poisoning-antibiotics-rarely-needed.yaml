@@ -1,0 +1,19 @@
+slug: mayo-food-poisoning-antibiotics-rarely-needed
+statement: Most foodborne illness is self-limiting in 1 to 3 days and antibiotics
+  are not indicated; they are reserved for confirmed bacterial infections (Listeria
+  in pregnancy, severe Salmonella in high-risk clients, Shigella, traveller''''s C.
+  jejuni) and can prolong some infections or trigger HUS in E. coli O157:H7.
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-food-poisoning-2026
+  location: Mayo Clinic page — Treatment
+  quote: Most cases of food poisoning don''''t require treatment, although antibiotics
+    may be needed for some severe cases.
+rationale: Important — coach should not expect or push antibiotics for typical cases.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

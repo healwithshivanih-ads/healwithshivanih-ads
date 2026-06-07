@@ -1,0 +1,22 @@
+slug: mayo-chronic-sinusitis-antibiotics-only-when-bacterial
+statement: Antibiotics are reserved for confirmed acute bacterial flares (severe symptoms,
+  facial pain or fever 10+ days, or worsening after initial improvement) — most chronic
+  sinusitis is inflammatory rather than infectious, and routine antibiotics are not
+  indicated.
+evidence_tier: strong
+linked_to_topics:
+- sinusitis
+- bacterial-sinusitis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-sinusitis-2026
+  location: Mayo Clinic page — Treatment
+  quote: Antibiotics are sometimes necessary for sinusitis if you have a bacterial
+    infection.
+rationale: Antibiotic overuse is the major mistake clients arrive with — coach helps
+  frame restraint.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

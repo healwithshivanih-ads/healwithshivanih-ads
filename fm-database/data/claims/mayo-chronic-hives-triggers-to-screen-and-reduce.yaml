@@ -1,0 +1,21 @@
+slug: mayo-chronic-hives-triggers-to-screen-and-reduce
+statement: 'Mayo notes potential aggravators worth a coach review: NSAIDs (aspirin,
+  ibuprofen), alcohol, tight clothing, heat, stress, and certain foods if temporally
+  linked; recurrent hives also warrants TSH and TPO antibody testing for autoimmune
+  thyroid disease.'
+evidence_tier: plausible_emerging
+linked_to_topics:
+- hives-urticaria
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-hives-2026
+  location: Mayo Clinic page — Causes
+  quote: Common triggers include pain medications, certain foods, insect bites or
+    stings, and physical stimuli.
+rationale: FM angle on autoimmune thyroid + histamine is a Mayo-confirmed overlap
+  worth pursuing.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

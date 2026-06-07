@@ -1,0 +1,20 @@
+slug: mayo-ear-infection-hallmark-symptoms
+statement: Acute middle-ear infection presents with sudden ear pain, decreased hearing,
+  ear pressure or popping, fever, fluid drainage from the ear if the eardrum ruptures,
+  and in young children pulling at the ear, increased irritability, or feeding refusal.
+evidence_tier: strong
+linked_to_topics:
+- otitis-media
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-ear-infections-2026
+  location: Mayo Clinic page — Symptoms
+  quote: Common signs and symptoms in children include ear pain, especially when lying
+    down.
+rationale: Lying-down-worsening pattern helps client distinguish from external otitis
+  or TMJ.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,19 @@
+slug: mayo-tinnitus-noise-and-ototoxic-medication-protection
+statement: The most preventable contributors are loud-noise exposure (without ear
+  protection) and ototoxic medications — high-dose aspirin, certain antibiotics (aminoglycosides),
+  loop diuretics, chemotherapy agents, and quinine — which can worsen or unmask tinnitus.
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-tinnitus-2026
+  location: Mayo Clinic page — Causes
+  quote: Tinnitus can be caused by exposure to loud noise. Some medicines can cause
+    or worsen tinnitus.
+rationale: Coach screens for noise-exposure history and reviews med list for ototoxic
+  agents.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

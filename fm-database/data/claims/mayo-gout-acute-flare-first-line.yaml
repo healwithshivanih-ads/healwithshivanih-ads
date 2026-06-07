@@ -1,0 +1,20 @@
+slug: mayo-gout-acute-flare-first-line
+statement: Conventional acute-flare options are NSAIDs (naproxen, indomethacin, celecoxib),
+  oral or intra-articular corticosteroids, or colchicine (best within 24 hours of
+  onset); choice depends on comorbidities — NSAIDs avoided in CKD or GI disease, steroids
+  preferred when both excluded.
+evidence_tier: strong
+linked_to_topics:
+- gout
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gout-2026
+  location: Mayo Clinic page — Medications
+  quote: NSAIDs may control inflammation and pain in people with gout. Colchicine.
+    Your healthcare professional may recommend colchicine.
+rationale: Acute flare is conventional-managed — coach supports adherence and lifestyle.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

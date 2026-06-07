@@ -1,0 +1,20 @@
+slug: mayo-restless-legs-alpha-2-delta-ligands-preferred-first-line-rx
+statement: Conventional guidelines now favour alpha-2-delta ligands (gabapentin enacarbil,
+  pregabalin) over dopamine agonists (pramipexole, ropinirole, rotigotine) as first-line
+  prescription therapy because dopamine agonists carry a high risk of augmentation
+  (worsening of symptoms over time) and impulse-control disorders.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-restless-legs-syndrome-2026
+  location: Mayo Clinic page — Medications
+  quote: Drugs affecting calcium channels, such as gabapentin enacarbil, work for
+    some people with restless legs syndrome.
+rationale: Augmentation is the major reason for the shift away from dopamine agonists
+  — important client-education point.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

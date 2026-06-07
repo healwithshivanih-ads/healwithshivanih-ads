@@ -1,0 +1,19 @@
+slug: mayo-jet-lag-east-vs-west-direction-matters
+statement: Crossing three or more time zones disrupts the internal circadian clock;
+  eastbound travel is harder because the body must shorten its day, and recovery roughly
+  tracks one day per time zone crossed.
+evidence_tier: strong
+linked_to_topics:
+- circadian-rhythm-disruption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-jet-lag-disorder-2026
+  location: Mayo Clinic page — Risk factors
+  quote: Generally, the more time zones you cross, the more your circadian rhythms
+    are disrupted.
+rationale: Direction asymmetry is the framing clients need to plan trips.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: mayo-migraine-lifestyle-and-trigger-tracking
+statement: Lifestyle measures with the strongest migraine-prevention evidence are
+  consistent sleep and meal timing, regular aerobic exercise, adequate hydration,
+  stress-reduction practices (biofeedback, CBT, relaxation training), and a written
+  trigger journal to identify personal precipitants.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- migraine-headache
+- circadian-rhythm-disruption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-migraine-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Self-care measures can help ease the pain of migraine. Try muscle relaxation
+    exercises, get enough sleep, rest in a dark, quiet room.
+rationale: Behavioural prevention is first-line in coaching scope and high-evidence
+  in headache literature.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

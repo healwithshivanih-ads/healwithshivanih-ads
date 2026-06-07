@@ -1,0 +1,19 @@
+slug: mayo-ear-infection-first-line-antibiotic-when-needed
+statement: When antibiotics are indicated, conventional first-line is high-dose amoxicillin
+  for 5 to 10 days; amoxicillin-clavulanate when recent amoxicillin exposure, conjunctivitis
+  with otitis, or treatment failure at 48 to 72 hours.
+evidence_tier: strong
+linked_to_topics:
+- otitis-media
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-ear-infections-2026
+  location: Mayo Clinic page — Treatment
+  quote: After an initial observation period, your healthcare professional may recommend
+    antibiotic treatment.
+rationale: Standard antibiotic ladder — coach supports completion-of-course.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

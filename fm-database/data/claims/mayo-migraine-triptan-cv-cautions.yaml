@@ -1,0 +1,21 @@
+slug: mayo-migraine-triptan-cv-cautions
+statement: Triptans constrict blood vessels and should not be used in clients with
+  established coronary artery disease, uncontrolled hypertension, prior stroke or
+  TIA, or peripheral vascular disease; coach should flag any cardiovascular history
+  before client requests refill.
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-migraine-2026
+  location: Mayo Clinic page — Triptans
+  quote: They might not be safe to take if you''''re at risk of a stroke or heart
+    attack.
+rationale: Cardiovascular contraindication is a hard safety boundary, not a coaching
+  nuance.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

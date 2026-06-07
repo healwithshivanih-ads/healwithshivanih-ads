@@ -1,0 +1,20 @@
+slug: mayo-ear-infection-pain-control-and-when-to-escalate
+statement: Acetaminophen or ibuprofen (age-dosed) is first-line for pain; warm compress
+  over the affected ear can help; escalate to ENT for facial paralysis, mastoid swelling
+  or redness behind the ear (mastoiditis), severe vertigo, or no improvement after
+  72 hours of antibiotic.
+evidence_tier: strong
+linked_to_topics:
+- otitis-media
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-ear-infections-2026
+  location: Mayo Clinic page — Treatment
+  quote: Acetaminophen or ibuprofen may help relieve pain. Use the medications as
+    directed on the label.
+rationale: Mastoiditis is the red flag clients need to recognise — escalation is urgent.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

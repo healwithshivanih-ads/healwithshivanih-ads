@@ -1,0 +1,23 @@
+slug: mayo-insomnia-sleep-hygiene-core-anchors
+statement: Sleep hygiene basics with the best evidence are consistent wake time seven
+  days a week, bed used only for sleep and sex, no screens or clock-watching in the
+  30 minutes before bed, no naps after 3 pm, no caffeine after midday, and getting
+  out of bed if not asleep within 20 minutes.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-insomnia-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Stay active. Avoid or limit naps. Avoid or limit caffeine and alcohol, and
+    don''''t use nicotine.
+rationale: Sleep hygiene is the coaching foundation — every other intervention assumes
+  it''''s in place.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,23 @@
+slug: mayo-hot-flash-hormone-therapy-conventional-baseline
+statement: Systemic oestrogen — alone after hysterectomy, with progestogen otherwise
+  — remains the most effective hot-flash treatment per Mayo, but is contraindicated
+  in clients with history of breast cancer, oestrogen-sensitive cancer, stroke, blood
+  clots, or active liver disease and should be the lowest effective dose for the shortest
+  duration.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- hot-flashes
+- menopause
+- perimenopause
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-hot-flashes-2026
+  location: Mayo Clinic page — Hormone therapy
+  quote: Estrogen is the primary treatment that relieves hot flashes.
+rationale: MHT decision is shared with prescriber; coach surfaces contraindications
+  and personal risk factors.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

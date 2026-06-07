@@ -1,0 +1,19 @@
+slug: mayo-dry-eyes-two-mechanisms-and-screen-time-driver
+statement: Dry eye splits into aqueous-deficient (not enough tears) and evaporative
+  (poor tear quality from meibomian gland dysfunction or low blink rate); prolonged
+  screen use cuts blink rate roughly in half and is now a leading contributor in adults.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- dry-eye-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-dry-eyes-2026
+  location: Mayo Clinic page — Causes
+  quote: When you read, use a computer or do other tasks that require visual concentration,
+    blink often.
+rationale: Coaching frames blink-and-break behaviour as a daily lever.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

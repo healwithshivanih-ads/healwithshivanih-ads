@@ -1,0 +1,20 @@
+slug: mayo-gerd-differentiate-chest-pain-from-cardiac
+statement: Reflux-type chest pain can mimic cardiac chest pain; new substernal chest
+  pain, especially with shortness of breath, sweating, jaw or arm radiation, or in
+  clients with cardiovascular risk factors, must be evaluated as a cardiac event until
+  proven otherwise.
+evidence_tier: strong
+linked_to_topics:
+- gerd
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gerd-2026
+  location: Mayo Clinic page — When to see a doctor
+  quote: Seek immediate medical care if you have chest pain, especially if you have
+    shortness of breath.
+rationale: Never reassure GERD when cardiac risk is present — emergency rule-out first.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

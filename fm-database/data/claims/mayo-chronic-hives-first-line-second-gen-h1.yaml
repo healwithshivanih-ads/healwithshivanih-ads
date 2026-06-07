@@ -1,0 +1,20 @@
+slug: mayo-chronic-hives-first-line-second-gen-h1
+statement: Conventional first-line therapy is a non-sedating second-generation H1
+  antihistamine (cetirizine, loratadine, fexofenadine, desloratadine, levocetirizine,
+  bilastine) daily, with the dose titrated up to four times the standard label dose
+  by the prescriber if standard dosing is inadequate.
+evidence_tier: strong
+linked_to_topics:
+- hives-urticaria
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-hives-2026
+  location: Mayo Clinic page — Medications
+  quote: Antihistamines taken by mouth are the first line of treatment for chronic
+    hives.
+rationale: Up-dosing is on-label for chronic urticaria but client may need MD confirmation.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

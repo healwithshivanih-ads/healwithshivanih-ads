@@ -1,0 +1,20 @@
+slug: mayo-gout-urate-lowering-allopurinol-febuxostat
+statement: Long-term prevention requires lowering serum uric acid below 6 mg/dL —
+  typically with allopurinol or febuxostat (xanthine oxidase inhibitors) — started
+  low-dose and titrated up; preventive colchicine or low-dose NSAID is layered in
+  for the first 3 to 6 months to prevent flares during titration.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- gout
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gout-2026
+  location: Mayo Clinic page — Medications to prevent gout complications
+  quote: Medications that block uric acid production. Drugs called xanthine oxidase
+    inhibitors limit the amount of uric acid your body makes.
+rationale: ULT is a clinical commitment — coach reinforces the long-term framing.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

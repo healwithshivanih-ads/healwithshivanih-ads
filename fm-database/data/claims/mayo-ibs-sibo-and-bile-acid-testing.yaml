@@ -1,0 +1,33 @@
+slug: mayo-ibs-sibo-and-bile-acid-testing
+statement: Mayo's own diagnostic work-up explicitly includes a breath test for small
+  intestinal bacterial overgrowth — naming SIBO as more common in patients with prior
+  bowel surgery, diabetes, or slowed digestion — and stool tests for bile acid malabsorption.
+  Mainstream gastroenterology has integrated what was once considered fringe FM territory.
+evidence_tier: strong
+rationale: This is a useful piece of catalogue context — coach can point clients at
+  the Mayo page to legitimise asking their GP about SIBO breath testing or bile acid
+  stool tests when these are FM-suspected drivers. Reduces resistance from clients/family
+  who view FM testing as 'alternative'.
+coaching_translation: Even Mayo's own IBS work-up includes the breath test for bacterial
+  overgrowth (SIBO) and a stool test for bile acid malabsorption — these aren't fringe
+  tests anymore. If we suspect SIBO, you can show your GP the Mayo page.
+caveats:
+- Mayo restricts SIBO breath testing to higher-risk groups; FM coaches often want
+  broader screening.
+- Bile acid testing availability varies by region.
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+- sibo
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-irritable-bowel-syndrome-2026
+  location: Diagnosis (additional tests)
+  quote: Breath test also can determine if there is bacterial overgrowth in the small
+    intestine ... Stool tests ... presence of bile acid.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

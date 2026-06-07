@@ -1,0 +1,21 @@
+slug: mayo-insomnia-when-to-investigate-secondary-causes
+statement: Insomnia accompanied by loud snoring with witnessed apnoeas, restless or
+  kicking legs, GERD, nocturia, depression, chronic pain, or thyroid symptoms warrants
+  evaluation for the underlying condition before drug therapy is considered.
+evidence_tier: strong
+linked_to_topics:
+- insomnia
+- sleep-apnea
+- gerd
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-insomnia-2026
+  location: Mayo Clinic page — Causes
+  quote: Insomnia can be the primary problem, or it can be associated with other conditions.
+rationale: Coach screens for these on intake — sleep apnoea + RLS especially under-diagnosed
+  in women.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

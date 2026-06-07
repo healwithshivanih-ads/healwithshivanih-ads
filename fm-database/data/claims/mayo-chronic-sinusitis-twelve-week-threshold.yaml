@@ -1,0 +1,22 @@
+slug: mayo-chronic-sinusitis-twelve-week-threshold
+statement: Chronic rhinosinusitis is defined as nasal congestion, facial pain or pressure,
+  anterior or posterior nasal drainage, and reduced sense of smell lasting 12 weeks
+  or longer despite treatment attempts — distinguishing it from acute (under 4 weeks)
+  and recurrent acute sinusitis.
+evidence_tier: strong
+linked_to_topics:
+- sinusitis
+- bacterial-sinusitis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-sinusitis-2026
+  location: Mayo Clinic page — Symptoms
+  quote: Chronic sinusitis is diagnosed when you have two or more of these signs and
+    symptoms for 12 weeks or more.
+rationale: The 12-week threshold flips the treatment strategy from antibiotics to
+  anti-inflammatory.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

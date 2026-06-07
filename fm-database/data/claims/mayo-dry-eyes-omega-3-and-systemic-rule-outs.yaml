@@ -1,0 +1,20 @@
+slug: mayo-dry-eyes-omega-3-and-systemic-rule-outs
+statement: Mayo notes omega-3 fatty acids may help some clients, and untreated dry
+  eye warrants screening for autoimmune disease (Sjögren syndrome, rheumatoid arthritis,
+  lupus, thyroid eye disease) when accompanied by dry mouth, joint pain, or fatigue.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- dry-eye-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-dry-eyes-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Consider using omega-3 fatty acid supplements. Foods rich in omega-3 fatty
+    acids may also help.
+rationale: Omega-3 is FM-staple; coach also screens for autoimmune sicca-syndrome
+  pattern.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

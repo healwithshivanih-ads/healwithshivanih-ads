@@ -1,0 +1,19 @@
+slug: mayo-chronic-sinusitis-biologics-and-surgery-for-polyps
+statement: For chronic rhinosinusitis with nasal polyps that doesn''''t respond to
+  maximal medical therapy, conventional options are biologics (dupilumab, mepolizumab,
+  omalizumab) and endoscopic sinus surgery; both belong to ENT specialist territory.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- sinusitis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-sinusitis-2026
+  location: Mayo Clinic page — Treatment
+  quote: Endoscopic sinus surgery. For treatment that resists medications, endoscopic
+    sinus surgery may be an option.
+rationale: Specialist territory — coach surfaces the menu for shared decision-making.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

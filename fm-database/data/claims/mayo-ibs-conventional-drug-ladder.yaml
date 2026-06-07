@@ -1,0 +1,35 @@
+slug: mayo-ibs-conventional-drug-ladder
+statement: Mayo's drug ladder for IBS that fails lifestyle measures — psyllium for
+  constipation, OTC laxatives (Milk of Magnesia, polyethylene glycol) if fibre fails,
+  loperamide for diarrhoea, anticholinergic dicyclomine for spasm/pain, low-dose tricyclic
+  antidepressants (imipramine, nortriptyline) for pain even without depression, and
+  SSRIs for IBS with depression and constipation.
+evidence_tier: confirm_with_clinician
+rationale: Conventional drug ladder summarised accurately. Coach knowing this lets
+  her recognise client's existing medications and timing-separation needs for FM interventions
+  (e.g. anticholinergics worsen constipation; TCAs cause dry mouth and sedation; loperamide
+  can mask SIBO).
+coaching_translation: When lifestyle alone isn't enough, doctors usually try psyllium
+  for constipation, loperamide for diarrhoea, antispasmodics for cramps, or low-dose
+  tricyclic antidepressants for pain (even if the person isn't depressed). Knowing
+  what your client is taking helps me time supplements around it.
+caveats:
+- TCAs and SSRIs in IBS need confirmation with the prescribing clinician — drug class
+  and dose vary by sub-type.
+- Low-dose dicyclomine often causes anticholinergic burden in older clients (dry mouth,
+  constipation, blurred vision).
+linked_to_topics:
+- irritable-bowel-syndrome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements:
+- psyllium-husk
+sources:
+- id: mayoclinic-irritable-bowel-syndrome-2026
+  location: Treatment (medicines)
+  quote: Tricyclic antidepressants ... may help reduce pain ... lower than typical
+    dose of imipramine, desipramine or nortriptyline.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

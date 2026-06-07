@@ -1,0 +1,20 @@
+slug: mayo-tinnitus-red-flags-pulsatile-or-unilateral
+statement: Tinnitus that is pulsatile (heartbeat-rhythmic), unilateral, accompanied
+  by sudden hearing loss, vertigo, or follows head injury warrants prompt ENT evaluation
+  to rule out vascular tumour, acoustic neuroma, otosclerosis, or sudden sensorineural
+  hearing loss (a 72-hour treatment window).
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-tinnitus-2026
+  location: Mayo Clinic page — When to see a doctor
+  quote: See your doctor if your tinnitus occurs after a head injury, or is accompanied
+    by hearing loss or dizziness.
+rationale: Sudden sensorineural hearing loss is an ENT emergency — steroid treatment
+  must start within 72 hours.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

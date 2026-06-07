@@ -1,0 +1,20 @@
+slug: mayo-migraine-red-flags-sudden-or-new
+statement: Sudden severe headache, new headache after age 50, headache with fever
+  or stiff neck, headache after head injury, or headache with weakness, vision loss
+  or speech changes warrants urgent evaluation to rule out stroke, meningitis, or
+  intracranial bleed.
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-migraine-2026
+  location: Mayo Clinic page — When to see a doctor
+  quote: See a healthcare professional right away if you have any of these symptoms,
+    which could signal a more serious medical problem.
+rationale: Mayo''s red-flag list mirrors SNOOP4 criteria used by neurologists.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

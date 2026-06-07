@@ -1,0 +1,20 @@
+slug: mayo-anxiety-rule-out-medical-causes
+statement: Before assuming primary anxiety disorder, conventional workup rules out
+  hyperthyroidism, cardiac arrhythmia, anaemia, hypoglycaemia, perimenopause, caffeine
+  or stimulant use, alcohol withdrawal, and medication side effects (corticosteroids,
+  decongestants, asthma inhalers).
+evidence_tier: strong
+linked_to_topics:
+- anxiety
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-anxiety-2026
+  location: Mayo Clinic page — Causes
+  quote: Anxiety symptoms can be caused by an underlying health issue.
+rationale: Rule-outs are critical — Hashimoto''''s and perimenopause clients often
+  present with anxiety as a presenting symptom.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

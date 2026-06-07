@@ -1,0 +1,20 @@
+slug: mayo-gout-comorbidity-screening
+statement: Gout is rarely isolated — Mayo recommends screening for hypertension, dyslipidaemia,
+  type 2 diabetes, chronic kidney disease, and metabolic syndrome at diagnosis; weight
+  loss in clients with elevated BMI lowers uric acid and flare frequency.
+evidence_tier: strong
+linked_to_topics:
+- gout
+- insulin-resistance-early-detection
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gout-2026
+  location: Mayo Clinic page — Risk factors
+  quote: Conditions including untreated high blood pressure and chronic conditions
+    such as diabetes, obesity, metabolic syndrome can increase your risk of gout.
+rationale: Metabolic-syndrome overlap is the FM lens Mayo also confirms.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

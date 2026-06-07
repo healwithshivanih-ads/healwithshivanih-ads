@@ -1,0 +1,21 @@
+slug: mayo-migraine-preventive-medication-classes
+statement: Preventive medication options for frequent or disabling migraine include
+  beta blockers (propranolol, metoprolol), tricyclic antidepressants (amitriptyline),
+  antiseizure drugs (topiramate, valproate), Botox injections every 12 weeks, and
+  CGRP monoclonal antibodies (erenumab, fremanezumab, galcanezumab, eptinezumab).
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-migraine-2026
+  location: Mayo Clinic page — Preventive medicines
+  quote: Preventive medicine can reduce how often you get a migraine, how painful
+    the attacks are and how long they last.
+rationale: Choice of preventive depends on comorbidities, side-effect profile, pregnancy
+  status — must be MD-prescribed.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,19 @@
+slug: mayo-chronic-sinusitis-screen-allergies-and-asthma
+statement: Mayo highlights that uncontrolled allergic rhinitis, asthma, and aspirin-exacerbated
+  respiratory disease (AERD with nasal polyps) drive chronic sinusitis; allergy testing
+  and asthma control change the trajectory more than repeat antibiotic courses.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- sinusitis
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-sinusitis-2026
+  location: Mayo Clinic page — Risk factors
+  quote: Hay fever or another allergic condition that affects your sinuses. Asthma,
+    which is linked to chronic sinusitis.
+rationale: 'FM-friendly framing: treat the upstream driver, not the downstream infection.'
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: mayo-snoring-cpap-gold-standard-for-osa
+statement: When sleep study confirms OSA, continuous positive airway pressure (CPAP)
+  is the conventional first-line treatment — eliminates apnoeas, reduces cardiovascular
+  and metabolic risk, and resolves daytime sleepiness; mask fit and pressure titration
+  determine adherence.
+evidence_tier: strong
+linked_to_topics:
+- sleep-apnea
+- sleep-apnea-cardiovascular-risk
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-snoring-2026
+  location: Mayo Clinic page — Treatment
+  quote: Continuous positive airway pressure involves wearing a pressurized air mask
+    over your nose while you sleep.
+rationale: CPAP adherence coaching is a high-value intervention — many clients abandon
+  it without support.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

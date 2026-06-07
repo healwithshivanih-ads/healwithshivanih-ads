@@ -1,0 +1,33 @@
+slug: mayo-ibs-red-flags-rule-out-organic-disease
+statement: 'Mayo''s conventional gatekeeping criteria for IBS — symptoms that point
+  AWAY from IBS and toward serious organic disease are: symptom onset after age 50,
+  unintended weight loss, rectal bleeding, fever, persistent vomiting, night-time
+  belly pain, diarrhoea that wakes the patient from sleep, and iron-deficiency anaemia.
+  Any of these should trigger further work-up before an IBS label is accepted.'
+evidence_tier: strong
+rationale: Standard conventional gastroenterology red-flag list. Mayo's framing matches
+  NICE and ACG guidance — these are the alarm features that override an IBS diagnosis
+  pending colonoscopy / IBD work-up.
+coaching_translation: These are the warning signs that mean it's NOT just IBS and
+  you need to see a doctor for proper testing — sudden symptoms after 50, losing weight
+  without trying, blood in stool, fever, vomiting, pain that wakes you at night, or
+  signs of low iron.
+caveats:
+- Mayo's age threshold (>50) is conservative; younger patients with these features
+  still need work-up.
+- Anaemia 'related to low iron' is Mayo's phrasing — could equally reflect B12/folate;
+  broader interpretation is appropriate.
+linked_to_topics:
+- irritable-bowel-syndrome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-irritable-bowel-syndrome-2026
+  location: Diagnosis (red-flag symptoms section)
+  quote: Onset of symptoms after age 50. Weight loss. Rectal bleeding. Fever. Nausea
+    or repeated vomiting.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: mayo-insomnia-cbt-i-first-line
+statement: Cognitive behavioural therapy for insomnia (CBT-I), delivered by trained
+  therapist or via app, is the conventional first-line treatment for chronic insomnia
+  — equally effective as sleep medication short-term and more durable long-term.
+evidence_tier: strong
+linked_to_topics:
+- insomnia
+- sleep
+- sleep-quality
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-insomnia-2026
+  location: Mayo Clinic page — Treatment
+  quote: Cognitive behavioral therapy for insomnia is generally recommended as the
+    first line of treatment.
+rationale: CBT-I is the conventional gold standard — coach can reinforce its core
+  components in session.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,34 @@
+slug: mayo-ibs-elimination-diets
+statement: Mayo names three IBS elimination targets — high-gas foods (carbonated drinks,
+  alcohol, gas-forming vegetables) for bloating-predominant patients, gluten for diarrhoea-predominant
+  patients (research shows benefit even WITHOUT celiac), and FODMAPs (fermentable
+  oligosaccharides, disaccharides, monosaccharides, polyols) for the carbohydrate-sensitive
+  sub-group. A dietitian referral is recommended for proper implementation.
+evidence_tier: strong
+rationale: Aligned with peer-reviewed evidence — low-FODMAP has strong RCT support;
+  non-celiac gluten sensitivity in IBS-D is a recognised entity. Mayo explicitly invoking
+  the dietitian referral is good — these protocols fail when implemented without structured
+  guidance.
+coaching_translation: Three diet strategies with the best evidence for IBS — cutting
+  gas-forming foods if bloating is your main issue; trying gluten-free if diarrhoea
+  dominates (even if celiac tests are negative); or going low-FODMAP for general food-triggered
+  symptoms. A dietitian's help makes these work.
+caveats:
+- Low-FODMAP is a structured 6-8 week elimination + systematic reintroduction — not
+  a forever diet.
+- Removing gluten without celiac work-up first risks missing the celiac diagnosis.
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-irritable-bowel-syndrome-2026
+  location: Treatment (foods to eliminate)
+  quote: FODMAPs — fermentable oligosaccharides, disaccharides, monosaccharides and
+    polyols. A dietitian can help with these diet changes.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,21 @@
+slug: mayo-gout-acute-attack-presentation
+statement: A classic gout attack is sudden onset (often overnight) of intense pain,
+  swelling, redness, and warmth in a single joint — typically the base of the big
+  toe (podagra) — peaking within 12 to 24 hours and resolving over days to weeks;
+  involvement spreads to ankle, knee, hand, wrist, or elbow over time.
+evidence_tier: strong
+linked_to_topics:
+- gout
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gout-2026
+  location: Mayo Clinic page — Symptoms
+  quote: The pain is likely to be most severe within the first four to 12 hours after
+    it begins.
+rationale: Pattern-recognition for the first attack — coach can flag for urgent rheum
+  eval.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

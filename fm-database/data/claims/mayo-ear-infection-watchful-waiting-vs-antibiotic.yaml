@@ -1,0 +1,21 @@
+slug: mayo-ear-infection-watchful-waiting-vs-antibiotic
+statement: Mayo and AAP guidelines support watchful waiting with pain control for
+  48 to 72 hours in healthy children over 6 months with mild symptoms; immediate antibiotics
+  are indicated for severe symptoms, fever above 39 degrees C, both ears affected,
+  or in children under 6 months.
+evidence_tier: strong
+linked_to_topics:
+- otitis-media
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-ear-infections-2026
+  location: Mayo Clinic page — Treatment
+  quote: Some ear infections resolve without treatment with antibiotics. A wait-and-see
+    approach may be an option.
+rationale: Antibiotic-stewardship framing — coach can support delayed-prescription
+  approach.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

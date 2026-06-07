@@ -1,0 +1,32 @@
+slug: mayo-ibs-first-line-lifestyle
+statement: Mayo's first-line for mild IBS is stress management plus four diet and
+  lifestyle anchors — identify and avoid food triggers, eat high-fibre foods, drink
+  plenty of fluids, exercise regularly, and get enough sleep. Conventional recommendation
+  goes BEFORE drug therapy for mild symptoms.
+evidence_tier: plausible_emerging
+rationale: Reasonable conventional guidance but the evidence base for general high-fibre
+  advice in IBS is mixed — soluble fibre (psyllium) helps, insoluble fibre can worsen
+  pain. Coach should not blindly push 'more fibre' without sub-typing. Strong on the
+  stress / sleep / movement anchors.
+coaching_translation: For mild IBS, the conventional starting point is to find your
+  trigger foods, get steady sleep, move your body daily, and stay well hydrated —
+  before reaching for medications.
+caveats:
+- '''High-fibre foods'' as a blanket recommendation isn''t fibre-type-specific; soluble
+  fibre is the better-supported choice.'
+- Stress management is named but specific intervention (CBT, gut-directed hypnotherapy)
+  is more effective than generic advice.
+linked_to_topics:
+- irritable-bowel-syndrome
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-irritable-bowel-syndrome-2026
+  location: Treatment (mild symptoms)
+  quote: Stay away from foods that trigger symptoms. Eat high-fiber foods. Drink plenty
+    of fluids. Exercise regularly. Get enough sleep.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

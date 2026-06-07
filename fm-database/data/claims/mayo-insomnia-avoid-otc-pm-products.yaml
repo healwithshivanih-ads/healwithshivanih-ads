@@ -1,0 +1,20 @@
+slug: mayo-insomnia-avoid-otc-pm-products
+statement: Mayo cautions against routine use of OTC sleep aids containing diphenhydramine
+  or doxylamine because of next-day grogginess, anticholinergic burden (dry mouth,
+  urinary retention, constipation), and links to cognitive decline in older clients.
+evidence_tier: strong
+linked_to_topics:
+- insomnia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-insomnia-2026
+  location: Mayo Clinic page — OTC sleep aids
+  quote: Most over-the-counter sleep aids contain antihistamines. They aren''''t intended
+    for long-term use.
+rationale: Anticholinergic load is under-appreciated; coach should ask specifically
+  about ZzzQuil, Benadryl-for-sleep, Unisom.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

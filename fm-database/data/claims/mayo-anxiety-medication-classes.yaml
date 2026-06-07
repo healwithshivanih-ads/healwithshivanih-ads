@@ -1,0 +1,21 @@
+slug: mayo-anxiety-medication-classes
+statement: First-line pharmacotherapy is typically an SSRI or SNRI; benzodiazepines
+  are reserved for short-term acute use due to tolerance and dependence risk; buspirone
+  is a non-sedating option for generalised anxiety; beta blockers may be used situationally
+  for performance anxiety.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- anxiety
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-anxiety-2026
+  location: Mayo Clinic page — Medications
+  quote: Several types of medications are used to help relieve symptoms, including
+    antidepressants and anti-anxiety medications.
+rationale: Choice between classes belongs to prescriber; coach educates on what each
+  does.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

@@ -1,0 +1,22 @@
+slug: mayo-gerd-ppi-conventional-ladder
+statement: Proton pump inhibitors (omeprazole, esomeprazole, lansoprazole, pantoprazole,
+  rabeprazole) are conventionally the most effective acid suppressors for moderate-to-severe
+  GERD; H2-receptor blockers (famotidine, cimetidine) and antacids are positioned
+  for milder or breakthrough symptoms.
+evidence_tier: strong
+linked_to_topics:
+- gerd
+- gerd-ppi-tapering
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gerd-2026
+  location: Mayo Clinic page — Medications
+  quote: Proton pump inhibitors are stronger acid blockers than H2 blockers and allow
+    time for damaged esophageal tissue to heal.
+rationale: Coach respects MD''''s prescribing decision; FM angle is on long-term-use
+  risks + tapering plan.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

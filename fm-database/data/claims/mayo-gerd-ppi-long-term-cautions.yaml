@@ -1,0 +1,21 @@
+slug: mayo-gerd-ppi-long-term-cautions
+statement: Long-term PPI use is associated with magnesium deficiency, B12 deficiency,
+  increased fracture risk, C. difficile and pneumonia risk, and rebound acid hypersecretion
+  on abrupt cessation; tapering is preferred to stopping cold-turkey.
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- gerd
+- gerd-ppi-tapering
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-gerd-2026
+  location: Mayo Clinic page — Medication side effects
+  quote: Long-term use of proton pump inhibitors might increase the risk of hip fractures
+    and vitamin B-12 deficiency.
+rationale: Mayo confirms the depletion picture — coach can replete and support tapering
+  with MD oversight.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

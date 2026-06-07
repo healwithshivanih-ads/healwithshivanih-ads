@@ -1,0 +1,22 @@
+slug: mayo-insomnia-rx-medications-short-term-only
+statement: Prescription sleep aids — Z-drugs (zolpidem, eszopiclone, zaleplon), benzodiazepines,
+  doxepin, ramelteon, suvorexant — are recommended for short-term use only, typically
+  less than four weeks, because of tolerance, dependence, daytime sedation, and complex
+  sleep behaviours (sleep-driving, sleep-eating).
+evidence_tier: confirm_with_clinician
+linked_to_topics:
+- insomnia
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-insomnia-2026
+  location: Mayo Clinic page — Prescription sleeping pills
+  quote: Prescription sleeping pills can help you get to sleep, stay asleep or both.
+    Doctors generally don''''t recommend relying on prescription sleeping pills for
+    more than a few weeks.
+rationale: Coach should flag clients on chronic z-drug or benzo prescriptions for
+  taper-discussion with MD.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

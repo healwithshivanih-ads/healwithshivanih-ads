@@ -1,0 +1,20 @@
+slug: mayo-migraine-medication-overuse-headache
+statement: Taking OTC pain relievers or triptans on more than 10 to 15 days per month
+  can lead to medication overuse headache, where the rescue drug itself becomes the
+  trigger; this is one of the strongest reasons to use preventive therapy.
+evidence_tier: strong
+linked_to_topics:
+- migraine-headache
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-migraine-2026
+  location: Mayo Clinic page — Pain relievers
+  quote: When taken too long, they can cause medication overuse headaches and possibly
+    ulcers and bleeding.
+rationale: Mayo explicitly warns of the rebound cycle — important for client coaching
+  on rescue-vs-prevent framing.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

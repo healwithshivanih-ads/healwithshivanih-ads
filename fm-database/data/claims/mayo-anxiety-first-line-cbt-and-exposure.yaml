@@ -1,0 +1,21 @@
+slug: mayo-anxiety-first-line-cbt-and-exposure
+statement: Cognitive behavioural therapy — particularly with exposure-based components
+  for phobias, OCD, and panic — has the strongest evidence base and is considered
+  first-line conventional treatment, often before or alongside medication.
+evidence_tier: strong
+linked_to_topics:
+- anxiety
+- emotional-wellbeing
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-anxiety-2026
+  location: Mayo Clinic page — Psychotherapy
+  quote: Cognitive behavioral therapy is the most effective form of psychotherapy
+    for anxiety disorders.
+rationale: Coaching can reinforce CBT skills (thought records, behavioural activation)
+  the client learns in therapy.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

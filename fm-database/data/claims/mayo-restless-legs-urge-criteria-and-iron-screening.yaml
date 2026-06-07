@@ -1,0 +1,19 @@
+slug: mayo-restless-legs-urge-criteria-and-iron-screening
+statement: RLS diagnosis is clinical (urge to move legs, worse at rest, relieved by
+  movement, worse evening/night), but every new diagnosis triggers a ferritin and
+  transferrin saturation check — Mayo treats with iron when ferritin is below 75 ng/mL
+  because low iron is a well-established RLS driver.
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-restless-legs-syndrome-2026
+  location: Mayo Clinic page — Causes
+  quote: Iron deficiency, even without anemia, has been linked to restless legs syndrome.
+rationale: Iron repletion at low-normal ferritin is the most impactful intervention
+  — pure FM-meets-Mayo overlap.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

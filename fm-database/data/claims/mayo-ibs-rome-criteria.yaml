@@ -1,0 +1,32 @@
+slug: mayo-ibs-rome-criteria
+statement: 'Mayo uses the Rome criteria to label IBS — recurrent belly pain or discomfort
+  averaging at least one day per week over the prior three months, associated with
+  at least two of: pain related to defecation, change in stool frequency, or change
+  in stool consistency. Sub-typing into constipation-predominant, diarrhoea-predominant,
+  mixed, or unclassified guides treatment selection.'
+evidence_tier: strong
+rationale: Rome criteria are the consensus gastroenterology definition. Mayo's framing
+  is standard. Useful for the coach to know what the GP / GI doctor is using to assign
+  the label so the client understands the diagnosis path.
+coaching_translation: 'Doctors use a specific checklist (the Rome criteria) to call
+  something ''IBS'' — at least one day a week of belly pain or discomfort over three
+  months, plus two of: pain tied to going to the bathroom, or a change in how often
+  or what your stools look like.'
+caveats:
+- Rome criteria are pattern-based, not mechanism-based — they don't address WHY (SIBO,
+  dysbiosis, FODMAP sensitivity).
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs-ibd-differentiation
+out_of_scope_notes: ''
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-irritable-bowel-syndrome-2026
+  location: Diagnosis
+  quote: Rome criteria — belly pain and discomfort averaging at least one day a week
+    in the last three months.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

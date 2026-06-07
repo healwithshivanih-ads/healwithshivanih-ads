@@ -1,0 +1,22 @@
+slug: mayo-snoring-screen-for-obstructive-sleep-apnoea
+statement: Snoring accompanied by witnessed apnoeas (breathing pauses), gasping or
+  choking awakenings, morning headaches, excessive daytime sleepiness, refractory
+  hypertension, or atrial fibrillation warrants a sleep study to rule out obstructive
+  sleep apnoea before treating snoring as benign.
+evidence_tier: strong
+linked_to_topics:
+- sleep-apnea
+- sleep-apnea-cardiovascular-risk
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-snoring-2026
+  location: Mayo Clinic page — When to see a doctor
+  quote: See your healthcare professional if you have any of the following symptoms,
+    which may indicate sleep apnea or another serious health problem.
+rationale: OSA screening is the safety priority — never treat snoring as cosmetic
+  without ruling it out.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

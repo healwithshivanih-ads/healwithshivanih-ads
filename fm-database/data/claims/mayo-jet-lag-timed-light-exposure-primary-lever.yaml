@@ -1,0 +1,20 @@
+slug: mayo-jet-lag-timed-light-exposure-primary-lever
+statement: Properly timed bright-light exposure is the strongest non-drug intervention
+  — morning light after eastbound travel to advance the clock, evening light after
+  westbound travel to delay it; avoiding light at the wrong time matters as much as
+  catching it at the right time.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- circadian-rhythm-disruption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-jet-lag-disorder-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Try to get out in the sunlight whenever possible. Light exposure has a strong
+    effect on your body''''s circadian rhythms.
+rationale: Light timing is the cleanest lever — pure coaching territory.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

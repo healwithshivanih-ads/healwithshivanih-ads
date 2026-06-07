@@ -1,0 +1,19 @@
+slug: mayo-chronic-hives-definition-six-weeks
+statement: Hives lasting longer than six weeks define chronic urticaria; unlike acute
+  hives, an identifiable trigger is found in only a minority of cases, and conventional
+  workup focuses on screening for autoimmune thyroid disease and ruling out physical
+  triggers (pressure, cold, heat, exercise, sunlight).
+evidence_tier: strong
+linked_to_topics:
+- hives-urticaria
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-chronic-hives-2026
+  location: Mayo Clinic page — Symptoms
+  quote: Chronic hives last more than six weeks. The cause is often hard to identify.
+rationale: Six-week threshold drives the conventional workup and treatment ladder.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

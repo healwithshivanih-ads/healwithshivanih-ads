@@ -1,0 +1,20 @@
+slug: mayo-jet-lag-melatonin-timing
+statement: Low-dose melatonin (0.5 to 3 mg) taken at the destination''''s bedtime
+  starting on travel day and for a few nights after can speed circadian adaptation;
+  higher doses are no more effective and increase next-day grogginess.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- circadian-rhythm-disruption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-jet-lag-disorder-2026
+  location: Mayo Clinic page — Lifestyle and home remedies
+  quote: Try melatonin. Melatonin is a hormone produced by your body that helps regulate
+    the sleep-wake cycle.
+rationale: Low-dose timing is what matters — common client mistake is taking too much
+  too early.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

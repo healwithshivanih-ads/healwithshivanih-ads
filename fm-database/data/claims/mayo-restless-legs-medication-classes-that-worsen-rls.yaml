@@ -1,0 +1,20 @@
+slug: mayo-restless-legs-medication-classes-that-worsen-rls
+statement: Common medications that trigger or worsen RLS include sedating antihistamines
+  (diphenhydramine), anti-nausea drugs (metoclopramide, prochlorperazine), most antidepressants
+  (SSRIs, SNRIs, tricyclics — except bupropion), and antipsychotics; coach should
+  flag these for prescriber review before drug therapy is started.
+evidence_tier: strong
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-restless-legs-syndrome-2026
+  location: Mayo Clinic page — Causes
+  quote: Certain medications can worsen symptoms. These include some antinausea drugs,
+    antipsychotic drugs, and some antidepressants.
+rationale: Med-review is often the single most useful coaching intervention before
+  any drug for RLS.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani

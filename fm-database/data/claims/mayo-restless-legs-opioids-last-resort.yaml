@@ -1,0 +1,19 @@
+slug: mayo-restless-legs-opioids-last-resort
+statement: Low-dose opioids (oxycodone, methadone, tramadol) are reserved for severe
+  refractory RLS that has failed alpha-2-delta ligands and dopamine agonists; addiction
+  risk and respiratory depression make them a last-line option requiring close clinician
+  oversight.
+evidence_tier: confirm_with_clinician
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: mayoclinic-restless-legs-syndrome-2026
+  location: Mayo Clinic page — Medications
+  quote: Opioid medications may relieve symptoms in severe cases, but they may be
+    addictive if used in high doses.
+rationale: Coach surfaces the ladder so client understands escalation logic.
+version: 1
+status: active
+updated_at: 2026-05-30
+updated_by: Shivani
