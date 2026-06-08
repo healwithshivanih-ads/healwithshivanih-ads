@@ -1,0 +1,72 @@
+slug: white-peony-paeonia-lactiflora
+display_name: White Peony Root (Paeonia lactiflora)
+aliases:
+  - white-peony
+  - paeonia-lactiflora
+  - bai-shao
+  - shakuyaku
+  - peony-root
+category: herb
+forms_available:
+  - tincture
+  - capsule
+  - powder
+typical_dose_range:
+  tincture:
+    min: 3
+    max: 5
+    unit: ml_per_day
+  capsule:
+    min: 1500
+    max: 3000
+    unit: mg_per_day
+timing_options:
+  - with_breakfast
+  - with_dinner
+take_with_food: true
+contraindications:
+  conditions:
+    - bleeding-disorders
+  medications:
+    - blood thinners (warfarin, aspirin high-dose) — paeoniflorin has mild antiplatelet activity
+  life_stages:
+    - pregnancy (avoid high-dose)
+interactions:
+  with_supplements:
+    - licorice-root (commonly combined as TJ-68/Shakuyaku-Kanzo-To for PCOS androgens)
+  with_foods: []
+  with_medications:
+    - blood thinners
+pregnancy_safety: caution
+lactation_safety: unknown
+linked_to_topics:
+  - pcos-fertility
+  - hirsutism-and-androgen-excess
+linked_to_mechanisms:
+  - androgen-excess
+  - anovulation
+linked_to_claims:
+  - white-peony-licorice-pcos-androgens-tj68
+notes_for_coach: "White peony root (Bai Shao in Chinese medicine) is the primary
+  botanical for elevated androgens in PCOS. Active constituent paeoniflorin modulates
+  aromatase enzyme activity supporting follicle maturation and ovulation. Classically
+  combined with licorice as TJ-68 (Shakuyaku-Kanzo-To, a Kampo formula). Two small
+  trials show testosterone reduction and ovulation restoration in PCOS. Dose as
+  tincture: 20mL per 100mL formula batch (combined with chaste berry, black cohosh,
+  dong quai, hops per Romm Box 5-32). India availability: Himalaya and Organic India
+  don't carry it; look for TCM supplier or import as standardised extract. Pairs well
+  with NAC, inositol, spearmint tea for PCOS protocol."
+notes_for_client: White peony root is a gentle Chinese medicinal herb that helps
+  calm excess testosterone in PCOS. It works with the ovary's natural processes to
+  support ovulation and hormone balance. Typically used as part of a blended formula.
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 5 — PCOS section, pp. 175–184; Table 5-17; clinical trial data"
+    quote: "Paeoniflorin acts on the aromatase enzyme important in follicle maturation
+      and ovulation. Trial n=8: testosterone decreased to <50 ng/dL, 7/8 resumed
+      ovulation. Trial n=20: 90% testosterone lowered, 25% conceived."
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

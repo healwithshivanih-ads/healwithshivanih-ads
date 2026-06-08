@@ -1,0 +1,51 @@
+slug: tribulus-pcos-menstrual-regularity
+statement: "Tribulus terrestris (Bulgarian-grown, standardised to ≥40% furosterol
+  saponins by UV analysis) supports menstrual regularity and ovulation in PCOS via
+  steroidal saponin protodioscin, which converts to DHEA and supports LH activity.
+  Best used Days 5–14 of cycle. CRITICAL: only Bulgarian-grown product standardised
+  to furosterol saponins is clinically validated — Chinese and Indian-grown tribulus
+  are NOT interchangeable and lack the active saponin profile."
+evidence_tier: plausible_emerging
+rationale: "Bulgarian research supports protodioscin as the key active constituent
+  converting to DHEA and supporting gonadotropin activity. The Day 5–14 follicular-
+  phase protocol (matching natural LH rise) is a traditional and clinically-informed
+  timing strategy. Evidence base is moderate — Bulgarian clinical data with a plausible
+  mechanism (DHEA conversion → LH support). Geographic specificity is critical:
+  the steroidal saponin profile varies dramatically by growing region. This is particularly
+  useful for PCOS clients with menstrual irregularity where anovulation is the primary
+  concern, alongside adaptogens for HPA support."
+coaching_translation: "Tribulus is a useful addition for PCOS clients with irregular
+  periods and anovulation. Use ONLY Bulgarian tribulus standardised to 40%+ furosterol
+  saponins — the strength you see on most Indian/Chinese products is different chemistry
+  and won't work the same way. Take Days 5 to 14 of the cycle (the first two weeks),
+  stop after Day 14. Dose: 500–750mg standardised extract once daily with food. Allow
+  2–3 cycles to assess effect on regularity."
+caveats:
+  - Geographic specificity CRITICAL: only Bulgarian-grown standardised to ≥40% furosterol
+    saponins (UV analysis). Chinese and Indian-grown products have different saponin
+    profiles and are clinically NOT equivalent.
+  - Not recommended in pregnancy or active TTC without clinician oversight (DHEA
+    precursor activity)
+  - Cycle-phase protocol: Days 5–14 only — stop after ovulation window
+  - May interact with hormone-sensitive conditions; avoid in ER+ breast cancer risk
+  - India sourcing: sourcing Bulgarian tribulus in India is difficult — verify supplier
+    and certificate of analysis before recommending
+linked_to_topics:
+  - pcos-fertility
+  - fertility-and-ovulation
+linked_to_mechanisms:
+  - androgen-excess
+  - anovulation
+linked_to_supplements:
+  - tribulus-terrestris
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 5 — PCOS section, Table 5-17; Box 5-32 botanical prescriptions"
+    quote: "Bulgarian research; steroidal saponin protodioscin (≥45%) converts to
+      DHEA, restores vitality and libido. Use ONLY Bulgarian-grown standardised to
+      40% furosterol saponins by UV analysis — Chinese and Indian NOT interchangeable.
+      Best used Days 5–14 of cycle for menstrual regularity."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani
