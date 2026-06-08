@@ -3037,9 +3037,9 @@ def _build_remedies_html(plan: dict) -> str:
         return ""
     return (
         '<section id="remedies" class="remedies">\n'
-        '  <h2 class="remedies-title">🍵 Your daily drinks &amp; digestives</h2>\n'
-        '  <p class="remedies-sub">Simple kitchen preparations chosen for you — gentle, '
-        "easy to make, and part of your daily rhythm.</p>\n"
+        '  <h2 class="remedies-title">🌿 Your daily rituals &amp; home remedies</h2>\n'
+        '  <p class="remedies-sub">Simple, gentle preparations and practices chosen for you — '
+        "part of your daily rhythm.</p>\n"
         '  <div class="remedy-grid">\n'
         + "\n".join(cards)
         + "\n  </div>\n"
