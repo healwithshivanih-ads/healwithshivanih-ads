@@ -1,16 +1,20 @@
 slug: sesame-oil-head-massage
 display_name: Sesame-Oil Head Massage (Shiroabhyanga)
 category: kitchen_remedy
-summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh
-  out before clinical use — confirm indications, preparation, contraindications.
+summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh out before clinical
+  use — confirm indications, preparation, contraindications.
 indications: []
 contraindications: []
 preparation: ''
 typical_dose: ''
 duration: ''
 timing_notes: ''
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- insomnia
+- chronic-stress
+- hair-loss
+linked_to_mechanisms:
+- cortisol-elevation
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-mining 2026-05-13

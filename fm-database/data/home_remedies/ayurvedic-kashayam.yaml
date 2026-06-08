@@ -1,16 +1,18 @@
 slug: ayurvedic-kashayam
 display_name: Ayurvedic Kashayam (clinician-guided)
 category: kashayam
-summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh
-  out before clinical use — confirm indications, preparation, contraindications.
+summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh out before clinical
+  use — confirm indications, preparation, contraindications.
 indications: []
 contraindications: []
 preparation: ''
 typical_dose: ''
 duration: ''
 timing_notes: ''
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- anti-inflammatory-diet
+linked_to_mechanisms:
+- chronic-inflammation
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-mining 2026-05-13

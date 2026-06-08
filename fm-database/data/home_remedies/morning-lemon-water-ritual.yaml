@@ -1,15 +1,17 @@
 slug: morning-lemon-water-ritual
 display_name: Morning Lemon Water Ritual
 category: infused_water
-summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh
-  out before clinical use — confirm indications, preparation, contraindications.
+summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh out before clinical
+  use — confirm indications, preparation, contraindications.
 indications: []
 contraindications: []
 preparation: ''
 typical_dose: ''
 duration: ''
 timing_notes: ''
-linked_to_topics: []
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- detoxification
 linked_to_mechanisms: []
 sources:
 - id: vitaone-mind-map-tool
