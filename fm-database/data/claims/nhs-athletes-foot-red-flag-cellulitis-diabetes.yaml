@@ -1,0 +1,17 @@
+slug: nhs-athletes-foot-red-flag-cellulitis-diabetes
+statement: Refer to GP urgently if the foot or leg becomes hot, painful and red, if
+  pain is severe, if the rash spreads to hands, or if the person has diabetes or immunosuppression
+  — these flag possible cellulitis or complicated infection.
+evidence_tier: strong
+linked_to_topics:
+- fungal-overgrowth
+sources:
+- id: nhs-athletes-foot-2026
+  location: 'NHS page — Non-urgent advice: See a GP if'
+  quote: your foot or leg is hot, painful and red ... you have diabetes ... you have
+    a weakened immune system
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Red flag thresholds the FM catalogue lacks — capture for safety net.

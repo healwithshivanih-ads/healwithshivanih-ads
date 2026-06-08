@@ -1,0 +1,19 @@
+slug: nhs-haemorrhoids-piles-fluid-and-fibre
+statement: Keeping stools soft with plenty of fluids and dietary fibre, and cutting
+  back on alcohol and caffeine, prevents straining and lets most piles settle on their
+  own.
+evidence_tier: strong
+linked_to_topics:
+- hemorrhoids
+- constipation
+- fiber-gap
+sources:
+- id: nhs-haemorrhoids-piles-2026
+  location: NHS page — How you can treat or prevent piles
+  quote: 'drink lots of fluid and eat plenty of fibre to keep your poo soft ... cut
+    down on alcohol and caffeine (like tea, coffee and cola) to avoid '
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: First-line FM-aligned dietary anchor.

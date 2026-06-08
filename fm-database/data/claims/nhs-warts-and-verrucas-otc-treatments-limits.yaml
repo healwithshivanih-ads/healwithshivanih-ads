@@ -1,0 +1,16 @@
+slug: nhs-warts-and-verrucas-otc-treatments-limits
+statement: Pharmacy salicylic-acid creams, plasters or sprays take up to 3 months
+  to work, can irritate surrounding skin, do not always succeed, and must never be
+  used on the face.
+evidence_tier: strong
+linked_to_topics: []
+sources:
+- id: nhs-warts-and-verrucas-2026
+  location: NHS page — A pharmacist can help
+  quote: 'These treatments can take up to 3 months to complete, may irritate your
+    skin and do not always work. You should not use these treatments on '
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Safety + adherence anchor.

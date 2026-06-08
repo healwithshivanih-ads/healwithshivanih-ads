@@ -1,0 +1,17 @@
+slug: nhs-gum-disease-red-flag-loose-teeth
+statement: See a dentist urgently for very swollen gums, loose or falling teeth, mouth
+  ulcers or red patches, or any lump on the gum or lip — these can flag advanced periodontitis
+  or oral cancer.
+evidence_tier: strong
+linked_to_topics:
+- periodontal-disease
+sources:
+- id: nhs-gum-disease-2026
+  location: NHS page — Urgent advice section
+  quote: very sore and swollen gums ... teeth becoming loose or falling out ... a
+    lump in your mouth or on your lip
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Periodontal / oral cancer red flag.

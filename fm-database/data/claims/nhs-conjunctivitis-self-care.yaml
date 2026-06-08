@@ -1,0 +1,16 @@
+slug: nhs-conjunctivitis-self-care
+statement: For uncomplicated conjunctivitis, bathe eyelids with cooled boiled water
+  on a clean cotton wool pad (one per eye), apply a cold flannel for a few minutes,
+  and stop wearing contact lenses until the eyes recover.
+evidence_tier: strong
+linked_to_topics: []
+sources:
+- id: nhs-conjunctivitis-2026
+  location: NHS page — How to treat conjunctivitis yourself
+  quote: Wash your eyelids with clean water. Boil the water and let it cool down ...
+    Hold a cold flannel on your eyes for a few minutes
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: First-line self-care anchor from NHS patient-ed page.

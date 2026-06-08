@@ -1,0 +1,17 @@
+slug: nhs-hangover-alcohol-cutdown-uk-low-risk-threshold
+statement: UK low-risk drinking guidance is no more than 14 units a week — equivalent
+  to about 6 pints of average-strength beer or 6 medium glasses of wine — spread across
+  the week with several drink-free days.
+evidence_tier: strong
+linked_to_topics:
+- liver-detoxification
+sources:
+- id: nhs-hangover-alcohol-cutdown-2026
+  location: NHS page — Tips on cutting down section
+  quote: If you regularly drink more than 14 units of alcohol a week ... 14 units
+    is equivalent to 6 pints of average-strength beer or 6 medium glass
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: UK conventional alcohol intake threshold.

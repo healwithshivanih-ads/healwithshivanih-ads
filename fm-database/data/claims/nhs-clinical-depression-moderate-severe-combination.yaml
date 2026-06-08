@@ -1,0 +1,18 @@
+slug: nhs-clinical-depression-moderate-severe-combination
+statement: For moderate or severe depression, combining an antidepressant with CBT
+  works better than either alone; severe cases need specialist mental-health team
+  input.
+evidence_tier: strong
+linked_to_topics:
+- major-depressive-disorder
+- depression-lifestyle
+sources:
+- id: nhs-clinical-depression-2026
+  location: NHS page — Moderate to severe depression
+  quote: A combination of an antidepressant and CBT usually works better than having
+    just one of these treatments
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 'Evidence anchor: combination therapy beats monotherapy.'

@@ -1,0 +1,16 @@
+slug: nhs-atopic-eczema-dry-skin-steroid-creams-mainstay
+statement: Topical corticosteroids alongside emollients are the main prescription
+  treatment for active flares, with severity dictating potency and duration.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-atopic-eczema-dry-skin-2026
+  location: NHS page — Treatment for atopic eczema
+  quote: 'The main treatments are: moisturising creams ... steroid creams, lotions
+    or gels you apply to your skin (topical corticosteroids)'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Conventional Rx anchor for moderate-severe flares.

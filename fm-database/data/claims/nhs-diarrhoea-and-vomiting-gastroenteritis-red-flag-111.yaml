@@ -1,0 +1,18 @@
+slug: nhs-diarrhoea-and-vomiting-gastroenteritis-red-flag-111
+statement: Call NHS 111 for any worry about a baby under 12 months, a baby who stops
+  feeding, signs of dehydration (dark urine, fewer wet nappies), persistent vomiting
+  that can't keep fluids down, bloody diarrhoea, or symptoms beyond 7 days (diarrhoea)
+  or 2 days (vomiting).
+evidence_tier: strong
+linked_to_topics:
+- microbiome
+sources:
+- id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
+  location: 'NHS page — Urgent advice: Call 111 now section'
+  quote: you're worried about a baby under 12 months ... a child under 5 years has
+    signs of dehydration ... you or your child have bloody diarrhoea o
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: NHS 111 escalation thresholds for gastroenteritis.

@@ -1,0 +1,17 @@
+slug: nhs-gum-disease-plaque-mechanism
+statement: Gum disease is driven by plaque accumulation between teeth and at the gumline
+  — twice-daily fluoride brushing plus daily interdental cleaning is the prevention
+  foundation.
+evidence_tier: strong
+linked_to_topics:
+- periodontal-disease
+sources:
+- id: nhs-gum-disease-2026
+  location: NHS page — Preventing gum disease
+  quote: Gum disease is caused by a build-up of plaque on your teeth ... brush your
+    teeth with fluoride toothpaste at least twice a day
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Mechanism + prevention anchor.

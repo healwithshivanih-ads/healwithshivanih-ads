@@ -1,0 +1,17 @@
+slug: nhs-diarrhoea-and-vomiting-gastroenteritis-transmission-control
+statement: Stay off school or work until 48 hours after the last episode of diarrhoea
+  or vomiting, do not prepare food for others, hot-wash soiled laundry separately
+  and skip swimming pools for at least 48 hours after recovery.
+evidence_tier: strong
+linked_to_topics:
+- microbiome
+sources:
+- id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
+  location: NHS page — Diarrhoea and vomiting can spread easily
+  quote: Stay off school or work until you've not been sick or had diarrhoea for at
+    least 2 days ... do not use a swimming pool until at least 48 hou
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Public-health prevention rule.

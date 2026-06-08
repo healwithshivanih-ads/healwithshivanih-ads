@@ -1,0 +1,17 @@
+slug: nhs-athletes-foot-self-care
+statement: First-line care for athlete's foot is over-the-counter antifungal cream,
+  spray or powder applied for several weeks; pharmacist guidance helps match the formulation
+  to the person.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- fungal-overgrowth
+sources:
+- id: nhs-athletes-foot-2026
+  location: NHS page — Self-care section
+  quote: you can buy antifungal medicines for it from a pharmacy. They usually take
+    a few weeks to work
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: First-line self-care anchor from NHS patient-ed page.

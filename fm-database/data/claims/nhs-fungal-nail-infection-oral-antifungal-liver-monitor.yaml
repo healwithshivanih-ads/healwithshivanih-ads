@@ -1,0 +1,17 @@
+slug: nhs-fungal-nail-infection-oral-antifungal-liver-monitor
+statement: If oral antifungal tablets are prescribed for a fungal nail infection,
+  expect blood tests to monitor liver function before and during the course, which
+  can last up to 6 months.
+evidence_tier: strong
+linked_to_topics:
+- fungal-overgrowth
+sources:
+- id: nhs-fungal-nail-infection-2026
+  location: NHS page — Treatment for a fungal nail infection
+  quote: You may also need to have a blood test before starting treatment and during
+    treatment to check your liver is working properly
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Drug-monitoring safety for FM clients on oral antifungals.

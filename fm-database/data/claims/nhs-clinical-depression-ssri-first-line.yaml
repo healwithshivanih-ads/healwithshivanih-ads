@@ -1,0 +1,18 @@
+slug: nhs-clinical-depression-ssri-first-line
+statement: SSRIs (such as sertraline, fluoxetine, citalopram) are the usual first
+  antidepressant choice — equally effective as older drugs but with fewer side effects;
+  under-18s are typically only prescribed fluoxetine and only by a specialist.
+evidence_tier: strong
+linked_to_topics:
+- major-depressive-disorder
+- depression-lifestyle
+sources:
+- id: nhs-clinical-depression-2026
+  location: NHS page — Selective serotonin reuptake inhibitors (SSRIs)
+  quote: you'll usually be prescribed a modern type called a selective serotonin reuptake
+    inhibitor (SSRI) ... Fluoxetine is the only SSRI that can b
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Conventional Rx first-line and age caveats.

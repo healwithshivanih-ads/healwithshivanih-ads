@@ -1,0 +1,19 @@
+slug: nhs-clinical-depression-st-johns-wort-caution
+statement: St John's wort has some evidence for mild depression but is not recommended
+  by NHS doctors because active-ingredient content varies between brands and it dangerously
+  interacts with the contraceptive pill, anticoagulants, anticonvulsants and other
+  antidepressants.
+evidence_tier: strong
+linked_to_topics:
+- major-depressive-disorder
+- depression-lifestyle
+sources:
+- id: nhs-clinical-depression-2026
+  location: NHS page — St John's wort section
+  quote: Taking St John's wort with other medicines, such as anticonvulsants, anticoagulants,
+    antidepressants and the contraceptive pill, can also ca
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Important supplement-drug interaction warning for FM coaching.

@@ -1,0 +1,17 @@
+slug: nhs-atopic-eczema-dry-skin-red-flag-eczema-herpeticum
+statement: Get urgent GP or NHS 111 advice if eczema becomes blistered, crusty, leaking
+  pus, painful, warm, or accompanies fever — these can flag bacterial infection or
+  eczema herpeticum needing antibiotics or antivirals.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-atopic-eczema-dry-skin-2026
+  location: NHS page — Urgent advice section
+  quote: it's blistered, crusty, leaking fluid or has spots filled with pus ... These
+    can be signs that your eczema is infected or you have a more se
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Critical infection red flag.

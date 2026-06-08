@@ -1,0 +1,15 @@
+slug: nhs-atopic-eczema-dry-skin-avoid-aqueous-cream
+statement: Aqueous cream is not recommended as a leave-on emollient — it can irritate
+  the skin and worsen eczema.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-atopic-eczema-dry-skin-2026
+  location: NHS page — Don't list
+  quote: do not use aqueous cream as it can irritate the skin and make eczema worse
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Counter-intuitive evidence-based caution.

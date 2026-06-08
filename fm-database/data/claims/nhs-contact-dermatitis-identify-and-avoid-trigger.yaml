@@ -1,0 +1,17 @@
+slug: nhs-contact-dermatitis-identify-and-avoid-trigger
+statement: Contact dermatitis usually clears completely if the offending irritant
+  or allergen is identified and avoided — soaps, detergents, solvents, frequent water
+  contact, nickel and some cosmetics are the most common triggers.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-contact-dermatitis-2026
+  location: NHS page — Treating contact dermatitis
+  quote: If you can successfully avoid the irritants or allergens that trigger your
+    symptoms, your skin will eventually clear up
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: FM-aligned trigger identification.

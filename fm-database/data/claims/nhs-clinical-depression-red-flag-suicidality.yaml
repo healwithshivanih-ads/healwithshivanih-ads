@@ -1,0 +1,18 @@
+slug: nhs-clinical-depression-red-flag-suicidality
+statement: Contact a GP immediately if feelings of hopelessness or suicidal thoughts
+  appear or worsen after starting antidepressants — under-18s on SSRIs other than
+  fluoxetine carry a documented self-harm risk.
+evidence_tier: strong
+linked_to_topics:
+- major-depressive-disorder
+- depression-lifestyle
+sources:
+- id: nhs-clinical-depression-2026
+  location: NHS page — Antidepressants section
+  quote: Contact a GP straight away if you have any feelings of hopelessness or suicidal
+    thoughts that start or get worse after starting antidepressa
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Critical safety threshold on antidepressants.

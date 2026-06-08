@@ -1,0 +1,17 @@
+slug: nhs-diarrhoea-and-vomiting-gastroenteritis-hydration-foundation
+statement: First-line care is fluid replacement — small sips of water or squash, continued
+  breast or bottle feeding for babies, with oral rehydration powder from a pharmacy
+  when dehydration risk is higher.
+evidence_tier: strong
+linked_to_topics:
+- microbiome
+sources:
+- id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
+  location: NHS page — How to treat yourself + A pharmacist can help
+  quote: The most important thing is to have lots of fluids to avoid dehydration ...
+    oral rehydration powder that you mix with water to make a drink
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: First-line gastroenteritis care.

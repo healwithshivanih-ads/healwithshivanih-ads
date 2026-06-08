@@ -1,0 +1,18 @@
+slug: nhs-haemorrhoids-piles-hospital-procedures
+statement: Outpatient procedures — rubber band ligation, sclerotherapy, electrotherapy
+  or infrared coagulation — manage piles that don't settle with self-care, with surgery
+  reserved for large or persistent cases.
+evidence_tier: strong
+linked_to_topics:
+- hemorrhoids
+- constipation
+- fiber-gap
+sources:
+- id: nhs-haemorrhoids-piles-2026
+  location: NHS page — Hospital treatment for piles
+  quote: rubber band ligation ... sclerotherapy ... electrotherapy ... infrared coagulation
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Conventional procedure ladder.

@@ -1,0 +1,17 @@
+slug: nhs-contact-dermatitis-glove-strategy
+statement: When unavoidable irritant contact is occupational, cotton gloves worn under
+  rubber gloves protect hands while preventing the sweat–rubber–irritant cycle that
+  worsens dermatitis.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-contact-dermatitis-2026
+  location: NHS page — Preventing contact dermatitis
+  quote: you may find it useful to wear cotton gloves underneath rubber gloves if
+    the rubber also irritates you
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Practical occupational-skin protection.

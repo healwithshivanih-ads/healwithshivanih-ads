@@ -1,0 +1,16 @@
+slug: nhs-gum-disease-bleeding-on-brushing-is-not-normal
+statement: Gums that bleed when brushing, flossing or eating hard food are a flag
+  for gum disease and warrant a dentist visit — bleeding is not a sign you're brushing
+  too hard.
+evidence_tier: strong
+linked_to_topics:
+- periodontal-disease
+sources:
+- id: nhs-gum-disease-2026
+  location: NHS page — Symptoms of gum disease
+  quote: your gums bleeding when you brush your teeth, floss or eat hard foods
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Patient education to overcome a common misconception.

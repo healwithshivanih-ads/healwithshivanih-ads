@@ -1,0 +1,16 @@
+slug: nhs-contact-dermatitis-when-to-refer
+statement: A dermatology referral and patch testing are warranted when the trigger
+  cannot be identified or when symptoms do not respond to first-line treatment.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-contact-dermatitis-2026
+  location: NHS page — When to see a GP
+  quote: 'A GP may refer you to a doctor who specialises in treating skin conditions
+    (dermatologist) for further tests if: the substance causing your '
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Dermatology referral threshold.

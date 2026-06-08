@@ -1,0 +1,17 @@
+slug: nhs-clinical-depression-mild-depression-stepped-care
+statement: For mild depression, first-line care is watchful waiting, guided self-help
+  based on CBT, exercise and talking therapies before medication.
+evidence_tier: strong
+linked_to_topics:
+- major-depressive-disorder
+- depression-lifestyle
+sources:
+- id: nhs-clinical-depression-2026
+  location: NHS page — Mild depression
+  quote: they may suggest waiting a short time to see if it gets better by itself
+    ... There's evidence that exercise can help depression, and it's on
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: NICE-style stepped-care framing.

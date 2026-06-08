@@ -1,0 +1,17 @@
+slug: nhs-dental-abscess-airway-emergency
+statement: Call 999 or go to A&E if a dental abscess causes difficulty breathing,
+  swallowing or speaking, severe mouth swelling, eye swelling or sudden vision problems
+  — these flag spreading infection threatening the airway or orbit.
+evidence_tier: strong
+linked_to_topics:
+- oral-health-toxins
+sources:
+- id: nhs-dental-abscess-2026
+  location: 'NHS page — Immediate action required: Call 999 or go to A&E'
+  quote: are finding it hard to breathe, speak or swallow ... have a swollen or painful
+    eye, or suddenly start having problems with your eyesight
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: 999 threshold for dental abscess.

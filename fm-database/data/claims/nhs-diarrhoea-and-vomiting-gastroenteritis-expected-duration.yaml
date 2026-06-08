@@ -1,0 +1,16 @@
+slug: nhs-diarrhoea-and-vomiting-gastroenteritis-expected-duration
+statement: In adults and children, diarrhoea usually resolves within 5–7 days and
+  vomiting within 1–2 days — longer than this warrants medical review.
+evidence_tier: strong
+linked_to_topics:
+- microbiome
+sources:
+- id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
+  location: NHS page — How long diarrhoea and vomiting last
+  quote: diarrhoea usually stops within 5 to 7 days ... vomiting usually stops in
+    1 or 2 days
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Sets expectations for self-care vs review.

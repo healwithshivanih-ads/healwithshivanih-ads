@@ -1,0 +1,16 @@
+slug: nhs-dental-abscess-symptom-cluster
+statement: Symptoms include intense tooth or gum pain, hot/cold sensitivity in the
+  area, bad taste, facial or jaw swelling, swollen neck glands and fever.
+evidence_tier: strong
+linked_to_topics:
+- oral-health-toxins
+sources:
+- id: nhs-dental-abscess-2026
+  location: NHS page — Symptoms of a dental abscess
+  quote: intense toothache or pain in your gums ... swollen glands on each side of
+    your neck ... a high temperature
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Symptom recognition pattern.

@@ -1,0 +1,18 @@
+slug: nhs-clinical-depression-two-week-rule
+statement: See a GP if low mood, hopelessness or loss of interest persist most of
+  the day, nearly every day, for more than two weeks — that duration distinguishes
+  depression from a passing low mood.
+evidence_tier: strong
+linked_to_topics:
+- major-depressive-disorder
+- depression-lifestyle
+sources:
+- id: nhs-clinical-depression-2026
+  location: NHS page — When to seek help
+  quote: See a GP if you experience symptoms of depression for most of the day, every
+    day, for more than 2 weeks
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Threshold for clinical depression vs transient low mood.

@@ -1,0 +1,16 @@
+slug: nhs-fungal-nail-infection-diabetes-immunosuppression-gp
+statement: See a GP for any fungal nail infection if you have diabetes or are immunosuppressed
+  — foot problems can be more serious in these groups.
+evidence_tier: strong
+linked_to_topics:
+- fungal-overgrowth
+sources:
+- id: nhs-fungal-nail-infection-2026
+  location: 'NHS page — Non-urgent advice: See a GP if'
+  quote: you have diabetes – foot problems can be more serious if you have diabetes
+    ... you have a weakened immune system
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Vulnerable-population escalation rule.

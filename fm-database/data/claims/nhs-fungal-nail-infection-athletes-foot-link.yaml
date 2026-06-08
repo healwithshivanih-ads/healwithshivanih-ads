@@ -1,0 +1,15 @@
+slug: nhs-fungal-nail-infection-athletes-foot-link
+statement: Treating athlete's foot promptly reduces the risk of fungus spreading to
+  and infecting the toenails.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- fungal-overgrowth
+sources:
+- id: nhs-fungal-nail-infection-2026
+  location: NHS page — Preventing fungal nail infections
+  quote: treat athlete's foot as soon as possible to avoid it spreading to nails
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Cross-condition prevention rule.

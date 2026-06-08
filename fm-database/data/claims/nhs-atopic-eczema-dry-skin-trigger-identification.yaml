@@ -1,0 +1,17 @@
+slug: nhs-atopic-eczema-dry-skin-trigger-identification
+statement: Eczema flares are commonly driven by soaps and detergents, certain fabrics,
+  pet dander, pollen, house-dust mites, heat changes, stress and hormonal shifts —
+  identifying and avoiding personal triggers reduces flares.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-atopic-eczema-dry-skin-2026
+  location: NHS page — Causes of atopic eczema
+  quote: coming into contact with an allergen or irritant such as soap, washing detergent,
+    pets, some fabrics, pollen, house-dust mites or certain fo
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: FM-aligned trigger-mapping approach.

@@ -1,0 +1,19 @@
+slug: nhs-haemorrhoids-piles-red-flag-bleeding-pain-fever
+statement: Get urgent GP or NHS 111 advice for painless rectal bleeding, fever or
+  feeling generally unwell with piles, or any new change around the anus — and go
+  to A&E for non-stop bleeding, large clots or severe pain.
+evidence_tier: strong
+linked_to_topics:
+- hemorrhoids
+- constipation
+- fiber-gap
+sources:
+- id: nhs-haemorrhoids-piles-2026
+  location: NHS page — Urgent advice + Immediate action sections
+  quote: your temperature is very high ... painless bleeding from the bottom ... you
+    are bleeding non-stop ... there is a lot of blood or you see lar
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Bleeding/infection red flags.

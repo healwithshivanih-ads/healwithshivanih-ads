@@ -1,0 +1,17 @@
+slug: nhs-gum-disease-smoking-and-diabetes-link
+statement: Smoking worsens gum disease and must be stopped; people with type 2 diabetes
+  need extra-frequent dental hygiene visits because diabetes accelerates periodontal
+  damage.
+evidence_tier: strong
+linked_to_topics:
+- periodontal-disease
+sources:
+- id: nhs-gum-disease-2026
+  location: NHS page — Treatments + Preventing sections
+  quote: advise you to stop smoking, if you smoke ... see a dentist and dental hygienist
+    for regular check-ups, especially if you're pregnant or have
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Modifiable risk factors for FM coaching context.

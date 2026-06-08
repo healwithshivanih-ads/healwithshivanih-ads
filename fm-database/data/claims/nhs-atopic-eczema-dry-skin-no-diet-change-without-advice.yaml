@@ -1,0 +1,17 @@
+slug: nhs-atopic-eczema-dry-skin-no-diet-change-without-advice
+statement: Do not change your diet (including a breastfeeding mother's diet) to manage
+  a child's eczema unless a doctor specifically advises it — uncontrolled exclusion
+  diets risk deficiency without proven benefit.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-atopic-eczema-dry-skin-2026
+  location: NHS page — Don't list
+  quote: do not change your diet unless you are told to by a doctor (this includes
+    if you are breastfeeding a baby with eczema)
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Safety guard against elimination-diet overreach.

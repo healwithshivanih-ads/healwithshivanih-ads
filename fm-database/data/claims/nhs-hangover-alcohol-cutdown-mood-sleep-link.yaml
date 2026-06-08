@@ -1,0 +1,17 @@
+slug: nhs-hangover-alcohol-cutdown-mood-sleep-link
+statement: Heavy drinking is strongly linked to depression, anxiety and disrupted
+  sleep architecture; cutting down typically improves mood, energy and rested sleep
+  within weeks.
+evidence_tier: strong
+linked_to_topics:
+- liver-detoxification
+sources:
+- id: nhs-hangover-alcohol-cutdown-2026
+  location: NHS page — Mood + Sleep sections
+  quote: There's a strong link between heavy drinking and depression, and hangovers
+    often make you feel anxious and low ... it can disrupt your sleep
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Bidirectional alcohol-mood-sleep evidence anchor.

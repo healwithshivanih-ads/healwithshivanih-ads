@@ -1,0 +1,15 @@
+slug: nhs-ingrown-toenail-podiatrist-procedures
+statement: Podiatrists can offer partial or total nail avulsion under local anaesthetic
+  when conservative care fails or the nail is badly embedded.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+sources:
+- id: nhs-ingrown-toenail-2026
+  location: NHS page — Treatment from a foot specialist
+  quote: cutting away part of the nail ... removing the whole nail ... You may have
+    an injection of local anaesthetic to numb your toe
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Conventional escalation when conservative care fails.

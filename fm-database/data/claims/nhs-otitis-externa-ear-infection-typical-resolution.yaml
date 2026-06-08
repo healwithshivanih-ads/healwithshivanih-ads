@@ -1,0 +1,16 @@
+slug: nhs-otitis-externa-ear-infection-typical-resolution
+statement: Most ear infections settle within 3 days and rarely longer than a week
+  without prescription treatment — first-line care is paracetamol or ibuprofen for
+  pain (aspirin only for over-16s).
+evidence_tier: strong
+linked_to_topics: []
+sources:
+- id: nhs-otitis-externa-ear-infection-2026
+  location: NHS page — Symptoms + Things you can do
+  quote: Most ear infections clear up within 3 days, although sometimes symptoms can
+    last up to a week ... use painkillers such as paracetamol or ibu
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Sets adherence expectations and avoids unnecessary antibiotics.

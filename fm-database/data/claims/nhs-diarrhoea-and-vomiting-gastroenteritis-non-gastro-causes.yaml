@@ -1,0 +1,18 @@
+slug: nhs-diarrhoea-and-vomiting-gastroenteritis-non-gastro-causes
+statement: When diarrhoea or vomiting persist or recur without an obvious bug, consider
+  IBS, coeliac disease, inflammatory bowel disease, food intolerance/allergy, medication
+  side effects, anxiety or, for vomiting, pregnancy, migraine, motion sickness and
+  UTI.
+evidence_tier: plausible_emerging
+linked_to_topics:
+- microbiome
+sources:
+- id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
+  location: NHS page — Other causes of diarrhoea or vomiting
+  quote: 'Diarrhoea can also be caused by: medicines – check the leaflet to see if
+    it''s a side effect ... a food intolerance or food allergy ... irrit'
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: FM-aligned differential when symptoms persist.

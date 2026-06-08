@@ -1,0 +1,16 @@
+slug: nhs-otitis-externa-ear-infection-outer-vs-middle-vs-inner
+statement: Outer-ear infection (otitis externa) is driven by ear-canal irritation,
+  water exposure, eczema or earplug use; middle-ear infection (otitis media) usually
+  follows a viral cold; inner-ear infection affects the labyrinth and balance system.
+evidence_tier: strong
+linked_to_topics: []
+sources:
+- id: nhs-otitis-externa-ear-infection-2026
+  location: NHS page — Differences between types of ear infections
+  quote: Outer ear infection (otitis externa) Caused by something irritating the ear
+    canal, such as eczema, water or wearing earplugs
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Differential framework for ear infection types.

@@ -1,0 +1,17 @@
+slug: nhs-contact-dermatitis-emollient-and-topical-steroid
+statement: Treatment is generous emollient use to restore the skin barrier, with topical
+  corticosteroids added for severe flares; oral steroids are reserved for rare extensive
+  cases.
+evidence_tier: strong
+linked_to_topics:
+- atopic-dermatitis
+sources:
+- id: nhs-contact-dermatitis-2026
+  location: NHS page — Treating contact dermatitis
+  quote: 'emollients – moisturisers applied to the skin to stop it becoming dry ...
+    topical corticosteroids – steroid ointments and creams applied to '
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Conventional treatment anchor.

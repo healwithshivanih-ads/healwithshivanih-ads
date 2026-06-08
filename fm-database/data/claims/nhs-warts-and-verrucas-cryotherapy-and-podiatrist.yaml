@@ -1,0 +1,16 @@
+slug: nhs-warts-and-verrucas-cryotherapy-and-podiatrist
+statement: GP cryotherapy (freezing) can clear a wart in a few weeks; persistent or
+  painful verrucas may be referred to a podiatrist for stronger medicines, liquid-nitrogen
+  cryotherapy, scalpel or laser removal.
+evidence_tier: plausible_emerging
+linked_to_topics: []
+sources:
+- id: nhs-warts-and-verrucas-2026
+  location: NHS page — Treatments for warts and verrucas
+  quote: A GP may be able to freeze a wart or verruca so it falls off a few weeks
+    later ... A podiatrist can provide a number of treatments including
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Conventional escalation when self-care fails.

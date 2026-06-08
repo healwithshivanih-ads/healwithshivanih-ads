@@ -1,0 +1,19 @@
+slug: nhs-haemorrhoids-piles-avoid-codeine-and-ibuprofen-bleeding
+statement: Avoid codeine-containing painkillers (they cause constipation) and avoid
+  ibuprofen if piles are bleeding (NSAIDs worsen bleeding) — paracetamol is the safer
+  choice.
+evidence_tier: strong
+linked_to_topics:
+- hemorrhoids
+- constipation
+- fiber-gap
+sources:
+- id: nhs-haemorrhoids-piles-2026
+  location: NHS page — Don't list
+  quote: do not take painkillers that contain codeine, as they can cause constipation
+    ... do not take ibuprofen if your piles are bleeding
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: Critical OTC safety guidance.

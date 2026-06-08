@@ -1,0 +1,18 @@
+slug: nhs-diarrhoea-and-vomiting-gastroenteritis-red-flag-999
+statement: Call 999 or go to A&E for vomiting blood or coffee-ground vomit, green
+  vomit in adults, swallowed poison, stiff neck with light sensitivity, sudden severe
+  headache or abdomen pain, blue/grey/pale skin or lips, severe breathing difficulty,
+  or new confusion.
+evidence_tier: strong
+linked_to_topics:
+- microbiome
+sources:
+- id: nhs-diarrhoea-and-vomiting-gastroenteritis-2026
+  location: 'NHS page — Immediate action required: Call 999 or go to A&E'
+  quote: vomit blood or have vomit that looks like ground coffee ... have a stiff
+    neck and pain when looking at bright lights ... have blue, grey, pa
+version: 1
+status: active
+updated_at: '2026-05-30'
+updated_by: Shivani
+rationale: A&E / 999 red flags including child surgical abdomen.
