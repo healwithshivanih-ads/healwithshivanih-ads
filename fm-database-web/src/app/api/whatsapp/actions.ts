@@ -318,6 +318,22 @@ export interface ChatThreadMessage {
   text: string;                 // the message body (tags stripped)
   template_name?: string;       // only for outbound — the Meta template used
   session_id?: string;
+  attachment?: {                // present when the message carried a media file
+    name: string;               // filename under clients/<id>/files/
+    kind: "image" | "document" | "audio" | "video" | "other";
+  };
+}
+
+type AttachmentKind = "image" | "document" | "audio" | "video" | "other";
+
+/** Classify a saved attachment by extension so the panel can pick a renderer. */
+function attachmentKind(name: string): AttachmentKind {
+  const ext = name.includes(".") ? name.split(".").pop()!.toLowerCase() : "";
+  if (["jpg", "jpeg", "png", "webp", "gif"].includes(ext)) return "image";
+  if (["pdf"].includes(ext)) return "document";
+  if (["ogg", "mp3", "m4a", "aac", "amr"].includes(ext)) return "audio";
+  if (["mp4", "3gp"].includes(ext)) return "video";
+  return "other";
 }
 
 export async function loadWhatsAppThreadAction(
@@ -383,6 +399,14 @@ export async function loadWhatsAppThreadAction(
         const tplMatch = seg.match(/\[template:\s*([^\]]+)\]/);
         const templateName = tplMatch ? tplMatch[1].trim() : undefined;
 
+        // Media attachment: `[attachment: files/<name>]` (written by the
+        // webhook). Capture before stripping; leave any "[attachment not
+        // synced: …]" note as visible text (no file to render).
+        const attMatch = seg.match(/\[attachment:\s*files\/([\w.\-]+)\]/i);
+        const attachment = attMatch
+          ? { name: attMatch[1], kind: attachmentKind(attMatch[1]) }
+          : undefined;
+
         // Strip all internal-metadata tags from the display text.
         let text = seg
           .replace(/\[session_type:[^\]]+\]/gi, "")
@@ -392,6 +416,7 @@ export async function loadWhatsAppThreadAction(
           .replace(/\[plan:[^\]]+\]/gi, "")
           .replace(/\[window:[^\]]+\]/gi, "")
           .replace(/\[sent_at:[^\]]+\]/gi, "")
+          .replace(/\[attachment:\s*files\/[\w.\-]+\]/gi, "")
           .trim();
 
         // ── Inbound: strip the webhook's metadata header ──────────────
@@ -411,7 +436,9 @@ export async function loadWhatsAppThreadAction(
             .replace(/^\s*Received:[^\n]*\n?/i, "")
             .trim();
         }
-        if (!text) return;
+        // An attachment-only message (image with no caption) has empty text
+        // but still must render — keep it when there's a file to show.
+        if (!text && !attachment) return;
 
         // ── Per-segment timestamp ────────────────────────────────────
         // A session file accumulates many messages over its 28-day
@@ -462,6 +489,7 @@ export async function loadWhatsAppThreadAction(
           text,
           template_name: templateName,
           session_id: sessionId,
+          attachment,
         });
       });
     } catch {

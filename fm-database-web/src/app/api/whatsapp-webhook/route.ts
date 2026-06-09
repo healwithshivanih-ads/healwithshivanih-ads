@@ -157,6 +157,144 @@ async function saveQuickNote(
   }
 }
 
+// ── Save an OUTBOUND message (coach reply typed in the WA admin Inbox) ────────
+//
+// The WhatsApp server forwards coach-typed admin-Inbox replies here with
+// `direction: 'outbound'` so they land in the same rolling thread the chat
+// panel renders. We tag the segment `[source: whatsapp_outbound]` (+ a
+// `[sent_at: ISO]` so the bubble carries the real send time) — exactly the
+// format recordOutboundMessageAction writes when fm-coach itself sends.
+// No "WhatsApp message from" provenance header: the panel renders outbound
+// bubbles right-aligned without a sender line.
+async function saveOutboundNote(
+  clientId: string,
+  text: string,
+  sentAtISO: string,
+  templateName?: string | null,
+): Promise<{ ok: boolean; session_id?: string; error?: string }> {
+  const scriptPath = path.join(SCRIPTS_DIR, "save-session.py");
+  const { marker } = await getActivePlanSlugForClient(clientId);
+  const sentAtTag = `[sent_at: ${sentAtISO}]`;
+  const dirTags = templateName
+    ? `[source: whatsapp_outbound] [template: ${templateName}] ${sentAtTag}`
+    : `[source: whatsapp_outbound] [type: text] ${sentAtTag}`;
+  const payload = {
+    client_id: clientId,
+    session_type: "quick_note",
+    presenting_complaints: `${marker} ${dirTags}\n\n${text.trim()}`,
+    append_if_today_match: marker,
+    match_anywhere: true,
+  };
+
+  const child = execFile(PYTHON, [scriptPath], {
+    timeout: 30_000,
+    maxBuffer: 2 * 1024 * 1024,
+    cwd: FMDB_REPO,
+  });
+  child.stdin?.end(JSON.stringify(payload));
+
+  let stdout = "";
+  let stderr = "";
+  child.stdout?.on("data", (chunk: Buffer | string) => (stdout += chunk));
+  child.stderr?.on("data", (chunk: Buffer | string) => (stderr += chunk));
+
+  await new Promise<void>((resolve, reject) => {
+    child.on("error", reject);
+    child.on("close", () => resolve());
+  });
+
+  if (!stdout.trim()) {
+    return { ok: false, error: `No output from save-session.py. stderr: ${stderr.slice(0, 300)}` };
+  }
+  try {
+    return JSON.parse(stdout) as { ok: boolean; session_id?: string; error?: string };
+  } catch {
+    return { ok: false, error: `Invalid JSON from save-session.py: ${stdout.slice(0, 200)}` };
+  }
+}
+
+// ── Save a media attachment (image / document / audio / video / sticker) ──────
+//
+// The WA server inlines the file as base64. We decode it to the client's
+// files/ dir and return a thread-ready `[attachment: files/<name>]` reference
+// + a human note. When base64 is absent (token missing / too large / download
+// error) we still record that the attachment EXISTED so info never silently
+// vanishes — the coach can open it in the WA admin Inbox.
+const MIME_EXT: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/jpg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+  "image/gif": "gif",
+  "application/pdf": "pdf",
+  "audio/ogg": "ogg",
+  "audio/mpeg": "mp3",
+  "audio/mp4": "m4a",
+  "audio/aac": "aac",
+  "audio/amr": "amr",
+  "video/mp4": "mp4",
+  "video/3gpp": "3gp",
+};
+
+function sanitizeFilename(name: string): string {
+  return name.replace(/[^\w.\-]+/g, "_").replace(/_+/g, "_").slice(0, 80);
+}
+
+async function saveMediaAttachment(
+  clientId: string,
+  opts: {
+    base64: string | null;
+    mime: string | null;
+    originalName: string | null;
+    kind: string;
+    msgId: string | null;
+    sizeHint: number | null;
+    skippedReason: string | null;
+  }
+): Promise<{ ref: string | null; note: string }> {
+  const { base64, mime, originalName, kind, msgId, sizeHint, skippedReason } = opts;
+
+  // Couldn't inline the bytes — record that it existed.
+  if (!base64) {
+    const sizeTxt = sizeHint ? ` (~${Math.round(sizeHint / 1024)} KB)` : "";
+    const why = skippedReason ? ` — ${skippedReason}` : "";
+    return {
+      ref: null,
+      note: `[attachment not synced: ${kind}${sizeTxt}${why}. Open in WhatsApp admin Inbox to view.]`,
+    };
+  }
+
+  const ext =
+    (mime && MIME_EXT[mime.toLowerCase()]) ||
+    (originalName && originalName.includes(".") ? originalName.split(".").pop()!.toLowerCase() : "") ||
+    "bin";
+  const today = new Date().toISOString().slice(0, 10);
+  // Documents keep their original (sanitised) name; other media get a stable
+  // dated name keyed on the message id so re-delivery doesn't duplicate.
+  const shortId = (msgId || Math.random().toString(36).slice(2)).replace(/[^\w]/g, "").slice(-10);
+  const filename =
+    kind === "document" && originalName
+      ? `${today}-${sanitizeFilename(originalName)}`
+      : `${today}-wa-${shortId}.${ext}`;
+
+  const filesDir = path.join(PLANS_ROOT, "clients", clientId, "files");
+  try {
+    await fs.mkdir(filesDir, { recursive: true });
+    await fs.writeFile(path.join(filesDir, filename), Buffer.from(base64, "base64"));
+  } catch (err) {
+    console.error(`[whatsapp-webhook] media write failed for ${clientId}:`, err);
+    return { ref: null, note: `[attachment received but failed to save: ${kind}]` };
+  }
+
+  // Machine-parseable tag — the chat-thread loader extracts `files/<name>`
+  // from `[attachment: files/<name>]` and the panel picks an icon/renderer
+  // from the extension. Keep this format stable.
+  return {
+    ref: `files/${filename}`,
+    note: `[attachment: files/${filename}]`,
+  };
+}
+
 // ── Apply structured start-date intent ────────────────────────────────────────
 //
 // ── Poll-reply structured save (Fix 2026-05-24) ──────────────────────────────
@@ -398,6 +536,10 @@ export async function POST(req: NextRequest) {
   const messageText = (body.body ?? "") as string;
   const senderName = (body.profile_name ?? body.contact_display_name ?? "") as string;
   const msgType = (body.message_type ?? "text") as string;
+  // 'outbound' = a coach reply typed in the WA admin Inbox, forwarded here so
+  // it shows in the same chat thread. Anything else (incl. undefined) is the
+  // historical inbound path.
+  const direction = (body.direction ?? "inbound") as string;
 
   if (!rawPhone) {
     return NextResponse.json({ ok: false, error: "Missing wa_id" }, { status: 400 });
@@ -421,19 +563,28 @@ export async function POST(req: NextRequest) {
     "list_reply",
     "button_text",  // some forwarders use this variant
   ]);
-  if (!TEXT_LIKE_TYPES.has(msgType)) {
+  // Media types (image/document/audio/video/sticker) are NOT skipped anymore
+  // (Fix 2026-06-09: a client's supplement photo was being dropped). The WA
+  // server downloads + inlines the file as base64; we save it to the client's
+  // files/ dir and reference it in the thread. Anything outside both sets
+  // (location/reaction/contacts) is still skipped — but loudly logged.
+  const MEDIA_TYPES = new Set(["image", "document", "audio", "video", "sticker"]);
+  const isMedia = MEDIA_TYPES.has(msgType);
+  if (!TEXT_LIKE_TYPES.has(msgType) && !isMedia) {
     console.log(
-      `[whatsapp-webhook] SKIP non-text msgType="${msgType}" from ${rawPhone}` +
+      `[whatsapp-webhook] SKIP unsupported msgType="${msgType}" from ${rawPhone}` +
         ` (body bytes=${messageText.length}). Forwarder should still log the raw event.`,
     );
     return NextResponse.json({
       ok: true,
       skipped: true,
-      reason: `non-text-like: ${msgType}`,
+      reason: `unsupported: ${msgType}`,
     });
   }
 
-  if (!messageText.trim()) {
+  // Media may have an empty caption — that's fine, the attachment is the
+  // content. Only skip empty bodies for text-like messages.
+  if (!isMedia && !messageText.trim()) {
     console.log(
       `[whatsapp-webhook] SKIP empty body from ${rawPhone} (msgType="${msgType}")`,
     );
@@ -452,11 +603,100 @@ export async function POST(req: NextRequest) {
   const match = await findClientByPhoneAction(rawPhone);
   if (!match.ok || !match.client_id) {
     console.warn(`[whatsapp-webhook] No client found for phone ${rawPhone}: ${match.error}`);
+    // Outbound to a non-client (e.g. a funnel lead) has no coach thread to
+    // join — just ack so the WA server doesn't retry. Inbound still parks
+    // in the unmatched file for coach review.
+    if (direction === "outbound") {
+      return NextResponse.json({ ok: true, matched: false, direction: "outbound" });
+    }
     await saveUnmatchedMessage(rawPhone, senderName, messageText, ts);
     return NextResponse.json({
       ok: true,
       matched: false,
       note: "saved to _whatsapp_unmatched.yaml for coach review",
+    });
+  }
+
+  // ── Media branch ──────────────────────────────────────────────────────────
+  // Image / document / audio / video / sticker — for EITHER direction. Save
+  // the inlined file to the client's files/ dir and record the caption + an
+  // `[attachment: files/<name>]` reference the chat panel renders. Handled
+  // before the text branches; the inbound intent parsers don't apply to media.
+  if (isMedia) {
+    const sentAtISO =
+      typeof body.timestamp === "string" && !Number.isNaN(Date.parse(body.timestamp))
+        ? new Date(body.timestamp).toISOString()
+        : new Date().toISOString();
+    const att = await saveMediaAttachment(match.client_id, {
+      base64: (body.media_base64 ?? null) as string | null,
+      mime: (body.media_mime ?? null) as string | null,
+      originalName: (body.media_filename ?? null) as string | null,
+      kind: msgType,
+      msgId: (body.external_message_id ?? null) as string | null,
+      sizeHint: (body.media_size ?? null) as number | null,
+      skippedReason: (body.skipped_reason ?? null) as string | null,
+    });
+
+    const caption = messageText.trim();
+    let result: { ok: boolean; session_id?: string; error?: string };
+    if (direction === "outbound") {
+      const bodyText = [caption, att.note].filter(Boolean).join("\n\n");
+      result = await saveOutboundNote(
+        match.client_id,
+        bodyText,
+        sentAtISO,
+        (body.template_name ?? null) as string | null,
+      );
+    } else {
+      const noteText = [
+        `WhatsApp message from ${senderName || match.display_name || match.client_id} (${rawPhone})`,
+        `Received: ${ts}`,
+        "",
+        [caption, att.note].filter(Boolean).join("\n\n"),
+      ].join("\n");
+      result = await saveQuickNote(match.client_id, noteText);
+    }
+
+    if (!result.ok) {
+      console.error(`[whatsapp-webhook] Failed to save MEDIA note for ${match.client_id}: ${result.error}`);
+      return NextResponse.json({ ok: false, error: result.error }, { status: 500 });
+    }
+    console.log(
+      `[whatsapp-webhook] ✓ MEDIA(${msgType}) ${direction} ${rawPhone} → ${match.client_id}` +
+        ` (saved=${att.ref ?? "metadata-only"}, session: ${result.session_id})`,
+    );
+    return NextResponse.json({
+      ok: true,
+      client_id: match.client_id,
+      session_id: result.session_id,
+      attachment: att.ref,
+      direction,
+    });
+  }
+
+  // ── Outbound branch ─────────────────────────────────────────────────────────
+  // A coach reply typed in the WA admin Inbox. Record it on the SAME side of
+  // the thread as fm-coach's own sends, then return — none of the inbound
+  // intent parsers (start-date / cycle / poll) apply to coach-authored text.
+  if (direction === "outbound") {
+    const templateName = (body.template_name ?? null) as string | null;
+    const sentAtISO =
+      typeof body.timestamp === "string" && !Number.isNaN(Date.parse(body.timestamp))
+        ? new Date(body.timestamp).toISOString()
+        : new Date().toISOString();
+    const out = await saveOutboundNote(match.client_id, messageText, sentAtISO, templateName);
+    if (!out.ok) {
+      console.error(`[whatsapp-webhook] Failed to save OUTBOUND note for ${match.client_id}: ${out.error}`);
+      return NextResponse.json({ ok: false, error: out.error }, { status: 500 });
+    }
+    console.log(
+      `[whatsapp-webhook] ✓ OUTBOUND ${rawPhone} → ${match.client_id} (msgType=${msgType}, session: ${out.session_id})`,
+    );
+    return NextResponse.json({
+      ok: true,
+      direction: "outbound",
+      client_id: match.client_id,
+      session_id: out.session_id,
     });
   }
 

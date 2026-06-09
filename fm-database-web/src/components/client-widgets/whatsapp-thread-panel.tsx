@@ -437,7 +437,56 @@ export function WhatsAppThreadPanel({ clientId, clientName, clientPhone, daysBac
                       </div>
                     )}
 
-                    <div>{m.text}</div>
+                    {m.text && <div>{m.text}</div>}
+
+                    {/* Media attachment — image renders inline; everything
+                        else is a tappable link served from the client's
+                        files/ dir via /api/client-file. */}
+                    {m.attachment && (
+                      <div style={{ marginTop: m.text ? 6 : 0 }}>
+                        {m.attachment.kind === "image" ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <a
+                            href={`/api/client-file/${clientId}/${m.attachment.name}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <img
+                              src={`/api/client-file/${clientId}/${m.attachment.name}`}
+                              alt={m.attachment.name}
+                              style={{
+                                display: "block",
+                                maxWidth: "100%",
+                                maxHeight: 280,
+                                borderRadius: 8,
+                                border: "1px solid var(--fm-border-light)",
+                              }}
+                            />
+                          </a>
+                        ) : (
+                          <a
+                            href={`/api/client-file/${clientId}/${m.attachment.name}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: 6,
+                              fontSize: 12,
+                              color: "#0E6B3E",
+                              textDecoration: "none",
+                              padding: "4px 8px",
+                              background: "rgba(0,0,0,0.03)",
+                              border: "1px solid var(--fm-border-light)",
+                              borderRadius: 8,
+                            }}
+                          >
+                            {m.attachment.kind === "document" ? "📄" : m.attachment.kind === "audio" ? "🎵" : m.attachment.kind === "video" ? "🎬" : "📎"}
+                            <span style={{ wordBreak: "break-all" }}>{m.attachment.name}</span>
+                          </a>
+                        )}
+                      </div>
+                    )}
 
                     <div
                       style={{
