@@ -1,0 +1,44 @@
+slug: baking-soda-lemon-water
+display_name: Baking Soda & Lemon Water (for Gas & Acidity)
+aliases:
+  - soda-nimbu-pani
+  - lemon-bicarbonate-water
+category: other
+summary: >-
+  A quick kitchen antacid-and-carminative — a pinch of baking soda with the juice
+  of half a lemon in warm water, for abdominal gas, bloating, acidity and
+  indigestion. Lad gives this for gas (abdominal) and indigestion; the lemon-soda
+  reaction releases CO2 that helps relieve trapped gas and the bicarbonate
+  neutralises excess stomach acid. An occasional-use relief measure, not a daily
+  habit.
+indications:
+  - abdominal gas and bloating
+  - acidity / heartburn (occasional)
+  - indigestion and fullness after meals
+contraindications:
+  - high blood pressure or sodium-restricted diet (baking soda is high in sodium)
+  - frequent/daily use (can disturb electrolyte and acid balance — occasional only)
+  - kidney disease
+  - chronic reflux should be investigated rather than masked
+balances_dosha: []
+aggravates_dosha: []
+preparation: >-
+  Mix 1 pinch of baking soda into 1 cup of warm water with the juice of half a
+  lemon and drink while it fizzes. (For pure indigestion, a pinch of baking soda
+  with minced garlic and a pinch of salt is the alternative Lad gives.)
+typical_dose: 1 cup as needed for relief
+duration: Occasional use only — not a daily remedy
+timing_notes: When gas/acidity strikes, ideally between meals
+linked_to_topics:
+  - acid-reflux-and-cardiac-sphincter-weakness
+  - maldigestion
+linked_to_mechanisms:
+  - hypochlorhydria
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix B — First Aid (Gas, Indigestion); Kitchen Pharmacy (Baking soda)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

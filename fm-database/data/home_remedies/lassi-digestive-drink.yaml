@@ -1,0 +1,57 @@
+slug: lassi-digestive-drink
+display_name: Spiced Lassi (Buttermilk) for Digestion
+aliases:
+  - chaas
+  - buttermilk-with-cumin
+  - jeera-lassi
+  - takra
+category: kitchen_remedy
+summary: >-
+  Lad recommends drinking lassi (thin buttermilk) with a pinch of ginger
+  or cumin powder to support digestion, especially after a meal. Unlike
+  cold yogurt which increases kapha and mucus, diluted and spiced lassi is
+  light, sour and probiotic — it kindles agni, supports bowel regularity and
+  provides beneficial bacteria for the gut. Cumin (jeera) specifically
+  reduces gas and bloating while ginger stimulates digestive secretions.
+indications:
+  - sluggish digestion and low agni
+  - bloating and gas after meals
+  - constipation
+  - poor appetite
+  - irritable bowel / alternating bowel habit
+contraindications:
+  - do not use cold — serve at room temperature or slightly warm
+  - not suitable during acute respiratory infection or when kapha is very elevated (full congestion, heavy cough)
+  - dairy intolerance / lactose intolerance
+  - avoid in the evening — kapha time; best at midday
+balances_dosha:
+  - vata
+  - pitta
+aggravates_dosha:
+  - kapha
+preparation: >-
+  Mix 2-3 tablespoons of fresh plain yogurt with 1 cup of water (ratio
+  roughly 1:4 yogurt to water). Add a generous pinch of roasted cumin powder
+  (jeera) OR a pinch of fresh grated or dried ginger powder. Stir well.
+  Optionally add a pinch of rock salt. Serve at room temperature after
+  the main meal.
+typical_dose: 1 cup after lunch or a main meal
+duration: Daily as a digestive aid; ongoing
+timing_notes: After the main meal (preferably lunch); avoid at dinner time
+linked_to_topics:
+  - maldigestion
+  - digestion-and-nutrient-absorption
+  - gut-microbiome
+  - irritable-bowel-syndrome
+linked_to_mechanisms:
+  - dysbiosis-gut-microbiome-imbalance
+  - hypochlorhydria
+  - colonic-fermentation
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Chapter X — Lifestyle and Routine (Diet and Digestion bullet list)"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

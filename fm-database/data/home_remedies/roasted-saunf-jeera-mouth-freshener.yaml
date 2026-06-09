@@ -1,0 +1,45 @@
+slug: roasted-saunf-jeera-mouth-freshener
+display_name: Roasted Fennel-Cumin Mouth Freshener
+aliases:
+  - saunf-jeera-mukhwas
+  - roasted-fennel-cumin-chew
+category: spice_blend
+summary: >-
+  A post-meal seed chew of roasted fennel and cumin (half-and-half) that Lad
+  recommends for bad breath and to support digestion. In Ayurveda bad breath is
+  read as a sign of weak agni and ama (toxins) from sluggish digestion; these
+  carminative seeds improve digestion, freshen the mouth and reduce the fermentation
+  that causes odour. The Indian after-meal "mukhwas" habit in its simplest form.
+indications:
+  - bad breath (from sluggish digestion)
+  - post-meal heaviness / fullness
+  - mild gas and bloating
+  - weak digestive fire (agni)
+contraindications:
+  - none significant in culinary amounts
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha: []
+preparation: >-
+  Dry-roast equal parts fennel (saunf) and cumin (jeera) seeds until fragrant.
+  Chew about 1 tsp of the mix after lunch and dinner. (Fennel seeds alone, or a
+  few cardamom seeds, also help; for a tea version, steep the seeds.)
+typical_dose: ~1 tsp after meals
+duration: Ongoing as a daily after-meal habit
+timing_notes: After lunch and dinner
+linked_to_topics:
+  - maldigestion
+  - agni-digestive-fire
+linked_to_mechanisms:
+  - endogenous-toxin-load
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix B — First Aid (Bad Breath); Kitchen Pharmacy (Cumin, Coriander)"
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Bad Breath — Dietary and Herbal Remedies"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

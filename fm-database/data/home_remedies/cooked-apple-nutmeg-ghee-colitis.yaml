@@ -1,0 +1,56 @@
+slug: cooked-apple-nutmeg-ghee-colitis
+display_name: Cooked Apple with Nutmeg and Ghee for Colitis
+aliases:
+  - seb-jaiphal-ghee-colitis
+  - stewed-apple-colitis
+category: kitchen_remedy
+summary: >-
+  Lad's gentle dietary remedy for colitis and ulcerative colitis — cooked
+  apple mashed to a pulp with a teaspoon of ghee and a pinch of nutmeg.
+  Cooked apple provides soluble pectin fibre that is deeply soothing to
+  the inflamed colonic mucosa and helps normalise bowel function; ghee
+  provides butyrate which directly nourishes colonocytes and calms pitta;
+  nutmeg has astringent, digestive, and mild analgesic properties that
+  help reduce cramping and inflammation in the colon.
+indications:
+  - colitis (inflammatory bowel inflammation)
+  - ulcerative colitis — mild to moderate phase
+  - irritable bowel syndrome with loose stools and cramping
+  - burning and irritation in the lower digestive tract
+  - pitta-type digestive inflammation
+contraindications:
+  - active bleeding or perforation — seek immediate medical attention
+  - severe ulcerative colitis flare with systemic symptoms requires physician
+    management; this is a supportive measure only
+  - nutmeg is contraindicated in large quantities; use only a pinch
+  - do not use raw apple — cooking is essential to reduce irritating fibre
+balances_dosha:
+  - pitta
+  - vata
+aggravates_dosha:
+  - kapha
+preparation: >-
+  Peel 1 or 2 apples and remove the seeds. Place in a pan with a little water
+  and cook over low heat until very soft. Mash to a smooth pulp (a potato
+  masher works well). While still warm, stir in 1 teaspoon of pure ghee and
+  add a pinch of ground nutmeg. Eat warm.
+typical_dose: 1 to 2 cooked apples prepared this way, 1 or 2 times daily
+duration: Throughout a colitis flare; continue for 1-2 weeks as the colon heals
+timing_notes: Eat as a meal or between meals; easy on the digestive system so
+  suitable even when appetite is poor during a flare
+linked_to_topics:
+  - inflammatory-bowel-disease
+  - irritable-bowel-syndrome
+  - inflammatory-bowel-conditions
+linked_to_mechanisms:
+  - mucosal-inflammation
+  - inflammatory-cytokine-elevation
+  - colonic-fermentation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Colitis — Dietary Remedies — Two Apple Remedies"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

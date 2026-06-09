@@ -1,0 +1,59 @@
+slug: neem-triphala-boil-wash
+display_name: Neem-Triphala Topical Wash for Boils
+aliases:
+  - triphala-neem-boil-wash
+  - triphala-skin-wash-boils
+  - neem-boil-paste
+category: other
+summary: >-
+  A two-pronged topical protocol from Lad for treating boils — painful,
+  pus-filled skin inflammations. Freshly brewed triphala tea is used to wash
+  the affected skin area, delivering astringent, antimicrobial, and anti-
+  inflammatory action to cool excess pitta and clean the local tissue. A
+  neem powder paste applied simultaneously draws out heat, neutralises the
+  bacteria, and helps the boil resolve. Together these two kitchen-accessible
+  preparations cover both cleansing and antimicrobial action.
+indications:
+  - boils on the skin (furuncles)
+  - slow-healing skin pustules
+  - recurrent skin boils (alongside dietary and digestive support)
+  - inflamed sebaceous gland infection
+contraindications:
+  - do not attempt to forcibly burst a boil; let it drain naturally
+  - deep or large boil (carbuncle) or boil with red streaking (cellulitis) —
+    see a doctor
+  - fever along with a boil — see a doctor
+  - triphala not recommended internally during pregnancy
+balances_dosha:
+  - pitta
+  - kapha
+aggravates_dosha:
+  - vata
+preparation: >-
+  TRIPHALA WASH: Boil 1 teaspoon of triphala powder in 1 cup of water for
+  5 minutes. Allow to cool to room temperature. Use this tea to wash the
+  boil and surrounding skin gently, 2-3 times a day. Let it dry on the skin
+  — do not rinse off.
+  NEEM PASTE: Mix a small amount of neem powder with just enough warm water
+  to form a thick paste. Apply directly to the boil. Leave for 20-30 minutes
+  then rinse. Can be applied 2 times per day after the triphala wash.
+typical_dose: Triphala wash 2-3 times a day; neem paste applied 1-2 times a day
+duration: Continue until the boil resolves, typically 5-10 days
+timing_notes: Wash hands thoroughly before and after; keep the area dry between
+  applications
+linked_to_topics:
+  - inflammation
+  - chronic-inflammation
+linked_to_mechanisms:
+  - bowel-toxemia-skin-axis
+  - gut-brain-skin-axis
+  - nf-kb-activation
+  - oxidative-stress
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Boils"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

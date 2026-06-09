@@ -1,0 +1,59 @@
+slug: psyllium-yogurt-ibs
+display_name: Psyllium Husk with Fresh Yogurt for Irritable Bowel Syndrome
+aliases:
+  - sat-isabgol-dahi-ibs
+  - isabgol-yogurt-ibs
+  - psyllium-husk-ibs-remedy
+category: kitchen_remedy
+summary: >-
+  Lad recommends 1 teaspoon of sat isabgol (psyllium husks) taken with half a
+  cup of fresh plain yogurt as a simple, effective IBS remedy. Psyllium is a
+  soluble fibre that bulks and soothes the colon; live-culture yogurt provides
+  probiotics that restore microbiome balance. This combination lubricates and
+  calms the irritated colon, addresses both loose and constipated presentations
+  of IBS, and is one of the most accessible kitchen remedies for bowel
+  irregularity.
+indications:
+  - irritable bowel syndrome (IBS)
+  - alternating constipation and diarrhoea
+  - loose stools with urgency
+  - colon spasm and cramping
+  - post-antibiotic bowel dysregulation
+contraindications:
+  - take with adequate water — psyllium can cause choking if taken without
+    sufficient liquid
+  - oesophageal narrowing or difficulty swallowing — do not use
+  - dairy intolerance or milk allergy (yogurt)
+  - acute intestinal obstruction
+  - if blood in stool or significant unexplained weight loss, see a doctor before
+    self-treating
+preparation: >-
+  Take 1 teaspoon of sat isabgol (psyllium husks). Mix well into half a cup of
+  fresh, plain (ideally live-culture) yogurt. Eat or drink immediately before
+  the mixture thickens. Drink an additional glass of water afterwards.
+typical_dose: 1 teaspoon psyllium in half cup yogurt
+duration: Daily until bowel regularity is restored; can be used long-term as a fibre supplement
+timing_notes: 1 hour after dinner
+balances_dosha:
+  - vata
+  - pitta
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - irritable-bowel-syndrome
+  - ibs
+  - gut-microbiome
+  - gut-dysbiosis
+linked_to_mechanisms:
+  - dysbiosis-gut-microbiome-imbalance
+  - sibo-dysbiosis
+  - fodmap-fermentation
+  - colonic-fermentation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Irritable Bowel Syndrome"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

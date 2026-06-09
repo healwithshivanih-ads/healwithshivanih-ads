@@ -1,0 +1,56 @@
+slug: nutmeg-warm-milk-sleep
+display_name: Warm Milk with Nutmeg for Insomnia
+aliases:
+  - jaiphal-doodh-sleep
+  - nutmeg-milk-bedtime
+  - warm-milk-nutmeg-cardamom
+category: kitchen_remedy
+summary: >-
+  Lad's classical Ayurvedic bedtime remedy for vata-type insomnia is warm milk
+  with a pinch of nutmeg (jaiphal), which can be enriched with crushed almonds
+  and a pinch of cardamom. Warm milk contains tryptophan and calcium that support
+  serotonin and melatonin synthesis; nutmeg is a mild sedative that calms the
+  nervous system. Lad also describes a garlic milk variant that is particularly
+  effective for vata-driven sleeplessness.
+indications:
+  - insomnia
+  - difficulty falling asleep
+  - restless or light sleep
+  - vata-type sleep disturbances with anxiety or racing mind
+  - nervous exhaustion contributing to poor sleep
+contraindications:
+  - dairy intolerance or milk allergy (use plant-based milk)
+  - excessive nutmeg is toxic — use only a pinch (up to one-eighth teaspoon);
+    do NOT exceed this amount
+  - high kapha constitution (milk is heavy; use sparingly)
+preparation: >-
+  Warm 1 cup of whole milk gently. Add a pinch (up to one-eighth teaspoon) of
+  nutmeg powder. For a richer version, also add a small amount of crushed blanched
+  almonds and a pinch of cardamom. Stir well and drink warm. Alternatively, boil
+  1 cup milk with a quarter cup water and 1 chopped garlic clove until 1 cup
+  liquid remains, for the garlic milk variant.
+typical_dose: 1 cup warm spiced milk
+duration: Nightly as needed; safe for ongoing regular use
+timing_notes: Drink 15-30 minutes before bedtime
+balances_dosha:
+  - vata
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - insomnia
+  - sleep
+  - sleep-quality
+  - sleep-optimisation
+linked_to_mechanisms:
+  - serotonin-melatonin-sleep-axis
+  - melatonin-secretion
+  - adenosine-sleep-pressure
+  - gaba-receptor-modulation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Insomnia — Dietary Remedies"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

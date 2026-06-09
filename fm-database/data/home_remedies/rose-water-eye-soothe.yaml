@@ -1,0 +1,43 @@
+slug: rose-water-eye-soothe
+display_name: Rose Water Eye Soother
+aliases:
+  - gulab-jal-eye-drops
+  - rose-water-eye-rinse
+category: other
+summary: >-
+  Pure rose water used as a cooling eye soother for irritated, tired or burning
+  eyes — a gentle pitta-pacifying remedy Lad recommends for eye irritation and
+  strain. Rose water is cooling and mildly astringent. Only genuinely pure,
+  preservative-free (ideally a dilute ~3% solution) rose water should ever go
+  near the eye; perfumed/cosmetic rose waters must not be used.
+indications:
+  - eye irritation and burning
+  - tired, strained eyes (screen / close work)
+  - mild eye redness
+contraindications:
+  - use ONLY pure, preservative-free / food-grade rose water — never perfumed cosmetic rose water
+  - active eye infection, injury, or post-surgery — see an eye doctor
+  - stop if stinging or worsening redness occurs
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+preparation: >-
+  Put a few drops (about 3 drops) of pure rose water into each affected eye, or
+  make a rinse by adding ~5 drops of pure rose water to 1 ounce of distilled/
+  purified water (neither too hot nor too cold) and rinse with a clean eye cup.
+  A rose-water-soaked cotton pad laid over closed eyes also soothes.
+typical_dose: A few drops or one rinse, 1-2 times a day
+duration: A few days for irritation; as needed for screen strain
+timing_notes: Evening, or whenever eyes feel hot and tired
+linked_to_topics:
+  - dry-eye-syndrome
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix B — First Aid (Eyes burning)"
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Eye Irritation — rose water eye drops; Eyes — Ayurvedic Care"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

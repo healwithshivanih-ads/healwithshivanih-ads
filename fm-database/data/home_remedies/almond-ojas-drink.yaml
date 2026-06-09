@@ -1,0 +1,54 @@
+slug: almond-ojas-drink
+display_name: Soaked Almond Ojas Drink (Badam Milk)
+aliases:
+  - badam-milk
+  - almond-drink
+  - ojas-almond-milk
+category: kitchen_remedy
+summary: >-
+  A traditional Ayurvedic strengthening drink — overnight-soaked, peeled almonds
+  blended with warm milk, cardamom, a little black pepper and honey. Lad lists it
+  as an "ojas-building" tonic for energy, vitality and resilience; a variant with
+  a pinch of nutmeg and saffron is used to settle a restless, anxious mind before
+  bed. Almonds supply protein, magnesium and vitamin E; soaking and peeling makes
+  them lighter to digest (anti-vata).
+indications:
+  - fatigue and low energy
+  - convalescence / building strength
+  - anxiety and restlessness
+  - poor stamina (debility)
+contraindications:
+  - true nut allergy
+  - dairy allergy (use unsweetened almond or oat milk instead)
+  - diabetes / blood-sugar concerns (omit honey, watch portion)
+balances_dosha:
+  - vata
+aggravates_dosha:
+  - kapha
+preparation: >-
+  Soak 10 raw (not roasted) almonds overnight in water. In the morning slip off
+  the skins, blend with 1 cup warm milk (cow, A2, or almond/oat), a pinch each of
+  cardamom and freshly ground black pepper, and 1 tsp honey (add after blending,
+  not to boiling milk). For an anti-anxiety bedtime version, add a small pinch of
+  nutmeg and saffron and omit the pepper.
+typical_dose: 1 cup
+duration: Daily as a morning tonic, or nightly for sleep/anxiety; safe long-term
+timing_notes: >-
+  Morning on a fairly empty stomach for energy; 30-60 minutes before bed for the
+  calming nutmeg-saffron version.
+linked_to_topics:
+  - chronic-fatigue-syndrome
+  - adrenal-fatigue
+  - anxiety
+linked_to_mechanisms:
+  - cortisol-elevation
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: Appendix C — Recipes (Almond Drink)
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Anxiety (almond milk); Fatigue — To Build Strength and Energy"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

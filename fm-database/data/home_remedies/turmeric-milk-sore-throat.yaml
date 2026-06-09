@@ -1,0 +1,56 @@
+slug: turmeric-milk-sore-throat
+display_name: Turmeric Milk for Sore Throat
+aliases:
+  - haldi-doodh-throat
+  - golden-milk-sore-throat
+  - haldi-milk-gargle-alternative
+category: kitchen_remedy
+summary: >-
+  Lad recommends 1 cup of hot milk boiled with 1/2 teaspoon turmeric as a
+  straightforward and effective remedy for sore throat. Warm milk soothes and
+  coats the irritated mucous membranes while turmeric (curcumin) provides
+  anti-inflammatory and antimicrobial action directly on the throat tissue.
+  This is a classic Indian kitchen remedy used across generations; warm dairy
+  (unlike cold or fermented dairy) is the one exception Lad makes in the usual
+  sore-throat advice to avoid dairy products.
+indications:
+  - sore, inflamed, or irritated throat
+  - pharyngitis and tonsillitis (mild)
+  - hoarse voice
+  - throat congestion with mild fever
+  - dry, burning throat (pitta-type sore throat)
+contraindications:
+  - dairy allergy or lactose intolerance (substitute with warm oat or almond milk)
+  - avoid cold milk — only warm or hot milk is appropriate; cold dairy forms mucus and worsens sore throat
+  - pitta individuals with high fever should use cooling measures alongside
+  - see a doctor if fever exceeds 39°C, throat swelling impairs swallowing, or symptoms persist beyond 5 days
+preparation: >-
+  Bring 1 cup of whole or low-fat milk to a boil. Add 1/2 teaspoon of
+  turmeric powder and stir well. Allow to simmer for 1 to 2 minutes so the
+  turmeric infuses fully. Remove from heat, let cool slightly to a comfortable
+  drinking temperature, and sip slowly. A pinch of black pepper can be added
+  to enhance curcumin absorption.
+typical_dose: 1 cup, 1 to 2 times daily
+duration: Continue until sore throat resolves, typically 3 to 5 days
+timing_notes: Best taken warm at bedtime; can also be taken in the morning
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+linked_to_topics:
+  - sore-throat
+  - immune-support
+  - inflammation
+linked_to_mechanisms:
+  - mucosal-inflammation
+  - systemic-inflammation
+  - anti-inflammatory-signaling
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Sore Throat — Turmeric Milk"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

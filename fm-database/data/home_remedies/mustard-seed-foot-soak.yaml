@@ -1,0 +1,49 @@
+slug: mustard-seed-foot-soak
+display_name: Warm Mustard-Seed Foot/Joint Soak
+aliases:
+  - mustard-seed-fomentation
+  - rai-water-soak
+category: other
+summary: >-
+  A warming fomentation soak for stiff, aching joints and sore muscles — ground
+  mustard seeds steeped (like a teabag) in hot-to-bearable water, in which the
+  hands, feet or a swollen joint are soaked. Lad recommends it for joint pain,
+  muscle relaxation and improving local circulation in swelling. Mustard is
+  heating and analgesic; the warmth eases vata/kapha stiffness. Especially
+  soothing after applying mahanarayan oil to an arthritic ankle or foot.
+indications:
+  - joint pain and stiffness
+  - sore, tight muscles
+  - cold, achy hands and feet
+  - swelling with poor circulation
+contraindications:
+  - hot, red, acutely inflamed (pitta) joints
+  - broken skin or open wounds
+  - diabetic neuropathy / reduced foot sensation (test water temperature carefully)
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Wrap 2 tablespoons of mustard seeds in a handkerchief or cheesecloth to make a
+  "teabag" and steep it in a basin/bucket of hot (bearable) water. Soak the
+  affected feet, hands or joint for 10-15 minutes, flexing gently. For arthritis,
+  rub mahanarayan oil on the joint first, then soak.
+typical_dose: One 10-15 minute soak
+duration: Daily during a painful spell; as needed for chronic stiffness
+timing_notes: Evening, or after activity that leaves joints sore
+linked_to_topics:
+  - joint-pain
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Kitchen Pharmacy (Mustard — fomentation)"
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Arthritis (mustard-seed soak); Edema — mustard teabag soak"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

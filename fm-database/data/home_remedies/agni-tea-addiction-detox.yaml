@@ -1,0 +1,56 @@
+slug: agni-tea-addiction-detox
+display_name: Agni Tea for Addiction Detox
+aliases:
+  - agni-detox-tea
+  - ginger-cayenne-lime-detox
+  - digestive-fire-detox-tea
+category: herbal_tea
+summary: >-
+  Lad's Agni Tea kindles digestive fire and supports the body's natural
+  detoxification during the process of reducing addictive substances. A hot
+  decoction of ginger, cayenne, and lime juice in water stimulates agni,
+  clears accumulated ama (toxins), and gently supports liver and colon
+  purification as the body adjusts to reduced intake of alcohol, tobacco,
+  coffee, or sugar.
+indications:
+  - reducing dependence on caffeine, alcohol, sugar, or tobacco
+  - low digestive fire (sluggish digestion, bloating)
+  - detox support during dietary transitions
+  - morning grogginess or low energy associated with substance reduction
+contraindications:
+  - active gastritis, acid reflux, or peptic ulcer (cayenne and ginger are
+    pungent and can aggravate)
+  - severe pitta constitution or hot, inflamed GI conditions
+  - pregnancy (consult your practitioner before using cayenne)
+  - not a substitute for medical treatment of addiction or withdrawal
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Bring 1 cup of water to a boil. Add a pinch of cayenne pepper (or a small
+  slice of fresh ginger) and a pinch of rock salt. Simmer for 2 minutes.
+  Remove from heat, add a squeeze of fresh lime juice (approximately
+  1 teaspoon), and stir well. Strain if using ginger slices. Drink warm.
+typical_dose: 1 cup, 2-3 times a day
+duration: Use during the period of dietary transition or detox; can be used
+  for several weeks
+timing_notes: >-
+  Best taken first thing in the morning on an empty stomach, and again between
+  meals. Avoid within 1 hour of eating for those with acid sensitivity.
+linked_to_topics:
+  - agni-digestive-fire
+  - chronic-inflammation
+linked_to_mechanisms:
+  - gut-microbiome-toxin-elimination
+  - endogenous-toxin-load
+  - dysbiosis-gut-microbiome-imbalance
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Addictions"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

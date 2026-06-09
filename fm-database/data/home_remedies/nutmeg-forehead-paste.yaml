@@ -1,0 +1,49 @@
+slug: nutmeg-forehead-paste
+display_name: Nutmeg Paste for Vata Headaches
+aliases:
+  - jaiphal-headache-paste
+  - nutmeg-water-paste-forehead
+category: other
+summary: >-
+  A topical paste of nutmeg powder and water applied to the forehead to soothe
+  vata-type headaches — the throbbing, occipital or left-sided headaches
+  associated with anxiety, constipation, and neck tension. Nutmeg is warming
+  and nervine; applied topically it calms vata in the head and relieves the
+  pulsating quality of vata headaches. Lad recommends this when other vata-
+  calming measures have not fully resolved the headache.
+indications:
+  - vata-type headache (occipital, throbbing, migratory)
+  - headache associated with anxiety, constipation, or insomnia
+  - neck tension headache
+  - headache worsened by movement
+contraindications:
+  - pitta-type headache or burning skin — nutmeg is warming and may worsen heat
+  - avoid contact with eyes — wash carefully around eye area
+  - do not ingest nutmeg paste (topical use only; internal nutmeg in large doses
+    is toxic)
+  - skin sensitivity test recommended before first use
+preparation: >-
+  Place 1/4 teaspoon nutmeg powder in the palm of your hand. Add just enough
+  water, drop by drop, to form a smooth paste by rubbing your palms together.
+  Apply the paste to the forehead. Leave on for about half an hour, then wash
+  off with warm water. Be careful not to get any paste in your eyes.
+typical_dose: 1/4 teaspoon nutmeg powder as a forehead paste
+duration: Single application as needed; repeat if headache returns
+timing_notes: Apply and rest quietly for 30 minutes while paste is on
+balances_dosha:
+  - vata
+aggravates_dosha:
+  - pitta
+linked_to_topics:
+  - tension-type-headache
+  - migraine-headache
+linked_to_mechanisms:
+  - nitric-oxide-cranial-circulation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Headaches — For Vata-Type Headaches: A Soothing Paste"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

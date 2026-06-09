@@ -1,0 +1,50 @@
+slug: ginger-turmeric-joint-paste
+display_name: Ginger-Turmeric Warm Joint Paste (Compress)
+aliases:
+  - ginger-turmeric-compress
+  - sonth-haldi-lep
+category: other
+summary: >-
+  An external warm paste of ginger and turmeric powder applied to painful,
+  stiff joints and muscles. Lad gives this as a ginger compress for local pain
+  and muscle strain — ginger warms and improves local circulation while turmeric
+  is anti-inflammatory. Best for cold, achy, stiff (vata/kapha) joints rather
+  than hot, red, inflamed (pitta) ones, where a cooling sandalwood paste is
+  preferred instead.
+indications:
+  - joint pain and stiffness (cold/achy type)
+  - muscle aches and strain
+  - backache (applied locally)
+contraindications:
+  - broken or irritated skin
+  - hot, red, acutely inflamed joints (use a cooling sandalwood paste instead)
+  - turmeric stains skin/clothes temporarily
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Combine 1 tsp ginger powder with 1/2 tsp turmeric (or 2 tsp ginger + 1 tsp
+  turmeric for a larger area). Add enough warm water to make a paste, warm it
+  gently, spread on gauze or cloth, place over the painful area, and bandage.
+  Leave 10-15 minutes (or overnight as a compress); wash off. Following with a
+  little eucalyptus or mahanarayan oil enhances relief.
+typical_dose: Apply 1-2 times a day to the affected area
+duration: Several days during a flare; as needed for chronic stiffness
+timing_notes: Useful before bed (as an overnight compress) or after activity
+linked_to_topics:
+  - joint-pain
+  - inflammation
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix B — First Aid (Pain external, Muscle Strain, Backache)"
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Arthritis; Backache — ginger paste then oil"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

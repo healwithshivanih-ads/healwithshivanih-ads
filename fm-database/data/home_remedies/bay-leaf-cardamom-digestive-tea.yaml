@@ -1,0 +1,51 @@
+slug: bay-leaf-cardamom-digestive-tea
+display_name: Bay Leaf and Cardamom Tea to Kindle Digestive Fire
+aliases:
+  - tej-patta-elaichi-tea
+  - bay-leaf-agni-tea
+  - tejpata-digestive-tea
+category: herbal_tea
+summary: >-
+  Lad recommends bay leaf (tej patta) tea with a pinch of cardamom as a simple
+  kitchen remedy to kindle agni (digestive fire) and relieve indigestion after
+  meals. Bay leaf is warming and carminative; cardamom is cooling and soothing
+  for the stomach lining. Together they enhance gastric motility, ease post-meal
+  bloating and gas, and gently support digestive enzyme secretion.
+indications:
+  - indigestion after meals
+  - post-meal bloating and gas
+  - sluggish digestion (low agni)
+  - nausea from indigestion
+  - heaviness after eating
+contraindications:
+  - active peptic ulcer (warming herbs may aggravate)
+  - hot inflamed GI conditions (pitta-type gastritis)
+  - allergy to Lauraceae plant family
+preparation: >-
+  Steep half a teaspoon of crushed or coarsely ground bay leaf in 1 cup of hot
+  water for about 10 minutes. Add a pinch of cardamom powder, stir, strain, and
+  drink warm.
+typical_dose: 1 cup after meals, 1-2 times daily
+duration: Ongoing until digestion improves; can be used as a regular post-meal tea
+timing_notes: Drink after eating, especially after the largest meal of the day
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+linked_to_topics:
+  - agni-digestive-fire
+  - maldigestion
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms:
+  - hypochlorhydria
+  - low-stomach-acid
+  - dysbiosis-gut-microbiome-imbalance
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Indigestion — Four Ways to Increase Your Digestive Fire"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

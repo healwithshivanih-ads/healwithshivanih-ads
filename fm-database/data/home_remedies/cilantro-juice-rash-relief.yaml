@@ -1,0 +1,54 @@
+slug: cilantro-juice-rash-relief
+display_name: Cilantro Juice for Rashes and Hives
+aliases:
+  - dhania-juice-rash
+  - coriander-leaf-juice-hives
+  - fresh-cilantro-skin-relief
+category: vegetable_juice
+summary: >-
+  Vasant Lad's first-line Ayurvedic remedy for skin rashes and hives regardless
+  of cause: fresh cilantro blended with a little water, the juice drunk and the
+  pulp applied directly to the skin. Cilantro is intensely cooling and
+  pitta-pacifying, and Lad states it will be "immediately effective" for
+  allergic rashes, insect bites, and hives. The dual internal-external
+  application addresses both the systemic heat driving the reaction and the
+  localised inflammatory response at the skin surface.
+indications:
+  - skin rashes from any cause (allergic, heat, insect bite)
+  - hives and urticaria
+  - pitta-type skin conditions with burning, redness, heat
+  - high-pitta states with skin flare-ups
+contraindications:
+  - cilantro allergy (uncommon but possible — do not apply if known)
+  - anaphylactic reactions (seek emergency care immediately; this is supportive only)
+  - very dry, vata-type flaky eczema (may be too cooling)
+preparation: >-
+  Wash a generous bunch of fresh cilantro leaves thoroughly. Roughly chop and
+  place in a blender with 1/3 cup (80 ml) of water. Blend until smooth. Strain
+  through a sieve or cloth to separate juice from pulp — retain both. Drink the
+  juice immediately. Apply the green pulp paste directly onto the rash or hives
+  and leave for 15-20 minutes, then rinse with cool water.
+typical_dose: Drink full batch of juice (approx 100-150 ml); apply pulp topically as needed
+duration: Use at onset of rash and repeat 1-2 times daily until resolved
+timing_notes: Best used fresh; apply as soon as the rash appears; can repeat at onset of new flares
+linked_to_topics:
+  - hives-urticaria
+  - gut-skin-hormone-axis
+  - food-allergy-ige-mediated
+linked_to_mechanisms:
+  - mast-cell-degranulation-histamine-release
+  - histamine-metabolism
+  - histamine-receptor-signaling
+  - anti-inflammatory-signaling
+balances_dosha:
+  - pitta
+aggravates_dosha:
+  - vata
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Rashes and Hives"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

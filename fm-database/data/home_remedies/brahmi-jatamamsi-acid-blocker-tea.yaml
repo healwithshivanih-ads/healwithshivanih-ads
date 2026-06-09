@@ -1,0 +1,58 @@
+slug: brahmi-jatamamsi-acid-blocker-tea
+display_name: Brahmi-Jatamamsi-Licorice Herbal Acid-Blocker Tea
+aliases:
+  - brahmi-yashti-madhu-tea
+  - ayurvedic-acid-blocker-tea
+  - jatamamsi-brahmi-ulcer-tea
+category: herbal_tea
+summary: >-
+  Lad describes this equal-parts combination of brahmi (Bacopa monnieri),
+  jatamamsi (Nardostachys jatamansi), and yashti madhu (licorice root) as the
+  best natural acid blocker in Ayurveda, making it ideal for peptic ulcer
+  management and stress-driven gastric hyperacidity. Brahmi and jatamamsi calm
+  the nervous system (addressing the stress component of ulcers) while licorice
+  inhibits acid secretion and repairs the gastric mucosal lining. Stress is
+  Lad's identified root cause of many ulcers.
+indications:
+  - peptic ulcer associated with stress or anxiety
+  - gastric hyperacidity — burning, sharp stomach pain
+  - gastritis with a nervous or emotional component
+  - stress-driven acid indigestion
+  - supportive treatment alongside ulcer healing formulas
+contraindications:
+  - licorice (yashti madhu) is contraindicated in hypertension, oedema, and kidney
+    disease — use caution or substitute with only brahmi-jatamamsi
+  - do not use as sole treatment for a confirmed bleeding or severe ulcer
+  - seek medical assessment if symptoms are severe, persistent, or worsening
+  - avoid in pregnancy (jatamamsi — limited safety data; licorice caution)
+preparation: >-
+  Combine equal amounts of dried brahmi (Bacopa) powder or leaf, jatamamsi root
+  powder, and yashti madhu (licorice root) powder. Use half teaspoon of the
+  blended mixture per cup of freshly boiled water. Steep for 10 minutes, strain,
+  and drink warm.
+typical_dose: 1 cup after lunch and 1 cup after dinner
+duration: 4-6 weeks during active symptoms; can be used intermittently for stress-related flares
+timing_notes: After meals, not on an empty stomach; the last cup approximately 1 hour before bed
+balances_dosha:
+  - pitta
+  - vata
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - peptic-ulcer-disease
+  - chronic-stress
+  - anxiety
+  - agni-digestive-fire
+linked_to_mechanisms:
+  - gastric-mucosal-barrier-disruption
+  - hpa-axis-dysregulation
+  - gut-brain-axis-dysregulation
+  - histamine-mediated-gastric-acid-hypersecretion
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Ulcers — An Effective Herbal Acid Blocker"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

@@ -1,0 +1,49 @@
+slug: cumin-coriander-headache-tea
+display_name: Cumin-Coriander Cooling Tea for Pitta Headaches
+aliases:
+  - jeera-dhaniya-headache-tea
+  - cooling-headache-tea
+category: herbal_tea
+summary: >-
+  A simple cooling tea of cumin and coriander seeds recommended by Lad for
+  pitta-type headaches — the burning, shooting, temple-area headaches worsened
+  by heat, bright light, and spicy food. Both cumin and coriander are cooling
+  and anti-inflammatory; the tea pacifies excess pitta in the stomach and
+  intestines, which is the root cause of this type of headache.
+indications:
+  - pitta-type headache (burning, shooting, temple or frontal area)
+  - headache associated with acid indigestion or hyperacidity
+  - headache worsened by heat, bright light, or sour foods
+  - nausea accompanying headache
+  - eye burning with headache
+contraindications:
+  - vata headaches (occipital, throbbing) — this cooling tea may worsen vata;
+    use warming sesame oil massage instead
+  - very cold constitutions or kapha predominance — drink at room temperature
+preparation: >-
+  Combine equal amounts of cumin and coriander seeds — about 1 teaspoon of each
+  (or 1/2 teaspoon each of the ground powder). Steep in 1 cup of hot water for
+  5-10 minutes, then strain. Allow the tea to cool to room temperature before
+  drinking.
+typical_dose: 1 cup of tea, 1-2 times as needed
+duration: As needed during headache episodes
+timing_notes: Drink at room temperature (not hot); pitta conditions worsen with heat
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+linked_to_topics:
+  - migraine-headache
+  - tension-type-headache
+  - agni-digestive-fire
+  - low-stomach-acid
+linked_to_mechanisms:
+  - nitric-oxide-cranial-circulation
+  - oxidative-stress
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Headaches — For Pitta-Type Headaches: A Cooling Tea"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

@@ -1,0 +1,45 @@
+slug: triphala-eyewash
+display_name: Triphala Eyewash
+aliases:
+  - triphala-netra-prakshalana
+  - triphala-eye-rinse
+category: other
+summary: >-
+  A traditional cooled triphala decoction used as an eye rinse for tired,
+  irritated, strained or burning eyes — common with screen work and around age
+  40+ (low alochaka pitta / dryness). Lad recommends it especially for pitta-type
+  eye irritation. Triphala is mildly astringent, cooling and antioxidant. The
+  decoction MUST be strained meticulously and used clean to avoid introducing
+  particles or contamination into the eye.
+indications:
+  - eye irritation and strain (screen / close work)
+  - tired, dry or burning eyes
+  - mild eye redness
+contraindications:
+  - active eye infection, injury or post-eye-surgery (do not use — see an eye doctor)
+  - must be strained through fine cloth/coffee filter so no particle remains
+  - prepare fresh and clean each time; discard leftovers
+  - stop and seek care if irritation, pain or worsening redness occurs
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+preparation: >-
+  Boil 1 tsp triphala in 1 cup of water for ~3 minutes. Cool completely, then
+  strain through double/triple-folded cheesecloth or a paper coffee filter so no
+  particle of triphala remains. Use the clear, body-temperature liquid to wash
+  the eyes with a clean eye cup.
+typical_dose: One eye wash, once a day
+duration: A few days for irritation; intermittent for screen-strain relief
+timing_notes: Evening after a long day of screen/close work
+linked_to_topics:
+  - dry-eye-syndrome
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Eye Irritation; Eyes — Ayurvedic Care (For Pitta Types — triphala eyewash)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

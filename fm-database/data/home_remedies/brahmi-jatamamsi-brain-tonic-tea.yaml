@@ -1,0 +1,56 @@
+slug: brahmi-jatamamsi-brain-tonic-tea
+display_name: Brahmi, Jatamamsi and Shanka Pushpi Brain Tonic Tea for Hypoglycaemia
+aliases:
+  - brain-tonic-tea-low-blood-sugar
+  - brahmi-shankhapushpi-jatamamsi-tea
+  - hypoglycemia-herbal-tea
+category: herbal_tea
+summary: >-
+  For reactive hypoglycaemia, Lad recommends an equal-parts tea of brahmi
+  (bacopa), jatamamsi and shanka pushpi — three classic Ayurvedic brain tonics
+  that nourish nervous tissue and help it function on limited glucose. They
+  address the neurological symptoms of low blood sugar (mental confusion,
+  tremors, lightheadedness) and, as nervines, reduce the stress-driven pitta
+  excess that triggers reactive hypoglycaemia.
+indications:
+  - reactive hypoglycaemia
+  - mental confusion, poor concentration from low blood sugar
+  - anxiety and tremors with low blood sugar
+  - post-meal blood sugar crashes
+  - stress-driven pitta-type hypoglycaemia
+contraindications:
+  - sedative medications (brahmi and jatamamsi have mild CNS-calming effects —
+    additive sedation possible)
+  - thyroid conditions on medication (discuss with physician)
+  - not a substitute for emergency glucose in severe hypoglycaemia
+  - if lightheadedness persists or is severe, seek medical attention
+preparation: >-
+  Mix equal proportions of brahmi (bacopa monnieri) powder, jatamamsi powder,
+  and shanka pushpi powder. Steep half a teaspoon of the mixed herbs in 1 cup of
+  hot water for 10 minutes. Strain and drink warm.
+typical_dose: Half teaspoon steeped in 1 cup hot water, twice daily
+duration: 4-6 weeks; reassess blood sugar regulation
+timing_notes: After lunch and after dinner
+balances_dosha:
+  - pitta
+  - vata
+aggravates_dosha: []
+linked_to_topics:
+  - hypoglycemia
+  - blood-sugar-regulation
+  - blood-sugar-dysfunction
+  - anxiety
+linked_to_mechanisms:
+  - postprandial-glucose-spike
+  - insulin-resistance
+  - hpa-axis-dysregulation
+  - cortisol-elevation
+  - serotonin-deficiency
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Hypoglycemia — Herbal Remedies"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

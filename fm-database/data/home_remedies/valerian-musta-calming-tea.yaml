@@ -1,0 +1,44 @@
+slug: valerian-musta-calming-tea
+display_name: Valerian (Tagar) & Musta Calming Tea
+aliases:
+  - tagar-musta-tea
+  - tagara-nut-grass-tea
+category: herbal_tea
+summary: >-
+  A simple two-herb tea Lad gives for anxiety, restlessness and difficulty
+  settling to sleep — tagar (Indian valerian) is a nervine sedative and musta
+  (nut grass) calms aggravated vata in the nervous system. Useful for the
+  "wired, can't switch off" pattern, especially vata-type anxiety with insomnia.
+indications:
+  - anxiety and restlessness
+  - difficulty falling asleep
+  - racing mind at night
+  - vata-type nervousness
+contraindications:
+  - pregnancy and breastfeeding
+  - taking sedatives, sleep medication or benzodiazepines (additive sedation — clinician supervision)
+  - before driving or operating machinery
+balances_dosha:
+  - vata
+aggravates_dosha: []
+preparation: >-
+  Mix tagar (or valerian) 1 part and musta 1 part. Steep 1/2 tsp of the blend in
+  1 cup hot water for 5-10 minutes, strain, and drink.
+typical_dose: 1 cup, up to twice a day
+duration: Short courses (1-3 weeks) for acute anxiety/sleeplessness, then reassess
+timing_notes: One cup in the evening and/or about 30-60 minutes before bed
+linked_to_topics:
+  - anxiety
+  - insomnia
+  - sleep
+linked_to_mechanisms:
+  - cortisol-elevation
+  - 2-3am-cortisol-spike-pattern
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Anxiety — calming tea; Backache — tagara/valerian as muscle relaxant"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

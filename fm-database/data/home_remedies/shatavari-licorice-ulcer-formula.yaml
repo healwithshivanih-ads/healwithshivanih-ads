@@ -1,0 +1,63 @@
+slug: shatavari-licorice-ulcer-formula
+display_name: Shatavari-Licorice Ulcer Healing Formula
+aliases:
+  - shatavari-yashti-madhu-formula
+  - pitta-ulcer-churan
+  - mulethi-shatavari-gastric-formula
+category: ayurvedic_churan
+summary: >-
+  Lad's primary Ayurvedic formula for peptic and GI ulcers combines shatavari
+  (Asparagus racemosus), yashti madhu (licorice root), and small amounts of
+  shanka bhasma and kama dudha — though the bhasma components are omitted here
+  and the shatavari-licorice base provides the key therapeutic action. Ulcers
+  are a pitta disorder — excess heat erodes the mucosal lining. Shatavari is
+  the premier Ayurvedic demulcent and pitta-cooling herb; licorice (mulethi,
+  yashti madhu) promotes mucosal healing, has demonstrated anti-H. pylori
+  activity, and soothes the gastric lining. This formula pacifies pitta and
+  repairs the gastric mucosa.
+indications:
+  - peptic ulcer (gastric or duodenal)
+  - oesophageal ulcer or erosion
+  - gastritis — burning, gnawing stomach pain
+  - acid indigestion with underlying mucosal erosion
+  - pitta constitution with chronic heartburn and inflammation
+contraindications:
+  - active bleeding ulcer or haematemesis — emergency medical care required
+  - licorice (yashti madhu) is contraindicated in hypertension, oedema, and kidney
+    disease; use under guidance if on antihypertensives
+  - avoid in pregnancy beyond first trimester (shatavari generally safe but
+    licorice caution applies)
+  - do not use long-term (more than 4-6 weeks) without reassessment
+  - taking NSAIDs or steroids alongside herbs does not remove the need to address the drug cause
+preparation: >-
+  Mix 5 parts shatavari powder and 3 parts yashti madhu (licorice root) powder
+  thoroughly. Take one-half teaspoon of this mixture twice a day, after lunch
+  and dinner, with a little warm water. (Note: the traditional formula includes
+  shanka bhasma and kama dudha in small amounts — these are classical Ayurvedic
+  preparations that should only be sourced from a reputable Ayurvedic pharmacy
+  and used under guidance; the shatavari-licorice base alone provides substantial
+  therapeutic benefit.)
+typical_dose: Half teaspoon twice daily after meals, with warm water
+duration: 4-8 weeks; reassess; if no improvement in 2 weeks or pain worsens, see a doctor
+timing_notes: Immediately after lunch and dinner while stomach has some food buffer
+balances_dosha:
+  - pitta
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - peptic-ulcer-disease
+  - acid-reflux-and-cardiac-sphincter-weakness
+  - agni-digestive-fire
+linked_to_mechanisms:
+  - gastric-mucosal-barrier-disruption
+  - mucosal-inflammation
+  - h-pylori-mucosal-defense-breakdown
+  - histamine-mediated-gastric-acid-hypersecretion
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Ulcers — Two Herbal Formulas"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

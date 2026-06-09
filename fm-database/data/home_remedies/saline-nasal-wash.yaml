@@ -1,0 +1,54 @@
+slug: saline-nasal-wash
+display_name: Ayurvedic Saline Nasal Wash (Jala Neti-lite)
+aliases:
+  - salt-water-nasal-rinse
+  - nasal-saline-drops
+  - namak-pani-nasal
+category: other
+summary: >-
+  A mild saline solution used as nose drops or a nasal wash to drain and
+  clear the sinuses — Lad's simplest and most universally safe sinus remedy.
+  Half a teaspoon of salt dissolved in half a cup of lukewarm water creates
+  an isotonic solution that moistens the nasal mucosa, loosens mucus,
+  and mechanically flushes out allergens and pathogens. Safe for all
+  constitutions, including children, and can be repeated several times a day.
+indications:
+  - sinus congestion and stuffiness
+  - sinusitis (bacterial or allergic)
+  - nasal dryness
+  - prevention of recurrent sinus infections
+  - nasal hygiene during cold and allergy season
+contraindications:
+  - do not use if the nose is completely blocked (the solution cannot flow through)
+  - ensure water is clean / boiled and cooled before use to avoid contamination
+  - if sinuses feel painful or pressure worsens, see a doctor
+  - use only lukewarm (not cold) water — cold water can aggravate kapha
+preparation: >-
+  Dissolve 1/2 teaspoon of plain non-iodised salt into 1/2 cup of lukewarm
+  (body-temperature) water. Stir until fully dissolved. Using a clean dropper,
+  instil 5 drops of the solution into each nostril while tilting the head back.
+  Alternatively, take a little of the solution in the palm of your hand and
+  gently snuff it into your nostrils. Breathe normally, then blow your nose
+  gently to clear the loosened mucus. Repeat as often as needed throughout
+  the day.
+typical_dose: 5 drops per nostril per session; several times a day as needed
+duration: Use throughout duration of congestion; can be used preventively during high-risk seasons
+timing_notes: Can be used any time of day; particularly helpful in the morning and before bed
+balances_dosha:
+  - kapha
+  - vata
+aggravates_dosha: []
+linked_to_topics:
+  - sinusitis
+  - common-cold
+  - nasal-breathing-blood-pressure
+linked_to_mechanisms:
+  - mucosal-inflammation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Sinus Problems — Nose Drops and Nasal Wash to Drain the Sinuses"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

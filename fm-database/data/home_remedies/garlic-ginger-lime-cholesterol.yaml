@@ -1,0 +1,55 @@
+slug: garlic-ginger-lime-cholesterol
+display_name: Garlic-Ginger-Lime Pre-Meal Cholesterol Remedy
+aliases:
+  - lahsun-adrak-nimbu-cholesterol
+  - garlic-cholesterol-bite
+category: kitchen_remedy
+summary: >-
+  Lad's primary kitchen remedy for high cholesterol — a small daily bite of
+  fresh garlic, grated ginger, and lime juice taken before each meal. Garlic
+  contains allicin and organosulfur compounds that inhibit hepatic cholesterol
+  synthesis and support reverse cholesterol transport; ginger adds anti-inflammatory
+  and lipid-modulating action. Together they also kindle agni (digestive fire)
+  and help clear ama (metabolic waste) associated with kapha-type dyslipidemia.
+indications:
+  - high cholesterol (hypercholesterolaemia)
+  - elevated LDL or triglycerides
+  - sluggish digestion with kapha-type metabolism
+  - cardiovascular risk reduction
+contraindications:
+  - active peptic ulcer or severe acid reflux (garlic and ginger are pungent)
+  - taking blood-thinning medications such as warfarin (garlic has anticoagulant properties)
+  - do not combine with aspirin on the same day; take this remedy at least 2 hours
+    before or after any aspirin dose (both are blood thinners)
+  - pitta-dominant individuals should use modestly; lime and ginger may aggravate
+    excess heat
+balances_dosha:
+  - kapha
+  - vata
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Finely chop 1 clove of fresh garlic. Add half a teaspoon of freshly grated
+  ginger root and half a teaspoon of fresh lime juice. Mix together and eat
+  the small mixture before each meal.
+typical_dose: A small bite (as described) before each main meal — 2 to 3 times daily
+duration: Use daily as a lifestyle remedy alongside dietary changes; at least 3 months
+  to assess effect on lipid levels
+timing_notes: Before meals — approximately 10-15 minutes before eating
+linked_to_topics:
+  - dyslipidemia
+  - cardiovascular-health
+  - cardiometabolic-risk
+  - agni-digestive-fire
+linked_to_mechanisms:
+  - ldl-oxidation
+  - reverse-cholesterol-transport
+  - oxidative-stress-vascular
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Cholesterol — Herbs to Combat Cholesterol"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

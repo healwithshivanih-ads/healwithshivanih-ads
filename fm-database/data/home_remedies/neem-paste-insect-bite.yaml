@@ -1,0 +1,56 @@
+slug: neem-paste-insect-bite
+display_name: Neem Paste for Insect Bites and Stings
+aliases:
+  - neem-bite-paste
+  - neem-powder-paste-sting
+  - nimba-bite-remedy
+category: other
+summary: >-
+  Topical neem paste is an Ayurvedic antidote for insect venoms and bites.
+  Neem (Azadirachta indica / nimba) has potent antimicrobial, anti-
+  inflammatory, and antihistamine properties and is described by Lad as an
+  antidote to most poisonous insect venoms. The paste is applied directly
+  to the bite site to neutralise venom, reduce swelling, and prevent
+  secondary infection.
+indications:
+  - insect bites — mosquito, ant, spider, bee
+  - mild envenomation with local redness, swelling, and heat
+  - infected or slow-healing insect bites
+  - topical prevention of secondary skin infection at bite sites
+contraindications:
+  - anaphylaxis or systemic allergic reaction — seek emergency care
+  - do not use pure concentrated neem extract (too strong); use powder or
+    diluted herbalised oil
+  - avoid contact with eyes and mucous membranes
+  - neem is UNSAFE internally during pregnancy
+balances_dosha:
+  - pitta
+  - kapha
+aggravates_dosha:
+  - vata
+preparation: >-
+  To make neem paste: mix a small amount of neem powder with just enough
+  water to form a thick paste. Apply directly to the bite or sting site.
+  Leave on for 10-20 minutes, then rinse off. Alternatively, apply
+  herbalised neem oil (neem leaves boiled in sesame oil base, available at
+  Indian grocery stores or natural pharmacies) directly to the bite area.
+  Do not use pure neem extract.
+typical_dose: Apply topically 2-3 times a day as needed
+duration: Continue until the bite has resolved, usually 1-3 days
+timing_notes: Apply soon after the bite for best effect; can be applied multiple
+  times throughout the day
+linked_to_topics:
+  - chronic-inflammation
+  - inflammation
+linked_to_mechanisms:
+  - nf-kb-activation
+  - antioxidant-protection
+  - oxidative-stress
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Bites and Stings"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

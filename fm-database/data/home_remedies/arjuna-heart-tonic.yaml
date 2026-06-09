@@ -1,0 +1,63 @@
+slug: arjuna-heart-tonic
+display_name: Arjuna Herb Heart Tonic
+aliases:
+  - arjun-chal-heart
+  - terminalia-arjuna-tonic
+  - arjuna-powder-honey
+category: kitchen_remedy
+summary: >-
+  Arjuna (Terminalia arjuna) bark powder taken with honey and warm water as a
+  daily cardiac tonic — one of the most important heart herbs in the Ayurvedic
+  pharmacopoeia. Lad writes that arjuna acts as a coronary vasodilator, protects
+  the heart muscle, strengthens circulation, and helps maintain the tone and
+  health of the heart. Modern research supports its use in reducing LDL
+  cholesterol, improving left ventricular ejection fraction, and providing
+  antioxidant cardioprotection. In Ayurveda arjuna is considered to do
+  "much the same thing as gold" for the heart — gold being the highest cardiac
+  tonic — making it the functional equivalent in non-precious-metal form.
+indications:
+  - cardiovascular support and heart muscle toning
+  - elevated LDL cholesterol and triglycerides
+  - angina and coronary artery disease (adjunct, not replacement for medical care)
+  - hypertension support
+  - recovery after cardiac events (alongside medical management)
+  - general heart health maintenance in middle age and beyond
+contraindications:
+  - not a replacement for prescribed cardiac medications; consult physician
+    before combining with beta-blockers, ACE inhibitors, statins, or anticoagulants
+    — arjuna may potentiate hypotensive and blood-thinning effects
+  - active bleeding conditions or surgery within 2 weeks
+  - pregnancy — safety data limited; avoid without physician guidance
+  - honey is contraindicated in infants under 12 months; use warm water alone
+preparation: >-
+  Take 1/2 teaspoon of arjuna bark powder (chaal churna) and mix with 1 teaspoon
+  of honey. Dilute in a small glass of warm (not hot) water and drink. Can also
+  be taken in warm milk if tolerated. Use consistently, as the benefit accumulates
+  over weeks.
+typical_dose: 1/2 teaspoon arjuna bark powder with honey in warm water, 3 times daily
+duration: Minimum 3 months for meaningful cardiovascular benefit; ongoing for maintenance
+timing_notes: >-
+  Take 30 minutes before meals. Morning dose is most important. Consistency
+  matters more than exact timing.
+balances_dosha:
+  - pitta
+  - kapha
+aggravates_dosha:
+  - vata
+linked_to_topics:
+  - cardiovascular-disease-prevention
+  - dyslipidemia
+  - cardiovascular-health
+linked_to_mechanisms:
+  - endothelial-dysfunction
+  - oxidative-stress-vascular
+  - atherosclerosis
+  - nitric-oxide-bioavailability
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Heart — Ayurvedic Care: Arjuna for the Heart"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

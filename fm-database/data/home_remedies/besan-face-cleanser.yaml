@@ -1,0 +1,42 @@
+slug: besan-face-cleanser
+display_name: Chickpea Flour (Besan) Face Cleanser
+aliases:
+  - besan-face-pack
+  - chickpea-flour-ubtan
+category: other
+summary: >-
+  A gentle traditional face wash for acne and oily skin — chickpea (gram) flour
+  made into a paste with water, used to cleanse the face. Lad lists it as a
+  healing skin paste for reducing acne; besan absorbs excess oil, lightly
+  exfoliates and is non-drying. Often followed by an almond-powder paste or a
+  sandalwood-turmeric paste for added benefit.
+indications:
+  - acne
+  - oily skin
+  - congested / breakout-prone skin
+contraindications:
+  - chickpea/legume contact sensitivity (rare)
+  - very dry skin (use less often; follow with a light oil)
+balances_dosha:
+  - pitta
+  - kapha
+aggravates_dosha:
+  - vata
+preparation: >-
+  Mix 1 tsp chickpea flour with enough water to make a paste. Massage gently over
+  the face, then rinse off. Optionally follow with a paste of almond powder and a
+  little water (left on up to 30 minutes, then rinsed), or a sandalwood-turmeric
+  paste.
+typical_dose: Use as a face wash 3-5 times a week
+duration: Several weeks to see acne improve; safe ongoing
+timing_notes: Morning or evening as part of skin care
+linked_to_topics:
+  - acne-vulgaris
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Acne — Healing Pastes for Your Skin"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

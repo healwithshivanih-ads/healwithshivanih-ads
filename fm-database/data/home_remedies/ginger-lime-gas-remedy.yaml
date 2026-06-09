@@ -1,0 +1,45 @@
+slug: ginger-lime-gas-remedy
+display_name: Fresh Ginger and Lime Post-Meal Gas Remedy
+aliases:
+  - adrak-nimbu-flatulence
+  - ginger-lime-digestive-pulp
+category: kitchen_remedy
+summary: >-
+  A simple kitchen remedy Lad recommends for immediate relief of gas and
+  flatulence — fresh ginger pulp with lime juice taken right after eating.
+  Fresh ginger is carminative and kindles agni, while lime juice acidifies and
+  aids digestion. The combination rapidly disperses gas in the colon.
+indications:
+  - gas and flatulence after meals
+  - abdominal bloating
+  - sluggish digestion
+  - post-meal belching
+contraindications:
+  - active gastritis, acid reflux or peptic ulcer (pungent ginger can aggravate)
+  - hot, inflamed (pitta) GI conditions — use with caution; reduce quantity
+preparation: >-
+  Grate fresh ginger root until you have about 1 teaspoon of pulp. Add 1
+  teaspoon of fresh lime juice. Mix together and take this mixture immediately
+  after eating.
+typical_dose: 1 teaspoon ginger pulp with 1 teaspoon lime juice after meals
+duration: As needed after meals
+timing_notes: Take immediately after eating
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+linked_to_topics:
+  - agni-digestive-fire
+  - maldigestion
+  - ibs
+linked_to_mechanisms:
+  - colonic-fermentation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Gas and Flatulence — Ginger Remedy"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

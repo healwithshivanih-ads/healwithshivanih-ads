@@ -1,0 +1,50 @@
+slug: cumin-nutmeg-nausea-tea
+display_name: Cumin-Nutmeg Nausea Tea
+aliases:
+  - jeera-jaiphal-tea
+  - cumin-seed-nausea-drink
+category: herbal_tea
+summary: >-
+  A simple two-ingredient Ayurvedic tea for nausea: cumin seeds steeped in hot
+  water with a pinch of nutmeg. Cumin is carminative and settles the stomach by
+  addressing both vata (gas, bloating) and pitta (excess heat and acidity)
+  components of nausea. Nutmeg in small amounts is a digestive and mild
+  anti-emetic used in Ayurveda for nausea related to indigestion, travel, or
+  morning sickness. This is gentler and more cooling than ginger, making it
+  suited to pitta-type or pregnancy nausea.
+indications:
+  - nausea and queasiness
+  - nausea from indigestion or overeating
+  - travel sickness
+  - morning sickness in pregnancy (small amount only — see contraindications)
+  - vomiting from excess pitta or vata
+contraindications:
+  - nutmeg in large doses is toxic — use only a very small pinch (less than 1/8 tsp); do not exceed recommended amount
+  - pregnancy caution — large doses of nutmeg are contraindicated in pregnancy; a small culinary pinch in this tea is generally considered safe but check with your doctor
+  - active peptic ulcer (cumin in large amounts may irritate)
+preparation: >-
+  Add 1 teaspoon whole cumin seeds (jeera) to 1 cup of boiling water. Steep for
+  5-7 minutes. Add a very small pinch of freshly ground nutmeg (jaiphal) —
+  no more than 1/8 teaspoon. Strain and sip slowly while warm. Can add a small
+  amount of honey if desired (add only when tea has cooled to warm, not hot).
+typical_dose: 1 cup as needed when nausea occurs
+duration: Use as needed; can take 2-3 times a day during acute nausea
+timing_notes: Sip slowly — best between meals or whenever nausea arises; do not gulp
+linked_to_topics:
+  - agni-digestive-fire
+  - maldigestion
+linked_to_mechanisms:
+  - histamine-mediated-gastric-acid-hypersecretion
+  - anti-inflammatory-signaling
+balances_dosha:
+  - pitta
+  - vata
+aggravates_dosha: []
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Nausea and Vomiting"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

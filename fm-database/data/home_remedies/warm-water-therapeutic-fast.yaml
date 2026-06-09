@@ -1,0 +1,65 @@
+slug: warm-water-therapeutic-fast
+display_name: Warm Water Therapeutic Fast (Agni-Reset Fast)
+aliases:
+  - warm-water-fast
+  - agni-reset-fast
+  - one-day-warm-water-fast
+  - ushnodaka-upavasa
+category: kitchen_remedy
+summary: >-
+  Lad recommends a one-day warm-water fast (1-2 quarts of warm water
+  throughout the day) at least once a week as a digestive rest practice
+  that aids cleansing and rekindles agni. During the fast, agni burns away
+  long-standing toxins (ama) in the intestines. Warm — never cold — water
+  is specified because cold water suppresses agni and digestive enzymes.
+  This is distinct from extended dry fasting and is a safe, gentle practice
+  for most constitutions when done for a single day.
+indications:
+  - digestive fatigue or heaviness (ama accumulation)
+  - fever or acute cold/flu (short-term fast indicated)
+  - constipation or sluggish bowels
+  - arthritis or joint pain flares
+  - general periodic detoxification
+  - bloating and gas
+contraindications:
+  - vata constitution — do not fast more than 1 day (increases vata, causes fear, anxiety, weakness)
+  - pitta constitution — do not fast more than 3-4 days (increases pitta, can cause anger, dizziness)
+  - pregnancy and breastfeeding
+  - diabetes requiring medication or regular food for glucose management
+  - history of disordered eating
+  - if physical strength or stamina noticeably decreases, discontinue immediately
+  - not appropriate for children
+balances_dosha:
+  - pitta
+  - kapha
+aggravates_dosha:
+  - vata
+preparation: >-
+  On the chosen fast day, drink warm (not hot, not cold) water throughout
+  the day — approximately 1 to 2 quarts (roughly 1-2 litres) in small
+  sips. Do not eat solid food. During the fast, herbal teas made from
+  ginger, black pepper or cumin may be included as they help neutralise
+  toxins and kindle agni. Monitor energy and strength; if notably decreased
+  stop the fast. Break the fast gently with light, easily digestible food
+  such as kitchari or rice soup.
+typical_dose: 1-2 quarts of warm water throughout the fast day
+duration: One day per week as a maintenance practice; or as needed during acute illness
+timing_notes: All day; sip consistently; break fast in the evening with light food if needed
+linked_to_topics:
+  - detoxification
+  - metabolic-detoxification
+  - intermittent-fasting
+  - maldigestion
+  - agni-digestive-fire
+linked_to_mechanisms:
+  - autophagy
+  - gut-microbiome-toxin-elimination
+  - balanced-detoxification
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Chapter VIII — Diet (Fasting section)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

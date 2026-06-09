@@ -1,0 +1,51 @@
+slug: ginger-lime-salt-digestive-bite
+display_name: Ginger-Lime-Salt Pre-Meal Digestive Bite
+aliases:
+  - adrak-nimbu-namak
+  - appetizer-ginger-bite
+category: other
+summary: >-
+  The classic Ayurvedic pre-meal appetizer Lad recommends to kindle agni
+  (digestive fire) — a little fresh ginger with lime juice and a pinch of rock
+  salt, chewed before eating. It stimulates appetite, saliva and digestive
+  secretions, and is the go-to for low appetite, sluggish digestion and the heavy,
+  ama-laden state behind poor energy and bad breath. Ginger is the safest,
+  simplest digestive stimulant in the kitchen.
+indications:
+  - low appetite
+  - weak / sluggish digestion (low agni)
+  - heaviness and gas after meals
+  - poor energy from low digestive fire
+contraindications:
+  - active gastritis, acid reflux or peptic ulcer (pungent — can aggravate)
+  - hot, inflamed (pitta) GI conditions
+  - sodium-restricted diets (omit or minimise the salt)
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Cut a thin slice (or finely chop a little) of fresh ginger, add a few drops of
+  fresh lime juice and a pinch of rock salt, and chew it about 10-15 minutes
+  before a meal. (A pinch of salt on 1/2 tsp grated ginger works the same way.)
+typical_dose: A small bite before lunch and dinner
+duration: Use before meals while appetite/digestion is weak; can be ongoing
+timing_notes: ~10-15 minutes before meals
+linked_to_topics:
+  - agni-digestive-fire
+  - maldigestion
+  - low-stomach-acid
+linked_to_mechanisms:
+  - hypochlorhydria
+  - low-stomach-acid
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Appetite, Low; Fatigue — To Strengthen Gastric Fire"
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Kitchen Pharmacy (Ginger — appetizer with salt)"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

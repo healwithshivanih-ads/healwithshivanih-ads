@@ -1,0 +1,47 @@
+slug: dates-ghee-vitality-tonic
+display_name: Dates-in-Ghee Vitality Tonic
+aliases:
+  - khajur-ghee-tonic
+  - date-ghee-rasayana
+category: kitchen_remedy
+summary: >-
+  A nourishing rasayana (rejuvenative) tonic Lad gives to build strength and
+  vitality and to remedy anemia, debility and convalescent weakness — fresh dates
+  steeped in ghee with ginger, cardamom and saffron, one date eaten each morning.
+  Dates supply iron and natural sugars; ghee carries the herbs' properties into
+  the tissues and is itself anabolic/ojas-building. A gentle daily builder for
+  run-down, depleted clients.
+indications:
+  - low vitality / debility
+  - convalescence after illness
+  - anemia (blood building)
+  - chronic fatigue / depletion
+contraindications:
+  - diabetes or blood-sugar dysregulation (dates are high in sugar)
+  - high cholesterol where ghee is restricted (use a small amount)
+  - obesity / weight loss goals (energy-dense)
+balances_dosha:
+  - vata
+aggravates_dosha:
+  - kapha
+preparation: >-
+  Soak 10 fresh dates in a quart jar of ghee. Add 1 tsp ginger, 1/8 tsp cardamom,
+  and a pinch of saffron. Cover and keep in a warm place for at least 2 weeks.
+  Then eat 1 date daily, early in the morning. (Simpler version: soak 5 fresh
+  dates in water overnight, blend in the morning and drink — remove pits first.)
+typical_dose: 1 ghee-soaked date each morning
+duration: A few weeks to months while rebuilding strength
+timing_notes: Early morning, on a fairly empty stomach
+linked_to_topics:
+  - iron-deficiency-anemia
+  - chronic-fatigue-syndrome
+linked_to_mechanisms:
+  - heme-vs-nonheme-iron-absorption
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Fatigue and Chronic Fatigue — To Build Strength and Energy (Dates)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

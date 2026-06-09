@@ -1,0 +1,47 @@
+slug: lime-soda-hangover-drink
+display_name: Lime-Sugar-Salt-Soda Hangover Drink
+aliases:
+  - nimbu-soda-hangover
+  - pitta-pacifying-hangover-remedy
+category: kitchen_remedy
+summary: >-
+  Lad's quick hangover remedy for the morning after excess alcohol. The
+  combination of lime juice, sugar, salt, and baking soda immediately pacifies
+  excess pitta aggravated by alcohol, restores electrolyte balance, and relieves
+  nausea, headache, and burning stomach. The baking soda neutralises acidic
+  pitta; lime and sugar cool and rehydrate.
+indications:
+  - hangover headache and dizziness
+  - nausea after alcohol
+  - burning stomach from alcohol
+  - general pitta aggravation after alcohol
+  - dehydration
+contraindications:
+  - high blood pressure or sodium restriction — omit or reduce the salt
+  - kidney disease — use with caution
+  - not intended for chronic alcohol use; see a doctor for alcohol dependency
+preparation: >-
+  In a glass of water, mix 1 teaspoon lime juice, 1/2 teaspoon sugar, and a
+  pinch of salt. Just before drinking, add 1/2 teaspoon baking soda and stir
+  briefly. Drink it down quickly.
+typical_dose: One glass, taken as soon as symptoms arise
+duration: One-time use as needed; repeat if symptoms persist
+timing_notes: Morning after alcohol consumption, on an empty stomach
+balances_dosha:
+  - pitta
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - liver-detoxification
+  - metabolic-detoxification
+linked_to_mechanisms:
+  - oxidative-stress
+  - gut-liver-axis
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Hangover"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

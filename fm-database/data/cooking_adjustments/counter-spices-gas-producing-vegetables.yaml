@@ -1,0 +1,59 @@
+slug: counter-spices-gas-producing-vegetables
+display_name: Counter-Spices for Gas-Producing Vegetables
+aliases:
+  - food-antidotes-gas-vegetables
+  - antidote-spices-legumes
+  - anti-gas-cooking-spices
+category: food_prep
+summary: >-
+  Lad's Appendix A Food Antidotes table identifies specific spices and
+  preparation methods that neutralise the gas- and distension-producing
+  effects of common vegetables and legumes when cooked together. Adding
+  these counter-spices during cooking — not as an afterthought — is the
+  Ayurvedic principle of making difficult-to-digest foods safe for vata
+  constitutions and anyone with bloating or IBS. The antidotes work by
+  warming and stimulating digestive enzymes and reducing fermentation in
+  the colon.
+benefits:
+  - reduces gas, bloating and abdominal distension from legumes and cruciferous vegetables
+  - makes difficult-to-digest vegetables safer for vata and IBS-prone clients
+  - supports agni (digestive fire) during cooking
+  - reduces colonic fermentation and flatulence
+swap_from:
+  - plain-cooked legumes without spices
+  - unseasoned cruciferous vegetables
+how_to_use: >-
+  Add the listed counter-spices during cooking (not just at the table):
+  LEGUMES (dal, beans, lentils) — add garlic, cloves, black pepper, cayenne,
+  ginger, rock salt, or dried chilli peppers to the water while cooking. Hing
+  (asafoetida) is the classic Indian anti-gas spice for all dals and is a
+  direct equivalent.
+  CABBAGE — cook in sunflower oil with turmeric and mustard seed.
+  ONION — cook thoroughly with salt, lemon, yogurt and mustard seed; or use
+  cooked rather than raw.
+  POTATO — add ghee with a few peppercorns during or after cooking.
+  GREEN SALAD (raw) — dress with olive oil and fresh lemon juice to reduce
+  gas-producing effect of raw leafy greens.
+  TOMATO — add a squeeze of lime or a pinch of cumin to counteract kapha-
+  increasing heaviness.
+cautions:
+  - cayenne and black pepper in large quantities aggravate pitta — use judiciously in pitta-dominant clients
+  - mustard seed is heating; reduce in pitta flares
+  - hing (asafoetida) is a substitute for garlic in Jain cooking and works equally well
+  - these are cooking-time additions; adding them at the table is less effective
+linked_to_topics:
+  - maldigestion
+  - agni-digestive-fire
+  - irritable-bowel-syndrome
+linked_to_mechanisms:
+  - colonic-fermentation
+  - fodmap-fermentation-motility
+  - dysbiosis-gut-microbiome-imbalance
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix A — Food Antidotes (Vegetables section)"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

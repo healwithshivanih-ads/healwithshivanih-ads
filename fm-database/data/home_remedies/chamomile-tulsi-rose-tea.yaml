@@ -1,0 +1,45 @@
+slug: chamomile-tulsi-rose-tea
+display_name: Chamomile-Tulsi-Rose Cooling Tea
+aliases:
+  - chamomile-rose-tea
+  - pitta-calming-tea
+category: herbal_tea
+summary: >-
+  A cooling, pitta-pacifying tea Lad recommends for irritability, anger,
+  frustration and the "hot-headed", stressed state. Chamomile calms the nervous
+  system, tulsi (holy basil) is an adaptogen that buffers stress, and rose is
+  cooling and heart-soothing. A gentle daily option for clients running hot and
+  reactive under chronic stress.
+indications:
+  - irritability and short temper
+  - stress and tension
+  - feeling "hot-headed" / pitta aggravation
+  - mild anxiety
+contraindications:
+  - ragweed / Asteraceae allergy (chamomile)
+  - pregnancy (use tulsi cautiously — consult clinician)
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+preparation: >-
+  Mix chamomile 1 part, tulsi (holy basil) 1 part, and rose-petal powder 2 parts.
+  Steep 1/2 tsp of the blend in 1 cup hot water, let it cool slightly, and drink.
+  A simpler version: steep 1/2 tsp chamomile with 1 tsp finely chopped fresh
+  cilantro in 1 cup hot water for ~10 minutes and cool before drinking.
+typical_dose: 1 cup, up to 3 times a day after meals
+duration: As needed during stressful periods; safe for ongoing daily use
+timing_notes: Especially helpful in the heat of the afternoon or evening to cool down
+linked_to_topics:
+  - chronic-stress
+  - stress-management
+  - anxiety
+linked_to_mechanisms:
+  - cortisol-elevation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Anger and Hostility — herbal teas"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

@@ -1,0 +1,58 @@
+slug: licorice-tea-hypoglycemia
+display_name: Licorice Root Tea for Hypoglycaemia (Low Blood Sugar)
+aliases:
+  - mulethi-tea-low-blood-sugar
+  - yashti-madhu-tea-hypoglycemia
+  - licorice-blood-sugar-tea
+category: herbal_tea
+summary: >-
+  Lad recommends licorice root (yashti madhu / mulethi) tea as a rapid remedy
+  when hypoglycaemic symptoms arise — lightheadedness, faintness, tremors or
+  palpitations. Licorice is a natural adaptogen with mild cortisol-sparing and
+  glycyrrhizin-mediated blood sugar-stabilising properties. Lad notes clearly
+  that individuals with hypertension should use it sparingly, as it increases
+  water retention and may raise blood pressure.
+indications:
+  - low blood sugar symptoms (lightheadedness, faintness, tremors)
+  - reactive hypoglycaemia
+  - fasting hypoglycaemia
+  - post-meal blood sugar crash
+  - adrenal fatigue with low cortisol contributing to hypoglycaemia
+contraindications:
+  - hypertension — use sparingly or avoid; licorice increases water retention
+    and can raise blood pressure
+  - oedema or fluid retention
+  - kidney disease
+  - pregnancy (high-dose licorice is contraindicated)
+  - cardiac conditions (may cause hypokalaemia with excessive use)
+  - do not use for insulin-dependent diabetics without physician guidance
+preparation: >-
+  Use 1 teaspoon of dried licorice root (mulethi) per cup of water. Bring water
+  to a boil, add licorice root, and simmer for 5 minutes, or steep for 10
+  minutes. Strain and drink warm.
+typical_dose: 1 cup as needed when hypoglycaemic symptoms arise, or 1-2 cups daily
+duration: Short-term use (2-4 weeks); address underlying blood sugar dysregulation
+timing_notes: At onset of hypoglycaemic symptoms; or after lunch and dinner for prevention
+balances_dosha:
+  - vata
+  - pitta
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - hypoglycemia
+  - blood-sugar-regulation
+  - blood-sugar-dysfunction
+  - adrenal-fatigue
+linked_to_mechanisms:
+  - insulin-resistance
+  - postprandial-glucose-spike
+  - cortisol-elevation
+  - dhea-cortisol-ratio-imbalance
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Hypoglycemia — Licorice Tea"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

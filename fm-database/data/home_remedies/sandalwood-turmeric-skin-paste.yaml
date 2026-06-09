@@ -1,0 +1,46 @@
+slug: sandalwood-turmeric-skin-paste
+display_name: Sandalwood-Turmeric Healing Skin Paste
+aliases:
+  - chandan-haldi-lep
+  - sandalwood-turmeric-paste
+category: other
+summary: >-
+  A cooling, anti-inflammatory topical paste of sandalwood and turmeric powders
+  that Lad recommends for acne, skin inflammation and local swelling/bruising.
+  Sandalwood is cooling and soothing to aggravated pitta in the skin; turmeric is
+  antibacterial and anti-inflammatory. Traditionally mixed in goat's milk for the
+  face. (Note: turmeric will tint the skin yellow for a day or two.)
+indications:
+  - acne and inflamed pimples
+  - skin inflammation / heat rash
+  - localised swelling, bruise or abrasion
+contraindications:
+  - keep away from the eyes (can irritate / cause conjunctivitis)
+  - broken skin (use gently)
+  - temporary yellow staining of skin and fabric
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+preparation: >-
+  Mix 1/4 tsp turmeric with 1/2 tsp sandalwood powder and enough water (or
+  goat's milk for the face) to make a paste. Apply to the affected area; for
+  swelling/bruising a turmeric + red-sandalwood paste works the same way. Rinse
+  off after it dries.
+typical_dose: Apply once daily to the affected area
+duration: Until the skin/swelling settles; for acne, several weeks
+timing_notes: Evening is convenient (the yellow tint fades overnight/by morning)
+linked_to_topics:
+  - acne-vulgaris
+  - inflammation
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Acne — Healing Pastes; Edema — healing paste"
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix B — First Aid (Acne, Swelling)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

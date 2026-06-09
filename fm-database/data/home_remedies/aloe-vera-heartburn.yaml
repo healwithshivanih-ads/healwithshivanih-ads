@@ -1,0 +1,51 @@
+slug: aloe-vera-heartburn
+display_name: Aloe Vera Gel with Baking Soda for Heartburn
+aliases:
+  - aloe-vera-acid-stomach
+  - aloe-baking-soda-antacid
+category: kitchen_remedy
+summary: >-
+  Lad recommends 2 tablespoons of aloe vera gel with a pinch of baking soda as
+  an immediate-acting soothing remedy for heartburn and acid stomach. Aloe vera
+  cools and coats the oesophageal and gastric mucosa while the baking soda
+  neutralises excess acid. This is a cooling, pitta-pacifying intervention that
+  provides rapid relief.
+indications:
+  - heartburn
+  - acid stomach
+  - hyperacidity
+  - burning sensation in chest or upper abdomen
+  - reflux after meals
+contraindications:
+  - sodium-restricted diets (baking soda is sodium bicarbonate — omit if restricted)
+  - diabetes or blood-sugar concerns (pure aloe vera latex variety — use gel only)
+  - prolonged daily use without investigating root cause (heartburn with vomiting,
+    chest pain radiating to neck or shoulder, or shortness of breath requires
+    immediate medical attention)
+  - pregnancy (consult physician before using aloe vera orally)
+preparation: >-
+  Take 2 tablespoons of fresh aloe vera gel (inner leaf pulp only, not the
+  bitter latex). Add a small pinch of baking soda, stir well, and drink
+  immediately. The mixture has an immediate soothing effect on the stomach lining.
+typical_dose: 2 tablespoons aloe vera gel + pinch of baking soda, taken once as needed
+duration: As needed for acute episodes; address the underlying pitta excess with diet if recurring
+timing_notes: Take at onset of heartburn, ideally between meals or as needed
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+linked_to_topics:
+  - gerd
+  - acid-reflux-and-cardiac-sphincter-weakness
+  - maldigestion
+linked_to_mechanisms:
+  - histamine-mediated-gastric-acid-hypersecretion
+  - gastric-mucosal-barrier-disruption
+  - rebound-acid-hypersecretion
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Heartburn and Acid Stomach"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

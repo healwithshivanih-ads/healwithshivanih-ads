@@ -1,0 +1,53 @@
+slug: counter-spices-kapha-grains
+display_name: Counter-Spices for Kapha-Increasing Grains
+aliases:
+  - food-antidotes-grains
+  - grain-counter-spices
+  - anti-kapha-grain-spices
+category: food_prep
+summary: >-
+  Lad's Food Antidotes table lists specific spices to add when preparing
+  oats, rice and wheat — grains that increase kapha and fat when eaten
+  plain or in excess. These spices are added during cooking or preparation
+  to kindle agni, reduce heaviness and prevent the weight-gain and
+  sluggishness associated with heavy grain consumption. Particularly
+  relevant for hypothyroid, blood-sugar and weight-management clients
+  whose protocols include oats or rice as staples.
+benefits:
+  - reduces the kapha- and fat-increasing tendency of oats, rice and wheat
+  - supports agni when eating heavy grain-based meals
+  - reduces post-meal heaviness and blood sugar spiking tendency
+  - helpful for weight-management and hypothyroid clients
+swap_from:
+  - plain boiled oats without spices
+  - plain white rice
+  - plain wheat preparations (roti, bread) without warming spices
+how_to_use: >-
+  OATS — cook with turmeric, mustard seed or cumin to counteract their
+  kapha- and fat-increasing quality. A pinch of turmeric in oat porridge
+  is the simplest application.
+  RICE — add a whole clove or a few peppercorns to the cooking water. A
+  teaspoon of ghee with rice (as Lad notes in Ch X) also supports digestion.
+  WHEAT (chapati, paratha, bread) — cook or serve with fresh ginger (add
+  grated ginger to dough or eat a small piece of ginger before the meal).
+cautions:
+  - these antidotes do not make refined wheat or excess rice healthy in metabolic syndrome — they reduce heaviness, not glycaemic load
+  - mustard seed and cayenne are heating; reduce in pitta-dominant clients
+  - these are best applied when whole grains are being used; refined grains warrant dose reduction rather than spice compensation
+linked_to_topics:
+  - maldigestion
+  - agni-digestive-fire
+  - insulin-resistance-metabolic-syndrome
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms:
+  - hypochlorhydria
+  - colonic-fermentation
+  - gut-microbiome-glucose-regulation
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix A — Food Antidotes (Grains section)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

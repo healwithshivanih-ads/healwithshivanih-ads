@@ -1,0 +1,47 @@
+slug: cinnamon-trikatu-honey-tea
+display_name: Cinnamon-Trikatu Honey Tea (Respiratory)
+aliases:
+  - cinnamon-trikatu-tea
+  - dalchini-trikatu-chai
+category: herbal_tea
+summary: >-
+  A warming kapha-clearing tea Lad gives for long-term asthma prevention and to
+  relieve chest/respiratory congestion — cinnamon steeped with a little trikatu
+  (the classic ginger-black-pepper-pippali blend), finished with honey. Cinnamon
+  is antimicrobial and warming; trikatu kindles agni and clears damp kapha
+  congestion from the lungs; honey is an anti-kapha "yogavahi" carrier. Best for
+  cold, congested, mucousy (kapha) respiratory patterns.
+indications:
+  - chest / respiratory congestion (kapha type)
+  - cough with mucus
+  - asthma-prone airways (supportive, preventive)
+  - lingering cold with congestion
+contraindications:
+  - hot, dry, inflamed (pitta) conditions — trikatu and cinnamon are heating
+  - gastritis or active ulcer (pungent herbs)
+  - pregnancy (use trikatu cautiously)
+  - do not heat the honey (add to the warm, not hot, tea)
+balances_dosha:
+  - kapha
+  - vata
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Steep 1 tsp cinnamon with 1/4 tsp trikatu in 1 cup boiling water for ~10
+  minutes. Let it cool to warm, then stir in 1 tsp honey before drinking.
+typical_dose: 1 cup, up to twice a day
+duration: During congestion; intermittently as a preventive in cold seasons
+timing_notes: Morning and/or when congestion is worst; warm
+linked_to_topics:
+  - asthma
+  - common-cold
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Asthma and Wheezing — Herbal Remedies (cinnamon + trikatu + honey)"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

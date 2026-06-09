@@ -1,0 +1,42 @@
+slug: turmeric-salt-gargle
+display_name: Turmeric & Salt Gargle
+aliases:
+  - haldi-namak-gargle
+  - turmeric-saltwater-gargle
+category: other
+summary: >-
+  A classic kitchen first-aid gargle for sore throat, cough and throat
+  inflammation — warm water with turmeric (anti-inflammatory, antibacterial) and
+  salt (osmotic, soothing). Lad recommends it for cough and inflamed/congested
+  throat and tonsils. Cheap, safe, and useful at the first scratch of a cold.
+indications:
+  - sore throat
+  - cough with throat irritation
+  - inflamed tonsils / throat congestion
+  - early cold symptoms
+contraindications:
+  - do not swallow large amounts of the salt water
+  - oxalate-restricted diets (turmeric is oxalate-rich) — gargle-and-spit is fine
+balances_dosha: []
+aggravates_dosha: []
+preparation: >-
+  Stir 2 pinches of turmeric and 2 pinches of salt (or 1/4 tsp turmeric + a pinch
+  of salt) into a glass of warm water. Gargle and spit; repeat with the rest of
+  the glass.
+typical_dose: Gargle 2-3 times a day
+duration: Until the sore throat settles (usually 2-5 days)
+timing_notes: On waking, after meals, and before bed; especially at the first sign of a cold
+linked_to_topics:
+  - sore-throat
+  - common-cold
+  - immune-support
+linked_to_mechanisms:
+  - chronic-inflammation
+sources:
+  - id: lad-ayurveda-science-of-self-healing-1984
+    location: "Appendix B — First Aid (Cough, Sore Throat); Kitchen Pharmacy (Turmeric)"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

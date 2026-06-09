@@ -1,0 +1,58 @@
+slug: turmeric-honey-canker-sore
+display_name: Turmeric-Honey Paste for Canker Sores
+aliases:
+  - haldi-shahad-canker-paste
+  - honey-turmeric-mouth-ulcer
+  - turmeric-honey-aphthous-ulcer
+category: other
+summary: >-
+  The simplest Ayurvedic topical remedy for canker sores (aphthous ulcers) —
+  a mix of honey and turmeric applied directly to the sore. Honey is a natural
+  antimicrobial, wound-healing agent with significant evidence for oral ulcer
+  healing; turmeric (haldi) provides curcumin's anti-inflammatory and
+  antibacterial action. Together they address the pitta-excess, inflamed oral
+  mucosa and accelerate healing. Lad also recommends aloe vera juice rinses
+  as a companion approach.
+indications:
+  - canker sores (aphthous ulcers) in the mouth
+  - mouth ulcers from accidental biting or sharp foods
+  - recurrent oral ulcers with high pitta constitution
+  - inflamed gum tissue
+contraindications:
+  - diabetes or pre-diabetes — honey is high glycaemic; use only a tiny amount
+    and monitor blood sugar
+  - honey allergy (rare)
+  - oral ulcers that have not healed in 3 weeks, are growing, or are
+    associated with weight loss or difficulty swallowing — see a doctor to
+    rule out serious conditions
+balances_dosha:
+  - pitta
+  - kapha
+aggravates_dosha: []
+preparation: >-
+  Mix together 1 teaspoon of raw honey with 1/4 teaspoon of turmeric powder.
+  Stir well to form a thick paste. Using a clean finger or cotton bud, apply
+  the paste directly to the canker sore. Leave in place — do not rinse for
+  at least 15-30 minutes. Can be done after meals and at bedtime. As a
+  companion rinse, swish a tablespoon of pure aloe vera juice in the mouth
+  for 30 seconds 2-3 times a day.
+typical_dose: Apply paste to the sore 2-3 times a day, especially after meals
+  and at bedtime
+duration: Continue until the sore heals, typically 3-7 days
+timing_notes: Apply after cleaning teeth/rinsing; avoid eating or drinking for
+  30 minutes after application for best contact time
+linked_to_topics:
+  - canker-sores
+  - oral-health-toxins
+linked_to_mechanisms:
+  - nf-kb-activation
+  - oxidative-stress
+  - antioxidant-protection
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Canker Sores"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

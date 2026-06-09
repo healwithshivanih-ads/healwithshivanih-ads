@@ -1,0 +1,53 @@
+slug: bay-leaf-turmeric-aloe-blood-sugar
+display_name: Bay Leaf, Turmeric and Aloe Vera Blood Sugar Tonic
+aliases:
+  - tejpatta-haldi-aloe-tonic
+  - bay-leaf-blood-sugar-drink
+category: kitchen_remedy
+summary: >-
+  Lad recommends a simple pre-meal tonic combining ground bay leaf (tejpatta),
+  turmeric powder, and aloe vera gel to help regulate blood sugar in kapha-type
+  metabolic conditions. Bay leaf contains compounds that support insulin activity;
+  turmeric reduces glycation and inflammation; aloe vera gel helps slow
+  carbohydrate absorption. Together they form a practical, kitchen-available
+  blood sugar management tool.
+indications:
+  - elevated fasting or post-meal blood sugar
+  - type 2 diabetes (adjunct support)
+  - prediabetes and metabolic syndrome
+  - insulin resistance with weight gain
+contraindications:
+  - concurrent blood-thinning medications — bay leaf has mild anticoagulant properties
+  - pregnancy — high-dose aloe vera is contraindicated; discuss with doctor
+  - gallstones (turmeric stimulates bile)
+  - not a replacement for diabetes medications; monitor blood sugar regularly
+preparation: >-
+  Mix half a teaspoon of ground bay leaf powder with half a teaspoon of turmeric
+  powder in one tablespoon of fresh aloe vera gel. Stir well together. Take this
+  mixture twice daily, about 15 minutes before lunch and dinner.
+typical_dose: Half teaspoon bay leaf + half teaspoon turmeric in 1 tablespoon aloe vera gel, twice daily
+duration: Ongoing; reassess blood sugar markers monthly
+timing_notes: 10–15 minutes before lunch and dinner
+balances_dosha:
+  - kapha
+  - pitta
+aggravates_dosha:
+  - vata
+linked_to_topics:
+  - type-2-diabetes
+  - prediabetes
+  - blood-sugar-regulation
+  - insulin-resistance
+linked_to_mechanisms:
+  - insulin-resistance
+  - postprandial-glucose-spike
+  - glycemic-load-reduction
+  - hepatic-insulin-sensitivity
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Diabetes"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

@@ -1,0 +1,52 @@
+slug: ghee-nasal-drops-cold
+display_name: Ghee Nasal Drops for Cold and Congestion
+aliases:
+  - ghrita-nasya-cold
+  - clarified-butter-nasal-drops
+  - ayurvedic-nose-drops
+category: other
+summary: >-
+  A traditional Ayurvedic nasya (nasal application) technique Lad recommends
+  for relieving the irritation, sneezing, and dryness of a cold — placing 3 to
+  5 drops of liquefied ghee in each nostril morning and evening. Ghee is deeply
+  moisturising and oleating to the nasal mucosa, lubricates dry, irritated
+  passages, and calms excess vata in the respiratory tract. This gentle home
+  nasya is safe and distinct from clinical panchakarma procedures.
+indications:
+  - runny nose and sneezing from a cold
+  - nasal dryness and irritation
+  - congestion with vata-type dryness
+  - prevention of recurrent colds (regular morning application)
+contraindications:
+  - do not use if there is active nasal infection with thick green or yellow
+    discharge — see a doctor
+  - avoid if allergic to dairy products
+  - not suitable for congested sinuses with heavy mucus accumulation (may worsen
+    blockage)
+  - do not apply if lying flat with blocked airways; sit upright
+balances_dosha:
+  - vata
+aggravates_dosha:
+  - kapha
+preparation: >-
+  Gently warm a small amount of pure ghee (clarified butter) until just
+  liquefied. Using a dropper or clean fingertip, apply 3 to 5 drops into each
+  nostril. Tilt the head back slightly when applying. Sniff gently to draw the
+  ghee up into the nasal passages.
+typical_dose: 3 to 5 drops in each nostril, morning and evening
+duration: Throughout the cold; can be used preventively daily during cold season
+timing_notes: Morning on waking and evening before sleep; do not eat or drink for
+  10 minutes afterward
+linked_to_topics:
+  - common-cold
+  - sinusitis
+linked_to_mechanisms:
+  - innate-immune-modulation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Colds and Flu — Natural Nose Drops"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

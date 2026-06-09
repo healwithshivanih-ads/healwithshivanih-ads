@@ -1,0 +1,48 @@
+slug: aloe-cumin-hair-drink
+display_name: Aloe Vera with Cumin for Hair Health
+aliases:
+  - aloe-vera-jeera-hair-drink
+  - aloe-jeera-pitta-hair
+category: vegetable_juice
+summary: >-
+  An Ayurvedic internal remedy for pitta-type hair thinning and premature
+  loss. Fresh aloe vera juice (or gel) taken daily with a pinch of cumin
+  (jeera) helps cool excess pitta in the blood, which Lad identifies as the
+  primary driver of baldness and hair fall in pitta constitutions. Regular
+  daily use over three months is recommended for noticeable results.
+indications:
+  - premature hair thinning or hair fall (pitta type)
+  - oily scalp with hair loss
+  - excess pitta signs — heat, irritability, inflammation
+  - hair loss associated with stress and hormonal fluctuations
+contraindications:
+  - diarrhea or loose stools (aloe vera has a mild laxative effect)
+  - pregnancy (aloe vera juice internally is generally avoided)
+  - known aloe allergy
+  - hypoglycaemia (aloe vera may lower blood sugar; monitor in diabetics)
+balances_dosha:
+  - pitta
+aggravates_dosha: []
+preparation: >-
+  Take 1/3 cup of fresh aloe vera juice (or 1 tablespoon of fresh aloe vera
+  gel) and stir in a pinch of cumin (jeera) powder. Drink as is, once or twice
+  a day. Alternatively, blend fresh aloe vera gel with water to make a juice,
+  then add the cumin pinch.
+typical_dose: 1/3 cup aloe vera juice with a pinch of cumin, 2-3 times a day
+duration: Continue for 3 months for best results
+timing_notes: Take between meals or first thing in the morning on an empty stomach
+linked_to_topics:
+  - hair-loss
+  - hair-loss-women
+linked_to_mechanisms:
+  - oxidative-stress
+  - antioxidant-protection
+  - chronic-inflammation
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Baldness"
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

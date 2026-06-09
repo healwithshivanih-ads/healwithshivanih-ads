@@ -1,0 +1,49 @@
+slug: orange-coconut-water-bp
+display_name: Orange Juice and Coconut Water Blend for Blood Pressure
+aliases:
+  - naariyal-pani-orange-blend
+  - coconut-orange-blood-pressure-drink
+category: vegetable_juice
+summary: >-
+  Lad recommends a 2-to-1 blend of fresh orange juice and coconut water as a
+  cooling, mineral-rich drink to help regulate blood pressure. Coconut water
+  provides natural potassium and electrolytes that support vasodilation, while
+  orange juice supplies vitamin C and flavonoids. This tridoshic, hydrating
+  combination is a simple daily adjunct to blood pressure management.
+indications:
+  - high blood pressure (hypertension)
+  - white-coat hypertension
+  - stress-related blood pressure spikes
+  - general cardiovascular support
+contraindications:
+  - diabetes or pre-diabetes (natural fruit sugar — monitor blood glucose)
+  - use as adjunct only — do not replace prescribed antihypertensive medications
+    without physician guidance
+  - avoid if kidney disease with potassium restriction
+preparation: >-
+  Mix 2 parts freshly squeezed orange juice with 1 part fresh coconut water (the
+  natural juice inside a fresh coconut, not packaged). Drink half to 1 cup of
+  this mixture 2 to 3 times a day.
+typical_dose: Half to 1 cup, 2-3 times a day
+duration: Ongoing as part of dietary management; reassess blood pressure regularly with physician
+timing_notes: Any time of day, ideally between meals
+balances_dosha:
+  - pitta
+  - vata
+aggravates_dosha:
+  - kapha
+linked_to_topics:
+  - hypertension
+  - blood-pressure-management
+  - cardiovascular-health
+linked_to_mechanisms:
+  - nitric-oxide-bioavailability
+  - endothelial-dysfunction
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Hypertension — Foods for Hypertension"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

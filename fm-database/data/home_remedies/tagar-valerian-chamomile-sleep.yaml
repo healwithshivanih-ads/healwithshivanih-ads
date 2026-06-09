@@ -1,0 +1,59 @@
+slug: tagar-valerian-chamomile-sleep
+display_name: Tagar, Valerian Root and Chamomile Sleep Powder
+aliases:
+  - tagar-valerian-chamomile-blend
+  - ayurvedic-sleep-powder-blend
+  - valerian-chamomile-tagar-formula
+category: ayurvedic_churan
+summary: >-
+  Lad's herbal sleep formula combines tagar (Valeriana wallichii — Indian
+  valerian, a classic Ayurvedic nervine), valerian root powder, and chamomile in
+  equal parts. All three herbs have sedative, anxiolytic properties and address
+  vata excess in the nervous system. Tagar specifically calms vata in the nervous
+  system; chamomile is cooling and reduces pitta-driven wakefulness; valerian
+  promotes deeper sleep onset. This is one of Lad's primary recommendations for
+  insomnia alongside warm oil scalp massage.
+indications:
+  - insomnia
+  - difficulty falling or staying asleep
+  - anxiety-driven sleeplessness
+  - nervous tension at bedtime
+  - restless mind at night
+contraindications:
+  - sedative or anti-anxiety medications (additive CNS depression possible —
+    consult physician)
+  - avoid driving or operating machinery after taking
+  - pregnancy and breastfeeding (valerian safety is uncertain)
+  - depression on pharmaceutical treatment (discuss with physician)
+preparation: >-
+  Mix equal parts tagar powder, valerian root powder, and chamomile powder.
+  Take a quarter teaspoon of this mixed powder with a small amount of warm water
+  just before going to bed. Alternatively, chamomile can be steeped as a tea
+  to wash down the tagar and valerian.
+typical_dose: Quarter teaspoon of the blended powder with warm water
+duration: Use nightly as needed; reassess after 4-6 weeks
+timing_notes: Just before going to bed
+balances_dosha:
+  - vata
+  - pitta
+aggravates_dosha: []
+linked_to_topics:
+  - insomnia
+  - sleep
+  - sleep-quality
+  - sleep-optimisation
+  - anxiety
+linked_to_mechanisms:
+  - gaba-receptor-modulation
+  - gabaergic-modulation
+  - serotonin-melatonin-sleep-axis
+  - adenosine-sleep-pressure
+  - cortisol-melatonin-rhythm-coupling
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Insomnia — Herbal Remedies"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

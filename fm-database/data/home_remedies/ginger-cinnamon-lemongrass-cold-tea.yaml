@@ -1,0 +1,56 @@
+slug: ginger-cinnamon-lemongrass-cold-tea
+display_name: Ginger-Cinnamon-Lemongrass Cold and Flu Tea
+aliases:
+  - adrak-dalchini-lemongrass-tea
+  - cold-flu-ginger-tea
+  - kapha-vata-cold-tea
+category: herbal_tea
+summary: >-
+  Lad's primary recommendation for colds and flu — a warming, aromatic tea
+  of equal parts ginger and cinnamon with double the amount of lemongrass,
+  steeped in hot water. Ginger dispels excess kapha and vata, clears congestion
+  and stimulates agni; cinnamon warms and opens the channels; lemongrass is
+  diaphoretic and supports fever reduction. Taken several times a day at the
+  onset of a cold, it helps clear congestion, relieve body aches, and hasten
+  recovery.
+indications:
+  - common cold with runny nose and congestion
+  - flu with chills and body aches
+  - cough and congestion (kapha or vata type)
+  - low appetite and poor digestion accompanying a cold
+contraindications:
+  - do not combine ginger-based remedies with aspirin — both are blood thinners;
+    take at least 2 hours apart
+  - pitta-dominant individuals or those with high fever and excess heat should
+    use ginger conservatively as it is very heating
+  - active peptic ulcer or severe acid reflux
+balances_dosha:
+  - kapha
+  - vata
+aggravates_dosha:
+  - pitta
+preparation: >-
+  Combine ginger (1 part), cinnamon (1 part), and dried lemongrass (2 parts)
+  as a dry blend. Steep 1 teaspoon of this blend in 1 cup of freshly boiled
+  water for about 10 minutes. Strain thoroughly. When the tea has cooled to a
+  comfortable drinking temperature, add a little honey to taste if desired.
+typical_dose: 1 cup, drunk warm, several times a day
+duration: Throughout the duration of the cold or flu, typically 3-7 days
+timing_notes: Drink warm throughout the day; especially helpful at the first sign of
+  symptoms and before sleep
+linked_to_topics:
+  - common-cold
+  - immune-support
+  - agni-digestive-fire
+linked_to_mechanisms:
+  - innate-immune-modulation
+  - inflammatory-cascade
+  - stress-induced-immune-suppression
+sources:
+  - id: lad-complete-book-ayurvedic-home-remedies-1998
+    location: "Colds and Flu — Ginger Remedies"
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani
