@@ -17,6 +17,7 @@ import { logger } from '../../logger.js';
 import { OutsideServiceWindowError, ValidationError, NotFoundError } from '../../errors.js';
 import { canSendFreeText } from '../conversations/service-window.js';
 import { touchOutbound, touchInbound } from '../conversations/index.js';
+import { forwardOutbound } from '../forwarder/index.js';
 import * as wa from '../../channels/whatsapp/client.js';
 
 const FREE_TEXT_TYPES = new Set(['text', 'interactive_button', 'interactive_list', 'order_details']);
@@ -150,6 +151,19 @@ export async function send(input) {
 
       await touchOutbound(conversationId, sentAt).catch((e) =>
         logger.warn({ err: e.message }, 'touchOutbound failed'));
+
+      // Mirror coach-typed admin-Inbox replies into fm-coach's chat thread.
+      // ONLY origin==='manual' (a reply typed in this server's Inbox UI) —
+      // fm-coach-initiated sends (origin==='api'), reminders and broadcasts
+      // are already recorded by their originator, so forwarding them would
+      // double up. Fire-and-forget; never blocks the send return.
+      if (origin === 'manual') {
+        forwardOutbound({
+          message: updated,
+          contact: { id: contactId, primary_phone: to },
+          from,
+        }).catch(() => {});
+      }
 
       return updated;
     } catch (err) {

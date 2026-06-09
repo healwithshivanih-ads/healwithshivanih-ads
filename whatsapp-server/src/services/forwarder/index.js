@@ -24,6 +24,64 @@ import { logger } from '../../logger.js';
 
 const TIMEOUT_MS = 5000;
 
+// Media (image/document/audio/video/sticker) is downloaded with the WABA
+// access token and inlined as base64 in the forward, because the receiver
+// (fm-coach on the Mac) has no Meta token and the lookaside CDN URL needs
+// one + expires. Cap the inline size so a 100 MB document can't blow the
+// receiver's request-body limit — above the cap we forward metadata only
+// and the receiver records a "not synced" note so the info still surfaces.
+const MEDIA_KINDS = new Set(['image', 'document', 'audio', 'video', 'sticker']);
+const MAX_INLINE_BYTES = 12 * 1024 * 1024; // 12 MB
+
+/**
+ * Resolve + download a WhatsApp media attachment for forwarding. Returns null
+ * for non-media events. For media, returns { media_kind, media_mime,
+ * media_filename, media_size, media_base64 } — media_base64 is null (with a
+ * skipped_reason) when the token is missing, the file is too large, or the
+ * download fails, so the receiver always learns the attachment EXISTED.
+ */
+async function downloadMediaForForward(event) {
+  const kind = event.type;
+  if (!MEDIA_KINDS.has(kind)) return null;
+  const obj = event.payload?.[kind] || {};
+  const mediaId = obj.id;
+  const base = {
+    media_kind: kind,
+    media_mime: obj.mime_type || null,
+    media_filename: obj.filename || null,
+    media_caption: obj.caption || null,
+    media_base64: null,
+  };
+  if (!mediaId) return { ...base, skipped_reason: 'no_media_id' };
+
+  const token = config.whatsapp.token;
+  if (!token) {
+    logger.warn({ mediaId, kind }, 'media forward: no WABA token configured');
+    return { ...base, skipped_reason: 'no_token' };
+  }
+  const gv = config.whatsapp.graphVersion;
+  try {
+    const metaRes = await fetch(`https://graph.facebook.com/${gv}/${mediaId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const meta = await metaRes.json();
+    if (!meta?.url) return { ...base, skipped_reason: 'no_download_url' };
+    if (meta.mime_type) base.media_mime = meta.mime_type;
+    if (meta.file_size && meta.file_size > MAX_INLINE_BYTES) {
+      return { ...base, media_size: meta.file_size, skipped_reason: 'too_large' };
+    }
+    const binRes = await fetch(meta.url, { headers: { Authorization: `Bearer ${token}` } });
+    const buf = Buffer.from(await binRes.arrayBuffer());
+    if (buf.length > MAX_INLINE_BYTES) {
+      return { ...base, media_size: buf.length, skipped_reason: 'too_large' };
+    }
+    return { ...base, media_size: buf.length, media_base64: buf.toString('base64') };
+  } catch (err) {
+    logger.warn({ err: err.message, mediaId, kind }, 'media download for forward failed');
+    return { ...base, skipped_reason: 'download_error' };
+  }
+}
+
 /** Extract a `ref:<slug>` / `[funnel:<slug>]` token from the message body.
  *  Matches the funnels app's own slug-extractor so both sides agree. */
 function extractFunnelSlug(body) {
@@ -139,9 +197,93 @@ export async function forwardPaymentStatus({ event }) {
   }
 }
 
+/**
+ * Forward an OUTBOUND message (coach reply typed in the admin Inbox UI) to the
+ * fm-coach app so it lands in the client's chat thread there too.
+ *
+ * Why this exists: the FM coach reads/replies in TWO places — the fm-coach
+ * dashboard Communication tab AND this server's admin Inbox. fm-coach already
+ * self-records any message IT sends (origin='api'); but a reply Shivani types
+ * directly in the admin Inbox (origin='manual') never reaches fm-coach, so it
+ * looked like a one-sided thread. This closes that gap.
+ *
+ * Routing — mirror the inbound number-aware decision:
+ *   - Sent AS the marketing number (88501) → funnels-app audience → skip
+ *     fm-coach (those are CTWA leads, not coach clients).
+ *   - Otherwise (default/clients number 89765) → fm-coach.
+ *
+ * Dedup guarantee: the ONLY caller is messages.send(), and it calls this
+ * EXCLUSIVELY for origin==='manual'. fm-coach-initiated sends (origin==='api'),
+ * reminders, broadcasts and AI replies are never forwarded — so fm-coach never
+ * receives an echo of a message it (or a cron) already recorded.
+ *
+ * Fire-and-forget. The recipient phone is the client's wa_id from fm-coach's
+ * point of view, so the receiver matches the client exactly as it does for
+ * inbound.
+ */
+export async function forwardOutbound({ message, contact, from }) {
+  // Marketing-number sends belong to the funnels app, which has no coach
+  // thread to update — drop them. Everything else → fm-coach.
+  const onMarketing = from && String(from).toLowerCase() === 'marketing';
+  if (onMarketing) return;
+
+  const url = config.fmCoachWebhook.url;
+  const secret = config.fmCoachWebhook.secret;
+  if (!url) return; // fm-coach not configured
+
+  const to = contact?.primary_phone;
+  if (!to) return; // can't attribute without the recipient phone
+
+  const payload = {
+    type: 'inbound_message', // receiver's envelope type; direction below disambiguates
+    direction: 'outbound',
+    wa_id: to, // the CLIENT's phone — fm-coach matches the client by this
+    profile_name: contact?.display_name || null,
+    message_type: message?.type || 'text',
+    body: message?.body || '',
+    external_message_id: message?.external_message_id || null,
+    // Use the actual send time so the chat bubble carries the right timestamp.
+    timestamp: message?.sent_at || new Date().toISOString(),
+    template_name: message?.template_name || null,
+    contact_id: contact?.id || null,
+    contact_display_name: contact?.display_name || null,
+    message_id: message?.id || null,
+  };
+
+  const bodyStr = JSON.stringify(payload);
+  const headers = { 'Content-Type': 'application/json' };
+  if (secret) {
+    const sig = createHmac('sha256', secret).update(bodyStr).digest('hex');
+    headers['X-Whatsapp-Signature-256'] = `sha256=${sig}`;
+  }
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  try {
+    const res = await fetch(url, { method: 'POST', headers, body: bodyStr, signal: controller.signal });
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      logger.warn(
+        { status: res.status, url, wa_id: to, body: text.slice(0, 200) },
+        'fm-coach outbound forward returned non-2xx',
+      );
+    } else {
+      logger.info({ wa_id: to, url }, 'fm-coach outbound forwarded');
+    }
+  } catch (err) {
+    logger.warn({ err: err.message, url, wa_id: to }, 'fm-coach outbound forward failed');
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function forwardInbound({ event, contact, conversation, message }) {
   const dest = pickDestination(event);
   if (!dest.url) return; // destination disabled / unset
+
+  // Media messages (image/document/etc.) — download + inline so the receiver
+  // can store the file and surface it in the thread. null for plain text.
+  const media = await downloadMediaForForward(event);
 
   const payload = {
     type: 'inbound_message',
@@ -156,6 +298,9 @@ export async function forwardInbound({ event, contact, conversation, message }) 
     conversation_id: conversation?.id || null,
     message_id: message?.id || null,
     raw_payload: event.payload || null,
+    // Inlined attachment (base64 + mime + filename) when this is a media
+    // message; spread so plain-text forwards are byte-identical to before.
+    ...(media || {}),
     // Funnels-app receiver reads referral.funnel_slug to attach the
     // conversation to a funnel. Include it explicitly when the router
     // detected one so the receiver doesn't need to re-parse the body.
