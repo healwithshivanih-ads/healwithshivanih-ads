@@ -34,50 +34,80 @@ const MEDIA_KINDS = new Set(['image', 'document', 'audio', 'video', 'sticker']);
 const MAX_INLINE_BYTES = 12 * 1024 * 1024; // 12 MB
 
 /**
- * Resolve + download a WhatsApp media attachment for forwarding. Returns null
- * for non-media events. For media, returns { media_kind, media_mime,
- * media_filename, media_size, media_base64 } — media_base64 is null (with a
- * skipped_reason) when the token is missing, the file is too large, or the
- * download fails, so the receiver always learns the attachment EXISTED.
+ * Pull a normalised media descriptor out of a Meta message-shaped object,
+ * regardless of direction. Inbound stores `{ [kind]: {id, mime_type, ...} }`;
+ * an outbound media send (if/when one is added to messages.send) would carry
+ * the same nested shape OR a flat `{ id|link, mime_type, filename, caption }`.
+ * Returns null when the message isn't media.
  */
-async function downloadMediaForForward(event) {
-  const kind = event.type;
-  if (!MEDIA_KINDS.has(kind)) return null;
-  const obj = event.payload?.[kind] || {};
-  const mediaId = obj.id;
+function extractMediaDescriptor(type, payload) {
+  if (!MEDIA_KINDS.has(type)) return null;
+  // Nested Meta shape (inbound + a well-formed outbound) wins; fall back to a
+  // flat payload so a minimal outbound media record still resolves.
+  const obj = payload?.[type] || payload || {};
+  return {
+    kind: type,
+    id: obj.id || null,
+    link: obj.link || obj.url || null,
+    mime: obj.mime_type || null,
+    filename: obj.filename || null,
+    caption: obj.caption || null,
+  };
+}
+
+/**
+ * Download a WhatsApp media attachment for forwarding and return
+ * { media_kind, media_mime, media_filename, media_caption, media_size,
+ * media_base64 }. media_base64 is null (with a skipped_reason) when the source
+ * is missing, the file is too large, or the download fails — so the receiver
+ * always learns the attachment EXISTED even when the bytes can't be inlined.
+ *
+ * Handles BOTH a Meta media-id (resolved via Graph API with the WABA token)
+ * and a direct link (fetched as-is; token attached in case it's a lookaside
+ * URL). Direction-agnostic — used by both forwardInbound and forwardOutbound.
+ */
+async function downloadMedia(desc) {
+  if (!desc) return null;
   const base = {
-    media_kind: kind,
-    media_mime: obj.mime_type || null,
-    media_filename: obj.filename || null,
-    media_caption: obj.caption || null,
+    media_kind: desc.kind,
+    media_mime: desc.mime || null,
+    media_filename: desc.filename || null,
+    media_caption: desc.caption || null,
     media_base64: null,
   };
-  if (!mediaId) return { ...base, skipped_reason: 'no_media_id' };
+  if (!desc.id && !desc.link) return { ...base, skipped_reason: 'no_media_source' };
 
   const token = config.whatsapp.token;
-  if (!token) {
-    logger.warn({ mediaId, kind }, 'media forward: no WABA token configured');
-    return { ...base, skipped_reason: 'no_token' };
-  }
   const gv = config.whatsapp.graphVersion;
   try {
-    const metaRes = await fetch(`https://graph.facebook.com/${gv}/${mediaId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    const meta = await metaRes.json();
-    if (!meta?.url) return { ...base, skipped_reason: 'no_download_url' };
-    if (meta.mime_type) base.media_mime = meta.mime_type;
-    if (meta.file_size && meta.file_size > MAX_INLINE_BYTES) {
-      return { ...base, media_size: meta.file_size, skipped_reason: 'too_large' };
+    // Resolve a media-id to a temporary download URL; a direct link is used
+    // as-is. Either way we end up with `downloadUrl`.
+    let downloadUrl = desc.link;
+    if (!downloadUrl) {
+      if (!token) {
+        logger.warn({ mediaId: desc.id, kind: desc.kind }, 'media forward: no WABA token configured');
+        return { ...base, skipped_reason: 'no_token' };
+      }
+      const metaRes = await fetch(`https://graph.facebook.com/${gv}/${desc.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const meta = await metaRes.json();
+      if (!meta?.url) return { ...base, skipped_reason: 'no_download_url' };
+      if (meta.mime_type) base.media_mime = meta.mime_type;
+      if (meta.file_size && meta.file_size > MAX_INLINE_BYTES) {
+        return { ...base, media_size: meta.file_size, skipped_reason: 'too_large' };
+      }
+      downloadUrl = meta.url;
     }
-    const binRes = await fetch(meta.url, { headers: { Authorization: `Bearer ${token}` } });
+    // Attach the token — harmless for public links, required for lookaside.
+    const binRes = await fetch(downloadUrl, token ? { headers: { Authorization: `Bearer ${token}` } } : undefined);
     const buf = Buffer.from(await binRes.arrayBuffer());
     if (buf.length > MAX_INLINE_BYTES) {
       return { ...base, media_size: buf.length, skipped_reason: 'too_large' };
     }
     return { ...base, media_size: buf.length, media_base64: buf.toString('base64') };
   } catch (err) {
-    logger.warn({ err: err.message, mediaId, kind }, 'media download for forward failed');
+    logger.warn({ err: err.message, mediaId: desc.id, kind: desc.kind }, 'media download for forward failed');
     return { ...base, skipped_reason: 'download_error' };
   }
 }
@@ -234,6 +264,13 @@ export async function forwardOutbound({ message, contact, from }) {
   const to = contact?.primary_phone;
   if (!to) return; // can't attribute without the recipient phone
 
+  // Outbound media (image/document/etc.) — inline it the same way inbound
+  // does so a coach-sent attachment lands in fm-coach's thread. Today the
+  // admin Inbox only sends text/template, so this is null in practice; it
+  // future-proofs the path so media is never dropped if outbound media is
+  // added. Resolves a Meta media-id OR a direct link.
+  const media = await downloadMedia(extractMediaDescriptor(message?.type, message?.payload));
+
   const payload = {
     type: 'inbound_message', // receiver's envelope type; direction below disambiguates
     direction: 'outbound',
@@ -248,6 +285,9 @@ export async function forwardOutbound({ message, contact, from }) {
     contact_id: contact?.id || null,
     contact_display_name: contact?.display_name || null,
     message_id: message?.id || null,
+    // Inlined attachment when this is a media send; spread so plain-text
+    // forwards are byte-identical to before.
+    ...(media || {}),
   };
 
   const bodyStr = JSON.stringify(payload);
@@ -283,7 +323,7 @@ export async function forwardInbound({ event, contact, conversation, message }) 
 
   // Media messages (image/document/etc.) — download + inline so the receiver
   // can store the file and surface it in the thread. null for plain text.
-  const media = await downloadMediaForForward(event);
+  const media = await downloadMedia(extractMediaDescriptor(event.type, event.payload));
 
   const payload = {
     type: 'inbound_message',
