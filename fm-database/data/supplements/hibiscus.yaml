@@ -30,6 +30,25 @@ notes_for_coach: 'Protocol: three 240 mL cups brewed tea daily OR extract provid
 notes_for_client: Hibiscus tea (3 cups/day) or a standardised extract is one of the
   most powerful botanical options for blood pressure — studies show results comparable
   to a common prescription drug.
+rasa:
+- astringent
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: sacred to Ganesha; strengthens devotion in japa (mantra repetition); purifies blood and heart
+  physically and spiritually; promotes hair growth
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- alterative
+- hemostatic
+- refrigerant
+- emmenagogue
+- demulcent
+- antispasmodic
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

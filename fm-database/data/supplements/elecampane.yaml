@@ -1,0 +1,41 @@
+slug: elecampane
+display_name: Elecampane (Inula / Pushkaramula)
+aliases:
+- pushkaramula
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+prabhava: one of the best rejuvenative tonics for the lungs; promotes longevity of lung tissues
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- expectorant
+- antispasmodic
+- carminative
+- analgesic
+- rejuvenative
+linked_to_topics:
+- asthma
+- copd
+- chronic-fatigue-syndrome
+- digestion-and-nutrient-absorption
+notes_for_coach: 'Latin: Inula spp.; Compositae. Sanskrit: Pushkaramula. Traditional indications: colds,
+  asthma, cardiac asthma, pleurisy, dyspepsia, cough, nervous debility. Precautions: high Pitta conditions
+  generally. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — ELECAMPANE
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

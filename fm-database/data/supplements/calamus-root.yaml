@@ -1,0 +1,46 @@
+slug: calamus-root
+display_name: Calamus Root (Acorus calamus / Vacha)
+aliases:
+- vacha
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- bitter
+- astringent
+virya: heating
+vipaka: pungent
+prabhava: rejuvenative for the brain and nervous system; promotes cerebral circulation; sattvic herb;
+  one of the best herbs for the mind; best herb for nasal administration
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- rejuvenative
+- expectorant
+- decongestant
+- nervine
+- antispasmodic
+- emetic
+linked_to_topics:
+- nervous-system-regulation
+- cognitive-decline
+- sinusitis
+- anxiety
+notes_for_coach: 'Latin: Acorus calamus; Araceae. Sanskrit: Vacha. Traditional indications: colds, cough,
+  asthma, sinus headaches, sinusitis, arthritis, epilepsy, shock, coma, loss of memory, deafness, hysteria,
+  neuralgia. Precautions: bleeding disorders including epistaxis, bleeding hemorrhoids; FDA restrictions
+  on internal use in the USA. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CALAMUS ROOT
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

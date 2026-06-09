@@ -1,0 +1,43 @@
+slug: solomon-s-seal-meda
+display_name: Solomon's Seal / Meda (Polygonatum spp.)
+aliases:
+- meda-mahameda
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: part of ashtavarga (eight sacred Ayurvedic root tonics of the lily family) for fertility, spermatogenesis,
+  lactation and chronic wasting; tonic to shukra dhatu (reproductive tissue); heals broken bones when
+  taken internally
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- rejuvenative
+- aphrodisiac
+- demulcent
+- expectorant
+- hemostatic
+linked_to_topics:
+- female-infertility
+- male-infertility-oxidative-stress
+- bone-health
+- chronic-fatigue-syndrome
+notes_for_coach: 'Latin: Polygonatum spp.; Liliaceae. Sanskrit: Meda / Mahameda. Traditional indications:
+  debility, infertility, impotence, chronic bleeding disorders, diabetes, consumption, dry cough, dehydration,
+  malnutrition, burning sensation, broken bones, inflamed mucous membranes. Precautions: severe congestion,
+  high Ama. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — SOLOMON'S SEAL
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

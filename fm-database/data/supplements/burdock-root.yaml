@@ -1,0 +1,41 @@
+slug: burdock-root
+display_name: Burdock Root (Arctium lappa)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- pungent
+- astringent
+virya: cooling
+vipaka: pungent
+prabhava: tonic and rejuvenative for pitta; root is nutritive, seeds are more diuretic/detoxifying
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- alterative
+- diaphoretic
+- diuretic
+- antipyretic
+linked_to_topics:
+- detoxification
+- chronic-inflammation
+- liver-detoxification
+- gut-dysbiosis
+notes_for_coach: 'Latin: Arctium lappa; Compositae. Traditional indications: inflammatory skin conditions,
+  rashes, cold with fever and sore throat, toxins in the blood, lymphatic clogging, nephritis, edema,
+  kidney inflammation, hypertension. Precautions: anemia, chronic chills, high Vata. Ayurvedic energetics
+  from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — BURDOCK
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

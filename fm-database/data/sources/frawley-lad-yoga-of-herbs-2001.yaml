@@ -1,0 +1,29 @@
+id: frawley-lad-yoga-of-herbs-2001
+title: "The Yoga of Herbs: An Ayurvedic Guide to Herbal Medicine (2nd Revised & Enlarged Edition)"
+source_type: book
+quality: moderate
+authors:
+  - David Frawley
+  - Vasant Lad
+publisher: Lotus Press (Twin Lakes, WI)
+year: 2001
+notes: >-
+  The standard Western reference for applying Ayurvedic herbal energetics
+  (dravyaguna) to commonly available herbs. Part I lays out the theory — the six
+  tastes (rasa), heating/cooling potency (virya), post-digestive effect (vipaka),
+  special potency (prabhava), the gunas, and methods of herbal preparation. The
+  materia medica then gives ~90 monographs in two groups — "Commonly Available
+  Herbs" (largely Western, with key Indian ones) and "Special Oriental Herbs"
+  (the Ayurvedic/Chinese classics: ashwagandha, shatavari, guggul, gotu kola,
+  bhringaraj, neem, etc.) — each with rasa/virya/vipaka, dosha effect (V/P/K
+  +/-), tissues (dhatus), systems (srotas), actions (karma), indications,
+  precautions and dosage. Used here as the primary source for populating the
+  structured Ayurvedic-energetics fields on Supplement entries (rasa, virya,
+  vipaka, prabhava, balances_dosha, aggravates_dosha, ayurvedic_actions) and for
+  adding monographs of key Ayurvedic herbs. Evidence tier kept conservative
+  (fm_specific_thin / plausible_emerging) — traditional energetics with variable
+  modern-trial support; pair with PubMed for the well-studied adaptogens.
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

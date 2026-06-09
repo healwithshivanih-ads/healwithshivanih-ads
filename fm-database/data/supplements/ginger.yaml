@@ -31,6 +31,25 @@ notes_for_coach: Ginger is cited as a food/herb that stimulates endogenous enzym
   Supports digestive function coaching conversations.
 notes_for_client: Ginger can help stimulate your body's own digestive enzyme production.
   Adding it to meals or taking it as a tea or supplement may support digestion.
+rasa:
+- pungent
+- sweet
+virya: heating
+vipaka: sweet
+prabhava: vishwabhesaj — the universal medicine; with honey relieves Kapha, with rock candy relieves Pitta,
+  with rock salt relieves Vata; dry ginger better for Kapha/Agni; fresh better for colds and Vata
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- diaphoretic
+- expectorant
+- carminative
+- antiemetic
+- analgesic
 evidence_tier: plausible_emerging
 typical_dose_range:
   capsule:

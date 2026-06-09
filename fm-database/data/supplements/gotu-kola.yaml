@@ -39,6 +39,23 @@ sources:
 - id: coach-shivani
   location: Coach Observation — Plant-Derived Adaptogens and Herbs
   quote: It has been shown to improve REM sleep architecture and reduce stress sensitivity.
+rasa:
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: increases intelligence, longevity and memory; tridoshic; close relative of Brahmi (Hydrocotyle
+  asiatica) and often used as substitute with better diuretic but slightly less strong nervine properties;
+  fortifies and cleanses immune system; strengthens adrenals
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- nervine
+- rejuvenative
+- alterative
+- febrifuge
+- diuretic
 evidence_tier: fm_specific_thin
 version: 2
 status: active

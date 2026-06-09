@@ -94,6 +94,24 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 75 — Menopause
   quote: Comprehensive natural treatment summary for menopausal symptoms.
+rasa:
+- sweet
+- astringent
+virya: heating
+vipaka: pungent
+prabhava: tonic for the colon and lungs; strengthens lung tissue and promotes healing of lung membranes;
+  similar to sesame for bones and reproductive organs
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+- kapha
+ayurvedic_actions:
+- laxative
+- demulcent
+- emollient
+- expectorant
+- nutritive tonic
 evidence_tier: plausible_emerging
 version: 3
 status: active

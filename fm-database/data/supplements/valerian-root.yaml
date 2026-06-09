@@ -18,6 +18,25 @@ timing_options:
 take_with_food: optional
 notes_for_coach: Take 30–60 min before bed; useful for insomnia and anxiety; effects
   may build over 1–2 weeks of consistent use.
+rasa:
+- bitter
+- pungent
+- sweet
+- astringent
+virya: heating
+vipaka: pungent
+prabhava: clears nerve channels of accumulated Vata; grounding owing to large amounts of earth element;
+  tamasic quality — excessive use dulls the mind
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- nervine
+- antispasmodic
+- sedative
+- carminative
 evidence_tier: plausible_emerging
 linked_to_topics:
 - insomnia

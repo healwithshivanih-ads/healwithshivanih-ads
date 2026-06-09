@@ -133,6 +133,53 @@ class HomeRemedyCategory(str, Enum):
     other = "other"
 
 
+class Dosha(str, Enum):
+    """The three Ayurvedic doshas (elemental constitutions).
+
+    Used as a controlled vocabulary on HomeRemedy.balances_dosha /
+    .aggravates_dosha so the plan checker can deterministically flag a
+    heating-remedy-for-a-pitta-client mismatch (rather than the AI having to
+    re-read every remedy's prose). The combined constitution label
+    (e.g. "Pitta-Vata") lives as a free string on the Client; this enum is
+    only for the structured per-dosha tags + the suggester's score keys.
+    """
+    vata = "vata"      # air + ether — dry, cold, light, mobile
+    pitta = "pitta"    # fire + water — hot, sharp, oily, intense
+    kapha = "kapha"    # earth + water — heavy, cold, slow, stable
+
+
+class Rasa(str, Enum):
+    """The six tastes (shad rasa) of Ayurvedic dravyaguna. A substance may have
+    one or more. Taste predicts dosha action: sweet/sour/salty build kapha &
+    pacify vata; pungent/bitter/astringent increase vata & reduce kapha;
+    sour/salty/pungent increase pitta while sweet/bitter/astringent pacify it.
+    Used on Supplement.rasa alongside virya/vipaka so the suggester can match a
+    herb's energetics to the client's dosha. Sanskrit names in comments."""
+    sweet = "sweet"            # madhura
+    sour = "sour"             # amla
+    salty = "salty"           # lavana
+    pungent = "pungent"       # katu
+    bitter = "bitter"         # tikta
+    astringent = "astringent" # kashaya
+
+
+class Virya(str, Enum):
+    """Heating/cooling potency (virya) — a substance's primary thermal action,
+    the single most decisive energetic for dosha matching. Heating (ushna)
+    aggravates pitta and pacifies vata/kapha; cooling (shita) the reverse."""
+    heating = "heating"   # ushna
+    cooling = "cooling"   # shita
+
+
+class Vipaka(str, Enum):
+    """Post-digestive effect (vipaka) — the long-term action after digestion.
+    Only three: sweet (anabolic, builds tissue, +kapha), sour (+pitta),
+    pungent (catabolic, reducing, +vata)."""
+    sweet = "sweet"       # madhura
+    sour = "sour"         # amla
+    pungent = "pungent"   # katu
+
+
 class ProtocolCategory(str, Enum):
     """High-level FM protocol categories. A coach picks a Protocol for a
     client when their pattern matches the indications — protocols give a

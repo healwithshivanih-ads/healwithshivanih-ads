@@ -1,0 +1,46 @@
+slug: sage
+display_name: Sage (Salvia officinalis)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- bitter
+- astringent
+virya: heating
+vipaka: pungent
+prabhava: specific for night sweats; dries all excess secretions; clears emotional obstructions from the
+  mind
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- diaphoretic
+- expectorant
+- nervine
+- astringent
+- alterative
+- diuretic
+- carminative
+- antispasmodic
+linked_to_topics:
+- perimenopause-and-menopause
+- immune-support
+- gut-brain-axis
+- nervous-system-regulation
+notes_for_coach: 'Latin: Salvia officinalis; Labiatae. Traditional indications: colds, flu, sore throat,
+  laryngitis, swollen lymph glands, night sweats, spermatorrhea, hair loss, nervous dysfunction. Precautions:
+  high Vata (excessive dryness), nursing mothers. Ayurvedic energetics from The Yoga of Herbs (Frawley
+  & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — SAGE
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,46 @@
+slug: manjishta
+display_name: Manjishta (Indian Madder)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- sweet
+virya: cooling
+vipaka: pungent
+prabhava: best alterative or blood-purifying herb in Ayurvedic medicine; one of the main anti-Pitta herbs;
+  cools and detoxifies blood, arrests hemorrhage, dissolves obstructions in blood flow, removes stagnant
+  blood
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- alterative
+- hemostatic
+- emmenagogue
+- astringent
+- diuretic
+- lithotriptic
+- antitumor
+linked_to_topics:
+- chronic-inflammation
+- menorrhagia
+- liver-detoxification
+- herpes-simplex
+notes_for_coach: 'Latin: Rubia cordifolia; Rubiaceae. Sanskrit: Manjishta. Traditional indications: amenorrhea,
+  dysmenorrhea, menorrhagia, menopause, bleeding disorders, kidney or bladder stones, gall stones, jaundice,
+  hepatitis, diarrhea, dysentery, broken bones, traumatic injuries, cancer, heart disease, skin problems,
+  dropsy, rickets, paralysis, herpes. Precautions: severe chills, high Vata. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — MANJISHTA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

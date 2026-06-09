@@ -1,0 +1,46 @@
+slug: sandalwood
+display_name: Sandalwood (Chandana / Santalum album)
+aliases:
+- chandana
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- sweet
+- astringent
+virya: cooling
+vipaka: sweet
+prabhava: prabhava to open the third eye and promote meditation; transmutes sexual energy; specific anti-Pitta
+  medicine; cools entire body and mind
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- alterative
+- hemostatic
+- antiseptic
+- antibacterial
+- carminative
+- sedative
+- refrigerant
+linked_to_topics:
+- cystitis-and-interstitial-cystitis
+- chronic-inflammation
+- atopic-dermatitis
+- herpes-simplex
+notes_for_coach: 'Latin: Santalum album; Santalaceae. Sanskrit: Chandana. Traditional indications: eye
+  diseases, cystitis, urethritis, vaginitis, acute dermatitis, herpes zoster, bronchitis, palpitations,
+  gonorrhea, sunstroke. Precautions: high Kapha, severe lung congestion. Ayurvedic energetics from The
+  Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — SANDALWOOD
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

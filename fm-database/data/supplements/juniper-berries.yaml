@@ -1,0 +1,46 @@
+slug: juniper-berries
+display_name: Juniper Berries (Hapusha)
+aliases:
+- hapusha
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- bitter
+- sweet
+virya: heating
+vipaka: pungent
+prabhava: one of the best diuretics for Vata constitution; purifying action extends to the aura and subtle
+  body — destroys resistant bacteria and negative astral influences
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- diuretic
+- diaphoretic
+- stimulant
+- carminative
+- analgesic
+- disinfectant
+- bacteriocidal
+linked_to_topics:
+- kidney-stones
+- joint-pain
+- rheumatoid-arthritis
+- blood-sugar-dysfunction
+notes_for_coach: 'Latin: Juniperus spp.; Coniferae. Sanskrit: Hapusha. Traditional indications: dropsy,
+  edema, sciatica, lumbago, arthritis, rheumatism, swollen joints, diabetes, weak digestion, weak immune
+  system, dysmenorrhea. Precautions: acute nephritis, cystitis, pregnancy. Ayurvedic energetics from The
+  Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — JUNIPER BERRIES
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -58,6 +58,27 @@ notes_for_coach: 'Look for standardized extracts (withanolide content). Studies 
   Somnifera means ''sleep inducer''. Source: Coach Shivani clinical observations.'
 notes_for_client: Ashwagandha is an adaptogenic herb that may help your body manage
   stress hormones and support deeper, more restful sleep.
+rasa:
+- bitter
+- astringent
+- sweet
+virya: heating
+vipaka: sweet
+prabhava: the best rejuvenative herb especially for muscles, marrow and semen; Ayurvedic equivalent of
+  ginseng; sattvic — nurturing and clarifying for the mind; promotes deep dreamless sleep; stabilises
+  the fetus; regenerates the hormonal system
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- tonic
+- rejuvenative
+- aphrodisiac
+- nervine
+- sedative
+- astringent
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

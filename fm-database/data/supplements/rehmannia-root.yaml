@@ -1,0 +1,44 @@
+slug: rehmannia-root
+display_name: Rehmannia Root (Di Huang)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: important tonic and rejuvenative for the kidneys and liver; cooked form is good substitute for
+  shatavari as uterine tonic; major herb for problems of aging; counters dryness and lack of vitality
+  in high Vata conditions
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- rejuvenative
+- aphrodisiac
+- demulcent
+- laxative
+- emmenagogue
+linked_to_topics:
+- iron-deficiency-anemia
+- cognitive-decline
+- perimenopause-and-menopause
+- kidney-stones
+notes_for_coach: 'Latin: Rehmannia glutinosa; Scrophulariaceae. Traditional indications: weak kidneys,
+  low back pain, sexual debility, irregular menstruation, cirrhosis, anemia, hair loss, diabetes, senility.
+  Precautions: weak digestion, severe congestion or edema; may cause diarrhea without digestion-increasing
+  herbs like cinnamon or ginseng. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — REHMANNIA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

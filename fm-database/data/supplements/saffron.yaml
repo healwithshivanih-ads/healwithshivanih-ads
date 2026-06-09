@@ -46,6 +46,26 @@ notes_for_client: 'Saffron (kesar) — the world''s most expensive spice but the
   Prozac for mild-to-moderate depression. Effect builds over 4-8 weeks.
 
   '
+rasa:
+- pungent
+- bitter
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: catalyzes tonic action of other herbs; considered the best vajikarana (aphrodisiac) primarily
+  for women; promotes tissue growth in reproductive organs; sattvic — gives energy to love and devotion
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- alterative
+- emmenagogue
+- aphrodisiac
+- rejuvenative
+- stimulant
+- carminative
+- antispasmodic
 evidence_tier: plausible_emerging
 contraindications:
   conditions: []

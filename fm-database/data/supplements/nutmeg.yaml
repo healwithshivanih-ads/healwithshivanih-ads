@@ -1,0 +1,43 @@
+slug: nutmeg
+display_name: Nutmeg (Jatiphala)
+aliases:
+- jatiphala
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: one of the best spices for increasing absorption in the small intestine; tamasic quality — calms
+  mind but in excess increases dullness; specific for diarrhea taken in buttermilk
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- astringent
+- carminative
+- sedative
+- nervine
+- aphrodisiac
+- stimulant
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- sleep
+- insomnia
+notes_for_coach: 'Latin: Myristica fragrans; Myristicaceae. Sanskrit: Jatiphala. Traditional indications:
+  poor absorption, abdominal pain and distension, diarrhea, dysentery, intestinal gas, insomnia, nervous
+  disorders, impotence. Precautions: pregnancy, high Pitta; tamasic — in excess can increase dullness
+  of mind. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — NUTMEG
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

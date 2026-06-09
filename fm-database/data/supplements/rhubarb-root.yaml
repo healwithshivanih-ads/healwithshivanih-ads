@@ -1,0 +1,41 @@
+slug: rhubarb-root
+display_name: Rhubarb Root (Amla-vetasa / Rheum spp.)
+aliases:
+- amla-vetasa
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+virya: cooling
+vipaka: pungent
+prabhava: astringent aftereffect protects tone of colon after purgation
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- purgative
+- alterative
+- hemostatic
+- antipyretic
+- anthelmintic
+linked_to_topics:
+- constipation
+- liver-detoxification
+- inflammation
+- hemorrhoids
+notes_for_coach: 'Latin: Rheum spp.; Polygonaceae. Sanskrit: Amla-vetasa. Traditional indications: constipation
+  (especially with fevers, ulcers or infections), diarrhea and dysentery (Pitta-type), jaundice, liver
+  problems, skin inflammations. Precautions: pregnancy, chronic diarrhea, chills; use with caution on
+  hemorrhoids. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — RHUBARB
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

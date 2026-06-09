@@ -21,6 +21,25 @@ notes_for_coach: Over-the-counter 0.075% cream; apply b.i.d. to affected area (n
   initially; consistent daily use required for sustained effect.
 notes_for_client: Capsaicin cream from chilli peppers blocks pain signals in nerves
   when applied to the skin. It works best when used every day.
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: strong dispeller of internal and external cold; food for Agni; rajasic quality; enhances properties
+  of other herbs; strong hemostatic action
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- diaphoretic
+- expectorant
+- carminative
+- alterative
+- hemostatic
+- anthelmintic
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:

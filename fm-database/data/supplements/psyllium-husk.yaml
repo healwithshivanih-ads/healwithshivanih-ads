@@ -38,6 +38,22 @@ notes_for_coach: Low FODMAP approved at standard doses. Start with 1 tsp in a la
   Ensure adequate fluid intake.
 notes_for_client: Mix 1 tsp in a large glass of warm water. Always take with plenty
   of water. Builds a gel in your gut to keep things moving smoothly.
+rasa:
+- sweet
+- astringent
+virya: cooling
+vipaka: sweet
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- laxative
+- demulcent
+- emollient
+- astringent
+- expectorant
 evidence_tier: strong
 linked_to_mechanisms: []
 sources:

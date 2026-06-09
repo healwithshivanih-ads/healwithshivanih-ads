@@ -1,0 +1,45 @@
+slug: rose-flowers
+display_name: Rose Flowers (Shatapatri / Rosa spp.)
+aliases:
+- shatapatri
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- pungent
+- astringent
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: prabhava as flower of devotion — opens the heart; specific for reducing Pitta heat and congestion
+  of blood; rose water opens mind and cools eyes
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- alterative
+- emmenagogue
+- refrigerant
+- nervine
+- carminative
+- laxative
+- astringent
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- menorrhagia
+- chronic-inflammation
+- perimenopause-and-menopause
+notes_for_coach: 'Latin: Rosa spp.; Rosaceae. Sanskrit: Shatapatri. Traditional indications: amenorrhea,
+  dysmenorrhea, uterine hemorrhage, inflamed eyes, dizziness, headaches, sore throat, enlarged tonsils.
+  Precautions: high Kapha. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — ROSE FLOWERS
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

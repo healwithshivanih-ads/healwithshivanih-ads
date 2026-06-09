@@ -1,0 +1,42 @@
+slug: cardamom
+display_name: Cardamom (Elettaria cardamomum / Ela)
+aliases:
+- ela
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- sweet
+virya: heating
+vipaka: pungent
+prabhava: sattvic; one of the best and safest digestive stimulants; neutralizes mucus-forming properties
+  of milk; detoxifies caffein in coffee; part of Three Aromatics formula with cinnamon and bay leaves
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- expectorant
+- carminative
+- stomachic
+- diaphoretic
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- dyspepsia
+- asthma
+notes_for_coach: 'Latin: Elettaria cardamomum; Zingiberaceae. Sanskrit: Ela. Traditional indications:
+  colds, cough, bronchitis, asthma, hoarse voice, loss of taste, poor absorption, indigestion. Precautions:
+  ulcers, high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CARDAMOM
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

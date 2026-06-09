@@ -1,0 +1,45 @@
+slug: mugwort
+display_name: Mugwort (Nagadamani / Artemesia)
+aliases:
+- nagadamani
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: warms the lower abdomen and fortifies the uterus; opens and purifies channels; specific for
+  sama Vata (obstructed Vata) conditions
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- emmenagogue
+- antispasmodic
+- hemostatic
+- diaphoretic
+- anthelmintic
+- antiseptic
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- premenstrual-syndrome
+- female-infertility
+- rheumatoid-arthritis
+notes_for_coach: 'Latin: Artemesia vulgaris; Compositae. Sanskrit: Nagadamani. Traditional indications:
+  dysmenorrhea, menorrhagia, infertility, preventive for miscarriage, sciatica, convulsions, hysteria,
+  epilepsy, depression, mental exhaustion, insomnia, gout, rheumatism, fungal infections. Precautions:
+  high Pitta, uterine infection or inflammation. Ayurvedic energetics from The Yoga of Herbs (Frawley
+  & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — MUGWORT
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

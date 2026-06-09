@@ -1,0 +1,44 @@
+slug: neem
+display_name: Neem (Nimba)
+aliases:
+- nimba
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+virya: cooling
+vipaka: pungent
+prabhava: one of the most powerful blood-purifiers and detoxifiers in Ayurvedic medicine; clears toxins
+  in inflammatory skin diseases and ulcerated mucous membranes; powerful febrifuge effective in malaria
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- bitter tonic
+- antipyretic
+- alterative
+- anthelmintic
+- antiseptic
+- antiemetic
+linked_to_topics:
+- acne-vulgaris
+- psoriasis
+- blood-sugar-regulation
+- detoxification
+notes_for_coach: 'Latin: Azadirachta indica; Meliaceae. Sanskrit: Nimba. Traditional indications: skin
+  diseases, urticaria, eczema, ringworm, parasites, fever, malaria, cough, thirst, nausea, vomiting, diabetes,
+  tumors, obesity, arthritis, rheumatism, jaundice. Precautions: diseases of cold and tissue deficiency
+  generally; use with discretion in severe fatigue or emaciation. Ayurvedic energetics from The Yoga of
+  Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — NEEM
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

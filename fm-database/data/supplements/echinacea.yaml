@@ -50,6 +50,25 @@ notes_for_client: 'Echinacea works best when started at the first sign of a cold
   on the tongue is a good sign the product is potent.
 
   '
+rasa:
+- bitter
+- pungent
+virya: cooling
+vipaka: pungent
+prabhava: best detoxifying agent in western herbalism; natural herbal antibiotic; catalyzes action of
+  white blood cells; destroys Ama
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- alterative
+- diaphoretic
+- antibacterial
+- antiviral
+- antiseptic
+- analgesic
 evidence_tier: plausible_emerging
 contraindications:
   conditions:

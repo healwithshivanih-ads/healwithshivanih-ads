@@ -1,0 +1,44 @@
+slug: comfrey
+display_name: Comfrey (Symphytum officinale)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- astringent
+virya: cooling
+vipaka: sweet
+prabhava: rasayana for vata and pitta; most powerful agent for promoting new tissue growth externally
+  and internally; root = stronger tonic, leaves = more astringent/anti-inflammatory
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- demulcent
+- expectorant
+- emollient
+- vulnerary
+- astringent
+- hemostatic
+linked_to_topics:
+- bone-health
+- chronic-inflammation
+- chronic-pain-and-fatigue
+- digestion-and-nutrient-absorption
+notes_for_coach: 'Latin: Symphytum officinale; Boraginaceae. Traditional indications: cough, lung infections,
+  coughing blood, lung hemorrhage, gastrointestinal ulcers, blood in urine, diarrhea, dysentery, sprains,
+  fractures, wounds, sores, boils. Precautions: edema, malabsorption, obesity, high Ama. Ayurvedic energetics
+  from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — COMFREY
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -26,6 +26,28 @@ notes_for_coach: Traditional ayurvedic hair tonic — topical oil scalp massage,
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
+rasa:
+- bitter
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: prevents aging; rejuvenative for liver and specifically for cirrhosis; best Ayurvedic herbal
+  medicine for hair — makes hair black and luxuriant, removes greyness and reverses balding; calms excessive
+  mental activity; similar to brahmi/gotu kola
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- tonic
+- rejuvenative
+- alterative
+- hemostatic
+- antipyretic
+- nervine
+- laxative
+- vulnerary
 evidence_tier: fm_specific_thin
 version: 1
 status: active

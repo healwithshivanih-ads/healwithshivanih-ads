@@ -1,0 +1,42 @@
+slug: fennel-seeds
+display_name: Fennel Seeds (Foeniculum vulgare / Shatapushpa)
+aliases:
+- shatapushpa
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- pungent
+virya: cooling
+vipaka: sweet
+prabhava: tridoshic; strengthens Agni without aggravating Pitta; one of the best herbs for digestion;
+  stops cramping and dispels flatulence
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- carminative
+- stomachic
+- stimulant
+- diuretic
+- antispasmodic
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- ibs
+- cystitis-and-interstitial-cystitis
+notes_for_coach: 'Latin: Foeniculum vulgare; Umbelliferae. Sanskrit: Shatapushpa. Traditional indications:
+  indigestion, low agni, abdominal pain, cramps or gas, difficult or burning urination, children''s colic.
+  Precautions: a good general herb and spice for all constitutions. Ayurvedic energetics from The Yoga
+  of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — FENNEL SEEDS
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

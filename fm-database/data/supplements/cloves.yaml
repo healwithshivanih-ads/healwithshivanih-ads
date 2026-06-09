@@ -1,0 +1,41 @@
+slug: cloves
+display_name: Cloves (Caryophyllus aromaticus / Lavanga)
+aliases:
+- lavanga
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: volatile oil is powerful analgesic; mildly aphrodisiac; rajasic quality; disinfects the lymphatics
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- expectorant
+- carminative
+- analgesic
+- aphrodisiac
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- asthma
+- common-cold
+notes_for_coach: 'Latin: Caryophyllus aromaticus; Myrtaceae. Sanskrit: Lavanga. Traditional indications:
+  colds, cough, asthma, indigestion, toothache, vomiting, hiccough, laryngitis, pharyngitis, low blood
+  pressure, impotence. Precautions: inflammatory condition, hypertension, high Pitta. Ayurvedic energetics
+  from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CLOVES
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

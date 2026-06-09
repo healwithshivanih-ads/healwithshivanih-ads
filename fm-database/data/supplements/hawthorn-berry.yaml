@@ -21,6 +21,23 @@ notes_for_coach: Included as a base liquid tea herb (2 tablespoons brewed). Hawt
   require clinician oversight.
 notes_for_client: Hawthorn berry tea has been used traditionally to support heart
   health. It can be brewed as a base for your smoothie.
+rasa:
+- sour
+virya: heating
+vipaka: sour
+prabhava: special action on the heart — strengthens heart muscle and promotes longevity; particularly
+  good for Vata heart conditions; removes accumulated food masses from GI tract
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+- kapha
+ayurvedic_actions:
+- stimulant
+- carminative
+- vasodilator
+- antispasmodic
+- diuretic
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 linked_to_claims: []

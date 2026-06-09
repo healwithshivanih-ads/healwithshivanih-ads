@@ -8,6 +8,7 @@ from .enums import (
     CautionSeverity,
     CookingAdjustmentCategory,
     DepletionSeverity,
+    Dosha,
     DoseUnit,
     DrugClass,
     ImplicationConfidence,
@@ -18,6 +19,7 @@ from .enums import (
     LabPanelCategory,
     MechanismCategory,
     ProtocolCategory,
+    Rasa,
     SafetyStatus,
     SourceQuality,
     SourceType,
@@ -27,6 +29,8 @@ from .enums import (
     SymptomSeverity,
     TakeWithFood,
     Timing,
+    Vipaka,
+    Virya,
 )
 
 
@@ -178,6 +182,16 @@ class HomeRemedy(BaseModel):
     summary: str
     indications: list[str] = Field(default_factory=list)         # symptom slugs or topic slugs
     contraindications: list[str] = Field(default_factory=list)   # free-text condition descriptors
+    # ── Dosha suitability (Ayurveda safety/matching key) ──────────────────────
+    # Many traditional remedies are dosha-specific: a heating kapha-clearing
+    # tea (cinnamon/trikatu) is good FOR kapha but AGGRAVATES pitta. These
+    # structured tags let the plan checker flag a remedy whose aggravates_dosha
+    # intersects the client's current imbalance (vikruti), and let the
+    # suggester rank remedies by the client's dosha. Empty = dosha-neutral /
+    # not yet tagged (no flag fires). Populated from the remedy's prose
+    # (summary / indications / contraindications already state the dosha).
+    balances_dosha: list[Dosha] = Field(default_factory=list)    # doshas this remedy pacifies/suits
+    aggravates_dosha: list[Dosha] = Field(default_factory=list)  # doshas this remedy can worsen
     preparation: str = ""
     typical_dose: str = ""                                       # free-text (varies wildly)
     duration: str = ""                                            # free-text suggested duration
@@ -691,6 +705,19 @@ class Supplement(BaseModel):
     pregnancy_safety: SafetyStatus = SafetyStatus.unknown
     lactation_safety: SafetyStatus = SafetyStatus.unknown
     pregnancy_safety_note: str = ""                              # 1-2 sentence rationale
+    # ── Ayurvedic energetics (dravyaguna) ──────────────────────────────────
+    # Captured from Ayurvedic materia medica (e.g. The Yoga of Herbs). Lets the
+    # suggester match a herb's energetics to the client's dosha/vikruti and the
+    # plan checker flag a heating herb for a pitta client — the same structured
+    # approach as HomeRemedy.balances_dosha. All optional; empty/None = not yet
+    # tagged (no flag fires), so the 351 existing supplements load unchanged.
+    rasa: list[Rasa] = Field(default_factory=list)               # taste(s) — shad rasa
+    virya: Optional[Virya] = None                                # heating/cooling potency
+    vipaka: Optional[Vipaka] = None                              # post-digestive effect
+    prabhava: str = ""                                           # special action not explained by rasa/virya/vipaka
+    balances_dosha: list[Dosha] = Field(default_factory=list)    # doshas this herb pacifies/suits
+    aggravates_dosha: list[Dosha] = Field(default_factory=list)  # doshas this herb can worsen
+    ayurvedic_actions: list[str] = Field(default_factory=list)   # karma — e.g. diaphoretic, nervine, expectorant
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
     linked_to_claims: list[str] = Field(default_factory=list)

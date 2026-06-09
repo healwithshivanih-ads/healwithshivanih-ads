@@ -1,0 +1,39 @@
+slug: senna
+display_name: Senna (Rajavriksha / Cassia acutifolia)
+aliases:
+- rajavriksha
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+virya: cooling
+vipaka: pungent
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- purgative
+- anthelmintic
+- antipyretic
+- alterative
+linked_to_topics:
+- constipation
+- liver-detoxification
+- hemorrhoids
+- metabolic-detoxification
+notes_for_coach: 'Latin: Cassia acutifolia; Leguminosae. Sanskrit: Rajavriksha. Traditional indications:
+  constipation, inflammatory skin conditions, hypertension, obesity. Precautions: hemorrhoids, inflammatory
+  conditions of the g.i. tract, diarrhea, pregnancy; irritant to intestinal membrane; repeated use may
+  weaken colon tone. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — SENNA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

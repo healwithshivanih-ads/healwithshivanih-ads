@@ -21,6 +21,29 @@ take_with_food: optional
 notes_for_coach: 'Active constituents: ginsenosides. Reduces acute exercise-induced
   cortisol and may improve neuroplasticity in the hippocampus — a region vulnerable
   to chronic cortisol elevation. Source: Coach Shivani clinical observations.'
+rasa:
+- pungent
+- bitter
+- sweet
+virya: heating
+vipaka: sweet
+prabhava: tridoshic in normal use but PK+ in excess; works on all tissue-elements; promotes growth and
+  revitalization of body and mind; particularly effective for Vata disorders of tissue-deficiency in old
+  age
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha:
+- pitta
+- kapha
+ayurvedic_actions:
+- tonic
+- rejuvenative
+- stimulant
+- aphrodisiac
+- demulcent
+- nervine
 evidence_tier: plausible_emerging
 linked_to_topics:
 - hpa-axis-cortisol-regulation

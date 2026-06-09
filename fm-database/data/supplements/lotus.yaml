@@ -1,0 +1,45 @@
+slug: lotus
+display_name: Lotus (Nelumbo nucifera)
+aliases:
+- padma-kamala-pushkara
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- astringent
+virya: cooling
+vipaka: sweet
+prabhava: sacred to Lakshmi; calms the mind and subdues restless thoughts; seeds open the heart center;
+  root works on root center; seeds good for devotion and aspiration; improves speech, stops stuttering,
+  improves concentration
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- rejuvenative
+- aphrodisiac
+- astringent
+- hemostatic
+- nervine
+linked_to_topics:
+- gut-microbiome
+- menorrhagia
+- cardiovascular-health
+- insomnia
+notes_for_coach: 'Latin: Nelumbo nucifera; Nymphaeaceae. Sanskrit: Padma, Kamala, Pushkara. Traditional
+  indications: diarrhea, bleeding disorders, menorrhagia, leucorrhea, impotence, spermatorrhea, venereal
+  diseases, heart weakness. Precautions: Ama conditions, indigestion, food stagnation, constipation. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — LOTUS
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

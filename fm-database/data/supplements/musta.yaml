@@ -1,0 +1,44 @@
+slug: musta
+display_name: Musta (Nutgrass / Cyperus rotundus)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+prabhava: most effective menstrual regulator; one of the most important herbs for female disorders; best
+  digestive stimulant for Pitta constitution; effective liver stimulant
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- stimulant
+- carminative
+- astringent
+- alterative
+- emmenagogue
+- antispasmodic
+- anthelmintic
+linked_to_topics:
+- premenstrual-syndrome
+- perimenopause
+- dyspepsia
+- maldigestion
+notes_for_coach: 'Latin: Cyperus rotundus; Cyperaceae. Sanskrit: Musta. Traditional indications: menstrual
+  disorders, dysmenorrhea, menopause, diarrhea, malabsorption, indigestion, sluggish liver. Precautions:
+  constipation, high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — MUSTA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

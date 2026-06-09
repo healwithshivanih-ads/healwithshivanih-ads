@@ -1,0 +1,43 @@
+slug: ajwain
+display_name: Ajwain (Wild Celery Seeds)
+aliases:
+- ajamoda
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: powerful decongestant for both respiratory and digestive tracts; clears deep-seated Ama; vitalizes
+  Prana, samana and udana Vata
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- diaphoretic
+- expectorant
+- carminative
+- antispasmodic
+- diuretic
+- lithotriptic
+linked_to_topics:
+- agni-digestive-fire
+- asthma
+- chronic-inflammation
+- gut-dysfunction
+notes_for_coach: 'Latin: Apium graveolens; Umbelliferae. Sanskrit: Ajamoda. Traditional indications: colds,
+  flus, laryngitis, bronchitis, asthma, cough, colic, indigestion, edema, arthritis. Precautions: hyperacidity,
+  high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — AJWAN
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

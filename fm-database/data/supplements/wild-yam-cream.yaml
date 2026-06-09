@@ -20,6 +20,26 @@ notes_for_coach: Applied topically morning and night. Contains diosgenin, a plan
 notes_for_client: A plant-based cream applied to the skin, traditionally used to support
   the body's natural hormone balance. Always check with your healthcare provider before
   starting.
+rasa:
+- sweet
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: many varieties possess strong rejuvenative powers; increases semen, milk and hormonal secretions;
+  promotes body weight; oriental and Mexican varieties considered rejuvenatives for men; also covers related
+  Vidari-kanda (Ipomoea digitata) used as aphrodisiac, galactogogue and nutritive tonic
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- aphrodisiac
+- rejuvenative
+- diuretic
+- antispasmodic
+- analgesic
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:

@@ -22,6 +22,24 @@ timing_options:
 take_with_food: optional
 notes_for_coach: Adaptogen supporting stress, blood sugar, and inflammation; avoid
   late-day dosing as it may be mildly stimulating.
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: sattvic herb; opens heart and mind; sacred to Vishnu; strengthens immune system and purifies
+  aura; contains natural mercury giving seed-power of awareness
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- diaphoretic
+- febrifuge
+- nervine
+- antispasmodic
+- antibacterial
+- antiseptic
 evidence_tier: plausible_emerging
 linked_to_topics: []
 linked_to_mechanisms: []

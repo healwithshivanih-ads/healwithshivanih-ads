@@ -38,6 +38,21 @@ contraindications:
   life_stages:
   - pregnancy
   - lactation
+rasa:
+- bitter
+- sweet
+virya: cooling
+vipaka: sweet
+balances_dosha:
+- pitta
+- vata
+ayurvedic_actions:
+- alterative
+- diuretic
+- diaphoretic
+- antispasmodic
+- antisyphilitic
+- antirheumatic
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 sources:

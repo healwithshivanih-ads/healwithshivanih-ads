@@ -1,0 +1,45 @@
+slug: pomegranate
+display_name: Pomegranate (Dadima / Punica granatum)
+aliases:
+- dadima
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- astringent
+- bitter
+- sweet
+- sour
+virya: cooling
+vipaka: sweet
+prabhava: sweet variety alleviates all three doshas; rootbark is the strongest anthelmintic; prabhava
+  as a complete pharmacy — fruit, rind, rootbark each with distinct actions
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- astringent tonic
+- alterative
+- hemostatic
+- anthelmintic
+- refrigerant
+- stomachic
+linked_to_topics:
+- iron-deficiency-anemia
+- gut-dysbiosis
+- constipation
+- inflammatory-bowel-conditions
+notes_for_coach: 'Latin: Punica granatum; Lythraceae. Sanskrit: Dadima. Traditional indications: worms
+  (round, pin, tapeworm), sore throat, ulcers, colitis, diarrhea, dysentery, prolapse of rectum or vagina,
+  leucorrhea, conjunctivitis, anemia, chronic bronchitis, tuberculosis. Precautions: constipation. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — POMEGRANATE
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

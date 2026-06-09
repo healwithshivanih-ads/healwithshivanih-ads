@@ -1,0 +1,43 @@
+slug: pippali
+display_name: Pippali (Indian Long Pepper)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+virya: heating
+vipaka: sweet
+prabhava: rejuvenative mainly for the lungs and Kapha; forms part of trikatu (with black pepper and dry
+  ginger) — the main stimulant compound in Ayurveda that rejuvenates Agni, burns Ama and allows assimilation
+  of other medicines
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- expectorant
+- carminative
+- aphrodisiac
+- anthelmintic
+- analgesic
+linked_to_topics:
+- agni-digestive-fire
+- asthma
+- digestion-and-nutrient-absorption
+- joint-pain
+notes_for_coach: 'Latin: Piper longum; Piperaceae. Sanskrit: Pippali. Traditional indications: colds,
+  coughs, asthma, bronchitis, laryngitis, arthritis, rheumatism, gout, dyspepsia, abdominal distention,
+  flatulence, abdominal tumors, lumbago, sciatica, epilepsy, paralysis, worms. Precautions: high Pitta
+  (inflammatory conditions). Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — PIPPALI
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,46 @@
+slug: jasmine-flowers
+display_name: Jasmine Flowers (Jasminum grandiflorum)
+aliases:
+- jati
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+prabhava: sattvic in quality; increases love and compassion; strong antibacterial, antiviral and antitumor
+  action; helpful in different kinds of cancer including breast cancer; strengthens lymphatic system;
+  cleanses uterus; psychically receptive
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- alterative
+- refrigerant
+- antibacterial
+- hemostatic
+- emmenagogue
+- aphrodisiac
+- nervine
+linked_to_topics:
+- chronic-inflammation
+- anxiety
+- immune-support
+- uterine-fibroids
+notes_for_coach: 'Latin: Jasminum grandiflorum; Oleaceae. Sanskrit: Jati. Traditional indications: emotional
+  disturbances, headaches, fever, sunstroke, conjunctivitis, dermatitis, burning urethra, bleeding disorders,
+  bacterial or viral infections, cancer of lymph nodes, cancer of bones, Hodgkin''s disease. Precautions:
+  severe chills, high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — JASMINE FLOWERS
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

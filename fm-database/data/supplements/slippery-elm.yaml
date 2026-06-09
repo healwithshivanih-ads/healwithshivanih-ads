@@ -24,6 +24,21 @@ linked_to_claims:
 - abrupt-ppi-discontinuation-causes-rebound-reflux
 notes_for_coach: Listed under 'Protect' in PPI tapering. A mucilaginous herb that
   coats and soothes the GI tract. Often taken as a porridge or powder in water.
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- demulcent
+- expectorant
+- emollient
+- mild astringent
 evidence_tier: fm_specific_thin
 typical_dose_range: {}
 linked_to_mechanisms: []

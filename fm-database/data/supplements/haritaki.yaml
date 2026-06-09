@@ -1,0 +1,49 @@
+slug: haritaki
+display_name: Haritaki (Terminalia chebula)
+aliases:
+- haritaki-abhaya
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- sour
+- salty
+- pungent
+- bitter
+- astringent
+virya: heating
+vipaka: sweet
+prabhava: all five tastes (predominantly astringent); feeds the brain and nerves and imparts the energy
+  of Shiva (pure awareness); increases wisdom and intelligence; basis for triphala along with amalaki
+  and bibhitaki; rejuvenative for Vata
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- rejuvenative
+- tonic
+- astringent
+- laxative
+- nervine
+- expectorant
+- anthelmintic
+linked_to_topics:
+- constipation
+- agni-digestive-fire
+- detoxification
+notes_for_coach: 'Latin: Terminalia chebula; Combretaceae. Sanskrit: Haritaki, Abhaya. Traditional indications:
+  cough, asthma, hoarse voice, hiccough, vomiting, hemorrhoids, diarrhea, malabsorption, abdominal distention,
+  parasitic infections, tumors, jaundice, spleen diseases, heart disease, skin diseases, itching, edema,
+  nervous disorders. Precautions: pregnancy, dehydration, severe exhaustion or emaciation, in excess high
+  Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — HARITAKI
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,42 @@
+slug: sesame-seeds-tila
+display_name: Sesame Seeds / Tila (Sesamum indicum)
+aliases:
+- tila
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+virya: heating
+vipaka: sweet
+prabhava: sattvic; produces sattvic tissues; black seeds contain higher solar energy; specific for bones
+  and teeth
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- rejuvenative
+- demulcent
+- emollient
+- laxative
+linked_to_topics:
+- bone-health
+- osteoporosis
+- constipation
+- healthy-menstrual-cycle-baseline
+notes_for_coach: 'Latin: Sesamum indicum; Pedaliaceae. Sanskrit: Tila. Traditional indications: chronic
+  cough, weak lungs, chronic constipation, hemorrhoids, dysentery, amenorrhea, dysmenorrhea, receding
+  gums, tooth decay, hair loss, weak bones, osteoporosis, emaciation, convalescence. Precautions: obesity,
+  high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — SESAME SEEDS
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

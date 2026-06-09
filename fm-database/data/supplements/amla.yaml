@@ -26,6 +26,30 @@ notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh 
 sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
+rasa:
+- sweet
+- sour
+- bitter
+- astringent
+- pungent
+virya: cooling
+vipaka: sweet
+prabhava: highest natural source of vitamin C (3000 mg per fruit); primary ingredient in Chyavan Prash;
+  rasayana especially for Pitta — rebuilds tissues and increases red blood cell count; sattvic quality
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- rejuvenative
+- aphrodisiac
+- laxative
+- refrigerant
+- stomachic
+- astringent
+- hemostatic
 evidence_tier: fm_specific_thin
 version: 1
 status: active

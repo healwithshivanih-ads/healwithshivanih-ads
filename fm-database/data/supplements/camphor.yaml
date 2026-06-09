@@ -1,0 +1,47 @@
+slug: camphor
+display_name: Camphor (Cinnamomum camphora / Karpura)
+aliases:
+- karpura
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+prabhava: increases Prana; opens senses and clarity; sattvic; in excess acts as narcotic poison; used
+  in Puja to purify atmosphere
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- expectorant
+- decongestant
+- stimulant
+- antispasmodic
+- broncho-dilator
+- nervine
+- analgesic
+- antiseptic
+linked_to_topics:
+- asthma
+- sinusitis
+- nervous-system-regulation
+- chronic-pain-and-fatigue
+notes_for_coach: 'Latin: Cinnamomum camphora; Lauraceae. Sanskrit: Karpura. Traditional indications: bronchitis,
+  asthma, whooping cough, pulmonary congestion, hysteria, epilepsy, delirium, insomnia, dysmenorrhea,
+  gout, rheumatism, nasal congestion, sinus headaches, eye problems, tooth decay. Precautions: in excess
+  acts as narcotic poison, aggravating Pitta and Vata; use only in prescribed low dosages; use only raw
+  camphor not synthetic. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CAMPHOR
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -37,6 +37,26 @@ notes_for_client: Fenugreek (methi) seeds soaked overnight produce a mucilaginou
   water rich in soluble fibre, which may help slow glucose absorption and support
   healthy insulin levels. Drink the strained water first thing in the morning before
   eating.
+rasa:
+- bitter
+- pungent
+- sweet
+virya: heating
+vipaka: pungent
+prabhava: rejuvenative for the nervous, respiratory and reproductive systems; gruel increases milk flow
+  and promotes hair growth
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- tonic
+- expectorant
+- rejuvenative
+- aphrodisiac
+- diuretic
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

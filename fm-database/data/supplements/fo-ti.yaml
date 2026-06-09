@@ -1,0 +1,43 @@
+slug: fo-ti
+display_name: Fo-Ti (He Shou Wu)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- bitter
+- astringent
+virya: cooling
+vipaka: sweet
+prabhava: rejuvenative for Pitta and Vata; builds blood and sperm; strengthens kidneys, liver and nervous
+  system; famous restorative for the hair; better for rebuilding tissues than gotu kola
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- tonic
+- rejuvenative
+- aphrodisiac
+- astringent
+- nervine
+linked_to_topics:
+- hair-loss
+- iron-deficiency-anemia
+- adrenal-fatigue
+- cognitive-decline
+notes_for_coach: 'Latin: Polygonum multiflorum; Polygonaceae. Traditional indications: anemia, neurasthenia,
+  impotence, lower back pain, premature greying or falling of the hair, enlarged lymph glands, excessive
+  menstruation, leucorrhea, arteriosclerosis, diabetes. Precautions: weak digestion, severe congestion
+  or edema; K and Ama aggravated in excess. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — FO-TI
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

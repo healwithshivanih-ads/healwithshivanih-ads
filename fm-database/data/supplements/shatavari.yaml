@@ -1,0 +1,44 @@
+slug: shatavari
+display_name: Shatavari (Asparagus Root)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: main Ayurvedic rejuvenative for the female — rasayan for Pitta, the female reproductive system
+  and the blood; nourishes ovum and increases fertility; supplies many female hormones; sattvic quality
+  aids love and devotion
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- tonic
+- nutritive
+- rejuvenative
+- demulcent
+- antacid
+linked_to_topics:
+- perimenopause-and-menopause
+- female-infertility
+- ibs
+- digestion-and-nutrient-absorption
+notes_for_coach: 'Latin: Asparagus racemosus; Liliaceae. Sanskrit: Shatavari. Traditional indications:
+  debility of the female organs, sexual debility, infertility, impotence, menopause, diarrhea, dysentery,
+  stomach ulcers, hyperacidity, dehydration, lung abscess, hematemesis, cough, convalescence, cancer,
+  herpes, leucorrhea, chronic fevers. Precautions: high Ama, excessive mucus. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — SHATAVARI
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

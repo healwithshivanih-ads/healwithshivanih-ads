@@ -1,0 +1,45 @@
+slug: gokshura
+display_name: Gokshura (Tribulus terrestris)
+aliases:
+- gokshura-shvadamstra
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: rejuvenative tonic for the kidneys; free of side effects of most diuretics; sattvic in nature,
+  promotes clarity; strong aphrodisiac as milk decoction; oil good for alopecia
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- diuretic
+- lithotriptic
+- tonic
+- rejuvenative
+- aphrodisiac
+- nervine
+- analgesic
+linked_to_topics:
+- kidney-stones
+- cystitis-and-interstitial-cystitis
+- pcos
+- joint-pain
+notes_for_coach: 'Latin: Tribulus terrestris; Zygophyllaceae. Sanskrit: Gokshura, Shvadamstra. Traditional
+  indications: difficult or painful urination, edema, kidney or bladder stones, chronic cystitis, nephritis,
+  hematuria, gout, rheumatism, lumbago, sciatica, impotence, infertility, seminal debility, venereal diseases,
+  cough, dyspnea, hemorrhoids, diabetes. Precautions: dehydration. Ayurvedic energetics from The Yoga
+  of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — GOKSHURA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,44 @@
+slug: gentian
+display_name: Gentian (Kirata / Katuki)
+aliases:
+- kirata-katuki-trayamana
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+virya: cooling
+vipaka: pungent
+prabhava: one of the best anti-Pitta herbs; strong action for sedating hyperactivity of liver and spleen;
+  heals genital area sores and infections
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- bitter tonic
+- antipyretic
+- alterative
+- antibacterial
+- anthelmintic
+- laxative
+linked_to_topics:
+- liver-detoxification
+- inflammation
+- chronic-inflammation
+- blood-sugar-dysfunction
+notes_for_coach: 'Latin: Gentiana spp.; Gentianaceae. Sanskrit: Kirata, Katuki, Trayamana. Traditional
+  indications: fever, debility after fevers, jaundice, hepatitis, enlargement of liver and spleen, genital
+  herpes, acne, rash, obesity, ulcers, venereal sores, diabetes, cancer. Precautions: general debility,
+  nervousness, muscle spasms, high Vata; not where there is no fever/inflammation. Ayurvedic energetics
+  from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — GENTIAN
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

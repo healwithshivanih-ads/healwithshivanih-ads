@@ -1,0 +1,42 @@
+slug: coriander-seed
+display_name: Coriander Seed (Coriandrum sativum / Dhanyaka)
+aliases:
+- dhanyaka
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- pungent
+virya: cooling
+vipaka: pungent
+prabhava: tridoshic; best household remedy for Pitta digestive/urinary disorders; fresh juice effective
+  for allergies and hay fever
+balances_dosha:
+- pitta
+- kapha
+- vata
+ayurvedic_actions:
+- alterative
+- diaphoretic
+- diuretic
+- carminative
+- stimulant
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- cystitis-and-interstitial-cystitis
+- hay-fever
+- hives-urticaria
+notes_for_coach: 'Latin: Coriandrum sativum; Umbelliferae. Sanskrit: Dhanyaka. Traditional indications:
+  burning urethra, cystitis, urinary tract infection, urticaria, rash, burns, sore throat, vomiting, indigestion,
+  allergies, hay fever. Precautions: few, except high Vata with nerve tissue deficiency. Ayurvedic energetics
+  from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CORIANDER
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

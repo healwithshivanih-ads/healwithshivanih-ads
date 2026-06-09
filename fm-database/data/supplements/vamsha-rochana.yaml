@@ -1,0 +1,44 @@
+slug: vamsha-rochana
+display_name: Vamsha Rochana (Bamboo Manna)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- astringent
+virya: cooling
+vipaka: sweet
+prabhava: rejuvenative for the lungs; all-purpose moistening expectorant like comfrey root; forms the
+  basis for major anti-cold and cough formulas in Ayurveda; nurtures the heart and soothes the nervous
+  system
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- demulcent
+- expectorant
+- tonic
+- rejuvenative
+- antispasmodic
+- hemostatic
+linked_to_topics:
+- asthma
+- bronchitis-and-pneumonia
+- chronic-inflammation
+- bone-health
+notes_for_coach: 'Latin: Bambusa arundinaceae; Graminaceae. Sanskrit: Vamsha-rochana. Traditional indications:
+  colds, cough, fever, asthma, bleeding disorders, emaciation, debility, dehydration, palpitation, vomiting,
+  consumption. Precautions: may increase congestion if not balanced with pungent herbs like ginger and
+  pippali. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — VAMSHA ROCHANA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

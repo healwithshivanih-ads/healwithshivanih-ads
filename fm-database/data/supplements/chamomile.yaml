@@ -24,6 +24,25 @@ notes_for_coach: '1g chamomile flower tea daily shown to reduce cortisol and imp
   via GABA-A receptors. Source: Coach Shivani clinical observations.'
 notes_for_client: Chamomile tea contains a calming compound called apigenin that interacts
   with your brain's relaxation receptors, helping to ease stress and support sleep.
+rasa:
+- bitter
+- pungent
+virya: cooling
+vipaka: pungent
+prabhava: sattvic herb; very balancing to the emotions; large doses are emetic
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- diaphoretic
+- carminative
+- nervine
+- antispasmodic
+- analgesic
+- emmenagogue
+- emetic
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

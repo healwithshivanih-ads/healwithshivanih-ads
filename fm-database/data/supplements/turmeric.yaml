@@ -34,6 +34,25 @@ notes_for_coach: Featured prominently in the Brain Smoothie and Inflammation Con
   pepper (piperine); toolkit does not specify this but coaches may suggest it.
 notes_for_client: Turmeric is a powerful anti-inflammatory spice. Use fresh root or
   ground powder in smoothies and soups.
+rasa:
+- bitter
+- astringent
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: excellent natural antibiotic that simultaneously strengthens digestion and improves intestinal
+  flora; promotes metabolism correcting both excesses and deficiencies; gives energy of the Divine Mother
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+- vata
+ayurvedic_actions:
+- stimulant
+- carminative
+- alterative
+- vulnerary
+- antibacterial
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

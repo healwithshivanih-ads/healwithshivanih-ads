@@ -24,6 +24,23 @@ notes_for_coach: Peppermint contains saponins that act as molecular sponges for 
   reflux. Useful in methane-dominant and mixed SIBO.
 notes_for_client: Enteric-coated peppermint oil helps mop up excess gas in your gut
   and supports healthy gut movement.
+rasa:
+- pungent
+virya: cooling
+vipaka: pungent
+prabhava: contains large amounts of ether element — soothing, cooling, clarifying and expanding; sattvic
+  quality; relieves mental and emotional tension
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- stimulant
+- diaphoretic
+- carminative
+- nervine
+- analgesic
 evidence_tier: plausible_emerging
 linked_to_mechanisms: []
 sources:

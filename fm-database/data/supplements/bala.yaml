@@ -1,0 +1,47 @@
+slug: bala
+display_name: Bala (Indian Country Mallow)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: tridoshic rasayana especially for Vata disorders; feeds the nerves; rejuvenative tonic especially
+  for heart and nerve tissue; works on all tissue-elements especially marrow and nerve
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- tonic
+- rejuvenative
+- aphrodisiac
+- demulcent
+- diuretic
+- stimulant
+- nervine
+- analgesic
+- vulnerary
+linked_to_topics:
+- nervous-system-regulation
+- chronic-fatigue-syndrome
+- cardiovascular-health
+- male-infertility-oxidative-stress
+notes_for_coach: 'Latin: Sida cordifolia; Malvaceae. Sanskrit: Bala (what gives strength — owing to its
+  strong tonic properties). Traditional indications: heart disease, facial paralysis, sciatica, insanity,
+  neuralgia, rheumatism, asthma, emaciation, exhaustion, sexual debility, cystitis, dysentery, leucorrhea,
+  chronic fevers, convalescence. Precautions: few; congestive disorders of high Ama or Kapha. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — BALA
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

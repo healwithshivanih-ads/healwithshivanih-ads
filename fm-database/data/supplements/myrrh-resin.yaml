@@ -1,0 +1,49 @@
+slug: myrrh-resin
+display_name: Myrrh Resin (Commiphora / Bol)
+aliases:
+- ma
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- astringent
+- pungent
+- sweet
+virya: heating
+vipaka: pungent
+prabhava: closely related to guggul of Ayurveda; more specific to blood and female reproductive system
+  vs guggul's stronger nerve action; dispels old and stagnant blood from uterus; purifying action extends
+  to subtle body
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- alterative
+- emmenagogue
+- astringent
+- expectorant
+- antispasmodic
+- rejuvenative
+- analgesic
+- antiseptic
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- menopause
+- chronic-inflammation
+- perimenopause
+notes_for_coach: 'Latin: Commiphora myrrha; Burseraceae. Sanskrit: Ma. Traditional indications: amenorrhea,
+  dysmenorrhea, menopause, cough, asthma, bronchitis, arthritis, rheumatism, traumatic injuries, ulcerated
+  surfaces, anemia, pyorrhea. Precautions: high Pitta. Ayurvedic energetics from The Yoga of Herbs (Frawley
+  & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — MYRRH
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

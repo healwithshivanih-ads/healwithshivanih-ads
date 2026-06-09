@@ -1,0 +1,42 @@
+slug: bibhitaki
+display_name: Bibhitaki (Terminalia bellirica)
+aliases: []
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- astringent
+virya: heating
+vipaka: sweet
+prabhava: tonic to Kapha and the lungs; improves voice, vision and promotes growth of hair; though heating
+  does not aggravate Pitta; part of triphala compound
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- astringent
+- tonic
+- rejuvenative
+- expectorant
+- laxative
+- anthelmintic
+- antiseptic
+- lithotriptic
+linked_to_topics:
+- common-cold
+- asthma
+- agni-digestive-fire
+notes_for_coach: 'Latin: Terminalia belerica; Combretaceae. Sanskrit: Bibhitaki. Traditional indications:
+  cough, sore throat, laryngitis, bronchitis, catarrh, stones, chronic diarrhea, dysentery, parasites,
+  eye diseases. Precautions: high Vata. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — BIBHITAKI
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

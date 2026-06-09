@@ -1,0 +1,42 @@
+slug: black-pepper
+display_name: Black Pepper (Piper nigrum / Marich)
+aliases:
+- marich
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: burns up Ama; energizes Agni to destroy toxins; one of the most powerful digestive stimulants;
+  rajasic quality
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- expectorant
+- carminative
+- febrifuge
+- anthelmintic
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- detoxification
+- sinusitis
+notes_for_coach: 'Latin: Piper nigrum; Piperaceae. Sanskrit: Marich. Traditional indications: chronic
+  indigestion, toxins in colon, degenerated metabolism, obesity, sinus congestion, fever, intermittent
+  fever, cold extremities. Precautions: inflammatory conditions of the digestive organs, high Pitta. Ayurvedic
+  energetics from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — BLACK PEPPER
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

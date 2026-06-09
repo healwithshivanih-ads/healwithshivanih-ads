@@ -1,0 +1,45 @@
+slug: cinnamon
+display_name: Cinnamon (Cinnamomum zeylanicum / Twak)
+aliases:
+- twak
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- sweet
+- astringent
+virya: heating
+vipaka: sweet
+prabhava: harmonizes flow of circulation (vyana vayu); sattvic; almost universal medicine; part of Three
+  Aromatics (with cardamom and bay leaves)
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- diaphoretic
+- carminative
+- alterative
+- expectorant
+- diuretic
+- analgesic
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+- sinusitis
+notes_for_coach: 'Latin: Cinnamomum zeylanicum; Lauraceae. Sanskrit: Twak. Traditional indications: colds,
+  sinus congestion, bronchitis, dyspepsia. Precautions: high Pitta, bleeding disorders. Ayurvedic energetics
+  from The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CINNAMON
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

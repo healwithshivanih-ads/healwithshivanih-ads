@@ -1,0 +1,44 @@
+slug: bayberry
+display_name: Bayberry (Myrica / Katphah)
+aliases:
+- katphah
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+- astringent
+virya: heating
+vipaka: pungent
+prabhava: primary anti-Kapha medicine; mobilizes body's defensive energy; sattvic herb sacred to Shiva
+  and Shakti
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- diaphoretic
+- expectorant
+- astringent
+- emetic
+- antispasmodic
+- alterative
+linked_to_topics:
+- common-cold
+- sinusitis
+- immune-support
+- asthma
+notes_for_coach: 'Latin: Myrica spp.; Myricaceae. Sanskrit: Katphah. Traditional indications: colds, flus,
+  laryngitis, sinus and nasal congestion, sore throat, asthma, bronchitis, adenoids, fever, bleeding gums,
+  chronic sores, epilepsy. Precautions: high Pitta, hyperacidity, hypertension. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).'
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — BAYBERRY
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

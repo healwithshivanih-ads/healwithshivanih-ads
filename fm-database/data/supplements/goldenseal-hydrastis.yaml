@@ -49,6 +49,26 @@ contraindications:
   - pregnancy
   - lactation
   - infancy
+rasa:
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+prabhava: perhaps the strongest anti-Pitta herb; destroys yeast and bacteria in GI tract; sedates and
+  regulates liver-spleen function and fat/sugar metabolism; not for deficiency conditions
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- bitter tonic
+- antipyretic
+- alterative
+- antibiotic
+- antibacterial
+- antiseptic
+- laxative
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 sources:

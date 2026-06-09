@@ -20,6 +20,24 @@ timing_options:
 take_with_food: required
 notes_for_coach: Supports liver and kidney detox and fluid retention; gentle diuretic
   herb — ensure adequate hydration.
+rasa:
+- bitter
+- sweet
+virya: cooling
+vipaka: pungent
+prabhava: specific for problems of the breast and mammary glands; clears and cleanses liver and gall bladder;
+  similar to bhringaraj but bhringaraj is stronger tonic and nervine
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- alterative
+- diuretic
+- lithotriptic
+- laxative
+- bitter tonic
 evidence_tier: plausible_emerging
 linked_to_topics:
 - gallstones

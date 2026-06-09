@@ -25,6 +25,26 @@ linked_to_claims:
 notes_for_coach: Listed under 'Repair' in PPI tapering protocol. Aloe vera juice/gel
   may soothe the GI lining. Use decolorized (anthraquinone-free) form to avoid laxative
   effects.
+rasa:
+- bitter
+- astringent
+- pungent
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: rejuvenative for pitta and the uterus; powder (high doses) is a strong purgative and will aggravate
+  vata
+balances_dosha:
+- vata
+- pitta
+- kapha
+ayurvedic_actions:
+- alterative
+- bitter tonic
+- rejuvenative
+- emmenagogue
+- purgative
+- vulnerary
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms: []

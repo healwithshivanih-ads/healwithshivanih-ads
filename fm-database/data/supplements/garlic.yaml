@@ -18,6 +18,31 @@ timing_options:
 - with_breakfast
 - with_dinner
 take_with_food: optional
+rasa:
+- sweet
+- pungent
+- bitter
+- astringent
+- salty
+virya: heating
+vipaka: pungent
+prabhava: rasayana for Vata and bone/nerve tissue; contains all tastes except sour; tamasic quality —
+  increases groundedness but may dull the mind
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- carminative
+- expectorant
+- alterative
+- antispasmodic
+- aphrodisiac
+- disinfectant
+- anthelmintic
+- rejuvenative
 evidence_tier: plausible_emerging
 interactions:
   with_supplements: []

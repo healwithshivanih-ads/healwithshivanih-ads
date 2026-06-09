@@ -38,6 +38,26 @@ notes_for_coach: Licorice root supports gut mucosal healing and has antimicrobia
   effects. Confirm form and duration with clinician.
 notes_for_client: Licorice root helps soothe and repair the gut lining while also
   having mild antibacterial effects.
+rasa:
+- sweet
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: sattvic — calms the mind, nurtures the spirit, nourishes the brain and increases cranial and
+  cerebrospinal fluid; harmonizes other herbs and counters heat/dryness
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- demulcent
+- expectorant
+- tonic
+- rejuvenative
+- laxative
+- sedative
+- emetic
 evidence_tier: fm_specific_thin
 linked_to_mechanisms: []
 sources:
