@@ -1,0 +1,39 @@
+slug: clove-rock-candy-cough
+display_name: Clove & Rock Candy (Dry Cough)
+aliases:
+- laung-mishri-cough
+category: other
+summary: 'A Lad first-aid for a dry, tickly cough: slowly suck a whole clove with a piece of
+  rock candy (mishri). Clove (eugenol) is mildly anaesthetic and antimicrobial and calms the
+  cough reflex; the rock candy soothes the throat and offsets clove''s heat so it doesn''t burn
+  the tongue.'
+indications:
+- dry, tickly cough
+- throat irritation / scratchy throat
+contraindications:
+- choking risk — do not give whole cloves to young children
+- diabetes / blood-sugar concerns (rock candy is sugar)
+- productive cough that persists >2-3 weeks or with fever/blood — see a doctor
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+preparation: Place a whole clove with a small piece of rock candy (mishri) in the mouth and
+  suck slowly, letting the juices coat the throat.
+typical_dose: As needed when the cough flares
+duration: A few days
+timing_notes: Whenever the throat tickles
+linked_to_topics:
+- common-cold
+- sore-throat
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Cough)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

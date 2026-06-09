@@ -1,0 +1,47 @@
+slug: kaishore-guggulu
+display_name: Kaishore Guggulu (Pitta Joints & Gout)
+aliases:
+- kishore-guggulu
+category: ayurvedic_churan
+summary: A cooling, blood-cleansing guggulu formulation Lad recommends for pitta-type arthritis
+  — hot, red, swollen, inflamed joints — and for gout and high uric acid. It pairs purified
+  guggulu with bitter, anti-inflammatory herbs (incl. guduchi/triphala) to reduce heat and inflammation
+  in the joints.
+indications:
+- pitta-type arthritis (hot, red, swollen joints)
+- gout / high uric acid
+- inflammatory joint flares
+- inflammatory skin with joint involvement
+contraindications:
+- 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
+  monitor'
+- 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
+  and before surgery'
+- pregnancy and breastfeeding — avoid (uterine stimulant)
+- can cause GI upset, loose stools, hyperacidity, headache, or skin rash; stop if rash/itching
+  occurs
+- classical tablet formulation from an Ayurvedic pharmacy — best used under a knowledgeable
+  practitioner, not indefinitely
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+preparation: Kaishore guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet (~350 mg)
+  2-3 times a day with warm water (per label/practitioner).
+typical_dose: ~1 tablet (350 mg), 2-3 times a day
+duration: In courses under guidance
+timing_notes: After meals with warm water
+linked_to_topics:
+- gout
+- joint-pain
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Arthritis (pitta type)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

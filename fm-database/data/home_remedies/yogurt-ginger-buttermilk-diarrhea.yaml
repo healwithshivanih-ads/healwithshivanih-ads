@@ -1,0 +1,43 @@
+slug: yogurt-ginger-buttermilk-diarrhea
+display_name: Spiced Yogurt-Ginger Buttermilk (Diarrhea)
+aliases:
+- ginger-lassi-diarrhea
+- yogurt-water-ginger
+category: kitchen_remedy
+summary: 'A Lad first-aid for simple diarrhea: blend equal parts yogurt and water with a little
+  fresh ginger (about 1/8 tsp) — a light spiced buttermilk. The yogurt restores gut flora, ginger
+  settles the gut and kindles agni, and the diluted form is rehydrating and easy to digest.'
+indications:
+- acute simple diarrhea
+- loose stools after a tummy upset
+- post-antibiotic loose bowels
+contraindications:
+- 'RED FLAG: bloody stools, high fever, severe dehydration, or diarrhea >2-3 days — seek medical
+  care (especially in children/elderly)'
+- true dairy allergy
+- high pitta with heat (use cooling additions like cumin)
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+preparation: Blend 1/2 cup fresh yogurt with 1/2 cup water and ~1/8 tsp grated fresh ginger
+  (a pinch of roasted cumin optional). Sip slowly. Rehydrate with extra fluids alongside.
+typical_dose: 1 cup, 2-3 times a day
+duration: 1-2 days; seek care if not settling
+timing_notes: After loose stools, through the day
+linked_to_topics:
+- irritable-bowel-syndrome
+- ibs
+- gut-dysfunction
+linked_to_mechanisms:
+- dysbiosis-gut-microbiome-imbalance
+- altered-gi-motility
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Diarrhea)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

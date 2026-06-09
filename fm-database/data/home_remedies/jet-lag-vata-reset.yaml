@@ -1,0 +1,46 @@
+slug: jet-lag-vata-reset
+display_name: Jet-Lag Vata-Reset Ritual
+aliases:
+- travel-vata-reset
+- jet-lag-ginger-milk
+category: kitchen_remedy
+summary: 'Lad treats jet lag as excess vata from fast travel and dehydration. A three-part ritual:
+  swallow 2 ginger capsules with water an hour before flying; drink water (no caffeine) every
+  1-2 hours in the air; on arrival rub warm sesame oil on the scalp and soles and drink 1 cup
+  hot milk with a pinch each of nutmeg and ginger to ground vata and reset sleep. If you land
+  before nightfall, a chamomile-mint-jatamamsi tea helps.'
+indications:
+- jet lag
+- travel fatigue and disorientation
+- disrupted sleep after long-haul flights
+- vata aggravation from travel
+contraindications:
+- nutmeg only a pinch (large doses are toxic)
+- dairy allergy (use warm almond/oat milk)
+- skip ginger capsules if on blood thinners or with gastritis
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+preparation: '1h pre-flight: 2 size-00 ginger capsules with water. In-flight: 2-3 cups water
+  every 1-2h, no coffee/caffeine. On arrival: warm sesame-oil massage to scalp + soles, then
+  1 cup hot milk with a pinch each of nutmeg and ginger. Optional arrival tea: equal parts chamomile,
+  mint, jatamamsi (1/3 tsp each) steeped 10 min.'
+typical_dose: As above, around the flight
+duration: Day of travel and the first night at destination
+timing_notes: Pre-flight, in-flight, and at bedtime on arrival
+linked_to_topics:
+- circadian-rhythm-disruption
+- ayurvedic-circadian-clock
+- insomnia
+linked_to_mechanisms:
+- melatonin-secretion
+- cortisol-melatonin-rhythm-coupling
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Jet Lag
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

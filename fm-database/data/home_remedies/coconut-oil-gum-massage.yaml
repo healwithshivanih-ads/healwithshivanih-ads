@@ -1,0 +1,39 @@
+slug: coconut-oil-gum-massage
+display_name: Coconut Oil Gum Massage (Bleeding Gums)
+aliases:
+- coconut-oil-gums
+- lemon-water-gums
+category: other
+summary: 'A Lad first-aid for bleeding, tender gums: massage the gums gently with coconut oil,
+  or rinse with the juice of half a lemon in a cup of water. Coconut oil is antimicrobial and
+  soothing to inflamed gum tissue; the gentle massage improves circulation. Supports gum health
+  alongside good oral hygiene.'
+indications:
+- bleeding / tender gums
+- early gum inflammation (gingivitis)
+- gum sensitivity
+contraindications:
+- persistent bleeding, loose teeth, pus, or swelling — see a dentist (periodontitis)
+- 'lemon rinse: don''t brush straight after (acid softens enamel) — swish and wait'
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+preparation: With a clean fingertip, gently massage a little coconut oil into the gum line for
+  1-2 minutes; spit out. Or rinse the mouth with the juice of 1/2 lemon in 1 cup water.
+typical_dose: Once or twice a day
+duration: Ongoing as part of oral care
+timing_notes: After brushing, morning and/or night
+linked_to_topics:
+- periodontal-disease
+- oral-health-toxins
+linked_to_mechanisms:
+- oral-microbiome-disruption
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Gums, bleeding)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,48 @@
+slug: punarnava-guggulu
+display_name: Punarnava Guggulu (Kapha Joints & Fluid)
+aliases:
+- punarnava-guggul
+category: ayurvedic_churan
+summary: A guggulu formulation built around punarnava (Boerhavia diffusa, a diuretic, anti-oedema
+  herb) that Lad recommends for kapha-type arthritis with effusion/swelling, and for fluid retention.
+  It helps clear excess fluid and kapha from swollen, cold, stiff joints.
+indications:
+- kapha-type arthritis with swelling/effusion (cold, stiff joints)
+- fluid retention / mild oedema
+- puffy, heavy, congested joints
+contraindications:
+- 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
+  monitor'
+- 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
+  and before surgery'
+- pregnancy and breastfeeding — avoid (uterine stimulant)
+- can cause GI upset, loose stools, hyperacidity, headache, or skin rash; stop if rash/itching
+  occurs
+- classical tablet formulation from an Ayurvedic pharmacy — best used under a knowledgeable
+  practitioner, not indefinitely
+- persistent oedema must be investigated for heart/kidney/liver cause
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+preparation: Punarnava guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet (~250
+  mg) 2-3 times a day with warm water (per label/practitioner).
+typical_dose: ~1 tablet (250 mg), 2-3 times a day
+duration: In courses under guidance
+timing_notes: After meals with warm water
+linked_to_topics:
+- joint-pain
+- cardiovascular-health
+linked_to_mechanisms:
+- raas-and-fluid-balance
+- chronic-inflammation
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Arthritis (kapha type); Edema
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

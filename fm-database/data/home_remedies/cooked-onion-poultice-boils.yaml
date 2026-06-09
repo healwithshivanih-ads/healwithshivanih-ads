@@ -1,0 +1,40 @@
+slug: cooked-onion-poultice-boils
+display_name: Cooked Onion Poultice (for Boils)
+aliases:
+- onion-poultice-boil
+category: other
+summary: 'A Lad first-aid topical to bring a skin boil to a head: warm cooked onion applied
+  as a poultice draws the boil and encourages it to drain. A ginger-powder + turmeric paste
+  is an alternative. For small superficial boils only.'
+indications:
+- small skin boil / furuncle (to bring to a head)
+- localised pimple-like swelling
+contraindications:
+- large, spreading, or very painful boils, fever, or a boil on the face/spine — see a doctor
+  (risk of cellulitis/abscess)
+- do not squeeze a boil
+- broken/irritated skin
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+preparation: 'Cook (steam or saute) a little onion until soft; cool to comfortably warm; wrap
+  in clean gauze and apply over the boil for 15-20 min. Repeat 2-3 times a day. Alternative:
+  paste of 1/2 tsp ginger powder + 1/2 tsp turmeric applied to the boil.'
+typical_dose: Apply 2-3 times a day
+duration: Until the boil drains/resolves (a few days)
+timing_notes: As needed
+linked_to_topics:
+- inflammation
+- chronic-inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+- nf-kb-activation
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Boils)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

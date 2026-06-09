@@ -1,0 +1,48 @@
+slug: yogaraj-guggulu
+display_name: Yogaraj Guggulu (Vata Joints & Back)
+aliases:
+- yoga-raja-guggulu
+- yograj-guggulu
+category: ayurvedic_churan
+summary: A classical guggulu formulation Lad recommends for vata-type arthritis, backache, sciatica
+  and osteoarthritis — dry, cracking, painful joints that worsen with movement and cold. Combines
+  purified guggulu with warming, vata-pacifying herbs to clear ama from the joints and ease
+  stiffness.
+indications:
+- vata-type arthritis (dry, cracking, painful joints)
+- backache and sciatica
+- osteoarthritis
+- joint stiffness worse in cold
+contraindications:
+- 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
+  monitor'
+- 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
+  and before surgery'
+- pregnancy and breastfeeding — avoid (uterine stimulant)
+- can cause GI upset, loose stools, hyperacidity, headache, or skin rash; stop if rash/itching
+  occurs
+- classical tablet formulation from an Ayurvedic pharmacy — best used under a knowledgeable
+  practitioner, not indefinitely
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+preparation: Yogaraj guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet 2-3 times
+  a day with warm water (per label/practitioner).
+typical_dose: ~1 tablet, 2-3 times a day
+duration: In courses under guidance
+timing_notes: After meals with warm water
+linked_to_topics:
+- joint-pain
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Arthritis (vata type); Backache
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

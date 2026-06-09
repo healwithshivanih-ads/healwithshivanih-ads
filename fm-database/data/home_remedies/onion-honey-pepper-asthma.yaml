@@ -1,0 +1,42 @@
+slug: onion-honey-pepper-asthma
+display_name: Onion Juice, Honey & Black Pepper (Asthma/Cough)
+aliases:
+- onion-honey-asthma-remedy
+category: kitchen_remedy
+summary: 'A Lad first-aid remedy for asthmatic congestion and cough: about a quarter cup of
+  onion juice with 1 tsp honey and an eighth-teaspoon of black pepper. Onion and pepper are
+  warming kapha-clearing decongestants; honey carries them and soothes the airway. For relief
+  of congestion and breathlessness in kapha-type wheezing.'
+indications:
+- asthmatic wheezing and congestion (mild)
+- chesty cough with mucus
+- kapha respiratory congestion
+contraindications:
+- acute severe breathlessness is a medical emergency — use an inhaler / seek urgent care, do
+  not rely on this
+- do not heat the honey
+- reflux/gastritis (pungent)
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+preparation: Mix ~1/4 cup fresh onion juice with 1 tsp honey and 1/8 tsp black pepper. Take
+  in small sips.
+typical_dose: The mixture, 1-3 times a day during congestion
+duration: A few days during a flare
+timing_notes: When congestion/cough is worst
+linked_to_topics:
+- asthma
+- common-cold
+- immune-support
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Asthma)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

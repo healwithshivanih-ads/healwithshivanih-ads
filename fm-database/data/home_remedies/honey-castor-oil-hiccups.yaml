@@ -1,0 +1,36 @@
+slug: honey-castor-oil-hiccups
+display_name: Honey & Castor Oil (Hiccups)
+aliases:
+- hiccup-honey-castor
+category: other
+summary: 'A Lad first-aid for persistent hiccups: two parts honey with one part castor oil,
+  taken slowly. The sweet-oily combination is thought to settle the diaphragmatic spasm of hiccups
+  (a vata disturbance). Pairs with slow breathing (pranayama).'
+indications:
+- persistent hiccups
+- diaphragmatic spasm
+contraindications:
+- hiccups lasting >48 hours need medical review
+- castor oil is a laxative — use only the small amount specified
+- diabetes (honey)
+balances_dosha:
+- vata
+aggravates_dosha: []
+preparation: Mix 2 parts honey with 1 part castor oil (e.g. 1 tsp honey + 1/2 tsp castor oil)
+  and take slowly. Follow with a few rounds of slow, deep breathing.
+typical_dose: The small mixture, once; repeat once if needed
+duration: One-off as needed
+timing_notes: When hiccups won't stop
+linked_to_topics:
+- maldigestion
+- agni-digestive-fire
+linked_to_mechanisms:
+- altered-gi-motility
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Hiccups)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

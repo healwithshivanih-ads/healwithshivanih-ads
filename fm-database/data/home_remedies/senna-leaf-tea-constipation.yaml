@@ -1,0 +1,41 @@
+slug: senna-leaf-tea-constipation
+display_name: Senna Leaf Tea (Short-Term Constipation)
+aliases:
+- sonamukhi-tea
+- senna-tea
+category: herbal_tea
+summary: Lad lists senna leaf tea as a first-aid remedy for constipation. Senna (sonamukhi)
+  is a stimulant laxative (sennosides stimulate colonic motility) and works overnight. Effective
+  but for SHORT-TERM use only — regular use causes dependency and electrolyte loss; gentler
+  options (flaxseed water, triphala, warm ghee in milk) are preferred for ongoing care.
+indications:
+- occasional / acute constipation (short-term)
+- to relieve a backed-up bowel
+contraindications:
+- stimulant laxative — use only short-term (a few days, max ~1 week); do NOT use daily/long-term
+  (laxative dependency, electrolyte loss)
+- pregnancy and breastfeeding
+- abdominal pain of unknown cause, suspected obstruction, IBD, or cramping
+- children
+- prefer flaxseed water / triphala / warm-ghee-in-milk for chronic constipation
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+preparation: Steep 1 tsp senna leaf in 1 cup hot water for a few minutes; strain and drink at
+  bedtime. Start with a weak brew — senna is potent.
+typical_dose: 1 cup at night, occasional use only
+duration: Short-term only (a few days)
+timing_notes: Bedtime, for a morning bowel movement
+linked_to_topics:
+- constipation
+linked_to_mechanisms:
+- altered-gi-motility
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Constipation)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

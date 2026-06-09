@@ -1,0 +1,41 @@
+slug: garlic-sesame-ear-oil
+display_name: Garlic-Sesame Ear Oil (Earache)
+aliases:
+- lasun-til-ear-oil
+category: other
+summary: Warm garlic-infused sesame oil dropped into the ear for earache — a classic Indian
+  household remedy. Garlic is antimicrobial; warm sesame oil is vata-pacifying and soothes the
+  ache. A holding measure for a simple earache (no discharge) until it settles.
+indications:
+- simple earache (mild, no discharge)
+- ear discomfort in cold weather
+contraindications:
+- DO NOT use with ear discharge, suspected perforated eardrum, severe pain, fever, or hearing
+  loss — see a doctor
+- not for grommets/ear tubes
+- test the oil is only lukewarm, not hot
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+preparation: Gently warm 1 tbsp sesame oil with 2 crushed garlic cloves until fragrant; cool
+  to lukewarm; strain. Put 2-3 drops in the affected ear and plug loosely with cotton.
+typical_dose: 2-3 drops, 1-2 times a day
+duration: 1-3 days; see a doctor if not settling
+timing_notes: When the ache flares; lie with the ear up afterwards
+linked_to_topics:
+- common-cold
+- immune-support
+linked_to_mechanisms:
+- innate-immune-modulation
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Earache
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Earache)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

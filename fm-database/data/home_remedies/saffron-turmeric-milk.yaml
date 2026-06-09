@@ -1,0 +1,40 @@
+slug: saffron-turmeric-milk
+display_name: Saffron-Turmeric Milk (Bleeding Support)
+aliases:
+- kesar-haldi-doodh
+category: kitchen_remedy
+summary: 'Lad''s first-aid suggestion for a tendency to internal/heavy bleeding: warm milk with
+  half a teaspoon each of saffron and turmeric. Traditionally used as a supportive, blood-settling
+  drink. This is a gentle adjunct only — any unexplained, internal or heavy bleeding needs prompt
+  medical evaluation.'
+indications:
+- heavy menstrual flow (supportive)
+- easy bruising / minor bleeding tendency (supportive)
+contraindications:
+- 'RED FLAG: unexplained, internal, rectal, or heavy bleeding requires urgent medical assessment
+  — do not self-treat'
+- on anticoagulants (turmeric is a mild blood thinner)
+- active gallbladder disease (turmeric)
+- pregnancy (saffron in large amounts is a uterine stimulant)
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha: []
+preparation: Warm 1 cup milk (do not boil hard); whisk in 1/2 tsp saffron and 1/2 tsp turmeric.
+  Drink warm.
+typical_dose: 1 cup
+duration: Short-term supportive use; seek a diagnosis for the cause
+timing_notes: Once daily while the issue is being investigated
+linked_to_topics:
+- menorrhagia
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms:
+- chronic-inflammation
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Bleeding, internal)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

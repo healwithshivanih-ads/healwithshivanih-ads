@@ -1,0 +1,41 @@
+slug: barley-water-edema
+display_name: Barley Water (Mild Water Retention)
+aliases:
+- jau-ka-pani
+- barley-water-diuretic
+category: infused_water
+summary: 'Lad lists barley water as a first-aid for swelling/edema: 4 parts water boiled with
+  1 part barley, strained and sipped. Barley water is a gentle traditional diuretic that supports
+  fluid clearance and is also soothing to the urinary tract. For mild puffiness/fluid retention
+  — persistent edema must be investigated.'
+indications:
+- mild water retention / puffiness
+- urinary tract soothing / flushing
+- feeling bloated with fluid
+contraindications:
+- 'RED FLAG: persistent or sudden swelling (legs, face), or swelling with breathlessness — investigate
+  heart/kidney/liver causes urgently'
+- gluten sensitivity / coeliac disease (barley contains gluten)
+- kidney disease on fluid restriction
+balances_dosha:
+- kapha
+- pitta
+aggravates_dosha: []
+preparation: Boil 1 part pearl barley in 4 parts water until the barley is soft; strain off
+  the liquid. Sip the barley water through the day. A squeeze of lime can be added.
+typical_dose: 1-3 cups a day
+duration: A few days for mild puffiness
+timing_notes: Through the day
+linked_to_topics:
+- cardiovascular-health
+- kidney-stones
+linked_to_mechanisms:
+- raas-and-fluid-balance
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Swelling)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

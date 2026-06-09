@@ -1,0 +1,55 @@
+slug: guggulu-resin
+display_name: Guggulu (Guggul Resin) — Lipids & Inflammation
+aliases:
+- guggul
+- commiphora-mukul
+- shuddha-guggulu
+category: ayurvedic_churan
+summary: Guggulu is the purified resin of Commiphora mukul, one of Ayurveda's principal kapha-reducing,
+  lipid-lowering and anti-inflammatory substances. Guggulsterones are credited with supporting
+  healthy cholesterol/triglycerides, scraping ama (metabolic waste), and easing inflammatory/arthritic
+  conditions — which is why it forms the base of many classical 'guggulu' formulas. Taken as
+  a purified (shuddha) resin tablet.
+indications:
+- high cholesterol / triglycerides (dyslipidemia)
+- metabolic sluggishness / kapha excess
+- chronic inflammation and arthritic conditions
+- ama-type metabolic congestion
+contraindications:
+- 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
+  monitor'
+- 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
+  and before surgery'
+- pregnancy and breastfeeding — avoid (uterine stimulant)
+- can cause GI upset, loose stools, hyperacidity, headache, or skin rash; stop if rash/itching
+  occurs
+- classical tablet formulation from an Ayurvedic pharmacy — best used under a knowledgeable
+  practitioner, not indefinitely
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+preparation: Use purified (shuddha) guggulu tablets from a reputable Ayurvedic pharmacy, per
+  label/practitioner (commonly ~250-500 mg, 2-3 times a day) with warm water after meals.
+typical_dose: Per product / practitioner (often 250-500 mg, 2-3x daily)
+duration: Use in courses (weeks-months) under guidance; not indefinitely
+timing_notes: After meals with warm water
+linked_to_topics:
+- dyslipidemia
+- atherogenic-dyslipidemia
+- cardiovascular-disease-prevention
+- joint-pain
+linked_to_mechanisms:
+- ldl-oxidation
+- reverse-cholesterol-transport
+- chronic-inflammation
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Cholesterol / Heart — Ayurvedic Care; Arthritis
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

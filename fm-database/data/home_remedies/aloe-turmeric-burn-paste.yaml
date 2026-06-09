@@ -1,0 +1,41 @@
+slug: aloe-turmeric-burn-paste
+display_name: Aloe Vera & Turmeric Burn Paste (Minor Burns)
+aliases:
+- aloe-haldi-burn
+category: other
+summary: 'Lad''s first-aid for minor burns: fresh aloe vera gel with a pinch of turmeric, applied
+  to the burn. Aloe is cooling, soothing and well-studied for superficial burn healing; turmeric
+  is antibacterial and anti-inflammatory. Ghee or coconut oil can be used instead of aloe.'
+indications:
+- minor superficial (first-degree) burns
+- scalds and kitchen burns (small)
+- sunburn (small area)
+contraindications:
+- serious, large, blistering, or deep burns, or burns on the face/hands/genitals — cool with
+  running water and seek emergency care
+- broken skin / open wound (use clean aloe only)
+- turmeric stains skin/cloth
+balances_dosha:
+- pitta
+aggravates_dosha:
+- kapha
+preparation: Mix fresh aloe vera gel with a pinch of turmeric and apply a thin layer to the
+  cooled burn. (First, cool the burn under cool running water for several minutes.) Reapply
+  as needed.
+typical_dose: Apply thin layer 2-3 times a day
+duration: Until the minor burn heals
+timing_notes: After cooling the burn under water
+linked_to_topics:
+- inflammation
+- chronic-inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+- oxidative-stress
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Burns)
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

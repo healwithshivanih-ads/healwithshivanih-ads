@@ -1,0 +1,50 @@
+slug: gokshuradi-guggulu
+display_name: Gokshuradi Guggulu (Urinary & Gout)
+aliases:
+- gokshura-guggulu
+- gokshuradi-guggul
+category: ayurvedic_churan
+summary: A guggulu formulation built around gokshura (Tribulus terrestris) that Lad references
+  for urinary-tract support, kidney stones, and gout/high uric acid. Gokshura is a diuretic,
+  soothing urinary herb; with guggulu it supports clearing of stones, crystals and uric acid
+  while easing urinary discomfort.
+indications:
+- kidney stones / urinary gravel (supportive)
+- urinary tract discomfort / weak stream
+- gout / high uric acid
+- prostate-related urinary symptoms
+contraindications:
+- 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
+  monitor'
+- 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
+  and before surgery'
+- pregnancy and breastfeeding — avoid (uterine stimulant)
+- can cause GI upset, loose stools, hyperacidity, headache, or skin rash; stop if rash/itching
+  occurs
+- classical tablet formulation from an Ayurvedic pharmacy — best used under a knowledgeable
+  practitioner, not indefinitely
+- acute severe flank pain, blood in urine, or fever — urgent medical care (stone obstruction/infection)
+balances_dosha:
+- vata
+- kapha
+- pitta
+aggravates_dosha: []
+preparation: Gokshuradi guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet 2-3 times
+  a day with warm water (per label/practitioner). Drink plenty of water alongside.
+typical_dose: ~1 tablet, 2-3 times a day
+duration: In courses under guidance
+timing_notes: After meals with plenty of water
+linked_to_topics:
+- kidney-stones
+- gout
+linked_to_mechanisms:
+- renal-ph-buffering
+sources:
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Kidney Stones; Prostate Problems
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
