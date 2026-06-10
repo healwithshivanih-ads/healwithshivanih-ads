@@ -1,0 +1,44 @@
+slug: wild-yam-root
+display_name: Wild Yam Root (Dioscorea)
+aliases:
+- dioscorea
+- wild-yam
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- sweet
+- bitter
+virya: cooling
+vipaka: sweet
+prabhava: many varieties possess strong rejuvenative powers; increases semen, milk and hormonal secretions;
+  promotes body weight; oriental and Mexican varieties considered rejuvenatives for men; also covers related
+  Vidari-kanda (Ipomoea digitata) used as aphrodisiac, galactogogue and nutritive tonic
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+ayurvedic_actions:
+- nutritive tonic
+- aphrodisiac
+- rejuvenative
+- diuretic
+- antispasmodic
+- analgesic
+linked_to_topics:
+- perimenopause-and-menopause
+- low-progesterone
+notes_for_coach: Whole internal wild yam root (Dioscorea spp.). A sweet, cooling, nutritive rejuvenative
+  and antispasmodic traditionally used as a tonic and to support hormonal secretions; related to Vidari-kanda.
+  The topical diosgenin product is catalogued separately as 'wild-yam-cream'. Ayurvedic energetics from
+  The Yoga of Herbs (Frawley & Lad).
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — WILD YAM
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

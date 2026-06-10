@@ -18,8 +18,7 @@ timing_options:
 - with_lunch
 - with_dinner
 take_with_food: required
-notes_for_coach: 'Berberine is an isoquinoline alkaloid from Berberis aristata, B.
-  vulgaris,
+notes_for_coach: 'Berberine is an isoquinoline alkaloid from Berberis aristata, B. vulgaris,
 
   and goldenseal. Best-studied for blood glucose and gut antimicrobial
 
@@ -58,26 +57,6 @@ interactions:
   - medication: blood thinners
     type: avoid_together
     reason: Auto-converted from string; review needed
-rasa:
-- bitter
-- astringent
-virya: heating
-vipaka: pungent
-prabhava: special heating potency to destroy Ama (toxins); specific for cleansing the liver; less likely
-  to aggravate vata than other bitter herbs
-balances_dosha:
-- pitta
-- kapha
-aggravates_dosha:
-- vata
-ayurvedic_actions:
-- bitter tonic
-- alterative
-- antipyretic
-- laxative
-- anthelmintic
-- bacteriocidal
-- amoebicidal
 evidence_tier: plausible_emerging
 linked_to_topics:
 - mast-cell-activation-syndrome
@@ -90,9 +69,8 @@ linked_to_mechanisms:
 sources:
 - id: functional-genomic-nutrition
   location: MC Stabilizer ingredients
-  quote: Berberine extract standardized to 97% Berberine HCl may support mast cell
-    stabilizing.
-version: 3
+  quote: Berberine extract standardized to 97% Berberine HCl may support mast cell stabilizing.
+version: 4
 status: active
-updated_at: '2026-05-30'
-updated_by: shivani
+updated_at: '2026-06-09'
+updated_by: Shivani

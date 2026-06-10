@@ -1,0 +1,46 @@
+slug: cayenne
+display_name: Cayenne (Capsicum)
+aliases:
+- capsicum
+- red-pepper
+- lal-mirch
+- cayenne-pepper
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+prabhava: strong dispeller of internal and external cold; food for Agni; rajasic quality; enhances properties
+  of other herbs; strong hemostatic action
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha:
+- pitta
+ayurvedic_actions:
+- stimulant
+- diaphoretic
+- expectorant
+- carminative
+- alterative
+- hemostatic
+- anthelmintic
+linked_to_topics:
+- agni-digestive-fire
+- joint-pain
+- cardiovascular-health
+notes_for_coach: Whole cayenne / red pepper (Capsicum spp.). A pungent, heating circulatory and digestive
+  stimulant — strong dispeller of cold, kindles agni, and enhances the action of other herbs. Best for
+  vata/kapha; aggravates pitta. The topical pain-relief product is catalogued separately as 'capsaicin-topical'.
+  Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — CAYENNE PEPPER
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
