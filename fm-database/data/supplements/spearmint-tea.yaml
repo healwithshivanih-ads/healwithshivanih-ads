@@ -1,10 +1,21 @@
 slug: spearmint-tea
-display_name: Spearmint Tea
+display_name: Spearmint Tea (Mentha spicata)
+aliases:
+  - spearmint
+  - mentha-spicata
+  - spearmint-leaf
 category: herb
 forms_available:
-- whole_food
-typical_dose_range: {}
-timing_options: []
+  - whole_food
+typical_dose_range:
+  whole_food:
+    min: 4
+    max: 4
+    unit: teaspoons
+timing_options:
+  - with_breakfast
+  - with_lunch
+  - with_dinner
 take_with_food: optional
 contraindications:
   conditions: []
@@ -16,18 +27,33 @@ interactions:
   with_medications: []
 pregnancy_safety: unknown
 lactation_safety: unknown
-linked_to_topics: []
-linked_to_mechanisms: []
-linked_to_claims: []
-notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
-  before clinical use.
+linked_to_topics:
+  - pcos-fertility
+  - hirsutism-and-androgen-excess
+linked_to_mechanisms:
+  - androgen-excess
+linked_to_claims:
+  - spearmint-pcos-anti-androgenic
+notes_for_coach: "Dose: 2 cups of brewed tea daily = 4 tsp dried leaf/day (steep 2
+  tsp organic dried spearmint leaf in 1 cup boiling water, 10 minutes, twice a day).
+  Has anti-androgenic properties in PCOS and hirsutism.
+  Grant 2010 RCT + second clinical trial show significant reduction in free testosterone
+  and LH, improved FSH and hirsutism scores. Evidence is preliminary (small trials)
+  but benefit:risk ratio is excellent — safe, inexpensive, accessible. NOT peppermint
+  (Mentha piperita) — confirm client is using spearmint (Mentha spicata) specifically.
+  India: loose-leaf spearmint available from health food stores, organic brands (Organic
+  India has spearmint tea bags). Minimum 3 months for hirsutism improvement."
+notes_for_client: Spearmint tea — 2 cups a day — helps calm the testosterone-related
+  symptoms of PCOS including excess hair and skin changes. It's gentle, safe, and
+  can be taken alongside any other supplements in your plan.
 sources:
-- id: vitaone-mind-map-tool
-  location: mindmap-shortlist 2026-05-13
-evidence_tier: fm_specific_thin
-version: 1
+  - id: romm-pcos-herbs-supplements-website
+    location: Spearmint Tea section
+    quote: "Two promising clinical trials including Grant 2010 RCT; significant reduction
+      in free testosterone and LH, improved FSH and hirsutism. Dose: 2 cups daily,
+      steep 2 tsp organic dried spearmint in boiling water 10 minutes."
+evidence_tier: plausible_emerging
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-06-07'
 updated_by: shivani
-aliases:
-- spearmint tea (anti-androgen)

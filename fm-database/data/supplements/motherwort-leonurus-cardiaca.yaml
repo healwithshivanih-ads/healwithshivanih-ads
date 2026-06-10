@@ -1,0 +1,69 @@
+slug: motherwort-leonurus-cardiaca
+display_name: Motherwort (Leonurus cardiaca)
+aliases:
+  - motherwort
+  - leonurus-cardiaca
+  - lion's-tail
+  - lion's-ear
+category: herb
+forms_available:
+  - liquid
+  - capsule
+timing_options:
+  - with_breakfast
+  - with_lunch
+  - with_dinner
+take_with_food: optional
+contraindications:
+  conditions:
+    - heavy menstrual bleeding (may increase flow)
+  medications:
+    - cardiac medications (digoxin, antiarrhythmics) — coordinate with clinician
+    - anticoagulants — mild activity
+  life_stages:
+    - pregnancy (stimulates uterine contractions — avoid)
+    - lactation (insufficient safety data)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+    - medication: cardiac medications
+      type: avoid_together
+      reason: digoxin / antiarrhythmics — coordinate with clinician
+    - medication: anticoagulants
+      type: avoid_together
+      reason: mild antiplatelet activity
+pregnancy_safety: contraindicated
+lactation_safety: unknown
+linked_to_topics:
+  - hyperthyroidism
+linked_to_mechanisms:
+  - tsh-receptor-stimulating-antibodies
+linked_to_claims:
+  - motherwort-hyperthyroid-palpitations-anxiety
+notes_for_coach: "Sedative, anxiolytic, anti-arrhythmic, antispasmodic herb. German\
+  \ Commission E approved for cardiac disorders and associated anxiety, including symptomatic\
+  \ relief in hyperthyroidism (tachycardia, palpitations). Romm's classic hyperthyroid\
+  \ formula: 25mL motherwort + 25mL bugleweed + 25mL lemon balm + 25mL nettles =\
+  \ 100mL tincture; 5mL three times daily. Also appears in the Graves' formula alongside\
+  \ skullcap and valerian (10mL each) + eleuthero (10mL). Avoid in pregnancy and heavy\
+  \ menstrual bleeding."
+notes_for_client: Motherwort is a traditional herb used to calm a racing heart and\
+  \ anxiety in overactive thyroid conditions. Not suitable in pregnancy.
+evidence_tier: fm_specific_thin
+typical_dose_range:
+  liquid:
+    min: 3
+    max: 5
+    unit: ml
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 6 — Endocrine Disorders, Table 6-3 Botanical Treatments for\
+      \ Hyperthyroidism, p. 195"
+    quote: "Leonurus cardiaca (Motherwort): sedative, anxiolytic, anti-arrhythmic,\
+      \ antispasmodic. German Commission E approved for cardiac disorders and associated\
+      \ anxiety, and for symptomatic relief in hyperthyroidism."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

@@ -1,0 +1,48 @@
+slug: herbalgram-cinnamon-pcos-insulin-resistance-rct
+statement: "Cinnamon (*Cinnamomum verum*) 1,500 mg/day (500 mg three times daily)
+  for 8–12 weeks significantly improves insulin resistance in women with PCOS.
+  Two Iranian RCTs confirm: fasting glucose reduced by ~10%, fasting insulin by
+  ~12%, HOMA-IR by ~20% (P<0.001 vs controls in Study 1); fasting insulin
+  (P=0.024), HOMA-IR (P=0.014), and LDL-C (P=0.049) all significantly improved
+  in Study 2. Testosterone also decreased significantly. No adverse effects in
+  either trial."
+evidence_tier: strong
+rationale: Two independent RCTs (Borzoei 2018, Hajimonfarednejad 2018), both using
+  the same dose (1500mg/day Cinnamomum verum bark), both in PCOS populations, both
+  showing consistent insulin-sensitising effects. HOMA-IR reduction of ~20% is
+  clinically meaningful (comparable to lifestyle intervention). This upgrades cinnamon
+  from the earlier 'postprandial glucose blunting' evidence (vitaone cheatsheet) to
+  a PCOS-specific insulin-resistance claim at strong tier.
+coaching_translation: "Cinnamon 500mg three times a day with meals (1500mg total)
+  is the FM go-to for PCOS insulin resistance — two proper clinical trials back it
+  for exactly this population. It reduces fasting insulin and HOMA-IR by 12–20% over
+  8–12 weeks and also lowers LDL and testosterone. Use Ceylon cinnamon (Cinnamomum
+  verum), NOT cassia, to avoid coumarin accumulation. Available cheaply as powder or
+  capsule — easy add for any PCOS client."
+caveats:
+  - Must be Cinnamomum verum (Ceylon / true cinnamon) — cassia has high coumarin
+    content unsafe at therapeutic doses long-term
+  - Both studies were conducted in Iranian women (overweight/obese in Study 1;
+    BMI ≥18 in Study 2) — generalisable but worth noting
+  - Both studies were short-term (8–12 weeks); longer-term data lacking
+  - Testosterone reduction was significant in both cinnamon AND placebo groups in
+    Study 2 (likely due to co-administered progesterone) — do not claim
+    testosterone-specific benefit without noting this
+linked_to_topics:
+  - pcos
+  - insulin-resistance
+  - polycystic-ovary-syndrome
+linked_to_mechanisms:
+  - insulin-resistance
+linked_to_supplements:
+  - cinnamon
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Research Reviews section — Cinnamon for Polycystic Ovary Syndrome, pp 45–47
+    quote: "Short-term supplementation of cinnamon had some favorable effects on metabolic
+      risk factors of women with PCOS... cinnamon supplementation with 1.5g × 12 weeks
+      significantly improved insulin sensitivity and decreased insulin and LDL levels in PCOS."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

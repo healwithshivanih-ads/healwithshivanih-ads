@@ -1,0 +1,47 @@
+slug: herbalgram-black-cohosh-breast-cancer-tamoxifen-safety
+statement: "Black cohosh (*Actaea racemosa*) is safe with tamoxifen and may reduce
+  breast cancer recurrence risk. Two observational studies show 17–53% reduced
+  recurrence risk in women using black cohosh alongside tamoxifen. In women on
+  tamoxifen, adding black cohosh resulted in 50% being free of hot flashes vs only
+  26% on tamoxifen alone. Mechanistic basis: black cohosh does not bind oestrogen
+  receptors; it may INHIBIT oestrogen receptor-positive breast cancer cell proliferation.
+  No clinically relevant P450 enzyme interactions with tamoxifen."
+evidence_tier: plausible_emerging
+rationale: Two retrospective observational studies (1,102 patients and 949 patients)
+  suggest meaningful recurrence risk reduction. Hot-flash relief in tamoxifen users
+  is especially valuable because SSRI/SNRI alternatives often used for this purpose
+  carry their own risk profiles and tamoxifen metabolism interactions (e.g., paroxetine).
+  Black cohosh has no such P450 concerns. The recurrence data is observational —
+  not randomised — so tier is plausible_emerging, not strong.
+coaching_translation: "If a breast cancer client is on tamoxifen and struggling with
+  hot flashes (a very common reason women abandon tamoxifen), black cohosh is
+  a scientifically supported option — it relieves hot flashes without the oestrogen
+  concern and without interacting with tamoxifen metabolism. Two studies also suggest
+  it might actually protect against recurrence. Refer to oncologist first, but
+  the evidence is more reassuring than most people expect."
+caveats:
+  - Evidence is observational — no RCT on breast cancer recurrence; confounders possible
+  - Must be verified true Actaea racemosa (not adulterated) — see sister claim on
+    product quality
+  - Contraindicated in active liver disease; pause if jaundice or dark urine
+  - Oncologist should be informed and in agreement before use in active cancer treatment
+linked_to_topics:
+  - perimenopause-and-menopause
+  - breast-cancer-risk-reduction
+  - menopause
+  - hot-flashes
+linked_to_mechanisms: []
+linked_to_supplements:
+  - black-cohosh
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "Observational study of 1,102 women on tamoxifen: black cohosh associated
+      with 17% reduced breast cancer recurrence risk. Retrospective study 949 patients:
+      black cohosh associated with 53% reduced risk of recurrent breast cancer. 50%
+      of black cohosh extract users free of hot flashes vs 26% tamoxifen-only group.
+      No clinically relevant P450 effects."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -1,0 +1,42 @@
+slug: lemon-balm-hyperthyroid-graves-tsh-receptor-block
+statement: "Melissa officinalis (lemon balm) blocks TSH receptor binding and inhibits\
+  \ the attachment of Graves' autoantibodies to thyroid tissue, while also addressing\
+  \ the anxiety, palpitations, and emotional dysregulation that accompany hyperthyroidism.\
+  \ Romm describes it as a 'gladdening herb' with high safety and a dual role: antithyroid\
+  \ + neuroendocrine support."
+evidence_tier: fm_specific_thin
+rationale: "Romm cites in-vitro evidence for TSH receptor blocking and autoantibody\
+  \ binding inhibition in Graves' disease. No large human RCTs, but the safety profile\
+  \ is high and the dual antithyroid + anxiolytic mechanism is particularly suited\
+  \ to hyperthyroid clients who present with anxiety, insomnia, and emotional lability\
+  \ alongside the hyperthyroid picture. German Commission E supports its use for nervous\
+  \ system complaints."
+coaching_translation: "Lemon balm is the gentlest of the three classic Graves' herbs\
+  \ — it blocks the antibody from switching the thyroid into overdrive AND calms the\
+  \ anxiety and racing heart that come with it. Romm calls it a 'gladdening herb'.\
+  \ Very safe, usually combined with bugleweed and motherwort in a tincture. Classic\
+  \ formula: 25mL each of motherwort, bugleweed, lemon balm + 25mL nettle = 100mL;\
+  \ 5mL three times daily."
+caveats:
+  - Contraindicated in hypothyroidism — may have mild thyroid-suppressive effects
+  - Do not combine with thyroid medications (levothyroxine, liothyronine) without clinician supervision
+  - Pregnancy and lactation — coordinate with clinician
+  - High-dose or long-term use needs monitoring; at therapeutic antithyroid doses, may affect TSH
+linked_to_topics:
+  - hyperthyroidism
+linked_to_mechanisms:
+  - tsh-receptor-stimulating-antibodies
+linked_to_supplements:
+  - lemon-balm
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 6 — Endocrine Disorders, Table 6-3 Botanical Treatments for\
+      \ Hyperthyroidism, pp. 194–195"
+    quote: "Melissa officinalis: blocks TSH receptors; inhibits binding of bovine TSH\
+      \ to human thyroid tissue; binds autoantibodies in Graves' disease. 'Gladdening\
+      \ herb' — addresses mild hyperthyroid anxiety and depression alongside antithyroid\
+      \ activity. High safety profile."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

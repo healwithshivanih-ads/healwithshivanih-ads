@@ -1,0 +1,47 @@
+slug: herbalgram-curcumin-phytosomal-chemo-qol
+statement: Phytosomal curcumin (300 mg three times daily = 900 mg/day, delivering
+  180 mg curcuminoids) for 8 weeks significantly improved quality of life (QoL) in
+  98 adults with solid tumours receiving chemotherapy vs placebo (P<0.001). Inflammatory
+  markers TNF-α, TGF-β, and hs-CRP were significantly reduced. In a separate study,
+  4g/day turmeric (95% curcumin extract) reduced hand-foot syndrome with capecitabine
+  chemotherapy (27.5% incidence vs 34% controls; grade 2+ only 10% vs 29-38% historical).
+evidence_tier: plausible_emerging
+rationale: "Two RCTs from HerbalGram 121 oncology article. The phytosomal form
+  (Meriva, Indena) has ~29x better bioavailability than standard curcumin extract —
+  this product distinction matters clinically. The P<0.001 QoL result is compelling.
+  The hand-foot syndrome study used a different form (95% curcumin powder). Plausible
+  mechanism: NF-kB inhibition reducing treatment-related cytokine burden. Tier is
+  plausible_emerging because studies are small and from limited centres."
+coaching_translation: "For clients in chemotherapy, phytosomal curcumin (the
+  high-absorption form — brand names: Meriva, Longvida, Theracurmin) at 900mg/day
+  improved quality of life and reduced inflammatory markers in a proper clinical trial.
+  It also appears to reduce the severity of hand-foot syndrome (a painful side effect
+  of certain chemotherapy drugs). Inform the oncologist — curcumin has theoretical
+  CYP3A4 inhibition, though no clinically significant interactions have been found
+  at these doses. The bioavailable form matters: standard turmeric capsules at this
+  dose won't achieve the same blood levels."
+caveats:
+  - Theoretical CYP3A4 inhibition — oncologist should be aware; clinically significant
+    interactions not demonstrated at these doses but monitoring warranted
+  - Standard curcumin extract (95% extract) is poorly absorbed — phytosomal or
+    other enhanced-bioavailability form required for the QoL data to apply
+  - Most data from small single-centre studies — not yet replicated at large scale
+  - Not anti-cancer — adjunctive QoL support only
+linked_to_topics:
+  - cancer-adjunctive-support
+  - chronic-inflammation
+linked_to_mechanisms:
+  - chronic-inflammation
+linked_to_supplements:
+  - curcumin
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "300mg phytosomal curcumin 3x/day × 8 weeks in 98 adults with solid tumors:
+      significantly improved QoL vs placebo (P<0.001); reduced TNF-α, TGF-β, hs-CRP.
+      4g turmeric 95% curcumin extract: reduced hand-foot syndrome incidence (27.5%
+      vs 34% after first cycle)."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -1,0 +1,48 @@
+slug: melatonin-pcos-testosterone-menstrual
+statement: "Melatonin 2 mg daily for 6 months decreased testosterone levels and improved
+  menstrual irregularities in PCOS. Mechanism: melatonin is involved in ovarian
+  follicle development and sex hormone secretion regulation; it reduces oxidative
+  stress in follicular fluid. CRITICAL CAUTION: doses above 3 mg may suppress fertility
+  and should be avoided in women actively trying to conceive."
+evidence_tier: plausible_emerging
+rationale: "Clinical trial data at 2 mg × 6 months shows testosterone reduction and
+  menstrual regularity improvement in PCOS. The ovarian/follicular mechanism is
+  biologically plausible (melatonin receptors are expressed in granulosa cells).
+  However, the evidence base is thin (single or few trials) and the >3 mg fertility
+  suppression caution is important for a PCOS population where conception is often
+  a goal. Useful as adjunct for the non-TTC PCOS client with elevated testosterone
+  and irregular periods, especially if sleep disruption is also present (melatonin
+  addresses both)."
+coaching_translation: "For PCOS clients with irregular periods and elevated testosterone
+  who are NOT trying to get pregnant right now — 2 mg melatonin at bedtime is worth
+  adding. It reduces testosterone and helps regulate cycles over 6 months, and also
+  addresses the sleep disruption that often accompanies PCOS. CRITICAL: cap at 2-3 mg.
+  Higher doses can suppress ovulation, which is the OPPOSITE of what most PCOS clients
+  need. Stop or reduce dose when actively trying to conceive."
+caveats:
+  - "HARD LIMIT: do not exceed 3 mg in PCOS; higher doses can suppress ovulation and
+    fertility — counterproductive for most PCOS clients"
+  - "Take 2 hours after eating; 2 hours before bed"
+  - "Remove or reduce dose when client moves to active TTC phase"
+  - "Evidence base is thin — single/few trials; treat as adjunct not primary therapy"
+  - "Additive with other antioxidants (NAC, CoQ10, vitamin E); avoid doubling-up
+    on sedating supplements if daytime drowsiness is a concern"
+linked_to_topics:
+  - pcos-fertility
+  - sleep-quality
+linked_to_mechanisms:
+  - androgen-excess
+  - chronic-oxidative-stress
+linked_to_supplements:
+  - melatonin
+sources:
+  - id: romm-pcos-herbs-supplements-website
+    location: Melatonin section
+    quote: "2 mg daily for 6 months decreased testosterone and menstrual irregularities.
+      Mechanism: ovarian health and sex hormone secretion regulation. Dose: 1-3 mg,
+      take 2 hours after eating. CAUTION: do not exceed 3 mg when trying to conceive
+      — higher doses suppress fertility."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

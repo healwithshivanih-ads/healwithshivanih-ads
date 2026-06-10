@@ -1,0 +1,51 @@
+slug: chaste-berry-pcos-hyperprolactinemia-progesterone
+statement: "Chaste berry (Vitex agnus castus) addresses hyperprolactinemia and corpus
+  luteal insufficiency in PCOS via dopamine agonist activity at the hypothalamic-
+  pituitary level. Active constituents rotundifuran and 6β,7β-diacetoxy-13-hydroxy-
+  labda-8,14-diene bind dopamine receptors to suppress excess prolactin, indirectly
+  increasing progesterone. Clinically used for PCOS where elevated prolactin contributes
+  to anovulation, short luteal phase, or PMS-like symptoms alongside the PCOS picture."
+evidence_tier: plausible_emerging
+rationale: "Chaste berry's dopaminergic mechanism is well-established and explains
+  prolactin suppression in multiple trials (primarily for PMS/PMDD and hyperprolactinemia).
+  The PCOS-specific application follows logically: hyperprolactinemia is a frequent
+  co-driver of cyclical disorders including corpus luteal insufficiency and anovulation,
+  both hallmarks of PCOS. This is an indirect progesterogenic effect rather than direct
+  hormone replacement. Good safety profile with mild side effects. Particularly useful
+  for PCOS clients with elevated prolactin on labs, or short luteal phase."
+coaching_translation: "For PCOS clients with elevated prolactin, short luteal phase,
+  or those struggling with anovulation despite controlling insulin — chaste berry is
+  the go-to herb. It works on the brain's pituitary gland to lower prolactin, which
+  then allows progesterone to rise naturally. Typical dose 20–40mg standardised extract
+  or 4mL tincture daily, taken in the morning. Allow 3 months minimum — this is a slow-
+  acting hormonal herb. Pairs well with white peony + licorice for the androgen side."
+caveats:
+  - "Dopamine agonist — do not combine with dopamine antagonist medications (antipsychotics,
+    metoclopramide, domperidone)"
+  - "May interact with hormone therapies (OCPs, HRT) — use under supervision"
+  - "Pregnancy: stop immediately upon confirmed pregnancy"
+  - "Slow-acting — minimum 3 months; coach may not see effect in a single cycle"
+  - "Not appropriate if prolactin is normal — targeting a specific driver, not a general
+    PCOS supplement"
+linked_to_topics:
+  - pcos-fertility
+  - fertility-and-ovulation
+linked_to_mechanisms:
+  - androgen-excess
+  - anovulation
+  - low-progesterone
+linked_to_supplements:
+  - chaste-berry-vitex-agnus-castus
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 5 — PCOS section, pp. 175–184; Table 5-17; Section on
+      hyperprolactinemia and corpus luteal insufficiency"
+    quote: "Hyperprolactinemia and low progesterone are frequent causes of cyclical
+      disorders including corpus luteal insufficiency. Vitex regulates prolactin via
+      dopamine agonist activity at the hypothalamic-pituitary level. Active compounds:
+      rotundifuran and 6β,7β-diacetoxy-13-hydroxy-labda-8,14-diene. Indirectly
+      progesterogenic."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

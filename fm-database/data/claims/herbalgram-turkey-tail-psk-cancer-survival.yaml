@@ -1,0 +1,46 @@
+slug: herbalgram-turkey-tail-psk-cancer-survival
+statement: Turkey tail mushroom (*Trametes versicolor*) polysaccharide-K (PSK) 3g/day
+  as cancer adjuvant therapy shows a 9% absolute improvement in 5-year overall survival
+  in a meta-analysis of 13 clinical trials involving 2,587 subjects. PSK is well-tolerated
+  with no known herb-drug interactions. Evidence is strongest in gastrointestinal
+  cancers but the meta-analysis includes multiple cancer types.
+evidence_tier: plausible_emerging
+rationale: Meta-analysis of 13 trials (n=2,587) is a strong evidence base for a
+  botanical — this is more robust than most herb studies. A 9% absolute survival
+  benefit is clinically meaningful. PSK is licensed as an adjuvant cancer treatment
+  in Japan. However, most studies are Japanese and used PSK (a proprietary extract),
+  not the polysaccharopeptide (PSP) in many North American/Indian products — product
+  equivalence cannot be assumed. Tier remains plausible_emerging pending specific
+  product validation in non-Japanese populations.
+coaching_translation: "Turkey tail is the most evidence-backed medicinal mushroom
+  for cancer — the Japanese pharmaceutical-grade PSK extract has 13 clinical trials
+  behind it with a 9% absolute survival benefit in a meta-analysis. For clients
+  undergoing or post-cancer treatment, it's worth discussing with their oncologist.
+  No known interactions with standard chemotherapy. In India, look for Host Defense
+  Turkey Tail (Paul Stamets) at iHerb or similar certified products — the PSK extract
+  used in Japanese trials is not available retail but polysaccharide-standardised
+  products are the best proxy."
+caveats:
+  - Most evidence uses pharmaceutical-grade PSK extract (Krestin) — different from
+    whole mushroom powder or PSP extracts in most commercial products
+  - Oncologist must be informed and in agreement; this is adjuvant, not curative
+  - 9% absolute benefit across a mixed cancer population — individual benefit varies
+    by cancer type; strongest evidence in gastric and colorectal cancers
+  - No known herb-drug interactions but formal interaction studies are limited
+linked_to_topics:
+  - cancer-adjunctive-support
+  - immune-function
+linked_to_mechanisms:
+  - chronic-inflammation
+linked_to_supplements:
+  - turkey-tail-trametes-versicolor
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "Turkey tail mushroom PSK 3g/day adjuvant: meta-analysis of 13 clinical
+      trials, 2,587 subjects — 9% absolute 5-year overall survival benefit. No known
+      herb-drug interactions."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

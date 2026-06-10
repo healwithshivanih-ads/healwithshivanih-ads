@@ -1,0 +1,51 @@
+slug: herbalgram-dong-quai-fenugreek-aromatase-inhibitor-contraindication
+statement: Dong quai (*Angelica sinensis*) and fenugreek (*Trigonella foenum-graecum*)
+  seed husks are CONTRAINDICATED in women taking aromatase inhibitors for breast
+  cancer treatment. Both may raise oestradiol levels or stimulate oestrogen
+  receptor-mediated cell growth, directly antagonising the mechanism of action of
+  aromatase inhibitors (letrozole, anastrozole, exemestane). Dan shen (*Salvia
+  miltiorrhiza*) carries an antiplatelet caution — use is unsafe at platelet counts
+  below 25,000/µL, which is common in advanced chemotherapy.
+evidence_tier: confirm_with_clinician
+rationale: Mechanistic safety warning from Lise Alschuler ND FABNO (fellowship-trained
+  integrative oncology specialist) based on in vitro and pharmacological evidence.
+  The aromatase inhibitor contraindication for oestrogenic herbs is well-established
+  in integrative oncology. This is not a mild advisory — dong quai and fenugreek
+  are common in Ayurvedic fertility practice (shatavari preparations often include
+  fenugreek; dong quai is ubiquitous in Chinese medicine for women's health) and
+  coaches may recommend them without knowing the cancer treatment interaction.
+coaching_translation: "HARD STOP: if a client mentions they are on letrozole,
+  anastrozole, or exemestane (aromatase inhibitors, typically breast cancer
+  treatment), remove dong quai and fenugreek from the protocol immediately.
+  These herbs work AGAINST the medication's purpose. This includes fenugreek seeds
+  in meal plans (culinary doses may be tolerable but therapeutic fenugreek supplementation
+  is contraindicated). Dan shen (salvia miltiorrhiza, found in some Chinese medicine
+  formulas) is unsafe if the client has low platelets — common during active chemo.
+  Always ask about cancer treatment status and current medications before recommending
+  any phytoestrogenic herb."
+caveats:
+  - "Culinary use of fenugreek (small amounts in curry) is different from therapeutic
+    supplementation — precise threshold is not established; discuss with oncologist"
+  - "Dan shen platelet caution is most critical during active chemotherapy; post-treatment
+    risk profile may differ"
+  - "This contraindication extends to other oestrogen-mimicking herbs: licorice root,
+    hops (in therapeutic doses), shatavari (high-dose supplementation) — when in doubt,
+    consult integrative oncologist"
+linked_to_topics:
+  - breast-cancer-risk-reduction
+  - safety-and-contraindications
+linked_to_mechanisms: []
+linked_to_supplements:
+  - fenugreek
+  - dong-quai
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Botanical Approach to Breast Cancer During and After Treatment, pp 60–68
+    quote: "Dong quai and fenugreek seed husks may raise estradiol or stimulate estrogen
+      receptor-mediated cell growth — contraindicated with aromatase inhibitors. Dan
+      shen (Salvia miltiorrhiza): antiplatelet effect — caution with low platelet counts
+      (<25,000), common in advanced chemo."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

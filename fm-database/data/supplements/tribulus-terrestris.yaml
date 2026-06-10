@@ -1,0 +1,76 @@
+slug: tribulus-terrestris
+display_name: Tribulus (Tribulus terrestris)
+aliases:
+  - tribulus
+  - gokshura
+  - gokhru
+  - puncture-vine
+  - tribulus-standardised
+category: herb
+forms_available:
+  - capsule
+typical_dose_range:
+  capsule:
+    min: 500
+    max: 750
+    unit: mg
+timing_options:
+  - with_breakfast
+  - with_lunch
+take_with_food: required
+contraindications:
+  conditions:
+    - hormone-sensitive-cancers (ER+ breast, endometrial)
+    - pregnancy
+  medications:
+    - antihypertensives (monitor — may have mild BP-lowering effect)
+    - antidiabetics (mild blood sugar lowering)
+  life_stages:
+    - pregnancy
+    - lactation (insufficient data)
+interactions:
+  with_supplements: []
+  with_foods: []
+  with_medications:
+    - medication: antihypertensives
+      type: avoid_together
+      reason: may have mild BP-lowering effect — monitor
+    - medication: diabetes medications
+      type: avoid_together
+      reason: mild blood sugar lowering
+pregnancy_safety: contraindicated
+lactation_safety: unknown
+linked_to_topics:
+  - pcos-fertility
+  - fertility-and-ovulation
+linked_to_mechanisms:
+  - androgen-excess
+  - anovulation
+linked_to_claims:
+  - tribulus-pcos-menstrual-regularity
+notes_for_coach: "CRITICAL geographic and standardisation note: only Bulgarian-grown
+  tribulus standardised to ≥40% furosterol saponins by UV analysis has clinical
+  evidence for PCOS menstrual regularity. Chinese and Indian-grown tribulus have
+  a different steroidal saponin profile and are NOT equivalent despite claims on
+  the label. Active constituent protodioscin converts to DHEA in the body and supports
+  LH activity. Protocol: use Days 5–14 of cycle only (follicular phase), stop after
+  Day 14. Allow 2–3 cycles to assess effect. India sourcing: most Indian tribulus/gokshura
+  products do NOT meet this standard — verify country of origin (Bulgaria) and certificate
+  of analysis before recommending. Alternatively source through Himalaya Gokshura
+  (Ayurvedic form, different mechanism — more for urinary/kidney support than hormonal
+  regulation)."
+notes_for_client: Tribulus is an herb that may help regulate your cycle. Take it
+  only during the first two weeks of your cycle (Days 5 to 14), then stop. Your
+  practitioner will guide you on the right product.
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 5 — PCOS section, Table 5-17; Box 5-32 botanical prescriptions"
+    quote: "Bulgarian research. Steroidal saponin protodioscin (≥45%) converts to
+      DHEA, restores vitality and libido. Use ONLY Bulgarian-grown standardised to
+      40% furosterol saponins by UV analysis — Chinese and Indian NOT interchangeable.
+      Best used Days 5–14 of cycle."
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani
