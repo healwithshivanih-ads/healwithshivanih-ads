@@ -437,6 +437,75 @@ function parseLetterFoods(md: string): LetterFoods | null {
   };
 }
 
+// ── send-log gating ──────────────────────────────────────────────────────────
+// The app shows ONLY content from letters the coach actually ISSUED.
+// meal-plans/_send_log.yaml is the record of truth (written by the send
+// buttons): one entry per send with letter_types + plan_slug (+ phase
+// window for fortnight letters). A generated-but-never-sent draft sitting
+// in the folder must never feed the app — coach rule 2026-06-10, after
+// Hariharan's unsent May-5 draft surfaced a meal plan he was never given.
+
+interface SendEntry {
+  letter_types: string[];
+  plan_slug: string;
+  phase_start?: number;
+  phase_end?: number;
+}
+
+async function readSendLog(mealPlansDir: string): Promise<SendEntry[]> {
+  const raw = await readIfExists(path.join(mealPlansDir, "_send_log.yaml"));
+  if (!raw) return [];
+  try {
+    const d = yaml.load(raw);
+    if (!Array.isArray(d)) return [];
+    return d
+      .map((e) => {
+        const r = e as Dict;
+        return {
+          letter_types: asStrArr(r.letter_types),
+          plan_slug: asStr(r.plan_slug),
+          phase_start: typeof r.phase_start === "number" ? r.phase_start : undefined,
+          phase_end: typeof r.phase_end === "number" ? r.phase_end : undefined,
+        };
+      })
+      .filter((e) => e.plan_slug && e.letter_types.length);
+  } catch {
+    return [];
+  }
+}
+
+/** Map a meal-plans filename to the letter type its stem implies, relative
+ *  to a sent plan_slug prefix. Returns null when the file doesn't belong to
+ *  that slug. */
+function letterTypeForFile(fileName: string, slug: string): { type: string; phase?: [number, number] } | null {
+  if (!fileName.startsWith(slug)) return null;
+  const rest = fileName.slice(slug.length).replace(/\.(md|html)$/, "");
+  if (rest === "") return { type: "consolidated" };
+  const phaseM = rest.match(/^-meal_plan-wk(\d+)-(\d+)(-recipes)?$/);
+  if (phaseM) return { type: "meal_plan_phase", phase: [parseInt(phaseM[1], 10), parseInt(phaseM[2], 10)] };
+  if (rest === "-meal_plan") return { type: "meal_plan" };
+  if (rest === "-recipes") return { type: "recipes" };
+  if (rest === "-supplement_plan") return { type: "supplement_plan" };
+  if (rest === "-lifestyle_guide") return { type: "lifestyle_guide" };
+  if (rest === "-exercise_plan") return { type: "exercise_plan" };
+  return null;
+}
+
+/** Was this specific file issued? Phase letters check the recorded window
+ *  when the send entry carries one (older entries don't — slug-level trust). */
+function isSentFile(fileName: string, log: SendEntry[]): boolean {
+  for (const e of log) {
+    const t = letterTypeForFile(fileName, e.plan_slug);
+    if (!t) continue;
+    if (!e.letter_types.includes(t.type)) continue;
+    if (t.type === "meal_plan_phase" && t.phase && e.phase_start != null && e.phase_end != null) {
+      if (e.phase_start !== t.phase[0] || e.phase_end !== t.phase[1]) continue;
+    }
+    return true;
+  }
+  return false;
+}
+
 /** First-letter HTML carries a "Buy here" list (buy-row entries) instead of
  *  the printed schedule table — harvest name → URL for reorder links. */
 function parseHtmlBuyRows(html: string): { name: string; url: string }[] {
@@ -846,19 +915,37 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // sent for this fortnight. Recipes merge the base letter's appendix with
   // every `-recipes.md` sidecar (the post-reformat home of recipe packs).
   const mealPlansDir = path.join(clientDir, "meal-plans");
-  let letterFiles: string[] = [];
+  let allLetterFiles: string[] = [];
   try {
-    letterFiles = await fs.readdir(mealPlansDir);
+    allLetterFiles = await fs.readdir(mealPlansDir);
   } catch {
     /* no letters dir */
   }
-  const baseMd =
-    (await readIfExists(path.join(mealPlansDir, `${planSlug}.md`))) ??
-    (await readIfExists(path.join(mealPlansDir, `${planSlug}-meal_plan.md`))) ??
-    "";
-  const baseHtml = (await readIfExists(path.join(mealPlansDir, `${planSlug}.html`))) ?? "";
+  // SEND-LOG GATE: only files recorded as sent feed the app. A folder full
+  // of generated drafts (Hariharan's May-5 letter) contributes NOTHING
+  // until the coach actually issues a letter — the app then falls back to
+  // the plan YAML's principle fields.
+  const sendLog = await readSendLog(mealPlansDir);
+  const letterFiles = allLetterFiles.filter((n) => isSentFile(n, sendLog));
+  const sentSlugs = [...new Set(sendLog.map((e) => e.plan_slug))];
+  // base letter: prefer the published plan's own consolidated/meal_plan,
+  // else any sent slug's (phase letters are sometimes issued under a
+  // successor slug while the original plan stays published).
+  let baseStem = "";
+  for (const slug of [planSlug, ...sentSlugs.filter((s) => s !== planSlug)]) {
+    if (letterFiles.includes(`${slug}.md`)) {
+      baseStem = slug;
+      break;
+    }
+    if (letterFiles.includes(`${slug}-meal_plan.md`)) {
+      baseStem = `${slug}-meal_plan`;
+      break;
+    }
+  }
+  const baseMd = baseStem ? ((await readIfExists(path.join(mealPlansDir, `${baseStem}.md`))) ?? "") : "";
+  const baseHtml = baseStem ? ((await readIfExists(path.join(mealPlansDir, `${baseStem}.html`))) ?? "") : "";
   let recipesMd = baseMd;
-  for (const n of letterFiles.filter((n) => n.startsWith(planSlug) && n.endsWith("-recipes.md"))) {
+  for (const n of letterFiles.filter((n) => n.endsWith("-recipes.md"))) {
     recipesMd += "\n\n" + ((await readIfExists(path.join(mealPlansDir, n))) ?? "");
   }
   const letterMd = baseMd;
@@ -898,7 +985,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   let mealMd = letterMd;
   let phaseRanges: { from: number; to: number; file: string }[] = [];
   for (const n of letterFiles) {
-    const pm = n.match(new RegExp(`^${planSlug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-meal_plan-wk(\\d+)-(\\d+)\\.md$`));
+    // letterFiles is already send-log-gated, so any phase letter here was
+    // issued — regardless of which plan slug it was generated under.
+    const pm = n.match(/-meal_plan-wk(\d+)-(\d+)\.md$/);
     if (pm) phaseRanges.push({ from: parseInt(pm[1], 10), to: parseInt(pm[2], 10), file: n });
   }
   phaseRanges = phaseRanges.sort((a, b) => a.from - b.from);
@@ -1077,6 +1166,19 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const row = matchSupplementRow(name, suppRows);
     const timing = asStr(p.timing) || row?.when || "";
     const dose = asStr(p.dose);
+    let buyUrl = row?.buyUrl ?? htmlBuyFor(name);
+    if (!buyUrl) {
+      // No issued letter carrying buy links (e.g. nothing sent yet) — fall
+      // back to the coach-curated supplement_links.yaml catalogue. Only a
+      // real entry counts; the generic "browse the shop" fallback is noise.
+      try {
+        const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
+        const link = await resolveSupplementLink(name);
+        if (link.source !== "search") buyUrl = link.url;
+      } catch {
+        /* no link — Reorder button simply hides */
+      }
+    }
     supplements.push({
       id: `s-${slug || i}`,
       name,
@@ -1084,7 +1186,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       slot: slotFor(timing, dose),
       timing: shortTiming(timing),
       why: row?.why || firstSentence(asStr(p.coach_rationale)).replace(/^CRITICAL GAP[^:]*:\s*/i, "").replace(/^CONTINUE[^.]*\.\s*/i, ""),
-      buyUrl: row?.buyUrl ?? htmlBuyFor(name),
+      buyUrl,
       buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
     });
   }

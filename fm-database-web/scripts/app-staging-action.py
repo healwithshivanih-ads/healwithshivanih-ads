@@ -130,13 +130,27 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     merged["client_id"] = client_id
     s_client.write_text(yaml.safe_dump(merged, sort_keys=False, allow_unicode=True))
 
-    # 3. letters for this plan (md + html + sidecars; recipes/phase letters too)
+    # 3. letters (md + html + sidecars) + the send log. The app trusts ONLY
+    # letters recorded in _send_log.yaml, and sent letters sometimes carry a
+    # successor plan slug — so stage the log plus every file matching the
+    # published slug OR any slug that appears in the log.
     auth_mp = auth / "clients" / client_id / "meal-plans"
     if auth_mp.exists():
         smp = sdir / "meal-plans"
         smp.mkdir(parents=True, exist_ok=True)
+        prefixes = {plan_slug}
+        send_log = auth_mp / "_send_log.yaml"
+        if send_log.exists():
+            shutil.copy2(send_log, smp / "_send_log.yaml")
+            try:
+                for entry in yaml.safe_load(send_log.read_text()) or []:
+                    s = (entry or {}).get("plan_slug")
+                    if s:
+                        prefixes.add(s)
+            except Exception:
+                pass
         for f in auth_mp.iterdir():
-            if f.is_file() and f.name.startswith(plan_slug):
+            if f.is_file() and any(f.name.startswith(p) for p in prefixes):
                 shutil.copy2(f, smp / f.name)
                 counts["letters"] += 1
 
