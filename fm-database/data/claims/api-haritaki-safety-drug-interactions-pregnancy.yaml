@@ -1,0 +1,40 @@
+slug: api-haritaki-safety-drug-interactions-pregnancy
+statement: 'WHO Monographs (Vol 1–4) do not include a monograph on Terminalia chebula (Haritaki); no EMA/HMPC
+  EU herbal monograph exists for Haritaki as of 2024; no ESCOP monograph was found. The API (Vol I) is
+  therefore the sole authoritative pharmacopoeial source. API-relevant safety profile from official Ayurvedic
+  texts and supporting pharmacological literature: pregnancy contraindicated (uterine stimulant, reduces
+  breast milk per Vagbhata/Ashtanga Hridayam); drug interactions documented include CYP2E1 substrate chlorzoxazone
+  (haritaki extracts increase chlorzoxazone levels by inhibiting CYP2E1), antidiabetic drugs (additive
+  hypoglycaemic effect — Terminalia chebula has documented alpha-glucosidase inhibition), omeprazole (tannin-mediated
+  inhibition of CYP2C19 increases omeprazole AUC in vitro), and antiplatelet agents (additive effect).
+  Discontinue 2 weeks before elective surgery due to antiplatelet activity.'
+evidence_tier: plausible_emerging
+rationale: API's classical contraindications (Ashtanga Hridayam Sutrasthana) list pregnancy and dehydration
+  states as primary contraindications. CYP interaction data is from in vitro pharmacological studies cited
+  in the evidence base, cross-referenced against the API's pharmacological actions section (astringent/tannin-rich
+  composition).
+coaching_translation: Haritaki should be avoided in pregnancy. Anyone taking diabetes medications, blood
+  thinners, or the proton pump inhibitor omeprazole should check with their doctor first, as haritaki
+  may intensify these drugs' effects. Stop 2 weeks before any planned surgery.
+out_of_scope_notes: Clients on antidiabetic medications, anticoagulants, or PPIs should consult their
+  prescribing clinician before adding haritaki or Triphala.
+caveats:
+- CYP interaction data is primarily in vitro; clinical significance in humans at standard doses not fully
+  established.
+- Tannin content varies significantly between preparations (raw churna vs extracts).
+- WHO/EMA/ESCOP monographs not found — safety data is API classical texts + pharmacological literature.
+linked_to_topics:
+- constipation
+- liver-detoxification
+linked_to_mechanisms:
+- gut-microbiome-modulation
+linked_to_supplements:
+- haritaki
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Haritaki safety — API Part I, Vol I; Ashtanga Hridayam Sutrasthana 6; pharmacological cross-reference
+    (https://www.ayurveda.hu/api/API-Vol-1.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

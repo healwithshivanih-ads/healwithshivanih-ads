@@ -1,0 +1,32 @@
+slug: ema-turmeric-traditional-use-digestive-complaints
+statement: 'The EMA/HMPC EU herbal monograph on Curcumae longae rhizoma grants ''traditional use'' for:
+  relief of mild digestive problems such as feelings of fullness, slow digestion, and flatulence. This
+  is a traditional herbal medicinal product classification; adequate clinical evidence for efficacy has
+  not been established.'
+evidence_tier: plausible_emerging
+rationale: EMA 'traditional use' for turmeric reflects at least 30 years of traditional use and plausible
+  effect, without sufficient clinical trial evidence to grant 'well-established use'. EMA did not identify
+  any indication meeting the well-established use threshold.
+coaching_translation: The EU medicines regulator recognises turmeric as a traditional remedy for bloating,
+  slow digestion, and gas — but this is based on long-standing use rather than clinical trial evidence.
+  No stronger clinical use classification was granted.
+out_of_scope_notes: ''
+caveats:
+- 'EMA contraindication: bile duct obstruction; hepatobiliary disorders; gallstones (use only after medical
+  consultation).'
+- EMA notes hypersensitivity to Curcuma longa as a contraindication.
+- Undesirable effects include gastric discomfort, dry mouth, and flatulence at higher doses.
+- 'Pregnancy and breastfeeding: insufficient data; not recommended during pregnancy at doses above those
+  used in food.'
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements:
+- turmeric
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: European Union herbal monograph on Curcuma longa L., rhizoma — EMA/HMPC/456676/2008 (https://www.ema.europa.eu/en/medicines/herbal/curcumae-longae-rhizoma)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

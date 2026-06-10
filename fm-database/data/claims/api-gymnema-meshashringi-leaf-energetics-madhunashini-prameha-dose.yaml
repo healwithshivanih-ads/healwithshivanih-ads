@@ -1,0 +1,42 @@
+slug: api-gymnema-meshashringi-leaf-energetics-madhunashini-prameha-dose
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Volume V) classifies Meshashringi leaf (Gymnema
+  sylvestre) with the following energetics: Rasa (taste) — Tikta (bitter), Kashaya (astringent); Guna
+  (quality) — Laghu (light), Ruksha (dry); Virya (potency) — Ushna (heating); Vipaka (post-digestive taste)
+  — Katu (pungent); Karma (actions) — Chakshushya (eye tonic), Dipana (digestive stimulant), Kaphahara
+  (reduces kapha), Vatahara (reduces vata), Vishaghna (detoxifying/anti-toxic), Sramsana (mild laxative/purgative).
+  Official Sanskrit synonym Madhunashini means ''sugar destroyer'' — reflecting the herb''s defining property
+  of blocking sweet taste on the tongue. Official therapeutic indications (Rogadhikara): Shula (abdominal
+  colic), Shopha (oedema), Arsha (haemorrhoids), Shvasa (dyspnoea/asthma), Hridroga (heart disease), Kasa
+  (cough), Krimi (worm infestations), Kushtha (skin diseases), Netraroga (eye diseases), Prameha (diabetes/urinary
+  disorders), Vrana (wounds/ulcers), Dantakrmi (dental caries/oral infections). Dose (Matra): 3–6 g.'
+evidence_tier: plausible_emerging
+rationale: Official pharmacopoeial entry from the Government of India Ayurvedic Pharmacopoeia of India,
+  Part I, Volume V, monograph no. 51. Constituents listed include triterpenoid saponins of gymnemic acid
+  A, B, C and D.
+coaching_translation: Gymnema (Meshashringi / Gurmar) is the API's primary herb for Prameha (diabetes/dysglycaemia).
+  The Sanskrit name Madhunashini ('sugar destroyer') captures its defining property — gymnemic acids temporarily
+  block sweet-taste receptors and have been shown to reduce sugar absorption. The API's Ushna (heating),
+  Laghu (light) classification makes it appropriate for kapha-vata-type metabolic conditions. Dose 3–6
+  g leaf powder daily, standard for blood sugar support.
+out_of_scope_notes: Concurrent use with insulin or sulphonylureas is a prescribing-level drug interaction
+  consideration.
+caveats:
+- Ushna (heating) quality means caution in pitta-dominant individuals at high doses.
+- Gymnema may potentiate antidiabetic medications — blood glucose monitoring is essential when combining
+  with insulin or oral hypoglycaemics.
+- Sramsana (mild purgative) karma at higher doses — start low.
+linked_to_topics:
+- blood-sugar-regulation
+- prediabetes
+linked_to_mechanisms:
+- insulin-resistance
+- gut-microbiome-glucose-regulation
+linked_to_supplements:
+- gymnema-sylvestre-extract
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: MESHASHRINGI (Leaf), API Part I, Volume V, monograph no. 51, pp. 128–130 (https://www.ayurveda.hu/api/API-Vol-5.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

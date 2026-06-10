@@ -1,0 +1,37 @@
+slug: who-guggul-drug-interactions-pregnancy-safety
+statement: 'The WHO monograph on Gummi Gugguli identifies the following safety considerations: contraindicated
+  in pregnancy (uterine-stimulant activity, risk of miscarriage); clinically documented pharmacokinetic
+  drug interaction with propranolol and diltiazem (guggulsterones reduce GI absorption of both drugs,
+  significantly lowering their bioavailability — demonstrated in a human pharmacokinetic study by Dalvi
+  et al., JAPI 1994); potential pharmacodynamic antagonism with levothyroxine (guggul increases T4-to-T3
+  conversion, potentially opposing replacement therapy); and additive antiplatelet/anticoagulant effect
+  when co-administered with warfarin or aspirin. CYP3A4 induction by guggulsterones (via pregnane X receptor
+  activation) may reduce exposure to CYP3A4-metabolised drugs.'
+evidence_tier: strong
+rationale: WHO Gummi Gugguli monograph includes a dedicated adverse reactions and drug interaction section;
+  the propranolol/diltiazem interaction is cited from a published pharmacokinetic RCT (Dalvi et al.).
+  CYP3A4 induction is corroborated by in vitro and in vivo data cited in the monograph.
+coaching_translation: Guggul should be avoided in pregnancy. It can reduce the blood levels of heart medications
+  such as propranolol and diltiazem, so anyone on these drugs needs a clinician's guidance before taking
+  guggul. It may also interact with thyroid medication and blood thinners.
+out_of_scope_notes: Clients on propranolol, diltiazem, levothyroxine, warfarin, or antiplatelet drugs
+  must consult their prescribing physician before initiating guggul supplementation. This is a refer-to-clinician
+  safety flag.
+caveats:
+- CYP3A4 induction data largely from in vitro / animal models; clinical magnitude in humans is not fully
+  established.
+- Levothyroxine interaction is pharmacodynamic (T4→T3 conversion), not pharmacokinetic; clinical relevance
+  depends on dose and individual thyroid status.
+linked_to_topics:
+- cardiovascular-health
+- hypothyroidism
+linked_to_mechanisms: []
+linked_to_supplements:
+- guggul
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Gummi Gugguli — Adverse Reactions and Interactions, WHO Monographs Vol 3, p. 169 (https://apps.who.int/iris/bitstream/handle/10665/42052/9789241547024_eng.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

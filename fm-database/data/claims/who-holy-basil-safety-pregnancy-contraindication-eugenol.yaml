@@ -1,0 +1,31 @@
+slug: who-holy-basil-safety-pregnancy-contraindication-eugenol
+statement: The WHO monograph on Folium Ocimi Sancti explicitly contraindications holy basil leaf during
+  pregnancy and lactation, citing conflicting reports of embryotoxicity and documented inhibition of embryo
+  implantation in animal models. Additionally, eugenol (a major constituent of the essential oil, up to
+  62%) is known to be hepatotoxic in glutathione-depleted states, creating a potential drug interaction
+  with acetaminophen/paracetamol. The WHO-stated oral posology is 6–12 g crude drug as a decoction daily.
+evidence_tier: confirm_with_clinician
+rationale: These safety signals are explicitly stated in the WHO Vol 2 monograph contraindications and
+  precautions sections, making them authoritative pharmacopoeial safety data.
+coaching_translation: Avoid tulsi (holy basil) supplements or high-dose tea during pregnancy and breastfeeding.
+  Clients on regular paracetamol (Crocin, Dolo, Tylenol) should be cautious with concentrated holy basil
+  preparations due to the eugenol–glutathione interaction. Culinary amounts (fresh herb in food) are not
+  covered by this caution.
+out_of_scope_notes: Prescribing in pregnancy, lactation, or alongside hepatotoxic drugs requires medical
+  consultation. This is a pharmacopoeial safety finding, not a FM efficacy claim.
+caveats:
+- Culinary use as a food herb is not the subject of this contraindication — it applies to therapeutic
+  doses (2.5–12 g/day of dried herb).
+- The anti-implantation data are from animal studies; the clinical relevance in humans at therapeutic
+  doses is uncertain but sufficient for pharmacopoeial contraindication.
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- holy-basil
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Folium Ocimi Sancti, WHO Monographs Vol 2, Contraindications and Precautions sections (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: who-guggul-hypolipidaemic-pharmacopoeial-use
+statement: The WHO monograph on Gummi Gugguli (Vol 3, page 169) lists pharmacopoeial uses of Commiphora
+  wightii resin for lipid disorders (hypercholesterolaemia, hypertriglyceridaemia), obesity, osteoarthritis,
+  and acne vulgaris, citing controlled-trial evidence for the hypolipidaemic indication.
+evidence_tier: plausible_emerging
+rationale: WHO Vol 3 includes Gummi Gugguli as a monograph herb with a dedicated chapter on pharmacopoeial
+  and clinically-supported uses; the hypolipidaemic effect is classified under 'uses supported by clinical
+  data' based on randomised trials showing reductions in total cholesterol and LDL.
+coaching_translation: The World Health Organization recognises guggul resin as an evidence-backed option
+  for improving cholesterol and triglyceride levels, and also notes traditional use for joint pain and
+  skin conditions.
+out_of_scope_notes: Prescribing for clinical hyperlipidaemia or osteoarthritis is within the clinician's
+  scope; coach-level use is supportive only.
+caveats:
+- Guggul preparations vary widely in guggulsterone content (2.5–5%); standardisation matters.
+- Clinical trials have had mixed results; one large US trial (JAMA 2003) showed no benefit for dyslipidaemia.
+- Pregnancy contraindicated — uterine stimulant, risk of miscarriage per WHO safety note.
+linked_to_topics:
+- dyslipidemia
+- chronic-inflammation
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
+- chronic-inflammation
+linked_to_supplements:
+- guggul
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Gummi Gugguli, WHO Monographs on Selected Medicinal Plants Vol 3, p. 169 (https://apps.who.int/iris/bitstream/handle/10665/42052/9789241547024_eng.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

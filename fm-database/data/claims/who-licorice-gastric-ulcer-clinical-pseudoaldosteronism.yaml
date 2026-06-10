@@ -1,0 +1,46 @@
+slug: who-licorice-gastric-ulcer-clinical-pseudoaldosteronism
+statement: The WHO monograph on Radix Glycyrrhizae (Glycyrrhiza glabra L. / G. uralensis Fisch. dried
+  root) lists, as uses supported by clinical data, the treatment of gastric and duodenal ulcers via preparations
+  such as deglycyrrhizinated licorice (DGL) and carbenoxolone. Traditional uses described in pharmacopoeias
+  include the symptomatic treatment of cough and bronchitis. WHO notes that glycyrrhizin, the principal
+  saponin, inhibits 11β-hydroxysteroid dehydrogenase type 2 (11β-HSD2) in the kidney, allowing cortisol
+  to bind mineralocorticoid receptors, producing sodium retention, oedema, hypertension, and hypokalaemia
+  — a syndrome termed pseudoaldosteronism. Recommended duration of use does not exceed 4–6 weeks.
+evidence_tier: strong
+rationale: WHO classifies peptic/gastric ulcer treatment (via DGL or carbenoxolone) under 'uses supported
+  by clinical data', reflecting controlled-trial evidence. The pseudoaldosteronism mechanism is well-established
+  pharmacology and drives WHO's safety contraindications. The duration limit of 4–6 weeks reflects the
+  time course of glycyrrhizin-mediated mineralocorticoid excess.
+coaching_translation: The WHO's herbal monograph recognises licorice root as having clinical trial evidence
+  supporting its use for stomach/duodenal ulcers — particularly in the deglycyrrhizinated (DGL) form that
+  removes the aldosterone-mimicking compound. It is also a traditional remedy for cough and bronchitis.
+  Use should not exceed 4–6 weeks; daily intake should remain low to avoid blood pressure and potassium
+  problems.
+out_of_scope_notes: Active peptic ulcer disease, hypertension, or concurrent cardiac glycoside use — refer
+  to clinician before recommending licorice root. DGL preparations (glycyrrhizin content <2%) carry substantially
+  lower mineralocorticoid risk and are preferable for GI support in managed care settings.
+caveats:
+- 'WHO: pseudoaldosteronism risk — sodium/water retention, hypokalaemia, hypertension — at doses providing
+  ≥100 mg glycyrrhizin/day (approximately 2–5 g whole root daily in most preparations).'
+- 'WHO duration limit: no more than 4–6 weeks continuous use without medical supervision.'
+- 'WHO contraindications: hypertension, hypokalaemia, liver cirrhosis, renal insufficiency, pregnancy.'
+- 'WHO drug interactions: diuretics (worsens hypokalaemia), cardiac glycosides/digoxin (hypokalaemia potentiates
+  toxicity), antihypertensives (may antagonise effect), corticosteroids (additive potassium loss).'
+linked_to_topics:
+- peptic-ulcer-disease
+- essential-hypertension
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements:
+- licorice-root
+- dgl-licorice
+- dgl-deglycyrrhizinated-licorice
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Radix Glycyrrhizae, WHO Monographs on Selected Medicinal Plants, Volume 1 (1999), pp. 183–194
+    (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

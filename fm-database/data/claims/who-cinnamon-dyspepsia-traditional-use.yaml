@@ -1,0 +1,33 @@
+slug: who-cinnamon-dyspepsia-traditional-use
+statement: The WHO monograph on Cortex Cinnamomi (Cinnamomum verum / C. zeylanicum) lists, as uses described
+  in pharmacopoeias and in traditional systems of medicine, the treatment of dyspeptic complaints including
+  mild spasmodic conditions of the gastrointestinal tract, bloating, and flatulence, as well as loss of
+  appetite. The typical oral dose is 2–4 g of the dried bark daily.
+evidence_tier: plausible_emerging
+rationale: WHO classifies these indications under 'uses described in pharmacopoeias and in traditional
+  systems of medicine', reflecting their long-standing pharmacopoeial recognition rather than controlled-trial
+  evidence. The carminative and antispasmodic effects are attributed to the essential oil (cinnamaldehyde)
+  stimulating gastric juice and salivary secretion.
+coaching_translation: The World Health Organization's herbal monograph recognises cinnamon bark as a pharmacopoeially
+  supported remedy for sluggish digestion, bloating, gas, and poor appetite. A typical dose is about half
+  a teaspoon (2 g) of the powder daily.
+out_of_scope_notes: ''
+caveats:
+- WHO notes cinnamon is contraindicated in known hypersensitivity to cinnamon or Peru balsam, and in patients
+  with stomach or intestinal ulcers.
+- WHO advises against use during pregnancy beyond culinary amounts.
+- WHO classifies these GI uses as 'traditional / pharmacopoeial' rather than 'supported by clinical data'
+  — lower evidentiary weight than a positive RCT record.
+linked_to_topics:
+- blood-sugar-regulation
+linked_to_mechanisms: []
+linked_to_supplements:
+- cinnamon
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Cortex Cinnamomi, WHO Monographs on Selected Medicinal Plants, Volume 1 (1999), pp. 95–104
+    (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

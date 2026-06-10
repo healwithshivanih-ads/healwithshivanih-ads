@@ -1,0 +1,44 @@
+slug: api-shatavari-root-energetics-rasayana-lactation-female-dose
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Volume IV) classifies Shatavari root (Asparagus
+  racemosus) with the following energetics: Rasa (taste) — Madhura (sweet), Tikta (bitter); Guna (quality)
+  — Guru (heavy), Snigdha (unctuous/oily); Virya (potency) — Shita (cooling); Vipaka (post-digestive taste)
+  — Madhura (sweet); Karma (actions) — Shukrala (promotes semen/reproductive fluids), Balya (strength-promoting),
+  Hridya (cardiac tonic), Medhya (cognitive/mental tonic), Pittahara (reduces pitta), Rasayana (rejuvenative),
+  Vrishya (aphrodisiac/reproductive tonic), Shukraja (promotes sperm/reproductive essence), Kaphavataghna
+  (reduces kapha and vata), Vatahara (reduces vata), Stanyakara (promotes lactation), Netrya (eye tonic),
+  Agniposhtikara (enhances digestive fire). Official therapeutic indications (Rogadhikara): Amlapitta
+  (acid peptic disorders), Arsha (haemorrhoids), Atisara (diarrhoea), Gulma (abdominal tumours/masses),
+  Kshaya (tissue wasting/TB-like conditions), Raktaatisara (bloody diarrhoea), Raktapitta (bleeding disorders),
+  Raktavikara (blood disorders), Vatarakta (gout), Visarpa (spreading infections/herpes-like), Shotha
+  (oedema), Parinamashoola (duodenal ulcer pain), Mutrarakta (haematuria), Vatajvara (vata-type fever),
+  Svarabhedata (hoarseness), Naktandhya (night blindness), Sutika Roga (post-partum disorders), Stanya
+  Dosha/Kshaya (disorders/deficiency of breast milk). Dose (Matra): 3–6 g of the drug.'
+evidence_tier: plausible_emerging
+rationale: 'Official pharmacopoeial entry from the Government of India Ayurvedic Pharmacopoeia of India,
+  Part I, Volume IV, monograph no. 50. Constituents listed: sugar, glycosides, saponin and sitosterol.'
+coaching_translation: Shatavari is the pre-eminent women's Rasayana in Ayurveda — the API's own indications
+  span lactation support, post-partum recovery, reproductive health, acid-peptic disorders, and tissue-wasting
+  conditions. Its heavy, unctuous, cooling, sweet profile makes it the quintessential pitta-pacifying,
+  nourishing, galactagogue tonic. Coaching dose is 3–6 g root powder in warm milk. Strong traditional
+  and pharmacopoeial basis as an adaptogenic female reproductive tonic.
+out_of_scope_notes: ''
+caveats:
+- Guru (heavy) and Snigdha (unctuous) qualities may be unsuitable for kapha-dominant individuals or those
+  with significant obesity/congestion.
+- Stanyakara (lactation-promoting) effect means caution during pregnancy (promotes prolactin-type activity).
+- Shatavari saponins may have oestrogenic activity — relevant for oestrogen-sensitive conditions.
+linked_to_topics:
+- female-infertility
+- hormonal-nutrition-foundations
+linked_to_mechanisms:
+- estrogen-decline
+- hpa-axis-dysregulation
+linked_to_supplements:
+- shatavari
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: SHATAVARI (Root), API Part I, Volume IV, monograph no. 50, p. 122–123 (https://naturalingredient.org/wp/wp-content/uploads/API-Vol-4.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

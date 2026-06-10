@@ -1,0 +1,35 @@
+slug: ema-fenugreek-traditional-use-appetite-skin
+statement: 'The EMA/HMPC EU herbal monograph on Trigonellae foenugraeci semen grants ''traditional use''
+  for: (1) temporary loss of appetite; (2) symptomatic relief of minor skin inflammations (external use
+  — poultice preparation). Both are classified as traditional herbal medicinal product uses; clinical
+  evidence was insufficient for well-established use classification in these indications.'
+evidence_tier: fm_specific_thin
+rationale: EMA evaluated fenugreek and found insufficient clinical evidence to grant well-established
+  use for any indication, including the blood glucose and lipid effects documented in the WHO monograph.
+  The EMA monograph covers only the two indications above as traditional uses.
+coaching_translation: The EU medicines regulator limits its official recognition of fenugreek to appetite
+  support (oral) and minor skin inflammation (poultice) — both as traditional uses only. The blood-sugar
+  effects that appear in WHO and research literature were not considered clinically substantiated enough
+  for EMA approval.
+out_of_scope_notes: EMA did not grant the blood-glucose/lipid indications as it found the clinical trial
+  data insufficient for its evidentiary threshold. FM coaches using fenugreek for metabolic support should
+  cite the WHO Vol 3 preliminary data rather than claiming EMA approval for this use.
+caveats:
+- 'EMA contraindications: pregnancy (uterotonic); known hypersensitivity to fenugreek or Fabaceae family
+  (peanut, soya cross-reactivity — anaphylactic reactions documented).'
+- 'EMA: not recommended for children under 18.'
+- 'EMA: patients with diabetes receiving medication must monitor blood glucose.'
+- 'EMA: breastfeeding — insufficient safety data; not recommended.'
+linked_to_topics:
+- blood-sugar-regulation
+linked_to_mechanisms: []
+linked_to_supplements:
+- fenugreek
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: European Union herbal monograph on Trigonella foenum-graecum L., semen — EMA/HMPC/179118/2012
+    (https://www.ema.europa.eu/en/medicines/herbal/trigonellae-foenugraeci-semen)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: api-cinnamon-tvak-energetics-deepana
+statement: 'The Ayurvedic Pharmacopoeia of India classifies Tvak (Cinnamomum verum Presl, dried stem bark)
+  with the following official energetics: Rasa (taste) — Madhura (sweet), Katu (pungent), Tikta (bitter);
+  Guna (qualities) — Laghu (light), Ruksha (dry), Tikshna (penetrating); Virya (potency) — Ushna (hot/warming);
+  Vipaka (post-digestive effect) — Katu (pungent). Principal Karma (actions): Deepana (kindles digestive
+  fire), Pachana (aids digestion of ama), Vatapittahara (pacifies Vata and Pitta). Rogadhikara: digestive
+  disorders, cough, and dysmenorrhoea. Official Matra (dose): 1–3 g of the dried bark powder.'
+evidence_tier: plausible_emerging
+rationale: API classification contextualises the herb's Indian traditional medical use. The Ushna (warming)
+  Virya and Deepana/Pachana Karma directly parallel the Western ethnobotanical use for sluggish digestion.
+  Katu Vipaka and Tikshna Guna support short-term, not chronic, use in already-inflamed GI conditions.
+coaching_translation: In the official Indian Ayurvedic system, cinnamon (Tvak) is a warming, digestive-fire-kindling
+  spice-medicine used for sluggish digestion and gas. The standard powder dose is about a quarter-teaspoon
+  (1 g) to a heaped quarter-teaspoon (3 g) daily.
+out_of_scope_notes: ''
+caveats:
+- 'Ushna (hot) Virya: use with caution in Pitta-dominant individuals or active GI inflammation/acidity
+  — may aggravate.'
+- 'Tikshna (penetrating/sharp) Guna: avoid in peptic ulcer or erosive gastritis.'
+- API dose 1–3 g/day — higher intakes not warranted by the pharmacopoeial standard.
+linked_to_topics:
+- blood-sugar-regulation
+linked_to_mechanisms: []
+linked_to_supplements:
+- cinnamon
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Tvak, Ayurvedic Pharmacopoeia of India, Part I, Volume II (2nd edition), Ministry of AYUSH,
+    Government of India (https://www.ayush.gov.in/AYUSH/portal/Pharmacopoeias/Pharmacopoeia.aspx)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

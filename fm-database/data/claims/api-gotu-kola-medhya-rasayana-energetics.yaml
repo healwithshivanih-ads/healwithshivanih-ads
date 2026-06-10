@@ -1,0 +1,38 @@
+slug: api-gotu-kola-medhya-rasayana-energetics
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Vol IV) classifies Mandukaparni / Brahmi-2 (Centella
+  asiatica (Linn.) Urban) with the following energetics: Rasa — Madhura (sweet), Katu (pungent), Tikta
+  (bitter), Kasaya (astringent) — all four non-saline tastes; Virya — Sita (cold potency); Vipaka — Madhura;
+  Karma — Medhya (intellect-promoting), Rasayana (rejuvenating), Balya (strengthening), Dipana (digestive-stimulant),
+  Hrdya (cardiac tonic), Kaphapittahara (reduces kapha and pitta), Varnya (skin-brightening), Smrtiprada
+  (memory-enhancing). The API classifies Mandukaparni as one of the four classical Medhya Rasayanas of
+  the Charaka Samhita alongside Yashtimadhu, Guduchi, and Shankhapushpi.'
+evidence_tier: plausible_emerging
+rationale: API Part I, Vol IV includes Mandukaparni (Centella asiatica) as a separate entry from Brahmi
+  (Bacopa monnieri), clarifying the naming overlap common in Indian practice. The Medhya Rasayana classification
+  is drawn from Charaka Samhita Chikitsa Sthana 1.3.
+coaching_translation: India's official Ayurvedic pharmacopoeia classifies gotu kola as a cold-potency,
+  skin-brightening, heart-supporting Medhya Rasayana — a brain and memory tonic recommended in Charaka's
+  classical texts alongside ashwagandha and bacopa.
+out_of_scope_notes: ''
+caveats:
+- Gotu kola and bacopa are frequently confused — both are called 'Brahmi' in different regions of India
+  (gotu kola = Brahmi in South India; bacopa = Brahmi in North India). Confirm the botanical Latin name
+  when purchasing.
+- Sita virya (cold potency) means gotu kola suits pitta/excess heat constitutions; use with warming spices
+  in kapha/cold types.
+linked_to_topics:
+- cognitive-decline
+- cardiovascular-health
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+- hippocampal-neuroplasticity
+linked_to_supplements:
+- gotu-kola
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Mandukaparni (Centella asiatica), API Part I, Vol IV, Ayurvedic Pharmacopoeia of India, Govt
+    of India (https://naturalingredient.org/wp/wp-content/uploads/API-Vol-4.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

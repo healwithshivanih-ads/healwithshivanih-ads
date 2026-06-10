@@ -1,0 +1,38 @@
+slug: ema-cinnamon-traditional-use-gi-not-glucose
+statement: The EMA/HMPC community monograph on Cinnamomum verum J.S. Presl (adopted 10 May 2011) grants
+  'traditional herbal medicinal product' status for the relief of mild spasmodic gastrointestinal complaints
+  including bloating and flatulence. This classification requires at least 30 years of traditional use
+  (including 15 years within the EU) but does not require clinical trial evidence. EMA noted that the
+  published evidence on blood glucose lowering was 'questionable' and did not meet the threshold for well-established
+  use.
+evidence_tier: plausible_emerging
+rationale: EMA placed cinnamon under 'traditional use' rather than 'well-established use', meaning the
+  GI indication is supported by plausibility and tradition but not by rigorous controlled trials meeting
+  EU pharmacovigilance standards. The explicit EMA statement that blood-glucose evidence was 'questionable'
+  is clinically important for practitioners making claims about glycaemic effects.
+coaching_translation: Europe's herbal medicines regulator recognises cinnamon as a traditional remedy
+  for bloating and intestinal cramps, but — importantly — does NOT classify it as having proven blood-sugar-lowering
+  effects. Any glucose benefit is speculative based on available human data reviewed by the EMA.
+out_of_scope_notes: EMA traditional use monograph for well-established use claims regarding diabetes/glycaemic
+  control is not supported — refer to clinician before substituting cinnamon for pharmacotherapy in T2DM.
+caveats:
+- EMA explicitly stated clinical evidence for blood glucose effects was 'questionable' — do not market
+  cinnamon to clients as a proven glycaemic agent.
+- 'Traditional use classification: plausibility supported, but no positive human RCT package sufficient
+  for ''well-established'' designation.'
+- Contraindicated in allergy to cinnamon or balsam of Peru (Myroxylon pereirae).
+linked_to_topics:
+- blood-sugar-regulation
+- insulin-resistance
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- cinnamon
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: EMA/HMPC Community Herbal Monograph on Cinnamomum verum J.S. Presl, cortex, EMA/HMPC/246774/2009
+    (adopted 10 May 2011) (https://www.ema.europa.eu/en/medicines/herbal/cinnamomi-cortex)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

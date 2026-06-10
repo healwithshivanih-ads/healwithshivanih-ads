@@ -1,0 +1,20 @@
+id: ema-hmpc-herbal-monographs
+title: European Union Herbal Monographs (EMA Committee on Herbal Medicinal Products, HMPC)
+source_type: clinical_guideline
+quality: high
+authors:
+  - European Medicines Agency - Committee on Herbal Medicinal Products (HMPC)
+publisher: European Medicines Agency
+url: https://www.ema.europa.eu/en/human-regulatory/herbal-medicinal-products
+notes: >-
+  The EU's official herbal monographs and assessment reports issued by the EMA's
+  Committee on Herbal Medicinal Products (HMPC). Each monograph classifies a
+  herbal substance's therapeutic indications as either "well-established use"
+  (supported by adequate clinical evidence) or "traditional use" (plausibility +
+  ≥30 years of safe use), with standardized posology, contraindications, special
+  warnings, interactions, and use in pregnancy/lactation. Gold-standard regulatory
+  safety reference. Cite per-plant in the claim's location with the EMA URL.
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

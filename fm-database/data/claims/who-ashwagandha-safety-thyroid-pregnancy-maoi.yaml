@@ -1,0 +1,29 @@
+slug: who-ashwagandha-safety-thyroid-pregnancy-maoi
+statement: 'The WHO monograph on Radix Withaniae (Vol 4) documents official safety guidance: (1) contraindicated
+  in pregnancy due to potential uterotonic/abortifacient activity; (2) should be used with caution in
+  patients on thyroid hormone therapy as it may elevate T3 and T4 levels; (3) potential interaction with
+  MAOI antidepressants; (4) may potentiate sedatives and CNS depressants; (5) hypersensitivity to Solanaceae
+  is a contraindication.'
+evidence_tier: plausible_emerging
+rationale: WHO Vol 4 safety section compiles pharmacological evidence and case data for contraindications
+  and interactions. Thyroid-hormone elevation has been documented in animal and some human studies cited
+  in the monograph.
+coaching_translation: Ashwagandha is contraindicated in pregnancy and requires caution with thyroid medication,
+  MAOIs, and sedatives — these are WHO-documented safety boundaries, not theoretical concerns.
+out_of_scope_notes: 'Thyroid-elevating effect: patients on levothyroxine or with hyperthyroidism/Graves''
+  disease should only use ashwagandha under clinician supervision with regular thyroid function monitoring.'
+caveats: []
+linked_to_topics:
+- hypothyroidism
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Radix Withaniae, WHO Monographs on Selected Medicinal Plants Vol 4 (2009), pp. 373-391 — Contraindications
+    and Drug Interactions sections (https://www.who.int/publications/i/item/9789241547178)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

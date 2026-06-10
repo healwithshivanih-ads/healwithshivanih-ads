@@ -1,0 +1,37 @@
+slug: who-ashwagandha-adaptogen-stress-clinical-use
+statement: 'The WHO monograph on Radix Withaniae (Withania somnifera, Vol 4, 2009) lists adaptogenic/tonic
+  use and use in stress-related disorders as ''uses described in pharmacopoeias and well-established in
+  traditional systems of medicine'', with supporting clinical data from several randomised controlled
+  trials showing reduction in stress, anxiety, and cortisol. Posology: powdered root 3-6 g/day (traditional
+  Ayurvedic dose).'
+evidence_tier: plausible_emerging
+rationale: WHO Vol 4 describes ashwagandha as an adaptogen with 'clinical data to support its use'. Multiple
+  RCTs cited by WHO demonstrate stress-reduction and anxiolytic effects. However, the total RCT body available
+  in 2009 was smaller than for first-tier botanicals, placing this in the pharmacopoeial/supported-by-clinical-data
+  zone rather than unambiguously 'supported by clinical data'.
+coaching_translation: The WHO recognises ashwagandha as a pharmacopoeially established adaptogen for stress
+  and anxiety, with supporting clinical trial evidence. The official dose is 3-6 g/day of root powder.
+out_of_scope_notes: WHO mentions preliminary data on immunomodulatory and anti-tumour properties — these
+  are not classified as established uses and require further clinical investigation before recommendation.
+caveats:
+- WHO Vol 4 flags potential interaction with sedatives and CNS depressants — may potentiate effects.
+- WHO caution with MAOI antidepressants.
+- 'Pregnancy: contraindicated in pregnancy (may have abortifacient properties at high doses, per Ayurvedic
+  and WHO sources).'
+- 'WHO notes caution with thyroid disorders: withanolides may elevate T3/T4 levels — requires monitoring.'
+linked_to_topics:
+- adrenal-fatigue
+- anxiety
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Radix Withaniae, WHO Monographs on Selected Medicinal Plants Vol 4 (2009), pp. 373-391 (https://www.who.int/publications/i/item/9789241547178)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

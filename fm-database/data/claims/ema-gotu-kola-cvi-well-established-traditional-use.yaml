@@ -1,0 +1,37 @@
+slug: ema-gotu-kola-cvi-well-established-traditional-use
+statement: 'The EMA/HMPC EU Herbal Monograph on Centella asiatica (Revision 1, 2022; EMA/HMPC/489142/2020)
+  grants two levels of recognition: (1) Well-established use — dry extract (TTFCA/asiatic acid 30 mg titrated
+  to 40% asiaticoside, 29–31% asiatic acid, 28–30% madecassic acid) taken twice daily for chronic venous
+  insufficiency, based on authorised products in Portugal since 1989 supported by clinical data; (2) Traditional
+  use — topical preparations for minor wounds, cuts, and abrasions to support healing. Posology for the
+  well-established use: 30 mg titrated extract twice daily. Duration: up to 3 months, then reassess. Contraindications:
+  hypersensitivity to plants of the Apiaceae (Umbelliferae) family. Pregnancy and lactation: not recommended
+  — insufficient data. Paediatric use: not established in children under 18.'
+evidence_tier: strong
+rationale: EMA/HMPC EU Herbal Monographs are the highest regulatory-body endorsement within the EU. Revision
+  1 (2022) updated the classification; the Portuguese marketing authorisation for the titrated extract
+  product since 1989 qualifies for well-established use status under Directive 2001/83/EC.
+coaching_translation: The EU medicines regulator has formally recognised a specific concentrated gotu
+  kola extract (30 mg twice daily) as a well-established medicine for circulation problems in the legs.
+  For wounds, it is recognised as a traditional-use topical remedy. Not recommended during pregnancy.
+out_of_scope_notes: CVI management beyond lifestyle support is within a clinician's scope; coach role
+  is supportive circulation habits + referring to GP if leg swelling is significant.
+caveats:
+- Well-established use is ONLY for the specific TTFCA titrated extract at 30 mg — standard capsule/powder
+  products at typical doses are not equivalent and fall under traditional use.
+- Contraindicated if allergic to Apiaceae (same family as celery, parsley, carrot, fennel).
+- Rare idiosyncratic hepatotoxicity reported; LiverTox classification C — monitor LFTs in long-term use.
+linked_to_topics:
+- cardiovascular-health
+linked_to_mechanisms:
+- antioxidant-protection
+linked_to_supplements:
+- gotu-kola
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: EU Herbal Monograph on Centella asiatica (L.) Urb., herba, Revision 1, EMA/HMPC/489142/2020,
+    adopted 2022 (https://www.ema.europa.eu/en/documents/herbal-monograph/european-union-herbal-monograph-centella-asiatica-l-urb-herba-revision-1_en.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

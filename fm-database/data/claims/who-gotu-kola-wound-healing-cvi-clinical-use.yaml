@@ -1,0 +1,35 @@
+slug: who-gotu-kola-wound-healing-cvi-clinical-use
+statement: 'The WHO monograph Herba Centellae (Vol 1) lists Centella asiatica uses supported by clinical
+  data: (1) the treatment of wounds and burns — asiaticoside-containing preparations have been shown in
+  clinical studies to accelerate wound healing and promote cicatrisation; (2) the treatment of psoriasis
+  (topical); and (3) improvement of venous insufficiency of the lower limbs — clinical trials with TTFCA
+  (total triterpenic fraction of Centella asiatica) at 30–120 mg/day showed significant improvements in
+  microcirculatory parameters, capillary permeability, and symptoms of chronic venous insufficiency (CVI).
+  The WHO also records traditional pharmacopoeial use for leprosy, skin tuberculosis, and as a brain tonic/adaptogen.'
+evidence_tier: strong
+rationale: WHO Vol 1 Herba Centellae divides indications into 'uses supported by clinical data' (wound
+  healing, CVI) and 'uses described in pharmacopoeias and in traditional systems of medicine', providing
+  the highest level of WHO endorsement for wound healing and CVI applications.
+coaching_translation: The WHO recognises gotu kola as clinically evidence-backed for wound healing and
+  for improving circulation in chronic venous insufficiency (heavy, swollen legs). Traditionally it has
+  also been used as a skin and brain tonic.
+out_of_scope_notes: ''
+caveats:
+- CVI evidence is specifically for TTFCA (titrated extract) — not all gotu kola products are equivalent.
+- WHO notes rare hepatotoxicity with prolonged oral use; limit continuous use to 6–8 weeks, then a break.
+- Topical wound-healing application is distinct from oral supplementation.
+linked_to_topics:
+- cardiovascular-health
+- chronic-inflammation
+linked_to_mechanisms:
+- antioxidant-protection
+- chronic-inflammation
+linked_to_supplements:
+- gotu-kola
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Herba Centellae, WHO Monographs on Selected Medicinal Plants Vol 1 (https://apps.who.int/iris/bitstream/handle/10665/42052/9241545178.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

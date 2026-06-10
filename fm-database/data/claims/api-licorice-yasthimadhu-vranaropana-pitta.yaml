@@ -1,0 +1,41 @@
+slug: api-licorice-yasthimadhu-vranaropana-pitta
+statement: 'The Ayurvedic Pharmacopoeia of India classifies Yasthimadhu (Glycyrrhiza glabra L., dried
+  roots and stolons) with the following official energetics: Rasa (taste) — Madhura (sweet); Guna (qualities)
+  — Guru (heavy), Snigdha (unctuous/oily); Virya (potency) — Sheeta (cooling); Vipaka (post-digestive
+  effect) — Madhura (sweet). Principal Karma (actions): Vatapittashamaka (pacifies both Vata and Pitta
+  doshas), Vranaropana (wound and ulcer healing), Sothahara (anti-inflammatory), Kasahara (relieves cough),
+  Svarya (benefits voice), Balya (tonic/strength-promoting). Rogadhikara: peptic ulcer, gastric disorders,
+  respiratory conditions including cough and bronchitis, wound healing, general debility. Official Matra
+  (dose): 2–4 g of the dried root powder.'
+evidence_tier: plausible_emerging
+rationale: The API energetic profile (Sheeta/cooling Virya, Madhura/sweet Vipaka) is consistent with licorice's
+  known demulcent and anti-inflammatory properties. Vranaropana (ulcer-healing) is the Ayurvedic term
+  most directly aligned with the WHO-supported clinical use for peptic ulcers. The cooling, heavy, unctuous
+  energetics explain its traditional use as a Pitta-pacifying, tissue-soothing medicine — contrasting
+  sharply with the warming profile of cinnamon or senna.
+coaching_translation: In the official Indian Ayurvedic pharmacopoeia, yashtimadhu (licorice root) is a
+  cooling, soothing, ulcer-healing herb for both the gut and lungs. The classical dose is half a teaspoon
+  to one teaspoon (2–4 g) of root powder daily.
+out_of_scope_notes: ''
+caveats:
+- 'Guru (heavy) and Snigdha (unctuous) Guna: use with caution in Kapha-dominant individuals, obesity,
+  oedema, or sluggish digestion.'
+- 'API Matra 2–4 g: at these doses, whole-root glycyrrhizin intake may approach the EMA/WHO safety ceiling
+  of 100 mg/day — monitor duration and dosage.'
+- Not for use in pregnancy per classical Ayurvedic caution (Madhura/heavy Guna, potential foetal growth
+  effects).
+linked_to_topics:
+- peptic-ulcer-disease
+linked_to_mechanisms:
+- cortisol-elevation
+linked_to_supplements:
+- licorice-root
+- dgl-licorice
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Yasthimadhu, Ayurvedic Pharmacopoeia of India, Part I, Volume I, Ministry of AYUSH, Government
+    of India (https://www.ayush.gov.in/AYUSH/portal/Pharmacopoeias/Pharmacopoeia.aspx)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

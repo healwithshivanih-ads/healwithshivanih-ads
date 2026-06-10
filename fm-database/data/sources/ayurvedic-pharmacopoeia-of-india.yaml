@@ -1,0 +1,23 @@
+id: ayurvedic-pharmacopoeia-of-india
+title: The Ayurvedic Pharmacopoeia of India (Part I, Volumes I-IX)
+source_type: clinical_guideline
+quality: high
+authors:
+  - "Government of India, Ministry of AYUSH - Pharmacopoeia Commission for Indian Medicine & Homoeopathy"
+publisher: Government of India, Ministry of AYUSH
+url: https://www.ppcim.gov.in
+notes: >-
+  The official legal pharmacopoeial standard for Ayurvedic single drugs (dravya)
+  in India, published by the Government of India. Each monograph gives the
+  botanical identity, macro/microscopic characters, identity-purity-strength
+  assays, constituents, and — critically for this catalogue — the official
+  Ayurvedic properties: Rasa (taste), Guna (qualities), Virya (potency), Vipaka
+  (post-digestive effect), and Karma (actions), plus Rogadhikara (therapeutic
+  indications), important classical formulations, and Matra (official dose).
+  Used here as the India-context authoritative source validating the rasa/virya/
+  vipaka/dosha energetics on supplements and documenting official dose ranges.
+  Cite per-herb in the claim's location (e.g. "Ashwagandha, API Part I Vol I").
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

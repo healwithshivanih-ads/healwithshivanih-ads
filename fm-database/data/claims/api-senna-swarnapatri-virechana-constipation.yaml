@@ -1,0 +1,34 @@
+slug: api-senna-swarnapatri-virechana-constipation
+statement: 'The Ayurvedic Pharmacopoeia of India classifies Swarnapatri (Cassia angustifolia Vahl dried
+  leaflets) with the following official energetics: Rasa (taste) — Katu (pungent), Tikta (bitter), Madhura
+  (sweet); Virya (potency) — Ushna (warming); Prabhava (special action) — Sukha Virechaka (gentle, smooth
+  purgative action). Principal Karma: Virechana (therapeutic purgation), Vatanulomana (normalises downward
+  Vata/apana), Krimighna (anthelmintic). Rogadhikara: constipation, intestinal worms. Official Matra (dose):
+  500 mg–2 g of leaf/pod powder.'
+evidence_tier: plausible_emerging
+rationale: The API term Sukha Virechaka ('gentle purgation') precisely parallels the Western pharmacological
+  description of senna as a stimulant laxative that produces coordinated colonic peristalsis without significant
+  cramping at normal doses. Vatanulomana aligns with its motor-stimulating mechanism. The lower Matra
+  (0.5–2 g) than the WHO dose range reflects the classical whole-leaf powder approach before standardisation.
+coaching_translation: In Ayurveda's official Indian pharmacopoeia, senna leaf is formally classified as
+  a gentle purgative for constipation. The classical powder dose is a small pinch to half a teaspoon (0.5–2
+  g), taken in warm water.
+out_of_scope_notes: ''
+caveats:
+- 'Ushna (warming) Virya: use with caution in Pitta-predominant constitution or active anorectal inflammation.'
+- 'API Matra 0.5–2 g: clinical sennoside content varies considerably between whole-leaf powders — standardised
+  preparations preferred for dose accuracy.'
+- Not for children, pregnancy, or chronic use per API classical commentary.
+linked_to_topics:
+- constipation
+linked_to_mechanisms: []
+linked_to_supplements:
+- senna
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Swarnapatri, Ayurvedic Pharmacopoeia of India, Part I, Volume III, Ministry of AYUSH, Government
+    of India (https://www.ayush.gov.in/AYUSH/portal/Pharmacopoeias/Pharmacopoeia.aspx)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,28 @@
+slug: ema-ginger-nausea-motion-sickness-well-established-use
+statement: The EMA/HMPC EU herbal monograph on Zingiberis rhizoma grants 'well-established use' for the
+  prevention of nausea and vomiting associated with motion sickness in adults (oral powder 1-2 g taken
+  30-60 minutes before travel), supported by at least 10 years of recognised medicinal use within the
+  EU and adequate clinical evidence.
+evidence_tier: strong
+rationale: EMA 'well-established use' is the higher EMA classification, requiring documented clinical
+  evidence and at least 10 years of use within the EU. The EMA assessment report cites randomised controlled
+  trials for motion sickness.
+coaching_translation: The European Medicines Agency classifies ginger as a proven (well-established) treatment
+  for travel-related nausea — 1-2 g of powdered root taken before travel is the official European dose.
+out_of_scope_notes: ''
+caveats:
+- EMA specifies this well-established use applies to adults only; use in children under 18 is not established.
+- Contraindicated in patients with known hypersensitivity to ginger.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements:
+- ginger
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: European Union herbal monograph on Zingiber officinale Roscoe, rhizoma — EMA/HMPC/577856/2009
+    Rev. 1 (https://www.ema.europa.eu/en/medicines/herbal/zingiberis-rhizoma)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
