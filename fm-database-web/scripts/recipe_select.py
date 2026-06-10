@@ -214,36 +214,62 @@ def select_recipes(recipes, client, plan, season=None, weight_loss=False,
     return chosen     # list of (score, recipe)
 
 # ── prompt block ───────────────────────────────────────────────────────────
-def build_block(chosen, weight_loss=False) -> str:
-    if not chosen:
-        return ""
+def _fmt_rows(recipes, weight_loss=False) -> str:
     order = {m: i for i, m in enumerate(MEAL_TYPES)}
-    rows = sorted(chosen, key=lambda x: (order.get((x[1].get("meal_type") or ["other"])[0], 99), -x[0]))
-    lines = []
-    for _sc, r in rows:
+    rows = sorted(recipes, key=lambda r: order.get((r.get("meal_type") or ["other"])[0], 99))
+    out = []
+    for r in rows:
         mt = "/".join(r.get("meal_type") or ["meal"])
         kcal = r.get("approx_kcal_per_serving")
         kcal_s = f" (~{kcal} kcal)" if (weight_loss and isinstance(kcal, (int, float))) else ""
         one = (r.get("one_line") or r.get("name") or "").strip()
-        lines.append(f"  • [{mt}] {r.get('name')} — {one}{kcal_s}")
-    body = "\n".join(lines)
+        out.append(f"  • [{mt}] {r.get('name')} — {one}{kcal_s}")
+    return "\n".join(out)
+
+def pinned_safety_warnings(client: dict, pinned: list) -> list:
+    """Flag coach-pinned recipes that conflict with the client's diet/allergens."""
+    dp = client.get("dietary_preference") or ""
+    allergies = client.get("known_allergies") or client.get("allergies") or []
+    avoid = _tokens(client.get("foods_to_avoid"), client.get("reported_triggers"))
+    warns = []
+    for r in pinned:
+        if not diet_ok(r, dp):
+            warns.append(f"{r.get('name')}: may not fit the '{dp}' diet")
+        elif not is_safe(r, allergies, avoid):
+            warns.append(f"{r.get('name')}: contains an allergen or avoided ingredient")
+    return warns
+
+def build_block(pinned: list, fill: list, weight_loss=False, client=None) -> str:
+    """pinned + fill are lists of recipe dicts. The block frames the library as a
+    PREFERRED PALETTE — the AI is explicitly free to compose other dishes too."""
+    if not pinned and not fill:
+        return ""
+    sections = []
+    if pinned:
+        warns = pinned_safety_warnings(client or {}, pinned)
+        wtxt = ("\n  ⚠ COACH-PIN SAFETY CHECK: " + "; ".join(warns)) if warns else ""
+        sections.append("COACH-SELECTED RECIPES (the coach chose these specifically for this "
+                        "client — use them where they fit a meal):\n" + _fmt_rows(pinned, weight_loss) + wtxt)
+    if fill:
+        sections.append("ALSO A GOOD FIT (dosha / season / diet-matched from the recipe library):\n"
+                        + _fmt_rows(fill, weight_loss))
+    body = "\n\n".join(sections)
     return f"""
 
 ═══════════════════════════════════════════════════════════════════════════
-✦ PREFERRED VETTED RECIPES — build this client's meals PRIMARILY from this list.
-These are already matched to her constitution (dosha), the current season, her
-dietary preference, and her foods-to-avoid, and are coach-approved. Use the
-recipe name exactly as written.
+✦ RECIPE PALETTE for this client's meals — a PREFERRED palette, NOT a restriction.
 
 {body}
 
-RULES FOR USING THIS LIST:
-• Fill as many meal slots as you can from the list above before inventing anything.
-• You MAY add a dish if the list doesn't cover a slot — but prefix ANY meal NOT
-  from this list with "⚠ " so the coach can review it and add it to the library.
-• This list does NOT override the binding FOODS_TO_REMOVE / season-avoid / dosha
-  rules already stated above — those still win.
-• Keep the client's calorie targets; the kcal hints help you balance the day.
+HOW TO USE THIS PALETTE:
+• Use the COACH-SELECTED recipes first (by exact name) wherever they fit a meal slot.
+• Then draw on the "also a good fit" library recipes by name.
+• You are NOT limited to these — freely compose ANY other suitable dish you judge
+  right for her constitution, season, and preferences. Prefix any meal that is NOT
+  from the lists above with "⚠ " so the coach can review and add it to the library.
+• This palette does NOT override the binding FOODS_TO_REMOVE / season-avoid / dosha
+  rules stated above — those still win.
+• Keep the client's calorie targets; the kcal hints help balance the day.
 ═══════════════════════════════════════════════════════════════════════════
 """
 
@@ -252,11 +278,36 @@ def recipe_shortlist_for_letter(plan: dict, client: dict, weight_loss=None) -> s
     recipes = load_recipes()
     if not recipes:
         return ""
-    month = datetime.date.today().month
-    season = derive_season_key(month, client.get("country") or "India")
-    chosen = select_recipes(recipes, client, plan, season=season,
-                            weight_loss=bool(weight_loss and weight_loss.get("enabled")))
-    return build_block(chosen, weight_loss=bool(weight_loss and weight_loss.get("enabled")))
+    wl = bool(weight_loss and weight_loss.get("enabled"))
+    season = derive_season_key(datetime.date.today().month, client.get("country") or "India")
+    bymap = {r["slug"]: r for r in recipes}
+    pinned_slugs = ((plan or {}).get("nutrition") or {}).get("recipes") or []
+    pinned = [bymap[s] for s in pinned_slugs if s in bymap]
+    pinned_set = set(pinned_slugs)
+    rest = [r for r in recipes if r["slug"] not in pinned_set]
+    fill = [r for _sc, r in select_recipes(rest, client, plan, season=season, weight_loss=wl)]
+    return build_block(pinned, fill, weight_loss=wl, client=client)
+
+# ── mobile-app export (rights-gated) ───────────────────────────────────────
+def export_for_app(recipe: dict) -> dict:
+    """Project-2 JSON shape for one recipe. ONLY emits a photo whose rights_status
+    is licensed/original — book_reference_uncleared placeholders are dropped."""
+    img = recipe.get("image") or {}
+    cleared = img if img.get("rights_status") in ("licensed", "original") else None
+    return {
+        "slug": recipe.get("slug"), "name": recipe.get("name"),
+        "meal_type": recipe.get("meal_type"), "diet": recipe.get("diet"),
+        "seasons": recipe.get("seasons"),
+        "balances_dosha": recipe.get("balances_dosha"), "aggravates_dosha": recipe.get("aggravates_dosha"),
+        "ingredients": recipe.get("ingredients"), "steps": recipe.get("steps"),
+        "servings": recipe.get("servings"),
+        "prep_time_min": recipe.get("prep_time_min"), "cook_time_min": recipe.get("cook_time_min"),
+        "kcal": recipe.get("approx_kcal_per_serving"), "protein_g": recipe.get("protein_g"),
+        "headnote": recipe.get("headnote"), "one_line": recipe.get("one_line"),
+        "good_for": recipe.get("good_for"),
+        "attribution": recipe.get("attribution"),
+        "image": ({"file": cleared.get("file"), "credit": cleared.get("credit")} if cleared else None),
+    }
 
 # ── candidate-recipe flywheel ──────────────────────────────────────────────
 def collect_candidates(markdown: str) -> list[str]:
@@ -304,14 +355,13 @@ def _selftest():
               "ayurveda_constitution": "Pitta-Kapha", "country": "India",
               "known_allergies": ["peanut"], "foods_to_avoid": "brinjal, raw onion",
               "active_conditions": ["high cholesterol"]}
+    # pin a recipe to exercise the coach-selected path
+    pin = recipes[0]["slug"] if recipes else ""
     plan = {"assessment": {"focus_topics": ["dyslipidemia", "agni-digestive-fire"]},
-            "nutrition": {"foods_to_remove": ["deep-fried food"]}}
-    season = derive_season_key(datetime.date.today().month, "India")
-    chosen = select_recipes(recipes, client, plan, season=season)
-    print(f"season={season}  selected {len(chosen)} recipe(s):")
-    for sc, r in chosen:
-        print(f"   {sc:+.1f}  [{'/'.join(r.get('meal_type') or [])}] {r.get('name')}")
-    print(build_block(chosen) or "(empty block — add recipes to data/_recipes/)")
+            "nutrition": {"foods_to_remove": ["deep-fried food"], "recipes": [pin] if pin else []}}
+    block = recipe_shortlist_for_letter(plan, client, weight_loss={"enabled": True})
+    print(f"pinned: {pin or '(none)'}")
+    print(block or "(empty block — add recipes to data/_recipes/)")
 
 if __name__ == "__main__":
     import sys
