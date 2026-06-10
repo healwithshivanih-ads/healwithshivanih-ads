@@ -783,3 +783,45 @@ export async function exportRecipesAction(
     };
   }
 }
+
+/**
+ * Auto-suggest a personalized recipe set for a plan's client (dosha / season /
+ * diet / condition matched). The coach PRUNES this — they never hand-pick from
+ * scratch. The editor shows these as removable chips; the kept slugs are saved to
+ * nutrition.recipes via the normal updatePlan path.
+ */
+export async function suggestRecipesAction(
+  planSlug: string,
+  n = 16,
+): Promise<{ ok: boolean; recipes: RecipeCard[]; total: number; error?: string }> {
+  try {
+    const plan = await loadPlanBySlug(planSlug);
+    if (!plan)
+      return { ok: false, recipes: [], total: 0, error: `Plan ${planSlug} not found` };
+
+    const clientId = plan.client_id as string | undefined;
+    let clientData: Record<string, unknown> = {};
+    if (clientId) {
+      const clientFile = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+      try {
+        const raw = await fs.readFile(clientFile, "utf-8");
+        clientData = (yaml.load(raw) as Record<string, unknown>) ?? {};
+      } catch {
+        // no client file — suggest from the plan alone
+      }
+    }
+
+    return (await runShim(
+      "suggest-recipes.py",
+      { client: clientData, plan, n },
+      30_000,
+    )) as { ok: boolean; recipes: RecipeCard[]; total: number };
+  } catch (e) {
+    return {
+      ok: false,
+      recipes: [],
+      total: 0,
+      error: e instanceof Error ? e.message : String(e),
+    };
+  }
+}

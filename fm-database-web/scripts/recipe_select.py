@@ -283,10 +283,28 @@ def recipe_shortlist_for_letter(plan: dict, client: dict, weight_loss=None) -> s
     bymap = {r["slug"]: r for r in recipes}
     pinned_slugs = ((plan or {}).get("nutrition") or {}).get("recipes") or []
     pinned = [bymap[s] for s in pinned_slugs if s in bymap]
-    pinned_set = set(pinned_slugs)
-    rest = [r for r in recipes if r["slug"] not in pinned_set]
-    fill = [r for _sc, r in select_recipes(rest, client, plan, season=season, weight_loss=wl)]
+    if pinned:
+        # The coach has a curated set (auto-suggested, then pruned) — that IS the
+        # palette. Don't re-add library fill (it would undo the pruning). The AI
+        # still composes anything else it needs (⚠-marked).
+        fill = []
+    else:
+        # No curated set on the plan → auto-suggest the best matches in the letter.
+        fill = [r for _sc, r in select_recipes(recipes, client, plan, season=season, weight_loss=wl)]
     return build_block(pinned, fill, weight_loss=wl, client=client)
+
+# ── auto-suggestion (coach prunes, never hand-picks) ───────────────────────
+def suggest_recipes_for_plan(client: dict, plan: dict, n: int = 16) -> list:
+    """The best-matched recipes for this client — used to PRE-FILL the plan so the
+    coach only has to remove a few, never pick from scratch. Returns recipe dicts
+    (highest-scoring first, meal-type-balanced). Same scoring as the letter fill."""
+    recipes = load_recipes()
+    if not recipes:
+        return []
+    season = derive_season_key(datetime.date.today().month, client.get("country") or "India")
+    wl = bool((client.get("weight_loss") or {}).get("enabled"))
+    chosen = select_recipes(recipes, client, plan, season=season, weight_loss=wl, total=n)
+    return [r for _sc, r in chosen]
 
 # ── mobile-app export (rights-gated) ───────────────────────────────────────
 def export_for_app(recipe: dict) -> dict:
