@@ -1,0 +1,43 @@
+slug: rasa-virya-vipaka-three-stage-food-action
+statement: >-
+  Ayurveda describes a food or herb acting on the body in three sequential
+  stages: rasa (the taste experienced immediately on the tongue), virya (the
+  heating or cooling potency felt shortly after in the mouth or stomach), and
+  vipaka (the long-term post-digestive effect on the tissues and excretions).
+  Sweet and salty tastes have a sweet vipaka, sour has a sour vipaka, and
+  pungent, bitter and astringent all share a pungent vipaka. Knowing all three
+  stages — not just the taste — is what predicts a food's true action.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Two foods can share a taste yet act very differently once digested. The model
+  separates the immediate sensory effect (rasa) from the thermal action (virya)
+  and from the eventual metabolic/eliminative effect (vipaka), which explains
+  why, for example, hot chilli is pungent and heating on the way in and produces
+  a burning effect in the stool and urine on the way out. It is the conceptual
+  basis for both Ayurvedic cooking and the energetics (rasa/virya/vipaka) tags
+  carried on supplements and home remedies in this catalogue.
+coaching_translation: >-
+  Don't judge a food by taste alone. Ask three questions: what does it taste
+  like, does it warm or cool me, and how does it leave me a day later (binding
+  or loosening, building or reducing)? This is why a sweet, cooling food like
+  ripe banana can still aggravate digestion — its post-digestive effect differs
+  from its taste.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    Rasa-virya-vipaka is a classical dravyaguna framework used for food choice
+    and education; it is not a measured pharmacological parameter.
+linked_to_topics:
+  - ayurvedic-elemental-design-doshas
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 3: Taste and Digestion — Virya / Vipak (p.38)"
+    quote: "The first subjective experience of a substance on the tongue is taste (rasa); a short time later, one feels heating or cooling energy (virya); finally the substance has an action on urine, feces and sweat (vipak)."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

@@ -1,0 +1,48 @@
+slug: taste-dosha-action-table-ayurveda
+statement: >-
+  Ayurveda assigns each of the six tastes a predictable action on the three
+  doshas. Sweet, sour and salty all decrease vata; sweet decreases pitta while
+  sour and salty increase it; sweet, sour and salty all increase kapha. Pungent,
+  bitter and astringent all increase vata; pungent increases pitta while bitter
+  and astringent decrease it; pungent, bitter and astringent all decrease kapha.
+  This lets a cook deliberately favour the tastes that pacify a client's
+  aggravated dosha and minimise the tastes that aggravate it.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Each taste is built from a pair of the five elements (e.g. sweet = earth +
+  water, pungent = fire + air), so its qualities mirror — and therefore amplify
+  or counter — the qualities of each dosha. Heavy/oily/cooling tastes (sweet,
+  sour, salty) build kapha and settle the dry, mobile, cold qualities of vata;
+  light/dry/heating tastes (pungent, bitter, astringent) reduce kapha but
+  aggravate the dry, light qualities of vata. This is the matching key behind
+  dosha-specific food choice.
+coaching_translation: >-
+  Use taste as a steering wheel. For a dry, anxious, constipated (vata)
+  picture, favour sweet, sour and salty (warm cooked grains, ghee, a little
+  lemon and salt) and go easy on dry/bitter/astringent foods. For a hot,
+  irritable, inflamed (pitta) picture, favour sweet, bitter and astringent
+  (cooling vegetables, sweet fruit, coriander) and limit sour, salty and
+  pungent. For a heavy, congested, sluggish (kapha) picture, favour pungent,
+  bitter and astringent (warming spices, leafy bitters, legumes) and limit
+  sweet, sour and salty.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    Taste-to-dosha action is a traditional Ayurvedic framework, not a
+    biochemically validated rule. There are documented exceptions driven by
+    virya and prabhava (e.g. honey is sweet but heating).
+  - Coaching educates on food choice only; it does not diagnose a client's dosha as a medical condition.
+linked_to_topics:
+  - ayurvedic-elemental-design-doshas
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 3: Taste and Digestion — Rasa and the Action of Taste; How the Tastes Affect the Doshas (pp.34-37)"
+    quote: "[Pungent] is light, drying and heating in nature. It soothes kapha but excites pitta and vata."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

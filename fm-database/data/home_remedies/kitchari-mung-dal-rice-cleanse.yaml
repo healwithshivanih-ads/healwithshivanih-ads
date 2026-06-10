@@ -54,8 +54,11 @@ linked_to_mechanisms:
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'Chapter 4: Everyday Kichari recipe'
+- id: lad-ayurvedic-cooking-self-healing-1997
+  location: 'Chapter 7: Recipes — Kitcharis (pp.75-79), incl. Vata / Pitta / Kapha / Tridoshic variants'
+  quote: "Kitchari, a seasoned mixture of rice and mung dal, is basic to the Ayurvedic way of life... is tridoshic. This complete food is easy to digest and gives strength and vitality... Kitchari is the preferred food to use when fasting on a mono-fast or while going through cleansing programs such as panchakarma."
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-06-09'
+updated_at: '2026-06-10'
 updated_by: Shivani

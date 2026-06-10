@@ -1,0 +1,52 @@
+slug: tadka-tempering-spices-in-ghee
+display_name: Tadka — Temper Whole Spices in Ghee Before Cooking
+aliases:
+  - tempering-spices
+  - blooming-spices
+  - chaunk
+  - vaghar
+  - spice-tempering
+category: food_prep
+summary: >-
+  The foundational Ayurvedic cooking technique: heat ghee (or oil) over medium
+  heat, then sauté whole spices — black mustard seeds and cumin seeds first —
+  until they pop, add a pinch of compounded hing (asafoetida), then other seeds,
+  ginger, curry leaves and aromatics, and add ground spices last so they don't
+  burn. Lad teaches that the popping "liberates the prana (vital energy) of the
+  seeds," makes the spices and the dish more digestible, kindles agni, and that
+  the hing specifically dispels the gas caused by beans and certain food
+  combinations.
+benefits:
+  - releases the aroma and prana of whole spices so flavours and benefits are fully available
+  - hing (asafoetida) added in the temper dispels the gas produced by beans and lentils
+  - kindles agni and improves the digestibility and absorption of the whole dish
+  - helps reconcile otherwise heavy or gas-producing foods
+swap_from:
+  - adding raw, un-bloomed ground spice powders directly to a dish
+  - cooking dals and beans plain, without carminative spices, then suffering gas
+how_to_use: >-
+  Heat 1-2 tsp ghee (or oil) over medium heat in a heavy pan. Add black mustard
+  seeds and cumin seeds and let them pop, a few seconds. Add a pinch of
+  compounded hing, then any other whole seeds, chopped ginger, curry leaves and
+  aromatics (onion/garlic if used). Add ground spices (turmeric, masala) LAST,
+  off or low heat, as they burn easily. Then add the rice, dal or vegetables and
+  stir to coat well before adding water. Pitta types should go lighter on the
+  heating spices.
+cautions:
+  - ground spices scorch quickly — add them last and keep the heat moderate
+  - use compounded hing (it contains the right diluent), not pure asafoetida, which is too strong
+  - high pitta / acidity — keep mustard and other heating spices modest
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 7: Recipes — Helpful Hints about Ayurvedic Cooking (pp.59-60)"
+    quote: "Ghee or oil is heated over a medium heat in a heavy saucepan, then black mustard seeds and cumin seeds are sautéed in the oil for a few moments until they pop. This 'popping' liberates the prana or vital energy of the seeds, increasing the food value. Next hing... is often added. This helps dispel gas caused by the beans... Ground spices are added last because of their tendency to burn."
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

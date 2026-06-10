@@ -1,0 +1,46 @@
+slug: viruddha-ahara-incompatible-food-combining-creates-ama
+statement: >-
+  Ayurveda teaches that certain food combinations (viruddha ahara) disturb agni
+  even when each food is wholesome on its own. When two foods with antagonistic
+  taste, heating/cooling potency or post-digestive effect are eaten together,
+  digestion is slowed, food sits and ferments, and ama (toxic undigested residue)
+  is generated — held to be a root cause of many ailments. The classic example
+  is bananas with milk: both are sweet and cooling, but banana has a sour vipaka
+  while milk has a sweet vipaka, and the conflicting post-digestive effects are
+  said to confuse digestion and produce toxins.
+evidence_tier: fm_specific_thin
+rationale: >-
+  The principle isolates post-digestive incompatibility (vipaka conflict) as a
+  distinct cause of indigestion beyond the food's quality or freshness. While the
+  ama framework is Ayurvedic, the observable downstream — delayed gastric
+  emptying, fermentation, bloating from poorly matched meals — is consistent with
+  modern digestive physiology in susceptible individuals.
+coaching_translation: >-
+  Sometimes it's not the food, it's the pairing. Two "healthy" foods eaten
+  together can still leave you bloated and heavy if they fight in the gut. The
+  most useful rules: eat fruit on its own, don't blend milk with sour or salty
+  things, and keep meals reasonably simple. If a particular combination
+  reliably gives you gas or heaviness, trust that signal.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    Food-combining incompatibility is a traditional Ayurvedic concept; rigorous
+    Western evidence is limited and it should be applied flexibly, not dogmatically.
+  - >-
+    The same source notes mitigating factors — strong digestion, balancing
+    spices, adjusted quantities and habituation all reduce the effect, and an
+    occasional poor combination is not harmful.
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 4: Food Combining (pp.45-47)"
+    quote: "When two foods are eaten together that have antagonistic qualities, taste, energy or post-digestive effect, they may be toxic to the body... Digestion will be slowed down, food will sit too long in the stomach and it will literally putrefy."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani
