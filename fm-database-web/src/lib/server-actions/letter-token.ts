@@ -156,7 +156,32 @@ export async function ensureLetterToken(
   data.letter_token_created_at = data.letter_token_created_at ?? new Date().toISOString();
   data.letter_short_code = short_code;
   await fs.writeFile(filePath, yaml.dump(data, { sortKeys: false }), "utf-8");
+  await stageClientAppArtifacts(data.client_id as string, planSlug);
   return { ok: true, token, short_code };
+}
+
+/**
+ * Mirror the client-facing artifacts (sanitized plan, letters, app client
+ * keys) into the Fly staging tree so the public host can serve
+ * /app/<token>, /letter/<token>, /recipes + /supplements for this client.
+ * Without this, the staging-mode Fly machine has no published plans at all
+ * and every token link dies with "link isn't active". No-op when
+ * FMDB_STAGING_DIR is unset. Best-effort: a staging failure must never
+ * block the coach getting her link.
+ */
+export async function stageClientAppArtifacts(clientId: string, planSlug: string): Promise<void> {
+  if (!process.env.FMDB_STAGING_DIR || !clientId || !planSlug) return;
+  try {
+    const { runShim } = await import("@/lib/fmdb/shim");
+    const out = (await runShim("app-staging-action.py", {
+      action: "stage",
+      client_id: clientId,
+      plan_slug: planSlug,
+    })) as { ok?: boolean; error?: string };
+    if (!out.ok) console.error("[app-staging] stage failed:", out.error);
+  } catch (err) {
+    console.error("[app-staging] stage failed:", err);
+  }
 }
 
 // ── Short-code redirect lookups ───────────────────────────────────────────────

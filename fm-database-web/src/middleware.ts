@@ -39,6 +39,7 @@ import { NextRequest, NextResponse } from "next/server";
 const PUBLIC_PATH_PREFIXES = [
   "/intake/",
   "/start/",
+  "/guide/",
   // Public letter page: clients open the consolidated plan letter via a
   // token-based URL (plan.letter_token). Generated at publish; cleared
   // on revoke. Behaviour mirrors /intake/.
@@ -58,6 +59,17 @@ const PUBLIC_PATH_PREFIXES = [
   // the meal plan. Split out of the consolidated letter (post-reformat)
   // so the letter stays under 7 pages.
   "/recipes/",
+  // Client companion app ("The Ochre Tree" PWA): /app/<letter_token>
+  // renders the client's live plan as a daily-use app. Token = the same
+  // plan letter_token that gates /letter/. The two /api/app-* routes are
+  // the app's write-back (weekly check-in) and cost-capped co-pilot —
+  // both re-verify the token server-side before doing anything.
+  "/app/",
+  "/api/app-checkin",
+  "/api/app-copilot",
+  // Static PWA assets for the client app (manifest + home-screen icons,
+  // served from public/ochre-app/). No data, safe to serve publicly.
+  "/ochre-app/",
   // Public client handouts — short branded 1-page guides (iron, thyroid,
   // blood sugar, …) dripped to clients on a schedule. Static HTML served
   // from public/handouts/<slug>.html. Generic educational content, safe to

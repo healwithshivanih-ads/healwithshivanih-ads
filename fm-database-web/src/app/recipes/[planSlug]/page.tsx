@@ -22,6 +22,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { lookupLetterToken } from "@/lib/server-actions/letter-token";
+import { AYURVEDIC_DISH_RE } from "@/lib/fmdb/client-app";
 
 export const dynamic = "force-dynamic";
 
@@ -102,6 +103,22 @@ function extractRecipeAppendix(md: string): string | null {
   const next = after.slice(start[0].length).search(/^##\s/m);
   if (next === -1) return after.trim();
   return after.slice(0, start[0].length + next).trim();
+}
+
+/** Coach rule 2026-06-10: classic Ayurvedic preparations get an explicit
+ *  "Ayurveda recommends" badge in the recipe pack (and on the app's menu).
+ *  Injected after any recipe heading whose title matches the shared
+ *  AYURVEDIC_DISH_RE — works on both the pre-rendered brand HTML and the
+ *  markdown fallback, since both end up as an HTML string here. */
+const AYURVEDA_BADGE =
+  '<span style="display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;' +
+  "letter-spacing:.04em;text-transform:uppercase;color:#3a4d41;background:rgba(74,97,82,0.12);" +
+  'padding:3px 9px;border-radius:999px;vertical-align:middle;margin:2px 0 6px;">\ud83c\udf3f Ayurveda recommends</span>';
+
+function injectAyurvedaBadges(html: string): string {
+  return html.replace(/(<h[34][^>]*>)([^<]+)(<\/h[34]>)/gi, (full, open, title, close) =>
+    AYURVEDIC_DISH_RE.test(title) ? `${open}${title}${close}\n${AYURVEDA_BADGE}` : full,
+  );
 }
 
 function emptyPage(message: string): React.ReactElement {
@@ -216,7 +233,7 @@ export default async function RecipesPage({
     return (
       <iframe
         title="Recipe pack"
-        srcDoc={recipesHtml}
+        srcDoc={injectAyurvedaBadges(recipesHtml)}
         style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", border: 0 }}
       />
     );
@@ -261,7 +278,7 @@ export default async function RecipesPage({
   return (
     <iframe
       title="Recipe pack"
-      srcDoc={fullHtml}
+      srcDoc={injectAyurvedaBadges(fullHtml)}
       style={{ position: "fixed", inset: 0, width: "100vw", height: "100vh", border: 0 }}
     />
   );

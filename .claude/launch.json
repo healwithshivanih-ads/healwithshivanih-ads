@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "thyroid-guide",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "7788", "--directory", "/tmp/thyroid-guide"],
+      "port": 7788
+    },
+    {
+      "name": "fm-coach-test",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd fm-database-web && exec ./node_modules/.bin/next start -p 3003"],
+      "port": 3003
+    }
+  ]
+}

@@ -31,6 +31,7 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { SendIntakeFormButton } from "./send-intake-form-button";
+import { SendAppLinkButton } from "./send-app-link-button";
 import { OverviewSendLabsCard } from "./overview-send-labs-card";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
@@ -1506,6 +1507,21 @@ export default async function ClientV2Page({
                                 }
                                 lastUnlockNotifyAt={lastUnlockNotifyAt}
                               />
+                              {publishedPlan?.slug && (
+                                <SendAppLinkButton
+                                  planSlug={publishedPlan.slug}
+                                  mobileNumber={
+                                    (client as unknown as { mobile_number?: string }).mobile_number
+                                  }
+                                  displayName={
+                                    (client as unknown as { display_name?: string }).display_name
+                                  }
+                                  existingToken={
+                                    (publishedPlan as unknown as { letter_token?: string })
+                                      .letter_token ?? null
+                                  }
+                                />
+                              )}
                   </div>
                 ),
               },

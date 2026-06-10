@@ -33,6 +33,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 // CatalogueIngestPanel moved to /ingest page 2026-05-15 — coach feedback:
 // belongs next to the file-upload flow, not on the dashboard.
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
+import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { MealPlanDripPanel } from "@/components/meal-plan-drip-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import {
@@ -919,6 +920,24 @@ export default async function DashboardV2() {
   }));
   const followUpDueIds = grouped.follow_up_due.map((r) => r.client_id);
   const recheckDueIds = grouped.protocol_complete.map((r) => r.client_id);
+  // 📲 Client-app links — one row per published plan. The token is the
+  // plan's letter_token (issued lazily in-panel when missing).
+  const appLinkRows = (plans as PlanRow[])
+    .filter((p) => (p._bucket ?? p.status) === "published" && p.client_id && p.slug)
+    .map((p) => {
+      const c = (clients as ClientRow[]).find((x) => x.client_id === p.client_id);
+      return {
+        client_id: p.client_id as string,
+        display_name: c?.display_name ?? (p.client_id as string),
+        mobile_number: c?.mobile_number ?? null,
+        plan_slug: p.slug as string,
+        token:
+          ((p as unknown as { letter_token?: string }).letter_token?.length ?? 0) >= 16
+            ? ((p as unknown as { letter_token?: string }).letter_token as string)
+            : null,
+      };
+    })
+    .sort((a, b) => a.display_name.localeCompare(b.display_name));
   const activeIds = [
     ...grouped.active.map((r) => r.client_id),
     ...grouped.protocol_complete.map((r) => r.client_id),
@@ -1341,6 +1360,12 @@ export default async function DashboardV2() {
           {whatsappConfigured && (
             <StartDateReminderPanel whatsappConfigured={whatsappConfigured} />
           )}
+
+          {/* 📲 Client-app links — share the Ochre Tree companion app
+              (/app/<letter_token>) per published plan. Copy works even
+              without WhatsApp configured, so not gated. */}
+          <ClientAppLinksPanel rows={appLinkRows} />
+
 
           {/* 🍽 Fortnight meal-plan drip — next 2-week letter due per active
               client, anchored to first meal-plan send (coach rule 2026-06-04).

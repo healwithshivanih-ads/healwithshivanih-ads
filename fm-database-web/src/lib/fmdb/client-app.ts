@@ -1,0 +1,1899 @@
+import "server-only";
+
+/**
+ * Client companion app ("The Ochre Tree" PWA) — server-side data assembly.
+ *
+ * Builds the app payload the /app/[token] screens render, entirely from
+ * REAL coach-authored sources. Nothing clinical is invented here:
+ *
+ *   - published plan YAML        → supplements, practices, nutrition tiers,
+ *                                  education lessons, lab orders, phases,
+ *                                  assigned remedies, ayurveda block
+ *   - the plan's letter (.md)    → meal week tables, recipes, per-supplement
+ *                                  client-voiced "why" + buy links, remedies
+ *                                  blurbs, roadmap phase notes, watch list
+ *   - client.yaml                → identity, dosha constitution, goals,
+ *                                  dietary preference, contact
+ *   - catalogue home_remedies/   → the 198-remedy library (route/dosha/virya)
+ *   - catalogue cooking_adjustments/ → cooking guidance cards
+ *   - sessions/                  → weekly check-in / poll history → journey +
+ *                                  symptom-score points
+ *
+ * Auth: the caller resolves a plan letter_token first (lookupLetterToken) —
+ * same public-token posture as /letter/<token>.
+ */
+
+import fs from "node:fs/promises";
+import path from "node:path";
+import yaml from "js-yaml";
+import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+
+// ── contract types (mirror the design prototype's data shape) ───────────────
+
+export interface AppMeal {
+  slot: string;
+  timeHint: string;
+  glyph: string;
+  pills: string[];
+  note?: string;
+  /** dish is a classic Ayurvedic preparation → "Ayurveda recommends" badge */
+  ayurveda?: boolean;
+}
+
+/** Classic Ayurvedic preparations — drives the "Ayurveda recommends" badge
+ *  on menu items and recipe-pack entries. Exported for the /recipes page. */
+export const AYURVEDIC_DISH_RE =
+  /khichdi|khichri|kanji\b|kashayam|churan|golden milk|haldi doodh|turmeric milk|ccf tea|cumin[- ]coriander[- ]fennel|buttermilk|chaas|lassi|methi water|jeera water|triphala|amla|haldi milk/i;
+
+export interface AppMealExtra {
+  grad: string;
+  mins?: string;
+  serves?: string;
+  ingredients: string[];
+  recipe: string[];
+  swaps: { name: string; note: string }[];
+}
+
+export interface AppSupplement {
+  id: string;
+  name: string;
+  dose: string;
+  slot: "Morning" | "With meals" | "Bedtime";
+  timing: string;
+  why: string;
+  buyUrl?: string;
+  buyLabel?: string;
+}
+
+export interface AppRemedy {
+  slug: string;
+  name: string;
+  also: string;
+  category: string;
+  route: "internal" | "external";
+  icon: string;
+  summary: string;
+  prepSteps: string[];
+  dose: string;
+  duration: string;
+  timing: string;
+  cautions: string[];
+  indications: string[];
+  bal: string[];
+  agg: string[];
+  virya: string | null;
+  stub: boolean;
+  // demographic gates (from the catalogue's suitable_sex / suitable_stages /
+  // avoid_in — enforced server-side before anything reaches the phone)
+  suitableSex: "any" | "female" | "male";
+  suitableStages: string[];
+  avoidIn: string[];
+  /** Shelf cards only: the short client-specific "why this remedy" line. */
+  whyFor?: string;
+  // assignment overlay
+  assigned?: boolean;
+  daily?: boolean;
+  supplementLike?: boolean;
+  suppSlot?: string;
+  suppTiming?: string;
+  when?: string;
+  why?: string;
+}
+
+export interface JourneyItem {
+  kind: "start" | "update" | "checkin";
+  week: number;
+  when: string;
+  title: string;
+  summary?: string;
+  note?: { who: string; text: string };
+}
+
+export interface PlateItem {
+  key: string;
+  label: string;
+  portion: string;
+  pct: number;
+  tone: string;
+  icon?: string;
+  examples: string[];
+  note: string;
+}
+
+export interface AppLesson {
+  id: string;
+  title: string;
+  kind: string;
+  mins: string;
+  summary: string;
+  body: string;
+}
+
+export interface AppResource {
+  id: string;
+  title: string;
+  kind: string;
+  icon: string;
+  desc: string;
+  body: string;
+  url?: string;
+}
+
+export interface ClientAppData {
+  clientId: string;
+  planSlug: string;
+  token: string;
+  client: {
+    firstName: string;
+    program: string;
+    week: number;
+    totalWeeks: number;
+    startDateLabel: string;
+    dosha: string[];
+    doshaLabel: string;
+    coachLine: string;
+  };
+  coach: {
+    name: string;
+    role: string;
+    initials: string;
+    whatsappNumber: string;
+    whatsappPrefill: string;
+    nextSession: string | null;
+  };
+  today: { dow: string; dateLabel: string; idx: number };
+  weekStrip: { dow: string; num: number; today?: boolean }[];
+  meals: AppMeal[];
+  mealExtra: Record<string, AppMealExtra>;
+  supplements: AppSupplement[];
+  slotOrder: string[];
+  practices: { id: string; name: string; when: string }[];
+  principles: { t: string; b: string }[];
+  labs: { name: string; meta: string; tone: string }[];
+  journey: JourneyItem[];
+  faq: { q: string; a: string }[];
+  symptomScore: {
+    goodAt: number;
+    points: { wk: number; v: number }[];
+    deltaLabel: string;
+    next: string;
+    caption: string;
+  } | null;
+  watchList: { name: string; note: string }[];
+  labCheckpoints: {
+    note: string;
+    list: { label: string; sub: string; value: string; state: "done" | "next" | "todo" }[];
+  };
+  movementGoalMins: number;
+  remedies: AppRemedy[];
+  /** Eligible library (hard gates already applied) — what search browses. */
+  remedyLib: AppRemedy[];
+  /** Top 3–5 most relevant eligible remedies, each with a whyFor line. */
+  remedyShelf: AppRemedy[];
+  planRef: {
+    pattern: string;
+    authoredBy: string;
+    forNote: string;
+    phase: { currentIdx: number; list: { name: string; weeks: string; note: string }[] };
+    plate: PlateItem[];
+    accents: PlateItem[];
+    oils: { use: string[]; avoid: string[]; note: string };
+    foods: { eat: string[]; sometimes: string[]; avoid: string[] };
+    /** when the issued letter spells out its own food groups, render THOSE
+     *  verbatim (letter parity) instead of the 3-tier paraphrase */
+    letterFoods?: LetterFoods | null;
+    avoidWhy: string;
+    cooking: { t: string; b: string }[];
+  };
+  /** the letter's "sample week — swap like for like" guidance, verbatim */
+  mealsNote: string;
+  lessons: AppLesson[];
+  resources: AppResource[];
+  aiSuggested: { q: string; a: string }[];
+  account: { name: string; contact: string; plan: string; member: string; avatar: string };
+  reminders: { id: string; label: string; time: string; on: boolean }[];
+}
+
+// ── small utils ──────────────────────────────────────────────────────────────
+
+type Dict = Record<string, unknown>;
+
+function asStr(v: unknown): string {
+  return typeof v === "string" ? v : "";
+}
+function asArr(v: unknown): unknown[] {
+  return Array.isArray(v) ? v : [];
+}
+function asStrArr(v: unknown): string[] {
+  return asArr(v).filter((x): x is string => typeof x === "string");
+}
+
+const IST = "Asia/Kolkata";
+
+function istNow(): Date {
+  // Render dates in the client's timezone (India-based practice).
+  const s = new Date().toLocaleString("en-US", { timeZone: IST });
+  return new Date(s);
+}
+
+function fmtDay(d: Date): string {
+  return d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
+}
+
+function humanize(slug: string): string {
+  return (slug || "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+function firstSentence(text: string): string {
+  const t = (text || "").trim().replace(/\s+/g, " ");
+  const m = t.match(/^.*?[.!?](\s|$)/);
+  return (m ? m[0] : t).trim();
+}
+
+async function readYamlIfExists(p: string): Promise<Dict | null> {
+  try {
+    const raw = await fs.readFile(p, "utf-8");
+    const d = yaml.load(raw);
+    return d && typeof d === "object" ? (d as Dict) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function readIfExists(p: string): Promise<string | null> {
+  try {
+    return await fs.readFile(p, "utf-8");
+  } catch {
+    return null;
+  }
+}
+
+// ── letter (.md) parsing ─────────────────────────────────────────────────────
+
+interface WeekTable {
+  week: number;
+  /** unified shape: rows = slots, cells = Mon..Sun (7 columns) */
+  rows: { slot: string; cells: string[] }[];
+  /** format-B letters carry real dates per day column, "8 Jun" etc. */
+  dayDates?: (string | null)[];
+}
+
+const DOW_SHORT = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+/** Normalise a meal cell: drop recipe markers (✦/✨/⭐) + bold, and blank
+ *  out filler cells ("Same", "Same as Week 1", "—") so they never render
+ *  as dishes. */
+function cleanDishCell(raw: string): string {
+  const c = raw.replace(/[✦✨⭐]/g, "").replace(/\*\*/g, "").trim();
+  if (/^same\b/i.test(c) || /^[-–—]+$/.test(c)) return "";
+  return c;
+}
+
+/** Parse meal week tables in BOTH letter generations:
+ *  A (pre-reformat): `## 🗓 Week 1 Meal Plan`, rows = slots, cols = Mon..Sun.
+ *  B (day-card era): `## Week 1`, header `| Day | Breakfast | … |`,
+ *    rows = days ("Mon 8 Jun"). Normalised to shape A so downstream
+ *    day-column logic is shared; the per-day dates are kept so "today"
+ *    can match by real date first. */
+function parseWeekTables(md: string): WeekTable[] {
+  const tables: WeekTable[] = [];
+  const re = /^#{2,3} .*?Week (\d+)[^\n]*$/gim;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(md))) {
+    const week = parseInt(m[1], 10);
+    const rest = md.slice(m.index + m[0].length);
+    const tableLines: string[][] = [];
+    let inTable = false;
+    for (const line of rest.split("\n")) {
+      const t = line.trim();
+      if (t.startsWith("|")) {
+        inTable = true;
+        const cells = t.split("|").map((c) => c.trim()).filter((_, i, a) => i > 0 && i < a.length - 1);
+        if (cells.length >= 2 && !/^[-:\s]+$/.test(cells[0])) tableLines.push(cells);
+      } else if (inTable) {
+        break;
+      } else if (t.startsWith("#")) {
+        break; // next section before any table
+      }
+    }
+    if (tableLines.length < 2) continue;
+    const header = tableLines[0].map((c) => c.replace(/\*\*/g, "").trim());
+
+    if (/^day$/i.test(header[0])) {
+      // ── format B: rows are days, columns are slots ──────────────────
+      const slots = header.slice(1);
+      const rows = slots.map((slot) => ({ slot, cells: Array(7).fill("") as string[] }));
+      const dayDates: (string | null)[] = Array(7).fill(null);
+      for (const cells of tableLines.slice(1)) {
+        const dayCell = cells[0].replace(/\*\*/g, "").trim();
+        const dowM = dayCell.match(/^(mon|tue|wed|thu|fri|sat|sun)/i);
+        if (!dowM) continue;
+        const col = DOW_SHORT.indexOf(dowM[1].toLowerCase());
+        if (col < 0) continue;
+        const dateM = dayCell.match(/(\d{1,2}\s+\w{3,})/);
+        if (dateM) dayDates[col] = dateM[1];
+        slots.forEach((_, si) => {
+          rows[si].cells[col] = cleanDishCell(cells[si + 1] ?? "");
+        });
+      }
+      if (rows.some((r) => r.cells.some(Boolean))) tables.push({ week, rows, dayDates });
+    } else {
+      // ── format A: rows are slots, columns are Mon..Sun ──────────────
+      const rows: { slot: string; cells: string[] }[] = [];
+      for (const cells of tableLines.slice(1)) {
+        if (cells.length < 8) continue;
+        const slot = cells[0].replace(/\*\*/g, "").trim();
+        if (slot.startsWith("*")) continue; // the ~kcal footer row
+        rows.push({ slot, cells: cells.slice(1, 8).map(cleanDishCell) });
+      }
+      if (rows.length) tables.push({ week, rows });
+    }
+  }
+  return tables;
+}
+
+/** Format-B letters spell out the eating pattern as labelled food groups
+ *  ("**Protein, every meal:** dal, rajma, …") under "Foods to enjoy" /
+ *  "Foods to go easy on" headings. When present, the app renders THESE
+ *  verbatim (letter parity) instead of paraphrasing plan YAML fields. */
+export interface LetterFoodGroup {
+  label: string;
+  items: string[];
+}
+export interface LetterFoods {
+  enjoyTitle: string;
+  enjoy: LetterFoodGroup[];
+  easyTitle: string;
+  easy: string[];
+  note: string;
+}
+
+// Heading shapes vary by letter generation: bold paragraphs ("**Foods to
+// enjoy — build your meals around these**"), ## / ### sections ("## 🍽 Foods
+// to emphasise", "### What to add — your \"yes\" list"). Items vary too:
+// labelled groups ("**Protein, every meal:** dal, rajma, …"), bold-lead
+// bullets ("**Amla 1–2 daily** — why…"), or 2-column tables (| Food | Why |).
+const ENJOY_HEAD_RE =
+  /^(?:#{2,4}\s+)?[^\w\n]{0,6}\s*\**((?:Foods to (?:enjoy|emphasise|emphasize)|What to add)[^*\n]*)\**\s*$/im;
+const EASY_HEAD_RE =
+  /^(?:#{2,4}\s+)?[^\w\n]{0,6}\s*\**((?:Foods to (?:go easy on|limit|reduce|avoid)|What to (?:reduce|avoid|go easy on))[^*\n]*)\**\s*$/im;
+
+function parseLetterFoods(md: string): LetterFoods | null {
+  const enjoyM = md.match(ENJOY_HEAD_RE);
+  const easyM = md.match(EASY_HEAD_RE);
+  if (!enjoyM || !easyM) return null;
+  /** Bullets / table rows under a heading, until the next heading. */
+  const sectionItems = (start: number): string[] => {
+    const rest = md.slice(start);
+    const lines: string[] = [];
+    let sawContent = false;
+    for (const line of rest.split("\n").slice(1)) {
+      const t = line.trim();
+      if (t === "") {
+        if (sawContent && lines.length) continue;
+        continue;
+      }
+      if (/^#{1,4}\s/.test(t)) break;
+      if (/^\*\*[^*]+\*\*\s*$/.test(t)) break; // next bold paragraph-heading
+      if (t.startsWith("- ")) {
+        lines.push(t.slice(2).trim());
+        sawContent = true;
+      } else if (t.startsWith("|")) {
+        const cells = t.split("|").map((c) => c.trim()).filter(Boolean);
+        if (!cells.length || /^[-:\s]+$/.test(cells[0]) || /^food$/i.test(cells[0].replace(/\*\*/g, ""))) continue;
+        lines.push(cells[0]);
+        sawContent = true;
+      } else if (sawContent) {
+        break;
+      }
+    }
+    return lines;
+  };
+  /** One bullet → {label, items[]}: labelled group, bold-lead, or prose. */
+  const toGroup = (b: string): LetterFoodGroup => {
+    const labelled = b.match(/^\*\*([^*]+?):\*\*:?\s*(.+)$/);
+    if (labelled) {
+      return {
+        label: labelled[1].trim(),
+        items: labelled[2].split(/,\s*(?![^()]*\))/).map((s) => s.replace(/\*\*/g, "").trim()).filter(Boolean),
+      };
+    }
+    const boldLead = b.match(/^\*\*([^*]+?)\*\*/);
+    if (boldLead) return { label: "", items: [boldLead[1].trim()] };
+    const short = b.replace(/\*\*/g, "").split(/\s+[—–]\s+/)[0].trim();
+    return { label: "", items: [short] };
+  };
+  const enjoy = sectionItems(enjoyM.index!).map(toGroup);
+  const easy = sectionItems(easyM.index!).map((b) => toGroup(b).items.join(", ")).filter(Boolean);
+  if (!enjoy.length || !easy.length) return null;
+  // the "sample week" guidance paragraph, if present
+  const noteM = md.match(/(?:^|\n)([^\n#|]*sample (?:week|to give you)[^\n]*)/i);
+  return {
+    enjoyTitle: enjoyM[1].trim().replace(/[—–-]\s*$/, "").trim(),
+    enjoy,
+    easyTitle: easyM[1].trim().replace(/[—–-]\s*$/, "").trim(),
+    easy,
+    note: noteM ? noteM[1].replace(/\*\*/g, "").trim() : "",
+  };
+}
+
+/** First-letter HTML carries a "Buy here" list (buy-row entries) instead of
+ *  the printed schedule table — harvest name → URL for reorder links. */
+function parseHtmlBuyRows(html: string): { name: string; url: string }[] {
+  const out: { name: string; url: string }[] = [];
+  const re = /buy-row-name">([^<]+)<[\s\S]{0,400}?href="([^"]+)"/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html))) {
+    out.push({ name: m[1].trim(), url: m[2] });
+  }
+  return out;
+}
+
+interface LetterRecipe {
+  title: string;
+  serves?: string;
+  time?: string;
+  ingredients: string[];
+  method: string[];
+  tip?: string;
+}
+
+function parseRecipes(md: string): LetterRecipe[] {
+  const out: LetterRecipe[] = [];
+  const parts = md.split(/^### ✦ /m).slice(1);
+  for (const part of parts) {
+    const lines = part.split("\n");
+    const title = lines[0].trim();
+    const body = lines.slice(1).join("\n");
+    const meta = body.match(/\*\*Serves:\*\*\s*([^|]+)\|\s*\*\*Time:\*\*\s*(.+)/);
+    const ingredients: string[] = [];
+    // Letters often split a dish into qualified groups, e.g.
+    // "**Method (Eggs):**" + "**Method (Ragi Roti):**" — collect per
+    // group so multi-part dishes read clearly in the overlay.
+    const methodGroups: { qual: string; steps: string[] }[] = [];
+    let tip: string | undefined;
+    let mode: "none" | "ing" | "meth" = "none";
+    for (const line of body.split("\n")) {
+      const t = line.trim();
+      const ingM = t.match(/^\*\*Ingredients\s*(?:\(([^)]+)\))?:?\*\*/i);
+      if (ingM) { mode = "ing"; continue; }
+      const methM = t.match(/^\*\*Method\s*(?:\(([^)]+)\))?:?\*\*/i);
+      if (methM) {
+        mode = "meth";
+        methodGroups.push({ qual: methM[1]?.trim() ?? "", steps: [] });
+        continue;
+      }
+      if (/^\*\*Tip:?\*\*/i.test(t)) { tip = t.replace(/^\*\*Tip:?\*\*\s*/i, ""); mode = "none"; continue; }
+      if (t.startsWith("## ") || t.startsWith("### ")) break;
+      if (mode === "ing" && t.startsWith("- ")) ingredients.push(t.slice(2).trim());
+      if (mode === "meth" && /^\d+\./.test(t) && methodGroups.length) {
+        methodGroups[methodGroups.length - 1].steps.push(t.replace(/^\d+\.\s*/, "").trim());
+      }
+    }
+    const multi = methodGroups.filter((g) => g.steps.length).length > 1;
+    const method = methodGroups.flatMap((g) =>
+      g.steps.map((s, i) => (multi && g.qual && i === 0 ? `${g.qual}: ${s}` : s)),
+    );
+    out.push({
+      title,
+      serves: meta ? meta[1].trim() : undefined,
+      time: meta ? meta[2].trim() : undefined,
+      ingredients,
+      method,
+      tip,
+    });
+  }
+  return out;
+}
+
+interface LetterSupplementRow {
+  name: string;
+  dose: string;
+  when: string;
+  why: string;
+  buyLabel?: string;
+  buyUrl?: string;
+}
+
+/** Parse supplement tables in either letter format:
+ *  (a) single `| Supplement | Dose | When | Why | Buy |` table, or
+ *  (b) split Morning / Evening tables with a `Where to Get It` column. */
+function parseSupplementRows(md: string): LetterSupplementRow[] {
+  const rows: LetterSupplementRow[] = [];
+  for (const line of md.split("\n")) {
+    const t = line.trim();
+    if (!t.startsWith("|")) continue;
+    const cells = t.split("|").map((c) => c.trim()).filter((_, i, a) => i > 0 && i < a.length - 1);
+    if (cells.length < 4) continue;
+    const first = cells[0].replace(/\*\*/g, "").trim();
+    if (/^supplement$/i.test(first) || /^-+$/.test(first.replace(/[:\s]/g, "-"))) continue;
+    // Heuristic: a supplement row's 2nd cell looks like a dose (contains digits + mg/mcg/g)
+    const dose = cells[1].replace(/\*\*/g, "").trim();
+    if (!/\d/.test(dose) || !/(mg|mcg|g\b|IU|billion)/i.test(dose)) continue;
+    const last = cells[cells.length - 1];
+    const link = last.match(/\[([^\]]+)\]\(([^)]+)\)/);
+    const why = (cells.length >= 5 ? cells[cells.length - 2] : cells[2])
+      .replace(/\*\*/g, "")
+      .trim();
+    const when = cells.length >= 5 ? cells[2].replace(/\*\*/g, "").trim() : "";
+    rows.push({
+      name: first.replace(/\s*\*\(optional[^)]*\)\*?/i, "").trim(),
+      dose,
+      when,
+      why,
+      buyLabel: link ? link[1] : undefined,
+      buyUrl: link ? link[2] : undefined,
+    });
+  }
+  return rows;
+}
+
+interface LetterRemedyBlurb {
+  title: string;
+  how: string;
+  what: string;
+}
+
+function parseRemedyBlurbs(md: string): LetterRemedyBlurb[] {
+  const sec = md.split(/^## .*Home Remedies.*$/m)[1];
+  if (!sec) return [];
+  const upToNext = sec.split(/^## /m)[0];
+  const out: LetterRemedyBlurb[] = [];
+  const parts = upToNext.split(/^### /m).slice(1);
+  for (const part of parts) {
+    const lines = part.split("\n");
+    const title = lines[0].trim();
+    const rest = lines.slice(1).join("\n").trim();
+    const whatM = rest.match(/\*\*What it does:?\*\*\s*([^\n]+)/);
+    const how = rest.split(/\*\*What it does/)[0].replace(/\s+/g, " ").trim();
+    out.push({ title, how, what: whatM ? whatM[1].trim() : "" });
+  }
+  return out;
+}
+
+function parseWatchList(md: string): { name: string; note: string }[] {
+  const sec = md.split(/^## .*What to Notice.*$/m)[1];
+  if (!sec) return [];
+  const upToNext = sec.split(/^## /m)[0];
+  const out: { name: string; note: string }[] = [];
+  // Format A: "✅ **Digestion:** Are you …"
+  for (const line of upToNext.split("\n")) {
+    const m = line.match(/^✅\s*\*\*([^:*]+):?\*\*:?\s*(.+)$/);
+    if (m) out.push({ name: m[1].trim(), note: m[2].replace(/\s+/g, " ").trim() });
+  }
+  if (out.length) return out;
+  // Format B: plain "- How does your energy feel …" question bullets —
+  // derive a short label from the dominant keyword.
+  const LABELS: [RegExp, string][] = [
+    [/energy|crash/i, "Energy"],
+    [/sleep|waking|falling asleep/i, "Sleep"],
+    [/mood/i, "Mood"],
+    [/digest|bloat|bowel/i, "Digestion"],
+    [/breath/i, "Breathing"],
+    [/calm|anxi|edge/i, "Calm"],
+    [/craving/i, "Cravings"],
+    [/body/i, "Body"],
+  ];
+  for (const line of upToNext.split("\n")) {
+    const m = line.match(/^[-•]\s+(.+)$/);
+    if (!m) continue;
+    const note = m[1].replace(/\*\*/g, "").replace(/\s+/g, " ").trim();
+    const hit = LABELS.find(([re]) => re.test(note));
+    if (!hit) continue;
+    if (out.some((o) => o.name === hit[1])) continue;
+    out.push({ name: hit[1], note });
+  }
+  return out;
+}
+
+interface LetterPhase {
+  name: string;
+  weekFrom: number;
+  weekTo: number;
+  note: string;
+}
+
+/** The 12-week overview section: `**Weeks 1–2: Foundation**` followed by a blurb. */
+function parsePhases(md: string): LetterPhase[] {
+  const out: LetterPhase[] = [];
+  const re = /\*\*Weeks?\s*(\d+)\s*[–-]\s*(\d+)[:\s]*\(?([A-Za-z ]+?)\)?\*\*[\s:]*\n+([^\n*][^\n]*(?:\n(?![*#])[^\n]+)*)/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(md))) {
+    const name = m[3].trim();
+    const from = parseInt(m[1], 10);
+    const to = parseInt(m[2], 10);
+    if (out.some((p) => p.weekFrom === from)) continue; // roadmap repeats later phases
+    out.push({ name, weekFrom: from, weekTo: to, note: m[4].replace(/\s+/g, " ").trim() });
+  }
+  out.sort((a, b) => a.weekFrom - b.weekFrom);
+  return out;
+}
+
+function parseCoachNote(md: string): string {
+  const sec = md.split(/^## .*Note [Ff]rom Your Coach.*$/m)[1];
+  if (!sec) return "";
+  const paras = sec
+    .split(/^## /m)[0]
+    .split("\n\n")
+    .map((p) => p.replace(/\s+/g, " ").trim())
+    .filter((p) => p && !/^Dear|^Hariharan|^With warmth|^\*\*/.test(p) && p.length > 60);
+  return paras[0] || "";
+}
+
+// ── remedy catalogue ─────────────────────────────────────────────────────────
+
+/** Strip author attributions from client-facing remedy prose. The catalogue
+ *  keeps them (provenance matters coach-side); the client should read
+ *  tradition, not citations — "Lad's universal menstrual-pain remedy" reads
+ *  as silly name-dropping in the app. */
+const AUTHOR_RE = /\b(?:Dr\.?\s+)?(?:Vasant\s+)?(?:Lad|Frawley|Svoboda|Welch|O['’]Neill|Thurlow)\b/g;
+
+function scrubAuthors(text: string): string {
+  if (!text) return text;
+  let s = text
+    // "Lad's Agni Tea kindles…" → "Agni Tea kindles…"
+    .replace(/\b(?:Dr\.?\s+)?(?:Vasant\s+)?(?:Lad|Frawley|Svoboda|Welch|O['’]Neill|Thurlow)['’]s\s+/g, "")
+    // "Lad recommends / describes / identifies / lists …" and bare mentions
+    .replace(AUTHOR_RE, "Ayurvedic tradition");
+  // tidy double-spaces and capitalize a now-leading lowercase letter
+  s = s.replace(/\s{2,}/g, " ").trim();
+  if (/^[a-z]/.test(s)) s = s.charAt(0).toUpperCase() + s.slice(1);
+  return s;
+}
+
+const CAT_ICON: Record<string, string> = {
+  kitchen_remedy: "bowl",
+  infused_water: "water",
+  ayurvedic_churan: "leaf",
+  herbal_tea: "leaf",
+  vegetable_juice: "droplet",
+  kashayam: "droplet",
+  spice_blend: "sparkle",
+  other: "leaf",
+};
+
+function remedyIcon(category: string, route: string, slug: string): string {
+  if (route !== "external") return CAT_ICON[category] || "leaf";
+  if (/steam|inhal/.test(slug)) return "steam";
+  if (/gargle|rinse|swish|wash|eyewash|nasal|drops|pulling|gum/.test(slug)) return "droplet";
+  return "hand";
+}
+
+let remedyCache: AppRemedy[] | null = null;
+let remedyCacheAt = 0;
+
+async function loadRemedyLibrary(): Promise<AppRemedy[]> {
+  if (remedyCache && Date.now() - remedyCacheAt < 60_000) return remedyCache;
+  const dir = path.join(getCataloguePath(), "home_remedies");
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+  const out: AppRemedy[] = [];
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    const d = await readYamlIfExists(path.join(dir, name));
+    if (!d) continue;
+    const slug = asStr(d.slug) || name.replace(/\.ya?ml$/, "");
+    const category = asStr(d.category) || "other";
+    const route = asStr(d.route) === "external" ? "external" : "internal";
+    const prep = asStr(d.preparation).trim();
+    const summary = scrubAuthors(asStr(d.summary).replace(/\s+/g, " ").trim());
+    const stub = !prep || /flesh out before clinical use/i.test(summary);
+    const aliases = asStrArr(d.aliases);
+    const prepSteps = prep
+      ? prep
+          .split(/\n(?=\d+[.)]\s)|(?<=\.)\s+(?=\d+[.)]\s)/)
+          .flatMap((chunk) => chunk.split(/\n{2,}/))
+          .map((s) => scrubAuthors(s.replace(/^\d+[.)]\s*/, "").replace(/\s+/g, " ").trim()))
+          .filter(Boolean)
+      : [];
+    out.push({
+      slug,
+      name: asStr(d.display_name) || humanize(slug),
+      also: aliases.slice(0, 2).map(humanize).join(" · "),
+      category,
+      route,
+      icon: remedyIcon(category, route, slug),
+      summary,
+      prepSteps,
+      dose: scrubAuthors(asStr(d.typical_dose).replace(/\s+/g, " ").trim()),
+      duration: scrubAuthors(asStr(d.duration).replace(/\s+/g, " ").trim()),
+      timing: scrubAuthors(asStr(d.timing_notes).replace(/\s+/g, " ").trim()),
+      cautions: asStrArr(d.contraindications).map(scrubAuthors),
+      indications: asStrArr(d.indications),
+      bal: asStrArr(d.balances_dosha),
+      agg: asStrArr(d.aggravates_dosha),
+      virya: asStr(d.virya) || null,
+      stub,
+      suitableSex: (asStr(d.suitable_sex) as "any" | "female" | "male") || "any",
+      suitableStages: asStrArr(d.suitable_stages),
+      avoidIn: asStrArr(d.avoid_in),
+    });
+  }
+  out.sort((a, b) => a.name.localeCompare(b.name));
+  remedyCache = out;
+  remedyCacheAt = Date.now();
+  return out;
+}
+
+// ── nutrition tier parsing ───────────────────────────────────────────────────
+
+/** "Eggs (2–3 daily): excellent source of …" → "Eggs (2–3 daily)".
+ *  No mid-phrase truncation — pills wrap, and the "is this okay?"
+ *  lookup needs every food word intact (e.g. maida inside a paren). */
+function shortFoodName(item: string): string {
+  let s = item.split(":")[0].trim();
+  s = s.replace(/\s*[—–-]\s*\d.*$/, "").trim();
+  return s;
+}
+
+// ── supplement helpers ───────────────────────────────────────────────────────
+
+const SUPP_NAME_OVERRIDES: Record<string, string> = {
+  "vitamin-b6-p5p": "Vitamin B6 (P5P)",
+  "ashwagandha-ksm66": "Ashwagandha (KSM-66)",
+  "magnesium-glycinate": "Magnesium glycinate",
+  "l-theanine": "L-Theanine",
+  "coenzyme-q10": "Coenzyme Q10",
+  "omega-3-fatty-acids": "Omega-3 (EPA + DHA)",
+  selenium: "Selenium",
+  methylfolate: "Methylfolate (5-MTHF)",
+};
+
+function suppKey(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function matchSupplementRow(name: string, rows: LetterSupplementRow[]): LetterSupplementRow | undefined {
+  const key = suppKey(name);
+  const tokens = key.split(" ").filter((t) => t.length > 2);
+  let best: { row: LetterSupplementRow; score: number } | undefined;
+  for (const row of rows) {
+    const rk = suppKey(row.name);
+    let score = 0;
+    for (const t of tokens) if (rk.includes(t)) score++;
+    if (rk === key) score += 10;
+    if (score > 0 && (!best || score > best.score)) best = { row, score };
+  }
+  return best && best.score >= 1 ? best.row : undefined;
+}
+
+function shortDose(dose: string): string {
+  const d = dose.replace(/\s+/g, " ").trim();
+  const cut = d.split(/(?<=mg|mcg|g|IU)\b/i)[0];
+  return (cut && cut.length >= 4 ? cut : d).trim();
+}
+
+function slotFor(timing: string, dose: string): "Morning" | "With meals" | "Bedtime" {
+  const t = `${timing} ${dose}`.toLowerCase();
+  if (/bedtime|before sleep|night/.test(t) && !/morning/.test(t)) return "Bedtime";
+  if (/lunch|dinner|with meals|fatty meal|fat-containing/.test(t) && !/breakfast|morning/.test(t)) return "With meals";
+  return "Morning";
+}
+
+function shortTiming(timing: string): string {
+  const t = timing.replace(/\s+/g, " ").trim();
+  if (!t) return "With food";
+  const first = t.split(/[,(]|\bor\b|\band\b|\//)[0].trim();
+  const s = first.length > 2 ? first : t;
+  return s.charAt(0).toUpperCase() + s.slice(1, 28);
+}
+
+// ── main loader ──────────────────────────────────────────────────────────────
+
+async function loadPublishedPlan(slugOrToken: { token: string }): Promise<{ plan: Dict; file: string } | null> {
+  const dir = path.join(getPlansRoot(), "published");
+  let entries: string[];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return null;
+  }
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    const d = await readYamlIfExists(path.join(dir, name));
+    if (!d) continue;
+    if (d.letter_token === slugOrToken.token) return { plan: d, file: name };
+  }
+  return null;
+}
+
+const DOSHA_LABEL: Record<string, string> = { vata: "Vata", pitta: "Pitta", kapha: "Kapha" };
+
+export async function loadClientAppData(token: string): Promise<ClientAppData | null> {
+  if (!token || token.length < 16) return null;
+  const found = await loadPublishedPlan({ token });
+  if (!found) return null;
+  const plan = found.plan;
+  const clientId = asStr(plan.client_id);
+  const planSlug = asStr(plan.slug);
+  if (!clientId || !planSlug) return null;
+
+  const clientDir = path.join(getPlansRoot(), "clients", clientId);
+  const client = (await readYamlIfExists(path.join(clientDir, "client.yaml"))) ?? {};
+
+  // ---- letters: the issued letters ARE the content contract ---------------
+  // Base letter = `<slug>.md` (consolidated) or `<slug>-meal_plan.md`.
+  // Meals come from the PHASE letter covering the current week when one has
+  // been issued (`<slug>-meal_plan-wkA-B.md`) — exactly what the client was
+  // sent for this fortnight. Recipes merge the base letter's appendix with
+  // every `-recipes.md` sidecar (the post-reformat home of recipe packs).
+  const mealPlansDir = path.join(clientDir, "meal-plans");
+  let letterFiles: string[] = [];
+  try {
+    letterFiles = await fs.readdir(mealPlansDir);
+  } catch {
+    /* no letters dir */
+  }
+  const baseMd =
+    (await readIfExists(path.join(mealPlansDir, `${planSlug}.md`))) ??
+    (await readIfExists(path.join(mealPlansDir, `${planSlug}-meal_plan.md`))) ??
+    "";
+  const baseHtml = (await readIfExists(path.join(mealPlansDir, `${planSlug}.html`))) ?? "";
+  let recipesMd = baseMd;
+  for (const n of letterFiles.filter((n) => n.startsWith(planSlug) && n.endsWith("-recipes.md"))) {
+    recipesMd += "\n\n" + ((await readIfExists(path.join(mealPlansDir, n))) ?? "");
+  }
+  const letterMd = baseMd;
+
+  const recipes = parseRecipes(recipesMd);
+  const suppRows = parseSupplementRows(letterMd);
+  const htmlBuyRows = parseHtmlBuyRows(baseHtml);
+  const remedyBlurbs = parseRemedyBlurbs(letterMd);
+  const watchList = parseWatchList(letterMd);
+  const phases = parsePhases(letterMd);
+  const coachLetterNote = parseCoachNote(letterMd);
+  const letterFoods = parseLetterFoods(letterMd);
+
+  // ---- dates / week math (12-week clock anchored on meal_plan_started_on) --
+  const startStr = asStr(plan.meal_plan_started_on) || asStr(plan.plan_period_start);
+  const startDate = startStr ? new Date(`${startStr}T00:00:00Z`) : null;
+  const now = istNow();
+  const todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  const totalWeeks = 12; // the letter's 12-week journey; Day 1 is immutable once set
+  let week = 1;
+  if (startDate) {
+    const days = Math.floor((todayUTC.getTime() - startDate.getTime()) / 86_400_000);
+    week = Math.min(Math.max(Math.floor(days / 7) + 1, 1), totalWeeks);
+  }
+
+  // week strip: Sunday-start calendar week around today
+  const dows = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const todayDow = todayUTC.getUTCDay();
+  const weekStrip = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(todayUTC.getTime() + (i - todayDow) * 86_400_000);
+    return { dow: dows[d.getUTCDay()], num: d.getUTCDate(), today: i === todayDow };
+  });
+
+  // ---- meals for today ------------------------------------------------------
+  // Source: the phase letter covering the current week (what the client was
+  // actually sent for this fortnight), falling back to the base letter.
+  let mealMd = letterMd;
+  let phaseRanges: { from: number; to: number; file: string }[] = [];
+  for (const n of letterFiles) {
+    const pm = n.match(new RegExp(`^${planSlug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}-meal_plan-wk(\\d+)-(\\d+)\\.md$`));
+    if (pm) phaseRanges.push({ from: parseInt(pm[1], 10), to: parseInt(pm[2], 10), file: n });
+  }
+  phaseRanges = phaseRanges.sort((a, b) => a.from - b.from);
+  const phaseHit =
+    phaseRanges.find((r) => week >= r.from && week <= r.to) ??
+    [...phaseRanges].reverse().find((r) => r.from <= week);
+  if (phaseHit) {
+    const phaseMdRaw = await readIfExists(path.join(mealPlansDir, phaseHit.file));
+    if (phaseMdRaw && parseWeekTables(phaseMdRaw).length) mealMd = phaseMdRaw;
+  }
+  let weekTables = parseWeekTables(mealMd);
+  if (!weekTables.length) {
+    // Last resort: the NEWEST letter in the folder that carries meal tables,
+    // regardless of slug prefix — phase letters are sometimes generated under
+    // a successor plan slug while the original plan stays the published one.
+    try {
+      const stats = await Promise.all(
+        letterFiles
+          .filter((n) => n.endsWith(".md") && !n.endsWith("-recipes.md"))
+          .map(async (n) => ({ n, s: await fs.stat(path.join(mealPlansDir, n)) })),
+      );
+      stats.sort((a, b) => b.s.mtimeMs - a.s.mtimeMs);
+      for (const { n } of stats) {
+        const raw = await readIfExists(path.join(mealPlansDir, n));
+        if (!raw) continue;
+        const t = parseWeekTables(raw);
+        if (t.length) {
+          mealMd = raw;
+          weekTables = t;
+          break;
+        }
+      }
+    } catch {
+      /* keep empty — principle-based plan, Today shows the framework card */
+    }
+  }
+  const mealLetterFoods = parseLetterFoods(mealMd) ?? letterFoods;
+  const sampleWeekNote = mealLetterFoods?.note || letterFoods?.note || "";
+
+  // Pick today's column: REAL DATE match first (format-B tables carry dates
+  // per day, e.g. "Mon 8 Jun"); otherwise weekday within the rotation week.
+  const todayLabel = `${todayUTC.getUTCDate()} ${todayUTC.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })}`;
+  let table = undefined as WeekTable | undefined;
+  let colIdx = (todayDow + 6) % 7; // table columns are Mon..Sun
+  for (const t of weekTables) {
+    const di = (t.dayDates ?? []).findIndex((d) => d && d.toLowerCase() === todayLabel.toLowerCase());
+    if (di >= 0) {
+      table = t;
+      colIdx = di;
+      break;
+    }
+  }
+  if (!table) {
+    const rotationWeek = weekTables.length >= 2 ? ((week - 1) % weekTables.length) + 1 : weekTables[0]?.week ?? 1;
+    table = weekTables.find((t) => t.week === rotationWeek) ?? weekTables[0];
+  }
+  const SLOT_GLYPH: Record<string, string> = {
+    "on waking": "sun",
+    breakfast: "sun",
+    "mid-morning": "leaf",
+    lunch: "bowl",
+    snack: "leaf",
+    "evening snack": "leaf",
+    dinner: "moon",
+  };
+  const mealTiming = asStr((plan.nutrition as Dict | undefined)?.meal_timing);
+  const slotTime = (slot: string): string => {
+    const s = slot.toLowerCase();
+    if (s.includes("breakfast")) return "Within an hour of waking";
+    if (s.includes("mid")) return "After breakfast — never on an empty stomach";
+    if (s.includes("lunch")) return "Midday — protein + fibre on the plate";
+    if (s.includes("evening") || s.includes("snack")) return "Late afternoon, if genuinely hungry";
+    if (s.includes("dinner")) return "Finish by 7–8 pm";
+    return "";
+  };
+  const slotNote = (slot: string): string | undefined => {
+    const s = slot.toLowerCase();
+    if (s.includes("breakfast") && /breakfast within/i.test(mealTiming))
+      return "Eat breakfast within an hour of waking — it anchors your blood sugar and cortisol rhythm for the whole day.";
+    if (s.includes("dinner") && /bedtime|overnight fast|dinner by/i.test(mealTiming))
+      return "Keep dinner light and early — aim to finish by 7–8 pm so your body gets its 12-hour overnight rest.";
+    return undefined;
+  };
+  const meals: AppMeal[] = [];
+  const mealExtra: Record<string, AppMealExtra> = {};
+  const SLOT_GRAD: Record<string, string> = {
+    breakfast: "linear-gradient(140deg,#edcf93 0%,#d8a257 60%,#bf872f 100%)",
+    "mid-morning": "linear-gradient(140deg,#e3cf9a 0%,#c3b06f 60%,#9a8a4f 100%)",
+    lunch: "linear-gradient(140deg,#cdbf86 0%,#9aa05c 55%,#6f8350 100%)",
+    "evening snack": "linear-gradient(140deg,#e8dcc0 0%,#cdbf86 60%,#a89a63 100%)",
+    dinner: "linear-gradient(140deg,#c9a98a 0%,#9a7e63 55%,#6f5a44 100%)",
+  };
+  const recipeFor = (dish: string): LetterRecipe | undefined => {
+    const dk = suppKey(dish);
+    const tokens = dk.split(" ").filter((t) => t.length > 3);
+    let best: { r: LetterRecipe; score: number } | undefined;
+    for (const r of recipes) {
+      const rk = suppKey(r.title);
+      let score = 0;
+      for (const t of tokens) if (rk.includes(t)) score++;
+      if (score > 0 && (!best || score > best.score)) best = { r, score };
+    }
+    return best && best.score >= 2 ? best.r : best && best.score >= 1 && tokens.length <= 2 ? best.r : undefined;
+  };
+  if (table) {
+    for (const row of table.rows) {
+      const slotL = row.slot.toLowerCase();
+      if (slotL.includes("bedtime")) continue; // bedtime drinks are remedies, folded in separately
+      const cell = row.cells[colIdx] ?? row.cells[0] ?? "";
+      if (!cell) continue;
+      const pills = cell.split(/\s\+\s/).map((p) => p.trim()).filter(Boolean);
+      // strip header qualifiers like "Breakfast (≥25 g protein)" for the label
+      const slotName = row.slot.replace(/\s*\([^)]*\)\s*$/, "").trim();
+      const slotKey = slotName.toLowerCase();
+      meals.push({
+        slot: slotName,
+        timeHint: slotKey.includes("waking") ? "First thing, before tea" : slotTime(slotL),
+        glyph:
+          SLOT_GLYPH[slotKey] ??
+          (slotKey.includes("waking") || slotKey.includes("breakfast")
+            ? "sun"
+            : slotKey.includes("dinner")
+              ? "moon"
+              : slotKey.includes("snack") || slotKey.includes("mid")
+                ? "leaf"
+                : "bowl"),
+        pills,
+        note: slotNote(slotL),
+        ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
+      });
+      const rec = recipeFor(pills[0] ?? cell);
+      const swaps: { name: string; note: string }[] = [];
+      const seen = new Set<string>([cell]);
+      // coach-approved swaps = the other dishes this plan serves in the SAME slot
+      for (const wt of weekTables) {
+        const r2 = wt.rows.find((r) => r.slot.toLowerCase() === slotL);
+        if (!r2) continue;
+        for (const c of r2.cells) {
+          if (!c || seen.has(c) || swaps.length >= 3) continue;
+          seen.add(c);
+          swaps.push({ name: c, note: `On your plan — week ${wt.week} rotation` });
+        }
+      }
+      mealExtra[slotName] = {
+        grad: SLOT_GRAD[slotL] ?? "linear-gradient(140deg,#e3cf9a,#9a8a4f)",
+        mins: rec?.time,
+        serves: rec?.serves,
+        ingredients: rec?.ingredients ?? [],
+        recipe: rec?.method ?? [],
+        swaps,
+      };
+    }
+  }
+
+  // ---- supplements ----------------------------------------------------------
+  // Dose/timing: the PLAN YAML is canonical (quick edits like the omega-3
+  // reduction live there; an already-issued letter can be stale on dose).
+  // Client-voiced "why" + buy links come from the letter when it carries
+  // them; first-generation HTML letters carry buy links in a buy-row list.
+  const htmlBuyFor = (name: string): string | undefined => {
+    const tokens = suppKey(name).split(" ").filter((t) => t.length > 3);
+    let best: { url: string; score: number } | undefined;
+    for (const r of htmlBuyRows) {
+      const rk = suppKey(r.name);
+      const score = tokens.filter((t) => rk.includes(t)).length;
+      if (score > 0 && (!best || score > best.score)) best = { url: r.url, score };
+    }
+    return best?.url;
+  };
+  const supplements: AppSupplement[] = [];
+  const protocol = asArr(plan.supplement_protocol) as Dict[];
+  for (let i = 0; i < protocol.length; i++) {
+    const p = protocol[i];
+    const slug = asStr(p.supplement_slug);
+    const name = SUPP_NAME_OVERRIDES[slug] ?? humanize(slug);
+    const row = matchSupplementRow(name, suppRows);
+    const timing = asStr(p.timing) || row?.when || "";
+    const dose = asStr(p.dose);
+    supplements.push({
+      id: `s-${slug || i}`,
+      name,
+      dose: shortDose(dose || row?.dose || ""),
+      slot: slotFor(timing, dose),
+      timing: shortTiming(timing),
+      why: row?.why || firstSentence(asStr(p.coach_rationale)).replace(/^CRITICAL GAP[^:]*:\s*/i, "").replace(/^CONTINUE[^.]*\.\s*/i, ""),
+      buyUrl: row?.buyUrl ?? htmlBuyFor(name),
+      buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
+    });
+  }
+
+  // ---- demographic + dosha context (drives the remedy gates) ---------------
+  const sexRaw = asStr(client.sex).trim().toUpperCase().slice(0, 1); // 'M' | 'F' | ''
+  const dobStr = asStr(client.date_of_birth);
+  let ageYears: number | null = null;
+  if (dobStr) {
+    ageYears = Math.floor((todayUTC.getTime() - new Date(`${dobStr}T00:00:00Z`).getTime()) / (365.25 * 86_400_000));
+  } else {
+    const band = asStr(client.age_band).match(/(\d+)\s*[-–]\s*(\d+)/);
+    if (band) ageYears = Math.round((parseInt(band[1], 10) + parseInt(band[2], 10)) / 2);
+  }
+  const pregnancyStatus = asStr(client.pregnancy_status);
+  const isPregnant = /^pregnant/.test(pregnancyStatus);
+  const isLactating = pregnancyStatus === "lactating" || !!asStr(client.lactation_started);
+  const cycleStatus = asStr(client.cycle_status);
+  // Life stage: explicit fields win (pregnancy > lactation > cycle_status,
+  // which the cycle-tracking panel maintains and the coach can edit); age
+  // fallback only when nothing is on file.
+  const stages: string[] = [];
+  if (sexRaw === "F") {
+    if (isPregnant) stages.push("pregnancy");
+    else if (isLactating) stages.push("lactation");
+    else if (cycleStatus === "menstruating") stages.push("menstruating");
+    else if (cycleStatus === "perimenopausal") stages.push("perimenopausal");
+    else if (cycleStatus === "postmenopausal") stages.push("postmenopausal");
+    else if (cycleStatus !== "not_applicable" && ageYears != null) {
+      if (ageYears < 45) stages.push("menstruating");
+      else if (ageYears < 55) stages.push("perimenopausal");
+      else stages.push("postmenopausal");
+    }
+  }
+  const stageSet = new Set(stages);
+
+  const ayurAssessment = (client.ayurveda_assessment as Dict) ?? {};
+  const prakrutiLabel = asStr(client.ayurveda_constitution) || asStr(ayurAssessment.prakruti_label);
+  let dosha: string[] = [];
+  if (/vata/i.test(prakrutiLabel)) dosha.push("vata");
+  if (/pitta/i.test(prakrutiLabel)) dosha.push("pitta");
+  if (/kapha/i.test(prakrutiLabel)) dosha.push("kapha");
+  if (!dosha.length) dosha = asStrArr(ayurAssessment.vikruti_doshas);
+  const doshaLabel = dosha.map((d) => DOSHA_LABEL[d] ?? humanize(d)).join("–");
+  const vikruti = asStrArr(ayurAssessment.vikruti_doshas);
+
+  // ---- remedies: assigned (plan letter + ayurveda block) + library ----------
+  const remedyLib = await loadRemedyLibrary();
+  const bySlug = new Map(remedyLib.map((r) => [r.slug, r]));
+  const nutrition = (plan.nutrition as Dict) ?? {};
+  const dailyRemedySlugs = asStrArr(nutrition.home_remedies);
+  const ayur = (plan.ayurveda as Dict) ?? {};
+  const ayurRemedySlugs = asStrArr(ayur.remedies);
+  const assignedSlugs = [...new Set([...dailyRemedySlugs, ...ayurRemedySlugs])];
+  const blurbFor = (r: AppRemedy): LetterRemedyBlurb | undefined => {
+    const tokens = suppKey(r.name).split(" ").filter((t) => t.length > 3);
+    return remedyBlurbs.find((b) => {
+      const bk = suppKey(b.title);
+      return tokens.some((t) => bk.includes(t));
+    });
+  };
+  const remedies: AppRemedy[] = [];
+  for (const slug of assignedSlugs) {
+    const base = bySlug.get(slug);
+    if (!base) continue;
+    const daily = dailyRemedySlugs.includes(slug) || slug === "triphala-churan";
+    const blurb = blurbFor(base);
+    const isChuran = base.category === "ayurvedic_churan";
+    const bedtime = /bed|night/i.test(base.timing) || /bed|night/i.test(blurb?.how ?? "");
+    remedies.push({
+      ...base,
+      assigned: true,
+      daily,
+      supplementLike: isChuran && daily,
+      suppSlot: bedtime ? "Bedtime" : "Morning",
+      suppTiming: bedtime ? "Before bed" : "Morning",
+      when: bedtime ? "Bedtime" : /between meals|through the day/i.test(`${base.timing} ${blurb?.how ?? ""}`) ? "Between meals" : /morning/i.test(base.timing) ? "Morning" : "Daily",
+      why: blurb?.what || firstSentence(base.summary),
+    });
+  }
+
+  // ---- remedy eligibility (hard gates) + relevance shelf --------------------
+  // Gates run SERVER-SIDE so an ineligible remedy never reaches the phone:
+  //   sex-specific remedies only for that sex; stage-specific remedies only
+  //   when the client's life stage matches (no period tea for a man or a
+  //   postmenopausal woman); avoid_in (pregnancy/lactation) is an outright
+  //   hide; dosha-aggravating remedies stay excluded as before.
+  // Coach-assigned remedies bypass relevance (she prescribed them) — they
+  // come from `bySlug` above, untouched by this filter.
+  const assignedSet = new Set(assignedSlugs);
+  const eligibleLib = remedyLib.filter((r) => {
+    if (r.suitableSex === "female" && sexRaw !== "F") return false;
+    if (r.suitableSex === "male" && sexRaw !== "M") return false;
+    if (r.suitableStages.length && !r.suitableStages.some((s) => stageSet.has(s))) return false;
+    if (r.avoidIn.some((s) => stageSet.has(s))) return false;
+    if (dosha.length) {
+      if ((r.agg ?? []).some((d) => dosha.includes(d))) return false;
+      if (!(r.bal ?? []).some((d) => dosha.includes(d))) return false;
+    }
+    return true;
+  });
+
+  // Relevance: match remedy indications against what the client actually
+  // came in with (conditions, goals, plan topics). A remedy with no match
+  // doesn't make the shelf no matter how well it suits the constitution.
+  const NEED_RULES: { re: RegExp; ind: RegExp; label: string }[] = [
+    { re: /anxiet|stress|panic/i, ind: /anxiet|stress|nervous|tension|calm/i, label: "anxiety" },
+    { re: /sleep|insomnia/i, ind: /insomnia|sleep/i, label: "sleep" },
+    { re: /hypertension|blood pressure|\bbp\b/i, ind: /hypertens|blood pressure|cardiovascular|heart/i, label: "blood pressure" },
+    { re: /constipation/i, ind: /constipat|sluggish bowel|elimination/i, label: "constipation" },
+    { re: /dry skin/i, ind: /dry.{0,12}skin|skin (?:dryness|nourish)/i, label: "dry skin" },
+    { re: /scalp|hair/i, ind: /scalp|hair|dandruff/i, label: "scalp & hair" },
+    { re: /knee|joint|tendon|arthrit/i, ind: /joint|knee|tendon|arthrit|stiffness/i, label: "joints" },
+    { re: /bloat/i, ind: /bloat|\bgas\b|flatulence/i, label: "bloating" },
+    { re: /diabet|blood sugar|insulin|glucose/i, ind: /blood sugar|glucose|diabet|insulin/i, label: "blood sugar" },
+    { re: /cholesterol|lipid/i, ind: /cholesterol|lipid|triglycer/i, label: "cholesterol" },
+    { re: /thyroid|hashimoto/i, ind: /thyroid/i, label: "thyroid" },
+    { re: /migraine|headache/i, ind: /migraine|headache/i, label: "headaches" },
+    { re: /acidity|gerd|heartburn|reflux/i, ind: /\bacid|heartburn|reflux|gerd|hyperacid/i, label: "acidity" },
+    { re: /fatigue|energy|tired/i, ind: /fatigue|energy|debility|vitality/i, label: "energy" },
+    { re: /depress|low mood|mood/i, ind: /depress|low mood|mood/i, label: "mood" },
+    { re: /memory|brain fog|concentrat/i, ind: /memory|cognit|concentrat|brain fog/i, label: "memory & focus" },
+    { re: /\bgut\b|digest|ibs|dysbiosis/i, ind: /digest|\bgut\b|dysbiosis|ibs/i, label: "digestion" },
+    { re: /immun|frequent cold/i, ind: /immun|\bcold\b|cough/i, label: "immunity" },
+    { re: /period|menstrual|cramps|pms/i, ind: /menstrua|period|pms|dysmenorrh|cramp/i, label: "period comfort" },
+    { re: /menopaus|hot flash|hot flush/i, ind: /menopaus|hot flash|hot flush/i, label: "menopause comfort" },
+    { re: /anaemia|anemia|\biron\b/i, ind: /\biron\b|an(?:a)?emia/i, label: "iron" },
+  ];
+  const clientConditionTerms = [...asStrArr(client.active_conditions), ...asStrArr(client.goals)].join(" | ");
+  const clientTerms = [
+    clientConditionTerms,
+    ...asStrArr(plan.primary_topics).map(humanize),
+    ...asStrArr(plan.contributing_topics).map(humanize),
+  ].join(" | ");
+  const needs = NEED_RULES.filter((rule) => rule.re.test(clientTerms));
+  // Condition-contraindication gate: if a remedy's cautions name one of the
+  // client's OWN conditions (licorice ↔ hypertension), it's not self-serve —
+  // it disappears from the client's library entirely. The coach can still
+  // assign it deliberately (assigned remedies bypass this filter).
+  const conditionNeeds = NEED_RULES.filter((rule) => rule.re.test(clientConditionTerms));
+  const contraindicatedForClient = (r: AppRemedy): boolean => {
+    const cautions = r.cautions.join(" | ");
+    return conditionNeeds.some((n) => n.ind.test(cautions));
+  };
+  // Dietary gate for edible remedies — an eggetarian must never be offered
+  // bone broth. Indian convention: vegetarian = no meat/fish/egg;
+  // eggetarian = vegetarian + eggs; jain additionally no onion/garlic/roots;
+  // vegan additionally no dairy/honey.
+  const diet = asStr(client.dietary_preference).toLowerCase();
+  const dietExcludes: RegExp[] = [];
+  if (/vegetarian|vegan|jain|eggetarian/.test(diet)) {
+    dietExcludes.push(/\bbone broth|\bchicken|\bmutton|\bfish\b|\bmeat\b|\bprawn|\bliver\b/i);
+  }
+  if (/vegetarian|vegan|jain/.test(diet) && !/eggetarian/.test(diet)) {
+    dietExcludes.push(/\begg\b|\beggs\b/i);
+  }
+  if (/vegan/.test(diet)) {
+    dietExcludes.push(/\bmilk\b|\bghee\b|\bcurd\b|\byogh?urt\b|\bbuttermilk\b|\bpaneer\b|\bhoney\b/i);
+  }
+  if (/jain/.test(diet)) {
+    dietExcludes.push(/\bgarlic\b|\bonion\b/i);
+  }
+  const dietBlocked = (r: AppRemedy): boolean => {
+    if (r.route === "external" || !dietExcludes.length) return false;
+    const text = r.name + " | " + r.summary + " | " + r.prepSteps.join(" | ");
+    return dietExcludes.some((re) => re.test(text));
+  };
+  const safeLib = eligibleLib.filter((r) => !contraindicatedForClient(r) && !dietBlocked(r));
+
+  // Antagonist gate (shelf only): don't recommend a remedy built for the
+  // OPPOSITE problem — a colitis/loose-stool remedy to a constipated client.
+  const ANTAGONISTS: { has: RegExp; not: RegExp }[] = [
+    { has: /constipation/i, not: /diarrh|loose stool|colitis|\bibs-d\b/i },
+    { has: /diarrh|loose stool/i, not: /constipat|laxative/i },
+    { has: /hypertension|high blood pressure/i, not: /hypotension|low blood pressure|raises blood pressure/i },
+    { has: /insomnia|sleepless/i, not: /daytime drowsiness cure|stimulant|keeps you alert/i },
+  ];
+  const activeAntagonists = ANTAGONISTS.filter((a) => a.has.test(clientConditionTerms));
+  const antagonistic = (r: AppRemedy): boolean => {
+    const text = r.name + " | " + r.indications.join(" | ");
+    return activeAntagonists.some((a) => a.not.test(text));
+  };
+
+  const scored = safeLib
+    .filter((r) => !assignedSet.has(r.slug) && !r.stub && !antagonistic(r))
+    .map((r) => {
+      // Match against INDICATIONS only — the remedy's stated purpose. The
+      // summary prose inflates matches (an earache compress whose summary
+      // praises asafoetida's digestive properties is not a digestion remedy).
+      const indText = r.indications.join(" | ");
+      const matched = needs.filter((n) => n.ind.test(indText));
+      // A shelf match must hit the remedy's PRIMARY purpose (first two
+      // indications) — castor-oil EYE DROPS list "cataract prevention in
+      // diabetics" third, which is not a blood-sugar recommendation.
+      const primary = r.indications.slice(0, 2).join(" | ");
+      if (!matched.some((n) => n.ind.test(primary))) matched.length = 0;
+      const balHit = (r.bal ?? []).filter((d) => dosha.includes(d));
+      const vikrutiHit = (r.bal ?? []).some((d) => vikruti.includes(d));
+      const score = matched.length * 10 + (vikrutiHit ? 3 : 0) + balHit.length;
+      let whyFor = "";
+      if (matched.length) {
+        const labels = matched.map((m) => m.label);
+        whyFor =
+          `For your ${labels.slice(0, 2).join(" and ")}` +
+          (labels.length > 2 ? ` (and ${labels.length - 2} more)` : "") +
+          (balHit.length ? ` — and it settles ${balHit.map((d) => DOSHA_LABEL[d] ?? d).join("–")}` : "") +
+          ".";
+      }
+      return { remedy: { ...r, whyFor }, score, matched: matched.length };
+    })
+    .filter((x) => x.matched >= 1) // the relevance cut-off
+    .sort((a, b) => b.score - a.score || a.remedy.name.localeCompare(b.remedy.name));
+
+  // Diversity pass: don't stack three brahmi/jatamansi variations — and skip
+  // anything herbally redundant with what the coach already assigned. Greedy
+  // pick by score, skipping candidates that share a distinctive herb word
+  // with an earlier pick or an assigned remedy (relaxed only if the shelf
+  // would otherwise come up short).
+  const GENERIC_WORDS = new Set([
+    "water", "drink", "juice", "tonic", "churan", "tea", "milk", "formula", "remedy",
+    "application", "massage", "compress", "pack", "stress", "relief", "sleep",
+    "morning", "night", "bedtime", "daily", "warm", "fresh", "roasted", "soaked",
+  ]);
+  const herbWords = (name: string): string[] =>
+    name.toLowerCase().split(/[^a-z]+/).filter((w) => w.length >= 5 && !GENERIC_WORDS.has(w));
+  const usedHerbs = new Set<string>();
+  for (const slug of assignedSlugs) {
+    const a = bySlug.get(slug);
+    if (a) herbWords(a.name).forEach((w) => usedHerbs.add(w));
+  }
+  const remedyShelf: AppRemedy[] = [];
+  const skipped: typeof scored = [];
+  for (const cand of scored) {
+    if (remedyShelf.length >= 5) break;
+    const words = herbWords(cand.remedy.name);
+    if (words.some((w) => usedHerbs.has(w))) {
+      skipped.push(cand);
+      continue;
+    }
+    words.forEach((w) => usedHerbs.add(w));
+    remedyShelf.push(cand.remedy);
+  }
+  for (const cand of skipped) {
+    if (remedyShelf.length >= 3) break;
+    remedyShelf.push(cand.remedy);
+  }
+
+  // ---- practices (exclude the remedy drinks — they live with meals) --------
+  const practices: { id: string; name: string; when: string }[] = [];
+  const lifestyle = asArr(plan.lifestyle_practices) as Dict[];
+  const practiceWhen = (name: string): string => {
+    const n = name.toLowerCase();
+    if (n.includes("sunlight")) return "Morning";
+    if (n.includes("brebeath") || n.includes("breathing")) return "Morning & night";
+    if (n.includes("walk")) return "Daily";
+    if (n.includes("sleep schedule") || n.includes("lights out")) return "Night";
+    if (n.includes("journal")) return "Evening";
+    if (n.includes("screen") || n.includes("digital")) return "Night";
+    if (n.includes("stretch")) return "Morning";
+    return "Daily";
+  };
+  let pIdx = 0;
+  for (const p of lifestyle) {
+    const name = asStr(p.name);
+    if (!name) continue;
+    if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
+    practices.push({ id: `p${pIdx++}`, name: name.replace(/\s*\(([^)]{25,})\)/, ""), when: practiceWhen(name) });
+  }
+
+  // ---- principles (from the letter's meals note + plan meal_timing) --------
+  const principles: { t: string; b: string }[] = [];
+  const noteSec = letterMd.split(/^### .*Note About Your Meals.*$/m)[1]?.split(/^## /m)[0];
+  if (noteSec) {
+    for (const para of noteSec.split("\n\n")) {
+      const b = para.replace(/\s+/g, " ").replace(/\*\*/g, "").replace(/^-+\s*/, "").trim();
+      if (b.length < 60) continue;
+      let t = "How we're eating";
+      if (/eggs?/i.test(b) && /protein/i.test(b)) t = "Eggs are your daily protein";
+      else if (/ragi|millet/i.test(b)) t = "Ragi instead of rice";
+      else if (/tea|chai/i.test(b)) t = "Tea after breakfast, not before";
+      principles.push({ t, b });
+    }
+  }
+  if (mealTiming) {
+    principles.push({
+      t: "Protein and rhythm at every meal",
+      b: mealTiming.replace(/\s+/g, " ").trim(),
+    });
+  }
+
+  // ---- labs we're watching ---------------------------------------------------
+  const recheck = asStr(plan.plan_period_recheck_date);
+  const recheckLabel = recheck
+    ? new Date(`${recheck}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" })
+    : "your recheck";
+  const labs = (asArr(plan.lab_orders) as Dict[]).map((l, i) => {
+    let name = asStr(l.test);
+    name = name.split(/ \(|\+ |, /)[0].trim();
+    if (name.length > 30) name = name.slice(0, 28) + "…";
+    return { name, meta: `Retest around ${recheckLabel}`, tone: i % 3 === 0 ? "ochre" : "forest" };
+  });
+
+  // ---- journey ----------------------------------------------------------------
+  const coachName = "Shivani Hari";
+  const journey: JourneyItem[] = [];
+  const weekOf = (d: Date): number =>
+    startDate ? Math.max(Math.floor((d.getTime() - startDate.getTime()) / 86_400_000 / 7) + 1, 0) : 0;
+  if (startDate) {
+    journey.push({
+      kind: "start",
+      week: 0,
+      when: fmtDay(startDate),
+      title: "Your plan began",
+      note: coachLetterNote
+        ? { who: coachName, text: coachLetterNote }
+        : { who: coachName, text: `Twelve weeks, one day at a time. I'm with you.` },
+    });
+  }
+  // real plan edits from status_history (skip the initial activation noise)
+  for (const ev of asArr(plan.status_history) as Dict[]) {
+    const reason = asStr(ev.reason);
+    const at = asStr(ev.at);
+    if (!reason || !at || /^activated/i.test(reason)) continue;
+    const d = new Date(at);
+    const clean = reason
+      .replace(/\(see quick note[^)]*\)\.?/i, "")
+      .replace(/^Quick edit\s*[—-]\s*/i, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    journey.push({
+      kind: "update",
+      week: weekOf(d),
+      when: fmtDay(d),
+      title: "Plan updated",
+      note: { who: coachName, text: clean },
+    });
+  }
+  // phase milestones that have already begun
+  for (const ph of phases) {
+    if (ph.weekFrom <= 1 || ph.weekFrom > week || !startDate) continue;
+    const d = new Date(startDate.getTime() + (ph.weekFrom - 1) * 7 * 86_400_000);
+    journey.push({
+      kind: "update",
+      week: ph.weekFrom,
+      when: fmtDay(d),
+      title: `Weeks ${ph.weekFrom}–${ph.weekTo} · ${ph.name}`,
+      note: { who: coachName, text: ph.note },
+    });
+  }
+  // weekly check-in / poll replies from sessions
+  const sessionPoints: { wk: number; v: number }[] = [];
+  try {
+    const sessDir = path.join(clientDir, "sessions");
+    const names = (await fs.readdir(sessDir)).filter((n) => n.endsWith(".yaml"));
+    for (const n of names) {
+      const s = await readYamlIfExists(path.join(sessDir, n));
+      if (!s) continue;
+      const poll = s.poll_response as Dict | undefined;
+      const checkin = s.checkin_response as Dict | undefined;
+      const dateStr = asStr(s.date);
+      if (!dateStr) continue;
+      const d = new Date(`${dateStr}T00:00:00Z`);
+      if (poll) {
+        const score = asStr(poll.score);
+        const raw = asStr(poll.raw_text);
+        const v = score === "good" ? 4 : score === "partial" ? 3 : 2;
+        sessionPoints.push({ wk: weekOf(d), v: v * 20 });
+        journey.push({
+          kind: "checkin",
+          week: weekOf(d),
+          when: fmtDay(d),
+          title: "Weekly check-in",
+          summary: raw ? `You replied: “${raw}”` : "You checked in over WhatsApp.",
+        });
+      } else if (checkin) {
+        const rating = Number(checkin.rating) || 0;
+        if (rating > 0) sessionPoints.push({ wk: weekOf(d), v: rating * 20 });
+        journey.push({
+          kind: "checkin",
+          week: weekOf(d),
+          when: fmtDay(d),
+          title: "Weekly check-in",
+          summary: asStr(checkin.feel) || `You rated the week ${rating} of 5.`,
+        });
+      }
+    }
+  } catch {
+    /* no sessions dir */
+  }
+  journey.sort((a, b) => b.week - a.week || (a.kind === "start" ? 1 : -1));
+
+  // ---- symptom score (only from real check-ins; null until ≥2 points) --------
+  sessionPoints.sort((a, b) => a.wk - b.wk);
+  const symptomScore =
+    sessionPoints.length >= 2
+      ? {
+          goodAt: 70,
+          points: sessionPoints,
+          deltaLabel:
+            sessionPoints[sessionPoints.length - 1].v - sessionPoints[0].v >= 0
+              ? `+${sessionPoints[sessionPoints.length - 1].v - sessionPoints[0].v} since start`
+              : `${sessionPoints[sessionPoints.length - 1].v - sessionPoints[0].v} since start`,
+          next: "Updates at your weekly check-in",
+          caption: "Built from your weekly check-ins — how you feel is the proof of progress.",
+        }
+      : null;
+
+  // ---- lab checkpoints ---------------------------------------------------------
+  const baseline = (plan.baseline_snapshot as Dict) ?? {};
+  const baseMarkers = asArr(baseline.lab_markers) as Dict[];
+  const pickMarker = (frag: string) =>
+    baseMarkers.find((m) => asStr(m.marker_name).toLowerCase().includes(frag));
+  const homo = pickMarker("homocysteine");
+  const tsh = pickMarker("tsh");
+  const baselineVal = [homo, tsh]
+    .filter(Boolean)
+    .map((m) => `${asStr(m!.marker_name).split(" ")[0]} ${m!.value}`)
+    .join(" · ");
+  const labShort = labs.slice(0, 3).map((l) => l.name.split(" ")[0]).join(" · ");
+  const recheckWeek = startDate && recheck
+    ? Math.max(Math.round((new Date(`${recheck}T00:00:00Z`).getTime() - startDate.getTime()) / 86_400_000 / 7), 1)
+    : 8;
+  const labCheckpoints = {
+    note: "Bloods are only occasional — we confirm the picture at these points.",
+    list: [
+      { label: "Week 0", sub: "Baseline", value: baselineVal || "On file", state: "done" as const },
+      {
+        label: `Week ${recheckWeek}`,
+        sub: "First retest",
+        value: labShort || "Key markers",
+        state: week >= recheckWeek ? ("next" as const) : ("next" as const),
+      },
+      { label: `Week ${totalWeeks}`, sub: "Full panel", value: "Full review with Shivani", state: "todo" as const },
+    ],
+  };
+
+  // ---- plan reference (plate, tiers, oils, cooking) ----------------------------
+  const addList = asStrArr(nutrition.add);
+  const reduceList = asStrArr(nutrition.reduce);
+  const addShort = addList.map(shortFoodName);
+  const reduceShort = reduceList.map(shortFoodName);
+  const dietPref = asStr(client.dietary_preference);
+  const clientAvoid = asStr(client.foods_to_avoid)
+    .split(/[,\n]/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const nonNeg = asStr(client.non_negotiables).trim();
+
+  const pickAdds = (re: RegExp, max: number): string[] =>
+    addShort.filter((s) => re.test(s)).slice(0, max);
+  const vegExamples = pickAdds(/greens|palak|methi|amaranth|gourd|lauki|bhindi|veget/i, 6);
+  const proteinExamples = pickAdds(/egg|dal|moong|curd|paneer|seed|legume/i, 6);
+  const carbExamples = pickAdds(/ragi|millet|jowar|bajra/i, 5);
+  const fatExamples = pickAdds(/ghee|coconut|walnut|flax|sesame|seed/i, 6);
+  const fermentExamples = pickAdds(/curd|dahi|buttermilk|ferment/i, 4);
+
+  const plate: PlateItem[] = [
+    {
+      key: "veg",
+      label: "Vegetables",
+      portion: "Half your plate",
+      pct: 50,
+      tone: "forest",
+      examples: vegExamples.length ? vegExamples : ["Leafy greens", "Seasonal sabzi", "Salad vegetables"],
+      note: "Cooked or raw, the more colour the better. Half of every plate, every meal.",
+    },
+    {
+      key: "protein",
+      label: "Protein",
+      portion: "A quarter",
+      pct: 25,
+      tone: "ochre",
+      examples: proteinExamples.length ? proteinExamples : ["Dal & legumes", "Curd", "Paneer"],
+      note: `A palm-sized portion at every meal keeps energy even${dietPref ? ` — built around your ${dietPref} diet` : ""}.`,
+    },
+    {
+      key: "carb",
+      label: "Smart carbs",
+      portion: "A quarter",
+      pct: 25,
+      tone: "sand",
+      examples: carbExamples.length ? carbExamples : ["Millets", "Whole grains"],
+      note: "Millets over refined grains — same comfort, steadier blood sugar.",
+    },
+  ];
+  const accents: PlateItem[] = [
+    {
+      key: "fats",
+      label: "Healthy fats",
+      portion: "A thumb",
+      pct: 0,
+      tone: "gold",
+      icon: "droplet",
+      examples: fatExamples.length ? fatExamples : ["Ghee", "Nuts", "Seeds"],
+      note: "About a thumb-sized amount per meal — cook in ghee or cold-pressed oil. Fats help you absorb vitamins and stay full.",
+    },
+    {
+      key: "ferments",
+      label: "Fermented",
+      portion: "A spoon",
+      pct: 0,
+      tone: "clay",
+      icon: "leaf",
+      examples: fermentExamples.length ? fermentExamples : ["Curd / dahi", "Buttermilk"],
+      note: "A small katori of curd or a glass of buttermilk most days feeds the good bacteria in your gut.",
+    },
+  ];
+
+  const seedOilItem = reduceList.find((r) => /seed oils|sunflower|soybean|canola/i.test(r));
+  const oils = {
+    use: ["Ghee", "Cold-pressed coconut", "Cold-pressed groundnut", "Mustard oil"],
+    avoid: ["Refined sunflower", "Refined soybean", "Canola", "Vanaspati / margarine"],
+    note: seedOilItem
+      ? seedOilItem.split(":").slice(1).join(":").trim() || firstSentence(seedOilItem)
+      : "Cook in ghee or cold-pressed oils, which hold up to heat. Refined seed oils oxidise when heated and quietly nudge inflammation.",
+  };
+
+  const sometimes: string[] = [];
+  if (nonNeg) sometimes.push(`${nonNeg} — after food, not before`);
+  const chaiItem = reduceList.find((r) => /chai|coffee|tea/i.test(r));
+  if (chaiItem && !sometimes.some((s) => /tea|chai/i.test(s))) sometimes.push("Chai — up to 2 cups, after food");
+  sometimes.push("Jaggery — a little, in cooking", "Seasonal fruit — whole, not juiced");
+
+  const foods = {
+    eat: addShort,
+    sometimes,
+    avoid: [...reduceShort.filter((s) => !/chai|coffee/i.test(s)), ...clientAvoid],
+  };
+  const avoidWhy =
+    "These spike blood sugar, disturb sleep, or push blood pressure and inflammation the wrong way — working against the calm and energy we're building. Not forever; we revisit as you progress.";
+
+  // cooking adjustment cards from the catalogue
+  const cooking: { t: string; b: string }[] = [];
+  for (const slug of asStrArr(nutrition.cooking_adjustments)) {
+    const d = await readYamlIfExists(path.join(getCataloguePath(), "cooking_adjustments", `${slug}.yaml`));
+    if (!d) continue;
+    const how = asStr(d.how_to_use).replace(/\s+/g, " ").trim();
+    const summ = asStr(d.summary).replace(/\s+/g, " ").trim();
+    cooking.push({ t: asStr(d.display_name) || humanize(slug), b: firstSentence(how || summ) + (how && summ ? " " + firstSentence(summ) : "") });
+  }
+
+  // ---- phases ribbon: condense the letter's 2-week phases into 3 arcs --------
+  let ribbon: { name: string; weeks: string; note: string }[] = [];
+  if (phases.length >= 3) {
+    const arc = Math.ceil(phases.length / 3);
+    const groups = [phases.slice(0, arc), phases.slice(arc, arc * 2), phases.slice(arc * 2)];
+    ribbon = groups
+      .filter((g) => g.length)
+      .map((g, gi) => {
+        const name = gi === 2 ? g[g.length - 1].name : g[0].name;
+        return {
+          name,
+          weeks: `Weeks ${g[0].weekFrom}–${g[g.length - 1].weekTo}`,
+          note: firstSentence(g[0].note),
+        };
+      });
+  } else if (phases.length) {
+    ribbon = phases.map((p) => ({ name: p.name, weeks: `Weeks ${p.weekFrom}–${p.weekTo}`, note: firstSentence(p.note) }));
+  } else {
+    ribbon = [
+      { name: "Foundation", weeks: "Weeks 1–4", note: "Calming the system and building a steady daily rhythm." },
+      { name: "Rebalance", weeks: "Weeks 5–8", note: "Settling blood sugar and stress hormones." },
+      { name: "Sustain", weeks: "Weeks 9–12", note: "Anchoring it all as a way of living." },
+    ];
+  }
+  const ribbonIdx = ribbon.findIndex((r) => {
+    const m = r.weeks.match(/(\d+)–(\d+)/);
+    return m && week >= parseInt(m[1], 10) && week <= parseInt(m[2], 10);
+  });
+  const currentPhase = phases.filter((p) => p.weekFrom <= week).pop() ?? phases[0];
+
+  // ---- lessons (education modules — already client-voiced) --------------------
+  const LESSON_TITLES: Record<string, string> = {
+    "cortisol-steal": "Cortisol steal — where your energy went",
+    "methylation-cycle-dysfunction": "Homocysteine & your active B-vitamins",
+    "hpa-axis-dysregulation": "Your stress system, explained",
+    "ambivalence-in-coaching": "When past attempts felt futile",
+    "gut-brain-axis": "Your gut makes your mood",
+  };
+  const lessons: AppLesson[] = (asArr(plan.education) as Dict[]).map((e, i) => {
+    const slug = asStr(e.target_slug);
+    const body = asStr(e.client_facing_summary);
+    const mins = Math.max(1, Math.round(body.split(/\s+/).length / 180));
+    return {
+      id: `l${i}`,
+      title: LESSON_TITLES[slug] ?? humanize(slug),
+      kind: "read",
+      mins: `${mins} min read`,
+      summary: firstSentence(body).slice(0, 110),
+      body,
+    };
+  });
+
+  // ---- resources (assembled from real plan content) ----------------------------
+  const resources: AppResource[] = [];
+  const windDownBits = lifestyle
+    .filter((p) => /sleep|screen|journal|breathing|golden milk/i.test(asStr(p.name)))
+    .map((p) => `• ${asStr(p.name)}${asStr(p.details) ? ` — ${firstSentence(asStr(p.details))}` : ""}`);
+  if (windDownBits.length) {
+    resources.push({
+      id: "r-winddown",
+      title: "Your evening wind-down",
+      kind: "Cheat-sheet",
+      icon: "doc",
+      desc: "The simple sequence that sets up deep sleep.",
+      body: `FROM 9 PM\n${windDownBits.join("\n")}\n\nConsistency is what matters — same wind-down, most nights. Your sleep rebuilds itself around the rhythm.`,
+    });
+  }
+  const breathPractice = lifestyle.find((p) => /4-7-8|breathing/i.test(asStr(p.name)));
+  if (breathPractice && asStr(breathPractice.details)) {
+    resources.push({
+      id: "r-breath",
+      title: "4-7-8 breathing — the script",
+      kind: "Practice",
+      icon: "breath",
+      desc: "The breath that switches on “rest and digest”.",
+      body: asStr(breathPractice.details),
+    });
+  }
+  if (labs.length) {
+    resources.push({
+      id: "r-labs",
+      title: "Your lab order list",
+      kind: "Lab form",
+      icon: "clock",
+      desc: `What to ask your lab to run before ${recheckLabel}.`,
+      body:
+        `Take this to your lab before your retest:\n\n` +
+        (asArr(plan.lab_orders) as Dict[]).map((l) => `• ${asStr(l.test)}`).join("\n") +
+        `\n\nMorning, fasting, and before your morning supplements. Share the report on WhatsApp and Shivani will read it before your session.`,
+    });
+  }
+  if (recipes.length) {
+    resources.push({
+      id: "r-recipes",
+      title: "Your full recipe pack",
+      kind: "Recipes",
+      icon: "leaf",
+      desc: "Every ✦ dish in your meal plan — ingredients and method.",
+      body: "All the recipes from your plan, in one place — open the pack below.",
+      url: `/recipes/${planSlug}`,
+    });
+  }
+  // (no separate supplement-order resource — each supplement on the Plan tab
+  // already carries its own Reorder link; a second page was just noise)
+
+  // ---- co-pilot canned chips (templated from real plan data) -------------------
+  const dinner = meals.find((m) => m.slot.toLowerCase().includes("dinner"));
+  const dinnerSwaps = dinner ? mealExtra[dinner.slot]?.swaps ?? [] : [];
+  const snackRow = table?.rows.find((r) => /evening/i.test(r.slot));
+  const snackOptions = [...new Set(snackRow?.cells ?? [])].slice(0, 3);
+  const methylLesson = lessons.find((l) => /homocysteine|b-vitamins/i.test(l.title));
+  const aiSuggested: { q: string; a: string }[] = [];
+  if (dinner) {
+    aiSuggested.push({
+      q: "Can I swap tonight’s dinner?",
+      a: `Yes — keep the shape of the plate: vegetables, a protein and a millet. Tonight is ${dinner.pills.join(", ").toLowerCase()}. Good swaps from your plan: ${dinnerSwaps.slice(0, 2).map((s) => s.name.toLowerCase()).join(", or ")}. Try to finish by about 7:45.`,
+    });
+  }
+  aiSuggested.push({
+    q: "I forgot my morning supplements — what now?",
+    a: "No harm done. If it's still before lunch, take them now with a little food. If it's later, just skip today and carry on tomorrow — never double up. Consistency over the weeks matters far more than any single dose.",
+  });
+  if (methylLesson) {
+    aiSuggested.push({
+      q: "Why am I taking active B6 and methylfolate?",
+      a: firstSentence(methylLesson.body) + " " + (methylLesson.body.split(". ").slice(1, 3).join(". ") || ""),
+    });
+  }
+  if (snackOptions.length) {
+    aiSuggested.push({
+      q: "What can I snack on if I’m still hungry?",
+      a: `Reach for the snacks on your plan: ${snackOptions.map((s) => s.toLowerCase()).join("; ")}. Pairing protein with fibre keeps your energy even and avoids an afternoon dip.`,
+    });
+  }
+
+  // ---- identity / dosha ----------------------------------------------------------
+  const displayName = asStr(client.display_name) || clientId;
+  const firstName = displayName.split(" ")[0];
+
+  // program label from the client's goals
+  const goals = asStrArr(client.goals).join(" ").toLowerCase();
+  const programBits: string[] = [];
+  if (/anxiet|calm|stress|feel better/.test(goals)) programBits.push("Calm");
+  if (/sleep/.test(goals)) programBits.push("sleep");
+  if (/energy/.test(goals)) programBits.push("energy");
+  if (/pressure|bp/.test(goals) && programBits.length < 3) programBits.push("heart");
+  const program = programBits.length
+    ? `${programBits[0]}${programBits.length > 1 ? ", " + programBits.slice(1, -1).join(", ") : ""}${programBits.length > 1 ? " & " + programBits[programBits.length - 1] : ""} reset`
+    : "Your 12-week reset";
+
+  const coachLine = currentPhase
+    ? `Week ${week} — you're in the ${currentPhase.name} phase now. ${firstSentence(currentPhase.note)} Keep going.`
+    : `Week ${week} of ${totalWeeks} — steady, one day at a time. Keep going.`;
+
+  const startLabel = startDate
+    ? startDate.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+    : "";
+
+  const intake = asStr(client.intake_date);
+  const member = intake
+    ? `Since ${new Date(`${intake}T00:00:00Z`).toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" })}`
+    : "";
+  const initials = displayName
+    .split(/\s+/)
+    .map((w) => w[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+  const reminders = [
+    { id: "r1", label: "Morning supplements", time: "8:00 am", on: true },
+    { id: "r2", label: "Evening wind-down (breathing + journal)", time: "9:00 pm", on: true },
+    { id: "r3", label: "Bedtime magnesium", time: "9:30 pm", on: true },
+    { id: "r4", label: "Weekly check-in", time: "Sunday 10:00 am", on: true },
+  ];
+
+  const faq = [
+    {
+      q: "What if I miss a dose?",
+      a: "No harm done — just carry on with the next one. Skip a missed dose rather than doubling up. Consistency over weeks matters far more than any single day.",
+    },
+    {
+      q: "Can I swap a meal?",
+      a: "Yes. Keep the shape of the plate — vegetables, a protein and a millet — and you can swap the specific dish. Your plan's same-slot dishes are always safe swaps. When unsure, message Shivani a photo.",
+    },
+    {
+      q: "Do I need to be online?",
+      a: "Your plan loads from the coach's records, so opening the app needs a connection — but your daily ticks are saved on your phone either way. Messaging Shivani happens on WhatsApp.",
+    },
+    {
+      q: "Who sees what I log?",
+      a: "Your weekly check-in goes to Shivani. Daily ticks (supplements, practices, movement) stay on your phone to keep you on rhythm — share anything you like at check-in.",
+    },
+  ];
+
+  const nextContact = asStr(client.next_contact_date);
+  const nextSession = nextContact
+    ? new Date(`${nextContact}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" })
+    : null;
+
+  return {
+    clientId,
+    planSlug,
+    token,
+    client: {
+      firstName,
+      program,
+      week,
+      totalWeeks,
+      startDateLabel: startLabel,
+      dosha,
+      doshaLabel,
+      coachLine,
+    },
+    coach: {
+      name: coachName,
+      role: "Functional medicine coach",
+      initials: "SH",
+      whatsappNumber: "918976563971",
+      whatsappPrefill: `Hi Shivani, a quick question about my plan —`,
+      nextSession,
+    },
+    today: {
+      dow: todayUTC.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" }),
+      dateLabel: todayUTC.toLocaleDateString("en-GB", { day: "numeric", month: "long", timeZone: "UTC" }),
+      idx: todayDow,
+    },
+    weekStrip,
+    meals,
+    mealExtra,
+    supplements,
+    slotOrder: ["Morning", "With meals", "Bedtime"],
+    practices,
+    principles,
+    labs,
+    journey,
+    faq,
+    symptomScore,
+    watchList,
+    labCheckpoints,
+    movementGoalMins: 180,
+    remedies,
+    remedyLib: safeLib,
+    remedyShelf,
+    planRef: {
+      pattern: asStr(nutrition.pattern) || "your plan",
+      authoredBy: coachName,
+      forNote: goals ? `Built for your goals: ${asStrArr(client.goals).slice(0, 3).join(", ").toLowerCase()}` : "Built for you",
+      phase: { currentIdx: ribbonIdx >= 0 ? ribbonIdx : 0, list: ribbon },
+      plate,
+      accents,
+      oils,
+      foods,
+      letterFoods,
+      avoidWhy,
+      cooking,
+    },
+    mealsNote: sampleWeekNote,
+    lessons,
+    resources,
+    aiSuggested,
+    account: {
+      name: displayName,
+      contact: asStr(client.mobile_number) || asStr(client.email),
+      plan: `${program.charAt(0).toUpperCase()}${program.slice(1)} · ${totalWeeks} weeks`,
+      member,
+      avatar: initials,
+    },
+    reminders,
+  };
+}

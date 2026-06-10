@@ -1,0 +1,65 @@
+/**
+ * POST /api/app-checkin — weekly check-in write-back from the client app.
+ *
+ * Auth: body.token must resolve to a published plan's letter_token (the
+ * same token that opened the app). The client is derived server-side
+ * from the token — never trusted from the request.
+ */
+import { NextRequest, NextResponse } from "next/server";
+import { lookupLetterToken } from "@/lib/server-actions/letter-token";
+import { runShim } from "@/lib/fmdb/shim";
+
+export const dynamic = "force-dynamic";
+
+// modest in-memory throttle: a client has no reason to submit >8/day
+const seen = new Map<string, { day: string; count: number }>();
+
+function throttled(token: string): boolean {
+  const day = new Date().toISOString().slice(0, 10);
+  const cur = seen.get(token);
+  if (!cur || cur.day !== day) {
+    seen.set(token, { day, count: 1 });
+    return false;
+  }
+  cur.count += 1;
+  return cur.count > 8;
+}
+
+export async function POST(req: NextRequest) {
+  let body: Record<string, unknown>;
+  try {
+    body = (await req.json()) as Record<string, unknown>;
+  } catch {
+    return NextResponse.json({ ok: false, error: "invalid JSON" }, { status: 400 });
+  }
+  const token = typeof body.token === "string" ? body.token : "";
+  if (!token || token.length < 16) {
+    return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
+  }
+  if (throttled(token)) {
+    return NextResponse.json({ ok: false, error: "too many check-ins today" }, { status: 429 });
+  }
+  const lookup = await lookupLetterToken(token);
+  if (!lookup.ok) {
+    return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
+  }
+
+  try {
+    const out = (await runShim("save-app-checkin.py", {
+      client_id: lookup.client_id,
+      week: Number(body.week) || 0,
+      rating: Number(body.rating) || 0,
+      feel: typeof body.feel === "string" ? body.feel.slice(0, 2000) : "",
+      concerns: typeof body.concerns === "string" ? body.concerns.slice(0, 2000) : "",
+      supplements: Array.isArray(body.supplements) ? body.supplements.slice(0, 30) : [],
+      practices: Array.isArray(body.practices) ? body.practices.slice(0, 30) : [],
+    })) as { ok?: boolean; session_id?: string; error?: string };
+    if (!out.ok) {
+      return NextResponse.json({ ok: false, error: out.error ?? "save failed" }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, session_id: out.session_id });
+  } catch (err) {
+    console.error("[app-checkin] save failed:", err);
+    return NextResponse.json({ ok: false, error: "save failed" }, { status: 500 });
+  }
+}

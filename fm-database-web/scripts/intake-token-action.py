@@ -245,16 +245,38 @@ def _write_staging_stub(client_id: str, data: dict) -> bool:
 def _purge_staging(client_id: str) -> bool:
     """Delete a client's staging dir (Mac-side delete → Mutagen propagates the
     removal to Fly; the authoritative copy in a DIFFERENT tree is untouched).
-    No-op (returns False) when FMDB_STAGING_DIR is unset or the dir is absent."""
+    No-op (returns False) when FMDB_STAGING_DIR is unset or the dir is absent.
+
+    App-staged clients (clients whose companion app is live — marker
+    _app_staged.yaml, see app-staging-action.py) keep their dir: only the
+    intake-specific data evaporates (intake_* keys + form sessions); the
+    plan/letter artifacts the app serves stay until the plan is revoked."""
     root = _staging_root()
     if root is None:
         return False
     import shutil
     d = root / "clients" / client_id
-    if d.exists():
-        shutil.rmtree(d, ignore_errors=True)
+    if not d.exists():
+        return False
+    if (d / "_app_staged.yaml").exists():
+        import yaml  # type: ignore
+        cy = d / "client.yaml"
+        if cy.exists():
+            try:
+                data = yaml.safe_load(cy.read_text()) or {}
+                for k in list(data.keys()):
+                    if k.startswith("intake_"):
+                        data.pop(k, None)
+                cy.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
+            except Exception:
+                pass
+        sess = d / "sessions"
+        if sess.exists():
+            for f in sess.glob("*-intake-form.yaml"):
+                f.unlink()
         return True
-    return False
+    shutil.rmtree(d, ignore_errors=True)
+    return True
 
 
 def _staging_last_submitted_payload(client_id: str) -> dict:
