@@ -1,63 +1,67 @@
 slug: aloe-vera-menstrual-prep
 display_name: Aloe Vera Gel Pre-Period Preventive Remedy
 aliases:
-  - ghrit-kumari-menstrual
-  - aloe-gel-period-prep
-  - aloe-vera-dysmenorrhea
+- ghrit-kumari-menstrual
+- aloe-gel-period-prep
+- aloe-vera-dysmenorrhea
 category: kitchen_remedy
-summary: >-
-  Lad describes fresh aloe vera gel taken for the week before the expected
-  period as the most reliable universal preventive for menstrual pain and
-  discomfort — effective across all three dosha types (vata, pitta, kapha).
-  Aloe vera cools pitta, reduces uterine congestion, supports liver clearance
-  of hormones, and its bitter-cooling properties settle the inflammatory
-  prostaglandin surge that drives cramps. Lad also recommends it acutely for
-  vata-type cramps with black pepper to enhance bioavailability.
+summary: Lad describes fresh aloe vera gel taken for the week before the expected period as
+  the most reliable universal preventive for menstrual pain and discomfort — effective across
+  all three dosha types (vata, pitta, kapha). Aloe vera cools pitta, reduces uterine congestion,
+  supports liver clearance of hormones, and its bitter-cooling properties settle the inflammatory
+  prostaglandin surge that drives cramps. Lad also recommends it acutely for vata-type cramps
+  with black pepper to enhance bioavailability.
 indications:
-  - painful menstruation (dysmenorrhea) — all types
-  - prevention of monthly cramps and discomfort
-  - bloating and water retention before periods
-  - heavy or irregular menstrual flow
-  - perimenopausal cycle irregularity
+- painful menstruation (dysmenorrhea) — all types
+- prevention of monthly cramps and discomfort
+- bloating and water retention before periods
+- heavy or irregular menstrual flow
+- perimenopausal cycle irregularity
 contraindications:
-  - pregnancy — aloe vera taken internally can stimulate uterine contractions; avoid
-  - diarrhoea or loose stools — aloe has a laxative effect
-  - inflammatory bowel disease — internal aloe may aggravate; use with caution
-  - on blood-thinning or anti-diabetic medications — aloe can interact; check with doctor
-  - latex allergy (rare cross-reaction with aloe skin layer — use inner gel only)
-preparation: >-
-  For prevention: Take 1 tablespoon of fresh aloe vera inner gel (not the
-  yellow latex layer), 3 times a day for the entire week before your period is
-  due. For acute vata-type cramps: take 1 tablespoon aloe vera gel with 2 pinches
-  of black pepper, 3 times a day until the cramps subside.
+- pregnancy — aloe vera taken internally can stimulate uterine contractions; avoid
+- diarrhoea or loose stools — aloe has a laxative effect
+- inflammatory bowel disease — internal aloe may aggravate; use with caution
+- on blood-thinning or anti-diabetic medications — aloe can interact; check with doctor
+- latex allergy (rare cross-reaction with aloe skin layer — use inner gel only)
+preparation: 'For prevention: Take 1 tablespoon of fresh aloe vera inner gel (not the yellow
+  latex layer), 3 times a day for the entire week before your period is due. For acute vata-type
+  cramps: take 1 tablespoon aloe vera gel with 2 pinches of black pepper, 3 times a day until
+  the cramps subside.'
 typical_dose: 1 tablespoon gel, 3 times daily
 duration: 1 week before expected period for prevention; ongoing during the symptomatic phase
 timing_notes: Can be taken before or after meals; black pepper version best taken after meals
 linked_to_topics:
-  - premenstrual-syndrome
-  - healthy-menstrual-cycle-baseline
-  - perimenopause
+- premenstrual-syndrome
+- healthy-menstrual-cycle-baseline
+- perimenopause
 linked_to_mechanisms:
-  - inflammatory-cascade
-  - estrogen-clearance-liver-gut
-  - estrogen-enterohepatic-recirculation-uterine
+- inflammatory-cascade
+- estrogen-clearance-liver-gut
+- estrogen-enterohepatic-recirculation-uterine
 balances_dosha:
-  - pitta
-  - vata
+- pitta
+- vata
 aggravates_dosha: []
+suitable_sex: female
+suitable_stages:
+- menstruating
+- perimenopausal
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - alterative
-  - cooling
+- dipana
+- alterative
+- cooling
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Menstrual Difficulties — Strategy to Prevent Menstrual Problems; Treatments for Dysmenorrhea"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Menstrual Difficulties — Strategy to Prevent Menstrual Problems; Treatments for
+    Dysmenorrhea
 evidence_tier: plausible_emerging
 version: 1
 status: active

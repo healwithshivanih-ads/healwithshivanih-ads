@@ -1,53 +1,52 @@
 slug: musta-fennel-kidney-tea
 display_name: Musta-Fennel Kidney-Strengthening Tea
 aliases:
-  - musta-saunf-kidney-tea
-  - nagarmotha-fennel-tea
+- musta-saunf-kidney-tea
+- nagarmotha-fennel-tea
 category: herbal_tea
-summary: >-
-  Lad recommends this simple two-herb steep to strengthen and support the
-  kidneys. Musta (nagarmotha / Cyperus rotundus) is a cooling, diuretic herb
-  widely used in Ayurveda for urinary and renal support, while fennel seed is
-  gently diuretic and anti-spasmodic. Together they help clear congestion and
-  excess pitta from the kidney tissue and ease lower-back discomfort linked to
-  kidney weakness.
+summary: Lad recommends this simple two-herb steep to strengthen and support the kidneys.
+  Musta (nagarmotha / Cyperus rotundus) is a cooling, diuretic herb widely used in Ayurveda
+  for urinary and renal support, while fennel seed is gently diuretic and anti-spasmodic.
+  Together they help clear congestion and excess pitta from the kidney tissue and ease lower-back
+  discomfort linked to kidney weakness.
 indications:
-  - kidney weakness or congestion
-  - lower back ache associated with kidney problems
-  - mild urinary discomfort
-  - crystal urea or subclinical kidney congestion
+- kidney weakness or congestion
+- lower back ache associated with kidney problems
+- mild urinary discomfort
+- crystal urea or subclinical kidney congestion
 contraindications:
-  - acute kidney infection (fever, dysuria) — see a doctor
-  - known kidney disease or reduced kidney function — use only under medical supervision
-  - pregnancy (musta is best avoided in therapeutic doses)
-preparation: >-
-  Combine 1/2 teaspoon musta powder with 1/2 teaspoon fennel seeds in 1 cup of
+- acute kidney infection (fever, dysuria) — see a doctor
+- known kidney disease or reduced kidney function — use only under medical supervision
+- pregnancy (musta is best avoided in therapeutic doses)
+preparation: Combine 1/2 teaspoon musta powder with 1/2 teaspoon fennel seeds in 1 cup of
   hot water. Steep for 10 minutes, then strain and drink.
 typical_dose: 1 cup, 1-2 times a day
 duration: 2-4 weeks as a supportive course; discontinue if symptoms worsen
 timing_notes: Drink between meals, not immediately before bed
 linked_to_topics:
-  - kidney-stones
+- kidney-stones
 linked_to_mechanisms:
-  - renal-ph-buffering
-  - anti-inflammatory-signaling
+- renal-ph-buffering
+- anti-inflammatory-signaling
 balances_dosha:
-  - pitta
-  - kapha
+- pitta
+- kapha
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - diuretic
+- dipana
+- carminative
+- diuretic
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Kidney Problems"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Kidney Problems
 evidence_tier: fm_specific_thin
 version: 1
 status: active

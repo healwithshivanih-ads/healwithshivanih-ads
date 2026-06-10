@@ -4,10 +4,10 @@ aliases:
 - yoga-raja-guggulu
 - yograj-guggulu
 category: ayurvedic_churan
-summary: A classical guggulu formulation Lad recommends for vata-type arthritis, backache, sciatica
-  and osteoarthritis — dry, cracking, painful joints that worsen with movement and cold. Combines
-  purified guggulu with warming, vata-pacifying herbs to clear ama from the joints and ease
-  stiffness.
+summary: A classical guggulu formulation Lad recommends for vata-type arthritis, backache,
+  sciatica and osteoarthritis — dry, cracking, painful joints that worsen with movement and
+  cold. Combines purified guggulu with warming, vata-pacifying herbs to clear ama from the
+  joints and ease stiffness.
 indications:
 - vata-type arthritis (dry, cracking, painful joints)
 - backache and sciatica
@@ -15,8 +15,8 @@ indications:
 - joint stiffness worse in cold
 contraindications:
 - 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
-  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
-  monitor'
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber
+  and monitor'
 - 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
   and before surgery'
 - pregnancy and breastfeeding — avoid (uterine stimulant)
@@ -29,6 +29,9 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sour
 - pungent

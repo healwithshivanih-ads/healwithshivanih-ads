@@ -1,50 +1,49 @@
 slug: brahmi-tea
 display_name: Brahmi Tea
 aliases:
-  - bacopa-tea
-  - brahmi-leaf-infusion
+- bacopa-tea
+- brahmi-leaf-infusion
 category: herbal_tea
-summary: >-
-  A traditional Ayurvedic infusion of brahmi (Bacopa monnieri) leaves, used
-  through generations to calm the nervous system, support sleep onset, and
-  steady focus and memory. Mild, slightly bitter, often blended with tulsi
-  or fennel to soften flavour.
+summary: A traditional Ayurvedic infusion of brahmi (Bacopa monnieri) leaves, used through
+  generations to calm the nervous system, support sleep onset, and steady focus and memory.
+  Mild, slightly bitter, often blended with tulsi or fennel to soften flavour.
 indications:
-  - anxiety
-  - sleep onset difficulty
-  - brain fog
-  - mental fatigue
-  - examination or performance stress
+- anxiety
+- sleep onset difficulty
+- brain fog
+- mental fatigue
+- examination or performance stress
 contraindications:
-  - bradycardia
-  - thyroid medications (theoretical interaction)
-  - pregnancy
-  - SSRIs or anticonvulsants without supervision
+- bradycardia
+- thyroid medications (theoretical interaction)
+- pregnancy
+- SSRIs or anticonvulsants without supervision
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - vata
+- vata
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - diaphoretic
-  - expectorant
-  - nervine
-preparation: >-
-  Steep 1 teaspoon dried brahmi leaves in 1 cup hot (not boiling) water for
-  6-8 minutes, strain. Optionally add a pinch of cardamom or fennel.
+- diaphoretic
+- expectorant
+- nervine
+preparation: Steep 1 teaspoon dried brahmi leaves in 1 cup hot (not boiling) water for 6-8
+  minutes, strain. Optionally add a pinch of cardamom or fennel.
 typical_dose: 1 cup
 duration: 4-8 weeks for cognitive support; nightly as a sleep ritual
 timing_notes: evening 1-2 hours before bed
 linked_to_topics:
-  - anxiety
-  - insomnia
+- anxiety
+- insomnia
 linked_to_mechanisms:
-  - cortisol-elevation
+- cortisol-elevation
 evidence_tier: plausible_emerging
 version: 1
 status: active

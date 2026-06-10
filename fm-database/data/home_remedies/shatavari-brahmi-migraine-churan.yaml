@@ -1,62 +1,65 @@
 slug: shatavari-brahmi-migraine-churan
 display_name: Shatavari-Brahmi-Jatamamsi-Musta Migraine Herbal Formula
 aliases:
-  - pitta-migraine-churan
-  - shatavari-brahmi-headache-formula
+- pitta-migraine-churan
+- shatavari-brahmi-headache-formula
 category: ayurvedic_churan
-summary: >-
-  Lad's primary herbal compound for pitta-type migraines, using a cooling,
-  nervine blend of shatavari (the foremost pitta-pacifying herb), brahmi
-  (cerebral tonic and nervine), jatamamsi (calms vascular reactivity and
-  nervous system), and musta (cooling, reduces systemic pitta and inflammation).
-  The formula works to steady the cardiovascular heat that dilates cerebral
-  blood vessels and to calm the trigeminovascular activation underpinning most
-  migraines. Particularly relevant for women whose migraines are hormonally
-  triggered (perimenopause, menstrual cycle).
+summary: Lad's primary herbal compound for pitta-type migraines, using a cooling, nervine
+  blend of shatavari (the foremost pitta-pacifying herb), brahmi (cerebral tonic and nervine),
+  jatamamsi (calms vascular reactivity and nervous system), and musta (cooling, reduces systemic
+  pitta and inflammation). The formula works to steady the cardiovascular heat that dilates
+  cerebral blood vessels and to calm the trigeminovascular activation underpinning most migraines.
+  Particularly relevant for women whose migraines are hormonally triggered (perimenopause,
+  menstrual cycle).
 indications:
-  - pitta-type migraine headaches
-  - hormonal migraines linked to menstrual cycle or perimenopause
-  - recurring headaches with heat, irritability and visual disturbance
-  - light and sound sensitivity with headaches
+- pitta-type migraine headaches
+- hormonal migraines linked to menstrual cycle or perimenopause
+- recurring headaches with heat, irritability and visual disturbance
+- light and sound sensitivity with headaches
 contraindications:
-  - pregnancy — avoid without practitioner guidance (shatavari is generally safer but full formula needs assessment)
-  - on antidepressants or antiepileptics — brahmi and jatamamsi have CNS effects; check with doctor
-  - kapha-type headaches (dull, sinus congestion, heaviness) — this cooling formula may not suit; needs warming herbs instead
-  - if headaches are severe, sudden, worst-ever or with neurological symptoms — see a doctor immediately
-preparation: >-
-  Combine shatavari 5 parts, brahmi 4 parts, jatamamsi 3 parts, and musta
-  3 parts (by weight or volume). Mix well. Take 1/2 teaspoon of this mixture
-  twice a day — morning after breakfast and evening after dinner — with a
-  little lukewarm water.
+- pregnancy — avoid without practitioner guidance (shatavari is generally safer but full formula
+  needs assessment)
+- on antidepressants or antiepileptics — brahmi and jatamamsi have CNS effects; check with
+  doctor
+- kapha-type headaches (dull, sinus congestion, heaviness) — this cooling formula may not
+  suit; needs warming herbs instead
+- if headaches are severe, sudden, worst-ever or with neurological symptoms — see a doctor
+  immediately
+preparation: Combine shatavari 5 parts, brahmi 4 parts, jatamamsi 3 parts, and musta 3 parts
+  (by weight or volume). Mix well. Take 1/2 teaspoon of this mixture twice a day — morning
+  after breakfast and evening after dinner — with a little lukewarm water.
 typical_dose: 1/2 teaspoon twice daily
-duration: Use continuously for at least 1-3 months for prevention; take during acute migraines as well
+duration: Use continuously for at least 1-3 months for prevention; take during acute migraines
+  as well
 timing_notes: After breakfast and after dinner; do not take on a completely empty stomach
 linked_to_topics:
-  - migraine-headache
-  - perimenopause
-  - premenstrual-syndrome
+- migraine-headache
+- perimenopause
+- premenstrual-syndrome
 linked_to_mechanisms:
-  - trigeminovascular-activation
-  - nitric-oxide-cranial-circulation
-  - estrogen-decline
-  - inflammatory-cascade
+- trigeminovascular-activation
+- nitric-oxide-cranial-circulation
+- estrogen-decline
+- inflammatory-cascade
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - kapha
+- kapha
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - rasayana
-  - galactagogue
-  - medhya
+- rasayana
+- galactagogue
+- medhya
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Migraine — Herbal Remedy"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Migraine — Herbal Remedy
 evidence_tier: plausible_emerging
 version: 1
 status: active

@@ -1,65 +1,62 @@
 slug: ashwagandha-bala-bladder-tonic
 display_name: Ashwagandha-Bala-Vidari Bladder Tonic for Urinary Incontinence
 aliases:
-  - ashwagandha-bala-vidari-churan
-  - vata-bladder-strengthening-formula
+- ashwagandha-bala-vidari-churan
+- vata-bladder-strengthening-formula
 category: ayurvedic_churan
-summary: >-
-  Urinary incontinence is a vata disorder in Ayurveda, arising from weakness of
-  the bladder sphincter. Lad recommends this three-herb formula — ashwagandha
-  (Withania somnifera), bala (Sida cordifolia), and vidari (Pueraria tuberosa)
-  — to tonify and strengthen the muscles of the bladder and pelvic floor.
-  Ashwagandha is an adaptogenic muscle-building tonic; bala is Ayurveda's
-  premier strength-building herb for weak tissues; vidari (Indian kudzu) is a
-  nourishing vata-balancing rejuvenative. This formula is especially relevant
-  for perimenopausal and menopausal women experiencing stress or urge
-  incontinence.
+summary: Urinary incontinence is a vata disorder in Ayurveda, arising from weakness of the
+  bladder sphincter. Lad recommends this three-herb formula — ashwagandha (Withania somnifera),
+  bala (Sida cordifolia), and vidari (Pueraria tuberosa) — to tonify and strengthen the muscles
+  of the bladder and pelvic floor. Ashwagandha is an adaptogenic muscle-building tonic; bala
+  is Ayurveda's premier strength-building herb for weak tissues; vidari (Indian kudzu) is
+  a nourishing vata-balancing rejuvenative. This formula is especially relevant for perimenopausal
+  and menopausal women experiencing stress or urge incontinence.
 indications:
-  - urinary incontinence — stress, urge, or mixed type
-  - bladder weakness and frequent urination
-  - perimenopausal urinary symptoms (leakage on coughing, sneezing, laughing)
-  - vata-type urinary complaints with urgency or difficulty retaining urine
-  - post-menopausal pelvic floor weakness
+- urinary incontinence — stress, urge, or mixed type
+- bladder weakness and frequent urination
+- perimenopausal urinary symptoms (leakage on coughing, sneezing, laughing)
+- vata-type urinary complaints with urgency or difficulty retaining urine
+- post-menopausal pelvic floor weakness
 contraindications:
-  - urinary incontinence due to infection (urinary tract infection) needs antibiotic
-    treatment first — consult a doctor
-  - new-onset incontinence warrants medical evaluation to rule out neurological cause
-  - avoid in pregnancy without guidance (ashwagandha may be stimulating)
-  - not suitable in high-kapha conditions or obesity without modification
-  - diabetics should monitor blood sugar (ashwagandha may lower glucose)
-preparation: >-
-  Mix 5 parts ashwagandha root powder, 3 parts bala powder, and 2 parts vidari
-  root powder. Take one-half teaspoon of this mixture with warm water twice a
-  day, after meals. Combine with pelvic floor exercises (Kegel or ashwini mudra)
-  for best results.
+- urinary incontinence due to infection (urinary tract infection) needs antibiotic treatment
+  first — consult a doctor
+- new-onset incontinence warrants medical evaluation to rule out neurological cause
+- avoid in pregnancy without guidance (ashwagandha may be stimulating)
+- not suitable in high-kapha conditions or obesity without modification
+- diabetics should monitor blood sugar (ashwagandha may lower glucose)
+preparation: Mix 5 parts ashwagandha root powder, 3 parts bala powder, and 2 parts vidari
+  root powder. Take one-half teaspoon of this mixture with warm water twice a day, after meals.
+  Combine with pelvic floor exercises (Kegel or ashwini mudra) for best results.
 typical_dose: Half teaspoon twice daily after meals, with warm water
 duration: 6-12 weeks; noticeable improvement typically seen within 4-6 weeks
 timing_notes: After meals; consistency over weeks is key — effects build gradually
 balances_dosha:
-  - vata
+- vata
 aggravates_dosha:
-  - kapha
-  - pitta
+- kapha
+- pitta
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
-  - bitter
+- sweet
+- pungent
+- bitter
 virya: heating
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
+- dipana
+- carminative
+- antispasmodic
 linked_to_topics:
-  - pelvic-floor-dysfunction
-  - perimenopause-and-menopause
-  - perimenopause
+- pelvic-floor-dysfunction
+- perimenopause-and-menopause
+- perimenopause
 linked_to_mechanisms:
-  - diaphragm-pelvic-floor-coupling
-  - hpa-axis-dysregulation
+- diaphragm-pelvic-floor-coupling
+- hpa-axis-dysregulation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Urinary Incontinence — Herbs"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Urinary Incontinence — Herbs
 evidence_tier: fm_specific_thin
 version: 1
 status: active

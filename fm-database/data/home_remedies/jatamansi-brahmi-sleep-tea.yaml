@@ -3,8 +3,8 @@ display_name: Jatamansi-Brahmi Calming Tea
 aliases:
 - sleep-tea
 category: herbal_tea
-summary: A calming bedtime infusion of jatamansi and brahmi — traditionally used to quiet a racing mind
-  and support restful sleep.
+summary: A calming bedtime infusion of jatamansi and brahmi — traditionally used to quiet
+  a racing mind and support restful sleep.
 indications:
 - poor-sleep
 - racing-mind
@@ -17,6 +17,9 @@ balances_dosha:
 - vata
 - pitta
 aggravates_dosha: []
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sweet
 - bitter
@@ -26,8 +29,8 @@ vipaka: sweet
 ayurvedic_actions:
 - medhya
 - nervine
-preparation: Steep 1/4 tsp jatamansi + 1/4 tsp brahmi (or a few fresh brahmi leaves) in 1 cup hot water
-  for 5-7 min; strain.
+preparation: Steep 1/4 tsp jatamansi + 1/4 tsp brahmi (or a few fresh brahmi leaves) in 1
+  cup hot water for 5-7 min; strain.
 typical_dose: 1 cup about an hour before bed.
 duration: Nightly for 4-6 weeks, then review.
 timing_notes: Evening / before bed.

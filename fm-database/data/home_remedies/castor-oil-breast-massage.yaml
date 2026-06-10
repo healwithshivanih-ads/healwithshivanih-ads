@@ -1,66 +1,65 @@
 slug: castor-oil-breast-massage
 display_name: Warm Castor Oil Breast Massage for Soreness
 aliases:
-  - castor-oil-sore-breast-massage
-  - eranda-breast-massage
-  - castor-oil-mastitis-prevention
+- castor-oil-sore-breast-massage
+- eranda-breast-massage
+- castor-oil-mastitis-prevention
 category: other
 route: external
-summary: >-
-  Lad recommends a gentle daily breast massage with warm castor oil to relieve
-  hormonal breast soreness, lymphatic congestion, and to prevent stagnation
-  of milk and mastitis in breastfeeding mothers. The massage technique is
-  directed inward-to-outward (sternum toward armpit) to support lymphatic
-  drainage. Castor oil has notable anti-inflammatory and lymphagogue
-  properties, and the mechanical action of massage moves congested lymph,
-  reducing swelling, tenderness, and the cyclical breast pain common in PMS
-  and perimenopause.
+summary: Lad recommends a gentle daily breast massage with warm castor oil to relieve hormonal
+  breast soreness, lymphatic congestion, and to prevent stagnation of milk and mastitis in
+  breastfeeding mothers. The massage technique is directed inward-to-outward (sternum toward
+  armpit) to support lymphatic drainage. Castor oil has notable anti-inflammatory and lymphagogue
+  properties, and the mechanical action of massage moves congested lymph, reducing swelling,
+  tenderness, and the cyclical breast pain common in PMS and perimenopause.
 indications:
-  - cyclic breast tenderness and soreness (PMS, perimenopausal)
-  - lymphatic congestion causing swollen, heavy breasts
-  - prevention of milk stagnation and mastitis in breastfeeding mothers
-  - fibrocystic breast discomfort
+- cyclic breast tenderness and soreness (PMS, perimenopausal)
+- lymphatic congestion causing swollen, heavy breasts
+- prevention of milk stagnation and mastitis in breastfeeding mothers
+- fibrocystic breast discomfort
 contraindications:
-  - diagnosed breast cancer — consult your oncologist before any topical
-    oil massage on the breast
-  - open wounds, broken skin, or active infection on the breast
-  - breastfeeding — avoid applying castor oil to the areola and nipple
-    entirely; wash oil off thoroughly before nursing as it can cause diarrhea
-    in the baby if ingested
-  - castor oil allergy
+- diagnosed breast cancer — consult your oncologist before any topical oil massage on the
+  breast
+- open wounds, broken skin, or active infection on the breast
+- breastfeeding — avoid applying castor oil to the areola and nipple entirely; wash oil off
+  thoroughly before nursing as it can cause diarrhea in the baby if ingested
+- castor oil allergy
 balances_dosha:
-  - vata
+- vata
 aggravates_dosha: []
+suitable_sex: female
+suitable_stages:
+- menstruating
+- perimenopausal
+- lactation
 rasa:
-  - sweet
-  - pungent
-  - astringent
+- sweet
+- pungent
+- astringent
 virya: heating
 vipaka: sweet
 ayurvedic_actions:
-  - nourishing
-  - laxative
-  - anti-inflammatory
-preparation: >-
-  Warm 1 teaspoon of castor oil gently (place the bottle in warm water for
-  a minute). Starting from the sternum (breastbone), use your palm and fingers
-  to massage the breast tissue outward toward the armpit in gentle circular
-  and sweeping motions. Cover the area underneath and around the nipple, but
-  avoid applying oil to the areola and nipple (especially if breastfeeding).
-  Massage gently for 5-10 minutes each breast, morning and bedtime.
+- nourishing
+- laxative
+- anti-inflammatory
+preparation: Warm 1 teaspoon of castor oil gently (place the bottle in warm water for a minute).
+  Starting from the sternum (breastbone), use your palm and fingers to massage the breast
+  tissue outward toward the armpit in gentle circular and sweeping motions. Cover the area
+  underneath and around the nipple, but avoid applying oil to the areola and nipple (especially
+  if breastfeeding). Massage gently for 5-10 minutes each breast, morning and bedtime.
 typical_dose: 1 teaspoon warm castor oil per breast, massage twice a day
-duration: Continue until soreness resolves; for preventive use around the
-  menstrual cycle, use for the 7-10 days before menstruation
-timing_notes: Morning before bathing and bedtime are the two recommended
-  windows; wash off before nursing
+duration: Continue until soreness resolves; for preventive use around the menstrual cycle,
+  use for the 7-10 days before menstruation
+timing_notes: Morning before bathing and bedtime are the two recommended windows; wash off
+  before nursing
 linked_to_topics:
-  - fibrocystic-breast-disease
+- fibrocystic-breast-disease
 linked_to_mechanisms:
-  - estrogen-enterohepatic-recirculation
-  - chronic-inflammation
+- estrogen-enterohepatic-recirculation
+- chronic-inflammation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Breasts, Sore; Breastfeeding Problems — Prevention"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Breasts, Sore; Breastfeeding Problems — Prevention
 evidence_tier: plausible_emerging
 version: 1
 status: active

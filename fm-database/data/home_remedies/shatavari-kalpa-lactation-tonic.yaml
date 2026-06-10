@@ -1,64 +1,62 @@
 slug: shatavari-kalpa-lactation-tonic
 display_name: Shatavari Kalpa Lactation Tonic
 aliases:
-  - shatavari-ghee-lactation
-  - shatavari-warm-milk-lactation
-  - satavari-milk-tonic
+- shatavari-ghee-lactation
+- shatavari-warm-milk-lactation
+- satavari-milk-tonic
 category: kashayam
-summary: >-
-  Shatavari kalpa is the classical Ayurvedic galactagogue — a preparation
-  for increasing breast milk supply. Shatavari (Asparagus racemosus) is
-  lightly roasted in ghee with natural brown sugar to make a sweet, nourishing
-  preparation that is then stirred into warm milk. Shatavari is a premier
-  Ayurvedic rasayana for women's reproductive health, supporting lactation,
+summary: Shatavari kalpa is the classical Ayurvedic galactagogue — a preparation for increasing
+  breast milk supply. Shatavari (Asparagus racemosus) is lightly roasted in ghee with natural
+  brown sugar to make a sweet, nourishing preparation that is then stirred into warm milk.
+  Shatavari is a premier Ayurvedic rasayana for women's reproductive health, supporting lactation,
   oestrogen balance, and nourishment of the rasa dhatu (plasma/lymph).
 indications:
-  - insufficient breast milk supply (scanty lactation)
-  - postpartum recovery and nourishment
-  - general reproductive tonic for women
-  - low ojas or depleted vitality after childbirth
+- insufficient breast milk supply (scanty lactation)
+- postpartum recovery and nourishment
+- general reproductive tonic for women
+- low ojas or depleted vitality after childbirth
 contraindications:
-  - oestrogen-sensitive conditions (oestrogen-receptor positive breast cancer,
-    endometriosis, uterine fibroids) — consult your oncologist or gynaecologist
-    before using shatavari
-  - known asparagus family allergy
-  - active mastitis or breast abscess — treat the infection first
-  - gestational diabetes (jaggery/sugar content)
+- oestrogen-sensitive conditions (oestrogen-receptor positive breast cancer, endometriosis,
+  uterine fibroids) — consult your oncologist or gynaecologist before using shatavari
+- known asparagus family allergy
+- active mastitis or breast abscess — treat the infection first
+- gestational diabetes (jaggery/sugar content)
 balances_dosha:
-  - vata
-  - pitta
+- vata
+- pitta
 aggravates_dosha:
-  - kapha
+- kapha
+suitable_sex: female
+suitable_stages:
+- lactation
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
-preparation: >-
-  SHATAVARI KALPA: In a small pan, roast 1 teaspoon of shatavari powder in
-  1 teaspoon of ghee over low heat for 1-2 minutes until fragrant. Add 1
-  teaspoon of natural brown sugar (or jaggery) and stir to combine. Stir
-  this roasted mixture into 1 cup of warm milk and drink immediately.
-  Alternatively: mix 1 teaspoon shatavari powder with 1 teaspoon natural
-  sugar and take with 1 teaspoon ghee and 1 cup of hot milk.
+- dipana
+- carminative
+- antispasmodic
+preparation: 'SHATAVARI KALPA: In a small pan, roast 1 teaspoon of shatavari powder in 1 teaspoon
+  of ghee over low heat for 1-2 minutes until fragrant. Add 1 teaspoon of natural brown sugar
+  (or jaggery) and stir to combine. Stir this roasted mixture into 1 cup of warm milk and
+  drink immediately. Alternatively: mix 1 teaspoon shatavari powder with 1 teaspoon natural
+  sugar and take with 1 teaspoon ghee and 1 cup of hot milk.'
 typical_dose: 1 teaspoon in 1 cup warm milk, 2-3 times a day
-duration: Continue throughout the breastfeeding period; can also be used
-  prenatally in the third trimester with practitioner guidance
-timing_notes: Best taken with meals; the mid-morning and early evening doses
-  help sustain milk supply throughout the day
+duration: Continue throughout the breastfeeding period; can also be used prenatally in the
+  third trimester with practitioner guidance
+timing_notes: Best taken with meals; the mid-morning and early evening doses help sustain
+  milk supply throughout the day
 linked_to_topics:
-  - fibrocystic-breast-disease
+- fibrocystic-breast-disease
 linked_to_mechanisms:
-  - estrogen-decline
-  - postpartum-estrogen-withdrawal
+- estrogen-decline
+- postpartum-estrogen-withdrawal
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Breastfeeding Problems — There Is Insufficient Milk"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Breastfeeding Problems — There Is Insufficient Milk
 evidence_tier: fm_specific_thin
 version: 1
 status: active

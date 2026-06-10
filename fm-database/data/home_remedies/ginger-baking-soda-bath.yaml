@@ -1,55 +1,53 @@
 slug: ginger-baking-soda-bath
 display_name: Ginger & Baking Soda Relaxing Bath
 aliases:
-  - ginger-soda-bath
-  - calming-soak-bath
+- ginger-soda-bath
+- calming-soak-bath
 category: other
 route: external
-summary: >-
-  A warm soaking bath with ginger and baking soda that Lad recommends to pacify
-  vata — easing anxiety, muscle tension and the soreness/stiffness of an
-  over-stressed body. The warmth plus ginger's circulation-boosting heat relaxes
-  muscles and the nervous system; baking soda softens the water and skin. A
-  pleasant evening wind-down ritual.
+summary: A warm soaking bath with ginger and baking soda that Lad recommends to pacify vata
+  — easing anxiety, muscle tension and the soreness/stiffness of an over-stressed body. The
+  warmth plus ginger's circulation-boosting heat relaxes muscles and the nervous system; baking
+  soda softens the water and skin. A pleasant evening wind-down ritual.
 indications:
-  - anxiety and nervous tension
-  - muscle soreness and stiffness
-  - backache and general aches
-  - winding down before sleep
+- anxiety and nervous tension
+- muscle soreness and stiffness
+- backache and general aches
+- winding down before sleep
 contraindications:
-  - open wounds or broken skin
-  - very high or low blood pressure (hot baths — caution)
-  - pregnancy (avoid very hot/long soaks)
+- open wounds or broken skin
+- very high or low blood pressure (hot baths — caution)
+- pregnancy (avoid very hot/long soaks)
 balances_dosha:
-  - vata
+- vata
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - salty
-  - pungent
+- sweet
+- salty
+- pungent
 virya: heating
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antacid
-preparation: >-
-  Add about 1/3 cup ground ginger and 1/3 cup baking soda to a tub of warm
-  water. Soak for 10-15 minutes. Can be repeated 2-3 times a week (a
-  mahanarayan-oil self-massage beforehand makes it more soothing for stiff
-  joints/back).
+- dipana
+- carminative
+- antacid
+preparation: Add about 1/3 cup ground ginger and 1/3 cup baking soda to a tub of warm water.
+  Soak for 10-15 minutes. Can be repeated 2-3 times a week (a mahanarayan-oil self-massage
+  beforehand makes it more soothing for stiff joints/back).
 typical_dose: One 10-15 minute soak
 duration: As needed; 2-3 times per week during stressful or achy periods
 timing_notes: Best in the evening to relax before bed
 linked_to_topics:
-  - chronic-stress
-  - anxiety
-  - joint-pain
+- chronic-stress
+- anxiety
+- joint-pain
 linked_to_mechanisms:
-  - cortisol-elevation
+- cortisol-elevation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Anxiety — relaxing bath; Backache — hot herbalized bath"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Anxiety — relaxing bath; Backache — hot herbalized bath
 evidence_tier: fm_specific_thin
 version: 1
 status: active

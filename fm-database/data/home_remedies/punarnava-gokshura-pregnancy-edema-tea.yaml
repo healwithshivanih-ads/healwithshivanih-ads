@@ -1,73 +1,74 @@
 slug: punarnava-gokshura-pregnancy-edema-tea
 display_name: Punarnava-Gokshura Tea for Gestational Oedema
 aliases:
-  - punarnava-hogweed-edema-tea
-  - gokshura-tribulus-pregnancy-edema
-  - punarnava-gokshura-diuretic-tea
-  - pregnancy-swelling-ayurvedic-tea
+- punarnava-hogweed-edema-tea
+- gokshura-tribulus-pregnancy-edema
+- punarnava-gokshura-diuretic-tea
+- pregnancy-swelling-ayurvedic-tea
 category: herbal_tea
-summary: >-
-  Lad prescribes punarnava (Boerhavia diffusa — Indian hogweed) and gokshura
-  (Tribulus terrestris — small caltrops) as a gentle, pregnancy-safe herbal
-  diuretic tea for the ankle and lower limb swelling commonly seen in the
-  second and third trimester. Physiological oedema of pregnancy reflects
-  elevated progesterone-driven fluid retention, increased venous pressure, and
-  RAAS activation compressing the inferior vena cava. Punarnava is an
-  Ayurvedic kapha-pacifying herb with a long classical record as a safe mild
-  diuretic and renal tonic; gokshura (the main herb in GokshurAdi guggulu but
-  here used without the guggulu resin) is a cooling urinary tonic that reduces
-  dysuria and supports healthy renal clearance. Together they reduce kapha
-  accumulation in the lower extremities without depleting electrolytes or
-  stressing the developing foetus — in contrast to pharmaceutical diuretics.
-  Always use alongside adequate water intake and leg elevation.
+summary: Lad prescribes punarnava (Boerhavia diffusa — Indian hogweed) and gokshura (Tribulus
+  terrestris — small caltrops) as a gentle, pregnancy-safe herbal diuretic tea for the ankle
+  and lower limb swelling commonly seen in the second and third trimester. Physiological oedema
+  of pregnancy reflects elevated progesterone-driven fluid retention, increased venous pressure,
+  and RAAS activation compressing the inferior vena cava. Punarnava is an Ayurvedic kapha-pacifying
+  herb with a long classical record as a safe mild diuretic and renal tonic; gokshura (the
+  main herb in GokshurAdi guggulu but here used without the guggulu resin) is a cooling urinary
+  tonic that reduces dysuria and supports healthy renal clearance. Together they reduce kapha
+  accumulation in the lower extremities without depleting electrolytes or stressing the developing
+  foetus — in contrast to pharmaceutical diuretics. Always use alongside adequate water intake
+  and leg elevation.
 indications:
-  - physiological ankle and lower leg oedema in second and third trimester pregnancy
-  - mild gestational pitting oedema without pre-eclampsia
-  - kapha-type fluid retention in pregnancy
-  - associated discomfort of heavy legs and tight footwear in late pregnancy
+- physiological ankle and lower leg oedema in second and third trimester pregnancy
+- mild gestational pitting oedema without pre-eclampsia
+- kapha-type fluid retention in pregnancy
+- associated discomfort of heavy legs and tight footwear in late pregnancy
 contraindications:
-  - do NOT use if there is any sign of pre-eclampsia (hypertension, protein in urine, severe headache, visual changes) — seek immediate medical care
-  - do NOT use without GP or obstetrician awareness
-  - if oedema is unilateral or asymmetric, rule out DVT before using herbal diuretics
-  - gokshura should be used cautiously in women with known kidney disease
-  - adequate fluid intake (2 to 2.5 litres/day) is essential alongside this tea to prevent dehydration
-  - mulethi (licorice) is commonly combined with punarnava but should be avoided in gestational oedema as it raises blood pressure and worsens fluid retention
-preparation: >-
-  Use punarnava powder or dried root alone, or combine equal parts punarnava
-  and gokshura powder. Measure 1 teaspoon of the powder (or blend) into
-  1 cup of freshly boiled water. Steep for 10 minutes, strain well, and
-  drink warm with a few drops of fresh lemon juice if desired.
-  Alternatively, a cold-water overnight infusion (1 teaspoon in 1 cup cold
-  water, steeped overnight, drunk in the morning) is gentler and better
-  tolerated in the third trimester.
+- do NOT use if there is any sign of pre-eclampsia (hypertension, protein in urine, severe
+  headache, visual changes) — seek immediate medical care
+- do NOT use without GP or obstetrician awareness
+- if oedema is unilateral or asymmetric, rule out DVT before using herbal diuretics
+- gokshura should be used cautiously in women with known kidney disease
+- adequate fluid intake (2 to 2.5 litres/day) is essential alongside this tea to prevent dehydration
+- mulethi (licorice) is commonly combined with punarnava but should be avoided in gestational
+  oedema as it raises blood pressure and worsens fluid retention
+preparation: Use punarnava powder or dried root alone, or combine equal parts punarnava and
+  gokshura powder. Measure 1 teaspoon of the powder (or blend) into 1 cup of freshly boiled
+  water. Steep for 10 minutes, strain well, and drink warm with a few drops of fresh lemon
+  juice if desired. Alternatively, a cold-water overnight infusion (1 teaspoon in 1 cup cold
+  water, steeped overnight, drunk in the morning) is gentler and better tolerated in the third
+  trimester.
 typical_dose: 1 teaspoon in 1 cup of water, 2 to 3 times daily
-duration: Use during the weeks of active oedema; discontinue when oedema resolves; review with midwife monthly
+duration: Use during the weeks of active oedema; discontinue when oedema resolves; review
+  with midwife monthly
 timing_notes: Between meals; avoid taking in the evening to reduce nocturia disrupting sleep
 balances_dosha:
-  - kapha
-  - pitta
+- kapha
+- pitta
 aggravates_dosha:
-  - vata
+- vata
+suitable_sex: female
+suitable_stages:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - scraping
-  - anti-inflammatory
-  - diuretic
+- scraping
+- anti-inflammatory
+- diuretic
 linked_to_topics:
-  - pregnancy-first-trimester
-  - inflammation
+- pregnancy-first-trimester
+- inflammation
 linked_to_mechanisms:
-  - raas-and-fluid-balance
-  - raas-activation
-  - systemic-inflammation
+- raas-and-fluid-balance
+- raas-activation
+- systemic-inflammation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Swelling (Edema) During Pregnancy — Herbal Remedies"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Swelling (Edema) During Pregnancy — Herbal Remedies
 evidence_tier: fm_specific_thin
 version: 1
 status: active

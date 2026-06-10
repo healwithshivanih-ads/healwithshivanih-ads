@@ -3,8 +3,8 @@ display_name: Ajwain (Carom) Water
 aliases:
 - ajwain-pani
 category: infused_water
-summary: Carom seeds boiled in water — a strong carminative water for gas, acidity-with-gas and post-meal
-  bloating; also a traditional post-partum digestive.
+summary: Carom seeds boiled in water — a strong carminative water for gas, acidity-with-gas
+  and post-meal bloating; also a traditional post-partum digestive.
 indications:
 - gas
 - bloating
@@ -17,6 +17,8 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
 rasa:
 - pungent
 - bitter

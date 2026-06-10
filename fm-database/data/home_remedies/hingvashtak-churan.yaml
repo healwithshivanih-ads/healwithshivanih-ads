@@ -1,54 +1,53 @@
 slug: hingvashtak-churan
 display_name: Hingvashtak Churan (Eight-Spice Asafoetida Blend)
 aliases:
-  - hingwashtak-churna
-  - hingashtak-powder
-  - 8-spice-hing-churan
+- hingwashtak-churna
+- hingashtak-powder
+- 8-spice-hing-churan
 category: ayurvedic_churan
-summary: >-
-  A classical Ayurvedic eight-spice powder built around hing (asafoetida) with
-  ginger, black pepper, long pepper, ajwain, jeera, black jeera, and rock
-  salt. Taken with the first bite of a warm meal to wake up sluggish
-  digestion, reduce gas, and ease post-meal heaviness.
+summary: A classical Ayurvedic eight-spice powder built around hing (asafoetida) with ginger,
+  black pepper, long pepper, ajwain, jeera, black jeera, and rock salt. Taken with the first
+  bite of a warm meal to wake up sluggish digestion, reduce gas, and ease post-meal heaviness.
 indications:
-  - sluggish digestion
-  - gas and bloating
-  - IBS with constipation-predominance
-  - low appetite
-  - post-meal heaviness
+- sluggish digestion
+- gas and bloating
+- IBS with constipation-predominance
+- low appetite
+- post-meal heaviness
 contraindications:
-  - active peptic ulcer
-  - GERD with burning pain
-  - pregnancy (high-dose hing)
-  - haemorrhoids with bleeding
-  - heavy menstrual bleeding (pippali warming)
+- active peptic ulcer
+- GERD with burning pain
+- pregnancy (high-dose hing)
+- haemorrhoids with bleeding
+- heavy menstrual bleeding (pippali warming)
 balances_dosha:
-  - vata
-  - kapha
+- vata
+- kapha
 aggravates_dosha:
-  - pitta
+- pitta
+avoid_in:
+- pregnancy
 rasa:
-  - sour
-  - salty
-  - pungent
+- sour
+- salty
+- pungent
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
-preparation: >-
-  Ready-made from reputable Ayurvedic brands (Baidyanath, Patanjali, Vyas).
-  Mix 1/4 to 1/2 teaspoon into the first warm bite of food — typically the
-  first spoon of rice with ghee, or stirred into warm dal.
+- dipana
+- carminative
+- antispasmodic
+preparation: Ready-made from reputable Ayurvedic brands (Baidyanath, Patanjali, Vyas). Mix
+  1/4 to 1/2 teaspoon into the first warm bite of food — typically the first spoon of rice
+  with ghee, or stirred into warm dal.
 typical_dose: 1/4 to 1/2 teaspoon with meals
 duration: 4-6 weeks during a digestion-reset phase, then as needed
 timing_notes: with the first bite of lunch and dinner
 linked_to_topics:
-  - ibs
-  - agni-digestive-fire
+- ibs
+- agni-digestive-fire
 linked_to_mechanisms:
-  - dysbiosis-gut-microbiome-imbalance
+- dysbiosis-gut-microbiome-imbalance
 evidence_tier: fm_specific_thin
 version: 1
 status: active

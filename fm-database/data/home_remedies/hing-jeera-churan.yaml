@@ -3,8 +3,8 @@ display_name: Hing-Jeera Digestive Churan
 aliases:
 - hingvastak-lite
 category: ayurvedic_churan
-summary: Cumin (jeera), a pinch of asafoetida (hing) and rock salt — a quick anti-flatulent churan for
-  gas, cramping and a bloated, distended belly.
+summary: Cumin (jeera), a pinch of asafoetida (hing) and rock salt — a quick anti-flatulent
+  churan for gas, cramping and a bloated, distended belly.
 indications:
 - gas
 - abdominal-cramping
@@ -17,6 +17,8 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
 rasa:
 - salty
 - pungent
@@ -27,7 +29,8 @@ ayurvedic_actions:
 - dipana
 - carminative
 - antispasmodic
-preparation: Lightly roast 2 tbsp cumin, grind; mix with 1/4 tsp hing (gluten-free) and 1/2 tsp rock salt.
+preparation: Lightly roast 2 tbsp cumin, grind; mix with 1/4 tsp hing (gluten-free) and 1/2
+  tsp rock salt.
 typical_dose: 1/4-1/2 tsp with warm water when bloated, or after a heavy meal.
 duration: As needed; safe daily.
 timing_notes: With or just after meals, or at the first sign of gas.

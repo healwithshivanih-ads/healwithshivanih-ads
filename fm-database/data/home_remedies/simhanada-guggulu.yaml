@@ -5,17 +5,17 @@ aliases:
 - simhnad-guggulu
 category: ayurvedic_churan
 summary: A strong, ama-clearing guggulu formulation (with triphala + castor) Lad recommends
-  for rheumatoid arthritis and chronic ama-laden joint disease with constipation. It works on
-  the gut-joint (ama) axis — clearing toxins from the colon that lodge in the joints — while
-  easing inflammatory joint pain.
+  for rheumatoid arthritis and chronic ama-laden joint disease with constipation. It works
+  on the gut-joint (ama) axis — clearing toxins from the colon that lodge in the joints —
+  while easing inflammatory joint pain.
 indications:
 - rheumatoid arthritis (ama type)
 - chronic inflammatory arthritis with constipation
 - stiff, painful, toxin-laden joints
 contraindications:
 - 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
-  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
-  monitor'
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber
+  and monitor'
 - 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
   and before surgery'
 - pregnancy and breastfeeding — avoid (uterine stimulant)
@@ -29,6 +29,9 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sour
 - pungent

@@ -1,62 +1,61 @@
 slug: almond-saffron-bone-milk
 display_name: Almond-Saffron-Cardamom Bone-Building Milk
 aliases:
-  - badam-kesar-dudh
-  - almond-calcium-milk
-  - osteoporosis-almond-drink
+- badam-kesar-dudh
+- almond-calcium-milk
+- osteoporosis-almond-drink
 category: kitchen_remedy
-summary: >-
-  Lad's bone-building tonic for osteoporosis: ten almonds soaked overnight,
-  peeled in the morning, and blended with warm milk, ginger, cardamom, and a
-  pinch of saffron. Almonds are calcium- and magnesium-rich and their overnight
-  soak releases phytase to improve mineral bioavailability. Saffron adds mild
-  oestrogenic activity; cardamom and ginger improve digestive assimilation of
-  calcium. The drink can be made with cow's, goat's, or soy milk.
+summary: 'Lad''s bone-building tonic for osteoporosis: ten almonds soaked overnight, peeled
+  in the morning, and blended with warm milk, ginger, cardamom, and a pinch of saffron. Almonds
+  are calcium- and magnesium-rich and their overnight soak releases phytase to improve mineral
+  bioavailability. Saffron adds mild oestrogenic activity; cardamom and ginger improve digestive
+  assimilation of calcium. The drink can be made with cow''s, goat''s, or soy milk.'
 indications:
-  - osteoporosis and bone-density support
-  - perimenopausal and menopausal calcium needs
-  - general debility and nutritional deficiency
-  - vata-type weakness and dry, brittle bones
+- osteoporosis and bone-density support
+- perimenopausal and menopausal calcium needs
+- general debility and nutritional deficiency
+- vata-type weakness and dry, brittle bones
 contraindications:
-  - almond or tree-nut allergy
-  - saffron in pregnancy (large amounts are emmenagogic — a small pinch in milk is generally fine but use caution)
-  - very high-calorie restriction diets (calorie-dense)
-preparation: >-
-  Soak 10 raw almonds in water overnight. In the morning, peel off the brown
-  skins. Place peeled almonds in a blender and add 1 cup warm milk (cow's,
-  goat's, or soy milk — all acceptable). Add a pinch each of ground ginger,
-  cardamom, and saffron threads. Blend until smooth. Pour into a glass and
-  drink immediately.
+- almond or tree-nut allergy
+- saffron in pregnancy (large amounts are emmenagogic — a small pinch in milk is generally
+  fine but use caution)
+- very high-calorie restriction diets (calorie-dense)
+preparation: Soak 10 raw almonds in water overnight. In the morning, peel off the brown skins.
+  Place peeled almonds in a blender and add 1 cup warm milk (cow's, goat's, or soy milk —
+  all acceptable). Add a pinch each of ground ginger, cardamom, and saffron threads. Blend
+  until smooth. Pour into a glass and drink immediately.
 typical_dose: 1 cup twice daily — before breakfast and before bedtime
 duration: Daily, ongoing as a bone-support strategy; especially important peri- and post-menopausally
 timing_notes: Before breakfast and before bedtime for best calcium absorption
 linked_to_topics:
-  - osteoporosis
-  - bone-health
-  - perimenopause
-  - calcium-deficiency
+- osteoporosis
+- bone-health
+- perimenopause
+- calcium-deficiency
 linked_to_mechanisms:
-  - calcium-trafficking-and-bone-mineralization
-  - bone-resorption-formation-imbalance
-  - calcium-magnesium-imbalance
-  - progesterone-bone-stimulation
+- calcium-trafficking-and-bone-mineralization
+- bone-resorption-formation-imbalance
+- calcium-magnesium-imbalance
+- progesterone-bone-stimulation
 balances_dosha:
-  - vata
+- vata
 aggravates_dosha:
-  - kapha
+- kapha
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
-  - bitter
+- sweet
+- pungent
+- bitter
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - nervine
+- dipana
+- carminative
+- nervine
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Osteoporosis"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Osteoporosis
 evidence_tier: plausible_emerging
 version: 1
 status: active

@@ -15,8 +15,8 @@ indications:
 - prostate-related urinary symptoms
 contraindications:
 - 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
-  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
-  monitor'
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber
+  and monitor'
 - 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
   and before surgery'
 - pregnancy and breastfeeding — avoid (uterine stimulant)
@@ -30,6 +30,9 @@ balances_dosha:
 - kapha
 - pitta
 aggravates_dosha: []
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sweet
 - bitter
@@ -40,8 +43,8 @@ ayurvedic_actions:
 - dipana
 - carminative
 - antispasmodic
-preparation: Gokshuradi guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet 2-3 times
-  a day with warm water (per label/practitioner). Drink plenty of water alongside.
+preparation: Gokshuradi guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet 2-3
+  times a day with warm water (per label/practitioner). Drink plenty of water alongside.
 typical_dose: ~1 tablet, 2-3 times a day
 duration: In courses under guidance
 timing_notes: After meals with plenty of water

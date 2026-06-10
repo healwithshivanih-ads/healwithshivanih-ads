@@ -1,66 +1,65 @@
 slug: medhya-brahmi-memory-tea
 display_name: Medhya Herb Memory Tea (Brahmi, Jatamamsi, Bhringaraj, Shanka Pushpi)
 aliases:
-  - brahmi-jatamamsi-bhringaraj-tea
-  - medhya-tea
-  - ayurvedic-brain-tonic-tea
-  - mandukparni-brahmi-tea
+- brahmi-jatamamsi-bhringaraj-tea
+- medhya-tea
+- ayurvedic-brain-tonic-tea
+- mandukparni-brahmi-tea
 category: herbal_tea
-summary: >-
-  Lad's primary herbal remedy for memory and cognitive clarity, combining the
-  four classical medhya (intellect-enhancing) herbs of Ayurveda — brahmi
-  (bacopa/gotu kola), jatamamsi, bhringaraj and shanka pushpi. These herbs
-  dilate cerebral blood vessels, improve circulation to the brain, nourish nerve
-  cells, and calm vata and kapha, which Lad identifies as the two doshas most
-  responsible for memory problems. Regular use for one month is recommended to
-  see results.
+summary: Lad's primary herbal remedy for memory and cognitive clarity, combining the four
+  classical medhya (intellect-enhancing) herbs of Ayurveda — brahmi (bacopa/gotu kola), jatamamsi,
+  bhringaraj and shanka pushpi. These herbs dilate cerebral blood vessels, improve circulation
+  to the brain, nourish nerve cells, and calm vata and kapha, which Lad identifies as the
+  two doshas most responsible for memory problems. Regular use for one month is recommended
+  to see results.
 indications:
-  - memory problems and forgetfulness
-  - poor concentration and mental fog
-  - age-related cognitive decline
-  - stress-related memory impairment
-  - perimenopause brain fog
+- memory problems and forgetfulness
+- poor concentration and mental fog
+- age-related cognitive decline
+- stress-related memory impairment
+- perimenopause brain fog
 contraindications:
-  - cold, congested (heavy kapha) constitution may need warming spices added
-  - pregnancy — avoid therapeutic doses of jatamamsi without guidance
-  - on sedative or antiepileptic medications — brahmi can potentiate CNS effects; check with doctor
-  - hypoglycaemia — do not undertake the fruit fast variant
-preparation: >-
-  Use equal proportions of brahmi, jatamamsi, bhringaraj, and shanka pushpi
-  powder (or dried herb). Steep 1 teaspoon of the combined mixture in 1 cup of
-  hot water for 10 minutes, then strain and drink. Alternatively, boil
-  1/2 teaspoon brahmi powder in 1 cup milk for 2 minutes and drink at bedtime
-  with a pinch of saffron for enhanced benefit.
+- cold, congested (heavy kapha) constitution may need warming spices added
+- pregnancy — avoid therapeutic doses of jatamamsi without guidance
+- on sedative or antiepileptic medications — brahmi can potentiate CNS effects; check with
+  doctor
+- hypoglycaemia — do not undertake the fruit fast variant
+preparation: Use equal proportions of brahmi, jatamamsi, bhringaraj, and shanka pushpi powder
+  (or dried herb). Steep 1 teaspoon of the combined mixture in 1 cup of hot water for 10 minutes,
+  then strain and drink. Alternatively, boil 1/2 teaspoon brahmi powder in 1 cup milk for
+  2 minutes and drink at bedtime with a pinch of saffron for enhanced benefit.
 typical_dose: 1 cup tea, twice daily (morning and evening on an empty stomach)
 duration: Minimum 1 month; can continue indefinitely if beneficial
 timing_notes: Best taken on an empty stomach in the morning and evening
 linked_to_topics:
-  - cognitive-decline
-  - menopause
-  - perimenopause
+- cognitive-decline
+- menopause
+- perimenopause
 linked_to_mechanisms:
-  - hippocampal-neuroplasticity
-  - ngf-bdnf-neurotrophic-signaling
-  - neuroinflammation
-  - blood-brain-barrier-permeability
-  - nitric-oxide-cranial-circulation
+- hippocampal-neuroplasticity
+- ngf-bdnf-neurotrophic-signaling
+- neuroinflammation
+- blood-brain-barrier-permeability
+- nitric-oxide-cranial-circulation
 balances_dosha:
-  - vata
-  - kapha
+- vata
+- kapha
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - medhya
-  - nervine
-  - rasayana
+- medhya
+- nervine
+- rasayana
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Memory Problems — Herbs for Memory"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Memory Problems — Herbs for Memory
 evidence_tier: plausible_emerging
 version: 1
 status: active

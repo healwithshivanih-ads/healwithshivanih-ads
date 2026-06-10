@@ -1,63 +1,61 @@
 slug: punarnava-gokshura-musta-cystitis
 display_name: Punarnava-Gokshura-Musta Cystitis Formula
 aliases:
-  - punarnava-gokshura-bladder-tea
-  - ayurvedic-cystitis-churan
-  - bladder-soothing-herbal-formula
+- punarnava-gokshura-bladder-tea
+- ayurvedic-cystitis-churan
+- bladder-soothing-herbal-formula
 category: ayurvedic_churan
-summary: >-
-  Lad's three-herb Ayurvedic formula for cystitis and urinary tract
-  irritation. Punarnava (Boerhavia diffusa) is a classical diuretic and
-  anti-inflammatory for the urinary tract; gokshura (Tribulus terrestris)
-  soothes the urinary passages and supports kidney and bladder health; musta
-  (Cyperus rotundus) is cooling and anti-inflammatory. Together they address
-  the burning, frequency, and irritation of cystitis from an Ayurvedic
-  perspective.
+summary: Lad's three-herb Ayurvedic formula for cystitis and urinary tract irritation. Punarnava
+  (Boerhavia diffusa) is a classical diuretic and anti-inflammatory for the urinary tract;
+  gokshura (Tribulus terrestris) soothes the urinary passages and supports kidney and bladder
+  health; musta (Cyperus rotundus) is cooling and anti-inflammatory. Together they address
+  the burning, frequency, and irritation of cystitis from an Ayurvedic perspective.
 indications:
-  - cystitis — burning sensation when urinating, urinary urgency
-  - recurrent UTI (supportive alongside conventional treatment)
-  - bladder irritation and frequent urination
-  - urinary tract inflammation not due to a serious infection
+- cystitis — burning sensation when urinating, urinary urgency
+- recurrent UTI (supportive alongside conventional treatment)
+- bladder irritation and frequent urination
+- urinary tract inflammation not due to a serious infection
 contraindications:
-  - suspected kidney infection (fever, back/flank pain, systemic illness) —
-    see a doctor immediately; this remedy is not sufficient for pyelonephritis
-  - pregnancy (consult practitioner before using gokshura and punarnava)
-  - high-dose or long-term use may affect potassium in those on diuretic
-    medications — consult your doctor
-  - not a replacement for antibiotics when a bacterial UTI is confirmed
+- suspected kidney infection (fever, back/flank pain, systemic illness) — see a doctor immediately;
+  this remedy is not sufficient for pyelonephritis
+- pregnancy (consult practitioner before using gokshura and punarnava)
+- high-dose or long-term use may affect potassium in those on diuretic medications — consult
+  your doctor
+- not a replacement for antibiotics when a bacterial UTI is confirmed
 balances_dosha:
-  - pitta
-  - kapha
+- pitta
+- kapha
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
-preparation: >-
-  Mix the dried herbal powders in the ratio punarnava 5 parts, gokshura 4
-  parts, musta 3 parts. Take 1/2 teaspoon of the combined powder mixture
-  and stir it into 1 cup of warm water. Alternatively, simmer in warm water
-  for 5 minutes and strain to make a decoction. Drink 2-3 times a day.
+- dipana
+- carminative
+- antispasmodic
+preparation: Mix the dried herbal powders in the ratio punarnava 5 parts, gokshura 4 parts,
+  musta 3 parts. Take 1/2 teaspoon of the combined powder mixture and stir it into 1 cup of
+  warm water. Alternatively, simmer in warm water for 5 minutes and strain to make a decoction.
+  Drink 2-3 times a day.
 typical_dose: 1/2 teaspoon in 1 cup warm water, 2-3 times a day
-duration: Continue for 5-7 days for acute cystitis; for recurrent issues up to
-  2-4 weeks; consult practitioner for longer use
-timing_notes: Drink between meals; increase water intake to at least 2 litres
-  a day while using this formula
+duration: Continue for 5-7 days for acute cystitis; for recurrent issues up to 2-4 weeks;
+  consult practitioner for longer use
+timing_notes: Drink between meals; increase water intake to at least 2 litres a day while
+  using this formula
 linked_to_topics:
-  - cystitis-and-interstitial-cystitis
+- cystitis-and-interstitial-cystitis
 linked_to_mechanisms:
-  - nf-kb-activation
-  - chronic-inflammation
-  - oxidative-stress
+- nf-kb-activation
+- chronic-inflammation
+- oxidative-stress
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Bladder Problems — Cystitis"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Bladder Problems — Cystitis
 evidence_tier: fm_specific_thin
 version: 1
 status: active

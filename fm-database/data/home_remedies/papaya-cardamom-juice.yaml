@@ -1,55 +1,54 @@
 slug: papaya-cardamom-juice
 display_name: Papaya Juice with Sugar and Cardamom for Hyperacidity
 aliases:
-  - papita-elaichi-juice
-  - papaya-cardamom-digestive-drink
+- papita-elaichi-juice
+- papaya-cardamom-digestive-drink
 category: vegetable_juice
-summary: >-
-  Lad recommends fresh papaya juice with organic sugar and cardamom for
-  hyperacidity and indigestion. Papaya contains papain, a proteolytic enzyme
-  that aids digestion; cardamom is cooling and carminative. Together they soothe
-  excess pitta in the stomach, ease post-meal acidity, and support enzymatic
-  digestion.
+summary: Lad recommends fresh papaya juice with organic sugar and cardamom for hyperacidity
+  and indigestion. Papaya contains papain, a proteolytic enzyme that aids digestion; cardamom
+  is cooling and carminative. Together they soothe excess pitta in the stomach, ease post-meal
+  acidity, and support enzymatic digestion.
 indications:
-  - hyperacidity
-  - acid indigestion
-  - nausea from excess acid
-  - bloating after meals
-  - heartburn
+- hyperacidity
+- acid indigestion
+- nausea from excess acid
+- bloating after meals
+- heartburn
 contraindications:
-  - pregnancy (papaya contains natural oestrogen compounds and may cause miscarriage
-    — do NOT use during pregnancy)
-  - diabetes or blood-sugar imbalance (contains natural fruit sugar — use sparingly)
-  - if heartburn is accompanied by vomiting, chest pain, or shortness of breath,
-    seek medical attention immediately
-preparation: >-
-  Juice 1 cup of fresh ripe papaya. Add 1 teaspoon of organic sugar and 2 pinches
+- pregnancy (papaya contains natural oestrogen compounds and may cause miscarriage — do NOT
+  use during pregnancy)
+- diabetes or blood-sugar imbalance (contains natural fruit sugar — use sparingly)
+- if heartburn is accompanied by vomiting, chest pain, or shortness of breath, seek medical
+  attention immediately
+preparation: Juice 1 cup of fresh ripe papaya. Add 1 teaspoon of organic sugar and 2 pinches
   of cardamom powder. Stir well and drink immediately while fresh.
 typical_dose: 1 cup of papaya juice with 1 teaspoon sugar and 2 pinches cardamom
 duration: As needed for acute acidity; can be taken daily for up to 2 weeks
 timing_notes: Between meals, or 30 minutes after a meal when acidity is prominent
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - kapha
+- kapha
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
+- sweet
+- pungent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
+- dipana
+- carminative
 linked_to_topics:
-  - gerd
-  - maldigestion
-  - digestive-enzyme-insufficiency
+- gerd
+- maldigestion
+- digestive-enzyme-insufficiency
 linked_to_mechanisms:
-  - histamine-mediated-gastric-acid-hypersecretion
-  - gastric-mucosal-barrier-disruption
+- histamine-mediated-gastric-acid-hypersecretion
+- gastric-mucosal-barrier-disruption
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Heartburn and Acid Stomach"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Heartburn and Acid Stomach
 evidence_tier: plausible_emerging
 version: 1
 status: active

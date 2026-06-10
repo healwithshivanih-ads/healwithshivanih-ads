@@ -1,64 +1,64 @@
 slug: ginger-cinnamon-licorice-throat-tea
 display_name: Ginger-Cinnamon-Licorice Sore Throat Tea
 aliases:
-  - adrak-dalchini-mulethi-tea
-  - sore-throat-herbal-tea
-  - throat-soothing-kashayam
+- adrak-dalchini-mulethi-tea
+- sore-throat-herbal-tea
+- throat-soothing-kashayam
 category: herbal_tea
-summary: >-
-  Lad's primary herbal tea for sore throat — a warming, soothing blend of
-  ginger (anti-inflammatory, decongestant), cinnamon (antimicrobial, warming),
-  and licorice/mulethi (demulcent, soothes the mucous membranes of the throat).
-  The combination balances vata and kapha (the doshas responsible for most
-  sore throats), reduces inflammation, and coats the irritated throat lining.
-  Licorice's glycyrrhizin provides direct anti-inflammatory and antiviral
-  activity on the throat mucosa.
+summary: Lad's primary herbal tea for sore throat — a warming, soothing blend of ginger (anti-inflammatory,
+  decongestant), cinnamon (antimicrobial, warming), and licorice/mulethi (demulcent, soothes
+  the mucous membranes of the throat). The combination balances vata and kapha (the doshas
+  responsible for most sore throats), reduces inflammation, and coats the irritated throat
+  lining. Licorice's glycyrrhizin provides direct anti-inflammatory and antiviral activity
+  on the throat mucosa.
 indications:
-  - sore, scratchy, or irritated throat
-  - throat infection or inflammation (pharyngitis)
-  - dry, hoarse throat from vata imbalance
-  - throat congestion with kapha (mucus, heaviness)
-  - loss of voice or hoarseness
+- sore, scratchy, or irritated throat
+- throat infection or inflammation (pharyngitis)
+- dry, hoarse throat from vata imbalance
+- throat congestion with kapha (mucus, heaviness)
+- loss of voice or hoarseness
 contraindications:
-  - hypertension (licorice/mulethi can raise blood pressure if used in excess over weeks — short use of 3-7 days is generally fine)
-  - oedema or fluid retention during pregnancy (licorice may worsen)
-  - known licorice allergy
-  - see a doctor if sore throat persists beyond 4-5 days or is accompanied by high fever or difficulty swallowing
-preparation: >-
-  Combine dry herbs in the ratio ginger 2 parts, cinnamon 2 parts, licorice
-  (mulethi) 3 parts. Measure 1 teaspoon of this herbal mixture and steep in
-  1 cup of just-boiled water for 5 to 10 minutes. Strain and drink warm.
-  You can add a teaspoon of raw honey once the tea has cooled slightly for
-  additional soothing benefit. A pre-made batch of the dry herb blend can be
-  stored in an airtight jar for convenience.
+- hypertension (licorice/mulethi can raise blood pressure if used in excess over weeks — short
+  use of 3-7 days is generally fine)
+- oedema or fluid retention during pregnancy (licorice may worsen)
+- known licorice allergy
+- see a doctor if sore throat persists beyond 4-5 days or is accompanied by high fever or
+  difficulty swallowing
+preparation: Combine dry herbs in the ratio ginger 2 parts, cinnamon 2 parts, licorice (mulethi)
+  3 parts. Measure 1 teaspoon of this herbal mixture and steep in 1 cup of just-boiled water
+  for 5 to 10 minutes. Strain and drink warm. You can add a teaspoon of raw honey once the
+  tea has cooled slightly for additional soothing benefit. A pre-made batch of the dry herb
+  blend can be stored in an airtight jar for convenience.
 typical_dose: 1 cup, up to 3 times a day
 duration: 3 to 5 days, or until sore throat resolves
 timing_notes: Drink warm between meals; especially soothing in the morning and at bedtime
 balances_dosha:
-  - vata
-  - kapha
+- vata
+- kapha
 aggravates_dosha:
-  - pitta
+- pitta
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
-  - bitter
+- sweet
+- pungent
+- bitter
 virya: heating
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
+- dipana
+- carminative
+- antispasmodic
 linked_to_topics:
-  - sore-throat
-  - common-cold
-  - immune-support
+- sore-throat
+- common-cold
+- immune-support
 linked_to_mechanisms:
-  - mucosal-inflammation
-  - systemic-inflammation
+- mucosal-inflammation
+- systemic-inflammation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Sore Throat — Soothing Herbal Tea"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Sore Throat — Soothing Herbal Tea
 evidence_tier: plausible_emerging
 version: 1
 status: active

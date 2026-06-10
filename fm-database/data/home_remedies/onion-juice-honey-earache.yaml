@@ -4,15 +4,15 @@ aliases:
 - onion-honey-ear
 category: other
 route: external
-summary: 'Lad''s first-aid for earache: a few drops of a mixture of onion juice and honey (or
-  3 drops of garlic oil) into the ear. Onion and garlic are antimicrobial and the warmth soothes
-  the ache. A holding measure for a simple earache until it settles or can be seen.'
+summary: 'Lad''s first-aid for earache: a few drops of a mixture of onion juice and honey
+  (or 3 drops of garlic oil) into the ear. Onion and garlic are antimicrobial and the warmth
+  soothes the ache. A holding measure for a simple earache until it settles or can be seen.'
 indications:
 - simple earache (mild, no discharge)
 - ear discomfort with a cold
 contraindications:
-- DO NOT use if there is ear discharge, a possible perforated eardrum, severe pain, fever, or
-  hearing loss — see a doctor
+- DO NOT use if there is ear discharge, a possible perforated eardrum, severe pain, fever,
+  or hearing loss — see a doctor
 - not for grommets/ear tubes
 - children's earache should be reviewed by a doctor
 balances_dosha:
@@ -20,6 +20,8 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- children
 rasa:
 - sweet
 - pungent
@@ -30,9 +32,9 @@ ayurvedic_actions:
 - dipana
 - expectorant
 - scraping
-preparation: Mix 1 tsp onion juice with 1/2 tsp honey; warm slightly to body temperature; put
-  5-10 drops in the affected ear and plug loosely with cotton. (Garlic oil — 3 drops — is the
-  alternative.)
+preparation: Mix 1 tsp onion juice with 1/2 tsp honey; warm slightly to body temperature;
+  put 5-10 drops in the affected ear and plug loosely with cotton. (Garlic oil — 3 drops —
+  is the alternative.)
 typical_dose: A few drops, 1-2 times a day
 duration: 1-3 days; see a doctor if not settling
 timing_notes: When the ache flares; lie with the ear up afterwards

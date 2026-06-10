@@ -1,56 +1,56 @@
 slug: licorice-ginger-tea
 display_name: Licorice-Ginger Tea (for Cough & Wheezing)
 aliases:
-  - mulethi-adrak-chai
-  - yashtimadhu-ginger-tea
+- mulethi-adrak-chai
+- yashtimadhu-ginger-tea
 category: herbal_tea
-summary: >-
-  A soothing respiratory tea of licorice (yashti madhu) and ginger that Lad
-  recommends for asthma, wheezing, cough and chest congestion. Licorice is a
-  demulcent expectorant that calms bronchial spasm and soothes the airway lining;
-  ginger warms, decongests and is anti-inflammatory. Useful for kapha-type
-  respiratory congestion and as gentle relief at the first sign of a chesty
-  cough. (Carries an important blood-pressure caution — see below.)
+summary: A soothing respiratory tea of licorice (yashti madhu) and ginger that Lad recommends
+  for asthma, wheezing, cough and chest congestion. Licorice is a demulcent expectorant that
+  calms bronchial spasm and soothes the airway lining; ginger warms, decongests and is anti-inflammatory.
+  Useful for kapha-type respiratory congestion and as gentle relief at the first sign of a
+  chesty cough. (Carries an important blood-pressure caution — see below.)
 indications:
-  - cough and chest congestion
-  - wheezing / mild bronchial tightness
-  - asthma-prone airways (supportive, preventive)
-  - lingering cold in the chest
+- cough and chest congestion
+- wheezing / mild bronchial tightness
+- asthma-prone airways (supportive, preventive)
+- lingering cold in the chest
 contraindications:
-  - hypertension / high blood pressure (licorice causes sodium and water retention — avoid regular use)
-  - pregnancy
-  - low potassium, kidney or heart disease
-  - acute severe breathing difficulty is a medical emergency — seek care, do not rely on tea
+- hypertension / high blood pressure (licorice causes sodium and water retention — avoid regular
+  use)
+- pregnancy
+- low potassium, kidney or heart disease
+- acute severe breathing difficulty is a medical emergency — seek care, do not rely on tea
 balances_dosha: []
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
-  - bitter
+- sweet
+- pungent
+- bitter
 virya: heating
 vipaka: sweet
 ayurvedic_actions:
-  - demulcent
-  - expectorant
-  - antispasmodic
-preparation: >-
-  Boil 1/2 tsp of combined licorice and ginger (or 1 tsp licorice root) in 1 cup
-  of water for 2-3 minutes. Sip warm. For an acute wheeze Lad adds 5-10 drops of
-  mahanarayan oil or 1/2 tsp ghee and sips a little every 5-10 minutes.
+- demulcent
+- expectorant
+- antispasmodic
+preparation: Boil 1/2 tsp of combined licorice and ginger (or 1 tsp licorice root) in 1 cup
+  of water for 2-3 minutes. Sip warm. For an acute wheeze Lad adds 5-10 drops of mahanarayan
+  oil or 1/2 tsp ghee and sips a little every 5-10 minutes.
 typical_dose: 1 cup, once or twice a day
 duration: Short courses during cough/congestion; not for daily long-term use (licorice)
 timing_notes: When congestion or a cough flares; warm
 linked_to_topics:
-  - asthma
-  - common-cold
-  - immune-support
+- asthma
+- common-cold
+- immune-support
 linked_to_mechanisms:
-  - chronic-inflammation
+- chronic-inflammation
 sources:
-  - id: lad-ayurveda-science-of-self-healing-1984
-    location: "Appendix B — First Aid (Asthma, Cold, Cough)"
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Asthma and Wheezing — To Immediately Stop Wheezing; Allergies"
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Asthma, Cold, Cough)
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Asthma and Wheezing — To Immediately Stop Wheezing; Allergies
 evidence_tier: plausible_emerging
 version: 1
 status: active

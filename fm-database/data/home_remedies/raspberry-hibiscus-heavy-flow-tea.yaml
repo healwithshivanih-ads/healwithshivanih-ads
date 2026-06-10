@@ -1,58 +1,64 @@
 slug: raspberry-hibiscus-heavy-flow-tea
 display_name: Raspberry Leaf and Hibiscus Tea for Heavy Menstrual Flow
 aliases:
-  - raspberry-leaf-hibiscus-tea
-  - gudhal-raspberry-tea
-  - raspberry-leaf-uterine-tonic
+- raspberry-leaf-hibiscus-tea
+- gudhal-raspberry-tea
+- raspberry-leaf-uterine-tonic
 category: herbal_tea
-summary: >-
-  Lad recommends equal parts raspberry leaf and hibiscus flowers steeped as a
-  tea for excessive menstrual flow (menorrhagia). Raspberry leaf is a classic
-  uterine tonic that tightens and tones uterine muscle, reducing heavy bleeding;
-  hibiscus (gudhal) is cooling, astringent and pitta-pacifying, adding an
-  anti-inflammatory and haemostatic effect. Together they make a safe,
-  accessible kitchen-herb tea for heavy periods common in perimenopause.
+summary: Lad recommends equal parts raspberry leaf and hibiscus flowers steeped as a tea for
+  excessive menstrual flow (menorrhagia). Raspberry leaf is a classic uterine tonic that tightens
+  and tones uterine muscle, reducing heavy bleeding; hibiscus (gudhal) is cooling, astringent
+  and pitta-pacifying, adding an anti-inflammatory and haemostatic effect. Together they make
+  a safe, accessible kitchen-herb tea for heavy periods common in perimenopause.
 indications:
-  - heavy menstrual bleeding (menorrhagia)
-  - excessive or prolonged periods
-  - flooding periods at perimenopause
-  - pitta-type menstrual excess with heat and inflammation
+- heavy menstrual bleeding (menorrhagia)
+- excessive or prolonged periods
+- flooding periods at perimenopause
+- pitta-type menstrual excess with heat and inflammation
 contraindications:
-  - pregnancy — raspberry leaf in large doses can stimulate contractions; avoid in first and second trimester
-  - very low blood pressure — hibiscus is mildly hypotensive; monitor
-  - on anti-hypertensive medications — hibiscus may have additive blood pressure-lowering effect
-  - if bleeding is sudden, unexplained or very heavy — see a doctor to rule out fibroids or other pathology
-preparation: >-
-  Combine 1-2 teaspoons each of dried raspberry leaf and dried hibiscus
-  flowers. Steep in 1 cup of freshly boiled water for 10-15 minutes. Strain
-  and drink. You can sweeten lightly with rock candy if desired.
+- pregnancy — raspberry leaf in large doses can stimulate contractions; avoid in first and
+  second trimester
+- very low blood pressure — hibiscus is mildly hypotensive; monitor
+- on anti-hypertensive medications — hibiscus may have additive blood pressure-lowering effect
+- if bleeding is sudden, unexplained or very heavy — see a doctor to rule out fibroids or
+  other pathology
+preparation: Combine 1-2 teaspoons each of dried raspberry leaf and dried hibiscus flowers.
+  Steep in 1 cup of freshly boiled water for 10-15 minutes. Strain and drink. You can sweeten
+  lightly with rock candy if desired.
 typical_dose: 1-2 cups per day
-duration: Use during the heavy-flow days of the cycle; can use preventively in the week before period
+duration: Use during the heavy-flow days of the cycle; can use preventively in the week before
+  period
 timing_notes: Drink between meals; can be taken warm or at room temperature
 linked_to_topics:
-  - premenstrual-syndrome
-  - healthy-menstrual-cycle-baseline
-  - perimenopause-and-menopause
+- premenstrual-syndrome
+- healthy-menstrual-cycle-baseline
+- perimenopause-and-menopause
 linked_to_mechanisms:
-  - estrogen-enterohepatic-recirculation-uterine
-  - inflammatory-cascade
+- estrogen-enterohepatic-recirculation-uterine
+- inflammatory-cascade
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - vata
+- vata
+suitable_sex: female
+suitable_stages:
+- menstruating
+- perimenopausal
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - sour
-  - astringent
+- sweet
+- sour
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - cooling
-  - emmenagogue
-  - astringent
+- cooling
+- emmenagogue
+- astringent
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Menstrual Difficulties — For Excessive Menstrual Flow"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Menstrual Difficulties — For Excessive Menstrual Flow
 evidence_tier: plausible_emerging
 version: 1
 status: active

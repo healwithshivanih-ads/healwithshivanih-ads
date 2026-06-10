@@ -3,8 +3,8 @@ display_name: Triphala Guggulu (Weight & Fat Metabolism)
 aliases:
 - triphala-guggul
 category: ayurvedic_churan
-summary: Triphala combined with purified guggulu — a classical formula Lad references for sluggish
-  fat metabolism, weight management and clearing ama. Triphala supports digestion/elimination
+summary: Triphala combined with purified guggulu — a classical formula Lad references for
+  sluggish fat metabolism, weight management and clearing ama. Triphala supports digestion/elimination
   while guggulu scrapes fat and lipids; together they target the heavy, congested, kapha metabolic
   pattern.
 indications:
@@ -14,8 +14,8 @@ indications:
 - midlife weight gain
 contraindications:
 - 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
-  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
-  monitor'
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber
+  and monitor'
 - 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
   and before surgery'
 - pregnancy and breastfeeding — avoid (uterine stimulant)
@@ -27,6 +27,9 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - vata
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sour
 - pungent

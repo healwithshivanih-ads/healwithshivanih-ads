@@ -4,9 +4,9 @@ aliases:
 - jeera-saunf-ajwain
 - digestive-churan
 category: ayurvedic_churan
-summary: Equal-parts roasted cumin (jeera), fennel (saunf) and carom (ajwain) seeds, coarsely ground into
-  a digestive powder. Carminative blend that eases post-meal heaviness, bloating and gas and supports
-  digestive fire (agni).
+summary: Equal-parts roasted cumin (jeera), fennel (saunf) and carom (ajwain) seeds, coarsely
+  ground into a digestive powder. Carminative blend that eases post-meal heaviness, bloating
+  and gas and supports digestive fire (agni).
 indications:
 - bloating
 - gas
@@ -20,6 +20,8 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
 rasa:
 - sweet
 - pungent
@@ -29,8 +31,8 @@ vipaka: pungent
 ayurvedic_actions:
 - dipana
 - carminative
-preparation: Dry-roast equal parts jeera, saunf and ajwain until fragrant; cool and grind coarse. Add
-  a pinch of black salt and a tiny pinch of hing if desired. Store airtight.
+preparation: Dry-roast equal parts jeera, saunf and ajwain until fragrant; cool and grind
+  coarse. Add a pinch of black salt and a tiny pinch of hing if desired. Store airtight.
 typical_dose: 1/2 tsp with a little warm water after lunch and dinner.
 duration: Daily; safe for ongoing use.
 timing_notes: After meals (post-lunch and post-dinner).

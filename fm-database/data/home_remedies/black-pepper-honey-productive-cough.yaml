@@ -1,64 +1,60 @@
 slug: black-pepper-honey-productive-cough
 display_name: Black Pepper and Honey for Productive (Kapha) Cough
 aliases:
-  - kali-mirch-madhu-khansi
-  - pepper-honey-cough
-  - kapha-cough-remedy
+- kali-mirch-madhu-khansi
+- pepper-honey-cough
+- kapha-cough-remedy
 category: kitchen_remedy
-summary: >-
-  Lad's classic remedy for a productive kapha cough with mucus — a quarter
-  teaspoon of black pepper powder mixed with one teaspoon of honey, eaten on
-  a full stomach. The heating quality of black pepper disperses congestion,
-  breaks up phlegm, and drives out the cough; honey is soothing, antimicrobial,
-  and helps carry the pepper's action deep into the respiratory tissues. Lad
-  notes that if the voice is hoarse, ghee should be used instead of honey.
+summary: Lad's classic remedy for a productive kapha cough with mucus — a quarter teaspoon
+  of black pepper powder mixed with one teaspoon of honey, eaten on a full stomach. The heating
+  quality of black pepper disperses congestion, breaks up phlegm, and drives out the cough;
+  honey is soothing, antimicrobial, and helps carry the pepper's action deep into the respiratory
+  tissues. Lad notes that if the voice is hoarse, ghee should be used instead of honey.
 indications:
-  - productive or wet cough with mucus (kapha type)
-  - chest congestion and phlegm
-  - hoarse voice accompanying a cough (use ghee instead of honey in this case)
-  - chronic or persistent cough
+- productive or wet cough with mucus (kapha type)
+- chest congestion and phlegm
+- hoarse voice accompanying a cough (use ghee instead of honey in this case)
+- chronic or persistent cough
 contraindications:
-  - children under 1 year must not receive honey (botulism risk)
-  - active peptic ulcer — black pepper is strongly heating and pungent
-  - high fever or pitta-dominant condition with excess heat — black pepper
-    may further aggravate
-  - do not take on an empty stomach as black pepper can irritate gastric lining
-  - seek a doctor if cough persists beyond 1 week, produces blood-tinged
-    sputum, or is accompanied by shortness of breath
+- children under 1 year must not receive honey (botulism risk)
+- active peptic ulcer — black pepper is strongly heating and pungent
+- high fever or pitta-dominant condition with excess heat — black pepper may further aggravate
+- do not take on an empty stomach as black pepper can irritate gastric lining
+- seek a doctor if cough persists beyond 1 week, produces blood-tinged sputum, or is accompanied
+  by shortness of breath
 balances_dosha:
-  - kapha
-  - vata
+- kapha
+- vata
 aggravates_dosha:
-  - pitta
+- pitta
+avoid_in:
+- children
 rasa:
-  - sweet
-  - sour
-  - pungent
+- sweet
+- sour
+- pungent
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - expectorant
-  - carminative
-preparation: >-
-  Measure out one quarter teaspoon of finely ground black pepper (freshly ground
-  is most potent). Mix it into 1 teaspoon of raw honey until well combined.
-  Eat the mixture slowly. If the voice is hoarse, use 1 teaspoon of warm ghee
-  instead of honey.
-typical_dose: One quarter teaspoon black pepper in 1 teaspoon honey, 2 to 3 times
-  daily
-duration: 3 to 5 days for an acute cough; stop when cough resolves; see a doctor
-  if it persists beyond 7 days
+- dipana
+- expectorant
+- carminative
+preparation: Measure out one quarter teaspoon of finely ground black pepper (freshly ground
+  is most potent). Mix it into 1 teaspoon of raw honey until well combined. Eat the mixture
+  slowly. If the voice is hoarse, use 1 teaspoon of warm ghee instead of honey.
+typical_dose: One quarter teaspoon black pepper in 1 teaspoon honey, 2 to 3 times daily
+duration: 3 to 5 days for an acute cough; stop when cough resolves; see a doctor if it persists
+  beyond 7 days
 timing_notes: After meals, on a full stomach
 linked_to_topics:
-  - common-cold
-  - bronchitis-and-pneumonia
+- common-cold
+- bronchitis-and-pneumonia
 linked_to_mechanisms:
-  - innate-immune-modulation
-  - inflammatory-cascade
+- innate-immune-modulation
+- inflammatory-cascade
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Cough — Productive Cough"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Cough — Productive Cough
 evidence_tier: plausible_emerging
 version: 1
 status: active

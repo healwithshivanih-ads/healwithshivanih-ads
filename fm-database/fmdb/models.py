@@ -32,6 +32,8 @@ from .enums import (
     Timing,
     Vipaka,
     Virya,
+    SuitableSex,
+    LifeStage,
 )
 
 
@@ -198,6 +200,17 @@ class HomeRemedy(BaseModel):
     # (summary / indications / contraindications already state the dosha).
     balances_dosha: list[Dosha] = Field(default_factory=list)    # doshas this remedy pacifies/suits
     aggravates_dosha: list[Dosha] = Field(default_factory=list)  # doshas this remedy can worsen
+    # ── Demographic suitability (hard gates for client-facing surfaces) ───────
+    # suitable_sex: who the remedy is FOR (default any). suitable_stages:
+    # non-empty = ONLY for these life stages (a menstrual-cramps tea is
+    # [menstruating, perimenopausal]; a morning-sickness drink is [pregnancy]).
+    # avoid_in: hard safety exclusions regardless of indications — a client
+    # whose stage matches avoid_in must never be offered the remedy (the
+    # free-text contraindications stay as the human-readable layer; this is
+    # the machine-enforceable one). Defaults keep all existing entries valid.
+    suitable_sex: SuitableSex = SuitableSex.any
+    suitable_stages: list[LifeStage] = Field(default_factory=list)
+    avoid_in: list[LifeStage] = Field(default_factory=list)
     # ── Full Ayurvedic energetics (parity with Supplement) ────────────────────
     # The balances/aggravates_dosha tags above are the functional matching key;
     # these capture WHY (dravyaguna). All optional / empty = not yet tagged, so

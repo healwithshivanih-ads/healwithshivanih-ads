@@ -3,8 +3,8 @@ display_name: Comfrey-Cinnamon-Chamomile Tea (Tinnitus)
 aliases:
 - tinnitus-comfrey-tea
 category: herbal_tea
-summary: 'A Lad remedy for tinnitus (ringing in the ears) framed as a vata disturbance of the
-  nervous system: a tea of comfrey, cinnamon and chamomile. NOTE: comfrey contains pyrrolizidine
+summary: 'A Lad remedy for tinnitus (ringing in the ears) framed as a vata disturbance of
+  the nervous system: a tea of comfrey, cinnamon and chamomile. NOTE: comfrey contains pyrrolizidine
   alkaloids and most modern safety bodies advise AGAINST internal comfrey use — included here
   for completeness from the source, but see the contraindications; many practitioners would
   substitute a comfrey-free nervine tea (e.g. chamomile + jatamamsi).'
@@ -23,6 +23,9 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sweet
 - pungent
@@ -34,8 +37,8 @@ ayurvedic_actions:
 - carminative
 - nervine
 preparation: 'Lad''s original: equal parts comfrey, cinnamon and chamomile, ~1/2 tsp steeped
-  in 1 cup hot water 10 min. SAFER ALTERNATIVE recommended here: omit comfrey — use equal parts
-  chamomile and jatamamsi with a little cinnamon instead.'
+  in 1 cup hot water 10 min. SAFER ALTERNATIVE recommended here: omit comfrey — use equal
+  parts chamomile and jatamamsi with a little cinnamon instead.'
 typical_dose: 1 cup
 duration: Short-term only; reassess (and avoid prolonged comfrey use)
 timing_notes: Evening

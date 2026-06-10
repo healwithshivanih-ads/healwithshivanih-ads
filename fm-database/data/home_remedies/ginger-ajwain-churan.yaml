@@ -2,8 +2,8 @@ slug: ginger-ajwain-churan
 display_name: Ginger-Ajwain Appetite Churan
 aliases: []
 category: ayurvedic_churan
-summary: Dried ginger (saunth), ajwain and a pinch of black salt — warming churan that kindles appetite
-  and relieves heaviness and nausea before meals.
+summary: Dried ginger (saunth), ajwain and a pinch of black salt — warming churan that kindles
+  appetite and relieves heaviness and nausea before meals.
 indications:
 - low-appetite
 - nausea
@@ -16,6 +16,8 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
 rasa:
 - salty
 - pungent

@@ -1,62 +1,60 @@
 slug: sandalwood-turmeric-tendinitis-compress
 display_name: Sandalwood-Turmeric Cooling Paste for Tendinitis
 aliases:
-  - chandan-haldi-paste
-  - cooling-anti-inflammatory-paste
+- chandan-haldi-paste
+- cooling-anti-inflammatory-paste
 category: other
 route: external
-summary: >-
-  A classic Ayurvedic topical paste of equal parts sandalwood and turmeric
-  powder mixed with cold water, applied to inflamed tendons or bursae to cool
-  excess pitta and reduce pain and swelling. Sandalwood's cooling, anti-
-  inflammatory properties complement turmeric's curcumin-mediated inhibition of
-  inflammatory cascades, making this suitable for acute tendinitis, repetitive
-  strain, and carpal tunnel-type presentations.
+summary: A classic Ayurvedic topical paste of equal parts sandalwood and turmeric powder mixed
+  with cold water, applied to inflamed tendons or bursae to cool excess pitta and reduce pain
+  and swelling. Sandalwood's cooling, anti- inflammatory properties complement turmeric's
+  curcumin-mediated inhibition of inflammatory cascades, making this suitable for acute tendinitis,
+  repetitive strain, and carpal tunnel-type presentations.
 indications:
-  - tendinitis — acute inflammation of tendons
-  - bursitis
-  - repetitive strain injury (carpal tunnel, shoulder, elbow)
-  - localised hot, swollen, painful joint or tendon
-  - mild pitta-type inflammation with heat at the site
+- tendinitis — acute inflammation of tendons
+- bursitis
+- repetitive strain injury (carpal tunnel, shoulder, elbow)
+- localised hot, swollen, painful joint or tendon
+- mild pitta-type inflammation with heat at the site
 contraindications:
-  - open wounds or broken skin at the application site
-  - allergy to sandalwood or turmeric
-  - active, deep infection requiring medical treatment
-  - do not use on large body surface area in pregnancy (turmeric paste)
-preparation: >-
-  Mix equal amounts (e.g. 1 teaspoon each) of sandalwood powder and turmeric
-  powder. Stir in enough cold water to form a smooth, spreadable paste. Apply
-  generously to the painful tendon or joint area, cover loosely with a clean
-  cloth, and leave for 20-30 minutes. Rinse off with cool water. Alternatively,
-  a paste of salt and turmeric in cold water can be used if sandalwood is
-  unavailable.
+- open wounds or broken skin at the application site
+- allergy to sandalwood or turmeric
+- active, deep infection requiring medical treatment
+- do not use on large body surface area in pregnancy (turmeric paste)
+preparation: Mix equal amounts (e.g. 1 teaspoon each) of sandalwood powder and turmeric powder.
+  Stir in enough cold water to form a smooth, spreadable paste. Apply generously to the painful
+  tendon or joint area, cover loosely with a clean cloth, and leave for 20-30 minutes. Rinse
+  off with cool water. Alternatively, a paste of salt and turmeric in cold water can be used
+  if sandalwood is unavailable.
 typical_dose: Apply a palm-sized layer to the affected area once or twice daily
 duration: Use during the acute inflammatory phase; continue up to 1-2 weeks as needed
 timing_notes: Best applied after activity, or at bedtime; avoid heat on the area during use
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - anti-inflammatory
-  - alterative
-  - dipana
+- anti-inflammatory
+- alterative
+- dipana
 linked_to_topics:
-  - tendinopathy
-  - joint-pain
-  - chronic-inflammation
+- tendinopathy
+- joint-pain
+- chronic-inflammation
 linked_to_mechanisms:
-  - inflammatory-cascade
-  - synovial-inflammation
-  - chronic-inflammation
+- inflammatory-cascade
+- synovial-inflammation
+- chronic-inflammation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Tendinitis — Apply a Cool Paste"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Tendinitis — Apply a Cool Paste
 evidence_tier: plausible_emerging
 version: 1
 status: active

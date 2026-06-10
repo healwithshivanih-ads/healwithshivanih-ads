@@ -1,54 +1,55 @@
 slug: coconut-lemon-morning-sickness-drink
 display_name: Coconut Water with Lemon for Morning Sickness
 aliases:
-  - nariyal-pani-nimbu-morning-sickness
-  - coconut-water-pregnancy-nausea
+- nariyal-pani-nimbu-morning-sickness
+- coconut-water-pregnancy-nausea
 category: infused_water
-summary: >-
-  Lad recommends coconut water with a teaspoon of lemon juice, sipped slowly
-  every 15 minutes, to settle the stomach and reduce morning-sickness nausea.
-  Coconut water is cooling, hydrating and alkaline, countering the pitta-driven
-  acid excess that Ayurveda identifies as the physiological basis of morning
-  sickness. Lemon juice (in small amounts) stimulates salivary secretion and
-  reduces nausea reflexes. This is one of the safest, most accessible pregnancy
-  remedies in the book — both ingredients are freely available across India.
+summary: Lad recommends coconut water with a teaspoon of lemon juice, sipped slowly every
+  15 minutes, to settle the stomach and reduce morning-sickness nausea. Coconut water is cooling,
+  hydrating and alkaline, countering the pitta-driven acid excess that Ayurveda identifies
+  as the physiological basis of morning sickness. Lemon juice (in small amounts) stimulates
+  salivary secretion and reduces nausea reflexes. This is one of the safest, most accessible
+  pregnancy remedies in the book — both ingredients are freely available across India.
 indications:
-  - morning sickness in pregnancy (nausea and vomiting in first trimester)
-  - nausea triggered by empty stomach
-  - dehydration from vomiting in early pregnancy
-  - pitta-type nausea and acid excess
+- morning sickness in pregnancy (nausea and vomiting in first trimester)
+- nausea triggered by empty stomach
+- dehydration from vomiting in early pregnancy
+- pitta-type nausea and acid excess
 contraindications:
-  - severe hyperemesis gravidarum — see a doctor or midwife; IV fluids may be needed
-  - kidney disease with potassium restrictions — coconut water is high in potassium
-  - gestational diabetes (unsweetened coconut water is generally low-glycaemic but monitor)
-preparation: >-
-  Add 1 teaspoon of fresh lemon juice (or lime juice) to 1 cup of fresh
-  coconut water. Stir well. Sip slowly — about a sip every 15 minutes rather
-  than drinking the whole cup at once.
+- severe hyperemesis gravidarum — see a doctor or midwife; IV fluids may be needed
+- kidney disease with potassium restrictions — coconut water is high in potassium
+- gestational diabetes (unsweetened coconut water is generally low-glycaemic but monitor)
+preparation: Add 1 teaspoon of fresh lemon juice (or lime juice) to 1 cup of fresh coconut
+  water. Stir well. Sip slowly — about a sip every 15 minutes rather than drinking the whole
+  cup at once.
 typical_dose: 1 cup, sipped over 30-45 minutes; repeat as needed
 duration: As needed during symptomatic mornings throughout the first trimester
-timing_notes: On waking or whenever nausea arises; also helpful mid-morning between small meals
+timing_notes: On waking or whenever nausea arises; also helpful mid-morning between small
+  meals
 linked_to_topics:
-  - pregnancy-first-trimester
+- pregnancy-first-trimester
 linked_to_mechanisms:
-  - renal-ph-buffering
-  - anti-inflammatory-signaling
+- renal-ph-buffering
+- anti-inflammatory-signaling
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - kapha
+- kapha
+suitable_sex: female
+suitable_stages:
+- pregnancy
 rasa:
-  - sweet
-  - sour
+- sweet
+- sour
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - cooling
-  - nourishing
-  - dipana
+- cooling
+- nourishing
+- dipana
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Morning Sickness — Coconut Water"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Morning Sickness — Coconut Water
 evidence_tier: plausible_emerging
 version: 1
 status: active

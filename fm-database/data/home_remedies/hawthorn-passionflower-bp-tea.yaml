@@ -1,62 +1,62 @@
 slug: hawthorn-passionflower-bp-tea
 display_name: Hawthorn Berry, Passionflower and Punarnava Tea for Hypertension
 aliases:
-  - punarnava-passionflower-hawthorn-tea
-  - hawthorn-bp-tea
-  - ayurvedic-blood-pressure-tea
+- punarnava-passionflower-hawthorn-tea
+- hawthorn-bp-tea
+- ayurvedic-blood-pressure-tea
 category: herbal_tea
-summary: >-
-  Lad's Ayurvedic herbal formula for hypertension combines hawthorn berry (heart
-  tonic, vasodilatory), passionflower (nervine, anxiolytic, lowers stress-driven
-  blood pressure) and punarnava (a diuretic herb that reduces vascular volume
-  load). Steeped as a tea after meals, this cooling, calming combination addresses
-  the pitta and vata components of elevated blood pressure.
+summary: Lad's Ayurvedic herbal formula for hypertension combines hawthorn berry (heart tonic,
+  vasodilatory), passionflower (nervine, anxiolytic, lowers stress-driven blood pressure)
+  and punarnava (a diuretic herb that reduces vascular volume load). Steeped as a tea after
+  meals, this cooling, calming combination addresses the pitta and vata components of elevated
+  blood pressure.
 indications:
-  - essential hypertension
-  - stress-related high blood pressure
-  - white-coat hypertension
-  - anxiety-driven palpitations with elevated blood pressure
+- essential hypertension
+- stress-related high blood pressure
+- white-coat hypertension
+- anxiety-driven palpitations with elevated blood pressure
 contraindications:
-  - use as adjunct to medical supervision only — do not self-manage sustained
-    hypertension without physician involvement
-  - pregnancy (punarnava is contraindicated in pregnancy)
-  - individuals on anticoagulant medications (hawthorn may potentiate)
-  - avoid if on prescribed antihypertensive drugs without consulting physician
-    (additive effect possible)
-preparation: >-
-  Mix equal parts punarnava and passionflower with 2 parts hawthorn berry (dried
-  herb or powder). Steep half a teaspoon of this mixture in 1 cup of hot water
-  for 5 to 10 minutes. Strain and drink.
+- use as adjunct to medical supervision only — do not self-manage sustained hypertension without
+  physician involvement
+- pregnancy (punarnava is contraindicated in pregnancy)
+- individuals on anticoagulant medications (hawthorn may potentiate)
+- avoid if on prescribed antihypertensive drugs without consulting physician (additive effect
+  possible)
+preparation: Mix equal parts punarnava and passionflower with 2 parts hawthorn berry (dried
+  herb or powder). Steep half a teaspoon of this mixture in 1 cup of hot water for 5 to 10
+  minutes. Strain and drink.
 typical_dose: Half teaspoon of herb blend steeped in 1 cup hot water
 duration: Ongoing as adjunct to blood pressure management; reassess with physician regularly
 timing_notes: After lunch and after dinner
 balances_dosha:
-  - pitta
-  - vata
+- pitta
+- vata
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - diuretic
-  - anti-inflammatory
-  - cardiotonic
+- diuretic
+- anti-inflammatory
+- cardiotonic
 linked_to_topics:
-  - hypertension
-  - blood-pressure-management
-  - cardiovascular-health
-  - stress-management
+- hypertension
+- blood-pressure-management
+- cardiovascular-health
+- stress-management
 linked_to_mechanisms:
-  - nitric-oxide-bioavailability
-  - endothelial-dysfunction
-  - hpa-axis-dysregulation
-  - cortisol-elevation
+- nitric-oxide-bioavailability
+- endothelial-dysfunction
+- hpa-axis-dysregulation
+- cortisol-elevation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Hypertension — Herbs for Hypertension"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Hypertension — Herbs for Hypertension
 evidence_tier: plausible_emerging
 version: 1
 status: active

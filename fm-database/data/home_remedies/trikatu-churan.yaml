@@ -1,57 +1,56 @@
 slug: trikatu-churan
 display_name: Trikatu Churan (Three-Pungent Blend)
 aliases:
-  - trikatu-powder
-  - three-peppers-blend
-  - ginger-black-pepper-pippali
+- trikatu-powder
+- three-peppers-blend
+- ginger-black-pepper-pippali
 category: ayurvedic_churan
-summary: >-
-  A classical Ayurvedic three-spice powder of dried ginger (sonth), black
-  pepper (kali mirch), and long pepper (pippali) in equal parts. Used to
-  wake up sluggish digestion, support fat metabolism, and clear cold-and-
-  congestion patterns when agni (digestive fire) feels low.
+summary: A classical Ayurvedic three-spice powder of dried ginger (sonth), black pepper (kali
+  mirch), and long pepper (pippali) in equal parts. Used to wake up sluggish digestion, support
+  fat metabolism, and clear cold-and- congestion patterns when agni (digestive fire) feels
+  low.
 indications:
-  - sluggish digestion
-  - low appetite
-  - cold and congestion
-  - sinus congestion
-  - sluggish fat metabolism
-  - post-meal heaviness with cold extremities
+- sluggish digestion
+- low appetite
+- cold and congestion
+- sinus congestion
+- sluggish fat metabolism
+- post-meal heaviness with cold extremities
 contraindications:
-  - active GERD with burning
-  - active peptic ulcer
-  - pregnancy
-  - heavy menstrual bleeding
-  - active inflammatory bowel flare
-  - hypertension on multiple medications
+- active GERD with burning
+- active peptic ulcer
+- pregnancy
+- heavy menstrual bleeding
+- active inflammatory bowel flare
+- hypertension on multiple medications
 balances_dosha:
-  - vata
-  - kapha
+- vata
+- kapha
 aggravates_dosha:
-  - pitta
+- pitta
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - sour
-  - pungent
+- sweet
+- sour
+- pungent
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - kapha-clearing
-preparation: >-
-  Ready-made from reputable Ayurvedic brands or made fresh by grinding
-  equal parts dried ginger, black peppercorns, and pippali (long pepper)
-  to a fine powder. Mix 1/4 teaspoon with 1/2 teaspoon raw honey (not
-  hot) before lunch, or stir into warm dal.
+- dipana
+- carminative
+- kapha-clearing
+preparation: Ready-made from reputable Ayurvedic brands or made fresh by grinding equal parts
+  dried ginger, black peppercorns, and pippali (long pepper) to a fine powder. Mix 1/4 teaspoon
+  with 1/2 teaspoon raw honey (not hot) before lunch, or stir into warm dal.
 typical_dose: 1/4 teaspoon before lunch
 duration: 2-4 weeks during a digestion-reset phase
 timing_notes: 10-15 minutes before lunch; not at bedtime
 linked_to_topics:
-  - agni-digestive-fire
-  - common-cold
+- agni-digestive-fire
+- common-cold
 linked_to_mechanisms:
-  - chronic-inflammation
+- chronic-inflammation
 evidence_tier: fm_specific_thin
 version: 1
 status: active

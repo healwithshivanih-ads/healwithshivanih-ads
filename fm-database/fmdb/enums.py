@@ -149,6 +149,30 @@ class RemedyRoute(str, Enum):
     external = "external"
 
 
+class SuitableSex(str, Enum):
+    """Who a remedy is anatomically/physiologically FOR. `any` (default) =
+    unisex. `female`/`male` = the remedy's purpose is sex-specific (menstrual
+    cramps tea, prostate tea). A remedy that merely LISTS a female stage as
+    one indication among general ones (golden milk -> "perimenopause") stays
+    `any` — this field is the hard gate, not a relevance hint."""
+    any = "any"
+    female = "female"
+    male = "male"
+
+
+class LifeStage(str, Enum):
+    """Life-stage vocabulary shared by HomeRemedy.suitable_stages (non-empty
+    = remedy is ONLY for these stages) and HomeRemedy.avoid_in (hard safety
+    exclusions). Client-side stage derives from Client.pregnancy_status /
+    lactation_started / cycle_status, with an age fallback."""
+    menstruating = "menstruating"
+    perimenopausal = "perimenopausal"
+    postmenopausal = "postmenopausal"
+    pregnancy = "pregnancy"
+    lactation = "lactation"
+    children = "children"          # avoid_in only — the app serves adults
+
+
 class Dosha(str, Enum):
     """The three Ayurvedic doshas (elemental constitutions).
 

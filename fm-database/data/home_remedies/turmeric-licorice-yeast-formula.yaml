@@ -1,75 +1,73 @@
 slug: turmeric-licorice-yeast-formula
 display_name: Turmeric-Licorice-Shardunika Yeast Infection Formula
 aliases:
-  - haldi-mulethi-antifungal-formula
-  - pitta-kapha-antifungal-churan
-  - turmeric-licorice-candida-tea
+- haldi-mulethi-antifungal-formula
+- pitta-kapha-antifungal-churan
+- turmeric-licorice-candida-tea
 category: ayurvedic_churan
-summary: >-
-  Lad identifies yeast infections as a mixed pitta-kapha disorder, requiring a
-  remedy that pacifies both without increasing the other. His formula combines
-  turmeric (haldi), licorice root (mulethi / yashti madhu), and shardunika
-  (Gymnema sylvestre) in specific proportions. Turmeric is a powerful antifungal
-  and anti-inflammatory that clears pitta heat and kapha dampness; licorice
-  soothes the inflamed mucosa and has documented antimicrobial properties;
-  shardunika (Gymnema) clears kapha, reduces sugar (the primary fuel for
-  Candida), and has antifungal activity. Taken with warm water twice daily, this
-  formula addresses both internal and vaginal yeast overgrowth.
+summary: Lad identifies yeast infections as a mixed pitta-kapha disorder, requiring a remedy
+  that pacifies both without increasing the other. His formula combines turmeric (haldi),
+  licorice root (mulethi / yashti madhu), and shardunika (Gymnema sylvestre) in specific proportions.
+  Turmeric is a powerful antifungal and anti-inflammatory that clears pitta heat and kapha
+  dampness; licorice soothes the inflamed mucosa and has documented antimicrobial properties;
+  shardunika (Gymnema) clears kapha, reduces sugar (the primary fuel for Candida), and has
+  antifungal activity. Taken with warm water twice daily, this formula addresses both internal
+  and vaginal yeast overgrowth.
 indications:
-  - vaginal yeast infection (candidiasis)
-  - oral thrush
-  - gut or intestinal yeast / Candida overgrowth
-  - recurrent yeast infections associated with high sugar intake or antibiotic use
-  - pitta-kapha constitution prone to yeast and fungal issues
-  - skin fold yeast infections
+- vaginal yeast infection (candidiasis)
+- oral thrush
+- gut or intestinal yeast / Candida overgrowth
+- recurrent yeast infections associated with high sugar intake or antibiotic use
+- pitta-kapha constitution prone to yeast and fungal issues
+- skin fold yeast infections
 contraindications:
-  - severe or worsening vaginal infection should be evaluated by a doctor
-  - licorice (mulethi) is contraindicated in hypertension, oedema, kidney disease
-  - do not use in pregnancy without guidance
-  - not a replacement for antifungal medication in severe or systemic candidiasis
-  - Gymnema (shardunika) may lower blood sugar — monitor if diabetic or on diabetes medication
-  - if symptoms do not improve in 7-10 days, seek medical assessment
-preparation: >-
-  Mix one-quarter teaspoon turmeric powder, one-half teaspoon yashti madhu
-  (licorice root) powder, and one-quarter teaspoon shardunika (Gymnema sylvestre)
-  powder. This makes a single dose of 1 teaspoon total. Take this complete
-  mixture twice a day with warm water until symptoms are gone. Strictly avoid
-  sugar, fermented foods, yeast-containing bread, and alcohol during treatment,
-  as these feed yeast. Follow a diet that is both pitta-soothing and non-kapha-
-  provoking (favour warm cooked foods, vegetables, and lentils; avoid cheese,
+- severe or worsening vaginal infection should be evaluated by a doctor
+- licorice (mulethi) is contraindicated in hypertension, oedema, kidney disease
+- do not use in pregnancy without guidance
+- not a replacement for antifungal medication in severe or systemic candidiasis
+- Gymnema (shardunika) may lower blood sugar — monitor if diabetic or on diabetes medication
+- if symptoms do not improve in 7-10 days, seek medical assessment
+preparation: Mix one-quarter teaspoon turmeric powder, one-half teaspoon yashti madhu (licorice
+  root) powder, and one-quarter teaspoon shardunika (Gymnema sylvestre) powder. This makes
+  a single dose of 1 teaspoon total. Take this complete mixture twice a day with warm water
+  until symptoms are gone. Strictly avoid sugar, fermented foods, yeast-containing bread,
+  and alcohol during treatment, as these feed yeast. Follow a diet that is both pitta-soothing
+  and non-kapha- provoking (favour warm cooked foods, vegetables, and lentils; avoid cheese,
   mushrooms, vinegar, and sweets).
 typical_dose: Full 1 teaspoon mixture (all three herbs) twice daily with warm water
 duration: Until symptoms resolve, typically 1-3 weeks; continue 3-5 days after symptoms clear
 timing_notes: Between meals or after meals with warm water; strict dietary changes concurrent
 balances_dosha:
-  - pitta
-  - kapha
+- pitta
+- kapha
 aggravates_dosha:
-  - vata
+- vata
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - anti-inflammatory
-  - alterative
-  - demulcent
+- anti-inflammatory
+- alterative
+- demulcent
 linked_to_topics:
-  - candida-overgrowth
-  - yeast-overgrowth
-  - fungal-overgrowth
-  - gut-dysbiosis
-  - vaginal-microbiome-dysbiosis
+- candida-overgrowth
+- yeast-overgrowth
+- fungal-overgrowth
+- gut-dysbiosis
+- vaginal-microbiome-dysbiosis
 linked_to_mechanisms:
-  - yeast-acid-byproduct-cycle
-  - dysbiosis-gut-microbiome-imbalance
-  - gut-vaginal-microbiome-axis
-  - mucosal-inflammation
+- yeast-acid-byproduct-cycle
+- dysbiosis-gut-microbiome-imbalance
+- gut-vaginal-microbiome-axis
+- mucosal-inflammation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Yeast Infections — Effective Herbal Remedy"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Yeast Infections — Effective Herbal Remedy
 evidence_tier: plausible_emerging
 version: 1
 status: active

@@ -1,53 +1,52 @@
 slug: hibiscus-tea
 display_name: Hibiscus Tea (Gudhal / Jaswand)
 aliases:
-  - gudhal-tea
-  - jaswand-tea
-  - roselle-tea
-  - hibiscus-sabdariffa-infusion
+- gudhal-tea
+- jaswand-tea
+- roselle-tea
+- hibiscus-sabdariffa-infusion
 category: herbal_tea
-summary: >-
-  A bright, tart infusion of dried hibiscus (gudhal / jaswand) flowers. A
-  traditional Indian and pan-tropical drink with a long lay-tradition of
-  use for blood pressure support, hot flushes, and as a cooling summer
-  beverage rich in anthocyanins and vitamin C.
+summary: A bright, tart infusion of dried hibiscus (gudhal / jaswand) flowers. A traditional
+  Indian and pan-tropical drink with a long lay-tradition of use for blood pressure support,
+  hot flushes, and as a cooling summer beverage rich in anthocyanins and vitamin C.
 indications:
-  - mild-to-moderate hypertension
-  - hot flushes
-  - oxidative stress
-  - urinary tract irritation
-  - summer heat and dehydration
+- mild-to-moderate hypertension
+- hot flushes
+- oxidative stress
+- urinary tract irritation
+- summer heat and dehydration
 contraindications:
-  - hypotension
-  - concurrent ACE inhibitors or diuretics without monitoring
-  - pregnancy
-  - paracetamol metabolism interference (space dosing)
+- hypotension
+- concurrent ACE inhibitors or diuretics without monitoring
+- pregnancy
+- paracetamol metabolism interference (space dosing)
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - vata
+- vata
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - nervine
-  - cooling
-  - emmenagogue
-preparation: >-
-  Steep 1 tablespoon dried hibiscus calyces in 1.5 cups boiling water for
-  8-10 minutes, strain. Serve warm or chilled. No sugar.
+- nervine
+- cooling
+- emmenagogue
+preparation: Steep 1 tablespoon dried hibiscus calyces in 1.5 cups boiling water for 8-10
+  minutes, strain. Serve warm or chilled. No sugar.
 typical_dose: 1-2 cups daily
 duration: 6-8 weeks for blood pressure; ongoing as a summer drink
 timing_notes: mid-morning or afternoon; avoid right at bedtime due to mild diuretic effect
 linked_to_topics:
-  - hypertension
-  - perimenopause
+- hypertension
+- perimenopause
 linked_to_mechanisms:
-  - endothelial-dysfunction
-  - nitric-oxide-production
+- endothelial-dysfunction
+- nitric-oxide-production
 evidence_tier: plausible_emerging
 version: 1
 status: active

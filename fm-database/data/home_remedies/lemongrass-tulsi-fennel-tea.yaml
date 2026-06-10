@@ -1,52 +1,51 @@
 slug: lemongrass-tulsi-fennel-tea
 display_name: Lemongrass-Tulsi-Fennel Diaphoretic Tea (for Fever & Cold)
 aliases:
-  - fever-diaphoretic-tea
-  - lemongrass-holy-basil-tea
+- fever-diaphoretic-tea
+- lemongrass-holy-basil-tea
 category: herbal_tea
-summary: >-
-  A diaphoretic (sweat-promoting) tea Lad recommends for fever and feverish
-  colds — equal parts lemongrass, tulsi (holy basil) and fennel. In Ayurveda
-  fever often reflects ama moving in the tissues; gentle sweating helps the body
-  release heat and toxins. Tulsi is antimicrobial and immune-supportive,
-  lemongrass is cooling-yet-diaphoretic, fennel settles the stomach. A supportive
-  measure for low-grade fever and the achy start of a cold — not a substitute for
-  care of high or persistent fever.
+summary: A diaphoretic (sweat-promoting) tea Lad recommends for fever and feverish colds —
+  equal parts lemongrass, tulsi (holy basil) and fennel. In Ayurveda fever often reflects
+  ama moving in the tissues; gentle sweating helps the body release heat and toxins. Tulsi
+  is antimicrobial and immune-supportive, lemongrass is cooling-yet-diaphoretic, fennel settles
+  the stomach. A supportive measure for low-grade fever and the achy start of a cold — not
+  a substitute for care of high or persistent fever.
 indications:
-  - low-grade fever / feverish cold
-  - early cold with body ache
-  - immune support during a viral bout
+- low-grade fever / feverish cold
+- early cold with body ache
+- immune support during a viral bout
 contraindications:
-  - high fever (>104F adult / >101F over-60), fever in infants, or fever lasting >3 days — see a doctor
-  - fever with stiff neck and severe headache — seek urgent care
-  - avoid milk during fever (worsens it / can cause loose stools)
+- high fever (>104F adult / >101F over-60), fever in infants, or fever lasting >3 days — see
+  a doctor
+- fever with stiff neck and severe headache — seek urgent care
+- avoid milk during fever (worsens it / can cause loose stools)
 balances_dosha: []
 aggravates_dosha: []
+avoid_in:
+- children
 rasa:
-  - sour
-  - pungent
-  - bitter
+- sour
+- pungent
+- bitter
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - diaphoretic
-  - expectorant
-  - nervine
-preparation: >-
-  Mix equal parts lemongrass, tulsi (holy basil) and fennel. Steep 1 tsp of the
-  blend in boiling water for ~10 minutes, strain and drink warm to encourage a
-  light sweat.
+- diaphoretic
+- expectorant
+- nervine
+preparation: Mix equal parts lemongrass, tulsi (holy basil) and fennel. Steep 1 tsp of the
+  blend in boiling water for ~10 minutes, strain and drink warm to encourage a light sweat.
 typical_dose: 1 cup, a few times a day during the fever
 duration: For the duration of the feverish episode (a few days)
 timing_notes: Warm, through the day; rest and fluids alongside
 linked_to_topics:
-  - common-cold
-  - immune-support
+- common-cold
+- immune-support
 linked_to_mechanisms:
-  - endogenous-toxin-load
+- endogenous-toxin-load
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Fever — Herbal Remedies"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Fever — Herbal Remedies
 evidence_tier: fm_specific_thin
 version: 1
 status: active

@@ -8,8 +8,8 @@ category: ayurvedic_churan
 summary: Guggulu is the purified resin of Commiphora mukul, one of Ayurveda's principal kapha-reducing,
   lipid-lowering and anti-inflammatory substances. Guggulsterones are credited with supporting
   healthy cholesterol/triglycerides, scraping ama (metabolic waste), and easing inflammatory/arthritic
-  conditions — which is why it forms the base of many classical 'guggulu' formulas. Taken as
-  a purified (shuddha) resin tablet.
+  conditions — which is why it forms the base of many classical 'guggulu' formulas. Taken
+  as a purified (shuddha) resin tablet.
 indications:
 - high cholesterol / triglycerides (dyslipidemia)
 - metabolic sluggishness / kapha excess
@@ -17,8 +17,8 @@ indications:
 - ama-type metabolic congestion
 contraindications:
 - 'THYROID INTERACTION: guggul (guggulsterones) can alter thyroid hormone levels/metabolism
-  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber and
-  monitor'
+  — important if on levothyroxine or with thyroid disease; coordinate with the prescriber
+  and monitor'
 - 'blood thinning: may increase bleeding risk — caution with anticoagulant/antiplatelet drugs
   and before surgery'
 - pregnancy and breastfeeding — avoid (uterine stimulant)
@@ -31,6 +31,9 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+avoid_in:
+- pregnancy
+- lactation
 rasa:
 - sour
 - pungent

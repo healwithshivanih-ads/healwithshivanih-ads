@@ -1,50 +1,49 @@
 slug: cinnamon-cardamom-tea
 display_name: Cinnamon-Cardamom Tea (Dalchini-Elaichi Chai)
 aliases:
-  - dalchini-elaichi-tea
-  - cinnamon-elaichi-infusion
+- dalchini-elaichi-tea
+- cinnamon-elaichi-infusion
 category: herbal_tea
-summary: >-
-  A warming Indian kitchen brew of Ceylon cinnamon bark and green cardamom pods.
-  Long used after meals to settle the stomach, ease bloating, and gently support
-  post-meal blood sugar. Aromatic, comforting, and easy to keep in the
-  daily-routine slot after lunch or dinner.
+summary: A warming Indian kitchen brew of Ceylon cinnamon bark and green cardamom pods. Long
+  used after meals to settle the stomach, ease bloating, and gently support post-meal blood
+  sugar. Aromatic, comforting, and easy to keep in the daily-routine slot after lunch or dinner.
 indications:
-  - post-meal blood sugar spikes
-  - functional indigestion
-  - post-meal bloating
-  - sluggish digestion
-  - sweet cravings after meals
+- post-meal blood sugar spikes
+- functional indigestion
+- post-meal bloating
+- sluggish digestion
+- sweet cravings after meals
 contraindications:
-  - pregnancy (high-dose cassia cinnamon — prefer Ceylon)
-  - chronic liver disease (cassia coumarin load)
-  - active hypoglycaemia or insulin/sulfonylurea co-administration without monitoring
+- pregnancy (high-dose cassia cinnamon — prefer Ceylon)
+- chronic liver disease (cassia coumarin load)
+- active hypoglycaemia or insulin/sulfonylurea co-administration without monitoring
 balances_dosha:
-  - vata
-  - kapha
+- vata
+- kapha
 aggravates_dosha:
-  - pitta
+- pitta
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
-  - astringent
+- sweet
+- pungent
+- astringent
 virya: heating
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-preparation: >-
-  Bring 1.5 cups water to a gentle boil with one 2-inch piece of Ceylon
-  cinnamon bark and 2 lightly crushed green cardamom pods. Simmer 5-7 minutes,
-  strain. No sugar; a small dash of milk optional.
+- dipana
+- carminative
+preparation: Bring 1.5 cups water to a gentle boil with one 2-inch piece of Ceylon cinnamon
+  bark and 2 lightly crushed green cardamom pods. Simmer 5-7 minutes, strain. No sugar; a
+  small dash of milk optional.
 typical_dose: 1 cup
 duration: as a daily after-meal ritual
 timing_notes: 20-30 minutes after lunch or dinner
 linked_to_topics:
-  - insulin-resistance
-  - ibs
+- insulin-resistance
+- ibs
 linked_to_mechanisms:
-  - gut-microbiome-glucose-regulation
+- gut-microbiome-glucose-regulation
 evidence_tier: plausible_emerging
 version: 1
 status: active

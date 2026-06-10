@@ -1,58 +1,57 @@
 slug: brahmi-jatamamsi-shatavari-pitta-depression-tea
 display_name: Brahmi-Jatamamsi-Shatavari Tea for Pitta-Type Low Mood
 aliases:
-  - pitta-depression-cooling-tea
-  - brahmi-jatamamsi-mood-tea
+- pitta-depression-cooling-tea
+- brahmi-jatamamsi-mood-tea
 category: herbal_tea
-summary: >-
-  For pitta-type depression — associated with anger, irritability, fear of
-  failure, or seasonal affective disorder — Lad recommends a cooling, calming
-  blend of equal parts brahmi (bacopa), jatamamsi (spikenard), and shatavari.
-  Brahmi cools the mind, jatamamsi pacifies excess pitta in the nervous system,
-  and shatavari provides nourishing, hormone-balancing support, making this
-  blend especially relevant for perimenopausal women with mood swings.
+summary: For pitta-type depression — associated with anger, irritability, fear of failure,
+  or seasonal affective disorder — Lad recommends a cooling, calming blend of equal parts
+  brahmi (bacopa), jatamamsi (spikenard), and shatavari. Brahmi cools the mind, jatamamsi
+  pacifies excess pitta in the nervous system, and shatavari provides nourishing, hormone-balancing
+  support, making this blend especially relevant for perimenopausal women with mood swings.
 indications:
-  - low mood with anger, irritability, or frustration (pitta-type depression)
-  - seasonal affective disorder (SAD)
-  - mood swings in perimenopause or PMS
-  - anxiety with feelings of failure or perfectionism
-  - hormonal depression
+- low mood with anger, irritability, or frustration (pitta-type depression)
+- seasonal affective disorder (SAD)
+- mood swings in perimenopause or PMS
+- anxiety with feelings of failure or perfectionism
+- hormonal depression
 contraindications:
-  - pregnancy — consult a practitioner before using shatavari
-  - severe or suicidal depression — consult a doctor; this is a supportive only
-  - if on antidepressants, discuss with prescriber before adding
-preparation: >-
-  Mix equal amounts of brahmi, jatamamsi, and shatavari powders. Use one-half to
-  one teaspoon of the mixture per cup of hot water. Steep for 10 minutes, strain,
-  and drink. Alternatively stir the powder into warm water without straining.
+- pregnancy — consult a practitioner before using shatavari
+- severe or suicidal depression — consult a doctor; this is a supportive only
+- if on antidepressants, discuss with prescriber before adding
+preparation: Mix equal amounts of brahmi, jatamamsi, and shatavari powders. Use one-half to
+  one teaspoon of the mixture per cup of hot water. Steep for 10 minutes, strain, and drink.
+  Alternatively stir the powder into warm water without straining.
 typical_dose: One-half to 1 teaspoon of mixture, 2–3 times daily
 duration: 4–8 weeks; reassess progress
 timing_notes: Morning and early afternoon; on an empty stomach or between meals
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
+- dipana
+- carminative
+- antispasmodic
 linked_to_topics:
-  - depression-lifestyle
-  - hormonal-depression-progesterone
-  - anxiety
-  - perimenopause
+- depression-lifestyle
+- hormonal-depression-progesterone
+- anxiety
+- perimenopause
 linked_to_mechanisms:
-  - hpa-axis-dysregulation
-  - serotonin-deficiency
-  - neurotransmitter-synthesis-impairment
+- hpa-axis-dysregulation
+- serotonin-deficiency
+- neurotransmitter-synthesis-impairment
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Depression — Pitta Depression"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Depression — Pitta Depression
 evidence_tier: fm_specific_thin
 version: 1
 status: active

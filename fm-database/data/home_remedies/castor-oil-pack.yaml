@@ -1,55 +1,53 @@
 slug: castor-oil-pack
 display_name: Castor Oil Pack (Abdominal or Joint)
 aliases:
-  - arandi-oil-pack
-  - castor-pack
-  - ricinus-oil-compress
+- arandi-oil-pack
+- castor-pack
+- ricinus-oil-compress
 category: other
 route: external
-summary: >-
-  A warm topical compress made with cold-pressed castor oil on a flannel
-  cloth, applied to the abdomen, lower back, or a painful joint with a hot
-  water bottle over the top. Long used in Ayurvedic and naturopathic
-  traditions to ease menstrual cramps, sluggish bowel, joint stiffness, and
-  restless legs at night.
+summary: A warm topical compress made with cold-pressed castor oil on a flannel cloth, applied
+  to the abdomen, lower back, or a painful joint with a hot water bottle over the top. Long
+  used in Ayurvedic and naturopathic traditions to ease menstrual cramps, sluggish bowel,
+  joint stiffness, and restless legs at night.
 indications:
-  - menstrual cramps
-  - sluggish bowel and constipation
-  - joint pain and stiffness
-  - restless legs syndrome at night
-  - liver area heaviness during a detox phase
+- menstrual cramps
+- sluggish bowel and constipation
+- joint pain and stiffness
+- restless legs syndrome at night
+- liver area heaviness during a detox phase
 contraindications:
-  - pregnancy
-  - active menstrual flow (heavy bleeding)
-  - open wounds or broken skin
-  - unexplained abdominal pain
-  - active bleeding disorders
+- pregnancy
+- active menstrual flow (heavy bleeding)
+- open wounds or broken skin
+- unexplained abdominal pain
+- active bleeding disorders
 balances_dosha:
-  - vata
+- vata
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - pungent
-  - astringent
+- sweet
+- pungent
+- astringent
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - laxative
-  - anti-inflammatory
-preparation: >-
-  Fold a clean piece of flannel or cotton cloth into 3-4 layers, large
-  enough to cover the area. Saturate (do not drip) with cold-pressed
-  organic castor oil. Place over the abdomen or joint, cover with an old
-  towel, then a hot water bottle. Rest 45-60 minutes. Store the cloth in
-  a glass jar; can be reused 25-30 times before replacing.
+- laxative
+- anti-inflammatory
+preparation: Fold a clean piece of flannel or cotton cloth into 3-4 layers, large enough to
+  cover the area. Saturate (do not drip) with cold-pressed organic castor oil. Place over
+  the abdomen or joint, cover with an old towel, then a hot water bottle. Rest 45-60 minutes.
+  Store the cloth in a glass jar; can be reused 25-30 times before replacing.
 typical_dose: 1 pack session
 duration: 3-4 nights per week for 4-6 weeks during a focus phase
 timing_notes: evening, 1 hour before bed; not during menstruation
 linked_to_topics:
-  - premenstrual-syndrome
-  - joint-pain
+- premenstrual-syndrome
+- joint-pain
 linked_to_mechanisms:
-  - chronic-inflammation
+- chronic-inflammation
 evidence_tier: fm_specific_thin
 version: 1
 status: active

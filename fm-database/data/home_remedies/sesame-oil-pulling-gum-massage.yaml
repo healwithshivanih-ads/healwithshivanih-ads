@@ -1,83 +1,81 @@
 slug: sesame-oil-pulling-gum-massage
 display_name: Sesame Oil Pulling and Gum Massage
 aliases:
-  - til-oil-pulling
-  - sesame-oil-kavala
-  - oil-pulling-teeth-gums
-  - gandusha-kavala-dharana
+- til-oil-pulling
+- sesame-oil-kavala
+- oil-pulling-teeth-gums
+- gandusha-kavala-dharana
 category: other
 route: external
-summary: >-
-  Lad describes oil pulling with warm sesame oil (kavala dharana in Sanskrit)
-  as the pre-eminent Ayurvedic oral health practice. A mouthful of warm sesame
-  oil is swished gently around all the teeth and gum margins for two to three
-  minutes, then spat out, followed by gentle massage of the gums with one
-  clean finger. Sesame oil's antibacterial lignans (sesamol, sesamin) and
-  high linoleic acid content reduce pathogenic oral bacteria, loosen plaque,
-  soothe inflamed gum tissue, and — uniquely — have been shown in clinical
-  trials to reduce Streptococcus mutans counts comparably to chlorhexidine.
-  Lad recommends this specifically for receding gums, sensitive teeth,
-  bleeding gums, gingivitis, and tooth infection, noting it strengthens the
-  roots and reduces sensitivity. The follow-on gum massage with the fingertip
-  stimulates circulation to the gum margin and reinforces enamel and the
-  periodontal ligament.
+summary: Lad describes oil pulling with warm sesame oil (kavala dharana in Sanskrit) as the
+  pre-eminent Ayurvedic oral health practice. A mouthful of warm sesame oil is swished gently
+  around all the teeth and gum margins for two to three minutes, then spat out, followed by
+  gentle massage of the gums with one clean finger. Sesame oil's antibacterial lignans (sesamol,
+  sesamin) and high linoleic acid content reduce pathogenic oral bacteria, loosen plaque,
+  soothe inflamed gum tissue, and — uniquely — have been shown in clinical trials to reduce
+  Streptococcus mutans counts comparably to chlorhexidine. Lad recommends this specifically
+  for receding gums, sensitive teeth, bleeding gums, gingivitis, and tooth infection, noting
+  it strengthens the roots and reduces sensitivity. The follow-on gum massage with the fingertip
+  stimulates circulation to the gum margin and reinforces enamel and the periodontal ligament.
 indications:
-  - gingivitis, bleeding or swollen gums
-  - receding gums or periodontal disease
-  - sensitive teeth, dental cavities, tooth infection
-  - bad breath (halitosis) from oral bacteria
-  - dry mouth
-  - pitta-type oral inflammation with redness and heat
-  - vata-type dry cracked lips and gum recession
+- gingivitis, bleeding or swollen gums
+- receding gums or periodontal disease
+- sensitive teeth, dental cavities, tooth infection
+- bad breath (halitosis) from oral bacteria
+- dry mouth
+- pitta-type oral inflammation with redness and heat
+- vata-type dry cracked lips and gum recession
 contraindications:
-  - do not swallow the oil — spit into a tissue or bin, not the sink (solidifies when cold and can block drains)
-  - not a substitute for dental treatment when infection is established; use as adjunct
-  - pregnant women should use plain warm water as a gentler alternative if concerned about oil volume swishing
-  - children under 5 — not recommended (swallowing risk)
-  - if sesame allergy is known, use coconut oil instead
-preparation: >-
-  Warm a tablespoon (approximately 15 ml) of cold-pressed sesame oil (til
-  ka tel) gently — hold the bottle in hot water for 30 seconds or warm briefly
-  in a clean spoon. It should feel comfortably warm, not hot.
-  Hold the oil in the mouth and swish it gently around all teeth and along all
-  gum surfaces for 2 to 3 minutes. Move it through the teeth and around the
-  gum margins without gargling. The oil will thin and become slightly milky as
-  it mixes with saliva.
-  Spit the oil into a tissue or bin (not the sink). Do not swallow.
-  Then dip a clean fingertip or the pad of the index finger in a tiny drop
-  of warm sesame oil and massage the gum margins with small circular motions,
-  working around all upper and lower gum lines. This takes approximately
-  1 minute.
-  Rinse the mouth with warm water. Do not eat for 30 minutes afterwards.
+- do not swallow the oil — spit into a tissue or bin, not the sink (solidifies when cold and
+  can block drains)
+- not a substitute for dental treatment when infection is established; use as adjunct
+- pregnant women should use plain warm water as a gentler alternative if concerned about oil
+  volume swishing
+- children under 5 — not recommended (swallowing risk)
+- if sesame allergy is known, use coconut oil instead
+preparation: Warm a tablespoon (approximately 15 ml) of cold-pressed sesame oil (til ka tel)
+  gently — hold the bottle in hot water for 30 seconds or warm briefly in a clean spoon. It
+  should feel comfortably warm, not hot. Hold the oil in the mouth and swish it gently around
+  all teeth and along all gum surfaces for 2 to 3 minutes. Move it through the teeth and around
+  the gum margins without gargling. The oil will thin and become slightly milky as it mixes
+  with saliva. Spit the oil into a tissue or bin (not the sink). Do not swallow. Then dip
+  a clean fingertip or the pad of the index finger in a tiny drop of warm sesame oil and massage
+  the gum margins with small circular motions, working around all upper and lower gum lines.
+  This takes approximately 1 minute. Rinse the mouth with warm water. Do not eat for 30 minutes
+  afterwards.
 typical_dose: One full session daily
 duration: Ongoing daily practice; visible improvement in gum health within 2 to 4 weeks
-timing_notes: Best done first thing in the morning before eating or drinking, on an empty stomach
+timing_notes: Best done first thing in the morning before eating or drinking, on an empty
+  stomach
 balances_dosha:
-  - vata
-  - pitta
+- vata
+- pitta
 aggravates_dosha:
-  - kapha
+- kapha
+avoid_in:
+- pregnancy
+- children
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - nourishing
-  - unctuous
+- nourishing
+- unctuous
 linked_to_topics:
-  - oral-health-toxins
-  - oral-microbiome-systemic-blood-pressure
-  - inflammation
+- oral-health-toxins
+- oral-microbiome-systemic-blood-pressure
+- inflammation
 linked_to_mechanisms:
-  - oral-microbiome-disruption
-  - plaque-progression
-  - systemic-inflammation
-  - anti-inflammatory-signaling
+- oral-microbiome-disruption
+- plaque-progression
+- systemic-inflammation
+- anti-inflammatory-signaling
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Teeth and Gums — Oil Pulling and Gum Massage"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Teeth and Gums — Oil Pulling and Gum Massage
 evidence_tier: plausible_emerging
 version: 1
 status: active

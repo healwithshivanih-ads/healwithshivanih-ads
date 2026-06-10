@@ -1,73 +1,71 @@
 slug: brahmi-bhringraj-jatamamsi-stress-tea
 display_name: Brahmi-Bhringraj-Jatamamsi Stress-Relief Tea
 aliases:
-  - brahmi-bhringaraj-stress-tea
-  - nervine-adaptogen-tea
-  - stress-calming-herbal-tea
-  - shanka-pushpi-stress-tea
+- brahmi-bhringaraj-stress-tea
+- nervine-adaptogen-tea
+- stress-calming-herbal-tea
+- shanka-pushpi-stress-tea
 category: herbal_tea
-summary: >-
-  Lad's four-herb nervine tea for stress and mental tension, combining
-  brahmi (bacopa — adaptogen, memory, calming), bhringraj (rejuvenating
-  for the nervous system and liver), jatamamsi (Himalayan spikenard — the
-  deepest nervine in Ayurveda, directly pacifies vata in the nervous system),
-  and shanka pushpi (mind-calming, promotes deeper sleep). Together they
-  address all three dosha expressions of stress — vata anxiety, pitta
-  irritability, and kapha heaviness — making this a tridoshic stress formula.
-  Particularly suited to the perimenopausal client experiencing stress-driven
-  insomnia, anxiety, and mental fatigue.
+summary: Lad's four-herb nervine tea for stress and mental tension, combining brahmi (bacopa
+  — adaptogen, memory, calming), bhringraj (rejuvenating for the nervous system and liver),
+  jatamamsi (Himalayan spikenard — the deepest nervine in Ayurveda, directly pacifies vata
+  in the nervous system), and shanka pushpi (mind-calming, promotes deeper sleep). Together
+  they address all three dosha expressions of stress — vata anxiety, pitta irritability, and
+  kapha heaviness — making this a tridoshic stress formula. Particularly suited to the perimenopausal
+  client experiencing stress-driven insomnia, anxiety, and mental fatigue.
 indications:
-  - stress, anxiety, and nervous tension
-  - stress-related insomnia or disturbed sleep
-  - mental fatigue and cognitive fog from chronic stress
-  - vata-type anxiety and fearfulness
-  - adrenal fatigue or burnout
-  - perimenopause-related mood instability and irritability
+- stress, anxiety, and nervous tension
+- stress-related insomnia or disturbed sleep
+- mental fatigue and cognitive fog from chronic stress
+- vata-type anxiety and fearfulness
+- adrenal fatigue or burnout
+- perimenopause-related mood instability and irritability
 contraindications:
-  - pregnancy (jatamamsi and bhringraj are best avoided in pregnancy without practitioner guidance)
-  - brahmi may slow cognition in very high doses — stick to the recommended amount
-  - if on sedative medications, add with caution (may potentiate)
-  - jatamamsi is contraindicated in low blood pressure (hypotension)
-preparation: >-
-  Combine equal parts dried brahmi (bacopa), bhringraj, jatamamsi, and
-  shanka pushpi herb powders or dried herbs. Measure 1/2 teaspoon of the
-  mixture and add to 1 cup of just-boiled water. Steep for 10 minutes,
-  strain, and drink warm. A little honey can be added once cooled. If all
-  four herbs are not available, brahmi tea alone (1/2 teaspoon in 1 cup
-  boiling water) provides substantial stress relief.
+- pregnancy (jatamamsi and bhringraj are best avoided in pregnancy without practitioner guidance)
+- brahmi may slow cognition in very high doses — stick to the recommended amount
+- if on sedative medications, add with caution (may potentiate)
+- jatamamsi is contraindicated in low blood pressure (hypotension)
+preparation: Combine equal parts dried brahmi (bacopa), bhringraj, jatamamsi, and shanka pushpi
+  herb powders or dried herbs. Measure 1/2 teaspoon of the mixture and add to 1 cup of just-boiled
+  water. Steep for 10 minutes, strain, and drink warm. A little honey can be added once cooled.
+  If all four herbs are not available, brahmi tea alone (1/2 teaspoon in 1 cup boiling water)
+  provides substantial stress relief.
 typical_dose: 1/2 teaspoon blend in 1 cup hot water, 2 to 3 times daily
 duration: 4 to 12 weeks for chronic stress; use ongoing during high-stress periods
-timing_notes: Drink mid-morning, late afternoon, and/or 1 hour before bedtime; avoid on an empty stomach if sensitive
+timing_notes: Drink mid-morning, late afternoon, and/or 1 hour before bedtime; avoid on an
+  empty stomach if sensitive
 balances_dosha:
-  - vata
-  - pitta
-  - kapha
+- vata
+- pitta
+- kapha
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - medhya
-  - nervine
-  - rasayana
+- medhya
+- nervine
+- rasayana
 linked_to_topics:
-  - stress-management
-  - chronic-stress
-  - adrenal-fatigue
-  - insomnia
-  - nervous-system-regulation
-  - hpa-axis-cortisol-regulation
+- stress-management
+- chronic-stress
+- adrenal-fatigue
+- insomnia
+- nervous-system-regulation
+- hpa-axis-cortisol-regulation
 linked_to_mechanisms:
-  - hpa-axis-dysregulation
-  - cortisol-elevation
-  - gabaergic-modulation
-  - parasympathetic-activation
+- hpa-axis-dysregulation
+- cortisol-elevation
+- gabaergic-modulation
+- parasympathetic-activation
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Stress — Stress-Reducing Tea"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Stress — Stress-Reducing Tea
 evidence_tier: fm_specific_thin
 version: 1
 status: active

@@ -5,8 +5,9 @@ aliases:
 - yogurt-water-ginger
 category: kitchen_remedy
 summary: 'A Lad first-aid for simple diarrhea: blend equal parts yogurt and water with a little
-  fresh ginger (about 1/8 tsp) — a light spiced buttermilk. The yogurt restores gut flora, ginger
-  settles the gut and kindles agni, and the diluted form is rehydrating and easy to digest.'
+  fresh ginger (about 1/8 tsp) — a light spiced buttermilk. The yogurt restores gut flora,
+  ginger settles the gut and kindles agni, and the diluted form is rehydrating and easy to
+  digest.'
 indications:
 - acute simple diarrhea
 - loose stools after a tummy upset
@@ -21,6 +22,8 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+avoid_in:
+- children
 rasa:
 - sweet
 - sour

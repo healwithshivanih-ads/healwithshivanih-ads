@@ -19,6 +19,8 @@ contraindications:
 balances_dosha:
 - pitta
 aggravates_dosha: []
+avoid_in:
+- pregnancy
 rasa:
 - sweet
 - bitter

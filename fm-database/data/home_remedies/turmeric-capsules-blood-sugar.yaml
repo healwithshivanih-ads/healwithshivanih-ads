@@ -1,68 +1,68 @@
 slug: turmeric-capsules-blood-sugar
 display_name: Turmeric Capsules for Blood Sugar Regulation
 aliases:
-  - haldi-capsules-diabetes
-  - curcumin-blood-sugar
-  - turmeric-glycaemic-control
+- haldi-capsules-diabetes
+- curcumin-blood-sugar
+- turmeric-glycaemic-control
 category: kitchen_remedy
-summary: >-
-  Lad recommends filling size-00 gelatin capsules with turmeric powder as a
-  practical, evidence-supported Ayurvedic strategy to support blood sugar
-  regulation. Turmeric (haldi) has kapha-reducing and anti-inflammatory
-  properties; curcumin, its active compound, improves insulin sensitivity,
-  reduces oxidative stress on pancreatic beta cells, and supports hepatic
-  glucose metabolism. Lad notes that even insulin-dependent individuals may
-  experience markedly reduced insulin requirements over time.
+summary: Lad recommends filling size-00 gelatin capsules with turmeric powder as a practical,
+  evidence-supported Ayurvedic strategy to support blood sugar regulation. Turmeric (haldi)
+  has kapha-reducing and anti-inflammatory properties; curcumin, its active compound, improves
+  insulin sensitivity, reduces oxidative stress on pancreatic beta cells, and supports hepatic
+  glucose metabolism. Lad notes that even insulin-dependent individuals may experience markedly
+  reduced insulin requirements over time.
 indications:
-  - elevated fasting blood sugar or HbA1c
-  - type 2 diabetes (as adjunct, not replacement for medical care)
-  - prediabetes / metabolic syndrome
-  - insulin resistance
-  - post-meal glucose spikes
+- elevated fasting blood sugar or HbA1c
+- type 2 diabetes (as adjunct, not replacement for medical care)
+- prediabetes / metabolic syndrome
+- insulin resistance
+- post-meal glucose spikes
 contraindications:
-  - active gallstones or bile duct obstruction (turmeric stimulates bile flow)
-  - concurrent use of blood-thinning medications — may potentiate effect; discuss with doctor
-  - insulin-dependent type 1 diabetes — monitor glucose closely if using; medical supervision required
-  - pregnancy in high doses — dietary quantities are fine but therapeutic doses need caution
-  - see a doctor if blood sugar is not well controlled or worsening
-preparation: >-
-  Fill size-00 gelatin or vegetable capsules (available at pharmacies or natural
-  food stores) with turmeric powder. Take 2 capsules 3 times a day, a few minutes
-  before meals. Alternatively, stir half a teaspoon of turmeric into a tablespoon
-  of aloe vera gel and take twice daily before lunch and dinner.
+- active gallstones or bile duct obstruction (turmeric stimulates bile flow)
+- concurrent use of blood-thinning medications — may potentiate effect; discuss with doctor
+- insulin-dependent type 1 diabetes — monitor glucose closely if using; medical supervision
+  required
+- pregnancy in high doses — dietary quantities are fine but therapeutic doses need caution
+- see a doctor if blood sugar is not well controlled or worsening
+preparation: Fill size-00 gelatin or vegetable capsules (available at pharmacies or natural
+  food stores) with turmeric powder. Take 2 capsules 3 times a day, a few minutes before meals.
+  Alternatively, stir half a teaspoon of turmeric into a tablespoon of aloe vera gel and take
+  twice daily before lunch and dinner.
 typical_dose: 2 capsules (approx. 500–600 mg turmeric) 3 times daily before meals
 duration: Up to 1 month; then reassess blood sugar levels with testing
 timing_notes: Take a few minutes before meals to prime insulin response
 balances_dosha:
-  - kapha
-  - pitta
+- kapha
+- pitta
 aggravates_dosha:
-  - vata
+- vata
+avoid_in:
+- pregnancy
 rasa:
-  - pungent
-  - bitter
-  - astringent
+- pungent
+- bitter
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - anti-inflammatory
-  - alterative
-  - dipana
+- anti-inflammatory
+- alterative
+- dipana
 linked_to_topics:
-  - type-2-diabetes
-  - type-2-diabetes-mellitus
-  - prediabetes
-  - insulin-resistance
-  - blood-sugar-regulation
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- prediabetes
+- insulin-resistance
+- blood-sugar-regulation
 linked_to_mechanisms:
-  - insulin-resistance
-  - postprandial-glucose-spike
-  - hepatic-insulin-sensitivity
-  - oxidative-stress-pancreatic-damage
-  - glycemic-load-reduction
+- insulin-resistance
+- postprandial-glucose-spike
+- hepatic-insulin-sensitivity
+- oxidative-stress-pancreatic-damage
+- glycemic-load-reduction
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Diabetes"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Diabetes
 evidence_tier: plausible_emerging
 version: 1
 status: active

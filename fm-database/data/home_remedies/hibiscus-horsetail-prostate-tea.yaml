@@ -1,61 +1,62 @@
 slug: hibiscus-horsetail-prostate-tea
 display_name: Hibiscus or Horsetail Tea for Prostate Support
 aliases:
-  - hibiscus-prostate-tea
-  - horsetail-tea-prostate
-  - gudhal-tea-prostate
+- hibiscus-prostate-tea
+- horsetail-tea-prostate
+- gudhal-tea-prostate
 category: herbal_tea
-summary: >-
-  Lad recommends hibiscus, horsetail, or ginseng herbal teas — available in
-  bulk or tea-bag form — as gentle prostate-supportive remedies for benign
-  prostatic symptoms. Hibiscus is cooling and anti-inflammatory with particular
-  affinity for the urinary tract; horsetail is astringent, rich in silica,
-  and has traditional use in urinary and prostate conditions; both reduce
-  pitta-driven burning and inflammation. These are used alongside medical
-  evaluation — Lad explicitly recommends doctor consultation first.
+summary: Lad recommends hibiscus, horsetail, or ginseng herbal teas — available in bulk or
+  tea-bag form — as gentle prostate-supportive remedies for benign prostatic symptoms. Hibiscus
+  is cooling and anti-inflammatory with particular affinity for the urinary tract; horsetail
+  is astringent, rich in silica, and has traditional use in urinary and prostate conditions;
+  both reduce pitta-driven burning and inflammation. These are used alongside medical evaluation
+  — Lad explicitly recommends doctor consultation first.
 indications:
-  - benign prostatic hyperplasia (BPH) symptoms (after medical evaluation)
-  - frequent urination and urgency
-  - burning sensation on urination with prostate involvement (prostatitis)
-  - urinary flow issues (slow start, incomplete emptying)
+- benign prostatic hyperplasia (BPH) symptoms (after medical evaluation)
+- frequent urination and urgency
+- burning sensation on urination with prostate involvement (prostatitis)
+- urinary flow issues (slow start, incomplete emptying)
 contraindications:
-  - prostate cancer — always see a doctor first before using herbal remedies; these support only, do not treat cancer
-  - diuretic medications (horsetail has mild diuretic effects — monitor)
-  - pregnancy (horsetail contains traces of alkaloids — avoid in pregnancy)
-  - allergy to plants in the rose family (hibiscus)
-  - blood-pressure medications — hibiscus can mildly lower blood pressure
-preparation: >-
-  Use hibiscus flowers, horsetail herb, or ginseng root (all available in
-  bulk at natural food stores or Ayurvedic suppliers). Add approximately
-  1 teaspoon of dried herb to 1 cup of freshly boiled water. Steep for
-  5-10 minutes, strain, and drink. For tea-bag versions, follow package
-  directions.
+- prostate cancer — always see a doctor first before using herbal remedies; these support
+  only, do not treat cancer
+- diuretic medications (horsetail has mild diuretic effects — monitor)
+- pregnancy (horsetail contains traces of alkaloids — avoid in pregnancy)
+- allergy to plants in the rose family (hibiscus)
+- blood-pressure medications — hibiscus can mildly lower blood pressure
+preparation: Use hibiscus flowers, horsetail herb, or ginseng root (all available in bulk
+  at natural food stores or Ayurvedic suppliers). Add approximately 1 teaspoon of dried herb
+  to 1 cup of freshly boiled water. Steep for 5-10 minutes, strain, and drink. For tea-bag
+  versions, follow package directions.
 typical_dose: 1 cup, 2-3 times daily
-duration: Continue until symptoms resolve; see a doctor if there is no improvement in 2-4 weeks
+duration: Continue until symptoms resolve; see a doctor if there is no improvement in 2-4
+  weeks
 timing_notes: Drink warm throughout the day; can be taken with or between meals
 linked_to_topics:
-  - prostate-cancer-prevention
+- prostate-cancer-prevention
 linked_to_mechanisms:
-  - prolactin-driven-prostate-growth
-  - anti-inflammatory-signaling
-  - 5-alpha-reductase-dht-conversion
+- prolactin-driven-prostate-growth
+- anti-inflammatory-signaling
+- 5-alpha-reductase-dht-conversion
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - vata
+- vata
+suitable_sex: male
+avoid_in:
+- pregnancy
 rasa:
-  - sweet
-  - bitter
-  - astringent
+- sweet
+- bitter
+- astringent
 virya: cooling
 vipaka: sweet
 ayurvedic_actions:
-  - cooling
-  - emmenagogue
-  - diuretic
+- cooling
+- emmenagogue
+- diuretic
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Prostate Problems"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Prostate Problems
 evidence_tier: fm_specific_thin
 version: 1
 status: active

@@ -1,61 +1,60 @@
 slug: banana-honey-pepper-dry-cough
 display_name: Banana with Honey and Black Pepper for Dry Cough
 aliases:
-  - kela-madhu-kali-mirch-khansi
-  - banana-pepper-cough
+- kela-madhu-kali-mirch-khansi
+- banana-pepper-cough
 category: kitchen_remedy
-summary: >-
-  Lad's simple remedy for a dry, vata-type cough — eating a ripe banana with
-  one teaspoon of honey and two pinches of ground black pepper. The ripe banana
-  is nourishing and soothing to dry, irritated mucous membranes; honey coats
-  and lubricates the throat; black pepper is a natural expectorant and
-  antimicrobial agent that warms and opens the respiratory channels. This
-  combination addresses the dryness and irritation of vata-type cough while
-  the pepper helps loosen any early mucus.
+summary: Lad's simple remedy for a dry, vata-type cough — eating a ripe banana with one teaspoon
+  of honey and two pinches of ground black pepper. The ripe banana is nourishing and soothing
+  to dry, irritated mucous membranes; honey coats and lubricates the throat; black pepper
+  is a natural expectorant and antimicrobial agent that warms and opens the respiratory channels.
+  This combination addresses the dryness and irritation of vata-type cough while the pepper
+  helps loosen any early mucus.
 indications:
-  - dry cough with little or no mucus (vata type)
-  - tickling, irritating cough
-  - cough from throat dryness or irritation
-  - dry cough with hoarseness
+- dry cough with little or no mucus (vata type)
+- tickling, irritating cough
+- cough from throat dryness or irritation
+- dry cough with hoarseness
 contraindications:
-  - do not eat banana on an empty stomach or combine with other foods per
-    Ayurvedic food-combining principles (take as a separate small meal)
-  - unripe or green bananas are constipating and worsen dryness — use only
-    ripe (yellow with tiny black dots)
-  - children under 1 year must not receive honey (botulism risk)
-  - diabetes or insulin resistance — honey raises blood glucose; use sparingly
-  - those with banana allergy should avoid
+- do not eat banana on an empty stomach or combine with other foods per Ayurvedic food-combining
+  principles (take as a separate small meal)
+- unripe or green bananas are constipating and worsen dryness — use only ripe (yellow with
+  tiny black dots)
+- children under 1 year must not receive honey (botulism risk)
+- diabetes or insulin resistance — honey raises blood glucose; use sparingly
+- those with banana allergy should avoid
 balances_dosha:
-  - vata
+- vata
 aggravates_dosha:
-  - kapha
+- kapha
+avoid_in:
+- children
 rasa:
-  - sweet
-  - pungent
-  - astringent
+- sweet
+- pungent
+- astringent
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
-preparation: >-
-  Take 1 ripe banana (bright yellow with tiny black dots on the inside — a sign
-  it is ripe). Drizzle 1 teaspoon of raw honey over it. Sprinkle 2 generous
-  pinches of freshly ground black pepper on top. Eat slowly.
+- dipana
+- carminative
+- antispasmodic
+preparation: Take 1 ripe banana (bright yellow with tiny black dots on the inside — a sign
+  it is ripe). Drizzle 1 teaspoon of raw honey over it. Sprinkle 2 generous pinches of freshly
+  ground black pepper on top. Eat slowly.
 typical_dose: 1 ripe banana prepared as above, 2 or 3 times a day
-duration: Use while the dry cough persists, typically 3-5 days; seek medical
-  review if cough persists beyond 1 week
+duration: Use while the dry cough persists, typically 3-5 days; seek medical review if cough
+  persists beyond 1 week
 timing_notes: Take between meals as a stand-alone snack, not with other foods
 linked_to_topics:
-  - common-cold
-  - bronchitis-and-pneumonia
+- common-cold
+- bronchitis-and-pneumonia
 linked_to_mechanisms:
-  - innate-immune-modulation
-  - inflammatory-cascade
+- innate-immune-modulation
+- inflammatory-cascade
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Cough — Dry Cough"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Cough — Dry Cough
 evidence_tier: plausible_emerging
 version: 1
 status: active

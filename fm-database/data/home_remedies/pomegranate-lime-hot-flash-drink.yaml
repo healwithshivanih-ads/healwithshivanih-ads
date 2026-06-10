@@ -1,57 +1,59 @@
 slug: pomegranate-lime-hot-flash-drink
 display_name: Pomegranate-Lime Cooling Drink for Hot Flashes
 aliases:
-  - anar-nimbu-hot-flash-drink
-  - pomegranate-rock-candy-menopause
+- anar-nimbu-hot-flash-drink
+- pomegranate-rock-candy-menopause
 category: vegetable_juice
-summary: >-
-  Lad recommends fresh pomegranate juice with rock candy (or organic sugar) and
-  a few drops of lime as a targeted cooling drink for menopausal hot flashes.
-  Pomegranate is a pitta-pacifying fruit rich in phyto-oestrogens and
-  antioxidants; rock candy and lime cool the stomach and cardiovascular system.
-  Lad suggests taking this as needed during hot flashes, 2-3 times a day during
-  periods of heat surges.
+summary: Lad recommends fresh pomegranate juice with rock candy (or organic sugar) and a few
+  drops of lime as a targeted cooling drink for menopausal hot flashes. Pomegranate is a pitta-pacifying
+  fruit rich in phyto-oestrogens and antioxidants; rock candy and lime cool the stomach and
+  cardiovascular system. Lad suggests taking this as needed during hot flashes, 2-3 times
+  a day during periods of heat surges.
 indications:
-  - menopausal hot flashes
-  - heat surges and night sweats
-  - burning sensations at menopause
-  - pitta excess in peri/menopause
-  - irritability and skin flushing
+- menopausal hot flashes
+- heat surges and night sweats
+- burning sensations at menopause
+- pitta excess in peri/menopause
+- irritability and skin flushing
 contraindications:
-  - diabetes or high blood sugar — rock candy/sugar content may be unsuitable; use stevia or reduce sweetener
-  - those prone to loose stools — pomegranate in large quantities can loosen bowels
-  - cold, vata-type presentation — this cooling drink may worsen chills
-preparation: >-
-  Pour 1 cup fresh pomegranate juice into a glass. Stir in 1 teaspoon rock
-  candy powder (or organic sugar). Add 5-10 drops of fresh lime juice. Mix
-  well and drink at room temperature or slightly cool (not ice cold).
+- diabetes or high blood sugar — rock candy/sugar content may be unsuitable; use stevia or
+  reduce sweetener
+- those prone to loose stools — pomegranate in large quantities can loosen bowels
+- cold, vata-type presentation — this cooling drink may worsen chills
+preparation: Pour 1 cup fresh pomegranate juice into a glass. Stir in 1 teaspoon rock candy
+  powder (or organic sugar). Add 5-10 drops of fresh lime juice. Mix well and drink at room
+  temperature or slightly cool (not ice cold).
 typical_dose: 1 cup, 2-3 times a day as needed
 duration: As needed during hot-flash episodes; can use daily through perimenopause/menopause
 timing_notes: Drink at room temperature between meals; avoid ice-cold preparations
 linked_to_topics:
-  - menopause
-  - perimenopause-and-menopause
-  - perimenopause
+- menopause
+- perimenopause-and-menopause
+- perimenopause
 linked_to_mechanisms:
-  - estrogen-decline
-  - estrogen-enterohepatic-recirculation
+- estrogen-decline
+- estrogen-enterohepatic-recirculation
 balances_dosha:
-  - pitta
+- pitta
 aggravates_dosha:
-  - kapha
+- kapha
+suitable_sex: female
+suitable_stages:
+- perimenopausal
+- postmenopausal
 rasa:
-  - sweet
-  - sour
-  - astringent
+- sweet
+- sour
+- astringent
 virya: cooling
 vipaka: pungent
 ayurvedic_actions:
-  - dipana
-  - carminative
-  - antispasmodic
+- dipana
+- carminative
+- antispasmodic
 sources:
-  - id: lad-complete-book-ayurvedic-home-remedies-1998
-    location: "Menopause Problems — For Hot Flashes"
+- id: lad-complete-book-ayurvedic-home-remedies-1998
+  location: Menopause Problems — For Hot Flashes
 evidence_tier: plausible_emerging
 version: 1
 status: active

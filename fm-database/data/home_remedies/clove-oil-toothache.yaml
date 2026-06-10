@@ -1,50 +1,51 @@
 slug: clove-oil-toothache
 display_name: Clove Oil for Toothache
 aliases:
-  - laung-oil
-  - clove-eugenol-toothache
+- laung-oil
+- clove-eugenol-toothache
 category: other
 route: external
-summary: >-
-  A time-honoured kitchen remedy for toothache and sensitive gums — clove oil
-  (rich in eugenol, a natural analgesic and antiseptic) dabbed on the aching
-  tooth. Lad recommends a few drops of clove oil applied to the affected tooth
-  for pain relief; gentle gum massage with clove oil also helps sensitive teeth
-  and receding gums. A holding measure until a dentist can be seen.
+summary: A time-honoured kitchen remedy for toothache and sensitive gums — clove oil (rich
+  in eugenol, a natural analgesic and antiseptic) dabbed on the aching tooth. Lad recommends
+  a few drops of clove oil applied to the affected tooth for pain relief; gentle gum massage
+  with clove oil also helps sensitive teeth and receding gums. A holding measure until a dentist
+  can be seen.
 indications:
-  - toothache
-  - sensitive teeth and gums
-  - minor oral/dental pain
+- toothache
+- sensitive teeth and gums
+- minor oral/dental pain
 contraindications:
-  - use sparingly — undiluted clove oil can irritate gum tissue
-  - not for infants/young children
-  - not a substitute for dental care (see a dentist for ongoing pain, swelling or abscess)
+- use sparingly — undiluted clove oil can irritate gum tissue
+- not for infants/young children
+- not a substitute for dental care (see a dentist for ongoing pain, swelling or abscess)
 balances_dosha:
-  - kapha
-  - vata
+- kapha
+- vata
 aggravates_dosha:
-  - pitta
+- pitta
+avoid_in:
+- children
 rasa:
-  - pungent
+- pungent
 virya: heating
 vipaka: pungent
 ayurvedic_actions:
-  - carminative
-  - analgesic
-  - dipana
-preparation: >-
-  Make clove oil by boiling 5 whole cloves in 1 tablespoon sesame oil; apply
-  warm. Dip a small piece of cotton in the oil and place it against the aching
-  tooth, or put 2-3 drops directly on the tooth. For sensitive teeth/receding
-  gums, gently massage the gums with a little clove oil.
+- carminative
+- analgesic
+- dipana
+preparation: Make clove oil by boiling 5 whole cloves in 1 tablespoon sesame oil; apply warm.
+  Dip a small piece of cotton in the oil and place it against the aching tooth, or put 2-3
+  drops directly on the tooth. For sensitive teeth/receding gums, gently massage the gums
+  with a little clove oil.
 typical_dose: A few drops on the tooth, as needed for pain
 duration: Short-term relief only — seek dental care for persistent problems
 timing_notes: Apply when pain flares; can repeat every few hours
 linked_to_topics:
-  - oral-health-toxins
+- oral-health-toxins
 sources:
-  - id: lad-ayurveda-science-of-self-healing-1984
-    location: "Appendix B — First Aid (Toothache); Kitchen Pharmacy (Cloves); Recipes (Clove Oil)"
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Appendix B — First Aid (Toothache); Kitchen Pharmacy (Cloves); Recipes (Clove
+    Oil)
 evidence_tier: plausible_emerging
 version: 1
 status: active
