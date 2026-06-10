@@ -1679,6 +1679,53 @@ Rules:
 """
 
 
+def _compact_index(subgraph: Any) -> dict[str, list[str]]:
+    """Slim ``slug: name`` index over a built subgraph.
+
+    Chat used to re-send the FULL subgraph (~170K tokens of records with
+    sources, doses, quotes) every turn — and since coach turns are minutes
+    apart, the ephemeral cache (5-min TTL) never hit, so every turn paid full
+    price plus a +25% cache-write surcharge for nothing. The follow-up rarely
+    needs the full records: the prior assessment (with its rationale + chosen
+    doses) is already in context. The model only needs to know WHICH slugs
+    exist so it can reference real ones and refuse to invent new ones. This
+    index gives exactly that at ~1/10th the tokens.
+    """
+    if not isinstance(subgraph, dict):
+        return {}
+
+    def names(items: Any) -> list[str]:
+        out: list[str] = []
+        for it in items or []:
+            if not isinstance(it, dict):
+                continue
+            slug = it.get("slug")
+            if not slug:
+                continue
+            label = (
+                it.get("display_name")
+                or it.get("statement")
+                or it.get("label")
+                or ""
+            )
+            out.append(f"{slug}: {label[:120]}" if label else slug)
+        return out
+
+    return {
+        "topics": names(subgraph.get("topics")),
+        "mechanisms": names(subgraph.get("mechanisms")),
+        "symptoms": (
+            names(subgraph.get("selected_symptoms"))
+            + names(subgraph.get("candidate_symptoms"))
+        ),
+        "supplements": names(subgraph.get("supplements")),
+        "claims": names(subgraph.get("claims")),
+        "cooking_adjustments": names(subgraph.get("cooking_adjustments")),
+        "home_remedies": names(subgraph.get("home_remedies")),
+        "protocols": names(subgraph.get("protocols")),
+    }
+
+
 def chat(
     *,
     chat_context: ChatContext | dict[str, Any],
@@ -1688,10 +1735,11 @@ def chat(
 ) -> ChatResult:
     """Continue a multi-turn conversation about a prior assessment.
 
-    The first user turn injected into the API call is a cached preamble
-    containing `chat_context` (client + subgraph + prior suggestions),
-    so subsequent turns reuse the cache. Each call still pays output
-    tokens; cache reads make input cheap.
+    The first user turn injects a context preamble built from `chat_context`
+    (client + prior suggestions + a compact slug index, NOT the full subgraph —
+    see `_compact_index`). Keeping that preamble small is what makes each turn
+    cheap; we don't rely on prompt caching here because coach turns are minutes
+    apart and the ephemeral cache (5-min TTL) almost never hits.
 
     Args:
         chat_context: either a `ChatContext` model or a plain dict with
@@ -1728,9 +1776,13 @@ def chat(
     model = model or os.environ.get("FMDB_EXTRACTOR_MODEL", "claude-sonnet-4-6")
 
     # Compose a context preamble that the model will treat as "given facts".
-    # Cached separately from the system prompt for cost efficiency.
+    # We send a COMPACT slug index instead of the full catalogue subgraph: the
+    # prior assessment (with rationale + doses) is the substance the follow-up
+    # reasons over; the model only needs the slug list to reference real
+    # entities and refuse to invent new ones. This is ~1/10th the tokens of the
+    # full subgraph and is why chat dropped from ~$0.55/turn to ~$0.08/turn.
     context_text = (
-        "Conversation context (cached across turns):\n\n"
+        "Conversation context (given facts):\n\n"
         + json.dumps({
             "client": ctx.client_ctx,
             "selected_symptoms": ctx.selected_symptoms,
@@ -1738,7 +1790,7 @@ def chat(
             "additional_notes": ctx.additional_notes,
             "prior_suggestions": ctx.suggestions,
             "session_history": ctx.session_history,
-            "catalogue_subgraph": ctx.subgraph,
+            "catalogue_slugs": _compact_index(ctx.subgraph),
         }, indent=2)
     )
 
@@ -1750,7 +1802,6 @@ def chat(
                 {
                     "type": "text",
                     "text": context_text,
-                    "cache_control": {"type": "ephemeral"},
                 }
             ],
         },

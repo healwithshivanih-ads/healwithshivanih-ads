@@ -23,6 +23,12 @@ MAX_CANDIDATE_SYMPTOMS = 30
 MAX_SUPPLEMENTS = 50
 MAX_TOPICS = 60
 MAX_MECHANISMS = 60
+# Home remedies were the one uncapped entity — the Ayurveda ingest grew them to
+# ~190 records that match common topics/mechanisms, ballooning the subgraph by
+# ~50K tokens (~1/3 of it). Cap clinical remedies core-first; allow a bounded
+# extra dosha palette only when the client is on the Ayurveda track.
+MAX_HOME_REMEDIES = 20
+MAX_HOME_REMEDIES_AYURVEDA_EXTRA = 30
 
 _TIER_RANK = {
     "strong": 0,
@@ -177,17 +183,27 @@ def build_subgraph(
         hr for hr in cat.home_remedies
         if set(hr.linked_to_topics) & topic_set or set(hr.linked_to_mechanisms) & mech_set
     ]
+    # Rank core-first (linked to a SELECTED topic/mechanism), then by evidence
+    # tier, then slug for determinism, and cap — keeps the most relevant tail.
+    relevant_remedies.sort(key=lambda hr: (
+        0 if (set(hr.linked_to_topics) & core_topic_set
+              or set(hr.linked_to_mechanisms) & core_mech_set) else 1,
+        _tier_rank(hr.evidence_tier),
+        hr.slug,
+    ))
+    relevant_remedies = relevant_remedies[:MAX_HOME_REMEDIES]
     # Ayurveda track: the linked-by-clinical-topic set is too thin for a
     # dosha-appropriate palette (most remedies link to clinical topics like
-    # 'asthma', not to dosha). Widen to EVERY dosha-tagged remedy so the model
-    # can pick by the client's vikruti. Slim representation keeps tokens sane.
+    # 'asthma', not to dosha). Widen to dosha-tagged remedies so the model can
+    # pick by the client's vikruti — but bounded so it can't re-balloon.
     if ayurveda:
         _have = {hr.slug for hr in relevant_remedies}
-        for hr in cat.home_remedies:
-            if hr.slug in _have:
-                continue
-            if hr.balances_dosha or hr.aggravates_dosha:
-                relevant_remedies.append(hr)
+        dosha_extra = [
+            hr for hr in cat.home_remedies
+            if hr.slug not in _have and (hr.balances_dosha or hr.aggravates_dosha)
+        ]
+        dosha_extra.sort(key=lambda hr: (_tier_rank(hr.evidence_tier), hr.slug))
+        relevant_remedies += dosha_extra[:MAX_HOME_REMEDIES_AYURVEDA_EXTRA]
     # Protocols linked to selected topics, mechanisms, or symptoms — these
     # are the structured FM playbooks (5R, AIP, weight-loss reset, etc.)
     # that the AI may recommend as a spine for the plan.

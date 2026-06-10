@@ -6535,7 +6535,15 @@ def _validate_letter_specificity(
     generated letter for client-specificity (1–5) and rewrites tips < 3 to
     reference the client's TOP-OF-MIND facts.
 
-    Cost: ~$0.02 per letter (Haiku, ~6K input + ~5K output).
+    The model returns ONLY the tips it changed (`original_tip` → `rewrite`);
+    we apply them in Python via in-place substring replace. It used to return
+    the FULL rewritten letter, which (a) capped at 12K output tokens silently
+    truncated + discarded the QA on long letters — exactly where it cost the
+    most — and (b) risked Haiku mangling tables/narrative it re-emitted.
+    Patches fix both: the pass now actually runs on long letters and costs
+    ~1/4 as much (output is just the diffs, not a copy of the whole letter).
+
+    Cost: ~$0.005–0.02 per letter (Haiku, ~6K input + only the changed tips out).
 
     Returns:
         (rewritten_markdown, change_report)
@@ -6641,32 +6649,28 @@ CRITICAL: Don't touch:
 
     tool = {
         "name": "report_specificity",
-        "description": "Return a rewritten version of the letter with generic tips replaced + a report of every change made.",
+        "description": "Report ONLY the generic coaching tips you rewrote or deleted — do not echo back the rest of the letter.",
         "input_schema": {
             "type": "object",
-            "required": ["rewritten_markdown", "changes"],
+            "required": ["changes"],
             "properties": {
-                "rewritten_markdown": {
-                    "type": "string",
-                    "description": (
-                        "The full letter markdown with all generic coaching tips "
-                        "(score < 3) rewritten to reference the client's specifics, "
-                        "or deleted if they cannot be made specific. Everything else "
-                        "(headings, tables, recipes, schedules, narrative, signature) "
-                        "must be preserved EXACTLY."
-                    ),
-                },
                 "changes": {
                     "type": "array",
-                    "description": "One entry per tip that was rewritten or deleted.",
+                    "description": (
+                        "One entry per tip scored < 3 that you rewrote or deleted. "
+                        "Leave every other line of the letter alone — it is applied "
+                        "verbatim. `original_tip` MUST be copied EXACTLY (character "
+                        "for character) from the letter so it can be found and "
+                        "replaced in place."
+                    ),
                     "items": {
                         "type": "object",
-                        "required": ["original_tip", "score", "reason"],
+                        "required": ["original_tip", "score", "reason", "rewrite"],
                         "properties": {
-                            "original_tip": {"type": "string"},
+                            "original_tip": {"type": "string", "description": "The generic tip, copied EXACTLY from the letter markdown."},
                             "score": {"type": "integer", "description": "1–5"},
                             "reason": {"type": "string", "description": "Why this scored low — what was generic about it."},
-                            "rewrite": {"type": "string", "description": "The replacement text. Empty string if the tip was deleted entirely."},
+                            "rewrite": {"type": "string", "description": "The replacement text (same intent, client-specific). Empty string to DELETE the tip entirely."},
                         },
                     },
                 },
@@ -6679,7 +6683,11 @@ CRITICAL: Don't touch:
         validator_model = os.environ.get("FMDB_VALIDATOR_MODEL", "claude-haiku-4-5")
         with client_anthropic.messages.stream(
             model=validator_model,
-            max_tokens=12000,
+            # Output is now just the changed tips (patches), not a copy of the
+            # whole letter — a few K at most. 6000 is generous headroom; the
+            # old 12000 existed only because we re-emitted the full markdown,
+            # and long letters silently truncated against it.
+            max_tokens=6000,
             system=SYSTEM,
             tools=[tool],
             tool_choice={"type": "tool", "name": "report_specificity"},
@@ -6707,20 +6715,54 @@ CRITICAL: Don't touch:
             return markdown, []
 
         payload = tool_use.input or {}
-        rewritten = payload.get("rewritten_markdown") or ""
         changes = payload.get("changes") or []
+        if not changes:
+            return markdown, []
 
-        # Sanity: don't accept a rewrite that's drastically shorter (looks like
-        # the model summarised instead of rewriting in place).
-        if not rewritten.strip() or len(rewritten) < 0.5 * len(markdown):
+        # Apply each rewrite/deletion in place. We only touch the exact tip the
+        # model flagged — everything else (headings, tables, recipes, schedules,
+        # narrative, signature) is preserved byte-for-byte because we never
+        # re-emit it. A patch whose `original_tip` can't be found verbatim is
+        # skipped (logged) rather than risking a wrong replacement.
+        rewritten = markdown
+        applied: list[dict] = []
+        for ch in changes:
+            if not isinstance(ch, dict):
+                continue
+            orig = (ch.get("original_tip") or "").strip()
+            if not orig or orig not in rewritten:
+                if orig:
+                    print(
+                        f"[validate] tip not found verbatim — skipping: {orig[:60]!r}",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                continue
+            rewrite = ch.get("rewrite")
+            rewrite = "" if rewrite is None else str(rewrite)
+            if rewrite.strip():
+                # Replace first occurrence only — a full-sentence tip is
+                # unlikely to collide, and count=1 bounds the blast radius.
+                rewritten = rewritten.replace(orig, rewrite, 1)
+            else:
+                # Deletion: drop whole lines containing the tip so we don't
+                # leave a dangling "- " empty bullet behind.
+                rewritten = "\n".join(
+                    ln for ln in rewritten.split("\n") if orig not in ln
+                )
+            applied.append(ch)
+
+        # Guard against a pathological patch set that guts the letter.
+        if len(rewritten.strip()) < 0.5 * len(markdown.strip()):
             print(
-                f"[validate] suspicious rewrite ({len(rewritten)} vs {len(markdown)} chars) — skipping",
+                f"[validate] patches shrank letter too much "
+                f"({len(rewritten)} vs {len(markdown)} chars) — keeping original",
                 file=sys.stderr,
                 flush=True,
             )
             return markdown, []
 
-        return rewritten, changes
+        return rewritten, applied
     except Exception as e:
         print(
             f"[validate] response-parse failed ({type(e).__name__}: {e}) — keeping original markdown",
