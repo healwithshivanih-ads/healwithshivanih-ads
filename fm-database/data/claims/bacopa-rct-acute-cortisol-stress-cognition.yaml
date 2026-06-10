@@ -1,0 +1,35 @@
+slug: bacopa-rct-acute-cortisol-stress-cognition
+statement: A 2013 double-blind, placebo-controlled crossover RCT (n=17) found acute Bacopa monnieri (320
+  mg and 640 mg CDRI 08 extract) improved Letter Search and Stroop task performance and reduced salivary
+  cortisol compared to placebo during a multitasking stress framework, suggesting adaptogenic as well
+  as nootropic acute effects.
+evidence_tier: plausible_emerging
+rationale: 'Single small crossover RCT (n=17); demonstrates acute cortisol-lowering and cognitive effects
+  but sample is too small for high confidence, and most bacopa evidence is for sustained-use effects over
+  weeks. Effective dose in trials: 320 mg or 640 mg CDRI 08 extract (single acute dose); most trials use
+  300–450 mg/day for ≥8 weeks for cognitive benefits.'
+coaching_translation: Evidence from a small trial suggests bacopa may help reduce the body's cortisol
+  response to stress and sharpen focus under pressure, in addition to its better-known memory benefits
+  with longer use.
+out_of_scope_notes: ''
+caveats:
+- Very small sample (n=17); results need replication in larger studies
+- Acute-dose effects may not reflect the typical sustained-use protocol for bacopa
+- Cognitive effects were task-specific and not universal across all measures
+- Stressful cognitive testing may have introduced performance variability
+linked_to_topics:
+- anxiety
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements:
+- bacopa-monnieri
+sources:
+- id: pubmed-23788517
+  location: An acute, double-blind, placebo-controlled cross-over study of 320 mg and 640 mg doses of
+    Bacopa monnieri (CDRI 08) on m
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

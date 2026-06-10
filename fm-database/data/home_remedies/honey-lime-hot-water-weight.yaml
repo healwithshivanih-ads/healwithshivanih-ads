@@ -42,6 +42,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - astringent
+virya: heating
+vipaka: sour
+ayurvedic_actions:
+  - scraping
+  - expectorant
+  - dipana
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Obesity"

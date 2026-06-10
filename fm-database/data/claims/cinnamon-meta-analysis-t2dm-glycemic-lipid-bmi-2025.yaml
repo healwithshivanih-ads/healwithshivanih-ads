@@ -1,0 +1,46 @@
+slug: cinnamon-meta-analysis-t2dm-glycemic-lipid-bmi-2025
+statement: A 2025 systematic review and meta-analysis of 28 RCTs (n=3,054 type 2 diabetes patients) found
+  cinnamon significantly reduced fasting blood glucose (WMD −15.26 mg/dL), postprandial glucose (WMD −39.22
+  mg/dL), HbA1c (WMD −0.56%), and HOMA-IR (WMD −0.76); capsule form at ≤2 g/day also reduced total cholesterol,
+  LDL-C, triglycerides, and BMI.
+evidence_tier: strong
+rationale: 'Large, recent, high-quality meta-analysis (28 RCTs, >3000 patients) with quantitative effects
+  on multiple glycaemic and lipid markers, sub-grouped by dose and form; GRADE assessment and PROSPERO
+  registration indicate methodological rigour. Effective dose in trials: ≤2 g/day cinnamon powder or capsule
+  most effective; 500 mg–2 g/day; 30–120 days in included trials.'
+coaching_translation: The strongest pooled trial data to date shows cinnamon — especially in capsule form
+  at 1–2 g/day — meaningfully lowers blood sugar, post-meal spikes, HbA1c, cholesterol, triglycerides,
+  and even BMI in people with type 2 diabetes. A genuinely multi-benefit spice that's easy to add to daily
+  life.
+out_of_scope_notes: ''
+caveats:
+- Very high heterogeneity on fasting glucose (I²=88%) and postprandial glucose (I²=100%) — individual
+  results vary widely
+- HbA1c reduction significant only at ≤2 g/day; higher doses did not show HbA1c benefit in subgroup analysis
+- 'Cassia cinnamon coumarin content: high-dose long-term use of Cassia (most commonly available) may raise
+  liver toxicity risk; Ceylon cinnamon preferred for daily supplementation'
+- 'Hypoglycaemic interaction: can potentiate glucose-lowering medications — blood glucose monitoring recommended'
+- Most trials relatively short (30–120 days); long-term cardiovascular outcome data lacking
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- dyslipidemia
+- blood-sugar-regulation
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- postprandial-glucose-spike
+- hepatic-insulin-sensitivity
+- vldl-to-ldl-cascade
+- ldl-oxidation
+- glycemic-load-reduction
+linked_to_supplements:
+- cinnamon
+sources:
+- id: pubmed-38917435
+  location: 'Effects of cinnamon supplementation on metabolic biomarkers in individuals with type 2 diabetes:
+    a systematic review and'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

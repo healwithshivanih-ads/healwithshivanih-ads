@@ -1,0 +1,39 @@
+slug: curcumin-meta-review-glycemic-lipid-metabolic-disease
+statement: A 2024 review of 54 meta-analyses of curcumin RCTs found consistent evidence across independent
+  meta-analyses that curcumin supplementation reduces fasting blood glucose (14/15 meta-analyses significant),
+  HOMA-IR (12/12 significant), HbA1c (7/8 significant), and total cholesterol (14/19 significant), alongside
+  reductions in CRP, IL-6, and TNF-α.
+evidence_tier: strong
+rationale: 'Review of 54 meta-analyses of RCTs; multiple independent replication across glucose, insulin
+  resistance, and lipid outcomes gives high confidence in the metabolic signal. Effective dose in trials:
+  Nano-curcumin or enhanced-bioavailability formulations; 500–1000 mg/day curcuminoids; 8–12 weeks minimum.'
+coaching_translation: Evidence from dozens of trials suggests curcumin can support blood sugar balance
+  and improve insulin sensitivity — a helpful adjunct for clients managing insulin resistance or metabolic
+  syndrome.
+out_of_scope_notes: ''
+caveats:
+- Dominant studies come from populations with pre-existing metabolic disease (diabetes, dyslipidaemia)
+  — effect in healthy populations less established
+- Bioavailability of standard curcumin powder is very poor; nano-curcumin or BCM-95 formulations show
+  stronger glycaemic effects
+- Not a replacement for dietary and lifestyle interventions
+- Short trial durations (most 8–12 weeks)
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-regulation
+- dyslipidemia
+- cardiometabolic-health
+linked_to_mechanisms:
+- insulin-resistance
+- inflammatory-cytokine-elevation
+- oxidative-stress
+linked_to_supplements:
+- turmeric
+sources:
+- id: pubmed-38892660
+  location: 'Is Curcumin Intake Really Effective for Chronic Inflammatory Metabolic Disease? A Review
+    of Meta-Analyses of Randomized '
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

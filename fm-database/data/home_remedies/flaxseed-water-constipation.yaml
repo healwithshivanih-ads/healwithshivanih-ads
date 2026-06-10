@@ -23,6 +23,14 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - laxative
+  - demulcent
 preparation: >-
   Boil 1 tablespoon of flax seeds in 1 glass of water for a few minutes; drink
   the whole glass (seeds and all, or strained) at bedtime. Alternatively, soak

@@ -27,6 +27,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sour
+  - salty
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Ready-made from reputable Ayurvedic brands (Baidyanath, Patanjali, Vyas).
   Mix 1/4 to 1/2 teaspoon into the first warm bite of food — typically the

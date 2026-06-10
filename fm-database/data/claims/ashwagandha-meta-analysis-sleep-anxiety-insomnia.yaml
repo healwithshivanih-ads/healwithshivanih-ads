@@ -1,0 +1,36 @@
+slug: ashwagandha-meta-analysis-sleep-anxiety-insomnia
+statement: A 2024 systematic review and meta-analysis of 5 RCTs (n=254) found Withania somnifera extract
+  significantly reduced Hamilton Anxiety Scale scores (MD = -5.96), reduced sleep onset latency, improved
+  total sleep time, sleep efficiency, and PSQI scores versus placebo.
+evidence_tier: plausible_emerging
+rationale: 'Meta-analysis of 5 RCTs covering both anxiety and multiple validated sleep parameters; high
+  heterogeneity (I² up to 98%) and small total sample limits confidence. Effective dose in trials: 300–600
+  mg/day root extract; effects more prominent at ≥600 mg/day and ≥8 weeks in subgroup analyses.'
+coaching_translation: Evidence suggests ashwagandha may help with both anxiety and sleep quality — people
+  taking it fell asleep faster, slept longer, and rated their sleep as better. Larger studies are still
+  needed to confirm the effect.
+out_of_scope_notes: ''
+caveats:
+- Very high between-study heterogeneity (I² = 98% for HAM-A) limits pooled estimates
+- Only 5 RCTs with n=254 — small total sample
+- Trials were mostly 8 weeks; long-term sleep effects unknown
+- Most studies used proprietary extracts — results may not generalise to all ashwagandha products
+linked_to_topics:
+- insomnia
+- anxiety
+- sleep
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- gaba-receptor-modulation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: pubmed-39083548
+  location: 'Safety and efficacy of Withania somnifera for anxiety and insomnia: Systematic review and
+    meta-analysis'
+- id: pubmed-34559859
+  location: 'Effect of Ashwagandha (Withania somnifera) extract on sleep: A systematic review and meta-analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -31,6 +31,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+rasa:
+- sour
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- scraping
+- anti-inflammatory
+- dipana
 preparation: Use purified (shuddha) guggulu tablets from a reputable Ayurvedic pharmacy, per
   label/practitioner (commonly ~250-500 mg, 2-3 times a day) with warm water after meals.
 typical_dose: Per product / practitioner (often 250-500 mg, 2-3x daily)

@@ -3,6 +3,7 @@ display_name: Cooked Onion Poultice (for Boils)
 aliases:
 - onion-poultice-boil
 category: other
+route: external
 summary: 'A Lad first-aid topical to bring a skin boil to a head: warm cooked onion applied
   as a poultice draws the boil and encourages it to drain. A ginger-powder + turmeric paste
   is an alternative. For small superficial boils only.'
@@ -18,6 +19,16 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- expectorant
 preparation: 'Cook (steam or saute) a little onion until soft; cool to comfortably warm; wrap
   in clean gauze and apply over the boil for 15-20 min. Repeat 2-3 times a day. Alternative:
   paste of 1/2 tsp ginger powder + 1/2 tsp turmeric applied to the boil.'

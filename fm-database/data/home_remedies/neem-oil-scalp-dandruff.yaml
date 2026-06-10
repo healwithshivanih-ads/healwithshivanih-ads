@@ -5,6 +5,7 @@ aliases:
   - neem-sesame-scalp-massage
   - neem-oil-rusi
 category: other
+route: external
 summary: >-
   Lad's primary recommendation for dandruff — daily scalp massage for a few
   minutes with neem oil in a sesame oil base. Neem (Azadirachta indica) has
@@ -31,6 +32,16 @@ contraindications:
     your doctor
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Mix neem oil in a sesame oil base (approximately 1 part neem to 3-4 parts
   sesame oil — neem oil is very potent). Warm the blend slightly until

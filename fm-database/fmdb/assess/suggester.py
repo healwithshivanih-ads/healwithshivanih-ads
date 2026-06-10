@@ -1425,6 +1425,15 @@ HARD RULES (violating these breaks the downstream system):
     coach edits, flowing into consolidated + lifestyle_guide letters:
     - dietary_guidance + dinacharya + remedy_slugs all target the VIKRUTI (what's
       aggravated now), not the prakruti.
+    - REMEDY ROUTE: each home_remedy in the subgraph has a `route` —
+      'internal' (eaten/drunk: teas, churans, infused waters, juices) or
+      'external' (applied to the body: oil massage / abhyanga, nasya nasal
+      drops, oil pulling, eyewash, steam, foot soaks, compresses, pastes).
+      EXTERNAL remedies are practices — prefer placing them in `dinacharya`
+      (the daily routine) and frame them as something the client DOES/applies,
+      never as something to drink or swallow. INTERNAL remedies go in
+      remedy_slugs as drinks/preparations. (You may still list an external
+      remedy in remedy_slugs, but the routine is the better home for it.)
     - remedy_slugs: pick ONLY home_remedy slugs from the subgraph whose
       `balances_dosha` covers an aggravated dosha AND whose `aggravates_dosha`
       does NOT intersect vikruti_doshas. A remedy that pacifies Vata but

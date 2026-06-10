@@ -24,6 +24,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Rinse a small bundle of clean khus (vetiver) roots. Place in a clean
   glass or copper jug and fill with 1 litre cool drinking water. Cover

@@ -21,6 +21,16 @@ balances_dosha:
 - kapha
 - pitta
 aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Boil 1 part pearl barley in 4 parts water until the barley is soft; strain off
   the liquid. Sip the barley water through the day. A squeeze of lime can be added.
 typical_dose: 1-3 cups a day

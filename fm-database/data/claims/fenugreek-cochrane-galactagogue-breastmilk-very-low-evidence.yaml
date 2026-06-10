@@ -1,0 +1,34 @@
+slug: fenugreek-cochrane-galactagogue-breastmilk-very-low-evidence
+statement: A 2020 Cochrane systematic review of 41 RCTs on oral galactagogues found that subgroup analyses
+  of fenugreek trials showed possible benefit for milk volume in breastfeeding mothers, but the overall
+  certainty of evidence was very low due to high risk of bias, substantial heterogeneity, and imprecise
+  measurement.
+evidence_tier: plausible_emerging
+rationale: 'Cochrane-level review (gold standard for evidence synthesis), but classified overall evidence
+  as very low certainty for natural galactagogues including fenugreek; beneficial signal present but not
+  confirmable. Effective dose in trials: Traditional use: 1–3 g three times daily as capsule or tea; effective
+  dose not established in trials.'
+coaching_translation: Methi seeds are traditionally used to support milk supply, and some small trials
+  show a possible benefit on milk volume. However, the research is not yet strong enough to make a firm
+  recommendation — supporting good latch, frequent feeding, and hydration remain the most evidence-based
+  first steps.
+out_of_scope_notes: ''
+caveats:
+- Overall Cochrane evidence certainty rated very low for natural galactagogues including fenugreek
+- Substantial heterogeneity (I²=99%) in milk-volume subgroup — results cannot be pooled reliably
+- Urine and sweat may smell of maple syrup; urticaria reported in some infants
+- Fenugreek is traditionally contraindicated in early pregnancy; lactating mothers should confirm safety
+  with their provider
+- Fenugreek-only RCT data is sparse; most studies used multi-herb formulations
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- fenugreek
+sources:
+- id: pubmed-32421208
+  location: Oral galactagogues (natural therapies or drugs) for increasing breast milk production in mothers
+    of non-hospitalised ter
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

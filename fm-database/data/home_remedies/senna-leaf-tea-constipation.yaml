@@ -22,6 +22,16 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - vata
+rasa:
+- sweet
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- purgative
+- nourishing
+- unctuous
 preparation: Steep 1 tsp senna leaf in 1 cup hot water for a few minutes; strain and drink at
   bedtime. Start with a weak brew — senna is potent.
 typical_dose: 1 cup at night, occasional use only

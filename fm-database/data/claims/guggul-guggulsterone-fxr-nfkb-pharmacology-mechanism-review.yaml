@@ -1,0 +1,35 @@
+slug: guggul-guggulsterone-fxr-nfkb-pharmacology-mechanism-review
+statement: A 2007 review of guggulsterone pharmacology found that the active compound in Commiphora wightii
+  acts as a farnesoid X receptor (FXR) antagonist, upregulates bile salt export pump (BSEP), inhibits
+  NF-κB-mediated inflammatory signalling, and modulates cholesterol metabolism — mechanisms that provide
+  a plausible biological rationale for cardiovascular and anti-inflammatory effects, though the review
+  notes that larger, well-designed clinical trials are still required.
+evidence_tier: plausible_emerging
+rationale: 'Mechanistic review with clear pharmacological pathways; clinical translation is plausible
+  but not yet confirmed by consistent large-scale RCT evidence. Effective dose in trials: Typical studied
+  dose 75–1500 mg/day guggulipid (standardised to 2.5–10% guggulsterone); extract quality varies widely.'
+coaching_translation: Guggul's active ingredient has well-mapped mechanisms that could support cholesterol
+  balance and reduce inflammation — the biology is credible, though the clinical trial record is mixed
+  and more research is needed.
+out_of_scope_notes: ''
+caveats:
+- Mechanistic review — no pooled clinical effect sizes
+- FXR antagonism may paradoxically impair bile acid signalling in some contexts
+- Clinical RCT results are inconsistent (see dyslipidaemia conflict caveat below)
+- Extract standardisation (guggulsterone % content) varies considerably between products
+linked_to_topics:
+- dyslipidemia
+- chronic-inflammation
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
+- inflammatory-cytokine-elevation
+- anti-inflammatory-signaling
+linked_to_supplements:
+- guggul
+sources:
+- id: pubmed-18078436
+  location: 'Therapeutic effects of guggul and its constituent guggulsterone: cardiovascular benefits'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -17,6 +17,14 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
 preparation: Boil 1 tsp ajwain in 2 cups water for 5 min; strain.
 typical_dose: 1/2-1 cup warm when bloated, or after a heavy meal.
 duration: As needed; safe daily in moderation.

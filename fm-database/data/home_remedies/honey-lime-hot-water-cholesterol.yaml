@@ -27,6 +27,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - pungent
+virya: heating
+vipaka: sour
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Early in the morning, before eating, heat one cup of water to comfortably warm
   (not boiling). Stir in one teaspoon of raw honey. Add either one teaspoon of

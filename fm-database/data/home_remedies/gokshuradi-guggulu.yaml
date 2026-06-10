@@ -30,6 +30,16 @@ balances_dosha:
 - kapha
 - pitta
 aggravates_dosha: []
+rasa:
+- sweet
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Gokshuradi guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet 2-3 times
   a day with warm water (per label/practitioner). Drink plenty of water alongside.
 typical_dose: ~1 tablet, 2-3 times a day

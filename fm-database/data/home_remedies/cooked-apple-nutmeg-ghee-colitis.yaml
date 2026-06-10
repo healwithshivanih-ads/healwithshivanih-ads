@@ -29,6 +29,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Peel 1 or 2 apples and remove the seeds. Place in a pan with a little water
   and cook over low heat until very soft. Mash to a smooth pulp (a potato

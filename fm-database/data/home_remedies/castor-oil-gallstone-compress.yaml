@@ -4,6 +4,7 @@ aliases:
   - castor-oil-pack-gallbladder
   - arandi-tel-compress
 category: other
+route: external
 summary: >-
   A warm castor oil compress applied over the gallbladder area provides slow,
   sustained, soothing heat that relieves gallstone pain. Castor oil's
@@ -35,6 +36,16 @@ balances_dosha:
   - kapha
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - gallstones
   - sluggish-bile-flow

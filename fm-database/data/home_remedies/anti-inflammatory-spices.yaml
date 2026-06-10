@@ -10,6 +10,16 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
+- anti-inflammatory
 preparation: ''
 typical_dose: ''
 duration: ''

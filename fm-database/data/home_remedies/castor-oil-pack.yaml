@@ -5,6 +5,7 @@ aliases:
   - castor-pack
   - ricinus-oil-compress
 category: other
+route: external
 summary: >-
   A warm topical compress made with cold-pressed castor oil on a flannel
   cloth, applied to the abdomen, lower back, or a painful joint with a hot
@@ -26,6 +27,15 @@ contraindications:
 balances_dosha:
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - laxative
+  - anti-inflammatory
 preparation: >-
   Fold a clean piece of flannel or cotton cloth into 3-4 layers, large
   enough to cover the area. Saturate (do not drip) with cold-pressed

@@ -43,6 +43,16 @@ balances_dosha:
 aggravates_dosha:
   - kapha
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Low Libido — Food Remedies for Both Men and Women"

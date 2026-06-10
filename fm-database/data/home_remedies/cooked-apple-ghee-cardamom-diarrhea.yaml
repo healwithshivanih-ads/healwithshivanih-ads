@@ -34,6 +34,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - ibs
   - irritable-bowel-syndrome

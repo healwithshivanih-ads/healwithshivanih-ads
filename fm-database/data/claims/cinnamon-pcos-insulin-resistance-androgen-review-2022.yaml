@@ -1,0 +1,40 @@
+slug: cinnamon-pcos-insulin-resistance-androgen-review-2022
+statement: A 2022 narrative review of RCTs, systematic reviews, and meta-analyses found that cinnamon
+  supplementation may improve insulin resistance, reduce androgen levels, and improve menstrual regularity
+  in women with PCOS, with several small RCTs reporting significant reductions in fasting insulin and
+  HOMA-IR.
+evidence_tier: plausible_emerging
+rationale: 'Synthesises RCT and review-level evidence specifically in PCOS populations; cinnamon''s insulin-sensitising
+  mechanism is biologically plausible and supported by small trials, but dedicated large PCOS-specific
+  RCTs are lacking. Effective dose in trials: 1–3 g/day whole cinnamon powder in PCOS trials; some studies
+  used 500 mg standardised extract twice daily.'
+coaching_translation: Early trial evidence suggests cinnamon may help with the insulin resistance that
+  drives PCOS symptoms. Some women in small studies saw improvements in menstrual regularity and lower
+  androgen-related symptoms. Promising, but the research is less definitive than in type 2 diabetes.
+out_of_scope_notes: ''
+caveats:
+- PCOS-specific RCTs are small (n typically <50) and of short duration
+- Effects on androgens, LH/FSH ratio, and ovulation are inconsistent across trials
+- Most PCOS trials used Cinnamomum cassia — coumarin exposure a concern with long-term daily use
+- Hypoglycaemic interaction still applies in PCOS if client takes metformin or inositols — glucose monitoring
+  advised
+- Narrative review design for PCOS section — pooled effect estimates not available for PCOS alone
+linked_to_topics:
+- pcos
+- pcos-insulin-resistant
+- pcos-adrenal
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- insulin-resistance-sex-hormone
+- postprandial-glucose-spike
+- igf-1-dairy-driven-androgen-amplification
+linked_to_supplements:
+- cinnamon
+sources:
+- id: pubmed-34970669
+  location: Nutritional Supplements and Complementary Therapies in Polycystic Ovary Syndrome
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

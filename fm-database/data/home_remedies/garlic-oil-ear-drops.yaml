@@ -3,6 +3,7 @@ display_name: Garlic Oil Ear Drops (Ear Infection / Ringing)
 aliases:
 - garlic-oil-tinnitus
 category: other
+route: external
 summary: Garlic oil ear drops used for a brewing ear infection and for ringing in the ears (tinnitus)
   of the simple, congestion-related type. Garlic's antimicrobial action and the warm oil help
   an early ear infection; Lad also lists it among ear-ringing measures. A short-term holding
@@ -21,6 +22,13 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- expectorant
 preparation: Warm 1 tbsp sesame oil with 2-3 crushed garlic cloves; cool to lukewarm and strain.
   Instil 2-3 drops into the ear; plug loosely with cotton.
 typical_dose: 2-3 drops, once or twice a day

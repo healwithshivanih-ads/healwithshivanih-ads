@@ -1,0 +1,36 @@
+slug: boswellia-network-meta-analysis-top-ranked-knee-oa-supplement
+statement: A 2025 network meta-analysis of 39 RCTs (n=4599 knee OA patients) comparing 7 nutritional supplements
+  found Boswellia had the highest probability of being the most effective supplement for WOMAC pain (MD=10.58,
+  95% CI 6.45–14.78), stiffness (MD=9.47), and function (MD=14.00), and for VAS pain (MD=17.26, 95% CI
+  8.06–26.52), with no increased adverse events vs placebo.
+evidence_tier: strong
+rationale: 'Network meta-analysis (highest-quality indirect comparison design) of 39 RCTs; Boswellia ranked
+  first among 7 supplements for pain and stiffness in knee OA with Bayesian ranking probabilities. Effective
+  dose in trials: Standardised Boswellia serrata extract; trials used 100–500 mg/day; AKBA content is
+  the active marker.'
+coaching_translation: In the most rigorous head-to-head comparison of joint supplements, Boswellia consistently
+  ranked highest for reducing knee pain and stiffness. It is a strong option for clients who cannot tolerate
+  NSAIDs.
+out_of_scope_notes: ''
+caveats:
+- Network meta-analysis introduces indirect comparison assumptions
+- Standardisation of Boswellia extracts (AKBA content) varied across trials
+- Long-term efficacy and safety not assessed (most trials ≤12 weeks)
+- Caution in patients on anticoagulant or antiplatelet therapy
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+- inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- arachidonic-acid-cascade
+linked_to_supplements:
+- boswellia
+sources:
+- id: pubmed-40806131
+  location: 'Comparative Effectiveness of Nutritional Supplements in the Treatment of Knee Osteoarthritis:
+    A Network Meta-Analysis.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

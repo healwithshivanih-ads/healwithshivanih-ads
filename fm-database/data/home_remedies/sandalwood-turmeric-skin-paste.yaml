@@ -4,6 +4,7 @@ aliases:
   - chandan-haldi-lep
   - sandalwood-turmeric-paste
 category: other
+route: external
 summary: >-
   A cooling, anti-inflammatory topical paste of sandalwood and turmeric powders
   that Lad recommends for acne, skin inflammation and local swelling/bruising.
@@ -21,6 +22,16 @@ contraindications:
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Mix 1/4 tsp turmeric with 1/2 tsp sandalwood powder and enough water (or
   goat's milk for the face) to make a paste. Apply to the affected area; for

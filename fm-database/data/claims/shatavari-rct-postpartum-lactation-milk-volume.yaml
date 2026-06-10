@@ -1,0 +1,33 @@
+slug: shatavari-rct-postpartum-lactation-milk-volume
+statement: A 2025 double-blind RCT (n=113 postpartum women) found Asparagus racemosus (shatavari) root
+  extract (300 mg twice daily for 72 hours postpartum) significantly shortened time to evident breast
+  fullness (p=0.002), increased milk volume at 72 hours (p<0.001), and improved maternal satisfaction
+  with lactation (52.6% vs 25.0%, p=0.008) compared to placebo.
+evidence_tier: plausible_emerging
+rationale: 'Well-designed RCT (n=113, per-protocol) with objective and subjective lactation outcomes;
+  single trial of short duration (72 hours) — longer-term lactation data is not yet available. Effective
+  dose in trials: 300 mg root extract twice daily (600 mg/day total), initiated in first 72 hours postpartum.'
+coaching_translation: Evidence suggests shatavari may help new mothers produce more milk in the first
+  days postpartum and feel more confident about breastfeeding. A controlled trial found meaningful benefits
+  within just 72 hours of starting it.
+out_of_scope_notes: ''
+caveats:
+- Only 72-hour intervention — longer duration lactation effects are unknown
+- Single centre RCT; needs independent replication across different populations
+- Shatavari is traditionally contraindicated in oestrogen-sensitive conditions — breastfeeding mothers
+  with hormone-sensitive conditions should consult a clinician
+- Study did not assess infant outcomes beyond investigator-rated well-being
+linked_to_topics:
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-decline
+linked_to_supplements:
+- shatavari
+sources:
+- id: pubmed-41055223
+  location: 'Shatavari (Willd) root extract for postpartum lactation: A randomised, double-blind, placebo-controlled
+    study.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

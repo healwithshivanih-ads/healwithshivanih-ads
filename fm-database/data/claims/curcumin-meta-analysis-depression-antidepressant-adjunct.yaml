@@ -1,0 +1,41 @@
+slug: curcumin-meta-analysis-depression-antidepressant-adjunct
+statement: A 2016 mini meta-analysis of 6 RCTs found curcumin administration was associated with significantly
+  greater reduction in depression symptoms compared to placebo (SMD −0.34, 95% CI −0.56 to −0.13, p=0.002),
+  with larger effects in middle-aged patients, at higher doses, and with longer treatment duration.
+evidence_tier: plausible_emerging
+rationale: 'Meta-analysis of 6 RCTs with significant pooled effect on depression scales; however, studies
+  are small, potential publication bias noted, and a subsequent meta-review (PMID 33596697) flagged methodological
+  concerns in the curcumin-depression literature. Effective dose in trials: 500–1000 mg/day curcuminoids
+  (BCM-95 or curcumin-piperine formulas used in trials); 8+ weeks.'
+coaching_translation: Evidence suggests curcumin may help lift mood in people with depression, though
+  the trials are small. It is likely best used as an adjunct alongside other evidence-based strategies,
+  not as a standalone treatment.
+out_of_scope_notes: ''
+caveats:
+- Only 6 RCTs; most had small sample sizes
+- Potential publication bias across the curcumin-depression literature (flagged in independent meta-review)
+- Most trials used curcumin as adjunct to antidepressants — standalone efficacy less clear
+- 'Patients on MAOIs or antidepressants: curcumin has serotonergic properties — consult prescriber'
+- Effect sizes modest (SMD −0.34)
+linked_to_topics:
+- depression-lifestyle
+- depression-like-symptoms
+- nutrient-deficiency-depression
+linked_to_mechanisms:
+- serotonin-deficiency
+- inflammatory-cytokine-elevation
+- nf-kb-activation
+- bdnf-upregulation
+linked_to_supplements:
+- turmeric
+sources:
+- id: pubmed-26610378
+  location: 'The Role of Curcumin Administration in Patients with Major Depressive Disorder: Mini Meta-Analysis
+    of Clinical Trials'
+- id: pubmed-33596697
+  location: 'Plant-based Medicines (Phytoceuticals) in the Treatment of Psychiatric Disorders: A Meta-review
+    of Meta-analyses of Rand'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

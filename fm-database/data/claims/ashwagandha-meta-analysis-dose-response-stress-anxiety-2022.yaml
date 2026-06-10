@@ -1,0 +1,35 @@
+slug: ashwagandha-meta-analysis-dose-response-stress-anxiety-2022
+statement: A 2021 meta-analysis of 12 RCTs (n=1,002) found ashwagandha supplementation significantly reduced
+  anxiety (SMD -1.55) and stress (SMD -1.75) vs placebo, with a dose-response analysis suggesting optimal
+  stress benefit at 300–600 mg/day.
+evidence_tier: strong
+rationale: 'Meta-analysis of 12 RCTs with 1,002 participants and dose-response modelling; however certainty
+  of evidence rated as ''low'' by authors due to heterogeneity (I² 83–94%). Effective dose in trials:
+  300–600 mg/day (optimal range from dose-response analysis); up to 12,000 mg/day associated with anxiety
+  benefit in non-linear model.'
+coaching_translation: A meta-analysis of 12 trials shows ashwagandha consistently reduces anxiety and
+  stress. Evidence suggests the sweet spot for stress relief is around 300–600 mg per day.
+out_of_scope_notes: ''
+caveats:
+- Certainty of evidence rated as 'low' by authors due to high heterogeneity (I² 83–94%)
+- Age range narrow (25–48 years); may not extrapolate to older adults
+- Dose-response modelling is exploratory and cannot establish causality
+- 'Interaction with thyroid hormones: ashwagandha may raise T3/T4 — use with caution in people on thyroid
+  medication'
+linked_to_topics:
+- chronic-stress
+- anxiety
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- epigenetic-stress-response
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: pubmed-36017529
+  location: Does Ashwagandha supplementation have a beneficial effect on the management of anxiety and
+    stress? A systematic review a
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

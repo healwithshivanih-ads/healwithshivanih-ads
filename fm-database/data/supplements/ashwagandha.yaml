@@ -79,7 +79,7 @@ ayurvedic_actions:
 - nervine
 - sedative
 - astringent
-evidence_tier: plausible_emerging
+evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-inflammation-cheatsheet

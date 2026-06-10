@@ -24,6 +24,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - diaphoretic
+  - expectorant
+  - nervine
 preparation: >-
   Steep 1 teaspoon dried brahmi leaves in 1 cup hot (not boiling) water for
   6-8 minutes, strain. Optionally add a pinch of cardamom or fennel.

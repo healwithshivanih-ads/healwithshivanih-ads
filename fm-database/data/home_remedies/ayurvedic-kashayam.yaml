@@ -7,6 +7,11 @@ indications: []
 contraindications: []
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+- bitter
+- astringent
+virya: heating
+vipaka: pungent
 preparation: ''
 typical_dose: ''
 duration: ''

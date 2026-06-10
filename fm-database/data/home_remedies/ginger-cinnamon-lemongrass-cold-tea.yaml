@@ -29,6 +29,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sour
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - diaphoretic
 preparation: >-
   Combine ginger (1 part), cinnamon (1 part), and dried lemongrass (2 parts)
   as a dry blend. Steep 1 teaspoon of this blend in 1 cup of freshly boiled

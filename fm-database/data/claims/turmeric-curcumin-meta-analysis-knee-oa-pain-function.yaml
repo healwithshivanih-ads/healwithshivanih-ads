@@ -1,0 +1,37 @@
+slug: turmeric-curcumin-meta-analysis-knee-oa-pain-function
+statement: A 2021 systematic review and meta-analysis of 16 RCTs (n=1810 adults with knee OA, up to 16
+  weeks) found turmeric extracts significantly reduced knee pain (SMD −0.82, 95% CI −1.17 to −0.47) and
+  improved physical function (SMD −0.75, 95% CI −1.18 to −0.33) compared to placebo, with effects similar
+  to NSAIDs and 12% fewer adverse events than NSAIDs.
+evidence_tier: strong
+rationale: 'Meta-analysis of 16 RCTs with validated pain and function outcomes (VAS, WOMAC); consistent
+  significant effects vs placebo; three head-to-head NSAID comparisons show non-inferiority. Effective
+  dose in trials: Various extracts 120–1500 mg/day; most effective trials used standardised curcuminoid
+  extracts ≥500 mg/day with bioenhancer (piperine) or phospholipid complex, 8–16 weeks.'
+coaching_translation: Evidence suggests turmeric extract can meaningfully reduce knee pain and improve
+  movement — comparable to anti-inflammatory drugs but with fewer gut side effects. Most trials ran 8–16
+  weeks, so give it at least 2–3 months.
+out_of_scope_notes: ''
+caveats:
+- High heterogeneity (I²=86–90%); BMI was a significant moderator — heavier individuals showed less benefit
+- Trials up to 16 weeks only; long-term data lacking
+- Moderate risk of bias in included studies
+- Optimal dose, frequency and formulation not established; bioavailability varies widely between products
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- nf-kb-activation
+- oxidative-stress
+linked_to_supplements:
+- turmeric
+sources:
+- id: pubmed-33511486
+  location: 'Efficacy and Safety of Turmeric Extracts for the Treatment of Knee Osteoarthritis: a Systematic
+    Review and Meta-analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

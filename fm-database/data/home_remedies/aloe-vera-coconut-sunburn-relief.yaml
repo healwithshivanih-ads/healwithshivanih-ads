@@ -5,6 +5,7 @@ aliases:
   - ghritkumari-nariyal-sunburn
   - cooling-sunburn-paste
 category: other
+route: external
 summary: >-
   Lad's first-line Ayurvedic topical remedy for sunburn combines the cooling,
   pitta-pacifying gel of aloe vera with the soothing, anti-inflammatory action
@@ -42,6 +43,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - inflammation
   - chronic-inflammation

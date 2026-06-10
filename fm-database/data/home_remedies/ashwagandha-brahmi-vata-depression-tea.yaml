@@ -31,6 +31,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - medhya
+  - nervine
+  - rasayana
 linked_to_topics:
   - depression-lifestyle
   - anxiety

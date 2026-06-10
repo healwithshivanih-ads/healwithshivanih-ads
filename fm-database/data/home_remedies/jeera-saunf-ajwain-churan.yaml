@@ -20,6 +20,15 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
 preparation: Dry-roast equal parts jeera, saunf and ajwain until fragrant; cool and grind coarse. Add
   a pinch of black salt and a tiny pinch of hing if desired. Store airtight.
 typical_dose: 1/2 tsp with a little warm water after lunch and dinner.

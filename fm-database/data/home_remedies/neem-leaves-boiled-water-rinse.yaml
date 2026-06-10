@@ -1,6 +1,7 @@
 slug: neem-leaves-boiled-water-rinse
 display_name: Neem Leaves Boiled-Water Rinse
 category: infused_water
+route: external
 summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh out before clinical
   use — confirm indications, preparation, contraindications.
 indications: []
@@ -10,6 +11,14 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - vata
+rasa:
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- alterative
+- antimicrobial
 preparation: ''
 typical_dose: ''
 duration: ''

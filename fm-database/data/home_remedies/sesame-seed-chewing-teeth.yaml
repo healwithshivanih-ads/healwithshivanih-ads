@@ -44,6 +44,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - oral-health-toxins
   - oral-microbiome-systemic-blood-pressure

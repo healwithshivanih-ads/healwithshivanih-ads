@@ -1,0 +1,38 @@
+slug: ginger-meta-analysis-glycemic-insulin-resistance-hdl-overweight
+statement: A 2018 systematic review and meta-analysis of 14 RCTs (n=473 overweight/obese subjects) found
+  ginger supplementation significantly reduced fasting glucose (SMD −0.68, p=0.03), HOMA-IR (SMD −1.67,
+  p=0.006), and waist-to-hip ratio (SMD −0.49, p=0.003), and significantly increased HDL-cholesterol (SMD
+  +0.40, p=0.009), without significant effects on total cholesterol, LDL, or triglycerides.
+evidence_tier: plausible_emerging
+rationale: 'Meta-analysis of 14 RCTs; significant effects on fasting glucose, insulin resistance, and
+  HDL in overweight populations; but wide confidence intervals and high heterogeneity across outcomes
+  limit certainty. Effective dose in trials: 1–3 g/day ginger powder; 8–12 weeks; most trials used capsule
+  form.'
+coaching_translation: Evidence suggests ginger supplementation can help lower fasting blood sugar and
+  insulin resistance — and modestly raise HDL — in people who are overweight. It may be a useful adjunct
+  for clients working on metabolic health.
+out_of_scope_notes: ''
+caveats:
+- Studies limited to overweight/obese populations; may not generalise to lean individuals
+- High heterogeneity across glycaemic outcomes
+- BMI and total cholesterol were not significantly reduced
+- Ginger can potentiate hypoglycaemic medications — flag for clients on metformin or insulin
+- Dose and duration varied across trials (most 8–12 weeks)
+linked_to_topics:
+- insulin-resistance
+- blood-sugar-regulation
+- dyslipidemia
+- cardiometabolic-health
+linked_to_mechanisms:
+- insulin-resistance
+- oxidative-stress
+linked_to_supplements:
+- ginger
+sources:
+- id: pubmed-29393665
+  location: 'The effects of ginger intake on weight loss and metabolic profiles among overweight and obese
+    subjects: A systematic rev'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

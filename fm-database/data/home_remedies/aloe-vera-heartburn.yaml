@@ -33,6 +33,16 @@ timing_notes: Take at onset of heartburn, ideally between meals or as needed
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - gerd
   - acid-reflux-and-cardiac-sphincter-weakness

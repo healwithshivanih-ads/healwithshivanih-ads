@@ -29,6 +29,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Combine dashamoola 5 parts, bhringaraj powder 4 parts, and jatamamsi
   powder 3 parts. Measure 1/2 teaspoon of the combined mixture and add it to

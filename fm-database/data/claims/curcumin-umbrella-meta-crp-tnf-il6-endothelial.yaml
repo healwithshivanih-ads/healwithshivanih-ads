@@ -1,0 +1,37 @@
+slug: curcumin-umbrella-meta-crp-tnf-il6-endothelial
+statement: A 2024 umbrella meta-analysis synthesising 21 prior meta-analyses of RCTs found curcumin supplementation
+  significantly reduced CRP (WMD −0.87 mg/L, 95% CI −1.14 to −0.59), TNF-α (WMD −2.72), and IL-6 (WMD
+  −0.97), while also reducing oxidative stress marker MDA and improving endothelial function markers (flow-mediated
+  dilation +1.64%, pulse wave velocity −45.60).
+evidence_tier: strong
+rationale: 'Umbrella meta-analysis pooling 21 independent meta-analyses of RCTs — the highest level of
+  evidence synthesis; effects on CRP, TNF-α, IL-6 all significant with narrow CIs. Effective dose in trials:
+  Doses varied across included meta-analyses; 500–1000 mg/day standardised curcuminoid extract most common.'
+coaching_translation: A meta-review of meta-analyses confirms that curcumin consistently lowers key inflammation
+  markers (CRP, IL-6, TNF-alpha) and improves blood vessel function — relevant for clients with elevated
+  hsCRP or cardiovascular risk.
+out_of_scope_notes: ''
+caveats:
+- Across-meta-analysis pooling inherits methodological variability of constituent trials
+- Heterogeneity in curcumin formulations, doses (range wide), and disease populations
+- TAC (total antioxidant capacity) did not reach significance (P=0.06)
+- Short intervention durations dominate the literature
+linked_to_topics:
+- chronic-inflammation
+- inflammation
+- cardiometabolic-risk
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- nf-kb-activation
+- oxidative-stress
+- oxidative-stress-vascular
+linked_to_supplements:
+- turmeric
+sources:
+- id: pubmed-38945354
+  location: 'The effects of curcumin supplementation on biomarkers of inflammation, oxidative stress,
+    and endothelial function: A met'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

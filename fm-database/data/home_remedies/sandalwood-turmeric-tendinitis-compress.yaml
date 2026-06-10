@@ -4,6 +4,7 @@ aliases:
   - chandan-haldi-paste
   - cooling-anti-inflammatory-paste
 category: other
+route: external
 summary: >-
   A classic Ayurvedic topical paste of equal parts sandalwood and turmeric
   powder mixed with cold water, applied to inflamed tendons or bursae to cool
@@ -35,6 +36,16 @@ timing_notes: Best applied after activity, or at bedtime; avoid heat on the area
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - anti-inflammatory
+  - alterative
+  - dipana
 linked_to_topics:
   - tendinopathy
   - joint-pain

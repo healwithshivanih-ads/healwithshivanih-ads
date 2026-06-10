@@ -1,0 +1,35 @@
+slug: guggul-osteoarthritis-traditional-use-no-rct-evidence
+statement: Guggul (Commiphora wightii) has been used traditionally for joint pain and is referenced in
+  Ayurvedic literature for osteoarthritis (sandhivata). Current clinical evidence is limited to small,
+  mostly uncontrolled studies; no rigorous placebo-controlled RCT of sufficient size has established efficacy
+  specifically for osteoarthritis using standardised guggulipid extract.
+evidence_tier: fm_specific_thin
+rationale: 'Traditional indication without supporting RCT evidence at the osteoarthritis-specific level;
+  mechanistic plausibility via NF-κB/COX-2 inhibition exists but clinical translation is unconfirmed.
+  Effective dose in trials: Traditional Ayurvedic dose 500 mg–1 g/day guggulipid in divided doses; standardisation
+  varies.'
+coaching_translation: Guggul is a traditional Ayurvedic herb for joint pain, and it has anti-inflammatory
+  mechanisms — but we don't yet have good clinical trial evidence for osteoarthritis specifically. It
+  may be considered as a supportive add-on, but should not replace evidence-based joint interventions.
+out_of_scope_notes: ''
+caveats:
+- No large-scale RCTs for guggul specifically in osteoarthritis
+- Evidence base is traditional use + preclinical mechanisms only
+- Often combined with other herbs (Boswellia, shallaki) in practice — individual contribution unclear
+- 'Note: Boswellia serrata (Salai guggul) has separate RCT evidence for osteoarthritis — do not conflate
+  with Commiphora wightii (guggul)'
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+linked_to_mechanisms:
+- anti-inflammatory-signaling
+linked_to_supplements:
+- guggul
+sources:
+- id: pubmed-38284718
+  location: 'Exploring the Promising Role of Guggulipid in Rheumatoid Arthritis Management: An Evidence-Based
+    Review'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -19,6 +19,13 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+rasa:
+- pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- carminative
+- analgesic
 preparation: Place a whole clove with a small piece of rock candy (mishri) in the mouth and
   suck slowly, letting the juices coat the throat.
 typical_dose: As needed when the cough flares

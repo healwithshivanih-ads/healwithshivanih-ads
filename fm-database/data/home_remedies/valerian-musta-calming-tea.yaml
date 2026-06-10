@@ -21,6 +21,16 @@ contraindications:
 balances_dosha:
   - vata
 aggravates_dosha: []
+rasa:
+  - pungent
+  - bitter
+  - astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - nervine
+  - sedative
+  - carminative
 preparation: >-
   Mix tagar (or valerian) 1 part and musta 1 part. Steep 1/2 tsp of the blend in
   1 cup hot water for 5-10 minutes, strain, and drink.

@@ -4,6 +4,7 @@ aliases:
 - coconut-oil-gums
 - lemon-water-gums
 category: other
+route: external
 summary: 'A Lad first-aid for bleeding, tender gums: massage the gums gently with coconut oil,
   or rinse with the juice of half a lemon in a cup of water. Coconut oil is antimicrobial and
   soothing to inflamed gum tissue; the gentle massage improves circulation. Supports gum health
@@ -19,6 +20,16 @@ balances_dosha:
 - pitta
 - kapha
 aggravates_dosha: []
+rasa:
+- sweet
+- sour
+- pungent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: With a clean fingertip, gently massage a little coconut oil into the gum line for
   1-2 minutes; spit out. Or rinse the mouth with the juice of 1/2 lemon in 1 cup water.
 typical_dose: Once or twice a day

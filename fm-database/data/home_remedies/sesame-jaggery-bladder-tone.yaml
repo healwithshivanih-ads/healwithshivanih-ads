@@ -27,6 +27,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Take one handful of white sesame seeds and 1 teaspoon of jaggery
   (or natural unrefined brown sugar). Chew the sesame seeds well with the

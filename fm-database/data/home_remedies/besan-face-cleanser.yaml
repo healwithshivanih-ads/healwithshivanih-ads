@@ -4,6 +4,7 @@ aliases:
   - besan-face-pack
   - chickpea-flour-ubtan
 category: other
+route: external
 summary: >-
   A gentle traditional face wash for acne and oily skin — chickpea (gram) flour
   made into a paste with water, used to cleanse the face. Lad lists it as a
@@ -22,6 +23,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - anti-inflammatory
+  - alterative
+  - cooling
 preparation: >-
   Mix 1 tsp chickpea flour with enough water to make a paste. Massage gently over
   the face, then rinse off. Optionally follow with a paste of almond powder and a

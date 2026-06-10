@@ -5,6 +5,7 @@ aliases:
   - eranda-eye-drops
   - castor-oil-cornea-lubricant
 category: other
+route: external
 summary: >-
   Lad recommends placing a single drop of pure, preservative-free castor oil
   into each eye at bedtime as a traditional Ayurvedic approach to preventing
@@ -30,6 +31,16 @@ contraindications:
     conditions
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+  - sour
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - mild-laxative
+  - rasayana
+  - laxative
 preparation: >-
   Obtain pure castor oil specifically labelled for ophthalmic or cosmetic
   use, confirmed free of preservatives and additives. At bedtime, tilt the

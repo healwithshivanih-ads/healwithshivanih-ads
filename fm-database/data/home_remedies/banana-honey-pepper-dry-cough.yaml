@@ -29,6 +29,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Take 1 ripe banana (bright yellow with tiny black dots on the inside — a sign
   it is ripe). Drizzle 1 teaspoon of raw honey over it. Sprinkle 2 generous

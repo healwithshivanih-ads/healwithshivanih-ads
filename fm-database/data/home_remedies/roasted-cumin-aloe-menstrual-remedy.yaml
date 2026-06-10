@@ -41,6 +41,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - alterative
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Menstrual Difficulties — For All Body Types"

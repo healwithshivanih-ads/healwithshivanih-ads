@@ -50,7 +50,7 @@ ayurvedic_actions:
 - carminative
 - antiemetic
 - analgesic
-evidence_tier: plausible_emerging
+evidence_tier: strong
 typical_dose_range:
   capsule:
     min: 500

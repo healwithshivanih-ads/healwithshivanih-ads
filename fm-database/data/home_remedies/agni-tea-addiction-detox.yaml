@@ -28,6 +28,15 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - pungent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
 preparation: >-
   Bring 1 cup of water to a boil. Add a pinch of cayenne pepper (or a small
   slice of fresh ginger) and a pinch of rock salt. Simmer for 2 minutes.

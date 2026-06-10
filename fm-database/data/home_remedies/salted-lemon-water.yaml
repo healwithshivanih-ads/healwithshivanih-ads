@@ -7,6 +7,13 @@ indications: []
 contraindications: []
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+- sour
+- salty
+virya: heating
+vipaka: sour
+ayurvedic_actions:
+- dipana
 preparation: ''
 typical_dose: ''
 duration: ''

@@ -44,6 +44,15 @@ linked_to_mechanisms:
 balances_dosha:
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - nourishing
+  - unctuous
+  - bulk-laxative
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Rectal Bleeding"

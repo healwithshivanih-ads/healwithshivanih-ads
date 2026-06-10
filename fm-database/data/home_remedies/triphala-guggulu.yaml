@@ -27,6 +27,16 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - vata
+rasa:
+- sour
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- scraping
+- anti-inflammatory
+- dipana
 preparation: Triphala guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet 2-3 times
   a day with warm water (per label/practitioner).
 typical_dose: ~1 tablet, 2-3 times a day

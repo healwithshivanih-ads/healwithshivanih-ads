@@ -25,6 +25,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - rasayana
+  - cooling
+  - alterative
 preparation: >-
   Wash 1 medium karela, scrape out the seeds, chop and blend with a small
   piece of cucumber, a wedge of amla or lemon, and 1/2 cup water. Strain.

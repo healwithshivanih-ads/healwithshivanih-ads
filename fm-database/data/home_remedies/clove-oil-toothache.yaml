@@ -4,6 +4,7 @@ aliases:
   - laung-oil
   - clove-eugenol-toothache
 category: other
+route: external
 summary: >-
   A time-honoured kitchen remedy for toothache and sensitive gums — clove oil
   (rich in eugenol, a natural analgesic and antiseptic) dabbed on the aching
@@ -23,6 +24,14 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - carminative
+  - analgesic
+  - dipana
 preparation: >-
   Make clove oil by boiling 5 whole cloves in 1 tablespoon sesame oil; apply
   warm. Dip a small piece of cotton in the oil and place it against the aching

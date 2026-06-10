@@ -40,6 +40,16 @@ balances_dosha:
 aggravates_dosha:
   - kapha
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - pelvic-floor-dysfunction
   - perimenopause-and-menopause

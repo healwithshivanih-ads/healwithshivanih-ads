@@ -23,6 +23,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
+- nervine
 preparation: 'Lad''s original: equal parts comfrey, cinnamon and chamomile, ~1/2 tsp steeped
   in 1 cup hot water 10 min. SAFER ALTERNATIVE recommended here: omit comfrey — use equal parts
   chamomile and jatamamsi with a little cinnamon instead.'

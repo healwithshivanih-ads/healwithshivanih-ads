@@ -21,6 +21,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- expectorant
+- scraping
 preparation: Mix ~1/4 cup fresh onion juice with 1 tsp honey and 1/8 tsp black pepper. Take
   in small sips.
 typical_dose: The mixture, 1-3 times a day during congestion

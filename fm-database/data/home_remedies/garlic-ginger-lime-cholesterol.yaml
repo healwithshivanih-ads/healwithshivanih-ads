@@ -28,6 +28,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - pungent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - expectorant
 preparation: >-
   Finely chop 1 clove of fresh garlic. Add half a teaspoon of freshly grated
   ginger root and half a teaspoon of fresh lime juice. Mix together and eat

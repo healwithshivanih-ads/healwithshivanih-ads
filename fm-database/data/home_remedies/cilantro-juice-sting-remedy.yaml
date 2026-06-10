@@ -5,6 +5,7 @@ aliases:
   - dhania-sting-remedy
   - fresh-coriander-bite-remedy
 category: vegetable_juice
+route: external
 summary: >-
   Fresh cilantro (coriander leaf / dhania) juice is a traditional Ayurvedic
   first-response remedy for insect bites and stings. Cilantro has documented
@@ -26,6 +27,16 @@ contraindications:
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Place a large handful of fresh cilantro (coriander leaves) in a blender
   with 1/3 cup of clean water. Blend well, then strain through a fine sieve

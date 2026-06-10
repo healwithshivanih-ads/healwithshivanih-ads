@@ -17,6 +17,16 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- salty
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Lightly roast 2 tbsp cumin, grind; mix with 1/4 tsp hing (gluten-free) and 1/2 tsp rock salt.
 typical_dose: 1/4-1/2 tsp with warm water when bloated, or after a heavy meal.
 duration: As needed; safe daily.

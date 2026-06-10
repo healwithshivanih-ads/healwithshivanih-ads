@@ -25,6 +25,15 @@ balances_dosha:
   - vata
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - medhya
+  - nervine
 preparation: >-
   Mix equal amounts of jatamamsi powder and brahmi (bacopa) powder. Use 1
   teaspoon of the combined mixture per 1 cup of hot (not boiling) water. Steep

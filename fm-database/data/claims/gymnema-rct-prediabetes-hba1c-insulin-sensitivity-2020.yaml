@@ -1,0 +1,39 @@
+slug: gymnema-rct-prediabetes-hba1c-insulin-sensitivity-2020
+statement: A 2020 double-blind, placebo-controlled RCT (n=30) found Gymnema sylvestre 300 mg twice daily
+  significantly reduced 2-hour OGTT glucose, HbA1c, body weight, BMI, and LDL cholesterol, and improved
+  insulin sensitivity (Matsuda index) in patients with impaired glucose tolerance over 12 weeks; 47% of
+  treated participants normalised HbA1c values.
+evidence_tier: plausible_emerging
+rationale: 'Well-designed double-blind RCT with multiple glycaemic and metabolic endpoints showing significant
+  benefit; single small trial (n=30) limits generalisability. Effective dose in trials: 300 mg twice daily
+  (600 mg/day) Gymnema sylvestre leaf extract; 12 weeks.'
+coaching_translation: In a small but well-designed trial, gurmar capsules given twice daily significantly
+  improved blood sugar tolerance, HbA1c, and insulin sensitivity over 12 weeks — and nearly half of participants
+  normalised their HbA1c. Promising for those in the prediabetes stage.
+out_of_scope_notes: ''
+caveats:
+- Small sample size (n=30); larger confirmatory RCTs needed
+- Conducted in Mexico — population and diet may differ from South Asian context
+- 'Hypoglycaemic drug interaction: Gymnema potentiated blood-glucose lowering in this prediabetes cohort;
+  monitoring required if used alongside glucose-lowering medications'
+- Single-centre; results need replication
+linked_to_topics:
+- prediabetes
+- prediabetes-metabolic-syndrome
+- type-2-diabetes
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- skeletal-muscle-glucose-uptake
+- postprandial-glucose-spike
+- hepatic-insulin-sensitivity
+linked_to_supplements:
+- gymnema-sylvestre-extract
+sources:
+- id: pubmed-32460589
+  location: Effect of Gymnema sylvestre Administration on Glycemic Control, Insulin Secretion, and Insulin
+    Sensitivity in Patients w
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

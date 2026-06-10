@@ -1,0 +1,40 @@
+slug: guggul-dyslipidemia-conflicting-rct-evidence-lumen-caveat
+statement: 'Clinical trial evidence for guggulipid as a cholesterol-lowering agent is inconsistent: a
+  2005 systematic review noted that a well-designed JAMA trial showed LDL cholesterol increase with guggulipid
+  in a Western population, while earlier Indian trials reported benefit. A 2020 double-blind RCT (n=90,
+  3 months) found that guggulu combined with triphala did not significantly outperform placebo for LDL
+  reduction.'
+evidence_tier: plausible_emerging
+rationale: 'Conflicting RCT evidence across populations; the most methodologically rigorous trials do
+  not confirm lipid-lowering benefit, though mechanism-based plausibility and some positive trials prevent
+  a fully negative rating. Effective dose in trials: Studied at 75–1500 mg/day guggulipid; effect (if
+  any) appears dose- and extract-specific.'
+coaching_translation: The research on guggul for cholesterol is genuinely mixed — some studies show benefit,
+  others do not, particularly in Western populations. It is not a reliable standalone cholesterol treatment
+  and should not replace evidence-based lipid management.
+out_of_scope_notes: ''
+caveats:
+- JAMA 2003 trial showed LDL increase — highest quality evidence available for a Western population
+- 2020 RCT (n=90) found no significant LDL reduction vs placebo
+- Positive trials were predominantly small, older Indian studies with methodological limitations
+- Response may be diet-context-dependent (high-fat Western diet vs Indian dietary background)
+- Guggulipid extract standardisation highly variable across products
+- Do NOT rely on guggul as a primary intervention for dyslipidaemia
+linked_to_topics:
+- dyslipidemia
+- metabolic-syndrome
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
+- ldl-oxidation
+linked_to_supplements:
+- guggul
+sources:
+- id: pubmed-16338199
+  location: 'Guggul for hyperlipidemia: a review by the Natural Standard Research Collaboration'
+- id: pubmed-33242870
+  location: 'Guggulu and Triphala for the Treatment of Hypercholesterolaemia: A Placebo-Controlled, Double-Blind,
+    Randomised Trial'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,30 @@
+slug: holy-basil-rct-immune-nk-cells-cd4-healthy-volunteers
+statement: A 2015 double-blind randomised crossover trial (n=22 completers) found that 300 mg/day ethanolic
+  leaf extract of Ocimum sanctum (tulsi) for 4 weeks significantly increased IFN-γ (p=0.039), IL-4 (p=0.001),
+  CD4+ T-helper cells (p=0.001), and NK cells (p=0.017) versus placebo in healthy volunteers.
+evidence_tier: plausible_emerging
+rationale: 'Single small RCT with validated immunological endpoints (flow cytometry, ELISA); crossover
+  design strengthens internal validity but small n limits generalisability. Effective dose in trials:
+  300 mg/day ethanolic leaf extract, 4 weeks (Ocimum sanctum).'
+coaching_translation: Evidence suggests tulsi may support immune readiness by boosting natural killer
+  cells and key cytokines — useful context during recovery or immune-support phases of a plan.
+out_of_scope_notes: ''
+caveats:
+- Single trial, n=22 completers — needs independent replication
+- Healthy volunteer population; applicability to immune-dysregulated clients unclear
+- Ethanolic extract (300 mg/day, 4 weeks) — formulation and dose specific
+- No long-term safety data beyond 4 weeks
+linked_to_topics:
+- chronic-inflammation
+linked_to_mechanisms:
+- anti-inflammatory-signaling
+linked_to_supplements:
+- holy-basil
+sources:
+- id: pubmed-21619917
+  location: 'Double-blinded randomized controlled trial for immunomodulatory effects of Tulsi (Ocimum
+    sanctum Linn.) leaf extract on '
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

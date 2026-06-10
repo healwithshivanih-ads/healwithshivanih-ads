@@ -5,6 +5,7 @@ aliases:
   - honey-turmeric-mouth-ulcer
   - turmeric-honey-aphthous-ulcer
 category: other
+route: external
 summary: >-
   The simplest Ayurvedic topical remedy for canker sores (aphthous ulcers) —
   a mix of honey and turmeric applied directly to the sore. Honey is a natural
@@ -29,6 +30,16 @@ balances_dosha:
   - pitta
   - kapha
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - anti-inflammatory
+  - alterative
+  - dipana
 preparation: >-
   Mix together 1 teaspoon of raw honey with 1/4 teaspoon of turmeric powder.
   Stir well to form a thick paste. Using a clean finger or cotton bud, apply

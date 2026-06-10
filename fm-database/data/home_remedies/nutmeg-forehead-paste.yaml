@@ -4,6 +4,7 @@ aliases:
   - jaiphal-headache-paste
   - nutmeg-water-paste-forehead
 category: other
+route: external
 summary: >-
   A topical paste of nutmeg powder and water applied to the forehead to soothe
   vata-type headaches — the throbbing, occipital or left-sided headaches
@@ -34,6 +35,15 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - pungent
+  - bitter
+  - astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - nervine
+  - antispasmodic
 linked_to_topics:
   - tension-type-headache
   - migraine-headache

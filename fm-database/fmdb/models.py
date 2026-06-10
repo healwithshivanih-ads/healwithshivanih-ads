@@ -16,6 +16,7 @@ from .enums import (
     EvidenceTier,
     HomeRemedyCategory,
     InteractionType,
+    RemedyRoute,
     LabPanelCategory,
     MechanismCategory,
     ProtocolCategory,
@@ -179,6 +180,11 @@ class HomeRemedy(BaseModel):
     display_name: str
     aliases: list[str] = Field(default_factory=list)
     category: HomeRemedyCategory
+    # How the remedy is used — internal (eaten/drunk) vs external (applied to
+    # the body). Orthogonal to category. Defaults to internal so existing
+    # entries (teas/waters/churans/juices) load unchanged; external remedies
+    # (oil massage, nasya, oil pulling, eyewash, steam, soaks, pastes) set this.
+    route: RemedyRoute = RemedyRoute.internal
     summary: str
     indications: list[str] = Field(default_factory=list)         # symptom slugs or topic slugs
     contraindications: list[str] = Field(default_factory=list)   # free-text condition descriptors
@@ -192,6 +198,17 @@ class HomeRemedy(BaseModel):
     # (summary / indications / contraindications already state the dosha).
     balances_dosha: list[Dosha] = Field(default_factory=list)    # doshas this remedy pacifies/suits
     aggravates_dosha: list[Dosha] = Field(default_factory=list)  # doshas this remedy can worsen
+    # ── Full Ayurvedic energetics (parity with Supplement) ────────────────────
+    # The balances/aggravates_dosha tags above are the functional matching key;
+    # these capture WHY (dravyaguna). All optional / empty = not yet tagged, so
+    # existing remedies load unchanged. virya (heating/cooling) is the most
+    # decisive and is consistent with the dosha tags (heating → aggravates pitta,
+    # balances vata/kapha; cooling → the reverse).
+    rasa: list[Rasa] = Field(default_factory=list)               # taste(s) — shad rasa
+    virya: Optional[Virya] = None                                # heating/cooling potency
+    vipaka: Optional[Vipaka] = None                              # post-digestive effect
+    prabhava: str = ""                                           # special action not explained by rasa/virya/vipaka
+    ayurvedic_actions: list[str] = Field(default_factory=list)   # karma — e.g. dipana, carminative, nervine
     preparation: str = ""
     typical_dose: str = ""                                       # free-text (varies wildly)
     duration: str = ""                                            # free-text suggested duration

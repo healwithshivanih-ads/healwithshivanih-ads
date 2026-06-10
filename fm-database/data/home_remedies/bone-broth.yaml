@@ -29,6 +29,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+rasa:
+- salty
+- pungent
+- bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
+- anti-inflammatory
 preparation: 'Cover grass-fed/organic bones (add a few chicken feet or a knuckle for extra gelatin)
   with water and a splash of vinegar; simmer gently 8-24h (beef) or 4-12h (chicken), skim, strain.
   Vegetarian: simmer kombu, mushrooms, onion, garlic, ginger and vegetable scraps ~1h. Add ''boosts''

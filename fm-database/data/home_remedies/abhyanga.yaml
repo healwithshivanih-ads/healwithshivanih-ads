@@ -1,6 +1,7 @@
 slug: abhyanga
 display_name: Abhyanga (warm oil massage)
 category: kitchen_remedy
+route: external
 summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh out before clinical
   use — confirm indications, preparation, contraindications.
 indications: []
@@ -9,6 +10,7 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+virya: heating
 preparation: ''
 typical_dose: ''
 duration: ''

@@ -37,6 +37,15 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - sour
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - cooling
+  - nourishing
+  - dipana
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Morning Sickness — Coconut Water"

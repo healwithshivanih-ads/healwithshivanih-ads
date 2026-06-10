@@ -5,6 +5,7 @@ aliases:
   - abhyanga-dry-skin-treatment
   - sesame-oil-skin-moisturiser
 category: other
+route: external
 summary: >-
   For vata-type dry skin, Lad's first-line external remedy is warm sesame oil
   applied directly to the skin. Sesame oil is warming, deeply penetrating, and
@@ -37,6 +38,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - cooling
+  - nourishing
+  - unctuous
 linked_to_topics:
   - gut-skin-hormone-axis
   - perimenopause

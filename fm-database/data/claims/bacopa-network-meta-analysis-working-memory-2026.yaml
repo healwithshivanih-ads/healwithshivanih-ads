@@ -1,0 +1,33 @@
+slug: bacopa-network-meta-analysis-working-memory-2026
+statement: A 2026 network meta-analysis of 29 RCTs (n=2,107) comparing bacopa monnieri (Brahmi) and Ginkgo
+  biloba found high-dose Brahmi (≥600 mg/day) significantly improved working memory versus placebo (SMD
+  2.03, 95% CI 1.28–2.78) and short-term memory, with a SUCRA ranking of 100% for working memory.
+evidence_tier: strong
+rationale: 'Network meta-analysis of 29 RCTs with 2,107 participants; high-dose Brahmi achieved top SUCRA
+  ranking for working memory with large pooled effect size vs placebo. Effective dose in trials: ≥600
+  mg/day for working memory benefit; lower doses (300–599 mg/day) showed delayed memory benefits vs placebo.'
+coaching_translation: Evidence suggests bacopa (Brahmi) at higher doses is one of the most consistently
+  effective plant-based supplements for working memory and short-term memory in healthy adults — outranking
+  Ginkgo biloba in direct comparisons.
+out_of_scope_notes: ''
+caveats:
+- Lack of head-to-head RCTs between Brahmi and Ginkgo means indirect comparisons drive the network estimates
+- Significant heterogeneity across trials in extract type, dose, and cognitive testing methods
+- Most cognitive benefits of bacopa require 8–12 weeks of continuous use — acute effects are smaller
+- Bacopa can cause gastrointestinal side effects (nausea, cramping) especially when taken without food
+linked_to_topics:
+- cognitive-decline
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+- hippocampal-neuroplasticity
+- cholinergic-anti-inflammatory-pathway
+linked_to_supplements:
+- bacopa-monnieri
+sources:
+- id: pubmed-41678913
+  location: 'Comparative effects of Bacopa monnieri and Ginkgo biloba on cognitive functions: A systematic
+    review and network meta-an'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

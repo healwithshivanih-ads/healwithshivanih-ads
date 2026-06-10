@@ -1,0 +1,34 @@
+slug: guggul-anti-inflammatory-cox2-nfkb-jakstat-joint-preclinical
+statement: A 2024 review of guggulipid's anti-inflammatory mechanisms found evidence from preclinical
+  and early clinical studies that guggulsterone inhibits COX-2, NF-κB, and JAK-STAT signalling pathways,
+  suggesting potential utility in inflammatory joint conditions including rheumatoid arthritis — though
+  the authors note that well-powered clinical trials for arthritis-specific endpoints are still needed.
+evidence_tier: plausible_emerging
+rationale: 'Contemporary mechanistic review with some clinical data; anti-inflammatory pathway evidence
+  is strong preclinically but human RCT evidence for joint/arthritis endpoints is limited. Effective dose
+  in trials: No established effective dose for joint indication; traditional range 500–1500 mg/day guggulipid.'
+coaching_translation: Evidence suggests guggul's active compounds can dampen inflammatory signalling relevant
+  to joint inflammation — a biologically plausible add-on for joint support in an FM protocol, pending
+  better clinical trial confirmation.
+out_of_scope_notes: ''
+caveats:
+- Primarily preclinical and mechanistic evidence for the joint-specific indication
+- No large RCTs specifically for osteoarthritis or rheumatoid arthritis using standardised guggulipid
+- Anti-inflammatory effect may overlap with COX-2 inhibition — potential GI side effects with high doses
+- Avoid in pregnancy; caution with anticoagulants (possible P-glycoprotein interaction)
+linked_to_topics:
+- osteoarthritis
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- anti-inflammatory-signaling
+linked_to_supplements:
+- guggul
+sources:
+- id: pubmed-38284718
+  location: 'Exploring the Promising Role of Guggulipid in Rheumatoid Arthritis Management: An Evidence-Based
+    Review'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

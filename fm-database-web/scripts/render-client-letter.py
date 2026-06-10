@@ -3103,10 +3103,16 @@ def _build_ayurveda_html(plan: dict, client: dict) -> str:
         name = hr.get("display_name") or str(slug).replace("-", " ").title()
         prep = (hr.get("preparation") or "").strip()
         when = (hr.get("typical_dose") or hr.get("timing_notes") or "").strip()
+        # External remedies (oil massage, nasya, steam, soaks, pastes) are
+        # APPLIED, not eaten — tag the card + label timing as "How to use" so
+        # the client never reads it as a drink.
+        is_external = str(hr.get("route") or "internal") == "external"
+        kind_chip = ' <span class="remedy-kind">external use</span>' if is_external else ""
+        when_label = "How often" if is_external else "When"
         cards.append(
-            f'    <article class="remedy-card"><h3 class="remedy-name">{name}</h3>'
+            f'    <article class="remedy-card"><h3 class="remedy-name">{name}{kind_chip}</h3>'
             + (f'<p class="remedy-prep">{prep}</p>' if prep else "")
-            + (f'<p class="remedy-when"><strong>When:</strong> {when}</p>' if when else "")
+            + (f'<p class="remedy-when"><strong>{when_label}:</strong> {when}</p>' if when else "")
             + "</article>"
         )
 

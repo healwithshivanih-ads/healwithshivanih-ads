@@ -1,0 +1,32 @@
+slug: triphala-meta-analysis-oral-health-plaque-gingivitis-borderline
+statement: A 2024 systematic review and meta-analysis of 41 RCTs (n=2,806) found that ayurvedic plaque
+  control agents — including triphala specifically (plaque index SMD = −0.65, 95% CI −1.32 to 0.03) —
+  showed effects comparable to controls for reducing dental plaque, gingival inflammation, and bacterial
+  growth, though confidence intervals crossed zero for triphala's plaque effect, indicating borderline
+  significance.
+evidence_tier: plausible_emerging
+rationale: 'Meta-analysis provides the broadest evidence base; triphala subgroup result is directionally
+  positive but CI crosses zero, placing it as emerging rather than strong. Effective dose in trials: Varies
+  by preparation; 0.4–1% aqueous mouthwash most studied.'
+coaching_translation: The broader evidence pool supports triphala-based oral care as a reasonable natural
+  alternative for plaque and gum health, though the effect size for triphala specifically is modest —
+  it works, but is not dramatically superior.
+out_of_scope_notes: ''
+caveats:
+- Triphala subgroup CI crosses zero (SMD −0.65, 95% CI −1.32 to 0.03) — borderline significant
+- Significant heterogeneity across included trials (different preparations, concentrations, durations)
+- Most included studies had moderate risk of bias
+- Meta-analysis covers ayurvedic agents broadly; triphala-specific evidence is a subgroup
+linked_to_topics:
+- oral-health-toxins
+linked_to_mechanisms: []
+linked_to_supplements:
+- triphala
+sources:
+- id: pubmed-38144032
+  location: 'Ayurvedic and herbal plaque control agents in gingivitis: A systematic review and meta-analysis
+    of randomized controlled'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

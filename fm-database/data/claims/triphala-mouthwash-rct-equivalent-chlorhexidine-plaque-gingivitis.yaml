@@ -1,0 +1,29 @@
+slug: triphala-mouthwash-rct-equivalent-chlorhexidine-plaque-gingivitis
+statement: A 2021 double-blind randomised controlled trial (n=72, ages 14–15, 90 days) found that 0.4%
+  triphala mouthwash produced statistically equivalent reductions in dental plaque index, gingival inflammation
+  index, and bacterial colony counts (S. mutans, Lactobacilli) compared with 0.12% chlorhexidine mouthwash.
+evidence_tier: plausible_emerging
+rationale: 'Well-designed parallel-group RCT with validated periodontal indices over 90 days; equivalence
+  to the gold-standard CHX is clinically meaningful, though confined to a paediatric population. Effective
+  dose in trials: 0.4% aqueous triphala mouthwash, twice daily, 90 days.'
+coaching_translation: Evidence suggests triphala mouthwash can be as effective as chlorhexidine for plaque
+  and gum inflammation — a natural option for clients who want to avoid chemical mouthwashes long-term.
+out_of_scope_notes: ''
+caveats:
+- Paediatric sample (14–15 years) — adult extrapolation reasonable but not directly tested
+- Supervised use in institutional setting may not reflect home compliance
+- Concentration (0.4% triphala) is a specific preparation not widely commercially available
+- Study was from a single dental college centre
+linked_to_topics:
+- oral-health-toxins
+linked_to_mechanisms: []
+linked_to_supplements:
+- triphala
+sources:
+- id: pubmed-34898918
+  location: Effect of 0.4% Triphala and 0.12% chlorhexidine mouthwash on dental plaque, gingival inflammation,
+    and microbial changes
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

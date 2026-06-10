@@ -1,0 +1,42 @@
+slug: fenugreek-meta-analysis-glycemic-lipid-control-t2dm
+statement: A 2023 systematic review and meta-analysis of 10 RCTs (n=706 participants, diabetic and prediabetic
+  adults) found fenugreek significantly reduced fasting blood glucose, 2-hour postprandial glucose, and
+  HbA1c, and also improved total cholesterol, triglycerides, and HDL-C, with no hepatic or renal toxicity
+  observed.
+evidence_tier: strong
+rationale: 'Meta-analysis of 10 RCTs with significant pooled effects on multiple glycemic and lipid markers
+  in T2DM and prediabetes populations; no serious adverse events. Effective dose in trials: Varied across
+  trials: 5–25 g/day whole seed powder or 500–1000 mg standardised extract; 8–12 weeks most common duration.'
+coaching_translation: Evidence from multiple trials shows methi (fenugreek) seed supplementation can meaningfully
+  lower blood sugar and HbA1c while also improving cholesterol and triglycerides — a useful multi-action
+  herb for metabolic health. It's best used alongside diet and lifestyle changes, not in place of prescribed
+  medications.
+out_of_scope_notes: ''
+caveats:
+- High heterogeneity across trials — different doses, preparations (powder, seed, extract), and durations
+  used
+- Most trials were short (8–12 weeks); long-term safety and efficacy less established
+- 'Hypoglycaemic interaction risk: fenugreek can potentiate blood-glucose-lowering medications (metformin,
+  sulphonylureas, insulin) — monitor glucose closely if combining'
+- Some studies used unblinded or insufficiently described methodology
+- Mild gastrointestinal side effects (bloating, loose stools) reported in a minority of participants
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- prediabetes
+- prediabetes-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- postprandial-glucose-spike
+- beta-cell-exhaustion
+- glycemic-load-reduction
+linked_to_supplements:
+- fenugreek
+- fenugreek-extract
+sources:
+- id: pubmed-37762302
+  location: 'The Effect of Fenugreek in Type 2 Diabetes and Prediabetes: A Systematic Review and Meta-Analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,29 @@
+slug: triphala-cardamom-mouthwash-rct-equivalent-chlorhexidine-halitosis
+statement: A 2016 randomised trial (n=60, 21 days) comparing triphala + cardamom (ela) mouthwash to chlorhexidine
+  found equivalent efficacy for reducing plaque, gingivitis scores, and halitosis, with triphala showing
+  good tolerability and no adverse oral mucosal changes.
+evidence_tier: plausible_emerging
+rationale: 'Independent RCT replicating equivalence to CHX, adding halitosis endpoint and confirming tolerability
+  — consistency across two separate trials strengthens the oral health signal. Effective dose in trials:
+  Triphala + cardamom mouthwash (concentration not specified in abstract), twice daily, 21 days.'
+coaching_translation: A second independent trial confirms triphala rinse matches chlorhexidine for plaque,
+  gum health, and bad breath — and is well tolerated, making it a practical daily-use option.
+out_of_scope_notes: ''
+caveats:
+- Combination preparation (triphala + cardamom) — individual component contribution unclear
+- Short duration (21 days); longer-term maintenance effects unknown
+- Single-centre design limits generalisability
+- Extract standardisation not reported
+linked_to_topics:
+- oral-health-toxins
+linked_to_mechanisms: []
+linked_to_supplements:
+- triphala
+sources:
+- id: pubmed-27932522
+  location: Comparative Evaluation of Triphala and Ela Decoction With 0.2% Chlorhexidine as Mouthwash
+    in the Management of Chronic G
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

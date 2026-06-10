@@ -38,6 +38,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - demulcent
+  - expectorant
+  - medhya
 linked_to_topics:
   - peptic-ulcer-disease
   - chronic-stress

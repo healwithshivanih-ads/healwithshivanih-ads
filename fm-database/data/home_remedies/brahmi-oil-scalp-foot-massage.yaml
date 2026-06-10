@@ -3,6 +3,7 @@ display_name: Brahmi Oil Scalp & Foot Massage (Memory/Focus)
 aliases:
 - brahmi-oil-head-massage
 category: other
+route: external
 summary: A calming brahmi-infused oil massaged into the scalp and soles at night to support
   memory, focus and a settled mind — Lad's recommendation in the Memory chapter. Brahmi (bacopa)
   is a classic medhya (brain-nourishing) herb; the oil massage itself calms vata and supports
@@ -20,6 +21,16 @@ balances_dosha:
 - pitta
 aggravates_dosha:
 - kapha
+rasa:
+- sweet
+- bitter
+- astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Warm a little brahmi oil; massage gently into the scalp and the soles of the feet
   for a few minutes at night before bed (leave on overnight or wash off after ~30-60 min).
 typical_dose: A few minutes' massage

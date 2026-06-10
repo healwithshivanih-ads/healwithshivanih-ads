@@ -5,6 +5,7 @@ aliases:
   - sinus-steam-inhalation
   - adrak-bhap-nasika
 category: other
+route: external
 summary: >-
   Lad's go-to remedy for clogged, congested sinuses — medicated steam that
   penetrates and drains the sinus cavities quickly. A cupful of hot water
@@ -40,6 +41,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - expectorant
 linked_to_topics:
   - sinusitis
   - common-cold

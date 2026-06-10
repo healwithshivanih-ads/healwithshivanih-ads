@@ -1,0 +1,40 @@
+slug: guggul-thyroid-medication-interaction-caveat-levothyroxine
+statement: 'DRUG INTERACTION CAVEAT — Thyroid medications and guggul: A 2024 registered RCT protocol (CTRI/2023/05/052389)
+  is comparing Kanchanar Guggul against levothyroxine for hypothyroidism, acknowledging traditional use
+  of guggul to stimulate thyroid function via steroid receptor modulation. Pharmacological data indicate
+  guggulsterone affects FXR and steroid receptor signalling, which may increase T3/T4 synthesis and potentially
+  alter levothyroxine requirements. Additionally, guggulipid has been shown to modulate P-glycoprotein
+  activity, which may affect absorption of co-administered drugs.'
+evidence_tier: fm_specific_thin
+rationale: 'Interaction caveat based on mechanistic pharmacology and traditional use data; the clinical
+  RCT (PMID 39255475) is ongoing and results are not yet available. Caution is warranted rather than a
+  documented clinical interaction. Effective dose in trials: Interaction caveat applies at any dose —
+  prescriber awareness required before use in clients on levothyroxine or other thyroid medications.'
+coaching_translation: Clients taking thyroid medication (levothyroxine, carbimazole, or similar) should
+  inform their prescribing doctor before adding guggul, as it may affect thyroid hormone levels and potentially
+  alter how levothyroxine is absorbed. This is a caution, not a contraindication, but requires medical
+  oversight.
+out_of_scope_notes: ''
+caveats:
+- Ongoing RCT (PMID 39255475) testing guggul vs levothyroxine — results not yet published
+- P-glycoprotein modulation is pharmacologically documented but clinical drug-interaction magnitude is
+  unknown
+- Traditional Ayurvedic use to stimulate thyroid function (for hypothyroidism) could increase T3/T4 in
+  patients already on replacement therapy
+- Avoid combining with thyroid medications without prescriber knowledge
+- Also caution with anticoagulants (warfarin, aspirin) and cyclosporin due to potential CYP/P-gp interactions
+linked_to_topics:
+- hypothyroidism
+linked_to_mechanisms: []
+linked_to_supplements:
+- guggul
+sources:
+- id: pubmed-39255475
+  location: Evaluation of Comparative Efficacy of Levothyroxine Versus Kshar Basti and Kanchanar Guggul
+    in the Treatment of Hypothyr
+- id: pubmed-18078436
+  location: 'Therapeutic effects of guggul and its constituent guggulsterone: cardiovascular benefits'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

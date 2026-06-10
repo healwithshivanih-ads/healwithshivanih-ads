@@ -32,6 +32,14 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - sour
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - cooling
+  - nourishing
 linked_to_topics:
   - hypertension
   - blood-pressure-management

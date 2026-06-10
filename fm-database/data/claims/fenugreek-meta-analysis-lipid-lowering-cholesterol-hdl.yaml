@@ -1,0 +1,38 @@
+slug: fenugreek-meta-analysis-lipid-lowering-cholesterol-hdl
+statement: A 2020 systematic review and meta-analysis of 15 RCTs found fenugreek supplementation significantly
+  lowered total cholesterol, LDL cholesterol, and triglycerides, and raised HDL cholesterol, compared
+  with controls; effects were more pronounced in diabetic subjects.
+evidence_tier: strong
+rationale: 'Meta-analysis of 15 RCTs with consistent, statistically significant pooled mean differences
+  on all four major lipid fractions; subgroup showing stronger effects in diabetic populations. Effective
+  dose in trials: Variable across studies; typically 5–25 g/day whole seed or powder; most trials 6–12
+  weeks.'
+coaching_translation: Controlled trials show methi seed can improve the full cholesterol profile — lowering
+  LDL and triglycerides while raising HDL. The benefit is especially clear in people who already have
+  insulin resistance or diabetes.
+out_of_scope_notes: ''
+caveats:
+- Wide variety of fenugreek preparations and doses across studies limits precise dosing guidance
+- Study quality variable; some trials lacked blinding
+- 'Hypoglycaemic and possible anticoagulant interaction: fenugreek may potentiate glucose-lowering and
+  anticoagulant drugs — monitoring warranted'
+- Long-term effects on cardiovascular outcomes not established
+linked_to_topics:
+- dyslipidemia
+- type-2-diabetes-mellitus
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+- vldl-to-ldl-cascade
+- reverse-cholesterol-transport
+- cholesterol-absorption-blockade
+- ldl-oxidation
+linked_to_supplements:
+- fenugreek
+- fenugreek-extract
+sources:
+- id: pubmed-32385866
+  location: 'Effect of fenugreek consumption on serum lipid profile: A systematic review and meta-analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

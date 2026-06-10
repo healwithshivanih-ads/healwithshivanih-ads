@@ -22,6 +22,16 @@ contraindications:
   - avoid milk during fever (worsens it / can cause loose stools)
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+  - sour
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - diaphoretic
+  - expectorant
+  - nervine
 preparation: >-
   Mix equal parts lemongrass, tulsi (holy basil) and fennel. Steep 1 tsp of the
   blend in boiling water for ~10 minutes, strain and drink warm to encourage a

@@ -5,6 +5,7 @@ aliases:
   - sesame-oil-ear-canal-soak
   - monthly-ear-oil-soak
 category: other
+route: external
 summary: >-
   Lad's monthly preventive practice for excess earwax — sleeping on one side with
   warm sesame oil filling the ear canal overnight. Sesame oil lubricates and
@@ -38,6 +39,15 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - nourishing
+  - unctuous
 linked_to_topics:
   - gastrointestinal-tract-overview
 linked_to_mechanisms:

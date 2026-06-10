@@ -4,6 +4,7 @@ aliases:
   - til-tel-maalish
   - mahanarayan-oil-massage
 category: other
+route: external
 summary: >-
   Warm sesame or mahanarayan oil rubbed directly onto a cramped or spasming
   muscle is the primary Ayurvedic first-response for vata-driven muscle cramps.
@@ -37,6 +38,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Muscle Cramps and Spasms"

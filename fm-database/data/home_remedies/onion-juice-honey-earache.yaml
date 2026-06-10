@@ -3,6 +3,7 @@ display_name: Onion Juice & Honey Ear Drops (Earache)
 aliases:
 - onion-honey-ear
 category: other
+route: external
 summary: 'Lad''s first-aid for earache: a few drops of a mixture of onion juice and honey (or
   3 drops of garlic oil) into the ear. Onion and garlic are antimicrobial and the warmth soothes
   the ache. A holding measure for a simple earache until it settles or can be seen.'
@@ -19,6 +20,16 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- expectorant
+- scraping
 preparation: Mix 1 tsp onion juice with 1/2 tsp honey; warm slightly to body temperature; put
   5-10 drops in the affected ear and plug loosely with cotton. (Garlic oil — 3 drops — is the
   alternative.)

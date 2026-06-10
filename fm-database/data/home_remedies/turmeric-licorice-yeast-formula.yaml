@@ -46,6 +46,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - anti-inflammatory
+  - alterative
+  - demulcent
 linked_to_topics:
   - candida-overgrowth
   - yeast-overgrowth

@@ -5,6 +5,7 @@ aliases:
   - nasal-crust-steam
   - kapha-nasal-steam
 category: other
+route: external
 summary: >-
   A warming steam inhalation using equal parts dried ginger, ajwain (carom
   seeds), and turmeric simmered in water. This combination specifically targets
@@ -43,6 +44,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - diaphoretic
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Nasal Crust"

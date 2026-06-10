@@ -4,6 +4,7 @@ aliases:
   - triphala-netra-prakshalana
   - triphala-eye-rinse
 category: other
+route: external
 summary: >-
   A traditional cooled triphala decoction used as an eye rinse for tired,
   irritated, strained or burning eyes — common with screen work and around age
@@ -23,6 +24,15 @@ contraindications:
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - mild-laxative
+  - rasayana
 preparation: >-
   Boil 1 tsp triphala in 1 cup of water for ~3 minutes. Cool completely, then
   strain through double/triple-folded cheesecloth or a paper coffee filter so no

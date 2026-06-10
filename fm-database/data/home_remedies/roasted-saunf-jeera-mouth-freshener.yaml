@@ -21,6 +21,15 @@ balances_dosha:
   - vata
   - kapha
 aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
 preparation: >-
   Dry-roast equal parts fennel (saunf) and cumin (jeera) seeds until fragrant.
   Chew about 1 tsp of the mix after lunch and dinner. (Fennel seeds alone, or a

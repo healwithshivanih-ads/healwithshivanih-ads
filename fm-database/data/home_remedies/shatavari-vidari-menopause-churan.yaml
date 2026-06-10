@@ -47,6 +47,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - alterative
+  - cooling
+  - rasayana
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Menopause Problems — Natural Hormone Sources"

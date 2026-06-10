@@ -1,0 +1,46 @@
+slug: cinnamon-meta-analysis-cardiovascular-metabolic-risk-2025
+statement: A 2025 GRADE-assessed systematic review and meta-analysis of 49 studies found cinnamon supplementation
+  significantly improved a broad cardiovascular risk factor profile, including reductions in fasting glucose
+  (SMD −1.28), HbA1c (SMD −0.71), HOMA-IR (SMD −0.54), LDL-C (SMD −0.71), total cholesterol (SMD −1.15),
+  triglycerides (SMD −0.91), CRP (SMD −0.78), systolic and diastolic blood pressure, and waist circumference,
+  while raising HDL-C (SMD +0.56).
+evidence_tier: strong
+rationale: 'Large GRADE-assessed umbrella/meta-analysis (49 studies) with significant effects across glycaemic,
+  lipid, inflammatory, and blood pressure markers; comprehensive cardiovascular risk scope. Effective
+  dose in trials: Varied across 49 studies; most effective cardiovascular benefit seen at 1–3 g/day powder
+  or 120–500 mg extract; 4–16 weeks.'
+coaching_translation: A major 2025 pooled analysis of 49 studies confirms cinnamon's value beyond blood
+  sugar — it also lowers LDL, triglycerides, blood pressure, and a key inflammation marker (CRP), while
+  raising good cholesterol (HDL). This makes it particularly relevant for clients with metabolic syndrome
+  or multiple cardiovascular risk factors.
+out_of_scope_notes: ''
+caveats:
+- High heterogeneity across studies; effect sizes differ by dose, species, and population
+- Blood pressure reductions were significant but of uncertain clinical magnitude in healthy populations
+- Cassia cinnamon coumarin risk at doses >1 g/day long-term; Ceylon (true) cinnamon preferred for therapeutic
+  use
+- Hypoglycaemic and possible antiplatelet drug interaction — monitor if combining with medications
+- Publication bias possible given large number of studies with positive findings
+linked_to_topics:
+- dyslipidemia
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- insulin-resistance-metabolic-syndrome
+- blood-sugar-regulation
+linked_to_mechanisms:
+- insulin-resistance
+- vldl-to-ldl-cascade
+- reverse-cholesterol-transport
+- ldl-oxidation
+- postprandial-glucose-spike
+- small-dense-ldl-atherogenesis
+linked_to_supplements:
+- cinnamon
+sources:
+- id: pubmed-40611215
+  location: 'The effect of cinnamon supplementation on cardiovascular risk factors in adults: a GRADE
+    assessed systematic review, dos'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

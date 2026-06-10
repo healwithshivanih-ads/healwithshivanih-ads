@@ -24,6 +24,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Soak 10 fresh dates in a quart jar of ghee. Add 1 tsp ginger, 1/8 tsp cardamom,
   and a pinch of saffron. Cover and keep in a warm place for at least 2 weeks.

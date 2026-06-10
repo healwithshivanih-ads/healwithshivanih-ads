@@ -34,6 +34,9 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+virya: cooling
+ayurvedic_actions:
+  - dipana
 preparation: >-
   On the chosen fast day, drink warm (not hot, not cold) water throughout
   the day — approximately 1 to 2 quarts (roughly 1-2 litres) in small

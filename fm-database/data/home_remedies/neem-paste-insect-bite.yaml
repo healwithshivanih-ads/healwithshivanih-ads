@@ -5,6 +5,7 @@ aliases:
   - neem-powder-paste-sting
   - nimba-bite-remedy
 category: other
+route: external
 summary: >-
   Topical neem paste is an Ayurvedic antidote for insect venoms and bites.
   Neem (Azadirachta indica / nimba) has potent antimicrobial, anti-
@@ -28,6 +29,14 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+rasa:
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - alterative
+  - antimicrobial
 preparation: >-
   To make neem paste: mix a small amount of neem powder with just enough
   water to form a thick paste. Apply directly to the bite or sting site.

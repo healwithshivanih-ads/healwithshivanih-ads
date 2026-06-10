@@ -29,6 +29,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sour
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - nourishing
 preparation: >-
   Mix 2-3 tablespoons of fresh plain yogurt with 1 cup of water (ratio
   roughly 1:4 yogurt to water). Add a generous pinch of roasted cumin powder

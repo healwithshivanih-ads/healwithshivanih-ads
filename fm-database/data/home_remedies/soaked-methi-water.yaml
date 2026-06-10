@@ -30,6 +30,15 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: |
   Soak 1 tsp whole methi (fenugreek) seeds in ~1 cup water overnight
   (8-10 hours). In the morning, strain and drink the water on an empty

@@ -5,6 +5,7 @@ aliases:
   - eranda-breast-massage
   - castor-oil-mastitis-prevention
 category: other
+route: external
 summary: >-
   Lad recommends a gentle daily breast massage with warm castor oil to relieve
   hormonal breast soreness, lymphatic congestion, and to prevent stagnation
@@ -30,6 +31,16 @@ contraindications:
 balances_dosha:
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - nourishing
+  - laxative
+  - anti-inflammatory
 preparation: >-
   Warm 1 teaspoon of castor oil gently (place the bottle in warm water for
   a minute). Starting from the sternum (breastbone), use your palm and fingers

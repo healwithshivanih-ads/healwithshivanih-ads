@@ -1,0 +1,35 @@
+slug: shatavari-rct-menopausal-symptoms-hot-flash-sleep-2026
+statement: A 2026 double-blind RCT (n=60 women across pre-, peri- and post-menopausal stages) found standardised
+  Asparagus racemosus extract (SheVari4, 100 mg/day) produced a 43% reduction in Menopausal Rating Scale
+  scores at 4 weeks and 71% reduction at 8 weeks (p<0.001), with >90% improvement in hot flash occurrence
+  and sleep quality versus placebo.
+evidence_tier: plausible_emerging
+rationale: 'RCT across menopausal stages with validated MRS scale and clinically meaningful response rates;
+  however single study with proprietary extract and modest sample size. Effective dose in trials: 100
+  mg/day standardised root extract (SheVari4), 8 weeks.'
+coaching_translation: Evidence suggests shatavari may significantly reduce hot flashes, improve sleep,
+  and ease overall menopausal symptoms across different stages of menopause — with benefits appearing
+  within 4 weeks.
+out_of_scope_notes: ''
+caveats:
+- Single RCT with proprietary extract (SheVari4) — results may not generalise to all shatavari products
+- n=60 across three menopausal stages means subgroup numbers are small
+- Gastrointestinal discomfort was the most common adverse event (mild, transient)
+- Authors have industry affiliation (Cepham Inc.) — independent replication important
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- sleep
+linked_to_mechanisms:
+- fsh-elevation-aging-cascade
+- estrogen-decline
+linked_to_supplements:
+- shatavari
+sources:
+- id: pubmed-41982372
+  location: 'Asparagus racemosus Root Extract (SheVari4®) Alleviates Menopausal Symptoms in Pre-, Peri-,
+    and Post-menopausal Healthy '
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

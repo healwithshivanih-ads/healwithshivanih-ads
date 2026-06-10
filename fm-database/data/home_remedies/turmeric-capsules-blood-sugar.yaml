@@ -38,6 +38,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - vata
+rasa:
+  - pungent
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - anti-inflammatory
+  - alterative
+  - dipana
 linked_to_topics:
   - type-2-diabetes
   - type-2-diabetes-mellitus

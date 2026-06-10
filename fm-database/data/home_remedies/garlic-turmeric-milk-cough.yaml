@@ -32,6 +32,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - carminative
+  - analgesic
+  - dipana
 preparation: >-
   Peel and roughly chop 1 clove of fresh garlic. Place in a small saucepan
   with 1 cup of milk. Bring to a gentle boil, then simmer for 2-3 minutes

@@ -4,6 +4,7 @@ aliases:
   - neem-tea-tree-nail-treatment
   - toenail-infection-oil-soak
 category: other
+route: external
 summary: >-
   Lad recommends soaking the foot in warm water to soften tough toenails, then
   applying a half-and-half blend of tea tree oil and neem oil directly under
@@ -40,6 +41,16 @@ balances_dosha:
   - kapha
   - pitta
 aggravates_dosha: []
+rasa:
+  - pungent
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - antimicrobial
+  - alterative
+  - dipana
 linked_to_topics:
   - immune-support
   - fungal-overgrowth

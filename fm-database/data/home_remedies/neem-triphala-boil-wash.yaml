@@ -5,6 +5,7 @@ aliases:
   - triphala-skin-wash-boils
   - neem-boil-paste
 category: other
+route: external
 summary: >-
   A two-pronged topical protocol from Lad for treating boils — painful,
   pus-filled skin inflammations. Freshly brewed triphala tea is used to wash
@@ -29,6 +30,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - alterative
+  - antimicrobial
+  - mild-laxative
 preparation: >-
   TRIPHALA WASH: Boil 1 teaspoon of triphala powder in 1 cup of water for
   5 minutes. Allow to cool to room temperature. Use this tea to wash the

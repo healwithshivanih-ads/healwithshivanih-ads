@@ -29,6 +29,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - kapha-clearing
 preparation: >-
   Ready-made from reputable Ayurvedic brands or made fresh by grinding
   equal parts dried ginger, black peppercorns, and pippali (long pepper)

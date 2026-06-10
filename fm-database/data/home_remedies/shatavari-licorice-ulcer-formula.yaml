@@ -44,6 +44,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - demulcent
+  - expectorant
+  - rasayana
 linked_to_topics:
   - peptic-ulcer-disease
   - acid-reflux-and-cardiac-sphincter-weakness

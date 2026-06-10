@@ -23,6 +23,16 @@ contraindications:
   - true milk allergy (use plant milk instead)
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - anti-inflammatory
 preparation: |
   1 cup warm milk (cow, almond, oat, coconut), 1/4 tsp ground turmeric,
   pinch of black pepper, optional 1/4 tsp ground ginger, 1 cardamom pod

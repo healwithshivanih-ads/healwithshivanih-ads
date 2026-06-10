@@ -1,0 +1,43 @@
+slug: gymnema-sylvestre-meta-analysis-glycemic-control-t2dm
+statement: A 2021 systematic review and meta-analysis of 10 studies (n=419 participants) found Gymnema
+  sylvestre supplementation significantly reduced fasting blood glucose (SMD 1.57 mg/dl), postprandial
+  blood glucose (SMD 1.04 mg/dl), and HbA1c (SMD 3.91%) from baseline in type 2 diabetes patients, as
+  well as triglycerides and total cholesterol.
+evidence_tier: plausible_emerging
+rationale: 'Meta-analysis of 10 studies with statistically significant effects on all three glycaemic
+  markers and two lipid markers; however, very high heterogeneity (I² 80–99%) on most outcomes and comparison
+  is versus baseline (not all placebo-controlled), reducing confidence. Effective dose in trials: Typically
+  400–800 mg/day leaf extract standardised to 25% gymnemic acid; studies ranged 3–24 months.'
+coaching_translation: Gurmar (Gymnema sylvestre) has been used in Ayurveda for blood sugar — and controlled
+  studies back this up, showing meaningful reductions in fasting sugar, post-meal sugar, and HbA1c. It
+  also appears to lower triglycerides and cholesterol. The evidence is promising but not yet as consistent
+  as for some other herbs.
+out_of_scope_notes: ''
+caveats:
+- Extremely high heterogeneity (I² up to 99%) across outcomes — results should be interpreted cautiously
+- Comparison was against baseline in many studies, not all placebo-controlled
+- 'Hypoglycaemic interaction: Gymnema can potentiate antidiabetic medications (metformin, insulin, sulphonylureas)
+  — close glucose monitoring required if combining'
+- Gymnema may cause hypoglycaemia at high doses; should not replace prescribed diabetes medications
+- Extract type and dose varied widely; gymnemic acid content often not standardised across trials
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- blood-sugar-regulation
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- postprandial-glucose-spike
+- pancreatic-beta-cell-dysfunction
+- glycemic-load-reduction
+- beta-cell-exhaustion
+linked_to_supplements:
+- gymnema-sylvestre-extract
+sources:
+- id: pubmed-34467577
+  location: 'The effect of Gymnema sylvestre supplementation on glycemic control in type 2 diabetes patients:
+    A systematic review and'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -44,6 +44,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - diuretic
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Rashes and Hives"

@@ -5,6 +5,7 @@ aliases:
   - nasal-saline-drops
   - namak-pani-nasal
 category: other
+route: external
 summary: >-
   A mild saline solution used as nose drops or a nasal wash to drain and
   clear the sinuses — Lad's simplest and most universally safe sinus remedy.
@@ -38,6 +39,13 @@ balances_dosha:
   - kapha
   - vata
 aggravates_dosha: []
+rasa:
+  - salty
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - decongestant
+  - kapha-clearing
 linked_to_topics:
   - sinusitis
   - common-cold

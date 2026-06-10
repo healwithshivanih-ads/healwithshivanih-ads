@@ -29,6 +29,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - salty
+  - bitter
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Simmer 1 teaspoon dried licorice root pieces in 1.5 cups water for 8-10
   minutes, strain. Drink warm.

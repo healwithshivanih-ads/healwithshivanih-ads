@@ -18,6 +18,15 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+rasa:
+- sweet
+- bitter
+- astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+- nourishing
+- unctuous
 preparation: Chew ~1 tbsp of (ideally soaked or lightly roasted) white or black sesame seeds
   daily, or sprinkle over food. Black sesame is the traditional choice for hair.
 typical_dose: ~1 tablespoon daily

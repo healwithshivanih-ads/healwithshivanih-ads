@@ -15,6 +15,15 @@ balances_dosha:
 - vata
 - pitta
 aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Soak 1 tbsp fennel seeds in 1 glass water overnight (or simmer 5 min); strain.
 typical_dose: 1 glass in the morning or sipped after meals.
 duration: Daily; safe long-term.

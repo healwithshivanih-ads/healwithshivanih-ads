@@ -53,7 +53,7 @@ ayurvedic_actions:
 - alterative
 - vulnerary
 - antibacterial
-evidence_tier: plausible_emerging
+evidence_tier: strong
 linked_to_mechanisms: []
 sources:
 - id: vitaone-cardiometabolic-toolkit

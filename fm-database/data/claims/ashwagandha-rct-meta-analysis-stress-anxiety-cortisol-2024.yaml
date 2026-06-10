@@ -1,0 +1,34 @@
+slug: ashwagandha-rct-meta-analysis-stress-anxiety-cortisol-2024
+statement: A 2024 systematic review and meta-analysis of 9 RCTs (n=558) found ashwagandha formulations
+  significantly reduced Perceived Stress Scale scores (MD = -4.72), Hamilton Anxiety Scale scores (MD
+  = -2.19), and serum cortisol (MD = -2.58 nmol/L) compared to placebo.
+evidence_tier: strong
+rationale: 'Meta-analysis of 9 RCTs with pooled effects on validated stress and anxiety scales plus objective
+  cortisol biomarker; most trials 8 weeks. Effective dose in trials: 300–600 mg/day standardised root
+  extract, ~8 weeks.'
+coaching_translation: Evidence suggests ashwagandha can meaningfully lower perceived stress, anxiety,
+  and the stress hormone cortisol over about 8 weeks. A meta-analysis of 9 controlled trials supports
+  this.
+out_of_scope_notes: ''
+caveats:
+- Most trials were 8 weeks; long-term safety is not yet well established
+- Mild to moderate adverse events (gastrointestinal, drowsiness) reported in 4 of 9 studies
+- Effect sizes varied across different extract formulations and doses
+- Several trials used proprietary funded extracts (KSM-66, Sensoril), limiting generalisability across
+  products
+linked_to_topics:
+- chronic-stress
+- anxiety
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: pubmed-39348746
+  location: 'Effects of Ashwagandha (Withania Somnifera) on stress and anxiety: A systematic review and
+    meta-analysis.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

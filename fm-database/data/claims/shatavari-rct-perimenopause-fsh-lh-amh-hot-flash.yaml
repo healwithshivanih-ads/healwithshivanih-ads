@@ -1,0 +1,36 @@
+slug: shatavari-rct-perimenopause-fsh-lh-amh-hot-flash
+statement: A 2025 double-blind RCT (n=50 perimenopausal women) found standardised Asparagus racemosus
+  (shatavari) root extract (CL22205, 200 mg/day for 120 days) significantly reduced total Menopausal Rating
+  Scale scores, hot flash severity, and menstrual symptoms (dysmenorrhea), and decreased serum FSH by
+  56.3% and LH by 34.3% while increasing AMH by 188.1% (all p<0.001) vs placebo.
+evidence_tier: plausible_emerging
+rationale: 'Single RCT with meaningful hormonal and symptomatic outcomes in perimenopausal women; study
+  was adequately powered (n=50) with validated scales, but needs independent replication. Effective dose
+  in trials: 200 mg/day standardised root extract (CL22205), 120 days.'
+coaching_translation: Evidence suggests shatavari may help ease hot flashes, period pain, and other perimenopause
+  symptoms while supporting ovarian reserve markers. A well-designed trial found it significantly outperformed
+  placebo over 4 months.
+out_of_scope_notes: ''
+caveats:
+- Single RCT — independent replication is needed before firm clinical conclusions
+- Proprietary extract (CL22205) — may not generalise to all shatavari products
+- n=50 is modest; larger trials are needed
+- AMH increase of 188% is striking and requires confirmation — may reflect different baseline characteristics
+- Study conducted in India; may not generalise to all populations
+linked_to_topics:
+- perimenopause-and-menopause
+- perimenopause
+linked_to_mechanisms:
+- fsh-elevation-aging-cascade
+- estrogen-decline
+- low-progesterone
+linked_to_supplements:
+- shatavari
+sources:
+- id: pubmed-40434025
+  location: A StandardizedRoot Extract Improves Hormonal Balance and Menstrual Health and Reduces Vasomotor
+    Symptoms in Perimenopaus
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

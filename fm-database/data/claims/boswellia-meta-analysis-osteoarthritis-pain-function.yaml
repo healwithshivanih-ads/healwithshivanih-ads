@@ -1,0 +1,37 @@
+slug: boswellia-meta-analysis-osteoarthritis-pain-function
+statement: 'A 2020 systematic review and meta-analysis of 7 RCTs (n=545 OA patients) found Boswellia serrata
+  extract significantly reduced pain (VAS: WMD −8.33, 95% CI −11.19 to −5.46; WOMAC pain: WMD −14.22,
+  95% CI −22.34 to −6.09), stiffness (WOMAC stiffness WMD −10.04), and improved joint function (WOMAC
+  function WMD −10.75; Lequesne index WMD −2.27) compared to control.'
+evidence_tier: strong
+rationale: 'Meta-analysis of 7 RCTs with significant pooled effects across multiple validated OA outcome
+  measures (VAS, WOMAC, Lequesne); treatment duration ≥4 weeks recommended based on pooled data. Effective
+  dose in trials: Boswellia serrata extract standardised to ≥30% AKBA; typical dose 100–400 mg AKBA/day;
+  minimum 4 weeks treatment.'
+coaching_translation: Good-quality trial evidence shows Boswellia extract meaningfully reduces joint pain
+  and stiffness and improves mobility in osteoarthritis. It works via a different mechanism than curcumin
+  (5-LOX inhibition) and is often well tolerated.
+out_of_scope_notes: ''
+caveats:
+- Small number of trials (7 RCTs, n=545); more large independent RCTs needed
+- Heterogeneity in Boswellia extract types and AKBA content between studies
+- Most trials short (4–12 weeks); long-term safety data limited
+- Some trials had industry involvement
+- Caution with anticoagulants — Boswellia may have mild antiplatelet effects
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- arachidonic-acid-cascade
+linked_to_supplements:
+- boswellia
+sources:
+- id: pubmed-32680575
+  location: 'Effectiveness of Boswellia and Boswellia extract for osteoarthritis patients: a systematic
+    review and meta-analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

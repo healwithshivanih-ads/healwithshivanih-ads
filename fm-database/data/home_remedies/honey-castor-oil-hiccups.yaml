@@ -16,6 +16,16 @@ contraindications:
 balances_dosha:
 - vata
 aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+- astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Mix 2 parts honey with 1 part castor oil (e.g. 1 tsp honey + 1/2 tsp castor oil)
   and take slowly. Follow with a few rounds of slow, deep breathing.
 typical_dose: The small mixture, once; repeat once if needed

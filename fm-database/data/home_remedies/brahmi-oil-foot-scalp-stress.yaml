@@ -5,6 +5,7 @@ aliases:
   - brahmi-tel-talaad-mastaka
   - foot-scalp-brahmi-oil
 category: other
+route: external
 summary: >-
   Lad recommends rubbing brahmi oil on the soles of the feet and scalp at
   bedtime as an Ayurvedic stress-relief and grounding practice. The soles of
@@ -43,6 +44,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - medhya
+  - nervine
+  - rasayana
 linked_to_topics:
   - stress-management
   - chronic-stress

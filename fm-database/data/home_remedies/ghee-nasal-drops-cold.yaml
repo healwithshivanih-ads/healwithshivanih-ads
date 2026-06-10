@@ -5,6 +5,7 @@ aliases:
   - clarified-butter-nasal-drops
   - ayurvedic-nose-drops
 category: other
+route: external
 summary: >-
   A traditional Ayurvedic nasya (nasal application) technique Lad recommends
   for relieving the irritation, sneezing, and dryness of a cold — placing 3 to
@@ -28,6 +29,13 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - nourishing
+  - unctuous
 preparation: >-
   Gently warm a small amount of pure ghee (clarified butter) until just
   liquefied. Using a dropper or clean fingertip, apply 3 to 5 drops into each

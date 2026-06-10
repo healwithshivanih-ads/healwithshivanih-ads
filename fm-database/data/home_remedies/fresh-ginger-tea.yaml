@@ -26,6 +26,14 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
 preparation: >-
   Slice or smash a 1-inch piece of fresh ginger root. Simmer in 1.5 cups
   water for 7-8 minutes. Strain. Optionally add a squeeze of lemon and

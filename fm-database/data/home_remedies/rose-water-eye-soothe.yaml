@@ -4,6 +4,7 @@ aliases:
   - gulab-jal-eye-drops
   - rose-water-eye-rinse
 category: other
+route: external
 summary: >-
   Pure rose water used as a cooling eye soother for irritated, tired or burning
   eyes — a gentle pitta-pacifying remedy Lad recommends for eye irritation and
@@ -21,6 +22,15 @@ contraindications:
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - nervine
+  - cooling
 preparation: >-
   Put a few drops (about 3 drops) of pure rose water into each affected eye, or
   make a rinse by adding ~5 drops of pure rose water to 1 ounce of distilled/

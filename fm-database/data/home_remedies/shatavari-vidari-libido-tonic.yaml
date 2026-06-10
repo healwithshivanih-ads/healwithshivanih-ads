@@ -46,6 +46,15 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - rasayana
+  - galactagogue
+  - aphrodisiac
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Low Libido — For Women; Natural Hormone Sources"

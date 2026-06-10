@@ -133,6 +133,22 @@ class HomeRemedyCategory(str, Enum):
     other = "other"
 
 
+class RemedyRoute(str, Enum):
+    """How a home remedy is USED — orthogonal to `category` (which is the
+    preparation type). `internal` = eaten / drunk / swallowed (teas, churans,
+    infused waters, juices, kitchen remedies). `external` = applied to the body
+    (oil massage / abhyanga, nasya nasal drops, oil pulling, eyewash, ear oil,
+    steam, foot soaks, compresses, pastes, hair oils, gargles).
+
+    Lets the system separate "things you eat/drink" from "things you do to the
+    body": the dosha FOOD rules + meal logic only consider internal remedies,
+    dinacharya is mostly external, and the letter frames each correctly
+    (drink vs apply). Defaults to `internal` (the majority — teas/waters/churans).
+    """
+    internal = "internal"
+    external = "external"
+
+
 class Dosha(str, Enum):
     """The three Ayurvedic doshas (elemental constitutions).
 

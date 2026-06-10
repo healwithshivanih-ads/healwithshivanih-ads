@@ -22,6 +22,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
+- nervine
 preparation: '1h pre-flight: 2 size-00 ginger capsules with water. In-flight: 2-3 cups water
   every 1-2h, no coffee/caffeine. On arrival: warm sesame-oil massage to scalp + soles, then
   1 cup hot milk with a pinch each of nutmeg and ginger. Optional arrival tea: equal parts chamomile,

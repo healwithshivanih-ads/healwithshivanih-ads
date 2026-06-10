@@ -314,6 +314,7 @@ def build_subgraph(
             "contraindications": hr.contraindications,
             "preparation": hr.preparation[:200],
             "typical_dose": hr.typical_dose[:150],
+            "route": hr.route.value,   # internal (eaten/drunk) | external (applied to the body)
             "balances_dosha": [d.value for d in hr.balances_dosha],
             "aggravates_dosha": [d.value for d in hr.aggravates_dosha],
             "evidence_tier": hr.evidence_tier.value,

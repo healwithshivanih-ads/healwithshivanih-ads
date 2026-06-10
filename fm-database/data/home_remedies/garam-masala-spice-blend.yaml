@@ -24,6 +24,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sour
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - analgesic
 preparation: >-
   Best made fresh: dry-roast 2 tbsp coriander seeds, 2 tbsp cumin seeds,
   1 tbsp black peppercorns, 8 cloves, 4 green cardamom pods, 1 black

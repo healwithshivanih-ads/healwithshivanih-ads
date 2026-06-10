@@ -1,0 +1,36 @@
+slug: boswellia-rct-cartilage-biomarkers-inflammatory-oa
+statement: A 2025 double-blind, multicenter RCT (n=62, 90 days) of standardised Boswellia serrata gum
+  resin (300 mg) found significant reductions in serum inflammatory biomarkers (IL-7, IL-1, IL-6, hs-CRP,
+  TNF-α, ESR) and cartilage degeneration markers (CTX-II, COMP, MMP-3), alongside increased collagen synthesis
+  markers (PIIANP, PIICP), with no adverse effects detected.
+evidence_tier: plausible_emerging
+rationale: 'Single well-designed RCT from India; mechanistic biomarker data (inflammatory + cartilage
+  markers) adds biological plausibility; combination product (also contains celery seed extract) limits
+  attribution to Boswellia alone. Effective dose in trials: 300 mg standardised Boswellia serrata gum
+  resin + 250 mg Apium graveolens seed extract daily for 90 days.'
+coaching_translation: Evidence suggests Boswellia not only reduces joint pain but may actively reduce
+  inflammation markers and support cartilage regeneration — particularly relevant for clients with early-to-moderate
+  OA.
+out_of_scope_notes: ''
+caveats:
+- Combination product (Boswellia + celery seed); independent Boswellia contribution cannot be isolated
+- Single RCT (n=62); needs replication
+- Industry involvement (MPREX Healthcare / Phytoveda)
+- 90-day study; ongoing effects unknown
+linked_to_topics:
+- osteoarthritis
+- joint-pain
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- oxidative-stress
+linked_to_supplements:
+- boswellia
+sources:
+- id: pubmed-39875757
+  location: Efficacy and Safety of Boswellia serrata and Apium graveolens L. Extract Against Knee Osteoarthritis
+    and Cartilage Degen
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,12 +1,22 @@
 slug: bhringraj-oil-scalp-massage
 display_name: Bhringraj Oil Scalp Massage
 category: kitchen_remedy
+route: external
 summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Flesh out before clinical
   use — confirm indications, preparation, contraindications.
 indications: []
 contraindications: []
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+- sweet
+- bitter
+- astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+- rasayana
+- alterative
 preparation: ''
 typical_dose: ''
 duration: ''

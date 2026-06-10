@@ -31,6 +31,13 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - nourishing
+  - unctuous
 preparation: >-
   Warm 1 cup of whole milk until hot but not boiling. Stir in 1 to 2 teaspoons
   of pure ghee (clarified butter) until melted. Drink warm at bedtime.

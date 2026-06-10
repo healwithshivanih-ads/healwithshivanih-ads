@@ -5,6 +5,7 @@ aliases:
   - tulsi-bhap
   - tulsi-inhalation
 category: kitchen_remedy
+route: external
 summary: >-
   A simple, generations-old Indian household remedy — fresh tulsi (holy basil)
   leaves dropped into a bowl of just-boiled water, then inhaled under a towel
@@ -25,6 +26,15 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - pungent
+  - bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - diaphoretic
+  - expectorant
+  - nervine
 preparation: >-
   Bring 1 litre water to a boil. Off heat, drop in 10-15 fresh tulsi leaves
   (and optionally a teaspoon of ajwain or 2 cloves). Cover head with a towel,

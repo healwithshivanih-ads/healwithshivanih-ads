@@ -4,6 +4,7 @@ aliases:
   - mustard-seed-fomentation
   - rai-water-soak
 category: other
+route: external
 summary: >-
   A warming fomentation soak for stiff, aching joints and sore muscles — ground
   mustard seeds steeped (like a teabag) in hot-to-bearable water, in which the
@@ -25,6 +26,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - pungent
+  - bitter
+  - astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Wrap 2 tablespoons of mustard seeds in a handkerchief or cheesecloth to make a
   "teabag" and steep it in a basin/bucket of hot (bearable) water. Soak the

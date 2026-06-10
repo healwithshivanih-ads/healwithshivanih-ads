@@ -39,6 +39,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - sour
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Menopause Problems — For Hot Flashes"

@@ -35,6 +35,16 @@ balances_dosha:
   - pitta
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - medhya
+  - nervine
+  - dipana
 linked_to_topics:
   - hypoglycemia
   - blood-sugar-regulation

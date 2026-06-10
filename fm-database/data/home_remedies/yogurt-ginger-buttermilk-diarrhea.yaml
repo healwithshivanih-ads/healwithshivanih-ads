@@ -21,6 +21,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+rasa:
+- sweet
+- sour
+- astringent
+virya: cooling
+vipaka: sour
+ayurvedic_actions:
+- dipana
+- carminative
+- nourishing
 preparation: Blend 1/2 cup fresh yogurt with 1/2 cup water and ~1/8 tsp grated fresh ginger
   (a pinch of roasted cumin optional). Sip slowly. Rehydrate with extra fluids alongside.
 typical_dose: 1 cup, 2-3 times a day

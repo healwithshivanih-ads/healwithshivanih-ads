@@ -1,0 +1,35 @@
+slug: triphala-polyphenols-gut-brain-bdnf-preclinical-mechanisms-only
+statement: A 2023 narrative review of polyphenol-rich botanicals (including triphala's constituent amla/Phyllanthus
+  emblica) proposes mechanisms for cognitive and stress-resilience benefits via modulation of BDNF, serotonergic
+  signalling, and gut microbiota–brain axis; however, the authors explicitly note that human clinical
+  trials for triphala as a complete formula on these endpoints remain lacking.
+evidence_tier: fm_specific_thin
+rationale: 'Mechanistic review only — no clinical trials for triphala on gut-brain or cognitive endpoints;
+  evidence is preclinical and ingredient-level, not formula-level. Effective dose in trials: No established
+  clinical dose for gut-brain/cognitive effects; traditional triphala churna dose is 3–6 g/day or 500
+  mg–1 g extract.'
+coaching_translation: The ingredients in triphala have well-researched mechanisms for supporting gut-brain
+  communication and resilience, but we don't yet have clinical trials testing the complete triphala formula
+  for mood or cognitive effects — it's biologically plausible, not yet proven.
+out_of_scope_notes: ''
+caveats:
+- Narrative review — no meta-analysis or pooled effect sizes
+- Evidence is for isolated polyphenols and constituent ingredients, not triphala as a formula
+- Human RCT evidence for triphala on gut-brain/cognitive endpoints is absent
+- Mechanisms are inferred from in vitro and animal studies
+linked_to_topics:
+- gut-dysbiosis
+- gut-microbiome
+linked_to_mechanisms:
+- gut-microbiome-modulation
+- gut-microbiome-glucose-regulation
+linked_to_supplements:
+- triphala
+sources:
+- id: pubmed-37377497
+  location: Insights into the potential benefits of triphala polyphenols toward the promotion of resilience
+    against stress-induced d
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

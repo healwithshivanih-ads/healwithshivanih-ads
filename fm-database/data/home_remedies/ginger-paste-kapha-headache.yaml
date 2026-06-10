@@ -4,6 +4,7 @@ aliases:
   - adrak-paste-forehead
   - ginger-powder-sinus-headache
 category: other
+route: external
 summary: >-
   A warming paste of ginger powder and water applied to the forehead, bridge of
   the nose, and cheekbones for kapha-type headaches — the dull, heavy, frontal
@@ -37,6 +38,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - nervine
 linked_to_topics:
   - sinusitis
   - tension-type-headache

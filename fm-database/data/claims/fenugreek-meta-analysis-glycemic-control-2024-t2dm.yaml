@@ -1,0 +1,38 @@
+slug: fenugreek-meta-analysis-glycemic-control-2024-t2dm
+statement: A 2024 systematic review and meta-analysis of RCTs in type 2 diabetes patients found fenugreek
+  supplementation significantly reduced fasting blood sugar, HbA1c, and postprandial glucose at doses
+  of 2–5 g/day in powder form, confirming glycaemic benefit across multiple recent trials.
+evidence_tier: strong
+rationale: 'Dedicated updated meta-analysis restricted to T2DM RCTs, published 2024; consistent significant
+  reductions in three primary glycaemic markers. Effective dose in trials: 2–5 g/day fenugreek seed powder,
+  oral; duration varied across included RCTs.'
+coaching_translation: Multiple controlled trials confirm that a few grams of methi seed powder daily can
+  lower fasting sugar, after-meal sugar spikes, and HbA1c. Small amounts used in Indian cooking (dal,
+  roti) or as a supplement both appear beneficial.
+out_of_scope_notes: ''
+caveats:
+- Effective dose in this analysis was 2–5 g/day powder — kitchen amounts are typically lower
+- 'Hypoglycaemic interaction: can amplify effects of diabetes medications; blood glucose monitoring recommended
+  when adding fenugreek to a medicated regimen'
+- Small trial sizes in some included studies
+- High heterogeneity in preparation methods limits precise dosing guidance
+linked_to_topics:
+- type-2-diabetes
+- type-2-diabetes-mellitus
+- blood-sugar-regulation
+linked_to_mechanisms:
+- insulin-resistance
+- postprandial-glucose-spike
+- glycemic-load-reduction
+- hepatic-insulin-sensitivity
+linked_to_supplements:
+- fenugreek
+- fenugreek-extract
+sources:
+- id: pubmed-38846904
+  location: 'Enhancing glycaemic control and promoting cardiovascular health: the therapeutic potential
+    of fenugreek (Trigonella foen'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

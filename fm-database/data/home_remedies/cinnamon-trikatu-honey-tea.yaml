@@ -26,6 +26,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - kapha-clearing
 preparation: >-
   Steep 1 tsp cinnamon with 1/4 tsp trikatu in 1 cup boiling water for ~10
   minutes. Let it cool to warm, then stir in 1 tsp honey before drinking.

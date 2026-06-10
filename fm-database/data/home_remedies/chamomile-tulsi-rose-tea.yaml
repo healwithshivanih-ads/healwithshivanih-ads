@@ -21,6 +21,16 @@ contraindications:
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Mix chamomile 1 part, tulsi (holy basil) 1 part, and rose-petal powder 2 parts.
   Steep 1/2 tsp of the blend in 1 cup hot water, let it cool slightly, and drink.

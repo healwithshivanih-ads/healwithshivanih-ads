@@ -1,0 +1,35 @@
+slug: bacopa-nma-executive-function-language-older-adults
+statement: A 2026 systematic review and network meta-analysis of 25 RCTs (n=1,861) in healthy older adults
+  found bacopa monnieri compound ranked in the top three interventions for executive function (SUCRA 91.3%)
+  and top two for language function (SUCRA 93%) among 10 plant-based interventions.
+evidence_tier: plausible_emerging
+rationale: 'Network meta-analysis in older adults specifically, covering executive function and language
+  domains; bacopa shows consistent high ranking but the direct RCT evidence base in this subgroup is smaller
+  than in mixed-age populations. Effective dose in trials: Dosing varied across included trials; most
+  used 300–450 mg/day of standardised extract over 12 weeks.'
+coaching_translation: Evidence suggests bacopa may be particularly helpful for older adults wanting to
+  maintain brain sharpness — it ranked highly for executive function (planning, mental flexibility) and
+  language abilities compared to other herbal options.
+out_of_scope_notes: ''
+caveats:
+- Network meta-analysis relies on indirect comparisons across heterogeneous trials
+- Smaller number of RCTs per comparison in the older adult subgroup limits precision
+- Long-term safety data in older adults is limited
+- Bacopa compounds studied varied — 'bacopa monnieri compound' may include multi-herb combinations in
+  some trials
+linked_to_topics:
+- cognitive-decline
+linked_to_mechanisms:
+- neuroplasticity
+- bdnf-upregulation
+- hippocampal-neuroplasticity
+linked_to_supplements:
+- bacopa-monnieri
+sources:
+- id: pubmed-41640686
+  location: 'The effect of plant active substances on cognitive function in healthy older adults: a systematic
+    review and network met'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

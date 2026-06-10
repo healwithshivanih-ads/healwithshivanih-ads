@@ -1,0 +1,35 @@
+slug: ginger-meta-analysis-primary-dysmenorrhea-pain
+statement: A 2024 systematic review and meta-analysis of 12 RCTs (24 included qualitatively) found ginger
+  significantly more effective than placebo for reducing both pain intensity (SMD −1.13, 95% CI −1.59
+  to −0.68) and pain duration in primary dysmenorrhea, with no significant difference compared to NSAIDs
+  or exercise.
+evidence_tier: plausible_emerging
+rationale: 'Meta-analysis of 12 RCTs with significant pooled effect vs placebo on pain intensity; non-inferiority
+  to NSAIDs is clinically meaningful; however, high heterogeneity (I²=81%) and risk of bias in source
+  trials limit confidence. Effective dose in trials: 750 mg–2 g/day dried ginger powder starting 2 days
+  before menstruation and continuing through first 3 days of period; capsule form most studied.'
+coaching_translation: Evidence suggests ginger can effectively reduce menstrual cramp pain — comparable
+  to anti-inflammatory painkillers in some trials. It is a practical, low-cost option for clients seeking
+  non-drug relief for period pain.
+out_of_scope_notes: ''
+caveats:
+- High heterogeneity (I²=81%) across studies; dose, form, and timing varied substantially
+- Risk of bias in included trials (most not blinded); safety data sparsely reported
+- Most RCTs short (2–3 menstrual cycles)
+- Ginger at doses >2 g/day may interact with anticoagulants
+linked_to_topics:
+- premenstrual-syndrome
+- healthy-menstrual-cycle-baseline
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+- arachidonic-acid-cascade
+linked_to_supplements:
+- ginger
+sources:
+- id: pubmed-38770631
+  location: 'Ginger for Pain Management in Primary Dysmenorrhea: A Systematic Review and Meta-Analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

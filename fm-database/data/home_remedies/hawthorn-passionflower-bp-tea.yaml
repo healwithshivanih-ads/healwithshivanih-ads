@@ -34,6 +34,16 @@ balances_dosha:
   - pitta
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - diuretic
+  - anti-inflammatory
+  - cardiotonic
 linked_to_topics:
   - hypertension
   - blood-pressure-management

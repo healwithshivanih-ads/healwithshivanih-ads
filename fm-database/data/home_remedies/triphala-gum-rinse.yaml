@@ -4,6 +4,7 @@ aliases:
   - triphala-mouthwash
   - triphala-gargle-gums
 category: kashayam
+route: external
 summary: >-
   A triphala tea used as a mouth rinse and gargle to address bleeding gums and
   gingivitis. Triphala's strong astringent properties act as a haemostatic
@@ -34,6 +35,15 @@ balances_dosha:
   - pitta
   - kapha
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - mild-laxative
+  - rasayana
 linked_to_topics:
   - periodontal-disease
   - oral-health-toxins

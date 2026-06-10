@@ -42,6 +42,16 @@ balances_dosha:
   - pitta
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - diuretic
+  - cooling-digestive
+  - dipana
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Overeating"

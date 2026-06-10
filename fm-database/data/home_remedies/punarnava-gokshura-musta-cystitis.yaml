@@ -29,6 +29,16 @@ balances_dosha:
   - pitta
   - kapha
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Mix the dried herbal powders in the ratio punarnava 5 parts, gokshura 4
   parts, musta 3 parts. Take 1/2 teaspoon of the combined powder mixture

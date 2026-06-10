@@ -31,6 +31,16 @@ timing_notes: Drink at room temperature (not hot); pitta conditions worsen with 
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - diuretic
 linked_to_topics:
   - migraine-headache
   - tension-type-headache

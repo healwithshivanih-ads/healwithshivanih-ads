@@ -1,0 +1,36 @@
+slug: shatavari-rct-pcos-stress-follicular-endometrial
+statement: A 2026 double-blind RCT (n=66 women with PCOS, 12 weeks) found standardised Asparagus racemosus
+  root extract significantly reduced perceived stress (PSS score -6.64 ± 3.99, p<0.001), decreased ovarian
+  follicular count (p<0.001), and increased endometrial thickness (p=0.028) compared to placebo, without
+  significant changes in BMI or serum hormone levels.
+evidence_tier: plausible_emerging
+rationale: 'Single RCT in a specific PCOS population; significant findings on stress and ovarian morphology
+  but no significant changes in key PCOS hormones (LH, FSH, testosterone), limiting interpretation of
+  reproductive benefit. Effective dose in trials: Dose not explicitly stated in abstract; 12-week treatment
+  period.'
+coaching_translation: Evidence suggests shatavari may help reduce stress and improve certain ovarian and
+  uterine markers in women with PCOS, though it did not significantly change hormone levels in this trial.
+  More research is needed.
+out_of_scope_notes: ''
+caveats:
+- No significant changes in hormonal levels (LH, FSH, testosterone, insulin, lipids) — the main drivers
+  of PCOS pathophysiology
+- Single RCT with n=66; requires independent replication
+- Proprietary extract (Clinsearch formulation) — generalisability uncertain
+- Industry involvement (D.Y. Patil University affiliated researchers) — independent confirmation needed
+linked_to_topics:
+- perimenopause-and-menopause
+- anxiety
+linked_to_mechanisms:
+- fsh-elevation-aging-cascade
+- estrogen-dominance-thyroid-blunting
+linked_to_supplements:
+- shatavari
+sources:
+- id: pubmed-41816216
+  location: 'Efficacy and safety of Shatavari root extract in women with Polycystic Ovarian Syndrome:
+    a randomized, double-blind, pla'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -40,6 +40,16 @@ balances_dosha:
   - pitta
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - nervine
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Nausea and Vomiting"

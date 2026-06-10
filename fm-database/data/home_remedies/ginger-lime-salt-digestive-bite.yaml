@@ -25,6 +25,15 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sour
+  - salty
+  - pungent
+virya: heating
+vipaka: sour
+ayurvedic_actions:
+  - dipana
+  - carminative
 preparation: >-
   Cut a thin slice (or finely chop a little) of fresh ginger, add a few drops of
   fresh lime juice and a pinch of rock salt, and chew it about 10-15 minutes

@@ -15,6 +15,14 @@ balances_dosha:
 - vata
 - kapha
 aggravates_dosha: []
+rasa:
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
 preparation: Boil 1 tsp cumin in 2 cups water for 5 min (or soak overnight); strain.
 typical_dose: 1-2 cups through the day, warm.
 duration: Daily; safe long-term.

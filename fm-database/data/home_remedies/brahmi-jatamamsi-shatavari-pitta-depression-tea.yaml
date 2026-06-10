@@ -31,6 +31,16 @@ timing_notes: Morning and early afternoon; on an empty stomach or between meals
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - depression-lifestyle
   - hormonal-depression-progesterone

@@ -24,6 +24,15 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
 preparation: >-
   Bring 1.5 cups water to a gentle boil with one 2-inch piece of Ceylon
   cinnamon bark and 2 lightly crushed green cardamom pods. Simmer 5-7 minutes,

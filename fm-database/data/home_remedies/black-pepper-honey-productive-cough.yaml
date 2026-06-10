@@ -30,6 +30,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - sour
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - expectorant
+  - carminative
 preparation: >-
   Measure out one quarter teaspoon of finely ground black pepper (freshly ground
   is most potent). Mix it into 1 teaspoon of raw honey until well combined.

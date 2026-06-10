@@ -44,6 +44,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - vata
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - cardiovascular-disease-prevention
   - dyslipidemia

@@ -31,6 +31,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - sour
+  - salty
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - rasayana
+  - nervine
+  - dipana
 linked_to_topics:
   - liver-detoxification
   - metabolic-detoxification

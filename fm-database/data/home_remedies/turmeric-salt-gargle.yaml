@@ -4,6 +4,7 @@ aliases:
   - haldi-namak-gargle
   - turmeric-saltwater-gargle
 category: other
+route: external
 summary: >-
   A classic kitchen first-aid gargle for sore throat, cough and throat
   inflammation — warm water with turmeric (anti-inflammatory, antibacterial) and
@@ -19,6 +20,16 @@ contraindications:
   - oxalate-restricted diets (turmeric is oxalate-rich) — gargle-and-spit is fine
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+  - sour
+  - salty
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 preparation: >-
   Stir 2 pinches of turmeric and 2 pinches of salt (or 1/4 tsp turmeric + a pinch
   of salt) into a glass of warm water. Gargle and spit; repeat with the rest of

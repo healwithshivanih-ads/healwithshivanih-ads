@@ -16,6 +16,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+rasa:
+- sweet
+- bitter
+- astringent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- nervine
+- antispasmodic
+- nourishing
 preparation: 'Warm 1 cup milk (dairy or plant); stir in a small pinch (1/8 tsp or less) of grated/ground
   nutmeg. Optional: a thread of saffron or a little jaggery.'
 typical_dose: 1 cup about 30-45 min before bed.

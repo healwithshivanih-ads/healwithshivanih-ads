@@ -4,6 +4,7 @@ aliases:
 - til-oil-gandusha
 - sesame-oil-pulling-gums
 category: other
+route: external
 summary: A daily sesame-oil swish (a simple form of oil pulling / gandusha) to strengthen gums,
   reduce plaque bacteria and ease gum bleeding/sensitivity. Holding and swishing sesame oil
   draws out oral microbes and conditions the gum tissue. Lad recommends it as part of Ayurvedic
@@ -22,6 +23,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - kapha
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- dipana
+- carminative
+- antispasmodic
 preparation: Take ~1 tbsp sesame oil into the mouth on an empty stomach; gently swish and pull
   between the teeth for 5-15 minutes; spit out (into a bin); rinse with warm water; then brush.
 typical_dose: 1 swish session daily

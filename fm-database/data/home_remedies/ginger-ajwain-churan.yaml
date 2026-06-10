@@ -16,6 +16,15 @@ balances_dosha:
 - kapha
 aggravates_dosha:
 - pitta
+rasa:
+- salty
+- pungent
+- bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+- dipana
+- carminative
 preparation: Mix 2 tbsp dried ginger powder, 1 tbsp roasted ground ajwain, 1/2 tsp black salt.
 typical_dose: 1/4 tsp with warm water ~15 min before meals.
 duration: As needed.

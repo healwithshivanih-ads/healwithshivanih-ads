@@ -4,6 +4,7 @@ aliases:
   - ginger-turmeric-compress
   - sonth-haldi-lep
 category: other
+route: external
 summary: >-
   An external warm paste of ginger and turmeric powder applied to painful,
   stiff joints and muscles. Lad gives this as a ginger compress for local pain
@@ -24,6 +25,16 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - anti-inflammatory
 preparation: >-
   Combine 1 tsp ginger powder with 1/2 tsp turmeric (or 2 tsp ginger + 1 tsp
   turmeric for a larger area). Add enough warm water to make a paste, warm it

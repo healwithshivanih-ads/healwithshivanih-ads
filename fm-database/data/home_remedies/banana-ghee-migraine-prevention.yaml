@@ -41,6 +41,16 @@ balances_dosha:
   - pitta
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Migraine — Preventive Breakfast"

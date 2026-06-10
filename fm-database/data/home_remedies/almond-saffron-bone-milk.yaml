@@ -44,6 +44,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - pungent
+  - bitter
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - nervine
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Osteoporosis"

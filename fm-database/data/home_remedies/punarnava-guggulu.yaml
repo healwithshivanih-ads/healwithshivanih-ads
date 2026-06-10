@@ -27,6 +27,16 @@ balances_dosha:
 - vata
 aggravates_dosha:
 - pitta
+rasa:
+- sweet
+- pungent
+- bitter
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+- scraping
+- anti-inflammatory
+- diuretic
 preparation: Punarnava guggulu tablets from an Ayurvedic pharmacy, typically 1 tablet (~250
   mg) 2-3 times a day with warm water (per label/practitioner).
 typical_dose: ~1 tablet (250 mg), 2-3 times a day

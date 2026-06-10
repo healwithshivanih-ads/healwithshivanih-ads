@@ -5,6 +5,7 @@ aliases:
   - asafetida-ear-pain-remedy
   - heeng-ear-compress
 category: other
+route: external
 summary: >-
   Lad recommends a remarkably simple kitchen-spice remedy for earache — placing a
   small pinch of asafoetida (hing/heeng) wrapped in a small ball of cotton into
@@ -36,6 +37,14 @@ balances_dosha:
   - kapha
 aggravates_dosha:
   - pitta
+rasa:
+  - pungent
+virya: heating
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - carminative
+  - antispasmodic
 linked_to_topics:
   - gastrointestinal-tract-overview
 linked_to_mechanisms:

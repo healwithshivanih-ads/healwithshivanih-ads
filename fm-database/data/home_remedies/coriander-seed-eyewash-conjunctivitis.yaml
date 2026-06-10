@@ -5,6 +5,7 @@ aliases:
   - coriander-eye-wash
   - dhania-seed-eye-rinse
 category: other
+route: external
 summary: >-
   Lad's coriander seed eyewash for conjunctivitis (pink eye) — a cooled
   infusion of coriander seeds strained thoroughly and used to wash the closed
@@ -32,6 +33,15 @@ contraindications:
 balances_dosha:
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: sweet
+ayurvedic_actions:
+  - diuretic
+  - cooling-digestive
 preparation: >-
   Steep 1 teaspoon of coriander seeds in 1 cup of freshly boiled water for at
   least 15 minutes. Strain the liquid very thoroughly through fine cloth or a

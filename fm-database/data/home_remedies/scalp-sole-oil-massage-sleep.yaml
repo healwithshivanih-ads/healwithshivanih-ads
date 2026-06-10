@@ -5,6 +5,7 @@ aliases:
   - brahmi-oil-padabhyanga-shiroabhyanga
   - warm-oil-scalp-feet-sleep
 category: other
+route: external
 summary: >-
   Lad describes scalp and foot-sole massage with warm sesame, brahmi, or
   jatamamsi oil as one of the simplest and most effective ways to induce sleep.
@@ -35,6 +36,16 @@ balances_dosha:
   - vata
 aggravates_dosha:
   - kapha
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - medhya
+  - nervine
+  - nourishing
 linked_to_topics:
   - insomnia
   - sleep

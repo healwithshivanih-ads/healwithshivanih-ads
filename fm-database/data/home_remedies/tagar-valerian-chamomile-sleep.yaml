@@ -37,6 +37,16 @@ balances_dosha:
   - vata
   - pitta
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - nervine
+  - carminative
+  - sedative
 linked_to_topics:
   - insomnia
   - sleep

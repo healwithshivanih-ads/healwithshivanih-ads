@@ -1,0 +1,37 @@
+slug: ginger-meta-overview-nausea-vomiting-pregnancy-chemo
+statement: A 2023 overview of 15 meta-analyses found pooled evidence supporting ginger's effectiveness
+  for reducing chemotherapy-induced nausea and vomiting in cancer patients, postoperative nausea and vomiting
+  (including reduced rescue antiemetic need), and pregnancy-related nausea and vomiting, while being safe
+  across all populations studied.
+evidence_tier: strong
+rationale: 'Overview pooling 15 independent meta-analyses; consistent beneficial signal across three distinct
+  nausea contexts (chemo, post-operative, pregnancy); safety confirmed across included studies. Effective
+  dose in trials: Pregnancy nausea: 250 mg capsule 4×/day (1 g/day total); most trials used 1–2 g/day
+  dried ginger powder; duration typically 4 days–3 weeks.'
+coaching_translation: Evidence from multiple meta-analyses confirms ginger is an effective and safe option
+  for nausea — whether from morning sickness, chemotherapy, or post-surgery. It can be used as food (fresh/dried)
+  or supplement.
+out_of_scope_notes: ''
+caveats:
+- Methodological quality of the constituent meta-analyses rated critically low to low (AMSTAR-2)
+- Heterogeneity in ginger preparations (fresh, powdered, extract), doses, and timing
+- 'Pregnancy safety: most trials used ≤1g/day; high-dose supplementation during pregnancy should be discussed
+  with the obstetric team'
+- Ginger may potentiate anticoagulants (warfarin) — interaction caveat for oncology patients
+linked_to_topics:
+- ibd
+- chronic-inflammation
+linked_to_mechanisms:
+- inflammatory-cytokine-elevation
+linked_to_supplements:
+- ginger
+sources:
+- id: pubmed-38072785
+  location: 'Ginger for treating nausea and vomiting: an overview of systematic reviews and meta-analyses'
+- id: pubmed-39343171
+  location: 'The Use of Ginger Bioactive Compounds in Pregnancy: An Evidence Scan and Umbrella Review
+    of Systematic Reviews and Meta-'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

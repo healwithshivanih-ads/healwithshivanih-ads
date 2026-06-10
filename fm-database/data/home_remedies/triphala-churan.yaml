@@ -22,6 +22,16 @@ contraindications:
   - active acute GI inflammation
 balances_dosha: []
 aggravates_dosha: []
+rasa:
+  - sour
+  - pungent
+  - bitter
+virya: heating
+vipaka: sweet
+ayurvedic_actions:
+  - rasayana
+  - nervine
+  - dipana
 preparation: |
   Available as powder (churan) or tablets/capsules. Powder is traditional —
   bitter and astringent in taste.

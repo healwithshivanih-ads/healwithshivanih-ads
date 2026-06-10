@@ -45,6 +45,16 @@ balances_dosha:
   - pitta
   - vata
 aggravates_dosha: []
+rasa:
+  - sweet
+  - bitter
+  - astringent
+virya: cooling
+vipaka: pungent
+ayurvedic_actions:
+  - dipana
+  - alterative
+  - cooling
 sources:
   - id: lad-complete-book-ayurvedic-home-remedies-1998
     location: "Menstrual Difficulties — Strategy to Prevent Menstrual Problems; Treatments for Dysmenorrhea"

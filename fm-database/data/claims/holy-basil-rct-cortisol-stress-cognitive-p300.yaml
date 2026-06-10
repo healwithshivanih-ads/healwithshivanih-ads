@@ -1,0 +1,34 @@
+slug: holy-basil-rct-cortisol-stress-cognitive-p300
+statement: A 2015 randomised controlled trial found that Ocimum sanctum leaf extract (300 mg/day, 30 days)
+  produced within-group reductions in salivary cortisol and STAI anxiety scores, with a significant between-group
+  effect on P300 cognitive event-related potential latency (a marker of processing speed), suggesting
+  adaptogenic and mild anxiolytic activity.
+evidence_tier: plausible_emerging
+rationale: 'Single RCT with objective neuroelectrophysiological endpoint (P300 latency); salivary cortisol
+  and STAI were within-group significant only — between-group cognitive effect is the primary finding.
+  Effective dose in trials: 300 mg/day ethanolic leaf extract, 30 days.'
+coaching_translation: Evidence suggests tulsi may gently support the stress response and mental clarity
+  — it shows up as an adaptogen in small trials, though larger studies are still needed to confirm the
+  effect size.
+out_of_scope_notes: ''
+caveats:
+- Single trial — cortisol and anxiety reduction were within-group, not between-group significant
+- Short duration (30 days); adaptogenic effects may require longer use
+- Exact n and baseline stress levels not reported in abstract
+- Extract standardisation and dose specific to this formulation
+linked_to_topics:
+- chronic-stress
+- anxiety
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements:
+- holy-basil
+sources:
+- id: pubmed-26571987
+  location: 'Holy basil (Ocimum sanctum Linn.) leaf extract enhances specific cognitive parameters in
+    healthy adult volunteers: A pla'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

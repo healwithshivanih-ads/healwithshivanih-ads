@@ -1,0 +1,35 @@
+slug: ashwagandha-meta-analysis-physical-performance-strength-vo2
+statement: A 2021 Bayesian systematic review and meta-analysis of 12–13 RCTs found ashwagandha supplementation
+  improved variables related to physical performance in healthy adults, including strength/power, cardiorespiratory
+  fitness (VO2max), and fatigue/recovery markers, with the Bayesian 95% credible intervals favouring at
+  least some benefit for future interventions.
+evidence_tier: plausible_emerging
+rationale: 'Bayesian meta-analysis of up to 13 RCTs in healthy individuals; low-to-moderate overall risk
+  of bias, but authors note more comparable studies in athletic populations are needed for stable effect
+  size estimates. Effective dose in trials: 300–600 mg/day standardised extract; trials ranged 8–12 weeks
+  in duration.'
+coaching_translation: Evidence suggests ashwagandha may support physical performance — helping build strength,
+  improve cardio capacity, and reduce exercise fatigue. The evidence is promising but still building.
+out_of_scope_notes: ''
+caveats:
+- Studies varied substantially in training status, dose, extract type, and outcome measures — making direct
+  comparisons difficult
+- Most trials were conducted in men; female data is limited
+- Effect sizes are not yet stable; Bayesian credible intervals are wide
+- Proprietary extracts (KSM-66, Sensoril) dominate the literature — generalisability to other products
+  is uncertain
+linked_to_topics:
+- stress-management
+linked_to_mechanisms:
+- exercise-induced-oxidative-stress
+- cortisol-elevation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: pubmed-33670194
+  location: 'Effects of Ashwagandha (Withania somnifera) on Physical Performance: Systematic Review and
+    Bayesian Meta-Analysis'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
