@@ -1,0 +1,26 @@
+slug: ayurveda-pitta-food-approach
+statement: For a pitta constitution or pitta aggravation, favour cool, sweet, bitter and astringent foods
+  (sweet ripe fruit, leafy greens, cooling grains like basmati rice and barley, milk, ghee, coconut, cilantro)
+  and reduce hot, sour, salty, pungent, fermented and oily foods (sour fruit, hot peppers, tomatoes, vinegar,
+  alcohol, red meat, hot spices).
+evidence_tier: fm_specific_thin
+rationale: From the Ayurvedic Institute / Lad Food Guidelines for Basic Constitutional Types — traditional
+  dosha-food matching (like increases like; opposite qualities balance).
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- General Ayurvedic guidance; individualise by the client's digestion, season and dosha state.
+- Dosha-food matching has limited modern-trial evidence; use as a framework alongside the client's response.
+linked_to_topics:
+- ayurvedic-elemental-design-doshas
+- anti-inflammatory-diet
+- acid-reflux-and-cardiac-sphincter-weakness
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: lad-ayurvedic-institute-food-chart
+  location: Food Guidelines for Basic Constitutional Types
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

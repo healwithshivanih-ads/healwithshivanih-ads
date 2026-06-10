@@ -1,0 +1,24 @@
+slug: ayurveda-six-tastes-cooked-warm-food
+statement: 'Ayurvedic food guidance is organised by the six tastes and by qualities (warm/cold, moist/dry,
+  heavy/light): warm, freshly cooked food is generally easier to digest than cold, raw or leftover food,
+  and including the six tastes in a meal supports balanced digestion and satiety.'
+evidence_tier: plausible_emerging
+rationale: From the Ayurvedic Institute / Lad Food Guidelines for Basic Constitutional Types — traditional
+  dosha-food matching (like increases like; opposite qualities balance).
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- General Ayurvedic guidance; individualise by the client's digestion, season and dosha state.
+- Dosha-food matching has limited modern-trial evidence; use as a framework alongside the client's response.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: lad-ayurvedic-institute-food-chart
+  location: Food Guidelines for Basic Constitutional Types
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
