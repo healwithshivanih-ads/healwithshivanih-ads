@@ -1,0 +1,30 @@
+slug: adrenaline-cortisol-co-rise-cortisol-outlasts-adrenaline
+statement: Adrenaline and cortisol co-rise with each stress event; cortisol stays elevated far longer
+  than adrenaline, and repeated adrenaline surges progressively increase the cortisol released per surge.
+evidence_tier: strong
+rationale: 'Consistent with HPA-axis / SAM-axis physiology: adrenaline is catecholamine-mediated (fast,
+  brief); cortisol is glucocorticoid-mediated (slower, prolonged). Repeated activation sensitises the
+  HPA axis.'
+coaching_translation: Every stressful event triggers a rush of adrenaline that fades quickly, but also
+  raises cortisol that lingers for hours. The more stress events per day, the more cortisol builds up
+  — which is why 'busy but manageable' days still leave you feeling wired and depleted by evening.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- hpa-axis-dysregulation
+- adrenal-hormone-function
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: Adrenaline provides a short-term stress response and decreases quickly. Cortisol increases when
+    adrenaline does, but it stays active longer. When our cortisol levels are high, our recovery time
+    after an adrenaline surge increases.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

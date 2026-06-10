@@ -1,0 +1,33 @@
+slug: alcohol-impairs-liver-estrogen-clearance-breast-cancer
+statement: 'Alcohol interferes with estrogen metabolism by impairing liver function: a compromised liver
+  fails to break down excess estrogen, which is then reabsorbed into the bloodstream, sustaining elevated
+  estrogen levels linked to breast cancer risk.'
+evidence_tier: plausible_emerging
+rationale: Consistent with well-established hepatic estrogen clearance physiology; the liver-gut axis
+  for estrogen conjugation and excretion is a core FM teaching point.
+coaching_translation: Drinking regularly overloads the liver so it can't clear your 'used' estrogen —
+  the estrogen gets recycled back into your blood and keeps circulating. This is one reason alcohol raises
+  breast cancer risk even in moderate amounts.
+out_of_scope_notes: ''
+caveats:
+- The magnitude of effect from moderate alcohol on estrogen recycling is debated; major studies show dose-dependent
+  cancer risk but the exact mechanism contribution of impaired hepatic clearance vs. other pathways is
+  not fully quantified.
+linked_to_topics:
+- breast-cancer-prevention
+- estrogen-dominance
+- liver-detoxification
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+- hepatic-estrogen-metabolism
+- estrogen-enterohepatic-recirculation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 13 - Breast Health
+  quote: If alcohol compromises liver health, the liver may not break down excess estrogen efficiently.
+    Instead, the excess estrogen will get reabsorbed into the blood and continue to circulate.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

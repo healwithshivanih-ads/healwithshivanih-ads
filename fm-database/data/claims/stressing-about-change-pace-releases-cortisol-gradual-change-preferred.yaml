@@ -1,0 +1,30 @@
+slug: stressing-about-change-pace-releases-cortisol-gradual-change-preferred
+statement: Stressing about the pace of lifestyle change itself releases stress hormones that directly
+  undermine the intended benefit — slow, gradual behavioural change is not only acceptable but physiologically
+  preferable to abrupt, high-pressure transformation attempts.
+evidence_tier: plausible_emerging
+rationale: Cortisol release in response to perceived demands (including self-imposed health goals) is
+  well-established; perfectionism and 'all-or-nothing' approaches to behaviour change are associated with
+  higher dropout and poorer outcomes in habit-change research.
+coaching_translation: Trying to change everything at once — and stressing over how quickly you do it —
+  releases the exact cortisol that's disrupting your hormones in the first place. Pick one change, live
+  with it, then add the next. Slow, consistent steps compound; urgency undermines.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- stress-management
+- self-care
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 27 — Changing Lifestyles: How Long Does It Take to See Change?'
+  quote: Expecting instant gratification or making too many changes at once defeats at least part of the
+    purpose, because stress hormones released by stressing out undo some of the good we aim for.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

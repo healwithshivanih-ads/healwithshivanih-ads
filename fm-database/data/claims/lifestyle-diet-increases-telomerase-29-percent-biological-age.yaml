@@ -1,0 +1,30 @@
+slug: lifestyle-diet-increases-telomerase-29-percent-biological-age
+statement: Appropriate diet and lifestyle changes increase telomerase activity by approximately 29%, which
+  may slow cellular ageing by protecting telomere length — linking lifestyle choices directly to biological
+  age.
+evidence_tier: plausible_emerging
+rationale: Welch cites a Proceedings of the National Academy of Sciences study on lifestyle and telomerase.
+  Telomere length and telomerase activity as biomarkers of biological age and disease risk are well-supported.
+  This is a concrete mechanistic bridge between lifestyle and longevity.
+coaching_translation: Research shows that healthy diet and lifestyle habits can raise your body's telomere-protecting
+  enzyme (telomerase) by nearly 30%. Longer telomeres mean slower cellular ageing and lower risk of heart
+  disease and cancer — giving clients a tangible reason to stay consistent.
+out_of_scope_notes: ''
+caveats:
+- The 29% figure is from a specific small study (Ornish et al. 2008); larger replications vary. Telomerase
+  increase does not straightforwardly translate to proportional longevity benefit.
+linked_to_topics:
+- stress-management
+- modern-diet-systemic-dysfunction
+- chronic-stress
+linked_to_mechanisms:
+- epigenetic-gene-expression
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 18 - The Importance of Diet and Lifestyle: An Overview'
+  quote: Appropriate diet and lifestyle appears to increase telomerase levels by about 29 percent
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

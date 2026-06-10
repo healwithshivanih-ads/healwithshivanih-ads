@@ -1,0 +1,37 @@
+slug: synthetic-combined-hrt-increases-breast-cancer-heart-disease-stroke
+statement: Combined synthetic hormone replacement therapy (estrogen + progestin) increases the risk of
+  breast cancer, heart disease, stroke, and dementia; the Women's Health Initiative found a 29% higher
+  breast cancer risk, 26% higher heart disease risk, and 41% higher stroke risk after an average of 5
+  years of use.
+evidence_tier: strong
+rationale: Findings from the NIH Women's Health Initiative (16,000 women), the largest controlled trial
+  on HRT; results are well-replicated and widely accepted in medicine.
+coaching_translation: The largest study ever done on HRT found that women taking combined synthetic hormones
+  (estrogen + synthetic progestin) for about 5 years had 29% more breast cancer, 26% more heart disease,
+  and 41% more strokes. This is why most guidelines now recommend HRT only for the shortest duration at
+  the lowest dose if used at all.
+out_of_scope_notes: 'NBHWC scope: prescribing decisions about HRT are physician territory. Coach educates
+  about the research history and supports clients in preparing informed questions for their prescriber.
+  Do NOT recommend starting, stopping, or changing HRT without physician guidance.'
+caveats:
+- These findings apply to SYNTHETIC combined HRT (conjugated equine estrogen + medroxyprogesterone acetate
+  — Prempro). Bioidentical and transdermal formulations may carry different risk profiles — see out_of_scope_notes.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- breast-cancer-prevention
+- cardiovascular-disease-prevention
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms:
+- systemic-inflammation-cv
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 14 - Perimenopause and Menopause
+  quote: After an average of five years on the estrogen-progestin supplement, the women had a 29 percent
+    higher risk of breast cancer, a 26 percent higher risk of heart disease, and a 41 percent higher risk
+    of stroke.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

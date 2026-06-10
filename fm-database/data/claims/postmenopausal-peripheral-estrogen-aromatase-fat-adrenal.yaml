@@ -1,0 +1,28 @@
+slug: postmenopausal-peripheral-estrogen-aromatase-fat-adrenal
+statement: Estrogen is synthesised not only in the ovaries but also in fat tissue, muscle, adrenal glands,
+  and other peripheral sites via the aromatase enzyme, meaning postmenopausal women continue producing
+  estrogen from non-ovarian sources.
+evidence_tier: strong
+rationale: 'Well-established endocrinology: peripheral aromatisation converts androgens (especially androstenedione)
+  to estrone in adipose tissue; adrenal glands supply estrogen precursors after menopause.'
+coaching_translation: Even after your periods stop, your body keeps making estrogen — from fat cells,
+  adrenal glands, and other tissues. This is why a woman's estrogen doesn't simply drop to zero at menopause.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- perimenopause-and-menopause
+- estrogen-dominance
+- steroidogenesis
+linked_to_mechanisms:
+- estrogen-decline
+- aromatase-activity
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 3 - Sex Hormones
+  quote: Because every one of our cells needs yin, or nourishment, it is not surprising that we find estrogen
+    (or its precursors) everywhere in the body, along with aromatase.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

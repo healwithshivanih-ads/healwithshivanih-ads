@@ -1,0 +1,32 @@
+slug: cortisol-insulin-dysregulation-visceral-fat
+statement: Elevated cortisol impairs optimal insulin function through a process that leads to central
+  (waist-centred) weight gain — distinct from direct weight loss from cortisol's catabolic tissue-breakdown
+  effects.
+evidence_tier: strong
+rationale: 'Well-established: cortisol promotes hepatic gluconeogenesis, raises blood glucose, and stimulates
+  insulin secretion; chronic hyperinsulinaemia from cortisol-driven glucose elevation promotes visceral
+  fat deposition, particularly in Cushingoid distribution.'
+coaching_translation: Stress doesn't directly make you fat — cortisol by itself actually breaks down tissue.
+  But it disrupts insulin, and that insulin dysregulation leads to the stubborn weight around the waist
+  that is so hard to shift.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- insulin-resistance
+- midlife-weight-gain
+- visceral-adiposity
+linked_to_mechanisms:
+- cortisol-elevation
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: Cortisol by itself actually breaks down tissue and can cause weight loss, but it can hinder the
+    optimum function of insulin in a process that leads to the weight gain around the waist that many
+    women find so hard to lose.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

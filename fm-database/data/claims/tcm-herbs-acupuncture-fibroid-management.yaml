@@ -1,0 +1,28 @@
+slug: tcm-herbs-acupuncture-fibroid-management
+statement: A small clinical trial published in Alternative Medicine (2002) found that acupuncture and
+  herbs had an overall effective rate of 92.4% for managing uterine fibroids; one case showed fibroids
+  shrinking sufficiently for successful conception after acupuncture alone.
+evidence_tier: fm_specific_thin
+rationale: A single trial in a complementary medicine journal; moderate quality evidence at best. Welch
+  presents it as supporting the use of TCM before resorting to drugs or surgery, which is a reasonable
+  low-risk-first approach.
+coaching_translation: Small studies suggest that acupuncture and herbal medicine can significantly reduce
+  fibroid size and associated symptoms. Because the risk profile is low compared to surgery or pharmaceutical
+  hormones, exploring these options first — alongside lifestyle changes — is a reasonable strategy.
+out_of_scope_notes: ''
+caveats:
+- Single trial, complementary medicine journal, small sample; not replicated in large randomised controlled
+  trials. Coach should refer clients to a qualified TCM/Ayurveda practitioner for herbs and acupuncture,
+  not self-prescribe.
+linked_to_topics:
+- uterine-fibroids
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Heavy or Painful Periods'
+  quote: Treatments of fibroids with herbs alone showed an overall effective rate of 92.4 percent.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

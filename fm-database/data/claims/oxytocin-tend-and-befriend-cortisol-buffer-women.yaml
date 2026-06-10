@@ -1,0 +1,30 @@
+slug: oxytocin-tend-and-befriend-cortisol-buffer-women
+statement: Oxytocin, elevated in women relative to men, mediates a 'tend and befriend' stress response
+  that reduces cortisol, lowers depression risk, and increases with social bonding and caregiving.
+evidence_tier: plausible_emerging
+rationale: Based on the Klein and Taylor (2000) UCLA study cited in the book; the oxytocin-stress buffering
+  relationship is supported in multiple subsequent human studies.
+coaching_translation: 'Women have a biological pathway out of the stress response that men don''t: connecting
+  with friends and caring for others raises oxytocin, which directly lowers cortisol. This is why women''s
+  social connections are genuinely medicinal.'
+out_of_scope_notes: ''
+caveats:
+- The sex difference in tend-and-befriend magnitude is more nuanced than early framing suggested; subsequent
+  research shows context dependency.
+linked_to_topics:
+- chronic-stress
+- stress-management
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: The more oxytocin a woman has, the more this [tend and befriend] response will kick in. In addition,
+    the more she 'tends and befriends' others, the more her oxytocin levels increase. Thus, oxytocin serves
+    to counter the effects of stress.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

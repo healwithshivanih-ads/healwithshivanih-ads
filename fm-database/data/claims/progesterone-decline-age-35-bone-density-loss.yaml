@@ -1,0 +1,32 @@
+slug: progesterone-decline-age-35-bone-density-loss
+statement: Progesterone naturally begins declining around age 35 and is the primary driver of bone density
+  loss starting at that age, because it stimulates bone-building osteoblast activity.
+evidence_tier: plausible_emerging
+rationale: Dr. John Lee's observations (cited by Welch) that progesterone stimulates osteoblasts are partially
+  supported by in vitro studies and clinical reports; age-35 onset of progesterone decline is consistent
+  with perimenopause literature.
+coaching_translation: Bone loss often starts in the mid-30s — not at menopause — because progesterone,
+  the bone-builder, starts dropping first. Protecting progesterone through stress reduction matters for
+  bone health far earlier than most women think.
+out_of_scope_notes: ''
+caveats:
+- The osteoblast-stimulating role of progesterone is supported by some studies but less robustly than
+  estrogen's well-documented anti-resorptive role; Welch's source is mainly Dr. John Lee's clinical observations.
+linked_to_topics:
+- osteoporosis
+- low-progesterone
+- progesterone-physiology
+linked_to_mechanisms:
+- age-related-progesterone-decline
+- progesterone-bone-stimulation
+- progesterone-deficiency
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 3 - Sex Hormones
+  quote: Progesterone begins to decline at about age thirty-five in women. So we see it is not a coincidence
+    that this is the same age when a woman's bone density begins to decline.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

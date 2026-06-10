@@ -1,0 +1,33 @@
+slug: endometriosis-oestrogen-xenoestrogen-exacerbation
+statement: Endometriosis is exacerbated by oestrogen and by exposure to oestrogen-like environmental pollutants
+  (such as dioxin and PCBs); women with endometriosis have been found to have higher PCB levels, and the
+  condition has risen dramatically in parallel with increasing environmental xenoestrogen burden.
+evidence_tier: plausible_emerging
+rationale: Oestrogen's role in endometriosis pathogenesis is well established; PCB/dioxin association
+  with endometriosis is documented in several studies, including the German study Welch cites; the rise
+  from 21 reported cases (historical) to millions is factual.
+coaching_translation: Endometriosis is driven partly by oestrogen and partly by toxic chemicals in the
+  environment that mimic oestrogen. Reducing exposures to plastics, pesticides, and other xenoestrogens
+  — alongside supporting the body's own oestrogen clearance — is a meaningful part of supporting women
+  with endometriosis.
+out_of_scope_notes: ''
+caveats:
+- Causality between environmental xenoestrogens and endometriosis is established in animal models but
+  harder to prove in humans; associations are consistent and biologically plausible.
+linked_to_topics:
+- endometriosis
+- estrogen-dominance
+- environmental-toxin-exposure
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+- endocrine-disruption
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Endometriosis'
+  quote: It is exacerbated by estrogen and exposure to estrogen-like pollutants, such as dioxin... a German
+    study showed that women with endometriosis were more likely to have higher levels of PCBs.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

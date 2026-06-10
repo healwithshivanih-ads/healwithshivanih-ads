@@ -1,0 +1,34 @@
+slug: stress-pelvic-stagnation-menstrual-pain
+statement: Chronic stress causes constriction and stagnation in the reproductive organs and is a primary
+  driver of painful, heavy, or irregular periods; Eastern medicine holds that reducing stress and improving
+  lifestyle reduces pelvic qi stagnation and thereby alleviates menstrual pain.
+evidence_tier: plausible_emerging
+rationale: 'Plausible via known stress-HPA-sex-hormone axis: cortisol elevation reduces progesterone synthesis,
+  and stress-driven sympathetic tone can impair pelvic blood flow and uterine relaxation. TCM model of
+  ''qi stagnation'' is the framework, not proven mechanism, but the lifestyle recommendation itself is
+  sound.'
+coaching_translation: Chronic stress physically tightens the body, including the reproductive organs.
+  This reduced blood flow and pelvic tension is a key reason why women who carry a lot of stress tend
+  to have more painful or irregular periods. Stress management is part of menstrual health, not just mental
+  wellbeing.
+out_of_scope_notes: ''
+caveats:
+- The TCM 'qi stagnation' model is a theoretical framework; the underlying physiology (sympathetic tone,
+  cortisol/progesterone competition) is plausible but the specific mechanism chain is not fully proven.
+linked_to_topics:
+- premenstrual-syndrome
+- chronic-stress
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- low-progesterone
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Heavy or Painful Periods'
+  quote: Stress creates constriction in the body, which interferes with the free flow of qi, creating
+    stagnation that leads to heavy bleeding.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

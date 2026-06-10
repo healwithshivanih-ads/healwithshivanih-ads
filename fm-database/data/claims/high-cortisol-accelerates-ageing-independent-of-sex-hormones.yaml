@@ -1,0 +1,33 @@
+slug: high-cortisol-accelerates-ageing-independent-of-sex-hormones
+statement: Chronic stress hormones at high levels accelerate ageing, contribute to increased blood sugar,
+  elevated cholesterol, heart disease, memory loss, and osteoporosis, even when estrogen and progesterone
+  are circulating in normal amounts.
+evidence_tier: plausible_emerging
+rationale: 'Each listed outcome has independent research support linking sustained hypercortisolaemia
+  to the relevant pathway: cortisol raises blood glucose via gluconeogenesis; raises LDL; is pro-atherogenic;
+  is associated with hippocampal atrophy; suppresses osteoblasts.'
+coaching_translation: The damage from chronic stress is not just about low hormones — high cortisol actively
+  accelerates how fast you age, even if your periods are still regular and your hormone tests look fine.
+out_of_scope_notes: ''
+caveats:
+- 'Each individual pathway is supported, but the ''even with normal sex hormones'' framing requires qualification:
+  the protective effects of estrogen may partially offset cortisol damage at the tissue level.'
+linked_to_topics:
+- chronic-stress
+- osteoporosis
+- adrenal-fatigue
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- cortisol-elevation
+- cortisol-bone-suppression
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: If cortisol is too high for too long, it causes accelerated aging, even when normal amounts of
+    estrogen and progesterone are circulating in the body.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

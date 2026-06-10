@@ -1,0 +1,30 @@
+slug: lifetime-estrogen-cycles-breast-cancer-risk
+statement: Increased lifetime exposure to estrogen (from more menstrual cycles) is linked to increased
+  breast cancer risk; factors that reduce total cycle number — later menarche, earlier menopause, more
+  pregnancies, longer nursing — are associated with lower breast cancer incidence.
+evidence_tier: strong
+rationale: Well-established epidemiological association cited in mainstream oncology; estradiol's mitogenic
+  effects on breast tissue underpin this relationship.
+coaching_translation: The number of menstrual cycles a woman has over her lifetime influences her breast
+  cancer risk, partly because estrogen rises with each cycle. This is why breastfeeding longer and having
+  children earlier in reproductive life is protective.
+out_of_scope_notes: ''
+caveats:
+- Absolute individual risk remains low; this population-level association does not mean individual women
+  should try to minimise cycles.
+linked_to_topics:
+- breast-cancer-prevention
+- estrogen-dominance
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 9 — Menstruation: Eliminating Cycles'
+  quote: The more cycles a woman has in her life, the greater her overall exposure to monthly surges in
+    estradiol. This means that the later a woman gets her period, the earlier her onset of menopause,
+    the more pregnancies she has, and the longer she nurses, the less she is exposed to these surges.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,37 @@
+slug: progesterone-allopregnanolone-gaba-sleep-sedation
+statement: Welch argues that bioidentical progesterone (not synthetic progestins) may support sleep by
+  exerting a sedative effect via conversion to allopregnanolone, a GABA-A receptor positive modulator
+  — but notes this requires physician oversight and is not a first-line dietary intervention.
+evidence_tier: confirm_with_clinician
+rationale: Allopregnanolone (3α,5α-tetrahydroprogesterone), a metabolite of progesterone, is a potent
+  positive allosteric modulator of GABA-A receptors — the same receptor targeted by benzodiazepines; low
+  progesterone states (luteal-phase deficiency, perimenopause) correlate with worse sleep; this mechanism
+  is conventionally recognised (brexanolone/allopregnanolone is FDA-approved for PPD).
+coaching_translation: Low progesterone — which is common in the years leading up to menopause — is one
+  reason sleep often worsens in midlife. Progesterone has a natural calming effect on the brain that goes
+  beyond the uterus. Welch mentions bioidentical progesterone as a tool for sleep in this context, but
+  this is something to discuss with a physician, not a self-care protocol.
+out_of_scope_notes: Prescribing or recommending bioidentical hormone therapy falls outside the NBHWC coaching
+  scope. Coach should frame this as physiology education ('here is why progesterone affects sleep') and
+  refer clients to a qualified physician or women's health specialist for any BHRT evaluation.
+caveats:
+- Bioidentical progesterone and synthetic progestins have different receptor activity profiles; prescribing
+  decisions require physician oversight including evaluation for contraindications (hormone-sensitive
+  cancers, cardiovascular risk, clotting history).
+linked_to_topics:
+- sleep
+- low-progesterone
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements:
+- natural-progesterone-cream
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 25 - Sleep (Insomnia section)
+  quote: Natural progesterone may help women to sleep because it converts in the body into a substance
+    that has a calming effect on the brain, much like a sedative.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

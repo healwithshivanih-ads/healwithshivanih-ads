@@ -1,0 +1,33 @@
+slug: high-glycaemic-diet-ovulatory-infertility-risk
+statement: The Nurses' Health Study of 18,555 women found that high glycaemic-load diets (fast-digesting
+  carbohydrates) were associated with up to 92% greater risk of ovulatory infertility compared with low
+  glycaemic-load diets; the quality of carbohydrates mattered far more than the quantity.
+evidence_tier: strong
+rationale: The Nurses' Health Study is a large, well-designed prospective cohort; this specific finding
+  on dietary glycaemic load and ovulatory infertility is reported in peer-reviewed literature.
+coaching_translation: Refined carbohydrates and high-glycaemic foods can nearly double the risk of the
+  most common type of infertility — the kind where ovulation is disrupted. Switching to whole grains,
+  legumes, and slow-digesting carbs is one of the most evidence-based dietary changes for women who want
+  to conceive.
+out_of_scope_notes: ''
+caveats:
+- Observational cohort; cannot prove causation. Confounders possible. Most relevant to ovulatory/fertility
+  context specifically.
+linked_to_topics:
+- female-infertility
+- insulin-resistance
+- blood-sugar-regulation
+linked_to_mechanisms:
+- insulin-resistance
+- infradian-rhythm
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 12 — Fertility and Conception: The Egg'
+  quote: Women who had the highest glycemic load... had up to 92 percent more chance of ovulatory infertility
+    than did women with the lowest glycemic load... The amount of carbs consumed was not anywhere near
+    as important as the quality of carbs.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

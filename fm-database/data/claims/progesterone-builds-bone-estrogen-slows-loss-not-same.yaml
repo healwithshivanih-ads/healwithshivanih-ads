@@ -1,0 +1,38 @@
+slug: progesterone-builds-bone-estrogen-slows-loss-not-same
+statement: Progesterone actively stimulates new bone formation (osteoblast activity), while estrogen primarily
+  slows bone breakdown (osteoclast activity); bone loss begins around age 35 when progesterone starts
+  declining — well before the menopause-associated estrogen drop.
+evidence_tier: fm_specific_thin
+rationale: Welch cites John Lee's clinical data; the distinction between progesterone's anabolic role
+  and estrogen's anti-catabolic role on bone is a recognized (if contested) area of FM and integrative
+  medicine. The age-35 bone-loss onset aligning with progesterone decline is biologically coherent.
+coaching_translation: Bone loss doesn't start at menopause — it begins in your mid-thirties when progesterone
+  starts dropping. Progesterone builds new bone; estrogen just slows its loss. Supporting progesterone
+  earlier matters for long-term bone health.
+out_of_scope_notes: The discussion of bioidentical progesterone replacement therapy (BHRT) for bone health
+  is prescribing-adjacent. Coach educates on the progesterone-bone relationship; clinical decisions about
+  supplementation are for a prescribing clinician.
+caveats:
+- The claim that progesterone is the primary anabolic driver of bone (rather than estrogen) is contested.
+  The cited 15% bone-mass gain study included diet + exercise confounders. Frame as 'Welch argues' — not
+  settled science.
+linked_to_topics:
+- osteoporosis
+- bone-health
+- low-progesterone
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- progesterone-bone-stimulation
+- bone-resorption-formation-imbalance
+- low-progesterone
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 16 - Osteoporosis: Hormones and Bone Loss'
+  quote: Progesterone helps support bone-rebuilding activity; estrogen simply retards bone-dissolving
+    activity... bone loss begins to occur in women at age thirty-five, the same age when progesterone
+    begins to decline
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

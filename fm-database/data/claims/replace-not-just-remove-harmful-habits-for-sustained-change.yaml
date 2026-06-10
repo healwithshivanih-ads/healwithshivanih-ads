@@ -1,0 +1,26 @@
+slug: replace-not-just-remove-harmful-habits-for-sustained-change
+statement: When making lifestyle changes, replacing each harmful habit with a healthier one — rather than
+  removing it with nothing in its place — leads to better adherence, because most harmful habits serve
+  an underlying coping function.
+evidence_tier: plausible_emerging
+rationale: Behavioural science supports substitution over elimination alone; Welch frames this as the
+  'crutch → cane' principle, recognising that habits persist because they meet real needs, even imperfectly.
+coaching_translation: Don't just take something away — give yourself something better to replace it. Instead
+  of cutting evening wine with nothing, replace it with an evening walk or relaxing herbal tea, so the
+  coping need is still met.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- stress-management
+linked_to_mechanisms:
+- behavior-change-accountability
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 26 - First Things First
+  quote: we are generally ill advised to take too much away without replacing it with something else,
+    just as we would not wish to take away someone's crutch… without giving her a cane
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

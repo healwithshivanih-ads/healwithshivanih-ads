@@ -1,0 +1,31 @@
+slug: womens-heart-attack-atypical-symptoms-fatigue-nausea
+statement: 'Women''s heart attack symptoms differ markedly from the classic male presentation: the six
+  most common signs in women are unexplained debilitating fatigue, difficulty sleeping, shortness of breath,
+  indigestion, nausea, and pain/tightness in the back, arms, jaw, or neck — often misdiagnosed as indigestion.'
+evidence_tier: strong
+rationale: Well-documented sex difference in cardiovascular presentation; missed diagnosis in women contributes
+  to worse outcomes. Referenced cardiologist source consistent with cardiology literature.
+coaching_translation: 'Women having a heart attack often don''t get chest-gripping pain. Instead watch
+  for: extreme fatigue that sleep doesn''t fix, sleep problems, shortness of breath, nausea, indigestion,
+  or pain in the back, jaw, or arms. These symptoms are frequently dismissed as ''just stress'' or stomach
+  problems.'
+out_of_scope_notes: 'Coach role: educate clients on atypical warning signs so they seek emergency care
+  promptly — do not diagnose or advise treatment.'
+caveats:
+- Individual presentations vary widely; this is a population-level pattern, not a reliable diagnostic
+  rule for any single patient.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-dysfunction
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 15 - Heart Health
+  quote: The top six signs of a heart attack in women are unexplained or debilitating fatigue that doesn't
+    go away with sleep, difficulty sleeping, shortness of breath, indigestion, nausea, and tightness and
+    pain in the back, arms, jaw, or neck.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

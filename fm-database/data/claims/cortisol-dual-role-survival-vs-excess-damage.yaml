@@ -1,0 +1,32 @@
+slug: cortisol-dual-role-survival-vs-excess-damage
+statement: Cortisol is produced in the adrenal cortex, controls carbohydrate, fat, and protein metabolism,
+  and participates in blood sugar balance, immune response, and cognition — but in excess is a risk factor
+  for depression, osteoporosis, cardiovascular disease, and high blood pressure.
+evidence_tier: strong
+rationale: Well-established glucocorticoid physiology; Welch references strong links between cortisol
+  elevation and depression (multiple studies) and bone mineral density loss (documented even pre-menopause).
+coaching_translation: Cortisol is essential for energy, immunity, and focus — but if it stays elevated
+  for too long, it starts damaging bones, heart, mood, and blood sugar. It is a hormone that protects
+  in a crisis but destroys in a chronic state.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- adrenal-hormone-function
+- osteoporosis
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- cortisol-elevation
+- cortisol-bone-suppression
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: Cortisol controls the metabolism of carbohydrates, fats, and protein, and plays an important
+    role in infection-fighting, blood sugar balance, immune response, thinking, and other healthy functions.
+    In excess, however, cortisol can cause problems.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

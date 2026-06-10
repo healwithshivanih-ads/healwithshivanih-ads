@@ -1,0 +1,32 @@
+slug: cortisol-double-assault-on-bone-density
+statement: 'Elevated cortisol suppresses bone density by a double mechanism: directly reducing bone mass
+  and depleting estrogen-producing tissues, which removes estrogen''s bone-protective effect.'
+evidence_tier: plausible_emerging
+rationale: Cortisol-induced bone resorption is well-established (glucocorticoid-induced osteoporosis);
+  cortisol also reduces peripheral aromatization in adipose and adrenal tissue, dropping estrogen. Both
+  pathways are consistent with conventional endocrinology.
+coaching_translation: 'Chronic stress accelerates bone loss in two ways at once: the stress hormone cortisol
+  directly breaks down bone, and it also lowers the estrogen that would normally slow that breakdown.'
+out_of_scope_notes: ''
+caveats:
+- Direct cortisol-bone pathway is well-supported; the secondary estrogen-depletion pathway via stress-induced
+  tissue depletion is mechanistically plausible but less directly quantified.
+linked_to_topics:
+- osteoporosis
+- bone-health
+- chronic-stress
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- cortisol-bone-suppression
+- cortisol-elevation
+- bone-resorption-formation-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 16 - Osteoporosis: Hormones and Bone Loss'
+  quote: bone mass is decreased by high levels of cortisol... many tissues that produce estrogen are depleted,
+    resulting in decreased production of estrogen
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

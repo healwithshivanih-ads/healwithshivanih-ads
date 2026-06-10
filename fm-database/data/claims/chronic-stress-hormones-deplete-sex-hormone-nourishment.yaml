@@ -1,0 +1,33 @@
+slug: chronic-stress-hormones-deplete-sex-hormone-nourishment
+statement: Chronic overabundance of stress hormones outweighs the nourishing effects of sex hormones and
+  contributes to the breakdown of bones, skin, muscles, and brain tissue.
+evidence_tier: plausible_emerging
+rationale: 'Consistent with established glucocorticoid physiology: sustained high cortisol suppresses
+  osteoblast activity, promotes protein catabolism, and is linked to hippocampal atrophy. Welch synthesises
+  this as a stress-vs-sex-hormone resource trade-off.'
+coaching_translation: When you are under constant pressure for months or years, your body keeps pumping
+  stress hormones. These break down the very tissues — bones, muscles, skin, brain — that your sex hormones
+  would normally be protecting.
+out_of_scope_notes: ''
+caveats:
+- The direct mechanistic link between cortisol excess and each tissue type varies in strength; bone suppression
+  (cortisol → osteoblast inhibition) is well-evidenced; the skin/brain framing is plausible but less precisely
+  quantified at the population level.
+linked_to_topics:
+- chronic-stress
+- adrenal-fatigue
+- osteoporosis
+linked_to_mechanisms:
+- cortisol-elevation
+- cortisol-bone-suppression
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 1 - The Stress Epidemic
+  quote: An overabundance of stress hormones outweighs the nourishing effects of our sex hormones and
+    leads to the breakdown of bones, skin, muscles, and brain tissue.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,31 @@
+slug: eating-while-stressed-impairs-digestion-regardless-of-food-quality
+statement: Digestive capacity is reduced when eating in an anxious, distracted, or emotional state — the
+  quality of food consumed matters less than the state of the nervous system at the time of eating.
+evidence_tier: plausible_emerging
+rationale: Parasympathetic tone is required for gastric acid secretion, pancreatic enzyme release, and
+  intestinal motility; sympathetic dominance (stress state) directly suppresses all three. This is a well-established
+  physiological principle.
+coaching_translation: Eating while stressed, on the run, or emotionally activated is one of the fastest
+  routes to bloating, reflux, and poor nutrient absorption — regardless of how healthy the food is. A
+  brief pause, a few deep breaths, and eating in a calm environment are as important as the food itself.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- stress-management
+- ayurvedic-circadian-clock
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- sympathetic-suppression-of-gastric-acid
+- sympathetic-dominance
+- parasympathetic-activation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 27 — Changing Lifestyles: Take-Home Messages About Diet'
+  quote: Eat in a calm, clean environment. If you are upset or distracted, you could eat perfect foods
+    yet not digest them well.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

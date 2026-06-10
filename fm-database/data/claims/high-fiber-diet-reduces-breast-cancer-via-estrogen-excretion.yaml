@@ -1,0 +1,34 @@
+slug: high-fiber-diet-reduces-breast-cancer-via-estrogen-excretion
+statement: 'High dietary fiber reduces breast cancer risk by promoting excretion of excess estrogen: a
+  high-fiber diet limits fecal bacteria that re-activate conjugated estrogens, resulting in more estrogen
+  leaving the body via stool rather than being reabsorbed.'
+evidence_tier: plausible_emerging
+rationale: Supported by the enterohepatic recirculation of estrogen model; a Canadian study of 56,000
+  women cited in the book showed 30% less breast cancer in women on a high-fiber diet vs. low-fiber.
+coaching_translation: Eating plenty of vegetables, fruits, and whole grains helps your body actually flush
+  out excess estrogen through your bowels rather than recycling it — a 30% reduction in breast cancer
+  risk was seen in studies of high-fibre eating women.
+out_of_scope_notes: ''
+caveats:
+- Observational data; causality not fully established — fibre intake is a marker for overall dietary quality.
+  Mechanism (reduced beta-glucuronidase activity) is biologically plausible but individual effect size
+  varies.
+linked_to_topics:
+- breast-cancer-prevention
+- estrogen-dominance
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation
+- estrogen-clearance-liver-gut
+linked_to_supplements:
+- dietary-fiber-psyllium
+- prebiotic-fiber
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 13 - Breast Health
+  quote: A high-fiber diet… causes less fecal bacteria. Having less fecal bacteria is a good thing because
+    it means less excess or bad estrogen in the blood is reabsorbed into the body and more of it is eliminated
+    through stool.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

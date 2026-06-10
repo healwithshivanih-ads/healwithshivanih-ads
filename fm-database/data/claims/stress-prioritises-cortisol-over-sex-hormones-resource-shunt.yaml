@@ -1,0 +1,36 @@
+slug: stress-prioritises-cortisol-over-sex-hormones-resource-shunt
+statement: When the body faces a choice between making sex hormones and making stress hormones under resource
+  scarcity, it prioritises stress hormones — so chronic stress converts available progesterone into cortisol,
+  depleting sex hormone reserves.
+evidence_tier: plausible_emerging
+rationale: 'The steroidogenesis hierarchy reflects the biological imperative: cortisol and adrenaline
+  are survival hormones. Progesterone''s dual role as estrogen and cortisol precursor (via the shared
+  pregnenolone pathway) means sustained cortisol demand shunts away from reproductive steroids.'
+coaching_translation: Your body's number-one priority is survival, not reproduction. Under ongoing stress,
+  it will consistently redirect hormone-building material toward cortisol and away from progesterone and
+  estrogen. No supplement will fully overcome this if the underlying stress stays.
+out_of_scope_notes: ''
+caveats:
+- The 'pregnenolone steal' model is a teaching heuristic; tissue-specific steroidogenesis limits how directly
+  stress depletes circulating sex hormones. The concept is mechanistically sound but the magnitude is
+  difficult to predict per individual.
+linked_to_topics:
+- cortisol-steal
+- low-progesterone
+- adrenal-fatigue
+- chronic-stress
+- steroidogenesis
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- low-progesterone
+- dhea-cortisol-ratio-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 5 - Understanding How Yin and Yang Hormones Interact
+  quote: When we are under chronic or extreme stress, any available resources are allocated to supporting
+    the body's stress response instead of its reproductive function.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

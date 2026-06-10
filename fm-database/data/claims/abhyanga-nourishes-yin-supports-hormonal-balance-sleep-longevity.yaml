@@ -1,0 +1,38 @@
+slug: abhyanga-nourishes-yin-supports-hormonal-balance-sleep-longevity
+statement: Abhyanga is described as one of the surest Ayurvedic ways to nourish yin (the body's restorative,
+  cooling, lubricating principle) and thereby support hormonal balance, with traditional use spanning
+  thousands of years for maintaining health, improving sleep, and promoting longevity.
+evidence_tier: fm_specific_thin
+rationale: 'Consistent with the book''s yin/yang hormone model: yin = restorative, sex-hormone-related
+  resources; yang = stress-hormone expenditure. The claim bridges Ayurvedic tradition with the HPA-axis
+  framework presented throughout the book.'
+coaching_translation: Warm oil massage isn't just relaxing — in Ayurvedic medicine it's considered a core
+  method for rebuilding the body's restorative resources (yin). Thousands of years of clinical observation
+  link regular abhyanga to better sleep, slower ageing, and more stable hormones.
+out_of_scope_notes: ''
+caveats:
+- Evidence is traditional and observational; controlled trials on hormonal endpoints in humans are limited.
+- Contraindications include fever, heavy menstruation, and open skin conditions.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+- stress-management
+- ayurvedic-circadian-clock
+- sleep
+- self-care
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- parasympathetic-activation
+- cortisol-elevation
+linked_to_supplements:
+- sesame-seeds-tila
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 — Stress Management: Abhyanga: Warm Oil Self-Massage'
+  quote: It is one of the surest ways to nourish yin and support hormonal balance... For thousands of
+    years, people in India have used abhyanga to maintain health, benefit sleep patterns, and increase
+    longevity.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

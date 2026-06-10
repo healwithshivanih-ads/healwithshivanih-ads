@@ -1,0 +1,30 @@
+slug: stress-hormones-irregular-menstrual-cycle
+statement: Irregular menstrual cycles are almost always associated with elevated stress hormones, since
+  the hormonal timing of a woman's cycle is governed by the same HPA-sex-hormone axis that stress disrupts;
+  restoring regular daily rhythms — including regular meal times and sleep — supports hormonal regularity.
+evidence_tier: plausible_emerging
+rationale: 'Well-established: stress (cortisol) disrupts GnRH pulsatility, altering LH/FSH secretion and
+  cycle timing; circadian regularity is a known modulator of reproductive hormones.'
+coaching_translation: Stress is almost always part of the picture in irregular cycles, because the same
+  hormones that govern your period are also regulated by the stress response. Regular daily rhythms —
+  waking, eating, and sleeping at consistent times — help reset the hormonal clock.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- chronic-stress
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- infradian-rhythm
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Irregular or Missed Cycles'
+  quote: If stress is high, stress hormones are likely to be high, which disturbs the balance of sex hormones...
+    The timing of a woman's cycle is governed by these hormones, so high stress is almost always involved
+    in irregular cycles.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

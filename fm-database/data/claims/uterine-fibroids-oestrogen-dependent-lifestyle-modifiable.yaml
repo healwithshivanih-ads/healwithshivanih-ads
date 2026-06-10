@@ -1,0 +1,37 @@
+slug: uterine-fibroids-oestrogen-dependent-lifestyle-modifiable
+statement: Uterine fibroids are oestrogen-dependent and hormone-sensitive — they commonly enlarge during
+  pregnancy (when oestrogen is high) and shrink after menopause; natural progesterone (as distinct from
+  synthetic progestins) may help stabilise fibroid growth, whereas synthetic progestins may stimulate
+  it.
+evidence_tier: plausible_emerging
+rationale: Oestrogen-dependence of uterine fibroids is well-established; the distinction between natural
+  progesterone and synthetic progestins (which can differ in receptor-binding profiles) is consistent
+  with endocrinology literature, though evidence for clinical benefit of natural progesterone on fibroids
+  is limited.
+coaching_translation: Fibroids thrive on oestrogen and tend to shrink at menopause when oestrogen drops
+  — this is why managing oestrogen dominance through diet and lifestyle is part of the FM approach. There
+  is also a difference between natural progesterone and synthetic progestins in how they interact with
+  fibroids.
+out_of_scope_notes: Fibroid management requires physician oversight. Coach role is lifestyle support and
+  education only.
+caveats:
+- Clinical evidence for natural progesterone shrinking fibroids is limited; physician evaluation is essential
+  before any hormone approach to fibroids.
+linked_to_topics:
+- uterine-fibroids
+- estrogen-dominance
+- low-progesterone
+linked_to_mechanisms:
+- estrogen-enterohepatic-recirculation-uterine
+- progesterone-deficiency
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Uterine Fibroids'
+  quote: Fibroids are estrogen dependent and hormone sensitive, and their growth can be stimulated by
+    estrogens and even by progestins (synthetic progesterone-wannabe hormones) designed to counter some
+    of the negative effects of estrogen. Natural progesterone alone may help the situation.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

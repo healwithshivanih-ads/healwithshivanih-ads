@@ -1,0 +1,33 @@
+slug: cortisol-impairs-memory-reverses-when-removed
+statement: Even brief elevations of cortisol impair memory recall; when the cortisol exposure is removed,
+  memory function can return to normal within a week — suggesting that reducing chronic stress may partially
+  reverse cortisol-related cognitive impairment.
+evidence_tier: strong
+rationale: Welch cites a direct cortisol-injection study showing short-term memory impairment. Cortisol's
+  effects on hippocampal function are well-documented in neuroscience. The reversibility after cortisol
+  removal is a key clinical teaching point.
+coaching_translation: Even a short burst of high cortisol can interfere with memory — but the good news
+  is that when the stress response is reduced, memory can recover within days. This shows the brain is
+  genuinely responsive to stress management practices.
+out_of_scope_notes: ''
+caveats:
+- The cited study used injected cortisol (pharmacological doses), not naturalistic chronic stress; extrapolation
+  to chronic low-grade stress is mechanistically plausible but not identical.
+linked_to_topics:
+- cognitive-decline
+- chronic-stress
+- stress-management
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+- hippocampal-neuroplasticity
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 17 - Alzheimer's Disease and Dementia
+  quote: volunteers injected with cortisol had trouble recalling a story that they had just been told,
+    but that their memory was restored to normal within a week of stopping the injections
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

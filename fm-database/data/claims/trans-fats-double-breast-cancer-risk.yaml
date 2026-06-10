@@ -1,0 +1,30 @@
+slug: trans-fats-double-breast-cancer-risk
+statement: 'Trans fats are associated with approximately double the risk of breast cancer: two studies
+  (1997 and 2008) found that women with the highest blood levels of trans fats had about twice the breast
+  cancer risk compared to those with the lowest levels.'
+evidence_tier: plausible_emerging
+rationale: Replicable epidemiological finding across two independent cohort studies; trans fats are also
+  independently linked to systemic inflammation, which contributes to tumour promotion.
+coaching_translation: Women with the most trans fats in their bloodstream had roughly twice the breast
+  cancer risk in two large studies. Trans fats are in processed baked goods, crackers, stick margarine,
+  and microwave popcorn — check labels for 'partially hydrogenated vegetable oil'.
+out_of_scope_notes: ''
+caveats:
+- Epidemiological association; confounders (overall diet quality, obesity) are not fully controlled across
+  all studies. Industrial trans fats are being phased out globally, reducing exposure.
+linked_to_topics:
+- breast-cancer-prevention
+- chronic-inflammation
+linked_to_mechanisms:
+- chronic-inflammation
+- systemic-inflammation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 13 - Breast Health
+  quote: Women with the highest levels of trans fats in their blood were found to have about twice the
+    risk of breast cancer compared to women with the lowest levels.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

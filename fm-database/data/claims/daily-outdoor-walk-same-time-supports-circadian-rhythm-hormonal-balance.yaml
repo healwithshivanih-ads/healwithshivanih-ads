@@ -1,0 +1,33 @@
+slug: daily-outdoor-walk-same-time-supports-circadian-rhythm-hormonal-balance
+statement: Regular outdoor walking (20–30 minutes daily at the same time) supports internal natural rhythms,
+  provides circadian light cues, and complements structured exercise for hormonal and nervous-system balance.
+evidence_tier: plausible_emerging
+rationale: Morning light exposure entrains the circadian clock via retinal melanopsin signalling; daily
+  physical activity at consistent times strengthens cortisol awakening response amplitude and supports
+  HPA-axis regulation.
+coaching_translation: Add a brisk 20–30 minute outdoor walk at the same time each day — ideally morning
+  — to your routine. The combination of light exposure, movement, and predictability helps reset your
+  body clock and lower the stress-hormone baseline.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- exercise-prescription
+- ayurvedic-circadian-clock
+- sleep
+- chronic-stress
+- stress-management
+- cardiovascular-exercise
+linked_to_mechanisms:
+- circadian-autonomic-rhythm
+- cortisol-awakening-response
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 27 — Changing Lifestyles: Take-Home Messages About Lifestyle'
+  quote: In addition to your regular exercise routine, add a brisk 20- to 30-minute outdoor walk outdoors
+    at the same time every day. Outdoor exercise is beneficial to support your internal natural rhythms.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

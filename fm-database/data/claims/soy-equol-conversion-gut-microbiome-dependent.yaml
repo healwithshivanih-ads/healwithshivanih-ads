@@ -1,0 +1,35 @@
+slug: soy-equol-conversion-gut-microbiome-dependent
+statement: 'The protective effects of soy phytoestrogens depend on gut microbiome composition: only women
+  who harbour the right intestinal bacteria can convert soy daidzein into equol, the more oestrogenically
+  active metabolite linked to lower breast cancer risk.'
+evidence_tier: plausible_emerging
+rationale: Equol (7-hydroxy-O-desmethylangolensin) is produced by bacterial metabolism of daidzein; the
+  bacteria responsible (including Slackia isoflavoniconvertens) are more prevalent in Japanese populations
+  and in people with high-fibre diets; this explains why the soy-breast cancer association is strong in
+  Japan but inconsistent in Western populations.
+coaching_translation: 'Whether soy is beneficial for your hormones depends largely on your gut bacteria
+  — specifically, whether you harbour the right microbes to convert soy''s plant oestrogens into a form
+  your body can use. This is another reason why gut health is foundational: a diverse microbiome unlocks
+  more nutritional benefit from the foods you eat.'
+out_of_scope_notes: ''
+caveats:
+- Equol-producer status can be assessed with a urine test but is not routinely available clinically; dietary
+  shifts toward high-fibre, fermented foods may increase equol production over time.
+linked_to_topics:
+- gut-microbiome
+- estrogen-dominance
+- breast-cancer-prevention
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+- dysbiosis-gut-microbiome-imbalance
+linked_to_supplements:
+- probiotics
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 24 - The Pros and Cons of Soy
+  quote: The reason Japanese women may be more protected than Western women by soy is that the Japanese
+    diet and intestinal microflora are different… Only women with the right intestinal bacteria can benefit.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

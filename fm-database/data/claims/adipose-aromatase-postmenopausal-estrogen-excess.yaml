@@ -1,0 +1,29 @@
+slug: adipose-aromatase-postmenopausal-estrogen-excess
+statement: Excess body fat in a postmenopausal woman can result in higher circulating estrogen than a
+  thinner premenopausal woman has, because adipose tissue is a major site of aromatase-driven estrogen
+  conversion.
+evidence_tier: strong
+rationale: 'Supported by conventional endocrinology: adipose aromatase is the primary source of postmenopausal
+  estrogen, and elevated estrone from central adiposity is a recognised breast cancer risk factor.'
+coaching_translation: More body fat = more estrogen-making capacity after menopause. This matters because
+  too much estrogen without enough progesterone to balance it raises breast and uterine cancer risk.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- estrogen-dominance
+- breast-cancer-prevention
+- midlife-weight-gain
+- visceral-adiposity
+linked_to_mechanisms:
+- estrogen-decline
+- aromatase-activity
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 3 - Sex Hormones
+  quote: It is possible for an overweight woman to have more estrogen after menopause than a thin woman
+    has before menopause, simply because of the amount of estrogen in her too-ample fat tissues.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

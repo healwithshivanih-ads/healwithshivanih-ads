@@ -1,0 +1,32 @@
+slug: synthetic-hormones-bypass-natural-feedback-loop
+statement: 'Synthetic hormones in birth control pills and HRT cannot replicate the body''s natural hormonal
+  feedback loop: they consistently over- or under-deliver hormone levels relative to what the body needs
+  at any given moment, which over time may strain organs and glands.'
+evidence_tier: plausible_emerging
+rationale: 'Pharmacokinetically sound: exogenous hormones are delivered in fixed doses and bypass hypothalamic-pituitary
+  feedback; the body''s natural pulsatile and context-sensitive secretion pattern cannot be matched by
+  oral administration.'
+coaching_translation: Unlike your body's own hormonal system, which adjusts moment to moment, synthetic
+  hormones are a blunt tool — a fixed dose that can't respond to what your body actually needs right now.
+  Long-term, this mismatch can put strain on the system.
+out_of_scope_notes: Any decision to start, continue, or stop hormonal contraception or HRT must involve
+  the client's physician. Coach role is education only.
+caveats:
+- This is a mechanistic argument; the clinical significance of the pulsatility mismatch for healthy women
+  taking standard contraceptives is debated.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- hrt
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 9 — Menstruation: Eliminating Cycles'
+  quote: The body's hormonal demands and levels naturally change on an hourly basis. Whereas the body's
+    natural feedback mechanisms relay how much of which hormone is needed at any given time, synthetic
+    hormones suppress and replace the body's natural hormonal response.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

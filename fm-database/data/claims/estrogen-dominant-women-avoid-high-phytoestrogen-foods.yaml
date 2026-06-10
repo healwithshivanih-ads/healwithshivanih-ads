@@ -1,0 +1,33 @@
+slug: estrogen-dominant-women-avoid-high-phytoestrogen-foods
+statement: In women with oestrogen dominance, high consumption of phytoestrogen-rich foods (soy, flax,
+  hops, clover) may worsen the hormonal imbalance rather than correct it; Welch recommends these women
+  avoid high-phytoestrogen foods until oestrogen levels normalise.
+evidence_tier: fm_specific_thin
+rationale: While phytoestrogens bind oestrogen receptors at much lower affinity than endogenous oestrogen,
+  in oestrogen-dominant states — where ERα signalling is already excessive — adding competitive agonists
+  may be counterproductive; this is a clinical heuristic used in integrative practice but not robustly
+  RCT-validated.
+coaching_translation: If your oestrogen is already too high — heavy periods, PMS, bloating, fibrocystic
+  breasts — eating a lot of soy, flaxseeds, or hops-based foods may not be helping. It's a sign to focus
+  on supporting oestrogen clearance (liver, fibre, cruciferous vegetables) rather than adding more plant
+  oestrogens.
+out_of_scope_notes: ''
+caveats:
+- This heuristic is widely used in integrative/functional medicine but is not supported by high-quality
+  RCT evidence; clinical context (ER-positive vs ER-negative, menopausal status) matters significantly.
+linked_to_topics:
+- estrogen-dominance
+- low-progesterone
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 24 - The Pros and Cons of Soy
+  quote: I advise women with excess estrogen to avoid phytoestrogen-rich foods until they are no longer
+    estrogen dominant.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: strength-training-bone-density-equivalent-hrt
+statement: Strength training in postmenopausal women can produce comparable bone-density gains to hormone
+  replacement therapy — without the side effects — including ~1% increase in hip and spine density per
+  year and improved balance.
+evidence_tier: strong
+rationale: Welch cites Tufts University research (Nelson and Wernick). Weight-bearing resistance exercise
+  stimulating bone remodeling via mechanical load is well-established physiology. This is a coach-actionable,
+  safe, evidence-backed claim.
+coaching_translation: Simple strength-training exercises can build bone as effectively as hormone therapy
+  in postmenopausal women — roughly 1% gain per year in the hip and spine — while a sedentary lifestyle
+  leads to 2–2.5% loss per year.
+out_of_scope_notes: ''
+caveats:
+- Study was on postmenopausal women not on HRT; results may differ in other populations. Exercise type,
+  frequency, and load specifics matter.
+linked_to_topics:
+- osteoporosis
+- bone-health
+- mechanical-loading-bone-density
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 16 - Osteoporosis: Calcium, Diet, and Exercise'
+  quote: when these women engaged in simple strength-training exercises... they gained about 1 percent
+    bone density in their hips and spine over the course of a year... comparable to those from hormone
+    replacement therapy, but without the negative side effects
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

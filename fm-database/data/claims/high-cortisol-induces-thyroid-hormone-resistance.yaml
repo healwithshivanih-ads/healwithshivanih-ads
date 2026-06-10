@@ -1,0 +1,32 @@
+slug: high-cortisol-induces-thyroid-hormone-resistance
+statement: Chronic high cortisol creates whole-body hormone resistance, including thyroid resistance,
+  so that the thyroid gland must work harder to produce the same effect — potentially contributing to
+  hypothyroid-like symptoms even when lab values appear normal.
+evidence_tier: plausible_emerging
+rationale: Glucocorticoid-induced receptor downregulation is established; specific cortisol-driven thyroid
+  receptor resistance is plausible but not as well quantified in human studies as the author implies.
+coaching_translation: Prolonged stress can make your cells less sensitive to thyroid hormones — even when
+  your TSH looks normal on a blood test. This is one reason why women under chronic stress feel sluggish,
+  foggy, and cold despite 'normal' thyroid function.
+out_of_scope_notes: ''
+caveats:
+- The direct cortisol-to-thyroid-resistance pathway is mechanistically plausible but the clinical magnitude
+  in euthyroid women under 'everyday' stress is not well quantified.
+linked_to_topics:
+- hpa-axis-dysregulation
+- hypothyroidism
+- chronic-stress
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: Too much cortisol circulating in the body leads to overall hormone resistance, including thyroid
+    resistance. This means that the body becomes desensitized to these hormones and more may be required
+    to do the same job.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: whi-2002-synthetic-hrt-breast-cancer-heart-attack-stroke-risk
+statement: The 2002 Women's Health Initiative study found that synthetic hormone replacement therapy (conjugated
+  equine estrogen + progestin) increased risk of breast cancer, heart attacks, stroke, and dementia, leading
+  the NIH to halt the trial early.
+evidence_tier: strong
+rationale: Factual historical citation; the WHI findings are among the best-documented RCT outcomes in
+  women's health. The 29% heart attack increase and 41% stroke increase are accurately cited from the
+  published results.
+coaching_translation: The large NIH Women's Health Initiative study was stopped early because participants
+  on synthetic HRT had meaningfully higher rates of breast cancer, heart attack, and stroke. This is why
+  conventional HRT is now reserved for short-term symptom relief rather than long-term use.
+out_of_scope_notes: 'Any discussion of whether to take or stop HRT must be handled by a physician. Coach
+  role: educate that study context exists; never recommend initiating or stopping pharmaceutical hormones.'
+caveats:
+- WHI findings apply specifically to the conjugated equine estrogen + medroxyprogesterone acetate combination
+  studied; risk profiles differ for different formulations and routes of administration. Any decision
+  about hormone therapy requires consultation with a physician.
+linked_to_topics:
+- perimenopause-and-menopause
+- breast-cancer-prevention
+- bhrt
+- hrt
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 6 - Why Not Just Take HRT/Synthetic or Bioidentical Hormones?
+  quote: The report from the NIH also showed a significant rise in the risk of heart attacks (a 29 percent
+    increase) and stroke (a 41 percent increase) among women taking the synthetic hormones.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

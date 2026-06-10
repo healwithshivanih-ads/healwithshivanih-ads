@@ -1,0 +1,36 @@
+slug: crp-inflammation-stronger-heart-attack-predictor-than-ldl-in-women
+statement: Persistent systemic inflammation — measured by high-sensitivity CRP — is a stronger predictor
+  of cardiovascular disease in women than LDL cholesterol; a Boston Women's Hospital study of 28,000 women
+  found persistent 'simmering' inflammation was the single most powerful trigger of heart attacks.
+evidence_tier: strong
+rationale: hsCRP as a CVD predictor in women (particularly the Ridker/JUPITER research at Brigham and
+  Women's Hospital) is well-established; the superiority of CRP over LDL in women specifically is supported
+  in the literature.
+coaching_translation: For women, chronic low-grade inflammation (measurable with a hsCRP blood test) predicts
+  heart attacks better than 'bad' cholesterol. This is why anti-inflammatory lifestyle choices — whole
+  foods, omega-3s, stress reduction, treating gum disease — are central to women's heart health.
+out_of_scope_notes: ''
+caveats:
+- CRP is a non-specific inflammatory marker; elevated CRP indicates risk but is not diagnostic. Its predictive
+  superiority over LDL is most clearly shown in primary prevention data in women.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- chronic-inflammation
+- inflammation
+linked_to_mechanisms:
+- systemic-inflammation-cv
+- chronic-inflammation
+- systemic-inflammation
+linked_to_supplements:
+- omega-3
+- fish-oil-omega-3
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 15 - Heart Health
+  quote: '''Simmering, painless inflammation deep within the body is the single most powerful trigger
+    of heart attacks.'' In women, CRP seems to be a better predictor of cardiovascular disease, including
+    heart attacks and strokes, than LDL (''bad'') cholesterol.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

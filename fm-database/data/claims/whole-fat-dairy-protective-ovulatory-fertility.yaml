@@ -1,0 +1,30 @@
+slug: whole-fat-dairy-protective-ovulatory-fertility
+statement: The Nurses' Health Study found that one to two daily servings of whole-fat dairy (not low-fat
+  or non-fat) was beneficial for fertility, while non-fat and low-fat dairy was harmful to ovulatory fertility;
+  removing fat from dairy alters its sex hormone composition.
+evidence_tier: plausible_emerging
+rationale: Specific finding from Nurses' Health Study as reported in Chavarro et al. (2007, American Journal
+  of Obstetrics and Gynecology); the proposed mechanism (fat removal alters dairy's androgen/oestrogen
+  balance) is biologically plausible.
+coaching_translation: For women working on their fertility, full-fat dairy appears to be protective while
+  low-fat dairy seems to work against conception. This counter-intuitive finding has held up in large
+  studies — a glass of whole milk or a serving of full-fat yoghurt may actually be helpful.
+out_of_scope_notes: ''
+caveats:
+- Effect size was modest; individual dairy tolerance varies; this does not apply to all fertility contexts
+  (e.g. PCOS where dairy may worsen androgen levels). Serve within a broader dietary context.
+linked_to_topics:
+- female-infertility
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms:
+- infradian-rhythm
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 12 — Fertility and Conception: The Egg'
+  quote: The more nonfat and low-fat milk a woman consumes, the more likely she will have difficulty getting
+    pregnant. Removing fat from dairy changes its composition of sex hormones.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

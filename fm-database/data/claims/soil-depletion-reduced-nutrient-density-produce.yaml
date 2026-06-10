@@ -1,0 +1,31 @@
+slug: soil-depletion-reduced-nutrient-density-produce
+statement: 'Intensive industrial farming has measurably reduced the nutrient density of food over the
+  past 50 years: a 2004 study found 43 garden crops showed statistically reliable declines in protein,
+  calcium, phosphorus, iron, riboflavin, and vitamin C.'
+evidence_tier: plausible_emerging
+rationale: A study by Davis, Epp & Riordan (Journal of the American College of Nutrition, 2004) analysed
+  USDA data and found reliable declines in 6 nutrients across 43 garden crops between 1950 and 1999, attributed
+  to soil depletion from monoculture and accelerated yield breeding ('dilution effect').
+coaching_translation: The carrot you eat today has measurably less iron, calcium, and vitamin C than a
+  carrot from 50 years ago. This is why even clients who 'eat well' can still be deficient in key nutrients
+  — the food itself has changed. Prioritising diversity, soil-quality produce, and targeted supplementation
+  addresses this.
+out_of_scope_notes: ''
+caveats:
+- Nutrient density varies significantly by variety, growing conditions, and season; the 2004 study is
+  one data point and methodology has been debated; organic farming does not always produce higher nutrient
+  density.
+linked_to_topics:
+- hormonal-nutrition-foundations
+- modern-diet-systemic-dysfunction
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat (Soil depletion section)
+  quote: In 2004, a study of 43 garden crops found statistically reliable declines in the amounts of protein,
+    calcium, phosphorus, iron, riboflavin, and vitamin C over the past half century.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

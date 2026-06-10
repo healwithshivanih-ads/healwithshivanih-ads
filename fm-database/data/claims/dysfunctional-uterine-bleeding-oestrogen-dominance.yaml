@@ -1,0 +1,33 @@
+slug: dysfunctional-uterine-bleeding-oestrogen-dominance
+statement: Dysfunctional uterine bleeding is frequently caused by oestrogen excess without adequate progesterone
+  ('oestrogen dominance') causing a uterine lining that is built up without sufficient hormonal support;
+  this is not an isolated anatomical problem but a systemic sex-hormone imbalance.
+evidence_tier: strong
+rationale: Unopposed oestrogen causing endometrial hyperplasia and abnormal bleeding is well established
+  in gynaecology.
+coaching_translation: Heavy, irregular bleeding without a clear anatomical cause often traces back to
+  too much oestrogen without enough progesterone to balance it. Supporting the body's oestrogen clearance
+  and progesterone production through lifestyle is the FM approach.
+out_of_scope_notes: Persistent heavy or irregular bleeding requires physician evaluation. Coach does not
+  diagnose hormonal imbalance.
+caveats:
+- Abnormal uterine bleeding always requires medical evaluation to rule out pathology (fibroids, polyps,
+  cancer) before attributing to oestrogen dominance.
+linked_to_topics:
+- menorrhagia
+- estrogen-dominance
+- low-progesterone
+linked_to_mechanisms:
+- progesterone-deficiency
+- estrogen-clearance-liver-gut
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Dysfunctional Uterine Bleeding'
+  quote: Yet another cause of heavy bleeding is dysfunctional uterine bleeding, which is usually due to
+    excess unopposed... estrogen's building a uterine lining that has insufficient support. Sometimes
+    this is called 'estrogen dominance.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

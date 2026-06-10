@@ -1,0 +1,34 @@
+slug: progesterone-cortisol-conversion-unidirectional-drain
+statement: Progesterone can be converted into both estrogen and cortisol, but neither estrogen nor cortisol
+  can be converted back into progesterone — meaning chronic stress that demands more cortisol irreversibly
+  depletes progesterone.
+evidence_tier: plausible_emerging
+rationale: 'Consistent with steroidogenesis biochemistry: pregnenolone is the common precursor; progesterone
+  is an intermediate for both cortisol (via 17-hydroxyprogesterone) and estrogen. The unidirectional conversion
+  is accurate: no reverse pathway restores progesterone from downstream products.'
+coaching_translation: Think of progesterone as raw material. Your body can turn it into estrogen when
+  needed, or into cortisol when you are stressed. But that street only goes one way — cortisol cannot
+  become progesterone again. Chronic stress therefore steadily drains your progesterone.
+out_of_scope_notes: ''
+caveats:
+- '''Pregnenolone steal'' remains a useful teaching model but is contested as an oversimplification; tissue-specific
+  steroidogenesis means the shunt does not operate uniformly across all cell types.'
+linked_to_topics:
+- cortisol-steal
+- low-progesterone
+- adrenal-fatigue
+- steroidogenesis
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- low-progesterone
+- progesterone-deficiency
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 3 - Sex Hormones
+  quote: 'Just as estrogen can be made from progesterone, so, too, can stress hormones like cortisol.
+    (The reverse is not true: You cannot make progesterone from estrogen or cortisol.)'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,35 @@
+slug: calcium-absorption-multi-step-chain-hcl-vitd-exercise-hormones
+statement: 'Adequate bone mineralisation requires a multi-step chain: hydrochloric acid and vitamin D
+  to transfer calcium from gut to blood, then micronutrients, progesterone or testosterone, and exercise
+  to move it from blood into bone tissue.'
+evidence_tier: plausible_emerging
+rationale: 'This is a clinically sound nutritional cascade: HCl supports calcium ionisation and absorption;
+  vitamin D activates intestinal calcium transport; exercise and hormones drive mineralisation. Consistent
+  with established physiology.'
+coaching_translation: 'Getting calcium into your bones requires several steps working together: stomach
+  acid + vitamin D to absorb it from food, then exercise + the right hormones to actually deposit it into
+  bone. Supplementing calcium alone without addressing the full chain often doesn''t work.'
+out_of_scope_notes: ''
+caveats:
+- The precise relative importance of each cofactor varies by individual and life stage. Progesterone's
+  role specifically (vs. general hormonal support) is integrative/FM framing.
+linked_to_topics:
+- bone-health
+- osteoporosis
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+- progesterone-bone-stimulation
+linked_to_supplements:
+- calcium
+- vitamin-d3
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 16 - Osteoporosis: Calcium, Diet, and Exercise'
+  quote: we need hydrochloric acid and vitamin D to get calcium from the stomach into the bloodstream.
+    Then we need micronutrients, progesterone or testosterone, and exercise to get it from the blood into
+    our bones
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

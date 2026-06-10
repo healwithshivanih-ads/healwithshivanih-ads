@@ -1,0 +1,25 @@
+slug: breastfeeding-reduces-breast-cancer-risk-per-year
+statement: Breastfeeding reduces breast cancer risk by approximately 4.3% for each year a woman breastfeeds,
+  likely because lactation suppresses ovulatory cycles and reduces cumulative lifetime estrogen exposure.
+evidence_tier: strong
+rationale: Well-replicated epidemiological finding; mechanism (reduced ovulatory estrogen surges during
+  lactation) is physiologically coherent and supported by multiple large studies.
+coaching_translation: Every year of breastfeeding cuts a woman's breast cancer risk by about 4.3%. This
+  appears to be because nursing suppresses the monthly estrogen surges that come with ovulation.
+out_of_scope_notes: ''
+caveats:
+- Effect size varies by study; absolute risk reduction is small for individual women but population impact
+  is meaningful.
+linked_to_topics:
+- breast-cancer-prevention
+linked_to_mechanisms:
+- estrogen-decline
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 13 - Breast Health
+  quote: Risk decreased by 4.3 percent for each year of breastfeeding.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

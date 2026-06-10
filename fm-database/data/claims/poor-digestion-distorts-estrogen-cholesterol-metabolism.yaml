@@ -1,0 +1,36 @@
+slug: poor-digestion-distorts-estrogen-cholesterol-metabolism
+statement: 'Poor digestion impairs transformative processes system-wide: weakened digestive capacity can
+  cause the liver to convert estradiol into pro-inflammatory ''bad'' oestrogen metabolites and increase
+  production of harmful cholesterol fractions — linking gut health to hormonal and cardiovascular balance.'
+evidence_tier: plausible_emerging
+rationale: 'Welch describes ama as a systemic consequence of poor digestion that distorts downstream metabolic
+  transformations. This maps to FM''s well-documented gut-liver axis: dysbiosis and impaired phase II
+  detox do shift oestrogen metabolism toward more proliferative 16-OH metabolites; impaired hepatic function
+  affects lipid handling.'
+coaching_translation: When digestion is chronically poor, it affects your entire biochemistry — not just
+  your gut. Weak digestion can push your body toward making the more inflammatory form of oestrogen and
+  the harmful form of cholesterol, which is why gut health sits at the root of hormonal and heart health.
+out_of_scope_notes: ''
+caveats:
+- Welch uses Ayurvedic framing (ama → poor transformational quality). The underlying pathophysiology (gut-liver
+  axis, oestrogen metabolism, lipid handling) has meaningful evidence in FM literature but is presented
+  here in integrative/Ayurvedic language rather than mechanistic biochemistry.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- maldigestion
+- estrogen-metabolism
+linked_to_mechanisms:
+- hepatic-estrogen-metabolism
+- dysbiosis-gut-microbiome-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 20 - Food, Medicine, and Poison: Ama, or Toxic Sludge'
+  quote: if the body's transformational processes are affected by a weak digestion... it may wind up converting
+    estradiol into 'bad' estrogen instead of 'good' estrogen, or making more 'bad' cholesterol than 'good'
+    cholesterol
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

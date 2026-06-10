@@ -1,0 +1,33 @@
+slug: processed-food-poor-digestion-generates-ama-inflammation
+statement: Processed and refined foods that the body cannot digest properly generate 'ama' — a concept
+  from Ayurveda for toxic metabolic residue — which Welch argues creates a systemic inflammatory environment
+  that contributes to chronic disease.
+evidence_tier: fm_specific_thin
+rationale: Ama maps roughly to the concept of undigested metabolic by-products (lipopolysaccharides, advanced
+  glycation end-products) recognised in conventional medicine; the mechanistic parallel with gut barrier
+  dysfunction is functionally plausible even if the Ayurvedic framing is not evidence-based in itself.
+coaching_translation: When you eat highly processed or refined foods your digestive system can't break
+  them down cleanly. The resulting by-products circulate in your body and settle in the weakest areas
+  — contributing to joint pain, inflammation, and hormonal disruption over time.
+out_of_scope_notes: ''
+caveats:
+- Ama is an Ayurvedic concept without a direct Western biomarker equivalent; the inflammatory consequence
+  of processed food is plausible but the specific mechanism Welch describes is not validated.
+linked_to_topics:
+- anti-inflammatory-diet
+- agni-digestive-fire
+- modern-diet-systemic-dysfunction
+linked_to_mechanisms:
+- systemic-inflammation
+- dysbiosis-gut-microbiome-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 20 - Food, Medicine, and Poison
+  quote: Ama is either the end product of poor digestion or the result of exposure to toxic pollutants…
+    its presence creates a hospitable environment for diseases ranging from stiff joints and arthritis
+    to high cholesterol, heart disease, and cancer.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

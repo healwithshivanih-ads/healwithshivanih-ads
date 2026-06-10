@@ -1,0 +1,37 @@
+slug: pranayama-alternate-nostril-breathing-balances-hormones-nervous-system
+statement: Pranayama (structured breathing exercises) is one of the most direct and rapid methods available
+  for calming the nervous system, balancing the mind, and—according to Welch's clinical experience—can
+  eliminate menopausal symptoms including hot flashes when other interventions have not succeeded.
+evidence_tier: plausible_emerging
+rationale: Slow, controlled breathing activates vagal tone via the respiratory sinus arrhythmia reflex,
+  reducing sympathetic activity; some small RCTs support pranayama for menopausal hot-flash reduction.
+coaching_translation: Slow, deliberate breathing exercises work faster on your stress response than almost
+  anything else. Even 5–15 minutes daily — in through one nostril, out through the other — can quiet hot
+  flashes, reduce anxiety, and help rebalance hormones over time.
+out_of_scope_notes: ''
+caveats:
+- Evidence for hormonal endpoints in humans is preliminary; consult a doctor before starting if heart
+  or respiratory conditions exist.
+linked_to_topics:
+- chronic-stress
+- stress-management
+- hpa-axis-cortisol-regulation
+- perimenopause-and-menopause
+- mindful-breathing
+- nasal-breathing-blood-pressure
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- parasympathetic-activation
+- vagal-tone-enhancement
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 — Stress Management: Pranayama and Alternate-Nostril Breathing'
+  quote: Alternate-nostril breathing is the most powerful quick technique I know for balancing hormones.
+    Its calming effect on the nervous system and balancing effect on the hormones is quick and, usually,
+    its only side effect is greater mental and emotional equilibrium.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

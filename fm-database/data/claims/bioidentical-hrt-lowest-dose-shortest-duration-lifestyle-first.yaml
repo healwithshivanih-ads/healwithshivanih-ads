@@ -1,0 +1,34 @@
+slug: bioidentical-hrt-lowest-dose-shortest-duration-lifestyle-first
+statement: Welch argues that bioidentical hormone replacement therapy (BHRT) may serve as a transitional
+  support while lifestyle changes take effect, but should be used at the lowest efficacious dose for the
+  shortest duration, under qualified supervision, as comprehensive long-term safety data are lacking.
+evidence_tier: confirm_with_clinician
+rationale: Welch's position reflects a pragmatic middle ground consistent with current integrative medicine
+  guidance; she acknowledges BHRT is not risk-free and defers prescribing decisions to qualified practitioners.
+coaching_translation: Some women may need hormone support while they work on diet, stress, and lifestyle.
+  If that's the case, the integrative approach favours bioidentical ('body-identical') hormones at the
+  lowest effective dose and for the shortest time needed — always under a prescriber's supervision.
+out_of_scope_notes: 'NBHWC scope: BHRT prescribing, dosing, formulation selection, and monitoring are
+  strictly physician/NP territory. Coach supports the lifestyle foundation (diet, stress, sleep, movement)
+  that reduces the dose and duration of any hormonal support needed. Refer to qualified prescriber for
+  any hormone-therapy discussion.'
+caveats:
+- BHRT safety evidence base is less complete than that for synthetic HRT; compounded formulations are
+  not regulated by FDA and lack standardised dosing. Long-term safety data are insufficient.
+linked_to_topics:
+- perimenopause-and-menopause
+- menopause
+- bioidentical-hormone-replacement-therapy
+linked_to_mechanisms:
+- estrogen-decline
+- age-related-progesterone-decline
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 14 - Perimenopause and Menopause
+  quote: I would recommend the lowest efficacious dose for the shortest duration. We need more comprehensive
+    research and studies on the effects of bioidentical hormones.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

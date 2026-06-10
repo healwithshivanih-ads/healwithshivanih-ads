@@ -1,0 +1,30 @@
+slug: trans-fats-ovulatory-infertility-direct-link
+statement: The Nurses' Health Study found that trans fats — even at just 4 grams per day (roughly one
+  doughnut) — were directly linked to ovulatory infertility, while unsaturated fats improved insulin sensitivity
+  and reduced inflammation.
+evidence_tier: strong
+rationale: Finding from the well-regarded Nurses' Health Study; trans fat's detrimental effects on insulin
+  sensitivity and inflammation are well-established.
+coaching_translation: Even tiny amounts of trans fats — the kind in margarine, fried foods, and processed
+  snacks — can disrupt ovulation. Swapping to olive oil, avocado, and nuts supports the hormonal environment
+  for fertility.
+out_of_scope_notes: ''
+caveats:
+- Trans fats have since been largely removed from food supplies in many countries; industrial trans fat
+  intake is lower now than at time of study. Naturally occurring ruminant trans fats (e.g. CLA in dairy/meat)
+  appear to have different effects.
+linked_to_topics:
+- female-infertility
+- healthy-menstrual-cycle-baseline
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 12 — Fertility and Conception: The Egg'
+  quote: Trans fats were directly linked to ovulatory infertility, even at only four grams per day — that's
+    roughly two tablespoons of margarine or one doughnut.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

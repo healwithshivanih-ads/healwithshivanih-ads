@@ -1,0 +1,37 @@
+slug: whole-fermented-soy-protective-vs-soy-isolate-supplements
+statement: Whole and fermented soy foods (tofu, tempeh, miso, edamame) are associated with lower rates
+  of breast cancer in traditional East Asian populations, whereas isolated soy protein and high-dose isoflavone
+  supplements have not shown the same benefit and may carry different risks.
+evidence_tier: plausible_emerging
+rationale: Japanese epidemiological studies consistently show lower breast cancer rates in women eating
+  whole soy; the proposed mechanism involves gut-bacteria-mediated conversion of soy daidzein to equol
+  (a weaker phytoestrogen); isolated soy protein lacks the fibre and phytate matrix that modulates absorption,
+  and Walter Willett (Harvard School of Public Health) has commented that soy isoflavone supplements are
+  'essentially untested new drugs'.
+coaching_translation: There's a big difference between eating miso soup and tofu — traditional fermented
+  soy — and taking soy protein isolate or isoflavone supplements. The traditional form is associated with
+  hormone protection; the supplement form has no proven benefit and potential concerns we don't fully
+  understand yet.
+out_of_scope_notes: ''
+caveats:
+- Equol-producer status (a gut microbiome variable) determines much of the benefit; ~30% of Westerners
+  vs ~50–60% of East Asians produce equol; women with oestrogen-receptor-positive breast cancer should
+  discuss soy intake with their oncologist.
+linked_to_topics:
+- estrogen-dominance
+- breast-cancer-prevention
+- gut-microbiome
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+- dysbiosis-gut-microbiome-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 24 - The Pros and Cons of Soy
+  quote: Women in Japan who ate the most traditional soy products had the lowest rates of breast cancer…
+    Soy supplements, however, are a different story. Walter Willett… described soy isoflavone supplements
+    as 'essentially untested new drugs.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

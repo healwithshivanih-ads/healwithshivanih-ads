@@ -1,0 +1,33 @@
+slug: oral-contraceptives-b6-folate-depletion-bone-cancer-risks
+statement: Oral contraceptive pills taken before age 20 may deplete vitamins B6 and folate, suppress natural
+  ovarian hormone production necessary for bone building, increase C-reactive protein (a marker of systemic
+  inflammation), and double the risk of breast cancer before age 44.
+evidence_tier: plausible_emerging
+rationale: 'OCP-induced B6/folate depletion is well established (mechanism: oestrogen increases pyridoxine-dependent
+  enzyme activity); OCP-suppressed bone density in young women and breast cancer risk (especially pre-age-20
+  use) are supported by peer-reviewed evidence cited by Welch.'
+coaching_translation: Young women taking the Pill before age 20 face a specific set of nutritional and
+  health risks — including B vitamin depletion, bone density loss, and increased inflammation — that are
+  worth understanding and monitoring. If a client is on the Pill, nutrient repletion (especially B6, folate,
+  zinc, magnesium) is worth discussing.
+out_of_scope_notes: Any decision to start, continue, or modify oral contraception must involve the client's
+  physician. Coach role is nutritional support education.
+caveats:
+- Absolute breast cancer risk in young women remains low; OCP formulations vary and risk estimates differ
+  by type and dose. B6/folate depletion is well established but the degree varies by formulation.
+linked_to_topics:
+- hormonal-birth-control-withdrawal
+- bone-health
+- breast-cancer-prevention
+linked_to_mechanisms:
+- ovulation-suppression-pseudo-hormone-replacement
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 11 — Birth Control: Risks Associated with Synthetic Hormonal Contraceptive Methods'
+  quote: If taken before a woman is twenty, there is evidence that birth control pills reduce levels of
+    important vitamins such as B6 and folic acid and increase the risk of breast cancer.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

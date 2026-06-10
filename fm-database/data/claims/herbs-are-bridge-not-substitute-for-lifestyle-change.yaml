@@ -1,0 +1,29 @@
+slug: herbs-are-bridge-not-substitute-for-lifestyle-change
+statement: Using herbs as a substitute for lifestyle and dietary change is not sustainable; herbs are
+  most appropriate as a temporary bridge measure while Tier 1 (lifestyle/diet) practices are established
+  and take effect.
+evidence_tier: plausible_emerging
+rationale: Herbs modulate symptoms and physiology without removing the underlying stressor; without Tier
+  1 changes, the physiological cause of imbalance persists and herb dependency can become chronic, consistent
+  with FM's root-cause orientation.
+coaching_translation: Taking adaptogens or herbs for stress support is a good short-term strategy, but
+  they work best when you're also building the daily habits that will eventually make them unnecessary.
+  They're a bridge, not a destination.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- adrenal-fatigue
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 28 - The Three-Tier Treatment Strategy Revisited
+  quote: relying on herbs without making lifestyle and dietary changes… is not sustainable… herbs should
+    be the intermediate measure until tier-one measures restore balance
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

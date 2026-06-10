@@ -1,0 +1,33 @@
+slug: stressed-eating-impairs-digestion-parasympathetic
+statement: Eating while stressed, distracted, or in a hurry impairs digestion because the parasympathetic
+  nervous system — which governs digestive enzyme secretion and gut motility — is suppressed during sympathetic
+  (stress) activation.
+evidence_tier: plausible_emerging
+rationale: The enteric nervous system ('second brain') has ~100 million neurons; parasympathetic tone
+  is required for optimal gastric acid, pancreatic enzyme, and bile secretion — this is conventional physiology,
+  not Ayurveda-specific.
+coaching_translation: Your gut literally shuts down when you're stressed. Eating at your desk, scrolling
+  your phone, or eating quickly during a stressful day means the food you eat — however healthy — will
+  be poorly broken down. Even five minutes of calm before a meal makes a measurable difference to digestion.
+out_of_scope_notes: ''
+caveats:
+- The Ayurvedic framing of 'digestive fire' is a folk model; the underlying physiology of parasympathetic-driven
+  digestion is well-established.
+linked_to_topics:
+- agni-digestive-fire
+- stress-management
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- dysbiosis-gut-microbiome-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 20 - Eat in a Calm Mood and Environment
+  quote: A full third of the nervous system is associated with the guts. It is impossible to digest our
+    food well when we are stressed out. When we are calm, our digestive organs are relaxed. When relaxed,
+    they are more likely to function optimally.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

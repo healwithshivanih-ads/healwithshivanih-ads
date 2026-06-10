@@ -1,0 +1,29 @@
+slug: predictable-daily-routine-reduces-nervous-system-reactivity
+statement: Having a predictable daily routine — with key self-care elements completed early in the day
+  — allows the nervous system to relax and reduces baseline cortisol reactivity, even before any specific
+  stress-management technique is added.
+evidence_tier: plausible_emerging
+rationale: Predictability reduces anticipatory stress; early-day anchoring of habits prevents the displacement
+  of self-care by accumulating daily demands. Consistent with circadian biology and the HPA axis's diurnal
+  cortisol rhythm.
+coaching_translation: A consistent daily schedule is itself a form of stress medicine. When the body knows
+  what to expect and key habits happen in the morning before the day derails them, the nervous system
+  stays calmer all day.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 28 - Take-Home Messages (Lifestyle section)
+  quote: Having a predictable daily routine allows the nervous system to relax. The most important elements
+    of this routine should be included early in the day
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

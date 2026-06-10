@@ -1,0 +1,35 @@
+slug: calm-eating-state-enteric-nervous-system-digestion
+statement: 'Eating in a calm, undistracted state is as important as what is eaten: the enteric nervous
+  system comprises roughly a third of the entire nervous system, and stress-state eating suppresses digestive
+  organ function, impairing nutrient absorption regardless of diet quality.'
+evidence_tier: strong
+rationale: The enteric nervous system (ENS) containing ~100–500 million neurons is well-established; parasympathetic
+  activation for 'rest and digest' vs. sympathetic suppression of digestive function is conventional physiology.
+  Welch applies it to the practical context of eating environment.
+coaching_translation: Eating while stressed, distracted, driving, or in an argument means your digestive
+  system is physiologically shut down. Even a perfect diet delivers fewer nutrients if the nervous system
+  is in fight-or-flight mode while eating. A calm eating environment is a clinical intervention, not just
+  a nicety.
+out_of_scope_notes: ''
+caveats:
+- The exact fraction 'one third' for ENS proportion is a simplification; the mechanistic point (parasympathetic
+  suppression of digestion) is well-established.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+- mindful-eating
+- stress-management
+linked_to_mechanisms:
+- sympathetic-dominance
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 20 - Food, Medicine, and Poison: Eat in a Calm Mood and Environment'
+  quote: A full third of the nervous system is associated with the guts. It is impossible to digest our
+    food well when we are stressed out. When we are calm, our digestive organs are relaxed. When relaxed,
+    they are more likely to function optimally
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

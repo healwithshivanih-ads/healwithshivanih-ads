@@ -1,0 +1,34 @@
+slug: pesticide-residues-xenoestrogen-estrogen-dominance
+statement: Pesticide residues on conventionally grown produce act as xenoestrogens — compounds that mimic
+  oestrogen in the body — and can accumulate in fat tissue, contributing to oestrogen-dominant patterns
+  and potentially increasing breast cancer risk.
+evidence_tier: plausible_emerging
+rationale: Organochlorine pesticides (DDT, DDE, endosulfan) and some organophosphates exhibit oestrogenic
+  activity via oestrogen receptor binding or aromatase induction; bioaccumulation in adipose tissue is
+  well documented; the link to breast cancer risk remains debated in the epidemiological literature.
+coaching_translation: Pesticide residues don't just pass through — they mimic oestrogen in the body and
+  build up in fat tissue over time. For women dealing with oestrogen dominance, fibroids, endometriosis,
+  or any hormone-sensitive condition, reducing pesticide exposure through organic choices on the 'dirty
+  dozen' is a meaningful lever.
+out_of_scope_notes: ''
+caveats:
+- The oestrogen-mimicking effect varies widely by pesticide type and dose; the human breast cancer evidence
+  is inconsistent across studies; 'dirty dozen' prioritisation is a pragmatic approach given limited organic
+  budgets.
+linked_to_topics:
+- estrogen-dominance
+- breast-cancer-prevention
+- environmental-toxin-exposure
+linked_to_mechanisms:
+- endocrine-disruption-by-toxicants
+- pesticide-exposure
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat (Pesticides section)
+  quote: Pesticides act as xenoestrogens and may be responsible for much of the increase in estrogen-related
+    disorders.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

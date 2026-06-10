@@ -1,0 +1,32 @@
+slug: alcohol-no-safe-level-breast-cancer-women
+statement: 'There is no safe level of alcohol for cancer risk: the Million Women Study found that even
+  one alcoholic drink per day is associated with approximately 13 per cent of cancers of the breast, liver,
+  and digestive tract in women who drink.'
+evidence_tier: strong
+rationale: The Million Women Study (UK, n > 1.2 million women, published in Journal of the National Cancer
+  Institute 2009) is a large prospective cohort study; its finding that alcohol has a linear dose–response
+  relationship with breast cancer risk is consistent with IARC Group 1 classification of alcohol as a
+  carcinogen.
+coaching_translation: Even moderate drinking — just one glass a day — carries a measurable increase in
+  cancer risk for women, especially breast cancer. There isn't a 'safe' threshold below which alcohol
+  is risk-free for cancer.
+out_of_scope_notes: ''
+caveats:
+- This finding is from a population-level epidemiological study; individual risk is also shaped by genetic
+  factors (e.g. ALDH2, BRCA variants), duration of drinking, and other lifestyle factors.
+linked_to_topics:
+- breast-cancer-prevention
+- hormonal-nutrition-foundations
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+- oxidative-stress
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat (Alcohol section)
+  quote: According to the Million Women Study… approximately 13 percent of all such cancers diagnosed
+    in women who drank could be attributed to alcohol.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

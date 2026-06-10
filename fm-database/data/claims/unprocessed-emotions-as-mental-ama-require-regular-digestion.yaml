@@ -1,0 +1,31 @@
+slug: unprocessed-emotions-as-mental-ama-require-regular-digestion
+statement: Unprocessed emotions accumulate as 'mental ama' — an Ayurvedic concept of toxic residue — in
+  the same way undigested food creates physical toxicity; regularly processing difficult emotions is therefore
+  as essential to health as dietary choices.
+evidence_tier: fm_specific_thin
+rationale: While the ama concept is Ayurvedic, the modern psychoneuroimmunology literature supports bidirectional
+  links between chronic emotional suppression and elevated inflammatory/stress markers; emotional processing
+  maps onto established psychological constructs of emotional regulation.
+coaching_translation: Avoiding feelings doesn't make them disappear — it stores them in the body. Journaling,
+  therapy, honest conversations, or even crying when you need to are not luxuries; they are part of your
+  health protocol.
+out_of_scope_notes: ''
+caveats:
+- '''Mental ama'' is an Ayurvedic teaching model; the direct biomarker evidence linking emotional suppression
+  specifically to hormonal imbalance is suggestive but not conclusive.'
+linked_to_topics:
+- emotional-wellbeing
+- chronic-stress
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 28 - Take-Home Messages (Emotional/Lifestyle section)
+  quote: Buried, denied, or unprocessed emotions become mental ama the same way undigested food becomes
+    physical ama
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

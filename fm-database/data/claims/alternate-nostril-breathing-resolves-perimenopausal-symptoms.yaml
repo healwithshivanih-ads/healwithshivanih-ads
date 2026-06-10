@@ -1,0 +1,32 @@
+slug: alternate-nostril-breathing-resolves-perimenopausal-symptoms
+statement: Alternate-nostril breathing (nadi shodhana pranayama) practised for 15 minutes daily can eliminate
+  perimenopausal symptoms such as hot flashes and insomnia even when other measures have been insufficient.
+evidence_tier: fm_specific_thin
+rationale: Breathing exercises directly modulate the autonomic nervous system via vagal afferents; bilateral
+  nasal alternation has been shown to influence hemispheric brain activity. Welch reports sustained symptom
+  resolution in a case that had not responded fully to diet, yoga, herbs, and acupuncture.
+coaching_translation: Just 15 minutes of slow alternate-nostril breathing each morning can calm the nervous
+  system so effectively that hot flashes and sleep problems may resolve — all through your own breath,
+  no supplements needed.
+out_of_scope_notes: ''
+caveats:
+- Strongest evidence is clinical case series; RCT data on hot flash endpoints specifically is limited,
+  though broader autonomic effects of pranayama are better supported.
+linked_to_topics:
+- perimenopause-and-menopause
+- stress-management
+- breathwork-for-health
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- parasympathetic-activation
+- sympathetic-dominance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 26 - Stress Management Techniques (opening case + pranayama section)
+  quote: Within days her hot flashes had disappeared and she was sleeping soundly... as long as she practiced
+    her fifteen minutes of alternate-nostril breathing daily
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

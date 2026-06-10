@@ -1,0 +1,28 @@
+slug: emotional-or-distracted-eating-impairs-digestion
+statement: Eating while anxious, upset, emotionally activated, bored, or distracted — or eating on the
+  go — disturbs digestion and reduces nutritional benefit even from otherwise healthy food.
+evidence_tier: plausible_emerging
+rationale: The cephalic phase of digestion and gastric acid secretion are parasympathetically driven;
+  sympathetic activation during emotional eating suppresses digestive secretions, motility, and absorption
+  — well-established in gastroenterology and supported by Ayurvedic eating guidelines.
+coaching_translation: The how of eating matters as much as the what. Sitting down, taking three slow breaths
+  before a meal, and eating without screens or emotional distraction can improve digestion and nutrient
+  uptake from the same food.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- stress-management
+- mindfulness
+linked_to_mechanisms:
+- parasympathetic-activation
+- sympathetic-dominance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 28 - Take-Home Messages (Dietary section)
+  quote: Eating when anxious, upset, emotional, bored, or distracted disturbs digestion. Eating on the
+    go similarly disturbs digestion.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

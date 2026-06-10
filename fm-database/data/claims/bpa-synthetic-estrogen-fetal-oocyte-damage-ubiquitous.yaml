@@ -1,0 +1,36 @@
+slug: bpa-synthetic-estrogen-fetal-oocyte-damage-ubiquitous
+statement: 'Bisphenol A (BPA), present in plastic food packaging and can linings, is a synthetic oestrogen
+  that can damage reproductive tissues at very low doses: animal studies suggest a single significant
+  exposure during fetal development can damage 40 per cent of a female fetus''s oocytes, and 93 per cent
+  of Americans have detectable BPA levels.'
+evidence_tier: plausible_emerging
+rationale: BPA binds oestrogen receptor ERα and ERβ; developmental exposure studies in rodents (vom Saal
+  et al.) have shown disruption of oocyte development at ppb concentrations; NHANES data confirm >90%
+  urinary BPA detection in the US population; the FDA banned BPA from baby bottles (2012) reflecting genuine
+  regulatory concern.
+coaching_translation: BPA isn't just a theoretical risk. It's in the food packaging and tin cans most
+  people use every day, and it acts like a synthetic oestrogen in your body. For women trying to conceive
+  or with oestrogen-sensitive conditions, switching to glass or stainless-steel containers, and avoiding
+  canned goods where possible, is one of the most impactful environmental changes they can make.
+out_of_scope_notes: ''
+caveats:
+- High-dose fetal oocyte damage is shown in animal models; translation to human reproductive harm at typical
+  environmental doses remains debated; 'BPA-free' plastics may use structurally similar bisphenols with
+  similar activity.
+linked_to_topics:
+- environmental-toxin-exposure
+- estrogen-dominance
+- breast-cancer-prevention
+linked_to_mechanisms:
+- bpa-endocrine-disruption
+- endocrine-disruption-by-toxicants
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 25 - Environment and Endocrine Disruptors
+  quote: A single exposure to BPA during critical periods of development could permanently damage 40 percent
+    of an unborn baby girl's egg supply… 93 percent of Americans have detectable BPA in their bodies.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,33 @@
+slug: one-month-stress-relief-restores-brain-function
+statement: One month of intense stress can wither brain regions governing executive function while stimulating
+  habitual-activity regions; one month of relief is sufficient to restore both brain structure and behaviour
+  toward normal.
+evidence_tier: plausible_emerging
+rationale: Welch cites Sousa et al. (Science 2009) on structural brain changes with chronic stress and
+  their reversibility — consistent with the established neuroplasticity literature on stress-induced hippocampal
+  and prefrontal changes.
+coaching_translation: The brain damage from chronic stress is real but reversible. One month of removing
+  the stressor and practising recovery habits is enough to start restoring clear thinking and healthy
+  behaviour patterns.
+out_of_scope_notes: ''
+caveats:
+- Cited animal and human study results (Sousa et al. 2009, Science) show structural changes; degree and
+  timeline of full reversal in humans varies with duration and severity of stress.
+linked_to_topics:
+- chronic-stress
+- neuroplasticity
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 27 - Changing Lifestyles, Changing Lives (neuroplasticity section, citing Sousa et
+    al. Science 2009)
+  quote: a month of intense stress withered the executive-function regions of the brain… one month of
+    relief restored brain and behaviour to normal
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

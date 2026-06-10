@@ -1,0 +1,33 @@
+slug: ayurveda-food-medicine-poison-digestibility-framework
+statement: 'Ayurveda defines food, medicine, and poison according to digestibility: food is anything digested
+  well and absorbed usefully; medicine enhances digestive capacity; poison is anything that impairs it
+  — including otherwise ''healthy'' foods a person cannot digest.'
+evidence_tier: fm_specific_thin
+rationale: This is the foundational Ayurvedic food philosophy — individual digestive tolerance (bioindividuality)
+  over universal nutritional rules. It maps directly to FM's bioindividual approach and personalised nutrition.
+  Coach-actionable as a framing tool.
+coaching_translation: The quality of what you eat matters less than your ability to digest it. Even the
+  healthiest food becomes a problem if your body can't process it. Symptoms like bloating, gas, fatigue
+  after eating, and irregular stools are all signs that something you're eating isn't working for your
+  digestion.
+out_of_scope_notes: ''
+caveats:
+- The food/medicine/poison trichotomy is philosophical-Ayurvedic framing. Individual digestive tolerance
+  is genuinely relevant but is not the only determinant of whether a food is beneficial.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+- food-intolerance
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 20 - Food, Medicine, and Poison
+  quote: food—or nourishment—is anything we ingest that is digested well, nourishes us, and passes through
+    the body without any negative effects. Medicine is that which enhances digestive ability, and poison
+    is that which hinders it
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: chronic-stress-triples-heart-attack-risk-stress-management-cardiac
+statement: Stress and depression can almost triple the risk of heart attack, underscoring that effective
+  stress-management practices are a direct cardiovascular intervention, not merely comfort measures.
+evidence_tier: plausible_emerging
+rationale: Consistent with multiple large cohort studies (INTERHEART, Rozanski et al.) showing psychosocial
+  stress as a major modifiable cardiac risk factor; Welch cites research in this section.
+coaching_translation: Managing stress isn't optional for heart health — it's one of the most powerful
+  levers we have. Chronic stress and low mood triple cardiovascular risk, which is why daily nervous-system
+  reset practices like abhyanga, pranayama, and laughter belong in every woman's protocol.
+out_of_scope_notes: ''
+caveats:
+- Association, not proven causation; confounders exist; absolute risk increase depends on baseline risk
+  profile.
+linked_to_topics:
+- chronic-stress
+- stress-management
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+- systemic-inflammation
+- sympathetic-dominance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 — Stress Management: Laughter'
+  quote: Finding an antidote to stress seems crucial, considering that stress and depression can almost
+    triple the risk of a heart attack.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

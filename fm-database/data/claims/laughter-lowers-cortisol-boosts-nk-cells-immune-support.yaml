@@ -1,0 +1,33 @@
+slug: laughter-lowers-cortisol-boosts-nk-cells-immune-support
+statement: Laughter has measurable immune-supportive effects including lowering blood cortisol levels,
+  increasing activated T lymphocytes, and improving natural killer cell activity.
+evidence_tier: plausible_emerging
+rationale: Multiple controlled studies (Berk, Tan et al.) demonstrate that mirthful laughter reduces serum
+  cortisol and epinephrine, and increases NK cell activity and immunoglobulins — one of the better-evidenced
+  claims in the stress-management space.
+coaching_translation: Laughter is not trivial self-care — it's a measurable immune intervention. Regular
+  laughter lowers cortisol, boosts natural killer cells that fight infection and malignant cells, and
+  reduces the cardiovascular risk associated with chronic stress.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- chronic-stress
+- stress-management
+- immune-resilience
+- emotional-wellbeing
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+- endorphin-immune-modulation
+- stress-induced-immune-suppression
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 — Stress Management: Laughter'
+  quote: Studies have been done, and they show that laughter's immune-enhancing effects include lowering
+    the level of cortisol in the blood, increasing the number of activated T lymphocytes ... and supporting
+    the quality and quantity of natural killer cells.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

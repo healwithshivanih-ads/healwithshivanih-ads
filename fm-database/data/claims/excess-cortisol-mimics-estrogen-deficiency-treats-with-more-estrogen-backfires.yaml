@@ -1,0 +1,37 @@
+slug: excess-cortisol-mimics-estrogen-deficiency-treats-with-more-estrogen-backfires
+statement: Excess cortisol can cause hot flashes and hormonal-deficiency symptoms even when estrogen levels
+  are normal, because chronic cortisol elevation creates hormonal resistance — treating these symptoms
+  with estrogen may then produce estrogen-dominant symptoms (weight gain, water retention, mood swings).
+evidence_tier: plausible_emerging
+rationale: Cortisol-driven hormonal resistance is a plausible FM framework; the clinical observation that
+  stress symptoms mimic oestrogen deficiency (and that adding oestrogen worsens the picture) is coherent
+  with receptor-sensitivity literature.
+coaching_translation: Hot flushes and other 'menopause' symptoms can be caused by high stress hormones
+  — not just low oestrogen. If that's the root cause, adding oestrogen on top of high cortisol can make
+  things worse (weight gain, bloating, mood swings) rather than better.
+out_of_scope_notes: 'NBHWC scope: whether to adjust hormone therapy is a physician decision. Coach supports
+  stress-management lifestyle work that addresses the upstream cause.'
+caveats:
+- Hormone resistance as a distinct mechanism driving hot flashes in stressed premenopausal/perimenopausal
+  women is clinically described but lacks large prospective studies; this is primarily a teaching model.
+linked_to_topics:
+- perimenopause-and-menopause
+- cortisol-steal
+- estrogen-dominance
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- estrogen-dominance-thyroid-blunting
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 14 - Perimenopause and Menopause
+  quote: A woman with excess cortisol but normal amounts of estrogen may get hot flashes or other symptoms
+    typically associated with estrogen deficiency. If this woman were to treat these symptoms with estrogen
+    replacement therapy, she would possibly then develop estrogen-dominant symptoms such as weight gain,
+    water retention, and mood swings.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

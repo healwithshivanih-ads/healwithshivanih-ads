@@ -1,0 +1,35 @@
+slug: whole-foods-diet-consensus-eastern-western-chronic-disease-prevention
+statement: A whole-foods diet — emphasising vegetables, whole grains, beans, and fruits, minimising refined
+  carbohydrates, sugar, trans fats, and ultra-processed foods — is the common consensus across Eastern
+  and Western nutritional traditions and correlates with low rates of cardiovascular disease, obesity,
+  and diabetes.
+evidence_tier: strong
+rationale: Welch cites cross-cultural epidemiology (traditional Asian diet) and Dean Ornish's intervention
+  studies; the whole-foods diet pattern recommendation is among the most replicated findings in nutritional
+  epidemiology.
+coaching_translation: '''Eat food. Not too much. Mostly plants.'' (Michael Pollan) — this single principle,
+  backed by centuries of Eastern medicine and modern nutritional science, underpins virtually all the
+  dietary advice in the FM approach. Switching from this to a heavily processed Western diet reliably
+  increases rates of chronic disease.'
+out_of_scope_notes: ''
+caveats:
+- '''Traditional Asian diet'' is heterogeneous; risk factor changes in Asian populations adopting Western
+  diets are well-documented but multifactorial. Ornish''s CVD reversal data are strong but apply to his
+  specific intensive programme.'
+linked_to_topics:
+- modern-diet-systemic-dysfunction
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- inflammation
+linked_to_mechanisms:
+- inflammatory-diet-pattern
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 21 - What to Eat: General Guidelines — Whole Foods'
+  quote: Eat lots of veggies, whole grains, beans, and fruits, some high-quality oils... Eat mostly whole,
+    mostly freshly cooked and minimally processed food... 'Eat food. Not too much. Mostly plants.'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

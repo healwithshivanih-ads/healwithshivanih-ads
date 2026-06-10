@@ -1,0 +1,35 @@
+slug: abhyanga-calms-nervous-system-restores-hormonal-balance
+statement: Regular warm oil self-massage (abhyanga) affects the nervous system more rapidly than most
+  other interventions — including diet and herbs — by calming the nervous system and reducing stress hormone
+  release, which can restore hormonal balance.
+evidence_tier: fm_specific_thin
+rationale: Welch observes clinical outcomes (e.g., disappearing menopausal hot flashes after weeks of
+  abhyanga) consistent with the parasympathetic-activation pathway; skin-based sensory input is a plausible
+  route for nervous system modulation, though controlled trial evidence is thin.
+coaching_translation: A 10–15 minute warm oil self-massage before your morning shower can act like a reset
+  button for your nervous system — less cortisol throughout the day means your body has more resources
+  left for hormone balance.
+out_of_scope_notes: ''
+caveats:
+- Evidence is largely clinical observation and Ayurvedic tradition; controlled RCTs on hormonal endpoints
+  are limited.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+- stress-management
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- parasympathetic-activation
+- sympathetic-dominance
+linked_to_supplements:
+- bhringraj
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 - Abhyanga: Warm Oil Self-Massage'
+  quote: often there is no medicine—except pranayama—that affects the nervous system quite as rapidly
+    as the regular practice of abhyanga
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

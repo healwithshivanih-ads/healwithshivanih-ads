@@ -1,0 +1,37 @@
+slug: three-tier-hormonal-balance-strategy-lifestyle-first-herbs-then-hormones
+statement: 'Welch proposes a three-tier hormonal-balance treatment hierarchy — Tier 1: diet, lifestyle,
+  stress reduction; Tier 2: herbs and natural remedies; Tier 3: bioidentical hormones or pharmaceuticals
+  — with each tier reserved until the prior tier is insufficient.'
+evidence_tier: plausible_emerging
+rationale: This is a practical integrative-medicine framework consistent with a 'stepped-care' or 'lifestyle-first'
+  approach endorsed in integrative and functional medicine; it matches the coaching scope model (Tier
+  1 is the coach's territory; Tier 3 requires a prescriber).
+coaching_translation: 'Think of hormonal support as three levels: first, build your diet, daily routine,
+  and stress management; second, add targeted herbs if you still need support; third — only if needed
+  — consider bioidentical hormones with a prescriber. Most women see significant results at the first
+  level before needing anything beyond it.'
+out_of_scope_notes: Tier 3 (bioidentical hormones, pharmaceuticals) is outside coach scope — refer to
+  a physician or NP specialising in bioidentical hormone therapy for this level of support.
+caveats: []
+linked_to_topics:
+- stress-management
+- adrenal-fatigue
+- perimenopause-and-menopause
+- hpa-axis-cortisol-regulation
+- low-progesterone
+- estrogen-dominance
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 27 — Changing Lifestyles: The Three-Tier Treatment Strategy Revisited'
+  quote: 1. Make appropriate diet, lifestyle, and stress-reduction changes first. 2. Use natural herbs
+    and remedies when extra support is needed. 3. Use surgery or pharmaceutical drugs, including bioidentical
+    hormones, in an emergency... or to manage such symptoms when first-tier and second-tier strategies
+    are insufficient.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

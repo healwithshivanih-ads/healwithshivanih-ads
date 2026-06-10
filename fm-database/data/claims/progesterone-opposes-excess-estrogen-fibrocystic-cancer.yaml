@@ -1,0 +1,36 @@
+slug: progesterone-opposes-excess-estrogen-fibrocystic-cancer
+statement: 'Progesterone serves as a check on estrogen: it prevents excess uterine lining build-up, helps
+  prevent fibrocystic breasts, acts as a natural diuretic, normalises blood clotting, and may help protect
+  against breast and endometrial cancer.'
+evidence_tier: plausible_emerging
+rationale: Reflects the well-established physiological opposition between progesterone and estrogen; Welch
+  cites Dr. John Lee's 30-year clinical observations. The protective roles against fibrocystic change
+  and endometrial cancer are well-supported; breast cancer benefit is more debated for synthetic vs. bioidentical
+  forms.
+coaching_translation: Progesterone is the balancing partner of estrogen. Without enough of it, estrogen's
+  stimulating effects on breast tissue, uterine lining, and water retention go unchecked — this is 'estrogen
+  dominance'.
+out_of_scope_notes: ''
+caveats:
+- The breast-cancer protective role is better established for natural progesterone than for synthetic
+  progestins; Welch draws on John Lee's anecdotal clinical data, not large RCTs.
+linked_to_topics:
+- estrogen-dominance
+- low-progesterone
+- breast-cancer-prevention
+- uterine-fibroids
+- progesterone-physiology
+linked_to_mechanisms:
+- low-progesterone
+- progesterone-deficiency
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 3 - Sex Hormones
+  quote: While estrogen promotes breast development and growth, progesterone helps protect against fibrocystic
+    breasts... Excess estrogen increases body fat, fluid retention, blood clotting, and breast cancer,
+    and creates other problems—each of which progesterone serves to counteract.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

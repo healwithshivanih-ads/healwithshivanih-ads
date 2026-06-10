@@ -1,0 +1,35 @@
+slug: reducing-stress-hormones-is-foundational-first-step-hormonal-balance
+statement: Minimising stress-hormone release is the first crucial element in restoring hormonal balance
+  — more foundational than herbs, bioidentical hormones, or other second- and third-tier interventions.
+evidence_tier: plausible_emerging
+rationale: 'Consistent with Welch''s explicit three-tier treatment hierarchy: Tier 1 = diet/lifestyle/stress
+  reduction; Tier 2 = herbs; Tier 3 = bioidentical hormones. The mechanistic basis is the shared steroidogenic
+  precursor pathway (cortisol competes with sex-hormone synthesis).'
+coaching_translation: Before turning to supplements or hormones to fix a hormonal imbalance, the single
+  most important thing you can do is reduce the amount of cortisol your body is making every day. That
+  one change creates more raw material for the hormones your body actually wants to make.
+out_of_scope_notes: ''
+caveats:
+- '''Pregnenolone steal'' is a useful teaching model but is considered an oversimplification by some endocrinologists.'
+linked_to_topics:
+- chronic-stress
+- stress-management
+- adrenal-fatigue
+- hpa-axis-cortisol-regulation
+- low-progesterone
+- estrogen-dominance
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- cholesterol-to-pregnenolone
+- estrogen-decline
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 27 — Changing Lifestyles: The Three-Tier Treatment Strategy Revisited'
+  quote: Minimizing the release of stress hormones prevents them from dominating your hormonal landscape.
+    This is the first crucial element to restore hormonal balance.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

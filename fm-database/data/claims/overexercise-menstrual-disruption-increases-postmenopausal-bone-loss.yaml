@@ -1,0 +1,33 @@
+slug: overexercise-menstrual-disruption-increases-postmenopausal-bone-loss
+statement: Excessive exercise during reproductive years disrupts menstrual regularity and hormonal balance,
+  which increases the risk of bone loss and fractures after menopause — demonstrating that both too little
+  and too much physical activity harm bone health.
+evidence_tier: strong
+rationale: Hypothalamic amenorrhoea from overtraining is well-established; the female athlete triad (energy
+  deficiency, menstrual disturbance, low bone density) is documented in the literature. Welch frames it
+  within yin-yang balance.
+coaching_translation: 'More isn''t always better with exercise: over-exercising during your fertile years
+  can disrupt your menstrual cycle and hormones, which comes back to harm bone density after menopause.
+  Moderate, appropriate exercise protects bone; extreme exercise can deplete it.'
+out_of_scope_notes: ''
+caveats:
+- '''Too much'' varies widely by individual; the female athlete triad is the clinical endpoint, not casual
+  moderate over-exercise.'
+linked_to_topics:
+- osteoporosis
+- bone-health
+- healthy-menstrual-cycle-baseline
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- bone-resorption-formation-imbalance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 16 - Osteoporosis: Calcium, Diet, and Exercise'
+  quote: too much exercise during our menstrual years leads to irregular menstrual cycles, alteration
+    of the amount or quality of blood flow, and imbalanced hormones, which lead to increased risk of bone
+    loss and fractures after menopause
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

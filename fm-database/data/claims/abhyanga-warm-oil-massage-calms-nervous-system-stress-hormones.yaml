@@ -1,0 +1,38 @@
+slug: abhyanga-warm-oil-massage-calms-nervous-system-stress-hormones
+statement: Daily warm-oil self-massage (abhyanga) calms the nervous system by stimulating the skin's nerve
+  endings, reducing hypervigilance of the autonomic nervous system and thereby lowering the stress-hormone
+  output that drives hormonal imbalance.
+evidence_tier: fm_specific_thin
+rationale: Consistent with the known role of cutaneous mechanoreceptor stimulation in activating the parasympathetic
+  nervous system; Welch frames this as reducing sympathetic tone → lower cortisol → better sex-hormone
+  balance.
+coaching_translation: A 15-minute warm oil self-massage each morning before your shower calms your stress
+  response directly through the skin. Less nervous-system activation means less cortisol, which means
+  your body has more raw material left to make the hormones that regulate your cycle, mood, and energy.
+out_of_scope_notes: ''
+caveats:
+- Evidence base is largely traditional Ayurvedic / clinical observation; controlled trials on hormonal
+  endpoints are limited.
+- Contraindications exist (skip during illness, fever, heavy menstruation, or open skin).
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+- stress-management
+- ayurvedic-circadian-clock
+- self-care
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- parasympathetic-activation
+- sympathetic-dominance
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 — Stress Management: Abhyanga: Warm Oil Self-Massage'
+  quote: When we cover the skin with warm oil, it calms the nervous system, making it less hypervigilant
+    and oversensitized. When the nervous system is less jumpy, it is less likely to trigger the release
+    of stress hormones.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

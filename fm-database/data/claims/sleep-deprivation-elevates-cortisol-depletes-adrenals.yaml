@@ -1,0 +1,32 @@
+slug: sleep-deprivation-elevates-cortisol-depletes-adrenals
+statement: Chronic sleep deprivation elevates cortisol chronically, which in Welch's model perpetuates
+  the stress-hormone dominance pattern and progressively depletes adrenal reserves — ultimately contributing
+  to adrenal exhaustion and impaired sex-hormone production.
+evidence_tier: plausible_emerging
+rationale: Sleep deprivation elevates evening cortisol (consistent with blunted circadian cortisol suppression
+  in sleep-deprived individuals); chronic HPA axis activation can down-regulate CRH receptors and reduce
+  DHEA production over time; this is consistent with the pregnenolone-steal model Welch describes.
+coaching_translation: Poor sleep doesn't just leave you tired — it keeps your stress hormone (cortisol)
+  elevated, which crowds out your sex hormones. Over months and years, this pattern is one of the core
+  drivers of hormonal imbalance in women. Sleep is not optional; it's active hormonal repair time.
+out_of_scope_notes: ''
+caveats:
+- The 'adrenal exhaustion' concept is not a formally recognised diagnosis in conventional medicine; however,
+  HPA axis dysregulation from chronic sleep deprivation is well-documented physiologically.
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+- sleep
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 25 - Sleep
+  quote: Sleep deprivation leads to excess stress hormones and eventually to adrenal burnout and a cortisol
+    crash… it weakens our immunity, causes endocrine disorders, and contributes to obesity.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

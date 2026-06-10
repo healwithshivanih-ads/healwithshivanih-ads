@@ -1,0 +1,32 @@
+slug: acrylamide-high-heat-starchy-foods-carcinogen
+statement: Acrylamide, formed when starchy foods are cooked at high temperatures (frying, baking at high
+  heat, roasting), is a probable human carcinogen that is largely absent from minimally processed whole
+  foods.
+evidence_tier: plausible_emerging
+rationale: The International Agency for Research on Cancer (IARC) classifies acrylamide as a Group 2A
+  probable human carcinogen; it forms via the Maillard reaction between asparagine and reducing sugars
+  at temperatures above ~120°C, consistent with Welch's discussion of processed/fried foods.
+coaching_translation: Chips, crackers, fried foods, and heavily browned starches contain acrylamide —
+  a compound that forms during high-heat cooking and is associated with increased cancer risk. Cooking
+  at lower temperatures (steaming, slow-cooking, light sautéing) keeps this to a minimum.
+out_of_scope_notes: ''
+caveats:
+- Human evidence for cancer risk from dietary acrylamide is observational and dose-dependent; cooking
+  method matters more than avoiding all starchy foods.
+linked_to_topics:
+- anti-inflammatory-diet
+- breast-cancer-prevention
+- modern-diet-systemic-dysfunction
+linked_to_mechanisms:
+- oxidative-stress
+- systemic-inflammation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat
+  quote: Many of the chemicals produced during overheating of food, especially starchy food, include acrylamide,
+    which is a known carcinogen.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

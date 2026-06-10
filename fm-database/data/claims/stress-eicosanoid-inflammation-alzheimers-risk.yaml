@@ -1,0 +1,36 @@
+slug: stress-eicosanoid-inflammation-alzheimers-risk
+statement: Chronic stress drives systemic inflammation via eicosanoid imbalance (prostaglandins and related
+  signalling molecules), which may be a causal pathway linking chronic stress to increased risk of Alzheimer's
+  disease.
+evidence_tier: plausible_emerging
+rationale: Welch describes the stress → sympathetic overdrive → eicosanoid dysregulation → tissue inflammation
+  chain. Neuroinflammation as a driver of Alzheimer's pathology is increasingly supported in the literature;
+  eicosanoid dysregulation as a stress-linked inflammatory mechanism is mechanistically plausible.
+coaching_translation: Chronic stress creates a cascade of inflammation in the body — including the brain.
+  Over time, this low-grade brain inflammation may increase the risk of dementia. Stress management is
+  therefore genuinely protective for long-term brain health.
+out_of_scope_notes: ''
+caveats:
+- The precise eicosanoid → Alzheimer's causal chain is still being worked out. Neuroinflammation as a
+  contributor is increasingly accepted but is not a sole or proven cause.
+linked_to_topics:
+- cognitive-decline
+- chronic-stress
+- chronic-inflammation
+- stress-management
+linked_to_mechanisms:
+- eicosanoid-metabolism
+- cortisol-elevation
+- chronic-inflammation
+- sympathetic-dominance
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 17 - Alzheimer's Disease and Dementia
+  quote: increased stress hormones lead first to an overstimulated sympathetic nervous system and then
+    to an imbalance of cellular messengers called eicosanoids, which are associated with tissue inflammation.
+    Long-term inflammation may contribute to Alzheimer's
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,34 @@
+slug: dhea-buffers-cortisol-adrenal-counter-hormone
+statement: 'DHEA is the primary balancing partner of cortisol within the stress hormone axis: it buffers
+  cortisol''s catabolic effects, has a weak oestrogenic action, and supports muscle mass, energy, and
+  protein repair.'
+evidence_tier: plausible_emerging
+rationale: DHEA's counter-regulatory role to cortisol (the cortisol/DHEA-S ratio as a physiological stress
+  marker) is well-documented; DHEA's androgenic/oestrogenic precursor role is established endocrinology.
+coaching_translation: DHEA acts as your stress-hormone counterbalance — the more cortisol you produce
+  chronically, the more DHEA gets consumed buffering it. This is why DHEA levels decline with age and
+  burnout, and why the cortisol:DHEA ratio is used as a marker of adrenal health.
+out_of_scope_notes: ''
+caveats:
+- The clinical translation of DHEA supplementation from this model is not established; the mechanism is
+  sound but individual response to DHEA-S levels varies considerably.
+linked_to_topics:
+- adrenal-fatigue
+- adrenal-hormone-function
+- hpa-axis-dysregulation
+linked_to_mechanisms:
+- dhea-cortisol-ratio-imbalance
+- cortisol-elevation
+linked_to_supplements:
+- dhea
+- dhea-s
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 4 - Stress Hormones
+  quote: DHEA is a hormone precursor... While DHEA is more yang than estrogen or progesterone, it is more
+    yin than cortisol. As Wilma does damage control for Fred, DHEA serves to buffer, balance, or antidote
+    increased cortisol in the body.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

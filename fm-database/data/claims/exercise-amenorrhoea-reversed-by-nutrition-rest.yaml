@@ -1,0 +1,31 @@
+slug: exercise-amenorrhoea-reversed-by-nutrition-rest
+statement: Exercise-induced hypothalamic amenorrhoea — absent or scanty periods from strenuous athletic
+  training — is reversible with dietary support and reduced exercise intensity; research published in
+  the Journal of Clinical Endocrinology and Metabolism confirmed that increasing caloric intake can restore
+  periods in athletes.
+evidence_tier: strong
+rationale: Functional hypothalamic amenorrhoea due to energy deficiency (LEA) is well established; published
+  in peer-reviewed literature including JCEM.
+coaching_translation: If you have lost your period or it has become very light since starting intense
+  training, the most common cause is that you are burning more energy than you are taking in. Eating more
+  and switching some sessions to gentler movement can restore your cycle within a few months.
+out_of_scope_notes: ''
+caveats:
+- Persistent amenorrhoea must be evaluated medically to rule out other causes (e.g. prolactinoma, premature
+  ovarian insufficiency, PCOS).
+linked_to_topics:
+- hypothalamic-amenorrhea
+- healthy-menstrual-cycle-baseline
+- female-infertility
+linked_to_mechanisms:
+- infradian-rhythm
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Scanty or Absent Periods'
+  quote: According to a study published in the Journal of Clinical Endocrinology and Metabolism, eating
+    more can reverse cases of exercise-induced absence of periods.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

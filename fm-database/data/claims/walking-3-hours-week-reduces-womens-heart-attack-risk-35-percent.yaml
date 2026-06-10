@@ -1,0 +1,30 @@
+slug: walking-3-hours-week-reduces-womens-heart-attack-risk-35-percent
+statement: Regular walking — approximately 3 hours per week — reduces the risk of heart attack in women
+  by 35%; it is the single most evidence-backed exercise for women's cardiac protection according to the
+  Nurses' Health Study (121,700 women).
+evidence_tier: strong
+rationale: Nurses' Health Study is one of the largest and longest-running women's health studies; the
+  walking-heart disease finding is one of its most robust and replicated findings.
+coaching_translation: Three hours of walking a week — that's 30 minutes a day — cut women's heart attack
+  risk by 35% in the largest ever study of women's health. Walking is the simplest and best-evidenced
+  exercise for protecting your heart.
+out_of_scope_notes: ''
+caveats:
+- Observational cohort data; effect partly attributable to confounders (active women tend to have healthier
+  overall lifestyles).
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-health
+- cardiovascular-exercise
+linked_to_mechanisms:
+- systemic-inflammation-cv
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 15 - Heart Health
+  quote: Women in the study who walked an average of three hours a week were 35 percent less likely to
+    have a heart attack over an eight-year period.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

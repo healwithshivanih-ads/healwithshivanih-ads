@@ -1,0 +1,32 @@
+slug: agni-protection-meal-quantity-liquid-timing-ayurveda
+statement: In Ayurvedic medicine, digestive strength (agni) must be protected by eating appropriate quantities
+  — neither too much nor too little — and by avoiding drinking large amounts of liquid during meals, which
+  'smothers' digestive fire.
+evidence_tier: fm_specific_thin
+rationale: Welch presents the Ayurvedic agni model for digestive capacity regulation. The concept maps
+  to the Western observation that diluting gastric acid with excess liquid impairs protein digestion and
+  that meal size governs digestive enzyme sufficiency.
+coaching_translation: Eat only when genuinely hungry, stop just before feeling completely full, and avoid
+  drinking large quantities of cold water with meals — these practices help preserve the digestive 'fire'
+  that transforms food into usable energy rather than undigested waste.
+out_of_scope_notes: ''
+caveats:
+- The agni framework is Ayurvedic; direct Western evidence for not drinking during meals affecting digestion
+  is limited. The principle aligns with common-sense digestive hygiene but is not validated by RCTs.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- mindful-eating
+- maldigestion
+linked_to_mechanisms:
+- hcl-and-pepsin-protein-digestion
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 19 - Quality and Quantity of Food: Quantity'
+  quote: Digestive fire is yang. Water, especially cold water, has yin properties and will smother the
+    digestive fire if you drink too much when your digestive fire needs to be active
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

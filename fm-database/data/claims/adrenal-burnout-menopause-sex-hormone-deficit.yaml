@@ -1,0 +1,34 @@
+slug: adrenal-burnout-menopause-sex-hormone-deficit
+statement: After menopause, adrenal burnout from years of chronic stress leaves the adrenal glands too
+  depleted to meet postmenopausal sex hormone needs, amplifying menopausal symptoms and setting the stage
+  for osteoporosis and heart disease.
+evidence_tier: plausible_emerging
+rationale: Post-adrenal-exhaustion model is consistent with clinical observations of HPA hypo-reactivity
+  after prolonged activation ('adrenal fatigue') and the adrenals' postmenopausal role in sex hormone
+  precursor supply.
+coaching_translation: How well you sail through menopause depends heavily on the state of your adrenal
+  glands when you arrive. If they have been working overtime on stress hormones for decades, they will
+  not have the capacity to provide the oestrogen backup that postmenopausal women rely on.
+out_of_scope_notes: ''
+caveats:
+- '''Adrenal burnout/fatigue'' as a distinct clinical entity is debated in conventional medicine; the
+  mechanistic model is plausible but individual variation is high. Not a diagnostic statement.'
+linked_to_topics:
+- adrenal-fatigue
+- perimenopause-and-menopause
+- osteoporosis
+- adrenal-hormone-function
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- age-related-progesterone-decline
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 5 - Understanding How Yin and Yang Hormones Interact
+  quote: Our adrenal glands are too burned out to provide for our postmenopausal sex hormone requirements
+    and our chronically high stress-hormone levels have wrought their damage for decades.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

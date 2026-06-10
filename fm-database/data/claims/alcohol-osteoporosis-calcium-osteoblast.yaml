@@ -1,0 +1,32 @@
+slug: alcohol-osteoporosis-calcium-osteoblast
+statement: Regular alcohol consumption increases osteoporosis risk in women by reducing osteoblast activity,
+  increasing urinary calcium excretion, and disrupting the hormonal signals that regulate bone remodelling.
+evidence_tier: plausible_emerging
+rationale: Alcohol inhibits osteoblast differentiation, increases PTH-mediated calcium loss, and can suppress
+  IGF-1 and oestrogen — all of which negatively affect bone mineral density; this is supported by multiple
+  clinical studies.
+coaching_translation: Alcohol isn't just a liver issue — it directly weakens bones by blocking the cells
+  that build bone and increasing calcium loss through the kidneys. For women already at risk for osteoporosis
+  (perimenopause, low oestrogen, low vitamin D), regular drinking compounds that risk significantly.
+out_of_scope_notes: ''
+caveats:
+- The dose-response for bone loss is not linear; heavy drinking is most clearly harmful; light drinking's
+  effect on bone is debated in some studies.
+linked_to_topics:
+- osteoporosis
+- bone-health
+- perimenopause-and-menopause
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+linked_to_supplements:
+- calcium
+- vitamin-d3
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat (Alcohol section)
+  quote: Alcohol also increases the risk of osteoporosis by impeding the absorption of calcium and the
+    activity of cells that make bone (osteoblasts).
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

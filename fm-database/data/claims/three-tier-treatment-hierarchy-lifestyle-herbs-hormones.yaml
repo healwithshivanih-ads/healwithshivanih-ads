@@ -1,0 +1,34 @@
+slug: three-tier-treatment-hierarchy-lifestyle-herbs-hormones
+statement: 'Welch proposes a three-tier treatment hierarchy for hormonal imbalance: Tier 1 — diet, lifestyle,
+  and stress reduction first (foundation); Tier 2 — herbs and natural remedies when extra support is needed;
+  Tier 3 — surgery, pharmaceuticals, or bioidentical hormones only in emergencies or when Tiers 1 and
+  2 are insufficient after adequate trial.'
+evidence_tier: plausible_emerging
+rationale: This hierarchy prioritises the lowest-risk, most foundational interventions first, consistent
+  with FM and integrative-medicine philosophy of treating cause before symptom; herbalism and pharmaceutical
+  approaches are reserved for cases where lifestyle alone is insufficient.
+coaching_translation: 'Think of treatment in layers: first, fix your food and daily routine — these are
+  the most powerful long-term tools. If that''s not enough after a fair trial, herbs can bridge the gap.
+  Hormones or medications are the last resort, not the first stop.'
+out_of_scope_notes: Any discussion of Tier 3 (bioidentical hormones, pharmaceuticals, surgery) must be
+  referred to the client's physician or specialist. Coach role is to support Tier 1 implementation only.
+caveats:
+- The three-tier model is Welch's integrative framework; bioidentical hormone or pharmaceutical decisions
+  sit firmly outside a health coach's scope.
+linked_to_topics:
+- perimenopause-and-menopause
+- adrenal-fatigue
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 28 - The Three-Tier Treatment Strategy Revisited
+  quote: first, diet, lifestyle, and stress reduction; second, natural herbs when we need extra support;
+    third — and only in an emergency or if tiers one and two are insufficient — surgery, pharmaceuticals,
+    and bioidentical hormones
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

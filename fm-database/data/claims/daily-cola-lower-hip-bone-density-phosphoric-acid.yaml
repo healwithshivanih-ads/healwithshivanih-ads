@@ -1,0 +1,31 @@
+slug: daily-cola-lower-hip-bone-density-phosphoric-acid
+statement: 'Daily cola consumption is associated with lower hip bone mineral density (BMD): a Tufts University
+  USDA study found women who drank cola daily had 3–5 per cent lower hip BMD than non-cola-drinkers, even
+  when calcium intake was controlled.'
+evidence_tier: plausible_emerging
+rationale: The Framingham Osteoporosis Study sub-analysis (Tucker et al., American Journal of Clinical
+  Nutrition 2006) found phosphoric acid in cola drinks specifically (not other carbonated beverages) was
+  associated with lower BMD in women; the proposed mechanism is phosphoric acid binding calcium in the
+  gut and disrupting calcium-phosphorus balance.
+coaching_translation: Cola specifically — not just any fizzy drink — is associated with weaker hip bones
+  in women. The phosphoric acid it contains interferes with how your body absorbs and uses calcium. Swapping
+  even one daily cola for water or herbal tea is a meaningful bone-health change.
+out_of_scope_notes: ''
+caveats:
+- The effect is specific to phosphoric-acid-containing colas, not all carbonated beverages; causality
+  from observational studies is not definitive; caffeine content in cola may also contribute.
+linked_to_topics:
+- osteoporosis
+- bone-health
+linked_to_mechanisms: []
+linked_to_supplements:
+- calcium
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat (Cola section)
+  quote: Women who drank cola—diet or regular—every day had a 3 to 5 percent lower bone density in the
+    hip compared to women who didn't drink cola daily.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

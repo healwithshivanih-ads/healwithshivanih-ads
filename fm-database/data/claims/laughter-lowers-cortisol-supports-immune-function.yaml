@@ -1,0 +1,28 @@
+slug: laughter-lowers-cortisol-supports-immune-function
+statement: Laughter lowers cortisol, increases activated T lymphocytes, and supports natural killer cell
+  quality and quantity — making it a measurable stress-management and immune-support practice.
+evidence_tier: plausible_emerging
+rationale: Multiple studies (cited by Welch) show measurable neuroendocrine and immune effects of laughter,
+  including cortisol reduction; this is consistent with the broader literature on positive affect and
+  HPA axis modulation.
+coaching_translation: Scheduling genuine laughter — funny films, time with friends who make you laugh
+  — is not frivolous. It actively lowers your stress hormones and strengthens your immune defences.
+out_of_scope_notes: ''
+caveats:
+- Effect sizes in laughter studies are modest; most trials are small.
+linked_to_topics:
+- chronic-stress
+- stress-management
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 26 - Laughter
+  quote: studies show laughter lowers cortisol, increases activated T lymphocytes, supports natural killer
+    cell quality and quantity
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

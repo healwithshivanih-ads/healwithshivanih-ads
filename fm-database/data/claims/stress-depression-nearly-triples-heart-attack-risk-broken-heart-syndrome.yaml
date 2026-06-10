@@ -1,0 +1,32 @@
+slug: stress-depression-nearly-triples-heart-attack-risk-broken-heart-syndrome
+statement: Chronic stress and depression can nearly triple the risk of a heart attack; stress hormones
+  constrict cardiac arteries (including otherwise healthy ones), and elevated adrenaline — 30 times normal
+  in 'broken heart syndrome' — can trigger stress-induced cardiac failure in women.
+evidence_tier: strong
+rationale: Neurocardiological link between acute psychological stress and cardiac events is well-supported;
+  Takotsubo (broken heart) syndrome is a recognised clinical entity with disproportionate prevalence in
+  women.
+coaching_translation: Unmanaged stress and depression can nearly triple heart attack risk. Surges of adrenaline
+  from acute emotional distress can cause temporary heart failure — even in women with no blocked arteries.
+  This is 'broken heart syndrome' and it happens more in women than men.
+out_of_scope_notes: ''
+caveats:
+- '''Triple the risk'' applies to severe depression/stress combined; individual risk elevation varies.
+  Broken heart syndrome (Takotsubo) is rare in absolute terms but represents a real physiological mechanism.'
+linked_to_topics:
+- cardiovascular-disease-prevention
+- chronic-stress
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+- adrenal-catecholamine-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 15 - Heart Health
+  quote: Stress and depression not only cause hormonal imbalance, but they come with a sometimes fatal
+    side effect. They can almost triple the risk of a heart attack.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

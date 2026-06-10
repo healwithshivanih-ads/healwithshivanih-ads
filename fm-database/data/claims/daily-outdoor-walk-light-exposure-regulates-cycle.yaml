@@ -1,0 +1,32 @@
+slug: daily-outdoor-walk-light-exposure-regulates-cycle
+statement: Regular outdoor walking at the same time each day may help regulate irregular cycles and cycle-related
+  acne and PMS, possibly via entrainment of the pineal gland to natural light and moonlight rhythms that
+  influence the hypothalamic regulation of hormones.
+evidence_tier: plausible_emerging
+rationale: The pineal gland's light-sensitive melatonin secretion does influence hypothalamic-pituitary
+  function; circadian entrainment via light exposure is well established. The specific moon-cycle synchronisation
+  claim is speculative.
+coaching_translation: 'A simple, underrated habit: walking outside at the same time every day. Natural
+  light helps set your body''s internal clock, which in turn helps regulate the hormonal signals that
+  control your cycle. Clients with irregular cycles often see improvement just from this one change.'
+out_of_scope_notes: ''
+caveats:
+- The direct moon-cycle entrainment of human menstrual cycles is speculative and not proven; the light-circadian-HPG
+  axis connection is the stronger mechanism here.
+linked_to_topics:
+- healthy-menstrual-cycle-baseline
+- premenstrual-syndrome
+- stress-management
+linked_to_mechanisms:
+- infradian-rhythm
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 10 — Menstrual Difficulties: Irregular or Missed Cycles'
+  quote: Women's cycle-related acne, PMS and irregular cycles can sometimes clear up just by taking a
+    walk outdoors at the same time every day.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

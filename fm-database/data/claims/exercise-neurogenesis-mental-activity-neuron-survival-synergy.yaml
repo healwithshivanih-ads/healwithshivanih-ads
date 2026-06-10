@@ -1,0 +1,33 @@
+slug: exercise-neurogenesis-mental-activity-neuron-survival-synergy
+statement: Regular physical exercise generates new neurons in the brain, while mental activity (learning)
+  prolongs their survival — suggesting that both physical and cognitive exercise are required together
+  for optimal neurological protection.
+evidence_tier: strong
+rationale: Exercise-induced neurogenesis (particularly in the hippocampus via BDNF upregulation) is well-established.
+  The synergy with cognitive stimulation for neuron survival is supported by the field of neuroplasticity.
+  Welch cites multiple studies.
+coaching_translation: Exercise actually grows new brain cells — even just brisk walking is enough. And
+  mental challenges like learning new skills or languages keep those new neurons alive. For brain health,
+  both physical movement and keeping the mind engaged are essential.
+out_of_scope_notes: ''
+caveats:
+- Most neurogenesis research is in hippocampal circuits; generalisation to whole-brain protection requires
+  nuance. 'Mental exercise' dosing and type remains an active research area.
+linked_to_topics:
+- cognitive-decline
+- neuroplasticity
+- stress-management
+linked_to_mechanisms:
+- exercise-induced-neurogenesis
+- bdnf-upregulation
+- neuroplasticity
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 17 - Alzheimer's Disease and Dementia
+  quote: physical exercise actually creates new neurons in the brain... while physical exercise stimulates
+    production of new neurons in the brain, mental exercise—or learning—prolongs their survival
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

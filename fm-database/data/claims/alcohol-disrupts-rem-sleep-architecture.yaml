@@ -1,0 +1,31 @@
+slug: alcohol-disrupts-rem-sleep-architecture
+statement: Alcohol disrupts sleep architecture by suppressing REM sleep in the second half of the night,
+  leading to lighter, more fragmented sleep and next-day fatigue — even when it initially promotes sleep
+  onset.
+evidence_tier: strong
+rationale: Alcohol's sedative effect is via GABA-A potentiation; as alcohol is metabolised (typically
+  in the second half of the night), there is a rebound in noradrenergic and glutamatergic activity that
+  fragments sleep and suppresses REM — established via polysomnography studies.
+coaching_translation: That glass of wine may help you fall asleep, but it cuts your deep, restorative
+  sleep in the second half of the night. So you wake up feeling unrefreshed even after a full eight hours.
+  If sleep is a complaint, alcohol — even one drink — is usually the first thing to address.
+out_of_scope_notes: ''
+caveats:
+- The magnitude of disruption is dose-dependent; even one unit can measurably shift sleep stage distribution
+  in sensitive individuals.
+linked_to_topics:
+- sleep
+- adrenal-fatigue
+linked_to_mechanisms:
+- cortisol-elevation
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 23 - What Not to Eat (Alcohol section)
+  quote: Alcohol hinders the quality of our sleep, breaking up the sleep cycle so that we do not get the
+    deep, refreshing sleep we need.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

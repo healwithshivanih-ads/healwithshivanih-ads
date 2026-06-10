@@ -1,0 +1,33 @@
+slug: remove-poisons-first-before-stress-interventions-can-work
+statement: Addressing 'poisons' first — alcohol, refined sugar, trans fats, excess caffeine, nicotine,
+  and highly processed foods — is a prerequisite for stress-management and hormonal-balance interventions
+  to take effect.
+evidence_tier: plausible_emerging
+rationale: Each named substance independently elevates cortisol or disrupts HPA axis regulation; competing
+  physiological loads prevent downstream lifestyle interventions from producing their intended effect,
+  consistent with foundational FM principle of removing obstacles before adding positive inputs.
+coaching_translation: If the body is still fighting daily toxic inputs — sugar spikes, alcohol, nicotine
+  — even the best supplements and stress practices can't gain traction. Start by removing the biggest
+  offender rather than adding more tools.
+out_of_scope_notes: ''
+caveats:
+- '''Poisons'' is Welch''s colloquial term; individual thresholds vary and the list is illustrative, not
+  exhaustive.'
+linked_to_topics:
+- adrenal-fatigue
+- chronic-stress
+- stress-management
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 26 - First Things First
+  quote: 'Before choosing any of these techniques, the first thing we need to do is to get rid of the
+    poisons: alcohol, drugs, cigarettes, nonorganic coffee, any caffeine in excess of a cup or two of
+    coffee a day, refined sugar, trans fats, highly processed foods'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

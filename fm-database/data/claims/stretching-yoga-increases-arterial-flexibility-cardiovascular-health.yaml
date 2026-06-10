@@ -1,0 +1,32 @@
+slug: stretching-yoga-increases-arterial-flexibility-cardiovascular-health
+statement: 'Body flexibility correlates with arterial flexibility in adults over 40: those who can touch
+  their toes have measurably more supple arteries; regular stretching increased arterial flexibility by
+  over 20% in 13 weeks in a small trial, suggesting yoga and stretching directly support cardiovascular
+  health.'
+evidence_tier: plausible_emerging
+rationale: Two independent studies (University of North Texas/Japan 2009; University of Texas at Austin
+  2008) support this finding; shared connective tissue biology between skeletal and vascular walls is
+  the proposed mechanism.
+coaching_translation: Can you touch your toes? In people over 40, body flexibility is a window into artery
+  flexibility. Stiff arteries make the heart work harder. A 13-week stretching programme increased artery
+  flexibility by 20%. Yoga and daily stretching are directly good for your heart.
+out_of_scope_notes: ''
+caveats:
+- Small study sizes; mechanistic link between skeletal and vascular stiffness is biologically plausible
+  but not fully characterised; correlation does not imply causality in cross-sectional data.
+linked_to_topics:
+- cardiovascular-disease-prevention
+- cardiovascular-health
+linked_to_mechanisms:
+- systemic-inflammation-cv
+- oxidative-stress-vascular
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 15 - Heart Health
+  quote: People who stretched could increase the flexibility of their arteries by over 20 percent in just
+    thirteen weeks.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,36 @@
+slug: warming-spices-ginger-turmeric-improve-digestibility-agni
+statement: Warming digestive spices — ginger, turmeric, black pepper, cumin, coriander, cardamom — can
+  render heavier, harder-to-digest foods more digestible by adding energetically 'lightening' and 'warming'
+  properties that support digestive fire (agni).
+evidence_tier: fm_specific_thin
+rationale: Welch presents the Ayurvedic spice-as-digestive-aid model. Ginger and black pepper have well-documented
+  effects on gastric motility, gastric acid secretion, and enzymatic activity. Turmeric has anti-inflammatory
+  properties. The Ayurvedic framing as 'warming-lightening' maps coherently to these mechanisms.
+coaching_translation: Adding ginger, turmeric, black pepper, or cumin to heavy meals isn't just cultural
+  flavouring — it actively helps your digestive system break down and absorb the food. This is why traditional
+  Indian cooking combines rich, heavy foods (legumes, ghee, root vegetables) with warming spices.
+out_of_scope_notes: ''
+caveats:
+- Specific doses for therapeutic digestive effect are not quantified here; Ayurvedic energetic framing
+  (yin/yang, lightening/warming) is not equivalent to mechanistic evidence, though spices like ginger
+  have separate mechanistic support.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+linked_to_mechanisms:
+- hcl-and-pepsin-protein-digestion
+linked_to_supplements:
+- ginger
+- turmeric
+- ginger-root
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 19 - Quality and Quantity of Food: Quality'
+  quote: We can balance the heavy qualities of some foods that make them difficult to digest by adding
+    a small amount of spices, such as turmeric, ginger, or black pepper, to lighten and warm them, which
+    renders them easier to digest
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

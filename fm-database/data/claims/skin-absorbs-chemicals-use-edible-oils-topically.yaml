@@ -1,0 +1,30 @@
+slug: skin-absorbs-chemicals-use-edible-oils-topically
+statement: Applying edible-quality vegetable oil to the skin is preferred over mineral oils or synthetic-ingredient
+  lotions because the skin absorbs whatever is applied to it, and chemical additives can enter the bloodstream
+  as rapidly as beneficial substances.
+evidence_tier: plausible_emerging
+rationale: Dermal absorption of chemicals (e.g., phthalates, mineral oil derivatives) is well-established
+  in toxicology; using food-grade oils avoids endocrine-disrupting chemical exposure via skin.
+coaching_translation: Use only oils you'd be comfortable eating — pure sesame, sunflower, or organic herbal
+  blends — for your skin and body oil. Your skin absorbs chemicals just as readily as nutrients, so what
+  you put on counts as much as what you eat.
+out_of_scope_notes: ''
+caveats:
+- Rate of absorption varies by molecule size and skin condition; 'as fast as' is a simplification.
+linked_to_topics:
+- self-care
+- ayurvedic-circadian-clock
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements:
+- sesame-seeds-tila
+sources:
+- id: welch-balance-your-hormones-2011
+  location: 'Chapter 26 — Stress Management: Abhyanga: Warm Oil Self-Massage'
+  quote: It is best not to put any oil on your skin that you wouldn't put in your mouth ... The skin absorbs
+    what is applied to it. Chemicals and poison can be absorbed through the skin as fast as can things
+    that are good for it.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

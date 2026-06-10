@@ -1,0 +1,34 @@
+slug: estrogen-2oh-vs-16oh-metabolite-breast-cancer-risk
+statement: Estrogen metabolism produces either 'good' (2-hydroxyestrone) or 'toxic' (16-alpha-hydroxyestrone)
+  metabolites; the latter is longer-lived and stimulates breast cell proliferation, contributing to breast
+  cancer risk if estrogen is not metabolised efficiently.
+evidence_tier: plausible_emerging
+rationale: The 2-OHE1 vs 16-alpha-OHE1 distinction is well-established biochemistry; elevated 16-OH has
+  been associated with higher breast cancer risk in observational studies. Liver metabolic function and
+  diet (especially cruciferous vegetables) modulate this ratio.
+coaching_translation: Not all estrogen is equal in your body. If your liver is sluggish or your diet is
+  poor, more estrogen ends up as the 'sticky' type that lingers and stimulates breast tissue — raising
+  cancer risk. Cruciferous vegetables, fibre, and liver support are how you shift the balance.
+out_of_scope_notes: ''
+caveats:
+- The 2-OH:16-OH ratio as a standalone cancer predictor is not universally endorsed; it is one marker
+  among many. Welch attributes the direction of conversion to liver qi and 'metabolic processes' — a broader
+  claim than Western studies strictly support.
+linked_to_topics:
+- breast-cancer-prevention
+- estrogen-dominance
+- steroidogenesis
+linked_to_mechanisms:
+- estrogen-clearance-liver-gut
+- estrogen-16-hydroxylation
+linked_to_supplements: []
+sources:
+- id: welch-balance-your-hormones-2011
+  location: Chapter 3 - Sex Hormones
+  quote: From there, the body converts it either to good estrogen (2-hydroxyestrone) or toxic estrogen
+    (16 alpha-hydroxyestrone)... Bad estrogens are longer lived than good ones and stimulate breast cell
+    proliferation.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
