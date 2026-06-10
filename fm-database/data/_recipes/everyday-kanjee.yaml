@@ -1,0 +1,80 @@
+slug: everyday-kanjee
+name: Everyday Kanjee
+meal_type:
+- breakfast
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+main_ingredients:
+- brown basmati rice, well rinsed
+- water
+- salt
+- turmeric powder
+- ginger powder
+contains_allergens: []
+ingredients:
+- item: brown basmati rice, well rinsed
+  qty: '1'
+  unit: cup
+- item: water
+  qty: '8'
+  unit: cups
+- item: salt
+  qty: '1'
+  unit: pinch
+- item: turmeric powder
+  qty: '1'
+  unit: pinch
+- item: ginger powder
+  qty: '1'
+  unit: pinch
+steps:
+- Bring the water to a boil in a large saucepan over high heat with the salt, turmeric, and ginger.
+- Add the rinsed rice and let the water return to a boil.
+- Reduce heat to low, cover, and simmer for 1 hour until the grains begin to split open.
+- Ladle about 2 cups into each bowl to serve. For a short-term fast, strain out the rice and drink only
+  the cooking water throughout the day.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 60
+approx_kcal_per_serving: 120
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-dysbiosis
+- maldigestion
+one_line: A very thin rice gruel — the classic Ayurvedic digestive reset meal, used when the gut needs
+  a complete rest.
+headnote: 'Kanjee is essentially medicinal simplicity: the thinner and plainer it is, the more powerfully
+  it rests and rehabilitates a strained digestive system.'
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 105
+image:
+  file: images/odonnell/odonnell-106-029.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday kanjee
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,90 @@
+slug: hemp-protein-squares
+name: Hemp Protein Squares
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- hemp protein powder
+- almond or sunflower butter
+- unsweetened shredded coconut
+- coconut oil
+- pitted medjool dates (about 4–5)
+- dried apricots (about 6)
+- cardamom powder
+contains_allergens:
+- nuts
+ingredients:
+- item: hemp protein powder
+  qty: '0.25'
+  unit: cup
+- item: almond or sunflower butter
+  qty: '0.5'
+  unit: cup
+- item: unsweetened shredded coconut
+  qty: '0.25'
+  unit: cup
+- item: coconut oil
+  qty: '1'
+  unit: tbsp plus 1 tsp
+- item: pitted Medjool dates (about 4–5)
+  qty: '0.25'
+  unit: cup
+- item: dried apricots (about 6)
+  qty: '0.25'
+  unit: cup
+- item: cardamom powder
+  qty: '0.125'
+  unit: tsp
+steps:
+- Combine all the ingredients except 1 tsp of the coconut oil in a food processor.
+- Run the processor until the mixture clumps into a ball; if it refuses to come together, add the reserved
+  teaspoon of coconut oil and continue processing.
+- Press the mixture firmly and evenly into a shallow 8 × 8-inch dish or a lidded storage container.
+- Refrigerate until firm, then slice into 6 squares.
+- Keep refrigerated until ready to eat; wrap individually in wax paper for on-the-go snacking.
+servings: '6'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 200
+kcal_is_estimate: true
+protein_g: 8
+good_for:
+- protein-adequacy-vegetarian
+- chronic-fatigue-syndrome
+one_line: No-bake date-and-nut squares loaded with hemp protein and coconut — a cooling, portable summer
+  snack.
+headnote: These refrigerator squares deliver plant protein and healthy fats without heating up the kitchen,
+  making them a sensible summer energy boost for active days.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 52
+image:
+  file: images/odonnell/odonnell-051-012.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: hemp protein squares
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

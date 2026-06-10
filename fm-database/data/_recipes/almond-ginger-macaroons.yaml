@@ -1,0 +1,104 @@
+slug: almond-ginger-macaroons
+name: Almond Ginger Macaroons
+meal_type:
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- winter
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- almond meal
+- unsweetened shredded coconut
+- baking powder
+- salt
+- dehydrated sugarcane or coconut sugar
+- cacao nibs
+- egg or 1 flax egg
+- coconut oil
+- pure vanilla extract
+- finely grated fresh gingerroot
+contains_allergens:
+- nuts
+- egg
+ingredients:
+- item: almond meal
+  qty: '0.75'
+  unit: cup
+- item: unsweetened shredded coconut
+  qty: '0.25'
+  unit: cup
+- item: baking powder
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: '0.125'
+  unit: tsp
+- item: dehydrated sugarcane or coconut sugar
+  qty: '0.25'
+  unit: cup
+- item: cacao nibs
+  qty: '2'
+  unit: tbsp
+- item: egg or 1 flax egg
+  qty: '1'
+  unit: whole
+- item: coconut oil
+  qty: '1.5'
+  unit: tbsp
+- item: pure vanilla extract
+  qty: '0.25'
+  unit: tsp
+- item: finely grated fresh gingerroot
+  qty: '1'
+  unit: tsp
+steps:
+- Preheat the oven to 375°F (190°C) and lightly grease a baking sheet with coconut oil.
+- 'Combine all dry ingredients in a small bowl: almond meal, shredded coconut, baking powder, salt, sugar,
+  and cacao nibs.'
+- In a separate bowl, beat the egg with a fork until fluffy, then stir in the coconut oil, vanilla, and
+  grated ginger.
+- Pour the dry ingredients into the wet and stir just until the mixture comes together.
+- Drop rounded tablespoon-sized balls onto the baking sheet, spacing them 2–3 inches apart, and gently
+  flatten the bottom of each with a fork.
+- Bake for 8–10 minutes until lightly browned, then cool completely on the sheet before removing.
+servings: '12'
+prep_time_min: 15
+cook_time_min: 10
+approx_kcal_per_serving: 120
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+one_line: Crunchy grain-free coconut and almond macaroons brightened with fresh ginger and studded with
+  cacao nibs.
+headnote: These flourless, low-sugar cookies travel well and make an excellent holiday treat that still
+  honours digestive health; fresh ginger adds a lively kick and helps counter the heaviness of almond
+  meal.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 18
+image:
+  file: images/odonnell/odonnell-019-007.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: almond ginger macaroons
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

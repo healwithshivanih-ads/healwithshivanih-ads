@@ -1,0 +1,87 @@
+slug: everyday-bean-pate
+name: Everyday Bean Pâté
+meal_type:
+- side
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- astringent
+- sour
+- salty
+main_ingredients:
+- cooked red lentils
+- water
+- everyday savory spice mix
+- red miso
+- olive oil
+- fresh lemon juice
+contains_allergens:
+- soy
+ingredients:
+- item: cooked red lentils
+  qty: '1'
+  unit: cup
+- item: water
+  qty: 0.5–1
+  unit: cup
+- item: Everyday Savory Spice Mix
+  qty: '1'
+  unit: tsp
+- item: red miso
+  qty: '0.5'
+  unit: tsp
+- item: olive oil
+  qty: '1'
+  unit: tsp
+- item: fresh lemon juice
+  qty: '1'
+  unit: tsp
+steps:
+- Place the cooked lentils in a large mixing bowl and add 0.5 cup water, spice mix, miso, olive oil, and
+  lemon juice.
+- For a chunky pâté, mash everything together with a fork. For a smooth spread, process with an immersion
+  hand blender, adding the extra 0.5 cup water as needed to reach the consistency you want.
+- Serve alongside a steamed salad bowl, spread inside a collard or dosa wrap, or as a dip for parboiled
+  vegetable spears.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- midlife-weight-gain
+- gut-microbiome
+one_line: A smooth red lentil spread seasoned with miso and lemon — a protein-rich Ayurvedic alternative
+  to hummus.
+headnote: Puréed home-cooked legumes are far easier to digest than their canned or whole-bean versions,
+  and the miso and lemon add both probiotic benefit and a bright finish.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 130
+image:
+  file: images/odonnell/odonnell-131-052.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday bean pâté
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

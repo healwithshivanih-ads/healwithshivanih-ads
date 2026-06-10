@@ -1,0 +1,77 @@
+slug: everyday-savory-spice-mix
+name: Everyday Savory Spice Mix
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- bitter
+- sweet
+main_ingredients:
+- whole coriander seed
+- whole cumin seed
+- whole fennel seed
+- turmeric powder
+contains_allergens: []
+ingredients:
+- item: whole coriander seed
+  qty: '1'
+  unit: tbsp
+- item: whole cumin seed
+  qty: '1'
+  unit: tbsp
+- item: whole fennel seed
+  qty: '1.5'
+  unit: tsp
+- item: turmeric powder
+  qty: '1'
+  unit: tbsp
+steps:
+- Toast the whole spices in a dry frying pan over medium heat for a few minutes, just until fragrant —
+  do not let them burn.
+- Spread out and cool completely.
+- Grind the cooled seeds in a spice-dedicated coffee grinder or mortar and pestle to an even powder.
+- Transfer to a bowl and stir in the turmeric powder.
+- Pour into a shaker jar with an airtight lid for storage.
+servings: '12'
+prep_time_min: 5
+cook_time_min: 5
+approx_kcal_per_serving: 8
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- liver-detoxification
+- digestion-and-nutrient-absorption
+one_line: The core Ayurvedic digestive spice blend — coriander, cumin, fennel, and turmeric — that forms
+  the backbone of most savoury recipes in this cuisine.
+headnote: This four-spice formula is specifically balanced to kindle digestive fire and support liver
+  function without overheating, making it the go-to seasoning for everyday cooking.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 111
+image:
+  file: images/odonnell/odonnell-111-036.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: EVERYDAY SAVORY SPICE MIX
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

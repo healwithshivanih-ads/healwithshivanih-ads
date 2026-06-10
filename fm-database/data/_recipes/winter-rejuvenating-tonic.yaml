@@ -1,0 +1,84 @@
+slug: winter-rejuvenating-tonic
+name: Winter Rejuvenating Tonic
+meal_type:
+- drink
+- breakfast
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: Indian-Ayurvedic
+seasons:
+- winter
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+main_ingredients:
+- medjool dates
+- almonds, soaked overnight
+- whole milk or everyday almond milk
+- everyday sweet spice mix
+- ashwagandha powder (optional)
+contains_allergens:
+- dairy
+- nuts
+ingredients:
+- item: Medjool dates
+  qty: 3-4
+  unit: whole
+- item: almonds, soaked overnight
+  qty: '10'
+  unit: whole
+- item: whole milk or Everyday Almond Milk
+  qty: '1'
+  unit: cup
+- item: Everyday Sweet Spice Mix
+  qty: '0.5'
+  unit: tsp
+- item: ashwagandha powder (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Soak the dates in warm water for 20 minutes, then drain and remove the pits.
+- Drain the soaked almonds and slip off their skins by pinching each one between your fingers.
+- Combine the dates, almonds, milk, spice mix, and ashwagandha if using in a small saucepan and warm over
+  medium heat until hot — do not boil.
+- Remove from heat and blend with an immersion blender until smooth, or pour into a blender carafe and
+  process until the dates and almonds have fully dissolved.
+- Pour into a large mug and drink warm.
+servings: '2'
+prep_time_min: 25
+cook_time_min: 5
+approx_kcal_per_serving: 250
+kcal_is_estimate: true
+protein_g: 7
+good_for:
+- adrenal-fatigue
+- agni-digestive-fire
+- insomnia
+- nervous-system-regulation
+one_line: A warm blended milk tonic with dates, soaked almonds, and ashwagandha — Ayurveda's answer to
+  a building winter smoothie.
+headnote: This evening tonic nourishes ojas — the Ayurvedic concept of vital essence — and provides sustained
+  warmth; it is especially restorative after physical exertion or during periods of fatigue.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 52
+image:
+  file: images/odonnell/odonnell-051-012.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: winter rejuvenating tonic
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

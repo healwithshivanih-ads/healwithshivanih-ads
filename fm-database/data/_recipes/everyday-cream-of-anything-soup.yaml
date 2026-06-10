@@ -1,0 +1,92 @@
+slug: everyday-cream-of-anything-soup
+name: Everyday Cream of Anything Soup
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- water or vegetable broth
+- chopped kale, collard greens, swiss chard, or carrots (or a mix)
+- everyday savory spice mix or everyday digestive salts
+- turmeric powder
+- fresh gingerroot, peeled
+- ghee
+- almond milk
+contains_allergens:
+- dairy
+- nuts
+ingredients:
+- item: water or vegetable broth
+  qty: '4'
+  unit: cups
+- item: chopped kale, collard greens, Swiss chard, or carrots (or a mix)
+  qty: '4'
+  unit: cups
+- item: Everyday Savory Spice Mix or Everyday Digestive Salts
+  qty: '2'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: fresh gingerroot, peeled
+  qty: '1'
+  unit: inch piece
+- item: ghee
+  qty: '2'
+  unit: tsp
+- item: almond milk
+  qty: '1'
+  unit: cup
+steps:
+- Bring the water or broth to a boil in a medium saucepan over high heat.
+- Add the vegetables, spice mix, turmeric, and gingerroot; reduce heat and simmer covered for about 10
+  minutes — longer for a creamier result, shorter for a more textured soup.
+- Transfer the vegetables and cooking liquid to a blender, add the ghee and almond milk (the milk cools
+  the mixture so the blender does not overheat), and blend from medium to high until smooth.
+- Alternatively, use an immersion hand blender directly in the saucepan.
+- The soup should be warm enough to serve immediately; ladle into bowls.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 200
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- detoxification-support
+- inflammation
+one_line: A fast blended green vegetable soup thickened with almond milk — grounding, warming, and adaptable
+  to any season's greens.
+headnote: Swapping the vegetables to match the season transforms this single method into a year-round
+  soup repertoire; the ghee and almond milk give it a silky body without any cream.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 111
+image:
+  file: images/odonnell/odonnell-111-036.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday cream of anything soup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

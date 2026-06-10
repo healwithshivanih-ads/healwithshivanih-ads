@@ -1,0 +1,85 @@
+slug: raisin-pomegranate-chutney
+name: Raisin Pomegranate Chutney
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- astringent
+- sour
+- pungent
+main_ingredients:
+- raisins
+- fresh gingerroot, peeled and diced
+- pomegranate juice
+- fresh lemon juice
+- raw honey
+- cardamom powder
+contains_allergens: []
+ingredients:
+- item: raisins
+  qty: '1'
+  unit: cup
+- item: fresh gingerroot, peeled and diced
+  qty: '0.5'
+  unit: inch piece
+- item: pomegranate juice
+  qty: '0.5'
+  unit: cup
+- item: fresh lemon juice
+  qty: '0.5'
+  unit: whole lemon
+- item: raw honey
+  qty: '1'
+  unit: tbsp
+- item: cardamom powder
+  qty: '0.25'
+  unit: tsp
+steps:
+- Pulse all the ingredients together in a food processor several times until the mixture reaches a chunky,
+  jam-like consistency — do not over-process.
+- Transfer to a small lidded container and allow the flavours to meld for at least 30 minutes before serving.
+- Store refrigerated in a glass container for up to 3 days.
+- Serve as a 1-tablespoon condiment alongside dinner to satisfy a sweet craving without loading on dessert.
+servings: '24'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 30
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- detoxification
+one_line: A chunky raisin-pomegranate chutney spiced with ginger and cardamom — a small sweet condiment
+  that satisfies dessert cravings without the kapha-aggravating load.
+headnote: Ayurveda allows dried fruits in chutneys because soaking and spicing with cardamom and ginger
+  transforms them into a digestible sweet — keep the serving size to a tablespoon and this chutney becomes
+  a clever spring strategy for curbing sweets.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 212
+image:
+  file: images/odonnell/odonnell-212-115.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: raisin pomegranate chutney
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

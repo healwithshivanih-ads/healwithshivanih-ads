@@ -1,0 +1,99 @@
+slug: kheer-light
+name: Kheer Light (Spring Rice Pudding)
+meal_type:
+- snack
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+- astringent
+main_ingredients:
+- cooked white basmati rice
+- everyday almond milk
+- pure vanilla extract
+- raisins
+- soaked almonds, ground, or almond flour
+- powdered cardamom
+- freshly grated ginger
+- saffron thread (optional)
+- raw honey (optional)
+contains_allergens:
+- nuts
+ingredients:
+- item: cooked white basmati rice
+  qty: '1'
+  unit: cup
+- item: Everyday Almond Milk
+  qty: '1.75'
+  unit: cups
+- item: pure vanilla extract
+  qty: '1'
+  unit: tsp
+- item: raisins
+  qty: '2'
+  unit: tbsp
+- item: soaked almonds, ground, or almond flour
+  qty: '10'
+  unit: almonds
+- item: powdered cardamom
+  qty: '0.25'
+  unit: tsp
+- item: freshly grated ginger
+  qty: '1'
+  unit: tsp
+- item: saffron thread (optional)
+  qty: '1'
+  unit: pinch
+- item: raw honey (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Combine the cooked rice, almond milk, and vanilla extract in a small pot over medium heat and stir to
+  warm.
+- Add the raisins, ground almonds or almond flour, cardamom, grated ginger, and saffron if using. Stir
+  to combine.
+- Partially cover the pot, leaving the lid slightly ajar, and simmer on low heat for 15 minutes.
+- Divide between 2 bowls and stir half a teaspoon of raw honey into each serving if desired.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 20
+approx_kcal_per_serving: 240
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+one_line: A lighter almond-milk kheer with warming ginger and cardamom — the Ayurvedic rice pudding re-imagined
+  for spring's need for lighter sweetness.
+headnote: Traditional kheer is richly building, but this springtime version uses almond milk and just
+  a whisper of honey to satisfy the desire for something sweet without adding the heavy and damp qualities
+  that kapha season calls for reducing.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 189
+image:
+  file: images/odonnell/odonnell-190-098.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: kheer light
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

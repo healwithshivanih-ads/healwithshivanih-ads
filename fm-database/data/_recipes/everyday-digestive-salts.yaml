@@ -1,0 +1,77 @@
+slug: everyday-digestive-salts
+name: Everyday Digestive Salts
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+- kapha
+rasa:
+- salty
+- sour
+- pungent
+main_ingredients:
+- organic lemon (small, meyer if available)
+- fennel seeds (optional)
+- sea salt or pink salt
+- ginger powder
+contains_allergens: []
+ingredients:
+- item: organic lemon (small, Meyer if available)
+  qty: '1'
+  unit: whole
+- item: fennel seeds (optional)
+  qty: '0.5'
+  unit: tsp
+- item: sea salt or pink salt
+  qty: '0.5'
+  unit: cup
+- item: ginger powder
+  qty: '0.5'
+  unit: tsp
+steps:
+- Preheat oven to 300°F (150°C).
+- Finely grate the outside of the lemon to make zest — you need about 1 tsp.
+- Grind the fennel seeds as fine as possible in a mortar and pestle or spice grinder, if using.
+- Mix the lemon zest, ground fennel seeds, salt, and ginger powder together in a bowl.
+- Spread the mixture in an even layer (no clumps) on a baking sheet and bake for about 15 minutes to dry
+  out the lemon zest.
+- If the zest pieces are too large for a shaker top, grind again briefly.
+- Cool completely, then transfer to a shaker jar.
+servings: '40'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 0
+kcal_is_estimate: false
+protein_g: 0
+good_for:
+- agni-digestive-fire
+one_line: A lemon-ginger-fennel seasoning salt that stimulates digestive juices better than plain salt
+  alone.
+headnote: The combination of salt with sour lemon and pungent ginger targets all three digestive fire
+  triggers, making this a worthwhile substitute for plain salt on the table.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 111
+image:
+  file: images/odonnell/odonnell-111-036.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: EVERYDAY DIGESTIVE SALTS
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

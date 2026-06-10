@@ -1,0 +1,88 @@
+slug: basil-melon-cooler
+name: Basil Melon Cooler
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- chopped, deseeded watermelon, honeydew, or cantaloupe
+- fresh basil leaves
+- ginger powder
+- lime juice (from 1 lime)
+- water
+- ice cubes (optional)
+- fresh basil leaves and lime wedges for garnish
+contains_allergens: []
+ingredients:
+- item: chopped, deseeded watermelon, honeydew, or cantaloupe
+  qty: '4'
+  unit: cups
+- item: fresh basil leaves
+  qty: '4'
+  unit: large leaves
+- item: ginger powder
+  qty: '0.25'
+  unit: tsp
+- item: lime juice (from 1 lime)
+  qty: '1'
+  unit: lime
+- item: water
+  qty: 0.25-0.5
+  unit: cup
+- item: ice cubes (optional)
+  qty: 3-4
+  unit: cubes
+- item: fresh basil leaves and lime wedges for garnish
+  qty: '4'
+  unit: pieces
+steps:
+- Put the melon, basil leaves, ginger powder, and lime juice into a blender with ¼ cup of water.
+- Blend on high until the basil is broken into small green flecks.
+- For a smoothie-like texture, add the ice cubes; for a more liquid drink, skip the ice and add up to
+  another ¼ cup of water instead.
+- Blend again until smooth, then pour into 4 glasses; garnish each with a basil leaf and a lime wedge.
+- Serve at least an hour before a meal as melon does not digest well alongside other foods.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 60
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- hydration-and-brain-function
+- agni-digestive-fire
+one_line: Blended seasonal melon with fresh basil, ginger, and lime — a beautifully hydrating pitta cooler.
+headnote: Melon is one of summer's most cooling foods; blending it with basil and a touch of ginger makes
+  a pre-meal drink that refreshes without interfering with digestion.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 263
+image:
+  file: images/odonnell/odonnell-264-148.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: basil melon cooler
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

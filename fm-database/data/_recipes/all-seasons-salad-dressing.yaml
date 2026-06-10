@@ -1,0 +1,71 @@
+slug: all-seasons-salad-dressing
+name: All-Seasons Salad Dressing
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- salty
+main_ingredients:
+- fresh lemon juice
+- cold-pressed olive oil
+- everyday digestive salts, or salt plus everyday savory spice mix
+- freshly ground black pepper
+contains_allergens: []
+ingredients:
+- item: fresh lemon juice
+  qty: '0.5'
+  unit: cup
+- item: cold-pressed olive oil
+  qty: '0.25'
+  unit: cup
+- item: Everyday Digestive Salts, OR salt plus Everyday Savory Spice Mix
+  qty: '1'
+  unit: tsp
+- item: freshly ground black pepper
+  qty: '1'
+  unit: dash
+steps:
+- Combine all ingredients in a pint-size jar, seal, and shake well to combine.
+- Keeps refrigerated for up to 5 days.
+servings: '4'
+prep_time_min: 3
+cook_time_min: 0
+approx_kcal_per_serving: 125
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+one_line: A sharp lemon-olive oil dressing seasoned with digestive spices — ready in minutes and good
+  on anything cooked.
+headnote: Lemon and the digestive salt formula make this more than a simple vinaigrette; the acidity and
+  spices gently stimulate digestive fire.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 116
+image:
+  file: images/odonnell/odonnell-116-042.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: ALL-SEASONS SALAD DRESSING
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

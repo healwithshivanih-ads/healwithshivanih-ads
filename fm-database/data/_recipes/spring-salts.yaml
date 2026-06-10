@@ -1,0 +1,77 @@
+slug: spring-salts
+name: Spring Salts
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- finely ground pink salt
+- dried lemon zest
+- dried basil
+- freshly ground black pepper
+- cayenne pepper
+contains_allergens: []
+ingredients:
+- item: finely ground pink salt
+  qty: '1'
+  unit: tbsp
+- item: dried lemon zest
+  qty: '0.25'
+  unit: cup
+- item: dried basil
+  qty: '2'
+  unit: tbsp
+- item: freshly ground black pepper
+  qty: '1.5'
+  unit: tsp
+- item: cayenne pepper
+  qty: '0.25'
+  unit: tsp
+steps:
+- Combine all the ingredients in a bowl.
+- If the texture is uneven, grind briefly with a mortar and pestle until the mix reaches a consistent
+  texture.
+- Transfer to a small glass shaker jar for storage and use as a condiment or seasoning in spring recipes.
+servings: '24'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 5
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+one_line: A bright lemon-basil seasoning salt with black pepper and cayenne — an easy table condiment
+  to keep the flavour of spring food warming and pungent.
+headnote: When you want brightness and heat rather than deep curry warmth, these Spring Salts bring lemon's
+  astringency and basil's aromatic pungency — the seasoning counterpart to the Spring Spice Mix.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 173
+image:
+  file: images/odonnell/odonnell-174-086.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: SPRING SALTS
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

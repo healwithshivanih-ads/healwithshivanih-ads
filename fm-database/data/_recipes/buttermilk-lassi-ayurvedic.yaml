@@ -1,0 +1,80 @@
+slug: buttermilk-lassi-ayurvedic
+name: Buttermilk Lassi
+meal_type:
+- breakfast
+- drink
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- sweet
+main_ingredients:
+- whole milk
+- lemon juice
+- yogurt culture (starter)
+- water
+- maple syrup (optional)
+contains_allergens:
+- dairy
+ingredients:
+- item: whole milk
+  qty: '1'
+  unit: quart
+- item: lemon juice
+  qty: a little
+  unit: ''
+- item: yogurt culture (starter)
+  qty: '1'
+  unit: tbsp
+- item: water
+  qty: equal to yogurt
+  unit: ''
+- item: maple syrup (optional)
+  qty: to taste
+  unit: ''
+steps:
+- Heat the milk in a saucepan until it just reaches boiling point, then reduce to a simmer.
+- Squeeze in a small amount of lemon juice, stir in the yogurt culture, then cover the pot and leave it
+  in a warm, dark spot overnight.
+- By morning the milk will have set into fresh yogurt.
+- Combine the yogurt with an equal quantity of water and blend until smooth and frothy.
+- Sweeten with maple syrup if desired and serve.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 10
+approx_kcal_per_serving: 130
+kcal_is_estimate: true
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- digestion-and-nutrient-absorption
+- probiotic-and-prebiotic-support
+one_line: Home-cultured yogurt thinned with water into a cooling, probiotic-rich lassi.
+headnote: Making lassi from scratch lets you control the culture and keep the beneficial bacteria alive
+  — a light, digestive-supporting drink that is far gentler than plain yogurt.
+attribution:
+  author: Vasant Lad
+  book: 'Ayurveda: The Science of Self-Healing'
+  source_id: lad-ayurveda-science-of-self-healing-1984
+  page: null
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Buttermilk (lassi)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

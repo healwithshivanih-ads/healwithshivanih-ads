@@ -1,0 +1,113 @@
+slug: cranberry-butternut-muffins
+name: Cranberry Butternut Muffins
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+- kapha
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- eggs (or 2 flax eggs)
+- cooked butternut squash
+- maple syrup
+- coconut oil, melted
+- almond meal
+- salt
+- baking soda
+- baking powder
+- everyday sweet spice mix
+- fresh cranberries, chopped
+- shredded coconut
+contains_allergens:
+- nuts
+- egg
+ingredients:
+- item: eggs (or 2 flax eggs)
+  qty: '2'
+  unit: ''
+- item: cooked butternut squash
+  qty: 1/2
+  unit: cup
+- item: maple syrup
+  qty: 1/4
+  unit: cup
+- item: coconut oil, melted
+  qty: '2'
+  unit: tbsp
+- item: almond meal
+  qty: 1 1/2
+  unit: cups
+- item: salt
+  qty: 1/4
+  unit: tsp
+- item: baking soda
+  qty: 1/4
+  unit: tsp
+- item: baking powder
+  qty: 1/4
+  unit: tsp
+- item: Everyday Sweet Spice Mix
+  qty: 1-2
+  unit: tsp
+- item: fresh cranberries, chopped
+  qty: 1/4
+  unit: cup
+- item: shredded coconut
+  qty: '2'
+  unit: tbsp
+steps:
+- Preheat oven to 350°F and line a 6-cup muffin tin with baking cups.
+- In a medium bowl, whisk the eggs vigorously for 1–2 minutes, then mash in the cooked squash. Stir in
+  the maple syrup and melted coconut oil.
+- In a separate small bowl, combine almond meal, salt, baking soda, baking powder, and spice mix.
+- Fold the dry ingredients into the wet ingredients — stir until just combined, do not overmix. Fold in
+  the cranberries.
+- Divide batter evenly among the 6 muffin cups and dust the tops with shredded coconut.
+- Bake for 25 minutes or until the tops begin to brown. The muffins will be soft when they come out and
+  will firm as they cool completely before removing from tins.
+- 'Flax egg alternative: blend 2 tbsp ground flaxseeds with 6 tbsp water for 2 minutes; use in place of
+  eggs.'
+servings: '6'
+prep_time_min: 15
+cook_time_min: 25
+approx_kcal_per_serving: 290
+kcal_is_estimate: true
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+one_line: Grain-free muffins built from almond meal and butternut squash — a deeply nourishing, high-protein
+  autumn breakfast.
+headnote: These sturdy, grain-free muffins pair the grounding sweetness of winter squash with tart cranberries
+  and warm spices, making a satisfying autumn breakfast that holds vata steady.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 280
+image:
+  file: images/odonnell/odonnell-281-156.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: cranberry butternut muffins
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

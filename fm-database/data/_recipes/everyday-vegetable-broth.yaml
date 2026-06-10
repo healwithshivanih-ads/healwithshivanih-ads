@@ -1,0 +1,89 @@
+slug: everyday-vegetable-broth
+name: Everyday Vegetable Broth
+meal_type:
+- drink
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- salty
+- pungent
+main_ingredients:
+- roughly chopped vegetables and/or vegetable skins (carrots, potatoes, leeks, kale, parsnips, fennel)
+- ghee
+- fresh herbs with stems (thyme, rosemary, oregano, sage, parsley) or fresh gingerroot, thickly sliced
+- salt
+- freshly ground black pepper
+- water
+contains_allergens:
+- dairy
+ingredients:
+- item: roughly chopped vegetables and/or vegetable skins (carrots, potatoes, leeks, kale, parsnips, fennel)
+  qty: '5'
+  unit: cups
+- item: ghee
+  qty: '2'
+  unit: tbsp
+- item: fresh herbs with stems (thyme, rosemary, oregano, sage, parsley) OR fresh gingerroot, thickly
+    sliced
+  qty: '1'
+  unit: handful
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: freshly ground black pepper
+  qty: '1'
+  unit: pinch
+- item: water
+  qty: '7'
+  unit: cups
+steps:
+- In a large heavy-bottomed pot, sauté the vegetables in the ghee over medium heat for about 10 minutes,
+  stirring occasionally, until they begin to soften.
+- Add the fresh herbs or gingerroot, salt, pepper, and water; bring to a boil.
+- Reduce heat to low, partially cover, and simmer for 60 minutes.
+- Remove from heat and strain through a fine mesh metal sieve into a heatproof container, pressing firmly
+  on the vegetables with the back of a spoon to extract all the flavour.
+- Cool and refrigerate for up to 1 week, or freeze for up to 1 month.
+servings: '3.5'
+prep_time_min: 15
+cook_time_min: 70
+approx_kcal_per_serving: 40
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
+one_line: A slow-simmered vegetable broth built from kitchen scraps or whole vegetables — the flavour
+  backbone for soups, grains, and between-meal sipping.
+headnote: Making your own broth from saved vegetable peels and tops is one of the easiest ways to reduce
+  waste and always have a nourishing, mineral-rich liquid on hand.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 149
+image:
+  file: images/odonnell/odonnell-149-073.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday vegetable broth
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

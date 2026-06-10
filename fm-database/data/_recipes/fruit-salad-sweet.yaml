@@ -1,0 +1,84 @@
+slug: fruit-salad-sweet
+name: Fruit Salad Trio — Sweet Salad
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+- autumn
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- apple, cored and chopped
+- pear, cored and chopped
+- red grapes, halved
+- dates, pitted and diced
+- apple juice
+- fresh mint leaves for garnish
+contains_allergens: []
+ingredients:
+- item: apple, cored and chopped
+  qty: '0.5'
+  unit: whole
+- item: pear, cored and chopped
+  qty: '1'
+  unit: whole
+- item: red grapes, halved
+  qty: '0.5'
+  unit: cup
+- item: dates, pitted and diced
+  qty: '2'
+  unit: whole
+- item: apple juice
+  qty: '2'
+  unit: tbsp
+- item: fresh mint leaves for garnish
+  qty: '1'
+  unit: few leaves
+steps:
+- Combine the apple, pear, grapes, and dates in a small bowl.
+- Pour the apple juice over the fruit and let stand for 20–30 minutes.
+- Garnish with fresh mint and serve alone as a light meal.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 150
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- constipation
+- agni-digestive-fire
+one_line: Sweet apple, pear, grapes, and dates in apple juice — a cooling, grounding late-summer fruit
+  bowl.
+headnote: Late summer's softer, sweeter fruits pacify both pitta and vata; this combination is especially
+  helpful as a light dinner when digestion needs rest.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 252
+image:
+  file: images/odonnell/odonnell-253-140.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: fruit salad trio
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

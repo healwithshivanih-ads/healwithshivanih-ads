@@ -38,8 +38,11 @@ def check(d, fname, errs, warns):
     for k in ("approx_kcal_per_serving", "protein_g"):
         if d.get(k) is not None and not isinstance(d[k], (int, float)):
             errs.append(f"{fname}: {k} must be a number")
-    if not (d.get("method") or "").strip():
-        warns.append(f"{fname}: no method stored")
+    if not (d.get("method") or "").strip() and not (d.get("steps") or []):
+        warns.append(f"{fname}: no method/steps stored")
+    img = d.get("image") or {}
+    if isinstance(img, dict) and img.get("rights_status") not in (None, "", "none", "book_reference_uncleared", "licensed", "original"):
+        errs.append(f"{fname}: image.rights_status invalid ({img.get('rights_status')!r})")
 
 def main():
     directory = _dir()

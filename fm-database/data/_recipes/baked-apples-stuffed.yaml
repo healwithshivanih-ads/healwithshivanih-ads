@@ -1,0 +1,104 @@
+slug: baked-apples-stuffed
+name: Baked Apples
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- dried cranberries
+- raisins
+- dried figs, finely chopped
+- dried apricots or pitted dates, finely chopped
+- everyday sweet spice mix
+- apple juice, cider, or water
+- large apples
+- whole cloves
+- honey for garnish (optional)
+contains_allergens: []
+ingredients:
+- item: dried cranberries
+  qty: 1/4
+  unit: cup
+- item: raisins
+  qty: 1/2
+  unit: cup
+- item: dried figs, finely chopped
+  qty: '4'
+  unit: ''
+- item: dried apricots or pitted dates, finely chopped
+  qty: '2'
+  unit: ''
+- item: Everyday Sweet Spice Mix
+  qty: '3'
+  unit: tsp
+- item: apple juice, cider, or water
+  qty: '1'
+  unit: cup
+- item: large apples
+  qty: '4'
+  unit: ''
+- item: whole cloves
+  qty: '16'
+  unit: ''
+- item: honey for garnish (optional)
+  qty: '4'
+  unit: tsp
+steps:
+- Preheat oven to 350°F.
+- Combine the dried fruits, spice mix, and liquid in a small bowl and let the fruit soak while you prepare
+  the apples.
+- Core each apple, leaving the base intact. Pierce each apple with 4 whole cloves for flavour and decoration.
+  Arrange the apples side by side in an 8x8-inch baking dish.
+- Spoon the soaked fruit filling into the hollowed apples, allowing any excess to rest on top. Pour the
+  remaining soaking liquid over the apples and into the dish.
+- Bake for 25 minutes, basting once halfway through with juices from the base of the dish, until the apples
+  are very tender. Allow to stand 5 minutes after removing from the oven.
+- Drizzle 1 tsp of honey over each apple just before serving if desired. Eat with a steak knife and fork.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 30
+approx_kcal_per_serving: 235
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- constipation
+- detoxification
+- digestion-and-nutrient-absorption
+one_line: Whole apples stuffed with spiced dried fruit and baked until deeply tender — a warming, aromatic
+  autumn treat that is as digestive as it is comforting.
+headnote: Slow-baking transforms apples into a fragrant, caramelised vessel for a spiced dried-fruit filling
+  — the steady heat creates a deeply grounding and cleansing breakfast or light supper.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 308
+image:
+  file: images/odonnell/odonnell-309-175.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: baked apples
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

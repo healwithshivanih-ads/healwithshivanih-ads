@@ -1,0 +1,81 @@
+slug: almond-drink-ayurvedic
+name: Almond Drink
+meal_type:
+- breakfast
+- drink
+diet:
+- vegetarian
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- raw almonds
+- water (for soaking)
+- cardamom powder
+- black pepper, freshly ground from peppercorn
+- honey
+- water (for blending)
+contains_allergens:
+- nuts
+ingredients:
+- item: raw almonds
+  qty: '10'
+  unit: whole
+- item: water (for soaking)
+  qty: as needed
+  unit: ''
+- item: cardamom powder
+  qty: '1'
+  unit: pinch
+- item: black pepper, freshly ground from peppercorn
+  qty: '1'
+  unit: pinch
+- item: honey
+  qty: '1'
+  unit: tsp
+- item: water (for blending)
+  qty: '1'
+  unit: cup
+steps:
+- Place almonds in water and leave them to soak overnight.
+- The next morning, slip the skins off the soaked almonds.
+- Combine the peeled almonds in a blender with one cup of water, the cardamom, freshly ground black pepper,
+  and honey.
+- Blend on high speed for about five minutes until smooth, then drink immediately.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 220
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- mitochondrial-health-nutrients
+- chronic-fatigue-syndrome
+one_line: A quick morning ojas-building almond blend spiced with cardamom and black pepper.
+headnote: This simple soaked-almond drink is a classical Ayurvedic way to start the day — nourishing to
+  the nervous system and gently energising without aggravating digestive fire.
+attribution:
+  author: Vasant Lad
+  book: 'Ayurveda: The Science of Self-Healing'
+  source_id: lad-ayurveda-science-of-self-healing-1984
+  page: null
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Almond Drink
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

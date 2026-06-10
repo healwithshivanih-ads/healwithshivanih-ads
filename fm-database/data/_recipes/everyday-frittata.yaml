@@ -1,0 +1,92 @@
+slug: everyday-frittata
+name: Everyday Frittata
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- vegetables, chopped bite-size (hearty greens or seasonal)
+- ghee
+- eggs
+- everyday almond milk or vegetable broth
+- salt
+- black pepper
+- turmeric powder
+contains_allergens:
+- egg
+- dairy
+- nuts
+ingredients:
+- item: vegetables, chopped bite-size (hearty greens or seasonal)
+  qty: '2'
+  unit: cups
+- item: ghee
+  qty: '2'
+  unit: tsp
+- item: eggs
+  qty: '8'
+  unit: whole
+- item: Everyday Almond Milk or vegetable broth
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+steps:
+- Steam-sauté the vegetables with 1 tbsp water in a covered frying pan on medium heat for 7–10 minutes
+  until tender; drain any remaining water.
+- Melt the ghee in a cast-iron or heavy oven-safe skillet over medium heat.
+- Whisk the eggs, almond milk or broth, salt, pepper, and turmeric together briskly for 1–2 minutes.
+- Pour the egg mixture into the hot skillet and scatter the steamed vegetables evenly over the top.
+- Cook on medium heat until the eggs are nearly set, about 8–10 minutes — cut a small slit in the centre
+  to check.
+- Cover the skillet and cook 5–7 minutes more until the eggs are completely set.
+- Cut into wedges directly in the pan or turn out onto a plate for serving.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 20
+approx_kcal_per_serving: 230
+kcal_is_estimate: true
+protein_g: 16
+good_for:
+- agni-digestive-fire
+- hormonal-nutrition-foundations
+one_line: A baked egg dish loaded with seasonal greens — lighter than a quiche and spiced with turmeric
+  and black pepper for digestibility.
+headnote: Eggs prepared warm and baked rather than fried in oil are easier on digestion; the classic turmeric-black
+  pepper pairing helps the body process the dense egg yolk.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 108
+image:
+  file: images/odonnell/odonnell-108-033.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday frittata
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

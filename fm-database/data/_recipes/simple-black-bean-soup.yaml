@@ -1,0 +1,120 @@
+slug: simple-black-bean-soup
+name: Simple Black Bean Soup
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+- salty
+- pungent
+main_ingredients:
+- cooked black beans
+- cooking liquid from beans or vegetable broth
+- carrots, chopped
+- swiss chard leaves, chopped
+- turmeric powder
+- ghee
+- cumin seeds
+- coriander powder
+- salt
+- avocado, sliced (optional garnish)
+- fresh cilantro, chopped (optional garnish)
+- fresh tomato, chopped (optional garnish)
+- whole milk yogurt (optional garnish)
+contains_allergens:
+- dairy
+ingredients:
+- item: cooked black beans
+  qty: '3'
+  unit: cups
+- item: cooking liquid from beans or vegetable broth
+  qty: 1 1/2
+  unit: cups
+- item: carrots, chopped
+  qty: '2'
+  unit: large
+- item: Swiss chard leaves, chopped
+  qty: '2'
+  unit: large
+- item: turmeric powder
+  qty: '1'
+  unit: tsp
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: 1 1/2
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: 1/2
+  unit: tsp
+- item: avocado, sliced (optional garnish)
+  qty: '1'
+  unit: ''
+- item: fresh cilantro, chopped (optional garnish)
+  qty: ''
+  unit: ''
+- item: fresh tomato, chopped (optional garnish)
+  qty: ''
+  unit: ''
+- item: whole milk yogurt (optional garnish)
+  qty: ''
+  unit: ''
+steps:
+- Combine the beans, broth or bean cooking water, chopped carrots, Swiss chard, and turmeric in a large
+  saucepan. Bring to a boil, then cover and simmer on low heat for 15–20 minutes until the vegetables
+  are tender.
+- While the soup simmers, warm ghee in a small frying pan over medium heat. Add cumin seeds and sauté
+  until fragrant, 2–3 minutes; remove from heat immediately.
+- Add the seasoned ghee and coriander powder to the soup and simmer 5 minutes more. Remove from heat and
+  stir in salt.
+- Use an immersion blender to blend about half the soup to a creamy consistency while keeping the rest
+  chunky.
+- Serve garnished with avocado slices, diced tomato, yogurt, or chopped cilantro as desired.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 30
+approx_kcal_per_serving: 280
+kcal_is_estimate: true
+protein_g: 14
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- digestion-and-nutrient-absorption
+- iron-nutrition
+one_line: A chunky-creamy black bean soup with carrots, Swiss chard, and cumin-ghee tempering — hearty,
+  plant-protein rich, and ideal for autumn.
+headnote: Black beans bring deep nourishment to muscle tissue, while cumin and coriander support digestive
+  fire — this simple soup blends down to a rich, creamy base with satisfying chunks of vegetables.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 292
+image:
+  file: images/odonnell/odonnell-293-164.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: simple black bean soup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

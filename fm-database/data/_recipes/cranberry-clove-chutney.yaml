@@ -1,0 +1,92 @@
+slug: cranberry-clove-chutney
+name: Cranberry Clove Chutney
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- astringent
+- sweet
+- pungent
+main_ingredients:
+- fresh cranberries
+- whole cloves
+- cinnamon
+- fresh gingerroot, peeled and finely chopped or grated
+- orange juice
+- orange zest
+- dehydrated cane juice
+contains_allergens: []
+ingredients:
+- item: fresh cranberries
+  qty: '1'
+  unit: lb
+- item: whole cloves
+  qty: '2'
+  unit: ''
+- item: cinnamon
+  qty: '1'
+  unit: tsp
+- item: fresh gingerroot, peeled and finely chopped or grated
+  qty: 1/4
+  unit: inch piece
+- item: orange juice
+  qty: '1'
+  unit: cup
+- item: orange zest
+  qty: '1'
+  unit: tbsp
+- item: dehydrated cane juice
+  qty: 1/2
+  unit: cup
+steps:
+- Combine the cranberries, cloves, cinnamon, ginger, orange juice, and orange zest in a medium saucepan.
+  Bring to a boil over high heat.
+- Reduce heat to low and stir in the dehydrated cane juice. Simmer uncovered, stirring occasionally, until
+  the cranberries begin to dissolve and the chutney coats a spoon, about 20 minutes. It will thicken further
+  as it cools.
+- Taste and adjust sweetener; if reducing, cook an additional 5–10 minutes to thicken.
+- Serve by the tablespoon alongside steamed greens, roasted vegetables, or grain cereal. Remove the cloves
+  before storing if preferred.
+servings: '16'
+prep_time_min: 10
+cook_time_min: 25
+approx_kcal_per_serving: 50
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- detoxification
+- liver-detoxification
+one_line: A sharp, jewel-coloured cranberry chutney with cloves and orange — energising, blood-cleansing,
+  and far less sweet than commercial versions.
+headnote: Fresh cranberries' potent astringent and sour punch is softened with orange, ginger, and just
+  enough sweetener to make a lively chutney that supports digestion of heavier autumn and winter meals.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 325
+image:
+  file: images/odonnell/odonnell-325-187.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: cranberry clove chutney
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

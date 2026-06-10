@@ -1,0 +1,88 @@
+slug: winter-spice-mix
+name: Winter Spice Mix
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian-Ayurvedic
+seasons:
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- salty
+- sweet
+main_ingredients:
+- coriander seeds
+- cumin seeds
+- turmeric powder
+- salt
+- dehydrated sugarcane
+- ginger powder
+- black pepper (optional)
+contains_allergens: []
+ingredients:
+- item: coriander seeds
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: dehydrated sugarcane
+  qty: '0.5'
+  unit: tsp
+- item: ginger powder
+  qty: '1'
+  unit: tsp
+- item: black pepper (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Dry-roast the coriander and cumin seeds together in a heavy-bottomed pan over medium heat, stirring,
+  until fragrant — just a few minutes.
+- Cool completely, then combine with the remaining ingredients and grind to a uniform powder in a spice
+  grinder or with a mortar and pestle.
+- Store in a small glass jar with a shaker top.
+servings: makes 1/4 cup
+prep_time_min: 5
+cook_time_min: 5
+approx_kcal_per_serving: 10
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- inflammation
+one_line: A roasted cumin-coriander-turmeric blend that forms the flavour backbone of virtually every
+  winter Ayurvedic dish.
+headnote: Having this spice mix ready in a jar makes weeknight cooking effortless; the combination of
+  warming and carminative spices is calibrated to support digestion and counter vata's cold, dry tendencies.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 384
+image:
+  file: images/odonnell/odonnell-384-229.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: winter ayurvedic spice mix and salts
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

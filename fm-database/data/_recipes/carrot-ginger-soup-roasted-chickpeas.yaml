@@ -1,0 +1,98 @@
+slug: carrot-ginger-soup-roasted-chickpeas
+name: Carrot Ginger Soup with Roasted Chickpeas
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+- vata
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- water
+- coriander powder
+- carrots
+- fresh gingerroot
+- ghee, olive oil, or sunflower oil
+- salt
+- black pepper
+- oil for drizzling
+- roasted chickpeas
+contains_allergens:
+- dairy
+ingredients:
+- item: water
+  qty: '4'
+  unit: cups
+- item: coriander powder
+  qty: '2'
+  unit: tsp
+- item: carrots
+  qty: '1'
+  unit: lb
+- item: fresh gingerroot
+  qty: 2-3
+  unit: inches
+- item: ghee, olive oil, or sunflower oil
+  qty: '2'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: dash
+- item: black pepper
+  qty: '1'
+  unit: dash
+- item: oil for drizzling
+  qty: '2'
+  unit: tsp
+- item: Roasted Chickpeas
+  qty: '1'
+  unit: cup
+steps:
+- Start boiling 4 cups of water with the coriander powder in a medium saucepan.
+- Coarsely chop the carrots and add them to the pot. Peel and roughly dice the ginger and add it too.
+  Cover and boil for 15–20 minutes until the carrots are completely tender.
+- Add the ghee or oil, salt, and pepper. Use an immersion blender directly in the pot to puree until silky
+  smooth, or transfer to a carafe blender (cool 2–3 minutes first; blend from low to high).
+- Ladle into 4 bowls, top each with 1/4 cup of Roasted Chickpeas and a small drizzle of oil.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 180
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- chronic-inflammation
+- detoxification
+- immune-support
+one_line: Velvety blended carrot-ginger soup topped with crunchy roasted chickpeas — warming, naturally
+  sweet, and deeply satisfying.
+headnote: Ginger is one of the most important spring spices in Ayurveda, and this silky carrot base lets
+  it shine while adding the dry, protein-rich crunch of oven-roasted chickpeas for texture and kapha balance.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 180
+image:
+  file: images/odonnell/odonnell-181-091.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: carrot ginger soup with roasted chickpeas
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

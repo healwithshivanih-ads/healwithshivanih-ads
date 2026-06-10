@@ -1,0 +1,95 @@
+slug: spring-spice-mix
+name: Spring Spice Mix
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- bitter
+- astringent
+main_ingredients:
+- whole coriander seed
+- fenugreek seed
+- whole cumin seed
+- turmeric powder
+- ginger powder
+- black pepper
+- cayenne pepper
+- clove powder
+contains_allergens: []
+ingredients:
+- item: whole coriander seed
+  qty: '1'
+  unit: tbsp
+- item: fenugreek seed
+  qty: '1'
+  unit: tsp
+- item: whole cumin seed
+  qty: '1'
+  unit: tbsp
+- item: turmeric powder
+  qty: '1'
+  unit: tbsp
+- item: ginger powder
+  qty: '1'
+  unit: tbsp
+- item: black pepper
+  qty: '1'
+  unit: tsp
+- item: cayenne pepper
+  qty: '0.125'
+  unit: tsp
+- item: clove powder
+  qty: '1'
+  unit: pinch
+steps:
+- Dry-roast the coriander, fenugreek, and cumin seeds in a heavy-bottomed pan over medium heat, stirring,
+  until fragrant — just a few minutes. Remove from heat and cool completely.
+- Combine the cooled roasted seeds with the remaining ground spices.
+- Grind the mixture in a dedicated coffee grinder or with a mortar and pestle until you have a uniform
+  powder.
+- Transfer to a small shaker jar with an airtight lid for storage.
+servings: '12'
+prep_time_min: 5
+cook_time_min: 5
+approx_kcal_per_serving: 15
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- detoxification
+- chronic-inflammation
+- anti-inflammatory-diet
+one_line: A warming curry-style spice blend of coriander, cumin, turmeric, fenugreek, and ginger — the
+  masala backbone of the spring Ayurvedic kitchen.
+headnote: Dry-roasting the whole seeds before grinding unlocks aromatic compounds that both deepen the
+  flavour and enhance digestive fire — this blend is the key seasoning for keeping kapha-season dishes
+  warming and light.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 176
+image:
+  file: images/odonnell/odonnell-176-088.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: SPRING SPICE MIX
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

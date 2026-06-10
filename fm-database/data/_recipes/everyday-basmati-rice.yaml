@@ -1,0 +1,78 @@
+slug: everyday-basmati-rice
+name: Everyday Basmati Rice
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+main_ingredients:
+- white basmati rice
+- water
+- ghee
+- salt
+contains_allergens:
+- dairy
+ingredients:
+- item: white basmati rice
+  qty: '1'
+  unit: cup
+- item: water
+  qty: '2'
+  unit: cups
+- item: ghee
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: '0.25'
+  unit: tsp
+steps:
+- Rinse the rice under cool running water in a fine mesh sieve, then submerge the sieve in a bowl of cool
+  water and soak for 30 minutes.
+- Drain and rinse once more until the water runs clear.
+- Combine the rice, water, ghee, and salt in a medium saucepan and bring to a boil over medium-high heat.
+- Cover, reduce heat to low, and cook for 17 minutes — do not lift the lid or stir during this time.
+- Remove from heat and leave the lid on for a further 5 minutes.
+- Uncover, fluff with a fork, and serve.
+servings: '2'
+prep_time_min: 32
+cook_time_min: 22
+approx_kcal_per_serving: 170
+kcal_is_estimate: true
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: Properly rinsed and soaked white basmati that cooks up fluffy and light — the standard side
+  dish in Ayurvedic meal building.
+headnote: Soaking removes excess starch and makes the grain gentler on digestion; white basmati is preferred
+  in Ayurveda when digestive fire is low or the gut is sensitive.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 128
+image:
+  file: images/odonnell/odonnell-128-051.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday basmati rice
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

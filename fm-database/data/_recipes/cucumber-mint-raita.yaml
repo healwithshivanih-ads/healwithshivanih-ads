@@ -1,0 +1,85 @@
+slug: cucumber-mint-raita
+name: Cucumber Mint Raita
+meal_type:
+- side
+diet:
+- vegetarian
+- gluten_free
+region: India
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- large cucumber (or 2 small)
+- salt
+- black pepper
+- organic whole milk yogurt
+- coriander, fennel, or cumin powder (optional)
+- fresh mint sprigs for garnish (optional)
+contains_allergens:
+- dairy
+ingredients:
+- item: large cucumber (or 2 small)
+  qty: '1'
+  unit: whole
+- item: salt
+  qty: '0.25'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: organic whole milk yogurt
+  qty: '1'
+  unit: cup
+- item: coriander, fennel, or cumin powder (optional)
+  qty: '0.25'
+  unit: tsp
+- item: fresh mint sprigs for garnish (optional)
+  qty: '1'
+  unit: few sprigs
+steps:
+- Peel the cucumber with a peeler, leaving a few strips of green skin for colour.
+- Halve lengthwise, scrape out the seeds with a spoon, then grate the flesh on the large holes of a box
+  grater.
+- In a bowl, stir the grated cucumber, salt, pepper, and optional ground spice into the yogurt until fully
+  combined.
+- Transfer to a serving dish and top with fresh mint sprigs if you like.
+- Serve immediately alongside grain and vegetable dishes, or carry in a sealed container for a picnic.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 45
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- acid-reflux-and-cardiac-sphincter-weakness
+one_line: Fresh grated cucumber folded into whole-milk yogurt with gentle spices — a cooling digestive
+  condiment.
+headnote: This onion-free raita uses the astringent quality of cucumber and the soothing sweetness of
+  fresh yogurt to calm pitta-driven heat and ease digestion.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 229
+image:
+  file: images/odonnell/odonnell-229-123.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: CUCUMBER MINT RAITA
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

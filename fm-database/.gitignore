@@ -12,3 +12,4 @@ data/_recipes/_candidates.yaml
 __pycache__/
 *.pyc
 *.pyo
+data/_recipes/images/

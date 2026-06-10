@@ -1,0 +1,98 @@
+slug: asparagus-white-bean-soup
+name: Asparagus and White Bean Soup
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- astringent
+- pungent
+- bitter
+main_ingredients:
+- asparagus stalks
+- water
+- olive oil
+- cooked white beans
+- spring salts
+- lemon, juiced (quarter)
+- lemon wedges for serving
+- freshly ground black pepper
+contains_allergens: []
+ingredients:
+- item: asparagus stalks
+  qty: '1'
+  unit: bunch
+- item: water
+  qty: '2'
+  unit: cups
+- item: olive oil
+  qty: '1'
+  unit: tsp
+- item: cooked white beans
+  qty: '0.5'
+  unit: cup
+- item: Spring Salts
+  qty: '1'
+  unit: tsp
+- item: lemon, juiced (quarter)
+  qty: '0.25'
+  unit: whole
+- item: lemon wedges for serving
+  qty: '2'
+  unit: wedges
+- item: freshly ground black pepper
+  qty: '1'
+  unit: to taste
+steps:
+- Snap or cut off the woody bottom 1–2 inches of the asparagus and discard. Chop the remaining stalks
+  into 1-inch pieces.
+- In a medium saucepan, boil the asparagus in 1 cup of the water until tender, about 7 minutes.
+- Transfer the asparagus and its cooking water to a blender along with the second cup of water, the olive
+  oil, white beans, and Spring Salts. Blend on medium-high until smooth. (Alternatively, add the extra
+  ingredients directly to the pot and use an immersion blender.)
+- Return the soup to the saucepan and warm over low heat until hot enough to serve.
+- Remove from heat, stir in the fresh lemon juice, and ladle into 2 bowls. Serve with lemon wedges and
+  black pepper.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 140
+kcal_is_estimate: true
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- detoxification
+- gut-microbiome
+- kidney-stones
+one_line: A silky spring soup of blended asparagus and white beans, brightened with lemon — gently diuretic
+  and easy to digest.
+headnote: Asparagus purifies the water element in Ayurveda and pairs beautifully with the protein of white
+  beans in this quick, cleansing blended soup perfect for the spring table.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 113
+image:
+  file: images/odonnell/odonnell-113-038.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: asparagus and white bean soup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

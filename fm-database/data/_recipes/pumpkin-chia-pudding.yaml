@@ -1,0 +1,98 @@
+slug: pumpkin-chia-pudding
+name: Pumpkin Chia Pudding
+meal_type:
+- snack
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- chia seeds
+- almond milk
+- pumpkin puree
+- vanilla extract
+- medjool date or 2 soaked deglet noor dates, pitted
+- maple syrup or molasses
+- everyday sweet spice mix or pumpkin pie spice
+- freshly grated nutmeg
+contains_allergens:
+- nuts
+ingredients:
+- item: chia seeds
+  qty: '2'
+  unit: tbsp
+- item: almond milk
+  qty: 1/2
+  unit: cup
+- item: pumpkin puree
+  qty: 1/2
+  unit: cup
+- item: vanilla extract
+  qty: 1/2
+  unit: tsp
+- item: Medjool date or 2 soaked deglet noor dates, pitted
+  qty: '1'
+  unit: ''
+- item: maple syrup or molasses
+  qty: '1'
+  unit: tsp
+- item: Everyday Sweet Spice Mix or pumpkin pie spice
+  qty: '1'
+  unit: tsp
+- item: freshly grated nutmeg
+  qty: ''
+  unit: dash
+steps:
+- In a small bowl, stir chia seeds into almond milk and whisk briskly with a fork a few times to distribute
+  evenly. Allow to soak for 5 minutes.
+- Place pumpkin puree, vanilla, dates, maple syrup, and spice mix into a blender jug. Add the soaked chia
+  mixture on top.
+- Blend on high speed for 2 minutes until smooth, whipped, and creamy — the chia seeds and dates should
+  be fully incorporated.
+- Divide between 2 dessert cups or eat from a single large bowl. Finish with a dash of freshly grated
+  nutmeg on top.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 175
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- digestion-and-nutrient-absorption
+- constipation
+one_line: A blended pumpkin and chia pudding sweetened with dates and spices — cooling, toning, and satisfying
+  straight from the jar.
+headnote: Pumpkin's cooling, astringent nature tones the gut after summer while chia provides fibre and
+  omega-3s — this simple blended pudding captures the essence of early autumn nourishment.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 104
+image:
+  file: images/odonnell/odonnell-104-028.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: pumpkin chia pudding
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,97 @@
+slug: beetroot-palya
+name: Beetroot Palya
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: South India
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- coconut oil
+- mustard seeds
+- asafetida (hing) powder (optional)
+- beets, peeled and finely diced
+- unsweetened shredded coconut
+- cinnamon powder
+- salt
+- water
+contains_allergens: []
+ingredients:
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: asafetida (hing) powder (optional)
+  qty: '1'
+  unit: pinch
+- item: beets, peeled and finely diced
+  qty: '2'
+  unit: cups
+- item: unsweetened shredded coconut
+  qty: '0.5'
+  unit: cup
+- item: cinnamon powder
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '0.5'
+  unit: cup
+steps:
+- Warm the coconut oil in a wide frying pan over medium heat; add the mustard seeds and optional hing,
+  placing a lid over the pan to contain the seeds as they pop.
+- After 2–3 minutes, once the popping slows, add the diced beets and shredded coconut and stir to coat
+  everything with the oil and spices.
+- Sprinkle in the cinnamon and salt, then pour in the water.
+- Stir once, cover the pan, reduce the heat to low, and simmer for 10 minutes until the beets are tender.
+- Serve alongside Lemon Rice or as a stand-alone side.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 140
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- detoxification
+- liver-detoxification
+- agni-digestive-fire
+one_line: Quickly fried diced beets with mustard seeds and shredded coconut in the South Indian palya
+  style.
+headnote: A vibrant side dish that balances summer heat with the grounding sweetness of beet and the cooling
+  dryness of coconut.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 227
+image:
+  file: images/odonnell/odonnell-228-122.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: BEETROOT PALYA
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

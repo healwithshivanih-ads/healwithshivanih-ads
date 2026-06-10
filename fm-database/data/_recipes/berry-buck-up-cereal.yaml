@@ -1,0 +1,89 @@
+slug: berry-buck-up-cereal
+name: Berry Buck-Up Cereal
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- pungent
+main_ingredients:
+- water
+- dry buckwheat, roasted or raw
+- everyday sweet spice mix
+- vanilla extract
+- strawberries, chopped
+- coconut oil
+- shredded coconut
+contains_allergens: []
+ingredients:
+- item: water
+  qty: '2'
+  unit: cups
+- item: dry buckwheat, roasted or raw
+  qty: '0.5'
+  unit: cup
+- item: Everyday Sweet Spice Mix
+  qty: 1-2
+  unit: tsp
+- item: vanilla extract
+  qty: '0.5'
+  unit: tsp
+- item: strawberries, chopped
+  qty: '1'
+  unit: cup
+- item: coconut oil
+  qty: '2'
+  unit: tsp
+- item: shredded coconut
+  qty: '0.25'
+  unit: cup
+steps:
+- Bring 2 cups of water to a boil in a medium saucepan.
+- Rinse the buckwheat through a strainer, then add it to the boiling water along with the spice mix and
+  vanilla. Lower heat, cover, and simmer for 15 minutes.
+- Remove from heat. Stir in the chopped strawberries and coconut oil, then fluff with a fork. Cover and
+  let rest for 5 minutes.
+- While the buckwheat rests, toast the shredded coconut in a small dry pan over low heat, stirring constantly,
+  until it begins to turn golden.
+- Spoon the cereal into two bowls and top with the toasted coconut.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 20
+approx_kcal_per_serving: 280
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+- detoxification
+one_line: Warming buckwheat porridge with strawberries and toasted coconut — light, energising, and kapha-balancing
+  for spring mornings.
+headnote: Buckwheat is a naturally gluten-free seed with dry, warming qualities that make it ideal for
+  spring — paired with astringent berries to help the body shake off winter heaviness.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 87
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: berry buck-up cereal
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

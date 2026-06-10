@@ -1,0 +1,88 @@
+slug: spicy-black-bean-hummus
+name: Spicy Black Bean Hummus
+meal_type:
+- snack
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Mexican-inspired
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- cooked black beans
+- salsa or chopped tomatoes
+- ground cumin
+- fresh lemon juice
+- apple cider vinegar
+- olive oil
+- salt
+contains_allergens: []
+ingredients:
+- item: cooked black beans
+  qty: '1'
+  unit: cup
+- item: salsa or chopped tomatoes
+  qty: '2'
+  unit: tbsp
+- item: ground cumin
+  qty: '0.25'
+  unit: tsp
+- item: fresh lemon juice
+  qty: '2'
+  unit: tsp
+- item: apple cider vinegar
+  qty: '1'
+  unit: tsp
+- item: olive oil
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: dash
+steps:
+- Combine all ingredients in a deep bowl.
+- Use a hand blender to puree everything together until smooth, or to whatever texture you prefer.
+- Serve in a bowl with vegetable dippers such as parboiled carrot sticks, baked sweet potato wedges, or
+  lettuce leaves. Optionally top with reserved salsa and a sprig of parsley.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 95
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+one_line: A quick blended black bean dip spiced with cumin, lemon, and apple cider vinegar — light, pungent,
+  and kapha-balancing.
+headnote: Black beans blended with the sharp bite of cumin and apple cider vinegar make a dip that delivers
+  the astringent and pungent tastes spring calls for, without the tahini heaviness of traditional hummus.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 133
+image:
+  file: images/odonnell/odonnell-133-055.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: spicy black bean hummus
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

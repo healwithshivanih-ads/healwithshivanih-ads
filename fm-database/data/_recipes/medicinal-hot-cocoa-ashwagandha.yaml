@@ -1,0 +1,88 @@
+slug: medicinal-hot-cocoa-ashwagandha
+name: Medicinal Hot Cocoa
+meal_type:
+- drink
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- bitter
+- pungent
+main_ingredients:
+- almond, sunflower, or cow's milk
+- maple syrup, coconut sugar, or raw cane sugar
+- cacao powder
+- cinnamon or everyday sweet spice mix
+- ashwagandha powder
+- cinnamon sticks or freshly grated nutmeg for garnish (optional)
+contains_allergens:
+- dairy
+- nuts
+ingredients:
+- item: almond, sunflower, or cow's milk
+  qty: '2'
+  unit: cups
+- item: maple syrup, coconut sugar, or raw cane sugar
+  qty: '1'
+  unit: tbsp
+- item: cacao powder
+  qty: 1/4
+  unit: cup
+- item: cinnamon or Everyday Sweet Spice Mix
+  qty: '1'
+  unit: tsp
+- item: ashwagandha powder
+  qty: '1'
+  unit: tsp
+- item: cinnamon sticks or freshly grated nutmeg for garnish (optional)
+  qty: ''
+  unit: ''
+steps:
+- Begin warming the milk in a medium saucepan over medium heat. Add the sweetener and cacao powder, then
+  whisk briskly until the mixture begins to steam.
+- Remove from heat and whisk in the cinnamon or spice mix and ashwagandha by hand or with a hand blender
+  for 30 seconds to create a smooth, foamy texture.
+- Pour into 2 mugs. Garnish with freshly grated nutmeg or a cinnamon stick if desired.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 5
+approx_kcal_per_serving: 175
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- adrenal-fatigue
+- immune-support
+- chronic-stress
+one_line: A warming mug of cacao and ashwagandha with sweet spices — a delicious way to take an adaptogenic
+  tonic on a cold autumn evening.
+headnote: Ashwagandha's malted, earthy quality dissolves beautifully into hot cacao, turning a simple
+  warming drink into a bone-nourishing, immunity-strengthening tonic that belongs in every autumn evening
+  routine.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 320
+image:
+  file: images/odonnell/odonnell-321-183.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: medicinal hot cocoa
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

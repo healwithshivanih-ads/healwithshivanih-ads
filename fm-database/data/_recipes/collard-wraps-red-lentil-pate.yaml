@@ -1,0 +1,105 @@
+slug: collard-wraps-red-lentil-pate
+name: Collard Wraps with Red Lentil Pâté
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- salty
+- astringent
+- sweet
+main_ingredients:
+- red lentils
+- water
+- winter spice mix
+- sesame tahini
+- fresh lemon juice
+- red miso dissolved in 1 tbsp hot water
+- large collard leaves
+- cooked basmati rice
+- shredded carrots, cabbage, or beets (optional)
+contains_allergens:
+- sesame
+ingredients:
+- item: red lentils
+  qty: '0.5'
+  unit: cup
+- item: water
+  qty: '0.75'
+  unit: cup
+- item: Winter Spice Mix
+  qty: '2.5'
+  unit: tsp
+- item: sesame tahini
+  qty: '1'
+  unit: tbsp
+- item: fresh lemon juice
+  qty: '1'
+  unit: juice of half lemon
+- item: red miso dissolved in 1 tbsp hot water
+  qty: '1.5'
+  unit: tbsp
+- item: large collard leaves
+  qty: '4'
+  unit: whole
+- item: cooked basmati rice
+  qty: '1'
+  unit: cup
+- item: shredded carrots, cabbage, or beets (optional)
+  qty: '0.5'
+  unit: cup
+steps:
+- Rinse and soak the lentils overnight, then drain and rinse again. Boil the water in a medium saucepan,
+  add the lentils and spice mix, cover, and simmer on low for 30 minutes until the lentils are soft and
+  the water is absorbed.
+- Cool the lentils slightly, then blend in the tahini, lemon juice, and dissolved miso. Use an immersion
+  blender for a creamy pâté or a fork for more texture. Adjust consistency with a little water if needed.
+- Trim the stems from the collard leaves; for sensitive digestion, also cut out the thick central rib.
+  Steam the leaves in a covered pot for 3 minutes until bright green. Remove with tongs — do not overcook.
+- 'To assemble each wrap: lay a steamed leaf flat, spread 1/4 cup lentil pâté and 1/4 cup rice down the
+  centre, sprinkle on shredded vegetables if using, fold up the short ends, and roll like a burrito.'
+servings: '4'
+prep_time_min: 15
+cook_time_min: 35
+approx_kcal_per_serving: 200
+kcal_is_estimate: true
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- detoxification
+one_line: Steamed collard leaves rolled around a creamy spiced red lentil pâté and basmati rice — a nourishing
+  and portable winter lunch.
+headnote: Collard leaves are sturdy enough to hold a generous filling and one of the few dark greens at
+  their best in winter; the miso and tahini pâté makes these wraps satisfying and mineral-dense.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 133
+image:
+  file: images/odonnell/odonnell-133-055.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: collard wraps with red lentil pâté
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

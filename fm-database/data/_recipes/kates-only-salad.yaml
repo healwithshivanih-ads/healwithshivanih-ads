@@ -1,0 +1,90 @@
+slug: kates-only-salad
+name: Kate's Only Salad
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- bitter
+- astringent
+- sweet
+main_ingredients:
+- fennel bulb
+- romaine or red leaf lettuce, chopped (or ½ lb mesclun greens)
+- olive, sunflower, or grapeseed oil
+- fine balsamic vinegar
+- chèvre (goat cheese)
+- chopped almonds or toasted sunflower seeds
+- dried cranberries
+contains_allergens:
+- dairy
+- nuts
+ingredients:
+- item: fennel bulb
+  qty: '1'
+  unit: whole
+- item: romaine or red leaf lettuce, chopped (or ½ lb mesclun greens)
+  qty: '1'
+  unit: head
+- item: olive, sunflower, or grapeseed oil
+  qty: '2'
+  unit: tbsp
+- item: fine balsamic vinegar
+  qty: '2'
+  unit: tbsp
+- item: chèvre (goat cheese)
+  qty: '0.25'
+  unit: cup
+- item: chopped almonds or toasted sunflower seeds
+  qty: '0.25'
+  unit: cup
+- item: dried cranberries
+  qty: '0.25'
+  unit: cup
+steps:
+- Trim the woody tops from the fennel bulb and cut the bulb into thin slivers with a sharp knife.
+- In a large salad bowl, combine the fennel slivers with the chopped lettuce or greens.
+- Divide the greens between 2 wide bowls; drizzle 1 tbsp oil and 1 tbsp balsamic over each portion.
+- Crumble 2 tbsp of chèvre over each salad (if the cheese is very soft, chill it briefly in the freezer
+  first).
+- Finish each bowl with a scatter of chopped almonds or sunflower seeds and dried cranberries.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 260
+kcal_is_estimate: true
+protein_g: 7
+good_for:
+- anti-inflammatory-diet
+- phytonutrient-dense-diet
+one_line: Shaved fennel and salad greens with goat cheese, cranberries, and nuts — a cooling, colour-rich
+  summer salad.
+headnote: Fennel's cooling sweetness and the astringent tang of dried cranberries team up to reduce summer
+  irritability, while creamy chèvre rounds out this crowd-pleasing raw salad.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: null
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: kate's only salad
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

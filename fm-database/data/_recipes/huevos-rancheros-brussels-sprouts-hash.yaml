@@ -1,0 +1,154 @@
+slug: huevos-rancheros-brussels-sprouts-hash
+name: Huevos Rancheros and Brussels Sprouts Hash
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Mexican-Ayurvedic
+seasons:
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sour
+- salty
+main_ingredients:
+- diced red onion
+- garlic clove, diced (optional)
+- ghee
+- chili powder
+- cumin powder
+- coriander powder
+- paprika
+- cayenne powder
+- salt
+- chopped tomatoes
+- chopped celery
+- chopped carrots
+- vegetable broth
+- brussels sprouts
+- ghee (for hash)
+- salt (for hash)
+- eggs or cooked black beans
+- ghee (for eggs)
+- turmeric powder (for eggs)
+- corn tortillas
+- fresh cilantro, chopped (optional)
+contains_allergens:
+- egg
+- dairy
+- gluten
+ingredients:
+- item: diced red onion
+  qty: '0.5'
+  unit: cup
+- item: garlic clove, diced (optional)
+  qty: '0.5'
+  unit: clove
+- item: ghee
+  qty: '2'
+  unit: tsp
+- item: chili powder
+  qty: '1'
+  unit: tsp
+- item: cumin powder
+  qty: '1'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: paprika
+  qty: '1'
+  unit: heaping tsp
+- item: cayenne powder
+  qty: '1'
+  unit: dash
+- item: salt
+  qty: '0.5'
+  unit: tsp
+- item: chopped tomatoes
+  qty: '1'
+  unit: cup
+- item: chopped celery
+  qty: '1'
+  unit: cup
+- item: chopped carrots
+  qty: '1'
+  unit: cup
+- item: vegetable broth
+  qty: '1'
+  unit: cup
+- item: Brussels sprouts
+  qty: '2'
+  unit: cups
+- item: ghee (for hash)
+  qty: '1'
+  unit: tbsp
+- item: salt (for hash)
+  qty: '1'
+  unit: dash
+- item: eggs or cooked black beans
+  qty: '4'
+  unit: eggs or 1 cup beans
+- item: ghee (for eggs)
+  qty: '1'
+  unit: tsp
+- item: turmeric powder (for eggs)
+  qty: '1'
+  unit: tsp
+- item: corn tortillas
+  qty: '4'
+  unit: whole
+- item: fresh cilantro, chopped (optional)
+  qty: '1'
+  unit: handful
+steps:
+- 'Make the ranchero sauce: sauté onion and garlic in ghee over medium heat until softened, then add all
+  the spices and stir for 30 seconds.'
+- Add tomatoes, celery, and carrots, stir for a minute, then pour in the broth. Simmer uncovered for 30
+  minutes, then briefly blend with an immersion blender to a chunky sauce. Keep warm.
+- 'Make the hash: grate Brussels sprouts on the large holes of a box grater or pulse in a food processor.
+  Warm 1 tbsp ghee in a large frying pan, add the shredded sprouts with a dash of salt, and stir-fry until
+  browned to your liking. Lay the tortillas over the hash, cover the pan, and let them warm through.'
+- 'For eggs: heat 1 tsp ghee in a frying pan, crack the eggs in, sprinkle with turmeric, and fry until
+  the yolks are just beginning to set. For beans: warm them with 1 tsp ghee in a saucepan and mash smooth
+  or chunky.'
+- To plate, place 2 warm tortillas on each plate, top with eggs or beans, spoon ranchero sauce over, and
+  serve Brussels sprouts hash alongside. Garnish with cilantro if desired.
+servings: '2'
+prep_time_min: 20
+cook_time_min: 40
+approx_kcal_per_serving: 480
+kcal_is_estimate: true
+protein_g: 22
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+- gut-microbiome
+- inflammation
+one_line: 'A warming Ayurvedic take on a Mexican-style brunch: spiced tomato sauce, turmeric eggs, and
+  crispy Brussels sprouts on corn tortillas.'
+headnote: Choose eggs or beans for the protein component — this hearty weekend brunch applies Ayurvedic
+  food-combining principles to a favourite comfort dish.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 449
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: huevos rancheros and brussels sprouts hash
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

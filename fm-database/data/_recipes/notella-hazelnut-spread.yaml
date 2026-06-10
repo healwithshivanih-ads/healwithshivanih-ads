@@ -1,0 +1,90 @@
+slug: notella-hazelnut-spread
+name: Notella Hazelnut Spread
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha: []
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- raw almonds
+- raw hazelnuts
+- finely ground cacao powder
+- coconut milk
+- coconut sugar
+- pure vanilla extract
+- salt
+contains_allergens:
+- nuts
+ingredients:
+- item: raw almonds
+  qty: '0.75'
+  unit: cup
+- item: raw hazelnuts
+  qty: '0.75'
+  unit: cup
+- item: finely ground cacao powder
+  qty: '0.5'
+  unit: cup
+- item: coconut milk
+  qty: '0.5'
+  unit: cup
+- item: coconut sugar
+  qty: '0.5'
+  unit: cup
+- item: pure vanilla extract
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: pinch
+steps:
+- Soak the raw almonds in water for 6–8 hours, then drain.
+- Preheat the oven to 350°F. Spread the soaked almonds and raw hazelnuts across a large baking pan and
+  roast for 10 minutes, shaking the pan a few times.
+- While the nuts are still warm, wrap them in a slightly damp kitchen towel and rub them between your
+  palms to loosen and remove the skins. Some residual skin is fine.
+- Process the skinned nuts in a food processor until they form a uniform powder.
+- Add the cacao powder, coconut milk, coconut sugar, vanilla, and salt. Process again until the mixture
+  is smooth and creamy.
+- Transfer to a 16-ounce glass jar and refrigerate.
+servings: '32'
+prep_time_min: 480
+cook_time_min: 10
+approx_kcal_per_serving: 70
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- agni-digestive-fire
+one_line: A lighter homemade chocolate-nut spread made from soaked almonds and hazelnuts with cacao and
+  coconut milk — use sparingly in spring, one tablespoon at a time.
+headnote: Soaking and roasting the nuts before processing makes this chocolate spread much easier to digest
+  than commercial versions, though its heating and slightly oily nature means enjoying it mindfully in
+  the kapha season.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 118
+image:
+  file: images/odonnell/odonnell-119-044.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: notella hazelnut spread
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,80 @@
+slug: fruit-salad-citrus
+name: Fruit Salad Trio — Citrus Salad
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- sour
+- sweet
+- astringent
+main_ingredients:
+- orange, sectioned and chopped
+- grapefruit, sectioned and chopped
+- dried pineapple rings, diced
+- coconut water
+- fresh lime juice
+contains_allergens: []
+ingredients:
+- item: orange, sectioned and chopped
+  qty: '1'
+  unit: whole
+- item: grapefruit, sectioned and chopped
+  qty: '0.5'
+  unit: whole
+- item: dried pineapple rings, diced
+  qty: '2'
+  unit: rings
+- item: coconut water
+  qty: '2'
+  unit: tbsp
+- item: fresh lime juice
+  qty: '1'
+  unit: squeeze
+steps:
+- Combine all the fruits in a small bowl with the coconut water.
+- Squeeze fresh lime juice over the top.
+- Allow to sit for 20–30 minutes so the flavours mingle, then serve as a standalone meal.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 100
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- constipation
+- agni-digestive-fire
+- detoxification
+one_line: A bright mix of fresh and dried citrus with coconut water — a warming, cleansing morning bowl.
+headnote: Mixed citrus salads bring a brightening, sour quality best suited to winter but acceptable in
+  small amounts to energise a summer morning when digestion needs a nudge.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 252
+image:
+  file: images/odonnell/odonnell-253-140.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: fruit salad trio
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

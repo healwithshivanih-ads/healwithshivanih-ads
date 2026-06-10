@@ -1,0 +1,78 @@
+slug: cardamom-limeade
+name: Cardamom Limeade
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- sour
+- sweet
+- astringent
+main_ingredients:
+- water
+- lime juice (juice of 2–3 limes)
+- cardamom powder
+- coconut sugar
+- hot water (to dissolve the sugar)
+contains_allergens: []
+ingredients:
+- item: water
+  qty: '3'
+  unit: cups
+- item: lime juice (juice of 2–3 limes)
+  qty: '0.25'
+  unit: cup
+- item: cardamom powder
+  qty: '0.25'
+  unit: tsp
+- item: coconut sugar
+  qty: '1'
+  unit: tbsp
+- item: hot water (to dissolve the sugar)
+  qty: '1'
+  unit: tbsp
+steps:
+- Dissolve the coconut sugar in the tablespoon of hot water and let it cool briefly.
+- Combine all the ingredients — water, lime juice, cardamom powder, and dissolved sugar — in a small pitcher
+  or 32-ounce jar and stir well.
+- Serve in 2 tall glasses over 2 ice cubes per glass.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 0
+approx_kcal_per_serving: 35
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- acid-reflux-and-cardiac-sphincter-weakness
+- agni-digestive-fire
+one_line: A cooling, lightly sweetened lime drink with cardamom — a pitta-pacifying afternoon refresher
+  that eases acid stomach.
+headnote: Cardamom neutralises stomach acid while lime adds a refreshing brightness, making this a smarter
+  afternoon pick-me-up than coffee for anyone prone to heartburn.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 32
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: cardamom limeade
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

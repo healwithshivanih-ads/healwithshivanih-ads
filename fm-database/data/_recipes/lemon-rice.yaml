@@ -1,0 +1,118 @@
+slug: lemon-rice
+name: Lemon Rice
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: South India
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sour
+- sweet
+- astringent
+main_ingredients:
+- raw basmati rice
+- coconut oil
+- mustard seeds
+- peanuts
+- cashews
+- asafetida (hing)
+- turmeric powder
+- fresh gingerroot, grated
+- dried red chilies
+- lemon juice (from 1 small or ½ large lemon)
+- fresh cilantro leaves, roughly chopped
+- sea salt
+contains_allergens:
+- peanut
+- nuts
+ingredients:
+- item: raw basmati rice
+  qty: '1'
+  unit: cup
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: peanuts
+  qty: '1'
+  unit: tbsp
+- item: cashews
+  qty: '2'
+  unit: tbsp
+- item: asafetida (hing)
+  qty: '0.25'
+  unit: tsp
+- item: turmeric powder
+  qty: '0.5'
+  unit: tsp
+- item: fresh gingerroot, grated
+  qty: '0.5'
+  unit: inch piece
+- item: dried red chilies
+  qty: 2-3
+  unit: whole
+- item: lemon juice (from 1 small or ½ large lemon)
+  qty: '1'
+  unit: lemon
+- item: fresh cilantro leaves, roughly chopped
+  qty: '1'
+  unit: handful
+- item: sea salt
+  qty: '1'
+  unit: to taste
+steps:
+- Cook the basmati rice in 2 cups of boiling water over low heat, covered, for 10–15 minutes until the
+  water is fully absorbed; spread out to cool so the grains stay separate. Day-old leftover rice works
+  well.
+- Heat the coconut oil in a heavy skillet over medium heat; when hot, add the mustard seeds and cover
+  the pan with a lid while they pop.
+- As soon as the popping settles, add the peanuts, cashews, hing, turmeric, grated ginger, and dried chilies;
+  sauté, stirring, until the nuts begin to turn golden, then remove from the heat.
+- Tip the cooled rice into a large serving bowl; pour in the lemon juice, scatter over the cilantro, and
+  spoon in the spiced nut mixture.
+- Mix everything together gently with your hands to avoid breaking the grains; season with salt and serve
+  at room temperature.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 20
+approx_kcal_per_serving: 380
+kcal_is_estimate: true
+protein_g: 8
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- ayurvedic-elemental-design-doshas
+one_line: A classic South Indian room-temperature rice tossed with mustard-tempered spices, fresh lemon,
+  and crunchy nuts.
+headnote: Ideal for a hot day when the kitchen feels like too much work — this tangy rice dish comes together
+  in minutes if you cook the rice ahead, and it travels well for an outdoor picnic.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 227
+image:
+  file: images/odonnell/odonnell-228-122.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: LEMON RICE
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

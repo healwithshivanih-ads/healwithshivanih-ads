@@ -1,0 +1,94 @@
+slug: the-beet-queen
+name: The Beet Queen
+meal_type:
+- breakfast
+- snack
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- bitter
+main_ingredients:
+- chia seeds (optional)
+- apple, cored and quartered
+- beet, peeled and coarsely chopped
+- kale, swiss chard leaves or baby spinach
+- lemon juice
+- water or coconut water
+- fresh parsley leaves (no stems)
+contains_allergens: []
+ingredients:
+- item: chia seeds (optional)
+  qty: '1'
+  unit: tbsp
+- item: apple, cored and quartered
+  qty: '1'
+  unit: whole
+- item: beet, peeled and coarsely chopped
+  qty: '0.5'
+  unit: whole
+- item: kale, Swiss chard leaves or baby spinach
+  qty: 2-3
+  unit: leaves or handful
+- item: lemon juice
+  qty: '0.25'
+  unit: lemon
+- item: water or coconut water
+  qty: '1'
+  unit: cup
+- item: fresh parsley leaves (no stems)
+  qty: '1'
+  unit: handful
+steps:
+- If using chia seeds, soak them in a small bowl of water for 5 minutes.
+- Layer the apple pieces into the blender carafe first, then add the beet, lemon juice, leafy greens (not
+  the parsley yet), and the soaked chia seeds if using.
+- Pour in the water or coconut water and pulse for 30 seconds, then blend on high speed.
+- Drop the parsley leaves in through the top while the blender is running; stop and stir if needed to
+  work in any stubborn solids.
+- Blend until completely smooth, then pour into 2 glasses or save half in a sealed jar.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 0
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- detoxification
+- constipation
+- agni-digestive-fire
+one_line: A vibrant blended drink of apple, beet, leafy greens, and parsley that supports gentle cleansing
+  and bowel regularity.
+headnote: This deep-hued summer blend harnesses the bitter, astringent qualities of greens and beet to
+  cool the blood and keep digestion moving.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 219
+image:
+  file: images/odonnell/odonnell-220-117.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: the beet queen
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

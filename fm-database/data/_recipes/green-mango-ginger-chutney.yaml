@@ -1,0 +1,85 @@
+slug: green-mango-ginger-chutney
+name: Green Mango Ginger Chutney
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- sweet
+- pungent
+main_ingredients:
+- green mangoes
+- small green chilies or cayenne pepper (optional heat)
+- fresh gingerroot
+- apple cider vinegar
+- dehydrated sugarcane
+- cinnamon, cumin, or coriander powder (optional neutral spices)
+contains_allergens: []
+ingredients:
+- item: green mangoes
+  qty: '4'
+  unit: whole
+- item: small green chilies or cayenne pepper (optional heat)
+  qty: '2'
+  unit: chilies (or 1/4 tsp cayenne)
+- item: fresh gingerroot
+  qty: '4'
+  unit: inch piece
+- item: apple cider vinegar
+  qty: '0.5'
+  unit: cup
+- item: dehydrated sugarcane
+  qty: '0.75'
+  unit: cup
+- item: cinnamon, cumin, or coriander powder (optional neutral spices)
+  qty: '1'
+  unit: tsp
+steps:
+- Peel and chop the green mangoes into 1-inch cubes. Finely mince the chilies (removing seeds for less
+  heat), and peel and chop the ginger into thin 1/2-inch pieces.
+- Combine all ingredients in a large saucepan and simmer over low heat, uncovered, until the mixture reduces
+  to a jam-like consistency — about 1 hour. Alternatively, cook overnight in a slow cooker.
+- Cool, then transfer to a 16-ounce mason jar and refrigerate. Use within a few weeks.
+servings: 16 oz
+prep_time_min: 20
+cook_time_min: 60
+approx_kcal_per_serving: 50
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- liver-detoxification
+one_line: A tangy slow-cooked green mango and ginger chutney — a versatile winter condiment with a sweet-sour-spicy
+  punch.
+headnote: Use firm, fully green mangoes that are still tart; this chutney keeps in the fridge for weeks
+  and adds the sour, warming qualities that Ayurveda recommends in late winter.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 386
+image:
+  file: images/odonnell/odonnell-387-231.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: green mango ginger chutney
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

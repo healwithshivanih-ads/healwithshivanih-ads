@@ -1,0 +1,79 @@
+slug: fig-cardamom-oat-cup
+name: Fig Cardamom Oat Cup
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- rolled oats
+- dried figs, quartered
+- maple syrup
+- ground cardamom
+- almond milk
+contains_allergens:
+- nuts
+ingredients:
+- item: rolled oats
+  qty: 1/3
+  unit: cup
+- item: dried figs, quartered
+  qty: '3'
+  unit: ''
+- item: maple syrup
+  qty: '1'
+  unit: tsp
+- item: ground cardamom
+  qty: 1/8
+  unit: tsp
+- item: almond milk
+  qty: 1/2
+  unit: cup
+steps:
+- Combine oats, figs, maple syrup, and cardamom in a clean half-pint (8 oz) glass jar.
+- Pour almond milk over the top last, seal the jar with a lid, and shake well.
+- Allow to soak at room temperature for several hours, or refrigerate overnight and bring to room temperature
+  before eating.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 270
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- constipation
+- digestion-and-nutrient-absorption
+one_line: An overnight oat jar with figs and cardamom — grounding, no-cook, and ready to go on busy autumn
+  mornings.
+headnote: When mornings are rushed, this make-ahead oat jar brings the warmth and grounding of sweet figs
+  and spiced almond milk — nourishing vata without sacrificing ease.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 277
+image:
+  file: images/odonnell/odonnell-278-154.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: fig cardamom oat cup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

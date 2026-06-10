@@ -1,0 +1,96 @@
+slug: cilantro-mint-chutney
+name: Cilantro Mint Chutney
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: India
+seasons:
+- summer
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- fresh lemon juice
+- purified water
+- fresh cilantro, 1 bunch
+- fresh mint, 1 bunch
+- unsweetened dried coconut
+- fresh gingerroot, peeled and coarsely chopped
+- raw honey (optional)
+- sea salt
+- freshly ground black pepper
+contains_allergens: []
+ingredients:
+- item: fresh lemon juice
+  qty: '0.5'
+  unit: cup
+- item: purified water
+  qty: '0.25'
+  unit: cup
+- item: fresh cilantro, 1 bunch
+  qty: '1'
+  unit: bunch
+- item: fresh mint, 1 bunch
+  qty: '1'
+  unit: bunch
+- item: unsweetened dried coconut
+  qty: '0.5'
+  unit: cup
+- item: fresh gingerroot, peeled and coarsely chopped
+  qty: '0.25'
+  unit: cup
+- item: raw honey (optional)
+  qty: '2'
+  unit: tsp
+- item: sea salt
+  qty: '1'
+  unit: tsp
+- item: freshly ground black pepper
+  qty: '0.5'
+  unit: tsp
+steps:
+- In a food processor or blender, process the lemon juice, water, cilantro, and mint until the herbs are
+  coarsely chopped.
+- Add the dried coconut, ginger, optional honey, salt, and pepper, then blend until the chutney is completely
+  smooth.
+- Store in a covered container in the refrigerator for up to 1 week.
+servings: '16'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 25
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- anti-inflammatory-diet
+- digestion-and-nutrient-absorption
+one_line: A blended cilantro and mint chutney with coconut and ginger — the quintessential cool, sattvic
+  summer condiment.
+headnote: Fresh herbs combined with coconut and ginger create a chutney that cools without chilling, adding
+  bright flavour and digestive support to dals, rice dishes, and dosas alike.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 86
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: cilantro mint chutney
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
