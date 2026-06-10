@@ -2365,7 +2365,8 @@ def _build_complete_shopping_list_html(
             buy_html = f'<a href="{buy_link_override}" target="_blank" rel="noopener noreferrer">Buy ↗</a>'
             badge = "Custom"
         elif pending_product_link:
-            buy_html = '<span class="buy-badge buy-badge-iherb">Link from Shivani</span>'
+            _pending_coach_name = (_ACTIVE_CLIENT.get("assigned_coach") or "Shivani") if _ACTIVE_CLIENT else "Shivani"
+            buy_html = f'<span class="buy-badge buy-badge-iherb">Link from {_pending_coach_name}</span>'
             badge = "Pending"
         elif link_info:
             _, url = link_info
@@ -3205,7 +3206,8 @@ def _build_supplement_buy_list_html(supplements: list[dict]) -> str:
             )
             badge = f'<span class="buy-src">{_buy_source_label(buy_link_override)}</span>'
         elif pending_product_link:
-            button = '<span class="buy-here buy-here--pending">link from Shivani</span>'
+            _pending_coach_name = (_ACTIVE_CLIENT.get("assigned_coach") or "Shivani") if _ACTIVE_CLIENT else "Shivani"
+            button = f'<span class="buy-here buy-here--pending">link from {_pending_coach_name}</span>'
         elif link_info:
             _, url = link_info
             button = (
@@ -3279,7 +3281,8 @@ def _build_supplement_schedule_html(
             buy_html = f'<a href="{buy_link_override}" target="_blank" rel="noopener noreferrer">Buy ↗</a>'
             buy_badge = "Custom link"
         elif pending_product_link:
-            buy_html = '<span class="buy-badge buy-badge-iherb">Link from Shivani</span>'
+            _pending_coach_name = (_ACTIVE_CLIENT.get("assigned_coach") or "Shivani") if _ACTIVE_CLIENT else "Shivani"
+            buy_html = f'<span class="buy-badge buy-badge-iherb">Link from {_pending_coach_name}</span>'
             buy_badge = "Pending"
         elif link_info:
             product_name, url = link_info
@@ -4636,8 +4639,9 @@ MOVEMENT & WELLNESS:
     # week's menu reflects it WITHOUT needing a full reassessment.
     recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
+    coach_name = client.get("assigned_coach") or "Shivani"
     prompt = f"""You are writing a warm, friendly {plan_weeks}-week MEAL PLAN document for a client.
-The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
+The coach ({coach_name}) has prepared a structured plan. Turn the nutrition data into a beautiful, practical meal plan the client can actually USE.
 
 {top_of_mind}
 {cycle}
@@ -4716,9 +4720,9 @@ DOCUMENT STRUCTURE:
 
 7. **Recipe Appendix** — `## ✦ Recipe Appendix` — full recipes for every ✦ dish
 
-8. **Sign-off** — TWO LINES ONLY: "**With warmth,**" / "**Shivani** 🌿".
+8. **Sign-off** — TWO LINES ONLY: "**With warmth,**" / "**{coach_name}** 🌿".
    Do NOT add another "A note from your coach" section — the entire
-   letter is already written FROM Shivani TO the client, so a closing
+   letter is already written FROM {coach_name} TO the client, so a closing
    note would just repeat what's above. End cleanly.
 
 RULES:
@@ -4885,9 +4889,10 @@ def _build_prompt_lifestyle_guide(plan: dict, client: dict, coach_notes: str) ->
     # lifestyle guide reflects the latest clinical state.
     recent_voice = _recent_client_voice_block(client.get("client_id") or "")
 
+    coach_name = client.get("assigned_coach") or "Shivani"
     prompt = f"""You are writing a warm, practical {plan_weeks}-week COACHING PLAN for a client — covering lifestyle, learning, labs, and tracking.
 This document is the companion to the meal plan and supplement plan. It covers everything EXCEPT food and supplements.
-The coach (Shivani Hariharan) has prepared the structured data below.
+The coach ({coach_name}) has prepared the structured data below.
 
 {top_of_mind}
 {cycle}
@@ -4978,8 +4983,8 @@ DOCUMENT STRUCTURE:
 8. **Your Check-In Questions** — `## 💬 Your Check-In Questions`
    Questions {first_name} should reflect on before each coaching session. Include both provided recheck questions and 3–4 general wellbeing prompts.
 
-9. **Sign-off** — TWO LINES: "**With warmth,**" / "**Shivani** 🌿".
-   No separate "A note from coach" section — letter is already FROM her.
+9. **Sign-off** — TWO LINES: "**With warmth,**" / "**{coach_name}** 🌿".
+   No separate "A note from coach" section — letter is already FROM {coach_name}.
 
 RULES:
 - NO meal plan content (see separate meal plan document)
@@ -5018,6 +5023,7 @@ def _build_prompt_exercise_plan(plan: dict, client: dict, coach_notes: str) -> s
     coach_notes_block = _coach_notes_block(coach_notes)
 
     top_of_mind = _top_of_mind_block(client, plan)
+    coach_name = client.get("assigned_coach") or "Shivani"
     cycle = _cycle_block(client)
     attached_protocol = _attached_protocol_block(plan)
     # Pull recent check-ins / coach notes / inbound client voice so the
@@ -5104,8 +5110,8 @@ WHAT TO PRODUCE — markdown document with these sections (in order):
    weight), session RPE drift over weeks, resting HR, sleep impact,
    mood/energy on training vs rest days. Frame as 'notice', not 'log'.
 
-10. **Sign-off** — TWO LINES: "**With warmth,**" / "**Shivani** 🌿".
-    No separate "A note from coach" — letter is already FROM her.
+10. **Sign-off** — TWO LINES: "**With warmth,**" / "**{coach_name}** 🌿".
+    No separate "A note from coach" — letter is already FROM {coach_name}.
 
 WRITING RULES:
 - Indian-context exercise vocabulary where it fits: surya namaskar,
@@ -5304,6 +5310,7 @@ def _build_prompt_meal_plan_phase(
     """
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
     dosha_food_rules = _build_dosha_food_rules(plan, client)
+    coach_name = client.get("assigned_coach") or "Shivani"
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -5862,8 +5869,8 @@ DOCUMENT STRUCTURE — keep TIGHT, no extra sections:
 
 {body_instructions}
 
-10. **Sign-off** — TWO LINES: "**With warmth,**" / "**Shivani** 🌿".
-    No separate "A note from coach" section — letter is already FROM her.
+10. **Sign-off** — TWO LINES: "**With warmth,**" / "**{coach_name}** 🌿".
+    No separate "A note from coach" section — letter is already FROM {coach_name}.
 
 RULES:
 - {first_name}'s supplement routine continues from the initial letter —
@@ -5982,6 +5989,7 @@ def _build_prompt_inner(plan: dict, client: dict, weight_loss: dict | None = Non
     # have backslashes inside f-string expressions). NB: this string gets
     # interpolated, then the AI uses it as the prompt for section 3.
 
+    coach_name = client.get("assigned_coach") or "Shivani"
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -6308,7 +6316,7 @@ MOVEMENT & WELLNESS:
             "- 4–6 more items specific to this client's protocol — name them, brief reason each "
             "(\"sugar — drives the 3pm energy crash you mentioned\")\n\n"
             "## 💡 Coach's note on flexibility\n"
-            "One warm paragraph from Shivani: \"" + first_name + ", I've kept the day-to-day food flexible "
+            f"One warm paragraph from {coach_name}: \"" + first_name + ", I've kept the day-to-day food flexible "
             "because you wanted that. If you ever change your mind and want a structured daily breakdown — "
             "say the word, I'll send one through.\""
         )
@@ -6334,7 +6342,7 @@ MOVEMENT & WELLNESS:
         weeks_3_4_calorie_line = ""
 
     prompt = f"""You are writing a warm, friendly, practical {plan_weeks}-week wellness plan letter for a client.
-The coach (Shivani Hariharan, a functional medicine health coach) has prepared this structured plan.
+The coach ({coach_name}, a functional medicine health coach) has prepared this structured plan.
 Your job is to turn the coach's structured data into a beautiful, easy-to-read document the client can actually USE.
 
 {top_of_mind}
@@ -6448,7 +6456,7 @@ at the placeholders. Write only the narrative + the meal tables.
    > *Your recipe pack — full ingredients, method, and tips for every ✦ dish in this meal plan — is at a separate link your coach is sending you over WhatsApp. Bookmark it on your phone for easy access in the kitchen.*
    {"DO NOT write any ✦ recipe details, ingredient lists, or methods in this letter. Recipes live on a separate page (linked from the meal plan ✦ symbols once the letter is published)." if include_daily_meal_plan else "No meal plan in this letter (per client preference) → no recipe pack needed. Skip this sub-block."}
 
-7. **Sign-off** — 2–4 warm closing sentences, then TWO LINES ONLY: "**With warmth,**" / "**Shivani** 🌿". No separate "A note from Shivani" heading — the whole letter is already FROM Shivani. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint.
+7. **Sign-off** — 2–4 warm closing sentences, then TWO LINES ONLY: "**With warmth,**" / "**{coach_name}** 🌿". No separate "A note from {coach_name}" heading — the whole letter is already FROM {coach_name}. Remind {first_name} this is a {plan_weeks}-week journey, not a sprint.
 
 ---
 
@@ -6596,6 +6604,8 @@ def _validate_letter_specificity(
     # edge-case client/plan shapes (e.g. an exercise_plan run where the
     # plan field shapes differ), and the validator MUST never crash the
     # main letter render — its only job is to QA a letter we already have.
+    coach_name = client.get("assigned_coach") or "Shivani"
+
     try:
         top_of_mind = _top_of_mind_block(client, plan).strip()
         if not top_of_mind:
@@ -6611,7 +6621,7 @@ def _validate_letter_specificity(
         )
         return markdown, []
 
-    SYSTEM = """You are a client-specificity QA assistant for a Functional Medicine coach.
+    SYSTEM = f"""You are a client-specificity QA assistant for a Functional Medicine coach.
 Your only job: catch GENERIC coaching tips in a client letter and rewrite them
 so they reference at least one specific item the client told us about themselves.
 
@@ -6644,13 +6654,13 @@ REWRITE RULES (only for tips scored < 3):
     DELETE it rather than ship a generic version.
 
 VOICE — CRITICAL:
-  The letter is written and signed by Shivani Hariharan (the coach) IN
+  The letter is written and signed by {coach_name} (the coach) IN
   FIRST PERSON to the client. Your rewrites MUST stay in first person —
   use 'I', 'me', 'my', 'we', 'our'. NEVER introduce phrases like
-  "check with Shivani", "Shivani recommends", "your coach has advised",
-  "ask Shivani before", or any other third-person reference to the
-  coach. The coach IS the author. Saying "check with Shivani" in a
-  letter signed by Shivani is nonsensical to the client. If a tip
+  "check with {coach_name}", "{coach_name} recommends", "your coach has advised",
+  "ask {coach_name} before", or any other third-person reference to the
+  coach. The coach IS the author. Saying "check with {coach_name}" in a
+  letter signed by {coach_name} is nonsensical to the client. If a tip
   needs a "check with the coach" caveat, write "let me know before
   you start this" or "message me first" instead.
 
@@ -6893,6 +6903,7 @@ def main() -> int:
     # skipped in favour of the next-ranked alternative.
     global _ACTIVE_CLIENT
     _ACTIVE_CLIENT = client
+    coach_name = client.get("assigned_coach") or "Shivani"
 
     # Weight-loss fallback: when the caller didn't pass a weight_loss config
     # (e.g. phase-letter generation, which doesn't re-ask the weight-loss
@@ -7196,17 +7207,17 @@ def main() -> int:
                 model="claude-sonnet-4-6",
                 max_tokens=16000,
                 system=(
-                    "You are Shivani Hariharan — a Functional Medicine health coach in "
+                    f"You are {coach_name} — a Functional Medicine health coach in "
                     "India — writing a personal letter TO your client. Write entirely "
                     "in FIRST PERSON. Use 'I', 'me', 'my', 'we', and 'our' (you and the "
                     "client together on this journey). Never refer to yourself as "
-                    "'Shivani' or 'your coach' in the third person — the letter is "
-                    "signed by you, so saying 'check with Shivani' or 'Shivani recommends' "
+                    f"'{coach_name}' or 'your coach' in the third person — the letter is "
+                    f"signed by you, so saying 'check with {coach_name}' or '{coach_name} recommends' "
                     "would make zero sense to the reader. The ONLY exception is when "
                     "you reference something the client and you discussed in a past "
                     "session and you're recalling it ('the wall analogy I shared with "
                     "you in our first session') — even then, prefer 'I shared' over "
-                    "'Shivani shared'. "
+                    f"'{coach_name} shared'. "
                     "\n\nTONE — IMPORTANT: write to an intelligent adult. Be warm, "
                     "direct, and respectful — like a competent friend who happens to "
                     "be your coach. AVOID:\n"

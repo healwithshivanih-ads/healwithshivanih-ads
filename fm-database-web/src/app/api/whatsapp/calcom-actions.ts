@@ -204,7 +204,7 @@ export async function sendCalcomLinkTemplateAction(
   const renderedBody =
     `Hi ${firstName}, ready to book your next session? ` +
     `You can grab a time that works for you here: ${url} ` +
-    `— Shivani Hari / Your Functional Health Coach`;
+    `— ${process.env.COACH_NAME || "Shivani Hari"} / Your Functional Health Coach`;
 
   const res = await sendWhatsAppAction(phone, "fm_book_session_v1", [firstName, url]);
   if (!res.ok) return { ok: false, error: res.error || "Send failed" };

@@ -339,7 +339,7 @@ async function fireOnboardingKit(
         `Two things to do this week to get us started:\n\n` +
         `1) Your full intake form (saves as you go): ${result.intake_url}\n\n` +
         `2) Book your programme intake session: ${result.calcom_url}\n\n` +
-        `Message me here if anything's unclear.\n\n— Shivani`;
+        `Message me here if anything's unclear.\n\n— ${(identity as { assigned_coach?: string }).assigned_coach || process.env.COACH_NAME || "Shivani"}`;
       const wa = await sendAndRecordOutboundAction({
         phone: identity.phone_e164,
         clientId,

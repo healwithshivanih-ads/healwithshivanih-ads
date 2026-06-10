@@ -284,6 +284,7 @@ class Client(BaseModel):
 
     client_id: str
     display_name: str = ""              # for coach's reference; can be pseudonym
+    assigned_coach: str = ""            # coach name, e.g. "Shivani" — populates client-facing copy dynamically
     intake_date: date
     date_of_birth: Optional[date] = None   # preferred; used to compute exact age
     age_band: str = ""                  # legacy / derived from DOB; kept for backward compat

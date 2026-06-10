@@ -579,6 +579,10 @@ export async function sendCheckinNudgeAction(
   const firstName =
     ((client as Record<string, unknown>).display_name as string | undefined)
       ?.split(" ")[0] ?? "there";
+  const coachName =
+    ((client as Record<string, unknown>).assigned_coach as string | undefined) ||
+    process.env.COACH_NAME ||
+    "Shivani";
 
   // fm_checkin_nudge template params: {{1}} = name, {{2}} = symptom (optional — use "your symptoms")
   const result = await sendWhatsAppAction(phone, "fm_checkin_nudge", [firstName, "your symptoms"], {
@@ -586,7 +590,7 @@ export async function sendCheckinNudgeAction(
   });
   if (!result.ok) return result;
 
-  const nudgeBody = `Hi ${firstName}, just checking in! How are you feeling on the protocol? Any changes in your symptoms? Would love to hear how things are going. 🌿\n\n— Shivani`;
+  const nudgeBody = `Hi ${firstName}, just checking in! How are you feeling on the protocol? Any changes in your symptoms? Would love to hear how things are going. 🌿\n\n— ${coachName}`;
   await recordOutboundMessageAction({
     clientId,
     templateName: "fm_checkin_nudge",
@@ -636,7 +640,7 @@ const TEMPLATES_FILE = path.join(PLANS_ROOT, "message_templates.yaml");
 // matches what the client actually receives on WhatsApp.
 // If you edit a body here, also edit the matching TEMPLATES entry in
 // submit-templates.js and re-run the script — Meta will re-approve.
-const SIGNOFF = "\n\n— Shivani Hari\nYour Functional Health Coach";
+const SIGNOFF = `\n\n— ${process.env.COACH_NAME || "Shivani Hari"}\nYour Functional Health Coach`;
 
 const DEFAULT_TEMPLATES: MessageTemplate[] = [
   {
