@@ -1,0 +1,47 @@
+slug: barberry
+display_name: Barberry (Berberis / Daruharidra)
+aliases:
+- daruharidra
+- wood-turmeric
+- berberis
+- tree-turmeric
+category: herb
+forms_available: []
+typical_dose_range: {}
+timing_options: []
+rasa:
+- bitter
+- astringent
+virya: heating
+vipaka: pungent
+prabhava: special heating potency to destroy Ama (toxins); specific for cleansing the liver; less likely
+  to aggravate vata than other bitter herbs
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+ayurvedic_actions:
+- bitter tonic
+- alterative
+- antipyretic
+- laxative
+- anthelmintic
+- bacteriocidal
+- amoebicidal
+linked_to_topics:
+- liver-detoxification
+- blood-sugar-regulation
+- candida-overgrowth
+notes_for_coach: Whole barberry root (Berberis spp.; Ayurvedic Daruharidra / 'wood turmeric'). A bitter,
+  heating hepatic and blood cleanser whose special potency (prabhava) is to destroy ama (toxins) and regulate
+  liver function; less vata-aggravating than other bitters, especially with turmeric. The isolated alkaloid
+  is catalogued separately as 'berberine'. Ayurvedic energetics from The Yoga of Herbs (Frawley & Lad).
+sources:
+- id: frawley-lad-yoga-of-herbs-2001
+  location: Materia Medica — BARBERRY
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

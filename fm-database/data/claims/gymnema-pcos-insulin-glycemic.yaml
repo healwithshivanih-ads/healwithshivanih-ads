@@ -1,0 +1,53 @@
+slug: gymnema-pcos-insulin-glycemic
+statement: "Gymnema sylvestre supports glycemic regulation and insulin sensitivity
+  in PCOS via three mechanisms: (1) gymnemic acids suppress sweet taste perception
+  and reduce caloric intake, (2) saponins inhibit intestinal glucose absorption,
+  (3) trophorestorative action on pancreatic beta cells. Traditional Indian antidiabetic;
+  also demonstrates lipid-lowering activity. Useful adjunct for the insulin-resistant
+  PCOS phenotype alongside diet and inositol."
+evidence_tier: fm_specific_thin
+rationale: "Gymnema has a strong traditional Ayurvedic antidiabetic record and a
+  plausible multi-mechanism action on glucose metabolism. Clinical trials in type 2
+  diabetes show HbA1c reduction; PCOS-specific trial data is thin. The mechanism
+  (beta-cell trophorestorative + glucose absorption inhibition + caloric intake
+  reduction) directly addresses insulin resistance, which is central to the metabolic
+  PCOS phenotype. Evidence tier is fm_specific_thin for the PCOS indication specifically;
+  general antidiabetic evidence is stronger. This herb is particularly relevant for
+  India-based practice as it is widely available and affordable."
+coaching_translation: "For PCOS clients where insulin resistance and blood sugar
+  spikes are driving the androgen excess — gymnema is worth adding alongside berberine
+  or inositol. It works three ways: dulls sweet cravings (the taste-blocking effect
+  is quite real — sweet foods taste flat for about an hour after taking it), slows
+  glucose absorption from meals, and gently supports the insulin-producing cells in
+  the pancreas. Dose: 400–800mg extract (standardised to gymnemic acids) twice daily
+  with meals. Gymnema is widely available in India as 'gurmar' — literally 'sugar
+  destroyer'. Good quality brands: Himalaya, Organic India."
+caveats:
+  - "Monitor blood glucose if client is on metformin or antidiabetics — additive
+    hypoglycemic effect; may need dose adjustment"
+  - "India name: gurmar (गुड़मार — 'sugar destroyer'); widely available as Himalaya
+    or Organic India capsules"
+  - "Taste suppression effect temporary (~1 hour); coach should warn clients so they
+    aren't alarmed when sweet foods taste strange after taking the capsule"
+  - "Evidence for PCOS specifically is thin — most glycemic evidence from type 2 DM
+    trials; PCOS extrapolation is plausible but not confirmed"
+linked_to_topics:
+  - pcos-fertility
+  - insulin-resistance-metabolic-syndrome
+linked_to_mechanisms:
+  - insulin-resistance
+  - androgen-excess
+linked_to_supplements:
+  - gymnema-sylvestre
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 5 — PCOS section, Table 5-17; antihyperlipidemic/glycemic
+      regulation category; Box 5-32"
+    quote: "Traditional Indian antidiabetic, hypoglycemic, lipid-lowering for PCOS
+      insulin modulation. Saponins and gymnemic acids suppress sweet taste perception,
+      reduce caloric intake. Inhibits intestinal glucose absorption. Trophorestorative
+      for pancreatic beta cells."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

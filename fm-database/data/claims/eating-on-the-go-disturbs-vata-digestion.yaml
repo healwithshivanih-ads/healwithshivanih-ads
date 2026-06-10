@@ -1,0 +1,31 @@
+slug: eating-on-the-go-disturbs-vata-digestion
+statement: Eating while in a moving vehicle is not recommended in any season, as the mobile quality of
+  travel disturbs digestion and, when repeated habitually, can result in acid stomach, gas, bloating,
+  or constipation; when unavoidable, take deep breaths first, eat slowly, and choose simple foods requiring
+  less chewing.
+evidence_tier: plausible_emerging
+rationale: In Ayurveda, the mobile, erratic quality (chala guna) of travel is antithetical to the stable,
+  settled state needed for optimal digestion. Eating during movement increases vata in the GI tract, disturbing
+  the migrating motor complex and digestive enzyme secretion.
+coaching_translation: Advise clients who frequently eat on the go — in cars, trains, or at their desk
+  while working — that this habit gradually undermines digestion. Sitting quietly for even 10 minutes
+  while eating makes a significant difference to IBS, bloating, and reflux symptoms.
+out_of_scope_notes: ''
+caveats:
+- Traditional Ayurvedic principle supported by modern research on the parasympathetic nervous system's
+  role in digestion (rest-and-digest); direct evidence for movement specifically is limited.
+linked_to_topics:
+- agni-digestive-fire
+- meal-timing-and-digestive-rest
+- digestion-and-nutrient-absorption
+- mindful-eating
+linked_to_mechanisms:
+- parasympathetic-activation
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: Fall Recipes — Eating on the Go
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: like-increases-like-opposites-balance-guna-medicine
+statement: The Ayurvedic principle 'like increases like, opposites balance' is the operational logic of
+  using food as medicine. To counter excess heat in the body (inflammation, acid reflux, skin rashes),
+  introduce cooling foods and qualities; for excess dryness (constipation, anxiety, dry skin), introduce
+  moist and warming foods; for excess heaviness and congestion, introduce light, pungent, and bitter foods.
+evidence_tier: fm_specific_thin
+rationale: This foundational Ayurvedic guna (quality) framework provides a practical heuristic for dietary
+  adjustments. It parallels the functional medicine approach of identifying the underlying pattern (hot/cold,
+  damp/dry, excess/deficiency) and applying targeted dietary interventions.
+coaching_translation: Think of your symptoms in terms of qualities. Burning skin, acid stomach, or feeling
+  hot all the time means too much heat — reduce spicy, sour, and fermented foods and add cooling foods
+  like cucumber, coconut, coriander, and sweet fruit. Constipation, dry skin, and anxiety mean too much
+  dryness and cold — add warm, oily, moist foods. This is how food becomes medicine.
+out_of_scope_notes: ''
+caveats:
+- This is a qualitative framework; clinical judgment is required to identify the dominant pattern for
+  each client.
+- Does not replace investigation of root causes (infections, nutrient deficiencies, etc.).
+linked_to_topics:
+- agni-digestive-fire
+- ayurvedic-elemental-design-doshas
+- inflammation
+- constipation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 1: Ayurveda Basics — Nature''s System of Checks and Balances'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

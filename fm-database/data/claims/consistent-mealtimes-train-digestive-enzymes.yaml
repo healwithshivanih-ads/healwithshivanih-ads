@@ -1,0 +1,28 @@
+slug: consistent-mealtimes-train-digestive-enzymes
+statement: Consistent mealtimes — eating at roughly the same time each day — train the digestive system
+  to secrete stomach acid, enzymes, and bile in anticipation, maximising the efficiency of each meal.
+  Irregular meal timing leads to inconsistent digestion, unstable blood sugar, and mood swings.
+evidence_tier: plausible_emerging
+rationale: Circadian clock genes regulate gastrointestinal secretion rhythms. When meal timing aligns
+  with these rhythms, acid and enzyme peaks coincide with food arrival; irregular timing desynchronises
+  this preparation.
+coaching_translation: Eat at the same time every day — your gut literally prepares its enzymes and acid
+  in advance because it expects food at a certain time. When you skip or shift meals erratically, the
+  system fires out of sync and digestion suffers.
+out_of_scope_notes: ''
+caveats: []
+linked_to_topics:
+- agni-digestive-fire
+- meal-timing-and-digestive-rest
+- ayurvedic-circadian-clock
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- migrating-motor-complex
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: The Principles of Ayurvedic Eating — The Flow of Food: Establishing a Rhythm'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,49 @@
+slug: herbalgram-black-cohosh-cns-mechanism-confirmed
+statement: "Black cohosh (*Actaea racemosa*) relieves menopausal vasomotor symptoms
+  via CNS and serotonergic mechanisms — NOT via oestrogen receptor binding or
+  oestrogenic activity. This distinction is clinically critical: it explains why black
+  cohosh does not stimulate endometrial growth, does not raise breast cancer risk,
+  and can be safely considered even in oestrogen-sensitive conditions. Safety has been
+  confirmed in 11,073 patients across 28 clinical trials, with no hepatotoxicity
+  attributable to true *Actaea racemosa* (adulteration with other *Cimicifuga* species
+  is the likely cause of rare adverse reports)."
+evidence_tier: strong
+rationale: ABC herb profile review cites 30+ RCTs, the 28-study safety dataset (11,073
+  patients), the Remifemin product record (40mg standardised extract per day), and
+  mechanistic research confirming no ERα/ERβ binding. The 2018 adulteration finding
+  (only 7/36 commercial products confirmed true A. racemosa) explains prior hepatotoxicity
+  reports. This is a mechanism clarification that upgrades the clinical utility claim
+  already in the catalogue.
+coaching_translation: "Key message for clients: black cohosh is NOT a plant oestrogen.
+  It works on the brain (serotonin pathways) to reduce hot flushes — which is why it's
+  safe in breast cancer survivors and why it doesn't cause the uterine lining changes
+  seen with oestrogen therapy. Use only a reputable standardised extract — product
+  quality is the main safety variable. Remifemin (Metagenics, Vitanica, A.Vogel) are
+  verified brands. Check for the 'true Actaea racemosa' guarantee on the label."
+caveats:
+  - Adulteration is common — 7/36 commercial products failed species verification in
+    2018 testing. Require supplier verification of Actaea racemosa DNA authentication.
+  - Hepatotoxicity attributed to black cohosh in case reports almost certainly due to
+    adulteration with Asian Cimicifuga species — not the pure herb
+  - Effects take 4–12 weeks to manifest
+  - Does not address vaginal dryness or libido
+  - Some women respond poorly — consider red clover or HRT if no response at 12 weeks
+linked_to_topics:
+  - perimenopause-and-menopause
+  - menopause
+  - hot-flashes
+linked_to_mechanisms:
+  - serotonin-signaling
+linked_to_supplements:
+  - black-cohosh
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Herb Profile — Black Cohosh (Actaea racemosa), pp 5–29 (extended profile)
+    quote: "Black cohosh acts via central nervous system and serotonergic mechanisms
+      rather than estrogenic activity... Safety confirmed across 28 clinical trials
+      involving 11,073 patients... Only 7 of 36 commercial products in 2018 testing
+      contained true Actaea racemosa."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

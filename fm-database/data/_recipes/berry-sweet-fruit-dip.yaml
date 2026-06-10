@@ -1,0 +1,81 @@
+slug: berry-sweet-fruit-dip
+name: Berry Sweet Fruit Dip
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+- vata
+rasa:
+- astringent
+- sweet
+- sour
+main_ingredients:
+- golden raisins
+- apple or cherry juice
+- raspberries or blackberries
+- sweet spice mix
+- fresh lemon juice
+contains_allergens: []
+ingredients:
+- item: golden raisins
+  qty: '2'
+  unit: tbsp
+- item: apple or cherry juice
+  qty: '2'
+  unit: tbsp
+- item: raspberries or blackberries
+  qty: '1'
+  unit: cup
+- item: Sweet Spice Mix
+  qty: '1'
+  unit: tsp
+- item: fresh lemon juice
+  qty: '1'
+  unit: squeeze
+steps:
+- Soak the golden raisins in the apple or cherry juice for about 10 minutes in a small bowl.
+- Transfer the soaked raisins and their liquid to a blender or bowl suitable for an immersion blender.
+  Add the berries, spice mix, and fresh lemon juice.
+- Blend or puree until smooth.
+- Serve alongside sliced apples or pears as a dipping sauce.
+servings: '2'
+prep_time_min: 12
+cook_time_min: 0
+approx_kcal_per_serving: 85
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- detoxification
+- immune-support
+one_line: A quick blended berry-raisin dip with warming spice — a naturally sweet spring snack with astringent
+  edges to keep kapha in check.
+headnote: When the urge for something sweet hits in spring, this brightly flavoured berry dip offers astringent
+  and slightly sour notes that actually help digestion rather than slugging it down.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 159
+image:
+  file: images/odonnell/odonnell-160-077.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: berry sweet fruit dip
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

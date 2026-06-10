@@ -1,0 +1,107 @@
+slug: warming-tomato-dal
+name: Warming Tomato Dal
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- pungent
+- salty
+main_ingredients:
+- water
+- red lentils
+- winter spice mix
+- fresh whole tomatoes or canned whole tomatoes, chopped
+- lacinato kale leaves
+- ghee
+- cumin seeds
+- black mustard seeds
+- salt
+contains_allergens:
+- dairy
+ingredients:
+- item: water
+  qty: '4'
+  unit: cups
+- item: red lentils
+  qty: '1'
+  unit: cup
+- item: Winter Spice Mix
+  qty: '1'
+  unit: tbsp
+- item: fresh whole tomatoes or canned whole tomatoes, chopped
+  qty: '2'
+  unit: whole (or 16 oz can)
+- item: lacinato kale leaves
+  qty: '2'
+  unit: leaves
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: black mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: tsp
+steps:
+- Bring 4 cups of water to a boil in a large saucepan. Rinse the lentils until the water runs clear, then
+  add them to the boiling water along with the Winter Spice Mix.
+- If using fresh tomatoes, parboil them whole for 4–5 minutes in a separate pot, then remove and slip
+  off the skins. Coarsely chop and add to the lentils. For canned tomatoes, add directly with their liquid.
+- Bring back to a boil, then reduce heat to low and simmer uncovered. After about 25 minutes, slice the
+  kale into thin ribbons and stir into the pot. Continue simmering, partially covered, until 30 minutes
+  total have passed.
+- In a small pan, heat the ghee over medium heat and fry the cumin and mustard seeds until fragrant, about
+  2–3 minutes — cover the pan if the mustard seeds are jumping.
+- Pour the spiced ghee into the dal, add the salt, and boil uncovered for a final 5 minutes.
+- Serve in wide bowls over basmati rice or with a sprouted wheat tortilla.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 40
+approx_kcal_per_serving: 220
+kcal_is_estimate: true
+protein_g: 11
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- inflammation
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+one_line: A bright red-lentil and tomato dal with kale and a cumin-mustard tempering — hearty, heating,
+  and easy to digest.
+headnote: Red lentils cook quickly and need no soaking, making this a reliable weeknight dal; removing
+  tomato skins before adding keeps the dish gentle on the gut.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 342
+image:
+  file: images/odonnell/odonnell-343-195.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: warming tomato dal
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

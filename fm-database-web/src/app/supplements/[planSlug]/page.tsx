@@ -175,7 +175,7 @@ export default async function SupplementsPage({
         <p style={P}>This plan doesn&apos;t list any supplements yet.</p>
       )}
       <footer style={FOOTER}>
-        Shivani Hari · questions? Just reply on WhatsApp.
+        Questions? Just reply on WhatsApp.
       </footer>
     </Wrap>
   );

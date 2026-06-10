@@ -445,6 +445,7 @@ export async function sendPillarRotationAction(
       continue;
     }
     const name = (c.display_name as string | undefined) ?? "there";
+    const coachName = (c.assigned_coach as string | undefined) || process.env.COACH_NAME || "Shivani";
     const last = await lastPillarSent(id);
     const pillar = nextPillarAfter(last?.pillar ?? null);
     const template = pillarToTemplateName(pillar);
@@ -465,7 +466,7 @@ export async function sendPillarRotationAction(
         `• *Patchy* — some nights great, some restless\n` +
         `• *Hard* — struggling to fall or stay asleep\n\n` +
         `Tap below — your answer flows into next week's adjustments.\n\n` +
-        `— Shivani`,
+        `— ${coachName}`,
       stress:
         `*Your weekly stress check-in* 🌿\n\n` +
         `Hi ${name}, how is your nervous system doing this week?\n\n` +
@@ -474,7 +475,7 @@ export async function sendPillarRotationAction(
         `• *Some pressure* — felt it, mostly stayed steady\n` +
         `• *Overwhelming* — full, hard to come down\n\n` +
         `Tap below — your answer shapes which practices we lean on next week.\n\n` +
-        `— Shivani`,
+        `— ${coachName}`,
       movement:
         `*Your weekly movement check-in* 🏃\n\n` +
         `Hi ${name}, how did your body get to move this week?\n\n` +
@@ -483,7 +484,7 @@ export async function sendPillarRotationAction(
         `• *A few times* — a couple of sessions or active days\n` +
         `• *None* — felt too full, too tired, too stretched\n\n` +
         `Tap below — your answer shapes what we lean into next week.\n\n` +
-        `— Shivani`,
+        `— ${coachName}`,
       nutrition:
         `*Your weekly nutrition check-in* 🍽\n\n` +
         `Hi ${name}, how did meals + food feel this week?\n\n` +
@@ -492,7 +493,7 @@ export async function sendPillarRotationAction(
         `• *Half the time* — some meals on track, others off\n` +
         `• *Struggling* — hard to plan, eat, or stay with it\n\n` +
         `Tap below — your answer guides next week's meal focus.\n\n` +
-        `— Shivani`,
+        `— ${coachName}`,
       connection:
         `*Your weekly connection check-in* 🤝\n\n` +
         `Hi ${name}, checking in on how connected you've felt this week — to people, routine, yourself.\n\n` +
@@ -501,7 +502,7 @@ export async function sendPillarRotationAction(
         `• *Some of the time* — moments of both\n` +
         `• *Disconnected* — pulled away, hard to land\n\n` +
         `Tap below — your answer guides where we lean next.\n\n` +
-        `— Shivani`,
+        `— ${coachName}`,
     };
     const renderedBody = bodyByPillar[pillar];
 

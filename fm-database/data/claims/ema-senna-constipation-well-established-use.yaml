@@ -1,0 +1,40 @@
+slug: ema-senna-constipation-well-established-use
+statement: The EMA/HMPC community monograph on senna leaf and fruit (Cassia senna L. and Cassia angustifolia
+  Vahl) grants 'well-established medicinal use' for short-term treatment of occasional constipation in
+  adults and adolescents 12 years and older. The well-established use classification reflects more than
+  10 years of recognised use within the EU with established efficacy and acceptable safety. EMA-approved
+  posology is 15–30 mg hydroxyanthracene derivatives (calculated as sennoside B) as a single dose at bedtime
+  for no more than 1 week.
+evidence_tier: strong
+rationale: Well-established use is EMA's highest classification tier, equivalent to a positive clinical
+  evidence package. This is unusual for a herbal product and reflects decades of European pharmacopoeial
+  recognition. The strict 1-week limit and age cut-off (≥12 years) reflect the EU safety review of anthraquinone
+  laxatives and concerns about colonic mucosal effects with prolonged use.
+coaching_translation: Europe's herbal regulator classifies senna as having 'well-established' clinical
+  use for occasional constipation — the highest level of recognition they give herbal medicines. One dose
+  at bedtime for up to a week is the approved regimen for adults. It is not recommended for children under
+  12.
+out_of_scope_notes: Habitual/chronic laxative use, laxative-dependent constipation, or suspected organic
+  obstruction — refer to clinician. Senna should not be used as a weight-loss product.
+caveats:
+- 'EMA strict duration limit: no more than 1 week of use. Prolonged use associated with melanosis coli,
+  electrolyte disturbances, and habituation.'
+- 'EMA contraindications: intestinal obstruction or stenosis, atony, inflammatory bowel disease (Crohn''s,
+  UC), appendicitis, undiagnosed abdominal pain; severe dehydration.'
+- 'EMA: not to be used during pregnancy or lactation.'
+- 'EMA interaction: risk of hypokalaemia potentiates cardiac glycosides (digoxin), antiarrhythmics; thiazide
+  diuretics and corticosteroids compound potassium loss.'
+- 'Children under 12: no well-established or traditional use designation — do not use.'
+linked_to_topics:
+- constipation
+linked_to_mechanisms: []
+linked_to_supplements:
+- senna
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: EMA/HMPC Community Herbal Monograph on Cassia senna L. and Cassia angustifolia Vahl, folium
+    (adopted 2006, consolidated 2014) (https://www.ema.europa.eu/en/medicines/herbal/sennae-folium)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

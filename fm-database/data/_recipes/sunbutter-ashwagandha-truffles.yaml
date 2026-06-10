@@ -1,0 +1,111 @@
+slug: sunbutter-ashwagandha-truffles
+name: Sunbutter Truffles
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- winter
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- coconut oil, melted (for filling)
+- sunflower seed butter
+- raw honey
+- pure vanilla extract
+- almond meal
+- cinnamon
+- ashwagandha powder
+- coconut oil, melted (for coating)
+- maple syrup
+- cacao powder
+- shredded coconut (optional decoration)
+contains_allergens:
+- nuts
+ingredients:
+- item: coconut oil, melted (for filling)
+  qty: '2'
+  unit: tsp
+- item: sunflower seed butter
+  qty: '0.5'
+  unit: cup
+- item: raw honey
+  qty: '1'
+  unit: tbsp
+- item: pure vanilla extract
+  qty: '1'
+  unit: tsp
+- item: almond meal
+  qty: '0.75'
+  unit: cup
+- item: cinnamon
+  qty: '0.5'
+  unit: tsp
+- item: ashwagandha powder
+  qty: '2'
+  unit: tsp
+- item: coconut oil, melted (for coating)
+  qty: '3'
+  unit: tbsp
+- item: maple syrup
+  qty: '1'
+  unit: tbsp + 2 tsp
+- item: cacao powder
+  qty: '1'
+  unit: tbsp + 2 tsp
+- item: shredded coconut (optional decoration)
+  qty: '1'
+  unit: small amount
+steps:
+- Mix together the filling ingredients — melted coconut oil, sunflower butter, honey, vanilla, almond
+  meal, cinnamon, and ashwagandha — in a small bowl until fully combined.
+- Cover and place the mixture in the freezer for 45 minutes to firm up.
+- 'Prepare the chocolate coating: whisk together the melted coconut oil, maple syrup, and cacao powder
+  in a bowl. Nest the coating bowl inside a larger bowl of warm water to keep it from solidifying while
+  you work.'
+- Remove the filling from the freezer and roll into 1-inch balls. Drop each ball into the chocolate coating
+  and use two spoons to roll it until fully covered.
+- Lift each truffle onto a parchment-lined baking sheet. Sprinkle with shredded coconut before the coating
+  sets, if desired.
+- Refrigerate until firm and keep chilled until serving.
+servings: '12'
+prep_time_min: 20
+cook_time_min: 0
+approx_kcal_per_serving: 160
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- adrenal-fatigue
+- agni-digestive-fire
+- nervous-system-regulation
+one_line: Dark chocolate-coated sunflower butter balls with ashwagandha — a grounding adaptogenic winter
+  treat.
+headnote: These no-bake truffles use sunflower seed butter as a lighter alternative to peanut butter and
+  include ashwagandha for its tissue-building, stress-adapting properties; keep them in the fridge as
+  a steady energy snack.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 366
+image:
+  file: images/odonnell/odonnell-367-216.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: sunbutter truffles
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

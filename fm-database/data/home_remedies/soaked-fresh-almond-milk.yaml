@@ -1,0 +1,51 @@
+slug: soaked-fresh-almond-milk
+display_name: Soaked Fresh Almond Milk
+aliases: []
+category: kitchen_remedy
+route: internal
+summary: Raw almonds soaked overnight in water, then drained, blended with fresh water, and strained.
+  The soaking removes the brown skin (which contains tannins and phytate) and activates enzymes, making
+  the fat and protein more digestible. Considered more nutritive than boxed almond milk and reaches all
+  seven body tissue layers (dhatus).
+indications:
+- vata or pitta constitution needing nourishing, cooling nutrition
+- dairy intolerance or dairy-free meal planning
+- ojas building and general vitality support
+- dry skin, hair, or mucous membranes
+- base for Ayurvedic tonics and nut-based soups
+contraindications:
+- kapha types should use in moderation — sweet and slightly heavy
+- nut allergy
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+virya: cooling
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+- nourishing
+- ojas-building
+- tissue-nourishing
+preparation: Soak 2/3 cup raw almonds in water overnight (6-8 hours). Drain, rinse. Slip off and discard
+  brown skins if desired (reduces tannins). Blend with 4 cups fresh water for 1-2 minutes until smooth.
+  Strain through a cheesecloth or nut-milk bag. Use immediately or refrigerate up to 3 days.
+typical_dose: 1-2 cups daily
+duration: Can be used daily as a dairy milk substitute
+timing_notes: Morning or afternoon. Warm gently on the stove for a warming evening tonic; add spices such
+  as cardamom or turmeric.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- gut-lining-support
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Almond Milk recipe'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

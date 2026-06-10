@@ -1,0 +1,75 @@
+slug: licorice-ghee-ayurvedic
+name: Licorice Ghee
+meal_type:
+- side
+diet:
+- vegetarian
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+main_ingredients:
+- licorice root powder
+- water
+- ghee (prepared)
+- water (second addition)
+contains_allergens:
+- dairy
+ingredients:
+- item: licorice root powder
+  qty: '1'
+  unit: part
+- item: water
+  qty: '8'
+  unit: parts
+- item: ghee (prepared)
+  qty: '1'
+  unit: part
+- item: water (second addition)
+  qty: '1'
+  unit: part
+steps:
+- Combine the licorice root powder with eight parts of water in a saucepan and bring to a boil.
+- Continue boiling until the liquid reduces to one-quarter of its original volume, forming a concentrated
+  decoction.
+- Measure out one part of this decoction and combine it with an equal part of prepared ghee in a clean
+  pan.
+- Add an equal part of fresh water to the ghee-decoction mixture.
+- Boil the mixture, stirring, until all the water has evaporated and only the licorice-infused ghee remains.
+servings: '12'
+prep_time_min: 5
+cook_time_min: 40
+approx_kcal_per_serving: 100
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- adrenal-fatigue
+- hpa-axis-dysregulation
+- liver-detoxification
+- digestion-and-nutrient-absorption
+one_line: Ghee infused with a slow-cooked licorice decoction — a classical Ayurvedic medicated fat.
+headnote: Licorice ghee combines the nourishing qualities of ghee with the adaptogenic and soothing properties
+  of licorice root, traditionally used to support adrenal and digestive health.
+attribution:
+  author: Vasant Lad
+  book: 'Ayurveda: The Science of Self-Healing'
+  source_id: lad-ayurveda-science-of-self-healing-1984
+  page: null
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Licorice Ghee
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

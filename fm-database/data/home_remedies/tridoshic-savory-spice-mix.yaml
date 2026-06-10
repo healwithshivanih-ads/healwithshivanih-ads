@@ -1,0 +1,55 @@
+slug: tridoshic-savory-spice-mix
+display_name: Everyday Savory Spice Mix (Tridoshic Digestive Blend)
+aliases: []
+category: spice_blend
+route: internal
+summary: A dry-roasted and ground blend of equal parts coriander seed, cumin seed, and turmeric powder
+  with slightly less fennel seed. Tridoshic; suitable as the base spice mix for all Ayurvedic savory cooking.
+  Kindles agni, supports liver and bile flow, and moderates excess fire (pitta) without reducing digestive
+  capacity.
+indications:
+- daily digestive support for all body types
+- sluggish or irregular agni
+- bloating and flatulence after meals
+- liver and bile-flow support
+- general use as a cooking spice blend
+contraindications: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- pungent
+- bitter
+- sweet
+virya: null
+vipaka: null
+prabhava: ''
+ayurvedic_actions:
+- agni-kindling
+- liver-stimulating
+- carminative
+- tridoshic-digestive
+preparation: 1 tbsp whole coriander seeds, 1 tbsp whole cumin seeds, 1.5 tsp whole fennel seeds — dry-roast
+  separately until fragrant and cool. Grind together. Mix in 1 tbsp turmeric powder. Store in a sealed
+  glass jar for up to 2 weeks. Use 1/2-1 tsp per serving of vegetables, dal, or grains.
+typical_dose: 1/2-1 tsp per serving used in cooking
+duration: Daily use as a cooking spice blend
+timing_notes: Add during cooking via tadka (tempered in ghee) or stir into dishes in the last 5 minutes
+  of cooking.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- low-stomach-acid
+- bile-flow-regulation
+- hcl-and-pepsin-protein-digestion
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Savory Spice Mix recipe'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

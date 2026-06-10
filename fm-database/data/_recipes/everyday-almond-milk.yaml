@@ -1,0 +1,77 @@
+slug: everyday-almond-milk
+name: Everyday Almond Milk
+meal_type:
+- drink
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+main_ingredients:
+- raw almonds
+- water (for blending)
+- water (for soaking)
+- salt (optional)
+contains_allergens:
+- nuts
+ingredients:
+- item: raw almonds
+  qty: '0.67'
+  unit: cup
+- item: water (for blending)
+  qty: '4'
+  unit: cups
+- item: water (for soaking)
+  qty: '2'
+  unit: cups
+- item: salt (optional)
+  qty: '1'
+  unit: dash
+steps:
+- Soak the almonds in the soaking water for at least 6 hours or overnight.
+- Drain and discard the soaking water; rinse the almonds.
+- Blend the almonds with 1 cup of fresh water using a hand or carafe blender until smooth.
+- Add the remaining 3 cups of water and blend again until smooth and foamy.
+- Strain through a fine sieve or cheesecloth — strain twice for very smooth milk. Save the leftover almond
+  pulp for baking or to thicken blended soups.
+- Use immediately or refrigerate for up to 3–5 days.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 80
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- inflammation
+one_line: Fresh homemade almond milk from soaked nuts — far more nutritious than the boxed kind and the
+  foundational liquid base for Ayurvedic cereals and soups.
+headnote: Soaking breaks down enzyme inhibitors in the almonds, making the resulting milk noticeably lighter
+  and more digestible; the almond pulp is a bonus for baking.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 108
+image:
+  file: images/odonnell/odonnell-108-033.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday almond milk
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

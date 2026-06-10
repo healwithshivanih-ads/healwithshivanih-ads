@@ -1,0 +1,32 @@
+slug: who-neem-safety-pregnancy-genotoxicity-antidiabetic-interaction
+statement: 'The WHO Folium Azadirachti monograph (Vol 3) states that neem leaf should not be administered
+  during pregnancy, nursing, or to children under 12 years owing to potential genotoxic effects demonstrated
+  in animal studies (ethanol extract significantly increased structural and mitotic disruptive changes
+  in bone marrow metaphase chromosomes at 5–20 mg/10 g body weight/day for 7 days). Drug interaction:
+  neem leaf preparations may lower blood glucose and should be used with caution alongside insulin or
+  oral antihyperglycaemic agents. External application: 70% ethanol extract of leaves diluted to 40%,
+  applied twice daily, is the pharmacopoeial topical posology. Oral posology: infusion (1:20) 15–30 ml;
+  tincture (1:5) 4–8 ml.'
+evidence_tier: confirm_with_clinician
+rationale: Direct pharmacopoeial safety data from WHO Vol 3 contraindications and precautions sections,
+  including the genotoxicity evidence basis for the pregnancy contraindication.
+coaching_translation: Neem leaf supplements are contraindicated in pregnant or nursing women and children
+  under 12. Clients on diabetes medication who take neem may experience additive blood-glucose lowering
+  — monitor accordingly. Standard oral preparation is a dilute infusion, not high-dose powder.
+out_of_scope_notes: Pregnancy contraindication is pharmacopoeial-grade absolute. Drug interaction with
+  antidiabetics is a clinician-level consideration.
+caveats:
+- The genotoxicity was observed in animal bone marrow cells; human clinical significance is unclear but
+  sufficient for pharmacopoeial contraindication.
+- Contact dermatitis has also been reported with topical neem.
+linked_to_topics: []
+linked_to_mechanisms: []
+linked_to_supplements:
+- neem
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Folium Azadirachti, WHO Monographs Vol 3, Contraindications and Posology sections (https://apps.who.int/iris/handle/10665/43689)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

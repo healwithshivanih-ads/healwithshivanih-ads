@@ -1,0 +1,40 @@
+slug: who-holy-basil-pharmacopoeial-blood-sugar-respiratory
+statement: The WHO monograph on Folium Ocimi Sancti (Vol 2) describes, under 'Uses described in pharmacopoeias
+  and in traditional systems of medicine', the use of holy basil leaf for treatment of arthritis, asthma,
+  bronchitis, common cold, diabetes, fever, influenza, peptic ulcer and rheumatism. A randomised, single-blind,
+  placebo-controlled crossover trial in 40 patients with non-insulin-dependent diabetes mellitus found
+  that 2.5 g dried holy basil leaves daily for 4 weeks reduced fasting blood glucose by 17.6% and postprandial
+  blood glucose by 7.3%, with a concomitant 6.5% fall in total cholesterol. WHO classifies this diabetes
+  use as 'Uses described in pharmacopoeias and well established documents' rather than 'Uses supported
+  by clinical data', as further confirmatory trials are required.
+evidence_tier: plausible_emerging
+rationale: WHO Monographs Vol 2 places the diabetes and respiratory uses under 'pharmacopoeias and well-established
+  documents' because the single available RCT requires confirmation. The blood-glucose reduction in the
+  40-patient crossover study provides plausible-emerging evidence.
+coaching_translation: 'Tulsi (holy basil) has pharmacopoeial recognition for blood sugar support and respiratory
+  health. A small controlled trial showed meaningful fasting and postprandial glucose reductions at 2.5
+  g dried leaf daily. Practical coaching use: tulsi tea or supplement for blood sugar and respiratory
+  support, with realistic expectations pending larger trials.'
+out_of_scope_notes: WHO Vol 2 notes embryotoxic potential in animal studies; pregnancy contraindication
+  is absolute per pharmacopoeial guidance. Eugenol–acetaminophen interaction is clinically significant
+  and a prescribing consideration.
+caveats:
+- 'WHO Volume 2 states: ''Contraindicated during pregnancy and lactation'' — animal studies showed inhibition
+  of embryo implantation and embryotoxicity.'
+- 'Drug interaction: eugenol (up to 62% of essential oil) may be hepatotoxic in glutathione-depleted livers
+  — caution with paracetamol/acetaminophen and other glutathione-depleting drugs.'
+- Anti-spermatogenic effects observed in male mice at high doses; fertility implications warrant caution.
+linked_to_topics:
+- blood-sugar-regulation
+- asthma
+linked_to_mechanisms:
+- insulin-resistance
+linked_to_supplements:
+- holy-basil
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Folium Ocimi Sancti, WHO Monographs on Selected Medicinal Plants, Volume 2, pp. 206–215 (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

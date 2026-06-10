@@ -1,0 +1,66 @@
+slug: yellow-mung-dal-soup
+display_name: Yellow Mung Dal Soup (Convalescent / Tridoshic)
+aliases:
+  - mung-dal-soup
+  - moong-dal-soup
+  - yellow-mung-soup
+category: kitchen_remedy
+route: internal
+summary: >-
+  A thin, spiced split-yellow-mung-dal soup that Lad gives as a light, deeply
+  digestible, tridoshic food — the classic convalescent meal. Yellow mung is
+  sweet and cooling and very easy to digest; the tempering spices (mustard,
+  cumin, hing, curry leaf, turmeric) kindle agni and offset the dryness of the
+  dal so it doesn't aggravate vata. Lighter than kitchari (no rice), it suits
+  recovery from fever or illness, weak digestion, and anyone needing easy
+  protein. Distinct from the rice-plus-dal kitchari already in the catalogue.
+indications:
+  - recovery from fever or acute illness
+  - weak / convalescent digestion needing easy protein
+  - diarrhea (with the binding spices)
+  - eye problems and skin conditions (traditional use)
+  - a light tridoshic meal suitable for all constitutions
+contraindications:
+  - the plain unspiced version is drying / light and can aggravate vata — keep the warming tempering and a little ghee
+  - do not pair with incompatible foods in the same meal (see Ayurvedic food-combining guidance)
+balances_dosha:
+  - vata
+  - pitta
+  - kapha
+aggravates_dosha: []
+rasa:
+  - sweet
+  - astringent
+virya: cooling
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+  - dipana
+  - easy-to-digest
+  - balya
+  - nourishing
+preparation: >-
+  Wash 1 cup yellow (split) mung dal twice. Boil in 6 cups water ~45 min,
+  stirring, until very soft; beat smooth with a whisk. Separately temper 1 tsp
+  black mustard seeds + 1 tsp cumin seeds + a pinch of hing in a little oil or
+  ghee until the seeds pop; add chopped garlic, a few curry leaves, cilantro,
+  1/2 tsp turmeric and (optionally) 1/2 tsp mild masala; stir into the soup.
+  Salt to taste and boil 2 minutes. Serve warm with a squeeze of lime.
+typical_dose: 1 bowl as a light meal, once or twice a day
+duration: Daily during recovery; otherwise as a regular light meal
+timing_notes: Best warm; ideal as a light lunch or early dinner
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms:
+  - digestive-enzyme-deficiency
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 7: Recipes — Soups, Yellow Mung Dal Soup (p.74)"
+    quote: "Yellow mung is sweet and cooling, and mainly calms kapha and vata. It is very easy to digest and promotes strength... Medicinal Uses: Good for fever, diarrhea, eye problems and skin conditions."
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

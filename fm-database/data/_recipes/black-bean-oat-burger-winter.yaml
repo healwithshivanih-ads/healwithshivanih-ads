@@ -1,0 +1,89 @@
+slug: black-bean-oat-burger-winter
+name: Black Bean and Oat Burger
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- salty
+- pungent
+main_ingredients:
+- cooked black beans
+- baby spinach
+- diced roasted red pepper
+- oat flour (rolled oats ground in blender)
+- winter salts
+- ghee (optional, for pan-frying)
+contains_allergens:
+- gluten
+ingredients:
+- item: cooked black beans
+  qty: '1'
+  unit: cup
+- item: baby spinach
+  qty: '1'
+  unit: handful
+- item: diced roasted red pepper
+  qty: '0.25'
+  unit: cup
+- item: oat flour (rolled oats ground in blender)
+  qty: '0.33'
+  unit: cup
+- item: Winter Salts
+  qty: '1'
+  unit: tsp
+- item: ghee (optional, for pan-frying)
+  qty: '1'
+  unit: tsp
+steps:
+- Preheat the oven to 350°F (175°C) and line a baking sheet with parchment paper.
+- Mash the black beans well with a fork in a large bowl, then work in the spinach, roasted red pepper,
+  oat flour, and Winter Salts until the mixture is uniform but still slightly chunky.
+- Shape the mixture into 2 large or 3 medium patties and place on the prepared baking sheet.
+- Bake for 10 minutes per side, or alternatively melt 1 tsp ghee in a frying pan and pan-fry over medium
+  heat for 5–7 minutes per side until well browned.
+- Serve over a steamed salad bowl, with rice and chutney, or in your preferred format.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 20
+approx_kcal_per_serving: 240
+kcal_is_estimate: true
+protein_g: 12
+good_for:
+- gut-microbiome
+- blood-sugar-regulation
+- protein-adequacy-vegetarian
+- inflammation
+one_line: Hearty black bean patties bound with oat flour — quick to make, protein-rich, and satisfying
+  on a cold day.
+headnote: These patties hold together well and pack well for the next day's lunch; use the oven method
+  for hands-off cooking or the pan-fry for a crispier crust.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 338
+image:
+  file: images/odonnell/odonnell-338-192.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: black bean and oat burger
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,36 @@
+slug: temper-spices-in-ghee-tadka
+display_name: Bloom Spices in Warm Ghee (Tadka / Tempering)
+aliases: []
+category: food_prep
+summary: Briefly frying whole or ground spices in warm ghee for 30-60 seconds before adding the rest of
+  the dish. The fat medium extracts fat-soluble medicinal compounds and makes spice qualities available
+  to deep body tissues.
+benefits:
+- fat-soluble phytonutrients (curcumin, etc.) are extracted into ghee for full absorption
+- whole seeds that pop release volatile oils evenly through the dish
+- kindles agni and warms the food
+- ghee acts as a carrier (anupana) to transport medicinal qualities into tissues
+swap_from:
+- adding spices directly to water-based dishes without fat
+- dry spice toppings added raw
+how_to_use: Warm 1-2 tsp ghee in a small pan until liquid and shimmering. Add whole cumin, mustard, or
+  fennel seeds; wait until they pop. Add ground spices for 30 seconds more. Pour the spiced ghee over
+  the finished dish or add remaining ingredients to the pan.
+cautions:
+- do not overheat ghee to smoking point — use medium-low heat
+- whole seeds go in before ground spices (ground spices burn faster)
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- bile-flow-regulation
+- low-stomach-acid
+- digestive-enzyme-deficiency
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Kichari recipe — tempering step'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -3,6 +3,7 @@ data/staging/
 data/_audit.jsonl
 data/_backlog.yaml
 data/_cleanup/
+data/_recipes/_candidates.yaml
 
 # Local virtualenv
 .venv/
@@ -11,3 +12,4 @@ data/_cleanup/
 __pycache__/
 *.pyc
 *.pyo
+data/_recipes/images/

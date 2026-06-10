@@ -1,0 +1,38 @@
+slug: api-bacopa-monnieri-energetics-medhya-rasayana
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Vol IV) classifies Brahmi/Bacopa monnieri (Linn.)
+  Pennell with the following energetics: Rasa — Madhura (sweet), Tikta (bitter), Kasaya (astringent);
+  Guna — Laghu (light), Sara (mobile); Virya — Sita (cold potency); Vipaka — Madhura; Karma — Medhya (intellect-promoting),
+  Rasayana (rejuvenating), Vatahara (pacifies vata), Matiprada (wisdom-giving), Mohahara (clarity-restoring),
+  Ayusya (life-promoting). Principal Ayurvedic indications: cognitive disorders, anxiety, epilepsy, and
+  as a general nervine tonic. Official dose (Matra): 1–3 g of dried herb powder (Churna) or 10–20 ml of
+  fresh juice.'
+evidence_tier: plausible_emerging
+rationale: API Part I, Vol IV lists Brahmi (Bacopa monnieri) with full dravyaguna pharmacognosy. It is
+  classified among the classical Medhya Rasayanas (brain rejuvenators) alongside Mandukaparni (gotu kola),
+  Shankhapushpi, and Yashtimadhu in the Charaka Samhita.
+coaching_translation: India's official Ayurvedic pharmacopoeia classifies bacopa as a cold-potency, mind-calming
+  herb — the 'wisdom-giving' Medhya Rasayana — used at 1–3 g daily for cognitive support, anxiety, and
+  nervous-system rejuvenation.
+out_of_scope_notes: ''
+caveats:
+- Sita (cold) virya means bacopa suits pitta/vata types; those with strong kapha or sluggish digestion
+  may need an adjuvant (e.g. black pepper, ginger).
+- Modern standardised extract doses are 300–450 mg/day at 20% bacosides — much lower than the traditional
+  1–3 g churna.
+- GI side effects (nausea, loose stools, cramps) more common at higher traditional doses.
+linked_to_topics:
+- cognitive-decline
+- anxiety
+linked_to_mechanisms:
+- ngf-bdnf-neurotrophic-signaling
+- cholinergic-anti-inflammatory-pathway
+linked_to_supplements:
+- bacopa-monnieri
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Brahmi (Bacopa monnieri), API Part I, Vol IV, Ayurvedic Pharmacopoeia of India, Govt of India
+    (https://naturalingredient.org/wp/wp-content/uploads/API-Vol-4.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

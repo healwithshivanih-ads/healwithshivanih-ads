@@ -1,0 +1,30 @@
+slug: largest-meal-at-midday-peak-agni
+statement: 'In Ayurveda, the digestive fire (agni) follows the arc of the sun: it is weakest in the morning,
+  peaks at midday, and wanes in the evening. Making lunch the largest and most complex meal — including
+  fats, proteins, and heavier foods — and keeping breakfast and dinner lighter optimises digestion and
+  tissue-building.'
+evidence_tier: plausible_emerging
+rationale: Classical Ayurvedic texts align jathara agni with solar cycles; modern circadian nutrition
+  research supports heavier eating earlier in the day for metabolic benefit and weight management.
+coaching_translation: Make lunch your main meal. Your digestion is strongest at midday, so save your biggest,
+  most nourishing meal for then. Dinner should be light — it is a 'supplement' to what you did not eat
+  at lunch, not the main event.
+out_of_scope_notes: ''
+caveats:
+- Traditional Ayurvedic principle; circadian nutrition research is supportive but not fully mapped to
+  the specific Ayurvedic mechanism.
+- Applies to general healthy adults; clients with hypoglycaemia or shift work may need individual adjustments.
+linked_to_topics:
+- agni-digestive-fire
+- meal-timing-and-digestive-rest
+- ayurvedic-circadian-clock
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: The Principles of Ayurvedic Eating — Suggested Daily Rhythm'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

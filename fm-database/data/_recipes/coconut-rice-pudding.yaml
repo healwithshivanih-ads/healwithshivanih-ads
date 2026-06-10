@@ -1,0 +1,87 @@
+slug: coconut-rice-pudding
+name: Coconut Rice Pudding
+meal_type:
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: India
+seasons:
+- summer
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+main_ingredients:
+- cooked white jasmine rice
+- coconut milk
+- dates, pitted and chopped
+- coconut sugar or maple syrup
+- almonds, soaked and chopped or ground
+- cardamom powder
+- fresh mint leaves for garnish
+contains_allergens:
+- nuts
+ingredients:
+- item: cooked white jasmine rice
+  qty: '1'
+  unit: cup
+- item: coconut milk
+  qty: '1'
+  unit: cup
+- item: dates, pitted and chopped
+  qty: '2'
+  unit: whole
+- item: coconut sugar or maple syrup
+  qty: '2'
+  unit: tsp
+- item: almonds, soaked and chopped or ground
+  qty: '10'
+  unit: whole
+- item: cardamom powder
+  qty: '0.25'
+  unit: tsp
+- item: fresh mint leaves for garnish
+  qty: '1'
+  unit: few leaves
+steps:
+- Combine the cooked rice and coconut milk in a medium saucepan and heat over medium-high, stirring, until
+  the mixture comes to a boil.
+- Stir in the chopped dates, sweetener, soaked almonds, and cardamom powder.
+- Reduce the heat to low, cover, and simmer for 15 minutes, stirring occasionally, until the pudding thickens.
+- Divide into 2 decorative bowls, garnish with fresh mint leaves, and serve warm or at room temperature.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 20
+approx_kcal_per_serving: 330
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- ayurvedic-elemental-design-doshas
+one_line: A light Ayurvedic kheer of jasmine rice simmered in coconut milk with dates, almonds, and cardamom.
+headnote: Inspired by India's festival sweet kheer, this coconut-based version is far lighter than the
+  traditional recipe and can be enjoyed more freely as a nourishing summer dessert.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 18
+image:
+  file: images/odonnell/odonnell-019-007.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: coconut rice pudding
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,42 @@
+slug: honey-never-heated-cooked-honey-toxic-ayurveda
+statement: >-
+  Ayurveda teaches that honey should never be cooked or heated. Raw, uncooked
+  honey is regarded as wholesome ("nectar"), but once heated its molecules are
+  said to become a clogging, glue-like substance that adheres to mucous
+  membranes, blocks the subtle channels, and produces toxins ("poison"). The
+  practical rule is to add honey only to warm — not boiling-hot — preparations
+  and never to bake or cook with it. Separately, honey and ghee in EQUAL amounts
+  by weight is held to be an incompatible combination (a prabhava effect), while
+  a two-parts-ghee to one-part-honey ratio is not.
+evidence_tier: fm_specific_thin
+rationale: >-
+  The classical caution against heated honey predates but loosely parallels the
+  modern observation that heating honey degrades enzymes and can raise
+  hydroxymethylfurfural (HMF). The equal-parts honey-ghee rule is given as a
+  textbook example of prabhava — an action not explained by taste, potency or
+  post-digestive effect.
+coaching_translation: >-
+  Keep honey raw and cool. Stir it into tea or warm water only once the drink
+  has cooled to a comfortable sipping temperature, never into a boiling cup, and
+  don't bake or cook with it — use jaggary or another sweetener for cooking
+  instead. And don't mix honey and ghee in equal spoonfuls.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    The "cooked honey is poison" teaching is traditional Ayurvedic doctrine; the
+    modern concern with heated honey (enzyme loss, HMF) is real but the toxicity
+    claim is far stronger than current evidence supports.
+  - Honey is not suitable for infants under one year (botulism risk) regardless of preparation.
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 4: Food Combining — Other Food Tips (p.48); mitigating factors (p.46)"
+    quote: "According to ancient Ayurvedic literature, honey should never be cooked. If it is cooked, the molecules become a non-homogenized glue which adheres to mucous membranes and clogs subtle channels, producing toxins. Uncooked honey is nectar. Cooked honey is poison."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

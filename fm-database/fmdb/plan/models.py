@@ -284,6 +284,7 @@ class Client(BaseModel):
 
     client_id: str
     display_name: str = ""              # for coach's reference; can be pseudonym
+    assigned_coach: str = ""            # coach name, e.g. "Shivani" — populates client-facing copy dynamically
     intake_date: date
     date_of_birth: Optional[date] = None   # preferred; used to compute exact age
     age_band: str = ""                  # legacy / derived from DOB; kept for backward compat
@@ -889,6 +890,12 @@ class NutritionPlan(BaseModel):
     cooking_adjustments: list[str] = Field(default_factory=list)  # CookingAdjustment slugs
     home_remedies: list[str] = Field(default_factory=list)        # HomeRemedy slugs
     custom_remedies: list[CustomRemedy] = Field(default_factory=list)  # bespoke per-client
+    # Coach-pinned recipes for THIS client's plan (slugs from data/_recipes/).
+    # The meal-plan letter surfaces these FIRST as "coach-selected", then fills
+    # with the dosha/season/diet-matched library — and the AI stays FREE to
+    # compose other dishes too. The recipe library is a preferred palette, never
+    # a restriction. Default empty so existing plans load unchanged.
+    recipes: list[str] = Field(default_factory=list)              # Recipe slugs (data/_recipes/)
 
 
 class AyurvedaSection(BaseModel):

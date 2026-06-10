@@ -1,0 +1,33 @@
+slug: steam-saute-vegetables
+display_name: Steam-Sauté Vegetables (Covered Pan with Water)
+aliases: []
+category: food_prep
+summary: Cook vegetables in a covered pan with 1-2 tablespoons of water instead of oil, allowing them
+  to steam in their own moisture. Preserves heat-sensitive nutrients while producing a softer, more digestible
+  texture than raw.
+benefits:
+- preserves water-soluble vitamins better than boiling
+- softens cell walls making nutrients more bioavailable
+- warmer and more digestible than raw vegetables for vata types
+- avoids high-heat oxidation of cooking oils
+swap_from:
+- eating raw vegetables
+- deep frying or high-heat stir-frying in oil
+how_to_use: Add 1-2 tbsp water (not oil) to a covered pan. Add chopped vegetables, cover, and cook over
+  medium heat until tender but not mushy. Season after cooking to avoid drawing out moisture.
+cautions:
+- avoid over-cooking — vegetables should retain colour and slight firmness
+- not suitable for kapha-aggravating watery vegetables such as zucchini in excess
+linked_to_topics:
+- cooking-to-preserve-nutrients
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Steamed Salad Bowl variation'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

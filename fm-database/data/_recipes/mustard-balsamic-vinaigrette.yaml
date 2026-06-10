@@ -1,0 +1,79 @@
+slug: mustard-balsamic-vinaigrette
+name: Mustard Balsamic Vinaigrette
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sour
+- sweet
+main_ingredients:
+- sunflower or grapeseed oil
+- high-quality balsamic vinegar
+- dijon mustard
+- raw honey dissolved in warm water
+- tamari
+contains_allergens: []
+ingredients:
+- item: sunflower or grapeseed oil
+  qty: '2'
+  unit: tbsp
+- item: high-quality balsamic vinegar
+  qty: '0.25'
+  unit: cup
+- item: Dijon mustard
+  qty: '1'
+  unit: tsp
+- item: raw honey dissolved in warm water
+  qty: '1'
+  unit: tbsp each
+- item: tamari
+  qty: '1'
+  unit: tsp
+steps:
+- Combine all ingredients in a small 8-ounce jar.
+- Seal the jar and shake vigorously until the dressing is emulsified. Alternatively, blend a double batch
+  for 30 seconds in a blender.
+- Store in the jar in the refrigerator and shake well before each use.
+- Drizzle over seasonal vegetables or a steamed salad bowl.
+servings: '3'
+prep_time_min: 3
+cook_time_min: 0
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- detoxification
+one_line: A sharp balsamic and mustard dressing with honey and tamari — warming, penetrating, and perfectly
+  tuned to stoke spring digestion.
+headnote: Balsamic vinegar and mustard both carry warming, sharp qualities that make this vinaigrette
+  not just a flavour boost but a genuine digestive aid when drizzled over spring salads and steamed vegetables.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 214
+image:
+  file: images/odonnell/odonnell-214-116.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: mustard balsamic vinaigrette
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

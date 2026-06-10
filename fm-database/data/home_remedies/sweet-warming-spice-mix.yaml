@@ -1,0 +1,51 @@
+slug: sweet-warming-spice-mix
+display_name: Sweet Warming Spice Mix (Cinnamon, Ginger, Cardamom)
+aliases: []
+category: spice_blend
+route: internal
+summary: A pre-mixed blend of ground cinnamon, ginger, and cardamom in a 2:2:1 ratio. Warming, digestive,
+  and aromatic; used to season sweet grain dishes, warm milks, cooked fruit, and beverages. Particularly
+  useful in cool months and for vata and kapha types.
+indications:
+- cold, sluggish digestion — particularly in autumn and winter
+- post-meal bloating from sweet or starchy foods
+- nausea or morning sickness (ginger-forward version)
+- blood sugar support when added to carbohydrate-rich meals
+contraindications:
+- use sparingly for high pitta or pitta conditions (inflammatory bowel, acne, heartburn) — warming quality
+  can aggravate
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- pungent
+virya: null
+vipaka: null
+prabhava: ''
+ayurvedic_actions:
+- warming
+- agni-kindling
+- digestive
+- carminative
+preparation: Mix 2 tbsp ground cinnamon + 2 tbsp ground ginger + 1 tbsp ground cardamom. Store in a sealed
+  jar. Use 1/2-1 tsp per serving on porridge, in warm milk, or in baked fruit.
+typical_dose: 1/2-1 tsp per serving
+duration: Seasonal use — primarily autumn through spring; use lightly in summer
+timing_notes: Add to food or warm beverages after cooking. Especially helpful with breakfast grains to
+  support morning digestion.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- low-stomach-acid
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Sweet Spice Mix recipe'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

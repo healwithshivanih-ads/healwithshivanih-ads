@@ -1,0 +1,42 @@
+slug: motherwort-hyperthyroid-palpitations-anxiety
+statement: "Leonurus cardiaca (motherwort) is German Commission E approved for cardiac\
+  \ disorders and associated anxiety, making it the primary botanical for hyperthyroid-driven\
+  \ tachycardia, palpitations, and nervousness. Romm includes it in every hyperthyroid\
+  \ botanical formula due to its sedative, anxiolytic, anti-arrhythmic, and antispasmodic\
+  \ actions."
+evidence_tier: fm_specific_thin
+rationale: "German Commission E approval (Europe's equivalent of evidence-based botanical\
+  \ licensing) for cardiac disorders + anxiety gives motherwort stronger regulatory\
+  \ standing than most hyperthyroid herbs. Romm positions it as symptom-management\
+  \ for the cardiovascular sequelae of hyperthyroidism (tachycardia, palpitations)\
+  \ rather than as a direct antithyroid agent. The anxiolytic + anti-arrhythmic combination\
+  \ is clinically useful given that palpitations and anxiety are the most distressing\
+  \ hyperthyroid symptoms."
+coaching_translation: "Motherwort is the 'heart herb' in the hyperthyroid formula —\
+  \ it doesn't directly block thyroid overactivity, but it calms the racing heart,\
+  \ palpitations, and anxiety that make hyperthyroid so hard to live with. It has\
+  \ European regulatory approval for these cardiac-adjacent uses. Usually 25mL in a\
+  \ 100mL tincture formula combined with bugleweed and lemon balm."
+caveats:
+  - Avoid in pregnancy — can stimulate uterine contractions
+  - Avoid in heavy menstrual bleeding (can increase flow)
+  - Contraindicated with cardiac medications without clinician oversight
+  - Do not use as monotherapy for Graves' — pairs with bugleweed + lemon balm
+linked_to_topics:
+  - hyperthyroidism
+linked_to_mechanisms:
+  - tsh-receptor-stimulating-antibodies
+linked_to_supplements:
+  - motherwort-leonurus-cardiaca
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 6 — Endocrine Disorders, Table 6-3 Botanical Treatments for\
+      \ Hyperthyroidism, p. 195"
+    quote: "Leonurus cardiaca (Motherwort): sedative, anxiolytic, anti-arrhythmic,\
+      \ antispasmodic. German Commission E approved for cardiac disorders and associated\
+      \ anxiety, and for symptomatic relief in hyperthyroidism. For tachycardia and\
+      \ palpitations."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

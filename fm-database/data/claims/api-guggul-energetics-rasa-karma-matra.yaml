@@ -1,0 +1,36 @@
+slug: api-guggul-energetics-rasa-karma-matra
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Vol I) classifies guggul (Commiphora mukul Engl.)
+  with the following energetics: Rasa — Katu (pungent), Tikta (bitter), Kasaya (astringent); Guna — Laghu
+  (light), Sara (mobile), Vasada (non-slimy); Virya — Usna (hot potency); Vipaka — Katu; Karma — Balya
+  (strengthening), Rasayana (rejuvenating), Medohara (fat-reducing), Bhagnasandhanakrt (fracture-healing).
+  Principal indications (Rogadhikara): Amavata (rheumatoid arthritis), Medoroga (obesity/dyslipidaemia),
+  Kustha (skin disorders), Prameha (diabetes/metabolic disorders), Vatavyadi (vata diseases). Official
+  dose (Matra): 2–4 g of purified resin.'
+evidence_tier: plausible_emerging
+rationale: The API is the official Govt of India pharmacopoeia for Ayurvedic herbs; Shuddha Guggulu is
+  listed in Part I, Vol I with full dravyaguna classification.
+coaching_translation: Ayurveda's official Indian pharmacopoeia classifies guggul as a hot-potency, fat-reducing,
+  joint-supportive herb — taken as 2–4 g of purified resin — primarily indicated for inflammatory joint
+  conditions, obesity, skin disorders, and metabolic disease.
+out_of_scope_notes: ''
+caveats:
+- Only Shuddha (purified) Guggulu should be used; raw resin is irritant.
+- Hot virya contraindicates use in pitta-dominant/inflammatory conditions without proper formulation.
+- Matra (2–4 g) is for traditional preparations; modern standardised extracts use lower doses (250–500
+  mg guggulsterones 2.5–5%).
+linked_to_topics:
+- dyslipidemia
+- chronic-inflammation
+- hypothyroidism
+linked_to_mechanisms:
+- cholesterol-absorption-blockade
+- chronic-inflammation
+linked_to_supplements:
+- guggul
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Guggulu, API Part I, Vol I, Ayurvedic Pharmacopoeia of India, Govt of India (https://www.ayurveda.hu/api/API-Vol-1.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

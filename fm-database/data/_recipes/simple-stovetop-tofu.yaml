@@ -1,0 +1,80 @@
+slug: simple-stovetop-tofu
+name: Simple Stovetop Tofu
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- pungent
+- astringent
+- sour
+main_ingredients:
+- extra firm tofu, 12-oz block
+- ghee
+- nutritional yeast
+- tamari
+contains_allergens:
+- dairy
+- soy
+ingredients:
+- item: extra firm tofu, 12-oz block
+  qty: '12'
+  unit: oz
+- item: ghee
+  qty: '2'
+  unit: tbsp
+- item: nutritional yeast
+  qty: '2'
+  unit: tbsp
+- item: tamari
+  qty: '2'
+  unit: tbsp
+steps:
+- Drain and rinse the tofu. Press it gently to remove excess moisture, then cut into 1-inch cubes.
+- Melt the ghee in a large frying pan over medium-low heat. Arrange the tofu cubes in a single layer and
+  fry for about 7 minutes, shaking the pan occasionally to prevent sticking.
+- Flip the cubes with a spatula and continue frying for another 7 minutes until the second sides are browned
+  and all liquid has evaporated.
+- Remove the pan from heat. While the tofu is still in the pan, sprinkle on the nutritional yeast, then
+  the tamari, and toss with the spatula until every cube is well coated.
+- Serve warm over steamed kale or a steamed salad bowl.
+servings: '3'
+prep_time_min: 5
+cook_time_min: 15
+approx_kcal_per_serving: 210
+kcal_is_estimate: true
+protein_g: 16
+good_for:
+- protein-adequacy-vegetarian
+- agni-digestive-fire
+one_line: Golden pan-fried tofu cubes finished with nutritional yeast and tamari — a quick high-protein
+  spring staple with a satisfying cheesy edge.
+headnote: Nutritional yeast gives this tofu a savoury, almost-cheesy coating with none of the heaviness
+  of dairy, making it an ideal light-protein option for spring when the body wants to stay dry and clean.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 178
+image:
+  file: images/odonnell/odonnell-178-090.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: simple stovetop tofu
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

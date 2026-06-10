@@ -1,0 +1,58 @@
+slug: rice-water-cooling-digestive
+display_name: Rice Water (Cooling Digestive & Urinary Soother)
+aliases:
+  - rice-wash-water
+  - cooked-rice-water
+  - tandulodaka
+category: other
+route: internal
+summary: >-
+  The cloudy, starchy water left from cooking (or washing) white rice — a simple,
+  cooling, soothing, demulcent drink Lad uses both on its own and as the base for
+  cooling herbs such as cilantro and coriander. Sweet, cooling and easy on the
+  system, it soothes burning urination, helps bind loose stools, and gently
+  rehydrates during convalescence. A gentle pitta-pacifying preparation made from
+  a kitchen staple.
+indications:
+  - burning urination (soothing)
+  - diarrhea / loose stools (mildly binding)
+  - dehydration / convalescence
+  - an irritated, overheated (pitta) digestive tract
+  - a cooling base for steeping coriander, cilantro or gokshura
+contraindications:
+  - heavy kapha congestion or very dull agni — take warm and in modest amounts
+  - not a treatment for urinary infection — refer if fever, blood in urine, or symptoms persist
+balances_dosha:
+  - pitta
+  - vata
+aggravates_dosha: []
+rasa:
+  - sweet
+virya: cooling
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+  - shita
+  - demulcent
+  - rehydrating
+preparation: >-
+  Cook 1/4 cup white rice in 2-3 cups water until soft, then strain off the
+  cloudy water (or use the water from rinsing raw rice, "rice wash water").
+  Drink warm or cool. For burning urination, Lad mixes about 1/2 cup rice water
+  with 2 tsp fresh cilantro juice, 3 times a day.
+typical_dose: 1/2 to 1 cup, 2-3 times a day during symptoms
+duration: A few days during acute burning urination or loose stools
+timing_notes: Between meals; warm in cold weather, cool in heat
+linked_to_topics:
+  - digestion-and-nutrient-absorption
+  - agni-digestive-fire
+linked_to_mechanisms: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 8: Foods for Healing — Vegetables, Cilantro #3 (p.203); Herbs, Coriander #3 (p.209)"
+    quote: "For burning urination, try mixing 1/2 cup rice water - made from cooking 1/4 cup of rice in 2 to 3 cups of water - with 2 teaspoons of cilantro juice."
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

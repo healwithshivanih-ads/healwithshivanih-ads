@@ -14,7 +14,8 @@ summary: Ayurveda treats the gut digestive fire (agni) as the centre of all heal
   is strongest, and tuning into the meal via a deep breath or short prayer before
   eating to engage rest-and-digest (parasympathetic) tone. Multiple agnis are described
   (brain, body, tissue-level) but the gut digestive fire is the master.
-key_mechanisms: []
+key_mechanisms:
+- digestive-enzyme-deficiency
 common_symptoms:
 - bloating
 - gas
@@ -22,6 +23,9 @@ common_symptoms:
 - food-sensitivities
 related_topics:
 - ayurvedic-elemental-design-doshas
+- ayurvedic-circadian-clock
+- digestion-and-nutrient-absorption
+- maldigestion
 - inflammaging
 sources:
 - id: gupta-energy-blueprint-podcast-2026
@@ -31,8 +35,11 @@ sources:
     When that fire is healthy, robust, and good, that's the centre of winning at inflammation
     because it's going to process and absorb everything properly and help you excrete
     everything properly.
+- id: lad-ayurvedic-cooking-self-healing-1997
+  location: "Chapter 3: Taste and Digestion — Agni, The Digestive Fire & The Varieties of Agni (pp.39-42)"
+  quote: "In its normal, balanced state, agni sustains one's lifespan, vitality and good health. It provides vital essence (ojas)... When agni is not functioning properly, the person begins to feel unwell."
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: 2026-06-10
 updated_by: Shivani

@@ -1,0 +1,79 @@
+slug: everyday-chia-pudding
+name: Everyday Chia Pudding
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- chia seeds
+- almond milk
+- maple syrup (optional)
+- everyday sweet spice mix (optional)
+- pure vanilla extract (optional)
+contains_allergens:
+- nuts
+ingredients:
+- item: chia seeds
+  qty: '2'
+  unit: tbsp
+- item: almond milk
+  qty: '1'
+  unit: cup
+- item: maple syrup (optional)
+  qty: 1–2
+  unit: tsp
+- item: Everyday Sweet Spice Mix (optional)
+  qty: '1'
+  unit: tsp
+- item: pure vanilla extract (optional)
+  qty: '0.5'
+  unit: tsp
+steps:
+- Soak chia seeds in the almond milk for at least 5 minutes.
+- Transfer the soaked seeds, almond milk, and any mix-ins to a blender.
+- Blend on high speed for 2 minutes — the longer you blend, the smoother and lighter the pudding.
+- Let the pudding stand a few minutes to thicken, then serve in bowls.
+- 'Shortcut: halve the chia and shake everything in a jar (no blender) for a thicker tapioca-style version.'
+servings: '2'
+prep_time_min: 10
+cook_time_min: 0
+approx_kcal_per_serving: 160
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
+one_line: A nourishing blended chia pudding that comes together in minutes and keeps digestion lubricated.
+headnote: Chia's deeply hydrating quality makes this a grounding start to the day, particularly useful
+  in dry seasons or when the gut needs gentle support.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 102
+image:
+  file: images/odonnell/odonnell-102-026.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday chia pudding
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

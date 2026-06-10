@@ -1,0 +1,68 @@
+slug: everyday-sweet-spice-mix
+name: Everyday Sweet Spice Mix
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- cinnamon powder
+- ginger powder
+- cardamom powder
+contains_allergens: []
+ingredients:
+- item: cinnamon powder
+  qty: '2'
+  unit: tbsp
+- item: ginger powder
+  qty: '2'
+  unit: tbsp
+- item: cardamom powder
+  qty: '1'
+  unit: tbsp
+steps:
+- Combine all three powdered spices in a glass shaker jar.
+- Seal and shake to mix thoroughly.
+- Use with grain dishes, cooked fruits, warm milk, or cereals throughout the year.
+servings: '15'
+prep_time_min: 2
+cook_time_min: 0
+approx_kcal_per_serving: 6
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+- digestion-and-nutrient-absorption
+one_line: A warming blend of cinnamon, ginger, and cardamom for sweetening grain dishes and cooked fruits
+  without adding sugar.
+headnote: This trio enhances the naturally sweet taste of grains and fruits while providing a gentle warming
+  quality that supports digestion in cool weather.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 67
+image:
+  file: images/odonnell/odonnell-065-014.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: EVERYDAY SWEET SPICE MIX
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

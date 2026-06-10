@@ -1,0 +1,134 @@
+slug: south-indian-sambar
+name: South Indian Sambar
+meal_type:
+- breakfast
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: South Indian
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- water
+- yellow split mung beans, rinsed twice
+- turmeric
+- small tomatoes, coarsely chopped
+- carrot, coarsely chopped
+- green beans, coarsely chopped
+- daikon radish, coarsely chopped
+- coconut oil
+- small onion, diced (optional)
+- mustard seeds
+- fresh curry leaf sprigs (optional)
+- hing (asafetida)
+- grated coconut
+- sambar powder
+- salt
+- fresh cilantro for garnish (optional)
+contains_allergens: []
+ingredients:
+- item: water
+  qty: '4'
+  unit: cups
+- item: yellow split mung beans, rinsed twice
+  qty: '0.5'
+  unit: cup
+- item: turmeric
+  qty: '1'
+  unit: tsp
+- item: small tomatoes, coarsely chopped
+  qty: '2'
+  unit: whole
+- item: carrot, coarsely chopped
+  qty: '0.5'
+  unit: cup
+- item: green beans, coarsely chopped
+  qty: '0.5'
+  unit: cup
+- item: daikon radish, coarsely chopped
+  qty: '0.5'
+  unit: cup
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: small onion, diced (optional)
+  qty: '1'
+  unit: whole
+- item: mustard seeds
+  qty: '1'
+  unit: tsp
+- item: fresh curry leaf sprigs (optional)
+  qty: '2'
+  unit: sprigs
+- item: hing (asafetida)
+  qty: '2'
+  unit: pinches
+- item: grated coconut
+  qty: '0.25'
+  unit: cup
+- item: sambar powder
+  qty: 1-2
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: to taste
+- item: fresh cilantro for garnish (optional)
+  qty: '1'
+  unit: to taste
+steps:
+- Bring the water to a boil in a large saucepan. Add the mung beans and turmeric and return to a boil.
+- Add all the chopped vegetables except the onion. Reduce heat to low and simmer partially covered for
+  30 minutes.
+- While the dal cooks, heat the coconut oil in a frying pan over medium heat. Sauté the diced onion for
+  about 5 minutes until translucent. Stir in the mustard seeds, cover loosely (they will splutter), and
+  fry for 1 minute.
+- Add the curry leaves and stir, then add the hing and stir until all spices are coated in oil. Turn off
+  the heat and stir the grated coconut into the spiced oil mixture; let stand 1–2 minutes.
+- Pour the spiced oil mixture and the sambar powder into the cooked dal. Simmer everything together for
+  5 minutes, adding a splash of hot water if the sambar gets too thick — it should be slightly watery.
+- Season with salt. Serve in bowls over basmati rice or with dosa, garnished with fresh cilantro.
+servings: '4'
+prep_time_min: 15
+cook_time_min: 40
+approx_kcal_per_serving: 160
+kcal_is_estimate: true
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- detoxification
+- anti-inflammatory-diet
+- protein-adequacy-vegetarian
+one_line: A classic south Indian tomato-mung-dal soup with a fragrant mustard-coconut tempering — hot,
+  light, and cleansing for damp spring weather.
+headnote: Sambar's pungent, sour, and lightly spiced character makes it one of the best spring meals in
+  the Ayurvedic kitchen, equally good for breakfast or a main meal.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 120
+image:
+  file: images/odonnell/odonnell-119-044.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: south indian sambar
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

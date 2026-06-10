@@ -1,0 +1,49 @@
+slug: nasya-nasal-oiling
+display_name: Nasya (Nasal Oiling with Sesame Oil)
+aliases: []
+category: other
+route: external
+summary: Applying 2-3 drops of refined sesame oil (or commercial nasya oil) into each nostril using a
+  dropper. Lubricates the nasal mucosa, protects against airborne pathogens and dry air, balances vata
+  in the head and neck region, and supports mental clarity. Recommended daily in autumn and winter and
+  after neti pot irrigation.
+indications:
+- dry nasal passages, especially in autumn, winter, or after air travel
+- post-nasal drip or chronic sinus congestion
+- headaches associated with vata imbalance (tension, dryness)
+- follow-up after neti pot practice to prevent over-drying
+- mental fogginess or difficulty concentrating (vata in the mind)
+contraindications:
+- do not use if nasal passages are actively congested or blocked — will not reach mucosal surface
+- avoid immediately after eating or within 1 hour of eating
+- do not use during fever or active infection
+balances_dosha:
+- vata
+aggravates_dosha: []
+rasa: []
+virya: null
+vipaka: null
+prabhava: ''
+ayurvedic_actions:
+- vata-balancing
+- nasal-lubricating
+- pranic-balancing
+preparation: Decant refined (not raw) sesame oil or commercial nasya oil into a sterile glass dropper
+  bottle. Lie back or tilt head. Place 2-3 drops in each nostril. Breathe in gently. Remain supine for
+  1-2 minutes. Optionally follow with gentle inhalation through the nose to draw oil deeper.
+typical_dose: 2-3 drops per nostril
+duration: Daily practice especially in autumn/winter and during air travel
+timing_notes: Morning after neti pot, OR in the evening before bed for vata-calming effect. Do not use
+  within 1 hour of eating.
+linked_to_topics:
+- agni-digestive-fire
+- immune-resilience
+linked_to_mechanisms: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 3: Travel Tips and Dinacharya / Appendix 1: Nasya section'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

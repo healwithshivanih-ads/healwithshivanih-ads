@@ -1,0 +1,26 @@
+id: lad-ayurvedic-institute-food-chart
+title: "Food Guidelines for Basic Constitutional Types (The Ayurvedic Institute Food Chart)"
+source_type: book
+quality: high
+authors:
+  - Vasant Lad
+  - Usha Lad
+publisher: The Ayurvedic Press / The Ayurvedic Institute (Albuquerque, NM)
+year: 2008
+url: https://www.ayurveda.com
+notes: >-
+  The canonical Ayurvedic dosha food chart from The Ayurvedic Institute (Dr Vasant
+  Lad), excerpted from Ayurvedic Cooking for Self-Healing (Usha & Vasant Lad, 2nd
+  ed). A Favor/Avoid table for Vata, Pitta and Kapha across 15 food categories —
+  Fruits, Vegetables, Grains, Legumes, Dairy, Animal Foods, Condiments, Nuts,
+  Seeds, Oils, Beverages, Herbal Teas, Spices, Sweeteners, Food Supplements — with
+  '*' = okay in moderation and '**' = okay rarely. The authoritative per-food
+  dosha-suitability reference. Used here to build the structured food-dosha
+  reference asset (data/_food_guidelines/), a curated dosha-food mindmap, and
+  AI-suggestible dosha-eating principle claims. The chart itself states the
+  guidelines are general — individual agni, allergies, season and degree of dosha
+  aggravation still modify them.
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

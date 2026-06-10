@@ -1,0 +1,108 @@
+slug: masala-chai
+name: Masala Chai
+meal_type:
+- drink
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- winter
+- autumn
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sweet
+- bitter
+main_ingredients:
+- water
+- whole milk
+- indian-style fine tea dust or loose leaf black tea
+- coconut sugar
+- ginger powder or freshly grated ginger
+- cinnamon
+- green cardamom pods, crushed
+- whole cloves (optional)
+- fennel seeds (optional)
+- nutmeg, powdered (optional)
+- coriander powder (optional — the secret ingredient)
+contains_allergens:
+- dairy
+ingredients:
+- item: water
+  qty: '4'
+  unit: cups
+- item: whole milk
+  qty: '1'
+  unit: cup
+- item: Indian-style fine tea dust or loose leaf black tea
+  qty: '1.5'
+  unit: tbsp (or 3 tbsp loose)
+- item: coconut sugar
+  qty: '2'
+  unit: tbsp
+- item: ginger powder or freshly grated ginger
+  qty: '0.5'
+  unit: tsp
+- item: cinnamon
+  qty: '0.5'
+  unit: tsp
+- item: green cardamom pods, crushed
+  qty: '5'
+  unit: whole
+- item: whole cloves (optional)
+  qty: '2'
+  unit: whole
+- item: fennel seeds (optional)
+  qty: '0.5'
+  unit: tsp
+- item: nutmeg, powdered (optional)
+  qty: '1'
+  unit: dash
+- item: coriander powder (optional — the secret ingredient)
+  qty: '1'
+  unit: tsp
+steps:
+- Bring the water to a boil in a medium saucepan, add all the spices, reduce heat to low, and simmer for
+  at least 10 minutes.
+- Raise the heat to medium, pour in the milk, and bring the liquid just back to a boil — watch carefully
+  as milky chai foams up suddenly.
+- Reduce to a gentle simmer, add the tea and coconut sugar, stir to dissolve, and simmer uncovered for
+  5–7 minutes.
+- Remove from heat and pour through a fine-mesh strainer into a clean pot. Ladle into small chai mugs
+  to serve.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 20
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- blood-sugar-regulation
+one_line: A deeply spiced Indian milk tea simmered low and slow for a warming, aromatic cup.
+headnote: Masala chai is one of Ayurveda's most accessible daily rituals; simmering the spices before
+  adding the milk extracts their full therapeutic benefit and fills the kitchen with warmth.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 379
+image:
+  file: images/odonnell/odonnell-380-225.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: masala chai
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

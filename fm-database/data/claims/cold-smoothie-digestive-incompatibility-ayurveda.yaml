@@ -1,0 +1,32 @@
+slug: cold-smoothie-digestive-incompatibility-ayurveda
+statement: Cold, mixed smoothies — particularly those made with dairy, banana, and frozen fruit — are
+  one of the most digestively incompatible food combinations in Ayurveda. Dairy and banana are both mucus-forming
+  and heavy; together they create more mucus than the digestive fire can burn through. Cold temperature
+  further suppresses digestion. Where smoothies are used, they should be room-temperature or slightly
+  warm, limited to three ingredients, and contain no mix of milk and banana.
+evidence_tier: fm_specific_thin
+rationale: High-fat dairy combined with fruit sugars and a cold temperature delays gastric emptying, promotes
+  fermentation, and can increase mucus production in susceptible individuals. Many clients with kapha-type
+  constitutions or sinus congestion worsen with daily cold dairy-fruit smoothies.
+coaching_translation: The cold morning smoothie is one of the worst habits for digestion in Ayurveda.
+  Never mix banana and dairy. If you make smoothies, use room-temperature or warm liquid, keep it to 3
+  ingredients maximum, and skip frozen fruit. A spiced warm smoothie or nut-milk preparation is far easier
+  on your gut.
+out_of_scope_notes: ''
+caveats:
+- Highly relevant for clients with sinus congestion, IBS, mucus overproduction, or sluggish morning digestion.
+- In warm weather, a simple 2-ingredient cool smoothie (no dairy) may be appropriate for pitta types.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+linked_to_mechanisms:
+- food-fermentation-reflux
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Food Combinations — The Dreaded Smoothie'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

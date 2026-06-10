@@ -1,0 +1,32 @@
+slug: no-cold-drinks-meals-warm-water-agni
+statement: Warm water is the preferred beverage throughout the day and with meals in Ayurveda. Iced drinks
+  and cold beverages — especially with meals — dampen the digestive fire by introducing cold qualities
+  that suppress enzymatic activity. The ideal mealtime beverage is a small cup (approx. 150–180 ml) of
+  warm water, herbal digestive tea, or warm water with lemon.
+evidence_tier: fm_specific_thin
+rationale: Cold water reduces gastric temperature and slows enzymatic reactions. Warm liquids maintain
+  the thermal environment required for optimal pepsin and pancreatic enzyme activity. Large volumes of
+  water dilute digestive juices and impair food breakdown.
+coaching_translation: Stop drinking cold or iced water with meals — it slows your digestion by cooling
+  the digestive enzymes. Have a small cup of warm water or digestive tea with your food instead. Also
+  avoid large quantities of water right before or during meals — it dilutes your digestive juices.
+out_of_scope_notes: ''
+caveats:
+- Drinking 500 ml+ of cold water immediately before a meal may marginally impair gastric digestion — the
+  Ayurvedic teaching is directionally supported.
+- Wait 2 hours after a meal before drinking large amounts of water.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+linked_to_mechanisms:
+- low-stomach-acid
+- digestive-enzyme-deficiency
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Traditional Tips for Improving Digestion'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

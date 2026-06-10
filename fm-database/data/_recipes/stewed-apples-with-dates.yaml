@@ -1,0 +1,86 @@
+slug: stewed-apples-with-dates
+name: Stewed Apples with Dates
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- astringent
+- sour
+main_ingredients:
+- apples, cored and chopped
+- dates, pitted and halved
+- water
+- maple syrup
+- fresh gingerroot, grated
+- everyday sweet spice mix
+contains_allergens: []
+ingredients:
+- item: apples, cored and chopped
+  qty: '2'
+  unit: ''
+- item: dates, pitted and halved
+  qty: '4'
+  unit: ''
+- item: water
+  qty: '2'
+  unit: cups
+- item: maple syrup
+  qty: '1'
+  unit: tbsp
+- item: fresh gingerroot, grated
+  qty: '1'
+  unit: tbsp
+- item: Everyday Sweet Spice Mix
+  qty: '1'
+  unit: tsp
+steps:
+- Combine the chopped apples, dates, water, maple syrup, grated ginger, and spice mix in a small saucepan.
+- Bring to a boil over high heat, then reduce to medium-low and simmer for 5 minutes until the fruit softens.
+- Remove from heat. Use an immersion blender to briefly blend for a chunky texture, or puree about one-third
+  of the mixture in a blender and stir back in.
+- Divide between 2 breakfast bowls and serve warm.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 10
+approx_kcal_per_serving: 185
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- constipation
+- digestion-and-nutrient-absorption
+- detoxification
+one_line: A quick warm apple-date compote with ginger — gently cleansing, easy to digest, and ideal for
+  early autumn mornings.
+headnote: Cooking transforms the cool, dry quality of raw apples into a warm, soothing compote that clears
+  residual summer heat while grounding vata with naturally sweet dates.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 283
+image:
+  file: images/odonnell/odonnell-283-158.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: stewed apples with dates
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

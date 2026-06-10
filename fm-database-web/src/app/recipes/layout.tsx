@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Recipe pack · Shivani Hari",
+  title: "Recipe pack · The Ochre Tree",
   description: "Recipes from your healing plan",
 };
 

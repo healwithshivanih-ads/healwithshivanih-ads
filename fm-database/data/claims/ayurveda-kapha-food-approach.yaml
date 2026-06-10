@@ -1,0 +1,26 @@
+slug: ayurveda-kapha-food-approach
+statement: For a kapha constitution or kapha aggravation, favour light, dry, warm, well-spiced foods with
+  pungent, bitter and astringent tastes (astringent fruits, most vegetables, light grains like barley,
+  millet and buckwheat, legumes, abundant spices, honey) and reduce heavy, oily, cold, dense, sweet/sour/salty
+  foods (dairy, nuts, sweeteners, wheat, cold drinks).
+evidence_tier: fm_specific_thin
+rationale: From the Ayurvedic Institute / Lad Food Guidelines for Basic Constitutional Types — traditional
+  dosha-food matching (like increases like; opposite qualities balance).
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- General Ayurvedic guidance; individualise by the client's digestion, season and dosha state.
+- Dosha-food matching has limited modern-trial evidence; use as a framework alongside the client's response.
+linked_to_topics:
+- ayurvedic-elemental-design-doshas
+- midlife-weight-gain
+- insulin-resistance-metabolic-syndrome
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: lad-ayurvedic-institute-food-chart
+  location: Food Guidelines for Basic Constitutional Types
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

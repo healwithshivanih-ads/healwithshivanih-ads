@@ -1,0 +1,93 @@
+slug: fresh-fennel-dill-soup
+name: Fresh Fennel and Dill Soup
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- bitter
+- astringent
+main_ingredients:
+- fennel bulb
+- ghee
+- kale or swiss chard leaves
+- water
+- salt
+- cooked white or garbanzo beans or raw mung bean sprouts
+- fresh dill, finely chopped (or dried)
+contains_allergens:
+- dairy
+ingredients:
+- item: fennel bulb
+  qty: '1'
+  unit: whole
+- item: ghee
+  qty: '1'
+  unit: tsp
+- item: kale or Swiss chard leaves
+  qty: '2'
+  unit: large
+- item: water
+  qty: '3'
+  unit: cups
+- item: salt
+  qty: '1'
+  unit: tsp
+- item: cooked white or garbanzo beans or raw mung bean sprouts
+  qty: '0.5'
+  unit: cup
+- item: fresh dill, finely chopped (or dried)
+  qty: '1'
+  unit: tbsp
+steps:
+- Trim the woody stalks from the fennel bulb and thinly slice the bulb as you would an onion.
+- In a medium saucepan, sauté the fennel slices in the ghee over medium heat for about 5 minutes, stirring
+  occasionally.
+- Slice the kale or chard into thin strips and stir into the pan.
+- Add the water, salt, beans (and dried dill if using); bring to a gentle boil, then cover and simmer
+  for 20 minutes.
+- Remove from the heat and stir in the fresh dill before serving.
+servings: '2'
+prep_time_min: 8
+cook_time_min: 25
+approx_kcal_per_serving: 120
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- acid-reflux-and-cardiac-sphincter-weakness
+one_line: A simple soothing soup of fennel and leafy greens with beans — cooling, calming, and easy on
+  a hot evening.
+headnote: Fennel's sweet, anise-like quality paired with the bitterness of dark greens makes this a calming
+  summer soup that helps the body wind down after a long, hot day.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 246
+image:
+  file: images/odonnell/odonnell-247-136.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: fresh fennel and dill soup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

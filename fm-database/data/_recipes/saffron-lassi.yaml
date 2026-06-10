@@ -1,0 +1,73 @@
+slug: saffron-lassi
+name: Saffron Lassi
+meal_type:
+- drink
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- winter
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
+rasa:
+- sweet
+- sour
+main_ingredients:
+- organic whole milk yogurt
+- water, room temperature
+- saffron threads
+- maple syrup (optional)
+contains_allergens:
+- dairy
+ingredients:
+- item: organic whole milk yogurt
+  qty: '0.25'
+  unit: cup
+- item: water, room temperature
+  qty: '1'
+  unit: cup
+- item: saffron threads
+  qty: '1'
+  unit: pinch
+- item: maple syrup (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Combine the yogurt, water, saffron threads, and maple syrup if using in a wide-mouth jar.
+- Blend with an immersion blender for about 1 minute until smooth and frothy, or process in a blender
+  carafe.
+- Pour into 2 glasses and serve at room temperature.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 0
+approx_kcal_per_serving: 40
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A delicate golden lassi tinted with saffron — a traditional Ayurvedic digestive drink with a
+  subtle floral fragrance.
+headnote: Lassi is diluted yogurt, which is far easier to digest than yogurt eaten straight; saffron brings
+  its renowned rejuvenating and mood-lifting qualities to this simple winter drink.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 18
+image:
+  file: images/odonnell/odonnell-019-007.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: saffron lassi
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

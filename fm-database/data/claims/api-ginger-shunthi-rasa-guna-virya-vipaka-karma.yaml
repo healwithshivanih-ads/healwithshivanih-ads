@@ -1,0 +1,29 @@
+slug: api-ginger-shunthi-rasa-guna-virya-vipaka-karma
+statement: 'The Ayurvedic Pharmacopoeia of India (API) classifies dried ginger (Shunthi, Zingiber officinale
+  Rosc.) with the following energetics: Rasa (taste) — Katu (pungent); Guna (quality) — Laghu (light),
+  Snigdha (unctuous); Virya (potency) — Ushna (hot); Vipaka (post-digestive taste) — Madhura (sweet).
+  Principal Karma (actions): Dipana (digestive stimulant), Pacana (carminative), Anulomana (normalises
+  downward movement of vata), Vatakaphahara (pacifies vata and kapha doshas). Official Matra (dose): powder
+  1-2 g.'
+evidence_tier: plausible_emerging
+rationale: API Part I Vol 1 is the official Ayurvedic pharmacopoeia of the Government of India. These
+  energetic properties and dose ranges represent the authoritative Ayurvedic standard for this herb.
+coaching_translation: 'In Ayurveda''s official classification, dry ginger is pungent, light, and heating
+  — it kindles digestive fire, clears gas, and is specifically used where cold, heavy, sluggish digestion
+  or excess kapha/vata is the pattern. Official dose: 1-2 g of powder.'
+out_of_scope_notes: ''
+caveats:
+- API energetics describe traditional Ayurvedic properties; these do not substitute for biomedical evidence
+  of efficacy for specific conditions.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements:
+- ginger
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Ayurvedic Pharmacopoeia of India, Part I Vol 1, Shunthi (Zingiber officinale Rosc.) (https://www.ayurveda.hu/api/API-Vol-1.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

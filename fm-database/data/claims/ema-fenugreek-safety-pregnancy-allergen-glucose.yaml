@@ -1,0 +1,29 @@
+slug: ema-fenugreek-safety-pregnancy-allergen-glucose
+statement: 'The EMA/HMPC assessment for Trigonellae foenugraeci semen documents the following official
+  safety data: contraindicated in pregnancy (potential uterotonic activity documented in pharmacological
+  studies); cross-allergenicity within Fabaceae family (peanut, soya, chickpea) with documented cases
+  of urticaria and anaphylaxis; potential additive hypoglycaemic effect with antidiabetic medication;
+  not recommended in patients under 18 years. GI side effects (diarrhoea, flatulence, nausea) at doses
+  above 25 g/day. Maple syrup-like body odour is a benign side effect of regular use.'
+evidence_tier: plausible_emerging
+rationale: EMA safety data is compiled from the full literature review in the assessment report, including
+  pharmacovigilance cases and controlled trial adverse event reporting.
+coaching_translation: 'Key fenugreek safety points: avoid in pregnancy, screen for legume allergy before
+  use (peanut allergy is a contraindication), monitor blood sugar carefully if on diabetes medication,
+  and warn clients that their sweat and urine may smell of maple syrup — this is harmless but surprising.'
+out_of_scope_notes: Pregnancy contraindication is absolute at medicinal doses; culinary use is considered
+  safe.
+caveats: []
+linked_to_topics:
+- blood-sugar-regulation
+linked_to_mechanisms: []
+linked_to_supplements:
+- fenugreek
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: European Union herbal monograph on Trigonella foenum-graecum L., semen — EMA/HMPC assessment
+    report EMA/HMPC/179118/2012 (https://www.ema.europa.eu/en/medicines/herbal/trigonellae-foenugraeci-semen)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

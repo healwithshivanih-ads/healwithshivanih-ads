@@ -1,0 +1,32 @@
+slug: white-sugar-avoid-jaggery-coconut-sugar-instead
+statement: In Ayurveda, white sugar is considered a harmful food (sometimes described as a 'poison') because
+  the modern refining process removes the fibre and minerals of sugarcane, causing rapid glucose spikes
+  and nervous-system dysregulation. Less-processed alternatives — jaggery, coconut sugar, dates, maple
+  syrup — retain more of the original mineral matrix and digest more slowly. Honey should never be cooked,
+  as cooking transforms it into an indigestible, sticky substance.
+evidence_tier: plausible_emerging
+rationale: Refined white sugar has a high glycaemic index and no fibre, leading to rapid postprandial
+  glucose spikes and insulin surges. Less refined sweeteners have lower GI, trace minerals, and slower
+  absorption. Heated honey undergoes Maillard-type reactions; Ayurvedic texts warn of it becoming 'ama-forming'
+  when cooked.
+coaching_translation: Remove white sugar from your kitchen and replace it with jaggery, coconut sugar,
+  or small amounts of dates and maple syrup. These are less refined forms of sweetness that the body handles
+  better. Never add honey to hot drinks or cooked food — add it after the liquid cools to warm or room
+  temperature.
+out_of_scope_notes: ''
+caveats:
+- Even natural sweeteners should be used moderately, particularly for clients with diabetes or insulin
+  resistance.
+- The honey-cooking warning is traditional; modern evidence on glycation of heated honey is limited.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Foods You Will Not Find in This Book — White Sugar'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

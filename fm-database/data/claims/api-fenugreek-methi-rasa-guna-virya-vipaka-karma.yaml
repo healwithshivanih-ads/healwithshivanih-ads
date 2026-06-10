@@ -1,0 +1,36 @@
+slug: api-fenugreek-methi-rasa-guna-virya-vipaka-karma
+statement: 'The Ayurvedic Pharmacopoeia of India (API) classifies fenugreek (Methi, Trigonella foenum-graecum
+  L.) with: Rasa — Katu (pungent), Tikta (bitter); Guna — Laghu (light), Snigdha (unctuous); Virya — Ushna
+  (hot); Vipaka — Katu (pungent post-digestive). Principal Karma: Vatakaphahara (pacifies vata and kapha),
+  Deepana (kindles digestive fire), Brimhana (nourishing/bulk-promoting), Pramehaghna (anti-diabetic).
+  Rogadhikara: Prameha (metabolic/diabetic disorders), Aruchi (anorexia). Official Matra: seed powder
+  3-6 g.'
+evidence_tier: plausible_emerging
+rationale: API Part I Vol 4 provides the official Ayurvedic pharmacopoeial standard for Methi (Trigonella
+  foenum-graecum). The Pramehaghna karma aligns with the traditional use for blood sugar regulation documented
+  in WHO Vol 3.
+coaching_translation: 'In Ayurveda''s official classification, fenugreek is heating, pungent, and nourishing
+  — officially indicated for metabolic and blood sugar disorders (Prameha) and poor appetite. The Pramehaghna
+  karma is the traditional Ayurvedic basis for its use in insulin resistance and diabetes. Official dose:
+  3-6 g of seed powder.'
+out_of_scope_notes: ''
+caveats:
+- Ushna (heating) virya means fenugreek may aggravate pitta in excess — not ideal in high-pitta presentations
+  (acid reflux, inflammatory skin conditions).
+- Katu vipaka may be drying for vata-predominant constitutions; typically paired with ghee or warm water.
+linked_to_topics:
+- blood-sugar-regulation
+- insulin-resistance
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- insulin-resistance
+- gut-microbiome-glucose-regulation
+linked_to_supplements:
+- fenugreek
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Ayurvedic Pharmacopoeia of India, Part I Vol 4, Methi (Trigonella foenum-graecum L.) (https://www.ayurveda.hu/api/API-Vol-4.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

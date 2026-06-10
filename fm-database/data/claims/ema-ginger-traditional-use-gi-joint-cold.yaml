@@ -1,0 +1,33 @@
+slug: ema-ginger-traditional-use-gi-joint-cold
+statement: 'The EMA/HMPC monograph on Zingiberis rhizoma grants ''traditional use'' for: (1) relief of
+  mild spasmodic gastrointestinal complaints including flatulence and bloating; (2) loss of appetite;
+  (3) symptomatic relief of mild joint pain; (4) symptomatic relief of the common cold. These are classified
+  ''traditional herbal medicinal product'' — plausibility of effect accepted but no adequate clinical
+  evidence required.'
+evidence_tier: plausible_emerging
+rationale: EMA 'traditional use' classification is based on at least 30 years of traditional medicinal
+  use (15 within the EU) and accepted plausibility of effect, without requiring RCT-level evidence.
+coaching_translation: Ginger has European regulatory approval as a traditional remedy for bloating, poor
+  appetite, minor joint pain, and colds — these are officially recognised uses even though they're backed
+  by tradition rather than clinical trials.
+out_of_scope_notes: ''
+caveats:
+- EMA states the monograph covers the dried rhizome only; tinctures and liquid preparations are not covered.
+- 'Pregnancy and breastfeeding: the well-established posology for motion sickness does not apply; use
+  for morning sickness should only follow medical advice (safety data insufficient at therapeutic doses).'
+- No clinically significant drug interactions documented in the EMA assessment, but theoretical antiplatelet
+  effect warrants caution with anticoagulants.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- joint-pain
+linked_to_mechanisms: []
+linked_to_supplements:
+- ginger
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: European Union herbal monograph on Zingiber officinale Roscoe, rhizoma — EMA/HMPC/577856/2009
+    Rev. 1 (https://www.ema.europa.eu/en/medicines/herbal/zingiberis-rhizoma)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

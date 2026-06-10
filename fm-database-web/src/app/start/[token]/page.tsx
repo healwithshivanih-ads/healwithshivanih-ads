@@ -18,13 +18,13 @@ export default async function StartTokenPage({
     if (res.error === "already_used") {
       title = "Thanks — you've already confirmed";
       body =
-        "Your start date is locked in. If you'd like to change it, just message Shivani and she'll send a fresh link.";
+        "Your start date is locked in. If you'd like to change it, just message your coach and she'll send a fresh link.";
     } else if (res.error === "expired") {
       title = "This link has expired";
-      body = "Please message Shivani and she'll send you a fresh one.";
+      body = "Please message your coach and she'll send you a fresh one.";
     } else if (res.error === "invalid_or_expired") {
       title = "We couldn't find this link";
-      body = "Please check that you opened the most recent link from Shivani.";
+      body = "Please check that you opened the most recent link from your coach.";
     }
     return (
       <div className="rounded-2xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">

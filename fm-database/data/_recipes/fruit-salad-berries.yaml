@@ -1,0 +1,79 @@
+slug: fruit-salad-berries
+name: Fruit Salad Trio — Berry Salad
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- astringent
+- sweet
+main_ingredients:
+- blueberries
+- raspberries
+- strawberries, chopped
+- dried cranberries
+- pomegranate juice
+contains_allergens: []
+ingredients:
+- item: blueberries
+  qty: '0.5'
+  unit: cup
+- item: raspberries
+  qty: '0.5'
+  unit: cup
+- item: strawberries, chopped
+  qty: '0.5'
+  unit: cup
+- item: dried cranberries
+  qty: '1'
+  unit: tbsp
+- item: pomegranate juice
+  qty: '2'
+  unit: tbsp
+steps:
+- Toss all the berries together in a small bowl with the pomegranate juice.
+- Let the salad rest for 20–30 minutes before eating.
+- Serve on its own as a complete light meal.
+servings: '1'
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 110
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- anti-inflammatory-diet
+- constipation
+- agni-digestive-fire
+one_line: A mix of fresh seasonal berries in pomegranate juice — astringent, cleansing, and beautifully
+  pitta-cooling.
+headnote: 'Peak-season berries are among summer''s best medicines: their astringent quality tones tissues
+  and clears accumulated heat, making this salad a functional as well as delicious meal.'
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 252
+image:
+  file: images/odonnell/odonnell-253-140.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: fruit salad trio
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

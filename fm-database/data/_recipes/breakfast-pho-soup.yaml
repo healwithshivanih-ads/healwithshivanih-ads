@@ -1,0 +1,98 @@
+slug: breakfast-pho-soup
+name: Breakfast Pho Soup
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Vietnamese-inspired
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+- vata
+rasa:
+- pungent
+- sour
+- astringent
+main_ingredients:
+- water
+- medium carrot
+- bok choy stalks or 1 head baby bok choy
+- daikon radish, about 6 inches long
+- freshly grated ginger
+- black pepper
+- tamari
+- lime, juiced
+- lime wedges for garnish
+contains_allergens: []
+ingredients:
+- item: water
+  qty: '4'
+  unit: cups
+- item: medium carrot
+  qty: '1'
+  unit: whole
+- item: bok choy stalks or 1 head baby bok choy
+  qty: '2'
+  unit: stalks
+- item: daikon radish, about 6 inches long
+  qty: '1'
+  unit: whole
+- item: freshly grated ginger
+  qty: '2'
+  unit: tsp
+- item: black pepper
+  qty: '1'
+  unit: to taste
+- item: tamari
+  qty: '1'
+  unit: tbsp
+- item: lime, juiced
+  qty: '1'
+  unit: small
+- item: lime wedges for garnish
+  qty: '1'
+  unit: to taste
+steps:
+- Bring 4 cups of water to a boil in a large saucepan.
+- Coarsely chop all the vegetables and add them to the boiling water along with the grated ginger and
+  black pepper. Cover and simmer for 5 minutes.
+- If using zucchini or rice noodles, add them in the last minute of cooking; cover again and simmer until
+  noodles and vegetables are just tender.
+- Remove from heat and stir in the lime juice and tamari.
+- Ladle into two wide bowls and serve with fresh lime wedges.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 10
+approx_kcal_per_serving: 60
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- chronic-inflammation
+- detoxification
+one_line: A pungent, ginger-forward vegetable broth inspired by Vietnamese pho — a warming spring breakfast
+  that fires up digestion.
+headnote: Starting the day with a savoury, spiced broth instead of something sweet or cold is a key Ayurvedic
+  strategy for keeping kapha-season digestion lively and clear.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 87
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: breakfast pho soup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

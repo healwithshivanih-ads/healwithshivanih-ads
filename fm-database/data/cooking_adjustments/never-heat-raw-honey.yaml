@@ -1,0 +1,32 @@
+slug: never-heat-raw-honey
+display_name: Never Heat Raw Honey
+aliases: []
+category: food_prep
+summary: Raw honey should never be cooked or added to boiling liquids. Ayurvedic texts state that heated
+  honey undergoes molecular changes that render it indigestible and toxic (ama-forming). Add only to beverages
+  that have cooled below 60°C.
+benefits:
+- preserves honey's enzymes, antioxidants, and probiotic compounds
+- avoids formation of HMF (hydroxymethylfurfural) from heating fructose
+- maintains the therapeutic properties used in Ayurvedic formulations
+swap_from:
+- stirring honey into boiling tea
+- baking with raw honey
+- adding honey to hot oatmeal
+how_to_use: Brew or heat your beverage. Wait 1-2 minutes after removing from heat. Check temperature —
+  warm to the wrist, not hot. Then add honey and stir.
+cautions:
+- this applies specifically to RAW honey; commercially pasteurised honey has already been heated
+- heated honey in traditional recipes is a common conflict — advise clients to add after cooling
+linked_to_topics:
+- agni-digestive-fire
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: Chapter 3 and seasonal cooking notes — raw honey sidebar
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -144,7 +144,7 @@ export async function POST(req: NextRequest) {
     const renderedBody =
       `Hi ${firstName} 👋 just a gentle nudge — your intake form is still ` +
       `waiting for you. It expires ${expiresLabel}.\n\n${url}\n\n` +
-      `— Shivani`;
+      `— ${process.env.COACH_NAME || "Shivani"}`;
     const r = await sendAndRecordOutboundAction({
       phone: cand.mobile,
       clientId: cand.client_id,

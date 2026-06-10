@@ -1,0 +1,36 @@
+slug: pressure-cook-grains-legumes
+display_name: Pressure-Cook Beans and Grains for Digestibility
+aliases: []
+category: food_prep
+summary: Use a pressure cooker to fully cook beans and whole grains until very soft. Ayurveda identifies
+  dry, hard foods as most difficult to digest; pressure cooking renders them butter-soft and dramatically
+  reduces gas-causing oligosaccharides.
+benefits:
+- fully breaks down lectins and phytates in legumes
+- renders beans butter-soft — easiest possible digestibility
+- significantly reduces flatulence-causing oligosaccharides
+- faster cooking preserves more B vitamins vs long stovetop boiling
+swap_from:
+- under-cooked al dente beans and grains
+- eating canned beans with residual liquid
+how_to_use: 'Soak beans 6-8 hours, drain, add fresh water (3:1 ratio), pressure cook 20-30 min depending
+  on bean size. Grains: 1 part grain to 1.5 parts water, pressure cook 8-12 min. Let pressure release
+  naturally for best texture.'
+cautions:
+- always add hing (asafoetida) or ajwain during cooking to further reduce gas
+- ensure beans are fully cooked — firm or crunchy beans are more likely to cause bloating
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+- gut-lining-support
+- colonic-fermentation
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 3: Kitchen Equipment — Pressure Cooker section'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

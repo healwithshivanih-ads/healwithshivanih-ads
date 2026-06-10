@@ -1,0 +1,306 @@
+slug: ayurvedic-food-guide-by-dosha
+display_name: Ayurvedic Food Guide by Dosha (Vata / Pitta / Kapha)
+description: 'The Ayurvedic Institute / Lad dosha food chart as a navigable reference: for each dosha, the foods to favour
+  and avoid across 15 categories (fruits, vegetables, grains, legumes, dairy, animal foods, condiments, nuts, seeds, oils,
+  beverages, herbal teas, spices, sweeteners, supplements). * = moderation, ** = rarely. General guide — individualise by
+  agni, season and degree of aggravation.'
+aliases:
+- dosha-food-chart
+- vata-pitta-kapha-food-guide
+- food-guidelines-constitution
+related_topics:
+- ayurvedic-elemental-design-doshas
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+related_mechanisms: []
+tree:
+- label: Vata (air + ether — cold, dry, light, mobile)
+  linked_kind: topic
+  linked_slug: ayurvedic-elemental-design-doshas
+  notes: Foods that pacify vs aggravate Vata.
+  children:
+  - label: 🍎 Fruits
+    notes: 'General — favor: generally most sweet fruit; avoid: generally most dried fruit. FAVOR: apples (cooked), applesauce,
+      apricots, avocado, bananas, berries, cherries, coconut, dates (fresh), figs (fresh), grapefruit, grapes, kiwi, lemons,
+      limes, mangoes, melons, oranges, papaya, peaches, pineapple, plums, prunes (soaked), raisins (soaked), rhubarb, strawberries,
+      tamarind.  AVOID: apples (raw), cranberries, dates (dry), figs (dry), pears, persimmons, pomegranates, raisins (dry),
+      prunes (dry), watermelon.'
+    children: []
+  - label: 🥦 Vegetables
+    notes: 'General — favor: in general, vegetables should be cooked; avoid: generally frozen, raw or dried vegetables. FAVOR:
+      asparagus, beets, cabbage * (cooked), carrots, cauliflower *, cilantro, cucumber, daikon radish *, fennel (anise), garlic,
+      green beans, green chilies, jerusalem artichoke *, leafy greens *, leeks, lettuce *, mustard greens *, okra, olives,
+      black, onions (cooked) *, parsley *, parsnip, peas (cooked), potatoes, sweet, pumpkin, radishes (cooked) *, rutabaga,
+      spaghetti squash *, spinach (cooked) *, spinach (raw) *, sprouts *, squash, summer, taro root, turnip greens *, watercress,
+      zucchini.  AVOID: artichoke, beet greens **, bitter melon, broccoli, brussels sprouts, burdock root, cabbage (raw),
+      cauliflower (raw), celery, corn (fresh) **, dandelion greens, eggplant, horseradish **, kale, kohlrabi, mushrooms, olives,
+      green, onions (raw), peas (raw), peppers, sweet & hot, potatoes, white, prickly pear (fruit & leaves), radish (raw),
+      squash, winter, tomatoes (cooked) **, tomatoes (raw), turnips, wheat grass, sprouts.'
+    children: []
+  - label: 🌾 Grains
+    notes: 'FAVOR: amaranth *, durham flour, oats (cooked), pancakes, quinoa, rice (all kinds), seitan (wheat meat), sprouted
+      wheat bread (essene), wheat.  AVOID: barley, bread (with yeast), buckwheat, cereals (cold, dry or puffed), corn, couscous,
+      crackers, granola, millet, muesli, oat bran, oats (dry), pasta **, polenta **, rice cakes **, rye, sago, spelt, tapioca,
+      wheat bran.'
+    children: []
+  - label: 🫘 Legumes
+    notes: 'FAVOR: lentils (red) *, mung beans, mung dal, soy cheese *, soy milk *, soy sauce *, soy sausages *, tofu *, tur
+      dal, urad dal.  AVOID: aduki beans, black beans, black-eyed peas, chick peas (garbanzo beans), kidney beans, lentils
+      (brown), lima beans, miso **, navy beans, peas (dried), pinto beans, soy beans, soy flour, soy powder, split peas, tempeh,
+      white beans.'
+    children: []
+  - label: 🥛 Dairy
+    notes: 'General — favor: most dairy is good!; avoid: —. FAVOR: butter, buttermilk, butter, cheese (hard) *, cheese (soft),
+      cottage cheese, cow''s milk, ghee, goat''s cheese, goat''s milk, ice cream *, sour cream *, yogurt (diluted & spiced)
+      *.  AVOID: cow''s milk (powdered), goat''s milk (powdered), yogurt (plain, frozen or w/ fruit).'
+    children: []
+  - label: 🍗 Animal foods
+    notes: 'FAVOR: beef, buffalo, chicken (dark), chicken (white) *, duck, eggs, fish (freshwater or sea), salmon, sardines,
+      seafood, shrimp, tuna fish, turkey (dark).  AVOID: lamb, pork, rabbit, venison, turkey (white).'
+    children: []
+  - label: 🧂 Condiments
+    notes: 'FAVOR: black pepper *, chutney, mango (sweet or spicy), chili peppers *, coriander leaves *, dulse, gomasio, hijiki,
+      kelp, ketchup, kombu, lemon, lime, lime pickle, mango pickle, mayonnaise, mustard, pickles, salt, scallions, seaweed,
+      soy sauce, sprouts *, tamari, vinegar.  AVOID: chocolate, horseradish.'
+    children: []
+  - label: 🥜 Nuts
+    notes: 'General — favor: in moderation; avoid: —. FAVOR: almonds, black walnuts, brazil nuts, cashews, charole, coconut,
+      filberts, hazelnuts, macadamia nuts, peanuts, pecans, pine nuts, pistachios, walnuts.  AVOID: —.'
+    children: []
+  - label: 🌰 Seeds
+    notes: 'FAVOR: chia, flax, halva, pumpkin, sesame, sunflower, tahini.  AVOID: popcorn, psyllium **.'
+    children: []
+  - label: 🫗 Oils
+    notes: 'FAVOR: sesame (for internal & external use — most suitable), ghee (for internal & external use), olive (for internal
+      & external use), most other oils (for internal & external use), coconut (external use only), avocado (external use only).  AVOID:
+      flax seed.'
+    children: []
+  - label: 🥤 Beverages
+    notes: 'FAVOR: alcohol (beer; white wine) *, almond milk, aloe vera juice, apple cider, apricot juice, berry juice (except
+      for cranberry), carob *, carrot juice, chai (hot spiced milk), cherry juice, grain "coffee", grape juice, grapefruit
+      juice, lemonade, mango juice, miso broth, orange juice, papaya juice, peach nectar, pineapple juice, rice milk, sour
+      juices, soy milk (hot & well-spiced) *, vegetable bouillon.  AVOID: alcohol (hard; red wine), apple juice, black tea,
+      caffeinated beverages, carbonated drinks, chocolate milk, coffee, cold dairy drinks, cranberry juice, iced tea, icy
+      cold drinks, pear juice, pomegranate juice, prune juice **, soy milk (cold), tomato juice **, v-8 juice.'
+    children: []
+  - label: 🍵 Herbal teas
+    notes: 'FAVOR: ajwan, bancha, catnip *, chamomile, chicory *, chrysanthemum *, clove, comfrey, elder flower, eucalyptus,
+      fennel, fenugreek, ginger (fresh), hawthorne, juniper berry, kukicha *, lavender, lemon grass, licorice, marshmallow,
+      oat straw, orange peel, pennyroyal, peppermint, raspberry *, rosehips, saffron, sage, sarsaparilla, sassafras, spearmint,
+      strawberry *, wintergreen *.  AVOID: alfalfa **, barley **, basil **, blackberry, borage **, burdock, cinnamon **, cornsilk,
+      dandelion, ginseng, hibiscus, hops **, jasmine **, lemon balm **, mormon tea, nettle **, passion flower **, red clover
+      **, red zinger **, violet **, yarrow, yerba mate **.'
+    children: []
+  - label: 🌶 Spices
+    notes: 'General — favor: all spices are good; avoid: —. FAVOR: ajwan, allspice, almond extract, anise, asafoetida (hing),
+      basil, bay leaf, black pepper, caraway, cardamom, cayenne *, cinnamon, cloves, coriander, cumin, dill, fennel, fenugreek
+      *, garlic, ginger, marjoram, mint, mustard seeds, nutmeg, orange peel, oregano, paprika, parsley, peppermint, pippali,
+      poppy seeds, rosemary, saffron, salt, savory, spearmint, star anise, tarragon, thyme, turmeric, vanilla, wintergreen.  AVOID:
+      —.'
+    children: []
+  - label: 🍯 Sweeteners
+    notes: 'FAVOR: barley malt, fructose, fruit juice concentrates, honey, jaggary, molasses, rice syrup, dried or fresh sugar
+      cane juice, turbinado.  AVOID: maple syrup **, white sugar.'
+    children: []
+  - label: 💊 Food supplements
+    notes: 'FAVOR: aloe vera juice *, bee pollen, amino acids, minerals: calcium, minerals: copper, minerals: iron, minerals:
+      magnesium, minerals: zinc, royal jelly, spirolina, blue-green algae, vitamins: A, vitamins: B1, vitamins: B2, vitamins:
+      B6, vitamins: B12, vitamins: C, vitamins: D, vitamins: E, vitamins: P, vitamins: folic acid.  AVOID: barley green, brewer''s
+      yeast, vitamins: K.'
+    children: []
+- label: Pitta (fire + water — hot, sharp, oily)
+  linked_kind: topic
+  linked_slug: ayurvedic-elemental-design-doshas
+  notes: Foods that pacify vs aggravate Pitta.
+  children:
+  - label: 🍎 Fruits
+    notes: 'General — favor: generally most sweet fruit; avoid: generally most sour fruit. FAVOR: apples (sweet), applesauce,
+      apricots (sweet), avocado, berries (sweet), cherries (sweet), coconut, dates, figs, grapes (red & purple), limes *,
+      mangoes (ripe), melons, oranges (sweet) *, papaya *, pears, pineapple (sweet) *, plums (sweet), pomegranates, prunes,
+      raisins, strawberries *, watermelon.  AVOID: apples (sour), apricots (sour), bananas, berries (sour), cherries (sour),
+      cranberries, grapefruit, grapes (green), kiwi **, lemons, mangoes (green), oranges (sour), peaches, persimmons, pineapple
+      (sour), plums (sour), rhubarb, tamarind.'
+    children: []
+  - label: 🥦 Vegetables
+    notes: 'General — favor: in general, sweet & bitter vegetables; avoid: in general, pungent vegetables. FAVOR: artichoke,
+      asparagus, beets (cooked), bitter melon, broccoli, brussels sprouts, cabbage, carrots (cooked), carrots (raw) *, cauliflower,
+      celery, cilantro, cucumber, dandelion greens, fennel (anise), green beans, jerusalem artichoke, kale, leafy greens,
+      leeks (cooked), lettuce, mushrooms, okra, olives, black, onions (cooked), parsley, parsnips, peas, peppers, sweet, potatoes,
+      sweet & white, prickly pear (leaves), pumpkin, radishes (cooked), rutabaga, spaghetti squash, sprouts (not spicy), squash,
+      winter and summer, taro root, watercress *, wheat grass, sprouts, zucchini.  AVOID: beet greens, beets (raw), burdock
+      root, corn (fresh) **, daikon radish, eggplant **, garlic, green chilies, horseradish, kohlrabi **, leeks (raw), mustard
+      greens, olives, green, onions (raw), peppers (hot), prickly pear (fruit), radishes (raw), spinach (cooked) **, spinach
+      (raw), tomatoes, turnip greens, turnips, watercress.'
+    children: []
+  - label: 🌾 Grains
+    notes: 'FAVOR: amaranth, barley, cereal, dry, couscous, crackers, durham flour, granola, oat bran, oats (cooked), pancakes,
+      pasta, quinoa, rice (basmati, white, wild), rice cakes, seitan (wheat meat), spelt, sprouted wheat bread (essene), tapioca,
+      wheat, wheat bran.  AVOID: bread (with yeast), buckwheat, corn, millet, muesli **, oats (dry), polenta **, rice (brown)
+      **, rye.'
+    children: []
+  - label: 🫘 Legumes
+    notes: 'FAVOR: aduki beans, black beans, black-eyed peas, chick peas (garbanzo beans), kidney beans, lentils, brown &
+      red, lima beans, mung beans, mung dal, navy beans, peas (dried), pinto beans, soy beans, soy cheese, soy flour *, soy
+      milk, soy powder *, split peas, tempeh, tofu, white beans.  AVOID: miso, soy sauce, soy sausages, tur dal, urad dal.'
+    children: []
+  - label: 🥛 Dairy
+    notes: 'FAVOR: butter (unsalted), cheese (soft, not aged, unsalted), cottage cheese, cow''s milk, ghee, goat''s milk,
+      goat''s cheese (soft, unsalted), ice cream, yogurt (freshly made & diluted) *.  AVOID: butter (salted), buttermilk,
+      cheese (hard), sour cream, yogurt (plain, frozen or w/fruit).'
+    children: []
+  - label: 🍗 Animal foods
+    notes: 'FAVOR: buffalo, chicken (white), eggs (albumen or white only), fish (freshwater), rabbit, shrimp *, turkey (white),
+      venison.  AVOID: beef, chicken (dark), duck, eggs (yolk), fish (sea), lamb, pork, salmon, sardines, seafood, tuna fish,
+      turkey (dark).'
+    children: []
+  - label: 🧂 Condiments
+    notes: 'FAVOR: black pepper *, chutney, mango (sweet), coriander leaves, dulse *, hijiki *, kombu *, lime *, sprouts,
+      salt *, seaweed *, tamari *.  AVOID: chili pepper, chocolate, chutney, mango (spicy), gomasio, horseradish, kelp, ketchup,
+      mustard, lemon, lime pickle, mango pickle, mayonnaise, pickles, salt (in excess), scallions, soy sauce, vinegar.'
+    children: []
+  - label: 🥜 Nuts
+    notes: 'FAVOR: almonds (soaked and peeled), charole, coconut.  AVOID: almonds (with skin), black walnuts, brazil nuts,
+      cashews, filberts, hazelnuts, macadamia nuts, peanuts, pecans, pine nuts, pistachios, walnuts.'
+    children: []
+  - label: 🌰 Seeds
+    notes: 'FAVOR: flax, halva, popcorn (no salt, buttered), psyllium, pumpkin *, sunflower.  AVOID: chia, sesame, tahini.'
+    children: []
+  - label: 🫗 Oils
+    notes: 'FAVOR: sunflower (for internal & external use — most suitable), ghee (for internal & external use), canola (for
+      internal & external use), olive (for internal & external use), soy (for internal & external use), flax seed (for internal
+      & external use), primrose (for internal & external use), walnut (for internal & external use), avocado (external use
+      only), coconut (external use only).  AVOID: almond, apricot, corn, safflower, sesame.'
+    children: []
+  - label: 🥤 Beverages
+    notes: 'FAVOR: alcohol (beer; dry white wine) *, almond milk, aloe vera juice, apple juice, apricot juice, berry juice
+      (sweet), black tea *, carob, chai (hot, spiced milk) *, cherry juice (sweet), cool dairy drinks, grain "coffee", grape
+      juice, mango juice, miso broth *, mixed veg. juice, orange juice *, peach nectar, pear juice, pomegranate juice, prune
+      juice, rice milk, soy milk, vegetable bouillon.  AVOID: alcohol (hard; red & sweet wine), apple cider, berry juice (sour),
+      caffeinated beverages, carbonated drinks, carrot juice, cherry juice (sour), chocolate milk, coffee, cranberry juice,
+      grapefruit juice, iced tea, icy cold drinks, lemonade, papaya juice, pineapple juice, tomato juice, v-8 juice, sour
+      juices.'
+    children: []
+  - label: 🍵 Herbal teas
+    notes: 'FAVOR: alfalfa, bancha, barley, blackberry, borage, burdock, catnip, chamomile, chicory, comfrey, dandelion, fennel,
+      ginger (fresh), hibiscus, hops, jasmine, kukicha, lavender, lemon balm, lemon grass, licorice, marshmallow, nettle,
+      oat straw, passion flower, peppermint, raspberry, red clover, sarsaparilla, spearmint, strawberry, violet, wintergreen,
+      yarrow.  AVOID: ajwan, basil **, clove, eucalyptus, fenugreek, ginger (dry), ginseng, hawthorne, juniper berry, mormon
+      tea, pennyroyal, red zinger, rosehip **, sage, sassafras, yerba mate.'
+    children: []
+  - label: 🌶 Spices
+    notes: 'FAVOR: basil (fresh), black pepper *, caraway *, cardamom *, cinnamon, coriander, cumin, dill, fennel, ginger
+      (fresh), mint, neem leaves *, orange peel *, parsley *, peppermint, saffron, spearmint, tarragon *, turmeric, vanilla
+      *, wintergreen.  AVOID: ajwan, allspice, almond extract, anise, asafoetida (hing), basil (dry), bay leaf, cayenne, cloves,
+      fenugreek, garlic, ginger (dry), mace, marjoram, mustard seeds, nutmeg, oregano, paprika, pippali, poppy seeds, rosemary,
+      sage, salt, savory, star anise, thyme.'
+    children: []
+  - label: 🍯 Sweeteners
+    notes: 'FAVOR: barley malt, fructose, fruit juice concentrates, maple syrup, rice syrup, dried or fresh sugar cane juice,
+      turbinado.  AVOID: white sugar **, honey **, jaggary, molasses.'
+    children: []
+  - label: 💊 Food supplements
+    notes: 'FAVOR: aloe vera juice, barley green, brewer''s yeast, minerals: calcium, minerals: magnesium, minerals: zinc,
+      spirolina, blue-green algae, vitamins: A, vitamins: B1, vitamins: B12, vitamins: D, vitamins: K.  AVOID: amino acids,
+      bee pollen **, royal jelly **, minerals: copper, minerals: iron, vitamins: B2, vitamins: B6, vitamins: C, vitamins:
+      E, vitamins: P, vitamins: folic acid.'
+    children: []
+- label: Kapha (earth + water — heavy, cold, slow, moist)
+  linked_kind: topic
+  linked_slug: ayurvedic-elemental-design-doshas
+  notes: Foods that pacify vs aggravate Kapha.
+  children:
+  - label: 🍎 Fruits
+    notes: 'General — favor: generally most astringent fruit; avoid: generally most sweet & sour fruit. FAVOR: apples, applesauce,
+      apricots, berries, cherries, cranberries, figs (dry) *, grapes *, lemons *, limes *, peaches *, pears, persimmons, pomegranates,
+      prunes, raisins, strawberries *.  AVOID: avocado, bananas, coconut, dates, figs (fresh), grapefruit, kiwi, mangos **,
+      melons, oranges, papaya, pineapple, plums, rhubarb, tamarind, watermelon.'
+    children: []
+  - label: 🥦 Vegetables
+    notes: 'General — favor: in general, most pungent & bitter vegetables; avoid: in general, sweet & juicy vegetables. FAVOR:
+      artichoke, asparagus, beet greens, beets, bitter melon, broccoli, brussels sprouts, burdock root, cabbage, carrots,
+      cauliflower, celery, cilantro, corn, daikon radish, dandelion greens, eggplant, fennel (anise), garlic, green beans,
+      green chilies, horseradish, jerusalem artichoke, kale, kohlrabi, leafy greens, leeks, lettuce, mushrooms, mustard greens,
+      okra, onions, parsley, peas, peppers, sweet & hot, potatoes, white, prickly pear (fruit & leaves), radishes, rutabaga,
+      spaghetti squash *, spinach, sprouts, squash, winter, tomatoes (cooked), turnip greens, turnips, watercress, wheat grass.  AVOID:
+      cucumber, olives, black or green, parsnips **, potatoes, sweet, pumpkin, squash, summer, taro root, tomatoes (raw),
+      zucchini.'
+    children: []
+  - label: 🌾 Grains
+    notes: 'FAVOR: amaranth *, barley, buckwheat, cereal (cold, dry or puffed), corn, couscous, crackers, durham flour *,
+      granola, millet, muesli, oat bran, oats (dry), polenta, quinoa *, rice (basmati, wild) *, rye, seitan (wheat meat),
+      spelt *, sprouted wheat bread (essene), tapioca, wheat bran.  AVOID: bread (with yeast), oats (cooked), pancakes, pasta
+      **, rice (brown, white), rice cakes **, wheat.'
+    children: []
+  - label: 🫘 Legumes
+    notes: 'FAVOR: aduki beans, black beans, black-eyed peas, chick peas (garbanzo beans), lentils (red & brown), lima beans,
+      mung beans *, mung dal *, navy beans, peas (dried), pinto beans, soy milk, soy sausages, split peas, tempeh, tofu (hot)
+      *, tur dal, white beans.  AVOID: kidney beans, soy beans, soy cheese, soy flour, soy powder, soy sauce, tofu (cold),
+      urad dal, miso.'
+    children: []
+  - label: 🥛 Dairy
+    notes: 'FAVOR: buttermilk *, cottage cheese (from skimmed goat''s milk), ghee *, goat''s cheese (unsalted & not aged)
+      *, goat''s milk, skim, yogurt (diluted).  AVOID: butter (salted), butter (unsalted) **, cheese (soft & hard), cow''s
+      milk, ice cream, sour cream, yogurt (plain, frozen or w/fruit).'
+    children: []
+  - label: 🍗 Animal foods
+    notes: 'FAVOR: chicken (white), eggs, fish (freshwater), rabbit, shrimp, turkey (white), venison.  AVOID: beef, buffalo,
+      chicken (dark), duck, fish (sea), lamb, pork, salmon, sardines, seafood, tuna fish, turkey (dark).'
+    children: []
+  - label: 🧂 Condiments
+    notes: 'FAVOR: black pepper, chili peppers, chutney, mango (spicy), coriander leaves, dulse *, hijiki *, horseradish,
+      lemon *, mustard (without vinegar), scallions, seaweed *, sprouts.  AVOID: chocolate, chutney, mango (sweet), gomasio,
+      kelp, ketchup **, lime, lime pickle, mango pickle, mayonnaise, pickles, salt, soy sauce, tamari, vinegar.'
+    children: []
+  - label: 🥜 Nuts
+    notes: 'FAVOR: charole.  AVOID: almonds (soaked and peeled) **, black walnuts, brazil nuts, cashews, coconut, filberts,
+      hazelnuts, macadamia nuts, peanuts, pecans, pine nuts, pistachios, walnuts.'
+    children: []
+  - label: 🌰 Seeds
+    notes: 'FAVOR: chia, flax *, popcorn (no salt, no butter), pumpkin *, sunflower *.  AVOID: halva, psyllium **, sesame,
+      tahini.'
+    children: []
+  - label: 🫗 Oils
+    notes: 'FAVOR: corn (for internal & external use — most suitable, small amounts), canola (for internal & external use,
+      small amounts), sesame (external use, small amounts), sunflower (for internal & external use, small amounts), ghee (for
+      internal & external use, small amounts), almond (for internal & external use, small amounts).  AVOID: avocado, apricot,
+      coconut, flax seed **, olive, primrose, safflower, sesame (internal), soy, walnut.'
+    children: []
+  - label: 🥤 Beverages
+    notes: 'FAVOR: alcohol (dry wine, red or white) *, aloe vera juice, apple cider, apple juice *, apricot juice, berry juice,
+      black tea (spiced), carob, carrot juice, chai (hot, spiced milk) *, cherry juice (sweet), cranberry juice, grain "coffee",
+      grape juice, mango juice, peach nectar, pear juice, pineapple juice *, pomegranate juice, prune juice, soy milk (hot
+      & well-spiced).  AVOID: alcohol (hard; beer; sweet wine), almond milk, caffeinated beverages **, carbonated drinks,
+      cherry juice (sour), chocolate milk, coffee, cold dairy drinks, grapefruit juice, iced tea, icy cold drinks, lemonade,
+      miso broth, orange juice, papaya juice, rice milk, sour juices, soy milk (cold), tomato juice, v-8 juice.'
+    children: []
+  - label: 🍵 Herbal teas
+    notes: 'FAVOR: alfalfa, bancha, barley, blackberry, burdock, chamomile, chicory, cinnamon, clove, comfrey *, dandelion,
+      fennel *, fenugreek, ginger, ginseng *, hibiscus, jasmine, juniper berry, kukicha, lavender, lemon balm, lemon grass,
+      mormon tea, nettle, passion flower, peppermint, raspberry, red clover, sarsaparilla *, sassafras, spearmint, strawberry,
+      wintergreen, yarrow, yerba mate.  AVOID: licorice **, marshmallow, red zinger, rosehip **.'
+    children: []
+  - label: 🌶 Spices
+    notes: 'General — favor: all spices are good; avoid: —. FAVOR: ajwan, allspice, almond extract, anise, asafoetida (hing),
+      basil, bay leaf, black pepper, caraway, cardamom, cayenne, cinnamon, cloves, coriander, cumin, dill, fennel *, fenugreek,
+      garlic, ginger, marjoram, mint, mustard seeds, neem leaves, nutmeg, orange peel, oregano, paprika, parsley, peppermint,
+      pippali, poppy seeds, rosemary, saffron, savory, spearmint, star anise, tarragon, thyme, turmeric, vanilla *, wintergreen.  AVOID:
+      salt.'
+    children: []
+  - label: 🍯 Sweeteners
+    notes: 'FAVOR: fruit juice concentrates, honey (raw & not processed).  AVOID: barley malt, fructose, jaggary, maple syrup,
+      molasses, rice syrup, dried or fresh sugar cane juice, turbinado, white sugar.'
+    children: []
+  - label: 💊 Food supplements
+    notes: 'FAVOR: aloe vera juice, amino acids, barley green, bee pollen, brewer''s yeast, minerals: copper, minerals: calcium,
+      minerals: iron, minerals: magnesium, minerals: zinc, royal jelly, spirolina, blue-green algae, vitamins: B6, vitamins:
+      C, vitamins: P, vitamins: folic acid.  AVOID: minerals: potassium, vitamins: A, vitamins: B1, vitamins: B2, vitamins:
+      B12, vitamins: C, vitamins: D, vitamins: E.'
+    children: []
+sources:
+- id: lad-ayurvedic-institute-food-chart
+  location: Food Guidelines for Basic Constitutional Types (full chart)
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

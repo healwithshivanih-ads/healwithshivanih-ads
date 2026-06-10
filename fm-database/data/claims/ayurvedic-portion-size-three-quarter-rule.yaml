@@ -1,0 +1,27 @@
+slug: ayurvedic-portion-size-three-quarter-rule
+statement: 'Portion size is described in classical Ayurvedic texts as: two-quarters of the stomach for
+  solid food, one-quarter for liquid, and one-quarter left empty for air to move the food around. A practical
+  measure is the amount of solid food that fits in both cupped hands.'
+evidence_tier: fm_specific_thin
+rationale: Gastric distension signals satiety via the vagus nerve; leaving space prevents the stomach
+  from being overfilled and smothering digestive enzymes and acid. Overeating is listed as a primary cause
+  of low agni.
+coaching_translation: Eat until you are three-quarters full. The first belch is your body's signal that
+  the stomach is full — stop there. Two cupped hands of food is roughly the right solid-food serving.
+out_of_scope_notes: ''
+caveats:
+- The 'belch as fullness signal' is a traditional Ayurvedic teaching; the underlying mechanism is well-supported
+  by gastric-physiology research.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- mindful-eating
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: The Principles of Ayurvedic Eating — How Much?'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

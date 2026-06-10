@@ -1,0 +1,44 @@
+id: lad-ayurvedic-cooking-self-healing-1997
+title: "Ayurvedic Cooking for Self-Healing (Second Edition)"
+source_type: book
+quality: moderate
+authors:
+  - Usha Lad
+  - Vasant Lad
+publisher: The Ayurvedic Press
+year: 1997
+url: https://www.ayurveda.com
+doi: null
+notes: >-
+  Dr. Vasant Lad (BAMS, MASc) is one of the foremost Western expositors of
+  Ayurveda and founder of The Ayurvedic Institute, Albuquerque; Usha Lad is an
+  Ayurvedic-nursing-trained cook. This is the companion cookbook to Lad's two
+  other titles already in the catalogue (lad-ayurveda-science-of-self-healing-1984,
+  lad-complete-book-ayurvedic-home-remedies-1998). First edition 1994, second 1997.
+  ISBN 1-883725-05-4. The book frames food as medicine through the lens of the
+  three doshas (vata/pitta/kapha), the six tastes (shad rasa), the rasa-virya-vipaka-
+  prabhava energetics model, agni (digestive fire) and ama (toxic undigested residue).
+  Chapters 1-6 cover constitution, the factors affecting health, taste & digestion,
+  food combining (viruddha ahara), setting up an Ayurvedic kitchen, and menu
+  planning by dosha & season; Chapter 7 is recipes (soups, kitcharis, mainly-rice
+  dishes, vegetables, raitas, pickles/chutneys, breads, sweets, beverages, extras);
+  Chapter 8 ("Foods for Healing") is a materia medica of fruits, vegetables and
+  household herbs with rasa/virya/vipaka + dosha effects and specific therapeutic
+  uses; the appendix gives constitutional food guidelines and a "Qualities of Food
+  Substances" table for ~200 foods.
+  Used here to extract the catalogue-fitting wisdom WITHOUT duplicating the ~162
+  HomeRemedy entries already ingested from Lad's other two books: kitchen cooking
+  technique (spice tempering / tadka) -> CookingAdjustment; foundational and gap
+  preparations (kitchari V/P/K variants, mung dal soup, urad dal tonic, after-dinner
+  digestive seeds, fresh ginger appetiser, rice water) -> HomeRemedy (dosha +
+  energetics tagged); and the Ayurvedic food-theory framework (taste->dosha action
+  table, rasa-virya-vipaka, prabhava, the four agni states, viruddha-ahara food
+  combining, milk-combining rules, honey-never-heated) -> Claim. Full multi-ingredient
+  meal recipes are NOT ingested (no Recipe entity in the catalogue). Evidence tier
+  kept conservative (fm_specific_thin for pure-traditional theory; plausible_emerging
+  where a mechanism is plausible). Scope guardrail honoured: lifestyle/food-as-medicine
+  only -- no bhasmas, panchakarma procedures, gems/metals/colour therapy.
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

@@ -165,6 +165,7 @@ def _derive_age(client: dict) -> str:
 
 def _build_markdown(plan: dict, client: dict) -> str:
     """Build the requisition as Markdown (also the basis for plain text)."""
+    coach_name = client.get("assigned_coach") or "Shivani Hari"
     name = client.get("display_name") or client.get("client_id") or "Client"
     age = _derive_age(client)
     sex = (client.get("sex") or "—").upper()
@@ -241,12 +242,13 @@ def _build_markdown(plan: dict, client: dict) -> str:
     lines.append("- If any test is unavailable, the lab can suggest a closest equivalent — please ask before substituting.")
     lines.append("- Send the report to me on WhatsApp / email once it's back.")
     lines.append("")
-    lines.append("_Issued by Shivani Hari · functional medicine coach · healwithshivanih.com_")
+    lines.append(f"_Issued by {coach_name} · functional medicine coach · healwithshivanih.com_")
     return "\n".join(lines)
 
 
 def _build_summary(plan: dict, client: dict) -> str:
     """Short plain-text version for WhatsApp deep-link (≤500 chars)."""
+    coach_name = client.get("assigned_coach") or "Shivani"
     name = (client.get("display_name") or "").split()[0] or "there"
     raw = plan.get("lab_orders") or []
     buckets: dict[str, int] = {}
@@ -265,7 +267,7 @@ def _build_summary(plan: dict, client: dict) -> str:
         "one visit; stool / urine / breath kits are picked up at the lab and "
         "collected at home or returned later.\n\n"
         "I'm emailing the full sheet now — share the results with me once they're back so we can review together.\n\n"
-        "— Shivani"
+        f"— {coach_name}"
     )
 
 

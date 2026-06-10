@@ -1,0 +1,32 @@
+slug: ayurvedic-seasonal-taste-principles-spring-summer-fall-winter
+statement: 'In Ayurveda, seasonal taste principles guide food selection: spring imbalances are corrected
+  by pungent, bitter, and astringent tastes; summer by bitter, sweet, and astringent; early fall by bitter,
+  astringent, and sweet; winter by sweet, sour, and salty.'
+evidence_tier: fm_specific_thin
+rationale: Each taste carries specific elemental qualities (e.g. pungent = fire + air, sweet = earth +
+  water) that counteract the dominant environmental qualities of each season. Spring's cool-damp quality
+  accumulates mucus, which pungent and bitter tastes reduce. Summer's heat is cooled by bitter and sweet
+  tastes. Fall's heat-plus-dryness is addressed by bitter-sweet-astringent combinations. Winter's cold-dry
+  requires warming, moisturising tastes (salty, sour, sweet).
+coaching_translation: 'Eat in tune with the season: add pungent spices and bitter greens in spring to
+  cut mucus; prioritise cooling foods in summer; use warming spices, ghee, and sour ferments in fall and
+  winter.'
+out_of_scope_notes: ''
+caveats:
+- Traditional Ayurvedic framework — not directly replicated in RCT form, but consistent with circadian
+  and metabolic nutrition principles.
+- Individual constitution (dosha) modifies the general seasonal advice.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- ayurvedic-elemental-design-doshas
+- ayurvedic-circadian-clock
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 1: The Seasonal Affect — Your Annual Cycles (pp. 20–24)'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

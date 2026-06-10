@@ -1,0 +1,50 @@
+slug: herbalgram-red-clover-menopausal-anxiety-depression
+statement: Red clover isoflavones (80–120 mg/day) show promising but inconsistent
+  evidence for menopausal anxiety and depression. One crossover RCT (n=53) found
+  significant improvement in depression and nervousness with 80 mg isoflavones
+  over 12 weeks (P=0.05). A 12-month study (120 mg isoflavones) significantly
+  reduced Greene anxiety scores vs placebo (P=0.04). However, other studies showed
+  no significant between-group differences, and the overall systematic review
+  verdict remains 'indeterminate.'
+evidence_tier: plausible_emerging
+rationale: "Red clover showed the most consistent signal across multiple studies in
+  the 9-RCT systematic review (HerbalGram 121), though 'consistent' is relative —
+  positive findings are offset by null findings in other trials. More evidence than
+  soy or kava for this indication; less clean than hops at p<0.001. Mechanistic
+  rationale: phytoestrogenic isoflavones (biochanin A, formononetin, daidzein,
+  genistein) modulate hypothalamic thermoregulation and potentially serotonin-oestrogen
+  receptor crosstalk."
+coaching_translation: "Red clover isoflavones are worth considering for menopausal
+  mood symptoms when the client is not on oestrogen-sensitive cancer treatment.
+  The evidence is mixed but leans positive. The 80–120 mg dose used in positive
+  trials is double the typical commercial product (often 40 mg/tablet) — check
+  the isoflavone content of any product used. Promensil (80 mg) is the most
+  commonly studied branded product."
+caveats:
+  - Contraindicated with hormone-sensitive breast or endometrial cancer
+  - Avoid with tamoxifen, aromatase inhibitors, warfarin, oral contraceptives
+  - Avoid in pregnancy and lactation (phytoestrogenic activity)
+  - Evidence is heterogeneous — some clients respond well, others not at all
+    (likely related to equol-producer status and gut microbiome composition)
+  - Ensure the product specifies total isoflavone content; many products under-dose
+linked_to_topics:
+  - perimenopause-and-menopause
+  - menopause
+  - depression-symptoms
+  - anxiety-and-stress
+linked_to_mechanisms:
+  - estrogen-signaling
+linked_to_supplements:
+  - red-clover-isoflavones
+sources:
+  - id: herbalgram-121-botanicals-womens-health-2019
+    location: Research Reviews — Systematic Review of Herbal Medicines for Depression
+      and Anxiety in Menopausal Women, pp 42–44
+    quote: "80 mg isoflavones × 12 weeks: significant improvement in depression and
+      nervousness (P=0.05). 120 mg/day × 12 months: significantly reduced Greene
+      anxiety scores vs placebo (P=0.04). Overall evidence still indeterminate due
+      to poor methodology and limited RCTs."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

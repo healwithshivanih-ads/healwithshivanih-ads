@@ -1,0 +1,39 @@
+slug: who-fenugreek-hypoglycaemic-hypolipidaemic-clinical-data
+statement: 'The WHO monograph on Semen Trigonellae Foenugraeci (Vol 3, 2007) reports preliminary clinical
+  evidence for hypoglycaemic, hypolipidaemic, and hypocholesterolaemic effects of fenugreek seed. Classified
+  under ''uses described in pharmacopoeias and well-established in traditional systems of medicine'' with
+  ''clinical pharmacology'' data cited. Posology: 5-30 g of defatted powdered seed 1-3 times daily with
+  meals.'
+evidence_tier: plausible_emerging
+rationale: WHO Vol 3 reports several controlled trials showing blood sugar and lipid-lowering effects
+  in type 2 diabetes and hypercholesterolaemia, using 5-100 g/day doses. However WHO classifies these
+  as 'preliminary' data, not unambiguous 'supported by clinical data', reflecting the trial quality and
+  size limitations at the time.
+coaching_translation: The WHO recognises fenugreek seed as a pharmacopoeially established option for supporting
+  blood sugar and cholesterol management, with clinical trial data — but at therapeutic doses (5-30 g/day),
+  not culinary pinches. These effects are preliminary rather than definitively proven.
+out_of_scope_notes: ''
+caveats:
+- 'WHO contraindication: pregnancy — traditional use as a uterotonic agent; avoid at medicinal doses during
+  pregnancy.'
+- WHO notes cross-allergenicity with peanut and chickpea (Fabaceae family) — caution in patients with
+  legume allergy.
+- 'Diabetic patients on medication need blood glucose monitoring: additive effect may cause hypoglycaemia.'
+- Large doses (>25 g/day) associated with diarrhoea, flatulence, and GI discomfort.
+linked_to_topics:
+- blood-sugar-regulation
+- insulin-resistance
+- metabolic-syndrome
+linked_to_mechanisms:
+- insulin-resistance
+- gut-microbiome-glucose-regulation
+linked_to_supplements:
+- fenugreek
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Semen Trigonellae Foenugraeci, WHO Monographs on Selected Medicinal Plants Vol 3 (2007), pp.
+    238-252 (https://apps.who.int/iris/handle/10665/43206)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

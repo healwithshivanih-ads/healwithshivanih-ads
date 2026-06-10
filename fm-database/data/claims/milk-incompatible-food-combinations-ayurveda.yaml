@@ -1,0 +1,42 @@
+slug: milk-incompatible-food-combinations-ayurveda
+statement: >-
+  In Ayurveda milk is considered best taken on its own (or only with compatible
+  sweet items), and is regarded as an incompatible combination with bananas,
+  fish and other meat, sour fruits, citrus, yogurt, salt, and melons. Heating
+  milk with these foods, or eating them in the same meal, is said to clog the
+  channels and generate ama. This is the rationale behind the traditional advice
+  not to drink milk with a salty or sour meal, and not to blend milk with banana.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Milk's sweet taste, heavy quality and sweet vipaka conflict with the sour
+  vipaka of bananas and sour fruit, the salty taste, and the heating quality of
+  fish — combinations Ayurveda flags as curdling/clogging. Lactose-fruit-acid
+  mixtures and milk-protein curdling can promote fermentation and mucus in
+  susceptible people, which aligns with the traditional caution even where formal
+  evidence is thin.
+coaching_translation: >-
+  Treat milk as a food in its own right, not a mixer. Don't blend it with
+  banana (the classic smoothie problem), don't take it with sour fruit, citrus,
+  yogurt, fish, or a salty meal. If you want warm milk, have it on its own —
+  for many clients, spiced warm milk at bedtime sits far better than a fruit-and-
+  milk shake at breakfast.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    These are traditional Ayurvedic combining rules. Clients with confirmed
+    dairy allergy or lactose intolerance should avoid milk regardless of pairing.
+  - Most relevant for clients with mucus, sinus congestion, sluggish digestion or kapha-type patterns.
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 4: Food Combining — Incompatible Food Combining table (p.47); Bananas (p.188)"
+    quote: "Don't eat milk with: bananas, fish, meat, melons, curd, sour fruits, kitchari, bread containing yeast, cherries, yogurt."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

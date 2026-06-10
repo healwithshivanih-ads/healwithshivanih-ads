@@ -1,0 +1,32 @@
+slug: api-holy-basil-tulasi-energetics-rasa-guna-karma-dose
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Volume II) classifies Tulasi (whole plant, Ocimum
+  sanctum) with the following energetics: Rasa (taste) — Katu (pungent), Tikta (bitter); Guna (quality)
+  — Ruksha (dry); Virya (potency) — Ushna (heating); Vipaka (post-digestive taste) — Katu (pungent); Karma
+  (actions) — Dipana (digestive stimulant), Kaphahara (reduces kapha), Medhya (cognitive tonic), Pachana
+  (carminative/digestive), Ruchya (appetiser), Vatahara (reduces vata). Official therapeutic indications
+  (Rogadhikara) are: Aruchi (anorexia), Shvasa (dyspnoea/asthma), Amavata (rheumatoid arthritis), Kasa
+  (cough), Mukharoga (oral diseases), Hikka (hiccoughs). Matra (dose): 10–20 g of the drug for decoction.'
+evidence_tier: plausible_emerging
+rationale: Official pharmacopoeial classification from the Government of India's Ayurvedic Pharmacopoeia
+  of India. The energetics provide the classical India-context Ayurvedic framework for how tulasi is classified
+  and used.
+coaching_translation: In classical Ayurveda, tulasi is heating and drying — best suited for kapha and
+  vata imbalances. The API endorses it for respiratory issues (asthma, cough), oral health, digestive
+  stimulation, and as a cognitive tonic. Standard decoction dose is 10–20 g dried herb.
+out_of_scope_notes: ''
+caveats:
+- Ushna (heating) quality means caution in pitta-dominant or inflammatory conditions at high doses.
+- Katu vipaka indicates potential for dryness/depletion with long-term excess use.
+linked_to_topics:
+- asthma
+- oral-health-toxins
+linked_to_mechanisms: []
+linked_to_supplements:
+- holy-basil
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: TULASI (Whole Plant), API Part I, Volume II, monograph no. 72, pp. 169–170 (http://ayurveda.hu/api/API-Vol-2.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

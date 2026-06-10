@@ -95,7 +95,7 @@ async function notifyCoachOfBooking(opts: {
         coachPhone,
         "coach_booking_alert_v1",
         [eventVerb, clientName, sessionType, dateLabel, timeLabel],
-        { name: "Shivani" },
+        { name: process.env.COACH_NAME || "Shivani" },
       );
       if (r.ok) {
         console.log(`[cal-com-webhook] coach WA alert sent: ${eventVerb} · ${clientName}`);

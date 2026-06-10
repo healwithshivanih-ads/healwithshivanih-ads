@@ -1,0 +1,97 @@
+slug: coconut-buttercup-soup-ume-pumpkin-seeds
+name: Coconut Buttercup Soup with Ume Pumpkin Seeds
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- salty
+- sour
+main_ingredients:
+- buttercup squash, medium
+- coconut milk (12-oz can)
+- water
+- cinnamon
+- nutmeg
+- salt
+- raw pumpkin seeds
+- ume plum vinegar
+contains_allergens: []
+ingredients:
+- item: buttercup squash, medium
+  qty: '1'
+  unit: ''
+- item: coconut milk (12-oz can)
+  qty: 1 1/2
+  unit: cups
+- item: water
+  qty: '2'
+  unit: cups
+- item: cinnamon
+  qty: '1'
+  unit: tsp
+- item: nutmeg
+  qty: 1/4
+  unit: tsp
+- item: salt
+  qty: 1/2
+  unit: tsp
+- item: raw pumpkin seeds
+  qty: 1/2
+  unit: cup
+- item: ume plum vinegar
+  qty: 1/2
+  unit: tsp
+steps:
+- Preheat oven to 350°F. Halve the squash, scoop out the seeds, and place the halves cut-side down in
+  a baking dish with about 1 inch of water. Bake until the flesh yields easily to a fork, about 30 minutes.
+  Remove and allow to cool slightly.
+- Warm the coconut milk and water together in a large saucepan over medium heat. Scoop the squash flesh
+  from the skins and stir it into the pot with the cinnamon, nutmeg, and salt.
+- Bring to a boil, reduce to a simmer for 5 minutes, then remove from heat and blend with an immersion
+  blender until smooth and creamy.
+- 'For the ume pumpkin seeds: spread pumpkin seeds in a heavy-bottomed pan and toast on low-medium heat
+  for about 5 minutes, stirring or shaking every minute. When the seeds begin to pop, stir and toast 1
+  minute more, then transfer to a wide dish to cool. Dash with ume plum vinegar and toss to coat.'
+- Serve the soup in wide bowls, garnished with a handful of ume pumpkin seeds.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 45
+approx_kcal_per_serving: 280
+kcal_is_estimate: true
+protein_g: 7
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- immune-support
+one_line: Silky roasted buttercup squash blended with coconut milk and cinnamon, crowned with tangy ume-dressed
+  pumpkin seeds — autumn in a bowl.
+headnote: Buttery-sweet buttercup squash meets rich coconut milk in this velvety seasonal soup, with a
+  crunchy, sour-salty pumpkin seed garnish that elevates every spoonful.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 446
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: coconut buttercup soup with ume pumpkin seeds
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

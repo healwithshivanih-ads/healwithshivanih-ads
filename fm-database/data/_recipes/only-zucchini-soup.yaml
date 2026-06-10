@@ -1,0 +1,80 @@
+slug: only-zucchini-soup
+name: Only Zucchini Soup
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- bitter
+- astringent
+main_ingredients:
+- medium zucchini or summer squash
+- ghee
+- water
+- salt
+contains_allergens:
+- dairy
+ingredients:
+- item: medium zucchini or summer squash
+  qty: '2'
+  unit: whole
+- item: ghee
+  qty: '1'
+  unit: tsp
+- item: water
+  qty: '1'
+  unit: cup
+- item: salt
+  qty: '0.25'
+  unit: tsp
+steps:
+- Halve the zucchini lengthwise and slice into ½-inch half moons.
+- In a medium saucepan, fry the zucchini in the ghee over medium heat, stirring occasionally, for 5–7
+  minutes until tender.
+- Add the water and salt, then cook over medium heat until everything is warmed through.
+- Remove from the heat and blend the soup directly in the pot with an immersion blender until completely
+  smooth.
+- Ladle into bowls and serve alongside Avocado and Cucumber Salad.
+servings: '2'
+prep_time_min: 5
+cook_time_min: 12
+approx_kcal_per_serving: 60
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- agni-digestive-fire
+- anti-inflammatory-diet
+- digestion-and-nutrient-absorption
+one_line: Four simple ingredients blended into a surprisingly creamy, pitta-cooling zucchini soup.
+headnote: Zucchini's bitter-astringent nature makes it one of summer's best vegetables for calming excess
+  heat; this minimalist soup lets those qualities shine.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 232
+image:
+  file: images/odonnell/odonnell-233-126.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: ONLY ZUCCHINI SOUP
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

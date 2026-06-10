@@ -1,0 +1,99 @@
+slug: everyday-steamed-salad-bowl
+name: Everyday Steamed Salad Bowl
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+- bitter
+main_ingredients:
+- lacinato kale
+- rainbow swiss chard
+- carrots
+- red cabbage, chopped
+- sprouted mung beans
+- cooked basmati rice, white or brown
+- all-seasons salad dressing (see below)
+- toasted sunflower seeds
+contains_allergens: []
+ingredients:
+- item: lacinato kale
+  qty: '4'
+  unit: leaves
+- item: rainbow Swiss chard
+  qty: '6'
+  unit: leaves
+- item: carrots
+  qty: '2'
+  unit: medium
+- item: red cabbage, chopped
+  qty: '0.5'
+  unit: cup
+- item: sprouted mung beans
+  qty: '0.5'
+  unit: cup
+- item: cooked basmati rice, white or brown
+  qty: '2'
+  unit: cups
+- item: All-Seasons Salad Dressing (see below)
+  qty: '1'
+  unit: batch
+- item: toasted sunflower seeds
+  qty: '1'
+  unit: handful
+steps:
+- Strip the stems from the kale and chard and chop the leaves into roughly 2-inch pieces.
+- Place the greens in a large frying pan with 1 tbsp of water, cover tightly, and steam-sauté over medium
+  heat for 10 minutes.
+- Meanwhile, use a vegetable peeler or julienne peeler to slice the carrots into ribbons.
+- Add the carrot ribbons, chopped cabbage, and sprouted mung beans to the pan; steam 5 minutes more, then
+  remove from heat and leave the lid slightly ajar.
+- Spread 1 cup of rice across the base of each wide bowl.
+- Divide the steamed vegetables over the rice, pour half the dressing over each bowl, and finish with
+  toasted sunflower seeds.
+servings: '2'
+prep_time_min: 15
+cook_time_min: 15
+approx_kcal_per_serving: 380
+kcal_is_estimate: true
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
+- detoxification-support
+- anti-inflammatory-diet
+one_line: A colourful bowl of steam-cooked greens, carrot ribbons, and sprouted mung over rice — the quintessential
+  warm Ayurvedic salad.
+headnote: Eating cooked rather than raw vegetables at most meals is one of the most immediately beneficial
+  changes for gut comfort; this bowl makes that habit easy and satisfying.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 114
+image:
+  file: images/odonnell/odonnell-115-039.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday steamed salad bowl
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

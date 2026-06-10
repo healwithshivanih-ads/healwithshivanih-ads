@@ -1,0 +1,26 @@
+slug: ayurveda-vata-food-approach
+statement: For a vata constitution or vata aggravation, favour warm, moist, well-cooked, grounding, oily
+  foods with sweet/sour/salty tastes (cooked fruits, root and cooked vegetables, cooked rice and wheat,
+  dairy, ghee, nuts, warming spices) and reduce cold, raw, dry, light, bitter and astringent foods (dried
+  fruit, raw vegetables, most beans, crackers, caffeine, iced drinks).
+evidence_tier: fm_specific_thin
+rationale: From the Ayurvedic Institute / Lad Food Guidelines for Basic Constitutional Types — traditional
+  dosha-food matching (like increases like; opposite qualities balance).
+coaching_translation: ''
+out_of_scope_notes: ''
+caveats:
+- General Ayurvedic guidance; individualise by the client's digestion, season and dosha state.
+- Dosha-food matching has limited modern-trial evidence; use as a framework alongside the client's response.
+linked_to_topics:
+- ayurvedic-elemental-design-doshas
+- agni-digestive-fire
+- constipation
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: lad-ayurvedic-institute-food-chart
+  location: Food Guidelines for Basic Constitutional Types
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

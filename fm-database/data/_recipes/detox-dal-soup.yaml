@@ -1,0 +1,118 @@
+slug: detox-dal-soup
+name: Detox Dal Soup
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: India
+seasons:
+- summer
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- bitter
+- astringent
+- sour
+main_ingredients:
+- yellow split mung beans
+- water
+- turmeric powder
+- coriander powder
+- summer spice mix
+- small zucchini
+- salt (optional)
+- coconut oil
+- cumin seeds
+- fresh curry leaf
+- lime juice (from half a lime)
+- fresh cilantro, chopped, for garnish (optional)
+contains_allergens: []
+ingredients:
+- item: yellow split mung beans
+  qty: '1'
+  unit: cup
+- item: water
+  qty: '6'
+  unit: cups
+- item: turmeric powder
+  qty: '1'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: Summer Spice Mix
+  qty: '1'
+  unit: tsp
+- item: small zucchini
+  qty: '2'
+  unit: whole
+- item: salt (optional)
+  qty: '0.5'
+  unit: tsp
+- item: coconut oil
+  qty: '2'
+  unit: tsp
+- item: cumin seeds
+  qty: '1'
+  unit: tsp
+- item: fresh curry leaf
+  qty: '1'
+  unit: small handful
+- item: lime juice (from half a lime)
+  qty: '0.5'
+  unit: lime
+- item: fresh cilantro, chopped, for garnish (optional)
+  qty: '2'
+  unit: tbsp
+steps:
+- Bring 4 cups of water to a boil in a large saucepan; rinse the split mung beans until the water runs
+  clear.
+- Add the rinsed mung beans, turmeric, coriander powder, and spice mix to the boiling water; reduce heat,
+  cover with the lid slightly ajar, and simmer for 20 minutes.
+- Slice the zucchini in half lengthwise, then into half moons; add them to the pot along with the remaining
+  2 cups of water and optional salt, and bring back to a boil.
+- Partially cover and simmer for another 10 minutes without stirring.
+- In a small pan, heat the coconut oil over medium heat and fry the cumin seeds and curry leaf for 2–3
+  minutes until fragrant; pour this tempering into the dal in the last 5 minutes of cooking.
+- Remove from the heat, stir in the lime juice, and serve in bowls garnished with fresh cilantro.
+servings: 4-6
+prep_time_min: 10
+cook_time_min: 40
+approx_kcal_per_serving: 130
+kcal_is_estimate: true
+protein_g: 8
+good_for:
+- detoxification
+- detoxification-support
+- agni-digestive-fire
+- liver-detoxification
+- gut-microbiome
+one_line: A light, lime-brightened split mung dal with zucchini and curry leaf — a cooling summer cleanse
+  in a bowl.
+headnote: Thinner than winter dals and brimming with cooling spices, this soup is designed to help the
+  body clear heat and accumulated toxins during the hottest months.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 241
+image:
+  file: images/odonnell/odonnell-242-133.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: detox dal soup
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

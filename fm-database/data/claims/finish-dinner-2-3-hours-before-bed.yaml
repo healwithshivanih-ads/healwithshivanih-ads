@@ -1,0 +1,29 @@
+slug: finish-dinner-2-3-hours-before-bed
+statement: Eating dinner two to three hours before bedtime allows the digestive organs to complete the
+  major phase of digestion before sleep, freeing the body to perform tissue repair and detoxification
+  overnight. Habitually eating a heavy meal late at night burdens the digestive system during its rest
+  phase and disrupts sleep quality.
+evidence_tier: plausible_emerging
+rationale: Gastric emptying is slower during sleep due to reduced motility. Late heavy meals increase
+  the risk of GERD, disrupt circadian metabolic rhythms, and are associated with poorer glycaemic control
+  overnight.
+coaching_translation: Finish eating at least two to three hours before you sleep. This gives your stomach
+  time to empty so your organs can do their repair work while you sleep, instead of digesting your dinner
+  all night.
+out_of_scope_notes: ''
+caveats:
+- Those with reflux or GERD especially benefit from a longer post-dinner fast before lying down.
+linked_to_topics:
+- agni-digestive-fire
+- meal-timing-and-digestive-rest
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- altered-gi-motility
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: The Principles of Ayurvedic Eating — Suggested Daily Rhythm'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

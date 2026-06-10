@@ -1,0 +1,44 @@
+slug: omega-3-pcos-androgen-hirsutism
+statement: "Omega-3 fatty acids (EPA 850 mg + DHA 200 mg, 1–2 times daily) reduce
+  testosterone and hirsutism, improve insulin sensitivity and menstrual regularity
+  in PCOS. Anti-inflammatory and insulin-regulating mechanisms; also lowers leptin.
+  Duration: 2–6 months for measurable effect. Effect on testosterone and hirsutism
+  is modest but consistent across trials."
+evidence_tier: plausible_emerging
+rationale: "Multiple trials show consistent modest improvements in testosterone, hirsutism,
+  insulin sensitivity, and menstrual regularity with omega-3 in PCOS. Mechanism is
+  well-understood (anti-inflammatory, prostaglandin modulation, insulin receptor
+  sensitisation). Omega-3 is already indicated for a PCOS client's cardiovascular
+  risk and metabolic profile — PCOS-specific androgen benefits are an additional reason
+  to include it in the protocol. Benefit is additive to inositol, berberine, or metformin."
+coaching_translation: "For PCOS clients, omega-3 is doing double duty: improving
+  insulin sensitivity AND mildly reducing testosterone and hirsutism. Recommend high-EPA
+  product: 850 mg EPA + 200 mg DHA per capsule, 1-2 capsules daily with food. Allow
+  2-3 months minimum. Quality matters — choose tested brands (Life Extension, Nordic
+  Naturals, Vaya Pharma for India). Combine with inositol and NAC for best effect."
+caveats:
+  - Effect on hirsutism and testosterone is modest — not adequate as sole therapy
+    for significant androgen excess; combine with other interventions
+  - Use heavy-metal-tested products
+  - Mild antiplatelet effect — note if client on blood thinners or pre-surgery
+linked_to_topics:
+  - pcos-fertility
+  - hirsutism-and-androgen-excess
+  - cardiovascular-risk
+linked_to_mechanisms:
+  - insulin-resistance
+  - androgen-excess
+  - chronic-inflammation
+linked_to_supplements:
+  - omega-3-fatty-acids-hormone-membrane
+  - fish-oil-omega-3
+sources:
+  - id: romm-pcos-herbs-supplements-website
+    location: Omega-3 Fatty Acids section
+    quote: "At least 850 mg EPA / 200 mg DHA, 1–2x daily for 2–6 months: reduces
+      testosterone and hirsutism; improves insulin sensitivity and menstrual regularity;
+      lowers leptin. Anti-inflammatory; insulin-regulating."
+version: 1
+status: active
+updated_at: '2026-06-07'
+updated_by: shivani

@@ -51,6 +51,7 @@ interface Props {
   token: string;
   clientId: string;
   displayName: string;
+  coachName?: string;
   prefill: Record<string, unknown>;
   draft: Record<string, unknown>;
 }
@@ -116,7 +117,7 @@ function n(v: unknown, fallback = 5): number {
   return fallback;
 }
 
-export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft }: Props) {
+export function PreDiscoveryForm({ token, clientId, displayName, coachName = "Shivani", prefill, draft }: Props) {
   const initial: FormState = useMemo(() => {
     // Drafts override prefill so a partial save returns the client to
     // exactly where they left off.
@@ -216,11 +217,11 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
       <div className="fm-thanks">
         <div className="fm-thanks__eyebrow">
           <span className="pulse" aria-hidden="true" />
-          <span>Shivani Hari</span>
+          <span>{coachName}</span>
         </div>
-        <h1 className="fm-thanks__title">Thank you — sent to Shivani 💚</h1>
+        <h1 className="fm-thanks__title">Thank you — sent to {coachName} 💚</h1>
         <p className="fm-thanks__body">
-          She&apos;ll review your answers before your discovery call and come
+          {coachName} will review your answers before your discovery call and come
           prepared with a starting picture. If anything else comes to mind in
           the meantime, you can reopen this link and add to it — your earlier
           answers stay saved.
@@ -237,7 +238,7 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
     >
       <header style={{ marginBottom: 28 }}>
         <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.2, color: "#8a8a8a", marginBottom: 4 }}>
-          Shivani Hari · pre-discovery intake
+          {coachName} · pre-discovery intake
         </div>
         <h1 style={{ fontSize: 24, fontWeight: 700, marginTop: 0, marginBottom: 8 }}>
           Hi {displayName?.split(" ")[0] || "there"} — quick prep before our call
@@ -468,7 +469,7 @@ export function PreDiscoveryForm({ token, clientId, displayName, prefill, draft 
           marginTop: 12,
         }}
       >
-        {submitting ? "Sending…" : "Send to Shivani"}
+        {submitting ? "Sending…" : `Send to ${coachName}`}
       </button>
 
       <div style={{ fontSize: 12, color: "#888", marginTop: 14, textAlign: "center" }}>

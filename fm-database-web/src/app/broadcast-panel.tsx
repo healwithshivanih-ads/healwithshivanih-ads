@@ -50,7 +50,7 @@ interface ApprovedTemplate {
   body: string;
 }
 
-const SIGNOFF = "\n\n— Shivani Hari\nYour Functional Health Coach";
+const SIGNOFF = `\n\n— ${process.env.NEXT_PUBLIC_COACH_NAME || "Shivani Hari"}\nYour Functional Health Coach`;
 
 const APPROVED_TEMPLATES: ApprovedTemplate[] = [
   {

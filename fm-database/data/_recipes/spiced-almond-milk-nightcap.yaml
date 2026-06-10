@@ -1,0 +1,40 @@
+slug: spiced-almond-milk-nightcap
+name: Spiced Almond Milk Nightcap
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+region: ''
+seasons:
+- winter
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+main_ingredients:
+- almond milk
+- nutmeg
+- cardamom
+- dates
+contains_allergens:
+- nuts
+approx_kcal_per_serving: 180
+protein_g: 5
+good_for:
+- insomnia
+- sleep
+one_line: Warm almond milk with a pinch of nutmeg and cardamom — a calming vata-grounding bedtime drink.
+method: '1. Gently warm 1 cup almond milk (do not boil hard).
+
+  2. Whisk in a small pinch of grated nutmeg, pinch cardamom, optional 1 chopped date for sweetness.
+
+  3. Drink warm, 30-60 min before bed.'
+source: lad-ayurveda-science-of-self-healing-1984
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

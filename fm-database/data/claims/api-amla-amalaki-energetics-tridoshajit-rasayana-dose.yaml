@@ -1,0 +1,41 @@
+slug: api-amla-amalaki-energetics-tridoshajit-rasayana-dose
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Volume I) classifies Amalaki — fresh fruit (Emblica
+  officinalis/Phyllanthus emblica) with the following energetics: Rasa (taste) — Madhura (sweet), Amla
+  (sour), Katu (pungent), Tikta (bitter), Kashaya (astringent) — uniquely encompassing five of the six
+  tastes; Guna (quality) — Laghu (light), Ruksha (dry); Virya (potency) — Shita (cooling); Vipaka (post-digestive
+  taste) — Madhura (sweet); Karma (actions) — Tridoshajit (balances all three doshas), Vrishya (aphrodisiac/reproductive
+  tonic), Rasayana (rejuvenative), Chakshushya (eye tonic). Official therapeutic indications (Rogadhikara):
+  Raktapitta (bleeding disorders), Amlapitta (acid-related conditions), Prameha (diabetes/urinary disorders),
+  Daha (burning sensations). Dose (Matra): 10–20 g fresh fruit; 5–10 ml fresh juice. For dried Amalaki:
+  same Rasa/Guna/Virya/Vipaka/Karma; dose 3–6 g in powder form. Important Ayurvedic formulations: Chyawanprash,
+  Dhatri Lauha, Triphala Churna.'
+evidence_tier: plausible_emerging
+rationale: Official pharmacopoeial classification from Government of India Ayurvedic Pharmacopoeia of
+  India, Part I, Volume I, with dual entries for fresh and dried fruit. Five-taste profile and Tridoshajit
+  (tridosha-balancing) status make amla unique among the five assigned herbs.
+coaching_translation: Amla is uniquely Tridoshajit — it balances all three Ayurvedic constitutions/imbalances
+  — and is the primary Rasayana (rejuvenative) of classical Ayurveda. The API endorses it for blood sugar
+  regulation (Prameha), acid conditions, bleeding disorders, and as an eye tonic. Its five-taste profile
+  and cooling post-digestive effect make it one of the most broadly applicable herbs in the API. Standard
+  dose is 3–6 g dried powder or 5–10 ml fresh juice daily.
+out_of_scope_notes: ''
+caveats:
+- Amla is very high in vitamin C (ascorbic acid) — relevant for iron absorption interactions and kidney
+  stone risk in susceptible individuals.
+- Although generally Tridoshajit, excess can aggravate vata owing to its Ruksha (drying) quality.
+linked_to_topics:
+- blood-sugar-regulation
+- oxidative-stress
+linked_to_mechanisms:
+- insulin-resistance
+- oxidative-stress-pancreatic-damage
+linked_to_supplements:
+- amla
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: AMALAKI (Fresh Fruit), API Part I, Volume I, monograph nos. 3–4; AMALAKI (Dried), same volume
+    (https://www.ayurveda.hu/api/API-Vol-1.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,56 @@
+slug: kanjee-rice-gruel-convalescence
+display_name: Kanjee (Convalescent Rice Gruel)
+aliases: []
+category: kitchen_remedy
+route: internal
+summary: A very thin, well-cooked rice porridge made with a high water-to-grain ratio (1:8 or more), simmered
+  until the grains split and dissolve. The classic Ayurvedic healing food for recovering digestion, acute
+  illness, and fasting protocols. Simple, warm, easily absorbed.
+indications:
+- convalescence after illness, fever, or surgery
+- acute digestive upset, diarrhoea, or vomiting
+- reintroduction of food after a fast
+- very weak or absent agni
+- elderly or debilitated individuals needing easily absorbed nutrition
+contraindications:
+- not suitable as a long-term dietary staple — nutritionally limited
+- kapha types should use sparingly and add more ginger and black pepper
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+virya: null
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+- easy-to-digest
+- restorative
+- agni-kindling
+- healing
+preparation: 1 cup white basmati rice, 8-10 cups water. Bring to a boil, reduce heat, simmer uncovered
+  45-60 minutes, stirring occasionally, until grains split and liquid becomes slightly thickened. For
+  a liquid fast version, strain the grains and drink only the rice water. Season with a pinch of salt
+  and ghee. Plain or with mild spices such as ginger and cumin.
+typical_dose: 1-2 cups at a meal
+duration: 1-5 days during illness or digestive recovery; or as a light meal once weekly
+timing_notes: Eat warm. Can be taken at any meal; especially good in the morning or evening when digestion
+  is lighter.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+- gut-lining-support
+- leaky-gut
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Kanjee recipe'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

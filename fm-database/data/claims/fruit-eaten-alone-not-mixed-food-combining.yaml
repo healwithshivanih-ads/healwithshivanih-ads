@@ -1,0 +1,32 @@
+slug: fruit-eaten-alone-not-mixed-food-combining
+statement: Fruit should not be mixed with other foods, especially dairy, at the same meal. Fruit digests
+  significantly faster than other foods and will begin to ferment if held in the stomach while heavier
+  foods continue to be processed. Cooked fruit mixed into a dish is less incompatible than raw fruit served
+  as a dessert. Eating raw fruit for dessert is specifically discouraged in Ayurveda.
+evidence_tier: fm_specific_thin
+rationale: Fruit's simple sugars undergo rapid fermentation in the presence of delayed gastric emptying
+  caused by fats and proteins. This can produce gas, bloating, and acidic fermentation products. Cooking
+  breaks down fruit sugars and integrates them with other food components.
+coaching_translation: Do not eat fresh fruit as a dessert or mix it into a meal with dairy, grains, or
+  protein. If you want fruit, eat it alone 30–60 minutes before a meal. The one exception is when fruit
+  is cooked into the dish — cooked with other ingredients it is far less likely to ferment.
+out_of_scope_notes: ''
+caveats:
+- Applies most strongly to clients with existing digestive issues, IBS, or bloating.
+- Cooked fruit in recipes is fine for most people.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+- ibs
+linked_to_mechanisms:
+- food-fermentation-reflux
+- dysbiosis-gut-microbiome-imbalance
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Food Combinations — Mixing Fruits with Other Foods'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,44 @@
+slug: who-neem-folium-pharmacopoeial-uses-safety
+statement: The WHO monograph on Folium Azadirachti (Vol 3, pp. 88–101) describes, under 'Uses described
+  in pharmacopoeias and in traditional systems of medicine', the use of neem leaf for treatment of worm
+  and lice infections, jaundice, external ulcers, cardiovascular disease, diabetes, gingivitis, malaria,
+  rheumatism and skin disorders; and external applications for septic wounds and boils. Under 'Uses supported
+  by clinical data', the monograph lists only topical treatment of ringworm, noting that 'data from controlled
+  clinical trials are lacking' for other indications. Animal studies documented antihyperglycaemic activity
+  (50 mg/kg ethanolic extract reduced glucose in alloxan-diabetic rabbits comparably to glibenclamide)
+  and anti-inflammatory activity (200–400 mg/kg aqueous extract reduced carrageenan oedema).
+evidence_tier: plausible_emerging
+rationale: WHO Vol 3 provides the authoritative pharmacopoeial classification distinguishing pharmacopoeial
+  traditional uses from clinical-data-supported uses. The blood sugar and anti-inflammatory data are from
+  animal pharmacology sections.
+coaching_translation: Neem leaf is recognised by the WHO pharmacopoeial tradition for blood sugar support,
+  skin conditions, oral health and antimicrobial effects. Only topical ringworm treatment has some clinical
+  backing; all other indications remain traditional/pharmacopoeial. In coaching practice, neem is most
+  evidence-grounded for oral and skin health. Blood sugar effects require cautious monitoring if using
+  alongside diabetes medications.
+out_of_scope_notes: Absolute contraindication in pregnancy/lactation and under-12 per WHO pharmacopoeial
+  guidance. Cardiovascular adverse event report and antiandrogenic data are prescribing-level safety signals.
+caveats:
+- WHO explicitly contraindications neem leaf during pregnancy and nursing, and in children under 12 years,
+  owing to potential genotoxic effects.
+- Administration may reduce blood glucose levels — caution with insulin-dependent patients and oral antihyperglycaemic
+  drugs.
+- A case of ventricular fibrillation and cardiac arrest due to neem leaf poisoning has been reported (WHO
+  Vol 3).
+- Antiandrogenic effects observed in animal studies at 20–60 mg/day dried leaves — reduced seminal vesicle
+  weight and testosterone at higher doses.
+linked_to_topics:
+- blood-sugar-regulation
+- oral-health-toxins
+linked_to_mechanisms:
+- insulin-resistance
+- chronic-inflammation
+linked_to_supplements:
+- neem
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Folium Azadirachti, WHO Monographs on Selected Medicinal Plants, Volume 3, pp. 88–101 (https://apps.who.int/iris/handle/10665/43689)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

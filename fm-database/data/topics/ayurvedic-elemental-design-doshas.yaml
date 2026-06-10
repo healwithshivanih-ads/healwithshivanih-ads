@@ -23,6 +23,9 @@ key_mechanisms: []
 common_symptoms: []
 related_topics:
 - ayurveda
+- agni-digestive-fire
+- ayurvedic-circadian-clock
+- digestion-and-nutrient-absorption
 - inflammaging
 - chronic-inflammation
 sources:
@@ -32,8 +35,11 @@ sources:
     some water. Kapha is earth and water. A scientist took a dosha quiz, standardised
     it and started using it in clinical trials and was able to correlate that pitta
     people who are all fire have a higher risk of cardiovascular disease.
+- id: lad-ayurvedic-cooking-self-healing-1997
+  location: "Chapter 1: Your Individual Constitution (pp.15-23); Glossary — Prakruti & Dosha (pp.240-241)"
+  quote: "Prakruti: The inherent nature of a person. The fixed constitution—the proportion of the three doshas—established at conception."
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: 2026-05-30
+updated_at: 2026-06-10
 updated_by: Shivani

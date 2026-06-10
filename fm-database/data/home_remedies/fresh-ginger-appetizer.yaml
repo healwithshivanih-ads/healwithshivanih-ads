@@ -1,0 +1,59 @@
+slug: fresh-ginger-appetizer
+display_name: Fresh Ginger Appetiser (Pre-Meal Agni Kindler)
+aliases:
+  - ginger-salt-appetizer
+  - pre-meal-ginger
+  - ginger-before-meals
+category: kitchen_remedy
+route: internal
+summary: >-
+  Lad's simplest agni-kindling habit — a thin slice of fresh ginger root with a
+  pinch of rock salt (optionally a few drops of lemon), chewed about ten minutes
+  before the main meal to stimulate appetite and the digestive fire. Fresh ginger
+  is pungent and heating with a sweet vipaka, broadly tridoshic but best used in
+  moderation by pitta types. A useful pre-meal ritual for weak or slow digestion
+  and low appetite.
+indications:
+  - low appetite before meals
+  - weak or slow digestion (manda agni)
+  - sluggish digestion / a heavy feeling before eating
+  - nausea / poor interest in food
+contraindications:
+  - high pitta, acidity, gastritis or peptic ulcer — heating and pungent, use sparingly or avoid
+  - on blood thinners or with bleeding disorders (ginger is mildly anticoagulant)
+  - heartburn / GERD — may aggravate
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
+rasa:
+  - pungent
+virya: heating
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+  - dipana
+  - rochana
+  - carminative
+preparation: >-
+  Cut a thin slice of fresh ginger root, sprinkle with a pinch of rock salt
+  (and, if liked, a few drops of fresh lemon). Chew it slowly about 10 minutes
+  before the meal.
+typical_dose: 1 thin slice ~10 minutes before the main meal(s)
+duration: Before meals as needed for appetite / digestion
+timing_notes: ~10 minutes before lunch and/or dinner
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 8: Foods for Healing — Household Herbs, Ginger #1 (p.211); Chapter 4 mitigating factors (p.46)"
+    quote: "If one chews a thin slice of fresh ginger with a pinch of salt, 10 minutes before the meal, it acts as an appetizer and stimulates agni."
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

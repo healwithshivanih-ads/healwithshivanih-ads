@@ -1,0 +1,87 @@
+slug: yogi-tea-ayurvedic
+name: Yogi Tea
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons:
+- autumn
+- winter
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sweet
+- bitter
+main_ingredients:
+- fresh ginger, grated
+- whole cardamom seeds
+- whole cloves
+- cinnamon stick
+- water
+- cow's milk
+contains_allergens:
+- dairy
+ingredients:
+- item: fresh ginger, grated
+  qty: '2'
+  unit: tsp
+- item: whole cardamom seeds
+  qty: '4'
+  unit: whole
+- item: whole cloves
+  qty: '8'
+  unit: whole
+- item: cinnamon stick
+  qty: '1'
+  unit: whole
+- item: water
+  qty: '8'
+  unit: cups
+- item: cow's milk
+  qty: '1'
+  unit: oz
+steps:
+- Combine the ginger, cardamom, cloves, and cinnamon stick with the water in a saucepan.
+- Bring to a boil and keep at a rolling boil until the liquid has reduced by half.
+- Remove from heat and allow to cool slightly.
+- Stir in the milk and drink warm.
+servings: '4'
+prep_time_min: 5
+cook_time_min: 25
+approx_kcal_per_serving: 20
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- immune-support
+- chronic-inflammation
+- sleep
+- stress-management
+one_line: A warming spiced chai-style tea with ginger, clove, cardamom, and cinnamon simmered down for
+  depth.
+headnote: This classic Ayurvedic spice tea kindles digestive fire and warms the body from the inside —
+  particularly well-suited to cold, damp conditions or when immunity needs support.
+attribution:
+  author: Vasant Lad
+  book: 'Ayurveda: The Science of Self-Healing'
+  source_id: lad-ayurveda-science-of-self-healing-1984
+  page: null
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: lad-ayurveda-science-of-self-healing-1984
+  location: Yogi Tea
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

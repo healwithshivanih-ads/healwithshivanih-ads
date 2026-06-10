@@ -1,0 +1,110 @@
+slug: kates-apple-crisp
+name: Kate's Apple Crisp
+meal_type:
+- snack
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+- sour
+- astringent
+main_ingredients:
+- medium apples, chopped (about 5 cups)
+- lemon juice
+- everyday sweet spice mix
+- raisins
+- dried cranberries
+- rolled oats
+- almond meal
+- coconut oil, melted
+- maple syrup
+- salt
+- shredded coconut or chopped walnuts (optional)
+contains_allergens:
+- nuts
+ingredients:
+- item: medium apples, chopped (about 5 cups)
+  qty: '4'
+  unit: ''
+- item: lemon juice
+  qty: 1/2
+  unit: small lemon
+- item: Everyday Sweet Spice Mix
+  qty: '1'
+  unit: tsp
+- item: raisins
+  qty: '2'
+  unit: tbsp
+- item: dried cranberries
+  qty: '2'
+  unit: tbsp
+- item: rolled oats
+  qty: 3/4
+  unit: cup
+- item: almond meal
+  qty: 3/4
+  unit: cup
+- item: coconut oil, melted
+  qty: '3'
+  unit: tbsp
+- item: maple syrup
+  qty: '3'
+  unit: tbsp
+- item: salt
+  qty: 1/4
+  unit: tsp
+- item: shredded coconut or chopped walnuts (optional)
+  qty: 1/4
+  unit: cup
+steps:
+- Preheat oven to 375°F.
+- In a large bowl, toss together the chopped apples, lemon juice, spice mix, raisins, and dried cranberries
+  until well combined.
+- In a separate bowl, use a fork to mix together the rolled oats, almond meal, melted coconut oil, maple
+  syrup, salt, and optional coconut or walnuts until crumbly.
+- Transfer the apple mixture to an 8x8-inch glass baking dish. Spread the oat topping evenly over the
+  apples and press down gently with your hand.
+- Cover with foil and bake 40 minutes, until the apples are bubbling and soft. Remove foil and bake uncovered
+  for a further 10 minutes until the topping is crisp and golden.
+- Spoon into bowls and serve hot, with a dollop of yogurt on the side if desired.
+servings: '5'
+prep_time_min: 15
+cook_time_min: 50
+approx_kcal_per_serving: 320
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- detoxification
+- digestion-and-nutrient-absorption
+one_line: A flour-free, naturally sweetened apple crisp with an almond-oat topping — an easy autumn bake
+  that is gentle on digestion and cleansing for the system.
+headnote: Local autumn apples tossed with dried cranberries and sweet spices, then topped with an almond-oat
+  crumble — a simple grain-free crisp that delivers cooling, astringent autumn medicine in dessert form.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: null
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: kate's apple crisp
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

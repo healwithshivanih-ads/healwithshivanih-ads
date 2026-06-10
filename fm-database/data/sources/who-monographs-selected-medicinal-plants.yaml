@@ -1,0 +1,23 @@
+id: who-monographs-selected-medicinal-plants
+title: WHO Monographs on Selected Medicinal Plants (Volumes 1-4)
+source_type: clinical_guideline
+quality: high
+authors:
+  - World Health Organization
+year: 1999
+publisher: World Health Organization (Geneva)
+url: https://www.who.int/publications/i/item/9241545178
+notes: >-
+  The World Health Organization's authoritative reference monographs on widely
+  used medicinal plants (Vol 1 1999, Vol 2 2002, Vol 3 2007, Vol 4 2009; ~120
+  plants). Each monograph gives the botanical definition, constituents, and a
+  structured assessment of medicinal uses split into "uses supported by clinical
+  data", "uses described in pharmacopoeias and in traditional systems of
+  medicine", and "uses described in folk medicine, not supported by experimental
+  or clinical data", plus pharmacology, contraindications, warnings, drug
+  interactions, and dosage. Used here for institutional-grade validation of herb
+  uses + standardized safety data. Cite per-plant in the claim's location.
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

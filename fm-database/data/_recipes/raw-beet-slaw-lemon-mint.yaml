@@ -1,0 +1,83 @@
+slug: raw-beet-slaw-lemon-mint
+name: Raw Beet Slaw with Lemon and Mint
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+rasa:
+- sweet
+- bitter
+- astringent
+- sour
+main_ingredients:
+- large beet or 2 small beets, peeled and grated
+- lemon juice
+- fresh mint sprig (optional)
+- sunflower seeds
+- salt
+contains_allergens: []
+ingredients:
+- item: large beet or 2 small beets, peeled and grated
+  qty: '1'
+  unit: ''
+- item: lemon juice
+  qty: 1/4
+  unit: ''
+- item: fresh mint sprig (optional)
+  qty: '1'
+  unit: ''
+- item: sunflower seeds
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: ''
+  unit: to taste
+steps:
+- Combine grated beet and lemon juice in a small bowl. If using mint, tear or snip the leaves into pieces
+  and add to the bowl.
+- In a small dry frying pan over low heat, toast sunflower seeds for about 5 minutes, stirring or shaking
+  the pan so they colour evenly without burning.
+- Add the toasted sunflower seeds and salt to the beet mixture and stir to combine.
+- Serve a half-cup alongside a main dish or tucked into a collard leaf wrap.
+servings: '4'
+prep_time_min: 10
+cook_time_min: 5
+approx_kcal_per_serving: 55
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- detoxification
+- liver-detoxification
+- detoxification-support
+- digestion-and-nutrient-absorption
+one_line: Crunchy grated beet tossed with lemon, mint, and toasted sunflower seeds — a quick blood-cleansing
+  side dish that clears accumulated summer heat.
+headnote: Fresh beets grated raw retain their full detoxifying potency — a few minutes of prep yields
+  a vibrant, liver-supporting slaw that pairs with almost any autumn meal.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 170
+image:
+  file: images/odonnell/odonnell-171-084.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: raw beet slaw with lemon and mint
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

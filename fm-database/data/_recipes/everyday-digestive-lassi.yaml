@@ -1,0 +1,78 @@
+slug: everyday-digestive-lassi
+name: Everyday Digestive Lassi
+meal_type:
+- drink
+diet:
+- vegetarian
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sour
+- sweet
+- pungent
+main_ingredients:
+- water, room temperature
+- organic whole milk yogurt
+- turmeric powder
+- ginger powder
+contains_allergens:
+- dairy
+ingredients:
+- item: water, room temperature
+  qty: '1'
+  unit: cup
+- item: organic whole milk yogurt
+  qty: '0.25'
+  unit: cup
+- item: turmeric powder
+  qty: '1'
+  unit: dash
+- item: ginger powder
+  qty: '1'
+  unit: dash
+steps:
+- Pour the room-temperature water into a 16-ounce glass jar.
+- Add the yogurt, turmeric, and ginger.
+- Blend on high with an immersion hand blender for 1 minute until the mixture foams.
+- Let the liquid settle briefly, then skim off the milk-solid foam that gathers on top with a spoon and
+  discard.
+- Pour into two 8-ounce glasses and serve — most beneficial after the midday meal.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 0
+approx_kcal_per_serving: 35
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- gut-microbiome
+- probiotic-and-prebiotic-support
+one_line: A thin, churned yogurt drink diluted 4:1 with water and spiced with turmeric and ginger — the
+  Ayurvedic probiotic digestif.
+headnote: The churning introduces lightness to dense whole-fat yogurt, making it genuinely digestive rather
+  than heavy; nothing like the thick restaurant lassi.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 139
+image:
+  file: images/odonnell/odonnell-139-061.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: everyday digestive lassi
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

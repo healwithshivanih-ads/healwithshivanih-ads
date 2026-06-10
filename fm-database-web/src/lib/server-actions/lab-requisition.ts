@@ -96,6 +96,10 @@ export async function emailLabRequisitionAction(input: {
     typeof client?.display_name === "string"
       ? client.display_name.split(" ")[0]
       : "there";
+  const coachName =
+    (client?.assigned_coach as string | undefined) ||
+    process.env.COACH_NAME ||
+    "Shivani";
   const date = new Date().toLocaleDateString("en-IN", {
     day: "numeric",
     month: "short",
@@ -104,7 +108,7 @@ export async function emailLabRequisitionAction(input: {
   const subject = input.subject ?? `🔬 Your lab requisition — ${date}`;
   const intro =
     input.intro ??
-    `Hi ${first},\n\nHere's the list of labs we discussed. They're grouped by sample type so the bloods can be done in one visit, with stool / urine / breath kits collected separately at home or at the lab.\n\nYou can use whichever diagnostic lab you prefer — just hand them this sheet and ask them to share the results directly with you (PDF). Once the reports are in, send them over and we'll go through them together.\n\nWarmly,\nShivani`;
+    `Hi ${first},\n\nHere's the list of labs we discussed. They're grouped by sample type so the bloods can be done in one visit, with stool / urine / breath kits collected separately at home or at the lab.\n\nYou can use whichever diagnostic lab you prefer — just hand them this sheet and ask them to share the results directly with you (PDF). Once the reports are in, send them over and we'll go through them together.\n\nWarmly,\n${coachName}`;
 
   // Compose HTML: intro paragraph above the requisition body. The body
   // is already standalone HTML — we strip its <html><body> wrappers and
@@ -192,6 +196,10 @@ export async function sendDiscoveryLabsViaWhatsappAction(input: {
     typeof client.display_name === "string"
       ? client.display_name.split(" ")[0]
       : "there";
+  const coachName =
+    (client?.assigned_coach as string | undefined) ||
+    process.env.COACH_NAME ||
+    "Shivani";
 
   // Build a compact {{labs}} param. If caller passed labsLabel use it;
   // otherwise build from the underlying lab list (first ~10 markers
@@ -230,7 +238,7 @@ export async function sendDiscoveryLabsViaWhatsappAction(input: {
     const body =
       `Hi ${firstName}, a gentle reminder to get your labs done before our next session. ` +
       `Here are the tests we discussed: ${labsLabel}. ` +
-      `Please share the report at least 2 days before our appointment. 🙏\n\n— Shivani Hari\nYour Functional Health Coach`;
+      `Please share the report at least 2 days before our appointment. 🙏\n\n— ${coachName}\nYour Functional Health Coach`;
     await recordOutboundMessageAction({
       clientId: input.clientId,
       templateName: "fm_lab_reminder",

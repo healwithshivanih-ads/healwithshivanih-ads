@@ -1,0 +1,78 @@
+slug: ginger-lime-lassi
+name: Ginger Lime Lassi
+meal_type:
+- drink
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sour
+- sweet
+main_ingredients:
+- organic whole milk yogurt
+- water, room temperature
+- fresh gingerroot, peeled and coarsely chopped
+- lime juice
+- raw honey (optional)
+contains_allergens:
+- dairy
+ingredients:
+- item: organic whole milk yogurt
+  qty: '0.25'
+  unit: cup
+- item: water, room temperature
+  qty: '1'
+  unit: cup
+- item: fresh gingerroot, peeled and coarsely chopped
+  qty: '1'
+  unit: inch piece
+- item: lime juice
+  qty: '0.5'
+  unit: small lime
+- item: raw honey (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Combine the yogurt, room-temperature water, fresh ginger, lime juice, and honey (if using) in a blender
+  or deep cup suitable for an immersion blender.
+- Blend on high for 1–2 minutes until frothy and well combined.
+- Drink immediately as a post-meal digestive.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 0
+approx_kcal_per_serving: 55
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+one_line: A diluted ginger-lime yogurt lassi served at room temperature — a traditional Ayurvedic post-meal
+  digestive that works for spring's dampness.
+headnote: Diluting yogurt heavily with water and adding the penetrating warmth of fresh ginger and lime
+  transforms dairy from a kapha-aggravating food into a genuinely supportive digestive aid for spring.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 197
+image:
+  file: images/odonnell/odonnell-197-103.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: ginger lime lassi
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

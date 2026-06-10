@@ -1,0 +1,36 @@
+slug: dry-roast-whole-spices
+display_name: Dry-Roast Whole Spices Before Grinding
+aliases: []
+category: food_prep
+summary: Toast whole coriander, cumin, fennel, or other seeds in a dry frying pan over medium heat, stirring
+  constantly, just until fragrant (1-2 minutes), then cool before grinding. Releases volatile oils and
+  increases digestibility.
+benefits:
+- releases volatile aromatic oils locked in the seed coat
+- intensifies flavour so smaller quantities are needed
+- improves bioavailability of fat-soluble phytonutrients
+- kindles agni before spices enter the dish
+swap_from:
+- adding raw untoasted whole spices directly to a dish
+- using pre-ground spices from old jars
+how_to_use: Place whole seeds in a dry pan over medium heat. Stir constantly until a light toasty aroma
+  rises (1-2 min). Remove from heat, cool completely, then grind in a spice grinder or mortar and pestle.
+  Use immediately or store in a sealed glass jar for up to 2 weeks.
+cautions:
+- watch carefully — over-roasting turns seeds bitter and ama-forming
+- do not dry-roast seeds that are already visibly cracked or old
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- cooking-to-preserve-nutrients
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+- hcl-and-pepsin-protein-digestion
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 3: From Theory to Practice; Chapter 4: Everyday Savory Spice Mix'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

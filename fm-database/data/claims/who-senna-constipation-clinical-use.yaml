@@ -1,0 +1,37 @@
+slug: who-senna-constipation-clinical-use
+statement: The WHO monograph on Folium Sennae (Cassia senna L. / Cassia angustifolia Vahl dried leaflets)
+  lists, as a use supported by clinical data, the short-term treatment of occasional constipation. WHO
+  notes clinical trials have confirmed a laxative effect attributable to anthraquinone glycosides (sennosides),
+  which are converted by intestinal bacteria to active rheinanthrone, stimulating colonic peristalsis
+  and reducing water reabsorption. WHO recommends use for no longer than 1–2 weeks without medical advice.
+evidence_tier: strong
+rationale: WHO categorises this under 'uses supported by clinical data' — the highest evidentiary category
+  in WHO herbal monographs — reflecting an established controlled-trial record for stimulant laxative
+  activity. The mechanism (bacterial conversion of sennosides → rheinanthrone → colonic motor stimulation)
+  is well-characterised.
+coaching_translation: The WHO recognises senna leaf as a clinically validated short-term laxative for
+  constipation. It works by stimulating the colon muscles. It should not be used for more than 1–2 weeks
+  without a clinician's input.
+out_of_scope_notes: Chronic constipation with potential underlying obstruction, IBD, or laxative-dependent
+  bowel — refer to clinician before recommending senna.
+caveats:
+- 'WHO: do not use for more than 1–2 weeks without medical advice — chronic use causes electrolyte imbalance
+  (especially hypokalaemia) and may damage colonic nerves.'
+- 'WHO contraindications: intestinal obstruction, acute inflammatory bowel diseases (Crohn''s, ulcerative
+  colitis), appendicitis, abdominal pain of unknown cause, pregnancy and lactation, children under 10
+  years.'
+- 'WHO interaction: hypokalaemia potentiates cardiac glycosides (digoxin) and antiarrhythmics; combined
+  use with thiazide diuretics or corticosteroids worsens hypokalaemia.'
+linked_to_topics:
+- constipation
+- irritable-bowel-syndrome
+linked_to_mechanisms: []
+linked_to_supplements:
+- senna
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Folium Sennae, WHO Monographs on Selected Medicinal Plants, Volume 1 (1999), pp. 234–245 (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

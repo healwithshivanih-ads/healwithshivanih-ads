@@ -1,0 +1,40 @@
+slug: prabhava-unexplained-food-action-ayurveda
+statement: >-
+  Prabhava is the term Ayurveda uses for a specific action of a substance that
+  is NOT explained by its taste, heating/cooling potency or post-digestive
+  effect. Classic examples: honey and molasses are sweet yet heating (rather
+  than cooling like most sweet foods); lime is sour yet cooling (rather than
+  heating like most sour foods); and ghee taken as two teaspoons with warm milk
+  is laxative while a smaller half-teaspoon dose is constipating. Prabhava is why
+  two foods with identical taste, virya and vipaka can still act differently.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Prabhava captures the empirically observed exceptions to the rasa-virya-vipaka
+  rules — the cases where traditional clinical observation overrides theory. It
+  is the reason Ayurvedic texts specify exact quantities and pairings (e.g. the
+  ghee dose-response, the honey-ghee ratio) rather than relying on taste alone.
+coaching_translation: >-
+  Some foods behave against type, so follow the traditional instruction exactly.
+  Honey looks like a cooling sweet but is actually warming — useful for damp,
+  congested (kapha) states, less so for hot (pitta) ones. Lime is sour but
+  cooling, so it suits pitta. And dose matters: a generous spoon of ghee in warm
+  milk loosens the bowel, a tiny amount can bind it.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    Prabhava is, by definition, a traditional observation "beyond the logic of
+    the theories"; it is taught as classical Ayurvedic knowledge, not a
+    mechanism with modern evidence.
+linked_to_topics:
+  - ayurvedic-elemental-design-doshas
+  - agni-digestive-fire
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 3: Taste and Digestion — Prabhav, The Specific Unexplained Action (pp.38-39)"
+    quote: "Ghee (clarified butter) in doses of two teaspoons with a cup of milk is laxative but in a smaller dose, like half a teaspoon, is constipating. Why? The answer is prabhav."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

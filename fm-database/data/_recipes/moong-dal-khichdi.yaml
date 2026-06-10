@@ -1,0 +1,51 @@
+slug: moong-dal-khichdi
+name: Moong Dal Khichdi
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: north_indian
+seasons:
+- autumn
+- winter
+- monsoon
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- split yellow mung dal
+- white basmati rice
+- ghee
+- cumin
+- ginger
+- turmeric
+- coriander
+contains_allergens: []
+approx_kcal_per_serving: 320
+protein_g: 12
+good_for:
+- agni-digestive-fire
+- constipation
+- detoxification
+one_line: Soft tridoshic mung-dal & rice one-pot with cumin, ginger and ghee — easy to digest, gentle
+  reset.
+method: '1. Rinse 1/2 cup split mung dal + 1/2 cup basmati rice until water runs clear; soak 15 min.
+
+  2. Warm 1 tbsp ghee, temper 1 tsp cumin seeds until fragrant; add 1 tsp grated ginger, 1/2 tsp turmeric.
+
+  3. Add drained dal+rice, stir 1 min; add 4-5 cups water + 1/2 tsp salt.
+
+  4. Simmer covered 25-30 min to a soft porridge; finish with chopped coriander. Add more water for a
+  thinner, lighter dish.'
+source: odonnell-everyday-ayurveda-cookbook-2015
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

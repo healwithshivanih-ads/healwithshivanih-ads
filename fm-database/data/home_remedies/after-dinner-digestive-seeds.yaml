@@ -1,0 +1,64 @@
+slug: after-dinner-digestive-seeds
+display_name: After-Dinner Digestive Seeds (Roasted Mukhwas)
+aliases:
+  - digestive-seed-mix
+  - mukhwas
+  - roasted-fennel-coriander-cumin-seeds
+  - after-meal-seeds
+category: spice_blend
+route: internal
+summary: >-
+  A roasted seed blend — fennel, toasted coriander, sesame, cumin and ajwain
+  with a little salt — eaten by the spoonful after lunch and supper for good
+  digestion and sweet breath. The classic Indian post-meal mukhwas, presented by
+  Lad as a digestive (dipana / carminative): fennel and coriander are cooling and
+  soothing while cumin, ajwain and sesame are warming and carminative, together
+  relieving gas and freshening the mouth. Distinct from the cumin-coriander-fennel
+  TEA already in the catalogue — these are dry-roasted seeds chewed after meals.
+indications:
+  - bloating and gas after meals
+  - sluggish post-meal digestion
+  - bad breath after eating
+  - heavy or rich meals
+contraindications:
+  - high pitta / acidity / heartburn — favour more fennel and coriander, less ajwain and sesame (heating)
+  - pregnancy — use the ajwain-containing blend sparingly
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha: []
+rasa:
+  - sweet
+  - pungent
+  - astringent
+virya: null
+vipaka: pungent
+prabhava: ''
+ayurvedic_actions:
+  - dipana
+  - pachana
+  - carminative
+  - breath-freshening
+preparation: >-
+  Dry-roast 1/2 cup fennel seeds in a heavy pan until slightly brown and
+  fragrant; sprinkle over 1 tbsp salt dissolved in a little water and toast until
+  dry. Separately roast 1/4 cup toasted coriander seeds, 1 tbsp cumin seeds,
+  1 tbsp ajwain seeds and 1/4 cup sesame seeds, each until fragrant. Mix all
+  together and store in a glass jar.
+typical_dose: ~1 teaspoon chewed slowly after lunch and supper
+duration: Ongoing as a daily after-meal habit
+timing_notes: Take immediately after lunch and the evening meal
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 7: Recipes — Extras, After-Dinner Seeds for Digestion (p.186)"
+    quote: "Eat a teaspoonful after lunch and supper for good digestion and sweet breath."
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

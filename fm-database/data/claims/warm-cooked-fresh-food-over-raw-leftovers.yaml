@@ -1,0 +1,31 @@
+slug: warm-cooked-fresh-food-over-raw-leftovers
+statement: Freshly cooked, warm food is preferred in Ayurveda over raw, cold, or leftover food. Raw and
+  cold foods are harder to digest; leftover cooked food has diminished prana (life energy) and a heavier,
+  more stagnant quality. Repeatedly eating the same leftovers over several days is associated with decreased
+  digestive efficiency and accumulation of ama.
+evidence_tier: fm_specific_thin
+rationale: Raw foods require significantly more digestive enzyme activity and gastric acid for breakdown.
+  Cooking breaks down plant cell walls, deactivates many antinutrients, and makes nutrients more bioavailable.
+  Cold temperatures reduce gastric motility.
+coaching_translation: Favour freshly cooked, warm food as your daily norm. Leftovers from the night before
+  are acceptable, but eating the same meal for 3–4 days in a row reduces the food's vitality and can slow
+  your digestion over time. A quick re-warm is always better than eating cold.
+out_of_scope_notes: ''
+caveats:
+- Certain raw foods (fresh seasonal fruit eaten separately, salad greens in summer) are appropriate within
+  Ayurvedic principles.
+- The 'leftover' teaching reflects the prana concept; modern nutritional science shows some cooked-then-cooled
+  starches form resistant starch, which is beneficial for gut bacteria.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Traditional Tips for Improving Digestion'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

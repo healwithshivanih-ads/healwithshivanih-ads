@@ -1,0 +1,103 @@
+slug: sesame-cookies
+name: Sesame Cookies
+meal_type:
+- snack
+diet:
+- vegetarian
+- gluten_free
+region: ''
+seasons:
+- autumn
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sweet
+- bitter
+- pungent
+main_ingredients:
+- sesame tahini
+- almond flour
+- maple syrup
+- pure vanilla extract
+- everyday sweet spice mix
+- salt
+- baking soda
+- egg, whisked (or 1 flax egg)
+- sesame seeds, plus extra for topping
+contains_allergens:
+- sesame
+- nuts
+- egg
+ingredients:
+- item: sesame tahini
+  qty: '1'
+  unit: cup
+- item: almond flour
+  qty: 1/4
+  unit: cup
+- item: maple syrup
+  qty: 1/3
+  unit: cup
+- item: pure vanilla extract
+  qty: 1/2
+  unit: tsp
+- item: Everyday Sweet Spice Mix
+  qty: '2'
+  unit: tsp
+- item: salt
+  qty: 1/4
+  unit: tsp
+- item: baking soda
+  qty: 1/2
+  unit: tsp
+- item: egg, whisked (or 1 flax egg)
+  qty: '1'
+  unit: ''
+- item: sesame seeds, plus extra for topping
+  qty: '2'
+  unit: tsp
+steps:
+- Preheat oven to 350°F. Grease 2 baking sheets with ghee or coconut oil, or line with parchment paper.
+- In a medium bowl, mix all ingredients together in the order listed. If the batter is too loose to shape,
+  refrigerate for 5–10 minutes.
+- Roll batter into tablespoon-size balls or drop by spoon onto the prepared sheets, leaving a few inches
+  between each — they will puff up during baking.
+- Press each ball down lightly with a fork and sprinkle the tops with extra sesame seeds.
+- Bake for 10–12 minutes, until the surfaces are firm enough to touch without sticking. Allow cookies
+  to cool completely on the baking sheet before transferring — they will be soft and will firm as they
+  cool.
+- 'Flax egg alternative: blend 1 tbsp ground flaxseeds with 3 tbsp water for 2 minutes.'
+servings: '24'
+prep_time_min: 15
+cook_time_min: 12
+approx_kcal_per_serving: 95
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- immune-support
+- iron-nutrition
+one_line: Chewy tahini cookies sweetened with maple syrup and spiced with warming blends — a nourishing,
+  gluten-free bite that honours sesame's tonic properties.
+headnote: Sesame's rare trio of bitter, pungent, and sweet qualities makes these flourless tahini cookies
+  more than just a treat — they are an ojas-building snack with real strength-giving properties.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 311
+image:
+  file: images/odonnell/odonnell-312-177.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: sesame cookies
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

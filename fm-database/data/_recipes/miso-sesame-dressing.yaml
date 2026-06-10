@@ -1,0 +1,89 @@
+slug: miso-sesame-dressing
+name: Miso Sesame Dressing
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Japanese-Ayurvedic
+seasons:
+- winter
+balances_dosha:
+- vata
+aggravates_dosha:
+- pitta
+rasa:
+- sour
+- sweet
+- bitter
+- pungent
+main_ingredients:
+- sesame seeds
+- red miso dissolved in 1 tbsp hot water
+- sesame oil (raw or refined, not toasted)
+- rice vinegar
+- ginger powder
+- cumin powder
+- ume plum vinegar (optional)
+contains_allergens:
+- sesame
+ingredients:
+- item: sesame seeds
+  qty: '2'
+  unit: tsp
+- item: red miso dissolved in 1 tbsp hot water
+  qty: '1'
+  unit: tbsp
+- item: sesame oil (raw or refined, not toasted)
+  qty: '0.25'
+  unit: cup
+- item: rice vinegar
+  qty: '0.25'
+  unit: cup
+- item: ginger powder
+  qty: '0.5'
+  unit: tsp
+- item: cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: ume plum vinegar (optional)
+  qty: '1'
+  unit: dash
+steps:
+- Toast the sesame seeds in a small dry pan over medium-low heat, stirring constantly, until lightly golden.
+- Whisk or shake together the miso paste, sesame oil, rice vinegar, ginger, cumin, toasted seeds, and
+  ume vinegar if using, in a small bowl or 8-ounce mason jar.
+- Refrigerate and use within a week; shake or stir well before each use.
+servings: '3'
+prep_time_min: 5
+cook_time_min: 3
+approx_kcal_per_serving: 180
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- gut-microbiome
+- digestion-and-nutrient-absorption
+one_line: A balanced four-taste miso and sesame dressing that brings depth and minerals to winter greens
+  and grain bowls.
+headnote: Sesame oil provides the heavy, warming quality that winter calls for; the miso contributes probiotic-rich
+  sour taste — together they make dark leafy greens far more appealing on a cold day.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 390
+image:
+  file: images/odonnell/odonnell-390-234.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: miso sesame dressing
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

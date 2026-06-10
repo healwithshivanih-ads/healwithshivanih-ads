@@ -1,0 +1,51 @@
+slug: agni-four-functional-states-ayurveda
+statement: >-
+  Ayurveda describes agni (the digestive fire) in four functional states. Sama
+  agni is balanced and tridoshic — food of any reasonable kind and quantity is
+  digested without symptoms. Vishama agni is irregular/erratic (a vata pattern) —
+  variable digestion, bloating, gas, constipation alternating with looseness.
+  Tikshna agni is hyper/sharp (a pitta pattern) — excessive hunger, acidity,
+  heartburn, hypoglycaemia between meals. Manda agni is slow/dull (a kapha
+  pattern) — heaviness, sluggish digestion, mucus, low appetite even after
+  fasting. Matching food and spice to the agni state, not just the calories, is
+  central to Ayurvedic eating.
+evidence_tier: fm_specific_thin
+rationale: >-
+  Agni is Ayurveda's model for the whole of digestive and metabolic capacity.
+  Because each dosha imposes its qualities on the fire (vata's mobility makes it
+  erratic, pitta's heat makes it sharp, kapha's heaviness makes it dull), the
+  four states give a constitutional lens on common digestive presentations and a
+  rationale for why the same diet helps one person and bloats another. The text
+  states that almost all kapha ailments are rooted in manda agni and many pitta
+  disorders in tikshna agni.
+coaching_translation: >-
+  Read the digestive pattern before changing the diet. Erratic, gassy,
+  constipation-then-loose digestion (vishama/vata) wants warm, moist, regular,
+  well-spiced meals on a steady schedule. Sharp hunger with acidity
+  (tikshna/pitta) wants cooling, less pungent food and never skipping meals.
+  Heavy, slow, mucousy digestion with low appetite (manda/kapha) wants lighter,
+  warm, pungent food, smaller portions and longer gaps between meals.
+out_of_scope_notes: >-
+  Persistent heartburn, unexplained weight loss, or a digestive pattern that
+  does not respond to food changes warrants medical evaluation, not just agni
+  re-balancing.
+caveats:
+  - >-
+    The four-agni model is an Ayurvedic framework for digestive capacity; it
+    overlaps loosely with Western concepts (motility, acid output, enzyme
+    sufficiency) but does not map one-to-one.
+linked_to_topics:
+  - agni-digestive-fire
+  - ayurvedic-elemental-design-doshas
+  - maldigestion
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 3: Taste and Digestion — The Varieties of Agni (pp.41-42)"
+    quote: "Sama agni: balanced, tridoshic. Vishama agni: irregular, usually associated with vata. Tikshna agni: hyper, usually associated with pitta. Manda agni: hypo, usually associated with kapha."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

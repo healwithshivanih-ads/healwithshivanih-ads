@@ -1,0 +1,69 @@
+slug: easy-morning-beverage
+name: Easy Morning Beverage
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Ayurvedic
+seasons: []
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- sweet
+main_ingredients:
+- water
+- fresh lemon juice (from about 0.25 lemon)
+- raw honey (optional)
+contains_allergens: []
+ingredients:
+- item: water
+  qty: '1.25'
+  unit: cups
+- item: fresh lemon juice (from about 0.25 lemon)
+  qty: '1'
+  unit: squeeze
+- item: raw honey (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Bring the water to a boil in a small pot or kettle.
+- Pour into a large mug and remove from heat.
+- Stir in the freshly squeezed lemon juice and optional honey.
+- 'Winter variation: boil 1 tsp grated gingerroot in the water for a few minutes before adding the lemon.'
+servings: '1'
+prep_time_min: 3
+cook_time_min: 3
+approx_kcal_per_serving: 20
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- liver-detoxification
+- detoxification-support
+one_line: A first-thing-in-the-morning warm lemon water that kickstarts bile flow and gently clears overnight
+  mucus buildup.
+headnote: This is the Ayurvedic substitute for the morning coffee ritual — takes the same amount of time
+  and sets a cleaner metabolic tone for the day.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 94
+image:
+  file: ''
+  credit: ''
+  rights_status: none
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: easy morning beverage
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

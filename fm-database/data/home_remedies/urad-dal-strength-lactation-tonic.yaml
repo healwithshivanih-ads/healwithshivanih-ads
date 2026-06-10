@@ -1,0 +1,63 @@
+slug: urad-dal-strength-lactation-tonic
+display_name: Urad Dal Strength & Lactation Tonic (Vata Building)
+aliases:
+  - urad-dal-soup
+  - black-gram-tonic
+  - urad-dal-strengthening-soup
+category: kitchen_remedy
+route: internal
+summary: >-
+  A spiced urad dal (black gram) soup Lad gives as a heavy, unctuous, building
+  food specifically for vata depletion. Urad dal is sweet, heavy and unctuous;
+  it nourishes muscle, bone and reproductive tissue, supports lactation and
+  energises the whole body — excellent and calming for vata, who can eat it
+  frequently. Because it is heavy and warming it aggravates pitta and kapha, so
+  those types take it only occasionally and never in obesity or active pitta
+  conditions.
+indications:
+  - vata depletion / weakness / debility
+  - convalescence, low body weight or muscle wasting
+  - lactation support (galactagogue food)
+  - reproductive-tissue depletion / building (vajikarana)
+contraindications:
+  - kapha disorders, especially obesity (heavy, building)
+  - pitta disorders / active inflammation (warming, heavy)
+  - never combine with fish, yogurt or eggplant (incompatible — generates toxins)
+balances_dosha:
+  - vata
+aggravates_dosha:
+  - pitta
+  - kapha
+rasa:
+  - sweet
+virya: heating
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+  - balya
+  - brimhana
+  - vajikarana
+  - galactagogue
+preparation: >-
+  Wash 2 cups urad dal twice; cook in 5 cups water ~30 min until tender. Temper
+  1 tsp black mustard seeds + 1 tsp cumin seeds + a few curry leaves in 1 tbsp
+  oil until the seeds pop; turn heat low and add cilantro, chopped garlic (or a
+  pinch of cayenne) and a pinch of hing, cook until garlic is lightly browned,
+  then 1/4 tsp turmeric and 1/2 tsp salt. Stir the cooked dal in, bring to a
+  boil and serve with rice and chapati.
+typical_dose: 1 bowl — vata may eat frequently; pitta and kapha once or twice a week
+duration: Regular for vata building; occasional for other types
+timing_notes: Best at lunch when agni is strongest, given its heaviness
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 7: Recipes — Soups, Urad Dal Soup (p.73)"
+    quote: "Urad dal soup detoxifies the system. It nourishes muscle, bone and reproductive fluids. It helps lactation and energizes the whole body. This is not a good food for kapha disorders, especially obesity, nor for pitta disorders. Never eat this soup with fish, yogurt or eggplant."
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

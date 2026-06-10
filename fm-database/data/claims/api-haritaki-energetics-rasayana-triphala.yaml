@@ -1,0 +1,42 @@
+slug: api-haritaki-energetics-rasayana-triphala
+statement: 'The Ayurvedic Pharmacopoeia of India (Part I, Vol I) classifies Haritaki (Terminalia chebula
+  Retz.) with the following energetics: Rasa — Pancha Rasa (all five tastes except Lavana/salty), with
+  Kashaya (astringent) predominating; Guna — Laghu (light), Ruksha (dry); Virya — Ushna (hot potency);
+  Vipaka — Madhura (sweet post-digestive effect); Karma — Rasayana (rejuvenating), Medhya (intellect-promoting),
+  Deepana (digestive-stimulant), Aampachana (ama-digesting), SrotasShodhana (channel-cleansing). Principal
+  Ayurvedic indications (Rogadhikara): Arsa (haemorrhoids), Aruci (anorexia), Vibandha (constipation),
+  Kasa (cough), Pandu (anaemia/pallor), Prameha (diabetes/metabolic disorders), Sotha (oedema), Tamaka
+  Swasa (bronchial asthma), Hrdroga (cardiac conditions), Udararoga (abdominal disorders). Official dose
+  (Matra): 3–6 g of dried fruit powder. Haritaki is the first ingredient of Triphala (alongside Bibhitaki
+  and Amalaki).'
+evidence_tier: plausible_emerging
+rationale: API Part I, Vol I is the official Govt of India pharmacopoeial standard for Haritaki. It is
+  classified as the pre-eminent Rasayana in Charaka Samhita and one of the three fruits of Triphala.
+coaching_translation: India's official Ayurvedic pharmacopoeia classifies haritaki as a hot-potency, ama-clearing,
+  rejuvenating herb — the 'king of herbs' in Charaka — taken at 3–6 g for constipation, digestive sluggishness,
+  respiratory congestion, metabolic disorders, and as a daily Rasayana tonic. It forms the backbone of
+  Triphala.
+out_of_scope_notes: ''
+caveats:
+- Ushna (hot) virya — avoid in high pitta states, acute inflammation, pregnancy, or fever.
+- Ruksha (drying) guna — requires adequate hydration; may worsen dry constitutions if taken without ghee
+  or honey as anupana.
+- Pregnancy contraindicated in classical texts (uterine stimulant, may reduce breast milk production);
+  avoid throughout pregnancy and lactation.
+- 3–6 g traditional churna dose differs from modern standardised extract dosing.
+linked_to_topics:
+- constipation
+- cognitive-decline
+linked_to_mechanisms:
+- gut-microbiome-modulation
+- antioxidant-protection
+linked_to_supplements:
+- haritaki
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Haritaki (Terminalia chebula), API Part I, Vol I, Ayurvedic Pharmacopoeia of India, Govt of
+    India (https://www.ayurveda.hu/api/API-Vol-1.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

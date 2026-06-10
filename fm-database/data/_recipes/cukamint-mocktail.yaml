@@ -1,0 +1,79 @@
+slug: cukamint-mocktail
+name: CukaMint Mocktail
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: ''
+seasons:
+- summer
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
+- kapha
+rasa:
+- sweet
+- astringent
+main_ingredients:
+- cucumbers, peeled, halved lengthwise, and deseeded
+- fresh mint sprigs
+- coconut water
+- lime juice (from 1 lime)
+- lime wedges for garnish
+contains_allergens: []
+ingredients:
+- item: cucumbers, peeled, halved lengthwise, and deseeded
+  qty: '2'
+  unit: whole
+- item: fresh mint sprigs
+  qty: '1'
+  unit: few sprigs
+- item: coconut water
+  qty: '2'
+  unit: cups
+- item: lime juice (from 1 lime)
+  qty: '1'
+  unit: lime
+- item: lime wedges for garnish
+  qty: '1'
+  unit: few wedges
+steps:
+- Place the cucumber pieces and mint sprigs in a blender with 1 cup of the coconut water; blend on high
+  for 1 minute until completely liquefied.
+- Add the remaining cup of coconut water and the lime juice to the blender and pulse briefly to combine.
+- Pour into 2 tall glasses or 4 tumblers over 2 ice cubes per glass; garnish with lime wedges.
+servings: 2-4
+prep_time_min: 5
+cook_time_min: 0
+approx_kcal_per_serving: 30
+kcal_is_estimate: true
+protein_g: 1
+good_for:
+- agni-digestive-fire
+- hydration-and-brain-function
+one_line: A blended cucumber, mint, and coconut water mocktail that keeps pitta cool and quenches summer
+  thirst without alcohol.
+headnote: Everything cooling that summer needs — cucumber, mint, coconut water, lime — blended into a
+  refreshing non-alcoholic drink that looks and tastes festive.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 260
+image:
+  file: images/odonnell/odonnell-261-146.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: cukamint mocktail
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

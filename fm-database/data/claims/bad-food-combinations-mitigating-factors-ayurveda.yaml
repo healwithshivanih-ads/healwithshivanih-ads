@@ -1,0 +1,44 @@
+slug: bad-food-combinations-mitigating-factors-ayurveda
+statement: >-
+  Ayurveda holds that the impact of an incompatible food combination is not
+  absolute — several factors lessen it. A strong digestive fire (agni) can handle
+  combinations that would trouble a weaker one. Balancing spices and herbs can
+  reconcile foods (cilantro cools spicy food; cardamom offsets coffee; ghee with
+  black pepper eases potatoes). Adjusting quantity helps (two parts ghee to one
+  part honey is fine, equal parts is not). Long habituation builds tolerance.
+  Cooking the foods together lets their qualities "get along." And an occasional
+  poor combination does not, by itself, cause harm.
+evidence_tier: plausible_emerging
+rationale: >-
+  This is the flexibility clause of the food-combining framework: it locates the
+  risk in chronically eating poorly matched foods with weak digestion rather than
+  in any single meal, and it explains why spicing and cooking technique matter as
+  much as the ingredient list. The emphasis on individual digestive capacity and
+  cumulative pattern is consistent with a functional view of digestion.
+coaching_translation: >-
+  Don't be rigid about food combining. If your digestion is strong, the odd
+  "wrong" combination won't hurt you. Use spices the way the cuisine already
+  does — cilantro in spicy dishes, cardamom in coffee, ghee and pepper with
+  potatoes — to smooth things over. Cooking ingredients together (as in a mixed
+  vegetable soup) helps them agree. Worry about the combinations you eat every
+  day, not the occasional treat.
+out_of_scope_notes: ''
+caveats:
+  - >-
+    Mitigation is a matter of degree, not a licence — clients with weak
+    digestion, reflux or strong symptom reactions should still avoid their known
+    trigger combinations.
+linked_to_topics:
+  - agni-digestive-fire
+  - digestion-and-nutrient-absorption
+  - maldigestion
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+  - id: lad-ayurvedic-cooking-self-healing-1997
+    location: "Chapter 4: Food Combining — factors that lessen a bad combination (p.46)"
+    quote: "A strong digestive fire, if one is so blessed, can be the most powerful tool of all to deal with 'bad' food combinations... Eating a bad combination once in a while usually does not upset the digestion too much."
+version: 1
+status: active
+updated_at: 2026-06-10
+updated_by: Shivani

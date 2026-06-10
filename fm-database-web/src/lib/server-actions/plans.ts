@@ -10,6 +10,7 @@ import { loadPlanBySlug } from "@/lib/fmdb/loader";
 import { writePlan } from "@/lib/fmdb/writer";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import type { Plan, PlanPatch } from "@/lib/fmdb/types";
+import { runShim } from "@/lib/fmdb/shim";
 
 // ─── Supplement sources ────────────────────────────────────────────────────────
 
@@ -699,5 +700,128 @@ export async function revokeStartConfirmToken(
     return res;
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+// ── Recipe library (Phase 1) ──────────────────────────────────────────────
+// Data layer for the plan-editor recipe picker + the mobile-app export.
+// Pinning itself writes through the existing updatePlan path — nutrition.recipes
+// is now a real NutritionPlan field, so no new write action is needed.
+
+export interface RecipeCard {
+  slug: string;
+  name: string;
+  meal_type: string[];
+  diet: string[];
+  seasons: string[];
+  balances_dosha: string[];
+  one_line: string;
+  kcal: number | null;
+  has_image: boolean;
+  image_cleared: boolean; // true only if a licensed/original photo is attached
+  source: string;
+}
+
+export interface ListRecipesFilter {
+  search?: string;
+  meal_type?: string; // breakfast|lunch|dinner|snack|side|drink
+  diet?: string; // vegetarian|vegan|jain|...
+  dosha?: string; // vata|pitta|kapha (matches balances_dosha)
+  season?: string; // spring|summer|monsoon|autumn|winter
+  slugs?: string[]; // restrict to these slugs (e.g. to hydrate already-pinned)
+}
+
+/** Search/filter the recipe library for the plan-editor recipe picker. */
+export async function listRecipesAction(
+  filter: ListRecipesFilter = {},
+): Promise<{ ok: boolean; recipes: RecipeCard[]; total: number; error?: string }> {
+  try {
+    return (await runShim("list-recipes.py", filter, 30_000)) as {
+      ok: boolean;
+      recipes: RecipeCard[];
+      total: number;
+    };
+  } catch (e) {
+    return {
+      ok: false,
+      recipes: [],
+      total: 0,
+      error: e instanceof Error ? e.message : String(e),
+    };
+  }
+}
+
+/** Project-2 mobile-app recipe export. Drops any photo not marked licensed/original. */
+export async function exportRecipesAction(
+  slugs?: string[],
+  requireImage = false,
+): Promise<{
+  ok: boolean;
+  recipes: unknown[];
+  total: number;
+  images_dropped: number;
+  error?: string;
+}> {
+  try {
+    return (await runShim(
+      "export-recipes-json.py",
+      { slugs: slugs ?? [], require_image: requireImage },
+      30_000,
+    )) as {
+      ok: boolean;
+      recipes: unknown[];
+      total: number;
+      images_dropped: number;
+    };
+  } catch (e) {
+    return {
+      ok: false,
+      recipes: [],
+      total: 0,
+      images_dropped: 0,
+      error: e instanceof Error ? e.message : String(e),
+    };
+  }
+}
+
+/**
+ * Auto-suggest a personalized recipe set for a plan's client (dosha / season /
+ * diet / condition matched). The coach PRUNES this — they never hand-pick from
+ * scratch. The editor shows these as removable chips; the kept slugs are saved to
+ * nutrition.recipes via the normal updatePlan path.
+ */
+export async function suggestRecipesAction(
+  planSlug: string,
+  n = 16,
+): Promise<{ ok: boolean; recipes: RecipeCard[]; total: number; error?: string }> {
+  try {
+    const plan = await loadPlanBySlug(planSlug);
+    if (!plan)
+      return { ok: false, recipes: [], total: 0, error: `Plan ${planSlug} not found` };
+
+    const clientId = plan.client_id as string | undefined;
+    let clientData: Record<string, unknown> = {};
+    if (clientId) {
+      const clientFile = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+      try {
+        const raw = await fs.readFile(clientFile, "utf-8");
+        clientData = (yaml.load(raw) as Record<string, unknown>) ?? {};
+      } catch {
+        // no client file — suggest from the plan alone
+      }
+    }
+
+    return (await runShim(
+      "suggest-recipes.py",
+      { client: clientData, plan, n },
+      30_000,
+    )) as { ok: boolean; recipes: RecipeCard[]; total: number };
+  } catch (e) {
+    return {
+      ok: false,
+      recipes: [],
+      total: 0,
+      error: e instanceof Error ? e.message : String(e),
+    };
   }
 }

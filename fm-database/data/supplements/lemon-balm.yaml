@@ -17,24 +17,21 @@ linked_to_topics:
 - gut-brain-axis
 - gerd-ppi-tapering
 - insomnia
+- hyperthyroidism
 linked_to_claims:
 - lemon-balm-reduces-anxiety-gerd
 - ppi-tapering-supplement-support-repair-protect-antioxidant
-notes_for_coach: 'Calming herb in the mint family with mild anxiolytic and sleep-
-
-  supportive effects. Source (Menolascino transcript) lists lemon
-
-  balm among evidence-supported natural sleep aids but does NOT give
-
-  dosing. Confirm dose from peer-reviewed source before client use.
-
-  Available as standardized extract, tincture, or as a culinary
-
-  herb in tea. Often combined with passionflower, lavender, or
-
-  valerian.
-
-  '
+- lemon-balm-hyperthyroid-graves-tsh-receptor-block
+notes_for_coach: "Calming herb in the mint family with mild anxiolytic and sleep-supportive\
+  \ effects. DUAL ROLE: (1) Antithyroid — Romm (Table 6-3) cites in-vitro evidence\
+  \ that Melissa blocks TSH receptors and Graves' autoantibody binding to thyroid\
+  \ tissue; combined with bugleweed + motherwort in classic hyperthyroid tincture (25mL\
+  \ each + 25mL nettles = 100mL; 5mL TID). (2) Gut/sleep/anxiety — standard calming\
+  \ adaptogen for PPI tapering, insomnia, nervous system support. CAUTION: contraindicated\
+  \ in hypothyroidism (mild thyroid-suppressive effect). Dose for antithyroid use:\
+  \ as part of tincture formula (see Romm formula above); for sleep/anxiety use confirm\
+  \ dose from clinician. Romm calls it the 'gladdening herb' — addresses emotional\
+  \ dysregulation in hyperthyroid clients."
 evidence_tier: plausible_emerging
 typical_dose_range: {}
 linked_to_mechanisms:
@@ -42,6 +39,12 @@ linked_to_mechanisms:
 notes_for_client: Lemon balm is a calming herb that may help reduce anxiety and stress-related
   digestive symptoms while tapering off acid-blocking medications.
 sources:
+- id: romm-botanical-medicine-womens-health-2010
+  location: "Chapter 6 — Endocrine Disorders, Table 6-3 Botanical Treatments for\
+    \ Hyperthyroidism, pp. 194–195"
+  quote: "Melissa officinalis: blocks TSH receptors; inhibits binding of bovine TSH\
+    \ to human thyroid tissue; binds autoantibodies in Graves' disease. High safety\
+    \ profile. Gladdening herb — addresses mild hyperthyroid anxiety."
 - id: vitaone-gut-toolkit
   location: 'Proton-Pump Inhibitors (PPIs): Tapering Instructions for Practitioners
     — Supplement recommendations'
@@ -53,9 +56,9 @@ sources:
   location: Natural sleep aids section
   quote: There's some lavender supplements that have shown in clinical trials some
     benefit, lemon balm, passion flower
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-06-08'
 updated_by: shivani
 contraindications:
   conditions:

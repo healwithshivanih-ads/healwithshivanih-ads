@@ -1,0 +1,85 @@
+slug: spring-digestive-tea
+name: Spring Digestive Tea
+meal_type:
+- drink
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian-inspired
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- pungent
+- sweet
+- astringent
+main_ingredients:
+- water
+- fresh gingerroot
+- star anise
+- cloves
+- black peppercorns
+- cinnamon powder
+contains_allergens: []
+ingredients:
+- item: water
+  qty: '2'
+  unit: cups
+- item: fresh gingerroot
+  qty: '0.5'
+  unit: inch piece
+- item: star anise
+  qty: '0.5'
+  unit: whole
+- item: cloves
+  qty: 2-3
+  unit: whole
+- item: black peppercorns
+  qty: 2-3
+  unit: whole
+- item: cinnamon powder
+  qty: '0.5'
+  unit: tsp
+steps:
+- Bring 2 cups of water to a boil in a small saucepan.
+- Coarsely chop the gingerroot, keeping the skin on, and add it to the boiling water along with the star
+  anise, cloves, peppercorns, and cinnamon.
+- Reduce heat to low and simmer for at least 10 minutes — longer for a stronger brew.
+- Strain into 2 mugs and drink 6 ounces with or after meals.
+servings: '2'
+prep_time_min: 3
+cook_time_min: 12
+approx_kcal_per_serving: 5
+kcal_is_estimate: true
+protein_g: 0
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+- detoxification
+one_line: A warming ginger-clove-cinnamon tea to kindle sluggish spring digestion and gently ease sweet
+  cravings.
+headnote: This simple spiced tea combines ginger's fire-stoking heat with cinnamon's blood-sugar-balancing
+  action and star anise's digestive warmth — a daily ritual for keeping kapha's heaviness in check all
+  spring.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 156
+image:
+  file: images/odonnell/odonnell-154-076.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: spring digestive tea
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

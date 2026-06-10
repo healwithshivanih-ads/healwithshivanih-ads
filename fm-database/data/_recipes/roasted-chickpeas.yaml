@@ -1,0 +1,88 @@
+slug: roasted-chickpeas
+name: Roasted Chickpeas
+meal_type:
+- snack
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian-inspired
+seasons:
+- spring
+balances_dosha:
+- kapha
+aggravates_dosha:
+- vata
+rasa:
+- pungent
+- astringent
+main_ingredients:
+- cooked chickpeas (or two 16-oz cans)
+- apple cider vinegar
+- spring spice mix
+- cumin powder
+- salt
+- sunflower oil
+contains_allergens: []
+ingredients:
+- item: cooked chickpeas (or two 16-oz cans)
+  qty: '2'
+  unit: cups
+- item: apple cider vinegar
+  qty: '2'
+  unit: tbsp
+- item: Spring Spice Mix
+  qty: '2'
+  unit: tsp
+- item: cumin powder
+  qty: '1'
+  unit: tsp
+- item: salt
+  qty: '1'
+  unit: dash
+- item: sunflower oil
+  qty: '2'
+  unit: tsp
+steps:
+- Preheat oven to 400°F.
+- Rinse and drain the chickpeas, then dry them in a clean kitchen towel by wrapping and shaking. Place
+  the dried chickpeas in a large bowl.
+- Add the vinegar, spices, salt, and oil. Mix everything together with your hands, rubbing the coating
+  thoroughly into each chickpea.
+- Spread in a single layer on a baking sheet and bake for 40 minutes, stirring every 15 minutes, until
+  lightly browned. For a crunchier result, bake up to 50 minutes — watch them carefully so they do not
+  burn.
+- Allow to cool completely before storing in an airtight container at room temperature.
+servings: '8'
+prep_time_min: 10
+cook_time_min: 40
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- protein-adequacy-vegetarian
+- blood-sugar-regulation
+one_line: Crispy oven-roasted chickpeas spiced with cumin and apple cider vinegar — a dry, pungent snack
+  that helps balance kapha's dampness.
+headnote: Roasting draws out moisture and concentrates flavour, turning humble chickpeas into a warming,
+  portable spring snack that works equally well as a crunchy soup garnish.
+attribution:
+  author: Kate O'Donnell
+  book: The Everyday Ayurveda Cookbook
+  source_id: odonnell-everyday-ayurveda-cookbook-2015
+  page: 180
+image:
+  file: images/odonnell/odonnell-181-091.jpg
+  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
+  rights_status: book_reference_uncleared
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+    use
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: ROASTED CHICKPEAS
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

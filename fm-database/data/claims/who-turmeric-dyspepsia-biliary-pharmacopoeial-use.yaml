@@ -1,0 +1,34 @@
+slug: who-turmeric-dyspepsia-biliary-pharmacopoeial-use
+statement: The WHO monograph on Rhizoma Curcumae Longae (Vol 1, 1999) classifies use for dyspeptic conditions
+  and biliary dysfunction as 'uses described in pharmacopoeias and traditional systems of medicine', with
+  a posology of dried rhizome 1.5-3 g/day. The monograph notes that studies in humans for anti-inflammatory
+  and other effects were preliminary at time of publication.
+evidence_tier: plausible_emerging
+rationale: WHO Vol 1 places dyspeptic/biliary use under 'Uses described in pharmacopoeias' — a middle
+  tier between 'supported by clinical data' and 'traditional medicine'. The pharmacopoeial standard is
+  the primary basis for this claim.
+coaching_translation: The WHO recognises turmeric as a pharmacopoeially established remedy for digestive
+  complaints and bile-related symptoms, at 1.5-3 g/day of the dried root — though the evidence base for
+  anti-inflammatory and other uses was still emerging at the time of their assessment.
+out_of_scope_notes: WHO (1999) notes preliminary data on anti-inflammatory, antiplatelet, anticancer and
+  other pharmacological properties but does not classify these as established clinical uses — these require
+  further investigation before clinical recommendation.
+caveats:
+- WHO notes contraindication in bile duct obstruction.
+- WHO states that use in gallstones should only be on medical advice.
+- Hypersensitivity reactions documented (contact dermatitis).
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- chronic-inflammation
+linked_to_mechanisms:
+- anti-inflammatory-signaling
+linked_to_supplements:
+- turmeric
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Rhizoma Curcumae Longae, WHO Monographs on Selected Medicinal Plants Vol 1 (1999), pp. 168-176
+    (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

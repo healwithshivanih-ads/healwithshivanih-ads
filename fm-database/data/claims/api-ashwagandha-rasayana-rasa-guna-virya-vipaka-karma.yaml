@@ -1,0 +1,33 @@
+slug: api-ashwagandha-rasayana-rasa-guna-virya-vipaka-karma
+statement: 'The Ayurvedic Pharmacopoeia of India (API) classifies ashwagandha (Withania somnifera Dunal,
+  Ashwagandha) with: Rasa — Katu (pungent), Tikta (bitter), Kashaya (astringent); Guna — Laghu (light),
+  Snigdha (unctuous); Virya — Ushna (hot); Vipaka — Madhura (sweet post-digestive). Principal Karma: Rasayana
+  (rejuvenating tonic), Balya (strengthening), Vajikarana (aphrodisiac/reproductive tonic), Vatakaphahara
+  (pacifies vata and kapha). Rogadhikara (disease indications): Kshaya (debility/wasting), Shwasa (respiratory
+  disorders). Official Matra: 3-6 g of root powder.'
+evidence_tier: plausible_emerging
+rationale: API Part I Vol 1 provides the authoritative Government of India Ayurvedic pharmacopoeial standard
+  for Ashwagandha. Rasayana classification reflects the herb's primary traditional use as an adaptogen
+  and rejuvenative.
+coaching_translation: 'In Ayurveda''s official classification, ashwagandha is a Rasayana — a rejuvenating,
+  strength-building adaptogen that pacifies vata and kapha. It is officially indicated for debility, wasting,
+  and respiratory weakness. Official dose: 3-6 g of root powder.'
+out_of_scope_notes: ''
+caveats:
+- Contraindicated in pregnancy per Ayurvedic tradition (also confirmed by WHO).
+- API dose of 3-6 g is the traditional powdered root dose; most clinical trials have used standardised
+  root extracts at lower gram-equivalent doses.
+linked_to_topics:
+- adrenal-fatigue
+- hpa-axis-cortisol-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements:
+- ashwagandha
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Ayurvedic Pharmacopoeia of India, Part I Vol 1, Ashwagandha (Withania somnifera Dunal) (https://www.ayurveda.hu/api/API-Vol-1.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,36 @@
+slug: api-bacopa-monnieri-safety-drug-interactions
+statement: 'WHO Monographs (Vol 1–4) do not include a monograph on Bacopa monnieri; no EMA/HMPC herbal
+  monograph exists for Bacopa monnieri as of 2024; no ESCOP monograph was found for this herb. The API
+  (Vol IV) is therefore the sole authoritative pharmacopoeial source for this herb in this extraction.
+  API-cited safety notes: avoid in thyroid disorders (bacopa may increase T4 levels — pharmacological
+  studies show interference with thyroid hormone synthesis at high doses); inhibits CYP1A2, CYP2C9, CYP3A4,
+  and CYP2C19 in vitro, suggesting potential for drug interactions with narrow-therapeutic-index CYP substrates;
+  additive effect with cholinesterase inhibitors (donepezil, rivastigmine); insufficient data for pregnancy
+  — API advises caution; may reduce male fertility at very high doses (animal data).'
+evidence_tier: plausible_emerging
+rationale: API does not provide an explicit contraindications section in the same format as WHO/EMA; these
+  safety signals are drawn from the API pharmacognosy notes and pharmacological actions section of Vol
+  IV, cross-referenced with StatPearls (NBK589635) which cites the same CYP data from in vitro studies.
+coaching_translation: Bacopa should be used cautiously by anyone on medications processed by the liver
+  (especially warfarin, phenytoin, or immunosuppressants), and those with thyroid conditions should inform
+  their doctor before starting it. Not recommended in pregnancy.
+out_of_scope_notes: Clients on anticoagulants, anti-epileptics, immunosuppressants, thyroid medication,
+  or cholinesterase inhibitors should obtain clinician sign-off before use.
+caveats:
+- CYP inhibition data is in vitro — clinical magnitude not established in RCTs.
+- Thyroid interaction is based on animal and pharmacological studies, not human clinical trials.
+- WHO/EMA/ESCOP monographs not found — safety data above is API + pharmacological literature only.
+linked_to_topics:
+- cognitive-decline
+- hypothyroidism
+linked_to_mechanisms:
+- cholinergic-anti-inflammatory-pathway
+linked_to_supplements:
+- bacopa-monnieri
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Brahmi pharmacology and safety, API Part I, Vol IV; cross-ref StatPearls NBK589635 (https://naturalingredient.org/wp/wp-content/uploads/API-Vol-4.pdf)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

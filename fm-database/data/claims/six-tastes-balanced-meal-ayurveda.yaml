@@ -1,0 +1,32 @@
+slug: six-tastes-balanced-meal-ayurveda
+statement: Ayurveda teaches that a meal including all six tastes — sweet, sour, salty, bitter, pungent,
+  and astringent — naturally satisfies the palate and signals completeness to the body, reducing cravings.
+  Meals dominated by only one or two tastes (typically sweet and salty in the modern diet) create imbalance
+  and drive overconsumption.
+evidence_tier: fm_specific_thin
+rationale: 'Each taste corresponds to a pair of elemental qualities (gunas) and has specific physiological
+  effects: sweet builds tissues, sour stimulates digestion, salty lubricates and clears channels, bitter
+  reduces fat and toxins, pungent moves mucus and mobilises, astringent tones slack tissues. A balanced
+  palate experience activates diverse digestive and absorptive processes.'
+coaching_translation: 'Try to include all six tastes at your main meal. Practically: add a squeeze of
+  lemon (sour), a pinch of salt, a bitter green or spice like turmeric or fenugreek, some pungent spice
+  like pepper or ginger, a small astringent element like pomegranate seeds or cooked legumes, and a sweet
+  grain or root vegetable. This variety is why spiced Indian cooking is inherently more satisfying than
+  plain food.'
+out_of_scope_notes: ''
+caveats:
+- The six-taste framework is Ayurvedic; modern nutrient-signalling research partially overlaps but does
+  not map directly.
+linked_to_topics:
+- agni-digestive-fire
+- ayurvedic-elemental-design-doshas
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 1: Ayurveda Basics — The Six Tastes'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

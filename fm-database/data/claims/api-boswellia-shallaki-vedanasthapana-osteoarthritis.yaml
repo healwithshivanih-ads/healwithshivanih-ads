@@ -1,0 +1,52 @@
+slug: api-boswellia-shallaki-vedanasthapana-osteoarthritis
+statement: 'The Ayurvedic Pharmacopoeia of India classifies Shallaki (Boswellia serrata Roxb., dried gum-resin
+  from the stem) with the following official energetics: Rasa (taste) — Tikta (bitter), Kashaya (astringent),
+  Madhura (sweet); Guna (qualities) — Laghu (light), Rooksha (dry); Virya (potency) — Ushna (warming);
+  Vipaka (post-digestive effect) — Katu (pungent). Principal Karma (actions): Kapha-Pittashamaka (pacifies
+  Kapha and Pitta), Vedanasthapana (analgesic/pain-relieving), Shothahara (anti-inflammatory/anti-oedematous),
+  Sandhi-balya (strengthens joints), Balya (tonic). Rogadhikara (disease indications): Sandhivata (osteoarthritis),
+  Amavata (rheumatoid-type arthritis), Pravahika (dysentery/inflammatory bowel conditions), Shvasa (respiratory
+  disorders including asthma). Official Matra (dose): 1–3 g of the gum-resin powder.'
+evidence_tier: plausible_emerging
+rationale: The API terms Vedanasthapana (pain-relieving) and Shothahara (anti-inflammatory) directly map
+  to the mechanistically characterised activity of boswellic acids — particularly AKBA (3-O-acetyl-11-keto-β-boswellic
+  acid), a potent 5-lipoxygenase inhibitor. The Rogadhikara listing of Sandhivata (osteoarthritis) and
+  Pravahika (inflammatory bowel disease) parallels the strongest contemporary RCT evidence base for this
+  herb. No WHO monograph or EMA herbal monograph exists for Boswellia serrata; API is therefore the primary
+  authoritative pharmacopoeial body for this herb.
+coaching_translation: India's official Ayurvedic pharmacopoeia classifies Shallaki (boswellia gum-resin)
+  as a pain-relieving, anti-inflammatory herb formally indicated for osteoarthritis, inflammatory joint
+  conditions, and inflammatory bowel conditions. The classical dose is a half to full teaspoon (1–3 g)
+  of the gum-resin powder daily. Contemporary research strongly supports these same indications.
+out_of_scope_notes: Inflammatory bowel disease (Crohn's, UC) management with boswellia — refer to gastroenterologist.
+  Active osteoarthritis requiring pharmacotherapy — boswellia is adjunctive, not a substitute for NSAID/DMARD
+  therapy in severe disease.
+caveats:
+- API Matra 1–3 g is the whole gum-resin powder; standardised extracts (e.g. 65–75% boswellic acids, 30%
+  AKBA) are more potent — typical clinical doses of standardised extracts are 300–500 mg, not 1–3 g of
+  crude powder.
+- 'Ushna (warming) Virya: use with caution in active Pitta-type inflammatory flares or high-grade fever.'
+- 'Rooksha (dry) Guna: may aggravate dryness/Vata with prolonged high-dose use — consider co-administration
+  with unctuous foods (ghee, sesame oil).'
+- No EMA or WHO herbal monograph exists for Boswellia serrata — clinical evidence for joint and gut benefits,
+  while substantial (multiple positive RCTs), is classified below WHO 'supported by clinical data' level
+  in this output because WHO has not produced a formal monograph for this herb.
+linked_to_topics:
+- osteoarthritis
+- rheumatoid-arthritis
+- inflammatory-bowel-conditions
+- chronic-inflammation
+linked_to_mechanisms:
+- arachidonic-acid-cascade
+- nf-kb-activation
+- inflammatory-cytokine-elevation
+linked_to_supplements:
+- boswellia
+sources:
+- id: ayurvedic-pharmacopoeia-of-india
+  location: Shallaki, Ayurvedic Pharmacopoeia of India, Part I, Volume IV, Ministry of AYUSH, Government
+    of India (https://www.ayush.gov.in/AYUSH/portal/Pharmacopoeias/Pharmacopoeia.aspx)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

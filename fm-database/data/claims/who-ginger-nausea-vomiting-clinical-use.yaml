@@ -1,0 +1,30 @@
+slug: who-ginger-nausea-vomiting-clinical-use
+statement: The WHO monograph on Rhizoma Zingiberis (Vol 1, 1999) classifies ginger's use for prevention
+  of nausea and vomiting — including motion sickness, postoperative nausea, and nausea of pregnancy —
+  as 'uses supported by clinical data', based on controlled clinical trials.
+evidence_tier: strong
+rationale: WHO Vol 1 places this indication under 'Clinical pharmacology' and 'Uses supported by clinical
+  data', distinguishing it from the lower-evidence 'traditional uses'. Multiple controlled trials are
+  cited for motion sickness and postoperative nausea.
+coaching_translation: The World Health Organization recognises ginger as an evidence-backed option for
+  nausea — travel sickness, morning sickness, and post-operative nausea are all listed as clinically supported
+  uses.
+out_of_scope_notes: ''
+caveats:
+- WHO notes that medicinal doses in pregnancy should be discussed with a healthcare provider; culinary
+  amounts are generally considered safe.
+- The evidence for postoperative nausea in the WHO monograph reflects studies as of 1999; more recent
+  Cochrane reviews are mixed.
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+linked_to_supplements:
+- ginger
+sources:
+- id: who-monographs-selected-medicinal-plants
+  location: Rhizoma Zingiberis, WHO Monographs on Selected Medicinal Plants Vol 1 (1999), pp. 277-287
+    (https://apps.who.int/iris/handle/10665/42052)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

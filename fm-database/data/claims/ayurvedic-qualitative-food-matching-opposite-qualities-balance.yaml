@@ -1,0 +1,31 @@
+slug: ayurvedic-qualitative-food-matching-opposite-qualities-balance
+statement: 'Qualitative food matching in Ayurveda uses the principle of ''like increases like, opposites
+  balance'': symptoms of heat and inflammation call for cooling, dry, stable foods; symptoms of cold,
+  dryness, and anxiety call for warming, grounding, moist, oily foods; symptoms of congestion and lethargy
+  call for warming, light, sharp, mobile foods.'
+evidence_tier: fm_specific_thin
+rationale: In Ayurvedic epistemology, symptoms reflect an excess of certain qualities; foods of opposite
+  qualities counterbalance them. This is the practical clinical application of the six tastes and twenty
+  qualities (gunas) framework for prescribing food therapeutics.
+coaching_translation: 'For clients who run hot or inflamed: emphasise cucumber, coriander, fennel, coconut,
+  barley, bitter greens. For anxious, dry, cold types: emphasise ghee, sesame, root vegetables, warm soups,
+  sweet grains. For congestion and sluggishness: use ginger, mustard, pungent spices, light bitter greens.'
+out_of_scope_notes: ''
+caveats:
+- Framework requires some understanding of the Ayurvedic guna system to apply accurately.
+- Individual constitution assessment by a practitioner improves precision.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- ayurvedic-elemental-design-doshas
+linked_to_mechanisms:
+- inflammatory-cascade
+- gut-brain-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Appendix 6: Recipe Index by Symptoms — Qualities that Balance'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

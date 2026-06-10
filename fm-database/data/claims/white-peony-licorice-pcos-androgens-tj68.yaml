@@ -1,0 +1,54 @@
+slug: white-peony-licorice-pcos-androgens-tj68
+statement: "White peony (Paeonia lactiflora) combined with licorice (Glycyrrhiza glabra)
+  as TJ-68 (Shakuyaku-Kanzo-To) reduces elevated androgens in PCOS. Trial 1 (n=8):
+  testosterone fell to <50 ng/dL after 2–8 weeks; 7/8 resumed ovulation. Trial 2
+  (n=20 PCOS): 90% had testosterone lowered; 25% conceived. Mechanism: paeoniflorin
+  acts on aromatase enzyme to support follicle maturation and ovulation. White peony
+  also modulates estrogen, progesterone, and prolactin. CAUTION: licorice is
+  contraindicated in hypertension; monitor BP."
+evidence_tier: plausible_emerging
+rationale: "Two small clinical trials show consistent signal for androgen reduction
+  and ovulation restoration. Sample sizes are small (n=8 and n=20) and evidence is
+  preliminary, but mechanism is plausible (paeoniflorin → aromatase modulation).
+  TJ-68 is a traditional Kampo formula used widely in Japan for menstrual irregularities
+  and PCOS. White peony is safe; licorice component requires BP monitoring. This is
+  particularly relevant for PCOS clients with elevated testosterone, oligomenorrhea,
+  and anovulation. The aromatase paeoniflorin mechanism supports follicle maturation —
+  directly addressing the anovulatory core of PCOS."
+coaching_translation: "For PCOS clients with high testosterone and irregular cycles,
+  white peony + licorice (TJ-68 formula) is worth considering. These two herbs work
+  together to lower testosterone and restore ovulation — small trials but consistent
+  results. Use as tincture formula (white peony 20mL + licorice component) or source
+  as Shakuyaku-Kanzo-To capsules. IMPORTANT: skip licorice or monitor BP carefully
+  if client has hypertension. Allow 2–3 months for hormonal shift. Pairs well with
+  chaste berry and NAC in a PCOS protocol."
+caveats:
+  - Trial sizes very small (n=8 and n=20) — treat as promising signal, not confirmed
+    RCT-level evidence
+  - Licorice (Glycyrrhiza glabra) contraindicated in hypertension — monitor BP; use
+    deglycyrrhizinated form (DGL) if needed or omit licorice from formula
+  - Do not use TJ-68 with other licorice-containing formulas (additive glycyrrhizin load)
+  - Paeoniflorin mechanism on aromatase — avoid combining with pharmaceutical aromatase
+    inhibitors without clinician oversight
+linked_to_topics:
+  - pcos-fertility
+  - hirsutism-and-androgen-excess
+linked_to_mechanisms:
+  - androgen-excess
+  - anovulation
+linked_to_supplements:
+  - white-peony-paeonia-lactiflora
+  - licorice-root
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 5 — Menstrual Wellness and Menstrual Problems, PCOS section,
+      pp. 175–184; Table 5-17; Box 5-32"
+    quote: "Trial in 8 women with hyperandrogenism and oligomenorrhea: testosterone
+      levels decreased to less than 50 ng/dL after 2–8 weeks of treatment; 7 of
+      8 women began ovulating. Second trial n=20 PCOS: 90% had testosterone lowered;
+      25% went on to conceive. Paeoniflorin acts on the aromatase enzyme important
+      in follicle maturation and ovulation."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani

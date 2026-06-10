@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Your supplements · Shivani Hari",
+  title: "Your supplements · The Ochre Tree",
   description: "Order your protocol supplements",
 };
 

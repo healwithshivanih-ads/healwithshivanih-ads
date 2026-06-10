@@ -1,0 +1,45 @@
+slug: ema-licorice-traditional-use-gi-respiratory-glycyrrhizin-limit
+statement: 'The EMA/HMPC community monograph on Glycyrrhiza glabra L. and/or G. inflata Bat. and/or G.
+  uralensis Fisch., radix grants ''traditional herbal medicinal product'' status for (1) symptomatic relief
+  of mild upper gastrointestinal discomfort such as heartburn and gastric irritation, and (2) relief of
+  symptoms of upper respiratory tract catarrh such as cough associated with a cold. EMA did not grant
+  well-established use for either indication. EMA posology: dried root extract equivalent preparations,
+  up to 400 mg hydroxyanthraquinone equivalents per day; duration ≤4 weeks. EMA explicitly states that
+  preparations should contain a daily dose not exceeding 100 mg glycyrrhizin to remain within safety limits.'
+evidence_tier: plausible_emerging
+rationale: EMA's traditional use designation reflects pharmacopoeial recognition without a sufficient
+  controlled-trial package for well-established classification. The explicit glycyrrhizin daily cap of
+  100 mg is the operational safety limit derived from the pseudoaldosteronism evidence review, providing
+  a concrete formulation target for practitioners. The GI and respiratory indications parallel the WHO
+  pharmacopoeial uses.
+coaching_translation: Europe's herbal medicines regulator approves licorice as a traditional herbal remedy
+  for heartburn, gastric irritation, and coughs. The safety limit is 100 mg glycyrrhizin per day (about
+  2–5 g whole root depending on glycyrrhizin content) for a maximum of 4 weeks. DGL preparations fall
+  well below this limit.
+out_of_scope_notes: Hypertension, hypokalaemia, hepatic/renal disease, or concurrent cardiac glycoside/antihypertensive
+  use — refer to clinician before recommending whole licorice root preparations.
+caveats:
+- 'EMA daily glycyrrhizin cap: ≤100 mg/day to avoid pseudoaldosteronism (sodium retention, hypertension,
+  hypokalaemia).'
+- 'EMA duration limit: maximum 4 weeks of use.'
+- 'EMA contraindications: hypertension, hypokalaemia, hepatic or renal disorders, pregnancy and lactation.'
+- 'EMA interactions: thiazide and loop diuretics, cardiac glycosides, antihypertensives, corticosteroids
+  — all clinically significant.'
+- Traditional use only — no positive controlled-trial evidence package sufficient for well-established
+  use classification in either the GI or respiratory indication.
+linked_to_topics:
+- peptic-ulcer-disease
+- essential-hypertension
+linked_to_mechanisms:
+- cortisol-elevation
+linked_to_supplements:
+- licorice-root
+- dgl-licorice
+sources:
+- id: ema-hmpc-herbal-monographs
+  location: EMA/HMPC Community Herbal Monograph on Glycyrrhiza glabra L. and/or Glycyrrhiza inflata Bat.
+    and/or Glycyrrhiza uralensis Fisch., radix (EMA/HMPC/571122/2009, adopted 2012) (https://www.ema.europa.eu/en/medicines/herbal/liquiritiae-radix)
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
