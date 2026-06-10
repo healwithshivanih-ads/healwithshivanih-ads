@@ -1588,6 +1588,32 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                 data["dosha_self_assessment"] = cleaned
                 data["dosha_self_assessment_completed_at"] = _now_iso()
                 fields_updated.append("dosha_self_assessment")
+                # Auto-derive prakruti from tally and write to
+                # ayurveda_constitution_read so the dashboard shows it.
+                from collections import Counter
+                tally = Counter(cleaned.values())
+                total = sum(tally.values()) or 1
+                ranked = tally.most_common()  # [(dosha, count), ...]
+                top_pct = ranked[0][1] / total if ranked else 0
+                second_pct = ranked[1][1] / total if len(ranked) > 1 else 0
+                # Dual constitution if second dosha ≥ 25%; else single
+                if len(ranked) >= 2 and second_pct >= 0.25:
+                    label = f"{ranked[0][0].capitalize()}-{ranked[1][0].capitalize()}"
+                elif ranked:
+                    label = ranked[0][0].capitalize()
+                else:
+                    label = ""
+                if label:
+                    data["ayurveda_constitution_read"] = {
+                        "prakruti_label": label,
+                        "prakruti_confidence": "high",
+                        "method": "dosha_quiz",
+                        "derived_at": _now_iso(),
+                        "tally": {d: round(n / total * 100) for d, n in tally.items()},
+                    }
+                    # Also update the top-level field coaches read in letters/plans
+                    data["ayurveda_constitution"] = label
+                    fields_updated.append("ayurveda_constitution_read")
 
     # ── timeline events (additive merge by event-text dedup) ──
     incoming_timeline = submitted.get("timeline_events") or []
