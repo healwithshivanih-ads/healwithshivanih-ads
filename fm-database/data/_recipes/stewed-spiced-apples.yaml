@@ -1,0 +1,40 @@
+slug: stewed-spiced-apples
+name: Stewed Spiced Apples
+meal_type:
+- breakfast
+- snack
+diet:
+- vegetarian
+- vegan
+region: ''
+seasons:
+- autumn
+- winter
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha:
+- kapha
+rasa:
+- sweet
+main_ingredients:
+- apple
+- cinnamon
+- clove
+- raisins
+contains_allergens: []
+approx_kcal_per_serving: 150
+protein_g: 1
+good_for:
+- constipation
+- agni-digestive-fire
+one_line: Soft cinnamon-clove stewed apples — a classic Ayurvedic gentle morning food, easy on digestion.
+method: '1. Chop 1-2 apples; simmer in 1/2 cup water with 1/4 tsp cinnamon, 1 clove, a few raisins.
+
+  2. Cook ~10 min until soft. Eat warm, ideally as a first food in the morning (traditionally eaten ~30
+  min before other breakfast).'
+source: lad-complete-book-ayurvedic-home-remedies-1998
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

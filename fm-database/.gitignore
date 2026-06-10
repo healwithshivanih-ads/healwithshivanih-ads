@@ -3,6 +3,7 @@ data/staging/
 data/_audit.jsonl
 data/_backlog.yaml
 data/_cleanup/
+data/_recipes/_candidates.yaml
 
 # Local virtualenv
 .venv/

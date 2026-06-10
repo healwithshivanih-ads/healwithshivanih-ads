@@ -5896,6 +5896,31 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
                   has_exercise_plan: bool = False,
                   phase_start: int | None = None,
                   phase_end: int | None = None) -> str:
+    """Phase 0 recipe-shortlist wrapper around the real prompt builder.
+
+    For meal-bearing letter types, appends a "PREFERRED VETTED RECIPES" block —
+    a filtered (diet/allergen/foods-to-avoid), dosha/season-ranked shortlist drawn
+    from fm-database/data/_recipes/ — so the AI builds meals from the vetted library
+    first and ⚠-marks anything it invents. Fully no-op if recipe_select or the
+    recipe store is missing (letter is byte-identical to before).
+    """
+    prompt = _build_prompt_inner(plan, client, weight_loss, letter_type, coach_notes,
+                                 existing_partials, has_exercise_plan, phase_start, phase_end)
+    if letter_type in ("meal_plan", "meal_plan_phase", "recipes", "consolidated"):
+        try:
+            import recipe_select as _rsel
+            prompt = prompt + _rsel.recipe_shortlist_for_letter(plan, client, weight_loss=weight_loss)
+        except Exception:
+            pass
+    return prompt
+
+
+def _build_prompt_inner(plan: dict, client: dict, weight_loss: dict | None = None,
+                  letter_type: str = "consolidated", coach_notes: str = "",
+                  existing_partials: dict | None = None,
+                  has_exercise_plan: bool = False,
+                  phase_start: int | None = None,
+                  phase_end: int | None = None) -> str:
     """Build the full prompt for Claude. Dispatches to type-specific builders for non-consolidated types.
 
     `existing_partials` is a dict like {"meal_plan": "...md content...",
@@ -7745,6 +7770,17 @@ def main() -> int:
         except Exception as e:
             print(f"[render-letter] recipes-sidecar build failed ({type(e).__name__}: {e})",
                   file=sys.stderr, flush=True)
+
+    # Phase 0 recipe flywheel: capture any AI-invented (⚠-marked) meals into
+    # data/_recipes/_candidates.yaml so the coach can vet + promote them into the
+    # vetted library. Best-effort — never breaks the letter flow.
+    try:
+        import recipe_select as _rsel
+        _n_cand = _rsel.append_candidates(markdown, plan.get("client_id") or "", plan.get("slug") or "")
+        if _n_cand:
+            print(f"[render-letter] captured {_n_cand} candidate recipe(s) for review", file=sys.stderr, flush=True)
+    except Exception:
+        pass
 
     _output_payload = {
         "ok": True,
