@@ -556,6 +556,80 @@ export async function reissueTierOneIntakeAction(
 }
 
 /**
+ * Re-issue the intake focused on the DOSHA self-assessment quiz (`?focus=dosha`)
+ * so the client answers the ~12 lifelong-frame questions that DERIVE their
+ * prakruti (constitution). Mirrors reissueTierOneIntakeAction: full-stage token,
+ * focus link, fm_intake_topup_v1 template (correct "one short section" copy) →
+ * free-text fallback inside the 24h window. Never falls back to the wrong-copy
+ * invite templates.
+ */
+export async function reissueDoshaQuizAction(
+  clientId: string,
+): Promise<
+  | { ok: true; url: string; via: "free_text" | "template" }
+  | { ok: false; error: string }
+> {
+  const tok = await generateIntakeToken(clientId, 14, true);
+  if (!tok.ok) return { ok: false, error: tok.error };
+
+  const { loadAllClients } = await import("@/lib/fmdb/loader");
+  const { sendWhatsAppAction, sendWhatsAppTextAction, recordOutboundMessageAction } =
+    await import("@/app/api/whatsapp/actions");
+
+  const clients = (await loadAllClients()) as Array<Record<string, unknown>>;
+  const c = clients.find((x) => x.client_id === clientId);
+  if (!c) return { ok: false, error: `Client ${clientId} not found` };
+
+  const phone = ((c.mobile_number as string | undefined) ?? "").trim();
+  if (!phone) return { ok: false, error: "No mobile number on file" };
+  const displayName = (c.display_name as string | undefined) ?? "";
+  const firstName = displayName.split(" ")[0] || "there";
+
+  const rawOrigin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
+  if (!rawOrigin || /localhost|127\.0\.0\.1/.test(rawOrigin)) {
+    return {
+      ok: false,
+      error:
+        "NEXT_PUBLIC_APP_URL is unset or points to localhost — refusing to send an unreachable link. Set it to the public origin in .env.local and restart pm2.",
+    };
+  }
+  const url = `${rawOrigin}/intake/${tok.token}?focus=dosha`;
+
+  const freeText =
+    `Hi ${firstName}, quick one — a short set of questions about your natural, ` +
+    `lifelong tendencies (body, digestion, sleep, temperament). It helps me tailor ` +
+    `your plan to your Ayurvedic constitution. About 3 minutes, everything else is ` +
+    `saved:\n\n${url}\n\n— Shivani Hari / Your Functional Health Coach`;
+
+  let via: "template" | "free_text" = "template";
+  const tpl = await sendWhatsAppAction(phone, "fm_intake_topup_v1", [firstName, url]);
+  if (!tpl.ok) {
+    const ft = await sendWhatsAppTextAction(phone, freeText, { name: displayName });
+    if (!ft.ok) {
+      return {
+        ok: false,
+        error:
+          `fm_intake_topup_v1 template send failed (${tpl.error}). ` +
+          `Free-text fallback also failed (${ft.error}).`,
+      };
+    }
+    via = "free_text";
+  }
+
+  try {
+    await recordOutboundMessageAction({
+      clientId,
+      templateName: via === "free_text" ? "(free-text reply)" : "fm_intake_topup_v1",
+      renderedBody: freeText,
+    });
+  } catch {
+    /* non-fatal — the WhatsApp message already went out */
+  }
+
+  return { ok: true, url, via };
+}
+
+/**
  * v0.75.9 — "your full intake is now open" notification, sent after the
  * coach clicks 🔓 Unlock full intake on the client Overview. Uses the
  * approved Meta template `fm_intake_unlocked_v1` (UTILITY, 2 params:

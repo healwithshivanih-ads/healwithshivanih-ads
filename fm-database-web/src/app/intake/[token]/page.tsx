@@ -14,6 +14,7 @@ export default async function IntakeTokenPage({
   const { token } = await params;
   const { focus } = await searchParams;
   const focusTier1 = focus === "tier1";
+  const focusDosha = focus === "dosha";
   const res = await lookupIntakeToken(token);
 
   if (!res.ok) {
@@ -101,6 +102,7 @@ export default async function IntakeTokenPage({
       draft={res.intake_form_draft}
       previouslySubmitted={res.previously_submitted}
       focusTier1={focusTier1}
+      focusDosha={focusDosha}
     />
   );
 }

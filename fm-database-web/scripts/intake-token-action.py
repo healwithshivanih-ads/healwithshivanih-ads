@@ -1550,6 +1550,22 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
                     data[field] = cleaned_rows
                     fields_updated.append(field)
 
+    # ── dosha self-assessment (lifelong-frame quiz → prakruti) ──
+    # dict {quiz_key: "vata"|"pitta"|"kapha"}. Overwrite-on-submit. Validate
+    # values; stamp completion time so the coach sees the quiz is done.
+    if "dosha_self_assessment" in submitted:
+        incoming_dosha = submitted.get("dosha_self_assessment")
+        if isinstance(incoming_dosha, dict):
+            cleaned = {
+                str(k): str(v).lower()
+                for k, v in incoming_dosha.items()
+                if str(v).lower() in ("vata", "pitta", "kapha")
+            }
+            if cleaned and data.get("dosha_self_assessment") != cleaned:
+                data["dosha_self_assessment"] = cleaned
+                data["dosha_self_assessment_completed_at"] = _now_iso()
+                fields_updated.append("dosha_self_assessment")
+
     # ── timeline events (additive merge by event-text dedup) ──
     incoming_timeline = submitted.get("timeline_events") or []
     if isinstance(incoming_timeline, list) and incoming_timeline:

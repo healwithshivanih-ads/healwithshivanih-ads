@@ -24,6 +24,11 @@ contraindications:
   - heavy menstrual bleeding
   - active inflammatory bowel flare
   - hypertension on multiple medications
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
 preparation: >-
   Ready-made from reputable Ayurvedic brands or made fresh by grinding
   equal parts dried ginger, black peppercorns, and pippali (long pepper)

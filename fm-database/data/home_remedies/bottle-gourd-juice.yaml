@@ -12,6 +12,10 @@ indications:
 contraindications:
 - NEVER drink if the lauki tastes bitter (toxic cucurbitacins — discard immediately)
 - take small amounts; do not replace meals
+balances_dosha:
+- pitta
+aggravates_dosha:
+- vata
 preparation: Peel and taste a small piece of raw lauki first — if bitter, discard. If sweet, juice with
   a little water, mint and lemon. Drink fresh, never stored.
 typical_dose: 1 small glass (~150 ml), fresh, a few mornings a week.

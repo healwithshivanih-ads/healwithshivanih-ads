@@ -409,6 +409,9 @@ export default async function V2PlanEditorPage({
             supplementSources={supplementSources}
             locked={locked}
             clientId={plan.client_id as string | undefined}
+            ayurvedaEnabled={Boolean((rawClient as { ayurveda_enabled?: boolean } | null)?.ayurveda_enabled)}
+            ayurvedaConstitution={(rawClient as { ayurveda_constitution?: string } | null)?.ayurveda_constitution ?? ""}
+            ayurvedaAssessment={(rawClient as { ayurveda_assessment?: Record<string, unknown> } | null)?.ayurveda_assessment ?? null}
             lifecycleProps={{
               status: status as typeof plan.status,
               version: plan.version,

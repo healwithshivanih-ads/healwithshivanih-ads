@@ -21,6 +21,11 @@ contraindications:
   - active gallstone disease (high doses)
   - anticoagulants (warfarin, DOACs) at high doses
   - active peptic ulcer with heat sensitivity
+balances_dosha:
+  - vata
+  - kapha
+aggravates_dosha:
+  - pitta
 preparation: >-
   Slice or smash a 1-inch piece of fresh ginger root. Simmer in 1.5 cups
   water for 7-8 minutes. Strain. Optionally add a squeeze of lemon and

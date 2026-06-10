@@ -5,6 +5,11 @@ summary: Indian / Ayurvedic remedy surfaced from mindmap backlog 2026-05-13. Fle
   use — confirm indications, preparation, contraindications.
 indications: []
 contraindications: []
+balances_dosha:
+- pitta
+- kapha
+aggravates_dosha:
+- vata
 preparation: ''
 typical_dose: ''
 duration: ''

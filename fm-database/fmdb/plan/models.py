@@ -562,6 +562,39 @@ class Client(BaseModel):
     # button on IntakeInsightsCard. See scripts/generate-intake-insights.py.
     intake_insights: Optional[IntakeInsights] = None
 
+    # ── Ayurveda layer (opt-in per client) ────────────────────────────────────
+    # Master switch. False = nothing Ayurveda surfaces anywhere — the editor
+    # section hides, the suggester skips constitution scoring, the dosha-quiz
+    # intake section is suppressed, and the letter block is never injected.
+    # Default False so every legacy / non-Ayurveda client is untouched (same
+    # pattern as intake_reminder_enabled). Coach flips this on the profile.
+    ayurveda_enabled: bool = False
+    # Prakruti — the client's lifelong constitution. Stable across plans, so it
+    # lives on the Client (set once, coach-confirmed) not on each Plan.
+    # Freeform per project convention, e.g. "Pitta-Vata".
+    ayurveda_constitution: str = ""
+    ayurveda_constitution_notes: str = ""   # how it was assessed / coach reasoning
+    # Client-filled dosha self-assessment quiz answers (LIFELONG frame — "have
+    # you always been…"). dict so the intake form owns the question list and we
+    # add/remove items with no schema migration (same pattern as
+    # intake_form_draft). Each value is the dosha the client picked:
+    # "vata" | "pitta" | "kapha". Keys are the quiz item keys (see the shared
+    # DOSHA_QUIZ constant). Empty until the quiz is completed.
+    dosha_self_assessment: dict = Field(default_factory=dict)
+    dosha_self_assessment_completed_at: Optional[datetime] = None
+    # Latest AI constitution read — overwritten each assess pass (mirrors
+    # rework_suggestion). Free dict so the shape can evolve without migration.
+    # Stable structure emitted by the suggester:
+    #   {assessed_at, model, assessment_method ("self_assessment+intake"),
+    #    vata_score, pitta_score, kapha_score (0-100, ~sum 100),
+    #    prakruti_label, vikruti_label,
+    #    vikruti_doshas: ["pitta"],        # structured — drives checker mismatch flag
+    #    agni_state ("sama"|"vishama"|"tikshna"|"manda"),
+    #    ama_present (bool), ama_note,
+    #    confidence ("low"|"moderate"|"high"),
+    #    evidence: [{trait, dosha, observation, source_field}]}
+    ayurveda_assessment: Optional[dict] = None
+
     # ── Location / CRM ────────────────────────────────────────────────────────
     address_line1: str = ""              # street address
     address_line2: str = ""              # apartment, suite, landmark
@@ -858,6 +891,33 @@ class NutritionPlan(BaseModel):
     custom_remedies: list[CustomRemedy] = Field(default_factory=list)  # bespoke per-client
 
 
+class AyurvedaSection(BaseModel):
+    """Optional Ayurvedic layer on a Plan. Present only when the client has
+    ayurveda_enabled=True AND the coach/AI has authored it (Plan.ayurveda is
+    None otherwise — section never renders).
+
+    The client's constitution (prakruti) lives on the Client; this holds the
+    per-plan, changeable parts — the current imbalance (vikruti), the balancing
+    focus, dosha-aware diet, daily routine (dinacharya), and the remedies
+    chosen for THIS phase. Recomputed each plan/recheck.
+
+    Scope: lifestyle-coaching only. No bhasmas (metal/mineral ash), no
+    panchakarma (vaman / virechan / basti / rakta moksha), no gem/metal/colour
+    therapy — those need a qualified vaidya and were deliberately excluded from
+    the catalogue ingest (see the Lad source YAMLs' scope notes).
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    current_imbalance: str = ""       # vikruti — "Pitta-aggravated, mild ama"
+    balancing_focus: str = ""         # client-facing one-liner — "Cool Pitta, kindle steady agni"
+    dietary_guidance: str = ""        # six-tastes / qualities bias, freeform prose
+    dinacharya: list[PracticeItem] = Field(default_factory=list)       # daily routine; reuse PracticeItem
+    remedies: list[str] = Field(default_factory=list)                  # HomeRemedy slugs — checker dosha-matches these
+    custom_remedies: list[CustomRemedy] = Field(default_factory=list)  # bespoke per-client; reuse CustomRemedy
+    seasonal_note: str = ""           # ritucharya — seasonal adjustment for now
+    coach_notes: str = ""             # private working notes — NOT client-facing
+
+
 class EducationModule(BaseModel):
     """A topic / mechanism / claim the coach plans to teach this client."""
     model_config = ConfigDict(extra="forbid")
@@ -1091,6 +1151,12 @@ class Plan(BaseModel):
     lifestyle_practices: list[PracticeItem] = Field(default_factory=list)
     nutrition: NutritionPlan = Field(default_factory=NutritionPlan)
     education: list[EducationModule] = Field(default_factory=list)
+
+    # ---- Ayurveda layer (optional; gated by Client.ayurveda_enabled) ----
+    # None = no Ayurveda section. Renders into consolidated + lifestyle_guide
+    # letters when present AND the client has ayurveda_enabled=True. Constitution
+    # (prakruti) is read from the Client; this carries the per-plan content.
+    ayurveda: Optional[AyurvedaSection] = None
 
     # ---- prescriptive (coach for now; AI sanity-check warns on confirm_with_clinician) ----
     supplement_protocol: list[SupplementItem] = Field(default_factory=list)

@@ -124,6 +124,7 @@ def main() -> int:
     from fmdb.plan.models import (
         Plan, HypothesizedDriver, PracticeItem, NutritionPlan, EducationModule,
         SupplementItem, LabOrderItem, ReferralItem, CatalogueSnapshot, TrackingHabit,
+        AyurvedaSection,
     )
 
     root = plan_storage.plans_root()
@@ -159,11 +160,13 @@ def main() -> int:
         _mech_idx = _resolve_index(_cat.mechanisms)
         _sym_idx = _resolve_index(_cat.symptoms)
         _supp_slugs = {s.slug for s in _cat.supplements}
+        _hr_idx = _resolve_index(_cat.home_remedies)
     except Exception:
         _topic_idx = {}
         _mech_idx = {}
         _sym_idx = {}
         _supp_slugs = set()
+        _hr_idx = {}
 
     def _is_topic(slug: str) -> bool:
         return bool(slug) and slug in _topic_idx
@@ -312,6 +315,64 @@ def main() -> int:
             cooking_adjustments=nut.get("cooking_adjustment_slugs", []) or [],
             home_remedies=nut.get("home_remedy_slugs", []) or [],
         )
+
+    # ── Ayurveda layer ────────────────────────────────────────────────────
+    # Only when the client is on the Ayurveda track AND the suggester emitted
+    # the block. The constitution read is staged onto the client (coach
+    # confirms prakruti via the editor — we never auto-write the constitution
+    # string); the section becomes the draft Plan.ayurveda. Remedy slugs are
+    # validated + canonicalised against the catalogue so plan-check stays clean.
+    _ayur = suggestions.get("ayurveda") if isinstance(suggestions.get("ayurveda"), dict) else None
+    if _ayur and getattr(client, "ayurveda_enabled", False) and picks.get("ayurveda_block", True):
+        sec = _ayur.get("section") or {}
+        _resolved_remedies: list[str] = []
+        for rslug in (sec.get("remedy_slugs") or []):
+            canon = _hr_idx.get(rslug)
+            if canon and canon not in _resolved_remedies:
+                _resolved_remedies.append(canon)   # drop unknown slugs silently
+        _dina = [
+            PracticeItem(
+                name=str(d.get("name") or "").strip(),
+                cadence=str(d.get("cadence") or "").strip(),
+                details=str(d.get("details") or "").strip(),
+            )
+            for d in (sec.get("dinacharya") or [])
+            if isinstance(d, dict) and (d.get("name") or "").strip()
+        ]
+        plan.ayurveda = AyurvedaSection(
+            current_imbalance=sec.get("current_imbalance") or _ayur.get("vikruti_label") or "",
+            balancing_focus=sec.get("balancing_focus") or "",
+            dietary_guidance=sec.get("dietary_guidance") or "",
+            dinacharya=_dina,
+            remedies=_resolved_remedies,
+            seasonal_note=sec.get("seasonal_note") or "",
+            coach_notes=_ayur.get("dual_root_cause_note") or "",
+        )
+        # Stage the constitution read on the client (overwrites prior read).
+        # vikruti_doshas drives the plan-checker remedy-mismatch flag.
+        client.ayurveda_assessment = {
+            "assessed_at": now.isoformat(),
+            "model": (sess.api_usage or {}).get("model") or "",
+            "assessment_method": _ayur.get("assessment_method") or "self_assessment+intake",
+            "vata_score": _ayur.get("vata_score"),
+            "pitta_score": _ayur.get("pitta_score"),
+            "kapha_score": _ayur.get("kapha_score"),
+            "prakruti_label": _ayur.get("prakruti_label") or "",
+            "prakruti_confidence": _ayur.get("prakruti_confidence") or "pending_quiz",
+            "vikruti_label": _ayur.get("vikruti_label") or "",
+            "vikruti_doshas": [str(d).lower() for d in (_ayur.get("vikruti_doshas") or [])],
+            "agni_state": _ayur.get("agni_state") or "",
+            "ama_present": bool(_ayur.get("ama_present")),
+            "ama_note": _ayur.get("ama_note") or "",
+            "confidence": _ayur.get("prakruti_confidence") or "",
+            "evidence": _ayur.get("evidence") or [],
+            "dual_root_cause_note": _ayur.get("dual_root_cause_note") or "",
+            "advisory": _ayur.get("advisory") or "",
+        }
+        try:
+            plan_storage.write_client(root, client)
+        except Exception:
+            pass  # never block plan generation on the client write
 
     for sp in suggestions.get("supplement_suggestions", []) or []:
         slug_s = sp.get("supplement_slug", "")

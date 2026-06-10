@@ -7,6 +7,7 @@ import fs from "node:fs/promises";
 import { revalidatePath } from "next/cache";
 import { loadAllClients, loadPlanBySlug } from "@/lib/fmdb/loader";
 import { getPlansRoot } from "@/lib/fmdb/paths";
+import { runShim } from "@/lib/fmdb/shim";
 
 const execFileP = promisify(execFile);
 
@@ -1085,6 +1086,12 @@ export interface UpdatePreferencesInput {
   // Allowed values: consolidated | meal_plan | supplement_plan |
   // lifestyle_guide | exercise_plan. Default on Python model: ["consolidated"].
   letter_types_active?: string[];
+
+  // Ayurveda layer (opt-in per client). ayurveda_enabled is the master switch;
+  // ayurveda_constitution is the coach-confirmed prakruti (from the dosha quiz).
+  ayurveda_enabled?: boolean;
+  ayurveda_constitution?: string;
+  ayurveda_constitution_notes?: string;
 }
 
 export type UpdatePreferencesResult =
@@ -1145,6 +1152,12 @@ export async function updateClientPreferences(
     if (input.lactation_started !== undefined) data.lactation_started = input.lactation_started;
 
     if (input.letter_types_active !== undefined) data.letter_types_active = input.letter_types_active;
+
+    // Ayurveda layer
+    if (input.ayurveda_enabled !== undefined) data.ayurveda_enabled = input.ayurveda_enabled;
+    if (input.ayurveda_constitution !== undefined) data.ayurveda_constitution = input.ayurveda_constitution;
+    if (input.ayurveda_constitution_notes !== undefined)
+      data.ayurveda_constitution_notes = input.ayurveda_constitution_notes;
 
     // bump updated_at
     data.updated_at = new Date().toISOString();
@@ -3140,6 +3153,57 @@ export async function saveExamFindingAction(input: {
     data.updated_at = new Date().toISOString();
     await fs.writeFile(clientYaml, yaml.dump(data, { sortKeys: false, lineWidth: 120 }), "utf8");
     return { ok: true, count: existing.length };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+// ── Check a supplement / home-remedy for a client (one-click suitability) ──
+export interface SupplementCheckCaution {
+  severity: "avoid" | "caution";
+  kind: string;
+  detail: string;
+}
+export interface SupplementCheckResult {
+  found: boolean;
+  query?: string;
+  suggestions?: string[];
+  kind?: "supplement" | "home_remedy";
+  slug?: string;
+  display_name?: string;
+  verdict?: "avoid" | "caution" | "good_fit" | "neutral";
+  evidence_tier?: string;
+  virya?: string;
+  balances_dosha?: string[];
+  aggravates_dosha?: string[];
+  client_vikruti?: string[];
+  client_prakruti?: string[];
+  cautions?: SupplementCheckCaution[];
+  supports?: string[];
+  catalogue_contraindications?: string[];
+  indications?: string[];
+}
+
+/**
+ * Deterministic (no-API) suitability check for one supplement/remedy against
+ * one client: catalogue contraindications + medication interactions + dosha
+ * match across BOTH vikruti (current imbalance) and prakruti (constitution).
+ * Powers the "🔍 Check supplement for this client" widget.
+ */
+export async function checkSupplementForClientAction(
+  clientId: string,
+  query: string
+): Promise<{ ok: true; result: SupplementCheckResult } | { ok: false; error: string }> {
+  try {
+    const raw = (await runShim(
+      "check-supplement-for-client.py",
+      { client_id: clientId, query },
+      60_000
+    )) as { ok: boolean; result?: SupplementCheckResult; error?: string };
+    if (!raw.ok || !raw.result) {
+      return { ok: false, error: raw.error ?? "Check failed" };
+    }
+    return { ok: true, result: raw.result };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
   }

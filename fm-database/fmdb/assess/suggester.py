@@ -435,6 +435,60 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 "gap notes in `catalogue_additions_suggested` only."
             ),
         },
+        "ayurveda": {
+            "type": "object",
+            "description": (
+                "Ayurvedic constitution + plan layer. POPULATE ONLY when "
+                "client_context.ayurveda_enabled is true; otherwise OMIT this "
+                "key entirely. Scope is lifestyle-coaching ONLY — never "
+                "bhasmas, panchakarma (vaman/virechan/basti/rakta moksha), "
+                "gem/metal/colour therapy, or anything needing a vaidya."
+            ),
+            "properties": {
+                "vata_score": {"type": "integer", "description": "0-100 CURRENT-STATE (vikruti) Vata load, inferred from the client's current intake (sleep, bowel, skin, hair, thermal, energy, stress, cycle, weight-trend). vata+pitta+kapha ≈ 100."},
+                "pitta_score": {"type": "integer", "description": "0-100 current-state Pitta load."},
+                "kapha_score": {"type": "integer", "description": "0-100 current-state Kapha load."},
+                "vikruti_label": {"type": "string", "description": "Current imbalance in plain Ayurvedic terms, e.g. 'Vata strongly aggravated, secondary Kapha heaviness'. ALWAYS derive from current intake data."},
+                "vikruti_doshas": {"type": "array", "items": {"type": "string", "enum": ["vata", "pitta", "kapha"]}, "description": "The currently-AGGRAVATED dosha(s), most-aggravated first. This drives the plan-checker's remedy-safety flag, so be accurate. e.g. ['vata','kapha']."},
+                "prakruti_label": {"type": "string", "description": "Lifelong CONSTITUTION (coach confirms). If client_context.dosha_self_assessment (the lifelong-frame quiz) is non-empty, derive by tallying its picks. If it's EMPTY, still give a PROVISIONAL best-read suggestion from lifelong-leaning signals (constitutional build from height/weight/BMI, long-standing conditions, skin/hair tendencies, notes) — the coach wants a starting point, not a blank. Lean on STABLE lifelong patterns, not acute current symptoms (those are vikruti). Leave empty only when there is genuinely no signal."},
+                "prakruti_confidence": {"type": "string", "enum": ["pending_quiz", "low", "moderate", "high"], "description": "From the quiz → 'moderate'/'high' by answer consistency. Provisional inference (no quiz) → 'low'. 'pending_quiz' (with empty label) ONLY when there is no signal at all to suggest from."},
+                "agni_state": {"type": "string", "enum": ["sama", "vishama", "tikshna", "manda", ""], "description": "Digestive fire: sama=balanced, vishama=irregular/variable (Vata), tikshna=sharp/excess (Pitta), manda=slow/heavy (Kapha). '' if unclear."},
+                "ama_present": {"type": "boolean", "description": "Signs of ama (undigested metabolic residue): bloating, tongue coating, heaviness, sluggishness, incomplete evacuation, brain fog."},
+                "ama_note": {"type": "string", "description": "Which ama signs are present. Empty if none."},
+                "evidence": {
+                    "type": "array",
+                    "description": "Cite EVERY dosha read to a specific client_context source field — this keeps it educate-not-diagnose and lets the coach audit/correct.",
+                    "items": {
+                        "type": "object",
+                        "required": ["trait", "dosha", "source_field"],
+                        "properties": {
+                            "trait": {"type": "string", "description": "The observed trait, e.g. 'inverted sleep / insomnia'."},
+                            "dosha": {"type": "string", "enum": ["vata", "pitta", "kapha"]},
+                            "observation": {"type": "string", "description": "The actual client value."},
+                            "source_field": {"type": "string", "description": "The client_context field this came from, e.g. 'sleep_notes', 'bristol_stool_typical', 'dosha_self_assessment'."},
+                        },
+                    },
+                },
+                "dual_root_cause_note": {"type": "string", "description": "Express the client's FM root cause ALSO in Ayurvedic vocabulary, one sentence — e.g. 'HPA-axis/circadian dysregulation + gut dysbiosis = Vata derangement of the daily rhythm with vishama agni and ama.' Empty if no clear root."},
+                "advisory": {"type": "string", "description": "Coach-facing flag. When prakruti_confidence is 'low' or 'pending_quiz', set a ONE-LINE advisory telling the coach the constitution read is too weak to anchor a constitution-specific plan — recommend confirming it via the dosha quiz first, OR reconsidering whether to include the Ayurveda layer for this client yet. Empty string when prakruti_confidence is 'moderate'/'high'."},
+                "section": {
+                    "type": "object",
+                    "description": "The draft Plan.ayurveda the coach will edit, then it flows into consolidated + lifestyle_guide letters. Lifestyle scope only.",
+                    "properties": {
+                        "current_imbalance": {"type": "string", "description": "= vikruti_label (coach-editable copy)."},
+                        "balancing_focus": {"type": "string", "description": "Warm, client-facing one-liner. No clinical jargon — this is read by the client."},
+                        "dietary_guidance": {"type": "string", "description": "Dosha-aware six-tastes / qualities guidance for THIS client's vikruti. If vikruti includes Kapha, keep portions light/warm even while pacifying Vata — don't pile on heavy/oily foods."},
+                        "dinacharya": {
+                            "type": "array",
+                            "description": "Daily-routine practices that pacify the aggravated dosha(s).",
+                            "items": {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}, "cadence": {"type": "string"}, "details": {"type": "string"}}},
+                        },
+                        "remedy_slugs": {"type": "array", "items": {"type": "string"}, "description": "MUST be home_remedy slugs from the catalogue subgraph. Pick ONLY remedies whose `balances_dosha` covers an aggravated dosha AND whose `aggravates_dosha` does NOT intersect vikruti_doshas — never recommend a remedy that worsens a dosha the client is already high in (the plan-checker will flag it otherwise)."},
+                        "seasonal_note": {"type": "string", "description": "Ritucharya — adjust for the current season and the client's city/country."},
+                    },
+                },
+            },
+        },
         "catalogue_additions_suggested": {
             "type": "array",
             "description": "Items you would have suggested if they existed in the catalogue. Use this to surface gaps for later authoring.",
@@ -1319,6 +1373,77 @@ HARD RULES (violating these breaks the downstream system):
       AI inferences from raw fields — if the coach said "client stopped X",
       treat X as not-current and skip recommendations that assumed it.
       Cite the coach correction as your evidence.
+
+28. AYURVEDA CONSTITUTION + SECTION — populate the `ayurveda` object ONLY when
+    `client_context.ayurveda_enabled` is true. If it's false or absent, OMIT
+    the `ayurveda` key entirely (don't emit an empty object). When enabled:
+
+    THE CARDINAL RULE — prakruti vs vikruti:
+    - VIKRUTI (current imbalance) is INFERRED from the client's CURRENT intake:
+      sleep_notes, bristol_stool_typical, bowel_pattern, digestion_notes,
+      cold_heat_tolerance, skin_signs, hair_texture_change, energy_pattern,
+      energy_crashes, morning_state, stress_response/stress_type,
+      histamine_signals, weight_trend_current, menstrual_notes, active_conditions.
+      Fill vata/pitta/kapha scores, vikruti_label, and vikruti_doshas from this.
+    - PRAKRUTI (lifelong constitution):
+      * If `client_context.dosha_self_assessment` (a {trait_key: dosha} dict) is
+        NON-EMPTY: this is the gold standard. Tally the picks, name the dominant
+        (or dominant pair) as prakruti_label, set prakruti_confidence
+        "moderate"/"high" by how consistent the answers are.
+      * If that dict is EMPTY: still offer a PROVISIONAL suggestion so the coach
+        has a starting point — set prakruti_label to your best read from the
+        lifelong-leaning signals you DO have (body frame from height/weight/BMI,
+        long-standing conditions in active_conditions / medical_history, skin/
+        hair tendencies, the notes), and set prakruti_confidence = "low". Mark it
+        clearly as provisional in your evidence/notes. Recommend the quiz to
+        confirm. Only use prakruti_confidence = "pending_quiz" (with an empty
+        label) when there is GENUINELY no signal at all.
+      * CAUTION when suggesting provisionally: a stressed / perimenopausal /
+        sleep-deprived client can read falsely Vata or Pitta from current state.
+        Lean on the most STABLE, lifelong-leaning signals (constitutional build,
+        chronic lifelong patterns) for prakruti; treat acute current symptoms as
+        vikruti. When a trait is ambiguous between the two, weight it to vikruti
+        and keep prakruti confidence low. The coach always confirms prakruti.
+      * LOW-CONFIDENCE FLAG: whenever prakruti_confidence is 'low' or
+        'pending_quiz', you MUST populate `ayurveda.advisory` with a one-line
+        flag telling the coach the constitution read is too weak to anchor a
+        constitution-specific plan — recommend confirming it via the dosha quiz
+        first, or reconsidering whether to include the Ayurveda layer for this
+        client yet. This is an explicit nudge for the coach to decide, not a
+        silent low score.
+
+    AGNI + AMA + DUAL ROOT CAUSE:
+    - Read agni_state (sama/vishama/tikshna/manda) and ama from the digestive
+      picture. Weak/irregular agni + ama is the Ayurvedic articulation of an FM
+      root cause — surface it in `dual_root_cause_note`, mapping the FM root you
+      identified in `likely_drivers` into Ayurvedic vocabulary in one sentence.
+
+    EVIDENCE — cite every dosha read to a `source_field` (same audit discipline
+    as INTAKE-EVIDENCE TRACEABILITY). No uncited dosha claims.
+
+    THE SECTION (`ayurveda.section`) — this becomes the draft Plan.ayurveda the
+    coach edits, flowing into consolidated + lifestyle_guide letters:
+    - dietary_guidance + dinacharya + remedy_slugs all target the VIKRUTI (what's
+      aggravated now), not the prakruti.
+    - remedy_slugs: pick ONLY home_remedy slugs from the subgraph whose
+      `balances_dosha` covers an aggravated dosha AND whose `aggravates_dosha`
+      does NOT intersect vikruti_doshas. A remedy that pacifies Vata but
+      aggravates Kapha is WRONG for a Vata+Kapha client — the plan-checker will
+      flag it, so don't pick it.
+
+    SUPPLEMENT ENERGETICS — when ayurveda_enabled, dosha-tagged supplements in
+    the subgraph carry `balances_dosha` / `aggravates_dosha` / `virya` (heating/
+    cooling) just like remedies. Apply the SAME rule to `supplement_suggestions`:
+    prefer supplements whose energetics pacify the aggravated dosha and avoid
+    those whose `aggravates_dosha` intersects the client's vikruti_doshas (the
+    plan-checker now flags these for supplements too). When a clinically-needed
+    supplement is energetically off (e.g. a heating herb for a Pitta-aggravated
+    client), note it in `contraindication_check` and suggest a pacifying anupana
+    (carrier) or timing rather than dropping the supplement outright.
+
+    SCOPE — lifestyle coaching only. Constitution as education + diet/routine/
+    kitchen-remedies. NEVER bhasmas, panchakarma, gem/metal/colour therapy, or
+    anything requiring a vaidya.
 
 Call `synthesize_assessment` exactly once with your structured result."""
 

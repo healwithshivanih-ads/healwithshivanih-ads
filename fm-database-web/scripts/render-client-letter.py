@@ -3047,6 +3047,109 @@ def _build_remedies_html(plan: dict) -> str:
     )
 
 
+def _build_ayurveda_html(plan: dict, client: dict) -> str:
+    """Optional '🪔 Your Ayurvedic guidance' section for consolidated +
+    lifestyle_guide letters. Renders the plan's Ayurveda section — constitution
+    (read from the Client), balancing focus, dosha-aware diet, daily rhythm
+    (dinacharya), chosen catalogue remedies, and bespoke custom remedies.
+    Returns '' when there's nothing to show. Reuses the .remedies / .remedy-card
+    CSS (same as _build_remedies_html) so no new styles are needed.
+
+    Client-facing scope: the clinical vikruti label / dosha internals are NOT
+    rendered — only the warm balancing_focus. Lifestyle preparations + routine +
+    diet only; never bhasmas / panchakarma / anything needing a vaidya.
+    """
+    ay = plan.get("ayurveda") or {}
+    if not isinstance(ay, dict):
+        return ""
+    constitution = (client.get("ayurveda_constitution") or "").strip()
+    focus = (ay.get("balancing_focus") or "").strip()
+    diet = (ay.get("dietary_guidance") or "").strip()
+    dinacharya = [d for d in (ay.get("dinacharya") or []) if isinstance(d, dict)]
+    seasonal = (ay.get("seasonal_note") or "").strip()
+    remedies = list(ay.get("remedies") or [])
+    customs = [c for c in (ay.get("custom_remedies") or []) if isinstance(c, dict)]
+
+    cards: list[str] = []
+
+    if diet:
+        cards.append(
+            '    <article class="remedy-card"><h3 class="remedy-name">Eating for your balance</h3>'
+            f'<p class="remedy-prep">{diet}</p></article>'
+        )
+
+    if dinacharya:
+        items: list[str] = []
+        for d in dinacharya:
+            name = (d.get("name") or "").strip()
+            if not name:
+                continue
+            label = f"<strong>{name}</strong>"
+            if (d.get("cadence") or "").strip():
+                label += f" — {d['cadence'].strip()}"
+            if (d.get("details") or "").strip():
+                label += f": {d['details'].strip()}"
+            items.append(f"<li>{label}</li>")
+        if items:
+            cards.append(
+                '    <article class="remedy-card"><h3 class="remedy-name">Your daily rhythm (dinacharya)</h3>'
+                "<ul>" + "".join(items) + "</ul></article>"
+            )
+
+    for slug in remedies:
+        hr = _load_home_remedy(str(slug))
+        if not hr:
+            continue
+        name = hr.get("display_name") or str(slug).replace("-", " ").title()
+        prep = (hr.get("preparation") or "").strip()
+        when = (hr.get("typical_dose") or hr.get("timing_notes") or "").strip()
+        cards.append(
+            f'    <article class="remedy-card"><h3 class="remedy-name">{name}</h3>'
+            + (f'<p class="remedy-prep">{prep}</p>' if prep else "")
+            + (f'<p class="remedy-when"><strong>When:</strong> {when}</p>' if when else "")
+            + "</article>"
+        )
+
+    for cr in customs:
+        name = (cr.get("name") or "").strip()
+        if not name:
+            continue
+        cards.append(
+            f'    <article class="remedy-card"><h3 class="remedy-name">{name}</h3>'
+            + (f'<p class="remedy-why">{cr["reason"]}</p>' if cr.get("reason") else "")
+            + (f'<p class="remedy-prep"><strong>What\'s in it:</strong> {cr["ingredients"]}</p>' if cr.get("ingredients") else "")
+            + (f'<p class="remedy-prep"><strong>How to make it:</strong> {cr["preparation"]}</p>' if cr.get("preparation") else "")
+            + (f'<p class="remedy-when"><strong>When:</strong> {cr["timing"]}</p>' if cr.get("timing") else "")
+            + "</article>"
+        )
+
+    if seasonal:
+        cards.append(
+            '    <article class="remedy-card"><h3 class="remedy-name">Right now (seasonal)</h3>'
+            f'<p class="remedy-prep">{seasonal}</p></article>'
+        )
+
+    intro_bits: list[str] = []
+    if constitution:
+        intro_bits.append(f"In Ayurveda, your constitution is <strong>{constitution}</strong>.")
+    if focus:
+        intro_bits.append(focus)
+    intro = " ".join(intro_bits)
+
+    if not cards and not intro:
+        return ""
+
+    sub = intro or "Gentle, constitution-aware practices and preparations chosen for you."
+    body = ('  <div class="remedy-grid">\n' + "\n".join(cards) + "\n  </div>\n") if cards else ""
+    return (
+        '<section id="ayurveda" class="remedies">\n'
+        '  <h2 class="remedies-title">🪔 Your Ayurvedic guidance</h2>\n'
+        f'  <p class="remedies-sub">{sub}</p>\n'
+        + body
+        + "</section>"
+    )
+
+
 def _buy_source_label(url: str) -> str:
     """Retailer label for a supplement buy link (shown beside 'Buy here')."""
     u = (url or "").lower()
@@ -4229,6 +4332,26 @@ to this client OR REMOVE it entirely. We'd rather a shorter document
 that reads like it was written FOR this person than a long one of FM
 boilerplate.
 
+NO EVIDENCE-HEDGING TO THE CLIENT — Coach rule 2026-06-09.
+Everything in this plan was chosen by the coach FOR this client — present it
+with warm, plain confidence. The client letter must NEVER surface
+evidence-quality framing, strength-of-evidence qualifiers, or "the science is
+thin" caveats. NEVER write things like:
+  - "emerging evidence", "preliminary studies", "some research suggests"
+  - "thin / limited evidence", "not well studied", "experimental"
+  - "may help", "might support", "is thought to", "traditionally believed to"
+  - "evidence is mixed", "more research is needed"
+  - any note that a supplement / remedy / herb / food / practice is weakly
+    evidenced or should be confirmed because the science is uncertain.
+Do NOT attach an evidence tier or research-strength label to anything. State
+the recommendation plainly ("Take X", "Sip this Y tea after lunch", "This eases
+your Z"). The ONLY caveats allowed are SAFETY / medical ones the coach asked for
+(allergy, drug interaction, "check with me before starting if…") — never
+evidence-QUALITY caveats. If you genuinely aren't sure something fits THIS
+client, route it through "let me know / check with me", never through doubt
+about the science. This applies to every section, including the Ayurvedic and
+home-remedy guidance.
+
 NO TITRATE LANGUAGE — Coach rule 2026-05-23. Clients don't have a scale
 and don't dose in milligrams — they buy capsules of fixed strengths.
 NEVER tell a client to "titrate up by N mg" or "increase by X mg every
@@ -4311,9 +4434,92 @@ Use these tips in the RELEVANT meal / lifestyle / lab section — don't dump the
 """
 
 
+def _build_dosha_food_rules(plan: dict, client: dict) -> str:
+    """Dosha-aware meal-plan constraint — ONLY for clients on the Ayurveda
+    track (client.ayurveda_enabled). Returns '' otherwise so non-Ayurveda
+    clients' meal plans are completely unchanged.
+
+    Steers the actual food choices by the client's CURRENT imbalance (vikruti),
+    and explicitly OVERRIDES the season-driven grain default where they conflict
+    — e.g. the seasonal rule defaults summer/IR clients to jowar (cooling, dry),
+    which AGGRAVATES a Vata client. Vikruti wins for that client.
+    """
+    if not client.get("ayurveda_enabled"):
+        return ""
+
+    assessment = client.get("ayurveda_assessment") or {}
+    vikruti_doshas = [str(d).lower() for d in (assessment.get("vikruti_doshas") or [])]
+    constitution = (client.get("ayurveda_constitution") or "").strip()
+    vikruti_label = (assessment.get("vikruti_label") or "").strip()
+    # Fall back to the plan section's current_imbalance / the constitution text
+    ay = plan.get("ayurveda") or {}
+    if not vikruti_label:
+        vikruti_label = (ay.get("current_imbalance") or "").strip()
+    if not vikruti_doshas:
+        hay = f"{vikruti_label} {constitution}".lower()
+        vikruti_doshas = [d for d in ("vata", "pitta", "kapha") if d in hay]
+    if not vikruti_doshas:
+        # Ayurveda on but nothing to steer by yet — skip rather than guess.
+        return ""
+
+    RULES = {
+        "vata": (
+            "VATA aggravated → FAVOUR warm, cooked, moist, oily, soft, grounding foods; "
+            "sweet/sour/salty tastes. Soups, dals, khichdi, soft-cooked rice & wheat, oats, "
+            "ghee, warm milk, root vegetables, stewed/cooked fruit, soaked nuts, warming spices "
+            "(ginger, cumin, hing, cinnamon). REDUCE raw/cold/dry/light/rough foods, excess "
+            "bitter+astringent+pungent, raw salads, crackers/popcorn/dry toast, dried fruit, "
+            "carbonated/iced drinks, and large quantities of beans unless well-soaked + spiced. "
+            "GRAINS: soft-cooked rice and wheat are best — the DRY MILLETS (jowar, ragi, bajra, "
+            "corn) are light and dry and AGGRAVATE Vata; minimise them, and if used at all cook "
+            "them soft with ghee."
+        ),
+        "pitta": (
+            "PITTA aggravated → FAVOUR cooling, mildly cooked foods; sweet/bitter/astringent "
+            "tastes. Jowar, barley, white rice, wheat, oats, coconut, cucumber, leafy greens, "
+            "sweet ripe fruit, ghee, cooling spices (coriander, fennel, mint). REDUCE sour, "
+            "salty and very pungent foods, fried + fermented foods, vinegar, excess tomato/chilli/"
+            "garlic/onion, sour curd, alcohol. GRAINS: jowar, barley and rice are ideal."
+        ),
+        "kapha": (
+            "KAPHA aggravated → FAVOUR light, warm, dry, well-spiced foods; pungent/bitter/"
+            "astringent tastes. Millets (jowar, bajra, ragi), barley, legumes, plenty of "
+            "vegetables and leafy greens, ginger/black pepper/turmeric. REDUCE dairy, sweet, "
+            "heavy, oily and fried foods, cold foods, and excess wheat/rice/banana/nuts; keep "
+            "portions moderate. GRAINS: the millets (jowar, bajra, ragi) are ideal."
+        ),
+    }
+    lines = [RULES[d] for d in vikruti_doshas if d in RULES]
+    if not lines:
+        return ""
+
+    header_bits = []
+    if constitution:
+        header_bits.append(f"constitution {constitution}")
+    if vikruti_label:
+        header_bits.append(f"currently {vikruti_label}")
+    ctx = (" — " + "; ".join(header_bits)) if header_bits else ""
+
+    return f"""
+DOSHA-AWARE FOOD RULES — this client is on the Ayurveda track{ctx}. This is a
+HARD CONSTRAINT on every meal you build, layered ON TOP of the seasonal grain
+rule above. Where the two conflict, the client's CURRENT IMBALANCE (vikruti)
+WINS — e.g. the seasonal rule defaults summer / insulin-resistance clients to
+jowar (cooling, dry), but for a Vata-aggravated client jowar is too dry and
+light; use soft-cooked rice / wheat / oats with ghee instead, even in summer.
+Apply the rule(s) for this client's aggravated dosha(s):
+- """ + "\n- ".join(lines) + """
+Keep meals practical and Indian; honour all allergies, dietary preference,
+foods_to_avoid and non_negotiables first, then bias the remaining choices by
+the dosha rule above. Never recommend a food this rule says to reduce for this
+client's aggravated dosha.
+"""
+
+
 def _build_prompt_meal_plan(plan: dict, client: dict, weight_loss: dict | None, coach_notes: str) -> str:
     """Meal plan only — nutrition journey, no supplements, no lifestyle."""
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
+    dosha_food_rules = _build_dosha_food_rules(plan, client)
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -4433,6 +4639,7 @@ The coach (Shivani Hariharan) has prepared a structured plan. Turn the nutrition
 {start_when}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
+{dosha_food_rules}
 
 CLIENT PROFILE:
 - Name: {client_name} (address them as {first_name})
@@ -5090,6 +5297,7 @@ def _build_prompt_meal_plan_phase(
         routine continues" — does NOT re-list them.
     """
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
+    dosha_food_rules = _build_dosha_food_rules(plan, client)
     client_name = client.get("display_name") or "the client"
     first_name = client_name.split()[0] if client_name else "there"
     diet_pref = client.get("dietary_preference") or "Not specified"
@@ -5539,6 +5747,7 @@ the past weeks. Don't re-prescribe — continue + evolve.
 {plan_changes_block}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
+{dosha_food_rules}
 
 CLIENT PROFILE:
 - Name: {client_name} (address as {first_name})
@@ -5714,6 +5923,7 @@ def _build_prompt(plan: dict, client: dict, weight_loss: dict | None = None,
         return _build_prompt_recipes(plan, client, coach_notes)
     # else: consolidated — fall through to existing code
     plan_weeks = int(plan.get("plan_period_weeks") or 12)
+    dosha_food_rules = _build_dosha_food_rules(plan, client)
 
     # Meal-plan presentation in the consolidated letter is driven by the
     # client's meal_plan_style preference (set by the coach in the Memory /
@@ -6102,6 +6312,7 @@ Your job is to turn the coach's structured data into a beautiful, easy-to-read d
 {start_when}
 {recent_voice}
 {_BANNED_GENERIC_RULE}
+{dosha_food_rules}
 
 CLIENT PROFILE:
 - Name: {client_name} (address them as {first_name})
@@ -7429,6 +7640,30 @@ def main() -> int:
                         html = html.replace(footer_marker, combined + "\n    " + footer_marker, 1)
                     elif "</body>" in html:
                         html = html.replace("</body>", combined + "\n</body>", 1)
+
+        # ── Ayurveda section ──────────────────────────────────────────────
+        # Independent of the supplement block above: renders for consolidated +
+        # lifestyle_guide letters whenever the client has ayurveda_enabled AND
+        # the plan carries an authored ayurveda section (shows even when there
+        # are no supplements). Placed after the meal grid when present, else
+        # appended before the footer. Constitution is read from the client.
+        if (
+            html
+            and letter_type in ("consolidated", "lifestyle_guide")
+            and client.get("ayurveda_enabled")
+            and plan.get("ayurveda")
+        ):
+            ayur_html = _build_ayurveda_html(plan, client)
+            if ayur_html:
+                _ap = _inject_after_last_meal_grid(html, ayur_html)
+                if _ap is not None:
+                    html = _ap
+                else:
+                    _footer = '<footer class="brand-footer">'
+                    if _footer in html:
+                        html = html.replace(_footer, ayur_html + "\n    " + _footer, 1)
+                    elif "</body>" in html:
+                        html = html.replace("</body>", ayur_html + "\n</body>", 1)
     except Exception as e:
         html = None  # HTML is a nice-to-have; don't fail if brand module errors
 

@@ -11,6 +11,10 @@ indications:
 - water-retention
 contraindications:
 - none significant in food amounts
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
 preparation: Boil 1 tsp cumin in 2 cups water for 5 min (or soak overnight); strain.
 typical_dose: 1-2 cups through the day, warm.
 duration: Daily; safe long-term.

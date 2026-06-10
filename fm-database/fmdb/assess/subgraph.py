@@ -45,6 +45,7 @@ def build_subgraph(
     symptom_slugs: list[str],
     topic_slugs: list[str],
     extra_topic_hops: int = 1,
+    ayurveda: bool = False,
 ) -> dict[str, Any]:
     """Return a JSON-serializable bundle of catalogue entities relevant
     to the selected symptoms and topics.
@@ -63,6 +64,20 @@ def build_subgraph(
     sym_set = set(symptom_slugs)
     topic_set = set(topic_slugs)
     mech_set: set[str] = set()
+
+    # When the client is on the Ayurveda track, seed the dosha framework topics
+    # so the model sees the constitution / agni / dinacharya scaffolding (and
+    # the trait→dosha mapping baked into their summaries) even if the coach
+    # didn't pick them. Only those that actually exist in the catalogue.
+    if ayurveda:
+        _all_topic_slugs = {t.slug for t in cat.topics}
+        for _ds in (
+            "ayurvedic-elemental-design-doshas",
+            "agni-digestive-fire",
+            "ayurvedic-circadian-clock",
+        ):
+            if _ds in _all_topic_slugs:
+                topic_set.add(_ds)
 
     # Pull selected symptoms into the bundle and harvest their links
     sym_by_slug = {s.slug: s for s in cat.symptoms}
@@ -162,6 +177,17 @@ def build_subgraph(
         hr for hr in cat.home_remedies
         if set(hr.linked_to_topics) & topic_set or set(hr.linked_to_mechanisms) & mech_set
     ]
+    # Ayurveda track: the linked-by-clinical-topic set is too thin for a
+    # dosha-appropriate palette (most remedies link to clinical topics like
+    # 'asthma', not to dosha). Widen to EVERY dosha-tagged remedy so the model
+    # can pick by the client's vikruti. Slim representation keeps tokens sane.
+    if ayurveda:
+        _have = {hr.slug for hr in relevant_remedies}
+        for hr in cat.home_remedies:
+            if hr.slug in _have:
+                continue
+            if hr.balances_dosha or hr.aggravates_dosha:
+                relevant_remedies.append(hr)
     # Protocols linked to selected topics, mechanisms, or symptoms — these
     # are the structured FM playbooks (5R, AIP, weight-loss reset, etc.)
     # that the AI may recommend as a spine for the plan.
@@ -256,6 +282,12 @@ def build_subgraph(
             "contraindications": s.contraindications.model_dump(mode="json"),
             "interactions": s.interactions.model_dump(mode="json"),
             "linked_to_topics": s.linked_to_topics,
+            # Ayurvedic energetics — present on dosha-tagged supplements; lets the
+            # suggester pick dosha-appropriate supplements the same way it does
+            # remedies. Omitted (empty) for untagged supplements.
+            "balances_dosha": [d.value for d in getattr(s, "balances_dosha", []) or []],
+            "aggravates_dosha": [d.value for d in getattr(s, "aggravates_dosha", []) or []],
+            "virya": (getattr(s, "virya", None).value if getattr(s, "virya", None) else ""),
             "notes_for_coach": s.notes_for_coach[:300],
         }
 
@@ -282,6 +314,8 @@ def build_subgraph(
             "contraindications": hr.contraindications,
             "preparation": hr.preparation[:200],
             "typical_dose": hr.typical_dose[:150],
+            "balances_dosha": [d.value for d in hr.balances_dosha],
+            "aggravates_dosha": [d.value for d in hr.aggravates_dosha],
             "evidence_tier": hr.evidence_tier.value,
         }
 

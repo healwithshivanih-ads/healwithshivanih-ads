@@ -15,6 +15,11 @@ indications:
 contraindications:
 - pregnancy (limit ajwain)
 - active acid reflux flare (warming spices can aggravate for some)
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
 preparation: Dry-roast equal parts jeera, saunf and ajwain until fragrant; cool and grind coarse. Add
   a pinch of black salt and a tiny pinch of hing if desired. Store airtight.
 typical_dose: 1/2 tsp with a little warm water after lunch and dinner.

@@ -13,6 +13,10 @@ indications:
 contraindications:
 - pregnancy and breastfeeding
 - sedative / sleep medication (additive — check with clinician)
+balances_dosha:
+- vata
+- pitta
+aggravates_dosha: []
 preparation: Steep 1/4 tsp jatamansi + 1/4 tsp brahmi (or a few fresh brahmi leaves) in 1 cup hot water
   for 5-7 min; strain.
 typical_dose: 1 cup about an hour before bed.

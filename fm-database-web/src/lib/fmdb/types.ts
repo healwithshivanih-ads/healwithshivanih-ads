@@ -298,6 +298,12 @@ export interface PlanFields {
   lifestyle_practices?: unknown[];
   nutrition?: Record<string, unknown>;
   education?: unknown[];
+  /** Optional Ayurveda layer. Null/absent = no Ayurveda section. Shape mirrors
+   *  the Python AyurvedaSection: current_imbalance, balancing_focus,
+   *  dietary_guidance, dinacharya[], remedies[] (HomeRemedy slugs),
+   *  custom_remedies[], seasonal_note, coach_notes. Renders into consolidated +
+   *  lifestyle_guide letters when the client has ayurveda_enabled. */
+  ayurveda?: Record<string, unknown> | null;
   supplement_protocol?: unknown[];
   lab_orders?: unknown[];
   referrals?: unknown[];
@@ -472,6 +478,20 @@ export interface Client {
   foods_to_avoid?: string;       // free form
   non_negotiables?: string;      // things they won't give up
   reported_triggers?: string;
+
+  // Ayurveda layer (opt-in per client; default off)
+  /** Master switch — when true the editor shows the Ayurveda section, the
+   *  suggester scores constitution, and the letter renders the Ayurvedic block. */
+  ayurveda_enabled?: boolean;
+  /** Prakruti (lifelong constitution) — coach-confirmed, set once. */
+  ayurveda_constitution?: string;
+  ayurveda_constitution_notes?: string;
+  /** Lifelong-frame dosha quiz answers {trait_key: "vata"|"pitta"|"kapha"}. */
+  dosha_self_assessment?: Record<string, string>;
+  dosha_self_assessment_completed_at?: string;
+  /** Latest AI constitution read (scores, vikruti_doshas, agni, evidence…). */
+  ayurveda_assessment?: Record<string, unknown> | null;
+
   /** How structured the client wants her meal plan letters to be.
    *    detailed   = 7-day Mon-Sun tables
    *    principles = do's/don'ts + categories + portions + 5 ideas/slot

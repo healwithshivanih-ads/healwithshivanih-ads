@@ -11,6 +11,11 @@ indications:
 contraindications:
 - acid reflux / gastritis flare (warming, can aggravate)
 - pregnancy (limit ajwain)
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
 preparation: Mix 2 tbsp dried ginger powder, 1 tbsp roasted ground ajwain, 1/2 tsp black salt.
 typical_dose: 1/4 tsp with warm water ~15 min before meals.
 duration: As needed.

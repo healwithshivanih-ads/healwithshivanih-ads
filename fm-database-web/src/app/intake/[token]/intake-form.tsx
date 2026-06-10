@@ -34,6 +34,7 @@ async function apiSubmitIntakeForm(
 import { FormChrome } from "./form-chrome";
 import { BristolStoolIcon } from "./bristol-stool-icon";
 import { PainBodyMap } from "./pain-body-map";
+import { DOSHA_QUIZ } from "@/lib/fmdb/dosha-quiz";
 
 // ── Types ───────────────────────────────────────────────────────────────────
 
@@ -233,6 +234,11 @@ interface FormState {
   pem_screen: string[];               // chips for post-exertional malaise pattern
   mould_exposure: string[];           // chips — visible mould, leaks, work exposures
   large_fish_frequency: string;       // single-select — conditional on non-veg diet
+
+  // Dosha self-assessment — lifelong-constitution quiz ({question key →
+  // chosen dosha value}). Single-pick per question; only rendered in
+  // ?focus=dosha mode (mirrors the Tier 1 focus section).
+  dosha_self_assessment: Record<string, string>;
 
   // v0.75.5 — Tier 2 screening (ACE-lite / STOP-BANG / Endometriosis)
   ace_signals: string[];              // childhood adversity / current hypervigilance
@@ -1219,6 +1225,8 @@ function mergeInitial(
     pem_screen: asStringArray(get("pem_screen")),
     mould_exposure: asStringArray(get("mould_exposure")),
     large_fish_frequency: asString(get("large_fish_frequency")),
+    dosha_self_assessment:
+      (get("dosha_self_assessment") as Record<string, string>) || {},
     // v0.75.5 — Tier 2 screening fields
     ace_signals: asStringArray(get("ace_signals")),
     stop_bang_signals: asStringArray(get("stop_bang_signals")),
@@ -1440,6 +1448,7 @@ function buildPayload(s: FormState): Record<string, unknown> {
     lean_test_symptoms: s.lean_test_symptoms,
     pem_screen: s.pem_screen,
     mould_exposure: s.mould_exposure,
+    dosha_self_assessment: s.dosha_self_assessment,
     large_fish_frequency: s.large_fish_frequency,
     // v0.75.5 — Tier 2 screening fields
     ace_signals: s.ace_signals,
@@ -2045,6 +2054,7 @@ export function IntakeForm({
   draft,
   previouslySubmitted = false,
   focusTier1 = false,
+  focusDosha = false,
 }: {
   token: string;
   clientId: string;
@@ -2068,6 +2078,13 @@ export function IntakeForm({
    * to answer 4 quick questions.
    */
   focusTier1?: boolean;
+  /**
+   * Focus mode (?focus=dosha). Mirrors focusTier1 exactly, but renders
+   * ONLY the dosha self-assessment section + the consent/submit block.
+   * All other field state still hydrates and is submitted; only the
+   * rendering is suppressed.
+   */
+  focusDosha?: boolean;
 }) {
   void clientId;
   const initial = useMemo(() => mergeInitial(prefill, draft), [prefill, draft]);
@@ -2164,6 +2181,10 @@ export function IntakeForm({
   const totalSections = focusTier1
     ? (isFemale ? 15 : 14)
     : (isFemale ? 14 : 13);
+  // Any focus mode (tier1 OR dosha) collapses the form to one section +
+  // consent. Same hiding mechanism for both — the .fm-intake--focus-tier1
+  // CSS class hides every .fm-section that isn't .fm-section--focus-keep.
+  const inFocusMode = focusTier1 || focusDosha;
 
   const sectionRefs = useRef<Record<number, HTMLElement | null>>({});
   const setSectionRef = (n: number) => (el: HTMLElement | null) => {
@@ -2807,7 +2828,7 @@ export function IntakeForm({
       // draft. noValidate makes that failure mode structurally impossible
       // even if a `required` attribute is added to a field later.
       noValidate
-      className={focusTier1 ? "fm-intake--focus-tier1" : undefined}
+      className={inFocusMode ? "fm-intake--focus-tier1" : undefined}
     >
       {/* Shared typeahead suggestions for the medication name inputs. */}
       <datalist id="fm-common-med-brands">
@@ -2816,7 +2837,7 @@ export function IntakeForm({
         ))}
       </datalist>
 
-      {!focusTier1 && (
+      {!inFocusMode && (
         <FormChrome
           currentSection={currentSection}
           totalSections={totalSections}
@@ -2828,10 +2849,10 @@ export function IntakeForm({
       )}
 
       {/* Focus-mode banner — shown when the coach re-issued the link just
-          to capture the Tier 1 screening section. Reassures the client
-          that their earlier answers are intact and they only need the
-          one short section below. */}
-      {focusTier1 && (
+          to capture one short section (Tier 1 screening or the dosha
+          quiz). Reassures the client that their earlier answers are
+          intact and they only need the one short section below. */}
+      {inFocusMode && (
         <div className="fm-focus-banner">
           <strong>{displayName.split(" ")[0] || "Hi"}, just one short section to add.</strong>
           <span>
@@ -4252,6 +4273,42 @@ export function IntakeForm({
         </p>
       </FormSection>
       </>)}{/* end tier1-only Section 11 */}
+
+      {/* ════════════════════════════════════════════════════════════════════
+          Dosha self-assessment (?focus=dosha — mirrors Tier 1 focus mode).
+
+          Only rendered in ?focus=dosha mode. When shown, the
+          .fm-intake--focus-tier1 form class hides every other section,
+          leaving just this + the consent/submit block (keepInFocus). The
+          quiz asks about LIFELONG tendencies (prakruti), not current state.
+          Single-pick per question → state.dosha_self_assessment[key] = value.
+       ════════════════════════════════════════════════════════════════════ */}
+      {focusDosha && (
+      <FormSection
+        number={SEC_MOVEMENT}
+        totalSections={totalSections}
+        sectionRef={setSectionRef(SEC_MOVEMENT)}
+        title="Your natural constitution (dosha)"
+        sub="These ask what you've ALWAYS been like — your lifelong tendencies — not how you feel right now."
+        keepInFocus
+      >
+        {DOSHA_QUIZ.map((q) => (
+          <FG key={q.key} label={q.prompt}>
+            <RadiosColumn
+              name={`dosha_${q.key}`}
+              value={state.dosha_self_assessment[q.key] || ""}
+              options={q.options.map((o) => ({ value: o.value, label: o.label }))}
+              onChange={(v) =>
+                set("dosha_self_assessment", {
+                  ...state.dosha_self_assessment,
+                  [q.key]: v,
+                })
+              }
+            />
+          </FG>
+        ))}
+      </FormSection>
+      )}
 
       {/* 12. Cycle & hormones (women only) */}
       {isFemale ? (

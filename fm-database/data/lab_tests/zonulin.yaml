@@ -1,0 +1,46 @@
+slug: zonulin
+display_name: Zonulin
+full_name: Serum / Faecal Zonulin (Intestinal Permeability Marker)
+aliases:
+- serum zonulin
+- stool zonulin
+- zonulin permeability marker
+units: ng/mL
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Lower zonulin — tighter intestinal junctions; barrier integrity favoured
+  (within assay limits)
+interpretation_high: Elevated zonulin — the protein that opens intestinal tight junctions; FM
+  reads it as a marker of increased permeability ("leaky gut"). Interpret cautiously — see the
+  assay caveat in coach notes.
+when_to_order: FM intestinal-permeability / autoimmunity workup; usually bundled within a
+  comprehensive stool panel (e.g. GI-MAP) rather than ordered alone. Reference range is
+  assay-specific — read against the performing lab's range.
+fasting_required: false
+typical_cost_inr: 4000
+linked_to_topics:
+- autoimmunity-leaky-gut-triad
+- autoimmune-disease
+- chronic-inflammation
+linked_to_mechanisms:
+- leaky-gut
+- molecular-mimicry
+sources:
+- id: coach-shivani
+  location: Coach reference — intestinal permeability markers
+evidence_tier: plausible_emerging
+notes_for_coach: >-
+  Zonulin (Fasano) regulates intestinal tight junctions and is the headline FM "leaky gut"
+  biomarker — conceptually central to the autoimmunity triad. HONEST CAVEAT: commercial zonulin
+  ELISAs are debated; several may cross-react with other proteins (e.g. properdin) and aren't
+  fully standardised, so treat a single number as a soft signal, not proof. Ranges are
+  assay-dependent. Best value when bundled in a stool panel alongside calprotectin + secretory
+  IgA. The lactulose:mannitol urine test is the more research-validated direct permeability
+  measure if a hard read is wanted.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

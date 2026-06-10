@@ -266,6 +266,67 @@
 }
 
 /* =========================================================
+   Mobile overflow safety (2026-06-09)
+
+   The v2 client pages stack content in `display:grid` wrappers and
+   use ~80 inline multi-column grids (1fr 1fr, repeat(N,1fr), fixed
+   px). Grid/flex items default to `min-width:auto` and refuse to
+   shrink below their content's min/max-content, so on a phone the
+   panels blew far past the viewport (~1015px wide in a 390px window)
+   and were chopped off by the scroll container's `overflow-x:clip` —
+   the "everything's a mess / right panel won't collapse" report.
+
+   Two-part fix:
+   1. Let grid/flex items shrink so content wraps instead of forcing
+      the track wide (min-width:0 — the canonical overflow guard; inert
+      when there's room, so desktop is unchanged).
+   2. On phones, collapse the inline multi-column / wide fixed-width
+      grids to one column. 80+ inline grids can't each take a class, so
+      we match the serialised `style` string via attribute selectors —
+      React emits `grid-template-columns: <value>` with a stable shape.
+      Row layouts (`1fr auto`, `auto 1fr auto`, `20px 1fr auto`, …) are
+      deliberately NOT matched, so label/value/action rows stay intact.
+   ========================================================= */
+
+/* (1) shrink + wrap. Scoped to <main> so the sidebar/topbar chrome
+   (siblings of <main>) keep their fixed widths. */
+.fm-v2 main :where(div, section, article, header, aside, nav,
+  ul, ol, li, p, span, a, label, table, form, dl, dd) {
+  min-width: 0;
+}
+.fm-v2 main .fm-panel { max-width: 100%; }
+.fm-v2 main :where(p, li, h1, h2, h3, h4, dd,
+  .fm-panel-title, .fm-panel-subtitle) {
+  overflow-wrap: break-word;
+}
+/* Genuinely wide blocks (data tables, code, pre-formatted schedules)
+   should scroll inside their own box rather than blow out the page. */
+.fm-v2 main :where(pre, table) { max-width: 100%; overflow-x: auto; }
+
+/* (2) collapse multi-column + wide fixed-width inline grids to a
+   single column on phones. 640px keeps columns for landscape phones
+   and tablets, stacks for portrait phones. */
+@media (max-width: 640px) {
+  .fm-v2 main [style*="grid-template-columns: 1fr 1fr"],
+  .fm-v2 main [style*="grid-template-columns: 2fr 1fr"],
+  .fm-v2 main [style*="grid-template-columns: 1fr 2fr"],
+  .fm-v2 main [style*="grid-template-columns: repeat(2,"],
+  .fm-v2 main [style*="grid-template-columns: repeat(3,"],
+  .fm-v2 main [style*="grid-template-columns: repeat(4,"],
+  .fm-v2 main [style*="grid-template-columns: repeat(5,"],
+  .fm-v2 main [style*="grid-template-columns: repeat(6,"],
+  .fm-v2 main [style*="grid-template-columns: repeat(7,"],
+  /* wide fixed-track layouts whose px columns sum past a phone */
+  .fm-v2 main [style*="grid-template-columns: 200px minmax(0, 1fr) 360px"],
+  .fm-v2 main [style*="grid-template-columns: 200px 220px 1fr"],
+  .fm-v2 main [style*="grid-template-columns: 200px 1fr"],
+  .fm-v2 main [style*="grid-template-columns: minmax(140px, 1fr) 80px 80px 70px"],
+  .fm-v2 main [style*="grid-template-columns: minmax(240px, 1fr)"]:not([style*="repeat"]) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =========================================================
    .fm-v2-host — shadcn / Tailwind override layer
    Audit Wave H (2026-05-20).
 

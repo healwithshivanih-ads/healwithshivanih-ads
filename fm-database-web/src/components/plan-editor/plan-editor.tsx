@@ -226,6 +226,13 @@ export interface PlanEditorProps {
   locked: boolean;
   /** Client ID for the chat panel */
   clientId?: string;
+  /** Ayurveda context from the client (the Plan editor doesn't load the
+   *  client itself). When ayurvedaEnabled, the editor shows the Ayurveda
+   *  section. Constitution + the latest AI read are shown read-only for
+   *  context — the editable per-plan content lives on plan.ayurveda. */
+  ayurvedaEnabled?: boolean;
+  ayurvedaConstitution?: string;
+  ayurvedaAssessment?: Record<string, unknown> | null;
   /** Lifecycle panel props — passed through so the 🚀 Lifecycle tab can render inline */
   lifecycleProps: {
     status: PlanStatus | undefined;
@@ -992,6 +999,9 @@ export function PlanEditor(props: PlanEditorProps) {
     supplementSources: initialSources,
     locked,
     clientId,
+    ayurvedaEnabled,
+    ayurvedaConstitution,
+    ayurvedaAssessment,
     lifecycleProps,
   } = props;
 
@@ -1067,6 +1077,14 @@ export function PlanEditor(props: PlanEditorProps) {
     setDirty(true);
   }
 
+  function patchAyurveda(field: string, value: unknown) {
+    setPlan((p) => ({
+      ...p,
+      ayurveda: { ...((p.ayurveda as Record<string, unknown>) ?? {}), [field]: value },
+    }));
+    setDirty(true);
+  }
+
   function patchTracking(field: keyof Tracking, value: unknown) {
     setPlan((p) => ({
       ...p,
@@ -1121,6 +1139,25 @@ export function PlanEditor(props: PlanEditorProps) {
     patchNutrition(
       "custom_remedies",
       customRemedies.map((r, j) => (j === i ? { ...r, [field]: value } : r))
+    );
+  };
+
+  // ── Ayurveda section state (only used when ayurvedaEnabled) ──
+  const ayurveda = (plan.ayurveda as Record<string, unknown>) ?? {};
+  const dinacharya: PracticeItem[] = (ayurveda.dinacharya as PracticeItem[]) ?? [];
+  const ayurRemedies: string[] = (ayurveda.remedies as string[]) ?? [];
+  const ayurAssessment = ayurvedaAssessment ?? {};
+  const updateDinacharya = (i: number, field: keyof PracticeItem, value: string) => {
+    patchAyurveda(
+      "dinacharya",
+      dinacharya.map((d, j) => (j === i ? { ...d, [field]: value } : d))
+    );
+  };
+  const ayurCustomRemedies: CustomRemedyT[] = (ayurveda.custom_remedies as CustomRemedyT[]) ?? [];
+  const updateAyurCustomRemedy = (i: number, field: keyof CustomRemedyT, value: string) => {
+    patchAyurveda(
+      "custom_remedies",
+      ayurCustomRemedies.map((r, j) => (j === i ? { ...r, [field]: value } : r))
     );
   };
 
@@ -1794,6 +1831,230 @@ export function PlanEditor(props: PlanEditorProps) {
                 />
               </div>
             </details>
+
+            {/* ── Ayurveda (opt-in per client) ── */}
+            {ayurvedaEnabled && (
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border border-amber-200 bg-amber-50/50 px-4 py-3 text-sm font-semibold hover:bg-amber-50/70 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                🪔 Ayurveda
+                {ayurvedaConstitution && (
+                  <span className="ml-auto text-xs text-muted-foreground font-normal truncate max-w-[220px]">
+                    {ayurvedaConstitution}
+                  </span>
+                )}
+              </summary>
+              <div className="pt-3 space-y-4 px-1">
+                {/* Read-only context: constitution + latest AI read */}
+                <div className="rounded-md border border-amber-200 bg-amber-50/40 px-3 py-2 text-xs space-y-1">
+                  <div>
+                    <span className="font-semibold">Constitution (prakruti):</span>{" "}
+                    {ayurvedaConstitution || (
+                      <span className="text-muted-foreground italic">
+                        not set — established by the dosha quiz, confirm on the client profile
+                      </span>
+                    )}
+                  </div>
+                  {(ayurAssessment.vikruti_label || ayurAssessment.vata_score != null) && (
+                    <div className="text-muted-foreground">
+                      <span className="font-semibold text-foreground">AI read:</span>{" "}
+                      {ayurAssessment.vata_score != null && (
+                        <>V {String(ayurAssessment.vata_score)} · P {String(ayurAssessment.pitta_score)} · K {String(ayurAssessment.kapha_score)} · </>
+                      )}
+                      {ayurAssessment.vikruti_label ? String(ayurAssessment.vikruti_label) : ""}
+                      {ayurAssessment.agni_state ? ` · agni: ${String(ayurAssessment.agni_state)}` : ""}
+                      {ayurAssessment.ama_present ? " · ama present" : ""}
+                      {ayurAssessment.prakruti_confidence === "pending_quiz" && (
+                        <span className="ml-1 italic">(constitution pending quiz)</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Current imbalance (vikruti)</label>
+                  <Input
+                    value={(ayurveda.current_imbalance as string) ?? ""}
+                    onChange={(e) => patchAyurveda("current_imbalance", e.target.value)}
+                    placeholder="e.g. Pitta-aggravated, mild ama"
+                    disabled={effectiveLocked}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">
+                    Balancing focus <span className="font-normal text-muted-foreground">· client-facing one-liner</span>
+                  </label>
+                  <Input
+                    value={(ayurveda.balancing_focus as string) ?? ""}
+                    onChange={(e) => patchAyurveda("balancing_focus", e.target.value)}
+                    placeholder="e.g. Cool Pitta and steady your digestion"
+                    disabled={effectiveLocked}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Dietary guidance (dosha-aware)</label>
+                  <textarea
+                    value={(ayurveda.dietary_guidance as string) ?? ""}
+                    onChange={(e) => patchAyurveda("dietary_guidance", e.target.value)}
+                    placeholder="Six-tastes / qualities bias for this client's imbalance"
+                    disabled={effectiveLocked}
+                    className="w-full text-sm border rounded-md p-2 min-h-[60px] bg-background"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Remedies <span className="font-normal text-muted-foreground">· dosha-matched; checker flags mismatches</span></label>
+                  <MultiSelect
+                    options={remedyOptions}
+                    value={ayurRemedies}
+                    onChange={(v) => patchAyurveda("remedies", v)}
+                  />
+                </div>
+                {/* Bespoke per-client remedies (Ayurvedic) */}
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Custom remedies <span className="font-normal text-muted-foreground">· bespoke for this client</span>
+                  </label>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    A churan, tea, oil, or decoction authored just for this client — full ingredients
+                    + preparation + timing. Shows in the letter&apos;s Ayurvedic guidance section.
+                  </p>
+                  {ayurCustomRemedies.map((r, i) => (
+                    <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20 mb-2">
+                      <div className="flex gap-2">
+                        <Input
+                          placeholder="Name (e.g. Brahmi-jatamansi bedtime decoction)"
+                          value={r.name ?? ""}
+                          onChange={(e) => updateAyurCustomRemedy(i, "name", e.target.value)}
+                          disabled={effectiveLocked}
+                        />
+                        <Input
+                          placeholder="Kind (tea / churan / oil)"
+                          className="max-w-[170px]"
+                          value={r.kind ?? ""}
+                          onChange={(e) => updateAyurCustomRemedy(i, "kind", e.target.value)}
+                          disabled={effectiveLocked}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          disabled={effectiveLocked}
+                          onClick={() => patchAyurveda("custom_remedies", ayurCustomRemedies.filter((_, j) => j !== i))}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                      <Input
+                        placeholder="When to take (e.g. 1 cup an hour before bed)"
+                        value={r.timing ?? ""}
+                        onChange={(e) => updateAyurCustomRemedy(i, "timing", e.target.value)}
+                        disabled={effectiveLocked}
+                      />
+                      <textarea
+                        placeholder="What's in it — ingredients + rough quantities"
+                        value={r.ingredients ?? ""}
+                        onChange={(e) => updateAyurCustomRemedy(i, "ingredients", e.target.value)}
+                        disabled={effectiveLocked}
+                        className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                      />
+                      <textarea
+                        placeholder="How to make it"
+                        value={r.preparation ?? ""}
+                        onChange={(e) => updateAyurCustomRemedy(i, "preparation", e.target.value)}
+                        disabled={effectiveLocked}
+                        className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                      />
+                      <textarea
+                        placeholder="Why — coach rationale (shown in italics to the client)"
+                        value={r.reason ?? ""}
+                        onChange={(e) => updateAyurCustomRemedy(i, "reason", e.target.value)}
+                        disabled={effectiveLocked}
+                        className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                      />
+                    </div>
+                  ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    disabled={effectiveLocked}
+                    onClick={() => patchAyurveda("custom_remedies", [...ayurCustomRemedies, { name: "" }])}
+                  >
+                    + Add custom remedy
+                  </Button>
+                </div>
+                {/* Dinacharya (daily routine) */}
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Daily rhythm (dinacharya)
+                  </label>
+                  {dinacharya.map((d, i) => (
+                    <div key={i} className="border rounded-md p-3 space-y-2 bg-muted/20 mb-2">
+                      <div className="flex gap-2">
+                        <Input
+                          placeholder="Practice (e.g. tongue scraping on waking)"
+                          value={d.name ?? ""}
+                          onChange={(e) => updateDinacharya(i, "name", e.target.value)}
+                          disabled={effectiveLocked}
+                        />
+                        <Input
+                          placeholder="Cadence (daily / nightly)"
+                          className="max-w-[170px]"
+                          value={d.cadence ?? ""}
+                          onChange={(e) => updateDinacharya(i, "cadence", e.target.value)}
+                          disabled={effectiveLocked}
+                        />
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          disabled={effectiveLocked}
+                          onClick={() => patchAyurveda("dinacharya", dinacharya.filter((_, j) => j !== i))}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                      <Input
+                        placeholder="Details (optional)"
+                        value={d.details ?? ""}
+                        onChange={(e) => updateDinacharya(i, "details", e.target.value)}
+                        disabled={effectiveLocked}
+                      />
+                    </div>
+                  ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    disabled={effectiveLocked}
+                    onClick={() => patchAyurveda("dinacharya", [...dinacharya, { name: "", cadence: "" }])}
+                  >
+                    + Add practice
+                  </Button>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">Seasonal note (ritucharya)</label>
+                  <Input
+                    value={(ayurveda.seasonal_note as string) ?? ""}
+                    onChange={(e) => patchAyurveda("seasonal_note", e.target.value)}
+                    placeholder="e.g. Summer now — favour cooling foods"
+                    disabled={effectiveLocked}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">
+                    Coach notes <span className="font-normal text-muted-foreground">· not shown to client</span>
+                  </label>
+                  <textarea
+                    value={(ayurveda.coach_notes as string) ?? ""}
+                    onChange={(e) => patchAyurveda("coach_notes", e.target.value)}
+                    disabled={effectiveLocked}
+                    className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                  />
+                </div>
+              </div>
+            </details>
+            )}
 
             {/* ── Lifestyle ── */}
             <details className="group">

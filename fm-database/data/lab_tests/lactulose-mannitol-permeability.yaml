@@ -1,0 +1,48 @@
+slug: lactulose-mannitol-permeability
+display_name: Lactulose:Mannitol Ratio
+full_name: Lactulose / Mannitol Dual-Sugar Intestinal Permeability Test
+aliases:
+- lactulose mannitol
+- lactulose:mannitol ratio
+- dual sugar permeability test
+- l/m ratio
+- intestinal permeability test
+units: ratio
+sample_type: urine
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: 0.03
+interpretation_low: Low ratio — intact small-intestinal barrier; large (lactulose) molecules
+  not crossing
+interpretation_high: Elevated ratio (commonly > ~0.03, protocol-dependent) — increased
+  paracellular permeability ("leaky gut"); lactulose is crossing a barrier it normally could not
+when_to_order: Direct functional assessment of small-intestinal permeability in suspected leaky
+  gut / autoimmune workup. The most research-validated permeability measure; non-invasive (timed
+  urine collection after a sugar drink), making it relatively child-friendly. Availability in
+  India is limited to specialist functional labs.
+fasting_required: true
+typical_cost_inr: 5000
+linked_to_topics:
+- autoimmunity-leaky-gut-triad
+- food-sensitivity
+- chronic-inflammation
+linked_to_mechanisms:
+- leaky-gut
+- gut-barrier-and-nutrient-absorption
+sources:
+- id: coach-shivani
+  location: Coach reference — intestinal permeability testing
+evidence_tier: plausible_emerging
+notes_for_coach: >-
+  The classic dual-sugar test and the most validated DIRECT permeability measure: the patient
+  drinks lactulose (large) + mannitol (small) and urine is collected over ~5-6 h. Mannitol is
+  absorbed normally (transcellular); lactulose should NOT cross an intact barrier — so a high
+  lactulose:mannitol ratio means the paracellular barrier is leaking. Used in paediatric research
+  and non-invasive (urine only), so it's the most defensible direct "leaky gut" test for a child
+  IF available. Exact cutoff varies by collection protocol — read against the performing lab's
+  method. India availability is patchy.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

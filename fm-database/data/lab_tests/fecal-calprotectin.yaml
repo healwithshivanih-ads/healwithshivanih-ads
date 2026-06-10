@@ -1,0 +1,48 @@
+slug: fecal-calprotectin
+display_name: Fecal Calprotectin
+full_name: Faecal Calprotectin (Stool Inflammation Marker)
+aliases:
+- calprotectin
+- faecal calprotectin
+- stool calprotectin
+- fcp
+units: µg/g
+sample_type: stool
+conventional_low: null
+conventional_high: 50
+fm_optimal_low: null
+fm_optimal_high: 50
+interpretation_low: < 50 µg/g — no significant intestinal inflammation; favours a functional
+  (non-inflammatory) gut picture such as IBS
+interpretation_high: 50-150 borderline (repeat / correlate clinically); > 150-250 active
+  intestinal inflammation — investigate for inflammatory bowel disease (Crohn's / ulcerative
+  colitis), gut infection, or NSAID injury. Distinguishes inflammatory from functional gut disease.
+when_to_order: Suspected gut inflammation / IBD, chronic diarrhoea or abdominal pain, unexplained
+  iron deficiency, and notably in spondyloarthropathy / enthesitis-related arthritis where
+  subclinical gut inflammation is common. Non-invasive screen before considering colonoscopy.
+fasting_required: false
+typical_cost_inr: 3500
+linked_to_topics:
+- inflammatory-bowel-disease
+- chronic-inflammation
+- autoimmune-disease
+linked_to_mechanisms:
+- chronic-inflammation
+- leaky-gut
+sources:
+- id: coach-shivani
+  location: Coach reference — gut inflammation / leaky-gut lab workup
+evidence_tier: strong
+notes_for_coach: >-
+  The best non-invasive marker of intestinal inflammation — a neutrophil-derived protein
+  shed into stool. Validated in children (>4 yr use the adult ~50 µg/g cutoff; infants run
+  higher). Cheap, no blood draw — ideal for kids. Key use in FM/rheumatology: the
+  enthesitis-related arthritis / juvenile spondyloarthropathy subtype is strongly linked to
+  silent gut inflammation + IBD, so a raised value routes the child to a paediatric
+  gastroenterologist. NOT a permeability ("leaky gut") marker — it measures inflammation — but
+  it's the highest-yield, most actionable gut test for an inflammatory-arthritis picture.
+  Recent NSAID use can falsely raise it.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

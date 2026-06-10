@@ -43,10 +43,15 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <div className="flex min-h-screen">
-          <aside className="w-56 shrink-0 border-r bg-muted/30">
+          {/* Legacy chrome — only wraps the few remaining root-layout pages
+              (/sources, /dashboard-legacy) + redirect shims. The 224px rail
+              squished content to ~160px on phones, so hide it below md; the
+              v2 surfaces (the daily-use app) have their own responsive shell
+              and cover this layout entirely. */}
+          <aside className="hidden md:block w-56 shrink-0 border-r bg-muted/30">
             <SidebarNav />
           </aside>
-          <main className="flex-1 p-6 lg:p-8 overflow-x-auto">{children}</main>
+          <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8 overflow-x-auto">{children}</main>
         </div>
         <Toaster richColors closeButton position="top-right" />
       </body>

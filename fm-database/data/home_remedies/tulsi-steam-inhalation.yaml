@@ -20,6 +20,11 @@ contraindications:
   - active asthma flare (steam may trigger)
   - young children (burn risk, supervised use only)
   - severely hypertensive episode (avoid hot-steam vasodilation)
+balances_dosha:
+  - kapha
+  - vata
+aggravates_dosha:
+  - pitta
 preparation: >-
   Bring 1 litre water to a boil. Off heat, drop in 10-15 fresh tulsi leaves
   (and optionally a teaspoon of ajwain or 2 cloves). Cover head with a towel,

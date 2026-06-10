@@ -24,6 +24,11 @@ contraindications:
   - prolonged use beyond 4-6 weeks
   - pregnancy
   - concurrent diuretics or corticosteroids
+balances_dosha:
+  - vata
+  - pitta
+aggravates_dosha:
+  - kapha
 preparation: >-
   Simmer 1 teaspoon dried licorice root pieces in 1.5 cups water for 8-10
   minutes, strain. Drink warm.

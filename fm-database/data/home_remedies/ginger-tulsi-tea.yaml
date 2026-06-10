@@ -13,6 +13,11 @@ indications:
 contraindications:
 - blood thinners (high ginger intake)
 - acid reflux (ginger can aggravate for some)
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
 preparation: Simmer a 1-inch piece of crushed ginger + 8-10 tulsi leaves in 2 cups water for 5-7 min.
   Strain; add lemon/honey off the heat if desired.
 typical_dose: 1-2 cups a day.

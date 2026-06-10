@@ -25,6 +25,11 @@ contraindications:
   - pregnancy (fenugreek is a uterine stimulant in larger amounts — consult clinician)
   - on glucose-lowering medication (additive effect — monitor for lows)
   - fenugreek / legume allergy
+balances_dosha:
+  - kapha
+  - vata
+aggravates_dosha:
+  - pitta
 preparation: |
   Soak 1 tsp whole methi (fenugreek) seeds in ~1 cup water overnight
   (8-10 hours). In the morning, strain and drink the water on an empty

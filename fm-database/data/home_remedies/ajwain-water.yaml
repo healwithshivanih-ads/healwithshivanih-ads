@@ -12,6 +12,11 @@ indications:
 contraindications:
 - pregnancy (large amounts)
 - active peptic ulcer
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
 preparation: Boil 1 tsp ajwain in 2 cups water for 5 min; strain.
 typical_dose: 1/2-1 cup warm when bloated, or after a heavy meal.
 duration: As needed; safe daily in moderation.

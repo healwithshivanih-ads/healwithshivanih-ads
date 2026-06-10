@@ -473,6 +473,84 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     for slug in plan.nutrition.home_remedies:
         _xref("nutrition", "home_remedies", slug, hr_idx, "home_remedy")
 
+    # ---------- Ayurveda section (slug xref + dosha-mismatch safety) ----------
+    if plan.ayurveda:
+        for slug in plan.ayurveda.remedies:
+            _xref("ayurveda", "remedies", slug, hr_idx, "home_remedy")
+
+    # Dosha mismatch: a remedy whose `aggravates_dosha` intersects the client's
+    # currently-aggravated doshas (vikruti) is a safety concern — e.g. a heating
+    # kapha-clearing tea recommended to a pitta-aggravated client. Covers BOTH
+    # nutrition.home_remedies and the Ayurveda section's remedies. Fires only
+    # when the client has a constitution assessment with structured
+    # vikruti_doshas; silent otherwise (no false positives on un-assessed clients).
+    hr_by_slug = {h.slug: h for h in catalogue.home_remedies}
+    vikruti_doshas: set[str] = set()
+    if client and isinstance(client.ayurveda_assessment, dict):
+        vikruti_doshas = {
+            str(d).lower()
+            for d in (client.ayurveda_assessment.get("vikruti_doshas") or [])
+        }
+    if vikruti_doshas:
+        remedy_slugs = list(plan.nutrition.home_remedies)
+        if plan.ayurveda:
+            remedy_slugs += list(plan.ayurveda.remedies)
+        _seen: set[str] = set()
+        for slug in remedy_slugs:
+            if slug in _seen:
+                continue
+            _seen.add(slug)
+            canonical = hr_idx.get(slug)
+            hr = hr_by_slug.get(canonical) if canonical else None
+            if not hr:
+                continue  # unknown slug already flagged CRITICAL by _xref
+            aggravated = {d.value for d in hr.aggravates_dosha} & vikruti_doshas
+            if aggravated:
+                findings.append(Finding(
+                    "WARNING", "ayurveda", "remedies",
+                    f"{slug!r} aggravates {'/'.join(sorted(aggravated))}, but the client "
+                    f"is currently {'/'.join(sorted(vikruti_doshas))}-aggravated (vikruti) — "
+                    "this remedy may worsen the imbalance. Confirm or swap for a "
+                    "dosha-appropriate alternative.",
+                    target=slug,
+                ))
+
+        # Same dosha-mismatch check for SUPPLEMENTS in the protocol — supplements
+        # now carry balances/aggravates_dosha energetics too (rasa/virya/vipaka).
+        for item in plan.supplement_protocol:
+            canonical = supp_idx.get(item.supplement_slug)
+            supp = supp_by_slug.get(canonical) if canonical else None
+            if not supp:
+                continue
+            agg = {d.value for d in getattr(supp, "aggravates_dosha", []) or []} & vikruti_doshas
+            if agg:
+                findings.append(Finding(
+                    "WARNING", "supplement_protocol", "aggravates_dosha",
+                    f"{item.supplement_slug!r} aggravates {'/'.join(sorted(agg))}, but the client "
+                    f"is currently {'/'.join(sorted(vikruti_doshas))}-aggravated (vikruti) — "
+                    "consider a dosha-appropriate alternative or pair it with a pacifying anupana.",
+                    target=item.supplement_slug,
+                ))
+
+    # Low-confidence constitution advisory: the client is on the Ayurveda track
+    # and the plan carries an Ayurveda section, but the constitution read is weak
+    # (low / pending the dosha quiz). Flag it so the coach decides whether to
+    # confirm the type first or reconsider including the Ayurveda layer at all.
+    if plan.ayurveda and client and getattr(client, "ayurveda_enabled", False):
+        _assess = client.ayurveda_assessment if isinstance(
+            getattr(client, "ayurveda_assessment", None), dict) else {}
+        _conf = str(_assess.get("prakruti_confidence") or "").lower()
+        if _conf in ("low", "pending_quiz"):
+            _adv = str(_assess.get("advisory") or "").strip()
+            findings.append(Finding(
+                "WARNING", "ayurveda", "constitution",
+                _adv or (
+                    "constitution read is provisional/low-confidence — send the dosha quiz "
+                    "to establish prakruti, or reconsider including the Ayurveda layer for "
+                    "this client."
+                ),
+            ))
+
     # ---------- Education modules ----------
     for em in plan.education:
         if em.target_kind == "topic":

@@ -1,0 +1,55 @@
+slug: tissue-transglutaminase-iga
+display_name: Anti-tTG IgA (Celiac)
+full_name: Tissue Transglutaminase IgA Antibody (Celiac Serology)
+aliases:
+- ttg
+- ttg-iga
+- anti-ttg
+- anti-ttg iga
+- tissue transglutaminase
+- tissue transglutaminase antibody
+- celiac serology
+- coeliac antibody
+units: U/mL
+sample_type: blood
+conventional_low: null
+conventional_high: null
+fm_optimal_low: null
+fm_optimal_high: null
+interpretation_low: Negative — celiac unlikely IF total IgA is normal AND the patient was eating
+  gluten at the time of testing. A negative result in an IgA-deficient patient is unreliable
+  (false negative) — use IgG-based testing instead.
+interpretation_high: Positive / raised — suggests celiac disease; titres > 10x the upper limit
+  of normal are highly predictive. Confirm per paediatric/GI pathway (± endomysial antibody,
+  ± duodenal biopsy). Always interpreted against total serum IgA. Result cutoffs are kit-specific.
+when_to_order: First-line celiac screen in anyone with autoimmune disease, unexplained iron /
+  vitamin D deficiency, poor growth, GI symptoms, or arthritis / arthralgia. ALWAYS order with
+  total serum IgA. The patient MUST remain on a gluten-containing diet — do not start gluten-free
+  before testing or the antibodies normalise and the test misses disease.
+fasting_required: false
+typical_cost_inr: 1500
+linked_to_topics:
+- celiac-disease
+- autoimmune-disease
+- autoimmunity-leaky-gut-triad
+linked_to_mechanisms:
+- molecular-mimicry
+- leaky-gut
+sources:
+- id: coach-shivani
+  location: Coach reference — celiac / gut-autoimmune workup
+- id: pizzorno-textbook-gi-2
+  location: Celiac Disease — Diagnosis (IgA anti-tTG sensitivity ~99%)
+evidence_tier: strong
+notes_for_coach: >-
+  The gold-standard first-line celiac test — IgA anti-tTG sensitivity ~99%. TWO
+  non-negotiables: (1) pair with TOTAL serum IgA — selective IgA deficiency is common and gives
+  false negatives, in which case order IgG-based tTG / DGP instead; (2) the child must still be
+  EATING GLUTEN at the time of the test. Celiac clusters with other autoimmune disease and is a
+  classic hidden cause of low ferritin + low vitamin D + arthralgia via malabsorption — so it
+  earns a top spot in any autoimmune / inflammatory-arthritis gut workup. Diagnosis + biopsy are
+  clinician scope; gluten-free education is coaching scope.
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

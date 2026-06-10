@@ -45,6 +45,8 @@ import { BeightonVerifyPanel } from "./beighton-verify-panel";
 import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
 import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
+import { AyurvedaToggle } from "@/components/client-widgets/ayurveda-toggle";
+import { SupplementCheckWidget } from "@/components/client-widgets/supplement-check-widget";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
@@ -1677,6 +1679,14 @@ export default async function ClientV2Page({
                 id: "memory",
                 label: "Memory",
                 content: (
+                          <div className="space-y-3">
+                            <AyurvedaToggle
+                              clientId={client.client_id}
+                              initialEnabled={(client as unknown as { ayurveda_enabled?: boolean }).ayurveda_enabled}
+                              initialConstitution={(client as unknown as { ayurveda_constitution?: string }).ayurveda_constitution}
+                              assessment={(client as unknown as { ayurveda_assessment?: Record<string, unknown> | null }).ayurveda_assessment}
+                            />
+                            <SupplementCheckWidget clientId={client.client_id} />
                             <ClientMemoryPanel
                               clientId={client.client_id}
                               initial={{
@@ -1694,6 +1704,7 @@ export default async function ClientV2Page({
                               }}
                               lastUpdatedAt={(client as unknown as { updated_at?: string }).updated_at}
                             />
+                          </div>
                 ),
               },
             ]}
@@ -1872,6 +1883,11 @@ function SubNav({ id, active }: { id: string; active: string }) {
             borderBottom: `2px solid ${t.id === active ? "var(--fm-primary)" : "transparent"}`,
             textDecoration: "none",
             marginBottom: -1,
+            // Keep each tab at its natural width and let the strip scroll
+            // horizontally (overflowX:auto above) instead of letting the
+            // labels squish/wrap on narrow screens.
+            whiteSpace: "nowrap",
+            flexShrink: 0,
           }}
         >
           {t.label}
