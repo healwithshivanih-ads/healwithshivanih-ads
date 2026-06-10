@@ -50,17 +50,7 @@ def _resources_root() -> Path:
 
 
 def _handout_titles() -> dict:
-    out = {}
-    rd = _resources_root()
-    if rd.is_dir():
-        for f in rd.glob("*.yaml"):
-            try:
-                d = yaml.safe_load(f.read_text()) or {}
-            except Exception:
-                continue
-            if d.get("kind") == "article":
-                out[d.get("slug", f.stem)] = d.get("title", f.stem)
-    return out
+    return {slug: d.get("title", slug) for slug, d in _load_all_handouts().items()}
 
 
 def _active_plan(root: Path, client_id: str) -> dict | None:
@@ -95,9 +85,60 @@ def _day1(plan: dict) -> datetime.date:
     return datetime.date.today()
 
 
+def _load_all_handouts() -> dict[str, dict]:
+    """slug → full resource dict for every article-kind handout."""
+    out = {}
+    rd = _resources_root()
+    if rd.is_dir():
+        for f in rd.glob("*.yaml"):
+            if f.stem == "test-brief":
+                continue
+            try:
+                d = yaml.safe_load(f.read_text()) or {}
+            except Exception:
+                continue
+            if d.get("kind") == "article":
+                out[d.get("slug", f.stem)] = d
+    return out
+
+
+def _auto_match(plan: dict, handouts: dict[str, dict]) -> list[str]:
+    """Match handouts whose related_topics overlap with plan topics."""
+    plan_topics = set(plan.get("primary_topics") or [])
+    for driver in plan.get("hypothesized_drivers") or []:
+        if isinstance(driver, dict):
+            slug = driver.get("mechanism") or driver.get("topic") or ""
+            if slug:
+                plan_topics.add(slug)
+    contributing = plan.get("contributing_topics") or []
+    if isinstance(contributing, list):
+        for item in contributing:
+            if isinstance(item, dict):
+                plan_topics.add(item.get("mechanism") or item.get("topic") or "")
+            elif isinstance(item, str):
+                plan_topics.add(item)
+    plan_topics.discard("")
+
+    matched = []
+    for slug, res in handouts.items():
+        htopics = set(res.get("related_topics") or [])
+        if htopics & plan_topics:
+            matched.append(slug)
+    return matched
+
+
+def _effective_slugs(plan: dict, handouts: dict[str, dict]) -> list[str]:
+    """Attached slugs if set, else auto-matched from plan topics."""
+    attached = [s for s in (plan.get("attached_resources") or []) if s in handouts]
+    if attached:
+        return attached
+    return _auto_match(plan, handouts)
+
+
 def _build_schedule(client: dict, plan: dict) -> list[dict]:
-    titles = _handout_titles()
-    attached = [s for s in (plan.get("attached_resources") or []) if s in titles]
+    handouts = _load_all_handouts()
+    titles = {slug: d.get("title", slug) for slug, d in handouts.items()}
+    attached = _effective_slugs(plan, handouts)
     # order: known priority first, then any extras in attach order
     ordered = [s for s in PRIORITY if s in attached] + [s for s in attached if s not in PRIORITY]
     d1 = _day1(plan)
@@ -187,10 +228,65 @@ def main() -> int:
     if not sched:
         print(json.dumps({"ok": False, "error": "no handouts attached to the active plan"})); return 0
 
+    if action == "list":
+        # Return all available handouts with attached + auto-matched flags for the UI.
+        handouts = _load_all_handouts()
+        currently_attached = set(plan.get("attached_resources") or [])
+        auto = set(_auto_match(plan, handouts))
+        items = []
+        for slug, res in sorted(handouts.items()):
+            items.append({
+                "slug": slug,
+                "title": res.get("title", slug),
+                "attached": slug in currently_attached,
+                "matched": slug in auto,
+            })
+        print(json.dumps({"ok": True, "handouts": items, "plan_slug": plan.get("slug")}))
+        return 0
+
+    if action == "update_attachments":
+        # Write the coach-selected slugs to attached_resources on the published plan file.
+        new_slugs = payload.get("slugs") or []
+        pub = root / "published"
+        target = None
+        if pub.is_dir():
+            for f in sorted(pub.glob("*.yaml"), reverse=True):
+                try:
+                    p = yaml.safe_load(f.read_text()) or {}
+                except Exception:
+                    continue
+                if p.get("client_id") == cid:
+                    target = f
+                    break
+        if not target:
+            print(json.dumps({"ok": False, "error": "published plan file not found"}))
+            return 0
+        plan_data = yaml.safe_load(target.read_text()) or {}
+        plan_data["attached_resources"] = new_slugs
+        target.write_text(yaml.safe_dump(plan_data, sort_keys=False, allow_unicode=True))
+        print(json.dumps({"ok": True, "slugs": new_slugs}))
+        return 0
+
     if action == "preview":
         print(json.dumps({"ok": True, "schedule": sched, "day1": _day1(plan).isoformat()})); return 0
 
     if action == "setup":
+        # If slugs were auto-matched (not explicitly attached), persist them to the plan now.
+        handouts = _load_all_handouts()
+        currently_attached = plan.get("attached_resources") or []
+        if not currently_attached:
+            matched_slugs = [item["slug"] for item in sched]
+            pub = root / "published"
+            if pub.is_dir():
+                for f in sorted(pub.glob("*.yaml"), reverse=True):
+                    try:
+                        p = yaml.safe_load(f.read_text()) or {}
+                    except Exception:
+                        continue
+                    if p.get("client_id") == cid:
+                        p["attached_resources"] = matched_slugs
+                        f.write_text(yaml.safe_dump(p, sort_keys=False, allow_unicode=True))
+                        break
         # persist schedule
         sp = _sched_path(root, cid)
         sp.parent.mkdir(parents=True, exist_ok=True)

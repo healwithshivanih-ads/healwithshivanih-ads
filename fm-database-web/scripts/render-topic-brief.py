@@ -66,7 +66,7 @@ def load_client(client_id: str) -> dict:
         return pyyaml.safe_load(f)
 
 
-def load_topic(slug: str) -> dict | None:
+def load_topic(slug: str):
     """Load a topic YAML from the catalogue."""
     fmdb_root = Path(__file__).parent.parent.parent / "fm-database" / "data" / "topics"
     p = fmdb_root / f"{slug}.yaml"

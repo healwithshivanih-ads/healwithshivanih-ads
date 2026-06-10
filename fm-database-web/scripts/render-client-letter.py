@@ -1379,10 +1379,19 @@ def _consolidated_healing_arc_block(plan: dict, plan_weeks: int) -> str:
 # arg is None. Keeps the threading minimal.
 _AS_OF_OVERRIDE: str | None = None
 
+# Staleness window for CLIENT-reported content (check-ins, WhatsApp poll
+# replies, symptom reports). Coach rule 2026-06-10: anything the client
+# said more than this many days ago is too stale to narrate as current
+# in the next letter — a wk3-4 letter must not open with "the acidity on
+# Tuesday night" when that report is two weeks old. Coach protocol
+# DECISIONS (added supplements, practices) stay binding regardless of age
+# — see _protocol_changes_since_plan_block.
+CLIENT_VOICE_STALE_DAYS = 5
+
 
 def _recent_client_voice_block(
     client_id: str,
-    days_back: int = 14,
+    days_back: int = CLIENT_VOICE_STALE_DAYS,
     as_of_iso: str | None = None,
 ) -> str:
     # Honor module-level override (set by main() when backdating).
@@ -1465,6 +1474,11 @@ def _recent_client_voice_block(
             # Skip outbound — we don't want the prompt re-echoing what
             # the coach already sent. Inbound and coach-observation only.
             continue
+        elif "[source: weekly_check_in_poll]" in complaints:
+            # Poll replies are the CLIENT's words (the coach_notes field
+            # just mirrors them with a score header) — classify as client
+            # voice so staleness rules apply to them.
+            channel = "client WhatsApp"
         elif "[source: pre_session_brief]" in complaints:
             channel = "coach observation"
         elif coach_notes:
@@ -1550,8 +1564,9 @@ def _protocol_changes_since_plan_block(
     between plan publish and today, and frame them as BINDING protocol
     decisions for subsequent letters.
 
-    The 14-day `_recent_client_voice_block` covers recency (tonal cues,
-    last week's vibe). This block covers the FULL communication arc
+    The short-window `_recent_client_voice_block` (CLIENT_VOICE_STALE_DAYS)
+    covers recency (tonal cues, last week's vibe). This block covers the
+    FULL communication arc
     since the plan went live — so a Wks 9-10 letter generated 7 weeks
     after the plan publish still surfaces the mouth tape, gluten
     enzymes, and activated charcoal coach added in Wk 2.
@@ -1618,6 +1633,12 @@ def _protocol_changes_since_plan_block(
             channel = "client WhatsApp"
             body_raw = _WA_ENVELOPE_RE.sub("", complaints).strip()
             body_raw = _TAG_PREFIX_RE.sub("", body_raw).strip()
+        elif "[source: weekly_check_in_poll]" in complaints:
+            # Poll replies are client voice (coach_notes mirrors the
+            # client's text with a score header) — classify as client so
+            # the staleness rule applies.
+            channel = "client report"
+            body_raw = _TAG_PREFIX_RE.sub("", complaints).strip()
         elif "[source: pre_session_brief]" in complaints:
             channel = "coach observation"
             body_raw = coach_notes or _TAG_PREFIX_RE.sub("", complaints).strip()
@@ -1673,11 +1694,27 @@ def _protocol_changes_since_plan_block(
         "pills; this block is for ADDITIONS + observations).",
         "  4. Quote the client's own words where it makes the letter feel "
         "heard. Don't invent items not in this list.",
+        f"  5. Do NOT invent a 'Responding to your note' section unless a "
+        "fresh client message (dated within the last "
+        f"{CLIENT_VOICE_STALE_DAYS} days) appears in this list.",
         "",
         "Items oldest → newest:",
         "",
     ]
-    for d, channel, body in entries:
+    # Client-voice entries older than CLIENT_VOICE_STALE_DAYS are dropped
+    # entirely from the prompt. Including them — even with instructions not to
+    # narrate them — causes the AI to write "Responding to your note" sections
+    # for events that are weeks old. Coach protocol decisions (coach notes) are
+    # kept regardless of age because they represent deliberate changes.
+    fresh_entries = [
+        (d, ch, body) for d, ch, body in entries
+        if not (
+            (today - d).days > CLIENT_VOICE_STALE_DAYS
+            and ch in ("client WhatsApp", "client report")
+        )
+    ]
+
+    for d, channel, body in fresh_entries:
         days_ago = (today - d).days
         when = (
             "today" if days_ago == 0
@@ -5551,7 +5588,8 @@ Per meal split (MUST roughly match):
     # protocol additions (mouth tape, gluten enzymes, activated
     # charcoal, etc.) that happened mid-cycle through check-ins or
     # WhatsApp and must surface in the next letter. Different from
-    # recent_voice (14d) which is for tone/recency; this one covers
+    # recent_voice (CLIENT_VOICE_STALE_DAYS) which is for tone/recency;
+    # this one covers
     # the entire active plan window. Coach feedback 2026-05-19.
     protocol_changes = _protocol_changes_since_plan_block(
         client.get("client_id") or "",
