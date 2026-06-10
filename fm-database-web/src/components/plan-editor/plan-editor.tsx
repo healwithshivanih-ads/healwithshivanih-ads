@@ -17,6 +17,7 @@ import { stripBrand } from "@/lib/fmdb/supplement-display";
 // on the plan edit page, which handles both protocol selection and content seeding.
 import { PlanChatPanel } from "./plan-chat-panel";
 import { LifecyclePanel } from "./lifecycle-panel";
+import { RecipeSuggestionsCard } from "./recipe-suggestions-card";
 import { MedicationImpactPanel } from "@/components/client-widgets/medication-impact-panel";
 
 interface SupplementItem {
@@ -1742,6 +1743,14 @@ export function PlanEditor(props: PlanEditorProps) {
                     options={remedyOptions}
                     value={(nutrition.home_remedies as string[]) ?? []}
                     onChange={(v) => patchNutrition("home_remedies", v)}
+                  />
+                </div>
+                <div>
+                  <RecipeSuggestionsCard
+                    planSlug={plan.slug as string}
+                    value={(nutrition.recipes as string[]) ?? []}
+                    onChange={(v) => patchNutrition("recipes", v)}
+                    locked={effectiveLocked}
                   />
                 </div>
                 {/* Bespoke per-client remedies — render in the letter's
