@@ -440,7 +440,10 @@ export function PlanScreen({
         </div>
         <div className="card-quiet soon" style={{ marginTop: 10 }}>
           <Icon name="leaf" size={16} style={{ color: "var(--ochre)" }} />
-          <span>Chosen for your pattern from your plan letter. The ones you take daily also appear on your Today list.</span>
+          <span>
+            The daily ones appear on your Today list. A <strong>Swap option</strong> is an either/or — use it instead of its
+            partner remedy if it suits you better, never both.
+          </span>
         </div>
       </Section>
 

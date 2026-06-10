@@ -94,6 +94,10 @@ export interface AppRemedy {
   assigned?: boolean;
   daily?: boolean;
   supplementLike?: boolean;
+  /** demoted duplicate: same timing slot as a primary drink — shown as a
+   *  clearly-labelled swap option, never on the daily log */
+  alternative?: boolean;
+  alternativeTo?: string;
   suppSlot?: string;
   suppTiming?: string;
   when?: string;
@@ -1266,6 +1270,41 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       when: bedtime ? "Bedtime" : /between meals|through the day/i.test(`${base.timing} ${blurb?.how ?? ""}`) ? "Between meals" : /morning/i.test(base.timing) ? "Morning" : "Daily",
       why: blurb?.what || firstSentence(base.summary),
     });
+  }
+
+  // ── one drink per slot (coach rule 2026-06-10) ─────────────────────────
+  // The plan + ayurveda block can stack several remedies into the same
+  // moment (Hariharan: golden milk + ghee-milk + jatamansi tea, ALL at
+  // bedtime) — a client reads "Picked for you" on each and thinks she must
+  // take all three. Keep ONE primary drinkable remedy per timing slot;
+  // the rest stay visible as clearly-labelled swap options and never hit
+  // the daily log. Priority: mentioned in the issued letter > in the plan's
+  // nutrition protocol > ayurveda-block order. Churans folded into the
+  // supplement schedule and external remedies are different surfaces —
+  // they don't compete with drinks.
+  {
+    const drinkPriority = (r: AppRemedy): number =>
+      blurbFor(r) ? 0 : dailyRemedySlugs.includes(r.slug) ? 1 : 2;
+    const bySlot = new Map<string, AppRemedy[]>();
+    for (const r of remedies) {
+      if (!r.assigned || r.route === "external" || r.supplementLike) continue;
+      const key = r.when ?? "Daily";
+      if (!bySlot.has(key)) bySlot.set(key, []);
+      bySlot.get(key)!.push(r);
+    }
+    for (const group of bySlot.values()) {
+      if (group.length < 2) continue;
+      group.sort((a, b) => drinkPriority(a) - drinkPriority(b));
+      const primary = group[0];
+      for (const r of group.slice(1)) {
+        r.alternative = true;
+        r.alternativeTo = primary.name.split(" (")[0].trim();
+        r.daily = false;
+        r.why = `A swap option for ${r.alternativeTo.toLowerCase()} — ${firstSentence(r.why ?? r.summary).toLowerCase()}`;
+      }
+    }
+    // primaries first, alternatives after, original order otherwise
+    remedies.sort((a, b) => Number(a.alternative ?? false) - Number(b.alternative ?? false));
   }
 
   // ---- remedy eligibility (hard gates) + relevance shelf --------------------

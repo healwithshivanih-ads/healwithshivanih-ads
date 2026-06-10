@@ -255,7 +255,16 @@ export function RemedyOverlay({ remedy, onClose }: { remedy: AppRemedy; onClose:
           <div className="rmd-why">
             <Icon name="leaf" size={14} />{" "}
             <span>
-              <strong>{firstName} picked this for you.</strong> {r.why}
+              {r.alternative ? (
+                <>
+                  <strong>A swap option from {firstName}.</strong> Use this instead of {r.alternativeTo?.toLowerCase()} if it suits you
+                  better — one or the other, not both.
+                </>
+              ) : (
+                <>
+                  <strong>{firstName} picked this for you.</strong> {r.why}
+                </>
+              )}
             </span>
           </div>
         )}

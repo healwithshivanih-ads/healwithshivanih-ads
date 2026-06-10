@@ -718,7 +718,8 @@ export function RemedyCard({ remedy, onOpen }: { remedy: AppRemedy; onOpen: (r: 
       <div className="rc-body">
         <div className="rc-name">
           {remedy.name}
-          {remedy.assigned && <span className="rc-pick">Picked for you</span>}
+          {remedy.assigned && !remedy.alternative && <span className="rc-pick">Picked for you</span>}
+          {remedy.alternative && <span className="rc-soon">Swap option</span>}
           {remedy.stub && <span className="rc-soon">Coming soon</span>}
         </div>
         <div className="rc-also">
