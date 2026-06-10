@@ -1,0 +1,33 @@
+slug: fresh-grind-spices-mortar-pestle
+display_name: Fresh-Grind Spices in Mortar and Pestle
+aliases: []
+category: food_prep
+summary: Freshly grinding spices immediately before use in a stone mortar and pestle preserves volatile
+  aromatic oils and bioactive compounds that deteriorate rapidly after grinding. Traditional Ayurvedic
+  cookery grinds spices for each meal to maximise therapeutic potency and flavour.
+benefits:
+- preserves volatile essential oils (responsible for both aroma and therapeutic action)
+- maximises bioavailability of active compounds such as curcumin, piperine, and cineole
+- delivers stronger flavour requiring less spice overall
+- stone mortar does not retain scents, unlike wood
+swap_from:
+- using pre-ground commercial spices
+- grinding spices in a wood mortar (retains scents)
+how_to_use: Use a stone (not wood) mortar and pestle. Place whole spices in the mortar — start with the
+  hardest (peppercorns, cumin). Grind in a circular pressing motion, not a pounding one. Grind just before
+  adding to the dish. For larger batches, use a spice grinder (reserved coffee grinder).
+cautions:
+- small amounts only — pre-ground spice mix loses potency within a few months
+- keep mortar clean to avoid cross-contamination of flavours
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Appendix 3: Tools and Techniques — Mortar and Pestle, Grind'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

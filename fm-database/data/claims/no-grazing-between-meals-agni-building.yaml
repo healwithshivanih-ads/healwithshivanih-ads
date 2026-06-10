@@ -1,0 +1,31 @@
+slug: no-grazing-between-meals-agni-building
+statement: Ayurveda recommends eating only at consistent mealtimes — typically two or three meals per
+  day — and avoiding grazing or snacking between meals. Constant food intake prevents the digestive fire
+  from building to full strength, resulting in incomplete digestion and accumulation of ama (undigested
+  matter).
+evidence_tier: plausible_emerging
+rationale: The migrating motor complex (MMC), which clears intestinal residue, only activates in the fasted
+  state between meals. Continuous eating suppresses the MMC and contributes to bacterial overgrowth and
+  fermentation.
+coaching_translation: Stop grazing. Your digestion works like a campfire — it needs time between meals
+  to build strength. If you are always adding wood, the fire never gets strong. Three consistent meals,
+  nothing in between, is the classic Ayurvedic prescription.
+out_of_scope_notes: ''
+caveats:
+- Clients with blood-sugar dysregulation may need to transition gradually.
+- SIBO-positive clients particularly benefit from observing meal spacing.
+linked_to_topics:
+- agni-digestive-fire
+- meal-timing-and-digestive-rest
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- migrating-motor-complex
+- digestive-enzyme-deficiency
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: The Principles of Ayurvedic Eating — When We Eat'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

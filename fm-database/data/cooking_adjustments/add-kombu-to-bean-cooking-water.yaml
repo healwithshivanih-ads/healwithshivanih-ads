@@ -1,0 +1,33 @@
+slug: add-kombu-to-bean-cooking-water
+display_name: Add Kombu to Bean Cooking Water
+aliases: []
+category: food_prep
+summary: Adding a 1-inch piece of kombu (a sea vegetable) per cup of dry beans to the cooking water reduces
+  gas-forming oligosaccharides, enriches the cooking broth with trace minerals, and produces a thick,
+  flavourful bean broth. The kombu is discarded after cooking.
+benefits:
+- kombu contains glutamic acid which breaks down gas-producing raffinose and stachyose in legumes
+- adds iodine, calcium, magnesium, and trace minerals to beans
+- improves digestibility of legumes
+- creates a nutritious broth that can be used as a base
+swap_from:
+- cooking legumes in plain water without digestive aids
+how_to_use: After rinsing and soaking beans, add a 1-inch strip of dried kombu per cup of dry beans directly
+  to the cooking water. Bring to a boil, skim any foam, then simmer on low covered. The kombu will soften
+  completely. Discard or blend into the dish. No extra salt needed until the end.
+cautions:
+- kombu is high in iodine — those with hyperthyroidism or thyroid autoimmunity should use sparingly
+- watch iodine intake if consuming kombu daily
+linked_to_topics:
+- digestion-and-nutrient-absorption
+- agni-digestive-fire
+linked_to_mechanisms:
+- fodmap-fermentation
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Appendix 5: Cooking Tables — Everyday Bean Cookery'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

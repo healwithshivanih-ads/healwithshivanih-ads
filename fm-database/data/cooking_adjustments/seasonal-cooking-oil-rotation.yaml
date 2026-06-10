@@ -1,0 +1,34 @@
+slug: seasonal-cooking-oil-rotation
+display_name: Rotate Cooking Oils by Season
+aliases: []
+category: oil
+summary: 'Match the primary cooking oil to the season: heavy warming sesame oil in cool months, lighter
+  cooling coconut oil in warm months. Ghee is suitable year-round. Rancid or old oils create ama and should
+  be cycled within a few months of opening.'
+benefits:
+- sesame oil provides warmth and lubrication in cold-dry seasons, balancing vata
+- coconut oil's cooling quality reduces pitta in hot months
+- ghee supports agni and carries spice properties into tissues year-round
+- fresh oil free from oxidation products avoids ama-formation
+swap_from:
+- using the same refined vegetable oil year-round
+- keeping oils more than 3-4 months after opening
+how_to_use: 'Autumn/winter/spring: use sesame or ghee as primary fat. Summer: switch to coconut oil for
+  most cooking; keep ghee for finishing. Buy smaller quantities to ensure freshness. Store in a cool dark
+  place; smell-test before use.'
+cautions:
+- avoid heating any oil past its smoke point
+- sesame oil is not suitable for high-kapha individuals in large quantities
+- buy cold-pressed unrefined versions for maximum nutritional value
+linked_to_topics:
+- cooking-fats-and-cardiovascular-health
+- ayurvedic-elemental-design-doshas
+linked_to_mechanisms: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 3: Oils section'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

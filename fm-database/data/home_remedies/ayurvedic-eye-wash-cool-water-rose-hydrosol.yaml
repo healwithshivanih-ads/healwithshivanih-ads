@@ -1,0 +1,47 @@
+slug: ayurvedic-eye-wash-cool-water-rose-hydrosol
+display_name: Ayurvedic Eye Wash (Cool Water + Rose Hydrosol)
+aliases: []
+category: other
+route: external
+summary: 'Morning eye-care ritual: splash cool running water over open eyes four or five times, blink
+  seven times, roll eyes in circles. Those with burning, itching, or redness may add rose hydrosol drops
+  or spray. Use only true hydrosol — not rose water made with essential oil, which is unsafe for eyes.'
+indications:
+- eye redness or irritation
+- burning or itching eyes
+- morning eye hygiene
+- dry eye support
+- dinacharya daily practice
+contraindications:
+- do not use essential-oil-based rose water in eyes — hydrosol only
+- active eye infection — consult practitioner
+balances_dosha:
+- pitta
+aggravates_dosha: []
+rasa:
+- astringent
+virya: cooling
+vipaka: null
+prabhava: ''
+ayurvedic_actions:
+- cooling
+- soothing
+- tarpana-eye-nourishing
+preparation: Run cool tap water. Splash over open eyes with cupped hands 4–5 times. Blink 7 times and
+  roll eyes in circles. If irritated, drop or spray rose hydrosol (not rose essential oil water) into
+  eyes.
+typical_dose: 1–2 drops or a mist of rose hydrosol per eye
+duration: Daily as part of morning dinacharya
+timing_notes: First thing in the morning after tongue scraping
+linked_to_topics:
+- dry-eye-syndrome
+- self-care
+linked_to_mechanisms: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Appendix 1: Dinacharya How-To — Wash the Eyes'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

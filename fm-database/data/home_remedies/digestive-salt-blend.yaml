@@ -1,0 +1,53 @@
+slug: digestive-salt-blend
+display_name: Digestive Salt Blend (Lemon Zest, Salt, Ginger)
+aliases: []
+category: spice_blend
+route: internal
+summary: A dry condiment of baked lemon zest, sea or pink salt, and ginger powder (optionally with ground
+  fennel). Taken in small amounts before or with meals to kindle digestive fire by encouraging the correct
+  fire-to-water ratio in the stomach. Analogous to the traditional Indian pre-meal ginger-salt-lime bite.
+indications:
+- sluggish appetite or low digestive fire before meals
+- heavy sensation after eating
+- bloating and flatulence
+- travel or irregular meal schedules disrupting agni
+contraindications:
+- use sparingly in high pitta conditions — salty and sour tastes can aggravate
+- avoid in hypertension requiring strict sodium restriction
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha:
+- pitta
+rasa:
+- salty
+- sour
+- pungent
+virya: null
+vipaka: null
+prabhava: ''
+ayurvedic_actions:
+- agni-kindling
+- digestive-stimulant
+- appetising
+preparation: Zest 3 lemons, spread on a baking sheet, bake at 200°F / 95°C for 20-30 min until fully dry.
+  Mix 2 tbsp dried lemon zest + 2 tbsp sea or pink salt + 1 tbsp ground ginger + 1 tsp ground fennel (optional).
+  Store in a glass shaker jar. Use 1/4-1/2 tsp on food.
+typical_dose: 1/4-1/2 tsp sprinkled on food or stirred into warm water before or with meals
+duration: Daily use as a digestive condiment
+timing_notes: Use at the start of meals or sprinkle over food. Can also dissolve 1/4 tsp in 1 cup warm
+  water and sip before eating.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- low-stomach-acid
+- hcl-and-pepsin-protein-digestion
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Digestive Salts recipe'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

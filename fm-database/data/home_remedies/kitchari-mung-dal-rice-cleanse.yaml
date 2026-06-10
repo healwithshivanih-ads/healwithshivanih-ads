@@ -1,0 +1,61 @@
+slug: kitchari-mung-dal-rice-cleanse
+display_name: Kitchari (Split Mung Dal and Rice Cleanse)
+aliases: []
+category: kitchen_remedy
+route: internal
+summary: The classic Ayurvedic mono-meal of split yellow mung dal and white basmati rice cooked with digestive
+  spices and ghee into a soft, porridge-like one-pot dish. Considered tridoshic (balancing to all three
+  doshas), easy to digest, simultaneously cleansing and nourishing. Used for digestive reset, mono-diet
+  cleanse, post-illness recovery, and as a regular light dinner.
+indications:
+- digestive reset after illness, travel, or dietary excess
+- mono-diet cleansing programmes (1-7 days)
+- weak or sluggish agni
+- recovery from fever, acute illness, or surgery
+- gut dysbiosis or food sensitivity investigation (elimination baseline)
+contraindications:
+- whole green mung version is heavier and less suitable for very weak digestion
+- adjust spicing to dosha — kapha types add more ginger and black pepper; pitta types use less cumin and
+  no mustard seed
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- astringent
+virya: null
+vipaka: sweet
+prabhava: ''
+ayurvedic_actions:
+- tridoshic
+- easy-to-digest
+- cleansing
+- nourishing
+- agni-kindling
+preparation: 1 part split yellow mung dal, 1-2 parts white basmati rice (rinsed and soaked 20 min). Bloom
+  1 tsp cumin seed, 1 tsp coriander powder, 1/2 tsp turmeric, 1/4 tsp ginger powder in 1 tbsp ghee. Add
+  dal and rice, stir to coat. Add 4-6 parts water. Simmer covered 30-40 min until very soft. Salt to taste.
+  Finish with a squeeze of lemon. Adjust water for desired consistency — soupy for cleansing, thicker
+  for a meal.
+typical_dose: 1-2 bowls as a meal
+duration: 1-7 day mono-diet or as a regular light meal 2-3 times per week
+timing_notes: Suitable for any meal. Use as dinner to lighten evening digestion. During a cleanse, eat
+  2-3 times daily.
+linked_to_topics:
+- agni-digestive-fire
+- detoxification
+- digestion-and-nutrient-absorption
+- gut-dysbiosis
+linked_to_mechanisms:
+- gut-lining-support
+- digestive-enzyme-deficiency
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Kichari recipe'
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: digestive-spices-deepana-pachana-daily-cooking
+statement: 'Digestive spices such as ginger, black pepper, cumin, coriander, fennel, turmeric, and cinnamon
+  serve two specific Ayurvedic functions: deepana (appetite-kindling, pre-meal) and pachana (ama-clearing,
+  post-meal). They are not merely flavouring agents but are considered essential kindling for the digestive
+  fire. Daily incorporation of digestive spices into cooking is a foundational Ayurvedic dietary practice.'
+evidence_tier: plausible_emerging
+rationale: Many of these spices have documented effects on gastric acid secretion, bile flow, intestinal
+  motility, carminative action (reducing gas), and anti-inflammatory pathways. Curcumin, gingerols, piperine,
+  and thymol have been studied for digestive effects.
+coaching_translation: Digestive spices are medicine, not just flavour. Use ginger, cumin, coriander, fennel,
+  turmeric, and black pepper generously in your cooking every day. Think of them as the kindling that
+  gets your digestive fire going. They reduce gas and bloating, stimulate bile and enzymes, and keep the
+  gut clean.
+out_of_scope_notes: ''
+caveats:
+- Use with care in excess pitta clients (very high spice intake can aggravate acid reflux and skin inflammation).
+- Specific clinical doses differ from culinary doses.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+- low-stomach-acid
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Kindling Digestive Fire — Deepana and Pachana'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,32 @@
+slug: overeating-smothers-agni-skip-meal-to-reset
+statement: Overeating is one of the primary causes of low digestive fire (agni) in Ayurveda. When the
+  stomach is overfilled, the fire is smothered rather than fuelled. A single-meal fast (skipping the next
+  meal when genuinely not hungry) allows the agni to rebuild. Loss of appetite is a reliable sign that
+  the digestive fire is low and the body needs a digestive rest.
+evidence_tier: plausible_emerging
+rationale: Gastric distension from overeating dilutes gastric acid concentration and mechanically suppresses
+  peristalsis. The MMC (migrating motor complex) cannot activate until the stomach empties. Loss of appetite
+  is a physiological signal of ongoing digestion or impaired acid/enzyme secretion.
+coaching_translation: If you are not hungry at mealtime, do not eat. Your body is telling you the previous
+  meal is still being processed. Skipping one meal to allow the digestive fire to rebuild is a legitimate
+  and recommended practice in Ayurveda. This is different from starvation — it is listening to your body.
+out_of_scope_notes: ''
+caveats:
+- Not appropriate for clients with eating disorders, hypoglycaemia, or very low body weight without supervision.
+- Regular meal-skipping on an empty stomach (i.e., skipping breakfast out of habit rather than lack of
+  hunger) is different and not recommended.
+linked_to_topics:
+- agni-digestive-fire
+- meal-timing-and-digestive-rest
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- migrating-motor-complex
+- digestive-enzyme-deficiency
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 1: Ayurveda Basics — Agni; Chapter 2: Traditional Tips for Improving Digestion'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

@@ -1,0 +1,39 @@
+slug: lemon-pepper-warm-water-deepana
+display_name: Lemon-Pepper Pre-Meal Digestive Water (Deepana Drink)
+aliases: []
+category: food_prep
+summary: 'A simple Ayurvedic deepana (appetite-kindling) preparation: warm water with fresh lemon juice
+  and black pepper taken 20–30 minutes before a meal to stimulate gastric acid secretion and prepare the
+  digestive system.'
+benefits:
+- Stimulates gastric acid and enzyme production before eating
+- Kindles sluggish agni and restores appetite
+- Piperine in black pepper enhances bioavailability of subsequent meal nutrients
+- Supports digestive readiness without supplements
+swap_from:
+- drinking cold water with meals
+- eating immediately without digestive preparation
+- coffee as a pre-meal stimulant
+how_to_use: Squeeze the juice of 1/4 to 1/2 lemon into a cup of warm water. Add a hearty pinch of freshly
+  ground black pepper. Drink 20–30 minutes before a meal. Use when appetite is weak, there is a heavy
+  feeling in the stomach on waking, or digestion has been sluggish.
+cautions:
+- Avoid in acute acid reflux, GERD, or gastric ulcer without guidance
+- Use fresh lemon juice only — bottled concentrate lacks the same digestive properties
+- Not suitable as a daily long-term practice for very pitta-dominant clients
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+- dyspepsia
+linked_to_mechanisms:
+- low-stomach-acid
+- digestive-enzyme-deficiency
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Kindling Digestive Fire — Deepana (Spicy Beverage)'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

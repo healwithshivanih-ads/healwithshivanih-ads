@@ -1,0 +1,31 @@
+slug: three-causes-imbalance-ayurveda-trividha-karana
+statement: 'Ayurveda identifies three main causes of disease and imbalance: (1) time/seasonal mismatch
+  (eating out of season, disrupted day-night rhythms), (2) misuse of the sense organs (excessive screen
+  time, overstimulation), and (3) actions against wisdom (prajnaparadha — knowingly making choices that
+  harm the body, such as eating when overfull or staying up late when tired). Addressing these three factors
+  is considered preventive medicine.'
+evidence_tier: fm_specific_thin
+rationale: These three categories map well onto modern concepts of circadian rhythm disruption, nervous-system
+  overload, and behavioural health. Many chronic conditions are precipitated and perpetuated by violations
+  of these three principles.
+coaching_translation: 'Ayurveda says most chronic illness comes from three habits: eating out of season
+  or at the wrong time of day, overstimulating your senses (especially screens), and knowingly doing things
+  that harm you. These are things you can change. Addressing them is where real prevention starts.'
+out_of_scope_notes: ''
+caveats:
+- This is a classical Ayurvedic categorisation of root causes; it overlaps with but does not replace biomedical
+  investigation.
+linked_to_topics:
+- ayurvedic-elemental-design-doshas
+- chronic-stress
+- mindful-eating
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 1: Ayurveda Basics — How Do We Get Out of Whack? (Trividha Karana)'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

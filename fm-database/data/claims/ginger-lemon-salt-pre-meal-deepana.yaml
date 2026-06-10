@@ -1,0 +1,31 @@
+slug: ginger-lemon-salt-pre-meal-deepana
+statement: Chewing a small slice of fresh ginger with a squeeze of lemon juice and a pinch of salt 20–30
+  minutes before a meal (the 'ginger blaster') is a classic Ayurvedic practice to stimulate a sluggish
+  appetite and prepare digestive enzymes for the upcoming meal. This is a deepana (appetite-kindling)
+  practice from classical Ayurveda.
+evidence_tier: plausible_emerging
+rationale: Ginger contains gingerols and shogaols that stimulate gastric acid secretion, accelerate gastric
+  emptying, and have prokinetic effects. Sour taste (lemon) and salt further prime cephalic-phase digestion.
+coaching_translation: If you often feel sluggish or have no appetite before meals, try chewing a thin
+  slice of raw ginger with a squeeze of lemon and a pinch of salt 20 minutes before eating. It genuinely
+  wakes up your digestive system and helps you feel hungry.
+out_of_scope_notes: ''
+caveats:
+- Not recommended before meals for clients with acid reflux or gastric ulcer without supervision.
+- Use fresh ginger, not dried — the mechanisms differ.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- maldigestion
+- dyspepsia
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+- low-stomach-acid
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: Kindling Digestive Fire — Deepana (Ginger Blaster)'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

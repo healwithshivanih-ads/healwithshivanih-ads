@@ -1,0 +1,32 @@
+slug: quick-soak-legumes-boil-and-rest
+display_name: Quick Soak Method for Legumes (Boil + Rest)
+aliases: []
+category: food_prep
+summary: When overnight soaking of grains or legumes is not possible, the quick soak method — bringing
+  to a rolling boil for 5 minutes, covering, and letting sit for 1 hour — produces the same reduction
+  in cooking time and antinutrient content as an overnight soak.
+benefits:
+- reduces cooking time by up to half
+- partially breaks down phytates and lectins
+- reduces gas-forming oligosaccharides
+- convenient alternative when meal planning falls short
+swap_from:
+- cooking legumes from dry without soaking (long cooking time, harder to digest)
+how_to_use: Rinse the legume well. Cover with water (2:1 ratio) in a pot. Bring to a rolling boil, cook
+  5 minutes, remove from heat, cover tightly, and let stand for 1 hour. Drain the soak water, add fresh
+  water for cooking, and proceed with the recipe.
+cautions:
+- discard the soak water — it contains released antinutrients and gas-forming compounds
+- cooking time may still vary based on age of the beans
+linked_to_topics:
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- phytate-mineral-binding
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Appendix 3: Tools and Techniques — Quick Soak'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

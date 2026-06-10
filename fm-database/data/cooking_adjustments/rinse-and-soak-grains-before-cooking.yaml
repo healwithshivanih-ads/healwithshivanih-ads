@@ -1,0 +1,34 @@
+slug: rinse-and-soak-grains-before-cooking
+display_name: Rinse and Soak Grains Before Cooking
+aliases: []
+category: food_prep
+summary: Rinse white basmati rice or other grains under cool running water until water runs clear, then
+  soak for 20-30 minutes before cooking. Removes excess surface starch and softens the grain for lighter,
+  more easily digested results.
+benefits:
+- removes excess starch that makes grains heavy and sticky
+- reduces cooking time and improves texture
+- pre-soaking begins enzymatic breakdown — easier to digest
+- removes surface dust and residual milling compounds
+swap_from:
+- cooking rice directly from the bag without rinsing
+- cooking grains without soaking
+how_to_use: 'Place grain in a bowl, cover with water, swirl and drain. Repeat 3-4 times until water is
+  clear. Soak in fresh water 20-30 min. Drain and cook with fresh water. Ratio for basmati: 1 cup rice
+  to 1.5 cups water.'
+cautions:
+- discard soaking water — it contains removed starch and surface compounds
+- do not over-soak brown rice or quinoa (more than 8 hours can promote fermentation)
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+linked_to_mechanisms:
+- digestive-enzyme-deficiency
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 4: Everyday Basmati Rice recipe'
+evidence_tier: plausible_emerging
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani

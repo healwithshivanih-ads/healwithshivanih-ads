@@ -1,0 +1,28 @@
+id: odonnell-everyday-ayurveda-cookbook-2015
+title: "The Everyday Ayurveda Cookbook: A Seasonal Guide to Eating and Living Well"
+source_type: book
+quality: moderate
+authors:
+  - Kate O'Donnell
+publisher: Shambhala Publications
+year: 2015
+url: https://www.everydayayurveda.org
+notes: >-
+  Kate O'Donnell is a nationally certified Ayurvedic practitioner and Ashtanga
+  yoga teacher (faculty, Kripalu School of Ayurveda). This practical seasonal
+  cookbook frames food as medicine around agni (digestive fire), the six tastes,
+  dosha-balancing, and seasonal eating. Part One covers Ayurvedic eating
+  principles + in-the-kitchen technique; Part Two gives foundational "everyday"
+  recipes + spring/summer/fall/winter recipes; appendices cover dinacharya (daily
+  routine), seasonal cleansing, tools & techniques, and dosha cooking tables.
+  Used here to extract the catalogue-fitting kitchen wisdom: Ayurvedic cooking
+  techniques/swaps -> CookingAdjustment, staple medicinal preparations (kitchari,
+  spice churnas, ghee, CCF tea, digestive lassi) -> HomeRemedy (dosha + energetics
+  tagged), and Ayurvedic eating principles -> Claim. Full multi-ingredient meal
+  recipes are NOT ingested (no Recipe entity in the catalogue). Evidence tier kept
+  conservative (plausible_emerging / fm_specific_thin) — traditional Ayurvedic
+  food wisdom with mechanistic plausibility.
+version: 1
+status: active
+updated_at: 2026-06-09
+updated_by: Shivani

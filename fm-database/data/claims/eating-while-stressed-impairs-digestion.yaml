@@ -1,0 +1,32 @@
+slug: eating-while-stressed-impairs-digestion
+statement: Eating while anxious, stressed, angry, or distracted impairs digestion by shifting the nervous
+  system into a sympathetic (fight-or-flight) state, which suppresses digestive enzyme secretion, reduces
+  gastric acid production, and diverts blood flow away from the gut. Ayurveda explicitly identifies the
+  mind-state at eating as a determinant of how well food is received.
+evidence_tier: plausible_emerging
+rationale: Activation of the sympathetic nervous system directly suppresses gastric acid via the vagus
+  nerve and reduces digestive enzyme output. The gut is essentially an extension of the nervous system
+  (enteric nervous system).
+coaching_translation: If you are stressed or anxious, it is better to skip the meal and eat later when
+  calm than to force food down while your nervous system is in crisis mode. Worry and eating do not mix
+  — worrying about your food can give you indigestion from that very meal.
+out_of_scope_notes: ''
+caveats:
+- Relevant for clients with chronic stress, anxiety, IBS, or hypochlorhydria.
+linked_to_topics:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+- mindful-eating
+- chronic-stress
+linked_to_mechanisms:
+- sympathetic-suppression-of-gastric-acid
+- hpa-axis-dysregulation
+- low-stomach-acid
+linked_to_supplements: []
+sources:
+- id: odonnell-everyday-ayurveda-cookbook-2015
+  location: 'Chapter 2: The Principles of Ayurvedic Eating — Why and How We Eat'
+version: 1
+status: active
+updated_at: '2026-06-09'
+updated_by: Shivani
