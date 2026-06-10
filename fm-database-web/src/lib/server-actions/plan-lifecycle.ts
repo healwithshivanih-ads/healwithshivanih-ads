@@ -468,7 +468,7 @@ export async function renderLabOrders(
 
   const md = [
     `# Lab Order Sheet — ${clientName}`,
-    `*Prepared by Functional Health Coach Shivani Hari · ${date}*`,
+    `*Prepared by Functional Health Coach ${process.env.COACH_NAME || "Shivani Hari"} · ${date}*`,
     "",
     "Please get the following tests done **before your next session**.",
     "You can use whichever diagnostic lab you prefer.",
@@ -520,7 +520,7 @@ export async function renderLabOrders(
 </head>
 <body>
   <h1>Lab Order Sheet — ${clientName}</h1>
-  <p class="subtitle">Prepared by Functional Health Coach Shivani Hari &middot; ${date}</p>
+  <p class="subtitle">Prepared by Functional Health Coach ${process.env.COACH_NAME || "Shivani Hari"} &middot; ${date}</p>
   <p>Please get the following tests done <strong>before your next session</strong>.<br>
   You can use whichever diagnostic lab you prefer.</p>
   <hr>

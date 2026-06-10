@@ -30,7 +30,7 @@ export function FormChrome({
       <div className="fm-chrome__row">
         <div className="fm-chrome__brand">
           <span className="pulse pulse--ringed" aria-hidden="true" />
-          <span>Intake · Shivani</span>
+          <span>Intake · The Ochre Tree</span>
         </div>
         <div
           className={"fm-save" + (saving ? " fm-save--saving" : "")}

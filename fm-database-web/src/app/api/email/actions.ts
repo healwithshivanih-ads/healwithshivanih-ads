@@ -394,7 +394,7 @@ export async function sendClientEmailAction(
           }))
         : undefined;
     await transporter.sendMail({
-      from: `Shivani Hari <${user}>`,
+      from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
       to: input.to,
       cc: input.cc,
       subject: input.subject,
@@ -503,7 +503,7 @@ export async function sendClientLettersAction(
       auth: { user, pass },
     });
     await transporter.sendMail({
-      from: `Shivani Hari <${user}>`,
+      from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
       to: input.to,
       cc: input.cc || undefined,
       bcc: input.bcc || undefined,
@@ -541,7 +541,7 @@ export interface SendPhaseLetterInput {
   endWeek: number;
   /** Defaults to the client's email on file. Coach can override if needed. */
   toEmail?: string;
-  /** Defaults to "Your week N-M menu — Shivani Hari". */
+  /** Defaults to "Your week N-M menu — The Ochre Tree". */
   subject?: string;
   /** Defaults to "Hi <first>, here's your menu for weeks N-M…". */
   intro?: string;
@@ -585,6 +585,7 @@ export async function sendPhaseLetterAction(
   // 2. Resolve recipient: prefer explicit toEmail, else client.email.
   let toEmail = input.toEmail?.trim();
   let firstName = "";
+  let coachName = process.env.COACH_NAME || "Shivani";
   if (!toEmail) {
     try {
       const clientYaml = path.join(
@@ -598,6 +599,7 @@ export async function sendPhaseLetterAction(
       toEmail = (data.email as string | undefined)?.trim();
       const displayName = (data.display_name as string | undefined) ?? "";
       firstName = displayName.split(" ")[0] ?? "";
+      coachName = (data.assigned_coach as string | undefined) || process.env.COACH_NAME || "Shivani";
     } catch {
       /* fall through to error below */
     }
@@ -616,10 +618,10 @@ export async function sendPhaseLetterAction(
       ? `Week ${input.startWeek}`
       : `Weeks ${input.startWeek}–${input.endWeek}`;
   const subject =
-    input.subject?.trim() || `Your ${range.toLowerCase()} menu — Shivani Hari`;
+    input.subject?.trim() || `Your ${range.toLowerCase()} menu — The Ochre Tree`;
   const intro =
     input.intro?.trim() ||
-    `Hi${firstName ? ` ${firstName}` : ""},\n\nHere's your menu for ${range.toLowerCase()} of the protocol. Reply if you'd like any swaps — these are flexible.\n\nWarmly,\nShivani`;
+    `Hi${firstName ? ` ${firstName}` : ""},\n\nHere's your menu for ${range.toLowerCase()} of the protocol. Reply if you'd like any swaps — these are flexible.\n\nWarmly,\n${coachName}`;
 
   // 4. Use the same sendClientLettersAction the SendPackageButton flow
   //    uses — single source of truth for "what does an email look like".
@@ -740,7 +742,7 @@ export async function sendEducationPackAction(
       sparks a question.
     </p>
     <p style="font-size:0.95rem;line-height:1.7;color:#444;margin-top:16px;">
-      With care,<br/>Shivani
+      With care,<br/>${process.env.COACH_NAME || "Shivani"}
     </p>
   </div>
   <hr style="border:none;border-top:2px solid #2B2D42;margin-bottom:32px;"/>
@@ -769,7 +771,7 @@ export async function sendEducationPackAction(
       auth: { user, pass },
     });
     await transporter.sendMail({
-      from: `Shivani Hari <${user}>`,
+      from: `${process.env.COACH_NAME || "Shivani Hari"} <${user}>`,
       to: input.clientEmail,
       subject,
       html: htmlBody,

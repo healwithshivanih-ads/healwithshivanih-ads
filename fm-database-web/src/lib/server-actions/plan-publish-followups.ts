@@ -200,7 +200,7 @@ export async function firePlanPublishFollowups(input: {
         await recordOutboundMessageAction({
           clientId: input.clientId,
           templateName: "fm_plan_letter_link_v1",
-          renderedBody: `Hi ${fname}, your plan is ready: ${letterUrl}\n\n— Shivani`,
+          renderedBody: `Hi ${fname}, your plan is ready: ${letterUrl}\n\n— ${process.env.COACH_NAME || "Shivani"}`,
         });
       } catch { /* best-effort */ }
     } else {

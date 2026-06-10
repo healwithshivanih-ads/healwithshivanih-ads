@@ -481,7 +481,7 @@ export async function createBookingAction(
           `Hi ${firstName} ✅ Your ${opt.label || "coaching"} session is ` +
           `confirmed for ${dateStr} at ${timeStr}. ` +
           `Cal.com will send the calendar invite + Zoom link separately. ` +
-          `Message me here if anything comes up.\n\n— Shivani`;
+          `Message me here if anything comes up.\n\n— ${process.env.COACH_NAME || "Shivani"}`;
         const waRes = await sendAndRecordOutboundAction({
           phone: input.clientPhone,
           clientId: input.clientId,

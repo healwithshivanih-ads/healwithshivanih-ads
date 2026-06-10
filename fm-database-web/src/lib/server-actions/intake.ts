@@ -75,6 +75,7 @@ export type IntakeLookupOk = {
   ok: true;
   client_id: string;
   display_name: string;
+  coach_name: string;
   intake_form_draft: Record<string, unknown>;
   prefill: Record<string, unknown>;
   /**
@@ -446,7 +447,7 @@ export async function sendIntakeInviteViaApi(
       renderedBody:
         `Hi ${firstName}, here's your intake form to fill in before we work ` +
         `together — it saves as you go, so you can stop and resume any time:\n\n` +
-        `${url}\n\n— Shivani Hari / Your Functional Health Coach`,
+        `${url}\n\n— ${process.env.COACH_NAME || "Shivani Hari"} / Your Functional Health Coach`,
     });
   } catch (e) {
     // Non-fatal for the SEND — the WhatsApp message already went out. But
@@ -513,7 +514,7 @@ export async function reissueTierOneIntakeAction(
     `Hi ${firstName}, quick one — I need a couple more answers on your intake ` +
     `form: a short section on joints, standing and energy. Everything you ` +
     `filled in before is saved, so this should only take about 2 minutes:\n\n` +
-    `${url}\n\n— Shivani Hari / Your Functional Health Coach`;
+    `${url}\n\n— ${process.env.COACH_NAME || "Shivani Hari"} / Your Functional Health Coach`;
 
   // Send order (coach decision 2026-05-20):
   //   1. fm_intake_topup_v1 — the dedicated UTILITY template with the
@@ -638,7 +639,7 @@ export async function sendIntakeUnlockedViaApi(
         `time, no rush.\n\n— Shivani Hari\nYour Functional Health Coach`
       : `Hi ${firstName}, here's your intake form to fill in before we work ` +
         `together — it saves as you go, so you can stop and resume any time:\n\n` +
-        `${url}\n\n— Shivani Hari / Your Functional Health Coach`;
+        `${url}\n\n— ${process.env.COACH_NAME || "Shivani Hari"} / Your Functional Health Coach`;
     await recordOutboundMessageAction({ clientId, templateName, renderedBody });
   } catch {
     /* non-fatal — the WhatsApp message already went out */

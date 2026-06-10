@@ -22,6 +22,7 @@ interface Props {
   token: string;
   planSlug: string;
   displayName: string;
+  coachName?: string;
   defaultStart: string | null;            // YYYY-MM-DD or null
   currentMealPlanStartedOn: string | null;
   planPeriodStart: string | null;
@@ -46,6 +47,7 @@ function formatHuman(ymd: string | null): string {
 export function StartConfirmForm({
   token,
   displayName,
+  coachName = "Shivani",
   defaultStart,
   currentMealPlanStartedOn,
 }: Props) {
@@ -93,7 +95,7 @@ export function StartConfirmForm({
           Your plan starts on <strong>{formatHuman(confirmedDate)}</strong>.
         </p>
         <p className="mt-4 text-sm leading-relaxed text-stone-600">
-          Talk soon — Shivani x
+          Talk soon — {coachName} x
         </p>
       </div>
     );

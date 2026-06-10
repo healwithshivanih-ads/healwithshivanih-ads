@@ -584,6 +584,7 @@ def action_lookup(payload: dict) -> dict:
         "ok": True,
         "client_id": client_id,
         "display_name": data.get("display_name") or "",
+        "coach_name": data.get("assigned_coach") or "Shivani",
         "intake_form_draft": data.get("intake_form_draft") or {},
         "prefill": prefill,
         "stage": stage,

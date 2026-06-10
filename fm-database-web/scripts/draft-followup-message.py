@@ -129,7 +129,7 @@ def _build_context(client: dict, session: dict, session_type: str) -> str:
     return "\n".join(parts)
 
 
-def _draft_message(context: str, session_type: str, client_name: str, client_id: str = "") -> str:
+def _draft_message(context: str, session_type: str, client_name: str, client_id: str = "", coach_name: str = "Shivani") -> str:
     """Call Claude Haiku to draft the WhatsApp message."""
     _load_env()
 
@@ -141,10 +141,10 @@ def _draft_message(context: str, session_type: str, client_name: str, client_id:
     type_label = session_type.replace("_", " ")
 
     system = (
-        "You are Shivani Hari, a functional medicine health coach. "
+        f"You are {coach_name}, a functional medicine health coach. "
         "Draft a warm, personal WhatsApp follow-up message to send after a coaching session. "
         "Guidelines:\n"
-        "- Write as Shivani, first person (I/we)\n"
+        f"- Write as {coach_name}, first person (I/we)\n"
         "- Warm and encouraging, not clinical\n"
         "- 3-5 sentences max — short enough for WhatsApp\n"
         "- Acknowledge what was discussed today\n"
@@ -222,10 +222,11 @@ def main() -> int:
         return 2
 
     client_name = client.get("display_name") or client.get("client_id") or "there"
+    coach_name = client.get("assigned_coach") or "Shivani"
 
     try:
         context = _build_context(client, session, session_type)
-        message = _draft_message(context, session_type, client_name, client_id=client_id)
+        message = _draft_message(context, session_type, client_name, client_id=client_id, coach_name=coach_name)
         json.dump({"ok": True, "message": message, "error": None}, sys.stdout)
         return 0
     except Exception as e:

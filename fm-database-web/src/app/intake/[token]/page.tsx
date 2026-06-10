@@ -36,13 +36,13 @@ export default async function IntakeTokenPage({
     // (their answers are in; no action needed).
     const showWaCta = res.error !== "already_submitted";
     const waMsg = encodeURIComponent(
-      "Hi Shivani, my intake link has expired or isn't working — could you send me a fresh one?"
+      "Hi, my intake link has expired or isn't working — could you send me a fresh one?"
     );
     return (
       <div className="fm-thanks">
         <div className="fm-thanks__eyebrow">
           <span className="pulse" aria-hidden="true" />
-          <span>Shivani Hari</span>
+          <span>The Ochre Tree</span>
         </div>
         <h1 className="fm-thanks__title">{title}</h1>
         <p className="fm-thanks__body">{body}</p>
@@ -66,7 +66,7 @@ export default async function IntakeTokenPage({
               fontFamily: "system-ui, sans-serif",
             }}
           >
-            💬 WhatsApp Shivani for a fresh link
+            💬 WhatsApp your coach for a fresh link
           </a>
         )}
       </div>
@@ -86,6 +86,7 @@ export default async function IntakeTokenPage({
         token={token}
         clientId={res.client_id}
         displayName={res.display_name}
+        coachName={res.coach_name}
         prefill={res.prefill}
         draft={res.intake_form_draft}
       />
@@ -97,6 +98,7 @@ export default async function IntakeTokenPage({
       token={token}
       clientId={res.client_id}
       displayName={res.display_name}
+      coachName={res.coach_name}
       prefill={res.prefill}
       draft={res.intake_form_draft}
       previouslySubmitted={res.previously_submitted}

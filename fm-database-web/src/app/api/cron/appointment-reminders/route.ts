@@ -207,7 +207,7 @@ export async function POST(req: NextRequest) {
         `Hi ${firstName} ✅ Just a reminder — your ${sessionType} session ` +
         `is today at ${timeStr}. Looking forward to it!` +
         joinLine +
-        `\n\n— Shivani`;
+        `\n\n— ${process.env.COACH_NAME || "Shivani"}`;
 
       const r = await sendAndRecordOutboundAction({
         phone: mobile,

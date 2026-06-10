@@ -2041,6 +2041,7 @@ export function IntakeForm({
   token,
   clientId,
   displayName,
+  coachName = "Shivani",
   prefill,
   draft,
   previouslySubmitted = false,
@@ -2049,6 +2050,7 @@ export function IntakeForm({
   token: string;
   clientId: string;
   displayName: string;
+  coachName?: string;
   prefill: Record<string, unknown>;
   draft: Record<string, unknown>;
   /**
@@ -2633,12 +2635,12 @@ export function IntakeForm({
         <hr className="fm-divider-thin" />
         <p className="fm-thanks__body" style={{ fontSize: 14, color: "var(--fg-2)" }}>
           If anything important comes up before then — a new symptom, a medication change, a thought you
-          forgot to add — you can message Shivani directly, or come back and edit your intake any time
+          forgot to add — you can message your coach directly, or come back and edit your intake any time
           using the same link.
         </p>
         <div style={{ marginTop: "auto", paddingTop: 32 }}>
           <span className="fm-submit__sub">
-            <em>Shivani Hari</em> · Functional medicine &amp; subconscious specialist
+            <em>{coachName}</em> · Functional medicine &amp; subconscious specialist
           </span>
         </div>
       </div>
@@ -3061,7 +3063,7 @@ export function IntakeForm({
         </FG>
 
         <p className="fm-foot">
-          Private. Used only by Shivani to design your plan.
+          Private. Used only by your coach to design your plan.
         </p>
       </FormSection>
 
@@ -3260,7 +3262,7 @@ export function IntakeForm({
           <span className="fm-fg__hint">
             Take a clear photo of <strong>each</strong> strip or prescription — add as many as you
             need (you can pick several from your gallery at once, or snap them one by one). Make
-            sure the medicine name and strength are readable. PDFs are fine too. Shivani will read
+            sure the medicine name and strength are readable. PDFs are fine too. Your coach will read
             the names — no typing needed. Optional; you can also list them below.
           </span>
           <input
@@ -4599,7 +4601,7 @@ export function IntakeForm({
               that tie into gut and hormone health. */}
           <h3 className="fm-section__sub" style={{ marginTop: 16 }}>Intimate &amp; urinary health</h3>
           <p className="fm-microcopy" style={{ marginBottom: 14 }}>
-            Optional and private — only Shivani sees this. These help us spot
+            Optional and private — only your coach sees this. These help us spot
             yeast or microbiome imbalances that tie into gut and hormone health.
             Skip anything you&apos;d rather talk through in person.
           </p>
@@ -4682,7 +4684,7 @@ export function IntakeForm({
         title="Anything else"
         sub="Anything that didn't fit anywhere above."
       >
-        <FG label="Notes for Shivani" optional="optional">
+        <FG label={`Notes for ${coachName}`} optional="optional">
           <TextArea
             rows={4}
             value={state.notes}
