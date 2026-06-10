@@ -1189,7 +1189,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       dose: shortDose(dose || row?.dose || ""),
       slot: slotFor(timing, dose),
       timing: shortTiming(timing),
-      why: row?.why || firstSentence(asStr(p.coach_rationale)).replace(/^CRITICAL GAP[^:]*:\s*/i, "").replace(/^CONTINUE[^.]*\.\s*/i, ""),
+      why: row?.why || firstSentence(asStr(p.coach_rationale).replace(/^\[[^\]]*\]\s*/g, "")).replace(/^CRITICAL GAP[^:]*:\s*/i, "").replace(/^CONTINUE[^.]*\.\s*/i, ""),
       buyUrl,
       buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
     });
