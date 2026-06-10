@@ -1,0 +1,40 @@
+slug: selenium-200mcg-tpo-antibodies-graves-hyperthyroid
+statement: "Selenium 200 μg daily for 3 months reduces anti-TPO antibody titers in\
+  \ autoimmune hyperthyroidism (Graves' disease): a prospective blinded study of n=36\
+  \ showed TPOAb positivity fell from 100% to 63% of participants, with 9 of 36 achieving\
+  \ complete antibody normalization."
+evidence_tier: plausible_emerging
+rationale: "Romm cites a prospective blinded study demonstrating selenium's role in\
+  \ autoimmune thyroid modulation in the hyperthyroid context. The mechanism — selenium\
+  \ as cofactor for glutathione peroxidase protecting thyroid follicles from oxidative\
+  \ damage — applies in both hyper- and hypothyroid autoimmune settings. This Graves'-specific\
+  \ data is distinct from the Hashimoto's evidence base. Dosing is conservative (200 μg)\
+  \ and well within safety limits."
+coaching_translation: "Selenium 200 μg daily can help quieten the antibody attack\
+  \ that drives Graves' — not a standalone treatment, but a useful adjunct to the\
+  \ botanical formula. In one study, a quarter of participants completely normalised\
+  \ their antibodies in just 3 months. Note: this is the same 200 μg dose used in\
+  \ Hashimoto's, just in the hyperthyroid direction — selenium modulates thyroid autoimmunity\
+  \ broadly. Add selenium-rich foods (Brazil nuts: 2/day) alongside."
+caveats:
+  - Long-term doses above 400 μg/day risk selenosis (toxicity)
+  - Selenium without adequate iodine can complicate thyroid function — assess together
+  - This data is from Graves' patients; extrapolation to Hashimoto's requires the separate evidence base
+  - Combines with botanical formula (bugleweed/lemon balm/motherwort) — not a monotherapy
+linked_to_topics:
+  - hyperthyroidism
+linked_to_mechanisms:
+  - tsh-receptor-stimulating-antibodies
+  - thyroid-autoimmunity
+linked_to_supplements:
+  - selenium
+sources:
+  - id: romm-botanical-medicine-womens-health-2010
+    location: "Chapter 6 — Endocrine Disorders, Nutritional Considerations for Hyperthyroidism,\
+      \ p. 196"
+    quote: "Selenium 200 μg × 3 months: n=36 prospective blinded study; TPOAb decreased\
+      \ from 100% to 63%; 9/36 had complete normalization."
+version: 1
+status: active
+updated_at: '2026-06-08'
+updated_by: shivani
