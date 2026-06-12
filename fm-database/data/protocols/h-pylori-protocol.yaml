@@ -1,0 +1,212 @@
+slug: h-pylori-protocol
+display_name: H. pylori Eradication & Gastric Repair Protocol
+aliases:
+- h-pylori-eradication
+- helicobacter-pylori-protocol
+- hpylori-protocol
+- h pylori protocol
+- natural h pylori protocol
+category: gut_healing
+summary: 'A phased 12–16 week functional-medicine protocol for confirmed H. pylori
+
+  infection: an antimicrobial phase to lower bacterial load, a mucosal-repair
+
+  phase to rebuild the damaged gastric lining, microbiome restoration, and
+
+  long-term relapse prevention. Designed to run alongside (not replace)
+
+  clinician-directed testing and — where indicated — conventional triple
+
+  therapy. Natural antimicrobials can be used as the primary approach in
+
+  low-virulence cases or as adjuncts that improve eradication rates and
+
+  reduce antibiotic side-effects.
+
+  '
+indications:
+- confirmed H. pylori infection (urea breath test or stool antigen positive)
+- chronic gastritis / dyspepsia with positive H. pylori testing
+- peptic ulcer disease with H. pylori as the driver
+- recurrent H. pylori after prior triple therapy
+- H. pylori positive client wanting to support / improve conventional eradication
+contraindications:
+- active GI bleeding, haematemesis, melaena — emergency referral, do NOT start here
+- gastric outlet obstruction or perforation signs — emergency workup first
+- alarm features (dysphagia, unintentional weight loss, anaemia, age >55 new-onset
+  dyspepsia) — endoscopy before any protocol
+- pregnancy / lactation — several antimicrobial herbs are not established as safe;
+  clinician-directed only
+typical_duration_weeks: 16
+phases:
+- name: 'Phase 1 — Antimicrobial / load reduction (weeks 1–6)'
+  weeks: 6
+  summary: 'Lower H. pylori colonisation with evidence-supported natural
+
+    antimicrobials. Run alongside conventional triple therapy if the clinician
+
+    has prescribed it (these agents reduce side-effects and improve eradication),
+
+    or as the primary approach in low-virulence cases under clinician oversight.
+
+    '
+  key_actions:
+  - mastic gum 1g daily on an empty stomach — best-evidenced botanical for H. pylori
+  - broccoli-sprout sulforaphane daily — suppresses H. pylori + protects gastric mucosa
+  - bismuth subcitrate as directed — disrupts the bacterial biofilm
+  - S. boulardii alongside any antibiotics — cuts side-effects, supports eradication
+  - oregano oil / berberine / nigella sativa as rotating adjunct antimicrobials
+  - DGL licorice before meals — soothes the mucosa while the load drops
+  - remove coffee, alcohol, refined sugar, processed seed oils, very spicy food
+  - NO betaine HCl in this phase — never acidify an inflamed / ulcerated stomach
+- name: 'Phase 2 — Mucosal repair (weeks 6–12)'
+  weeks: 6
+  summary: 'Rebuild the gastric + duodenal lining damaged by the infection.
+
+    Begins once antimicrobial load reduction is underway; overlaps the tail of
+
+    Phase 1.
+
+    '
+  key_actions:
+  - zinc carnosine 75mg/day for 6–8 weeks — the key gastric-lining repair nutrient
+  - L-glutamine 5g twice daily — substrate for mucosal cell regeneration
+  - DGL licorice continued before meals
+  - aloe vera inner-leaf juice before meals
+  - vitamin C to support mucosal healing (buffered if sensitive)
+  - quercetin for histamine + mucosal-lining support
+  - cooked, soft, low-irritant foods; well-cooked dal / khichdi; cabbage family
+- name: 'Phase 3 — Microbiome restoration & acid normalisation (weeks 10–16)'
+  weeks: 6
+  summary: 'Rebuild beneficial flora and — only once the lining has healed —
+
+    restore stomach acid if hypochlorhydria is confirmed.
+
+    '
+  key_actions:
+  - L. reuteri probiotic — specific anti-H.-pylori activity
+  - multi-strain probiotic + S. boulardii continued
+  - reintroduce fermented foods slowly (kanji, kefir, sauerkraut)
+  - assess for low stomach acid AFTER the lining is healed (H. pylori suppresses
+    acid; many clients are hypochlorhydric post-infection)
+  - betaine HCl + digestive enzymes ONLY if low acid confirmed and no active ulcer
+  - bitters before meals once tolerated
+- name: 'Phase 4 — Rebalance & relapse prevention (week 12 onwards)'
+  weeks: 4
+  summary: 'Lock in the result and prevent re-infection.
+
+    '
+  key_actions:
+  - retest 4+ weeks after finishing antimicrobials — urea breath test or stool
+    antigen (NOT blood IgG, which stays positive after clearance)
+  - screen + treat household members — H. pylori is transmissible within families
+  - daily stress-reduction practice — cortisol weakens gastric mucosal defence
+  - sleep 7–9 hrs; eat slowly, chew thoroughly, no screens at meals
+  - avoid NSAIDs; if unavoidable, always with mucosal protection
+key_steps: []
+foods_to_emphasise:
+- broccoli sprouts (fresh, raw — primary sulforaphane source)
+- cruciferous vegetables (cooked — cabbage, cauliflower, broccoli)
+- green tea (anti-H.-pylori polyphenols)
+- raw honey, especially manuka where available
+- cooked soft foods — khichdi, well-cooked dal, soft rice
+- bone broth / vegetable broth
+- turmeric, ginger (anti-inflammatory, mucosa-soothing)
+foods_to_remove:
+- coffee + caffeine (raises acid, irritates the mucosa)
+- alcohol
+- refined sugar + refined carbohydrates
+- processed seed oils
+- very spicy, fried, and highly processed foods
+- excess salt + salt-preserved foods (gastric-cancer risk co-factor)
+supplements_typically_used:
+- mastic-gum
+- sulforaphane-broccoli-sprouts
+- bismuth-subcitrate
+- saccharomyces-boulardii
+- oregano-oil
+- berberine
+- nigella-sativa
+- dgl-licorice
+- zinc-carnosine
+- l-glutamine
+- aloe-vera
+- vitamin-c
+- quercetin
+- lactobacillus-reuteri
+- probiotics-gut-reinoculation
+- betaine-hcl
+- digestive-enzymes
+expected_outcomes:
+- reduced epigastric pain + burning within 3–5 weeks
+- reduced bloating, nausea, and reflux as the load drops
+- negative retest (urea breath / stool antigen) 4+ weeks after antimicrobials
+- improved appetite + energy as gastric function recovers
+- restored stomach acid + digestion by the end of Phase 3
+cautions:
+- H. pylori diagnosis, virulence assessment, and any antibiotic triple therapy
+  are clinician scope — the coach supports diet, lifestyle, and adjunct supplements.
+- Always confirm the infection with a test before running this protocol — do not
+  treat presumptively.
+- Retesting is non-negotiable — symptoms can settle while the infection persists.
+- Never start betaine HCl during the active / repair phases — acidifying an
+  inflamed or ulcerated stomach can cause serious harm.
+- Re-infection from untreated household members is the most common cause of
+  "treatment failure" — screen the family.
+prerequisites: []
+recommended_followup:
+- 5r-gut-protocol
+- low-fodmap-protocol
+incompatible_with: []
+linked_to_topics:
+- h-pylori-infection
+- peptic-ulcer-disease
+- gerd
+- hypochlorhydria
+- gut-dysbiosis
+linked_to_mechanisms:
+- h-pylori-urease-ammonia-production
+- gastric-mucin-degradation
+- gastric-mucosal-barrier-disruption
+- h-pylori-mucosal-defense-breakdown
+linked_to_symptoms:
+- bloating
+- nausea
+- indigestion
+- abdominal-pain-empty-stomach
+sources:
+- id: vitaone-gut-cheatsheet
+  location: H. Pylori Infection Cheatsheet
+  quote: 'Treat in phases: Antimicrobial → Gut healing → Microbiome restoration.'
+- id: pizzorno-textbook-hpylori
+  location: Helicobacter pylori section, p. 781
+  quote: 'H. pylori: 90% to 100% of patients with DUs, 70% with GUs test positive
+    for H. pylori.'
+evidence_tier: plausible_emerging
+notes_for_coach: 'H. pylori is one of the few gut conditions where the FM protocol
+
+  runs WITH conventional care, not instead of it. If a clinician has prescribed
+
+  triple therapy, this protocol''s Phase 1 supplements (especially S. boulardii)
+
+  improve eradication rates and cut antibiotic side-effects — frame it that way
+
+  to the client. Mastic gum, broccoli-sprout sulforaphane, and S. boulardii are
+
+  the three best-evidenced agents. The single biggest cause of "it came back" is
+
+  an untreated household member — always raise family screening. Confirm with a
+
+  test before starting, and insist on a retest 4+ weeks after antimicrobials
+
+  finish. If the client is still symptomatic after a negative retest, move them
+
+  onto the 5R gut protocol — the infection is gone but the gut still needs
+
+  rebuilding.
+
+  '
+version: 1
+status: active
+updated_at: '2026-05-21'
+updated_by: shivani
