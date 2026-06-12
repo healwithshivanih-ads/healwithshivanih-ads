@@ -25,6 +25,7 @@ import {
   getClientHealthSignals,
 } from "@/lib/fmdb/loader-extras";
 import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
+import { readAppOpens } from "@/lib/fmdb/app-opens";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
@@ -923,23 +924,43 @@ export default async function DashboardV2() {
   const followUpDueIds = grouped.follow_up_due.map((r) => r.client_id);
   const recheckDueIds = grouped.protocol_complete.map((r) => r.client_id);
   // 📲 Client-app links — one row per published plan. The token is the
-  // plan's letter_token (issued lazily in-panel when missing).
-  const appLinkRows = (plans as PlanRow[])
-    .filter((p) => (p._bucket ?? p.status) === "published" && p.client_id && p.slug)
-    .map((p) => {
-      const c = (clients as ClientRow[]).find((x) => x.client_id === p.client_id);
-      return {
-        client_id: p.client_id as string,
-        display_name: c?.display_name ?? (p.client_id as string),
-        mobile_number: c?.mobile_number ?? null,
-        plan_slug: p.slug as string,
-        token:
-          ((p as unknown as { letter_token?: string }).letter_token?.length ?? 0) >= 16
-            ? ((p as unknown as { letter_token?: string }).letter_token as string)
-            : null,
-      };
-    })
-    .sort((a, b) => a.display_name.localeCompare(b.display_name));
+  // plan's letter_token (issued lazily in-panel when missing). Adoption
+  // columns (rollout 2026-06-12): invite-sent from the outbound record's
+  // [template: fm_app_invite_v1] tag, last-opened from _app_opens.yaml
+  // (Fly-logged, cron-mirrored), engaged from app-written sessions.
+  const appLinkRows = (
+    await Promise.all(
+      (plans as PlanRow[])
+        .filter((p) => (p._bucket ?? p.status) === "published" && p.client_id && p.slug)
+        .map(async (p) => {
+          const c = (clients as ClientRow[]).find((x) => x.client_id === p.client_id);
+          const clientId = p.client_id as string;
+          const sess = await loadClientSessions(clientId);
+          const opens = await readAppOpens(clientId);
+          const groceryReady = await fs
+            .access(path.join(getPlansRoot(), "clients", clientId, "meal-plans", `${p.slug}-grocery.yaml`))
+            .then(() => true)
+            .catch(() => false);
+          return {
+            client_id: clientId,
+            display_name: c?.display_name ?? clientId,
+            mobile_number: c?.mobile_number ?? null,
+            plan_slug: p.slug as string,
+            token:
+              ((p as unknown as { letter_token?: string }).letter_token?.length ?? 0) >= 16
+                ? ((p as unknown as { letter_token?: string }).letter_token as string)
+                : null,
+            inviteSentAt: lastTemplateSentAt(sess, "fm_app_invite_v1"),
+            lastOpenedAt: opens.lastOpenedAt,
+            openCount: opens.count,
+            engaged: sess.some((s) =>
+              (s.presenting_complaints ?? "").includes("[source: client_app"),
+            ),
+            groceryReady,
+          };
+        }),
+    )
+  ).sort((a, b) => a.display_name.localeCompare(b.display_name));
   const activeIds = [
     ...grouped.active.map((r) => r.client_id),
     ...grouped.protocol_complete.map((r) => r.client_id),
@@ -1364,7 +1385,7 @@ export default async function DashboardV2() {
           {/* 📲 Client-app links — share the Ochre Tree companion app
               (/app/<letter_token>) per published plan. Copy works even
               without WhatsApp configured, so not gated. */}
-          <ClientAppLinksPanel rows={appLinkRows} />
+          <ClientAppLinksPanel rows={appLinkRows} whatsappConfigured={whatsappConfigured} />
 
 
           {/* 🍽 Fortnight meal-plan drip — next 2-week letter due per active

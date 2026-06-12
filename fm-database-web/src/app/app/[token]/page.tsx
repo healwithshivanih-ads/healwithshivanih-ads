@@ -7,6 +7,7 @@
  */
 
 import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { logAppOpen } from "@/lib/fmdb/app-opens";
 import OchreApp, { OchreAppError } from "./ochre-app";
 
 export const dynamic = "force-dynamic";
@@ -20,5 +21,7 @@ export default async function ClientAppPage({ params }: { params: Promise<{ toke
     console.error("[client-app] failed to assemble app data:", err);
   }
   if (!data) return <OchreAppError />;
+  // adoption signal — Fly-only (coach previews on localhost are excluded)
+  void logAppOpen(data.clientId);
   return <OchreApp data={data} />;
 }

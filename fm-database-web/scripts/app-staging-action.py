@@ -223,6 +223,23 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                         shutil.copy2(f, dest)
                         out["checkins_mirrored"] += 1
 
+        # reverse-mirror: app open timestamps (adoption tracking) — UNION
+        # merge, never overwrite: Fly appends new opens between cron runs
+        # while the authoritative copy holds the full history.
+        s_opens = sdir / "_app_opens.yaml"
+        a_opens = auth / "clients" / client_id / "_app_opens.yaml"
+        if s_opens.exists() and (auth / "clients" / client_id).exists():
+            try:
+                fly_list = (yaml.safe_load(s_opens.read_text()) or {}).get("opens") or []
+                auth_list = []
+                if a_opens.exists():
+                    auth_list = (yaml.safe_load(a_opens.read_text()) or {}).get("opens") or []
+                merged = sorted(set(str(x) for x in auth_list) | set(str(x) for x in fly_list))[-2000:]
+                if merged != auth_list:
+                    a_opens.write_text(yaml.safe_dump({"opens": merged}, sort_keys=False))
+            except Exception as e:
+                out["errors"].append(f"{client_id} opens-merge: {e}")
+
         # plan revoked / superseded → purge the app artifacts from Fly
         if plan_slug and not _published_files(auth, plan_slug):
             for p in (stag / "published").glob(f"{plan_slug}-v*.yaml"):
