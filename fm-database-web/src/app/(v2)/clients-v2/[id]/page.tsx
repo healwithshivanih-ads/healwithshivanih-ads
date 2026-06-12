@@ -31,7 +31,6 @@ import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
 import { SendIntakeFormButton } from "./send-intake-form-button";
-import { SendAppLinkButton } from "./send-app-link-button";
 import { OverviewSendLabsCard } from "./overview-send-labs-card";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
 import { IntakeInsightsCard } from "./intake-insights-card";
@@ -96,6 +95,7 @@ import { HandoutDripPanel } from "./handout-drip-panel";
 import { loadClientApiSpend } from "@/lib/server-actions/usage";
 import { IfmBaselineCard, type IfmBaseline } from "./ifm-baseline-card";
 import { CycleTrackingPanel } from "./cycle-tracking-panel";
+import { StageGate } from "./stage-gate";
 
 export const dynamic = "force-dynamic";
 
@@ -1357,7 +1357,36 @@ export default async function ClientV2Page({
             )
           )}
 
-          {/* 📋 Intake — progress / insights / send & unlock / coach exam */}
+          {/* 📲 App tools (preview/edit, grocery, share) moved to the PLAN
+              tab — the "Plan & App studio" (Option A, 2026-06-12). The
+              Overview stays state-and-signals only; one quiet pointer: */}
+          {publishedPlan?.slug && (
+            <a
+              href={`/clients-v2/${client.client_id ?? id}/plan`}
+              style={{
+                display: "block",
+                padding: "10px 14px",
+                borderRadius: "var(--fm-radius-md, 10px)",
+                border: "1px solid var(--fm-border, rgba(120,113,108,0.3))",
+                background: "var(--fm-surface, #fff)",
+                fontSize: 12.5,
+                fontWeight: 600,
+                textDecoration: "none",
+                color: "var(--fm-text-primary)",
+              }}
+            >
+              📲 Client app — preview, edit meals &amp; remedies, share → Plan tab
+            </a>
+          )}
+
+          {/* 📋 Intake — progress / insights / send & unlock / coach exam.
+              Demoted to a quiet pill once a plan is published (intake is
+              done by then); one click re-opens, nothing removed. */}
+          <StageGate
+            demoted={!!publishedPlan}
+            label="📋 Intake tools — from before this client's plan"
+            storageKey={`fm.stagegate.intake.${client.client_id ?? id}`}
+          >
           <FmGroupedPanel
             id="overview.intake"
             icon="📋"
@@ -1507,21 +1536,6 @@ export default async function ClientV2Page({
                                 }
                                 lastUnlockNotifyAt={lastUnlockNotifyAt}
                               />
-                              {publishedPlan?.slug && (
-                                <SendAppLinkButton
-                                  planSlug={publishedPlan.slug}
-                                  mobileNumber={
-                                    (client as unknown as { mobile_number?: string }).mobile_number
-                                  }
-                                  displayName={
-                                    (client as unknown as { display_name?: string }).display_name
-                                  }
-                                  existingToken={
-                                    (publishedPlan as unknown as { letter_token?: string })
-                                      .letter_token ?? null
-                                  }
-                                />
-                              )}
                   </div>
                 ),
               },
@@ -1641,6 +1655,7 @@ export default async function ClientV2Page({
               },
             ]}
           />
+          </StageGate>
 
           {/* 🌿 Client state — five pillars / weight loss / memory */}
           <FmGroupedPanel

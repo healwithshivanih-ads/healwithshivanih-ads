@@ -203,11 +203,17 @@ export default async function RecipesPage({
   params: Promise<{ planSlug: string }>;
 }) {
   const { planSlug: routeParam } = await params;
-  // Resolve a stable letter_token → the plan's real slug; fall back to treating
-  // the param AS the slug (legacy links still work). Token-first means a
-  // client's link stays stable even when the letter is regenerated.
+  // TOKEN-ONLY (PHI gate closed 2026-06-11): the param must be a valid
+  // letter_token. Plan slugs are guessable (name-plan-N-date-clientid),
+  // so the old slug fallback exposed client meal plans to URL guessing.
+  // All sent letters were rewrapped to token links the same day.
   const tok = await lookupLetterToken(routeParam);
-  const planSlug = tok.ok ? tok.plan_slug : routeParam;
+  if (!tok.ok) {
+    return emptyPage(
+      "This recipe link isn't active any more. Message Shivani on WhatsApp and she'll send you a fresh one.",
+    );
+  }
+  const planSlug = tok.plan_slug;
   const plan = await loadPublishedPlan(planSlug);
   if (!plan?.client_id) {
     return emptyPage(

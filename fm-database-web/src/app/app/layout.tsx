@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   // icons. iOS reads apple-touch-icon + the appleWebApp meta below.
   manifest: "/ochre-app/manifest.webmanifest",
   icons: {
-    icon: "/ochre-app/icon.svg",
+    icon: "/ochre-app/icon-192.png",
     apple: "/ochre-app/apple-touch-icon.png",
   },
   appleWebApp: {

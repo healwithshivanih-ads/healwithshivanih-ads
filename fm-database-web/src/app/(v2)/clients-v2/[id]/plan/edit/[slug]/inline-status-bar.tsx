@@ -21,12 +21,14 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { submitPlan, publishPlan } from "@/lib/server-actions/plan-lifecycle";
+import { updatePlan } from "@/lib/server-actions/plans";
 
 interface Props {
   planSlug: string;
   status?: string;
   version?: number;
   catalogueSnapshot?: { git_sha?: string; snapshot_date?: string } | null;
+  clientUpdateNote?: string | null;
 }
 
 const STATUS_META: Record<string, { label: string; tone: string; emoji: string }> = {
@@ -42,10 +44,25 @@ export function InlineStatusBar({
   status,
   version,
   catalogueSnapshot,
+  clientUpdateNote,
 }: Props) {
   const router = useRouter();
   const [pending, start] = useTransition();
   const [confirmPublish, setConfirmPublish] = useState(false);
+  const [noteValue, setNoteValue] = useState(clientUpdateNote ?? "");
+  const [noteSaving, setNoteSaving] = useState(false);
+
+  const saveNote = async () => {
+    if (noteValue === (clientUpdateNote ?? "")) return;
+    setNoteSaving(true);
+    try {
+      await updatePlan(planSlug, { client_update_note: noteValue });
+    } catch {
+      /* best-effort */
+    } finally {
+      setNoteSaving(false);
+    }
+  };
 
   const meta = STATUS_META[status ?? "draft"] ?? STATUS_META.draft;
 
@@ -125,6 +142,35 @@ export function InlineStatusBar({
           catalogue {String(catalogueSnapshot.git_sha).slice(0, 7)}
           {catalogueSnapshot.snapshot_date ? ` @ ${catalogueSnapshot.snapshot_date}` : ""}
         </span>
+      )}
+
+      {/* Client update note — shown for in-flight plans so coach can set the banner message */}
+      {(status === "draft" || status === "ready_to_publish") && (
+        <div style={{ width: "100%", marginTop: 8 }}>
+          <label style={{ fontSize: 11, color: "var(--fm-text-tertiary)", display: "block", marginBottom: 4 }}>
+            📣 Plan-updated note (shown to client as a banner when their app detects the plan changed)
+          </label>
+          <textarea
+            value={noteValue}
+            onChange={(e) => setNoteValue(e.target.value)}
+            onBlur={saveNote}
+            placeholder="e.g. Your supplement schedule has been adjusted — check the new timing below."
+            rows={2}
+            style={{
+              width: "100%",
+              fontSize: 12,
+              fontFamily: "inherit",
+              padding: "6px 8px",
+              border: "1px solid var(--fm-border)",
+              borderRadius: "var(--fm-radius-sm)",
+              background: "var(--fm-bg)",
+              color: "var(--fm-text)",
+              resize: "vertical",
+              boxSizing: "border-box",
+              opacity: noteSaving ? 0.6 : 1,
+            }}
+          />
+        </div>
       )}
 
       {/* Action(s) — right-aligned */}

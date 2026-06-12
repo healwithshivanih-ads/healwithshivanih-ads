@@ -331,6 +331,9 @@ export interface PlanFields {
    *  plan is superseded or revoked. */
   letter_token?: string | null;
   letter_token_created_at?: string | null;
+  /** Coach-authored note shown to the client as a "Plan updated" banner in the
+   *  companion app when they open it after a plan supersede. */
+  client_update_note?: string | null;
 }
 
 /**

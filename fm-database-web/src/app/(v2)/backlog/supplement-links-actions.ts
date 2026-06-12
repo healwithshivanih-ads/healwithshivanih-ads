@@ -30,19 +30,21 @@ export interface ProductLink {
   source: "amazon" | "iherb" | "other";
   category: ProductCategory;
   notes?: string;
+  aliases?: string[]; // other keys that resolve to this same product
 }
 
 /** Legacy export — kept so existing imports compile. */
 export type SupplementLink = ProductLink;
 
 function entryToYaml(l: ProductLink): Omit<ProductLink, "key"> {
-  // Keep the YAML compact — omit notes when empty.
+  // Keep the YAML compact — omit notes/aliases when empty.
   return {
     display_name: l.display_name,
     url: l.url,
     source: l.source,
     category: l.category,
     ...(l.notes ? { notes: l.notes } : {}),
+    ...(l.aliases?.length ? { aliases: l.aliases } : {}),
   };
 }
 
@@ -59,6 +61,7 @@ export async function loadSupplementLinks(): Promise<ProductLink[]> {
         source?: string;
         category?: string;
         notes?: string;
+        aliases?: string[];
       }
     > | null;
     if (!raw) return [];
@@ -71,6 +74,7 @@ export async function loadSupplementLinks(): Promise<ProductLink[]> {
       // since that's what was authored before the 2026-05-13 generalisation.
       category: (val.category as ProductCategory) ?? "supplement",
       notes: val.notes,
+      aliases: val.aliases?.length ? val.aliases : undefined,
     }));
   } catch {
     return [];

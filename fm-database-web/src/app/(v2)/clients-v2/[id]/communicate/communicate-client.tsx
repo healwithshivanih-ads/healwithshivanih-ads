@@ -12,6 +12,7 @@ import { MessageTemplatesPanel } from "@/components/client-widgets/message-templ
 import { SendBookingLinkPanel } from "@/components/client-widgets/send-booking-link-panel";
 import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
 import { FmPanel } from "@/components/fm";
+import { SendAppLinkButton } from "../send-app-link-button";
 // GeneratedLettersPanel was mounted here briefly to surface the meal plan
 // inline with a chat. Removed 2026-05-15 — SendPackageButton already
 // renders a preview + the same discuss→finalise refinement chat per
@@ -30,6 +31,9 @@ export interface CommunicateClientProps {
    *  above for letter generation/sending and only wants the booking,
    *  message-templates, email, contact, and WhatsApp thread panels. */
   hideLetters?: boolean;
+  /** stable client app token — renders the 📲 share-the-app panel here
+   *  (moved from the Plan tab 2026-06-12: sharing is communication) */
+  appToken?: string | null;
 }
 
 export function CommunicateClient({
@@ -41,6 +45,7 @@ export function CommunicateClient({
   whatsappConfigured,
   activeLetterTypes,
   hideLetters = false,
+  appToken = null,
 }: CommunicateClientProps) {
   const firstName = displayName.split(" ")[0];
   const isPublished = activePlan?.status === "published";
@@ -133,6 +138,17 @@ export function CommunicateClient({
             SendPackageButton above already shows each saved letter with
             👁 Preview + the discuss→finalise chat inside the preview pane.
             One edit surface, one source of truth. */}
+
+        {/* 📲 Share the client app — moved here from the Plan tab
+            (2026-06-12): sharing is communication; Plan edits content. */}
+        {isPublished && (
+          <SendAppLinkButton
+            clientId={clientId}
+            mobileNumber={clientPhone}
+            displayName={displayName}
+            existingToken={appToken}
+          />
+        )}
 
         {/* Cal.com booking link — free-text WhatsApp send via 24h window.
             Reads ~/fm-plans/_calcom_links.yaml so coach can edit event

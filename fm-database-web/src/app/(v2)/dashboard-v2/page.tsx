@@ -35,6 +35,7 @@ import { WeeklyPollPanel } from "@/components/weekly-poll-panel";
 import { StartDateReminderPanel } from "@/components/start-date-reminder-panel";
 import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { MealPlanDripPanel } from "@/components/meal-plan-drip-panel";
+import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
 import {
   FmAlertGroup,
@@ -803,14 +804,15 @@ export default async function DashboardV2() {
   // "Needs attention" = everything in the 🔴 Needs action + 🟡 Pipeline
   // tiers (active / returning / new_lead / declined are steady or cold,
   // not attention-now). Mirrors the tier split in triage-sections.tsx.
+  // awaiting_signup intentionally excluded — "still deciding" prospects are
+  // in the marketing pipeline, not action items the coach needs to fix today.
   const needsAttention =
     grouped.follow_up_due.length +
     grouped.protocol_complete.length +
     grouped.intake_to_do.length +
     grouped.plan_to_build.length +
     grouped.labs_pending.length +
-    grouped.booking_link_pending.length +
-    grouped.awaiting_signup.length;
+    grouped.booking_link_pending.length;
 
   // When there's exactly ONE attention item, the dashboard tile should
   // link DIRECTLY to the relevant tab on that client (not scroll to the
@@ -1059,7 +1061,6 @@ export default async function DashboardV2() {
                         grouped.plan_to_build.length > 0 && `${grouped.plan_to_build.length} programme${grouped.plan_to_build.length === 1 ? "" : "s"} owed`,
                         grouped.labs_pending.length > 0 && `${grouped.labs_pending.length} labs pending`,
                         grouped.booking_link_pending.length > 0 && `${grouped.booking_link_pending.length} booking link${grouped.booking_link_pending.length === 1 ? "" : "s"} unanswered`,
-                        grouped.awaiting_signup.length > 0 && `${grouped.awaiting_signup.length} awaiting sign-up`,
                       ]
                         .filter(Boolean)
                         .join(" · ") + " — click to jump"
@@ -1078,7 +1079,6 @@ export default async function DashboardV2() {
                           grouped.plan_to_build.length > 0 && `${grouped.plan_to_build.length} to build`,
                           grouped.labs_pending.length > 0 && `${grouped.labs_pending.length} labs`,
                           grouped.booking_link_pending.length > 0 && `${grouped.booking_link_pending.length} booking`,
-                          grouped.awaiting_signup.length > 0 && `${grouped.awaiting_signup.length} sign-up`,
                         ]
                           .filter(Boolean)
                           .join(" · "),
@@ -1371,6 +1371,11 @@ export default async function DashboardV2() {
               client, anchored to first meal-plan send (coach rule 2026-06-04).
               Remind-and-approve only; no auto-send. */}
           <MealPlanDripPanel />
+
+          {/* 🗓 Weekly app menus — review queue for the weekly cadence
+              (2026-06-12). Cron drafts at 07:00 IST; coach approves in the
+              Plan-tab studio. Self-hides when nothing is due. */}
+          <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
 
           <CycleDateReminderPanel whatsappConfigured={whatsappConfigured} />
 

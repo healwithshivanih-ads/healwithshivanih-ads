@@ -368,6 +368,12 @@ class Client(BaseModel):
     # Coach generates a one-time token, WhatsApps the link /intake/<token>,
     # client fills the form, submission merges payload into this client.yaml
     # and appends a [source: client_intake_form] quick_note session.
+    # Stable per-client token for the companion app (/app/<app_token>).
+    # Unlike letter_token (per-plan), this never changes — the same URL works
+    # after a plan supersedes. Written by the Next.js app-token Server Action.
+    app_token: Optional[str] = None
+    app_token_created_at: Optional[datetime] = None
+
     intake_token: Optional[str] = None              # URL-safe random token
     intake_token_expires_at: Optional[datetime] = None
     intake_form_draft: Optional[dict] = None        # in-progress payload, save-per-section
@@ -1147,6 +1153,41 @@ class Plan(BaseModel):
     # written by the Next.js letter-token Server Action. Declared here so
     # plan-check + the Python letter pipeline (extra="forbid") don't choke.
     letter_short_code: Optional[str] = None
+    # Coach-authored note shown to the client as a "Plan updated" banner in the
+    # companion app when the plan slug changes. E.g. "Added melatonin; adjusted
+    # protein timing based on your feedback." Cleared at the next publish.
+    client_update_note: Optional[str] = None
+
+    # ── Structured app content (Option A, 2026-06-12) ─────────────────────
+    # THE source of truth for the client app's menu. Letters used to be
+    # parsed for week tables; that made a derived artifact a source of
+    # truth and forced coach edits into an overrides patch-layer. Now:
+    #   app_menu = {
+    #     "is_sample": bool,                # hybrid plans: one example week
+    #     "weeks": [{"week": N, "day_dates": [str|None]*7,
+    #                "days": [{"slots": [{"slot": str, "dish": str}]}]*7}],
+    #     "synced_from": str,               # provenance: letter file / manual
+    #     "synced_at": iso,
+    #   }
+    # Written by the Next.js loader's one-time self-migration (parsed from
+    # the issued letters), refreshed automatically when a new meal letter
+    # is SENT, and edited directly by the coach's app-preview meal grid.
+    # Plain dict (not sub-models) — the TS side owns the shape.
+    app_menu: Optional[dict] = None
+    # Live-amendment log for published plans. Published plans stay the
+    # immutable BASELINE for audit; post-publish coach edits (meal swaps,
+    # remedy changes, dose tweaks) append one entry here:
+    #   {"at": iso, "by": str, "field": str, "summary": str}
+    # so "what changed since publish" is always answerable.
+    amendments: list[dict] = Field(default_factory=list)
+    # Next week's AUTO-DRAFTED menu awaiting coach review (weekly cadence,
+    # 2026-06-12). Written by scripts/generate-week-menu.py (cron or
+    # coach-triggered); the coach reviews it in the Plan-tab studio and
+    # Approve merges it into app_menu (+ client_update_note from
+    # change_note). Shape:
+    #   {"week": N, "days": [...same as app_menu...], "change_note": str,
+    #    "generated_at": iso, "inputs_summary": str}
+    app_menu_pending: Optional[dict] = None
 
     # ---- assessment (coach) ----
     primary_topics: list[str] = Field(default_factory=list)         # topic slugs

@@ -2,19 +2,22 @@
 
 /**
  * SendAppLinkButton — coach-side widget to share the client companion app
- * ("The Ochre Tree" PWA at /app/<letter_token>).
+ * ("The Ochre Tree" PWA at /app/<app_token>).
  *
- * Reuses the published plan's letter_token (issued lazily via
- * ensureLetterToken — the same token that gates /letter/). One link does
- * both: the letter stays readable, and the app renders the living plan.
- * Revoking the plan kills the link.
+ * Uses a STABLE per-client app_token (stored in client.yaml) instead of the
+ * per-plan letter_token. This means the same link works after a plan supersedes —
+ * coach never needs to re-share the URL. The app itself resolves to the latest
+ * published plan at load time.
+ *
+ * The letter_token (per-plan) still gates /letter/ routes; this is a separate token.
  */
 
 import { useState } from "react";
 import { FmPanel } from "@/components/fm";
+import { copyText } from "@/lib/copy-text";
 
 interface Props {
-  planSlug: string;
+  clientId: string;
   mobileNumber?: string | null;
   displayName?: string | null;
   existingToken?: string | null;
@@ -37,14 +40,14 @@ function buildWhatsappLink(phone: string, displayName: string, url: string): str
     "",
     url,
     "",
-    "Open it on your phone, then use “Add to Home Screen” so it sits with your other apps. Your daily ticks save automatically.",
+    "Open it on your phone, then use 'Add to Home Screen' so it sits with your other apps. Your daily ticks save automatically.",
     "",
     "Shivani",
   ].join("\n");
   return `https://wa.me/${e164}?text=${encodeURIComponent(msg)}`;
 }
 
-export function SendAppLinkButton({ planSlug, mobileNumber, displayName, existingToken }: Props) {
+export function SendAppLinkButton({ clientId, mobileNumber, displayName, existingToken }: Props) {
   const [token, setToken] = useState<string | null>(existingToken ?? null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -56,8 +59,8 @@ export function SendAppLinkButton({ planSlug, mobileNumber, displayName, existin
     setBusy(true);
     setError("");
     try {
-      const { ensureLetterToken } = await import("@/lib/server-actions/letter-token");
-      const out = await ensureLetterToken(planSlug);
+      const { ensureClientAppToken } = await import("@/lib/server-actions/app-token");
+      const out = await ensureClientAppToken(clientId);
       if (!out.ok) throw new Error(out.error);
       setToken(out.token);
     } catch (e) {
@@ -70,7 +73,7 @@ export function SendAppLinkButton({ planSlug, mobileNumber, displayName, existin
   const copy = async () => {
     if (!url) return;
     try {
-      await navigator.clipboard.writeText(url);
+      await copyText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
@@ -84,7 +87,7 @@ export function SendAppLinkButton({ planSlug, mobileNumber, displayName, existin
         <div style={{ display: "grid", gap: 8 }}>
           <div style={{ fontSize: 13, color: "var(--fm-muted, #6f6a5d)" }}>
             Shares the published plan as a living app — Today screen, supplement logging, remedies,
-            weekly check-in that lands back here.
+            weekly check-in that lands back here. Link stays the same when the plan updates.
           </div>
           <button className="fm-btn" onClick={getLink} disabled={busy}>
             {busy ? "Issuing…" : "🔗 Get app link"}
@@ -120,7 +123,7 @@ export function SendAppLinkButton({ planSlug, mobileNumber, displayName, existin
             )}
           </div>
           <div style={{ fontSize: 12, color: "var(--fm-muted, #6f6a5d)" }}>
-            Same token as the letter link — revoking the plan disables both.
+            Stable client link — stays the same after plan updates. Share once, works forever.
           </div>
         </div>
       )}

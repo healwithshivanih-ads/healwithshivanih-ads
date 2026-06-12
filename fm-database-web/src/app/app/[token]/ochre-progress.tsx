@@ -10,6 +10,7 @@ import { Icon, useOchre } from "./ochre-context";
 import { MiniRating, ProgressArc, Section } from "./ochre-ui";
 import type { MoveEntry } from "./ochre-checkin";
 import type { JourneyItem } from "@/lib/fmdb/client-app";
+import { MsqCard } from "./ochre-msq";
 
 // ── symptom-score hero ───────────────────────────────────────────────────────
 
@@ -315,12 +316,14 @@ export function ProgressScreen({
   feel,
   moves,
   onLogMove,
+  openMsq,
 }: {
   goCheckin: () => void;
   onLogFeeling: () => void;
   feel: FeelMap;
   moves: MoveEntry[];
   onLogMove: () => void;
+  openMsq: () => void;
 }) {
   const data = useOchre();
   const [open, setOpen] = useState(-2);
@@ -340,6 +343,10 @@ export function ProgressScreen({
       </div>
 
       <Section title="Is it working?">
+        {/* MSQ — the FM-standard symptom score; baseline → falling trend */}
+        <div style={{ marginBottom: 12 }}>
+          <MsqCard openMsq={openMsq} />
+        </div>
         {data.symptomScore ? <SymptomHero /> : <SymptomHeroEmpty goCheckin={goCheckin} />}
         {data.watchList.length > 0 && (
           <>

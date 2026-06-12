@@ -24,6 +24,7 @@ import {
 import { approveBatchAction, rejectBatchAction } from "@/app/(v2)/ingest/actions";
 import { FmPanel } from "@/components/fm";
 import { CATALOGUE_INGEST_BRIEFING } from "@/lib/catalogue-ingest-briefing";
+import { copyText } from "@/lib/copy-text";
 
 export function CatalogueIngestPanel() {
   const [pasteText, setPasteText] = useState("");
@@ -37,7 +38,7 @@ export function CatalogueIngestPanel() {
 
   const onCopySetup = async () => {
     try {
-      await navigator.clipboard.writeText(CATALOGUE_INGEST_BRIEFING);
+      await copyText(CATALOGUE_INGEST_BRIEFING);
       setSetupCopied(true);
       toast.success("Setup prompt copied — paste it as the first message in your AI chat");
       window.setTimeout(() => setSetupCopied(false), 4000);

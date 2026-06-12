@@ -16,6 +16,7 @@
 
 import { useState } from "react";
 import { FmPanel, FmChip } from "@/components/fm";
+import { copyText } from "@/lib/copy-text";
 
 export interface AppLinkRow {
   client_id: string;
@@ -75,7 +76,7 @@ function Row({ row }: { row: AppLinkRow }) {
   const copy = async () => {
     if (!url) return;
     try {
-      await navigator.clipboard.writeText(url);
+      await copyText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1600);
     } catch {

@@ -7495,19 +7495,27 @@ def main() -> int:
             # recipe pack actually reaches the client — the old wording
             # said "attached to this email", which is no longer true
             # since the WhatsApp cutover.
-            # Use the stable per-plan letter_token when present so the client's
-            # recipe link survives letter regeneration (and is unguessable);
-            # fall back to the slug. The /recipes route resolves either.
-            _recipes_id = plan.get("letter_token") or plan_slug
-            recipes_url = f"/recipes/{_recipes_id}"
-            pointer = (
-                "## 📎 Your Recipe Pack\n\n"
-                f"The recipes for this fortnight's new dishes — full "
-                f"ingredients and method — are in your **Recipe Pack**, "
-                f"kept separate so this letter stays short and easy to scan.\n\n"
-                f"👉 **[Open your recipe pack]({recipes_url})**\n\n"
-                f"Save it to your phone for easy reference in the kitchen.\n\n"
-            )
+            # TOKEN-ONLY (2026-06-11): /recipes is gated on letter_token —
+            # a slug link would dead-end at the "ask for a fresh link" card.
+            # No token yet → point the client to WhatsApp instead of linking.
+            _recipes_id = plan.get("letter_token")
+            if _recipes_id:
+                recipes_url = f"/recipes/{_recipes_id}"
+                pointer = (
+                    "## 📎 Your Recipe Pack\n\n"
+                    f"The recipes for this fortnight's new dishes — full "
+                    f"ingredients and method — are in your **Recipe Pack**, "
+                    f"kept separate so this letter stays short and easy to scan.\n\n"
+                    f"👉 **[Open your recipe pack]({recipes_url})**\n\n"
+                    f"Save it to your phone for easy reference in the kitchen.\n\n"
+                )
+            else:
+                pointer = (
+                    "## 📎 Your Recipe Pack\n\n"
+                    f"The recipes for this fortnight's new dishes — full "
+                    f"ingredients and method — are in your **Recipe Pack**. "
+                    f"Shivani will send you the link on WhatsApp.\n\n"
+                )
             markdown = markdown[: m.start()] + pointer + markdown[m.end():]
             _step(f"split out recipe appendix ({len(recipes_md)} chars) → sidecar pending")
 

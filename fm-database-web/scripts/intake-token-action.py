@@ -203,6 +203,7 @@ _STAGING_STUB_KEYS = (
     # intake lifecycle fields that lookup/save_draft/submit read
     "intake_token",
     "intake_token_expires_at",
+    "intake_short_code",
     "intake_full_unlocked_at",
     "intake_submitted_at",
     "intake_last_submitted_at",

@@ -1,0 +1,164 @@
+# ============================================================================
+# Ingredient swap groups — powers tap-to-swap in The Ochre Tree client app.
+#
+# Hand-curated (no AI). Each group is a set of like-for-like ingredients a
+# client can substitute when something isn't available at their market.
+# The app gates members per client BEFORE offering them: a member whose
+# match words appear in the client's "leave out for now" food tier is never
+# offered, and vegan_excluded members are hidden for vegan clients.
+#
+# Fields:
+#   label        group name shown in the swap sheet
+#   note         one-line group-level guidance
+#   members[]
+#     name           shopping-list display name
+#     match          lowercase words that identify this ingredient in
+#                    grocery items / dish names (word-contains match)
+#     note           one-line swap guidance (cooking difference, if any)
+#     vegan_excluded true → hidden for vegan clients
+#
+# Edit freely — the app reads this file live (Mac) / from the baked image
+# (Fly: redeploy to update).
+# ============================================================================
+groups:
+  - id: millet-flours
+    label: Millet & grain flours
+    note: Swap 1:1 by weight in rotis, dosas and chillas.
+    members:
+      - name: Jowar atta
+        match: [jowar, sorghum]
+        note: Mild taste, soft rotis — knead with warm water.
+      - name: Bajra atta
+        match: [bajra, "pearl millet"]
+        note: Warming and hearty — best in cooler months.
+      - name: Ragi atta
+        match: [ragi, nachni, "finger millet"]
+        note: Calcium-rich; batters ferment faster — shorten the rest time.
+      - name: Whole jowar/ragi mix
+        match: [multigrain]
+        note: Any 50:50 mix of the millet flours works the same way.
+
+  - id: whole-millets
+    label: Whole millets & rice alternates
+    note: Cook like rice — rinse well; millets want a little more water.
+    members:
+      - name: Vari (barnyard millet)
+        match: [vari, barnyard]
+        note: Lightest of the millets — good for khichdi.
+      - name: Foxtail millet
+        match: [foxtail, kangni]
+        note: Slightly nutty; perfect in pulao.
+      - name: Little millet
+        match: ["little millet", kutki]
+        note: Works in any rice-style dish.
+      - name: Quinoa
+        match: [quinoa]
+        note: Rinse thoroughly to remove bitterness; cooks in 15 min.
+
+  - id: leafy-greens
+    label: Leafy greens
+    note: Swap bunch-for-bunch — cook times are nearly identical.
+    members:
+      - name: Palak (spinach)
+        match: [palak, spinach]
+        note: Mildest — wilts fastest.
+      - name: Methi (fresh fenugreek)
+        match: [methi, fenugreek]
+        note: Pleasantly bitter — pairs beautifully with dal and besan.
+      - name: Chaulai (amaranth greens)
+        match: [chaulai, amaranth, "lal math", "lal maath"]
+        note: Cooks like palak; slightly earthier.
+      - name: Sarson / mixed saag
+        match: [sarson, saag, mustard greens]
+        note: Stronger flavour — lovely in winter.
+
+  - id: everyday-dals
+    label: Everyday dals
+    note: Same soak-and-cook method; adjust water slightly by dal.
+    members:
+      - name: Moong dal
+        match: [moong]
+        note: Lightest and easiest to digest — the default swap.
+      - name: Masoor dal
+        match: [masoor, "red lentil"]
+        note: Cooks fastest, no soak needed.
+      - name: Toor / arhar dal
+        match: [toor, arhar, tuvar]
+        note: Classic for sambar and dal fry.
+
+  - id: seeds
+    label: Seeds
+    note: Swap spoon-for-spoon — toast lightly for the best flavour.
+    members:
+      - name: Pumpkin seeds
+        match: [pumpkin seed]
+        note: Zinc-rich.
+      - name: Sunflower seeds
+        match: [sunflower seed]
+        note: Mildest flavour.
+      - name: Sesame (til)
+        match: [sesame, til]
+        note: Calcium-rich — lovely in chutneys.
+      - name: Ground flaxseed
+        match: [flax, alsi]
+        note: Always ground, never whole — add after cooking.
+
+  - id: nuts
+    label: Nuts
+    note: Swap by count — a small handful is a small handful.
+    members:
+      - name: Soaked almonds
+        match: [almond, badam]
+        note: Soak overnight, peel.
+      - name: Walnuts
+        match: [walnut, akhrot]
+        note: Omega-3-rich — no soaking needed.
+      - name: Pistachios (unsalted)
+        match: [pistachio, pista]
+        note: Choose plain, not salted.
+
+  - id: cooking-oils
+    label: Cooking fats
+    note: All hold up to Indian cooking heat — use the same quantity.
+    members:
+      - name: Ghee
+        match: [ghee]
+        note: Most stable for tadka and roasting.
+        vegan_excluded: true
+      - name: Cold-pressed coconut oil
+        match: [coconut oil]
+        note: Mild sweetness; great for dosas.
+      - name: Cold-pressed groundnut oil
+        match: [groundnut, peanut oil]
+        note: Neutral all-rounder.
+      - name: Mustard oil
+        match: [mustard oil]
+        note: Heat until it just smokes, then cool slightly before using.
+
+  - id: curd-family
+    label: Curd & buttermilk
+    note: Same gut-friendly cultures — pick what sits best with you.
+    members:
+      - name: Homemade dahi
+        match: [dahi, curd, yogurt, yoghurt]
+        note: Room temperature, never fridge-cold.
+        vegan_excluded: true
+      - name: Chaas (buttermilk)
+        match: [chaas, buttermilk, chhach]
+        note: Lighter than dahi — easiest to digest at lunch.
+        vegan_excluded: true
+
+  - id: veg-protein
+    label: Vegetarian proteins
+    note: Swap weight-for-weight in sabzis and stir-fries.
+    members:
+      - name: Paneer
+        match: [paneer]
+        note: Fresh, ideally homemade.
+        vegan_excluded: true
+      - name: Tofu (firm)
+        match: [tofu]
+        note: Press out the water first; takes masala beautifully.
+      - name: Soya chunks
+        match: [soya chunk, soy chunk]
+        note: Soak in hot water and squeeze before cooking.

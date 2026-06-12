@@ -287,6 +287,9 @@ export default async function V2PlanEditorPage({
                 | { git_sha?: string; snapshot_date?: string }
                 | undefined) ?? null
             }
+            clientUpdateNote={
+              (plan as unknown as { client_update_note?: string }).client_update_note ?? null
+            }
           />
           <ClientSnapshotCard
             client={rawClient}

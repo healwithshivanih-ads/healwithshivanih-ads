@@ -10,6 +10,7 @@ import { EvidenceTierBadge } from "@/components/evidence-tier-badge";
 import { loadOne, loadAllOfKind } from "@/lib/fmdb/loader";
 import { KIND_LABELS } from "@/lib/fmdb/kinds";
 import { ReclassifyPanel } from "./reclassify-panel";
+import { BackLink } from "@/components/back-link";
 import type {
   CatalogueKind,
   Topic,
@@ -162,6 +163,8 @@ function Header({
 }) {
   return (
     <div>
+      {/* back to wherever the coach came from (client panel, search, list) */}
+      <BackLink />
       <div className="flex items-center gap-3 flex-wrap">
         <h1 className="text-3xl font-bold">{title}</h1>
         {tier && <EvidenceTierBadge tier={tier} />}

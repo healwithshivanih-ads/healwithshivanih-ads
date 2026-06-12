@@ -14,6 +14,7 @@
  * catalogue schema changes, update PROMPT_BODY below.
  */
 import { useState } from "react";
+import { copyText } from "@/lib/copy-text";
 
 const PROMPT_BODY = String.raw`You are extracting clinical knowledge for a Functional Medicine coaching
 catalogue (FMDB v0.74). Output YAML that drops directly into
@@ -251,7 +252,7 @@ export function CopyAuthoringPromptPanel() {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(PROMPT_BODY);
+      await copyText(PROMPT_BODY);
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
     } catch {

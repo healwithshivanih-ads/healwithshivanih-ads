@@ -6,7 +6,7 @@
  */
 
 import { useState } from "react";
-import type { AppRemedy } from "@/lib/fmdb/client-app";
+import type { AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
 
 // ── meal detail ──────────────────────────────────────────────────────────────
@@ -105,11 +105,27 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
               ))}
             </ol>
           </>
+        ) : data.recipePack.length > 0 ? (
+          /* no exact match for this dish — open the pack RIGHT HERE
+             (letters are retiring; nothing points out of the app) */
+          <>
+            <div className="eyebrow" style={{ marginTop: 22 }}>
+              From your recipe pack
+            </div>
+            <div className="divider-ochre" />
+            <RecipeAccordion recipes={data.recipePack} />
+          </>
         ) : (
+          /* NO recipe pack on this plan (principle-based / hybrid letters,
+             e.g. Niti) — never point at something that isn't there.
+             Bug report 2026-06-11: "asking her to go to Plan for the full
+             recipe and there is no full recipe there." */
           <div className="card-quiet soon" style={{ marginTop: 18 }}>
-            <Icon name="book" size={16} style={{ color: "var(--ochre)" }} />
+            <Icon name="leaf" size={16} style={{ color: "var(--ochre)" }} />
             <span>
-              The full method for every ✦ dish lives in your <strong>recipe pack</strong> — find it under Plan → Resources.
+              These are simple, everyday preparations — make them the way you usually
+              would. Want {data.coach.name.split(" ")[0]}&apos;s method for this one? Ask
+              on WhatsApp and she&apos;ll send it.
             </span>
           </div>
         )}
@@ -159,6 +175,29 @@ export function DocOverlay({ doc, onClose }: { doc: { kind: string; id: string }
   const resource = !isLesson ? data.resources.find((r) => r.id === doc.id) : undefined;
   const item = lesson ?? resource;
   if (!item) return null;
+
+  // The recipe pack renders fully IN-APP (letters are retiring) — a list of
+  // every recipe with expandable ingredients + method, no link-out.
+  if (resource?.id === "r-recipes" && data.recipePack.length > 0) {
+    return (
+      <div className="overlay-scroll">
+        <button className="back-link" onClick={onClose} style={{ margin: "0 0 4px" }}>
+          <Icon name="arrowLeft" size={18} /> Back to plan
+        </button>
+        <div className="overlay-pad" style={{ paddingTop: 4 }}>
+          <div className="eyebrow">Recipes · {data.recipePack.length} dishes</div>
+          <h2 className="h-serif" style={{ fontSize: 24, margin: "8px 0 0", lineHeight: 1.2 }}>
+            Your recipe pack
+          </h2>
+          <div className="muted" style={{ fontSize: 12.5, margin: "8px 0 12px" }}>
+            Every recipe from your plan — tap a dish for ingredients and method.
+          </div>
+          <RecipeAccordion recipes={data.recipePack} />
+        </div>
+      </div>
+    );
+  }
+
   const eyebrow = lesson ? `Lesson · ${lesson.mins}` : `${resource!.kind} · from ${data.coach.name.split(" ")[0]}`;
   const body = (item.body || "").split("\n");
   const url = resource?.url;
@@ -206,6 +245,83 @@ export function DocOverlay({ doc, onClose }: { doc: { kind: string; id: string }
           <span style={{ fontSize: 12.5, color: "var(--muted)" }}>From your plan — come back to it any time.</span>
         </div>
       </div>
+    </div>
+  );
+}
+
+// ── in-app recipes (letters are retiring — the pack renders here) ───────────
+
+function RecipeDetailBody({ r }: { r: AppRecipe }) {
+  return (
+    <div style={{ padding: "4px 0 12px" }}>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
+        {r.serves && <span className="food-pill">Serves {r.serves}</span>}
+        {r.time && <span className="food-pill">{r.time}</span>}
+        {r.ayurveda && <span className="food-pill">Ayurveda recommends</span>}
+      </div>
+      {r.ingredients.length > 0 && (
+        <>
+          <div className="doc-h">Ingredients</div>
+          {r.ingredients.map((ing, i) => (
+            <div key={i} className="doc-li">
+              {ing}
+            </div>
+          ))}
+        </>
+      )}
+      {r.method.length > 0 && (
+        <>
+          <div className="doc-h" style={{ marginTop: 12 }}>
+            Method
+          </div>
+          <ol className="recipe" style={{ marginTop: 4 }}>
+            {r.method.map((step, i) => (
+              <li key={i}>
+                <span className="rn">{i + 1}</span>
+                <span>{step}</span>
+              </li>
+            ))}
+          </ol>
+        </>
+      )}
+      {r.tip && (
+        <p className="doc-p" style={{ fontStyle: "italic", color: "var(--muted)" }}>
+          {r.tip}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** Tappable list of every recipe in the pack — expands in place. Used in
+ *  the meal overlay (when a dish has no exact match) and the Plan →
+ *  Resources recipe-pack card. */
+export function RecipeAccordion({ recipes }: { recipes: AppRecipe[] }) {
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div className="card" style={{ overflow: "hidden", marginTop: 4 }}>
+      {recipes.map((r, i) => (
+        <div key={i} style={{ borderBottom: i < recipes.length - 1 ? "1px solid var(--line-soft)" : "none" }}>
+          <button
+            className="rp-row"
+            onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
+          >
+            <span className="rp-title">{r.title}</span>
+            <span className="rp-meta">
+              {r.time ?? ""}
+              <span className="chev" style={{ transform: open === i ? "rotate(90deg)" : "none", transition: "transform .2s" }}>
+                <Icon name="chev" size={16} />
+              </span>
+            </span>
+          </button>
+          {open === i && (
+            <div style={{ padding: "0 14px" }}>
+              <RecipeDetailBody r={r} />
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
@@ -365,6 +481,14 @@ export function RemedyOverlay({ remedy, onClose }: { remedy: AppRemedy; onClose:
             </ul>
             <div className="rmd-caution-foot">Not sure if a remedy suits you? Message {firstName} before starting.</div>
           </div>
+        )}
+
+        {/* coach-referral purchase link, when the remedy needs buying
+            (punarnava, triphala…) — curated links only, never a search */}
+        {r.buyUrl && (
+          <a className="wa-btn" href={r.buyUrl} target="_blank" rel="noreferrer" style={{ marginTop: 18 }}>
+            <Icon name="bag" size={18} /> Get it — {firstName}&apos;s pick
+          </a>
         )}
       </div>
     </div>

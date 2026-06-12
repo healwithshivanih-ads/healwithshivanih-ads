@@ -377,6 +377,9 @@ export default async function CommunicateTabPage({
           whatsappConfigured={whatsappConfig.configured}
           activeLetterTypes={activeLetterTypes}
           hideLetters
+          appToken={
+            ((client as unknown as { app_token?: string }).app_token as string | undefined) ?? null
+          }
         />
       </div>
 

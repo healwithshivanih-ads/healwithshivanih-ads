@@ -195,6 +195,40 @@ export async function recordLetterSendAction(input: {
       // Non-fatal — the send still succeeded; coach can set Day 1 manually.
       console.warn("auto meal_plan_started_on anchor failed:", anchorErr);
     }
+
+    // OPTION A re-sync (2026-06-12): the plan's structured app_menu is the
+    // app's source of truth, originally migrated from the issued letters.
+    // A NEWLY ISSUED meal letter supersedes it — clear app_menu (amendment-
+    // logged) so the next app/preview load re-derives from the new letter.
+    // Coach dish-edits made on the OLD fortnight are intentionally not
+    // carried over (the new letter is a fresh prescription).
+    try {
+      const dir = path.join(getPlansRoot(), "published");
+      const match = (await fs.readdir(dir))
+        .filter((n) => n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"))
+        .sort()
+        .reverse()[0];
+      if (match) {
+        const f = path.join(dir, match);
+        const doc = (yaml.load(await fs.readFile(f, "utf-8")) as Record<string, unknown>) ?? {};
+        if (doc.app_menu) {
+          doc.app_menu = null;
+          const amendments = Array.isArray(doc.amendments) ? (doc.amendments as unknown[]) : [];
+          amendments.push({
+            at: new Date().toISOString(),
+            by: "system",
+            field: "app_menu",
+            summary: `Menu re-syncing from the newly issued letter (${entry.letter_types.join(", ")}).`,
+          });
+          doc.amendments = amendments;
+          const tmp = `${f}.tmp-${process.pid}`;
+          await fs.writeFile(tmp, yaml.dump(doc, { sortKeys: false, lineWidth: 100 }), "utf-8");
+          await fs.rename(tmp, f);
+        }
+      }
+    } catch (syncErr) {
+      console.warn("app_menu re-sync clear failed:", syncErr);
+    }
   }
 
   revalidatePath(`/clients-v2/${clientId}/communicate`);

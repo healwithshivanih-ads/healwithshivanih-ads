@@ -48,6 +48,8 @@ _TREE_SVG_BG = (
 )
 
 _LOGO_SVG = (
+    # Fallback only — used if the brand PNG at LOGO_PATH is missing. The real
+    # mark is the file at LOGO_PATH (shivani-hari-logo-transparent.png).
     '<svg class="brandmark__logo" viewBox="0 0 100 100" fill="none" aria-hidden="true">'
     '<path d="M50 94V54" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>'
     '<path d="M50 64c-9-3-14-11-13-21M50 56c9-2 15-10 15-21M50 74c7-2 12-8 12-15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>'
@@ -1619,9 +1621,10 @@ def wrap_in_brand_html(
 
   var contentEl  = document.querySelector('.content');
   var planSlug   = contentEl ? contentEl.getAttribute('data-plan-slug') : '';
-  // Prefer the stable letter_token (data-recipes-id) so ✦ recipe links survive
-  // regeneration + aren't guessable; fall back to the slug.
-  var recipesId  = (contentEl && contentEl.getAttribute('data-recipes-id')) || planSlug;
+  // The stable letter_token (data-recipes-id) ONLY — /recipes is token-gated
+  // (2026-06-11), so a slug link would just show the "ask for a fresh link"
+  // card. No token → no external link (recipes still resolve in-page).
+  var recipesId  = (contentEl && contentEl.getAttribute('data-recipes-id')) || '';
   var externalUrl = recipesId ? ('/recipes/' + recipesId) : '';
 
   if (recipes.length === 0 && !externalUrl) return;

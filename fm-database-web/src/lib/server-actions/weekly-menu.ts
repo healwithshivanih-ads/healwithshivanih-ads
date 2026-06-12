@@ -1,0 +1,242 @@
+"use server";
+
+/**
+ * Weekly menu cadence (coach decision 2026-06-12, replaces fortnightly
+ * meal-plan letters): next week's menu is AUTO-DRAFTED (cron or one click)
+ * onto plan.app_menu_pending, the coach reviews it in the Plan-tab studio
+ * (live phone preview), and Approve merges it into app_menu — the client's
+ * app updates instantly with a "Plan updated" note in the client's voice.
+ */
+
+import fs from "node:fs/promises";
+import path from "node:path";
+import yaml from "js-yaml";
+import { revalidatePath } from "next/cache";
+import { getPlansRoot } from "@/lib/fmdb/paths";
+import { runShim } from "@/lib/fmdb/shim";
+import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
+
+export interface PendingWeekMenu {
+  week: number;
+  days: { slots: { slot: string; dish: string }[] }[];
+  change_note: string;
+  generated_at: string;
+  inputs_summary?: string;
+}
+
+interface PlanDoc {
+  slug?: string;
+  client_id?: string;
+  app_menu?: { is_sample?: boolean; weeks?: { week?: number; days?: unknown[] }[] } | null;
+  app_menu_pending?: PendingWeekMenu | null;
+  amendments?: unknown[];
+  client_update_note?: string | null;
+  app_content_updated_at?: string;
+  meal_plan_started_on?: string;
+  plan_period_start?: string;
+  plan_period_weeks?: number;
+  [k: string]: unknown;
+}
+
+async function publishedFileForClient(
+  clientId: string,
+): Promise<{ file: string; plan: PlanDoc } | null> {
+  const dir = path.join(getPlansRoot(), "published");
+  try {
+    for (const n of (await fs.readdir(dir)).sort().reverse()) {
+      if (!n.endsWith(".yaml")) continue;
+      const f = path.join(dir, n);
+      const p = (yaml.load(await fs.readFile(f, "utf-8")) as PlanDoc) ?? {};
+      if (p.client_id === clientId) return { file: f, plan: p };
+    }
+  } catch {
+    /* none */
+  }
+  return null;
+}
+
+/** The client's current plan week (1-based), from the same Day-1 anchor the
+ *  app uses. Returns 1 when no anchor exists yet. */
+function currentPlanWeek(plan: PlanDoc): number {
+  const start = effectiveMealPlanStart({
+    meal_plan_started_on: plan.meal_plan_started_on,
+    plan_period_start: plan.plan_period_start,
+  } as Parameters<typeof effectiveMealPlanStart>[0]);
+  if (!start) return 1;
+  const days = Math.floor((Date.now() - new Date(`${start}T00:00:00Z`).getTime()) / 86_400_000);
+  return Math.max(1, Math.floor(days / 7) + 1);
+}
+
+export interface WeeklyMenuStatus {
+  ok: true;
+  planSlug: string;
+  currentWeek: number;
+  totalWeeks: number;
+  /** menu already covers next week (approved) */
+  nextWeekReady: boolean;
+  pending: PendingWeekMenu | null;
+  /** structured menu exists at all (weekly cadence only applies then) */
+  hasMenu: boolean;
+  isSample: boolean;
+}
+
+export async function weeklyMenuStatusAction(
+  clientId: string,
+): Promise<WeeklyMenuStatus | { ok: false; error: string }> {
+  const hit = await publishedFileForClient(clientId);
+  if (!hit) return { ok: false, error: "No published plan." };
+  const { plan } = hit;
+  const weeks = plan.app_menu?.weeks ?? [];
+  const cur = currentPlanWeek(plan);
+  return {
+    ok: true,
+    planSlug: String(plan.slug ?? ""),
+    currentWeek: cur,
+    totalWeeks: Number(plan.plan_period_weeks) || 12,
+    nextWeekReady: weeks.some((w) => Number(w.week) === cur + 1),
+    pending: plan.app_menu_pending ?? null,
+    hasMenu: weeks.length > 0,
+    isSample: !!plan.app_menu?.is_sample,
+  };
+}
+
+/** Draft next week's menu via the Sonnet shim (~30-60s, ~$0.05). */
+export async function generateWeekMenuAction(
+  clientId: string,
+): Promise<{ ok: boolean; error?: string; changeNote?: string; week?: number }> {
+  const hit = await publishedFileForClient(clientId);
+  if (!hit) return { ok: false, error: "No published plan." };
+  const target = currentPlanWeek(hit.plan) + 1;
+  const out = (await runShim(
+    "generate-week-menu.py",
+    { client_id: clientId, plan_slug: hit.plan.slug, target_week: target },
+    240_000,
+  )) as { ok: boolean; error?: string; change_note?: string; week?: number };
+  if (!out?.ok) return { ok: false, error: out?.error ?? "generation failed" };
+  revalidatePath(`/clients-v2/${clientId}`);
+  return { ok: true, changeNote: out.change_note, week: out.week };
+}
+
+/** Coach approval: the pending week goes LIVE on the client's app. */
+export async function approveWeekMenuAction(
+  clientId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const hit = await publishedFileForClient(clientId);
+    if (!hit) return { ok: false, error: "No published plan." };
+    // fresh read at write time
+    const doc = (yaml.load(await fs.readFile(hit.file, "utf-8")) as PlanDoc) ?? {};
+    const pending = doc.app_menu_pending;
+    if (!pending) return { ok: false, error: "Nothing pending to approve." };
+
+    const menu = doc.app_menu ?? { weeks: [] };
+    const weeks = (menu.weeks ?? []).filter((w) => Number(w.week) !== pending.week);
+    weeks.push({ week: pending.week, day_dates: null, days: pending.days } as never);
+    weeks.sort((a, b) => Number(a.week) - Number(b.week));
+    // keep the trailing TWO weeks — current + next is all the app shows,
+    // and it keeps the grocery "next week unlocks early" window working
+    menu.weeks = weeks.slice(-2);
+    menu.is_sample = false;
+    doc.app_menu = menu;
+    doc.app_menu_pending = null;
+    if (pending.change_note) doc.client_update_note = pending.change_note;
+    doc.app_content_updated_at = new Date().toISOString();
+    const amendments = Array.isArray(doc.amendments) ? doc.amendments : [];
+    amendments.push({
+      at: new Date().toISOString(),
+      by: "Shivani",
+      field: "app_menu",
+      summary: `Week ${pending.week} menu approved and live${pending.change_note ? ` — "${pending.change_note}"` : ""}.`,
+    });
+    doc.amendments = amendments;
+
+    const tmp = `${hit.file}.tmp-${process.pid}`;
+    await fs.writeFile(tmp, yaml.dump(doc, { sortKeys: false, lineWidth: 100 }), "utf-8");
+    await fs.rename(tmp, hit.file);
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "approve failed" };
+  }
+}
+
+/** Discard a pending draft (coach will regenerate or skip this week). */
+export async function dismissPendingMenuAction(
+  clientId: string,
+): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const hit = await publishedFileForClient(clientId);
+    if (!hit) return { ok: false, error: "No published plan." };
+    const doc = (yaml.load(await fs.readFile(hit.file, "utf-8")) as PlanDoc) ?? {};
+    if (!doc.app_menu_pending) return { ok: true };
+    doc.app_menu_pending = null;
+    const tmp = `${hit.file}.tmp-${process.pid}`;
+    await fs.writeFile(tmp, yaml.dump(doc, { sortKeys: false, lineWidth: 100 }), "utf-8");
+    await fs.rename(tmp, hit.file);
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "dismiss failed" };
+  }
+}
+
+/** Queue scan: every published, menu-bearing client whose NEXT week starts
+ *  within `withinDays` and has neither an approved next week nor a pending
+ *  draft. The cron auto-drafts these; the dashboard panel lists them. */
+export async function weeklyMenuQueueAction(withinDays = 3): Promise<
+  {
+    clientId: string;
+    planSlug: string;
+    currentWeek: number;
+    daysToNextWeek: number;
+    pending: boolean;
+    changeNote?: string;
+  }[]
+> {
+  const dir = path.join(getPlansRoot(), "published");
+  const rows: Awaited<ReturnType<typeof weeklyMenuQueueAction>> = [];
+  let names: string[] = [];
+  try {
+    names = await fs.readdir(dir);
+  } catch {
+    return rows;
+  }
+  const seen = new Set<string>();
+  for (const n of names.sort().reverse()) {
+    if (!n.endsWith(".yaml")) continue;
+    try {
+      const p = (yaml.load(await fs.readFile(path.join(dir, n), "utf-8")) as PlanDoc) ?? {};
+      const cid = String(p.client_id ?? "");
+      if (!cid || seen.has(cid)) continue;
+      seen.add(cid);
+      const weeks = p.app_menu?.weeks ?? [];
+      if (!weeks.length) continue; // principle-based — no weekly menus
+      const cur = currentPlanWeek(p);
+      const total = Number(p.plan_period_weeks) || 12;
+      if (cur >= total) continue; // plan finishing — no next week
+      const start = effectiveMealPlanStart({
+        meal_plan_started_on: p.meal_plan_started_on,
+        plan_period_start: p.plan_period_start,
+      } as Parameters<typeof effectiveMealPlanStart>[0]);
+      if (!start) continue;
+      const nextWeekStart = new Date(`${start}T00:00:00Z`).getTime() + cur * 7 * 86_400_000;
+      const daysTo = Math.ceil((nextWeekStart - Date.now()) / 86_400_000);
+      const nextReady = weeks.some((w) => Number(w.week) === cur + 1);
+      const pending = p.app_menu_pending ?? null;
+      if (nextReady) continue;
+      if (daysTo > withinDays && !pending) continue;
+      rows.push({
+        clientId: cid,
+        planSlug: String(p.slug ?? ""),
+        currentWeek: cur,
+        daysToNextWeek: daysTo,
+        pending: !!pending,
+        changeNote: pending?.change_note,
+      });
+    } catch {
+      /* skip unparseable */
+    }
+  }
+  rows.sort((a, b) => a.daysToNextWeek - b.daysToNextWeek);
+  return rows;
+}

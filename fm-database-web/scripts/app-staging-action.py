@@ -79,6 +79,8 @@ _APP_CLIENT_KEYS = (
     "cycle_status",
     "pregnancy_status",
     "lactation_started",
+    "app_token",
+    "app_token_created_at",
 )
 
 _PLAN_PRIVATE_KEYS = ("notes_for_coach", "ai_sanity_check")
@@ -167,7 +169,7 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
                 sdata = yaml.safe_load(f.read_text()) or {}
             except Exception:
                 continue
-            if sdata.get("poll_response") or sdata.get("checkin_response"):
+            if sdata.get("poll_response") or sdata.get("checkin_response") or sdata.get("msq_response"):
                 shutil.copy2(f, dest)
                 counts["sessions_staged"] += 1
 
@@ -175,6 +177,12 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     links = auth / "supplement_links.yaml"
     if links.exists():
         shutil.copy2(links, stag / "supplement_links.yaml")
+
+    # 5b. coach app-overrides (hidden remedy suggestions) — the app loader
+    # filters from this, so Fly must carry it (added 2026-06-12)
+    ov = auth / "clients" / client_id / "app-overrides.yaml"
+    if ov.exists():
+        shutil.copy2(ov, sdir / "app-overrides.yaml")
 
     # 6. marker
     (sdir / "_app_staged.yaml").write_text(
@@ -202,16 +210,18 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
         client_id = m.get("client_id") or sdir.name
         plan_slug = m.get("plan_slug") or ""
 
-        # reverse-mirror: app check-ins written on Fly → authoritative store
+        # reverse-mirror: app check-ins + MSQ submissions written on Fly →
+        # authoritative store
         ssess = sdir / "sessions"
         auth_sess = auth / "clients" / client_id / "sessions"
         if ssess.exists() and (auth / "clients" / client_id).exists():
             auth_sess.mkdir(parents=True, exist_ok=True)
-            for f in sorted(ssess.glob("*-app-checkin.yaml")):
-                dest = auth_sess / f.name
-                if not dest.exists():
-                    shutil.copy2(f, dest)
-                    out["checkins_mirrored"] += 1
+            for pattern in ("*-app-checkin.yaml", "*-app-msq.yaml", "*-app-travel.yaml"):
+                for f in sorted(ssess.glob(pattern)):
+                    dest = auth_sess / f.name
+                    if not dest.exists():
+                        shutil.copy2(f, dest)
+                        out["checkins_mirrored"] += 1
 
         # plan revoked / superseded → purge the app artifacts from Fly
         if plan_slug and not _published_files(auth, plan_slug):

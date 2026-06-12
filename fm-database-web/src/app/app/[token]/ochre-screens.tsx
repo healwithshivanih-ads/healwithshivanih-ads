@@ -7,7 +7,10 @@
 import { useState } from "react";
 import type { AppRemedy } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
-import { DailyRing, MealThumb, RemedyCard, RemedyLibrary, Section, SupplementSlots, Tile, WeekStrip, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
+import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, WeekStrip, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
+import { BreathLaunchCard } from "./ochre-breath";
+import { WeekMenuSection } from "./ochre-week-menu";
+import { OrderLaunchCard } from "./ochre-order";
 
 // ── time-of-day phase → the one thing to focus on right now ─────────────────
 
@@ -21,7 +24,7 @@ interface PhaseNow {
 }
 
 function usePhaseNow(hour: number): PhaseNow {
-  const { meals, practices, remedies, supplements, planRef } = useOchre();
+  const { meals, practices, remedies, supplements, planRef, breathwork } = useOchre();
   const teaAfterFood = /tea|chai/i.test(planRef.foods.sometimes.join(" "));
   const lunch = meals.find((m) => /lunch/i.test(m.slot));
   const dinner = meals.find((m) => /dinner/i.test(m.slot));
@@ -52,10 +55,10 @@ function usePhaseNow(hour: number): PhaseNow {
   if (hour < 18)
     return {
       eyebrow: "Right now · Afternoon",
-      title: breath ? "A round of 4-7-8 breathing" : "A quiet mid-afternoon pause",
-      sub: "Five slow rounds settle the afternoon. Snack only if you’re genuinely hungry.",
-      cta: "See your practices",
-      target: "tab:plan",
+      title: breathwork ? `A round of ${breathwork.name.toLowerCase()}` : breath ? `A round of ${breath.name.toLowerCase()}` : "A quiet mid-afternoon pause",
+      sub: `${breathwork ? `${breathwork.rounds} slow rounds` : "A few slow breaths"} settle the afternoon. Snack only if you’re genuinely hungry.`,
+      cta: breathwork ? "Start guided breathing" : "See your practices",
+      target: breathwork ? "breath" : "tab:plan",
       glyph: "breath",
     };
   if (hour < 22)
@@ -70,7 +73,7 @@ function usePhaseNow(hour: number): PhaseNow {
   return {
     eyebrow: "Right now · Night",
     title: bedtimeDrinks.length ? `Wind down — ${bedtimeDrinks[0].toLowerCase()}${bedtimeSupps.length ? " & " + bedtimeSupps[0].toLowerCase() : ""}` : "Wind down for sleep",
-    sub: `${bedtimeDrinks.concat(bedtimeSupps).join(" + ")} before bed${breath ? ", then " + breath.name.toLowerCase() : ""}. Screens off, lights low.`,
+    sub: `${bedtimeDrinks.concat(bedtimeSupps).join(" + ")} before bed${breath ? ", then " + breath.name.split(/[—·(]/)[0].trim().toLowerCase() : ""}. Screens off, lights low.`,
     cta: "Log bedtime routine",
     target: "supps",
     glyph: "moon",
@@ -96,6 +99,7 @@ export function TodayScreen({
   goTab,
   goCheckin,
   goCoach,
+  openBreath,
 }: {
   logged: Record<string, string>;
   onToggleSupp: (id: string) => void;
@@ -107,6 +111,7 @@ export function TodayScreen({
   goTab: (tab: string) => void;
   goCheckin: () => void;
   goCoach: () => void;
+  openBreath: () => void;
 }) {
   const data = useOchre();
   const [selDay, setSelDay] = useState(data.today.idx);
@@ -121,7 +126,8 @@ export function TodayScreen({
     if (ph.target === "supps") {
       const el = document.getElementById("today-supps");
       if (el) el.scrollIntoView({ block: "start", behavior: "smooth" });
-    } else if (ph.target.startsWith("meal:")) openMeal(ph.target.slice(5));
+    } else if (ph.target === "breath") openBreath();
+    else if (ph.target.startsWith("meal:")) openMeal(ph.target.slice(5));
     else if (ph.target.startsWith("tab:")) goTab(ph.target.slice(4));
   };
 
@@ -355,9 +361,9 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
       <div className="top">
         <div style={{ flex: 1 }}>
           <div className="name">{supp.name}</div>
-          <div className="dose">
-            {supp.dose} · {supp.slot.toLowerCase()}
-          </div>
+          {/* dose only — the chip already carries the timing (the old
+              "· bedtime" suffix duplicated and sometimes contradicted it) */}
+          <div className="dose">{supp.dose}</div>
         </div>
         <span className={"badge" + (supp.slot === "Bedtime" ? " forest" : "")}>{supp.timing}</span>
       </div>
@@ -383,12 +389,18 @@ export function PlanScreen({
   onTogglePractice,
   openDoc,
   openRemedy,
+  openBreath,
+  openGrocery,
+  openOrder,
 }: {
   onLogAll: () => void;
   practices: { id: string; name: string; when: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
+  openBreath: () => void;
+  openGrocery: () => void;
+  openOrder: () => void;
 }) {
   const data = useOchre();
   const pr = data.planRef;
@@ -404,6 +416,84 @@ export function PlanScreen({
       </div>
 
       <PhaseRibbon />
+
+      {/* ---- do-this-daily actions first; learning lives further down ---- */}
+
+      <Section title="Your supplements">
+        <div className="card" style={{ overflow: "hidden" }}>
+          {data.supplements.map((s) => (
+            <SuppPlanCard key={s.id} supp={s} />
+          ))}
+        </div>
+        <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
+          Reorder links go to {pr.authoredBy.split(" ")[0]}’s recommended brands.
+        </div>
+
+        {/* 🛒 one-sitting ordering checklist — the compliance win */}
+        <OrderLaunchCard openOrder={openOrder} />
+
+        <button className="log-all" style={{ marginTop: 12 }} onClick={onLogAll}>
+          <Icon name="check" size={17} /> Log everything for today
+        </button>
+      </Section>
+
+      <Section title="Daily practices">
+        <div className="card" style={{ overflow: "hidden" }}>
+          {practices.map((p) => {
+            const on = !!p.done;
+            const isBreath = data.breathwork?.practiceId === p.id;
+            return (
+              <button
+                key={p.id}
+                className="practice"
+                onClick={() => onTogglePractice(p.id)}
+                style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
+              >
+                <span className={"check-sq" + (on ? " on" : "")}>
+                  <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
+                </span>
+                <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
+                {isBreath ? (
+                  <span
+                    className="p-guide"
+                    role="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openBreath();
+                    }}
+                  >
+                    <Icon name="breath" size={13} /> Guide
+                  </span>
+                ) : (
+                  <span className="p-when">{p.when}</span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {data.breathwork ? (
+          /* guided breathing launcher — the real, paced animation */
+          <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />
+        ) : (
+          <div className="card-quiet soon" style={{ marginTop: 10 }}>
+            <Icon name="breath" size={16} style={{ color: "var(--ochre)" }} />
+            <span>
+              Guided meditation & breathing — <strong>coming soon</strong> to your practices.
+            </span>
+          </div>
+        )}
+      </Section>
+
+      {/* this week's full menu + grocery launch — so shopping happens
+          BEFORE the week starts, not meal by meal. Hybrid/principle plans
+          carry ONE illustrative week → "Sample menu" (coach rule
+          2026-06-11: week-by-week framing confuses hybrid clients). */}
+      {data.weekMenus.length > 0 && (
+        <Section title={data.menuIsSample ? "Sample menu" : "This week's menu"}>
+          <WeekMenuSection openGrocery={openGrocery} />
+        </Section>
+      )}
 
       <Section title="How to build your plate">
         <PlateDiagram />
@@ -445,10 +535,6 @@ export function PlanScreen({
             partner remedy if it suits you better, never both.
           </span>
         </div>
-      </Section>
-
-      <Section title="More remedies for you">
-        <RemedyLibrary onOpen={openRemedy} />
       </Section>
 
       {data.lessons.length > 0 && (
@@ -496,48 +582,6 @@ export function PlanScreen({
           </div>
         </Section>
       )}
-
-      <Section title="Your supplements">
-        <div className="card" style={{ overflow: "hidden" }}>
-          {data.supplements.map((s) => (
-            <SuppPlanCard key={s.id} supp={s} />
-          ))}
-        </div>
-        <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-          Reorder links go to {pr.authoredBy.split(" ")[0]}’s recommended brands.
-        </div>
-        <button className="log-all" style={{ marginTop: 12 }} onClick={onLogAll}>
-          <Icon name="check" size={17} /> Log everything for today
-        </button>
-      </Section>
-
-      <Section title="Daily practices">
-        <div className="card" style={{ overflow: "hidden" }}>
-          {practices.map((p) => {
-            const on = !!p.done;
-            return (
-              <button
-                key={p.id}
-                className="practice"
-                onClick={() => onTogglePractice(p.id)}
-                style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
-              >
-                <span className={"check-sq" + (on ? " on" : "")}>
-                  <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
-                </span>
-                <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
-                <span className="p-when">{p.when}</span>
-              </button>
-            );
-          })}
-        </div>
-        <div className="card-quiet soon" style={{ marginTop: 10 }}>
-          <Icon name="breath" size={16} style={{ color: "var(--ochre)" }} />
-          <span>
-            Guided meditation & breathing — <strong>coming soon</strong> to your practices.
-          </span>
-        </div>
-      </Section>
 
       {/* Labs intentionally NOT a standalone section — the order list lives
           in Resources and the milestone view in Progress → Lab checkpoints,

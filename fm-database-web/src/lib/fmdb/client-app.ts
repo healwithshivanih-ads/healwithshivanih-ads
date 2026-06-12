@@ -45,6 +45,73 @@ export interface AppMeal {
 export const AYURVEDIC_DISH_RE =
   /khichdi|khichri|kanji\b|kashayam|churan|golden milk|haldi doodh|turmeric milk|ccf tea|cumin[- ]coriander[- ]fennel|buttermilk|chaas|lassi|methi water|jeera water|triphala|amla|haldi milk/i;
 
+/** One slot of one day in the full-week menu view. */
+export interface WeekMenuSlot {
+  slot: string;
+  dish: string;
+  ayurveda?: boolean;
+}
+export interface WeekMenuDay {
+  dow: string;
+  /** real date when the letter carries one ("8 Jun") */
+  dateLabel?: string;
+  today?: boolean;
+  slots: WeekMenuSlot[];
+}
+export interface AppWeekMenu {
+  week: number;
+  /** the rotation week the client is currently in */
+  current: boolean;
+  days: WeekMenuDay[];
+}
+
+/** One line on the shopping list. Generated per fortnight by
+ *  scripts/generate-grocery-list.py (Haiku, coach-triggered) and stored at
+ *  meal-plans/<planSlug>-grocery.yaml — the app only ever READS it. */
+export interface GroceryItem {
+  item: string;
+  qty?: string;
+  /** shopping-trip grouping: "Grains & atta" | "Dals & legumes" |
+   *  "Vegetables & fresh" | "Dairy" | "Nuts, seeds & dry fruit" |
+   *  "Spices & masala" | "Other" */
+  category: string;
+  /** pantry staple the household almost certainly has */
+  staple?: boolean;
+  /** dish names this item is for (shown on tap) */
+  for?: string[];
+}
+export interface AppGrocery {
+  generated_at?: string;
+  weeks: { week: number; items: GroceryItem[] }[];
+}
+
+// Swap types + matcher live in the PURE module ./swaps (no server-only) so
+// the client-side app components can share the exact same logic.
+export type { AppSwapGroup, SwapMember } from "./swaps";
+
+/** One full recipe from the plan's recipe pack, rendered IN-APP (letters
+ *  are being retired — the app is the system of record). */
+export interface AppRecipe {
+  title: string;
+  serves?: string;
+  time?: string;
+  ingredients: string[];
+  method: string[];
+  tip?: string;
+  ayurveda?: boolean;
+}
+
+/** One scored MSQ submission (written by scripts/save-app-msq.py). */
+export interface AppMsqEntry {
+  date: string;
+  week: number;
+  total: number;
+  band: string; // optimal | mild | moderate | high
+  categoryTotals: Record<string, number>;
+}
+// eslint-disable-next-line no-duplicate-imports
+import { swapTermMatches, type AppSwapGroup as SwapGroupT, type SwapMember as SwapMemberT } from "./swaps";
+
 export interface AppMealExtra {
   grad: string;
   mins?: string;
@@ -72,6 +139,9 @@ export interface AppRemedy {
   category: string;
   route: "internal" | "external";
   icon: string;
+  /** coach-referral purchase link when the remedy needs buying (e.g.
+   *  punarnava) — resolved from supplement_links.yaml, never a search URL */
+  buyUrl?: string;
   summary: string;
   prepSteps: string[];
   dose: string;
@@ -143,6 +213,115 @@ export interface AppResource {
   url?: string;
 }
 
+/** A guided breathing session, paced exactly to the prescribed technique. */
+export interface AppBreathwork {
+  /** Short display name, e.g. "4-7-8 breathing". */
+  name: string;
+  /** id of the matching row in practices[] (gets the inline Guide chip). */
+  practiceId: string;
+  when: string;
+  /** One-or-two sentence client-friendly why, shown under the session. */
+  why: string;
+  rounds: number;
+  phases: {
+    key: string;
+    label: string;
+    cue: string;
+    secs: number;
+    action: "expand" | "hold" | "shrink";
+  }[];
+}
+
+/**
+ * Derive the guided-breathing config from the plan's lifestyle practices.
+ *
+ * Pattern parsing, most-specific first:
+ *   "4-7-8"            → in 4 / hold 7 / out 8        (digits win, always)
+ *   "box breathing"    → in 4 / hold 4 / out 4 / hold 4
+ *   "extended exhale"  → in 4 / out 8
+ *   generic breathwork → in 4 / out 6 (slow breathing)
+ *
+ * Rounds: "N rounds" verbatim, else "N min" ÷ cycle length, else 5.
+ * Mentions like mouth-taping ("nasal breathing") are not paced sessions.
+ */
+function deriveBreathwork(
+  practices: { id: string; name: string; when: string }[],
+  practiceRaw: Dict[],
+): AppBreathwork | null {
+  for (let i = 0; i < practices.length; i++) {
+    const name = practices[i].name;
+    const details = asStr(practiceRaw[i]?.details);
+    const text = `${name} ${details}`;
+    if (!/breath|pranayam/i.test(text)) continue;
+    // not a paced session — taping / posture references only
+    if (/mouth.?tap|nasal breathing|nose breathing|mouth breathing/i.test(text) && !/\d\s*[-–]\s*\d\s*[-–]\s*\d/.test(text))
+      continue;
+    // name must reference the practice itself unless details prescribe a count
+    if (!/breath|pranayam/i.test(name) && !/\d\s*[-–]\s*\d\s*[-–]\s*\d|breathwork|slow .{0,12}breath/i.test(details))
+      continue;
+
+    // ---- phases ----
+    type Phase = AppBreathwork["phases"][number];
+    const IN: Phase = { key: "in", label: "Breathe in", cue: "In through your nose", secs: 4, action: "expand" };
+    const HOLD = (secs: number): Phase => ({ key: "hold", label: "Hold", cue: "Hold it gently", secs, action: "hold" });
+    const OUT = (secs: number, mouth: boolean): Phase => ({
+      key: "out",
+      label: "Breathe out",
+      cue: mouth ? "Out through your mouth" : "Out slowly and fully",
+      secs,
+      action: "shrink",
+    });
+    let phases: Phase[];
+    let shortName: string;
+    const m = text.match(/(\d{1,2})\s*[-–]\s*(\d{1,2})\s*[-–]\s*(\d{1,2})(?:\s*[-–]\s*(\d{1,2}))?/);
+    if (m) {
+      const [a, b, c, d] = [m[1], m[2], m[3], m[4]].map((n) => (n ? parseInt(n, 10) : 0));
+      phases = [{ ...IN, secs: a }, HOLD(b), OUT(c, a === 4 && b === 7 && c === 8)];
+      if (d) phases.push({ ...HOLD(d), key: "hold2", cue: "Lungs empty, stay soft" });
+      shortName = `${m[0].replace(/\s+/g, "")} breathing`;
+    } else if (/box breathing/i.test(text)) {
+      phases = [IN, HOLD(4), OUT(4, false), { ...HOLD(4), key: "hold2", cue: "Lungs empty, stay soft" }];
+      shortName = "Box breathing";
+    } else if (/extended exhale/i.test(text)) {
+      phases = [IN, OUT(8, false)];
+      shortName = "Extended exhale breathing";
+    } else {
+      phases = [IN, OUT(6, false)];
+      shortName = "Slow breathing";
+    }
+    const cycleSecs = phases.reduce((s, p) => s + p.secs, 0);
+
+    // ---- rounds ----
+    let rounds = 5;
+    const rm = text.match(/(\d{1,2})\s*(?:rounds?|times|cycles|breaths)\b/i);
+    const mm = text.match(/(\d{1,2})\s*(?:min\b|mins\b|minutes?)/i);
+    if (rm) rounds = parseInt(rm[1], 10);
+    else if (mm) rounds = Math.min(10, Math.max(3, Math.round((parseInt(mm[1], 10) * 60) / cycleSecs)));
+
+    // ---- why (client-friendly; strip coach stamps) ----
+    let why = details
+      .replace(/^\[[^\]]*\]\s*/g, "")
+      .replace(/^NEW\s*\([^)]*\)\.?\s*/i, "")
+      .split(/(?<=[.!?])\s+/)
+      .slice(0, 2)
+      .join(" ")
+      .trim();
+    if (why.length < 30)
+      why =
+        "Slow, counted rounds calm the nervous system and switch on “rest and digest”. Sit comfortably, shoulders soft.";
+
+    return {
+      name: shortName,
+      practiceId: practices[i].id,
+      when: practices[i].when,
+      why,
+      rounds: Math.min(12, Math.max(1, rounds)),
+      phases,
+    };
+  }
+  return null;
+}
+
 export interface ClientAppData {
   clientId: string;
   planSlug: string;
@@ -168,10 +347,30 @@ export interface ClientAppData {
   today: { dow: string; dateLabel: string; idx: number };
   weekStrip: { dow: string; num: number; today?: boolean }[];
   meals: AppMeal[];
+  /** full-week menu grid(s) for the current fortnight — drives the
+   *  "This week's menu" view + grocery shopping window */
+  weekMenus: AppWeekMenu[];
+  /** hybrid/principle plans carry ONE illustrative week — label it
+   *  "Sample menu" (mix-and-match), never "This week's menu" */
+  menuIsSample: boolean;
+  /** every parsed recipe from the pack — rendered in-app */
+  recipePack: AppRecipe[];
+  /** structured shopping list, null until the coach generates one */
+  grocery: AppGrocery | null;
+  /** ingredient equivalence groups, pre-gated for this client */
+  swapGroups: SwapGroupT[];
+  /** MSQ submissions, oldest → newest (empty until the first check) */
+  msqEntries: AppMsqEntry[];
+  /** Active travel window flagged by the client (null when home).
+   *  Drives the rules-based travel card + pauses the grocery list;
+   *  generate-week-menu.py reads the same session as feedback. */
+  travel: { from: string; to: string; context: string; active: boolean } | null;
   mealExtra: Record<string, AppMealExtra>;
   supplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string }[];
+  /** Guided breathing config when the plan prescribes a breathing practice. */
+  breathwork: AppBreathwork | null;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
   journey: JourneyItem[];
@@ -216,6 +415,10 @@ export interface ClientAppData {
   aiSuggested: { q: string; a: string }[];
   account: { name: string; contact: string; plan: string; member: string; avatar: string };
   reminders: { id: string; label: string; time: string; on: boolean }[];
+  /** ISO timestamp of when this plan was last published — shown in the "Plan updated" banner. */
+  planUpdatedAt: string | null;
+  /** Coach note to the client about what changed in this plan update. */
+  clientUpdateNote: string | null;
 }
 
 // ── small utils ──────────────────────────────────────────────────────────────
@@ -533,7 +736,11 @@ interface LetterRecipe {
 
 function parseRecipes(md: string): LetterRecipe[] {
   const out: LetterRecipe[] = [];
-  const parts = md.split(/^### ✦ /m).slice(1);
+  // Letter generations drifted on the recipe marker (✦ / ✨ / ⭐) — accept
+  // all three, same as cleanDishCell does for menu cells (fix 2026-06-11:
+  // Dhanishta's ⭐-era sidecars parsed to zero recipes, so her dishes had
+  // no methods and the recipe-pack resource vanished).
+  const parts = md.split(/^### [✦✨⭐] /m).slice(1);
   for (const part of parts) {
     const lines = part.split("\n");
     const title = lines[0].trim();
@@ -567,6 +774,28 @@ function parseRecipes(md: string): LetterRecipe[] {
     const method = methodGroups.flatMap((g) =>
       g.steps.map((s, i) => (multi && g.qual && i === 0 ? `${g.qual}: ${s}` : s)),
     );
+    // FALLBACK (2026-06-11): the ⭐-era sidecars use a looser shape — bold
+    // group headers ("**For the bhakri:**"), bare bullet ingredients, and
+    // METHOD AS PROSE PARAGRAPHS with no "Method:" marker or numbering.
+    // When the structured pass found nothing, read that shape instead so
+    // every recipe renders fully in-app.
+    if (!ingredients.length && !method.length) {
+      for (const rawLine of body.split("\n")) {
+        const t = rawLine.trim();
+        if (!t || t === "---" || t.startsWith("## ") || t.startsWith("### ")) continue;
+        const groupM = t.match(/^\*\*(.+?)\*\*$/);
+        if (groupM) {
+          ingredients.push(`— ${groupM[1].replace(/:$/, "").trim()} —`);
+          continue;
+        }
+        if (t.startsWith("- ") || t.startsWith("• ")) {
+          ingredients.push(t.replace(/^[-•]\s*/, ""));
+          continue;
+        }
+        // prose paragraph → one method step
+        if (t.length > 30) method.push(t.replace(/\*\*/g, ""));
+      }
+    }
     out.push({
       title,
       serves: meta ? meta[1].trim() : undefined,
@@ -867,8 +1096,148 @@ function shortDose(dose: string): string {
 function slotFor(timing: string, dose: string): "Morning" | "With meals" | "Bedtime" {
   const t = `${timing} ${dose}`.toLowerCase();
   if (/bedtime|before sleep|night/.test(t) && !/morning/.test(t)) return "Bedtime";
-  if (/lunch|dinner|with meals|fatty meal|fat-containing/.test(t) && !/breakfast|morning/.test(t)) return "With meals";
+  // "with evening meal" / "supper" are dinner-time — they were falling
+  // through to Morning (mobile audit 2026-06-11: Zinc sat in the MORNING
+  // group with a "With evening meal" chip).
+  if (/lunch|dinner|evening meal|with evening|supper|with meals|fatty meal|fat-containing/.test(t) && !/breakfast|morning/.test(t))
+    return "With meals";
   return "Morning";
+}
+
+// ════ Option A: structured app_menu ⇆ WeekTable conversion ════════════════
+
+/** plan.app_menu → the loader's internal WeekTable shape. */
+function appMenuToWeekTables(menu: Dict): WeekTable[] {
+  const weeks = (menu.weeks as Dict[]) ?? [];
+  return weeks.map((w) => {
+    const days = (w.days as Dict[]) ?? [];
+    // slot order = first-seen order across the week
+    const slotOrder: string[] = [];
+    for (const d of days)
+      for (const s of (d.slots as Dict[]) ?? []) {
+        const name = asStr(s.slot);
+        if (name && !slotOrder.includes(name)) slotOrder.push(name);
+      }
+    return {
+      week: Number(w.week) || 1,
+      dayDates: Array.isArray(w.day_dates) ? (w.day_dates as (string | null)[]) : undefined,
+      rows: slotOrder.map((slot) => ({
+        slot,
+        cells: Array.from({ length: 7 }, (_, di) => {
+          const d = days[di];
+          const hit = ((d?.slots as Dict[]) ?? []).find((s) => asStr(s.slot) === slot);
+          return hit ? asStr(hit.dish) : "";
+        }),
+      })),
+    };
+  });
+}
+
+/** Letter-parsed WeekTables → the structured app_menu document. */
+export function weekTablesToAppMenu(tables: WeekTable[], syncedFrom: string): Dict {
+  return {
+    is_sample: tables.length === 1,
+    synced_from: syncedFrom,
+    synced_at: new Date().toISOString(),
+    weeks: tables.map((t) => ({
+      week: t.week,
+      day_dates: t.dayDates ?? null,
+      days: Array.from({ length: 7 }, (_, di) => ({
+        slots: t.rows
+          .map((r) => ({
+            slot: r.slot.replace(/\s*\([^)]*\)\s*$/, "").trim(),
+            dish: r.cells[di] ?? "",
+          }))
+          .filter((s) => s.dish),
+      })),
+    })),
+  };
+}
+
+/** Newest published file for a slug, or null. */
+async function publishedFileFor(planSlug: string): Promise<string | null> {
+  const dir = path.join(getPlansRoot(), "published");
+  try {
+    const match = (await fs.readdir(dir))
+      .filter((n) => n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"))
+      .sort()
+      .reverse()[0];
+    return match ? path.join(dir, match) : null;
+  } catch {
+    return null;
+  }
+}
+
+/** One-time migration: write the letter-derived menu into the published
+ *  plan (amendment-logged) and clear the legacy meal_overrides layer. */
+async function migrateMenuIntoPlan(
+  planSlug: string,
+  clientDir: string,
+  tables: WeekTable[],
+  hadOverrides: boolean,
+): Promise<void> {
+  const file = await publishedFileFor(planSlug);
+  if (!file) return;
+  const raw = await fs.readFile(file, "utf-8");
+  const doc = (yaml.load(raw) as Dict) ?? {};
+  if (doc.app_menu) return; // raced — someone migrated already
+  doc.app_menu = weekTablesToAppMenu(tables, "issued letters (one-time migration)");
+  const amendments = Array.isArray(doc.amendments) ? (doc.amendments as Dict[]) : [];
+  amendments.push({
+    at: new Date().toISOString(),
+    by: "system",
+    field: "app_menu",
+    summary: `Menu migrated from issued letters${hadOverrides ? " (incl. coach meal swaps)" : ""} — the plan is now the source of truth.`,
+  });
+  doc.amendments = amendments;
+  const tmp = `${file}.tmp-${process.pid}`;
+  await fs.writeFile(tmp, yaml.dump(doc, { sortKeys: false, lineWidth: 100 }), "utf-8");
+  await fs.rename(tmp, file);
+  // clear the legacy patch layer — its content now lives in the plan
+  if (hadOverrides) {
+    try {
+      const ovPath = path.join(clientDir, "app-overrides.yaml");
+      const ov = (yaml.load(await fs.readFile(ovPath, "utf-8")) as Dict) ?? {};
+      delete ov.meal_overrides;
+      await fs.writeFile(ovPath, yaml.dump(ov, { sortKeys: false }), "utf-8");
+    } catch {
+      /* overrides file gone — fine */
+    }
+  }
+}
+
+/** Soften a coach_rationale into client-facing copy (mobile audit
+ *  2026-06-11: raw rationales leaked lab readouts — "LDL 130, HDL 49,
+ *  Lp(a) 32", "(204 ng/dL, below range)" — and coach-speak like
+ *  "mandatory correction" / "gap in prior protocol" into the app).
+ *  Letter-provided why-lines are already client-voiced and skip this. */
+function clientifyWhy(raw: string): string {
+  let s = raw;
+  // coach-only phrasing after a dash
+  s = s.replace(
+    /\s*[—–-]\s*(mandatory correction|non-negotiable[^.;]*|gap in (?:the )?prior protocol[^.;]*|hard rule[^.;]*)\.?/gi,
+    ".",
+  );
+  // parenthetical lab readouts / conversion arrows
+  s = s.replace(/\s*\([^)]*(?:\d[^)]*(?:ng|mg|nmol|pmol|mIU|mcg|µg|iu\b)[^)]*|below range|above range|→[^)]*)\)/gi, "");
+  // bare "MARKER 123" readout lists
+  s = s.replace(/\(?\b(?:LDL|HDL|Lp\(a\)|TSH|fT[34]|HbA1c|hsCRP|homocysteine|ferritin|B12|vitamin D)\s*[:=]?\s*\d+(?:\.\d+)?%?\)?,?/gi, "");
+  // trailing "= MTHFR pattern" style equations
+  s = s.replace(/\s*=\s*[A-Za-z][^.]*pattern/gi, "");
+  // a readout removal can leave a dangling comparison clause
+  // ("— despite normal B12/folate strongly implicates…") — drop it
+  s = s.replace(/\s*[—–-]\s*despite[^.]*\.?/gi, ".");
+  // tidy what the removals left behind
+  s = s
+    .replace(/\s*,\s*([,.])/g, "$1")
+    .replace(/,\s*\./g, ".")
+    .replace(/:\s*\./g, ".")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([.,])/g, "$1")
+    .replace(/\.{2,}/g, ".")
+    .replace(/[,:]\s*$/g, "")
+    .trim();
+  return s;
 }
 
 function shortTiming(timing: string): string {
@@ -880,6 +1249,75 @@ function shortTiming(timing: string): string {
 }
 
 // ── main loader ──────────────────────────────────────────────────────────────
+
+/** Find the highest-versioned published plan for a given client. */
+async function latestPublishedPlanForClient(
+  clientId: string,
+): Promise<{ plan: Dict } | null> {
+  const dir = path.join(getPlansRoot(), "published");
+  let entries: string[];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return null;
+  }
+  let best: { plan: Dict; version: number } | null = null;
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    const d = await readYamlIfExists(path.join(dir, name));
+    if (!d || d.client_id !== clientId) continue;
+    const v = typeof d.version === "number" ? d.version : 0;
+    if (!best || v > best.version) best = { plan: d, version: v };
+  }
+  return best ? { plan: best.plan } : null;
+}
+
+/**
+ * Resolve a stable client-level app_token → { plan, clientId }.
+ * Scans clients/<id>/client.yaml for app_token === token.
+ */
+async function resolveClientAppToken(
+  token: string,
+): Promise<{ plan: Dict; clientId: string } | null> {
+  const clientsDir = path.join(getPlansRoot(), "clients");
+  let subdirs: string[];
+  try {
+    subdirs = await fs.readdir(clientsDir);
+  } catch {
+    return null;
+  }
+  for (const id of subdirs) {
+    const yml = path.join(clientsDir, id, "client.yaml");
+    const d = await readYamlIfExists(yml);
+    if (!d || d.app_token !== token) continue;
+    const found = await latestPublishedPlanForClient(id);
+    if (!found) return null;
+    return { plan: found.plan, clientId: id };
+  }
+  return null;
+}
+
+/** Extract the ISO timestamp of the most recent content change the client
+ *  should be told about — the later of the publish event and any post-publish
+ *  in-place edit (e.g. the coach's quick remedy toggle stamps
+ *  `app_content_updated_at`). Drives the "Plan updated" banner. */
+function extractPublishedAt(plan: Dict): string | null {
+  const history = Array.isArray(plan.status_history) ? plan.status_history : [];
+  let latest: string | null = null;
+  for (const ev of history as Dict[]) {
+    const state = asStr(ev.to ?? ev.state ?? "");
+    if (state !== "published") continue;
+    const at = asStr(ev.at ?? ev.timestamp ?? "");
+    if (!at) continue;
+    if (!latest || at > latest) latest = at;
+  }
+  // Post-publish in-place edits (remedy toggle) advance this past the publish.
+  const contentAt = asStr(plan.app_content_updated_at);
+  if (contentAt && (!latest || contentAt > latest)) latest = contentAt;
+  // Fall back to plan updated_at
+  if (!latest && typeof plan.updated_at === "string") latest = plan.updated_at;
+  return latest;
+}
 
 async function loadPublishedPlan(slugOrToken: { token: string }): Promise<{ plan: Dict; file: string } | null> {
   const dir = path.join(getPlansRoot(), "published");
@@ -902,10 +1340,22 @@ const DOSHA_LABEL: Record<string, string> = { vata: "Vata", pitta: "Pitta", kaph
 
 export async function loadClientAppData(token: string): Promise<ClientAppData | null> {
   if (!token || token.length < 16) return null;
-  const found = await loadPublishedPlan({ token });
-  if (!found) return null;
-  const plan = found.plan;
-  const clientId = asStr(plan.client_id);
+
+  // 1. Try stable client-level app_token (survives plan superseding)
+  let plan: Dict;
+  let clientId: string;
+  const clientMatch = await resolveClientAppToken(token);
+  if (clientMatch) {
+    plan = clientMatch.plan;
+    clientId = clientMatch.clientId;
+  } else {
+    // 2. Fall back to per-plan letter_token (backward compat for old shared links)
+    const found = await loadPublishedPlan({ token });
+    if (!found) return null;
+    plan = found.plan;
+    clientId = asStr(plan.client_id);
+  }
+
   const planSlug = asStr(plan.slug);
   if (!clientId || !planSlug) return null;
 
@@ -1028,6 +1478,57 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       /* keep empty — principle-based plan, Today shows the framework card */
     }
   }
+  // ---- coach app-overrides (read once; used for meals here and remedies
+  // further down). Written by the "What the client sees" panel. -------------
+  let appOverrides: {
+    hidden_remedies?: string[];
+    approved_suggestions?: string[];
+    /** "<week>|<dayIdx>|<slot lowercase>" → replacement dish text */
+    meal_overrides?: Record<string, string>;
+  } = {};
+  try {
+    const ovRaw = await readIfExists(path.join(clientDir, "app-overrides.yaml"));
+    if (ovRaw) appOverrides = (yaml.load(ovRaw) as typeof appOverrides) ?? {};
+  } catch {
+    /* none yet */
+  }
+
+  // ════ OPTION A (2026-06-12): plan.app_menu is THE source of truth ════
+  // Letters used to be parsed for menus, which made a derived artifact a
+  // source of truth and forced coach edits into a patch layer. Now the
+  // published plan carries structured `app_menu`; the letter-parse below
+  // is only the LEGACY path + the one-time migration source.
+  const planMenuRaw = plan.app_menu as Dict | undefined;
+  if (planMenuRaw && Array.isArray(planMenuRaw.weeks) && (planMenuRaw.weeks as Dict[]).length) {
+    weekTables = appMenuToWeekTables(planMenuRaw);
+  } else {
+    // LEGACY: coach meal_overrides patch the letter-parsed tables
+    const mealOverrides = appOverrides.meal_overrides ?? {};
+    for (const [key, dish] of Object.entries(mealOverrides)) {
+      const [wkStr, dayStr, slotKey] = key.split("|");
+      const t = weekTables.find((w) => w.week === parseInt(wkStr, 10));
+      if (!t || !dish) continue;
+      const row = t.rows.find(
+        (r) => r.slot.replace(/\s*\([^)]*\)\s*$/, "").trim().toLowerCase() === slotKey,
+      );
+      const di = parseInt(dayStr, 10);
+      if (row && di >= 0 && di < 7) row.cells[di] = dish;
+    }
+    // One-time SELF-MIGRATION (authoritative Mac store only — Fly carries
+    // FLY_INTAKE_ONLY and receives the migrated plan via staging): write
+    // the letter-derived menu (with any legacy overrides folded in) into
+    // the published plan, then clear the override patch layer.
+    if (weekTables.length && !process.env.FLY_INTAKE_ONLY) {
+      try {
+        await migrateMenuIntoPlan(planSlug, clientDir, weekTables, Object.keys(mealOverrides).length > 0);
+        // reflect the fold-in locally so this load already behaves migrated
+        appOverrides.meal_overrides = undefined;
+      } catch {
+        /* migration is best-effort; legacy path still rendered this load */
+      }
+    }
+  }
+
   const mealLetterFoods = parseLetterFoods(mealMd) ?? letterFoods;
   const sampleWeekNote = mealLetterFoods?.note || letterFoods?.note || "";
 
@@ -1044,9 +1545,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       break;
     }
   }
+  // Weekly cadence (2026-06-12): approved weeks carry ABSOLUTE week numbers
+  // — prefer the table for the client's actual plan week before falling
+  // back to the legacy fortnight rotation.
+  if (!table) table = weekTables.find((t) => t.week === week);
   if (!table) {
     const rotationWeek = weekTables.length >= 2 ? ((week - 1) % weekTables.length) + 1 : weekTables[0]?.week ?? 1;
-    table = weekTables.find((t) => t.week === rotationWeek) ?? weekTables[0];
+    table = weekTables.find((t) => t.week === rotationWeek) ?? weekTables[weekTables.length - 1];
   }
   const SLOT_GLYPH: Record<string, string> = {
     "on waking": "sun",
@@ -1146,6 +1651,101 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     }
   }
 
+  // ---- full-week menus + grocery list ---------------------------------------
+  // The week×slot×day matrix is already parsed (weekTables) — expose it so
+  // the app can show the whole week for grocery shopping, not just today.
+  const DOW_FULL = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const weekMenus: AppWeekMenu[] = weekTables.map((t) => ({
+    week: t.week,
+    current: t === table,
+    days: DOW_FULL.map((dow, di) => ({
+      dow,
+      dateLabel: t.dayDates?.[di] ?? undefined,
+      today: t === table && di === colIdx ? true : undefined,
+      slots: t.rows
+        .filter((r) => !r.slot.toLowerCase().includes("bedtime"))
+        .map((r) => {
+          const dish = r.cells[di] ?? "";
+          return {
+            slot: r.slot.replace(/\s*\([^)]*\)\s*$/, "").trim(),
+            dish,
+            ayurveda: AYURVEDIC_DISH_RE.test(dish) || undefined,
+          };
+        })
+        .filter((s) => s.dish),
+    })),
+  }));
+
+  // Hybrid/principle plans carry ONE illustrative week — present it as a
+  // mix-and-match "Sample menu", not a prescriptive week-by-week schedule
+  // (coach rule 2026-06-11). Signal: a single week table. Real fortnight
+  // plans always carry two (week A + week B rotation).
+  const menuIsSample = weekMenus.length === 1;
+
+  // The full recipe pack, exposed for IN-APP rendering (letters are being
+  // retired; the dish overlay and Plan → Resources both render from this).
+  const recipePack: AppRecipe[] = recipes.map((r) => ({
+    title: r.title,
+    serves: r.serves,
+    time: r.time,
+    ingredients: r.ingredients,
+    method: r.method,
+    tip: r.tip,
+    ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
+  }));
+
+  // Shopping list — written by scripts/generate-grocery-list.py; read-only here.
+  let grocery: AppGrocery | null = null;
+  const groceryRaw = await readIfExists(path.join(mealPlansDir, `${planSlug}-grocery.yaml`));
+  if (groceryRaw) {
+    try {
+      const g = yaml.load(groceryRaw) as AppGrocery;
+      if (g && Array.isArray(g.weeks) && g.weeks.length) grocery = g;
+    } catch {
+      /* malformed file — app simply shows no list */
+    }
+  }
+
+  // ---- ingredient swap groups (compliance-gated per client) -----------------
+  // Curated equivalences from fm-database/data/swap_groups.yaml. A member is
+  // dropped when its match words appear in the client's "leave out" tier or
+  // when it's animal-derived and the client is vegan — so the app can never
+  // offer a swap the plan forbids. Groups need ≥2 survivors to be useful.
+  let swapGroups: SwapGroupT[] = [];
+  try {
+    const raw = await readIfExists(path.join(getCataloguePath(), "swap_groups.yaml"));
+    if (raw) {
+      const doc = yaml.load(raw) as {
+        groups?: { id?: string; label?: string; note?: string; members?: Dict[] }[];
+      };
+      // The avoid tier, from every source the plan uses: nutrition.reduce
+      // (plan YAML) + the client's own foods_to_avoid memory field.
+      const avoidTexts = [
+        ...asStrArr(((plan.nutrition as Dict) ?? {}).reduce),
+        ...asStr(client.foods_to_avoid).split(/[,\n]/),
+      ]
+        .map((s) => s.trim().toLowerCase())
+        .filter(Boolean);
+      const isVegan = /vegan/i.test(asStr(client.dietary_preference));
+      for (const g of doc?.groups ?? []) {
+        const members: SwapMemberT[] = [];
+        for (const m of g.members ?? []) {
+          const name = asStr(m.name);
+          const match = asStrArr(m.match).map((t) => t.toLowerCase());
+          if (!name || !match.length) continue;
+          if (isVegan && m.vegan_excluded) continue;
+          // gated out when ANY avoid-tier entry mentions this ingredient
+          if (avoidTexts.some((a) => match.some((t) => swapTermMatches(a, t)))) continue;
+          members.push({ name, match, note: asStr(m.note) || undefined });
+        }
+        if (members.length >= 2 && g.id && g.label)
+          swapGroups.push({ id: g.id, label: g.label, note: asStr(g.note) || undefined, members });
+      }
+    }
+  } catch {
+    swapGroups = []; // malformed file — swaps simply don't appear
+  }
+
   // ---- supplements ----------------------------------------------------------
   // Dose/timing: the PLAN YAML is canonical (quick edits like the omega-3
   // reduction live there; an already-issued letter can be stale on dose).
@@ -1189,7 +1789,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       dose: shortDose(dose || row?.dose || ""),
       slot: slotFor(timing, dose),
       timing: shortTiming(timing),
-      why: row?.why || firstSentence(asStr(p.coach_rationale).replace(/^\[[^\]]*\]\s*/g, "")).replace(/^CRITICAL GAP[^:]*:\s*/i, "").replace(/^CONTINUE[^.]*\.\s*/i, ""),
+      why:
+        row?.why ||
+        clientifyWhy(
+          firstSentence(asStr(p.coach_rationale).replace(/^\[[^\]]*\]\s*/g, ""))
+            .replace(/^CRITICAL GAP[^:]*:\s*/i, "")
+            .replace(/^CONTINUE[^.]*\.\s*/i, ""),
+        ),
       buyUrl,
       buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
     });
@@ -1473,13 +2079,32 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     remedyShelf.push(cand.remedy);
   }
 
+  // ---- coach app-overrides: hidden suggestions (read above, with meals) ----
+  // Anything the coach hides never reaches the app's shelf or search.
+  // Assigned remedies are managed via the plan (ManageRemedies).
+  const hiddenRemedies = new Set((appOverrides.hidden_remedies ?? []).map(String));
+  const visibleShelf = remedyShelf.filter((r) => !hiddenRemedies.has(r.slug));
+  const visibleLib = safeLib.filter((r) => !hiddenRemedies.has(r.slug));
+
+  // Purchase links for remedies that need buying (punarnava, triphala…) —
+  // curated supplement_links.yaml only, never a search URL.
+  try {
+    const { resolveSupplementLink } = await import("@/lib/server-actions/supplement-links");
+    for (const r of [...remedies, ...visibleShelf]) {
+      const link = await resolveSupplementLink(r.name.split("(")[0].trim());
+      if (link.source !== "search") r.buyUrl = link.url;
+    }
+  } catch {
+    /* links file unavailable — Get-it buttons simply hide */
+  }
+
   // ---- practices (exclude the remedy drinks — they live with meals) --------
   const practices: { id: string; name: string; when: string }[] = [];
   const lifestyle = asArr(plan.lifestyle_practices) as Dict[];
   const practiceWhen = (name: string): string => {
     const n = name.toLowerCase();
     if (n.includes("sunlight")) return "Morning";
-    if (n.includes("brebeath") || n.includes("breathing")) return "Morning & night";
+    if (n.includes("breath")) return "Morning & night";
     if (n.includes("walk")) return "Daily";
     if (n.includes("sleep schedule") || n.includes("lights out")) return "Night";
     if (n.includes("journal")) return "Evening";
@@ -1488,12 +2113,19 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     return "Daily";
   };
   let pIdx = 0;
+  const practiceRaw: Dict[] = []; // index-aligned with practices[]
   for (const p of lifestyle) {
     const name = asStr(p.name);
     if (!name) continue;
     if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
     practices.push({ id: `p${pIdx++}`, name: name.replace(/\s*\(([^)]{25,})\)/, ""), when: practiceWhen(name) });
+    practiceRaw.push(p);
   }
+
+  // ---- guided breathwork (paced exactly to the prescribed technique) -------
+  // The animation is driven entirely from these numbers, so it can never
+  // drift from what the coach prescribed in the plan.
+  const breathwork = deriveBreathwork(practices, practiceRaw);
 
   // ---- principles (from the letter's meals note + plan meal_timing) --------
   const principles: { t: string; b: string }[] = [];
@@ -1575,8 +2207,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       note: { who: coachName, text: ph.note },
     });
   }
-  // weekly check-in / poll replies from sessions
+  // weekly check-in / poll replies from sessions (+ MSQ submissions)
   const sessionPoints: { wk: number; v: number }[] = [];
+  const msqEntries: AppMsqEntry[] = [];
+  // latest travel flag wins (a later "cancelled" entry clears the window)
+  let latestTravel: { from: string; to: string; context: string; cancelled: boolean; at: string } | null = null;
   try {
     const sessDir = path.join(clientDir, "sessions");
     const names = (await fs.readdir(sessDir)).filter((n) => n.endsWith(".yaml"));
@@ -1585,9 +2220,41 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       if (!s) continue;
       const poll = s.poll_response as Dict | undefined;
       const checkin = s.checkin_response as Dict | undefined;
+      const msq = s.msq_response as Dict | undefined;
+      const travelResp = s.travel_response as Dict | undefined;
       const dateStr = asStr(s.date);
       if (!dateStr) continue;
+      if (travelResp) {
+        const at = asStr(travelResp.received_at) || dateStr;
+        if (!latestTravel || at > latestTravel.at) {
+          latestTravel = {
+            from: asStr(travelResp.from),
+            to: asStr(travelResp.to),
+            context: asStr(travelResp.context),
+            cancelled: travelResp.cancelled === true,
+            at,
+          };
+        }
+        continue;
+      }
       const d = new Date(`${dateStr}T00:00:00Z`);
+      if (msq && Number(msq.total) >= 0) {
+        msqEntries.push({
+          date: dateStr,
+          week: Number(msq.week) || weekOf(d),
+          total: Number(msq.total) || 0,
+          band: asStr(msq.band) || "mild",
+          categoryTotals: (msq.category_totals as Record<string, number>) ?? {},
+        });
+        journey.push({
+          kind: "checkin",
+          week: weekOf(d),
+          when: fmtDay(d),
+          title: "Symptom check (MSQ)",
+          summary: `You scored ${Number(msq.total) || 0} — every retake shows the trend.`,
+        });
+        continue;
+      }
       if (poll) {
         const score = asStr(poll.score);
         const raw = asStr(poll.raw_text);
@@ -1616,6 +2283,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     /* no sessions dir */
   }
   journey.sort((a, b) => b.week - a.week || (a.kind === "start" ? 1 : -1));
+  msqEntries.sort((a, b) => a.date.localeCompare(b.date));
 
   // ---- symptom score (only from real check-ins; null until ≥2 points) --------
   sessionPoints.sort((a, b) => a.wk - b.wk);
@@ -1632,6 +2300,24 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
           caption: "Built from your weekly check-ins — how you feel is the proof of progress.",
         }
       : null;
+
+  // ---- travel window (client-flagged from the app) ---------------------------
+  // Active when today ∈ [from, to] and the latest flag isn't a cancellation.
+  // Window shown a touch early (from − 2d) so the client sees the travel
+  // card while packing; expires silently the day after return.
+  let travel: ClientAppData["travel"] = null;
+  if (latestTravel && !latestTravel.cancelled && latestTravel.from && latestTravel.to) {
+    const todayYmd = new Date().toISOString().slice(0, 10);
+    const soonYmd = new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10);
+    if (latestTravel.from <= soonYmd && todayYmd <= latestTravel.to) {
+      travel = {
+        from: latestTravel.from,
+        to: latestTravel.to,
+        context: latestTravel.context,
+        active: latestTravel.from <= todayYmd,
+      };
+    }
+  }
 
   // ---- lab checkpoints ---------------------------------------------------------
   const baseline = (plan.baseline_snapshot as Dict) ?? {};
@@ -1864,9 +2550,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       title: "Your full recipe pack",
       kind: "Recipes",
       icon: "leaf",
-      desc: "Every ✦ dish in your meal plan — ingredients and method.",
-      body: "All the recipes from your plan, in one place — open the pack below.",
-      url: `/recipes/${planSlug}`,
+      desc: "Every dish in your meal plan — ingredients and method, right here.",
+      // No body / no url: DocOverlay renders the pack IN-APP from
+      // data.recipePack (letters are retiring — nothing links out).
+      body: "",
     });
   }
   // (no separate supplement-order resource — each supplement on the Plan tab
@@ -1967,9 +2654,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     ? new Date(`${nextContact}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" })
     : null;
 
+  const planUpdatedAt = extractPublishedAt(plan);
+  const clientUpdateNote = typeof plan.client_update_note === "string" && plan.client_update_note.trim()
+    ? plan.client_update_note.trim()
+    : null;
+
   return {
     clientId,
     planSlug,
+    planUpdatedAt,
+    clientUpdateNote,
     token,
     client: {
       firstName,
@@ -1997,9 +2691,17 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     weekStrip,
     meals,
     mealExtra,
+    weekMenus,
+    menuIsSample,
+    recipePack,
+    grocery,
+    swapGroups,
+    msqEntries,
+    travel,
     supplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices,
+    breathwork,
     principles,
     labs,
     journey,
@@ -2009,8 +2711,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     labCheckpoints,
     movementGoalMins: 180,
     remedies,
-    remedyLib: safeLib,
-    remedyShelf,
+    remedyLib: visibleLib,
+    remedyShelf: visibleShelf,
     planRef: {
       pattern: asStr(nutrition.pattern) || "your plan",
       authoredBy: coachName,

@@ -68,6 +68,9 @@ import { SendEducationPackButton } from "@/components/client-widgets/send-educat
 import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
 import { PlanConflictPanel } from "./plan-conflict-panel";
+import { AppPreviewPanel } from "../app-preview-panel";
+import { GroceryPanel } from "../grocery-panel";
+import { SendAppLinkButton } from "../send-app-link-button";
 
 export const dynamic = "force-dynamic";
 
@@ -698,6 +701,25 @@ export default async function PlanTabPage({
         <PlanConflictPanel clientId={id} conflicts={planConflicts} />
       )}
 
+      {/* ── Plan & App studio (Option A, 2026-06-12) ──────────────────────
+          THE home for everything the client receives: the live app preview
+          with editable menu, remedies (flagged suggestions + library-add),
+          supplement order links, grocery generation and the app share link.
+          The plan is the source of truth — an edit here reaches the
+          client's app instantly. (Moved from the Overview right column;
+          Overview is state-and-signals only.) */}
+      {activePlan && planStatusOf(activePlan) === "published" && (
+        <div style={{ marginTop: 14, display: "grid", gap: 14 }}>
+          <AppPreviewPanel
+            clientId={id}
+            quickEdit={{ planSlug: activePlan.slug as string, rows: quickEditSupplementRows }}
+          />
+          <GroceryPanel clientId={id} planSlug={activePlan.slug as string} />
+          {/* App SHARE link moved to the Communicate tab (2026-06-12) —
+              sharing is communication; the Plan tab edits content. */}
+        </div>
+      )}
+
       {/* Pending-draft callout — only when there's a draft sitting next
           to the published plan. Without this surface the coach has no
           visual cue that a newer AI synthesis exists and is waiting for
@@ -819,42 +841,9 @@ export default async function PlanTabPage({
                 lives on Plan, letters live on Communicate, no duplication. A
                 pointer card replaces the panel so coach can still jump there
                 in one click while reviewing the protocol. */}
-            {(() => {
-              const planSlug = activePlan.slug as string;
-              return (
-                <a
-                  href={`/clients-v2/${id}/communicate`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 12,
-                    padding: "10px 14px",
-                    background: "rgba(75, 110, 175, 0.06)",
-                    border: "1px dashed rgba(75, 110, 175, 0.30)",
-                    borderRadius: "var(--fm-radius-md)",
-                    textDecoration: "none",
-                    color: "inherit",
-                    marginBottom: 12,
-                  }}
-                  title="The meal plan, supplement guide and other letters live on the Communicate tab"
-                >
-                  <span style={{ fontSize: 20 }}>📬</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "var(--fm-text-primary)" }}>
-                      Letters for the client live on Communicate
-                    </div>
-                    <div style={{ fontSize: 11, color: "var(--fm-text-secondary)" }}>
-                      Meal plan, supplement guide, lifestyle guide, consolidated letter — preview, refine and send from there.
-                    </div>
-                  </div>
-                  <span style={{ fontSize: 12, color: "var(--fm-primary)", fontWeight: 700 }}>
-                    Open Communicate →
-                  </span>
-                  {/* keep planSlug referenced so the hint chip below can use it if needed */}
-                  <span style={{ display: "none" }}>{planSlug}</span>
-                </a>
-              );
-            })()}
+            {/* (The "Letters live on Communicate" pointer card was removed
+                2026-06-12 — coach audit: pure noise; the Communicate tab is
+                one click away in the subnav.) */}
 
             {/* Plan header card */}
             <FmPanel
@@ -992,15 +981,10 @@ export default async function PlanTabPage({
               <FmSupplementGrid items={supplementGridItems} />
             </FmPanel>
 
-            {/* In-place quick edit — published plans only. Lets the coach
-                adjust a dose / timing or remove a supplement without the
-                4-step supersede flow. Drafts use the full plan editor. */}
-            {isPublished && (
-              <QuickEditSupplementsPanel
-                planSlug={activePlan.slug}
-                supplements={quickEditSupplementRows}
-              />
-            )}
+            {/* In-place quick edit MOVED into the "What the client sees"
+                studio above (2026-06-12 audit) — the studio is the ONE
+                supplement surface; this read-only grid stays as the
+                clinical reference (rationale + slot bubbles). */}
 
             {/* Nutrition — pattern + add/reduce + meal timing + cooking
                 adjustments + home remedies. The 7-day meal grid itself

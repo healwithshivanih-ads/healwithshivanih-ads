@@ -82,8 +82,18 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// 07:00 IST daily — auto-draft next week's menus for clients whose new week
+// starts within 3 days (weekly cadence, 2026-06-12). Drafts wait for coach
+// approval in the studio; nothing reaches clients automatically.
+cron.schedule(
+  "0 7 * * *",
+  () => fire("weekly-menu-drafts"),
+  { timezone: "Asia/Kolkata" },
+);
+
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
+    + "\n  · 07:00 IST  weekly-menu-drafts"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
     + "\n  · * * * * *  pending-sends"

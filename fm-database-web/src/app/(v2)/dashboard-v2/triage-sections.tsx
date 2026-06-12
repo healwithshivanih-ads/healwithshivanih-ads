@@ -157,12 +157,12 @@ const SECTION_META: Record<SignalKind, SectionMeta> = {
     ctaHref: (r) => `/clients-v2/${r.client_id}/communicate`,
   },
   awaiting_signup: {
-    title: "Considering the programme",
-    icon: "🤔",
-    accent: "rgba(180, 83, 9, 0.08)",
-    border: "rgba(180, 83, 9, 0.30)",
-    badgeColor: "#b45309",
-    cta: "View client",
+    title: "In conversation — deciding",
+    icon: "🌱",
+    accent: "rgba(46, 125, 50, 0.07)",
+    border: "rgba(46, 125, 50, 0.28)",
+    badgeColor: "#2e7d32",
+    cta: "💬 Nurture",
     ctaHref: (r) => `/clients-v2/${r.client_id}`,
   },
   // ── 🔵 In progress ───────────────────────────────────────────────
@@ -278,7 +278,10 @@ const VIEW_TIERS: Record<DashboardView, Tier[]> = {
       label: "This week",
       hint: "Keep things moving",
       color: "#b45309",
-      kinds: ["labs_pending", "phase_letter_due", "plan_review_due"],
+      // awaiting_signup removed — prospects live in the Pipeline tab, not here.
+      // Mixing warm leads with urgent action items made the dashboard feel like
+      // "still deciding = a problem to fix". It's not — they're in the funnel.
+      kinds: ["labs_pending", "booking_link_pending", "phase_letter_due", "plan_review_due"],
     },
   ],
   active: [
@@ -297,14 +300,14 @@ const VIEW_TIERS: Record<DashboardView, Tier[]> = {
   ],
   discovery: [
     {
-      label: "Decision pending",
-      hint: "Had discovery, considering the programme",
-      color: "#b45309",
+      label: "Warm prospects",
+      hint: "Had a discovery call — nurture toward sign-up",
+      color: "#2e7d32",
       kinds: ["awaiting_signup", "booking_link_pending"],
     },
     {
-      label: "Record call",
-      hint: "Discovery done — log the session",
+      label: "New leads",
+      hint: "Discovery done — log the session to start the record",
       color: "#6b7280",
       kinds: ["new_lead"],
     },
@@ -384,7 +387,7 @@ export function TriageSections({ grouped }: TriageSectionsProps) {
           const labels: Record<DashboardView, string> = {
             attention: "🎯 Needs attention",
             active: "📋 Active clients",
-            discovery: "🔍 Post-discovery",
+            discovery: "🌱 Pipeline",
             past: "🗂 Past",
           };
           const isActive = view === v;
@@ -976,8 +979,8 @@ function SignalDetail({ signal }: { signal: TriageRow["signal"] }) {
         <span style={labelStyle}>Discovery:</span>
         <span style={valueStyle}>
           {signal.discoveryDate
-            ? `done ${signal.discoveryDate} — confirm if they're signing up`
-            : "done — confirm if they're signing up"}
+            ? `${signal.discoveryDate} · in the pipeline`
+            : "done · in the pipeline"}
         </span>
       </div>
     );
@@ -1137,7 +1140,7 @@ function SignalBadge({ signal }: { signal: TriageRow["signal"] }) {
     return <FmChip tone="warning">no booking</FmChip>;
   }
   if (signal.kind === "awaiting_signup") {
-    return <FmChip tone="warning">not signed up</FmChip>;
+    return <FmChip>deciding</FmChip>;
   }
   if (signal.kind === "plan_review_due") {
     return (

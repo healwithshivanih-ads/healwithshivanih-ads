@@ -94,9 +94,21 @@ export default async function SupplementsPage({
   params: Promise<{ planSlug: string }>;
 }) {
   const { planSlug: routeParam } = await params;
-  // Resolve a stable letter_token → real slug; fall back to slug (legacy links).
+  // TOKEN-ONLY (PHI gate closed 2026-06-11): the param must be a valid
+  // letter_token — plan slugs are guessable, so the slug fallback is gone.
   const tok = await lookupLetterToken(routeParam);
-  const planSlug = tok.ok ? tok.plan_slug : routeParam;
+  if (!tok.ok) {
+    return (
+      <Wrap>
+        <h1 style={H1}>This link isn&apos;t active any more</h1>
+        <p style={P}>
+          Message Shivani on WhatsApp and she&apos;ll send you a fresh supplement
+          list link.
+        </p>
+      </Wrap>
+    );
+  }
+  const planSlug = tok.plan_slug;
   const plan = await loadPublishedPlan(planSlug);
 
   if (!plan) {

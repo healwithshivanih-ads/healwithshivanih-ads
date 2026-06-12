@@ -177,7 +177,8 @@ export async function firePlanPublishFollowups(input: {
   const letterUrl = tokRes.short_code
     ? `${origin}/l/${tokRes.short_code}`
     : `${origin}/letter/${tokRes.token}`;
-  const suppUrl = `${origin}/supplements/${input.planSlug}`;
+  // Token, never the slug — /supplements is token-gated (2026-06-11).
+  const suppUrl = `${origin}/supplements/${tokRes.token}`;
 
   // Template 1: fire now.
   let letterSent = false;

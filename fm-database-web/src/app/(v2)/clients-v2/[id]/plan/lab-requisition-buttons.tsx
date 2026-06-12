@@ -22,6 +22,7 @@ import {
 import { getLastSentAtAction } from "@/app/api/whatsapp/actions";
 import { updateClientFieldsAction } from "@/app/api/email/actions";
 import { relativeTimeShort } from "@/lib/fmdb/session-utils";
+import { copyText } from "@/lib/copy-text";
 
 interface Props {
   planSlug: string;
@@ -302,7 +303,7 @@ export function LabRequisitionButtons({
                   ⬇ Download HTML
                 </button>
                 <button
-                  onClick={() => navigator.clipboard.writeText(previewMd).then(() => toast.success("Markdown copied"))}
+                  onClick={() => copyText(previewMd).then(() => toast.success("Markdown copied"))}
                   style={{ ...btnStyle, padding: "4px 10px" }}
                 >
                   📋 Copy markdown

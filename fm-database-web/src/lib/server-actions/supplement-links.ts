@@ -25,13 +25,16 @@ export interface SupplementLink {
   notes?: string;
 }
 
+interface LinksEntry {
+  display_name?: string;
+  url?: string;
+  source?: string;
+  notes?: string;
+  aliases?: string[];
+}
+
 interface LinksFile {
-  [key: string]: {
-    display_name?: string;
-    url?: string;
-    source?: string;
-    notes?: string;
-  };
+  [key: string]: LinksEntry;
 }
 
 let cache: LinksFile | null = null;
@@ -76,9 +79,19 @@ export async function resolveSupplementLink(
     .replace(/^_+|_+$/g, "");
   const links = await readLinks();
 
-  const entry =
+  // 1. Exact key match
+  // 2. Exact alias match (entry has an aliases[] field that includes the slug)
+  // 3. LONGEST bidirectional substring match across keys + aliases
+  const entries = Object.entries(links);
+  const entry: LinksEntry | undefined =
     links[slug] ??
-    Object.entries(links).find(([k]) => slug.includes(k) || k.includes(slug))?.[1];
+    entries.find(([, v]) => v.aliases?.includes(slug))?.[1] ??
+    entries
+      .flatMap(([k, v]) =>
+        [k, ...(v.aliases ?? [])].map((tok) => ({ tok, v })),
+      )
+      .filter(({ tok }) => tok.length >= 3 && (slug.includes(tok) || tok.includes(slug)))
+      .sort((a, b) => b.tok.length - a.tok.length)[0]?.v;
 
   if (entry?.url) {
     return {

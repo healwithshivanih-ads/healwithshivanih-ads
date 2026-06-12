@@ -36,13 +36,28 @@ interface SupplementRow {
   timing: string;
 }
 
+export type QuickEditSupplementRow = SupplementRow;
+
 interface Props {
   planSlug: string;
   supplements: SupplementRow[];
+  /** bare rows, no FmPanel chrome, always open — used inside the Plan
+   *  tab's "What the client sees" studio (surfaces merged 2026-06-12) */
+  embedded?: boolean;
 }
 
-export function QuickEditSupplementsPanel({ planSlug, supplements }: Props) {
+export function QuickEditSupplementsPanel({ planSlug, supplements, embedded }: Props) {
   const [open, setOpen] = useState(false);
+
+  if (embedded) {
+    return (
+      <div style={{ display: "grid", gap: 6 }}>
+        {supplements.map((s) => (
+          <QuickEditRow key={s.slug} planSlug={planSlug} row={s} />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <FmPanel

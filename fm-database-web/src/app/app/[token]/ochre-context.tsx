@@ -80,6 +80,11 @@ const PATHS: Record<string, IconPart[]> = {
     P("M12 4a5 5 0 0 0-5 5c0 4-1.5 5.5-2 6.2h14c-.5-.7-2-2.2-2-6.2a5 5 0 0 0-5-5z"),
     P("M10 19a2 2 0 0 0 4 0"),
   ],
+  bellOff: [
+    P("M12 4a5 5 0 0 0-5 5c0 4-1.5 5.5-2 6.2h14c-.5-.7-2-2.2-2-6.2a5 5 0 0 0-5-5z"),
+    P("M10 19a2 2 0 0 0 4 0"),
+    P("M4.5 4.5l15 15"),
+  ],
   gear: [
     C(12, 12, 3),
     P("M12 4.5v2M12 17.5v2M4.5 12h2M17.5 12h2M6.5 6.5l1.4 1.4M16.1 16.1l1.4 1.4M17.5 6.5l-1.4 1.4M7.9 16.1l-1.4 1.4"),
@@ -161,14 +166,12 @@ export function Icon({
   );
 }
 
-/** Brand mark: ochre canopy + forest trunk. */
+/** Brand mark: navy horizontal bar + rose circle. */
 export function Mark({ size = 26 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 26 26" aria-hidden>
-      <circle cx="13" cy="9.5" r="7.3" fill="var(--ochre)" />
-      <circle cx="9.6" cy="8" r="2.1" fill="var(--paper)" opacity="0.22" />
-      <path d="M13 15.5 V23" stroke="var(--forest)" strokeWidth="2.4" strokeLinecap="round" />
-      <path d="M13 19 l-3 -2 M13 20.5 l3 -2" stroke="var(--forest)" strokeWidth="1.6" strokeLinecap="round" fill="none" />
+      <rect x="2" y="11" width="14" height="4" rx="2" fill="#2D3047" />
+      <circle cx="21" cy="13" r="4" fill="#C08080" />
     </svg>
   );
 }

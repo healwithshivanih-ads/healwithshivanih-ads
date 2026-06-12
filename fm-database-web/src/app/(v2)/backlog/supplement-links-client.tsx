@@ -139,7 +139,16 @@ function LinkRow({
 
   return (
     <tr className="border-b hover:bg-muted/30 group">
-      <td className="px-3 py-2 font-medium text-sm">{link.display_name}</td>
+      <td className="px-3 py-2">
+        <div className="font-medium text-sm">{link.display_name}</div>
+        {link.aliases && link.aliases.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-1">
+            {link.aliases.map((a) => (
+              <span key={a} className="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 font-mono">{a}</span>
+            ))}
+          </div>
+        )}
+      </td>
       <td className="px-3 py-2">
         <span className={`text-xs px-2 py-0.5 rounded-full font-medium border ${CATEGORY_BADGE[link.category]}`}>
           {CATEGORY_OPTIONS.find((c) => c.value === link.category)?.label ?? link.category}
@@ -317,12 +326,27 @@ export function SupplementLinksClient({
   initialLinks: SupplementLink[];
 }) {
   const [links, setLinks] = useState(initialLinks);
+  const [query, setQuery] = useState("");
+  const [filterCat, setFilterCat] = useState<ProductCategory | "">("");
+  const [filterSource, setFilterSource] = useState<SupplementLink["source"] | "">("");
 
   function reload() {
-    // Refresh happens via revalidatePath + router refresh; for instant feedback
-    // we just trigger a page reload
     window.location.reload();
   }
+
+  const q = query.toLowerCase().trim();
+  const visible = links.filter((l) => {
+    if (filterCat && l.category !== filterCat) return false;
+    if (filterSource && l.source !== filterSource) return false;
+    if (!q) return true;
+    return (
+      l.display_name.toLowerCase().includes(q) ||
+      l.key.toLowerCase().includes(q) ||
+      (l.aliases ?? []).some((a) => a.toLowerCase().includes(q)) ||
+      (l.notes ?? "").toLowerCase().includes(q) ||
+      l.url.toLowerCase().includes(q)
+    );
+  });
 
   return (
     <div className="space-y-4">
@@ -334,13 +358,72 @@ export function SupplementLinksClient({
           red-light panels, ghee, anything.
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          <strong>VitaOne</strong> supplements are already built in — only add products here that need a different source (Amazon, iHerb, brand site, manufacturer page).
+          <strong>VitaOne</strong> and <strong>FM Nutrition</strong> products are already built in — only add products here that need a different source.
         </p>
+      </div>
+
+      {/* Search + filter bar */}
+      <div className="flex flex-wrap gap-2 items-center">
+        <div className="relative flex-1 min-w-[220px]">
+          <svg
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none"
+            width={14} height={14} viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
+          </svg>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={`Search ${links.length} products…`}
+            className="w-full pl-8 pr-3 h-8 text-sm border rounded-md bg-background focus:outline-none focus:ring-1 focus:ring-ring"
+          />
+          {query && (
+            <button
+              onClick={() => setQuery("")}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground text-xs"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        <select
+          value={filterCat}
+          onChange={(e) => setFilterCat(e.target.value as ProductCategory | "")}
+          className="text-sm border rounded-md px-2 h-8 bg-background"
+        >
+          <option value="">All categories</option>
+          {CATEGORY_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
+        </select>
+        <select
+          value={filterSource}
+          onChange={(e) => setFilterSource(e.target.value as SupplementLink["source"] | "")}
+          className="text-sm border rounded-md px-2 h-8 bg-background"
+        >
+          <option value="">All sources</option>
+          {SOURCE_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
+        </select>
+        {(query || filterCat || filterSource) && (
+          <span className="text-xs text-muted-foreground">
+            {visible.length} of {links.length}
+          </span>
+        )}
       </div>
 
       {links.length === 0 ? (
         <div className="text-sm text-muted-foreground border rounded-md p-6 text-center">
           No custom links yet. Add one below — supplements, foods (protein powder / organic grains), devices (infrared, Oura, blue blockers), or anything else with an affiliate URL.
+        </div>
+      ) : visible.length === 0 ? (
+        <div className="text-sm text-muted-foreground border rounded-md p-6 text-center">
+          No products match <strong>{query}</strong>
+          {filterCat && <> in <strong>{filterCat}</strong></>}
+          {filterSource && <> from <strong>{filterSource}</strong></>}.
         </div>
       ) : (
         <div className="overflow-x-auto rounded-md border">
@@ -356,7 +439,7 @@ export function SupplementLinksClient({
               </tr>
             </thead>
             <tbody>
-              {links.map((l) => (
+              {visible.map((l) => (
                 <LinkRow key={l.key} link={l} onDeleted={reload} />
               ))}
             </tbody>

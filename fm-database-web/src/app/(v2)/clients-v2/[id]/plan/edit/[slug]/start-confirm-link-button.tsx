@@ -19,6 +19,7 @@
 
 import { useState } from "react";
 import { FmPanel, FmChip } from "@/components/fm";
+import { copyText } from "@/lib/copy-text";
 
 interface Props {
   planSlug: string;
@@ -169,7 +170,7 @@ export function StartConfirmLinkButton({
 
   async function handleCopy(url: string) {
     try {
-      await navigator.clipboard.writeText(url);
+      await copyText(url);
       setCopyOk(true);
       setTimeout(() => setCopyOk(false), 1800);
     } catch {

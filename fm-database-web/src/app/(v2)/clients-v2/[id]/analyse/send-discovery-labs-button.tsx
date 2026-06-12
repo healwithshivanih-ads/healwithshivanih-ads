@@ -23,6 +23,7 @@ import {
   sendDiscoveryLabsViaWhatsappAction,
 } from "@/lib/server-actions/lab-requisition";
 import { updateClientFieldsAction } from "@/app/api/email/actions";
+import { copyText } from "@/lib/copy-text";
 
 interface Props {
   sessionId: string;
@@ -320,9 +321,9 @@ export function SendDiscoveryLabsButton({
                 </button>
                 <button
                   onClick={() =>
-                    navigator.clipboard
-                      .writeText(previewMd)
-                      .then(() => toast.success("Markdown copied"))
+                    copyText(previewMd).then((ok) =>
+                      ok ? toast.success("Markdown copied") : toast.error("Copy failed"),
+                    )
                   }
                   style={btn}
                 >

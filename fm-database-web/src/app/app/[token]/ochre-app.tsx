@@ -16,7 +16,12 @@ import { PlanScreen, TodayScreen } from "./ochre-screens";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { CoachScreen } from "./ochre-coach";
+import InstallPrompt from "./ochre-install";
 import { AccountOverlay, DocOverlay, MealOverlay, RemedyOverlay } from "./ochre-overlays";
+import { BreathOverlay } from "./ochre-breath";
+import { GroceryOverlay } from "./ochre-week-menu";
+import { MsqOverlay } from "./ochre-msq";
+import { OrderOverlay } from "./ochre-order";
 
 interface Stored {
   day?: string;
@@ -25,6 +30,8 @@ interface Stored {
   submittedWeek?: number;
   feel?: FeelMap;
   moves?: MoveEntry[];
+  lastSeenPlanSlug?: string;
+  lastSeenUpdatedAt?: string;
 }
 
 function nowTime(): string {
@@ -49,7 +56,15 @@ function thisWeeksMoves(moves: MoveEntry[]): MoveEntry[] {
   });
 }
 
-type Overlay = { type: "meal"; slot: string } | { type: "doc"; doc: { kind: string; id: string } } | { type: "remedy"; remedy: AppRemedy } | { type: "account" };
+type Overlay =
+  | { type: "meal"; slot: string }
+  | { type: "doc"; doc: { kind: string; id: string } }
+  | { type: "remedy"; remedy: AppRemedy }
+  | { type: "breath" }
+  | { type: "grocery" }
+  | { type: "msq" }
+  | { type: "order" }
+  | { type: "account" };
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
   const STORE = `ochre.app.${data.clientId}`;
@@ -68,8 +83,11 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const [overlay, setOverlay] = useState<Overlay | null>(null);
   const [feelSheet, setFeelSheet] = useState(false);
   const [moveSheet, setMoveSheet] = useState(false);
+  const [planUpdateDismissed, setPlanUpdateDismissed] = useState(false);
 
   // hydrate persisted state (per client; daily ticks reset each day)
+  const [lastSeenPlanSlug, setLastSeenPlanSlug] = useState<string | null>(null);
+  const [lastSeenUpdatedAt, setLastSeenUpdatedAt] = useState<string | null>(null);
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORE);
@@ -82,6 +100,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       setSubmittedWeek(s.submittedWeek ?? 0);
       setFeel(s.feel ?? {});
       setMoves(thisWeeksMoves(s.moves ?? []));
+      setLastSeenPlanSlug(s.lastSeenPlanSlug ?? null);
+      setLastSeenUpdatedAt(s.lastSeenUpdatedAt ?? null);
     } catch {
       /* fresh start */
     }
@@ -90,13 +110,13 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
 
   useEffect(() => {
     if (!hydrated) return;
-    const s: Stored = { day: todayIso(), logged, practicesDone, submittedWeek, feel, moves };
+    const s: Stored = { day: todayIso(), logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug: lastSeenPlanSlug ?? undefined, lastSeenUpdatedAt: lastSeenUpdatedAt ?? undefined };
     try {
       localStorage.setItem(STORE, JSON.stringify(s));
     } catch {
       /* storage full / private mode */
     }
-  }, [hydrated, logged, practicesDone, submittedWeek, feel, moves, STORE]);
+  }, [hydrated, logged, practicesDone, submittedWeek, feel, moves, lastSeenPlanSlug, lastSeenUpdatedAt, STORE]);
 
   useEffect(() => {
     const t1 = setTimeout(() => setFading(true), 900);
@@ -106,6 +126,33 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       clearTimeout(t2);
     };
   }, []);
+
+  // Show the banner when the plan changed since the client last saw it —
+  // either a new published version (slug changed) OR an in-place edit such as
+  // the coach's quick remedy toggle (planUpdatedAt advanced past last seen).
+  const showPlanUpdatedBanner =
+    hydrated &&
+    !planUpdateDismissed &&
+    !!data.planUpdatedAt &&
+    ((!!lastSeenPlanSlug && lastSeenPlanSlug !== data.planSlug) ||
+      (!!lastSeenUpdatedAt && data.planUpdatedAt > lastSeenUpdatedAt));
+
+  const dismissPlanUpdate = () => {
+    setPlanUpdateDismissed(true);
+    setLastSeenPlanSlug(data.planSlug);
+    if (data.planUpdatedAt) setLastSeenUpdatedAt(data.planUpdatedAt);
+  };
+
+  // On first load (no baseline recorded), silently record the current plan
+  // slug + content timestamp so only FUTURE changes surface the banner.
+  useEffect(() => {
+    if (hydrated && lastSeenPlanSlug === null) {
+      setLastSeenPlanSlug(data.planSlug);
+    }
+    if (hydrated && lastSeenUpdatedAt === null && data.planUpdatedAt) {
+      setLastSeenUpdatedAt(data.planUpdatedAt);
+    }
+  }, [hydrated, lastSeenPlanSlug, lastSeenUpdatedAt, data.planSlug, data.planUpdatedAt]);
 
   const practices = useMemo(
     () => data.practices.map((p) => ({ ...p, done: !!practicesDone[p.id] })),
@@ -150,6 +197,10 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openMeal = (slot: string) => setOverlay({ type: "meal", slot });
   const openDoc = (doc: { kind: string; id: string }) => setOverlay({ type: "doc", doc });
   const openRemedy = (remedy: AppRemedy) => setOverlay({ type: "remedy", remedy });
+  const openBreath = () => setOverlay({ type: "breath" });
+  const openGrocery = () => setOverlay({ type: "grocery" });
+  const openMsq = () => setOverlay({ type: "msq" });
+  const openOrder = () => setOverlay({ type: "order" });
   const closeOverlay = () => setOverlay(null);
 
   const dailyRemedies = data.remedies.filter((r) => r.assigned && r.daily);
@@ -191,13 +242,25 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         goTab={go}
         goCheckin={goCheckin}
         goCoach={() => go("coach")}
+        openBreath={openBreath}
       />
     );
   } else if (tab === "plan") {
-    screen = <PlanScreen onLogAll={logAll} practices={practices} onTogglePractice={togglePractice} openDoc={openDoc} openRemedy={openRemedy} />;
+    screen = (
+      <PlanScreen
+        onLogAll={logAll}
+        practices={practices}
+        onTogglePractice={togglePractice}
+        openDoc={openDoc}
+        openRemedy={openRemedy}
+        openBreath={openBreath}
+        openGrocery={openGrocery}
+        openOrder={openOrder}
+      />
+    );
   } else if (tab === "progress") {
     screen = (
-      <ProgressScreen goCheckin={goCheckin} feel={feel} onLogFeeling={() => setFeelSheet(true)} moves={moves} onLogMove={() => setMoveSheet(true)} />
+      <ProgressScreen goCheckin={goCheckin} feel={feel} onLogFeeling={() => setFeelSheet(true)} moves={moves} onLogMove={() => setMoveSheet(true)} openMsq={openMsq} />
     );
   } else if (tab === "coach") {
     screen = <CoachScreen coachAlert={!submitted} />;
@@ -208,16 +271,61 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
       <div className="ochre-app">
         <div className="app">
           <Header alert={!submitted} onAccount={() => setOverlay({ type: "account" })} />
+          {showPlanUpdatedBanner && (
+            <div
+              style={{
+                background: "var(--sage, #7c9070)",
+                color: "#fff",
+                fontSize: 13,
+                lineHeight: 1.5,
+                padding: "10px 14px",
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 10,
+              }}
+            >
+              <span style={{ flex: 1 }}>
+                <strong>Plan updated</strong>
+                {data.planUpdatedAt
+                  ? ` · ${new Date(data.planUpdatedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}`
+                  : ""}
+                {data.clientUpdateNote ? ` — ${data.clientUpdateNote}` : ""}
+              </span>
+              <button
+                onClick={dismissPlanUpdate}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: 18,
+                  lineHeight: 1,
+                  padding: "0 2px",
+                  cursor: "pointer",
+                  flexShrink: 0,
+                  opacity: 0.85,
+                }}
+                aria-label="Dismiss"
+              >
+                ×
+              </button>
+            </div>
+          )}
           <main className="screen-scroll" key={inCheckin ? "checkin" : tab}>
             {screen}
           </main>
           <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted} />
+
+          {!booting && <InstallPrompt />}
 
           {overlay && (
             <div className="overlay show">
               {overlay.type === "meal" && <MealOverlay slot={overlay.slot} onClose={closeOverlay} />}
               {overlay.type === "doc" && <DocOverlay doc={overlay.doc} onClose={closeOverlay} />}
               {overlay.type === "remedy" && <RemedyOverlay remedy={overlay.remedy} onClose={closeOverlay} />}
+              {overlay.type === "breath" && data.breathwork && <BreathOverlay bw={data.breathwork} onClose={closeOverlay} />}
+              {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
+              {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
+              {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}
               {overlay.type === "account" && <AccountOverlay onClose={closeOverlay} />}
             </div>
           )}

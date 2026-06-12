@@ -66,7 +66,9 @@ const PUBLIC_PATH_PREFIXES = [
   // both re-verify the token server-side before doing anything.
   "/app/",
   "/api/app-checkin",
+  "/api/app-msq",
   "/api/app-copilot",
+  "/api/app-travel",
   // Static PWA assets for the client app (manifest + home-screen icons,
   // served from public/ochre-app/). No data, safe to serve publicly.
   "/ochre-app/",
