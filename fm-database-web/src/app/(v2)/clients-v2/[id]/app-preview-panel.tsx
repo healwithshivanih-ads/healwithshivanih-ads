@@ -20,6 +20,7 @@ import { useState } from "react";
 import { FmPanel } from "@/components/fm";
 import {
   approveSuggestionAction,
+  generateAppMenuAction,
   loadAppPreviewAction,
   saveBuyLinkAction,
   setMealOverrideAction,
@@ -201,6 +202,8 @@ export function AppPreviewPanel({
 
   const [weekly, setWeekly] = useState<WeeklyMenuStatus | null>(null);
   const [weeklyBusy, setWeeklyBusy] = useState<string | null>(null);
+  const [genMenuBusy, setGenMenuBusy] = useState(false);
+  const [genMenuErr, setGenMenuErr] = useState("");
 
   const load = async () => {
     setBusy(true);
@@ -230,6 +233,19 @@ export function AppPreviewPanel({
     const out = await fn(clientId).catch((e) => ({ ok: false as const, error: String(e) }));
     if (!out.ok) setError(out.error ?? `${kind} failed`);
     setWeeklyBusy(null);
+    void load();
+  };
+
+  const generateFirstMenu = async () => {
+    if (!data) return;
+    setGenMenuBusy(true);
+    setGenMenuErr("");
+    const out = await generateAppMenuAction(clientId, data.planSlug).catch((e) => ({
+      ok: false as const,
+      error: String(e),
+    }));
+    if (!out.ok) setGenMenuErr(out.error ?? "generation failed");
+    setGenMenuBusy(false);
     void load();
   };
 
@@ -363,6 +379,37 @@ export function AppPreviewPanel({
               </button>
             )}
 
+            {/* 🍽 bootstrap: no menu on the plan at all — generate the first
+                rotation straight onto plan.app_menu (no letter; coach
+                decision 2026-06-12). First generation anchors Day 1. */}
+            {data.menu.weeks === 0 && (
+              <div
+                style={{
+                  background: "rgba(74, 97, 82, 0.06)",
+                  border: "1px solid rgba(74, 97, 82, 0.3)",
+                  borderRadius: "var(--fm-radius-md, 10px)",
+                  padding: "10px 14px",
+                  display: "grid",
+                  gap: 6,
+                }}
+              >
+                <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
+                  No menu on this plan yet — the app shows the eating framework only. Generate the
+                  first 2-week rotation directly onto the plan (no letter). <strong>This anchors
+                  their Day 1 / 12-week clock.</strong>
+                </div>
+                <button
+                  style={{ ...btn, alignSelf: "start", background: "var(--fm-primary, #4a6152)", color: "#fff", borderColor: "transparent" }}
+                  disabled={genMenuBusy}
+                  onClick={generateFirstMenu}
+                  title="One Sonnet call (~$0.10, 1–2 min) — full diet/dosha/season/calorie constraint engine, straight onto the plan"
+                >
+                  {genMenuBusy ? "Composing menu… (1–2 min)" : "✨ Generate 2-week menu"}
+                </button>
+                {genMenuErr && <div style={{ fontSize: 11.5, color: "#b91c1c" }}>{genMenuErr}</div>}
+              </div>
+            )}
+
             {/* 🔔 flagged: auto-suggested, not yet reviewed */}
             {toReview.length > 0 && (
               <div
@@ -481,7 +528,13 @@ export function AppPreviewPanel({
 
             {/* recipe-coverage check — DETAILED plans must ship recipes
                 (Nidhi, 2026-06-12). Hybrids show a sample menu of simple
-                everyday preparations — no pack expected, no warning. */}
+                everyday preparations — no pack expected, no warning.
+                Recipes now come from the PLAN side automatically: menu
+                dishes are matched against the structured recipe library
+                (fm-database/data/_recipes/) plus any coach-pinned
+                plan.nutrition.recipes — no recipes letter needed. This
+                warning only fires when neither the library nor an issued
+                letter provides a single method. */}
             {data.menu.weeks > 0 && !data.menu.isSample && data.recipeCount === 0 && (
               <div
                 style={{
@@ -493,9 +546,10 @@ export function AppPreviewPanel({
                   color: "#92600a",
                 }}
               >
-                ⚠ The menu is live but <strong>no recipe pack has been issued</strong> — dishes
-                show without methods. Generate &amp; send a <em>recipes</em> letter from
-                Communicate and the app picks it up automatically.
+                ⚠ The menu is live but <strong>no dish has a recipe method</strong> — nothing
+                on this menu matches the recipe library and no recipes letter was issued.
+                Pin recipes on the plan&apos;s Nutrition section (or rename dishes to match
+                library recipes) and the app picks them up automatically.
               </div>
             )}
 

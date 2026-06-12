@@ -734,6 +734,52 @@ interface LetterRecipe {
   tip?: string;
 }
 
+/** The structured recipe library (fm-database/data/_recipes/) — the plan-side
+ *  source of truth for recipe methods. Detailed plans no longer need a
+ *  generated recipes letter: any menu dish that matches a library recipe (or
+ *  a coach-pinned plan.nutrition.recipes slug) gets its full method from
+ *  here. Letter-parsed recipes still take precedence when they exist —
+ *  they're personalised to the client. */
+async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecipe }[]> {
+  const dir = path.join(getCataloguePath(), "_recipes");
+  let files: string[] = [];
+  try {
+    files = await fs.readdir(dir);
+  } catch {
+    return [];
+  }
+  const out: { slug: string; recipe: LetterRecipe }[] = [];
+  for (const f of files) {
+    if (!f.endsWith(".yaml") || f.startsWith("_")) continue;
+    try {
+      const r = yaml.load((await fs.readFile(path.join(dir, f), "utf8")) ?? "") as Dict;
+      if (!r || !asStr(r.name) || !Array.isArray(r.steps) || !r.steps.length) continue;
+      const ingredients = (asArr(r.ingredients) as Dict[]).map((i) => {
+        const qty = asStr(i.qty);
+        const unit = asStr(i.unit);
+        return [qty, unit, asStr(i.item)].filter(Boolean).join(" ").trim();
+      }).filter(Boolean);
+      const prep = Number(r.prep_time_min) || 0;
+      const cook = Number(r.cook_time_min) || 0;
+      const mins = prep + cook;
+      out.push({
+        slug: asStr(r.slug) || f.replace(/\.yaml$/, ""),
+        recipe: {
+          title: asStr(r.name),
+          serves: asStr(r.servings) || undefined,
+          time: mins ? `${mins} min` : undefined,
+          ingredients,
+          method: (asArr(r.steps) as unknown[]).map((s) => String(s)),
+          tip: asStr(r.one_line) || asStr(r.headnote) || undefined,
+        },
+      });
+    } catch {
+      /* one malformed library file never breaks the app */
+    }
+  }
+  return out;
+}
+
 function parseRecipes(md: string): LetterRecipe[] {
   const out: LetterRecipe[] = [];
   // Letter generations drifted on the recipe marker (✦ / ✨ / ⭐) — accept
@@ -1405,6 +1451,41 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const letterMd = baseMd;
 
   const recipes = parseRecipes(recipesMd);
+  // Structured library = plan-side recipe source (no recipes letter needed).
+  // Letter recipes stay the personalised first choice; the library fills
+  // gaps via a STRICT name match (the letter pack was authored for these
+  // exact dishes so loose matching is safe there — the library is 124
+  // unrelated recipes, so a loose match would attach wrong methods).
+  const libraryRecipes = await loadLibraryRecipes();
+  const pinnedSlugs = new Set(
+    (asArr((plan.nutrition as Dict | undefined)?.recipes) as unknown[]).map((s) => String(s)),
+  );
+  const LIB_STOP = new Set(["with", "and", "tbsp", "tsp", "cup", "roasted", "soaked", "ground", "fresh", "everyday", "style"]);
+  const libKey = (s: string) => s.toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+  const libToks = (s: string) => libKey(s).split(" ").filter((t) => t.length > 3 && !LIB_STOP.has(t));
+  /** Strict library lookup: every recipe-name token must appear in the dish
+   *  (one miss allowed), and the dish must add at most one extra token —
+   *  near-equality, so "mint chutney" → Cilantro Mint Chutney but a
+   *  "raita-free bowl" never gets the Cucumber Mint Raita method. */
+  const libraryRecipeFor = (dish: string): LetterRecipe | undefined => {
+    for (const pill of dish.split(/\s\+\s|→|:/).map((s) => s.trim()).filter(Boolean)) {
+      const pt = libToks(pill);
+      if (!pt.length) continue;
+      const pk = libKey(pill);
+      let best: { r: LetterRecipe; hit: number } | undefined;
+      for (const l of libraryRecipes) {
+        const rt = libToks(l.recipe.title);
+        if (!rt.length) continue;
+        const hit = rt.filter((t) => pk.includes(t)).length;
+        const rk = libKey(l.recipe.title);
+        const extra = pt.filter((t) => !rk.includes(t)).length;
+        const ok = (hit >= 2 && rt.length - hit <= 1 && extra <= 1) || (rt.length === 1 && hit === 1 && pt.length === 1);
+        if (ok && (!best || hit > best.hit)) best = { r: l.recipe, hit };
+      }
+      if (best) return best.r;
+    }
+    return undefined;
+  };
   const suppRows = parseSupplementRows(letterMd);
   const htmlBuyRows = parseHtmlBuyRows(baseHtml);
   const remedyBlurbs = parseRemedyBlurbs(letterMd);
@@ -1599,7 +1680,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       for (const t of tokens) if (rk.includes(t)) score++;
       if (score > 0 && (!best || score > best.score)) best = { r, score };
     }
-    return best && best.score >= 2 ? best.r : best && best.score >= 1 && tokens.length <= 2 ? best.r : undefined;
+    const letterHit = best && best.score >= 2 ? best.r : best && best.score >= 1 && tokens.length <= 2 ? best.r : undefined;
+    // letter recipes (personalised) win; the structured library fills gaps
+    return letterHit ?? libraryRecipeFor(dish);
   };
   if (table) {
     for (const row of table.rows) {
@@ -1684,7 +1767,19 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
 
   // The full recipe pack, exposed for IN-APP rendering (letters are being
   // retired; the dish overlay and Plan → Resources both render from this).
-  const recipePack: AppRecipe[] = recipes.map((r) => ({
+  // Letter-parsed recipes all ship; library recipes ship when the coach
+  // pinned them on the plan OR a dish on the live menu matches them — the
+  // plan tab is the source of truth, no recipes letter required.
+  const usedLibrary = new Set<LetterRecipe>();
+  for (const l of libraryRecipes) if (pinnedSlugs.has(l.slug)) usedLibrary.add(l.recipe);
+  for (const w of weekMenus)
+    for (const d of w.days)
+      for (const s of d.slots) {
+        const r = recipeFor(s.dish);
+        if (r && !recipes.includes(r)) usedLibrary.add(r);
+      }
+  const packRecipes = [...recipes, ...usedLibrary];
+  const recipePack: AppRecipe[] = packRecipes.map((r) => ({
     title: r.title,
     serves: r.serves,
     time: r.time,
@@ -2544,7 +2639,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         `\n\nMorning, fasting, and before your morning supplements. Share the report on WhatsApp and Shivani will read it before your session.`,
     });
   }
-  if (recipes.length) {
+  if (recipePack.length) {
     resources.push({
       id: "r-recipes",
       title: "Your full recipe pack",

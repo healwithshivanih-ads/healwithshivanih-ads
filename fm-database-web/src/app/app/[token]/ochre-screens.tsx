@@ -472,17 +472,12 @@ export function PlanScreen({
           })}
         </div>
 
-        {data.breathwork ? (
-          /* guided breathing launcher — the real, paced animation */
-          <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />
-        ) : (
-          <div className="card-quiet soon" style={{ marginTop: 10 }}>
-            <Icon name="breath" size={16} style={{ color: "var(--ochre)" }} />
-            <span>
-              Guided meditation & breathing — <strong>coming soon</strong> to your practices.
-            </span>
-          </div>
-        )}
+        {/* Guided breathing launcher — only when the plan assigns a
+            breathing practice. No teaser when unassigned (2026-06-12):
+            breathwork is BUILT, so "coming soon" was false for assigned
+            clients' plans-to-be, and meditation doesn't exist — never
+            promise features in the client app. */}
+        {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
       </Section>
 
       {/* this week's full menu + grocery launch — so shopping happens

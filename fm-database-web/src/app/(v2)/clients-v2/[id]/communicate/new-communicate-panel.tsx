@@ -115,6 +115,11 @@ function MarkSentButton({
 // those are SECTIONS of the consolidated wellness letter, not separate
 // generations — they extract from it for free, so their row shows
 // "In the wellness letter" instead of a misleading Generate button.
+// LETTERS RETIRED (coach decision 2026-06-12): only the FIRST worded
+// welcome letter is still generated and sent. Everything that used to be
+// a letter — menus, supplements, lifestyle, recipes, phase updates —
+// lives on the plan and renders in the client app (Plan-tab studio is
+// the review surface; weekly menu cadence replaces phase letters).
 const DOC_TYPES: ReadonlyArray<{
   id: string;
   label: string;
@@ -125,42 +130,10 @@ const DOC_TYPES: ReadonlyArray<{
 }> = [
   {
     id: "consolidated",
-    label: "Full wellness letter",
-    desc: "Consolidated phase letter — story, why, what changed",
+    label: "Welcome letter",
+    desc: "The one worded letter — story, why, what to expect. Everything else lives in their app.",
     kind: "wellness",
     letter: "consolidated",
-    standalone: true,
-  },
-  {
-    id: "supplement",
-    label: "Supplement plan",
-    desc: "Dosing, timing, brands — a section of the wellness letter",
-    kind: "supplement",
-    letter: "supplement_plan",
-    standalone: false,
-  },
-  {
-    id: "lifestyle",
-    label: "Lifestyle guide",
-    desc: "Sleep, stress, movement habits — a section of the wellness letter",
-    kind: "lifestyle",
-    letter: "lifestyle_guide",
-    standalone: false,
-  },
-  {
-    id: "exercise",
-    label: "Exercise plan",
-    desc: "Optional standalone movement scaffold — respects limitations",
-    kind: "exercise",
-    letter: "exercise_plan",
-    standalone: true,
-  },
-  {
-    id: "recipes",
-    label: "Recipe pack",
-    desc: "Optional standalone recipe collection for ✦ dishes",
-    kind: "recipes",
-    letter: "recipes",
     standalone: true,
   },
 ];
@@ -625,26 +598,6 @@ function deriveHero({
     };
   }
 
-  if (override && planSlug && cursor) {
-    return {
-      tone: "secondary",
-      eyebrow:
-        override.mode === "maintenance"
-          ? "Maintenance window"
-          : override.mode === "skip"
-            ? "Skip window"
-            : "Deeper-deficit window",
-      title:
-        override.context === "travel" && override.location
-          ? `Generate ${cursor.label} — ${override.mode} (${override.location})`
-          : `Generate ${cursor.label} — ${override.mode} override`,
-      sub: "Override is set on the Overview tab. The letter will use override calorie tables + restaurant-friendly options when traveling.",
-      cta: `Generate (${override.mode})`,
-      generateMode: "phase",
-      phase: { startWeek: cursor.weekStart, endWeek: cursor.weekEnd },
-    };
-  }
-
   if (sendLog.length === 0 && planSlug) {
     // No emails sent yet. But — is the consolidated letter already
     // drafted on disk? If yes, skip generation and push the coach to
@@ -662,22 +615,23 @@ function deriveHero({
     return {
       tone: "primary",
       eyebrow: "Up next",
-      title: `Send initial package to ${first}`,
-      sub: "One Sonnet call drafts the wellness letter — supplement plan + lifestyle guide auto-extract from it. Exercise plan + recipes are optional add-ons.",
-      cta: "Generate initial package",
+      title: `Send ${first}'s welcome letter`,
+      sub: "One Sonnet call drafts the one worded letter. Menus, supplements, lifestyle and recipes all live in their app — review them in the Plan-tab studio, no further letters.",
+      cta: "Generate welcome letter",
       generateMode: "initial",
     };
   }
 
   if (planSlug && cursor) {
+    // Letters retired (2026-06-12): after the welcome letter, everything
+    // updates in the app. Weekly menus draft + approve in the studio.
     return {
-      tone: "primary",
-      eyebrow: "Up next",
-      title: `Generate ${cursor.label} menu`,
-      sub: "Supplements + lifestyle + exercise stay locked — only the meal tables change. The last check-in + 14 days of WhatsApp fold in automatically.",
-      cta: `Generate ${cursor.label}`,
-      generateMode: "phase",
-      phase: { startWeek: cursor.weekStart, endWeek: cursor.weekEnd },
+      tone: "secondary",
+      eyebrow: "Letters retired",
+      title: `${first}'s plan runs in the app now`,
+      sub: "No more letters to generate. Weekly menus draft and go live from the app studio on the Plan tab — check-ins, notes and your dish edits fold in automatically.",
+      cta: "Open app studio",
+      href: `/clients-v2/${clientId}/plan`,
     };
   }
 
@@ -929,105 +883,21 @@ export function NewCommunicatePanel({
       {/* Main 2-col body */}
       <div className="fm-v2-2col" style={{ marginTop: 18 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          {/* Weekly menus track */}
+          {/* Weekly menus track — RETIRED (2026-06-12). Fortnightly phase
+              letters are gone: weekly menus draft + approve in the Plan-tab
+              app studio and go live on the client's app instantly. */}
           <section className="FmPanel FmPanel--flush">
             <header className="FmPanel-head">
               <div>
-                <div className="FmPanel-eyebrow">
-                  AXIS B · Weekly menus · fortnightly
-                </div>
-                <h2 className="FmPanel-title">Meal-plan rollout</h2>
+                <div className="FmPanel-eyebrow">Weekly menus</div>
+                <h2 className="FmPanel-title">Menus live in the app now</h2>
               </div>
             </header>
-            <div style={{ padding: "8px 22px 20px" }}>
-              <div className="wk-track">
-                {weeks.map((wk, i) => {
-                  const st = weekStates[i];
-                  const isCursor = cursorWeek === i;
-                  const isSelected = selectedFortnight === i;
-                  return (
-                    <button
-                      key={wk.index}
-                      type="button"
-                      onClick={() => setSelectedFortnight(i)}
-                      className="wk-card"
-                      data-state={st.kind}
-                      data-cursor={isCursor ? 1 : 0}
-                      data-selected={isSelected ? 1 : 0}
-                      // Buttons need explicit reset for native chrome to
-                      // not bleed into the wk-card design.
-                      style={{
-                        textAlign: "left",
-                        font: "inherit",
-                        color: "inherit",
-                        cursor: "pointer",
-                        outline: isSelected
-                          ? "2px solid var(--fm-primary, #FF6B35)"
-                          : "none",
-                        outlineOffset: 2,
-                      }}
-                    >
-                      {isCursor && <span className="wk-card-cursor">Up next</span>}
-                      <div className="wk-card-head">
-                        <span className="wk-card-num">{i + 1}</span>
-                        <div>
-                          <div className="wk-card-title">{wk.label}</div>
-                          <div className="wk-card-dates">{wk.dates}</div>
-                        </div>
-                      </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                        <span className={`pill pill--${st.kind}`}>
-                          <span className="dot" />
-                          {st.pillLabel}
-                        </span>
-                        {/* "Updated since send" amber chip — appears when
-                            the on-disk file mtime is newer than the
-                            recorded sent_at. Coach has regenerated via
-                            chat-ingest / letter editor but hasn't resent. */}
-                        {st.kind === "sent" && st.regeneratedAt && (
-                          <span
-                            className="pill"
-                            style={{
-                              background: "rgba(245, 158, 11, 0.15)",
-                              color: "#92400E",
-                              fontSize: 10,
-                              padding: "2px 7px",
-                              borderRadius: 999,
-                              fontWeight: 700,
-                            }}
-                            title={`Letter file updated ${fmtDateTime(st.regeneratedAt)} — newer than send recorded ${st.stamp}. Open + Resend so the client gets the latest version.`}
-                          >
-                            🔄 Updated since send
-                          </span>
-                        )}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: 11,
-                          color: "var(--fm-text-2, #5A5A5A)",
-                          lineHeight: 1.45,
-                        }}
-                      >
-                        {st.note}
-                      </div>
-                      {isSelected && (
-                        <div
-                          style={{
-                            fontSize: 10,
-                            fontWeight: 800,
-                            letterSpacing: 0.6,
-                            textTransform: "uppercase",
-                            color: "var(--fm-primary, #FF6B35)",
-                            marginTop: "auto",
-                          }}
-                        >
-                          ▼ Showing letters below
-                        </div>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+            <div style={{ padding: "4px 22px 18px", fontSize: 12.5, color: "var(--fm-text-2, #5A5A5A)", lineHeight: 1.6 }}>
+              Phase letters are retired. Next week&apos;s menu drafts with one click in the{" "}
+              <a href={`/clients-v2/${clientId}/plan`} style={{ fontWeight: 700 }}>app studio →</a>{" "}
+              — you review it on the live phone preview, approve, and {displayName.split(" ")[0]}&apos;s
+              app updates instantly with a &quot;plan updated&quot; note.
             </div>
           </section>
 
@@ -1035,238 +905,15 @@ export function NewCommunicatePanel({
           <section className="FmPanel FmPanel--flush">
             <header className="FmPanel-head">
               <div>
-                <div className="FmPanel-eyebrow">
-                  AXIS A · Letters for {selWk?.label ?? "this plan"}
-                </div>
-                <h2 className="FmPanel-title">
-                  Letters &amp; guides
-                  {selWk && (
-                    <span
-                      style={{
-                        marginLeft: 8,
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: "var(--fm-primary, #FF6B35)",
-                      }}
-                    >
-                      · {selWk.label} ({selWk.dates})
-                    </span>
-                  )}
-                </h2>
+                <div className="FmPanel-eyebrow">The one letter</div>
+                <h2 className="FmPanel-title">Welcome letter</h2>
               </div>
               <div className="FmPanel-sub">
-                {selectedFortnight === 0
-                  ? "Initial package — the Full wellness letter is the core document (supplement + lifestyle are sections of it). Exercise plan + recipes are optional."
-                  : "Phase letter for this fortnight + standing documents from initial package"}
+                The only document still sent as a letter. Menus, supplements, lifestyle and
+                recipes live in the app — review them in the Plan-tab studio.
               </div>
             </header>
 
-            {selectedFortnight !== 0 && (
-              <>
-                {/* Phase meal-plan card for the selected fortnight */}
-                {(() => {
-                  const phaseHref = effectivePhasePlanSlug
-                    ? `/clients-v2/${clientId}/letter-editor?plan=${effectivePhasePlanSlug}&type=meal_plan_phase&phase_start=${selWk?.weekStart}&phase_end=${selWk?.weekEnd}`
-                    : null;
-                  const phaseKind = selSend
-                    ? "sent"
-                    : selDraft
-                      ? "drafted"
-                      : "idle";
-                  const phasePill = selSend
-                    ? "Sent"
-                    : selDraft
-                      ? "Drafted"
-                      : "Not generated";
-                  const phaseStamp = selSend
-                    ? fmtDateTime(selSend.sent_at)
-                    : selDraft
-                      ? fmtDateTime(selDraft.savedAt)
-                      : "—";
-                  // "Updated since send" detection — if the on-disk
-                  // letter mtime is newer than the recorded send_at, the
-                  // coach has regenerated (chat-ingest / letter editor)
-                  // without re-sending. Surface a Resend CTA.
-                  const phaseRegeneratedAt =
-                    selSend && selDraft && selDraft.savedAt > selSend.sent_at
-                      ? selDraft.savedAt
-                      : null;
-                  return (
-                    <div className="doc-list">
-                      <div className="doc-row" data-state={phaseKind}>
-                        <span className="doc-icon">M</span>
-                        <div>
-                          <div className="doc-title">
-                            Meal plan · {selWk?.label}
-                          </div>
-                          <div className="doc-sub">
-                            Fortnight-specific meal tables for {selWk?.dates}. Supplements + lifestyle stay locked.
-                          </div>
-                        </div>
-                        <span style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                          <span className={`pill pill--${phaseKind}`}>
-                            <span className="dot" />
-                            {phasePill}
-                          </span>
-                          {phaseRegeneratedAt && (
-                            <span
-                              className="pill"
-                              style={{
-                                background: "rgba(245, 158, 11, 0.15)",
-                                color: "#92400E",
-                                fontSize: 10,
-                                padding: "2px 7px",
-                                borderRadius: 999,
-                                fontWeight: 700,
-                              }}
-                              title={`Letter file updated ${fmtDateTime(phaseRegeneratedAt)} — newer than send recorded ${fmtDateTime(selSend!.sent_at)}. Open + Resend so the client gets the latest version.`}
-                            >
-                              🔄 Updated since send
-                            </span>
-                          )}
-                        </span>
-                        <div className="doc-stamp">{phaseStamp}</div>
-                        <div className="doc-actions">
-                          {phaseKind === "idle" ? (
-                            effectivePhasePlanSlug && selWk ? (
-                              <LetterGenerateTrigger
-                                clientId={clientId}
-                                planSlug={effectivePhasePlanSlug}
-                                mode="phase"
-                                label="Generate"
-                                tone="primary"
-                                phase={{
-                                  startWeek: selWk.weekStart,
-                                  endWeek: selWk.weekEnd,
-                                }}
-                              />
-                            ) : (
-                              <span
-                                className="FmBtn FmBtn--sm"
-                                style={{ opacity: 0.55, pointerEvents: "none" }}
-                              >
-                                Generate
-                              </span>
-                            )
-                          ) : phaseHref ? (
-                            <a
-                              href={phaseHref}
-                              className="FmBtn FmBtn--sm"
-                              style={{
-                                textDecoration: "none",
-                                display: "inline-block",
-                                padding: "5px 11px",
-                                borderRadius: 6,
-                                background:
-                                  // Resend (regenerated since send) →
-                                  // amber primary; sent (clean) → muted
-                                  // green; anything else → orange CTA.
-                                  phaseKind === "sent" && phaseRegeneratedAt
-                                    ? "rgba(245, 158, 11, 0.95)"
-                                    : phaseKind === "sent"
-                                      ? "rgba(16, 185, 129, 0.15)"
-                                      : "var(--fm-primary, #FF6B35)",
-                                color:
-                                  phaseKind === "sent" && phaseRegeneratedAt
-                                    ? "#fff"
-                                    : phaseKind === "sent"
-                                      ? "#047857"
-                                      : "#fff",
-                                fontSize: 12,
-                                fontWeight: 700,
-                              }}
-                              title={
-                                phaseKind === "sent" && phaseRegeneratedAt
-                                  ? `Letter regenerated ${fmtDateTime(phaseRegeneratedAt)} (newer than send ${fmtDateTime(selSend!.sent_at)}). Click to open the editor and resend.`
-                                  : undefined
-                              }
-                            >
-                              {phaseKind === "sent"
-                                ? phaseRegeneratedAt
-                                  ? "Resend"
-                                  : "Open"
-                                : "Review"}{" "}→
-                            </a>
-                          ) : null}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })()}
-
-                {/* Initial-package standing documents — read-only links */}
-                <div
-                  style={{
-                    margin: "10px 22px 18px",
-                    padding: "10px 12px",
-                    background: "var(--fm-bg-warm, #FAF8F4)",
-                    border: "1px dashed var(--fm-border-light, #E5E2DD)",
-                    borderRadius: 8,
-                    fontSize: 12,
-                    color: "var(--fm-text-2, #5A5A5A)",
-                    lineHeight: 1.55,
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 800,
-                      letterSpacing: 0.6,
-                      textTransform: "uppercase",
-                      color: "var(--fm-text-3, #999)",
-                      marginBottom: 6,
-                    }}
-                  >
-                    Still applies from initial package
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      gap: 6,
-                      alignItems: "center",
-                    }}
-                  >
-                    {(["supplement_plan", "lifestyle_guide", "exercise_plan"] as const).map(
-                      (t) => {
-                        const saved = savedLetters[t];
-                        if (!saved && !sendLog.some((e) => e.letter_types.includes(t)))
-                          return null;
-                        const href = activePlanSlug
-                          ? `/clients-v2/${clientId}/letter-editor?plan=${activePlanSlug}&type=${t}`
-                          : null;
-                        const label =
-                          t === "supplement_plan"
-                            ? "Supplement plan"
-                            : t === "lifestyle_guide"
-                              ? "Lifestyle guide"
-                              : "Exercise plan";
-                        return href ? (
-                          <a
-                            key={t}
-                            href={href}
-                            style={{
-                              fontSize: 11,
-                              padding: "3px 9px",
-                              background: "var(--fm-surface, #fff)",
-                              border: "1px solid var(--fm-border, #E5E2DD)",
-                              borderRadius: 999,
-                              color: "var(--fm-text-secondary, #5A5A5A)",
-                              textDecoration: "none",
-                              fontWeight: 600,
-                            }}
-                          >
-                            {label} ↗
-                          </a>
-                        ) : null;
-                      },
-                    )}
-                  </div>
-                </div>
-              </>
-            )}
-
-            {selectedFortnight === 0 && (
             <div className="doc-list">
               {DOC_TYPES.map((d, i) => {
                 const st = docStates[i];
@@ -1409,7 +1056,6 @@ export function NewCommunicatePanel({
                 );
               })}
             </div>
-            )}
           </section>
 
           {/* "Special requests + travel" dead stub removed 2026-05-20 —

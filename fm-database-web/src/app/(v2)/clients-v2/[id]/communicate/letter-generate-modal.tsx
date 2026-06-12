@@ -76,23 +76,15 @@ interface LetterGenerateTriggerProps {
 const REQUIRED_LETTERS: { type: LetterType; label: string; note: string }[] = [
   {
     type: "consolidated",
-    label: "Full wellness letter",
-    note: "Source of truth — supplement plan + lifestyle guide auto-extract from this.",
+    label: "Welcome letter",
+    note: "The one worded letter. Menus, supplements, lifestyle and recipes live in the app.",
   },
 ];
 
-const OPTIONAL_ADDONS: { type: LetterType; label: string; note: string }[] = [
-  {
-    type: "exercise_plan",
-    label: "Exercise plan",
-    note: "Standalone movement scaffold — only if client wants a detailed version separate from the wellness letter's inline schedule.",
-  },
-  {
-    type: "recipes",
-    label: "Recipe pack",
-    note: "Curated recipes pulled from the meal plan ✦ markers. Useful for clients who want a printable cookbook.",
-  },
-];
+// LETTERS RETIRED (2026-06-12): exercise_plan + recipes add-ons removed —
+// recipes render in-app from the structured library; movement lives on
+// the plan. Empty list keeps the modal's add-on loop a no-op.
+const OPTIONAL_ADDONS: { type: LetterType; label: string; note: string }[] = [];
 
 type StepStatus = "pending" | "running" | "done" | "failed";
 
