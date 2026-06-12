@@ -70,6 +70,16 @@ broadcastsRouter.post('/', async (req, res, next) => {
       // accept either name.
       headerImageUrl,
       headerMediaUrl,
+      // Optional explicit button components. Each entry is a Meta WhatsApp
+      // template button component — typically:
+      //   { sub_type: 'url' | 'flow' | 'copy_code' | 'quick_reply',
+      //     index: '0' | '1' | …,
+      //     parameters: [...] }
+      // When provided, this is used verbatim instead of the legacy
+      // buttonUrlParam (hardcoded to URL @ index 0). Lets the caller send
+      // templates with FLOW + URL + Quick-reply mixes (e.g. webinar_invite_v2).
+      // Per-recipient override via `recipient.buttons` is supported.
+      buttons,
       recipients,
       dryRun = false,
       origin = 'broadcast',
@@ -165,7 +175,24 @@ broadcastsRouter.post('/', async (req, res, next) => {
             parameters: params.map((p) => ({ type: 'text', text: String(p) })),
           });
         }
-        if (recipientButtonUrlParam) {
+        // Buttons: explicit per-recipient or shared `buttons` array wins;
+        // otherwise fall back to the legacy single-URL-button @ index 0.
+        const recipientButtons = Array.isArray(r.buttons) && r.buttons.length
+          ? r.buttons
+          : Array.isArray(buttons) && buttons.length
+            ? buttons
+            : null;
+        if (recipientButtons) {
+          for (const btn of recipientButtons) {
+            if (!btn || typeof btn !== 'object') continue;
+            tplComponents.push({
+              type: 'button',
+              sub_type: btn.sub_type || btn.subType,
+              index: String(btn.index),
+              parameters: Array.isArray(btn.parameters) ? btn.parameters : [],
+            });
+          }
+        } else if (recipientButtonUrlParam) {
           tplComponents.push({
             type: 'button',
             sub_type: 'url',

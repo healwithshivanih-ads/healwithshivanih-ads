@@ -71,6 +71,19 @@ const FLOWS = [
     // on the WELCOME screen. Completion fires standard inbound webhook +
     // services/flow-completion routes by flow_token = 'webinar:{slug}'.
   },
+  {
+    // Sister to webinar-register-v1, published on the DEFAULT (Ochre Tree)
+    // WABA. Same JSON content (the file is a literal copy). Needed because
+    // Flows are scoped per-WABA — webinar_invite_v2_default's FLOW button
+    // can only reference flows on its own WABA. JSON file lives at
+    // scripts/flows/webinar-register-v1-default.json so the script reads
+    // the right one.
+    slug: 'webinar-register-v1-default',
+    name: 'Webinar registration · generic v1 (Ochre Tree)',
+    categories: ['LEAD_GENERATION'],
+    target: 'default',
+    endpoint_uri: 'https://whatsapp-server-shivani.fly.dev/whatsapp-flow-endpoint',
+  },
 ];
 
 // ---------------------------------------------------------------------------

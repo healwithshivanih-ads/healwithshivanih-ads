@@ -886,6 +886,118 @@ const TEMPLATES = [
       'Tell me more',                 // QUICK_REPLY
     ],
   },
+  // ---------------------------------------------------------------------------
+  // webinar_invite_v2_url — sister to webinar_invite_v2, lives on the default
+  // (Ochre Tree) WABA. Drop-in replacement for when the MKT WABA's marketing
+  // sending is blocked (e.g. AiSensy shared credit-line dispute, payment hold).
+  //
+  // Differences vs. webinar_invite_v2:
+  //   - Targets the DEFAULT WABA (so it goes through the Ochre Tree number).
+  //   - FLOW "Save my spot" button is replaced with a URL button pointing at
+  //     the public registration LP. Reason: WhatsApp Flows are scoped to one
+  //     WABA, and webinar_register_v1 is only published on the MKT WABA.
+  //     Re-publishing the Flow on the default WABA would mean a fresh
+  //     encryption-key round + a flow-endpoint route change — too much for
+  //     a bridge template.
+  //
+  // IMAGE header is added later via scripts/add-image-header.mjs once Meta
+  // approves the text-only first cut.
+  // ---------------------------------------------------------------------------
+  {
+    name: 'webinar_invite_v2_url',
+    category: 'MARKETING',
+    language: 'en',
+    target: 'default',          // → Ochre Tree WABA 1314979633664552
+    body:
+      "Hi {{1}} 🌿\n\n"
+      + "I'm hosting a live workshop on *{{2}}* — and I'd love for you to join me.\n\n"
+      + "{{3}}\n\n"
+      + "You'll walk away with:\n\n"
+      + "{{4}}\n\n"
+      + "Price: {{5}}\n"
+      + "Recording yours to keep, even if you can't attend live.\n\n"
+      + "This is the kind of thing I wish someone had handed me earlier. Save your seat below — let's do this together.",
+    example: [[
+      'Priya',
+      '40s: The Decade No One Prepared You For',
+      'Thursday, 11 June at 7:30 PM IST',
+      "✓ The biology behind your symptoms — explained simply\n"
+        + "✓ Specific changes you can start the same week\n"
+        + "✓ My personal go-to protocols (recipes, supplements, routines)\n"
+        + "✓ Live Q&A — bring your questions",
+      '₹299',
+    ]],
+    footer: 'Heal With Shivani · The Ochre Tree',
+    buttons: [
+      {
+        type: 'URL',
+        text: 'Save my spot',
+        // {{1}} = funnel slug → /40s-decade → the registration LP. No Flow
+        // here, so the LP itself collects the email + intent fields.
+        url: 'https://lp.theochretree.com/{{1}}',
+        exampleSuffix: '40s-decade',
+      },
+      {
+        type: 'URL',
+        text: 'Add to calendar',
+        url: 'https://lp.theochretree.com/cal/{{1}}',
+        exampleSuffix: '40s-decade',
+      },
+      'Tell me more',                 // QUICK_REPLY
+    ],
+  },
+  // ---------------------------------------------------------------------------
+  // webinar_invite_v2_default — full-feature variant on the DEFAULT (Ochre Tree)
+  // WABA. Mirrors webinar_invite_v2 (the MKT original) including the FLOW
+  // "Save my spot" button, referencing the newly published default-WABA Flow
+  // `webinar-register-v1-default` (flow_id 2339800213177666).
+  //
+  // IMAGE header to be added post-approval via scripts/add-image-header.mjs
+  // (needs the FB APP_ID). Text-only first cut now → Meta approval → patch
+  // header.
+  // ---------------------------------------------------------------------------
+  {
+    name: 'webinar_invite_v2_default',
+    category: 'MARKETING',
+    language: 'en',
+    target: 'default',
+    body:
+      "Hi {{1}} 🌿\n\n"
+      + "I'm hosting a live workshop on *{{2}}* — and I'd love for you to join me.\n\n"
+      + "{{3}}\n\n"
+      + "You'll walk away with:\n\n"
+      + "{{4}}\n\n"
+      + "Price: {{5}}\n"
+      + "Recording yours to keep, even if you can't attend live.\n\n"
+      + "This is the kind of thing I wish someone had handed me earlier. Save your seat below — let's do this together.",
+    example: [[
+      'Priya',
+      '40s: The Decade No One Prepared You For',
+      'Thursday, 11 June at 7:30 PM IST',
+      "✓ The biology behind your symptoms — explained simply\n"
+        + "✓ Specific changes you can start the same week\n"
+        + "✓ My personal go-to protocols (recipes, supplements, routines)\n"
+        + "✓ Live Q&A — bring your questions",
+      '₹299',
+    ]],
+    footer: 'Heal With Shivani · The Ochre Tree',
+    buttons: [
+      {
+        type: 'FLOW',
+        text: 'Save my spot',
+        flowId: '2339800213177666',   // webinar-register-v1-default
+        flowAction: 'navigate',
+        navigateScreen: 'WELCOME',
+      },
+      {
+        type: 'URL',
+        text: 'Add to calendar',
+        url: 'https://lp.theochretree.com/cal/{{1}}',
+        exampleSuffix: '40s-decade',
+      },
+      'Tell me more',                 // QUICK_REPLY
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------

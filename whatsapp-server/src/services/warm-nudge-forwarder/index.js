@@ -20,6 +20,9 @@ const TIMEOUT_MS = 5000;
  * @param {string} args.trigger       'tap' | 'flow_started' | 'flow_completed'
  * @param {string} [args.firstName]   from Flow form when applicable
  * @param {string} [args.email]       from Flow form when applicable
+ * @param {string} [args.gender]      'female' | 'male' | 'non_binary' — from
+ *                                    Flow form when supplied; receiver writes
+ *                                    Contact.gender with genderSource='flow'
  */
 export async function scheduleWarmNudge(args) {
   const url = process.env.OCHRE_FUNNEL_URL;
@@ -36,6 +39,7 @@ export async function scheduleWarmNudge(args) {
     trigger: args.trigger,
     firstName: args.firstName || null,
     email: args.email || null,
+    gender: args.gender || null,
   };
   const bodyStr = JSON.stringify(payload);
 

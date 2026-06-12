@@ -236,6 +236,16 @@ export async function handleFlowCompletion({ event, contact /* , conversation */
     trigger: 'flow_completed',
     firstName: formData.first_name || undefined,
     email: formData.email || undefined,
+    // Gender Dropdown was added to webinar_register_v1 — emits 'female' |
+    // 'male' | 'non_binary' | 'prefer_not_to_say' | '' (when skipped).
+    // Skip-or-prefer-not-to-say are NOT forwarded so we don't overwrite a
+    // prior 'inferred' value with 'unknown'.
+    gender:
+      formData.gender &&
+      formData.gender !== 'prefer_not_to_say' &&
+      formData.gender !== ''
+        ? formData.gender
+        : undefined,
   }).catch(() => {});
 
   const lpUrl = buildLpUrl(campaign, formData, event.wa_id);

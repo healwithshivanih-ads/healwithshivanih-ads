@@ -183,7 +183,7 @@ flowEndpointRouter.post('/', async (req, res) => {
 // verify the route is mounted + the keys load without errors.
 flowEndpointRouter.get('/', (_req, res) => {
   try {
-    loadPrivateKey();
+    loadPrivateKeys();
     res.json({ ok: true, status: 'ready', note: 'POST encrypted Flow data to this URL' });
   } catch (e) {
     res.status(500).json({ ok: false, error: e.message });
