@@ -7,7 +7,7 @@
  * in the save shim, never trusted from the request.
  */
 import { NextRequest, NextResponse } from "next/server";
-import { lookupLetterToken } from "@/lib/server-actions/letter-token";
+import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { runShim } from "@/lib/fmdb/shim";
 
 export const dynamic = "force-dynamic";
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
   if (throttled(token)) {
     return NextResponse.json({ ok: false, error: "too many submissions today" }, { status: 429 });
   }
-  const lookup = await lookupLetterToken(token);
+  const lookup = await resolveAppToken(token);
   if (!lookup.ok) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }

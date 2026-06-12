@@ -7,7 +7,7 @@
  * ~$0.001 each). Client identity derives from the letter token.
  */
 import { NextRequest, NextResponse } from "next/server";
-import { lookupLetterToken } from "@/lib/server-actions/letter-token";
+import { resolveAppToken } from "@/lib/server-actions/letter-token";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
 import { runShim } from "@/lib/fmdb/shim";
 
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   if (overBudget(token)) {
     return NextResponse.json({ ok: true, answer: "DEFER" });
   }
-  const lookup = await lookupLetterToken(token);
+  const lookup = await resolveAppToken(token);
   if (!lookup.ok) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }

@@ -62,6 +62,68 @@ export async function lookupLetterToken(token: string): Promise<LetterTokenResul
   return { ok: false, error: "not_found" };
 }
 
+/**
+ * Resolve an APP token → { client_id, plan_slug }, the way the app page does.
+ *
+ * The companion app opens via a STABLE client-level `app_token` (survives
+ * plan supersede), falling back to a per-plan `letter_token`. `loadClientAppData`
+ * tries app_token FIRST — so every /api/app-* write-back route MUST use the
+ * same two-path resolution, or the page loads under app_token while the POST
+ * dies under letter_token-only lookup ("invalid or expired link" — exactly
+ * Nidhi's case 2026-06-12: her app_token never matched any plan letter_token).
+ */
+export async function resolveAppToken(token: string): Promise<LetterTokenResult> {
+  if (!token || token.length < 16) return { ok: false, error: "invalid_token" };
+  // 1. Stable client-level app_token → latest published plan for that client.
+  const clientsDir = path.join(getPlansRoot(), "clients");
+  try {
+    for (const id of await fs.readdir(clientsDir)) {
+      const d = (await readPlanYaml(path.join(clientsDir, id, "client.yaml"))) as
+        | Record<string, unknown>
+        | null;
+      if (!d || d.app_token !== token) continue;
+      const slug = await latestPublishedSlugForClient(id);
+      if (slug) return { ok: true, client_id: id, plan_slug: slug };
+      // app_token matched but no published plan — surface as not_found so the
+      // client sees a clean error rather than a silent fall-through.
+      return { ok: false, error: "not_found" };
+    }
+  } catch {
+    /* no clients dir — fall through to letter_token scan */
+  }
+  // 2. Backward-compat: per-plan letter_token (old shared links).
+  return lookupLetterToken(token);
+}
+
+/** Read+parse a YAML file, null on any failure. */
+async function readPlanYaml(file: string): Promise<unknown> {
+  try {
+    return yaml.load(await fs.readFile(file, "utf-8"));
+  } catch {
+    return null;
+  }
+}
+
+/** Highest-version published plan slug for a client, or null. */
+async function latestPublishedSlugForClient(clientId: string): Promise<string | null> {
+  const dir = path.join(getPlansRoot(), "published");
+  let best: { slug: string; version: number } | null = null;
+  try {
+    for (const name of await fs.readdir(dir)) {
+      if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+      const d = (await readPlanYaml(path.join(dir, name))) as Record<string, unknown> | null;
+      if (!d || d.client_id !== clientId) continue;
+      const slug = typeof d.slug === "string" ? d.slug : null;
+      if (!slug) continue;
+      const v = typeof d.version === "number" ? d.version : 0;
+      if (!best || v > best.version) best = { slug, version: v };
+    }
+  } catch {
+    return null;
+  }
+  return best?.slug ?? null;
+}
+
 /** Generate a URL-safe token. 32 chars after base64url → ~192 bits. */
 function newLetterToken(): string {
   return crypto.randomBytes(24).toString("base64url");
