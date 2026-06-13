@@ -339,6 +339,11 @@ function AddPracticeRow({ planSlug }: { planSlug: string }) {
           <input value={cadence} onChange={(e) => setCadence(e.target.value)} disabled={pending} style={inputStyle} />
         </div>
       </div>
+      <p style={{ fontSize: 11, color: "var(--fm-text-tertiary)", margin: "0 0 8px", lineHeight: 1.45 }}>
+        💡 Tip: name a breathing practice <strong>“4-7-8 breathing”</strong>, <strong>“Box breathing”</strong> or{" "}
+        <strong>“Extended exhale breathing”</strong> (optionally <em>“— 5 rounds”</em>) and the client&apos;s app
+        shows a guided animation paced to it.
+      </p>
       <div style={{ display: "flex", gap: 6 }}>
         <button onClick={onAdd} disabled={pending || !name.trim()} style={{ fontSize: 11, fontWeight: 700, padding: "5px 12px", borderRadius: "var(--fm-radius-sm)", border: 0, background: "var(--fm-primary)", color: "#fff", cursor: pending ? "wait" : "pointer", fontFamily: "inherit", opacity: name.trim() ? 1 : 0.5 }}>
           {pending ? "Adding…" : "Add"}
