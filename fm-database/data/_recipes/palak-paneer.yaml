@@ -1,0 +1,35 @@
+slug: palak-paneer
+name: Palak paneer
+one_line: Soft paneer in a smooth spinach gravy.
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+main_ingredients:
+- spinach (palak)
+- paneer
+- onion
+- ginger-garlic
+- cumin
+- ghee
+contains_allergens:
+- dairy
+ingredients:
+- item: 2 cups spinach (palak), blanched
+- item: 100 g paneer, cubed
+- item: 1 small onion, chopped
+- item: 1 tsp ginger-garlic paste
+- item: 1/4 tsp cumin
+- item: 1/4 tsp turmeric
+- item: 1 tsp ghee
+- item: salt to taste
+steps:
+- Blanch spinach 2 min, refresh in cold water, blend to a smooth purée.
+- Heat ghee, crackle cumin, sauté onion + ginger-garlic till soft.
+- Add turmeric, then the spinach purée and a splash of water; simmer 4-5 min.
+- Add paneer cubes and salt, simmer 3 min so they soak up the gravy.
+- Serve hot with a jowar or millet roti.
+source: coach-authored (Shivani) 2026-06-13
