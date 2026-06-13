@@ -33,6 +33,7 @@ export interface AppLinkRow {
   inviteSentAt: string | null;
   lastOpenedAt: string | null;
   openCount: number;
+  installed: boolean;
   engaged: boolean;
   groceryReady: boolean;
 }
@@ -87,6 +88,9 @@ function AdoptionChips({ row, sentAt }: { row: AppLinkRow; sentAt: string | null
       ) : sentAt ? (
         <span style={{ color: "var(--fm-muted, #6f6a5d)" }}>not opened yet</span>
       ) : null}
+      {row.installed && (
+        <span style={{ color: "#3d6b4f", fontWeight: 600 }}>📱 installed</span>
+      )}
       {row.engaged && (
         <span style={{ color: "#3d6b4f" }}>💬 engaged</span>
       )}
@@ -209,7 +213,10 @@ export function ClientAppLinksPanel({
   whatsappConfigured?: boolean;
 }) {
   if (!rows.length) return null;
+  const total = rows.length;
   const opened = rows.filter((r) => r.openCount > 0).length;
+  const installed = rows.filter((r) => r.installed).length;
+  const active = rows.filter((r) => r.engaged).length;
   const invited = rows.filter((r) => r.inviteSentAt).length;
   return (
     <FmPanel
@@ -221,6 +228,32 @@ export function ClientAppLinksPanel({
         </FmChip>
       }
     >
+      {/* Adoption funnel across all published-plan clients */}
+      <div
+        style={{
+          display: "flex",
+          gap: 18,
+          flexWrap: "wrap",
+          padding: "10px 12px",
+          marginBottom: 8,
+          background: "var(--fm-surface-2, #f7f4f1)",
+          borderRadius: 10,
+        }}
+      >
+        {[
+          { n: opened, label: "opened", hint: "loaded the app at least once" },
+          { n: installed, label: "installed", hint: "running on home screen (standalone)" },
+          { n: active, label: "active", hint: "wrote data back from the app" },
+        ].map((s) => (
+          <span key={s.label} title={s.hint} style={{ display: "inline-flex", alignItems: "baseline", gap: 6 }}>
+            <span style={{ fontSize: 20, fontWeight: 700, color: "var(--fm-ink, #2b2d42)" }}>{s.n}</span>
+            <span style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)" }}>
+              {s.label}
+              <span style={{ opacity: 0.6 }}> / {total}</span>
+            </span>
+          </span>
+        ))}
+      </div>
       <div>
         {rows.map((r) => (
           <Row key={r.plan_slug} row={r} whatsappConfigured={whatsappConfigured} />
@@ -229,8 +262,9 @@ export function ClientAppLinksPanel({
       <div style={{ fontSize: 12, color: "var(--fm-muted, #6f6a5d)", marginTop: 10 }}>
         Same token as the plan letter — revoking a plan disables its link. 📨 Send invite uses the
         approved template + logs to the chat thread; “Opened” comes from real app loads on the
-        client&apos;s phone (your own previews don&apos;t count). Weekly check-ins from the app land in
-        sessions and count toward the adherence scan.
+        client&apos;s phone (your own previews don&apos;t count). “Installed” = the app is on the home
+        screen (standalone) — counted from today on, so it can&apos;t backfill anyone who installed
+        earlier. Weekly check-ins from the app land in sessions and count toward the adherence scan.
       </div>
     </FmPanel>
   );

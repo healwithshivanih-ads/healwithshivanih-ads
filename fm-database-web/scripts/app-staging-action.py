@@ -253,6 +253,20 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             except Exception as e:
                 out["errors"].append(f"{client_id} push-mirror: {e}")
 
+        # reverse-mirror: app-installed flag (written on Fly when the app runs
+        # in standalone / home-screen mode → real adoption signal). Fly is the
+        # sole writer (it preserves first_installed_at across confirmations);
+        # newest wins, same as push.
+        s_inst = sdir / "_app_installed.yaml"
+        a_inst = auth / "clients" / client_id / "_app_installed.yaml"
+        if s_inst.exists() and (auth / "clients" / client_id).exists():
+            try:
+                if (not a_inst.exists()) or s_inst.stat().st_mtime > a_inst.stat().st_mtime:
+                    shutil.copy2(s_inst, a_inst)
+                    out["checkins_mirrored"] += 1
+            except Exception as e:
+                out["errors"].append(f"{client_id} installed-mirror: {e}")
+
         # plan revoked / superseded → purge the app artifacts from Fly
         if plan_slug and not _published_files(auth, plan_slug):
             for p in (stag / "published").glob(f"{plan_slug}-v*.yaml"):

@@ -72,6 +72,9 @@ const PUBLIC_PATH_PREFIXES = [
   "/api/app-body",
   "/api/app-swap",
   "/api/app-push",
+  // App reports it's running installed (standalone/home-screen) — adoption
+  // signal. Token-scoped, re-verified server-side.
+  "/api/app-installed",
   // GET serves the client's avatar (coach/intake photo, or the client's own
   // in-app override); POST lets the client set their own photo. Token-scoped,
   // re-verified server-side. Prefix matches both /api/app-photo and

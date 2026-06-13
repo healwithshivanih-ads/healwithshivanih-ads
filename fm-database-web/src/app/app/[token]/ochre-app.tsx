@@ -127,6 +127,44 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     };
   }, []);
 
+  // Adoption: report when the app is running INSTALLED (home-screen /
+  // standalone) or an install completes — a truer signal than an "open".
+  // The standalone check means a normal browser tab (incl. coach previews)
+  // never reports. iOS only ever reports via standalone (no `appinstalled`).
+  // Fire-and-forget; server preserves first_installed_at, bumps last_confirmed.
+  useEffect(() => {
+    const token = data.token;
+    if (!token || typeof window === "undefined") return;
+    const ua = navigator.userAgent;
+    const platform =
+      /iphone|ipad|ipod/i.test(ua) ||
+      (navigator.platform === "MacIntel" &&
+        (navigator as unknown as { maxTouchPoints?: number }).maxTouchPoints! > 1)
+        ? "ios"
+        : /android/i.test(ua)
+          ? "android"
+          : "desktop";
+    const report = (source: string) => {
+      try {
+        void fetch("/api/app-installed", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token, source, platform }),
+          keepalive: true,
+        }).catch(() => {});
+      } catch {
+        /* ignore */
+      }
+    };
+    const standalone =
+      window.matchMedia?.("(display-mode: standalone)").matches ||
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+    if (standalone) report("standalone");
+    const onInstalled = () => report("appinstalled");
+    window.addEventListener("appinstalled", onInstalled);
+    return () => window.removeEventListener("appinstalled", onInstalled);
+  }, [data.token]);
+
   // Show the banner when the plan changed since the client last saw it —
   // either a new published version (slug changed) OR an in-place edit such as
   // the coach's quick remedy toggle (planUpdatedAt advanced past last seen).

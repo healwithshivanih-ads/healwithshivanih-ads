@@ -26,6 +26,7 @@ import {
 } from "@/lib/fmdb/loader-extras";
 import { parseRequestedLabs, parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
 import { readAppOpens } from "@/lib/fmdb/app-opens";
+import { readAppInstalled } from "@/lib/fmdb/app-installed";
 import { effectiveRecheckDate, isRecheckOverdue } from "@/lib/fmdb/plan-timing";
 import { getCatalogueStatus } from "@/app/catalogue-commit-action";
 import { BroadcastPanel } from "@/app/broadcast-panel";
@@ -945,6 +946,7 @@ export default async function DashboardV2() {
           const clientId = p.client_id as string;
           const sess = await loadClientSessions(clientId);
           const opens = await readAppOpens(clientId);
+          const install = await readAppInstalled(clientId);
           const groceryReady = await fs
             .access(path.join(getPlansRoot(), "clients", clientId, "meal-plans", `${p.slug}-grocery.yaml`))
             .then(() => true)
@@ -961,6 +963,7 @@ export default async function DashboardV2() {
             inviteSentAt: lastTemplateSentAt(sess, "fm_app_invite_v1"),
             lastOpenedAt: opens.lastOpenedAt,
             openCount: opens.count,
+            installed: install.installed,
             engaged: sess.some((s) =>
               (s.presenting_complaints ?? "").includes("[source: client_app"),
             ),
