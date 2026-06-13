@@ -84,7 +84,14 @@ _TOOL = {
                                             "type": "object",
                                             "properties": {
                                                 "slot": {"type": "string", "enum": SLOTS},
-                                                "dish": {"type": "string"},
+                                                "dish": {
+                                                    "type": "string",
+                                                    "description": (
+                                                        "Components joined with ' + ', each with an explicit "
+                                                        "household portion in brackets, e.g. "
+                                                        "'Moong dal (1 bowl) + jowar roti (2) + lauki sabzi (1 cup)'."
+                                                    ),
+                                                },
                                             },
                                             "required": ["slot", "dish"],
                                         },
@@ -117,11 +124,16 @@ Call the record_app_menu tool exactly once with weeks {weeks_list}.
 Each week has EXACTLY 7 days (Monday..Sunday). Each day uses these
 slots in order: Breakfast, Mid-morning, Lunch, Evening snack, Dinner.
 
-Dish strings: short, concrete, client-readable — exactly like a meal
-cell, e.g. "Moong dal chilla + mint chutney" or "Sabzi first (lauki +
-turmeric) → toor dal → 1 jowar roti". Use " + " between components.
-No markdown, no emoji markers, no calorie counts in the dish text.
-Vary dishes across the days and between the two weeks (rotation).
+Dish strings: short, concrete, client-readable, with an EXPLICIT
+single-serving portion on EVERY component — written
+"Component (qty) + Component (qty)". e.g.
+"Moong dal chilla (2) + mint chutney (2 tbsp)" or
+"Lauki sabzi (1 cup) + toor dal (1 bowl) + jowar roti (2)".
+Use realistic one-person home portions (this plan is weight-aware);
+never leave a component without a quantity — the app shows portions on
+every meal and estimates calories from them. Use " + " between
+components. No markdown, no emoji markers, no calorie counts in the
+dish text. Vary dishes across the days and between the two weeks.
 """
 
 

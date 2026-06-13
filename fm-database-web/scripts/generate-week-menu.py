@@ -72,7 +72,14 @@ _TOOL = {
                                 "type": "object",
                                 "properties": {
                                     "slot": {"type": "string"},
-                                    "dish": {"type": "string"},
+                                    "dish": {
+                                        "type": "string",
+                                        "description": (
+                                            "The meal, with an explicit household portion on EVERY component, "
+                                            "written 'Component (qty) + Component (qty)'. "
+                                            "e.g. 'Masoor dal (1 bowl) + jowar bhakri (2) + ridge gourd sabzi (1 cup)'."
+                                        ),
+                                    },
                                 },
                                 "required": ["slot", "dish"],
                             },
@@ -99,7 +106,8 @@ HARD RULES:
 4. FEEDBACK IS LAW: if the client or coach signalled anything (rushed mornings, disliked a dish, digestive reaction, travel), adjust the menu accordingly and say so in the change_note. Coach dish-edits in the amendment log are strong preference signals — keep those changes.
 5. If a TRAVEL window overlaps this week, make those days restaurant-survivable (simple, widely available dishes) and note it.
 6. change_note speaks TO the client, warmly, ≤30 words, no clinical jargon, no lab values. Example: "Swapped your breakfasts to 5-minute options since mornings have been rushed — and kept the khichdi dinners you loved."
-7. Repeat dishes across the week where natural (Indian households batch-cook) — 4-5 distinct breakfasts is better than 7."""
+7. Repeat dishes across the week where natural (Indian households batch-cook) — 4-5 distinct breakfasts is better than 7.
+8. PORTIONS ARE EXPLICIT — every component of every dish carries a clear single-serving household quantity in brackets: "(1 bowl)", "(2)", "(1 cup)", "(small bowl)", "(30 g)", "(1 tbsp)". Write each dish as "Component (qty) + Component (qty)". This lets the app show portions on every meal and estimate calories. Use realistic one-person portions (this plan is weight-aware) — never leave a component without a quantity."""
 
 
 def _plans_root() -> Path:
