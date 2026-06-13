@@ -2031,9 +2031,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
 
   // Hybrid/principle plans carry ONE illustrative week — present it as a
   // mix-and-match "Sample menu", not a prescriptive week-by-week schedule
-  // (coach rule 2026-06-11). Signal: a single week table. Real fortnight
-  // plans always carry two (week A + week B rotation).
-  const menuIsSample = weekMenus.length === 1;
+  // (coach rule 2026-06-11). Source of truth is the STORED app_menu.is_sample
+  // flag — NOT the week count. A real fortnight plan can legitimately carry a
+  // single live week (e.g. the current week after a catch-up relabel), and
+  // must NOT be mislabelled "Sample menu". Fall back to the 1-week heuristic
+  // only when the flag was never set (legacy).
+  const storedSample = (plan.app_menu as { is_sample?: boolean } | undefined)?.is_sample;
+  const menuIsSample = storedSample ?? weekMenus.length === 1;
 
   // The full recipe pack, exposed for IN-APP rendering (letters are being
   // retired; the dish overlay and Plan → Resources both render from this).

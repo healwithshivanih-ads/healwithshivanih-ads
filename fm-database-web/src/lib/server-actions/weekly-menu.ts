@@ -107,6 +107,9 @@ export async function generateWeekMenuAction(
 ): Promise<{ ok: boolean; error?: string; changeNote?: string; week?: number }> {
   const hit = await publishedFileForClient(clientId);
   if (!hit) return { ok: false, error: "No published plan." };
+  if (hit.plan.app_menu?.is_sample) {
+    return { ok: false, error: "Hybrid/sample plan — it uses one fixed sample week, not a weekly cadence." };
+  }
   // Catch-up aware: if the CURRENT plan week has no menu, draft THAT (never
   // skip it → no more non-contiguous [4,6]); otherwise pre-load next week.
   const cur = currentPlanWeek(hit.plan);
@@ -267,6 +270,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       seen.add(cid);
       const weeks = p.app_menu?.weeks ?? [];
       if (!weeks.length) continue; // principle-based — no weekly menus
+      if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
       const cur = currentPlanWeek(p);
       const total = Number(p.plan_period_weeks) || 12;
       if (cur > total) continue; // plan over — recycle, never extend
