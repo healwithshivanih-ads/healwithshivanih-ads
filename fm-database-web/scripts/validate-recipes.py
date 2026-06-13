@@ -5,10 +5,13 @@ any error. Run: python scripts/validate-recipes.py
 """
 import os, sys, glob, yaml
 
-MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink"}
-DIET = {"vegetarian", "vegan", "jain", "eggetarian", "gluten_free", "dairy_free", "nut_free"}
+MEAL_TYPES = {"breakfast", "lunch", "dinner", "snack", "side", "drink", "salad", "soup", "condiment"}
+# non_vegetarian is in active use across the library AND the app's dietary
+# filter keys on it (client-app.ts recipeDietLevel) — it MUST be valid here.
+DIET = {"vegetarian", "vegan", "jain", "eggetarian", "non_vegetarian", "gluten_free", "dairy_free", "nut_free"}
 DOSHAS = {"vata", "pitta", "kapha"}
-SEASONS = {"spring", "summer", "monsoon", "autumn", "winter"}
+# "all" = year-round; the established convention for season-agnostic recipes.
+SEASONS = {"spring", "summer", "monsoon", "autumn", "winter", "all"}
 RASA = {"sweet", "sour", "salty", "pungent", "bitter", "astringent"}
 ALLERGENS = {"dairy", "gluten", "nuts", "peanut", "soy", "egg", "shellfish", "sesame", "mustard"}
 REQUIRED = ("slug", "name", "meal_type", "one_line")
@@ -41,7 +44,7 @@ def check(d, fname, errs, warns):
     if not (d.get("method") or "").strip() and not (d.get("steps") or []):
         warns.append(f"{fname}: no method/steps stored")
     img = d.get("image") or {}
-    if isinstance(img, dict) and img.get("rights_status") not in (None, "", "none", "book_reference_uncleared", "licensed", "original"):
+    if isinstance(img, dict) and img.get("rights_status") not in (None, "", "none", "book_reference_uncleared", "web_reference_uncleared", "licensed", "original"):
         errs.append(f"{fname}: image.rights_status invalid ({img.get('rights_status')!r})")
 
 def main():
