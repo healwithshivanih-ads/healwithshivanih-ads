@@ -12,16 +12,12 @@
 
 import { useEffect, useState } from "react";
 import { FmPanel } from "@/components/fm";
-import {
-  generateWeekMenuAction,
-  weeklyMenuQueueAction,
-} from "@/lib/server-actions/weekly-menu";
+import { weeklyMenuQueueAction } from "@/lib/server-actions/weekly-menu";
 
 type Row = Awaited<ReturnType<typeof weeklyMenuQueueAction>>[number];
 
 export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> }) {
   const [rows, setRows] = useState<Row[] | null>(null);
-  const [busy, setBusy] = useState<string | null>(null);
 
   const refresh = () =>
     weeklyMenuQueueAction(3)
@@ -84,26 +80,9 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
                 Review in studio →
               </a>
             ) : (
-              <button
-                disabled={busy === r.clientId}
-                onClick={async () => {
-                  setBusy(r.clientId);
-                  await generateWeekMenuAction(r.clientId).catch(() => null);
-                  setBusy(null);
-                  void refresh();
-                }}
-                style={{
-                  padding: "6px 12px",
-                  borderRadius: 999,
-                  border: "1px solid var(--fm-border, rgba(120,113,108,0.3))",
-                  background: "var(--fm-surface, #fff)",
-                  fontSize: 11.5,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
-              >
-                {busy === r.clientId ? "Drafting… (~45s)" : "✨ Draft now"}
-              </button>
+              <span style={{ fontSize: 11.5, color: "var(--fm-text-tertiary)", fontStyle: "italic" }}>
+                drafts automatically (7am) →
+              </span>
             )}
           </div>
         ))}

@@ -20,7 +20,6 @@ import { useState } from "react";
 import { FmPanel } from "@/components/fm";
 import {
   approveSuggestionAction,
-  generateAppMenuAction,
   loadAppPreviewAction,
   saveBuyLinkAction,
   setMealOverrideAction,
@@ -37,7 +36,6 @@ import {
 import {
   approveWeekMenuAction,
   dismissPendingMenuAction,
-  generateWeekMenuAction,
   weeklyMenuStatusAction,
   type WeeklyMenuStatus,
 } from "@/lib/server-actions/weekly-menu";
@@ -202,8 +200,6 @@ export function AppPreviewPanel({
 
   const [weekly, setWeekly] = useState<WeeklyMenuStatus | null>(null);
   const [weeklyBusy, setWeeklyBusy] = useState<string | null>(null);
-  const [genMenuBusy, setGenMenuBusy] = useState(false);
-  const [genMenuErr, setGenMenuErr] = useState("");
 
   const load = async () => {
     setBusy(true);
@@ -222,32 +218,16 @@ export function AppPreviewPanel({
     setPreviewKey((k) => k + 1);
   };
 
-  const weeklyAct = async (kind: "generate" | "approve" | "dismiss") => {
+  // Coach only APPROVES (or discards) the auto-drafted menu — no manual
+  // generate buttons (coach rule 2026-06-13: menus auto-generate, coach approves).
+  const weeklyAct = async (kind: "approve" | "dismiss") => {
     setWeeklyBusy(kind);
-    const fn =
-      kind === "generate"
-        ? generateWeekMenuAction
-        : kind === "approve"
-          ? approveWeekMenuAction
-          : dismissPendingMenuAction;
+    const fn = kind === "approve" ? approveWeekMenuAction : dismissPendingMenuAction;
     const out = await fn(clientId).catch((e) => ({ ok: false as const, error: String(e) }));
     if (!out.ok) setError(out.error ?? `${kind} failed`);
     else if (kind === "approve" && "groceryWarning" in out && out.groceryWarning)
       setError(String(out.groceryWarning));
     setWeeklyBusy(null);
-    void load();
-  };
-
-  const generateFirstMenu = async () => {
-    if (!data) return;
-    setGenMenuBusy(true);
-    setGenMenuErr("");
-    const out = await generateAppMenuAction(clientId, data.planSlug).catch((e) => ({
-      ok: false as const,
-      error: String(e),
-    }));
-    if (!out.ok) setGenMenuErr(out.error ?? "generation failed");
-    setGenMenuBusy(false);
     void load();
   };
 
@@ -361,29 +341,17 @@ export function AppPreviewPanel({
                   >
                     {weeklyBusy === "approve" ? "Going live…" : "✓ Approve & go live"}
                   </button>
-                  <button style={btn} disabled={!!weeklyBusy} onClick={() => weeklyAct("generate")}>
-                    {weeklyBusy === "generate" ? "Redrafting…" : "↻ Regenerate"}
-                  </button>
                   <button style={btn} disabled={!!weeklyBusy} onClick={() => weeklyAct("dismiss")}>
                     Discard
                   </button>
                 </div>
               </div>
             )}
-            {weekly && !weekly.pending && weekly.hasMenu && !weekly.isSample && !weekly.nextWeekReady && weekly.currentWeek < weekly.totalWeeks && (
-              <button
-                style={{ ...btn, alignSelf: "start" }}
-                disabled={!!weeklyBusy}
-                onClick={() => weeklyAct("generate")}
-                title="One Sonnet call (~$0.05, ~45s) — reads their check-ins, notes, your dish edits and MSQ since last week"
-              >
-                {weeklyBusy === "generate" ? "Drafting week " + (weekly.currentWeek + 1) + "…" : `✨ Draft week ${weekly.currentWeek + 1} menu`}
-              </button>
-            )}
-
-            {/* 🍽 bootstrap: no menu on the plan at all — generate the first
-                rotation straight onto plan.app_menu (no letter; coach
-                decision 2026-06-12). First generation anchors Day 1. */}
+            {/* No menu on the plan: principle/hybrid plans intentionally show
+                the eating framework only; real plans get an auto-generated
+                menu that lands above as a draft to approve. No manual
+                "generate" button (coach rule 2026-06-13: auto-generate, coach
+                approves). */}
             {data.menu.weeks === 0 && (
               <div
                 style={{
@@ -391,24 +359,12 @@ export function AppPreviewPanel({
                   border: "1px solid rgba(74, 97, 82, 0.3)",
                   borderRadius: "var(--fm-radius-md, 10px)",
                   padding: "10px 14px",
-                  display: "grid",
-                  gap: 6,
+                  fontSize: 12,
+                  color: "var(--fm-text-secondary)",
                 }}
               >
-                <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
-                  No menu on this plan yet — the app shows the eating framework only. Generate the
-                  first 2-week rotation directly onto the plan (no letter). <strong>This anchors
-                  their Day 1 / 12-week clock.</strong>
-                </div>
-                <button
-                  style={{ ...btn, alignSelf: "start", background: "var(--fm-primary, #4a6152)", color: "#fff", borderColor: "transparent" }}
-                  disabled={genMenuBusy}
-                  onClick={generateFirstMenu}
-                  title="One Sonnet call (~$0.10, 1–2 min) — full diet/dosha/season/calorie constraint engine, straight onto the plan"
-                >
-                  {genMenuBusy ? "Composing menu… (1–2 min)" : "✨ Generate 2-week menu"}
-                </button>
-                {genMenuErr && <div style={{ fontSize: 11.5, color: "#b91c1c" }}>{genMenuErr}</div>}
+                No weekly menu on this plan — the app shows the eating framework. Menus are
+                generated automatically; when one is drafted it appears here to review and approve.
               </div>
             )}
 
