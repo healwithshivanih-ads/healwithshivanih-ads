@@ -1,0 +1,86 @@
+slug: coconut-coriander-chutney
+name: Coconut-coriander chutney
+meal_type:
+- condiment
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- coriander
+- grated coconut
+- ginger
+- green chilli (optional)
+- lemon juice
+- salt
+- water
+- 'for tempering: coconut oil, mustard seeds, curry leaves'
+contains_allergens: []
+ingredients:
+- item: coriander
+  qty: '1'
+  unit: cup
+- item: grated coconut
+  qty: '0.25'
+  unit: cup
+- item: ginger
+  qty: 1 inch
+  unit: ''
+- item: green chilli (optional)
+  qty: '1'
+  unit: piece
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: water
+  qty: as needed
+  unit: ''
+- item: 'for tempering: coconut oil, mustard seeds, curry leaves'
+  qty: 1 set
+  unit: ''
+steps:
+- Blend coriander, coconut, ginger, chilli, lemon juice, and salt with a little water into a smooth chutney.
+- Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the chutney.
+- Serve fresh alongside chilla, dosa, idli, or rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 70
+kcal_is_estimate: true
+protein_g: 2
+good_for:
+- agni-digestive-fire
+one_line: A fresh, bright coconut-coriander chutney to lift any meal — no preservatives, made fresh.
+headnote: Fresh chutneys add flavour, enzymes, and a hit of herbs without sugar or preservatives — make
+  a small batch and use it the same day.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/coconut-coriander-chutney.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://cdn.mygingergarlickitchen.com/images/800px/800px-recipe-coconut-coriander-chutney-anupama-paliwal-my-ginger-garlic-kitchen-4.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Coconut-coriander chutney
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

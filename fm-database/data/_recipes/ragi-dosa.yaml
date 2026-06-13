@@ -1,0 +1,91 @@
+slug: ragi-dosa
+name: Ragi dosa
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- fermented millet-and-dal batter
+- water
+- ginger, grated
+- green chilli, minced (optional)
+- turmeric
+- finely chopped vegetables (onion, capsicum, coriander)
+- salt
+- ghee or oil for cooking
+contains_allergens: []
+ingredients:
+- item: fermented millet-and-dal batter
+  qty: '1'
+  unit: cup
+- item: water
+  qty: as needed
+  unit: ''
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: green chilli, minced (optional)
+  qty: '1'
+  unit: piece
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: finely chopped vegetables (onion, capsicum, coriander)
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: ghee or oil for cooking
+  qty: '2'
+  unit: tsp
+steps:
+- Whisk fermented millet-and-dal batter with water into a smooth, pourable batter (like thin pancake batter).
+- Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
+- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter and spread into
+  a thin round.
+- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is golden, flip, and cook
+  the other side 1-2 minutes.
+- Serve hot with chutney.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 180
+kcal_is_estimate: true
+protein_g: 10
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+one_line: A savoury, protein-rich ragi dosa — quick, gut-friendly, and naturally gluten-free.
+headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's high in protein
+  and easy to digest — a far better breakfast than refined flour.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/ragi-dosa.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://media.assettype.com/saamtv/2026-01-01/8nsfl7wi/ragi-dosa-10.jpg?w=1200&ar=40:21&auto=format%2Ccompress&ogImage=true&mode=crop&enlarge=true&overlay=false&overlay_position=bottom&overlay_width=100
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Ragi dosa
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

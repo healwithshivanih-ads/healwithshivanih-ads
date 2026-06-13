@@ -1,0 +1,97 @@
+slug: chicken-sukka
+name: Chicken sukka
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- chicken
+- coconut oil
+- onion, sliced
+- ginger-garlic paste
+- curry leaves
+- turmeric
+- coriander powder
+- light coconut milk
+- salt
+- fresh coriander
+contains_allergens: []
+ingredients:
+- item: chicken
+  qty: '150'
+  unit: g
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: onion, sliced
+  qty: '1'
+  unit: medium
+- item: ginger-garlic paste
+  qty: '1'
+  unit: tbsp
+- item: curry leaves
+  qty: 8-10
+  unit: leaves
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: coriander powder
+  qty: '1'
+  unit: tsp
+- item: light coconut milk
+  qty: '0.5'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Clean and cut the chicken into pieces.
+- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic paste and cook 1
+  minute.
+- Add turmeric and coriander powder; stir 30 seconds.
+- Add the chicken and salt; sear 2-3 minutes. Pour in coconut milk and a little water. Cover and simmer
+  until just cooked through (fish 8-10 min, chicken 18-20 min, prawns 5-6 min).
+- Finish with fresh coriander. Serve warm with rice or millet.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 260
+kcal_is_estimate: true
+protein_g: 24
+good_for:
+- agni-digestive-fire
+one_line: A light, coconut-based chicken sukka — no tomato, gently spiced and freshly made.
+headnote: Freshly cooked chicken in a light coconut-curry-leaf base keeps the meal clean and easy to digest
+  — no heavy tomato gravy, made the same day.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/chicken-sukka.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://theyummydelights.com/wp-content/uploads/2019/06/chicken-sukka.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Chicken sukka
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

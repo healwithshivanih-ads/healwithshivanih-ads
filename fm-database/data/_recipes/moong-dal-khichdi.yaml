@@ -49,3 +49,10 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+image:
+  file: images/web/moong-dal-khichdi.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://greenbowl2soul.com/wp-content/uploads/2020/01/moong-dal-khichdi.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use

@@ -1,0 +1,87 @@
+slug: paneer-spinach-sabzi
+name: Paneer & spinach sabzi
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- paneer, cubed
+- ghee or oil
+- cumin seeds
+- ginger, grated
+- vegetables (capsicum, spinach, mushroom)
+- turmeric
+- salt
+- fresh coriander
+contains_allergens: []
+ingredients:
+- item: paneer, cubed
+  qty: '150'
+  unit: g
+- item: ghee or oil
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: vegetables (capsicum, spinach, mushroom)
+  qty: '1'
+  unit: cup
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
+- Add the vegetables and turmeric; cook 3-4 minutes until tender.
+- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly golden (don't overcook
+  or it toughens).
+- Garnish with coriander and serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 240
+kcal_is_estimate: true
+protein_g: 16
+good_for:
+- agni-digestive-fire
+one_line: A simple, protein-rich paneer & spinach sabzi with vegetables and a light tempering.
+headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that doesn't need a heavy
+  gravy to taste good.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/paneer-spinach-sabzi.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://healthyindianrecipes.com/wp-content/uploads/2025/08/saag-paneer-recipe2.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Paneer & spinach sabzi
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

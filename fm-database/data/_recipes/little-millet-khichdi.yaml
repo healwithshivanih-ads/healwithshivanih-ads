@@ -1,0 +1,95 @@
+slug: little-millet-khichdi
+name: Little millet khichdi
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- little
+- split yellow moong dal
+- ghee
+- cumin seeds
+- ginger, grated
+- turmeric
+- mixed vegetables, diced (carrot, beans, peas)
+- asafoetida (hing)
+- salt
+contains_allergens: []
+ingredients:
+- item: little
+  qty: '0.5'
+  unit: cup
+- item: split yellow moong dal
+  qty: '0.25'
+  unit: cup
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: mixed vegetables, diced (carrot, beans, peas)
+  qty: '1'
+  unit: cup
+- item: asafoetida (hing)
+  qty: 1 pinch
+  unit: ''
+- item: salt
+  qty: to taste
+  unit: ''
+steps:
+- Rinse the little and moong dal together until the water runs clear.
+- Heat ghee in a pressure cooker. Add cumin seeds, ginger, and hing; sauté 20 seconds.
+- Add the diced vegetables and turmeric; stir 1 minute.
+- Add the drained little-dal, salt, and 3 cups water. Pressure-cook 3-4 whistles (or simmer covered 25
+  minutes) until soft and porridge-like.
+- Rest 5 minutes, fluff gently, and serve warm with a little extra ghee.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 240
+kcal_is_estimate: true
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- gut-health
+- digestion-and-nutrient-absorption
+one_line: A soft, one-pot little khichdi with moong dal and vegetables — the classic gut-rest meal.
+headnote: 'Khichdi is Ayurveda''s most healing everyday meal: little and moong dal cooked soft together
+  are easy to digest and gently nourishing.'
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/little-millet-khichdi.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://4.bp.blogspot.com/-0EfoIK8uJPs/XLx1p6dJnUI/AAAAAAAAhXY/Y_1QVeMqOEw5b5yiBW_OZDozfe1oMRPMgCLcBGAs/s1600/DSC_0126.JPG
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Little millet khichdi
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

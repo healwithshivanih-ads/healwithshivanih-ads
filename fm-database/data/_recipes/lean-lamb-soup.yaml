@@ -1,0 +1,89 @@
+slug: lean-lamb-soup
+name: Lean lamb soup ( ,
+meal_type:
+- soup
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- lean lamb, chopped
+- ghee or coconut oil
+- cumin seeds
+- ginger, grated
+- black pepper
+- salt
+- lemon juice
+- fresh coriander
+contains_allergens: []
+ingredients:
+- item: lean lamb, chopped
+  qty: '2'
+  unit: cups
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
+- Add the chopped lean lamb and 3 cups water. Simmer covered 12-15 minutes until soft.
+- Blend smooth (or leave brothy). Season with salt and pepper.
+- Finish with lemon juice and coriander. Serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- gut-health
+one_line: A light, warming lean lamb soup ( , — soothing and easy on digestion.
+headnote: A gentle lean lamb soup with ginger and pepper is warming, hydrating, and the perfect light
+  dinner when you want to rest the gut.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/lean-lamb-soup.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://cdn.momsdish.com/wp-content/uploads/2023/01/One-Pot-Lamb-Stew-010.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Lean lamb soup ( ,
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

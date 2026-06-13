@@ -1,0 +1,93 @@
+slug: green-moong-sabzi
+name: Green moong sabzi
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- moong, diced
+- ghee or coconut oil
+- mustard seeds
+- cumin seeds
+- curry leaves
+- ginger, grated
+- turmeric
+- grated fresh coconut (optional)
+- salt
+- fresh coriander, chopped
+contains_allergens: []
+ingredients:
+- item: moong, diced
+  qty: '2'
+  unit: cups
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: 8-10
+  unit: leaves
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: grated fresh coconut (optional)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander, chopped
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat ghee in a kadai over medium heat. Add mustard seeds and let them pop, then add cumin seeds, curry
+  leaves, and ginger; sauté 30 seconds until fragrant.
+- Add the diced moong and turmeric. Stir to coat in the tempering.
+- Add salt, cover, and cook on low 8-12 minutes, stirring occasionally, until the vegetable is just tender
+  (not mushy). Add a splash of water only if it sticks.
+- Uncover, raise heat briefly to dry off any moisture. Stir in grated coconut if using.
+- Garnish with fresh coriander and serve warm with roti or rice.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 120
+kcal_is_estimate: true
+protein_g: 4
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A light, dry South-Indian style moong sabzi tempered with mustard, cumin and curry leaves.
+headnote: Cooking moong gently with a simple tempering keeps it easy to digest and lets the vegetable's
+  own flavour come through — no heavy gravy, no tomato.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Green moong sabzi
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

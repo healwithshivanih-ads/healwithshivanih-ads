@@ -1,0 +1,80 @@
+slug: sama-porridge
+name: Sama porridge
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- sama
+- water or thin milk
+- ghee
+- cardamom powder
+- dates or soaked raisins
+- salt
+contains_allergens: []
+ingredients:
+- item: sama
+  qty: '0.5'
+  unit: cup
+- item: water or thin milk
+  qty: '2'
+  unit: cups
+- item: ghee
+  qty: '1'
+  unit: tsp
+- item: cardamom powder
+  qty: 1 pinch
+  unit: ''
+- item: dates or soaked raisins
+  qty: '4'
+  unit: pieces
+- item: salt
+  qty: 1 pinch
+  unit: ''
+steps:
+- Rinse the sama well.
+- Combine sama with water (or thin milk), a pinch of salt, and chopped dates in a pot.
+- Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy. Add more liquid if
+  needed.
+- Stir in ghee and cardamom. Serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 230
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A creamy, lightly sweet sama porridge — a warm, easy-to-digest start to the day.
+headnote: Slow-cooked sama porridge is grounding and soothing, naturally sweetened with dates and warmed
+  with cardamom.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sama-porridge.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://i0.wp.com/www.mylittlemoppet.com/wp-content/uploads/2015/06/pin.jpg?resize=735%2C1102&ssl=1
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Sama porridge
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

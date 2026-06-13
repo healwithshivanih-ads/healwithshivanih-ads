@@ -1,0 +1,82 @@
+slug: thin-moong-dal-soup
+name: Thin moong dal soup
+meal_type:
+- soup
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- thin moong dal, chopped
+- ghee or coconut oil
+- cumin seeds
+- ginger, grated
+- black pepper
+- salt
+- lemon juice
+- fresh coriander
+contains_allergens: []
+ingredients:
+- item: thin moong dal, chopped
+  qty: '2'
+  unit: cups
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: black pepper
+  qty: '0.25'
+  unit: tsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
+- Add the chopped thin moong dal and 3 cups water. Simmer covered 12-15 minutes until soft.
+- Blend smooth (or leave brothy). Season with salt and pepper.
+- Finish with lemon juice and coriander. Serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 90
+kcal_is_estimate: true
+protein_g: 3
+good_for:
+- agni-digestive-fire
+- gut-health
+one_line: A light, warming thin moong dal soup — soothing and easy on digestion.
+headnote: A gentle thin moong dal soup with ginger and pepper is warming, hydrating, and the perfect light
+  dinner when you want to rest the gut.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Thin moong dal soup
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

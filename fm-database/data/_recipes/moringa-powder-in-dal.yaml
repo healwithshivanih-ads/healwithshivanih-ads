@@ -1,0 +1,92 @@
+slug: moringa-powder-in-dal
+name: Moringa powder in dal
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- moringa powder in
+- turmeric
+- ghee
+- cumin seeds
+- ginger, grated
+- curry leaves
+- asafoetida (hing)
+- salt
+- lemon juice
+- fresh coriander
+contains_allergens: []
+ingredients:
+- item: moringa powder in
+  qty: '0.75'
+  unit: cup
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: ghee
+  qty: '1'
+  unit: tbsp
+- item: cumin seeds
+  qty: '0.5'
+  unit: tsp
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: 8-10
+  unit: leaves
+- item: asafoetida (hing)
+  qty: 1 pinch
+  unit: ''
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice
+  qty: '1'
+  unit: tsp
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Rinse the moringa powder in well. Pressure-cook with turmeric and 2.5 cups water until soft (3-4 whistles),
+  or simmer covered 25-30 minutes. Whisk smooth.
+- Heat ghee in a small pan. Add cumin seeds, let them splutter, then add ginger, curry leaves, and a pinch
+  of hing; sauté 20 seconds.
+- Pour the tempering into the cooked dal. Add salt and a little hot water for a pourable consistency.
+  Simmer 3-4 minutes.
+- Finish with lemon juice and coriander. Serve warm with rice or roti.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 190
+kcal_is_estimate: true
+protein_g: 11
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A comforting, well-tempered moringa powder in simmered soft and finished with a ghee-cumin tadka.
+headnote: A simple moringa powder in is one of the most digestible protein sources — cooked soft, spiced
+  gently with cumin and ginger, and kept free of heavy onion-tomato gravy.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+sources:
+- id: shivani-hari-original
+  location: Moringa powder in dal
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

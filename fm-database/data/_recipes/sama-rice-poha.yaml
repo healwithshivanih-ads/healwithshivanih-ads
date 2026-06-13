@@ -1,0 +1,96 @@
+slug: sama-rice-poha
+name: Sama rice poha
+meal_type:
+- breakfast
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- flattened millet/rice poha
+- coconut oil
+- mustard seeds
+- curry leaves
+- onion, chopped
+- peas and diced vegetables
+- turmeric
+- roasted peanuts (optional)
+- salt
+- lemon juice and coriander
+contains_allergens: []
+ingredients:
+- item: flattened millet/rice poha
+  qty: '1.5'
+  unit: cups
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: 8-10
+  unit: leaves
+- item: onion, chopped
+  qty: '0.5'
+  unit: medium
+- item: peas and diced vegetables
+  qty: '0.5'
+  unit: cup
+- item: turmeric
+  qty: '0.25'
+  unit: tsp
+- item: roasted peanuts (optional)
+  qty: '2'
+  unit: tbsp
+- item: salt
+  qty: to taste
+  unit: ''
+- item: lemon juice and coriander
+  qty: to finish
+  unit: ''
+steps:
+- Rinse the poha briefly in a colander until just softened; drain and set aside.
+- Heat oil, pop mustard seeds, add curry leaves and onion; sauté until soft.
+- Add vegetables, turmeric, peanuts, and salt; cook 3-4 minutes.
+- Fold in the drained poha gently, warm through 2 minutes.
+- Finish with lemon juice and coriander. Serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 220
+kcal_is_estimate: true
+protein_g: 5
+good_for:
+- agni-digestive-fire
+one_line: A light, savoury sama rice poha — a quick, no-sugar breakfast.
+headnote: Poha made with millet or rice flakes and plenty of vegetables is a light, quick breakfast —
+  skip the sugar and lean on lemon and curry leaves for flavour.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sama-rice-poha.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://dww3ueizok6z0.cloudfront.net/food/banner/11036-035b05cc8f58dc5028fbf1eb413037d7113d12ec
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Sama rice poha
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

@@ -1,0 +1,100 @@
+slug: foxtail-millet-pulao
+name: Foxtail millet pulao
+meal_type:
+- breakfast
+- lunch
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- foxtail
+- ghee or coconut oil
+- mustard seeds
+- urad dal
+- curry leaves
+- ginger, grated
+- onion, chopped (optional)
+- mixed vegetables, diced (carrot, peas, beans)
+- salt
+- fresh coriander
+contains_allergens: []
+ingredients:
+- item: foxtail
+  qty: '1'
+  unit: cup
+- item: ghee or coconut oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: urad dal
+  qty: '1'
+  unit: tsp
+- item: curry leaves
+  qty: 8-10
+  unit: leaves
+- item: ginger, grated
+  qty: '1'
+  unit: tsp
+- item: onion, chopped (optional)
+  qty: '0.5'
+  unit: medium
+- item: mixed vegetables, diced (carrot, peas, beans)
+  qty: '0.75'
+  unit: cup
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Dry-roast the foxtail in a pan 2-3 minutes until nutty. Set aside.
+- Heat ghee, add mustard seeds and urad dal; once they pop add curry leaves, ginger, and onion. Sauté
+  until soft.
+- Add diced vegetables; stir-fry 2 minutes.
+- Add 2.5 cups water and salt; bring to a boil. Stir in the roasted foxtail.
+- Cover and cook on low 12-15 minutes until the water is absorbed and the grain is fluffy. Rest 5 minutes,
+  garnish with coriander, and serve warm.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 260
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- blood-sugar-regulation
+one_line: A savoury, fluffy foxtail upma tempered with mustard and curry leaves and studded with vegetables.
+headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy rather than sticky —
+  a warm, grounding breakfast that's gentle on digestion.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/foxtail-millet-pulao.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://www.awesomecuisine.com/wp-content/uploads/2018/02/Foxtail-Millet-Coconut-Milk-Pulao.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Foxtail millet pulao
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

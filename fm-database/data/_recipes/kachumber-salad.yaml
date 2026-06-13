@@ -1,0 +1,85 @@
+slug: kachumber-salad
+name: Kachumber salad
+meal_type:
+- salad
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- pitta
+- kapha
+aggravates_dosha: []
+rasa:
+- sweet
+- pungent
+main_ingredients:
+- mixed salad vegetables / sprouts (as named)
+- cucumber, diced
+- lemon juice
+- roasted cumin powder
+- rock salt
+- fresh coriander and mint
+- coconut oil or cold-pressed oil (optional)
+contains_allergens: []
+ingredients:
+- item: mixed salad vegetables / sprouts (as named)
+  qty: '2'
+  unit: cups
+- item: cucumber, diced
+  qty: '0.5'
+  unit: cup
+- item: lemon juice
+  qty: '1'
+  unit: tbsp
+- item: roasted cumin powder
+  qty: '0.5'
+  unit: tsp
+- item: rock salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander and mint
+  qty: '2'
+  unit: tbsp
+- item: coconut oil or cold-pressed oil (optional)
+  qty: '1'
+  unit: tsp
+steps:
+- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler on digestion lightly
+  steamed).
+- Toss with cucumber, lemon juice, roasted cumin, and rock salt.
+- Fold through fresh herbs and a touch of oil if using. Serve fresh.
+servings: '2'
+prep_time_min: 10
+cook_time_min: 15
+approx_kcal_per_serving: 110
+kcal_is_estimate: true
+protein_g: 6
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A fresh, crunchy kachumber salad dressed simply with lemon, cumin, and herbs.
+headnote: A simple salad of fresh or lightly steamed vegetables with lemon and roasted cumin adds fibre
+  and freshness — sprouts are best lightly steamed for easy digestion.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/kachumber-salad.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://www.jcookingodyssey.com/wp-content/uploads/2025/07/kachumber-salad-1024x1536.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Kachumber salad
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani

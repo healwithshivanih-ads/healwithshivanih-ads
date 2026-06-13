@@ -1,0 +1,95 @@
+slug: sambar
+name: Sambar
+meal_type:
+- lunch
+- dinner
+diet:
+- vegetarian
+- vegan
+- gluten_free
+region: South Indian
+seasons:
+- all
+balances_dosha:
+- vata
+- kapha
+aggravates_dosha: []
+rasa:
+- sour
+- pungent
+- astringent
+main_ingredients:
+- toor dal
+- mixed vegetables
+- tamarind
+- sambar powder
+contains_allergens: []
+ingredients:
+- item: toor dal
+  qty: '0.75'
+  unit: cup
+- item: mixed vegetables (drumstick, pumpkin, carrot, beans)
+  qty: '1.5'
+  unit: cups
+- item: tamarind, soaked
+  qty: '1'
+  unit: tbsp
+- item: sambar powder
+  qty: '1.5'
+  unit: tsp
+- item: turmeric
+  qty: '0.5'
+  unit: tsp
+- item: coconut oil
+  qty: '1'
+  unit: tbsp
+- item: mustard seeds
+  qty: '0.5'
+  unit: tsp
+- item: curry leaves
+  qty: '10'
+  unit: leaves
+- item: asafoetida (hing)
+  qty: 1 pinch
+  unit: ''
+- item: salt
+  qty: to taste
+  unit: ''
+- item: fresh coriander
+  qty: '2'
+  unit: tbsp
+steps:
+- Pressure-cook toor dal with turmeric until soft; whisk smooth.
+- Boil the mixed vegetables until just tender. Add the tamarind extract, sambar powder, salt, and cooked
+  dal; simmer 8-10 minutes.
+- Heat coconut oil, pop mustard seeds, add curry leaves and a pinch of hing; pour this tempering over
+  the sambar.
+- Simmer 2 minutes more, finish with coriander, and serve with rice, idli, or dosa.
+servings: '3'
+prep_time_min: 15
+cook_time_min: 25
+approx_kcal_per_serving: 170
+kcal_is_estimate: true
+protein_g: 9
+good_for:
+- agni-digestive-fire
+- digestion-and-nutrient-absorption
+one_line: A tangy South-Indian lentil-and-vegetable stew with tamarind and sambar spices.
+headnote: Sambar pairs protein-rich toor dal with a medley of vegetables and a sour-savoury tamarind base.
+attribution:
+  author: Shivani Hari
+  source_id: shivani-hari-original
+image:
+  file: images/web/sambar.jpg
+  credit: web reference (auto-sourced)
+  source_url: https://www.cubesnjuliennes.com/wp-content/uploads/2021/01/South-Indian-Sambar-Recipe.jpg
+  rights_status: web_reference_uncleared
+  note: auto-sourced + cropped for internal-app reference; replace with
+    licensed or original photo before any external/commercial use
+sources:
+- id: shivani-hari-original
+  location: Sambar
+version: 1
+status: active
+updated_at: '2026-06-12'
+updated_by: Shivani
