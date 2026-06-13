@@ -9,6 +9,7 @@ import { FmAppShell, FmClientJourneyStrip } from "@/components/fm";
 import { HeaderAvatar } from "../analyse/header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
 import { clientSubnavTabs } from "../client-subnav";
+import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launcher";
 
 export interface SessionsPageShellProps {
   clientId: string;
@@ -67,6 +68,7 @@ export async function SessionsPageShell({
             </span>
           </div>
         </div>
+        <CoachNotesButton clientId={clientId} />
         <Link
           href={`/clients-v2/${clientId}`}
           style={{

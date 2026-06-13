@@ -20,7 +20,6 @@
 import Link from "next/link";
 import { loadClientById, markCoachTabViewed } from "@/lib/fmdb/loader-extras";
 import { loadAllPlans } from "@/lib/fmdb/loader";
-import { loadCatalogueChipDict } from "@/lib/fmdb/catalogue-chip-dict";
 // Letter send history moved to Communicate tab — single source of truth
 // for all client comms. Plan tab no longer reads the send log.
 import { getLetterStalenessAction } from "@/lib/server-actions/plan-lifecycle";
@@ -41,8 +40,8 @@ function asPlanStatus(s: string | undefined): PlanStatus | undefined {
 import { PlanStatusBadge } from "@/components/plan-status-badge";
 import {
   FmPanel,
+  FmCallout,
   FmWorkflowBanner,
-  FmCoachNotes,
   FmSupplementGrid,
   FmRecheckPanel,
   FmNutritionPanel,
@@ -269,10 +268,9 @@ export default async function PlanTabPage({
   // Clears plan/system-alerts chip on the unread badge for this client.
   void markCoachTabViewed(id, "plan");
 
-  const [client, allPlans, catalogueChips, allTopicsList] = await Promise.all([
+  const [client, allPlans, allTopicsList] = await Promise.all([
     loadClientById(id),
     loadAllPlans(),
-    loadCatalogueChipDict(),
     loadAllOfKind<{ slug?: string; display_name?: string }>("topics"),
   ]);
   if (!client) {
@@ -613,7 +611,6 @@ export default async function PlanTabPage({
     .sort((a, b) => a.display_name.localeCompare(b.display_name));
   const clientEmail = (client as { email?: string } | null)?.email ?? undefined;
   const clientName = (client as { display_name?: string } | null)?.display_name ?? undefined;
-  const notesForCoach = (activePlan?.notes_for_coach as string | undefined) ?? "";
   const planPeriodWeeks = activePlan?.plan_period_weeks;
   // Plan timeline dates — already on disk, surfaced here so the coach can
   // (Plan date meta — Generated / Published / Updated — was surfaced here
@@ -651,28 +648,20 @@ export default async function PlanTabPage({
           ready_to_publish plans. Stays on the v2 surface; no detour to
           /plans/<slug> Lifecycle tab. */}
       {stage.stage === "draft" && activePlan && (
-        <div
-          style={{
-            marginTop: 12,
-            padding: "10px 14px",
-            background: "rgba(20, 83, 45, 0.05)",
-            border: "1.5px solid rgba(20, 83, 45, 0.3)",
-            borderRadius: "var(--fm-radius-md)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
+        <div style={{ marginTop: 12 }}>
+          <FmCallout
+            tone="success"
+            icon="🚀"
+            actions={
+              <ActivateDraftButton
+                planSlug={activePlan.slug as string}
+                status={planStatusOf(activePlan)}
+              />
+            }
+          >
             Plan-check runs automatically — if anything blocks publish,
             you&rsquo;ll get a clear toast.
-          </div>
-          <ActivateDraftButton
-            planSlug={activePlan.slug as string}
-            status={planStatusOf(activePlan)}
-          />
+          </FmCallout>
         </div>
       )}
 
@@ -691,24 +680,10 @@ export default async function PlanTabPage({
         <PlanConflictPanel clientId={id} conflicts={planConflicts} />
       )}
 
-      {/* 📝 Notes for coach — pulled to the TOP (2026-06-13 coach request).
-          This is the clinical reasoning behind the plan; it frames everything
-          below. Markdown-aware renderer (FmCoachNotes) sections it cleanly.
-          Private — never appears on client letters. */}
-      {activePlan && notesForCoach.trim() && (
-        <div style={{ marginTop: 14 }}>
-          <FmPanel
-            title="📝 Notes for coach"
-            subtitle="Your clinical reasoning for this plan · private — never appears on client letters."
-          >
-            <FmCoachNotes
-              text={notesForCoach}
-              planSlug={activePlan.slug}
-              catalogue={catalogueChips}
-            />
-          </FmPanel>
-        </div>
-      )}
+      {/* 📝 Notes for coach moved (2026-06-14) to a modal behind the
+          "📝 Coach notes" button on the shared client chrome — reachable from
+          every tab, not just Plan, and no longer dominating the top of this
+          page. See client-widgets/coach-notes-launcher.tsx. */}
 
       {/* ── Plan & App studio (Option A, 2026-06-12) ──────────────────────
           THE home for everything the client receives: the live app preview
@@ -743,27 +718,17 @@ export default async function PlanTabPage({
           visual cue that a newer AI synthesis exists and is waiting for
           review. */}
       {pendingDrafts.length > 0 && (
-        <div
-          style={{
-            marginTop: 12,
-            padding: "10px 14px",
-            background: "rgba(110, 76, 200, 0.06)",
-            border: "1.5px solid rgba(110, 76, 200, 0.35)",
-            borderRadius: "var(--fm-radius-md)",
-            display: "flex",
-            alignItems: "flex-start",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <span style={{ fontSize: 18, lineHeight: "20px" }}>📋</span>
-          <div style={{ flex: 1, minWidth: 240, fontSize: 12 }}>
-            <div style={{ fontWeight: 700, color: "#5a3fb0" }}>
-              {pendingDrafts.length === 1
+        <div style={{ marginTop: 12 }}>
+          <FmCallout
+            tone="info"
+            icon="📋"
+            title={
+              pendingDrafts.length === 1
                 ? "A new draft is waiting for review"
-                : `${pendingDrafts.length} drafts are waiting for review`}
-            </div>
-            <div style={{ color: "var(--fm-text-secondary)", marginTop: 1 }}>
+                : `${pendingDrafts.length} drafts are waiting for review`
+            }
+          >
+            <div style={{ color: "var(--fm-text-secondary)" }}>
               This card below still shows your <strong>live</strong>{" "}
               published plan.{" "}
               {pendingDrafts.length === 1 ? "The draft is a" : "Drafts are"}{" "}
@@ -771,14 +736,7 @@ export default async function PlanTabPage({
               generated from recent Full Assessment runs — review and activate
               to supersede.
             </div>
-            <div
-              style={{
-                marginTop: 8,
-                display: "flex",
-                gap: 6,
-                flexWrap: "wrap",
-              }}
-            >
+            <div style={{ marginTop: 8, display: "flex", gap: 6, flexWrap: "wrap" }}>
               {pendingDrafts.map((d) => (
                 <Link
                   key={d.slug as string}
@@ -788,7 +746,7 @@ export default async function PlanTabPage({
                     fontSize: 11,
                     fontWeight: 700,
                     fontFamily: "var(--fm-font-mono)",
-                    background: "#5a3fb0",
+                    background: "var(--fm-secondary)",
                     color: "#fff",
                     borderRadius: "var(--fm-radius-sm)",
                     textDecoration: "none",
@@ -799,7 +757,7 @@ export default async function PlanTabPage({
                 </Link>
               ))}
             </div>
-          </div>
+          </FmCallout>
         </div>
       )}
 
@@ -863,8 +821,10 @@ export default async function PlanTabPage({
                 2026-06-12 — coach audit: pure noise; the Communicate tab is
                 one click away in the subnav.) */}
 
-            {/* Plan header card */}
+            {/* Plan header card — accented as the page's primary anchor so it
+                stands out from the secondary panels below. */}
             <FmPanel
+              accent="primary"
               title={
                 <span
                   style={{
@@ -946,10 +906,12 @@ export default async function PlanTabPage({
                   <MiniLabel>Primary conditions</MiniLabel>
                   <ChipList items={primaryTopics} tone="primary" />
                 </div>
-                <div>
-                  <MiniLabel>Presenting symptoms</MiniLabel>
-                  <ChipList items={presentingSymptoms} />
-                </div>
+                {presentingSymptoms.length > 0 && (
+                  <div>
+                    <MiniLabel>Presenting symptoms</MiniLabel>
+                    <ChipList items={presentingSymptoms} />
+                  </div>
+                )}
                 {contributingTopics.length > 0 && (
                   <div style={{ gridColumn: "1 / -1" }}>
                     <MiniLabel>Contributing conditions</MiniLabel>

@@ -27,6 +27,52 @@ function supplementSourcesPath(): string {
   return path.join(getPlansRoot(), "supplement-sources.yaml");
 }
 
+/**
+ * The active plan's coach notes for a client, for the cross-tab "Coach notes"
+ * modal (reachable from every client tab, not just Plan). Picks the same
+ * active plan the Plan tab shows: published > ready_to_publish > draft, then
+ * highest version, then most-recently-updated. Returns empty strings when the
+ * client has no active plan / no notes (the launcher shows a gentle empty state).
+ */
+export async function getClientCoachNotesAction(
+  clientId: string,
+): Promise<
+  | { ok: true; notesForCoach: string; planSlug: string }
+  | { ok: false; error: string }
+> {
+  if (!clientId) return { ok: false, error: "clientId required" };
+  try {
+    const { loadAllPlans } = await import("@/lib/fmdb/loader");
+    const all = await loadAllPlans();
+    const ACTIVE = new Set(["draft", "ready_to_publish", "published"]);
+    const PRIORITY: Record<string, number> = { published: 3, ready_to_publish: 2, draft: 1 };
+    const statusOf = (p: Plan): string =>
+      ((p as Record<string, unknown>).status as string | undefined) ??
+      ((p as Record<string, unknown>)._bucket as string | undefined) ??
+      "draft";
+    const versionOf = (p: Plan): number =>
+      ((p as Record<string, unknown>).version as number | undefined) ?? 1;
+    const plans = all
+      .filter((p) => p.client_id === clientId && ACTIVE.has(statusOf(p)))
+      .sort((a, b) => {
+        const dp = (PRIORITY[statusOf(b)] ?? 0) - (PRIORITY[statusOf(a)] ?? 0);
+        if (dp !== 0) return dp;
+        const dv = versionOf(b) - versionOf(a);
+        if (dv !== 0) return dv;
+        return ((b.updated_at ?? "") as string).localeCompare((a.updated_at ?? "") as string);
+      });
+    const active = plans[0];
+    if (!active) return { ok: true, notesForCoach: "", planSlug: "" };
+    return {
+      ok: true,
+      notesForCoach: (active.notes_for_coach as string | undefined) ?? "",
+      planSlug: active.slug as string,
+    };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : "failed to load notes" };
+  }
+}
+
 export async function loadSupplementSources(): Promise<SupplementSourcesMap> {
   try {
     const raw = await fs.readFile(supplementSourcesPath(), "utf-8");

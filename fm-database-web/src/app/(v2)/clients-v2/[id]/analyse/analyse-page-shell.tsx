@@ -11,6 +11,7 @@ import { loadClientJourney } from "@/lib/fmdb/client-journey";
 import { FmAppShell, FmClientJourneyStrip } from "@/components/fm";
 import { HeaderAvatar } from "./header-avatar";
 import { clientQuickActions } from "../client-quick-actions";
+import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launcher";
 
 export interface AnalysePageShellProps {
   /** Client id from the route params. */
@@ -82,6 +83,7 @@ export async function AnalysePageShell({
             </div>
           )}
         </div>
+        <CoachNotesButton clientId={clientId} />
         <Link
           href={`/clients-v2/${clientId}/analyse`}
           style={{

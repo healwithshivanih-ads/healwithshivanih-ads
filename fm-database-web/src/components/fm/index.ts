@@ -19,6 +19,9 @@ export type { FmPageHeaderProps } from "./FmPageHeader";
 export { FmPanel, FmInfoRow } from "./FmPanel";
 export type { FmPanelProps } from "./FmPanel";
 
+export { FmCallout } from "./FmCallout";
+export type { FmCalloutProps } from "./FmCallout";
+
 export { FmStatTile, FmStatGrid } from "./FmStatTile";
 export type { FmStatTileProps } from "./FmStatTile";
 

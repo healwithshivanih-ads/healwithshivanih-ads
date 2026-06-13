@@ -30,6 +30,7 @@ import {
 import { loadAllPlans } from "@/lib/fmdb/loader";
 import { checkMedicationImpactsAction } from "@/lib/server-actions/clients";
 import { ClientIdentityEditor } from "./client-identity-editor";
+import { CoachNotesButton } from "@/components/client-widgets/coach-notes-launcher";
 import { SendIntakeFormButton } from "./send-intake-form-button";
 import { OverviewSendLabsCard } from "./overview-send-labs-card";
 import { OverviewPlanLabsCard } from "./overview-plan-labs-card";
@@ -45,7 +46,7 @@ import { BeightonVerifyPanel } from "./beighton-verify-panel";
 import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
 import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
-import { AyurvedaToggle } from "@/components/client-widgets/ayurveda-toggle";
+import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
 import { SupplementCheckWidget } from "@/components/client-widgets/supplement-check-widget";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
@@ -1035,6 +1036,7 @@ export default async function ClientV2Page({
                 same destination plus a noisier header. Removed; kept
                 "💬 Send message" because Communicate is a distinct
                 destination from any subnav action. */}
+            <CoachNotesButton clientId={client.client_id} />
             <QuickActionLink href={`/clients-v2/${id}/communicate`}>
               💬 Send message
             </QuickActionLink>
@@ -1338,46 +1340,60 @@ export default async function ClientV2Page({
               Coach asked 2026-05-23: showing Discovery labs forever on
               an active-plan client is wrong — they were already ordered;
               the relevant question is "what retest is next?". */}
-          {publishedPlan ? (
-            <OverviewPlanLabsCard plan={publishedPlan} today={todayStr} />
-          ) : (
-            latestDiscoveryWithLabs && (
-              <OverviewSendLabsCard
-                clientId={client.client_id}
-                sessionId={latestDiscoveryWithLabs.sessionId}
-                labCount={latestDiscoveryWithLabs.labs.length}
-                clientEmail={(client as unknown as { email?: string | null }).email ?? null}
-                discoveryDateLabel={
-                  latestDiscoveryWithLabs.date
-                    ? formatLongDate(latestDiscoveryWithLabs.date)
-                    : null
-                }
-                lastSentAt={lastLabsSentAt}
-              />
-            )
+          {/* Demoted to a quiet collapsible pill (coach 2026-06-13): the
+              labs panel is a signal, not a primary surface. Auto-opens when
+              there's a discovery list pending to send (actionable); the
+              calm active-plan "next retest" reminder stays collapsed until
+              the coach expands it. */}
+          {(publishedPlan || latestDiscoveryWithLabs) && (
+            <StageGate
+              demoted
+              initialOpen={!publishedPlan && !!latestDiscoveryWithLabs}
+              label={publishedPlan ? "🔬 Labs — upcoming retest schedule" : "🔬 Labs — discovery list to send"}
+              storageKey={`fm.stagegate.labs.${client.client_id ?? id}`}
+            >
+              {publishedPlan ? (
+                <OverviewPlanLabsCard plan={publishedPlan} today={todayStr} />
+              ) : (
+                latestDiscoveryWithLabs && (
+                  <OverviewSendLabsCard
+                    clientId={client.client_id}
+                    sessionId={latestDiscoveryWithLabs.sessionId}
+                    labCount={latestDiscoveryWithLabs.labs.length}
+                    clientEmail={(client as unknown as { email?: string | null }).email ?? null}
+                    discoveryDateLabel={
+                      latestDiscoveryWithLabs.date
+                        ? formatLongDate(latestDiscoveryWithLabs.date)
+                        : null
+                    }
+                    lastSentAt={lastLabsSentAt}
+                  />
+                )
+              )}
+            </StageGate>
           )}
 
-          {/* 📲 App tools (preview/edit, grocery, share) moved to the PLAN
-              tab — the "Plan & App studio" (Option A, 2026-06-12). The
-              Overview stays state-and-signals only; one quiet pointer: */}
-          {publishedPlan?.slug && (
-            <a
-              href={`/clients-v2/${client.client_id ?? id}/plan`}
-              style={{
-                display: "block",
-                padding: "10px 14px",
-                borderRadius: "var(--fm-radius-md, 10px)",
-                border: "1px solid var(--fm-border, rgba(120,113,108,0.3))",
-                background: "var(--fm-surface, #fff)",
-                fontSize: 12.5,
-                fontWeight: 600,
-                textDecoration: "none",
-                color: "var(--fm-text-primary)",
-              }}
-            >
-              📲 Client app — preview, edit meals &amp; remedies, share → Plan tab
-            </a>
-          )}
+          {/* 📲 App-tools pointer removed (coach 2026-06-13): redundant with
+              the Plan tab already in the subnav; app tools live there since
+              the Plan & App studio (Option A, 2026-06-12). */}
+
+          {/* 🧩 Plan modules — the optional layers to weave into this client's
+              plan (Ayurveda, meal-plan type, Schüssler's salts, peptides, …).
+              Surfaced high on Overview so nothing is missed when authoring. */}
+          <FmGroupedPanel
+            id="overview.plan-modules"
+            icon="🧩"
+            title="Plan modules"
+          >
+            <PlanModulesPanel
+              clientId={client.client_id}
+              ayurvedaEnabled={(client as unknown as { ayurveda_enabled?: boolean }).ayurveda_enabled}
+              ayurvedaConstitution={(client as unknown as { ayurveda_constitution?: string }).ayurveda_constitution}
+              ayurvedaAssessment={(client as unknown as { ayurveda_assessment?: Record<string, unknown> | null }).ayurveda_assessment}
+              mealPlanStyle={(client as unknown as { meal_plan_style?: "detailed" | "principles" | "hybrid" }).meal_plan_style}
+              planModules={(client as unknown as { plan_modules?: string[] }).plan_modules}
+            />
+          </FmGroupedPanel>
 
           {/* 📋 Intake — progress / insights / send & unlock / coach exam.
               Demoted to a quiet pill once a plan is published (intake is
@@ -1711,12 +1727,6 @@ export default async function ClientV2Page({
                 label: "Memory",
                 content: (
                           <div className="space-y-3">
-                            <AyurvedaToggle
-                              clientId={client.client_id}
-                              initialEnabled={(client as unknown as { ayurveda_enabled?: boolean }).ayurveda_enabled}
-                              initialConstitution={(client as unknown as { ayurveda_constitution?: string }).ayurveda_constitution}
-                              assessment={(client as unknown as { ayurveda_assessment?: Record<string, unknown> | null }).ayurveda_assessment}
-                            />
                             <SupplementCheckWidget clientId={client.client_id} />
                             <ClientMemoryPanel
                               clientId={client.client_id}
