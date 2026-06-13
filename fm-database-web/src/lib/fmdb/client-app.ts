@@ -454,6 +454,10 @@ export interface ClientAppData {
     history: { date: string; weightKg: number | null; waistCm: number | null; hipCm: number | null }[];
   };
   reminders: { id: string; label: string; time: string; on: boolean }[];
+  /** Daily calorie guide for weight-loss clients — computed the same way the
+   *  letter generator does (Mifflin-St Jeor → TDEE → phased deficit, current
+   *  week). null when the client has no weight-loss goal or lacks body data. */
+  weightLoss: { dailyTarget: number; tdee: number; phaseNote: string } | null;
   /** ISO timestamp of when this plan was last published — shown in the "Plan updated" banner. */
   planUpdatedAt: string | null;
   /** Coach note to the client about what changed in this plan update. */
@@ -3093,9 +3097,37 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     history: bodyHistory.map(({ date, weightKg, waistCm, hipCm }) => ({ date, weightKg, waistCm, hipCm })),
   };
 
+  // ---- weight-loss daily calorie guide --------------------------------------
+  // Only for clients whose goals mention weight loss. Same maths as the letter
+  // generator's _calc_calorie_targets: Mifflin-St Jeor BMR → TDEE → a deficit
+  // that builds gradually across the plan. Activity defaults to "light" (most
+  // plans include a daily walk); pace defaults to moderate (≈0.5 kg/week).
+  let weightLoss: ClientAppData["weightLoss"] = null;
+  const wantsWeightLoss = /\b(weight|lose|loose|slim|fat ?loss)\b/.test(goals);
+  if (wantsWeightLoss && body.heightCm && body.latest.weightKg && body.ageYears) {
+    const w = body.latest.weightKg;
+    const bmr =
+      body.sex === "M"
+        ? 10 * w + 6.25 * body.heightCm - 5 * body.ageYears + 5
+        : 10 * w + 6.25 * body.heightCm - 5 * body.ageYears - 161;
+    const tdee = Math.round(bmr * 1.375); // "light" activity multiplier
+    const fullDeficit = 500; // moderate pace, ≈0.5 kg/week
+    // deficit builds gradually (same phase shape as the letter generator)
+    const frac = week <= 2 ? 0.4 : week <= 4 ? 0.7 : week <= 8 ? 1.0 : week <= 10 ? 0.8 : 0.6;
+    const dailyTarget = Math.max(1200, Math.round(tdee - fullDeficit * frac));
+    const phaseNote =
+      frac < 1
+        ? week <= 4
+          ? "A gentle start — the deficit eases in over the first weeks."
+          : "Easing off as you near your goal."
+        : "Your steady fat-loss phase.";
+    weightLoss = { dailyTarget, tdee, phaseNote };
+  }
+
   return {
     clientId,
     planSlug,
+    weightLoss,
     planUpdatedAt,
     clientUpdateNote,
     token,

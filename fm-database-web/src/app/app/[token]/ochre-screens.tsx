@@ -586,6 +586,28 @@ export function PlanScreen({
       )}
 
       <Section title="How to build your plate">
+        {data.weightLoss && (
+          <div
+            style={{
+              marginBottom: 12,
+              padding: "13px 15px",
+              background: "var(--ochre-tint)",
+              borderRadius: 14,
+              borderLeft: "3px solid var(--ochre)",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <span style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--ink)", lineHeight: 1 }}>
+                {data.weightLoss.dailyTarget.toLocaleString()}
+              </span>
+              <span style={{ fontSize: 13, color: "var(--muted)" }}>kcal / day · your guide this week</span>
+            </div>
+            <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, marginTop: 5 }}>
+              {data.weightLoss.phaseNote}{" "}Your meals are built around this — eat to comfortable fullness, don&apos;t
+              count every calorie. Your maintenance level is about {data.weightLoss.tdee.toLocaleString()} kcal.
+            </div>
+          </div>
+        )}
         <PlateDiagram />
         <div className="muted" style={{ fontSize: 12.5, marginTop: 8, paddingLeft: 2 }}>
           Your pattern: <strong style={{ color: "var(--forest-deep)" }}>{pr.pattern}</strong> · {pr.forNote.toLowerCase()}. Tap any part of the plate.
