@@ -232,6 +232,8 @@ export function AppPreviewPanel({
           : dismissPendingMenuAction;
     const out = await fn(clientId).catch((e) => ({ ok: false as const, error: String(e) }));
     if (!out.ok) setError(out.error ?? `${kind} failed`);
+    else if (kind === "approve" && "groceryWarning" in out && out.groceryWarning)
+      setError(String(out.groceryWarning));
     setWeeklyBusy(null);
     void load();
   };

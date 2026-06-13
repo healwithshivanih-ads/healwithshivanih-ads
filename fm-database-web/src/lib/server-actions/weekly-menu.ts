@@ -15,6 +15,7 @@ import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { runShim } from "@/lib/fmdb/shim";
 import { effectiveMealPlanStart } from "@/lib/fmdb/plan-timing";
+import { generateGroceryListAction } from "./grocery";
 
 export interface PendingWeekMenu {
   week: number;
@@ -120,7 +121,7 @@ export async function generateWeekMenuAction(
 /** Coach approval: the pending week goes LIVE on the client's app. */
 export async function approveWeekMenuAction(
   clientId: string,
-): Promise<{ ok: boolean; error?: string }> {
+): Promise<{ ok: boolean; error?: string; groceryWarning?: string }> {
   try {
     const hit = await publishedFileForClient(clientId);
     if (!hit) return { ok: false, error: "No published plan." };
@@ -154,7 +155,22 @@ export async function approveWeekMenuAction(
     await fs.writeFile(tmp, yaml.dump(doc, { sortKeys: false, lineWidth: 100 }), "utf-8");
     await fs.rename(tmp, hit.file);
     revalidatePath(`/clients-v2/${clientId}`);
-    return { ok: true };
+
+    // Auto-refresh the 🛒 grocery list from the now-live menu (coach rule
+    // 2026-06-13: grocery must track the menu automatically — no manual
+    // regenerate step). Best-effort: the menu is already live, so a grocery
+    // failure must NOT fail the approval; it's surfaced as a warning + logged
+    // (and the dashboard 🛒 chip would still flag a genuinely missing list).
+    let groceryWarning: string | undefined;
+    try {
+      const slug = String(doc.slug ?? hit.plan?.slug ?? "");
+      const g = await generateGroceryListAction(clientId, slug);
+      if (!g.ok) groceryWarning = `menu live, but grocery refresh failed: ${g.error}`;
+    } catch (e) {
+      groceryWarning = `menu live, but grocery refresh threw: ${e instanceof Error ? e.message : "unknown"}`;
+    }
+    if (groceryWarning) console.error(`[weekly-menu] ${clientId}: ${groceryWarning}`);
+    return { ok: true, groceryWarning };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "approve failed" };
   }
