@@ -7,7 +7,7 @@
 import { useState } from "react";
 import type { AppRemedy } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
-import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, WeekStrip, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
+import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { BreathLaunchCard } from "./ochre-breath";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
@@ -213,6 +213,7 @@ export function TodayScreen({
           <div className="card" style={{ overflow: "hidden" }}>
             {practices.map((p) => {
               const on = !!p.done;
+              const isBreath = data.breathwork?.practiceId === p.id;
               return (
                 <button
                   key={p.id}
@@ -224,11 +225,25 @@ export function TodayScreen({
                     <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
                   </span>
                   <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
-                  <span className="p-when">{p.when}</span>
+                  {isBreath ? (
+                    <span
+                      className="p-guide"
+                      role="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openBreath();
+                      }}
+                    >
+                      <Icon name="breath" size={13} /> Guide
+                    </span>
+                  ) : (
+                    <span className="p-when">{p.when}</span>
+                  )}
                 </button>
               );
             })}
           </div>
+          {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
         </Section>
       )}
 
@@ -241,7 +256,9 @@ export function TodayScreen({
             t2={`A few quiet minutes to tell ${data.coach.name.split(" ")[0]} how you're doing`}
             onClick={goCheckin}
           />
-          <Tile icon="bag" t1="Shopping list" t2="Tick off what you need before your next shop" onClick={openGrocery} />
+          {data.grocery && (
+            <Tile icon="bag" t1="Shopping list" t2="Tick off what you need before your next shop" onClick={openGrocery} />
+          )}
           <Tile icon="message" t1="Ask your coach" t2={`${data.coach.name.split(" ")[0]}, plus a co-pilot for quick plan questions`} onClick={goCoach} />
         </div>
       </Section>
@@ -392,22 +409,55 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
   );
 }
 
+/** Top-of-Plan explainer: what this plan is, why you're on it, and the
+ *  dietary highlights as tap-to-expand chips (some link to a cheat-sheet). */
+function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string }) => void }) {
+  const { planRef } = useOchre();
+  const { focus, flags } = planRef;
+  const [sel, setSel] = useState<number | null>(null);
+  return (
+    <div className="card" style={{ padding: "15px 16px", marginBottom: 14 }}>
+      <div className="plan-why">{focus.why}</div>
+      {flags.length > 0 && (
+        <>
+          <div className="flag-row">
+            {flags.map((f, i) => (
+              <button key={i} className={"flag-chip" + (sel === i ? " on" : "")} onClick={() => setSel(sel === i ? null : i)}>
+                <Icon name="leaf" size={11} /> {f.label}
+                <Icon name="chev" size={13} className={sel === i ? "flag-chev open" : "flag-chev"} />
+              </button>
+            ))}
+          </div>
+          {sel !== null && (
+            <div className="flag-detail">
+              {flags[sel].detail}
+              {flags[sel].resourceId && (
+                <button
+                  className="flag-link"
+                  onClick={() => openDoc({ kind: "resource", id: flags[sel].resourceId! })}
+                >
+                  <Icon name="doc" size={13} /> Read the cheat-sheet
+                  <Icon name="chev" size={13} />
+                </button>
+              )}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
 export function PlanScreen({
   onLogAll,
-  practices,
-  onTogglePractice,
   openDoc,
   openRemedy,
-  openBreath,
   openGrocery,
   openOrder,
 }: {
   onLogAll: () => void;
-  practices: { id: string; name: string; when: string; done: boolean }[];
-  onTogglePractice: (id: string) => void;
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
-  openBreath: () => void;
   openGrocery: () => void;
   openOrder: () => void;
 }) {
@@ -424,6 +474,8 @@ export function PlanScreen({
         </div>
       </div>
 
+      <PlanFocusCard openDoc={openDoc} />
+
       <PhaseRibbon />
 
       {/* ---- do-this-daily actions first; learning lives further down ---- */}
@@ -435,59 +487,17 @@ export function PlanScreen({
           ))}
         </div>
         <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-          Reorder links go to {pr.authoredBy.split(" ")[0]}’s recommended brands.
+          Reorder links go to {pr.authoredBy.split(" ")[0]}’s recommended brands. Tap any supplement for the why.
         </div>
-
-        {/* 🛒 one-sitting ordering checklist — the compliance win */}
-        <OrderLaunchCard openOrder={openOrder} />
 
         <button className="log-all" style={{ marginTop: 12 }} onClick={onLogAll}>
           <Icon name="check" size={17} /> Log everything for today
         </button>
       </Section>
 
-      <Section title="Daily practices">
-        <div className="card" style={{ overflow: "hidden" }}>
-          {practices.map((p) => {
-            const on = !!p.done;
-            const isBreath = data.breathwork?.practiceId === p.id;
-            return (
-              <button
-                key={p.id}
-                className="practice"
-                onClick={() => onTogglePractice(p.id)}
-                style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
-              >
-                <span className={"check-sq" + (on ? " on" : "")}>
-                  <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
-                </span>
-                <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
-                {isBreath ? (
-                  <span
-                    className="p-guide"
-                    role="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openBreath();
-                    }}
-                  >
-                    <Icon name="breath" size={13} /> Guide
-                  </span>
-                ) : (
-                  <span className="p-when">{p.when}</span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Guided breathing launcher — only when the plan assigns a
-            breathing practice. No teaser when unassigned (2026-06-12):
-            breathwork is BUILT, so "coming soon" was false for assigned
-            clients' plans-to-be, and meditation doesn't exist — never
-            promise features in the client app. */}
-        {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
-      </Section>
+      {/* Daily practices + guided breathing now live on the Today tab only
+          (2026-06-13) — they're a daily do, not plan reference, so showing
+          them in both places was duplication. */}
 
       {/* this week's full menu + grocery launch — so shopping happens
           BEFORE the week starts, not meal by meal. Hybrid/principle plans
@@ -586,6 +596,27 @@ export function PlanScreen({
           </div>
         </Section>
       )}
+
+      {/* 🛒 one-sitting ordering checklist — moved to the bottom and
+          collapsed (2026-06-13): reordering is an occasional task, not
+          a daily one, so it shouldn't crowd the top of the plan. */}
+      <details className="plan-collapse">
+        <summary>
+          <span className="pc-ico">
+            <Icon name="bag" size={16} />
+          </span>
+          <span className="pc-body">
+            <span className="pc-title">Reorder your supplements</span>
+            <span className="pc-sub">Order everything in one sitting — tap to open</span>
+          </span>
+          <span className="pc-chev">
+            <Icon name="chev" size={18} />
+          </span>
+        </summary>
+        <div className="plan-collapse-body">
+          <OrderLaunchCard openOrder={openOrder} />
+        </div>
+      </details>
 
       {/* Labs intentionally NOT a standalone section — the order list lives
           in Resources and the milestone view in Progress → Lab checkpoints,

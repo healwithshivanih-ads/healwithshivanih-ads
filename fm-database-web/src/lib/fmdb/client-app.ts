@@ -415,6 +415,13 @@ export interface ClientAppData {
     letterFoods?: LetterFoods | null;
     avoidWhy: string;
     cooking: { t: string; b: string }[];
+    /** plain-language explanation for the top of the Plan tab — what this
+     *  plan is and why this client is on it. Built from on-file conditions +
+     *  eating pattern (no fabrication). */
+    focus: { why: string; conditions: string[] };
+    /** dietary highlights shown as chips, each optionally linked to a
+     *  resource cheat-sheet (e.g. "Gluten-free" → hidden-sources sheet). */
+    flags: { label: string; detail: string; resourceId?: string }[];
   };
   /** the letter's "sample week — swap like for like" guidance, verbatim */
   mealsNote: string;
@@ -2772,6 +2779,93 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     ? new Date(`${nextContact}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" })
     : null;
 
+  // ---- plan focus + dietary flags (Plan-tab header) --------------------------
+  // Plain-language "what this plan is, and why you're on it". Built only from
+  // on-file conditions + the eating pattern — never invented.
+  const cleanCondition = (c: string): string =>
+    c
+      .replace(/\([^)]*\)/g, "") // drop the "(confirmed: …)" clinical parentheticals
+      .replace(/\s*\/\s*/g, " / ")
+      .replace(/\s{2,}/g, " ")
+      .trim();
+  const focusConditions = asStrArr(client.active_conditions)
+    .map(cleanCondition)
+    .filter(Boolean)
+    // life-stage labels aren't therapeutic targets — keep them out of the "why"
+    .filter((c) => !/^(post|peri)?menopaus|menstruat|pregnan|lactat/i.test(c))
+    .slice(0, 4);
+  // pattern label: take the clause before the em/en-dash AND before the
+  // first comma (NOT before a hyphen — that breaks "Anti-inflammatory").
+  const patternShort = (asStr(nutrition.pattern).split(/[—–]/)[0].split(",")[0] || "whole-food").trim().toLowerCase();
+  const patternArticle = /^[aeiou]/.test(patternShort) ? "an" : "a";
+  const coachFirst = coachName.split(" ")[0];
+  const focusWhy =
+    (focusConditions.length
+      ? `This plan focuses on what's on your file — ${focusConditions.slice(0, 3).join(", ").toLowerCase()}. `
+      : "") +
+    `You'll work through ${patternArticle} ${patternShort} way of eating, the supplements ${coachFirst} chose for you, and a few daily practices — each piece picked for your body, not a generic template.`;
+
+  // Dietary highlights → chips. NO hallucination: a food is only flagged as
+  // "free" when the plan ELIMINATES it (replace/swap/instead, with no
+  // "reduce to N/day" qualifier), or it's a declared preference / allergy /
+  // exclusionary protocol. "Reduce cow's milk to 1 cup/day" is NOT dairy-free.
+  const dietPrefLc = dietPref.toLowerCase();
+  const allergiesLc = asStrArr(client.known_allergies).join(" ").toLowerCase();
+  const curatedAvoidLc = clientAvoid.join(" ").toLowerCase(); // foods_to_avoid = curated eliminations
+  const protocolsText = asStrArr(plan.attached_protocols).join(" ").toLowerCase();
+  const eliminatedText = [...asStrArr(nutrition.reduce), ...asStrArr(nutrition.avoid)]
+    .filter((e) => {
+      const lc = e.toLowerCase();
+      const isFull = /\b(replace|swap|instead of|switch to|eliminate|cut out|remove|drop)\b/.test(lc);
+      const isPartial = /\b(reduce to|limit to|in excess|in moderation|moderate|large quantit|occasional|small amount|1[-–]?2?\s*(cup|tsp|tbsp|serving)|per day|\/day|a day)\b/.test(lc);
+      return isFull && !isPartial;
+    })
+    .join(" ")
+    .toLowerCase();
+  const findRes = (...kw: string[]): string | undefined =>
+    resources.find((res) => kw.some((k) => `${res.title} ${res.desc}`.toLowerCase().includes(k)))?.id;
+  const flags: { label: string; detail: string; resourceId?: string }[] = [];
+  const isVegan = /vegan/.test(dietPrefLc);
+  if (isVegan) {
+    flags.push({ label: "Vegan", detail: "Fully plant-based — your plan keeps B12, iron and omega-3 covered so nothing slips.", resourceId: findRes("vegan", "b12", "iron") });
+  } else if (/vegetarian|veg\b/.test(dietPrefLc)) {
+    flags.push({ label: "Vegetarian", detail: "Plant protein at every meal — dals, paneer, curd and seeds keep it complete." });
+  }
+  if (/jain/.test(dietPrefLc)) {
+    flags.push({ label: "Jain — no root vegetables", detail: "No onion, garlic, potato or other underground vegetables. Every recipe in your plan already respects this." });
+  }
+  if (/egg/.test(dietPrefLc) && !/no egg|egg.?free/.test(dietPrefLc)) {
+    flags.push({ label: "Eggetarian", detail: "Eggs are in — a clean, complete protein you can lean on." });
+  }
+  const glutenFree =
+    /gluten.?free/.test(dietPrefLc) ||
+    /gluten|wheat|celiac|coeliac/.test(allergiesLc) ||
+    /\bgluten\b|\bwheat\b|maida/.test(curatedAvoidLc) ||
+    /\bgluten\b|\bwheat\b|maida/.test(eliminatedText) ||
+    /aip|autoimmune.?paleo/.test(protocolsText);
+  if (glutenFree) {
+    flags.push({
+      label: "Gluten-free",
+      detail: "Watch the hidden sources — hing/asafoetida blends, sauces, masala mixes and processed snacks often carry wheat.",
+      resourceId: findRes("gluten"),
+    });
+  }
+  const dairyFree =
+    !isVegan &&
+    (/dairy.?free/.test(dietPrefLc) ||
+      /dairy|lactose|casein|\bmilk\b/.test(allergiesLc) ||
+      /\bdairy\b|lactose|casein/.test(curatedAvoidLc) ||
+      /\bdairy\b|lactose|casein|\bmilk\b|paneer|curd/.test(eliminatedText));
+  if (dairyFree) {
+    flags.push({ label: "Dairy-free", detail: "No milk, curd or paneer — your calcium and protein come from other sources in the plan.", resourceId: findRes("dairy", "calcium") });
+  }
+  if (/low.?fodmap/.test(`${protocolsText} ${dietPrefLc}`)) {
+    flags.push({ label: "Low-FODMAP (gut reset)", detail: "A short, structured reduction of fermentable carbs to calm the gut — reintroduced step by step.", resourceId: findRes("fodmap") });
+  }
+  if (/\bonion|\bgarlic/.test(curatedAvoidLc) && !/jain/.test(dietPrefLc)) {
+    flags.push({ label: "No onion / garlic", detail: "Left out per your preference — flavour comes from ginger, herbs and hing-free spice blends." });
+  }
+
   const planUpdatedAt = extractPublishedAt(plan);
   const clientUpdateNote = typeof plan.client_update_note === "string" && plan.client_update_note.trim()
     ? plan.client_update_note.trim()
@@ -2843,6 +2937,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       letterFoods,
       avoidWhy,
       cooking,
+      focus: { why: focusWhy, conditions: focusConditions },
+      flags,
     },
     mealsNote: sampleWeekNote,
     lessons,

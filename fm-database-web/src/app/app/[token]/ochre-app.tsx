@@ -252,11 +252,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     screen = (
       <PlanScreen
         onLogAll={logAll}
-        practices={practices}
-        onTogglePractice={togglePractice}
         openDoc={openDoc}
         openRemedy={openRemedy}
-        openBreath={openBreath}
         openGrocery={openGrocery}
         openOrder={openOrder}
       />
