@@ -450,7 +450,18 @@ export interface ClientAppData {
   lessons: AppLesson[];
   resources: AppResource[];
   aiSuggested: { q: string; a: string }[];
-  account: { name: string; contact: string; plan: string; member: string; avatar: string };
+  account: {
+    name: string;
+    contact: string;
+    plan: string;
+    member: string;
+    /** initials fallback, shown when photoUrl is null or fails to load */
+    avatar: string;
+    /** token-scoped avatar URL when a photo exists on disk (the client's own
+     *  in-app photo, or the coach/intake photo flowing through). null → use
+     *  initials. */
+    photoUrl: string | null;
+  };
   /** Body composition: read-only height/age from the coach dashboard +
    *  client-editable weight/waist/hip, plus the snapshot history that drives
    *  the progress charts. The app computes BMI/BMR/ratios client-side. */
@@ -1638,8 +1649,17 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   }
   const baseMd = baseStem ? ((await readIfExists(path.join(mealPlansDir, `${baseStem}.md`))) ?? "") : "";
   const baseHtml = baseStem ? ((await readIfExists(path.join(mealPlansDir, `${baseStem}.html`))) ?? "") : "";
+  // Recipe sidecars: send-log-gated files PLUS the published plan's OWN
+  // `-recipes.md` sidecars. The latter are current coach-managed content (the
+  // plan is the source of truth, same as app_menu) — they must load even when
+  // no send-log entry was recorded (auto-generated weekly, or hand-authored
+  // during an API cap). Send-log gating still applies to OTHER slugs' files.
+  const recipeFiles = new Set<string>(letterFiles.filter((n) => n.endsWith("-recipes.md")));
+  for (const n of allLetterFiles) {
+    if (n.endsWith("-recipes.md") && n.startsWith(planSlug)) recipeFiles.add(n);
+  }
   let recipesMd = baseMd;
-  for (const n of letterFiles.filter((n) => n.endsWith("-recipes.md"))) {
+  for (const n of recipeFiles) {
     recipesMd += "\n\n" + ((await readIfExists(path.join(mealPlansDir, n))) ?? "");
   }
   const letterMd = baseMd;
@@ -3031,6 +3051,27 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     .join("")
     .toUpperCase();
 
+  // Avatar: expose a token-scoped photo URL when ANY avatar file exists on
+  // disk — the client's own in-app photo (_app_photo.*) or the coach/intake
+  // photo (photo.*). The GET route prefers the in-app override. null → the app
+  // renders initials. (The coach dashboard only ever reads photo.*, so an
+  // in-app photo never flows back to the coach record.)
+  const photoDir = path.join(getPlansRoot(), "clients", clientId);
+  let hasAvatar = false;
+  for (const f of [
+    "_app_photo.jpg", "_app_photo.jpeg", "_app_photo.png", "_app_photo.webp",
+    "photo.jpg", "photo.jpeg", "photo.png", "photo.webp",
+  ]) {
+    try {
+      await fs.access(path.join(photoDir, f));
+      hasAvatar = true;
+      break;
+    } catch {
+      /* keep probing */
+    }
+  }
+  const photoUrl = hasAvatar ? `/api/app-photo/${token}` : null;
+
   const reminders = [
     { id: "r1", label: "Morning supplements", time: "8:00 am", on: true },
     { id: "r2", label: "Evening wind-down (breathing + journal)", time: "9:00 pm", on: true },
@@ -3340,6 +3381,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       plan: `${program.charAt(0).toUpperCase()}${program.slice(1)} · ${totalWeeks} weeks`,
       member,
       avatar: initials,
+      photoUrl,
     },
     body,
     reminders,
