@@ -57,6 +57,15 @@ def qc_score(dish, jpg_path):
         return -1, str(e)
 
 
+def to_jpeg(src, dst):
+    """Convert any image format to JPEG using sips. Returns True on success."""
+    r = subprocess.run(
+        ["sips", "--setProperty", "format", "jpeg", src, "--out", dst],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+    )
+    return r.returncode == 0 and os.path.exists(dst) and os.path.getsize(dst) > 0
+
+
 def dims(path):
     try:
         o = subprocess.check_output(["sips", "-g", "pixelWidth", "-g", "pixelHeight", path],
@@ -129,17 +138,47 @@ def main():
         print(json.dumps({"ok": False, "error": f"Download failed: {e}"}))
         sys.exit(1)
 
-    if len(raw) < 20_000:
-        print(json.dumps({"ok": False, "error": "Image too small (<20KB)"}))
+    # Detect HTML / non-image response
+    sig = raw[:16].lstrip()
+    if sig.startswith(b"<") or raw[:5] == b"<!DOC" or b"<html" in raw[:512].lower():
+        print(json.dumps({"ok": False,
+            "error": "URL returned an HTML page, not an image. Make sure to right-click the image itself → 'Copy image address'."}))
         sys.exit(1)
 
-    tmp = tempfile.NamedTemporaryFile(suffix=".jpg", delete=False).name
+    if len(raw) < 5_000:
+        print(json.dumps({"ok": False, "error": f"Download too small ({len(raw)} bytes) — probably not an image."}))
+        sys.exit(1)
+
+    # Write to a temp file named by magic bytes so sips gets the right extension hint
+    is_png = raw[:8] == b"\x89PNG\r\n\x1a\n"
+    is_webp = raw[:4] == b"RIFF" and raw[8:12] == b"WEBP"
+    is_gif  = raw[:6] in (b"GIF87a", b"GIF89a")
+    suffix = ".png" if is_png else ".webp" if is_webp else ".gif" if is_gif else ".jpg"
+    tmp = tempfile.NamedTemporaryFile(suffix=suffix, delete=False).name
     open(tmp, "wb").write(raw)
 
-    w, h = dims(tmp)
-    if w < 300 or h < 200:
+    # Normalise to JPEG (handles WebP, HEIC, PNG, etc.)
+    tmp_jpg = tmp + "_norm.jpg"
+    if suffix != ".jpg":
+        if not to_jpeg(tmp, tmp_jpg):
+            os.unlink(tmp)
+            print(json.dumps({"ok": False, "error": f"Could not convert {suffix} to JPEG — try a .jpg or .png URL instead."}))
+            sys.exit(1)
         os.unlink(tmp)
-        print(json.dumps({"ok": False, "error": f"Image too small ({w}×{h})"}))
+        tmp = tmp_jpg
+    elif not to_jpeg(tmp, tmp_jpg):
+        # JPEG but sips still can't read it — likely a truncated or corrupt file
+        os.unlink(tmp)
+        print(json.dumps({"ok": False, "error": "Could not read image — the URL may require a login or have expired."}))
+        sys.exit(1)
+    else:
+        os.unlink(tmp)
+        tmp = tmp_jpg
+
+    w, h = dims(tmp)
+    if w < 200 or h < 150:
+        os.unlink(tmp)
+        print(json.dumps({"ok": False, "error": f"Image too small ({w}×{h} px) — find a higher-resolution photo."}))
         sys.exit(1)
 
     score, why = (5, "qc skipped") if args.no_qc else qc_score(args.dish or args.slug, tmp)
