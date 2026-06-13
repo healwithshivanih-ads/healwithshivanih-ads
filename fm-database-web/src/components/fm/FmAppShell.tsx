@@ -75,6 +75,7 @@ const NAV: FmNavSection[] = [
       // catalogue from ingest / mindmap mining / coach observations).
       { id: "backlog", label: "Catalogue queue", icon: "📝", href: "/backlog" },
       { id: "ingest", label: "Ingest", icon: "⬆️", href: "/ingest" },
+      { id: "recipes", label: "Recipe images", icon: "🍽", href: "/recipes" },
     ],
   },
   {
