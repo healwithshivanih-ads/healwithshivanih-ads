@@ -2,14 +2,14 @@
 import { useState, useTransition } from "react";
 import { applyImageFromUrl, RecipeImageStatus } from "./actions";
 
-function SearchLink({ dish }: { dish: string }) {
-  const q = encodeURIComponent(dish + " recipe indian food photo");
+function SearchLink({ dish, ingredients }: { dish: string; ingredients: string[] }) {
+  const q = encodeURIComponent(dish + (ingredients.length ? " " + ingredients.slice(0, 2).join(" ") : "") + " recipe");
   return (
     <a
       href={`https://www.google.com/search?q=${q}&tbm=isch`}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-xs text-blue-600 hover:underline"
+      className="text-xs text-blue-600 hover:underline whitespace-nowrap"
     >
       🔍 Google Images ↗
     </a>
@@ -20,7 +20,8 @@ function RecipeRow({ r, onDone }: { r: RecipeImageStatus; onDone: (slug: string,
   const [url, setUrl] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">("idle");
   const [msg, setMsg] = useState("");
-  const [isPending, startTransition] = useTransition();
+  const [preview, setPreview] = useState<string | null>(null);
+  const [, startTransition] = useTransition();
 
   function apply() {
     if (!url.trim()) return;
@@ -40,22 +41,38 @@ function RecipeRow({ r, onDone }: { r: RecipeImageStatus; onDone: (slug: string,
 
   return (
     <div className="border rounded-lg p-4 flex gap-4 items-start">
-      {/* thumb placeholder */}
-      <div className="w-24 h-16 rounded bg-muted flex-shrink-0 overflow-hidden">
-        {status === "ok" ? (
+      {/* thumb / preview */}
+      <div className="w-28 h-20 rounded bg-muted flex-shrink-0 overflow-hidden border">
+        {preview ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={url} alt={r.name} className="w-full h-full object-cover" />
+          <img src={preview} alt={r.name} className="w-full h-full object-cover" />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-2xl">🍽</div>
+          <div className="w-full h-full flex items-center justify-center text-3xl opacity-30">🍽</div>
         )}
       </div>
 
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-3 mb-1">
-          <span className="font-medium text-sm">{r.name}</span>
-          <span className="text-xs text-muted-foreground font-mono">{r.slug}</span>
-          <SearchLink dish={r.name} />
+        {/* name + search link */}
+        <div className="flex items-center gap-2 mb-0.5 flex-wrap">
+          <span className="font-semibold text-sm">{r.name}</span>
+          <SearchLink dish={r.name} ingredients={r.mainIngredients} />
         </div>
+
+        {/* one-line description */}
+        {r.oneLine && (
+          <p className="text-xs text-muted-foreground mb-1 leading-snug">{r.oneLine}</p>
+        )}
+
+        {/* key ingredients */}
+        {r.mainIngredients.length > 0 && (
+          <div className="flex flex-wrap gap-1 mb-2">
+            {r.mainIngredients.map((ing) => (
+              <span key={ing} className="text-xs bg-muted rounded px-1.5 py-0.5 text-muted-foreground">
+                {ing}
+              </span>
+            ))}
+          </div>
+        )}
 
         {status === "ok" ? (
           <p className="text-xs text-green-700 bg-green-50 rounded px-2 py-1">✓ Saved · {msg}</p>
@@ -63,11 +80,14 @@ function RecipeRow({ r, onDone }: { r: RecipeImageStatus; onDone: (slug: string,
           <div className="flex gap-2 items-center">
             <input
               type="url"
-              placeholder="Paste direct image URL (.jpg / .png)…"
+              placeholder="Right-click image → Copy image address → paste here"
               value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              onChange={(e) => {
+                setUrl(e.target.value);
+                setPreview(e.target.value.startsWith("http") ? e.target.value : null);
+              }}
               onKeyDown={(e) => e.key === "Enter" && apply()}
-              className="flex-1 text-xs border rounded px-2 py-1.5 bg-background"
+              className="flex-1 text-xs border rounded px-2 py-1.5 bg-background min-w-0"
             />
             <button
               onClick={apply}
@@ -92,7 +112,7 @@ function DoneRow({ r }: { r: RecipeImageStatus }) {
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "err">("idle");
   const [msg, setMsg] = useState("");
   const [currentImg, setCurrentImg] = useState(r.imageUrl);
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
 
   function apply() {
     if (!url.trim()) return;
@@ -127,11 +147,8 @@ function DoneRow({ r }: { r: RecipeImageStatus }) {
             </button>
           )}
         </div>
-        {r.sourceUrl && !replacing && (
-          <a href={r.sourceUrl} target="_blank" rel="noopener noreferrer"
-            className="text-xs text-muted-foreground hover:underline truncate block max-w-xs">
-            {r.sourceUrl}
-          </a>
+        {r.oneLine && !replacing && (
+          <p className="text-xs text-muted-foreground">{r.oneLine}</p>
         )}
         {replacing && (
           <div className="flex gap-2 mt-1">
@@ -176,13 +193,13 @@ export default function RecipeImagesClient({
     <div className="space-y-6">
       {/* Missing images */}
       <section>
-        <h2 className="text-base font-semibold mb-3 flex items-center gap-2">
+        <h2 className="text-base font-semibold mb-1 flex items-center gap-2">
           <span className="text-amber-600">⚠</span>
-          Missing images ({pendingList.length})
-          <span className="text-xs font-normal text-muted-foreground ml-1">
-            — find a photo, right-click → "Copy image address", paste below
-          </span>
+          {pendingList.length} recipes need images
         </h2>
+        <p className="text-xs text-muted-foreground mb-4">
+          Click "🔍 Google Images" → find a clear photo of the finished dish → right-click → "Copy image address" → paste in the field → Apply
+        </p>
         {pendingList.length === 0 ? (
           <p className="text-sm text-green-700 bg-green-50 rounded p-4">All recipes have images 🎉</p>
         ) : (
@@ -200,7 +217,7 @@ export default function RecipeImagesClient({
           onClick={() => setShowDone((v) => !v)}
           className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1"
         >
-          {showDone ? "▾" : "▸"} {doneList.length} recipes with images
+          {showDone ? "▾" : "▸"} {doneList.length} recipes already have images
         </button>
         {showDone && (
           <div className="mt-3 space-y-2">

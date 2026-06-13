@@ -12,13 +12,6 @@ const RECIPES_DIR = path.join(
   "data",
   "_recipes"
 );
-const WEB_IMG = path.join(
-  process.cwd(),
-  "public",
-  "recipe-images",
-  "images",
-  "web"
-);
 const PYTHON = path.resolve(process.cwd(), "..", "fm-database", ".venv/bin/python");
 const SCRIPTS_DIR = path.resolve(process.cwd(), "scripts");
 
@@ -28,6 +21,8 @@ export interface RecipeImageStatus {
   hasWebImage: boolean;
   imageUrl: string | null;
   sourceUrl: string | null;
+  oneLine: string | null;
+  mainIngredients: string[];
 }
 
 export async function listRecipeImageStatuses(): Promise<RecipeImageStatus[]> {
@@ -46,12 +41,19 @@ export async function listRecipeImageStatuses(): Promise<RecipeImageStatus[]> {
       if (!raw) continue;
       const img = raw.image as Record<string, string> | undefined;
       const hasWeb = !!(img?.file && String(img.file).includes("images/web/"));
+      // main_ingredients can be string[] or object[]
+      const rawIngreds = raw.main_ingredients as unknown[] | undefined;
+      const mainIngredients: string[] = (rawIngreds || []).map((i) =>
+        typeof i === "string" ? i : String((i as Record<string, unknown>).item ?? i)
+      ).slice(0, 5);
       results.push({
         slug: base,
         name: (raw.name as string) || base,
         hasWebImage: hasWeb,
         imageUrl: hasWeb ? `/recipe-images/${img!.file}` : null,
         sourceUrl: img?.source_url || null,
+        oneLine: (raw.one_line as string) || null,
+        mainIngredients,
       });
     } catch {}
   }
