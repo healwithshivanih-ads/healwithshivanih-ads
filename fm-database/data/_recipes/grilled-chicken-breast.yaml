@@ -1,0 +1,35 @@
+slug: grilled-chicken-breast
+name: Grilled Chicken Breast
+one_line: Lean grilled chicken breast with lemon.
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+- dairy_free
+region: Indian
+main_ingredients:
+- 1 chicken breast (150 g)
+- 1/2 tsp ginger-garlic paste
+- 1/4 tsp pepper
+- 1/4 tsp turmeric
+- 1 tsp coconut oil
+- salt
+- lemon
+contains_allergens: []
+ingredients:
+- item: 1 chicken breast (150 g)
+- item: 1/2 tsp ginger-garlic paste
+- item: 1/4 tsp pepper
+- item: 1/4 tsp turmeric
+- item: 1 tsp coconut oil
+- item: salt
+- item: lemon
+steps:
+- Flatten breast slightly; marinate with ginger-garlic, pepper, turmeric, salt, lemon — 15 min.
+- Heat a grill pan with coconut oil.
+- Grill 5-6 min per side till firm and cooked.
+- Rest, slice, finish with lemon.
+- 'Tip: Don''t overcook — breast dries fast; pull it off as soon as it''s firm.'
+source: coach-authored (Shivani) 2026-06-13

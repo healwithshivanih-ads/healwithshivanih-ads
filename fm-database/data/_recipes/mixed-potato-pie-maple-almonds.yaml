@@ -100,9 +100,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 451
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/mixed-potato-pie-maple-almonds.jpg
+  credit: web reference (coach-selected)
+  source_url: https://maplejubilee.com/wp-content/uploads/2023/11/Brown-Butter-Sweet-Potato-Pie-V2.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: mixed potato pie with roasted maple almonds

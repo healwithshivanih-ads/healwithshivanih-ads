@@ -85,6 +85,13 @@ headnote: Cooking moringa gently with a simple tempering keeps it easy to digest
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/moringa-sabzi.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.vidhyashomecooking.com/wp-content/uploads/2021/02/MurungaiKeeraiPoriyal.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Moringa sabzi

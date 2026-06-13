@@ -74,6 +74,13 @@ headnote: A gentle thin moong dal soup with ginger and pepper is warming, hydrat
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/thin-moong-dal-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/moong-dal-recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Thin moong dal soup

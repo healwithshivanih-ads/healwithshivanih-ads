@@ -83,6 +83,13 @@ headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the mea
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/prawn-masala.jpg
+  credit: web reference (coach-selected)
+  source_url: https://crazymasalafood.com/wp-content/images/2023/08/coconut-prawn-curry.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Prawn masala

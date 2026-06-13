@@ -77,11 +77,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 133
 image:
-  file: images/odonnell/odonnell-133-055.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/spicy-black-bean-hummus.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.maddielymburner.com/cdn/shop/articles/IMG_5561_600x600.PNG?v=1524579714
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: spicy black bean hummus

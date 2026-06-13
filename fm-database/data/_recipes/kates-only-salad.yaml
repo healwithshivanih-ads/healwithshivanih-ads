@@ -82,9 +82,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: null
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/kates-only-salad.jpg
+  credit: web reference (coach-selected)
+  source_url: https://assets.bonappetit.com/photos/5aaaa6fa275dc52331d91907/1:1/w_1280,c_limit/shaved-fennel-salad-with-croutons-and-walnuts.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: kate's only salad

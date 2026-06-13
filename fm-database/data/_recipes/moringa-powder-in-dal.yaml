@@ -85,6 +85,13 @@ headnote: A simple moringa powder in is one of the most digestible protein sourc
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/moringa-powder-in-dal.jpg
+  credit: web reference (coach-selected)
+  source_url: https://ministryofcurry.com/wp-content/uploads/2016/09/morings-dal_-3.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Moringa powder in dal

@@ -85,6 +85,13 @@ headnote: Cooking tinda gently with a simple tempering keeps it easy to digest a
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/tinda-sabzi.jpg
+  credit: web reference (coach-selected)
+  source_url: https://i1.wp.com/whatscookingmom.in/wp-content/uploads/2021/06/Tinde-ki-sabzi.jpg?fit=1200%2C800&ssl=1
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Tinda sabzi

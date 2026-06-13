@@ -85,9 +85,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 455
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/zucchini-noodles-yogurt-dill.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.inspiredtaste.net/wp-content/uploads/2016/08/Zucchini-Pasta-Recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: steamed zucchini noodles with yogurt dill sauce

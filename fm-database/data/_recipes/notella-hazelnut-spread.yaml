@@ -76,11 +76,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 118
 image:
-  file: images/odonnell/odonnell-119-044.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/notella-hazelnut-spread.jpg
+  credit: web reference (coach-selected)
+  source_url: https://theplantbasedschool.com/wp-content/uploads/2023/10/Homemade-nutella-in-a-glass-jar.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: notella hazelnut spread

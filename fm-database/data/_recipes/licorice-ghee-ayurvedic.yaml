@@ -67,9 +67,12 @@ attribution:
   source_id: lad-ayurveda-science-of-self-healing-1984
   page: null
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/licorice-ghee-ayurvedic.jpg
+  credit: web reference (coach-selected)
+  source_url: https://levooil.com/cdn/shop/articles/how-make-homemade-ghee-levo_7f6d0469-76c6-4a9a-8797-5a4ece08250e.jpg?v=1772571111&width=1500
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Licorice Ghee

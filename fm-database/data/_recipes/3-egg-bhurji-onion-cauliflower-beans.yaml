@@ -1,0 +1,35 @@
+slug: 3-egg-bhurji-onion-cauliflower-beans
+name: 3-Egg Bhurji (Onion, Cauliflower, Beans)
+one_line: Scrambled eggs with cauliflower and beans.
+meal_type:
+- breakfast
+diet:
+- eggetarian
+- gluten_free
+- dairy_free
+region: Indian
+main_ingredients:
+- 3 eggs
+- 2 tbsp grated cauliflower
+- 2 tbsp chopped french beans
+- 1 tbsp onion
+- 1/4 tsp turmeric
+- 1/4 tsp cumin
+- 1 tsp coconut oil
+- salt
+contains_allergens:
+- egg
+ingredients:
+- item: 3 eggs
+- item: 2 tbsp grated cauliflower
+- item: 2 tbsp chopped french beans
+- item: 1 tbsp onion
+- item: 1/4 tsp turmeric
+- item: 1/4 tsp cumin
+- item: 1 tsp coconut oil
+- item: salt
+steps:
+- Heat oil, crackle cumin; add onion, cauliflower, beans + turmeric, sauté 4 min till tender.
+- Beat eggs with salt, pour in.
+- Scramble on medium till just set — don't overcook.
+source: coach-authored (Shivani) 2026-06-13

@@ -72,6 +72,13 @@ headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/tofu-and-mushroom-stir-fry.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.wellplated.com/wp-content/uploads/2019/03/How-to-Make-Tofu-Stir-Fry.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Tofu and mushroom stir-fry

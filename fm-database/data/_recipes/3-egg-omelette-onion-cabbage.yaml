@@ -1,0 +1,33 @@
+slug: 3-egg-omelette-onion-cabbage
+name: 3-Egg Omelette (Onion & Cabbage)
+one_line: Three-egg omelette with cabbage and onion.
+meal_type:
+- breakfast
+diet:
+- eggetarian
+- gluten_free
+- dairy_free
+region: Indian
+main_ingredients:
+- 3 eggs
+- 2 tbsp finely diced cabbage
+- 1 tbsp chopped onion
+- 1 tbsp coriander
+- 1/4 tsp pepper
+- 1 tsp coconut oil
+- salt
+contains_allergens:
+- egg
+ingredients:
+- item: 3 eggs
+- item: 2 tbsp finely diced cabbage
+- item: 1 tbsp chopped onion
+- item: 1 tbsp coriander
+- item: 1/4 tsp pepper
+- item: 1 tsp coconut oil
+- item: salt
+steps:
+- Beat eggs with salt and pepper.
+- Soften cabbage and onion in oil for 2 min.
+- Pour in eggs, scatter coriander, cook on low till set, fold.
+source: coach-authored (Shivani) 2026-06-13

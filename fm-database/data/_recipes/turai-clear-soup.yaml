@@ -73,6 +73,13 @@ headnote: A gentle turai soup with ginger and pepper is warming, hydrating, and 
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/turai-clear-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.chefpriya.com/ridge-gourd-curry-turai-sabzi.png
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Turai clear soup

@@ -1,0 +1,34 @@
+slug: whole-roast-chicken-portion
+name: Whole-Roast Chicken Portion
+one_line: Spice-rubbed roast chicken leg or thigh.
+meal_type:
+- lunch
+- dinner
+diet:
+- non_vegetarian
+- gluten_free
+- dairy_free
+region: Indian
+main_ingredients:
+- 1 leg/thigh portion
+- 1 tsp ginger-garlic paste
+- 1/2 tsp turmeric
+- 1/2 tsp pepper
+- 1 tsp coconut oil
+- salt
+- few curry leaves
+contains_allergens: []
+ingredients:
+- item: 1 leg/thigh portion
+- item: 1 tsp ginger-garlic paste
+- item: 1/2 tsp turmeric
+- item: 1/2 tsp pepper
+- item: 1 tsp coconut oil
+- item: salt
+- item: few curry leaves
+steps:
+- Slash the portion, rub with all the spices + oil + salt; rest 20 min.
+- Roast in a hot oven (200C) 30-35 min, or pan-roast covered, turning, till juices run clear.
+- Scatter curry leaves in the last 5 min for aroma.
+- Rest before serving.
+source: coach-authored (Shivani) 2026-06-13

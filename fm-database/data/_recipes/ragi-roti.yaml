@@ -60,6 +60,13 @@ headnote: 'Ragi rotis are a traditional millet/whole-grain bread: more fibre, mo
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/ragi-roti.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2024/04/ragi-roti-ragi-rotti-recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Ragi roti

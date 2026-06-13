@@ -106,11 +106,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 289
 image:
-  file: images/odonnell/odonnell-290-162.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/red-pumpkin-dal.jpg
+  credit: web reference (coach-selected)
+  source_url: https://i0.wp.com/wanderingchickpea.com/wp-content/uploads/2021/12/img_2640.jpg?resize=800%2C1200&ssl=1
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: red pumpkin dal

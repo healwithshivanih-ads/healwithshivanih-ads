@@ -82,11 +82,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/vegetable-poha.jpg
-  credit: web reference (auto-sourced)
-  source_url: https://i.pinimg.com/originals/7c/f9/a2/7cf9a27067bd3dbf536da2c8471662d3.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/11/poha.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with licensed or
-    original photo before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Vegetable poha

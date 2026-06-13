@@ -70,6 +70,13 @@ headnote: A simple salad of fresh or lightly steamed vegetables with lemon and r
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/mixed-sprouts-chaat.jpg
+  credit: web reference (coach-selected)
+  source_url: https://storage.googleapis.com/ak_strapi_cms_gcp/images/recipes/snack-recipes/indian-snack-recipes/Sprouted_Moong_Chaat_b65dfdf1b9.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Mixed sprouts chaat

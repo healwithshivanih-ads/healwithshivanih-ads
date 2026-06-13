@@ -70,11 +70,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 252
 image:
-  file: images/odonnell/odonnell-253-140.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/fruit-salad-sweet.jpg
+  credit: web reference (coach-selected)
+  source_url: https://paleoleap.com/wp-content/uploads/2015/11/apple-grappe-salad-main.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fruit salad trio

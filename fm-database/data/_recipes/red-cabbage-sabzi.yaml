@@ -85,6 +85,13 @@ headnote: Cooking red cabbage gently with a simple tempering keeps it easy to di
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/red-cabbage-sabzi.jpg
+  credit: web reference (coach-selected)
+  source_url: https://x9s2d6a3.delivery.rocketcdn.me/wp-content/uploads/2023/09/Purple-cabbage-curry-26.webp
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Red cabbage sabzi

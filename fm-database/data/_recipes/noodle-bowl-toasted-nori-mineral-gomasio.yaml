@@ -100,9 +100,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 451
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/noodle-bowl-toasted-nori-mineral-gomasio.jpg
+  credit: web reference (coach-selected)
+  source_url: https://assets.bonappetit.com/photos/643728200c835d5defadb818/1%3A1/w_2560%2Cc_limit/Recipe_Beauty_Vegan_Ramen_0227_Horizontal_Select_COMP.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: noodle bowl with toasted nori and mineral gomasio

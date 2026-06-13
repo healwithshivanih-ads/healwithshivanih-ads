@@ -1,0 +1,25 @@
+slug: steamed-quinoa
+name: Steamed Quinoa
+one_line: Fluffy plain steamed quinoa.
+meal_type:
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+main_ingredients:
+- 1/2 cup quinoa
+- 1 cup water
+- pinch salt
+contains_allergens: []
+ingredients:
+- item: 1/2 cup quinoa, rinsed well
+- item: 1 cup water
+- item: pinch salt
+steps:
+- Rinse quinoa thoroughly to remove bitterness.
+- Bring water + salt to a boil, add quinoa, cover, simmer 12-15 min till the grain uncoils.
+- Rest 5 min off heat, fluff with a fork.
+source: coach-authored (Shivani) 2026-06-13

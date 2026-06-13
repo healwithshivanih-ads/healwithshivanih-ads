@@ -85,6 +85,13 @@ headnote: Cooking palak gently with a simple tempering keeps it easy to digest a
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/palak-sabzi.jpg
+  credit: web reference (coach-selected)
+  source_url: https://mindovermunch.com/wp-content/uploads/2023/05/indian-spinach-portrait-crop-728x1092.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Palak sabzi

@@ -84,6 +84,13 @@ headnote: A simple val is one of the most digestible protein sources — cooked 
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/val-dal.jpg
+  credit: web reference (coach-selected)
+  source_url: https://aahaaramonline.com/wp-content/uploads/2022/05/CKP_Style_Valache_Birde_Birdhe.png
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Val dal

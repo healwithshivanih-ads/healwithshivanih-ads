@@ -85,6 +85,13 @@ headnote: Cooking moong gently with a simple tempering keeps it easy to digest a
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/green-moong-sabzi.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.subbuskitchen.com/wp-content/uploads/2017/09/GreenMoongSundal_finalforweb1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Green moong sabzi

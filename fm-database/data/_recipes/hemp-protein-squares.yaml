@@ -78,11 +78,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 52
 image:
-  file: images/odonnell/odonnell-051-012.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/hemp-protein-squares.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.maddielymburner.com/cdn/shop/articles/IMG_6205_1024x1024.PNG?v=1564167946
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: hemp protein squares

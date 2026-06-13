@@ -67,11 +67,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 232
 image:
-  file: images/odonnell/odonnell-233-126.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/only-zucchini-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://frommybowl.com/wp-content/uploads/2025/08/Creamy_Zucchini_Soup_Vegan_FromMyBowl-11.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ONLY ZUCCHINI SOUP

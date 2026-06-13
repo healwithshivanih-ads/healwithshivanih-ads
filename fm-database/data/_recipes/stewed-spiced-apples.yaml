@@ -38,3 +38,10 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+image:
+  file: images/web/stewed-spiced-apples.jpg
+  credit: web reference (coach-selected)
+  source_url: https://art.whisk.com/image/upload/fl_progressive,h_600,w_1200,c_fill/v1695050537/recipe/c083c8fb25111789ed7eb35c04c8fd97.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

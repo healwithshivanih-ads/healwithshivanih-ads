@@ -38,3 +38,10 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+image:
+  file: images/web/spiced-almond-milk-nightcap.jpg
+  credit: web reference (coach-selected)
+  source_url: https://minimalistbaker.com/wp-content/uploads/2017/02/CREAMY-Golden-Milk-Latte-in-5-minutes-Anti-inflammatory-healthy-digestion-SO-delicious-vegan-glutenfree-healthy-goldenmilk-turmeric.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

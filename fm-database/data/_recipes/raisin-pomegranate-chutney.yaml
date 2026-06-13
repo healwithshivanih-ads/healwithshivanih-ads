@@ -74,11 +74,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 212
 image:
-  file: images/odonnell/odonnell-212-115.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/raisin-pomegranate-chutney.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.tastingtable.com/img/gallery/x-ways-to-use-raisins-in-cooking/mix-into-a-rich-chutney-1699544925.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: raisin pomegranate chutney

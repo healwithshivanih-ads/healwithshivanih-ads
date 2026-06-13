@@ -71,6 +71,13 @@ headnote: Eggs cooked with vegetables and a light tempering make a steady, prote
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/scrambled-eggs.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2023/01/egg-bhurji-recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Scrambled eggs

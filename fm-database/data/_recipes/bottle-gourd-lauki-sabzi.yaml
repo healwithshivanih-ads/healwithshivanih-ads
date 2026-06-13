@@ -1,0 +1,36 @@
+slug: bottle-gourd-lauki-sabzi
+name: Bottle Gourd (Lauki) Sabzi
+one_line: Simple cumin-tempered bottle gourd sabzi.
+meal_type:
+- lunch
+- dinner
+- side
+diet:
+- vegetarian
+- vegan
+- gluten_free
+- dairy_free
+region: Indian
+main_ingredients:
+- 1 cup lauki
+- 1/4 tsp cumin
+- 1/4 tsp turmeric
+- 1 green chilli
+- 1 tsp coconut oil
+- salt
+- coriander
+contains_allergens: []
+ingredients:
+- item: 1 cup lauki, peeled & cubed
+- item: 1/4 tsp cumin
+- item: 1/4 tsp turmeric
+- item: 1 green chilli
+- item: 1 tsp coconut oil
+- item: salt
+- item: coriander
+steps:
+- Heat oil, crackle cumin + chilli.
+- Add lauki, turmeric, salt; cover and cook on low 12 min till soft (it releases its own water).
+- Finish with coriander.
+- 'Tip: Ash gourd works the same way — light and cooling.'
+source: coach-authored (Shivani) 2026-06-13

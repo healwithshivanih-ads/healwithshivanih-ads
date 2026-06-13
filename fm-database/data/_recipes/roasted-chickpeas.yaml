@@ -75,11 +75,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 180
 image:
-  file: images/odonnell/odonnell-181-091.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/roasted-chickpeas.jpg
+  credit: web reference (coach-selected)
+  source_url: https://cdn.loveandlemons.com/wp-content/uploads/opengraph/2019/02/IMG_16074.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ROASTED CHICKPEAS

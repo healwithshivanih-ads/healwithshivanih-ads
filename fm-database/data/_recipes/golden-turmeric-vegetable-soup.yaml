@@ -46,3 +46,10 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+image:
+  file: images/web/golden-turmeric-vegetable-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://biancazapatka.com/wp-content/uploads/2022/11/linsensuppe-720x1008.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

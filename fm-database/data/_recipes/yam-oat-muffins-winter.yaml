@@ -120,11 +120,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 335
 image:
-  file: images/odonnell/odonnell-336-190.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/yam-oat-muffins-winter.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.eatingbirdfood.com/wp-content/uploads/2023/07/sweet-potato-muffins-hero-new.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: yam and oat muffins

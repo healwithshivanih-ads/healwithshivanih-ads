@@ -80,6 +80,13 @@ headnote: 'Khichdi is Ayurveda''s most healing everyday meal: sama and moong dal
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/sama-millet-khichdi.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.archanaskitchen.com/images/recipes/indian/main-course/indian-rice-recipes/khichdi-recipes/Sama_Rice_Khichdi_Recipe_Vrat_Navratri_Festival_Fasting_Food_2_6c23c03d9b.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Sama millet khichdi

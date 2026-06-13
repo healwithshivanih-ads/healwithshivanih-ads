@@ -84,11 +84,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 295
 image:
-  file: images/odonnell/odonnell-295-166.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo
-    before client-app use
+  file: images/web/quick-dal-saag.jpg
+  credit: web reference (coach-selected)
+  source_url: https://assets.bonappetit.com/photos/6169addaf1b2e1a29add3bb8/1%3A1/w_2560%2Cc_limit/Dal-Palak.jpeg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: quick dal saag
