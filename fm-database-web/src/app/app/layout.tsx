@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./app.css";
+import ChunkGuard from "./[token]/chunk-guard";
 
 /**
  * Standalone layout for the client companion app (/app/[token]).
@@ -43,6 +44,7 @@ export default function ClientAppLayout({ children }: { children: React.ReactNod
         href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap"
         rel="stylesheet"
       />
+      <ChunkGuard />
       <div className="ochre-stage">{children}</div>
     </>
   );

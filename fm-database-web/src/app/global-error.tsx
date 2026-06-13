@@ -10,6 +10,7 @@
  * the per-client-page error boundary does).
  */
 import { useEffect, useState } from "react";
+import { isChunkLoadError as detectChunkError, maybeReloadForChunkError } from "@/lib/chunk-reload";
 
 export default function GlobalError({
   error,
@@ -18,19 +19,13 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const msg = error.message || "";
-  const isChunkLoadError =
-    /Failed to load chunk|Loading chunk \d+ failed|ChunkLoadError|fetch dynamically imported module/i.test(msg);
+  const isChunkLoadError = detectChunkError(error.message || "");
   const [autoReloadAttempted, setAutoReloadAttempted] = useState(false);
   useEffect(() => {
-    if (!isChunkLoadError || typeof window === "undefined") return;
-    const key = "fm-chunk-reload-attempted";
-    if (window.sessionStorage.getItem(key)) {
-      setAutoReloadAttempted(true);
-      return;
-    }
-    window.sessionStorage.setItem(key, "1");
-    window.location.reload();
+    if (!isChunkLoadError) return;
+    // "suppressed" means we already reloaded within the cooldown and it's
+    // STILL failing → genuinely broken build; show the error UI instead.
+    if (maybeReloadForChunkError() === "suppressed") setAutoReloadAttempted(true);
   }, [isChunkLoadError]);
 
   if (isChunkLoadError && !autoReloadAttempted) {
