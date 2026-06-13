@@ -166,14 +166,27 @@ export async function approveWeekMenuAction(
     // regenerate step). Best-effort: the menu is already live, so a grocery
     // failure must NOT fail the approval; it's surfaced as a warning + logged
     // (and the dashboard 🛒 chip would still flag a genuinely missing list).
-    let groceryWarning: string | undefined;
+    const slug = String(doc.slug ?? hit.plan?.slug ?? "");
+    const warnings: string[] = [];
     try {
-      const slug = String(doc.slug ?? hit.plan?.slug ?? "");
       const g = await generateGroceryListAction(clientId, slug);
-      if (!g.ok) groceryWarning = `menu live, but grocery refresh failed: ${g.error}`;
+      if (!g.ok) warnings.push(`grocery refresh failed: ${g.error}`);
     } catch (e) {
-      groceryWarning = `menu live, but grocery refresh threw: ${e instanceof Error ? e.message : "unknown"}`;
+      warnings.push(`grocery refresh threw: ${e instanceof Error ? e.message : "unknown"}`);
     }
+
+    // Auto-generate the recipe pack from the now-live menu (coach rule
+    // 2026-06-13: weekly menus → recipes auto-generate per week, no manual
+    // step). Best-effort, same as grocery — the menu is already live.
+    try {
+      const { generateWeekRecipesAction } = await import("./recipes");
+      const r = await generateWeekRecipesAction(clientId, slug);
+      if (!r.ok) warnings.push(`recipe pack failed: ${r.error}`);
+    } catch (e) {
+      warnings.push(`recipe pack threw: ${e instanceof Error ? e.message : "unknown"}`);
+    }
+
+    const groceryWarning = warnings.length ? `menu live, but ${warnings.join("; ")}` : undefined;
     if (groceryWarning) console.error(`[weekly-menu] ${clientId}: ${groceryWarning}`);
 
     // Push the client a gentle "new menu" nudge (best-effort; only fires if
