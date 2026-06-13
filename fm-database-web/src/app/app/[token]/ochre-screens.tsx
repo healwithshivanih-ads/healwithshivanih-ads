@@ -606,6 +606,39 @@ export function PlanScreen({
               {data.weightLoss.phaseNote}{" "}Your meals are built around this — eat to comfortable fullness, don&apos;t
               count every calorie. Your maintenance level is about {data.weightLoss.tdee.toLocaleString()} kcal.
             </div>
+            {data.weightLoss.estimatedDailyKcal != null && data.weightLoss.adherence && (
+              <div
+                style={{
+                  marginTop: 10,
+                  paddingTop: 10,
+                  borderTop: "1px solid var(--line)",
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                  color: "var(--ink)",
+                }}
+              >
+                {data.weightLoss.adherence === "on_track" ? (
+                  <>
+                    <strong style={{ color: "var(--forest)" }}>✓ On track.</strong>{" "}This week&apos;s menu comes to
+                    roughly <strong>{data.weightLoss.estimatedDailyKcal.toLocaleString()}</strong> kcal/day — right around
+                    your target.
+                  </>
+                ) : data.weightLoss.adherence === "high" ? (
+                  <>
+                    <strong style={{ color: "var(--ochre-deep)" }}>A little high.</strong>{" "}This week&apos;s menu looks
+                    closer to <strong>{data.weightLoss.estimatedDailyKcal.toLocaleString()}</strong> kcal/day. Go easy on
+                    extra portions and snacks — or message {data.coach.name.split(" ")[0]} to adjust it.
+                  </>
+                ) : (
+                  <>
+                    <strong style={{ color: "var(--ochre-deep)" }}>On the lighter side.</strong>{" "}This week&apos;s menu
+                    is around <strong>{data.weightLoss.estimatedDailyKcal.toLocaleString()}</strong> kcal/day — make sure
+                    you&apos;re eating enough so energy and muscle hold up.
+                  </>
+                )}
+                <div style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 4 }}>Rough estimate from your menu.</div>
+              </div>
+            )}
           </div>
         )}
         <PlateDiagram />

@@ -163,12 +163,23 @@ export function MiniRating({ value, max = 5 }: { value: number; max?: number }) 
 
 export function MealThumb({ slot, size = 56, radius = 14 }: { slot: string; size?: number; radius?: number }) {
   const { mealExtra } = useOchre();
+  const img = mealExtra[slot]?.imageUrl;
   const grad = mealExtra[slot]?.grad ?? "linear-gradient(140deg,#e3cf9a,#9a8a4f)";
   return (
-    <span className="meal-thumb" style={{ width: size, height: size, borderRadius: radius, background: grad }}>
-      <span className="mt-cam">
-        <Icon name="forkKnife" size={size > 90 ? 18 : 14} style={{ color: "rgba(255,255,255,.92)" }} />
-      </span>
+    <span
+      className="meal-thumb"
+      style={{
+        width: size,
+        height: size,
+        borderRadius: radius,
+        background: img ? `center / cover no-repeat url(${img})` : grad,
+      }}
+    >
+      {!img && (
+        <span className="mt-cam">
+          <Icon name="forkKnife" size={size > 90 ? 18 : 14} style={{ color: "rgba(255,255,255,.92)" }} />
+        </span>
+      )}
     </span>
   );
 }

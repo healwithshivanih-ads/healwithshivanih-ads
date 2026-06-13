@@ -28,6 +28,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
+import { estimateDayKcal, calorieAdherence } from "@/lib/fmdb/calorie-estimate";
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
@@ -456,8 +457,17 @@ export interface ClientAppData {
   reminders: { id: string; label: string; time: string; on: boolean }[];
   /** Daily calorie guide for weight-loss clients — computed the same way the
    *  letter generator does (Mifflin-St Jeor → TDEE → phased deficit, current
-   *  week). null when the client has no weight-loss goal or lacks body data. */
-  weightLoss: { dailyTarget: number; tdee: number; phaseNote: string } | null;
+   *  week), plus a rough estimate of what THIS week's menu actually delivers
+   *  and whether it's tracking the target. null when the client has no
+   *  weight-loss goal or lacks body data. */
+  weightLoss: {
+    dailyTarget: number;
+    tdee: number;
+    phaseNote: string;
+    /** estimated avg kcal/day of the current week's menu (null if no menu) */
+    estimatedDailyKcal: number | null;
+    adherence: "on_track" | "high" | "low" | null;
+  } | null;
   /** ISO timestamp of when this plan was last published — shown in the "Plan updated" banner. */
   planUpdatedAt: string | null;
   /** Coach note to the client about what changed in this plan update. */
@@ -3121,7 +3131,23 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
           ? "A gentle start — the deficit eases in over the first weeks."
           : "Easing off as you near your goal."
         : "Your steady fat-loss phase.";
-    weightLoss = { dailyTarget, tdee, phaseNote };
+
+    // Estimate what THIS week's menu actually delivers (avg kcal/day) and
+    // whether it's tracking the target. Bedtime drinks are excluded as noise.
+    const curWeek = weekMenus.find((w) => w.current) ?? weekMenus[0];
+    let estimatedDailyKcal: number | null = null;
+    let adherence: "on_track" | "high" | "low" | null = null;
+    if (curWeek && curWeek.days.length) {
+      const dayTotals = curWeek.days.map((d) =>
+        estimateDayKcal(d.slots.filter((s) => !/bedtime/i.test(s.slot)).map((s) => s.dish)),
+      );
+      const filled = dayTotals.filter((v) => v > 0);
+      if (filled.length) {
+        estimatedDailyKcal = Math.round(filled.reduce((a, b) => a + b, 0) / filled.length);
+        adherence = calorieAdherence(estimatedDailyKcal, dailyTarget);
+      }
+    }
+    weightLoss = { dailyTarget, tdee, phaseNote, estimatedDailyKcal, adherence };
   }
 
   return {
