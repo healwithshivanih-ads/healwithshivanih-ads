@@ -75,6 +75,11 @@ function runPy(args: string[]): Promise<{ ok: boolean; stdout: string; stderr: s
   });
 }
 
+export async function refreshRecipeStatuses(): Promise<{ missing: RecipeImageStatus[]; done: RecipeImageStatus[] }> {
+  const all = await listRecipeImageStatuses();
+  return { missing: all.filter((r) => !r.hasWebImage), done: all.filter((r) => r.hasWebImage) };
+}
+
 export async function applyImageFromUrl(
   slug: string,
   url: string,

@@ -1,6 +1,6 @@
 "use client";
-import { useState, useTransition } from "react";
-import { applyImageFromUrl, RecipeImageStatus } from "./actions";
+import { useState, useTransition, useEffect, useRef } from "react";
+import { applyImageFromUrl, refreshRecipeStatuses, RecipeImageStatus } from "./actions";
 
 function SearchLink({ dish, ingredients }: { dish: string; ingredients: string[] }) {
   const q = encodeURIComponent(dish + (ingredients.length ? " " + ingredients.slice(0, 2).join(" ") : "") + " recipe");
@@ -170,6 +170,8 @@ function DoneRow({ r }: { r: RecipeImageStatus }) {
   );
 }
 
+const POLL_MS = 8_000;
+
 export default function RecipeImagesClient({
   missing,
   done,
@@ -180,10 +182,31 @@ export default function RecipeImagesClient({
   const [pendingList, setPendingList] = useState(missing);
   const [doneList, setDoneList] = useState(done);
   const [showDone, setShowDone] = useState(false);
+  const [lastRefresh, setLastRefresh] = useState<Date | null>(null);
+  const pendingSlugRef = useRef(new Set(missing.map((r) => r.slug)));
+
+  // Auto-refresh so externally-added images appear without a page reload
+  useEffect(() => {
+    const id = setInterval(async () => {
+      const fresh = await refreshRecipeStatuses();
+      const newlyDone = fresh.done.filter((r) => pendingSlugRef.current.has(r.slug));
+      if (newlyDone.length > 0) {
+        newlyDone.forEach((r) => pendingSlugRef.current.delete(r.slug));
+        setPendingList((p) => p.filter((r) => !newlyDone.some((d) => d.slug === r.slug)));
+        setDoneList((d) => {
+          const existing = new Set(d.map((r) => r.slug));
+          return [...newlyDone.filter((r) => !existing.has(r.slug)), ...d];
+        });
+      }
+      setLastRefresh(new Date());
+    }, POLL_MS);
+    return () => clearInterval(id);
+  }, []);
 
   function handleDone(slug: string, img: string) {
     const rec = pendingList.find((r) => r.slug === slug);
     if (rec) {
+      pendingSlugRef.current.delete(slug);
       setPendingList((p) => p.filter((r) => r.slug !== slug));
       setDoneList((d) => [{ ...rec, hasWebImage: true, imageUrl: img }, ...d]);
     }
@@ -196,6 +219,11 @@ export default function RecipeImagesClient({
         <h2 className="text-base font-semibold mb-1 flex items-center gap-2">
           <span className="text-amber-600">⚠</span>
           {pendingList.length} recipes need images
+          {lastRefresh && (
+            <span className="text-xs font-normal text-muted-foreground ml-auto">
+              auto-refreshing · last checked {lastRefresh.toLocaleTimeString()}
+            </span>
+          )}
         </h2>
         <p className="text-xs text-muted-foreground mb-4">
           Click "🔍 Google Images" → find a clear photo of the finished dish → right-click → "Copy image address" → paste in the field → Apply
