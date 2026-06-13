@@ -2425,24 +2425,43 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // ---- practices (exclude the remedy drinks — they live with meals) --------
   const practices: { id: string; name: string; when: string }[] = [];
   const lifestyle = asArr(plan.lifestyle_practices) as Dict[];
-  const practiceWhen = (name: string): string => {
+  // A weekly-frequency phrase anywhere in the name or cadence — "2 sessions
+  // per week", "3x/week", "3× week", "2x weekly". Group 1 = the count.
+  const FREQ_RE = /(\d+)\s*(?:x|times|sessions?|days?)\s*(?:\/|per|a|each)?\s*(?:week|wk)/i;
+  const practiceWhen = (name: string, cadence: string): string => {
+    const text = `${name} ${cadence}`;
     const n = name.toLowerCase();
+    // an explicit weekly cadence ALWAYS wins over a "Daily" default — this was
+    // the bug: strength training ("2 sessions per week") showed a "Daily" chip.
+    const fm = text.match(FREQ_RE);
+    if (fm) return `${fm[1]}× / week`;
+    if (/alternate days?|every other day/i.test(text)) return "Alternate days";
     if (n.includes("sunlight")) return "Morning";
     if (n.includes("breath")) return "Morning & night";
-    if (n.includes("walk")) return "Daily";
     if (n.includes("sleep schedule") || n.includes("lights out")) return "Night";
     if (n.includes("journal")) return "Evening";
     if (n.includes("screen") || n.includes("digital")) return "Night";
     if (n.includes("stretch")) return "Morning";
+    if (/\bweekly\b/i.test(cadence) || /\bweekly\b/i.test(name)) return "Weekly";
     return "Daily";
   };
+  // Drop a frequency phrase from the displayed name so it isn't redundant with
+  // the chip ("Strength training — 2 sessions per week" → "Strength training").
+  const cleanPracticeName = (name: string): string =>
+    name
+      .replace(new RegExp(`\\s*[—–-]\\s*${FREQ_RE.source}.*$`, "i"), "")
+      .replace(new RegExp(`\\s*\\(\\s*${FREQ_RE.source}\\s*\\)`, "i"), "")
+      .replace(new RegExp(`\\s*${FREQ_RE.source}`, "i"), "")
+      .replace(/\s*\(([^)]{25,})\)/, "")
+      .replace(/\s+/g, " ")
+      .trim();
   let pIdx = 0;
   const practiceRaw: Dict[] = []; // index-aligned with practices[]
   for (const p of lifestyle) {
     const name = asStr(p.name);
     if (!name) continue;
     if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
-    practices.push({ id: `p${pIdx++}`, name: name.replace(/\s*\(([^)]{25,})\)/, ""), when: practiceWhen(name) });
+    practices.push({ id: `p${pIdx++}`, name: cleanPracticeName(name), when: practiceWhen(name, asStr(p.cadence)) });
     practiceRaw.push(p);
   }
 
