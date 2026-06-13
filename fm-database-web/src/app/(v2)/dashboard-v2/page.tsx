@@ -38,6 +38,7 @@ import { ClientAppLinksPanel } from "@/components/client-app-links-panel";
 import { MealPlanDripPanel } from "@/components/meal-plan-drip-panel";
 import { WeeklyMenuQueuePanel } from "@/components/weekly-menu-queue-panel";
 import { CycleDateReminderPanel } from "@/components/cycle-date-reminder-panel";
+import { DeferredPlanItemsPanel } from "@/components/deferred-plan-items-panel";
 import {
   FmAlertGroup,
   FmAppShell,
@@ -1399,6 +1400,12 @@ export default async function DashboardV2() {
           <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
 
           <CycleDateReminderPanel whatsappConfigured={whatsappConfigured} />
+
+          {/* ⏳ Deferred / revisit-later plan items — interventions the assess
+              AI held back behind a clinical gate (e.g. seed cycling pending a
+              day-21 progesterone result). Override to flag for inclusion, or
+              snooze until the gate marker lands. Self-hides when empty. */}
+          <DeferredPlanItemsPanel />
 
 
           {/* Catalogue commit — design 9A with change list disclosure */}
