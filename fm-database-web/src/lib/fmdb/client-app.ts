@@ -136,6 +136,9 @@ export interface AppSupplement {
   asNeeded?: boolean;
   /** True when supplement should be taken on an empty stomach — sorts before with-food supplements. */
   emptyStomach?: boolean;
+  /** True when the coach's rationale marks this as a primary/driver-targeting
+   *  supplement (auto-detected). Surfaced as a "Core" tier on the Plan tab. */
+  core?: boolean;
 }
 
 export interface AppRemedy {
@@ -1132,6 +1135,8 @@ const SUPP_NAME_OVERRIDES: Record<string, string> = {
   "omega-3-fatty-acids": "Omega-3 (EPA + DHA)",
   selenium: "Selenium",
   methylfolate: "Methylfolate (5-MTHF)",
+  "dpp-iv-enzyme": "DPP-IV Enzyme",
+  "l-glutamine": "L-Glutamine",
 };
 
 function suppKey(name: string): string {
@@ -1904,6 +1909,14 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     }
     const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
     const emptyStomach = !asNeeded && /empty stomach|before breakfast|first thing in the morning|on empty|upon waking/i.test(timing);
+    // Auto-tier: a supplement is "core" when the coach's rationale frames it as
+    // a primary, driver-targeting therapeutic (not a continuation/top-up).
+    const rawRationale = asStr(p.coach_rationale);
+    const core =
+      !asNeeded &&
+      /\b(critical gap|critical|central driver|main driver|key driver|primary (driver|fuel|target)|directly targets?|single biggest|biggest (gap|driver)|foundational|cornerstone|first.?line|non.?negotiable|essential|most important|the priority|highest priority)\b/i.test(
+        rawRationale,
+      );
     supplements.push({
       id: `s-${slug || i}`,
       name,
@@ -1921,6 +1934,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
       ...(asNeeded ? { asNeeded: true } : {}),
       ...(emptyStomach ? { emptyStomach: true } : {}),
+      ...(core ? { core: true } : {}),
     });
   }
 

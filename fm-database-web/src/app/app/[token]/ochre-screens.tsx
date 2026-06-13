@@ -5,7 +5,7 @@
  */
 
 import { useState } from "react";
-import type { AppRemedy } from "@/lib/fmdb/client-app";
+import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { BreathLaunchCard } from "./ochre-breath";
@@ -381,12 +381,71 @@ function MealList({
 
 // ── MY PLAN ──────────────────────────────────────────────────────────────────
 
+/** Plan-tab supplement list, tiered: ⭐ Core (driver-targeting) first, then
+ *  the rest of the daily protocol, then a clearly-separated "As needed"
+ *  group at the bottom so situational items never pollute the daily list. */
+function PlanSupplements() {
+  const { supplements } = useOchre();
+  const slotRank: Record<string, number> = { Morning: 0, "With meals": 1, Bedtime: 2 };
+  const byDay = (a: AppSupplementT, b: AppSupplementT) =>
+    (slotRank[a.slot] ?? 1) - (slotRank[b.slot] ?? 1) || (b.emptyStomach ? 1 : 0) - (a.emptyStomach ? 1 : 0);
+  const core = supplements.filter((s) => s.core && !s.asNeeded).sort(byDay);
+  const daily = supplements.filter((s) => !s.core && !s.asNeeded).sort(byDay);
+  const asNeeded = supplements.filter((s) => s.asNeeded);
+  return (
+    <>
+      {core.length > 0 && (
+        <>
+          <div className="supp-group-label">
+            <Icon name="sparkle" size={13} /> Core — the ones doing the heavy lifting
+          </div>
+          <div className="card" style={{ overflow: "hidden" }}>
+            {core.map((s) => (
+              <SuppPlanCard key={s.id} supp={s} />
+            ))}
+          </div>
+        </>
+      )}
+      {daily.length > 0 && (
+        <>
+          {core.length > 0 && <div className="supp-group-label plain">Supporting your protocol</div>}
+          <div className="card" style={{ overflow: "hidden", marginTop: core.length > 0 ? 0 : undefined }}>
+            {daily.map((s) => (
+              <SuppPlanCard key={s.id} supp={s} />
+            ))}
+          </div>
+        </>
+      )}
+      {asNeeded.length > 0 && (
+        <>
+          <div className="supp-group-label muted-label">As needed — not every day</div>
+          <div className="card card-asneeded" style={{ overflow: "hidden" }}>
+            {asNeeded.map((s) => (
+              <SuppPlanCard key={s.id} supp={s} />
+            ))}
+          </div>
+          <div className="muted" style={{ fontSize: 11.5, marginTop: 6, paddingLeft: 2 }}>
+            Keep these on hand — use only when the moment calls for it (eating out, travel, a reaction). Not part of your daily rhythm.
+          </div>
+        </>
+      )}
+    </>
+  );
+}
+
 function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements"][number] }) {
   return (
     <div className="supp-plan">
       <div className="top">
         <div style={{ flex: 1 }}>
-          <div className="name">{supp.name}</div>
+          <div className="name">
+            {supp.name}
+            {supp.core && (
+              <span className="supp-core">
+                <Icon name="sparkle" size={10} /> Core
+              </span>
+            )}
+          </div>
           {/* dose only — the chip already carries the timing (the old
               "· bedtime" suffix duplicated and sometimes contradicted it) */}
           <div className="dose">{supp.dose}</div>
@@ -481,11 +540,7 @@ export function PlanScreen({
       {/* ---- do-this-daily actions first; learning lives further down ---- */}
 
       <Section title="Your supplements">
-        <div className="card" style={{ overflow: "hidden" }}>
-          {data.supplements.map((s) => (
-            <SuppPlanCard key={s.id} supp={s} />
-          ))}
-        </div>
+        <PlanSupplements />
         <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
           Reorder links go to {pr.authoredBy.split(" ")[0]}’s recommended brands. Tap any supplement for the why.
         </div>
