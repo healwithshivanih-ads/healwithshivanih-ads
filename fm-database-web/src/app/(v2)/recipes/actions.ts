@@ -1,5 +1,4 @@
 "use server";
-import { revalidatePath } from "next/cache";
 import { execFile } from "node:child_process";
 import path from "path";
 import fs from "fs";
@@ -84,7 +83,6 @@ export async function applyImageFromUrl(
   const result = await runPy([slug, url, "--dish", dish]);
   try {
     const parsed = JSON.parse(result.stdout || "{}");
-    if (parsed.ok) revalidatePath("/(v2)/recipes");
     return parsed;
   } catch {
     return { ok: false, error: result.stdout || result.stderr };
