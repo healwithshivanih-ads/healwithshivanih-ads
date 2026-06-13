@@ -12,26 +12,34 @@ import { useEffect, useRef, useState } from "react";
 import { Icon, useOchre } from "./ochre-context";
 import { Accordion, Section } from "./ochre-ui";
 
-const DEFER_HINTS = [
-  "dose",
-  "dosage",
-  "mg",
-  "result",
-  "blood",
-  "tsh",
-  "lab",
-  "symptom",
-  "pain",
-  "medication",
-  "medicine",
-  "pregnan",
-  "pause",
-  "stop my",
-  "side effect",
-  "doctor",
-  "chest",
-  "dizzy",
+// Acute medical / self-harm cues → an emergency response (call services),
+// NOT a "wait for the coach on WhatsApp" deferral. Checked before everything
+// else, client- and server-side. Keep this list broad and err toward firing.
+const EMERGENCY_HINTS = [
+  "chest pain", "chest tightness", "can't breathe", "cant breathe", "cannot breathe",
+  "can't breath", "trouble breathing", "struggling to breathe", "breathless",
+  "short of breath", "heart attack", "stroke", "seizure", "passing out", "fainted",
+  "faint", "collapsed", "unconscious", "slurred", "numb on one side",
+  "severe bleeding", "bleeding heavily", "coughing blood", "vomiting blood",
+  "overdose", "suicid", "kill myself", "killing myself", "end my life",
+  "ending my life", "end it all", "want to die", "harm myself", "hurt myself",
+  "self harm", "self-harm",
 ];
+
+const DEFER_HINTS = [
+  "dose", "dosage", "how much", "how many", "increase", "reduce", "double",
+  "mg", "mcg", "result", "blood", "tsh", "t3", "t4", "thyroid", "ferritin",
+  "b12", "vitamin d", "cortisol", "lab", "symptom", "pain", "nausea", "vomit",
+  "rash", "bleed", "fever", "headache", "diarr", "cramp", "infection",
+  "medication", "medicine", "prescri", "pregnan", "pause", "stop my", "stop taking",
+  "quit", "come off", "get off", "discontinue", "wean", "skip",
+  "side effect", "doctor", "diagnos",
+];
+
+function looksEmergency(q: string): boolean {
+  const s = q.toLowerCase();
+  return EMERGENCY_HINTS.some((h) => s.includes(h));
+}
 
 function looksClinical(q: string): boolean {
   const s = q.toLowerCase();
@@ -42,6 +50,7 @@ interface Msg {
   who: "ai" | "me";
   text: string;
   defer?: boolean;
+  emergency?: boolean;
 }
 
 export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
@@ -67,7 +76,9 @@ export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
     if (el) el.scrollTop = el.scrollHeight;
   }, [msgs, typing]);
 
+  const EMERGENCY_MSG = `If this might be an emergency — chest pain, trouble breathing, fainting, or any thought of harming yourself — please call 112 (emergency services) or go to your nearest hospital right now. Message ${firstName} once you're safe.`;
   const pushDefer = () => setMsgs((m) => [...m, { who: "ai", text: DEFER_MSG, defer: true }]);
+  const pushEmergency = () => setMsgs((m) => [...m, { who: "ai", text: EMERGENCY_MSG, emergency: true }]);
 
   const askChip = (item: { q: string; a: string }, idx: number) => {
     setUsedChips((u) => ({ ...u, [idx]: true }));
@@ -84,6 +95,14 @@ export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
     if (!q || typing) return;
     setInput("");
     setMsgs((m) => [...m, { who: "me", text: q }]);
+    if (looksEmergency(q)) {
+      setTyping(true);
+      setTimeout(() => {
+        setTyping(false);
+        pushEmergency();
+      }, 300);
+      return;
+    }
     if (looksClinical(q)) {
       setTyping(true);
       setTimeout(() => {
@@ -106,7 +125,9 @@ export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
       /* network — fall through to defer */
     }
     setTyping(false);
-    if (!answer || answer.toUpperCase().includes("DEFER")) pushDefer();
+    const flag = answer.toUpperCase();
+    if (flag.includes("EMERGENCY")) pushEmergency();
+    else if (!answer || flag.includes("DEFER")) pushDefer();
     else setMsgs((m) => [...m, { who: "ai", text: answer }]);
   };
 
@@ -162,8 +183,16 @@ export function CoachScreen({ coachAlert }: { coachAlert: boolean }) {
         <div className="copilot">
           <div className="cp-thread" ref={scrollRef}>
             {msgs.map((m, i) => (
-              <div key={i} className={"bubble " + m.who + (m.defer ? " defer" : "")}>
-                {m.who === "ai" && (
+              <div
+                key={i}
+                className={"bubble " + m.who + (m.defer ? " defer" : "")}
+                style={
+                  m.emergency
+                    ? { background: "#fbeae6", border: "1px solid #d4654f", color: "#7a2718" }
+                    : undefined
+                }
+              >
+                {m.who === "ai" && !m.emergency && (
                   <span className="cp-spark">
                     <Icon name="bolt" size={13} />
                   </span>

@@ -432,6 +432,17 @@ export interface ClientAppData {
   resources: AppResource[];
   aiSuggested: { q: string; a: string }[];
   account: { name: string; contact: string; plan: string; member: string; avatar: string };
+  /** Body composition: read-only height/age from the coach dashboard +
+   *  client-editable weight/waist/hip, plus the snapshot history that drives
+   *  the progress charts. The app computes BMI/BMR/ratios client-side. */
+  body: {
+    heightCm: number | null;
+    ageYears: number | null;
+    sex: "M" | "F" | "";
+    latest: { weightKg: number | null; waistCm: number | null; hipCm: number | null; measuredOn: string | null };
+    /** oldest → newest; only entries that carry at least a weight */
+    history: { date: string; weightKg: number | null; waistCm: number | null; hipCm: number | null }[];
+  };
   reminders: { id: string; label: string; time: string; on: boolean }[];
   /** ISO timestamp of when this plan was last published — shown in the "Plan updated" banner. */
   planUpdatedAt: string | null;
@@ -1161,10 +1172,24 @@ function matchSupplementRow(name: string, rows: LetterSupplementRow[]): LetterSu
   return best && best.score >= 1 ? best.row : undefined;
 }
 
+const DOSE_QTY_RE =
+  /\b\d+(?:[.,\-–/]\d+)?\s?(?:ml|mg|mcg|µg|g|IU|drops?|tsp|tbsp|teaspoons?|tablespoons?|capsules?|caps?|tablets?|tabs?|pills?|scoops?|sachets?|billion(?:\s?CFU)?)\b/i;
+
 function shortDose(dose: string): string {
   const d = dose.replace(/\s+/g, " ").trim();
+  if (!d) return "";
+  // A real client dose is short. When the coach has stuffed a titration
+  // schedule or brand note into the dose field — e.g. deepti's iron:
+  // "TONOFERON LIQUID (Glenmark …) — 7.5 ml ALTERNATE DAYS … push to 15 ml
+  // daily (~33 mg)" — pull just the leading dose quantity (mobile audit
+  // 2026-06-13). Triggered by length or coach-speak so normal ranges
+  // ("300-400mg", "1-2 capsules") pass through untouched.
+  const qty = d.match(DOSE_QTY_RE);
+  if (qty && (d.length > 40 || /\b(?:alternate days?|if\b|push to|increase to|week \d|FORM SWAP|OTC|pharmac|client reported|titrat|ALTERNATE)/i.test(d)))
+    return qty[0].replace(/\s+/g, " ").trim();
   const cut = d.split(/(?<=mg|mcg|g|IU)\b/i)[0];
-  return (cut && cut.length >= 4 ? cut : d).trim();
+  const out = (cut && cut.length >= 4 ? cut : d).trim();
+  return out.length > 44 ? (qty ? qty[0].trim() : `${out.slice(0, 42).trim()}…`) : out;
 }
 
 function slotFor(timing: string, dose: string): "Morning" | "With meals" | "Bedtime" {
@@ -1287,11 +1312,35 @@ async function migrateMenuIntoPlan(
  *  Letter-provided why-lines are already client-voiced and skip this. */
 function clientifyWhy(raw: string): string {
   let s = raw;
+  // strip leading coach change-log stamps: "FORM SWAP 2026-05-24 — …",
+  // "[2026-05-24] …", "UPDATE: …" (the dated clause is the coach's audit note)
+  s = s.replace(/^\s*(?:FORM\s+SWAP|SWAP|UPDATE|CHANGE|REVISED|NOTE)\b[^—–\n]*?(?:[—–-]\s*|:\s*)/i, "");
+  s = s.replace(/^\s*\[[^\]]*\]\s*/g, "");
+  s = s.replace(/\b20\d\d-\d\d-\d\d\b/g, "");
+  // Drug-nutrient depletion clauses name the client's actual medication +
+  // class — "Telma 40 (ARB) depletes magnesium", "ARB (Telma 40) depletes
+  // zinc". Rephrase to a generic, client-voiced line BEFORE other scrubs so
+  // the brand/class never reaches the phone (mobile audit 2026-06-13).
+  if (/\bdeplet(?:e|es|ing|ion)\b/i.test(s)) {
+    // capture the nutrient right after "depletes", up to the first clause
+    // break ("magnesium — mandatory correction" → "magnesium")
+    const m = s.match(/deplet(?:es?|ing|ion of)\s+([a-z][a-z ]*?)(?=\s*[—–,.;:-]|\s+and\b|\s*$)/i);
+    const nutrient = m && m[1] ? m[1].trim().toLowerCase() : "";
+    return nutrient && nutrient.length <= 30
+      ? `Replaces ${nutrient} — medications can lower it over time.`
+      : "Replaces a nutrient your medication can lower over time.";
+  }
   // coach-only phrasing after a dash
   s = s.replace(
     /\s*[—–-]\s*(mandatory correction|non-negotiable[^.;]*|gap in (?:the )?prior protocol[^.;]*|hard rule[^.;]*)\.?/gi,
     ".",
   );
+  // bare lab readouts with clinical units anywhere ("22.10 µg/dL", "4.19 g/dL")
+  s = s.replace(/\b\d+(?:\.\d+)?\s*(?:µg|mcg|ng|pg|mg|nmol|pmol|mIU|µIU|IU)\s*\/\s*(?:dL|mL|L)\b/gi, "");
+  // "(far) below/above FM-optimal of 50–80" comparison fragments
+  s = s.replace(/\b(?:is\s+)?(?:far\s+)?(?:below|above|under|over)?\s*FM[- ]?optimal(?:\s+of)?\s*[\d.,–-]*\s*(?:ng\/mL|µg\/dL|g\/dL)?/gi, "");
+  // "(above|below) the reference range (upper|lower) limit"
+  s = s.replace(/\b(?:above|below)?\s*(?:the\s+)?reference range(?:\s+(?:upper|lower)\s+limit)?(?:\s+at)?/gi, "");
   // parenthetical lab readouts / conversion arrows
   s = s.replace(/\s*\([^)]*(?:\d[^)]*(?:ng|mg|nmol|pmol|mIU|mcg|µg|iu\b)[^)]*|below range|above range|→[^)]*)\)/gi, "");
   // bare "MARKER 123" readout lists
@@ -1311,6 +1360,27 @@ function clientifyWhy(raw: string): string {
     .replace(/\.{2,}/g, ".")
     .replace(/[,:]\s*$/g, "")
     .trim();
+  // Final guard: coach_rationale is clinical/coach-facing. If softening left
+  // anything that still reads like a lab report or coach note — a specific
+  // result, a marker + verdict, a reference-range / FM-optimal comparison, a
+  // named drug class, or an antibody — drop the why entirely. A supplement
+  // card with no rationale is strictly safer than one leaking the client's
+  // labs or medications (mobile audit 2026-06-13).
+  const CLINICAL_LEAK = new RegExp(
+    [
+      String.raw`\d(?:\.\d+)?\s*(?:µg|mcg|ng|pg|mg|nmol|pmol|mIU|µIU|IU)\s*\/\s*(?:dL|mL|L)`,
+      String.raw`\breference range\b`,
+      String.raw`\bFM[- ]?optimal\b`,
+      String.raw`\b(?:elevated|low|high|normal|deficient|insufficient|sub-?optimal)\s+(?:serum\s+)?(?:homocysteine|folate|ferritin|cortisol|tsh|ft[34]|b12|albumin|vitamin\s*d|hs-?crp)\b`,
+      String.raw`\b(?:homocysteine|ferritin|tsh|ft[34]|hs-?crp|hba1c|albumin|cortisol)\b[^.]*\d`,
+      String.raw`=\s*(?:insufficient|deficient|elevated|sub-?optimal|low|high)\b`,
+      String.raw`\b(?:anti-?TPO|TPO antibod|antibod(?:y|ies)|deiodinase|Lp\(a\))\b`,
+      String.raw`\b(?:ARB|ACE[- ]?inhibitors?|beta[- ]?blockers?|PPIs?|statins?|SSRIs?|SNRIs?)\b`,
+      String.raw`\b(?:client reported|FORM SWAP|prior protocol|coach note|per coach)\b`,
+    ].join("|"),
+    "i",
+  );
+  if (CLINICAL_LEAK.test(s)) return "";
   return s;
 }
 
@@ -1527,7 +1597,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const startDate = startStr ? new Date(`${startStr}T00:00:00Z`) : null;
   const now = istNow();
   const todayUTC = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-  const totalWeeks = 12; // the letter's 12-week journey; Day 1 is immutable once set
+  // Journey length — read from the plan (12-week default, but some plans run
+  // 16). Drives the week counter, progress arc, lab checkpoints, the coach
+  // line, and the "X-week reset" labels. Day 1 is immutable once set.
+  const pw = Number(plan.plan_period_weeks);
+  const totalWeeks = Number.isFinite(pw) && pw >= 1 && pw <= 52 ? Math.round(pw) : 12;
   let week = 1;
   if (startDate) {
     const days = Math.floor((todayUTC.getTime() - startDate.getTime()) / 86_400_000);
@@ -2739,9 +2813,15 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   if (/sleep/.test(goals)) programBits.push("sleep");
   if (/energy/.test(goals)) programBits.push("energy");
   if (/pressure|bp/.test(goals) && programBits.length < 3) programBits.push("heart");
-  const program = programBits.length
-    ? `${programBits[0]}${programBits.length > 1 ? ", " + programBits.slice(1, -1).join(", ") : ""}${programBits.length > 1 ? " & " + programBits[programBits.length - 1] : ""} reset`
-    : "Your 12-week reset";
+  // Oxford-style join: 1 → "Calm reset"; 2 → "Calm & sleep reset";
+  // 3 → "Calm, sleep & energy reset". (Old slice(1,-1) form emitted a stray
+  // ", " on exactly-2 goals → "Calm,  & sleep reset".)
+  const program =
+    programBits.length === 0
+      ? `Your ${totalWeeks}-week reset`
+      : programBits.length === 1
+        ? `${programBits[0]} reset`
+        : `${programBits.slice(0, -1).join(", ")} & ${programBits[programBits.length - 1]} reset`;
 
   const coachLine = currentPhase
     ? `Week ${week} — you're in the ${currentPhase.name} phase now. ${firstSentence(currentPhase.note)} Keep going.`
@@ -2885,6 +2965,45 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     ? plan.client_update_note.trim()
     : null;
 
+  // ---- body composition (read-only height/age + editable weight/waist/hip) --
+  const num = (v: unknown): number | null => {
+    const n = typeof v === "number" ? v : typeof v === "string" ? parseFloat(v) : NaN;
+    return Number.isFinite(n) && n > 0 ? n : null;
+  };
+  const meas = (client.measurements as Dict) || {};
+  const snaps = asArr(client.health_snapshots) as Dict[];
+  // height: prefer the dashboard measurement, else the most recent snapshot
+  let bodyHeight = num(meas.height_cm);
+  const bodyHistory = snaps
+    .map((s) => {
+      const m = (s.measurements as Dict) || {};
+      return {
+        date: asStr(s.date),
+        weightKg: num(m.weight_kg),
+        waistCm: num(m.waist_cm),
+        hipCm: num(m.hip_cm),
+        heightCm: num(m.height_cm),
+      };
+    })
+    .filter((e) => e.date && (e.weightKg != null || e.waistCm != null || e.hipCm != null))
+    .sort((a, b) => a.date.localeCompare(b.date));
+  if (bodyHeight == null) {
+    const withH = bodyHistory.filter((e) => e.heightCm != null);
+    if (withH.length) bodyHeight = withH[withH.length - 1].heightCm;
+  }
+  const body: ClientAppData["body"] = {
+    heightCm: bodyHeight,
+    ageYears,
+    sex: sexRaw === "M" ? "M" : sexRaw === "F" ? "F" : "",
+    latest: {
+      weightKg: num(meas.weight_kg),
+      waistCm: num(meas.waist_cm),
+      hipCm: num(meas.hip_cm),
+      measuredOn: asStr(meas.measured_on) || null,
+    },
+    history: bodyHistory.map(({ date, weightKg, waistCm, hipCm }) => ({ date, weightKg, waistCm, hipCm })),
+  };
+
   return {
     clientId,
     planSlug,
@@ -2965,6 +3084,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       member,
       avatar: initials,
     },
+    body,
     reminders,
   };
 }

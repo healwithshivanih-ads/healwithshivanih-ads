@@ -69,6 +69,7 @@ const PUBLIC_PATH_PREFIXES = [
   "/api/app-msq",
   "/api/app-copilot",
   "/api/app-travel",
+  "/api/app-body",
   // Static PWA assets for the client app (manifest + home-screen icons,
   // served from public/ochre-app/). No data, safe to serve publicly.
   "/ochre-app/",

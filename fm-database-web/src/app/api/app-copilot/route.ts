@@ -27,9 +27,26 @@ function overBudget(token: string): boolean {
   return cur.count > DAILY_LIMIT;
 }
 
+// Authoritative gates (the client-side copies in ochre-coach.tsx are a UX
+// optimization only — a direct POST skips them, so these must stand alone).
+const EMERGENCY_HINTS = [
+  "chest pain", "chest tightness", "can't breathe", "cant breathe", "cannot breathe",
+  "trouble breathing", "breathless", "short of breath", "heart attack", "stroke",
+  "seizure", "passing out", "faint", "collapsed", "unconscious", "slurred",
+  "numb on one side", "severe bleeding", "bleeding heavily", "coughing blood",
+  "vomiting blood", "overdose", "suicid", "kill myself", "end my life",
+  "ending my life", "want to die", "harm myself", "hurt myself", "self harm",
+  "self-harm",
+];
+
 const DEFER_HINTS = [
-  "dose", "dosage", "mg", "result", "blood", "tsh", "lab", "symptom", "pain",
-  "medication", "medicine", "pregnan", "pause", "stop my", "side effect", "doctor",
+  "dose", "dosage", "how much", "how many", "increase", "reduce", "double",
+  "mg", "mcg", "result", "blood", "tsh", "t3", "t4", "thyroid", "ferritin",
+  "b12", "vitamin d", "cortisol", "lab", "symptom", "pain", "nausea", "vomit",
+  "rash", "bleed", "fever", "headache", "diarr", "cramp", "infection", "dizzy",
+  "medication", "medicine", "prescri", "pregnan", "pause", "stop my", "stop taking",
+  "quit", "come off", "get off", "discontinue", "wean", "skip",
+  "side effect", "doctor", "diagnos",
 ];
 
 export async function POST(req: NextRequest) {
@@ -45,6 +62,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "token and question required" }, { status: 400 });
   }
   const q = question.toLowerCase();
+  if (EMERGENCY_HINTS.some((h) => q.includes(h))) {
+    return NextResponse.json({ ok: true, answer: "EMERGENCY" });
+  }
   if (DEFER_HINTS.some((h) => q.includes(h))) {
     return NextResponse.json({ ok: true, answer: "DEFER" });
   }

@@ -6,9 +6,10 @@
  * Buy links resolved via supplement_links.yaml + a VitaOne search
  * fallback (affiliate referral baked in).
  *
- * Auth: none — the plan slug is non-guessable in practice (UUID-ish).
- * If we ever surface a guessable slug we'll wrap this in a token like
- * /letter/<token> does.
+ * Auth: TOKEN-ONLY. The route param must be a valid letter_token
+ * (resolved via lookupLetterToken) — plan slugs are guessable, so the
+ * slug fallback was removed (PHI gate closed 2026-06-11). Do NOT
+ * re-introduce a raw-slug lookup here.
  *
  * Linked from the fm_supplement_order_v1 WhatsApp template.
  */
@@ -67,9 +68,21 @@ function describeDose(s: Record<string, unknown>): string | undefined {
  * speaks pill-count language and tells them to message the coach if
  * they're unsure.
  */
+const DOSE_QTY_RE =
+  /\b\d+(?:[.,\-–/]\d+)?\s?(?:ml|mg|mcg|µg|g|IU|drops?|tsp|tbsp|teaspoons?|tablespoons?|capsules?|caps?|tablets?|tabs?|pills?|scoops?|sachets?|billion(?:\s?CFU)?)\b/i;
+
 function clientifyDose(text: string | undefined): string | undefined {
   if (!text) return undefined;
-  let s = text;
+  let s = text.replace(/\s+/g, " ").trim();
+  // A coach has sometimes stuffed a full titration schedule + brand name into
+  // the dose field — e.g. deepti's iron: "TONOFERON LIQUID (Glenmark …) —
+  // 7.5 ml ALTERNATE DAYS … push to 15 ml daily (~33 mg)". Clients order a
+  // fixed product; show just the starting quantity. The "titrate"-only filter
+  // below missed "increase to / push to / alternate days" phrasing (mobile
+  // audit 2026-06-13).
+  const qty = s.match(DOSE_QTY_RE);
+  if (qty && (s.length > 45 || /\b(?:alternate days?|if\b|push to|increase to|week \d|FORM SWAP|OTC|pharmac|client reported|titrat|ALTERNATE|Glenmark|liquid \()/i.test(s)))
+    return qty[0].replace(/\s+/g, " ").trim();
   // Drop "; titrate up/down by N mg every M nights to <whatever>" clause
   // and everything that follows on the same sentence.
   s = s.replace(/[;,]\s*titrat\w*[^.;]*(?:[.;]|$)/gi, ". ");

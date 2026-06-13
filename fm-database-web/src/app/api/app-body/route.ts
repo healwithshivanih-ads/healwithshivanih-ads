@@ -1,0 +1,73 @@
+/**
+ * POST /api/app-body — body-composition write-back from the client app.
+ *
+ * The client updates weight / waist / hip from the settings page (height
+ * and age are read-only). The numbers land in client.measurements +
+ * a `source: client_app` health snapshot, so they show up in the coach's
+ * health-trends and power the app's own progress charts.
+ *
+ * Auth: body.token must resolve to the client's app/letter token. The
+ * client is derived server-side from the token — never trusted from the
+ * request. Numbers are re-validated in the Python shim against sane bounds.
+ */
+import { NextRequest, NextResponse } from "next/server";
+import { resolveAppToken } from "@/lib/server-actions/letter-token";
+import { runShim } from "@/lib/fmdb/shim";
+
+export const dynamic = "force-dynamic";
+
+// modest in-memory throttle: no reason to log body comp >12/day
+const seen = new Map<string, { day: string; count: number }>();
+
+function throttled(token: string): boolean {
+  const day = new Date().toISOString().slice(0, 10);
+  const cur = seen.get(token);
+  if (!cur || cur.day !== day) {
+    seen.set(token, { day, count: 1 });
+    return false;
+  }
+  cur.count += 1;
+  return cur.count > 12;
+}
+
+/** Accept a finite positive number, else null (the shim re-checks bounds). */
+function num(v: unknown): number | null {
+  const n = typeof v === "number" ? v : typeof v === "string" ? parseFloat(v) : NaN;
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+export async function POST(req: NextRequest) {
+  let body: Record<string, unknown>;
+  try {
+    body = (await req.json()) as Record<string, unknown>;
+  } catch {
+    return NextResponse.json({ ok: false, error: "invalid JSON" }, { status: 400 });
+  }
+  const token = typeof body.token === "string" ? body.token : "";
+  if (!token || token.length < 16) {
+    return NextResponse.json({ ok: false, error: "invalid token" }, { status: 401 });
+  }
+  if (throttled(token)) {
+    return NextResponse.json({ ok: false, error: "too many updates today" }, { status: 429 });
+  }
+  const lookup = await resolveAppToken(token);
+  if (!lookup.ok) {
+    return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
+  }
+
+  try {
+    const out = (await runShim("save-app-body.py", {
+      client_id: lookup.client_id,
+      weight_kg: num(body.weight_kg),
+      waist_cm: num(body.waist_cm),
+      hip_cm: num(body.hip_cm),
+    })) as { ok?: boolean; measured_on?: string; error?: string };
+    if (!out.ok) {
+      return NextResponse.json({ ok: false, error: out.error ?? "save failed" }, { status: 400 });
+    }
+    return NextResponse.json({ ok: true, measured_on: out.measured_on });
+  } catch (err) {
+    console.error("[app-body] save failed:", err);
+    return NextResponse.json({ ok: false, error: "save failed" }, { status: 500 });
+  }
+}
