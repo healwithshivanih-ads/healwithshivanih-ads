@@ -790,6 +790,10 @@ interface LetterRecipe {
   title: string;
   serves?: string;
   time?: string;
+  /** recipe diet tags ('vegetarian'|'vegan'|'eggetarian'|'non_vegetarian'…) +
+   *  main ingredients — drive the per-client dietary safety filter */
+  diet?: string[];
+  mains?: string[];
   ingredients: string[];
   /** structured ingredients (library recipes only) — drive the cook-for-N
    *  scaler + the deterministic calorie fallback */
@@ -843,6 +847,8 @@ async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecip
           serves: asStr(r.servings) || undefined,
           servingsNum: Number(r.servings) || undefined,
           kcalPerServing: Number(r.kcal_per_serving) || undefined,
+          diet: asStrArr(r.diet),
+          mains: asStrArr(r.main_ingredients),
           time: mins ? `${mins} min` : undefined,
           ingredients,
           ingredientsStructured: ingStruct.length ? ingStruct : undefined,
@@ -1644,7 +1650,45 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // gaps via a STRICT name match (the letter pack was authored for these
   // exact dishes so loose matching is safe there — the library is 124
   // unrelated recipes, so a loose match would attach wrong methods).
-  const libraryRecipes = await loadLibraryRecipes();
+  const libraryRecipesAll = await loadLibraryRecipes();
+  // ── DIETARY SAFETY ────────────────────────────────────────────────────────
+  // A client must NEVER be shown a recipe outside their diet (the bug: an
+  // eggetarian saw "Chicken and vegetable poha" under "Vegetable poha"). Filter
+  // the WHOLE library to what this client can eat BEFORE any matching, recipe
+  // pack, or calorie pricing — one gate, applied everywhere downstream.
+  const dietPrefForRecipes = asStr(client.dietary_preference).toLowerCase();
+  const MEAT_RE = /\b(chicken|mutton|lamb|beef|pork|fish|prawn|shrimp|crab|seafood|\bmeat\b|keema|kheema|bacon|ham\b|turkey|egg whites?\b)\b/i;
+  const EGG_RE = /\begg(s|y)?\b|omelette|omelet|bhurji|shakshuka|frittata/i;
+  const JAIN_RE = /\b(onion|garlic|potato|aloo|ginger.?garlic|beetroot|radish|mooli|sweet potato|\byam\b|arbi|colocasia|shallot|spring onion|leek)\b/i;
+  // client tolerance: 0 vegan · 1 vegetarian · 2 eggetarian · 3 omnivore
+  const clientDietLevel = /vegan/.test(dietPrefForRecipes)
+    ? 0
+    : /egg/.test(dietPrefForRecipes) && !/no.?egg|egg.?free/.test(dietPrefForRecipes)
+      ? 2
+      : /non.?veg|pescat|fish|chicken|\bmeat\b|omnivore/.test(dietPrefForRecipes)
+        ? 3
+        : /vegetarian|jain|\bveg\b/.test(dietPrefForRecipes)
+          ? 1
+          : 3; // no/unknown preference → assume omnivore (don't over-filter)
+  const clientIsJain = /jain/.test(dietPrefForRecipes);
+  const recipeDietLevel = (r: LetterRecipe): number => {
+    const d = (r.diet ?? []).map((x) => x.toLowerCase());
+    const text = `${r.title} ${(r.mains ?? []).join(" ")} ${(r.ingredients ?? []).join(" ")}`;
+    if (d.some((x) => /non.?veg/.test(x)) || MEAT_RE.test(text)) return 3;
+    if (d.includes("eggetarian") || EGG_RE.test(text)) return 2;
+    if (d.includes("vegan")) return 0;
+    return 1; // vegetarian default
+  };
+  const recipeAllowed = (r: LetterRecipe): boolean => {
+    if (recipeDietLevel(r) > clientDietLevel) return false;
+    if (clientIsJain) {
+      const jt = `${r.title} ${(r.mains ?? []).join(" ")}`;
+      const negated = /no.?onion|no.?garlic|without (onion|garlic)|onion.?free|garlic.?free/i.test(jt);
+      if (JAIN_RE.test(jt) && !negated) return false;
+    }
+    return true;
+  };
+  const libraryRecipes = libraryRecipesAll.filter((l) => recipeAllowed(l.recipe));
   // recipe-name → accurate kcal/serving (drives per-meal calories + swap maths)
   const recipeKcalLookup = buildRecipeKcalLookup(
     libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
@@ -1668,7 +1712,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       const pt = libToks(pill);
       if (!pt.length) continue;
       const pk = libKey(pill);
-      let best: { r: LetterRecipe; hit: number } | undefined;
+      let best: { r: LetterRecipe; hit: number; slack: number } | undefined;
       for (const l of libraryRecipes) {
         const rt = libToks(l.recipe.title);
         if (!rt.length) continue;
@@ -1676,7 +1720,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         const rk = libKey(l.recipe.title);
         const extra = pt.filter((t) => !rk.includes(t)).length;
         const ok = (hit >= 2 && rt.length - hit <= 1 && extra <= 1) || (rt.length === 1 && hit === 1 && pt.length === 1);
-        if (ok && (!best || hit > best.hit)) best = { r: l.recipe, hit };
+        // slack = how far from an exact match (unmatched recipe tokens + extra
+        // dish tokens). Prefer more hits, then the CLOSEST title — so
+        // "Vegetable poha" wins over "Chicken and vegetable poha".
+        const slack = rt.length - hit + extra;
+        if (ok && (!best || hit > best.hit || (hit === best.hit && slack < best.slack))) best = { r: l.recipe, hit, slack };
       }
       if (best) return best.r;
     }
