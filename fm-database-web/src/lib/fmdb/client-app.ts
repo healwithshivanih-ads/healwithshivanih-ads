@@ -27,6 +27,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { stripBrand } from "@/lib/fmdb/supplement-display";
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
@@ -427,6 +428,10 @@ export interface ClientAppData {
      *  plan is and why this client is on it. Built from on-file conditions +
      *  eating pattern (no fabrication). */
     focus: { why: string; conditions: string[] };
+    /** the client's Ayurvedic assessment (when they have one) + a short,
+     *  client-friendly line on how the plan works with it. null when the
+     *  client isn't on the Ayurveda track. */
+    ayurveda: { constitution: string; imbalance?: string; how: string } | null;
     /** dietary highlights shown as chips, each optionally linked to a
      *  resource cheat-sheet (e.g. "Gluten-free" → hidden-sources sheet). */
     flags: { label: string; detail: string; resourceId?: string }[];
@@ -1153,6 +1158,8 @@ const SUPP_NAME_OVERRIDES: Record<string, string> = {
   methylfolate: "Methylfolate (5-MTHF)",
   "dpp-iv-enzyme": "DPP-IV Enzyme",
   "l-glutamine": "L-Glutamine",
+  "algae-oil-dha-epa": "Omega-3 (algae, vegetarian)",
+  "fish-oil-epa-dha": "Omega-3 (fish oil, EPA+DHA)",
 };
 
 function suppKey(name: string): string {
@@ -1418,12 +1425,30 @@ function clientifyWhy(raw: string): string {
   return s;
 }
 
+/** A short, MEANINGFUL timing chip. The old version split on " or "/" and "
+ *  and kept the first word, so "With or just before breakfast" collapsed to a
+ *  bare "With". Map to a clean canonical label off the dominant cue instead. */
 function shortTiming(timing: string): string {
-  const t = timing.replace(/\s+/g, " ").trim();
-  if (!t) return "With food";
-  const first = t.split(/[,(]|\bor\b|\band\b|\//)[0].trim();
-  const s = first.length > 2 ? first : t;
-  return s.charAt(0).toUpperCase() + s.slice(1, 28);
+  const t = ` ${timing.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/\s+/g, " ")} `;
+  if (/empty stomach|on an empty/.test(t)) return "Empty stomach";
+  if (/before breakfast|just before breakfast/.test(t)) return "Before breakfast";
+  if (/with breakfast|morning.{0,8}breakfast|breakfast/.test(t) && !/before breakfast/.test(t)) return "With breakfast";
+  if (/mid.?morning|between breakfast and lunch/.test(t)) return "Mid-morning";
+  if (/before meal|before each meal|before main meal|before food/.test(t)) return "Before meals";
+  if (/between meals/.test(t)) return "Between meals";
+  if (/with lunch/.test(t)) return "With lunch";
+  if (/\blunch\b|midday|\bnoon\b/.test(t)) return "Midday";
+  if (/mid.?afternoon|early afternoon|\bafternoon\b/.test(t)) return "Afternoon";
+  if (/with dinner|with evening meal|with evening|evening meal/.test(t)) return "With dinner";
+  if (/largest meal|main meal|biggest meal|fat.?containing|with a fat|with meals|with food|with a meal/.test(t)) return "With a meal";
+  if (/bedtime|before sleep|at night|\bnight\b/.test(t)) return "Bedtime";
+  if (/\bmorning\b/.test(t)) return "Morning";
+  if (/\bevening\b/.test(t)) return "Evening";
+  // fallback: the first clause, cleaned + capped
+  const first = timing.replace(/\([^)]*\)/g, "").split(/[,;]/)[0].trim();
+  if (!first) return "With food";
+  const s = first.charAt(0).toUpperCase() + first.slice(1);
+  return s.length > 30 ? `${s.slice(0, 28).trim()}…` : s;
 }
 
 // ── main loader ──────────────────────────────────────────────────────────────
@@ -1923,6 +1948,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     ingredients: r.ingredients,
     method: r.method,
     tip: r.tip,
+    imageUrl: r.imageUrl, // was dropped here → recipe cards never showed a photo
     ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
   }));
 
@@ -1998,7 +2024,12 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   for (let i = 0; i < protocol.length; i++) {
     const p = protocol[i];
     const slug = asStr(p.supplement_slug);
-    const name = SUPP_NAME_OVERRIDES[slug] ?? humanize(slug);
+    // Prefer the coach-set display_name (e.g. "Vegetarian Omega-3"), then a
+    // known override, then the humanised slug. Strip the brand prefix either
+    // way so clients see the supplement, not the seller — "Vitaone Magnesium
+    // Glycinate" → "Magnesium Glycinate", "vitaone-d3" → "D3". (Brand
+    // attribution belongs on the buy-link badge.)
+    const name = stripBrand(asStr(p.display_name) || SUPP_NAME_OVERRIDES[slug] || humanize(slug));
     const row = matchSupplementRow(name, suppRows);
     const timing = asStr(p.timing) || row?.when || "";
     const dose = asStr(p.dose);
@@ -2939,6 +2970,24 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       : "") +
     `You'll work through ${patternArticle} ${patternShort} way of eating, the supplements ${coachFirst} chose for you, and a few daily practices — each piece picked for your body, not a generic template.`;
 
+  // Ayurvedic assessment (only clients on the Ayurveda track have one) + a
+  // short client-friendly line on how the plan works with it. Pulled straight
+  // from the client's quiz-derived constitution + the plan's ayurveda block.
+  const ayurConstitution = prakrutiLabel.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  const ayurBalance = firstSentence(asStr(ayur.balancing_focus).replace(/\s+/g, " ")).trim();
+  const ayurDiet = firstSentence(asStr(ayur.dietary_guidance).replace(/\s+/g, " ")).trim();
+  const ayurHow = [ayurBalance, ayurDiet].filter(Boolean).join(" ");
+  const focusAyurveda =
+    (client.ayurveda_enabled === true || ayurConstitution) && ayurConstitution
+      ? {
+          constitution: ayurConstitution,
+          imbalance: asStr(ayurAssessment.vikruti_label).replace(/\s+/g, " ").trim() || undefined,
+          how:
+            ayurHow ||
+            `Your meals and routine are shaped to bring ${ayurConstitution} back into balance.`,
+        }
+      : null;
+
   // Dietary highlights → chips. NO hallucination: a food is only flagged as
   // "free" when the plan ELIMINATES it (replace/swap/instead, with no
   // "reduce to N/day" qualifier), or it's a declared preference / allergy /
@@ -3111,6 +3160,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       avoidWhy,
       cooking,
       focus: { why: focusWhy, conditions: focusConditions },
+      ayurveda: focusAyurveda,
       flags,
     },
     mealsNote: sampleWeekNote,

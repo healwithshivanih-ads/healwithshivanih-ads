@@ -454,7 +454,7 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
       <div className="supp-foot">
         <span className="stock">
           <Icon name="pill" size={13} />
-          {supp.buyLabel ?? "Shivani’s recommended brand"}
+          {supp.buyLabel ?? "Recommended brand"}
         </span>
         {supp.buyUrl && (
           <a className="reorder" href={supp.buyUrl} target="_blank" rel="noreferrer">
@@ -470,11 +470,34 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
  *  dietary highlights as tap-to-expand chips (some link to a cheat-sheet). */
 function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string }) => void }) {
   const { planRef } = useOchre();
-  const { focus, flags } = planRef;
+  const { focus, ayurveda, flags } = planRef;
   const [sel, setSel] = useState<number | null>(null);
   return (
     <div className="card" style={{ padding: "15px 16px", marginBottom: 14 }}>
       <div className="plan-why">{focus.why}</div>
+      {ayurveda && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "12px 13px",
+            background: "var(--forest-tint)",
+            borderRadius: 14,
+            borderLeft: "3px solid var(--forest)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
+            <Icon name="leaf" size={14} style={{ color: "var(--forest)" }} />
+            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 0.3, textTransform: "uppercase", color: "var(--forest-deep)" }}>
+              Your Ayurvedic assessment
+            </span>
+          </div>
+          <div style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.5 }}>
+            Constitution: <strong>{ayurveda.constitution}</strong>
+            {ayurveda.imbalance ? <> · {ayurveda.imbalance}</> : null}
+          </div>
+          <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginTop: 5 }}>{ayurveda.how}</div>
+        </div>
+      )}
       {flags.length > 0 && (
         <>
           <div className="flag-row">
@@ -540,7 +563,7 @@ export function PlanScreen({
       <Section title="Your supplements">
         <PlanSupplements />
         <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-          Reorder links go to {pr.authoredBy.split(" ")[0]}’s recommended brands. Tap any supplement for the why.
+          Reorder links go to recommended brands. Tap any supplement for the why.
         </div>
 
         <button className="log-all" style={{ marginTop: 12 }} onClick={onLogAll}>

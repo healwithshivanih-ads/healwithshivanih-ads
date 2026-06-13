@@ -73,6 +73,9 @@ const PUBLIC_PATH_PREFIXES = [
   // Static PWA assets for the client app (manifest + home-screen icons,
   // served from public/ochre-app/). No data, safe to serve publicly.
   "/ochre-app/",
+  // Recipe photos shown in the client app's recipe cards (public/recipe-images/).
+  // Generic food images, no PHI — safe to serve publicly.
+  "/recipe-images/",
   // Public client handouts — short branded 1-page guides (iron, thyroid,
   // blood sugar, …) dripped to clients on a schedule. Static HTML served
   // from public/handouts/<slug>.html. Generic educational content, safe to
