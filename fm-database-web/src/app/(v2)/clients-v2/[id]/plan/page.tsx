@@ -56,6 +56,7 @@ import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
 import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { QuickEditSupplementsPanel } from "./quick-edit-supplements-panel";
+import { QuickEditPracticesPanel } from "./quick-edit-practices-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 import { SendEducationPackButton } from "@/components/client-widgets/send-education-pack-button";
@@ -459,6 +460,20 @@ export default async function PlanTabPage({
       )
     : [];
 
+  // Rows for the in-place QuickEditPracticesPanel (published plans only) —
+  // add / rename / retime / remove a daily practice without rebuilding the
+  // plan, and flag near-duplicates the generators may have appended.
+  const quickEditPracticeRows = ((activePlan?.lifestyle_practices as
+    | Array<Record<string, unknown>>
+    | undefined) ?? [])
+    .filter((it): it is Record<string, unknown> => !!it && typeof it === "object")
+    .map((it) => ({
+      name: (it.name as string | undefined) ?? "",
+      cadence: (it.cadence as string | undefined) ?? "",
+      details: (it.details as string | undefined) ?? "",
+    }))
+    .filter((it) => it.name);
+
   // Lab orders split into "new" (order now) and "repeat" (re-check on file).
   // Pre-AI plans didn't have `kind`; default to "new" for backward compat.
   function labKind(it: Record<string, unknown>): "new" | "repeat" {
@@ -707,6 +722,12 @@ export default async function PlanTabPage({
           <AppPreviewPanel
             clientId={id}
             quickEdit={{ planSlug: activePlan.slug as string, rows: quickEditSupplementRows }}
+          />
+          {/* Daily practices the client sees in the app — add / rename /
+              retime / remove in place, with near-duplicate flagging. */}
+          <QuickEditPracticesPanel
+            planSlug={activePlan.slug as string}
+            practices={quickEditPracticeRows}
           />
           {/* Grocery generate button removed 2026-06-13 — grocery lists are
               auto-refreshed when a menu goes live (approveWeekMenuAction), so

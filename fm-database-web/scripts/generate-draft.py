@@ -103,6 +103,47 @@ def _apply_brand_map(slug: str, brand_map: dict[str, str]) -> str:
     return brand_map.get(slug, slug)
 
 
+_PRACTICE_FILLERS = {
+    "the", "a", "an", "or", "and", "of", "to", "per", "every", "after", "before",
+    "min", "mins", "minute", "minutes", "x", "daily", "nightly", "times", "time",
+    "week", "weekly", "day", "with", "your", "for", "on",
+}
+
+
+def _practice_tokens(name: str) -> set:
+    """Meaningful content words of a practice name (drops parentheticals, a
+    trailing '— rationale', punctuation and filler words)."""
+    import re
+    s = (name or "").lower()
+    s = re.sub(r"\(.*?\)", " ", s)
+    s = re.sub(r"[—–-]\s.*$", " ", s)
+    s = re.sub(r"[^a-z0-9 ]", " ", s)
+    return {t for t in s.split() if len(t) > 1 and t not in _PRACTICE_FILLERS}
+
+
+def _dedupe_practices(practices):
+    """Remove practices that re-state another. A practice is redundant when its
+    meaningful tokens are a SUBSET of another's (keep the more specific one) or
+    an exact token match (keep the first). Conservative — needs >=2 meaningful
+    tokens to be eligible, so distinct practices are never collapsed. Returns
+    (kept, dropped)."""
+    toks = [(_practice_tokens(getattr(p, "name", "") or ""), p) for p in practices]
+    kept, dropped = [], []
+    for i, (ti, pi) in enumerate(toks):
+        if len(ti) < 2:
+            kept.append(pi)
+            continue
+        redundant = False
+        for j, (tj, pj) in enumerate(toks):
+            if i == j:
+                continue
+            if ti <= tj and (len(tj) > len(ti) or (len(tj) == len(ti) and j < i)):
+                redundant = True
+                break
+        (dropped if redundant else kept).append(pi)
+    return kept, dropped
+
+
 def main() -> int:
     raw = sys.stdin.read()
     try:
@@ -771,6 +812,15 @@ def main() -> int:
             ))
     except Exception:
         pass
+
+    # Drop near-duplicate practices the AI sometimes emits as two separate
+    # suggestions ("10-minute post-meal walk" + "10-min walk after every
+    # meal"). Conservative: only removes a practice whose meaningful words are
+    # a SUBSET of another's (a re-statement); keeps the more specific one.
+    plan.lifestyle_practices, _dropped_practices = _dedupe_practices(plan.lifestyle_practices)
+    if _dropped_practices:
+        print(f"[generate-draft] dropped {len(_dropped_practices)} duplicate practice(s): "
+              f"{[getattr(p, 'name', '') for p in _dropped_practices]}", file=sys.stderr)
 
     path = plan_storage.write_plan(root, plan)
 

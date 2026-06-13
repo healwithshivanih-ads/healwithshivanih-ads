@@ -324,6 +324,142 @@ export async function quickEditActivePlanSupplement(
   }
 }
 
+export interface QuickPracticeEdit {
+  /** add a brand-new practice */
+  add?: boolean;
+  /** row position in lifestyle_practices for edit/remove */
+  index?: number;
+  /** optimistic-concurrency guard: the name we rendered at that index */
+  originalName?: string;
+  name?: string;
+  cadence?: string;
+  details?: string;
+  remove?: boolean;
+  reason?: string;
+}
+
+/**
+ * quickEditActivePlanPractice — in-place add / edit / remove of a single
+ * lifestyle practice on a PUBLISHED plan, same posture as the supplement
+ * quick-edit above. Published plans are otherwise frozen; this is the
+ * everyday "fix a duplicate / tweak the wording / drop one" path so the
+ * coach isn't forced through createSuccessor→publish→supersede for a small
+ * change. Mutates the published YAML in place, appends a status_history
+ * audit line, bumps updated_at. The companion app + letters read the live
+ * plan, so the change flows through on the next load.
+ *
+ * Practices have no stable slug, so edit/remove target a row INDEX with an
+ * originalName guard — if the list shifted under us (another edit landed),
+ * we refuse rather than touch the wrong row.
+ */
+export async function quickEditActivePlanPractice(
+  planSlug: string,
+  edit: QuickPracticeEdit,
+): Promise<{ ok: true; changed: boolean } | { ok: false; error: string }> {
+  if (!planSlug) return { ok: false, error: "planSlug required" };
+
+  try {
+    const root = getPlansRoot();
+    const dir = path.join(root, "published");
+    const names = await fs.readdir(dir).catch(() => [] as string[]);
+    const match = names.find(
+      (n) => n.startsWith(`${planSlug}-v`) && n.endsWith(".yaml"),
+    );
+    if (!match) {
+      return { ok: false, error: `No published plan found matching slug ${planSlug}.` };
+    }
+    const planPath = path.join(dir, match);
+    const raw = await fs.readFile(planPath, "utf-8");
+    const { default: yaml } = await import("js-yaml");
+    const data = (yaml.load(raw) as Record<string, unknown>) ?? {};
+    const practices =
+      (data.lifestyle_practices as Array<Record<string, unknown>>) ?? [];
+
+    let summary: string;
+
+    if (edit.add) {
+      const name = (edit.name ?? "").trim();
+      if (!name) return { ok: false, error: "A practice name is required." };
+      practices.push({
+        name,
+        cadence: (edit.cadence ?? "").trim() || "daily",
+        details: (edit.details ?? "").trim(),
+      });
+      data.lifestyle_practices = practices;
+      summary = `Added practice: ${name}`;
+    } else {
+      const idx = edit.index ?? -1;
+      if (idx < 0 || idx >= practices.length) {
+        return { ok: false, error: "That practice is no longer there — refresh and try again." };
+      }
+      const item = practices[idx];
+      // Optimistic guard: the row at idx must still be the one we rendered.
+      if (
+        edit.originalName !== undefined &&
+        (item.name as string | undefined) !== edit.originalName
+      ) {
+        return {
+          ok: false,
+          error: "The practices list changed since you opened it — refresh and try again.",
+        };
+      }
+
+      if (edit.remove) {
+        practices.splice(idx, 1);
+        data.lifestyle_practices = practices;
+        summary = `Removed practice: ${edit.originalName ?? (item.name as string) ?? `#${idx}`}`;
+      } else {
+        const changes: string[] = [];
+        const newName = edit.name?.trim();
+        const newCadence = edit.cadence?.trim();
+        const newDetails = edit.details?.trim();
+        if (newName !== undefined && newName !== "" && newName !== item.name) {
+          changes.push(`name "${item.name ?? "—"}" → "${newName}"`);
+          item.name = newName;
+        }
+        if (newCadence !== undefined && newCadence !== item.cadence) {
+          changes.push(`cadence "${item.cadence ?? "—"}" → "${newCadence}"`);
+          item.cadence = newCadence;
+        }
+        if (newDetails !== undefined && newDetails !== item.details) {
+          changes.push("details edited");
+          item.details = newDetails;
+        }
+        if (changes.length === 0) return { ok: true, changed: false };
+        summary = `Adjusted practice "${item.name}" — ${changes.join("; ")}`;
+      }
+    }
+
+    data.updated_at = new Date().toISOString();
+    const history = (data.status_history as Array<Record<string, unknown>>) ?? [];
+    history.push({
+      state: "published",
+      by: process.env.FMDB_USER || "shivani",
+      at: new Date().toISOString(),
+      reason: `Quick edit — ${summary}${edit.reason ? ` — ${edit.reason}` : ""}`,
+    });
+    data.status_history = history;
+
+    await fs.writeFile(
+      planPath,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf-8",
+    );
+
+    const clientId = (data.client_id as string | undefined) ?? "";
+    if (clientId) {
+      revalidatePath(`/clients-v2/${clientId}`);
+      revalidatePath(`/clients-v2/${clientId}/plan`);
+      revalidatePath(`/clients-v2/${clientId}/reference`);
+      revalidatePath(`/clients-v2/${clientId}/communicate`);
+    }
+    revalidatePath(`/plans/${planSlug}`);
+    return { ok: true, changed: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 /** Look up client info for a freshly-published plan, then fire the
  *  follow-up sends. Separate function so the publishPlan happy-path
  *  stays linear and easy to read. */
