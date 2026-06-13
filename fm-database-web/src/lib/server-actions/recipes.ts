@@ -85,6 +85,31 @@ export async function generateWeekRecipesAction(
   )) as { ok: boolean; error?: string; count?: number };
 
   if (!out?.ok) return { ok: false, error: out?.error ?? "generate-week-recipes.py failed" };
+
+  // The app's recipe pack is send-log gated (only ISSUED letters feed it).
+  // Record a `recipes` send entry for THIS published slug so the freshly
+  // written <slug>-recipes.md is treated as live. Dedup so re-approval
+  // doesn't bloat the log.
+  await recordRecipesIssued(clientId, planSlug).catch(() => {});
+
   revalidatePath(`/clients-v2/${clientId}`);
   return { ok: true, count: out.count, generatedAt: new Date().toISOString() };
+}
+
+/** Append a `{letter_types:[recipes], plan_slug}` entry to the client's
+ *  meal-plans/_send_log.yaml so isSentFile() lets the app read the
+ *  <slug>-recipes.md sidecar. Idempotent per (plan_slug, recipes). */
+async function recordRecipesIssued(clientId: string, planSlug: string): Promise<void> {
+  const file = path.join(getPlansRoot(), "clients", clientId, "meal-plans", "_send_log.yaml");
+  let log: Array<{ plan_slug?: string; letter_types?: string[] }> = [];
+  try {
+    log = (yaml.load(await fs.readFile(file, "utf-8")) as typeof log) || [];
+  } catch {
+    log = [];
+  }
+  if (log.some((e) => e.plan_slug === planSlug && (e.letter_types || []).includes("recipes"))) return;
+  log.push({ plan_slug: planSlug, letter_types: ["recipes"], sent_at: new Date().toISOString() } as never);
+  const tmp = `${file}.tmp-${process.pid}`;
+  await fs.writeFile(tmp, yaml.dump(log, { sortKeys: false, lineWidth: 200 }), "utf-8");
+  await fs.rename(tmp, file);
 }
