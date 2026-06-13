@@ -28,7 +28,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
-import { estimateDayKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
+import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
@@ -38,6 +38,8 @@ export interface AppMeal {
   glyph: string;
   pills: string[];
   note?: string;
+  /** estimated calories for this meal (recipe-accurate where matched) */
+  kcal?: number;
   /** dish is a classic Ayurvedic preparation → "Ayurveda recommends" badge */
   ayurveda?: boolean;
 }
@@ -128,7 +130,7 @@ export interface AppMealExtra {
   serves?: string;
   ingredients: string[];
   recipe: string[];
-  swaps: { name: string; note: string }[];
+  swaps: { name: string; note: string; kcal?: number }[];
 }
 
 export interface AppSupplement {
@@ -1643,6 +1645,14 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // exact dishes so loose matching is safe there — the library is 124
   // unrelated recipes, so a loose match would attach wrong methods).
   const libraryRecipes = await loadLibraryRecipes();
+  // recipe-name → accurate kcal/serving (drives per-meal calories + swap maths)
+  const recipeKcalLookup = buildRecipeKcalLookup(
+    libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
+  );
+  const dishKcal = (dish: string): number | undefined => {
+    const k = estimateDishKcal(dish, recipeKcalLookup);
+    return k > 0 ? k : undefined;
+  };
   const pinnedSlugs = new Set(
     (asArr((plan.nutrition as Dict | undefined)?.recipes) as unknown[]).map((s) => String(s)),
   );
@@ -1898,10 +1908,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
                 : "bowl"),
         pills,
         note: slotNote(slotL),
+        kcal: dishKcal(cell),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
       });
       const rec = recipeFor(pills[0] ?? cell);
-      const swaps: { name: string; note: string }[] = [];
+      const swaps: { name: string; note: string; kcal?: number }[] = [];
       const seen = new Set<string>([cell]);
       // coach-approved swaps = the other dishes this plan serves in the SAME slot
       for (const wt of weekTables) {
@@ -1910,7 +1921,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         for (const c of r2.cells) {
           if (!c || seen.has(c) || swaps.length >= 3) continue;
           seen.add(c);
-          swaps.push({ name: c, note: `On your plan — week ${wt.week} rotation` });
+          swaps.push({ name: c, note: `On your plan — week ${wt.week} rotation`, kcal: dishKcal(c) });
         }
       }
       mealExtra[slotName] = {
@@ -3183,15 +3194,12 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     let estimatedDailyKcal: number | null = null;
     let adherence: "on_track" | "high" | "low" | null = null;
     if (curWeek && curWeek.days.length) {
-      // recipes carry accurate AI-computed kcal/serving — let the estimator
-      // use those for any dish that matches one, table only for the rest
-      const recipeLookup = buildRecipeKcalLookup(
-        libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
-      );
+      // recipes carry accurate AI-computed kcal/serving — the shared
+      // recipeKcalLookup uses those for matched dishes, table for the rest
       const dayTotals = curWeek.days.map((d) =>
         estimateDayKcal(
           d.slots.filter((s) => !/bedtime/i.test(s.slot)).map((s) => s.dish),
-          recipeLookup,
+          recipeKcalLookup,
         ),
       );
       const filled = dayTotals.filter((v) => v > 0);

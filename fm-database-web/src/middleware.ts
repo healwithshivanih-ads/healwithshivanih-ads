@@ -70,6 +70,7 @@ const PUBLIC_PATH_PREFIXES = [
   "/api/app-copilot",
   "/api/app-travel",
   "/api/app-body",
+  "/api/app-swap",
   // Static PWA assets for the client app (manifest + home-screen icons,
   // served from public/ochre-app/). No data, safe to serve publicly.
   "/ochre-app/",

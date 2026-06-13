@@ -18,7 +18,36 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
   const ex = data.mealExtra[slot];
   const [swapOpen, setSwapOpen] = useState(false);
   const [chosen, setChosen] = useState<number | null>(null);
+  const [swapSaving, setSwapSaving] = useState(false);
   if (!meal) return null;
+
+  // the meal's calories follow the swap once one is picked
+  const effKcal = chosen != null ? ex?.swaps[chosen]?.kcal ?? meal.kcal : meal.kcal;
+
+  const pickSwap = async (i: number) => {
+    setChosen(i);
+    const to = ex?.swaps[i];
+    if (!to) return;
+    setSwapSaving(true);
+    try {
+      await fetch("/api/app-swap", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          token: data.token,
+          slot,
+          from_dish: meal.pills.join(" + "),
+          to_dish: to.name,
+          from_kcal: meal.kcal ?? null,
+          to_kcal: to.kcal ?? null,
+          date: data.today?.dateLabel ? undefined : undefined,
+        }),
+      });
+    } catch {
+      /* swap still shows locally even if the note didn't save */
+    }
+    setSwapSaving(false);
+  };
 
   return (
     <div className="overlay-scroll">
@@ -61,14 +90,19 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
           </div>
         </div>
 
-        {(ex?.mins || ex?.serves) && (
+        {(ex?.mins || ex?.serves || effKcal) && (
           <div className="macro-row">
-            {ex.serves && (
+            {effKcal ? (
+              <span className="macro">
+                <b>~{effKcal} kcal</b>
+              </span>
+            ) : null}
+            {ex?.serves && (
               <span className="macro">
                 <b>Serves {ex.serves.replace(/serves/i, "").trim()}</b>
               </span>
             )}
-            {ex.mins && (
+            {ex?.mins && (
               <span className="macro">
                 <Icon name="clock" size={13} /> {ex.mins}
               </span>
@@ -155,17 +189,21 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
                 <div className="swap-inner">
                   <div className="swap-hint">Approved alternatives from your own plan — same slot, same shape of plate:</div>
                   {ex.swaps.map((s, i) => (
-                    <button key={i} className={"swap-opt" + (chosen === i ? " on" : "")} onClick={() => setChosen(i)}>
+                    <button key={i} className={"swap-opt" + (chosen === i ? " on" : "")} onClick={() => void pickSwap(i)}>
                       <span className="check-sq2">{chosen === i && <Icon name="checkBold" size={13} style={{ color: "#fff" }} />}</span>
                       <span style={{ flex: 1, textAlign: "left" }}>
-                        <span className="so-name">{s.name}</span>
+                        <span className="so-name">
+                          {s.name}
+                          {s.kcal ? <span style={{ color: "var(--muted)", fontWeight: 400 }}> · ~{s.kcal} kcal</span> : null}
+                        </span>
                         <span className="so-note">{s.note}</span>
                       </span>
                     </button>
                   ))}
                   {chosen != null && (
                     <div className="swap-done">
-                      <Icon name="check" size={15} /> Swapped for today. Mention it at your weekly check-in.
+                      <Icon name="check" size={15} />{" "}
+                      {swapSaving ? "Saving your swap…" : `Swapped — ${data.coach.name.split(" ")[0]} will see it. Your meal is now ~${effKcal ?? "?"} kcal.`}
                     </div>
                   )}
                 </div>

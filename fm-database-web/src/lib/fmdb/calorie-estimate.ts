@@ -223,10 +223,15 @@ export function estimateComponentKcal(raw: string, recipeLookup?: RecipeKcalLook
     return 0;
   }
 
-  // count: leading "2 ", "(2)", "x2"
+  // count of PIECES — "dosa (2)", "2 idli", "x2". A number followed by a
+  // weight/volume/measure unit ("paneer (75 g)", "1 cup", "30 ml") is a
+  // quantity, NOT a count, so it must not multiply the base.
+  const UNIT = /^(?:g|gm|gms|gram|grams|kg|ml|l|oz|cup|cups|tbsp|tbsps|tsp|tsps|tablespoons?|teaspoons?|bowl|bowls|glass|katori|piece|pieces|slice|slices|inch|cm|handful)\b/;
   let count = 1;
-  const cm = t.match(/(?:^|\s)\(?(\d{1,2})\)?\s*(?:x\s*)?(?=[a-z])/) || t.match(/\((\d{1,2})\)/) || t.match(/x\s*(\d{1,2})/);
-  if (cm) count = Math.min(8, Math.max(1, parseInt(cm[1], 10)));
+  const paren = t.match(/\((\d{1,2})\)/); // "(2)" exactly — no unit inside
+  const lead = t.match(/(?:^|\s)(\d{1,2})\s+([a-z]+)/);
+  if (paren) count = Math.min(6, Math.max(1, parseInt(paren[1], 10)));
+  else if (lead && !UNIT.test(lead[2])) count = Math.min(6, Math.max(1, parseInt(lead[1], 10)));
 
   // size multiplier
   let size = 1;
