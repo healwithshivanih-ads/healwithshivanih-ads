@@ -13,6 +13,7 @@ import { SendBookingLinkPanel } from "@/components/client-widgets/send-booking-l
 import { WhatsAppThreadPanel } from "@/components/client-widgets/whatsapp-thread-panel";
 import { FmPanel } from "@/components/fm";
 import { SendAppLinkButton } from "../send-app-link-button";
+import { VoiceNoteSender } from "../voice-note-sender";
 // GeneratedLettersPanel was mounted here briefly to surface the meal plan
 // inline with a chat. Removed 2026-05-15 — SendPackageButton already
 // renders a preview + the same discuss→finalise refinement chat per
@@ -148,6 +149,12 @@ export function CommunicateClient({
             displayName={displayName}
             existingToken={appToken}
           />
+        )}
+
+        {/* 🎙 Voice note — personal audio from the brand number, via the WA
+            server /api/send type:audio path. Within the 24h window only. */}
+        {whatsappConfigured && (
+          <VoiceNoteSender clientId={clientId} displayName={displayName} />
         )}
 
         {/* Cal.com booking link — free-text WhatsApp send via 24h window.

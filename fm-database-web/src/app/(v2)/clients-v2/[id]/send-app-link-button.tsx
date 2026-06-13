@@ -52,6 +52,8 @@ export function SendAppLinkButton({ clientId, mobileNumber, displayName, existin
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sentOk, setSentOk] = useState(false);
 
   const url = token ? buildPublicUrl(`/app/${token}`) : null;
 
@@ -81,6 +83,23 @@ export function SendAppLinkButton({ clientId, mobileNumber, displayName, existin
     }
   };
 
+  const sendViaApi = async () => {
+    if (!token) return;
+    setSending(true);
+    setError("");
+    setSentOk(false);
+    try {
+      const { sendAppInviteLinkAction } = await import("@/lib/server-actions/app-invite");
+      const out = await sendAppInviteLinkAction(clientId, token);
+      if (out.ok) setSentOk(true);
+      else setError(out.error ?? "send failed");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "send failed");
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <FmPanel title="📲 Client app" subtitle="The Ochre Tree — their plan as a daily companion app">
       {!token ? (
@@ -107,7 +126,12 @@ export function SendAppLinkButton({ clientId, mobileNumber, displayName, existin
           >
             {url}
           </code>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            {mobileNumber && (
+              <button className="fm-btn" onClick={sendViaApi} disabled={sending}>
+                {sending ? "Sending…" : sentOk ? "📨 Resend invite" : "📨 Send via WhatsApp"}
+              </button>
+            )}
             <button className="fm-btn" onClick={copy}>
               {copied ? "✓ Copied" : "📋 Copy link"}
             </button>
@@ -118,12 +142,15 @@ export function SendAppLinkButton({ clientId, mobileNumber, displayName, existin
                 target="_blank"
                 rel="noreferrer"
               >
-                💬 Send via WhatsApp
+                💬 Open in app (manual)
               </a>
             )}
+            {sentOk && <span style={{ color: "#2f7a3f", fontWeight: 600, fontSize: 13 }}>✓ Sent</span>}
           </div>
           <div style={{ fontSize: 12, color: "var(--fm-muted, #6f6a5d)" }}>
-            Stable client link — stays the same after plan updates. Share once, works forever.
+            📨 Send via WhatsApp uses your brand number + the approved template and logs to the chat
+            thread. 💬 Open in app hands off to your own WhatsApp instead. Stable link — stays the
+            same after plan updates.
           </div>
         </div>
       )}

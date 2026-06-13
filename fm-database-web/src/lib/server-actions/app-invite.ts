@@ -31,16 +31,34 @@ export async function sendAppInviteAction(
   clientId: string,
   planSlug: string,
 ): Promise<{ ok: boolean; error?: string }> {
-  if (!process.env.WHATSAPP_SERVER_URL) {
-    return { ok: false, error: "WhatsApp server not configured" };
-  }
   const tok = await ensureLetterToken(planSlug);
   if (!tok.ok || !tok.token) {
     return { ok: false, error: tok.ok ? "no token" : tok.error };
   }
+  return sendAppInviteLinkAction(clientId, tok.token);
+}
+
+/**
+ * Send the app invite using a specific /app token (the per-client stable
+ * app_token, or a plan letter_token — both resolve to /app). The public
+ * URL is built server-side from NEXT_PUBLIC_APP_URL so a client-passed
+ * value can never leak a localhost link into the WhatsApp message.
+ *
+ * This is what the per-client "📨 Send via WhatsApp" button on the
+ * Communicate tab calls — sending through the brand Cloud-API number via
+ * the approved fm_app_invite_v1 template (NOT a wa.me hand-off).
+ */
+export async function sendAppInviteLinkAction(
+  clientId: string,
+  appToken: string,
+): Promise<{ ok: boolean; error?: string }> {
+  if (!process.env.WHATSAPP_SERVER_URL) {
+    return { ok: false, error: "WhatsApp server not configured" };
+  }
+  if (!appToken) return { ok: false, error: "no token" };
   const origin = (process.env.NEXT_PUBLIC_APP_URL || "").trim().replace(/\/$/, "");
   if (!origin) return { ok: false, error: "NEXT_PUBLIC_APP_URL not set" };
-  const url = `${origin}/app/${tok.token}`;
+  const url = `${origin}/app/${appToken}`;
 
   const clients = (await loadAllClients()) as {
     client_id?: string;

@@ -310,6 +310,92 @@ export async function sendAndRecordOutboundAction(input: {
   }
 }
 
+// ── Voice note (audio) send ──────────────────────────────────────────────────
+//
+// Sends an audio file as a WhatsApp voice note via the WA server's /api/send
+// `type:audio` path (deployed 2026-06-13). The audio is passed inline as
+// base64 — the WA server uploads it to a Meta media id and sends. Free-text:
+// only delivers inside the 24h service window (client must have messaged in
+// the last 24h), else the server returns outside_service_window which we
+// surface plainly. OGG/Opus renders as a true voice-note bubble; other formats
+// play as an audio attachment.
+//
+// On success we record a "🎙 Voice note" marker into the chat thread so the
+// send is visible like every other outbound (send-buttons-persist-state rule).
+
+export async function sendVoiceNoteAction(input: {
+  clientId: string;
+  audioBase64: string; // raw base64 (no data: prefix)
+  audioMimeType: string; // e.g. "audio/ogg", "audio/mp4"
+}): Promise<{ ok: boolean; error?: string }> {
+  if (!input.clientId) return { ok: false, error: "clientId required" };
+  if (!input.audioBase64) return { ok: false, error: "No audio provided" };
+  if (!isWhatsappConfigured()) {
+    return {
+      ok: false,
+      error: "WhatsApp not configured. Set WHATSAPP_SERVER_URL + WHATSAPP_SERVER_API_KEY in .env.local.",
+    };
+  }
+
+  const clients = (await loadAllClients()) as Array<{
+    client_id?: string;
+    display_name?: string;
+    mobile_number?: string;
+  }>;
+  const client = clients.find((c) => c.client_id === input.clientId);
+  if (!client) return { ok: false, error: `Client not found: ${input.clientId}` };
+  const phone = (client.mobile_number || "").trim();
+  if (!phone) return { ok: false, error: "No mobile number on file for this client" };
+
+  const body = {
+    phone,
+    name: client.display_name,
+    type: "audio",
+    audioBase64: input.audioBase64,
+    audioMimeType: input.audioMimeType || "audio/ogg",
+    origin: "api",
+    originRef: "fm-coach",
+  };
+
+  try {
+    const res = await fetch(`${WA_SERVER_URL}/api/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-api-key": WA_SERVER_API_KEY },
+      body: JSON.stringify(body),
+    });
+    const json = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      code?: string;
+    };
+    if (!res.ok || json.ok === false) {
+      const detail = json.error ?? `HTTP ${res.status}`;
+      const friendly =
+        json.code === "outside_service_window" ||
+        json.code === "131047" ||
+        /re-engagement|24.hour|service.window/i.test(detail)
+          ? "24-hour reply window closed — the client must message you first (a real reply), then send the voice note within 24h."
+          : `WhatsApp server: ${detail}`;
+      return { ok: false, error: friendly };
+    }
+  } catch (err) {
+    const e = err as { message?: string };
+    return { ok: false, error: e.message ?? "Network error calling WhatsApp server" };
+  }
+
+  // Record into the chat thread (never block the send return on the audit).
+  try {
+    await recordOutboundMessageAction({
+      clientId: input.clientId,
+      templateName: "(voice note)",
+      renderedBody: "🎙 Voice note",
+    });
+  } catch {
+    /* audit-only; send already succeeded */
+  }
+  return { ok: true };
+}
+
 // ── Chat thread loader (combines inbound + outbound for a client) ────────────
 
 export interface ChatThreadMessage {
