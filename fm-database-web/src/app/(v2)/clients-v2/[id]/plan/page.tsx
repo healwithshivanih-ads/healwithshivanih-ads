@@ -57,8 +57,6 @@ import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
 import { QuickEditSupplementsPanel } from "./quick-edit-supplements-panel";
 import { FollowUpPanel } from "./follow-up-panel";
-import { PhaseLetterPanel } from "./phase-letter-panel";
-import { PlanOutcomesPanel } from "./plan-outcomes-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
 import { SendEducationPackButton } from "@/components/client-widgets/send-education-pack-button";
 // GeneratedLettersPanel moved to Communicate tab — see plan/page.tsx
@@ -69,7 +67,6 @@ import { loadAllOfKind } from "@/lib/fmdb/loader";
 import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
 import { PlanConflictPanel } from "./plan-conflict-panel";
 import { AppPreviewPanel } from "../app-preview-panel";
-import { GroceryPanel } from "../grocery-panel";
 import { SendAppLinkButton } from "../send-app-link-button";
 
 export const dynamic = "force-dynamic";
@@ -604,31 +601,9 @@ export default async function PlanTabPage({
   const notesForCoach = (activePlan?.notes_for_coach as string | undefined) ?? "";
   const planPeriodWeeks = activePlan?.plan_period_weeks;
   // Plan timeline dates — already on disk, surfaced here so the coach can
-  // see when the AI generated the draft / when it went live / when the
-  // last edit landed without inspecting the YAML directly.
-  function fmtDateOnly(s: string | undefined): string | undefined {
-    if (!s) return undefined;
-    try {
-      const d = new Date(s);
-      if (Number.isNaN(d.getTime())) return s;
-      return d.toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      });
-    } catch {
-      return s;
-    }
-  }
-  const planCreatedAt = fmtDateOnly(activePlan?.created_at as string | undefined);
-  const planUpdatedAt = fmtDateOnly(activePlan?.updated_at as string | undefined);
-  // first "published" entry in status_history → when the plan went live
-  const publishedEvent = (
-    (activePlan?.status_history as Array<Record<string, unknown>> | undefined) ?? []
-  ).find((ev) => ev.state === "published");
-  const planPublishedAt = fmtDateOnly(
-    publishedEvent?.at as string | undefined,
-  );
+  // (Plan date meta — Generated / Published / Updated — was surfaced here
+  // and rendered in the plan header card. Removed 2026-06-13: it duplicated
+  // the workflow banner + the Status history panel.)
   const planPeriodStart = activePlan?.plan_period_start;
   const supersedes = activePlan?.supersedes as string | undefined;
   const statusHistory =
@@ -701,6 +676,25 @@ export default async function PlanTabPage({
         <PlanConflictPanel clientId={id} conflicts={planConflicts} />
       )}
 
+      {/* 📝 Notes for coach — pulled to the TOP (2026-06-13 coach request).
+          This is the clinical reasoning behind the plan; it frames everything
+          below. Markdown-aware renderer (FmCoachNotes) sections it cleanly.
+          Private — never appears on client letters. */}
+      {activePlan && notesForCoach.trim() && (
+        <div style={{ marginTop: 14 }}>
+          <FmPanel
+            title="📝 Notes for coach"
+            subtitle="Your clinical reasoning for this plan · private — never appears on client letters."
+          >
+            <FmCoachNotes
+              text={notesForCoach}
+              planSlug={activePlan.slug}
+              catalogue={catalogueChips}
+            />
+          </FmPanel>
+        </div>
+      )}
+
       {/* ── Plan & App studio (Option A, 2026-06-12) ──────────────────────
           THE home for everything the client receives: the live app preview
           with editable menu, remedies (flagged suggestions + library-add),
@@ -714,7 +708,10 @@ export default async function PlanTabPage({
             clientId={id}
             quickEdit={{ planSlug: activePlan.slug as string, rows: quickEditSupplementRows }}
           />
-          <GroceryPanel clientId={id} planSlug={activePlan.slug as string} />
+          {/* Grocery generate button removed 2026-06-13 — grocery lists are
+              auto-refreshed when a menu goes live (approveWeekMenuAction), so
+              the manual generate had no relevance for detailed app plans and
+              none for the others. */}
           {/* App SHARE link moved to the Communicate tab (2026-06-12) —
               sharing is communication; the Plan tab edits content. */}
         </div>
@@ -855,7 +852,7 @@ export default async function PlanTabPage({
                     gap: 8,
                   }}
                 >
-                  🗂 {activePlan.slug}
+                  🗂 What this plan addresses
                 </span>
               }
               subtitle={
@@ -879,26 +876,11 @@ export default async function PlanTabPage({
                 </div>
               }
             >
-              {(planCreatedAt || planPublishedAt || planUpdatedAt) && (
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: "var(--fm-text-tertiary)",
-                    marginBottom: 10,
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: 10,
-                  }}
-                >
-                  {planCreatedAt && <span>Generated {planCreatedAt}</span>}
-                  {planPublishedAt && (
-                    <span>· Published {planPublishedAt}</span>
-                  )}
-                  {planUpdatedAt && planUpdatedAt !== planCreatedAt && (
-                    <span>· Updated {planUpdatedAt}</span>
-                  )}
-                </div>
-              )}
+              {/* Date meta row (Generated / Published / Updated) removed
+                  2026-06-13 — duplicated the workflow banner + the Status
+                  history panel in the right rail. The slug, status and
+                  version are likewise shown there; this card now carries only
+                  what's plan-specific: the conditions + symptoms it covers. */}
               {supersedes && (
                 <div
                   style={{
@@ -1039,43 +1021,46 @@ export default async function PlanTabPage({
               }
             />
 
-            {/* Referrals */}
+            {/* Referrals — collapsed by default (low-frequency reference). */}
             {referrals.length > 0 && (
-              <FmPanel title={`👩‍⚕️ Referrals (${referrals.length})`}>
+              <Collapsible title={`👩‍⚕️ Referrals (${referrals.length})`}>
                 <div style={{ display: "grid", gap: 6 }}>
                   {referrals.map((r, i) => (
                     <Row key={`${r.label}-${i}`} label={r.label} detail={r.detail} />
                   ))}
                 </div>
-              </FmPanel>
+              </Collapsible>
             )}
 
-            {/* Education modules + send education pack */}
-            <FmPanel
-              title={`🎓 Education`}
+            {/* Education modules + send education pack — collapsed by default;
+                the send button moves into the body (visible on expand). */}
+            <Collapsible
+              title={`🎓 Education${education.length > 0 ? ` (${education.length})` : ""}`}
               subtitle="Condition / root-cause explainers. Send as a personalised email with NHS/NIH/WHO references."
-              rightSlot={
-                <SendEducationPackButton
-                  clientId={id}
-                  clientEmail={clientEmail}
-                  clientName={clientName}
-                  assessmentTopics={assessmentTopicsForPicker}
-                  allTopics={allTopicsForPicker}
-                />
-              }
             >
-              {education.length > 0 ? (
-                <div style={{ display: "grid", gap: 6 }}>
-                  {education.map((e, i) => (
-                    <Row key={`${e.label}-${i}`} label={e.label} detail={e.detail} />
-                  ))}
+              <div style={{ display: "grid", gap: 10 }}>
+                <div>
+                  <SendEducationPackButton
+                    clientId={id}
+                    clientEmail={clientEmail}
+                    clientName={clientName}
+                    assessmentTopics={assessmentTopicsForPicker}
+                    allTopics={allTopicsForPicker}
+                  />
                 </div>
-              ) : (
-                <EmptyHint>
-                  No education modules on this plan — use &ldquo;Send education pack&rdquo; to email a topic brief anyway.
-                </EmptyHint>
-              )}
-            </FmPanel>
+                {education.length > 0 ? (
+                  <div style={{ display: "grid", gap: 6 }}>
+                    {education.map((e, i) => (
+                      <Row key={`${e.label}-${i}`} label={e.label} detail={e.detail} />
+                    ))}
+                  </div>
+                ) : (
+                  <EmptyHint>
+                    No education modules on this plan — use &ldquo;Send education pack&rdquo; to email a topic brief anyway.
+                  </EmptyHint>
+                )}
+              </div>
+            </Collapsible>
 
             {/* Drivers */}
             {drivers.length > 0 && (
@@ -1091,22 +1076,9 @@ export default async function PlanTabPage({
               </FmPanel>
             )}
 
-            {/* Notes for coach — auto-sectioned + hazard pull-quotes +
-                catalogue chips + show-less/more collapse + print-friendly.
-                Replaces the inline <div whiteSpace: pre-wrap> wall of
-                text — see Group E1 in the FM Backlog Explorations design. */}
-            {notesForCoach.trim() && (
-              <FmPanel
-                title="📝 Notes for coach"
-                subtitle="Private — never appears on client letters."
-              >
-                <FmCoachNotes
-                  text={notesForCoach}
-                  planSlug={activePlan.slug}
-                  catalogue={catalogueChips}
-                />
-              </FmPanel>
-            )}
+            {/* Notes for coach moved to the TOP of the plan content
+                (2026-06-13) — it's the coach's clinical reasoning and should
+                frame everything below. See the panel above the app studio. */}
           </div>
 
           {/* RIGHT — send + meta. Sticky + internally scrollable on
@@ -1154,42 +1126,16 @@ export default async function PlanTabPage({
               </div>
             </FmPanel>
 
-            {/* 🍽 Phase letters — use the pending draft's slug when one
-                exists (phase letters are authored against the NEW plan),
-                otherwise fall back to the active plan.
-                Visible for all plan statuses so the coach can open a
-                saved phase letter (e.g. wk3-4) without going to the
-                Communicate tab. */}
-            {activePlan && (() => {
-              const phaseTarget = pendingDraft ?? activePlan;
-              return (
-                <PhaseLetterPanel
-                  clientId={id}
-                  planSlug={phaseTarget.slug as string}
-                  planPeriodWeeks={
-                    (phaseTarget.plan_period_weeks as number | undefined) ?? 12
-                  }
-                  planPeriodStart={
-                    (phaseTarget.meal_plan_started_on as string | undefined) ??
-                    (phaseTarget.supplements_started_on as string | undefined) ??
-                    (phaseTarget.plan_period_start as string | undefined)
-                  }
-                />
-              );
-            })()}
+            {/* "Generate next phase / next-week meal plan" (PhaseLetterPanel)
+                removed 2026-06-13 — letters are retired and the app is the
+                delivery surface. Weekly menus are drafted by the cron +
+                approved in the app studio (AppPreviewPanel above); the plan
+                is the source of truth, so a separate letter-based phase
+                generator is redundant. */}
 
-            {/* 📊 Outcomes since plan publish — Phase 1 of the outcome
-                feedback loop. Pulls Plan.baseline_snapshot (captured at
-                publish, or backfilled from the closest pre-publish
-                health_snapshot) and diffs it against the latest client
-                state. Lab + measurement deltas surfaced with FM-direction
-                colouring (improving / worsening / unchanged). */}
-            {isPublished && activePlan && (
-              <PlanOutcomesPanel
-                planSlug={activePlan.slug as string}
-                clientId={id}
-              />
-            )}
+            {/* "Outcomes since plan publish" (PlanOutcomesPanel) removed
+                2026-06-13 — lab/measurement data rarely changes mid-protocol,
+                and the same deltas are charted on the History tab. */}
 
             {/* Follow-up plan generator — only when the live plan is
                 published. Closes the v1/v2 workflow gap: previously the
@@ -1338,6 +1284,50 @@ function ActionLink({
       <span style={{ fontSize: 14 }}>{icon}</span>
       {label}
     </Link>
+  );
+}
+
+/** Collapsed-by-default section — native <details>, no client JS. Used for
+ *  low-frequency Plan-tab panels (Referrals, Education). Matches FmPanel
+ *  chrome; the caret rotates via .fm-collapsible CSS in fm-v2.css. */
+function Collapsible({
+  title,
+  subtitle,
+  defaultOpen = false,
+  children,
+}: {
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
+  defaultOpen?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <details
+      className="fm-collapsible"
+      open={defaultOpen}
+      style={{
+        background: "var(--fm-surface)",
+        border: "1px solid var(--fm-border)",
+        borderRadius: "var(--fm-radius-lg)",
+        padding: 22,
+      }}
+    >
+      <summary
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          cursor: "pointer",
+        }}
+      >
+        <span className="fm-collapsible-caret">▸</span>
+        <span style={{ display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
+          <span className="fm-panel-title">{title}</span>
+          {subtitle && <span className="fm-panel-subtitle">{subtitle}</span>}
+        </span>
+      </summary>
+      <div style={{ marginTop: 14 }}>{children}</div>
+    </details>
   );
 }
 

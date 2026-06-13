@@ -521,3 +521,16 @@
               plan editor uses inline. Detect via uppercase + tracking
               pattern wouldn't work in pure CSS — leave these to the
               source files to migrate one-by-one. */
+
+/* ---------- Collapsible section (native <details>, used on the Plan tab
+              for low-frequency panels like Referrals / Education) ---------- */
+.fm-collapsible > summary { list-style: none; outline: none; }
+.fm-collapsible > summary::-webkit-details-marker { display: none; }
+.fm-collapsible > summary::marker { content: ""; }
+.fm-collapsible .fm-collapsible-caret {
+  display: inline-block;
+  transition: transform 120ms ease;
+  color: var(--fm-text-tertiary);
+  font-size: 11px;
+}
+.fm-collapsible[open] .fm-collapsible-caret { transform: rotate(90deg); }

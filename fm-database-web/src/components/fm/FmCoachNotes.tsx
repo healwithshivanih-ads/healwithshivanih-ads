@@ -212,11 +212,54 @@ interface ParsedSection {
   body: string[]; // paragraphs (each may be a list or hazard line)
 }
 
+const MD_HEADER = /^#{1,4}\s+(.+?)\s*#*$/;
+const BULLET_LINE = /^[-*•]\s+/;
+const LEADING_EMOJI = /^(\p{Extended_Pictographic})\s*/u;
+
+/** Icon for a markdown-header section, by keyword. */
+function mdIcon(label: string): string {
+  if (/\b(driver|root cause|read|reframe)\b/i.test(label)) return "↟";
+  if (/\bsupplement/i.test(label)) return "◈";
+  if (/\b(watch|monitor)\b/i.test(label)) return "◉";
+  if (/\b(reminder|open item|gap|pending|hold)\b/i.test(label)) return "✎";
+  if (/\bwhy\b/i.test(label)) return "◐";
+  if (/\bupdate\b/i.test(label)) return "↻";
+  return "◆";
+}
+/** Tone for a markdown-header section, by keyword. */
+function mdTone(label: string): SectionTone {
+  if (/\b(do not|avoid|never|critical|red flag|urgent)\b/i.test(label)) return "danger";
+  if (/\b(watch|monitor|caution|reminder|open item|hold|pending|gap)\b/i.test(label)) return "warn";
+  if (/\b(update|added|scope|note)\b/i.test(label)) return "meta";
+  return "neutral";
+}
+
 function parseNotes(text: string): ParsedSection[] {
-  const paras = text
+  const raw = text
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
+
+  // The AI separates bullets with blank lines, so each lands as its own
+  // paragraph and the pure-list renderer never fires. Merge consecutive
+  // single-line bullet paragraphs back into one block (don't merge across a
+  // markdown header).
+  const paras: string[] = [];
+  for (const p of raw) {
+    const prev = paras[paras.length - 1];
+    const prevLastLine = prev?.split("\n").at(-1) ?? "";
+    if (
+      !p.includes("\n") &&
+      BULLET_LINE.test(p) &&
+      prev !== undefined &&
+      BULLET_LINE.test(prevLastLine)
+    ) {
+      paras[paras.length - 1] = `${prev}\n${p}`;
+    } else {
+      paras.push(p);
+    }
+  }
+
   const sections: ParsedSection[] = [];
   let current: ParsedSection = {
     id: "preamble",
@@ -225,7 +268,29 @@ function parseNotes(text: string): ParsedSection[] {
     tone: "neutral",
     body: [],
   };
+  let mdIdx = 0;
   for (const p of paras) {
+    // Markdown header ("## Key drivers identified") — the AI writes
+    // notes_for_coach as markdown; the colon-style SECTION_PATTERNS below
+    // don't catch these, so without this they'd render as a literal "## …".
+    const firstLine = p.split("\n")[0];
+    const md = firstLine.match(MD_HEADER);
+    if (md) {
+      if (current.body.length) sections.push(current);
+      let label = md[1].replace(/[*_`]+/g, "").trim();
+      const emoji = label.match(LEADING_EMOJI);
+      const icon = emoji ? emoji[1] : mdIcon(label);
+      if (emoji) label = label.slice(emoji[0].length).trim();
+      const rest = p.slice(firstLine.length).replace(/^\n+/, "").trim();
+      current = {
+        id: `md-${mdIdx++}`,
+        label: label || md[1],
+        icon,
+        tone: mdTone(label),
+        body: rest ? [rest] : [],
+      };
+      continue;
+    }
     const hit = SECTION_PATTERNS.find((sp) => sp.match.test(p));
     if (hit) {
       if (current.body.length) sections.push(current);
