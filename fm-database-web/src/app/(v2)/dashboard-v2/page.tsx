@@ -662,6 +662,13 @@ export default async function DashboardV2() {
     bookingsWebhookConfigured = true;
   } catch { /* file missing → false */ }
 
+  // ⏳ Deferred / revisit-later plan items (e.g. seed cycling held back behind a
+  // lab gate). Server-rendered so it lands in the visible "Actions today" tier
+  // and counts toward the header pill — these are clinical decisions, not nudges.
+  const { listDeferredItemsAction } = await import("@/lib/server-actions/deferred-items");
+  const deferredRes = await listDeferredItemsAction();
+  const deferredItems = deferredRes.ok ? deferredRes.rows : [];
+
   // Compute signals
   const rows: TriageRow[] = await Promise.all(
     (clients as ClientRow[]).map(async (c) => ({
@@ -1140,7 +1147,8 @@ export default async function DashboardV2() {
             dormantClients.length +
             plateauedClients.length +
             regressedClients.length +
-            upcoming.length
+            upcoming.length +
+            deferredItems.length
           }
           defaultCollapsed={false}
         >
@@ -1343,6 +1351,12 @@ export default async function DashboardV2() {
               </div>
             </FmPanel>
           )}
+
+          {/* ⏳ Deferred / revisit-later plan items — interventions the assess
+              AI held back behind a clinical gate (e.g. seed cycling pending a
+              day-21 progesterone result). A clinical decision, so it lives in
+              the visible "Actions today" tier. Self-hides when empty. */}
+          <DeferredPlanItemsPanel initialRows={deferredItems} />
         </FmAlertGroup>
 
         {/* ── FYI + outbound group ────────────────────────────────────
@@ -1400,12 +1414,6 @@ export default async function DashboardV2() {
           <WeeklyMenuQueuePanel names={Object.fromEntries(clientNameMap)} />
 
           <CycleDateReminderPanel whatsappConfigured={whatsappConfigured} />
-
-          {/* ⏳ Deferred / revisit-later plan items — interventions the assess
-              AI held back behind a clinical gate (e.g. seed cycling pending a
-              day-21 progesterone result). Override to flag for inclusion, or
-              snooze until the gate marker lands. Self-hides when empty. */}
-          <DeferredPlanItemsPanel />
 
 
           {/* Catalogue commit — design 9A with change list disclosure */}

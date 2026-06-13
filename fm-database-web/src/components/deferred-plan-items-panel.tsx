@@ -22,8 +22,8 @@ import type { DeferredRow } from "@/lib/server-actions/deferred-items";
 
 type Resolved = { kind: "overridden" | "snoozed"; detail: string };
 
-export function DeferredPlanItemsPanel() {
-  const [rows, setRows] = useState<DeferredRow[] | null>(null);
+export function DeferredPlanItemsPanel({ initialRows }: { initialRows?: DeferredRow[] }) {
+  const [rows, setRows] = useState<DeferredRow[] | null>(initialRows ?? null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [resolved, setResolved] = useState<Record<string, Resolved>>({});
@@ -48,7 +48,9 @@ export function DeferredPlanItemsPanel() {
     }
   }
   useEffect(() => {
-    void load();
+    // Server-rendered rows are passed in; only fetch client-side when they're not.
+    if (!initialRows) void load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function doOverride(row: DeferredRow) {
