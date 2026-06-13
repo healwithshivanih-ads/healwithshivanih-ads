@@ -36,6 +36,7 @@ interface PlanDoc {
   meal_plan_started_on?: string;
   plan_period_start?: string;
   plan_period_weeks?: number;
+  no_weekly_menu?: boolean; // principle plan — never auto-draft a weekly menu
   [k: string]: unknown;
 }
 
@@ -109,6 +110,9 @@ export async function generateWeekMenuAction(
   if (!hit) return { ok: false, error: "No published plan." };
   if (hit.plan.app_menu?.is_sample) {
     return { ok: false, error: "Hybrid/sample plan — it uses one fixed sample week, not a weekly cadence." };
+  }
+  if (hit.plan.no_weekly_menu) {
+    return { ok: false, error: "Principle plan — it shows the eating framework only (no weekly menu)." };
   }
   // Catch-up aware: if the CURRENT plan week has no menu, draft THAT (never
   // skip it → no more non-contiguous [4,6]); otherwise pre-load next week.
@@ -268,9 +272,14 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       const cid = String(p.client_id ?? "");
       if (!cid || seen.has(cid)) continue;
       seen.add(cid);
-      const weeks = p.app_menu?.weeks ?? [];
-      if (!weeks.length) continue; // principle-based — no weekly menus
       if (p.app_menu?.is_sample) continue; // hybrid/sample plan — no weekly cadence
+      if (p.no_weekly_menu) continue; // principle plan — no menu by design (opt-out flag)
+      const weeks = p.app_menu?.weeks ?? [];
+      // weeks may be EMPTY here: a real (non-hybrid, non-principle) plan that's
+      // missing its menu entirely → it falls through and gets its FIRST week
+      // auto-drafted (currentReady=false → behind → targetWeek=cur). Principle
+      // plans are excluded above, so an empty menu now means "real plan needs
+      // a menu", not "framework-only by design".
       const cur = currentPlanWeek(p);
       const total = Number(p.plan_period_weeks) || 12;
       if (cur > total) continue; // plan over — recycle, never extend
