@@ -339,7 +339,9 @@ export function SupplementSlots({
   return (
     <div className="card" style={{ padding: "4px 4px 12px" }}>
       {slotOrder.map((slot) => {
-        const items = supplements.filter((s) => s.slot === slot);
+        const items = supplements
+          .filter((s) => s.slot === slot && !s.asNeeded)
+          .sort((a, b) => (a.emptyStomach ? -1 : 0) - (b.emptyStomach ? -1 : 0));
         const rems = suppRemedies.filter((r) => (r.suppSlot ?? r.when) === slot);
         if (!items.length && !rems.length) return null;
         return (

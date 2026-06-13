@@ -103,10 +103,12 @@ attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
 image:
-  file: images/odonnell/odonnell-082-019.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: placeholder — grain bowl visual; replace with original kodo millet upma photo when available
+  file: images/web/kodo-millet-upma.jpg
+  credit: 'Photo: Smitha Kalluraya (smithakalluraya.com)'
+  source_url: https://smithakalluraya.com/millet-upma-recipe-kodo-millet-upma-varagu-upma-recipe/
+  rights_status: web_reference_uncleared
+  note: cropped to remove watermarks; internal-app reference use — replace with licensed or original
+    photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Kodo Millet Upma

@@ -25,7 +25,18 @@ export function MealOverlay({ slot, onClose }: { slot: string; onClose: () => vo
         <Icon name="arrowLeft" size={18} /> Back
       </button>
 
-      <div className="meal-hero" style={{ background: ex?.grad }}>
+      <div
+        className="meal-hero"
+        style={
+          ex?.imageUrl
+            ? {
+                backgroundImage: `linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,0.35) 100%), url(${ex.imageUrl})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : { background: ex?.grad }
+        }
+      >
         <span className="mh-tag">
           <Icon name="forkKnife" size={13} /> From your meal plan
         </span>
@@ -254,6 +265,20 @@ export function DocOverlay({ doc, onClose }: { doc: { kind: string; id: string }
 function RecipeDetailBody({ r }: { r: AppRecipe }) {
   return (
     <div style={{ padding: "4px 0 12px" }}>
+      {r.imageUrl && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={r.imageUrl}
+          alt={r.title}
+          style={{
+            width: "100%",
+            borderRadius: 8,
+            marginBottom: 10,
+            objectFit: "cover",
+            maxHeight: 220,
+          }}
+        />
+      )}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
         {r.serves && <span className="food-pill">Serves {r.serves}</span>}
         {r.time && <span className="food-pill">{r.time}</span>}

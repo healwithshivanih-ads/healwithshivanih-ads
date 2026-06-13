@@ -100,6 +100,9 @@ export function TodayScreen({
   goCheckin,
   goCoach,
   openBreath,
+  practices,
+  onTogglePractice,
+  openGrocery,
 }: {
   logged: Record<string, string>;
   onToggleSupp: (id: string) => void;
@@ -112,12 +115,11 @@ export function TodayScreen({
   goCheckin: () => void;
   goCoach: () => void;
   openBreath: () => void;
+  practices: { id: string; name: string; when: string; done: boolean }[];
+  onTogglePractice: (id: string) => void;
+  openGrocery: () => void;
 }) {
   const data = useOchre();
-  const [selDay, setSelDay] = useState(data.today.idx);
-  const wk = data.weekStrip;
-  const sel = wk[selDay];
-  const isToday = sel?.today;
   const hour = new Date().getHours();
   const ph = usePhaseNow(hour);
   const externalRemedies = data.remedies.filter((r) => r.assigned && r.route === "external");
@@ -206,25 +208,29 @@ export function TodayScreen({
         </Section>
       )}
 
-      <Section title="Your week at a glance">
-        <WeekStrip selected={selDay} onSelect={setSelDay} />
-        <div className="card-quiet" style={{ marginTop: 12, padding: "13px 15px" }}>
-          <div style={{ fontSize: 13.5, color: "var(--ink)" }}>
-            {isToday ? (
-              <span>
-                <strong style={{ fontWeight: 600 }}>Today.</strong> Your meals and supplements are above.
-              </span>
-            ) : (
-              <span>
-                <strong style={{ fontWeight: 600 }}>
-                  {sel?.dow} {sel?.num}.
-                </strong>{" "}
-                {data.mealsNote || "Your meals rotate through the week — same rhythm, same supplements."}
-              </span>
-            )}
+      {practices.length > 0 && (
+        <Section title="Daily practices">
+          <div className="card" style={{ overflow: "hidden" }}>
+            {practices.map((p) => {
+              const on = !!p.done;
+              return (
+                <button
+                  key={p.id}
+                  className="practice"
+                  onClick={() => onTogglePractice(p.id)}
+                  style={{ width: "100%", background: "none", border: "none", font: "inherit", textAlign: "left" }}
+                >
+                  <span className={"check-sq" + (on ? " on" : "")}>
+                    <Icon name="checkBold" size={15} style={{ color: "#fff" }} />
+                  </span>
+                  <span className={"p-name" + (on ? " done" : "")}>{p.name}</span>
+                  <span className="p-when">{p.when}</span>
+                </button>
+              );
+            })}
           </div>
-        </div>
-      </Section>
+        </Section>
+      )}
 
       <Section title="Coming up">
         <div className="stack" style={{ gap: 10 }}>
@@ -235,6 +241,7 @@ export function TodayScreen({
             t2={`A few quiet minutes to tell ${data.coach.name.split(" ")[0]} how you're doing`}
             onClick={goCheckin}
           />
+          <Tile icon="bag" t1="Shopping list" t2="Tick off what you need before your next shop" onClick={openGrocery} />
           <Tile icon="message" t1="Ask your coach" t2={`${data.coach.name.split(" ")[0]}, plus a co-pilot for quick plan questions`} onClick={goCoach} />
         </div>
       </Section>
@@ -284,7 +291,8 @@ function MealList({
 }) {
   const { meals, mealExtra, remedies } = useOchre();
   const drinks = remedies.filter((r) => r.assigned && r.daily && r.route !== "external" && !r.supplementLike);
-  const morning = drinks.filter((r) => r.when === "Morning");
+  const beforeBreakfastDrinks = drinks.filter((r) => r.beforeBreakfast);
+  const morning = drinks.filter((r) => r.when === "Morning" && !r.beforeBreakfast);
   const placed = new Set<string>();
   const drinkRow = (r: AppRemedy) => {
     const id = "rx-" + r.slug;
@@ -319,6 +327,7 @@ function MealList({
   };
   return (
     <div className="card" style={{ overflow: "hidden" }}>
+      {beforeBreakfastDrinks.map((r) => drinkRow(r))}
       {meals.map((m, i) => {
         const ex = mealExtra[m.slot];
         const after = /breakfast/i.test(m.slot) ? morning : [];

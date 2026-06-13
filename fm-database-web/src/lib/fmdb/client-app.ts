@@ -99,6 +99,7 @@ export interface AppRecipe {
   method: string[];
   tip?: string;
   ayurveda?: boolean;
+  imageUrl?: string;
 }
 
 /** One scored MSQ submission (written by scripts/save-app-msq.py). */
@@ -114,6 +115,7 @@ import { swapTermMatches, type AppSwapGroup as SwapGroupT, type SwapMember as Sw
 
 export interface AppMealExtra {
   grad: string;
+  imageUrl?: string;
   mins?: string;
   serves?: string;
   ingredients: string[];
@@ -130,6 +132,10 @@ export interface AppSupplement {
   why: string;
   buyUrl?: string;
   buyLabel?: string;
+  /** True when timing is situational (as-needed, at-risk meals, PRN). Excluded from daily log. */
+  asNeeded?: boolean;
+  /** True when supplement should be taken on an empty stomach — sorts before with-food supplements. */
+  emptyStomach?: boolean;
 }
 
 export interface AppRemedy {
@@ -172,6 +178,8 @@ export interface AppRemedy {
   suppTiming?: string;
   when?: string;
   why?: string;
+  /** True when the remedy should appear BEFORE the first meal (empty-stomach drinks like methi water). */
+  beforeBreakfast?: boolean;
 }
 
 export interface JourneyItem {
@@ -732,6 +740,7 @@ interface LetterRecipe {
   ingredients: string[];
   method: string[];
   tip?: string;
+  imageUrl?: string;
 }
 
 /** The structured recipe library (fm-database/data/_recipes/) — the plan-side
@@ -762,6 +771,12 @@ async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecip
       const prep = Number(r.prep_time_min) || 0;
       const cook = Number(r.cook_time_min) || 0;
       const mins = prep + cook;
+      const imgRaw = r.image as Dict | undefined;
+      const imgFile = imgRaw ? asStr(imgRaw.file) : "";
+      const imgUrl =
+        imgFile && asStr(imgRaw?.rights_status) !== "none"
+          ? `/recipe-images/${imgFile}`
+          : undefined;
       out.push({
         slug: asStr(r.slug) || f.replace(/\.yaml$/, ""),
         recipe: {
@@ -771,6 +786,7 @@ async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecip
           ingredients,
           method: (asArr(r.steps) as unknown[]).map((s) => String(s)),
           tip: asStr(r.one_line) || asStr(r.headnote) || undefined,
+          imageUrl: imgUrl,
         },
       });
     } catch {
@@ -1725,6 +1741,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       }
       mealExtra[slotName] = {
         grad: SLOT_GRAD[slotL] ?? "linear-gradient(140deg,#e3cf9a,#9a8a4f)",
+        imageUrl: rec?.imageUrl,
         mins: rec?.time,
         serves: rec?.serves,
         ingredients: rec?.ingredients ?? [],
@@ -1878,6 +1895,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         /* no link — Reorder button simply hides */
       }
     }
+    const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
+    const emptyStomach = !asNeeded && /empty stomach|before breakfast|first thing in the morning|on empty|upon waking/i.test(timing);
     supplements.push({
       id: `s-${slug || i}`,
       name,
@@ -1893,6 +1912,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         ),
       buyUrl,
       buyLabel: row?.buyLabel && !/^search on/i.test(row.buyLabel) ? row.buyLabel : undefined,
+      ...(asNeeded ? { asNeeded: true } : {}),
+      ...(emptyStomach ? { emptyStomach: true } : {}),
     });
   }
 
@@ -1961,6 +1982,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const blurb = blurbFor(base);
     const isChuran = base.category === "ayurvedic_churan";
     const bedtime = /bed|night/i.test(base.timing) || /bed|night/i.test(blurb?.how ?? "");
+    const beforeBreakfast = /empty stomach|before breakfast|first thing in the morning|on empty|upon waking|20.?30 minutes before breakfast/i.test(`${base.timing} ${blurb?.how ?? ""}`);
     remedies.push({
       ...base,
       assigned: true,
@@ -1970,6 +1992,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       suppTiming: bedtime ? "Before bed" : "Morning",
       when: bedtime ? "Bedtime" : /between meals|through the day/i.test(`${base.timing} ${blurb?.how ?? ""}`) ? "Between meals" : /morning/i.test(base.timing) ? "Morning" : "Daily",
       why: blurb?.what || firstSentence(base.summary),
+      ...(beforeBreakfast ? { beforeBreakfast: true } : {}),
     });
   }
 

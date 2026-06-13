@@ -243,6 +243,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         goCheckin={goCheckin}
         goCoach={() => go("coach")}
         openBreath={openBreath}
+        practices={practices}
+        onTogglePractice={togglePractice}
+        openGrocery={openGrocery}
       />
     );
   } else if (tab === "plan") {
