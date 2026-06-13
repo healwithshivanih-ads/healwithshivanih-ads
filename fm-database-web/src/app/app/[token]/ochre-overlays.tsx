@@ -5,10 +5,11 @@
  * doc reader (lessons + resources), remedy detail, account/settings.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
 import { BodySection } from "./ochre-body";
+import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
 
 // ── meal detail ──────────────────────────────────────────────────────────────
 
@@ -662,6 +663,123 @@ function inputValToDisplay(val: string): string {
   return `${h}:${min} ${ap}`;
 }
 
+/** Master push-notification toggle (client-controlled). When ON: registers
+ *  the service worker, asks permission, subscribes, and stores it server-side.
+ *  When OFF: unsubscribes the browser + drops the server subscription. iOS
+ *  only supports this for an installed (Add-to-Home-Screen) PWA. */
+function PushToggleSection() {
+  const data = useOchre();
+  const [supported, setSupported] = useState(true);
+  const [on, setOn] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [note, setNote] = useState("");
+
+  useEffect(() => {
+    const ok =
+      typeof window !== "undefined" &&
+      "serviceWorker" in navigator &&
+      "PushManager" in window &&
+      "Notification" in window;
+    setSupported(ok);
+    if (!ok) return;
+    navigator.serviceWorker
+      .getRegistration("/ochre-app/sw.js")
+      .then((reg) => reg?.pushManager.getSubscription())
+      .then((sub) => setOn(!!sub))
+      .catch(() => {});
+  }, []);
+
+  async function enable() {
+    setBusy(true);
+    setNote("");
+    try {
+      const reg = await navigator.serviceWorker.register("/ochre-app/sw.js");
+      const perm = await Notification.requestPermission();
+      if (perm !== "granted") {
+        setNote("Notifications are blocked in your phone/browser settings — allow them there, then try again.");
+        setBusy(false);
+        return;
+      }
+      const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY) as BufferSource,
+      });
+      const res = await fetch("/api/app-push", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token, action: "subscribe", subscription: sub.toJSON() }),
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || !j.ok) {
+        setNote("Couldn't turn on notifications just now — please try again.");
+        setBusy(false);
+        return;
+      }
+      setOn(true);
+    } catch {
+      setNote("Couldn't turn on notifications on this device.");
+    }
+    setBusy(false);
+  }
+
+  async function disable() {
+    setBusy(true);
+    setNote("");
+    try {
+      const reg = await navigator.serviceWorker.getRegistration("/ochre-app/sw.js");
+      const sub = await reg?.pushManager.getSubscription();
+      if (sub) await sub.unsubscribe().catch(() => {});
+      await fetch("/api/app-push", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token, action: "unsubscribe" }),
+      }).catch(() => {});
+      setOn(false);
+    } catch {
+      setOn(false);
+    }
+    setBusy(false);
+  }
+
+  return (
+    <div className="set-group">
+      <div className="set-h">
+        <Icon name="bell" size={15} /> Push notifications
+      </div>
+      <div className="card" style={{ overflow: "hidden" }}>
+        <div className="set-row">
+          <span className="sr-name" style={{ flex: 1 }}>
+            On this phone
+            <span className="sr-meta">
+              {supported ? (busy ? "Working…" : on ? "On" : "Off") : "Add to Home Screen first"}
+            </span>
+          </span>
+          <Toggle
+            on={on}
+            onClick={() => {
+              if (busy || !supported) return;
+              if (on) void disable();
+              else void enable();
+            }}
+          />
+        </div>
+      </div>
+      <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
+        {supported
+          ? "Gentle nudges on this phone — a fresh weekly menu, check-in reminders. Turn off any time; your WhatsApp messages from " +
+            data.coach.name.split(" ")[0] +
+            " are unaffected."
+          : "To get notifications on iPhone, first add this app to your Home Screen (Share → Add to Home Screen), then re-open it here."}
+      </div>
+      {note && (
+        <div className="muted" style={{ fontSize: 12, marginTop: 6, paddingLeft: 2, color: "var(--terracotta, #b3402a)" }}>
+          {note}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function AccountOverlay({ onClose }: { onClose: () => void }) {
   const data = useOchre();
   const a = data.account;
@@ -738,6 +856,8 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
             Nudges arrive on WhatsApp from {data.coach.name.split(" ")[0]} — these switches set what you’d like.
           </div>
         </div>
+
+        <PushToggleSection />
 
         <div className="set-group">
           <div className="set-h">

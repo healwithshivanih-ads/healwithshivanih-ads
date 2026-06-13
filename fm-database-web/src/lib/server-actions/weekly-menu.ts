@@ -175,6 +175,23 @@ export async function approveWeekMenuAction(
       groceryWarning = `menu live, but grocery refresh threw: ${e instanceof Error ? e.message : "unknown"}`;
     }
     if (groceryWarning) console.error(`[weekly-menu] ${clientId}: ${groceryWarning}`);
+
+    // Push the client a gentle "new menu" nudge (best-effort; only fires if
+    // they've turned notifications on in the app's settings).
+    try {
+      const { sendPushToClient } = await import("@/lib/fmdb/push-server");
+      const tok = (doc as { letter_token?: string }).letter_token ?? "";
+      await sendPushToClient(clientId, {
+        title: "This week's menu is ready 🌿",
+        body:
+          (pending.change_note && String(pending.change_note).slice(0, 110)) ||
+          "Your new week is live — tap to see what's cooking.",
+        url: tok ? `/app/${tok}` : "/",
+        tag: "menu-live",
+      });
+    } catch {
+      /* push is optional — never affects approval */
+    }
     return { ok: true, groceryWarning };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : "approve failed" };

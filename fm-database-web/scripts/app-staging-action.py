@@ -240,6 +240,19 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             except Exception as e:
                 out["errors"].append(f"{client_id} opens-merge: {e}")
 
+        # reverse-mirror: push subscription (written on Fly when the client
+        # toggles notifications on/off in settings) → authoritative store.
+        # Fly is the sole writer; newest wins.
+        s_push = sdir / "_push_subscription.yaml"
+        a_push = auth / "clients" / client_id / "_push_subscription.yaml"
+        if s_push.exists() and (auth / "clients" / client_id).exists():
+            try:
+                if (not a_push.exists()) or s_push.stat().st_mtime > a_push.stat().st_mtime:
+                    shutil.copy2(s_push, a_push)
+                    out["checkins_mirrored"] += 1
+            except Exception as e:
+                out["errors"].append(f"{client_id} push-mirror: {e}")
+
         # plan revoked / superseded → purge the app artifacts from Fly
         if plan_slug and not _published_files(auth, plan_slug):
             for p in (stag / "published").glob(f"{plan_slug}-v*.yaml"):
