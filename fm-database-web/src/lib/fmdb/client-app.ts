@@ -2538,14 +2538,43 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       .replace(/\s*\(([^)]{25,})\)/, "")
       .replace(/\s+/g, " ")
       .trim();
+  // Order the day the way it's lived: waking → meals → daytime → evening →
+  // bedtime. Practices with no time-of-day cue get a neutral mid rank and,
+  // because the sort below is stable, keep their authored order ("where
+  // possible"). A practice that's both morning AND night (e.g. breathwork
+  // "morning and before bed") anchors to the morning so it leads the day.
+  const practiceTimeRank = (name: string, cadence: string): number => {
+    const t = `${name} ${cadence}`.toLowerCase();
+    if (/wak(e|ing)|on rising|first thing|sunrise|sunlight|morning sun/.test(t)) return 10;
+    if (/\bmorning\b|\bam\b|a\.m\./.test(t)) return 15; // incl. "morning & night"
+    if (/post-?meal|after (each |every )?meals?|after lunch|after dinner|with meals|with food/.test(t)) return 30;
+    if (/midday|noon|lunch|afternoon/.test(t)) return 40;
+    if (/night|bed|bedtime|sleep|lights out|nightly|screens?|digital|wind-?down|before sleep|\bpm\b|p\.m\./.test(t)) return 70;
+    if (/evening|sunset|journal|after work/.test(t)) return 60;
+    return 50; // anytime / weekly / no cue — stays mid, original order preserved
+  };
   let pIdx = 0;
   const practiceRaw: Dict[] = []; // index-aligned with practices[]
+  // Collect first so we can stable-sort by time of day before assigning ids.
+  const collected: { name: string; when: string; rank: number; raw: Dict }[] = [];
   for (const p of lifestyle) {
     const name = asStr(p.name);
     if (!name) continue;
     if (/ccf tea|golden milk|haldi doodh/i.test(name)) continue;
-    practices.push({ id: `p${pIdx++}`, name: cleanPracticeName(name), when: practiceWhen(name, asStr(p.cadence)) });
-    practiceRaw.push(p);
+    const cadence = asStr(p.cadence);
+    collected.push({
+      name: cleanPracticeName(name),
+      when: practiceWhen(name, cadence),
+      rank: practiceTimeRank(name, cadence),
+      raw: p,
+    });
+  }
+  // Array.prototype.sort is stable (ES2019+), so equal-rank practices keep
+  // their authored order — only the clearly time-anchored ones move.
+  collected.sort((a, b) => a.rank - b.rank);
+  for (const c of collected) {
+    practices.push({ id: `p${pIdx++}`, name: c.name, when: c.when });
+    practiceRaw.push(c.raw);
   }
 
   // ---- guided breathwork (paced exactly to the prescribed technique) -------
