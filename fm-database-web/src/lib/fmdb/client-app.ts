@@ -129,6 +129,11 @@ export interface AppSupplement {
   dose: string;
   slot: "Morning" | "With meals" | "Bedtime";
   timing: string;
+  /** Fine-grained chronological order through the day (10 = empty-stomach on
+   *  waking … 70 = bedtime, 100 = as-needed). Every supplement surface sorts
+   *  by this so the schedule always reads in the order they're actually taken
+   *  — empty-stomach before with-breakfast before mid-morning, and so on. */
+  chronoRank: number;
   why: string;
   buyUrl?: string;
   buyLabel?: string;
@@ -1192,14 +1197,43 @@ function shortDose(dose: string): string {
   return out.length > 44 ? (qty ? qty[0].trim() : `${out.slice(0, 42).trim()}…`) : out;
 }
 
-function slotFor(timing: string, dose: string): "Morning" | "With meals" | "Bedtime" {
-  const t = `${timing} ${dose}`.toLowerCase();
-  if (/bedtime|before sleep|night/.test(t) && !/morning/.test(t)) return "Bedtime";
-  // "with evening meal" / "supper" are dinner-time — they were falling
-  // through to Morning (mobile audit 2026-06-11: Zinc sat in the MORNING
-  // group with a "With evening meal" chip).
-  if (/lunch|dinner|evening meal|with evening|supper|with meals|fatty meal|fat-containing/.test(t) && !/breakfast|morning/.test(t))
-    return "With meals";
+/**
+ * Chronological rank for a supplement's timing — the order it's actually
+ * taken through the day. Multi-dose items ("morning and evening") anchor at
+ * their EARLIEST dose. The user-facing rule this enforces: morning
+ * empty-stomach (10) sorts before morning-with-breakfast (20) before
+ * mid-morning (30) before lunch (40) before afternoon (50) before dinner
+ * (60) before bedtime (70); as-needed (100) always last.
+ */
+function timingRank(timing: string, dose: string, emptyStomach: boolean, asNeeded: boolean): number {
+  if (asNeeded) return 100;
+  const t = ` ${`${timing} ${dose}`.toLowerCase()} `;
+  // an item pinned to ONE late time (and no earlier cue) belongs at that time
+  const earlier = /morning|breakfast|\blunch\b|midday|\bnoon\b|before meal|before breakfast|empty stomach|on waking|upon waking|first thing|mid.?morning/;
+  if (/bedtime|before sleep|at night|\bnight\b/.test(t) && !earlier.test(t)) return 70;
+  if (/\bafternoon\b/.test(t) && !/morning|breakfast|before breakfast|empty stomach|on waking|first thing/.test(t)) return 50;
+  // first thing / empty stomach on waking → start of the day, UNLESS the dose
+  // is explicitly a later between-meal (e.g. "mid-morning, empty stomach")
+  if (emptyStomach || /before breakfast|on waking|upon waking|first thing|empty stomach|on an empty/.test(t)) {
+    if (/mid.?morning|between breakfast and lunch/.test(t)) return 30;
+    if (/\bafternoon\b/.test(t)) return 50;
+    return 10;
+  }
+  if (/before meal|before each meal|before main meal|before food/.test(t)) return 14;
+  if (/\bbreakfast\b|\bmorning\b/.test(t) && !/mid.?morning/.test(t)) return 20;
+  if (/mid.?morning|between breakfast and lunch|after breakfast|between meals/.test(t)) return 30;
+  if (/\blunch\b|midday|\bnoon\b/.test(t)) return 40;
+  if (/\bafternoon\b/.test(t)) return 50;
+  if (/\bdinner\b|evening meal|with evening|supper|\bevening\b/.test(t)) return 60;
+  if (/bedtime|before sleep|at night|\bnight\b/.test(t)) return 70;
+  if (/with meals|with food|with a meal|largest meal|main meal|fat.?containing|fatty meal/.test(t)) return 45;
+  return 25; // unknown → treat as a morning/first-meal item
+}
+
+/** Collapse the fine chronological rank into the app's 3 display groups. */
+function slotFromRank(rank: number): "Morning" | "With meals" | "Bedtime" {
+  if (rank >= 70) return "Bedtime";
+  if (rank >= 40) return "With meals";
   return "Morning";
 }
 
@@ -1983,6 +2017,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     }
     const asNeeded = /as.?needed|at.?risk meals?|prn\b|immediately before at.?risk|as a precaution|precaution only/i.test(timing);
     const emptyStomach = !asNeeded && /empty stomach|before breakfast|first thing in the morning|on empty|upon waking/i.test(timing);
+    const chronoRank = timingRank(timing, dose, emptyStomach, asNeeded);
     // Auto-tier: a supplement is "core" when the coach's rationale frames it as
     // a primary, driver-targeting therapeutic (not a continuation/top-up).
     const rawRationale = asStr(p.coach_rationale);
@@ -1995,7 +2030,8 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       id: `s-${slug || i}`,
       name,
       dose: shortDose(dose || row?.dose || ""),
-      slot: slotFor(timing, dose),
+      slot: slotFromRank(chronoRank),
+      chronoRank,
       timing: shortTiming(timing),
       why:
         row?.why ||
@@ -2011,6 +2047,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       ...(core ? { core: true } : {}),
     });
   }
+  // Order the whole list by when it's taken (stable: authored order is kept
+  // within the same time). Every downstream surface — Today's slots, the Plan
+  // tabs, the order page, counts — reads this single chronological order.
+  supplements.sort((a, b) => a.chronoRank - b.chronoRank);
 
   // ---- demographic + dosha context (drives the remedy gates) ---------------
   const sexRaw = asStr(client.sex).trim().toUpperCase().slice(0, 1); // 'M' | 'F' | ''

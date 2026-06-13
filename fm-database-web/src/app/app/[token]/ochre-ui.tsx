@@ -341,7 +341,7 @@ export function SupplementSlots({
       {slotOrder.map((slot) => {
         const items = supplements
           .filter((s) => s.slot === slot && !s.asNeeded)
-          .sort((a, b) => (a.emptyStomach ? -1 : 0) - (b.emptyStomach ? -1 : 0));
+          .sort((a, b) => a.chronoRank - b.chronoRank);
         const rems = suppRemedies.filter((r) => (r.suppSlot ?? r.when) === slot);
         if (!items.length && !rems.length) return null;
         return (

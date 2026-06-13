@@ -386,9 +386,7 @@ function MealList({
  *  group at the bottom so situational items never pollute the daily list. */
 function PlanSupplements() {
   const { supplements } = useOchre();
-  const slotRank: Record<string, number> = { Morning: 0, "With meals": 1, Bedtime: 2 };
-  const byDay = (a: AppSupplementT, b: AppSupplementT) =>
-    (slotRank[a.slot] ?? 1) - (slotRank[b.slot] ?? 1) || (b.emptyStomach ? 1 : 0) - (a.emptyStomach ? 1 : 0);
+  const byDay = (a: AppSupplementT, b: AppSupplementT) => a.chronoRank - b.chronoRank;
   const core = supplements.filter((s) => s.core && !s.asNeeded).sort(byDay);
   const daily = supplements.filter((s) => !s.core && !s.asNeeded).sort(byDay);
   const asNeeded = supplements.filter((s) => s.asNeeded);
