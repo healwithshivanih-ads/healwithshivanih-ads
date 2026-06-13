@@ -52,12 +52,13 @@ ingredients:
   qty: '1'
   unit: tbsp
 steps:
-- Trim the woody stalks from the fennel bulb and thinly slice the bulb as you would an onion.
-- In a medium saucepan, sauté the fennel slices in the ghee over medium heat for about 5 minutes, stirring
-  occasionally.
+- Trim the woody stalks from the fennel bulb and thinly slice the bulb as you would
+  an onion.
+- In a medium saucepan, sauté the fennel slices in the ghee over medium heat for about
+  5 minutes, stirring occasionally.
 - Slice the kale or chard into thin strips and stir into the pan.
-- Add the water, salt, beans (and dried dill if using); bring to a gentle boil, then cover and simmer
-  for 20 minutes.
+- Add the water, salt, beans (and dried dill if using); bring to a gentle boil, then
+  cover and simmer for 20 minutes.
 - Remove from the heat and stir in the fresh dill before serving.
 servings: '2'
 prep_time_min: 8
@@ -69,20 +70,22 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - acid-reflux-and-cardiac-sphincter-weakness
-one_line: A simple soothing soup of fennel and leafy greens with beans — cooling, calming, and easy on
-  a hot evening.
-headnote: Fennel's sweet, anise-like quality paired with the bitterness of dark greens makes this a calming
-  summer soup that helps the body wind down after a long, hot day.
+one_line: A simple soothing soup of fennel and leafy greens with beans — cooling,
+  calming, and easy on a hot evening.
+headnote: Fennel's sweet, anise-like quality paired with the bitterness of dark greens
+  makes this a calming summer soup that helps the body wind down after a long, hot
+  day.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 246
 image:
-  file: images/odonnell/odonnell-247-136.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/fresh-fennel-dill-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.themodernproper.com/production/posts/2023/WhiteBeanSoupwithDillandCabbage_8.jpg?w=800&q=82&auto=format&fit=crop&dm=1680496238&s=11ec9b8d32501f749810870366f99d01
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -91,3 +94,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 90
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

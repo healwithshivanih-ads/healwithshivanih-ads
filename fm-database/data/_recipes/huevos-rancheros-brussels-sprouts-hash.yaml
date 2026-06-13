@@ -109,18 +109,21 @@ ingredients:
   qty: '1'
   unit: handful
 steps:
-- 'Make the ranchero sauce: sauté onion and garlic in ghee over medium heat until softened, then add all
-  the spices and stir for 30 seconds.'
-- Add tomatoes, celery, and carrots, stir for a minute, then pour in the broth. Simmer uncovered for 30
-  minutes, then briefly blend with an immersion blender to a chunky sauce. Keep warm.
-- 'Make the hash: grate Brussels sprouts on the large holes of a box grater or pulse in a food processor.
-  Warm 1 tbsp ghee in a large frying pan, add the shredded sprouts with a dash of salt, and stir-fry until
-  browned to your liking. Lay the tortillas over the hash, cover the pan, and let them warm through.'
-- 'For eggs: heat 1 tsp ghee in a frying pan, crack the eggs in, sprinkle with turmeric, and fry until
-  the yolks are just beginning to set. For beans: warm them with 1 tsp ghee in a saucepan and mash smooth
-  or chunky.'
-- To plate, place 2 warm tortillas on each plate, top with eggs or beans, spoon ranchero sauce over, and
-  serve Brussels sprouts hash alongside. Garnish with cilantro if desired.
+- 'Make the ranchero sauce: sauté onion and garlic in ghee over medium heat until
+  softened, then add all the spices and stir for 30 seconds.'
+- Add tomatoes, celery, and carrots, stir for a minute, then pour in the broth. Simmer
+  uncovered for 30 minutes, then briefly blend with an immersion blender to a chunky
+  sauce. Keep warm.
+- 'Make the hash: grate Brussels sprouts on the large holes of a box grater or pulse
+  in a food processor. Warm 1 tbsp ghee in a large frying pan, add the shredded sprouts
+  with a dash of salt, and stir-fry until browned to your liking. Lay the tortillas
+  over the hash, cover the pan, and let them warm through.'
+- 'For eggs: heat 1 tsp ghee in a frying pan, crack the eggs in, sprinkle with turmeric,
+  and fry until the yolks are just beginning to set. For beans: warm them with 1 tsp
+  ghee in a saucepan and mash smooth or chunky.'
+- To plate, place 2 warm tortillas on each plate, top with eggs or beans, spoon ranchero
+  sauce over, and serve Brussels sprouts hash alongside. Garnish with cilantro if
+  desired.
 servings: '2'
 prep_time_min: 20
 cook_time_min: 40
@@ -132,10 +135,10 @@ good_for:
 - blood-sugar-regulation
 - gut-microbiome
 - inflammation
-one_line: 'A warming Ayurvedic take on a Mexican-style brunch: spiced tomato sauce, turmeric eggs, and
-  crispy Brussels sprouts on corn tortillas.'
-headnote: Choose eggs or beans for the protein component — this hearty weekend brunch applies Ayurvedic
-  food-combining principles to a favourite comfort dish.
+one_line: 'A warming Ayurvedic take on a Mexican-style brunch: spiced tomato sauce,
+  turmeric eggs, and crispy Brussels sprouts on corn tortillas.'
+headnote: Choose eggs or beans for the protein component — this hearty weekend brunch
+  applies Ayurvedic food-combining principles to a favourite comfort dish.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -152,3 +155,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 310
+kcal_total: 620
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

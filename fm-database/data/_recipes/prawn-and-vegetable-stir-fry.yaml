@@ -61,11 +61,12 @@ ingredients:
   unit: tbsp
 steps:
 - Clean and cut the prawns into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic paste and cook 1
-  minute.
+- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
+  paste and cook 1 minute.
 - Add turmeric and coriander powder; stir 30 seconds.
-- Add the prawns and salt; sear 2-3 minutes. Pour in coconut milk and a little water. Cover and simmer
-  until just cooked through (fish 8-10 min, chicken 18-20 min, prawns 5-6 min).
+- Add the prawns and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
+  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
+  5-6 min).
 - Finish with fresh coriander. Serve warm with rice or millet.
 servings: '2'
 prep_time_min: 10
@@ -75,9 +76,10 @@ kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based prawn and vegetable stir-fry — no tomato, gently spiced and freshly made.
-headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the meal clean and easy to digest
-  — no heavy tomato gravy, made the same day.
+one_line: A light, coconut-based prawn and vegetable stir-fry — no tomato, gently
+  spiced and freshly made.
+headnote: Freshly cooked prawns in a light coconut-curry-leaf base keeps the meal
+  clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -86,8 +88,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://vikalinka.com/wp-content/uploads/2022/02/Prawn-Stir-Fry-5-Edit-2.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Prawn and vegetable stir-fry
@@ -95,3 +97,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 155
+kcal_total: 310
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

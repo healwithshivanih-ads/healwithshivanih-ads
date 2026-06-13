@@ -60,10 +60,10 @@ ingredients:
   unit: to taste
 steps:
 - Bring 4 cups of water to a boil in a large saucepan.
-- Coarsely chop all the vegetables and add them to the boiling water along with the grated ginger and
-  black pepper. Cover and simmer for 5 minutes.
-- If using zucchini or rice noodles, add them in the last minute of cooking; cover again and simmer until
-  noodles and vegetables are just tender.
+- Coarsely chop all the vegetables and add them to the boiling water along with the
+  grated ginger and black pepper. Cover and simmer for 5 minutes.
+- If using zucchini or rice noodles, add them in the last minute of cooking; cover
+  again and simmer until noodles and vegetables are just tender.
 - Remove from heat and stir in the lime juice and tamari.
 - Ladle into two wide bowls and serve with fresh lime wedges.
 servings: '2'
@@ -76,19 +76,23 @@ good_for:
 - agni-digestive-fire
 - chronic-inflammation
 - detoxification
-one_line: A pungent, ginger-forward vegetable broth inspired by Vietnamese pho — a warming spring breakfast
-  that fires up digestion.
-headnote: Starting the day with a savoury, spiced broth instead of something sweet or cold is a key Ayurvedic
-  strategy for keeping kapha-season digestion lively and clear.
+one_line: A pungent, ginger-forward vegetable broth inspired by Vietnamese pho — a
+  warming spring breakfast that fires up digestion.
+headnote: Starting the day with a savoury, spiced broth instead of something sweet
+  or cold is a key Ayurvedic strategy for keeping kapha-season digestion lively and
+  clear.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 87
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/breakfast-pho-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://myfoodstory.com/wp-content/uploads/2020/03/Vegetarian-Pho-Soup-Vietnamese-Noodle-Soup-2.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: breakfast pho soup
@@ -96,3 +100,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

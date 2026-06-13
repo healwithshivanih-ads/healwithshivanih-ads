@@ -60,10 +60,10 @@ ingredients:
   unit: tbsp
 steps:
 - Pressure-cook toor dal with turmeric until soft; whisk smooth.
-- Boil the mixed vegetables until just tender. Add the tamarind extract, sambar powder, salt, and cooked
-  dal; simmer 8-10 minutes.
-- Heat coconut oil, pop mustard seeds, add curry leaves and a pinch of hing; pour this tempering over
-  the sambar.
+- Boil the mixed vegetables until just tender. Add the tamarind extract, sambar powder,
+  salt, and cooked dal; simmer 8-10 minutes.
+- Heat coconut oil, pop mustard seeds, add curry leaves and a pinch of hing; pour
+  this tempering over the sambar.
 - Simmer 2 minutes more, finish with coriander, and serve with rice, idli, or dosa.
 servings: '3'
 prep_time_min: 15
@@ -74,8 +74,10 @@ protein_g: 9
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A tangy South-Indian lentil-and-vegetable stew with tamarind and sambar spices.
-headnote: Sambar pairs protein-rich toor dal with a medley of vegetables and a sour-savoury tamarind base.
+one_line: A tangy South-Indian lentil-and-vegetable stew with tamarind and sambar
+  spices.
+headnote: Sambar pairs protein-rich toor dal with a medley of vegetables and a sour-savoury
+  tamarind base.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -84,8 +86,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://www.cubesnjuliennes.com/wp-content/uploads/2021/01/South-Indian-Sambar-Recipe.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Sambar
@@ -93,3 +95,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -75,8 +75,8 @@ protein_g: 5
 good_for:
 - agni-digestive-fire
 one_line: A light, savoury sama rice poha — a quick, no-sugar breakfast.
-headnote: Poha made with millet or rice flakes and plenty of vegetables is a light, quick breakfast —
-  skip the sugar and lean on lemon and curry leaves for flavour.
+headnote: Poha made with millet or rice flakes and plenty of vegetables is a light,
+  quick breakfast — skip the sugar and lean on lemon and curry leaves for flavour.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -85,8 +85,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://dww3ueizok6z0.cloudfront.net/food/banner/11036-035b05cc8f58dc5028fbf1eb413037d7113d12ec
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Sama rice poha
@@ -94,3 +94,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 270
+kcal_total: 540
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

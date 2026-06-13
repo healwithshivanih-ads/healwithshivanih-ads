@@ -46,13 +46,13 @@ ingredients:
   unit: tsp
 steps:
 - Preheat oven to 400°F.
-- Rinse and drain the chickpeas, then dry them in a clean kitchen towel by wrapping and shaking. Place
-  the dried chickpeas in a large bowl.
-- Add the vinegar, spices, salt, and oil. Mix everything together with your hands, rubbing the coating
-  thoroughly into each chickpea.
-- Spread in a single layer on a baking sheet and bake for 40 minutes, stirring every 15 minutes, until
-  lightly browned. For a crunchier result, bake up to 50 minutes — watch them carefully so they do not
-  burn.
+- Rinse and drain the chickpeas, then dry them in a clean kitchen towel by wrapping
+  and shaking. Place the dried chickpeas in a large bowl.
+- Add the vinegar, spices, salt, and oil. Mix everything together with your hands,
+  rubbing the coating thoroughly into each chickpea.
+- Spread in a single layer on a baking sheet and bake for 40 minutes, stirring every
+  15 minutes, until lightly browned. For a crunchier result, bake up to 50 minutes
+  — watch them carefully so they do not burn.
 - Allow to cool completely before storing in an airtight container at room temperature.
 servings: '8'
 prep_time_min: 10
@@ -64,10 +64,11 @@ good_for:
 - agni-digestive-fire
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
-one_line: Crispy oven-roasted chickpeas spiced with cumin and apple cider vinegar — a dry, pungent snack
-  that helps balance kapha's dampness.
-headnote: Roasting draws out moisture and concentrates flavour, turning humble chickpeas into a warming,
-  portable spring snack that works equally well as a crunchy soup garnish.
+one_line: Crispy oven-roasted chickpeas spiced with cumin and apple cider vinegar
+  — a dry, pungent snack that helps balance kapha's dampness.
+headnote: Roasting draws out moisture and concentrates flavour, turning humble chickpeas
+  into a warming, portable spring snack that works equally well as a crunchy soup
+  garnish.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -77,8 +78,8 @@ image:
   file: images/odonnell/odonnell-181-091.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ROASTED CHICKPEAS
@@ -86,3 +87,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 52
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

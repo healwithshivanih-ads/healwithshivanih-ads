@@ -41,10 +41,11 @@ ingredients:
   qty: 1/2
   unit: cup
 steps:
-- Combine oats, figs, maple syrup, and cardamom in a clean half-pint (8 oz) glass jar.
+- Combine oats, figs, maple syrup, and cardamom in a clean half-pint (8 oz) glass
+  jar.
 - Pour almond milk over the top last, seal the jar with a lid, and shake well.
-- Allow to soak at room temperature for several hours, or refrigerate overnight and bring to room temperature
-  before eating.
+- Allow to soak at room temperature for several hours, or refrigerate overnight and
+  bring to room temperature before eating.
 servings: '1'
 prep_time_min: 5
 cook_time_min: 0
@@ -55,20 +56,22 @@ good_for:
 - agni-digestive-fire
 - constipation
 - digestion-and-nutrient-absorption
-one_line: An overnight oat jar with figs and cardamom — grounding, no-cook, and ready to go on busy autumn
-  mornings.
-headnote: When mornings are rushed, this make-ahead oat jar brings the warmth and grounding of sweet figs
-  and spiced almond milk — nourishing vata without sacrificing ease.
+one_line: An overnight oat jar with figs and cardamom — grounding, no-cook, and ready
+  to go on busy autumn mornings.
+headnote: When mornings are rushed, this make-ahead oat jar brings the warmth and
+  grounding of sweet figs and spiced almond milk — nourishing vata without sacrificing
+  ease.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 277
 image:
-  file: images/odonnell/odonnell-278-154.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/fig-cardamom-oat-cup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.squarespace-cdn.com/content/v1/5451b54de4b0d0c075728ccb/1535036531495-BIE4LM1V1GCD2KKSE4B9/9%2B%281%2Bof%2B1%29.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -77,3 +80,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 300
+kcal_total: 300
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

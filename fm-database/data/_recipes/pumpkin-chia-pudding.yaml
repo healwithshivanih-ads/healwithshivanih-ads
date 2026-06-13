@@ -55,14 +55,14 @@ ingredients:
   qty: ''
   unit: dash
 steps:
-- In a small bowl, stir chia seeds into almond milk and whisk briskly with a fork a few times to distribute
-  evenly. Allow to soak for 5 minutes.
-- Place pumpkin puree, vanilla, dates, maple syrup, and spice mix into a blender jug. Add the soaked chia
-  mixture on top.
-- Blend on high speed for 2 minutes until smooth, whipped, and creamy — the chia seeds and dates should
-  be fully incorporated.
-- Divide between 2 dessert cups or eat from a single large bowl. Finish with a dash of freshly grated
-  nutmeg on top.
+- In a small bowl, stir chia seeds into almond milk and whisk briskly with a fork
+  a few times to distribute evenly. Allow to soak for 5 minutes.
+- Place pumpkin puree, vanilla, dates, maple syrup, and spice mix into a blender jug.
+  Add the soaked chia mixture on top.
+- Blend on high speed for 2 minutes until smooth, whipped, and creamy — the chia seeds
+  and dates should be fully incorporated.
+- Divide between 2 dessert cups or eat from a single large bowl. Finish with a dash
+  of freshly grated nutmeg on top.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 0
@@ -74,10 +74,11 @@ good_for:
 - gut-microbiome
 - digestion-and-nutrient-absorption
 - constipation
-one_line: A blended pumpkin and chia pudding sweetened with dates and spices — cooling, toning, and satisfying
-  straight from the jar.
-headnote: Pumpkin's cooling, astringent nature tones the gut after summer while chia provides fibre and
-  omega-3s — this simple blended pudding captures the essence of early autumn nourishment.
+one_line: A blended pumpkin and chia pudding sweetened with dates and spices — cooling,
+  toning, and satisfying straight from the jar.
+headnote: Pumpkin's cooling, astringent nature tones the gut after summer while chia
+  provides fibre and omega-3s — this simple blended pudding captures the essence of
+  early autumn nourishment.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -87,8 +88,8 @@ image:
   file: images/odonnell/odonnell-104-028.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: pumpkin chia pudding
@@ -96,3 +97,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 120
+kcal_total: 240
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -55,7 +55,8 @@ ingredients:
   unit: tbsp
 steps:
 - Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the chopped masoor dal and 3 cups water. Simmer covered 12-15 minutes until soft.
+- Add the chopped masoor dal and 3 cups water. Simmer covered 12-15 minutes until
+  soft.
 - Blend smooth (or leave brothy). Season with salt and pepper.
 - Finish with lemon juice and coriander. Serve warm.
 servings: '2'
@@ -68,8 +69,8 @@ good_for:
 - agni-digestive-fire
 - gut-health
 one_line: A light, warming masoor dal soup — soothing and easy on digestion.
-headnote: A gentle masoor dal soup with ginger and pepper is warming, hydrating, and the perfect light
-  dinner when you want to rest the gut.
+headnote: A gentle masoor dal soup with ginger and pepper is warming, hydrating, and
+  the perfect light dinner when you want to rest the gut.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -78,8 +79,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://cdn.shopify.com/s/files/1/0144/6674/4377/articles/Masoor_Dal_Soup_5000x.jpeg?v=1568991682
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Masoor dal soup
@@ -87,3 +88,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -61,11 +61,12 @@ ingredients:
   unit: tbsp
 steps:
 - Clean and cut the chicken into pieces.
-- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic paste and cook 1
-  minute.
+- Heat coconut oil, add onion and curry leaves; sauté until golden. Add ginger-garlic
+  paste and cook 1 minute.
 - Add turmeric and coriander powder; stir 30 seconds.
-- Add the chicken and salt; sear 2-3 minutes. Pour in coconut milk and a little water. Cover and simmer
-  until just cooked through (fish 8-10 min, chicken 18-20 min, prawns 5-6 min).
+- Add the chicken and salt; sear 2-3 minutes. Pour in coconut milk and a little water.
+  Cover and simmer until just cooked through (fish 8-10 min, chicken 18-20 min, prawns
+  5-6 min).
 - Finish with fresh coriander. Serve warm with rice or millet.
 servings: '2'
 prep_time_min: 10
@@ -75,12 +76,20 @@ kcal_is_estimate: true
 protein_g: 24
 good_for:
 - agni-digestive-fire
-one_line: A light, coconut-based chicken drumstick curry — no tomato, gently spiced and freshly made.
-headnote: Freshly cooked chicken in a light coconut-curry-leaf base keeps the meal clean and easy to digest
-  — no heavy tomato gravy, made the same day.
+one_line: A light, coconut-based chicken drumstick curry — no tomato, gently spiced
+  and freshly made.
+headnote: Freshly cooked chicken in a light coconut-curry-leaf base keeps the meal
+  clean and easy to digest — no heavy tomato gravy, made the same day.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/chicken-drumstick-curry.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.cookingcurries.com/wp-content/uploads/2017/08/Kerala-Style-Chicken-Currywith-Coconut-Milk.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Chicken drumstick curry
@@ -88,3 +97,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 170
+kcal_total: 340
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

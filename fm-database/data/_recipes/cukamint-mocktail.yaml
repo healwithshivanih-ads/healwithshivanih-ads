@@ -42,10 +42,12 @@ ingredients:
   qty: '1'
   unit: few wedges
 steps:
-- Place the cucumber pieces and mint sprigs in a blender with 1 cup of the coconut water; blend on high
-  for 1 minute until completely liquefied.
-- Add the remaining cup of coconut water and the lime juice to the blender and pulse briefly to combine.
-- Pour into 2 tall glasses or 4 tumblers over 2 ice cubes per glass; garnish with lime wedges.
+- Place the cucumber pieces and mint sprigs in a blender with 1 cup of the coconut
+  water; blend on high for 1 minute until completely liquefied.
+- Add the remaining cup of coconut water and the lime juice to the blender and pulse
+  briefly to combine.
+- Pour into 2 tall glasses or 4 tumblers over 2 ice cubes per glass; garnish with
+  lime wedges.
 servings: 2-4
 prep_time_min: 5
 cook_time_min: 0
@@ -55,20 +57,21 @@ protein_g: 1
 good_for:
 - agni-digestive-fire
 - hydration-and-brain-function
-one_line: A blended cucumber, mint, and coconut water mocktail that keeps pitta cool and quenches summer
-  thirst without alcohol.
-headnote: Everything cooling that summer needs — cucumber, mint, coconut water, lime — blended into a
-  refreshing non-alcoholic drink that looks and tastes festive.
+one_line: A blended cucumber, mint, and coconut water mocktail that keeps pitta cool
+  and quenches summer thirst without alcohol.
+headnote: Everything cooling that summer needs — cucumber, mint, coconut water, lime
+  — blended into a refreshing non-alcoholic drink that looks and tastes festive.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 260
 image:
-  file: images/odonnell/odonnell-261-146.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/cukamint-mocktail.jpg
+  credit: web reference (coach-selected)
+  source_url: https://flavorfulife.com/wp-content/uploads/2024/04/Coconut-mocktails.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -77,3 +80,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 27
+kcal_total: 80
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

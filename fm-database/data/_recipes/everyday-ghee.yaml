@@ -23,15 +23,17 @@ ingredients:
   unit: lb
 steps:
 - Place both sticks of butter in a small saucepan and melt over medium heat.
-- Reduce heat to low. After about 5 minutes the butter will develop a white froth on top and you will
-  hear popping from moisture evaporating — stay present, do not walk away.
-- Continue monitoring; as the popping becomes less frequent, watch closely. When the milk solids on the
-  pan bottom begin to turn golden brown — about 10–15 minutes total — remove the pan from heat.
+- Reduce heat to low. After about 5 minutes the butter will develop a white froth
+  on top and you will hear popping from moisture evaporating — stay present, do not
+  walk away.
+- Continue monitoring; as the popping becomes less frequent, watch closely. When the
+  milk solids on the pan bottom begin to turn golden brown — about 10–15 minutes total
+  — remove the pan from heat.
 - Cool until just warm, about 15 minutes.
-- Strain through a fine strainer or cheesecloth into a sterilised glass jar, skimming off any remaining
-  foam.
-- Store at room temperature with the lid on for up to 1 month, or refrigerate for longer storage. Always
-  use a clean utensil when scooping.
+- Strain through a fine strainer or cheesecloth into a sterilised glass jar, skimming
+  off any remaining foam.
+- Store at room temperature with the lid on for up to 1 month, or refrigerate for
+  longer storage. Always use a clean utensil when scooping.
 servings: '12'
 prep_time_min: 5
 cook_time_min: 20
@@ -42,20 +44,22 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - inflammation
-one_line: Homemade clarified butter — the Ayurvedic kitchen's most prized cooking fat, made from a single
-  ingredient in under 20 minutes.
-headnote: Removing the milk solids transforms butter into a shelf-stable, high-heat cooking oil that carries
-  spice qualities deep into the body's tissues and is easier to digest than whole butter.
+one_line: Homemade clarified butter — the Ayurvedic kitchen's most prized cooking
+  fat, made from a single ingredient in under 20 minutes.
+headnote: Removing the milk solids transforms butter into a shelf-stable, high-heat
+  cooking oil that carries spice qualities deep into the body's tissues and is easier
+  to digest than whole butter.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 52
 image:
-  file: images/odonnell/odonnell-051-012.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-ghee.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.101cookbooks.com/how_to_make_ghee.jpg?auto=compress&auto=format&w=1200
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -64,3 +68,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 136
+kcal_total: 1630
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -43,12 +43,13 @@ ingredients:
   qty: '0.25'
   unit: lime
 steps:
-- Peel the cucumber, leaving a few strips of skin on; halve lengthwise, scrape out the seeds, and dice
-  the flesh into cubes.
-- Halve the avocado and twist the halves apart; refrigerate the half with the stone; cube the flesh of
-  the other half and scoop it free with a large spoon.
+- Peel the cucumber, leaving a few strips of skin on; halve lengthwise, scrape out
+  the seeds, and dice the flesh into cubes.
+- Halve the avocado and twist the halves apart; refrigerate the half with the stone;
+  cube the flesh of the other half and scoop it free with a large spoon.
 - Combine the cucumber and avocado cubes in a small bowl.
-- Sprinkle with the spice mix and salt, then squeeze the lime quarter over everything and toss gently.
+- Sprinkle with the spice mix and salt, then squeeze the lime quarter over everything
+  and toss gently.
 - Serve right away alongside Only Zucchini Soup.
 servings: '2'
 prep_time_min: 8
@@ -60,9 +61,10 @@ good_for:
 - anti-inflammatory-diet
 - agni-digestive-fire
 - essential-fatty-acids
-one_line: Cubed avocado and cucumber tossed with summer spice and lime — a quick, cooling salad.
-headnote: The sweet creaminess of avocado partners with cooling cucumber and a bright squeeze of lime
-  to make a satisfying, no-cook side that comes together in minutes.
+one_line: Cubed avocado and cucumber tossed with summer spice and lime — a quick,
+  cooling salad.
+headnote: The sweet creaminess of avocado partners with cooling cucumber and a bright
+  squeeze of lime to make a satisfying, no-cook side that comes together in minutes.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -73,8 +75,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://therecipecritic.com/wp-content/uploads/2023/06/cucumber-avocado-salad-4.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: AVOCADO AND CUCUMBER SALAD
@@ -82,3 +84,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

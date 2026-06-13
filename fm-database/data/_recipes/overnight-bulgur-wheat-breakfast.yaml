@@ -42,11 +42,12 @@ ingredients:
   qty: '1'
   unit: pinch
 steps:
-- Rinse the bulgur wheat and place it in a medium saucepan. Pour 2 cups of boiling water or broth over
-  it, cover, and leave to soak overnight.
-- In the morning, add the Winter Spice Mix and a splash of water to prevent sticking, then set the heat
-  to medium.
-- Add raisins or grated vegetables directly to the pot (no need to stir), cover, and steam for 7–10 minutes.
+- Rinse the bulgur wheat and place it in a medium saucepan. Pour 2 cups of boiling
+  water or broth over it, cover, and leave to soak overnight.
+- In the morning, add the Winter Spice Mix and a splash of water to prevent sticking,
+  then set the heat to medium.
+- Add raisins or grated vegetables directly to the pot (no need to stir), cover, and
+  steam for 7–10 minutes.
 - Season with salt and fluff the grains with a fork before dividing between 2 bowls.
 servings: '2'
 prep_time_min: 5
@@ -58,10 +59,10 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - constipation
-one_line: A no-fuss savory grain bowl that soaks overnight and warms on the stove in minutes — ideal for
-  a steady winter morning.
-headnote: Bulgur wheat absorbs the liquid overnight, so morning prep is just a quick warm-through with
-  spices and whatever vegetables you have on hand.
+one_line: A no-fuss savory grain bowl that soaks overnight and warms on the stove
+  in minutes — ideal for a steady winter morning.
+headnote: Bulgur wheat absorbs the liquid overnight, so morning prep is just a quick
+  warm-through with spices and whatever vegetables you have on hand.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -71,8 +72,8 @@ image:
   file: images/odonnell/odonnell-338-192.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: overnight bulgur wheat breakfast
@@ -80,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 310
+kcal_total: 620
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

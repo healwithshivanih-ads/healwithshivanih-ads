@@ -42,10 +42,10 @@ ingredients:
   qty: '1'
   unit: dash
 steps:
-- Pour 1 cup of the citrus juice and the gingerroot into a blender and blend until the ginger is well
-  broken down.
-- With the blender running, drizzle in the honey, then pour in the remaining citrus juice, the lemon juice,
-  and the cayenne pepper if using.
+- Pour 1 cup of the citrus juice and the gingerroot into a blender and blend until
+  the ginger is well broken down.
+- With the blender running, drizzle in the honey, then pour in the remaining citrus
+  juice, the lemon juice, and the cayenne pepper if using.
 - Blend for 1 minute until everything is well combined.
 - Transfer immediately to 2 glasses and drink before the spices and pulp settle.
 servings: '2'
@@ -58,11 +58,11 @@ good_for:
 - agni-digestive-fire
 - immune-support
 - detoxification
-one_line: A zingy first-thing-in-the-morning citrus-ginger-honey shot that clears the head and ignites
-  digestion without caffeine.
-headnote: Citrus juice, fresh ginger, and a dash of cayenne combine to create a refreshing but penetrating
-  morning drink that clears spring congestion and gets the day started on an energised, kapha-clearing
-  note.
+one_line: A zingy first-thing-in-the-morning citrus-ginger-honey shot that clears
+  the head and ignites digestion without caffeine.
+headnote: Citrus juice, fresh ginger, and a dash of cayenne combine to create a refreshing
+  but penetrating morning drink that clears spring congestion and gets the day started
+  on an energised, kapha-clearing note.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -72,8 +72,8 @@ image:
   file: images/odonnell/odonnell-202-106.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: refresh-o-rama
@@ -81,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 90
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

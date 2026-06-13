@@ -43,9 +43,11 @@ ingredients:
 steps:
 - Soak chia seeds in the almond milk for at least 5 minutes.
 - Transfer the soaked seeds, almond milk, and any mix-ins to a blender.
-- Blend on high speed for 2 minutes — the longer you blend, the smoother and lighter the pudding.
+- Blend on high speed for 2 minutes — the longer you blend, the smoother and lighter
+  the pudding.
 - Let the pudding stand a few minutes to thicken, then serve in bowls.
-- 'Shortcut: halve the chia and shake everything in a jar (no blender) for a thicker tapioca-style version.'
+- 'Shortcut: halve the chia and shake everything in a jar (no blender) for a thicker
+  tapioca-style version.'
 servings: '2'
 prep_time_min: 10
 cook_time_min: 0
@@ -56,19 +58,21 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - gut-microbiome
-one_line: A nourishing blended chia pudding that comes together in minutes and keeps digestion lubricated.
-headnote: Chia's deeply hydrating quality makes this a grounding start to the day, particularly useful
-  in dry seasons or when the gut needs gentle support.
+one_line: A nourishing blended chia pudding that comes together in minutes and keeps
+  digestion lubricated.
+headnote: Chia's deeply hydrating quality makes this a grounding start to the day,
+  particularly useful in dry seasons or when the gut needs gentle support.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 102
 image:
-  file: images/odonnell/odonnell-102-026.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-chia-pudding.jpg
+  credit: web reference (coach-selected)
+  source_url: https://cookieandkate.com/images/2017/02/chia-seed-pudding-1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -77,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 160
+kcal_total: 320
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

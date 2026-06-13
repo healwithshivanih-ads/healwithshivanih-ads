@@ -54,14 +54,16 @@ ingredients:
   qty: '1'
   unit: pinch each
 steps:
-- Combine the vegetable broth and turmeric in a 2-quart saucepan and bring to a boil over high heat. If
-  you plan to use a carafe blender, keep 1 cup of broth at room temperature to add later.
+- Combine the vegetable broth and turmeric in a 2-quart saucepan and bring to a boil
+  over high heat. If you plan to use a carafe blender, keep 1 cup of broth at room
+  temperature to add later.
 - Peel and roughly chop the gingerroot and add it to the pot with the kale and chard.
 - Cover and simmer over medium heat for 10 minutes, then stir in the parsley and oil.
-- Remove from heat. Blend smooth with an immersion hand blender in the pan, or transfer to a carafe blender
-  (add the reserved room-temperature broth to prevent overheating) and blend from low to high until completely
-  smooth.
-- Season with salt and pepper, ladle into bowls, and serve topped with toasted sunflower seeds if desired.
+- Remove from heat. Blend smooth with an immersion hand blender in the pan, or transfer
+  to a carafe blender (add the reserved room-temperature broth to prevent overheating)
+  and blend from low to high until completely smooth.
+- Season with salt and pepper, ladle into bowls, and serve topped with toasted sunflower
+  seeds if desired.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 12
@@ -75,20 +77,22 @@ good_for:
 - inflammation
 - gut-microbiome
 - midlife-weight-gain
-one_line: A blended warm green soup of kale, chard, and parsley that acts as a digestive cleanser without
-  the problems of cold raw juice.
-headnote: The bitter and astringent tastes in this soup are specifically reducing in Ayurveda — a small
-  bowl works as a daily digestive tonic or a light meal when the system feels sluggish.
+one_line: A blended warm green soup of kale, chard, and parsley that acts as a digestive
+  cleanser without the problems of cold raw juice.
+headnote: The bitter and astringent tastes in this soup are specifically reducing
+  in Ayurveda — a small bowl works as a daily digestive tonic or a light meal when
+  the system feels sluggish.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 134
 image:
-  file: images/odonnell/odonnell-134-056.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-cleansing-green-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.makingthymeforhealth.com/wp-content/uploads/2016/01/Detox-Kale-Soup-_-700x1050.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -97,3 +101,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

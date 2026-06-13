@@ -68,16 +68,17 @@ ingredients:
   unit: whole
 steps:
 - Combine all the spices and salt in a small bowl.
-- Rinse the tofu and press it between your palms to squeeze out excess water. Mash it with a fork in a
-  bowl, then stir the mashed tofu into the spice mixture until well coated.
-- Warm the oil or ghee in a medium frying pan over medium-low heat. Add the spiced tofu and fry, stirring
-  every few minutes with a spatula, for about 5 minutes.
-- Add the chopped greens and fold them in. Continue cooking and stirring for another 5 minutes until the
-  tofu begins to brown. Remove from heat and cover to keep warm.
-- Pat the tortillas with damp hands to soften them. Lay them flat in a large pan over low heat and warm
-  for 2–3 minutes, taking them off before the edges curl.
-- Place 2 tortillas on each plate, spoon a strip of tofu across each, add desired toppings, and finish
-  with a squeeze of lime. Fold and eat.
+- Rinse the tofu and press it between your palms to squeeze out excess water. Mash
+  it with a fork in a bowl, then stir the mashed tofu into the spice mixture until
+  well coated.
+- Warm the oil or ghee in a medium frying pan over medium-low heat. Add the spiced
+  tofu and fry, stirring every few minutes with a spatula, for about 5 minutes.
+- Add the chopped greens and fold them in. Continue cooking and stirring for another
+  5 minutes until the tofu begins to brown. Remove from heat and cover to keep warm.
+- Pat the tortillas with damp hands to soften them. Lay them flat in a large pan over
+  low heat and warm for 2–3 minutes, taking them off before the edges curl.
+- Place 2 tortillas on each plate, spoon a strip of tofu across each, add desired
+  toppings, and finish with a squeeze of lime. Fold and eat.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
@@ -88,10 +89,11 @@ good_for:
 - protein-adequacy-vegetarian
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: Spiced crumbled tofu with wilted greens in warm corn tortillas — a satisfying spring lunch that
-  stays light without feeling like a compromise.
-headnote: Corn is naturally dry and the bitter greens offset tofu's heavier protein qualities, making
-  these tacos a well-balanced kapha-season meal that won't leave you sluggish.
+one_line: Spiced crumbled tofu with wilted greens in warm corn tortillas — a satisfying
+  spring lunch that stays light without feeling like a compromise.
+headnote: Corn is naturally dry and the bitter greens offset tofu's heavier protein
+  qualities, making these tacos a well-balanced kapha-season meal that won't leave
+  you sluggish.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -101,8 +103,8 @@ image:
   file: images/odonnell/odonnell-019-007.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: tofu tacos with greens
@@ -110,3 +112,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

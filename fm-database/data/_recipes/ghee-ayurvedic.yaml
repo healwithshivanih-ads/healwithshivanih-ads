@@ -23,14 +23,16 @@ ingredients:
   qty: '1'
   unit: lb
 steps:
-- Place the butter in a heavy-bottomed saucepan over medium heat and allow it to melt completely.
-- Continue heating for approximately twelve minutes, watching as froth rises to the surface — do not skim
-  it off, as it holds medicinal properties.
-- Reduce the heat to low; the butter will deepen to a golden-yellow colour and take on a faintly nutty
-  aroma.
-- Test readiness by dropping one or two drops of water into the pan — a crackling sound means the ghee
-  is done.
-- Remove from heat and allow to cool, then pour through a fine strainer into a clean, dry container.
+- Place the butter in a heavy-bottomed saucepan over medium heat and allow it to melt
+  completely.
+- Continue heating for approximately twelve minutes, watching as froth rises to the
+  surface — do not skim it off, as it holds medicinal properties.
+- Reduce the heat to low; the butter will deepen to a golden-yellow colour and take
+  on a faintly nutty aroma.
+- Test readiness by dropping one or two drops of water into the pan — a crackling
+  sound means the ghee is done.
+- Remove from heat and allow to cool, then pour through a fine strainer into a clean,
+  dry container.
 - Ghee keeps at room temperature without refrigeration.
 servings: '24'
 prep_time_min: 2
@@ -43,9 +45,11 @@ good_for:
 - liver-detoxification
 - digestion-and-nutrient-absorption
 - cooking-fats-and-cardiovascular-health
-one_line: Clarified butter slow-cooked until pure golden fat — the foundational Ayurvedic cooking medium.
-headnote: Ghee is the starting point for many Ayurvedic preparations and a staple cooking fat; the careful
-  slow-cook process removes milk solids, leaving a pure, stable fat with a high smoke point.
+one_line: Clarified butter slow-cooked until pure golden fat — the foundational Ayurvedic
+  cooking medium.
+headnote: Ghee is the starting point for many Ayurvedic preparations and a staple
+  cooking fat; the careful slow-cook process removes milk solids, leaving a pure,
+  stable fat with a high smoke point.
 attribution:
   author: Vasant Lad
   book: 'Ayurveda: The Science of Self-Healing'
@@ -62,3 +66,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 151
+kcal_total: 3620
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

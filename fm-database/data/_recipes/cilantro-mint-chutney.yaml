@@ -59,10 +59,10 @@ ingredients:
   qty: '0.5'
   unit: tsp
 steps:
-- In a food processor or blender, process the lemon juice, water, cilantro, and mint until the herbs are
-  coarsely chopped.
-- Add the dried coconut, ginger, optional honey, salt, and pepper, then blend until the chutney is completely
-  smooth.
+- In a food processor or blender, process the lemon juice, water, cilantro, and mint
+  until the herbs are coarsely chopped.
+- Add the dried coconut, ginger, optional honey, salt, and pepper, then blend until
+  the chutney is completely smooth.
 - Store in a covered container in the refrigerator for up to 1 week.
 servings: '16'
 prep_time_min: 10
@@ -74,19 +74,23 @@ good_for:
 - agni-digestive-fire
 - anti-inflammatory-diet
 - digestion-and-nutrient-absorption
-one_line: A blended cilantro and mint chutney with coconut and ginger — the quintessential cool, sattvic
-  summer condiment.
-headnote: Fresh herbs combined with coconut and ginger create a chutney that cools without chilling, adding
-  bright flavour and digestive support to dals, rice dishes, and dosas alike.
+one_line: A blended cilantro and mint chutney with coconut and ginger — the quintessential
+  cool, sattvic summer condiment.
+headnote: Fresh herbs combined with coconut and ginger create a chutney that cools
+  without chilling, adding bright flavour and digestive support to dals, rice dishes,
+  and dosas alike.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 86
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/cilantro-mint-chutney.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.feastingathome.com/wp-content/uploads/2018/02/cilantro-mint-chutney-102.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: cilantro mint chutney
@@ -94,3 +98,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 14
+kcal_total: 220
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

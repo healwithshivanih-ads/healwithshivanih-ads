@@ -44,8 +44,8 @@ ingredients:
   unit: tbsp
 steps:
 - Dissolve the coconut sugar in the tablespoon of hot water and let it cool briefly.
-- Combine all the ingredients — water, lime juice, cardamom powder, and dissolved sugar — in a small pitcher
-  or 32-ounce jar and stir well.
+- Combine all the ingredients — water, lime juice, cardamom powder, and dissolved
+  sugar — in a small pitcher or 32-ounce jar and stir well.
 - Serve in 2 tall glasses over 2 ice cubes per glass.
 servings: '2'
 prep_time_min: 3
@@ -56,19 +56,22 @@ protein_g: 0
 good_for:
 - acid-reflux-and-cardiac-sphincter-weakness
 - agni-digestive-fire
-one_line: A cooling, lightly sweetened lime drink with cardamom — a pitta-pacifying afternoon refresher
-  that eases acid stomach.
-headnote: Cardamom neutralises stomach acid while lime adds a refreshing brightness, making this a smarter
-  afternoon pick-me-up than coffee for anyone prone to heartburn.
+one_line: A cooling, lightly sweetened lime drink with cardamom — a pitta-pacifying
+  afternoon refresher that eases acid stomach.
+headnote: Cardamom neutralises stomach acid while lime adds a refreshing brightness,
+  making this a smarter afternoon pick-me-up than coffee for anyone prone to heartburn.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 32
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/cardamom-limeade.jpg
+  credit: web reference (coach-selected)
+  source_url: https://i0.wp.com/www.lovelaughmirch.com/wp-content/uploads/2015/06/NimbuPani_Cardamom-Limeade_1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: cardamom limeade
@@ -76,3 +79,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 25
+kcal_total: 50
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

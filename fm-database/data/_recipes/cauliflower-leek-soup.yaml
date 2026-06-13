@@ -42,13 +42,14 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Warm the oil in a large saucepan over medium heat. Chop the white part of the leek into thin 1-inch
-  strips and the cauliflower into 1-inch pieces.
+- Warm the oil in a large saucepan over medium heat. Chop the white part of the leek
+  into thin 1-inch strips and the cauliflower into 1-inch pieces.
 - Sauté the leek in the hot oil for about 5 minutes until soft.
-- Add the cauliflower pieces, broth, and Spring Salts to the pan. Cover and simmer for 20 minutes until
-  the cauliflower is completely soft.
-- Remove from heat and puree with an immersion blender directly in the pot until silky smooth. Alternatively,
-  transfer to a carafe blender, cool 2–3 minutes, and blend from low to high speed.
+- Add the cauliflower pieces, broth, and Spring Salts to the pan. Cover and simmer
+  for 20 minutes until the cauliflower is completely soft.
+- Remove from heat and puree with an immersion blender directly in the pot until silky
+  smooth. Alternatively, transfer to a carafe blender, cool 2–3 minutes, and blend
+  from low to high speed.
 - Ladle into 2 large bowls and serve.
 servings: '2'
 prep_time_min: 10
@@ -60,20 +61,22 @@ good_for:
 - agni-digestive-fire
 - detoxification
 - chronic-inflammation
-one_line: A creamy blended cauliflower and leek soup — lighter than the potato classic and perfectly suited
-  to the damp qualities of spring.
-headnote: Cauliflower's dry and slightly bitter qualities replace the heaviness of potato while still
-  delivering a satisfying creamy texture in this simple, versatile spring soup.
+one_line: A creamy blended cauliflower and leek soup — lighter than the potato classic
+  and perfectly suited to the damp qualities of spring.
+headnote: Cauliflower's dry and slightly bitter qualities replace the heaviness of
+  potato while still delivering a satisfying creamy texture in this simple, versatile
+  spring soup.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 185
 image:
-  file: images/odonnell/odonnell-185-095.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/cauliflower-leek-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.crowdedkitchen.com/wp-content/uploads/2022/03/Cauliflower-Leek-Soup-8.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -82,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 90
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

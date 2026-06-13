@@ -63,18 +63,21 @@ ingredients:
   qty: '1'
   unit: tbsp
 steps:
-- Bring the water to a boil in a large saucepan. Add the tofu, chopped vegetables, and sea vegetables,
-  reduce heat to medium, and simmer covered for about 10 minutes.
-- Add the noodles during the last 2 minutes of cooking and simmer until noodles and vegetables are just
-  tender. Remove from heat.
-- Dissolve the miso in about 1/4 cup of hot (not boiling) water to make a thin paste, then stir into the
-  soup. Do not reheat after adding miso.
-- 'For toasted nori: wave nori sheets briefly over a gas or electric burner until they turn bright green
-  and crispy, just a few seconds. Tear into quarters and set aside.'
-- 'For mineral gomasio: dry-roast sesame seeds in a heavy pan over medium-low heat, stirring constantly,
-  until lightly browned. Cool completely, then partially crush with a mortar and pestle or spice grinder.
-  Stir in salt and dulse flakes. Store in a shaker jar.'
-- Ladle the soup into 2 large bowls and serve with toasted nori and a sprinkle of mineral gomasio.
+- Bring the water to a boil in a large saucepan. Add the tofu, chopped vegetables,
+  and sea vegetables, reduce heat to medium, and simmer covered for about 10 minutes.
+- Add the noodles during the last 2 minutes of cooking and simmer until noodles and
+  vegetables are just tender. Remove from heat.
+- Dissolve the miso in about 1/4 cup of hot (not boiling) water to make a thin paste,
+  then stir into the soup. Do not reheat after adding miso.
+- 'For toasted nori: wave nori sheets briefly over a gas or electric burner until
+  they turn bright green and crispy, just a few seconds. Tear into quarters and set
+  aside.'
+- 'For mineral gomasio: dry-roast sesame seeds in a heavy pan over medium-low heat,
+  stirring constantly, until lightly browned. Cool completely, then partially crush
+  with a mortar and pestle or spice grinder. Stir in salt and dulse flakes. Store
+  in a shaker jar.'
+- Ladle the soup into 2 large bowls and serve with toasted nori and a sprinkle of
+  mineral gomasio.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
@@ -87,10 +90,10 @@ good_for:
 - immune-support
 - magnesium-nutrition
 - iodine-excess-and-autoimmune-thyroid
-one_line: A mineral-rich miso noodle broth with tofu, sea vegetables, and a sesame-dulse gomasio condiment
-  for deep winter nourishment.
-headnote: Sea vegetables bring iodine and trace minerals that are scarce in land-based winter diets; the
-  miso is added off-heat to preserve its beneficial enzymes.
+one_line: A mineral-rich miso noodle broth with tofu, sea vegetables, and a sesame-dulse
+  gomasio condiment for deep winter nourishment.
+headnote: Sea vegetables bring iodine and trace minerals that are scarce in land-based
+  winter diets; the miso is added off-heat to preserve its beneficial enzymes.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -107,3 +110,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 340
+kcal_total: 680
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

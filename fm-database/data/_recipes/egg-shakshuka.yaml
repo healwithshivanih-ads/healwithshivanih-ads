@@ -54,8 +54,8 @@ ingredients:
 steps:
 - Heat ghee, add cumin seeds, then onion; sauté until soft.
 - Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour over the vegetables, and cook covered on low until set, folding
-  once.
+- Beat the eggs with salt and pepper, pour over the vegetables, and cook covered on
+  low until set, folding once.
 - Garnish with coriander and serve warm.
 servings: '2'
 prep_time_min: 10
@@ -66,11 +66,18 @@ protein_g: 14
 good_for:
 - agni-digestive-fire
 one_line: A protein-rich egg shakshuka cooked with vegetables and gentle spices.
-headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward meal that keeps
-  blood sugar even through the morning.
+headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
+  meal that keeps blood sugar even through the morning.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/egg-shakshuka.jpg
+  credit: web reference (coach-selected)
+  source_url: https://cdn.loveandlemons.com/wp-content/uploads/2026/01/shakshuka-recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: shivani-hari-original
   location: Egg shakshuka
@@ -78,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

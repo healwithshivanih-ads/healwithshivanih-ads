@@ -54,12 +54,14 @@ ingredients:
   unit: handful
 steps:
 - If using chia seeds, soak them in a small bowl of water for 5 minutes.
-- Layer the apple pieces into the blender carafe first, then add the beet, lemon juice, leafy greens (not
-  the parsley yet), and the soaked chia seeds if using.
-- Pour in the water or coconut water and pulse for 30 seconds, then blend on high speed.
-- Drop the parsley leaves in through the top while the blender is running; stop and stir if needed to
-  work in any stubborn solids.
-- Blend until completely smooth, then pour into 2 glasses or save half in a sealed jar.
+- Layer the apple pieces into the blender carafe first, then add the beet, lemon juice,
+  leafy greens (not the parsley yet), and the soaked chia seeds if using.
+- Pour in the water or coconut water and pulse for 30 seconds, then blend on high
+  speed.
+- Drop the parsley leaves in through the top while the blender is running; stop and
+  stir if needed to work in any stubborn solids.
+- Blend until completely smooth, then pour into 2 glasses or save half in a sealed
+  jar.
 servings: '2'
 prep_time_min: 8
 cook_time_min: 0
@@ -70,10 +72,10 @@ good_for:
 - detoxification
 - constipation
 - agni-digestive-fire
-one_line: A vibrant blended drink of apple, beet, leafy greens, and parsley that supports gentle cleansing
-  and bowel regularity.
-headnote: This deep-hued summer blend harnesses the bitter, astringent qualities of greens and beet to
-  cool the blood and keep digestion moving.
+one_line: A vibrant blended drink of apple, beet, leafy greens, and parsley that supports
+  gentle cleansing and bowel regularity.
+headnote: This deep-hued summer blend harnesses the bitter, astringent qualities of
+  greens and beet to cool the blood and keep digestion moving.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -83,8 +85,8 @@ image:
   file: images/odonnell/odonnell-220-117.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: the beet queen
@@ -92,3 +94,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 55
+kcal_total: 110
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

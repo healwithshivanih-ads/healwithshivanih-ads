@@ -48,11 +48,13 @@ ingredients:
   unit: tsp
 steps:
 - Preheat the oven to 350°F (175°C) and line a baking sheet with parchment paper.
-- Mash the black beans well with a fork in a large bowl, then work in the spinach, roasted red pepper,
-  oat flour, and Winter Salts until the mixture is uniform but still slightly chunky.
-- Shape the mixture into 2 large or 3 medium patties and place on the prepared baking sheet.
-- Bake for 10 minutes per side, or alternatively melt 1 tsp ghee in a frying pan and pan-fry over medium
-  heat for 5–7 minutes per side until well browned.
+- Mash the black beans well with a fork in a large bowl, then work in the spinach,
+  roasted red pepper, oat flour, and Winter Salts until the mixture is uniform but
+  still slightly chunky.
+- Shape the mixture into 2 large or 3 medium patties and place on the prepared baking
+  sheet.
+- Bake for 10 minutes per side, or alternatively melt 1 tsp ghee in a frying pan and
+  pan-fry over medium heat for 5–7 minutes per side until well browned.
 - Serve over a steamed salad bowl, with rice and chutney, or in your preferred format.
 servings: '2'
 prep_time_min: 10
@@ -65,20 +67,21 @@ good_for:
 - blood-sugar-regulation
 - protein-adequacy-vegetarian
 - inflammation
-one_line: Hearty black bean patties bound with oat flour — quick to make, protein-rich, and satisfying
-  on a cold day.
-headnote: These patties hold together well and pack well for the next day's lunch; use the oven method
-  for hands-off cooking or the pan-fry for a crispier crust.
+one_line: Hearty black bean patties bound with oat flour — quick to make, protein-rich,
+  and satisfying on a cold day.
+headnote: These patties hold together well and pack well for the next day's lunch;
+  use the oven method for hands-off cooking or the pan-fry for a crispier crust.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 338
 image:
-  file: images/odonnell/odonnell-338-192.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/black-bean-oat-burger-winter.jpg
+  credit: web reference (coach-selected)
+  source_url: https://cdn.loveandlemons.com/wp-content/uploads/2020/07/black-bean-burger-2.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -87,3 +90,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 170
+kcal_total: 340
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

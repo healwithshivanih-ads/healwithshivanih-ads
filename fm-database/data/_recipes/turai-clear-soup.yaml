@@ -68,8 +68,8 @@ good_for:
 - agni-digestive-fire
 - gut-health
 one_line: A light, warming turai clear soup — soothing and easy on digestion.
-headnote: A gentle turai soup with ginger and pepper is warming, hydrating, and the perfect light dinner
-  when you want to rest the gut.
+headnote: A gentle turai soup with ginger and pepper is warming, hydrating, and the
+  perfect light dinner when you want to rest the gut.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -80,3 +80,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 40
+kcal_total: 80
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

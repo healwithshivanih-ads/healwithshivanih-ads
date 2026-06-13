@@ -45,9 +45,10 @@ ingredients:
   unit: ''
 steps:
 - Rinse the foxtail well.
-- Combine foxtail with water (or thin milk), a pinch of salt, and chopped dates in a pot.
-- Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy. Add more liquid if
-  needed.
+- Combine foxtail with water (or thin milk), a pinch of salt, and chopped dates in
+  a pot.
+- Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy.
+  Add more liquid if needed.
 - Stir in ghee and cardamom. Serve warm.
 servings: '2'
 prep_time_min: 10
@@ -58,9 +59,10 @@ protein_g: 5
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A creamy, lightly sweet foxtail porridge — a warm, easy-to-digest start to the day.
-headnote: Slow-cooked foxtail porridge is grounding and soothing, naturally sweetened with dates and warmed
-  with cardamom.
+one_line: A creamy, lightly sweet foxtail porridge — a warm, easy-to-digest start
+  to the day.
+headnote: Slow-cooked foxtail porridge is grounding and soothing, naturally sweetened
+  with dates and warmed with cardamom.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -69,8 +71,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://kutumayurveda.com/cdn/shop/articles/Gujarati_Style_Lapsi_Recipe_Millet_Sweet_Pudding.jpg?v=1726747506&width=1066
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Foxtail millet porridge
@@ -78,3 +80,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 170
+kcal_total: 340
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

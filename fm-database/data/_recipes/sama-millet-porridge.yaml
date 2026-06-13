@@ -45,9 +45,10 @@ ingredients:
   unit: ''
 steps:
 - Rinse the sama well.
-- Combine sama with water (or thin milk), a pinch of salt, and chopped dates in a pot.
-- Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy. Add more liquid if
-  needed.
+- Combine sama with water (or thin milk), a pinch of salt, and chopped dates in a
+  pot.
+- Cook covered on low 15-20 minutes, stirring occasionally, until soft and creamy.
+  Add more liquid if needed.
 - Stir in ghee and cardamom. Serve warm.
 servings: '2'
 prep_time_min: 10
@@ -58,9 +59,10 @@ protein_g: 5
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A creamy, lightly sweet sama porridge — a warm, easy-to-digest start to the day.
-headnote: Slow-cooked sama porridge is grounding and soothing, naturally sweetened with dates and warmed
-  with cardamom.
+one_line: A creamy, lightly sweet sama porridge — a warm, easy-to-digest start to
+  the day.
+headnote: Slow-cooked sama porridge is grounding and soothing, naturally sweetened
+  with dates and warmed with cardamom.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -71,3 +73,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 380
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

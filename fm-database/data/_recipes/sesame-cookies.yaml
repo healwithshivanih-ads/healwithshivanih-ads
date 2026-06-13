@@ -59,15 +59,17 @@ ingredients:
   qty: '2'
   unit: tsp
 steps:
-- Preheat oven to 350°F. Grease 2 baking sheets with ghee or coconut oil, or line with parchment paper.
-- In a medium bowl, mix all ingredients together in the order listed. If the batter is too loose to shape,
-  refrigerate for 5–10 minutes.
-- Roll batter into tablespoon-size balls or drop by spoon onto the prepared sheets, leaving a few inches
-  between each — they will puff up during baking.
-- Press each ball down lightly with a fork and sprinkle the tops with extra sesame seeds.
-- Bake for 10–12 minutes, until the surfaces are firm enough to touch without sticking. Allow cookies
-  to cool completely on the baking sheet before transferring — they will be soft and will firm as they
-  cool.
+- Preheat oven to 350°F. Grease 2 baking sheets with ghee or coconut oil, or line
+  with parchment paper.
+- In a medium bowl, mix all ingredients together in the order listed. If the batter
+  is too loose to shape, refrigerate for 5–10 minutes.
+- Roll batter into tablespoon-size balls or drop by spoon onto the prepared sheets,
+  leaving a few inches between each — they will puff up during baking.
+- Press each ball down lightly with a fork and sprinkle the tops with extra sesame
+  seeds.
+- Bake for 10–12 minutes, until the surfaces are firm enough to touch without sticking.
+  Allow cookies to cool completely on the baking sheet before transferring — they
+  will be soft and will firm as they cool.
 - 'Flax egg alternative: blend 1 tbsp ground flaxseeds with 3 tbsp water for 2 minutes.'
 servings: '24'
 prep_time_min: 15
@@ -79,10 +81,11 @@ good_for:
 - agni-digestive-fire
 - immune-support
 - iron-nutrition
-one_line: Chewy tahini cookies sweetened with maple syrup and spiced with warming blends — a nourishing,
-  gluten-free bite that honours sesame's tonic properties.
-headnote: Sesame's rare trio of bitter, pungent, and sweet qualities makes these flourless tahini cookies
-  more than just a treat — they are an ojas-building snack with real strength-giving properties.
+one_line: Chewy tahini cookies sweetened with maple syrup and spiced with warming
+  blends — a nourishing, gluten-free bite that honours sesame's tonic properties.
+headnote: Sesame's rare trio of bitter, pungent, and sweet qualities makes these flourless
+  tahini cookies more than just a treat — they are an ojas-building snack with real
+  strength-giving properties.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -92,8 +95,8 @@ image:
   file: images/odonnell/odonnell-312-177.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: sesame cookies
@@ -101,3 +104,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 90
+kcal_total: 2160
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

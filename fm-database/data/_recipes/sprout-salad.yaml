@@ -50,8 +50,8 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler on digestion lightly
-  steamed).
+- Chop or lightly steam the main vegetables/sprouts as appropriate (sprouts are gentler
+  on digestion lightly steamed).
 - Toss with cucumber, lemon juice, roasted cumin, and rock salt.
 - Fold through fresh herbs and a touch of oil if using. Serve fresh.
 servings: '2'
@@ -64,8 +64,8 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 one_line: A fresh, crunchy sprout salad dressed simply with lemon, cumin, and herbs.
-headnote: A simple salad of fresh or lightly steamed vegetables with lemon and roasted cumin adds fibre
-  and freshness — sprouts are best lightly steamed for easy digestion.
+headnote: A simple salad of fresh or lightly steamed vegetables with lemon and roasted
+  cumin adds fibre and freshness — sprouts are best lightly steamed for easy digestion.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -74,8 +74,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://smithakalluraya.com/wp-content/uploads/2016/09/sprouted-green-gram-salad-moong-sprouts-salad-hesarukalu-kosambari.1024x1024-12.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Sprout salad
@@ -83,3 +83,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

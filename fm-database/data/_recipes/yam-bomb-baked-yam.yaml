@@ -33,14 +33,14 @@ ingredients:
   qty: ''
   unit: to taste
 steps:
-- Preheat oven to 350°F. Pierce each yam several times with a fork, then set on a baking sheet or in a
-  baking dish.
-- Bake for 30 minutes or more — depending on thickness — until a fork inserted into the flesh slides in
-  easily.
-- Remove from oven and cut a deep X across the top of each yam. Peel back the skin and press the sides
-  gently to create a hollow well.
-- Fill each well with 1 tsp each of ghee, coconut oil, maple syrup, and/or almond butter as desired. Sprinkle
-  generously with Sweet Spice Mix or cinnamon.
+- Preheat oven to 350°F. Pierce each yam several times with a fork, then set on a
+  baking sheet or in a baking dish.
+- Bake for 30 minutes or more — depending on thickness — until a fork inserted into
+  the flesh slides in easily.
+- Remove from oven and cut a deep X across the top of each yam. Peel back the skin
+  and press the sides gently to create a hollow well.
+- Fill each well with 1 tsp each of ghee, coconut oil, maple syrup, and/or almond
+  butter as desired. Sprinkle generously with Sweet Spice Mix or cinnamon.
 - Eat directly from the skin with a steak knife and fork.
 servings: '2'
 prep_time_min: 5
@@ -52,10 +52,10 @@ good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
-one_line: A whole baked yam filled with ghee and warming spices — the simplest possible autumn dinner
-  that deeply nourishes and grounds vata.
-headnote: Pure, naturally sweet yam flesh baked until yielding, then pooled with ghee and aromatic spice
-  — an effortless, soul-satisfying meal for cool autumn evenings.
+one_line: A whole baked yam filled with ghee and warming spices — the simplest possible
+  autumn dinner that deeply nourishes and grounds vata.
+headnote: Pure, naturally sweet yam flesh baked until yielding, then pooled with ghee
+  and aromatic spice — an effortless, soul-satisfying meal for cool autumn evenings.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -65,8 +65,8 @@ image:
   file: images/odonnell/odonnell-297-167.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: the yam bomb
@@ -74,3 +74,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

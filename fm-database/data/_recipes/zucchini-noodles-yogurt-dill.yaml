@@ -57,11 +57,14 @@ ingredients:
   unit: to taste
 steps:
 - Set up a saucepan with 1 cup of water and a steamer basket; bring to a boil.
-- Use a julienne peeler drawn lengthwise down each zucchini to create long noodle-like strips.
-- Pile the zucchini noodles into the steamer basket, cover, and steam for 3–4 minutes until just tender
-  but still holding their shape; drain immediately in a colander.
-- In a small bowl, whisk together the dill, yogurt, lemon juice, turmeric, salt, and pepper until smooth.
-- Divide the warm noodles between 2 bowls and spoon the yogurt-dill sauce over each portion.
+- Use a julienne peeler drawn lengthwise down each zucchini to create long noodle-like
+  strips.
+- Pile the zucchini noodles into the steamer basket, cover, and steam for 3–4 minutes
+  until just tender but still holding their shape; drain immediately in a colander.
+- In a small bowl, whisk together the dill, yogurt, lemon juice, turmeric, salt, and
+  pepper until smooth.
+- Divide the warm noodles between 2 bowls and spoon the yogurt-dill sauce over each
+  portion.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 5
@@ -72,9 +75,10 @@ good_for:
 - agni-digestive-fire
 - anti-inflammatory-diet
 - digestion-and-nutrient-absorption
-one_line: Julienned zucchini noodles steamed al dente and dressed in a cooling turmeric-dill yogurt sauce.
-headnote: A refreshingly light dish that showcases zucchini's bitter-astringent summer magic in noodle
-  form, brightened by fresh dill and silky yogurt.
+one_line: Julienned zucchini noodles steamed al dente and dressed in a cooling turmeric-dill
+  yogurt sauce.
+headnote: A refreshingly light dish that showcases zucchini's bitter-astringent summer
+  magic in noodle form, brightened by fresh dill and silky yogurt.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -91,3 +95,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 130
+kcal_total: 260
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

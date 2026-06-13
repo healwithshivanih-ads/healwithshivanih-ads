@@ -60,15 +60,18 @@ ingredients:
   unit: tsp
 steps:
 - Preheat oven to 350°F.
-- Combine the dried fruits, spice mix, and liquid in a small bowl and let the fruit soak while you prepare
-  the apples.
-- Core each apple, leaving the base intact. Pierce each apple with 4 whole cloves for flavour and decoration.
-  Arrange the apples side by side in an 8x8-inch baking dish.
-- Spoon the soaked fruit filling into the hollowed apples, allowing any excess to rest on top. Pour the
-  remaining soaking liquid over the apples and into the dish.
-- Bake for 25 minutes, basting once halfway through with juices from the base of the dish, until the apples
-  are very tender. Allow to stand 5 minutes after removing from the oven.
-- Drizzle 1 tsp of honey over each apple just before serving if desired. Eat with a steak knife and fork.
+- Combine the dried fruits, spice mix, and liquid in a small bowl and let the fruit
+  soak while you prepare the apples.
+- Core each apple, leaving the base intact. Pierce each apple with 4 whole cloves
+  for flavour and decoration. Arrange the apples side by side in an 8x8-inch baking
+  dish.
+- Spoon the soaked fruit filling into the hollowed apples, allowing any excess to
+  rest on top. Pour the remaining soaking liquid over the apples and into the dish.
+- Bake for 25 minutes, basting once halfway through with juices from the base of the
+  dish, until the apples are very tender. Allow to stand 5 minutes after removing
+  from the oven.
+- Drizzle 1 tsp of honey over each apple just before serving if desired. Eat with
+  a steak knife and fork.
 servings: '4'
 prep_time_min: 15
 cook_time_min: 30
@@ -80,10 +83,11 @@ good_for:
 - constipation
 - detoxification
 - digestion-and-nutrient-absorption
-one_line: Whole apples stuffed with spiced dried fruit and baked until deeply tender — a warming, aromatic
-  autumn treat that is as digestive as it is comforting.
-headnote: Slow-baking transforms apples into a fragrant, caramelised vessel for a spiced dried-fruit filling
-  — the steady heat creates a deeply grounding and cleansing breakfast or light supper.
+one_line: Whole apples stuffed with spiced dried fruit and baked until deeply tender
+  — a warming, aromatic autumn treat that is as digestive as it is comforting.
+headnote: Slow-baking transforms apples into a fragrant, caramelised vessel for a
+  spiced dried-fruit filling — the steady heat creates a deeply grounding and cleansing
+  breakfast or light supper.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -94,8 +98,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://www.bakepedia.com/wp-content/uploads/2013/09/baked-apples.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: baked apples
@@ -103,3 +107,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 560
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

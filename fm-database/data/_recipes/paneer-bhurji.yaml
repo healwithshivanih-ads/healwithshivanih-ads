@@ -54,8 +54,8 @@ ingredients:
 steps:
 - Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
 - Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly golden (don't overcook
-  or it toughens).
+- Add the paneer and salt; toss gently 3-4 minutes until heated through and lightly
+  golden (don't overcook or it toughens).
 - Garnish with coriander and serve warm.
 servings: '2'
 prep_time_min: 10
@@ -66,8 +66,8 @@ protein_g: 16
 good_for:
 - agni-digestive-fire
 one_line: A simple, protein-rich paneer bhurji with vegetables and a light tempering.
-headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that doesn't need a heavy
-  gravy to taste good.
+headnote: Paneer cooked simply with vegetables is a quick, satisfying protein that
+  doesn't need a heavy gravy to taste good.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -76,8 +76,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://bucket.art/wp-content/uploads/Paneer-Bhurji.png
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Paneer bhurji
@@ -85,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

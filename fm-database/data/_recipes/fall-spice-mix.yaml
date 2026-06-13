@@ -41,12 +41,15 @@ ingredients:
   qty: '2'
   unit: tsp
 steps:
-- Dry-roast the coriander, cumin, and fennel seeds together in a heavy-bottomed pan over medium-low heat
-  until fragrant, a few minutes.
+- Dry-roast the coriander, cumin, and fennel seeds together in a heavy-bottomed pan
+  over medium-low heat until fragrant, a few minutes.
 - Transfer the roasted seeds to a wide bowl and allow to cool completely.
-- Grind the cooled seeds to a uniform consistency in a spice grinder or with a mortar and pestle.
-- Pour ground seeds back into the bowl and stir in the turmeric and ginger powders until evenly combined.
-- Store in a sealed glass jar or shaker-top spice jar — makes approximately one month's supply.
+- Grind the cooled seeds to a uniform consistency in a spice grinder or with a mortar
+  and pestle.
+- Pour ground seeds back into the bowl and stir in the turmeric and ginger powders
+  until evenly combined.
+- Store in a sealed glass jar or shaker-top spice jar — makes approximately one month's
+  supply.
 servings: '12'
 prep_time_min: 5
 cook_time_min: 10
@@ -58,21 +61,22 @@ good_for:
 - digestion-and-nutrient-absorption
 - anti-inflammatory-diet
 - inflammation
-one_line: A fragrant ground spice blend of roasted coriander, cumin, fennel, turmeric, and ginger — the
-  master seasoning for autumn Ayurvedic cooking.
-headnote: Roasting and grinding these five spices fresh creates a warming, digestive blend that stimulates
-  agni and supports the body's shift from summer heat to autumn cool — shake it into dal, soup, or roasted
-  vegetables.
+one_line: A fragrant ground spice blend of roasted coriander, cumin, fennel, turmeric,
+  and ginger — the master seasoning for autumn Ayurvedic cooking.
+headnote: Roasting and grinding these five spices fresh creates a warming, digestive
+  blend that stimulates agni and supports the body's shift from summer heat to autumn
+  cool — shake it into dal, soup, or roasted vegetables.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 323
 image:
-  file: images/odonnell/odonnell-323-185.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/fall-spice-mix.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.squarespace-cdn.com/content/v1/5eeb86f9f276e77b63c8a0a1/e5bcc56c-a5ec-4047-8224-c125067f4126/IMG_9159.jpeg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -81,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 11
+kcal_total: 130
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

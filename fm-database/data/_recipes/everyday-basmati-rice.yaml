@@ -38,11 +38,13 @@ ingredients:
   qty: '0.25'
   unit: tsp
 steps:
-- Rinse the rice under cool running water in a fine mesh sieve, then submerge the sieve in a bowl of cool
-  water and soak for 30 minutes.
+- Rinse the rice under cool running water in a fine mesh sieve, then submerge the
+  sieve in a bowl of cool water and soak for 30 minutes.
 - Drain and rinse once more until the water runs clear.
-- Combine the rice, water, ghee, and salt in a medium saucepan and bring to a boil over medium-high heat.
-- Cover, reduce heat to low, and cook for 17 minutes — do not lift the lid or stir during this time.
+- Combine the rice, water, ghee, and salt in a medium saucepan and bring to a boil
+  over medium-high heat.
+- Cover, reduce heat to low, and cook for 17 minutes — do not lift the lid or stir
+  during this time.
 - Remove from heat and leave the lid on for a further 5 minutes.
 - Uncover, fluff with a fork, and serve.
 servings: '2'
@@ -54,20 +56,22 @@ protein_g: 4
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: Properly rinsed and soaked white basmati that cooks up fluffy and light — the standard side
-  dish in Ayurvedic meal building.
-headnote: Soaking removes excess starch and makes the grain gentler on digestion; white basmati is preferred
-  in Ayurveda when digestive fire is low or the gut is sensitive.
+one_line: Properly rinsed and soaked white basmati that cooks up fluffy and light
+  — the standard side dish in Ayurvedic meal building.
+headnote: Soaking removes excess starch and makes the grain gentler on digestion;
+  white basmati is preferred in Ayurveda when digestive fire is low or the gut is
+  sensitive.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 128
 image:
-  file: images/odonnell/odonnell-128-051.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-basmati-rice.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.onceuponachef.com/images/2013/12/perfect-basmati-rice-1200x1496.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -76,3 +80,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 380
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

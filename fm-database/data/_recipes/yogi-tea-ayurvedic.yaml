@@ -65,10 +65,11 @@ good_for:
 - chronic-inflammation
 - sleep
 - stress-management
-one_line: A warming spiced chai-style tea with ginger, clove, cardamom, and cinnamon simmered down for
-  depth.
-headnote: This classic Ayurvedic spice tea kindles digestive fire and warms the body from the inside —
-  particularly well-suited to cold, damp conditions or when immunity needs support.
+one_line: A warming spiced chai-style tea with ginger, clove, cardamom, and cinnamon
+  simmered down for depth.
+headnote: This classic Ayurvedic spice tea kindles digestive fire and warms the body
+  from the inside — particularly well-suited to cold, damp conditions or when immunity
+  needs support.
 attribution:
   author: Vasant Lad
   book: 'Ayurveda: The Science of Self-Healing'
@@ -85,3 +86,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 20
+kcal_total: 80
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -41,9 +41,11 @@ ingredients:
   qty: 1 1/2
   unit: tsp
 steps:
-- Grind the dried herbs in a mortar and pestle until fine enough to pass through a shaker top.
+- Grind the dried herbs in a mortar and pestle until fine enough to pass through a
+  shaker top.
 - Mix the ground herbs with the sea salt and black pepper in a glass shaker jar.
-- Use as a cooking seasoning or as a table condiment. Makes approximately one month's supply.
+- Use as a cooking seasoning or as a table condiment. Makes approximately one month's
+  supply.
 servings: '12'
 prep_time_min: 5
 cook_time_min: 0
@@ -52,20 +54,22 @@ kcal_is_estimate: true
 protein_g: 0
 good_for:
 - agni-digestive-fire
-one_line: A simple herb salt of sage, rosemary, thyme, and pepper — a fresh, non-Indian seasoning option
-  for autumn dishes when you want warming without Indian spice flavours.
-headnote: When you want the warming, grounding character of autumn cooking without Indian spice flavours,
-  this garden-herb salt brings stimulating freshness to roasted vegetables, grains, and soups.
+one_line: A simple herb salt of sage, rosemary, thyme, and pepper — a fresh, non-Indian
+  seasoning option for autumn dishes when you want warming without Indian spice flavours.
+headnote: When you want the warming, grounding character of autumn cooking without
+  Indian spice flavours, this garden-herb salt brings stimulating freshness to roasted
+  vegetables, grains, and soups.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 323
 image:
-  file: images/odonnell/odonnell-323-185.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/fall-salts-herb-blend.jpg
+  credit: web reference (coach-selected)
+  source_url: https://entirelyelizabeth.com/wp-content/uploads/2025/11/Herb-Salt-Recipe-4.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -74,3 +78,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 4
+kcal_total: 45
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

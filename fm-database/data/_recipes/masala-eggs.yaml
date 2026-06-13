@@ -54,7 +54,8 @@ ingredients:
 steps:
 - Heat ghee, add cumin seeds, then onion; sauté until soft.
 - Add the chopped vegetables and turmeric; cook 2-3 minutes until tender.
-- Beat the eggs with salt and pepper, pour in, and stir continuously until just set and soft.
+- Beat the eggs with salt and pepper, pour in, and stir continuously until just set
+  and soft.
 - Garnish with coriander and serve warm.
 servings: '2'
 prep_time_min: 10
@@ -65,8 +66,8 @@ protein_g: 14
 good_for:
 - agni-digestive-fire
 one_line: A protein-rich masala eggs cooked with vegetables and gentle spices.
-headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward meal that keeps
-  blood sugar even through the morning.
+headnote: Eggs cooked with vegetables and a light tempering make a steady, protein-forward
+  meal that keeps blood sugar even through the morning.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -75,8 +76,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://i.pinimg.com/originals/c5/fe/d3/c5fed333ac7c5122fecced56d4e6af1e.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Masala eggs
@@ -84,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

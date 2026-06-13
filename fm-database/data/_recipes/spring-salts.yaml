@@ -42,9 +42,10 @@ ingredients:
   unit: tsp
 steps:
 - Combine all the ingredients in a bowl.
-- If the texture is uneven, grind briefly with a mortar and pestle until the mix reaches a consistent
-  texture.
-- Transfer to a small glass shaker jar for storage and use as a condiment or seasoning in spring recipes.
+- If the texture is uneven, grind briefly with a mortar and pestle until the mix reaches
+  a consistent texture.
+- Transfer to a small glass shaker jar for storage and use as a condiment or seasoning
+  in spring recipes.
 servings: '24'
 prep_time_min: 5
 cook_time_min: 0
@@ -53,10 +54,11 @@ kcal_is_estimate: true
 protein_g: 0
 good_for:
 - agni-digestive-fire
-one_line: A bright lemon-basil seasoning salt with black pepper and cayenne — an easy table condiment
-  to keep the flavour of spring food warming and pungent.
-headnote: When you want brightness and heat rather than deep curry warmth, these Spring Salts bring lemon's
-  astringency and basil's aromatic pungency — the seasoning counterpart to the Spring Spice Mix.
+one_line: A bright lemon-basil seasoning salt with black pepper and cayenne — an easy
+  table condiment to keep the flavour of spring food warming and pungent.
+headnote: When you want brightness and heat rather than deep curry warmth, these Spring
+  Salts bring lemon's astringency and basil's aromatic pungency — the seasoning counterpart
+  to the Spring Spice Mix.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -66,8 +68,8 @@ image:
   file: images/odonnell/odonnell-174-086.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: SPRING SALTS
@@ -75,3 +77,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 5
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

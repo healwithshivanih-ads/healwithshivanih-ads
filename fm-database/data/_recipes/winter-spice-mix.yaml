@@ -49,10 +49,10 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Dry-roast the coriander and cumin seeds together in a heavy-bottomed pan over medium heat, stirring,
-  until fragrant — just a few minutes.
-- Cool completely, then combine with the remaining ingredients and grind to a uniform powder in a spice
-  grinder or with a mortar and pestle.
+- Dry-roast the coriander and cumin seeds together in a heavy-bottomed pan over medium
+  heat, stirring, until fragrant — just a few minutes.
+- Cool completely, then combine with the remaining ingredients and grind to a uniform
+  powder in a spice grinder or with a mortar and pestle.
 - Store in a small glass jar with a shaker top.
 servings: makes 1/4 cup
 prep_time_min: 5
@@ -64,10 +64,11 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - inflammation
-one_line: A roasted cumin-coriander-turmeric blend that forms the flavour backbone of virtually every
-  winter Ayurvedic dish.
-headnote: Having this spice mix ready in a jar makes weeknight cooking effortless; the combination of
-  warming and carminative spices is calibrated to support digestion and counter vata's cold, dry tendencies.
+one_line: A roasted cumin-coriander-turmeric blend that forms the flavour backbone
+  of virtually every winter Ayurvedic dish.
+headnote: Having this spice mix ready in a jar makes weeknight cooking effortless;
+  the combination of warming and carminative spices is calibrated to support digestion
+  and counter vata's cold, dry tendencies.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -77,8 +78,8 @@ image:
   file: images/odonnell/odonnell-384-229.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: winter ayurvedic spice mix and salts
@@ -86,3 +87,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 20
+kcal_total: 80
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -47,8 +47,8 @@ ingredients:
 steps:
 - Place almonds in water and leave them to soak overnight.
 - The next morning, slip the skins off the soaked almonds.
-- Combine the peeled almonds in a blender with one cup of water, the cardamom, freshly ground black pepper,
-  and honey.
+- Combine the peeled almonds in a blender with one cup of water, the cardamom, freshly
+  ground black pepper, and honey.
 - Blend on high speed for about five minutes until smooth, then drink immediately.
 servings: '1'
 prep_time_min: 5
@@ -60,9 +60,11 @@ good_for:
 - agni-digestive-fire
 - mitochondrial-health-nutrients
 - chronic-fatigue-syndrome
-one_line: A quick morning ojas-building almond blend spiced with cardamom and black pepper.
-headnote: This simple soaked-almond drink is a classical Ayurvedic way to start the day — nourishing to
-  the nervous system and gently energising without aggravating digestive fire.
+one_line: A quick morning ojas-building almond blend spiced with cardamom and black
+  pepper.
+headnote: This simple soaked-almond drink is a classical Ayurvedic way to start the
+  day — nourishing to the nervous system and gently energising without aggravating
+  digestive fire.
 attribution:
   author: Vasant Lad
   book: 'Ayurveda: The Science of Self-Healing'
@@ -73,8 +75,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://kripalu.org/sites/default/files/styles/wide_900/public/2013-03/Ojas_drink1.jpg?itok=N3tah3Ql
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Almond Drink
@@ -82,3 +84,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 210
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -38,3 +38,10 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+image:
+  file: images/web/cooling-cucumber-mint-raita.jpg
+  credit: web reference (coach-selected)
+  source_url: https://rumkisgoldenspoon.com/wp-content/uploads/2023/06/Cucumber-mint-raita-recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use

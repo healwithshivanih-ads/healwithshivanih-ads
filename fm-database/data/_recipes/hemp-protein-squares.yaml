@@ -52,11 +52,13 @@ ingredients:
   unit: tsp
 steps:
 - Combine all the ingredients except 1 tsp of the coconut oil in a food processor.
-- Run the processor until the mixture clumps into a ball; if it refuses to come together, add the reserved
-  teaspoon of coconut oil and continue processing.
-- Press the mixture firmly and evenly into a shallow 8 × 8-inch dish or a lidded storage container.
+- Run the processor until the mixture clumps into a ball; if it refuses to come together,
+  add the reserved teaspoon of coconut oil and continue processing.
+- Press the mixture firmly and evenly into a shallow 8 × 8-inch dish or a lidded storage
+  container.
 - Refrigerate until firm, then slice into 6 squares.
-- Keep refrigerated until ready to eat; wrap individually in wax paper for on-the-go snacking.
+- Keep refrigerated until ready to eat; wrap individually in wax paper for on-the-go
+  snacking.
 servings: '6'
 prep_time_min: 10
 cook_time_min: 0
@@ -66,10 +68,10 @@ protein_g: 8
 good_for:
 - protein-adequacy-vegetarian
 - chronic-fatigue-syndrome
-one_line: No-bake date-and-nut squares loaded with hemp protein and coconut — a cooling, portable summer
-  snack.
-headnote: These refrigerator squares deliver plant protein and healthy fats without heating up the kitchen,
-  making them a sensible summer energy boost for active days.
+one_line: No-bake date-and-nut squares loaded with hemp protein and coconut — a cooling,
+  portable summer snack.
+headnote: These refrigerator squares deliver plant protein and healthy fats without
+  heating up the kitchen, making them a sensible summer energy boost for active days.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -79,8 +81,8 @@ image:
   file: images/odonnell/odonnell-051-012.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: hemp protein squares
@@ -88,3 +90,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 120
+kcal_total: 720
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

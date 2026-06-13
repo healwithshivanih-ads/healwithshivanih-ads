@@ -68,8 +68,8 @@ good_for:
 - agni-digestive-fire
 - gut-health
 one_line: A light, warming lauki soup — soothing and easy on digestion.
-headnote: A gentle lauki soup with ginger and pepper is warming, hydrating, and the perfect light dinner
-  when you want to rest the gut.
+headnote: A gentle lauki soup with ginger and pepper is warming, hydrating, and the
+  perfect light dinner when you want to rest the gut.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -78,8 +78,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://www.nehascookbook.com/wp-content/uploads/2022/10/Dudhi-soup-WS-1.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Lauki soup
@@ -87,3 +87,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 45
+kcal_total: 90
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

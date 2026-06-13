@@ -23,8 +23,8 @@ rasa:
 main_ingredients:
 - white quinoa (or mixed white and red)
 - water
-- mixed summer vegetables (zucchini, carrots, bok choy, green beans, and/or sugar snap peas), coarsely
-  chopped
+- mixed summer vegetables (zucchini, carrots, bok choy, green beans, and/or sugar
+  snap peas), coarsely chopped
 - fresh parsley, chopped, for garnish
 - lemon juice (from 1 large or 2 small lemons)
 - olive or hemp oil
@@ -38,8 +38,8 @@ ingredients:
 - item: water
   qty: '2'
   unit: cups
-- item: mixed summer vegetables (zucchini, carrots, bok choy, green beans, and/or sugar snap peas), coarsely
-    chopped
+- item: mixed summer vegetables (zucchini, carrots, bok choy, green beans, and/or
+    sugar snap peas), coarsely chopped
   qty: '2'
   unit: cups
 - item: fresh parsley, chopped, for garnish
@@ -58,12 +58,14 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Bring the water to a boil in a medium saucepan; add the quinoa, cover, and reduce to a low simmer for
-  10 minutes.
-- Scatter the chopped vegetables on top of the cooking quinoa, replace the lid, and cook for 10 minutes
-  more until both the quinoa and vegetables are tender.
-- Remove from the heat, fluff everything together with a fork, and leave uncovered to cool completely.
-- Whisk together the lemon juice, oil, salt, and spice mix in a small bowl (or shake in a jar).
+- Bring the water to a boil in a medium saucepan; add the quinoa, cover, and reduce
+  to a low simmer for 10 minutes.
+- Scatter the chopped vegetables on top of the cooking quinoa, replace the lid, and
+  cook for 10 minutes more until both the quinoa and vegetables are tender.
+- Remove from the heat, fluff everything together with a fork, and leave uncovered
+  to cool completely.
+- Whisk together the lemon juice, oil, salt, and spice mix in a small bowl (or shake
+  in a jar).
 - Once the quinoa is cool, pour the dressing over it and toss well with a fork.
 - Serve garnished with fresh parsley, on its own or alongside hummus.
 servings: 3-4
@@ -77,10 +79,10 @@ good_for:
 - anti-inflammatory-diet
 - agni-digestive-fire
 - phytonutrient-dense-diet
-one_line: A hearty quinoa salad loaded with steamed summer vegetables and dressed with lemon and summer
-  spices.
-headnote: Light, protein-complete, and endlessly adaptable, this salad earns its 'maha' (great) label
-  as the main-event summer meal that keeps the kitchen cool.
+one_line: A hearty quinoa salad loaded with steamed summer vegetables and dressed
+  with lemon and summer spices.
+headnote: Light, protein-complete, and endlessly adaptable, this salad earns its 'maha'
+  (great) label as the main-event summer meal that keeps the kitchen cool.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -90,8 +92,8 @@ image:
   file: images/odonnell/odonnell-239-132.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: maha quinoa salad
@@ -99,3 +101,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 260
+kcal_total: 920
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

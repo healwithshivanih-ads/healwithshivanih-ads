@@ -46,10 +46,12 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Combine the chopped apples, dates, water, maple syrup, grated ginger, and spice mix in a small saucepan.
-- Bring to a boil over high heat, then reduce to medium-low and simmer for 5 minutes until the fruit softens.
-- Remove from heat. Use an immersion blender to briefly blend for a chunky texture, or puree about one-third
-  of the mixture in a blender and stir back in.
+- Combine the chopped apples, dates, water, maple syrup, grated ginger, and spice
+  mix in a small saucepan.
+- Bring to a boil over high heat, then reduce to medium-low and simmer for 5 minutes
+  until the fruit softens.
+- Remove from heat. Use an immersion blender to briefly blend for a chunky texture,
+  or puree about one-third of the mixture in a blender and stir back in.
 - Divide between 2 breakfast bowls and serve warm.
 servings: '2'
 prep_time_min: 5
@@ -62,10 +64,11 @@ good_for:
 - constipation
 - digestion-and-nutrient-absorption
 - detoxification
-one_line: A quick warm apple-date compote with ginger — gently cleansing, easy to digest, and ideal for
-  early autumn mornings.
-headnote: Cooking transforms the cool, dry quality of raw apples into a warm, soothing compote that clears
-  residual summer heat while grounding vata with naturally sweet dates.
+one_line: A quick warm apple-date compote with ginger — gently cleansing, easy to
+  digest, and ideal for early autumn mornings.
+headnote: Cooking transforms the cool, dry quality of raw apples into a warm, soothing
+  compote that clears residual summer heat while grounding vata with naturally sweet
+  dates.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -75,8 +78,8 @@ image:
   file: images/odonnell/odonnell-283-158.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: stewed apples with dates
@@ -84,3 +87,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

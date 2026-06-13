@@ -87,17 +87,21 @@ ingredients:
   qty: '1'
   unit: to taste
 steps:
-- Bring the water to a boil in a large saucepan. Add the mung beans and turmeric and return to a boil.
-- Add all the chopped vegetables except the onion. Reduce heat to low and simmer partially covered for
-  30 minutes.
-- While the dal cooks, heat the coconut oil in a frying pan over medium heat. Sauté the diced onion for
-  about 5 minutes until translucent. Stir in the mustard seeds, cover loosely (they will splutter), and
-  fry for 1 minute.
-- Add the curry leaves and stir, then add the hing and stir until all spices are coated in oil. Turn off
-  the heat and stir the grated coconut into the spiced oil mixture; let stand 1–2 minutes.
-- Pour the spiced oil mixture and the sambar powder into the cooked dal. Simmer everything together for
-  5 minutes, adding a splash of hot water if the sambar gets too thick — it should be slightly watery.
-- Season with salt. Serve in bowls over basmati rice or with dosa, garnished with fresh cilantro.
+- Bring the water to a boil in a large saucepan. Add the mung beans and turmeric and
+  return to a boil.
+- Add all the chopped vegetables except the onion. Reduce heat to low and simmer partially
+  covered for 30 minutes.
+- While the dal cooks, heat the coconut oil in a frying pan over medium heat. Sauté
+  the diced onion for about 5 minutes until translucent. Stir in the mustard seeds,
+  cover loosely (they will splutter), and fry for 1 minute.
+- Add the curry leaves and stir, then add the hing and stir until all spices are coated
+  in oil. Turn off the heat and stir the grated coconut into the spiced oil mixture;
+  let stand 1–2 minutes.
+- Pour the spiced oil mixture and the sambar powder into the cooked dal. Simmer everything
+  together for 5 minutes, adding a splash of hot water if the sambar gets too thick
+  — it should be slightly watery.
+- Season with salt. Serve in bowls over basmati rice or with dosa, garnished with
+  fresh cilantro.
 servings: '4'
 prep_time_min: 15
 cook_time_min: 40
@@ -110,10 +114,11 @@ good_for:
 - detoxification
 - anti-inflammatory-diet
 - protein-adequacy-vegetarian
-one_line: A classic south Indian tomato-mung-dal soup with a fragrant mustard-coconut tempering — hot,
-  light, and cleansing for damp spring weather.
-headnote: Sambar's pungent, sour, and lightly spiced character makes it one of the best spring meals in
-  the Ayurvedic kitchen, equally good for breakfast or a main meal.
+one_line: A classic south Indian tomato-mung-dal soup with a fragrant mustard-coconut
+  tempering — hot, light, and cleansing for damp spring weather.
+headnote: Sambar's pungent, sour, and lightly spiced character makes it one of the
+  best spring meals in the Ayurvedic kitchen, equally good for breakfast or a main
+  meal.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -123,8 +128,8 @@ image:
   file: images/odonnell/odonnell-119-044.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: south indian sambar
@@ -132,3 +137,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 115
+kcal_total: 460
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

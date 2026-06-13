@@ -53,12 +53,13 @@ ingredients:
   qty: '2'
   unit: tsp
 steps:
-- Whisk soaked split moong dal, ground with water into a smooth, pourable batter (like thin pancake batter).
+- Whisk soaked split moong dal, ground with water into a smooth, pourable batter (like
+  thin pancake batter).
 - Stir in ginger, chilli, turmeric, chopped vegetables, and salt. Rest 10 minutes.
-- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter and spread into
-  a thin round.
-- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is golden, flip, and cook
-  the other side 1-2 minutes.
+- Heat a non-stick or cast-iron tava on medium. Lightly grease. Pour a ladle of batter
+  and spread into a thin round.
+- Drizzle a few drops of ghee around the edge. Cook 2-3 minutes until the base is
+  golden, flip, and cook the other side 1-2 minutes.
 - Serve hot with chutney.
 servings: '2'
 prep_time_min: 10
@@ -69,9 +70,10 @@ protein_g: 10
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, protein-rich moong cheela — quick, gut-friendly, and naturally gluten-free.
-headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's high in protein
-  and easy to digest — a far better breakfast than refined flour.
+one_line: A savoury, protein-rich moong cheela — quick, gut-friendly, and naturally
+  gluten-free.
+headnote: A simple batter cooked thin on a tava makes a light, savoury pancake that's
+  high in protein and easy to digest — a far better breakfast than refined flour.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -80,8 +82,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://hindi.cdn.zeenews.com/hindi/sites/default/files/2025/02/12/3677972-moong-dal-cheela-recipe-1.jpg?im=FitAndFill=(1200,900)
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Moong cheela
@@ -89,3 +91,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 170
+kcal_total: 340
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

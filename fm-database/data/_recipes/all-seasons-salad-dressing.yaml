@@ -47,10 +47,10 @@ kcal_is_estimate: true
 protein_g: 0
 good_for:
 - agni-digestive-fire
-one_line: A sharp lemon-olive oil dressing seasoned with digestive spices — ready in minutes and good
-  on anything cooked.
-headnote: Lemon and the digestive salt formula make this more than a simple vinaigrette; the acidity and
-  spices gently stimulate digestive fire.
+one_line: A sharp lemon-olive oil dressing seasoned with digestive spices — ready
+  in minutes and good on anything cooked.
+headnote: Lemon and the digestive salt formula make this more than a simple vinaigrette;
+  the acidity and spices gently stimulate digestive fire.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -61,8 +61,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://mycuratedtastes.com/wp-content/uploads/2024/01/Lemon-and-Thyme-Vinaigrette-Dressing-Featured-Image-768x512.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ALL-SEASONS SALAD DRESSING
@@ -70,3 +70,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 130
+kcal_total: 520
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

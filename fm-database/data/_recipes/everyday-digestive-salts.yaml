@@ -39,10 +39,11 @@ ingredients:
 steps:
 - Preheat oven to 300°F (150°C).
 - Finely grate the outside of the lemon to make zest — you need about 1 tsp.
-- Grind the fennel seeds as fine as possible in a mortar and pestle or spice grinder, if using.
+- Grind the fennel seeds as fine as possible in a mortar and pestle or spice grinder,
+  if using.
 - Mix the lemon zest, ground fennel seeds, salt, and ginger powder together in a bowl.
-- Spread the mixture in an even layer (no clumps) on a baking sheet and bake for about 15 minutes to dry
-  out the lemon zest.
+- Spread the mixture in an even layer (no clumps) on a baking sheet and bake for about
+  15 minutes to dry out the lemon zest.
 - If the zest pieces are too large for a shaker top, grind again briefly.
 - Cool completely, then transfer to a shaker jar.
 servings: '40'
@@ -53,20 +54,22 @@ kcal_is_estimate: false
 protein_g: 0
 good_for:
 - agni-digestive-fire
-one_line: A lemon-ginger-fennel seasoning salt that stimulates digestive juices better than plain salt
-  alone.
-headnote: The combination of salt with sour lemon and pungent ginger targets all three digestive fire
-  triggers, making this a worthwhile substitute for plain salt on the table.
+one_line: A lemon-ginger-fennel seasoning salt that stimulates digestive juices better
+  than plain salt alone.
+headnote: The combination of salt with sour lemon and pungent ginger targets all three
+  digestive fire triggers, making this a worthwhile substitute for plain salt on the
+  table.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 111
 image:
-  file: images/odonnell/odonnell-111-036.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-digestive-salts.jpg
+  credit: web reference (coach-selected)
+  source_url: https://nuttyyogi.com/cdn/shop/products/ayurvedicdigestivesalt_2.png?v=1680766566
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -75,3 +78,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 5
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

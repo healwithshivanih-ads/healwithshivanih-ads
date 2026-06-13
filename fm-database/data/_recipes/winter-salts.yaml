@@ -41,8 +41,8 @@ ingredients:
   qty: '1'
   unit: tbsp
 steps:
-- Combine all ingredients in a small glass shaker jar. If the texture is uneven, briefly grind with a
-  mortar and pestle first.
+- Combine all ingredients in a small glass shaker jar. If the texture is uneven, briefly
+  grind with a mortar and pestle first.
 - Use as a seasoning blend throughout winter cooking or keep on the table as a condiment.
 servings: makes 1/3 cup
 prep_time_min: 5
@@ -52,9 +52,11 @@ kcal_is_estimate: true
 protein_g: 0
 good_for:
 - agni-digestive-fire
-one_line: A fragrant herb-and-pepper salt blend for seasoning winter dishes at the stove or at the table.
-headnote: Rosemary and marjoram are warming, circulatory herbs that complement black pepper well; keeping
-  this mix on hand simplifies seasoning across all the winter recipes in this chapter.
+one_line: A fragrant herb-and-pepper salt blend for seasoning winter dishes at the
+  stove or at the table.
+headnote: Rosemary and marjoram are warming, circulatory herbs that complement black
+  pepper well; keeping this mix on hand simplifies seasoning across all the winter
+  recipes in this chapter.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -64,8 +66,8 @@ image:
   file: images/odonnell/odonnell-384-229.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: winter ayurvedic spice mix and salts
@@ -73,3 +75,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 20
+kcal_total: 60
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

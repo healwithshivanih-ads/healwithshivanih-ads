@@ -51,9 +51,10 @@ ingredients:
   qty: '1'
   unit: dash
 steps:
-- Toast the sesame seeds in a small dry pan over medium-low heat, stirring constantly, until lightly golden.
-- Whisk or shake together the miso paste, sesame oil, rice vinegar, ginger, cumin, toasted seeds, and
-  ume vinegar if using, in a small bowl or 8-ounce mason jar.
+- Toast the sesame seeds in a small dry pan over medium-low heat, stirring constantly,
+  until lightly golden.
+- Whisk or shake together the miso paste, sesame oil, rice vinegar, ginger, cumin,
+  toasted seeds, and ume vinegar if using, in a small bowl or 8-ounce mason jar.
 - Refrigerate and use within a week; shake or stir well before each use.
 servings: '3'
 prep_time_min: 5
@@ -65,10 +66,11 @@ good_for:
 - agni-digestive-fire
 - gut-microbiome
 - digestion-and-nutrient-absorption
-one_line: A balanced four-taste miso and sesame dressing that brings depth and minerals to winter greens
-  and grain bowls.
-headnote: Sesame oil provides the heavy, warming quality that winter calls for; the miso contributes probiotic-rich
-  sour taste — together they make dark leafy greens far more appealing on a cold day.
+one_line: A balanced four-taste miso and sesame dressing that brings depth and minerals
+  to winter greens and grain bowls.
+headnote: Sesame oil provides the heavy, warming quality that winter calls for; the
+  miso contributes probiotic-rich sour taste — together they make dark leafy greens
+  far more appealing on a cold day.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -78,8 +80,8 @@ image:
   file: images/odonnell/odonnell-390-234.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: miso sesame dressing
@@ -87,3 +89,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 180
+kcal_total: 540
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

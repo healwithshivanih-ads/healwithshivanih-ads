@@ -75,16 +75,17 @@ ingredients:
   qty: ''
   unit: ''
 steps:
-- Combine the beans, broth or bean cooking water, chopped carrots, Swiss chard, and turmeric in a large
-  saucepan. Bring to a boil, then cover and simmer on low heat for 15–20 minutes until the vegetables
-  are tender.
-- While the soup simmers, warm ghee in a small frying pan over medium heat. Add cumin seeds and sauté
-  until fragrant, 2–3 minutes; remove from heat immediately.
-- Add the seasoned ghee and coriander powder to the soup and simmer 5 minutes more. Remove from heat and
-  stir in salt.
-- Use an immersion blender to blend about half the soup to a creamy consistency while keeping the rest
-  chunky.
-- Serve garnished with avocado slices, diced tomato, yogurt, or chopped cilantro as desired.
+- Combine the beans, broth or bean cooking water, chopped carrots, Swiss chard, and
+  turmeric in a large saucepan. Bring to a boil, then cover and simmer on low heat
+  for 15–20 minutes until the vegetables are tender.
+- While the soup simmers, warm ghee in a small frying pan over medium heat. Add cumin
+  seeds and sauté until fragrant, 2–3 minutes; remove from heat immediately.
+- Add the seasoned ghee and coriander powder to the soup and simmer 5 minutes more.
+  Remove from heat and stir in salt.
+- Use an immersion blender to blend about half the soup to a creamy consistency while
+  keeping the rest chunky.
+- Serve garnished with avocado slices, diced tomato, yogurt, or chopped cilantro as
+  desired.
 servings: '4'
 prep_time_min: 10
 cook_time_min: 30
@@ -96,10 +97,11 @@ good_for:
 - gut-microbiome
 - digestion-and-nutrient-absorption
 - iron-nutrition
-one_line: A chunky-creamy black bean soup with carrots, Swiss chard, and cumin-ghee tempering — hearty,
-  plant-protein rich, and ideal for autumn.
-headnote: Black beans bring deep nourishment to muscle tissue, while cumin and coriander support digestive
-  fire — this simple soup blends down to a rich, creamy base with satisfying chunks of vegetables.
+one_line: A chunky-creamy black bean soup with carrots, Swiss chard, and cumin-ghee
+  tempering — hearty, plant-protein rich, and ideal for autumn.
+headnote: Black beans bring deep nourishment to muscle tissue, while cumin and coriander
+  support digestive fire — this simple soup blends down to a rich, creamy base with
+  satisfying chunks of vegetables.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -109,8 +111,8 @@ image:
   file: images/odonnell/odonnell-293-164.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: simple black bean soup
@@ -118,3 +120,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 170
+kcal_total: 680
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

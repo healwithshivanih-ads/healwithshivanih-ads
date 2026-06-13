@@ -35,13 +35,15 @@ ingredients:
   qty: '1'
   unit: part
 steps:
-- Combine the licorice root powder with eight parts of water in a saucepan and bring to a boil.
-- Continue boiling until the liquid reduces to one-quarter of its original volume, forming a concentrated
-  decoction.
-- Measure out one part of this decoction and combine it with an equal part of prepared ghee in a clean
-  pan.
+- Combine the licorice root powder with eight parts of water in a saucepan and bring
+  to a boil.
+- Continue boiling until the liquid reduces to one-quarter of its original volume,
+  forming a concentrated decoction.
+- Measure out one part of this decoction and combine it with an equal part of prepared
+  ghee in a clean pan.
 - Add an equal part of fresh water to the ghee-decoction mixture.
-- Boil the mixture, stirring, until all the water has evaporated and only the licorice-infused ghee remains.
+- Boil the mixture, stirring, until all the water has evaporated and only the licorice-infused
+  ghee remains.
 servings: '12'
 prep_time_min: 5
 cook_time_min: 40
@@ -54,9 +56,11 @@ good_for:
 - hpa-axis-dysregulation
 - liver-detoxification
 - digestion-and-nutrient-absorption
-one_line: Ghee infused with a slow-cooked licorice decoction — a classical Ayurvedic medicated fat.
-headnote: Licorice ghee combines the nourishing qualities of ghee with the adaptogenic and soothing properties
-  of licorice root, traditionally used to support adrenal and digestive health.
+one_line: Ghee infused with a slow-cooked licorice decoction — a classical Ayurvedic
+  medicated fat.
+headnote: Licorice ghee combines the nourishing qualities of ghee with the adaptogenic
+  and soothing properties of licorice root, traditionally used to support adrenal
+  and digestive health.
 attribution:
   author: Vasant Lad
   book: 'Ayurveda: The Science of Self-Healing'
@@ -73,3 +77,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 40
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

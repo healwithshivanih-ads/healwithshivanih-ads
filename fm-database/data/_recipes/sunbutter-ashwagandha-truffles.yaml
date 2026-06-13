@@ -65,16 +65,16 @@ ingredients:
   qty: '1'
   unit: small amount
 steps:
-- Mix together the filling ingredients — melted coconut oil, sunflower butter, honey, vanilla, almond
-  meal, cinnamon, and ashwagandha — in a small bowl until fully combined.
+- Mix together the filling ingredients — melted coconut oil, sunflower butter, honey,
+  vanilla, almond meal, cinnamon, and ashwagandha — in a small bowl until fully combined.
 - Cover and place the mixture in the freezer for 45 minutes to firm up.
-- 'Prepare the chocolate coating: whisk together the melted coconut oil, maple syrup, and cacao powder
-  in a bowl. Nest the coating bowl inside a larger bowl of warm water to keep it from solidifying while
-  you work.'
-- Remove the filling from the freezer and roll into 1-inch balls. Drop each ball into the chocolate coating
-  and use two spoons to roll it until fully covered.
-- Lift each truffle onto a parchment-lined baking sheet. Sprinkle with shredded coconut before the coating
-  sets, if desired.
+- 'Prepare the chocolate coating: whisk together the melted coconut oil, maple syrup,
+  and cacao powder in a bowl. Nest the coating bowl inside a larger bowl of warm water
+  to keep it from solidifying while you work.'
+- Remove the filling from the freezer and roll into 1-inch balls. Drop each ball into
+  the chocolate coating and use two spoons to roll it until fully covered.
+- Lift each truffle onto a parchment-lined baking sheet. Sprinkle with shredded coconut
+  before the coating sets, if desired.
 - Refrigerate until firm and keep chilled until serving.
 servings: '12'
 prep_time_min: 20
@@ -86,11 +86,11 @@ good_for:
 - adrenal-fatigue
 - agni-digestive-fire
 - nervous-system-regulation
-one_line: Dark chocolate-coated sunflower butter balls with ashwagandha — a grounding adaptogenic winter
-  treat.
-headnote: These no-bake truffles use sunflower seed butter as a lighter alternative to peanut butter and
-  include ashwagandha for its tissue-building, stress-adapting properties; keep them in the fridge as
-  a steady energy snack.
+one_line: Dark chocolate-coated sunflower butter balls with ashwagandha — a grounding
+  adaptogenic winter treat.
+headnote: These no-bake truffles use sunflower seed butter as a lighter alternative
+  to peanut butter and include ashwagandha for its tissue-building, stress-adapting
+  properties; keep them in the fridge as a steady energy snack.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -100,8 +100,8 @@ image:
   file: images/odonnell/odonnell-367-216.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: sunbutter truffles
@@ -109,3 +109,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 126
+kcal_total: 1512
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -21,7 +21,8 @@ rasa:
 main_ingredients:
 - cooked white cannellini beans
 - baby spinach
-- marinated drained artichoke hearts, or 2 steamed artichoke hearts plus 1 tsp olive oil
+- marinated drained artichoke hearts, or 2 steamed artichoke hearts plus 1 tsp olive
+  oil
 - ground flaxseed
 - spring salts
 - lemon zest (optional)
@@ -33,7 +34,8 @@ ingredients:
 - item: baby spinach
   qty: '1'
   unit: handful
-- item: marinated drained artichoke hearts, or 2 steamed artichoke hearts plus 1 tsp olive oil
+- item: marinated drained artichoke hearts, or 2 steamed artichoke hearts plus 1 tsp
+    olive oil
   qty: '2'
   unit: whole
 - item: ground flaxseed
@@ -48,12 +50,14 @@ ingredients:
 steps:
 - Preheat the oven to 350°F and line a baking sheet with parchment paper.
 - Mash the cannellini beans well with a fork in a large mixing bowl.
-- Finely chop the spinach and dice the artichoke hearts, then stir them into the mashed beans.
-- Add the flaxseed, Spring Salts, and lemon zest (plus olive oil if using steamed artichokes instead of
-  marinated). Mix until the mixture is uniformly chunky.
-- Shape into 6 patties, place on the parchment-lined sheet, and bake for 10 minutes on each side.
-- Alternatively, heat 1 tsp of ghee in a non-stick pan and pan-fry each patty over medium heat for about
-  5 minutes per side until browned.
+- Finely chop the spinach and dice the artichoke hearts, then stir them into the mashed
+  beans.
+- Add the flaxseed, Spring Salts, and lemon zest (plus olive oil if using steamed
+  artichokes instead of marinated). Mix until the mixture is uniformly chunky.
+- Shape into 6 patties, place on the parchment-lined sheet, and bake for 10 minutes
+  on each side.
+- Alternatively, heat 1 tsp of ghee in a non-stick pan and pan-fry each patty over
+  medium heat for about 5 minutes per side until browned.
 - Serve with stone-ground mustard.
 servings: '6'
 prep_time_min: 15
@@ -65,10 +69,11 @@ good_for:
 - agni-digestive-fire
 - protein-adequacy-vegetarian
 - detoxification
-one_line: Baked patties of mashed white beans and artichoke with spinach and flaxseed — lemony, light,
-  and easy to pack for lunch.
-headnote: Artichoke's bitter, liver-supportive qualities combine with the protein of white beans and the
-  binding power of flaxseed to create a spring croquette that is satisfying without being heavy.
+one_line: Baked patties of mashed white beans and artichoke with spinach and flaxseed
+  — lemony, light, and easy to pack for lunch.
+headnote: Artichoke's bitter, liver-supportive qualities combine with the protein
+  of white beans and the binding power of flaxseed to create a spring croquette that
+  is satisfying without being heavy.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -78,8 +83,8 @@ image:
   file: images/odonnell/odonnell-187-096.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: white bean and artichoke croquettes
@@ -87,3 +92,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 80
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -55,10 +55,11 @@ good_for:
 - anti-inflammatory-diet
 - constipation
 - agni-digestive-fire
-one_line: A mix of fresh seasonal berries in pomegranate juice — astringent, cleansing, and beautifully
-  pitta-cooling.
-headnote: 'Peak-season berries are among summer''s best medicines: their astringent quality tones tissues
-  and clears accumulated heat, making this salad a functional as well as delicious meal.'
+one_line: A mix of fresh seasonal berries in pomegranate juice — astringent, cleansing,
+  and beautifully pitta-cooling.
+headnote: 'Peak-season berries are among summer''s best medicines: their astringent
+  quality tones tissues and clears accumulated heat, making this salad a functional
+  as well as delicious meal.'
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -68,8 +69,8 @@ image:
   file: images/odonnell/odonnell-253-140.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fruit salad trio
@@ -77,3 +78,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 140
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

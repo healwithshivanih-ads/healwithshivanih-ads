@@ -42,9 +42,10 @@ ingredients:
   qty: to taste
   unit: ''
 steps:
-- Heat the milk in a saucepan until it just reaches boiling point, then reduce to a simmer.
-- Squeeze in a small amount of lemon juice, stir in the yogurt culture, then cover the pot and leave it
-  in a warm, dark spot overnight.
+- Heat the milk in a saucepan until it just reaches boiling point, then reduce to
+  a simmer.
+- Squeeze in a small amount of lemon juice, stir in the yogurt culture, then cover
+  the pot and leave it in a warm, dark spot overnight.
 - By morning the milk will have set into fresh yogurt.
 - Combine the yogurt with an equal quantity of water and blend until smooth and frothy.
 - Sweeten with maple syrup if desired and serve.
@@ -60,17 +61,21 @@ good_for:
 - digestion-and-nutrient-absorption
 - probiotic-and-prebiotic-support
 one_line: Home-cultured yogurt thinned with water into a cooling, probiotic-rich lassi.
-headnote: Making lassi from scratch lets you control the culture and keep the beneficial bacteria alive
-  — a light, digestive-supporting drink that is far gentler than plain yogurt.
+headnote: Making lassi from scratch lets you control the culture and keep the beneficial
+  bacteria alive — a light, digestive-supporting drink that is far gentler than plain
+  yogurt.
 attribution:
   author: Vasant Lad
   book: 'Ayurveda: The Science of Self-Healing'
   source_id: lad-ayurveda-science-of-self-healing-1984
   page: null
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/buttermilk-lassi-ayurvedic.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianveggiedelight.com/wp-content/uploads/2023/01/sweet-lassi-recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Buttermilk (lassi)
@@ -78,3 +83,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 80
+kcal_total: 320
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

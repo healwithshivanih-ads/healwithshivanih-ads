@@ -61,12 +61,12 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Rinse the palak moong well. Pressure-cook with turmeric and 2.5 cups water until soft (3-4 whistles),
-  or simmer covered 25-30 minutes. Whisk smooth.
-- Heat ghee in a small pan. Add cumin seeds, let them splutter, then add ginger, curry leaves, and a pinch
-  of hing; sauté 20 seconds.
-- Pour the tempering into the cooked dal. Add salt and a little hot water for a pourable consistency.
-  Simmer 3-4 minutes.
+- Rinse the palak moong well. Pressure-cook with turmeric and 2.5 cups water until
+  soft (3-4 whistles), or simmer covered 25-30 minutes. Whisk smooth.
+- Heat ghee in a small pan. Add cumin seeds, let them splutter, then add ginger, curry
+  leaves, and a pinch of hing; sauté 20 seconds.
+- Pour the tempering into the cooked dal. Add salt and a little hot water for a pourable
+  consistency. Simmer 3-4 minutes.
 - Finish with lemon juice and coriander. Serve warm with rice or roti.
 servings: '2'
 prep_time_min: 10
@@ -77,9 +77,10 @@ protein_g: 11
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A comforting, well-tempered palak moong simmered soft and finished with a ghee-cumin tadka.
-headnote: A simple palak moong is one of the most digestible protein sources — cooked soft, spiced gently
-  with cumin and ginger, and kept free of heavy onion-tomato gravy.
+one_line: A comforting, well-tempered palak moong simmered soft and finished with
+  a ghee-cumin tadka.
+headnote: A simple palak moong is one of the most digestible protein sources — cooked
+  soft, spiced gently with cumin and ginger, and kept free of heavy onion-tomato gravy.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -88,8 +89,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://www.foodie-trail.com/wp-content/uploads/2023/02/PHOTO-2023-01-31-18-25-25_1.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Palak moong dal
@@ -97,3 +98,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 180
+kcal_total: 360
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

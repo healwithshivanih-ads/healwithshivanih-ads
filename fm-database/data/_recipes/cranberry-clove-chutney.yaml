@@ -50,14 +50,14 @@ ingredients:
   qty: 1/2
   unit: cup
 steps:
-- Combine the cranberries, cloves, cinnamon, ginger, orange juice, and orange zest in a medium saucepan.
-  Bring to a boil over high heat.
-- Reduce heat to low and stir in the dehydrated cane juice. Simmer uncovered, stirring occasionally, until
-  the cranberries begin to dissolve and the chutney coats a spoon, about 20 minutes. It will thicken further
-  as it cools.
+- Combine the cranberries, cloves, cinnamon, ginger, orange juice, and orange zest
+  in a medium saucepan. Bring to a boil over high heat.
+- Reduce heat to low and stir in the dehydrated cane juice. Simmer uncovered, stirring
+  occasionally, until the cranberries begin to dissolve and the chutney coats a spoon,
+  about 20 minutes. It will thicken further as it cools.
 - Taste and adjust sweetener; if reducing, cook an additional 5–10 minutes to thicken.
-- Serve by the tablespoon alongside steamed greens, roasted vegetables, or grain cereal. Remove the cloves
-  before storing if preferred.
+- Serve by the tablespoon alongside steamed greens, roasted vegetables, or grain cereal.
+  Remove the cloves before storing if preferred.
 servings: '16'
 prep_time_min: 10
 cook_time_min: 25
@@ -68,20 +68,22 @@ good_for:
 - agni-digestive-fire
 - detoxification
 - liver-detoxification
-one_line: A sharp, jewel-coloured cranberry chutney with cloves and orange — energising, blood-cleansing,
-  and far less sweet than commercial versions.
-headnote: Fresh cranberries' potent astringent and sour punch is softened with orange, ginger, and just
-  enough sweetener to make a lively chutney that supports digestion of heavier autumn and winter meals.
+one_line: A sharp, jewel-coloured cranberry chutney with cloves and orange — energising,
+  blood-cleansing, and far less sweet than commercial versions.
+headnote: Fresh cranberries' potent astringent and sour punch is softened with orange,
+  ginger, and just enough sweetener to make a lively chutney that supports digestion
+  of heavier autumn and winter meals.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 325
 image:
-  file: images/odonnell/odonnell-325-187.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/cranberry-clove-chutney.jpg
+  credit: web reference (coach-selected)
+  source_url: https://assets.epicurious.com/photos/582cc7a9971f420e380c22c8/1%3A1/w_2560%2Cc_limit/cranberry-chutney-with-orange-figs-and-mustard-BA-111416.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -90,3 +92,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 20
+kcal_total: 320
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

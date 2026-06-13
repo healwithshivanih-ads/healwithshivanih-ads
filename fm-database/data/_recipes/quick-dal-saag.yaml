@@ -52,14 +52,15 @@ ingredients:
   qty: '4'
   unit: tsp
 steps:
-- Soak split mung beans in water for at least 3 hours or overnight. Rinse until the water runs clear.
-- Bring 4 cups of water or broth to a boil in a large saucepan over high heat. Add the drained mung beans,
-  spice mix, and turmeric; return to a boil uncovered.
-- Reduce heat to medium and simmer partially covered for 20 minutes (allow 30 minutes if the beans were
-  not soaked). Do not stir during cooking.
+- Soak split mung beans in water for at least 3 hours or overnight. Rinse until the
+  water runs clear.
+- Bring 4 cups of water or broth to a boil in a large saucepan over high heat. Add
+  the drained mung beans, spice mix, and turmeric; return to a boil uncovered.
+- Reduce heat to medium and simmer partially covered for 20 minutes (allow 30 minutes
+  if the beans were not soaked). Do not stir during cooking.
 - Stir in the chopped spinach until it wilts into the dal, then add salt.
-- Serve in bowls over brown or white basmati rice or with everyday dosa. Drizzle 1 tsp of melted ghee
-  over each serving.
+- Serve in bowls over brown or white basmati rice or with everyday dosa. Drizzle 1
+  tsp of melted ghee over each serving.
 servings: '4'
 prep_time_min: 10
 cook_time_min: 30
@@ -72,10 +73,11 @@ good_for:
 - gut-microbiome
 - digestion-and-nutrient-absorption
 - iron-nutrition
-one_line: A minimalist split mung and spinach dal seasoned with turmeric and Fall Spice Mix — deeply cleansing,
-  easily digestible, and tridoshic.
-headnote: One of Ayurveda's most cleansing combinations — split yellow mung and spinach — simplified to
-  a weeknight staple with just a handful of warming spices and a finishing drizzle of ghee.
+one_line: A minimalist split mung and spinach dal seasoned with turmeric and Fall
+  Spice Mix — deeply cleansing, easily digestible, and tridoshic.
+headnote: One of Ayurveda's most cleansing combinations — split yellow mung and spinach
+  — simplified to a weeknight staple with just a handful of warming spices and a finishing
+  drizzle of ghee.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -85,8 +87,8 @@ image:
   file: images/odonnell/odonnell-295-166.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: quick dal saag
@@ -94,3 +96,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 560
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

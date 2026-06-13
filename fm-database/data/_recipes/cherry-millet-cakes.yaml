@@ -55,13 +55,14 @@ ingredients:
   unit: tbsp
 steps:
 - Preheat the oven to 400°F. Line a 6-cup muffin tin with baking cups.
-- Soak the prunes in 1/3 cup warm water for 15 minutes, then use a hand blender to puree the prunes and
-  soaking liquid with 1/4 cup of the cooked millet.
-- Stir together the prune-millet puree, ground flaxseed, ginger powder, and lemon juice.
-- Fold in the remaining 3/4 cup cooked millet and the dried cherries. Allow the mixture to rest for 5
-  minutes.
-- Divide the mixture evenly among the 6 muffin cups, sprinkle the raw millet grains over each, and gently
-  press the tops smooth with the back of a spoon.
+- Soak the prunes in 1/3 cup warm water for 15 minutes, then use a hand blender to
+  puree the prunes and soaking liquid with 1/4 cup of the cooked millet.
+- Stir together the prune-millet puree, ground flaxseed, ginger powder, and lemon
+  juice.
+- Fold in the remaining 3/4 cup cooked millet and the dried cherries. Allow the mixture
+  to rest for 5 minutes.
+- Divide the mixture evenly among the 6 muffin cups, sprinkle the raw millet grains
+  over each, and gently press the tops smooth with the back of a spoon.
 - Bake for 20–25 minutes until firm and golden on top.
 servings: '6'
 prep_time_min: 25
@@ -73,20 +74,22 @@ good_for:
 - agni-digestive-fire
 - detoxification
 - blood-sugar-regulation
-one_line: Baked millet-and-cherry snack cakes sweetened with prune puree and spiced with ginger — a light,
-  kapha-friendly alternative to pastries.
-headnote: Dry millet and astringent dried fruits combine with warming ginger to make a satisfying spring
-  treat that supports the body's natural urge to lighten up after winter.
+one_line: Baked millet-and-cherry snack cakes sweetened with prune puree and spiced
+  with ginger — a light, kapha-friendly alternative to pastries.
+headnote: Dry millet and astringent dried fruits combine with warming ginger to make
+  a satisfying spring treat that supports the body's natural urge to lighten up after
+  winter.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 162
 image:
-  file: images/odonnell/odonnell-162-079.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/cherry-millet-cakes.jpg
+  credit: web reference (coach-selected)
+  source_url: https://minimalistbaker.com/wp-content/uploads/2021/05/FLUFFY-Millet-Breakfast-Cake-with-Stone-Fruit-Gluten-free-plant-based-naturally-sweetened-adaptable-by-the-season-minimalistbaker-recipe-plantbased-glutenfree-millet-cake-8.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -95,3 +98,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 360
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

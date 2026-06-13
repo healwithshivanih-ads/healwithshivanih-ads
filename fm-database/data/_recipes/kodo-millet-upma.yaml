@@ -45,7 +45,7 @@ ingredients:
   qty: '0.5'
   unit: tsp
 - item: curry leaves
-  qty: '8–10'
+  qty: 8–10
   unit: leaves
 - item: fresh ginger, finely grated
   qty: '1'
@@ -72,17 +72,20 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Rinse the kodo millet well and dry-roast it in a heavy pan over medium heat for 2–3 minutes, stirring
-  constantly, until it smells nutty and the grains feel dry. Set aside.
-- Heat ghee in the same pan over medium heat. Add mustard seeds and let them pop (15–20 seconds), then
-  add cumin seeds, curry leaves, ginger, and chilli. Sauté for 30 seconds until fragrant.
-- Add onion and cook 2–3 minutes until softened and lightly golden. Add diced vegetables and turmeric;
-  stir-fry 2 minutes.
-- Add 2.5 cups water and salt. Bring to a boil, then add the roasted millet in a steady stream, stirring
-  to prevent clumping.
-- Reduce heat to low, cover, and cook 12–15 minutes until the millet has absorbed all the water and is
-  fluffy. Turn off heat and rest (covered) for 5 minutes.
-- Fluff with a fork, squeeze lemon juice over, and garnish with fresh coriander. Serve warm.
+- Rinse the kodo millet well and dry-roast it in a heavy pan over medium heat for
+  2–3 minutes, stirring constantly, until it smells nutty and the grains feel dry.
+  Set aside.
+- Heat ghee in the same pan over medium heat. Add mustard seeds and let them pop (15–20
+  seconds), then add cumin seeds, curry leaves, ginger, and chilli. Sauté for 30 seconds
+  until fragrant.
+- Add onion and cook 2–3 minutes until softened and lightly golden. Add diced vegetables
+  and turmeric; stir-fry 2 minutes.
+- Add 2.5 cups water and salt. Bring to a boil, then add the roasted millet in a steady
+  stream, stirring to prevent clumping.
+- Reduce heat to low, cover, and cook 12–15 minutes until the millet has absorbed
+  all the water and is fluffy. Turn off heat and rest (covered) for 5 minutes.
+- Fluff with a fork, squeeze lemon juice over, and garnish with fresh coriander. Serve
+  warm.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 20
@@ -94,11 +97,11 @@ good_for:
 - blood-sugar-regulation
 - gut-health
 - digestion-and-nutrient-absorption
-one_line: A light, warming savoury porridge made with kodo millet — India's most digestive ancient grain
-  — spiced with ginger and curry leaves.
-headnote: Kodo millet is prized in Ayurveda for its low glycaemic load and its affinity for deepening
-  agni without taxing digestion. Dry-roasting the millet before cooking gives it a nutty flavour and
-  keeps it fluffy rather than sticky.
+one_line: A light, warming savoury porridge made with kodo millet — India's most digestive
+  ancient grain — spiced with ginger and curry leaves.
+headnote: Kodo millet is prized in Ayurveda for its low glycaemic load and its affinity
+  for deepening agni without taxing digestion. Dry-roasting the millet before cooking
+  gives it a nutty flavour and keeps it fluffy rather than sticky.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -107,8 +110,8 @@ image:
   credit: 'Photo: Smitha Kalluraya (smithakalluraya.com)'
   source_url: https://smithakalluraya.com/millet-upma-recipe-kodo-millet-upma-varagu-upma-recipe/
   rights_status: web_reference_uncleared
-  note: cropped to remove watermarks; internal-app reference use — replace with licensed or original
-    photo before any external/commercial use
+  note: cropped to remove watermarks; internal-app reference use — replace with licensed
+    or original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Kodo Millet Upma
@@ -116,3 +119,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

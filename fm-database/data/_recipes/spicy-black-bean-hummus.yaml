@@ -51,9 +51,11 @@ ingredients:
   unit: dash
 steps:
 - Combine all ingredients in a deep bowl.
-- Use a hand blender to puree everything together until smooth, or to whatever texture you prefer.
-- Serve in a bowl with vegetable dippers such as parboiled carrot sticks, baked sweet potato wedges, or
-  lettuce leaves. Optionally top with reserved salsa and a sprig of parsley.
+- Use a hand blender to puree everything together until smooth, or to whatever texture
+  you prefer.
+- Serve in a bowl with vegetable dippers such as parboiled carrot sticks, baked sweet
+  potato wedges, or lettuce leaves. Optionally top with reserved salsa and a sprig
+  of parsley.
 servings: '4'
 prep_time_min: 5
 cook_time_min: 0
@@ -64,10 +66,11 @@ good_for:
 - agni-digestive-fire
 - protein-adequacy-vegetarian
 - blood-sugar-regulation
-one_line: A quick blended black bean dip spiced with cumin, lemon, and apple cider vinegar — light, pungent,
-  and kapha-balancing.
-headnote: Black beans blended with the sharp bite of cumin and apple cider vinegar make a dip that delivers
-  the astringent and pungent tastes spring calls for, without the tahini heaviness of traditional hummus.
+one_line: A quick blended black bean dip spiced with cumin, lemon, and apple cider
+  vinegar — light, pungent, and kapha-balancing.
+headnote: Black beans blended with the sharp bite of cumin and apple cider vinegar
+  make a dip that delivers the astringent and pungent tastes spring calls for, without
+  the tahini heaviness of traditional hummus.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -77,8 +80,8 @@ image:
   file: images/odonnell/odonnell-133-055.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: spicy black bean hummus
@@ -86,3 +89,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 50
+kcal_total: 200
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

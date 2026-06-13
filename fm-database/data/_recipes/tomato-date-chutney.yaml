@@ -48,13 +48,14 @@ ingredients:
   qty: '2'
   unit: tsp
 steps:
-- Melt the ghee in a medium frying pan or wide saucepan over medium heat. Toast the fenugreek seeds in
-  the ghee, stirring constantly, until aromatic, about 2–3 minutes.
+- Melt the ghee in a medium frying pan or wide saucepan over medium heat. Toast the
+  fenugreek seeds in the ghee, stirring constantly, until aromatic, about 2–3 minutes.
 - Add the tomatoes and salt to the pan and stir to combine.
-- Chop the dates into small rounds and add to the pan. Reduce heat to low and simmer uncovered, stirring
-  occasionally, for 15–20 minutes until the dates have almost dissolved and the chutney is jam-like.
-- Remove from heat, stir in the lemon juice, and cool before transferring to a glass jar. Refrigerate
-  and use within a week.
+- Chop the dates into small rounds and add to the pan. Reduce heat to low and simmer
+  uncovered, stirring occasionally, for 15–20 minutes until the dates have almost
+  dissolved and the chutney is jam-like.
+- Remove from heat, stir in the lemon juice, and cool before transferring to a glass
+  jar. Refrigerate and use within a week.
 servings: 16 oz
 prep_time_min: 10
 cook_time_min: 25
@@ -65,10 +66,11 @@ good_for:
 - agni-digestive-fire
 - liver-detoxification
 - digestion-and-nutrient-absorption
-one_line: A Punjab-inspired tomato and date chutney with liver-supporting fenugreek — the perfect tangy
-  accompaniment for dosa or rice.
-headnote: Fenugreek seed is a traditional liver tonic in Ayurveda; this chutney repurposes home-canned
-  summer tomatoes into a sweet-sour winter condiment that pairs beautifully with grains.
+one_line: A Punjab-inspired tomato and date chutney with liver-supporting fenugreek
+  — the perfect tangy accompaniment for dosa or rice.
+headnote: Fenugreek seed is a traditional liver tonic in Ayurveda; this chutney repurposes
+  home-canned summer tomatoes into a sweet-sour winter condiment that pairs beautifully
+  with grains.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -78,8 +80,8 @@ image:
   file: images/odonnell/odonnell-389-233.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: tomato date chutney
@@ -87,3 +89,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 18
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

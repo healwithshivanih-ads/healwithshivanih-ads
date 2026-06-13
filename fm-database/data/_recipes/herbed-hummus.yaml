@@ -53,15 +53,16 @@ ingredients:
   unit: cup
 steps:
 - Soak the dried chickpeas in plenty of cold water overnight.
-- Drain, rinse, and simmer the chickpeas in a large pot with 8 cups of fresh water for about 2 hours,
-  until the skins begin to come off and you can easily squash a bean between your fingers; drain, reserving
-  the cooking liquid.
-- Transfer the chickpeas to a food processor or blender with the olive oil, lemon juice, tahini, and salt;
-  blend until smooth, adding a few tablespoons of the reserved cooking water if needed to reach a creamy
-  consistency.
-- Add the fresh herbs and pulse just until they are evenly distributed through the hummus.
-- Serve in a wide bowl drizzled with olive oil, or store refrigerated in sealed containers for up to 5
-  days.
+- Drain, rinse, and simmer the chickpeas in a large pot with 8 cups of fresh water
+  for about 2 hours, until the skins begin to come off and you can easily squash a
+  bean between your fingers; drain, reserving the cooking liquid.
+- Transfer the chickpeas to a food processor or blender with the olive oil, lemon
+  juice, tahini, and salt; blend until smooth, adding a few tablespoons of the reserved
+  cooking water if needed to reach a creamy consistency.
+- Add the fresh herbs and pulse just until they are evenly distributed through the
+  hummus.
+- Serve in a wide bowl drizzled with olive oil, or store refrigerated in sealed containers
+  for up to 5 days.
 servings: '8'
 prep_time_min: 15
 cook_time_min: 120
@@ -72,10 +73,11 @@ good_for:
 - protein-adequacy-vegetarian
 - digestion-and-nutrient-absorption
 - agni-digestive-fire
-one_line: Home-cooked chickpeas blended with tahini, lemon, and a generous handful of fresh herbs — whole-food
-  hummus far cleaner than any shop-bought version.
-headnote: Making hummus from scratch with whole dried chickpeas gives you complete control over the ingredients
-  and lets you pack in whatever cooling summer herbs are growing in your garden.
+one_line: Home-cooked chickpeas blended with tahini, lemon, and a generous handful
+  of fresh herbs — whole-food hummus far cleaner than any shop-bought version.
+headnote: Making hummus from scratch with whole dried chickpeas gives you complete
+  control over the ingredients and lets you pack in whatever cooling summer herbs
+  are growing in your garden.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -85,8 +87,8 @@ image:
   file: images/odonnell/odonnell-239-132.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: herbed hummus
@@ -94,3 +96,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 150
+kcal_total: 1200
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -46,7 +46,8 @@ ingredients:
 steps:
 - Combine all the fruits in a small bowl with the coconut water.
 - Squeeze fresh lime juice over the top.
-- Allow to sit for 20–30 minutes so the flavours mingle, then serve as a standalone meal.
+- Allow to sit for 20–30 minutes so the flavours mingle, then serve as a standalone
+  meal.
 servings: '1'
 prep_time_min: 5
 cook_time_min: 0
@@ -57,9 +58,11 @@ good_for:
 - constipation
 - agni-digestive-fire
 - detoxification
-one_line: A bright mix of fresh and dried citrus with coconut water — a warming, cleansing morning bowl.
-headnote: Mixed citrus salads bring a brightening, sour quality best suited to winter but acceptable in
-  small amounts to energise a summer morning when digestion needs a nudge.
+one_line: A bright mix of fresh and dried citrus with coconut water — a warming, cleansing
+  morning bowl.
+headnote: Mixed citrus salads bring a brightening, sour quality best suited to winter
+  but acceptable in small amounts to energise a summer morning when digestion needs
+  a nudge.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -69,8 +72,8 @@ image:
   file: images/odonnell/odonnell-253-140.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fruit salad trio
@@ -78,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 110
+kcal_total: 110
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

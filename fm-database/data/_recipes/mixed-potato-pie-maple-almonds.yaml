@@ -68,16 +68,17 @@ ingredients:
   unit: whole
 steps:
 - Preheat oven to 350°F (175°C).
-- 'For the almonds: mix the spice blend with maple syrup, toss the almonds in this mixture, then coat
-  with the combined salt and sugar. Spread on a parchment-lined baking sheet and roast for 10–12 minutes.
-  Cool and coarsely chop.'
-- Lightly grease a 9-inch pie dish with ghee. Combine the mashed sweet potato, 2 tbsp ghee, spice mix,
-  egg, salt, and pepper in a food processor or by hand until smooth.
-- Slice the white potato (skin on) into 1/8-inch rounds and layer them across the bottom of the greased
-  pie dish, overlapping to cover completely.
+- 'For the almonds: mix the spice blend with maple syrup, toss the almonds in this
+  mixture, then coat with the combined salt and sugar. Spread on a parchment-lined
+  baking sheet and roast for 10–12 minutes. Cool and coarsely chop.'
+- Lightly grease a 9-inch pie dish with ghee. Combine the mashed sweet potato, 2 tbsp
+  ghee, spice mix, egg, salt, and pepper in a food processor or by hand until smooth.
+- Slice the white potato (skin on) into 1/8-inch rounds and layer them across the
+  bottom of the greased pie dish, overlapping to cover completely.
 - Spread the mashed sweet potato mixture evenly over the white potato layer.
-- Bake on the top rack for 40 minutes until the top begins to brown. Remove from oven, scatter the chopped
-  maple almonds over the top, and allow to cool slightly before slicing.
+- Bake on the top rack for 40 minutes until the top begins to brown. Remove from oven,
+  scatter the chopped maple almonds over the top, and allow to cool slightly before
+  slicing.
 servings: '6'
 prep_time_min: 20
 cook_time_min: 55
@@ -88,10 +89,11 @@ good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
 - constipation
-one_line: A layered sweet and white potato pie crowned with caramelised maple almonds — elegant winter
-  comfort food.
-headnote: Pairing sweet potato with white potato brings complementary tastes; the sweet maple almonds
-  balance the cooling, dry qualities of white potato and make this dish special enough for guests.
+one_line: A layered sweet and white potato pie crowned with caramelised maple almonds
+  — elegant winter comfort food.
+headnote: Pairing sweet potato with white potato brings complementary tastes; the
+  sweet maple almonds balance the cooling, dry qualities of white potato and make
+  this dish special enough for guests.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -108,3 +110,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 207
+kcal_total: 1240
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -54,13 +54,14 @@ ingredients:
   qty: '1'
   unit: handful
 steps:
-- Steam the ears of corn in a covered pot over a steaming basket for 10 minutes; let cool slightly, then
-  run a knife down the cob sides to remove the kernels — you'll get roughly 1 cup.
+- Steam the ears of corn in a covered pot over a steaming basket for 10 minutes; let
+  cool slightly, then run a knife down the cob sides to remove the kernels — you'll
+  get roughly 1 cup.
 - In the same large pot, simmer the summer squash in the rice milk for 10 minutes.
-- Add the ghee, half the corn kernels, and the spice mix to the squash and rice milk, then blend smooth
-  with an immersion blender.
-- Stir in the remaining corn kernels and the optional red bell pepper; continue cooking on medium heat
-  for another 10 minutes.
+- Add the ghee, half the corn kernels, and the spice mix to the squash and rice milk,
+  then blend smooth with an immersion blender.
+- Stir in the remaining corn kernels and the optional red bell pepper; continue cooking
+  on medium heat for another 10 minutes.
 - Season with salt and pepper and serve in 2 bowls topped with fresh cilantro.
 servings: '2'
 prep_time_min: 10
@@ -71,10 +72,10 @@ protein_g: 5
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A light, sweet corn chowder made with rice milk and summer squash — nourishing but not heavy
-  on a hot day.
-headnote: This dairy-free chowder borrows the sweet, cooling essence of fresh corn without the heaviness
-  of cream, making it a summer staple for balancing excess pitta.
+one_line: A light, sweet corn chowder made with rice milk and summer squash — nourishing
+  but not heavy on a hot day.
+headnote: This dairy-free chowder borrows the sweet, cooling essence of fresh corn
+  without the heaviness of cream, making it a summer staple for balancing excess pitta.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -85,8 +86,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://simple-veganista.com/wp-content/uploads/2022/01/vegan-corn-chowder-8.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: AYUR-CORN CHOWDER
@@ -94,3 +95,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 380
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

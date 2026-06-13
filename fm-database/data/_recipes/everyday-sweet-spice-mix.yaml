@@ -44,20 +44,21 @@ good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
 - digestion-and-nutrient-absorption
-one_line: A warming blend of cinnamon, ginger, and cardamom for sweetening grain dishes and cooked fruits
-  without adding sugar.
-headnote: This trio enhances the naturally sweet taste of grains and fruits while providing a gentle warming
-  quality that supports digestion in cool weather.
+one_line: A warming blend of cinnamon, ginger, and cardamom for sweetening grain dishes
+  and cooked fruits without adding sugar.
+headnote: This trio enhances the naturally sweet taste of grains and fruits while
+  providing a gentle warming quality that supports digestion in cool weather.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 67
 image:
-  file: images/odonnell/odonnell-065-014.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-sweet-spice-mix.jpg
+  credit: web reference (coach-selected)
+  source_url: https://minimalistbaker.com/wp-content/uploads/2018/10/DELICIOUS-Caffeine-Free-Chai-Mix-6-warming-spices-5-minutes-makes-the-perfect-cup-of-chai-every-time-vegan-glutenfree-chai-minimalistbaker-recipe-4.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -66,3 +67,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 12
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

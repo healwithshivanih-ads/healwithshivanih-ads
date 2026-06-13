@@ -50,17 +50,17 @@ ingredients:
   qty: 2-3
   unit: tsp
 steps:
-- In a mixing bowl, stir the salt into the chickpea flour, then whisk in the water gradually until the
-  batter reaches the consistency of pancake batter.
+- In a mixing bowl, stir the salt into the chickpea flour, then whisk in the water
+  gradually until the batter reaches the consistency of pancake batter.
 - Fold in the grated zucchini.
-- Heat a large nonstick ceramic skillet over medium-high heat until a few drops of water sizzle and evaporate
-  on contact.
-- Pour about ⅓ cup of batter into the centre of the pan, tilt to spread it in circles using the back of
-  a large spoon to form a thin round about 7 inches across.
-- Scatter 1 tbsp of chopped cilantro over the surface; when the top looks dry, drizzle ½ tsp ghee over
-  the dosa, check that the underside is browning, then flip.
-- Cook until both sides are golden brown, about 5 minutes total; repeat with the remaining batter to make
-  4–5 dosas.
+- Heat a large nonstick ceramic skillet over medium-high heat until a few drops of
+  water sizzle and evaporate on contact.
+- Pour about ⅓ cup of batter into the centre of the pan, tilt to spread it in circles
+  using the back of a large spoon to form a thin round about 7 inches across.
+- Scatter 1 tbsp of chopped cilantro over the surface; when the top looks dry, drizzle
+  ½ tsp ghee over the dosa, check that the underside is browning, then flip.
+- Cook until both sides are golden brown, about 5 minutes total; repeat with the remaining
+  batter to make 4–5 dosas.
 servings: 4-5
 prep_time_min: 5
 cook_time_min: 25
@@ -71,20 +71,22 @@ good_for:
 - protein-adequacy-vegetarian
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: Thin, protein-rich chickpea-flour dosas with grated zucchini and fresh cilantro — crisp, quick,
-  and gluten-free.
-headnote: Chickpea flour's naturally dry, grounding quality helps counteract the dampness of humid summer
-  air, and these simple pancakes pair beautifully with chutneys or soup.
+one_line: Thin, protein-rich chickpea-flour dosas with grated zucchini and fresh cilantro
+  — crisp, quick, and gluten-free.
+headnote: Chickpea flour's naturally dry, grounding quality helps counteract the dampness
+  of humid summer air, and these simple pancakes pair beautifully with chutneys or
+  soup.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 235
 image:
-  file: images/odonnell/odonnell-236-129.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/easy-chana-dosa.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.vegrecipesofindia.com/wp-content/uploads/2021/02/besan-chilla-1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -93,3 +95,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 112
+kcal_total: 560
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -40,10 +40,10 @@ ingredients:
   qty: '0.5'
   unit: tsp
 steps:
-- Bring the water to a boil in a small saucepan. Coarsely chop the gingerroot (no need to peel) and add
-  to the water.
-- Add the cumin seeds, fennel seeds, and cinnamon, reduce to low, and simmer for at least 10 minutes —
-  longer for a stronger brew.
+- Bring the water to a boil in a small saucepan. Coarsely chop the gingerroot (no
+  need to peel) and add to the water.
+- Add the cumin seeds, fennel seeds, and cinnamon, reduce to low, and simmer for at
+  least 10 minutes — longer for a stronger brew.
 - Strain into two mugs and drink 6 oz with or after meals.
 servings: '2'
 prep_time_min: 2
@@ -55,10 +55,11 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - constipation
-one_line: A warming three-seed digestive tea with ginger and cinnamon — a simple after-meal ritual for
-  cold weather.
-headnote: Cumin, fennel, and ginger are a classic Ayurvedic combination for clearing mucus and supporting
-  agni; this tea is particularly useful from mid-winter when kapha begins to accumulate.
+one_line: A warming three-seed digestive tea with ginger and cinnamon — a simple after-meal
+  ritual for cold weather.
+headnote: Cumin, fennel, and ginger are a classic Ayurvedic combination for clearing
+  mucus and supporting agni; this tea is particularly useful from mid-winter when
+  kapha begins to accumulate.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -68,8 +69,8 @@ image:
   file: images/odonnell/odonnell-377-223.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: winter digestive tea
@@ -77,3 +78,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 10
+kcal_total: 20
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

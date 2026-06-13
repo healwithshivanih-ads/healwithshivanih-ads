@@ -45,9 +45,11 @@ ingredients:
   qty: 2-3
   unit: cubes
 steps:
-- In a blender, pulse the coconut milk and ginger together until the ginger is finely dispersed.
+- In a blender, pulse the coconut milk and ginger together until the ginger is finely
+  dispersed.
 - Add the frozen berries, sweetener, and vanilla extract; pulse until just smooth.
-- With the blender running, drop in ice cubes one at a time if a thicker, sorbet-like consistency is desired.
+- With the blender running, drop in ice cubes one at a time if a thicker, sorbet-like
+  consistency is desired.
 - Blend until the mixture reaches your preferred texture and serve immediately.
 servings: '2'
 prep_time_min: 5
@@ -57,11 +59,11 @@ kcal_is_estimate: true
 protein_g: 2
 good_for:
 - anti-inflammatory-diet
-one_line: Blended coconut milk and frozen berries with ginger — a pitta-cooling frozen treat for occasional
-  summer indulgence.
-headnote: When the heat is at its most intense, this coconut-berry sorbet balances the icy quality of
-  a frozen treat with the warming counterpoint of fresh ginger, making it gentler on digestion than commercial
-  ice cream.
+one_line: Blended coconut milk and frozen berries with ginger — a pitta-cooling frozen
+  treat for occasional summer indulgence.
+headnote: When the heat is at its most intense, this coconut-berry sorbet balances
+  the icy quality of a frozen treat with the warming counterpoint of fresh ginger,
+  making it gentler on digestion than commercial ice cream.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -72,8 +74,8 @@ image:
   credit: web reference (coach-selected)
   source_url: https://savoringtoday.com/wp-content/uploads/2023/04/coconut-sorbet-with-berries.jpg
   rights_status: web_reference_uncleared
-  note: coach-selected image; replace with licensed or original photo
-    before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ananda-coco
@@ -81,3 +83,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 240
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

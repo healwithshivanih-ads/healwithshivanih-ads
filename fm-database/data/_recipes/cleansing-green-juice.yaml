@@ -44,10 +44,11 @@ ingredients:
   qty: '1.5'
   unit: cups
 steps:
-- Place all ingredients — apples, kale or spinach, lemon juice, ginger, and water — in a blender carafe.
+- Place all ingredients — apples, kale or spinach, lemon juice, ginger, and water
+  — in a blender carafe.
 - Blend until smooth and juice-like in consistency, adding more water if needed.
-- Strain the mixture through a large strainer into 2 glasses, pressing the pulp with the back of a spoon
-  to extract as much juice as possible.
+- Strain the mixture through a large strainer into 2 glasses, pressing the pulp with
+  the back of a spoon to extract as much juice as possible.
 - Serve immediately.
 servings: '2'
 prep_time_min: 8
@@ -60,20 +61,22 @@ good_for:
 - chronic-inflammation
 - immune-support
 - liver-detoxification
-one_line: A blended-and-strained apple-kale-ginger green juice — tridoshic and deeply cleansing, balancing
-  bitter, sweet, sour, and pungent tastes in one glass.
-headnote: The four tastes in this juice — bitter from kale, sweet from apple, sour from lemon, and pungent
-  from ginger — make it unusually complete as a kapha-clearing, liver-supporting spring drink.
+one_line: A blended-and-strained apple-kale-ginger green juice — tridoshic and deeply
+  cleansing, balancing bitter, sweet, sour, and pungent tastes in one glass.
+headnote: The four tastes in this juice — bitter from kale, sweet from apple, sour
+  from lemon, and pungent from ginger — make it unusually complete as a kapha-clearing,
+  liver-supporting spring drink.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 204
 image:
-  file: images/odonnell/odonnell-205-108.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/cleansing-green-juice.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.simplyquinoa.com/wp-content/uploads/2017/01/green-apple-lemon-ginger-juice-7.webp
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -82,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 90
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

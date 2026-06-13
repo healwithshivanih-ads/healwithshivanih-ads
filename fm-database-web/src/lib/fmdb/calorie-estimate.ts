@@ -168,12 +168,49 @@ const KEYS = Object.keys(FOOD_KCAL).sort((a, b) => b.length - a.length);
 
 const DEFAULT_COMPONENT_KCAL = 70; // unmatched but non-trivial food
 
-/** Estimate one "+"-separated component, applying count + size multipliers. */
-export function estimateComponentKcal(raw: string): number {
+/** Match a menu-component string to a priced recipe → kcal/serving, or null.
+ *  Recipes carry accurate AI-computed calories, so they always win over the
+ *  table. The matcher fires only when a recipe NAME is a sub-phrase of the
+ *  component ("jowar bhakri" inside "jowar bhakri (1)") and prefers the
+ *  longest such name — so a short component can't pick up a big composite
+ *  recipe's calories. */
+export type RecipeKcalLookup = (component: string) => number | null;
+
+function normFood(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/[^a-z\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function buildRecipeKcalLookup(recipes: { title: string; kcalPerServing?: number }[]): RecipeKcalLookup {
+  const idx = recipes
+    .filter((r) => r.kcalPerServing && r.kcalPerServing > 0 && r.title)
+    .map((r) => ({ name: normFood(r.title), kcal: r.kcalPerServing as number }))
+    .filter((e) => e.name.length >= 5)
+    .sort((a, b) => b.name.length - a.name.length);
+  return (component: string) => {
+    const c = normFood(component);
+    if (c.length < 5) return null;
+    for (const e of idx) if (c.includes(e.name)) return e.kcal;
+    return null;
+  };
+}
+
+/** Estimate one "+"-separated component, applying count + size multipliers.
+ *  A matched recipe's per-serving calories take precedence over the table. */
+export function estimateComponentKcal(raw: string, recipeLookup?: RecipeKcalLookup): number {
   const t = ` ${raw.toLowerCase().replace(/[–—]/g, "-").replace(/\s+/g, " ")} `;
   if (/^[\s-]*$/.test(raw)) return 0;
   // skip supplements / pure water / drugs
   if (/\b(magnesium|glycinate|capsule|tablet|supplement|probiotic|omega|vitamin\s|sublingual)\b/.test(t)) return 0;
+  // a matched recipe already carries accurate per-serving calories — use it
+  if (recipeLookup) {
+    const rk = recipeLookup(raw);
+    if (rk != null) return rk;
+  }
   // skip near-zero garnishes, condiments, spices & tempering (they ride inside
   // a dish, not a portion of their own) — unless a calorie food rides with them
   const matchedFood = KEYS.find((k) => t.includes(k));
@@ -203,17 +240,17 @@ export function estimateComponentKcal(raw: string): number {
 }
 
 /** Estimate one dish ("A + B + C"). */
-export function estimateDishKcal(dish: string): number {
+export function estimateDishKcal(dish: string, recipeLookup?: RecipeKcalLookup): number {
   if (!dish) return 0;
   return dish
     .split(/\s*\+\s*/)
-    .map(estimateComponentKcal)
+    .map((c) => estimateComponentKcal(c, recipeLookup))
     .reduce((a, b) => a + b, 0);
 }
 
 /** Estimate a full day from its meal dishes (skips bedtime drinks ~ noise). */
-export function estimateDayKcal(dishes: string[]): number {
-  return dishes.map(estimateDishKcal).reduce((a, b) => a + b, 0);
+export function estimateDayKcal(dishes: string[], recipeLookup?: RecipeKcalLookup): number {
+  return dishes.map((d) => estimateDishKcal(d, recipeLookup)).reduce((a, b) => a + b, 0);
 }
 
 export type CalAdherence = "on_track" | "high" | "low";

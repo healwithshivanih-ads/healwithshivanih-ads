@@ -18,7 +18,8 @@ rasa:
 main_ingredients:
 - cooked grain of choice (e.g. oats, rice, barley, millet)
 - almond milk or water
-- dried fruit (raisins, dates, or dried cranberries) or seeds (sunflower, flax, or hemp)
+- dried fruit (raisins, dates, or dried cranberries) or seeds (sunflower, flax, or
+  hemp)
 - everyday sweet spice mix
 contains_allergens:
 - nuts
@@ -29,19 +30,21 @@ ingredients:
 - item: almond milk or water
   qty: '1'
   unit: cup
-- item: dried fruit (raisins, dates, or dried cranberries) OR seeds (sunflower, flax, or hemp)
+- item: dried fruit (raisins, dates, or dried cranberries) OR seeds (sunflower, flax,
+    or hemp)
   qty: 2–3
   unit: tbsp
 - item: Everyday Sweet Spice Mix
   qty: '2'
   unit: tsp
 steps:
-- Combine the cooked grain, almond milk or water, dried fruit if using, and spice mix in a small saucepan.
+- Combine the cooked grain, almond milk or water, dried fruit if using, and spice
+  mix in a small saucepan.
 - Cover and heat on medium-low for about 5 minutes, until steaming.
-- Turn off heat and blend with an immersion hand blender to your preferred texture — smooth or slightly
-  chunky. Avoid over-blending or it becomes gummy.
-- Transfer to a bowl. If using seeds instead of dried fruit, scatter them on top rather than cooking them
-  — flax and hemp oils are heat sensitive.
+- Turn off heat and blend with an immersion hand blender to your preferred texture
+  — smooth or slightly chunky. Avoid over-blending or it becomes gummy.
+- Transfer to a bowl. If using seeds instead of dried fruit, scatter them on top rather
+  than cooking them — flax and hemp oils are heat sensitive.
 servings: '2'
 prep_time_min: 5
 cook_time_min: 5
@@ -51,20 +54,22 @@ protein_g: 7
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A quick blended hot cereal that turns leftover cooked grain into a smooth, warming Ayurvedic
-  breakfast.
-headnote: This versatile base works with whatever grain you have on hand — the spice mix and dried fruit
-  do the flavour work, and the immersion blender gives it a creamy finish without any fuss.
+one_line: A quick blended hot cereal that turns leftover cooked grain into a smooth,
+  warming Ayurvedic breakfast.
+headnote: This versatile base works with whatever grain you have on hand — the spice
+  mix and dried fruit do the flavour work, and the immersion blender gives it a creamy
+  finish without any fuss.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 83
 image:
-  file: images/odonnell/odonnell-082-019.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-creamed-grain-cereal.jpg
+  credit: web reference (coach-selected)
+  source_url: https://thebellyrulesthemind.net/wp-content/uploads/2019/11/instant-pot-breakfast-rice-porridge-4-683x1024.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -73,3 +78,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 240
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -55,7 +55,8 @@ ingredients:
   unit: tbsp
 steps:
 - Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
-- Add the chopped thin moong dal and 3 cups water. Simmer covered 12-15 minutes until soft.
+- Add the chopped thin moong dal and 3 cups water. Simmer covered 12-15 minutes until
+  soft.
 - Blend smooth (or leave brothy). Season with salt and pepper.
 - Finish with lemon juice and coriander. Serve warm.
 servings: '2'
@@ -68,8 +69,8 @@ good_for:
 - agni-digestive-fire
 - gut-health
 one_line: A light, warming thin moong dal soup — soothing and easy on digestion.
-headnote: A gentle thin moong dal soup with ginger and pepper is warming, hydrating, and the perfect light
-  dinner when you want to rest the gut.
+headnote: A gentle thin moong dal soup with ginger and pepper is warming, hydrating,
+  and the perfect light dinner when you want to rest the gut.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -80,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

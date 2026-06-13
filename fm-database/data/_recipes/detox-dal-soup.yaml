@@ -72,16 +72,19 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Bring 4 cups of water to a boil in a large saucepan; rinse the split mung beans until the water runs
-  clear.
-- Add the rinsed mung beans, turmeric, coriander powder, and spice mix to the boiling water; reduce heat,
-  cover with the lid slightly ajar, and simmer for 20 minutes.
-- Slice the zucchini in half lengthwise, then into half moons; add them to the pot along with the remaining
-  2 cups of water and optional salt, and bring back to a boil.
+- Bring 4 cups of water to a boil in a large saucepan; rinse the split mung beans
+  until the water runs clear.
+- Add the rinsed mung beans, turmeric, coriander powder, and spice mix to the boiling
+  water; reduce heat, cover with the lid slightly ajar, and simmer for 20 minutes.
+- Slice the zucchini in half lengthwise, then into half moons; add them to the pot
+  along with the remaining 2 cups of water and optional salt, and bring back to a
+  boil.
 - Partially cover and simmer for another 10 minutes without stirring.
-- In a small pan, heat the coconut oil over medium heat and fry the cumin seeds and curry leaf for 2–3
-  minutes until fragrant; pour this tempering into the dal in the last 5 minutes of cooking.
-- Remove from the heat, stir in the lime juice, and serve in bowls garnished with fresh cilantro.
+- In a small pan, heat the coconut oil over medium heat and fry the cumin seeds and
+  curry leaf for 2–3 minutes until fragrant; pour this tempering into the dal in the
+  last 5 minutes of cooking.
+- Remove from the heat, stir in the lime juice, and serve in bowls garnished with
+  fresh cilantro.
 servings: 4-6
 prep_time_min: 10
 cook_time_min: 40
@@ -94,20 +97,21 @@ good_for:
 - agni-digestive-fire
 - liver-detoxification
 - gut-microbiome
-one_line: A light, lime-brightened split mung dal with zucchini and curry leaf — a cooling summer cleanse
-  in a bowl.
-headnote: Thinner than winter dals and brimming with cooling spices, this soup is designed to help the
-  body clear heat and accumulated toxins during the hottest months.
+one_line: A light, lime-brightened split mung dal with zucchini and curry leaf — a
+  cooling summer cleanse in a bowl.
+headnote: Thinner than winter dals and brimming with cooling spices, this soup is
+  designed to help the body clear heat and accumulated toxins during the hottest months.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 241
 image:
-  file: images/odonnell/odonnell-242-133.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/detox-dal-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://elavegan.com/wp-content/uploads/2021/08/kitchari-with-veggies-and-moong-dal-in-black-bowl-with-spoon.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -116,3 +120,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 160
+kcal_total: 800
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

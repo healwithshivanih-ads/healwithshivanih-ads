@@ -49,14 +49,17 @@ ingredients:
   qty: '1'
   unit: tbsp
 steps:
-- Rinse the barley through a fine-mesh sieve, then combine with the water in a small pot.
-- Cook uncovered-lidded over medium heat for about 25 minutes, until the water is absorbed and the grain
-  is tender.
-- While the barley cooks, warm the coconut oil in a small heavy pan over low heat, add the peach slices,
-  dust with cardamom, and sauté until the edges start to colour.
-- Transfer the cooked barley to a blender with the coconut milk and a splash of extra water; blend with
-  an immersion blender (or with a carafe blender, lid slightly ajar) until smooth and creamy.
-- Spoon into 2 bowls and arrange the caramelised peach slices on top; sweeten with coconut sugar if desired.
+- Rinse the barley through a fine-mesh sieve, then combine with the water in a small
+  pot.
+- Cook uncovered-lidded over medium heat for about 25 minutes, until the water is
+  absorbed and the grain is tender.
+- While the barley cooks, warm the coconut oil in a small heavy pan over low heat,
+  add the peach slices, dust with cardamom, and sauté until the edges start to colour.
+- Transfer the cooked barley to a blender with the coconut milk and a splash of extra
+  water; blend with an immersion blender (or with a carafe blender, lid slightly ajar)
+  until smooth and creamy.
+- Spoon into 2 bowls and arrange the caramelised peach slices on top; sweeten with
+  coconut sugar if desired.
 servings: '2'
 prep_time_min: 5
 cook_time_min: 30
@@ -66,20 +69,22 @@ protein_g: 5
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: Silky blended barley porridge crowned with cardamom-kissed peaches — a cooling, sustaining summer
-  breakfast.
-headnote: Barley's natural drying quality makes this a smart choice when summer humidity leaves you feeling
-  heavy; blending it with coconut milk turns a simple grain into something luxurious.
+one_line: Silky blended barley porridge crowned with cardamom-kissed peaches — a cooling,
+  sustaining summer breakfast.
+headnote: Barley's natural drying quality makes this a smart choice when summer humidity
+  leaves you feeling heavy; blending it with coconut milk turns a simple grain into
+  something luxurious.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 99
 image:
-  file: images/odonnell/odonnell-100-022.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/coconut-breakfast-barley-with-peaches.jpg
+  credit: web reference (coach-selected)
+  source_url: https://v.cdn.ww.com/media/system/wine/585ad05ec0d19f4f72259f72/ad59dcc2-82fb-43f7-a7fe-33d3c80eb18e/rkveaxgrwsqp3oofgqrc.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -88,3 +93,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 240
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

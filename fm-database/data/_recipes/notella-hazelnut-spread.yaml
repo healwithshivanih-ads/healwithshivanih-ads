@@ -49,13 +49,13 @@ ingredients:
   unit: pinch
 steps:
 - Soak the raw almonds in water for 6–8 hours, then drain.
-- Preheat the oven to 350°F. Spread the soaked almonds and raw hazelnuts across a large baking pan and
-  roast for 10 minutes, shaking the pan a few times.
-- While the nuts are still warm, wrap them in a slightly damp kitchen towel and rub them between your
-  palms to loosen and remove the skins. Some residual skin is fine.
+- Preheat the oven to 350°F. Spread the soaked almonds and raw hazelnuts across a
+  large baking pan and roast for 10 minutes, shaking the pan a few times.
+- While the nuts are still warm, wrap them in a slightly damp kitchen towel and rub
+  them between your palms to loosen and remove the skins. Some residual skin is fine.
 - Process the skinned nuts in a food processor until they form a uniform powder.
-- Add the cacao powder, coconut milk, coconut sugar, vanilla, and salt. Process again until the mixture
-  is smooth and creamy.
+- Add the cacao powder, coconut milk, coconut sugar, vanilla, and salt. Process again
+  until the mixture is smooth and creamy.
 - Transfer to a 16-ounce glass jar and refrigerate.
 servings: '32'
 prep_time_min: 480
@@ -65,11 +65,11 @@ kcal_is_estimate: true
 protein_g: 2
 good_for:
 - agni-digestive-fire
-one_line: A lighter homemade chocolate-nut spread made from soaked almonds and hazelnuts with cacao and
-  coconut milk — use sparingly in spring, one tablespoon at a time.
-headnote: Soaking and roasting the nuts before processing makes this chocolate spread much easier to digest
-  than commercial versions, though its heating and slightly oily nature means enjoying it mindfully in
-  the kapha season.
+one_line: A lighter homemade chocolate-nut spread made from soaked almonds and hazelnuts
+  with cacao and coconut milk — use sparingly in spring, one tablespoon at a time.
+headnote: Soaking and roasting the nuts before processing makes this chocolate spread
+  much easier to digest than commercial versions, though its heating and slightly
+  oily nature means enjoying it mindfully in the kapha season.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -79,8 +79,8 @@ image:
   file: images/odonnell/odonnell-119-044.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: notella hazelnut spread
@@ -88,3 +88,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 100
+kcal_total: 3200
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

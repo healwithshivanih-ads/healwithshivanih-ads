@@ -56,11 +56,14 @@ ingredients:
   qty: '1'
   unit: small drizzle
 steps:
-- Warm the broth, chopped ginger, and cream or coconut milk in a medium saucepan over medium-high heat.
-- Slice the baked sweet potatoes into several pieces and add to the pot. Stir in the turmeric, nutmeg,
-  salt and pepper if using, and ghee.
-- Bring to a simmer and cook until the liquid is hot and the sweet potato is heated through.
-- Remove from heat and blend smooth with an immersion blender, making sure to fully puree the ginger pieces.
+- Warm the broth, chopped ginger, and cream or coconut milk in a medium saucepan over
+  medium-high heat.
+- Slice the baked sweet potatoes into several pieces and add to the pot. Stir in the
+  turmeric, nutmeg, salt and pepper if using, and ghee.
+- Bring to a simmer and cook until the liquid is hot and the sweet potato is heated
+  through.
+- Remove from heat and blend smooth with an immersion blender, making sure to fully
+  puree the ginger pieces.
 - Ladle into 2 bowls and finish with a small drizzle of cream or coconut milk.
 servings: '2'
 prep_time_min: 5
@@ -73,10 +76,11 @@ good_for:
 - inflammation
 - blood-sugar-regulation
 - constipation
-one_line: A velvety ginger-spiced sweet potato soup that feels like warming nourishment in a bowl.
-headnote: This bisque is almost like a dessert-as-dinner — deeply sweet and comforting, with the added
-  digestive support of fresh ginger; it comes together in under 20 minutes if you have pre-baked sweet
-  potato ready.
+one_line: A velvety ginger-spiced sweet potato soup that feels like warming nourishment
+  in a bowl.
+headnote: This bisque is almost like a dessert-as-dinner — deeply sweet and comforting,
+  with the added digestive support of fresh ginger; it comes together in under 20
+  minutes if you have pre-baked sweet potato ready.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -86,8 +90,8 @@ image:
   file: images/odonnell/odonnell-364-214.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: sweet potato bisque
@@ -95,3 +99,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 380
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

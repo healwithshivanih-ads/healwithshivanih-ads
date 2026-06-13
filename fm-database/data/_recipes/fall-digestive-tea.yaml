@@ -42,8 +42,8 @@ ingredients:
   unit: tsp
 steps:
 - Bring 2 cups of water to a boil in a small saucepan.
-- Coarsely chop the ginger (no need to peel). Add the chopped ginger, fennel seeds, cinnamon, and licorice
-  root powder or pieces to the boiling water.
+- Coarsely chop the ginger (no need to peel). Add the chopped ginger, fennel seeds,
+  cinnamon, and licorice root powder or pieces to the boiling water.
 - Reduce heat to low, cover, and simmer for 10–15 minutes.
 - Pour through a small tea strainer into 2 mugs. Take about 6 oz with or after meals.
 servings: '2'
@@ -57,20 +57,22 @@ good_for:
 - constipation
 - digestion-and-nutrient-absorption
 - irritable-bowel-syndrome
-one_line: A warming after-meal tea combining licorice, fennel, ginger, and cinnamon — demulcent, acid-clearing,
-  and grounding for the dry quality of autumn.
-headnote: Licorice root's moisture-retaining properties meet fennel's acid-reducing and ginger's warmth
-  in a simple simmered tea that steadies the digestive system through the fall transition.
+one_line: A warming after-meal tea combining licorice, fennel, ginger, and cinnamon
+  — demulcent, acid-clearing, and grounding for the dry quality of autumn.
+headnote: Licorice root's moisture-retaining properties meet fennel's acid-reducing
+  and ginger's warmth in a simple simmered tea that steadies the digestive system
+  through the fall transition.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 317
 image:
-  file: images/odonnell/odonnell-318-181.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/fall-digestive-tea.jpg
+  credit: web reference (coach-selected)
+  source_url: https://path-wellbeing.com/wp-content/uploads/2023/12/Licorice-Spiced-Tea-Recipe.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -79,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 15
+kcal_total: 30
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

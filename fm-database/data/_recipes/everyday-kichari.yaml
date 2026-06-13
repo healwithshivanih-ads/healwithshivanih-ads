@@ -71,19 +71,24 @@ ingredients:
   qty: '0.5'
   unit: tsp
 steps:
-- Bring 5 cups of water to a boil in a large saucepan over high heat; set the remaining 1 cup aside.
-- Rinse the rice and dal twice until the water runs clear, then add them to the boiling water along with
-  the spice mix and optional hing; let the water return to a boil, then immediately reduce to low.
-- If using hard vegetables (potatoes, carrots, squash), add them now. Partially cover with the lid ajar
-  and simmer for 20 minutes without stirring.
-- After 20 minutes check the water level; if the dal is not submerged, pour the reserved cup of water
-  on top — do not stir. Add quick-cooking vegetables (greens, green beans) on top at this point to steam.
+- Bring 5 cups of water to a boil in a large saucepan over high heat; set the remaining
+  1 cup aside.
+- Rinse the rice and dal twice until the water runs clear, then add them to the boiling
+  water along with the spice mix and optional hing; let the water return to a boil,
+  then immediately reduce to low.
+- If using hard vegetables (potatoes, carrots, squash), add them now. Partially cover
+  with the lid ajar and simmer for 20 minutes without stirring.
+- After 20 minutes check the water level; if the dal is not submerged, pour the reserved
+  cup of water on top — do not stir. Add quick-cooking vegetables (greens, green beans)
+  on top at this point to steam.
 - Simmer partially covered for another 10 minutes.
-- 'For the tempering: warm the ghee in a small skillet over medium heat, add the cumin, coriander, and
-  optional fennel seeds and toast until they pop, about 2–3 minutes; remove from heat.'
-- Pour the tempered spice-ghee into the kichari. Add salt, stir well, and let stand covered for a few
-  minutes.
-- Serve in bowls — it should have a soft, soupy consistency like a loose stew. Garnish with fresh cilantro.
+- 'For the tempering: warm the ghee in a small skillet over medium heat, add the cumin,
+  coriander, and optional fennel seeds and toast until they pop, about 2–3 minutes;
+  remove from heat.'
+- Pour the tempered spice-ghee into the kichari. Add salt, stir well, and let stand
+  covered for a few minutes.
+- Serve in bowls — it should have a soft, soupy consistency like a loose stew. Garnish
+  with fresh cilantro.
 servings: '4'
 prep_time_min: 10
 cook_time_min: 35
@@ -97,20 +102,21 @@ good_for:
 - detoxification-support
 - maldigestion
 - inflammation
-one_line: The foundational Ayurvedic one-pot of mung dal and basmati rice with spiced ghee tempering —
-  equally cleansing and nourishing.
-headnote: 'Kichari is the dish Ayurveda prescribes when the body needs to reset: easy to digest, tridoshic,
-  and endlessly variable with seasonal vegetables.'
+one_line: The foundational Ayurvedic one-pot of mung dal and basmati rice with spiced
+  ghee tempering — equally cleansing and nourishing.
+headnote: 'Kichari is the dish Ayurveda prescribes when the body needs to reset: easy
+  to digest, tridoshic, and endlessly variable with seasonal vegetables.'
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 84
 image:
-  file: images/odonnell/odonnell-082-019.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-kichari.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianveggiedelight.com/wp-content/uploads/2021/06/moong-dal-khichdi-stovetop.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -119,3 +125,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 220
+kcal_total: 880
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

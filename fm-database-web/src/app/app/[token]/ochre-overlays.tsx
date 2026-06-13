@@ -263,7 +263,26 @@ export function DocOverlay({ doc, onClose }: { doc: { kind: string; id: string }
 
 // ── in-app recipes (letters are retiring — the pack renders here) ───────────
 
+/** Pretty-print a scaled quantity ("0.5" → "½", "1.5" → "1½"). */
+function fmtQty(n: number): string {
+  if (!isFinite(n) || n <= 0) return "";
+  const whole = Math.floor(n + 1e-6);
+  const frac = n - whole;
+  const FR: [number, string][] = [
+    [0.25, "¼"], [0.33, "⅓"], [0.5, "½"], [0.66, "⅔"], [0.67, "⅔"], [0.75, "¾"],
+  ];
+  const hit = FR.find(([v]) => Math.abs(frac - v) < 0.05);
+  if (hit) return `${whole > 0 ? whole : ""}${hit[1]}`;
+  return String(Math.round(n * 100) / 100);
+}
+
 function RecipeDetailBody({ r }: { r: AppRecipe }) {
+  const baseServes = r.servingsNum && r.servingsNum > 0 ? r.servingsNum : parseInt(r.serves ?? "", 10) || 2;
+  const [serves, setServes] = useState(baseServes);
+  const ratio = serves / baseServes;
+  const canScale = !!r.ingredientsStructured?.length;
+  const SERVE_OPTS = Array.from(new Set([1, 2, 4, 6, baseServes])).sort((a, b) => a - b);
+
   return (
     <div style={{ padding: "4px 0 12px" }}>
       {r.imageUrl && (
@@ -281,19 +300,63 @@ function RecipeDetailBody({ r }: { r: AppRecipe }) {
         />
       )}
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8 }}>
-        {r.serves && <span className="food-pill">Serves {r.serves}</span>}
+        {r.kcalPerServing ? <span className="food-pill">~{r.kcalPerServing} kcal/serving</span> : null}
+        {!canScale && r.serves && <span className="food-pill">Serves {r.serves}</span>}
         {r.time && <span className="food-pill">{r.time}</span>}
         {r.ayurveda && <span className="food-pill">Ayurveda recommends</span>}
       </div>
-      {r.ingredients.length > 0 && (
-        <>
-          <div className="doc-h">Ingredients</div>
-          {r.ingredients.map((ing, i) => (
-            <div key={i} className="doc-li">
-              {ing}
-            </div>
+
+      {canScale && (
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", margin: "4px 0 12px" }}>
+          <span style={{ fontSize: 12.5, color: "var(--muted)" }}>Cook for</span>
+          {SERVE_OPTS.map((n) => (
+            <button
+              key={n}
+              onClick={() => setServes(n)}
+              style={{
+                padding: "5px 11px",
+                borderRadius: 999,
+                border: "1px solid var(--line)",
+                background: serves === n ? "var(--forest)" : "var(--paper)",
+                color: serves === n ? "#fff" : "var(--ink)",
+                fontSize: 13,
+                fontWeight: 500,
+                cursor: "pointer",
+              }}
+            >
+              {n}
+            </button>
           ))}
+          <span style={{ fontSize: 12.5, color: "var(--muted)" }}>{serves === 1 ? "person" : "people"}</span>
+        </div>
+      )}
+
+      {canScale ? (
+        <>
+          <div className="doc-h">
+            Ingredients{r.kcalPerServing ? ` · ~${Math.round(r.kcalPerServing * serves)} kcal total` : ""}
+          </div>
+          {r.ingredientsStructured!.map((ing, i) => {
+            const q = parseFloat(ing.qty);
+            const scaled = isFinite(q) && q > 0 ? `${fmtQty(q * ratio)} ${ing.unit}`.trim() : ing.qty;
+            return (
+              <div key={i} className="doc-li">
+                {[scaled, ing.item].filter(Boolean).join(" ")}
+              </div>
+            );
+          })}
         </>
+      ) : (
+        r.ingredients.length > 0 && (
+          <>
+            <div className="doc-h">Ingredients</div>
+            {r.ingredients.map((ing, i) => (
+              <div key={i} className="doc-li">
+                {ing}
+              </div>
+            ))}
+          </>
+        )
       )}
       {r.method.length > 0 && (
         <>

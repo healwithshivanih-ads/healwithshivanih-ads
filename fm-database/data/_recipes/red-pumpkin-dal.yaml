@@ -70,15 +70,19 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Bring water (and coconut milk if using) to a boil in a large saucepan over high heat.
-- Rinse red lentils until the water runs clear. Add to the boiling liquid along with the spice mix and
-  sweetener. Return to a boil uncovered, then reduce heat to medium.
-- Chop the squash into 1-inch cubes (peel is optional for kabocha). Add to the saucepan. Once it returns
-  to a boil, reduce heat to low and simmer partially covered for 30 minutes without stirring.
-- 'For the tempering: heat coconut oil in a small frying pan over medium heat. Add ginger, cumin seeds,
-  and mustard seeds and cook until fragrant, 2–3 minutes. Remove from heat and stir in shredded coconut,
-  continuing to stir until it turns light golden.'
-- Stir the tempering into the dal along with the salt. Simmer uncovered for 5 more minutes.
+- Bring water (and coconut milk if using) to a boil in a large saucepan over high
+  heat.
+- Rinse red lentils until the water runs clear. Add to the boiling liquid along with
+  the spice mix and sweetener. Return to a boil uncovered, then reduce heat to medium.
+- Chop the squash into 1-inch cubes (peel is optional for kabocha). Add to the saucepan.
+  Once it returns to a boil, reduce heat to low and simmer partially covered for 30
+  minutes without stirring.
+- 'For the tempering: heat coconut oil in a small frying pan over medium heat. Add
+  ginger, cumin seeds, and mustard seeds and cook until fragrant, 2–3 minutes. Remove
+  from heat and stir in shredded coconut, continuing to stir until it turns light
+  golden.'
+- Stir the tempering into the dal along with the salt. Simmer uncovered for 5 more
+  minutes.
 - Serve as a thick soup or ladle over basmati rice.
 servings: '4'
 prep_time_min: 10
@@ -91,10 +95,11 @@ good_for:
 - digestion-and-nutrient-absorption
 - gut-microbiome
 - blood-sugar-regulation
-one_line: A thick, coconut-enriched red lentil and kabocha squash dal — quick to cook, warming, and deeply
-  satisfying for cool autumn evenings.
-headnote: Red lentils and sweet kabocha squash simmer together into a gravylike dal, balanced by creamy
-  coconut milk and finished with a golden tempering of ginger and cumin seeds.
+one_line: A thick, coconut-enriched red lentil and kabocha squash dal — quick to cook,
+  warming, and deeply satisfying for cool autumn evenings.
+headnote: Red lentils and sweet kabocha squash simmer together into a gravylike dal,
+  balanced by creamy coconut milk and finished with a golden tempering of ginger and
+  cumin seeds.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -104,8 +109,8 @@ image:
   file: images/odonnell/odonnell-290-162.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: red pumpkin dal
@@ -113,3 +118,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 120
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

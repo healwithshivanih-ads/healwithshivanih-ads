@@ -56,12 +56,13 @@ ingredients:
   qty: '0.5'
   unit: cup
 steps:
-- Warm the coconut oil in a wide frying pan over medium heat; add the mustard seeds and optional hing,
-  placing a lid over the pan to contain the seeds as they pop.
-- After 2–3 minutes, once the popping slows, add the diced beets and shredded coconut and stir to coat
-  everything with the oil and spices.
+- Warm the coconut oil in a wide frying pan over medium heat; add the mustard seeds
+  and optional hing, placing a lid over the pan to contain the seeds as they pop.
+- After 2–3 minutes, once the popping slows, add the diced beets and shredded coconut
+  and stir to coat everything with the oil and spices.
 - Sprinkle in the cinnamon and salt, then pour in the water.
-- Stir once, cover the pan, reduce the heat to low, and simmer for 10 minutes until the beets are tender.
+- Stir once, cover the pan, reduce the heat to low, and simmer for 10 minutes until
+  the beets are tender.
 - Serve alongside Lemon Rice or as a stand-alone side.
 servings: '2'
 prep_time_min: 10
@@ -73,20 +74,21 @@ good_for:
 - detoxification
 - liver-detoxification
 - agni-digestive-fire
-one_line: Quickly fried diced beets with mustard seeds and shredded coconut in the South Indian palya
-  style.
-headnote: A vibrant side dish that balances summer heat with the grounding sweetness of beet and the cooling
-  dryness of coconut.
+one_line: Quickly fried diced beets with mustard seeds and shredded coconut in the
+  South Indian palya style.
+headnote: A vibrant side dish that balances summer heat with the grounding sweetness
+  of beet and the cooling dryness of coconut.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 227
 image:
-  file: images/odonnell/odonnell-228-122.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/beetroot-palya.jpg
+  credit: web reference (coach-selected)
+  source_url: https://easyindiancookbook.com/wp-content/uploads/2025/01/Beetroot-Palya-14.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -95,3 +97,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 170
+kcal_total: 340
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

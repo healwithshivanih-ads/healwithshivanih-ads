@@ -62,11 +62,11 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Heat ghee in a kadai over medium heat. Add mustard seeds and let them pop, then add cumin seeds, curry
-  leaves, and ginger; sauté 30 seconds until fragrant.
+- Heat ghee in a kadai over medium heat. Add mustard seeds and let them pop, then
+  add cumin seeds, curry leaves, and ginger; sauté 30 seconds until fragrant.
 - Add the diced ridge gourd and turmeric. Stir to coat in the tempering.
-- Add salt, cover, and cook on low 8-12 minutes, stirring occasionally, until the vegetable is just tender
-  (not mushy). Add a splash of water only if it sticks.
+- Add salt, cover, and cook on low 8-12 minutes, stirring occasionally, until the
+  vegetable is just tender (not mushy). Add a splash of water only if it sticks.
 - Uncover, raise heat briefly to dry off any moisture. Stir in grated coconut if using.
 - Garnish with fresh coriander and serve warm with roti or rice.
 servings: '2'
@@ -78,9 +78,10 @@ protein_g: 4
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A light, dry South-Indian style ridge gourd sabzi tempered with mustard, cumin and curry leaves.
-headnote: Cooking ridge gourd gently with a simple tempering keeps it easy to digest and lets the vegetable's
-  own flavour come through — no heavy gravy, no tomato.
+one_line: A light, dry South-Indian style ridge gourd sabzi tempered with mustard,
+  cumin and curry leaves.
+headnote: Cooking ridge gourd gently with a simple tempering keeps it easy to digest
+  and lets the vegetable's own flavour come through — no heavy gravy, no tomato.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -89,8 +90,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://cdn.grofers.com/assets/search/usecase/banner/turai_ki_sabzi__ridge_gourd_curry__03.png
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Ridge gourd sabzi
@@ -98,3 +99,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 80
+kcal_total: 160
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

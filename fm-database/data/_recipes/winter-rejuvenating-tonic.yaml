@@ -43,11 +43,12 @@ ingredients:
   unit: tsp
 steps:
 - Soak the dates in warm water for 20 minutes, then drain and remove the pits.
-- Drain the soaked almonds and slip off their skins by pinching each one between your fingers.
-- Combine the dates, almonds, milk, spice mix, and ashwagandha if using in a small saucepan and warm over
-  medium heat until hot — do not boil.
-- Remove from heat and blend with an immersion blender until smooth, or pour into a blender carafe and
-  process until the dates and almonds have fully dissolved.
+- Drain the soaked almonds and slip off their skins by pinching each one between your
+  fingers.
+- Combine the dates, almonds, milk, spice mix, and ashwagandha if using in a small
+  saucepan and warm over medium heat until hot — do not boil.
+- Remove from heat and blend with an immersion blender until smooth, or pour into
+  a blender carafe and process until the dates and almonds have fully dissolved.
 - Pour into a large mug and drink warm.
 servings: '2'
 prep_time_min: 25
@@ -60,10 +61,11 @@ good_for:
 - agni-digestive-fire
 - insomnia
 - nervous-system-regulation
-one_line: A warm blended milk tonic with dates, soaked almonds, and ashwagandha — Ayurveda's answer to
-  a building winter smoothie.
-headnote: This evening tonic nourishes ojas — the Ayurvedic concept of vital essence — and provides sustained
-  warmth; it is especially restorative after physical exertion or during periods of fatigue.
+one_line: A warm blended milk tonic with dates, soaked almonds, and ashwagandha —
+  Ayurveda's answer to a building winter smoothie.
+headnote: This evening tonic nourishes ojas — the Ayurvedic concept of vital essence
+  — and provides sustained warmth; it is especially restorative after physical exertion
+  or during periods of fatigue.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -73,8 +75,8 @@ image:
   file: images/odonnell/odonnell-051-012.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: winter rejuvenating tonic
@@ -82,3 +84,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 380
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

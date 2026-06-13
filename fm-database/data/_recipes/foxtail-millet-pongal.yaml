@@ -63,12 +63,12 @@ ingredients:
   unit: tbsp
 steps:
 - Dry-roast the foxtail in a pan 2-3 minutes until nutty. Set aside.
-- Heat ghee, add mustard seeds and urad dal; once they pop add curry leaves, ginger, and onion. Sauté
-  until soft.
+- Heat ghee, add mustard seeds and urad dal; once they pop add curry leaves, ginger,
+  and onion. Sauté until soft.
 - Add diced vegetables; stir-fry 2 minutes.
 - Add 2.5 cups water and salt; bring to a boil. Stir in the roasted foxtail.
-- Cover and cook on low 12-15 minutes until the water is absorbed and the grain is fluffy. Rest 5 minutes,
-  garnish with coriander, and serve warm.
+- Cover and cook on low 12-15 minutes until the water is absorbed and the grain is
+  fluffy. Rest 5 minutes, garnish with coriander, and serve warm.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 15
@@ -78,9 +78,10 @@ protein_g: 6
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: A savoury, fluffy foxtail upma tempered with mustard and curry leaves and studded with vegetables.
-headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy rather than sticky —
-  a warm, grounding breakfast that's gentle on digestion.
+one_line: A savoury, fluffy foxtail upma tempered with mustard and curry leaves and
+  studded with vegetables.
+headnote: Dry-roasting the foxtail before cooking keeps the upma light and fluffy
+  rather than sticky — a warm, grounding breakfast that's gentle on digestion.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -89,8 +90,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://i.pinimg.com/originals/91/cd/a8/91cda8387cc5ff84a8df7f5139dec40e.png
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Foxtail millet pongal
@@ -98,3 +99,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 290
+kcal_total: 580
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

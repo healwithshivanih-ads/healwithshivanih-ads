@@ -23,7 +23,8 @@ main_ingredients:
 - maple syrup
 - finely ground cacao powder
 - cinnamon, cardamom, or ginger powder, or peppermint oil (optional)
-- dried cranberries, chopped nuts, hemp seeds, orange zest, or candied ginger (for decoration)
+- dried cranberries, chopped nuts, hemp seeds, orange zest, or candied ginger (for
+  decoration)
 contains_allergens:
 - nuts
 ingredients:
@@ -39,18 +40,20 @@ ingredients:
 - item: cinnamon, cardamom, or ginger powder, or peppermint oil (optional)
   qty: '1'
   unit: tsp (or 1 drop oil)
-- item: dried cranberries, chopped nuts, hemp seeds, orange zest, or candied ginger (for decoration)
+- item: dried cranberries, chopped nuts, hemp seeds, orange zest, or candied ginger
+    (for decoration)
   qty: '1'
   unit: small handful
 steps:
 - Line a baking sheet with parchment or wax paper.
-- Whisk the melted coconut oil, maple syrup, cacao powder, and optional spice or peppermint oil together
-  in a bowl until smooth. Work quickly in a cool kitchen or keep the bowl nested in a larger bowl of warm
-  water to prevent premature hardening.
-- Pour the chocolate mixture onto the lined baking sheet and spread with a spatula to a roughly 1/4-inch
-  thick layer.
+- Whisk the melted coconut oil, maple syrup, cacao powder, and optional spice or peppermint
+  oil together in a bowl until smooth. Work quickly in a cool kitchen or keep the
+  bowl nested in a larger bowl of warm water to prevent premature hardening.
+- Pour the chocolate mixture onto the lined baking sheet and spread with a spatula
+  to a roughly 1/4-inch thick layer.
 - Scatter your chosen decorations evenly across the top.
-- Refrigerate until solid, about 20 minutes, then break into irregular pieces by hand. Store refrigerated.
+- Refrigerate until solid, about 20 minutes, then break into irregular pieces by hand.
+  Store refrigerated.
 servings: '10'
 prep_time_min: 10
 cook_time_min: 0
@@ -59,20 +62,21 @@ kcal_is_estimate: true
 protein_g: 1
 good_for:
 - agni-digestive-fire
-one_line: Raw dark chocolate bark made with coconut oil and cacao — quick, elegant, and free of refined
-  sugar.
-headnote: This bark uses just three pantry staples and sets in the fridge in 20 minutes; decorate with
-  whatever combination of nuts, seeds, or dried fruit reflects the season.
+one_line: Raw dark chocolate bark made with coconut oil and cacao — quick, elegant,
+  and free of refined sugar.
+headnote: This bark uses just three pantry staples and sets in the fridge in 20 minutes;
+  decorate with whatever combination of nuts, seeds, or dried fruit reflects the season.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 372
 image:
-  file: images/odonnell/odonnell-372-220.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/winter-chocolate-bark.jpg
+  credit: web reference (coach-selected)
+  source_url: https://lifemadesweeter.com/wp-content/uploads/Easy-Chocolate-Bark-recipe-vegan-dairy-free-healthy-gluten-free-paleo.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -81,3 +85,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 120
+kcal_total: 1200
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

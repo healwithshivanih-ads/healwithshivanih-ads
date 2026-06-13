@@ -41,11 +41,11 @@ ingredients:
   unit: tsp
 steps:
 - Halve the zucchini lengthwise and slice into ½-inch half moons.
-- In a medium saucepan, fry the zucchini in the ghee over medium heat, stirring occasionally, for 5–7
-  minutes until tender.
+- In a medium saucepan, fry the zucchini in the ghee over medium heat, stirring occasionally,
+  for 5–7 minutes until tender.
 - Add the water and salt, then cook over medium heat until everything is warmed through.
-- Remove from the heat and blend the soup directly in the pot with an immersion blender until completely
-  smooth.
+- Remove from the heat and blend the soup directly in the pot with an immersion blender
+  until completely smooth.
 - Ladle into bowls and serve alongside Avocado and Cucumber Salad.
 servings: '2'
 prep_time_min: 5
@@ -57,9 +57,10 @@ good_for:
 - agni-digestive-fire
 - anti-inflammatory-diet
 - digestion-and-nutrient-absorption
-one_line: Four simple ingredients blended into a surprisingly creamy, pitta-cooling zucchini soup.
-headnote: Zucchini's bitter-astringent nature makes it one of summer's best vegetables for calming excess
-  heat; this minimalist soup lets those qualities shine.
+one_line: Four simple ingredients blended into a surprisingly creamy, pitta-cooling
+  zucchini soup.
+headnote: Zucchini's bitter-astringent nature makes it one of summer's best vegetables
+  for calming excess heat; this minimalist soup lets those qualities shine.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -69,8 +70,8 @@ image:
   file: images/odonnell/odonnell-233-126.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ONLY ZUCCHINI SOUP
@@ -78,3 +79,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

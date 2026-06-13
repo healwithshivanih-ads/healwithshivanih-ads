@@ -39,11 +39,11 @@ ingredients:
   unit: oz
 steps:
 - Preheat oven to 350°F.
-- Pulse the artichoke hearts, spinach, and Spring Salts together in a food processor until they form a
-  coarse, chunky mixture. (Alternatively, chop the vegetables finely, then use a hand blender to reach
-  a coarse consistency.)
-- Transfer the vegetable mixture into a 16-ounce ramekin. Scatter the crumbled goat cheese evenly over
-  the top.
+- Pulse the artichoke hearts, spinach, and Spring Salts together in a food processor
+  until they form a coarse, chunky mixture. (Alternatively, chop the vegetables finely,
+  then use a hand blender to reach a coarse consistency.)
+- Transfer the vegetable mixture into a 16-ounce ramekin. Scatter the crumbled goat
+  cheese evenly over the top.
 - Bake for 25 minutes or until the top begins to brown.
 - Serve hot with vegetable sticks, rye crackers, or rice crackers.
 servings: '2'
@@ -56,11 +56,11 @@ good_for:
 - agni-digestive-fire
 - detoxification
 - liver-detoxification
-one_line: A baked warm dip of artichoke and spinach with a light crumble of goat cheese — greens-forward,
-  bitter, and gently warming for spring.
-headnote: With far more greens than cheese, this baked dip delivers the liver-supporting bitterness of
-  artichoke and spinach in a comforting warm format — goat cheese rather than cow's keeps it lighter and
-  more digestible.
+one_line: A baked warm dip of artichoke and spinach with a light crumble of goat cheese
+  — greens-forward, bitter, and gently warming for spring.
+headnote: With far more greens than cheese, this baked dip delivers the liver-supporting
+  bitterness of artichoke and spinach in a comforting warm format — goat cheese rather
+  than cow's keeps it lighter and more digestible.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -70,8 +70,8 @@ image:
   file: images/odonnell/odonnell-211-114.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: 'warm artichoke, spinach, and goat cheese
@@ -81,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

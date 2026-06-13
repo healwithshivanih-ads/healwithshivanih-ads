@@ -54,8 +54,8 @@ ingredients:
 steps:
 - Heat ghee, add cumin seeds and ginger; sauté 30 seconds.
 - Add the vegetables and turmeric; cook 3-4 minutes until tender.
-- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly golden (don't overcook
-  or it toughens).
+- Add the firm tofu and salt; toss gently 3-4 minutes until heated through and lightly
+  golden (don't overcook or it toughens).
 - Garnish with coriander and serve warm.
 servings: '2'
 prep_time_min: 10
@@ -65,9 +65,10 @@ kcal_is_estimate: true
 protein_g: 16
 good_for:
 - agni-digestive-fire
-one_line: A simple, protein-rich tofu and mushroom stir-fry with vegetables and a light tempering.
-headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that doesn't need a heavy
-  gravy to taste good.
+one_line: A simple, protein-rich tofu and mushroom stir-fry with vegetables and a
+  light tempering.
+headnote: Firm tofu cooked simply with vegetables is a quick, satisfying protein that
+  doesn't need a heavy gravy to taste good.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -78,3 +79,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 140
+kcal_total: 280
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

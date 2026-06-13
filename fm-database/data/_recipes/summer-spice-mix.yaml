@@ -42,13 +42,14 @@ ingredients:
   qty: '0.5'
   unit: tsp
 steps:
-- Toast the coriander, cumin, and fennel seeds in a dry heavy-bottomed pan over medium heat, stirring
-  often, for a few minutes until fragrant.
+- Toast the coriander, cumin, and fennel seeds in a dry heavy-bottomed pan over medium
+  heat, stirring often, for a few minutes until fragrant.
 - Remove from the heat and allow to cool completely.
-- Grind the toasted whole seeds to a uniform fine powder using a spice-dedicated coffee grinder or a mortar
-  and pestle.
+- Grind the toasted whole seeds to a uniform fine powder using a spice-dedicated coffee
+  grinder or a mortar and pestle.
 - In a small bowl, stir in the turmeric and cardamom powders until evenly combined.
-- Store in an airtight jar or shaker container; use in any summer recipe that calls for Summer Spice Mix.
+- Store in an airtight jar or shaker container; use in any summer recipe that calls
+  for Summer Spice Mix.
 servings: 8-10
 prep_time_min: 5
 cook_time_min: 5
@@ -59,10 +60,11 @@ good_for:
 - agni-digestive-fire
 - acid-reflux-and-cardiac-sphincter-weakness
 - anti-inflammatory-diet
-one_line: A toasted summer spice blend of coriander, cumin, fennel, turmeric, and cardamom for cooling
-  and soothing pitta.
-headnote: This blend is the backbone of many summer recipes — its cooling, digestive spices counteract
-  stomach acid and excess heat while adding complexity to even the simplest dish.
+one_line: A toasted summer spice blend of coriander, cumin, fennel, turmeric, and
+  cardamom for cooling and soothing pitta.
+headnote: This blend is the backbone of many summer recipes — its cooling, digestive
+  spices counteract stomach acid and excess heat while adding complexity to even the
+  simplest dish.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -72,8 +74,8 @@ image:
   file: images/odonnell/odonnell-234-128.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: SUMMER SPICE MIX
@@ -81,3 +83,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 5
+kcal_total: 45
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

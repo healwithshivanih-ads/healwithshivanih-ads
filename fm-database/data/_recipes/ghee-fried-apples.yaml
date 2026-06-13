@@ -40,8 +40,9 @@ ingredients:
 steps:
 - Warm the ghee and spice mix together in a small frying pan over medium heat.
 - Add the apple slices and toss to coat, then fry for 2–3 minutes, stirring occasionally.
-- Splash in a tablespoon or two of water to prevent sticking, add raisins or figs if using, and continue
-  frying for another 2–3 minutes until the apple pieces are tender.
+- Splash in a tablespoon or two of water to prevent sticking, add raisins or figs
+  if using, and continue frying for another 2–3 minutes until the apple pieces are
+  tender.
 - Transfer to a bowl and serve warm.
 servings: '1'
 prep_time_min: 5
@@ -53,10 +54,10 @@ good_for:
 - agni-digestive-fire
 - constipation
 - blood-sugar-regulation
-one_line: Quick ghee-cooked spiced apple slices that warm the belly and satisfy a sweet craving without
-  sugar.
-headnote: Cooking the apple in ghee with warming spices makes it digestible and deeply comforting — a
-  two-minute upgrade from raw fruit on a cold morning.
+one_line: Quick ghee-cooked spiced apple slices that warm the belly and satisfy a
+  sweet craving without sugar.
+headnote: Cooking the apple in ghee with warming spices makes it digestible and deeply
+  comforting — a two-minute upgrade from raw fruit on a cold morning.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -66,8 +67,8 @@ image:
   file: images/odonnell/odonnell-225-121.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ghee fried apples
@@ -75,3 +76,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 220
+kcal_total: 220
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

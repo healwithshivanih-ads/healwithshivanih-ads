@@ -53,12 +53,15 @@ ingredients:
   qty: '0.25'
   unit: cup
 steps:
-- Trim the woody tops from the fennel bulb and cut the bulb into thin slivers with a sharp knife.
+- Trim the woody tops from the fennel bulb and cut the bulb into thin slivers with
+  a sharp knife.
 - In a large salad bowl, combine the fennel slivers with the chopped lettuce or greens.
-- Divide the greens between 2 wide bowls; drizzle 1 tbsp oil and 1 tbsp balsamic over each portion.
-- Crumble 2 tbsp of chèvre over each salad (if the cheese is very soft, chill it briefly in the freezer
-  first).
-- Finish each bowl with a scatter of chopped almonds or sunflower seeds and dried cranberries.
+- Divide the greens between 2 wide bowls; drizzle 1 tbsp oil and 1 tbsp balsamic over
+  each portion.
+- Crumble 2 tbsp of chèvre over each salad (if the cheese is very soft, chill it briefly
+  in the freezer first).
+- Finish each bowl with a scatter of chopped almonds or sunflower seeds and dried
+  cranberries.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 0
@@ -68,10 +71,11 @@ protein_g: 7
 good_for:
 - anti-inflammatory-diet
 - phytonutrient-dense-diet
-one_line: Shaved fennel and salad greens with goat cheese, cranberries, and nuts — a cooling, colour-rich
-  summer salad.
-headnote: Fennel's cooling sweetness and the astringent tang of dried cranberries team up to reduce summer
-  irritability, while creamy chèvre rounds out this crowd-pleasing raw salad.
+one_line: Shaved fennel and salad greens with goat cheese, cranberries, and nuts —
+  a cooling, colour-rich summer salad.
+headnote: Fennel's cooling sweetness and the astringent tang of dried cranberries
+  team up to reduce summer irritability, while creamy chèvre rounds out this crowd-pleasing
+  raw salad.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -88,3 +92,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

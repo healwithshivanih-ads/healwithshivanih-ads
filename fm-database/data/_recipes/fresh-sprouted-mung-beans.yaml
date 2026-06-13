@@ -30,12 +30,14 @@ ingredients:
   qty: '1.5'
   unit: cups
 steps:
-- Soak the mung beans in water overnight (about 8 hours), then drain and rinse through a strainer.
-- Spread the drained beans in a thin, even layer in the bottom of a colander or strainer. Set it over
-  a bowl to catch drips, and drape a towel over the top.
-- Leave at room temperature for 24–48 hours, rinsing and draining the beans once each morning and evening.
-- Once the beans have grown small white tails no longer than 1/4 inch, they are ready to use. Refrigerate
-  in a glass container for up to a few days if not using immediately.
+- Soak the mung beans in water overnight (about 8 hours), then drain and rinse through
+  a strainer.
+- Spread the drained beans in a thin, even layer in the bottom of a colander or strainer.
+  Set it over a bowl to catch drips, and drape a towel over the top.
+- Leave at room temperature for 24–48 hours, rinsing and draining the beans once each
+  morning and evening.
+- Once the beans have grown small white tails no longer than 1/4 inch, they are ready
+  to use. Refrigerate in a glass container for up to a few days if not using immediately.
 servings: '4'
 prep_time_min: 5
 cook_time_min: 0
@@ -47,10 +49,10 @@ good_for:
 - gut-microbiome
 - digestion-and-nutrient-absorption
 - immune-support
-one_line: A simple two-day sprouting method that transforms dried mung beans into fresh, enzyme-rich living
-  food.
-headnote: Home-grown sprouts take almost no effort once you have the rhythm and bring rare freshness to
-  winter cooking when seasonal produce is limited.
+one_line: A simple two-day sprouting method that transforms dried mung beans into
+  fresh, enzyme-rich living food.
+headnote: Home-grown sprouts take almost no effort once you have the rhythm and bring
+  rare freshness to winter cooking when seasonal produce is limited.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -60,8 +62,8 @@ image:
   file: images/odonnell/odonnell-351-202.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: fresh sprouted mung beans
@@ -69,3 +71,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 30
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

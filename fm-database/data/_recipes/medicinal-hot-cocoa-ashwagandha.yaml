@@ -47,10 +47,10 @@ ingredients:
   qty: ''
   unit: ''
 steps:
-- Begin warming the milk in a medium saucepan over medium heat. Add the sweetener and cacao powder, then
-  whisk briskly until the mixture begins to steam.
-- Remove from heat and whisk in the cinnamon or spice mix and ashwagandha by hand or with a hand blender
-  for 30 seconds to create a smooth, foamy texture.
+- Begin warming the milk in a medium saucepan over medium heat. Add the sweetener
+  and cacao powder, then whisk briskly until the mixture begins to steam.
+- Remove from heat and whisk in the cinnamon or spice mix and ashwagandha by hand
+  or with a hand blender for 30 seconds to create a smooth, foamy texture.
 - Pour into 2 mugs. Garnish with freshly grated nutmeg or a cinnamon stick if desired.
 servings: '2'
 prep_time_min: 5
@@ -63,11 +63,11 @@ good_for:
 - adrenal-fatigue
 - immune-support
 - chronic-stress
-one_line: A warming mug of cacao and ashwagandha with sweet spices — a delicious way to take an adaptogenic
-  tonic on a cold autumn evening.
-headnote: Ashwagandha's malted, earthy quality dissolves beautifully into hot cacao, turning a simple
-  warming drink into a bone-nourishing, immunity-strengthening tonic that belongs in every autumn evening
-  routine.
+one_line: A warming mug of cacao and ashwagandha with sweet spices — a delicious way
+  to take an adaptogenic tonic on a cold autumn evening.
+headnote: Ashwagandha's malted, earthy quality dissolves beautifully into hot cacao,
+  turning a simple warming drink into a bone-nourishing, immunity-strengthening tonic
+  that belongs in every autumn evening routine.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -77,8 +77,8 @@ image:
   file: images/odonnell/odonnell-321-183.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: medicinal hot cocoa
@@ -86,3 +86,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -41,8 +41,8 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Combine the yogurt, room-temperature water, fresh ginger, lime juice, and honey (if using) in a blender
-  or deep cup suitable for an immersion blender.
+- Combine the yogurt, room-temperature water, fresh ginger, lime juice, and honey
+  (if using) in a blender or deep cup suitable for an immersion blender.
 - Blend on high for 1–2 minutes until frothy and well combined.
 - Drink immediately as a post-meal digestive.
 servings: '2'
@@ -54,10 +54,11 @@ protein_g: 2
 good_for:
 - agni-digestive-fire
 - gut-microbiome
-one_line: A diluted ginger-lime yogurt lassi served at room temperature — a traditional Ayurvedic post-meal
-  digestive that works for spring's dampness.
-headnote: Diluting yogurt heavily with water and adding the penetrating warmth of fresh ginger and lime
-  transforms dairy from a kapha-aggravating food into a genuinely supportive digestive aid for spring.
+one_line: A diluted ginger-lime yogurt lassi served at room temperature — a traditional
+  Ayurvedic post-meal digestive that works for spring's dampness.
+headnote: Diluting yogurt heavily with water and adding the penetrating warmth of
+  fresh ginger and lime transforms dairy from a kapha-aggravating food into a genuinely
+  supportive digestive aid for spring.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -67,8 +68,8 @@ image:
   file: images/odonnell/odonnell-197-103.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ginger lime lassi
@@ -76,3 +77,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 60
+kcal_total: 120
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

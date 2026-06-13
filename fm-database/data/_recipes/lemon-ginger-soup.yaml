@@ -68,8 +68,8 @@ good_for:
 - agni-digestive-fire
 - gut-health
 one_line: A light, warming lemon ginger soup — soothing and easy on digestion.
-headnote: A gentle vegetable soup with ginger and pepper is warming, hydrating, and the perfect light
-  dinner when you want to rest the gut.
+headnote: A gentle vegetable soup with ginger and pepper is warming, hydrating, and
+  the perfect light dinner when you want to rest the gut.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -78,8 +78,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://i.pinimg.com/736x/9c/4f/32/9c4f320de7cc9998148cf62361770e11.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Lemon ginger soup
@@ -87,3 +87,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 70
+kcal_total: 140
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

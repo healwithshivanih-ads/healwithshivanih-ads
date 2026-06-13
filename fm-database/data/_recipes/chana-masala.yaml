@@ -59,14 +59,16 @@ ingredients:
   qty: '2'
   unit: tbsp
 steps:
-- Pressure-cook the soaked chickpeas with a little salt and water until soft but holding shape (4-5 whistles).
-  Drain, reserving the cooking water.
-- Heat ghee, add cumin seeds, then onion; saute until golden. Add ginger-garlic paste and cook 1 minute.
-- Add tomato puree, turmeric, coriander powder, and chana/garam masala. Cook down 4-5 minutes until the
-  oil separates.
-- Add the cooked chickpeas and enough reserved water for a thick gravy. Simmer 8-10 minutes so the chana
-  absorbs the masala.
-- Lightly mash a few chickpeas to thicken. Finish with fresh coriander and serve warm with roti or rice.
+- Pressure-cook the soaked chickpeas with a little salt and water until soft but holding
+  shape (4-5 whistles). Drain, reserving the cooking water.
+- Heat ghee, add cumin seeds, then onion; saute until golden. Add ginger-garlic paste
+  and cook 1 minute.
+- Add tomato puree, turmeric, coriander powder, and chana/garam masala. Cook down
+  4-5 minutes until the oil separates.
+- Add the cooked chickpeas and enough reserved water for a thick gravy. Simmer 8-10
+  minutes so the chana absorbs the masala.
+- Lightly mash a few chickpeas to thicken. Finish with fresh coriander and serve warm
+  with roti or rice.
 servings: '2'
 prep_time_min: 10
 cook_time_min: 25
@@ -76,9 +78,10 @@ protein_g: 12
 good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
-one_line: Whole chickpeas simmered in a spiced onion-tomato masala until they soak up the flavour.
-headnote: Chana is a high-fibre, high-protein legume; soaking overnight and cooking soft makes it far
-  easier to digest, and the spices support agni.
+one_line: Whole chickpeas simmered in a spiced onion-tomato masala until they soak
+  up the flavour.
+headnote: Chana is a high-fibre, high-protein legume; soaking overnight and cooking
+  soft makes it far easier to digest, and the spices support agni.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -87,8 +90,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://vegecravings.com/wp-content/uploads/2017/01/chole-recipe-step-by-step-instructions-13.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Chana masala
@@ -96,3 +99,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 210
+kcal_total: 420
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

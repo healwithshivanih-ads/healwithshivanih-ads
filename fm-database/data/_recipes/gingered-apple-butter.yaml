@@ -43,11 +43,12 @@ ingredients:
   unit: tsp
 steps:
 - Combine the chopped apples, apple cider or juice, and maple syrup in a medium saucepan.
-- Heat over medium-low heat. Add the chopped ginger and spice mix as it warms. Simmer for 30 minutes,
-  stirring occasionally, until the apples are very soft and most of the liquid has been absorbed.
+- Heat over medium-low heat. Add the chopped ginger and spice mix as it warms. Simmer
+  for 30 minutes, stirring occasionally, until the apples are very soft and most of
+  the liquid has been absorbed.
 - Remove from heat and blend to a smooth puree with a hand blender or food processor.
-- Cool and store in a pint-size mason jar. Spread on muffins, stir into cooked oats, or use as a topping
-  for grain porridge.
+- Cool and store in a pint-size mason jar. Spread on muffins, stir into cooked oats,
+  or use as a topping for grain porridge.
 servings: '6'
 prep_time_min: 10
 cook_time_min: 35
@@ -58,10 +59,10 @@ good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
 - constipation
-one_line: A thick, ginger-spiked apple butter that doubles as a digestive — spread on muffins or stirred
-  through porridge for a warming autumn accompaniment.
-headnote: Slow-simmered apples with fresh ginger become a versatile, naturally sweet butter that brings
-  digestive warmth to every breakfast or baked good it touches.
+one_line: A thick, ginger-spiked apple butter that doubles as a digestive — spread
+  on muffins or stirred through porridge for a warming autumn accompaniment.
+headnote: Slow-simmered apples with fresh ginger become a versatile, naturally sweet
+  butter that brings digestive warmth to every breakfast or baked good it touches.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -71,8 +72,8 @@ image:
   file: images/odonnell/odonnell-328-188.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: gingered apple butter
@@ -80,3 +81,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 80
+kcal_total: 480
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

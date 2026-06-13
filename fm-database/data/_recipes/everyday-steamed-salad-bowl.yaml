@@ -54,15 +54,16 @@ ingredients:
   qty: '1'
   unit: handful
 steps:
-- Strip the stems from the kale and chard and chop the leaves into roughly 2-inch pieces.
-- Place the greens in a large frying pan with 1 tbsp of water, cover tightly, and steam-sauté over medium
-  heat for 10 minutes.
+- Strip the stems from the kale and chard and chop the leaves into roughly 2-inch
+  pieces.
+- Place the greens in a large frying pan with 1 tbsp of water, cover tightly, and
+  steam-sauté over medium heat for 10 minutes.
 - Meanwhile, use a vegetable peeler or julienne peeler to slice the carrots into ribbons.
-- Add the carrot ribbons, chopped cabbage, and sprouted mung beans to the pan; steam 5 minutes more, then
-  remove from heat and leave the lid slightly ajar.
+- Add the carrot ribbons, chopped cabbage, and sprouted mung beans to the pan; steam
+  5 minutes more, then remove from heat and leave the lid slightly ajar.
 - Spread 1 cup of rice across the base of each wide bowl.
-- Divide the steamed vegetables over the rice, pour half the dressing over each bowl, and finish with
-  toasted sunflower seeds.
+- Divide the steamed vegetables over the rice, pour half the dressing over each bowl,
+  and finish with toasted sunflower seeds.
 servings: '2'
 prep_time_min: 15
 cook_time_min: 15
@@ -75,20 +76,22 @@ good_for:
 - gut-microbiome
 - detoxification-support
 - anti-inflammatory-diet
-one_line: A colourful bowl of steam-cooked greens, carrot ribbons, and sprouted mung over rice — the quintessential
-  warm Ayurvedic salad.
-headnote: Eating cooked rather than raw vegetables at most meals is one of the most immediately beneficial
-  changes for gut comfort; this bowl makes that habit easy and satisfying.
+one_line: A colourful bowl of steam-cooked greens, carrot ribbons, and sprouted mung
+  over rice — the quintessential warm Ayurvedic salad.
+headnote: Eating cooked rather than raw vegetables at most meals is one of the most
+  immediately beneficial changes for gut comfort; this bowl makes that habit easy
+  and satisfying.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 114
 image:
-  file: images/odonnell/odonnell-115-039.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-steamed-salad-bowl.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.elizabethrider.com/wp-content/uploads/2023/01/Brown-Rice-Salad-Bowl-Recipe-Elizabeth-Rider.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -97,3 +100,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 290
+kcal_total: 580
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -36,11 +36,15 @@ ingredients:
   qty: '1'
   unit: part
 steps:
-- Combine calamus root powder with eight parts water in a saucepan and bring to a boil.
-- Reduce by continued boiling until only one-quarter of the original volume remains as a strong decoction.
-- Measure one part of this decoction and place it in a clean pan with an equal part of prepared ghee.
+- Combine calamus root powder with eight parts water in a saucepan and bring to a
+  boil.
+- Reduce by continued boiling until only one-quarter of the original volume remains
+  as a strong decoction.
+- Measure one part of this decoction and place it in a clean pan with an equal part
+  of prepared ghee.
 - Pour in an equal part of fresh water and return to the boil.
-- Cook, stirring occasionally, until all water has cooked off and only the infused ghee is left.
+- Cook, stirring occasionally, until all water has cooked off and only the infused
+  ghee is left.
 servings: '12'
 prep_time_min: 5
 cook_time_min: 40
@@ -52,18 +56,23 @@ good_for:
 - gut-brain-axis
 - nervous-system-regulation
 - digestion-and-nutrient-absorption
-one_line: Ghee prepared with a concentrated calamus root decoction — a grounding Ayurvedic medicated fat.
-headnote: Calamus root ghee follows the same classical medicated-ghee method as licorice ghee, infusing
-  the clarified butter with the nervine and digestive properties of calamus (vacha) root.
+one_line: Ghee prepared with a concentrated calamus root decoction — a grounding Ayurvedic
+  medicated fat.
+headnote: Calamus root ghee follows the same classical medicated-ghee method as licorice
+  ghee, infusing the clarified butter with the nervine and digestive properties of
+  calamus (vacha) root.
 attribution:
   author: Vasant Lad
   book: 'Ayurveda: The Science of Self-Healing'
   source_id: lad-ayurveda-science-of-self-healing-1984
   page: null
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/calamus-root-ghee-ayurvedic.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/ghee-1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Calamus Root Ghee
@@ -71,3 +80,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 75
+kcal_total: 900
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

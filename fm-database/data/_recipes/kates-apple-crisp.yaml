@@ -69,14 +69,15 @@ ingredients:
   unit: cup
 steps:
 - Preheat oven to 375°F.
-- In a large bowl, toss together the chopped apples, lemon juice, spice mix, raisins, and dried cranberries
-  until well combined.
-- In a separate bowl, use a fork to mix together the rolled oats, almond meal, melted coconut oil, maple
-  syrup, salt, and optional coconut or walnuts until crumbly.
-- Transfer the apple mixture to an 8x8-inch glass baking dish. Spread the oat topping evenly over the
-  apples and press down gently with your hand.
-- Cover with foil and bake 40 minutes, until the apples are bubbling and soft. Remove foil and bake uncovered
-  for a further 10 minutes until the topping is crisp and golden.
+- In a large bowl, toss together the chopped apples, lemon juice, spice mix, raisins,
+  and dried cranberries until well combined.
+- In a separate bowl, use a fork to mix together the rolled oats, almond meal, melted
+  coconut oil, maple syrup, salt, and optional coconut or walnuts until crumbly.
+- Transfer the apple mixture to an 8x8-inch glass baking dish. Spread the oat topping
+  evenly over the apples and press down gently with your hand.
+- Cover with foil and bake 40 minutes, until the apples are bubbling and soft. Remove
+  foil and bake uncovered for a further 10 minutes until the topping is crisp and
+  golden.
 - Spoon into bowls and serve hot, with a dollop of yogurt on the side if desired.
 servings: '5'
 prep_time_min: 15
@@ -88,10 +89,11 @@ good_for:
 - agni-digestive-fire
 - detoxification
 - digestion-and-nutrient-absorption
-one_line: A flour-free, naturally sweetened apple crisp with an almond-oat topping — an easy autumn bake
-  that is gentle on digestion and cleansing for the system.
-headnote: Local autumn apples tossed with dried cranberries and sweet spices, then topped with an almond-oat
-  crumble — a simple grain-free crisp that delivers cooling, astringent autumn medicine in dessert form.
+one_line: A flour-free, naturally sweetened apple crisp with an almond-oat topping
+  — an easy autumn bake that is gentle on digestion and cleansing for the system.
+headnote: Local autumn apples tossed with dried cranberries and sweet spices, then
+  topped with an almond-oat crumble — a simple grain-free crisp that delivers cooling,
+  astringent autumn medicine in dessert form.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -108,3 +110,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 950
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

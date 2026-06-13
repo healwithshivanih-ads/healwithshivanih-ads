@@ -51,10 +51,12 @@ ingredients:
   unit: cup
 steps:
 - Bring the water or broth to a boil in a medium saucepan over high heat.
-- Add the vegetables, spice mix, turmeric, and gingerroot; reduce heat and simmer covered for about 10
-  minutes — longer for a creamier result, shorter for a more textured soup.
-- Transfer the vegetables and cooking liquid to a blender, add the ghee and almond milk (the milk cools
-  the mixture so the blender does not overheat), and blend from medium to high until smooth.
+- Add the vegetables, spice mix, turmeric, and gingerroot; reduce heat and simmer
+  covered for about 10 minutes — longer for a creamier result, shorter for a more
+  textured soup.
+- Transfer the vegetables and cooking liquid to a blender, add the ghee and almond
+  milk (the milk cools the mixture so the blender does not overheat), and blend from
+  medium to high until smooth.
 - Alternatively, use an immersion hand blender directly in the saucepan.
 - The soup should be warm enough to serve immediately; ladle into bowls.
 servings: '2'
@@ -68,20 +70,22 @@ good_for:
 - digestion-and-nutrient-absorption
 - detoxification-support
 - inflammation
-one_line: A fast blended green vegetable soup thickened with almond milk — grounding, warming, and adaptable
-  to any season's greens.
-headnote: Swapping the vegetables to match the season transforms this single method into a year-round
-  soup repertoire; the ghee and almond milk give it a silky body without any cream.
+one_line: A fast blended green vegetable soup thickened with almond milk — grounding,
+  warming, and adaptable to any season's greens.
+headnote: Swapping the vegetables to match the season transforms this single method
+  into a year-round soup repertoire; the ghee and almond milk give it a silky body
+  without any cream.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 111
 image:
-  file: images/odonnell/odonnell-111-036.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/everyday-cream-of-anything-soup.jpg
+  credit: web reference (coach-selected)
+  source_url: https://images.squarespace-cdn.com/content/v1/5395130de4b09ddb699acb37/1572009661518-Z2EBFDECAV0U0W7U4IUA/IMG_0118.JPG
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -90,3 +94,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 120
+kcal_total: 240
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

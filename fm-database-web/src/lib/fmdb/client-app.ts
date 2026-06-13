@@ -28,7 +28,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
-import { estimateDayKcal, calorieAdherence } from "@/lib/fmdb/calorie-estimate";
+import { estimateDayKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
@@ -98,6 +98,12 @@ export interface AppRecipe {
   serves?: string;
   time?: string;
   ingredients: string[];
+  /** structured quantities — power the "cook for N people" scaler */
+  ingredientsStructured?: { qty: string; unit: string; item: string }[];
+  /** serving count the quantities are written for (for scaling) */
+  servingsNum?: number;
+  /** accurate kcal/serving (AI-precomputed for library recipes) */
+  kcalPerServing?: number;
   method: string[];
   tip?: string;
   ayurveda?: boolean;
@@ -783,6 +789,13 @@ interface LetterRecipe {
   serves?: string;
   time?: string;
   ingredients: string[];
+  /** structured ingredients (library recipes only) — drive the cook-for-N
+   *  scaler + the deterministic calorie fallback */
+  ingredientsStructured?: { qty: string; unit: string; item: string }[];
+  /** numeric serving count the quantities are written for */
+  servingsNum?: number;
+  /** accurate kcal/serving (AI-precomputed for library recipes) */
+  kcalPerServing?: number;
   method: string[];
   tip?: string;
   imageUrl?: string;
@@ -808,11 +821,10 @@ async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecip
     try {
       const r = yaml.load((await fs.readFile(path.join(dir, f), "utf8")) ?? "") as Dict;
       if (!r || !asStr(r.name) || !Array.isArray(r.steps) || !r.steps.length) continue;
-      const ingredients = (asArr(r.ingredients) as Dict[]).map((i) => {
-        const qty = asStr(i.qty);
-        const unit = asStr(i.unit);
-        return [qty, unit, asStr(i.item)].filter(Boolean).join(" ").trim();
-      }).filter(Boolean);
+      const ingStruct = (asArr(r.ingredients) as Dict[])
+        .map((i) => ({ qty: asStr(i.qty), unit: asStr(i.unit), item: asStr(i.item) }))
+        .filter((i) => i.item);
+      const ingredients = ingStruct.map((i) => [i.qty, i.unit, i.item].filter(Boolean).join(" ").trim()).filter(Boolean);
       const prep = Number(r.prep_time_min) || 0;
       const cook = Number(r.cook_time_min) || 0;
       const mins = prep + cook;
@@ -827,8 +839,11 @@ async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecip
         recipe: {
           title: asStr(r.name),
           serves: asStr(r.servings) || undefined,
+          servingsNum: Number(r.servings) || undefined,
+          kcalPerServing: Number(r.kcal_per_serving) || undefined,
           time: mins ? `${mins} min` : undefined,
           ingredients,
+          ingredientsStructured: ingStruct.length ? ingStruct : undefined,
           method: (asArr(r.steps) as unknown[]).map((s) => String(s)),
           tip: asStr(r.one_line) || asStr(r.headnote) || undefined,
           imageUrl: imgUrl,
@@ -1955,16 +1970,27 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         if (r && !recipes.includes(r)) usedLibrary.add(r);
       }
   const packRecipes = [...recipes, ...usedLibrary];
-  const recipePack: AppRecipe[] = packRecipes.map((r) => ({
-    title: r.title,
-    serves: r.serves,
-    time: r.time,
-    ingredients: r.ingredients,
-    method: r.method,
-    tip: r.tip,
-    imageUrl: r.imageUrl, // was dropped here → recipe cards never showed a photo
-    ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
-  }));
+  // Legacy letter-parsed recipes have no structured quantities / kcal. Borrow
+  // them from a same-named library recipe so the cook-for-N scaler + calories
+  // light up wherever the dish exists in the library.
+  const normTitle = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+  const libByTitle = new Map(libraryRecipes.map((l) => [normTitle(l.recipe.title), l.recipe]));
+  const recipePack: AppRecipe[] = packRecipes.map((r) => {
+    const lib = r.kcalPerServing ? undefined : libByTitle.get(normTitle(r.title));
+    return {
+      title: r.title,
+      serves: r.serves ?? (lib?.servingsNum ? String(lib.servingsNum) : undefined),
+      servingsNum: r.servingsNum ?? lib?.servingsNum,
+      kcalPerServing: r.kcalPerServing ?? lib?.kcalPerServing,
+      time: r.time ?? lib?.time,
+      ingredients: r.ingredients,
+      ingredientsStructured: r.ingredientsStructured ?? lib?.ingredientsStructured,
+      method: r.method,
+      tip: r.tip,
+      imageUrl: r.imageUrl ?? lib?.imageUrl, // was dropped here → recipe cards never showed a photo
+      ayurveda: AYURVEDIC_DISH_RE.test(r.title) || undefined,
+    };
+  });
 
   // Shopping list — written by scripts/generate-grocery-list.py; read-only here.
   let grocery: AppGrocery | null = null;
@@ -3138,8 +3164,16 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     let estimatedDailyKcal: number | null = null;
     let adherence: "on_track" | "high" | "low" | null = null;
     if (curWeek && curWeek.days.length) {
+      // recipes carry accurate AI-computed kcal/serving — let the estimator
+      // use those for any dish that matches one, table only for the rest
+      const recipeLookup = buildRecipeKcalLookup(
+        libraryRecipes.map((l) => ({ title: l.recipe.title, kcalPerServing: l.recipe.kcalPerServing })),
+      );
       const dayTotals = curWeek.days.map((d) =>
-        estimateDayKcal(d.slots.filter((s) => !/bedtime/i.test(s.slot)).map((s) => s.dish)),
+        estimateDayKcal(
+          d.slots.filter((s) => !/bedtime/i.test(s.slot)).map((s) => s.dish),
+          recipeLookup,
+        ),
       );
       const filled = dayTotals.filter((v) => v > 0);
       if (filled.length) {

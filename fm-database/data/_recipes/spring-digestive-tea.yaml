@@ -46,8 +46,8 @@ ingredients:
   unit: tsp
 steps:
 - Bring 2 cups of water to a boil in a small saucepan.
-- Coarsely chop the gingerroot, keeping the skin on, and add it to the boiling water along with the star
-  anise, cloves, peppercorns, and cinnamon.
+- Coarsely chop the gingerroot, keeping the skin on, and add it to the boiling water
+  along with the star anise, cloves, peppercorns, and cinnamon.
 - Reduce heat to low and simmer for at least 10 minutes — longer for a stronger brew.
 - Strain into 2 mugs and drink 6 ounces with or after meals.
 servings: '2'
@@ -60,11 +60,11 @@ good_for:
 - agni-digestive-fire
 - blood-sugar-regulation
 - detoxification
-one_line: A warming ginger-clove-cinnamon tea to kindle sluggish spring digestion and gently ease sweet
-  cravings.
-headnote: This simple spiced tea combines ginger's fire-stoking heat with cinnamon's blood-sugar-balancing
-  action and star anise's digestive warmth — a daily ritual for keeping kapha's heaviness in check all
-  spring.
+one_line: A warming ginger-clove-cinnamon tea to kindle sluggish spring digestion
+  and gently ease sweet cravings.
+headnote: This simple spiced tea combines ginger's fire-stoking heat with cinnamon's
+  blood-sugar-balancing action and star anise's digestive warmth — a daily ritual
+  for keeping kapha's heaviness in check all spring.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -74,8 +74,8 @@ image:
   file: images/odonnell/odonnell-154-076.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: spring digestive tea
@@ -83,3 +83,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 8
+kcal_total: 15
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

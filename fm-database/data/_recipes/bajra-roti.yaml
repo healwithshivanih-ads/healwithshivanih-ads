@@ -38,10 +38,10 @@ ingredients:
   qty: '1'
   unit: tsp
 steps:
-- Mix bajra flour with salt. Add warm water a little at a time, kneading into a soft, pliable dough. Rest
-  10 minutes.
-- Divide into balls. Pat or roll each into a round flatbread on a floured surface (gluten-free flours
-  roll best between two sheets of parchment).
+- Mix bajra flour with salt. Add warm water a little at a time, kneading into a soft,
+  pliable dough. Rest 10 minutes.
+- Divide into balls. Pat or roll each into a round flatbread on a floured surface
+  (gluten-free flours roll best between two sheets of parchment).
 - Cook on a hot tava 1-2 minutes per side until brown spots appear and it puffs.
 - Smear lightly with ghee and serve warm.
 servings: '2'
@@ -53,9 +53,10 @@ protein_g: 3
 good_for:
 - blood-sugar-regulation
 - agni-digestive-fire
-one_line: A wholesome bajra flatbread — naturally gluten-free and far steadier on blood sugar than wheat.
-headnote: 'Bajra rotis are a traditional millet/whole-grain bread: more fibre, more minerals, and a gentler
-  glucose response than refined wheat.'
+one_line: A wholesome bajra flatbread — naturally gluten-free and far steadier on
+  blood sugar than wheat.
+headnote: 'Bajra rotis are a traditional millet/whole-grain bread: more fibre, more
+  minerals, and a gentler glucose response than refined wheat.'
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -64,8 +65,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://www.vegrecipesofindia.com/wp-content/uploads/2013/03/bajra-bhakri-recipe-2.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Bajra roti
@@ -73,3 +74,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 260
+kcal_total: 520
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

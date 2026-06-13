@@ -53,8 +53,10 @@ ingredients:
   qty: 1 set
   unit: ''
 steps:
-- Blend coriander, coconut, ginger, chilli, lemon juice, and salt with a little water into a smooth chutney.
-- Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the chutney.
+- Blend coriander, coconut, ginger, chilli, lemon juice, and salt with a little water
+  into a smooth chutney.
+- Heat a little coconut oil, pop mustard seeds and curry leaves, and pour over the
+  chutney.
 - Serve fresh alongside chilla, dosa, idli, or rice.
 servings: '2'
 prep_time_min: 10
@@ -64,9 +66,10 @@ kcal_is_estimate: true
 protein_g: 2
 good_for:
 - agni-digestive-fire
-one_line: A fresh, bright coconut-coriander chutney to lift any meal — no preservatives, made fresh.
-headnote: Fresh chutneys add flavour, enzymes, and a hit of herbs without sugar or preservatives — make
-  a small batch and use it the same day.
+one_line: A fresh, bright coconut-coriander chutney to lift any meal — no preservatives,
+  made fresh.
+headnote: Fresh chutneys add flavour, enzymes, and a hit of herbs without sugar or
+  preservatives — make a small batch and use it the same day.
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
@@ -75,8 +78,8 @@ image:
   credit: web reference (auto-sourced)
   source_url: https://cdn.mygingergarlickitchen.com/images/800px/800px-recipe-coconut-coriander-chutney-anupama-paliwal-my-ginger-garlic-kitchen-4.jpg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with
-    licensed or original photo before any external/commercial use
+  note: auto-sourced + cropped for internal-app reference; replace with licensed or
+    original photo before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Coconut-coriander chutney
@@ -84,3 +87,7 @@ version: 1
 status: active
 updated_at: '2026-06-12'
 updated_by: Shivani
+kcal_per_serving: 70
+kcal_total: 140
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

@@ -42,10 +42,10 @@ ingredients:
   qty: ''
   unit: to taste
 steps:
-- Combine grated beet and lemon juice in a small bowl. If using mint, tear or snip the leaves into pieces
-  and add to the bowl.
-- In a small dry frying pan over low heat, toast sunflower seeds for about 5 minutes, stirring or shaking
-  the pan so they colour evenly without burning.
+- Combine grated beet and lemon juice in a small bowl. If using mint, tear or snip
+  the leaves into pieces and add to the bowl.
+- In a small dry frying pan over low heat, toast sunflower seeds for about 5 minutes,
+  stirring or shaking the pan so they colour evenly without burning.
 - Add the toasted sunflower seeds and salt to the beet mixture and stir to combine.
 - Serve a half-cup alongside a main dish or tucked into a collard leaf wrap.
 servings: '4'
@@ -59,10 +59,11 @@ good_for:
 - liver-detoxification
 - detoxification-support
 - digestion-and-nutrient-absorption
-one_line: Crunchy grated beet tossed with lemon, mint, and toasted sunflower seeds — a quick blood-cleansing
-  side dish that clears accumulated summer heat.
-headnote: Fresh beets grated raw retain their full detoxifying potency — a few minutes of prep yields
-  a vibrant, liver-supporting slaw that pairs with almost any autumn meal.
+one_line: Crunchy grated beet tossed with lemon, mint, and toasted sunflower seeds
+  — a quick blood-cleansing side dish that clears accumulated summer heat.
+headnote: Fresh beets grated raw retain their full detoxifying potency — a few minutes
+  of prep yields a vibrant, liver-supporting slaw that pairs with almost any autumn
+  meal.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -72,8 +73,8 @@ image:
   file: images/odonnell/odonnell-171-084.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: raw beet slaw with lemon and mint
@@ -81,3 +82,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 35
+kcal_total: 140
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

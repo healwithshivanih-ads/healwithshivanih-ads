@@ -45,10 +45,10 @@ ingredients:
   qty: ''
   unit: pinch
 steps:
-- Place the soaked almonds and ¼ cup of the warm water in a wide-mouth pint-sized mason jar. Use a hand
-  blender to process to a smooth paste.
-- Add the remaining ½ cup warm water, maple syrup, spice mix, vanilla if using, and salt. Blend again
-  until smooth.
+- Place the soaked almonds and ¼ cup of the warm water in a wide-mouth pint-sized
+  mason jar. Use a hand blender to process to a smooth paste.
+- Add the remaining ½ cup warm water, maple syrup, spice mix, vanilla if using, and
+  salt. Blend again until smooth.
 - Drink immediately.
 servings: '1'
 prep_time_min: 5
@@ -59,10 +59,11 @@ protein_g: 6
 good_for:
 - agni-digestive-fire
 - digestion-and-nutrient-absorption
-one_line: A warm, lightly spiced fresh almond milk blended in a jar — grounding and nourishing when time
-  is short but a proper breakfast is still needed.
-headnote: When eating on the go is unavoidable, this warm blended almond drink with sweet spices delivers
-  real nourishment in a simple, minimally processed form that vata can hold onto.
+one_line: A warm, lightly spiced fresh almond milk blended in a jar — grounding and
+  nourishing when time is short but a proper breakfast is still needed.
+headnote: When eating on the go is unavoidable, this warm blended almond drink with
+  sweet spices delivers real nourishment in a simple, minimally processed form that
+  vata can hold onto.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
@@ -72,8 +73,8 @@ image:
   file: images/odonnell/odonnell-051-012.jpg
   credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
   rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  note: auto-mapped by page proximity — verify/replace with licensed or original photo
+    before client-app use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: spiced nut milk smoothie
@@ -81,3 +82,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 180
+kcal_total: 180
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

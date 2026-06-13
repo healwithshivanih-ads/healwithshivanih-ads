@@ -50,11 +50,13 @@ ingredients:
   qty: '1'
   unit: few leaves
 steps:
-- Combine the cooked rice and coconut milk in a medium saucepan and heat over medium-high, stirring, until
-  the mixture comes to a boil.
+- Combine the cooked rice and coconut milk in a medium saucepan and heat over medium-high,
+  stirring, until the mixture comes to a boil.
 - Stir in the chopped dates, sweetener, soaked almonds, and cardamom powder.
-- Reduce the heat to low, cover, and simmer for 15 minutes, stirring occasionally, until the pudding thickens.
-- Divide into 2 decorative bowls, garnish with fresh mint leaves, and serve warm or at room temperature.
+- Reduce the heat to low, cover, and simmer for 15 minutes, stirring occasionally,
+  until the pudding thickens.
+- Divide into 2 decorative bowls, garnish with fresh mint leaves, and serve warm or
+  at room temperature.
 servings: '2'
 prep_time_min: 5
 cook_time_min: 20
@@ -64,19 +66,22 @@ protein_g: 5
 good_for:
 - agni-digestive-fire
 - ayurvedic-elemental-design-doshas
-one_line: A light Ayurvedic kheer of jasmine rice simmered in coconut milk with dates, almonds, and cardamom.
-headnote: Inspired by India's festival sweet kheer, this coconut-based version is far lighter than the
-  traditional recipe and can be enjoyed more freely as a nourishing summer dessert.
+one_line: A light Ayurvedic kheer of jasmine rice simmered in coconut milk with dates,
+  almonds, and cardamom.
+headnote: Inspired by India's festival sweet kheer, this coconut-based version is
+  far lighter than the traditional recipe and can be enjoyed more freely as a nourishing
+  summer dessert.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 18
 image:
-  file: images/odonnell/odonnell-019-007.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
+  file: images/web/coconut-rice-pudding.jpg
+  credit: web reference (coach-selected)
+  source_url: https://feelgoodfoodie.net/wp-content/uploads/2018/01/Almond-Milk-Rice-Pudding-1-1.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
     use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
@@ -85,3 +90,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 190
+kcal_total: 380
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'

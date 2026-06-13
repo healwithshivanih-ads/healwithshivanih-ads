@@ -35,7 +35,8 @@ steps:
 - Bring the water to a boil in a small pot or kettle.
 - Pour into a large mug and remove from heat.
 - Stir in the freshly squeezed lemon juice and optional honey.
-- 'Winter variation: boil 1 tsp grated gingerroot in the water for a few minutes before adding the lemon.'
+- 'Winter variation: boil 1 tsp grated gingerroot in the water for a few minutes before
+  adding the lemon.'
 servings: '1'
 prep_time_min: 3
 cook_time_min: 3
@@ -47,19 +48,22 @@ good_for:
 - digestion-and-nutrient-absorption
 - liver-detoxification
 - detoxification-support
-one_line: A first-thing-in-the-morning warm lemon water that kickstarts bile flow and gently clears overnight
-  mucus buildup.
-headnote: This is the Ayurvedic substitute for the morning coffee ritual — takes the same amount of time
-  and sets a cleaner metabolic tone for the day.
+one_line: A first-thing-in-the-morning warm lemon water that kickstarts bile flow
+  and gently clears overnight mucus buildup.
+headnote: This is the Ayurvedic substitute for the morning coffee ritual — takes the
+  same amount of time and sets a cleaner metabolic tone for the day.
 attribution:
   author: Kate O'Donnell
   book: The Everyday Ayurveda Cookbook
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 94
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/easy-morning-beverage.jpg
+  credit: web reference (coach-selected)
+  source_url: https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Lemon_water_%28Unsplash%29.jpg/250px-Lemon_water_%28Unsplash%29.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo before any external/commercial
+    use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: easy morning beverage
@@ -67,3 +71,7 @@ version: 1
 status: active
 updated_at: '2026-06-09'
 updated_by: Shivani
+kcal_per_serving: 30
+kcal_total: 30
+kcal_basis: ai_haiku
+kcal_computed_at: '2026-06-13'
