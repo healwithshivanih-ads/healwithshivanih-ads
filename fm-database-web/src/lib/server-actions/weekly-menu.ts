@@ -107,7 +107,12 @@ export async function generateWeekMenuAction(
 ): Promise<{ ok: boolean; error?: string; changeNote?: string; week?: number }> {
   const hit = await publishedFileForClient(clientId);
   if (!hit) return { ok: false, error: "No published plan." };
-  const target = currentPlanWeek(hit.plan) + 1;
+  // Catch-up aware: if the CURRENT plan week has no menu, draft THAT (never
+  // skip it → no more non-contiguous [4,6]); otherwise pre-load next week.
+  const cur = currentPlanWeek(hit.plan);
+  const loaded = hit.plan.app_menu?.weeks ?? [];
+  const currentReady = loaded.some((w) => Number(w.week) === cur);
+  const target = currentReady ? cur + 1 : cur;
   const out = (await runShim(
     "generate-week-menu.py",
     { client_id: clientId, plan_slug: hit.plan.slug, target_week: target },
@@ -196,15 +201,20 @@ export async function dismissPendingMenuAction(
   }
 }
 
-/** Queue scan: every published, menu-bearing client whose NEXT week starts
- *  within `withinDays` and has neither an approved next week nor a pending
- *  draft. The cron auto-drafts these; the dashboard panel lists them. */
+/** Queue scan: every published, menu-bearing client who needs a draft —
+ *  EITHER their CURRENT plan week has no menu loaded (caught behind → urgent,
+ *  draft the current week to catch up), OR the next week starts within
+ *  `withinDays` and isn't loaded yet (pre-load). `targetWeek` is the week to
+ *  generate: the current week when it's missing (never skip it), else next.
+ *  The cron auto-drafts these; the dashboard panel lists them. */
 export async function weeklyMenuQueueAction(withinDays = 3): Promise<
   {
     clientId: string;
     planSlug: string;
     currentWeek: number;
+    targetWeek: number;
     daysToNextWeek: number;
+    behind: boolean; // current week's menu is missing (urgent catch-up)
     pending: boolean;
     changeNote?: string;
   }[]
@@ -229,7 +239,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       if (!weeks.length) continue; // principle-based — no weekly menus
       const cur = currentPlanWeek(p);
       const total = Number(p.plan_period_weeks) || 12;
-      if (cur >= total) continue; // plan finishing — no next week
+      if (cur > total) continue; // plan over — recycle, never extend
       const start = effectiveMealPlanStart({
         meal_plan_started_on: p.meal_plan_started_on,
         plan_period_start: p.plan_period_start,
@@ -237,15 +247,26 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       if (!start) continue;
       const nextWeekStart = new Date(`${start}T00:00:00Z`).getTime() + cur * 7 * 86_400_000;
       const daysTo = Math.ceil((nextWeekStart - Date.now()) / 86_400_000);
-      const nextReady = weeks.some((w) => Number(w.week) === cur + 1);
+      const has = (w: number) => weeks.some((x) => Number(x.week) === w);
+      const currentReady = has(cur);
+      const nextReady = has(cur + 1);
       const pending = p.app_menu_pending ?? null;
-      if (nextReady) continue;
-      if (daysTo > withinDays && !pending) continue;
+      // Catch up the CURRENT week first if it's missing (the bug that produced
+      // non-contiguous [4,6] menus); otherwise pre-load NEXT week.
+      const targetWeek = !currentReady ? cur : cur + 1;
+      if (targetWeek > total) continue; // don't draft beyond the plan
+      // Due when: current week missing (urgent, any time), OR next week is
+      // imminent and not loaded. A pending draft still lists (dashboard), the
+      // cron filters it out so we never double-draft.
+      const due = !currentReady || (!nextReady && daysTo <= withinDays);
+      if (!due && !pending) continue;
       rows.push({
         clientId: cid,
         planSlug: String(p.slug ?? ""),
         currentWeek: cur,
+        targetWeek,
         daysToNextWeek: daysTo,
+        behind: !currentReady,
         pending: !!pending,
         changeNote: pending?.change_note,
       });
@@ -253,6 +274,7 @@ export async function weeklyMenuQueueAction(withinDays = 3): Promise<
       /* skip unparseable */
     }
   }
-  rows.sort((a, b) => a.daysToNextWeek - b.daysToNextWeek);
+  // Most-behind first, then soonest next-week.
+  rows.sort((a, b) => Number(b.behind) - Number(a.behind) || a.daysToNextWeek - b.daysToNextWeek);
   return rows;
 }

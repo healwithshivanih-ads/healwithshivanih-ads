@@ -56,10 +56,11 @@ export function WeeklyMenuQueuePanel({ names }: { names: Record<string, string> 
           >
             <span style={{ flex: 1, minWidth: 160 }}>
               <strong>{names[r.clientId] ?? r.clientId}</strong>
-              <span style={{ color: "var(--fm-text-tertiary)" }}>
+              <span style={{ color: r.behind ? "#b3402a" : "var(--fm-text-tertiary)" }}>
                 {" "}
-                · week {r.currentWeek + 1} starts{" "}
-                {r.daysToNextWeek <= 0 ? "today" : `in ${r.daysToNextWeek}d`}
+                {r.behind
+                  ? `· behind — week ${r.targetWeek} (current) has no menu`
+                  : `· week ${r.targetWeek} starts ${r.daysToNextWeek <= 0 ? "today" : `in ${r.daysToNextWeek}d`}`}
               </span>
               {r.pending && r.changeNote && (
                 <span style={{ display: "block", fontStyle: "italic", color: "var(--fm-text-secondary)", fontSize: 11.5 }}>

@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     try {
       const out = (await runShim(
         "generate-week-menu.py",
-        { client_id: row.clientId, plan_slug: row.planSlug, target_week: row.currentWeek + 1 },
+        { client_id: row.clientId, plan_slug: row.planSlug, target_week: row.targetWeek },
         240_000,
       )) as { ok: boolean; error?: string };
       results.push({ clientId: row.clientId, ok: !!out?.ok, error: out?.error });
