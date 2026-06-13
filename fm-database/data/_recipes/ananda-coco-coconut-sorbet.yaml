@@ -68,11 +68,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 255
 image:
-  file: images/odonnell/odonnell-256-142.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  file: images/web/ananda-coco-coconut-sorbet.jpg
+  credit: web reference (coach-selected)
+  source_url: https://savoringtoday.com/wp-content/uploads/2023/04/coconut-sorbet-with-berries.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: ananda-coco

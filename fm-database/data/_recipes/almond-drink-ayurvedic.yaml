@@ -69,9 +69,12 @@ attribution:
   source_id: lad-ayurveda-science-of-self-healing-1984
   page: null
 image:
-  file: ''
-  credit: ''
-  rights_status: none
+  file: images/web/almond-drink-ayurvedic.jpg
+  credit: web reference (coach-selected)
+  source_url: https://kripalu.org/sites/default/files/styles/wide_900/public/2013-03/Ojas_drink1.jpg?itok=N3tah3Ql
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: lad-ayurveda-science-of-self-healing-1984
   location: Almond Drink

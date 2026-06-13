@@ -84,6 +84,13 @@ headnote: Cooking baingan gently with a simple tempering keeps it easy to digest
 attribution:
   author: Shivani Hari
   source_id: shivani-hari-original
+image:
+  file: images/web/baingan-bharta.jpg
+  credit: web reference (coach-selected)
+  source_url: https://www.kannammacooks.com/wp-content/uploads/baingan-bharta-eggplant-bharta.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Baingan bharta

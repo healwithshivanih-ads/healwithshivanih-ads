@@ -90,11 +90,12 @@ attribution:
   source_id: odonnell-everyday-ayurveda-cookbook-2015
   page: 18
 image:
-  file: images/odonnell/odonnell-019-007.jpg
-  credit: 'Photo: Cara Brostrom, from The Everyday Ayurveda Cookbook (Shambhala, 2015)'
-  rights_status: book_reference_uncleared
-  note: auto-mapped by page proximity — verify/replace with licensed or original photo before client-app
-    use
+  file: images/web/almond-ginger-macaroons.jpg
+  credit: web reference (coach-selected)
+  source_url: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbrRt7cLAfv4Z6R-Ii-4L3hu-aJZsYOOA71Tyr9qsNUPnKtCIryG9wlntJgQB14x8f3Vjq1LzVgoQ_ISdrf7MasJRDZoS_UwMwXbWpcFpDAGn74OgE1RccWDSo_1NyfG3n3YBNSjgfkH0/s1600/ginger+macaroon2.jpg
+  rights_status: web_reference_uncleared
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: odonnell-everyday-ayurveda-cookbook-2015
   location: almond ginger macaroons
