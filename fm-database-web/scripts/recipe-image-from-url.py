@@ -129,23 +129,37 @@ def main():
         print(json.dumps({"ok": False, "error": f"No recipe YAML for {args.slug}"}))
         sys.exit(1)
 
-    # download
+    # download — check Content-Type header before reading body
     try:
-        req = urllib.request.Request(args.url, headers={"User-Agent": UA})
+        req = urllib.request.Request(args.url, headers={
+            "User-Agent": UA,
+            "Accept": "image/webp,image/avif,image/jpeg,image/png,image/*,*/*;q=0.8",
+            "Referer": "https://www.google.com/",
+        })
         with urllib.request.urlopen(req, timeout=30) as r:
+            ct = (r.headers.get("Content-Type") or "").lower().split(";")[0].strip()
+            if ct and not ct.startswith("image/") and ct not in ("application/octet-stream", ""):
+                print(json.dumps({"ok": False,
+                    "error": f"Server returned '{ct}' instead of an image. "
+                             "Open the image in its own tab (not the gallery page), "
+                             "then right-click it → 'Copy image address'."}))
+                sys.exit(1)
             raw = r.read()
+    except SystemExit:
+        raise
     except Exception as e:
         print(json.dumps({"ok": False, "error": f"Download failed: {e}"}))
         sys.exit(1)
 
-    # Detect HTML / non-image response
+    # Secondary check: magic bytes catch HTML disguised as image/octet-stream
     sig = raw[:16].lstrip()
-    if sig.startswith(b"<") or raw[:5] == b"<!DOC" or b"<html" in raw[:512].lower():
+    if sig.startswith(b"<") or b"<html" in raw[:256].lower():
         print(json.dumps({"ok": False,
-            "error": "URL returned an HTML page, not an image. Make sure to right-click the image itself → 'Copy image address'."}))
+            "error": "Got an HTML page instead of an image. "
+                     "Open the image in its own tab, then right-click → 'Copy image address'."}))
         sys.exit(1)
 
-    if len(raw) < 5_000:
+    if len(raw) < 2_000:
         print(json.dumps({"ok": False, "error": f"Download too small ({len(raw)} bytes) — probably not an image."}))
         sys.exit(1)
 
