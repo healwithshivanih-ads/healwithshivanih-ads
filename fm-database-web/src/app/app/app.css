@@ -96,7 +96,12 @@
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.5;
-  overflow: hidden;
+  /* clip (not hidden): the bottom sheets sit at translateY(100%) just below
+     the shell, which makes `overflow: hidden` a SCROLL CONTAINER (scrollHeight
+     > clientHeight). A stray focus/scroll then scrolled the whole shell, lifting
+     the header off-screen and floating the nav mid-screen. `clip` clips
+     identically but never scrolls. The real scroller is .screen-scroll. */
+  overflow: clip;
 }
 
 .screen-scroll {
@@ -613,10 +618,15 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 81;
   background: var(--paper); border-radius: 26px 26px 0 0;
   padding: 10px 20px calc(var(--home-h) + 16px);
-  transform: translateY(100%); transition: transform .36s cubic-bezier(.2,.8,.25,1);
+  transform: translateY(100%);
+  /* visibility is the hard hide — translateY alone can leave the sheet on
+     screen when the app shell isn't exactly viewport-height (it nests inside
+     the root coach layout). Delay hiding until the slide-out completes. */
+  visibility: hidden;
+  transition: transform .36s cubic-bezier(.2,.8,.25,1), visibility 0s linear .36s;
   box-shadow: var(--shadow-pop); max-height: 86%; overflow-y: auto;
 }
-.sheet.show { transform: translateY(0); }
+.sheet.show { transform: translateY(0); visibility: visible; transition: transform .36s cubic-bezier(.2,.8,.25,1), visibility 0s; }
 .sheet .grab { width: 38px; height: 4px; border-radius: 999px; background: var(--line); margin: 6px auto 14px; }
 
 .coach-card { display: flex; gap: 14px; align-items: center; padding: 4px 0 16px; }
@@ -1072,6 +1082,10 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .set-row:last-child { border-bottom: none; }
 .sr-name { font-size: 14px; color: var(--ink); display: flex; flex-direction: column; }
 .sr-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.sr-time-row { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+.sr-time-row .sr-meta { margin-top: 0; }
+.sr-time-input { font-size: 12px; color: var(--forest-deep); background: var(--forest-tint); border: none; border-radius: 6px; padding: 2px 6px; font-family: var(--sans); cursor: pointer; outline: none; -webkit-appearance: none; appearance: none; }
+.sr-time-input:focus { box-shadow: 0 0 0 2px var(--forest); }
 .conn-ico { width: 34px; height: 34px; flex-shrink: 0; border-radius: 10px; background: var(--forest-tint); color: var(--forest); display: flex; align-items: center; justify-content: center; }
 .conn-btn { font-size: 12.5px; font-weight: 600; border: 1px solid var(--forest); color: var(--forest-deep); background: none; border-radius: 999px; padding: 7px 14px; cursor: pointer; flex-shrink: 0; }
 .conn-btn.on { background: var(--forest); color: #fff; border-color: var(--forest); }

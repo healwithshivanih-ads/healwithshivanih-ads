@@ -8,6 +8,7 @@
 import { useState } from "react";
 import type { AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
+import { BodySection } from "./ochre-body";
 
 // ── meal detail ──────────────────────────────────────────────────────────────
 
@@ -537,10 +538,52 @@ const INTEGRATIONS = [
   { id: "cgm", name: "Glucose monitor (CGM)", meta: "Blood sugar patterns", icon: "sparkle" },
 ];
 
+const REM_TIMES_KEY = "ochre_reminder_times";
+
+function timeToInputVal(t: string): string {
+  const m = t.match(/(\d{1,2}):(\d{2})\s*(am|pm)/i);
+  if (!m) return "08:00";
+  let h = parseInt(m[1]);
+  const min = m[2];
+  const ap = m[3].toLowerCase();
+  if (ap === "pm" && h !== 12) h += 12;
+  if (ap === "am" && h === 12) h = 0;
+  return `${String(h).padStart(2, "0")}:${min}`;
+}
+
+function inputValToDisplay(val: string): string {
+  const parts = val.split(":");
+  let h = parseInt(parts[0]);
+  const min = parts[1] ?? "00";
+  const ap = h >= 12 ? "pm" : "am";
+  if (h === 0) h = 12;
+  else if (h > 12) h -= 12;
+  return `${h}:${min} ${ap}`;
+}
+
 export function AccountOverlay({ onClose }: { onClose: () => void }) {
   const data = useOchre();
   const a = data.account;
   const [rem, setRem] = useState<Record<string, boolean>>(data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.on }), {}));
+  const [remTimes, setRemTimes] = useState<Record<string, string>>(() => {
+    try {
+      const stored = typeof window !== "undefined" ? localStorage.getItem(REM_TIMES_KEY) : null;
+      return stored ? (JSON.parse(stored) as Record<string, string>) : {};
+    } catch { return {}; }
+  });
+
+  function handleTimeChange(id: string, val: string) {
+    const next = { ...remTimes, [id]: val };
+    setRemTimes(next);
+    try { localStorage.setItem(REM_TIMES_KEY, JSON.stringify(next)); } catch {}
+  }
+
+  function reminderDisplayTime(r: { id: string; time: string }): string {
+    const custom = remTimes[r.id];
+    if (!custom) return r.time;
+    const prefix = r.time.match(/^([A-Za-z]+ )/)?.[1] ?? "";
+    return prefix + inputValToDisplay(custom);
+  }
 
   return (
     <div className="overlay-scroll">
@@ -564,6 +607,8 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
+        <BodySection />
+
         <div className="set-group">
           <div className="set-h">
             <Icon name="bell" size={15} /> Reminders
@@ -571,9 +616,18 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
           <div className="card" style={{ overflow: "hidden" }}>
             {data.reminders.map((r) => (
               <div className="set-row" key={r.id}>
-                <span className="sr-name">
+                <span className="sr-name" style={{ flex: 1 }}>
                   {r.label}
-                  <span className="sr-meta">{r.time}</span>
+                  <span className="sr-time-row">
+                    <input
+                      type="time"
+                      className="sr-time-input"
+                      value={remTimes[r.id] ?? timeToInputVal(r.time)}
+                      onChange={(e) => handleTimeChange(r.id, e.target.value)}
+                      aria-label={`Set time for ${r.label}`}
+                    />
+                    <span className="sr-meta">{reminderDisplayTime(r)}</span>
+                  </span>
                 </span>
                 <Toggle on={!!rem[r.id]} onClick={() => setRem((s) => ({ ...s, [r.id]: !s[r.id] }))} />
               </div>
