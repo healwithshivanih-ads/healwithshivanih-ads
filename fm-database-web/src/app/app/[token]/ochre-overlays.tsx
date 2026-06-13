@@ -6,10 +6,47 @@
  */
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
+import { AppAvatar } from "./ochre-ui";
 import { BodySection } from "./ochre-body";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
+
+/** Downscale a chosen image to a small JPEG and return base64 (no data-URL
+ *  prefix), or null on failure. Mirrors the intake form's helper — kept local
+ *  so the app bundle doesn't pull in intake code. */
+async function downscaleToJpegB64(file: File, maxDim = 512, quality = 0.72): Promise<string | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const dataUrl: string = await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(String(fr.result));
+      fr.onerror = () => reject(fr.error);
+      fr.readAsDataURL(file);
+    });
+    const img: HTMLImageElement = await new Promise((resolve, reject) => {
+      const im = new Image();
+      im.onload = () => resolve(im);
+      im.onerror = () => reject(new Error("decode failed"));
+      im.src = dataUrl;
+    });
+    const scale = Math.min(1, maxDim / Math.max(img.width, img.height || 1));
+    const w = Math.max(1, Math.round(img.width * scale));
+    const h = Math.max(1, Math.round(img.height * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    ctx.drawImage(img, 0, 0, w, h);
+    const out = canvas.toDataURL("image/jpeg", quality);
+    const comma = out.indexOf(",");
+    return comma >= 0 ? out.slice(comma + 1) : null;
+  } catch {
+    return null;
+  }
+}
 
 // ── meal detail ──────────────────────────────────────────────────────────────
 
@@ -782,7 +819,72 @@ function PushToggleSection() {
 
 export function AccountOverlay({ onClose }: { onClose: () => void }) {
   const data = useOchre();
+  const router = useRouter();
   const a = data.account;
+  // Avatar: optimistic local override (instant) over the server value. Writing
+  // an in-app photo never touches the coach-account photo on disk.
+  const [photoOverride, setPhotoOverride] = useState<string | null>(null);
+  const [photoCleared, setPhotoCleared] = useState(false);
+  const [photoBusy, setPhotoBusy] = useState(false);
+  const [photoNote, setPhotoNote] = useState("");
+  const effectivePhoto = photoOverride ?? (photoCleared ? null : a.photoUrl);
+
+  async function onPickPhoto(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    setPhotoBusy(true);
+    setPhotoNote("");
+    const b64 = await downscaleToJpegB64(file);
+    if (!b64) {
+      setPhotoNote("That image couldn't be read — try a different photo.");
+      setPhotoBusy(false);
+      return;
+    }
+    try {
+      const res = await fetch("/api/app-photo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token, image_b64: b64 }),
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || !j.ok) {
+        setPhotoNote("Couldn't save your photo just now — please try again.");
+        setPhotoBusy(false);
+        return;
+      }
+      setPhotoOverride(`data:image/jpeg;base64,${b64}`);
+      setPhotoCleared(false);
+      router.refresh(); // re-pull server data so the header avatar updates too
+    } catch {
+      setPhotoNote("Couldn't reach the server. Check your connection.");
+    }
+    setPhotoBusy(false);
+  }
+
+  async function onClearPhoto() {
+    setPhotoBusy(true);
+    setPhotoNote("");
+    try {
+      const res = await fetch("/api/app-photo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: data.token, action: "clear" }),
+      });
+      const j = await res.json().catch(() => ({}));
+      if (res.ok && j.ok) {
+        setPhotoOverride(null);
+        setPhotoCleared(true);
+        router.refresh();
+      } else {
+        setPhotoNote("Couldn't remove the photo — please try again.");
+      }
+    } catch {
+      setPhotoNote("Couldn't reach the server. Check your connection.");
+    }
+    setPhotoBusy(false);
+  }
+
   const [rem, setRem] = useState<Record<string, boolean>>(data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.on }), {}));
   const [remTimes, setRemTimes] = useState<Record<string, string>>(() => {
     try {
@@ -815,7 +917,7 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
         </h2>
 
         <div className="acct-card">
-          <span className="acct-av">{a.avatar}</span>
+          <AppAvatar photoUrl={effectivePhoto} initials={a.avatar} imgClass="acct-av-img" phClass="acct-av" />
           <div style={{ flex: 1 }}>
             <div className="acct-name">{a.name}</div>
             <div className="acct-sub">{a.contact}</div>
@@ -823,6 +925,24 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
               {a.plan}
               {a.member ? ` · ${a.member}` : ""}
             </div>
+            <div className="acct-photo-actions">
+              <label className={"acct-photo-btn" + (photoBusy ? " is-busy" : "")}>
+                {photoBusy ? "Saving…" : effectivePhoto ? "Change photo" : "Add a photo"}
+                <input
+                  type="file"
+                  accept="image/*"
+                  disabled={photoBusy}
+                  onChange={onPickPhoto}
+                  style={{ display: "none" }}
+                />
+              </label>
+              {effectivePhoto && !photoBusy && (
+                <button type="button" className="acct-photo-clear" onClick={onClearPhoto}>
+                  Remove
+                </button>
+              )}
+            </div>
+            {photoNote && <div className="acct-photo-note">{photoNote}</div>}
           </div>
         </div>
 

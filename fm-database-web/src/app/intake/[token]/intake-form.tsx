@@ -1256,6 +1256,43 @@ function mergeInitial(
   };
 }
 
+/** Downscale a chosen image to a small JPEG and return base64 (no data-URL
+ *  prefix), or null on any failure. Keeps the profile photo tiny (~480px) so it
+ *  rides the submit payload cheaply. Runs entirely in the browser — no upload
+ *  route, because the intake photo must reach the coach's authoritative store
+ *  via the submission payload (binary uploads don't cross the Fly→Mac sync). */
+async function downscaleToJpegB64(file: File, maxDim = 512, quality = 0.72): Promise<string | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const dataUrl: string = await new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(String(fr.result));
+      fr.onerror = () => reject(fr.error);
+      fr.readAsDataURL(file);
+    });
+    const img: HTMLImageElement = await new Promise((resolve, reject) => {
+      const im = new Image();
+      im.onload = () => resolve(im);
+      im.onerror = () => reject(new Error("decode failed"));
+      im.src = dataUrl;
+    });
+    const scale = Math.min(1, maxDim / Math.max(img.width, img.height || 1));
+    const w = Math.max(1, Math.round(img.width * scale));
+    const h = Math.max(1, Math.round(img.height * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    ctx.drawImage(img, 0, 0, w, h);
+    const out = canvas.toDataURL("image/jpeg", quality);
+    const comma = out.indexOf(",");
+    return comma >= 0 ? out.slice(comma + 1) : null;
+  } catch {
+    return null;
+  }
+}
+
 function buildPayload(s: FormState): Record<string, unknown> {
   const goals = [s.why_here, s.concern_1, s.concern_2, s.concern_3]
     .map((x) => x.trim())
@@ -2103,6 +2140,33 @@ export function IntakeForm({
   const [medPhotos, setMedPhotos] = useState<string[]>([]);
   const [medPhotoStatus, setMedPhotoStatus] = useState<"idle" | "uploading" | "error">("idle");
   const [medPhotoErr, setMedPhotoErr] = useState<string | null>(null);
+
+  // Optional profile photo. Downscaled to a small JPEG in the browser and held
+  // ONLY in component state (never in the autosaved draft) — it's injected into
+  // the submit payload as `client_photo_b64`, decoded server-side into the
+  // client's account photo, and flows through to the companion app.
+  const [profilePhotoB64, setProfilePhotoB64] = useState<string | null>(null);
+  const [profilePhotoPreview, setProfilePhotoPreview] = useState<string | null>(null);
+  const [profilePhotoStatus, setProfilePhotoStatus] = useState<"idle" | "working" | "error">("idle");
+  const onProfilePhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // allow re-selecting the same file
+    if (!file) return;
+    setProfilePhotoStatus("working");
+    const b64 = await downscaleToJpegB64(file);
+    if (!b64) {
+      setProfilePhotoStatus("error");
+      return;
+    }
+    setProfilePhotoB64(b64);
+    setProfilePhotoPreview(`data:image/jpeg;base64,${b64}`);
+    setProfilePhotoStatus("idle");
+  };
+  const clearProfilePhoto = () => {
+    setProfilePhotoB64(null);
+    setProfilePhotoPreview(null);
+    setProfilePhotoStatus("idle");
+  };
   const MED_PHOTO_CAP = 10; // generous — covers any real med list
   const onMedPhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
@@ -2615,6 +2679,9 @@ export function IntakeForm({
     setSubmitError(null);
     try {
       const payload = buildPayload(state);
+      // Profile photo rides the submit payload (not the autosaved draft) so it
+      // crosses the Fly→Mac sync and lands as the client's account photo.
+      if (profilePhotoB64) payload.client_photo_b64 = profilePhotoB64;
       const res = await apiSubmitIntakeForm(token, payload);
       if (res.ok) {
         setSubmitted(true);
@@ -2872,6 +2939,55 @@ export function IntakeForm({
         title="About you"
         sub="The basics, so I know who I'm meeting."
       >
+        <div className="fm-fg">
+          <label className="fm-fg__label">📸 A photo of you (optional)</label>
+          <span className="fm-fg__hint">
+            Just so I can put a face to your name when we meet — it shows on your plan in the app
+            too. Entirely optional, and you can change it later in the app.
+          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 8 }}>
+            <span className="fm-photo-avatar" aria-hidden="true">
+              {profilePhotoPreview ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={profilePhotoPreview} alt="" />
+              ) : (
+                <span className="fm-photo-avatar__ph">
+                  {(state.display_name || displayName || "")
+                    .split(/\s+/)
+                    .map((w) => w[0])
+                    .slice(0, 2)
+                    .join("")
+                    .toUpperCase() || "🙂"}
+                </span>
+              )}
+            </span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <label className="fm-photo-btn">
+                {profilePhotoPreview ? "Change photo" : "Add a photo"}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={onProfilePhoto}
+                  disabled={profilePhotoStatus === "working"}
+                  style={{ display: "none" }}
+                />
+              </label>
+              {profilePhotoPreview && (
+                <button type="button" className="fm-photo-remove" onClick={clearProfilePhoto}>
+                  Remove
+                </button>
+              )}
+            </div>
+          </div>
+          {profilePhotoStatus === "working" && (
+            <span className="fm-fg__hint">Preparing your photo…</span>
+          )}
+          {profilePhotoStatus === "error" && (
+            <span className="fm-fg__hint" style={{ color: "#b91c1c" }}>
+              That image couldn&apos;t be read — try a different photo (JPG or PNG).
+            </span>
+          )}
+        </div>
         <FG label="Your name">
           <TextInput
             type="text"

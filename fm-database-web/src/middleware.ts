@@ -72,6 +72,11 @@ const PUBLIC_PATH_PREFIXES = [
   "/api/app-body",
   "/api/app-swap",
   "/api/app-push",
+  // GET serves the client's avatar (coach/intake photo, or the client's own
+  // in-app override); POST lets the client set their own photo. Token-scoped,
+  // re-verified server-side. Prefix matches both /api/app-photo and
+  // /api/app-photo/<token>.
+  "/api/app-photo",
   // Static PWA assets for the client app (manifest + home-screen icons,
   // served from public/ochre-app/). No data, safe to serve publicly.
   "/ochre-app/",

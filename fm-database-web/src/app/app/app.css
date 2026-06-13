@@ -160,6 +160,10 @@
   font-family: var(--serif); font-size: 16px; color: var(--forest);
   background: var(--forest-tint);
 }
+.avatar-btn .ph-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
 .avatar-btn .badge {
   position: absolute; top: -1px; right: -1px;
   width: 11px; height: 11px; border-radius: 999px;
@@ -1070,11 +1074,18 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .swap-done { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--forest-deep); background: var(--forest-tint); border-radius: 12px; padding: 11px 13px; margin-top: 4px; }
 
 /* ---- account / settings -------------------------------------------- */
-.acct-card { display: flex; gap: 14px; align-items: center; background: var(--paper-2); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: 16px; }
+.acct-card { display: flex; gap: 14px; align-items: flex-start; background: var(--paper-2); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: 16px; }
 .acct-av { width: 56px; height: 56px; flex-shrink: 0; border-radius: 18px; background: var(--forest-tint); color: var(--forest); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 20px; box-shadow: inset 0 0 0 1.5px rgba(74,97,82,.18); }
+.acct-av-img { width: 56px; height: 56px; flex-shrink: 0; border-radius: 18px; object-fit: cover; display: block; box-shadow: inset 0 0 0 1.5px rgba(74,97,82,.18); }
 .acct-name { font-family: var(--serif); font-size: 19px; color: var(--ink); }
 .acct-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 .acct-plan { font-size: 12px; color: var(--ochre-deep); margin-top: 5px; font-weight: 500; }
+.acct-photo-actions { display: flex; align-items: center; gap: 12px; margin-top: 9px; }
+.acct-photo-btn { display: inline-block; cursor: pointer; font-size: 12.5px; font-weight: 500; color: var(--forest); background: var(--forest-tint); border-radius: 8px; padding: 5px 11px; }
+.acct-photo-btn.is-busy { opacity: .6; cursor: default; }
+.acct-photo-clear { font-size: 12px; color: var(--muted); background: none; border: none; padding: 0; cursor: pointer; }
+.acct-photo-clear:hover { color: var(--terracotta, #b3402a); text-decoration: underline; }
+.acct-photo-note { font-size: 12px; color: var(--terracotta, #b3402a); margin-top: 6px; }
 .set-group { margin-top: 22px; }
 .set-h { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; color: var(--muted); margin: 0 4px 10px; }
 .set-h svg { color: var(--ochre); }

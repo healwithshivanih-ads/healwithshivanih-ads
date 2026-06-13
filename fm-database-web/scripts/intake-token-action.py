@@ -101,6 +101,64 @@ def _save_client(client_id: str, data: dict) -> None:
     write_text_atomic(p, yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
 
 
+# ── intake profile photo ─────────────────────────────────────────────────────
+#
+# The client can attach a profile photo on the intake form. It rides the SUBMIT
+# payload as a base64 JPEG (`client_photo_b64`) — NOT the /api/intake/upload
+# route, because that route's binary files never cross the Fly→Mac staging
+# boundary (the reconciler only mirrors client.yaml + the submission payload).
+# Carrying the photo inside the submit payload means it lands in the audit
+# session's raw_intake_payload, so when the Mac reconciler re-runs _apply_submit
+# the photo is decoded into the AUTHORITATIVE store too.
+#
+# Written to clients/<id>/photo.jpg — the exact file the coach dashboard avatar
+# reads (/api/client-photo/<id>) and the companion app falls back to. The client
+# can later set a DIFFERENT app-only photo (clients/<id>/_app_photo.jpg) which
+# never touches this file, so there's no backward flow from the app to the coach.
+_PHOTO_OTHER_EXTS = ("jpeg", "png", "webp", "gif")
+_MAX_PHOTO_BYTES = 8 * 1024 * 1024  # 8 MB decoded — the form downscales to ~480px
+
+
+def _write_intake_profile_photo(client_id: str, b64: str) -> bool:
+    """Decode a base64 photo from the intake submit payload and write it to
+    clients/<id>/photo.jpg (the canonical coach-account photo). Best-effort:
+    returns False (and never raises) on any decode/write problem so a bad photo
+    can never block the intake submission itself."""
+    if not isinstance(b64, str) or not b64.strip():
+        return False
+    import base64
+    raw = b64.strip()
+    # Tolerate a data-URL prefix ("data:image/jpeg;base64,....").
+    if raw.startswith("data:"):
+        comma = raw.find(",")
+        if comma != -1:
+            raw = raw[comma + 1 :]
+    try:
+        blob = base64.b64decode(raw, validate=False)
+    except Exception:
+        return False
+    if not blob or len(blob) > _MAX_PHOTO_BYTES:
+        return False
+    try:
+        client_dir = _plans_root() / "clients" / client_id
+        client_dir.mkdir(parents=True, exist_ok=True)
+        dest = client_dir / "photo.jpg"
+        from atomic_write import write_bytes_atomic  # type: ignore
+        write_bytes_atomic(dest, blob)
+        # Drop any stale coach photo in another extension so /api/client-photo
+        # (which probes jpg → jpeg → png → webp in order) resolves to ours.
+        for ext in _PHOTO_OTHER_EXTS:
+            other = client_dir / f"photo.{ext}"
+            if other.exists():
+                try:
+                    other.unlink()
+                except OSError:
+                    pass
+        return True
+    except Exception:
+        return False
+
+
 _SHORT_CODE_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
 
@@ -1702,6 +1760,19 @@ def _apply_submit(client_id: str, data: dict, submitted: dict) -> dict:
         if remapped:
             data["five_pillars"] = remapped
             fields_updated.append("five_pillars")
+
+    # ── profile photo (base64 JPEG in the submit payload) ──
+    # Decode → clients/<id>/photo.jpg, the canonical coach-account photo. Set
+    # photo_filename so the client-detail header (which gates on that field)
+    # shows it; the list + analyse avatars already probe the file on disk.
+    # Best-effort: a bad photo never blocks the submit. The base64 stays in the
+    # raw payload (NOT copied onto client.yaml) so the Mac reconciler can decode
+    # it into the authoritative store; we never persist the blob as a field.
+    if submitted.get("client_photo_b64"):
+        if _write_intake_profile_photo(client_id, submitted["client_photo_b64"]):
+            if data.get("photo_filename") != "photo.jpg":
+                data["photo_filename"] = "photo.jpg"
+            fields_updated.append("client_photo")
 
     # ── auto-derive active_conditions from medications + goals ──
     # Clients often don't tick the conditions checkbox even when they're

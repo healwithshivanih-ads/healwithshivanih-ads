@@ -18,3 +18,10 @@ def write_text_atomic(path, text: str) -> None:
     tmp = path.with_name(path.name + f".{os.getpid()}.tmp")
     tmp.write_text(text, encoding="utf-8")
     os.replace(tmp, path)
+
+
+def write_bytes_atomic(path, data: bytes) -> None:
+    path = Path(path)
+    tmp = path.with_name(path.name + f".{os.getpid()}.tmp")
+    tmp.write_bytes(data)
+    os.replace(tmp, path)

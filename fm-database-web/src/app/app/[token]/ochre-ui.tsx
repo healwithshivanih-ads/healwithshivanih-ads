@@ -10,6 +10,31 @@ import { useEffect, useState } from "react";
 import type { AppRemedy, PlateItem } from "@/lib/fmdb/client-app";
 import { Icon, Mark, useOchre, REMEDY_CAT, DOSHA_LABEL } from "./ochre-context";
 
+// ── avatar (photo with initials fallback) ────────────────────────────────────
+
+/** Renders the client's photo when one exists, falling back to initials on a
+ *  null URL or a load error. Shared by the header button and the account card. */
+export function AppAvatar({
+  photoUrl,
+  initials,
+  imgClass,
+  phClass,
+}: {
+  photoUrl: string | null;
+  initials: string;
+  imgClass: string;
+  phClass: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  if (photoUrl && !failed) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img className={imgClass} src={photoUrl} alt="" onError={() => setFailed(true)} />
+    );
+  }
+  return <span className={phClass}>{initials}</span>;
+}
+
 // ── header + nav ─────────────────────────────────────────────────────────────
 
 export function Header({ alert, onAccount }: { alert: boolean; onAccount: () => void }) {
@@ -25,7 +50,7 @@ export function Header({ alert, onAccount }: { alert: boolean; onAccount: () => 
         </span>
       </div>
       <button className="avatar-btn" onClick={onAccount} aria-label="Your account">
-        <span className="ph">{account.avatar}</span>
+        <AppAvatar photoUrl={account.photoUrl} initials={account.avatar} imgClass="ph-img" phClass="ph" />
         {alert && <span className="badge" />}
       </button>
     </header>

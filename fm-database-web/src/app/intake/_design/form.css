@@ -186,6 +186,56 @@
   margin-left: 6px;
 }
 
+/* ── Profile photo picker (optional, top of "About you") ──── */
+.fm-photo-avatar {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sage, #A4B5A0);
+  box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.08);
+}
+.fm-photo-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.fm-photo-avatar__ph {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.fm-photo-btn {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-1);
+  background: #fff;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.14));
+  border-radius: 8px;
+  padding: 7px 14px;
+  width: fit-content;
+}
+.fm-photo-btn:hover { background: #fafafa; }
+.fm-photo-remove {
+  font-size: 12px;
+  color: var(--fg-3);
+  background: none;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  text-align: left;
+  width: fit-content;
+}
+.fm-photo-remove:hover { color: var(--terracotta, #B85C3E); text-decoration: underline; }
+
 /* ── Text inputs ──────────────────────────────────────────── */
 
 .fm-input,
