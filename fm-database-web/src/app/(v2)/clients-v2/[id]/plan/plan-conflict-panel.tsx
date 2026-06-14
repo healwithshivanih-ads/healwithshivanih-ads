@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import type { PlanConflict, ConflictFix } from "@/lib/fmdb/plan-conflicts";
 import { applyConflictFixAction } from "./plan-conflict-actions";
+import { FmCallout } from "@/components/fm";
 
 interface Props {
   clientId: string;
@@ -85,36 +86,18 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
   };
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gap: 10,
-        padding: "12px 14px",
-        background: "rgba(231, 76, 60, 0.04)",
-        border: "1.5px solid rgba(231, 76, 60, 0.25)",
-        borderRadius: "var(--fm-radius-md, 8px)",
-        marginBottom: 16,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          fontSize: 11,
-          textTransform: "uppercase",
-          letterSpacing: 0.7,
-          fontWeight: 700,
-          color: "#a32c1c",
-        }}
-      >
-        <span>🩺</span>
-        <span>
+    <FmCallout
+      tone="danger"
+      icon="🩺"
+      title={
+        <>
           Plan-conflict check · {conflicts.length} item
           {conflicts.length === 1 ? "" : "s"} need
           {conflicts.length === 1 ? "s" : ""} your call
-        </span>
-      </div>
+        </>
+      }
+      style={{ marginBottom: 16 }}
+    >
       <div style={{ display: "grid", gap: 8 }}>
         {conflicts.map((c) => {
           const sty = SEVERITY_STYLE[c.severity];
@@ -264,6 +247,6 @@ export function PlanConflictPanel({ clientId, conflicts: initial }: Props) {
         plan. Applying a suggestion updates the underlying client profile;
         the next regenerated letter will reflect it.
       </div>
-    </div>
+    </FmCallout>
   );
 }

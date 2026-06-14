@@ -921,20 +921,26 @@ export default async function PlanTabPage({
               </div>
             </FmPanel>
 
-            {/* Attached FM protocol(s) — 5R, AIP, Whole30, etc. */}
-            <AttachedProtocolsPanel
-              planSlug={activePlan.slug}
-              locked={status !== "draft"}
-              plan={{
-                attached_protocols: (activePlan.attached_protocols as string[] | undefined) ?? [],
-                supplement_protocol: (activePlan.supplement_protocol as unknown[] | undefined) ?? [],
-                lifestyle_practices: (activePlan.lifestyle_practices as unknown[] | undefined) ?? [],
-                primary_topics: (activePlan.primary_topics as string[] | undefined) ?? [],
-                nutrition: (activePlan.nutrition as Record<string, unknown> | undefined) ?? {},
-                tracking: (activePlan.tracking as Record<string, unknown> | undefined) ?? {},
-                lab_orders: (activePlan.lab_orders as unknown[] | undefined) ?? [],
-              }}
-            />
+            {/* Attached FM protocol(s) — 5R, AIP, Whole30, etc. Shown on
+                drafts (where it's the attach UI) and whenever a protocol is
+                set; hidden on a published/ready plan with none, where it was
+                just a read-only "No protocol chosen yet" placeholder. */}
+            {(status === "draft" ||
+              ((activePlan.attached_protocols as string[] | undefined) ?? []).length > 0) && (
+              <AttachedProtocolsPanel
+                planSlug={activePlan.slug}
+                locked={status !== "draft"}
+                plan={{
+                  attached_protocols: (activePlan.attached_protocols as string[] | undefined) ?? [],
+                  supplement_protocol: (activePlan.supplement_protocol as unknown[] | undefined) ?? [],
+                  lifestyle_practices: (activePlan.lifestyle_practices as unknown[] | undefined) ?? [],
+                  primary_topics: (activePlan.primary_topics as string[] | undefined) ?? [],
+                  nutrition: (activePlan.nutrition as Record<string, unknown> | undefined) ?? {},
+                  tracking: (activePlan.tracking as Record<string, unknown> | undefined) ?? {},
+                  lab_orders: (activePlan.lab_orders as unknown[] | undefined) ?? [],
+                }}
+              />
+            )}
 
             {/* Supplements — timing bubble row + click-to-filter detail list.
                 Slot classification matches render-client-letter.py exactly
@@ -1144,9 +1150,10 @@ export default async function PlanTabPage({
                 all client comms (send + history + clickable letter
                 preview) live in one place. */}
 
-            {/* Status history timeline */}
+            {/* Status history timeline — collapsed by default; it's an audit
+                trail, not a daily-use surface. */}
             {statusHistory.length > 0 && (
-              <FmPanel
+              <Collapsible
                 title="📜 Status history"
                 subtitle="Every transition is recorded."
               >
@@ -1176,12 +1183,12 @@ export default async function PlanTabPage({
                     </div>
                   ))}
                 </div>
-              </FmPanel>
+              </Collapsible>
             )}
 
-            {/* Other / archived plans */}
+            {/* Other / archived plans — collapsed by default. */}
             {archivedPlans.length > 0 && (
-              <FmPanel
+              <Collapsible
                 title={`🗄 Other plans (${archivedPlans.length})`}
                 subtitle="Earlier or archived plans for this client."
               >
@@ -1229,7 +1236,7 @@ export default async function PlanTabPage({
                     </Link>
                   ))}
                 </div>
-              </FmPanel>
+              </Collapsible>
             )}
           </div>
         </div>
