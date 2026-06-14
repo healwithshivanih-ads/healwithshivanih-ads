@@ -1092,6 +1092,11 @@ export interface UpdatePreferencesInput {
   ayurveda_enabled?: boolean;
   ayurveda_constitution?: string;
   ayurveda_constitution_notes?: string;
+
+  // Optional plan modules / layers (the newer toggle-able ones — Schüssler's
+  // salts, peptides, …). Enabled module ids; full overwrite on save.
+  // The registry lives in src/lib/fmdb/plan-modules.ts.
+  plan_modules?: string[];
 }
 
 export type UpdatePreferencesResult =
@@ -1158,6 +1163,9 @@ export async function updateClientPreferences(
     if (input.ayurveda_constitution !== undefined) data.ayurveda_constitution = input.ayurveda_constitution;
     if (input.ayurveda_constitution_notes !== undefined)
       data.ayurveda_constitution_notes = input.ayurveda_constitution_notes;
+
+    // Optional plan modules (newer toggle-able layers)
+    if (input.plan_modules !== undefined) data.plan_modules = input.plan_modules;
 
     // bump updated_at
     data.updated_at = new Date().toISOString();

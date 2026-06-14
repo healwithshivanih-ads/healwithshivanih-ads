@@ -20,17 +20,23 @@ export function StageGate({
   label,
   storageKey,
   children,
+  initialOpen = false,
 }: {
   demoted: boolean;
   label: string;
   storageKey: string;
   children: React.ReactNode;
+  /** Start expanded when there's nothing persisted yet (e.g. the wrapped
+   *  panel is actionable this load). A persisted choice still wins. */
+  initialOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initialOpen);
 
   useEffect(() => {
     try {
-      if (sessionStorage.getItem(storageKey) === "1") setOpen(true);
+      const v = sessionStorage.getItem(storageKey);
+      if (v === "1") setOpen(true);
+      else if (v === "0") setOpen(false);
     } catch {
       /* private mode */
     }

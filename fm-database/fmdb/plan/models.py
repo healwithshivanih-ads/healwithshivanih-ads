@@ -602,6 +602,17 @@ class Client(BaseModel):
     #    evidence: [{trait, dosha, observation, source_field}]}
     ayurveda_assessment: Optional[dict] = None
 
+    # ── Optional plan modules / layers (opt-in per client) ─────────────────────
+    # Extensible checklist of optional layers the coach wants woven into THIS
+    # client's plan, so nothing is missed when authoring. Stores the enabled
+    # module ids (registry lives in fm-database-web/src/lib/fmdb/plan-modules.ts).
+    # The two already-wired layers — Ayurveda (ayurveda_enabled) and meal-plan
+    # type (meal_plan_style) — keep their own dedicated fields above/below and
+    # are NOT duplicated here; this list carries the newer modules
+    # (e.g. "schussler_salts", "peptides"). Default-empty so every existing
+    # client loads untouched. Read downstream as client.get("plan_modules").
+    plan_modules: list[str] = Field(default_factory=list)
+
     # ── Location / CRM ────────────────────────────────────────────────────────
     address_line1: str = ""              # street address
     address_line2: str = ""              # apartment, suite, landmark
