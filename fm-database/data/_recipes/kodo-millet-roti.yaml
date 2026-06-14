@@ -62,11 +62,11 @@ attribution:
   source_id: shivani-hari-original
 image:
   file: images/web/kodo-millet-roti.jpg
-  credit: web reference (auto-sourced)
-  source_url: https://www.wholesometales.com/wp-content/uploads/2020/01/Kodo-Roti-Millet-Chapati-1.png
+  credit: web reference (coach-selected)
+  source_url: https://chefadora-production.s3.ap-southeast-2.amazonaws.com/large_F2039178_F0_FC_41_DE_AABD_85_A17_A4564_EE_fa338a2257.jpeg
   rights_status: web_reference_uncleared
-  note: auto-sourced + cropped for internal-app reference; replace with licensed or
-    original photo before any external/commercial use
+  note: coach-selected image; replace with licensed or original photo
+    before any external/commercial use
 sources:
 - id: shivani-hari-original
   location: Kodo millet roti
