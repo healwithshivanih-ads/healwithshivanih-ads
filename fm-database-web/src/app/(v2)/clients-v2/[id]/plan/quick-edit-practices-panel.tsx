@@ -33,6 +33,9 @@ export interface QuickEditPracticeRow {
 interface Props {
   planSlug: string;
   practices: QuickEditPracticeRow[];
+  /** false on draft/ready plans — show read-only (drafts edit in the full
+   *  plan editor; quick-edit only mutates a published plan). Default true. */
+  editable?: boolean;
   embedded?: boolean;
 }
 
@@ -77,7 +80,7 @@ function duplicateFlags(practices: QuickEditPracticeRow[]): Map<number, string> 
   return flags;
 }
 
-export function QuickEditPracticesPanel({ planSlug, practices, embedded }: Props) {
+export function QuickEditPracticesPanel({ planSlug, practices, editable = true, embedded }: Props) {
   const [open, setOpen] = useState(false);
   const dupFlags = duplicateFlags(practices);
 
@@ -106,39 +109,90 @@ export function QuickEditPracticesPanel({ planSlug, practices, embedded }: Props
   const dupCount = dupFlags.size;
   return (
     <FmPanel
-      title="🌱 Daily practices"
-      subtitle="Add, rename, retime or remove the practices the client sees in the app — without rebuilding the plan. Each change is saved to the live plan and audited."
+      title={`🌿 Lifestyle practices (${practices.length})`}
+      subtitle="Daily / weekly habits the client commits to — what they see in the app."
       rightSlot={
-        <button
-          onClick={() => setOpen((v) => !v)}
-          style={{
-            fontSize: 11,
-            color: "var(--fm-primary)",
-            textDecoration: "underline",
-            cursor: "pointer",
-            background: "transparent",
-            border: 0,
-            fontFamily: "inherit",
-          }}
-        >
-          {open ? "Close" : "Open editor"}
-        </button>
+        editable ? (
+          <button
+            onClick={() => setOpen((v) => !v)}
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              color: open ? "var(--fm-text-secondary)" : "var(--fm-primary)",
+              cursor: "pointer",
+              background: "transparent",
+              border: 0,
+              fontFamily: "inherit",
+            }}
+          >
+            {open ? "✓ Done" : "✏️ Edit"}
+          </button>
+        ) : undefined
       }
     >
-      {!open ? (
-        <p style={{ fontSize: 12, color: "var(--fm-text-tertiary)", margin: 0 }}>
-          {practices.length} practice{practices.length === 1 ? "" : "s"} on this plan
-          {dupCount > 0 && (
-            <span style={{ color: "#b87a0a", fontWeight: 600 }}>
-              {" "}· {dupCount} possible duplicate{dupCount === 1 ? "" : "s"} flagged
-            </span>
-          )}
-          . Click <strong>Open editor</strong> to curate the list.
-        </p>
-      ) : (
+      {open && editable ? (
         body
+      ) : (
+        <div style={{ display: "grid", gap: 6 }}>
+          {practices.length === 0 ? (
+            <p style={{ fontSize: 12, color: "var(--fm-text-tertiary)", margin: 0 }}>
+              No practices set.
+            </p>
+          ) : (
+            practices.map((p, i) => (
+              <PracticeReadRow
+                key={`${i}-${p.name}`}
+                name={p.name}
+                when={p.cadence}
+                duplicateOf={dupFlags.get(i) ?? null}
+              />
+            ))
+          )}
+          {dupCount > 0 && editable && (
+            <p style={{ fontSize: 11, color: "#b87a0a", margin: "2px 0 0", fontWeight: 600 }}>
+              ⚠ {dupCount} possible duplicate{dupCount === 1 ? "" : "s"} — click ✏️ Edit to review.
+            </p>
+          )}
+        </div>
       )}
     </FmPanel>
+  );
+}
+
+/** Glanceable read row — matches the protocol-column Row styling. */
+function PracticeReadRow({
+  name,
+  when,
+  duplicateOf,
+}: {
+  name: string;
+  when: string;
+  duplicateOf: string | null;
+}) {
+  return (
+    <div
+      style={{
+        padding: "7px 10px",
+        background: "var(--fm-surface)",
+        border: "1px solid var(--fm-border-light)",
+        borderRadius: "var(--fm-radius-sm)",
+      }}
+    >
+      <div style={{ fontSize: 12.5, fontWeight: 600, color: "var(--fm-text-primary)" }}>
+        {name}
+        {duplicateOf && (
+          <span
+            title={`Looks like a duplicate of "${duplicateOf}"`}
+            style={{ marginLeft: 6, color: "#b87a0a", fontSize: 11 }}
+          >
+            ⚠
+          </span>
+        )}
+      </div>
+      {when && (
+        <div style={{ fontSize: 11, color: "var(--fm-text-tertiary)", marginTop: 1 }}>{when}</div>
+      )}
+    </div>
   );
 }
 

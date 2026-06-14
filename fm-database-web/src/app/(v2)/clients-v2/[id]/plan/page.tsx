@@ -42,7 +42,6 @@ import {
   FmPanel,
   FmCallout,
   FmWorkflowBanner,
-  FmSupplementGrid,
   FmRecheckPanel,
   FmNutritionPanel,
 } from "@/components/fm";
@@ -54,7 +53,7 @@ import { ReworkBanner } from "@/components/client-widgets/rework-banner";
 import { PlanDiffAlert } from "@/components/client-widgets/plan-diff-alert";
 import { computePlanVersionDiffAction } from "@/lib/server-actions/plan-version-diff";
 import { AttachedProtocolsPanel } from "./attached-protocols-panel";
-import { QuickEditSupplementsPanel } from "./quick-edit-supplements-panel";
+import { SupplementsProtocolPanel } from "./supplements-protocol-panel";
 import { QuickEditPracticesPanel } from "./quick-edit-practices-panel";
 import { FollowUpPanel } from "./follow-up-panel";
 import { ActivateDraftButton } from "./activate-draft-button";
@@ -450,14 +449,6 @@ export default async function PlanTabPage({
     }))
     .filter((it) => it.slug);
 
-  const practices = activePlan
-    ? summariseSection(
-        activePlan.lifestyle_practices,
-        (it) => it.name as string | undefined,
-        (it) => it.cadence as string | undefined,
-      )
-    : [];
-
   // Rows for the in-place QuickEditPracticesPanel (published plans only) —
   // add / rename / retime / remove a daily practice without rebuilding the
   // plan, and flag near-duplicates the generators may have appended.
@@ -694,16 +685,11 @@ export default async function PlanTabPage({
           Overview is state-and-signals only.) */}
       {activePlan && planStatusOf(activePlan) === "published" && (
         <div style={{ marginTop: 14, display: "grid", gap: 14 }}>
-          <AppPreviewPanel
-            clientId={id}
-            quickEdit={{ planSlug: activePlan.slug as string, rows: quickEditSupplementRows }}
-          />
-          {/* Daily practices the client sees in the app — add / rename /
-              retime / remove in place, with near-duplicate flagging. */}
-          <QuickEditPracticesPanel
-            planSlug={activePlan.slug as string}
-            practices={quickEditPracticeRows}
-          />
+          {/* App preview only. Supplements + lifestyle-practices editing
+              moved to their protocol-column panels (2026-06-14) — each has
+              ONE surface now (read + ✏️ Edit toggle), and this studio is no
+              longer a second place they live. */}
+          <AppPreviewPanel clientId={id} />
           {/* Grocery generate button removed 2026-06-13 — grocery lists are
               auto-refreshed when a menu goes live (approveWeekMenuAction), so
               the manual generate had no relevance for detailed app plans and
@@ -945,12 +931,12 @@ export default async function PlanTabPage({
             {/* Supplements — timing bubble row + click-to-filter detail list.
                 Slot classification matches render-client-letter.py exactly
                 so the coach view + the client letter bucket the same way. */}
-            <FmPanel
-              title={`💊 Supplements (${supplementGridItems.length})`}
-              subtitle="Daily timing bubbles + the same data the client letter ships. Click a slot to filter; click a row to read the coach rationale."
-            >
-              <FmSupplementGrid items={supplementGridItems} />
-            </FmPanel>
+            <SupplementsProtocolPanel
+              planSlug={activePlan.slug as string}
+              gridItems={supplementGridItems}
+              editRows={quickEditSupplementRows}
+              editable={isPublished}
+            />
 
             {/* In-place quick edit MOVED into the "What the client sees"
                 studio above (2026-06-12 audit) — the studio is the ONE
@@ -975,21 +961,14 @@ export default async function PlanTabPage({
               />
             </FmPanel>
 
-            {/* Lifestyle */}
-            <FmPanel
-              title={`🌿 Lifestyle practices (${practices.length})`}
-              subtitle="Daily / weekly habits the client commits to."
-            >
-              {practices.length === 0 ? (
-                <EmptyHint>No practices set.</EmptyHint>
-              ) : (
-                <div style={{ display: "grid", gap: 6 }}>
-                  {practices.map((p, i) => (
-                    <Row key={`${p.label}-${i}`} label={p.label} detail={p.detail} />
-                  ))}
-                </div>
-              )}
-            </FmPanel>
+            {/* Lifestyle practices — single editable surface: read list by
+                default, "✏️ Edit" reveals add/rename/retime/remove (published
+                plans). Drafts show read-only; they edit in the full editor. */}
+            <QuickEditPracticesPanel
+              planSlug={activePlan.slug as string}
+              practices={quickEditPracticeRows}
+              editable={isPublished}
+            />
 
             {/* Labs — two view modes via LabsViewPanel: cadence (when to
                 order) or sample type (what client gives on the day, with
