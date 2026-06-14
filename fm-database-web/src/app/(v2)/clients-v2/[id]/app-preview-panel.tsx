@@ -299,6 +299,49 @@ export function AppPreviewPanel({
         {error && <div style={{ color: "#c0392b", fontSize: 12.5 }}>{error}</div>}
 
         {data && (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 6,
+              alignItems: "center",
+              fontSize: 12.5,
+              padding: "8px 12px",
+              borderRadius: "var(--fm-radius-md, 10px)",
+              background: data.access.lastOpenedAt ? "rgba(61, 107, 79, 0.08)" : "rgba(120,113,108,0.07)",
+              border: "1px solid rgba(120,113,108,0.2)",
+            }}
+          >
+            <span style={{ fontWeight: 700 }}>📲 App access:</span>
+            {data.access.lastOpenedAt ? (
+              <span style={{ color: "#3d6b4f", fontWeight: 600 }}>
+                last opened{" "}
+                {new Date(data.access.lastOpenedAt).toLocaleString("en-GB", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </span>
+            ) : (
+              <span style={{ color: "var(--fm-text-tertiary)" }}>not opened yet</span>
+            )}
+            {data.access.openCount > 0 && (
+              <span style={{ color: "var(--fm-text-tertiary)" }}>
+                · {data.access.openCount} open{data.access.openCount === 1 ? "" : "s"}
+              </span>
+            )}
+            {data.access.installed && (
+              <span style={{ color: "#3d6b4f", fontWeight: 600 }}>· ✓ installed</span>
+            )}
+            <span style={{ color: "var(--fm-text-tertiary)", fontSize: 11 }}>
+              (real opens only — your own previews don&apos;t count)
+            </span>
+          </div>
+        )}
+
+        {data && (
           <div style={{ display: "flex", gap: 18, alignItems: "flex-start", flexWrap: "wrap" }}>
             <div style={{ flex: "1 1 420px", minWidth: 0, display: "grid", gap: 12 }}>
             {/* ✨ next week's auto-drafted menu — review → approve → live */}

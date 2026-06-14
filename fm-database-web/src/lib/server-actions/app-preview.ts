@@ -18,6 +18,8 @@ import yaml from "js-yaml";
 import { revalidatePath } from "next/cache";
 import { getPlansRoot } from "@/lib/fmdb/paths";
 import { loadClientAppData } from "@/lib/fmdb/client-app";
+import { readAppOpens } from "@/lib/fmdb/app-opens";
+import { readAppInstalled } from "@/lib/fmdb/app-installed";
 
 export interface AppPreviewRemedy {
   slug: string;
@@ -55,6 +57,13 @@ export interface AppPreview {
   practices: string[];
   resources: { title: string; kind: string }[];
   lessons: string[];
+  /** app adoption — real client opens (Fly only; coach previews excluded) */
+  access: {
+    lastOpenedAt: string | null; // ISO of the client's most recent app open
+    openCount: number;
+    installed: boolean; // added to home screen (or coach-confirmed)
+    firstInstalledAt: string | null;
+  };
 }
 
 export type AppPreviewResult = AppPreview | { ok: false; error: string };
@@ -141,6 +150,8 @@ export async function loadAppPreviewAction(clientId: string): Promise<AppPreview
     /* no markers */
   }
 
+  const [opens, install] = await Promise.all([readAppOpens(clientId), readAppInstalled(clientId)]);
+
   const toRow = (r: (typeof data.remedies)[number], suggested: boolean): AppPreviewRemedy => ({
     slug: r.slug,
     name: r.name,
@@ -196,6 +207,12 @@ export async function loadAppPreviewAction(clientId: string): Promise<AppPreview
     practices: data.practices.map((p) => p.name),
     resources: data.resources.map((r) => ({ title: r.title, kind: r.kind })),
     lessons: data.lessons.map((l) => l.title),
+    access: {
+      lastOpenedAt: opens.lastOpenedAt,
+      openCount: opens.count,
+      installed: install.installed,
+      firstInstalledAt: install.firstInstalledAt,
+    },
   };
 }
 
