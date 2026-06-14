@@ -664,7 +664,9 @@ export default async function ClientV2Page({
       } else {
         const notes = String((sr as { coach_notes?: string }).coach_notes ?? "");
         const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
-        if (m) labs = m[1].split(",").map((x) => x.trim()).filter(Boolean);
+        // Split on the commas BETWEEN markers, not commas inside a marker's
+        // own parentheses (e.g. "Morning Cortisol (8am, fasting)").
+        if (m) labs = m[1].split(/,\s*(?![^()]*\))/).map((x) => x.trim()).filter(Boolean);
       }
       if (labs.length === 0) continue;
       return {

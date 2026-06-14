@@ -113,7 +113,14 @@ def _session_to_plan_shape(session: dict) -> dict:
         import re
         m = re.search(r"\[Requested labs:\s*([^\]]+)\]", notes)
         if m:
-            labs = [s.strip() for s in m.group(1).split(",") if s.strip()]
+            # Split on commas that separate marker names, NOT commas inside a
+            # marker's own parentheses (e.g. "Morning Cortisol (8am, fasting)"
+            # must stay one entry — a naive split(",") shattered it into two).
+            labs = [
+                s.strip()
+                for s in re.split(r",\s*(?![^()]*\))", m.group(1))
+                if s.strip()
+            ]
     return {
         "slug": session.get("session_id") or "discovery",
         "lab_orders": [{"test": str(name), "kind": "new"} for name in labs if name],

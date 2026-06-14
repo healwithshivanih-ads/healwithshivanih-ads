@@ -63,7 +63,12 @@ def main() -> int:
     selected_symptoms: list[str] = payload.get("selected_symptoms") or []
     presenting_complaints: str = payload.get("presenting_complaints") or ""
     coach_notes: str = payload.get("coach_notes") or ""
-    requested_labs: list[str] = payload.get("requested_labs") or []
+    _requested_labs_raw = payload.get("requested_labs") or []
+    requested_labs: list[str] = (
+        [str(x).strip() for x in _requested_labs_raw if str(x).strip()]
+        if isinstance(_requested_labs_raw, list)
+        else []
+    )
     five_pillars_raw: dict | None = payload.get("five_pillars") or None
 
     try:
@@ -163,13 +168,13 @@ def main() -> int:
 
     session_id = next_session_id(root, client_id, session_date)
 
-    # Build coach notes including session type tag and requested labs
-    notes_parts: list[str] = []
-    if coach_notes:
-        notes_parts.append(coach_notes)
-    if requested_labs:
-        notes_parts.append(f"[Requested labs: {', '.join(requested_labs)}]")
-    full_notes = "\n".join(notes_parts)
+    # Coach notes. The selected lab markers are persisted in the structured
+    # `requested_labs` field below — NOT embedded as a "[Requested labs: …]"
+    # free-text block any more. That round-trip shattered marker names with
+    # internal commas (e.g. "Morning Cortisol (8am, fasting)"). Every reader
+    # now prefers the structured field and only falls back to parsing the
+    # legacy block for older sessions on disk.
+    full_notes = coach_notes or ""
 
     # Build FivePillarsAssessment if provided
     five_pillars_obj = None
@@ -203,6 +208,7 @@ def main() -> int:
             coach_notes=full_notes,
             five_pillars=five_pillars_obj,
             expected_reports=expected_reports,
+            requested_labs=requested_labs,
         )
         write_session(root, session)
     except Exception as e:

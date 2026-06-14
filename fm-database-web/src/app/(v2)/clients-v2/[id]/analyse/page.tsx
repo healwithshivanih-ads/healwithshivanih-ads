@@ -290,8 +290,10 @@ export default async function AnalysePage({
     const notes = (lastAssessment as { coach_notes?: string }).coach_notes ?? "";
     const m = notes.match(/\[Requested labs:\s*([^\]]+)\]/);
     if (m) {
+      // Split between markers, not on commas inside a marker's own
+      // parentheses (e.g. "Morning Cortisol (8am, fasting)").
       return m[1]
-        .split(",")
+        .split(/,\s*(?![^()]*\))/)
         .map((s) => s.trim())
         .filter(Boolean);
     }

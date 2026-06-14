@@ -1099,6 +1099,15 @@ class Session(BaseModel):
     #                gi_map | dutch_complete | genetics | food_sensitivity | other
     expected_reports: list[str] = Field(default_factory=list)
 
+    # Lab markers the coach selected at this session (discovery / check-in) for
+    # the client to get tested. Structured so the lab requisition reads a clean
+    # list instead of re-parsing the "[Requested labs: …]" block out of
+    # coach_notes — that free-text round-trip shattered names with internal
+    # commas (e.g. "Morning Cortisol (8am, fasting)" → two broken entries).
+    # Older sessions predating this field carry the list only in coach_notes;
+    # readers fall back to a parenthesis-aware parse for those.
+    requested_labs: list[str] = Field(default_factory=list)
+
     @field_validator("session_id")
     @classmethod
     def _id_format(cls, v: str) -> str:
