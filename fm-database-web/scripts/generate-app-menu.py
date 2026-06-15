@@ -41,6 +41,9 @@ import yaml
 FMDB_ROOT = Path(__file__).resolve().parent.parent.parent / "fm-database"
 PLANS_ROOT = Path(os.environ.get("FMDB_PLANS_DIR") or Path.home() / "fm-plans")
 sys.path.insert(0, str(FMDB_ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # scripts dir
+
+from meal_foods import relevant_meal_foods  # noqa: E402
 
 SLOTS = ["Breakfast", "Mid-morning", "Lunch", "Evening snack", "Dinner"]
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -171,6 +174,23 @@ def main() -> int:
     _step("building prompt")
     prompt = rcl._build_prompt_meal_plan(plan, client, weight_loss, coach_notes)
     prompt += _OVERRIDE.replace("{weeks_list}", json.dumps(weeks_wanted))
+
+    # Condition-appropriate therapeutic foods to weave in AS DISHES — the
+    # kitchen_remedy / vegetable_juice foods (kitchari, buttermilk, …) the app
+    # no longer surfaces as standalone remedies on a detailed plan (coach
+    # directive 2026-06-15). The menu is where the client receives them.
+    mfoods = relevant_meal_foods(plan, client)
+    if mfoods:
+        prompt += (
+            "\n\nCONDITION-APPROPRIATE THERAPEUTIC FOODS — weave these into the "
+            "weeks as REAL DISHES in the slot where they fit (e.g. a kitchari "
+            "dinner, a glass of spiced buttermilk with lunch, an Agni-reset "
+            "light dinner). They are part of this client's protocol and the menu "
+            "is where she receives them — do not list them separately. Keep them "
+            "occasional and natural (a few times across the fortnight, not "
+            "daily), each with an explicit portion:\n"
+            + "\n".join(f"- {f['name']} — {f['why']}" for f in mfoods)
+        )
 
     if dry_run:
         menu_weeks = [

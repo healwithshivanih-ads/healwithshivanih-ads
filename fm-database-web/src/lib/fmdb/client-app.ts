@@ -1772,7 +1772,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     (asArr((plan.nutrition as Dict | undefined)?.recipes) as unknown[]).map((s) => String(s)),
   );
   const LIB_STOP = new Set(["with", "and", "tbsp", "tsp", "cup", "roasted", "soaked", "ground", "fresh", "everyday", "style"]);
-  const libKey = (s: string) => s.toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+  // Strip parenthetical portion/qualifier annotations BEFORE keying so the
+  // matcher isn't defeated by them: "Paneer & spinach sabzi (well cooked)
+  // (1 bowl)" must still match the "Paneer & spinach sabzi" recipe. Without
+  // this, "(well cooked)" + "(1 bowl)" count as 3 extra tokens and blow past
+  // the strict extra<=1 cut-off — the real reason menu photos vanished once
+  // dishes carried explicit portions (2026-06-15). suppKey already does this.
+  const libKey = (s: string) => s.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
   const libToks = (s: string) => libKey(s).split(" ").filter((t) => t.length > 3 && !LIB_STOP.has(t));
   /** Strict library lookup: every recipe-name token must appear in the dish
    *  (one miss allowed), and the dish must add at most one extra token —
@@ -2045,7 +2051,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       }
       mealExtra[slotName] = {
         grad: SLOT_GRAD[slotL] ?? "linear-gradient(140deg,#e3cf9a,#9a8a4f)",
-        imageUrl: rec?.imageUrl,
+        // Letter recipes (personalised) win the method match but carry no
+        // photo — fall back to the library recipe's image so the thumbnail
+        // shows a picture instead of the gradient (mirrors the recipe-card
+        // fix below; fixes "all the food pictures disappeared" 2026-06-15).
+        imageUrl: rec?.imageUrl ?? libraryRecipeFor(pills[0] ?? cell)?.imageUrl,
         mins: rec?.time,
         serves: rec?.serves,
         ingredients: rec?.ingredients ?? [],

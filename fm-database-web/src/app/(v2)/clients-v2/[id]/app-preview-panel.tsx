@@ -16,18 +16,18 @@
  * Plus a one-line menu/practices/resources summary.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FmPanel } from "@/components/fm";
 import {
   approveSuggestionAction,
   loadAppPreviewAction,
   saveBuyLinkAction,
-  setMealOverrideAction,
   setRemedyHiddenAction,
   type AppPreview,
   type AppPreviewRemedy,
 } from "@/lib/server-actions/app-preview";
 import { setClientRemedies } from "@/lib/server-actions/remedies";
+import { DishPicker } from "./dish-picker";
 import { ManageRemediesPanel } from "./manage-remedies-panel";
 import {
   QuickEditSupplementsPanel,
@@ -125,70 +125,76 @@ function MealCell({
   overridden: boolean;
   onSaved: () => void;
 }) {
-  const [editing, setEditing] = useState(false);
-  const [val, setVal] = useState(dish);
-  const [busy, setBusy] = useState(false);
-  const save = async (next: string | null) => {
-    setBusy(true);
-    await setMealOverrideAction(clientId, week, dayIdx, slot, next).catch(() => null);
-    setBusy(false);
-    setEditing(false);
-    onSaved();
-  };
-  if (editing)
-    return (
-      <span style={{ display: "flex", gap: 6, alignItems: "center" }}>
-        <span style={{ flexShrink: 0, width: 70, color: "var(--fm-text-tertiary)", fontSize: 11 }}>{slot}</span>
-        <input
-          value={val}
-          autoFocus
-          onChange={(e) => setVal(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") void save(val);
-            if (e.key === "Escape") setEditing(false);
-          }}
-          style={{ flex: 1, fontSize: 12, padding: "3px 8px", borderRadius: 6, border: "1px solid var(--fm-border, rgba(120,113,108,0.3))" }}
-        />
-        <button style={btn} disabled={busy} onClick={() => save(val)}>
-          {busy ? "…" : "Save"}
-        </button>
-        {overridden && (
-          <button style={btn} disabled={busy} onClick={() => save(null)} title="Restore the letter's original dish">
-            Reset
-          </button>
-        )}
-      </span>
-    );
+  // Click opens the DishPicker — dishes are SELECTED from the recipe library
+  // (keeping photo + method + calories linked), not free-typed (2026-06-15).
+  const [picking, setPicking] = useState(false);
   return (
-    <span
-      onClick={() => {
-        setVal(dish);
-        setEditing(true);
-      }}
-      style={{ display: "flex", gap: 6, cursor: "pointer" }}
-      title="Click to change this dish on the client's app"
-    >
-      <span style={{ flexShrink: 0, width: 70, color: "var(--fm-text-tertiary)", fontSize: 11 }}>{slot}</span>
-      <span style={{ flex: 1, minWidth: 0 }}>
-        {dish}
-        {overridden && (
-          <span style={{ marginLeft: 6, fontSize: 10, fontWeight: 700, color: "#92600a", background: "rgba(214,158,46,0.15)", borderRadius: 999, padding: "1px 7px" }}>
-            edited
-          </span>
-        )}
+    <>
+      <span
+        onClick={() => setPicking(true)}
+        style={{ display: "flex", gap: 6, cursor: "pointer" }}
+        title="Click to change this dish — pick from the recipe library"
+      >
+        <span style={{ flexShrink: 0, width: 70, color: "var(--fm-text-tertiary)", fontSize: 11 }}>{slot}</span>
+        <span style={{ flex: 1, minWidth: 0 }}>
+          {dish}
+          {overridden && (
+            <span style={{ marginLeft: 6, fontSize: 10, fontWeight: 700, color: "#92600a", background: "rgba(214,158,46,0.15)", borderRadius: 999, padding: "1px 7px" }}>
+              edited
+            </span>
+          )}
+        </span>
       </span>
-    </span>
+      {picking && (
+        <DishPicker
+          clientId={clientId}
+          week={week}
+          dayIdx={dayIdx}
+          slot={slot}
+          currentDish={dish}
+          overridden={overridden}
+          onClose={() => setPicking(false)}
+          onSaved={() => {
+            setPicking(false);
+            onSaved();
+          }}
+        />
+      )}
+    </>
   );
 }
 
 export function AppPreviewPanel({
   clientId,
   quickEdit,
+  phone = "inline",
+  onEdited,
+  show = "all",
 }: {
   clientId: string;
   /** dose/timing editing rows — passed on the Plan tab so the studio is
    *  the ONE supplement surface (the standalone Quick-edit panel is gone) */
   quickEdit?: { planSlug: string; rows: QuickEditSupplementRow[] };
+  /**
+   * Which zones to render (2026-06-15 studio split):
+   *   "all"      — everything (standalone use)
+   *   "menu"     — weekly-menu approval + dish-by-dish editor only. Mounted
+   *                in the Plan studio's "Menu & Nutrition" section so the
+   *                coach edits meals where they'd expect to.
+   *   "remedies" — app-suggested remedies + on-app remedies + supplements.
+   * "menu"/"remedies" auto-load on mount (they mount lazily when their
+   * accordion section opens), so there's no separate "Load preview" click.
+   */
+  show?: "all" | "menu" | "remedies";
+  /**
+   * "inline" (default) renders the live phone beside the zones, as before.
+   * "none" hides it — used by the 2-pane Plan studio (2026-06-15), which
+   * lifts the phone into its own sticky right rail and listens to
+   * `onEdited` to remount it after every edit.
+   */
+  phone?: "inline" | "none";
+  /** Called after every successful load/edit so a lifted phone can remount. */
+  onEdited?: () => void;
 }) {
   const [data, setData] = useState<AppPreview | null>(null);
   const [error, setError] = useState("");
@@ -216,6 +222,8 @@ export function AppPreviewPanel({
     setBusy(false);
     setLoadedOnce(true);
     setPreviewKey((k) => k + 1);
+    // Let a lifted phone (Plan studio right rail) remount with the change.
+    onEdited?.();
   };
 
   // Coach only APPROVES (or discards) the auto-drafted menu — no manual
@@ -249,6 +257,15 @@ export function AppPreviewPanel({
     await setClientRemedies(clientId, remaining, "Removed from app preview panel").catch(() => null);
     void load();
   };
+
+  // Zone gating for the Plan studio split. "menu"/"remedies" instances
+  // auto-load on mount so the relevant zone is visible without a click.
+  const showMenu = show === "all" || show === "menu";
+  const showRem = show === "all" || show === "remedies";
+  useEffect(() => {
+    if (show !== "all") void load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const toReview = (data?.suggested ?? []).filter((r) => !r.approved);
   const reviewed = (data?.suggested ?? []).filter((r) => r.approved);
@@ -289,16 +306,21 @@ export function AppPreviewPanel({
   );
 
   return (
-    <FmPanel title="👁 What the client sees">
+    <FmPanel title={show === "all" ? "👁 What the client sees" : undefined}>
       <div style={{ display: "grid", gap: 12, fontSize: 13 }}>
-        {!loadedOnce && (
+        {!loadedOnce && show === "all" && (
           <button style={{ ...btn, padding: "8px 14px", alignSelf: "start" }} onClick={load} disabled={busy}>
             {busy ? "Loading the client's app…" : "👁 Load app preview"}
           </button>
         )}
+        {!loadedOnce && show !== "all" && busy && (
+          <div style={{ fontSize: 12.5, color: "var(--fm-text-tertiary)" }}>
+            Loading the client&apos;s {show === "menu" ? "menu" : "app data"}…
+          </div>
+        )}
         {error && <div style={{ color: "#c0392b", fontSize: 12.5 }}>{error}</div>}
 
-        {data && (
+        {showRem && data && (
           <div
             style={{
               display: "flex",
@@ -345,7 +367,7 @@ export function AppPreviewPanel({
           <div style={{ display: "flex", gap: 18, alignItems: "flex-start", flexWrap: "wrap" }}>
             <div style={{ flex: "1 1 420px", minWidth: 0, display: "grid", gap: 12 }}>
             {/* ✨ next week's auto-drafted menu — review → approve → live */}
-            {weekly?.pending && (
+            {showMenu && weekly?.pending && (
               <div
                 style={{
                   background: "rgba(74, 97, 82, 0.07)",
@@ -395,7 +417,7 @@ export function AppPreviewPanel({
                 menu that lands above as a draft to approve. No manual
                 "generate" button (coach rule 2026-06-13: auto-generate, coach
                 approves). */}
-            {data.menu.weeks === 0 && (
+            {showMenu && data.menu.weeks === 0 && (
               <div
                 style={{
                   background: "rgba(74, 97, 82, 0.06)",
@@ -412,7 +434,7 @@ export function AppPreviewPanel({
             )}
 
             {/* 🔔 flagged: auto-suggested, not yet reviewed */}
-            {toReview.length > 0 && (
+            {showRem && toReview.length > 0 && (
               <div
                 style={{
                   background: "rgba(214, 158, 46, 0.08)",
@@ -442,6 +464,8 @@ export function AppPreviewPanel({
             )}
 
             {/* 🌿 live on the app */}
+            {showRem && (
+            <>
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, textTransform: "uppercase", color: "var(--fm-text-secondary)", marginBottom: 2 }}>
                 🌿 Remedies on their app
@@ -526,6 +550,8 @@ export function AppPreviewPanel({
                 </details>
               )}
             </div>
+            </>
+            )}
 
             {/* recipe-coverage check — DETAILED plans must ship recipes
                 (Nidhi, 2026-06-12). Hybrids show a sample menu of simple
@@ -536,7 +562,7 @@ export function AppPreviewPanel({
                 plan.nutrition.recipes — no recipes letter needed. This
                 warning only fires when neither the library nor an issued
                 letter provides a single method. */}
-            {data.menu.weeks > 0 && !data.menu.isSample && data.recipeCount === 0 && (
+            {showMenu && data.menu.weeks > 0 && !data.menu.isSample && data.recipeCount === 0 && (
               <div
                 style={{
                   background: "rgba(214, 158, 46, 0.08)",
@@ -556,12 +582,14 @@ export function AppPreviewPanel({
 
             {/* 📅 the full menu, dish by dish — click any dish to swap it.
                 Overrides apply before everything that derives from the
-                tables, so Today, the week view and grocery follow. */}
-            {data.weekMenus.length > 0 && (
-              <details>
-                <summary style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, textTransform: "uppercase", color: "var(--fm-text-secondary)", cursor: "pointer" }}>
+                tables, so Today, the week view and grocery follow. In the
+                studio "Menu" section this renders expanded (not behind a
+                disclosure) so meal editing is discoverable. */}
+            {showMenu && data.weekMenus.length > 0 && (
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 0.6, textTransform: "uppercase", color: "var(--fm-text-secondary)", marginBottom: 4 }}>
                   📅 {data.menu.isSample ? "Sample menu" : "Menu"} — click any dish to change it
-                </summary>
+                </div>
                 {data.weekMenus.map((w) => (
                   <div key={w.week} style={{ marginTop: 8 }}>
                     {data.weekMenus.length > 1 && (
@@ -596,10 +624,11 @@ export function AppPreviewPanel({
                     Changed a dish? Regenerate the 🛒 grocery list so the shopping list matches.
                   </div>
                 )}
-              </details>
+              </div>
             )}
 
             {/* 📅 everything else, one line each */}
+            {showRem && (
             <div style={{ fontSize: 12, color: "var(--fm-text-secondary)", lineHeight: 1.7 }}>
               📅 Menu: {data.menu.weeks === 0 ? "principle-based (no tables)" : data.menu.isSample ? `Sample menu · ${data.menu.days} days` : `${data.menu.weeks} week${data.menu.weeks > 1 ? "s" : ""} · ${data.menu.days} days each`}
               {" · "}🛒 grocery list {data.menu.groceryGenerated ? "live" : "not generated"}
@@ -608,6 +637,7 @@ export function AppPreviewPanel({
               <br />
               📚 {data.lessons.length} lessons · {data.resources.length} resources
             </div>
+            )}
 
             <button style={{ ...btn, alignSelf: "start" }} onClick={load} disabled={busy}>
               {busy ? "Refreshing…" : "🔄 Refresh"}
@@ -616,7 +646,10 @@ export function AppPreviewPanel({
 
             {/* ── the LIVE phone — the real client app, not a mockup.
                 Reloads after every edit so what you see is exactly what
-                the client sees (coach directive 2026-06-12). ── */}
+                the client sees (coach directive 2026-06-12). Hidden when
+                phone="none" — the Plan studio lifts it to a sticky right
+                rail (2026-06-15) and listens to onEdited to remount it. ── */}
+            {phone === "inline" && (
             <div style={{ flex: "0 0 392px", position: "sticky", top: 12 }}>
               <div
                 style={{
@@ -639,6 +672,7 @@ export function AppPreviewPanel({
                 Live — this is the client&apos;s actual app. Edits on the left appear here instantly.
               </div>
             </div>
+            )}
           </div>
         )}
       </div>

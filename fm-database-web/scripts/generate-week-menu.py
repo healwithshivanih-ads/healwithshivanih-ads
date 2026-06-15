@@ -34,6 +34,7 @@ sys.path.insert(0, str(FMDB_ROOT))
 sys.path.insert(0, str(SCRIPTS_DIR))
 
 from atomic_write import write_text_atomic  # noqa: E402
+from meal_foods import relevant_meal_foods  # noqa: E402
 
 
 def _load_dotenv() -> None:
@@ -107,7 +108,8 @@ HARD RULES:
 5. If a TRAVEL window overlaps this week, make those days restaurant-survivable (simple, widely available dishes) and note it.
 6. change_note speaks TO the client, warmly, ≤30 words, no clinical jargon, no lab values. Example: "Swapped your breakfasts to 5-minute options since mornings have been rushed — and kept the khichdi dinners you loved."
 7. Repeat dishes across the week where natural (Indian households batch-cook) — 4-5 distinct breakfasts is better than 7.
-8. PORTIONS ARE EXPLICIT — every component of every dish carries a clear single-serving household quantity in brackets: "(1 bowl)", "(2)", "(1 cup)", "(small bowl)", "(30 g)", "(1 tbsp)". Write each dish as "Component (qty) + Component (qty)". This lets the app show portions on every meal and estimate calories. Use realistic one-person portions (this plan is weight-aware) — never leave a component without a quantity."""
+8. PORTIONS ARE EXPLICIT — every component of every dish carries a clear single-serving household quantity in brackets: "(1 bowl)", "(2)", "(1 cup)", "(small bowl)", "(30 g)", "(1 tbsp)". Write each dish as "Component (qty) + Component (qty)". This lets the app show portions on every meal and estimate calories. Use realistic one-person portions (this plan is weight-aware) — never leave a component without a quantity.
+9. THERAPEUTIC FOODS ARE MEALS, NOT REMEDIES — when a CONDITION-APPROPRIATE THERAPEUTIC FOODS list is provided, weave those foods into the week as REAL DISHES in the slot where they fit (e.g. a kitchari dinner, a glass of spiced buttermilk with lunch, an Agni-reset light dinner). They are part of this client's protocol and the menu is where she receives them — do not list them separately. Keep them occasional and natural (1-3 times across the week, not daily), and always with explicit portions."""
 
 
 def _plans_root() -> Path:
@@ -207,6 +209,13 @@ def main() -> None:
 
     feedback = _recent_feedback(client_id)
 
+    # Condition-appropriate therapeutic foods to weave in AS DISHES — these are
+    # the kitchen_remedy / vegetable_juice foods (kitchari, buttermilk, …) that
+    # the app no longer surfaces as standalone remedies on a detailed plan
+    # (coach directive 2026-06-15). The menu is where the client receives them.
+    mfoods = relevant_meal_foods(plan, client)
+    mfood_lines = [f"- {f['name']} — {f['why']}" for f in mfoods]
+
     user = "\n".join(
         [
             f"CLIENT: dietary preference: {client.get('dietary_preference') or 'not stated'}; "
@@ -218,6 +227,9 @@ def main() -> None:
             f"EAT FREELY: {', '.join(nutrition.get('add') or [])}",
             f"LEAVE OUT: {', '.join(nutrition.get('reduce') or [])}",
             f"Meal timing: {nutrition.get('meal_timing') or ''}",
+            "",
+            "CONDITION-APPROPRIATE THERAPEUTIC FOODS (weave these in as real dishes — rule 9):",
+            *(mfood_lines or ["none for this client"]),
             "",
             "CURRENT MENU (vary from this):",
             *cur_lines,

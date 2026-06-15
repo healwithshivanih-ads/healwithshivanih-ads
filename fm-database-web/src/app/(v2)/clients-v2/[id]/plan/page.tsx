@@ -67,6 +67,8 @@ import { detectPlanConflicts } from "@/lib/fmdb/plan-conflicts";
 import { PlanConflictPanel } from "./plan-conflict-panel";
 import { AppPreviewPanel } from "../app-preview-panel";
 import { SendAppLinkButton } from "../send-app-link-button";
+import { StatusStrip, StatusStripLink } from "./status-strip";
+import { PlanStudio, type StudioSection } from "./plan-studio";
 
 export const dynamic = "force-dynamic";
 
@@ -612,6 +614,484 @@ export default async function PlanTabPage({
   const statusHistory =
     (activePlan?.status_history as Array<Record<string, unknown>> | undefined) ??
     [];
+
+  // ── Studio status-strip metrics (published path) ──────────────────────
+  // "Week N of M · D days in" from the confirmed/derived start anchor.
+  let weekLabel: string | undefined;
+  if (activePlan?.plan_period_weeks) {
+    const totalWeeks = activePlan.plan_period_weeks as number;
+    if (planStartAnchor) {
+      const start = new Date(`${planStartAnchor}T00:00:00`);
+      if (!Number.isNaN(start.getTime())) {
+        const days = Math.max(
+          0,
+          Math.floor((Date.now() - start.getTime()) / 86_400_000),
+        );
+        const wk = Math.min(totalWeeks, Math.floor(days / 7) + 1);
+        weekLabel = `Week ${wk} of ${totalWeeks} · ${days} day${days === 1 ? "" : "s"} in`;
+      }
+    }
+    if (!weekLabel) weekLabel = `${totalWeeks}-week protocol`;
+  }
+  // Conflicts + recheck fold into the strip's "N to review" pill.
+  const alertCount = planConflicts.length + (stage.stage === "recheck" ? 1 : 0);
+
+  // ── PUBLISHED → 2-pane studio (2026-06-15 redesign) ───────────────────
+  // Compact status strip (folds workflow banner + conflicts + recheck) +
+  // PlanStudio (left section-nav accordion · right sticky live phone).
+  // Draft / no-plan keep the existing layout below.
+  if (activePlan && isPublished) {
+    const hasProtocols =
+      ((activePlan.attached_protocols as string[] | undefined) ?? []).length > 0;
+
+    const countChip = (text: string, tone: "neutral" | "warm" = "neutral") => (
+      <span
+        style={{
+          fontSize: 11.5,
+          color: tone === "warm" ? "#92600a" : "var(--fm-text-secondary)",
+          background: tone === "warm" ? "rgba(243,156,18,0.12)" : "var(--fm-bg-cool)",
+          border: `1px solid ${tone === "warm" ? "rgba(243,156,18,0.4)" : "var(--fm-border-light)"}`,
+          borderRadius: "var(--fm-radius-sm)",
+          padding: "2px 8px",
+        }}
+      >
+        {text}
+      </span>
+    );
+
+    const conditionsNode = (
+      <div>
+        {supersedes && (
+          <div
+            style={{
+              fontSize: 12,
+              marginBottom: 10,
+              padding: "6px 10px",
+              background: "var(--fm-bg-cool)",
+              borderRadius: "var(--fm-radius-sm)",
+            }}
+          >
+            ↩ Supersedes{" "}
+            <Link
+              href={`/clients-v2/${id}/plan/edit/${supersedes}`}
+              style={{ fontFamily: "var(--fm-font-mono)", color: "var(--fm-text-primary)" }}
+            >
+              {supersedes}
+            </Link>{" "}
+            ·{" "}
+            <Link
+              href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
+              style={{ color: "var(--fm-primary)", fontWeight: 600 }}
+            >
+              Compare versions →
+            </Link>
+          </div>
+        )}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+          <div>
+            <MiniLabel>Primary conditions</MiniLabel>
+            <ChipList items={primaryTopics} tone="primary" />
+          </div>
+          {presentingSymptoms.length > 0 && (
+            <div>
+              <MiniLabel>Presenting symptoms</MiniLabel>
+              <ChipList items={presentingSymptoms} />
+            </div>
+          )}
+          {contributingTopics.length > 0 && (
+            <div style={{ gridColumn: "1 / -1" }}>
+              <MiniLabel>Contributing conditions</MiniLabel>
+              <ChipList items={contributingTopics} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+
+    const studioSections: StudioSection[] = [
+      {
+        id: "conditions",
+        label: "🗂 Conditions",
+        node: conditionsNode,
+      },
+      {
+        id: "menu",
+        label: "🥗 Menu & Nutrition",
+        node: (
+          <FmNutritionPanel
+            nutrition={activePlan.nutrition as Record<string, unknown> | null | undefined}
+            planSlug={activePlan.slug}
+          />
+        ),
+      },
+      {
+        id: "supplements",
+        label: "💊 Supplements",
+        badge: supplementGridItems.length
+          ? countChip(`${supplementGridItems.length} prescribed`)
+          : undefined,
+        node: (
+          <SupplementsProtocolPanel
+            planSlug={activePlan.slug as string}
+            gridItems={supplementGridItems}
+            editRows={quickEditSupplementRows}
+            editable={isPublished}
+          />
+        ),
+      },
+      {
+        id: "practices",
+        label: "🧘 Practices",
+        badge: quickEditPracticeRows.length
+          ? countChip(`${quickEditPracticeRows.length} daily`)
+          : undefined,
+        node: (
+          <QuickEditPracticesPanel
+            planSlug={activePlan.slug as string}
+            practices={quickEditPracticeRows}
+            editable={isPublished}
+          />
+        ),
+      },
+      {
+        id: "labs",
+        label: "🧪 Labs",
+        badge:
+          newLabs.length + repeatLabs.length > 0
+            ? countChip(`${newLabs.length + repeatLabs.length} on plan`)
+            : undefined,
+        node: (
+          <LabsViewPanel
+            newLabs={newLabs}
+            repeatLabs={repeatLabs}
+            planStartAnchor={planStartAnchor}
+            planStartConfirmed={planStartConfirmed}
+            planStartSource={planStartSource}
+            planSlug={activePlan.slug as string}
+            clientId={id}
+            clientEmail={(client as { email?: string } | null)?.email ?? null}
+          />
+        ),
+      },
+      ...(hasProtocols
+        ? [
+            {
+              id: "protocols",
+              label: "📋 Protocols",
+              badge: countChip(
+                `${((activePlan.attached_protocols as string[]) ?? []).length} attached`,
+              ),
+              node: (
+                <AttachedProtocolsPanel
+                  planSlug={activePlan.slug}
+                  locked
+                  plan={{
+                    attached_protocols:
+                      (activePlan.attached_protocols as string[] | undefined) ?? [],
+                    supplement_protocol:
+                      (activePlan.supplement_protocol as unknown[] | undefined) ?? [],
+                    lifestyle_practices:
+                      (activePlan.lifestyle_practices as unknown[] | undefined) ?? [],
+                    primary_topics:
+                      (activePlan.primary_topics as string[] | undefined) ?? [],
+                    nutrition:
+                      (activePlan.nutrition as Record<string, unknown> | undefined) ?? {},
+                    tracking:
+                      (activePlan.tracking as Record<string, unknown> | undefined) ?? {},
+                    lab_orders: (activePlan.lab_orders as unknown[] | undefined) ?? [],
+                  }}
+                />
+              ),
+            } as StudioSection,
+          ]
+        : []),
+      {
+        id: "education",
+        label: "🎓 Education",
+        badge: education.length ? countChip(`${education.length} assigned`) : undefined,
+        node: (
+          <div style={{ display: "grid", gap: 10 }}>
+            <div>
+              <SendEducationPackButton
+                clientId={id}
+                clientEmail={clientEmail}
+                clientName={clientName}
+                assessmentTopics={assessmentTopicsForPicker}
+                allTopics={allTopicsForPicker}
+              />
+            </div>
+            {education.length > 0 ? (
+              <div style={{ display: "grid", gap: 6 }}>
+                {education.map((e, i) => (
+                  <Row key={`${e.label}-${i}`} label={e.label} detail={e.detail} />
+                ))}
+              </div>
+            ) : (
+              <EmptyHint>
+                No education modules on this plan — use &ldquo;Send education pack&rdquo;
+                to email a topic brief anyway.
+              </EmptyHint>
+            )}
+          </div>
+        ),
+      },
+      ...(drivers.length > 0
+        ? [
+            {
+              id: "root",
+              label: "🧬 Root causes",
+              badge: countChip(`${drivers.length}`),
+              node: (
+                <div style={{ display: "grid", gap: 6 }}>
+                  {drivers.map((d, i) => (
+                    <Row key={`${d.label}-${i}`} label={d.label} detail={d.detail} />
+                  ))}
+                </div>
+              ),
+            } as StudioSection,
+          ]
+        : []),
+      ...(referrals.length > 0
+        ? [
+            {
+              id: "referrals",
+              label: "👩‍⚕️ Referrals",
+              badge: countChip(`${referrals.length}`, "warm"),
+              node: (
+                <div style={{ display: "grid", gap: 6 }}>
+                  {referrals.map((r, i) => (
+                    <Row key={`${r.label}-${i}`} label={r.label} detail={r.detail} />
+                  ))}
+                </div>
+              ),
+            } as StudioSection,
+          ]
+        : []),
+      {
+        id: "follow-up",
+        label: "📅 Follow-up",
+        anchorId: "follow-up-panel",
+        badge: recheckDate ? countChip(recheckDate) : undefined,
+        node: (
+          <FollowUpPanel
+            activePlanSlug={activePlan.slug}
+            clientId={id}
+            clientName={(client as unknown as { display_name?: string }).display_name}
+            recheckDate={recheckDate}
+            isOverdue={followUpOverdue}
+            suggestedSlug={suggestedFollowUpSlug}
+          />
+        ),
+      },
+    ];
+
+    return (
+      <PlanPageShell clientId={id}>
+        {client.rework_suggestion && (
+          <div style={{ marginBottom: 12 }}>
+            <ReworkBanner clientId={id} suggestion={client.rework_suggestion} />
+          </div>
+        )}
+
+        {/* Compact status strip — folds the old workflow banner +
+            PlanConflictPanel + FmRecheckPanel into one row. The real
+            interactive panels live behind the "N to review" pill so no
+            functionality is lost. */}
+        <StatusStrip
+          tone={stage.stage === "recheck" ? "recheck" : "active"}
+          slug={activePlan.slug as string}
+          weekLabel={weekLabel}
+          followDate={recheckDate}
+          alertCount={alertCount}
+          trailing={
+            <StatusStripLink href={`/clients-v2/${id}/communicate`}>
+              ✉ Welcome letter →
+            </StatusStripLink>
+          }
+        >
+          {planConflicts.length > 0 && (
+            <PlanConflictPanel clientId={id} conflicts={planConflicts} />
+          )}
+          {stage.stage === "recheck" && (
+            <FmRecheckPanel
+              clientId={id}
+              activePlanSlug={activePlan.slug}
+              recheckDate={recheckDate}
+              pendingDraftSlug={pendingDraft?.slug}
+              hasFreshAssessment={hasFreshAssessment}
+              freshLabSnapshots={freshLabSnapshots}
+            />
+          )}
+        </StatusStrip>
+
+        {/* Pending-draft + version diff stay visible — they're a review
+            signal the strip doesn't cover. */}
+        {pendingDrafts.length > 0 && (
+          <div style={{ marginTop: 12 }}>
+            <FmCallout
+              tone="info"
+              icon="📋"
+              title={
+                pendingDrafts.length === 1
+                  ? "A new draft is waiting for review"
+                  : `${pendingDrafts.length} drafts are waiting for review`
+              }
+            >
+              <div style={{ color: "var(--fm-text-secondary)" }}>
+                The studio below still shows your <strong>live</strong> published
+                plan.{" "}
+                {pendingDrafts.length === 1 ? "The draft is a" : "Drafts are"}{" "}
+                candidate next-version{pendingDrafts.length === 1 ? "" : "s"} — review
+                and activate to supersede.
+              </div>
+              <div style={{ marginTop: 8, display: "flex", gap: 6, flexWrap: "wrap" }}>
+                {pendingDrafts.map((d) => (
+                  <Link
+                    key={d.slug as string}
+                    href={`/clients-v2/${id}/plan/edit/${d.slug}`}
+                    style={{
+                      padding: "5px 10px",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      fontFamily: "var(--fm-font-mono)",
+                      background: "var(--fm-secondary)",
+                      color: "#fff",
+                      borderRadius: "var(--fm-radius-sm)",
+                      textDecoration: "none",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {d.slug} →
+                  </Link>
+                ))}
+              </div>
+            </FmCallout>
+          </div>
+        )}
+        {activePlan && pendingDraft && draftDiff?.ok && draftDiff.diff && (
+          <PlanDiffAlert
+            clientId={id}
+            activeSlug={activePlan.slug as string}
+            draftSlug={pendingDraft.slug as string}
+            diff={draftDiff.diff}
+          />
+        )}
+
+        {/* The studio. Dimmed when the protocol period is done so the
+            recheck pill in the strip is where focus lands. */}
+        <div
+          style={{
+            opacity: stage.stage === "recheck" ? 0.72 : 1,
+            transition: "opacity 160ms ease",
+          }}
+        >
+          <PlanStudio clientId={id} sections={studioSections} />
+        </div>
+
+        {/* Footer meta — evergreen verbs + audit trails, below the studio. */}
+        <div style={{ marginTop: 18, display: "grid", gap: 12 }}>
+          <FmPanel
+            title="⚙ Quick actions"
+            subtitle="Everyday verbs. The big next step lives in the status strip above."
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: 6,
+              }}
+            >
+              <ActionLink href={`/clients-v2/${id}/analyse/quick`} icon="📝" label="Quick note" />
+              <ActionLink
+                href={`/clients-v2/${id}/communicate`}
+                icon="📤"
+                label="Send letter / message"
+              />
+              <ActionLink
+                href={`/clients-v2/${id}/plan/edit/${activePlan.slug}`}
+                icon="✏️"
+                label="Edit plan"
+              />
+              <ActionLink href={`/clients-v2/${id}/soap`} icon="📋" label="SOAP note (1-pager)" />
+            </div>
+          </FmPanel>
+
+          {statusHistory.length > 0 && (
+            <Collapsible title="📜 Status history" subtitle="Every transition is recorded.">
+              <div style={{ display: "grid", gap: 6 }}>
+                {[...statusHistory].reverse().map((ev, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      fontSize: 11,
+                      padding: "5px 8px",
+                      borderLeft: "2px solid var(--fm-border)",
+                      background: "var(--fm-bg-cool)",
+                      borderRadius: "0 var(--fm-radius-sm) var(--fm-radius-sm) 0",
+                    }}
+                  >
+                    <PlanStatusBadge status={asPlanStatus(ev.state as string | undefined)} />{" "}
+                    <span style={{ color: "var(--fm-text-tertiary)" }}>
+                      {ev.at as string | undefined}
+                    </span>
+                    {ev.reason ? (
+                      <div style={{ marginTop: 2 }}>{ev.reason as string}</div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </Collapsible>
+          )}
+
+          {archivedPlans.length > 0 && (
+            <Collapsible
+              title={`🗄 Other plans (${archivedPlans.length})`}
+              subtitle="Earlier or archived plans for this client."
+            >
+              <div style={{ display: "grid", gap: 6 }}>
+                {archivedPlans.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/clients-v2/${id}/plan/edit/${p.slug}`}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "6px 10px",
+                      border: "1px solid var(--fm-border-light)",
+                      borderRadius: "var(--fm-radius-sm)",
+                      textDecoration: "none",
+                      background: "var(--fm-surface)",
+                    }}
+                  >
+                    <div style={{ flex: 1, minWidth: 0, fontSize: 12 }}>
+                      <div
+                        style={{
+                          fontFamily: "var(--fm-font-mono)",
+                          fontWeight: 600,
+                          color: "var(--fm-text-primary)",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {p.slug}
+                      </div>
+                      <div style={{ fontSize: 10, color: "var(--fm-text-tertiary)", marginTop: 1 }}>
+                        v{planVersionOf(p)} ·{" "}
+                        {(p.updated_at as string | undefined)?.slice(0, 10) ?? "—"}
+                      </div>
+                    </div>
+                    <PlanStatusBadge status={asPlanStatus(planStatusOf(p))} />
+                  </Link>
+                ))}
+              </div>
+            </Collapsible>
+          )}
+        </div>
+      </PlanPageShell>
+    );
+  }
 
   return (
     <PlanPageShell clientId={id}>

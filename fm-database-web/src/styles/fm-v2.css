@@ -534,3 +534,193 @@
   font-size: 11px;
 }
 .fm-collapsible[open] .fm-collapsible-caret { transform: rotate(90deg); }
+
+/* =========================================================
+   Plan studio (2026-06-15) — Plan-tab redesign.
+
+   Replaces the 11-panel single-scroll wall with: a compact status
+   strip + a 2-pane studio (left = section-nav pills + one-open
+   accordion of the editable plan sections; right = the live phone
+   preview, sticky + collapsible).
+
+   The phone rail is a NAMED class (not an inline grid) so the ≤640px
+   collapse is explicit here rather than relying on the attribute-
+   selector sweep above. Editors fill the row; phone rail is ~404px so
+   the 375px iframe + frame border fits.
+   ========================================================= */
+.fm-plan-studio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 404px;
+  gap: 20px;
+  align-items: start;
+  margin-top: 16px;
+}
+/* When the coach collapses the phone, the editors take the full row. */
+.fm-plan-studio.phone-collapsed {
+  grid-template-columns: minmax(0, 1fr) 44px;
+}
+.fm-plan-studio-rail {
+  position: sticky;
+  top: 16px;
+  min-width: 0;
+  align-self: start;
+}
+/* Under 1180px the phone un-pins and drops below the editors. */
+@media (max-width: 1180px) {
+  .fm-plan-studio,
+  .fm-plan-studio.phone-collapsed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fm-plan-studio-rail {
+    position: static;
+    max-width: 420px;
+  }
+}
+
+/* Section-nav pill row — sticky above the accordion so the coach can
+   jump instead of scroll. */
+.fm-studio-nav {
+  position: sticky;
+  top: 8px;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 6px 0;
+  background: color-mix(in srgb, var(--fm-bg, #fafafa) 88%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.fm-studio-pill {
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--fm-radius-pill);
+  border: 1px solid var(--fm-border);
+  background: var(--fm-surface);
+  color: var(--fm-text-secondary);
+  font-family: inherit;
+  white-space: nowrap;
+  transition: all var(--fm-dur-micro) var(--fm-ease-out);
+}
+.fm-studio-pill:hover { border-color: var(--fm-border-strong); }
+.fm-studio-pill.active {
+  background: var(--fm-primary);
+  border-color: var(--fm-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Accordion section card — header button (always visible) + body
+   (shown when open). Reuses FmPanel chrome via .fm-panel inside. */
+.fm-studio-section {
+  background: var(--fm-surface);
+  border: 1px solid var(--fm-border);
+  border-radius: var(--fm-radius-lg);
+  overflow: hidden;
+}
+.fm-studio-section.open { border-color: var(--fm-border-strong); }
+.fm-studio-section-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 15px 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: var(--fm-text-primary);
+}
+.fm-studio-section-caret {
+  display: inline-block;
+  transition: transform 140ms ease;
+  color: var(--fm-text-tertiary);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.fm-studio-section.open .fm-studio-section-caret { transform: rotate(90deg); }
+.fm-studio-section-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+.fm-studio-section-hint {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--fm-text-tertiary);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.fm-studio-section-body { padding: 2px 18px 18px; }
+/* The wrapped server panels render their own FmPanel chrome; inside an
+   accordion section we strip that outer card so it doesn't double-box. */
+.fm-studio-section-body > .fm-panel {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* Status strip — compact header row that replaces the tall workflow
+   banner. Status dot + slug chip + week + follow-up + alert pill. */
+.fm-status-strip {
+  background: var(--fm-surface);
+  border: 1px solid var(--fm-border);
+  border-radius: var(--fm-radius-lg);
+  overflow: hidden;
+}
+.fm-status-strip-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+.fm-status-strip-div {
+  height: 22px;
+  width: 1px;
+  background: var(--fm-border);
+}
+.fm-status-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--fm-text-secondary);
+}
+.fm-status-alert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: color-mix(in srgb, var(--fm-warning) 12%, var(--fm-surface));
+  border: 1px solid color-mix(in srgb, var(--fm-warning) 45%, transparent);
+  color: color-mix(in srgb, var(--fm-warning) 80%, #000);
+  border-radius: var(--fm-radius-pill);
+  padding: 6px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+.fm-status-alert-body {
+  border-top: 1px solid var(--fm-border-light);
+  background: var(--fm-bg-warm);
+  padding: 12px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+/* Phone rail collapsed toggle (vertical strip when collapsed). */
+.fm-phone-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid var(--fm-border);
+  background: var(--fm-surface);
+  border-radius: var(--fm-radius-md);
+  font-family: inherit;
+  color: var(--fm-text-secondary);
+  font-weight: 600;
+}
