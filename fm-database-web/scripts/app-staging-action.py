@@ -16,7 +16,9 @@ What gets staged per client (and nothing else):
   - published/<plan_slug>-v*.yaml  — SANITIZED: notes_for_coach +
     ai_sanity_check stripped (coach-private; no client surface reads them)
   - clients/<id>/client.yaml       — app-relevant keys merged over any
-    existing intake stub (never clobbers a live intake_form_draft)
+    existing intake stub (never clobbers a live intake_form_draft); includes a
+    TRIMMED health_snapshots (date + lab_values + measurements only) for the
+    lab vault + body charts, plus lab_reference_ranges
   - clients/<id>/meal-plans/<plan_slug>*  — letter .md/.html (+ recipes etc.)
   - clients/<id>/sessions/*        — only sessions carrying poll_response /
     checkin_response (the app's wellbeing trend), copy-if-missing
@@ -81,6 +83,7 @@ _APP_CLIENT_KEYS = (
     "lactation_started",
     "app_token",
     "app_token_created_at",
+    "lab_reference_ranges",
 )
 
 _PLAN_PRIVATE_KEYS = ("notes_for_coach", "ai_sanity_check")
@@ -130,6 +133,31 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
         if k in adata:
             merged[k] = adata[k]
     merged["client_id"] = client_id
+    # Trimmed health snapshots — ONLY what the client app reads (the lab vault
+    # + body-composition charts): each snapshot's date + lab_values +
+    # measurements. Drops source / linked_session_id / medications / conditions
+    # to keep the PHI footprint on the public Fly box minimal.
+    snaps = adata.get("health_snapshots")
+    if isinstance(snaps, list):
+        trimmed_snaps = []
+        for snap in snaps:
+            if not isinstance(snap, dict):
+                continue
+            t = {}
+            if snap.get("date") is not None:
+                t["date"] = snap.get("date")
+            if isinstance(snap.get("lab_values"), list):
+                t["lab_values"] = snap.get("lab_values")
+            if isinstance(snap.get("measurements"), dict):
+                t["measurements"] = snap.get("measurements")
+            if t.get("lab_values") or t.get("measurements"):
+                trimmed_snaps.append(t)
+        if trimmed_snaps:
+            merged["health_snapshots"] = trimmed_snaps
+        else:
+            merged.pop("health_snapshots", None)
+    else:
+        merged.pop("health_snapshots", None)
     s_client.write_text(yaml.safe_dump(merged, sort_keys=False, allow_unicode=True))
 
     # 3. letters (md + html + sidecars) + the send log. The app trusts ONLY
