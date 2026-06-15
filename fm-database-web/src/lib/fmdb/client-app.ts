@@ -260,6 +260,152 @@ export interface AppBreathwork {
   }[];
 }
 
+/** A guided EFT (tapping) session — a fixed point sequence with per-point
+ *  phrases. Phase 1 uses a coach-authored library script chosen by theme; the
+ *  plan can later carry an approved, per-client (Haiku-filled) script. The 7
+ *  point coordinates live in the overlay; this config carries only the words. */
+export interface AppEft {
+  theme: string;
+  themeLabel: string;
+  practiceId: string;
+  when: string;
+  /** setup statement, tapped on the side of the hand ×3 */
+  setup: string;
+  /** 7 points in order: crown, eyebrow, side of eye, under eye, under nose, chin, collarbone */
+  points: { key: string; label: string; phrase: string }[];
+  /** ask for a 0–10 distress rating before + after */
+  suds: boolean;
+  why: string;
+}
+
+type EftScript = { themeLabel: string; setup: string; why: string; points: AppEft["points"] };
+
+const _eftPts = (
+  setup: string,
+  why: string,
+  themeLabel: string,
+  phrases: [string, string, string, string, string, string, string],
+): EftScript => ({
+  themeLabel,
+  setup,
+  why,
+  points: [
+    { key: "crown", label: "Top of head", phrase: phrases[0] },
+    { key: "eyebrow", label: "Eyebrow", phrase: phrases[1] },
+    { key: "side_eye", label: "Side of eye", phrase: phrases[2] },
+    { key: "under_eye", label: "Under eye", phrase: phrases[3] },
+    { key: "under_nose", label: "Under nose", phrase: phrases[4] },
+    { key: "chin", label: "Chin", phrase: phrases[5] },
+    { key: "collarbone", label: "Collarbone", phrase: phrases[6] },
+  ],
+});
+
+/** Coach-voiced default scripts (Phase 1). Phase 2 swaps in a per-client script
+ *  the coach has approved. */
+const EFT_LIBRARY: Record<string, EftScript> = {
+  cravings: _eftPts(
+    "Even though I get these cravings when I'm stressed or tired, I deeply and completely accept myself.",
+    "Tapping settles the stress signal underneath a craving, so the urge softens on its own.",
+    "Cravings",
+    [
+      "All this craving I'm feeling right now",
+      "This urge that shows up at the end of the day",
+      "I don't have to act on it",
+      "It's just my body asking for comfort",
+      "I can give myself calm instead",
+      "I'm safe — this craving can pass",
+      "Choosing what truly nourishes me",
+    ],
+  ),
+  anxiety: _eftPts(
+    "Even though I feel this anxiety in my body, I deeply and completely accept myself.",
+    "Tapping while you name the feeling tells your nervous system it's safe to settle.",
+    "Anxiety & overwhelm",
+    [
+      "All this worry I've been carrying",
+      "This tightness in my chest",
+      "It's safe to let my shoulders drop",
+      "I don't have to fix everything right now",
+      "I can breathe a little slower",
+      "This feeling is allowed to ease",
+      "Coming back to calm, one breath at a time",
+    ],
+  ),
+  sleep: _eftPts(
+    "Even though my mind is still busy, I deeply and completely accept myself.",
+    "Tapping downshifts the wind-up that keeps you awake, so sleep can arrive.",
+    "Winding down for sleep",
+    [
+      "All the thoughts from today",
+      "This busy, racing mind",
+      "There's nothing to solve right now",
+      "My body is allowed to rest",
+      "I can let the day go",
+      "Sinking a little softer into the bed",
+      "Ready to let sleep come",
+    ],
+  ),
+  stress: _eftPts(
+    "Even though I'm carrying a lot right now, I deeply and completely accept myself.",
+    "A round of tapping lowers the stress signal in the body — a reset in two minutes.",
+    "Stress reset",
+    [
+      "All this stress I've been holding",
+      "Everything I've been carrying today",
+      "It's okay to set some of it down",
+      "I'm doing the best I can",
+      "I can soften, just for a moment",
+      "Letting my body unclench",
+      "Coming back to steady ground",
+    ],
+  ),
+};
+
+/**
+ * Derive a guided EFT session from the plan's lifestyle practices — surfaces
+ * only when the coach has prescribed a tapping / EFT practice. Theme is inferred
+ * from the practice text, else the client's goals/conditions, else "stress".
+ */
+export function deriveEft(
+  practices: { id: string; name: string; when: string }[],
+  practiceRaw: Dict[],
+  goalsAndConditions: string,
+): AppEft | null {
+  let pid = "";
+  let when = "";
+  let practiceText = "";
+  for (let i = 0; i < practiceRaw.length; i++) {
+    const p = practiceRaw[i] || {};
+    const text = `${asStr(p.name)} ${asStr(p.details)}`.toLowerCase();
+    if (/\beft\b|tapping|emotional freedom/.test(text)) {
+      pid = practices[i]?.id || asStr(p.id) || `eft-${i}`;
+      when = practices[i]?.when || asStr(p.when);
+      practiceText = text;
+      break;
+    }
+  }
+  if (!pid) return null;
+  const blob = `${practiceText} ${goalsAndConditions}`.toLowerCase();
+  const theme = /sugar|craving|weight|snack|binge|sweet/.test(blob)
+    ? "cravings"
+    : /sleep|insomnia|wake|night/.test(blob)
+      ? "sleep"
+      : /anx|panic|overwhelm|stress|worry/.test(blob)
+        ? "anxiety"
+        : "stress";
+  const s = EFT_LIBRARY[theme] || EFT_LIBRARY.stress;
+  return {
+    theme,
+    themeLabel: s.themeLabel,
+    practiceId: pid,
+    when: when || "Anytime you feel the pull",
+    setup: s.setup,
+    points: s.points,
+    suds: true,
+    why: s.why,
+  };
+}
+
 /**
  * Derive the guided-breathing config from the plan's lifestyle practices.
  *
@@ -399,6 +545,8 @@ export interface ClientAppData {
   practices: { id: string; name: string; when: string }[];
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
+  /** Guided EFT (tapping) config when the plan prescribes a tapping practice. */
+  eft: AppEft | null;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
   /** client-facing lab vault — results vs FM-optimal + standard ranges (Phase 2 of LAB_VAULT_SPEC) */
@@ -2658,6 +2806,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   // The animation is driven entirely from these numbers, so it can never
   // drift from what the coach prescribed in the plan.
   const breathwork = deriveBreathwork(practices, practiceRaw);
+  const eft = deriveEft(
+    practices,
+    practiceRaw,
+    `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")}`,
+  );
 
   // ---- principles (from the letter's meals note + plan meal_timing) --------
   const principles: { t: string; b: string }[] = [];
@@ -3470,6 +3623,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     slotOrder: ["Morning", "With meals", "Bedtime"],
     practices,
     breathwork,
+    eft,
     principles,
     labs,
     journey,

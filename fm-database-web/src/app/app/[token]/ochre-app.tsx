@@ -20,6 +20,7 @@ import { CoachScreen } from "./ochre-coach";
 import InstallPrompt from "./ochre-install";
 import { AccountOverlay, DocOverlay, MealOverlay, RemedyOverlay } from "./ochre-overlays";
 import { BreathOverlay } from "./ochre-breath";
+import { EftOverlay } from "./ochre-eft";
 import { GroceryOverlay } from "./ochre-week-menu";
 import { MsqOverlay } from "./ochre-msq";
 import { OrderOverlay } from "./ochre-order";
@@ -62,6 +63,7 @@ type Overlay =
   | { type: "doc"; doc: { kind: string; id: string } }
   | { type: "remedy"; remedy: AppRemedy }
   | { type: "breath" }
+  | { type: "eft" }
   | { type: "grocery" }
   | { type: "msq" }
   | { type: "order" }
@@ -237,6 +239,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openDoc = (doc: { kind: string; id: string }) => setOverlay({ type: "doc", doc });
   const openRemedy = (remedy: AppRemedy) => setOverlay({ type: "remedy", remedy });
   const openBreath = () => setOverlay({ type: "breath" });
+  const openEft = () => setOverlay({ type: "eft" });
   const openGrocery = () => setOverlay({ type: "grocery" });
   const openMsq = () => setOverlay({ type: "msq" });
   const openOrder = () => setOverlay({ type: "order" });
@@ -282,6 +285,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         goCheckin={goCheckin}
         goCoach={() => go("coach")}
         openBreath={openBreath}
+        openEft={openEft}
         practices={practices}
         onTogglePractice={togglePractice}
         openGrocery={openGrocery}
@@ -364,6 +368,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "doc" && <DocOverlay doc={overlay.doc} onClose={closeOverlay} />}
               {overlay.type === "remedy" && <RemedyOverlay remedy={overlay.remedy} onClose={closeOverlay} />}
               {overlay.type === "breath" && data.breathwork && <BreathOverlay bw={data.breathwork} onClose={closeOverlay} />}
+              {overlay.type === "eft" && data.eft && <EftOverlay eft={data.eft} onClose={closeOverlay} />}
               {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}

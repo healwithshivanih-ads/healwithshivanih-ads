@@ -9,6 +9,7 @@ import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/clie
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { BreathLaunchCard } from "./ochre-breath";
+import { EftLaunchCard } from "./ochre-eft";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 
@@ -100,6 +101,7 @@ export function TodayScreen({
   goCheckin,
   goCoach,
   openBreath,
+  openEft,
   practices,
   onTogglePractice,
   openGrocery,
@@ -115,6 +117,7 @@ export function TodayScreen({
   goCheckin: () => void;
   goCoach: () => void;
   openBreath: () => void;
+  openEft: () => void;
   practices: { id: string; name: string; when: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
@@ -244,6 +247,7 @@ export function TodayScreen({
             })}
           </div>
           {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
+          {data.eft && <EftLaunchCard eft={data.eft} onStart={openEft} />}
         </Section>
       )}
 
