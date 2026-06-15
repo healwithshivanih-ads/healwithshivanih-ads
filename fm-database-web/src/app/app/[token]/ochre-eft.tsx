@@ -15,9 +15,11 @@ import type { AppEft } from "@/lib/fmdb/client-app";
 import { Icon } from "./ochre-context";
 
 const STEP_SECS = 13;
-// figure-space coordinates for the 7 points (must match <Figure/>'s viewBox)
+// point coordinates in the illustration's pixel space (478×640) — placed on the
+// eft-figure.png face geometry. Order: crown, eyebrow, side of eye, under eye,
+// under nose, chin, collarbone.
 const PTS: ReadonlyArray<readonly [number, number]> = [
-  [130, 74], [113, 118], [91, 134], [112, 150], [130, 166], [130, 192], [104, 234],
+  [239, 138], [210, 224], [168, 244], [210, 262], [239, 292], [239, 334], [198, 452],
 ];
 const OCHRE = "#c47a35";
 const CREAM = "#f8f4ee";
@@ -29,27 +31,18 @@ function Figure({ active }: { active: number }) {
   const x = has ? PTS[active][0] : 0;
   const y = has ? PTS[active][1] : 0;
   return (
-    <svg viewBox="0 0 260 330" width="100%" style={{ maxWidth: 214, display: "block", margin: "0 auto" }} role="img" aria-label="Tapping figure with the active point highlighted">
-      <path d="M20 330 C22 270 74 244 110 240 L150 240 C186 244 238 270 240 330 Z" fill="#aec0a6" />
-      <path d="M112 244 L112 214 Q130 224 148 214 L148 244 Z" fill="#f0dcc6" />
-      <ellipse cx="130" cy="138" rx="58" ry="66" fill="#f1ddc8" />
-      <path d="M72 150 C66 92 80 64 130 62 C180 64 194 92 188 150 C184 120 176 96 130 94 C84 96 76 120 72 150 Z" fill="#b07b46" />
-      <path d="M70 148 C66 176 70 196 78 210 L86 206 C80 188 78 168 80 150 Z" fill="#b07b46" />
-      <path d="M190 148 C194 176 190 196 182 210 L174 206 C180 188 182 168 180 150 Z" fill="#b07b46" />
-      <path d="M104 120 q12 -5 22 -1 M134 119 q12 -4 22 1" stroke="#7a6a57" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-      <path d="M102 134 q12 7 23 1 M135 135 q12 6 23 -1" stroke="#5d5042" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-      <path d="M130 140 L126 166 q4 4 9 2" stroke="#b89a7c" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <path d="M116 182 q14 8 28 0" stroke="#b07a6a" strokeWidth="2.4" fill="none" strokeLinecap="round" />
-      <g fill={CREAM} stroke="#c2b29a" strokeWidth="1.5">
+    <svg viewBox="0 0 478 640" width="100%" style={{ maxWidth: 198, display: "block", margin: "0 auto", borderRadius: 18 }} role="img" aria-label="Tapping figure with the active point highlighted">
+      <image href="/ochre-app/eft-figure.png" x="0" y="0" width="478" height="640" preserveAspectRatio="xMidYMid slice" />
+      <g fill="rgba(255,255,255,0.72)" stroke="#8a6a48" strokeWidth="2.5">
         {PTS.map(([px, py], i) => (
-          <circle key={i} cx={px} cy={py} r="6.5" />
+          <circle key={i} cx={px} cy={py} r="10" />
         ))}
       </g>
       {has && (
         <g transform={`translate(${x},${y})`}>
-          <circle className="eft-ring" r="15" fill="none" stroke={OCHRE} strokeWidth="2.5" />
-          <circle className="eft-ring eft-ring-b" r="15" fill="none" stroke={OCHRE} strokeWidth="2.5" />
-          <circle r="6.5" fill={OCHRE} />
+          <circle className="eft-ring" r="22" fill="none" stroke={OCHRE} strokeWidth="4" />
+          <circle className="eft-ring eft-ring-b" r="22" fill="none" stroke={OCHRE} strokeWidth="4" />
+          <circle r="9" fill={OCHRE} />
         </g>
       )}
     </svg>
