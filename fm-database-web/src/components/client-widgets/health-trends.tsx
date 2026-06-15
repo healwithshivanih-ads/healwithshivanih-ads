@@ -8,6 +8,7 @@ import {
   type LabReferenceRanges,
   type CatalogueLabRange,
 } from "@/lib/server-actions/clients";
+import { rangeStatus, findCatalogueLabTest } from "@/lib/fmdb/lab-vault";
 
 type Snapshot = NonNullable<Client["health_snapshots"]>[number];
 
@@ -59,43 +60,9 @@ function Sparkline({
   );
 }
 
-// ─── Reference range status ───────────────────────────────────────────────────
-
-function rangeStatus(
-  value: number,
-  range?: { optimal_low?: number; optimal_high?: number }
-): "optimal" | "outside" | null {
-  if (!range) return null;
-  const { optimal_low, optimal_high } = range;
-  if (optimal_low == null && optimal_high == null) return null;
-  const tooLow = optimal_low != null && value < optimal_low;
-  const tooHigh = optimal_high != null && value > optimal_high;
-  return tooLow || tooHigh ? "outside" : "optimal";
-}
-
-// ─── Catalogue match: find LabTest record matching a free-form test name ──────
-// Used to surface FM-optimal AND conventional ranges side-by-side. Match is
-// case-insensitive substring across slug + display_name + full_name + aliases.
-// Bidirectional — handles "TSH" matching alias "tsh" AND "Vitamin D 25-OH"
-// matching alias "vitamin d".
-function findCatalogueLabTest(
-  testName: string,
-  catalogue: CatalogueLabRange[],
-): CatalogueLabRange | null {
-  const needle = testName.trim().toLowerCase();
-  if (!needle) return null;
-  // First pass — exact key match (fastest path)
-  for (const t of catalogue) {
-    if (t.match_keys.includes(needle)) return t;
-  }
-  // Second pass — bidirectional substring (handles "TSH (mIU/L)" matching "tsh")
-  for (const t of catalogue) {
-    for (const key of t.match_keys) {
-      if (needle.includes(key) || key.includes(needle)) return t;
-    }
-  }
-  return null;
-}
+// ─── Reference range status + catalogue match ─────────────────────────────────
+// `rangeStatus` and `findCatalogueLabTest` now live in @/lib/fmdb/lab-vault
+// (shared with the client app Lab Vault). Imported above — single source of truth.
 
 // ─── Metric row ───────────────────────────────────────────────────────────────
 

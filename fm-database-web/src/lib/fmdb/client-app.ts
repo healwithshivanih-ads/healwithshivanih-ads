@@ -29,6 +29,8 @@ import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
+import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
+import type { CatalogueLabRange, LabReferenceRanges } from "@/lib/server-actions/clients";
 
 // ── contract types (mirror the design prototype's data shape) ───────────────
 
@@ -399,6 +401,8 @@ export interface ClientAppData {
   breathwork: AppBreathwork | null;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
+  /** client-facing lab vault — results vs FM-optimal + standard ranges (Phase 2 of LAB_VAULT_SPEC) */
+  labVault: LabVault | null;
   journey: JourneyItem[];
   faq: { q: string; a: string }[];
   symptomScore: {
@@ -1589,6 +1593,53 @@ async function loadPublishedPlan(slugOrToken: { token: string }): Promise<{ plan
 
 const DOSHA_LABEL: Record<string, string> = { vata: "Vata", pitta: "Pitta", kapha: "Kapha" };
 
+// Lab-test catalogue loader (self-contained — mirrors loadLabTestsCatalogueAction
+// but stays inside this server-only module rather than importing the action).
+let _labCatCache: CatalogueLabRange[] | null = null;
+async function loadLabCatalogue(): Promise<CatalogueLabRange[]> {
+  if (_labCatCache) return _labCatCache;
+  const dir = path.join(getCataloguePath(), "lab_tests");
+  let files: string[] = [];
+  try {
+    files = (await fs.readdir(dir)).filter((f) => f.endsWith(".yaml"));
+  } catch {
+    return [];
+  }
+  const numOrNull = (v: unknown): number | null =>
+    typeof v === "number" ? v : typeof v === "string" && v.trim() !== "" && Number.isFinite(parseFloat(v)) ? parseFloat(v) : null;
+  const out: CatalogueLabRange[] = [];
+  for (const f of files) {
+    try {
+      const t = (yaml.load(await fs.readFile(path.join(dir, f), "utf8")) as Dict) ?? {};
+      const keys = new Set<string>();
+      const add = (s: unknown) => {
+        if (typeof s === "string" && s.trim()) keys.add(s.trim().toLowerCase());
+      };
+      add(t.slug);
+      add(t.display_name);
+      add(t.full_name);
+      for (const a of asArr(t.aliases)) add(a);
+      out.push({
+        slug: asStr(t.slug),
+        display_name: asStr(t.display_name) || asStr(t.slug),
+        full_name: asStr(t.full_name) || undefined,
+        units: asStr(t.units) || undefined,
+        conventional_low: numOrNull(t.conventional_low),
+        conventional_high: numOrNull(t.conventional_high),
+        fm_optimal_low: numOrNull(t.fm_optimal_low),
+        fm_optimal_high: numOrNull(t.fm_optimal_high),
+        interpretation_low: asStr(t.interpretation_low) || undefined,
+        interpretation_high: asStr(t.interpretation_high) || undefined,
+        match_keys: Array.from(keys).filter(Boolean),
+      });
+    } catch {
+      /* skip a malformed lab_test file */
+    }
+  }
+  _labCatCache = out;
+  return out;
+}
+
 export async function loadClientAppData(token: string): Promise<ClientAppData | null> {
   if (!token || token.length < 16) return null;
 
@@ -2422,8 +2473,24 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     return activeAntagonists.some((a) => a.not.test(text));
   };
 
+  // Meal-food gate (coach directive 2026-06-15): on a DETAILED plan (a real
+  // multi-week menu, not a one-week sample), foods you eat as a dish —
+  // kitchari, buttermilk, lassi, vegetable juices — are delivered IN the
+  // weekly menu, so they must not ALSO surface as standalone "remedies".
+  // Principle/hybrid plans keep them: the shelf is their ONLY food-as-medicine
+  // surface. The menu generators weave the condition-relevant ones into meals.
+  // Coach-assigned remedies bypass the shelf entirely, so an explicit
+  // prescription is never suppressed.
+  const MEAL_FOOD_CATEGORIES = new Set(["kitchen_remedy", "vegetable_juice"]);
+  const hasDetailedMenu = weekMenus.length > 0 && !menuIsSample;
   const scored = safeLib
-    .filter((r) => !assignedSet.has(r.slug) && !r.stub && !antagonistic(r))
+    .filter(
+      (r) =>
+        !assignedSet.has(r.slug) &&
+        !r.stub &&
+        !antagonistic(r) &&
+        !(hasDetailedMenu && MEAL_FOOD_CATEGORIES.has(r.category)),
+    )
     .map((r) => {
       // Match against INDICATIONS only — the remedy's stated purpose. The
       // summary prose inflates matches (an earache compress whose summary
@@ -3333,10 +3400,26 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     weightLoss = { dailyTarget, tdee, phaseNote, estimatedDailyKcal, adherence };
   }
 
+  // ---- lab vault (results vs FM-optimal + standard ranges) ------------------
+  const labCatalogue = await loadLabCatalogue();
+  const targetedMarkers = (asArr(plan.lab_orders) as Dict[]).map((l) => asStr(l.test)).filter(Boolean);
+  const concernTerms = [
+    ...asStrArr(client.active_conditions),
+    ...asStrArr(client.goals),
+    ...asStrArr(client.medical_history),
+  ];
+  const labVault = buildLabVault(
+    asArr(client.health_snapshots) as unknown as LabSnapshot[],
+    labCatalogue,
+    (client.lab_reference_ranges as LabReferenceRanges | undefined) ?? {},
+    { mode: "plan", targetedMarkers, concernTerms },
+  );
+
   return {
     clientId,
     planSlug,
     weightLoss,
+    labVault,
     planUpdatedAt,
     clientUpdateNote,
     token,

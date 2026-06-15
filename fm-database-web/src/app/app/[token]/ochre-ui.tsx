@@ -61,6 +61,7 @@ const TABS = [
   { id: "today", label: "Today", icon: "today" },
   { id: "plan", label: "Plan", icon: "plan" },
   { id: "progress", label: "Progress", icon: "progress" },
+  { id: "labs", label: "Labs", icon: "flask" },
   { id: "coach", label: "Coach", icon: "coach" },
 ];
 

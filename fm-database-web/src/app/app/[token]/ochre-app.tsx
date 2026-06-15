@@ -15,6 +15,7 @@ import { BottomNav, Header } from "./ochre-ui";
 import { PlanScreen, TodayScreen } from "./ochre-screens";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
+import { LabsScreen } from "./ochre-labs";
 import { CoachScreen } from "./ochre-coach";
 import InstallPrompt from "./ochre-install";
 import { AccountOverlay, DocOverlay, MealOverlay, RemedyOverlay } from "./ochre-overlays";
@@ -300,6 +301,8 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     screen = (
       <ProgressScreen goCheckin={goCheckin} feel={feel} onLogFeeling={() => setFeelSheet(true)} moves={moves} onLogMove={() => setMoveSheet(true)} openMsq={openMsq} />
     );
+  } else if (tab === "labs") {
+    screen = <LabsScreen />;
   } else if (tab === "coach") {
     screen = <CoachScreen coachAlert={!submitted} />;
   }
