@@ -84,6 +84,12 @@ _APP_CLIENT_KEYS = (
     "app_token",
     "app_token_created_at",
     "lab_reference_ranges",
+    # app-read fields beyond the original intake-stub set (audited across
+    # client-app.ts + recipes.ts on 2026-06-15 — these ARE consumed by the app)
+    "known_allergies",
+    "medical_history",
+    "measurements",
+    "ayurveda_enabled",
 )
 
 _PLAN_PRIVATE_KEYS = ("notes_for_coach", "ai_sanity_check")
@@ -94,6 +100,27 @@ def _published_files(root: Path, plan_slug: str) -> list[Path]:
     if not d.exists():
         return []
     return sorted(d.glob(f"{plan_slug}-v*.yaml"))
+
+
+def _intake_active(d: dict) -> bool:
+    """Is an intake / top-up in progress? True when a token exists AND hasn't
+    expired. A finalized client whose single-use token was cleared (or whose
+    top-up token has since expired) is NOT active, so its staged client.yaml gets
+    minimised. Conservative on missing/unparseable expiry (treat as active)."""
+    d = d or {}
+    tok = str(d.get("intake_token") or "").strip()
+    if not tok:
+        return False
+    exp = str(d.get("intake_token_expires_at") or "").strip()
+    if not exp:
+        return True
+    try:
+        dt = datetime.fromisoformat(exp.replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt > datetime.now(timezone.utc)
+    except Exception:
+        return True
 
 
 def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> dict:
@@ -128,7 +155,15 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
             existing = yaml.safe_load(s_client.read_text()) or {}
         except Exception:
             existing = {}
-    merged = dict(existing)  # keep intake stub keys / live draft untouched
+    # PHI minimisation (2026-06-15): once intake is finished, rebuild the staged
+    # client.yaml from ONLY the app-relevant allowlist (_APP_CLIENT_KEYS +
+    # trimmed health_snapshots) — the raw intake submission (intake_form_draft +
+    # the Tier-1 screening inventories, medication / reproductive / COVID history,
+    # body-signs, etc.) is NOT projected to the public Fly box. While an intake or
+    # top-up is in progress we keep the existing file intact so the public intake
+    # form's live draft + prefill survive; the next refresh after submit minimises.
+    intake_active = _intake_active(adata) or _intake_active(existing)
+    merged = dict(existing) if intake_active else {}
     for k in _APP_CLIENT_KEYS:
         if k in adata:
             merged[k] = adata[k]
