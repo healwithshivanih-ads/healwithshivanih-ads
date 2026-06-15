@@ -19,7 +19,7 @@ const STEP_SECS = 13;
 // eft-figure.png face geometry. Order: crown, eyebrow, side of eye, under eye,
 // under nose, chin, collarbone.
 const PTS: ReadonlyArray<readonly [number, number]> = [
-  [239, 138], [210, 224], [168, 244], [210, 262], [239, 292], [239, 334], [198, 452],
+  [242, 170], [215, 244], [188, 261], [214, 276], [242, 300], [242, 341], [212, 451],
 ];
 const OCHRE = "#c47a35";
 const CREAM = "#f8f4ee";
@@ -31,7 +31,7 @@ function Figure({ active }: { active: number }) {
   const x = has ? PTS[active][0] : 0;
   const y = has ? PTS[active][1] : 0;
   return (
-    <svg viewBox="0 0 478 640" width="100%" style={{ maxWidth: 198, display: "block", margin: "0 auto", borderRadius: 18 }} role="img" aria-label="Tapping figure with the active point highlighted">
+    <svg viewBox="92 102 300 400" width="100%" style={{ maxWidth: 260, display: "block", margin: "0 auto", borderRadius: 18 }} role="img" aria-label="Tapping figure with the active point highlighted">
       <image href="/ochre-app/eft-figure.png" x="0" y="0" width="478" height="640" preserveAspectRatio="xMidYMid slice" />
       <g fill="rgba(255,255,255,0.72)" stroke="#8a6a48" strokeWidth="2.5">
         {PTS.map(([px, py], i) => (
@@ -45,6 +45,23 @@ function Figure({ active }: { active: number }) {
           <circle r="9" fill={OCHRE} />
         </g>
       )}
+    </svg>
+  );
+}
+
+// karate-chop point (outer side of the hand) in eft-hand.png pixel space (440×440)
+const HAND_PT: readonly [number, number] = [305, 222];
+
+function HandFigure() {
+  return (
+    <svg viewBox="55 35 330 360" width="100%" style={{ maxWidth: 226, display: "block", margin: "0 auto", borderRadius: 18 }} role="img" aria-label="The side of the hand — the tapping point for the setup statement">
+      <image href="/ochre-app/eft-hand.png" x="0" y="0" width="440" height="440" preserveAspectRatio="xMidYMid slice" />
+      <circle cx={HAND_PT[0]} cy={HAND_PT[1]} r="10" fill="rgba(255,255,255,0.72)" stroke="#8a6a48" strokeWidth="2.5" />
+      <g transform={`translate(${HAND_PT[0]},${HAND_PT[1]})`}>
+        <circle className="eft-ring" r="22" fill="none" stroke={OCHRE} strokeWidth="4" />
+        <circle className="eft-ring eft-ring-b" r="22" fill="none" stroke={OCHRE} strokeWidth="4" />
+        <circle r="9" fill={OCHRE} />
+      </g>
     </svg>
   );
 }
@@ -168,7 +185,7 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
 
       {(status === "running" || status === "paused") && (
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 22px 24px" }}>
-          <Figure active={active} />
+          {step.kind === "setup" ? <HandFigure /> : <Figure active={active} />}
           <div style={{ fontSize: 12.5, color: "#a99b87", marginTop: 8 }}>{prog}</div>
           <div style={{ fontSize: 16, fontWeight: 500, color: INK, marginTop: 2 }}>{label}</div>
           <p style={{ fontSize: 18, lineHeight: 1.5, color: "#52463a", margin: "10px auto 0", maxWidth: 300, textAlign: "center", fontStyle: "italic", minHeight: 56 }}>
