@@ -21,6 +21,7 @@ import InstallPrompt from "./ochre-install";
 import { AccountOverlay, DocOverlay, MealOverlay, RemedyOverlay } from "./ochre-overlays";
 import { BreathOverlay } from "./ochre-breath";
 import { EftOverlay } from "./ochre-eft";
+import { SleepOverlay } from "./ochre-sleep";
 import { GroceryOverlay } from "./ochre-week-menu";
 import { MsqOverlay } from "./ochre-msq";
 import { OrderOverlay } from "./ochre-order";
@@ -64,6 +65,7 @@ type Overlay =
   | { type: "remedy"; remedy: AppRemedy }
   | { type: "breath" }
   | { type: "eft" }
+  | { type: "sleep" }
   | { type: "grocery" }
   | { type: "msq" }
   | { type: "order" }
@@ -240,6 +242,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openRemedy = (remedy: AppRemedy) => setOverlay({ type: "remedy", remedy });
   const openBreath = () => setOverlay({ type: "breath" });
   const openEft = () => setOverlay({ type: "eft" });
+  const openSleep = () => setOverlay({ type: "sleep" });
   const openGrocery = () => setOverlay({ type: "grocery" });
   const openMsq = () => setOverlay({ type: "msq" });
   const openOrder = () => setOverlay({ type: "order" });
@@ -286,6 +289,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         goCoach={() => go("coach")}
         openBreath={openBreath}
         openEft={openEft}
+        openSleep={openSleep}
         practices={practices}
         onTogglePractice={togglePractice}
         openGrocery={openGrocery}
@@ -369,6 +373,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "remedy" && <RemedyOverlay remedy={overlay.remedy} onClose={closeOverlay} />}
               {overlay.type === "breath" && data.breathwork && <BreathOverlay bw={data.breathwork} onClose={closeOverlay} />}
               {overlay.type === "eft" && data.eft && <EftOverlay eft={data.eft} onClose={closeOverlay} />}
+              {overlay.type === "sleep" && data.sleep && <SleepOverlay sleep={data.sleep} onClose={closeOverlay} />}
               {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}

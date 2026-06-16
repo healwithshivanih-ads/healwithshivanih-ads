@@ -91,6 +91,7 @@ _APP_CLIENT_KEYS = (
     "measurements",
     "ayurveda_enabled",
     "mindbody_eft",  # mind-body drip coach override: auto | unlocked | locked
+    "mindbody_sleep",
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —

@@ -9,7 +9,8 @@ import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/clie
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { BreathLaunchCard } from "./ochre-breath";
-import { EftLaunchCard, EftLockedNudge } from "./ochre-eft";
+import { EftLaunchCard, MindBodyNudge } from "./ochre-eft";
+import { SleepLaunchCard } from "./ochre-sleep";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 
@@ -102,6 +103,7 @@ export function TodayScreen({
   goCoach,
   openBreath,
   openEft,
+  openSleep,
   practices,
   onTogglePractice,
   openGrocery,
@@ -118,6 +120,7 @@ export function TodayScreen({
   goCoach: () => void;
   openBreath: () => void;
   openEft: () => void;
+  openSleep: () => void;
   practices: { id: string; name: string; when: string; done: boolean }[];
   onTogglePractice: (id: string) => void;
   openGrocery: () => void;
@@ -248,8 +251,14 @@ export function TodayScreen({
           </div>
           {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
           {data.eft && <EftLaunchCard eft={data.eft} onStart={openEft} />}
-          {!data.eft && data.mindBody?.locked && (
-            <EftLockedNudge breathDays={data.mindBody.breathDays} breathNeeded={data.mindBody.breathNeeded} />
+          {data.sleep && <SleepLaunchCard sleep={data.sleep} onStart={openSleep} />}
+          {data.mindBody?.locked && (
+            <MindBodyNudge
+              nextUp={data.mindBody.nextUp}
+              priorLabel={data.mindBody.priorLabel}
+              doneCount={data.mindBody.doneCount}
+              needed={data.mindBody.needed}
+            />
           )}
         </Section>
       )}

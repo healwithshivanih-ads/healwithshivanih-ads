@@ -283,6 +283,16 @@ export interface AppEft {
   why: string;
 }
 
+/** Guided sleep wind-down — a lie-down progressive relaxation (slow breathing →
+ *  head-to-toe release → drift-off). Technique #3 in the mind-body drip. No SUDS;
+ *  sleep isn't a distress rating. Steps drive the dark immersive overlay. */
+export interface AppSleep {
+  practiceId: string;
+  when: string;
+  why: string;
+  steps: { kind: "settle" | "breath" | "release" | "drift"; label: string; cue: string; secs: number }[];
+}
+
 type EftScript = {
   themeLabel: string;
   setup: string;
@@ -434,6 +444,47 @@ export function deriveEft(
     sudsBeforeQ: s.sudsBeforeQ,
     sudsAfterQ: s.sudsAfterQ,
     why: s.why,
+  };
+}
+
+/* Default guided wind-down (Phase 1, coach-voiced). Slow breathing → head-to-toe
+   release → drift-off close. Her-voice narration is the Phase-2 upgrade. */
+const SLEEP_STEPS: AppSleep["steps"] = [
+  { kind: "settle", label: "Settle in", cue: "Lie down and let yourself be heavy. Nothing to fix, nothing to try — we're just going to let go.", secs: 18 },
+  { kind: "breath", label: "Slow your breath", cue: "Breathe in for four… and out, long and slow, for six. A few easy rounds — let each exhale loosen you.", secs: 36 },
+  { kind: "release", label: "Your feet & legs", cue: "Let them grow heavy, sinking into the bed. Nowhere to be.", secs: 28 },
+  { kind: "release", label: "Your hips & belly", cue: "Soften your belly. Let your hips spread and settle.", secs: 28 },
+  { kind: "release", label: "Your back", cue: "Let the whole day's weight melt off your back, into the bed.", secs: 28 },
+  { kind: "release", label: "Your hands & arms", cue: "Heavy and still. Let your fingers uncurl.", secs: 26 },
+  { kind: "release", label: "Your shoulders & neck", cue: "Let your shoulders drop away from your ears. Lengthen the back of your neck.", secs: 28 },
+  { kind: "release", label: "Your jaw & face", cue: "Unclench your jaw. Soften your brow, your eyes, your tongue.", secs: 28 },
+  { kind: "release", label: "Your whole body", cue: "Heavy, warm, sinking. Held by the bed.", secs: 24 },
+  { kind: "drift", label: "Drift off", cue: "Nothing to do now. Each breath a little deeper. Let sleep come to you.", secs: 34 },
+];
+
+/** Derive the guided sleep wind-down — surfaces when the coach has prescribed a
+ *  wind-down / body-scan / relaxation-for-sleep practice. */
+export function deriveSleep(
+  practices: { id: string; name: string; when: string }[],
+  practiceRaw: Dict[],
+): AppSleep | null {
+  let pid = "";
+  let when = "";
+  for (let i = 0; i < practiceRaw.length; i++) {
+    const p = practiceRaw[i] || {};
+    const text = `${asStr(p.name)} ${asStr(p.details)}`.toLowerCase();
+    if (/wind.?down|body scan|sleep relaxation|relaxation for sleep|yoga nidra|progressive relaxation|sleep meditation|bedtime relaxation/.test(text)) {
+      pid = practices[i]?.id || asStr(p.id) || `sleep-${i}`;
+      when = practices[i]?.when || asStr(p.when);
+      break;
+    }
+  }
+  if (!pid) return null;
+  return {
+    practiceId: pid,
+    when: when || "Tonight, as you get into bed",
+    why: "A few minutes of guided letting-go downshifts the body into sleep — slower than a racing mind can keep up with.",
+    steps: SLEEP_STEPS,
   };
 }
 
@@ -592,10 +643,12 @@ export interface ClientAppData {
   /** Guided EFT (tapping) config when the plan prescribes a tapping practice
    *  AND it has been unlocked (mind-body drip — see `mindBody`). */
   eft: AppEft | null;
-  /** Mind-body drip state. Non-null (locked:true) when EFT is prescribed but not
-   *  yet unlocked, so the app shows a gentle "keep practising to unlock" nudge.
-   *  null when EFT is visible, not prescribed, or the coach is holding it. */
-  mindBody: { nextUp: string; locked: boolean; breathDays: number; breathNeeded: number } | null;
+  /** Guided sleep wind-down config when prescribed AND unlocked (drip). */
+  sleep: AppSleep | null;
+  /** Mind-body drip nudge — non-null when the NEXT technique in this client's
+   *  sequence is prescribed but not yet unlocked (priorLabel = what to keep
+   *  doing, doneCount/needed = progress). null when nothing's waiting. */
+  mindBody: { nextUp: string; priorLabel: string; doneCount: number; needed: number; locked: boolean } | null;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
   /** client-facing lab vault — results vs FM-optimal + standard ranges (Phase 2 of LAB_VAULT_SPEC) */
@@ -2892,34 +2945,62 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     practiceRaw,
     `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")}`,
   );
+  const sleep = deriveSleep(practices, practiceRaw);
 
-  // ---- mind-body drip: EFT (technique #2) unlocks once breathing (#1) is a
-  // habit — ≥3 distinct days of breathing in the trailing week. Auto-drip with a
-  // per-client coach override (client.mindbody_eft: auto | unlocked | locked).
-  let eftVisible = eft;
+  // ---- mind-body drip: graduated techniques (EFT, sleep wind-down) unlock ONE
+  // AT A TIME as the prior one becomes a habit. Breathing (#1) is always open.
+  // Order: the client's primary issue goes first after breathing — sleep-primary
+  // clients get the wind-down at #2. Foundation gate = ≥3 distinct breathing days
+  // in the trailing week; each later technique gates on the prior being used ≥2
+  // distinct days (lighter — these are as-needed). Per-technique coach override
+  // via client.mindbody_<tech> = auto | unlocked | locked.
+  type DripTech = { key: "eft" | "sleep"; practiceId: string; label: string };
+  const sleepPrimary = eft?.theme === "sleep";
+  const order: ("eft" | "sleep")[] = sleepPrimary ? ["sleep", "eft"] : ["eft", "sleep"];
+  const seq: DripTech[] = order
+    .map((k): DripTech | null =>
+      k === "eft" && eft
+        ? { key: "eft", practiceId: eft.practiceId, label: "EFT tapping" }
+        : k === "sleep" && sleep
+          ? { key: "sleep", practiceId: sleep.practiceId, label: "Sleep wind-down" }
+          : null,
+    )
+    .filter((t): t is DripTech => t !== null);
+
+  const cli = client as Record<string, unknown>;
+  const breathDays = breathwork && seq.length ? await practiceDaysInWindow(clientDir, "breath", 7) : 0;
+  let eftVisible: AppEft | null = null;
+  let sleepVisible: AppSleep | null = null;
   let mindBody: ClientAppData["mindBody"] = null;
-  let hidePracticeId: string | null = null; // tapping practice to drop from the checklist while locked
-  if (eft) {
-    const override = asStr(client.mindbody_eft).toLowerCase();
-    if (override === "unlocked") {
-      eftVisible = eft; // coach released it early
-    } else if (override === "locked") {
-      eftVisible = null; // coach holding it — hidden everywhere, no nudge
-      hidePracticeId = eft.practiceId;
-    } else if (breathwork) {
-      // auto: only gate if there's a breathing practice to build the habit on
-      const NEEDED = 3;
-      const breathDays = await practiceDaysInWindow(clientDir, "breath", 7);
-      if (breathDays < NEEDED) {
-        eftVisible = null;
-        hidePracticeId = eft.practiceId;
-        mindBody = { nextUp: "EFT tapping", locked: true, breathDays, breathNeeded: NEEDED };
+  const hideIds: string[] = [];
+  // frontier: is the prior step established enough to open the next?
+  let priorSatisfied = breathwork ? breathDays >= 3 : true;
+  let priorLabel = "breathing";
+  let priorDone = breathDays;
+  let priorNeeded = 3;
+
+  for (const tech of seq) {
+    const override = asStr(cli[`mindbody_${tech.key}`]).toLowerCase();
+    const unlocked = override === "unlocked" ? true : override === "locked" ? false : priorSatisfied;
+    if (unlocked) {
+      if (tech.key === "eft") eftVisible = eft;
+      else sleepVisible = sleep;
+      const days = await practiceDaysInWindow(clientDir, tech.key, 14);
+      priorSatisfied = days >= 2;
+      priorLabel = tech.key === "eft" ? "tapping" : "your wind-down";
+      priorDone = days;
+      priorNeeded = 2;
+    } else {
+      hideIds.push(tech.practiceId);
+      if (!mindBody && override !== "locked") {
+        mindBody = { nextUp: tech.label, priorLabel, doneCount: priorDone, needed: priorNeeded, locked: true };
       }
+      priorSatisfied = false; // everything after a locked step stays locked
     }
   }
-  // While EFT is locked, drop it from the daily checklist too — don't surface a
+  // Drop any locked technique from the daily checklist too — don't surface a
   // to-do the client has no way to do yet.
-  const practicesVisible = hidePracticeId ? practices.filter((p) => p.id !== hidePracticeId) : practices;
+  const practicesVisible = hideIds.length ? practices.filter((p) => !hideIds.includes(p.id)) : practices;
 
   // ---- principles (from the letter's meals note + plan meal_timing) --------
   const principles: { t: string; b: string }[] = [];
@@ -3758,6 +3839,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     practices: practicesVisible,
     breathwork,
     eft: eftVisible,
+    sleep: sleepVisible,
     mindBody,
     principles,
     labs,

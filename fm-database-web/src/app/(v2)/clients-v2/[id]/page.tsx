@@ -621,6 +621,17 @@ export default async function ClientV2Page({
   );
   const mindbodyEft =
     (((client as unknown as { mindbody_eft?: string }).mindbody_eft as "auto" | "unlocked" | "locked") || "auto");
+  const sleepPrescribed = !!(
+    publishedPlan as unknown as
+      | { lifestyle_practices?: Array<{ name?: string; details?: string }> }
+      | undefined
+  )?.lifestyle_practices?.some((p) =>
+    /wind.?down|body scan|sleep relaxation|relaxation for sleep|yoga nidra|progressive relaxation|sleep meditation|bedtime relaxation/i.test(
+      `${p?.name ?? ""} ${p?.details ?? ""}`,
+    ),
+  );
+  const mindbodySleep =
+    (((client as unknown as { mindbody_sleep?: string }).mindbody_sleep as "auto" | "unlocked" | "locked") || "auto");
 
   // Has the client done a discovery / intake session yet? Used by
   // deriveStage to give a more accurate "next step" banner than the
@@ -1412,9 +1423,26 @@ export default async function ClientV2Page({
             />
           </FmGroupedPanel>
 
-          {eftPrescribed && (
-            <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — EFT unlock">
-              <MindbodyDripPanel clientId={client.client_id} initial={mindbodyEft} />
+          {(eftPrescribed || sleepPrescribed) && (
+            <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — drip unlock">
+              {eftPrescribed && (
+                <MindbodyDripPanel
+                  clientId={client.client_id}
+                  technique="eft"
+                  blurb="EFT tapping unlocks once breathing is a habit. Override the pace for this client."
+                  initial={mindbodyEft}
+                />
+              )}
+              {sleepPrescribed && (
+                <div style={{ marginTop: eftPrescribed ? 14 : 0 }}>
+                  <MindbodyDripPanel
+                    clientId={client.client_id}
+                    technique="sleep"
+                    blurb="Sleep wind-down unlocks once the prior technique is a habit. Override the pace for this client."
+                    initial={mindbodySleep}
+                  />
+                </div>
+              )}
             </FmGroupedPanel>
           )}
 

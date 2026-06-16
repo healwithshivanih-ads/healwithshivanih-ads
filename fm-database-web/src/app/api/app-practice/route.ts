@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid or expired link" }, { status: 401 });
   }
 
-  const kind = body.kind === "eft" || body.kind === "breath" ? body.kind : "";
+  const kind = body.kind === "eft" || body.kind === "breath" || body.kind === "sleep" ? body.kind : "";
   if (!kind) {
     return NextResponse.json({ ok: false, error: "bad kind" }, { status: 400 });
   }

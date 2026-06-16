@@ -418,13 +418,13 @@ export function EftLaunchCard({ eft, onStart }: { eft: AppEft; onStart: () => vo
 }
 
 /* ---- mind-body drip: gentle "next practice unlocks soon" nudge ----------
-   Shown in place of the EFT card when tapping is prescribed but not yet
-   unlocked (the client hasn't made breathing a habit yet). No shame, no
-   streaks — just a warm sense of a path with one small thing to do. */
-export function EftLockedNudge({ breathDays, breathNeeded }: { breathDays: number; breathNeeded: number }) {
-  const remaining = Math.max(0, breathNeeded - breathDays);
+   Shown in place of the next technique's card when it's prescribed but not yet
+   unlocked (the prior technique isn't a habit yet). No shame, no streaks —
+   just a warm sense of a path with one small thing to do. */
+export function MindBodyNudge({ nextUp, priorLabel, doneCount, needed }: { nextUp: string; priorLabel: string; doneCount: number; needed: number }) {
+  const remaining = Math.max(0, needed - doneCount);
   const headline =
-    breathDays === 0
+    doneCount === 0
       ? "Your next practice is on the way"
       : remaining <= 1
         ? "One more day unlocks your next practice"
@@ -442,11 +442,11 @@ export function EftLockedNudge({ breathDays, breathNeeded }: { breathDays: numbe
       <span style={{ flex: 1, minWidth: 0 }}>
         <span style={{ display: "block", fontSize: 13.5, fontWeight: 500, color: "#52463a" }}>{headline}</span>
         <span style={{ display: "block", fontSize: 12, color: "#8a7d6b", marginTop: 1 }}>
-          Keep up your breathing — EFT tapping opens up as it becomes a habit.
+          Keep up your {priorLabel} — {nextUp} opens up as it becomes a habit.
         </span>
         <span style={{ display: "flex", gap: 5, marginTop: 7 }} aria-hidden="true">
-          {Array.from({ length: breathNeeded }).map((_, i) => (
-            <span key={i} style={{ width: 22, height: 5, borderRadius: 3, background: i < breathDays ? "#c47a35" : "#e7ddcb" }} />
+          {Array.from({ length: needed }).map((_, i) => (
+            <span key={i} style={{ width: 22, height: 5, borderRadius: 3, background: i < doneCount ? "#c47a35" : "#e7ddcb" }} />
           ))}
         </span>
       </span>

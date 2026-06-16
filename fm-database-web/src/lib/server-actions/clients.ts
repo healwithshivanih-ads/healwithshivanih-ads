@@ -986,7 +986,7 @@ export async function updateCycleTracking(
  */
 export async function setMindbodyOverride(
   clientId: string,
-  technique: "eft",
+  technique: "eft" | "sleep",
   state: "auto" | "unlocked" | "locked",
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");

@@ -17,7 +17,17 @@ const OPTS: { value: State; label: string; hint: string }[] = [
   { value: "locked", label: "Hold", hint: "Keep EFT hidden for now" },
 ];
 
-export function MindbodyDripPanel({ clientId, initial }: { clientId: string; initial: State }) {
+export function MindbodyDripPanel({
+  clientId,
+  technique = "eft",
+  blurb = "EFT tapping unlocks once breathing is a habit. Override the pace for this client.",
+  initial,
+}: {
+  clientId: string;
+  technique?: "eft" | "sleep";
+  blurb?: string;
+  initial: State;
+}) {
   const [state, setState] = useState<State>(initial);
   const [pending, start] = useTransition();
   const [err, setErr] = useState<string | null>(null);
@@ -28,7 +38,7 @@ export function MindbodyDripPanel({ clientId, initial }: { clientId: string; ini
     setState(next);
     setErr(null);
     start(async () => {
-      const r = await setMindbodyOverride(clientId, "eft", next);
+      const r = await setMindbodyOverride(clientId, technique, next);
       if (!r.ok) {
         setState(prev);
         setErr(r.error);
@@ -38,9 +48,7 @@ export function MindbodyDripPanel({ clientId, initial }: { clientId: string; ini
 
   return (
     <div>
-      <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)", marginBottom: 8 }}>
-        EFT tapping unlocks once breathing is a habit. Override the pace for this client.
-      </div>
+      <div style={{ fontSize: 12.5, color: "var(--fm-muted, #6f6a5d)", marginBottom: 8 }}>{blurb}</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         {OPTS.map((o) => {
           const on = state === o.value;
