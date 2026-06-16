@@ -12,6 +12,12 @@
       "runtimeExecutable": "sh",
       "runtimeArgs": ["-c", "cd fm-database-web && exec ./node_modules/.bin/next start -p 3003"],
       "port": 3003
+    },
+    {
+      "name": "fm-web-dev",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd fm-database-web && exec npm run dev -- -p 3014"],
+      "port": 3014
     }
   ]
 }
