@@ -1,21 +1,21 @@
 /**
- * POST /api/app-reminders — client reminder-preference management for the
- * app's Account screen (time-of-day nudges, delivered via web push).
+ * POST /api/app-reminders — store the client's reminder OVERRIDES (which of the
+ * plan-derived reminders they've silenced, plus any time they pinned).
  *
- * Auth: body.token must resolve to a published plan (same posture as the
- * other /api/app-* routes). client_id is derived server-side from the token.
+ * Auth: body.token must resolve to a published plan (same posture as the other
+ * /api/app-* routes). client_id is derived server-side from the token.
  *
  * Actions:
- *   save   { token, items: ReminderItem[] }  — overwrite the stored set
- *   status { token }                         — { items } (server is source of truth)
+ *   save   { token, items: [{id,on,time,time_custom}] }  — overwrite overrides
+ *   status { token }                                      — { overrides }
  *
- * Delivery is the /api/cron/app-reminders job, which reads the stored set and
- * fires a push at each enabled reminder's time. A reminder only arrives if the
- * client has ALSO turned push notifications on (see /api/app-push).
+ * The reminders themselves are derived from the live plan and applied at
+ * display + fire time; this route only persists the client's choices. A
+ * reminder only arrives if the client has ALSO enabled push (see /api/app-push).
  */
 import { NextRequest, NextResponse } from "next/server";
 import { resolveAppToken } from "@/lib/server-actions/letter-token";
-import { saveReminders, readReminders } from "@/lib/fmdb/reminders-server";
+import { saveOverrides, readOverrides, itemsToOverrides } from "@/lib/fmdb/reminders-server";
 
 export const dynamic = "force-dynamic";
 
@@ -41,12 +41,13 @@ export async function POST(req: NextRequest) {
   try {
     if (action === "save") {
       const items = Array.isArray(body.items) ? body.items : [];
-      const saved = await saveReminders(clientId, token, items);
-      return NextResponse.json({ ok: true, items: saved });
+      const overrides = itemsToOverrides(items);
+      await saveOverrides(clientId, token, overrides);
+      return NextResponse.json({ ok: true, overrides });
     }
     if (action === "status") {
-      const doc = await readReminders(clientId);
-      return NextResponse.json({ ok: true, items: doc?.items ?? [] });
+      const { overrides } = await readOverrides(clientId);
+      return NextResponse.json({ ok: true, overrides });
     }
     return NextResponse.json({ ok: false, error: "unknown action" }, { status: 400 });
   } catch (e) {

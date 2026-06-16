@@ -125,6 +125,8 @@ export interface AppMsqEntry {
 }
 // eslint-disable-next-line no-duplicate-imports
 import { swapTermMatches, type AppSwapGroup as SwapGroupT, type SwapMember as SwapMemberT } from "./swaps";
+import { deriveReminders, effectiveReminders } from "./reminders-derive";
+import { readOverrides } from "./reminders-server";
 
 export interface AppMealExtra {
   grad: string;
@@ -661,8 +663,9 @@ export interface ClientAppData {
   /** Guided sleep wind-down config when prescribed AND unlocked (drip). */
   sleep: AppSleep | null;
   /** Mind-body drip nudge — non-null when the NEXT technique in this client's
-   *  sequence is prescribed but not yet unlocked (priorLabel = what to keep
-   *  doing, doneCount/needed = progress). null when nothing's waiting. */
+   *  sequence is prescribed but not yet unlocked, so the app shows a gentle
+   *  "keep practising to unlock" hint (priorLabel = what to keep doing,
+   *  doneCount/needed = progress). null when nothing's waiting. */
   mindBody: { nextUp: string; priorLabel: string; doneCount: number; needed: number; locked: boolean } | null;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
@@ -750,6 +753,8 @@ export interface ClientAppData {
     cadence: "daily" | "weekly";
     /** 0=Sun … 6=Sat — only meaningful when cadence === "weekly". */
     weekday?: number;
+    /** client has pinned their own time (survives plan regeneration) */
+    timeCustom: boolean;
   }[];
   /** Daily calorie guide for weight-loss clients — computed the same way the
    *  letter generator does (Mifflin-St Jeor → TDEE → phased deficit, current
@@ -3565,12 +3570,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   }
   const photoUrl = hasAvatar ? `/api/app-photo/${token}` : null;
 
-  const reminders = [
-    { id: "r1", label: "Morning supplements", time: "8:00 am", on: true, cadence: "daily" as const },
-    { id: "r2", label: "Evening wind-down (breathing + journal)", time: "9:00 pm", on: true, cadence: "daily" as const },
-    { id: "r3", label: "Bedtime magnesium", time: "9:30 pm", on: true, cadence: "daily" as const },
-    { id: "r4", label: "Weekly check-in", time: "Sunday 10:00 am", on: true, cadence: "weekly" as const, weekday: 0 },
-  ];
+  // Reminders are DERIVED from this client's live plan (supplement timings +
+  // check-in cadence), capped at 3, then overlaid with the client's saved
+  // on/off + pinned-time overrides. Republishing the plan regenerates them.
+  const reminders = effectiveReminders(
+    deriveReminders(plan, client),
+    (await readOverrides(clientId)).overrides,
+  );
 
   const faq = [
     {

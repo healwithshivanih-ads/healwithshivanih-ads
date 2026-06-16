@@ -677,18 +677,8 @@ const INTEGRATIONS = [
   { id: "cgm", name: "Glucose monitor (CGM)", meta: "Blood sugar patterns", icon: "sparkle" },
 ];
 
-const REM_TIMES_KEY = "ochre_reminder_times";
+const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-function timeToInputVal(t: string): string {
-  const m = t.match(/(\d{1,2}):(\d{2})\s*(am|pm)/i);
-  if (!m) return "08:00";
-  let h = parseInt(m[1]);
-  const min = m[2];
-  const ap = m[3].toLowerCase();
-  if (ap === "pm" && h !== 12) h += 12;
-  if (ap === "am" && h === 12) h = 0;
-  return `${String(h).padStart(2, "0")}:${min}`;
-}
 
 function inputValToDisplay(val: string): string {
   const parts = val.split(":");
@@ -885,25 +875,32 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
     setPhotoBusy(false);
   }
 
-  const [rem, setRem] = useState<Record<string, boolean>>(data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.on }), {}));
-  const [remTimes, setRemTimes] = useState<Record<string, string>>(() => {
-    try {
-      const stored = typeof window !== "undefined" ? localStorage.getItem(REM_TIMES_KEY) : null;
-      return stored ? (JSON.parse(stored) as Record<string, string>) : {};
-    } catch { return {}; }
-  });
+  // data.reminders is already derived from the live plan + the client's saved
+  // overrides (see client-app.ts), so it's the source of truth for the initial
+  // UI. We only persist what the client changes back as overrides.
+  const [rem, setRem] = useState<Record<string, boolean>>(() =>
+    data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.on }), {}),
+  );
+  const [remTimes, setRemTimes] = useState<Record<string, string>>(() =>
+    data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.time }), {}),
+  );
+  // ids whose time the client has pinned — preserved across plan regeneration.
+  const [customTimes, setCustomTimes] = useState<Set<string>>(
+    () => new Set(data.reminders.filter((r) => r.timeCustom).map((r) => r.id)),
+  );
 
-  // Persist the full reminder set server-side (clients/<id>/_reminders.yaml),
-  // which the app-reminders cron reads to fire each push at its time. Server is
-  // the source of truth; localStorage stays an offline cache for the time edits.
-  function persistReminders(nextRem: Record<string, boolean>, nextTimes: Record<string, string>) {
+  // Persist overrides only (on/off + pinned time). The cron re-derives label /
+  // default time / cadence from the current plan, so we never store those.
+  function persistReminders(
+    nextRem: Record<string, boolean>,
+    nextTimes: Record<string, string>,
+    custom: Set<string>,
+  ) {
     const items = data.reminders.map((r) => ({
       id: r.id,
-      label: r.label,
-      time: nextTimes[r.id] ?? timeToInputVal(r.time),
       on: nextRem[r.id] ?? r.on,
-      cadence: r.cadence,
-      weekday: r.weekday,
+      time: nextTimes[r.id] ?? r.time,
+      time_custom: custom.has(r.id),
     }));
     void fetch("/api/app-reminders", {
       method: "POST",
@@ -912,59 +909,24 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
     }).catch(() => {});
   }
 
-  // On open, hydrate on/off + times from the server (it outlives this device's
-  // localStorage and any single phone). If the client has no saved record yet,
-  // seed it from the visible defaults so the default-ON toggles actually fire.
-  useEffect(() => {
-    let ignore = false;
-    fetch("/api/app-reminders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ token: data.token, action: "status" }),
-    })
-      .then((r) => r.json())
-      .then((j: { ok?: boolean; items?: Array<{ id: string; on?: boolean; time?: string }> }) => {
-        if (ignore || !j?.ok) return;
-        if (Array.isArray(j.items) && j.items.length > 0) {
-          const onMap: Record<string, boolean> = {};
-          const timeMap: Record<string, string> = {};
-          for (const it of j.items) {
-            onMap[it.id] = !!it.on;
-            if (it.time) timeMap[it.id] = it.time;
-          }
-          setRem((s) => ({ ...s, ...onMap }));
-          setRemTimes((s) => ({ ...s, ...timeMap }));
-        } else {
-          // no record yet — seed defaults so the shown toggles are truthful
-          persistReminders(
-            data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.on }), {}),
-            {},
-          );
-        }
-      })
-      .catch(() => {});
-    return () => { ignore = true; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.token]);
-
   function handleToggle(id: string) {
     const next = { ...rem, [id]: !rem[id] };
     setRem(next);
-    persistReminders(next, remTimes);
+    persistReminders(next, remTimes, customTimes);
   }
 
   function handleTimeChange(id: string, val: string) {
-    const next = { ...remTimes, [id]: val };
-    setRemTimes(next);
-    try { localStorage.setItem(REM_TIMES_KEY, JSON.stringify(next)); } catch {}
-    persistReminders(rem, next);
+    const nextTimes = { ...remTimes, [id]: val };
+    const nextCustom = new Set(customTimes).add(id);
+    setRemTimes(nextTimes);
+    setCustomTimes(nextCustom);
+    persistReminders(rem, nextTimes, nextCustom);
   }
 
-  function reminderDisplayTime(r: { id: string; time: string }): string {
-    const custom = remTimes[r.id];
-    if (!custom) return r.time;
-    const prefix = r.time.match(/^([A-Za-z]+ )/)?.[1] ?? "";
-    return prefix + inputValToDisplay(custom);
+  function reminderDisplayTime(r: { id: string; time: string; cadence: "daily" | "weekly"; weekday?: number }): string {
+    const t = remTimes[r.id] ?? r.time;
+    const prefix = r.cadence === "weekly" ? `${WEEKDAY_NAMES[r.weekday ?? 0]} ` : "";
+    return prefix + inputValToDisplay(t);
   }
 
   return (
@@ -1022,7 +984,8 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
                     <input
                       type="time"
                       className="sr-time-input"
-                      value={remTimes[r.id] ?? timeToInputVal(r.time)}
+                      value={remTimes[r.id] ?? r.time}
+                      min="07:30"
                       onChange={(e) => handleTimeChange(r.id, e.target.value)}
                       aria-label={`Set time for ${r.label}`}
                     />

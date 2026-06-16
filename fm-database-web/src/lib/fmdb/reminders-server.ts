@@ -1,51 +1,37 @@
 /**
- * Server-only store for the client app's time-of-day reminder preferences.
+ * Server-only store for the client's reminder OVERRIDES.
  *
- * The client toggles reminders + times in the app's Account screen (on Fly).
- * Those land in clients/<id>/_reminders.yaml. The staging cron reverse-mirrors
- * that file to the Mac (newest wins — same posture as _push_subscription.yaml),
- * where the /api/cron/app-reminders job reads it and fires a web-push at each
- * reminder's time via sendPushToClient.
+ * Reminders themselves are derived from the live plan (see reminders-derive.ts)
+ * at both display time (Fly) and fire time (Mac cron) — so a republished plan
+ * regenerates them automatically. This file holds only what the client changed:
+ * which reminders they silenced, and any time they pinned. Stored at
+ * clients/<id>/_reminders.yaml; the staging cron reverse-mirrors it Fly→Mac
+ * (Fly is the sole writer, newest wins — same posture as _push_subscription).
  *
  * Delivery state (which reminder fired on which day) lives in a SEPARATE file,
  * _reminders_fired.yaml, written ONLY by the cron on the Mac and never synced —
- * keeping it out of _reminders.yaml means a Fly-side preference edit can't
- * clobber the Mac's fired-tracking and cause a double-fire.
+ * keeping it off Fly means a preference edit can't clobber it and double-fire.
  *
- * NOT a "use server" file — a plain server util imported by the API route and
- * the cron handler.
+ * NOT a "use server" file — a plain server util imported by the API route, the
+ * cron handler, and loadClientAppData.
  */
 import "server-only";
 import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot } from "./paths";
+import type { ReminderOverrides } from "./reminders-derive";
 
-export type ReminderCadence = "daily" | "weekly";
-
-export interface ReminderItem {
-  id: string;
-  /** Short client-facing line, used as the push body. */
-  label: string;
-  /** 24h local (IST) "HH:MM". */
-  time: string;
-  on: boolean;
-  cadence: ReminderCadence;
-  /** 0=Sun … 6=Sat — only meaningful when cadence === "weekly". */
-  weekday?: number;
-}
-
-export interface ReminderDoc {
-  /** The app token at save time — used to deep-link the push to /app/<token>. */
+interface OverrideDoc {
+  /** app token at save time — used to deep-link the push to /app/<token> */
   token?: string;
-  items: ReminderItem[];
+  overrides: ReminderOverrides;
   updated_at: string;
 }
 
 function remFile(clientId: string): string {
   return path.join(getPlansRoot(), "clients", clientId, "_reminders.yaml");
 }
-
 function firedFile(clientId: string): string {
   return path.join(getPlansRoot(), "clients", clientId, "_reminders_fired.yaml");
 }
@@ -58,52 +44,54 @@ async function writeAtomic(file: string, doc: unknown): Promise<void> {
 
 const VALID_TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 
-/** Coerce one untrusted item from the app into a clean ReminderItem, or null. */
-function sanitizeItem(raw: unknown): ReminderItem | null {
-  if (!raw || typeof raw !== "object") return null;
-  const r = raw as Record<string, unknown>;
-  const id = typeof r.id === "string" ? r.id.slice(0, 40) : "";
-  const label = typeof r.label === "string" ? r.label.slice(0, 120) : "";
-  const time = typeof r.time === "string" ? r.time.trim() : "";
-  if (!id || !label || !VALID_TIME.test(time)) return null;
-  const cadence: ReminderCadence = r.cadence === "weekly" ? "weekly" : "daily";
-  const weekday =
-    cadence === "weekly" && typeof r.weekday === "number" && r.weekday >= 0 && r.weekday <= 6
-      ? Math.floor(r.weekday)
-      : undefined;
-  return { id, label, time, on: r.on === true, cadence, weekday };
+/** Coerce the app's posted items into a clean override map. */
+export function itemsToOverrides(rawItems: unknown[]): ReminderOverrides {
+  const out: ReminderOverrides = {};
+  for (const raw of rawItems.slice(0, 30)) {
+    if (!raw || typeof raw !== "object") continue;
+    const r = raw as Record<string, unknown>;
+    const id = typeof r.id === "string" ? r.id.slice(0, 40) : "";
+    if (!id) continue;
+    const o: { on?: boolean; time?: string; time_custom?: boolean } = {
+      on: r.on === true,
+    };
+    if (r.time_custom === true && typeof r.time === "string" && VALID_TIME.test(r.time)) {
+      o.time = r.time;
+      o.time_custom = true;
+    }
+    out[id] = o;
+  }
+  return out;
 }
 
-/** Persist the full reminder set for a client (overwrite — the app sends all). */
-export async function saveReminders(
+export async function saveOverrides(
   clientId: string,
   token: string,
-  rawItems: unknown[],
-): Promise<ReminderItem[]> {
-  const items = rawItems.map(sanitizeItem).filter((x): x is ReminderItem => x !== null).slice(0, 30);
+  overrides: ReminderOverrides,
+): Promise<void> {
   await writeAtomic(remFile(clientId), {
     token: token || undefined,
-    items,
+    overrides,
     updated_at: new Date().toISOString(),
-  } satisfies ReminderDoc);
-  return items;
+  } satisfies OverrideDoc);
 }
 
-export async function readReminders(clientId: string): Promise<ReminderDoc | null> {
+export async function readOverrides(
+  clientId: string,
+): Promise<{ token: string; overrides: ReminderOverrides }> {
   try {
     const raw = await fs.readFile(remFile(clientId), "utf-8");
-    const d = yaml.load(raw) as ReminderDoc | null;
-    if (!d || !Array.isArray(d.items)) return null;
-    d.items = d.items.map(sanitizeItem).filter((x): x is ReminderItem => x !== null);
-    return d;
+    const d = yaml.load(raw) as OverrideDoc | null;
+    const overrides = d?.overrides && typeof d.overrides === "object" ? d.overrides : {};
+    return { token: typeof d?.token === "string" ? d.token : "", overrides };
   } catch {
-    return null;
+    return { token: "", overrides: {} };
   }
 }
 
 // ── Fired-tracking (cron-side only, Mac-authoritative, never synced) ──────────
 
-type FiredMap = Record<string, string>; // reminderId -> "YYYY-MM-DD" last fired (IST)
+type FiredMap = Record<string, string>; // reminderId -> "YYYY-MM-DD" (IST) last fired
 
 export async function readFired(clientId: string): Promise<FiredMap> {
   try {
