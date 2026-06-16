@@ -171,6 +171,11 @@ def _stage_one(yaml, auth: Path, stag: Path, client_id: str, plan_slug: str) -> 
     for k in _APP_CLIENT_KEYS:
         if k in adata:
             merged[k] = adata[k]
+        elif intake_active:
+            # key removed in authoritative (e.g. a coach reset a mind-body
+            # override back to auto) → drop it from the preserved staged file too,
+            # so removals propagate even while an intake/top-up is in progress.
+            merged.pop(k, None)
     merged["client_id"] = client_id
     # Trimmed health snapshots — ONLY what the client app reads (the lab vault
     # + body-composition charts): each snapshot's date + lab_values +

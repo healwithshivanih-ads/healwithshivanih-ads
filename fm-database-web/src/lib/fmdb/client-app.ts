@@ -472,7 +472,9 @@ export function deriveSleep(
   let when = "";
   for (let i = 0; i < practiceRaw.length; i++) {
     const p = practiceRaw[i] || {};
-    const text = `${asStr(p.name)} ${asStr(p.details)}`.toLowerCase();
+    // Match the practice NAME only — "wind down" appears casually in other
+    // practices' DETAILS (e.g. "4-7-8 breathing … to wind down before bed").
+    const text = asStr(p.name).toLowerCase();
     if (/wind.?down|body scan|sleep relaxation|relaxation for sleep|yoga nidra|progressive relaxation|sleep meditation|bedtime relaxation/.test(text)) {
       pid = practices[i]?.id || asStr(p.id) || `sleep-${i}`;
       when = practices[i]?.when || asStr(p.when);
