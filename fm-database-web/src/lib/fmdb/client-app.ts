@@ -271,24 +271,39 @@ export interface AppEft {
   when: string;
   /** setup statement, tapped on the side of the hand ×3 */
   setup: string;
-  /** 7 points in order: crown, eyebrow, side of eye, under eye, under nose, chin, collarbone */
+  /** 8 points in order: crown, eyebrow, side of eye, under eye, under nose, chin, collarbone, under arm */
   points: { key: string; label: string; phrase: string }[];
   /** ask for a 0–10 distress rating before + after */
   suds: boolean;
+  /** the rating question, worded for this client's issue (e.g. sleep → "How
+   *  wound-up does your mind feel?") — clearer than a generic "how strong". */
+  sudsBeforeQ: string;
+  sudsAfterQ: string;
   why: string;
 }
 
-type EftScript = { themeLabel: string; setup: string; why: string; points: AppEft["points"] };
+type EftScript = {
+  themeLabel: string;
+  setup: string;
+  why: string;
+  sudsBeforeQ: string;
+  sudsAfterQ: string;
+  points: AppEft["points"];
+};
 
 const _eftPts = (
   setup: string,
   why: string,
   themeLabel: string,
-  phrases: [string, string, string, string, string, string, string],
+  sudsBeforeQ: string,
+  sudsAfterQ: string,
+  phrases: [string, string, string, string, string, string, string, string],
 ): EftScript => ({
   themeLabel,
   setup,
   why,
+  sudsBeforeQ,
+  sudsAfterQ,
   points: [
     { key: "crown", label: "Top of head", phrase: phrases[0] },
     { key: "eyebrow", label: "Eyebrow", phrase: phrases[1] },
@@ -297,6 +312,7 @@ const _eftPts = (
     { key: "under_nose", label: "Under nose", phrase: phrases[4] },
     { key: "chin", label: "Chin", phrase: phrases[5] },
     { key: "collarbone", label: "Collarbone", phrase: phrases[6] },
+    { key: "under_arm", label: "Under arm", phrase: phrases[7] },
   ],
 });
 
@@ -307,6 +323,8 @@ const EFT_LIBRARY: Record<string, EftScript> = {
     "Even though I get these cravings when I'm stressed or tired, I deeply and completely accept myself.",
     "Tapping settles the stress signal underneath a craving, so the urge softens on its own.",
     "Cravings",
+    "How strong is the craving right now?",
+    "And now — how strong is the craving?",
     [
       "All this craving I'm feeling right now",
       "This urge that shows up at the end of the day",
@@ -315,12 +333,15 @@ const EFT_LIBRARY: Record<string, EftScript> = {
       "I can give myself calm instead",
       "I'm safe — this craving can pass",
       "Choosing what truly nourishes me",
+      "Kind to my body, this is enough",
     ],
   ),
   anxiety: _eftPts(
     "Even though I feel this anxiety in my body, I deeply and completely accept myself.",
     "Tapping while you name the feeling tells your nervous system it's safe to settle.",
     "Anxiety & overwhelm",
+    "How anxious do you feel right now?",
+    "And now — how anxious do you feel?",
     [
       "All this worry I've been carrying",
       "This tightness in my chest",
@@ -329,12 +350,15 @@ const EFT_LIBRARY: Record<string, EftScript> = {
       "I can breathe a little slower",
       "This feeling is allowed to ease",
       "Coming back to calm, one breath at a time",
+      "Safe, steady, and held right now",
     ],
   ),
   sleep: _eftPts(
     "Even though my mind is still busy, I deeply and completely accept myself.",
     "Tapping downshifts the wind-up that keeps you awake, so sleep can arrive.",
     "Winding down for sleep",
+    "How wound-up does your mind feel right now?",
+    "And now — how wound-up does your mind feel?",
     [
       "All the thoughts from today",
       "This busy, racing mind",
@@ -343,12 +367,15 @@ const EFT_LIBRARY: Record<string, EftScript> = {
       "I can let the day go",
       "Sinking a little softer into the bed",
       "Ready to let sleep come",
+      "Soft and heavy, ready to drift off",
     ],
   ),
   stress: _eftPts(
     "Even though I'm carrying a lot right now, I deeply and completely accept myself.",
     "A round of tapping lowers the stress signal in the body — a reset in two minutes.",
     "Stress reset",
+    "How stressed do you feel right now?",
+    "And now — how stressed do you feel?",
     [
       "All this stress I've been holding",
       "Everything I've been carrying today",
@@ -357,6 +384,7 @@ const EFT_LIBRARY: Record<string, EftScript> = {
       "I can soften, just for a moment",
       "Letting my body unclench",
       "Coming back to steady ground",
+      "Carrying it all a little more lightly",
     ],
   ),
 };
@@ -402,6 +430,8 @@ export function deriveEft(
     setup: s.setup,
     points: s.points,
     suds: true,
+    sudsBeforeQ: s.sudsBeforeQ,
+    sudsAfterQ: s.sudsAfterQ,
     why: s.why,
   };
 }

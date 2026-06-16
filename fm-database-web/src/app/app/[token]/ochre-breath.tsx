@@ -11,7 +11,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { AppBreathwork } from "@/lib/fmdb/client-app";
-import { Icon } from "./ochre-context";
+import { Icon, useOchre } from "./ochre-context";
 import { BreathAudio } from "./ochre-breath-audio";
 
 const SOUND_PREF_KEY = "ochre.breathSound"; // "0" = muted; default is on
@@ -37,6 +37,23 @@ type Status = "intro" | "running" | "paused" | "done";
 export function BreathOverlay({ bw, onClose }: { bw: AppBreathwork; onClose: () => void }) {
   const phases = bw.phases;
   const rounds = bw.rounds;
+  const token = useOchre().token;
+
+  // Compliance logging — one record per completed session (no SUDS for breath).
+  const logSession = () => {
+    if (!token) return;
+    const seconds = rounds * phases.reduce((s, p) => s + p.secs, 0);
+    try {
+      fetch("/api/app-practice", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({ token, kind: "breath", practice_id: bw.practiceId, name: bw.name, rounds, seconds }),
+      }).catch(() => {});
+    } catch {
+      /* offline — skip */
+    }
+  };
 
   const [status, setStatus] = useState<Status>("intro");
   const [phaseIdx, setPhaseIdx] = useState(0);
@@ -102,6 +119,7 @@ export function BreathOverlay({ bw, onClose }: { bw: AppBreathwork; onClose: () 
     stopLoop();
     paint("hold", 1);
     audioRef.current?.finishChime();
+    logSession();
     setStatus("done");
   };
 
