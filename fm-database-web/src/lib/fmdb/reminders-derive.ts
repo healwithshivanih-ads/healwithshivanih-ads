@@ -59,8 +59,8 @@ function floorTime(t: string): string {
   return t < EARLIEST_TIME ? EARLIEST_TIME : t;
 }
 
-function timingToSlot(timing: string): number {
-  const tl = (timing || "").toLowerCase();
+function matchSlot(text: string): number | null {
+  const tl = text.toLowerCase();
   for (const [idx, keywords] of TIMING_SLOTS) {
     for (const kw of keywords) {
       if (kw.includes(" ") || kw.includes("-")) {
@@ -71,7 +71,20 @@ function timingToSlot(timing: string): number {
       }
     }
   }
-  return 1; // default: with breakfast
+  return null;
+}
+
+function timingToSlot(timing: string): number {
+  // The PRIMARY timing is the first clause. Everything after a caveat delimiter
+  // (em/en dash, period, semicolon, open paren) is usually a SEPARATION rule —
+  // "Evening with dinner — at least 4 h after your MORNING dose", "… keep clear
+  // of the MORNING levothyroxine" — whose own time words must NOT decide the
+  // bucket (else an evening supplement is mis-slotted to AM and loses its
+  // reminder). Slot on the primary clause; fall back to the full string only
+  // when the primary carries no time cue at all.
+  const full = (timing || "").toLowerCase();
+  const primary = full.split(/\s[—–-]\s|[.;(]/)[0];
+  return matchSlot(primary) ?? matchSlot(full) ?? 1; // default: with breakfast
 }
 
 function asStr(v: unknown): string {
