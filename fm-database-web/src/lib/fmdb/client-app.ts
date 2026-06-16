@@ -403,12 +403,17 @@ const EFT_LIBRARY: Record<string, EftScript> = {
 /**
  * Derive a guided EFT session from the plan's lifestyle practices — surfaces
  * only when the coach has prescribed a tapping / EFT practice. Theme is inferred
- * from the practice text, else the client's goals/conditions, else "stress".
+ * from the practice text + the client's goals, conditions, and reported triggers,
+ * else "stress".
+ *
+ * `clientSignals` should include goals + active_conditions + reported_triggers —
+ * the trigger field is where stated patterns like "sugar cravings during PMS"
+ * live, and they carry the strongest theme signal of all.
  */
 export function deriveEft(
   practices: { id: string; name: string; when: string }[],
   practiceRaw: Dict[],
-  goalsAndConditions: string,
+  clientSignals: string,
 ): AppEft | null {
   let pid = "";
   let when = "";
@@ -424,10 +429,18 @@ export function deriveEft(
     }
   }
   if (!pid) return null;
-  const blob = `${practiceText} ${goalsAndConditions}`.toLowerCase();
+  const blob = `${practiceText} ${clientSignals}`.toLowerCase();
+  // Sleep = explicit sleep words OR genuinely nocturnal waking. Bare "wake" is
+  // deliberately NOT a sleep signal — "wake up tired in the morning" is a
+  // fatigue/energy complaint (thyroid, low iron), not insomnia. Only count a
+  // "wake" token when it sits next to a nocturnal cue (night / an early-AM hour
+  // / can't get back to sleep).
+  const isSleep =
+    /\b(sleep|insomnia|sleepless)\b/.test(blob) ||
+    (/\bwak\w*/.test(blob) && /\bnight\b|\b[1-4]\s?am\b|middle of the night|back to sleep/.test(blob));
   const theme = /sugar|craving|weight|snack|binge|sweet/.test(blob)
     ? "cravings"
-    : /sleep|insomnia|wake|night/.test(blob)
+    : isSleep
       ? "sleep"
       : /anx|panic|overwhelm|stress|worry/.test(blob)
         ? "anxiety"
@@ -2945,7 +2958,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const eft = deriveEft(
     practices,
     practiceRaw,
-    `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")}`,
+    `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")} ${asStr(client.reported_triggers)}`,
   );
   const sleep = deriveSleep(practices, practiceRaw);
 
