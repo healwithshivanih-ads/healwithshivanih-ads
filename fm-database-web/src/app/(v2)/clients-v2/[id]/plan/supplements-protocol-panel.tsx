@@ -24,6 +24,10 @@ interface Props {
   editRows: QuickEditSupplementRow[];
   /** false on draft/ready plans (drafts edit in the full plan editor). */
   editable?: boolean;
+  /** Chromeless mode for the Plan studio accordion — drop the outer FmPanel
+   *  (title/subtitle) so the section's own header is the single heading; the
+   *  ✏️ Edit toggle moves into the body. Keeps every studio section uniform. */
+  embedded?: boolean;
 }
 
 export function SupplementsProtocolPanel({
@@ -31,38 +35,55 @@ export function SupplementsProtocolPanel({
   gridItems,
   editRows,
   editable = true,
+  embedded,
 }: Props) {
   const [editing, setEditing] = useState(false);
   const count = Array.isArray(gridItems) ? gridItems.length : 0;
+
+  const editToggle = editable ? (
+    <button
+      onClick={() => setEditing((v) => !v)}
+      style={{
+        fontSize: 11,
+        fontWeight: 600,
+        color: editing ? "var(--fm-text-secondary)" : "var(--fm-primary)",
+        cursor: "pointer",
+        background: "transparent",
+        border: 0,
+        fontFamily: "inherit",
+      }}
+    >
+      {editing ? "✓ Done" : "✏️ Edit"}
+    </button>
+  ) : undefined;
+
+  const body =
+    editing && editable ? (
+      <QuickEditSupplementsPanel planSlug={planSlug} supplements={editRows} embedded />
+    ) : (
+      <FmSupplementGrid items={gridItems} />
+    );
+
+  if (embedded) {
+    return (
+      <div>
+        {editToggle && (
+          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+            {editToggle}
+          </div>
+        )}
+        {body}
+      </div>
+    );
+  }
 
   return (
     <FmPanel
       title={`💊 Supplements (${count})`}
       subtitle="Daily timing bubbles + the same data the client letter ships. Click a slot to filter; click a row to read the coach rationale."
-      rightSlot={
-        editable ? (
-          <button
-            onClick={() => setEditing((v) => !v)}
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              color: editing ? "var(--fm-text-secondary)" : "var(--fm-primary)",
-              cursor: "pointer",
-              background: "transparent",
-              border: 0,
-              fontFamily: "inherit",
-            }}
-          >
-            {editing ? "✓ Done" : "✏️ Edit"}
-          </button>
-        ) : undefined
-      }
+      rightSlot={editToggle}
     >
-      {editing && editable ? (
-        <QuickEditSupplementsPanel planSlug={planSlug} supplements={editRows} embedded />
-      ) : (
-        <FmSupplementGrid items={gridItems} />
-      )}
+      {body}
     </FmPanel>
   );
 }

@@ -46,6 +46,10 @@ interface Props {
   clientId?: string;
   /** Client email — pre-fills the email-to field on the requisition button. */
   clientEmail?: string | null;
+  /** Chromeless mode for the Plan studio accordion — drop the outer FmPanel
+   *  so the section header is the single heading; the view toggle moves into
+   *  the body. Keeps every studio section visually uniform. */
+  embedded?: boolean;
 }
 
 const SOURCE_LABEL: Record<NonNullable<Props["planStartSource"]>, string> = {
@@ -93,6 +97,7 @@ export function LabsViewPanel({
   planSlug,
   clientId,
   clientEmail,
+  embedded,
 }: Props) {
   const [mode, setMode] = useState<ViewMode>("cadence");
   const hasStart = Boolean(planStartAnchor);
@@ -125,39 +130,37 @@ export function LabsViewPanel({
   const total = newLabs.length + repeatLabs.length;
   if (total === 0) return null;
 
-  return (
-    <FmPanel
-      title={`🧪 Labs (${total})`}
-      subtitle="Group by cadence (when to order) or by sample type (what the client gives on the day)."
-      rightSlot={
-        <div style={{ display: "flex", gap: 4 }}>
-          {(Object.keys(VIEW_LABELS) as ViewMode[]).map((m) => {
-            const active = mode === m;
-            return (
-              <button
-                key={m}
-                onClick={() => setMode(m)}
-                style={{
-                  fontSize: 11,
-                  fontWeight: 600,
-                  padding: "3px 9px",
-                  borderRadius: 999,
-                  border: active
-                    ? "1.5px solid var(--fm-primary)"
-                    : "1px solid var(--fm-border)",
-                  background: active ? "var(--fm-primary)" : "var(--fm-surface)",
-                  color: active ? "#fff" : "var(--fm-text-secondary)",
-                  cursor: "pointer",
-                  transition: "all 0.15s",
-                }}
-              >
-                {VIEW_LABELS[m]}
-              </button>
-            );
-          })}
-        </div>
-      }
-    >
+  const viewToggle = (
+    <div style={{ display: "flex", gap: 4 }}>
+      {(Object.keys(VIEW_LABELS) as ViewMode[]).map((m) => {
+        const active = mode === m;
+        return (
+          <button
+            key={m}
+            onClick={() => setMode(m)}
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              padding: "3px 9px",
+              borderRadius: 999,
+              border: active
+                ? "1.5px solid var(--fm-primary)"
+                : "1px solid var(--fm-border)",
+              background: active ? "var(--fm-primary)" : "var(--fm-surface)",
+              color: active ? "#fff" : "var(--fm-text-secondary)",
+              cursor: "pointer",
+              transition: "all 0.15s",
+            }}
+          >
+            {VIEW_LABELS[m]}
+          </button>
+        );
+      })}
+    </div>
+  );
+
+  const inner = (
+    <>
       {/* Reminder banner — only when at least one retest is overdue or due
           within 14 days of today. Falls back to a softer "set start date"
           nudge if the coach hasn't captured meal_plan_started_on yet. */}
@@ -285,6 +288,27 @@ export function LabsViewPanel({
           clientEmail={clientEmail}
         />
       )}
+    </>
+  );
+
+  if (embedded) {
+    return (
+      <div>
+        <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 10 }}>
+          {viewToggle}
+        </div>
+        {inner}
+      </div>
+    );
+  }
+
+  return (
+    <FmPanel
+      title={`🧪 Labs (${total})`}
+      subtitle="Group by cadence (when to order) or by sample type (what the client gives on the day)."
+      rightSlot={viewToggle}
+    >
+      {inner}
     </FmPanel>
   );
 }

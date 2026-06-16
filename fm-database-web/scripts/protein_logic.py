@@ -150,11 +150,25 @@ def protein_gap_signal(client: dict) -> str:
     return best
 
 
+def weight_loss_active(client: dict) -> bool:
+    """True when the client has an enabled weight-loss goal. In a calorie
+    deficit, protein needs go UP (not down) to protect lean mass — the
+    1.2-1.5 g/kg maintenance band loses muscle, which lowers metabolism and
+    stalls the scale. See calc_protein_target's deficit bump."""
+    wl = client.get("weight_loss")
+    if not isinstance(wl, dict) or wl.get("enabled") is False:
+        return False
+    return bool(wl.get("enabled") or wl.get("goal_kg") or wl.get("starting_weight_kg"))
+
+
 def calc_protein_target(client: dict, plan: dict | None = None) -> dict | None:
     """Daily protein target for the client.
 
-    Returns a dict with low_g / high_g (1.2-1.5 g/kg of body weight,
-    adjusted body weight when BMI >= 30), or None if weight is missing.
+    Returns a dict with low_g / high_g. Baseline is 1.2-1.5 g/kg of body
+    weight (adjusted body weight when BMI >= 30). When a weight-loss goal is
+    active the band is RAISED to 1.6-2.0 g/kg (`deficit_adjusted: True`) to
+    preserve lean muscle through the deficit — unless a contraindication
+    suppresses it. Returns None if weight is missing.
 
     When the client has a contraindication to a RAISED protein intake —
     kidney disease or hyperuricemia / gout — `suppressed` is True,
@@ -224,7 +238,14 @@ def calc_protein_target(client: dict, plan: dict | None = None) -> dict | None:
                 basis_weight = ibw + 0.4 * (weight_kg - ibw)
                 basis = "adjusted"
 
+    # Baseline maintenance band. Raise it in a calorie deficit to protect
+    # lean mass (muscle loss lowers BMR and stalls loss). Never raise when a
+    # contraindication is suppressing protein — kidney/liver/uric wins.
     per_kg_low, per_kg_high = 1.2, 1.5
+    deficit_adjusted = False
+    if weight_loss_active(client) and not suppress_reason:
+        per_kg_low, per_kg_high = 1.6, 2.0
+        deficit_adjusted = True
     low_g = round(basis_weight * per_kg_low)
     high_g = round(basis_weight * per_kg_high)
     basis_label = "adjusted body weight" if basis == "adjusted" else "body weight"
@@ -246,6 +267,17 @@ def calc_protein_target(client: dict, plan: dict | None = None) -> dict | None:
             ),
         }
 
+    rationale = (
+        f"Target {low_g}-{high_g} g protein/day "
+        f"({per_kg_low}-{per_kg_high} g/kg of {basis_label})."
+    )
+    if deficit_adjusted:
+        rationale += (
+            " Raised from the usual 1.2-1.5 g/kg because she's in a calorie "
+            "deficit — higher protein + resistance training preserve muscle, "
+            "which keeps the metabolism up so the weight lost is fat, not muscle."
+        )
+
     return {
         "suppressed": False,
         "suppress_reason": "",
@@ -254,10 +286,8 @@ def calc_protein_target(client: dict, plan: dict | None = None) -> dict | None:
         "basis": basis, "basis_weight_kg": round(basis_weight, 1),
         "bmi": round(bmi, 1) if bmi else None,
         "per_kg_low": per_kg_low, "per_kg_high": per_kg_high,
-        "rationale": (
-            f"Target {low_g}-{high_g} g protein/day "
-            f"({per_kg_low}-{per_kg_high} g/kg of {basis_label})."
-        ),
+        "deficit_adjusted": deficit_adjusted,
+        "rationale": rationale,
     }
 
 

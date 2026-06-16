@@ -13,6 +13,7 @@
 
 import { useMemo, useState } from "react";
 import { Icon, useOchre } from "./ochre-context";
+import { progressSummary, type HistPoint } from "./ochre-body-progress";
 
 // ── pure metric math (mirrors fmdb Measurements) ─────────────────────────────
 
@@ -67,13 +68,6 @@ function whtBand(v: number | null): { label: string; tone: string } {
 // ── types ────────────────────────────────────────────────────────────────────
 
 type Metric = "weightKg" | "waistCm" | "hipCm" | "bmi";
-
-interface HistPoint {
-  date: string;
-  weightKg: number | null;
-  waistCm: number | null;
-  hipCm: number | null;
-}
 
 const METRIC_META: Record<Metric, { label: string; unit: string }> = {
   weightKg: { label: "Weight", unit: "kg" },
@@ -195,6 +189,12 @@ function ChartModal({
               </span>
               <span style={{ fontSize: 13, fontWeight: 600, color: deltaTone }}>{deltaTxt}</span>
             </div>
+            {(metric === "weightKg" || metric === "bmi") && (
+              <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.5, margin: "2px 0 0" }}>
+                The scale is just one signal — it swings with water, salt, sleep and your cycle. Your
+                waist and how your clothes fit tell the real story of fat loss.
+              </p>
+            )}
             <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: "block", marginTop: 6 }}>
               <defs>
                 <linearGradient id="bodyFill" x1="0" y1="0" x2="0" y2="1">
@@ -332,16 +332,19 @@ export function BodySection() {
   const changed = wNum !== b.latest.weightKg || waNum !== b.latest.waistCm || hNum !== b.latest.hipCm;
   const dirty = hasValue && changed;
 
-  // which metrics have ≥1 historical reading → offer a progress chart
+  // which metrics have ≥1 historical reading → offer a progress chart.
+  // Waist leads (the truest fat-loss signal), scale + BMI come after (#6).
   const chartable: Metric[] = useMemo(() => {
     const has = (f: keyof HistPoint) => hist.some((h) => h[f] != null);
     const out: Metric[] = [];
-    if (has("weightKg")) out.push("weightKg");
-    if (b.heightCm && has("weightKg")) out.push("bmi");
     if (has("waistCm")) out.push("waistCm");
     if (has("hipCm")) out.push("hipCm");
+    if (has("weightKg")) out.push("weightKg");
+    if (b.heightCm && has("weightKg")) out.push("bmi");
     return out;
   }, [hist, b.heightCm]);
+
+  const summary = useMemo(() => progressSummary(hist), [hist]);
 
   const save = async () => {
     if (status === "saving") return;
@@ -385,6 +388,25 @@ export function BodySection() {
         <Icon name="progress" size={15} /> Your body
       </div>
 
+      {/* Progress headline (#6) — leads with the waist / non-scale win so a
+          flat scale during recomposition doesn't read as failure. */}
+      <div
+        className="card"
+        style={{
+          padding: "14px 16px",
+          marginBottom: 10,
+          borderLeft: `3px solid ${summary.tone}`,
+          background: "var(--paper-2)",
+        }}
+      >
+        <div className="h-serif" style={{ fontSize: 18, color: summary.tone === "var(--muted)" ? "var(--ink)" : summary.tone, lineHeight: 1.2 }}>
+          {summary.headline}
+        </div>
+        <div style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.55, marginTop: 5 }}>
+          {summary.body}
+        </div>
+      </div>
+
       <div className="card" style={{ padding: 15, display: "flex", flexDirection: "column", gap: 14 }}>
         {/* read-only context from the coach */}
         <div style={{ display: "flex", gap: 18, fontSize: 13 }}>
@@ -403,14 +425,15 @@ export function BodySection() {
           <NumField label="Hip" unit="cm" value={hip} onChange={setHip} />
         </div>
 
-        {/* live-computed read-out */}
-        <div style={{ display: "flex", gap: 8 }}>
-          <MetricTile label="BMI" value={bmi != null ? String(bmi) : "—"} unit="" band={bmiBand(bmi)} />
-          <MetricTile label="BMR" value={bmr != null ? String(bmr) : "—"} unit="kcal" band={{ label: bmr != null ? "rest/day" : "", tone: "var(--muted)" }} />
-        </div>
+        {/* live-computed read-out — waist-shape ratios lead (the metrics that
+            track fat loss best); BMI / BMR follow as context (#6). */}
         <div style={{ display: "flex", gap: 8 }}>
           <MetricTile label="Waist : Hip" value={whr != null ? String(whr) : "—"} unit="" band={whrBand(whr, b.sex)} />
           <MetricTile label="Waist : Height" value={wht != null ? String(wht) : "—"} unit="" band={whtBand(wht)} />
+        </div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <MetricTile label="BMI" value={bmi != null ? String(bmi) : "—"} unit="" band={bmiBand(bmi)} />
+          <MetricTile label="BMR" value={bmr != null ? String(bmr) : "—"} unit="kcal" band={{ label: bmr != null ? "rest/day" : "", tone: "var(--muted)" }} />
         </div>
 
         <button

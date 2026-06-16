@@ -416,3 +416,40 @@ export function EftLaunchCard({ eft, onStart }: { eft: AppEft; onStart: () => vo
     </button>
   );
 }
+
+/* ---- mind-body drip: gentle "next practice unlocks soon" nudge ----------
+   Shown in place of the EFT card when tapping is prescribed but not yet
+   unlocked (the client hasn't made breathing a habit yet). No shame, no
+   streaks — just a warm sense of a path with one small thing to do. */
+export function EftLockedNudge({ breathDays, breathNeeded }: { breathDays: number; breathNeeded: number }) {
+  const remaining = Math.max(0, breathNeeded - breathDays);
+  const headline =
+    breathDays === 0
+      ? "Your next practice is on the way"
+      : remaining <= 1
+        ? "One more day unlocks your next practice"
+        : `${remaining} more days unlock your next practice`;
+  return (
+    <div
+      style={{
+        marginTop: 10, display: "flex", alignItems: "center", gap: 12,
+        padding: "12px 14px", borderRadius: 14, background: "#f8f1ee", border: "1px dashed #e3c8c5",
+      }}
+    >
+      <span style={{ width: 40, height: 40, borderRadius: 999, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(176,107,107,0.13)" }}>
+        <Icon name="heart" size={18} style={{ color: "#b06b6b" }} />
+      </span>
+      <span style={{ flex: 1, minWidth: 0 }}>
+        <span style={{ display: "block", fontSize: 13.5, fontWeight: 500, color: "#52463a" }}>{headline}</span>
+        <span style={{ display: "block", fontSize: 12, color: "#8a7d6b", marginTop: 1 }}>
+          Keep up your breathing — EFT tapping opens up as it becomes a habit.
+        </span>
+        <span style={{ display: "flex", gap: 5, marginTop: 7 }} aria-hidden="true">
+          {Array.from({ length: breathNeeded }).map((_, i) => (
+            <span key={i} style={{ width: 22, height: 5, borderRadius: 3, background: i < breathDays ? "#c47a35" : "#e7ddcb" }} />
+          ))}
+        </span>
+      </span>
+    </div>
+  );
+}

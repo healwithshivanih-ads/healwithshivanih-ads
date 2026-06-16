@@ -95,6 +95,8 @@ export function DishPicker({
   const [generating, setGenerating] = useState(false);
   const [cuisine, setCuisine] = useState("");
   const [note, setNote] = useState("");
+  const [creating, setCreating] = useState(false);
+  const [genName, setGenName] = useState("");
   const [busy, setBusy] = useState<"" | "save" | "reset">("");
   const [error, setError] = useState("");
   const deb = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -140,8 +142,8 @@ export function DishPicker({
     [searchFor],
   );
 
-  const generate = async () => {
-    const name = query.trim();
+  const generate = async (rawName: string) => {
+    const name = rawName.trim();
     if (!name) return;
     setGenerating(true);
     setError("");
@@ -154,8 +156,11 @@ export function DishPicker({
       error: String(e),
     }));
     setGenerating(false);
-    if (out.ok && out.recipe) pick(out.recipe);
-    else setError(out.error ?? "Couldn't create the recipe");
+    if (out.ok && out.recipe) {
+      pick(out.recipe);
+      setCreating(false);
+      setGenName("");
+    } else setError(out.error ?? "Couldn't create the recipe");
   };
 
   const save = async () => {
@@ -269,9 +274,73 @@ export function DishPicker({
             </div>
           ))}
 
-          <button onClick={() => openSearch("new")} style={dashedBtn}>
-            + Add a dish from the library
-          </button>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <button onClick={() => openSearch("new")} style={dashedBtn}>
+              + Add from library
+            </button>
+            <button
+              onClick={() => {
+                setCreating((c) => !c);
+                setSearchFor(null);
+                setError("");
+              }}
+              style={aiCreateBtn}
+            >
+              ✨ Create new dish with AI
+            </button>
+          </div>
+
+          {/* Always-visible AI create form — no need to search first. */}
+          {creating && (
+            <div
+              style={{
+                border: "1px solid var(--fm-primary, #FF6B35)",
+                borderRadius: "var(--fm-radius-md, 8px)",
+                padding: 12,
+                background: "var(--fm-bg-warm, #FFF5F0)",
+                display: "grid",
+                gap: 8,
+              }}
+            >
+              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--fm-primary, #FF6B35)" }}>
+                ✨ Create a new recipe with AI
+              </div>
+              <input
+                autoFocus
+                value={genName}
+                onChange={(e) => setGenName(e.target.value)}
+                placeholder="Dish name (e.g. Jowar dosa, Methi thepla)"
+                style={genField}
+              />
+              <input
+                value={cuisine}
+                onChange={(e) => setCuisine(e.target.value)}
+                placeholder="Cuisine / style (optional — default Indian)"
+                style={genField}
+              />
+              <input
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="Note (optional — high-protein, one-pot, with moong dal)"
+                style={genField}
+              />
+              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <button
+                  onClick={() => generate(genName)}
+                  disabled={generating || !genName.trim()}
+                  style={primaryBtn}
+                >
+                  {generating ? "✨ Creating…" : "✨ Create & add"}
+                </button>
+                <button onClick={() => setCreating(false)} style={pillBtn}>
+                  cancel
+                </button>
+                <span style={{ fontSize: 11, color: "var(--fm-text-tertiary)" }}>
+                  diet &amp; foods-to-avoid applied automatically
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* search panel */}
           {searchFor !== null && (
@@ -375,7 +444,7 @@ export function DishPicker({
               )}
               {query.trim() && (
                 <button
-                  onClick={generate}
+                  onClick={() => generate(query)}
                   disabled={generating}
                   style={{
                     fontSize: 12.5,
@@ -443,6 +512,19 @@ const dashedBtn: React.CSSProperties = {
   border: "1px dashed var(--fm-border-strong, #D8C8BA)",
   background: "var(--fm-surface, #fff)",
   color: "var(--fm-primary, #9A7B5E)",
+  cursor: "pointer",
+  fontFamily: "inherit",
+};
+
+const aiCreateBtn: React.CSSProperties = {
+  alignSelf: "start",
+  fontSize: 12.5,
+  fontWeight: 700,
+  padding: "7px 12px",
+  borderRadius: 8,
+  border: "1px solid var(--fm-primary, #FF6B35)",
+  background: "color-mix(in srgb, var(--fm-primary, #FF6B35) 8%, #fff)",
+  color: "var(--fm-primary, #FF6B35)",
   cursor: "pointer",
   fontFamily: "inherit",
 };

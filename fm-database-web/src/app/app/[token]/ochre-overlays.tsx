@@ -893,10 +893,71 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
     } catch { return {}; }
   });
 
+  // Persist the full reminder set server-side (clients/<id>/_reminders.yaml),
+  // which the app-reminders cron reads to fire each push at its time. Server is
+  // the source of truth; localStorage stays an offline cache for the time edits.
+  function persistReminders(nextRem: Record<string, boolean>, nextTimes: Record<string, string>) {
+    const items = data.reminders.map((r) => ({
+      id: r.id,
+      label: r.label,
+      time: nextTimes[r.id] ?? timeToInputVal(r.time),
+      on: nextRem[r.id] ?? r.on,
+      cadence: r.cadence,
+      weekday: r.weekday,
+    }));
+    void fetch("/api/app-reminders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: data.token, action: "save", items }),
+    }).catch(() => {});
+  }
+
+  // On open, hydrate on/off + times from the server (it outlives this device's
+  // localStorage and any single phone). If the client has no saved record yet,
+  // seed it from the visible defaults so the default-ON toggles actually fire.
+  useEffect(() => {
+    let ignore = false;
+    fetch("/api/app-reminders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: data.token, action: "status" }),
+    })
+      .then((r) => r.json())
+      .then((j: { ok?: boolean; items?: Array<{ id: string; on?: boolean; time?: string }> }) => {
+        if (ignore || !j?.ok) return;
+        if (Array.isArray(j.items) && j.items.length > 0) {
+          const onMap: Record<string, boolean> = {};
+          const timeMap: Record<string, string> = {};
+          for (const it of j.items) {
+            onMap[it.id] = !!it.on;
+            if (it.time) timeMap[it.id] = it.time;
+          }
+          setRem((s) => ({ ...s, ...onMap }));
+          setRemTimes((s) => ({ ...s, ...timeMap }));
+        } else {
+          // no record yet — seed defaults so the shown toggles are truthful
+          persistReminders(
+            data.reminders.reduce((o, r) => ({ ...o, [r.id]: r.on }), {}),
+            {},
+          );
+        }
+      })
+      .catch(() => {});
+    return () => { ignore = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.token]);
+
+  function handleToggle(id: string) {
+    const next = { ...rem, [id]: !rem[id] };
+    setRem(next);
+    persistReminders(next, remTimes);
+  }
+
   function handleTimeChange(id: string, val: string) {
     const next = { ...remTimes, [id]: val };
     setRemTimes(next);
     try { localStorage.setItem(REM_TIMES_KEY, JSON.stringify(next)); } catch {}
+    persistReminders(rem, next);
   }
 
   function reminderDisplayTime(r: { id: string; time: string }): string {
@@ -968,12 +1029,12 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
                     <span className="sr-meta">{reminderDisplayTime(r)}</span>
                   </span>
                 </span>
-                <Toggle on={!!rem[r.id]} onClick={() => setRem((s) => ({ ...s, [r.id]: !s[r.id] }))} />
+                <Toggle on={!!rem[r.id]} onClick={() => handleToggle(r.id)} />
               </div>
             ))}
           </div>
           <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
-            Nudges arrive on WhatsApp from {data.coach.name.split(" ")[0]} — these switches set what you’d like.
+            Gentle nudges on this phone at the times you set. Turn on Push notifications below for these to arrive.
           </div>
         </div>
 

@@ -91,13 +91,24 @@ cron.schedule(
   { timezone: "Asia/Kolkata" },
 );
 
+// Every minute — fire time-of-day app reminders (client sets these in the app's
+// Account screen; delivered via web push). Cheap: skips any reminder not due
+// this minute, idempotent per (client, reminder, day). A reminder only lands if
+// the client also has push notifications on.
+cron.schedule(
+  "* * * * *",
+  () => fire("app-reminders"),
+  { timezone: "Asia/Kolkata" },
+);
+
 console.log(
   `[cron-runner] started · target ${APP_URL} · CRON_SECRET ${SECRET ? "set" : "MISSING"} · schedules:`
     + "\n  · 07:00 IST  weekly-menu-drafts"
     + "\n  · 08:30 IST  intake-reminders"
     + "\n  · 09:00 IST  appointment-reminders"
     + "\n  · * * * * *  pending-sends"
-    + "\n  · * * * * *  intake-reconcile",
+    + "\n  · * * * * *  intake-reconcile"
+    + "\n  · * * * * *  app-reminders",
 );
 
 // Keep the process alive (node-cron handles its own timers).

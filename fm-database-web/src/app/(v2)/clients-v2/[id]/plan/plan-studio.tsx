@@ -42,13 +42,17 @@ const APP_SECTION_ID = "app-studio";
 export function PlanStudio({
   clientId,
   sections,
-  defaultOpenId = APP_SECTION_ID,
+  defaultOpenId,
 }: {
   clientId: string;
   sections: StudioSection[];
   defaultOpenId?: string;
 }) {
-  const [openId, setOpenId] = useState<string>(defaultOpenId);
+  // Land with the first (most-frequent) section open — "menu" — not the
+  // app-suggestions studio, so the coach sees what she edits most first.
+  const [openId, setOpenId] = useState<string>(
+    defaultOpenId ?? sections[0]?.id ?? APP_SECTION_ID,
+  );
   const [phoneOpen, setPhoneOpen] = useState(false);
   // Bumps on every successful app-preview edit so the lifted phone iframe
   // re-renders the real app with the change applied.
@@ -75,7 +79,16 @@ export function PlanStudio({
       />
     ),
   };
-  const allSections = [appSection, ...sections];
+  // Slot the app-suggestions/remedies studio in AFTER the high-frequency
+  // editing sections (it used to be forced first). Coach direction
+  // 2026-06-15: the frequently-edited sections — menu, supplements,
+  // practices, labs — lead; reference sections (and this) follow.
+  const allSections = (() => {
+    const list = [...sections];
+    const afterLabs = list.findIndex((s) => s.id === "labs");
+    list.splice(afterLabs >= 0 ? afterLabs + 1 : list.length, 0, appSection);
+    return list;
+  })();
 
   const jump = (id: string) => {
     setOpenId(id);

@@ -975,6 +975,38 @@ export async function updateCycleTracking(
 
 // ---------------------------------------------------------------------------
 
+/**
+ * Mind-body drip override (2026-06-16). The app auto-unlocks EFT once breathing
+ * is a habit (≥3 distinct days/week); this lets the coach override per client:
+ *   auto     → drip decides (default; field removed)
+ *   unlocked → release EFT now, regardless of breathing
+ *   locked   → hold EFT (hidden, no nudge)
+ * Written to client.yaml#mindbody_eft (Client is extra=ignore, so no model
+ * change); the per-minute reconcile projects it to the Fly app.
+ */
+export async function setMindbodyOverride(
+  clientId: string,
+  technique: "eft",
+  state: "auto" | "unlocked" | "locked",
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const clientYaml = path.join(getPlansRoot(), "clients", clientId, "client.yaml");
+  try {
+    const yaml = await import("js-yaml");
+    const data = yaml.load(await fs.readFile(clientYaml, "utf8")) as Record<string, unknown>;
+    const key = `mindbody_${technique}`;
+    if (state === "auto") delete data[key];
+    else data[key] = state;
+    data.updated_at = new Date().toISOString();
+    await fs.writeFile(clientYaml, yaml.dump(data, { noRefs: true, sortKeys: false }), "utf8");
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as { message?: string }).message ?? "Failed to set mind-body override" };
+  }
+}
+
+// ---------------------------------------------------------------------------
+
 export interface ClientTimelineEvent {
   year?: number | null;
   date?: string | null;
@@ -1537,6 +1569,9 @@ interface WeightLossYaml {
   exercise_limitations?: string;
   notes_for_coach?: string;
   week_overrides?: WeightLossWeekOverridePayload[];
+  /** Observed-TDEE correction (#3) — measured real burn that replaces the
+   *  Mifflin prediction in _calc_calorie_targets / computeCaloriePhases. */
+  tdee_override?: number;
   [k: string]: unknown;
 }
 
@@ -1701,6 +1736,38 @@ export async function addWeightLossOverride(
   }
 }
 
+/** A — coach pre-authors the in-app travel food guide. Runs the shared
+ *  generator against the client's active travel flag and caches the result
+ *  onto it (travel_response.local_foods), so the app renders it first, ahead
+ *  of the curated dataset. Needs an active travel flag + API credits; returns
+ *  a clear message otherwise (the curated/generic tiers still cover the card). */
+export async function generateTravelGuideAction(
+  clientId: string,
+): Promise<{ ok: true; guide: unknown } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "Missing clientId" };
+  try {
+    const out = (await runShim("generate-travel-guide.py", {
+      client_id: clientId,
+      source: "pre_authored",
+    })) as { ok?: boolean; guide?: unknown; error?: string };
+    if (!out.ok) {
+      const msg =
+        out.error === "no_api_credits"
+          ? "No API credits right now — the curated guide still shows in the app."
+          : out.error === "no_travel_window"
+            ? "No active travel flag — flag the trip in the app first (dates + destination)."
+            : out.error === "no_location"
+              ? "The travel flag has no destination set."
+              : out.error ?? "Generation failed";
+      return { ok: false, error: msg };
+    }
+    revalidatePath(`/clients-v2/${clientId}`);
+    return { ok: true, guide: out.guide };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
 /** Remove a per-week override by its index in the current list. */
 export async function removeWeightLossOverride(
   clientId: string,
@@ -1745,6 +1812,41 @@ export async function pauseWeightLossGoal(
 
   try {
     await writeClientYaml(clientPath, data, clientId);
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: (err as Error).message };
+  }
+}
+
+/**
+ * Apply (or clear) the observed-TDEE correction (#3). Pass a plausible
+ * kcal number to store `weight_loss.tdee_override` — it then replaces the
+ * Mifflin prediction in every future calorie computation (the card ramp +
+ * letter generation). Pass null to revert to the formula.
+ */
+export async function setWeightLossTdeeOverride(
+  clientId: string,
+  tdee: number | null,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!clientId) return { ok: false, error: "Missing clientId" };
+  if (tdee != null && (!Number.isFinite(tdee) || tdee < 800 || tdee > 4500)) {
+    return { ok: false, error: "TDEE must be between 800 and 4500 kcal" };
+  }
+  const read = await readClientYaml(clientId);
+  if ("error" in read) return { ok: false, error: read.error };
+  const { data, path: clientPath } = read;
+
+  const wl = (data.weight_loss as WeightLossYaml | undefined) ?? {};
+  if (tdee == null) {
+    delete wl.tdee_override;
+  } else {
+    wl.tdee_override = Math.round(tdee);
+  }
+  data.weight_loss = wl;
+
+  try {
+    await writeClientYaml(clientPath, data, clientId);
+    revalidatePath(`/clients-v2/${clientId}`);
     return { ok: true };
   } catch (err) {
     return { ok: false, error: (err as Error).message };
@@ -3212,6 +3314,61 @@ export async function checkSupplementForClientAction(
       return { ok: false, error: raw.error ?? "Check failed" };
     }
     return { ok: true, result: raw.result };
+  } catch (e) {
+    return { ok: false, error: e instanceof Error ? e.message : String(e) };
+  }
+}
+
+// ── Maintenance status (plan end-game) ──────────────────────────────────────
+// Dedicated write path for the four maintenance fields, mirroring the
+// updatePlanStartDates bypass pattern (plans.ts): touch ONLY these fields so we
+// can never accidentally rewrite the rest of client.yaml. Writes raw YAML (no
+// Pydantic round-trip), and Client is extra="ignore", so this is additive and
+// safe. The app-state resolver (lib/fmdb/app-mode.ts) derives MAINTENANCE /
+// GRACE / LIBRARY from `maintenance_paid_through`. See docs/PLAN_END_GAME_SPEC.md.
+export interface SetMaintenanceStatusInput {
+  client_id: string;
+  maintenance_status?: "none" | "active" | "lapsed";
+  maintenance_started_on?: string | null;   // YYYY-MM-DD or null to clear
+  maintenance_paid_through?: string | null;  // YYYY-MM-DD or null to clear
+  maintenance_term_months?: number;
+}
+
+export async function setMaintenanceStatus(
+  input: SetMaintenanceStatusInput
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const clientYaml = path.join(
+    getPlansRoot(),
+    "clients",
+    input.client_id,
+    "client.yaml"
+  );
+  try {
+    const yaml = await import("js-yaml");
+    const raw = await fs.readFile(clientYaml, "utf8");
+    const data = yaml.load(raw) as Record<string, unknown>;
+
+    if (input.maintenance_status !== undefined)
+      data.maintenance_status = input.maintenance_status;
+    if (input.maintenance_started_on !== undefined)
+      data.maintenance_started_on = input.maintenance_started_on || undefined;
+    if (input.maintenance_paid_through !== undefined)
+      data.maintenance_paid_through = input.maintenance_paid_through || undefined;
+    if (input.maintenance_term_months !== undefined)
+      data.maintenance_term_months = input.maintenance_term_months;
+
+    data.updated_at = new Date().toISOString();
+
+    await fs.writeFile(
+      clientYaml,
+      yaml.dump(data, { noRefs: true, sortKeys: false }),
+      "utf8"
+    );
+
+    revalidatePath(`/clients-v2/${input.client_id}`);
+    revalidatePath(`/clients-v2/${input.client_id}/plan`);
+    revalidatePath("/dashboard-v2");
+    return { ok: true };
   } catch (e) {
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
   }

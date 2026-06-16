@@ -3532,7 +3532,21 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
 
     activity = (wl.get("activity_level") or "sedentary").lower()
     multipliers = {"sedentary": 1.20, "light": 1.375, "moderate": 1.55, "active": 1.725}
-    tdee = round(bmr * multipliers.get(activity, 1.2))
+    predicted_tdee = round(bmr * multipliers.get(activity, 1.2))
+
+    # Observed-TDEE correction (#3): once the coach has applied the energy
+    # expenditure measured from the client's ACTUAL weight change, it
+    # replaces the Mifflin×activity prediction. For perimenopausal /
+    # hypothyroid / insulin-resistant women the real burn routinely runs
+    # below predicted, so the "deficit" computed off the formula isn't a
+    # real deficit. Mirror of WeightLossLike.tdee_override in calorie-phases.ts.
+    tdee_override = wl.get("tdee_override")
+    if isinstance(tdee_override, (int, float)) and 800 <= tdee_override <= 4500:
+        tdee = round(tdee_override)
+        tdee_source = "observed"
+    else:
+        tdee = predicted_tdee
+        tdee_source = "predicted"
 
     pace = (wl.get("pace") or "moderate").lower()
     daily_deficits = {"slow": 250, "moderate": 500, "faster": 750}
@@ -3582,6 +3596,8 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
     return {
         "bmr": round(bmr),
         "tdee": tdee,
+        "predicted_tdee": predicted_tdee,
+        "tdee_source": tdee_source,
         "full_deficit": full_deficit,
         "goal_kg": goal_kg,
         "goal_weeks": goal_weeks or weeks_to_goal,
@@ -3591,6 +3607,352 @@ def _calc_calorie_targets(client: dict, wl: dict) -> dict | None:
         "pace_label": pace_label,
         "weekly_loss_kg": round(weekly_loss_kg, 2),
     }
+
+
+# ── Deterministic calorie verifier (#1) ────────────────────────────────
+#
+# The meal-plan prompt TELLS the AI the per-day calorie targets are
+# "binding" (±50 kcal), but nothing ever checked that the generated meal
+# tables actually sum to the target. LLM free-text calorie arithmetic is
+# unreliable — a plan "targeting 1400 kcal" routinely renders meals that
+# sum to 1800, silently erasing the deficit. These helpers parse the
+# `~kcal` total rows back out of the rendered markdown and compare each
+# day against the computed phase target. We do NOT auto-edit (we can't
+# recompute the meals deterministically) — we surface flags to the coach
+# via validation_report so she can regenerate before the letter ships.
+
+# Tolerance for "day is off target". The prompt asks for ±50 kcal, but
+# flagging every ±60 would be noise — the failure mode worth catching is
+# the AI being off by *hundreds*. Flag a day only when it deviates by
+# more than max(_KCAL_TOL_FLOOR, _KCAL_TOL_PCT × target).
+_KCAL_TOL_FLOOR = 150
+_KCAL_TOL_PCT = 0.12
+
+_WEEK_HEADING_RE = re.compile(r"week\s+(\d+)", re.IGNORECASE)
+_KCAL_LABEL_RE = re.compile(r"~?\s*kcal", re.IGNORECASE)
+_DAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+
+def _phase_bucket_for_week(week: int) -> str:
+    """Map a 1-based protocol week to its calorie phase bucket, matching
+    the 5-phase build in _calc_calorie_targets (2-2-4-2-2)."""
+    if week <= 2:
+        return "wk1_2"
+    if week <= 4:
+        return "wk3_4"
+    if week <= 8:
+        return "wk5_8"
+    if week <= 10:
+        return "wk9_10"
+    return "wk11_12"
+
+
+def _parse_kcal_cell(cell: str | None) -> int | None:
+    """Pull an integer kcal value out of one meal-table cell, tolerating
+    the variety of ways the AI renders it: `1405`, `*1405*`, `~1405`,
+    `1,405`, `1405 kcal`, `~1400 kcal`, `1380-1420`. Placeholder cells
+    (`...`, `—`, blank) and out-of-range numbers return None."""
+    if not cell:
+        return None
+    s = cell.strip().strip("*").strip()
+    if not s or "..." in s or s in {"—", "-", "–"}:
+        return None
+    s = s.replace("~", "").replace(",", "")
+    s = re.sub(r"(?i)kcal", "", s).strip()
+    m = re.search(r"\d{3,4}", s)
+    if not m:
+        return None
+    try:
+        v = int(m.group(0))
+    except ValueError:
+        return None
+    if v < 500 or v > 4000:
+        return None  # implausible — not a daily total
+    return v
+
+
+def _verify_calorie_targets(
+    markdown: str, cal: dict, *, default_week: int = 1
+) -> dict | None:
+    """Parse the `~kcal` per-day total rows from the meal-plan tables and
+    compare each against the computed phase calorie target.
+
+    Returns None when there's nothing to check (not a weight-loss letter).
+    Otherwise a structured report:
+        {
+          "ran": True,
+          "rows_found": int,       # how many ~kcal rows we located
+          "days_checked": int,     # how many numeric day-totals parsed
+          "days_flagged": int,     # days outside tolerance
+          "missing_kcal_rows": bool,  # meal tables exist but no ~kcal row
+          "flags": [ {week, day, target, actual, delta, direction, tolerance} ],
+        }
+    Never raises — a verifier that crashes must not block a paid letter.
+    """
+    if not cal or not markdown:
+        return None
+    phases = cal.get("phases") or {}
+    if not phases:
+        return None
+
+    def _target_for_week(w: int) -> int | None:
+        return phases.get(_phase_bucket_for_week(w))
+
+    current_week: int | None = None
+    flags: list[dict] = []
+    days_checked = 0
+    rows_found = 0
+    saw_meal_table = False
+
+    for raw in markdown.split("\n"):
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith("#"):
+            m = _WEEK_HEADING_RE.search(line)
+            if m:
+                try:
+                    current_week = int(m.group(1))
+                except ValueError:
+                    pass
+            continue
+        if not line.startswith("|"):
+            continue
+
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if not cells:
+            continue
+        label = cells[0].strip().strip("*").strip()
+        label_norm = re.sub(r"[^a-z]", "", label.lower())
+
+        # Note that a real meal table exists (header row or a meal row) so we
+        # can flag a weight-loss letter that omitted the kcal row entirely.
+        if label_norm in {"meal"} or label_norm.startswith("breakfast"):
+            saw_meal_table = True
+
+        if not _KCAL_LABEL_RE.search(label):
+            continue
+        # Only treat as a kcal-totals row if the label IS basically "~kcal"
+        # — not a meal cell that happens to mention kcal in its description.
+        if label_norm not in {
+            "kcal", "kcalday", "dailykcal", "totalkcal",
+            "kcaltotal", "perdaykcal", "daytotal", "totalday",
+        }:
+            continue
+
+        rows_found += 1
+        week = current_week or default_week
+        target = _target_for_week(week)
+        if not target:
+            continue
+        tol = max(_KCAL_TOL_FLOOR, round(target * _KCAL_TOL_PCT))
+
+        for i, cell in enumerate(cells[1:]):
+            val = _parse_kcal_cell(cell)
+            if val is None:
+                continue
+            days_checked += 1
+            delta = val - target
+            if abs(delta) > tol:
+                flags.append({
+                    "week": week,
+                    "day": _DAY_LABELS[i] if i < len(_DAY_LABELS) else f"Day {i + 1}",
+                    "target": target,
+                    "actual": val,
+                    "delta": delta,
+                    "direction": "over" if delta > 0 else "under",
+                    "tolerance": tol,
+                })
+
+    return {
+        "ran": True,
+        "rows_found": rows_found,
+        "days_checked": days_checked,
+        "days_flagged": len(flags),
+        "missing_kcal_rows": bool(saw_meal_table and rows_found == 0),
+        "flags": flags,
+    }
+
+
+def _emit_calorie_flags(check: dict, validation_report: list[dict]) -> None:
+    """Translate the calorie-verifier report into validation_report entries
+    so they surface in the coach's letter-editor right pane (red, alongside
+    the supplement-integrity flags). We never auto-edit the meal math —
+    these are review prompts, not rewrites."""
+    if check.get("missing_kcal_rows"):
+        validation_report.append({
+            "original_tip": "(calorie check — no per-day totals found)",
+            "score": 1,
+            "reason": (
+                "⚠ Calorie check: this is a weight-loss plan but the meal tables have "
+                "NO `~kcal` per-day total row, so the daily deficit can't be verified. "
+                "Regenerate the letter, or open AI Refine and ask to add a ~kcal total "
+                "row to the bottom of each weekly table."
+            ),
+            "rewrite": "",
+        })
+
+    flags = check.get("flags") or []
+    if not flags:
+        return
+
+    worst = max(flags, key=lambda f: abs(f["delta"]))
+    n_over = sum(1 for f in flags if f["direction"] == "over")
+    n_under = len(flags) - n_over
+    detail = "; ".join(
+        f"Wk{f['week']} {f['day']}: {f['actual']} vs {f['target']} "
+        f"({'+' if f['delta'] > 0 else ''}{f['delta']})"
+        for f in flags[:14]
+    )
+    validation_report.append({
+        "original_tip": f"(calorie check — {len(flags)} day(s) off target)",
+        "score": 2,
+        "reason": (
+            f"⚠ Calorie check: {len(flags)} day(s) deviate from the phase calorie target "
+            f"by more than tolerance ({n_over} over, {n_under} under). Worst: Wk{worst['week']} "
+            f"{worst['day']} at {worst['actual']} kcal vs target {worst['target']} "
+            f"({'+' if worst['delta'] > 0 else ''}{worst['delta']} kcal). LLM meal-calorie "
+            f"arithmetic is unreliable — review the flagged days and regenerate if the "
+            f"deficit is being eroded. Detail: {detail}."
+        ),
+        "rewrite": "",
+    })
+
+
+# ── Weight-loss readiness caveat (#4) ──────────────────────────────────
+#
+# Twin of src/lib/fmdb/weight-loss-readiness.ts. When a weight-loss letter is
+# generated for a client with metabolic/hormonal blockers (under-optimised
+# thyroid, insulin resistance, weight-gain meds, poor sleep/high stress,
+# perimenopause), this block tells the AI to set HONEST expectations and
+# sequence root-cause work — never to promise rapid loss on the deficit alone.
+# Returns "" when nothing to flag. Never raises.
+
+_WEIGHT_GAIN_DRUGS = [
+    (("mirtazapine", "amitriptyline", "nortriptyline", "imipramine", "paroxetine"),
+     "antidepressant linked to weight gain"),
+    (("sertraline", "citalopram", "escitalopram", "fluoxetine", "venlafaxine", "duloxetine", "trazodone"),
+     "SSRI/SNRI — can drive carb cravings"),
+    (("olanzapine", "quetiapine", "risperidone", "clozapine", "aripiprazole"),
+     "antipsychotic — appetite + insulin resistance"),
+    (("lithium", "valproate", "valproic", "divalproex", "gabapentin", "pregabalin"),
+     "mood-stabiliser / neuro agent — weight gain"),
+    (("prednisolone", "prednisone", "dexamethasone", "hydrocortisone", "betamethasone",
+      "methylprednisolone", "wysolone", "omnacortil"),
+     "corticosteroid — central adiposity + IR"),
+    (("propranolol", "atenolol", "metoprolol", "bisoprolol", "nebivolol"),
+     "beta-blocker — lowers metabolic rate"),
+    (("insulin", "glipizide", "glimepiride", "gliclazide", "glibenclamide", "pioglitazone", "amaryl"),
+     "diabetes drug that promotes weight gain"),
+]
+
+
+def _latest_lab(client: dict, pattern: str):
+    import re as _re
+    rx = _re.compile(pattern, _re.IGNORECASE)
+    snaps = sorted(
+        (s for s in (client.get("health_snapshots") or []) if isinstance(s, dict)),
+        key=lambda s: str(s.get("date") or ""), reverse=True,
+    )
+    for s in snaps:
+        for lv in (s.get("lab_values") or []):
+            name = str((lv or {}).get("test_name") or "").strip()
+            if name and rx.search(name):
+                raw = (lv or {}).get("value")
+                try:
+                    return float(str(raw).replace(",", "").split()[0])
+                except (ValueError, IndexError, AttributeError):
+                    continue
+    return None
+
+
+def _weight_loss_readiness_caveat(client: dict) -> str:
+    try:
+        lines = []
+        meds = [str(m) for m in (
+            (client.get("current_medications") or []) + (client.get("medications") or [])
+        ) if m]
+        meds_l = [m.lower() for m in meds]
+
+        tsh = _latest_lab(client, r"\btsh\b|thyroid.?stimulating|thyrotropin")
+        on_thy = any(any(k in m for k in (
+            "levothyrox", "thyronorm", "eltroxin", "thyroxine", "synthroid", "euthyrox"))
+            for m in meds_l)
+        if tsh is not None and tsh > 2.5:
+            sev = "frankly high" if tsh > 4.0 else "above FM-optimal (<2.5)"
+            lines.append(
+                f"- Thyroid: TSH {tsh} {sev}{' despite thyroid medication' if on_thy else ''}. "
+                f"Hypothyroidism defends body weight — expect a SLOWER, steadier pace and frame "
+                f"thyroid support (not just calories) as central.")
+
+        insulin = _latest_lab(client, r"fasting.*insulin|insulin.*fasting|\binsulin\b")
+        glucose = _latest_lab(client, r"fasting.*glucose|glucose.*fasting|fasting.*sugar|\bfbs\b")
+        hba1c = _latest_lab(client, r"hba1c|a1c|glycated|glycosylated")
+        ir = None
+        if insulin is not None and glucose is not None:
+            homa = (glucose * insulin) / 405
+            if homa > 1.5:
+                ir = f"HOMA-IR {round(homa, 1)}"
+        elif insulin is not None and insulin > 5:
+            ir = f"fasting insulin {insulin}"
+        elif hba1c is not None and hba1c >= 5.7:
+            ir = f"HbA1c {hba1c}%"
+        if ir:
+            lines.append(
+                f"- Insulin resistance ({ir}): the lever is carb quality + meal timing + protein, "
+                f"NOT calories alone. Build meals lower-glycaemic and protein-anchored.")
+
+        for med in meds:
+            m = med.lower()
+            for names, note in _WEIGHT_GAIN_DRUGS:
+                if any(n in m for n in names):
+                    lines.append(
+                        f"- On {med.strip()} ({note}) — factor into expectations; do not imply the "
+                        f"deficit will simply override it.")
+                    break
+
+        fp = client.get("five_pillars") or {}
+        if isinstance(fp, dict):
+            sh, sq, sl = fp.get("sleep_hours"), fp.get("sleep_quality"), fp.get("stress_level")
+            poor_sleep = (isinstance(sh, (int, float)) and sh < 6) or (isinstance(sq, (int, float)) and sq <= 2)
+            high_stress = isinstance(sl, (int, float)) and sl >= 4
+            if poor_sleep or high_stress:
+                lines.append(
+                    "- Sleep/stress load: cortisol keeps insulin high and retains visceral fat — "
+                    "address sleep + stress alongside; an aggressive cut here can backfire.")
+
+        # Perimenopause (informational)
+        sex = str(client.get("sex") or "")
+        age = None
+        try:
+            from datetime import date as _date
+            dob = client.get("date_of_birth")
+            if dob:
+                age = (_date.today() - _date.fromisoformat(str(dob)[:10])).days // 365
+        except Exception:
+            pass
+        if age is None and client.get("age_band"):
+            try:
+                a, b = str(client["age_band"]).split("-")
+                age = (int(a) + int(b)) // 2
+            except Exception:
+                pass
+        if sex[:1].lower() == "f" and age is not None and 44 <= age <= 56:
+            lines.append(
+                "- Perimenopausal: estrogen decline shifts fat central + accelerates muscle loss. "
+                "Lead with protein + resistance training; expect a slower, steadier pace.")
+
+        if not lines:
+            return ""
+        return (
+            "\n\nWEIGHT-LOSS READINESS — SET HONEST EXPECTATIONS (do NOT promise fast loss; these "
+            "blockers mean the deficit alone won't carry it):\n" + "\n".join(lines) +
+            "\nWrite the weight-loss framing as steady + sustainable, name the relevant blocker in "
+            "plain language, and emphasise protein + strength + sleep as co-levers — never imply "
+            "'just eat less and it'll come off.'"
+        )
+    except Exception:
+        return ""
 
 
 # ── Protein management ──────────────────────────────────────────────────
@@ -3663,8 +4025,21 @@ def _protein_guidance_block(client: dict, plan: dict | None = None) -> str:
         )
         mix_into = "curd, milk or a smoothie"
 
+    deficit_note = ""
+    if target.get("deficit_adjusted"):
+        deficit_note = (
+            f"This target is RAISED ({target['per_kg_low']}-{target['per_kg_high']} "
+            "g/kg, above the usual 1.2-1.5) because she's in a calorie deficit. "
+            "In a deficit the body will burn muscle for fuel unless protein is "
+            "high AND she does resistance training — losing muscle lowers her "
+            "metabolism and stalls the scale. Hitting this protein number + "
+            "lifting is what makes the weight she loses FAT, not muscle. Make "
+            "this the headline of the protein + movement framing, warmly.\n"
+        )
+
     return (
         f"PROTEIN TARGET — {low}-{high} g per day:\n"
+        + deficit_note +
         "Most Indian vegetarian clients under-eat protein. Build the meal "
         f"plan so the day's FOOD delivers as much of the {low}-{high} g "
         "target as realistically possible — protein at EVERY meal.\n"
@@ -4646,12 +5021,14 @@ PHASE TARGETS (MUST match):
   • Weeks 9–10 (Ease back):    {cal['phases']['wk9_10']} kcal/day → {_split(cal['phases']['wk9_10'])}
   • Weeks 11–12 (Sustain):     {cal['phases']['wk11_12']} kcal/day→ {_split(cal['phases']['wk11_12'])}
 
-EXERCISE — include a dedicated "Movement & Exercise" section:
+EXERCISE — include a dedicated "Movement & Exercise" section, STRENGTH-LED:
+- Resistance training is the priority — in a deficit it's what protects muscle so the weight lost is fat, not muscle (walking alone won't). Centre it on 2-3x/week progressive strength; cardio/steps support it.
 - Current movement: {weight_loss.get('exercise_current') or 'not specified'}
 - Open to adding: {weight_loss.get('exercise_open_to') or 'flexible — coach to suggest'}
 - Available days/week: {weight_loss.get('exercise_days_per_week') or 3}
 - Physical limitations: {weight_loss.get('exercise_limitations') or 'none mentioned'}
 """
+        calorie_section += _weight_loss_readiness_caveat(client)
     else:
         calorie_section = """
 MOVEMENT & WELLNESS:
@@ -6183,16 +6560,19 @@ EXERCISE PROTOCOL — include a dedicated "Movement & Exercise" section in the p
 - Available days/week: {weight_loss.get('exercise_days_per_week') or 3}
 - Physical limitations: {weight_loss.get('exercise_limitations') or 'none mentioned'}
 
-Build a phased exercise plan alongside the nutrition plan:
-  • Weeks 1–2 (Foundation): gentle — daily walks (30–45 min), morning stretching, breathwork. No high-intensity yet.
-  • Weeks 3–4 (Activation): introduce 2x strength training or yoga flow per week alongside walks.
-  • Weeks 5–8 (Build): 3x strength / resistance sessions + 2x cardio (brisk walk, cycling, swim) per week.
-  • Weeks 9–12 (Sustain): maintain 3–4x mixed training; introduce one longer weekend activity for enjoyment.
+RESISTANCE TRAINING IS THE PRIORITY — not just walking. In a calorie deficit, strength training is the signal that tells the body to KEEP muscle while it burns fat. Walking alone burns a few calories but won't protect muscle or reshape the body — and losing muscle lowers her metabolism so the scale stalls. Centre the plan on progressive resistance work (especially important through perimenopause for muscle + bone); steps/cardio are a supporting habit, not the main event. Pair this with hitting the protein target above — protein + lifting together are what preserve lean mass.
+
+Build a phased exercise plan alongside the nutrition plan, STRENGTH-LED from week 1:
+  • Weeks 1–2 (Foundation): start strength now, gently — 2x/week bodyweight or resistance-band work (squats, wall push-ups, rows, glute bridges) to learn the movements safely + daily 30–45 min walks.
+  • Weeks 3–4 (Build): 2–3x/week progressive resistance (add light dumbbells / more reps) + walks.
+  • Weeks 5–8 (Strengthen): 3x/week resistance with progressive overload (compound moves) + 2x easy cardio.
+  • Weeks 9–12 (Sustain): maintain 3x/week strength, keep progressing the load + enjoyable movement.
 - Adapt to her available days ({weight_loss.get('exercise_days_per_week') or 3}/week) and any limitations noted above.
 - For each phase give: frequency, session type, duration, and a specific example session.
-- Tone: motivating and doable — never punishing. Frame exercise as energy-building and mood-lifting, not calorie burning.
-- If she has hormonal/thyroid conditions: caution against high-intensity cardio that spikes cortisol; favour strength, yoga, Pilates, walking.
+- Tone: motivating and doable — never punishing. Frame exercise as muscle-protecting and energy-building, not calorie burning.
+- If she has hormonal/thyroid conditions: caution against excessive high-intensity cardio that spikes cortisol; favour strength, yoga, Pilates, walking.
 """
+        calorie_section += _weight_loss_readiness_caveat(client)
     else:
         # General wellness — still include a gentle movement section
         calorie_section = """
@@ -7459,6 +7839,44 @@ def main() -> int:
         print(f"[render-letter] supplement-integrity check failed ({type(e).__name__}: {e})",
               file=sys.stderr, flush=True)
 
+    # ── Deterministic calorie verifier (#1) ──────────────────────────
+    # Parse the `~kcal` total rows back out of the rendered meal tables
+    # and compare each day against the computed phase target. The AI is
+    # TOLD targets are binding, but its arithmetic is unreliable — a plan
+    # "targeting 1400" can quietly render meals summing to 1800, erasing
+    # the deficit. Findings surface to the coach via validation_report
+    # (and a structured `calorie_check` field). We don't auto-fix — we
+    # flag for regeneration. Best-effort: never blocks the letter.
+    calorie_check = None
+    try:
+        _cal_targets = _calc_calorie_targets(client, weight_loss)
+        if _cal_targets:
+            _default_week = (
+                phase_start
+                if (letter_type in ("meal_plan_phase", "meal_plan") and phase_start)
+                else 1
+            )
+            calorie_check = _verify_calorie_targets(
+                markdown, _cal_targets, default_week=_default_week
+            )
+            if calorie_check and (
+                calorie_check.get("days_flagged") or calorie_check.get("missing_kcal_rows")
+            ):
+                _emit_calorie_flags(calorie_check, validation_report)
+                _step(
+                    f"⚠ calorie check: {calorie_check.get('days_flagged')} of "
+                    f"{calorie_check.get('days_checked')} day(s) off target"
+                    + (" · kcal row MISSING" if calorie_check.get("missing_kcal_rows") else "")
+                )
+            elif calorie_check:
+                _step(
+                    f"calorie check OK ({calorie_check.get('days_checked')} day(s) "
+                    f"within tolerance)"
+                )
+    except Exception as e:
+        print(f"[render-letter] calorie verifier failed ({type(e).__name__}: {e}) — continuing",
+              file=sys.stderr, flush=True)
+
     # ── Recipe split-out for phase letters ─────────────────────────
     # Coach decision 2026-05-19: phase meal-plan letters were running
     # 7+ pages because the recipe appendix occupied half the document.
@@ -7846,6 +8264,10 @@ def main() -> int:
         "markdown": markdown,
         "html": html,
         "validation_report": validation_report,
+        # Deterministic per-day calorie verification (#1). Null for
+        # non-weight-loss letters; otherwise a structured report the UI
+        # can surface beyond the validation_report flags.
+        "calorie_check": calorie_check,
         # Sidecar files written alongside the main letter when the
         # save layer sees these populated. Phase-letter recipes only.
         "recipes_markdown": recipes_md,

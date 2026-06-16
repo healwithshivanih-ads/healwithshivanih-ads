@@ -130,6 +130,118 @@ def _recent_sessions(client_id: str, limit: int = 5) -> list[dict]:
     return out
 
 
+def _weight_progress_summary(client: dict) -> str | None:
+    """Compact text summary of weight-loss progress for the rework prompt —
+    a Python twin of src/lib/fmdb/weight-progress.ts (assessWeightProgress).
+    Returns None when there's no usable weight-loss goal. Never raises.
+
+    Unions weigh-ins across health_snapshots (client-app + lab),
+    measurements_log (coach), and the flat measurements object so a
+    self-logging client's data isn't missed.
+    """
+    try:
+        from datetime import date as _date
+
+        goal = client.get("weight_loss") or {}
+        if not isinstance(goal, dict) or goal.get("enabled") is False:
+            return None
+        start_kg = goal.get("starting_weight_kg")
+        goal_kg = goal.get("goal_kg")
+        start_raw = goal.get("starting_date")
+        if not (isinstance(start_kg, (int, float)) and start_kg > 0
+                and isinstance(goal_kg, (int, float)) and goal_kg > 0 and start_raw):
+            return None
+
+        def _pd(v):
+            if not v:
+                return None
+            try:
+                return _date.fromisoformat(str(v)[:10])
+            except Exception:
+                return None
+
+        start_d = _pd(start_raw)
+        if not start_d:
+            return None
+
+        # Committed weekly rate (goal_kg over the goal window), else pace tag.
+        target_d = _pd(goal.get("goal_target_date"))
+        if target_d and (target_d - start_d).days >= 7:
+            expected_weekly = goal_kg / ((target_d - start_d).days / 7)
+        else:
+            expected_weekly = {"slow": 0.25, "moderate": 0.5, "faster": 0.75}.get(
+                goal.get("pace") or "moderate", 0.5)
+
+        # Union weight readings, one per date.
+        readings: dict[str, float] = {}
+        for snap in client.get("health_snapshots") or []:
+            d = _pd((snap or {}).get("date"))
+            kg = ((snap or {}).get("measurements") or {}).get("weight_kg")
+            if d and isinstance(kg, (int, float)) and 20 <= kg <= 400:
+                readings[d.isoformat()] = float(kg)
+        for e in client.get("measurements_log") or []:
+            d = _pd((e or {}).get("date"))
+            kg = (e or {}).get("weight_kg")
+            if d and isinstance(kg, (int, float)) and 20 <= kg <= 400:
+                readings[d.isoformat()] = float(kg)  # coach log wins same-date tie
+        flat = client.get("measurements") or {}
+        fkg = flat.get("weight_kg")
+        if isinstance(fkg, (int, float)) and 20 <= fkg <= 400:
+            fd = _pd(flat.get("measured_on")) or _date.today()
+            readings.setdefault(fd.isoformat(), float(fkg))
+
+        series = sorted(
+            ((d, kg) for d, kg in readings.items() if d >= start_d.isoformat()),
+            key=lambda x: x[0],
+        )
+        if not series:
+            return (f"# WEIGHT-LOSS PROGRESS\n- Goal: lose {goal_kg} kg from "
+                    f"{start_kg} kg (~{round(expected_weekly, 2)} kg/wk expected).\n"
+                    f"- No weigh-ins logged since starting — progress unverifiable; "
+                    f"ask the client to weigh in.\n")
+
+        latest_d_str, latest_kg = series[-1]
+        latest_d = _date.fromisoformat(latest_d_str)
+        weeks = max((latest_d - start_d).days / 7, 0)
+        actual_loss = round(start_kg - latest_kg, 1)
+        expected_loss = round(expected_weekly * weeks, 1)
+        actual_weekly = round((start_kg - latest_kg) / weeks, 2) if weeks > 0 else 0
+        stale_days = (_date.today() - latest_d).days
+
+        if weeks < 2:
+            verdict = "too early to judge pace"
+        elif latest_kg > start_kg + 0.3:
+            verdict = "REGAINING — weight is above the starting point"
+        elif expected_loss > 0 and actual_loss < 0.5 * expected_loss:
+            verdict = "BEHIND PACE — losing far less than the prescribed deficit predicts"
+        elif expected_loss > 0 and actual_loss > 1.3 * expected_loss:
+            verdict = "ahead of pace"
+        else:
+            verdict = "roughly on track"
+
+        lines = ["# WEIGHT-LOSS PROGRESS"]
+        lines.append(f"- Goal: lose {goal_kg} kg from {start_kg} kg "
+                     f"(~{round(expected_weekly, 2)} kg/wk expected).")
+        lines.append(f"- {start_kg} kg → {latest_kg} kg over ~{round(weeks, 1)} weeks "
+                     f"(lost {actual_loss} of ~{expected_loss} kg expected by now).")
+        lines.append(f"- Actual ~{actual_weekly} kg/wk vs ~{round(expected_weekly, 2)} kg/wk plan.")
+        if stale_days > 14:
+            lines.append(f"- ⚠ Last weigh-in {stale_days} days ago — data may be stale.")
+        lines.append(f"- Verdict: {verdict}.")
+        if "BEHIND" in verdict or "REGAIN" in verdict:
+            lines.append(
+                "- If behind/regaining, do NOT just deepen the calorie deficit: check "
+                "whether weight-loss-resistance drivers are unaddressed (under-optimised "
+                "thyroid / TSH > 2.5, insulin resistance, high cortisol or poor sleep, "
+                "perimenopause, or weight-gain medications such as SSRIs / beta-blockers / "
+                "steroids), and whether protein + resistance training are protecting lean "
+                "mass. Recompute the target off OBSERVED loss rather than the predicted TDEE.")
+        lines.append("")
+        return "\n".join(lines)
+    except Exception:
+        return None
+
+
 def _build_context(client: dict, plan: dict | None, sessions: list[dict],
                    event_summary: str, triggered_by: str) -> str:
     """Build the prompt context for Haiku — keep it compact (~3-5K tokens)."""
@@ -203,6 +315,12 @@ def _build_context(client: dict, plan: dict | None, sessions: list[dict],
         lines.append("# CURRENT ACTIVE PLAN")
         lines.append("(none — client has no active plan)")
     lines.append("")
+
+    # Weight-loss progress (#2) — make the rework AI weight-aware so a stall
+    # or regain actually shapes the suggestion instead of being invisible.
+    wp = _weight_progress_summary(client)
+    if wp:
+        lines.append(wp)
 
     # Surface every lab the client already has values for so the AI doesn't
     # propose redundant orders. This block is the upstream fix for the

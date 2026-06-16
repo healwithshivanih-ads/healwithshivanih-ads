@@ -364,6 +364,21 @@ class Client(BaseModel):
     next_contact_date: Optional[str] = None  # YYYY-MM-DD follow-up reminder date
     family_history: Optional[str] = None  # hereditary diseases / family health history
 
+    # ── Maintenance / plan end-game (graduation → paid maintenance tier) ──────
+    # After the 12-week protocol, a client can move to a hands-free paid
+    # maintenance tier (₹2,000/mo, prepaid 6-month blocks). These four fields
+    # are the ONLY persistent state for that tier; the app-state resolver
+    # (fm-database-web/src/lib/fmdb/app-mode.ts) derives MAINTENANCE / GRACE /
+    # LIBRARY from them at request time. See docs/PLAN_END_GAME_SPEC.md.
+    #   none   = never on maintenance (default; resolver uses plan dates only)
+    #   active = paid_through >= today  → MAINTENANCE
+    #   lapsed = past paid_through      → GRACE (15d) then LIBRARY
+    # paid_through is the truth the resolver keys off; status is a coarse label.
+    maintenance_status: Optional[str] = None          # none | active | lapsed
+    maintenance_started_on: Optional[date] = None     # first day on the tier
+    maintenance_paid_through: Optional[date] = None    # drives MAINTENANCE/GRACE/LIBRARY
+    maintenance_term_months: int = 6                   # prepaid block length
+
     # ── Client-facing intake form (tokenised public link) ─────────────────────
     # Coach generates a one-time token, WhatsApps the link /intake/<token>,
     # client fills the form, submission merges payload into this client.yaml
@@ -1208,6 +1223,27 @@ class Plan(BaseModel):
     #   {"week": N, "days": [...same as app_menu...], "change_note": str,
     #    "generated_at": iso, "inputs_summary": str}
     app_menu_pending: Optional[dict] = None
+
+    # ── Plan end-game content (graduation → maintenance) ───────────────────
+    # Generated once at graduation; rendered by the client app in MAINTENANCE
+    # (and teased in LIBRARY). Plain dicts — the TS/Python generators own the
+    # shape. See docs/PLAN_END_GAME_SPEC.md + PLAN_END_GAME_BUILD_CHECKLIST.md.
+    #
+    # back_on_track_plan: the self-serve "flare reset" card built from the
+    #   client's own tolerated foods/remedies. Client-safe scrubbed (no drug
+    #   brands / labs / "titrate"); carries mandatory red-flag triggers.
+    #     {"generated_at": iso, "reset_days": int, "foods": [...],
+    #      "remedies": [...], "dos": [...], "donts": [...],
+    #      "off_ramp": str, "red_flags": [...]}
+    # monthly_cards: cached monthly do's & don'ts, keyed "YYYY-MM" so the same
+    #   month never regenerates.
+    #     {"2026-07": {"generated_at": iso, "dos": [...], "donts": [...],
+    #                  "season": str, "source": "haiku" | "fallback"}}
+    # NOTE: Plan is extra="forbid" — never write a plan carrying these to disk
+    # until the field is deployed to Fly too (Mutagen syncs ~/fm-plans → Fly;
+    # an older Fly build would reject the plan on load). First write is P3.
+    back_on_track_plan: Optional[dict] = None
+    monthly_cards: Optional[dict] = None
 
     # ---- assessment (coach) ----
     primary_topics: list[str] = Field(default_factory=list)         # topic slugs

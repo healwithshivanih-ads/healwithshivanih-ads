@@ -334,6 +334,12 @@ export interface PlanFields {
   /** Coach-authored note shown to the client as a "Plan updated" banner in the
    *  companion app when they open it after a plan supersede. */
   client_update_note?: string | null;
+  /** Plan end-game (graduation → maintenance). back_on_track_plan = self-serve
+   *  flare-reset card (scrubbed, client-safe); monthly_cards = cached monthly
+   *  do's/don'ts keyed "YYYY-MM". Generated at graduation (P3+); plain dicts,
+   *  the generators own the shape. See docs/PLAN_END_GAME_SPEC.md. */
+  back_on_track_plan?: Record<string, unknown> | null;
+  monthly_cards?: Record<string, unknown> | null;
 }
 
 /**
@@ -413,6 +419,10 @@ export interface WeightLossGoal {
   /** Coach-only context — never sent to client. */
   notes_for_coach?: string;
   week_overrides?: WeightLossWeekOverride[];
+  /** Observed-TDEE correction (#3): the real burn measured from actual
+   *  weight change, replacing the Mifflin prediction in every calorie
+   *  computation once the coach applies it. */
+  tdee_override?: number;
 }
 
 export interface MeasurementEntry {
@@ -467,6 +477,14 @@ export interface Client {
   mobile_number?: string;
   display_name?: string;
   family_history?: string;
+
+  // Maintenance / plan end-game (graduation → paid maintenance tier).
+  // The persistent fields the app-state resolver (app-mode.ts) derives
+  // MAINTENANCE / GRACE / LIBRARY from. See docs/PLAN_END_GAME_SPEC.md.
+  maintenance_status?: "none" | "active" | "lapsed";
+  maintenance_started_on?: string;     // YYYY-MM-DD
+  maintenance_paid_through?: string;    // YYYY-MM-DD — drives MAINTENANCE/GRACE/LIBRARY
+  maintenance_term_months?: number;     // prepaid block length (default 6)
 
   // Location / CRM
   address_line1?: string;

@@ -54,6 +54,8 @@ export async function POST(req: NextRequest) {
       client_id: lookup.client_id,
       from: typeof body.from === "string" ? body.from.slice(0, 10) : "",
       to: typeof body.to === "string" ? body.to.slice(0, 10) : "",
+      kind: typeof body.kind === "string" ? body.kind.slice(0, 20) : "travel",
+      location: typeof body.location === "string" ? body.location.slice(0, 120) : "",
       context: typeof body.context === "string" ? body.context.slice(0, 600) : "",
       cancelled: body.cancelled === true,
     })) as { ok?: boolean; session_id?: string; error?: string };

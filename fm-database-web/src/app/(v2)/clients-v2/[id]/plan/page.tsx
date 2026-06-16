@@ -708,12 +708,11 @@ export default async function PlanTabPage({
       </div>
     );
 
+    // Order: most-edited sections first (menu → supplements → practices →
+    // labs), then reference sections (conditions, protocols, education, …) at
+    // the bottom — coach direction 2026-06-15. The app-suggestions/remedies
+    // studio is slotted in by PlanStudio after labs (not forced first).
     const studioSections: StudioSection[] = [
-      {
-        id: "conditions",
-        label: "🗂 Conditions",
-        node: conditionsNode,
-      },
       {
         id: "menu",
         label: "🥗 Menu & Nutrition",
@@ -736,6 +735,7 @@ export default async function PlanTabPage({
             gridItems={supplementGridItems}
             editRows={quickEditSupplementRows}
             editable={isPublished}
+            embedded
           />
         ),
       },
@@ -750,6 +750,7 @@ export default async function PlanTabPage({
             planSlug={activePlan.slug as string}
             practices={quickEditPracticeRows}
             editable={isPublished}
+            embedded
           />
         ),
       },
@@ -770,8 +771,14 @@ export default async function PlanTabPage({
             planSlug={activePlan.slug as string}
             clientId={id}
             clientEmail={(client as { email?: string } | null)?.email ?? null}
+            embedded
           />
         ),
+      },
+      {
+        id: "conditions",
+        label: "🗂 Conditions",
+        node: conditionsNode,
       },
       ...(hasProtocols
         ? [

@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import {
   addWeightLossOverride,
   removeWeightLossOverride,
+  generateTravelGuideAction,
   type WeightLossWeekOverridePayload,
 } from "@/lib/server-actions/clients";
 import type { WeightLossWeekOverride } from "@/lib/fmdb/types";
@@ -53,6 +54,21 @@ export function TravelOverridesPanel({
         router.refresh();
       } else {
         toast.error(res.error ?? "Couldn't remove override");
+      }
+    });
+  };
+
+  // A — pre-author the in-app local-food guide against the client's active
+  // travel flag (caches onto the flag so the app renders it first).
+  const onGenerateGuide = () => {
+    if (pending) return;
+    startTransition(async () => {
+      const res = await generateTravelGuideAction(clientId);
+      if (res.ok) {
+        toast.success("In-app food guide generated for this trip");
+        router.refresh();
+      } else {
+        toast.error(res.error ?? "Couldn't generate guide");
       }
     });
   };
@@ -96,28 +112,49 @@ export function TravelOverridesPanel({
               lineHeight: 1.4,
             }}
           >
-            Set BEFORE you generate the next letter. The meal plan
-            auto-applies these to the relevant phase window.
+            Set the trip window + destination. Then “Generate in-app guide”
+            pre-builds the client’s local-food card (shows in their app).
           </div>
         </div>
-        <button
-          type="button"
-          onClick={() => setShowModal(true)}
-          disabled={pending}
-          style={{
-            padding: "6px 12px",
-            fontSize: 12,
-            fontWeight: 700,
-            background: "var(--fm-primary, #FF6B35)",
-            color: "#fff",
-            border: 0,
-            borderRadius: 6,
-            cursor: pending ? "not-allowed" : "pointer",
-            whiteSpace: "nowrap",
-          }}
-        >
-          + Add override
-        </button>
+        <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+          <button
+            type="button"
+            onClick={onGenerateGuide}
+            disabled={pending}
+            title="Pre-build the client's destination food guide in their app (needs an active travel flag + API credits)"
+            style={{
+              padding: "6px 10px",
+              fontSize: 12,
+              fontWeight: 700,
+              background: "#fff",
+              color: "var(--fm-primary, #FF6B35)",
+              border: "1px solid var(--fm-primary, #FF6B35)",
+              borderRadius: 6,
+              cursor: pending ? "not-allowed" : "pointer",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {pending ? "Working…" : "✨ Generate in-app guide"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            disabled={pending}
+            style={{
+              padding: "6px 12px",
+              fontSize: 12,
+              fontWeight: 700,
+              background: "var(--fm-primary, #FF6B35)",
+              color: "#fff",
+              border: 0,
+              borderRadius: 6,
+              cursor: pending ? "not-allowed" : "pointer",
+              whiteSpace: "nowrap",
+            }}
+          >
+            + Add override
+          </button>
+        </div>
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>

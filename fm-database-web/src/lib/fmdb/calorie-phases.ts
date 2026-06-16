@@ -40,6 +40,12 @@ interface WeightLossLike {
   pace?: string;
   goal_kg?: number;
   goal_weeks?: number;
+  /** Coach-applied observed-TDEE correction (#3). When set + plausible, it
+   *  REPLACES the Mifflin×activity prediction — the energy expenditure
+   *  measured from the client's actual weight change beats the formula for
+   *  perimenopausal / hypothyroid / IR women whose real burn runs below
+   *  predicted. Mirror of the same field in _calc_calorie_targets. */
+  tdee_override?: number | null;
 }
 
 const ACTIVITY_MULTIPLIER: Record<string, number> = {
@@ -88,9 +94,15 @@ export function computeCaloriePhases(
       ? 10 * weight + 6.25 * height - 5 * age + 5
       : 10 * weight + 6.25 * height - 5 * age - 161;
 
-  const tdee = Math.round(
+  const predictedTdee = Math.round(
     bmr * (ACTIVITY_MULTIPLIER[(wl.activity_level ?? "sedentary").toLowerCase()] ?? 1.2),
   );
+  // Observed-TDEE correction (#3) wins when the coach has applied it.
+  const override = wl.tdee_override;
+  const tdee =
+    typeof override === "number" && override >= 800 && override <= 4500
+      ? Math.round(override)
+      : predictedTdee;
 
   let fullDeficit = PACE_DEFICIT[(wl.pace ?? "moderate").toLowerCase()] ?? 500;
   // If the coach specified explicit goal weeks, back-calculate the daily

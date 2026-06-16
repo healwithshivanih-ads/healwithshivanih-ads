@@ -90,6 +90,7 @@ _APP_CLIENT_KEYS = (
     "medical_history",
     "measurements",
     "ayurveda_enabled",
+    "mindbody_eft",  # mind-body drip coach override: auto | unlocked | locked
 )
 
 # Coach-only fields stripped from the plan before it reaches the public Fly box —
@@ -317,6 +318,22 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
                     out["checkins_mirrored"] += 1
             except Exception as e:
                 out["errors"].append(f"{client_id} push-mirror: {e}")
+
+        # reverse-mirror: reminder preferences (written on Fly when the client
+        # sets time-of-day reminders in settings) → authoritative store, where
+        # the app-reminders cron reads them. Fly is the sole writer; newest
+        # wins. NB: the cron's own _reminders_fired.yaml is Mac-only and is
+        # deliberately NOT synced here — keeping fired-state off Fly prevents a
+        # preference edit from clobbering it and causing a double-fire.
+        s_rem = sdir / "_reminders.yaml"
+        a_rem = auth / "clients" / client_id / "_reminders.yaml"
+        if s_rem.exists() and (auth / "clients" / client_id).exists():
+            try:
+                if (not a_rem.exists()) or s_rem.stat().st_mtime > a_rem.stat().st_mtime:
+                    shutil.copy2(s_rem, a_rem)
+                    out["checkins_mirrored"] += 1
+            except Exception as e:
+                out["errors"].append(f"{client_id} reminders-mirror: {e}")
 
         # reverse-mirror: app-installed flag (written on Fly when the app runs
         # in standalone / home-screen mode → real adoption signal). Fly is the

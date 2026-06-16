@@ -47,8 +47,12 @@ import { TierOneSuspicionsPanel } from "./tier-one-suspicions-panel";
 import { computeSuspectedSignals } from "@/lib/fmdb/retrospective-tier1";
 import { ClientMemoryPanel } from "./client-memory-panel";
 import { PlanModulesPanel } from "@/components/client-widgets/plan-modules-panel";
+import { MindbodyDripPanel } from "./mindbody-drip-panel";
 import { SupplementCheckWidget } from "@/components/client-widgets/supplement-check-widget";
 import { WeightLossCard } from "@/components/client-widgets/weight-loss-card";
+import { WeightProgressPanel } from "@/components/client-widgets/weight-progress-panel";
+import { WeightLossReadinessPanel } from "@/components/client-widgets/weight-loss-readiness-panel";
+import { assessWeightProgress, estimateObservedTdee } from "@/lib/fmdb/weight-progress";
 import { computeCaloriePhases } from "@/lib/fmdb/calorie-phases";
 import type { WeightLossGoal, MeasurementEntry } from "@/lib/fmdb/types";
 import { parseSessionType, lastTemplateSentAt } from "@/lib/fmdb/session-utils";
@@ -606,6 +610,17 @@ export default async function ClientV2Page({
   const publishedPlan = plansForClient.find(
     (p) => (p._bucket ?? p.status) === "published",
   );
+
+  // Mind-body drip — show the EFT unlock control only when tapping is prescribed.
+  const eftPrescribed = !!(
+    publishedPlan as unknown as
+      | { lifestyle_practices?: Array<{ name?: string; details?: string }> }
+      | undefined
+  )?.lifestyle_practices?.some((p) =>
+    /\beft\b|tapping|emotional freedom/i.test(`${p?.name ?? ""} ${p?.details ?? ""}`),
+  );
+  const mindbodyEft =
+    (((client as unknown as { mindbody_eft?: string }).mindbody_eft as "auto" | "unlocked" | "locked") || "auto");
 
   // Has the client done a discovery / intake session yet? Used by
   // deriveStage to give a more accurate "next step" banner than the
@@ -1397,6 +1412,12 @@ export default async function ClientV2Page({
             />
           </FmGroupedPanel>
 
+          {eftPrescribed && (
+            <FmGroupedPanel id="overview.mindbody" icon="🌿" title="Mind-body — EFT unlock">
+              <MindbodyDripPanel clientId={client.client_id} initial={mindbodyEft} />
+            </FmGroupedPanel>
+          )}
+
           {/* 📋 Intake — progress / insights / send & unlock / coach exam.
               Demoted to a quiet pill once a plan is published (intake is
               done by then); one click re-opens, nothing removed. */}
@@ -1698,6 +1719,34 @@ export default async function ClientV2Page({
                 id: "weight",
                 label: "Weight loss",
                 content: (
+                          <div className="space-y-3">
+                            {/* Readiness gate (#4) — metabolic/hormonal
+                                blockers that make a deficit fail (thyroid,
+                                insulin, weight-gain meds, sleep/stress,
+                                perimenopause). Shown only when a goal exists. */}
+                            {Boolean(
+                              (client as unknown as { weight_loss?: { enabled?: boolean } })
+                                .weight_loss,
+                            ) &&
+                              (client as unknown as { weight_loss?: { enabled?: boolean } })
+                                .weight_loss?.enabled !== false && (
+                                <WeightLossReadinessPanel
+                                  client={client as unknown as Parameters<typeof WeightLossReadinessPanel>[0]["client"]}
+                                />
+                              )}
+                            {/* Verdict banner — on-track / behind / plateau /
+                                regain / overdue weigh-in + one-click rework.
+                                Hides itself when there's no goal. Unions all
+                                three weigh-in sources (app, log, flat). */}
+                            <WeightProgressPanel
+                              clientId={client.client_id}
+                              result={assessWeightProgress(
+                                client as unknown as Parameters<typeof assessWeightProgress>[0],
+                              )}
+                              tdee={estimateObservedTdee(
+                                client as unknown as Parameters<typeof estimateObservedTdee>[0],
+                              )}
+                            />
                             <WeightLossCard
                               clientId={client.client_id}
                               goal={
@@ -1722,6 +1771,7 @@ export default async function ClientV2Page({
                                   .weight_loss,
                               )}
                             />
+                          </div>
                 ),
               },
               {

@@ -1,0 +1,399 @@
+# ─────────────────────────────────────────────────────────────────────────
+# Curated travel / festival / situation foods — The Ochre Tree
+# ─────────────────────────────────────────────────────────────────────────
+# Hand-authored (no AI). Read at render time and GATED to each client's plan
+# deterministically — nothing here is shown raw. This is the "C" tier of the
+# render cascade:  pre-authored (A) → curated+gated (C) → on-demand copilot (B).
+#
+# GATING (done in code at render time, step 2):
+#   • drop a food whose `diet` the client can't eat
+#       client veg/lacto  → drop diet:nonveg
+#       client vegan      → drop diet:nonveg, diet:egg, and contains:[dairy]
+#       client jain       → drop diet:nonveg, diet:egg, and contains:[onion_garlic|root]
+#   • drop a food that `contains` anything on the client's
+#       foods_to_avoid / nutrition.reduce / known_allergies
+#   • keep survivors, show each food's `why`; surface `go_easy` as-is.
+#
+# FOOD TAGS
+#   diet:     vegan | veg | egg | nonveg   (most restrictive diet that can eat it)
+#   contains: [gluten, dairy, egg, onion_garlic, root, soy, nuts, fish, meat,
+#              refined_sugar, alcohol, caffeine, nightshade]   (for the avoid-gate)
+#   cat:      protein | veg | grain | fat | ferment | drink | snack
+#   why:      one-line, plan-language reason it fits an FM plate
+#
+# Matching: `aliases` are lowercased substrings matched against the client's
+# typed location (e.g. "sydney australia" → australia). Keep them generous.
+
+version: 1
+
+# ═══════════════════════════════ DESTINATIONS ═══════════════════════════════
+destinations:
+
+  australia:
+    label: Australia
+    aliases: [australia, sydney, melbourne, brisbane, perth, adelaide, gold coast]
+    eat:
+      - { food: "Grilled barramundi or salmon + greens", diet: nonveg, contains: [fish], cat: protein, why: "Lean protein, no refined oils" }
+      - { food: "Eggs + avocado on sourdough", diet: egg, contains: [egg, gluten], cat: protein, why: "Protein + healthy fat to start the day" }
+      - { food: "Grain bowl — quinoa, roast veg, tahini", diet: vegan, contains: [], cat: grain, why: "Mirrors your plate model" }
+      - { food: "Pumpkin / lentil soup", diet: vegan, contains: [], cat: protein, why: "Warm, gentle, plan-safe" }
+      - { food: "Greek yoghurt + berries + seeds", diet: veg, contains: [dairy], cat: ferment, why: "Protein + probiotic; skip if dairy-sensitive" }
+      - { food: "Flat white or cappuccino", diet: veg, contains: [dairy, caffeine], cat: drink, why: "One a day, after food" }
+      - { food: "Indian restaurant — dal + sabzi + plain rice", diet: vegan, contains: [], cat: grain, why: "Reliable plan-safe fallback abroad" }
+    go_easy:
+      - "Meat pies, sausage rolls (refined wheat + seed oil)"
+      - "Fish & chips, deep-fried (seed oils)"
+      - "Tim Tams, lamingtons, café muffins (refined sugar)"
+      - "More than one milky coffee a day"
+
+  usa:
+    label: USA
+    aliases: [usa, "united states", america, "new york", "los angeles", chicago, "san francisco", boston, texas, seattle]
+    eat:
+      - { food: "Grilled chicken / salmon + salad", diet: nonveg, contains: [meat, fish], cat: protein, why: "Lean protein, build the plate around it" }
+      - { food: "Omelette + sautéed veg (no toast)", diet: egg, contains: [egg], cat: protein, why: "Protein-forward, low refined carb" }
+      - { food: "Chipotle-style bowl — beans, rice, veg, guac", diet: vegan, contains: [], cat: grain, why: "Customisable + plan-safe" }
+      - { food: "Big leafy salad + olive oil + nuts/seeds", diet: vegan, contains: [nuts], cat: veg, why: "Fibre + healthy fat" }
+      - { food: "Plain Greek yoghurt + berries", diet: veg, contains: [dairy], cat: ferment, why: "Protein + probiotic" }
+      - { food: "Indian / Thai / Mediterranean takeout — grilled + veg", diet: veg, contains: [], cat: protein, why: "Cuisines that travel well for your plan" }
+    go_easy:
+      - "Bagels, pancakes, large bread portions (refined wheat)"
+      - "Soda, sweetened coffee drinks, juices (refined sugar)"
+      - "Deep-fried sides, fries (seed oils)"
+      - "Oversized restaurant portions — share or box half"
+
+  uk:
+    label: UK
+    aliases: [uk, "united kingdom", england, london, manchester, scotland, birmingham, "great britain"]
+    eat:
+      - { food: "Grilled fish / roast chicken + veg", diet: nonveg, contains: [fish, meat], cat: protein, why: "Lean protein + cooked veg" }
+      - { food: "Eggs + grilled tomato + mushroom", diet: egg, contains: [egg, nightshade], cat: protein, why: "A full English minus the fried/processed bits" }
+      - { food: "Jacket potato + beans + salad", diet: vegan, contains: [root], cat: grain, why: "Filling, fibre-rich; portion the potato" }
+      - { food: "Lentil / vegetable soup + side salad", diet: vegan, contains: [], cat: protein, why: "Warm and plan-safe" }
+      - { food: "Indian restaurant — dal, tandoori veg/paneer, plain rice", diet: veg, contains: [dairy], cat: protein, why: "Ask for less oil, no cream" }
+    go_easy:
+      - "Pastries, scones, biscuits (refined wheat + sugar)"
+      - "Fish & chips, battered food (seed oils)"
+      - "Creamy curries — korma, butter masala"
+      - "Pub puddings and sweet desserts"
+
+  uae_dubai:
+    label: UAE / Dubai
+    aliases: [uae, dubai, "abu dhabi", "united arab emirates", sharjah, "middle east"]
+    eat:
+      - { food: "Grilled shish / fish + salad", diet: nonveg, contains: [meat, fish], cat: protein, why: "Lean grilled protein" }
+      - { food: "Hummus + grilled veg + olives", diet: vegan, contains: [], cat: fat, why: "Healthy fat + fibre" }
+      - { food: "Fattoush / tabbouleh (light on bread)", diet: vegan, contains: [gluten], cat: veg, why: "Herb-rich salad; go easy on the pita" }
+      - { food: "Lentil shorba (soup)", diet: vegan, contains: [], cat: protein, why: "Gentle, warming, plan-safe" }
+      - { food: "Labneh + cucumber + za'atar", diet: veg, contains: [dairy], cat: ferment, why: "Protein + probiotic; skip if dairy-sensitive" }
+      - { food: "Indian veg thali (no fried sides)", diet: veg, contains: [], cat: grain, why: "Familiar, plan-safe, widely available" }
+    go_easy:
+      - "Shawarma wraps in big white pita (refined wheat)"
+      - "Baklava, kunafa, Arabic sweets (refined sugar)"
+      - "Buffet over-serving — one plate, protein first"
+      - "Fresh juices loaded with sugar"
+
+  singapore:
+    label: Singapore
+    aliases: [singapore]
+    eat:
+      - { food: "Steamed fish + greens + small rice", diet: nonveg, contains: [fish], cat: protein, why: "Clean protein, light on rice" }
+      - { food: "Yong tau foo — choose tofu + veg, clear soup", diet: veg, contains: [soy], cat: protein, why: "Build-your-own, plan-friendly" }
+      - { food: "Stir-fried greens (kailan, kangkong) — ask less oil", diet: vegan, contains: [onion_garlic], cat: veg, why: "Veg-forward; request light oil" }
+      - { food: "Thunder tea rice / vegetable bowls", diet: vegan, contains: [nuts], cat: grain, why: "Herb + green heavy" }
+      - { food: "Indian hawker — dal, sabzi, plain rice/roti", diet: veg, contains: [gluten], cat: grain, why: "Reliable plan-safe option" }
+    go_easy:
+      - "Hokkien mee, char kway teow (fried noodles, seed oil)"
+      - "Roti prata, large white rice portions"
+      - "Kaya toast + sweet drinks (refined sugar)"
+      - "Bubble tea"
+
+  thailand:
+    label: Thailand / SE Asia
+    aliases: [thailand, bangkok, phuket, bali, indonesia, vietnam, "southeast asia", "south east asia", krabi]
+    eat:
+      - { food: "Tom yum / clear veg soup", diet: vegan, contains: [], cat: protein, why: "Light, warming, plan-safe (ask no sugar)" }
+      - { food: "Grilled fish / chicken + papaya salad", diet: nonveg, contains: [fish, meat], cat: protein, why: "Lean protein + raw veg" }
+      - { food: "Stir-fried tofu + mixed veg (less oil)", diet: veg, contains: [soy], cat: protein, why: "Plant protein, ask light oil" }
+      - { food: "Steamed jasmine rice — small portion", diet: vegan, contains: [], cat: grain, why: "Portion the rice, fill on protein + veg" }
+      - { food: "Fresh coconut water", diet: vegan, contains: [], cat: drink, why: "Hydrating, electrolyte-rich" }
+    go_easy:
+      - "Pad thai, fried rice (seed oil + sugar)"
+      - "Coconut-milk curries in large amounts"
+      - "Thai iced tea, sweet smoothies (refined sugar)"
+      - "Deep-fried spring rolls / snacks"
+
+  europe:
+    label: Europe
+    aliases: [europe, france, paris, italy, rome, spain, germany, switzerland, netherlands, amsterdam, portugal, greece]
+    eat:
+      - { food: "Grilled fish / lean meat + vegetables", diet: nonveg, contains: [fish, meat], cat: protein, why: "Simple, clean protein" }
+      - { food: "Mediterranean salad + olive oil + olives", diet: vegan, contains: [], cat: fat, why: "Healthy fat + fibre" }
+      - { food: "Minestrone / lentil soup", diet: vegan, contains: [], cat: protein, why: "Warm and plan-safe" }
+      - { food: "Omelette + side salad", diet: egg, contains: [egg], cat: protein, why: "Protein-forward breakfast" }
+      - { food: "Cheese + walnuts + fruit (small)", diet: veg, contains: [dairy, nuts], cat: fat, why: "Satisfying; keep cheese modest" }
+    go_easy:
+      - "Croissants, baguettes, pasta in big portions (refined wheat)"
+      - "Gelato, pastries, desserts (refined sugar)"
+      - "Wine every night (alcohol)"
+      - "Pizza as a full meal — share + add salad"
+
+  canada:
+    label: Canada
+    aliases: [canada, toronto, vancouver, montreal, calgary, ottawa]
+    eat:
+      - { food: "Grilled salmon / chicken + roasted veg", diet: nonveg, contains: [fish, meat], cat: protein, why: "Lean protein + cooked veg" }
+      - { food: "Eggs + sautéed greens", diet: egg, contains: [egg], cat: protein, why: "Protein-forward, low refined carb" }
+      - { food: "Grain + bean bowl with tahini/olive oil", diet: vegan, contains: [], cat: grain, why: "Mirrors your plate" }
+      - { food: "Big salad + nuts/seeds + olive oil", diet: vegan, contains: [nuts], cat: veg, why: "Fibre + healthy fat" }
+      - { food: "South-Asian / Mediterranean takeout — grilled + veg", diet: veg, contains: [], cat: protein, why: "Plan-safe cuisines, widely available" }
+    go_easy:
+      - "Poutine, fries (seed oils)"
+      - "Maple-sweetened items, donuts (refined sugar)"
+      - "Bagels and large bread portions"
+      - "Sweetened coffee drinks"
+
+  # India — regional
+  mumbai:
+    label: Mumbai / Maharashtra
+    aliases: [mumbai, bombay, pune, maharashtra, navi mumbai, thane]
+    eat:
+      - { food: "Varan-bhaat (dal + rice) + sabzi", diet: vegan, contains: [], cat: grain, why: "Simple home-style, plan-safe" }
+      - { food: "Bhakri (jowar/bajra) + bhaji", diet: vegan, contains: [], cat: grain, why: "Millet roti over refined wheat" }
+      - { food: "Usal / sprouted-legume curry", diet: vegan, contains: [onion_garlic], cat: protein, why: "Protein + fibre" }
+      - { food: "Steamed modak / idli (not fried)", diet: vegan, contains: [], cat: grain, why: "Steamed beats fried" }
+      - { food: "Solkadhi (kokum + coconut)", diet: veg, contains: [], cat: drink, why: "Cooling, digestive" }
+    go_easy:
+      - "Vada pav, misal pav, pav bhaji (refined wheat + oil)"
+      - "Farsan, sev, fried namkeen"
+      - "Street chaat with deep-fried bases"
+
+  delhi_north:
+    label: Delhi / North India
+    aliases: [delhi, "new delhi", gurgaon, gurugram, noida, punjab, chandigarh, lucknow, "north india", jaipur, agra]
+    eat:
+      - { food: "Dal + roti (whole-wheat/millet) + sabzi", diet: vegan, contains: [gluten], cat: grain, why: "Home-style, plan-safe; ask less oil" }
+      - { food: "Tandoori paneer / chicken / fish (no creamy gravy)", diet: nonveg, contains: [dairy, meat, fish], cat: protein, why: "Grilled, not fried or curried in cream" }
+      - { food: "Rajma / chana (less oil) + small rice", diet: vegan, contains: [onion_garlic], cat: protein, why: "Legume protein + fibre" }
+      - { food: "Curd / raita (plain)", diet: veg, contains: [dairy], cat: ferment, why: "Probiotic; skip if dairy-sensitive" }
+      - { food: "Baingan bharta / mixed veg (less oil)", diet: vegan, contains: [nightshade, onion_garlic], cat: veg, why: "Veg-forward" }
+    go_easy:
+      - "Butter chicken, dal makhani, korma (cream + butter)"
+      - "Naan, kulcha, parathas in ghee (refined wheat + fat)"
+      - "Chole bhature, samosa (deep-fried)"
+      - "Sweets — gulab jamun, jalebi"
+
+  south_india:
+    label: South India
+    aliases: ["south india", chennai, bangalore, bengaluru, hyderabad, kerala, tamil nadu, karnataka, kochi, coimbatore, mysore]
+    eat:
+      - { food: "Idli + sambar (extra veg)", diet: vegan, contains: [], cat: grain, why: "Steamed + lentil protein" }
+      - { food: "Steamed/plain dosa (not ghee-roast) + chutney", diet: vegan, contains: [], cat: grain, why: "Go for plain over butter/ghee roast" }
+      - { food: "Rasam + small rice + poriyal (veg)", diet: vegan, contains: [onion_garlic], cat: protein, why: "Digestive, light, plan-safe" }
+      - { food: "Grilled / curry fish (Kerala-style, less oil)", diet: nonveg, contains: [fish], cat: protein, why: "Lean protein; ask less coconut oil" }
+      - { food: "Curd rice (plain)", diet: veg, contains: [dairy], cat: ferment, why: "Soothing, probiotic" }
+    go_easy:
+      - "Ghee/butter dosas, fried vadas, bondas (seed oil/ghee)"
+      - "Large white-rice portions"
+      - "Filter coffee with lots of sugar"
+      - "Sweets — payasam, mysore pak"
+
+  goa:
+    label: Goa
+    aliases: [goa, panaji, panjim]
+    eat:
+      - { food: "Grilled fish / prawns + salad", diet: nonveg, contains: [fish], cat: protein, why: "Lean grilled seafood" }
+      - { food: "Fish curry (less coconut oil) + small rice", diet: nonveg, contains: [fish], cat: protein, why: "Protein-forward; portion the rice" }
+      - { food: "Veg xacuti / tonak (less oil)", diet: vegan, contains: [onion_garlic, nuts], cat: protein, why: "Spiced legume/veg" }
+      - { food: "Sol kadhi", diet: veg, contains: [], cat: drink, why: "Kokum + coconut, digestive" }
+      - { food: "Fresh fruit + coconut", diet: vegan, contains: [], cat: snack, why: "Whole fruit over juices/cocktails" }
+    go_easy:
+      - "Fried fish/rava-fried items (seed oils)"
+      - "Bebinca and rich desserts (refined sugar)"
+      - "Cocktails, feni, beer (alcohol)"
+      - "Pao / white bread with every meal"
+
+  rajasthan:
+    label: Rajasthan
+    aliases: [rajasthan, jaipur, udaipur, jodhpur, jaisalmer]
+    eat:
+      - { food: "Dal + bajra/jowar roti + sabzi", diet: vegan, contains: [], cat: grain, why: "Millet roti, plan-safe" }
+      - { food: "Gatte ki sabzi (less oil) + small rice", diet: veg, contains: [dairy, onion_garlic], cat: protein, why: "Besan protein; ask light gravy" }
+      - { food: "Ker sangri (less oil)", diet: vegan, contains: [], cat: veg, why: "Traditional desert veg, fibre-rich" }
+      - { food: "Chaas (buttermilk)", diet: veg, contains: [dairy], cat: ferment, why: "Cooling, digestive" }
+    go_easy:
+      - "Dal baati churma (ghee-soaked + sugar)"
+      - "Mirchi vada, kachori, pakora (deep-fried)"
+      - "Ghevar, malpua and rich sweets"
+
+  gujarat:
+    label: Gujarat
+    aliases: [gujarat, ahmedabad, surat, vadodara, rajkot, gandhinagar]
+    eat:
+      - { food: "Dal + rotli + shaak (less oil/sugar)", diet: vegan, contains: [gluten], cat: grain, why: "Home thali; ask less sugar in dal" }
+      - { food: "Steamed dhokla / khaman", diet: veg, contains: [], cat: protein, why: "Fermented + steamed, not fried" }
+      - { food: "Osaman / mag ni dal (moong)", diet: vegan, contains: [], cat: protein, why: "Light legume soup" }
+      - { food: "Chaas (buttermilk)", diet: veg, contains: [dairy], cat: ferment, why: "Digestive, probiotic" }
+      - { food: "Sprouted-moong salad", diet: vegan, contains: [], cat: protein, why: "Protein + fibre" }
+    go_easy:
+      - "Fafda, gathiya, fried farsan (seed oil)"
+      - "Extra sugar/jaggery in dal and shaak"
+      - "Thepla fried in lots of oil"
+      - "Basundi, shrikhand and sweets"
+
+  kolkata:
+    label: Kolkata / Bengal
+    aliases: [kolkata, calcutta, "west bengal", bengal, howrah]
+    eat:
+      - { food: "Fish jhol / steamed fish (less oil) + small rice", diet: nonveg, contains: [fish], cat: protein, why: "Light fish curry, plan-safe" }
+      - { food: "Shukto / mixed veg (less oil)", diet: vegan, contains: [], cat: veg, why: "Veg-forward, gentle" }
+      - { food: "Cholar / moong dal", diet: vegan, contains: [], cat: protein, why: "Legume protein" }
+      - { food: "Doi (plain curd)", diet: veg, contains: [dairy], cat: ferment, why: "Probiotic; skip if dairy-sensitive" }
+    go_easy:
+      - "Luchi, kochuri (deep-fried refined wheat)"
+      - "Mishti — rosogolla, sandesh, sweets (refined sugar)"
+      - "Fish/veg fry and chops (seed oil)"
+      - "Biryani in large portions"
+
+  # Generic fallbacks
+  airport_flight:
+    label: Airport / flight
+    aliases: [airport, flight, layover, transit, plane, terminal]
+    eat:
+      - { food: "Carry: roasted makhana, nuts, seeds, fruit", diet: vegan, contains: [nuts], cat: snack, why: "Plan-safe snacks beat airport food" }
+      - { food: "Grilled protein + salad where available", diet: nonveg, contains: [meat, fish], cat: protein, why: "Choose grilled over fried" }
+      - { food: "Idli / upma / plain curd-rice (Indian airports)", diet: veg, contains: [dairy], cat: grain, why: "Lighter than fried counters" }
+      - { food: "Water + herbal tea, skip the soda", diet: vegan, contains: [], cat: drink, why: "Flights dehydrate — sip through" }
+    go_easy:
+      - "Sandwiches, burgers, fried snacks (refined wheat + seed oil)"
+      - "Packaged cookies, chocolates (refined sugar)"
+      - "Alcohol on board (dehydrating)"
+      - "Sugary coffee chains"
+
+  indian_restaurant_abroad:
+    label: Indian restaurant (anywhere)
+    aliases: ["indian restaurant", "indian food abroad", desi]
+    eat:
+      - { food: "Dal (tadka/fry, ask less oil) + plain rice", diet: vegan, contains: [onion_garlic], cat: protein, why: "Most reliable plan-safe order abroad" }
+      - { food: "Tandoori paneer / chicken / fish (dry, no cream)", diet: nonveg, contains: [dairy, meat, fish], cat: protein, why: "Grilled, not curried in cream" }
+      - { food: "Dry sabzi — bhindi, baingan, mixed veg (less oil)", diet: vegan, contains: [nightshade, onion_garlic], cat: veg, why: "Veg-forward; ask light oil" }
+      - { food: "Roti / phulka over naan", diet: vegan, contains: [gluten], cat: grain, why: "Whole-wheat over refined, no butter brush" }
+      - { food: "Plain raita / curd", diet: veg, contains: [dairy], cat: ferment, why: "Cooling probiotic" }
+    go_easy:
+      - "Butter chicken, korma, makhani gravies (cream + butter)"
+      - "Naan, garlic naan, buttered breads"
+      - "Samosa, pakora, fried starters"
+      - "Mango lassi, gulab jamun (refined sugar)"
+
+# ═══════════════════════════════ FESTIVALS ══════════════════════════════════
+festivals:
+
+  diwali:
+    label: Diwali
+    aliases: [diwali, deepavali]
+    note: "Celebrate fully — pick 1–2 sweets you truly love, have them after a protein-rich meal, and keep portions small. The plan resumes the next day."
+    eat:
+      - { food: "Dry fruits + nuts (in place of mithai)", diet: vegan, contains: [nuts], cat: snack, why: "Festive but blood-sugar-friendly" }
+      - { food: "Roasted makhana / chana chaat", diet: vegan, contains: [onion_garlic], cat: snack, why: "Crunchy, protein-ish, not deep-fried" }
+      - { food: "Paneer tikka / grilled starters", diet: veg, contains: [dairy], cat: protein, why: "Protein-first before sweets" }
+      - { food: "Baked / air-fried snacks over deep-fried", diet: vegan, contains: [], cat: snack, why: "Same festive feel, less seed oil" }
+      - { food: "Mithai made with jaggery + nuts, small piece", diet: veg, contains: [dairy, nuts, refined_sugar], cat: snack, why: "If having a sweet, choose this and keep it to one" }
+    go_easy:
+      - "Trays of sugar-syrup sweets (jalebi, gulab jamun)"
+      - "Deep-fried namkeen and chivda all day"
+      - "Sweetened drinks and thandai"
+
+  navratri:
+    label: Navratri (fasting)
+    aliases: [navratri, navaratri, fasting, vrat, upvas]
+    note: "Vrat foods can spike blood sugar — anchor each fasting meal with protein + good fat so energy stays steady."
+    eat:
+      - { food: "Kuttu / singhara roti + sabzi (less oil)", diet: vegan, contains: [], cat: grain, why: "Gluten-free fasting grains, kept light" }
+      - { food: "Samak rice + curd", diet: veg, contains: [dairy], cat: grain, why: "Add curd for protein; skip if dairy-sensitive" }
+      - { food: "Roasted makhana + peanuts", diet: vegan, contains: [nuts], cat: snack, why: "Protein + fat to steady energy" }
+      - { food: "Lauki / pumpkin sabzi (sendha namak)", diet: vegan, contains: [], cat: veg, why: "Veg-forward fasting option" }
+      - { food: "Fruit + a few nuts", diet: vegan, contains: [nuts], cat: snack, why: "Whole fruit over juice/sabudana-heavy plates" }
+    go_easy:
+      - "Sabudana vada, fried potato (starch + seed oil)"
+      - "Fried potato chips / aloo all day"
+      - "Sweetened fruit-yoghurt and mithai"
+
+  eid:
+    label: Eid
+    aliases: [eid, ramadan, iftar, ramzan]
+    note: "Break the fast gently — start with water + dates + protein before heavier dishes, and keep fried items to a taste."
+    eat:
+      - { food: "Dates (2–3) + water to open the fast", diet: vegan, contains: [refined_sugar], cat: snack, why: "Traditional + gentle on the gut" }
+      - { food: "Haleem / nihari — lean portion + small bread", diet: nonveg, contains: [meat, gluten], cat: protein, why: "Protein-rich; portion the bread" }
+      - { food: "Grilled seekh / tikka", diet: nonveg, contains: [meat], cat: protein, why: "Grilled over fried" }
+      - { food: "Chana / sprout chaat", diet: vegan, contains: [onion_garlic], cat: protein, why: "Fibre + plant protein at iftar" }
+      - { food: "Fruit chaat (no added sugar)", diet: vegan, contains: [], cat: snack, why: "Hydrating, festive" }
+    go_easy:
+      - "Pakora, samosa platters (deep-fried)"
+      - "Sheer khurma, sewaiyan (sugar + dairy)"
+      - "Sugary sherbet and soft drinks"
+
+  christmas:
+    label: Christmas / New Year
+    aliases: [christmas, xmas, "new year", "new year's", holiday season]
+    note: "Enjoy the meal — load the plate with protein + veg first, treat dessert as one small portion, and keep drinks modest."
+    eat:
+      - { food: "Roast turkey / chicken / fish + vegetables", diet: nonveg, contains: [meat, fish], cat: protein, why: "Protein + veg is the easy win" }
+      - { food: "Roasted veg, salads, greens", diet: vegan, contains: [], cat: veg, why: "Fill half the plate here" }
+      - { food: "Cheese + nuts + fruit (small)", diet: veg, contains: [dairy, nuts], cat: fat, why: "Satisfying; keep cheese modest" }
+      - { food: "Soup starter", diet: vegan, contains: [], cat: protein, why: "Takes the edge off before the spread" }
+    go_easy:
+      - "Cakes, pies, puddings, cookies (refined sugar)"
+      - "Stuffing, white bread rolls, big potato portions"
+      - "Multiple alcoholic drinks (alcohol)"
+      - "Going back for thirds — one good plate"
+
+  indian_wedding:
+    label: Indian wedding
+    aliases: [wedding, shaadi, marriage, sangeet, reception]
+    note: "Long buffets are the challenge — scope the spread once, pick protein + grilled + salad first, and choose 1 sweet you actually want."
+    eat:
+      - { food: "Grilled / tandoori starters (paneer, chicken, fish)", diet: nonveg, contains: [dairy, meat, fish], cat: protein, why: "Hit the live grill counter first" }
+      - { food: "Dal + plain rice or roti + dry sabzi", diet: vegan, contains: [gluten, onion_garlic], cat: grain, why: "Plan-safe core of any buffet" }
+      - { food: "Salad / kachumber + curd", diet: veg, contains: [dairy], cat: veg, why: "Volume + probiotic before richer dishes" }
+      - { food: "Soup + roasted papad (not fried)", diet: vegan, contains: [], cat: protein, why: "Start light, slow the pace" }
+    go_easy:
+      - "Creamy gravies — paneer makhani, korma, malai dishes"
+      - "Naan, kulcha, fried breads and chaat counters"
+      - "Dessert counter grazing — one small plate"
+      - "Welcome drinks / mocktails loaded with sugar"
+
+# ═══════════════════════════════ SITUATIONS ═════════════════════════════════
+situations:
+
+  unwell:
+    label: Under the weather
+    aliases: [unwell, sick, illness, fever, cold, "stomach upset", flu]
+    note: "Rest the gut and hydrate — keep food simple and warm, and skip the structured plan until you're back on your feet."
+    eat:
+      - { food: "Khichdi (moong dal + rice, soft)", diet: vegan, contains: [], cat: grain, why: "Gentle, easy to digest, complete" }
+      - { food: "Clear vegetable / dal soup", diet: vegan, contains: [], cat: protein, why: "Hydrating + a little protein" }
+      - { food: "Rice congee / soft upma", diet: vegan, contains: [], cat: grain, why: "Bland and soothing for an upset stomach" }
+      - { food: "Coconut water + lemon-salt water (ORS-style)", diet: vegan, contains: [], cat: drink, why: "Replace fluids + electrolytes" }
+      - { food: "Curd / buttermilk (if tolerated)", diet: veg, contains: [dairy], cat: ferment, why: "Probiotic once the worst passes; skip if dairy-sensitive" }
+      - { food: "Steamed banana / stewed apple", diet: vegan, contains: [], cat: snack, why: "Easy carbs + potassium" }
+    go_easy:
+      - "Heavy, oily, or very spicy food"
+      - "Raw salads and cold foods while gut is irritated"
+      - "Caffeine and alcohol (dehydrating)"
+      - "Supplements that need a full meal — pause until eating normally"
+
+  no_kitchen:
+    label: No kitchen / hotel stay
+    aliases: ["no kitchen", hotel, "hotel stay", "eating out", "staying out"]
+    note: "When every meal is bought, breakfast is the one you control most — anchor it, then build lunch and dinner from grilled + veg."
+    eat:
+      - { food: "Eggs / curd + fruit + nuts for breakfast", diet: veg, contains: [egg, dairy, nuts], cat: protein, why: "The meal you control most — make it protein-rich" }
+      - { food: "Grilled protein + salad / veg for mains", diet: nonveg, contains: [meat, fish], cat: protein, why: "Order grilled, not fried or curried in cream" }
+      - { food: "Dal + plain rice / roti as the safe fallback", diet: vegan, contains: [gluten, onion_garlic], cat: grain, why: "Available almost anywhere, plan-safe" }
+      - { food: "Carry seeds, nuts, roasted makhana, a protein bar", diet: vegan, contains: [nuts], cat: snack, why: "Never caught hungry without a clean option" }
+    go_easy:
+      - "Buffet breakfasts of pastries, juices, cereals (refined)"
+      - "Room-service fried sides and desserts"
+      - "Mini-bar snacks and sweet drinks"
+      - "Skipping meals then over-ordering later"

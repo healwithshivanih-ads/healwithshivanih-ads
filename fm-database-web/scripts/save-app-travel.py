@@ -57,6 +57,13 @@ def main() -> int:
     d_from = (payload.get("from") or "").strip()
     d_to = (payload.get("to") or "").strip()
     context = (payload.get("context") or "").strip()[:600]
+    # Structured situation type + destination (step 1, 2026-06-16). `kind`
+    # drives the in-app card + the local-foods render cascade; `location`
+    # is the destination for travel/festival (e.g. "Sydney, Australia").
+    kind = (payload.get("kind") or "travel").strip().lower()
+    if kind not in ("travel", "festival", "illness"):
+        kind = "travel"
+    location = (payload.get("location") or "").strip()[:120]
 
     if not cancelled:
         if not (_DATE_RE.match(d_from) and _DATE_RE.match(d_to)):
@@ -86,11 +93,14 @@ def main() -> int:
     yml = sessions_dir / f"{session_id}.yaml"
 
     if cancelled:
-        summary = "Client cancelled travel mode from the app — back to the regular plan."
+        summary = "Client cancelled away/travel mode from the app — back to the regular plan."
     else:
-        summary = f"Client flagged travel from the app: {d_from} → {d_to}."
+        _kind_word = {"travel": "travel", "festival": "festival", "illness": "unwell"}[kind]
+        summary = f"Client flagged {_kind_word} from the app: {d_from} → {d_to}."
+        if location:
+            summary += f"\nDestination: {location}"
         if context:
-            summary += f"\nContext: {context}"
+            summary += f"\nNote: {context}"
 
     now_iso = datetime.now(timezone.utc).isoformat()
     data = {
@@ -114,6 +124,8 @@ def main() -> int:
         "travel_response": {
             "from": None if cancelled else d_from,
             "to": None if cancelled else d_to,
+            "kind": kind,
+            "location": location,
             "context": context,
             "cancelled": cancelled,
             "received_at": now_iso,

@@ -27,6 +27,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import yaml from "js-yaml";
 import { getPlansRoot, getCataloguePath } from "@/lib/fmdb/paths";
+import { resolveTravelGuide, coerceGuide, type TravelGuide } from "@/lib/fmdb/travel-foods";
 import { stripBrand } from "@/lib/fmdb/supplement-display";
 import { estimateDayKcal, estimateDishKcal, calorieAdherence, buildRecipeKcalLookup } from "@/lib/fmdb/calorie-estimate";
 import { buildLabVault, type LabVault, type LabSnapshot } from "@/lib/fmdb/lab-vault";
@@ -567,16 +568,34 @@ export interface ClientAppData {
   msqEntries: AppMsqEntry[];
   /** Active travel window flagged by the client (null when home).
    *  Drives the rules-based travel card + pauses the grocery list;
-   *  generate-week-menu.py reads the same session as feedback. */
-  travel: { from: string; to: string; context: string; active: boolean } | null;
+   *  generate-week-menu.py reads the same session as feedback.
+   *  `kind` distinguishes travel / festival / illness; `location` is the
+   *  destination (e.g. "Sydney, Australia") that drives the local-foods
+   *  render cascade. */
+  travel: {
+    from: string;
+    to: string;
+    kind: "travel" | "festival" | "illness";
+    location: string;
+    context: string;
+    active: boolean;
+    /** Curated, plan-gated food guide for the destination/festival/situation
+     *  (null when no dataset match — card falls back to generic rules). */
+    localFoods?: TravelGuide | null;
+  } | null;
   mealExtra: Record<string, AppMealExtra>;
   supplements: AppSupplement[];
   slotOrder: string[];
   practices: { id: string; name: string; when: string }[];
   /** Guided breathing config when the plan prescribes a breathing practice. */
   breathwork: AppBreathwork | null;
-  /** Guided EFT (tapping) config when the plan prescribes a tapping practice. */
+  /** Guided EFT (tapping) config when the plan prescribes a tapping practice
+   *  AND it has been unlocked (mind-body drip — see `mindBody`). */
   eft: AppEft | null;
+  /** Mind-body drip state. Non-null (locked:true) when EFT is prescribed but not
+   *  yet unlocked, so the app shows a gentle "keep practising to unlock" nudge.
+   *  null when EFT is visible, not prescribed, or the coach is holding it. */
+  mindBody: { nextUp: string; locked: boolean; breathDays: number; breathNeeded: number } | null;
   principles: { t: string; b: string }[];
   labs: { name: string; meta: string; tone: string }[];
   /** client-facing lab vault — results vs FM-optimal + standard ranges (Phase 2 of LAB_VAULT_SPEC) */
@@ -655,7 +674,15 @@ export interface ClientAppData {
     /** oldest → newest; only entries that carry at least a weight */
     history: { date: string; weightKg: number | null; waistCm: number | null; hipCm: number | null }[];
   };
-  reminders: { id: string; label: string; time: string; on: boolean }[];
+  reminders: {
+    id: string;
+    label: string;
+    time: string;
+    on: boolean;
+    cadence: "daily" | "weekly";
+    /** 0=Sun … 6=Sat — only meaningful when cadence === "weekly". */
+    weekday?: number;
+  }[];
   /** Daily calorie guide for weight-loss clients — computed the same way the
    *  letter generator does (Mifflin-St Jeor → TDEE → phased deficit, current
    *  week), plus a rough estimate of what THIS week's menu actually delivers
@@ -719,6 +746,30 @@ async function readYamlIfExists(p: string): Promise<Dict | null> {
   } catch {
     return null;
   }
+}
+
+/** Count distinct days a client completed a given practice kind in the trailing
+ *  N-day window — drives the mind-body drip (gate the next technique on
+ *  consistency, not total count). Reads the per-client _practice_log.jsonl. */
+async function practiceDaysInWindow(clientDir: string, kind: string, days = 7): Promise<number> {
+  let raw: string;
+  try {
+    raw = await fs.readFile(path.join(clientDir, "_practice_log.jsonl"), "utf-8");
+  } catch {
+    return 0;
+  }
+  const cutoff = new Date(Date.now() - (days - 1) * 86_400_000).toISOString().slice(0, 10);
+  const seen = new Set<string>();
+  for (const line of raw.split("\n")) {
+    if (!line.trim()) continue;
+    try {
+      const r = JSON.parse(line) as { kind?: string; date?: string };
+      if (r.kind === kind && typeof r.date === "string" && r.date >= cutoff) seen.add(r.date);
+    } catch {
+      /* skip a malformed line */
+    }
+  }
+  return seen.size;
 }
 
 async function readIfExists(p: string): Promise<string | null> {
@@ -2842,6 +2893,34 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     `${asStrArr(client.goals).join(" ")} ${asStrArr(client.active_conditions).join(" ")}`,
   );
 
+  // ---- mind-body drip: EFT (technique #2) unlocks once breathing (#1) is a
+  // habit — ≥3 distinct days of breathing in the trailing week. Auto-drip with a
+  // per-client coach override (client.mindbody_eft: auto | unlocked | locked).
+  let eftVisible = eft;
+  let mindBody: ClientAppData["mindBody"] = null;
+  let hidePracticeId: string | null = null; // tapping practice to drop from the checklist while locked
+  if (eft) {
+    const override = asStr(client.mindbody_eft).toLowerCase();
+    if (override === "unlocked") {
+      eftVisible = eft; // coach released it early
+    } else if (override === "locked") {
+      eftVisible = null; // coach holding it — hidden everywhere, no nudge
+      hidePracticeId = eft.practiceId;
+    } else if (breathwork) {
+      // auto: only gate if there's a breathing practice to build the habit on
+      const NEEDED = 3;
+      const breathDays = await practiceDaysInWindow(clientDir, "breath", 7);
+      if (breathDays < NEEDED) {
+        eftVisible = null;
+        hidePracticeId = eft.practiceId;
+        mindBody = { nextUp: "EFT tapping", locked: true, breathDays, breathNeeded: NEEDED };
+      }
+    }
+  }
+  // While EFT is locked, drop it from the daily checklist too — don't surface a
+  // to-do the client has no way to do yet.
+  const practicesVisible = hidePracticeId ? practices.filter((p) => p.id !== hidePracticeId) : practices;
+
   // ---- principles (from the letter's meals note + plan meal_timing) --------
   const principles: { t: string; b: string }[] = [];
   const noteSec = letterMd.split(/^### .*Note About Your Meals.*$/m)[1]?.split(/^## /m)[0];
@@ -2926,7 +3005,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const sessionPoints: { wk: number; v: number }[] = [];
   const msqEntries: AppMsqEntry[] = [];
   // latest travel flag wins (a later "cancelled" entry clears the window)
-  let latestTravel: { from: string; to: string; context: string; cancelled: boolean; at: string } | null = null;
+  let latestTravel: { from: string; to: string; kind: string; location: string; context: string; cancelled: boolean; at: string; localFoodsRaw: unknown } | null = null;
   try {
     const sessDir = path.join(clientDir, "sessions");
     const names = (await fs.readdir(sessDir)).filter((n) => n.endsWith(".yaml"));
@@ -2945,6 +3024,9 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
           latestTravel = {
             from: asStr(travelResp.from),
             to: asStr(travelResp.to),
+            kind: asStr(travelResp.kind) || "travel",
+            location: asStr(travelResp.location),
+            localFoodsRaw: travelResp.local_foods,
             context: asStr(travelResp.context),
             cancelled: travelResp.cancelled === true,
             at,
@@ -3025,9 +3107,13 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     const todayYmd = new Date().toISOString().slice(0, 10);
     const soonYmd = new Date(Date.now() + 2 * 86_400_000).toISOString().slice(0, 10);
     if (latestTravel.from <= soonYmd && todayYmd <= latestTravel.to) {
+      const tkind = latestTravel.kind;
       travel = {
         from: latestTravel.from,
         to: latestTravel.to,
+        kind:
+          tkind === "festival" || tkind === "illness" ? tkind : "travel",
+        location: latestTravel.location,
         context: latestTravel.context,
         active: latestTravel.from <= todayYmd,
       };
@@ -3074,6 +3160,24 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     .map((s) => s.trim())
     .filter(Boolean);
   const nonNeg = asStr(client.non_negotiables).trim();
+
+  // ---- travel local foods — render cascade ----------------------------------
+  // Attached after dietPref/clientAvoid exist.
+  //   A/B: a guide cached on the flag (pre-authored by coach, or copilot)
+  //        wins — it's tailored to this exact destination + client.
+  //   C:   else the curated dataset, gated to this client's plan.
+  //   null: no match → card shows generic rules + a "Get foods" button (B).
+  if (travel) {
+    const cached = coerceGuide(latestTravel?.localFoodsRaw);
+    travel.localFoods =
+      cached ??
+      (await resolveTravelGuide({
+        kind: travel.kind,
+        location: travel.location,
+        dietPref,
+        avoidTerms: [...clientAvoid, ...asStrArr(client.known_allergies)],
+      }));
+  }
 
   const pickAdds = (re: RegExp, max: number): string[] =>
     addShort.filter((s) => re.test(s)).slice(0, max);
@@ -3366,10 +3470,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const photoUrl = hasAvatar ? `/api/app-photo/${token}` : null;
 
   const reminders = [
-    { id: "r1", label: "Morning supplements", time: "8:00 am", on: true },
-    { id: "r2", label: "Evening wind-down (breathing + journal)", time: "9:00 pm", on: true },
-    { id: "r3", label: "Bedtime magnesium", time: "9:30 pm", on: true },
-    { id: "r4", label: "Weekly check-in", time: "Sunday 10:00 am", on: true },
+    { id: "r1", label: "Morning supplements", time: "8:00 am", on: true, cadence: "daily" as const },
+    { id: "r2", label: "Evening wind-down (breathing + journal)", time: "9:00 pm", on: true, cadence: "daily" as const },
+    { id: "r3", label: "Bedtime magnesium", time: "9:30 pm", on: true, cadence: "daily" as const },
+    { id: "r4", label: "Weekly check-in", time: "Sunday 10:00 am", on: true, cadence: "weekly" as const, weekday: 0 },
   ];
 
   const faq = [
@@ -3651,9 +3755,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     travel,
     supplements,
     slotOrder: ["Morning", "With meals", "Bedtime"],
-    practices,
+    practices: practicesVisible,
     breathwork,
-    eft,
+    eft: eftVisible,
+    mindBody,
     principles,
     labs,
     journey,

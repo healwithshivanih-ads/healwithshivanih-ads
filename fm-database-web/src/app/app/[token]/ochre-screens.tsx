@@ -9,7 +9,7 @@ import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/clie
 import { Icon, useOchre } from "./ochre-context";
 import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { BreathLaunchCard } from "./ochre-breath";
-import { EftLaunchCard } from "./ochre-eft";
+import { EftLaunchCard, EftLockedNudge } from "./ochre-eft";
 import { WeekMenuSection } from "./ochre-week-menu";
 import { OrderLaunchCard } from "./ochre-order";
 
@@ -248,6 +248,9 @@ export function TodayScreen({
           </div>
           {data.breathwork && <BreathLaunchCard bw={data.breathwork} onStart={openBreath} />}
           {data.eft && <EftLaunchCard eft={data.eft} onStart={openEft} />}
+          {!data.eft && data.mindBody?.locked && (
+            <EftLockedNudge breathDays={data.mindBody.breathDays} breathNeeded={data.mindBody.breathNeeded} />
+          )}
         </Section>
       )}
 
