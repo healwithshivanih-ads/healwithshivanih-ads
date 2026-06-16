@@ -92,7 +92,9 @@ _APP_CLIENT_KEYS = (
     "ayurveda_enabled",
 )
 
-_PLAN_PRIVATE_KEYS = ("notes_for_coach", "ai_sanity_check")
+# Coach-only fields stripped from the plan before it reaches the public Fly box —
+# never client-facing, and would otherwise serialise into the app's RSC payload.
+_PLAN_PRIVATE_KEYS = ("notes_for_coach", "ai_sanity_check", "status_history", "catalogue_snapshot")
 
 
 def _published_files(root: Path, plan_slug: str) -> list[Path]:
@@ -339,9 +341,18 @@ def _refresh(yaml, auth: Path, stag: Path) -> dict:
             out["purged"] += 1
             continue
 
-        # otherwise re-stage so coach edits (doses, new letters) stay fresh
+        # otherwise re-stage so coach edits (doses, new letters) stay fresh.
+        # Wrapped so a single client's malformed / half-written YAML (this
+        # cron runs every minute and can catch a plan or client.yaml mid-save)
+        # can't raise out of _stage_one and abort the WHOLE refresh — that
+        # silently freezes EVERY other client's app data on Fly until the next
+        # clean run. Isolate per-client; surface the failure loudly in errors.
         if plan_slug:
-            res = _stage_one(yaml, auth, stag, client_id, plan_slug)
+            try:
+                res = _stage_one(yaml, auth, stag, client_id, plan_slug)
+            except Exception as e:
+                out["errors"].append(f"{client_id}: stage failed (retry next run): {e}")
+                continue
             if res.get("ok"):
                 out["refreshed"] += 1
             else:
