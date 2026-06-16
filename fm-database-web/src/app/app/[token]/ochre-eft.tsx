@@ -397,14 +397,17 @@ export function EftOverlay({ eft, onClose, onComplete }: { eft: AppEft; onClose:
    present consistently — but in the brand's rose, with a softly throbbing
    "tapping" dot instead of the breathing orb. */
 export function EftLaunchCard({ eft, onStart }: { eft: AppEft; onStart: () => void }) {
+  // "EFT Tapping for Sleep / Stress / Anxiety / Cravings" — the theme is derived
+  // from the client's own conditions, so the title reads as customised to them.
+  const forX = eft.theme ? eft.theme.charAt(0).toUpperCase() + eft.theme.slice(1) : "Calm";
   return (
     <button className="eft-launch" onClick={onStart}>
       <span className="eftl-orb" aria-hidden="true">
         <span />
       </span>
       <span className="eftl-body">
-        <span className="eftl-kicker">Tapping · guided</span>
-        <span className="eftl-title">{eft.themeLabel}</span>
+        <span className="eftl-kicker">Guided · paced for you</span>
+        <span className="eftl-title">EFT Tapping for {forX}</span>
         <span className="eftl-meta">{eft.when} · about 2 minutes</span>
       </span>
       <span className="eftl-go">
