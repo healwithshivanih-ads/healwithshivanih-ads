@@ -93,6 +93,20 @@ export type IntakeLookupOk = {
    * starting from scratch.
    */
   previously_submitted: boolean;
+  /**
+   * True when the coach has enabled the Ayurveda layer for this client
+   * (Client.ayurveda_enabled). Drives the inline dosha self-assessment
+   * section in the full intake so the client answers it once, in the same
+   * form, instead of being sent a separate ?focus=dosha link later.
+   */
+  ayurveda_enabled: boolean;
+  /**
+   * Decoupled, default-on-for-new-clients switch (Client.collect_dosha_quiz)
+   * for whether the intake collects the dosha self-assessment — independent
+   * of the full Ayurveda layer (ayurveda_enabled). The dosha section renders
+   * inline when EITHER is true. Coach opt-out lives on the client Overview.
+   */
+  collect_dosha_quiz: boolean;
 };
 export type IntakeLookupErr = { ok: false; error: string; message?: string };
 

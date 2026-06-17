@@ -504,6 +504,11 @@ export interface Client {
   /** Master switch — when true the editor shows the Ayurveda section, the
    *  suggester scores constitution, and the letter renders the Ayurvedic block. */
   ayurveda_enabled?: boolean;
+  /** Decoupled from the layer: whether the intake collects the dosha
+   *  self-assessment. Default true for new clients (client-new), false for
+   *  legacy; coach opt-out on the Overview. Drives the inline intake section
+   *  even when ayurveda_enabled is off. */
+  collect_dosha_quiz?: boolean;
   /** Prakruti (lifelong constitution) — coach-confirmed, set once. */
   ayurveda_constitution?: string;
   ayurveda_constitution_notes?: string;

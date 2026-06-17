@@ -1234,6 +1234,10 @@ def cmd_client_new(args: argparse.Namespace) -> None:
         created_at=now,
         updated_at=now,
         updated_by=args.updated_by,
+        # Dosha questions on by default in intake for every NEW client
+        # (coach can deselect on the client Overview). Decoupled from the
+        # Ayurveda plan layer, which stays opt-in (ayurveda_enabled=False).
+        collect_dosha_quiz=True,
     )
     p = plan_storage.write_client(root, client)
     print(f"created client: {p}")

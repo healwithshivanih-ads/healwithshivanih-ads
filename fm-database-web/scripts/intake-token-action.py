@@ -257,6 +257,12 @@ _STAGING_STUB_KEYS = (
     "foods_to_avoid",
     "non_negotiables",
     "family_history",
+    # Ayurveda layer master switch + the decoupled dosha-quiz collection
+    # flag — both mirrored so the Fly intake form (which reads the staging
+    # stub, not the authoritative client.yaml) knows whether to render the
+    # inline dosha section.
+    "ayurveda_enabled",
+    "collect_dosha_quiz",
     "timeline_events",
     # intake lifecycle fields that lookup/save_draft/submit read
     "intake_token",
@@ -670,6 +676,14 @@ def action_lookup(payload: dict) -> dict:
         "prefill": prefill,
         "stage": stage,
         "previously_submitted": previously_submitted,
+        # The full intake renders the dosha self-assessment inline (see
+        # intake-form.tsx doshaInline) when EITHER the Ayurveda layer is on
+        # OR collect_dosha_quiz is set (the decoupled, default-on-for-new
+        # data-collection switch), instead of re-sending a separate
+        # ?focus=dosha link. On Fly `data` is the staging stub, so this
+        # only works because both keys are in _STAGING_STUB_KEYS.
+        "ayurveda_enabled": bool(data.get("ayurveda_enabled")),
+        "collect_dosha_quiz": bool(data.get("collect_dosha_quiz")),
     }
 
 

@@ -591,6 +591,14 @@ class Client(BaseModel):
     # Default False so every legacy / non-Ayurveda client is untouched (same
     # pattern as intake_reminder_enabled). Coach flips this on the profile.
     ayurveda_enabled: bool = False
+    # Decoupled from ayurveda_enabled: whether the client's intake form
+    # collects the ~12-item dosha self-assessment (lifelong constitution
+    # baseline). Default False so legacy clients are untouched; `client-new`
+    # writes True for every NEW client, so the dosha questions are gathered
+    # up front by default with a coach opt-out (Overview → Plan modules →
+    # Ayurveda). Gathering the data does NOT switch on the Ayurveda
+    # plan/letter/AI layer — that stays ayurveda_enabled's job.
+    collect_dosha_quiz: bool = False
     # Prakruti — the client's lifelong constitution. Stable across plans, so it
     # lives on the Client (set once, coach-confirmed) not on each Plan.
     # Freeform per project convention, e.g. "Pitta-Vata".

@@ -1418,6 +1418,7 @@ export default async function ClientV2Page({
               ayurvedaEnabled={(client as unknown as { ayurveda_enabled?: boolean }).ayurveda_enabled}
               ayurvedaConstitution={(client as unknown as { ayurveda_constitution?: string }).ayurveda_constitution}
               ayurvedaAssessment={(client as unknown as { ayurveda_assessment?: Record<string, unknown> | null }).ayurveda_assessment}
+              collectDoshaQuiz={(client as unknown as { collect_dosha_quiz?: boolean }).collect_dosha_quiz}
               mealPlanStyle={(client as unknown as { meal_plan_style?: "detailed" | "principles" | "hybrid" }).meal_plan_style}
               planModules={(client as unknown as { plan_modules?: string[] }).plan_modules}
             />

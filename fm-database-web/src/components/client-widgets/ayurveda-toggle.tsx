@@ -22,6 +22,9 @@ interface Props {
   clientId: string;
   initialEnabled?: boolean;
   initialConstitution?: string;
+  /** Decoupled dosha-quiz-in-intake switch (Client.collect_dosha_quiz).
+   *  Default on for new clients; independent of the layer master switch. */
+  initialCollectDoshaQuiz?: boolean;
   /** AI read from the latest assess pass, if any. */
   assessment?: Record<string, unknown> | null;
 }
@@ -30,9 +33,11 @@ export function AyurvedaToggle({
   clientId,
   initialEnabled,
   initialConstitution,
+  initialCollectDoshaQuiz,
   assessment,
 }: Props) {
   const [enabled, setEnabled] = useState<boolean>(Boolean(initialEnabled));
+  const [collectDosha, setCollectDosha] = useState<boolean>(Boolean(initialCollectDoshaQuiz));
   const [constitution, setConstitution] = useState<string>(initialConstitution ?? "");
   const [savedConstitution, setSavedConstitution] = useState<string>(initialConstitution ?? "");
   const [pending, start] = useTransition();
@@ -68,6 +73,19 @@ export function AyurvedaToggle({
         setEnabled(!next);
       } else {
         toast.success(next ? "Ayurveda enabled for this client" : "Ayurveda disabled");
+      }
+    });
+  };
+
+  const saveCollectDosha = (next: boolean) => {
+    setCollectDosha(next);
+    start(async () => {
+      const r = await updateClientPreferences({ client_id: clientId, collect_dosha_quiz: next });
+      if (!r.ok) {
+        toast.error(r.error ?? "Save failed");
+        setCollectDosha(!next);
+      } else {
+        toast.success(next ? "Dosha questions added to intake" : "Dosha questions removed from intake");
       }
     });
   };
@@ -110,6 +128,26 @@ export function AyurvedaToggle({
       </label>
       <p style={{ fontSize: 11, color: "var(--fm-text-tertiary)", margin: "4px 0 0 24px" }}>
         Constitution scoring in assessments + an Ayurvedic section in the plan &amp; letters.
+      </p>
+
+      {/* Decoupled, default-on dosha-questions-in-intake switch. Independent
+          of the master layer above — gathers the lifelong constitution
+          baseline up front so it's ready if/when the layer is turned on. */}
+      <label
+        style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer", fontWeight: 600, fontSize: 13, marginTop: 12 }}
+      >
+        <input
+          type="checkbox"
+          checked={collectDosha}
+          disabled={pending}
+          onChange={(e) => saveCollectDosha(e.target.checked)}
+        />
+        🧬 Dosha questions in intake
+      </label>
+      <p style={{ fontSize: 11, color: "var(--fm-text-tertiary)", margin: "4px 0 0 24px" }}>
+        On by default — the intake form gathers the client&apos;s lifelong constitution
+        (dosha) baseline so it&apos;s ready if you turn on the layer above. Untick to leave
+        it out of this client&apos;s intake. Independent of the switch above.
       </p>
 
       {enabled && (

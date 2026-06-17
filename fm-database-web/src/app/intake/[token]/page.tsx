@@ -105,6 +105,8 @@ export default async function IntakeTokenPage({
       previouslySubmitted={res.previously_submitted}
       focusTier1={focusTier1}
       focusDosha={focusDosha}
+      ayurvedaEnabled={res.ayurveda_enabled}
+      collectDoshaQuiz={res.collect_dosha_quiz}
     />
   );
 }

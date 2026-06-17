@@ -1124,6 +1124,9 @@ export interface UpdatePreferencesInput {
   ayurveda_enabled?: boolean;
   ayurveda_constitution?: string;
   ayurveda_constitution_notes?: string;
+  // Decoupled from the layer: whether the intake collects the dosha
+  // self-assessment. Default on for new clients; coach opt-out.
+  collect_dosha_quiz?: boolean;
 
   // Optional plan modules / layers (the newer toggle-able ones — Schüssler's
   // salts, peptides, …). Enabled module ids; full overwrite on save.
@@ -1195,6 +1198,7 @@ export async function updateClientPreferences(
     if (input.ayurveda_constitution !== undefined) data.ayurveda_constitution = input.ayurveda_constitution;
     if (input.ayurveda_constitution_notes !== undefined)
       data.ayurveda_constitution_notes = input.ayurveda_constitution_notes;
+    if (input.collect_dosha_quiz !== undefined) data.collect_dosha_quiz = input.collect_dosha_quiz;
 
     // Optional plan modules (newer toggle-able layers)
     if (input.plan_modules !== undefined) data.plan_modules = input.plan_modules;

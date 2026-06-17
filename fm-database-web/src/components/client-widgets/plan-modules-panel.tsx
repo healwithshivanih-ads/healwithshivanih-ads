@@ -34,6 +34,8 @@ interface Props {
   ayurvedaEnabled?: boolean;
   ayurvedaConstitution?: string;
   ayurvedaAssessment?: Record<string, unknown> | null;
+  /** Decoupled dosha-quiz-in-intake switch (default on for new clients). */
+  collectDoshaQuiz?: boolean;
   mealPlanStyle?: MealPlanStyle;
   /** client.plan_modules — enabled ids of the toggle-able modules. */
   planModules?: string[];
@@ -44,6 +46,7 @@ export function PlanModulesPanel({
   ayurvedaEnabled,
   ayurvedaConstitution,
   ayurvedaAssessment,
+  collectDoshaQuiz,
   mealPlanStyle,
   planModules,
 }: Props) {
@@ -95,6 +98,7 @@ export function PlanModulesPanel({
               clientId={clientId}
               initialEnabled={ayurvedaEnabled}
               initialConstitution={ayurvedaConstitution}
+              initialCollectDoshaQuiz={collectDoshaQuiz}
               assessment={ayurvedaAssessment}
             />
           );

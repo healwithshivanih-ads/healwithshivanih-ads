@@ -2093,6 +2093,8 @@ export function IntakeForm({
   previouslySubmitted = false,
   focusTier1 = false,
   focusDosha = false,
+  ayurvedaEnabled = false,
+  collectDoshaQuiz = false,
 }: {
   token: string;
   clientId: string;
@@ -2124,6 +2126,23 @@ export function IntakeForm({
    * rendering is suppressed.
    */
   focusDosha?: boolean;
+  /**
+   * When the coach has enabled the Ayurveda layer for this client
+   * (Client.ayurveda_enabled), the dosha self-assessment renders INLINE
+   * in the full intake — one extra section, slotted right after Body
+   * systems — so the client answers it once. Without it the dosha quiz
+   * only appears in the separate ?focus=dosha re-issue. Ignored in any
+   * focus mode (those render a single section of their own).
+   */
+  ayurvedaEnabled?: boolean;
+  /**
+   * Decoupled from ayurvedaEnabled: when the coach has left the dosha
+   * questions on for this client (Client.collect_dosha_quiz — default on
+   * for new clients), the inline dosha section renders even though the full
+   * Ayurveda plan/letter/AI layer is off. The section shows when EITHER
+   * this or ayurvedaEnabled is true. Ignored in focus modes.
+   */
+  collectDoshaQuiz?: boolean;
 }) {
   void clientId;
   const initial = useMemo(() => mergeInitial(prefill, draft), [prefill, draft]);
@@ -2244,13 +2263,20 @@ export function IntakeForm({
   // template when something in the first submission suggests screening
   // is warranted). Without focusTier1, the form is 14 sections (F) /
   // 13 (M) — one less than the v0.75.2 count.
-  const totalSections = focusTier1
-    ? (isFemale ? 15 : 14)
-    : (isFemale ? 14 : 13);
   // Any focus mode (tier1 OR dosha) collapses the form to one section +
   // consent. Same hiding mechanism for both — the .fm-intake--focus-tier1
   // CSS class hides every .fm-section that isn't .fm-section--focus-keep.
   const inFocusMode = focusTier1 || focusDosha;
+  // The dosha self-assessment renders INLINE in the full intake (one extra
+  // section) when EITHER the coach has enabled the full Ayurveda layer OR
+  // left the dosha questions on (collect_dosha_quiz — default on for new
+  // clients) — so the client answers it once, instead of being re-sent a
+  // separate ?focus=dosha link. Mutually exclusive with the focus modes
+  // (which each render a single section of their own).
+  const doshaInline = (ayurvedaEnabled || collectDoshaQuiz) && !inFocusMode;
+  const totalSections = focusTier1
+    ? (isFemale ? 15 : 14)
+    : (isFemale ? 14 : 13) + (doshaInline ? 1 : 0);
 
   const sectionRefs = useRef<Record<number, HTMLElement | null>>({});
   const setSectionRef = (n: number) => (el: HTMLElement | null) => {
@@ -2358,6 +2384,11 @@ export function IntakeForm({
       state.belly_fat_pattern
     )
       out.push(10);
+    // Ayurveda inline dosha section (Section 11) pushes every section
+    // below it down by one — keep these heuristic numbers in lockstep
+    // with the SEC_* constants so the progress dots line up.
+    const aShift = doshaInline ? 1 : 0;
+    if (doshaInline && Object.keys(state.dosha_self_assessment).length) out.push(11);
     if (isFemale) {
       if (
         state.cycle_status ||
@@ -2371,16 +2402,16 @@ export function IntakeForm({
         state.repro_diagnoses.length ||
         state.perimenopause_inventory.length
       )
-        out.push(11);
+        out.push(11 + aShift);
       if (
         state.recent_labs_done.length ||
         state.willing_to_share_labs ||
         state.willing_to_test_further ||
         state.readiness_confidence !== null
       )
-        out.push(12);
-      if (state.notes) out.push(13);
-      if (state.consent) out.push(14);
+        out.push(12 + aShift);
+      if (state.notes) out.push(13 + aShift);
+      if (state.consent) out.push(14 + aShift);
     } else {
       if (
         state.recent_labs_done.length ||
@@ -2388,12 +2419,12 @@ export function IntakeForm({
         state.willing_to_test_further ||
         state.readiness_confidence !== null
       )
-        out.push(11);
-      if (state.notes) out.push(12);
-      if (state.consent) out.push(13);
+        out.push(11 + aShift);
+      if (state.notes) out.push(12 + aShift);
+      if (state.consent) out.push(13 + aShift);
     }
     return out;
-  }, [state, isFemale]);
+  }, [state, isFemale, doshaInline]);
 
   const stateRef = useRef(state);
   stateRef.current = state;
@@ -2877,10 +2908,15 @@ export function IntakeForm({
   // Subsequent sections shift up when Tier 1 is hidden (the common case).
   const tier1Visible = focusTier1;
   const _offset = tier1Visible ? 0 : -1;
-  const SEC_CYCLE = isFemale ? 12 + _offset : -1;
-  const SEC_READINESS = (isFemale ? 13 : 12) + _offset;
-  const SEC_NOTES = (isFemale ? 14 : 13) + _offset;
-  const SEC_CONSENT = (isFemale ? 15 : 14) + _offset;
+  // Ayurveda dosha section, when enabled, takes the slot right after Body
+  // systems (Section 11 in the default render, since Tier 1 is hidden)
+  // and pushes Cycle / Readiness / Notes / Consent down by one.
+  const SEC_DOSHA = doshaInline ? 11 : -1;
+  const _doshaShift = doshaInline ? 1 : 0;
+  const SEC_CYCLE = isFemale ? 12 + _offset + _doshaShift : -1;
+  const SEC_READINESS = (isFemale ? 13 : 12) + _offset + _doshaShift;
+  const SEC_NOTES = (isFemale ? 14 : 13) + _offset + _doshaShift;
+  const SEC_CONSENT = (isFemale ? 15 : 14) + _offset + _doshaShift;
 
   // ── Main form ────────────────────────────────────────────────────────
   return (
@@ -4393,19 +4429,21 @@ export function IntakeForm({
       </>)}{/* end tier1-only Section 11 */}
 
       {/* ════════════════════════════════════════════════════════════════════
-          Dosha self-assessment (?focus=dosha — mirrors Tier 1 focus mode).
-
-          Only rendered in ?focus=dosha mode. When shown, the
-          .fm-intake--focus-tier1 form class hides every other section,
-          leaving just this + the consent/submit block (keepInFocus). The
-          quiz asks about LIFELONG tendencies (prakruti), not current state.
-          Single-pick per question → state.dosha_self_assessment[key] = value.
+          Dosha self-assessment. Rendered in TWO situations:
+            • ?focus=dosha re-issue → standalone (focus mode hides every
+              other section, leaving just this + consent via keepInFocus).
+            • doshaInline → the coach has enabled the Ayurveda layer
+              (ayurvedaEnabled), so it sits inline in the full intake as
+              Section 11 (right after Body systems) and the client answers
+              it once instead of being re-sent a separate link.
+          The quiz asks about LIFELONG tendencies (prakruti), not current
+          state. Single-pick per question → state.dosha_self_assessment[key].
        ════════════════════════════════════════════════════════════════════ */}
-      {focusDosha && (
+      {(focusDosha || doshaInline) && (
       <FormSection
-        number={SEC_MOVEMENT}
+        number={focusDosha ? SEC_MOVEMENT : SEC_DOSHA}
         totalSections={totalSections}
-        sectionRef={setSectionRef(SEC_MOVEMENT)}
+        sectionRef={setSectionRef(focusDosha ? SEC_MOVEMENT : SEC_DOSHA)}
         title="Your natural constitution (dosha)"
         sub="These ask what you've ALWAYS been like — your lifelong tendencies — not how you feel right now."
         keepInFocus
