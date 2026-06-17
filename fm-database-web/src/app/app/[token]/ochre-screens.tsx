@@ -49,7 +49,7 @@ function usePhaseNow(hour: number): PhaseNow {
     return {
       eyebrow: "Right now · Midday",
       title: "Lunch — vegetables and dal first",
-      sub: `${lunch ? "Today: " + lunch.pills.join(", ").toLowerCase() + "." : "Protein and fibre on the plate."}${betweenMealSips.length ? ` Sip ${betweenMealSips[0]} between meals.` : ""}`,
+      sub: `${lunch ? "Today: " + lunch.components.map((c) => c.title).join(", ").toLowerCase() + "." : "Protein and fibre on the plate."}${betweenMealSips.length ? ` Sip ${betweenMealSips[0]} between meals.` : ""}`,
       cta: "View today’s lunch",
       target: lunch ? `meal:${lunch.slot}` : "tab:plan",
       glyph: "bowl",
@@ -67,7 +67,7 @@ function usePhaseNow(hour: number): PhaseNow {
     return {
       eyebrow: "Right now · Evening",
       title: "Light, early dinner",
-      sub: `${dinner ? "Tonight: " + dinner.pills.join(", ").toLowerCase() + ". " : ""}Aim to finish by about 7:45 so your body gets its overnight rest.`,
+      sub: `${dinner ? "Tonight: " + dinner.components.map((c) => c.title).join(", ").toLowerCase() + ". " : ""}Aim to finish by about 7:45 so your body gets its overnight rest.`,
       cta: "View today’s dinner",
       target: dinner ? `meal:${dinner.slot}` : "tab:plan",
       glyph: "moon",
@@ -380,7 +380,15 @@ function MealList({
                     {ex?.mins ?? ""}
                   </span>
                 </span>
-                <span className="ml-dishes">{m.pills.slice(0, 3).join(" · ")}</span>
+                <span className="ml-dishes">
+                  {m.components.slice(0, 3).map((c, ci, arr) => (
+                    <span key={ci}>
+                      {c.title}
+                      {c.portion && <span className="ml-portion">{c.portion}</span>}
+                      {ci < arr.length - 1 && " · "}
+                    </span>
+                  ))}
+                </span>
               </span>
               <span className="chev">
                 <Icon name="chev" size={18} />
@@ -550,12 +558,14 @@ export function PlanScreen({
   openRemedy,
   openGrocery,
   openOrder,
+  openPortions,
 }: {
   onLogAll: () => void;
   openDoc: (doc: { kind: string; id: string }) => void;
   openRemedy: (r: AppRemedy) => void;
   openGrocery: () => void;
   openOrder: () => void;
+  openPortions: () => void;
 }) {
   const data = useOchre();
   const pr = data.planRef;
@@ -597,9 +607,22 @@ export function PlanScreen({
           2026-06-11: week-by-week framing confuses hybrid clients). */}
       {data.weekMenus.length > 0 && (
         <Section title={data.menuIsSample ? "Sample menu" : "This week's menu"}>
-          <WeekMenuSection openGrocery={openGrocery} />
+          <WeekMenuSection openGrocery={openGrocery} openPortions={openPortions} />
         </Section>
       )}
+
+      {/* decode the household portions ("1 bowl", "½ cup", "1 katori") that
+          appear on every dish above — a reference, reachable from its home
+          on the Plan tab as well as inline under the menu. */}
+      <button className="gro-launch" onClick={openPortions} style={{ marginTop: 4, marginBottom: 14 }}>
+        <span className="gro-launch-ico" aria-hidden="true">
+          <Icon name="bowl" size={18} />
+        </span>
+        <span className="gro-launch-body">
+          <span className="gro-launch-title">Kitchen measures</span>
+          <span className="gro-launch-meta">What a bowl, cup &amp; katori mean — in ml and grams</span>
+        </span>
+      </button>
 
       <Section title="How to build your plate">
         {data.weightLoss && (

@@ -40,6 +40,8 @@ export interface AppMeal {
   timeHint: string;
   glyph: string;
   pills: string[];
+  /** pills broken into clean title + lifted portion per component (display). */
+  components: DishComponent[];
   note?: string;
   /** estimated calories for this meal (recipe-accurate where matched) */
   kcal?: number;
@@ -52,10 +54,55 @@ export interface AppMeal {
 export const AYURVEDIC_DISH_RE =
   /khichdi|khichri|kanji\b|kashayam|churan|golden milk|haldi doodh|turmeric milk|ccf tea|cumin[- ]coriander[- ]fennel|buttermilk|chaas|lassi|methi water|jeera water|triphala|amla|haldi milk/i;
 
+/** A portion-shaped "(…)" — a count or a household/metric unit. Lets the app
+ *  lift the portion off a dish component and show it as a clean muted token
+ *  instead of raw inline parens. Kept deliberately in sync with dish-picker's
+ *  PORTION_RE (coach authoring) — both sides must agree on what counts as a
+ *  portion. Non-portion parens like "(new)" or "(fermented)" carry no digit or
+ *  unit, so they're left untouched in the title. Global flag: a component can
+ *  carry more than one (we keep the first, drop accidental doubles). */
+const DISH_PORTION_RE =
+  /\(\s*([^)]*?(?:\d|½|¼|¾|⅓|⅔|bowls?|cups?|glass(?:es)?|katori|tbsp|tsp|teaspoons?|tablespoons?|pieces?|small|large|medium|\bml\b|grams?|\bg\b|slices?|handful|palm)[^)]*?)\s*\)/gi;
+
+/** One component of a dish — a clean title plus the portion lifted off it. */
+export interface DishComponent {
+  title: string;
+  /** household portion, e.g. "2", "2 tbsp", "½ cup". Absent when none stated. */
+  portion?: string;
+}
+
+/** Break a composite dish ("Ragi dosa (2) + chutney (2 tbsp)") into clean
+ *  components, lifting each portion-shaped "(…)" out of the title wherever it
+ *  sits — trailing ("dosa (2)"), leading ("(2) eggs"), or standalone
+ *  ("(1) amla") — and dropping accidental doubles ("(1 cup) (1 bowl)" keeps the
+ *  first). Tolerant by design: the generators and coach edits place portions
+ *  inconsistently, so the DISPLAY is where they get normalised. */
+export function splitDishComponents(dish: string): DishComponent[] {
+  return (dish ?? "")
+    .split(/\s\+\s/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((comp) => {
+      const portions: string[] = [];
+      const title = comp
+        .replace(DISH_PORTION_RE, (_m, p) => {
+          const v = String(p).trim();
+          if (v) portions.push(v);
+          return " ";
+        })
+        .replace(/\s+,/g, ",")
+        .replace(/\s+/g, " ")
+        .trim();
+      return { title: title || comp, portion: portions[0] || undefined };
+    });
+}
+
 /** One slot of one day in the full-week menu view. */
 export interface WeekMenuSlot {
   slot: string;
   dish: string;
+  /** dish broken into clean title + lifted portion per component (display). */
+  components?: DishComponent[];
   ayurveda?: boolean;
 }
 export interface WeekMenuDay {
@@ -2334,6 +2381,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
                 ? "leaf"
                 : "bowl"),
         pills,
+        components: splitDishComponents(cell),
         note: slotNote(slotL),
         kcal: dishKcal(cell),
         ayurveda: pills.some((p) => AYURVEDIC_DISH_RE.test(p)),
@@ -2385,6 +2433,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
           return {
             slot: r.slot.replace(/\s*\([^)]*\)\s*$/, "").trim(),
             dish,
+            components: splitDishComponents(dish),
             ayurveda: AYURVEDIC_DISH_RE.test(dish) || undefined,
           };
         })
@@ -3489,7 +3538,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   if (dinner) {
     aiSuggested.push({
       q: "Can I swap tonight’s dinner?",
-      a: `Yes — keep the shape of the plate: vegetables, a protein and a millet. Tonight is ${dinner.pills.join(", ").toLowerCase()}. Good swaps from your plan: ${dinnerSwaps.slice(0, 2).map((s) => s.name.toLowerCase()).join(", or ")}. Try to finish by about 7:45.`,
+      a: `Yes — keep the shape of the plate: vegetables, a protein and a millet. Tonight is ${dinner.components.map((c) => c.title).join(", ").toLowerCase()}. Good swaps from your plan: ${dinnerSwaps.slice(0, 2).map((s) => s.name.toLowerCase()).join(", or ")}. Try to finish by about 7:45.`,
     });
   }
   aiSuggested.push({

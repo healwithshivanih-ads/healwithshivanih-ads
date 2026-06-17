@@ -18,7 +18,7 @@ import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
 import { CoachScreen } from "./ochre-coach";
 import InstallPrompt from "./ochre-install";
-import { AccountOverlay, DocOverlay, MealOverlay, RemedyOverlay } from "./ochre-overlays";
+import { AccountOverlay, DocOverlay, MealOverlay, PortionsOverlay, RemedyOverlay } from "./ochre-overlays";
 import { BreathOverlay } from "./ochre-breath";
 import { EftOverlay } from "./ochre-eft";
 import { SleepOverlay } from "./ochre-sleep";
@@ -69,6 +69,7 @@ type Overlay =
   | { type: "grocery" }
   | { type: "msq" }
   | { type: "order" }
+  | { type: "portions" }
   | { type: "account" };
 
 export default function OchreApp({ data }: { data: ClientAppData }) {
@@ -246,6 +247,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const openGrocery = () => setOverlay({ type: "grocery" });
   const openMsq = () => setOverlay({ type: "msq" });
   const openOrder = () => setOverlay({ type: "order" });
+  const openPortions = () => setOverlay({ type: "portions" });
   const closeOverlay = () => setOverlay(null);
 
   const dailyRemedies = data.remedies.filter((r) => r.assigned && r.daily);
@@ -303,6 +305,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
         openRemedy={openRemedy}
         openGrocery={openGrocery}
         openOrder={openOrder}
+        openPortions={openPortions}
       />
     );
   } else if (tab === "progress") {
@@ -377,6 +380,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "grocery" && <GroceryOverlay onClose={closeOverlay} />}
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}
+              {overlay.type === "portions" && <PortionsOverlay onClose={closeOverlay} />}
               {overlay.type === "account" && <AccountOverlay onClose={closeOverlay} />}
             </div>
           )}

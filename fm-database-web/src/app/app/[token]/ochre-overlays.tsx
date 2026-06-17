@@ -11,6 +11,7 @@ import type { AppRecipe, AppRemedy } from "@/lib/fmdb/client-app";
 import { DOSHA_LABEL, Icon, REMEDY_CAT, useOchre } from "./ochre-context";
 import { AppAvatar } from "./ochre-ui";
 import { BodySection } from "./ochre-body";
+import { MeasureList, MEASURE_INTRO } from "./ochre-measures";
 import { VAPID_PUBLIC_KEY, urlBase64ToUint8Array } from "@/lib/fmdb/push-public";
 
 /** Downscale a chosen image to a small JPEG and return base64 (no data-URL
@@ -331,6 +332,38 @@ export function DocOverlay({ doc, onClose }: { doc: { kind: string; id: string }
         <div className="card-quiet" style={{ padding: "13px 15px", marginTop: 18, display: "flex", gap: 10, alignItems: "center" }}>
           <Icon name="water" size={16} style={{ color: "var(--forest)" }} />
           <span style={{ fontSize: 12.5, color: "var(--muted)" }}>From your plan — come back to it any time.</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── kitchen measures (decodes the household portions on every menu) ─────────
+
+export function PortionsOverlay({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="overlay-scroll">
+      <button className="back-link" onClick={onClose} style={{ margin: "0 0 4px" }}>
+        <Icon name="arrowLeft" size={18} /> Back to plan
+      </button>
+      <div className="overlay-pad" style={{ paddingTop: 4 }}>
+        <div className="eyebrow">Kitchen measures</div>
+        <h2 className="h-serif" style={{ fontSize: 24, margin: "8px 0 0", lineHeight: 1.2 }}>
+          What a bowl, cup &amp; katori mean
+        </h2>
+        <div className="divider-ochre" />
+        <p className="doc-p" style={{ marginTop: 0 }}>
+          {MEASURE_INTRO}
+        </p>
+        <MeasureList />
+        <a className="wa-btn" href="/handouts/kitchen-measures.html" target="_blank" rel="noreferrer" style={{ marginTop: 20 }}>
+          <Icon name="external" size={18} /> Print a fridge copy
+        </a>
+        <div className="card-quiet" style={{ padding: "13px 15px", marginTop: 14, display: "flex", gap: 10, alignItems: "center" }}>
+          <Icon name="leaf" size={16} style={{ color: "var(--forest)" }} />
+          <span style={{ fontSize: 12.5, color: "var(--muted)" }}>
+            These are guides for the eye — a little more or less is completely fine.
+          </span>
         </div>
       </div>
     </div>

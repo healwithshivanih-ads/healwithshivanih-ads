@@ -77,7 +77,13 @@ function activeSwapFor(text: string, groups: AppSwapGroup[], swaps: SwapMap): st
 
 /* ---- week menu section (Plan tab) ----------------------------------- */
 
-export function WeekMenuSection({ openGrocery }: { openGrocery: () => void }) {
+export function WeekMenuSection({
+  openGrocery,
+  openPortions,
+}: {
+  openGrocery: () => void;
+  openPortions?: () => void;
+}) {
   const data = useOchre();
   const [swaps] = useSwaps();
   const menus = data.weekMenus;
@@ -114,6 +120,13 @@ export function WeekMenuSection({ openGrocery }: { openGrocery: () => void }) {
         </div>
       )}
 
+      {openPortions && (
+        <button type="button" className="portion-key-link" onClick={openPortions}>
+          <Icon name="bowl" size={14} />
+          What does <b>1 bowl</b>, <b>½ cup</b> or <b>1 katori</b> mean?
+        </button>
+      )}
+
       <div className="card" style={{ overflow: "hidden" }}>
         {menu.days.map((d, di) => (
           <div key={d.dow} className={"wm-day" + (!sample && d.today ? " today" : "")}>
@@ -130,7 +143,13 @@ export function WeekMenuSection({ openGrocery }: { openGrocery: () => void }) {
                   <div key={i} className="wm-slot">
                     <span className="wm-slotname">{s.slot}</span>
                     <span className="wm-dish">
-                      {s.dish}
+                      {(s.components?.length ? s.components : [{ title: s.dish }]).map((c, ci, arr) => (
+                        <span key={ci} className="wm-comp">
+                          {c.title}
+                          {c.portion && <span className="wm-portion">{c.portion}</span>}
+                          {ci < arr.length - 1 && <span className="wm-plus"> + </span>}
+                        </span>
+                      ))}
                       {swapTo && <span className="wm-swapnote">→ use {swapTo.toLowerCase()}</span>}
                     </span>
                   </div>

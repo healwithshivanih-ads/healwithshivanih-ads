@@ -1539,7 +1539,57 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .wm-slots { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .wm-slot { display: flex; gap: 6px; font-size: 12.5px; line-height: 1.45; }
 .wm-slotname { flex-shrink: 0; width: 84px; color: var(--muted); font-size: 11.5px; padding-top: 1px; }
-.wm-dish { color: var(--ink); }
+.wm-dish { color: var(--ink); min-width: 0; }
+.wm-plus { color: var(--muted); }
+/* household portion lifted off a dish component — a quiet token, not parens */
+.wm-portion {
+  display: inline-block; margin-left: 4px;
+  font-size: 11px; font-weight: 600; line-height: 1.4;
+  color: var(--ochre-deep); background: var(--ochre-tint);
+  border-radius: 5px; padding: 0 5px; vertical-align: baseline;
+  white-space: nowrap;
+}
+/* same token, sized for the denser "today" meal-list row */
+.ml-portion {
+  margin-left: 3px; font-size: 11px; font-weight: 600;
+  color: var(--ochre-deep);
+}
+
+/* inline "what does 1 bowl mean?" key, right above the week menu */
+.portion-key-link {
+  display: flex; align-items: center; gap: 7px; width: 100%;
+  margin: 0 0 10px; padding: 9px 12px; text-align: left; cursor: pointer;
+  font-family: var(--sans); font-size: 12.5px; line-height: 1.4; color: var(--forest-deep);
+  background: var(--forest-tint); border: none; border-radius: 12px;
+}
+.portion-key-link b { color: var(--ochre-deep); font-weight: 700; }
+.portion-key-link svg { color: var(--forest); flex-shrink: 0; }
+
+/* ── kitchen measures list (overlay + printable fridge card) ─────────── */
+.measure-list { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.measure-row {
+  display: flex; gap: 13px; align-items: flex-start;
+  padding: 13px 4px; border-bottom: 1px solid var(--line-soft);
+}
+.measure-row:last-child { border-bottom: none; }
+.measure-glyph {
+  flex-shrink: 0; width: 52px; height: 52px; border-radius: 14px;
+  background: var(--paper-2); display: flex; align-items: center; justify-content: center;
+}
+.measure-body { flex: 1; min-width: 0; }
+.measure-head { display: flex; align-items: baseline; gap: 8px; justify-content: space-between; }
+.measure-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+.measure-approx {
+  flex-shrink: 0; font-size: 11.5px; font-weight: 600; color: var(--ochre-deep);
+  background: var(--ochre-tint); border-radius: 6px; padding: 1px 7px; white-space: nowrap;
+}
+.measure-also { font-size: 11.5px; color: var(--muted); margin-top: 2px; font-style: italic; }
+.measure-anchor { font-size: 13px; color: var(--ink); line-height: 1.45; margin-top: 4px; }
+.measure-weights { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.measure-wchip {
+  font-size: 11.5px; color: var(--forest-deep); background: var(--forest-tint);
+  border-radius: 6px; padding: 2px 8px;
+}
 
 /* grocery launch card under the menu */
 .gro-launch {
