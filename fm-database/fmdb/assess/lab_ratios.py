@@ -891,8 +891,14 @@ def compute_ratios(extracted_labs: list[dict[str, Any]]) -> list[dict[str, Any]]
     # ══════════════════════════════════════════════════════════════════════════
     vitd = _find(extracted_labs,
         r"vitamin d|25.oh|25-oh|calcidiol|25-hydroxyvitamin")
+    # Serum total B12 ONLY. Active B12 / holotranscobalamin (holoTC) is a
+    # DIFFERENT analyte (different units — pMol/L vs pg/mL — and ranges); it must
+    # never be collapsed into "Vitamin B12", else a newer holoTC report (e.g.
+    # ">300 pMol/L") displaces the serum total and gets mis-flagged on the pg/mL
+    # scale. Negative lookaheads drop any holotranscobalamin / active-B12 entry;
+    # it still surfaces as its own pass-through marker.
     b12 = _find(extracted_labs,
-        r"vitamin b12|b-12\b|b12\b|cobalamin|cyanocobalamin")
+        r"^(?!.*holotrans)(?!.*holo.?tc)(?!.*\bactive\b).*(?:vitamin b12|b-12\b|b12\b|cobalamin|cyanocobalamin)")
     folate = _find(extracted_labs,
         r"\bfolate\b|folic acid|serum folate|rbc folate")
     # Magnesium — two distinct biomarkers with different ranges:
