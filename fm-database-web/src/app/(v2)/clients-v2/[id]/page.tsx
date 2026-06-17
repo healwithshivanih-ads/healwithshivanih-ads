@@ -1799,6 +1799,26 @@ export default async function ClientV2Page({
                                 (client as unknown as { weight_loss?: WeightLossGoal })
                                   .weight_loss,
                               )}
+                              intakeExercise={(() => {
+                                const fp = (
+                                  client as unknown as {
+                                    five_pillars?: {
+                                      movement_days_per_week?: number | null;
+                                      movement_type?: string;
+                                      movement_intensity?: string;
+                                    };
+                                  }
+                                ).five_pillars;
+                                if (!fp) return undefined;
+                                return {
+                                  days:
+                                    typeof fp.movement_days_per_week === "number"
+                                      ? fp.movement_days_per_week
+                                      : undefined,
+                                  type: fp.movement_type || undefined,
+                                  intensity: fp.movement_intensity || undefined,
+                                };
+                              })()}
                             />
                           </div>
                 ),

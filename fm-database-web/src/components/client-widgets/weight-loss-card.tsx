@@ -67,6 +67,36 @@ export interface WeightLossCardProps {
    *  computeCaloriePhases(). The same 40/70/100/80/60% curve the client
    *  letter uses. Null when weight loss isn't enabled or data is sparse. */
   caloriePhases?: CaloriePhases | null;
+  /** Movement/exercise the client reported in the intake form
+   *  (client.five_pillars). Pre-fills the Edit modal's activity + exercise
+   *  fields when setting up a NEW goal, so the coach doesn't re-type what
+   *  the client already told us. Coach can still override before saving. */
+  intakeExercise?: IntakeExercise;
+}
+
+/** What the client filled for movement in the intake form. */
+export interface IntakeExercise {
+  /** five_pillars.movement_days_per_week */
+  days?: number;
+  /** five_pillars.movement_type — e.g. "walking, yoga" */
+  type?: string;
+  /** five_pillars.movement_intensity — light | moderate | intense */
+  intensity?: string;
+}
+
+/** Map intake movement (days/week + intensity) → the goal form's activity
+ *  level. Days drive the bucket; intensity nudges the boundary case. */
+function deriveActivityFromIntake(
+  ex?: IntakeExercise,
+): "sedentary" | "light" | "moderate" | "active" | undefined {
+  if (!ex || typeof ex.days !== "number") return undefined;
+  const d = ex.days;
+  let level: "sedentary" | "light" | "moderate" | "active" =
+    d <= 1 ? "sedentary" : d <= 3 ? "light" : d <= 5 ? "moderate" : "active";
+  const i = (ex.intensity ?? "").toLowerCase();
+  if (level === "moderate" && (i.includes("intense") || i.includes("vigorous"))) level = "active";
+  if (level === "moderate" && i.includes("light")) level = "light";
+  return level;
 }
 
 export function WeightLossCard({
@@ -75,6 +105,7 @@ export function WeightLossCard({
   measurementsLog,
   currentWeightKg,
   caloriePhases,
+  intakeExercise,
 }: WeightLossCardProps) {
   const [editOpen, setEditOpen] = useState(false);
   const [overrideOpen, setOverrideOpen] = useState(false);
@@ -101,6 +132,7 @@ export function WeightLossCard({
             goal={null}
             measurementsLog={measurementsLog ?? []}
             currentWeightKg={currentWeightKg ?? null}
+            intakeExercise={intakeExercise}
             onClose={() => setEditOpen(false)}
           />
         )}
@@ -124,6 +156,7 @@ export function WeightLossCard({
           goal={goal}
           measurementsLog={measurementsLog ?? []}
           currentWeightKg={currentWeightKg ?? null}
+          intakeExercise={intakeExercise}
           onClose={() => setEditOpen(false)}
         />
       )}
@@ -574,12 +607,14 @@ function EditGoalModal({
   goal,
   measurementsLog = [],
   currentWeightKg = null,
+  intakeExercise,
   onClose,
 }: {
   clientId: string;
   goal: WeightLossGoal | null;
   measurementsLog?: MeasurementEntry[];
   currentWeightKg?: number | null;
+  intakeExercise?: IntakeExercise;
   onClose: () => void;
 }) {
   const router = useRouter();
@@ -623,13 +658,28 @@ function EditGoalModal({
   const [pace, setPace] = useState<"slow" | "moderate" | "faster">(
     goal?.pace ?? "moderate",
   );
+  // Exercise fields default to what the client reported at intake
+  // (movement days / type / intensity → activity level) when setting up a
+  // NEW goal, so the coach starts from the client's own answers instead of
+  // a blank form. An existing goal's saved values always win. `prefilled`
+  // drives the "from intake" hint shown under the section.
+  const prefilledFromIntake =
+    isNew &&
+    !!intakeExercise &&
+    (typeof intakeExercise.days === "number" ||
+      !!intakeExercise.type);
   const [activity, setActivity] = useState<
     "sedentary" | "light" | "moderate" | "active"
-  >(goal?.activity_level ?? "light");
-  const [exCurrent, setExCurrent] = useState(goal?.exercise_current ?? "");
+  >(goal?.activity_level ?? deriveActivityFromIntake(intakeExercise) ?? "light");
+  const [exCurrent, setExCurrent] = useState(
+    goal?.exercise_current ?? intakeExercise?.type ?? "",
+  );
   const [exOpenTo, setExOpenTo] = useState(goal?.exercise_open_to ?? "");
   const [exDays, setExDays] = useState(
-    goal?.exercise_days_per_week?.toString() ?? "",
+    goal?.exercise_days_per_week?.toString() ??
+      (typeof intakeExercise?.days === "number"
+        ? String(intakeExercise.days)
+        : ""),
   );
   const [exLimits, setExLimits] = useState(
     goal?.exercise_limitations ?? "",
@@ -773,6 +823,16 @@ function EditGoalModal({
           </div>
         </FmFieldShell>
 
+        {prefilledFromIntake && (
+          <p className="wl-form-hint" style={{ margin: "0 0 6px", fontSize: 12, opacity: 0.7 }}>
+            ✨ Pre-filled from the client&apos;s intake form
+            {typeof intakeExercise?.days === "number"
+              ? ` (${intakeExercise.days} day${intakeExercise.days === 1 ? "" : "s"}/week`
+              : " ("}
+            {intakeExercise?.type ? `${typeof intakeExercise?.days === "number" ? " · " : ""}${intakeExercise.type}` : ""}
+            ) — edit if needed.
+          </p>
+        )}
         <FmFieldShell label="Activity level">
           <div className="seg seg--primary">
             {(["sedentary", "light", "moderate", "active"] as const).map(
