@@ -50,6 +50,9 @@ function todayIso(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+/** Device-level display preference (shared across clients on this phone). */
+const TEXT_SIZE_KEY = "ochre.textsize";
+
 /** Movement entries from the trailing 7 days only. */
 function thisWeeksMoves(moves: MoveEntry[]): MoveEntry[] {
   const cutoff = Date.now() - 7 * 86_400_000;
@@ -90,6 +93,26 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   const [feelSheet, setFeelSheet] = useState(false);
   const [moveSheet, setMoveSheet] = useState(false);
   const [planUpdateDismissed, setPlanUpdateDismissed] = useState(false);
+
+  // Larger-text preference — a per-device display setting (NOT part of the
+  // daily Stored blob, so it never resets at midnight). Applied as a class on
+  // the root `.app` element; the CSS lives under `.app.text-lg` in app.css.
+  const [textLarge, setTextLarge] = useState(false);
+  useEffect(() => {
+    try {
+      setTextLarge(localStorage.getItem(TEXT_SIZE_KEY) === "lg");
+    } catch {
+      /* private mode */
+    }
+  }, []);
+  function changeTextLarge(v: boolean) {
+    setTextLarge(v);
+    try {
+      localStorage.setItem(TEXT_SIZE_KEY, v ? "lg" : "std");
+    } catch {
+      /* private mode */
+    }
+  }
 
   // hydrate persisted state (per client; daily ticks reset each day)
   const [lastSeenPlanSlug, setLastSeenPlanSlug] = useState<string | null>(null);
@@ -321,7 +344,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   return (
     <OchreContext.Provider value={data}>
       <div className="ochre-app">
-        <div className="app">
+        <div className={"app" + (textLarge ? " text-lg" : "")}>
           <Header alert={!submitted} onAccount={() => setOverlay({ type: "account" })} />
           {showPlanUpdatedBanner && (
             <div
@@ -381,7 +404,9 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
               {overlay.type === "msq" && <MsqOverlay onClose={closeOverlay} />}
               {overlay.type === "order" && <OrderOverlay onClose={closeOverlay} />}
               {overlay.type === "portions" && <PortionsOverlay onClose={closeOverlay} />}
-              {overlay.type === "account" && <AccountOverlay onClose={closeOverlay} />}
+              {overlay.type === "account" && (
+                <AccountOverlay onClose={closeOverlay} textLarge={textLarge} onTextLarge={changeTextLarge} />
+              )}
             </div>
           )}
 

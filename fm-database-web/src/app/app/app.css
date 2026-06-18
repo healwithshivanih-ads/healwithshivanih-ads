@@ -55,7 +55,7 @@
   --ochre:   #a9651f;   /* warm amber — eyebrows, accents */
   --ochre-deep: #8c5318;
   --ink:     #262219;   /* warm charcoal — body text      */
-  --muted:   #6f6a5d;   /* warm grey — secondary text     */
+  --muted:   #5b5648;   /* warm grey — secondary text (darkened ~5:1→~7:1 for legibility) */
 
   /* derived tints */
   --forest-tint: rgba(74, 97, 82, 0.10);
@@ -173,9 +173,9 @@
 /* ---- generic bits ---------------------------------------------------- */
 .eyebrow {
   font-family: var(--sans);
-  font-size: 11px; font-weight: 600;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 1.4px; text-transform: uppercase;
-  color: var(--ochre);
+  color: var(--ochre-deep);
 }
 .divider-ochre {
   width: 34px; height: 2px; border-radius: 2px;
@@ -274,6 +274,39 @@
   font-family: var(--serif); font-style: italic;
   font-size: 19px; margin-top: 4px;
 }
+
+/* ---- larger-text mode (Account → Display toggle) --------------------- */
+/* Bumps the high-read content surfaces ~1–2px. Layout-safe: only text
+   sizes change, no structural rules. Toggled by adding `text-lg` to the
+   root `.app` element; the preference persists in localStorage. */
+.app.text-lg { font-size: 16px; }
+.app.text-lg .greeting .hi { font-size: 29px; }
+.app.text-lg .plan-why { font-size: 16px; }
+.app.text-lg .section-head h2 { font-size: 20px; }
+.app.text-lg .supp .name,
+.app.text-lg .practice .p-name,
+.app.text-lg .supp-plan .name,
+.app.text-lg .acc-head,
+.app.text-lg .tile .t1 { font-size: 16.5px; }
+.app.text-lg .supp .dose,
+.app.text-lg .supp-plan .dose,
+.app.text-lg .tile .t2,
+.app.text-lg .practice .p-when { font-size: 14px; }
+.app.text-lg .acc-body p,
+.app.text-lg .center-state p,
+.app.text-lg .lab .l-name,
+.app.text-lg .day-detail .note { font-size: 15px; }
+.app.text-lg .ml-dishes,
+.app.text-lg .food-pill,
+.app.text-lg .meal-row .body { font-size: 14.5px; }
+.app.text-lg .day-detail .time,
+.app.text-lg .lab .l-meta { font-size: 13px; }
+.app.text-lg .eyebrow,
+.app.text-lg .meal-row .label,
+.app.text-lg .ml-top .label,
+.app.text-lg .tl-head .wk { font-size: 13px; }
+.app.text-lg .q-block .q-label { font-size: 18px; }
+.app.text-lg .supp-plan .why { font-size: 14.5px; }
 .coach-line {
   display: flex; gap: 10px; align-items: flex-start;
   background: var(--forest-tint); border-radius: 16px;
@@ -312,7 +345,7 @@
   background: var(--ochre-tint);
   display: flex; align-items: center; justify-content: center;
 }
-.meal-row .label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ochre); font-weight: 600; }
+.meal-row .label { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--ochre-deep); font-weight: 600; }
 .meal-row .body { flex: 1; min-width: 0; }
 .pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
 .food-pill {
@@ -341,7 +374,7 @@
   font-family: var(--serif); font-style: italic; color: var(--muted);
   font-size: 13px; margin-top: 8px; line-height: 1.5;
 }
-.day-detail .time { font-size: 11px; color: var(--muted); letter-spacing: .3px; }
+.day-detail .time { font-size: 12px; color: var(--muted); letter-spacing: .3px; }
 
 /* ---- supplements ----------------------------------------------------- */
 .slot-label {
@@ -403,7 +436,7 @@
   transition: transform .15s ease;
 }
 .daytile:active { transform: scale(.95); }
-.daytile .dow { font-size: 10.5px; letter-spacing: .4px; color: var(--muted); text-transform: uppercase; }
+.daytile .dow { font-size: 11px; letter-spacing: .4px; color: var(--muted); text-transform: uppercase; }
 .daytile .num { font-size: 16px; font-family: var(--serif); color: var(--ink); }
 .daytile .dot { width: 4px; height: 4px; border-radius: 999px; background: var(--ochre); opacity: .7; }
 .daytile.today { background: var(--forest); }
@@ -575,7 +608,7 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   display: flex; align-items: center; gap: 10px; padding: 13px 14px;
   font-family: var(--sans); color: var(--ink);
 }
-.tl-head .wk { font-size: 11px; letter-spacing: .8px; text-transform: uppercase; color: var(--ochre); font-weight: 600; }
+.tl-head .wk { font-size: 12px; letter-spacing: .8px; text-transform: uppercase; color: var(--ochre-deep); font-weight: 600; }
 .tl-head .ti { font-size: 14.5px; font-weight: 500; margin-top: 2px; }
 .tl-head .when { font-size: 11.5px; color: var(--muted); }
 .tl-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s cubic-bezier(.2,.7,.3,1); }
@@ -606,7 +639,7 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
   color: var(--muted); position: relative;
 }
 .tab .ic { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
-.tab .tl-label { font-size: 10.5px; font-weight: 500; letter-spacing: .2px; }
+.tab .tl-label { font-size: 11px; font-weight: 500; letter-spacing: .2px; }
 .tab.active { color: var(--forest); }
 .tab.active .tl-label { font-weight: 600; }
 .tab .dot-badge { position: absolute; top: 5px; right: calc(50% - 16px); width: 7px; height: 7px; border-radius: 999px; background: var(--ochre); }
@@ -735,7 +768,7 @@ textarea.journal::placeholder { color: rgba(111,106,93,.6); font-style: italic; 
 .meal-lite:last-child { border-bottom: none; }
 .ml-body { flex: 1; min-width: 0; }
 .ml-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
-.ml-top .label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ochre); font-weight: 600; }
+.ml-top .label { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--ochre-deep); font-weight: 600; }
 .ml-meta { font-size: 11.5px; color: var(--muted); }
 .ml-dishes { display: block; font-size: 13px; color: var(--ink); margin-top: 3px; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 

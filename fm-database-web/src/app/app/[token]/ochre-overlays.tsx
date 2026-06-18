@@ -840,7 +840,15 @@ function PushToggleSection() {
   );
 }
 
-export function AccountOverlay({ onClose }: { onClose: () => void }) {
+export function AccountOverlay({
+  onClose,
+  textLarge,
+  onTextLarge,
+}: {
+  onClose: () => void;
+  textLarge: boolean;
+  onTextLarge: (v: boolean) => void;
+}) {
   const data = useOchre();
   const router = useRouter();
   const a = data.account;
@@ -1003,6 +1011,24 @@ export function AccountOverlay({ onClose }: { onClose: () => void }) {
         </div>
 
         <BodySection />
+
+        <div className="set-group">
+          <div className="set-h">
+            <Icon name="sun" size={15} /> Display
+          </div>
+          <div className="card" style={{ overflow: "hidden" }}>
+            <div className="set-row">
+              <span className="sr-name" style={{ flex: 1 }}>
+                Larger text
+                <span className="sr-meta">Bigger type across the app</span>
+              </span>
+              <Toggle on={textLarge} onClick={() => onTextLarge(!textLarge)} />
+            </div>
+          </div>
+          <div className="muted" style={{ fontSize: 12, marginTop: 8, paddingLeft: 2 }}>
+            Easier on the eyes — saved on this phone.
+          </div>
+        </div>
 
         <div className="set-group">
           <div className="set-h">
