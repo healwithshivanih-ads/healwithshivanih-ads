@@ -25,6 +25,7 @@ import type {
   TitrationProtocol,
   LabTest,
   LabPanel,
+  TissueSalt,
 } from "@/lib/fmdb/types";
 
 const SUPPORTED: ReadonlySet<string> = new Set([
@@ -36,6 +37,7 @@ const SUPPORTED: ReadonlySet<string> = new Set([
   "sources",
   "cooking_adjustments",
   "home_remedies",
+  "tissue_salts",
   "protocols",
   "titration_protocols",
   "lab_tests",
@@ -728,6 +730,120 @@ function HomeRemedyDetail({ hr }: { hr: HomeRemedy }) {
   );
 }
 
+function TissueSaltDetail({ ts }: { ts: TissueSalt }) {
+  return (
+    <div className="space-y-6">
+      <Header
+        title={ts.display_name ?? ts.slug}
+        slug={ts.slug}
+        tier={ts.evidence_tier}
+        category={ts.category?.replace(/_/g, " ")}
+        extraBadges={
+          ts.salt_number != null ? (
+            <Badge variant="outline">No. {ts.salt_number}</Badge>
+          ) : undefined
+        }
+      />
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        {ts.mineral_compound && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Mineral compound</div>
+            <div className="text-sm font-semibold mt-1">{ts.mineral_compound}</div>
+          </div>
+        )}
+        {ts.standard_potency && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Standard potency</div>
+            <div className="text-sm font-semibold mt-1">{ts.standard_potency}</div>
+          </div>
+        )}
+        {ts.tissue_affinity && ts.tissue_affinity.length > 0 && (
+          <div className="rounded-lg border bg-card p-3">
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold">Tissue affinity</div>
+            <div className="text-sm font-medium mt-1">{ts.tissue_affinity.join(", ")}</div>
+          </div>
+        )}
+      </div>
+
+      {ts.key_indications && ts.key_indications.length > 0 && (
+        <Section title="Traditional indications">
+          <PlainList items={ts.key_indications} />
+        </Section>
+      )}
+
+      {ts.typical_use && (
+        <Section title="Typical use">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{ts.typical_use}</p>
+        </Section>
+      )}
+
+      {ts.facial_signs && ts.facial_signs.length > 0 && (
+        <Section title="Facial-diagnosis signs (Antlitzanalyse)">
+          <PlainList items={ts.facial_signs} />
+        </Section>
+      )}
+
+      {((ts.combines_with && ts.combines_with.length > 0) ||
+        (ts.component_salts && ts.component_salts.length > 0)) && (
+        <div className="grid gap-6 md:grid-cols-2">
+          {ts.combines_with && ts.combines_with.length > 0 && (
+            <Section title="Combines with">
+              <LinkedChipList items={ts.combines_with} kind="tissue_salts" />
+            </Section>
+          )}
+          {ts.component_salts && ts.component_salts.length > 0 && (
+            <Section title="Component salts">
+              <LinkedChipList items={ts.component_salts} kind="tissue_salts" />
+            </Section>
+          )}
+        </div>
+      )}
+
+      {ts.cautions && ts.cautions.length > 0 && (
+        <Section title="Cautions">
+          <div className="rounded-lg border-l-4 border-amber-300 bg-amber-50/60 p-3">
+            <PlainList items={ts.cautions} />
+          </div>
+        </Section>
+      )}
+
+      {ts.india_brands && ts.india_brands.length > 0 && (
+        <Section title="Available in India">
+          <ChipList items={ts.india_brands} />
+        </Section>
+      )}
+
+      <div className="grid gap-6 md:grid-cols-2">
+        <Section title="Linked conditions">
+          <LinkedChipList items={ts.linked_to_topics} kind="topics" />
+        </Section>
+        <Section title="Linked symptoms">
+          <LinkedChipList items={ts.linked_to_symptoms} kind="symptoms" />
+        </Section>
+      </div>
+
+      {ts.notes_for_coach && (
+        <Section title="Notes for coach">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{ts.notes_for_coach}</p>
+        </Section>
+      )}
+
+      {ts.notes_for_client && (
+        <Section title="Notes for client">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">{ts.notes_for_client}</p>
+        </Section>
+      )}
+
+      {ts.sources && ts.sources.length > 0 && (
+        <Section title="Sources">
+          <SourceCitations sources={ts.sources} />
+        </Section>
+      )}
+    </div>
+  );
+}
+
 function ProtocolDetail({ pr }: { pr: Protocol }) {
   return (
     <div className="space-y-6">
@@ -1274,6 +1390,12 @@ export default async function CatalogueDetailPage({
       const hr = await loadOne<HomeRemedy>("home_remedies", slug);
       if (!hr) notFound();
       body = <HomeRemedyDetail hr={hr} />;
+      break;
+    }
+    case "tissue_salts": {
+      const ts = await loadOne<TissueSalt>("tissue_salts", slug);
+      if (!ts) notFound();
+      body = <TissueSaltDetail ts={ts} />;
       break;
     }
     case "protocols": {

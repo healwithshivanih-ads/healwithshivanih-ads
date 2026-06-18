@@ -29,6 +29,11 @@ MAX_MECHANISMS = 60
 # extra dosha palette only when the client is on the Ayurveda track.
 MAX_HOME_REMEDIES = 20
 MAX_HOME_REMEDIES_AYURVEDA_EXTRA = 30
+# Tissue salts (Schüssler / biochemic) are only included when the client is on
+# the schussler_salts module. The 12 core cell salts are broad-spectrum
+# workhorses, so include them all + any Bio-Combinations that match the
+# client's selected symptoms/topics, capped.
+MAX_TISSUE_SALTS = 24
 
 _TIER_RANK = {
     "strong": 0,
@@ -52,6 +57,7 @@ def build_subgraph(
     topic_slugs: list[str],
     extra_topic_hops: int = 1,
     ayurveda: bool = False,
+    schussler: bool = False,
 ) -> dict[str, Any]:
     """Return a JSON-serializable bundle of catalogue entities relevant
     to the selected symptoms and topics.
@@ -216,6 +222,29 @@ def build_subgraph(
         )
     ]
 
+    # Tissue salts (Schüssler / biochemic) — ONLY when the client is on the
+    # schussler_salts module. Always include the 12 core cell salts (broad
+    # workhorses the model picks from by matching their indications/keynotes),
+    # plus any Bio-Combinations / supplementary salts whose linked_to_symptoms
+    # or linked_to_topics intersect the client's selection. Core-first, capped.
+    relevant_tissue_salts: list = []
+    if schussler:
+        def _is_core_salt(ts) -> bool:
+            return getattr(ts.category, "value", str(ts.category)) == "core_cell_salt"
+        for ts in getattr(cat, "tissue_salts", []) or []:
+            if (
+                _is_core_salt(ts)
+                or (set(ts.linked_to_symptoms) & sym_set)
+                or (set(ts.linked_to_topics) & topic_set)
+            ):
+                relevant_tissue_salts.append(ts)
+        relevant_tissue_salts.sort(key=lambda ts: (
+            0 if _is_core_salt(ts) else 1,
+            ts.salt_number if ts.salt_number is not None else 999,
+            ts.slug,
+        ))
+        relevant_tissue_salts = relevant_tissue_salts[:MAX_TISSUE_SALTS]
+
     # All symptoms whose linked_to_topics intersect our topics — the model
     # may want to surface symptoms the coach didn't pick that fit the picture
     candidate_symptoms = []
@@ -358,6 +387,23 @@ def build_subgraph(
             "notes_for_coach": pr.notes_for_coach[:300],
         }
 
+    def _ts(ts):
+        return {
+            "slug": ts.slug,
+            "display_name": ts.display_name,
+            "category": getattr(ts.category, "value", str(ts.category)),
+            "salt_number": ts.salt_number,
+            "key_indications": ts.key_indications,
+            "tissue_affinity": ts.tissue_affinity,
+            "combines_with": ts.combines_with,
+            "typical_use": ts.typical_use[:200] if ts.typical_use else "",
+            "cautions": ts.cautions[:3],
+            # notes_for_coach carries the Boericke & Dewey keynotes — the richest
+            # matching signal for "which salt fits this client's picture".
+            "notes_for_coach": ts.notes_for_coach[:500] if ts.notes_for_coach else "",
+            "evidence_tier": getattr(ts.evidence_tier, "value", str(ts.evidence_tier)),
+        }
+
     ordered_topics = sorted(
         (t for t in topic_set if t in topic_by_slug),
         key=lambda ts: (0 if ts in core_topic_set else 1, ts),
@@ -377,4 +423,5 @@ def build_subgraph(
         "cooking_adjustments": [_ca(ca) for ca in relevant_cooking],
         "home_remedies": [_hr(hr) for hr in relevant_remedies],
         "protocols": [_pr(pr) for pr in relevant_protocols],
+        "tissue_salts": [_ts(ts) for ts in relevant_tissue_salts],
     }

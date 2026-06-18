@@ -1,0 +1,58 @@
+slug: natrum-sulph
+display_name: Sodium Sulphate (No. 10)
+aliases:
+- Nat Sulph
+- Natrum Sulphuricum
+- Schüssler Salt No. 10
+- Cell Salt 10
+- Tissue Salt 10
+- Sodium Sulphate
+category: core_cell_salt
+salt_number: 10
+mineral_compound: Sodium sulphate (Na₂SO₄)
+standard_potency: 6X (D6)
+tissue_affinity:
+- liver and bile
+- water elimination from tissues
+key_indications:
+- Traditionally the "water-elimination" salt — the counterpart to Natrum mur; used to help the body clear
+  excess fluid from the tissues
+- Biliousness, sluggish liver, a bitter taste and a heavy, waterlogged feeling
+- Symptoms traditionally said to be worse in damp weather or humidity
+facial_signs:
+- Greenish-yellow (bilious) tint to the complexion
+- Puffy, water-retaining look
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, away from food and strong flavours.
+combines_with:
+- natrum-phos
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Jaundice, persistent swelling or unexplained fluid retention needs medical assessment, not cell salts.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms: []
+notes_for_coach: 'The "drainage / bile" cell salt — clears excess tissue water (opposite role to Nat mur,
+  which distributes it) and supports a sluggish, bilious liver picture. Classic "worse in damp/humid weather"
+  keynote.
+
+
+  Boericke & Dewey keynotes — the hydrogenoid / liver-drainage salt: always WORSE in damp wet weather
+  and damp dwellings, better in warm dry air; bilious states (bitter taste, sallow skin, bile headache),
+  greenish slimy tongue, gushing morning diarrhoea; humid asthma worse in damp with rattling mucus; a
+  LEADING remedy for ailments dating from a head injury; sycotic / warty states; melancholy.'
+notes_for_client: A gentle traditional support some people use when they feel waterlogged or sluggish,
+  especially in humid weather. It's an optional adjunct — not a medicine, and not a substitute for proper
+  care.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Natrum sulphuricum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

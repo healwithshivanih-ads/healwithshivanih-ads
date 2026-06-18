@@ -1,0 +1,53 @@
+slug: bio-combination-8
+display_name: Bio-Combination 8 — Diarrhoea
+aliases:
+- BC 8
+- BC-8
+- Bio Combination 8
+- Biocombination No. 8
+- BC No. 8
+category: bio_combination
+salt_number: 8
+mineral_compound: ''
+standard_potency: 3X / 6X (combination tablet)
+tissue_affinity: []
+key_indications:
+- Traditionally a gentle adjunct for simple, acute diarrhoea
+- Loose stool of short duration
+facial_signs: []
+typical_use: Commonly 4 tablets dissolved in the mouth 3–4× daily, per the manufacturer's pack. Confirm
+  the dose on the specific brand's label.
+combines_with:
+- ferrum-phos
+- kali-phos
+component_salts: []
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Diarrhoea with blood, high fever, dehydration, or lasting more than a day or two needs medical care
+  — especially in children or older adults.
+- Bio-Combination numbering and composition vary slightly between manufacturers (SBL / Dr. Reckeweg /
+  Schwabe / Bakson) — confirm the indication, the salts and the potencies on the specific pack.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL Bio-Combination 8
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_topics: []
+linked_to_symptoms:
+- loose-stools
+notes_for_coach: India's off-the-shelf biochemic combination, sold as a single numbered tablet for diarrhoea.
+  Biochemically centred on Ferrum phos (No. 3), Kali phos (No. 5). Confirm the indication and exact composition
+  against the client's pack — BC numbering and salts vary slightly by manufacturer.
+notes_for_client: A widely-available traditional combination tablet some people use for diarrhoea. It's
+  an optional gentle adjunct alongside your plan — not a medicine, and not a replacement for proper medical
+  care.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Bio-Combination 8
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-17'
+updated_by: Shivani

@@ -1,0 +1,61 @@
+slug: natrum-phos
+display_name: Sodium Phosphate (No. 9)
+aliases:
+- Nat Phos
+- Natrum Phosphoricum
+- Schüssler Salt No. 9
+- Cell Salt 9
+- Tissue Salt 9
+- Sodium Phosphate
+category: core_cell_salt
+salt_number: 9
+mineral_compound: Sodium phosphate (Na₂HPO₄)
+standard_potency: 6X (D6)
+tissue_affinity:
+- acid–alkaline balance
+- digestive tract
+- joints
+key_indications:
+- Traditionally the "acidity" salt — used for sour belching, acid reflux, heartburn and indigestion with
+  a sour taste
+- A creamy-yellow coating at the back of the tongue and an over-acid feeling
+- Traditionally associated with uric-acid-type joint complaints alongside acidity
+facial_signs:
+- Greasy or oily skin (especially the T-zone)
+- Creamy-yellow coating at the back of the tongue
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, often after meals for the acidity
+  picture. Away from food and strong flavours.
+combines_with:
+- natrum-sulph
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Persistent reflux, difficulty swallowing, or weight loss with indigestion needs medical assessment —
+  not cell salts.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms:
+- gas
+notes_for_coach: 'The "acidity / sour" cell salt — reflux, sour belching, over-acid digestive pictures.
+  Pairs with Nat sulph on the elimination side. Keep FM red-flags for reflux in view (persistent / alarm
+  features → refer).
+
+
+  Boericke & Dewey keynotes — the anti-acid salt: hyperacidity, sour risings, sour vomiting, waterbrash;
+  keynote = a moist creamy GOLDEN-YELLOW coating at the back of the tongue / palate; sour green stools
+  in children; worms with anal itching, teeth-grinding and nose-picking; acid-diathesis gout / rheumatism.
+  Pain about two hours after eating.'
+notes_for_client: A gentle traditional support some people use for sour, acidy digestion. It's an optional
+  adjunct alongside your plan — not a medicine, and not a substitute for getting persistent reflux checked.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Natrum phosphoricum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

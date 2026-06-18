@@ -1,0 +1,52 @@
+slug: bio-combination-9
+display_name: Bio-Combination 9 — Dysentery & Cramping
+aliases:
+- BC 9
+- BC-9
+- Bio Combination 9
+- Biocombination No. 9
+- BC No. 9
+category: bio_combination
+salt_number: 9
+mineral_compound: ''
+standard_potency: 3X / 6X (combination tablet)
+tissue_affinity: []
+key_indications:
+- Traditionally used for griping, cramping bowel pain with looseness
+- Spasmodic lower-abdominal pain with stool
+facial_signs: []
+typical_use: Commonly 4 tablets dissolved in the mouth 3–4× daily, per the manufacturer's pack. Confirm
+  the dose on the specific brand's label.
+combines_with:
+- mag-phos
+- ferrum-phos
+component_salts: []
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Blood or mucus in the stool, fever or persistent symptoms need prompt medical assessment — this is not
+  a treatment for infective dysentery.
+- Bio-Combination numbering and composition vary slightly between manufacturers (SBL / Dr. Reckeweg /
+  Schwabe / Bakson) — confirm the indication, the salts and the potencies on the specific pack.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL Bio-Combination 9
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_topics: []
+linked_to_symptoms: []
+notes_for_coach: India's off-the-shelf biochemic combination, sold as a single numbered tablet for dysentery
+  & cramping. Biochemically centred on Mag phos (No. 7), Ferrum phos (No. 3). Confirm the indication and
+  exact composition against the client's pack — BC numbering and salts vary slightly by manufacturer.
+notes_for_client: A widely-available traditional combination tablet some people use for dysentery & cramping.
+  It's an optional gentle adjunct alongside your plan — not a medicine, and not a replacement for proper
+  medical care.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Bio-Combination 9
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-17'
+updated_by: Shivani

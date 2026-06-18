@@ -1,0 +1,60 @@
+slug: kali-sulph
+display_name: Potassium Sulphate (No. 6)
+aliases:
+- Kali Sulph
+- Kali Sulphuricum
+- Schüssler Salt No. 6
+- Cell Salt 6
+- Tissue Salt 6
+- Potassium Sulphate
+category: core_cell_salt
+salt_number: 6
+mineral_compound: Potassium sulphate (K₂SO₄)
+standard_potency: 6X (D6)
+tissue_affinity:
+- skin
+- epithelial cells
+- mucous membranes
+key_indications:
+- Traditionally the third-stage inflammation salt — used where discharges turn yellow, slimy and sticky
+- Skin conditions with yellowish scaling or flaking; catarrh that has turned yellow
+- Symptoms that feel worse in warm, stuffy rooms and better in cool, open air
+facial_signs:
+- Yellowish complexion
+- Yellow-coated tongue
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, away from food and strong flavours.
+combines_with:
+- ferrum-phos
+- silicea
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Spreading, infected or non-healing skin needs medical assessment, not cell salts.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms:
+- skin-rash
+notes_for_coach: 'The third inflammation stage (Ferrum phos → Kali mur → Kali sulph) — the "yellow, slimy
+  discharge / worse in stuffy warmth" picture. Also the classic skin salt of the set. Traditionally works
+  with Ferrum phos on oxygen carriage.
+
+
+  Boericke & Dewey keynotes — the third-stage / skin salt: profuse YELLOW slimy or greenish discharges
+  (follows Ferrum phos -> Kali mur). Grand keynote: WORSE in a heated room and in the evening, BETTER
+  in cool open air. Free skin desquamation / scaling on a sticky base; wandering rheumatic pains shifting
+  joint to joint; diseased nails.'
+notes_for_client: A gentle traditional support some people use for the later, yellow stage of a cold or
+  for flaky skin. It's an optional adjunct — not a medicine, and not a replacement for care if skin is
+  infected or spreading.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Kali sulphuricum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

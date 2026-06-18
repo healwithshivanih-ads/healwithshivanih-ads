@@ -1,0 +1,51 @@
+slug: bio-combination-21
+display_name: Bio-Combination 21 — Teething Troubles in Children
+aliases:
+- BC 21
+- BC-21
+- Bio Combination 21
+- Biocombination No. 21
+- BC No. 21
+category: bio_combination
+salt_number: 21
+mineral_compound: ''
+standard_potency: 3X / 6X (combination tablet)
+tissue_affinity: []
+key_indications:
+- Traditionally a gentle adjunct for the discomfort and restlessness of teething in children
+facial_signs: []
+typical_use: Commonly 4 tablets dissolved in the mouth 3–4× daily, per the manufacturer's pack. Confirm
+  the dose on the specific brand's label.
+combines_with:
+- calc-phos
+- mag-phos
+component_salts: []
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- For a child, work with your paediatrician — a high fever or an unwell baby is never 'just teething'
+  and needs proper assessment.
+- Bio-Combination numbering and composition vary slightly between manufacturers (SBL / Dr. Reckeweg /
+  Schwabe / Bakson) — confirm the indication, the salts and the potencies on the specific pack.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL Bio-Combination 21
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_topics: []
+linked_to_symptoms: []
+notes_for_coach: India's off-the-shelf biochemic combination, sold as a single numbered tablet for teething
+  troubles in children. Biochemically centred on Calc phos (No. 2), Mag phos (No. 7). Confirm the indication
+  and exact composition against the client's pack — BC numbering and salts vary slightly by manufacturer.
+notes_for_client: A widely-available traditional combination tablet some people use for teething troubles
+  in children. It's an optional gentle adjunct alongside your plan — not a medicine, and not a replacement
+  for proper medical care.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Bio-Combination 21
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-17'
+updated_by: Shivani

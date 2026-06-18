@@ -29,6 +29,7 @@ import { getResourcesRoot } from "@/lib/fmdb/paths";
 import type {
   CookingAdjustment,
   HomeRemedy,
+  TissueSalt,
   Mechanism,
   Supplement,
   Symptom,
@@ -112,6 +113,7 @@ export default async function V2PlanEditorPage({
     supplements,
     cooking,
     remedies,
+    tissueSalts,
     resources,
     allPlans,
     supplementSources,
@@ -125,6 +127,7 @@ export default async function V2PlanEditorPage({
     loadAllOfKind<Supplement>("supplements"),
     loadAllOfKind<CookingAdjustment>("cooking_adjustments"),
     loadAllOfKind<HomeRemedy>("home_remedies"),
+    loadAllOfKind<TissueSalt>("tissue_salts"),
     loadResourceOptions(),
     loadAllPlans(),
     loadSupplementSources(),
@@ -415,6 +418,10 @@ export default async function V2PlanEditorPage({
             ayurvedaEnabled={Boolean((rawClient as { ayurveda_enabled?: boolean } | null)?.ayurveda_enabled)}
             ayurvedaConstitution={(rawClient as { ayurveda_constitution?: string } | null)?.ayurveda_constitution ?? ""}
             ayurvedaAssessment={(rawClient as { ayurveda_assessment?: Record<string, unknown> } | null)?.ayurveda_assessment ?? null}
+            schusslerEnabled={Boolean(
+              (rawClient as { plan_modules?: string[] } | null)?.plan_modules?.includes("schussler_salts")
+            )}
+            tissueSaltOptions={toOptions(tissueSalts)}
             lifecycleProps={{
               status: status as typeof plan.status,
               version: plan.version,

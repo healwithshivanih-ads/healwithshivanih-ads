@@ -1,0 +1,63 @@
+slug: mag-phos
+display_name: Magnesium Phosphate (No. 7)
+aliases:
+- Mag Phos
+- Magnesia Phosphorica
+- Schüssler Salt No. 7
+- Cell Salt 7
+- Tissue Salt 7
+- Magnesium Phosphate
+category: core_cell_salt
+salt_number: 7
+mineral_compound: Magnesium phosphate (Mg₃(PO₄)₂)
+standard_potency: 6X (D6)
+tissue_affinity:
+- nerves
+- muscle fibres
+- motor nerve endings
+key_indications:
+- Traditionally "the homeopathic antispasmodic" — used for cramping, shooting or spasmodic pains that
+  come in waves and ease with warmth and pressure
+- Menstrual cramps and abdominal colic of a cramping, doubling-up character
+- Muscle twitches, hiccups, writer's cramp and radiating nerve-type pains
+- Traditionally taken as "hot seven" — tablets dissolved in warm water and sipped — for acute cramp
+facial_signs:
+- Dull reddish flush, often with a drawn or pained expression during spasm
+typical_use: 3–4 tablets of 6X dissolved in a little warm water and sipped ("hot seven"), repeated every
+  15 minutes during acute cramp; otherwise 3–4× daily. Warmth and gentle pressure ease the picture.
+combines_with:
+- calc-phos
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Severe, sudden or unusual pain (especially chest or abdominal) needs medical assessment, not cell salts.
+- Cell-salt Mag phos is a homeopathic dilution — it does NOT supply nutritional magnesium. If a client
+  needs magnesium repletion, that is a separate (mineral) supplement decision.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms: []
+notes_for_coach: 'The go-to cramp / spasm cell salt — wave-like pains that ease with warmth and pressure.
+  The "hot seven" (dissolved in warm water) is the traditional acute delivery. Keep the boundary clear
+  with clients: this is NOT nutritional magnesium — if you want repletion, prescribe a magnesium glycinate/citrate
+  separately.
+
+
+  Boericke & Dewey keynotes — the great antispasmodic / neuralgia salt: cramping, shooting, lightning-like
+  spasmodic pains, often right-sided, RELIEVED by warmth, pressure and bending double, WORSE from cold
+  and cold washing; menstrual colic (pain precedes the flow), flatulent colic, writer''s cramp, hiccough,
+  spasms; toothache better from heat. NB cell-salt potency — not nutritional magnesium.'
+notes_for_client: A gentle traditional support some people use for cramping, wave-like aches — classically
+  dissolved in a little warm water. It's an optional adjunct alongside your plan, not a medicine, and
+  it isn't the same as a magnesium supplement.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Magnesia phosphorica
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

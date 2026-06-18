@@ -334,6 +334,15 @@ class AssessSuggestions(BaseModel):
     synthesis_notes: str = ""
     catalogue_additions_suggested: list[CatalogueAdditionSuggested] = Field(default_factory=list)
     ifm_timeline: list[IFMTimelineEvent] = Field(default_factory=list)
+    # ── Passthrough plan-layer blocks ──────────────────────────────────────
+    # The suggester emits these ONLY when the client is on the relevant module
+    # (ayurveda → ayurveda_enabled; tissue_salts → schussler_salts). Typed as
+    # permissive dicts because the downstream consumers (generate-draft.py,
+    # render-client-letter.py) read them as plain dicts. They MUST be declared
+    # here: model_config extra="ignore" silently drops any undeclared key, so
+    # without these fields the blocks never reach session.ai_analysis / plan gen.
+    ayurveda: Optional[dict[str, Any]] = None
+    tissue_salts: Optional[dict[str, Any]] = None
 
 
 # ---------------------------------------------------------------------------

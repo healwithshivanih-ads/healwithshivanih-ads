@@ -1,0 +1,58 @@
+slug: kali-mur
+display_name: Potassium Chloride (No. 4)
+aliases:
+- Kali Mur
+- Kali Muriaticum
+- Schüssler Salt No. 4
+- Cell Salt 4
+- Tissue Salt 4
+- Potassium Chloride
+category: core_cell_salt
+salt_number: 4
+mineral_compound: Potassium chloride (KCl)
+standard_potency: 6X (D6)
+tissue_affinity:
+- fibrin
+- mucous membranes
+- lymphatic glands
+key_indications:
+- Traditionally the second-stage inflammation salt (following Ferrum phos) — used where discharges turn
+  thick and white or grey
+- Thick white mucus in colds, blocked ears, sinus and throat congestion; white-coated tongue
+- Sluggish lymphatic glands and slow-clearing catarrh
+facial_signs:
+- White or greyish-white coating on the tongue
+- Milky-white look to the skin
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily; more frequently in the acute congested
+  stage. Away from food and strong flavours.
+combines_with:
+- ferrum-phos
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- A worsening or productive chest infection, or fever that won't settle, needs medical assessment.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms: []
+notes_for_coach: 'Step two after Ferrum phos in the inflammation sequence — the "thick white discharge
+  / white-coated tongue" picture. The Ferrum phos → Kali mur pairing is the classic acute-cold progression
+  to teach clients.
+
+
+  Boericke & Dewey keynotes — the second-stage salt: thick WHITE or grey-white discharges with a white-coated
+  tongue; fibrinous / glandular exudations slow to absorb; light clay-coloured stool from a torpid liver;
+  catarrhal middle ear (blocked Eustachian tube, snapping, deafness). Worse from fatty / rich food.'
+notes_for_client: A gentle traditional support some people use when a cold settles into thick white congestion.
+  It's an optional adjunct — not a medicine, and not a replacement for care if you're getting worse.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Kali muriaticum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

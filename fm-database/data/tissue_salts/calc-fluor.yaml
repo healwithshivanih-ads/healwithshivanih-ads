@@ -1,0 +1,66 @@
+slug: calc-fluor
+display_name: Calcium Fluoride (No. 1)
+aliases:
+- Calc Fluor
+- Calcarea Fluorica
+- Schüssler Salt No. 1
+- Cell Salt 1
+- Tissue Salt 1
+- Calcium Fluoride
+category: core_cell_salt
+salt_number: 1
+mineral_compound: Calcium fluoride (CaF₂)
+standard_potency: 6X (D6)
+tissue_affinity:
+- elastic fibres
+- tooth enamel
+- bone surface (periosteum)
+- blood-vessel walls
+- connective tissue
+key_indications:
+- 'Traditionally the "elasticity" salt — used where tissues have lost tone: varicose veins, haemorrhoids,
+  slack or sagging skin'
+- Hard, cracked skin (heels, lips) and brittle or cracked tooth enamel
+- Traditionally used for hard lumpy swellings and lax ligaments / joint hypermobility
+facial_signs:
+- Fine cracks or "cracked" lines in lips and skin
+- Brownish discolouration around the mouth
+- Dull, lustreless teeth
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, away from food and strong flavours.
+combines_with:
+- silicea
+- calc-phos
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Cell-salt Calc fluor is a homeopathic dilution — it is NOT a fluoride supplement and has nothing to
+  do with dental fluoride dosing.
+- Varicose veins, haemorrhoids or persistent swellings that worsen need medical assessment, not cell salts.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_topics:
+- ehlers-danlos-hypermobility
+linked_to_symptoms: []
+notes_for_coach: 'The "elastic tissue" salt — slack/over-stretched or hard/cracked tissues; traditionally
+  cited for hypermobility and varicosities. Pairs with Silicea (connective tissue) and Calc phos (the
+  builder). Not a fluoride intervention.
+
+
+  Boericke & Dewey keynotes — the elasticity / induration salt: stony-hard glands and lumps (incl. breast),
+  loss of tissue tone (varicose veins, haemorrhoids), bone exostoses and deficient/rough tooth enamel,
+  cracks and fissures of skin and lips, cracking joints and chronic lumbago better with continued motion.
+  Worse in damp weather; better from heat and rubbing.'
+notes_for_client: A gentle traditional support some people use for skin and tissue that feels slack or
+  cracked. It's an optional adjunct — not a medicine, and not a fluoride supplement.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Calcarea fluorica
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

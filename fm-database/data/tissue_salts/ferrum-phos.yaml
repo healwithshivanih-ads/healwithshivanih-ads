@@ -1,0 +1,65 @@
+slug: ferrum-phos
+display_name: Iron Phosphate (No. 3)
+aliases:
+- Ferr Phos
+- Ferrum Phosphoricum
+- Schüssler Salt No. 3
+- Cell Salt 3
+- Tissue Salt 3
+- Iron Phosphate
+category: core_cell_salt
+salt_number: 3
+mineral_compound: Iron phosphate (FePO₄)
+standard_potency: 6X (D6)
+tissue_affinity:
+- blood (oxygen carrying)
+- blood-vessel walls
+- muscular tissue
+key_indications:
+- Traditionally the first-stage remedy at the very onset of acute conditions — early inflammation, low-grade
+  fever, the first sniffle of a cold — before symptoms localise
+- Congestive flushing, throbbing and heat in the earliest inflammatory stage
+- Traditionally used for tiredness that feels worse after exertion
+- First-aid biochemic support for minor inflammation, sprains and the earliest signs of a cold or sore
+  throat
+facial_signs:
+- Circumscribed reddish flush over the cheeks
+- Pale face that flushes easily
+typical_use: 3–4 tablets of 6X dissolved slowly under the tongue, every 30–60 minutes in the acute early
+  stage, then reduced to 3–4× daily. Taken away from food and strong flavours.
+combines_with:
+- kali-mur
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- A persistent or high fever, severe pain, or worsening symptoms need proper medical assessment, not cell
+  salts.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms:
+- fatigue
+notes_for_coach: 'The classic "first-aid / first-stage" cell salt — reach for it at the very onset of
+  acute inflammatory pictures. Pairs with Kali mur (No. 4) as inflammation moves into the white/grey-coating
+  stage. NOT a substitute for iron repletion in genuine iron-deficiency anaemia — serum/functional iron
+  stays the functional-medicine lever.
+
+
+  Boericke & Dewey keynotes — the first-stage inflammation / fever salt (acts like Aconite but over a
+  longer course): congestion, heat, redness and throbbing BEFORE exudation or pus; bright-red bleeding
+  and nosebleed; full soft quick pulse, florid face; congestive hammering headache better from cold, worse
+  from motion. First remedy for early colds, earache, conjunctivitis, bronchitis.'
+notes_for_client: A gentle traditional support some people like to keep on hand for the very first signs
+  of a cold or minor inflammation. It's an optional adjunct alongside your plan — not a medicine, and
+  not a replacement for seeing a doctor when you need to.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Ferrum phosphoricum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

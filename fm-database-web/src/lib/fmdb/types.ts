@@ -148,6 +148,25 @@ export interface HomeRemedy extends BaseEntity {
   linked_to_mechanisms?: string[];
 }
 
+export interface TissueSalt extends BaseEntity {
+  category?: string; // core_cell_salt | supplementary_salt | bio_combination
+  salt_number?: number | null;
+  mineral_compound?: string;
+  standard_potency?: string;
+  tissue_affinity?: string[];
+  key_indications?: string[];
+  facial_signs?: string[];
+  typical_use?: string;
+  combines_with?: string[]; // other tissue_salt slugs
+  component_salts?: string[]; // for Bio-Combinations: the single salts inside
+  cautions?: string[];
+  india_brands?: string[];
+  linked_to_topics?: string[];
+  linked_to_symptoms?: string[];
+  notes_for_coach?: string;
+  notes_for_client?: string;
+}
+
 export interface ProtocolPhase {
   name: string;
   weeks?: number | null;
@@ -304,6 +323,11 @@ export interface PlanFields {
    *  custom_remedies[], seasonal_note, coach_notes. Renders into consolidated +
    *  lifestyle_guide letters when the client has ayurveda_enabled. */
   ayurveda?: Record<string, unknown> | null;
+  /** Optional Schüssler tissue-salt layer. Null/absent = no section. Shape
+   *  mirrors the Python TissueSaltsSection: overview, salts[] ({salt_slug,
+   *  reason, typical_use, intake_evidence}), coach_notes. Renders into the
+   *  letter + app when the client has 'schussler_salts' in plan_modules. */
+  tissue_salts?: Record<string, unknown> | null;
   supplement_protocol?: unknown[];
   lab_orders?: unknown[];
   referrals?: unknown[];
@@ -642,6 +666,7 @@ export type CatalogueKind =
   | "mindmaps"
   | "cooking_adjustments"
   | "home_remedies"
+  | "tissue_salts"
   | "protocols"
   | "drug_depletions"
   | "titration_protocols"

@@ -234,6 +234,11 @@ export interface PlanEditorProps {
   ayurvedaEnabled?: boolean;
   ayurvedaConstitution?: string;
   ayurvedaAssessment?: Record<string, unknown> | null;
+  /** Tissue-salt (Schüssler) module — on when 'schussler_salts' is in the
+   *  client's plan_modules. Shows the 🧂 tissue-salts editor section. */
+  schusslerEnabled?: boolean;
+  /** TissueSalt catalogue options (slug → display) for the salt picker. */
+  tissueSaltOptions?: MultiSelectOption[];
   /** Lifecycle panel props — passed through so the 🚀 Lifecycle tab can render inline */
   lifecycleProps: {
     status: PlanStatus | undefined;
@@ -1003,6 +1008,8 @@ export function PlanEditor(props: PlanEditorProps) {
     ayurvedaEnabled,
     ayurvedaConstitution,
     ayurvedaAssessment,
+    schusslerEnabled,
+    tissueSaltOptions = [],
     lifecycleProps,
   } = props;
 
@@ -1161,6 +1168,23 @@ export function PlanEditor(props: PlanEditorProps) {
       ayurCustomRemedies.map((r, j) => (j === i ? { ...r, [field]: value } : r))
     );
   };
+
+  // ── Tissue-salts section state (only used when schusslerEnabled) ──
+  const tissueSalts = (plan.tissue_salts as Record<string, unknown>) ?? {};
+  const tsSalts: Array<{ salt_slug?: string; reason?: string }> =
+    (tissueSalts.salts as Array<{ salt_slug?: string; reason?: string }>) ?? [];
+  function patchTissueSalts(field: string, value: unknown) {
+    setPlan((p) => ({
+      ...p,
+      tissue_salts: { ...((p.tissue_salts as Record<string, unknown>) ?? {}), [field]: value },
+    }));
+    setDirty(true);
+  }
+  const updateTsSalt = (i: number, field: "salt_slug" | "reason", value: string) =>
+    patchTissueSalts(
+      "salts",
+      tsSalts.map((s, j) => (j === i ? { ...s, [field]: value } : s))
+    );
 
   // Filtered topic list for the Education module — curated, no duplicates.
   const educationTopicOptions = topicOptions.filter((o) =>
@@ -2057,6 +2081,92 @@ export function PlanEditor(props: PlanEditorProps) {
                   <textarea
                     value={(ayurveda.coach_notes as string) ?? ""}
                     onChange={(e) => patchAyurveda("coach_notes", e.target.value)}
+                    disabled={effectiveLocked}
+                    className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
+                  />
+                </div>
+              </div>
+            </details>
+            )}
+
+            {/* ── Tissue salts (Schüssler — opt-in per client) ── */}
+            {schusslerEnabled && (
+            <details className="group">
+              <summary className="flex items-center gap-2 cursor-pointer select-none rounded-md border border-sky-200 bg-sky-50/50 px-4 py-3 text-sm font-semibold hover:bg-sky-50/70 list-none">
+                <span className="transition-transform group-open:rotate-90 text-muted-foreground text-xs">▶</span>
+                🧂 Schüssler tissue salts
+                {tsSalts.length > 0 && (
+                  <Badge variant="secondary" className="ml-auto text-[10px]">{tsSalts.length}</Badge>
+                )}
+              </summary>
+              <div className="pt-3 space-y-4 px-1">
+                <p className="text-xs text-muted-foreground">
+                  Gentle biochemic adjuncts (cell salts + Bio-Combinations). Optional support — renders in the
+                  letter + app when set. Pick from the catalogue; the AI also suggests relevant salts during
+                  assessment.
+                </p>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">
+                    Intro <span className="font-normal text-muted-foreground">· client-facing one-liner</span>
+                  </label>
+                  <Input
+                    value={(tissueSalts.overview as string) ?? ""}
+                    onChange={(e) => patchTissueSalts("overview", e.target.value)}
+                    placeholder="e.g. A few gentle tissue salts to support you alongside the plan"
+                    disabled={effectiveLocked}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">Salts</label>
+                  {tsSalts.map((s, i) => (
+                    <div key={i} className="flex gap-2 items-center mb-2">
+                      <select
+                        value={s.salt_slug ?? ""}
+                        onChange={(e) => updateTsSalt(i, "salt_slug", e.target.value)}
+                        disabled={effectiveLocked}
+                        className="text-sm border rounded-md px-2 py-1.5 bg-background min-w-[220px] max-w-[280px]"
+                      >
+                        <option value="">— pick a salt —</option>
+                        {tissueSaltOptions.map((o) => (
+                          <option key={o.value} value={o.value}>
+                            {o.label}
+                          </option>
+                        ))}
+                      </select>
+                      <Input
+                        placeholder="why — e.g. cramping periods"
+                        value={s.reason ?? ""}
+                        onChange={(e) => updateTsSalt(i, "reason", e.target.value)}
+                        disabled={effectiveLocked}
+                      />
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        disabled={effectiveLocked}
+                        onClick={() => patchTissueSalts("salts", tsSalts.filter((_, j) => j !== i))}
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                  ))}
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    disabled={effectiveLocked}
+                    onClick={() => patchTissueSalts("salts", [...tsSalts, { salt_slug: "", reason: "" }])}
+                  >
+                    + Add salt
+                  </Button>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1.5">
+                    Coach notes <span className="font-normal text-muted-foreground">· not shown to client</span>
+                  </label>
+                  <textarea
+                    value={(tissueSalts.coach_notes as string) ?? ""}
+                    onChange={(e) => patchTissueSalts("coach_notes", e.target.value)}
                     disabled={effectiveLocked}
                     className="w-full text-sm border rounded-md p-2 min-h-[48px] bg-background"
                   />

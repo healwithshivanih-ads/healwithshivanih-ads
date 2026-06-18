@@ -102,6 +102,21 @@ class CookingAdjustmentCategory(str, Enum):
     other = "other"
 
 
+class TissueSaltCategory(str, Enum):
+    """Schüssler / biochemic tissue-salt (cell-salt) classification.
+
+    core_cell_salt      = the canonical 12 (No. 1 Calc fluor … No. 12 Calc sulph).
+    supplementary_salt  = the extended set (No. 13+ — Kali ars, Kali iod, etc.).
+    bio_combination     = India's pre-mixed numbered BC 1–28 combination tablets
+                          (SBL / Reckeweg / Schwabe / Bakson) — how clients
+                          actually buy them off the shelf.
+    """
+    core_cell_salt = "core_cell_salt"
+    supplementary_salt = "supplementary_salt"
+    bio_combination = "bio_combination"
+    other = "other"
+
+
 class PlanStatus(str, Enum):
     draft = "draft"                            # actively being authored
     ready_to_publish = "ready_to_publish"      # sanity-checked + warnings ack'd

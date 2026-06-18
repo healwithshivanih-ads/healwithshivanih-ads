@@ -493,7 +493,7 @@ function SuppPlanCard({ supp }: { supp: ReturnType<typeof useOchre>["supplements
 /** Top-of-Plan explainer: what this plan is, why you're on it, and the
  *  dietary highlights as tap-to-expand chips (some link to a cheat-sheet). */
 function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string }) => void }) {
-  const { planRef } = useOchre();
+  const { planRef, tissueSalts } = useOchre();
   const { focus, ayurveda, flags } = planRef;
   const [sel, setSel] = useState<number | null>(null);
   return (
@@ -547,6 +547,41 @@ function PlanFocusCard({ openDoc }: { openDoc: (doc: { kind: string; id: string 
             </div>
           )}
         </>
+      )}
+      {tissueSalts && tissueSalts.list.length > 0 && (
+        <div
+          style={{
+            marginTop: 12,
+            padding: "12px 13px",
+            background: "var(--forest-tint)",
+            borderRadius: 14,
+            borderLeft: "3px solid var(--forest)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 5 }}>
+            <span style={{ fontSize: 13 }}>🧂</span>
+            <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: 0.3, textTransform: "uppercase", color: "var(--forest-deep)" }}>
+              Gentle tissue salts
+            </span>
+          </div>
+          {tissueSalts.overview && (
+            <div style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.55, marginBottom: 7 }}>
+              {tissueSalts.overview}
+            </div>
+          )}
+          {tissueSalts.list.map((s, i) => (
+            <div key={i} style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.5, marginTop: i ? 7 : 0 }}>
+              <strong>{s.name}</strong>
+              {s.reason ? <> — {s.reason}</> : null}
+              {s.how ? (
+                <div style={{ fontSize: 12.5, color: "var(--muted)", marginTop: 2 }}>{s.how}</div>
+              ) : null}
+            </div>
+          ))}
+          <div style={{ fontSize: 11.5, color: "var(--muted)", lineHeight: 1.5, marginTop: 8, opacity: 0.85 }}>
+            A gentle traditional adjunct — optional, not a medicine, and not a replacement for your supplements or care.
+          </div>
+        </div>
       )}
     </div>
   );

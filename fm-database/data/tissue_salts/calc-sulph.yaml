@@ -1,0 +1,60 @@
+slug: calc-sulph
+display_name: Calcium Sulphate (No. 12)
+aliases:
+- Calc Sulph
+- Calcarea Sulphurica
+- Schüssler Salt No. 12
+- Cell Salt 12
+- Tissue Salt 12
+- Calcium Sulphate
+category: core_cell_salt
+salt_number: 12
+mineral_compound: Calcium sulphate (CaSO₄)
+standard_potency: 6X (D6)
+tissue_affinity:
+- skin
+- mucous membranes
+- connective tissue
+- blood
+key_indications:
+- Traditionally the "purifier" / final-stage salt — used for the last stage of suppuration, where discharges
+  are thick and yellow
+- Pimples and spots that have come to a head, and slow-clearing blemishes
+- The tail end of a cold with thick yellow-green mucus
+facial_signs:
+- Yellowish complexion
+- Spots or pimples, especially that are slow to clear
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, away from food and strong flavours.
+combines_with:
+- silicea
+- kali-sulph
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Infected, spreading or non-healing skin needs medical assessment, not cell salts.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms:
+- skin-rash
+notes_for_coach: 'The "final-stage / blood purifier" cell salt — last stage of a spot or cold, thick yellow
+  discharge that is slow to clear. Often follows Silicea and works alongside Kali sulph in the skin pictures.
+
+
+  Boericke & Dewey keynotes — the third / suppurating-stage salt: thick yellow pus (often blood-streaked)
+  where the discharge HAS an outlet — abscesses, boils and ulcers already broken and slow to heal, fistulae,
+  gum-boils, otorrhoea (classically given AFTER Silicea). Discharges generally thick, yellow and lumpy.'
+notes_for_client: A gentle traditional support some people use for spots that are slow to clear or the
+  tail end of a cold. It's an optional adjunct — not a medicine, and not a replacement for care if skin
+  is infected.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Calcarea sulphurica
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

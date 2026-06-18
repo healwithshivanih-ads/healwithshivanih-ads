@@ -69,8 +69,8 @@ export const PLAN_MODULES: PlanModuleDef[] = [
     label: "Schüssler's salts (cell salts)",
     icon: "🧂",
     blurb:
-      "Tissue-salt suggestions woven into the plan. Flag is saved now; full plan + app wiring is a follow-on build.",
-    status: "scaffold",
+      "Schüssler tissue salts woven through assessment → plan → letter → app. The AI suggests catalogue cell salts for the client's issues; coach edits on the plan's 🧂 section.",
+    status: "wired",
     storage: "plan_modules",
   },
   {

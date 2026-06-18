@@ -965,6 +965,35 @@ class AyurvedaSection(BaseModel):
     coach_notes: str = ""             # private working notes — NOT client-facing
 
 
+class TissueSaltItem(BaseModel):
+    """One Schüssler / biochemic tissue-salt recommendation on a plan.
+
+    salt_slug references a TissueSalt catalogue entry — a core cell salt
+    (e.g. 'mag-phos') or an India Bio-Combination (e.g. 'bio-combination-15').
+    """
+    model_config = ConfigDict(extra="forbid")
+    salt_slug: str                    # TissueSalt catalogue slug
+    reason: str = ""                  # why this salt for this client (coach / AI rationale)
+    typical_use: str = ""             # dosing note; falls back to the catalogue's typical_use when blank
+    intake_evidence: list[str] = Field(default_factory=list)  # intake observations that drove this pick
+
+
+class TissueSaltsSection(BaseModel):
+    """Optional Schüssler / biochemic tissue-salt layer on a Plan. Present only
+    when the client has 'schussler_salts' in plan_modules AND the coach/AI has
+    authored it (Plan.tissue_salts is None otherwise — section never renders).
+
+    Gentle adjunct only: every referenced salt is evidence_tier fm_specific_thin
+    in the catalogue and framed as an optional support, never a prescription.
+    The suggester only ever proposes salts that exist in the tissue_salt
+    catalogue (subgraph-bound) so letters can't invent one.
+    """
+    model_config = ConfigDict(extra="forbid")
+    overview: str = ""                # client-facing intro / framing one-liner
+    salts: list[TissueSaltItem] = Field(default_factory=list)
+    coach_notes: str = ""             # private working notes — NOT client-facing
+
+
 class EducationModule(BaseModel):
     """A topic / mechanism / claim the coach plans to teach this client."""
     model_config = ConfigDict(extra="forbid")
@@ -1269,6 +1298,12 @@ class Plan(BaseModel):
     # letters when present AND the client has ayurveda_enabled=True. Constitution
     # (prakruti) is read from the Client; this carries the per-plan content.
     ayurveda: Optional[AyurvedaSection] = None
+
+    # ---- Tissue-salt layer (optional; gated by 'schussler_salts' in Client.plan_modules) ----
+    # None = no tissue-salt section. Renders into consolidated + lifestyle_guide
+    # letters + the client app when present AND the client has 'schussler_salts'
+    # in plan_modules. Salts reference the tissue_salt catalogue (subgraph-bound).
+    tissue_salts: Optional[TissueSaltsSection] = None
 
     # ---- prescriptive (coach for now; AI sanity-check warns on confirm_with_clinician) ----
     supplement_protocol: list[SupplementItem] = Field(default_factory=list)

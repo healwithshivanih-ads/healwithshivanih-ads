@@ -26,7 +26,7 @@ import yaml
 from pydantic import ValidationError as PydanticValidationError
 
 from .enums import InteractionType, SourceType
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
 
 
 @dataclass
@@ -66,6 +66,7 @@ class Loaded:
     symptoms: list[Symptom] = field(default_factory=list)
     cooking_adjustments: list[CookingAdjustment] = field(default_factory=list)
     home_remedies: list[HomeRemedy] = field(default_factory=list)
+    tissue_salts: list[TissueSalt] = field(default_factory=list)
     protocols: list[Protocol] = field(default_factory=list)
     drug_depletions: list[DrugDepletion] = field(default_factory=list)
     titration_protocols: list[TitrationProtocol] = field(default_factory=list)
@@ -127,6 +128,7 @@ def load_all(data_dir: Path) -> Loaded:
         symptoms=_load_dir(data_dir, "symptoms", Symptom, parse_errors),
         cooking_adjustments=_load_dir(data_dir, "cooking_adjustments", CookingAdjustment, parse_errors),
         home_remedies=_load_dir(data_dir, "home_remedies", HomeRemedy, parse_errors),
+        tissue_salts=_load_dir(data_dir, "tissue_salts", TissueSalt, parse_errors),
         protocols=_load_dir(data_dir, "protocols", Protocol, parse_errors),
         drug_depletions=_load_dir(data_dir, "drug_depletions", DrugDepletion, parse_errors),
         titration_protocols=_load_dir(data_dir, "titration_protocols", TitrationProtocol, parse_errors),
@@ -143,7 +145,7 @@ def overlay(
     sources=(), topics=(), claims=(), supplements=(),
     mechanisms=(), symptoms=(), cooking_adjustments=(), home_remedies=(),
     protocols=(), drug_depletions=(), titration_protocols=(),
-    lab_tests=(), lab_panels=(),
+    lab_tests=(), lab_panels=(), tissue_salts=(),
 ) -> Loaded:
     """Return a new Loaded where given entities replace any same-slug entries.
 
@@ -164,6 +166,7 @@ def overlay(
         symptoms=_merge(loaded.symptoms, symptoms, "slug"),
         cooking_adjustments=_merge(loaded.cooking_adjustments, cooking_adjustments, "slug"),
         home_remedies=_merge(loaded.home_remedies, home_remedies, "slug"),
+        tissue_salts=_merge(loaded.tissue_salts, tissue_salts, "slug"),
         protocols=_merge(loaded.protocols, protocols, "slug"),
         drug_depletions=_merge(loaded.drug_depletions, drug_depletions, "slug"),
         titration_protocols=_merge(loaded.titration_protocols, titration_protocols, "slug"),
@@ -195,6 +198,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
     _check_dupes(loaded.symptoms, "slug", "symptom slug")
     _check_dupes(loaded.cooking_adjustments, "slug", "cooking_adjustment slug")
     _check_dupes(loaded.home_remedies, "slug", "home_remedy slug")
+    _check_dupes(loaded.tissue_salts, "slug", "tissue_salt slug")
     _check_dupes(loaded.protocols, "slug", "protocol slug")
     _check_dupes(loaded.drug_depletions, "slug", "drug_depletion slug")
     _check_dupes(loaded.titration_protocols, "slug", "titration_protocol slug")
@@ -210,6 +214,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
         (loaded.supplements, "supplement"),
         (loaded.cooking_adjustments, "cooking_adjustment"),
         (loaded.home_remedies, "home_remedy"),
+        (loaded.tissue_salts, "tissue_salt"),
         (loaded.protocols, "protocol"),
     ):
         canonical = {it.slug for it in items}
@@ -393,6 +398,27 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
             if mech_slug not in valid_mechanism_slugs:
                 warnings.append(Warning_("home_remedy", hr.slug, "linked_to_mechanisms", "mechanism", mech_slug))
 
+    # ---- tissue_salts ----
+    valid_tissue_salt_slugs = set(_resolve_index(loaded.tissue_salts))   # canonical + aliases
+    for ts in loaded.tissue_salts:
+        for cite in ts.sources:
+            if cite.id not in valid_source_ids:
+                warnings.append(Warning_("tissue_salt", ts.slug, "sources", "source", cite.id))
+        for topic_slug in ts.linked_to_topics:
+            if topic_slug not in valid_topic_slugs:
+                warnings.append(Warning_("tissue_salt", ts.slug, "linked_to_topics", "topic", topic_slug))
+        for sx_slug in ts.linked_to_symptoms:
+            if sx_slug not in valid_symptom_slugs:
+                warnings.append(Warning_("tissue_salt", ts.slug, "linked_to_symptoms", "symptom", sx_slug))
+        # combines_with / component_salts reference other tissue salts (intra-entity).
+        # A Bio-Combination's component_salts point at the single cell salts inside it.
+        for ref in ts.combines_with:
+            if ref == ts.slug or ref not in valid_tissue_salt_slugs:
+                warnings.append(Warning_("tissue_salt", ts.slug, "combines_with", "tissue_salt", ref))
+        for ref in ts.component_salts:
+            if ref not in valid_tissue_salt_slugs:
+                warnings.append(Warning_("tissue_salt", ts.slug, "component_salts", "tissue_salt", ref))
+
     # ---- protocols ----
     for pr in loaded.protocols:
         for cite in pr.sources:
@@ -499,6 +525,7 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
                 "claim": valid_claim_slugs_set,
                 "cooking_adjustment": {ca.slug for ca in loaded.cooking_adjustments},
                 "home_remedy": {hr.slug for hr in loaded.home_remedies},
+                "tissue_salt": {ts.slug for ts in loaded.tissue_salts},
                 "protocol": {pr.slug for pr in loaded.protocols},
                 "lab_test": {lt.slug for lt in loaded.lab_tests},
                 "lab_panel": {lp.slug for lp in loaded.lab_panels},
@@ -526,6 +553,157 @@ def validate_loaded(loaded: Loaded) -> tuple[list[str], list[Warning_]]:
             _walk_mindmap_node(mm.slug, branch, path=f"tree[{i}]")
 
     return errors, warnings
+
+
+@dataclass
+class Orphan:
+    """An entity that EXISTS but the assessment subgraph can never reach.
+
+    Distinct from a Warning_ (which is a reference to a slug that DOESN'T
+    exist). An orphan is the opposite failure: the entity is authored and
+    valid, but nothing points at it through the edges the assess subgraph
+    actually walks, so the AI can never surface it as a driver / suggestion.
+
+    This is the exact gap that hid beta-glucuronidase-deconjugation: it had
+    inbound *claim* references (which don't seed a subgraph) but no
+    topic.key_mechanisms / symptom.linked_to_mechanisms / mechanism.
+    related_mechanisms pointing at it, so it was unreachable.
+    """
+    kind: str            # "mechanism" | "supplement" | "claim" | ...
+    slug: str
+    display_name: str
+    reason: str
+    blocking: bool       # True = assessment-blocking (mechanism/supplement); False = secondary
+
+    def render(self) -> str:
+        flag = "🔴" if self.blocking else "🟡"
+        return f"{flag} {self.kind} {self.slug!r} — {self.reason}"
+
+
+def find_orphans(loaded: Loaded) -> list[Orphan]:
+    """Find entities unreachable by the assessment subgraph.
+
+    Reachability mirrors fmdb/assess/subgraph.py exactly (alias-aware):
+
+    - mechanism: reachable iff some topic.key_mechanisms, symptom.
+      linked_to_mechanisms, or OTHER mechanism.related_mechanisms resolves
+      to it. (claims/supplements/lab_tests linking to a mechanism do NOT
+      count — they are pulled IN by topics, they don't seed scope.)
+    - supplement / cooking / remedy / protocol: reachable iff it carries at
+      least one outbound link (topics / mechanisms / claims / symptoms) that
+      resolves to an existing entity — otherwise scope can never pull it in.
+    - claim: reachable iff linked_to_topics OR linked_to_mechanisms resolves.
+    - symptom: always selectable, so never "unreachable" — but a symptom with
+      no resolving topic/mechanism link is a DEAD END (adds nothing to the
+      subgraph when picked). Flagged separately, non-blocking.
+
+    Topics are omitted: they are directly selectable in the assess UI, so a
+    topic is always reachable by definition.
+    """
+    mech_idx = _resolve_index(loaded.mechanisms)
+    topic_idx = _resolve_index(loaded.topics)
+    supp_idx = _resolve_index(loaded.supplements)
+    claim_idx = _resolve_index(loaded.claims)
+
+    # --- mechanisms: build the set the subgraph can actually reach ---
+    reachable_mech: set[str] = set()
+    for t in loaded.topics:
+        for ms in t.key_mechanisms:
+            c = mech_idx.get(ms)
+            if c:
+                reachable_mech.add(c)
+    for sym in loaded.symptoms:
+        for ms in sym.linked_to_mechanisms:
+            c = mech_idx.get(ms)
+            if c:
+                reachable_mech.add(c)
+    for m in loaded.mechanisms:
+        for rel in m.related_mechanisms:
+            c = mech_idx.get(rel)
+            if c and c != m.slug:   # self-reference doesn't make it reachable
+                reachable_mech.add(c)
+
+    orphans: list[Orphan] = []
+
+    for m in loaded.mechanisms:
+        if m.slug not in reachable_mech:
+            orphans.append(Orphan(
+                "mechanism", m.slug, m.display_name,
+                "no topic.key_mechanisms / symptom.linked_to_mechanisms / "
+                "mechanism.related_mechanisms points here — unreachable by the assessment",
+                blocking=True,
+            ))
+
+    def _resolves_any(slugs, idx) -> bool:
+        return any(idx.get(s) for s in (slugs or []))
+
+    for s in loaded.supplements:
+        if not (
+            _resolves_any(s.linked_to_topics, topic_idx)
+            or _resolves_any(s.linked_to_mechanisms, mech_idx)
+            or _resolves_any(s.linked_to_claims, claim_idx)
+        ):
+            orphans.append(Orphan(
+                "supplement", s.slug, s.display_name,
+                "no resolving linked_to_topics / linked_to_mechanisms / linked_to_claims "
+                "— the assessment can never suggest it",
+                blocking=True,
+            ))
+
+    for c in loaded.claims:
+        if not (
+            _resolves_any(c.linked_to_topics, topic_idx)
+            or _resolves_any(c.linked_to_mechanisms, mech_idx)
+        ):
+            orphans.append(Orphan(
+                "claim", c.slug, (c.statement or "")[:60],
+                "no resolving linked_to_topics / linked_to_mechanisms — never surfaces as evidence",
+                blocking=False,
+            ))
+
+    for ca in loaded.cooking_adjustments:
+        if not (
+            _resolves_any(ca.linked_to_topics, topic_idx)
+            or _resolves_any(ca.linked_to_mechanisms, mech_idx)
+        ):
+            orphans.append(Orphan(
+                "cooking_adjustment", ca.slug, ca.display_name,
+                "no resolving linked_to_topics / linked_to_mechanisms", blocking=False,
+            ))
+
+    for hr in loaded.home_remedies:
+        if not (
+            _resolves_any(hr.linked_to_topics, topic_idx)
+            or _resolves_any(hr.linked_to_mechanisms, mech_idx)
+        ):
+            orphans.append(Orphan(
+                "home_remedy", hr.slug, hr.display_name,
+                "no resolving linked_to_topics / linked_to_mechanisms", blocking=False,
+            ))
+
+    for pr in loaded.protocols:
+        if not (
+            _resolves_any(pr.linked_to_topics, topic_idx)
+            or _resolves_any(pr.linked_to_mechanisms, mech_idx)
+        ):
+            orphans.append(Orphan(
+                "protocol", pr.slug, pr.display_name,
+                "no resolving linked_to_topics / linked_to_mechanisms", blocking=False,
+            ))
+
+    # symptoms: dead-ends (selectable but contribute nothing)
+    for sym in loaded.symptoms:
+        if not (
+            _resolves_any(sym.linked_to_topics, topic_idx)
+            or _resolves_any(sym.linked_to_mechanisms, mech_idx)
+        ):
+            orphans.append(Orphan(
+                "symptom", sym.slug, sym.display_name,
+                "dead end — links to no topic/mechanism, so picking it adds nothing to the subgraph",
+                blocking=False,
+            ))
+
+    return orphans
 
 
 def validate_all(data_dir: Path) -> tuple[int, list[str], list[Warning_]]:

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import yaml
 
-from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TitrationProtocol, Topic
+from .models import Claim, CookingAdjustment, DrugDepletion, HomeRemedy, LabPanel, LabTest, Mechanism, MindMap, Protocol, Source, Supplement, Symptom, TissueSalt, TitrationProtocol, Topic
 
 
 def load_supplements(data_dir: Path) -> list[Supplement]:
@@ -86,6 +86,29 @@ def load_home_remedy(data_dir: Path, slug: str) -> HomeRemedy:
     with path.open() as f:
         raw = yaml.safe_load(f)
     return HomeRemedy(**raw)
+
+
+def load_tissue_salts(data_dir: Path) -> list[TissueSalt]:
+    d = data_dir / "tissue_salts"
+    if not d.exists():
+        return []
+    out = []
+    for path in sorted(d.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open() as f:
+            raw = yaml.safe_load(f)
+        out.append(TissueSalt(**raw))
+    return out
+
+
+def load_tissue_salt(data_dir: Path, slug: str) -> TissueSalt:
+    path = data_dir / "tissue_salts" / f"{slug}.yaml"
+    if not path.exists():
+        raise FileNotFoundError(f"tissue_salt not found: {slug}")
+    with path.open() as f:
+        raw = yaml.safe_load(f)
+    return TissueSalt(**raw)
 
 
 def load_protocols(data_dir: Path) -> list[Protocol]:

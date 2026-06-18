@@ -165,7 +165,7 @@ def main() -> int:
     from fmdb.plan.models import (
         Plan, HypothesizedDriver, PracticeItem, NutritionPlan, EducationModule,
         SupplementItem, LabOrderItem, ReferralItem, CatalogueSnapshot, TrackingHabit,
-        AyurvedaSection,
+        AyurvedaSection, TissueSaltsSection, TissueSaltItem,
     )
 
     root = plan_storage.plans_root()
@@ -202,12 +202,14 @@ def main() -> int:
         _sym_idx = _resolve_index(_cat.symptoms)
         _supp_slugs = {s.slug for s in _cat.supplements}
         _hr_idx = _resolve_index(_cat.home_remedies)
+        _ts_idx = _resolve_index(getattr(_cat, "tissue_salts", []) or [])
     except Exception:
         _topic_idx = {}
         _mech_idx = {}
         _sym_idx = {}
         _supp_slugs = set()
         _hr_idx = {}
+        _ts_idx = {}
 
     def _is_topic(slug: str) -> bool:
         return bool(slug) and slug in _topic_idx
@@ -414,6 +416,37 @@ def main() -> int:
             plan_storage.write_client(root, client)
         except Exception:
             pass  # never block plan generation on the client write
+
+    # ── Tissue-salts (Schüssler) layer ────────────────────────────────────
+    # Only when the client is on the schussler_salts module AND the suggester
+    # emitted the block. Salt slugs are validated / canonicalised against the
+    # tissue_salt catalogue so plan-check + letter stay clean — unknown or
+    # duplicate slugs are dropped silently (the suggester is subgraph-bound,
+    # so this is rare). The section becomes the draft Plan.tissue_salts.
+    _tsalt = suggestions.get("tissue_salts") if isinstance(suggestions.get("tissue_salts"), dict) else None
+    _schussler_on = "schussler_salts" in (getattr(client, "plan_modules", None) or [])
+    if _tsalt and _schussler_on and picks.get("tissue_salts_block", True):
+        _resolved_salts: list = []
+        _seen_salt: set = set()
+        for it in (_tsalt.get("salts") or []):
+            if not isinstance(it, dict):
+                continue
+            canon = _ts_idx.get(str(it.get("salt_slug") or "").strip())
+            if not canon or canon in _seen_salt:
+                continue  # drop unknown / duplicate slugs silently
+            _seen_salt.add(canon)
+            _resolved_salts.append(TissueSaltItem(
+                salt_slug=canon,
+                reason=str(it.get("reason") or "").strip(),
+                intake_evidence=[
+                    str(e).strip() for e in (it.get("intake_evidence") or []) if str(e).strip()
+                ],
+            ))
+        if _resolved_salts:
+            plan.tissue_salts = TissueSaltsSection(
+                overview=str(_tsalt.get("overview") or "").strip(),
+                salts=_resolved_salts,
+            )
 
     for sp in suggestions.get("supplement_suggestions", []) or []:
         slug_s = sp.get("supplement_slug", "")

@@ -1,0 +1,51 @@
+slug: bio-combination-14
+display_name: Bio-Combination 14 — Measles
+aliases:
+- BC 14
+- BC-14
+- Bio Combination 14
+- Biocombination No. 14
+- BC No. 14
+category: bio_combination
+salt_number: 14
+mineral_compound: ''
+standard_potency: 3X / 6X (combination tablet)
+tissue_affinity: []
+key_indications:
+- Traditionally listed as a biochemic comfort adjunct during the rash and feverish stage of measles
+facial_signs: []
+typical_use: Commonly 4 tablets dissolved in the mouth 3–4× daily, per the manufacturer's pack. Confirm
+  the dose on the specific brand's label.
+combines_with:
+- ferrum-phos
+- kali-mur
+component_salts: []
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Measles is a serious, notifiable infectious illness with real complication risk — it needs medical care.
+  This is not a treatment; see a doctor.
+- Bio-Combination numbering and composition vary slightly between manufacturers (SBL / Dr. Reckeweg /
+  Schwabe / Bakson) — confirm the indication, the salts and the potencies on the specific pack.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL Bio-Combination 14
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_topics: []
+linked_to_symptoms: []
+notes_for_coach: India's off-the-shelf biochemic combination, sold as a single numbered tablet for measles.
+  Biochemically centred on Ferrum phos (No. 3), Kali mur (No. 4). Confirm the indication and exact composition
+  against the client's pack — BC numbering and salts vary slightly by manufacturer.
+notes_for_client: A widely-available traditional combination tablet some people use for measles. It's
+  an optional gentle adjunct alongside your plan — not a medicine, and not a replacement for proper medical
+  care.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Bio-Combination 14
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-17'
+updated_by: Shivani

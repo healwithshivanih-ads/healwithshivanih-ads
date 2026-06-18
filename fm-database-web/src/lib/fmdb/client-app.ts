@@ -738,6 +738,10 @@ export interface ClientAppData {
   remedyLib: AppRemedy[];
   /** Top 3–5 most relevant eligible remedies, each with a whyFor line. */
   remedyShelf: AppRemedy[];
+  /** Schüssler tissue-salt suggestions — present only when the client is on the
+   *  schussler_salts module AND the plan carries an authored tissue_salts
+   *  section. null otherwise. A gentle optional adjunct. */
+  tissueSalts: { overview: string; list: { name: string; reason: string; how: string }[] } | null;
   planRef: {
     pattern: string;
     authoredBy: string;
@@ -1480,6 +1484,36 @@ function remedyIcon(category: string, route: string, slug: string): string {
 
 let remedyCache: AppRemedy[] | null = null;
 let remedyCacheAt = 0;
+
+let tsSaltCache: Map<string, { name: string; how: string }> | null = null;
+let tsSaltCacheAt = 0;
+/** slug → {display name, typical-use} for the tissue_salt catalogue. Used to
+ *  resolve plan.tissue_salts slugs for the app's gentle-adjunct section. */
+async function loadTissueSaltMap(): Promise<Map<string, { name: string; how: string }>> {
+  if (tsSaltCache && Date.now() - tsSaltCacheAt < 60_000) return tsSaltCache;
+  const dir = path.join(getCataloguePath(), "tissue_salts");
+  const map = new Map<string, { name: string; how: string }>();
+  let entries: string[] = [];
+  try {
+    entries = await fs.readdir(dir);
+  } catch {
+    return map;
+  }
+  for (const name of entries) {
+    if (!name.endsWith(".yaml") && !name.endsWith(".yml")) continue;
+    const d = await readYamlIfExists(path.join(dir, name));
+    if (!d) continue;
+    const slug = asStr(d.slug) || name.replace(/\.ya?ml$/, "");
+    map.set(slug, {
+      name: asStr(d.display_name) || humanize(slug),
+      how: asStr(d.typical_use).replace(/\s+/g, " ").trim(),
+    });
+  }
+  tsSaltCache = map;
+  tsSaltCacheAt = Date.now();
+  return map;
+}
+
 
 async function loadRemedyLibrary(): Promise<AppRemedy[]> {
   if (remedyCache && Date.now() - remedyCacheAt < 60_000) return remedyCache;
@@ -3880,6 +3914,33 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     { mode: "plan", targetedMarkers, concernTerms },
   );
 
+  // ── Tissue salts (Schüssler) — gentle optional adjunct ─────────────────
+  // Only when the client is on the schussler_salts module AND the plan carries
+  // an authored tissue_salts section. Resolve slug → catalogue name + dose.
+  let tissueSalts: ClientAppData["tissueSalts"] = null;
+  if (asStrArr(client.plan_modules).includes("schussler_salts")) {
+    const tsBlock = (plan.tissue_salts as Dict) ?? {};
+    const tsItems = Array.isArray(tsBlock.salts) ? (tsBlock.salts as Dict[]) : [];
+    if (tsItems.length) {
+      const tsMap = await loadTissueSaltMap();
+      const tsList = tsItems
+        .map((it) => {
+          const slug = asStr(it.salt_slug).trim();
+          if (!slug) return null;
+          const cat = tsMap.get(slug);
+          return {
+            name: cat?.name ?? humanize(slug),
+            reason: asStr(it.reason).trim(),
+            how: asStr(it.typical_use).trim() || (cat?.how ?? ""),
+          };
+        })
+        .filter((x): x is { name: string; reason: string; how: string } => x !== null);
+      if (tsList.length) {
+        tissueSalts = { overview: asStr(tsBlock.overview).trim(), list: tsList };
+      }
+    }
+  }
+
   return {
     clientId,
     planSlug,
@@ -3939,6 +4000,7 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
     remedies,
     remedyLib: visibleLib,
     remedyShelf: visibleShelf,
+    tissueSalts,
     planRef: {
       pattern: asStr(nutrition.pattern) || "your plan",
       authoredBy: coachName,

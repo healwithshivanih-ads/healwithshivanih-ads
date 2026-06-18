@@ -16,12 +16,13 @@ import type {
   TitrationProtocol,
   LabPanel,
   LabTest,
+  TissueSalt,
 } from "@/lib/fmdb/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function CataloguePage() {
-  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations, labPanels, labTests] =
+  const [topics, mechanisms, symptoms, supplements, claims, sources, protocols, titrations, labPanels, labTests, tissueSalts] =
     await Promise.all([
       loadAllOfKind<Topic>("topics"),
       loadAllOfKind<Mechanism>("mechanisms"),
@@ -33,6 +34,7 @@ export default async function CataloguePage() {
       loadAllOfKind<TitrationProtocol>("titration_protocols"),
       loadAllOfKind<LabPanel>("lab_panels"),
       loadAllOfKind<LabTest>("lab_tests"),
+      loadAllOfKind<TissueSalt>("tissue_salts"),
     ]);
 
   // Source records use `id` (not `slug`) and `title` (not `display_name`) on disk.
@@ -56,6 +58,7 @@ export default async function CataloguePage() {
     sources: sources.length,
     cooking_adjustments: 0,
     home_remedies: 0,
+    tissue_salts: tissueSalts.length,
     mindmaps: 0,
     drug_depletions: 0,
   };
@@ -65,6 +68,7 @@ export default async function CataloguePage() {
     "mechanisms",
     "symptoms",
     "supplements",
+    "tissue_salts",
     "protocols",
     "titration_protocols",
     "lab_panels",
@@ -82,6 +86,7 @@ export default async function CataloguePage() {
     titration_protocols: titrations as unknown as BaseEntity[],
     lab_panels: labPanels as unknown as BaseEntity[],
     lab_tests: labTests as unknown as BaseEntity[],
+    tissue_salts: tissueSalts as unknown as BaseEntity[],
     claims,
     sources: sourcesNormalized,
   };
@@ -100,7 +105,11 @@ export default async function CataloguePage() {
         </div>
 
         <Tabs defaultValue="topics" className="w-full">
-          <TabsList>
+          {/* Horizontal scroll keeps the familiar compact single row but lets
+              you reach the later tabs when the row is wider than the viewport.
+              (Wrapping fights the triggers' h-[calc(100%-1px)] and collapses to
+              one-tab-per-row, so scroll is the robust choice here.) */}
+          <TabsList className="max-w-full overflow-x-auto justify-start">
             {tabOrder.map((kind) => {
               const meta = KIND_LABELS[kind];
               return (

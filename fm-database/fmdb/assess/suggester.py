@@ -489,6 +489,31 @@ _TOOL_INPUT_SCHEMA: dict[str, Any] = {
                 },
             },
         },
+        "tissue_salts": {
+            "type": "object",
+            "description": (
+                "Schüssler / biochemic tissue-salt plan layer. POPULATE ONLY "
+                "when client_context.schussler_salts_enabled is true; otherwise "
+                "OMIT this key entirely. Gentle adjunct ONLY — every salt_slug "
+                "MUST be from the subgraph's `tissue_salts` list; never invent one."
+            ),
+            "properties": {
+                "overview": {"type": "string", "description": "Warm, client-facing one-liner introducing the tissue-salt suggestions, framed as a gentle optional support alongside the plan (not a medicine)."},
+                "salts": {
+                    "type": "array",
+                    "description": "1-4 tissue salts whose indications / keynotes best match THIS client's picture. Fewer is better — pick the most-fitting, don't list a salt for every symptom. ONLY slugs present in the subgraph `tissue_salts` list.",
+                    "items": {
+                        "type": "object",
+                        "required": ["salt_slug", "reason"],
+                        "properties": {
+                            "salt_slug": {"type": "string", "description": "A tissue_salt slug from the subgraph (core cell salt like 'mag-phos' / 'kali-phos', or a Bio-Combination like 'bio-combination-15')."},
+                            "reason": {"type": "string", "description": "One sentence — why this salt fits this client, tied to their specific symptoms / picture."},
+                            "intake_evidence": {"type": "array", "items": {"type": "string"}, "description": "Intake observations that drove this pick, format 'observation (source_field)'. Empty list if not intake-driven."},
+                        },
+                    },
+                },
+            },
+        },
         "catalogue_additions_suggested": {
             "type": "array",
             "description": "Items you would have suggested if they existed in the catalogue. Use this to surface gaps for later authoring.",
@@ -1454,6 +1479,26 @@ HARD RULES (violating these breaks the downstream system):
     kitchen-remedies. NEVER bhasmas, panchakarma, gem/metal/colour therapy, or
     anything requiring a vaidya.
 
+29. TISSUE SALTS (Schüssler / biochemic) — populate the `tissue_salts` object
+    ONLY when `client_context.schussler_salts_enabled` is true. If it's false or
+    absent, OMIT the key entirely. When enabled:
+    - The subgraph carries a `tissue_salts` list (the 12 core cell salts + any
+      matching Bio-Combinations). Pick `salt_slug` values ONLY from that list —
+      NEVER invent a slug or recommend a salt that isn't there.
+    - Match by reading each salt's `key_indications` + `notes_for_coach` (the
+      Boericke keynotes) against THIS client's picture. Pick the 1-4 BEST-fitting
+      salts — not one per symptom. Anchors: cramping / spasmodic pain → mag-phos;
+      nervous exhaustion / burnout / grief → kali-phos; first-stage inflammation
+      or fever → ferrum-phos; acidity / sour reflux → natrum-phos; thick white
+      catarrh → kali-mur; painful or irregular periods → bio-combination-15.
+    - Each salt needs a one-sentence `reason` tying it to the client's symptoms,
+      plus `intake_evidence` citing the driving observations (same audit
+      discipline as INTAKE-EVIDENCE TRACEABILITY) — empty list if not intake-driven.
+    - SCOPE — tissue salts are a GENTLE traditional adjunct (all are
+      evidence_tier fm_specific_thin), never a primary treatment and never a
+      substitute for the supplement protocol or medical care. Keep `overview`
+      warm and client-facing.
+
 Call `synthesize_assessment` exactly once with your structured result."""
 
 
@@ -1723,6 +1768,7 @@ def _compact_index(subgraph: Any) -> dict[str, list[str]]:
         "cooking_adjustments": names(subgraph.get("cooking_adjustments")),
         "home_remedies": names(subgraph.get("home_remedies")),
         "protocols": names(subgraph.get("protocols")),
+        "tissue_salts": names(subgraph.get("tissue_salts")),
     }
 
 

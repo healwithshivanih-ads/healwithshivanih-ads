@@ -1,0 +1,64 @@
+slug: kali-phos
+display_name: Potassium Phosphate (No. 5)
+aliases:
+- Kali Phos
+- Kali Phosphoricum
+- Schüssler Salt No. 5
+- Cell Salt 5
+- Tissue Salt 5
+- Potassium Phosphate
+category: core_cell_salt
+salt_number: 5
+mineral_compound: Potassium phosphate (K₃PO₄)
+standard_potency: 6X (D6)
+tissue_affinity:
+- nerve cells
+- brain
+- muscles
+key_indications:
+- Traditionally "the great nerve nutrient" — used for nervous exhaustion and mental or physical tiredness
+  after stress, study or overwork
+- Irritability, nervous headache, and a worn-out, "running on empty" feeling
+- Sleeplessness from an overactive mind; low mood that goes with exhaustion
+facial_signs:
+- Ashen-grey pallor
+- Sunken or darkly shadowed area around the eyes
+- A tired, drawn expression
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, away from food and strong flavours.
+combines_with:
+- mag-phos
+- calc-phos
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Significant low mood, anxiety or persistent insomnia needs proper support — cell salts are not a treatment
+  for depression or an anxiety disorder.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms:
+- fatigue
+- brain-fog
+notes_for_coach: 'The "nerve tonic" cell salt — burnout, mental fatigue, frazzled-and-wired states. Sits
+  naturally alongside your stress / hypnotherapy / NLP work as a gentle adjunct. Be explicit with clients
+  that it is NOT a treatment for clinical depression or anxiety — refer where indicated.
+
+
+  Boericke & Dewey keynotes — the great nerve salt: nervous exhaustion and brain-fag from overwork or
+  grief; despondency, anxiety, irritability, ''trifles seem like mountains''; failing memory; student
+  / worn-out headache better while eating and from gentle motion; sleeplessness; foul putrid discharges.
+  Worse from noise, exertion and cold; better from gentle motion, eating, warmth.'
+notes_for_client: A gentle traditional support some people use when they feel mentally drained or frazzled
+  after a stressful stretch. It's an optional adjunct alongside your plan — not a medicine, and not a
+  substitute for proper support if you're struggling.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Kali phosphoricum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

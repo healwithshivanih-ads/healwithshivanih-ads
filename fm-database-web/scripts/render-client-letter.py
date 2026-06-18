@@ -3196,6 +3196,75 @@ def _build_ayurveda_html(plan: dict, client: dict) -> str:
     )
 
 
+def _load_tissue_salt(slug: str) -> dict | None:
+    """Load a TissueSalt YAML from fm-database/data/tissue_salts/<slug>.yaml."""
+    import yaml as _yaml
+    p = FMDB_ROOT / "data" / "tissue_salts" / f"{slug}.yaml"
+    if not p.exists():
+        return None
+    try:
+        return _yaml.safe_load(p.read_text()) or None
+    except Exception:
+        return None
+
+
+def _build_tissue_salts_html(plan: dict, client: dict) -> str:
+    """Optional '🧂 Gentle tissue salts' section for consolidated +
+    lifestyle_guide letters. Renders plan.tissue_salts — an intro + one card per
+    chosen salt (catalogue display name + the coach's reason + how to take it).
+    Returns '' when there's nothing to show. Reuses the .remedies / .remedy-card
+    CSS (same as _build_ayurveda_html) so no new styles are needed. Gated
+    upstream by 'schussler_salts' in client.plan_modules.
+
+    Client-facing scope: framed as a gentle OPTIONAL traditional adjunct, never a
+    medicine — a closing note keeps that boundary explicit.
+    """
+    ts = plan.get("tissue_salts") or {}
+    if not isinstance(ts, dict):
+        return ""
+    salts = [
+        s for s in (ts.get("salts") or [])
+        if isinstance(s, dict) and (s.get("salt_slug") or "").strip()
+    ]
+    if not salts:
+        return ""
+    overview = (ts.get("overview") or "").strip()
+
+    cards: list[str] = []
+    for s in salts:
+        slug = str(s.get("salt_slug") or "").strip()
+        cat = _load_tissue_salt(slug) or {}
+        name = cat.get("display_name") or slug.replace("-", " ").title()
+        reason = (s.get("reason") or "").strip()
+        # Dose: coach override on the plan item, else the catalogue's typical_use.
+        when = (s.get("typical_use") or "").strip() or (cat.get("typical_use") or "").strip()
+        cards.append(
+            f'    <article class="remedy-card"><h3 class="remedy-name">{name}</h3>'
+            + (f'<p class="remedy-why">{reason}</p>' if reason else "")
+            + (f'<p class="remedy-when"><strong>How to take it:</strong> {when}</p>' if when else "")
+            + "</article>"
+        )
+    if not cards:
+        return ""
+
+    sub = overview or "A few gentle tissue salts chosen to support you alongside your plan."
+    note = (
+        '  <p class="remedies-sub" style="font-size:0.85em;opacity:0.8">'
+        "Tissue salts are a gentle traditional adjunct — optional, not a medicine, and not a "
+        "replacement for your supplements or medical care. The tablets dissolve under the tongue, "
+        "away from food and strong flavours.</p>\n"
+    )
+    body = '  <div class="remedy-grid">\n' + "\n".join(cards) + "\n  </div>\n"
+    return (
+        '<section id="tissue-salts" class="remedies">\n'
+        '  <h2 class="remedies-title">🧂 Gentle tissue salts</h2>\n'
+        f'  <p class="remedies-sub">{sub}</p>\n'
+        + body
+        + note
+        + "</section>"
+    )
+
+
 def _buy_source_label(url: str) -> str:
     """Retailer label for a supplement buy link (shown beside 'Buy here')."""
     u = (url or "").lower()
@@ -8214,6 +8283,29 @@ def main() -> int:
                         html = html.replace(_footer, ayur_html + "\n    " + _footer, 1)
                     elif "</body>" in html:
                         html = html.replace("</body>", ayur_html + "\n</body>", 1)
+
+        # ── Tissue-salts section ──────────────────────────────────────────
+        # Renders for consolidated + lifestyle_guide letters when the client is
+        # on the schussler_salts module AND the plan carries an authored
+        # tissue_salts section. Placed after the meal grid when present, else
+        # before the footer — mirrors the Ayurveda injection above.
+        if (
+            html
+            and letter_type in ("consolidated", "lifestyle_guide")
+            and "schussler_salts" in (client.get("plan_modules") or [])
+            and plan.get("tissue_salts")
+        ):
+            ts_html = _build_tissue_salts_html(plan, client)
+            if ts_html:
+                _tp = _inject_after_last_meal_grid(html, ts_html)
+                if _tp is not None:
+                    html = _tp
+                else:
+                    _footer = '<footer class="brand-footer">'
+                    if _footer in html:
+                        html = html.replace(_footer, ts_html + "\n    " + _footer, 1)
+                    elif "</body>" in html:
+                        html = html.replace("</body>", ts_html + "\n</body>", 1)
     except Exception as e:
         html = None  # HTML is a nice-to-have; don't fail if brand module errors
 

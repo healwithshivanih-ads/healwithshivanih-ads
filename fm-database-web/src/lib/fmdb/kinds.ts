@@ -15,6 +15,7 @@ export type CatalogueKind =
   | "sources"
   | "cooking_adjustments"
   | "home_remedies"
+  | "tissue_salts"
   | "mindmaps"
   | "drug_depletions";
 
@@ -101,6 +102,12 @@ export const KIND_LABELS: Record<CatalogueKind, KindLabel> = {
     singular: "Home remedy",
     description: "Ayurvedic churans, infused waters, kashayams, kitchen remedies",
     emoji: "🌿",
+  },
+  tissue_salts: {
+    plural: "Tissue salts",
+    singular: "Tissue salt",
+    description: "Schüssler / biochemic cell salts (12 core) + India's Bio-Combination tablets — gentle adjuncts",
+    emoji: "🧂",
   },
   mindmaps: {
     plural: "Mind maps",

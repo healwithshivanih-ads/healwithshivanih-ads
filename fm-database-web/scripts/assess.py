@@ -676,6 +676,7 @@ def main() -> int:
     # the mtime heuristic ever drifts (gitignored, harmless to clear).
     subgraph: dict | None = None
     _ayurveda_on = bool(getattr(client, "ayurveda_enabled", False))
+    _schussler_on = bool("schussler_salts" in (getattr(client, "plan_modules", None) or []))
     if os.environ.get("FM_ASSESS_NO_CACHE") != "1":
         try:
             # Catalogue mtime — use the most recent modification across the
@@ -689,6 +690,7 @@ def main() -> int:
                 "topics": sorted(topics),
                 "cat_mtime": int(cat_mtime),
                 "ayurveda": _ayurveda_on,
+                "schussler": _schussler_on,
             }
             sg_key = hashlib.sha256(_stable_json(sg_blob).encode()).hexdigest()[:32]
             sg_cache_dir = _ASSESS_CACHE_DIR / "subgraph"
@@ -699,7 +701,7 @@ def main() -> int:
         except Exception:
             subgraph = None
     if subgraph is None:
-        subgraph = build_subgraph(cat, symptom_slugs=symptoms, topic_slugs=topics, ayurveda=_ayurveda_on)
+        subgraph = build_subgraph(cat, symptom_slugs=symptoms, topic_slugs=topics, ayurveda=_ayurveda_on, schussler=_schussler_on)
         # Best-effort save — failures don't break the assess flow.
         try:
             if os.environ.get("FM_ASSESS_NO_CACHE") != "1":
@@ -843,6 +845,10 @@ def main() -> int:
         # (empty => prakruti pending), and infers VIKRUTI from the body-systems
         # intake fields already carried in intake_extras.
         "ayurveda_enabled": bool(getattr(client, "ayurveda_enabled", False)),
+        # Schüssler tissue-salt layer. Only acted on when schussler_salts is in
+        # the client's plan_modules — the suggester emits its `tissue_salts`
+        # output block only then, picking from the subgraph's tissue_salts list.
+        "schussler_salts_enabled": _schussler_on,
         "ayurveda_constitution": getattr(client, "ayurveda_constitution", None) or "",
         "dosha_self_assessment": getattr(client, "dosha_self_assessment", None) or {},
         # Measurements: prefer the legacy `measurements` sub-model when set

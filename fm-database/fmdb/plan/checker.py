@@ -442,6 +442,7 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     supp_idx = _resolve_index(catalogue.supplements)
     ca_idx = _resolve_index(catalogue.cooking_adjustments)
     hr_idx = _resolve_index(catalogue.home_remedies)
+    ts_idx = _resolve_index(getattr(catalogue, "tissue_salts", []) or [])
     claim_slugs = {c.slug for c in catalogue.claims}     # Claim has no aliases
     supp_by_slug = {s.slug: s for s in catalogue.supplements}
 
@@ -477,6 +478,14 @@ def check_plan(plan: Plan, client: Client | None, catalogue: Loaded) -> list[Fin
     if plan.ayurveda:
         for slug in plan.ayurveda.remedies:
             _xref("ayurveda", "remedies", slug, hr_idx, "home_remedy")
+
+    # ---------- Tissue-salts section (Schüssler) ----------
+    # Every salt_slug must resolve to a catalogue TissueSalt (alias-aware). The
+    # suggester is subgraph-bound and generate-draft drops unknown slugs, so this
+    # is a safety net for hand-edits / future drift.
+    if plan.tissue_salts:
+        for _it in plan.tissue_salts.salts:
+            _xref("tissue_salts", "salt_slug", _it.salt_slug, ts_idx, "tissue_salt")
 
     # Dosha mismatch: a remedy whose `aggravates_dosha` intersects the client's
     # currently-aggravated doshas (vikruti) is a safety concern — e.g. a heating

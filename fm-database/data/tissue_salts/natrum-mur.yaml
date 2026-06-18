@@ -1,0 +1,64 @@
+slug: natrum-mur
+display_name: Sodium Chloride (No. 8)
+aliases:
+- Nat Mur
+- Natrum Muriaticum
+- Schüssler Salt No. 8
+- Cell Salt 8
+- Tissue Salt 8
+- Sodium Chloride
+category: core_cell_salt
+salt_number: 8
+mineral_compound: Sodium chloride (NaCl)
+standard_potency: 6X (D6)
+tissue_affinity:
+- water distribution across cells
+- mucous membranes
+key_indications:
+- 'Traditionally the "water-distribution" salt — used where fluid balance seems off: watery colds with
+  clear, egg-white-like discharge, watery eyes, or dryness alongside water retention'
+- Dryness of mucous membranes — dry mouth, cracked lips (classically a central lower-lip crack), dry skin
+- Traditionally associated with the after-effects of grief, pent-up emotion and a craving for salt
+- Bloating and puffiness linked to fluid retention
+facial_signs:
+- Greasy, shiny T-zone (oily sheen on the face)
+- A crack in the middle of the lower lip
+- Puffy, watery lower eyelids
+typical_use: 3–4 tablets of 6X dissolved under the tongue, 3–4× daily, away from food and strong flavours.
+combines_with: []
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- Cell-salt Natrum mur is a homeopathic dilution, NOT dietary salt — it neither adds nor restricts sodium
+  intake.
+- Persistent fluid retention, unexplained swelling or significant low mood needs proper assessment.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_symptoms:
+- bloating
+notes_for_coach: 'The most nuanced of the 12 — a "water-balance" picture with the paradox of dryness +
+  retention. Strong traditional grief / emotional association, which sits naturally alongside your hypnotherapy
+  + NLP work. Keep the boundary clear: cell-salt Nat mur is NOT a sodium intervention — dietary-sodium
+  coaching stays separate.
+
+
+  Boericke & Dewey keynotes — the water-distribution salt: all secretions watery and clear (''like boiled
+  starch'') — watery coryza, clear frothy phlegm, watery stool; emaciation (esp. of the neck) with a good
+  appetite; grief and silent sadness WORSE from consolation; morning throbbing headache; intermittent
+  fever with a ~10am chill and fever-blisters on the lips; hay fever; watery skin eruptions. NB not dietary
+  salt.'
+notes_for_client: A gentle traditional support some people use when they feel puffy-but-dry, or worn down
+  after a stressful, emotional stretch. It's an optional adjunct — not a medicine, and not the same as
+  table salt.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Natrum muriaticum
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-18'
+updated_by: Shivani

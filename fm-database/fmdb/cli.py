@@ -51,6 +51,8 @@ from .loader import (
     load_lab_tests,
     load_titration_protocol,
     load_titration_protocols,
+    load_tissue_salt,
+    load_tissue_salts,
     load_mechanism,
     load_mechanisms,
     load_source,
@@ -105,6 +107,60 @@ def cmd_pending_refs(args: argparse.Namespace) -> None:
         print(f"\n{kind} {slug!r}  (referenced by {len(refs)})")
         for w in refs:
             print(f"  ← {w.source_entity} {w.source_slug}.{w.field}")
+
+
+def cmd_orphans(args: argparse.Namespace) -> None:
+    """List catalogue entities the assessment subgraph can never reach.
+
+    The inverse of pending-refs: these entities EXIST and validate, but
+    nothing points at them through the edges the assess subgraph walks, so
+    the AI can never surface them. The exact failure that hid
+    beta-glucuronidase-deconjugation until it was wired into the estrogen-gut
+    cluster.
+    """
+    from .validator import find_orphans, load_all
+
+    orphans = find_orphans(load_all(DATA_DIR))
+    if args.kind:
+        orphans = [o for o in orphans if o.kind == args.kind]
+    if args.blocking:
+        orphans = [o for o in orphans if o.blocking]
+
+    if args.json:
+        import json
+        print(json.dumps([
+            {"kind": o.kind, "slug": o.slug, "display_name": o.display_name,
+             "reason": o.reason, "blocking": o.blocking}
+            for o in orphans
+        ], indent=2))
+        return
+
+    if not orphans:
+        print("(no orphans — every entity is reachable by the assessment)")
+        return
+
+    by_kind: dict = {}
+    for o in orphans:
+        by_kind.setdefault(o.kind, []).append(o)
+
+    n_block = sum(1 for o in orphans if o.blocking)
+    print(f"{len(orphans)} orphan(s) — {n_block} assessment-blocking, "
+          f"{len(orphans) - n_block} secondary\n")
+    order = ["mechanism", "supplement", "claim", "protocol",
+             "cooking_adjustment", "home_remedy", "symptom"]
+    for kind in sorted(by_kind, key=lambda k: order.index(k) if k in order else 99):
+        items = by_kind[kind]
+        flag = "[BLOCKING]" if items[0].blocking else "[secondary]"
+        print(f"{flag} {kind} ({len(items)})")
+        shown = items if args.verbose else items[:15]
+        for o in shown:
+            print(f"   {o.slug}  —  {o.display_name}")
+        if len(items) > len(shown):
+            print(f"   ... +{len(items) - len(shown)} more (use -v)")
+        print()
+    if n_block:
+        print("Fix a BLOCKING orphan by adding it to the key_mechanisms / "
+              "related_mechanisms / linked_to_* of an in-scope entity, then re-run.")
 
 
 # ---------------------------------------------------------------------------
@@ -758,6 +814,68 @@ def cmd_show_home_remedy(args: argparse.Namespace) -> None:
             loc = f" [{s.location}]" if s.location else ""
             print(f"    - {s.id}{loc}{quote}")
     print(f"  Updated: {hr.updated_at} by {hr.updated_by}")
+
+
+def cmd_tissue_salts(args: argparse.Namespace) -> None:
+    items = load_tissue_salts(DATA_DIR)
+    if not items:
+        print("(no tissue salts)")
+        return
+    for ts in items:
+        num = f"#{ts.salt_number}" if ts.salt_number is not None else "—"
+        print(f"  {ts.slug:28s}  {num:>5s}  {ts.category.value:20s}  [{ts.evidence_tier.value}]  {ts.display_name}")
+
+
+def cmd_show_tissue_salt(args: argparse.Namespace) -> None:
+    ts = load_tissue_salt(DATA_DIR, args.slug)
+    print(f"{ts.display_name}  ({ts.slug})  v{ts.version}  [{ts.status.value}]")
+    print(f"  Category:        {ts.category.value}")
+    if ts.salt_number is not None:
+        print(f"  Number:          {ts.salt_number}")
+    if ts.mineral_compound:
+        print(f"  Mineral:         {ts.mineral_compound}")
+    if ts.standard_potency:
+        print(f"  Potency:         {ts.standard_potency}")
+    print(f"  Evidence tier:   {ts.evidence_tier.value}")
+    if ts.aliases:
+        print(f"  Aliases:         {', '.join(ts.aliases)}")
+    if ts.tissue_affinity:
+        print(f"  Tissue affinity: {', '.join(ts.tissue_affinity)}")
+    if ts.key_indications:
+        print("  Indications:")
+        for i in ts.key_indications:
+            print(f"    - {i}")
+    if ts.facial_signs:
+        print("  Facial signs:")
+        for fs in ts.facial_signs:
+            print(f"    - {fs}")
+    if ts.typical_use:
+        print(f"  Typical use:     {ts.typical_use.strip()}")
+    if ts.combines_with:
+        print(f"  Combines with:   {', '.join(ts.combines_with)}")
+    if ts.component_salts:
+        print(f"  Component salts: {', '.join(ts.component_salts)}")
+    if ts.cautions:
+        print("  Cautions:")
+        for c in ts.cautions:
+            print(f"    - {c}")
+    if ts.india_brands:
+        print(f"  India brands:    {', '.join(ts.india_brands)}")
+    if ts.linked_to_topics:
+        print(f"  Topics:          {', '.join(ts.linked_to_topics)}")
+    if ts.linked_to_symptoms:
+        print(f"  Symptoms:        {', '.join(ts.linked_to_symptoms)}")
+    if ts.sources:
+        print("  Sources:")
+        for s in ts.sources:
+            quote = f' — "{s.quote}"' if s.quote else ""
+            loc = f" [{s.location}]" if s.location else ""
+            print(f"    - {s.id}{loc}{quote}")
+    if ts.notes_for_coach:
+        print(f"  Notes for coach: {ts.notes_for_coach.strip()}")
+    if ts.notes_for_client:
+        print(f"  Notes for client: {ts.notes_for_client.strip()}")
+    print(f"  Updated: {ts.updated_at} by {ts.updated_by}")
 
 
 def cmd_protocols(args: argparse.Namespace) -> None:
@@ -1834,6 +1952,13 @@ def main() -> None:
     val.set_defaults(func=cmd_validate)
     sub.add_parser("pending-refs", help="list unresolved cross-references grouped by target").set_defaults(func=cmd_pending_refs)
 
+    orph = sub.add_parser("orphans", help="list entities the assessment subgraph can never reach (inverse of pending-refs)")
+    orph.add_argument("--kind", help="filter to one kind (mechanism / supplement / claim / ...)")
+    orph.add_argument("--blocking", action="store_true", help="only assessment-blocking orphans (mechanisms + supplements)")
+    orph.add_argument("--json", action="store_true", help="machine-readable output (for the dashboard)")
+    orph.add_argument("-v", "--verbose", action="store_true", help="show all, not just first 15 per kind")
+    orph.set_defaults(func=cmd_orphans)
+
     bl = sub.add_parser("backlog-list", help="list catalogue-additions backlog")
     bl.add_argument("--status", choices=["open", "added", "rejected", "all"], default="open")
     bl.add_argument("--kind", help="filter to one kind (topic / mechanism / ...)")
@@ -1894,6 +2019,7 @@ def main() -> None:
     sub.add_parser("symptoms", help="list all symptoms").set_defaults(func=cmd_symptoms)
     sub.add_parser("cooking-adjustments", help="list all cooking adjustments").set_defaults(func=cmd_cooking_adjustments)
     sub.add_parser("home-remedies", help="list all home remedies").set_defaults(func=cmd_home_remedies)
+    sub.add_parser("tissue-salts", help="list all Schüssler / biochemic tissue salts").set_defaults(func=cmd_tissue_salts)
 
     show = sub.add_parser("show", help="show one supplement")
     show.add_argument("slug")
@@ -1926,6 +2052,10 @@ def main() -> None:
     show_hr = sub.add_parser("show-home-remedy", help="show one home remedy")
     show_hr.add_argument("slug")
     show_hr.set_defaults(func=cmd_show_home_remedy)
+
+    show_ts = sub.add_parser("show-tissue-salt", help="show one tissue salt")
+    show_ts.add_argument("slug")
+    show_ts.set_defaults(func=cmd_show_tissue_salt)
 
     sub.add_parser("protocols", help="list all FM protocols").set_defaults(func=cmd_protocols)
     show_pr = sub.add_parser("show-protocol", help="show one protocol")

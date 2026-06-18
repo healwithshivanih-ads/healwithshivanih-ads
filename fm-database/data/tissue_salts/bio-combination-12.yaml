@@ -1,0 +1,52 @@
+slug: bio-combination-12
+display_name: Bio-Combination 12 — Headache
+aliases:
+- BC 12
+- BC-12
+- Bio Combination 12
+- Biocombination No. 12
+- BC No. 12
+category: bio_combination
+salt_number: 12
+mineral_compound: ''
+standard_potency: 3X / 6X (combination tablet)
+tissue_affinity: []
+key_indications:
+- Traditionally a gentle adjunct for tension and nervous headaches
+- Headache linked to stress or fatigue
+facial_signs: []
+typical_use: Commonly 4 tablets dissolved in the mouth 3–4× daily, per the manufacturer's pack. Confirm
+  the dose on the specific brand's label.
+combines_with:
+- kali-phos
+- natrum-mur
+component_salts: []
+cautions:
+- Tissue salts are a traditional biochemic system with limited modern clinical-trial evidence — a gentle
+  optional adjunct, not a substitute for medical care.
+- A sudden severe ('thunderclap') headache, headache with fever/stiff neck, or a new persistent headache
+  needs urgent medical assessment.
+- Bio-Combination numbering and composition vary slightly between manufacturers (SBL / Dr. Reckeweg /
+  Schwabe / Bakson) — confirm the indication, the salts and the potencies on the specific pack.
+- Standard tablets have a lactose (milk-sugar) base — note if significantly lactose-intolerant.
+india_brands:
+- SBL Bio-Combination 12
+- Dr. Reckeweg
+- Schwabe India
+- Bakson
+linked_to_topics: []
+linked_to_symptoms: []
+notes_for_coach: India's off-the-shelf biochemic combination, sold as a single numbered tablet for headache.
+  Biochemically centred on Kali phos (No. 5), Nat mur (No. 8). Confirm the indication and exact composition
+  against the client's pack — BC numbering and salts vary slightly by manufacturer.
+notes_for_client: A widely-available traditional combination tablet some people use for headache. It's
+  an optional gentle adjunct alongside your plan — not a medicine, and not a replacement for proper medical
+  care.
+sources:
+- id: biochemic-tissue-salts-reference
+  location: Bio-Combination 12
+evidence_tier: fm_specific_thin
+version: 1
+status: active
+updated_at: '2026-06-17'
+updated_by: Shivani

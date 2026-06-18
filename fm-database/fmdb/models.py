@@ -30,6 +30,7 @@ from .enums import (
     SymptomSeverity,
     TakeWithFood,
     Timing,
+    TissueSaltCategory,
     Vipaka,
     Virya,
     SuitableSex,
@@ -228,6 +229,61 @@ class HomeRemedy(BaseModel):
     timing_notes: str = ""
     linked_to_topics: list[str] = Field(default_factory=list)
     linked_to_mechanisms: list[str] = Field(default_factory=list)
+    sources: list[SourceCitation] = Field(default_factory=list)
+    evidence_tier: EvidenceTier
+    version: int = 1
+    status: EntityStatus = EntityStatus.active
+    updated_at: date
+    updated_by: str
+
+    @field_validator("slug")
+    @classmethod
+    def _slug_format(cls, v: str) -> str:
+        if not v or not all(c.isalnum() or c == "-" for c in v) or not v.islower():
+            raise ValueError(f"slug must be lowercase ascii alphanumeric with hyphens, got {v!r}")
+        if v.startswith("-") or v.endswith("-") or "--" in v:
+            raise ValueError(f"slug has malformed hyphens: {v!r}")
+        return v
+
+
+class TissueSalt(BaseModel):
+    """A Schüssler / biochemic tissue salt (cell salt) — a low-potency mineral
+    preparation (typically 6X / D6) used as a gentle adjunct in the biochemic
+    tradition. Covers the canonical 12 core cell salts, the extended
+    supplementary salts, and India's pre-mixed Bio-Combination (BC 1–28) tablets.
+
+    NOT functional-medicine evidence — the biochemic system is traditional /
+    empirical. Every entry is tiered fm_specific_thin (🟠) and framed as an
+    optional gentle adjunct, never a prescription or a substitute for care. The
+    suggester only ever picks FROM this catalogue (subgraph-bound) so client
+    letters can never invent a salt or an indication.
+
+    Stored at data/tissue_salts/<slug>.yaml.
+    """
+    model_config = ConfigDict(extra="forbid")
+
+    slug: str
+    display_name: str                                            # e.g. "Calcium Fluoride (No. 1)"
+    aliases: list[str] = Field(default_factory=list)             # "Calc Fluor", "Schüssler Salt No. 1", "Cell Salt 1", "Ferr Phos"
+    category: TissueSaltCategory
+    salt_number: Optional[int] = None                            # 1–12 core, 13+ supplementary, or the BC number
+    mineral_compound: str = ""                                   # e.g. "Calcium fluoride (CaF₂)"
+    standard_potency: str = ""                                   # e.g. "6X (D6)" — single salts; "3X / 6X" for some BC
+    tissue_affinity: list[str] = Field(default_factory=list)     # tissues traditionally associated (elastic fibres, bone surface, etc.)
+    # Traditional / biochemic indications — coaching-framed, descriptive ("traditionally
+    # used to support …"), never diagnostic. The suggester surfaces these as optional
+    # adjuncts only.
+    key_indications: list[str] = Field(default_factory=list)
+    facial_signs: list[str] = Field(default_factory=list)        # Antlitzanalyse facial-diagnosis cues (educational layer)
+    typical_use: str = ""                                        # tablet terms — "3–4 tabs 6X dissolved under the tongue, 2–4×/day"
+    combines_with: list[str] = Field(default_factory=list)       # other tissue_salt slugs commonly paired
+    component_salts: list[str] = Field(default_factory=list)     # for BC formulas: the single tissue_salt slugs inside
+    cautions: list[str] = Field(default_factory=list)            # lactose base, evidence caveat, not-a-substitute, etc.
+    india_brands: list[str] = Field(default_factory=list)        # SBL, Dr. Reckeweg, Schwabe, Bakson, …
+    linked_to_topics: list[str] = Field(default_factory=list)
+    linked_to_symptoms: list[str] = Field(default_factory=list)
+    notes_for_coach: str = ""
+    notes_for_client: str = ""
     sources: list[SourceCitation] = Field(default_factory=list)
     evidence_tier: EvidenceTier
     version: int = 1
