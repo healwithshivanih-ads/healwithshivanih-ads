@@ -118,8 +118,8 @@ export function PlanStartDatesPanel({
 
   return (
     <FmPanel
-      title="📅 When did the client actually start?"
-      subtitle="Recheck date and letter framing key off these — fill in when the client confirms."
+      title="📅 Plan start date"
+      subtitle="Day 1 of the 12-week plan. Set a future date to put the plan ON HOLD — the client's app shows a 'starts on this date' screen until then. Recheck date + letter framing key off this."
     >
       <div style={{ display: "grid", gap: 14 }}>
         <div
@@ -155,6 +155,30 @@ export function PlanStartDatesPanel({
                 </>
               )}
             </div>
+            {(() => {
+              if (!mealVal) return null;
+              const now = new Date();
+              const days = Math.ceil(
+                (new Date(`${mealVal}T00:00:00Z`).getTime() -
+                  Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())) /
+                  86_400_000,
+              );
+              if (days <= 0) return null;
+              return (
+                <div
+                  style={{
+                    fontSize: 11,
+                    color: "#3730a3",
+                    background: "rgba(99,102,241,0.12)",
+                    borderRadius: 6,
+                    padding: "5px 8px",
+                  }}
+                >
+                  🔒 On hold — plan starts in {days} day{days === 1 ? "" : "s"}. The client&apos;s
+                  app stays on a &ldquo;starts on this date&rdquo; screen until then.
+                </div>
+              );
+            })()}
           </div>
 
           {/* Supplements column */}
