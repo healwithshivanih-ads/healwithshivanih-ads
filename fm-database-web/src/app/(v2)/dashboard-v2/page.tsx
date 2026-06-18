@@ -49,6 +49,7 @@ import {
   FmStatGrid,
   FmChip,
   FmCatalogueCommitBanner,
+  FmCatalogueOrphanChip,
   FmInboundMessagesBanner,
   FmIntakeActivityBanner,
   FmStrandedIntakeBanner,
@@ -1421,6 +1422,11 @@ export default async function DashboardV2() {
 
           {/* Catalogue commit — design 9A with change list disclosure */}
           <FmCatalogueCommitBanner initialStatus={catalogueStatus} />
+
+          {/* Catalogue ↔ assessment wiring guardrail — self-loading, hides
+              when every entity is reachable. Surfaces orphans like the
+              beta-glucuronidase gap before they strand silently. */}
+          <FmCatalogueOrphanChip />
         </FmAlertGroup>
       </div>
 

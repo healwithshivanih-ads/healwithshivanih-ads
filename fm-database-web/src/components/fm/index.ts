@@ -73,6 +73,7 @@ export type { FmBodyCompGridProps, BodyCompMetric } from "./FmBodyCompGrid";
 
 export { FmCatalogueCommitBanner } from "./FmCatalogueCommitBanner";
 export type { FmCatalogueCommitBannerProps } from "./FmCatalogueCommitBanner";
+export { FmCatalogueOrphanChip } from "./FmCatalogueOrphanChip";
 
 export { FmInboundMessagesBanner } from "./FmInboundMessagesBanner";
 export type { FmInboundMessagesBannerProps } from "./FmInboundMessagesBanner";
