@@ -645,6 +645,11 @@ export function PlanScreen({
               {data.weightLoss.phaseNote}{" "}Your meals are built around this — eat to comfortable fullness, don&apos;t
               count every calorie. Your maintenance level is about {data.weightLoss.tdee.toLocaleString()} kcal.
             </div>
+            {/* One coherent message: the headline above is the guide. Below we
+                reassure (no second competing number) — a weight-loss menu that
+                sits at or below the guide is the deficit WORKING, not a problem.
+                Only surface an actionable nudge: too generous (eat a bit less),
+                or genuinely too light (<1300 kcal → eat more). */}
             {data.weightLoss.estimatedDailyKcal != null && data.weightLoss.adherence && (
               <div
                 style={{
@@ -656,26 +661,25 @@ export function PlanScreen({
                   color: "var(--ink)",
                 }}
               >
-                {data.weightLoss.adherence === "on_track" ? (
+                {data.weightLoss.adherence === "high" ? (
                   <>
-                    <strong style={{ color: "var(--forest)" }}>✓ On track.</strong>{" "}This week&apos;s menu comes to
-                    roughly <strong>{data.weightLoss.estimatedDailyKcal.toLocaleString()}</strong> kcal/day — right around
-                    your target.
+                    <strong style={{ color: "var(--ochre-deep)" }}>A little generous this week.</strong>{" "}Your meals run
+                    a bit above the guide — go easy on extra portions and snacks, or message{" "}
+                    {data.coach.name.split(" ")[0]} to adjust.
                   </>
-                ) : data.weightLoss.adherence === "high" ? (
+                ) : data.weightLoss.estimatedDailyKcal < 1300 ? (
                   <>
-                    <strong style={{ color: "var(--ochre-deep)" }}>A little high.</strong>{" "}This week&apos;s menu looks
-                    closer to <strong>{data.weightLoss.estimatedDailyKcal.toLocaleString()}</strong> kcal/day. Go easy on
-                    extra portions and snacks — or message {data.coach.name.split(" ")[0]} to adjust it.
+                    <strong style={{ color: "var(--ochre-deep)" }}>Eat to comfortable fullness.</strong>{" "}This week&apos;s
+                    meals look a little light — have a bit more at each meal so energy and muscle hold up. Message{" "}
+                    {data.coach.name.split(" ")[0]} if they feel too small.
                   </>
                 ) : (
                   <>
-                    <strong style={{ color: "var(--ochre-deep)" }}>On the lighter side.</strong>{" "}This week&apos;s menu
-                    is around <strong>{data.weightLoss.estimatedDailyKcal.toLocaleString()}</strong> kcal/day — make sure
-                    you&apos;re eating enough so energy and muscle hold up.
+                    <strong style={{ color: "var(--forest)" }}>✓ A comfortable deficit.</strong>{" "}Your meals this week sit
+                    nicely within your guide — right where a gentle, sustainable fat-loss week should be. Eat to fullness;
+                    no need to count.
                   </>
                 )}
-                <div style={{ fontSize: 11.5, color: "var(--muted)", marginTop: 4 }}>Rough estimate from your menu.</div>
               </div>
             )}
           </div>
