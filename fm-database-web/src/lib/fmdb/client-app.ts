@@ -815,6 +815,9 @@ export interface ClientAppData {
     /** estimated avg kcal/day of the current week's menu (null if no menu) */
     estimatedDailyKcal: number | null;
     adherence: "on_track" | "high" | "low" | null;
+    /** the coach-set goal — drives the Body screen's weight-vs-goal trendline.
+     *  null when no structured goal is on file. */
+    goal: { startKg: number; startDate: string; targetKg: number; targetDate: string } | null;
   } | null;
   /** ISO timestamp of when this plan was last published — shown in the "Plan updated" banner. */
   planUpdatedAt: string | null;
@@ -3845,7 +3848,21 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
         adherence = calorieAdherence(estimatedDailyKcal, dailyTarget);
       }
     }
-    weightLoss = { dailyTarget, tdee, phaseNote, estimatedDailyKcal, adherence };
+    const wlGoal = (client.weight_loss as Dict | undefined) ?? undefined;
+    const goal =
+      wlGoal &&
+      typeof wlGoal.starting_weight_kg === "number" &&
+      typeof wlGoal.goal_kg === "number" &&
+      wlGoal.starting_date &&
+      wlGoal.goal_target_date
+        ? {
+            startKg: Number(wlGoal.starting_weight_kg),
+            startDate: String(wlGoal.starting_date),
+            targetKg: Number(wlGoal.starting_weight_kg) - Number(wlGoal.goal_kg),
+            targetDate: String(wlGoal.goal_target_date),
+          }
+        : null;
+    weightLoss = { dailyTarget, tdee, phaseNote, estimatedDailyKcal, adherence, goal };
   }
 
   // ---- lab vault (results vs FM-optimal + standard ranges) ------------------

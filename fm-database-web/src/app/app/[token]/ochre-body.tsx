@@ -85,18 +85,110 @@ function fmtDate(iso: string): string {
     : d.toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 }
 
+/** Weight-loss trendline: the actual weigh-ins plotted on a TIME axis spanning
+ *  the plan period (start → target date), with a dashed goal line from start
+ *  weight to target weight and a "today" marker. Renders from the very first
+ *  reading (no 2-point minimum) so the client sees where they sit vs the goal. */
+function WeightGoalChart({
+  series,
+  goal,
+}: {
+  series: { date: string; v: number }[];
+  goal: { startKg: number; startDate: string; targetKg: number; targetDate: string };
+}) {
+  const W = 320,
+    H = 168,
+    padL = 8,
+    padR = 12,
+    padT = 14,
+    padB = 22;
+  const ms = (d: string) => new Date(`${d}T00:00:00Z`).getTime();
+  const t0 = ms(goal.startDate);
+  const t1 = Math.max(ms(goal.targetDate), t0 + 86_400_000);
+  const now = Date.now();
+  const xT = (t: number) => padL + Math.max(0, Math.min(1, (t - t0) / (t1 - t0))) * (W - padL - padR);
+  const weights = [goal.startKg, goal.targetKg, ...series.map((p) => p.v)];
+  const lo = Math.min(...weights),
+    hi = Math.max(...weights);
+  const sp = hi - lo || 1;
+  const vmin = lo - sp * 0.18,
+    vmax = hi + sp * 0.18;
+  const y = (v: number) => padT + (1 - (v - vmin) / (vmax - vmin)) * (H - padT - padB);
+
+  const goalLine = `M ${xT(t0).toFixed(1)} ${y(goal.startKg).toFixed(1)} L ${xT(t1).toFixed(1)} ${y(goal.targetKg).toFixed(1)}`;
+  const actual = series.length
+    ? series.map((p, i) => `${i ? "L" : "M"} ${xT(ms(p.date)).toFixed(1)} ${y(p.v).toFixed(1)}`).join(" ")
+    : "";
+
+  const latest = series[series.length - 1];
+  const frac = Math.max(0, Math.min(1, (now - t0) / (t1 - t0)));
+  const goalNow = goal.startKg + (goal.targetKg - goal.startKg) * frac;
+  const toGo = latest ? Math.round((latest.v - goal.targetKg) * 10) / 10 : null;
+  const vsGoal = latest ? latest.v - goalNow : null; // ≤0 = on track / ahead
+  const statusTxt =
+    vsGoal == null
+      ? "Log your weight weekly and your line will track against the goal."
+      : vsGoal <= 0.3
+      ? "On track — at or ahead of your goal line. 💚"
+      : vsGoal <= 1.2
+      ? "A touch behind the line — keep going, it evens out."
+      : "Behind the goal line — let's review together at your next check-in.";
+  const statusTone = vsGoal == null ? "var(--muted)" : vsGoal <= 0.3 ? "var(--forest)" : "var(--ochre-deep)";
+
+  return (
+    <>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 10, margin: "12px 0 2px" }}>
+        <span style={{ fontFamily: "var(--serif)", fontSize: 30, color: "var(--ink)" }}>
+          {latest ? latest.v : goal.startKg}
+          <span style={{ fontSize: 14, color: "var(--muted)" }}> kg</span>
+        </span>
+        {toGo != null && (
+          <span style={{ fontSize: 13, fontWeight: 600, color: "var(--forest)" }}>
+            {toGo <= 0 ? "🎉 goal reached!" : `${toGo} kg to go`}
+          </span>
+        )}
+      </div>
+      <p style={{ fontSize: 12.5, color: statusTone, fontWeight: 600, lineHeight: 1.5, margin: "2px 0 0" }}>{statusTxt}</p>
+      <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" style={{ display: "block", marginTop: 8 }}>
+        {/* today marker */}
+        <line x1={xT(now)} y1={padT} x2={xT(now)} y2={H - padB} stroke="var(--line)" strokeWidth="1" strokeDasharray="2 3" />
+        {/* dashed goal line: start weight → target weight */}
+        <path d={goalLine} fill="none" stroke="var(--ochre)" strokeWidth="2" strokeDasharray="5 4" strokeLinecap="round" />
+        <circle cx={xT(t1)} cy={y(goal.targetKg)} r={3.4} fill="var(--ochre)" />
+        {/* actual weigh-ins */}
+        {actual && <path d={actual} fill="none" stroke="var(--forest)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />}
+        {series.map((p, i) => (
+          <circle key={i} cx={xT(ms(p.date))} cy={y(p.v)} r={3} fill="var(--forest)" stroke="var(--paper)" strokeWidth="1.5" />
+        ))}
+      </svg>
+      <div style={{ display: "flex", gap: 16, marginTop: 6, fontSize: 11.5, color: "var(--muted)" }}>
+        <span>
+          <span style={{ color: "var(--forest)" }}>━</span> your weight
+        </span>
+        <span>
+          <span style={{ color: "var(--ochre)" }}>╌</span> goal ({goal.targetKg} kg by{" "}
+          {new Date(`${goal.targetDate}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" })})
+        </span>
+      </div>
+    </>
+  );
+}
+
 function ChartModal({
   metric,
   history,
   heightCm,
+  goal,
   onClose,
 }: {
   metric: Metric;
   history: HistPoint[];
   heightCm: number | null;
+  goal: { startKg: number; startDate: string; targetKg: number; targetDate: string } | null;
   onClose: () => void;
 }) {
   const meta = METRIC_META[metric];
+  const showGoal = metric === "weightKg" && goal != null;
   const series = history
     .map((h) => {
       let v: number | null;
@@ -163,7 +255,7 @@ function ChartModal({
         <div style={{ width: 38, height: 4, borderRadius: 999, background: "var(--line)", margin: "6px auto 16px" }} />
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
           <h3 className="h-serif" style={{ fontSize: 21, margin: 0 }}>
-            {meta.label} over time
+            {showGoal ? "Your weight-loss journey" : `${meta.label} over time`}
           </h3>
           <button
             onClick={onClose}
@@ -174,7 +266,9 @@ function ChartModal({
           </button>
         </div>
 
-        {series.length < 2 ? (
+        {metric === "weightKg" && goal ? (
+          <WeightGoalChart series={series} goal={goal} />
+        ) : series.length < 2 ? (
           <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.55, marginTop: 12 }}>
             {series.length === 1
               ? `One reading so far (${last.v} ${meta.unit}). Update your measurements each week and your trend line will build here.`
@@ -503,7 +597,7 @@ export function BodySection() {
         Height and age come from {data.coach.name.split(" ")[0]} — if they need fixing, just message her. Your updates here go straight to her too.
       </div>
 
-      {chart && <ChartModal metric={chart} history={hist} heightCm={b.heightCm} onClose={() => setChart(null)} />}
+      {chart && <ChartModal metric={chart} history={hist} heightCm={b.heightCm} goal={data.weightLoss?.goal ?? null} onClose={() => setChart(null)} />}
     </div>
   );
 }
