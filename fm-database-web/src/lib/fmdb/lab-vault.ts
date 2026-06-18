@@ -306,6 +306,66 @@ export function buildLabVault(
     });
   }
 
+  // ── Collapse name-variants of the SAME test ────────────────────────────────
+  // The series above is keyed by raw test_name, so two names that resolve to
+  // the same catalogue marker (e.g. "CRP" + "hsCRP" → hs-crp) render as two
+  // look-alike cards. Group by catalogue key and keep one card per test:
+  //   - keep the most recent (latestDate, tie → more points → longer name);
+  //   - merge trend points from SAME-unit siblings (dedupe by date, latest wins)
+  //     so a marker recorded under different names across reports shows one
+  //     continuous trend;
+  //   - a sibling with a DIFFERENT unit is a genuinely different measurement
+  //     (e.g. total vs active B12) — keep it separate but fall back to its raw
+  //     name so the two don't look identical.
+  const byKey = new Map<string, LabMarker[]>();
+  for (const m of markers) {
+    const arr = byKey.get(m.key);
+    if (arr) arr.push(m);
+    else byKey.set(m.key, [m]);
+  }
+  const deduped: LabMarker[] = [];
+  for (const group of Array.from(byKey.values())) {
+    if (group.length === 1) {
+      deduped.push(group[0]);
+      continue;
+    }
+    const keep = [...group].sort(
+      (a, b) =>
+        b.latestDate.localeCompare(a.latestDate) ||
+        b.trend.length - a.trend.length ||
+        b.testName.length - a.testName.length,
+    )[0];
+    const byDate = new Map<string, number>();
+    for (const m of group) {
+      if (normUnit(m.unit) !== normUnit(keep.unit)) continue;
+      for (const p of m.trend) byDate.set(p.date, p.value); // latest write wins
+    }
+    // ensure the kept card's own latest value wins for its date
+    byDate.set(keep.latestDate, keep.latestValue);
+    const mergedTrend = Array.from(byDate.entries())
+      .map(([date, value]) => ({ date, value }))
+      .sort((a, b) => a.date.localeCompare(b.date));
+    keep.trend = mergedTrend;
+    keep.hasTrend = mergedTrend.length >= 2;
+    if (mergedTrend.length > 1) {
+      keep.prevValue = mergedTrend[mergedTrend.length - 2].value;
+      keep.delta =
+        Math.round((keep.latestValue - keep.prevValue) * 100) / 100;
+    } else {
+      keep.prevValue = null;
+      keep.delta = null;
+    }
+    deduped.push(keep);
+    for (const m of group) {
+      if (m === keep) continue;
+      if (normUnit(m.unit) !== normUnit(keep.unit)) {
+        deduped.push({ ...m, displayName: m.testName });
+      }
+    }
+  }
+  markers.length = 0;
+  markers.push(...deduped);
+
   // Group by system.
   const groupMap = new Map<string, LabGroup>();
   for (const m of markers) {
