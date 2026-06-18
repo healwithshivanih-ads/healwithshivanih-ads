@@ -90,6 +90,77 @@ function greetWord(hour: number): string {
 
 // ── TODAY ────────────────────────────────────────────────────────────────────
 
+/** Pre-start "on hold" screen — shown when the coach has set the meal-plan
+ *  start date in the future. The plan unlocks itself on that date; nothing
+ *  for the client to do until then. */
+export function PlanHoldScreen({ goCoach }: { goCoach: () => void }) {
+  const data = useOchre();
+  const days = data.client.startsInDays;
+  const countdown =
+    days <= 0 ? "Starting today" : days === 1 ? "Starts tomorrow" : `Starts in ${days} days`;
+  const coachFirst = data.coach.name.split(" ")[0];
+  return (
+    <div className="screen-pad screen-anim">
+      <div className="greeting">
+        <div className="hi">Hi {data.client.firstName}</div>
+        <div className="date script">Your plan is getting ready</div>
+      </div>
+
+      <div className="rightnow">
+        <div className="rn-body">
+          <div className="rn-eyebrow">
+            <Icon name="sparkle" size={14} /> {countdown}
+          </div>
+          <div className="rn-title">
+            Your {data.client.totalWeeks}-week plan begins {data.client.startDateLabel}
+          </div>
+          <div className="rn-sub">
+            Your meals, supplements and daily routine all unlock then — there&apos;s nothing
+            you need to do until {data.client.startDateLabel}. The app opens up on its own that day.
+          </div>
+          <button className="rn-cta" onClick={goCoach}>
+            Message {coachFirst} <Icon name="arrowRight" size={16} />
+          </button>
+        </div>
+        <div className="rn-ring">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 68,
+              height: 68,
+              borderRadius: "50%",
+              border: "3px solid var(--forest)",
+              color: "var(--forest)",
+            }}
+          >
+            <span style={{ fontSize: 22, fontWeight: 700, lineHeight: 1 }}>
+              {days > 0 ? days : "✓"}
+            </span>
+            <span style={{ fontSize: 10, opacity: 0.7 }}>
+              {days === 1 ? "day" : days > 0 ? "days" : "ready"}
+            </span>
+          </div>
+          <div className="rn-ring-cap">to go</div>
+        </div>
+      </div>
+
+      <div className="coach-line" style={{ marginTop: 14 }}>
+        <Icon name="sparkle" size={18} style={{ color: "var(--forest)", flexShrink: 0, marginTop: 1 }} />
+        <div>
+          <div className="q">
+            I&apos;ve set everything up for you, {data.client.firstName}. We&apos;ll begin
+            together on {data.client.startDateLabel} — message me anytime before then.
+          </div>
+          <div className="who">— {data.coach.name}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function TodayScreen({
   logged,
   onToggleSupp,

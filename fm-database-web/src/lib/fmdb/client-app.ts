@@ -652,6 +652,11 @@ export interface ClientAppData {
     week: number;
     totalWeeks: number;
     startDateLabel: string;
+    /** true when the coach has set a meal-plan start date in the future —
+     *  the plan is "on hold" and the app shows a pre-start screen until then */
+    notStarted: boolean;
+    /** days until the plan starts (0 once it has begun) */
+    startsInDays: number;
     dosha: string[];
     doshaLabel: string;
     coachLine: string;
@@ -3955,6 +3960,10 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
       week,
       totalWeeks,
       startDateLabel: startLabel,
+      notStarted: !!startDate && todayUTC.getTime() < startDate.getTime(),
+      startsInDays: startDate
+        ? Math.max(0, Math.ceil((startDate.getTime() - todayUTC.getTime()) / 86_400_000))
+        : 0,
       dosha,
       doshaLabel,
       coachLine,

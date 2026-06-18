@@ -12,7 +12,7 @@ import { useEffect, useMemo, useState } from "react";
 import type { AppRemedy, ClientAppData } from "@/lib/fmdb/client-app";
 import { Icon, Mark, OchreContext } from "./ochre-context";
 import { BottomNav, Header } from "./ochre-ui";
-import { PlanScreen, TodayScreen } from "./ochre-screens";
+import { PlanScreen, TodayScreen, PlanHoldScreen } from "./ochre-screens";
 import { CheckinScreen, DailyFeelingSheet, MoveSheet, type MoveEntry } from "./ochre-checkin";
 import { ProgressScreen, type FeelMap } from "./ochre-progress";
 import { LabsScreen } from "./ochre-labs";
@@ -283,8 +283,15 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
     scrollTop();
   };
 
+  // Plan hasn't started yet (coach set a future start date) — show the
+  // pre-start "on hold" screen for every plan-content tab. Coach + Labs
+  // stay reachable so the client can still message / view past results.
+  const onHold = data.client.notStarted;
+
   let screen: React.ReactNode = null;
-  if (inCheckin) {
+  if (onHold && tab !== "coach" && tab !== "labs") {
+    screen = <PlanHoldScreen goCoach={() => go("coach")} />;
+  } else if (inCheckin) {
     screen = (
       <CheckinScreen
         submitted={submitted}
@@ -338,14 +345,14 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
   } else if (tab === "labs") {
     screen = <LabsScreen />;
   } else if (tab === "coach") {
-    screen = <CoachScreen coachAlert={!submitted} />;
+    screen = <CoachScreen coachAlert={!submitted && !onHold} />;
   }
 
   return (
     <OchreContext.Provider value={data}>
       <div className="ochre-app">
         <div className={"app" + (textLarge ? " text-lg" : "")}>
-          <Header alert={!submitted} onAccount={() => setOverlay({ type: "account" })} />
+          <Header alert={!submitted && !onHold} onAccount={() => setOverlay({ type: "account" })} />
           {showPlanUpdatedBanner && (
             <div
               style={{
@@ -388,7 +395,7 @@ export default function OchreApp({ data }: { data: ClientAppData }) {
           <main className="screen-scroll" key={inCheckin ? "checkin" : tab}>
             {screen}
           </main>
-          <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted} />
+          <BottomNav active={inCheckin ? "" : tab} onChange={go} coachAlert={!submitted && !onHold} />
 
           {!booting && <InstallPrompt />}
 
