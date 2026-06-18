@@ -3,21 +3,24 @@
 /**
  * FmRecipeImageChip — standing guardrail for recipe-image coverage.
  *
- * The client app shows a dish's photo by resolving it to its catalogue recipe.
- * A recipe with no suitable image falls back to a plain gradient tile — which
- * the coach doesn't want clients to see. This chip flags every catalogue
- * recipe missing a real, on-disk photo so new images get generated
- * periodically. Per coach decision it's a FLAG, not a block: the recipes still
- * work, they just need a picture.
+ * Two views, one chip:
+ *  • Live menus — dishes on PUBLISHED plans that won't resolve to a recipe with
+ *    a photo, so a client would see a plain gradient tile. The direct
+ *    "what clients see" check (per client → dish).
+ *  • Recipe catalogue — recipes in _recipes/ missing a real image. The upstream
+ *    preventive view (newly generated recipes land here until a photo is added).
  *
- * Self-loading (like FmCatalogueOrphanChip): fetches its own status on mount,
- * renders nothing until it has data, and hides entirely when coverage is 100%.
+ * Per coach decision it's a FLAG, not a block: everything still works, it just
+ * needs a picture. Self-loading like FmCatalogueOrphanChip; renders nothing
+ * until loaded and hides entirely when both views are clean.
  */
 import { useEffect, useState, useTransition } from "react";
 import {
   getRecipeImageCoverage,
+  getMenuImageCoverage,
   type RecipeImageCoverage,
   type RecipeImageGap,
+  type MenuImageCoverage,
 } from "@/app/recipe-image-coverage-action";
 
 const REASON_LABEL: Record<RecipeImageGap["reason"], string> = {
@@ -26,68 +29,98 @@ const REASON_LABEL: Record<RecipeImageGap["reason"], string> = {
   rights_none: "image hidden (rights: none)",
 };
 
+const btn: React.CSSProperties = {
+  background: "transparent",
+  border: "1px solid rgba(0,0,0,0.10)",
+  padding: "6px 12px",
+  fontSize: 12,
+  fontWeight: 600,
+  color: "#92400e",
+  borderRadius: "var(--fm-radius-sm)",
+  cursor: "pointer",
+  fontFamily: "inherit",
+};
+
+const slugChip: React.CSSProperties = {
+  display: "flex",
+  alignItems: "baseline",
+  gap: 8,
+  padding: "5px 8px",
+  background: "var(--fm-bg-cool)",
+  border: "1px solid var(--fm-border-light)",
+  borderRadius: "var(--fm-radius-sm)",
+  fontSize: 12,
+};
+
+const sectionLabel: React.CSSProperties = {
+  fontSize: 11,
+  fontWeight: 700,
+  color: "var(--fm-text-secondary)",
+  marginBottom: 6,
+};
+
 export function FmRecipeImageChip() {
-  const [status, setStatus] = useState<RecipeImageCoverage | null>(null);
+  const [recipes, setRecipes] = useState<RecipeImageCoverage | null>(null);
+  const [menus, setMenus] = useState<MenuImageCoverage | null>(null);
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
 
   const load = () =>
     start(async () => {
-      setStatus(await getRecipeImageCoverage());
+      const [r, m] = await Promise.all([getRecipeImageCoverage(), getMenuImageCoverage()]);
+      setRecipes(r);
+      setMenus(m);
     });
 
   useEffect(() => {
-    void (async () => setStatus(await getRecipeImageCoverage()))();
+    void (async () => {
+      const [r, m] = await Promise.all([getRecipeImageCoverage(), getMenuImageCoverage()]);
+      setRecipes(r);
+      setMenus(m);
+    })();
   }, []);
 
-  // Render nothing until loaded, and hide when every recipe has a photo.
-  if (!status || status.gaps.length === 0) return null;
+  // Render nothing until loaded; hide when both views are clean.
+  if (!recipes || !menus) return null;
+  const menuGaps = menus.dishGaps;
+  const recipeGaps = recipes.gaps.length;
+  if (menuGaps === 0 && recipeGaps === 0) return null;
 
-  const n = status.gaps.length;
-  // Group the actionable list by reason for the disclosure.
+  // Group catalogue gaps by reason for the disclosure.
   const byReason = new Map<RecipeImageGap["reason"], RecipeImageGap[]>();
-  for (const g of status.gaps) {
+  for (const g of recipes.gaps) {
     const arr = byReason.get(g.reason) ?? [];
     arr.push(g);
     byReason.set(g.reason, arr);
   }
+
+  // Headline = the client-facing number when there is one, else catalogue.
+  const headline =
+    menuGaps > 0
+      ? `${menuGaps} live menu dish${menuGaps === 1 ? "" : "es"} would show no photo`
+      : `${recipeGaps} recipe${recipeGaps === 1 ? "" : "s"} need${recipeGaps === 1 ? "s" : ""} a photo`;
+  const subline =
+    menuGaps > 0
+      ? `across ${menus.menus.length} client${menus.menus.length === 1 ? "" : "s"}` +
+        (recipeGaps > 0 ? ` · ${recipeGaps} catalogue recipe${recipeGaps === 1 ? "" : "s"} also missing an image` : "")
+      : `${recipes.imaged}/${recipes.total} catalogue recipes have an image — these would show a plain tile`;
 
   return (
     <section
       style={{
         padding: "14px 16px",
         borderRadius: "var(--fm-radius-lg)",
-        background:
-          "linear-gradient(135deg, rgba(217,119,6,0.08), rgba(180,83,9,0.13))",
+        background: "linear-gradient(135deg, rgba(217,119,6,0.08), rgba(180,83,9,0.13))",
         border: "1.5px solid rgba(217,119,6,0.35)",
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         <span style={{ fontSize: 22 }}>🖼️</span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>
-            {n} recipe{n === 1 ? "" : "s"} need{n === 1 ? "s" : ""} a photo
-          </div>
-          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>
-            {status.imaged}/{status.total} recipes have an image — these would show a
-            plain tile in the client app until one is added
-          </div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>{headline}</div>
+          <div style={{ fontSize: 12, color: "var(--fm-text-secondary)" }}>{subline}</div>
         </div>
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          style={{
-            background: "transparent",
-            border: "1px solid rgba(0,0,0,0.10)",
-            padding: "6px 12px",
-            fontSize: 12,
-            fontWeight: 600,
-            color: "#92400e",
-            borderRadius: "var(--fm-radius-sm)",
-            cursor: "pointer",
-            fontFamily: "inherit",
-          }}
-        >
+        <button type="button" onClick={() => setOpen((v) => !v)} style={btn}>
           {open ? "Hide list" : "Review"}
         </button>
         <button
@@ -95,17 +128,7 @@ export function FmRecipeImageChip() {
           onClick={load}
           disabled={pending}
           title="Re-scan"
-          style={{
-            background: "transparent",
-            border: "1px solid rgba(0,0,0,0.10)",
-            padding: "6px 10px",
-            fontSize: 12,
-            color: "#b45309",
-            borderRadius: "var(--fm-radius-sm)",
-            cursor: pending ? "wait" : "pointer",
-            fontFamily: "inherit",
-            opacity: pending ? 0.6 : 1,
-          }}
+          style={{ ...btn, padding: "6px 10px", color: "#b45309", cursor: pending ? "wait" : "pointer", opacity: pending ? 0.6 : 1 }}
         >
           ↻
         </button>
@@ -121,50 +144,78 @@ export function FmRecipeImageChip() {
             borderRadius: "var(--fm-radius-md)",
           }}
         >
-          {[...byReason.entries()].map(([reason, items]) => (
-            <div key={reason} style={{ marginBottom: 12 }}>
+          {/* Live menus — the client-facing gaps, grouped by client. */}
+          {menus.menus.length > 0 && (
+            <div style={{ marginBottom: recipeGaps > 0 ? 16 : 0 }}>
               <div
                 style={{
                   fontSize: 11,
+                  color: "var(--fm-text-tertiary)",
                   fontWeight: 700,
-                  color: "var(--fm-text-secondary)",
-                  marginBottom: 6,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.7,
+                  marginBottom: 10,
                 }}
               >
-                {REASON_LABEL[reason]} ({items.length})
+                Live menus — clients would see a plain tile for these dishes
               </div>
-              <div style={{ display: "grid", gap: 4, maxHeight: 260, overflowY: "auto" }}>
-                {items.map((g) => (
-                  <div
-                    key={g.slug}
-                    style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      gap: 8,
-                      padding: "5px 8px",
-                      background: "var(--fm-bg-cool)",
-                      border: "1px solid var(--fm-border-light)",
-                      borderRadius: "var(--fm-radius-sm)",
-                      fontSize: 12,
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "var(--fm-font-mono, ui-monospace, Menlo, monospace)",
-                        fontWeight: 600,
-                        color: "#b45309",
-                      }}
-                    >
-                      {g.slug}
-                    </span>
-                    <span style={{ color: "var(--fm-text-tertiary)", minWidth: 0 }}>
-                      {g.name}
-                    </span>
+              {menus.menus.map((m) => (
+                <div key={m.planSlug} style={{ marginBottom: 12 }}>
+                  <div style={sectionLabel}>
+                    {m.clientName} ({m.dishes.length})
                   </div>
-                ))}
-              </div>
+                  <div style={{ display: "grid", gap: 4, maxHeight: 220, overflowY: "auto" }}>
+                    {m.dishes.map((dish) => (
+                      <div key={dish} style={slugChip}>
+                        <span style={{ color: "var(--fm-text-secondary)", minWidth: 0 }}>{dish}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
+
+          {/* Recipe catalogue — upstream, grouped by reason. */}
+          {recipeGaps > 0 && (
+            <div>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "var(--fm-text-tertiary)",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: 0.7,
+                  marginBottom: 10,
+                }}
+              >
+                Recipe catalogue — recipes missing an image
+              </div>
+              {[...byReason.entries()].map(([reason, items]) => (
+                <div key={reason} style={{ marginBottom: 12 }}>
+                  <div style={sectionLabel}>
+                    {REASON_LABEL[reason]} ({items.length})
+                  </div>
+                  <div style={{ display: "grid", gap: 4, maxHeight: 220, overflowY: "auto" }}>
+                    {items.map((g) => (
+                      <div key={g.slug} style={slugChip}>
+                        <span
+                          style={{
+                            fontFamily: "var(--fm-font-mono, ui-monospace, Menlo, monospace)",
+                            fontWeight: 600,
+                            color: "#b45309",
+                          }}
+                        >
+                          {g.slug}
+                        </span>
+                        <span style={{ color: "var(--fm-text-tertiary)", minWidth: 0 }}>{g.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </section>

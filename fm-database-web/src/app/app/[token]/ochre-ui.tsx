@@ -187,10 +187,41 @@ export function MiniRating({ value, max = 5 }: { value: number; max?: number }) 
 
 // ── meal thumbnail + week strip ──────────────────────────────────────────────
 
-export function MealThumb({ slot, size = 56, radius = 14 }: { slot: string; size?: number; radius?: number }) {
+export type MealThumbKind = "drink" | "snack" | "meal";
+
+const THUMB_GLYPH: Record<MealThumbKind, string> = { drink: "water", snack: "sprout", meal: "forkKnife" };
+const THUMB_TAG: Record<MealThumbKind, string> = { drink: "Drink", snack: "Snack", meal: "" };
+
+/**
+ * Classify a dish so its no-photo tile looks intentional — a cup glyph +
+ * "Drink" for buttermilk/tea/juice, a sprout + "Snack" for nuts/fruit/seeds,
+ * a fork-knife for everything cooked. Most menu slots that lack a photo are
+ * simple snacks/drinks (not catalogue recipes), so this turns the bare
+ * fork-knife placeholder into a labelled, on-brand tile. Drinks are checked
+ * first so a "buttermilk + orange" snack-drink reads as a drink.
+ */
+export function mealThumbKind(text: string): MealThumbKind {
+  const t = text.toLowerCase();
+  if (/\b(tea|chaas|buttermilk|lassi|coconut water|jeera water|methi water|ccf|kokum|aam panna|sherbet|juice|smoothie|shake|kadha|panna|tonic|infusion|latte|coffee|milk)\b/.test(t)) return "drink";
+  if (/\b(almonds?|walnuts?|cashews?|pistachios?|brazil|peanuts?|seeds?|makhana|fox.?nut|dates?|raisins?|fruit|apple|banana|pear|guava|papaya|orange|kiwi|berr|melon|pomegranate|nuts?|curd|yogurt|yoghurt|chivda|hummus|trail mix)\b/.test(t)) return "snack";
+  return "meal";
+}
+
+export function MealThumb({
+  slot,
+  size = 56,
+  radius = 14,
+  kind = "meal",
+}: {
+  slot: string;
+  size?: number;
+  radius?: number;
+  kind?: MealThumbKind;
+}) {
   const { mealExtra } = useOchre();
   const img = mealExtra[slot]?.imageUrl;
   const grad = mealExtra[slot]?.grad ?? "linear-gradient(140deg,#e3cf9a,#9a8a4f)";
+  const tag = THUMB_TAG[kind];
   return (
     <span
       className="meal-thumb"
@@ -202,9 +233,12 @@ export function MealThumb({ slot, size = 56, radius = 14 }: { slot: string; size
       }}
     >
       {!img && (
-        <span className="mt-cam">
-          <Icon name="forkKnife" size={size > 90 ? 18 : 14} style={{ color: "rgba(255,255,255,.92)" }} />
-        </span>
+        <>
+          <span className="mt-cam">
+            <Icon name={THUMB_GLYPH[kind]} size={size > 90 ? 18 : 14} style={{ color: "rgba(255,255,255,.92)" }} />
+          </span>
+          {tag && size >= 44 && <span className="mt-tag">{tag}</span>}
+        </>
       )}
     </span>
   );

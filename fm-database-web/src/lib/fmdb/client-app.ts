@@ -1247,7 +1247,7 @@ interface LetterRecipe {
  *  a coach-pinned plan.nutrition.recipes slug) gets its full method from
  *  here. Letter-parsed recipes still take precedence when they exist —
  *  they're personalised to the client. */
-async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecipe }[]> {
+export async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecipe }[]> {
   const dir = path.join(getCataloguePath(), "_recipes");
   let files: string[] = [];
   try {
@@ -1296,6 +1296,70 @@ async function loadLibraryRecipes(): Promise<{ slug: string; recipe: LetterRecip
     }
   }
   return out;
+}
+
+/** Stop-words ignored when token-matching a dish to a library recipe title. */
+const RECIPE_LIB_STOP = new Set(["with", "and", "tbsp", "tsp", "cup", "roasted", "soaked", "ground", "fresh", "everyday", "style"]);
+/** Normalize a dish/recipe name for matching: drop "(portion)" annotations and
+ *  punctuation so "Paneer sabzi (1 bowl)" keys the same as "Paneer sabzi" —
+ *  the real reason menu photos vanished once dishes carried explicit portions
+ *  (2026-06-15). */
+export const recipeLibKey = (s: string) =>
+  s.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+const recipeLibToks = (s: string) =>
+  recipeLibKey(s).split(" ").filter((t) => t.length > 3 && !RECIPE_LIB_STOP.has(t));
+
+/**
+ * Build the dish → library-recipe resolver. An exact normalized-title match
+ * wins outright (the Plan-tab DishPicker composes dishes from EXACT recipe
+ * titles, so a picked dish resolves deterministically to its recipe — and
+ * photo — with none of the token-threshold fragility); otherwise a strict
+ * token near-equality scan handles legacy letter-parsed dish text ("mint
+ * chutney" → Cilantro Mint Chutney, but a "raita-free bowl" never gets the
+ * Cucumber Mint Raita method).
+ *
+ * Extracted to module scope so the dashboard's menu-image coverage scan
+ * resolves dishes EXACTLY as the client app does — one source of truth, no
+ * drift. Pass a diet-filtered list to match what a given client can see, or
+ * the full library for a coverage flag.
+ */
+export function buildLibraryRecipeResolver(
+  libraryRecipes: { slug: string; recipe: LetterRecipe }[],
+): (dish: string) => LetterRecipe | undefined {
+  const byExactKey = new Map<string, LetterRecipe>();
+  for (const l of libraryRecipes) {
+    const k = recipeLibKey(l.recipe.title);
+    if (k && !byExactKey.has(k)) byExactKey.set(k, l.recipe);
+  }
+  return (dish: string): LetterRecipe | undefined => {
+    // Component separators used across menus: " + ", "→", "⇒", ":". The "⇒"
+    // (U+21D2) is what the multi-component dinner menus actually use ("Green
+    // moong sabzi ⇒ masoor dal ⇒ sama millet") — omitting it meant those whole
+    // dishes never split, so the first component's recipe (and photo) was lost.
+    for (const pill of dish.split(/\s\+\s|→|⇒|:/).map((s) => s.trim()).filter(Boolean)) {
+      const exact = byExactKey.get(recipeLibKey(pill));
+      if (exact) return exact;
+      const pt = recipeLibToks(pill);
+      if (!pt.length) continue;
+      const pk = recipeLibKey(pill);
+      let best: { r: LetterRecipe; hit: number; slack: number } | undefined;
+      for (const l of libraryRecipes) {
+        const rt = recipeLibToks(l.recipe.title);
+        if (!rt.length) continue;
+        const hit = rt.filter((t) => pk.includes(t)).length;
+        const rk = recipeLibKey(l.recipe.title);
+        const extra = pt.filter((t) => !rk.includes(t)).length;
+        const ok = (hit >= 2 && rt.length - hit <= 1 && extra <= 1) || (rt.length === 1 && hit === 1 && pt.length === 1);
+        // slack = how far from an exact match (unmatched recipe tokens + extra
+        // dish tokens). Prefer more hits, then the CLOSEST title — so
+        // "Vegetable poha" wins over "Chicken and vegetable poha".
+        const slack = rt.length - hit + extra;
+        if (ok && (!best || hit > best.hit || (hit === best.hit && slack < best.slack))) best = { r: l.recipe, hit, slack };
+      }
+      if (best) return best.r;
+    }
+    return undefined;
+  };
 }
 
 function parseRecipes(md: string): LetterRecipe[] {
@@ -2220,60 +2284,11 @@ export async function loadClientAppData(token: string): Promise<ClientAppData | 
   const pinnedSlugs = new Set(
     (asArr((plan.nutrition as Dict | undefined)?.recipes) as unknown[]).map((s) => String(s)),
   );
-  const LIB_STOP = new Set(["with", "and", "tbsp", "tsp", "cup", "roasted", "soaked", "ground", "fresh", "everyday", "style"]);
-  // Strip parenthetical portion/qualifier annotations BEFORE keying so the
-  // matcher isn't defeated by them: "Paneer & spinach sabzi (well cooked)
-  // (1 bowl)" must still match the "Paneer & spinach sabzi" recipe. Without
-  // this, "(well cooked)" + "(1 bowl)" count as 3 extra tokens and blow past
-  // the strict extra<=1 cut-off — the real reason menu photos vanished once
-  // dishes carried explicit portions (2026-06-15). suppKey already does this.
-  const libKey = (s: string) => s.toLowerCase().replace(/\([^)]*\)/g, " ").replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
-  const libToks = (s: string) => libKey(s).split(" ").filter((t) => t.length > 3 && !LIB_STOP.has(t));
-  // Exact-identity index. The Plan-tab DishPicker composes every dish from
-  // EXACT library recipe titles (+ an optional "(portion)" suffix that libKey
-  // strips), so a normalized-title lookup resolves a picked dish to its exact
-  // recipe — and therefore its photo — deterministically. This is the durable
-  // fix for "the food pictures disappeared": the fuzzy token scan below kept
-  // missing once portions/qualifiers pushed dishes past its extra-token
-  // cut-off. Exact-first means a picked dish NEVER loses its image to name
-  // drift; the fuzzy scan stays only as the fallback for legacy letter-parsed
-  // menus whose dish text isn't an exact recipe title. (Index is already
-  // diet-filtered — it's built from libraryRecipes, not …All.)
-  const libByExactKey = new Map<string, LetterRecipe>();
-  for (const l of libraryRecipes) {
-    const k = libKey(l.recipe.title);
-    if (k && !libByExactKey.has(k)) libByExactKey.set(k, l.recipe);
-  }
-  /** Strict library lookup: an exact normalized-title match wins outright;
-   *  otherwise every recipe-name token must appear in the dish (one miss
-   *  allowed) and the dish must add at most one extra token — near-equality,
-   *  so "mint chutney" → Cilantro Mint Chutney but a "raita-free bowl" never
-   *  gets the Cucumber Mint Raita method. */
-  const libraryRecipeFor = (dish: string): LetterRecipe | undefined => {
-    for (const pill of dish.split(/\s\+\s|→|:/).map((s) => s.trim()).filter(Boolean)) {
-      const exact = libByExactKey.get(libKey(pill));
-      if (exact) return exact;
-      const pt = libToks(pill);
-      if (!pt.length) continue;
-      const pk = libKey(pill);
-      let best: { r: LetterRecipe; hit: number; slack: number } | undefined;
-      for (const l of libraryRecipes) {
-        const rt = libToks(l.recipe.title);
-        if (!rt.length) continue;
-        const hit = rt.filter((t) => pk.includes(t)).length;
-        const rk = libKey(l.recipe.title);
-        const extra = pt.filter((t) => !rk.includes(t)).length;
-        const ok = (hit >= 2 && rt.length - hit <= 1 && extra <= 1) || (rt.length === 1 && hit === 1 && pt.length === 1);
-        // slack = how far from an exact match (unmatched recipe tokens + extra
-        // dish tokens). Prefer more hits, then the CLOSEST title — so
-        // "Vegetable poha" wins over "Chicken and vegetable poha".
-        const slack = rt.length - hit + extra;
-        if (ok && (!best || hit > best.hit || (hit === best.hit && slack < best.slack))) best = { r: l.recipe, hit, slack };
-      }
-      if (best) return best.r;
-    }
-    return undefined;
-  };
+  // Dish → library-recipe resolver (exact-identity first, fuzzy fallback).
+  // Built from the diet-filtered library so a client never resolves a dish to
+  // an out-of-diet recipe. Shared with the dashboard menu-image coverage scan
+  // via buildLibraryRecipeResolver — one source of truth, no drift.
+  const libraryRecipeFor = buildLibraryRecipeResolver(libraryRecipes);
   const suppRows = parseSupplementRows(letterMd);
   const htmlBuyRows = parseHtmlBuyRows(baseHtml);
   const remedyBlurbs = parseRemedyBlurbs(letterMd);

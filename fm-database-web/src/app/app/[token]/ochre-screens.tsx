@@ -7,7 +7,7 @@
 import { useState } from "react";
 import type { AppRemedy, AppSupplement as AppSupplementT } from "@/lib/fmdb/client-app";
 import { Icon, useOchre } from "./ochre-context";
-import { DailyRing, MealThumb, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
+import { DailyRing, MealThumb, mealThumbKind, RemedyCard, Section, SupplementSlots, Tile, Accordion, PhaseRibbon, PlateDiagram, OilGuide, FoodTiers } from "./ochre-ui";
 import { BreathLaunchCard } from "./ochre-breath";
 import { EftLaunchCard, MindBodyNudge } from "./ochre-eft";
 import { SleepLaunchCard } from "./ochre-sleep";
@@ -465,7 +465,7 @@ function MealList({
         return (
           <div key={i}>
             <button className="meal-lite" onClick={() => openMeal(m.slot)}>
-              <MealThumb slot={m.slot} size={52} radius={13} />
+              <MealThumb slot={m.slot} size={52} radius={13} kind={mealThumbKind(m.components.map((c) => c.title).join(" "))} />
               <span className="ml-body">
                 <span className="ml-top">
                   <span className="label">{m.slot}</span>

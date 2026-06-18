@@ -4,6 +4,8 @@ import path from "node:path";
 import fs from "node:fs/promises";
 import yaml from "js-yaml";
 import { getCataloguePath } from "@/lib/fmdb/paths";
+import { loadAllPlans, loadAllClients } from "@/lib/fmdb/loader";
+import { loadLibraryRecipes, buildLibraryRecipeResolver } from "@/lib/fmdb/client-app";
 
 /** One catalogue recipe that would show in the client app without a real
  *  photo — so the coach can source/generate one before any client sees it. */
@@ -96,5 +98,94 @@ export async function getRecipeImageCoverage(): Promise<RecipeImageCoverage> {
     return { total, imaged, gaps };
   } catch {
     return EMPTY;
+  }
+}
+
+/** A live published-plan menu that serves dishes which won't show a photo. */
+export interface MenuImageGap {
+  clientId: string;
+  clientName: string;
+  planSlug: string;
+  dishes: string[]; // distinct dishes on this menu with no imaged recipe
+}
+
+export interface MenuImageCoverage {
+  plansScanned: number;   // published plans carrying a menu
+  dishGaps: number;       // total distinct (plan, dish) pairs without a photo
+  menus: MenuImageGap[];  // grouped by plan/client, most gaps first
+}
+
+const EMPTY_MENU: MenuImageCoverage = { plansScanned: 0, dishGaps: 0, menus: [] };
+
+/**
+ * Live-menu image coverage. Walks every PUBLISHED plan's structured `app_menu`
+ * and, for each dish a client would see, runs the SAME resolver the client app
+ * uses (buildLibraryRecipeResolver) to check whether it lands on a recipe with
+ * a photo. Dishes that don't — because the recipe isn't in the catalogue yet,
+ * or is there without an image — are exactly the ones that render a plain
+ * gradient tile. Newly AI-generated recipes are saved into the catalogue, so
+ * they resolve by name here and surface as "needs a photo" until one is added.
+ *
+ * Bedtime slots are skipped — they're drinks/remedies folded in separately and
+ * never show a meal thumbnail (mirrors client-app.ts). Resolves against the
+ * FULL library (the dish was already diet-gated when picked), so this is a
+ * pure "will a photo show" check.
+ *
+ * Defensive: any failure returns the empty coverage so the chip simply hides.
+ */
+export async function getMenuImageCoverage(): Promise<MenuImageCoverage> {
+  try {
+    const [plans, clients, library] = await Promise.all([
+      loadAllPlans(),
+      loadAllClients(),
+      loadLibraryRecipes(),
+    ]);
+    const resolver = buildLibraryRecipeResolver(library);
+    const nameById = new Map<string, string>(
+      clients.map((c) => [String(c.id), String(c.display_name || c.id)]),
+    );
+
+    const menus: MenuImageGap[] = [];
+    let plansScanned = 0;
+    let dishGaps = 0;
+
+    for (const plan of plans) {
+      if (plan._bucket !== "published") continue;
+      const menu = plan.app_menu as
+        | { weeks?: { days?: { slots?: { slot?: string; dish?: string }[] }[] }[] }
+        | undefined;
+      if (!menu || !Array.isArray(menu.weeks)) continue;
+      plansScanned += 1;
+
+      const seen = new Set<string>();
+      const missing: string[] = [];
+      for (const w of menu.weeks ?? [])
+        for (const d of w.days ?? [])
+          for (const s of d.slots ?? []) {
+            const slot = (s.slot ?? "").toLowerCase();
+            if (slot.includes("bedtime")) continue; // drinks/remedies — no thumbnail
+            const dish = (s.dish ?? "").trim();
+            if (!dish || seen.has(dish)) continue;
+            seen.add(dish);
+            const rec = resolver(dish);
+            if (!rec || !rec.imageUrl) missing.push(dish);
+          }
+
+      if (missing.length) {
+        dishGaps += missing.length;
+        const clientId = String(plan.client_id ?? "");
+        menus.push({
+          clientId,
+          clientName: nameById.get(clientId) ?? clientId ?? "—",
+          planSlug: String(plan.slug ?? ""),
+          dishes: missing.sort((a, b) => a.localeCompare(b)),
+        });
+      }
+    }
+
+    menus.sort((a, b) => b.dishes.length - a.dishes.length || a.clientName.localeCompare(b.clientName));
+    return { plansScanned, dishGaps, menus };
+  } catch {
+    return EMPTY_MENU;
   }
 }
