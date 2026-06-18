@@ -16,8 +16,10 @@ interactions:
   with_medications: []
 pregnancy_safety: unknown
 lactation_safety: unknown
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- mitochondrial-health-nutrients
+linked_to_mechanisms:
+- mitochondrial-biogenesis
 linked_to_claims: []
 notes_for_coach: Stub created from mindmap-agent shortlist 2026-05-13 — flesh out
   before clinical use.
@@ -25,9 +27,9 @@ sources:
 - id: vitaone-mind-map-tool
   location: mindmap-shortlist 2026-05-13
 evidence_tier: fm_specific_thin
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-13'
+updated_at: '2026-06-18'
 updated_by: shivani
 aliases:
 - pyrroloquinoline-quinone

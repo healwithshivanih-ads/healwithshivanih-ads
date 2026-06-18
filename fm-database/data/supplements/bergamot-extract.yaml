@@ -34,10 +34,12 @@ pregnancy_safety: contraindicated
 lactation_safety: contraindicated
 pregnancy_safety_note: Insufficient safety data — avoid in pregnancy and lactation.
 linked_to_topics:
-- dyslipidaemia
-- cardiovascular-disease
+- dyslipidemia
+- atherogenic-dyslipidemia
+- cardiovascular-health
 linked_to_mechanisms:
-- hmg-coa-reductase-modulation
+- reverse-cholesterol-transport
+- cholesterol-absorption-blockade
 linked_to_claims: []
 notes_for_coach: Bergamot polyphenolic fraction (BPF) is a citrus-derived extract
   that lowers LDL cholesterol and triglycerides while raising HDL via HMG-CoA reductase
@@ -51,7 +53,7 @@ sources:
   location: Practice guide — cardiovascular section
   quote: Bergamot extract supports lipid profile and cardiometabolic markers.
 evidence_tier: plausible_emerging
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: shivani

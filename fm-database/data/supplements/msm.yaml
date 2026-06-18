@@ -26,8 +26,11 @@ take_with_food: required
 notes_for_coach: Bioavailable sulfur compound for joint support, detox, and pain;
   commonly used in arthritis and connective tissue protocols.
 evidence_tier: plausible_emerging
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- joint-pain
+- osteoarthritis
+linked_to_mechanisms:
+- synovial-inflammation
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -35,7 +38,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: MSM (Methylsulfonylmethane) - Joint pain, inflammation - 1000–3000 mg/day
     - With meals
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-06-18'
 updated_by: shivani

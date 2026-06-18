@@ -41,8 +41,13 @@ ayurvedic_actions:
 - antibacterial
 - antiseptic
 evidence_tier: plausible_emerging
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- stress-management
+- anxiety
+- blood-sugar-regulation
+linked_to_mechanisms:
+- hpa-axis-dysregulation
+- cortisol-elevation
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -50,7 +55,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: Holy Basil (Tulsi) - Adaptogen, stress reduction - 300–600 mg/day - Morning
     or midday
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-06-18'
 updated_by: shivani

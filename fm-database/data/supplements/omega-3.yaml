@@ -112,14 +112,15 @@ sources:
 - id: vitaone-cv-toolkit
   location: 'Beta Blockers: De-Prescribing and Tapering Instructions for Patients'
   quote: EFA supplementation including EPA+DHA and GLA
-version: 6
+version: 7
 status: active
-updated_at: '2026-05-02'
+updated_at: '2026-06-18'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Recommended — DHA critical for fetal brain development. 1-2g EPA+DHA. Choose fish oil or algae (vegetarian).
 aliases:
+- vitaone-omega-3
 - omega-3-fatty-acids
 - omega-3-epa-dha
 - omega-3-epa-dha-gla

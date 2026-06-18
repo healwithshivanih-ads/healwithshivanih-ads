@@ -89,13 +89,14 @@ sources:
   location: Homocysteine
   quote: Functionally deficiency in folic acid, vitamin B6, or vitamin B12 causes
     homocysteine to rise.
-version: 5
+version: 6
 status: active
-updated_at: '2026-05-18'
+updated_at: '2026-06-18'
 updated_by: Shivani
 pregnancy_safety: safe
 lactation_safety: safe
 pregnancy_safety_note: Methylcobalamin form preferred. Critical for vegetarian / vegan
   / on metformin pregnant women.
 aliases:
+- vitaone-b12
 - vitamin-b12-methylcobalamin

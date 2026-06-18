@@ -23,14 +23,16 @@ interactions:
   with_supplements: []
   with_foods: []
 evidence_tier: fm_specific_thin
-linked_to_topics: []
+linked_to_topics:
+- vaginal-microbiome
+- vaginal-microbiome-dysbiosis
 linked_to_mechanisms: []
 sources:
 - id: notebooklm-synthesis
   location: '[auto-restored after Step 2 strip]'
   quote: Original source citation was 'Notebook LM' / 'notebooklmgoogle' — replaced with stub source for validation compliance.
     Coach should re-verify and link to a peer-reviewed source when next reviewing this entry.
-version: 1
+version: 2
 status: active
-updated_at: '2026-05-16'
+updated_at: '2026-06-18'
 updated_by: shivani

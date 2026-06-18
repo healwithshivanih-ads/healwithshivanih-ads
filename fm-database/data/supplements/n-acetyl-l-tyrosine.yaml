@@ -22,8 +22,12 @@ take_with_food: optional
 notes_for_coach: More soluble form of L-Tyrosine; dopamine precursor useful for ADHD,
   fatigue, and mental performance.
 evidence_tier: plausible_emerging
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- cognitive-decline
+- stress-management
+linked_to_mechanisms:
+- dopaminergic-dysfunction
+- neurotransmitter-synthesis-impairment
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -31,7 +35,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: N-Acetyl L-Tyrosine - Focus, dopamine precursor - 350–700 mg/day - With or
     without food
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-06-18'
 updated_by: shivani

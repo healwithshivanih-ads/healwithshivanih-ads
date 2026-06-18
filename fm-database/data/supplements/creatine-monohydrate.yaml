@@ -23,8 +23,11 @@ take_with_food: optional
 notes_for_coach: Preferred post-workout; increasingly used in women's health for muscle,
   brain fog, and energy, not just athletic performance.
 evidence_tier: plausible_emerging
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- sarcopenia-skeletal-muscle-loss
+- cognitive-decline
+linked_to_mechanisms:
+- mitochondrial-energy-production
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -32,7 +35,7 @@ sources:
   location: Page 1 - Supplement Table
   quote: Creatine Monohydrate - Muscle, brain, cellular energy - 3–5 g/day - Anytime,
     preferably post-workout
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-06-18'
 updated_by: shivani

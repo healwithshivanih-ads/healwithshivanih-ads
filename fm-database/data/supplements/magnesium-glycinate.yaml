@@ -1,6 +1,7 @@
 slug: magnesium-glycinate
 display_name: Magnesium Glycinate
 aliases:
+- vitaone-magnesium-glycinate
 - magnesium-bisglycinate
 - mg-glycinate
 - magnesium-glycinate-chelate
@@ -224,9 +225,9 @@ sources:
   location: Chapter 81 — Osteoporosis
   quote: Comprehensive natural prevention + treatment of osteoporosis.
 evidence_tier: plausible_emerging
-version: 28
+version: 29
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: shivani
 pregnancy_safety: safe
 lactation_safety: safe

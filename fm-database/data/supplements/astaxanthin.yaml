@@ -21,8 +21,13 @@ take_with_food: required
 notes_for_coach: Potent fat-soluble carotenoid antioxidant; take with fat-containing
   meals for optimal absorption; supports skin, eye, and endurance.
 evidence_tier: plausible_emerging
-linked_to_topics: []
-linked_to_mechanisms: []
+linked_to_topics:
+- oxidative-stress
+- macular-degeneration
+- cardiovascular-health
+linked_to_mechanisms:
+- antioxidant-protection
+- oxidative-damage
 linked_to_claims: []
 notes_for_client: ''
 sources:
@@ -30,7 +35,7 @@ sources:
   location: Page 3 - Supplement Table
   quote: Astaxanthin - Antioxidant, skin and eye health - 4–8 mg/day - With fat-containing
     meals
-version: 1
+version: 2
 status: active
-updated_at: '2026-04-30'
+updated_at: '2026-06-18'
 updated_by: shivani

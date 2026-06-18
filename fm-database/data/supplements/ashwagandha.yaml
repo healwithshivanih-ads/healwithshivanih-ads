@@ -127,15 +127,16 @@ sources:
 - id: murray-pizzorno-2012-encyclopedia
   location: Chapter 23 — Anxiety
   quote: Comprehensive natural treatment summary for anxiety + panic.
-version: 10
+version: 11
 status: active
-updated_at: '2026-05-30'
+updated_at: '2026-06-18'
 updated_by: Shivani
 pregnancy_safety: contraindicated
 lactation_safety: caution
 pregnancy_safety_note: 'Insufficient safety data; uterine stimulant; avoid throughout
   pregnancy. Lactation: limited data, prefer to avoid.'
 aliases:
+- vitaone-ashwagandha
 - ashwagandha-root
 - ashwagandha-ksm66
 - ashwagandha 2-4g
